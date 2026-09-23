@@ -86,6 +86,34 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   - as licenças individuais são de uma pessoa só, então editor contratado não fica coberto;
   - a assinatura precisa estar ativa quando o vídeo vai a público;
   - no Motion Array, vídeo privado que vira público depois do cancelamento fica descoberto.
-- **Sugestão:** virar `template/marca/midia.md` do motor, com as regras gerais. As específicas de
+- **Sugestão:** virar `template/marca/midia.md` do motor, com as regras gerais.
+
+## 23/09/2026 — o dono pergunta "de onde parte o master?" (motor em `ffb3ec0`)
+
+### 8. Nada produz o master, e o onboarding não diz de onde ele vem
+- **O problema:** a linha começa no `ingest`, que transcreve um master editado. O dono de um canal
+  novo não tem vídeo nem roteiro. O `ONBOARDING.md` Passo 5 manda abrir a primeira produção sem dizer
+  de onde vem o master.
+- **O que falta antes da Régie:** não há passo nem ofício de pauta, pesquisa, roteiro ou locução, e o
+  planejamento não prevê nenhum. Esses ofícios existem no agent-core (`pesquisador-de-pauta`,
+  `roteirista-narracao`, `critico-de-roteiro`, `verificador-de-fatos`, `critico-de-locucao`), mas não
+  vieram para a Régie.
+- **Canal faceless:** os ofícios supõem apresentador. O montador tem cota de rosto de 10–15 % e
+  veredito `manter` = rosto em tela. O decupador parte de câmera e microfone do apresentador, e o
+  editor-de-arte chama a base de "master do apresentador". A palavra "faceless" não aparece no motor.
+  Este canal anulou a cota na marca (`identidade.md` §5).
+- **Sugestão:** o onboarding perguntar "você já tem master?" e, se não, apontar o caminho. Os ofícios
+  de roteiro do agent-core são candidatos a entrar na linha.
+- **Por que serve a qualquer canal:** todo canal novo começa sem master.
+
+### 9. As estações determinísticas da linha estão vazias
+- **O problema:** `ingest`, `render` e `finalize` têm `craft: null`, e não há código em `src/` que
+  transcreva, renderize ou gere o XMEML. A `CRITICA-DE-COMPLETUDE.md` §A1 já diz isso.
+- **Onde vai virar promessa:** o `CLAUDE.md` que o gerador escreve em todo canal diz "entrega a camada
+  visual como XML de 5 camadas". O dono lê isso como pronto.
+- **Sugestão:** o template dizer o que existe hoje. Enquanto o motor não tiver essas peças, cada canal
+  vai escrevê-las sozinho, e isso é justamente a divergência que a Régie existe para evitar.
+- **O que este canal tem disponível na máquina:** `faster-whisper` com large-v3 (tempo por palavra),
+  ffmpeg 8.1, Premiere Pro 2026. As específicas de
   geopolítica (Storyblocks proíbe uso *political*; Shutterstock proíbe modelo em contexto político)
   ficam no canal.

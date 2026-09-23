@@ -143,7 +143,10 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 | **DOCUMENTO** | recorte de tratado, mapa histórico, manchete real; o trecho que importa grifado em `--destaque` a 35 % | `--papel` |
 
 **Faceless**: nenhum plano de pessoa falando para a câmera no papel de narrador, e nenhuma pessoa gerada
-por IA apresentada como real. Discurso ou entrevista de uma fonte real é REGISTRO, com rótulo de nome
+por IA apresentada como real.
+- **Cota de apresentador: 0 %.** O montador supõe 10–15 % de rosto do apresentador; aqui não há rosto.
+- **O master é a narração** sobre tela preta 3840×2160, e **100 % do tempo é coberto por cena**. Não
+  existe veredito `manter`, porque não há imagem de origem a manter. Discurso ou entrevista de uma fonte real é REGISTRO, com rótulo de nome
 completo e cargo (ofício).
 
 ## 6 · Base de mapa e mídia

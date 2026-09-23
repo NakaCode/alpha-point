@@ -42,6 +42,20 @@ entrega a camada visual como XML de 5 camadas. Não gera vídeo do zero. E não 
 automação que rode os passos sozinha: quem faz o trabalho de cada passo é você,
 junto com a pessoa; a Régie guarda estado, ordem e histórico. Não prometa mais que isso.
 
+**No motor `ffb3ec0`, as estações determinísticas estão vazias.** `ingest` (transcrever), `render`
+(Chrome + ffmpeg) e `finalize` (o XML de 5 camadas) não têm ofício nem código. Transcrição, render e
+XML são trabalho que o canal faz aqui, até o motor os ter (`APRENDIZADOS.md` item 9). E nada na Régie
+produz o master. O deste canal nasce assim:
+
+1. pauta;
+2. pesquisa com fontes;
+3. roteiro em inglês (`marca/voz.md`);
+4. narração;
+5. master = a narração sobre tela preta 3840×2160 (`marca/identidade.md` §5).
+
+Transcrição local disponível nesta máquina: `faster-whisper` (modelo large-v3, `word_timestamps=True`,
+`language="en"`). Editor: Premiere Pro.
+
 ## A marca
 
 `marca/identidade.md` (cor, tipo, alvos, cenas), `marca/voz.md` (o narrador e o que ele

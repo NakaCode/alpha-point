@@ -5,7 +5,8 @@
 > lida por um agente e depois checada por outro, que tentou derrubá-la.
 > **Termos mudam.** Reconferir a cada 6 meses, ou quando um banco avisar de mudança nos termos.
 >
-> Tudo aqui vale para os **planos individuais**. Plano de equipe ou empresa muda algumas regras (§4).
+> Tudo aqui vale para os **planos individuais**: as quatro contas do canal são individuais (confirmado
+> pelo dono em 23/09/2026). Plano de equipe ou empresa muda algumas regras (§4).
 
 ## 1 · De onde vem cada imagem
 
