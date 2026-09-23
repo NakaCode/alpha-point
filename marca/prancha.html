@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Alpha Point — prancha da marca</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<!--
+  Prancha de conferência da marca (marca/identidade.md). As cenas estão em 1/4 do palco:
+  960×540 = 3840×2160 ÷ 4, então cada medida em px aqui é o alvo da marca ÷ 4.
+  É esquema para o dono corrigir cor e tamanho, não cena de vídeo.
+-->
+<style>
+  :root {
+    --fundo: #0E1726; --painel: #172338; --papel: #ECE8DF;
+    --tinta: #F4F1EA; --tinta-escura: #14181F; --rotulo: rgba(11,15,20,.88);
+    --destaque: #F5A524; --contraparte: #2EC4B6; --neutro: #8A94A6; --tensao: #E4572E;
+    --pagina: #F6F5F2; --texto: #1B1F27; --sutil: #5B6372;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--pagina); color: var(--texto); font: 500 15px/1.5 Inter, system-ui, sans-serif; }
+  main { max-width: 1000px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font: 800 44px/1 "Barlow Condensed", sans-serif; margin: 0 0 4px; letter-spacing: -.01em; }
+  h2 { font: 700 13px/1 Inter, sans-serif; text-transform: uppercase; letter-spacing: .08em; color: var(--sutil); margin: 40px 0 12px; }
+  p.lead { color: var(--sutil); margin: 0 0 8px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+  .sw { border-radius: 10px; overflow: hidden; border: 1px solid #0001; background: #fff; }
+  .sw i { display: block; height: 64px; }
+  .sw div { padding: 8px 10px; font-size: 12.5px; line-height: 1.35; }
+  .sw b { display: block; font-size: 13px; }
+  .sw code { color: var(--sutil); }
+  .cena { position: relative; width: 100%; max-width: 960px; aspect-ratio: 16/9; overflow: hidden; border-radius: 6px; container-type: inline-size; }
+  /* 1 unidade de palco 4K = 100cqw/3840 → alvo em px 4K × (100cqw/3840) */
+  .cena { --u: calc(100cqw / 3840); }
+  .legenda-cena { font-size: 13px; color: var(--sutil); margin: 6px 0 0; }
+  .margem { position: absolute; left: calc(200 * var(--u)); right: calc(200 * var(--u)); top: calc(160 * var(--u)); bottom: calc(280 * var(--u)); outline: 1px dashed #ffffff40; pointer-events: none; }
+  .faixa { position: absolute; left: 0; right: 0; top: calc(1880 * var(--u)); bottom: 0; background: repeating-linear-gradient(135deg, #ffffff10 0 6px, transparent 6px 12px); }
+  .canto { position: absolute; right: 0; bottom: 0; width: calc(400 * var(--u)); height: calc(400 * var(--u)); outline: 1px dashed #ffffff70; outline-offset: -1px; color: #ffffffa0; font-size: 10px; display: grid; place-items: center; text-align: center; }
+  .papel .margem { outline-color: #0003; } .papel .faixa { background: repeating-linear-gradient(135deg, #0000000c 0 6px, transparent 6px 12px); } .papel .canto { outline-color: #0005; color: #0007; }
+  .credito { position: absolute; left: calc(200 * var(--u)); top: calc(1960 * var(--u)); font: 500 calc(76 * var(--u))/1 Inter; opacity: .8; }
+  .pilula { position: absolute; background: var(--rotulo); color: var(--tinta); border-radius: calc(12 * var(--u)); padding: calc(24 * var(--u)) calc(40 * var(--u)); font: 700 calc(128 * var(--u))/1 Inter; white-space: nowrap; }
+  .pilula.pais { text-transform: uppercase; letter-spacing: .04em; }
+  .pilula.prot { color: var(--destaque); }
+  /* MAPA: sem satélite real aqui — um degradê faz as vezes da base escurecida */
+  .mapa { background: radial-gradient(60% 80% at 30% 40%, #3b4a2e, transparent 70%), radial-gradient(50% 60% at 75% 70%, #4a3f2a, transparent 70%), linear-gradient(160deg, #1d2b36, #0f1a24 60%, #122436); }
+  .mapa .aviso { position: absolute; left: calc(200 * var(--u)); top: calc(170 * var(--u)); color: #ffffff70; font-size: 11px; }
+  .territorio { position: absolute; left: 38%; top: 30%; width: 26%; height: 34%; background: color-mix(in srgb, var(--destaque) 85%, transparent); outline: calc(6 * var(--u)) solid var(--tinta); border-radius: 18% 30% 22% 40% / 30% 22% 38% 26%; }
+  .anel { position: absolute; width: calc(56 * var(--u)); height: calc(56 * var(--u)); border: calc(10 * var(--u)) solid var(--destaque); border-radius: 50%; transform: translate(-50%, -50%); }
+  .anel::after { content: ""; position: absolute; inset: calc(-10 * var(--u)); border: calc(10 * var(--u)) solid var(--destaque); border-radius: 50%; animation: pulso 1.2s ease-out 2; }
+  @keyframes pulso { from { transform: scale(1); opacity: 1; } to { transform: scale(1.8); opacity: 0; } }
+  .cena:hover .anel::after { animation: pulso-hover 1.2s ease-out 2; }
+  @keyframes pulso-hover { from { transform: scale(1); opacity: 1; } to { transform: scale(1.8); opacity: 0; } }
+  /* DADO */
+  .papel { background: var(--papel); color: var(--tinta-escura); }
+  .heroi { position: absolute; font: 800 calc(360 * var(--u))/1 "Barlow Condensed", sans-serif; letter-spacing: -.01em; }
+  .rot { position: absolute; font: 700 calc(128 * var(--u))/1.1 Inter; }
+  .eixo { position: absolute; font: 500 calc(84 * var(--u))/1 Inter; opacity: .6; }
+  .barra { position: absolute; bottom: calc(420 * var(--u)); width: calc(260 * var(--u)); }
+  /* PRANCHA */
+  .prancha { background: var(--fundo); color: var(--tinta); }
+  .ator { position: absolute; width: calc(640 * var(--u)); height: calc(640 * var(--u)); border-radius: 50%; border: calc(6 * var(--u)) solid; display: grid; place-items: center; }
+  .seta { position: absolute; height: calc(6 * var(--u)); background: var(--tinta); }
+  .seta::after { content: ""; position: absolute; right: calc(-4 * var(--u)); top: 50%; width: calc(48 * var(--u)); height: calc(48 * var(--u)); border-top: calc(6 * var(--u)) solid var(--tinta); border-right: calc(6 * var(--u)) solid var(--tinta); transform: translateY(-50%) rotate(45deg); }
+  .proibido { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .proibido span { display: inline-block; width: 90px; height: 36px; border-radius: 6px; }
+  .tipo p { margin: 6px 0; }
+  .b800 { font: 800 56px/1 "Barlow Condensed", sans-serif; letter-spacing: -.01em; }
+  @media (max-width: 600px) { h1 { font-size: 34px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Alpha Point — prancha da marca</h1>
+  <p class="lead">Conferência visual de <code>marca/identidade.md</code>. As cenas estão em 1/4 do palco 4K, com as proporções reais. Linha tracejada = margem de segurança; faixa hachurada = só crédito; quadrado no canto = reservado à marca-d'água do YouTube.</p>
+
+  <h2>Paleta, com papel</h2>
+  <div class="swatches">
+    <div class="sw"><i style="background:#F5A524"></i><div><b>--destaque</b><code>#F5A524</code><br>o protagonista do vídeo</div></div>
+    <div class="sw"><i style="background:#2EC4B6"></i><div><b>--contraparte</b><code>#2EC4B6</code><br>o segundo ator</div></div>
+    <div class="sw"><i style="background:#8A94A6"></i><div><b>--neutro</b><code>#8A94A6</code><br>terceiro ator em diante</div></div>
+    <div class="sw"><i style="background:#E4572E"></i><div><b>--tensao</b><code>#E4572E</code><br>conflito, risco — nunca um lado</div></div>
+    <div class="sw"><i style="background:#0E1726"></i><div><b>--fundo</b><code>#0E1726</code><br>fundo de prancha</div></div>
+    <div class="sw"><i style="background:#172338"></i><div><b>--painel</b><code>#172338</code><br>cartão sobre o fundo</div></div>
+    <div class="sw"><i style="background:#ECE8DF"></i><div><b>--papel</b><code>#ECE8DF</code><br>dado e documento</div></div>
+    <div class="sw"><i style="background:#F4F1EA"></i><div><b>--tinta</b><code>#F4F1EA</code><br>texto sobre escuro</div></div>
+    <div class="sw"><i style="background:#14181F"></i><div><b>--tinta-escura</b><code>#14181F</code><br>texto sobre papel</div></div>
+  </div>
+  <p class="proibido" style="margin-top:14px"><span style="background:#C62828"></span><span style="background:#1E4FC2"></span> <b>Proibido como dois lados:</b> vermelho × azul é cor de partido para o público dos EUA.</p>
+
+  <h2>Cena MAPA — o território aceso e o ponto</h2>
+  <div class="cena mapa">
+    <div class="aviso">(no vídeo: satélite real, brilho 65 %, saturação 70 % — aqui, um degradê no lugar)</div>
+    <div class="territorio"></div>
+    <div class="pilula pais prot" style="left:41%; top:44%">Iran</div>
+    <div class="anel" style="left:66%; top:71%"></div>
+    <div class="pilula" style="left:65%; top:58%">Strait of Hormuz</div>
+    <div class="pilula pais" style="left:14%; top:22%">Iraq</div>
+    <div class="margem"></div><div class="faixa"></div><div class="canto">reservado</div>
+  </div>
+  <p class="legenda-cena">Rótulo 128 px (país em caixa alta, estreito em caixa normal) · anel de 56 px com pulso (passe o mouse para repetir) · 5 elementos no ar (alvo 4–5) · base em domínio público: sem crédito na tela.</p>
+
+  <h2>Cena DADO — sobre papel</h2>
+  <div class="cena papel">
+    <div class="heroi" style="left:calc(200*var(--u)); top:calc(220*var(--u))">$XXX billion</div>
+    <div class="barra" style="left:calc(2300*var(--u)); height:calc(1100*var(--u)); background:var(--destaque)"></div>
+    <div class="barra" style="left:calc(2700*var(--u)); height:calc(520*var(--u)); background:var(--contraparte)"></div>
+    <div class="eixo" style="left:calc(2300*var(--u)); top:calc(1780*var(--u))">Arizona</div>
+    <div class="eixo" style="left:calc(2700*var(--u)); top:calc(1780*var(--u))">Texas</div>
+    <div class="margem"></div><div class="faixa"></div><div class="canto">reservado</div>
+    <div class="credito">Source: [institution], [year]</div>
+  </div>
+  <p class="legenda-cena">Herói 360 px em Barlow Condensed 800 · eixo 84 px · crédito 76 px · protagonista em âmbar, contraparte em verde-água · 5 elementos no ar (alvo 4–5). O contexto do número está na narração. (Número e fonte são de exemplo: não afirmam nada.)</p>
+
+  <h2>Cena PRANCHA — atores e relação</h2>
+  <div class="cena prancha">
+    <div class="ator" style="left:calc(560*var(--u)); top:calc(560*var(--u)); border-color:var(--destaque)"></div>
+    <div class="ator" style="left:calc(2640*var(--u)); top:calc(560*var(--u)); border-color:var(--contraparte)"></div>
+    <div class="seta" style="left:calc(1260*var(--u)); top:calc(880*var(--u)); width:calc(1320*var(--u))"></div>
+    <div class="rot" style="left:calc(560*var(--u)); top:calc(1280*var(--u)); color:var(--destaque)">Beijing</div>
+    <div class="rot" style="left:calc(2640*var(--u)); top:calc(1280*var(--u))">Manila</div>
+    <div class="eixo" style="left:calc(1420*var(--u)); top:calc(740*var(--u)); opacity:.8">claims the same waters</div>
+    <div class="margem"></div><div class="faixa"></div><div class="canto">reservado</div>
+  </div>
+  <p class="legenda-cena">Ator = círculo de 640 px com traço de 6 px, bandeira oficial dentro e nome embaixo (conta como um cartão) · cidade em caixa normal · seta de 6 px · texto de relação é legenda (84 px, 80 %) · 4 elementos no ar.</p>
+
+  <h2>Tipografia</h2>
+  <div class="tipo">
+    <p class="b800">BARLOW CONDENSED 800 — 2,700 MILES</p>
+    <p style="font:700 22px/1.3 Inter; text-transform:uppercase; letter-spacing:.04em">Inter 700 — Türkiye · Łódź · Hà Nội</p>
+    <p style="font:500 18px/1.4 Inter">Inter 500 — texto de leitura, <b style="font-weight:800">com o trecho-chave em 800 na mesma cor</b>.</p>
+    <p style="color:var(--sutil); font-size:13px">As três famílias (Barlow Condensed, Inter e a alternativa Noto Sans) são SIL Open Font License 1.1.</p>
+  </div>
+</main>
+</body>
+</html>

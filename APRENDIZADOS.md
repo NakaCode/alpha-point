@@ -36,3 +36,56 @@ nada aqui foi alterado no motor.
 - No Mac/Linux, a sugestão do gerador `--em=~/projetos/<slug>` (`bin/create-regie:134`) cria uma
   pasta literal `~` dentro do motor: o shell não expande `~` depois de `=`.
 - O `doctor` de todo canal novo abre com o aviso "6 passos sem aresta 'retake'".
+
+## 23/09/2026 — o primeiro canal em inglês (motor em `ffb3ec0`)
+
+O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para ver o que isso muda.
+
+### 5. Trocar `idiomas.origem` para `en-US` não quebra nada, porque nada lê o campo
+- **O que foi provado:**
+  - o `bin/create-regie:253` só **escreve** `pt-BR`, e não tem flag de idioma;
+  - o `testes/create.test.mjs:70` trava esse default;
+  - fora o teste, nenhum código lê `idiomas`: nem `doctor`, `open`, `advance`, schema ou linha;
+  - o `doctor` dá o mesmo PASS com `pt-BR` e com `en-US`.
+- **A consequência:** o idioma do canal é declarado, mas não governa nada. O `ingest`
+  (`db/pipeline-long-form.json:7`) não recebe idioma, e `localizados` não tem consumidor. O
+  `tradutor-de-tela` que os ofícios citam (`crafts/redator-de-tela/CONTRATO.md:122`) não existe em `crafts/`.
+- **Sugestões:**
+  - um `--idioma` no gerador;
+  - o `ingest` e o contrato de cena lerem `idiomas.origem`.
+
+### 6. Os ofícios assumem vídeo em pt-BR, em lugares que um agente copia
+- **Contrato de cena:** fixa `<html lang="pt-BR" data-render="4k-native">`
+  (`crafts/editor-de-arte/CONTRATO.md:138`).
+- **Exemplos copiáveis em formato brasileiro:**
+  - `QUASE 3.000×` (`crafts/redator-de-tela/OFICIO.md:55`);
+  - `"QUASE 30 VEZES"`, `"28,0×"` e `"vezes"` no schema de exemplo
+    (`crafts/redator-de-tela/CONTRATO.md:104-107`);
+  - `6,76 m ABAIXO DO MAR` (`crafts/editor-de-arte/OFICIO.md:118`);
+  - `1º DE MAIO DE 1994` (`crafts/editor-de-arte/OFICIO.md:287`).
+- **Heurísticas só em português:**
+  - despedida, mic-check e dangler do decupador (`crafts/decupador/OFICIO.md:173, 243, 274`);
+  - adversativas e sintagmas do regente (`crafts/regente-de-imagem/OFICIO.md:39-43`).
+- **Vocabulário de máquina em PT:** não se traduz, porque os contratos vieram do agent-core
+  (`crafts/ORIGEM.json`) com chaves e enums em PT, e é assim que os gates e schemas do consumidor os
+  leem. Mas a ADR 0005 **não cobre** esse caso: ela manda inglês para chave de contrato e valor de enum,
+  e só isenta a conversa, os ids dos ofícios e o conteúdo editorial. É uma terceira exceção, não
+  declarada. E tem uma armadilha: o `motivo` de span de título precisa conter "título" porque dois
+  consumidores legados o acham por regex (`crafts/decupador/CONTRATO.md:98`).
+- **Como este canal contornou, sem tocar no motor:** está no `CLAUDE.md` do canal, na seção "O vídeo
+  fala inglês".
+- **Sugestão:** marcar os exemplos como "formato pt-BR" ou tirá-los da marca ativa, e derivar o `lang`
+  da cena do `canal.json`.
+
+### 7. Doutrina de mídia verificada para quatro bancos: serve a qualquer canal que os assine
+- **Onde está:** `marca/midia.md` deste canal. Shutterstock, Motion Array, Envato Elements e
+  Storyblocks, com as regras lidas nas páginas oficiais e checadas por um segundo agente. Fontes no
+  próprio arquivo.
+- **O que vale para qualquer nicho, inclusive culinária:**
+  - "editorial use only" não entra em vídeo monetizado;
+  - as licenças individuais são de uma pessoa só, então editor contratado não fica coberto;
+  - a assinatura precisa estar ativa quando o vídeo vai a público;
+  - no Motion Array, vídeo privado que vira público depois do cancelamento fica descoberto.
+- **Sugestão:** virar `template/marca/midia.md` do motor, com as regras gerais. As específicas de
+  geopolítica (Storyblocks proíbe uso *political*; Shutterstock proíbe modelo em contexto político)
+  ficam no canal.
