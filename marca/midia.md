@@ -153,7 +153,8 @@ Se o canal passar a ter editor contratado, é aqui que se resolve, não empresta
 
 ## 5 · Música e Content ID
 
-Música em geral já vem no master. Se a trilha for escolhida para o canal:
+No Alpha Point, o master é só a narração sobre tela preta (`identidade.md` §5), então **a música não vem nele**:
+toda trilha é escolhida pelo canal e entra numa faixa própria, depois. Para cada faixa:
 
 | Banco | Antes de publicar | Se vier reivindicação |
 |---|---|---|

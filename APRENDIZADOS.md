@@ -18,6 +18,8 @@ nada aqui foi alterado no motor.
 | 6 · ofícios assumem pt-BR | em aberto |
 | 7 · doutrina de mídia como template | em aberto |
 | 8 e 9 · origem do master e estações vazias | escritos depois da v0.1.0: Lucas e Mateus ainda não viram |
+| 10 · a linha do zero | proposta pronta em `propostas/linha-do-zero/`, com prova; Lucas e Mateus ainda não viram |
+| 11 · prontidão dos ofícios | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
 
 ## 23/09/2026 — onboarding (motor em `ffb3ec0`)
 
@@ -133,3 +135,69 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   ffmpeg 8.1, Premiere Pro 2026. As específicas de
   geopolítica (Storyblocks proíbe uso *political*; Shutterstock proíbe modelo em contexto político)
   ficam no canal.
+
+## 23/09/2026 — o dono pede a linha "do zero ao XML" (motor em `44cf6f7`, v0.1.0)
+
+### 10. Proposta: a linha `long-form-from-scratch`, e o que ela revelou no `init`
+- **O pedido do dono:** tema → pauta → roteiro → revisão → voz (ElevenLabs) → transcrição com
+  tempos → plano de cenas → pesquisadores → cena a cena em HTML → portões por lente → XML.
+- **Onde está:** `propostas/linha-do-zero/PROPOSTA.md`, e a linha pronta para copiar,
+  `pipeline-long-form-from-scratch.json`. São 25 passos e 61 arestas: 13 passos novos e 12
+  reaproveitados da `long-form`, com todos menos o `cut_detect`. Quatro passos são aprovação do dono.
+  A proposta tem 21 decisões em aberto, entre elas voz, bancada das cenas e onde mora a linha.
+- **A prova, feita num clone descartável do motor:**
+  - canal novo nascido na linha: doctor PASS, 36 de 36 gatilhos no destino certo e 56/56 testes;
+  - **migrar um canal que já existe quebra o banco.** O `semear` nunca apaga passo, então o
+    `cut_detect` fica órfão, o doctor dá FAIL e a produção parada nele fica presa. Apagar à mão
+    esbarra em chave estrangeira;
+  - **`regie init` sem argumento volta a linha para `long-form`**, e é isso que o procedimento de
+    atualização manda rodar. Num canal da linha nova, o resultado é FAIL permanente.
+- **Outros defeitos que a prova mostrou:**
+  - o `advance` reabre um vídeo concluído;
+  - um passo `human` é igual a qualquer outro: mesmo ator e nenhuma `decision`;
+  - o aviso de "sem retake" só conhece o gatilho literal;
+  - o CLAUDE.md do gerador diz "não gera vídeo do zero" mesmo em canal da linha nova.
+- **Consequência para este canal:** enquanto os itens 1, 2 e 2b da §6 da proposta não forem
+  corrigidos no motor, o Alpha Point continua na `long-form`. Hoje ele tem 0 produções, então a
+  migração, quando vier, é barata.
+- **Por que serve a qualquer canal:** todo canal novo começa sem master (item 8), e os dois defeitos do
+  `init` atingem qualquer canal que use uma linha diferente da padrão.
+
+### 11. Prontidão dos ofícios: as specs existem, os portões não
+- **A pergunta do dono:** "já temos specs de como construir o pesquisador, o revisor…?"
+- **A resposta:** sim, como specs de ofício. Os 4 documentos existem no agent-core, e o
+  `qc-spec-agentes` deu zero erro nas 50 definições. Mas **nenhum portão que os ofícios mandam
+  rodar vem junto**, e isso é de propósito (`agent-core/CAPACIDADES.md:5-7`; `INSTALL.md:59-62`).
+  O `conferir-capacidades.mjs` mede **0 de 89** capacidades no motor e neste canal. O próprio
+  `INSTALL.md:80-83` avisa que, sem o script, o agente improvisa e diz que verificou.
+- **Onde os portões estão:** no clone legível do estúdio antigo, `Downloads\top10-estudio-analysis`
+  (commit `1af7f44`, 17/09/2026). Ele tem **76 de 89** capacidades e todos os scripts de runtime:
+  `check-overlap`, `qc-*`, a bancada do roteiro, `xml-premiere-5camadas.mjs` e os schemas em
+  `contratos/`. Não roda como está: falta `node_modules` (`playwright-core`), os scripts partem da
+  raiz do estúdio e carregam a marca dele. **O trabalho é portar e adaptar, não construir.** A
+  Régie já planeja isso (`docs/planejamento/PLANO-CONSOLIDADO.md:318`). Portar é decisão de Lucas e
+  Mateus.
+- **O instalador do agent-core (`ferramentas/instalar-agentes.mjs`), para quem for usar:**
+  - projeta os 46 ofícios ativos de uma vez, sem filtro por ofício; o único recorte é `--emitir=<id>`;
+  - sem `--dest`, instala em `~/.claude/agents`, que vale para todas as sessões;
+  - grava lock em `~/.agent-core/install-locks` até no `--dry-run` e no doctor;
+  - deixa a SPEC fora do texto projetado, então regra que só está na SPEC não chega ao agente;
+  - não põe `StructuredOutput` na lista de ferramentas, e a saída estruturada some sem erro
+    (`regie/docs/planejamento/DESPACHO.md:105-107`).
+- **Defeitos nos documentos dos ofícios:**
+  - o `executor-de-molde` só tem permissão de leitura, e o CONTRATO manda gravar HTML;
+  - a prova da SPEC usa campos que o CONTRATO não tem em `pesquisa-dados`, `-documentos`, `-logos`
+    e `-pessoas`;
+  - o `pesquisa-geo` grava em `data/` pela SPEC e em `assets/geojson/` pelo CONTRATO;
+  - o all-intra só vive na SPEC da `pesquisa-imagens`, e o transcode do OFICIO não o produz;
+  - as lentes do roteiro usam vereditos diferentes: APROVADO/REPROVADO de um lado, PASS/RESSALVA/FAIL
+    do outro;
+  - `ferramentas/qc-oficio-portatil.mjs:216` compara `import.meta.url` com `file://`+argv[1]. No
+    Windows isso nunca casa, e o CLI sai 0 sem imprimir nada.
+- **A ADR 0003 se contradiz com o código:** a `docs/adr/0003-portabilidade-do-desenho.md:227` diz
+  que a Régie nunca copia ofício, e o `crafts/ORIGEM.json` documenta a cópia. Além disso, o hash que
+  a Régie guarda (`src/crafts.mjs:26`) não é o Source-SHA256 do recibo do agent-core. Os dois nunca
+  batem.
+- **Evidência:** `propostas/2026-09-23-prontidao-dos-oficios.fontes.json`.
+- **Por que serve a qualquer canal:** qualquer canal que instale os revisores hoje recebe laudo sem
+  medição de verdade.
