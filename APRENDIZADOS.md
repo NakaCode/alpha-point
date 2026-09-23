@@ -209,7 +209,7 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Onde está:** `pautas/juneau/`. `fundamento.json` é o objeto canônico, `fundamento.md` é a projeção
   derivada dele por script, e `verificacao.json` guarda o log do verificador. Os números: 175 fontes nas
   cinco dimensões, 157 números, 93 datas, 72 divergências atribuídas e 16 lacunas, nenhuma que bloqueie.
-  Um verificador cético por dimensão reabriu as fontes e corrigiu 94 afirmações; nenhuma foi derrubada.
+  Um verificador cético por dimensão reabriu as fontes e corrigiu 94 itens (fontes, números e datas); nenhum foi derrubado.
 - **O schema `pauta-fundamento` v2 não existe.** O CONTRATO do ofício o exige, mas ele não está no
   agent-core nem na Régie. O canal usou uma forma provisória, com os campos do CONTRATO, e o campo `schema`
   declara isso. Quando o motor trouxer o schema, este JSON se converte sem refazer a pesquisa
