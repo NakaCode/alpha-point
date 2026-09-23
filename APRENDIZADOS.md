@@ -20,6 +20,7 @@ nada aqui foi alterado no motor.
 | 8 e 9 · origem do master e estações vazias | escritos depois da v0.1.0: Lucas e Mateus ainda não viram |
 | 10 · a linha do zero | proposta pronta em `propostas/linha-do-zero/`, com prova; Lucas e Mateus ainda não viram |
 | 11 · prontidão dos ofícios | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
+| 12 · o primeiro dossiê de pauta | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
 
 ## 23/09/2026 — onboarding (motor em `ffb3ec0`)
 
@@ -201,3 +202,33 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Evidência:** `propostas/2026-09-23-prontidao-dos-oficios.fontes.json`.
 - **Por que serve a qualquer canal:** qualquer canal que instale os revisores hoje recebe laudo sem
   medição de verdade.
+
+## 23/09/2026 — o primeiro dossiê de pauta (Juneau), com o `pesquisador-de-pauta` rodado à mão
+
+### 12. O que o ofício pede e o motor ainda não tem, visto num dossiê de verdade
+- **Onde está:** `pautas/juneau/`. `fundamento.json` é o objeto canônico, `fundamento.md` é a projeção
+  derivada dele por script, e `verificacao.json` guarda o log do verificador. Os números: 175 fontes nas
+  cinco dimensões, 157 números, 93 datas, 72 divergências atribuídas e 16 lacunas, nenhuma que bloqueie.
+  Um verificador cético por dimensão reabriu as fontes e corrigiu 94 afirmações; nenhuma foi derrubada.
+- **O schema `pauta-fundamento` v2 não existe.** O CONTRATO do ofício o exige, mas ele não está no
+  agent-core nem na Régie. O canal usou uma forma provisória, com os campos do CONTRATO, e o campo `schema`
+  declara isso. Quando o motor trouxer o schema, este JSON se converte sem refazer a pesquisa
+  (CONTRATO, "Retomada e custo").
+- **O verificador por dimensão não basta; precisa de um crítico entre as dimensões.** Três erros só
+  apareceram cruzando dimensões:
+  - um voto de 1982 e outro de 1962 vinham de listas-resumo oficiais com erro de digitação, e duas
+    dimensões os tratavam como oficiais. Os boletins, conferidos na imagem, dizem outra coisa;
+  - uma correção pela inflação era inválida, porque a cifra de 1982 é estimativa em dólares correntes
+    até 1994, com financiamento. Isso estava no folheto oficial, que outra dimensão tinha aberto;
+  - treze origens apareciam com duas chaves de independência, o que é falsa corroboração.
+  - **Sugestão:** o passo de pesquisa ter, além da verificação, uma síntese transversal com dono.
+- **Passagem literal × direito autoral.** O ofício exige a passagem literal de cada afirmação, e o dossiê
+  é versionado. Com 48 fontes de imprensa, isso acumula texto de jornal no git: uma única coluna tinha
+  391 palavras citadas. O canal cortou as passagens de imprensa em 20 palavras, com teto de ~150 por
+  fonte, e manteve a íntegra só na máquina. Documento de governo não foi cortado. **Sugestão:** o
+  CONTRATO dizer quanto de uma obra protegida cabe no artefato versionado.
+- **Onde guardar a evidência baixada.** Foram cerca de 500 MB de PDFs e páginas, a prova de cada
+  passagem. A Régie não tem lugar para isso. O canal pôs tudo em `midia/juneau/fontes/`, que não vai ao
+  git, e o `arquivo_local` de cada fonte aponta para lá.
+- **Por que serve a qualquer canal:** todo canal que rodar o `pesquisador-de-pauta` vai esbarrar no
+  schema ausente, na passagem de imprensa versionada e no lugar da evidência.

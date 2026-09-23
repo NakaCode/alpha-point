@@ -29,6 +29,16 @@ Todas as fontes, com URL, papel e veredito, estão em `2026-09-23-primeiro-video
 
 ## 1 · Juneau: a capital que votou para sair e não saiu
 
+> **Escolhida pelo dono em 23/09/2026.** O dossiê completo está em [`juneau/fundamento.md`](juneau/fundamento.md),
+> gerado do `juneau/fundamento.json`. Ele **corrige esta triagem** em quatro pontos:
+> - **1982:** o boletim oficial dá **91.049 a 102.083** (52,9 % não), e não 91.249 (lista-resumo com erro de
+>   digitação). A cédula não era de títulos: perguntava se o estado podia gastar a estimativa de US$ 2.843.147.000,
+>   em dólares correntes até 1994, com financiamento e indenização. Se o "não" vencesse, as leis da mudança caíam.
+> - **1978:** os US$ 966 milhões eram o teto dos títulos. No folheto oficial, FRANK = *Frustrated Responsible
+>   Alaskans Needing Knowledge*.
+> - **Os três marcos da capital:** 1900 (lei), 1906 (mudança física) e 1912 (capital territorial por lei).
+> - **O local de 1976** ficava cerca de 5 milhas a leste da vila de Willow, e não na vila.
+
 **Título de trabalho:** *Alaskans Voted to Move Their Capital. Why Is It Still Somewhere You Can't Drive To?*
 
 - **Pergunta:** por que a capital do Alasca continua numa cidade sem estrada para o resto do continente, se os
