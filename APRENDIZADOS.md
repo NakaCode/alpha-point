@@ -3,6 +3,22 @@
 O que apareceu no onboarding deste canal e pode servir ao motor. Para Lucas e Mateus decidirem;
 nada aqui foi alterado no motor.
 
+## Situação na v0.1.0 (canal atualizado em 23/09/2026)
+
+| Item | Situação |
+|---|---|
+| 1 · `mirror` inalcançável | **resolvido**: `cut_detect → mirror → research`, e o `doctor` passou a conferir o alcance |
+| 2 · `midia_termos` × `needs.midia` | em aberto (CHANGELOG, "Em aberto") |
+| 3 · `npm test` sem identidade do git | **resolvido**: 54/54 nesta máquina |
+| 4 · `source` com espaço | **resolvido** no gerador; o `canal.json` deste canal foi atualizado para `lucas-rosa` |
+| 4 · `arquiteto-de-marca` no molde | **resolvido** |
+| 4 · `~` depois de `--em=` | **resolvido** |
+| 4 · aviso de 6 passos sem `retake` | declarado esperado na v0 |
+| 5 · idioma | o gerador ganhou `--idioma`; o motor ainda não usa o campo (em aberto) |
+| 6 · ofícios assumem pt-BR | em aberto |
+| 7 · doutrina de mídia como template | em aberto |
+| 8 e 9 · origem do master e estações vazias | escritos depois da v0.1.0: Lucas e Mateus ainda não viram |
+
 ## 23/09/2026 — onboarding (motor em `ffb3ec0`)
 
 ### 1. O passo `mirror` (montador) é inalcançável na linha `long-form`
