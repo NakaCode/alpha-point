@@ -21,6 +21,7 @@ nada aqui foi alterado no motor.
 | 10 · a linha do zero | proposta pronta em `propostas/linha-do-zero/`, com prova; Lucas e Mateus ainda não viram |
 | 11 · prontidão dos ofícios | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
 | 12 · o primeiro dossiê de pauta | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
+| 13 · o primeiro roteiro e a bancada | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
 
 ## 23/09/2026 — onboarding (motor em `ffb3ec0`)
 
@@ -232,3 +233,37 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   git, e o `arquivo_local` de cada fonte aponta para lá.
 - **Por que serve a qualquer canal:** todo canal que rodar o `pesquisador-de-pauta` vai esbarrar no
   schema ausente, na passagem de imprensa versionada e no lugar da evidência.
+
+## 23/09/2026 — o primeiro roteiro (Juneau), com o `roteirista-narracao` e a bancada de quatro lentes
+
+### 13. O laço de revisão da bancada regride sozinho; o que funcionou foi a lista fechada
+- **Onde está:** `roteiros/juneau/`. A narração pura é `roteiro-narrador.md`; `roteiro-editor.md` diz de
+  onde vem cada frase e traz a lista de auditoria; `roteiro.json` é o manifesto; os laudos estão em
+  `qc-roteiro/`; e há uma folha de pronúncia. São 1.771 palavras, cerca de 11,4 minutos.
+- **O que aconteceu:**
+  - três planos concorrentes e um juiz; as partes escritas em sequência, cada uma só com as evidências
+    atribuídas; um gate determinístico antes da bancada;
+  - três rodadas de "bancada julga, roteirista reescreve tudo". A segunda foi a melhor. Na terceira, as
+    quatro lentes reprovaram, e o crítico de roteiro disse que os achados já eram criados pela rodada
+    anterior (OFICIO §3.1);
+  - **o que destravou:** uma lista fechada de 10 mudanças, com os conflitos entre lentes resolvidos
+    antes (a clareza pedia cortar vozes que o crítico mandava não tocar), aplicada cirurgicamente, sem
+    tocar no resto. Depois, só consertos com a redação que os próprios revisores deram, e a
+    reverificação apenas das frases trocadas, com prova por diff de que nada mais mudou;
+  - **resultado final:** fatos PASS (132 de 132 itens, mais as 4 trocas finais), clareza PASS, crítico
+    de roteiro e locução com ressalvas leves.
+- **Três lições para o motor:**
+  1. **O veredito é de uma revisão, não do roteiro.** As lentes julgaram textos diferentes (a clareza,
+     a rodada 4; o crítico, a revisão anterior às 4 trocas; os fatos, a final). O canal registrou o
+     sha256 da narração em cada laudo. A Régie não tem onde guardar isso: `attempt` e `decision`
+     existem no schema, mas nada os escreve (item 10).
+  2. **"Reescreva tudo" não é conserto.** Toda passada completa criou defeitos novos, inclusive dois
+     factuais: um "because" sem fonte e uma estrada "never extended" que foi construída em 2006. O passo
+     `retake` da linha precisa carregar a lista de achados e o que não tocar, e não só "volte ao roteiro".
+  3. **Falta dono para a pronúncia.** O crítico de locução reprovou por falta de uma folha de pronúncia
+     para nomes como Tlingit e Gladziszewski, e nenhum ofício a produz. O canal gerou uma, com fonte por
+     termo, e oito termos ficaram sem confirmação.
+- **Os ofícios em pt-BR serviram ao inglês** com adaptação dita no prompt: homófonos e números do
+  inglês, e voz sintética ou humana.
+- **Por que serve a qualquer canal:** todo roteiro passa pela bancada, e o laço de revisão é igual em
+  qualquer nicho.
