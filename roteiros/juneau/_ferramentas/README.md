@@ -28,6 +28,19 @@ canal: o bruto não viaja). Rode os scripts de dentro dessa pasta.
 (24/09/2026: Gladziszewski, Kiehl, KTOO e Mat-Su). Mexe só em `pronuncia`; depois, `montar-roteiro.mjs` regenera a
 folha, e os demais arquivos saem idênticos byte a byte.
 
+## A cópia para a voz
+
+`preparar-voz.mjs` (sem argumentos; roda daqui mesmo, porque lê `../roteiro.json`, que está no git) gera
+`roteiros/juneau/voz/`:
+- `texto-para-voz.md`: o texto aprovado com a grafia ajustada para a ElevenLabs. Números, datas e dinheiro vão por
+  extenso, e entram os aliases confirmados de ouvido (`marca/pronuncias.md`);
+- `trocas.md`: cada troca, com o motivo;
+- `amostra.md`: uns 700 caracteres de frases inteiras, para comparar as vozes.
+
+O script recusa rodar se `roteiro.json` não for a revisão aprovada (`c8677c8e3318`). Antes de gravar, prova que
+desfazer as trocas devolve o texto aprovado byte a byte e que não sobrou dígito, `$` nem `%`. Se o roteiro mudar,
+atualize o sha no topo do script depois da nova aprovação.
+
 ## `pagina-de-decisoes/`
 
 É o gerador da página em que o dono marcou as pendências (24/09/2026):

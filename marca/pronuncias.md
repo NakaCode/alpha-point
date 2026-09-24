@@ -6,8 +6,12 @@
 >
 > **Confirmado** = há fonte escrita confiável (dicionário, guia oficial) ou alguém ouviu a pessoa ou o
 > lugar dizendo o nome. Um nome só sobe para confirmado com a fonte anotada. **Alias** é a grafia que
-> vai na cópia do texto para a voz (ElevenLabs): a ferramenta de voz do motor não usa dicionário de
+> PODE ir na cópia do texto para a voz (ElevenLabs): a ferramenta de voz do motor não usa dicionário de
 > pronúncia, então a pronúncia viaja escrita no próprio texto.
+>
+> **Quando o alias entra na cópia:** só quando o nome foi confirmado de ouvido **e** a grafia normal leva a
+> voz a errar (no Juneau: Gladyshevsky, Keel, Kay-too, Mat-Sue). Os demais ficam de reserva e entram só se a
+> amostra da voz errar. Escrever "JOO-noh" vinte vezes piora a leitura de uma palavra que a voz já sabe.
 
 ## Confirmados
 
@@ -23,7 +27,7 @@
 | Fairbanks | FAIR-bangks | /ˈfɛərˌbæŋks/ | FAIR-banks | Dictionary.com | Juneau |
 | Yukon | YOO-kahn | /ˈjuːkɑn/ | YOO-kahn | Wiktionary; Dictionary.com | Juneau |
 | fjord | FYORD | /fjɔrd/ | fyord | Dictionary.com. Risco de a voz ler "fuh-JORD" | Juneau |
-| Knowles (Tony Knowles) | NOHLZ | /noʊlz/ | Nolez | Wiktionary | Juneau |
+| Knowles (Tony Knowles) | NOHLZ | /noʊlz/ | Nolez (**não usar**: pode sair "no-LEZ"; a grafia normal basta) | Wiktionary | Juneau |
 | Gladziszewski (Maria Gladziszewski) | glad-ih-SHEV-skee, **sem som de z** | /ˌɡlædɪˈʃɛvski/ | Gladyshevsky | Ouvido pelo Lucas (24/09/2026) na KTOO: a apresentadora que a entrevista e o repórter Jeremy Shea; e ela mesma, no fórum de candidatos de 2017 ("I am Maria…"), que o Lucas também ouviu. A hipótese escrita, glad-zih-SHEF-skee, estava errada | Juneau |
 | Kiehl (Jesse Kiehl) | KEEL | /kiːl/ | Keel | Ouvido pelo Lucas (24/09/2026) na KTOO: repórter e apresentador dizendo o nome do senador; e ele mesmo, no fórum de candidatos de 2017 ("My name is Jesse…"), que o Lucas também ouviu | Juneau |
 | KTOO (rádio pública de Juneau) | KAY-too: a letra K e depois "too"; **não se soletra** | /ˈkeɪ.tuː/ | Kay-too | Ouvido pelo Lucas (24/09/2026) na própria emissora no ar. A hipótese escrita, K-T-O-O, estava errada | Juneau |
