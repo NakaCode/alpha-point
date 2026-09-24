@@ -79,8 +79,9 @@ produz o master. O deste canal nasce assim:
      Claude opera o site com ele vendo; nunca digite a senha dele.
    - Nesta máquina ainda não há o arquivo de chaves da API (`C:\Users\zangp\.regie\chaves.env`, que o Mateus
      entrega).
-   - Gastar crédito pede o ok do Lucas. Gasto em 24/09: 717 (Max no v3, 2 versões), 717 (Max no v2) e 282
-     (Voice Design). A narração inteira pede um ok próprio;
+   - Gastar crédito pede o ok do Lucas. Gasto em 24/09: 717 (Max no v3, 2 versões), 717 (Max no v2), 282
+     (Voice Design) e 717 (a voz escolhida, amostra completa; o Lucas preferiu a Geração 2 e ouviu os nomes
+     certos). Total de 2.433. A narração inteira pede um ok próprio;
 5. master = a narração sobre tela preta 3840×2160 (`marca/identidade.md` §5).
 
 Transcrição local disponível nesta máquina: `faster-whisper` (modelo large-v3, `word_timestamps=True`,

@@ -12,6 +12,11 @@
 > **Quando o alias entra na cópia:** só quando o nome foi confirmado de ouvido **e** a grafia normal leva a
 > voz a errar (no Juneau: Gladyshevsky, Keel, Kay-too, Mat-Sue). Os demais ficam de reserva e entram só se a
 > amostra da voz errar. Escrever "JOO-noh" vinte vezes piora a leitura de uma palavra que a voz já sabe.
+>
+> **A prova da política** (24/09/2026): na amostra do Juneau, a voz do canal (`marca/voz.md` §1) leu certo, sem alias,
+> Taku, fjord, Lynn Canal, Wasilla, Rae e Dittman, e leu certo os quatro aliases (Gladyshevsky, Keel, Kay-too,
+> Mat-Sue). Quem ouviu foi o Lucas. Isso não confirma como Brian Rae ou Dave Dittman dizem o próprio nome. Confirma
+> que a voz lê a hipótese da folha.
 
 ## Confirmados
 
