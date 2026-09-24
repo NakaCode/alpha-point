@@ -25,7 +25,11 @@ mostra uma contradição, não porque grita.
 - nos primeiros **15 s**, uma contradição concreta e a pergunta que ela abre;
 - toda abstração pousa num **lugar do mapa** em até duas frases;
 - todo termo técnico é definido na **primeira vez** que aparece, numa oração só;
-- toda afirmação contestável tem a **fonte dita na voz**.
+- toda afirmação contestável tem a **fonte dita na voz**;
+- no máximo **duas frases seguidas abrindo com data** (`In 1981, …` `In November 1982, …`); a terceira
+  começa pelo sujeito ou pelo fato. Em voz alta, a fila de datas vira ladainha (Lucas, 24/09/2026).
+
+Os nomes próprios e as siglas se dizem como está em `marca/pronuncias.md`, a folha permanente do canal.
 
 **Como ele provoca (o permitido)**:
 - **O paradoxo como fato**: `Canada paid for this bridge. It doesn't control it.`

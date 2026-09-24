@@ -73,7 +73,9 @@ produz o master. O deste canal nasce assim:
 3. roteiro em inglês (`marca/voz.md`);
 4. narração: ElevenLabs (decidido pelo Lucas em 24/09/2026; `canal.json` › `narracao`). A voz ainda não foi
    escolhida, e nesta máquina ainda não há o arquivo de chaves (`C:\Users\zangp\.regie\chaves.env`, que o
-   Mateus entrega). Escolher a voz gasta crédito da conta compartilhada: só com o ok do Lucas;
+   Mateus entrega). Gastar crédito da conta compartilhada pede o ok do Lucas. Já autorizado (24/09): amostras
+   em 3 vozes, uns 700 caracteres cada, escolhidas antes pelas prévias grátis. A narração inteira pede um ok
+   próprio;
 5. master = a narração sobre tela preta 3840×2160 (`marca/identidade.md` §5).
 
 Transcrição local disponível nesta máquina: `faster-whisper` (modelo large-v3, `word_timestamps=True`,
@@ -84,6 +86,12 @@ Transcrição local disponível nesta máquina: `faster-whisper` (modelo large-v
 `marca/identidade.md` (cor, tipo, alvos, cenas), `marca/voz.md` (o narrador e o que ele
 nunca diz) e `marca/midia.md` (de onde vem cada imagem e o que as licenças deixam fazer).
 Todo passo que pede "a marca ativa" lê os três. `marca/prancha.html` é a conferência visual.
+`marca/pronuncias.md` é a folha permanente de pronúncias do canal: a folha de cada vídeo começa dela.
+
+Site que recusa leitura automática (403, captcha, verificação de robô) não se contorna: nem por
+`curl`, nem por outro cliente, nem trocando cabeçalho. Vale para você e para todo subagente, e o
+pedido a ele tem de dizer isso. Use a cópia local, ou confira pelo navegador do app com o Lucas vendo,
+e pare se o site pedir verificação.
 
 ## O vídeo fala inglês; a casa fala português
 

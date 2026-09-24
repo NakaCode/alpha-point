@@ -1,0 +1,52 @@
+# MARCA — pronúncias
+
+> A folha **permanente** do canal: como a voz diz cada nome próprio, topônimo e sigla. Vale para todos
+> os vídeos. A folha de cada vídeo (`roteiros/<slug>/pronuncia.md`) começa daqui e só pesquisa o que
+> ainda não está aqui. Criada por decisão do Lucas em 24/09/2026.
+>
+> **Confirmado** = há fonte escrita confiável (dicionário, guia oficial) ou alguém ouviu a pessoa ou o
+> lugar dizendo o nome. Um nome só sobe para confirmado com a fonte anotada. **Alias** é a grafia que
+> vai na cópia do texto para a voz (ElevenLabs): a ferramenta de voz do motor não usa dicionário de
+> pronúncia, então a pronúncia viaja escrita no próprio texto.
+
+## Confirmados
+
+| Termo | Como se fala | IPA | Alias para a voz | Fonte | Desde |
+|---|---|---|---|---|---|
+| Juneau | JOO-noh | /ˈdʒuːnoʊ/ | JOO-noh | Dictionary.com; Wikipedia. Possessivo "Juneau's" = JOO-nohz | Juneau |
+| Sitka | SIT-kuh | /ˈsɪtkə/ | SIT-kuh | Dictionary.com; Wiktionary | Juneau |
+| Skagway | SKAG-way | /ˈskæɡˌweɪ/ | SKAG-way | Dictionary.com | Juneau |
+| Haines | HAYNZ | /heɪnz/ | Haynz | pronounce.namedrop.io; pronúncia padrão do sobrenome inglês | Juneau |
+| Taku (Taku River) | TAH-koo | /ˈtɑːkuː/ | TAH-koo | Governo do Canadá, *Pronunciation Guide to First Nations in British Columbia* | Juneau |
+| Wasilla | wah-SIL-uh | /wɑˈsɪlə/ | wah-SILL-uh | Fonte informal (blog de alasquiano); a imprensa nacional erra a 1ª sílaba como "wuh" | Juneau |
+| Anchorage | ANG-ker-ij | /ˈæŋkərɪdʒ/ | ANG-ker-ij | Dictionary.com | Juneau |
+| Fairbanks | FAIR-bangks | /ˈfɛərˌbæŋks/ | FAIR-banks | Dictionary.com | Juneau |
+| Yukon | YOO-kahn | /ˈjuːkɑn/ | YOO-kahn | Wiktionary; Dictionary.com | Juneau |
+| fjord | FYORD | /fjɔrd/ | fyord | Dictionary.com. Risco de a voz ler "fuh-JORD" | Juneau |
+| Knowles (Tony Knowles) | NOHLZ | /noʊlz/ | Nolez | Wiktionary | Juneau |
+
+## A confirmar
+
+Sem fonte escrita confiável. Confirma-se **ouvindo** alguém do lugar (rádio local, sessão pública,
+vídeo da própria pessoa). Quem ouve é o Lucas: o Claude acha o trecho e marca o segundo.
+
+| Termo | Hipótese | Alias provisório | Risco na voz | Onde ouvir | Vídeo |
+|---|---|---|---|---|---|
+| Gladziszewski (Maria) | glad-zih-SHEF-skee (a locução propôs glad-zih-SHEV-skee) | glad-zih-SHEFF-skee | alto: sobrenome polonês | KTOO; sessões da Assembleia de Juneau | Juneau |
+| Kiehl (Jesse Kiehl) | KEEL | Keel | "KYLE" ou "KEE-ul" | KTOO; Legislativo do Alasca (akl.tv) | Juneau |
+| KTOO | soletrado, K-T-O-O | K T O O | ler "K-too" como palavra | a própria emissora no ar | Juneau |
+| Mat-Su (Mat-Su Valley) | MAT-soo | Mat-Soo (a folha de Juneau também registra "Mat-Sue": escolher um no teste de voz) | ler "S-U" ou "suh" | rádio local do Alasca | Juneau |
+| Rae (Brian Rae) | RAY | Ray | "REE" ou "RAH-ee" | amostra da voz | Juneau |
+| Reamer (David Reamer) | REE-mer | REE-mer | baixo | amostra da voz | Juneau |
+| Stoops (Lee Stoops) | STOOPS | Stoops | baixo | amostra da voz | Juneau |
+| Dittman (Dave Dittman) | DIT-mun | DIT-man | baixo | amostra da voz | Juneau |
+
+## Leituras que a voz costuma errar
+
+Regras de grafia para a cópia do texto que vai à voz. Mudam a grafia, nunca uma palavra.
+
+- Data com dia: `August 27, 1974` → `August twenty-seventh, 1974` (o inglês dos EUA fala o ordinal).
+- Sigla que se soletra no ar: `KTOO` → `K T O O`; `NFL` → `N F L`.
+- Par de anos com o mesmo verbo (`in 1993 and 2003`): conferir de ouvido que a voz não lê como quantidade.
+- Dólares (`$2.8 billion`): conferir de ouvido; se errar, por extenso só naquele trecho.
+- Segundo número sem "percent" (`52 percent to 45`): conferir que a voz não inventa "percent" nem lê como placar.

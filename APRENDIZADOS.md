@@ -22,6 +22,7 @@ nada aqui foi alterado no motor.
 | 11 · prontidão dos ofícios | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
 | 12 · o primeiro dossiê de pauta | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
 | 13 · o primeiro roteiro e a bancada | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
+| 14 · a aprovação pelo dono e o anti-robô | escrito em 24/09/2026: Lucas e Mateus ainda não viram |
 
 ## 23/09/2026 — onboarding (motor em `ffb3ec0`)
 
@@ -267,3 +268,34 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   inglês, e voz sintética ou humana.
 - **Por que serve a qualquer canal:** todo roteiro passa pela bancada, e o laço de revisão é igual em
   qualquer nicho.
+
+## 24/09/2026 — a aprovação do roteiro pelo dono (motor em `44cf6f7`, v0.1.0)
+
+### 14. O dono decide melhor numa página com a troca exata; e o subagente precisa ouvir a regra do anti-robô
+- **O problema:** depois da bancada sobraram cerca de 25 pendências, espalhadas por quatro laudos e pelo
+  histórico. Várias puxavam para lados opostos: a frase do petróleo tinha três pedidos diferentes, e a
+  clareza queria mexer numa abertura que o crítico protegia. Em texto corrido, no chat, o dono não tinha
+  como decidir item por item.
+- **O que resolveu:** uma página publicada com uma pendência por item. Cada item traz o trecho de hoje, as
+  opções com a troca exata (riscado o que sai, sublinhado o que entra, mais o saldo de palavras), a
+  recomendação com o motivo e um campo de comentário. As marcações ficam guardadas na própria página, e o
+  Claude as lê de lá. Antes de publicar, um script conferiu que cada troca casa uma vez só no texto e rodou
+  o gate no conjunto recomendado. Uma conferência adversarial achou erros na própria página: uma atribuição
+  errada entre revisores, um "57% dos eleitores" que o boletim oficial não sustenta e um "a few years" para
+  seis anos. Depois da aprovação, as 14 trocas foram aplicadas verbatim (o texto final é byte a byte o que
+  a página mostrou), e as quatro lentes julgaram o mesmo sha: APROVADO, PASS, PASS e PASS. Foi a primeira
+  vez que todas as lentes leram a mesma revisão.
+- **O incidente:** na conferência dos fatos voláteis, um subagente levou 403 do site do Legislativo do
+  Alasca e tentou de novo por `curl`, o que contornou o bloqueio. O verificador e o crítico, que tinham a
+  regra no pedido, pararam no bloqueio e usaram a cópia local. A regra agora está no `CLAUDE.md` do canal
+  e em todo pedido a subagente que usa a rede. O dono escolheu conferir o site pelo navegador do app, com
+  ele vendo.
+- **Para o motor:**
+  1. `script_approval` é um passo humano, mas a Régie não guarda o que foi aprovado. Aprovação sem sha e
+     sem as escolhas não prova nada (item 13, lição 1). O canal gravou tudo em
+     `roteiros/juneau/aprovacao.md`.
+  2. A página de decisões serve a qualquer passo humano da linha (roteiro, pauta, marca). O gerador está em
+     `roteiros/juneau/_ferramentas/pagina-de-decisoes/`.
+  3. Todo pedido que dá rede a um subagente tem de dizer que não se contorna 403, captcha ou verificação.
+     Sem a frase, o subagente trata o bloqueio como erro técnico a resolver.
+- **Por que serve a qualquer canal:** todo canal tem passos que só o dono decide, e subagentes com rede.

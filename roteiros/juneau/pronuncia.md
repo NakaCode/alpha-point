@@ -1,6 +1,6 @@
 # Folha de pronúncia
 
-> Para o passo de voz (TTS ou narrador). Revisão `4192202703a8`. "Não confirmado" é para conferir num áudio antes de gravar.
+> Para o passo de voz (TTS ou narrador). Revisão `c8677c8e3318`. "Não confirmado" é para conferir num áudio antes de gravar.
 
 | Termo | Como se fala | IPA | Confirmado | Fonte | Alias para o TTS |
 |---|---|---|---|---|---|

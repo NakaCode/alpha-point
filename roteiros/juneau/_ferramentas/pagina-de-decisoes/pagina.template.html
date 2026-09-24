@@ -1,0 +1,461 @@
+<title>Decisões de Juneau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Public+Sans:wght@400;500;600;800&display=swap">
+<style>
+:root {
+  --bg: #EEF1F4;
+  --surface: #FFFFFF;
+  --surface-2: #F6F8FA;
+  --ink: #16202B;
+  --muted: #56626F;
+  --line: #D5DCE3;
+  --navy: #13294B;
+  --navy-ink: #13294B;
+  --on-navy: #F3F6FA;
+  --gold: #A8780C;
+  --gold-star: #E0A92A;
+  --gold-soft: #F7EBC9;
+  --sel: #E7EDF6;
+  --ins-bg: #D9EFE1;
+  --ins-ink: #11522D;
+  --del-bg: #F6DEDE;
+  --del-ink: #862020;
+  --ok: #1D6B3E;
+  --warn: #8A5A00;
+  --focus: #2F6FD6;
+  --sans: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "Courier Prime", "Courier New", Courier, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0C131C;
+    --surface: #131E2B;
+    --surface-2: #182636;
+    --ink: #E4EAF1;
+    --muted: #9AA8B8;
+    --line: #273749;
+    --navy: #0F2340;
+    --navy-ink: #A9C3EC;
+    --on-navy: #EEF3FA;
+    --gold: #E6B63C;
+    --gold-star: #F0C24B;
+    --gold-soft: #3A2F12;
+    --sel: #1B2C42;
+    --ins-bg: #173A28;
+    --ins-ink: #A6E6BE;
+    --del-bg: #3F1E1E;
+    --del-ink: #F2AAAA;
+    --ok: #7CD3A0;
+    --warn: #F0C06A;
+    --focus: #7FAEFF;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0C131C;
+  --surface: #131E2B;
+  --surface-2: #182636;
+  --ink: #E4EAF1;
+  --muted: #9AA8B8;
+  --line: #273749;
+  --navy: #0F2340;
+  --navy-ink: #A9C3EC;
+  --on-navy: #EEF3FA;
+  --gold: #E6B63C;
+  --gold-star: #F0C24B;
+  --gold-soft: #3A2F12;
+  --sel: #1B2C42;
+  --ins-bg: #173A28;
+  --ins-ink: #A6E6BE;
+  --del-bg: #3F1E1E;
+  --del-ink: #F2AAAA;
+  --ok: #7CD3A0;
+  --warn: #F0C06A;
+  --focus: #7FAEFF;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 780px; margin: 0 auto; padding-inline: 16px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+/* cabeçalho */
+.topo { background: var(--navy); color: var(--on-navy); padding-block: 28px 26px; }
+.topo .wrap { display: grid; gap: 14px; }
+.olho { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .78; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.olho svg { flex: none; }
+.topo h1 { font-size: clamp(28px, 6vw, 40px); font-weight: 800; letter-spacing: -.01em; line-height: 1.1; }
+.titulo-trabalho { font-family: var(--mono); font-size: 15px; opacity: .9; }
+.topo .como { max-width: 62ch; font-size: 15.5px; opacity: .92; }
+.numeros { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; opacity: .85; font-variant-numeric: tabular-nums; }
+
+/* barra de progresso */
+.barra { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.barra .wrap { display: flex; align-items: center; gap: 14px; padding-block: 10px; flex-wrap: wrap; }
+.prog { flex: 1 1 200px; display: grid; gap: 5px; }
+.prog-txt { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.trilho { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.trilho i { display: block; height: 100%; width: 0; background: var(--gold-star); transition: width .25s; }
+.salvo { font-size: 13px; color: var(--muted); min-width: 9ch; text-align: right; }
+.btn { font: inherit; font-size: 14px; font-weight: 600; border-radius: 8px; padding: 8px 14px; cursor: pointer; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); }
+.btn:hover { border-color: var(--muted); }
+.btn.forte { background: var(--navy); color: var(--on-navy); border-color: var(--navy); }
+.btn.forte:disabled { opacity: .45; cursor: not-allowed; }
+
+.aviso { margin-top: 16px; padding: 12px 14px; border-radius: 8px; background: var(--gold-soft); font-size: 14.5px; }
+
+/* seções */
+main { padding-block: 26px 60px; display: grid; gap: 40px; }
+.secao { display: grid; gap: 16px; }
+.secao > header { display: grid; gap: 4px; }
+.secao h2 { font-size: 22px; font-weight: 800; }
+.secao > header p { color: var(--muted); font-size: 15px; max-width: 62ch; }
+
+/* item */
+.item { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 14px; }
+.item.marcado { border-color: color-mix(in srgb, var(--navy-ink) 35%, var(--line)); }
+.item-cab { display: flex; gap: 10px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+.item h3 { font-size: 18.5px; font-weight: 700; flex: 1 1 280px; }
+.chip { font-size: 12.5px; font-variant-numeric: tabular-nums; color: var(--muted); border: 1px solid var(--line); border-radius: 99px; padding: 2px 9px; white-space: nowrap; }
+.chip.ok { color: var(--ok); border-color: currentColor; }
+.quem { font-size: 13.5px; color: var(--muted); }
+.expl { max-width: 66ch; }
+.roteiro { font-family: var(--mono); font-size: 15px; line-height: 1.6; background: var(--surface-2); border-radius: 8px; padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.rot-label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; font-family: var(--sans); }
+
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; min-width: 0; }
+legend { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; padding: 0; }
+.op { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; background: var(--surface); }
+.op:hover { border-color: var(--muted); }
+.op input { margin: 3px 0 0; width: 18px; height: 18px; accent-color: var(--navy-ink); }
+.op:has(input:checked) { border: 2px solid var(--navy-ink); background: var(--sel); padding: 11px 13px; }
+.op-corpo { display: grid; gap: 8px; min-width: 0; }
+.op-linha { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.op-rot { font-weight: 600; }
+.rec { font-size: 12.5px; font-weight: 700; color: var(--gold); white-space: nowrap; }
+.delta { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.op-nota { font-size: 14.5px; color: var(--muted); max-width: 64ch; }
+.porque { font-size: 14px; color: var(--gold); }
+.diff { font-family: var(--mono); font-size: 14.5px; line-height: 1.6; background: var(--surface-2); border-radius: 8px; padding: 10px 12px; overflow-wrap: anywhere; }
+.diff del { background: var(--del-bg); color: var(--del-ink); text-decoration-thickness: 1.5px; }
+.diff ins { background: var(--ins-bg); color: var(--ins-ink); text-decoration: none; border-bottom: 1.5px solid currentColor; }
+.diff .par { display: block; height: .6em; }
+.diff-leg { font-size: 12px; color: var(--muted); font-family: var(--sans); margin-bottom: 4px; }
+
+.nota-livre { display: grid; gap: 6px; }
+.nota-livre label { font-size: 13.5px; color: var(--muted); }
+textarea { font: inherit; font-size: 15px; color: var(--ink); background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; min-height: 44px; resize: vertical; width: 100%; }
+
+/* depois */
+.depois { display: grid; gap: 12px; }
+.depois div { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 3px; }
+.depois strong { font-size: 15px; }
+.depois p { color: var(--muted); font-size: 15px; max-width: 66ch; }
+
+/* aprovação */
+.aprovar { background: var(--surface); border: 2px solid var(--navy-ink); border-radius: 14px; padding: 22px; display: grid; gap: 14px; }
+.aprovar h2 { font-size: 22px; font-weight: 800; }
+.resumo { display: grid; gap: 6px; font-size: 15px; }
+.resumo .falta { color: var(--warn); font-weight: 600; }
+.acoes { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.estado-ap { font-weight: 600; color: var(--ok); }
+.copia { width: 100%; min-height: 120px; font-family: var(--mono); font-size: 13px; }
+
+@media (max-width: 520px) {
+  .item, .aprovar { padding: 16px; }
+  .op { padding: 10px 11px; }
+  .op:has(input:checked) { padding: 9px 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .trilho i { transition: none; } }
+</style>
+
+<header class="topo">
+  <div class="wrap">
+    <div class="olho">
+      <svg width="46" height="16" viewBox="0 0 46 16" aria-hidden="true"><g fill="var(--gold-star)"><circle cx="2" cy="13" r="1.6"/><circle cx="9" cy="11" r="1.6"/><circle cx="15" cy="12.5" r="1.6"/><circle cx="20" cy="9.5" r="1.6"/><circle cx="21" cy="4.5" r="1.6"/><circle cx="28" cy="3" r="1.6"/><circle cx="29.5" cy="8" r="1.6"/><circle cx="43" cy="2.5" r="2.2"/></g></svg>
+      Alpha Point · roteiro de Juneau
+    </div>
+    <h1>Suas decisões antes de aprovar</h1>
+    <p class="titulo-trabalho">“Alaska Voted to Move Its Capital. Why Is It Still in Juneau?”</p>
+    <p class="como">Marque uma opção em cada item. A ★ é a minha recomendação, e cada opção mostra exatamente o que muda no texto: <del style="background:var(--del-bg);color:var(--del-ink)">riscado</del> sai, <ins style="background:var(--ins-bg);color:var(--ins-ink);text-decoration:none;border-bottom:1.5px solid currentColor">sublinhado</ins> entra. Nada muda no roteiro até você aprovar no fim da página. Depois eu aplico, os revisores conferem só o que mudou, e te mostro o resultado.</p>
+    <div class="numeros" id="numeros"></div>
+  </div>
+</header>
+
+<div class="barra">
+  <div class="wrap">
+    <div class="prog">
+      <span class="prog-txt" id="prog-txt">0 de 0 marcados</span>
+      <span class="trilho"><i id="prog-i"></i></span>
+    </div>
+    <button class="btn" id="usar-rec" type="button">Usar a ★ nos que faltam</button>
+    <span class="salvo" id="salvo" aria-live="polite"></span>
+  </div>
+</div>
+
+<div class="wrap">
+  <p class="aviso" id="aviso-db" hidden></p>
+</div>
+
+<main class="wrap" id="main"></main>
+
+<script type="application/json" id="dados">/*__DADOS__*/</script>
+<script>
+(function () {
+  "use strict";
+  var D = JSON.parse(document.getElementById("dados").textContent);
+  var GRUPOS = [
+    { id: "principal", titulo: "Decisões principais", sub: "Mudam o que o espectador ouve em pontos que os revisores marcaram. Vale ler com calma." },
+    { id: "leve", titulo: "Sugestões leves", sub: "Ajustes pequenos de clareza e de fala. Nenhum é obrigatório." },
+    { id: "canal", titulo: "Para o canal", sub: "Não mudam este roteiro: valem para os próximos." },
+  ];
+  var state = { escolhas: {}, notas: {}, aprovacao: null };
+  var db = null, modoLocal = false;
+  var LS = "juneau-decisoes-v1";
+
+  try { var s = JSON.parse(localStorage.getItem(LS) || "null"); if (s) { state.escolhas = s.escolhas || {}; state.notas = s.notas || {}; } } catch (e) {}
+
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) for (var k in attrs) { if (k === "text") n.textContent = attrs[k]; else if (k === "cls") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return n;
+  }
+  function fmtN(n) { return n.toLocaleString("pt-BR"); }
+
+  function diffNode(segs) {
+    var box = el("div", { cls: "diff" });
+    var aposPar = true;
+    segs.forEach(function (sg) {
+      var run = [];
+      var solta = function () {
+        if (!run.length) return;
+        if (!aposPar) box.appendChild(document.createTextNode(" "));
+        var t = run.join(" ");
+        box.appendChild(sg[0] === "=" ? document.createTextNode(t) : el(sg[0] === "-" ? "del" : "ins", { text: t }));
+        run = []; aposPar = false;
+      };
+      sg[1].split(" ").forEach(function (w) {
+        if (w === "¶") { solta(); if (!aposPar) { box.appendChild(el("span", { cls: "par" })); aposPar = true; } }
+        else if (w) run.push(w);
+      });
+      solta();
+    });
+    return box;
+  }
+
+  // ── montar a página uma vez ──
+  var main = document.getElementById("main");
+  var total = D.itens.length;
+  document.getElementById("numeros").textContent = "";
+  ["Hoje: " + fmtN(D.palavras) + " palavras", "≈ " + String(D.minutos).replace(".", ",") + " min", total + " itens"].forEach(function (t) { document.getElementById("numeros").appendChild(el("span", { text: t })); });
+
+  GRUPOS.forEach(function (g) {
+    var itens = D.itens.filter(function (it) { return it.grupo === g.id; });
+    if (!itens.length) return;
+    var sec = el("section", { cls: "secao", "aria-labelledby": "g-" + g.id }, [
+      el("header", null, [el("h2", { id: "g-" + g.id, text: g.titulo }), el("p", { text: g.sub })]),
+    ]);
+    itens.forEach(function (it) { sec.appendChild(montarItem(it)); });
+    main.appendChild(sec);
+  });
+
+  var dep = el("section", { cls: "secao", "aria-labelledby": "g-depois" }, [
+    el("header", null, [el("h2", { id: "g-depois", text: "Fica registrado para depois" }), el("p", { text: "Não precisa marcar. É o que eu cuido, ou o que vem numa etapa seguinte." })]),
+  ]);
+  var depBox = el("div", { cls: "depois" });
+  D.depois.forEach(function (d) { depBox.appendChild(el("div", null, [el("strong", { text: d.titulo }), el("p", { text: d.texto })])); });
+  dep.appendChild(depBox);
+  main.appendChild(dep);
+
+  var ap = el("section", { cls: "aprovar", id: "aprovar", "aria-labelledby": "g-ap" }, [
+    el("h2", { id: "g-ap", text: "Aprovação" }),
+    el("div", { cls: "resumo", id: "resumo" }),
+    el("div", { cls: "nota-livre" }, [
+      el("label", { "for": "nota-geral", text: "Algo mais sobre o roteiro? (opcional)" }),
+      el("textarea", { id: "nota-geral", rows: "2" }),
+    ]),
+    el("div", { cls: "acoes" }, [
+      el("button", { cls: "btn forte", id: "btn-aprovar", type: "button", text: "Aprovo o roteiro com estas escolhas" }),
+      el("button", { cls: "btn", id: "btn-desfazer", type: "button", text: "Desfazer a aprovação", hidden: "" }),
+      el("span", { cls: "estado-ap", id: "estado-ap", "aria-live": "polite" }),
+    ]),
+    el("div", { id: "copia-box", hidden: "" }, [
+      el("p", { cls: "quem", text: "Esta página não conseguiu guardar suas escolhas para mim. Copie o texto abaixo e cole no chat:" }),
+      el("textarea", { cls: "copia", id: "copia", readonly: "" }),
+      el("div", { cls: "acoes" }, [el("button", { cls: "btn", id: "btn-copiar", type: "button", text: "Copiar" })]),
+    ]),
+  ]);
+  main.appendChild(ap);
+
+  function montarItem(it) {
+    var art = el("article", { cls: "item", id: "item-" + it.id });
+    var cab = el("div", { cls: "item-cab" }, [el("h3", { text: it.titulo })]);
+    if (it.minuto) cab.appendChild(el("span", { cls: "chip", text: "≈ " + it.minuto }));
+    art.appendChild(cab);
+    art.appendChild(el("p", { cls: "quem", text: "Quem apontou: " + it.quem }));
+    art.appendChild(el("p", { cls: "expl", text: it.explicacao }));
+    if (it.hoje) {
+      var r = el("div", { cls: "roteiro" }, [el("div", { cls: "rot-label", text: "Hoje, no roteiro" })]);
+      r.appendChild(document.createTextNode(it.hoje));
+      art.appendChild(r);
+    }
+    var fs = el("fieldset", null, [el("legend", { text: "Sua escolha" })]);
+    it.opcoes.forEach(function (o) {
+      var idIn = "op-" + it.id + "-" + o.id;
+      var input = el("input", { type: "radio", name: "op-" + it.id, id: idIn, value: o.id });
+      input.addEventListener("change", function () { escolher(it.id, o.id); });
+      var linha = el("div", { cls: "op-linha" }, [el("span", { cls: "op-rot", text: o.rotulo })]);
+      if (o.id === it.recomendado) linha.appendChild(el("span", { cls: "rec", text: "★ recomendo" }));
+      if (typeof o.delta === "number") linha.appendChild(el("span", { cls: "delta", text: (o.delta > 0 ? "+" : o.delta < 0 ? "−" : "±") + Math.abs(o.delta) + (Math.abs(o.delta) === 1 ? " palavra" : " palavras") }));
+      var corpo = el("div", { cls: "op-corpo" }, [linha]);
+      if (o.diff && o.diff.length) {
+        var dbox = el("div", null, [el("div", { cls: "diff-leg", text: "Como fica" })]);
+        dbox.appendChild(diffNode(o.diff));
+        corpo.appendChild(dbox);
+      }
+      if (o.nota) corpo.appendChild(el("p", { cls: "op-nota", text: o.nota }));
+      if (o.id === it.recomendado && it.porque) corpo.appendChild(el("p", { cls: "porque", text: "Por que recomendo: " + it.porque }));
+      fs.appendChild(el("label", { cls: "op", "for": idIn }, [input, corpo]));
+    });
+    art.appendChild(fs);
+    var idN = "nota-" + it.id;
+    var ta = el("textarea", { id: idN, rows: "1", placeholder: "Outra ideia ou comentário (opcional)" });
+    ta.addEventListener("input", function () { state.notas[it.id] = ta.value; agendarNota(it.id); });
+    art.appendChild(el("div", { cls: "nota-livre" }, [el("label", { "for": idN, text: "Comentário" }), ta]));
+    return art;
+  }
+
+  // ── sincronizar a tela com o estado ──
+  function sync() {
+    var feitos = 0, delta = 0, faltam = [];
+    D.itens.forEach(function (it) {
+      var esc = state.escolhas[it.id];
+      var art = document.getElementById("item-" + it.id);
+      it.opcoes.forEach(function (o) { var i = document.getElementById("op-" + it.id + "-" + o.id); i.checked = o.id === esc; });
+      var ta = document.getElementById("nota-" + it.id);
+      if (document.activeElement !== ta) ta.value = state.notas[it.id] || "";
+      art.classList.toggle("marcado", !!esc);
+      if (esc) { feitos++; var op = it.opcoes.find(function (o) { return o.id === esc; }); if (op && typeof op.delta === "number") delta += op.delta; }
+      else faltam.push(it.titulo);
+    });
+    document.getElementById("prog-txt").textContent = feitos + " de " + total + " marcados";
+    document.getElementById("prog-i").style.width = (100 * feitos / total) + "%";
+    document.getElementById("usar-rec").hidden = feitos === total;
+    var palavras = D.palavras + delta;
+    var res = document.getElementById("resumo");
+    res.textContent = "";
+    res.appendChild(el("p", { text: "Com as suas escolhas: " + fmtN(palavras) + " palavras, ≈ " + (palavras / 155).toFixed(1).replace(".", ",") + " min (hoje: " + fmtN(D.palavras) + ")." }));
+    if (faltam.length) res.appendChild(el("p", { cls: "falta", text: "Falta marcar: " + faltam.join(" · ") }));
+    var apr = state.aprovacao && state.aprovacao.aprovado;
+    var b = document.getElementById("btn-aprovar");
+    b.disabled = !!faltam.length || !!apr;
+    b.hidden = !!apr;
+    document.getElementById("btn-desfazer").hidden = !apr;
+    var ea = document.getElementById("estado-ap");
+    ea.textContent = apr ? "Aprovado em " + new Date(state.aprovacao.em).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" }) + ". Me avise no chat que eu sigo." : "";
+    var ng = document.getElementById("nota-geral");
+    if (state.aprovacao && document.activeElement !== ng && !ng.value) ng.value = state.aprovacao.nota || "";
+    if (modoLocal) atualizarCopia();
+  }
+
+  // ── gravar ──
+  var fila = {}, emVoo = {}, pendente = {};
+  function status(t) { document.getElementById("salvo").textContent = t; }
+  function guardarLocal() { try { localStorage.setItem(LS, JSON.stringify({ escolhas: state.escolhas, notas: state.notas })); } catch (e) {} }
+  function gravar(id) {
+    guardarLocal();
+    if (!db) return Promise.resolve();
+    if (emVoo[id]) { fila[id] = true; return emVoo[id]; }
+    pendente[id] = true;
+    status("Salvando…");
+    emVoo[id] = db.doc("escolhas/" + id).set({ opcao: state.escolhas[id] || null, nota: state.notas[id] || "", em: new Date().toISOString() })
+      .then(function () { status("Salvo"); })
+      .catch(function (e) { status("Não salvou"); if (e && e.code === "invalid_argument") virarLocal("Esta página não aceita suas marcações (sem permissão de escrita)."); })
+      .then(function () { emVoo[id] = null; if (fila[id]) { fila[id] = false; return gravar(id); } pendente[id] = false; });
+    return emVoo[id];
+  }
+  var tNota = {};
+  function agendarNota(id) { clearTimeout(tNota[id]); status("…"); tNota[id] = setTimeout(function () { gravar(id); }, 800); }
+  function escolher(id, op) {
+    state.escolhas[id] = op;
+    if (state.aprovacao && state.aprovacao.aprovado) desfazer();
+    sync(); gravar(id);
+  }
+
+  document.getElementById("usar-rec").addEventListener("click", function () {
+    var ids = D.itens.filter(function (it) { return !state.escolhas[it.id]; }).map(function (it) { state.escolhas[it.id] = it.recomendado; return it.id; });
+    sync();
+    ids.reduce(function (p, id) { return p.then(function () { return gravar(id); }); }, Promise.resolve());
+  });
+
+  function escolhasTexto() {
+    return D.itens.map(function (it) {
+      var o = it.opcoes.find(function (x) { return x.id === state.escolhas[it.id]; });
+      var n = state.notas[it.id] ? " — " + state.notas[it.id] : "";
+      return it.id + ": " + (o ? o.id + " (" + o.rotulo + ")" : "SEM ESCOLHA") + n;
+    }).join("\n");
+  }
+  function aprovar() {
+    var ng = document.getElementById("nota-geral").value;
+    var esc = {}; D.itens.forEach(function (it) { esc[it.id] = state.escolhas[it.id]; });
+    state.aprovacao = { aprovado: true, revisao: D.revisao, em: new Date().toISOString(), nota: ng, escolhas: esc };
+    sync();
+    if (!db) { atualizarCopia(); return; }
+    status("Salvando…");
+    db.doc("aprovacao/juneau").set(state.aprovacao).then(function () { status("Salvo"); }).catch(function () { status("Não salvou"); virarLocal("A aprovação não foi guardada."); });
+  }
+  function desfazer() {
+    state.aprovacao = { aprovado: false, revisao: D.revisao, em: new Date().toISOString(), nota: document.getElementById("nota-geral").value, escolhas: {} };
+    sync();
+    if (db) db.doc("aprovacao/juneau").set(state.aprovacao).catch(function () {});
+  }
+  document.getElementById("btn-aprovar").addEventListener("click", aprovar);
+  document.getElementById("btn-desfazer").addEventListener("click", desfazer);
+
+  function atualizarCopia() {
+    var apr = state.aprovacao && state.aprovacao.aprovado ? "APROVADO (revisão " + D.revisao + ")" : "ainda não aprovado";
+    document.getElementById("copia").value = "Decisões de Juneau — " + apr + "\n" + escolhasTexto() + (document.getElementById("nota-geral").value ? "\nnota: " + document.getElementById("nota-geral").value : "");
+  }
+  function virarLocal(msg) {
+    modoLocal = true; db = null;
+    var a = document.getElementById("aviso-db");
+    a.textContent = msg + " Suas marcações ficam neste navegador; no fim da página há um texto para copiar e colar no chat.";
+    a.hidden = false;
+    document.getElementById("copia-box").hidden = false;
+    atualizarCopia();
+  }
+  document.getElementById("btn-copiar").addEventListener("click", function () {
+    var t = document.getElementById("copia");
+    atualizarCopia();
+    var ok = function () { status("Copiado"); };
+    try { navigator.clipboard.writeText(t.value).then(ok, function () { t.select(); }); } catch (e) { t.select(); }
+  });
+
+  sync();
+
+  // ── banco: escolhas guardadas para o Claude ler ──
+  var usar = window.claude && typeof window.claude.use === "function" ? window.claude.use("db") : Promise.resolve(null);
+  Promise.resolve(usar).then(function (ns) {
+    if (!ns) { virarLocal("Não consegui ligar o salvamento desta página."); return; }
+    db = ns;
+    db.collection("escolhas").onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) {
+        if (pendente[d.id] || !d.exists) return;
+        var v = d.data();
+        if (v.opcao) state.escolhas[d.id] = v.opcao; else delete state.escolhas[d.id];
+        state.notas[d.id] = v.nota || "";
+      });
+      // o que ficou só neste navegador (antes de o banco responder) sobe agora
+      D.itens.forEach(function (it) { if (state.escolhas[it.id] && !snap.docs.some(function (d) { return d.id === it.id; })) gravar(it.id); });
+      guardarLocal(); sync();
+    }, function () { virarLocal("O salvamento desta página caiu."); });
+    db.doc("aprovacao/juneau").onSnapshot(function (d) {
+      state.aprovacao = d.exists ? d.data() : null; sync();
+    }, function () {});
+  }, function () { virarLocal("Não consegui ligar o salvamento desta página."); });
+})();
+</script>

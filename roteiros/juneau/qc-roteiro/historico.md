@@ -7,6 +7,7 @@
 | 3 | FAIL | FAIL | FAIL | FAIL | FAIL | 1719 |
 | 4 | FAIL | PASS | PASS | RESSALVA | FAIL | 1779 |
 | final | RESSALVA | PASS | PASS | RESSALVA | RESSALVA | 1771 |
+| 6 | PASS | PASS | PASS | PASS | PASS | 1764 |
 
 ## Respostas do roteirista depois da rodada 1
 
@@ -154,3 +155,20 @@
 - [aplicado] fatos A17 (DIVERGE; 42 U.S.C. § 4332(2)(C), conferido pelo verificador na Cornell LII): "Before a major project built with federal money, federal law requires an environmental impact statement, a study of what the project would c" — F2: → "When a federal project could significantly change the environment, federal law requires an environmental impact statement, a study of what the project would change."
 - [aplicado] fatos f-071 (a lei prevê, não descreve um fato em curso): "A nine-member commission tallies the costs, including social, economic and environmental ones." — F3: → "The law calls for a nine-member commission to tally the costs, including social, economic and environmental ones."
 - [aplicado] fatos (atribuição: a declaração contrária no folheto de 1994): ""This time," they wrote, "no price tag is attached."" — F4: → ""This time," the statement against it said, "no price tag is attached.""
+
+## Respostas do roteirista depois da rodada 6
+
+- [aplicado] dono, página de decisões (abertura: promessa_colada): "So what happened between that vote and the move that never came?  The measure was a ballot initiative, a law that voters themselves put on t" — D-abertura-1: → "So what happened between that vote and the move that never came? The answer comes down to one line that showed up on later ballots: the price."
+- [aplicado] dono, página de decisões (abertura: promessa_colada): "In August 1974, they approved it. Anchorage's" — D-abertura-2: → "In August 1974, they approved it, through a ballot initiative, a law that voters themselves put on the ballot. Anchorage's"
+- [aplicado] dono, página de decisões (estrada: pergunta_primeiro): "Then there's the road. When a federal project" — D-estrada-1: → "Then there's the road. If getting to Juneau is the complaint, why not just build one? When a federal project"
+- [aplicado] dono, página de decisões (estrada: pergunta_primeiro): "Capital move supporters, it adds, often cite that. So why not just build the road?" — D-estrada-2: → "Capital move supporters, it adds, often cite that."
+- [aplicado] dono, página de decisões (estrada: pergunta_primeiro): "Look at a map and you'll see the problem." — D-estrada-3: → "Look at a map and you'll see the problem with a road."
+- [aplicado] dono, página de decisões (petroleo: juntas): "In just three years, oil prices lost more than three quarters of their value." — D-petroleo: → "From a high in 2013 to a low in early 2016, oil prices fell by more than three quarters."
+- [aplicado] dono, página de decisões (cascade: tirar): "still stops about 43 miles north of town, at Cascade Point." — D-cascade: → "still stops about 43 miles north, at Cascade Point."
+- [aplicado] dono, página de decisões (datas: tirar_1880_1914): "The city began as a gold camp in 1880." — D-datas-1: → "The city began as a gold camp."
+- [aplicado] dono, página de decisões (datas: tirar_1880_1914): "A railroad work camp became Anchorage in 1914." — D-datas-2: → "A railroad work camp became Anchorage."
+- [aplicado] dono, página de decisões (the_town: willow): "and five miles east of the town." — D-the_town: → "and five miles east of Willow itself."
+- [aplicado] dono, página de decisões (balsa: aceitar): "Juneau's official highway link is a ferry line: the Alaska Marine Highway, the state ferry system." — D-balsa: → "Juneau's official highway link is the state ferry system, called the Alaska Marine Highway."
+- [aplicado] dono, página de decisões (bc: aceitar): "an icefield straddles the border with British Columbia. That leaves" — D-bc-1: → "an icefield straddles the border with British Columbia, the Canadian province next door. That leaves"
+- [aplicado] dono, página de decisões (bc: aceitar): "British Columbia, the Canadian province next door, said in 1993" — D-bc-2: → "British Columbia said in 1993"
+- [aplicado] dono, página de decisões (settled: aceitar): "and to a public fight over the road that had never been settled." — D-settled: → "and to a public fight over the road, a fight that was never settled."
