@@ -24,8 +24,8 @@
 | Yukon | YOO-kahn | /ˈjuːkɑn/ | YOO-kahn | Wiktionary; Dictionary.com | Juneau |
 | fjord | FYORD | /fjɔrd/ | fyord | Dictionary.com. Risco de a voz ler "fuh-JORD" | Juneau |
 | Knowles (Tony Knowles) | NOHLZ | /noʊlz/ | Nolez | Wiktionary | Juneau |
-| Gladziszewski (Maria Gladziszewski) | glad-ih-SHEV-skee, **sem som de z** | /ˌɡlædɪˈʃɛvski/ | Gladyshevsky | Ouvido pelo Lucas (24/09/2026) na KTOO: a apresentadora que a entrevista e o repórter Jeremy Shea; e ela mesma, no fórum de candidatos de 2017 ("I am Maria…"). A hipótese escrita, glad-zih-SHEF-skee, estava errada | Juneau |
-| Kiehl (Jesse Kiehl) | KEEL | /kiːl/ | Keel | Ouvido pelo Lucas (24/09/2026) na KTOO: repórter e apresentador dizendo o nome do senador; e ele mesmo, no fórum de candidatos de 2017 ("My name is Jesse…") | Juneau |
+| Gladziszewski (Maria Gladziszewski) | glad-ih-SHEV-skee, **sem som de z** | /ˌɡlædɪˈʃɛvski/ | Gladyshevsky | Ouvido pelo Lucas (24/09/2026) na KTOO: a apresentadora que a entrevista e o repórter Jeremy Shea; e ela mesma, no fórum de candidatos de 2017 ("I am Maria…"), que o Lucas também ouviu. A hipótese escrita, glad-zih-SHEF-skee, estava errada | Juneau |
+| Kiehl (Jesse Kiehl) | KEEL | /kiːl/ | Keel | Ouvido pelo Lucas (24/09/2026) na KTOO: repórter e apresentador dizendo o nome do senador; e ele mesmo, no fórum de candidatos de 2017 ("My name is Jesse…"), que o Lucas também ouviu | Juneau |
 | KTOO (rádio pública de Juneau) | KAY-too: a letra K e depois "too"; **não se soletra** | /ˈkeɪ.tuː/ | Kay-too | Ouvido pelo Lucas (24/09/2026) na própria emissora no ar. A hipótese escrita, K-T-O-O, estava errada | Juneau |
 
 ## A confirmar
