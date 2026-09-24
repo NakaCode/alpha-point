@@ -51,7 +51,7 @@ atualize o sha no topo do script depois da nova aprovação.
 As marcações ficaram guardadas na própria página, e `roteiros/juneau/aprovacao.md` resume o que foi
 decidido.
 
-## Rodada 7: o tom de conversa
+## Rodada 7: o tom de conversa (testada e não adotada)
 
 O dono ouviu a narração do texto aprovado e pediu "um tom mais conversacional, como alguém contando algo/apresentando"
 (24/09/2026). Três passadas, cada uma conferida contra as fontes do dossiê por um conferente cético:
