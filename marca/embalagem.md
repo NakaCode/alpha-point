@@ -23,7 +23,14 @@ Os que falharam (1 mil a 5 mil) são vagos: "Ohio Has More Secrets Than Any Stat
 Earth?" (5,7 mi) · "Why Is There No Bridge to Sicily?" (3,8 mi) · "How Geography Made California Ridiculously OP".
 
 **Capital Financeiro** (canal brasileiro; vale o molde, não a letra): o parêntese que descarta o óbvio.
-"Why does everyone leave Alaska (it's not just because of the cold)?" (426 mil).
+"Why does everyone leave Alaska (it's not just because of the cold)?" (426 mil). **As miniaturas dele são as
+favoritas do dono** (24/09/2026): "É DO BRASIL. MAS NINGUÉM PODE IR LÁ", "JAPÃO É ASSIM" e "QUE DIABOS É A
+ILHA DOS HOMENS?". Os recursos delas:
+- texto grande solto, sem caixa, com a virada em outra cor;
+- um anel no ponto;
+- uma lupa ligada ao anel por um cone, mostrando de perto uma forma que se reconhece (as ilhas, o território
+  com a bandeira);
+- setas curvas e caixinhas de rótulo.
 
 **MirAtlas60**: listas numeradas. O canal **não** herda esse molde (`identidade.md` §1: nada de contagem nem de
 "fato absurdo").
@@ -50,7 +57,9 @@ Earth?" (5,7 mi) · "Why Is There No Bridge to Sicily?" (3,8 mi) · "How Geograp
 
 ## 3 · A miniatura
 
-**A receita**, das referências: mapa de satélite, **o anel da marca** no ponto, uma seta curva saindo do texto
+Há duas receitas. O Juneau usou a com lupa (§3.1); a com pílula ficou de reserva.
+
+**A receita com pílula** (Geography Effect): mapa de satélite, **o anel da marca** no ponto, uma seta curva saindo do texto
 e caindo no anel, e uma pílula com 1 a 3 palavras. A pílula completa o título, nunca o repete
 ("RIGHT HERE?", "NO ROADS?", "WHY HERE?").
 
@@ -76,6 +85,30 @@ e caindo no anel, e uma pílula com 1 a 3 palavras. A pílula completa o título
 
 **O que não foge:** os papéis de cor (`--destaque` só no protagonista e no anel), nada de vermelho contra azul,
 sem emoji, a geografia conferida contra coordenadas e a regra de imagem de `midia.md`.
+
+### 3.1 · A receita com lupa (Capital Financeiro), a escolhida para o Juneau
+
+Fonte: `roteiros/juneau/miniatura/miniatura-lupa.html`. Palco de 2560×1440; entre parênteses, no envio de 1280.
+
+| Peça | Valor |
+|---|---|
+| texto | solto, sem pílula: Barlow Condensed 800, 300 px (150), CAIXA ALTA, até 2 linhas e 1 a 3 palavras. A de cima em `--tinta`; a virada em `--destaque` (decisão do dono: "mantenha a paleta do canal"). Contraste por sombra radial escura atrás do bloco e `text-shadow` |
+| anel | o mesmo da receita com pílula |
+| lupa | 640 px (320), borda de 20 px em `--destaque`: é o anel ampliado. Sombra escura por fora |
+| cone | as tangentes externas do anel e da lupa, calculadas, e não a olho. Traço `--tinta` de 10 px com sombra; preenchimento `--tinta` a 12 % |
+| dentro da lupa | **uma forma que se reconheça**. Satélite de mato é "vazio" (o dono e a banca concordaram). No Juneau, o mapa oficial do sítio, redesenhado, sobre `--papel` (modelo DOCUMENTO): o sítio em `--destaque` a 32 % com contorno escuro grosso, a área da cidade em `--destaque` cheio e a estrela de capital. Um selo pequeno diz de onde veio ("OFFICIAL SITE MAP") |
+
+**Regras que a lupa ensinou:**
+- **O que vai dentro da lupa tem de existir em documento.** Nada de cidade, rua ou prédio desenhado. Um
+  redesenho é fiel quando o traço, sobreposto ao original, cai em cima da linha dele. Guarde a sobreposição.
+- **Troca de símbolo vale; troca de conteúdo, não.** O ponto do centro da cidade virou a estrela de capital,
+  mas nada foi acrescentado ao mapa.
+- **Número ou ano na miniatura não pode brigar com o título.** "1976" na lupa, ao lado do "1974" do título,
+  pareceu erro ao leitor a frio.
+- **Espessura pensada para 168 px.** Contorno fino e preenchimento claro somem; forma e oval precisam de
+  contraste de valor entre si, não só de cor.
+- **Mosaico de foto aérea antiga raramente serve à miniatura.** O AHAP do sítio veio com emendas e cores de
+  anos diferentes. Veja a prévia antes de pedir o arquivo grande.
 
 **Conferência antes de mostrar ao dono:**
 1. Renderizar em 1280×720, 320×180 e 168×94 e olhar os três tamanhos.

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<title>Miniatura com lupa — Juneau</title>
+<!-- Miniatura do Juneau escolhida pelo dono em 24/09/2026 (variante B, estilo Capital Financeiro): texto solto
+     em duas cores (a virada em --destaque, por decisão dele), o anel no ponto e uma lupa ligada ao anel por um
+     cone. A variante A, com pílula e seta (Geography Effect), é miniatura.html.
+
+     Base regional: Landsat WELD 2000 (midia/juneau/embalagem/base-matsu-landsat-2000.jpg), ampliada 1,12× e
+     deslocada (-250, -110); posição no palco = posição na base × 1,12 + deslocamento.
+
+     v3 da lupa (24/09, depois de o dono achar o mato "vazio"). A lupa mostra o MAPA OFICIAL DO SÍTIO, redesenhado:
+     - fonte: o folheto eleitoral do Alasca de 1976, p. 48, "WILLOW SITE", "Material prepared by Capital Site
+       Selection Committee" (cópia local midia/juneau/fontes/documento/oep76.pdf, página 2 do PDF; recorte em
+       midia/juneau/embalagem/traco/mapa-1976-sitio.png);
+     - o contorno em degraus e a oval "DEVELOPMENT AREA", com o ponto do centro, foram traçados à mão sobre o
+       recorte (coordenadas em px do recorte de 1723×1168, dentro do <g> da lupa). Nada foi acrescentado: sem
+       ruas, sem prédios. Riachos e rótulos do mapa ficaram de fora, porque somem na miniatura;
+     - fundo --papel e o sítio grifado em --destaque a 32 %, com contorno escuro grosso para a silhueta aguentar
+       168 px: é o modelo DOCUMENTO da marca (identidade.md §5). A oval, onde a cidade seria construída, vai em
+       --destaque cheio, para se separar do sítio;
+     - o ponto do centro da oval virou o símbolo cartográfico de capital (estrela no círculo): troca de símbolo,
+       não de conteúdo; o ponto do mapa marca o centro da cidade-capital planejada (banca de 24/09);
+     - o selo diz "OFFICIAL SITE MAP", sem o ano: "1976" ao lado do "1974" do título parecia erro para o leigo.
+       O mapa é do folheto oficial da eleição de 2/11/1976 (medida "Capital Site Selection");
+     - escala: a lupa mostra o sítio inteiro (uns 30 km de borda a borda), cerca de 2× o diâmetro do anel. O
+       cone diz "olhe o plano deste lugar", não "isto é exatamente o que está dentro do anel".
+     - O anel desceu do ponto "5 milhas a leste de Willow" (61.7472, -149.8847) para o centro estimado da
+       oval: 61.706 N, -149.84 W, ±2–3 km. A estimativa veio de georreferenciar o mapa de 1976 por Willow e
+       Houston (midia/juneau/embalagem/lupa-pesquisa.json). Palco: 646×389, uns 5 km ao sul-sudeste do anel
+       anterior. O anel marca o ponto, não o tamanho do sítio (cerca de 100 mi², bem maior que o anel).
+     Cone: as tangentes externas do anel (r 112, 646×389) e da lupa (r 320, 1760×1010). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Inter:wght@700&display=block" rel="stylesheet">
+<style>
+  :root { --tinta: #F4F1EA; --tinta-escura: #14181F; --papel: #ECE8DF; --rotulo: rgba(11,15,20,.88); --destaque: #F5A524; }
+  html, body { margin: 0; width: 2560px; height: 1440px; overflow: hidden; background: #0E1726; }
+  .palco { position: relative; width: 2560px; height: 1440px; overflow: hidden; }
+  .base { position: absolute; left: 0; top: 0; width: 2560px; height: 1440px; transform-origin: 0 0;
+    transform: translate(-250px, -110px) scale(1.12); filter: brightness(.9) saturate(1) contrast(1.05); }
+  .sombra { position: absolute; inset: 0;
+    background: radial-gradient(ellipse 36% 46% at 2130px 320px, rgba(5,8,14,.68) 0%, rgba(5,8,14,.4) 55%, transparent 100%),
+                radial-gradient(ellipse 80% 90% at 50% 50%, transparent 55%, rgba(5,8,14,.3) 100%); }
+
+  .anel { position: absolute; left: 646px; top: 389px; width: 224px; height: 224px; box-sizing: border-box;
+    border: 38px solid var(--destaque); border-radius: 50%; transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 5px rgba(11,15,20,.7), inset 0 0 0 5px rgba(11,15,20,.7), 0 0 30px rgba(0,0,0,.6); }
+
+  .lupa { position: absolute; left: 1760px; top: 1010px; width: 640px; height: 640px; border-radius: 50%;
+    transform: translate(-50%, -50%); overflow: hidden; box-sizing: border-box; border: 20px solid var(--destaque);
+    background: var(--papel); box-shadow: 0 0 0 6px rgba(11,15,20,.75), 0 18px 60px rgba(0,0,0,.7); }
+  .lupa svg { position: absolute; inset: 0; width: 600px; height: 600px; }
+  .selo { position: absolute; left: 50%; bottom: 44px; transform: translateX(-50%); font: 700 30px/1 Inter, sans-serif;
+    letter-spacing: .06em; color: var(--tinta-escura); opacity: .75; white-space: nowrap; }
+
+  .texto { position: absolute; right: 90px; top: 40px; text-align: right; font: 800 300px/0.88 'Barlow Condensed', sans-serif;
+    letter-spacing: -0.01em; text-shadow: 0 0 8px rgba(0,0,0,.9), 0 10px 36px rgba(0,0,0,.85); }
+  .texto .a { color: var(--tinta); display: block; }
+  .texto .b { color: var(--destaque); display: block; }
+
+  .pilula { position: absolute; background: var(--rotulo); color: var(--tinta); border-radius: 24px; white-space: nowrap; }
+  .lugar { left: 690px; top: 1160px; padding: 20px 34px; font: 700 96px/1 Inter, sans-serif; }
+  .ponto { position: absolute; left: 598px; top: 1217px; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--tinta); transform: translate(-50%, -50%); box-shadow: 0 0 0 8px rgba(11,15,20,.7); }
+  .palco > svg { position: absolute; inset: 0; overflow: visible; }
+</style>
+</head>
+<body>
+<div class="palco">
+  <img class="base" src="../../../midia/juneau/embalagem/base-matsu-landsat-2000.jpg" alt="">
+  <div class="sombra"></div>
+  <svg width="2560" height="1440" viewBox="0 0 2560 1440">
+    <defs>
+      <filter id="sombra" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#000" flood-opacity=".7"/></filter>
+    </defs>
+    <polygon points="684,284 1868,709 1561,1260 576,477" fill="rgba(244,241,234,.12)"/>
+    <g stroke="rgba(244,241,234,.9)" stroke-width="10" stroke-linecap="round" fill="none" filter="url(#sombra)">
+      <line x1="684" y1="284" x2="1868" y2="709"/>
+      <line x1="576" y1="477" x2="1561" y2="1260"/>
+    </g>
+  </svg>
+  <div class="lupa">
+    <svg viewBox="0 0 600 600">
+      <!-- coordenadas do recorte do mapa de 1976 (1723×1168), levadas ao miolo de 600 px da lupa -->
+      <g transform="translate(-33.4 71.7) scale(0.37)">
+        <polygon fill="rgba(245,165,36,.32)" stroke="#14181F" stroke-width="22" stroke-linejoin="miter"
+          points="320,287 360,287 360,247 400,247 400,292 485,292 485,325 530,325 530,245 575,245 575,200 645,200 645,287 740,287 740,192 895,192 895,245 945,245 945,205 985,205 985,245 1065,245 1065,285 1228,285 1228,370 1318,370 1318,283 1478,283 1478,707 1562,707 1562,870 1488,870 1488,785 1395,785 1395,872 1312,872 1312,957 1150,957 1150,1042 905,1042 905,957 740,957 740,875 495,875 495,785 405,785 405,702 495,702 495,625 400,625 400,670 365,670 365,620 320,620 320,540 240,540 240,465 320,465"/>
+        <!-- DEVELOPMENT AREA: a oval do mapa, com o ponto do centro -->
+        <path fill="#F5A524" stroke="#14181F" stroke-width="16"
+          d="M 660,437 C 672,436 688,444 700,455 C 712,466 721,484 735,500 C 749,516 769,536 785,550 C 801,564 817,571 830,585 C 843,599 857,615 862,632 C 867,649 867,670 862,685 C 857,700 847,714 830,722 C 813,730 783,735 760,736 C 737,737 711,734 690,728 C 669,722 649,713 635,700 C 621,687 610,669 604,650 C 598,631 597,608 597,585 C 597,562 600,535 606,515 C 612,495 621,476 630,463 C 639,450 648,438 660,437 Z"/>
+        <!-- no lugar do ponto do centro, o símbolo cartográfico de capital: estrela num círculo -->
+        <circle cx="706" cy="592" r="62" fill="#F4F1EA" stroke="#14181F" stroke-width="14"/>
+        <polygon fill="#14181F" points="706,547 717,580 752,580 724,601 734,634 706,614 678,634 688,601 660,580 695,580"/>
+      </g>
+    </svg>
+    <div class="selo">OFFICIAL SITE MAP</div>
+  </div>
+  <div class="anel"></div>
+  <div class="ponto"></div>
+  <div class="pilula lugar">Anchorage</div>
+  <div class="texto"><span class="a">RIGHT</span><span class="b">HERE?</span></div>
+</div>
+</body>
+</html>
