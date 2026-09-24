@@ -87,7 +87,8 @@ produz o master. O deste canal nasce assim:
    - Gastar crédito pede o ok do Lucas. Gasto em 24/09, conferido no saldo: 2.433 nas amostras e na escolha
      da voz; 15.564 na narração do texto aprovado (o bloco 1 com quebras de linha, o teste sem quebras e os 3
      blocos em "Criativo"); 709 no teste do v2; 1.498 na prova do tom de conversa (teste com a voz anterior e o
-     Remix). Total de 20.204. A narração inteira pede um ok próprio;
+     Remix); 11.028 na narração do texto aprovado com a voz em conversa (3 blocos em "Criativo", 2 versões de
+     cada; o saldo foi de 3.088.067 a 3.077.039). Total de 31.232. A narração inteira pede um ok próprio;
    - O navegador do app corta downloads grandes em uns 1,8 MB: o MP3 de um bloco chegou com 112 s de 4 min
      29 s. Para baixar a narração, use outro caminho (o Lucas baixa no navegador dele, ou a API).
 5. master = a narração sobre tela preta 3840×2160 (`marca/identidade.md` §5).
