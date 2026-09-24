@@ -331,3 +331,32 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
      não vê. Serve a qualquer passo que o público lê sem contexto: título, miniatura, primeira frase.
 - **Por que serve a qualquer canal:** todo canal tem referências e publica título e miniatura para um público
   que não leu o roteiro.
+
+## 24/09/2026 — a voz do narrador na ElevenLabs (motor em `44cf6f7`, v0.1.0)
+
+### 16. A escolha da voz: as vozes padrão vão acabar, o v3 prefere voz desenhada, e a prévia é pública
+- **O problema:** era preciso escolher a voz do narrador (eleven_v3) sem gastar crédito. Também não havia a chave
+  de API nesta máquina. A pesquisa pela web não achou nenhum link de prévia: a biblioteca de vozes do app pede
+  login, e a API de vozes compartilhadas pede chave.
+- **O que resolveu:**
+  1. **As páginas públicas de categoria** (`elevenlabs.io/voice-library/<categoria>`, por exemplo `credible`,
+     `straightforward`, `news-anchor-voices`) trazem nos dados da página, e não no texto, o nome, a descrição, o
+     `voice_id` e o link da prévia de cada voz. A prévia toca sem login. Lidas pelo navegador do app, elas
+     viraram uma página de audição (`marca/vozes.html`).
+  2. **Como saber se a voz é desenhada ou clone.** Algumas vozes trazem, junto da ficha, o texto e a semente
+     com que foram criadas (`voicePrompt`, `generationSeed`): essas são de Voice Design. As outras são clones
+     de locutor (PVC).
+  3. **O que a documentação da ElevenLabs diz** (conferido por um verificador em 24/09/2026):
+     - as vozes padrão antigas (Brian, Adam, Roger…) expiram em 31/12/2026;
+     - clone profissional ainda não está totalmente otimizado para o v3, e o guia recomenda voz desenhada ou
+       clone instantâneo;
+     - o v3 não aceita SSML e não costura pedidos;
+     - o limite é de 5.000 caracteres por pedido;
+     - números, datas e siglas vão por extenso no texto.
+- **Para o motor:**
+  1. `narracao.voice_id` não pode apontar para voz padrão antiga: ela some em 31/12/2026.
+  2. A amostra paga tem de sair no mesmo modelo da narração. A prévia de um clone pode enganar no v3.
+  3. A cópia para a voz (`roteiros/juneau/_ferramentas/preparar-voz.mjs`) serve de molde para uma estação: grafia
+     por extenso, aliases de pronúncia e a prova de que desfazer as trocas devolve o texto aprovado byte a byte.
+- **Por que serve a qualquer canal:** todo canal com narração sintética escolhe uma voz. As regras do modelo e o
+  prazo das vozes padrão valem para qualquer nicho.

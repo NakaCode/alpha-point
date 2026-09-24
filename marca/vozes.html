@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vozes candidatas</title>
+<!--
+  Página de audição das vozes candidatas ao narrador do Alpha Point (ElevenLabs, eleven_v3).
+  Montada em 24/09/2026 a partir das páginas públicas da Voice Library da ElevenLabs (dados lidos no
+  navegador do app: nome, descrição, voice_id e link da prévia). As prévias tocam sem login e não gastam
+  crédito. A pesquisa que levou a elas fica em midia/vozes/ (só nesta máquina).
+  "Desenhada" = a página traz, junto da voz, o texto e a semente com que ela foi criada (campos voicePrompt e
+  generationSeed): é voz de Voice Design, o tipo que o guia do v3 recomenda. "Clone" = locutor real clonado
+  (PVC), que o guia diz ainda não estar totalmente otimizado para o v3.
+-->
+<style>
+:root{
+  --papel:#F7F4EE; --cartao:#FFFFFF; --tinta:#16181D; --suave:#5B606B; --linha:#E3DED4;
+  --destaque:#F5A524; --etiqueta-d:#E8F3EC; --etiqueta-d-t:#1F6B3A; --etiqueta-c:#EEF0F6; --etiqueta-c-t:#3A4A7A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papel:#121418; --cartao:#1B1E24; --tinta:#ECEDEF; --suave:#A3A8B3; --linha:#2B2F37;
+    --etiqueta-d:#17301F; --etiqueta-d-t:#8FD6A8; --etiqueta-c:#1E2436; --etiqueta-c-t:#A9B8E8;
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#121418; --cartao:#1B1E24; --tinta:#ECEDEF; --suave:#A3A8B3; --linha:#2B2F37;
+  --etiqueta-d:#17301F; --etiqueta-d-t:#8FD6A8; --etiqueta-c:#1E2436; --etiqueta-c-t:#A9B8E8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Inter,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 16px 64px}
+h1{font-size:28px;line-height:1.2;margin:0 0 6px}
+h2{font-size:18px;margin:36px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--destaque)}
+p{margin:0 0 10px}
+.sub{color:var(--suave);margin-bottom:18px}
+.aviso{background:var(--cartao);border:1px solid var(--linha);border-left:4px solid var(--destaque);border-radius:10px;padding:14px 16px;margin:18px 0}
+.aviso ul{margin:6px 0 0;padding-left:20px}
+.aviso li{margin:4px 0}
+.voz{background:var(--cartao);border:1px solid var(--linha);border-radius:12px;padding:16px;margin:12px 0}
+.topo{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px}
+.num{font-weight:800;color:var(--destaque);font-size:20px}
+.nome{font-weight:700;font-size:18px}
+.tag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.tag.d{background:var(--etiqueta-d);color:var(--etiqueta-d-t)}
+.tag.c{background:var(--etiqueta-c);color:var(--etiqueta-c-t)}
+.dur{color:var(--suave);font-size:13px}
+audio{width:100%;margin:10px 0 8px}
+dl{display:grid;grid-template-columns:110px 1fr;gap:4px 12px;margin:0}
+dt{color:var(--suave);font-size:14px}
+dd{margin:0;font-size:15px}
+.id{font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--suave)}
+a{color:inherit}
+@media (max-width:560px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
+</style>
+</head>
+<body>
+<main>
+<h1>Vozes candidatas ao narrador</h1>
+<p class="sub">Alpha Point · ElevenLabs, modelo eleven_v3 · 24/09/2026 · as prévias tocam sem login e não gastam crédito</p>
+
+<div class="aviso">
+<p><strong>O narrador que procuramos</strong> (<code>marca/voz.md</code> §1): jornalista de uns 35 anos, calmo e firme,
+que explica "como quem abre o mapa na mesa". Sotaque americano neutro, 150 a 160 palavras por minuto.</p>
+<ul>
+<li><strong>A prévia serve para eliminar, não para decidir.</strong> Cada uma diz um texto diferente, de 6 a 21 segundos.
+A decisão vem das 3 amostras pagas: o mesmo trecho do Juneau (720 caracteres), no eleven_v3, com o mesmo ajuste.</li>
+<li><strong>Desenhada ou clone.</strong> A ElevenLabs diz que clones de locutor ainda não rendem 100% no v3 e recomenda
+vozes desenhadas. Um clone pode soar melhor na prévia do que vai soar no nosso texto. Vale levar pelo menos uma de cada
+tipo para as amostras.</li>
+<li><strong>Clone pode sair do ar.</strong> O dono da voz pode retirá-la da biblioteca, com aviso de 30 dias a 2 anos.
+Esse prazo só aparece logado.</li>
+<li><strong>As vozes famosas estão fora.</strong> Brian, Adam, Roger e as outras vozes padrão antigas saem de linha em
+31/12/2026.</li>
+</ul>
+</div>
+
+<h2>Masculinas, desenhadas pela ElevenLabs</h2>
+
+<div class="voz">
+  <div class="topo"><span class="num">1</span><span class="nome">The Trusted News Anchor</span><span class="tag d">desenhada</span><span class="dur">prévia de 20 s</span></div>
+  <audio controls preload="none" src="https://storage.googleapis.com/eleven-public-prod/database/workspace/1da06ea679a54975ad96a2221fe6530d/voices/9zOR8pbiHihp918naYbZ/9b6484ff-3546-4746-b244-a64e12447b86.mp3"></audio>
+  <dl>
+    <dt>A ficha diz</dt><dd>Âncora de telejornal de meia-idade. Voz grave e ressonante, sotaque americano neutro, ritmo medido e profissional. Lembra jornalista veterano.</dd>
+    <dt>Por que cabe</dt><dd>É o jornalista calmo e firme, quase ao pé da letra.</dd>
+    <dt>Risco</dt><dd>Pode soar mais velho e mais solene que um narrador de 35 anos.</dd>
+    <dt>ID</dt><dd class="id">9zOR8pbiHihp918naYbZ · <a href="https://elevenlabs.io/voice-library/credible">ficha pública</a></dd>
+  </dl>
+</div>
+
+<div class="voz">
+  <div class="topo"><span class="num">2</span><span class="nome">The Direct Expert</span><span class="tag d">desenhada</span><span class="dur">prévia de 19 s</span></div>
+  <audio controls preload="none" src="https://api.us.elevenlabs.io/v1/voices/hRARwljPej2EmtHwU2x0/previews/audio?payload=eyJ2b2ljZV9zb3VyY2UiOiJjdXN0b20iLCJ3b3Jrc3BhY2VfaWQiOiIxZGEwNmVhNjc5YTU0OTc1YWQ5NmEyMjIxZmU2NTMwZCIsImZpbGVuYW1lIjoiYTA3ZTYxZTktMGY2MC00YmVkLTliYWUtYWQwZjhmZTIyOTljLm1wMyIsInRpbWVzdGFtcCI6MTc4OTgwNDgwMDAwMDAwMH0%3D"></audio>
+  <dl>
+    <dt>A ficha diz</dt><dd>Homem de 40 e poucos anos, tom médio e liso, muito claro. Ritmo firme e sem pressa, articulação precisa, sotaque "neutro".</dd>
+    <dt>Por que cabe</dt><dd>Firme sem ser solene, e mais perto dos 35 anos.</dd>
+    <dt>Risco</dt><dd>Foi feita para explicação técnica e de negócios: pode soar corporativa. A ficha não diz "americano"; confira o sotaque.</dd>
+    <dt>ID</dt><dd class="id">hRARwljPej2EmtHwU2x0 · <a href="https://elevenlabs.io/voice-library/straightforward">ficha pública</a></dd>
+  </dl>
+</div>
+
+<div class="voz">
+  <div class="topo"><span class="num">3</span><span class="nome">The Gentle Professional</span><span class="tag d">desenhada</span><span class="dur">prévia de 15 s</span></div>
+  <audio controls preload="none" src="https://storage.googleapis.com/eleven-public-prod/database/workspace/1da06ea679a54975ad96a2221fe6530d/voices/FdVXNlsGAVy8cdISUavN/a2238365-4842-46d1-bbc2-c910f69fa5ec.mp3"></audio>
+  <dl>
+    <dt>A ficha diz</dt><dd>Homem de uns 28 anos, sotaque americano neutro, tom médio e uniforme. Ritmo de conversa, pouca emoção: "profissional, mas não frio", com um calor discreto.</dd>
+    <dt>Por que cabe</dt><dd>É a conversa "entre duas pessoas" da persona.</dd>
+    <dt>Risco</dt><dd>Jovem e brando: pode faltar a firmeza que segura 11 minutos.</dd>
+    <dt>ID</dt><dd class="id">FdVXNlsGAVy8cdISUavN · <a href="https://elevenlabs.io/voice-library/understated">ficha pública</a></dd>
+  </dl>
+</div>
+
+<h2>Masculinas, clones de locutores (biblioteca)</h2>
+
+<div class="voz">
+  <div class="topo"><span class="num">4</span><span class="nome">David Castlemore - Newsreader</span><span class="tag c">clone</span><span class="dur">prévia de 10 s</span></div>
+  <audio controls preload="none" src="https://storage.googleapis.com/eleven-public-prod/database/user/T7bhqxLyENgRaSgfnqhPa6vPSID2/voices/XjLkpWUlnhS8i7gGz3lZ/2foqwf4lPNBPWW27H6du.mp3"></audio>
+  <dl>
+    <dt>A ficha diz</dt><dd>Voz americana de meia-idade, clara e nítida, no estilo de apresentador de telejornal. Boa para conteúdo longo.</dd>
+    <dt>Por que cabe</dt><dd>Registro de jornalista, pensado para textos longos.</dd>
+    <dt>Risco</dt><dd>É clone: no v3 pode sair diferente da prévia. "Meia-idade" pode soar mais velho que 35.</dd>
+    <dt>ID</dt><dd class="id">XjLkpWUlnhS8i7gGz3lZ · <a href="https://elevenlabs.io/voice-library/professional-narrator-voices">ficha pública</a></dd>
+  </dl>
+</div>
+
+<div class="voz">
+  <div class="topo"><span class="num">5</span><span class="nome">A Top Narrator VO PRO</span><span class="tag c">clone</span><span class="dur">prévia de 10 s</span></div>
+  <audio controls preload="none" src="https://api.us.elevenlabs.io/v1/voices/u4HtmbcjVZVpiJLQ2GZn/previews/audio?payload=eyJ2b2ljZV9zb3VyY2UiOiJjdXN0b20iLCJ3b3Jrc3BhY2VfaWQiOiI2Y2NhYzZmZGY4YzI0NzE5OTU4Y2Q1ZDMyNDZjZmRkYSIsImZpbGVuYW1lIjoiR0cyUmF5QUJnUzB2QlNCc0tPVEMubXAzIiwidGltZXN0YW1wIjoxNzg5ODA0ODAwMDAwMDAwfQ%3D%3D"></audio>
+  <dl>
+    <dt>A ficha diz</dt><dd>Narrador americano profissional para documentários, livros, ciência e vídeos explicativos.</dd>
+    <dt>Por que cabe</dt><dd>É exatamente o gênero do canal.</dd>
+    <dt>Risco</dt><dd>É clone (mesma ressalva do v3). O dono já trocou o nome da voz uma vez: vale guardar o ID, não o nome.</dd>
+    <dt>ID</dt><dd class="id">u4HtmbcjVZVpiJLQ2GZn · <a href="https://elevenlabs.io/voice-library/news-anchor-voices">ficha pública</a></dd>
+  </dl>
+</div>
+
+<div class="voz">
+  <div class="topo"><span class="num">6</span><span class="nome">Bryan - Polished, Measured and Engaging</span><span class="tag c">clone</span><span class="dur">prévia de 6 s</span></div>
+  <audio controls preload="none" src="https://storage.googleapis.com/eleven-public-prod/database/user/NtXIi7ANHgaMkBYfnNwEHQNIPEq2/voices/bPMKpgEe88vKSwusXTMU/VA5oWqz22sXcoBNJRwuS.mp3"></audio>
+  <dl>
+    <dt>A ficha diz</dt><dd>Voz masculina americana, calorosa e confiante, para narração, rádio, TV e vídeo.</dd>
+    <dt>Por que cabe</dt><dd>O "measured" do nome é o ritmo contido da persona.</dd>
+    <dt>Risco</dt><dd>É clone. "Engaging" pode puxar para locução animada. A prévia é a mais curta, só 6 segundos.</dd>
+    <dt>ID</dt><dd class="id">bPMKpgEe88vKSwusXTMU · <a href="https://elevenlabs.io/voice-library/professional">ficha pública</a></dd>
+  </dl>
+</div>
+
+<h2>Femininas, desenhadas pela ElevenLabs</h2>
+<p class="sub">A persona foi escrita como "um narrador". Uma voz feminina muda a persona; a decisão é sua.</p>
+
+<div class="voz">
+  <div class="topo"><span class="num">7</span><span class="nome">The Professional News Anchor</span><span class="tag d">desenhada</span><span class="dur">prévia de 21 s</span></div>
+  <audio controls preload="none" src="https://storage.googleapis.com/eleven-public-prod/database/workspace/1da06ea679a54975ad96a2221fe6530d/voices/GplsSlEJFQ7WURzi1r8V/896cb384-a506-4956-8c30-61182f4de623.mp3"></audio>
+  <dl>
+    <dt>A ficha diz</dt><dd>Apresentadora de telejornal de 30 e poucos anos, calorosa e confiante, sotaque americano profissional. Ritmo firme e medido, tom médio.</dd>
+    <dt>Por que cabe</dt><dd>A idade e a firmeza da persona, na versão feminina.</dd>
+    <dt>Risco</dt><dd>Muda o gênero do narrador.</dd>
+    <dt>ID</dt><dd class="id">GplsSlEJFQ7WURzi1r8V · <a href="https://elevenlabs.io/voice-library/presenter">ficha pública</a></dd>
+  </dl>
+</div>
+
+<div class="voz">
+  <div class="topo"><span class="num">8</span><span class="nome">The Professional Presenter</span><span class="tag d">desenhada</span><span class="dur">prévia de 12 s</span></div>
+  <audio controls preload="none" src="https://storage.googleapis.com/eleven-public-prod/database/workspace/1da06ea679a54975ad96a2221fe6530d/voices/idsWnWHsof7BBAzh7HnZ/8f564b08-7a39-479a-b3f8-5655f65bca9f.mp3"></audio>
+  <dl>
+    <dt>A ficha diz</dt><dd>Mulher de 30 e poucos anos, voz calorosa e articulada, sotaque americano neutro, ritmo firme de conversa.</dd>
+    <dt>Por que cabe</dt><dd>A idade e o sotaque da persona.</dd>
+    <dt>Risco</dt><dd>"Presenter" pode soar mais apresentadora de evento que jornalista. Também muda o gênero do narrador.</dd>
+    <dt>ID</dt><dd class="id">idsWnWHsof7BBAzh7HnZ · <a href="https://elevenlabs.io/voice-library/feminine">ficha pública</a></dd>
+  </dl>
+</div>
+
+</main>
+</body>
+</html>
