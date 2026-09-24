@@ -70,3 +70,6 @@ De dentro de `midia/juneau/roteiro/_execucao`:
 `pagina-r7/` gera a página em que o dono escolhe, parágrafo por parágrafo, entre o texto de hoje e o novo:
 `montar-dados.mjs <roteiro-narrador.md> r7-itens.json r7-final-result.json r6-secoes.json <dados.json>` e
 `montar-pagina.mjs <dados.json> <saída.html>`.
+
+O dono viu a página e decidiu ficar com o texto aprovado (24/09/2026; `aprovacao.md`). As ferramentas ficam para
+uma próxima vez em que o tom precisar mudar sem mexer nos fatos.

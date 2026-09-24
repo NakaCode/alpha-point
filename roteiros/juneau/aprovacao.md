@@ -59,3 +59,12 @@ As quatro lentes aprovaram. Conforme a regra de parar quando o retorno cai (o cr
   lei como a resposta. Seria frase nova e teria de ir ao verificador.
 - **Crítico e fatos (para a tela):** os 57% aparecem na tela quando a voz diz "they approved it", assim:
   `57% YES · 46,659 to 35,683 · Official returns, Aug. 27, 1974`. Nunca "57% of Alaska voters".
+
+## O tom de conversa: testado e não adotado (24/09/2026)
+
+Depois de ouvir a narração, o Lucas achou o texto "lido" e pediu um tom de conversa. A rodada 7 reescreveu o
+roteiro nesse registro: 35 dos 36 parágrafos, 1.832 palavras, com os fatos conferidos contra as fontes a cada
+passada (`_ferramentas/README.md`, "Rodada 7"). Ela foi para a página de aprovação, e o Lucas decidiu:
+**"vamos continuar com o original"**. O roteiro segue na revisão aprovada `c8677c8e3318`, sem mudança. A voz
+continua a escolhida, "Alpha Point - Narrator (conversational)". A reescrita fica guardada em
+`midia/juneau/roteiro/_execucao/r7-*.json`, só nesta máquina.
