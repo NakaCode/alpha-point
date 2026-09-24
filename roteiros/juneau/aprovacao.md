@@ -40,6 +40,10 @@
   de filtrar pelas prévias grátis. A narração inteira pede um ok próprio.
 - **Site do Legislativo do Alasca:** na véspera da gravação, o Claude confere pelo navegador do app, com o
   Lucas vendo, e para se o site pedir verificação de robô.
+  - **Conferido em 24/09/2026**, antes de gravar, em <https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%203>, sem
+    verificação de robô. O HB 3 segue em "(H) CRA, then STA, FIN", com data de status 01/22/2025. As únicas ações
+    depois do encaminhamento foram a troca do patrocinador principal (13/02/2026) e um coautor (18/03/2026). A frase
+    "As of September 2026, the bill hadn't left its first committee" continua verdadeira.
 - **Marca:** a regra das datas entrou em `marca/voz.md`; a folha permanente de pronúncias é
   `marca/pronuncias.md`.
 

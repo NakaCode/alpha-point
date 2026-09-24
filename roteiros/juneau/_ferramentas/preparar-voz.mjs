@@ -95,6 +95,24 @@ const textoVoz = voz.join("\n\n");
 const carac = textoVoz.length;
 fs.writeFileSync(path.join(SAI, "texto-para-voz.md"), textoVoz + "\n");
 
+// os blocos para gerar a narração: o eleven_v3 aceita até 5.000 caracteres por pedido. Junta seções inteiras
+// enquanto couber, para que as emendas caiam na troca de seção. No editor do site, uma quebra simples entre
+// parágrafos (linha em branco faz o contador contar só o primeiro; APRENDIZADOS 16).
+const LIMITE = 5000;
+const blocos = [];
+let k = 0;
+for (const s of R.secoes) {
+  const texto = voz.slice(k, k + s.paragrafos.length).join("\n");
+  k += s.paragrafos.length;
+  const ult = blocos[blocos.length - 1];
+  if (ult && ult.texto.length + 1 + texto.length <= LIMITE) { ult.texto += "\n" + texto; ult.secoes.push(s.id); }
+  else blocos.push({ texto, secoes: [s.id] });
+}
+if (blocos.some((b) => b.texto.length > LIMITE)) throw new Error("uma seção sozinha passa de " + LIMITE + " caracteres");
+if (blocos.map((b) => b.texto).join("\n") !== voz.join("\n")) throw new Error("os blocos não recompõem a cópia para a voz");
+for (const f of fs.readdirSync(SAI)) if (/^bloco-\d+\.txt$/.test(f)) fs.unlinkSync(path.join(SAI, f));
+blocos.forEach((b, i) => fs.writeFileSync(path.join(SAI, `bloco-${i + 1}.txt`), b.texto));
+
 const porTipo = {};
 for (const x of trocas) porTipo[x.tipo] = (porTipo[x.tipo] || 0) + 1;
 const T = [
@@ -148,3 +166,4 @@ fs.writeFileSync(path.join(SAI, "amostra.md"), [
 ].join("\n"));
 
 console.log(`${trocas.length} trocas (${JSON.stringify(porTipo)}) · voz: ${carac} caracteres, sha ${sha(textoVoz).slice(0, 12)} · amostra: ${amostra.length} caracteres`);
+console.log("blocos: " + blocos.map((b, i) => `${i + 1} = ${b.secoes.join("+")} (${b.texto.length})`).join(" · "));
