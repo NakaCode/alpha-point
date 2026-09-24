@@ -24,6 +24,9 @@
 | Yukon | YOO-kahn | /ˈjuːkɑn/ | YOO-kahn | Wiktionary; Dictionary.com | Juneau |
 | fjord | FYORD | /fjɔrd/ | fyord | Dictionary.com. Risco de a voz ler "fuh-JORD" | Juneau |
 | Knowles (Tony Knowles) | NOHLZ | /noʊlz/ | Nolez | Wiktionary | Juneau |
+| Gladziszewski (Maria Gladziszewski) | glad-ih-SHEV-skee, **sem som de z** | /ˌɡlædɪˈʃɛvski/ | Gladyshevsky | Ouvido pelo Lucas (24/09/2026) na KTOO: a apresentadora que a entrevista e o repórter Jeremy Shea. A hipótese escrita, glad-zih-SHEF-skee, estava errada | Juneau |
+| Kiehl (Jesse Kiehl) | KEEL | /kiːl/ | Keel | Ouvido pelo Lucas (24/09/2026) na KTOO: repórter e apresentador dizendo o nome do senador | Juneau |
+| KTOO (rádio pública de Juneau) | KAY-too: a letra K e depois "too"; **não se soletra** | /ˈkeɪ.tuː/ | Kay-too | Ouvido pelo Lucas (24/09/2026) na própria emissora no ar. A hipótese escrita, K-T-O-O, estava errada | Juneau |
 
 ## A confirmar
 
@@ -32,9 +35,6 @@ vídeo da própria pessoa). Quem ouve é o Lucas: o Claude acha o trecho e marca
 
 | Termo | Hipótese | Alias provisório | Risco na voz | Onde ouvir | Vídeo |
 |---|---|---|---|---|---|
-| Gladziszewski (Maria) | glad-zih-SHEF-skee (a locução propôs glad-zih-SHEV-skee) | glad-zih-SHEFF-skee | alto: sobrenome polonês | KTOO; sessões da Assembleia de Juneau | Juneau |
-| Kiehl (Jesse Kiehl) | KEEL | Keel | "KYLE" ou "KEE-ul" | KTOO; Legislativo do Alasca (akl.tv) | Juneau |
-| KTOO | soletrado, K-T-O-O | K T O O | ler "K-too" como palavra | a própria emissora no ar | Juneau |
 | Mat-Su (Mat-Su Valley) | MAT-soo | Mat-Soo (a folha de Juneau também registra "Mat-Sue": escolher um no teste de voz) | ler "S-U" ou "suh" | rádio local do Alasca | Juneau |
 | Rae (Brian Rae) | RAY | Ray | "REE" ou "RAH-ee" | amostra da voz | Juneau |
 | Reamer (David Reamer) | REE-mer | REE-mer | baixo | amostra da voz | Juneau |
@@ -46,7 +46,10 @@ vídeo da própria pessoa). Quem ouve é o Lucas: o Claude acha o trecho e marca
 Regras de grafia para a cópia do texto que vai à voz. Mudam a grafia, nunca uma palavra.
 
 - Data com dia: `August 27, 1974` → `August twenty-seventh, 1974` (o inglês dos EUA fala o ordinal).
-- Sigla que se soletra no ar: `KTOO` → `K T O O`; `NFL` → `N F L`.
+- Sigla que se soletra no ar: `NFL` → `N F L`. Prefixo de rádio ou TV **nem sempre** se soletra: a KTOO
+  diz "Kay-too". Confirme ouvindo a própria emissora antes de decidir.
+- Sobrenome estrangeiro de gente local: vale como a pessoa e a cidade dizem, não a pronúncia da língua de
+  origem. A hipótese "polonesa" de Gladziszewski errou; a rádio de Juneau diz "Gladyshevsky".
 - Par de anos com o mesmo verbo (`in 1993 and 2003`): conferir de ouvido que a voz não lê como quantidade.
 - Dólares (`$2.8 billion`): conferir de ouvido; se errar, por extenso só naquele trecho.
 - Segundo número sem "percent" (`52 percent to 45`): conferir que a voz não inventa "percent" nem lê como placar.

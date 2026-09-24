@@ -26,7 +26,7 @@
 | "43 miles north of town" | tirar "of town" | o fecho espelha a abertura e a fonte |
 | Datas do começo | tirar 1880 e 1914 da voz | vão para a tela |
 | HB 3 | manter | reconferir no dia da gravação; ajustar se o vídeo sair depois de janeiro de 2027 |
-| Gladziszewski | não gravar sem confirmar a pronúncia | o Lucas ouve um áudio de Juneau antes da gravação |
+| Gladziszewski | não gravar sem confirmar a pronúncia | o Lucas ouve um áudio de Juneau antes da gravação. **Feito em 24/09:** "Gladyshevsky", ouvido na KTOO; e ainda Kiehl = "Keel", KTOO = "Kay-too" (`pronuncia.md`) |
 | Duração | medir com a voz real | pode passar um pouco de 12 min |
 | "the town" | "east of Willow itself" | |
 | A balsa | a da locução | "the state ferry system, called the Alaska Marine Highway" |
