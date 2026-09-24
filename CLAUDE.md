@@ -71,7 +71,9 @@ produz o master. O deste canal nasce assim:
 1. pauta;
 2. pesquisa com fontes;
 3. roteiro em inglês (`marca/voz.md`);
-4. narração;
+4. narração: ElevenLabs (decidido pelo Lucas em 24/09/2026; `canal.json` › `narracao`). A voz ainda não foi
+   escolhida, e nesta máquina ainda não há o arquivo de chaves (`C:\Users\zangp\.regie\chaves.env`, que o
+   Mateus entrega). Escolher a voz gasta crédito da conta compartilhada: só com o ok do Lucas;
 5. master = a narração sobre tela preta 3840×2160 (`marca/identidade.md` §5).
 
 Transcrição local disponível nesta máquina: `faster-whisper` (modelo large-v3, `word_timestamps=True`,
