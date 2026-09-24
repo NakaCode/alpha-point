@@ -24,8 +24,8 @@
 | Yukon | YOO-kahn | /ˈjuːkɑn/ | YOO-kahn | Wiktionary; Dictionary.com | Juneau |
 | fjord | FYORD | /fjɔrd/ | fyord | Dictionary.com. Risco de a voz ler "fuh-JORD" | Juneau |
 | Knowles (Tony Knowles) | NOHLZ | /noʊlz/ | Nolez | Wiktionary | Juneau |
-| Gladziszewski (Maria Gladziszewski) | glad-ih-SHEV-skee, **sem som de z** | /ˌɡlædɪˈʃɛvski/ | Gladyshevsky | Ouvido pelo Lucas (24/09/2026) na KTOO: a apresentadora que a entrevista e o repórter Jeremy Shea. A hipótese escrita, glad-zih-SHEF-skee, estava errada | Juneau |
-| Kiehl (Jesse Kiehl) | KEEL | /kiːl/ | Keel | Ouvido pelo Lucas (24/09/2026) na KTOO: repórter e apresentador dizendo o nome do senador | Juneau |
+| Gladziszewski (Maria Gladziszewski) | glad-ih-SHEV-skee, **sem som de z** | /ˌɡlædɪˈʃɛvski/ | Gladyshevsky | Ouvido pelo Lucas (24/09/2026) na KTOO: a apresentadora que a entrevista e o repórter Jeremy Shea; e ela mesma, no fórum de candidatos de 2017 ("I am Maria…"). A hipótese escrita, glad-zih-SHEF-skee, estava errada | Juneau |
+| Kiehl (Jesse Kiehl) | KEEL | /kiːl/ | Keel | Ouvido pelo Lucas (24/09/2026) na KTOO: repórter e apresentador dizendo o nome do senador; e ele mesmo, no fórum de candidatos de 2017 ("My name is Jesse…") | Juneau |
 | KTOO (rádio pública de Juneau) | KAY-too: a letra K e depois "too"; **não se soletra** | /ˈkeɪ.tuː/ | Kay-too | Ouvido pelo Lucas (24/09/2026) na própria emissora no ar. A hipótese escrita, K-T-O-O, estava errada | Juneau |
 
 ## A confirmar
@@ -35,7 +35,7 @@ vídeo da própria pessoa). Quem ouve é o Lucas: o Claude acha o trecho e marca
 
 | Termo | Hipótese | Alias provisório | Risco na voz | Onde ouvir | Vídeo |
 |---|---|---|---|---|---|
-| Mat-Su (Mat-Su Valley) | MAT-soo | Mat-Soo (a folha de Juneau também registra "Mat-Sue": escolher um no teste de voz) | ler "S-U" ou "suh" | rádio local do Alasca | Juneau |
+| Mat-Su (Mat-Su Valley) | MAT-soo | Mat-Soo (a folha de Juneau também registra "Mat-Sue": escolher um no teste de voz) | ler "S-U" ou "suh" | nenhum dos 6 áudios da KTOO diz o nome (24/09). Próximo: o vídeo youtube.com/watch?v=QfNUdCMCKbc, que diz "the Mat-Su" no primeiro minuto | Juneau |
 | Rae (Brian Rae) | RAY | Ray | "REE" ou "RAH-ee" | amostra da voz | Juneau |
 | Reamer (David Reamer) | REE-mer | REE-mer | baixo | amostra da voz | Juneau |
 | Stoops (Lee Stoops) | STOOPS | Stoops | baixo | amostra da voz | Juneau |

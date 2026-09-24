@@ -87,6 +87,7 @@ Transcrição local disponível nesta máquina: `faster-whisper` (modelo large-v
 nunca diz) e `marca/midia.md` (de onde vem cada imagem e o que as licenças deixam fazer).
 Todo passo que pede "a marca ativa" lê os três. `marca/prancha.html` é a conferência visual.
 `marca/pronuncias.md` é a folha permanente de pronúncias do canal: a folha de cada vídeo começa dela.
+`marca/embalagem.md` é como o canal faz título e miniatura: os moldes das referências, as regras e a receita da miniatura.
 
 Site que recusa leitura automática (403, captcha, verificação de robô) não se contorna: nem por
 `curl`, nem por outro cliente, nem trocando cabeçalho. Vale para você e para todo subagente, e o

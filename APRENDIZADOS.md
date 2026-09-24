@@ -23,6 +23,7 @@ nada aqui foi alterado no motor.
 | 12 · o primeiro dossiê de pauta | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
 | 13 · o primeiro roteiro e a bancada | escrito em 23/09/2026: Lucas e Mateus ainda não viram |
 | 14 · a aprovação pelo dono e o anti-robô | escrito em 24/09/2026: Lucas e Mateus ainda não viram |
+| 15 · título e miniatura pelas referências | escrito em 24/09/2026: Lucas e Mateus ainda não viram |
 
 ## 23/09/2026 — onboarding (motor em `ffb3ec0`)
 
@@ -299,3 +300,34 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   3. Todo pedido que dá rede a um subagente tem de dizer que não se contorna 403, captcha ou verificação.
      Sem a frase, o subagente trata o bloqueio como erro técnico a resolver.
 - **Por que serve a qualquer canal:** todo canal tem passos que só o dono decide, e subagentes com rede.
+
+## 24/09/2026 — título e miniatura do primeiro vídeo (motor em `44cf6f7`, v0.1.0)
+
+### 15. "Como as referências" se mede, e título e miniatura passam por leitores a frio antes do dono
+- **O problema:** o dono achou o título de trabalho fraco e pediu "algo mais como as referências". Os redatores
+  não conheciam as referências além do nome no `marca/identidade.md`. A primeira rodada de propostas ignorava
+  o estilo delas.
+- **O que resolveu:**
+  1. **Medir as referências.** Foram lidos os últimos 30 vídeos de cada canal de referência, com views, na
+     página pública, e as miniaturas que mais renderam, vistas pelo navegador do app. Disso saíram os moldes: o
+     Geography Effect escreve "Fato. Virada.", "Why + lugar + paradoxo" e põe dinheiro no título; o Big Systems
+     faz pergunta curta; o Capital Financeiro usa o parêntese.
+  2. **Um redator por molde**, e um júri com uma lente a mais: "caberia na grade da referência?".
+  3. **Prova dos 5 finalistas.** Um refutador de fatos por finalista e três leitores americanos a frio, de
+     perfis diferentes, que viram só o título e o texto da miniatura. Os leitores acharam o que o júri não viu:
+     "capital" lida como dinheiro ao lado de "price"; "survive a vote" lida como votação derrotada; título sem
+     data lido como notícia da semana; e o finalista 5 entrega o final.
+  4. **Banca da miniatura.** A miniatura, em HTML renderizado pelo Chrome sobre satélite de domínio público,
+     passou por quatro lentes: tamanho de 168×94, geografia por coordenadas, marca, e leitura a frio. A primeira
+     versão, feita com o escurecimento da regra de vídeo (65/70), ficou escura demais para o feed: luminância
+     média de 60/255. Isso virou regra própria de miniatura em `marca/embalagem.md`.
+- **Para o motor:**
+  1. A marca de um canal precisa dos moldes de título das referências, não só dos nomes delas. Um passo de
+     onboarding poderia medi-los (títulos, views, miniaturas) e gravá-los numa `marca/embalagem.md`.
+  2. A miniatura não é uma cena de vídeo. Escurecimento, margens, canto reservado e tamanho do anel mudam, e
+     o canto que importa é o da duração, não o da marca-d'água. Vale ter um contrato de miniatura separado do
+     contrato de cena.
+  3. Leitor a frio (um agente sem o roteiro, com persona) é barato e acha a ambiguidade que quem leu o roteiro
+     não vê. Serve a qualquer passo que o público lê sem contexto: título, miniatura, primeira frase.
+- **Por que serve a qualquer canal:** todo canal tem referências e publica título e miniatura para um público
+  que não leu o roteiro.

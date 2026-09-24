@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<title>Miniatura — Juneau</title>
+<!-- Miniatura do vídeo de Juneau. Título escolhido pelo dono em 24/09/2026:
+     "Alaska Voted for a New Capital in 1974. It Was Never Built."
+     Palco 2560×1440 (2× o tamanho de envio, 1280×720). Base: Landsat WELD 2000 via NASA GIBS,
+     domínio público, sem crédito na tela (marca/identidade.md §6–7). Geometria da base em
+     midia/juneau/embalagem/base-matsu-landsat-2000.geo.json: o anel fica no local escolhido em 1976,
+     5 milhas a leste da vila de Willow (roteiro p3); o nome Willow não vai à capa (projeto de petróleo).
+
+     v3, depois da banca de 24/09 (midia/juneau/embalagem/banca-miniatura-v2.json):
+     - a base é ampliada 1,12× e deslocada (-250, -110) para abrir espaço entre o texto e o anel; toda
+       posição no mapa = posição na base × 1,12 + deslocamento. Sítio: 768×383 → 610×319;
+       Anchorage: 757×1185 → 598×1217;
+     - base mais clara que a do vídeo (a miniatura disputa o feed escuro; a pílula garante o contraste);
+     - anel de 224 px com traço de 38 px (112/19 no envio): maior não dá, porque a borda oeste passaria
+       por cima da vila de Willow;
+     - seta longa, saindo da borda da pílula e caindo no anel, em --tinta;
+     - v5: "Anchorage" de 84 para 96 px e a seta encostada na pílula (reconferência de 24/09). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Inter:wght@700&display=block" rel="stylesheet">
+<style>
+  :root { --tinta: #F4F1EA; --rotulo: rgba(11,15,20,.88); --destaque: #F5A524; }
+  html, body { margin: 0; width: 2560px; height: 1440px; overflow: hidden; background: #0E1726; }
+  .palco { position: relative; width: 2560px; height: 1440px; overflow: hidden; }
+  .base { position: absolute; left: 0; top: 0; width: 2560px; height: 1440px; transform-origin: 0 0;
+    transform: translate(-250px, -110px) scale(1.12); filter: brightness(.9) saturate(1) contrast(1.05); }
+  .vinheta { position: absolute; inset: 0;
+    background: radial-gradient(ellipse 75% 85% at 610px 319px, transparent 45%, rgba(5,8,14,.35) 100%); }
+
+  .anel { position: absolute; left: 610px; top: 319px; width: 224px; height: 224px; box-sizing: border-box;
+    border: 38px solid var(--destaque); border-radius: 50%; transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 5px rgba(11,15,20,.7), inset 0 0 0 5px rgba(11,15,20,.7), 0 0 30px rgba(0,0,0,.6); }
+
+  .pilula { position: absolute; background: var(--rotulo); color: var(--tinta); border-radius: 24px; white-space: nowrap; }
+  .heroi { right: 90px; top: 170px; padding: 36px 64px 44px; font: 800 300px/0.92 'Barlow Condensed', sans-serif;
+    letter-spacing: -0.01em; }
+  .lugar { left: 690px; top: 1160px; padding: 20px 34px; font: 700 96px/1 Inter, sans-serif; }
+  .ponto { position: absolute; left: 598px; top: 1217px; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--tinta); transform: translate(-50%, -50%); box-shadow: 0 0 0 8px rgba(11,15,20,.7); }
+  svg { position: absolute; inset: 0; overflow: visible; }
+</style>
+</head>
+<body>
+<div class="palco">
+  <img class="base" src="../../../midia/juneau/embalagem/base-matsu-landsat-2000.jpg" alt="">
+  <div class="vinheta"></div>
+  <svg width="2560" height="1440" viewBox="0 0 2560 1440">
+    <defs>
+      <filter id="sombra" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#000" flood-opacity=".8"/></filter>
+    </defs>
+    <!-- seta: sai de baixo da pílula, faz um arco e entra no anel por baixo e pela direita -->
+    <g filter="url(#sombra)" fill="none" stroke="#F4F1EA" stroke-width="34" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 1040 540 C 1010 730, 800 700, 730 450"/>
+      <path d="M 703 541 L 730 450 L 800 514"/>
+    </g>
+  </svg>
+  <div class="anel"></div>
+  <div class="ponto"></div>
+  <div class="pilula lugar">Anchorage</div>
+  <div class="pilula heroi">RIGHT HERE?</div>
+</div>
+</body>
+</html>
