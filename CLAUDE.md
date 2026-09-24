@@ -71,11 +71,16 @@ produz o master. O deste canal nasce assim:
 1. pauta;
 2. pesquisa com fontes;
 3. roteiro em inglês (`marca/voz.md`);
-4. narração: ElevenLabs (decidido pelo Lucas em 24/09/2026; `canal.json` › `narracao`). A voz ainda não foi
-   escolhida, e nesta máquina ainda não há o arquivo de chaves (`C:\Users\zangp\.regie\chaves.env`, que o
-   Mateus entrega). Gastar crédito da conta compartilhada pede o ok do Lucas. Já autorizado (24/09): amostras
-   em 3 vozes, uns 700 caracteres cada, escolhidas antes pelas prévias grátis. A narração inteira pede um ok
-   próprio;
+4. narração: ElevenLabs, modelo eleven_v3 (decidido pelo Lucas em 24/09/2026; `canal.json` › `narracao`).
+   - **A voz** (escolhida pelo Lucas em 24/09/2026): "Alpha Point - Narrator (anchor, mid-30s)",
+     `OjaLccTyGvBFh7nx0y4s`. Foi desenhada no Voice Design a partir da The Trusted News Anchor, a que ele mais
+     gostou, mas que soava velha. Como foi feita, e as vozes que ficaram para trás: `marca/vozes.html`.
+   - A conta compartilhada da ElevenLabs serve a vários canais. O Lucas entra nela pelo navegador do app, e o
+     Claude opera o site com ele vendo; nunca digite a senha dele.
+   - Nesta máquina ainda não há o arquivo de chaves da API (`C:\Users\zangp\.regie\chaves.env`, que o Mateus
+     entrega).
+   - Gastar crédito pede o ok do Lucas. Gasto em 24/09: 717 (Max no v3, 2 versões), 717 (Max no v2) e 282
+     (Voice Design). A narração inteira pede um ok próprio;
 5. master = a narração sobre tela preta 3840×2160 (`marca/identidade.md` §5).
 
 Transcrição local disponível nesta máquina: `faster-whisper` (modelo large-v3, `word_timestamps=True`,

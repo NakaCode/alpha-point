@@ -353,6 +353,17 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
      - o v3 não aceita SSML e não costura pedidos;
      - o limite é de 5.000 caracteres por pedido;
      - números, datas e siglas vão por extenso no texto.
+  4. **Refazer a voz que quase serve.** A voz de que o dono mais gostou soava velha. O texto de descrição dela é
+     público, então foi refeita no Voice Design com o mesmo texto, trocando só o que a envelhecia ("middle-aged",
+     "veteran", "gravitas", "measured pace"). A nova foi a escolhida. Custou só o texto da prévia (282 créditos),
+     e o Voice Design devolve 3 opções.
+  5. **O que o site da ElevenLabs faz sem avisar:**
+     - no Text to Speech com o v3, cada clique gera 2 versões e cobra uma vez;
+     - ao trocar para o v3, a voz volta para uma padrão;
+     - no editor do v3, uma linha em branco entre parágrafos faz o contador contar só o primeiro. Use uma
+       quebra simples e confira que o contador bate com o tamanho do texto antes de gerar;
+     - para clone profissional, o próprio site recomenda o Multilingual v2, não o v3;
+     - no v3 não há controle de velocidade; no v2 há, mas a velocidade 1,05 ainda saiu mais lenta que o v3.
 - **Para o motor:**
   1. `narracao.voice_id` não pode apontar para voz padrão antiga: ela some em 31/12/2026.
   2. A amostra paga tem de sair no mesmo modelo da narração. A prévia de um clone pode enganar no v3.
