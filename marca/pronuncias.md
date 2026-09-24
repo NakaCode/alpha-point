@@ -27,6 +27,7 @@
 | Gladziszewski (Maria Gladziszewski) | glad-ih-SHEV-skee, **sem som de z** | /ˌɡlædɪˈʃɛvski/ | Gladyshevsky | Ouvido pelo Lucas (24/09/2026) na KTOO: a apresentadora que a entrevista e o repórter Jeremy Shea; e ela mesma, no fórum de candidatos de 2017 ("I am Maria…"), que o Lucas também ouviu. A hipótese escrita, glad-zih-SHEF-skee, estava errada | Juneau |
 | Kiehl (Jesse Kiehl) | KEEL | /kiːl/ | Keel | Ouvido pelo Lucas (24/09/2026) na KTOO: repórter e apresentador dizendo o nome do senador; e ele mesmo, no fórum de candidatos de 2017 ("My name is Jesse…"), que o Lucas também ouviu | Juneau |
 | KTOO (rádio pública de Juneau) | KAY-too: a letra K e depois "too"; **não se soletra** | /ˈkeɪ.tuː/ | Kay-too | Ouvido pelo Lucas (24/09/2026) na própria emissora no ar. A hipótese escrita, K-T-O-O, estava errada | Juneau |
+| Mat-Su (Mat-Su Valley) | MAT-soo, com o "su" do nome inglês Sue; ao ouvido brasileiro, "mat-siu" | /ˈmætˌsuː/ | Mat-Sue | Ouvido pelo Lucas (24/09/2026) no vídeo youtube.com/watch?v=QfNUdCMCKbc, primeiro minuto. O "u" longo americano soa como "iu" ao ouvido brasileiro: por isso "Sue", não "Soo" | Juneau |
 
 ## A confirmar
 
@@ -35,7 +36,6 @@ vídeo da própria pessoa). Quem ouve é o Lucas: o Claude acha o trecho e marca
 
 | Termo | Hipótese | Alias provisório | Risco na voz | Onde ouvir | Vídeo |
 |---|---|---|---|---|---|
-| Mat-Su (Mat-Su Valley) | MAT-soo | Mat-Soo (a folha de Juneau também registra "Mat-Sue": escolher um no teste de voz) | ler "S-U" ou "suh" | nenhum dos 6 áudios da KTOO diz o nome (24/09). Próximo: o vídeo youtube.com/watch?v=QfNUdCMCKbc, que diz "the Mat-Su" no primeiro minuto | Juneau |
 | Rae (Brian Rae) | RAY | Ray | "REE" ou "RAH-ee" | amostra da voz | Juneau |
 | Reamer (David Reamer) | REE-mer | REE-mer | baixo | amostra da voz | Juneau |
 | Stoops (Lee Stoops) | STOOPS | Stoops | baixo | amostra da voz | Juneau |
@@ -50,6 +50,8 @@ Regras de grafia para a cópia do texto que vai à voz. Mudam a grafia, nunca um
   diz "Kay-too". Confirme ouvindo a própria emissora antes de decidir.
 - Sobrenome estrangeiro de gente local: vale como a pessoa e a cidade dizem, não a pronúncia da língua de
   origem. A hipótese "polonesa" de Gladziszewski errou; a rádio de Juneau diz "Gladyshevsky".
+- O "u" longo do inglês americano (Sue, too, new) soa como "iu" ao ouvido brasileiro. Quando o Lucas ouvir
+  "iu", o alias usa a grafia inglesa comum desse som ("Sue"), não "iu" nem "yoo".
 - Par de anos com o mesmo verbo (`in 1993 and 2003`): conferir de ouvido que a voz não lê como quantidade.
 - Dólares (`$2.8 billion`): conferir de ouvido; se errar, por extenso só naquele trecho.
 - Segundo número sem "percent" (`52 percent to 45`): conferir que a voz não inventa "percent" nem lê como placar.

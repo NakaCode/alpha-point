@@ -1,4 +1,5 @@
-// Grava na folha de pronúncia do Juneau o que o dono confirmou de ouvido (24/09/2026).
+// Grava na folha de pronúncia do Juneau o que o dono confirmou de ouvido (24/09/2026):
+// Gladziszewski, Kiehl, KTOO e Mat-Su.
 // Mexe só em `pronuncia` do junto; o texto do roteiro não muda. Depois: montar-roteiro.mjs.
 //   node aplicar-pronuncias-ouvidas.mjs <junto.json>
 import fs from "node:fs";
@@ -30,6 +31,13 @@ const NOVOS = {
     confirmado: true,
     fonte: `${OUVIDO}: a própria emissora no ar, com o repórter Jeremy Shea ("I'm Jeremy Shea with KTOO", 05VLADIVOSTOK-NPR-One.mp3, em 0:01) e a vinheta ("You're listening to KTOO", 26anniversary.mp3, em 0:03). O Lucas ouviu "K-tu". A hipótese anterior, soletrar K-T-O-O, estava errada. Trechos em midia/pronuncias/trechos/.`,
   },
+  "Mat-Su (Mat-Su Valley)": {
+    como_se_fala: "MAT-soo, com o \"su\" do nome inglês Sue (ao ouvido brasileiro, \"mat-siu\")",
+    ipa: "/ˈmætˌsuː/",
+    alias_tts: "Mat-Sue",
+    confirmado: true,
+    fonte: `Ouvida pelo Lucas em 24/09/2026 no vídeo youtube.com/watch?v=QfNUdCMCKbc, que diz "the Mat-Su" no primeiro minuto: ele ouviu "mat-siu". Nenhum dos 6 áudios da KTOO diz o nome. O "u" longo do inglês americano sai mais para a frente da boca e soa como "iu" ao ouvido brasileiro; por isso o alias é "Mat-Sue", e não "Mat-Soo".`,
+  },
 };
 
 let trocados = 0;
@@ -41,6 +49,9 @@ if (trocados !== Object.keys(NOVOS).length) throw new Error(`esperava ${Object.k
 const i = R.pronuncia.notas_tts.findIndex((n) => n.startsWith('"KTOO"'));
 if (i < 0) throw new Error("nota de KTOO não achada");
 R.pronuncia.notas_tts[i] = '"KTOO" → "Kay-too": a emissora diz a letra K e depois "too"; não soletrar (ouvido na própria KTOO, 24/09/2026)';
+const m = R.pronuncia.notas_tts.findIndex((n) => n.startsWith('"Mat-Su Valley"'));
+if (m < 0) throw new Error("nota de Mat-Su não achada");
+R.pronuncia.notas_tts[m] = '"Mat-Su Valley" → "Mat-Sue Valley": o "su" do nome Sue, que o dono ouviu como "mat-siu"; o hífen pode levar a voz a ler "Mat S-U" (24/09/2026)';
 
 fs.writeFileSync(ENT, JSON.stringify(bruto, null, 1));
 console.log(`${trocados} termos confirmados; nota de KTOO trocada`);

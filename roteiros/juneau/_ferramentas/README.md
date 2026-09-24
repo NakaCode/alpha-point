@@ -25,7 +25,7 @@ canal: o bruto não viaja). Rode os scripts de dentro dessa pasta.
 `selecionar.mjs <ids>` mostra só as afirmações pedidas do ledger, com fonte e passagem.
 
 `aplicar-pronuncias-ouvidas.mjs <junto.json>` grava na folha de pronúncia o que o dono confirmou de ouvido
-(24/09/2026: Gladziszewski, Kiehl, KTOO). Mexe só em `pronuncia`; depois, `montar-roteiro.mjs` regenera a
+(24/09/2026: Gladziszewski, Kiehl, KTOO e Mat-Su). Mexe só em `pronuncia`; depois, `montar-roteiro.mjs` regenera a
 folha, e os demais arquivos saem idênticos byte a byte.
 
 ## `pagina-de-decisoes/`

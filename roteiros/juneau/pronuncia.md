@@ -10,7 +10,7 @@
 | Haines | HAYNZ | /heɪnz/ | sim | pronounce.namedrop.io/how-to-pronounce-haines ('haynz'); pronúncia padrão do sobrenome inglês. Wikipedia (Haines, Alaska) não traz IPA. Risco baixo. | Haynz |
 | Taku (Taku River) | TAH-koo | /ˈtɑːkuː/ | sim | Governo do Canadá (INAC), 'Pronunciation Guide to First Nations in British Columbia', cópia em blogs.ubc.ca/hist469/files/2018/01/Pronunciation-Guide-to-First-Nations-in-British-Columbia.pdf: 'Taku River Tlingit — TA-koo River Kling-git'. Também pronounce.namedrop.io (TAH-koo, /ˈtɑˌku/). | TAH-koo |
 | Wasilla | wah-SIL-uh | /wɑˈsɪlə/ | sim | Tulugaq (blog de um alasquiano, tulugaq.wordpress.com/2007/06/06/pronunciation-of-alaskan-words/): [wa.ˈsɪl.ə], e observa que a imprensa nacional erra a 1ª sílaba como 'wuh'. Fonte informal; Wikipedia, Wiktionary e Dictionary.com não trazem pronúncia. | wah-SILL-uh |
-| Mat-Su (Mat-Su Valley) | MAT-soo | /ˈmætˌsuː/ | **não** | Não achei fonte escrita para a forma curta. Wikipedia (Matanuska-Susitna Valley) dá só o nome completo /mætəˈnuːskə suːˈsɪtnə/ e diz que é 'known locally as the Mat-Su'. A forma MAT-soo vem das duas primeiras sílabas de MATanuska e SUsitna. Também tentei Wiktionary, Travel Alaska e o FAQ de alaskavisit.com. Risco de TTS: ler 'Su' como 'S-U' ou 'suh'. | Mat-Sue |
+| Mat-Su (Mat-Su Valley) | MAT-soo, com o "su" do nome inglês Sue (ao ouvido brasileiro, "mat-siu") | /ˈmætˌsuː/ | sim | Ouvida pelo Lucas em 24/09/2026 no vídeo youtube.com/watch?v=QfNUdCMCKbc, que diz "the Mat-Su" no primeiro minuto: ele ouviu "mat-siu". Nenhum dos 6 áudios da KTOO diz o nome. O "u" longo do inglês americano sai mais para a frente da boca e soa como "iu" ao ouvido brasileiro; por isso o alias é "Mat-Sue", e não "Mat-Soo". | Mat-Sue |
 | Anchorage | ANG-ker-ij | /ˈæŋkərɪdʒ/ | sim | Dictionary.com (dictionary.com/browse/anchorage: ANG-ker-ij, /ˈæŋ kər ɪdʒ/) | ANG-ker-ij |
 | Fairbanks | FAIR-bangks | /ˈfɛərˌbæŋks/ | sim | Dictionary.com (dictionary.com/browse/fairbanks: [fair-bangks]) | FAIR-banks |
 | Yukon | YOO-kahn | /ˈjuːkɑn/ | sim | Wiktionary, Yukon (EUA/Canadá /ˈjuː.kɑn/); Dictionary.com ([yoo-kon]) | YOO-kahn |
@@ -41,7 +41,7 @@
 - Distâncias: "43 miles" (2 vezes) → "forty-three miles"; "30 miles" → "thirty miles"; "70 road miles" → "seventy road miles"
 - Contagens: "79 votes" → "seventy-nine votes"; "41 avalanche paths" → "forty-one avalanche paths"; "12 years" → "twelve years"
 - "KTOO" → "Kay-too": a emissora diz a letra K e depois "too"; não soletrar (ouvido na própria KTOO, 24/09/2026)
-- "Mat-Su Valley" → "Mat-Soo Valley" (o hífen pode levar o TTS a ler "Mat S-U")
+- "Mat-Su Valley" → "Mat-Sue Valley": o "su" do nome Sue, que o dono ouviu como "mat-siu"; o hífen pode levar a voz a ler "Mat S-U" (24/09/2026)
 - "Juneau's" → "JOO-nohz" (conferir que o TTS não lê "joo-NO" nem "JOO-noss")
 - "Frank committee" / "Frank initiative": ler como o nome "Frank"; é acrônimo (Frustrated, Responsible Alaskans Needing Knowledge), mas não deve ser soletrado. No roteiro já está em caixa baixa, então não mudar para FRANK no texto enviado ao TTS
 - "World War Two" já está por extenso: manter (não converter para "WWII")
