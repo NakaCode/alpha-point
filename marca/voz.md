@@ -10,10 +10,11 @@
 **Quem fala**: um narrador de uns 35 anos. É jornalista de formação e explica como quem abre o mapa
 na mesa, entre duas pessoas. O canal é **faceless**: só a voz aparece, nunca o rosto.
 
-**A voz sintética**: ElevenLabs, eleven_v3, voz "Alpha Point - Narrator (anchor, mid-30s)"
-(`OjaLccTyGvBFh7nx0y4s`), escolhida pelo Lucas em 24/09/2026. Foi desenhada no Voice Design a partir de um
-texto de descrição, que fica em `marca/vozes.html` junto com o porquê da escolha. Se um dia a voz precisar ser
-refeita, parte-se desse texto.
+**A voz sintética**: ElevenLabs, eleven_v3, voz "Alpha Point - Narrator (conversational)"
+(`iAc9oLyb1zcwD4O3ZTBv`), escolhida pelo Lucas em 24/09/2026. É um Remix de uma voz desenhada no Voice Design.
+Os dois textos que a fizeram, a descrição da voz e o comando do Remix, ficam em `marca/vozes.html`, com o porquê
+da escolha. Se um dia a voz precisar ser refeita, parte-se deles. Ela foi remixada porque a anterior, uma
+"news anchor", soava lida. O narrador **conversa**: conta e apresenta, não lê.
 
 **Para quem**: um norte-americano de 25 a 60 anos que não acompanha geopolítica e não precisa
 acompanhar. Tem tempo e curiosidade, mas não tem o vocabulário.

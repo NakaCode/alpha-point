@@ -72,16 +72,24 @@ produz o master. O deste canal nasce assim:
 2. pesquisa com fontes;
 3. roteiro em inglês (`marca/voz.md`);
 4. narração: ElevenLabs, modelo eleven_v3 (decidido pelo Lucas em 24/09/2026; `canal.json` › `narracao`).
-   - **A voz** (escolhida pelo Lucas em 24/09/2026): "Alpha Point - Narrator (anchor, mid-30s)",
-     `OjaLccTyGvBFh7nx0y4s`. Foi desenhada no Voice Design a partir da The Trusted News Anchor, a que ele mais
-     gostou, mas que soava velha. Como foi feita, e as vozes que ficaram para trás: `marca/vozes.html`.
+   - **A voz** (escolhida pelo Lucas em 24/09/2026): "Alpha Point - Narrator (conversational)",
+     `iAc9oLyb1zcwD4O3ZTBv`. É um Remix de Voz, com força baixa, da "Alpha Point - Narrator (anchor, mid-30s)"
+     (`OjaLccTyGvBFh7nx0y4s`). Essa, por sua vez, foi desenhada a partir da The Trusted News Anchor. O Remix
+     manteve o timbre e trocou a leitura de âncora por conversa. Como cada uma foi feita: `marca/vozes.html`.
+   - **Como se gera** (decidido pelo Lucas em 24/09 depois de ouvir testes): eleven_v3, estabilidade "Criativo";
+     cada bloco numa linha só, sem quebras; blocos de seções inteiras de até 5.000 caracteres
+     (`preparar-voz.mjs`). Com quebras de linha e "Natural", as pausas soaram "programadas". O Multilingual v2
+     soou mais "lido". Em "Criativo" o v3 pode pular ou trocar palavra: confira cada bloco pela transcrição.
    - A conta compartilhada da ElevenLabs serve a vários canais. O Lucas entra nela pelo navegador do app, e o
      Claude opera o site com ele vendo; nunca digite a senha dele.
    - Nesta máquina ainda não há o arquivo de chaves da API (`C:\Users\zangp\.regie\chaves.env`, que o Mateus
      entrega).
-   - Gastar crédito pede o ok do Lucas. Gasto em 24/09: 717 (Max no v3, 2 versões), 717 (Max no v2), 282
-     (Voice Design) e 717 (a voz escolhida, amostra completa; o Lucas preferiu a Geração 2 e ouviu os nomes
-     certos). Total de 2.433. A narração inteira pede um ok próprio;
+   - Gastar crédito pede o ok do Lucas. Gasto em 24/09, conferido no saldo: 2.433 nas amostras e na escolha
+     da voz; 15.564 na narração do texto aprovado (o bloco 1 com quebras de linha, o teste sem quebras e os 3
+     blocos em "Criativo"); 709 no teste do v2; 1.498 na prova do tom de conversa (teste com a voz anterior e o
+     Remix). Total de 20.204. A narração inteira pede um ok próprio;
+   - O navegador do app corta downloads grandes em uns 1,8 MB: o MP3 de um bloco chegou com 112 s de 4 min
+     29 s. Para baixar a narração, use outro caminho (o Lucas baixa no navegador dele, ou a API).
 5. master = a narração sobre tela preta 3840×2160 (`marca/identidade.md` §5).
 
 Transcrição local disponível nesta máquina: `faster-whisper` (modelo large-v3, `word_timestamps=True`,

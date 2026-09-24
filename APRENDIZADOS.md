@@ -363,7 +363,24 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
      - no editor do v3, uma linha em branco entre parágrafos faz o contador contar só o primeiro. Use uma
        quebra simples e confira que o contador bate com o tamanho do texto antes de gerar;
      - para clone profissional, o próprio site recomenda o Multilingual v2, não o v3;
-     - no v3 não há controle de velocidade; no v2 há, mas a velocidade 1,05 ainda saiu mais lenta que o v3.
+     - no v3 não há controle de velocidade; no v2 há, mas a velocidade 1,05 ainda saiu mais lenta que o v3;
+     - no site, o editor do v2 também para em 5.000 caracteres (os 10.000 da documentação são da API);
+     - a estabilidade do v3 tem só três posições: Criativo, Natural e Robusto.
+  6. **"Lido" tem duas causas, e as duas foram testadas antes de mexer no roteiro inteiro.** Com a narração pronta,
+     o dono achou o texto "lido". A prova usou só o trecho de abertura:
+     - reescrito em tom de conversa por 3 redatores, 3 lentes (fatos, persona, ouvido americano) e um conferente
+       de fatos;
+     - lido pela voz de antes e por um **Remix de Voz** com força "Baixa", que mantém o timbre e muda o jeito de
+       falar.
+
+     O Remix venceu. A lição: **uma voz desenhada como "news anchor" lê como âncora**. Para narração que
+     conversa, descreva quem conta, não quem apresenta o jornal. E faça a prova com um trecho curto: o custo é de
+     uns 1.500 créditos, contra os uns 11.000 de uma narração inteira.
+  7. **Pausas "programadas".** No v3 com estabilidade "Natural" e quebras de linha entre os parágrafos, o dono
+     ouviu pausas de tamanho fixo. Com o bloco numa linha só e a estabilidade em "Criativo", soou natural. O preço
+     é conferir as palavras de cada bloco, porque o "Criativo" pode pular ou trocar alguma.
+  8. **O navegador do app corta downloads grandes.** O MP3 de um bloco de 4 min 29 s chegou com 1,8 MB e 112 s,
+     duas vezes no mesmo tamanho. Para áudio longo, baixe por outro caminho.
 - **Para o motor:**
   1. `narracao.voice_id` não pode apontar para voz padrão antiga: ela some em 31/12/2026.
   2. A amostra paga tem de sair no mesmo modelo da narração. A prévia de um clone pode enganar no v3.
