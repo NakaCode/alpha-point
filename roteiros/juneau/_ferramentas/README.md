@@ -50,3 +50,23 @@ atualize o sha no topo do script depois da nova aprovação.
 
 As marcações ficaram guardadas na própria página, e `roteiros/juneau/aprovacao.md` resume o que foi
 decidido.
+
+## Rodada 7: o tom de conversa
+
+O dono ouviu a narração do texto aprovado e pediu "um tom mais conversacional, como alguém contando algo/apresentando"
+(24/09/2026). Três passadas, cada uma conferida contra as fontes do dossiê por um conferente cético:
+1. a reescrita seção por seção, no registro da prova aprovada (`voz/teste-conversa.md`), revista por quatro lentes
+   (persona, ouvido americano, leitura pela voz, costura) → `r7-result.json`;
+2. o enxugamento, porque a reescrita passou do limite de 1.850 palavras → `r7-enxugar-result.json`;
+3. o polimento dos trechos que a leitura final ainda achou lidos → `r7-polir-result.json`.
+
+De dentro de `midia/juneau/roteiro/_execucao`:
+- `juntar-r7.mjs` põe as três camadas uma sobre a outra (a seção que uma passada não aprovou fica como estava) →
+  `r7-final-result.json`;
+- `aplicar-r7.mjs r7-final-result.json [escolhas.json]` troca os parágrafos e leva cada afirmação ao trecho novo
+  (tem de ser literal) → `r7-secoes.json`, `r7-trocas.json`, `r7-itens.json`. Sem escolhas, aplica todas as novas;
+- `preparar-r7.mjs` é o portão (o da r6, mais a regra das datas em fila) e `diff-r6-r7.mjs` a prova de alcance.
+
+`pagina-r7/` gera a página em que o dono escolhe, parágrafo por parágrafo, entre o texto de hoje e o novo:
+`montar-dados.mjs <roteiro-narrador.md> r7-itens.json r7-final-result.json r6-secoes.json <dados.json>` e
+`montar-pagina.mjs <dados.json> <saída.html>`.
