@@ -160,6 +160,14 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    pré-v1 lê como apelidos. Provado nesta máquina: a cena `out/prova-marca/graphics/prova-marca.html` saiu em
    3840×2160 pelo `renderizar.mjs --4k`, com as fontes certas. Para trocar a cor do protagonista numa cena, passe
    `RIG.paleta({destaque: "#…"})`, **nunca** `{acento}`: o `--acento` segue o `--destaque`, não o contrário.
+   **Base de satélite pela MapTiler** (o Lucas avisou em 25/09 que a chave vem): perfil `maptiler` da pré-v1
+   (satellite-v2 + terrain-rgb-v2), com a chave `MAPTILER_KEY` em `C:Userszangp.regiechaves.env` (o
+   `.env` do canal também é lido e fica fora do git, mas a casa dela é o arquivo da máquina). Antes da primeira
+   cena, pela regra de `marca/identidade.md` §6, a licença entra registrada ali: qual plano é o da chave (o Flex
+   de vídeo vale até 100 mil inscritos; o Free não cobre uso comercial) e o crédito
+   `© MapTiler © OpenStreetMap contributors` na tela durante todo o mapa, mais a linha na descrição
+   (`docs/CREDITO-DE-MAPA.md` da pré-v1). O plano cobra por pedido de mapa, e render pede muitos: olhe o painel
+   da MapTiler no primeiro mês.
 8. **XML do Premiere** pelo `finalizar.mjs`, primeiro com `--sem-trilha`. Será a primeira abertura real dele no
    Windows.
 9. Do vídeo 2 em diante, **narração pela API** com `narrar.mjs` (mesma voz, modelo, estabilidade e blocos).
