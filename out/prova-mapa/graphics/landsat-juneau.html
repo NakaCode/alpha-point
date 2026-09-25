@@ -21,6 +21,7 @@
       são OSM: ODbL. O bloco da DESCRIÇÃO está em ../_pesquisa/base-landsat.json (o _creditos-mapa.md que o
       preparar-cena grava só conhece os perfis da pré-v1; o base-landsat.py o regrava certo).
     · Sem o véu (#scrim) do molde: a identidade não tem degradê.
+    · A divisa com o contorno escuro por baixo (§6, decisão do Lucas em 25/09/2026: sem ele sumia no gelo).
     · Rótulo na pílula da marca (§4.1), anel da assinatura (§4.4), estrada que se desenha. A divisa e CANADA
       saem quando a estrada chega à metade: nunca mais que 5 elementos juntos (§4.2).
     · A espera de cada quadro também aguarda a estrada (setData) e a divisa.
@@ -249,7 +250,8 @@
   if (window.__erroCena) return;
 
   // ── canal: a geometria que esta cena desenha, tirada dos arquivos (nada à mão) ─────────────────
-  var TINTA = getComputedStyle(document.documentElement).getPropertyValue("--tinta").trim() || "#F4F1EA";
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+  var TINTA = tok("--tinta", "#F4F1EA");
   var FRONTEIRA = (function () {
     var fc = geo(CENA.fronteira.geo); if (!fc) return null;
     var f = (fc.features || []).filter(function (x) { return x.properties && x.properties.SOV_A3 === CENA.fronteira.pais; });
@@ -504,11 +506,16 @@
       }
     } catch (e) { return falhar("não consegui desenhar o território: " + e.message); }
     try {
-      // canal: a divisa (identidade §6: demais fronteiras em branco a 35 %, 3 px). O contorno do polígono do
-      // Canadá no recorte É a divisa nesta janela (o Canadá não toca o mar aqui).
+      // canal: a divisa (identidade §6: branco a 35 %, 3 px, sobre contorno escuro a 45 %, 7 px — os valores
+      // vêm dos tokens). O contorno do polígono do Canadá no recorte É a divisa nesta janela (o Canadá não toca
+      // o mar aqui). A cor já traz a opacidade da marca; line-opacity só faz a entrada e a saída.
       map.addSource("fronteira", { type: "geojson", data: FRONTEIRA });
-      map.addLayer({ id: "fronteira", type: "line", source: "fronteira",
-        paint: { "line-color": "#FFFFFF", "line-width": 3, "line-opacity": 0 } });
+      map.addLayer({ id: "fronteira-contorno", type: "line", source: "fronteira", layout: { "line-join": "round" },
+        paint: { "line-color": tok("--fronteira-contorno-cor", "rgba(11,15,20,0.45)"),
+                 "line-width": parseFloat(tok("--fronteira-contorno-espessura", "7")), "line-opacity": 0 } });
+      map.addLayer({ id: "fronteira", type: "line", source: "fronteira", layout: { "line-join": "round" },
+        paint: { "line-color": tok("--fronteira-cor", "rgba(255,255,255,0.35)"),
+                 "line-width": parseFloat(tok("--fronteira-espessura", "3")), "line-opacity": 0 } });
       // a estrada: traço em --tinta sobre uma sombra escura, para ler sobre o satélite; cresce com o tempo
       map.addSource("estrada", { type: "geojson", data: trechoDaEstrada(0) });
       map.addLayer({ id: "estrada-sombra", type: "line", source: "estrada",
@@ -624,8 +631,9 @@
     // canal: divisa, estrada, rótulos e anel — tudo função de t (identidade §4.4)
     var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
     var saida = function (o) { return o.sai == null ? 1 : 1 - eo(seg(t, o.sai, 0.3)); };   // sai em 300 ms, só opacidade
-    map.setPaintProperty("fronteira", "line-opacity",
-      +(0.35 * eo(seg(t, CENA.fronteira.entra, CENA.fronteira.dura)) * saida(CENA.fronteira)).toFixed(3));
+    var vf = +(eo(seg(t, CENA.fronteira.entra, CENA.fronteira.dura)) * saida(CENA.fronteira)).toFixed(3);
+    map.setPaintProperty("fronteira-contorno", "line-opacity", vf);
+    map.setPaintProperty("fronteira", "line-opacity", vf);
     var src = map.getSource("estrada");
     if (src) src.setData(trechoDaEstrada(eio(seg(t, CENA.estrada.entra, CENA.estrada.dura))));
     CENA.rotulos.forEach(function (r) { placeRotulo(r, eo(seg(t, r.entra, 0.3)), saida(r)); });

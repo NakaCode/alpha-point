@@ -158,8 +158,11 @@ completo e cargo (ofício).
 ## 6 · Base de mapa e mídia
 
 **Tratamento da base de satélite**: brilho a 65 %, saturação a 70 %. Contorno do protagonista em
-`--tinta`, 6 px. Demais fronteiras em branco a 35 %, 3 px. Preenchimento do protagonista:
-`--destaque` a 85 %, para o relevo transparecer.
+`--tinta`, 6 px. Demais fronteiras em branco a 35 %, 3 px, sobre um contorno escuro de `#0B0F14` a 45 %,
+7 px. Preenchimento do protagonista: `--destaque` a 85 %, para o relevo transparecer.
+
+O contorno escuro entrou em 25/09/2026, por decisão do Lucas. Sem ele, a divisa sumia sobre neve e gelo: no
+teste de Juneau, o contraste sobre o campo de gelo era de 1,5:1.
 
 **Bases aceitas** (licença conferida para uso comercial):
 - escala de mundo e continente: **NASA Blue Marble**, domínio público;
