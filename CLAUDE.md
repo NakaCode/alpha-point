@@ -82,8 +82,11 @@ produz o master. O deste canal nasce assim:
      soou mais "lido". Em "Criativo" o v3 pode pular ou trocar palavra: confira cada bloco pela transcrição.
    - A conta compartilhada da ElevenLabs serve a vários canais. O Lucas entra nela pelo navegador do app, e o
      Claude opera o site com ele vendo; nunca digite a senha dele.
-   - Nesta máquina ainda não há o arquivo de chaves da API (`C:\Users\zangp\.regie\chaves.env`, que o Mateus
-     entrega).
+   - O arquivo de chaves da API está em `C:\Users\zangp\.regie\chaves.env` desde 25/09/2026. Foi copiado, sem
+     abrir os valores, de um arquivo que o Lucas deixou na Área de Trabalho. Tem ElevenLabs, MapTiler e as
+     chaves dos acervos (NARA, Smithsonian, DVIDS, Europeana, Pexels, Pixabay). A da ElevenLabs foi testada sem
+     gasto: `narrar.mjs --vozes` lista as duas vozes do canal. Nunca imprima nem leia os valores; para saber de
+     onde vem uma chave, use `onde()` de `src/lib/chaves.mjs` da pré-v1.
    - Gastar crédito pede o ok do Lucas. Gasto em 24/09, conferido no saldo: 2.433 nas amostras e na escolha
      da voz; 15.564 na narração do texto aprovado (o bloco 1 com quebras de linha, o teste sem quebras e os 3
      blocos em "Criativo"); 709 no teste do v2; 1.498 na prova do tom de conversa (teste com a voz anterior e o
@@ -114,7 +117,7 @@ Em uso:
 - **Antes de cada commit:** `node C:\projetos\regie-v1\template\scripts\segredos.mjs --staged` (0 = limpo,
   1 = achou, 2 = não rodou). Achou, não commite.
 - **Conferir a máquina:** `node C:\projetos\regie-v1\bin\regie doctor`, de dentro do canal (só lê). Em 25/09
-  só falhou a falta do `chaves.env`. **Não siga** duas sugestões que ele imprime: `regie atualizar --aplicar` é a
+  deu PASS, com 9 de 13 chaves, depois que o `chaves.env` chegou. **Não siga** duas sugestões que ele imprime: `regie atualizar --aplicar` é a
   migração inteira, e `autonomia instalar --aplicar` mexe nas configurações do Claude do Lucas.
 - Para importar um módulo do clone no Windows, use URL `file:///C:/projetos/regie-v1/...` (ou `pathToFileURL`):
   caminho absoluto puro dá `ERR_UNSUPPORTED_ESM_URL_SCHEME`.
@@ -122,8 +125,10 @@ Em uso:
 As próximas, na ordem do Juneau, com o que falta a cada uma:
 1. **Baixar a narração pelo histórico da ElevenLabs** (`GET /v1/history?voice_id=…`, depois
    `GET /v1/history/{id}/audio`), com o leitor de chaves da pré-v1 (`src/lib/chaves.mjs`). A pré-v1 não baixa do
-   histórico: o script é do canal. Falta o `chaves.env`. Antes, teste a chave sem gastar crédito com
-   `narrar.mjs --vozes`.
+   histórico: o script é do canal. A chave está e funciona (25/09). O histórico da voz tem as 6 gerações de
+   24/09, duas por bloco. Os blocos se reconhecem pela contagem de caracteres: 3.827 às 18:24, 3.735 às 18:26 e
+   3.466 às 18:28, no horário de Brasília. O texto não vem na listagem. Falta o ok do Lucas para baixar, e a
+   escolha de uma versão por bloco.
 2. **`narracao.wav` e master preto sintético** pelo gerador da pré-v1 (`garantirMasterSintetico`, com carimbo).
 3. **Conferência palavra a palavra e `words.json`** no contrato da pré-v1, com o faster-whisper local.
    Normalize os números antes de comparar. O Scribe da pré-v1 fica de fora: é pago, e o local faz o mesmo.
