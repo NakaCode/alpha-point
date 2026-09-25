@@ -473,5 +473,16 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       quadro de foto de satélite em PNG passa disso, até em 1080p. O `renderizar.mjs` pede JPEG 95 e passa: a cena
       saiu em 4K por ele, e o quadro parado se tira do vídeo com o ffmpeg. Um `quadro.mjs --jpeg`, ou a foto em
       pedaços, resolveria.
+  28. **O eleven_v3 corta texto longo e para no fim de uma frase, sem erro.** Das 6 gerações do Juneau
+      (blocos de 3.466 a 3.827 caracteres, "Criativo", pelo site), 5 terminaram antes do texto: disseram de 41 %
+      a 90 %. Como a voz para numa fronteira de frase, o corte soa como um final natural e passa no ouvido. A
+      referência do Text to Dialogue da ElevenLabs pede até 2.000 caracteres por pedido para evitar "premature
+      termination". No `narrar.mjs`, o `LIMITE_TRECHO` é 4.500: parágrafo longo passaria disso. E o portão de
+      cobertura do `transcrever.mjs` (±10 %, achado 15) deixaria passar o corte da 1a, que perdeu 9,4 % no fim.
+      Conferir cada geração palavra a palavra pega o corte (`out/juneau/_pesquisa/comparar-narracao.py`).
+  29. O faster-whisper com `condition_on_previous_text=False` duplica a última palavra na emenda das janelas de
+      30 s ("the point. point."). Quem compara transcrição com roteiro vai ler isso como eco da voz. Transcrever
+      de novo só o recorte em volta resolve (`conferir-trechos.py`). Nesta máquina, a placa de vídeo não roda o
+      faster-whisper (falta a cuBLAS 12 da NVIDIA); no processador, o large-v3 leva ~1 min por minuto de áudio.
 - **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
   5 afetam qualquer um no primeiro `atualizar`.

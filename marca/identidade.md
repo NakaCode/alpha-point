@@ -168,7 +168,21 @@ teste de Juneau, o contraste sobre o campo de gelo era de 1,5:1.
 - escala de mundo e continente: **NASA Blue Marble**, domínio público;
 - escala regional: **Landsat (USGS)**, domínio público; **Copernicus Sentinel-2**, com o crédito
   obrigatório `Contains modified Copernicus Sentinel data <ano>`;
-- fronteiras e costas: **Natural Earth**, domínio público.
+- fronteiras e costas: **Natural Earth**, domínio público;
+- escala regional e local, com relevo: **MapTiler** (satellite-v2 + terrain-rgb-v2), registrada em 25/09/2026.
+  - **A conta e o plano:** a conta é do Lucas, no plano Flex (informado por ele). A chave `MAPTILER_KEY`
+    fica no `chaves.env` da máquina.
+  - **O limite do plano:** o Flex cobre vídeo só para canal com até 100 mil inscritos. Antes de chegar lá,
+    é preciso pedir à MapTiler uma licença custom.
+  - **O crédito na tela:** `© MapTiler © OpenStreetMap contributors`, durante todo o tempo em que o mapa
+    aparece, salvo acordo por escrito com a MapTiler. O plano pago dispensa o logo, não o crédito. O texto
+    segue §4.1 e §4.2 (76 px, faixa de crédito).
+  - **O crédito na descrição:** `Mapas: © MapTiler (https://www.maptiler.com/copyright/) · © OpenStreetMap
+    contributors — Open Database License (https://www.openstreetmap.org/copyright)`.
+  - **As fontes:** os Termos Cloud (maptiler.com/terms/cloud/, "Limited Videos"), a página de copyright e a
+    do GEOlayers. Os mantenedores da Régie as conferiram em 23/09/2026 (`docs/CREDITO-DE-MAPA.md` da pré-v1).
+  - **O custo:** o plano cobra por pedido de mapa, e render pede muitos. Olhe o painel da MapTiler no
+    primeiro mês.
 
 Qualquer outra base (Google Earth Studio, Mapbox, Esri) só entra **depois** de a licença ser lida e
 registrada aqui.

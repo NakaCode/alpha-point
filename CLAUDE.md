@@ -80,6 +80,11 @@ produz o master. O deste canal nasce assim:
      cada bloco numa linha só, sem quebras; blocos de seções inteiras de até 5.000 caracteres
      (`preparar-voz.mjs`). Com quebras de linha e "Natural", as pausas soaram "programadas". O Multilingual v2
      soou mais "lido". Em "Criativo" o v3 pode pular ou trocar palavra: confira cada bloco pela transcrição.
+     **Achado de 25/09:** acima de ~2.000 caracteres, o v3 pode parar antes do fim do texto, sem erro nenhum, e
+     numa fronteira de frase, que soa como final natural. Das 6 gerações de 24/09, 5 cortaram
+     (`out/juneau/_pesquisa/narracao-conferencia.md`). Nenhuma geração é aceita sem a conferência palavra a
+     palavra: `transcrever-local.py`, depois `comparar-narracao.py`, e `conferir-trechos.py` para os pontos
+     suspeitos. Todos estão em `out/juneau/_pesquisa/`.
    - A conta compartilhada da ElevenLabs serve a vários canais. O Lucas entra nela pelo navegador do app, e o
      Claude opera o site com ele vendo; nunca digite a senha dele.
    - O arquivo de chaves da API está em `C:\Users\zangp\.regie\chaves.env` desde 25/09/2026. Foi copiado, sem
@@ -127,8 +132,10 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    `GET /v1/history/{id}/audio`), com o leitor de chaves da pré-v1 (`src/lib/chaves.mjs`). A pré-v1 não baixa do
    histórico: o script é do canal. A chave está e funciona (25/09). O histórico da voz tem as 6 gerações de
    24/09, duas por bloco. Os blocos se reconhecem pela contagem de caracteres: 3.827 às 18:24, 3.735 às 18:26 e
-   3.466 às 18:28, no horário de Brasília. O texto não vem na listagem. Falta o ok do Lucas para baixar, e a
-   escolha de uma versão por bloco.
+   3.466 às 18:28, no horário de Brasília. O texto não vem na listagem. **Baixadas e conferidas em 25/09**
+   (`out/juneau/_pesquisa/narracao-historico.mjs --baixar`, com o ok do Lucas). Só a **1b** está completa. As
+   duas do bloco 2 e as duas do bloco 3 param antes do fim, e esses blocos precisam ser gerados de novo. Isso
+   gasta crédito e pede o ok do Lucas. O quadro está em `narracao-conferencia.md`.
 2. **`narracao.wav` e master preto sintético** pelo gerador da pré-v1 (`garantirMasterSintetico`, com carimbo).
 3. **Conferência palavra a palavra e `words.json`** no contrato da pré-v1, com o faster-whisper local.
    Normalize os números antes de comparar. O Scribe da pré-v1 fica de fora: é pago, e o local faz o mesmo.
@@ -176,12 +183,13 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    `RIG.paleta({destaque: "#…"})`, **nunca** `{acento}`: o `--acento` segue o `--destaque`, não o contrário.
    **Base de satélite pela MapTiler** (o Lucas avisou em 25/09 que a chave vem): perfil `maptiler` da pré-v1
    (satellite-v2 + terrain-rgb-v2), com a chave `MAPTILER_KEY` em `C:\Users\zangp\.regie\chaves.env` (o
-   `.env` do canal também é lido e fica fora do git, mas a casa dela é o arquivo da máquina). Antes da primeira
-   cena, pela regra de `marca/identidade.md` §6, a licença entra registrada ali: qual plano é o da chave (o Flex
-   de vídeo vale até 100 mil inscritos; o Free não cobre uso comercial) e o crédito
-   `© MapTiler © OpenStreetMap contributors` na tela durante todo o mapa, mais a linha na descrição
-   (`docs/CREDITO-DE-MAPA.md` da pré-v1). O plano cobra por pedido de mapa, e render pede muitos: olhe o painel
-   da MapTiler no primeiro mês.
+   `.env` do canal também é lido e fica fora do git, mas a casa dela é o arquivo da máquina). **A chave chegou e
+   funciona** (25/09: um pedido de teste ao satellite-v2 respondeu 200). A licença está registrada em
+   `marca/identidade.md` §6: a conta é do Lucas, no plano Flex, que vale até 100 mil inscritos. O crédito
+   `© MapTiler © OpenStreetMap contributors` fica na tela durante todo o mapa, mais a linha na descrição. O plano
+   cobra por pedido de mapa, e render pede muitos: olhe o painel da MapTiler no primeiro mês. Para usá-la numa
+   produção, `canal.json` › `mapa.perfil: "maptiler"`, o que é a escolha da base do vídeo inteiro, e decisão do
+   Lucas.
    **Base Landsat, testada em 25/09** (o Lucas pediu o teste com Landsat): `out/prova-mapa/graphics/landsat-juneau.html`
    é a frase 10 do roteiro sobre Landsat 8 e 9 de 23–24/03/2024 (USGS, domínio público, sem crédito na tela), baixado
    do Planetary Computer sem conta por `out/prova-mapa/_pesquisa/base-landsat.py`. A cena lê a base do canal
