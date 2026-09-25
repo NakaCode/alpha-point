@@ -16,6 +16,35 @@ db/
 # O bruto: pesado demais, e não viaja. Só as entregas sobem.
 midia/
 
+# A produção: o TEXTO entra (pauta, roteiro, críticas, espelho, cenas HTML, planos, o XML);
+# o binário pesado não — áudio, vídeo, mídia baixada e quadros. Eles se refazem ou se baixam de
+# novo, e um repositório com gigabytes de mp4 deixa de clonar.
+# (Bloco copiado do .gitignore que a pré-v1 da Régie escreve, bin/create-regie, em 25/09/2026:
+# o "regie atualizar" não traz .gitignore, e as ferramentas da pré-v1 gravam em out/<vídeo>/.)
+out/**/*.wav
+out/**/*.mp3
+out/**/*.mp4
+out/**/*.mov
+out/**/*.webm
+out/*/_media/
+out/*/_narracao/
+out/*/_quadros/
+acervo/trilha/*.mp3
+acervo/trilha/*.wav
+marca/pecas/*.mov
+# Quadros PNG de conferência (4K pesa megas cada): a pré-v1 não ignora, o canal sim.
+out/**/*.png
+
+# Cópias de trabalho do git autônomo e configuração local do Claude (nunca vão para o repositório)
+.claude/worktrees/
+.claude/settings.local.json
+
+# Travas e reservas de processo (nunca estado do canal)
+*.trava
+*.trava.tomada
+*.lock
+out/**/*.reserva
+
 # Lixo de máquina
 node_modules/
 .DS_Store

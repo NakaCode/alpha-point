@@ -63,7 +63,7 @@ entrega a camada visual como XML de 5 camadas. Não gera vídeo do zero. E não 
 automação que rode os passos sozinha: quem faz o trabalho de cada passo é você,
 junto com a pessoa; a Régie guarda estado, ordem e histórico. Não prometa mais que isso.
 
-**Na v0.1.0, as estações determinísticas continuam vazias.** `ingest` (transcrever), `render`
+**Na v0.1.0, as estações determinísticas continuam vazias** (a pré-v1 tem código para elas: veja "Peças da pré-v1 em uso"). `ingest` (transcrever), `render`
 (Chrome + ffmpeg) e `finalize` (o XML de 5 camadas) não têm ofício nem código. Transcrição, render e
 XML são trabalho que o canal faz aqui, até o motor os ter (`APRENDIZADOS.md` item 9). E nada na Régie
 produz o master. O deste canal nasce assim:
@@ -95,6 +95,52 @@ produz o master. O deste canal nasce assim:
 
 Transcrição local disponível nesta máquina: `faster-whisper` (modelo large-v3, `word_timestamps=True`,
 `language="en"`). Editor: Premiere Pro.
+
+## Peças da pré-v1 em uso (desde 25/09/2026)
+
+A pré-v1 da Régie (`1.0.0-rc.1`, sem tag) tem código para as estações que a v0.1.0 deixa vazias. O motor do
+canal **continua a v0.1.0** (os verbos do banco, `init`, `advance`…). A pré-v1 está clonada à parte, só para
+leitura, em `C:\projetos\regie-v1`, no commit `7ab9543` (branch `v1`). Não edite, não dê pull nem checkout
+nesse clone até o Juneau ser entregue: se ele mudar, as ferramentas mudam no meio do vídeo.
+
+**Decisão do Lucas (25/09/2026):** se o motor já resolve um passo, usamos a peça dele e aposentamos a caseira. Só
+não se usa quando algo concreto impede (não roda no Windows, falta chave, contraria uma decisão dele), e aí se diz o
+bloqueio e o que o destrava.
+
+Em uso:
+- **`out/<slug>/`** é a pasta de produção de cada vídeo, no layout da pré-v1. `roteiros/` e `midia/` ficam onde
+  estão. O `.gitignore` tem o bloco de binários da pré-v1: áudio, vídeo, mídia baixada e quadros de `out/` não
+  sobem.
+- **Antes de cada commit:** `node C:\projetos\regie-v1\template\scripts\segredos.mjs --staged` (0 = limpo,
+  1 = achou, 2 = não rodou). Achou, não commite.
+- **Conferir a máquina:** `node C:\projetos\regie-v1\bin\regie doctor`, de dentro do canal (só lê). Em 25/09
+  só falhou a falta do `chaves.env`. **Não siga** duas sugestões que ele imprime: `regie atualizar --aplicar` é a
+  migração inteira, e `autonomia instalar --aplicar` mexe nas configurações do Claude do Lucas.
+- Para importar um módulo do clone no Windows, use URL `file:///C:/projetos/regie-v1/...` (ou `pathToFileURL`):
+  caminho absoluto puro dá `ERR_UNSUPPORTED_ESM_URL_SCHEME`.
+
+As próximas, na ordem do Juneau, com o que falta a cada uma:
+1. **Baixar a narração pelo histórico da ElevenLabs** (`GET /v1/history?voice_id=…`, depois
+   `GET /v1/history/{id}/audio`), com o leitor de chaves da pré-v1 (`src/lib/chaves.mjs`). A pré-v1 não baixa do
+   histórico: o script é do canal. Falta o `chaves.env`. Antes, teste a chave sem gastar crédito com
+   `narrar.mjs --vozes`.
+2. **`narracao.wav` e master preto sintético** pelo gerador da pré-v1 (`garantirMasterSintetico`, com carimbo).
+3. **Conferência palavra a palavra e `words.json`** no contrato da pré-v1, com o faster-whisper local.
+   Normalize os números antes de comparar. O Scribe da pré-v1 fica de fora: é pago, e o local faz o mesmo.
+4. **Plano de cenas em `espelho.json`**, o contrato da pré-v1. Feche os tempos à mão: o `alinhar-timestamps`
+   deixa vãos e sobreposições no faceless. Nunca o rode sem `--dry`.
+5. **Mídia de acervo aberto** com `buscar-midia` (Commons, NASA, NARA; licença e procedência gravadas). Falta
+   `canal.json` › `contato`. O `_commons-baixar` não tem trava de licença: confira cada uma.
+6. **Geometria real dos mapas**: Natural Earth offline, pela pré-v1.
+7. **Cenas 4K**: RIG, `quadro.mjs` e `renderizar.mjs --4k`. Faltam `marca/tokens.css` e as fontes locais.
+8. **XML do Premiere** pelo `finalizar.mjs`, primeiro com `--sem-trilha`. Será a primeira abertura real dele no
+   Windows.
+9. Do vídeo 2 em diante, **narração pela API** com `narrar.mjs` (mesma voz, modelo, estabilidade e blocos).
+
+Fora, por ora: `regie atualizar` (até sair a tag); rotinas agendadas; git autônomo e o CI `canal.yml`; caça
+automatizada em bancos pagos (os termos proíbem robô); `gerar-imagem`; `marca gerar` (o `marca.json` da pré-v1
+não comporta a paleta por papéis do canal). O levantamento inteiro, com arquivo e linha de cada coisa, está em
+`midia/_motor/pre-v1-levantamento-2026-09-25.json`, só nesta máquina.
 
 ## A marca
 

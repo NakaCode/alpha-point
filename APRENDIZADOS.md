@@ -388,3 +388,48 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
      por extenso, aliases de pronúncia e a prova de que desfazer as trocas devolve o texto aprovado byte a byte.
 - **Por que serve a qualquer canal:** todo canal com narração sintética escolhe uma voz. As regras do modelo e o
   prazo das vozes padrão valem para qualquer nicho.
+
+
+## 25/09/2026 — a pré-v1 (`1.0.0-rc.1`, `7ab9543`) vista de um canal v0.1.0
+
+### 17. O que a pré-v1 resolve para um canal v0, e o que tropeça quando se olha deste lado
+
+- **Problema:** o dono quis usar o que a pré-v1 já resolve (transcrição, render, XML, mídia) sem esperar a tag, e
+  com o Juneau no meio da entrega.
+- **O que resolveu:** clonar a pré-v1 à parte, só para leitura, e chamar as ferramentas por caminho, de dentro do
+  canal, sem migrar o banco. Antes disso, pôr no `.gitignore` o bloco de `out/` que o `create-regie` escreve.
+  Um levantamento lido no código, com um verificador cético por proposta, separou o que roda isolado do que exige
+  a v1 inteira (CLAUDE.md, "Peças da pré-v1 em uso").
+- **Para o motor (vale avisar o Lucas Barrios e o Mateus).** O levantamento leu estes pontos no código, com arquivo e
+  linha. Não rodei cada um:
+  1. O `regie atualizar` não traz `.gitignore`: o molde não tem um. Num canal v0, o áudio, os clipes e a mídia de
+     `out/` iriam para o GitHub no primeiro commit (`bin/create-regie:380-393` × molde).
+  2. Rodado de um clone sem tag, o `atualizar` grava `motor.caminho` = o clone e `motor.versao` = `1.0.0-rc.1`
+     (`bin/regie:124-129`). O `canal.yml` clona o motor pela tag `v1.0.0-rc.1`, que não existe, e fica vermelho a
+     cada push (`template/.github/workflows/canal.yml:30-35`).
+  3. O `atualizar` preenche `contato` com o `git user.email`, e ele vai no User-Agent para a Wikimedia e o OSM
+     sem o dono decidir (`bin/regie:103-106`; `src/midia/canal.mjs:53-63`).
+  4. O `marca.schema.json` é fechado em 10 cores (`:47-62`). Uma paleta por papéis, como a deste canal, não cabe
+     sem perda. Sem `marca.json`, o molde põe a marca neutra ao lado, e um `marca gerar` posterior sobrescreve o
+     `tokens.css` próprio (`src/molde.mjs:84-100`).
+  5. O `.claude/settings.json` do molde libera `git push`, `gh pr create`, edit e comment, e um hook de início de
+     sessão (`template/.claude/settings.json:4-78`). É mudança de permissão: devia pedir o ok do dono.
+  6. `template/marca/midia.json:22-24` diz que Storyblocks, Envato e Motion Array são contas do Top10. Aqui as
+     contas são individuais, de assento único (`marca/midia.md`).
+  7. O `regie init` sem argumento ainda cai em `long-form` (`bin/regie:76`), e a máquina de estados não mudou
+     (`src/state.mjs` igual ao da v0.1.0). O item 10 continua valendo.
+  8. O `alinhar-timestamps` no faceless deixa vãos e sobreposições. Medido: a s01 terminou em 4,10 s e a s02
+     começou em 4,05 s, e ficaram vãos de 0,08 a 0,15 s. O checador não pega.
+  9. O `_commons-baixar` baixa qualquer licença e só marca `licenca_aceita=false`, sem trava.
+  10. O `qa-montagem` lê `file://localhost/C%3a/...` como `localhost/C:/...` e reprova referência certa no
+      Windows (`template/.claude/agents/qa-montagem.md:455-461`).
+  11. O `src/rotinas/rodar.mjs:159-174` recusa o `claude.cmd` instalado pelo npm, que é o desta máquina.
+  12. No Windows, `import()` de caminho absoluto sem `file:///` falha com `ERR_UNSUPPORTED_ESM_URL_SCHEME`.
+  13. O doctor da pré-v1, num canal v0, manda rodar `atualizar --aplicar` e `autonomia instalar --aplicar`. O
+      segundo grava nas configurações de usuário do Claude. A sugestão é forte demais para quem não é técnico.
+  14. O `narrar.mjs` não baixa do histórico: canal que gerou pelo site paga de novo ou baixa à mão. Um
+      `--do-historico` (`GET /v1/history` + `/audio`) resolveria.
+  15. O `medirCobertura` do `transcrever.mjs` conta palavras com ±10 % por trecho. Em blocos de uns 600
+      palavras, deixa passar frase pulada e não vê palavra trocada, que é justamente o risco do v3 em "Criativo".
+- **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
+  5 afetam qualquer um no primeiro `atualizar`.
