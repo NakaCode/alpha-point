@@ -142,11 +142,20 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
      do NE) e, do OSM, Willow e Haines. Todos caem em terra. Use o ponto do NE para Juneau: o aproximado antigo
      caía na água.
 
-   **Tudo que vem do OSM (Taku, Willow, Haines) põe "© OpenStreetMap contributors" na tela da cena e a URL
-   openstreetmap.org/copyright na descrição.** O Taku veio pela resposta do Nominatim, porque o Overpass deu 504.
-   Quando ele voltar, refaça com `geo-osm-rota.mjs juneau --osm=relation/16167118 --slug=rio-taku-osm --tol=0`.
+   **Tudo que vem do OSM (Taku, Willow, Haines, a estrada e Cascade Point) põe "© OpenStreetMap contributors" na
+   tela da cena e a URL openstreetmap.org/copyright na descrição.** O Taku foi refeito pelo caminho certo em 25/09,
+   quando o Overpass voltou: `geo-osm-rota.mjs juneau --osm=relation/16167118 --slug=rio-taku-osm --tol=0`
+   (83,60 km, 0 órfãos).
 
-   **Cascade Point não tem ponto**: não existe no NE nem no Nominatim com esse nome.
+   **A estrada e Cascade Point** (o Lucas escolheu em 25/09 "Pela estrada no OSM"):
+   - `estrada-juneau-cascade`: a Alaska Route 7 (relation/535397) do centro de Juneau até a ponta norte da Glacier
+     Highway, 67,48 km (41,9 milhas; o roteiro diz "about 43 miles", e fica). O `geo-osm-rota` sozinho costurou
+     com 21 órfãos (pista dupla e rotatória); `out/juneau/_pesquisa/estrada-juneau-cascade.mjs` monta o caminho
+     e o entrega a ele (os dois comandos estão no topo do script; `--dump=` refaz sem rede).
+   - `cascade-point`: a ponta norte dessa estrada, 58.700137, -134.937863, gravada por
+     `out/juneau/_pesquisa/ponto-fim-da-estrada.mjs --gravar`. O nome vem do roteiro: nem NE nem OSM têm o lugar.
+     No NE 1:10M o ponto cai na água, a 236 m da costa simplificada (310 vértices da estrada também); sobre o
+     satélite fica certo. Se a cena pintar a terra com o polígono do NE, declare o deslocamento.
 
    Outros cuidados:
    - as 9 Aleutas além de 180° ficam fora do recorte do Alasca;
@@ -161,7 +170,7 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    3840×2160 pelo `renderizar.mjs --4k`, com as fontes certas. Para trocar a cor do protagonista numa cena, passe
    `RIG.paleta({destaque: "#…"})`, **nunca** `{acento}`: o `--acento` segue o `--destaque`, não o contrário.
    **Base de satélite pela MapTiler** (o Lucas avisou em 25/09 que a chave vem): perfil `maptiler` da pré-v1
-   (satellite-v2 + terrain-rgb-v2), com a chave `MAPTILER_KEY` em `C:Userszangp.regiechaves.env` (o
+   (satellite-v2 + terrain-rgb-v2), com a chave `MAPTILER_KEY` em `C:\Users\zangp\.regie\chaves.env` (o
    `.env` do canal também é lido e fica fora do git, mas a casa dela é o arquivo da máquina). Antes da primeira
    cena, pela regra de `marca/identidade.md` §6, a licença entra registrada ali: qual plano é o da chave (o Flex
    de vídeo vale até 100 mil inscritos; o Free não cobre uso comercial) e o crédito

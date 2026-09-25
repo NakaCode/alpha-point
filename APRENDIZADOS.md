@@ -448,6 +448,12 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       recorte sai sem licença se não se passar `--fonte`, `--licenca` e `--fonte-url` à mão.
   22. O NE 1:10M não tem rio que costuma aparecer em mapa de região (aqui: Taku, Chilkat, Knik, Matanuska). A
       ferramenta de rio do OSM depende do Overpass, que respondeu 504 três vezes seguidas em 25/09. A saída foi
-      a geometria que o próprio Nominatim devolve (`polygon_geojson`), registrada com licença ODbL.
+      a geometria que o próprio Nominatim devolve (`polygon_geojson`), registrada com licença ODbL. Na mesma
+      tarde o Overpass respondeu (espaçando as tentativas), e o Taku foi refeito pelo `geo-osm-rota`.
+  23. O `geo-osm-rota` costura os ways de uma relation pelas pontas. Em estrada com pista dupla e rotatória
+      (a Alaska Route 7 em Juneau), saíram 21 órfãos e a linha parou no meio. O canal montou o caminho mais
+      curto no grafo dos ways (vértice = coordenada) e entregou ao `--in` como um way só
+      (`out/juneau/_pesquisa/estrada-juneau-cascade.mjs`). Um modo "de A até B" na ferramenta serviria a
+      qualquer mapa de rota.
 - **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
   5 afetam qualquer um no primeiro `atualizar`.

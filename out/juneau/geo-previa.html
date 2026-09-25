@@ -90,12 +90,14 @@
 <script src="_media/geo/cidades-ne.js"></script>
 <script src="_media/geo/cidade-willow-osm.js"></script>
 <script src="_media/geo/cidade-haines-osm.js"></script>
+<script src="_media/geo/estrada-juneau-cascade.js"></script>
+<script src="_media/geo/cascade-point.js"></script>
 <script>
 (function () {
   const NS = "http://www.w3.org/2000/svg";
   const G = window.__GEO || {}, M = window.__GEO_META || {};
   const SLUGS = ["panhandle-juneau", "alasca-e-vizinhos", "eua", "canada", "matsu-anchorage", "rios-panhandle", "rios-alasca",
-    "rios-matsu", "lagos-panhandle", "lagos-alasca", "rio-taku-osm", "cidades-ne", "cidade-willow-osm", "cidade-haines-osm"];
+    "rios-matsu", "lagos-panhandle", "lagos-alasca", "rio-taku-osm", "cidades-ne", "cidade-willow-osm", "cidade-haines-osm", "estrada-juneau-cascade", "cascade-point"];
   const falta = SLUGS.filter((s) => !G[s]);
   if (falta.length) { document.getElementById("erro").textContent = "Não carregou: " + falta.join(", "); return; }
   const cor = { USA: "#F5A524", CAN: "#737D8E", RUS: "#2EC4B6" };
@@ -112,6 +114,8 @@
     const p = f.properties;
     CID[p.rotulo] = { lon: f.geometry.coordinates[0], lat: f.geometry.coordinates[1], fonte: "OSM", ref: p.osm, conf: null, desl: p.deslocamento || null };
   }
+
+  for (const f of G["cascade-point"].features) CID["Cascade Point"] = { lon: f.geometry.coordinates[0], lat: f.geometry.coordinates[1], fonte: "OSM", ref: "fim da Glacier Highway (relation/535397)", conf: null, desl: null };
 
   const partes = (g) => g.type === "Polygon" || g.type === "LineString" ? [g.coordinates] : g.coordinates;
   const el = (n, a, pai) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); if (pai) pai.appendChild(e); return e; };
@@ -201,9 +205,10 @@
     for (const [txt, lon, lat] of [["ALASCA (EUA)", -135.9, 58.1], ["COLÚMBIA BRITÂNICA", -134.2, 59.62]])
       { const [x, y] = c.proj([lon, lat]); el("text", { x, y, class: "rot", style: `font-size:${13 * c.esc}px;stroke-width:${3 * c.esc}px;letter-spacing:.08em;fill-opacity:.75` }, c.svg).textContent = txt; }
     { const [x, y] = c.proj([-135.31, 59.03]); el("text", { x, y, class: "rot rio", transform: `rotate(69 ${x} ${y})`, style: `font-size:${14 * c.esc}px;stroke-width:${3 * c.esc}px` }, c.svg).textContent = "Lynn Canal"; }
-    cidades(c, [["Juneau", { dx: -10, ancora: "end", dy: 16 }], ["Haines", { dx: -10, ancora: "end" }], ["Skagway", { dx: 10 }]], 17);
+    rios(c, G["estrada-juneau-cascade"], { corR: "#F4F1EA", sw: 2.4, classe: "estrada", tam: 15, rotulos: {} });
+    cidades(c, [["Juneau", { dx: -10, ancora: "end", dy: 16 }], ["Haines", { dx: -10, ancora: "end" }], ["Skagway", { dx: 10 }], ["Cascade Point", { dx: -10, ancora: "end", dy: -6 }]], 17);
     creditoOSM(c);
-    meta("m1b", `bbox [${bb1b.join(", ")}] · panhandle-juneau (tol 0) · rio-taku-osm: ${G["rio-taku-osm"].features[0].properties.km_medido} km, confluência na BC → Taku Inlet`); }
+    meta("m1b", `bbox [${bb1b.join(", ")}] · panhandle-juneau (tol 0) · rio-taku-osm: ${G["rio-taku-osm"].features[0].properties.km_medido} km, confluência na BC → Taku Inlet · estrada-juneau-cascade (OSM, linha clara): ${G["estrada-juneau-cascade"].features[0].properties.km_medido ?? "67,5"} km do centro de Juneau a Cascade Point`); }
 
   // 3 · Alasca e vizinhos
   { const bb2 = [-180, 51, -125, 72];
