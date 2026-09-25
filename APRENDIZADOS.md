@@ -480,6 +480,10 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       termination". No `narrar.mjs`, o `LIMITE_TRECHO` é 4.500: parágrafo longo passaria disso. E o portão de
       cobertura do `transcrever.mjs` (±10 %, achado 15) deixaria passar o corte da 1a, que perdeu 9,4 % no fim.
       Conferir cada geração palavra a palavra pega o corte (`out/juneau/_pesquisa/comparar-narracao.py`).
+      Pedir por parágrafo resolve: refeitos pelo `narrar.mjs` (23 parágrafos, de 3 a 26 s cada), os blocos 2 e 3
+      vieram completos, sem nenhum corte. A conferência por parágrafo ainda achou uma troca de verdade: "1984" no
+      lugar de "1994", que os dois modelos do Whisper ouviram. Com `--refazer=8`, saiu certo. Então pedir
+      curto evita o corte, mas não dispensa a conferência (`conferir-paragrafos.py`).
   29. O faster-whisper com `condition_on_previous_text=False` duplica a última palavra na emenda das janelas de
       30 s ("the point. point."). Quem compara transcrição com roteiro vai ler isso como eco da voz. Transcrever
       de novo só o recorte em volta resolve (`conferir-trechos.py`). Nesta máquina, a placa de vídeo não roda o

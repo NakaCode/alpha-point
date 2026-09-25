@@ -36,3 +36,31 @@ recorte de ~7 s (`conferir-trechos.py`). Áudios, transcrições e relatórios f
 **Fica para o ouvido:**
 - 1a/1b, 0:01: "August twenty-seventh" ou "twenty-seven". O transcritor escreve data em algarismo ("27")
   e não decide.
+
+## Blocos 2 e 3 refeitos pela API, e a narração inteira (25/09/2026)
+
+O Lucas escolheu refazer os blocos 2 e 3 pela API, com o `narrar.mjs` da pré-v1. O projeto é `out/juneau-voz/`:
+os parágrafos 14 a 36 do texto aprovado, **um pedido por parágrafo** (23 pedidos, de 3 a 26 s cada), com a voz,
+o modelo e a estabilidade de `canal.json` › `narracao`.
+
+- **Conferência por parágrafo** (`conferir-paragrafos.py juneau-voz`): os 23 vieram completos, sem nenhum corte.
+  Uma troca de verdade: o parágrafo 8 dizia "nineteen **eighty**-four" no lugar de 1994, e os dois modelos do
+  Whisper ouviram. Refeito com `--refazer=8` (229 créditos), agora diz 1994.
+- **Custo:** 4.324 créditos nos 23 parágrafos, mais 229 no refeito, 4.553 no total. Os recibos batem com o
+  contador da conta.
+- **Montagem** (`montar-narracao.py`, procedência em `narracao-montagem.json`):
+  - a 1b ganhou +0,70 dB para igualar os −14,3 LUFS da parte da API, e perdeu os 1,8 s de silêncio do fim;
+  - 0,2 s de pausa entre as partes; os blocos 2 e 3 começam em 3:09,3;
+  - esmaecimento de 5 ms no começo e 15 ms no fim de cada trecho falado, porque os trechos da API terminam
+    "secos". Os 24 cortes terminam em silêncio total, sem estalo;
+  - resultado: `out/juneau/_narracao/narracao-completa.wav`, 9:14, 44,1 kHz mono, com pico de 0,959.
+- **Conferência do arquivo inteiro** contra os 36 parágrafos: **99,0 %, nenhuma palavra pulada**
+  (`out/juneau/_narracao/conferencia-completa.json`). O que sobra é do transcritor, e se desfaz no recorte curto,
+  nos dois modelos:
+  - ecos na emenda das janelas: "million. million.", "quarters. orders.", "Brian Ryan Ray";
+  - grafias: Juno, Fanny, Reimer, K2, "ice field", "outcross", Glatyshevsky;
+  - "6-3" e "$2 .8": o comparador passou a entender essas duas escritas do Whisper.
+
+**Fica para o ouvido:**
+- 0:01, "August twenty-seventh" ou "twenty-seven" (a 1b, igual a antes);
+- 7:07, "meet the Alaska Highway **in** the Yukon": o large-v3 ouve "and" e o medium ouve "in".

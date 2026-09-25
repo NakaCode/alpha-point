@@ -51,6 +51,8 @@ def verbalizar(tok, seguinte):
         if escala in ("thousand", "million", "billion", "trillion"):
             return f"{num} {escala} dollars", True
         return f"{num} dollars", False
+    m = re.fullmatch(r"(\d{1,2})-(\d{1,2})", t)      # placar de votação: "6-3" é como o Whisper escreve "six to three"
+    if m: return cardinal(int(m.group(1))) + " to " + cardinal(int(m.group(2))), False
     m = re.fullmatch(r"([\d,]+(?:\.\d+)?)%", t)
     if m: return numero(m.group(1)) + " percent", False
     m = re.fullmatch(r"(\d+)(st|nd|rd|th)", t)
@@ -97,11 +99,22 @@ def tokens(texto):
 
 def tokens_com_tempo(words):
     """Palavras do Whisper → tokens normalizados, cada um com o tempo da palavra de origem."""
+    # O Whisper às vezes parte um número em duas palavras ("$2" + ".8", "6" + "-3"): junta antes de verbalizar.
+    juntas = []
+    for w in words:
+        if juntas and re.match(r"\s*[.\-]\d", w["w"]) and re.search(r"\d\s*$", juntas[-1]["w"]):
+            juntas[-1] = {**juntas[-1], "w": juntas[-1]["w"].rstrip() + w["w"].strip()}
+        else:
+            juntas.append(w)
+    words = juntas
     out, i = [], 0
     while i < len(words):
         w = words[i]; seg = words[i + 1]["w"] if i + 1 < len(words) else ""
         texto = w["w"]
         consumiu = False
+        # "World War II" chega palavra por palavra: o "II" sozinho viraria "I I" (sigla)
+        if i and texto.strip(" .,;:") in ("II", "III", "IV") and words[i - 1]["w"].strip(" .,").lower() == "war":
+            texto = ROMANOS[texto.strip(" .,;:").lower()]
         if re.search(r"\d", texto):
             v, consumiu = verbalizar(texto.lower(), seg)
             if v: texto = v
@@ -113,6 +126,7 @@ def tokens_com_tempo(words):
 def mmss(s): return f"{int(s // 60)}:{int(s % 60):02d}"
 
 def comparar(roteiro, arq_words):
+    roteiro = re.sub(r"\A---\n.*?\n---\n", "", roteiro, flags=re.S)   # front matter (roteiro.md do narrar) não é fala
     ref = tokens(roteiro)
     VOCAB.update(ref)
     dados = json.load(open(arq_words, encoding="utf-8"))

@@ -85,6 +85,13 @@ produz o master. O deste canal nasce assim:
      (`out/juneau/_pesquisa/narracao-conferencia.md`). Nenhuma geração é aceita sem a conferência palavra a
      palavra: `transcrever-local.py`, depois `comparar-narracao.py`, e `conferir-trechos.py` para os pontos
      suspeitos. Todos estão em `out/juneau/_pesquisa/`.
+   - **Pela API** (o Lucas escolheu em 25/09 para refazer os blocos 2 e 3; é o caminho do vídeo 2 em diante):
+     `node C:\projetos\regie-v1\src\ferramentas\narrar.mjs <proj>`, que manda **um pedido por parágrafo**, bem abaixo
+     do limite em que o v3 corta. Voz, modelo e estabilidade vêm de `canal.json` › `narracao`: `stability: 0` é o
+     "Criativo" do site, e `pausa_paragrafo_s: 0.2` imita o respiro da 1b (os trechos da API já trazem uns 0,06 s
+     de silêncio no começo e nenhum no fim). Confira com `out/juneau/_pesquisa/conferir-paragrafos.py <proj>`,
+     que transcreve e compara parágrafo por parágrafo. O parágrafo com erro se refaz sozinho: `narrar.mjs <proj>
+     --refazer=N`. Primeiro `--simular`, que mostra o custo sem gastar.
    - A conta compartilhada da ElevenLabs serve a vários canais. O Lucas entra nela pelo navegador do app, e o
      Claude opera o site com ele vendo; nunca digite a senha dele.
    - O arquivo de chaves da API está em `C:\Users\zangp\.regie\chaves.env` desde 25/09/2026. Foi copiado, sem
@@ -96,7 +103,9 @@ produz o master. O deste canal nasce assim:
      da voz; 15.564 na narração do texto aprovado (o bloco 1 com quebras de linha, o teste sem quebras e os 3
      blocos em "Criativo"); 709 no teste do v2; 1.498 na prova do tom de conversa (teste com a voz anterior e o
      Remix); 11.028 na narração do texto aprovado com a voz em conversa (3 blocos em "Criativo", 2 versões de
-     cada; o saldo foi de 3.088.067 a 3.077.039). Total de 31.232. A narração inteira pede um ok próprio;
+     cada; o saldo foi de 3.088.067 a 3.077.039). Total de 31.232. Em 25/09, com o ok do Lucas, 4.553 para
+     refazer os blocos 2 e 3 pela API: 4.324 nos 23 parágrafos e 229 no parágrafo 8 refeito. Os recibos batem
+     com o contador da conta. A narração inteira pede um ok próprio;
    - O navegador do app corta downloads grandes em uns 1,8 MB: o MP3 de um bloco chegou com 112 s de 4 min
      29 s. Para baixar a narração, use outro caminho (o Lucas baixa no navegador dele, ou a API).
 5. master = a narração sobre tela preta 3840×2160 (`marca/identidade.md` §5).
@@ -134,8 +143,11 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    24/09, duas por bloco. Os blocos se reconhecem pela contagem de caracteres: 3.827 às 18:24, 3.735 às 18:26 e
    3.466 às 18:28, no horário de Brasília. O texto não vem na listagem. **Baixadas e conferidas em 25/09**
    (`out/juneau/_pesquisa/narracao-historico.mjs --baixar`, com o ok do Lucas). Só a **1b** está completa. As
-   duas do bloco 2 e as duas do bloco 3 param antes do fim, e esses blocos precisam ser gerados de novo. Isso
-   gasta crédito e pede o ok do Lucas. O quadro está em `narracao-conferencia.md`.
+   duas do bloco 2 e as duas do bloco 3 param antes do fim. **Os blocos 2 e 3 foram refeitos pela API em 25/09**
+   (`out/juneau-voz/`, 23 parágrafos, todos completos). `out/juneau/_pesquisa/montar-narracao.py` junta a 1b com
+   eles: `out/juneau/_narracao/narracao-completa.wav`, com 9:14. Na conferência do arquivo inteiro, 99,0 % das
+   palavras batem com o texto aprovado, e nenhuma foi pulada. **Espera o ouvido do Lucas.** O quadro e o que falta
+   ouvir estão em `narracao-conferencia.md`.
 2. **`narracao.wav` e master preto sintético** pelo gerador da pré-v1 (`garantirMasterSintetico`, com carimbo).
 3. **Conferência palavra a palavra e `words.json`** no contrato da pré-v1, com o faster-whisper local.
    Normalize os números antes de comparar. O Scribe da pré-v1 fica de fora: é pago, e o local faz o mesmo.
@@ -202,7 +214,8 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
      `_creditos-mapa.md`, que a pré-v1 escreveria com o crédito da EOX;
    - não há data de verão limpa nessa janela: as limpas são de março e abril, com neve até perto do mar. A de
      06/08/2024 saiu enevoada a 30 m;
-   - a divisa em branco a 35 % (§6) quase some sobre o campo de gelo. Se deve ganhar contorno, é decisão do Lucas.
+   - a divisa em branco a 35 % quase sumia sobre o campo de gelo. O Lucas pediu o contorno escuro por baixo
+     (25/09), e ele virou regra da §6 (`--fronteira-contorno-*` no `marca/tokens.css`).
    Qual base o Juneau usa de verdade (Landsat ou MapTiler) também é decisão dele.
 8. **XML do Premiere** pelo `finalizar.mjs`, primeiro com `--sem-trilha`. Será a primeira abertura real dele no
    Windows.
