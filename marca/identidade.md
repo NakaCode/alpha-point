@@ -47,8 +47,14 @@ Cor com PAPEL. Uma cor = um significado, no vídeo inteiro.
 | `--rotulo` | `#0B0F14` a 88% | pílula do rótulo sobre mapa ou registro |
 | `--destaque` | `#F5A524` | **o protagonista do vídeo**: o território, a série, o ponto. UMA entidade por vídeo. Única exceção: o anel (§4.4), assinatura do canal, sai em `--destaque` mesmo quando marca um ponto que não é o protagonista |
 | `--contraparte` | `#2EC4B6` | o segundo ator, quando a cena compara dois |
-| `--neutro` | `#8A94A6` | do terceiro ator em diante: sem matiz nova, só rótulo |
+| `--neutro` | `#737D8E` | do terceiro ator em diante: sem matiz nova, só rótulo |
 | `--tensao` | `#E4572E` | zona de conflito, risco, perda. **Nunca** é a cor de um lado |
+
+**O `--neutro` foi escurecido em 25/09/2026** (era `#8A94A6`; mesma matiz, só mais escuro). Medido com o
+`contraste.mjs` da pré-v1 da Régie (daltonismo por Machado 2009, distância CIEDE2000, limiar 10): o antigo ficava a
+7,8 do `--contraparte` para quem tem deuteranopia (os dois viravam a mesma cor) e a 2,5:1 sobre o `--papel`,
+abaixo dos 3:1 de elemento gráfico. O novo fica a 15,8 do `--contraparte` no pior tipo de daltonismo e a
+4,32:1 sobre o `--fundo`, 3,79:1 sobre o `--painel` e 3,40:1 sobre o `--papel`. Decisão do Lucas.
 
 **Regras de cor**
 - **Vermelho contra azul como dois lados: proibido.** Para o público dos EUA é a cor de partido

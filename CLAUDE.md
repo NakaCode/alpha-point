@@ -129,10 +129,12 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    Normalize os números antes de comparar. O Scribe da pré-v1 fica de fora: é pago, e o local faz o mesmo.
 4. **Plano de cenas em `espelho.json`**, o contrato da pré-v1. Feche os tempos à mão: o `alinhar-timestamps`
    deixa vãos e sobreposições no faceless. Nunca o rode sem `--dry`.
-5. **Mídia de acervo aberto** com `buscar-midia` (Commons, NASA, NARA; licença e procedência gravadas). Falta
-   `canal.json` › `contato`. O `_commons-baixar` não tem trava de licença: confira cada uma.
+5. **Mídia de acervo aberto** com `buscar-midia` (Commons, NASA, NARA; licença e procedência gravadas). O contato é `contato.naka@hotmail.com`
+   (`canal.json` › `contato`, decidido pelo Lucas em 25/09). O `_commons-baixar` não tem trava de licença: confira cada uma.
 6. **Geometria real dos mapas**: Natural Earth offline, pela pré-v1.
-7. **Cenas 4K**: RIG, `quadro.mjs` e `renderizar.mjs --4k`. Faltam `marca/tokens.css` e as fontes locais.
+7. **Cenas 4K**: RIG, `quadro.mjs` e `renderizar.mjs --4k`. As fontes estão em `marca/fontes/`
+   (Inter, Barlow Condensed e Noto Sans, do google/fonts com licença e sha256; o teste de glifos da §3 passou).
+   Falta o `marca/tokens.css`.
 8. **XML do Premiere** pelo `finalizar.mjs`, primeiro com `--sem-trilha`. Será a primeira abertura real dele no
    Windows.
 9. Do vídeo 2 em diante, **narração pela API** com `narrar.mjs` (mesma voz, modelo, estabilidade e blocos).
