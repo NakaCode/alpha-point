@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>landsat-juneau</title>
+<!--
+  CANAL ALPHA POINT — cena de TESTE da base Landsat (25/09/2026), feita do molde mapa-base.html da pré-v1
+  (preparar-cena.mjs prova-mapa --molde=landsat-juneau). Ilustra a frase 10 do roteiro de Juneau:
+  "Its roads run about 43 miles north, to Cascade Point, and stop."
+
+  O que o canal mudou no molde, e por quê:
+    · A BASE: os perfis da pré-v1 (aberto, vetorial, maptiler) não têm Landsat, e perfis.json é do motor
+      (não se edita). O canal escolheu Landsat (identidade §6: domínio público, regional). Então a cena lê
+      window.__BASE_CANAL (../_media/base/<nome>.js, gravado pelo canal com a procedência) e, se ele existe,
+      usa-o NO LUGAR do perfil: uma fonte "image" do MapLibre, já em Web Mercator, sem rede. Sem ele, vale o
+      perfil do molde, como antes. Todo o resto do molde (erro legível, nova tentativa, espera de tiles,
+      contrato de captura) ficou igual.
+    · O TRATAMENTO da base (identidade §6): brilho a 65 % e saturação a 70 %, na pintura da camada.
+    · O CRÉDITO no tamanho e lugar da identidade §4.1/§4.2 (76 px, x = 200, faixa y > 1880), com pílula e cor
+      dos tokens. Landsat e Natural Earth são domínio público: sem linha na tela (§7). A estrada e Cascade Point
+      são OSM: ODbL. O bloco da DESCRIÇÃO está em ../_pesquisa/base-landsat.json (o _creditos-mapa.md que o
+      preparar-cena grava só conhece os perfis da pré-v1; o base-landsat.py o regrava certo).
+    · Sem o véu (#scrim) do molde: a identidade não tem degradê.
+    · Rótulo na pílula da marca (§4.1), anel da assinatura (§4.4), estrada que se desenha. A divisa e CANADA
+      saem quando a estrada chega à metade: nunca mais que 5 elementos juntos (§4.2).
+    · A espera de cada quadro também aguarda a estrada (setData) e a divisa.
+-->
+<!-- base do canal: a imagem Landsat georreferenciada e a procedência dela -->
+<script src="../_media/base/landsat-juneau.js"></script>
+<!--
+  MOLDE DE CENA DE MAPA — Régie (src/mapa/moldes/mapa-base.html).
+
+  De onde veio: o contrato de captura do mapista (agent-core/agentes/mapista/CONTRATO.md §3-§5), a
+  espera por "um nível de tile só" de top10-estudio/experimento/camera-mapa/lab.html:216-262, e o
+  overlay ancorado por projeção de knowledge/dourados/eua-china/mapa-taiwan-atrito.html:117-151
+  (placeChip, pathFromMulti) — commit 4afda124. O que mudou em relação a eles:
+    · a base NÃO está escrita aqui: vem do perfil do canal (window.__REGIE_MAPA), e a chave, quando
+      o perfil pede, vem de window.__chaves, que o render injeta na hora. Nenhuma chave neste arquivo;
+    · o motor e a câmera vêm de ../_media/_vendor/ (preparar-cena.mjs), não do CDN;
+    · a geometria vem de ../_media/geo/<slug>.js (gravado pelas ferramentas src/geo/*), não colada;
+    · a cena publica window.map (qc-mapa-movimento.mjs:51 exige; os dourados usavam "let map");
+    · erro de configuração não vira quadro cinza: vira window.__erroCena + faixa vermelha na tela;
+    · o crédito da base e da geometria que exige crédito é montado sozinho a partir do perfil e da
+      procedência (docs/CREDITO-DE-MAPA.md §6: 46 px, pílula, canto inferior esquerdo, a cena toda);
+    · tile que não chega (sem internet, HTTP 429/5xx, servidor fora do ar) ou chega CORROMPIDO (status
+      200 com a imagem cortada) é tentado de novo e, se não passar, é ERRO da cena — não quadro preto
+      com status "ok": na dúvida, a cena barra (fail-closed);
+    · a fonte é a da MARCA do canal (var(--fonte) de ../../../marca/tokens.css), nunca uma família
+      cravada: "Helvetica Neue" nem existe no Windows e o _audit-til reprovava toda cena de mapa;
+    · palco 4K nativo (3840×2160): o render tira 1080p com DPR 0,5 e 4K com --4k.
+  Exemplo incluído: IMAGEM SOBRE REGIÃO — chip ancorado por projeção e foto recortada no formato
+  do território (SVG clipPath do polígono projetado, refeito a cada quadro).
+
+  COMO USAR (o mapista):
+    1. node <motor>/src/geo/geo-pais-completo.mjs <proj> --a3=BRA --pt=Brasil      (a geometria)
+    2. node <motor>/src/mapa/preparar-cena.mjs <proj> --molde=<id-da-cena>         (vendor + perfil + esta cópia)
+    3. edite SÓ o bloco CENA abaixo (e o CSS de marca): tempos do words.json, viewports, slugs, foto.
+    4. confira os quadros de início, meio e fim — renderizados, não imaginados.
+
+  CONTRATO (inviolável — é o que o render captura):
+    window.__duracao, window.__renderAt(t) (determinístico, nunca lança), window.__ready (Promise),
+    window.__prepararCaptura(), window.__aguardarMapa() (Promise; espera tiles E relevo),
+    window.__fotosProntas (Promise das imagens), window.map. Proibido: relógio real e sorteio no
+    quadro, animação CSS por keyframes, e mover a câmera com as animações por relógio do MapLibre
+    (use jumpTo com a posição calculada de t).
+-->
+<!-- A MARCA DO CANAL: a fonte da cena é var(--fonte) de marca/tokens.css (a cena mora em
+     out/<proj>/graphics/, então a raiz do canal está três pastas acima). Sem este link, o texto sai numa
+     família cravada fora da marca e o _audit-til reprova a cena por FORA-DA-MARCA. -->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/camera-mapa.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<!-- UMA linha por geometria usada na cena (o nome é o slug que a ferramenta geo imprimiu): -->
+<script src="../_media/geo/panhandle-juneau.js"></script>
+<script src="../_media/geo/estrada-juneau-cascade.js"></script>
+<script src="../_media/geo/cascade-point.js"></script>
+<script src="../_media/geo/cidades-ne.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: #05080D; }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: #05080D;
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  /* canal: sem o véu (#scrim) do molde. A identidade não tem degradê (tokens: --degrade: none) e o escurecimento
+     da base é só o de §6 (brilho 65 %); o véu somado a ele deixava a base a 36–58 % (revisão de 25/09/2026). */
+  svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; }
+  /* opacidade da foto e da borda vai por ATRIBUTO no JS: CSS de folha de estilo vence
+     presentation-attribute e travaria o valor (lição do dourado mapa-taiwan-atrito.html:30-31). */
+  #fotoBorda { fill: none; stroke: #EDE6D6; stroke-width: 6; stroke-linejoin: round; }
+  #rotulos { position: absolute; inset: 0; pointer-events: none; }
+  /* canal: o RÓTULO da marca (identidade §3 e §4.1) — pílula --rotulo, cantos 12, respiro 24 × 40,
+     Inter 700 a 128 px em --tinta. Cidade e lugar: caixa normal, tracking 0. País: CAIXA ALTA, +0.04em. */
+  .rotulo { position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1;
+    letter-spacing: 0; color: var(--tinta); }
+  .rotulo.pais { text-transform: uppercase; letter-spacing: var(--tracking-lugar); }
+  #anel circle { fill: none; stroke: var(--destaque); }
+  #pontoJuneau { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6; }
+  /* CRÉDITO DE MAPA — docs/CREDITO-DE-MAPA.md §6.2-§6.4. Nenhuma licença fixa tamanho; 46 px no 4K
+     = 23 pt no 1080p = o mínimo da Apple para TV. NUNCA abaixo de 40 px. Branco 90% sobre pílula
+     preta 60%: contraste >= 5:1 até sobre neve (o #C9D6E8 com sombra dava 1,47:1 sobre branco).
+     Canto inferior esquerdo, dentro da área segura (--safe-x 154 / --safe-y 86 dos tokens), visível
+     do primeiro ao último quadro. Quebra em duas linhas em vez de sair do quadro. Não baixe as
+     opacidades: texto 85% + pílula 55% já cai para 3,95:1 sobre branco.
+     A família vai em declaração PRÓPRIA, nunca dentro do atalho `font:`: var() inválido (canal sem
+     marca/tokens.css) invalida a declaração inteira, e o atalho levaria junto o tamanho — medido: o
+     crédito caía para 16 px. Assim, sem a marca, só a família cai (e o _audit-til acusa FORA-DA-MARCA). */
+  /* canal: tamanho e lugar da identidade §4.1/§4.2 — 76 px, começa em x = 200 e acaba antes de x = 1720,
+     dentro da faixa y > 1880. Pílula e cor pelos tokens: --rotulo (mais escura que a do molde: sobre neve o
+     contraste fica ~8:1), cantos --cantos, texto --sec (a --tinta a 80 %, que os tokens dão ao crédito).
+     O respiro é menor que o do rótulo para a pílula caber na faixa (topo em ~1935). */
+  #credito { position: absolute; left: var(--credito-x); bottom: 100px; max-width: 1520px; z-index: 50;
+    font: 500 76px/1.2 sans-serif; font-family: var(--fonte); letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 12px 24px; border-radius: var(--cantos); }
+  #credito[hidden] { display: none; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <div id="map"></div>
+  <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="recorteRegiao" clipPathUnits="userSpaceOnUse"><path id="recortePath" d=""/></clipPath></defs>
+    <g id="fotoRegiao" opacity="0">
+      <image id="fotoImg" x="0" y="0" width="0" height="0" preserveAspectRatio="xMidYMid slice" clip-path="url(#recorteRegiao)"/>
+      <path id="fotoBorda" d="" stroke-opacity="0"/>
+    </g>
+    <!-- canal: o ponto de Juneau (parte do rótulo dele) e o ANEL de Cascade Point (identidade §4.4) -->
+    <circle id="pontoJuneau" cx="0" cy="0" r="16" opacity="0"/>
+    <g id="anel" opacity="0">
+      <circle id="anelPulso1" cx="0" cy="0" r="28" stroke-width="10" opacity="0"/>
+      <circle id="anelPulso2" cx="0" cy="0" r="28" stroke-width="10" opacity="0"/>
+      <circle id="anelFixo" cx="0" cy="0" r="28" stroke-width="10"/>
+    </g>
+  </svg>
+  <div id="rotulos">
+    <div class="rotulo pais" id="rotCanada">Canada</div>
+    <div class="rotulo" id="rotJuneau">Juneau</div>
+    <div class="rotulo" id="rotCascade">Cascade Point</div>
+  </div>
+  <div id="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  // ═══ CONFIGURAÇÃO DA CENA — o mapista edita SÓ este bloco (e o CSS de marca acima) ═══════════
+  // Tempos em segundos DESTA cena (0 = inSec do segmento), tirados do words.json (word-lock).
+  var CENA = {
+    duracao: 7.0,                                   // teste: a frase 10 dura ~7 s na narração
+    largura: 3840, altura: 2160,                    // o palco; nunca mude (o zoom depende dele)
+    // Viewports são pontos de PASSAGEM: a câmera anda o tempo todo (render/camera-mapa.js).
+    // Um empurrão lento para o Lynn Canal, norte para cima, sem inclinação (a base não tem relevo 3D).
+    viewports: [
+      { lng: -134.50, lat: 58.50, zoom: 9.75, bearing: 0, pitch: 0 },
+      { lng: -134.55, lat: 58.52, zoom: 10.05, bearing: 0, pitch: 0 }
+    ],
+    bearingLoop: null,
+    cameraAbre: 0.16, cameraFecha: 0.20,
+    baseCanal: "landsat-juneau",                    // canal: exige a base Landsat; sem ela, a cena barra
+    territorio: null,
+    fotoRegiao: null,
+    // canal: o que a cena desenha (geometria real; slugs de ../_media/geo/)
+    // "from the rest of the continent": a divisa e CANADA ficam na primeira metade e saem quando a estrada
+    // chega à metade, antes do anel. Assim nunca há mais que 5 elementos juntos (identidade §4.2: alvo 4 a 5).
+    fronteira: { geo: "panhandle-juneau", pais: "CAN", entra: 0.3, dura: 0.5, sai: 2.9 },   // a divisa com o Canadá
+    estrada: { geo: "estrada-juneau-cascade", entra: 1.3, dura: 2.5 },             // Juneau → Cascade Point
+    // rótulos: âncora na coordenada; lado = de que lado do ponto a pílula fica; dx/dy em px do palco
+    rotulos: [
+      { id: "rotCanada",  lnglat: [-133.65, 58.80], lado: "centro",   dx: 0,   dy: 0,  entra: 0.6, sai: 2.9 },   // dentro do Canadá (conferido no polígono do NE)
+      { id: "rotJuneau",  geo: "cidades-ne", nome: "Juneau", lado: "direita", dx: 44, dy: 0, entra: 0.9 },
+      { id: "rotCascade", geo: "cascade-point", lado: "esquerda", dx: -64, dy: 0, entra: 3.9 }
+    ],
+    anel: { geo: "cascade-point", entra: 3.8 }      // o ponto que importa: onde a estrada para
+  };
+  // ═══════════════════════════════════════════════════════════════════════════════════════════
+
+  var DUR = CENA.duracao;
+  window.__duracao = DUR;
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (t) { t = cl(t, 0, 1); return 1 - Math.pow(1 - t, 3); };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+
+  // ── erro legível: nunca um quadro cinza calado ─────────────────────────────────────────────
+  // Ganchos inofensivos desde a primeira linha: se a cena parar num erro de configuração, o
+  // render ainda encontra as funções, lê __erroCena e para com a mensagem — não com um TypeError.
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () { /* o erro vive em __erroCena; o render confere */ });
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+
+  // ── imagens: __fotosProntas é a Promise que o render espera (e encadeia) ────────────────────
+  var fotoHref = CENA.fotoRegiao && CENA.fotoRegiao.img;
+  window.__fotosProntas = !fotoHref ? Promise.resolve(true) : new Promise(function (res) {
+    var im = new Image();
+    im.onload = function () {
+      var fi = E("fotoImg"); if (fi) fi.setAttribute("href", fotoHref);
+      (im.decode ? im.decode() : Promise.resolve()).then(function () { res(true); }, function () { res(true); });
+    };
+    // imagem que não carrega é ERRO, não "pronto" (REND-09 do estúdio: mídia quebrada passava calada)
+    im.onerror = function () { falhar("a imagem " + fotoHref + " não carregou (arquivo ausente ou caminho errado)."); res(true); };
+    im.src = fotoHref;
+  });
+
+  // ── o que a cena precisa ter recebido ───────────────────────────────────────────────────────
+  // canal: a base do canal (Landsat local) vale no lugar do perfil da pré-v1, quando existe (ver o topo)
+  var P = window.__BASE_CANAL || window.__REGIE_MAPA;
+  if (CENA.baseCanal && !window.__BASE_CANAL)
+    return falhar("a cena pede a base do canal '" + CENA.baseCanal + "' e ela não carregou (../_media/base/" + CENA.baseCanal + ".js). " +
+      "Sem ela, a cena cairia no perfil da pré-v1 sem avisar. Refaça com: python out/prova-mapa/_pesquisa/base-landsat.py");
+  if (CENA.baseCanal && window.__BASE_CANAL.nome !== CENA.baseCanal)
+    return falhar("a base do canal carregada é '" + window.__BASE_CANAL.nome + "', e a cena pede '" + CENA.baseCanal + "'.");
+  if (window.__BASE_CANAL && !(window.__BASE_CANAL.imagem && window.__BASE_CANAL.imagem.arquivo &&
+      window.__BASE_CANAL.imagem.coordinates && window.__BASE_CANAL.imagem.coordinates.length === 4))
+    return falhar("a base do canal '" + window.__BASE_CANAL.nome + "' não diz a imagem e os 4 cantos (imagem.arquivo, imagem.coordinates).");
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (typeof criarCameraMapa !== "function") return falhar("não carregou ../_media/_vendor/camera-mapa.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render/prévia da Régie, ou troque o perfil do canal.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo. Gere com as ferramentas src/geo/*.");
+    return g;
+  }
+  var TERR = CENA.territorio ? geo(CENA.territorio.geo) : null;
+  var FOTO_GEO = CENA.fotoRegiao ? geo(CENA.fotoRegiao.geo) : null;
+  if (window.__erroCena) return;
+
+  // ── canal: a geometria que esta cena desenha, tirada dos arquivos (nada à mão) ─────────────────
+  var TINTA = getComputedStyle(document.documentElement).getPropertyValue("--tinta").trim() || "#F4F1EA";
+  var FRONTEIRA = (function () {
+    var fc = geo(CENA.fronteira.geo); if (!fc) return null;
+    var f = (fc.features || []).filter(function (x) { return x.properties && x.properties.SOV_A3 === CENA.fronteira.pais; });
+    if (!f.length) falhar("o recorte '" + CENA.fronteira.geo + "' não tem o país " + CENA.fronteira.pais + ".");
+    return { type: "FeatureCollection", features: f };
+  })();
+  var ESTRADA = (function () {
+    var fc = geo(CENA.estrada.geo); if (!fc) return null;
+    var g = fc.features && fc.features[0] && fc.features[0].geometry;
+    if (!g || g.type !== "LineString") { falhar("a estrada '" + CENA.estrada.geo + "' não é uma LineString."); return null; }
+    // comprimento acumulado em Mercator (o que a tela vê), para a estrada crescer a velocidade constante
+    var m = function (p) { var s = Math.sin(p[1] * Math.PI / 180); return [p[0] / 360, 0.5 * Math.log((1 + s) / (1 - s)) / (2 * Math.PI)]; };
+    var acum = [0], q0 = m(g.coordinates[0]);
+    for (var i = 1; i < g.coordinates.length; i++) {
+      var q = m(g.coordinates[i]); acum.push(acum[i - 1] + Math.hypot(q[0] - q0[0], q[1] - q0[1])); q0 = q;
+    }
+    return { pts: g.coordinates, acum: acum, total: acum[acum.length - 1] };
+  })();
+  function trechoDaEstrada(f) {
+    var E_ = ESTRADA, alvo = cl(f, 0, 1) * E_.total, pts = [E_.pts[0]];
+    for (var i = 1; i < E_.pts.length; i++) {
+      if (E_.acum[i] <= alvo) { pts.push(E_.pts[i]); continue; }
+      var a = E_.acum[i - 1], k = (alvo - a) / ((E_.acum[i] - a) || 1), p = E_.pts[i - 1], q = E_.pts[i];
+      pts.push([p[0] + (q[0] - p[0]) * k, p[1] + (q[1] - p[1]) * k]);
+      break;
+    }
+    if (pts.length < 2) pts.push(pts[0]);
+    return { type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: pts } };
+  }
+  function pontoDe(r) {
+    if (r.lnglat) return r.lnglat;
+    var fc = geo(r.geo); if (!fc) return null;
+    var f = (fc.features || []).filter(function (x) { return !r.nome || (x.properties && x.properties.name === r.nome); })[0];
+    if (!f || !f.geometry || f.geometry.type !== "Point") { falhar("não achei o ponto " + (r.nome || r.geo) + " em '" + r.geo + "'."); return null; }
+    return f.geometry.coordinates;
+  }
+  CENA.rotulos.forEach(function (r) { r.p = pontoDe(r); });
+  var PONTO_ANEL = pontoDe(CENA.anel);
+  var PONTO_JUNEAU = pontoDe({ geo: "cidades-ne", nome: "Juneau" });
+  if (window.__erroCena) return;
+
+  // ── crédito na tela: base (pelo perfil) + toda geometria cuja licença exige ────────────────────
+  // A MESMA regra de src/mapa/credito.mjs (creditoTela): cada invólucro ../_media/geo/<slug>.js traz
+  // o `credito_tela` já calculado pela ferramenta; aqui só se junta, sem repetir "OpenStreetMap".
+  // Fail-closed: geometria carregada SEM procedência, ou que exige crédito sem dizer o texto, para
+  // a cena — nunca vai ao ar sem o crédito que a licença pede. Natural Earth: nenhuma linha.
+  var creditoTexto = (function () {
+    var partes = [];
+    if (P.atribuicao && P.atribuicao.exigida) {
+      if (!P.atribuicao.tela) { falhar("a base '" + P.nome + "' exige crédito na tela e o perfil não traz o texto (atribuicao.tela)."); return ""; }
+      partes.push(P.atribuicao.tela);
+    }
+    var geos = window.__GEO || {}, meta = window.__GEO_META || {};
+    var slugs = Object.keys(geos);
+    for (var i = 0; i < slugs.length; i++) {
+      var m = meta[slugs[i]];
+      if (!m) { falhar("a geometria '" + slugs[i] + "' foi carregada sem procedência (fonte/licença). Gere pelas ferramentas src/geo/* e rode preparar-cena."); return ""; }
+      if (!m.exige_credito) continue;
+      var t = m.credito_tela || (m.fonte && m.licenca ? "Geometria: " + m.fonte + " (" + m.licenca + ")" : "");
+      if (!t) { falhar("a geometria '" + slugs[i] + "' exige crédito e a procedência não diz o texto. Rode preparar-cena de novo."); return ""; }
+      var junto = partes.join(" · ");
+      if (/OpenStreetMap/i.test(t) && /OpenStreetMap/i.test(junto)) continue;
+      if (junto.indexOf(t) >= 0) continue;
+      partes.push(t);
+    }
+    var c = E("credito");
+    if (c) { c.textContent = partes.join(" · "); c.hidden = !partes.length; }
+    return partes.join(" · ");
+  })();
+  window.__creditoMapa = creditoTexto;   // o QC e o teste leem o que foi para a tela
+  if (window.__erroCena) return;
+
+  // ── a base, montada do perfil ───────────────────────────────────────────────────────────────
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  function estilo() {
+    if (P.tipo === "estilo") return P.estilo;
+    // canal: imagem única georreferenciada (a base do canal). O MapLibre a lê por XHR de file://, que o render
+    // libera (--allow-file-access-from-files). Aberta à mão no navegador, sem essa opção, a imagem não carrega.
+    var fontes = P.imagem
+      ? { base: { type: "image", url: P.imagem.arquivo, coordinates: P.imagem.coordinates } }
+      : { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // tratamento da base (identidade §6): brilho a 65 %, saturação a 70 % (raster-saturation -0,3 = 30 % rumo ao cinza)
+    var trat = P.tratamento || { brilho: 0.65, saturacao: 0.70 };
+    var s = { version: 8, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": trat.brilho, "raster-saturation": trat.saturacao - 1, "raster-fade-duration": 0 } }] };
+    if (P.dem) {
+      fontes.dem = { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding };
+      s.terrain = { source: "dem", exaggeration: (P.terreno && P.terreno.exagero) || 1.25 };
+    }
+    return s;
+  }
+
+  // ── rede com nova tentativa: falha passageira não derruba a cena inteira ────────────────────
+  // Fail-closed sem nova tentativa trocaria o quadro preto por cena abortada à toa. Toda URL
+  // http(s) do perfil passa por um protocolo próprio (transformRequest → "regie+https") que tenta
+  // até 5 vezes (esperas de 0, 1, 3, 6 e 10 s) quando a falha é passageira:
+  //   · rede (fetch que falha) ou tentativa sem resposta em 30 s;
+  //   · HTTP 429 e 5xx (404/401/403 não se repetem: a resposta é definitiva);
+  //   · CORPO RUIM com status 200 — medido ao vivo em 23/09/2026 no perfil "aberto": 3 de 7 rodadas
+  //     abortaram com "The source image could not be decoded" num JPEG da EOX de ~15 KB, cabeçalho
+  //     JFIF certo e o fim cortado. O status era 200, então a versão anterior (que só olhava rede e
+  //     status) nunca tentava de novo. Agora a imagem é CONFERIDA dentro do laço: JPEG tem de
+  //     terminar em FF D9, PNG tem de ter o bloco IEND, WebP tem de ter o tamanho que o RIFF declara,
+  //     e tudo tem de decodificar (createImageBitmap). O bitmap decodificado vai direto ao MapLibre,
+  //     que aceita ImageBitmap no lugar do buffer — a imagem é decodificada uma vez só.
+  // Esgotadas as tentativas, o erro sobe com a CLASSE da falha (e.falha = "corrompido" | "tempo" |
+  // "rede" | "http"), o status e a URL; o MapLibre marca o tile e a cena barra (abaixo) com a
+  // mensagem certa — tile corrompido não é "sem internet". __retentativasMapa conta as novas
+  // tentativas, e __retentativasMapaPorFalha separa por classe (a medição ao vivo lê os dois).
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;   // conta também a fila do próprio Chrome (6 conexões por host em HTTP/1.1,
+                                 // 16 imagens por vez no MapLibre): com 15 s, a medição de 23/09/2026 numa
+                                 // máquina carregada abortou 16 pedidos que ainda iam chegar
+  /*<imagem>*/
+  // o corpo é uma imagem inteira? null = sim; texto = o que está errado (vai para a mensagem)
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {                           // JPEG: termina no marcador EOI
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {   // PNG: bloco IEND no fim
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {   // RIFF/WebP: tamanho declarado
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;   // formato que não conheço pela assinatura: o createImageBitmap decide
+  }
+  /*</imagem>*/
+  function erroCorpo(msg, url, st) {
+    var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e;
+  }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      // prazo por tentativa + o cancelamento do MapLibre (tile que saiu da tela) no mesmo sinal
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) {
+          var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http";
+          throw e;
+        }
+        if (params.type === "json") return r.text().then(function (t) {
+          try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); }
+        });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;   // o MapLibre desistiu do tile: não é falha
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+
+  var cameraAt = criarCameraMapa({ viewports: CENA.viewports, duration: DUR, width: CENA.largura, height: CENA.altura,
+    bearingLoop: CENA.bearingLoop, cameraAbre: CENA.cameraAbre, cameraFecha: CENA.cameraFecha });
+  var c0 = cameraAt(0);
+  var map;
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: c0.bearing, pitch: c0.pitch
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
+  }
+  window.map = map;   // os gates de mapa leem window.map
+
+  // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto ─────────────────────────────────
+  // Achado de 23/09/2026: com os tiles apontando para um servidor morto, o render saiu 6 de 6
+  // quadros PRETOS com status "ok" (só o crédito aparecia), e a rodada seguinte respondeu "pulada"
+  // mantendo o clipe preto. Todo 'error' do MapLibre — tile da base ou do relevo com status ou sem
+  // (falha de rede), estilo/sprite/fonte do perfil vetorial — para a cena com o motivo legível.
+  // O render lê __erroCena a cada quadro e sai com 3, sem carimbo.
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg)) {
+      return "mandou tile CORROMPIDO" + n + ": a resposta chegou, mas a imagem veio cortada ou ilegível (" +
+        String(msg).replace(/^tile corrompido: /, "") + "). Não é falta de internet: o servidor ou a conexão estão cortando " +
+        "respostas. Renderize de novo; se repetir com frequência, troque o perfil do canal (docs/MAPAS.md).";
+    }
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + " (internet lenta ou servidor sobrecarregado). Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". O serviço gratuito tem limite: espere e renderize de novo, ou use outro perfil.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    // canal: erro na imagem da base do canal (arquivo ausente ou corrompido) diz o que é, e como refazer
+    if (P.imagem && ev && ev.sourceId === "base")
+      return falhar("a imagem da base '" + P.nome + "' (" + P.imagem.arquivo + ") não carregou ou está corrompida" +
+        (msg ? " (" + msg + ")" : "") + ". Refaça com: python out/prova-mapa/_pesquisa/base-landsat.py");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) {
+      // não é rede: é o próprio MapLibre recusando algo da cena ou do estilo (camada/fonte que não
+      // existe, propriedade inválida). Também barra: a cena não sairia como foi escrita.
+      return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ". Confira o bloco CENA (ids de camada/fonte, valores).");
+    }
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : "") +
+      (msg && !err.status && err.falha !== "corrompido" && err.falha !== "tempo" && !/could not be decoded|could not load image/i.test(msg) ? " — " + msg : ""));
+  });
+
+  var mapaCarregado = false;
+  map.on("load", function () {
+    try {
+      if (TERR) {
+        map.addSource("territorio", { type: "geojson", data: TERR });
+        map.addLayer({ id: "territorio-fill", type: "fill", source: "territorio",
+          paint: { "fill-color": CENA.territorio.cor, "fill-opacity": 0 } });
+        map.addLayer({ id: "territorio-linha", type: "line", source: "territorio",
+          paint: { "line-color": CENA.territorio.cor, "line-width": 5, "line-opacity": 0 } });
+      }
+    } catch (e) { return falhar("não consegui desenhar o território: " + e.message); }
+    try {
+      // canal: a divisa (identidade §6: demais fronteiras em branco a 35 %, 3 px). O contorno do polígono do
+      // Canadá no recorte É a divisa nesta janela (o Canadá não toca o mar aqui).
+      map.addSource("fronteira", { type: "geojson", data: FRONTEIRA });
+      map.addLayer({ id: "fronteira", type: "line", source: "fronteira",
+        paint: { "line-color": "#FFFFFF", "line-width": 3, "line-opacity": 0 } });
+      // a estrada: traço em --tinta sobre uma sombra escura, para ler sobre o satélite; cresce com o tempo
+      map.addSource("estrada", { type: "geojson", data: trechoDaEstrada(0) });
+      map.addLayer({ id: "estrada-sombra", type: "line", source: "estrada",
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": "#0B0F14", "line-width": 16, "line-opacity": 0.55, "line-blur": 4 } });
+      map.addLayer({ id: "estrada", type: "line", source: "estrada",
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": TINTA, "line-width": 8 } });
+    } catch (e) { return falhar("não consegui desenhar a divisa ou a estrada: " + e.message); }
+    if (P.tipo === "estilo") ajustarRotulos();
+    mapaCarregado = true;
+    map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
+  });
+
+  // ── rótulos do perfil vetorial: no idioma do canal e no tamanho do palco 4K ────────────────────
+  // O estilo Liberty mede texto em pixel de CSS para uma tela de ~1920; no palco de 3840 com DPR 0,5
+  // a letra saía com 6-8 px no 1080p, e em inglês ("Brazil", "Bolivia"). O idioma vem de
+  // canal.json -> idiomas.origem (preparar-cena grava em P.idioma). Só mexe em rótulo de NOME (não em
+  // número de estrada) e só em formas de tamanho que sabe multiplicar sem quebrar a expressão.
+  /*<rotulos>*/
+  function escalarTamanho(v, k) {
+    if (v === undefined || v === null) return 16 * k;                          // o padrão do MapLibre
+    if (typeof v === "number") return v * k;
+    if (v && !Array.isArray(v) && typeof v === "object" && Array.isArray(v.stops)) {
+      var o = {}; for (var key in v) o[key] = v[key];
+      o.stops = v.stops.map(function (s) { return [s[0], typeof s[1] === "number" ? s[1] * k : s[1]]; });
+      return o;
+    }
+    if (Array.isArray(v)) {
+      var ini = v[0] === "interpolate" || v[0] === "interpolate-hcl" || v[0] === "interpolate-lab" ? 4 : v[0] === "step" ? 2 : -1;
+      if (ini > 0) {
+        var r = v.slice();
+        for (var i = ini; i < r.length; i += 2) r[i] = typeof r[i] === "number" ? r[i] * k : ["*", r[i], k];
+        return r;
+      }
+      if (JSON.stringify(v).indexOf('"zoom"') < 0) return ["*", v, k];      // expressão sem zoom: multiplica inteira
+    }
+    return null;                                                               // forma que não sei escalar: deixa
+  }
+  function campoNoIdioma(tf, idioma) {
+    if (!idioma || tf === undefined || tf === null) return null;
+    if (JSON.stringify(tf).indexOf("name") < 0) return null;                   // "{ref}", "{housenumber}": não é nome
+    return ["coalesce", ["get", "name:" + idioma], ["get", "name:latin"], ["get", "name"]];
+  }
+  /*</rotulos>*/
+  function ajustarRotulos() {
+    try {
+      var camadas = (map.getStyle() || {}).layers || [];
+      camadas.forEach(function (l) {
+        if (l.type !== "symbol" || !l.layout || l.layout["text-field"] === undefined) return;
+        var tf = campoNoIdioma(l.layout["text-field"], P.idioma);
+        if (tf) map.setLayoutProperty(l.id, "text-field", tf);
+        var ts = escalarTamanho(l.layout["text-size"], CENA.largura / 1920);
+        if (ts !== null) map.setLayoutProperty(l.id, "text-size", ts);
+      });
+    } catch (e) { window.__avisoMapa = "não consegui ajustar os rótulos do mapa vetorial: " + e.message; }
+  }
+
+  // ── overlay ancorado por projeção (dourado mapa-taiwan-atrito.html:117-151, escala 4K) ───────
+  function poligonos(fc) {
+    var out = [];
+    (fc.features || []).forEach(function (f) {
+      var g = f.geometry; if (!g) return;
+      if (g.type === "Polygon") out.push(g.coordinates);
+      else if (g.type === "MultiPolygon") g.coordinates.forEach(function (p) { out.push(p); });
+    });
+    return out;
+  }
+  var FOTO_POLIS = FOTO_GEO ? poligonos(FOTO_GEO) : [];
+  // o path SVG do polígono projetado + o retângulo que o envolve (onde a foto se estica)
+  function pathFromMulti(polys) {
+    var d = "", x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (var a = 0; a < polys.length; a++) for (var b = 0; b < polys[a].length; b++) {
+      var ring = polys[a][b];
+      for (var i = 0; i < ring.length; i++) {
+        var p = map.project(ring[i]);
+        d += (i ? "L" : "M") + p.x.toFixed(1) + " " + p.y.toFixed(1);
+        if (b === 0) { if (p.x < x0) x0 = p.x; if (p.y < y0) y0 = p.y; if (p.x > x1) x1 = p.x; if (p.y > y1) y1 = p.y; }
+      }
+      d += "Z";
+    }
+    return { d: d, x: x0, y: y0, w: Math.max(0, x1 - x0), h: Math.max(0, y1 - y0) };
+  }
+  function placeChip(id, lnglat, op, t, phase) {
+    var el = E(id); if (!el) return;
+    var p = map.project(lnglat);
+    var bob = 4.8 * Math.sin(t * 1.25 + (phase || 0));
+    el.style.left = p.x.toFixed(1) + "px";
+    el.style.top = (p.y + bob).toFixed(1) + "px";
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = "translate(-50%,-50%) translateY(" + ((1 - op) * 44).toFixed(1) + "px)";
+  }
+
+  // canal: rótulo ancorado na coordenada, ao lado do ponto; entra com opacidade + 24 px de subida (§4.4)
+  function placeRotulo(r, entrada, saida) {
+    var el = E(r.id); if (!el || !r.p) return;
+    var p = map.project(r.p);
+    var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
+    el.style.left = (p.x + (r.dx || 0)).toFixed(1) + "px";
+    el.style.top = (p.y + (r.dy || 0)).toFixed(1) + "px";
+    el.style.opacity = (entrada * saida).toFixed(3);
+    el.style.transform = "translate(" + tx + ",-50%) translateY(" + ((1 - entrada) * 24).toFixed(1) + "px)";
+  }
+
+  function aplicar(t) {
+    if (!mapaCarregado) return;
+    map.jumpTo(cameraAt(t));
+    if (TERR) {
+      var tv = eo(seg(t, CENA.territorio.entra, CENA.territorio.dura));
+      map.setPaintProperty("territorio-fill", "fill-opacity", +(tv * 0.22).toFixed(3));
+      map.setPaintProperty("territorio-linha", "line-opacity", +(tv * 0.95).toFixed(3));
+    }
+    // canal: divisa, estrada, rótulos e anel — tudo função de t (identidade §4.4)
+    var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+    var saida = function (o) { return o.sai == null ? 1 : 1 - eo(seg(t, o.sai, 0.3)); };   // sai em 300 ms, só opacidade
+    map.setPaintProperty("fronteira", "line-opacity",
+      +(0.35 * eo(seg(t, CENA.fronteira.entra, CENA.fronteira.dura)) * saida(CENA.fronteira)).toFixed(3));
+    var src = map.getSource("estrada");
+    if (src) src.setData(trechoDaEstrada(eio(seg(t, CENA.estrada.entra, CENA.estrada.dura))));
+    CENA.rotulos.forEach(function (r) { placeRotulo(r, eo(seg(t, r.entra, 0.3)), saida(r)); });
+    var pj = map.project(PONTO_JUNEAU), dotJ = E("pontoJuneau");
+    var rj = CENA.rotulos.filter(function (r) { return r.id === "rotJuneau"; })[0];
+    dotJ.setAttribute("cx", pj.x.toFixed(1)); dotJ.setAttribute("cy", pj.y.toFixed(1));
+    dotJ.setAttribute("opacity", eo(seg(t, rj.entra, 0.3)).toFixed(3));
+    // o anel: entra em 300 ms; o pulso vai de escala 1 → 1,8 e opacidade 1 → 0 em 1,2 s, duas vezes, e para
+    var pa = map.project(PONTO_ANEL), g = E("anel");
+    g.setAttribute("transform", "translate(" + pa.x.toFixed(1) + " " + pa.y.toFixed(1) + ")");
+    g.setAttribute("opacity", eo(seg(t, CENA.anel.entra, 0.3)).toFixed(3));
+    [0, 1].forEach(function (k) {
+      var u = (t - CENA.anel.entra - k * 1.2) / 1.2, c = E("anelPulso" + (k + 1));
+      var vivo = u >= 0 && u < 1;
+      c.setAttribute("r", (28 * (1 + 0.8 * (vivo ? u : 0))).toFixed(2));
+      c.setAttribute("opacity", vivo ? (1 - u).toFixed(3) : "0");
+    });
+    var F = CENA.fotoRegiao;
+    if (F && FOTO_POLIS.length) {
+      var r = pathFromMulti(FOTO_POLIS), fv = eo(seg(t, F.entra, F.dura));
+      var cp = E("recortePath"); if (cp) cp.setAttribute("d", r.d);
+      var fi = E("fotoImg");
+      if (fi) { fi.setAttribute("x", r.x.toFixed(1)); fi.setAttribute("y", r.y.toFixed(1)); fi.setAttribute("width", r.w.toFixed(1)); fi.setAttribute("height", r.h.toFixed(1)); }
+      var fb = E("fotoBorda"); if (fb) { fb.setAttribute("d", r.d); fb.setAttribute("stroke-opacity", (fv * (F.borda || 0)).toFixed(3)); }
+      var fg = E("fotoRegiao"); if (fg) fg.setAttribute("opacity", (fv * F.opacidade).toFixed(3));
+    }
+  }
+
+  // ── o contrato de captura ───────────────────────────────────────────────────────────────────
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // NUNCA lança: exceção mataria a cena inteira
+  };
+
+  // A ESPERA QUE IMPORTA: UM NÍVEL DE TILE SÓ NA TELA (lab.html:235-251). areTilesLoaded()
+  // responde "tudo carregado" enquanto a tela é um MOSAICO de dois níveis — parte esticada (borrada),
+  // parte nítida — e o olho lê como "um pouquinho, mais um pouquinho".
+  //
+  // ⚠ AJUSTADO NO PORTE (23/09/2026, medido na Régie com o perfil "aberto"): o critério do lab
+  // (todos os tiles do cache num nível só) NUNCA fica verdadeiro com relevo ligado — o MapLibre
+  // pede níveis diferentes por distância, e o cache guardava z3, z4 e z5 mesmo com pitch 0. Cada
+  // quadro pagava o teto inteiro (12,3 s medidos; 240 quadros = 49 min só de espera). Agora:
+  //   · conta só os tiles que VÃO SER DESENHADOS (getRenderableIds), não o cache inteiro;
+  //   · com relevo ou inclinação, vários níveis na tela é o normal (perto nítido, longe grosso),
+  //     então ali a espera é "tudo carregado e estável", sem exigir nível único.
+  function nivelUnico() {
+    try {
+      if (map.getTerrain() || map.getPitch() > 1) return true;
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      var cache = sc.base; if (!cache) return true;
+      var ids = cache.getRenderableIds ? cache.getRenderableIds() : Object.keys(cache._tiles || {});
+      var tiles = ids.map(function (id) { return cache._tiles[id]; }).filter(Boolean);
+      if (!tiles.length) return false;
+      if (tiles.some(function (x) { return x.state === "loading"; })) return false;
+      var niveis = new Set(tiles.map(function (x) { return x.tileID && x.tileID.canonical && x.tileID.canonical.z; }));
+      return niveis.size <= 1;
+    } catch (e) { return true; }
+  }
+  // Tile que FALHOU fica no cache com estado "errored" e nunca é pedido de novo: o quadro sai com o
+  // buraco preto. O 404 de tile raster nem dispara 'error' (o MapLibre só atualiza), então a espera
+  // confere o estado de cada tile de cada fonte.
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) {
+        var ts = (sc[id] && sc[id]._tiles) || {};
+        for (var k in ts) if (ts[k] && ts[k].state === "errored") return id;
+      }
+    } catch (e) { /* estrutura interna mudou: a checagem de 'error' e o teto continuam valendo */ }
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou (HTTP 404 ou resposta inválida). O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  // vigia desde o começo: sem ela, o 404 só aparecia na espera do 1º quadro, depois de o render
+  // esperar 20 s por um __ready que nunca chega (o 'idle' não vem com tile errado na tela)
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  // tiles da base E o relevo (mapista/CONTRATO.md §3), com teto: tile que não chega não trava o
+  // render para sempre (o estúdio mediu 11 min parados sem log em verticais/_comum.mjs:76-90) — e
+  // o teto esgotado é ERRO (antes só somava em __esperasEsgotadas, que ninguém lia, e o quadro saía
+  // incompleto). 90 s por quadro: a prova ao vivo de 23/09/2026 mediu até 35 s num quadro de salto
+  // (SwiftShader + rede), e o render corta cada comando em 120 s (PRAZO_QUADRO_MS).
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!map.areTilesLoaded() || map.isMoving()) return false;
+          // canal: a estrada muda por setData a cada quadro; sem esta espera, a foto podia sair com a estrada
+          // do quadro anterior (a revisão mediu a fonte ainda carregando logo depois de todo __renderAt)
+          if (!map.isSourceLoaded("estrada") || !map.isSourceLoaded("fronteira")) return false;
+          if (P.tipo === "raster") {
+            if (!map.isSourceLoaded("base")) return false;
+            if (P.dem && (!map.isSourceLoaded("dem") || !map.getTerrain())) return false;
+            return nivelUnico();
+          }
+          return map.loaded();
+        } catch (e) { return false; }   // na dúvida, NÃO está pronto (o teto decide, e barra)
+      };
+      // "pronto" duas verificações seguidas: um instante verdadeiro entre dois pedidos de tile não conta
+      var t0 = performance.now(), seguidas = 0;
+      (function tick() {
+        barrarTileComErro();
+        seguidas = pronto() ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Internet lenta ou servidor sobrecarregado: renderize de novo; se repetir, confira a conexão.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  // prévia: auto-loop só quando pedido (galeria liga __PREVIEW; à mão, abra com #preview na URL).
+  // A captura NUNCA é a prévia: o render nasce com __PREVIEW=false e __prepararCaptura cancela o loop.
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    window.__renderAt(0);
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{
+  "proj": "prova-mapa",
+  "agente": "pesquisa-geo",
+  "itens": [
+    {
+      "tipo": "geo",
+      "fonte": "Natural Earth — ne_10m_admin_0_countries",
+      "arquivo": "_media/geo/panhandle-juneau.json",
+      "licenca": "Domínio público (Natural Earth) — sem crédito obrigatório; citável como fonte",
+      "url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "exige_credito": false,
+      "features": 2,
+      "bbox": [
+        -138.5,
+        56.6,
+        -131,
+        61
+      ],
+      "sha256": "06dc143256d1a6f009ce866cbda903d369801ed223d2d4e9dda171f37082d90b",
+      "derivado_por": "geo-recorte-bbox --in=ne10m-admin0-countries --bbox=-138.5,56.6,-131,61 --tol=0",
+      "registrado": "2026-09-25",
+      "copiado_de": "out/juneau/_media/geo/panhandle-juneau.json"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "OpenStreetMap via Overpass API — Alaska Route 7 (relation/535397), do centro de Juneau a Cascade Point",
+      "arquivo": "_media/geo/estrada-juneau-cascade.json",
+      "licenca": "ODbL 1.0 — exige atribuição © OpenStreetMap contributors",
+      "url": "https://www.openstreetmap.org/copyright",
+      "exige_credito": true,
+      "features": 1,
+      "bbox": [
+        -134.94363,
+        58.29897,
+        -134.4057,
+        58.70014
+      ],
+      "sha256": "b6301ab88ad5d6ba2b8a16f90005c4bbce11be45bf5a6fd7e5723e6c4bb0396a",
+      "derivado_por": "node out/juneau/_pesquisa/estrada-juneau-cascade.mjs <dump.json> (caminho mais curto nos ways da relation), depois geo-osm-rota juneau --in=<dump.json> --nome=\"Glacier Highway (Alaska Route 7)\" --slug=estrada-juneau-cascade --tol=0",
+      "registrado": "2026-09-25",
+      "copiado_de": "out/juneau/_media/geo/estrada-juneau-cascade.json"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "OpenStreetMap via Overpass API — ponta norte da Glacier Highway (relation/535397)",
+      "arquivo": "_media/geo/cascade-point.json",
+      "licenca": "ODbL 1.0 — exige atribuição © OpenStreetMap contributors",
+      "url": "https://www.openstreetmap.org/copyright",
+      "exige_credito": true,
+      "features": 1,
+      "bbox": [
+        -134.93786,
+        58.70014,
+        -134.93786,
+        58.70014
+      ],
+      "sha256": "798b1897e51a71d51c9ba4e5846c37a948a8456181fcfdfdec779fb0d729ebba",
+      "derivado_por": "out/juneau/_pesquisa/ponto-fim-da-estrada.mjs --gravar (de out/juneau/_media/geo/estrada-juneau-cascade.json, sha256 b6301ab88ad5…)",
+      "registrado": "2026-09-25",
+      "copiado_de": "out/juneau/_media/geo/cascade-point.json"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "Natural Earth — ne_10m_populated_places_simple",
+      "arquivo": "_media/geo/cidades-ne.json",
+      "licenca": "Domínio público (Natural Earth) — sem crédito obrigatório; citável como fonte",
+      "url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "exige_credito": false,
+      "features": 7,
+      "bbox": [
+        -149.88745,
+        57.0604,
+        -134.40071,
+        64.83698
+      ],
+      "sha256": "95bef834a0a1102bb8dc6e54b72b664621b2190b8a72434062c1eeafe7e7f67a",
+      "derivado_por": "out/juneau/_pesquisa/cidades-ne.mjs --gravar (camada ne_10m_populated_places_simple, commit ca96624, sha256 fd3fa867a320…; ne_id 1159150555,1159149319,1159147511,1159151053,1159151249,1159134063,1159150557)",
+      "registrado": "2026-09-25",
+      "copiado_de": "out/juneau/_media/geo/cidades-ne.json"
+    }
+  ]
+}

@@ -177,6 +177,20 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    `© MapTiler © OpenStreetMap contributors` na tela durante todo o mapa, mais a linha na descrição
    (`docs/CREDITO-DE-MAPA.md` da pré-v1). O plano cobra por pedido de mapa, e render pede muitos: olhe o painel
    da MapTiler no primeiro mês.
+   **Base Landsat, testada em 25/09** (o Lucas pediu o teste com Landsat): `out/prova-mapa/graphics/landsat-juneau.html`
+   é a frase 10 do roteiro sobre Landsat 8 e 9 de 23–24/03/2024 (USGS, domínio público, sem crédito na tela), baixado
+   do Planetary Computer sem conta por `out/prova-mapa/_pesquisa/base-landsat.py`. A cena lê a base do canal
+   (`window.__BASE_CANAL`) no lugar do perfil da pré-v1, e tirou o véu escuro do molde (a identidade não tem
+   degradê). Saiu em 4K pelo `renderizar.mjs` (210 quadros em 114 s) e passou por revisão contra a marca.
+   Cuidados:
+   - o `quadro.mjs` não fotografa cena de satélite nesta máquina (PNG acima de ~4 MB derruba a conexão com o
+     Chrome; `APRENDIZADOS.md` item 17, achado 27): renderize e tire o quadro do MP4 com o ffmpeg;
+   - depois de qualquer `preparar-cena prova-mapa`, rode o `base-landsat.py` de novo: ele regrava o
+     `_creditos-mapa.md`, que a pré-v1 escreveria com o crédito da EOX;
+   - não há data de verão limpa nessa janela: as limpas são de março e abril, com neve até perto do mar. A de
+     06/08/2024 saiu enevoada a 30 m;
+   - a divisa em branco a 35 % (§6) quase some sobre o campo de gelo. Se deve ganhar contorno, é decisão do Lucas.
+   Qual base o Juneau usa de verdade (Landsat ou MapTiler) também é decisão dele.
 8. **XML do Premiere** pelo `finalizar.mjs`, primeiro com `--sem-trilha`. Será a primeira abertura real dele no
    Windows.
 9. Do vídeo 2 em diante, **narração pela API** com `narrar.mjs` (mesma voz, modelo, estabilidade e blocos).

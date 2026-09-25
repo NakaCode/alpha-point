@@ -455,5 +455,23 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       curto no grafo dos ways (vértice = coordenada) e entregou ao `--in` como um way só
       (`out/juneau/_pesquisa/estrada-juneau-cascade.mjs`). Um modo "de A até B" na ferramenta serviria a
       qualquer mapa de rota.
+  24. **Base de satélite de domínio público não cabe nos perfis.** Os três perfis de base da pré-v1 (aberto = EOX
+      2016, vetorial, maptiler) são de tiles na rede. Landsat e NASA, que a identidade deste canal aceita sem crédito
+      na tela, não têm perfil. O canal fez a cena de teste `out/prova-mapa/graphics/landsat-juneau.html` ler uma base
+      própria (`window.__BASE_CANAL`: fonte `image` do MapLibre, imagem local já em Web Mercator) no lugar do perfil,
+      e barrar se ela faltar. A imagem veio do Planetary Computer, sem conta
+      (`out/prova-mapa/_pesquisa/base-landsat.py`). Um perfil do tipo "imagem local", mais uma ferramenta que monta o
+      Landsat de uma janela, serviriam a qualquer canal que queira satélite sem chave e sem crédito na tela.
+  25. O molde de mapa não aplica tratamento à base (brilho, saturação), e o crédito dele tem medida fixa (46 px em
+      x = 154). A marca deste canal pede base a 65 % de brilho e 70 % de saturação, e crédito de 76 px em x = 200,
+      na faixa abaixo de y = 1880. A cena de teste acertou isso à mão. O molde poderia ler os dois dos tokens.
+  26. O `_creditos-mapa.md` que o `preparar-cena` grava só conhece os perfis da pré-v1. Numa cena com a base do
+      canal, ele escreveu o crédito da EOX, que a cena não usa. O canal apagou o arquivo e gravou a procedência
+      certa em `out/prova-mapa/_pesquisa/base-landsat.json`.
+  27. **`quadro.mjs` não fotografa cena de satélite nesta máquina** (Windows, Node 24). Ele pede PNG ao Chrome pelo
+      CDP, e a conexão cai (WebSocket 1006) quando a resposta passa de uns 4 MB: 2,9 MB passou, 6 MB derrubou. Um
+      quadro de foto de satélite em PNG passa disso, até em 1080p. O `renderizar.mjs` pede JPEG 95 e passa: a cena
+      saiu em 4K por ele, e o quadro parado se tira do vídeo com o ffmpeg. Um `quadro.mjs --jpeg`, ou a foto em
+      pedaços, resolveria.
 - **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
   5 afetam qualquer um no primeiro `atualizar`.
