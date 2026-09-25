@@ -431,5 +431,14 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       `--do-historico` (`GET /v1/history` + `/audio`) resolveria.
   15. O `medirCobertura` do `transcrever.mjs` conta palavras com ±10 % por trecho. Em blocos de uns 600
       palavras, deixa passar frase pulada e não vê palavra trocada, que é justamente o risco do v3 em "Criativo".
+  16. O `geo-recorte-bbox --nome=…` grava o mesmo `name_pt` em TODAS as features do recorte: o Canadá saiu
+      rotulado "Sudeste do Alasca". Aqui, rodamos sem `--nome`.
+  17. O `derivado_por` da procedência geo resume o comando (sem o projeto e o `--slug`): dá para refazer, mas não é
+      o comando literal.
+  18. O leitor de marca dos portões (`template/scripts/lib/marca-tokens.mjs`) procura o motor v0.1.0 do canal e,
+      sem achar o da pré-v1, usa os pisos de reserva ("Não achei o motor"). Hoje os valores coincidem.
+  19. O que funcionou de primeira no Windows desta máquina (RTX 5060, Chrome, ffmpeg 8.1): `quadro.mjs` e
+      `renderizar.mjs --4k` (75 quadros em 23,8 s, ANGLE/D3D11, sem aviso), `baixar-fonte.mjs`,
+      `geo-pais-completo` e `geo-recorte-bbox`. Um `quadro.mjs --escala=2` de 3840×4400 derrubou o Chrome.
 - **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
   5 afetam qualquer um no primeiro `atualizar`.

@@ -131,10 +131,19 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    deixa vãos e sobreposições no faceless. Nunca o rode sem `--dry`.
 5. **Mídia de acervo aberto** com `buscar-midia` (Commons, NASA, NARA; licença e procedência gravadas). O contato é `contato.naka@hotmail.com`
    (`canal.json` › `contato`, decidido pelo Lucas em 25/09). O `_commons-baixar` não tem trava de licença: confira cada uma.
-6. **Geometria real dos mapas**: Natural Earth offline, pela pré-v1.
+6. **Geometria real dos mapas**: Natural Earth offline, pela pré-v1. **Feito em 25/09**: EUA e Canadá inteiros e
+   os recortes `panhandle-juneau`, `alasca-e-vizinhos` e `matsu-anchorage` em `out/juneau/_media/geo/` (fora do git;
+   refaz-se com os comandos da procedência), registrados em `out/juneau/_pesquisa/pauta-geo.json`. Conferência:
+   `out/juneau/geo-previa.html`. Cuidados: no 1:10M o ponto de Juneau cai no canal, a uns 100 m da costa (pino
+   com coordenada de fonte real, ou deslocamento declarado); as 9 Aleutas além de 180° ficam fora do recorte do
+   Alasca; não use `--nome` no `geo-recorte-bbox` (grava o mesmo nome em todos os países). Rios, costa, divisa
+   de província, geleira e pontos de cidade pedem rede (ver a pendência no levantamento).
 7. **Cenas 4K**: RIG, `quadro.mjs` e `renderizar.mjs --4k`. As fontes estão em `marca/fontes/`
    (Inter, Barlow Condensed e Noto Sans, do google/fonts com licença e sha256; o teste de glifos da §3 passou).
-   Falta o `marca/tokens.css`.
+   O `marca/tokens.css` está feito (25/09): as cores, fontes, alvos e pisos da identidade, e os nomes que a
+   pré-v1 lê como apelidos. Provado nesta máquina: a cena `out/prova-marca/graphics/prova-marca.html` saiu em
+   3840×2160 pelo `renderizar.mjs --4k`, com as fontes certas. Para trocar a cor do protagonista numa cena, passe
+   `RIG.paleta({destaque: "#…"})`, **nunca** `{acento}`: o `--acento` segue o `--destaque`, não o contrário.
 8. **XML do Premiere** pelo `finalizar.mjs`, primeiro com `--sem-trilha`. Será a primeira abertura real dele no
    Windows.
 9. Do vídeo 2 em diante, **narração pela API** com `narrar.mjs` (mesma voz, modelo, estabilidade e blocos).

@@ -1,0 +1,186 @@
+/* ============================================================================================
+   ALPHA POINT · tokens de cena (marca/tokens.css)
+   --------------------------------------------------------------------------------------------
+   O arquivo de estilos que toda cena HTML 4K do canal liga, de out/<slug>/graphics/<id>.html:
+       <link rel="stylesheet" href="../../../marca/tokens.css">
+   A cena escreve var(--fonte), var(--destaque), var(--fs-rotulo)… e nunca o nome da face nem um hex.
+
+   ESCRITO À MÃO em 25/09/2026, não gerado. O molde é o tokens.css neutro da pré-v1 da Régie
+   (C:\projetos\regie-v1\src\cena\marca-padrao\tokens.css, commit 7ab9543): mesma estrutura, mesmos
+   nomes de variável e as mesmas faces "Marca"/"MarcaSec" que o RIG (src/cena/_rig.js, RIG.prontas)
+   espera. NÃO rode "marca.mjs gerar" da pré-v1 sobre este arquivo: o marca.json dela não comporta a
+   paleta por papéis do canal (CLAUDE.md, "Peças da pré-v1 em uso") e apagaria tudo isto.
+
+   DE ONDE VEM CADA COISA
+   - A LEI é marca/identidade.md. Nada aqui tem cor ou tamanho que não esteja lá:
+       cores ............ §2 (paleta por papel; o --neutro é #737D8E desde 25/09/2026)
+       fontes e pesos ... §3 (Barlow Condensed 800 · Inter 500/700/800 · Noto Sans de alternativa)
+       alvos/pisos/tetos  §4.1 · margens, faixa de crédito e canto reservado §4.2 · movimento §4.4
+       pílula, anel, ator e linhas §4.1, §4.4, §5 e §6
+   - Os arquivos de fonte estão em marca/fontes/<família>/, cada um com OFL.txt e ORIGEM.json
+     (google/fonts, commit 23e54b51, sha256 conferido). Os url() abaixo são RELATIVOS a este arquivo:
+     o Chrome os resolve a partir de marca/, qualquer que seja a pasta da cena.
+   - Os pisos que reprovam (260/104/72/72) são do ofício; os portões da pré-v1 os leem daqui
+     (template/scripts/lib/marca-tokens.mjs lê --fs-* e --piso-*), e a marca só pode SUBI-los.
+   - Os NOMES DO CANAL (--fundo, --painel, --papel, --tinta, --tinta-escura, --rotulo, --destaque,
+     --contraparte, --neutro, --tensao) são os de verdade. Os nomes da pré-v1 (--texto, --sec,
+     --acento, --dado, --geo, --alerta, --grifo, --linha) existem só como APELIDOS que apontam para
+     o papel do canal, para que o RIG, as peças do kit, os exemplos e os agentes da pré-v1 (que
+     escrevem var(--texto), var(--acento)…) vistam a marca certa. Cena nova do canal usa os nomes
+     do canal. A tabela dos apelidos, com o porquê de cada um, está no bloco "APELIDOS" abaixo.
+   - Paleta por vídeo: RIG.paleta({destaque:"#…"}) sobrescreve a variável no :root. Como os apelidos
+     são var(--papel-do-canal), sobrescrever --destaque arrasta --acento, --dado, --geo e --grifo junto.
+   ============================================================================================ */
+
+/* Inter — SIL Open Font License 1.1 (marca/fontes/inter/OFL.txt). Arquivo variável (eixos wght 100–900
+   e opsz 14–32): uma face cobre os três pesos do canal, 500 corpo · 700 rótulo · 800 ênfase. */
+@font-face { font-family: "Marca"; src: url("fontes/inter/Inter-VF.ttf") format("truetype"); font-weight: 100 900; font-style: normal; font-display: block; }
+
+/* Barlow Condensed — SIL Open Font License 1.1 (marca/fontes/barlowcondensed/OFL.txt). Só o 800:
+   número-herói e título de bloco (§3). Aqui a secundária ESCREVE título, ao contrário da marca neutra
+   da pré-v1 ("a secundária nunca escreve título"): no Alpha Point o herói é dela, por decisão de marca. */
+@font-face { font-family: "MarcaSec"; src: url("fontes/barlowcondensed/BarlowCondensed-ExtraBold.ttf") format("truetype"); font-weight: 800; font-style: normal; font-display: block; }
+
+/* Noto Sans — SIL Open Font License 1.1 (marca/fontes/notosans/OFL.txt). A alternativa declarada (§3),
+   para glifo que falte na Inter. Face própria ("MarcaAlt"), para nunca pegar uma Noto instalada no
+   sistema. O RIG não espera por ela (RIG.prontas só espera "Marca"/"MarcaSec"): o Chrome só a baixa se
+   um glifo faltar, e o render espera document.fonts.ready a cada quadro. */
+@font-face { font-family: "MarcaAlt"; src: url("fontes/notosans/NotoSans-VF.ttf") format("truetype"); font-weight: 100 900; font-stretch: 62.5% 100%; font-style: normal; font-display: block; }
+
+:root {
+  /* ---- COR · a paleta do canal, por papel (identidade §2) ---- */
+  --fundo:        #0E1726;   /* fundo de prancha (atores, fluxos, causa → efeito) */
+  --painel:       #172338;   /* cartão sobre --fundo */
+  --papel:        #ECE8DF;   /* fundo claro de DADO e DOCUMENTO */
+  --tinta:        #F4F1EA;   /* texto sobre escuro, contorno do território protagonista */
+  --tinta-escura: #14181F;   /* texto sobre --papel */
+  --rotulo:       rgba(11, 15, 20, 0.88);   /* #0B0F14 a 88 %: pílula do rótulo sobre mapa ou registro */
+  --destaque:     #F5A524;   /* o protagonista do vídeo (UMA entidade) e o anel, assinatura do canal */
+  --contraparte:  #2EC4B6;   /* o segundo ator, quando a cena compara dois */
+  --neutro:       #737D8E;   /* do terceiro ator em diante: sem matiz nova, só rótulo */
+  --tensao:       #E4572E;   /* zona de conflito, risco, perda. Nunca é a cor de um lado */
+
+  /* ---- COR · derivadas que a identidade escreve (valor = papel + opacidade, sem cor nova) ---- */
+  --legenda-cor:    color-mix(in srgb, var(--tinta) 80%, transparent);          /* §4.1: legenda de relação, --tinta a 80 % */
+  --eixo-cor:       color-mix(in srgb, var(--tinta-escura) 60%, transparent);   /* §5 DADO: eixo em --tinta-escura a 60 % */
+  --grifo-cor:      color-mix(in srgb, var(--destaque) 35%, transparent);       /* §5 DOCUMENTO: grifo em --destaque a 35 % */
+  --territorio-cor: color-mix(in srgb, var(--destaque) 85%, transparent);       /* §6: preenchimento do protagonista a 85 % */
+  --fronteira-cor:  rgba(255, 255, 255, 0.35);                                  /* §6: demais fronteiras, branco a 35 % */
+
+  /* ---- APELIDOS · os nomes da pré-v1 apontando para o papel do canal ----
+     apelido   → papel do canal         por quê
+     --texto   → --tinta                "texto principal sobre escuro" é exatamente o papel da --tinta.
+     --sec     → --tinta a 80 %         o secundário da pré-v1 (legenda, crédito) é a legenda de §4.1.
+                                        A identidade não dá cor ao crédito; ele herda esta.
+     --acento  → --destaque             a cor viva, a do protagonista e do anel (pré-v1 M14: cor-assinatura).
+     --dado    → --destaque             no canal a série de DADO não tem cor própria: a do protagonista é
+                                        --destaque e a da contraparte é --contraparte (§5). Sem cor honesta
+                                        de "dado", fica a do protagonista; a 2ª série usa var(--contraparte).
+     --geo     → --destaque             o "território aceso" da pré-v1 (M37). No canal o território se pinta
+                                        pelo PAPEL (protagonista, contraparte, neutro), nunca por ser
+                                        geografia. O teal da pré-v1 NÃO vira --contraparte só por ser teal.
+     --alerta  → --tensao               risco, perda, conflito: mesmo sentido.
+     --grifo   → --destaque a 35 %      o marca-texto do DOCUMENTO (§5). Na pré-v1 o texto sobre o grifo
+                                        usa --fundo; aqui o grifo fica sobre --papel e o texto é --tinta-escura.
+     --linha   → --neutro               SEM correspondência exata: a identidade não tem cor de régua ou
+                                        borda. O --neutro é o único cinza sem papel de lado e passa de 3:1
+                                        (elemento gráfico) sobre --fundo, --painel e --papel. Cuidado: numa
+                                        cena com 3+ atores, o --neutro também é o do terceiro ator.
+     Ciladas: --tinta aqui é CLARA (texto sobre escuro). O exemplo documento-grifado da pré-v1 declara
+     a própria --tinta escura no :root dele e vence esta; ao copiar um molde, confira qual vale. */
+  --texto:  var(--tinta);
+  --sec:    var(--legenda-cor);
+  --acento: var(--destaque);
+  --dado:   var(--destaque);
+  --geo:    var(--destaque);
+  --alerta: var(--tensao);
+  --grifo:  var(--grifo-cor);
+  --linha:  var(--neutro);
+
+  /* ---- TIPOGRAFIA (identidade §3) ---- */
+  --fonte:     "Marca", "MarcaAlt", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-sec: "MarcaSec", "Marca", "MarcaAlt", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* A alternativa entra no BLOCO INTEIRO, nunca no meio da linha (§3, ofício). A "MarcaAlt" nas pilhas
+     acima é só rede de segurança contra o sistema; se um glifo cair nela, troque o bloco todo para
+     var(--fonte-alt). Escritas não latinas (árabe, hebraico, CJK) pedem a Noto da escrita, que ainda
+     não está em marca/fontes/. */
+  --fonte-alt: "MarcaAlt", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-nome:     "Inter";
+  --fonte-sec-nome: "Barlow Condensed";
+  --fonte-alt-nome: "Noto Sans";
+  --peso-heroi:  800;   /* Barlow Condensed, número-herói */
+  --peso-titulo: 800;   /* Barlow Condensed, título de bloco */
+  --peso-rotulo: 700;   /* Inter, rótulo (inclui nome de lugar) */
+  --peso-texto:  500;   /* Inter, corpo e legenda */
+  --peso-enfase: 800;   /* Inter, ênfase: destaque em texto de leitura é PESO, não cor */
+  --peso-caixa-alta: 700;   /* nome de país e região em CAIXA ALTA: Inter 700 */
+  --pesos-proibidos-caixa-alta: "";
+  --peso-minimo: 500;   /* o canal não escreve abaixo de 500; o portão de tipografia da pré-v1 lê isto */
+  --tracking-lugar: 0.04em;    /* país e região, em caixa alta */
+  --tracking-heroi: -0.01em;   /* só herói de 1–2 palavras em Barlow Condensed; texto de leitura, 0 */
+  --numeros: tabular-nums;     /* font-variant-numeric em tabela e eixo */
+
+  /* ---- TAMANHO · alvos em px no palco 4K (identidade §4.1) ---- */
+  --fs-heroi:   360px;
+  --fs-titulo:  360px;
+  --fs-fala:    280px;   /* fala citada */
+  --fs-rotulo:  128px;   /* inclui NOME DE LUGAR */
+  --fs-eixo:    84px;    /* eixo e legenda (a legenda de relação da prancha também) */
+  --fs-credito: 76px;
+
+  /* ---- TAMANHO · pisos que reprovam (ofício; a marca não os baixa) ---- */
+  --piso-heroi:   260px;
+  --piso-titulo:  260px;
+  --piso-fala:    260px;
+  --piso-rotulo:  104px;
+  --piso-eixo:    72px;
+  --piso-credito: 72px;
+
+  /* ---- TAMANHO · tetos, que também reprovam (identidade §4.1) ---- */
+  --teto-heroi:   560px;
+  --teto-titulo:  560px;
+  --teto-fala:    340px;
+  --teto-rotulo:  160px;   /* vale para nome de lugar: é rótulo, nunca herói */
+  --teto-eixo:    104px;
+  --teto-credito: 88px;
+
+  /* ---- PALCO E MARGEM (identidade §4.2) ---- */
+  --palco-largura: 3840px;
+  --palco-altura:  2160px;
+  --safe-x: 200px;   /* laterais */
+  --safe-y: 160px;   /* topo */
+  --faixa-credito-y: 1880px;   /* abaixo disto, só crédito */
+  --credito-x: 200px;          /* o crédito começa aqui, alinhado à esquerda… */
+  --credito-x-fim: 1720px;     /* …e termina antes daqui; longo quebra em duas linhas, nunca encolhe */
+  --canto-reservado: 400px;    /* caixa 400 × 400 no canto inferior direito: marca-d'água do YouTube */
+  --max-blocos: 3;             /* blocos de TEXTO vivos: o teto da neutra, que a pré-v1 diz que não sobe (MARCA.md M27) */
+  --max-elementos: 6;          /* §4.2: texto + gráfico ao mesmo tempo; alvo 4 a 5 */
+  --logo-slot: "canto inferior direito livre (400 x 400) — reservado à marca-d'água do YouTube; sem logo na cena";
+
+  /* ---- ACABAMENTO ---- */
+  --degrade: none;             /* a identidade não tem degradê */
+  --texto-tratamento: "caixa"; /* texto sobre mapa ou registro vai na pílula --rotulo */
+  --texto-contorno: 0px transparent;
+  --texto-sombra: none;
+  --texto-caixa: var(--rotulo);
+  --rotulo-respiro-y: 24px;    /* pílula: respiro interno 24 × 40 */
+  --rotulo-respiro-x: 40px;
+  --cantos: 12px;              /* cantos da pílula */
+  --linha-espessura: 6px;      /* setas e linhas da prancha; contorno do protagonista */
+  --linha-cor: var(--linha);
+  --fronteira-espessura: 3px;
+  --ator-diametro: 640px;      /* §5 PRANCHA: círculo do ator, traço de 6 px na cor do papel dele */
+  --icone-diametro: 160px;
+  --anel-diametro: 56px;       /* §4.4 o anel, a assinatura: traço 10 px em --destaque */
+  --anel-traco: 10px;
+
+  /* ---- MOVIMENTO (a cena anima por __renderAt(t); isto é o dado, não animação CSS) ---- */
+  --mov-personalidade: "suave";   /* a identidade não nomeia personalidade; fica o valor da neutra */
+  --mov-entrada: 0.3s;            /* rótulo: opacidade + 24 px de subida, ease-out */
+  --mov-subida: 24px;
+  --mov-preenchimento: 0.5s;      /* preenchimento de território */
+  --mov-viagem-min: 1.5s;         /* viagem de mapa, cúbica de entrada e saída */
+  --mov-viagem-max: 3s;
+  --mov-anel-pulso: 1.2s;         /* escala 1 → 1.8 e opacidade 1 → 0, duas vezes, e para */
+  --mov-kenburns: 6s;             /* foto parada: escala 1.00 → 1.12, linear */
+}

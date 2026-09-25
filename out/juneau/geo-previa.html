@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Prévia geo — Juneau</title>
+<!-- Prévia de CONFERÊNCIA dos recortes Natural Earth do vídeo de Juneau (25/09/2026). Não é cena do vídeo:
+     projeção equiretangular simples (x escalado por cos da latitude central), sem MapLibre, sem base.
+     A geometria vem só dos invólucros _media/geo/<slug>.js que as ferramentas da pré-v1 gravaram.
+     Os pontos de cidade são coordenadas APROXIMADAS digitadas para conferir o recorte, não dado de cena. -->
+<style>
+  @font-face { font-family: "Inter"; src: url("../../marca/fontes/inter/Inter-VF.ttf") format("truetype"); font-weight: 100 900; }
+  :root { --fundo: #0E1726; --painel: #172338; --tinta: #F4F1EA; --destaque: #F5A524; --contraparte: #2EC4B6;
+          --neutro: #737D8E; --tensao: #E4572E; --agua: #0B1320; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--fundo); color: var(--tinta); font-family: Inter, "Segoe UI", sans-serif; }
+  body { width: 1920px; padding: 40px 48px; }
+  h1 { font-size: 34px; margin: 0 0 6px; font-weight: 700; }
+  .sub { color: #C9CED8; font-size: 17px; margin: 0 0 8px; line-height: 1.45; max-width: 1780px; }
+  .aviso { display: inline-block; background: rgba(228,87,46,.18); border: 1px solid var(--tensao); color: #FFD9CC;
+           padding: 6px 12px; border-radius: 6px; font-size: 16px; margin: 6px 0 22px; }
+  .grade { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .p { background: var(--painel); border-radius: 10px; padding: 18px 18px 14px; }
+  .p h2 { font-size: 21px; margin: 0 0 4px; font-weight: 650; }
+  .p .meta { font-size: 14px; color: #AEB5C2; margin: 0 0 10px; line-height: 1.4; font-family: Consolas, monospace; }
+  .p svg { width: 100%; height: auto; display: block; background: var(--agua); border-radius: 4px; }
+  .leg { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; color: #C9CED8; margin-top: 10px; }
+  .leg i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; }
+  .rot { font-family: Inter, sans-serif; font-weight: 600; fill: var(--tinta); paint-order: stroke; stroke: #0B0F14; stroke-width: 3px; }
+  .rot.emb { fill: #FFE3A8; }
+  #erro { color: var(--tensao); font-size: 18px; }
+</style>
+</head>
+<body>
+<h1>Prévia geo — Juneau: recortes do Natural Earth 1:10m (admin-0)</h1>
+<p class="sub">Fonte: Natural Earth 1:10m Admin 0 — Countries, domínio público, do acervo da pré-v1 da Régie (commit ca96624a do natural-earth-vector). Derivado offline por <b>geo-pais-completo</b> e <b>geo-recorte-bbox</b> em 25/09/2026. Projeção equiretangular simples, só para conferir. Não é cena do vídeo. O quadro tracejado é a bbox do recorte.</p>
+<div class="aviso">Os pontos de cidade são APROXIMADOS (coordenadas digitadas à mão, não vêm de base de dados). Servem só para conferir se o recorte cobre o lugar.</div>
+<div id="erro"></div>
+<div class="grade">
+  <div class="p"><h2>1 · panhandle-juneau: Sudeste do Alasca e a fronteira com o Canadá</h2><p class="meta" id="m1"></p><svg id="s1"></svg>
+    <div class="leg"><span><i style="background:var(--destaque)"></i>EUA (Alasca)</span><span><i style="background:var(--neutro)"></i>Canadá (Colúmbia Britânica / Yukon)</span><span><i style="background:#fff;border-radius:50%"></i>ponto aproximado</span></div></div>
+  <div class="p"><h2>2 · alasca-e-vizinhos: Alasca continental, Canadá e Chukotka</h2><p class="meta" id="m2"></p><svg id="s2"></svg>
+    <div class="leg"><span><i style="background:var(--destaque)"></i>EUA</span><span><i style="background:var(--neutro)"></i>Canadá</span><span><i style="background:var(--contraparte)"></i>Rússia (Chukotka, a leste de 180°)</span><span><i style="border:2px dashed var(--tensao)"></i>janela do painel 1</span></div></div>
+  <div class="p"><h2>3 · eua + canada (território inteiro, geo-pais-completo)</h2><p class="meta" id="m3"></p><svg id="s3"></svg>
+    <div class="leg"><span><i style="background:var(--destaque)"></i>EUA (344 partes; as 9 Aleutas a oeste de 180° desenhadas com lon − 360)</span><span><i style="background:var(--neutro)"></i>Canadá (412 partes)</span></div></div>
+  <div class="p"><h2>4 · matsu-anchorage: costa NE sobre a base Landsat 2000 da miniatura</h2><p class="meta" id="m4"></p><svg id="s4"></svg>
+    <div class="leg"><span><i style="border:2px solid var(--contraparte)"></i>costa NE 10m (sem simplificar)</span><span><i style="background:#FFE3A8;border-radius:50%"></i>coordenada da embalagem</span><span><i style="background:#fff;border-radius:50%"></i>ponto aproximado da tarefa</span></div></div>
+</div>
+
+<script src="_media/geo/panhandle-juneau.js"></script>
+<script src="_media/geo/alasca-e-vizinhos.js"></script>
+<script src="_media/geo/eua.js"></script>
+<script src="_media/geo/canada.js"></script>
+<script src="_media/geo/matsu-anchorage.js"></script>
+<script>
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  const G = window.__GEO || {};
+  const falta = ["panhandle-juneau", "alasca-e-vizinhos", "eua", "canada", "matsu-anchorage"].filter((s) => !G[s]);
+  if (falta.length) { document.getElementById("erro").textContent = "Não carregou: " + falta.join(", "); return; }
+  const cor = { USA: "#F5A524", CAN: "#737D8E", RUS: "#2EC4B6" };
+  // Pontos APROXIMADOS (lat, lon) da tarefa — só para conferir o recorte.
+  const CID = { Juneau: [58.30, -134.42], Haines: [59.24, -135.44], Skagway: [59.46, -135.31], Anchorage: [61.22, -149.90],
+                Fairbanks: [64.84, -147.72], Willow: [61.75, -150.04], Wasilla: [61.58, -149.44] };
+  const polys = (g) => g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+  const el = (n, a, pai) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); if (pai) pai.appendChild(e); return e; };
+
+  // proj: [lon,lat] → [x,y] no espaço do viewBox
+  function painel(id, { bbox, larguraPx, proj, camadas, pontos = [], moldura = true, extra }) {
+    const svg = document.getElementById(id);
+    const [a, b] = proj([bbox[0], bbox[3]]), [c, d] = proj([bbox[2], bbox[1]]);
+    const W = c - a, H = d - b;
+    svg.setAttribute("viewBox", `${a} ${b} ${W} ${H}`);
+    const esc = W / larguraPx;                 // unidades do viewBox por pixel de tela
+    if (extra) extra(svg, { a, b, W, H });
+    for (const { geom, fill, stroke, sw = 1, fo = 1, lon360 } of camadas) {
+      let dStr = "";
+      for (const pl of polys(geom)) for (const r of pl)
+        dStr += "M" + r.map((p) => proj(lon360 && p[0] > 0 ? [p[0] - 360, p[1]] : p).map((v) => v.toFixed(4)).join(",")).join("L") + "Z";
+      el("path", { d: dStr, fill: fill || "none", "fill-opacity": fo, stroke: stroke || "none", "stroke-width": sw * esc, "fill-rule": "evenodd", "stroke-linejoin": "round" }, svg);
+    }
+    if (moldura) el("rect", { x: a, y: b, width: W, height: H, fill: "none", stroke: "#F4F1EA", "stroke-opacity": .5, "stroke-dasharray": `${6 * esc} ${5 * esc}`, "stroke-width": 1.5 * esc }, svg);
+    for (const { nome, lat, lon, classe = "", corP = "#fff", dx = 8, dy = -6, ancora = "start" } of pontos) {
+      const [x, y] = proj([lon, lat]);
+      el("circle", { cx: x, cy: y, r: 4.5 * esc, fill: corP, stroke: "#0B0F14", "stroke-width": 1.5 * esc }, svg);
+      const t = el("text", { x: x + dx * esc, y: y + dy * esc, class: "rot " + classe, style: `font-size:${15 * esc}px;stroke-width:${3 * esc}px`, "text-anchor": ancora }, svg);
+      t.textContent = nome;
+    }
+    return { svg, esc };
+  }
+  const equi = (lat0, lon0) => { const k = Math.cos(lat0 * Math.PI / 180); return ([lon, lat]) => [(lon - lon0) * k * 100, -lat * 100]; };
+  const camadasDe = (fc, extra = {}) => fc.features.map((f) => ({ geom: f.geometry, fill: cor[f.properties.ADM0_A3] || "#555", stroke: "#0B0F14", sw: .8, fo: .9, ...extra }));
+  const px = (id) => document.getElementById(id).getBoundingClientRect().width || 870;
+  const P = (n, extra = {}) => ({ nome: n, lat: CID[n][0], lon: CID[n][1], ...extra });
+  const meta = (id, slug) => { const m = window.__GEO_META[slug] || {}; const fc = G[slug];
+    document.getElementById(id).textContent = `${slug}.json · ${fc.features.length} feature(s): ${fc.features.map((f) => `${f.properties.ADM0_A3 || f.properties.iso_a3} ${f.geometry.type === "Polygon" ? 1 : f.geometry.coordinates.length} parte(s)`).join(", ")} · ${m.fonte} · exige crédito: ${m.exige_credito ? "sim" : "não"}`; };
+
+  // 1 · Panhandle
+  const bb1 = [-138.5, 56.6, -131, 61];
+  painel("s1", { bbox: bb1, larguraPx: px("s1"), proj: equi(58.8, 0), camadas: camadasDe(G["panhandle-juneau"]),
+    pontos: [P("Juneau"), P("Haines", { dx: -8, ancora: "end" }), P("Skagway")] });
+  meta("m1", "panhandle-juneau");
+
+  // 2 · Alasca e vizinhos
+  const bb2 = [-180, 51, -125, 72];
+  const r2 = painel("s2", { bbox: bb2, larguraPx: px("s2"), proj: equi(61.5, 0), camadas: camadasDe(G["alasca-e-vizinhos"]),
+    pontos: [P("Anchorage", { dy: 16 }), P("Fairbanks"), P("Willow", { dx: -8, ancora: "end", dy: -6 }), P("Wasilla", { dy: -8 }), P("Juneau")] });
+  { const pr = equi(61.5, 0); const [x0, y0] = pr([bb1[0], bb1[3]]), [x1, y1] = pr([bb1[2], bb1[1]]);
+    el("rect", { x: x0, y: y0, width: x1 - x0, height: y1 - y0, fill: "none", stroke: "#E4572E", "stroke-width": 2 * r2.esc, "stroke-dasharray": `${5 * r2.esc} ${4 * r2.esc}` }, r2.svg); }
+  meta("m2", "alasca-e-vizinhos");
+
+  // 3 · EUA + Canadá inteiros (Aleutas além de 180° deslocadas em −360 só para o desenho)
+  painel("s3", { bbox: [-190, 17, -50, 84], larguraPx: px("s3"), proj: equi(50, 0), moldura: false,
+    camadas: [{ geom: G.eua.features[0].geometry, fill: cor.USA, stroke: "#0B0F14", sw: .4, lon360: true },
+              { geom: G.canada.features[0].geometry, fill: cor.CAN, stroke: "#0B0F14", sw: .4 }],
+    pontos: [P("Juneau", { dy: 14 }), P("Anchorage", { dx: -8, ancora: "end" })] });
+  { const e = G.eua.features[0].properties, c = G.canada.features[0].properties;
+    document.getElementById("m3").textContent = `eua.json: ${e.name} [${e.iso_a3}] ${e.partes} partes, tol ${e.tol}° · canada.json: ${c.name} [${c.iso_a3}] ${c.partes} partes, tol ${c.tol}° · ${window.__GEO_META.eua.fonte}`; }
+
+  // 4 · Costa NE sobre a base Landsat da miniatura (mesmo mapeamento linear em lon/lat que a embalagem usou)
+  const bb4 = [-150.9466, 61.05, -147.4071, 62];   // midia/juneau/embalagem/base-matsu-landsat-2000.geo.json
+  const lin = ([lon, lat]) => [(lon - bb4[0]) / (bb4[2] - bb4[0]) * 2560, (bb4[3] - lat) / (bb4[3] - bb4[1]) * 1440];
+  painel("s4", { bbox: bb4, larguraPx: px("s4"), proj: lin, moldura: false,
+    extra: (svg, { a, b, W, H }) => {
+      const cp = el("clipPath", { id: "c4" }, el("defs", {}, svg)); el("rect", { x: a, y: b, width: W, height: H }, cp);
+      el("image", { href: "../../midia/juneau/embalagem/base-matsu-landsat-2000.jpg", x: 0, y: 0, width: 2560, height: 1440, preserveAspectRatio: "none" }, svg);
+    },
+    camadas: [{ geom: G["matsu-anchorage"].features[0].geometry, fill: "none", stroke: "#2EC4B6", sw: 1.6 }],
+    pontos: [
+      { nome: "Anchorage (embalagem)", lat: 61.2181, lon: -149.9003, classe: "emb", corP: "#FFE3A8", dy: 18 },
+      { nome: "vila de Willow (embalagem)", lat: 61.7472, lon: -150.0375, classe: "emb", corP: "#FFE3A8", dx: -8, ancora: "end", dy: -8 },
+      { nome: "sítio 1976 (embalagem)", lat: 61.7472, lon: -149.8847, classe: "emb", corP: "#FFE3A8", dy: -10 },
+      { nome: "oval 1976 / AHAP (embalagem)", lat: 61.706, lon: -149.84, classe: "emb", corP: "#FFE3A8", dy: 18 },
+      P("Wasilla"), P("Anchorage", { dx: 8, dy: -8 }), P("Willow", { dx: -8, ancora: "end", dy: 18 })] });
+  document.getElementById("m4").textContent = "matsu-anchorage.json (tol 0) sobre midia/juneau/embalagem/base-matsu-landsat-2000.jpg, bbox da embalagem [-150.9466, 61.05, -147.4071, 62], linear em graus";
+  document.getElementById("s4").querySelectorAll("path,circle,text,image").forEach((n) => n.setAttribute("clip-path", "url(#c4)"));
+  window.__pronto = true;
+})();
+</script>
+</body>
+</html>
