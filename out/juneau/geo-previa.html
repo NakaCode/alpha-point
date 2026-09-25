@@ -3,47 +3,77 @@
 <head>
 <meta charset="utf-8">
 <title>Prévia geo — Juneau</title>
-<!-- Prévia de CONFERÊNCIA dos recortes Natural Earth do vídeo de Juneau (25/09/2026). Não é cena do vídeo:
+<!-- Prévia de CONFERÊNCIA da geometria do vídeo de Juneau (25/09/2026). Não é cena do vídeo:
      projeção equiretangular simples (x escalado por cos da latitude central), sem MapLibre, sem base.
-     A geometria vem só dos invólucros _media/geo/<slug>.js que as ferramentas da pré-v1 gravaram.
-     Os pontos de cidade são coordenadas APROXIMADAS digitadas para conferir o recorte, não dado de cena. -->
+     Toda a geometria e todos os pontos de cidade vêm dos invólucros _media/geo/<slug>.js gravados pelas
+     ferramentas da pré-v1 (e pelo out/juneau/_pesquisa/cidades-ne.mjs, que grava pelo gravarGeo dela).
+     Nenhuma coordenada de cidade é digitada aqui. As únicas digitadas são as da embalagem (painel 5),
+     copiadas de midia/juneau/embalagem/. -->
 <style>
   @font-face { font-family: "Inter"; src: url("../../marca/fontes/inter/Inter-VF.ttf") format("truetype"); font-weight: 100 900; }
   :root { --fundo: #0E1726; --painel: #172338; --tinta: #F4F1EA; --destaque: #F5A524; --contraparte: #2EC4B6;
-          --neutro: #737D8E; --tensao: #E4572E; --agua: #0B1320; }
+          --neutro: #737D8E; --tensao: #E4572E; --agua: #0B1320; --rio: #7FC8F8; --osm: #D69CFF; }
   * { box-sizing: border-box; }
   html, body { margin: 0; background: var(--fundo); color: var(--tinta); font-family: Inter, "Segoe UI", sans-serif; }
   body { width: 1920px; padding: 40px 48px; }
   h1 { font-size: 34px; margin: 0 0 6px; font-weight: 700; }
   .sub { color: #C9CED8; font-size: 17px; margin: 0 0 8px; line-height: 1.45; max-width: 1780px; }
-  .aviso { display: inline-block; background: rgba(228,87,46,.18); border: 1px solid var(--tensao); color: #FFD9CC;
-           padding: 6px 12px; border-radius: 6px; font-size: 16px; margin: 6px 0 22px; }
+  .aviso { display: inline-block; background: rgba(214,156,255,.14); border: 1px solid var(--osm); color: #F1DDFF;
+           padding: 6px 12px; border-radius: 6px; font-size: 16px; margin: 6px 0 22px; line-height: 1.45; }
   .grade { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
   .p { background: var(--painel); border-radius: 10px; padding: 18px 18px 14px; }
   .p h2 { font-size: 21px; margin: 0 0 4px; font-weight: 650; }
   .p .meta { font-size: 14px; color: #AEB5C2; margin: 0 0 10px; line-height: 1.4; font-family: Consolas, monospace; }
   .p svg { width: 100%; height: auto; display: block; background: var(--agua); border-radius: 4px; }
-  .leg { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; color: #C9CED8; margin-top: 10px; }
+  .leg { display: flex; gap: 8px 18px; flex-wrap: wrap; font-size: 14px; color: #C9CED8; margin-top: 10px; }
   .leg i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; }
+  .leg i.linha { height: 4px; border-radius: 2px; vertical-align: 3px; width: 22px; }
+  .leg i.ne { background: #fff; border-radius: 50%; border: 1.5px solid #0B0F14; }
+  .leg i.osm { background: var(--osm); transform: rotate(45deg) scale(.85); border: 1.5px solid #0B0F14; border-radius: 1px; }
+  .leg i.desl { border: 2px dashed var(--tensao); border-radius: 50%; background: none; }
   .rot { font-family: Inter, sans-serif; font-weight: 600; fill: var(--tinta); paint-order: stroke; stroke: #0B0F14; stroke-width: 3px; }
   .rot.emb { fill: #FFE3A8; }
+  .rot.osm { fill: #F1DDFF; }
+  .rot.rio { fill: var(--rio); font-style: italic; font-weight: 500; }
+  .rot.rio.osm { fill: var(--osm); }
+  .cred { font-family: Inter, sans-serif; font-weight: 500; fill: #F4F1EA; fill-opacity: .85; paint-order: stroke; stroke: #0B0F14; }
+  .notas { font-size: 15px; line-height: 1.5; color: #D5D9E1; }
+  .notas h3 { font-size: 17px; margin: 14px 0 4px; color: var(--tinta); }
+  .notas h3:first-child { margin-top: 0; }
+  .notas table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  .notas td, .notas th { text-align: left; padding: 3px 8px 3px 0; border-bottom: 1px solid #26344D; vertical-align: top; }
+  .notas th { color: #AEB5C2; font-weight: 600; }
+  .notas code { font-family: Consolas, monospace; font-size: 13px; color: #C9CED8; }
+  .ne-tag { color: #fff; } .osm-tag { color: var(--osm); }
   #erro { color: var(--tensao); font-size: 18px; }
 </style>
 </head>
 <body>
-<h1>Prévia geo — Juneau: recortes do Natural Earth 1:10m (admin-0)</h1>
-<p class="sub">Fonte: Natural Earth 1:10m Admin 0 — Countries, domínio público, do acervo da pré-v1 da Régie (commit ca96624a do natural-earth-vector). Derivado offline por <b>geo-pais-completo</b> e <b>geo-recorte-bbox</b> em 25/09/2026. Projeção equiretangular simples, só para conferir. Não é cena do vídeo. O quadro tracejado é a bbox do recorte.</p>
-<div class="aviso">Os pontos de cidade são APROXIMADOS (coordenadas digitadas à mão, não vêm de base de dados). Servem só para conferir se o recorte cobre o lugar.</div>
+<h1>Prévia geo — Juneau: países, rios, lagos e cidades de dado real</h1>
+<p class="sub">Natural Earth 1:10m (domínio público, commit ca96624a do natural-earth-vector): admin-0, <code>ne_10m_rivers_lake_centerlines</code>, <code>ne_10m_lakes</code> e <code>ne_10m_populated_places_simple</code>, recortados offline pela pré-v1 da Régie em 25/09/2026. O que o NE não tem veio do OpenStreetMap pelo Nominatim (ODbL): o rio Taku e os pontos de Haines e Willow. Projeção equiretangular simples, só para conferir. Não é cena do vídeo. O quadro tracejado é a bbox do recorte.</p>
+<div class="aviso">Todos os pontos de cidade vêm de dado real: ● branco = Natural Earth, ◆ lilás = OpenStreetMap. Nenhum ponto precisou de deslocamento declarado (os 9 caem em terra no 1:10M). Cascade Point não tem ponto: não existe no NE nem no Nominatim com esse nome.</div>
 <div id="erro"></div>
 <div class="grade">
   <div class="p"><h2>1 · panhandle-juneau: Sudeste do Alasca e a fronteira com o Canadá</h2><p class="meta" id="m1"></p><svg id="s1"></svg>
-    <div class="leg"><span><i style="background:var(--destaque)"></i>EUA (Alasca)</span><span><i style="background:var(--neutro)"></i>Canadá (Colúmbia Britânica / Yukon)</span><span><i style="background:#fff;border-radius:50%"></i>ponto aproximado</span></div></div>
-  <div class="p"><h2>2 · alasca-e-vizinhos: Alasca continental, Canadá e Chukotka</h2><p class="meta" id="m2"></p><svg id="s2"></svg>
-    <div class="leg"><span><i style="background:var(--destaque)"></i>EUA</span><span><i style="background:var(--neutro)"></i>Canadá</span><span><i style="background:var(--contraparte)"></i>Rússia (Chukotka, a leste de 180°)</span><span><i style="border:2px dashed var(--tensao)"></i>janela do painel 1</span></div></div>
-  <div class="p"><h2>3 · eua + canada (território inteiro, geo-pais-completo)</h2><p class="meta" id="m3"></p><svg id="s3"></svg>
-    <div class="leg"><span><i style="background:var(--destaque)"></i>EUA (344 partes; as 9 Aleutas a oeste de 180° desenhadas com lon − 360)</span><span><i style="background:var(--neutro)"></i>Canadá (412 partes)</span></div></div>
-  <div class="p"><h2>4 · matsu-anchorage: costa NE sobre a base Landsat 2000 da miniatura</h2><p class="meta" id="m4"></p><svg id="s4"></svg>
-    <div class="leg"><span><i style="border:2px solid var(--contraparte)"></i>costa NE 10m (sem simplificar)</span><span><i style="background:#FFE3A8;border-radius:50%"></i>coordenada da embalagem</span><span><i style="background:#fff;border-radius:50%"></i>ponto aproximado da tarefa</span></div></div>
+    <div class="leg"><span><i style="background:var(--destaque)"></i>EUA (Alasca)</span><span><i style="background:var(--neutro)"></i>Canadá</span><span><i class="linha" style="background:var(--rio)"></i>rio NE</span><span><i class="linha" style="background:var(--osm)"></i>rio Taku, OSM</span><span><i style="background:var(--agua);border:1.5px solid var(--rio)"></i>lago NE</span><span><i class="ne"></i>cidade NE</span><span><i class="osm"></i>cidade OSM</span><span><i style="border:2px dashed var(--tensao)"></i>janela do painel 2</span></div></div>
+  <div class="p"><h2>2 · zoom: Juneau, Lynn Canal e o vale do Taku (mesmos dados do painel 1)</h2><p class="meta" id="m1b"></p><svg id="s1b"></svg>
+    <div class="leg"><span><i class="linha" style="background:var(--rio)"></i>rio NE</span><span><i class="linha" style="background:var(--osm)"></i>rio Taku, OSM relation/16167118</span><span><i class="ne"></i>cidade NE</span><span><i class="osm"></i>cidade OSM</span><span><i class="desl"></i>deslocamento declarado: nenhum</span></div></div>
+  <div class="p"><h2>3 · alasca-e-vizinhos: Alasca continental, Canadá e Chukotka</h2><p class="meta" id="m2"></p><svg id="s2"></svg>
+    <div class="leg"><span><i style="background:var(--destaque)"></i>EUA</span><span><i style="background:var(--neutro)"></i>Canadá</span><span><i style="background:var(--contraparte)"></i>Rússia</span><span><i class="linha" style="background:var(--rio)"></i>rio NE</span><span><i style="background:var(--agua);border:1.5px solid var(--rio)"></i>lago NE</span><span><i class="ne"></i>cidade NE</span><span><i class="osm"></i>cidade OSM</span><span><i style="border:2px dashed var(--tensao)"></i>janela do painel 1</span></div></div>
+  <div class="p"><h2>4 · eua + canada (território inteiro, geo-pais-completo)</h2><p class="meta" id="m3"></p><svg id="s3"></svg>
+    <div class="leg"><span><i style="background:var(--destaque)"></i>EUA (as 9 Aleutas a oeste de 180° desenhadas com lon − 360)</span><span><i style="background:var(--neutro)"></i>Canadá</span><span><i class="ne"></i>cidade NE</span></div></div>
+  <div class="p"><h2>5 · matsu-anchorage: costa e Susitna do NE sobre a base Landsat 2000 da miniatura</h2><p class="meta" id="m4"></p><svg id="s4"></svg>
+    <div class="leg"><span><i style="border:2px solid var(--contraparte)"></i>costa NE (sem simplificar)</span><span><i class="linha" style="background:var(--rio)"></i>rio NE (rios-matsu)</span><span><i class="ne"></i>cidade NE</span><span><i class="osm"></i>cidade OSM</span><span><i style="background:#FFE3A8;border-radius:50%"></i>coordenada da embalagem</span></div></div>
+  <div class="p notas" id="notas">
+    <h3>De onde vem cada coisa</h3>
+    <table id="tab-fontes"><thead><tr><th>Arquivo</th><th>Conteúdo</th><th>Fonte · licença</th></tr></thead><tbody></tbody></table>
+    <h3>Cidades</h3>
+    <table id="tab-cid"><thead><tr><th>Lugar</th><th>Fonte</th><th>lat, lon</th><th>Terra/água</th></tr></thead><tbody></tbody></table>
+    <h3>O que ainda não tem dado</h3>
+    <p style="margin:0">Cascade Point (fim da estrada, linhas 10 e 86): sem ponto de fonte real. Chilkat, Knik e Matanuska: ausentes do NE 1:10M e não citados no roteiro. Lynn Canal é fiorde: aparece como água entre as terras do admin-0, sem camada própria. O fim do Taku (≈45 vértices) cai no estuário, fora da costa grosseira do 1:10M.</p>
+    <h3>Crédito</h3>
+    <p style="margin:0">Painéis com dado OSM (1, 2, 3 e 5) levam <b>© OpenStreetMap contributors</b> no canto, e a cena que os usar também, mais <code>openstreetmap.org/copyright</code> na descrição.</p>
+  </div>
 </div>
 
 <script src="_media/geo/panhandle-juneau.js"></script>
@@ -51,88 +81,179 @@
 <script src="_media/geo/eua.js"></script>
 <script src="_media/geo/canada.js"></script>
 <script src="_media/geo/matsu-anchorage.js"></script>
+<script src="_media/geo/rios-panhandle.js"></script>
+<script src="_media/geo/rios-alasca.js"></script>
+<script src="_media/geo/rios-matsu.js"></script>
+<script src="_media/geo/lagos-panhandle.js"></script>
+<script src="_media/geo/lagos-alasca.js"></script>
+<script src="_media/geo/rio-taku-osm.js"></script>
+<script src="_media/geo/cidades-ne.js"></script>
+<script src="_media/geo/cidade-willow-osm.js"></script>
+<script src="_media/geo/cidade-haines-osm.js"></script>
 <script>
 (function () {
   const NS = "http://www.w3.org/2000/svg";
-  const G = window.__GEO || {};
-  const falta = ["panhandle-juneau", "alasca-e-vizinhos", "eua", "canada", "matsu-anchorage"].filter((s) => !G[s]);
+  const G = window.__GEO || {}, M = window.__GEO_META || {};
+  const SLUGS = ["panhandle-juneau", "alasca-e-vizinhos", "eua", "canada", "matsu-anchorage", "rios-panhandle", "rios-alasca",
+    "rios-matsu", "lagos-panhandle", "lagos-alasca", "rio-taku-osm", "cidades-ne", "cidade-willow-osm", "cidade-haines-osm"];
+  const falta = SLUGS.filter((s) => !G[s]);
   if (falta.length) { document.getElementById("erro").textContent = "Não carregou: " + falta.join(", "); return; }
   const cor = { USA: "#F5A524", CAN: "#737D8E", RUS: "#2EC4B6" };
-  // Pontos APROXIMADOS (lat, lon) da tarefa — só para conferir o recorte.
-  const CID = { Juneau: [58.30, -134.42], Haines: [59.24, -135.44], Skagway: [59.46, -135.31], Anchorage: [61.22, -149.90],
-                Fairbanks: [64.84, -147.72], Willow: [61.75, -150.04], Wasilla: [61.58, -149.44] };
-  const polys = (g) => g.type === "Polygon" ? [g.coordinates] : g.coordinates;
-  const el = (n, a, pai) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); if (pai) pai.appendChild(e); return e; };
+  const RIO = "#7FC8F8", OSM = "#D69CFF";
 
-  // proj: [lon,lat] → [x,y] no espaço do viewBox
-  function painel(id, { bbox, larguraPx, proj, camadas, pontos = [], moldura = true, extra }) {
+  // ---- Cidades: só dos arquivos gravados (NE e OSM). Nada digitado aqui. ----
+  const CID = {};
+  for (const f of G["cidades-ne"].features) {
+    const p = f.properties;
+    CID[p.rotulo || p.name] = { lon: f.geometry.coordinates[0], lat: f.geometry.coordinates[1], fonte: "NE", ref: "ne_id " + p.ne_id,
+      conf: p.conferencia_costa || {}, desl: p.deslocamento || null };
+  }
+  for (const slug of ["cidade-willow-osm", "cidade-haines-osm"]) for (const f of G[slug].features) {
+    const p = f.properties;
+    CID[p.rotulo] = { lon: f.geometry.coordinates[0], lat: f.geometry.coordinates[1], fonte: "OSM", ref: p.osm, conf: null, desl: p.deslocamento || null };
+  }
+
+  const partes = (g) => g.type === "Polygon" || g.type === "LineString" ? [g.coordinates] : g.coordinates;
+  const el = (n, a, pai) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); if (pai) pai.appendChild(e); return e; };
+  const equi = (lat0, lon0) => { const k = Math.cos(lat0 * Math.PI / 180); return ([lon, lat]) => [(lon - lon0) * k * 100, -lat * 100]; };
+  const px = (id) => document.getElementById(id).getBoundingClientRect().width || 870;
+
+  function painel(id, { bbox, proj, extra, moldura = true }) {
     const svg = document.getElementById(id);
     const [a, b] = proj([bbox[0], bbox[3]]), [c, d] = proj([bbox[2], bbox[1]]);
     const W = c - a, H = d - b;
     svg.setAttribute("viewBox", `${a} ${b} ${W} ${H}`);
-    const esc = W / larguraPx;                 // unidades do viewBox por pixel de tela
-    if (extra) extra(svg, { a, b, W, H });
-    for (const { geom, fill, stroke, sw = 1, fo = 1, lon360 } of camadas) {
-      let dStr = "";
-      for (const pl of polys(geom)) for (const r of pl)
-        dStr += "M" + r.map((p) => proj(lon360 && p[0] > 0 ? [p[0] - 360, p[1]] : p).map((v) => v.toFixed(4)).join(",")).join("L") + "Z";
-      el("path", { d: dStr, fill: fill || "none", "fill-opacity": fo, stroke: stroke || "none", "stroke-width": sw * esc, "fill-rule": "evenodd", "stroke-linejoin": "round" }, svg);
-    }
-    if (moldura) el("rect", { x: a, y: b, width: W, height: H, fill: "none", stroke: "#F4F1EA", "stroke-opacity": .5, "stroke-dasharray": `${6 * esc} ${5 * esc}`, "stroke-width": 1.5 * esc }, svg);
-    for (const { nome, lat, lon, classe = "", corP = "#fff", dx = 8, dy = -6, ancora = "start" } of pontos) {
-      const [x, y] = proj([lon, lat]);
-      el("circle", { cx: x, cy: y, r: 4.5 * esc, fill: corP, stroke: "#0B0F14", "stroke-width": 1.5 * esc }, svg);
-      const t = el("text", { x: x + dx * esc, y: y + dy * esc, class: "rot " + classe, style: `font-size:${15 * esc}px;stroke-width:${3 * esc}px`, "text-anchor": ancora }, svg);
-      t.textContent = nome;
-    }
-    return { svg, esc };
+    const esc = W / px(id);
+    const cp = el("clipPath", { id: "clip-" + id }, el("defs", {}, svg)); el("rect", { x: a, y: b, width: W, height: H }, cp);
+    const g = el("g", { "clip-path": `url(#clip-${id})` }, svg);
+    const ctx = { svg, g, esc, proj, a, b, W, H };
+    if (extra) extra(ctx);
+    ctx.moldura = () => moldura && el("rect", { x: a, y: b, width: W, height: H, fill: "none", stroke: "#F4F1EA", "stroke-opacity": .5, "stroke-dasharray": `${6 * esc} ${5 * esc}`, "stroke-width": 1.5 * esc }, svg);
+    return ctx;
   }
-  const equi = (lat0, lon0) => { const k = Math.cos(lat0 * Math.PI / 180); return ([lon, lat]) => [(lon - lon0) * k * 100, -lat * 100]; };
-  const camadasDe = (fc, extra = {}) => fc.features.map((f) => ({ geom: f.geometry, fill: cor[f.properties.ADM0_A3] || "#555", stroke: "#0B0F14", sw: .8, fo: .9, ...extra }));
-  const px = (id) => document.getElementById(id).getBoundingClientRect().width || 870;
-  const P = (n, extra = {}) => ({ nome: n, lat: CID[n][0], lon: CID[n][1], ...extra });
-  const meta = (id, slug) => { const m = window.__GEO_META[slug] || {}; const fc = G[slug];
-    document.getElementById(id).textContent = `${slug}.json · ${fc.features.length} feature(s): ${fc.features.map((f) => `${f.properties.ADM0_A3 || f.properties.iso_a3} ${f.geometry.type === "Polygon" ? 1 : f.geometry.coordinates.length} parte(s)`).join(", ")} · ${m.fonte} · exige crédito: ${m.exige_credito ? "sim" : "não"}`; };
+  const dDe = (ctx, geom, fechar, lon360) => {
+    let s = "";
+    for (const pt of partes(geom)) {
+      const aneis = geom.type.endsWith("Polygon") ? pt : [pt];
+      for (const r of aneis) s += "M" + r.map((p) => ctx.proj(lon360 && p[0] > 0 ? [p[0] - 360, p[1]] : p).map((v) => v.toFixed(4)).join(",")).join("L") + (fechar ? "Z" : "");
+    }
+    return s;
+  };
+  function paises(ctx, fc) {
+    for (const f of fc.features) el("path", { d: dDe(ctx, f.geometry, true), fill: cor[f.properties.ADM0_A3] || "#555", "fill-opacity": .9, stroke: "#0B0F14", "stroke-width": .8 * ctx.esc, "fill-rule": "evenodd", "stroke-linejoin": "round" }, ctx.g);
+  }
+  function lagos(ctx, fc) {
+    for (const f of fc.features) el("path", { d: dDe(ctx, f.geometry, true), fill: "#0B1320", stroke: RIO, "stroke-width": .7 * ctx.esc, "stroke-opacity": .8, "fill-rule": "evenodd" }, ctx.g);
+  }
+  function rios(ctx, fc, { corR = RIO, sw = 1.6, rotulos = {}, tam = 13, classe = "rio" } = {}) {
+    for (const f of fc.features) {
+      el("path", { d: dDe(ctx, f.geometry, false), fill: "none", stroke: corR, "stroke-width": sw * ctx.esc, "stroke-linejoin": "round", "stroke-linecap": "round" }, ctx.g);
+      const nome = f.properties.name_en || f.properties.name;
+      const r = rotulos[nome];
+      if (!r) continue;
+      // rótulo no vértice da fração r.t (0..1) da parte mais longa
+      const pts = partes(f.geometry).reduce((m, p) => p.length > m.length ? p : m, []);
+      const v = pts[Math.min(pts.length - 1, Math.floor((r.t ?? .5) * pts.length))];
+      const [x, y] = ctx.proj(v);
+      const t = el("text", { x: x + (r.dx ?? 6) * ctx.esc, y: y + (r.dy ?? -6) * ctx.esc, class: "rot " + classe, "text-anchor": r.ancora || "start", style: `font-size:${tam * ctx.esc}px;stroke-width:${3 * ctx.esc}px` }, ctx.svg);
+      t.textContent = r.texto || nome;
+    }
+  }
+  function cidades(ctx, lista, tam = 15) {
+    for (const [nome, o = {}] of lista) {
+      const c = CID[nome]; if (!c) { document.getElementById("erro").textContent += ` sem ponto: ${nome}`; continue; }
+      const [x, y] = ctx.proj([c.lon, c.lat]); const e = ctx.esc, r = (o.r || 4.5) * e;
+      if (c.fonte === "OSM") el("rect", { x: x - r, y: y - r, width: 2 * r, height: 2 * r, transform: `rotate(45 ${x} ${y})`, fill: OSM, stroke: "#0B0F14", "stroke-width": 1.5 * e }, ctx.svg);
+      else el("circle", { cx: x, cy: y, r, fill: "#fff", stroke: "#0B0F14", "stroke-width": 1.5 * e }, ctx.svg);
+      if (c.desl) el("circle", { cx: x, cy: y, r: r * 2.2, fill: "none", stroke: "#E4572E", "stroke-width": 2 * e, "stroke-dasharray": `${3 * e} ${2 * e}` }, ctx.svg);
+      const t = el("text", { x: x + (o.dx ?? 8) * e, y: y + (o.dy ?? -6) * e, class: "rot" + (c.fonte === "OSM" ? " osm" : ""), style: `font-size:${tam * e}px;stroke-width:${3 * e}px`, "text-anchor": o.ancora || "start" }, ctx.svg);
+      t.textContent = nome + (o.sufixo || "");
+    }
+  }
+  function creditoOSM(ctx) {
+    el("text", { x: ctx.a + ctx.W - 8 * ctx.esc, y: ctx.b + ctx.H - 8 * ctx.esc, "text-anchor": "end", class: "cred", style: `font-size:${12 * ctx.esc}px;stroke-width:${2.5 * ctx.esc}px` }, ctx.svg).textContent = "© OpenStreetMap contributors";
+  }
+  function janela(ctx, bb) {
+    const [x0, y0] = ctx.proj([bb[0], bb[3]]), [x1, y1] = ctx.proj([bb[2], bb[1]]);
+    el("rect", { x: x0, y: y0, width: x1 - x0, height: y1 - y0, fill: "none", stroke: "#E4572E", "stroke-width": 2 * ctx.esc, "stroke-dasharray": `${5 * ctx.esc} ${4 * ctx.esc}` }, ctx.svg);
+  }
+  const cont = (slug) => { const fc = G[slug]; return `${slug} ${fc.features.length}`; };
+  const meta = (id, txt) => { document.getElementById(id).textContent = txt; };
 
   // 1 · Panhandle
   const bb1 = [-138.5, 56.6, -131, 61];
-  painel("s1", { bbox: bb1, larguraPx: px("s1"), proj: equi(58.8, 0), camadas: camadasDe(G["panhandle-juneau"]),
-    pontos: [P("Juneau"), P("Haines", { dx: -8, ancora: "end" }), P("Skagway")] });
-  meta("m1", "panhandle-juneau");
+  const bb1b = [-136.3, 57.95, -132.7, 59.75];
+  { const c = painel("s1", { bbox: bb1, proj: equi(58.8, 0) });
+    paises(c, G["panhandle-juneau"]); lagos(c, G["lagos-panhandle"]);
+    rios(c, G["rios-panhandle"], { rotulos: { Stikine: { t: .45, dx: 6, dy: -4 }, Teslin: { t: .5, dx: 6, dy: 12 } } });
+    rios(c, G["rio-taku-osm"], { corR: OSM, sw: 2.2, classe: "rio osm", rotulos: { "Taku River": { t: .25, dx: 6, dy: -4, texto: "Taku (OSM)" } } });
+    c.moldura(); janela(c, bb1b);
+    cidades(c, [["Juneau", { dx: -8, ancora: "end", dy: 14 }], ["Haines", { dx: -8, ancora: "end" }], ["Skagway"], ["Sitka"], ["Whitehorse", { dy: 16 }]]);
+    creditoOSM(c);
+    meta("m1", `${cont("panhandle-juneau")} países · ${cont("rios-panhandle")} rios · ${cont("lagos-panhandle")} lagos (NE) · rio-taku-osm 1 (OSM) · cidades-ne + cidade-haines-osm`); }
 
-  // 2 · Alasca e vizinhos
-  const bb2 = [-180, 51, -125, 72];
-  const r2 = painel("s2", { bbox: bb2, larguraPx: px("s2"), proj: equi(61.5, 0), camadas: camadasDe(G["alasca-e-vizinhos"]),
-    pontos: [P("Anchorage", { dy: 16 }), P("Fairbanks"), P("Willow", { dx: -8, ancora: "end", dy: -6 }), P("Wasilla", { dy: -8 }), P("Juneau")] });
-  { const pr = equi(61.5, 0); const [x0, y0] = pr([bb1[0], bb1[3]]), [x1, y1] = pr([bb1[2], bb1[1]]);
-    el("rect", { x: x0, y: y0, width: x1 - x0, height: y1 - y0, fill: "none", stroke: "#E4572E", "stroke-width": 2 * r2.esc, "stroke-dasharray": `${5 * r2.esc} ${4 * r2.esc}` }, r2.svg); }
-  meta("m2", "alasca-e-vizinhos");
+  // 2 · Zoom Lynn Canal / Taku
+  { const c = painel("s1b", { bbox: bb1b, proj: equi(58.85, 0), moldura: false });
+    paises(c, G["panhandle-juneau"]); lagos(c, G["lagos-panhandle"]);
+    rios(c, G["rios-panhandle"], {});
+    rios(c, G["rio-taku-osm"], { corR: OSM, sw: 3, classe: "rio osm", tam: 16, rotulos: { "Taku River": { t: .12, dx: -10, dy: -8, ancora: "end", texto: "Taku River (OSM)" } } });
+    // fronteira EUA–Canadá já sai do contorno dos países; marca-se só o texto de cada lado
+    for (const [txt, lon, lat] of [["ALASCA (EUA)", -135.9, 58.1], ["COLÚMBIA BRITÂNICA", -134.2, 59.62]])
+      { const [x, y] = c.proj([lon, lat]); el("text", { x, y, class: "rot", style: `font-size:${13 * c.esc}px;stroke-width:${3 * c.esc}px;letter-spacing:.08em;fill-opacity:.75` }, c.svg).textContent = txt; }
+    { const [x, y] = c.proj([-135.31, 59.03]); el("text", { x, y, class: "rot rio", transform: `rotate(69 ${x} ${y})`, style: `font-size:${14 * c.esc}px;stroke-width:${3 * c.esc}px` }, c.svg).textContent = "Lynn Canal"; }
+    cidades(c, [["Juneau", { dx: -10, ancora: "end", dy: 16 }], ["Haines", { dx: -10, ancora: "end" }], ["Skagway", { dx: 10 }]], 17);
+    creditoOSM(c);
+    meta("m1b", `bbox [${bb1b.join(", ")}] · panhandle-juneau (tol 0) · rio-taku-osm: ${G["rio-taku-osm"].features[0].properties.km_medido} km, confluência na BC → Taku Inlet`); }
 
-  // 3 · EUA + Canadá inteiros (Aleutas além de 180° deslocadas em −360 só para o desenho)
-  painel("s3", { bbox: [-190, 17, -50, 84], larguraPx: px("s3"), proj: equi(50, 0), moldura: false,
-    camadas: [{ geom: G.eua.features[0].geometry, fill: cor.USA, stroke: "#0B0F14", sw: .4, lon360: true },
-              { geom: G.canada.features[0].geometry, fill: cor.CAN, stroke: "#0B0F14", sw: .4 }],
-    pontos: [P("Juneau", { dy: 14 }), P("Anchorage", { dx: -8, ancora: "end" })] });
-  { const e = G.eua.features[0].properties, c = G.canada.features[0].properties;
-    document.getElementById("m3").textContent = `eua.json: ${e.name} [${e.iso_a3}] ${e.partes} partes, tol ${e.tol}° · canada.json: ${c.name} [${c.iso_a3}] ${c.partes} partes, tol ${c.tol}° · ${window.__GEO_META.eua.fonte}`; }
+  // 3 · Alasca e vizinhos
+  { const bb2 = [-180, 51, -125, 72];
+    const c = painel("s2", { bbox: bb2, proj: equi(61.5, 0) });
+    paises(c, G["alasca-e-vizinhos"]); lagos(c, G["lagos-alasca"]);
+    rios(c, G["rios-alasca"], { sw: 1.1, rotulos: { Yukon: { t: .35, dx: 0, dy: -8 }, Tanana: { t: .5, dx: 4, dy: 14 }, Susitna: { t: .15, dx: -8, dy: -4, ancora: "end" } } });
+    c.moldura(); janela(c, bb1);
+    cidades(c, [["Anchorage", { dy: 18, dx: 6 }], ["Wasilla", { dx: 8, dy: -2 }], ["Willow", { dx: -8, ancora: "end", dy: -8 }], ["Fairbanks"], ["Juneau", { dx: -8, ancora: "end", dy: 14 }], ["Whitehorse"], ["Sitka", { dx: -8, ancora: "end", dy: 14 }]], 13);
+    creditoOSM(c);
+    meta("m2", `${cont("alasca-e-vizinhos")} países · ${cont("rios-alasca")} rios · ${cont("lagos-alasca")} lagos (NE, tol 0.003) · cidades-ne + cidade-willow-osm`); }
 
-  // 4 · Costa NE sobre a base Landsat da miniatura (mesmo mapeamento linear em lon/lat que a embalagem usou)
-  const bb4 = [-150.9466, 61.05, -147.4071, 62];   // midia/juneau/embalagem/base-matsu-landsat-2000.geo.json
-  const lin = ([lon, lat]) => [(lon - bb4[0]) / (bb4[2] - bb4[0]) * 2560, (bb4[3] - lat) / (bb4[3] - bb4[1]) * 1440];
-  painel("s4", { bbox: bb4, larguraPx: px("s4"), proj: lin, moldura: false,
-    extra: (svg, { a, b, W, H }) => {
-      const cp = el("clipPath", { id: "c4" }, el("defs", {}, svg)); el("rect", { x: a, y: b, width: W, height: H }, cp);
-      el("image", { href: "../../midia/juneau/embalagem/base-matsu-landsat-2000.jpg", x: 0, y: 0, width: 2560, height: 1440, preserveAspectRatio: "none" }, svg);
-    },
-    camadas: [{ geom: G["matsu-anchorage"].features[0].geometry, fill: "none", stroke: "#2EC4B6", sw: 1.6 }],
-    pontos: [
-      { nome: "Anchorage (embalagem)", lat: 61.2181, lon: -149.9003, classe: "emb", corP: "#FFE3A8", dy: 18 },
-      { nome: "vila de Willow (embalagem)", lat: 61.7472, lon: -150.0375, classe: "emb", corP: "#FFE3A8", dx: -8, ancora: "end", dy: -8 },
-      { nome: "sítio 1976 (embalagem)", lat: 61.7472, lon: -149.8847, classe: "emb", corP: "#FFE3A8", dy: -10 },
-      { nome: "oval 1976 / AHAP (embalagem)", lat: 61.706, lon: -149.84, classe: "emb", corP: "#FFE3A8", dy: 18 },
-      P("Wasilla"), P("Anchorage", { dx: 8, dy: -8 }), P("Willow", { dx: -8, ancora: "end", dy: 18 })] });
-  document.getElementById("m4").textContent = "matsu-anchorage.json (tol 0) sobre midia/juneau/embalagem/base-matsu-landsat-2000.jpg, bbox da embalagem [-150.9466, 61.05, -147.4071, 62], linear em graus";
-  document.getElementById("s4").querySelectorAll("path,circle,text,image").forEach((n) => n.setAttribute("clip-path", "url(#c4)"));
+  // 4 · EUA + Canadá inteiros
+  { const c = painel("s3", { bbox: [-190, 17, -50, 84], proj: equi(50, 0), moldura: false });
+    el("path", { d: dDe(c, G.eua.features[0].geometry, true, true), fill: cor.USA, stroke: "#0B0F14", "stroke-width": .4 * c.esc, "fill-rule": "evenodd" }, c.g);
+    el("path", { d: dDe(c, G.canada.features[0].geometry, true), fill: cor.CAN, stroke: "#0B0F14", "stroke-width": .4 * c.esc, "fill-rule": "evenodd" }, c.g);
+    cidades(c, [["Juneau", { dy: 14 }], ["Anchorage", { dx: -8, ancora: "end" }]]);
+    const e = G.eua.features[0].properties, k = G.canada.features[0].properties;
+    meta("m3", `eua.json: ${e.name} [${e.iso_a3}] ${e.partes} partes, tol ${e.tol}° · canada.json: ${k.name} [${k.iso_a3}] ${k.partes} partes, tol ${k.tol}° · ${M.eua.fonte}`); }
+
+  // 5 · Costa NE sobre a base Landsat da miniatura (mesmo mapeamento linear em lon/lat que a embalagem usou)
+  { const bb4 = [-150.9466, 61.05, -147.4071, 62];   // midia/juneau/embalagem/base-matsu-landsat-2000.geo.json
+    const lin = ([lon, lat]) => [(lon - bb4[0]) / (bb4[2] - bb4[0]) * 2560, (bb4[3] - lat) / (bb4[3] - bb4[1]) * 1440];
+    const c = painel("s4", { bbox: bb4, proj: lin, moldura: false,
+      extra: (k) => el("image", { href: "../../midia/juneau/embalagem/base-matsu-landsat-2000.jpg", x: 0, y: 0, width: 2560, height: 1440, preserveAspectRatio: "none" }, k.g) });
+    el("path", { d: dDe(c, G["matsu-anchorage"].features[0].geometry, true), fill: "none", stroke: "#2EC4B6", "stroke-width": 1.6 * c.esc }, c.g);
+    rios(c, G["rios-matsu"], { sw: 2, tam: 14, rotulos: { Susitna: { t: .5, dx: 8, dy: 0 } } });
+    for (const [nome, lat, lon, o] of [["Anchorage (embalagem)", 61.2181, -149.9003, { dy: 30, dx: -8, ancora: "end" }], ["sítio 1976 (embalagem)", 61.7472, -149.8847, { dy: -10 }], ["oval 1976 / AHAP (embalagem)", 61.706, -149.84, { dy: 18 }]]) {
+      const [x, y] = lin([lon, lat]);
+      el("circle", { cx: x, cy: y, r: 4.5 * c.esc, fill: "#FFE3A8", stroke: "#0B0F14", "stroke-width": 1.5 * c.esc }, c.svg);
+      el("text", { x: x + (o.dx ?? 8) * c.esc, y: y + o.dy * c.esc, class: "rot emb", "text-anchor": o.ancora || "start", style: `font-size:${15 * c.esc}px;stroke-width:${3 * c.esc}px` }, c.svg).textContent = nome;
+    }
+    cidades(c, [["Wasilla"], ["Anchorage", { dx: 8, dy: -8 }], ["Willow", { dx: -10, ancora: "end", dy: 18, sufixo: " (= vila da embalagem)" }]]);
+    creditoOSM(c);
+    meta("m4", "matsu-anchorage.json (tol 0) + rios-matsu.json sobre midia/juneau/embalagem/base-matsu-landsat-2000.jpg, bbox da embalagem [-150.9466, 61.05, -147.4071, 62], linear em graus"); }
+
+  // ---- Tabelas das notas, montadas dos próprios arquivos ----
+  { const tb = document.querySelector("#tab-fontes tbody");
+    const desc = { "panhandle-juneau": "países", "alasca-e-vizinhos": "países", "matsu-anchorage": "costa", "rios-panhandle": "rios", "rios-alasca": "rios", "rios-matsu": "rios",
+      "lagos-panhandle": "lagos", "lagos-alasca": "lagos", "rio-taku-osm": "rio Taku", "cidades-ne": "cidades", "cidade-willow-osm": "Willow", "cidade-haines-osm": "Haines" };
+    for (const s of Object.keys(desc)) {
+      const m = M[s] || {}, osm = /OpenStreetMap/.test(m.fonte || "");
+      const tr = document.createElement("tr"); tb.appendChild(tr);
+      tr.innerHTML = `<td><code>${s}</code></td><td>${desc[s]} · ${G[s].features.length}</td><td class="${osm ? "osm-tag" : "ne-tag"}">${(m.fonte || "?").replace(/^Natural Earth — /, "NE ").replace(/^OpenStreetMap \(Nominatim\) — /, "OSM ")} · ${m.exige_credito ? "ODbL, crédito na tela" : "domínio público"}</td>`;
+    } }
+  { const tb = document.querySelector("#tab-cid tbody");
+    for (const [n, c] of Object.entries(CID)) {
+      const conf = c.conf ? Object.entries(c.conf).map(([k, v]) => `${v.resultado} (${k.split("-")[0]}, ${v.distancia_ate_borda_m} m)`).join("; ") : "terra (conferida à parte)";
+      const tr = document.createElement("tr"); tb.appendChild(tr);
+      tr.innerHTML = `<td>${n}</td><td class="${c.fonte === "OSM" ? "osm-tag" : "ne-tag"}">${c.fonte} ${c.ref}</td><td><code>${c.lat.toFixed(4)}, ${c.lon.toFixed(4)}</code></td><td>${conf}${c.desl ? " · DESLOCADO" : ""}</td>`;
+    } }
   window.__pronto = true;
 })();
 </script>

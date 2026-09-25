@@ -134,10 +134,26 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
 6. **Geometria real dos mapas**: Natural Earth offline, pela pré-v1. **Feito em 25/09**: EUA e Canadá inteiros e
    os recortes `panhandle-juneau`, `alasca-e-vizinhos` e `matsu-anchorage` em `out/juneau/_media/geo/` (fora do git;
    refaz-se com os comandos da procedência), registrados em `out/juneau/_pesquisa/pauta-geo.json`. Conferência:
-   `out/juneau/geo-previa.html`. Cuidados: no 1:10M o ponto de Juneau cai no canal, a uns 100 m da costa (pino
-   com coordenada de fonte real, ou deslocamento declarado); as 9 Aleutas além de 180° ficam fora do recorte do
-   Alasca; não use `--nome` no `geo-recorte-bbox` (grava o mesmo nome em todos os países). Rios, costa, divisa
-   de província, geleira e pontos de cidade pedem rede (ver a pendência no levantamento).
+   `out/juneau/geo-previa.html`. **Rios e cidades, também em 25/09**:
+   - rios e lagos do Natural Earth (`rios-*`, `lagos-*`), em domínio público;
+   - o **Taku** do OpenStreetMap (`rio-taku-osm`, relation/16167118), porque o NE 1:10M não tem Taku, Chilkat,
+     Knik nem Matanuska;
+   - pontos de cidade reais: `cidades-ne` (Juneau, Sitka, Skagway, Whitehorse, Anchorage, Wasilla e Fairbanks,
+     do NE) e, do OSM, Willow e Haines. Todos caem em terra. Use o ponto do NE para Juneau: o aproximado antigo
+     caía na água.
+
+   **Tudo que vem do OSM (Taku, Willow, Haines) põe "© OpenStreetMap contributors" na tela da cena e a URL
+   openstreetmap.org/copyright na descrição.** O Taku veio pela resposta do Nominatim, porque o Overpass deu 504.
+   Quando ele voltar, refaça com `geo-osm-rota.mjs juneau --osm=relation/16167118 --slug=rio-taku-osm --tol=0`.
+
+   **Cascade Point não tem ponto**: não existe no NE nem no Nominatim com esse nome.
+
+   Outros cuidados:
+   - as 9 Aleutas além de 180° ficam fora do recorte do Alasca;
+   - não use `--nome` no `geo-recorte-bbox`: grava o mesmo nome em todos os países;
+   - camada sem `name` no topo (a de rios) não herda a licença: passe `--fonte`, `--licenca` e `--fonte-url`.
+
+   O ponto do NE é gravado por `out/juneau/_pesquisa/cidades-ne.mjs`, com a procedência da pré-v1.
 7. **Cenas 4K**: RIG, `quadro.mjs` e `renderizar.mjs --4k`. As fontes estão em `marca/fontes/`
    (Inter, Barlow Condensed e Noto Sans, do google/fonts com licença e sha256; o teste de glifos da §3 passou).
    O `marca/tokens.css` está feito (25/09): as cores, fontes, alvos e pisos da identidade, e os nomes que a

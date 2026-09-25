@@ -440,5 +440,14 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   19. O que funcionou de primeira no Windows desta máquina (RTX 5060, Chrome, ffmpeg 8.1): `quadro.mjs` e
       `renderizar.mjs --4k` (75 quadros em 23,8 s, ANGLE/D3D11, sem aviso), `baixar-fonte.mjs`,
       `geo-pais-completo` e `geo-recorte-bbox`. Um `quadro.mjs --escala=2` de 3840×4400 derrubou o Chrome.
+  20. Falta uma ferramenta de **pontos de cidade do Natural Earth** (`ne_10m_populated_places_simple`, domínio
+      público). Hoje o caminho de ponto é o `geo-lugar-osm`, que é ODbL e põe crédito na tela. O canal escreveu
+      `out/juneau/_pesquisa/cidades-ne.mjs`, que grava pelo `gravarGeo` da pré-v1. Um `geo-pontos-ne` no
+      motor serviria a qualquer canal.
+  21. O `geo-recorte-bbox` só herda a licença quando a camada tem `name` no topo. A de rios do NE não tem, e o
+      recorte sai sem licença se não se passar `--fonte`, `--licenca` e `--fonte-url` à mão.
+  22. O NE 1:10M não tem rio que costuma aparecer em mapa de região (aqui: Taku, Chilkat, Knik, Matanuska). A
+      ferramenta de rio do OSM depende do Overpass, que respondeu 504 três vezes seguidas em 25/09. A saída foi
+      a geometria que o próprio Nominatim devolve (`polygon_geojson`), registrada com licença ODbL.
 - **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
   5 afetam qualquer um no primeiro `atualizar`.
