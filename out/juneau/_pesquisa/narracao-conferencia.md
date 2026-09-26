@@ -218,3 +218,21 @@ O Lucas aprovou a narração final ("pode seguir com o master").
     programa fica igual.
   - O carimbo `_master.mp4.de-narracao` aponta para a narração tratada. O `finalizar`, com as cenas em 4K, vai
     reusá-lo.
+
+## Capítulos e tela final (26/09/2026)
+
+O Lucas decidiu, antes de fechar o relógio das palavras (as duas mudariam a narração):
+- **Capítulos: sem títulos na tela.** Os capítulos vão só na descrição do YouTube (tempos na descrição). O
+  `roteiro.md` fica sem linhas de card, e a narração sem os 3 s de cada card.
+- **Tela final: 20 s sem voz depois da última frase**, para os elementos finais do YouTube (5 a 20 s) caírem sobre
+  o fecho, e não sobre "That yes vote was real…". O master dura o que a narração dura, e o XML apara toda cena que
+  passa do fim dela: sem a cauda na narração, a cena do fecho não teria onde entrar.
+  - Regra em `canal.json` › `narracao.cauda_tela_final_s: 20` (vale para os próximos vídeos, até o Lucas mudar). O
+    narrar da pré-v1 ignora a chave; quem a aplica é o `tratar-narracao.py`, por último, depois do limitador.
+  - A narração bruta foi remontada do cache (0 caracteres pagos, o mesmo sha `4e29a9f3…`) e tratada de novo:
+    mesmos sons soltos, limitador e loudness de antes (−1,4 dBTP, −14,1 LUFS). A parte falada saiu **idêntica,
+    amostra por amostra**, à tratada de antes (`b843ada8…`), e a cauda tem 882.000 amostras em zero (20,0 s).
+  - `narracao.json`: os 71 segmentos de antes, iguais, mais `{tipo: "pausa", motivo: "tela_final", 646,05 →
+    666,05}`; 666,05 s; sha `468b045b…`.
+  - Master refeito (`gerar-master.mjs`, que agora recusa narração cuja cauda não bate com o `canal.json`): 11:06,
+    3840×2160 a 30 fps, −14,1 LUFS, pico −4,4 dBFS; preto puro (YMAX 16 em 10:56); a cauda mede −91 dB.

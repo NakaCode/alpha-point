@@ -510,5 +510,14 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       slug, sem olhar se é opção, e não há verbo para fechar ou apagar um vídeo. Para desfazer, foi preciso copiar o
       `db/canal.db` e apagar a linha de `production` (o `event` sai em cascata). Serviria ao motor: recusar slug que
       começa com "-" e ter um verbo para descartar uma produção aberta por engano.
+  34. **No canal sem apresentador, o vídeo acaba junto com a última palavra, e a tela final do YouTube cai em cima
+      dela.** O master sintético dura o que a `narracao.wav` dura, e o `xml-premiere.mjs` apara toda cena que passa
+      do fim (o slot `tela_final` termina "exatamente no fim da narração"). O `narrar.mjs` só põe silêncio entre
+      trechos e nos cards, nunca depois do último. Os elementos finais do YouTube pedem de 5 a 20 s. Resolveu, no
+      canal, uma cauda de silêncio digital acrescentada depois do tratamento (`canal.json` ›
+      `narracao.cauda_tela_final_s`, aplicada pelo `tratar-narracao.py`), com o segmento
+      `{tipo: "pausa", motivo: "tela_final"}` no `narracao.json`. A decisão tem de vir **antes** do relógio de
+      palavras e do master, porque muda o sha da narração. Serviria ao narrar: uma `pausa_final_s` no bloco
+      `narracao`, e a pergunta "tela final?" no roteiro de cada vídeo.
 - **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
   5 afetam qualquer um no primeiro `atualizar`.

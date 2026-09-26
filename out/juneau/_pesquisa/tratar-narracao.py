@@ -6,9 +6,15 @@
 #   - no fim de um parágrafo pode sobrar um som solto depois de um silêncio (no Juneau, 40 ms depois de "camp.",
 #     em 0:53): é cortado seco e soa como estalo isolado.
 # O que faz: esmaece 5 ms no começo e 15 ms no fim de cada trecho falado; zera o som solto (menos de 80 ms de som
-# depois de pelo menos 200 ms abaixo de -60 dBFS, no fim do trecho); limita o true peak a -1 dBTP. O comprimento
-# não muda, então o narracao.json continua valendo; o script troca o audio.sha256 e registra o tratamento em
+# depois de pelo menos 200 ms abaixo de -60 dBFS, no fim do trecho); limita o true peak a -1 dBTP. Nada disso muda
+# tempo: os trechos continuam onde o narrar os pôs. O script troca o audio.sha256 e registra o tratamento em
 # "tratamento_canal".
+#
+# A cauda da tela final (26/09/2026, decisão do Lucas; canal.json › narracao.cauda_tela_final_s): depois de tudo,
+# acrescenta N segundos de silêncio digital no FIM, para a tela final do YouTube (5 a 20 s) cair sobre o fecho e não
+# sobre a última frase. O master do motor dura o que a narração dura, e o XML apara toda cena que passa do fim dela:
+# sem a cauda na narração, não há onde pôr a cena do fecho. Só o fim cresce, nenhum trecho muda de lugar, e o
+# narracao.json ganha o segmento {tipo: "pausa", motivo: "tela_final"} e a duração nova.
 #
 # ATENÇÃO: o narrar remonta a narracao.wav do cache a cada rodada (--refazer, troca de pausa): rode este script DE
 # NOVO depois de qualquer narrar. Ele só trata o arquivo que o narrar acabou de gravar (o sha tem de bater com o do
@@ -31,10 +37,19 @@ if meta.get("tratamento_canal"):
     sys.exit(f"já tratada ({meta['tratamento_canal']['em']}); se o narrar rodou de novo, o narracao.json é novo e não teria esta marca")
 if atual != meta["audio"]["sha256"]:
     sys.exit("a narracao.wav não é a que o narrar gravou (sha diferente do narracao.json): não trato um arquivo desconhecido")
+cfg_narracao = json.load(open("canal.json", encoding="utf-8")).get("narracao", {})
+cauda_s = cfg_narracao.get("cauda_tela_final_s", 0)
+if not isinstance(cauda_s, (int, float)) or not 0 <= cauda_s <= 30:
+    sys.exit(f"canal.json › narracao.cauda_tela_final_s tem de ser um número de 0 a 30 segundos (veio {cauda_s!r})")
+if meta["segmentos"][-1]["tipo"] != "fala":
+    sys.exit(f"o último segmento do narracao.json é {meta['segmentos'][-1]['tipo']!r}, não fala: a cauda iria depois de outra pausa")
 
 with wave.open(arq_wav, "rb") as w:
     sr, n, params = w.getframerate(), w.getnframes(), w.getparams()
     x = np.frombuffer(w.readframes(n), dtype="<i2").astype(np.float64)
+if params.nchannels != 1 or n != meta["audio"]["amostras"] or abs(meta["segmentos"][-1]["end"] - n / sr) > 1e-5:
+    sys.exit(f"a narracao.wav ({params.nchannels} canal(is), {n} amostras) não bate com o narracao.json "
+             f"({meta['audio']['amostras']} amostras, último segmento até {meta['segmentos'][-1]['end']} s)")
 ENTRA, SAI, QUADRO = int(0.005 * sr), int(0.015 * sr), int(0.01 * sr)
 soltos = []
 for s in (s for s in meta["segmentos"] if s["tipo"] == "fala"):
@@ -89,6 +104,7 @@ tmp = arq_wav + ".tmp.wav"
 grava(x, tmp)
 lufs_antes, tp_antes = medir(tmp)
 limitador = None
+final = x
 if tp_antes > -1.0:
     for teto in np.arange(-1.5, -4.01, -0.25):
         y = limitar(x, teto)
@@ -97,9 +113,22 @@ if tp_antes > -1.0:
         if tp_depois <= -1.0:
             limitador = {"filtro": "alimiter attack=5 release=50 level=false latency=true", "teto_amostra_dbfs": round(float(teto), 2),
                          "true_peak_antes": tp_antes, "true_peak_depois": tp_depois, "lufs_antes": lufs_antes, "lufs_depois": lufs_depois}
+            final = y
             break
     else:
         os.remove(tmp); sys.exit("o limitador não trouxe o true peak a −1 dBTP nem com teto de −4 dBFS: confira o áudio")
+
+# A cauda da tela final vem por último: silêncio digital depois da voz já medida e limitada.
+cauda = None
+if cauda_s > 0:
+    final = np.concatenate([final, np.zeros(round(cauda_s * sr))])
+    de_s, ate_s = round(n / sr, 6), round(len(final) / sr, 6)
+    meta["segmentos"].append({"i": len(meta["segmentos"]), "tipo": "pausa", "start": de_s, "end": ate_s, "motivo": "tela_final"})
+    meta["audio"]["amostras"] = len(final)
+    meta["audio"]["duracaoSec"] = ate_s
+    cauda = {"segundos": cauda_s, "de_s": de_s, "ate_s": ate_s, "config": "canal.json › narracao.cauda_tela_final_s",
+             "por_que": "a tela final do YouTube (5 a 20 s) cai sobre o fecho, não sobre a última frase"}
+    grava(final, tmp)
 os.replace(tmp, arq_wav)
 novo = sha(arq_wav)
 meta["tratamento_canal"] = {
@@ -107,9 +136,11 @@ meta["tratamento_canal"] = {
     "sha256_do_narrar": atual, "esmaecimento": {"entrada_s": 0.005, "saida_s": 0.015},
     "sons_soltos_zerados": soltos,
     "limitador": limitador,
+    "cauda_tela_final": cauda,
     "aviso": "o narrar remonta a narracao.wav a cada rodada: rode este script de novo depois de qualquer narrar",
 }
 meta["audio"]["sha256"] = novo
 json.dump(meta, open(arq_json, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+txt_cauda = "%s s (%s → %s s)" % (cauda_s, cauda["de_s"], cauda["ate_s"]) if cauda else "nenhuma"
 print(f"✓ {arq_wav}: {len(meta['segmentos'])} segmentos, {sum(1 for s in meta['segmentos'] if s['tipo'] == 'fala')} trechos esmaecidos; "
-      f"sons soltos zerados: {soltos or 'nenhum'}; limitador: {limitador}; sha {atual[:12]} → {novo[:12]}")
+      f"sons soltos zerados: {soltos or 'nenhum'}; limitador: {limitador}; cauda: {txt_cauda}; sha {atual[:12]} → {novo[:12]}")

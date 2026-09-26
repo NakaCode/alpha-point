@@ -98,7 +98,12 @@ produz o master. O deste canal nasce assim:
      - **Depois de qualquer rodada do narrar**, rode `python out/juneau/_pesquisa/tratar-narracao.py <proj>`. O narrar
        não esmaece as pontas dos trechos (estalo no fim de 14 dos 36 parágrafos do Juneau), e remonta a
        `narracao.wav` do zero a cada rodada. O script esmaece as pontas sem mudar tempos, registra o que fez em
-       `narracao.json` › `tratamento_canal` e se recusa a tratar duas vezes.
+       `narracao.json` › `tratamento_canal` e se recusa a tratar duas vezes. Por último, acrescenta a **cauda da tela
+       final**: `canal.json` › `narracao.cauda_tela_final_s` (20 s, decidido pelo Lucas em 26/09) de silêncio depois
+       da última frase, para os elementos finais do YouTube não cobrirem a narração. O `gerar-master.mjs` recusa
+       narração cuja cauda não bate com o `canal.json`.
+     - **Sem títulos de capítulo na tela** (Lucas, 26/09): os capítulos vão só na descrição do YouTube. Não ponha
+       linha de card no `roteiro.md`.
      - A API pode cortar o último som de um parágrafo (o "-y" de "ferry" no Juneau), e o Whisper escreve a palavra
        mesmo assim, por expectativa. Desconfie de última palavra com probabilidade baixa (< 0,8).
      - O histórico inteiro está em `out/juneau/_pesquisa/narracao-conferencia.md`.
@@ -166,12 +171,13 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    A voz corria a 200 palavras/min. **Tudo isso foi superado em 26/09:** a narração inteira foi refeita pela API com
    a voz calma, em `out/juneau/narracao.wav` (10:46, 171 palavras/min, os 36 parágrafos de um jeito só, tratada
    por `tratar-narracao.py`). Verificação final: 100 % das palavras; o parágrafo 32 foi refeito porque a API cortou
-   o "-y" de "ferry". **Espera o ouvido do Lucas.** As gerações antigas (1b, `out/juneau-voz/`,
+   o "-y" de "ferry". **O Lucas aprovou em 26/09** ("pode seguir com o master"). As gerações antigas (1b, `out/juneau-voz/`,
    `narracao-completa.wav`) ficam como histórico. Tudo em `narracao-conferencia.md`.
 2. **`narracao.wav` e master preto sintético** pelo gerador da pré-v1 (`garantirMasterSintetico`, com carimbo).
    **Feito em 26/09:** `out/juneau/_pesquisa/gerar-master.mjs juneau` chama o gerador direto (o finalizar só o chama
-   no fim), em 3840×2160 e 30 fps: `out/juneau/_media/_master.mp4`, com 10:46, −14,1 LUFS e o carimbo da narração
-   tratada. O script recusa narração sem `tratamento_canal`. **O Juneau foi aberto na linha da Régie em 26/09**
+   no fim), em 3840×2160 e 30 fps: `out/juneau/_media/_master.mp4`, com −14,1 LUFS e o carimbo da narração tratada. O script
+   recusa narração sem `tratamento_canal`. Refeito no mesmo dia com a cauda da tela final: 11:06 (10:46 de fala e
+   20 s de silêncio); a fala ficou idêntica, amostra por amostra. **O Juneau foi aberto na linha da Régie em 26/09**
    (`regie open juneau "Alaska Voted for a New Capital in 1974. It Was Never Built."`, no passo `ingest`).
    Cuidado: a v0.1.0 não tem `--help` nos verbos; `regie open --help` abre um vídeo chamado "--help". Aconteceu,
    e o registro foi removido do banco com cópia de segurança em `db/antes-de-tirar-help-*.canal.db`.

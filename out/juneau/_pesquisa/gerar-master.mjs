@@ -20,6 +20,15 @@ if (!meta.tratamento_canal) {
   console.error("a narracao.wav ainda não passou pelo tratar-narracao.py (pontas e pico): trate antes do master");
   process.exit(1);
 }
+// A cauda da tela final (canal.json › narracao.cauda_tela_final_s) tem de estar na narração: o master dura o que ela
+// dura, e sem a cauda a cena do fecho não tem onde entrar.
+const caudaPedida = JSON.parse(readFileSync("canal.json", "utf8")).narracao?.cauda_tela_final_s ?? 0;
+const caudaFeita = meta.tratamento_canal.cauda_tela_final?.segundos ?? 0;
+if (caudaPedida !== caudaFeita) {
+  console.error(`o canal.json pede ${caudaPedida} s de cauda para a tela final, e a narração tratada tem ${caudaFeita} s: ` +
+    "refaça a narracao.wav pelo narrar (sai do cache, sem custo) e trate de novo antes do master");
+  process.exit(1);
+}
 const { garantirMasterSintetico, FPS_SINTETICO } = await import("file:///C:/projetos/regie-v1/src/finalize/master-sintetico.mjs");
 const m = garantirMasterSintetico(D, { narracao, w: 3840, h: 2160, fps: FPS_SINTETICO });
 console.log(`master ${m.acao}: ${m.arquivo} · preto ${m.w}×${m.h} @ ${FPS_SINTETICO} fps + narração · ${m.dur.toFixed(2)} s · ${m.motivo}`);
