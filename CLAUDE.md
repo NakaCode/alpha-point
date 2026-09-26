@@ -72,28 +72,30 @@ produz o master. O deste canal nasce assim:
 2. pesquisa com fontes;
 3. roteiro em inglês (`marca/voz.md`);
 4. narração: ElevenLabs, modelo eleven_v3 (decidido pelo Lucas em 24/09/2026; `canal.json` › `narracao`).
-   - **A voz** (escolhida pelo Lucas em 24/09/2026): "Alpha Point - Narrator (conversational)",
-     `iAc9oLyb1zcwD4O3ZTBv`. É um Remix de Voz, com força baixa, da "Alpha Point - Narrator (anchor, mid-30s)"
-     (`OjaLccTyGvBFh7nx0y4s`). Essa, por sua vez, foi desenhada a partir da The Trusted News Anchor. O Remix
-     manteve o timbre e trocou a leitura de âncora por conversa. Como cada uma foi feita: `marca/vozes.html`.
-   - **Como se gera** (decidido pelo Lucas em 24/09 depois de ouvir testes): eleven_v3, estabilidade "Criativo";
-     cada bloco numa linha só, sem quebras; blocos de seções inteiras de até 5.000 caracteres
-     (`preparar-voz.mjs`). Com quebras de linha e "Natural", as pausas soaram "programadas". O Multilingual v2
-     soou mais "lido". Em "Criativo" o v3 pode pular ou trocar palavra: confira cada bloco pela transcrição.
-     **Achado de 25/09:** acima de ~2.000 caracteres, o v3 pode parar antes do fim do texto, sem erro nenhum, e
-     numa fronteira de frase, que soa como final natural. Das 6 gerações de 24/09, 5 cortaram
-     (`out/juneau/_pesquisa/narracao-conferencia.md`). Nenhuma geração é aceita sem a conferência palavra a
-     palavra: `transcrever-local.py`, depois `comparar-narracao.py`, e `conferir-trechos.py` para os pontos
-     suspeitos. Todos estão em `out/juneau/_pesquisa/`.
-   - **Pela API** (o Lucas escolheu em 25/09 para refazer os blocos 2 e 3; é o caminho do vídeo 2 em diante):
-     `node C:\projetos\regie-v1\src\ferramentas\narrar.mjs <proj>`, que manda **um pedido por parágrafo**, bem abaixo
-     do limite em que o v3 corta. Voz, modelo e estabilidade vêm de `canal.json` › `narracao`: `stability: 0` é o
-     "Criativo" do site. `pausa_paragrafo_s: 0.07`: os trechos da API já trazem uns 0,06 s de silêncio no começo,
-     e o que se ouve entre parágrafos fica nos ~0,14 s da leitura contínua do site. Com 0,2, a pausa dobrava, e
-     isso foi o que o Lucas mais ouviu como "outra voz" (teste às cegas de 26/09, `narracao-conferencia.md`). O v3
-     não tem "request stitching": cada pedido é uma leitura nova, que abre um pouco mais clara. Confira com `out/juneau/_pesquisa/conferir-paragrafos.py <proj>`,
-     que transcreve e compara parágrafo por parágrafo. O parágrafo com erro se refaz sozinho: `narrar.mjs <proj>
-     --refazer=N`. Primeiro `--simular`, que mostra o custo sem gastar.
+   - **A voz** (escolhida pelo Lucas em 26/09/2026, "a B é a melhor"): "Alpha Point - Narrator (conversational,
+     calm)", `829pig94w9GefZ9jJQYl`. É um Remix calmo, feito pela API (`out/juneau/_pesquisa/remix-ritmo.mjs`, força
+     0,3), da voz de conversa de 24/09 ("Alpha Point - Narrator (conversational)", `iAc9oLyb1zcwD4O3ZTBv`), que por
+     sua vez é um Remix da âncora desenhada ("Alpha Point - Narrator (anchor, mid-30s)", `OjaLccTyGvBFh7nx0y4s`). A de
+     conversa falava a ~200 palavras/min, e nenhum ajuste a desacelerava: velocidade, "Natural" e `[slowly]` o v3
+     ignora. O ritmo vem da voz. A calma fez 171 no Juneau, e o Lucas preferiu assim a esticar (26/09). Fichas de
+     cada voz: `marca/vozes.html`.
+   - **Como se gera** (decidido pelo Lucas em 25–26/09): **pela API**, com
+     `node C:\projetos\regie-v1\src\ferramentas\narrar.mjs <proj>`, **um pedido por parágrafo**. O roteiro fica em
+     `out/<proj>/roteiro.md`, com parágrafos separados por linha em branco. Voz, modelo e ajustes vêm de
+     `canal.json` › `narracao`: eleven_v3, `stability: 0` (o "Criativo" do site), `pausa_paragrafo_s: 0.07`.
+     - A pausa: os trechos da API já trazem uns 0,06 s de silêncio no começo, e o que se ouve entre parágrafos fica
+       nos ~0,14 s de uma leitura contínua. Com 0,2 a pausa dobrava, e foi isso que o Lucas mais ouviu como "outra
+       voz" (teste às cegas de 26/09).
+     - Pelo site, não: acima de ~2.000 caracteres o v3 pode parar antes do fim do texto, sem erro nenhum e numa
+       fronteira de frase, o que soa como final natural (5 das 6 gerações longas de 24/09 cortaram).
+     - O v3 não tem "request stitching": cada pedido é uma leitura nova.
+     - O Multilingual v2 soou mais "lido" (24/09).
+     - Rode primeiro o `--simular`, que mostra o custo sem gastar.
+     - Em "Criativo", o v3 pode pular ou trocar palavra. Nenhuma geração é aceita sem conferir:
+       `out/juneau/_pesquisa/conferir-paragrafos.py <proj>` transcreve e compara parágrafo por parágrafo, e
+       `conferir-trechos.py` confere os pontos suspeitos em recorte curto.
+     - Parágrafo com erro se refaz sozinho: `narrar.mjs <proj> --refazer=N`.
+     - O histórico inteiro está em `out/juneau/_pesquisa/narracao-conferencia.md`.
    - A conta compartilhada da ElevenLabs serve a vários canais. O Lucas entra nela pelo navegador do app, e o
      Claude opera o site com ele vendo; nunca digite a senha dele.
    - O arquivo de chaves da API está em `C:\Users\zangp\.regie\chaves.env` desde 25/09/2026. Foi copiado, sem
