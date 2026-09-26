@@ -61,6 +61,67 @@ o modelo e a estabilidade de `canal.json` › `narracao`.
   - grafias: Juno, Fanny, Reimer, K2, "ice field", "outcross", Glatyshevsky;
   - "6-3" e "$2 .8": o comparador passou a entender essas duas escritas do Whisper.
 
-**Fica para o ouvido:**
-- 0:01, "August twenty-seventh" ou "twenty-seven" (a 1b, igual a antes);
-- 7:07, "meet the Alaska Highway **in** the Yukon": o large-v3 ouve "and" e o medium ouve "in".
+**Ouvido pelo Lucas (25/09):**
+- 0:01: "twenty-seventh", certo;
+- 7:07: "in the Yukon", certo;
+- **3:09: "mudou bastante uma voz para a outra".** A emenda entre a 1b (site) e a parte da API não serve como
+  está.
+
+## Diagnóstico da troca de voz em 3:09 (25/09/2026)
+
+Três investigações (medição do som, configuração enviada, documentação da ElevenLabs), sem gasto, e três
+verificadores que refizeram as medidas por conta própria. Scripts e tabelas ficaram fora do canal, em
+`C:\Users\zangp\AppData\Local\Temp\apmapa\diag\`.
+
+**O que é igual dos dois lados da emenda:** texto (letra por letra), voz, modelo, estabilidade 0, tom (F0 no
+mesmo texto: −0,2 Hz), velocidade (−0,05 palavra/s), formantes (a mesma voz: +0,7 %, igual à diferença entre duas
+gerações do site). O MP3 do site não explica nada abaixo de 8 kHz (controle: a API regravada em MP3 128k muda o
+centróide em 0,1 Hz).
+
+**O que muda, medido:**
+- **Timbre:** no mesmo texto, a API sai um pouco mais clara que o site em 11 ou 12 de 12 parágrafos (centróide
+  +18 a +27 Hz, cerca de 5 %; +0,55 dB de 1 a 4 kHz). O mecanismo mais sustentado: toda geração abre mais clara e
+  assenta em uns 20 s. Na abertura, site e API ficam iguais (+2 a +12 Hz); depois, o site assenta e a API não,
+  porque cada parágrafo da API é uma abertura nova. A "deriva lenta por minuto" proposta primeiro **não se
+  sustentou** (confundia tempo com texto).
+- **Ritmo:** a pausa entre parágrafos **dobra** de 3:09 até o fim: 1b ≈ 0,14 s, API ≈ 0,28 s. É configuração:
+  `pausa_paragrafo_s: 0.2` mais os ~0,06 s de silêncio que cada trecho da API já traz no começo. A nota de que
+  0,2 "imitava a 1b" estava errada.
+- **Documentação:** o recurso que mantém a leitura contínua entre pedidos ("request stitching") "is not
+  available for the eleven_v3 model" (elevenlabs.io, guia de request stitching).
+
+**Não provado:** que essas diferenças, todas pequenas, sejam o que o Lucas ouviu. Forma da entonação e estilo de
+leitura não foram medidos. Por isso, antes de gastar, um teste de escuta às cegas: `out/juneau/_narracao/escuta/`
+(fora do git), 6 trechos com a emenda no meio. O gabarito está em `escuta-gabarito.json`.
+
+**Teste às cegas, respostas do Lucas (26/09):** "1, quase nada, 2 um pouco e as demais bem pouco também". Gabarito
+e respostas em `escuta-gabarito.json`:
+
+| trecho | o que era | ouviu |
+|---|---|---|
+| 1 | 1b → API, pausa 0,13 s | quase nada |
+| 2 | 1b → site 2b (mesmo texto da API) | um pouco |
+| 3 | a emenda de então (1b → API, pausa 0,28 s) | bem pouco |
+| 4 | o 1, com agudo −0,8 dB na API | bem pouco |
+| 5 | 1b → site 2a (mesmo texto da API) | bem pouco |
+| 6 | dentro da API, parágrafo 21 → 22 | bem pouco |
+
+Leitura: a pausa é o que mais pesa (1 contra 3). O EQ não ajudou (4). Refazer no site não resolve, porque a
+leitura nova do site também abre diferente (2 e 5).
+
+**Conserto, sem gasto (26/09):**
+- `canal.json` › `narracao.pausa_paragrafo_s` passou de 0,2 para 0,07. Com os ~0,06 s que cada trecho da API
+  já traz, dá os 0,14 s da 1b.
+- O `narrar.mjs juneau-voz` rodou só do cache: 0 pedidos e 0 créditos, 362,1 s. Os 23 trechos são idênticos,
+  amostra por amostra, ao áudio pago; o 8 continua o refeito.
+- `montar-narracao.py` passou a dar à emenda o silêncio medido entre os parágrafos da API.
+
+Resultado: `narracao-completa.wav`, 9:11. Silêncio de 0,15 s na emenda e de 0,14 s entre os parágrafos da API
+(de 0,10 a 0,22 s), a mesma mediana das pausas dentro da 1b (0,14 s). Os 24 cortes terminam em silêncio.
+
+**O Lucas ouviu a remontada (26/09):** "A mudança de voz é perceptível, mas nada muito incômodo." E levantou
+outro ponto: "talvez esteja muito rápido e 9 minutos é pouco". Medido: **200 palavras por minuto**, igual no
+bloco do site e na parte da API (1.836 palavras em 9,19 min). A marca pede **150–160** (`marca/voz.md`), e o
+roteiro aprovado contava com ~11,4 min. No ritmo da marca, o mesmo texto daria uns 11,8 min. O texto não é o
+problema; a voz é que corre. Próximo: versões de escuta mais lentas, sem gasto (pausas e Rubber Band), e o que
+o v3 aceita para controlar velocidade.

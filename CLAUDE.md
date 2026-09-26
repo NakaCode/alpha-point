@@ -88,8 +88,10 @@ produz o master. O deste canal nasce assim:
    - **Pela API** (o Lucas escolheu em 25/09 para refazer os blocos 2 e 3; é o caminho do vídeo 2 em diante):
      `node C:\projetos\regie-v1\src\ferramentas\narrar.mjs <proj>`, que manda **um pedido por parágrafo**, bem abaixo
      do limite em que o v3 corta. Voz, modelo e estabilidade vêm de `canal.json` › `narracao`: `stability: 0` é o
-     "Criativo" do site, e `pausa_paragrafo_s: 0.2` imita o respiro da 1b (os trechos da API já trazem uns 0,06 s
-     de silêncio no começo e nenhum no fim). Confira com `out/juneau/_pesquisa/conferir-paragrafos.py <proj>`,
+     "Criativo" do site. `pausa_paragrafo_s: 0.07`: os trechos da API já trazem uns 0,06 s de silêncio no começo,
+     e o que se ouve entre parágrafos fica nos ~0,14 s da leitura contínua do site. Com 0,2, a pausa dobrava, e
+     isso foi o que o Lucas mais ouviu como "outra voz" (teste às cegas de 26/09, `narracao-conferencia.md`). O v3
+     não tem "request stitching": cada pedido é uma leitura nova, que abre um pouco mais clara. Confira com `out/juneau/_pesquisa/conferir-paragrafos.py <proj>`,
      que transcreve e compara parágrafo por parágrafo. O parágrafo com erro se refaz sozinho: `narrar.mjs <proj>
      --refazer=N`. Primeiro `--simular`, que mostra o custo sem gastar.
    - A conta compartilhada da ElevenLabs serve a vários canais. O Lucas entra nela pelo navegador do app, e o
@@ -146,8 +148,11 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    duas do bloco 2 e as duas do bloco 3 param antes do fim. **Os blocos 2 e 3 foram refeitos pela API em 25/09**
    (`out/juneau-voz/`, 23 parágrafos, todos completos). `out/juneau/_pesquisa/montar-narracao.py` junta a 1b com
    eles: `out/juneau/_narracao/narracao-completa.wav`, com 9:14. Na conferência do arquivo inteiro, 99,0 % das
-   palavras batem com o texto aprovado, e nenhuma foi pulada. **Espera o ouvido do Lucas.** O quadro e o que falta
-   ouvir estão em `narracao-conferencia.md`.
+   palavras batem com o texto aprovado, e nenhuma foi pulada. **O Lucas ouviu em 25/09: a voz muda em 3:09.** Pelo
+   diagnóstico e pelo teste às cegas, o que pesava era a pausa entre parágrafos dobrada. Em 26/09, a narração foi
+   remontada sem gasto com a pausa da 1b (9:11); o Lucas achou a troca "perceptível, mas nada muito incômodo".
+   **Aberto: a voz fala a 200 palavras/min, e a marca pede 150–160** (o roteiro contava com ~11,4 min). Tudo em
+   `narracao-conferencia.md`.
 2. **`narracao.wav` e master preto sintético** pelo gerador da pré-v1 (`garantirMasterSintetico`, com carimbo).
 3. **Conferência palavra a palavra e `words.json`** no contrato da pré-v1, com o faster-whisper local.
    Normalize os números antes de comparar. O Scribe da pré-v1 fica de fora: é pago, e o local faz o mesmo.

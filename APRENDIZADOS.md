@@ -488,5 +488,12 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       30 s ("the point. point."). Quem compara transcrição com roteiro vai ler isso como eco da voz. Transcrever
       de novo só o recorte em volta resolve (`conferir-trechos.py`). Nesta máquina, a placa de vídeo não roda o
       faster-whisper (falta a cuBLAS 12 da NVIDIA); no processador, o large-v3 leva ~1 min por minuto de áudio.
+  30. **No `narrar.mjs`, a `pausa_paragrafo_s` não é a pausa que se ouve.** Cada trecho do eleven_v3 pela API já
+      começa com ~0,06 s de silêncio (e termina com ~0,02 s). Com 0,2 s, o silêncio entre parágrafos saiu ~0,28 s,
+      o dobro dos ~0,14 s de uma leitura contínua do site. Num teste às cegas, essa pausa dobrada foi o que o dono
+      mais ouviu como "outra voz" na emenda entre um bloco gerado no site e o resto gerado pela API. Encurtar a
+      pausa resolveu, sem gasto e só com o cache. O timbre pesou pouco: o v3 não tem "request stitching", e cada
+      pedido abre um pouco mais claro, mas um EQ para compensar não melhorou nada no ouvido. Serviria ao narrar:
+      medir o silêncio das pontas de cada trecho e descontá-lo da pausa, ou documentar que ela se soma a ele.
 - **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
   5 afetam qualquer um no primeiro `atualizar`.
