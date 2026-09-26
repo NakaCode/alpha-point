@@ -125,3 +125,37 @@ bloco do site e na parte da API (1.836 palavras em 9,19 min). A marca pede **150
 roteiro aprovado contava com ~11,4 min. No ritmo da marca, o mesmo texto daria uns 11,8 min. O texto não é o
 problema; a voz é que corre. Próximo: versões de escuta mais lentas, sem gasto (pausas e Rubber Band), e o que
 o v3 aceita para controlar velocidade.
+
+## Velocidade: da voz, não do ajuste (26/09/2026)
+
+O Lucas liberou o gasto para chegar ao cenário ideal. **Teste pago** (2.673 créditos, conferidos no contador): os
+parágrafos 14 e 27 pela API, em 5 variantes, contra a base já paga. Pastas de teste fora do canal
+(`C:\Users\zangp\AppData\Local\Temp\apmapa\teste-ritmo\`), uma `canal.json` por variante, pelo `narrar.mjs`.
+
+| variante | palavras/min |
+|---|---|
+| base (a atual) | 194 |
+| `speed: 0.85` | 199 (o v3 ignora, como diz a doc do site) |
+| estabilidade 0,5 ("Natural") | 197 |
+| `[slowly]` no começo do parágrafo | 206 |
+| `[deliberate]` | 203 |
+| "Natural" com `[slowly]` | 200 |
+
+Nenhuma desacelera. **O histórico de 24/09** (só GET) mostra de onde vem: a voz âncora de origem lia a 164–167
+em "Natural" e a 178–194 em "Criativo". O Remix de conversa, que pediu "Natural, varied pacing" e "relaxed",
+foi para 194–200.
+
+**Remix novo pela API** (`remix-ritmo.mjs`, 3 rodadas de 927 créditos = 2.781): a partir da voz de conversa,
+mantendo timbre e tom de conversa e pedindo "calm and unhurried, about 150 words per minute". O texto de prévia
+são os parágrafos 1 a 4, que a voz atual lê a **227** palavras/min.
+
+| força | palavras/min nesse texto | tom (F0) | brilho |
+|---|---|---|---|
+| 0,3 | 186–188 | −0,7 a −1,1 semitom | −1 a −7 % |
+| 0,5 | 176–179 | −1,2 a −1,4 semitom | −2 a −11 % |
+| 0,7 | 176–179 | −2,0 a −2,7 semitons | −18 a −28 % (outra voz) |
+
+Contra os 227 da voz atual, é ~20 % mais devagar; na narração inteira (200), daria uns 155–165. **Não provado:**
+que a prévia do Remix mantenha esse ritmo no text-to-speech do v3. Isso se testa depois de o Lucas escolher.
+Escuta com o mesmo volume em `out/juneau/_narracao/escuta-voz/` (fora do git). A chave está em
+`remix-ritmo.json`; a 0,7 ficou de fora.
