@@ -611,3 +611,28 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** os itens 1 a 3 e 8 atingem todo canal 4K, com folha de pronúncia ou com
   roupa copiada do molde; os itens 4 a 7, todo canal en-US, faceless ou nascido na v0.1.0; os itens 10 a 12,
   todo canal que despacha o mapista, roda os portões ou escreve roupa.
+
+## 26/09/2026 — o relógio de palavras do Juneau sem o Scribe (pré-v1 em `7ab9543`)
+
+### 37. Um relógio de palavras sem gasto, e o que as verificações derrubaram no caminho
+
+- **Problema:** o `transcrever.mjs` da pré-v1 usa o Scribe, que é pago. O faster-whisper local sozinho erra a
+  palavra da fronteira em pausas sem pontuação (12 de 230 no Juneau) e comprime os números (até 0,5 s). O
+  alinhamento por caractere que a ElevenLabs guarda no histórico acerta o miolo e os números, mas põe a pausa dentro
+  da palavra seguinte e, por ser o alinhamento do texto ENVIADO, não prova o que a voz disse.
+- **O que resolveu:** `out/juneau/_pesquisa/ingest-local.py` (com `alinhamento-elevenlabs.mjs`, só GET no histórico,
+  sem gasto). As palavras são as do texto aprovado; o tempo, o da ElevenLabs preso ao som nas pausas; o Whisper local
+  é o ouvido, e nada passa sem ele: a fronteira de uma pausa sem pontuação que o ouvido não confirma reprova, mesmo
+  quando as duas fontes concordam (no teste, 0,25 s de silêncio dentro de "temporary" enganou as duas juntas). O
+  laudo tem 7 portões medidos no som.
+- **Três armadilhas que valem fora daqui:**
+  - `WhisperModel("large-v3")` pelo nome consulta huggingface.co a cada carga, mesmo com o modelo no cache (e, se a
+    branch mudou, baixa outra revisão sem avisar). Carregue pelo caminho do snapshot
+    (`download_model(nome, local_files_only=True)`) e ponha `HF_HUB_OFFLINE=1` antes de importar. Medido em 26/09
+    com a rede bloqueada: pelo nome, uma tentativa de conexão a `huggingface.co:443`; pelo caminho, nenhuma;
+  - um `--aceitar=N` por trecho aceita também o item que nasce na própria rodada e que ninguém viu. Aqui ele só
+    aceita o que o laudo anterior do mesmo áudio mostrava pendente;
+  - o `words.json` feito do texto aprovado tem a grafia da cópia para a voz (`Kay-too`, `nineteen seventy-four`).
+    Todo agente que "confirma a entidade" ou procura âncora nele precisa saber disso (as roupas avisam no §0).
+- **Por que serve a qualquer canal:** todo canal que narra pela ElevenLabs tem o alinhamento no histórico de graça,
+  e todo canal que roda o faster-whisper na máquina carrega o modelo do mesmo jeito. Vale avisar o Lucas.

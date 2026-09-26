@@ -1,0 +1,2842 @@
+{
+  "schemaVersion": 1,
+  "proj": "juneau",
+  "status": "aprovado",
+  "audio": {
+    "arquivo": "out/juneau/narracao.wav",
+    "sha256": "468b045b34dce4882981a41bd170ffddca93d4c3c8fca498c0d8bf2d79c871eb",
+    "duracaoSec": 666.05,
+    "sampleRate": 44100
+  },
+  "pedido": {
+    "motor": "faster-whisper large-v3 local (CPU int8)",
+    "faster_whisper": "1.2.1",
+    "modelo": "large-v3",
+    "modelo_revisao": "edaa852ec7e145841d8ffdb056a99866b5f0a478",
+    "device": "cpu",
+    "compute_type": "int8",
+    "cpu_threads": 16,
+    "idioma": "en",
+    "beam_size": 5,
+    "word_timestamps": true,
+    "condition_on_previous_text": false,
+    "vad_filter": false,
+    "temperature": "padrão do faster-whisper (0,0 com recaída)",
+    "taxa_hz": 16000,
+    "reamostragem": "ffmpeg version 8.1-full_build-www.gyan.dev",
+    "unidade": "um trecho do narracao.json por vez",
+    "recorte_max_s": 28.0,
+    "limiar_som_dbfs": -45.0,
+    "normalizacao": "comparar-narracao.py (tokens/verbalizar, MESMO_SOM nos dois lados)",
+    "relogio": {
+      "base": "alinhamento por caractere da ElevenLabs (só as letras) + δ medido",
+      "pausa_ancora_s": 0.15,
+      "vao_max_s": 0.15,
+      "vao_fechar_s": 0.1,
+      "vao_teto_s": 0.25,
+      "vale_min_db": 20.0,
+      "concordancia_max_s": 1.0,
+      "grafia_perto": 0.6,
+      "dur_min_palavra_s": 0.02,
+      "ouvido_janela_s": 2.0,
+      "prova_margem_s": 1.0
+    }
+  },
+  "resposta": {
+    "arquivo": "out/juneau/_narracao/whisper.json",
+    "requestId": null,
+    "language_code": "en",
+    "language_probability": 0.9987,
+    "audio_duration_secs": 666.05,
+    "soma_dos_recortes_s": 643.6,
+    "recortes": 40,
+    "fora_das_falas_medido_s": 22.45,
+    "sobre_a_duracao": "audio_duration_secs é o arquivo inteiro decodificado; o Whisper recebeu só as falas (soma_dos_recortes_s), e o resto foi medido por energia (portão fora_das_falas)"
+  },
+  "portoes": [
+    {
+      "nome": "palavras",
+      "ok": true,
+      "detalhe": "1769 palavras ouvidas pelo Whisper (1839 contando os algarismos como o roteiro)"
+    },
+    {
+      "nome": "duracao",
+      "ok": true,
+      "detalhe": "áudio decodificado 666.050 s × WAV 666.050 s (diferença 0.000 s; tolerância 0.5 s): o arquivo lê inteiro. Isso não prova que o Whisper ouviu tudo: ele recebeu as 36 falas (643.600 s); o resto (36 segmentos, 22.450 s) é medido no portão fora_das_falas; os segmentos do narracao.json cobrem o arquivo sem buraco (666.050 s); última palavra ouvida termina em 645.490 s"
+    },
+    {
+      "nome": "fora_das_falas",
+      "ok": true,
+      "detalhe": "36 segmentos fora das falas medidos (22.45 s): 35 pausas sem nenhum quadro acima de -45.0 dBFS; tela_final 646.05–666.05 s em silêncio digital (pico 0 LSB)"
+    },
+    {
+      "nome": "idioma",
+      "ok": true,
+      "detalhe": "detect_language deu 'en' nos 40 recortes (menor probabilidade 0.9987); a transcrição foi pedida com language='en'"
+    },
+    {
+      "nome": "cobertura",
+      "ok": true,
+      "detalhe": "36 trechos dentro de 0.9..1.1 — medirCobertura da pré-v1 (Node)"
+    },
+    {
+      "nome": "conteudo",
+      "ok": true,
+      "detalhe": "0 palavras puladas, 9 blocos trocados, 0 palavras a mais; 8 itens aceitos um a um (trechos 1, 15, 17, 19, 24, 25, 28, 32; por sessão do Claude (ingest de 26/09/2026); como Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana)"
+    },
+    {
+      "nome": "relogio",
+      "ok": true,
+      "detalhe": "1836 palavras do texto aprovado (contarPalavras: 1836), em ordem, sem sobreposição, dentro do som de cada trecho, nenhuma invadindo as 230 pausas-âncora. Fronteiras: 230 pausas, 230 decididas (216 por consenso com pontuação; pelo ouvido, 12 conferidas, 2 desempatadas e 0 corrigidas), 0 ignoradas (de dentro de uma palavra), 0 sem decisão. Medido: 230 pausas-âncora em silêncio; maior corrida de som sem palavra 0.10 s (teto 0.15 s); 42 vãos com voz fechados na montagem (maior 0.303 s; 2 acima de 0.25 s, 2 deles num vale do som); contra o Whisper, 1421 inícios de palavra casada fora das âncoras: mediana +0.127 s, máx 0.644 s (teto 1.0 s)"
+    }
+  ],
+  "trechos": [
+    {
+      "trecho": 1,
+      "start": 0,
+      "end": 18,
+      "esperado": 52,
+      "obtido": 52,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        0.03,
+        17.94
+      ],
+      "recortes": [
+        [
+          0.0,
+          18.0
+        ]
+      ],
+      "obtido_bruto": 51,
+      "tokens_iguais": "53/54",
+      "fontes_do_ouvido": {
+        "casada": 49,
+        "repartida": 2,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "twenty-seventh,",
+          "ouvido": "27,",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 2,
+      "start": 18.07,
+      "end": 30.87,
+      "esperado": 38,
+      "obtido": 38,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        18.15,
+        30.87
+      ],
+      "recortes": [
+        [
+          18.07,
+          30.87
+        ]
+      ],
+      "obtido_bruto": 38,
+      "tokens_iguais": "39/39",
+      "fontes_do_ouvido": {
+        "casada": 38,
+        "repartida": 0,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 6
+    },
+    {
+      "trecho": 3,
+      "start": 30.94,
+      "end": 46.3,
+      "esperado": 52,
+      "obtido": 53,
+      "razao": 1.019,
+      "status": "ok",
+      "som": [
+        31.02,
+        46.3
+      ],
+      "recortes": [
+        [
+          30.94,
+          46.3
+        ]
+      ],
+      "obtido_bruto": 52,
+      "tokens_iguais": "54/54",
+      "fontes_do_ouvido": {
+        "casada": 50,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 5
+    },
+    {
+      "trecho": 4,
+      "start": 46.37,
+      "end": 53.01,
+      "esperado": 21,
+      "obtido": 21,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        46.42,
+        52.53
+      ],
+      "recortes": [
+        [
+          46.37,
+          53.01
+        ]
+      ],
+      "obtido_bruto": 21,
+      "tokens_iguais": "21/21",
+      "fontes_do_ouvido": {
+        "casada": 21,
+        "repartida": 0,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 2
+    },
+    {
+      "trecho": 5,
+      "start": 53.08,
+      "end": 75.4,
+      "esperado": 64,
+      "obtido": 64,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        53.14,
+        75.4
+      ],
+      "recortes": [
+        [
+          53.08,
+          75.4
+        ]
+      ],
+      "obtido_bruto": 61,
+      "tokens_iguais": "65/65",
+      "fontes_do_ouvido": {
+        "casada": 58,
+        "repartida": 6,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 8
+    },
+    {
+      "trecho": 6,
+      "start": 75.47,
+      "end": 98.43,
+      "esperado": 61,
+      "obtido": 61,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        75.52,
+        98.41
+      ],
+      "recortes": [
+        [
+          75.47,
+          98.43
+        ]
+      ],
+      "obtido_bruto": 59,
+      "tokens_iguais": "61/61",
+      "fontes_do_ouvido": {
+        "casada": 57,
+        "repartida": 4,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 6
+    },
+    {
+      "trecho": 7,
+      "start": 98.5,
+      "end": 119.62,
+      "esperado": 50,
+      "obtido": 50,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        98.54,
+        119.62
+      ],
+      "recortes": [
+        [
+          98.5,
+          119.62
+        ]
+      ],
+      "obtido_bruto": 47,
+      "tokens_iguais": "53/53",
+      "fontes_do_ouvido": {
+        "casada": 44,
+        "repartida": 6,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7
+    },
+    {
+      "trecho": 8,
+      "start": 119.69,
+      "end": 136.73,
+      "esperado": 52,
+      "obtido": 52,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        119.77,
+        136.73
+      ],
+      "recortes": [
+        [
+          119.69,
+          136.73
+        ]
+      ],
+      "obtido_bruto": 50,
+      "tokens_iguais": "54/54",
+      "fontes_do_ouvido": {
+        "casada": 48,
+        "repartida": 4,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 5
+    },
+    {
+      "trecho": 9,
+      "start": 136.8,
+      "end": 143.28,
+      "esperado": 21,
+      "obtido": 21,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        136.85,
+        143.28
+      ],
+      "recortes": [
+        [
+          136.8,
+          143.28
+        ]
+      ],
+      "obtido_bruto": 20,
+      "tokens_iguais": "22/22",
+      "fontes_do_ouvido": {
+        "casada": 19,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 2
+    },
+    {
+      "trecho": 10,
+      "start": 143.35,
+      "end": 159.99,
+      "esperado": 50,
+      "obtido": 51,
+      "razao": 1.02,
+      "status": "ok",
+      "som": [
+        143.42,
+        159.94
+      ],
+      "recortes": [
+        [
+          143.35,
+          159.99
+        ]
+      ],
+      "obtido_bruto": 50,
+      "tokens_iguais": "52/52",
+      "fontes_do_ouvido": {
+        "casada": 48,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7
+    },
+    {
+      "trecho": 11,
+      "start": 160.06,
+      "end": 183.1,
+      "esperado": 63,
+      "obtido": 63,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        160.09,
+        183.09
+      ],
+      "recortes": [
+        [
+          160.06,
+          183.1
+        ]
+      ],
+      "obtido_bruto": 61,
+      "tokens_iguais": "65/65",
+      "fontes_do_ouvido": {
+        "casada": 59,
+        "repartida": 4,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7
+    },
+    {
+      "trecho": 12,
+      "start": 183.17,
+      "end": 192.53,
+      "esperado": 27,
+      "obtido": 27,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        183.25,
+        192.53
+      ],
+      "recortes": [
+        [
+          183.17,
+          192.53
+        ]
+      ],
+      "obtido_bruto": 26,
+      "tokens_iguais": "28/28",
+      "fontes_do_ouvido": {
+        "casada": 25,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 2
+    },
+    {
+      "trecho": 13,
+      "start": 192.6,
+      "end": 219.24,
+      "esperado": 78,
+      "obtido": 78,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        192.66,
+        219.24
+      ],
+      "recortes": [
+        [
+          192.6,
+          219.24
+        ]
+      ],
+      "obtido_bruto": 73,
+      "tokens_iguais": "81/81",
+      "fontes_do_ouvido": {
+        "casada": 69,
+        "repartida": 9,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 12
+    },
+    {
+      "trecho": 14,
+      "start": 219.31,
+      "end": 244.91,
+      "esperado": 69,
+      "obtido": 69,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        219.36,
+        244.9
+      ],
+      "recortes": [
+        [
+          219.31,
+          244.91
+        ]
+      ],
+      "obtido_bruto": 61,
+      "tokens_iguais": "72/72",
+      "fontes_do_ouvido": {
+        "casada": 53,
+        "repartida": 16,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 9
+    },
+    {
+      "trecho": 15,
+      "start": 244.98,
+      "end": 251.3,
+      "esperado": 20,
+      "obtido": 20,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        245.04,
+        251.3
+      ],
+      "recortes": [
+        [
+          244.98,
+          251.3
+        ]
+      ],
+      "obtido_bruto": 20,
+      "tokens_iguais": "19/20",
+      "fontes_do_ouvido": {
+        "casada": 19,
+        "repartida": 0,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 2,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Juneau",
+          "ouvido": "Juno",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 16,
+      "start": 251.37,
+      "end": 260.97,
+      "esperado": 26,
+      "obtido": 26,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        251.46,
+        260.92
+      ],
+      "recortes": [
+        [
+          251.37,
+          260.97
+        ]
+      ],
+      "obtido_bruto": 25,
+      "tokens_iguais": "27/27",
+      "fontes_do_ouvido": {
+        "casada": 24,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 3
+    },
+    {
+      "trecho": 17,
+      "start": 261.04,
+      "end": 293.2,
+      "esperado": 92,
+      "obtido": 91,
+      "razao": 0.989,
+      "status": "ok",
+      "som": [
+        261.11,
+        293.2
+      ],
+      "recortes": [
+        [
+          261.04,
+          276.32
+        ],
+        [
+          276.32,
+          293.2
+        ]
+      ],
+      "obtido_bruto": 88,
+      "tokens_iguais": "94/95",
+      "fontes_do_ouvido": {
+        "casada": 82,
+        "repartida": 9,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 11,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Fannie.",
+          "ouvido": "Fanny.",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 18,
+      "start": 293.27,
+      "end": 303.67,
+      "esperado": 27,
+      "obtido": 27,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        293.35,
+        303.67
+      ],
+      "recortes": [
+        [
+          293.27,
+          303.67
+        ]
+      ],
+      "obtido_bruto": 26,
+      "tokens_iguais": "31/31",
+      "fontes_do_ouvido": {
+        "casada": 25,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 4
+    },
+    {
+      "trecho": 19,
+      "start": 303.74,
+      "end": 332.38,
+      "esperado": 77,
+      "obtido": 77,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        303.78,
+        332.36
+      ],
+      "recortes": [
+        [
+          303.74,
+          320.61
+        ],
+        [
+          320.61,
+          332.38
+        ]
+      ],
+      "obtido_bruto": 76,
+      "tokens_iguais": "76/77",
+      "fontes_do_ouvido": {
+        "casada": 74,
+        "repartida": 2,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 12,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Rae",
+          "ouvido": "Ray",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 20,
+      "start": 332.45,
+      "end": 340.69,
+      "esperado": 24,
+      "obtido": 24,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        332.52,
+        340.69
+      ],
+      "recortes": [
+        [
+          332.45,
+          340.69
+        ]
+      ],
+      "obtido_bruto": 22,
+      "tokens_iguais": "26/26",
+      "fontes_do_ouvido": {
+        "casada": 20,
+        "repartida": 4,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 3
+    },
+    {
+      "trecho": 21,
+      "start": 340.76,
+      "end": 363,
+      "esperado": 60,
+      "obtido": 61,
+      "razao": 1.017,
+      "status": "ok",
+      "som": [
+        340.8,
+        362.96
+      ],
+      "recortes": [
+        [
+          340.76,
+          363.0
+        ]
+      ],
+      "obtido_bruto": 57,
+      "tokens_iguais": "63/63",
+      "fontes_do_ouvido": {
+        "casada": 51,
+        "repartida": 9,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 9
+    },
+    {
+      "trecho": 22,
+      "start": 363.07,
+      "end": 379.71,
+      "esperado": 44,
+      "obtido": 44,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        363.11,
+        379.67
+      ],
+      "recortes": [
+        [
+          363.07,
+          379.71
+        ]
+      ],
+      "obtido_bruto": 42,
+      "tokens_iguais": "47/47",
+      "fontes_do_ouvido": {
+        "casada": 40,
+        "repartida": 4,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 6
+    },
+    {
+      "trecho": 23,
+      "start": 379.78,
+      "end": 407.94,
+      "esperado": 76,
+      "obtido": 77,
+      "razao": 1.013,
+      "status": "ok",
+      "som": [
+        379.83,
+        407.94
+      ],
+      "recortes": [
+        [
+          379.78,
+          391.48
+        ],
+        [
+          391.48,
+          407.94
+        ]
+      ],
+      "obtido_bruto": 76,
+      "tokens_iguais": "78/78",
+      "fontes_do_ouvido": {
+        "casada": 74,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 8
+    },
+    {
+      "trecho": 24,
+      "start": 408.01,
+      "end": 418.33,
+      "esperado": 31,
+      "obtido": 31,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        408.05,
+        418.33
+      ],
+      "recortes": [
+        [
+          408.01,
+          418.33
+        ]
+      ],
+      "obtido_bruto": 31,
+      "tokens_iguais": "30/32",
+      "fontes_do_ouvido": {
+        "casada": 30,
+        "repartida": 0,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 3,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Mat-Sue",
+          "ouvido": "Matsu",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 25,
+      "start": 418.4,
+      "end": 439.68,
+      "esperado": 62,
+      "obtido": 62,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        418.45,
+        439.68
+      ],
+      "recortes": [
+        [
+          418.4,
+          439.68
+        ]
+      ],
+      "obtido_bruto": 59,
+      "tokens_iguais": "64/66",
+      "fontes_do_ouvido": {
+        "casada": 55,
+        "repartida": 6,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 8,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Kay-too",
+          "ouvido": "K2",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 26,
+      "start": 439.75,
+      "end": 463.03,
+      "esperado": 66,
+      "obtido": 66,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        439.83,
+        462.96
+      ],
+      "recortes": [
+        [
+          439.75,
+          463.03
+        ]
+      ],
+      "obtido_bruto": 65,
+      "tokens_iguais": "66/66",
+      "fontes_do_ouvido": {
+        "casada": 64,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 8
+    },
+    {
+      "trecho": 27,
+      "start": 463.1,
+      "end": 489.02,
+      "esperado": 73,
+      "obtido": 74,
+      "razao": 1.014,
+      "status": "ok",
+      "som": [
+        463.14,
+        489.02
+      ],
+      "recortes": [
+        [
+          463.1,
+          489.02
+        ]
+      ],
+      "obtido_bruto": 71,
+      "tokens_iguais": "73/74",
+      "fontes_do_ouvido": {
+        "casada": 67,
+        "repartida": 5,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 11,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "icefield",
+          "ouvido": "ice field",
+          "situacao": "sem aceite (mesmas letras)"
+        }
+      ]
+    },
+    {
+      "trecho": 28,
+      "start": 489.09,
+      "end": 505.41,
+      "esperado": 50,
+      "obtido": 49,
+      "razao": 0.98,
+      "status": "ok",
+      "som": [
+        489.12,
+        505.41
+      ],
+      "recortes": [
+        [
+          489.09,
+          505.41
+        ]
+      ],
+      "obtido_bruto": 49,
+      "tokens_iguais": "48/50",
+      "fontes_do_ouvido": {
+        "casada": 48,
+        "repartida": 0,
+        "trocada": 2,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "out cross",
+          "ouvido": "outcross",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 29,
+      "start": 505.48,
+      "end": 524.84,
+      "esperado": 55,
+      "obtido": 55,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        505.58,
+        524.83
+      ],
+      "recortes": [
+        [
+          505.48,
+          524.84
+        ]
+      ],
+      "obtido_bruto": 54,
+      "tokens_iguais": "56/56",
+      "fontes_do_ouvido": {
+        "casada": 53,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7
+    },
+    {
+      "trecho": 30,
+      "start": 524.91,
+      "end": 548.35,
+      "esperado": 70,
+      "obtido": 70,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        524.96,
+        548.35
+      ],
+      "recortes": [
+        [
+          524.91,
+          548.35
+        ]
+      ],
+      "obtido_bruto": 63,
+      "tokens_iguais": "71/71",
+      "fontes_do_ouvido": {
+        "casada": 59,
+        "repartida": 11,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7
+    },
+    {
+      "trecho": 31,
+      "start": 548.42,
+      "end": 578.02,
+      "esperado": 83,
+      "obtido": 83,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        548.54,
+        578.01
+      ],
+      "recortes": [
+        [
+          548.42,
+          566.05
+        ],
+        [
+          566.05,
+          578.02
+        ]
+      ],
+      "obtido_bruto": 80,
+      "tokens_iguais": "83/83",
+      "fontes_do_ouvido": {
+        "casada": 77,
+        "repartida": 6,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 11
+    },
+    {
+      "trecho": 32,
+      "start": 578.09,
+      "end": 595.21,
+      "esperado": 53,
+      "obtido": 53,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        578.16,
+        595.21
+      ],
+      "recortes": [
+        [
+          578.09,
+          595.21
+        ]
+      ],
+      "obtido_bruto": 51,
+      "tokens_iguais": "52/53",
+      "fontes_do_ouvido": {
+        "casada": 47,
+        "repartida": 5,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 6,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Gladyshevsky",
+          "ouvido": "Gladoshevsky",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 33,
+      "start": 595.28,
+      "end": 598.72,
+      "esperado": 10,
+      "obtido": 10,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        595.36,
+        598.72
+      ],
+      "recortes": [
+        [
+          595.28,
+          598.72
+        ]
+      ],
+      "obtido_bruto": 9,
+      "tokens_iguais": "10/10",
+      "fontes_do_ouvido": {
+        "casada": 8,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 0
+    },
+    {
+      "trecho": 34,
+      "start": 598.79,
+      "end": 615.59,
+      "esperado": 51,
+      "obtido": 51,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        598.85,
+        615.54
+      ],
+      "recortes": [
+        [
+          598.79,
+          615.59
+        ]
+      ],
+      "obtido_bruto": 50,
+      "tokens_iguais": "52/52",
+      "fontes_do_ouvido": {
+        "casada": 49,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7
+    },
+    {
+      "trecho": 35,
+      "start": 615.66,
+      "end": 641.74,
+      "esperado": 73,
+      "obtido": 73,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        615.7,
+        641.73
+      ],
+      "recortes": [
+        [
+          615.66,
+          641.74
+        ]
+      ],
+      "obtido_bruto": 70,
+      "tokens_iguais": "76/76",
+      "fontes_do_ouvido": {
+        "casada": 67,
+        "repartida": 6,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 11
+    },
+    {
+      "trecho": 36,
+      "start": 641.81,
+      "end": 646.05,
+      "esperado": 15,
+      "obtido": 15,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        641.88,
+        645.81
+      ],
+      "recortes": [
+        [
+          641.81,
+          646.05
+        ]
+      ],
+      "obtido_bruto": 15,
+      "tokens_iguais": "15/15",
+      "fontes_do_ouvido": {
+        "casada": 15,
+        "repartida": 0,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 1
+    }
+  ],
+  "aceitos": [],
+  "aceites": [
+    {
+      "trecho": 1,
+      "tipo": "bloco_trocado",
+      "roteiro": "twenty-seventh,",
+      "ouvido": "27,",
+      "palavras": [
+        2
+      ],
+      "no_trecho": [
+        2
+      ],
+      "por": "sessão do Claude (ingest de 26/09/2026)",
+      "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+      "em": "2026-09-26T19:23:54Z"
+    },
+    {
+      "trecho": 15,
+      "tipo": "bloco_trocado",
+      "roteiro": "Juneau",
+      "ouvido": "Juno",
+      "palavras": [
+        714
+      ],
+      "no_trecho": [
+        16
+      ],
+      "por": "sessão do Claude (ingest de 26/09/2026)",
+      "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+      "em": "2026-09-26T19:29:27Z"
+    },
+    {
+      "trecho": 17,
+      "tipo": "bloco_trocado",
+      "roteiro": "Fannie.",
+      "ouvido": "Fanny.",
+      "palavras": [
+        766
+      ],
+      "no_trecho": [
+        22
+      ],
+      "por": "sessão do Claude (ingest de 26/09/2026)",
+      "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+      "em": "2026-09-26T19:29:27Z"
+    },
+    {
+      "trecho": 19,
+      "tipo": "bloco_trocado",
+      "roteiro": "Rae",
+      "ouvido": "Ray",
+      "palavras": [
+        918
+      ],
+      "no_trecho": [
+        55
+      ],
+      "por": "sessão do Claude (ingest de 26/09/2026)",
+      "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+      "em": "2026-09-26T19:29:27Z"
+    },
+    {
+      "trecho": 24,
+      "tipo": "bloco_trocado",
+      "roteiro": "Mat-Sue",
+      "ouvido": "Matsu",
+      "palavras": [
+        1155
+      ],
+      "no_trecho": [
+        11
+      ],
+      "por": "sessão do Claude (ingest de 26/09/2026)",
+      "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+      "em": "2026-09-26T19:29:27Z"
+    },
+    {
+      "trecho": 25,
+      "tipo": "bloco_trocado",
+      "roteiro": "Kay-too",
+      "ouvido": "K2",
+      "palavras": [
+        1219
+      ],
+      "no_trecho": [
+        44
+      ],
+      "por": "sessão do Claude (ingest de 26/09/2026)",
+      "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+      "em": "2026-09-26T19:29:27Z"
+    },
+    {
+      "trecho": 28,
+      "tipo": "bloco_trocado",
+      "roteiro": "out cross",
+      "ouvido": "outcross",
+      "palavras": [
+        1396,
+        1397
+      ],
+      "no_trecho": [
+        20,
+        21
+      ],
+      "por": "sessão do Claude (ingest de 26/09/2026)",
+      "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+      "em": "2026-09-26T19:29:27Z"
+    },
+    {
+      "trecho": 32,
+      "tipo": "bloco_trocado",
+      "roteiro": "Gladyshevsky",
+      "ouvido": "Gladoshevsky",
+      "palavras": [
+        1654
+      ],
+      "no_trecho": [
+        20
+      ],
+      "por": "sessão do Claude (ingest de 26/09/2026)",
+      "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+      "em": "2026-09-26T19:29:27Z"
+    }
+  ],
+  "sobre_aceitos": "aceitos: os trechos cuja cobertura fora de 0,9..1,1 foi aceita (o sentido da pré-v1, que o transcrever.mjs herda por trecho); aceites: cada item aceito um a um (cobertura ou conteúdo), com quem aceitou e como",
+  "sem_cobertura": null,
+  "avisos": [
+    "trecho 9: o alinhamento da ElevenLabs mede +0.16 s em relação ao PCM; limitado ao som do trecho (136.85–143.28 s)",
+    "trecho 22: o alinhamento da ElevenLabs mede -0.08 s em relação ao PCM; limitado ao som do trecho (363.11–379.67 s)",
+    "trecho 36: o alinhamento da ElevenLabs mede -0.24 s em relação ao PCM; limitado ao som do trecho (641.88–645.81 s)",
+    "t1 bloco_trocado: roteiro \"twenty-seventh,\" × ouvido \"27,\" (recorte curto: \"On August 27, 1974,\"; NÃO ouviu o roteiro) — aceito (herdado do laudo anterior, item idêntico): por sessão do Claude (ingest de 26/09/2026); como Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+    "t15 bloco_trocado: roteiro \"Juneau\" × ouvido \"Juno\" (recorte curto: \"A no vote meant Juno stayed the capital.\"; NÃO ouviu o roteiro) — aceito (herdado do laudo anterior, item idêntico): por sessão do Claude (ingest de 26/09/2026); como Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+    "t17 bloco_trocado: roteiro \"Fannie.\" × ouvido \"Fanny.\" (recorte curto: \"Football Fanny\"; NÃO ouviu o roteiro) — aceito (herdado do laudo anterior, item idêntico): por sessão do Claude (ingest de 26/09/2026); como Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+    "t19 bloco_trocado: roteiro \"Rae\" × ouvido \"Ray\" (recorte curto: \"economist Brian Ray wrote that the\"; NÃO ouviu o roteiro) — aceito (herdado do laudo anterior, item idêntico): por sessão do Claude (ingest de 26/09/2026); como Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+    "t24 bloco_trocado: roteiro \"Mat-Sue\" × ouvido \"Matsu\" (recorte curto: \"Sessions to the Mat -Su Valley.\"; ouviu o roteiro) — aceito (herdado do laudo anterior, item idêntico): por sessão do Claude (ingest de 26/09/2026); como Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+    "t25 bloco_trocado: roteiro \"Kay-too\" × ouvido \"K2\" (recorte curto: \"Jesse Keel told K2 in 2025.\"; NÃO ouviu o roteiro) — aceito (herdado do laudo anterior, item idêntico): por sessão do Claude (ingest de 26/09/2026); como Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+    "t28 bloco_trocado: roteiro \"out cross\" × ouvido \"outcross\" (recorte curto: \"the roads outcross into Canada.\"; NÃO ouviu o roteiro) — aceito (herdado do laudo anterior, item idêntico): por sessão do Claude (ingest de 26/09/2026); como Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+    "t32 bloco_trocado: roteiro \"Gladyshevsky\" × ouvido \"Gladoshevsky\" (recorte curto: \"Assemblymember Maria Gladoshevsky voted no.\"; NÃO ouviu o roteiro) — aceito (herdado do laudo anterior, item idêntico): por sessão do Claude (ingest de 26/09/2026); como Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana"
+  ],
+  "saidas": {
+    "words": "out/juneau/words.json",
+    "transcript": "out/juneau/transcript.txt",
+    "transcript_conteudo": "o texto que o Whisper local ouviu, recorte a recorte, na ordem do áudio e na grafia dele (algarismos, as grafias do transcritor), como o texto corrido do Scribe na pré-v1; as palavras do words.json são as do texto aprovado (fonte_das_palavras)",
+    "whisper": "out/juneau/_narracao/whisper.json"
+  },
+  "fonte_das_palavras": "w: o texto aprovado (narracao.json › segmentos[].texto = a cópia para a voz, out/<proj>/roteiro.md), na grafia dela: números por extenso e aliases de pronúncia; algarismo e grafia de tela não estão no words.json. Tempo: o alinhamento por caractere da ElevenLabs (só as letras, + δ), com as pontas dos trechos e as pausas-âncora presas ao som; a fronteira de cada pausa pela regra e pela ElevenLabs, e pelo ouvido (Whisper em recorte curto) quando discordam ou não há pontuação. O Whisper local é o ouvido do conteúdo: cobertura, palavras puladas, trocadas e a mais. As divergências entre o que a voz disse e o texto aprovado estão em alinhamento.conteudo, não no words.json.",
+  "alinhamento": {
+    "palavras": 1836,
+    "base": {
+      "arquivo": "out/juneau/_narracao/elevenlabs/alinhamento-elevenlabs.json",
+      "sha256": "1818c929f9739d1a5b08b6af4e5abaa43c714d5af7a22b02e6204059338dba01",
+      "delta_s": 0.06,
+      "delta_como": "mediana, nos 36 trechos, de (começo do som − começo da 1ª letra da ElevenLabs)",
+      "delta_por_trecho": {
+        "min": 0.03,
+        "mediana": 0.06,
+        "max": 0.12
+      }
+    },
+    "fontes_do_ouvido": {
+      "casada": 1686,
+      "repartida": 140,
+      "trocada": 10,
+      "interpolada": 0
+    },
+    "fronteiras": {
+      "pausas": 230,
+      "consenso": 216,
+      "conferidas": 12,
+      "desempatadas": 2,
+      "corrigidas": 0,
+      "nao_confirmadas": 0,
+      "ignoradas": 0,
+      "indecididas": 0,
+      "incoerentes": 0
+    },
+    "fronteiras_desempatadas": [
+      {
+        "trecho": 1,
+        "pausa": [
+          11.3,
+          11.62
+        ],
+        "regra": 30,
+        "elevenlabs": 30,
+        "fronteira": 30,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "happened between that vote?",
+          "depois": "and the move that",
+          "notas": {
+            "between | that": 0,
+            "that | vote": 0,
+            "vote | and": 2,
+            "and | the": 0,
+            "the | move": 0
+          }
+        },
+        "regra_palavras": "vote | and",
+        "elevenlabs_palavras": "vote | and",
+        "fronteira_palavras": "vote | and"
+      },
+      {
+        "trecho": 2,
+        "pausa": [
+          28.42,
+          28.79
+        ],
+        "regra": 29,
+        "elevenlabs": 29,
+        "fronteira": 29,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "and load of freight",
+          "depois": "comes and goes by",
+          "notas": {
+            "load | of": 0,
+            "of | freight": 0,
+            "freight | comes": 2,
+            "comes | and": 0,
+            "and | goes": 0
+          }
+        },
+        "regra_palavras": "freight | comes",
+        "elevenlabs_palavras": "freight | comes",
+        "fronteira_palavras": "freight | comes"
+      },
+      {
+        "trecho": 3,
+        "pausa": [
+          43.73,
+          44.04
+        ],
+        "regra": 43,
+        "elevenlabs": 42,
+        "fronteira": 42,
+        "situacao": "desempatada",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "expensive and time -consuming.",
+          "depois": "that few ordinary citizens",
+          "notas": {
+            "expensive | and": 0,
+            "and | time-consuming": 0,
+            "time-consuming | that": 2,
+            "that | few": 0,
+            "few | ordinary": 0,
+            "ordinary | citizens": 0
+          }
+        },
+        "regra_palavras": "that | few",
+        "elevenlabs_palavras": "time-consuming | that",
+        "fronteira_palavras": "time-consuming | that"
+      },
+      {
+        "trecho": 17,
+        "pausa": [
+          287.85,
+          288.2
+        ],
+        "regra": 74,
+        "elevenlabs": 74,
+        "fronteira": 74,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "and three domed stadiums.",
+          "depois": "at $800 million.",
+          "notas": {
+            "three | domed": 0,
+            "domed | stadiums": 0,
+            "stadiums | at": 2,
+            "at | eight": 0,
+            "eight | hundred": 0
+          }
+        },
+        "regra_palavras": "stadiums | at",
+        "elevenlabs_palavras": "stadiums | at",
+        "fronteira_palavras": "stadiums | at"
+      },
+      {
+        "trecho": 19,
+        "pausa": [
+          307.89,
+          308.04
+        ],
+        "regra": 11,
+        "elevenlabs": 11,
+        "fronteira": 11,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "they said no to",
+          "depois": "is not. It was",
+          "notas": {
+            "said | no": 0,
+            "no | to": 0,
+            "to | is": 2,
+            "is | not.": 0,
+            "not. | It": 0
+          }
+        },
+        "regra_palavras": "to | is",
+        "elevenlabs_palavras": "to | is",
+        "fronteira_palavras": "to | is"
+      },
+      {
+        "trecho": 19,
+        "pausa": [
+          324.09,
+          324.51
+        ],
+        "regra": 55,
+        "elevenlabs": 55,
+        "fronteira": 55,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "labor economist Brian Ray",
+          "depois": "wrote that the expense",
+          "notas": {
+            "economist | Brian": 0,
+            "Brian | Rae": 0,
+            "Rae | wrote": 2,
+            "wrote | that": 0,
+            "that | the": 0
+          }
+        },
+        "regra_palavras": "Rae | wrote",
+        "elevenlabs_palavras": "Rae | wrote",
+        "fronteira_palavras": "Rae | wrote"
+      },
+      {
+        "trecho": 20,
+        "pausa": [
+          335.61,
+          335.8
+        ],
+        "regra": 9,
+        "elevenlabs": 9,
+        "fronteira": 9,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "the 1982 no vote,",
+          "depois": "also repealed every move",
+          "notas": {
+            "eighty-two | no": 0,
+            "no | vote": 0,
+            "vote | also": 2,
+            "also | repealed": 0,
+            "repealed | every": 0
+          }
+        },
+        "regra_palavras": "vote | also",
+        "elevenlabs_palavras": "vote | also",
+        "fronteira_palavras": "vote | also"
+      },
+      {
+        "trecho": 25,
+        "pausa": [
+          422.43,
+          422.76
+        ],
+        "regra": 11,
+        "elevenlabs": 11,
+        "fronteira": 11,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "legislative sessions in Anchorage.",
+          "depois": "proposed repealing the whole",
+          "notas": {
+            "sessions | in": 0,
+            "in | Anchorage": 0,
+            "Anchorage | proposed": 2,
+            "proposed | repealing": 0,
+            "repealing | the": 0
+          }
+        },
+        "regra_palavras": "Anchorage | proposed",
+        "elevenlabs_palavras": "Anchorage | proposed",
+        "fronteira_palavras": "Anchorage | proposed"
+      },
+      {
+        "trecho": 27,
+        "pausa": [
+          463.89,
+          464.09
+        ],
+        "regra": 3,
+        "elevenlabs": 3,
+        "fronteira": 3,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "Look at a map.",
+          "depois": "and you'll see the",
+          "notas": {
+            "at | a": 0,
+            "a | map": 0,
+            "map | and": 2,
+            "and | you'll": 0,
+            "you'll | see": 0
+          }
+        },
+        "regra_palavras": "map | and",
+        "elevenlabs_palavras": "map | and",
+        "fronteira_palavras": "map | and"
+      },
+      {
+        "trecho": 27,
+        "pausa": [
+          481.88,
+          482.32
+        ],
+        "regra": 53,
+        "elevenlabs": 53,
+        "fronteira": 53,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "1993 and 2003.",
+          "depois": "It wasn't interested in",
+          "notas": {
+            "two | thousand": 0,
+            "thousand | three": 0,
+            "three | it": 2,
+            "it | wasn't": 0,
+            "wasn't | interested": 0
+          }
+        },
+        "regra_palavras": "three | it",
+        "elevenlabs_palavras": "three | it",
+        "fronteira_palavras": "three | it"
+      },
+      {
+        "trecho": 28,
+        "pausa": [
+          496.04,
+          496.36
+        ],
+        "regra": 23,
+        "elevenlabs": 23,
+        "fronteira": 23,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "roads outcross into Canada.",
+          "depois": "and meet the Alaska",
+          "notas": {
+            "cross | into": 0,
+            "into | Canada": 0,
+            "Canada | and": 2,
+            "and | meet": 0,
+            "meet | the": 0
+          }
+        },
+        "regra_palavras": "Canada | and",
+        "elevenlabs_palavras": "Canada | and",
+        "fronteira_palavras": "Canada | and"
+      },
+      {
+        "trecho": 31,
+        "pausa": [
+          570.88,
+          571.15
+        ],
+        "regra": 65,
+        "elevenlabs": 65,
+        "fronteira": 65,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "what the study calls,",
+          "depois": "The no -action alternative.",
+          "notas": {
+            "the | study": 0,
+            "study | calls": 0,
+            "calls | the": 2,
+            "the | No": 0,
+            "No | Action": 0
+          }
+        },
+        "regra_palavras": "calls | the",
+        "elevenlabs_palavras": "calls | the",
+        "fronteira_palavras": "calls | the"
+      },
+      {
+        "trecho": 31,
+        "pausa": [
+          574.26,
+          574.45
+        ],
+        "regra": 73,
+        "elevenlabs": 72,
+        "fronteira": 72,
+        "situacao": "desempatada",
+        "como": "ouvido (um lado; o de antes ouviu \"fairies\" por \"ferries\", grafia parecida)",
+        "ouvido": {
+          "antes": "Keep the fairies",
+          "depois": "and build no road.",
+          "notas": {
+            "keep | the": 0,
+            "the | ferries": 0,
+            "ferries | and": 1,
+            "and | build": 0,
+            "build | no": 0,
+            "no | road.": 0
+          }
+        },
+        "regra_palavras": "and | build",
+        "elevenlabs_palavras": "ferries | and",
+        "fronteira_palavras": "ferries | and"
+      },
+      {
+        "trecho": 32,
+        "pausa": [
+          593.35,
+          593.9
+        ],
+        "regra": 45,
+        "elevenlabs": 45,
+        "fronteira": 45,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "a road to Haines.",
+          "depois": "but it's a road",
+          "notas": {
+            "road | to": 0,
+            "to | Haines": 0,
+            "Haines | but": 2,
+            "but | it's": 0,
+            "it's | a": 0
+          }
+        },
+        "regra_palavras": "Haines | but",
+        "elevenlabs_palavras": "Haines | but",
+        "fronteira_palavras": "Haines | but"
+      }
+    ],
+    "conteudo": [
+      {
+        "trecho": 1,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "twenty-seventh,",
+        "ouvido": "27,",
+        "palavras": [
+          2
+        ],
+        "no_trecho": [
+          2
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            0.414,
+            1.155
+          ],
+          "ouvido_no_recorte_curto": "On August 27, 1974,",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.953
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "sessão do Claude (ingest de 26/09/2026)",
+          "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+          "em": "2026-09-26T19:23:54Z",
+          "herdado": true
+        }
+      },
+      {
+        "trecho": 15,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Juneau",
+        "ouvido": "Juno",
+        "palavras": [
+          714
+        ],
+        "no_trecho": [
+          16
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            249.984,
+            250.32
+          ],
+          "ouvido_no_recorte_curto": "A no vote meant Juno stayed the capital.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "sessão do Claude (ingest de 26/09/2026)",
+          "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+          "em": "2026-09-26T19:29:27Z",
+          "herdado": true
+        }
+      },
+      {
+        "trecho": 17,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Fannie.",
+        "ouvido": "Fanny.",
+        "palavras": [
+          766
+        ],
+        "no_trecho": [
+          22
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            269.82,
+            270.27
+          ],
+          "ouvido_no_recorte_curto": "Football Fanny",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "sessão do Claude (ingest de 26/09/2026)",
+          "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+          "em": "2026-09-26T19:29:27Z",
+          "herdado": true
+        }
+      },
+      {
+        "trecho": 19,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Rae",
+        "ouvido": "Ray",
+        "palavras": [
+          918
+        ],
+        "no_trecho": [
+          55
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            323.82,
+            324.09
+          ],
+          "ouvido_no_recorte_curto": "economist Brian Ray wrote that the",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "sessão do Claude (ingest de 26/09/2026)",
+          "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+          "em": "2026-09-26T19:29:27Z",
+          "herdado": true
+        }
+      },
+      {
+        "trecho": 24,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Mat-Sue",
+        "ouvido": "Matsu",
+        "palavras": [
+          1155
+        ],
+        "no_trecho": [
+          11
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            411.87,
+            412.23
+          ],
+          "ouvido_no_recorte_curto": "Sessions to the Mat -Su Valley.",
+          "recorte_curto_ouviu_o_roteiro": true,
+          "fracao_com_som": 0.972
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "sessão do Claude (ingest de 26/09/2026)",
+          "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+          "em": "2026-09-26T19:29:27Z",
+          "herdado": true
+        }
+      },
+      {
+        "trecho": 25,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Kay-too",
+        "ouvido": "K2",
+        "palavras": [
+          1219
+        ],
+        "no_trecho": [
+          44
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            433.96,
+            434.46
+          ],
+          "ouvido_no_recorte_curto": "Jesse Keel told K2 in 2025.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.98
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "sessão do Claude (ingest de 26/09/2026)",
+          "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+          "em": "2026-09-26T19:29:27Z",
+          "herdado": true
+        }
+      },
+      {
+        "trecho": 27,
+        "tipo": "bloco_trocado",
+        "pede_aceite": false,
+        "roteiro": "icefield",
+        "ouvido": "ice field",
+        "palavras": [
+          1318
+        ],
+        "no_trecho": [
+          15
+        ],
+        "por_que": "grafia do transcritor: só espaço/hífen muda",
+        "prova": {
+          "intervalo_s": [
+            467.46,
+            467.88
+          ],
+          "ouvido_no_recorte_curto": "Juno, an ice field straddles the border with...",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "sem aceite (mesmas letras)"
+      },
+      {
+        "trecho": 28,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "out cross",
+        "ouvido": "outcross",
+        "palavras": [
+          1396,
+          1397
+        ],
+        "no_trecho": [
+          20,
+          21
+        ],
+        "por_que": "2 ou mais palavras do roteiro",
+        "prova": {
+          "intervalo_s": [
+            494.87,
+            495.31
+          ],
+          "ouvido_no_recorte_curto": "the roads outcross into Canada.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.955
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "sessão do Claude (ingest de 26/09/2026)",
+          "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+          "em": "2026-09-26T19:29:27Z",
+          "herdado": true
+        }
+      },
+      {
+        "trecho": 32,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Gladyshevsky",
+        "ouvido": "Gladoshevsky",
+        "palavras": [
+          1654
+        ],
+        "no_trecho": [
+          20
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            585.958,
+            586.63
+          ],
+          "ouvido_no_recorte_curto": "Assemblymember Maria Gladoshevsky voted no.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.97
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "sessão do Claude (ingest de 26/09/2026)",
+          "como": "Whisper em recorte curto + energia + marca/pronuncias.md; sem escuta humana",
+          "em": "2026-09-26T19:29:27Z",
+          "herdado": true
+        }
+      }
+    ],
+    "cobertura_itens": [],
+    "ecos_de_costura": [],
+    "fora_das_falas": {
+      "medidos": 36,
+      "com_som": [],
+      "ouvido": []
+    },
+    "vaos_com_voz_fechados": [
+      {
+        "trecho": 1,
+        "palavras": [
+          2,
+          3
+        ],
+        "entre": "twenty-seventh, | nineteen",
+        "vao_s": [
+          1.1,
+          1.216
+        ],
+        "dur_s": 0.116,
+        "fracao_som": 0.741,
+        "fechado_em": 1.155,
+        "db_min": -57.6,
+        "db_max": -11.9,
+        "vale": true
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          36,
+          37
+        ],
+        "entre": "by | sea.",
+        "vao_s": [
+          30.37,
+          30.49
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 30.485,
+        "db_min": -25.1,
+        "db_max": -14.2,
+        "vale": false
+      },
+      {
+        "trecho": 3,
+        "palavras": [
+          33,
+          34
+        ],
+        "entre": "eighty-two. | Travel",
+        "vao_s": [
+          40.6,
+          40.726
+        ],
+        "dur_s": 0.126,
+        "fracao_som": 0.873,
+        "fechado_em": 40.715,
+        "db_min": -46.8,
+        "db_max": -14.3,
+        "vale": true
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          1,
+          2
+        ],
+        "entre": "population, | though,",
+        "vao_s": [
+          76.49,
+          76.593
+        ],
+        "dur_s": 0.103,
+        "fracao_som": 1.0,
+        "fechado_em": 76.575,
+        "db_min": -15.9,
+        "db_max": -12.0,
+        "vale": false
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          2,
+          3
+        ],
+        "entre": "though, | moved",
+        "vao_s": [
+          76.73,
+          76.863
+        ],
+        "dur_s": 0.133,
+        "fracao_som": 1.0,
+        "fechado_em": 76.785,
+        "db_min": -18.9,
+        "db_max": -12.0,
+        "vale": false
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          14,
+          15
+        ],
+        "entre": "Two, | military",
+        "vao_s": [
+          81.93,
+          82.134
+        ],
+        "dur_s": 0.204,
+        "fracao_som": 0.804,
+        "fechado_em": 82.065,
+        "db_min": -67.5,
+        "db_max": -9.6,
+        "vale": true
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          14,
+          15
+        ],
+        "entre": "seventy-four, | they",
+        "vao_s": [
+          104.8,
+          104.976
+        ],
+        "dur_s": 0.176,
+        "fracao_som": 1.0,
+        "fechado_em": 104.955,
+        "db_min": -21.9,
+        "db_max": -10.5,
+        "vale": false
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          35,
+          36
+        ],
+        "entre": "percent | yes.",
+        "vao_s": [
+          112.64,
+          112.76
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 112.675,
+        "db_min": -43.7,
+        "db_max": -12.0,
+        "vale": true
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          38,
+          39
+        ],
+        "entre": "Southeast, | around",
+        "vao_s": [
+          114.48,
+          114.594
+        ],
+        "dur_s": 0.114,
+        "fracao_som": 0.825,
+        "fechado_em": 114.515,
+        "db_min": -67.9,
+        "db_max": -17.2,
+        "vale": true
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          44,
+          45
+        ],
+        "entre": "percent | no.",
+        "vao_s": [
+          117.04,
+          117.147
+        ],
+        "dur_s": 0.107,
+        "fracao_som": 1.0,
+        "fechado_em": 117.075,
+        "db_min": -28.6,
+        "db_max": -11.7,
+        "vale": false
+      },
+      {
+        "trecho": 10,
+        "palavras": [
+          14,
+          15
+        ],
+        "entre": "winner, | with",
+        "vao_s": [
+          149.57,
+          149.746
+        ],
+        "dur_s": 0.176,
+        "fracao_som": 1.0,
+        "fechado_em": 149.735,
+        "db_min": -40.3,
+        "db_max": -12.1,
+        "vale": true
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          21,
+          22
+        ],
+        "entre": "short | for",
+        "vao_s": [
+          167.88,
+          167.98
+        ],
+        "dur_s": 0.1,
+        "fracao_som": 1.0,
+        "fechado_em": 167.975,
+        "db_min": -35.9,
+        "db_max": -29.5,
+        "vale": false
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          23,
+          24
+        ],
+        "entre": "\"Frustrated, | Responsible",
+        "vao_s": [
+          169.16,
+          169.463
+        ],
+        "dur_s": 0.303,
+        "fracao_som": 0.835,
+        "fechado_em": 169.355,
+        "db_min": -70.7,
+        "db_max": -9.8,
+        "vale": true
+      },
+      {
+        "trecho": 16,
+        "palavras": [
+          0,
+          1
+        ],
+        "entre": "Harris, | the",
+        "vao_s": [
+          251.83,
+          251.95
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.917,
+        "fechado_em": 251.945,
+        "db_min": -49.7,
+        "db_max": -26.3,
+        "vale": true
+      },
+      {
+        "trecho": 16,
+        "palavras": [
+          11,
+          12
+        ],
+        "entre": "Clark, | against",
+        "vao_s": [
+          256.39,
+          256.5
+        ],
+        "dur_s": 0.11,
+        "fracao_som": 0.818,
+        "fechado_em": 256.425,
+        "db_min": -54.6,
+        "db_max": -12.4,
+        "vale": true
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          33,
+          34
+        ],
+        "entre": "Reamer | why.",
+        "vao_s": [
+          275.34,
+          275.46
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 275.425,
+        "db_min": -24.6,
+        "db_max": -15.8,
+        "vale": false
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          66,
+          67
+        ],
+        "entre": "twenty-eight | N",
+        "vao_s": [
+          285.26,
+          285.38
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.583,
+        "fechado_em": 285.365,
+        "db_min": -80.7,
+        "db_max": -10.9,
+        "vale": true
+      },
+      {
+        "trecho": 19,
+        "palavras": [
+          2,
+          3
+        ],
+        "entre": "said | no",
+        "vao_s": [
+          304.6,
+          304.733
+        ],
+        "dur_s": 0.133,
+        "fracao_som": 1.0,
+        "fechado_em": 304.615,
+        "db_min": -18.7,
+        "db_max": -7.0,
+        "vale": false
+      },
+      {
+        "trecho": 19,
+        "palavras": [
+          3,
+          4
+        ],
+        "entre": "no | is",
+        "vao_s": [
+          305.0,
+          305.107
+        ],
+        "dur_s": 0.107,
+        "fracao_som": 0.935,
+        "fechado_em": 305.095,
+        "db_min": -43.0,
+        "db_max": -17.1,
+        "vale": true
+      },
+      {
+        "trecho": 19,
+        "palavras": [
+          10,
+          11
+        ],
+        "entre": "no | to",
+        "vao_s": [
+          307.4,
+          307.533
+        ],
+        "dur_s": 0.133,
+        "fracao_som": 0.85,
+        "fechado_em": 307.505,
+        "db_min": -49.3,
+        "db_max": -8.9,
+        "vale": true
+      },
+      {
+        "trecho": 19,
+        "palavras": [
+          12,
+          13
+        ],
+        "entre": "is | not.",
+        "vao_s": [
+          308.12,
+          308.22
+        ],
+        "dur_s": 0.1,
+        "fracao_som": 1.0,
+        "fechado_em": 308.175,
+        "db_min": -23.4,
+        "db_max": -8.5,
+        "vale": false
+      },
+      {
+        "trecho": 19,
+        "palavras": [
+          29,
+          30
+        ],
+        "entre": "factor, | at",
+        "vao_s": [
+          314.52,
+          314.787
+        ],
+        "dur_s": 0.267,
+        "fracao_som": 0.551,
+        "fechado_em": 314.725,
+        "db_min": -92.2,
+        "db_max": -17.5,
+        "vale": true
+      },
+      {
+        "trecho": 20,
+        "palavras": [
+          7,
+          8
+        ],
+        "entre": "eighty-two | no",
+        "vao_s": [
+          334.91,
+          335.017
+        ],
+        "dur_s": 0.107,
+        "fracao_som": 1.0,
+        "fechado_em": 334.995,
+        "db_min": -11.3,
+        "db_max": -9.9,
+        "vale": false
+      },
+      {
+        "trecho": 22,
+        "palavras": [
+          7,
+          8
+        ],
+        "entre": "voted | no",
+        "vao_s": [
+          366.73,
+          366.863
+        ],
+        "dur_s": 0.133,
+        "fracao_som": 1.0,
+        "fechado_em": 366.735,
+        "db_min": -19.9,
+        "db_max": -9.0,
+        "vale": false
+      },
+      {
+        "trecho": 22,
+        "palavras": [
+          8,
+          9
+        ],
+        "entre": "no | on",
+        "vao_s": [
+          367.13,
+          367.237
+        ],
+        "dur_s": 0.107,
+        "fracao_som": 0.841,
+        "fechado_em": 367.225,
+        "db_min": -45.0,
+        "db_max": -20.2,
+        "vale": true
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          30,
+          31
+        ],
+        "entre": "of | costs.",
+        "vao_s": [
+          390.4,
+          390.507
+        ],
+        "dur_s": 0.107,
+        "fracao_som": 0.72,
+        "fechado_em": 390.485,
+        "db_min": -66.2,
+        "db_max": -17.8,
+        "vale": true
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          62,
+          63
+        ],
+        "entre": "social, | economic",
+        "vao_s": [
+          402.64,
+          402.853
+        ],
+        "dur_s": 0.213,
+        "fracao_som": 0.859,
+        "fechado_em": 402.785,
+        "db_min": -61.0,
+        "db_max": -11.8,
+        "vale": true
+      },
+      {
+        "trecho": 25,
+        "palavras": [
+          40,
+          41
+        ],
+        "entre": "senator, | Jesse",
+        "vao_s": [
+          432.78,
+          432.913
+        ],
+        "dur_s": 0.133,
+        "fracao_som": 1.0,
+        "fechado_em": 432.905,
+        "db_min": -17.2,
+        "db_max": -10.4,
+        "vale": false
+      },
+      {
+        "trecho": 25,
+        "palavras": [
+          42,
+          43
+        ],
+        "entre": "Keel, | told",
+        "vao_s": [
+          433.58,
+          433.708
+        ],
+        "dur_s": 0.128,
+        "fracao_som": 0.844,
+        "fechado_em": 433.675,
+        "db_min": -46.1,
+        "db_max": -12.1,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          60,
+          61
+        ],
+        "entre": "supporters, | it",
+        "vao_s": [
+          461.25,
+          461.357
+        ],
+        "dur_s": 0.107,
+        "fracao_som": 1.0,
+        "fechado_em": 461.305,
+        "db_min": -28.7,
+        "db_max": -13.9,
+        "vale": false
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          24,
+          25
+        ],
+        "entre": "high | cost,",
+        "vao_s": [
+          513.62,
+          513.732
+        ],
+        "dur_s": 0.112,
+        "fracao_som": 0.982,
+        "fechado_em": 513.725,
+        "db_min": -36.4,
+        "db_max": -12.3,
+        "vale": true
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          10,
+          11
+        ],
+        "entre": "thousand | six.",
+        "vao_s": [
+          527.61,
+          527.73
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 527.615,
+        "db_min": -23.7,
+        "db_max": -13.2,
+        "vale": false
+      },
+      {
+        "trecho": 31,
+        "palavras": [
+          36,
+          37
+        ],
+        "entre": "thirteen | to",
+        "vao_s": [
+          560.96,
+          561.067
+        ],
+        "dur_s": 0.107,
+        "fracao_som": 1.0,
+        "fechado_em": 561.045,
+        "db_min": -11.6,
+        "db_max": -10.4,
+        "vale": false
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          2,
+          3
+        ],
+        "entre": "Assembly, | the",
+        "vao_s": [
+          579.03,
+          579.21
+        ],
+        "dur_s": 0.18,
+        "fracao_som": 0.667,
+        "fechado_em": 579.185,
+        "db_min": -72.6,
+        "db_max": -16.9,
+        "vale": true
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          21,
+          22
+        ],
+        "entre": "voted | no.",
+        "vao_s": [
+          587.03,
+          587.137
+        ],
+        "dur_s": 0.107,
+        "fracao_som": 1.0,
+        "fechado_em": 587.035,
+        "db_min": -24.4,
+        "db_max": -10.7,
+        "vale": false
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          30,
+          31
+        ],
+        "entre": "me,\" | she",
+        "vao_s": [
+          589.35,
+          589.49
+        ],
+        "dur_s": 0.14,
+        "fracao_som": 1.0,
+        "fechado_em": 589.465,
+        "db_min": -37.0,
+        "db_max": -17.3,
+        "vale": false
+      },
+      {
+        "trecho": 34,
+        "palavras": [
+          8,
+          9
+        ],
+        "entre": "price | too.",
+        "vao_s": [
+          600.77,
+          600.87
+        ],
+        "dur_s": 0.1,
+        "fracao_som": 0.8,
+        "fechado_em": 600.835,
+        "db_min": -75.8,
+        "db_max": -21.5,
+        "vale": true
+      },
+      {
+        "trecho": 35,
+        "palavras": [
+          15,
+          16
+        ],
+        "entre": "seventy-four, | the",
+        "vao_s": [
+          621.72,
+          621.84
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 621.835,
+        "db_min": -11.3,
+        "db_max": -8.3,
+        "vale": false
+      },
+      {
+        "trecho": 35,
+        "palavras": [
+          23,
+          24
+        ],
+        "entre": "said | yes.",
+        "vao_s": [
+          624.44,
+          624.54
+        ],
+        "dur_s": 0.1,
+        "fracao_som": 1.0,
+        "fechado_em": 624.485,
+        "db_min": -20.7,
+        "db_max": -12.9,
+        "vale": false
+      },
+      {
+        "trecho": 35,
+        "palavras": [
+          39,
+          40
+        ],
+        "entre": "said | no,",
+        "vao_s": [
+          630.12,
+          630.227
+        ],
+        "dur_s": 0.107,
+        "fracao_som": 1.0,
+        "fechado_em": 630.145,
+        "db_min": -17.5,
+        "db_max": -9.1,
+        "vale": false
+      },
+      {
+        "trecho": 35,
+        "palavras": [
+          41,
+          42
+        ],
+        "entre": "though | why",
+        "vao_s": [
+          631.08,
+          631.18
+        ],
+        "dur_s": 0.1,
+        "fracao_som": 1.0,
+        "fechado_em": 631.165,
+        "db_min": -14.3,
+        "db_max": -9.9,
+        "vale": false
+      },
+      {
+        "trecho": 36,
+        "palavras": [
+          9,
+          10
+        ],
+        "entre": "with | a",
+        "vao_s": [
+          644.35,
+          644.45
+        ],
+        "dur_s": 0.1,
+        "fracao_som": 1.0,
+        "fechado_em": 644.445,
+        "db_min": -35.9,
+        "db_max": -9.8,
+        "vale": true
+      }
+    ],
+    "concordancia_com_o_whisper": {
+      "inicio": {
+        "n": 1421,
+        "mediana_s": 0.127,
+        "abs_mediana_s": 0.127,
+        "abs_p90_s": 0.248,
+        "abs_max_s": 0.644,
+        "acima_de_0_5_s": 7
+      },
+      "fim": {
+        "n": 1462,
+        "mediana_s": 0.08,
+        "abs_mediana_s": 0.08,
+        "abs_p90_s": 0.2,
+        "abs_max_s": 0.475,
+        "acima_de_0_5_s": 0
+      },
+      "grosseiras": [],
+      "leitura": "relógio menos Whisper, nas palavras casadas 1 a 1, fora das pontas presas a uma âncora do som. O Whisper começa as palavras cedo (viés positivo) e comprime os números (até ~0,65 s no Juneau); acima de 1.0 s é palavra no lugar de outra, e o portão relogio reprova."
+    },
+    "qualidade": {
+      "palavras_com_80pct_ou_mais_em_silencio": [],
+      "deslocadas_refeitas": 58,
+      "vaos_com_voz_fechados": 42,
+      "comecam_onde_a_voz_volta": [
+        "the 165.96",
+        "the 580.94"
+      ],
+      "marcos_de_chiado": {
+        "inicio_de_palavra_com_s": {
+          "n": 87,
+          "mediana_s": 0.017,
+          "abs_mediana_s": 0.064,
+          "abs_p90_s": 0.18,
+          "ate_0_1_s": 0.701
+        },
+        "fim_de_palavra_em_s_ou_x": {
+          "n": 48,
+          "mediana_s": -0.025,
+          "abs_mediana_s": 0.042,
+          "abs_p90_s": 0.205,
+          "ate_0_1_s": 0.75
+        },
+        "leitura": "relógio menos o marco acústico (positivo = o relógio vem depois do som); o marco é procurado a ±0,3 s do próprio relógio, então mede o ajuste fino, não erros de uma palavra inteira"
+      },
+      "marcos_de_chiado_so_elevenlabs": {
+        "inicio_de_palavra_com_s": {
+          "n": 87,
+          "mediana_s": 0.008,
+          "abs_mediana_s": 0.056,
+          "abs_p90_s": 0.182,
+          "ate_0_1_s": 0.701
+        },
+        "fim_de_palavra_em_s_ou_x": {
+          "n": 48,
+          "mediana_s": -0.025,
+          "abs_mediana_s": 0.044,
+          "abs_p90_s": 0.205,
+          "ate_0_1_s": 0.729
+        },
+        "leitura": "relógio menos o marco acústico (positivo = o relógio vem depois do som); o marco é procurado a ±0,3 s do próprio relógio, então mede o ajuste fino, não erros de uma palavra inteira"
+      }
+    }
+  },
+  "ferramenta": {
+    "script": "out/juneau/_pesquisa/ingest-local.py",
+    "sha256": "f899619d1133180b15e1d30832289b2b77a4e9c8a0f419d04bffd1d18f5de4d3",
+    "comparar": {
+      "arquivo": "out/juneau/_pesquisa/comparar-narracao.py",
+      "sha256": "470feb534dbe675158474db05e9f15f30de59e534de9d1f45b521de5c4285a15"
+    }
+  },
+  "gerado_em": "2026-09-26T21:20:22.787Z"
+}

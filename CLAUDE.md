@@ -181,8 +181,30 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    (`regie open juneau "Alaska Voted for a New Capital in 1974. It Was Never Built."`, no passo `ingest`).
    Cuidado: a v0.1.0 não tem `--help` nos verbos; `regie open --help` abre um vídeo chamado "--help". Aconteceu,
    e o registro foi removido do banco com cópia de segurança em `db/antes-de-tirar-help-*.canal.db`.
-3. **Conferência palavra a palavra e `words.json`** no contrato da pré-v1, com o faster-whisper local.
-   Normalize os números antes de comparar. O Scribe da pré-v1 fica de fora: é pago, e o local faz o mesmo.
+3. **Conferência palavra a palavra e `words.json`** no contrato da pré-v1, sem o Scribe (é pago):
+   `python out/juneau/_pesquisa/ingest-local.py <proj>`. **Feito para o Juneau em 26/09** (laudo aprovado em
+   `out/juneau/transcricao.json`, sem commit). O relógio é híbrido:
+   - as palavras são as do texto aprovado, na grafia da **cópia para a voz** (aliases e números por extenso;
+     `roteiros/<proj>/voz/trocas.md`): entidade e grafia de tela saem do `roteiro-narrador.md`, não do `words.json`;
+   - o tempo vem do alinhamento por caractere que a ElevenLabs guarda no histórico
+     (`out/juneau/_pesquisa/alinhamento-elevenlabs.mjs`, só GET, sem gasto, com cache), preso ao som nas pausas;
+   - o faster-whisper local (large-v3, `language="en"`, só do cache local, sem rede) é o ouvido: confere o que a voz
+     disse, decide a fronteira das pausas sem pontuação e mede a cobertura. Normaliza os números antes de comparar.
+
+   O que a voz disse diferente do texto fica em `transcricao.json` › `alinhamento.conteudo`. `--aceitar=N` só aceita
+   o que o laudo anterior do mesmo áudio mostrava pendente, depois de ouvir. Os 8 aceites do Juneau foram julgados
+   pelo Whisper em recorte curto, sem escuta humana. No laudo, `aceitos` tem o sentido da pré-v1 (trechos com a
+   cobertura aceita; no Juneau, nenhum) e `aceites` guarda cada item aceito.
+
+   **Juneau, verificado em 26/09** (três verificadores: som, contrato e código): 52 fronteiras de pausa julgadas pelo
+   som, todas certas; erro mediano de 0,03 s no miolo das frases (p90 0,075 s); nenhuma palavra em pausa nem na cauda;
+   `mapa-limpo --conferir` passa. **Limites do script, para os próximos vídeos** (o relógio do Juneau não os tem, mas
+   os portões não os pegariam):
+   - uma pausa de 0,15 s ou mais DENTRO de uma palavra ainda pode passar como fronteira (o recorte curto larga o
+     pedaço da palavra). Em teste com silêncio posto dentro de 4 palavras, 2 passaram;
+   - repetição da voz ("I decided I decided") passa por tudo: o Whisper limpa a repetição. Só o ouvido humano pega;
+     por isso a escuta do Lucas antes do master continua obrigatória;
+   - a concordância com o Whisper tolera 1,0 s entre âncoras, e o consumidor tolera 0,25 s.
 4. **Plano de cenas em `espelho.json`**, o contrato da pré-v1. Feche os tempos à mão: o `alinhar-timestamps`
    deixa vãos e sobreposições no faceless. Nunca o rode sem `--dry`.
 5. **Mídia de acervo aberto** com `buscar-midia` (Commons, NASA, NARA; licença e procedência gravadas). O contato é `contato.naka@hotmail.com`
@@ -394,10 +416,10 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
 - `jq`, `turf`, `mapshaper`, `identify` e `pdftoppm` não existem nesta máquina. O PyMuPDF importa no Python,
   mas não foi testado para rasterizar PDF;
 - `quadro.mjs` com satélite, `geo-recorte-bbox --nome` e `geo-osm-rota`: "Peças da pré-v1 em uso", itens 6 e 7;
-- `buscar-midia` sem `marca/midia.json` (o canal não tem) consulta todas as fontes ligadas, inclusive as que o
-  `midia.md` não cita, e tira da lista o que tem menos de 1600 px de largura (conta em `abaixo_do_minimo`). A
-  NARA só devolve imagem. A Library of Congress e o Internet Archive vêm desligados: a pré-v1 registra 403 do
-  Cloudflare da LoC a toda consulta por script (23/09);
+- `buscar-midia` lê o `marca/midia.json` do canal (desde 26/09, com as fontes que o Lucas escolheu; `midia.md`
+  §7), e tira da lista o que tem menos de 1600 px de largura (conta em `abaixo_do_minimo`). A NARA só devolve
+  imagem. A Library of Congress e o Internet Archive vêm desligados: a pré-v1 registra 403 do Cloudflare da LoC a
+  toda consulta por script (23/09);
 - o upscale não-generativo que o `pesquisa-pessoas` pede (`image.upscale.classic`) não existe no canal nem na
   pré-v1;
 - `src/agent/data-tools.mjs` só cobre IBGE e World Bank;
