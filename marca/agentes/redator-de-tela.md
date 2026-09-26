@@ -1,0 +1,177 @@
+<!-- Roupa do Alpha Point para o redator-de-tela. Escrita em 26/09/2026, na instalação dos especialistas da
+     pré-v1 da Régie. Molde de formato: template/marca/agentes/redator-de-tela.md da pré-v1 (commit 7ab9543),
+     que é a roupa do Canal Top10 — nenhum valor dele foi copiado. Cada valor abaixo cita a fonte do canal:
+     marca/identidade.md, marca/voz.md, marca/midia.md, marca/pronuncias.md, canal.json, CLAUDE.md,
+     roteiros/<proj>/… Onde o canal ainda não decidiu, a linha diz "DECISÃO DO LUCAS PENDENTE" e o que se faz
+     até lá. -->
+
+# ROUPA ALPHA POINT — redator-de-tela
+
+> Só o que é do canal. O ofício (uma grafia por referente, nada na tela que a fonte não sustente, a
+> tela não corrige a voz) está em `.claude/agents/redator-de-tela.md` e não se discute aqui. Marca
+> ativa: `marca/identidade.md` (§7 é a sua seção), `marca/voz.md`, `marca/midia.md`.
+
+## 0 · O canal, em uma tela (vale para todo especialista)
+
+- **Faceless.** Ninguém fala para a câmera; a tela é sempre mapa, registro real, prancha ou dado
+  (identidade.md §0, §5). O master é a narração sintética sobre tela preta 3840×2160
+  (`out/<proj>/_media/_master.mp4`). Não há apresentador que improvisa nem take: a divergência possível
+  entre texto e voz é a voz pular ou trocar palavra (CLAUDE.md, "Como se gera"). Há um relógio só,
+  `out/<proj>/words.json`: sem `words-final`, `words-limpo` nem `_cortes.json`.
+- **Idioma.** Toda a tela em **inglês dos EUA** (`canal.json › idiomas.origem`); não há tradução para
+  outros idiomas (`canal.json › idiomas.localizados` vazio). Motivos, notas e report em português.
+- **Formato de tela** (identidade.md §7): `ALMOST 3,000×`, `28.0×`, `22.2 ft (6.76 m)`, `MAY 1, 1994`,
+  `$265 billion`. ⚠️ Os exemplos do ofício (`QUASE 3.000×`, `≈2.700×`, `QUASE 30 VEZES`, `28,0×`,
+  `ETIÓPIA`, "aportuguesar") estão no formato e na língua do Brasil: **não se copiam**.
+- **Vocabulário de máquina não se traduz:** chaves de JSON (`na_tela`, `valor_exato`, `nao_vai_para_tela`…),
+  enums (`pessoa`, `lugar`…), `data-qc-*` (CLAUDE.md, "O vídeo fala inglês"). O que vai em inglês é o
+  **valor** que aparece na tela (`na_tela`, `grafia`, `o_que_e`).
+- **Cena HTML:** `<html lang="en-US" data-render="4k-native">` (CLAUDE.md).
+- **Sem títulos de capítulo na tela** (Lucas, 26/09/2026; CLAUDE.md): nenhum texto de card de título ou
+  de capítulo. Os capítulos vão só na descrição.
+- **Os últimos 20 s não têm voz**: são da tela final do YouTube (`canal.json › narracao.cauda_tela_final_s`).
+  Texto ali: DECISÃO DO LUCAS PENDENTE; até lá, nenhum.
+- **Nunca** rode `narrar.mjs` nem `transcrever.mjs`: gastam crédito e refazem o relógio (CLAUDE.md).
+- **Quem decide é o Lucas Rosa** (`canal.json › owner`). Decisão de outro canal citada no ofício ou no
+  acervo do Top10 (`knowledge/DICIONARIO.md`, `seed/regras/`) não vale aqui.
+
+## 1 · A regra da rede (você tem `WebFetch`)
+
+Site que recusa leitura automática — **403, 405, captcha, verificação de robô** — não se contorna por
+meio nenhum: nem `curl`, nem outro cliente, nem trocando cabeçalho. Pare, escreva no report qual URL
+recusou e o que ficou sem conferir, e a sessão central confere no navegador do app com o Lucas vendo
+(CLAUDE.md, "A marca"; APRENDIZADOS.md item 14: um subagente levou 403 do Legislativo e contornou por
+`curl`).
+
+- Já se sabe que recusam robô: **akleg.gov** (Legislativo do Alasca) e **elections.alaska.gov** (Divisão de
+  Eleições; HTTP 405 e verificação humana: `roteiros/juneau/roteiro-editor.md` › "Voláteis";
+  `roteiros/juneau/volateis-conferidos.md`). Comece pela cópia local: o trecho que o dossiê já registrou
+  em "De onde vem cada frase".
+- A cópia arquivada (web.archive.org e afins) de um site que recusou robô: DECISÃO DO LUCAS PENDENTE se vale
+  (CLAUDE.md, "A marca"). Até lá, não use; declare como não conferido.
+
+## 2 · De onde vem cada grafia, neste canal
+
+| o ofício pede | neste canal |
+|---|---|
+| a fala, que é a lei (SE aparece) | `out/<proj>/words.json`: as palavras da cópia que a voz leu (`out/<proj>/roteiro.md`), com o tempo medido no som (`out/<proj>/_pesquisa/ingest-local.py`; o faster-whisper local é o ouvido). O que o Whisper ouviu, na grafia dele, está em `out/<proj>/transcript.txt` |
+| o roteiro (COMO se escreve) | `roteiros/<proj>/roteiro-narrador.md`, o texto **aprovado**, com algarismos e grafia certa |
+| a cópia que a voz leu | `out/<proj>/roteiro.md`: números por extenso e **aliases de pronúncia**. O mapa das trocas é `roteiros/<proj>/voz/trocas.md` ("nenhuma palavra falada mudou; muda só a grafia") |
+| a fonte de cada frase | `roteiros/<proj>/roteiro-editor.md` › "De onde vem cada frase" (documento, data e URL) e "Lista de auditoria" |
+| `DECISOES-EDITOR-CHEFE.md` | `roteiros/<proj>/aprovacao.md` (o que o Lucas mandou para a tela) e `roteiro-editor.md` › "Decisões editoriais" |
+| `pauta-fundamento` | `pautas/<proj>/fundamento.json` |
+| `_nomes-proprios.json` | não existe; não o crie para corrigir a fala (§6) |
+
+- **Alias nunca é grafia de tela.** `marca/pronuncias.md` explica: alias é a grafia que pode ir na cópia
+  para a voz. No Juneau, a voz leu `Gladyshevsky`, `Keel`, `Kay-too` e `Mat-Sue`; a tela escreve
+  `Gladziszewski`, `Kiehl`, `KTOO` e `Mat-Su`. Em `variantes_ouvidas` entra a grafia que está no
+  `words.json`, que é a da cópia para a voz (o próprio alias; número por extenso, nunca em algarismo); o
+  que não está lá não entra.
+- **O dossiê é escrito em português, com números no formato brasileiro.** No Juneau, "na tela,
+  91.049 × 102.083" (`roteiro-editor.md` › "Decisões editoriais") vira `91,049 × 102,083`. Converta
+  sempre; nunca copie o número do dossiê como está.
+
+## 3 · A grafia de tela (identidade.md §7; voz.md)
+
+- **AP Stylebook vigente** para nome de lugar, data, número e abreviação; "aportuguesar" não existe aqui.
+- Milhar com vírgula (`2,700`), decimal com ponto (`28.0×`), dinheiro em US$ (`$265 billion`). Valor em
+  outra moeda se converte pela cotação da data da fonte, nunca trocando só o símbolo.
+- **Imperial primeiro**: milhas, milhas quadradas, °F; o métrico só entre parênteses quando a fonte é
+  métrica (`22.2 ft (6.76 m)`).
+- **Datas absolutas** (`March 3, 2024`); nunca "last week", "recently", "this week" (identidade.md §7;
+  voz.md §2).
+- **O hedge da voz fica no rótulo**: a voz diz `almost 3 million people`, a tela pode ser exata mas mantém
+  o hedge (`ALMOST 3,000×`) (voz.md §1; CLAUDE.md). Quando o exato e o falado divergem, vale o
+  `por_que_diverge` do contrato.
+- **Número tem dono**: toda cifra na tela tem instituição e ano, na voz ou no crédito (voz.md §2).
+- Escala americana quando couber: `about the size of Texas` (identidade.md §7).
+- **Tamanho de texto** (identidade.md §4.1): herói até **5** palavras, fala citada até **12**, rótulo
+  (inclui nome de lugar) até **3** (o card de pessoa é pendência, §4). Tamanho e posição são do
+  `editor-de-arte`; a contagem de palavras é sua.
+
+## 4 · O que cada tipo de texto leva
+
+- **Nome de lugar:** país e região em **CAIXA ALTA**; cidade, rio e estreito em caixa normal
+  (identidade.md §3). Nome de lugar é rótulo, nunca herói (identidade.md §4.1).
+- **Card de pessoa:** nome completo e cargo (identidade.md §5), com `data_do_cargo`. Político pelo cargo,
+  sem rótulo partidário (`roteiro-editor.md` › "Decisões editoriais", no Juneau). **DECISÃO DO LUCAS
+  PENDENTE: como o card de pessoa cabe na identidade.** O contrato exige o cargo
+  (`contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`), e nome e cargo passam das 3 palavras
+  do rótulo (identidade.md §4.1): "Assembly member Maria Gladziszewski" tem 4. Proposta do verificador,
+  ainda não aprovada: o `nome` no rótulo (até 3 palavras) e o cargo logo abaixo como legenda, 84 px, Inter
+  500 (o papel "eixo / legenda" de identidade.md §4.1). Até a decisão, preencha `nome` e `o_que_e` pelo
+  contrato e ponha o card no report como pendente.
+- **Fronteira disputada:** rótulo `DISPUTED`, e nunca a reivindicação de um lado (identidade.md §6).
+- **Palavra que escolhe lado** (`regime` para um governo e `government` para outro): só entre aspas e
+  atribuída (voz.md §2). Nada de `shocking`, `crazy`, `World War 3` na tela (voz.md §2).
+- **Glossário institucional:** o canal se chama `Alpha Point` (`canal.json › titulo`) e não tem produto,
+  clube nem cupom.
+
+## 5 · Créditos na tela
+
+O crédito de cada mídia é desenhado pelo `editor-de-arte`, pela licença que a pesquisa gravou; a forma
+do texto é a da casa, e ela tem de casar com o seu glossário.
+
+- **Fonte de dado:** `Source: <institution>, <year>`. **Mídia:** `<author> / <archive> · <license>`
+  (identidade.md §7).
+- **Domínio público** (NASA, Landsat/USGS, Natural Earth, NARA): **sem crédito na tela** (identidade.md §7).
+- **Mapa:** `© MapTiler © OpenStreetMap contributors` na tela durante todo o mapa, e a linha da descrição
+  de identidade.md §6. O que vem do OSM (no Juneau: Taku, Willow, Haines, a estrada, Cascade Point) põe
+  "© OpenStreetMap contributors" na tela da cena e a URL openstreetmap.org/copyright na descrição
+  (CLAUDE.md, pré-v1 item 6). Base do vídeo: MapTiler (`canal.json › mapa.perfil`); o Landsat foi só teste.
+- **Copernicus Sentinel**, se um dia entrar: `Contains modified Copernicus Sentinel data <year>`
+  (identidade.md §6).
+- **Banco pago:** sem crédito na tela, **exceto Shutterstock** — a linha `Image(s) and/or video used under
+  license from Shutterstock.com` na última cena e na descrição (identidade.md §7; midia.md §3.4). Banco
+  pago só entra como B-roll genérico baixado pelo Lucas (midia.md §1, §2.3).
+- **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
+  Alaska State Library) e **imprensa** (ADN, KTOO) não estão no domínio público que a identidade.md §7
+  isenta de crédito, e nos EUA a obra do governo federal é domínio público por lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça.
+  DECISÃO DO LUCAS PENDENTE: a regra de crédito e de uso deles na tela. Até lá, a peça só entra com a
+  licença conferida e gravada na procedência (midia.md §1): cada uma vai em `nao_vai_para_tela` ou com essa
+  licença e a linha "crédito a decidir" no report.
+- O crédito mora na faixa y > 1880, à esquerda, e nunca encolhe: quebra em duas linhas (identidade.md §4.2).
+
+## 6 · Erratas e conserto da fala
+
+- O laudo de fatos deste canal está em `roteiros/<proj>/qc-roteiro/fatos.laudo.md`, e o veredito final de
+  cada item, na "Lista de auditoria" de `roteiros/<proj>/roteiro-editor.md` (a da última rodada; o laudo
+  também resume rodadas anteriores, que não valem mais). Leia os dois direto: o `erratas-gravadas` não os
+  acha aqui (CLAUDE.md, "Os especialistas", tropeços), e a saída dele é **NÃO MEDIDO**.
+- **Errata**, neste canal, é o item cujo veredito final é DIVERGE (inclusive "leve"), REFUTADA ou erro de
+  aritmética: a mesma régua do `scripts/lib/erratas-gravadas.mjs` (`classificarVeredito`). Cada uma vai para
+  `nao_vai_para_tela`, com a frase em `o_que`, o veredito e a fonte em `motivo` e o id do item do laudo em
+  `_errata` (no formato do laudo: `f-NNN` ou `ANN`). Não há id `E<n>`: ele só nasce quando o
+  `erratas-gravadas` roda, e o "E8" do laudo do Juneau é o nome de uma troca de locução, não uma errata.
+- `NÃO ACHEI` não é errata, é sustentação frágil: a tela não repete a frase como afirmação, e o report a
+  lista.
+- No Juneau, o placar final é 131 CONFIRMADA e 1 CONFIRMADA (para a tela): nenhuma errata.
+- **Nunca** corrija o `words.json`, nem pelo `decupagem/corrigir-nomes.mjs`, que aqui não roda (a mesma lista
+  de tropeços): o relógio é um só, e a grafia certa vive no glossário.
+- A tela não corrige a voz. Se a fala ficou errada, consertar é refazer o parágrafo na ElevenLabs, que é
+  **decisão e gasto do Lucas** (CLAUDE.md): sinalize no report com o parágrafo e a frase.
+
+## 7 · Os comandos, neste canal
+
+```bash
+node scripts/validar-contrato.mjs textos-tela out/<proj>/textos-tela.json --estrito
+grep -n "<variante>" out/<proj>/words.json          # toda variante_ouvida existe mesmo na fala
+```
+
+- `scripts/shot.mjs` pede `playwright-core`, e o `npm install` no canal ainda não foi autorizado
+  (DECISÃO DO LUCAS PENDENTE): leitura de quadro pelo `shot` = **NÃO MEDIDO**. Para olhar o texto de uma
+  cena já desenhada, a sessão central tira o quadro pelo `<motor>/src/ferramentas/quadro.mjs` ou pelo MP4
+  do render com o ffmpeg (CLAUDE.md, pré-v1 item 7; `<motor>` é a pré-v1). Cena de **mapa** não se
+  captura sem o ok de gasto MapTiler do Lucas: cada quadro pede tiles.
+- Não há gate de textos de tela neste canal além do `validar-contrato`: as conferências à mão do
+  contrato são suas.
+
+## 8 · O report, além do que o contrato pede
+
+- toda URL que recusou robô e o que ficou sem conferir por isso;
+- os créditos que dependem de decisão (documento estadual, imprensa) e os cards de pessoa (§4);
+- as divergências entre a voz e o texto que tocam a tela, com o parágrafo. Elas **não** aparecem no
+  `words.json` (ele tem o texto da cópia para a voz, por construção): estão em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo` (cada bloco trocado, palavra pulada ou a mais, com
+  a prova e o aceite) e em `out/<proj>/transcript.txt` (o que o Whisper ouviu);
+- a lista de **DECISÃO DO LUCAS PENDENTE** que tocou este texto, uma linha cada.

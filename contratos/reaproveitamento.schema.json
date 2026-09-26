@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://estudio.top10/contratos/reaproveitamento.schema.json",
+  "title": "Reaproveitamento de cenas após re-espelho — Estúdio Top10",
+  "description": "O veredito por cena JÁ DESENHADA quando o espelho é reescrito: reusa · readapta · descarta. Dono: o agente `reaproveitador-de-cenas`. Existe porque re-espelhar tinha dois caminhos e os dois eram caros: jogar a arte fora (queima o recurso mais escasso da casa) ou manter tudo e deixar o gate resolver — que e PIOR, porque o HTML orfao fica na pasta, o gate conta 'N cenas prontas' e o video sai sem elas. Ja aconteceu: um re-espelho trocou os ids e o projeto atravessou arte→qc→render→finalizacao com ZERO das cenas do plano vigente construidas, porque a contagem batia (SIS-40).",
+  "type": "object",
+  "additionalProperties": false,
+  "patternProperties": { "^_": { "description": "Anotação interna." } },
+  "required": ["projeto", "espelho_antigo", "cenas_antigas", "vereditos"],
+  "properties": {
+    "projeto": { "type": "string" },
+    "espelho_antigo": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Caminho do plano ANTIGO arquivado. Sem ele nao ha comparacao possivel — adivinhar a correspondencia pelo nome do arquivo e como o erro nasce."
+    },
+    "cenas_antigas": { "type": "integer", "minimum": 0 },
+    "vereditos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": { "description": "Anotação interna." } },
+        "required": ["id_antigo", "veredito", "razao"],
+        "properties": {
+          "id_antigo": { "type": "string", "minLength": 1 },
+          "veredito": { "type": "string", "enum": ["reusa", "readapta", "descarta"] },
+          "id_novo": {
+            "type": "string",
+            "description": "Obrigatorio em reusa e readapta; ausente em descarta. E o id que casa cena com clipe."
+          },
+          "renomear": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["de", "para"],
+            "properties": { "de": { "type": "string" }, "para": { "type": "string" } },
+            "description": "Quando o id mudou. A renomeacao e trabalho de SCRIPT, nao do agente de arte."
+          },
+          "muda": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 4 },
+            "description": "OBRIGATORIO em readapta: exatamente o que muda (duracao, texto, dado). Um 'readapta' sem esta lista e um 'redesenha' disfarcado, e o executor refaz do zero."
+          },
+          "arquivar": {
+            "type": "string",
+            "description": "Em descarta: o caminho do HTML que sai da pasta de trabalho. Ele vai para arquivo-morto/, NUNCA e apagado — arte descartada e o registro de uma decisao."
+          },
+          "razao": { "type": "string", "minLength": 12 }
+        }
+      }
+    },
+    "cenas_novas_sem_origem": {
+      "type": "array",
+      "description": "Cenas do plano VIGENTE que nao herdam de nenhuma antiga — sao as que o editor-de-arte desenha do zero. Sem esta lista, cena nova fica orfa de decisao.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": { "description": "Anotação interna." } },
+        "required": ["id", "por_que"],
+        "properties": {
+          "id": { "type": "string" },
+          "por_que": { "type": "string", "minLength": 10 }
+        }
+      }
+    }
+  }
+}

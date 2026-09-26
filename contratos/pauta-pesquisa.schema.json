@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://estudio.top10/contratos/pauta-pesquisa.schema.json",
+  "title": "Pauta de pesquisa — mídia caçada (Estúdio Top10)",
+  "description": "Registro do que os agentes pesquisa-* caçaram. CAMINHO CANÔNICO: out/<proj>/_pesquisa/pauta-<tipo>.json — UM SHARD POR AGENTE (são 6 agentes escrevendo em paralelo e o repo não tem lock nenhum além do render; arquivo único seria corrupção garantida). ⚠️ REESCRITO em 22/jul/2026 a partir das 13 pautas REAIS no disco: a versão anterior exigia 7 campos que quase nenhum agente produzia — e grafava `validadoPorVisao` onde a realidade escreve `validado_por_visao` — então o contrato nunca pôde ser ligado e ficou 3 semanas como schema órfão. Este cobra o NÚCLEO de rastreabilidade (o que é · de onde veio · onde está · sob qual licença) e deixa o enriquecimento livre: os agentes acrescentam dims/codec/variante_branca/por_que_esta, e isso é bom. ⚠️ FONTE ÚNICA (decidido em 22/jul, D10): o SHARD `out/<proj>/_pesquisa/pauta-<agente>.json` é a fonte — é o único caminho que os 6 pesquisa-* escrevem hoje, e o único que sobrevive ao paralelismo. `out/<proj>/_media/pauta-de-pesquisa.json` (arquivo único) e `out/<proj>/_media/pauta-<tema>.json` são LEGADO de 4 produções antigas (homossexualidade-antiguidade, lago-peigneur, senna, rs-grandesul): quem consome pauta lê o shard PRIMEIRO e só cai no legado como FALLBACK, para não cegar produção antiga. Ninguém escreve no legado. ⚠️ Divergência aberta no nome do shard: os CONTRATOs dos 6 agentes dizem singular (`pauta-dado.json`, `pauta-logo.json`, `pauta-pessoa.json`, `pauta-documento.json`) e o disco tem plural (`pauta-dados.json`, `pauta-logos.json`, `pauta-pessoas.json`, `pauta-documentos.json`, em avioes-pequenos). Enquanto não for unificado, quem LÊ deve varrer o glob `_pesquisa/pauta-*.json` em vez de montar o nome à mão.",
+  "type": "object",
+  "required": ["itens"],
+  "properties": {
+    "itens": {
+      "type": "array",
+      "description": "O que foi caçado. Cada item tem que ser rastreável até a fonte.",
+      "items": {
+        "type": "object",
+        "required": ["fonte", "arquivo", "licenca"],
+        "properties": {
+          "tipo": { "type": "string", "description": "footage | foto | logo | pessoa | documento | dado | geo | flag. RECOMENDADO, não obrigatório: em pautas por-tipo a classificação já está no nome do shard (pauta-logos.json), e exigi-lo reprovava pauta legada correta. O que o contrato cobra é RASTREABILIDADE — de onde veio, onde está, sob qual licença." },
+          "fonte": {
+            "type": ["string", "object"],
+            "description": "De ONDE veio. Aceita string ('Wikimedia Commons') OU objeto estruturado {provedor, pagina_url, download_url…} — o formato-objeto é MAIS rastreável e é para onde os agentes evoluíram; prefira-o. 'internet' e '?' não são fonte."
+          },
+          "arquivo": { "type": "string", "description": "Caminho relativo do asset. É o que o gate qc-src-existe confere no HTML da cena." },
+          "licenca": { "type": ["string","object"], "description": "Licença sob a qual pode ir ao ar. 'desconhecida' é resposta inválida — sem licença, não usa. Aceita objeto estruturado (mesma evolução da fonte)." },
+          "url": { "type": "string", "description": "URL de origem, para reauditar a proveniência depois." },
+          "cena": { "type": ["string", "array"], "description": "Id(s) da(s) cena(s) servida(s)." },
+          "resolucao": { "type": "string" },
+          "validado_por_visao": { "type": "boolean", "description": "Se um agente OLHOU e confirmou que é o assunto certo. Mídia errada é pior que mídia nenhuma." },
+          "validadoPorVisao": { "type": "boolean", "description": "⚠️ Grafia LEGADA (6 pautas antigas). Aceita para não invalidar histórico — escreva a versão com underscore." }
+        }
+      }
+    },
+    "proj": { "type": "string" },
+    "projeto": { "type": "string", "description": "Alias de `proj` usado por parte dos agentes." },
+    "estacao": { "type": "string" },
+    "agente": { "type": "string", "description": "Qual pesquisa-* escreveu este shard." }
+  }
+}

@@ -1,0 +1,552 @@
+{
+  "derivado_de": "top10-estudio (github.com/top10-company)",
+  "commit": "4afda1240678e6c6aade5165dc744d6e7b02fdca",
+  "commit_data": "2026-09-17T21:06:37-03:00",
+  "portado_em": "2026-09-23",
+  "porque": "Os agentes projetados mandam rodar estes gates em <consumer-repository>/scripts/. Sem o script, o modelo improvisa um substituto e diz que conferiu. Cada .mjs desta pasta tem aqui a sua procedência: PORTE do top10-estudio (origem + sha256 de lá e daqui) ou ESCRITO para a Régie (escrito_para_a_regie, com o porquê). O que um agente cita e não está no disco fica em nao_portados, com o motivo, e o agente que o cita reporta NÃO MEDIDO.",
+  "regra": "sha256_aqui é o arquivo como está neste repositório; testes/agentes.test.mjs confere. Mudar um script sem atualizar esta linha reprova o teste, de propósito: mudança local em código portado tem de ser declarada. Todo .mjs de template/scripts/ precisa de uma linha em arquivos; porte traz origem e sha256_na_origem e o cabeçalho PORTADO; escrito para a Régie traz escrito_para_a_regie. Import de pacote npm só com o pacote em dependencias_npm, que é igual às dependencies de template/package.json (o canal roda npm install). nao_portados só lista o que NÃO está no disco.",
+  "dependencias_npm": [
+    "playwright-core",
+    "sharp"
+  ],
+  "arquivos": {
+    "alinhar-timestamps.mjs": {
+      "origem": "top10-estudio/scripts/alinhar-timestamps.mjs",
+      "sha256_na_origem": "1a9e87cdd0328d3d63f3447df0469a8e748aad1bae10d1635522dc7109253d48",
+      "sha256_aqui": "76aea6bbda0f01f3146a10d29e3bb0e11e1c9d018ec8dcbe8e7316973dee2914"
+    },
+    "decupagem/corrigir-nomes.mjs": {
+      "origem": "top10-estudio/scripts/decupagem/corrigir-nomes.mjs",
+      "sha256_na_origem": "798772becb6a72ead864e0eb99370c5e53bad5e90ab77226dd14453f357bf9ae",
+      "sha256_aqui": "e127548ec5fbefe6c2acd735ce355f2f808bb66438a26a660d6479d199518a1c"
+    },
+    "hidpi-bake.mjs": {
+      "origem": "top10-estudio/scripts/hidpi-bake.mjs",
+      "sha256_na_origem": "8500603eab763811d0690a55218f8ec2e35035aaa0e157bdaaf62f55ecf7c1eb",
+      "sha256_aqui": "6aef48c645a114584fac953910df7086fe0f20bf04daa422c8077b87f420fb1e"
+    },
+    "lib/espelho-path.mjs": {
+      "origem": "top10-estudio/src/paths.mjs",
+      "sha256_na_origem": "dc466fda0fd8641ca1fccae6a9d54ac141cececa720cb26c7e04ebb084853233",
+      "sha256_aqui": "ddc9979bcbee805b3ae6c8d4cda0ae523f74504fddac18268c6737b8299b4fbd"
+    },
+    "lib/motor.mjs": {
+      "escrito_para_a_regie": "Escrito para a Régie (não é porte): acha o motor pela variável REGIE_MOTOR ou pelo motor.caminho do canal.json e IMPORTA dele (importarDoMotor), em vez de copiar código do motor para o canal. Cópia vira gêmeo, e conserto aplicado num gêmeo e não no outro é o defeito que o estúdio aprendeu caro.",
+      "sha256_aqui": "5a006775466ad3a0e10ea9b70ea8ff2fb1573b899a7dd74fe8bfa6c9f4f930a5"
+    },
+    "lib/words-do-espelho.mjs": {
+      "origem": "top10-estudio/scripts/lib/words-do-espelho.mjs",
+      "sha256_na_origem": "f85376652b97cff3e29bb186061935d7693dcf8d9de8b130fbad9d9bdb83faa5",
+      "sha256_aqui": "5068f20194df35d38785d788112f9db2feb39b96330f30b61fe2c7ad0aeaa7ae"
+    },
+    "mapa-limpo.mjs": {
+      "origem": "top10-estudio/scripts/mapa-limpo.mjs",
+      "sha256_na_origem": "323758b22bae728783230cbc5299baecf40a4712a819b5d3a62065527cd1f316",
+      "sha256_aqui": "0cf786b7b89f3e2f19f5749fa852d8d7cd3ba90d72229ca2af740598fe281997"
+    },
+    "qc-direcao-real.mjs": {
+      "origem": "top10-estudio/scripts/qc-direcao-real.mjs",
+      "sha256_na_origem": "ea89366b105a01867c825112611a2338ff399450406d51f5e8f8c4ac56736576",
+      "sha256_aqui": "52718574d8e082130bb7d02848eb148d802c1fe6aa93a81fbb13af1512f16bc7"
+    },
+    "qc-espelho-midia.mjs": {
+      "origem": "top10-estudio/scripts/qc-espelho-midia.mjs",
+      "sha256_na_origem": "c2ecc7f217608630a8581a10099e2b9846d3a992d1b11199b40c5753807c114c",
+      "sha256_aqui": "9ecaca755695248a98a30043cf1600cae898e0cf13ce3115f72db3c890957521"
+    },
+    "qc-fusao-espelho.mjs": {
+      "origem": "top10-estudio/scripts/qc-fusao-espelho.mjs",
+      "sha256_na_origem": "d484df5b72a2a3779579d83f623f7dda106d2111ceb9c80849cbf41cfdebb5f8",
+      "sha256_aqui": "34cbae26490d12b03bca0a81d060e7312a30d19e29260923cbbcaeb5a9b3e729"
+    },
+    "qc-janela.mjs": {
+      "origem": "top10-estudio/scripts/qc-janela.mjs",
+      "sha256_na_origem": "8e08fb29e4338260359758a38430e6ae7447eedd620689a0c6aefc91f4ae884f",
+      "sha256_aqui": "023f3d80634a238f18725c4125e9ddad2be60d70f461d81501f83d6356cae233"
+    },
+    "qc-laudo.mjs": {
+      "origem": "top10-estudio/scripts/qc-laudo.mjs",
+      "sha256_na_origem": "1a102b2b7243077762e10e56ab22b5348107257a478eb12b1f3e2a53f37b43d8",
+      "sha256_aqui": "22f9ad8cb2417bb39b6a097a96721a9f55197bdb28d252138a1e18a73ba7ba50"
+    },
+    "qc-midia-real.mjs": {
+      "origem": "top10-estudio/scripts/qc-midia-real.mjs",
+      "sha256_na_origem": "ef847c9c138d0f6f58e43f270408daf33deaea642d5ffbd5f0c154b2d538d7df",
+      "sha256_aqui": "adc24c81ca1c4980cfa8c72bd58426e27946fc801158ad8777033778257c70cb"
+    },
+    "qc-ornamento.mjs": {
+      "origem": "top10-estudio/scripts/qc-ornamento.mjs",
+      "sha256_na_origem": "d58354f863841a971e358a1881c687252a98dfa72474ef116bec675d4435386d",
+      "sha256_aqui": "3b54c9ffe94a056876b2622ff49630c1a60a8d68552a49f6670d4e801bda62a4"
+    },
+    "qc-pauta-integrada.mjs": {
+      "origem": "top10-estudio/scripts/qc-pauta-integrada.mjs",
+      "sha256_na_origem": "5170444c5bbe2c5d6e6cd70a0ddcda03e9a3786ced40605f21fa4aa1c4a2f355",
+      "sha256_aqui": "6e113e4a57d4e36db8612b5942586767a777f02d8c85ffec9883e7dd4463dd6f"
+    },
+    "qc-reaproveitamento.mjs": {
+      "origem": "top10-estudio/scripts/qc-reaproveitamento.mjs",
+      "sha256_na_origem": "66b460cde67a03c78ed9823097cfe6a6c2241aaf18f2ea1f127bbad1a8f19465",
+      "sha256_aqui": "5ad9fd1478885041175e47f5d2a30ca9de18373bdc6e5fb0863682cbd3b3ce1f"
+    },
+    "qc-src-existe.mjs": {
+      "origem": "top10-estudio/scripts/qc-src-existe.mjs",
+      "sha256_na_origem": "09b0f8e1863eb031fcf2b046d21cce93e74fb51fa55c01bcf3f505fbc4f4c56d",
+      "sha256_aqui": "97e66e173ab261653169bb25eca044ac8ed85d7ea4664419c0a003b5eeb25d3a"
+    },
+    "roteiro/conferir-cortes.mjs": {
+      "origem": "top10-estudio/scripts/roteiro/conferir-cortes.mjs",
+      "sha256_na_origem": "80d91419d0688d53ddc9d5a810935d7bf7aaa636dd08d5fd398423ed4459c2be",
+      "sha256_aqui": "9ee5134ebe9ad08a0e30216ebbfa7e99a6b2fbd26574eaf11b557142279ad49c"
+    },
+    "validar-contrato.mjs": {
+      "origem": "top10-estudio/scripts/validar-contrato.mjs",
+      "sha256_na_origem": "14bcfe04cf15a6b807df55f6d46162c0f36c154ecf9e4f4300263088175eda73",
+      "sha256_aqui": "5c7088980af3d5b6a095dcb2107acab1d37114e497525245b720a89410e8000f"
+    },
+    "navegacao/gerar.mjs": {
+      "origem": "top10-estudio/scripts/navegacao/gerar.mjs",
+      "sha256_na_origem": "ed445b41170ee4ca640efba018e9cccaee40272521c01b5ed50eee835da2890d",
+      "sha256_aqui": "9d24d73352a86308b8e1f969b025e6891559eea25605d11838c37ceea755ee57"
+    },
+    "serve-galeria.mjs": {
+      "origem": "top10-estudio/scripts/serve-galeria.mjs (linhas 1-692: servidor, CLI e roteamento)",
+      "sha256_na_origem": "7c3e23cf5b66d6eb56357e845b64eab8dd8ff56275c2193c1910a15edcee3268",
+      "sha256_aqui": "7f0e9d782ce288e9c65c6c4a7224b0dd5b8003775802b78d5c34de9de32f344f"
+    },
+    "galeria/caminho.mjs": {
+      "origem": "top10-estudio/scripts/serve-galeria.mjs (linhas 461-462 e 664-691: o servir de arquivo, reescrito como portão de caminho)",
+      "sha256_na_origem": "7c3e23cf5b66d6eb56357e845b64eab8dd8ff56275c2193c1910a15edcee3268",
+      "sha256_aqui": "6f9b3da471462b048e7150ab5135374e4aafe8933a8ec7f7be61162e93605dcf"
+    },
+    "galeria/fila.mjs": {
+      "origem": "top10-estudio/scripts/serve-galeria.mjs (linhas 11-15, 140-165, 444-449, 463-497, 641-645: fila, histórico e respostas)",
+      "sha256_na_origem": "7c3e23cf5b66d6eb56357e845b64eab8dd8ff56275c2193c1910a15edcee3268",
+      "sha256_aqui": "a2c8ed42665a11086c759ed2d1699a922da9541985aeba9597655980b2cab393"
+    },
+    "galeria/projeto.mjs": {
+      "origem": "top10-estudio/scripts/serve-galeria.mjs (linhas 23-139, 166-207, 346-350: projetos, cenas, trecho, narração, palco)",
+      "sha256_na_origem": "7c3e23cf5b66d6eb56357e845b64eab8dd8ff56275c2193c1910a15edcee3268",
+      "sha256_aqui": "d4bea88fddbd7dd3a2c2c46df0afb0aef01d65e57530f659a4a10643718c7bdf"
+    },
+    "galeria/paginas.mjs": {
+      "origem": "top10-estudio/scripts/serve-galeria.mjs (linhas 308-459: páginas da home e do player)",
+      "sha256_na_origem": "7c3e23cf5b66d6eb56357e845b64eab8dd8ff56275c2193c1910a15edcee3268",
+      "sha256_aqui": "ccb7c414b7611f80fff6ecc2aa608716a7d17cd8723edcec49cfe163fe5481ee"
+    },
+    "stock/_commons.mjs": {
+      "origem": "top10-estudio/scripts/stock/_commons.mjs",
+      "sha256_na_origem": "f5c71e80aad6699ae4433f17a6ee11fdcfae236ea3a2986b1fdd58b9c906bedc",
+      "sha256_aqui": "a3d5577a25e4f8663662a8eb3c0d9634ac89902f6343f55b3eb209ab768759de"
+    },
+    "stock/_commons-cat.mjs": {
+      "origem": "top10-estudio/scripts/stock/_commons-cat.mjs",
+      "sha256_na_origem": "d976ee401472d550e7dca97cfa0bb89f0a3b2f9fa95bf3ac6097b92374a42617",
+      "sha256_aqui": "898df77ecd6174074e8c0e79d9b4b1ef6a7d8b10395f308339c6750b6d798071"
+    },
+    "stock/_commons-baixar.mjs": {
+      "origem": "top10-estudio/scripts/stock/_commons-baixar.mjs",
+      "sha256_na_origem": "f42415796914679276daa107bc3415f18de1ea1402d276b30d63b03a8d558cc1",
+      "sha256_aqui": "956cd812a97ab7d5f1720d2aa68c1c5661b7d05f01214c9a18d936557b10270a"
+    },
+    "stock/_conferir.mjs": {
+      "origem": "top10-estudio/scripts/stock/_conferir.mjs",
+      "sha256_na_origem": "e6cd8308e1ee558adfdbe605988949949dab488bbb9b8f5b4a43fa4c3a90faa1",
+      "sha256_aqui": "ea3faa0672a625e7faaca817a1bd55ce0d4efac9bc5757289bfa6062b45852aa"
+    },
+    "stock/_contato.mjs": {
+      "origem": "top10-estudio/scripts/stock/_contato.mjs",
+      "sha256_na_origem": "46973f9f433dcb2d091eafe4da062056a71c28eb0cc5f66e6f1ae6ab76991006",
+      "sha256_aqui": "b053c1ac3a695afb0eb91b20c395a77778389d793aaf72ebb418ef2a4d0d4d5d"
+    },
+    "stock/_frames-de-clipe.mjs": {
+      "origem": "top10-estudio/scripts/stock/_frames-de-clipe.mjs",
+      "sha256_na_origem": "f00bdc68324fd7a7a737509a181f19bffbeabe50f62c14d207d6e586ce22a447",
+      "sha256_aqui": "fc7b74c9fcd2c02c8382e9ff850433e07f29b0ac61f7b9841e1b5cf4e68368e3"
+    },
+    "stock/_grade-fotos.mjs": {
+      "origem": "top10-estudio/scripts/stock/_grade-fotos.mjs",
+      "sha256_na_origem": "7e58cbef5cf3d3103e0bd9500839ba58700bb595be3211ead37e00a75b5f4445",
+      "sha256_aqui": "efe7e65526b4b4552f82f324913e9f7f823e6e23e1568e144e745dd6d6f14ada"
+    },
+    "stock/_phil.mjs": {
+      "origem": "top10-estudio/scripts/stock/_phil.mjs",
+      "sha256_na_origem": "72dac6b55b5073c9afb0de76406fa486357fe02380b7bab4e696a63db48cc089",
+      "sha256_aqui": "0fea216c9f4738fff8c03d50fd56c4a1188d574d75e6d9fdef2e1030b83681e8"
+    },
+    "stock/_svg-para-png.mjs": {
+      "origem": "top10-estudio/scripts/stock/_svg-para-png.mjs",
+      "sha256_na_origem": "02391942948480c2e098a5c772e8583c765485f6dab305e107da79fef2428da0",
+      "sha256_aqui": "2c387c00390d4e2fcc8b8f63fc5385e4fb3ac92eaaa99c27f49fcf1efe47b552"
+    },
+    "stock/api-oficial.mjs": {
+      "origem": "top10-estudio/scripts/stock/api-oficial.mjs",
+      "sha256_na_origem": "85e6cc69feaa7fb14007213a39534ced17fb5b6e7c7773f0bbd5defa5615e780",
+      "sha256_aqui": "643ed5d110f74cb165900a16b7d7264dd7a757bc0237d1c840591f8298d74372"
+    },
+    "stock/chrome-daemon.mjs": {
+      "origem": "top10-estudio/scripts/stock/chrome-daemon.mjs",
+      "sha256_na_origem": "b4ffe2f2804cdc6544859083e45a5758c13576c4415026d57520ad1f3e1adbd6",
+      "sha256_aqui": "af2ed17b201fff009cc6a6e127cafd801ef2111a790dc95b4d81b2fed4f01f3e"
+    },
+    "stock/_instalar-lote.mjs": {
+      "origem": "top10-estudio/scripts/stock/_instalar-lote.mjs",
+      "sha256_na_origem": "fff218519ff606d68c49520b10d8c96d3f86b63787c723aeac374637113269ad",
+      "sha256_aqui": "821ec57ca04f9efc4cb5832a3041f681231c533ea008dd0dcc564ec4ebc343fd"
+    },
+    "stock/sessao-conferir.mjs": {
+      "origem": "top10-estudio/scripts/stock/sessao-conferir.mjs",
+      "sha256_na_origem": "8ff31c7f1603c91a3e7d2f3fafc49b5ff55b49dba919af0f9989170ce3cb98fd",
+      "sha256_aqui": "75c68713830a4d64cd225e0cddacdd3f6fcd3f4a414763c2fd37bb9b954e23ff"
+    },
+    "stock/setup-login.mjs": {
+      "origem": "top10-estudio/scripts/stock/setup-login.mjs",
+      "sha256_na_origem": "999a325bce35be929e3c8ef57fc64b993062c238548625c52ebbe8e92fc7ae9c",
+      "sha256_aqui": "7169be9fe232a32f5a382e9ae752e0b5f8636e83cfe3af4e396417f4d4ae0926"
+    },
+    "stock/antibot.mjs": {
+      "origem": "top10-estudio/scripts/stock/antibot.mjs",
+      "sha256_na_origem": "d9374017859d5945da32f64e7544260f58b80722fcdfe2d344d985f1af64fdbe",
+      "sha256_aqui": "11da758eb67dfd64ac8e16f1dee23b268275ab8564f9904f8e8d7c11877ed3dc"
+    },
+    "stock/sessao-veredito.mjs": {
+      "origem": "top10-estudio/scripts/stock/sessao-veredito.mjs",
+      "sha256_na_origem": "32dd70e942c2c27e9d6413d58272b5fa130e2dfe7a84a98f9acd2c56765cc504",
+      "sha256_aqui": "eff01cd44ddee834f734bd51937cc3c6bcaf6707d0c1ba2c240e742c79b0c9c6"
+    },
+    "stock/lib/marcas-acervo.mjs": {
+      "origem": "top10-estudio/scripts/lib/marcas-acervo.mjs",
+      "sha256_na_origem": "d29af708769efa952c500550a9f43d8df6947b30c7b6813318452078041ff709",
+      "sha256_aqui": "cbdd900ff88f572cf25ce646b3544d91aba5dee6667871c0b134ac934eab6111"
+    },
+    "stock/lib/rascunho-de-caca.mjs": {
+      "origem": "top10-estudio/scripts/lib/rascunho-de-caca.mjs",
+      "sha256_na_origem": "24e125291428ee6c135494640234ec2624ab7be822413f9bff2e6638975f617a",
+      "sha256_aqui": "b5ab1ecb27b010188779213ed5f996502741300ffd6d30e21a8bff3b5b3ea07a"
+    },
+    "stock/lib/frames-conform.mjs": {
+      "origem": "top10-estudio/scripts/lib/frames-conform.mjs",
+      "sha256_na_origem": "c5fdc4d91aa6075c38bb6678cebe30b4662bae3e7687322735c976ccdf08e075",
+      "sha256_aqui": "58bda84f31069764c924a1438c979a2b0d1b096d5b27f81b324d38a315985f31"
+    },
+    "stock/lib/instalacao-procedencia.mjs": {
+      "origem": "top10-estudio/scripts/lib/instalacao-procedencia.mjs",
+      "sha256_na_origem": "7f9318751715284f979eeff0a171f667c314fb7ea0f883874785678382357087",
+      "sha256_aqui": "af1319628f9dc2eb0bde5aec2ccf25eead181c962be0fbc3d3ec82dc1b5a740d"
+    },
+    "stock/lib/ferramentas.mjs": {
+      "sha256_aqui": "bf3b9e338474718fecacb68fe745ddd77286e63e4479e4cf76f92fe29c684801",
+      "escrito_para_a_regie": "novo na Régie (não é porte): helper da camada de mídia do canal — ver o cabeçalho do arquivo"
+    },
+    "stock/lib/perfil-stock.mjs": {
+      "sha256_aqui": "2c614b9d1129f9e153a15df2f4762cca84e2adf01eb6d663de44fe34f91c8003",
+      "escrito_para_a_regie": "novo na Régie (não é porte): helper da camada de mídia do canal — ver o cabeçalho do arquivo"
+    },
+    "stock/lib/procedencia-canal.mjs": {
+      "sha256_aqui": "bb5f2672836a24832912190eae7663c0996924af4fa2a929654f269f4f71b9b2",
+      "escrito_para_a_regie": "novo na Régie (não é porte): helper da camada de mídia do canal — ver o cabeçalho do arquivo"
+    },
+    "procedencia-reconciliar.mjs": {
+      "origem": "top10-estudio/scripts/procedencia-reconciliar.mjs",
+      "sha256_na_origem": "eb9a9b05f56d678d029ff78badcbcc84055fa1bad0a66e748030e95c7815c3d2",
+      "sha256_aqui": "408d8b613eed0a34c0573e2dd9c7facc02b39ef0becbf5f6f1d5252f43d1754a"
+    },
+    "qc-procedencia.mjs": {
+      "origem": "top10-estudio/scripts/qc-procedencia.mjs",
+      "sha256_na_origem": "286e108bcfe6c178f199455838896738c158d65179ef854784d8f9700b802f2c",
+      "sha256_aqui": "83d4f3337009da71c5f34360707e35cbbd46b3d9c615f4196a0f6bc8f8f76350"
+    },
+    "normalizar-footage.mjs": {
+      "origem": "top10-estudio/scripts/normalizar-footage.mjs",
+      "sha256_na_origem": "1c13f945030c91f6b6212bcf280867efbb957b7d393e01537339f2d7ee138c2c",
+      "sha256_aqui": "b0d8065cf0d384bc7e03032bccd0aa5d7d5557a16be259cad99f66f5033fb4a8"
+    },
+    "qc-contrato.mjs": {
+      "origem": "top10-estudio/scripts/qc-contrato.mjs",
+      "sha256_na_origem": "845d55d7988f8bc77a9a875ec76a4368e0c23e0de331645fad60c8264d1b2a13",
+      "sha256_aqui": "f6fd9d21b910c7a950e0993e681d6e452d565c70abcdbe8777124aad387e09e8"
+    },
+    "qc-hex.mjs": {
+      "origem": "top10-estudio/scripts/qc-hex.mjs",
+      "sha256_na_origem": "49dacfd11f6ce76a80dcb93733f5162e6afd9fa3f2b2dc06713cc75cbd828692",
+      "sha256_aqui": "b872bb7dcbeb1aaa1c3707a3bb83658eac340847ce86ea3e708cade83843549d"
+    },
+    "qc-tipografia.mjs": {
+      "origem": "top10-estudio/scripts/qc-tipografia.mjs",
+      "sha256_na_origem": "5bda69f56b41a16d37fd28b433e0a2cc08d545fc94e03d3a5cc8c756d1e35b0e",
+      "sha256_aqui": "8f0c089b8543874347133ee8a191b645f747fb3d01372cbfbe86b10aba55a7d7"
+    },
+    "qc-ancoras.mjs": {
+      "origem": "top10-estudio/scripts/qc-ancoras.mjs",
+      "sha256_na_origem": "a28c0a2eb82d5b329a148618dbf98eb1d419b76454f58c23e8e7caf178ac7afa",
+      "sha256_aqui": "29464ade7c133ad2f025b040912b44776fbe451b00c248cd8f83726569cb1c1c"
+    },
+    "qc-clipe-repetido.mjs": {
+      "origem": "top10-estudio/scripts/qc-clipe-repetido.mjs",
+      "sha256_na_origem": "674de30ec386278d17b3db5f8128b56b9ac544eeec662287edda762d96f4c6db",
+      "sha256_aqui": "08286dd33bf7aacee9084c3499f6652680a99a01687294538d75dfad99f99022"
+    },
+    "qc-espelho-cortes.mjs": {
+      "origem": "top10-estudio/scripts/qc-espelho-cortes.mjs",
+      "sha256_na_origem": "2234ff01b844aba3c5ca6f9d1cb5854d5205ef7937654c70d810a2b905426344",
+      "sha256_aqui": "e36d99b59d0172f52e2964bdfede64f5cae84a7cbad69a9269837dc6e3a2064b"
+    },
+    "qc-espelho-modelo.mjs": {
+      "origem": "top10-estudio/scripts/qc-espelho-modelo.mjs",
+      "sha256_na_origem": "234410108b02d6a91dc425837460b040938e0df682aef22d4660e21bb3e861bd",
+      "sha256_aqui": "390dd7e1ef4e929860b14261fe2d4c9311b8d11f0db15ccd2be4922903d03744"
+    },
+    "qc-deserto-real.mjs": {
+      "origem": "top10-estudio/scripts/qc-deserto-real.mjs",
+      "sha256_na_origem": "eb00a175534146a8414bb662e83fb73ebd3727a1861b4a951b9511b0b774795c",
+      "sha256_aqui": "b6ccb8c2b2833a50c13e045d914068187bcd6b7ca723dac863c2a073b288311b"
+    },
+    "qc-piso-real.mjs": {
+      "origem": "top10-estudio/scripts/qc-piso-real.mjs",
+      "sha256_na_origem": "289389ada71bf358cc536562e2a1bbee6e18145be70e6281d8e5c0e8d3b5e5ae",
+      "sha256_aqui": "111f1fc3c24650b0316a04970386e7b891c89a9937554bd5c7f429264e68ec11"
+    },
+    "qc-respiro.mjs": {
+      "origem": "top10-estudio/scripts/qc-respiro.mjs",
+      "sha256_na_origem": "3bf933907d6269926d1e80554e09b9a3484a6a267358a4acab79ee07a25aab4e",
+      "sha256_aqui": "d408027e12f83d712e28815de1619c72a905d5e288ae75f4a666ecc812f96e21"
+    },
+    "checar-plano.mjs": {
+      "origem": "top10-estudio/scripts/checar-plano.mjs",
+      "sha256_na_origem": "80bf5d42aa8f9928b1cb27815154de0bfca0fb979c45c9208bf8878a6eb3d95c",
+      "sha256_aqui": "b7c6dbcde861bf1609b7a1f8898aedbce49ffd788b8d573892b85522618b7c80"
+    },
+    "qc-repeticao.mjs": {
+      "origem": "top10-estudio/scripts/qc-repeticao.mjs",
+      "sha256_na_origem": "9b0f51a588ef51f15a4ee85f4674e389a680534c6ce968b52bb610a435f2ed32",
+      "sha256_aqui": "50be9bcf3a44bda37c316dc498ef1e9766a260e10458033851177b0dbb15b8da"
+    },
+    "qc-tela-x-fala.mjs": {
+      "origem": "top10-estudio/scripts/qc-tela-x-fala.mjs",
+      "sha256_na_origem": "3e5c674d82b30e5778032b4c9964c2c8e751db082fbda006f3dac8a1488f54c0",
+      "sha256_aqui": "a41b9063d51b8dfc0f5006d2484671d97f0a0fe31e02baef11ca53482737d265"
+    },
+    "qc-footage-seekavel.mjs": {
+      "origem": "top10-estudio/scripts/qc-footage-seekavel.mjs",
+      "sha256_na_origem": "b725793d924109c9c9a06bd6e2eb8ee2c59de0e3e0a0caba23efbb3638090338",
+      "sha256_aqui": "4564df306fa93a2ff3329e892e5b715766540568f93952a16acc076d9bf21ea8"
+    },
+    "lib/erratas-gravadas.mjs": {
+      "origem": "top10-estudio/scripts/lib/erratas-gravadas.mjs",
+      "sha256_na_origem": "912b8d216e3acd19e9a61b9f2de7948549d1c875943a11a65d2cf55adce66357",
+      "sha256_aqui": "6853c0f029aa3fd76ba8e5c36ff1e0318d20bfa6cd90ac0263638c349fba8969"
+    },
+    "lib/ancoras-cena.mjs": {
+      "origem": "top10-estudio/scripts/lib/ancoras-cena.mjs",
+      "sha256_na_origem": "e7ee7839e4403775b276d6518b13cbff08b35e16dd090de49796d6b8a92170b8",
+      "sha256_aqui": "ba8ae30463d05783a76b1486237188f3656fde620f175112f858d309ae229844"
+    },
+    "lib/piso-real.mjs": {
+      "origem": "top10-estudio/scripts/lib/piso-real.mjs",
+      "sha256_na_origem": "baebf313a1dd6b7467992bc271508735b926403fa0b3cd8c284a270b263cd7d2",
+      "sha256_aqui": "d1bb216ab8a4a702da64ee0f4f19f2739addc8db1c1f5513a48e7af184ab5321"
+    },
+    "lib/tags-texto.mjs": {
+      "origem": "top10-estudio/scripts/lib/tags-texto.mjs",
+      "sha256_na_origem": "219733bc6add3fde314c86eaf49fab8691751f38d3f5d13007ec47e9b12e1439",
+      "sha256_aqui": "671cbc0bae73d153f0df2ef085a5c6de2eb4d3f37f8aa9d4661813779f62ef75"
+    },
+    "lib/stem-de-cena.mjs": {
+      "origem": "top10-estudio/scripts/lib/stem-de-cena.mjs",
+      "sha256_na_origem": "87ff1d98c9fb572353c4d301e6b5616b1ee1c66101633b15c6f43454518965ac",
+      "sha256_aqui": "482cc916b0e9cea5334ff5e9d2c8dc17bd454fcd5f056cd4471b0e6fca00ca18"
+    },
+    "lib/referencias-midia.mjs": {
+      "origem": "top10-estudio/scripts/lib/referencias-midia.mjs",
+      "sha256_na_origem": "81631bf9c3b4566366a0aea61f71b8ee219e1a1133d9e1d8b440ad98d5c03620",
+      "sha256_aqui": "046dbe3545f84c1a2da2ceeb7db03e16770be7ec3145f0c7ee8c98213b0686d5"
+    },
+    "lib/modos.mjs": {
+      "origem": "top10-estudio/src/modos.mjs",
+      "sha256_na_origem": "49963beefdcbf2319ad4e3aceefbb9d18166460f6a6089ad57cae5c8436115af",
+      "sha256_aqui": "ab1a7f84c39815625121c05239ce8c92b28cd2f127d3c5749897a2f94a45cbf6"
+    },
+    "internacional/qc-idioma.mjs": {
+      "origem": "top10-estudio/scripts/internacional/qc-idioma.mjs",
+      "sha256_na_origem": "ae851e8f731690ee78502a99f62577a7e9203b7cdcbaac28fe060b9b97f17879",
+      "sha256_aqui": "caf55b523db845a4abef5771e058f0e4af0815661d21044d9168bd90a888f9e2"
+    },
+    "internacional/texto-de-cena.mjs": {
+      "origem": "top10-estudio/scripts/internacional/texto-de-cena.mjs",
+      "sha256_na_origem": "e411f1f78c66d00cad10a1805ca6fc1ce9d8f9dabbad6a35e91a8271aefc1892",
+      "sha256_aqui": "fa23c3a21456ec66186f8b9ae2a9be6400d27c389bd7086b5467a8e9f375feea"
+    },
+    "shot.mjs": {
+      "origem": "top10-estudio/scripts/shot.mjs",
+      "sha256_na_origem": "c0daf21ee59a37fef271d8723117c94ecf388c43de9dfd8a98b9470e18ecb83e",
+      "sha256_aqui": "ea199d7551b1a41f2949e61121c433dd07788309db7ee976d98c38b6b72af9db"
+    },
+    "check-overlap.mjs": {
+      "origem": "top10-estudio/scripts/check-overlap.mjs",
+      "sha256_na_origem": "0e2962d3071125931289b160383f015034e5147d42a1510d7c148d649e05b334",
+      "sha256_aqui": "e42464b1f83f2485ba2202251f964d0475d6fcbab1541a1f2fde4c10c55053ef"
+    },
+    "qc-carga.mjs": {
+      "origem": "top10-estudio/scripts/qc-carga.mjs",
+      "sha256_na_origem": "73c028c36cbe2f63d9ba51d9ee01cc849b71db394fd57e3e1160d9e57ed10fbd",
+      "sha256_aqui": "e4f875ba7acffe64031fab3be5b417dc66af2fcf5b01a601bd20f607011a05af"
+    },
+    "qc-tamanho.mjs": {
+      "origem": "top10-estudio/scripts/qc-tamanho.mjs",
+      "sha256_na_origem": "c8179cba0f54c31176433baf6d9498bf947d594b815feaf1025c71ce23cabd9b",
+      "sha256_aqui": "01375a6e8843c805fcaa14c1ac803e3af77f190ed0edec14aebd28afb7f37ab7"
+    },
+    "_audit-til.mjs": {
+      "origem": "top10-estudio/scripts/_audit-til.mjs",
+      "sha256_na_origem": "f0f7e8dc206463c9b70c5fcc58348ebd7160b40dc30f3209ca5f8f3c680a3b5a",
+      "sha256_aqui": "0bc31ea899183bfbce5ba592e9538639caae6d6106ddc46cadb888351d154042"
+    },
+    "qc-pais-bandeira.mjs": {
+      "origem": "top10-estudio/scripts/qc-pais-bandeira.mjs",
+      "sha256_na_origem": "2913c96ef8835d60126fa444a9f3a0ac37d4aeb92e382823e11f19694ab14561",
+      "sha256_aqui": "9f50876a1797603d674ec2054d778ef84b40294097959399712322b2fe8dcb08"
+    },
+    "qc-credito-fantasma.mjs": {
+      "origem": "top10-estudio/scripts/qc-credito-fantasma.mjs",
+      "sha256_na_origem": "eca925ce72c62592aae438aca70b6ff0478922b62e63091f4dd47057aa57cd0e",
+      "sha256_aqui": "ae10d646439ff95582e1a522502787982b374d1632f0592b98dc32cf12d9b5f5"
+    },
+    "qc-video-avanca.mjs": {
+      "origem": "top10-estudio/scripts/qc-video-avanca.mjs",
+      "sha256_na_origem": "174e35300cf893fe7cf93948966f81ad50bb75b7d0f7f3c5072fa25833ba9f3f",
+      "sha256_aqui": "5b258511cb0318922bb120d013abeac044d987e5ca6618f8ecb6658ebe1605e6"
+    },
+    "probe-elemento.mjs": {
+      "origem": "top10-estudio/scripts/probe-elemento.mjs",
+      "sha256_na_origem": "57695298fec5061e2e4da2903f9fa5b6250a3cd2ec1c9d45eff7d6c41db75943",
+      "sha256_aqui": "723e35a82e32b621ff9c5897f6addfab56ff28b5d8a8a58cd25cbb6dd391891b"
+    },
+    "qc-rodape-contraste.mjs": {
+      "origem": "top10-estudio/scripts/qc-rodape-contraste.mjs",
+      "sha256_na_origem": "2c5b283c45c5fa49197e60579a2700094c56439574071c9178de10e0efff39bb",
+      "sha256_aqui": "d3152d3dc42a1980906af4981bf618591fd3da9eb61d73d2466d38413446f8ff"
+    },
+    "_capturar-pagina.mjs": {
+      "origem": "top10-estudio/scripts/_capturar-pagina.mjs",
+      "sha256_na_origem": "5f735098abbebfc13423f2865b7478b9a557fb775b1dee1f8430ee2f762bdd39",
+      "sha256_aqui": "8abbf3ec1daa95bace3106954df7b5e690caecc90a72d52cea40fbc1a073fe01"
+    },
+    "medir-imagem.mjs": {
+      "origem": "top10-estudio/scripts/medir-imagem.mjs",
+      "sha256_na_origem": "5af4ccf32dcbcb68657e29f80a8e6246e7a22341d902a94defc8e771e07f5cd4",
+      "sha256_aqui": "e6d93f611d8dd758ef573fb80e1c55b9beba25b9e126de6eff27631fe4874ece"
+    },
+    "qc-poluicao.mjs": {
+      "origem": "top10-estudio/scripts/qc-poluicao.mjs",
+      "sha256_na_origem": "44dd759ca4ee30e164a35d2c354ab19966cf6e29d2b1732f525fbd0526a4cc3e",
+      "sha256_aqui": "a51f6c8a5c77a389c9edfd6a61140ad7ccfa98ef4a6de9eecd0ec2b1b23bc232"
+    },
+    "qc-cena.mjs": {
+      "origem": "top10-estudio/scripts/qc-cena.mjs",
+      "sha256_na_origem": "42013596609d651e5b6b35237d99d681c57f7c34c33957342b5c55c67baf9f80",
+      "sha256_aqui": "f319c6c0ff6e130ffe882b62841503b44c525061fdf202303a8332238d9258c9"
+    },
+    "lib/chrome.mjs": {
+      "origem": "top10-estudio/scripts/lib/chrome.mjs",
+      "sha256_na_origem": "232a1f051dbb32ecee8834d0a6c8e56945e0a9c4e1650f7059d9274b91e8ffed",
+      "sha256_aqui": "fb5eb0ff94e3203e0110a7f8dd3d0354e583d76656f76c64c318b1110ff1a65c"
+    },
+    "lib/nao-medido.mjs": {
+      "origem": "top10-estudio/scripts/lib/nao-medido.mjs",
+      "sha256_na_origem": "6b3d6942f74a6f046fac3b5fd34751627d1332df022277948ef5b61caf701c6a",
+      "sha256_aqui": "6bb99569ac0f7c05d777138d1a625482552af500192abf66f002279a4b5e057d"
+    },
+    "lib/expandir-alvos.mjs": {
+      "origem": "top10-estudio/scripts/lib/expandir-alvos.mjs",
+      "sha256_na_origem": "44cf31ba6f879ab228623f85299f5a3825a556f9b42d77336c687b78a3d1a024",
+      "sha256_aqui": "952021fafa1cc6caeab078dbb3ae3a86751b98f25fb896f679e715910e036602"
+    },
+    "lib/abrir-cena.mjs": {
+      "origem": "top10-estudio/scripts/lib/abrir-cena.mjs",
+      "sha256_na_origem": "212869366e54f8317de3f02f5d97c8e16db617d348fd7728bf09705793c016f1",
+      "sha256_aqui": "82c6e6a5e901af773652c01cf5c4641a04489512034e969f0637569f7f907e2b"
+    },
+    "lib/qc-cena-gates.mjs": {
+      "origem": "top10-estudio/scripts/lib/qc-cena-gates.mjs",
+      "sha256_na_origem": "15d37e8489f1efdff0326577a954c4f5a05422d548b971a06385a9e27c0832cf",
+      "sha256_aqui": "161f81704cd698f763a96930dbf5a32e7a9d5bcdfb978597ddd1056966a14958"
+    },
+    "lib/marca-tokens.mjs": {
+      "sha256_aqui": "6679e09cc0caa00e35afbce2bb6d4daf2f96ed797d04a5f44b455887659f4f3f",
+      "escrito_para_a_regie": "NOVO na Régie (papel de top10-estudio/assets/brand/tokens.css; nenhuma linha de código de lá)"
+    },
+    "qc-fora-do-quadro.mjs": {
+      "origem": "top10-estudio/scripts/qc-fora-do-quadro.mjs",
+      "sha256_na_origem": "21ad6f7a642659ee5854527b88746d2184b81b54ec7a35142161d1ce680676e7",
+      "sha256_aqui": "ec957f1ed27d0befd4dbe2a227e8d5d4c71bfce0660be7b1a617b974cf75c01a"
+    },
+    "claude/sessao-inicio-observatorio.mjs": {
+      "escrito_para_a_regie": "Escrito para a Régie (ADR 0009 §B): hook SessionStart que mostra o resumo do último observatório do canal; só lê out/_observatorio/, nunca escreve; caminho sensível (PR que o muda nunca entra sozinho).",
+      "sha256_aqui": "a5e3a1a40b8dab86dd27a43891b00dabe59218371ae71e33372a3fbe6203c20d"
+    },
+    "segredos.mjs": {
+      "escrito_para_a_regie": "Escrito para a Régie (ADR 0009 §C): varredura de segredos no diff ou na árvore, sem dependência; o check 'canal' do GitHub roda a cópia do MOTOR, não esta, para um PR não afrouxar o próprio juiz.",
+      "sha256_aqui": "61c5d3d7bda4e05f595f28047c667ecb62551903b352360f506b1c725d60d136"
+    },
+    "stock/lib/licenca-cc.mjs": {
+      "escrito_para_a_regie": "Escrito para a Régie (consertos da C4): leitura única de licença Creative Commons (NC/ND nunca vira material aprovado em canal monetizado), usada pelo qc-procedencia e pelo procedencia-reconciliar.",
+      "sha256_aqui": "8725ab0ce72be1e11c80121431c94422bc922e39f35d02d58343c6be9b115ddb"
+    },
+    "stock/lib/teto-shutterstock.mjs": {
+      "escrito_para_a_regie": "Escrito para a Régie (ADR 0009 §D): contador de downloads do Shutterstock POR CONTA do dono (100 por dia, fuso de Brasília, configurável em marca/midia.json).",
+      "sha256_aqui": "beedea0bc2df06386aa68bcaa399d0080b76b7ada7a0c0b36baedd3048d72ce2"
+    },
+    "stock/registrar-download.mjs": {
+      "escrito_para_a_regie": "Escrito para a Régie (ADR 0009 §D): recolhe o arquivo baixado pela extensão Claude in Chrome da pasta Downloads para out/<proj>/_media/_caca/<cena>/<plataforma>/, com a procedência (URL do item, plataforma) e o teto do Shutterstock.",
+      "sha256_aqui": "5ba26cb5b6575d906d2d2b78d7799944a5e4a7bd93d71ad9115cb145848479c9"
+    },
+    "lib/ffprobe-csv.mjs": {
+      "escrito_para_a_regie": "Escrito para a Régie (prova no Windows, 23/09/2026): gêmeo byte a byte de motor:src/lib/ffprobe-csv.mjs (testes/ffprobe-csv.test.mjs confere). O ffprobe põe um campo vazio no fim da linha CSV de stream/frame quando o arquivo tem side data; quem pergunta N campos lê só os N primeiros.",
+      "sha256_aqui": "b2e25a2b51196ebec4b503797fe6b30ab263326b285a34b917e0467cffeb778d"
+    }
+  },
+  "nao_portados": {
+    "maprender.mjs": "navegador (playwright-core) e mapa WebGL, fora da v1.",
+    "render/capturar.mjs": "navegador (playwright-core) e bash (render-one.sh). O render da v1 é de outra frente.",
+    "compilar-revisao.sh": "bash (awk, stat -c): não roda no Windows nativo.",
+    "_brief-arte.mjs": "cadeia de 6 módulos do estúdio (relogio-composto, brief-arte-geo, relogio-espelho…) e ffprobe via src/relogio-espelho.mjs.",
+    "build-geo-manifest.mjs": "depende de src/agent/geo-tools.mjs, que escreve em /tmp, chama scripts/builders/* e ffprobe.",
+    "src/agent/geo-tools.mjs": "escreve em /tmp e chama ffprobe e os builders do estúdio.",
+    "src/cortes.mjs": "relógio bruto/limpo do estúdio com apresentador; no faceless há um relógio só.",
+    "finalizar.mjs": "finalização do estúdio: ffmpeg e o XML de 5 camadas com apresentador. A entrega da v1 é de outra frente.",
+    "entregar-tudo.mjs": "entrega do estúdio (ffmpeg, estado internacional).",
+    "compor-base-youtube.mjs": "ffmpeg sobre o vídeo-base do apresentador.",
+    "xml-premiere-5camadas.mjs": "XML de 5 camadas com apresentador; o XML da v1 é de outra frente.",
+    "qa-finalizacao.mjs": "lê o recibo do compilado do estúdio.",
+    "branding/overlays.mjs": "overlays sobre o relógio composto do apresentador.",
+    "qc-espelho-fala.mjs": "relógio composto (bruto x final) do apresentador.",
+    "qc-tempo-apresentador.mjs": "mede tempo de apresentador; canal faceless não tem.",
+    "compilado/*": "o preenchedor dos moldes compilado-* (scripts/compilado/moldes.mjs) e o resto da esteira de compilado do Top10 (estado-producao etc.) não vieram: templates-cena/navegacao/compilado-*.html ficam como moldes de partida, sem gerador; quem os usa preenche window.__DADOS.",
+    "galeria-timeline.html": "timeline 'Premiere no navegador' (V2/V3/V4, cortes rippled, proxies). Na Régie a montagem sai no XML do Premiere e o dono ajusta a timeline no próprio Premiere. Substituto: motor:src/ferramentas/finalizar.mjs (motor:src/finalize/xml-premiere.mjs).",
+    "edicao.mjs": "delta de edição humana gravado pela timeline (FIN-36); só existia para a timeline da galeria e para o render do estúdio lerem o mesmo arquivo. Sem timeline, sem escritor. Substituto: edição no Premiere sobre o XML entregue.",
+    "ajustes.mjs": "ajuste fino (arrastar/escalar elemento) gravado pela timeline em out/<proj>/_ajustes.json e lido pelo render do estúdio. Sem timeline, sem escritor; o render da Régie (motor:src/ferramentas/renderizar.mjs) não lê _ajustes.json. Substituto: marca na galeria + editor-de-arte ajusta o HTML.",
+    "proxies-timeline.mjs": "gerava out/<proj>/_proxies/<id>.mp4 para a timeline tocar leve. Sem timeline, sem uso. Substituto: nenhum.",
+    "db/feedback.mjs": "gravava a marca na tabela feedback do estudio.db e fazia a triagem (`--triar`, citado em SIS.md:237 como verificação da SIS-23). Sem estudio.db no canal. Substituto: `node scripts/serve-galeria.mjs --fila [<proj>]` (marcas abertas, em ordem) e `--marcar <id> <status> \"nota\"`; a fila é template/scripts/galeria/fila.mjs.",
+    "stock/baixar.mjs": "NÃO PORTADO nesta leva. 125 KB amarrados à infra do Top10: trava de caça no bucket (trava-caca.mjs), admissão de host (lib/admissao-host.mjs), fila/sessão de caça (sessao-caca.mjs, destino-necessidade.mjs), túnel residencial (tunel.mjs), alarme de bloqueio por WhatsApp e seletores calibrados nas contas PT-BR do Mateus. Substituto na Régie: motor:src/ferramentas/buscar-midia.mjs (acervo livre com licença medida na fonte: Commons, Openverse, NASA, Met, DVIDS, NARA, Smithsonian, Europeana, Pexels, Pixabay) + scripts/stock/api-oficial.mjs (Shutterstock por API, foto e áudio, para quem TEM conta) + download manual na conta do canal seguido de scripts/stock/_instalar-lote.mjs --plataforma=<p> --url=<item>. Portar a caça logada depende da decisão do Mateus sobre contas (ver pendências).",
+    "stock/tunel.mjs": "NÃO PORTADO — infra do Top10: túnel SOCKS reverso VM→Mac para a caça da VM sair com IP residencial. No PC do canal a saída JÁ é residencial. Substituto: nenhum (não há o que substituir).",
+    "stock/sessao-transferir.mjs": "NÃO PORTADO — infra do Top10: leva os cookies decifrados do perfil do Mac para a VM (via scp/bucket). Na Régie há uma máquina só. Substituto: relogin no próprio PC com scripts/stock/setup-login.mjs <plataforma>.",
+    "stock/_probe-sb-download.mjs": "NÃO PORTADO — sonda do painel de licenciamento do Storyblocks presa ao túnel (exigirTunelNaNuvem) e à trava de caça (trava-caca.mjs), e cujo único propósito é calibrar o baixar.mjs, que não veio. Substituto: o tecnico-stock inspeciona o item à mão no Chrome do perfil do canal (scripts/stock/chrome-daemon.mjs + CDP em 127.0.0.1:9377).",
+    "footage-rag-query.mjs": "NÃO PORTADO — acervo do Top10: busca semântica (Ollama bge-m3) sobre o índice do footage ARQUIVADO no bucket geracao-animacoes-prod (gs://). O canal novo não tem esse acervo. Substituto: nenhum.",
+    "stock/acervo-livre-buscar.mjs": "Não entra no canal: já portado no MOTOR como src/ferramentas/buscar-midia.mjs (verbo buscar) + src/midia/busca.mjs.",
+    "stock/acervo-livre-baixar.mjs": "Não entra no canal: já portado no MOTOR como src/ferramentas/buscar-midia.mjs (verbos baixar/entregar) + src/midia/procedencia.mjs e entrega.mjs.",
+    "stock/trava-caca.mjs": "NÃO PORTADO — trava por plataforma no bucket (infra do Top10). O perfil do canal tem trava própria em scripts/stock/lib/perfil-stock.mjs (<perfil>.trava com PID).",
+    "procedencia-declarar.mjs": "NÃO PORTADO (não pedido nesta leva). O qc-procedencia portado passou a mandar rodar scripts/procedencia-reconciliar.mjs, que faz a mesma transcrição.",
+    "aplicar-substituicao-midia.mjs": "NÃO PORTADO (não pedido nesta leva). O qc-procedencia portado deixou de mandar rodá-lo e diz que ele não veio.",
+    "consertar-tipografia.mjs": "Conserta em massa a família do Top10 (Neue Haas / helper FF_H) cravada no HTML; a cena do canal escreve font-family:var(--fonte). Substituto: nenhum — qc-tipografia manda trocar o valor cravado pelo token.",
+    "internacional/dublar.mjs": "Wrapper do dublagem-agent do Top10 (~/www/dublagem-agent, jobs, TTS ElevenLabs no pool do Top10). Substituto: o agente tradutor-de-narracao grava out/<proj>/dub/translations/<lang>.json; a voz sai por motor:src/ferramentas/narrar.mjs.",
+    "internacional/glossario.mjs": "Gerador de esqueleto do glossário; depende do DUB_ROOT (dublagem-agent) e de process.chdir. Substituto: o tradutor-de-tela escreve dub/glossario-<lang>.json à mão (contrato glossario-idioma); qc-idioma confere. Portável numa leva futura se o esqueleto fizer falta.",
+    "internacional/estado.mjs": "Manifesto de idioma da fase internacional do Top10 (contrato manifesto-idioma.schema.json, lip sync, render 4K por idioma, lançamento simultâneo). Substituto: nenhum na v1 — qc-idioma é o portão por idioma.",
+    "internacional/lipsync.mjs": "Lip sync do Bôco (apresentador) por sync-so ou GPU Spot VM. Faceless e sem VM: sai. Substituto: nenhum (não há rosto).",
+    "internacional/lipsync-fleet/": "Frota de VM GPU do lip sync (infra do Top10). Substituto: nenhum.",
+    "lib/portao-carimbo.mjs": "Absorvido em scripts/lib/qc-cena-gates.mjs (fundirCarimboPortao): o lock do estúdio era flock (Linux) / shlock (Mac), que não existem no Windows; a exclusão agora é um arquivo de trava criado com a flag \"wx\" (atômica em NTFS), com prazo de validade para trava abandonada. Mesmo formato de _portao.json, que o motor lê em src/finalize/xml-premiere.mjs.",
+    "qc-mapa-vivo.mjs": "NÃO veio nesta versão. O motivo antigo ('conta/infra do Top10') não vale: a Régie tem o perfil maptiler com a MAPTILER_KEY do próprio dono (docs/MAPAS.md, docs/chaves.env.modelo). O qc-cena o roda se o arquivo aparecer, só em cena com maplibre; enquanto não vem, o carimbo de cena de mapa leva fora_do_portao:[\"mapa-vivo\"] e toda rodada imprime a ausência. Substituto parcial: o molde de mapa do motor faz a cena falhar quando o tile não chega (src/mapa/moldes/mapa-base.html).",
+    ".probe-carga.mjs": "Nunca existiu versionado: era a cópia descartável do qc-carga que a doutrina antiga mandava fazer para ver as estreias. Substituto: node scripts/qc-carga.mjs <html> --estreias.",
+    ".probe-carga-s30.mjs": "Idem: cópia largada na estudio-render em 09/ago, citada como exemplo do defeito. Substituto: node scripts/qc-carga.mjs <html> --estreias."
+  },
+  "atualizado_em": "2026-09-24"
+}

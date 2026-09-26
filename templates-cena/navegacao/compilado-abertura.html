@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR" data-render="4k-native">
+<head>
+  <meta charset="utf-8">
+  <!-- [porte Regie] Origem: top10-estudio/templates-cena/navegacao/compilado-abertura.html, commit 4afda12.
+    O que mudou: (1) fonte e cores vêm da marca do canal (marca/tokens.css) — eram Neue Haas e hex do Top10;
+    (2) o selo "COMPILADO TOP 10" e a logo do Top10 (assets/brand/logo-branca-hq.png) viraram dado:
+    __DADOS.selo e __DADOS.logo (sem logo, o elemento sai — nunca um caminho cravado de outra marca);
+    (3) o seek do vídeo perdeu o setTimeout de 900 ms (timer é proibido na cena: dois renders do mesmo t
+    saíam diferentes) e ficou igual ao RIG.seekTo do motor: posiciona e espera o "seeked" ou o "error";
+    (4) __fotosProntas espera os vídeos carregarem e as faces da fonte; (5) o título subiu de 250 px para o piso de
+    herói do palco 4K (260, ou o --piso-heroi da marca se for maior): com 250 o qc-tamanho do canal reprovava. -->
+  <link rel="stylesheet" href="../../../marca/tokens.css">
+  <!-- render via capturar-alpha: ProRes 4444 4K nativo -->
+  <style>
+    *{box-sizing:border-box} html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:transparent}
+    #stage{position:relative;width:3840px;height:2160px;overflow:hidden;color:var(--texto);font-family:var(--fonte);background:var(--fundo)}
+    #midia{position:absolute;inset:0;display:grid;grid-template-columns:1.15fr .85fr .9fr;gap:18px;transform:scale(1.035)}
+    .take{position:relative;overflow:hidden;background:var(--painel)}.take video{width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.12) brightness(.58)}
+    .take:nth-child(2){transform:translateY(-90px)}.take:nth-child(3){transform:translateY(70px)}
+    #vinheta{position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb,var(--fundo) 94%,transparent) 0%,color-mix(in srgb,var(--fundo) 70%,transparent) 42%,color-mix(in srgb,var(--fundo) 18%,transparent) 82%),linear-gradient(0deg,color-mix(in srgb,var(--fundo) 86%,transparent),transparent 55%)}
+    #stage:before{content:"";position:absolute;inset:-18%;z-index:2;opacity:.22;background:repeating-radial-gradient(ellipse at 78% 44%,transparent 0 96px,color-mix(in srgb,var(--dado) 32%,transparent) 99px 102px);transform:rotate(-7deg) scale(1.15)}
+    #linha{position:absolute;z-index:4;left:180px;top:290px;width:310px;height:18px;background:var(--acento);transform-origin:left center}
+    #hora{position:absolute;z-index:4;left:180px;top:390px;font-size:240px;line-height:.8;font-weight:var(--peso-heroi,900);letter-spacing:-.055em;color:var(--dado)}
+    #titulo{position:absolute;z-index:4;left:180px;top:720px;width:2920px;font-size:max(260px,var(--piso-heroi,260px));line-height:.92;font-weight:var(--peso-heroi,900);letter-spacing:-.045em;text-transform:uppercase;text-wrap:balance;text-shadow:0 14px 50px rgba(0,0,0,.72)}
+    #selo{position:absolute;z-index:4;left:190px;bottom:190px;font-size:104px;font-weight:var(--peso-heroi,900);letter-spacing:.13em;color:var(--sec)}
+    #logo{position:absolute;z-index:4;right:180px;top:160px;width:330px;height:auto}
+    #orbita{position:absolute;z-index:3;right:-250px;bottom:-430px;width:1700px;height:1700px;border:22px solid color-mix(in srgb,var(--geo) 44%,transparent);border-radius:50%;box-shadow:0 0 160px color-mix(in srgb,var(--geo) 22%,transparent)}
+  </style>
+</head>
+<body><main id="stage" data-qc-composicao="montagem de footage real em movimento; título herói; marca; profundidade">
+  <div id="midia"></div><div id="vinheta"></div>
+  <div id="linha"></div><div id="hora">1H</div><div id="titulo"></div><div id="selo"></div>
+  <img id="logo" alt=""><div id="orbita"></div>
+</main>
+<script>/*__DADOS__*/</script>
+<script>
+  // [porte Regie] exemplo neutro; selo e logo vêm do gerador (a marca do canal)
+  const D=window.__DADOS||{titulo:"O título do compilado",dur:6,clipes:[],clipes_dur:[],selo:"COMPILADO",logo:null,hora:"1H"};
+  window.__duracao=Number(D.dur)||6; document.getElementById("titulo").textContent=D.titulo;
+  document.getElementById("selo").textContent=D.selo||"";
+  if(D.hora!=null) document.getElementById("hora").textContent=D.hora;
+  const logo=document.getElementById("logo"); if(D.logo){logo.src=D.logo;} else {logo.remove();}
+  const midia=document.getElementById("midia");
+  (D.clipes||[]).forEach((src)=>{const box=document.createElement("div");box.className="take";const v=document.createElement("video");v.src=src;v.muted=true;v.playsInline=true;v.preload="auto";box.appendChild(v);midia.appendChild(box);});
+  const videos=[...document.querySelectorAll(".take video")];
+  const clamp=x=>Math.max(0,Math.min(1,x)); const ease=x=>1-Math.pow(1-clamp(x),3);
+  // [porte Regie] sem timer: espera o "seeked" (ou o "error") do próprio vídeo, como o RIG.seekTo do motor
+  function seek(v,t){if(window.__PREVIEW||v.readyState<1)return Promise.resolve();const d=v.duration;if(d>0&&isFinite(d))t=Math.min(Math.max(0,t),Math.max(0,d-0.001));if(Math.abs((v.currentTime||0)-t)<1e-4&&!v.seeking)return Promise.resolve();return new Promise(resolve=>{v.addEventListener("seeked",resolve,{once:true});v.addEventListener("error",resolve,{once:true});v.currentTime=t;});}
+  window.__renderAt=async function(t){const p=ease(t/.8),fim=clamp((window.__duracao-t)/.45);const op=Math.min(p,fim);document.getElementById("titulo").style.opacity=op;document.getElementById("titulo").style.transform=`translateY(${(1-p)*90}px)`;document.getElementById("linha").style.transform=`scaleX(${p})`;document.getElementById("orbita").style.transform=`rotate(${t*5}deg) scale(${1+t*.004})`;await Promise.all(videos.map((v,i)=>{const d=Math.max(.2,Number(D.clipes_dur?.[i])||2);return seek(v,Math.min(Math.max(0,(t+i*.65)%d),d-.05));}));};
+  // [porte Regie] prontidão: metadados dos vídeos + faces da fonte da marca
+  window.__fotosProntas=Promise.all([...videos.map(v=>v.readyState>=1?0:new Promise(r=>{v.addEventListener("loadedmetadata",r,{once:true});v.addEventListener("error",r,{once:true});})),document.fonts?document.fonts.ready:0]).then(()=>true);
+  window.__prepararCaptura=()=>window.__renderAt(window.__duracao*.5); window.__renderAt(0);
+</script></body></html>

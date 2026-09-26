@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR" data-render="4k-native">
+<head>
+  <meta charset="utf-8">
+  <!-- [porte Regie] Origem: top10-estudio/templates-cena/navegacao/compilado-titulo.html, commit 4afda12.
+    O que mudou: fonte e cores vêm da marca do canal (marca/tokens.css) — eram Neue Haas e hex do Top10;
+    o kicker do Top10 ("LUGARES EXTREMOS") virou dado sem valor de marca; a logo do Top10 virou __DADOS.logo
+    (sem logo, o elemento sai); __fotosProntas espera o frame real e as faces da fonte; o título subiu de 220 px para
+    o piso de herói do palco 4K (260, ou o --piso-heroi da marca se for maior): com 220 o qc-tamanho do canal reprovava. -->
+  <link rel="stylesheet" href="../../../marca/tokens.css">
+  <!-- render via capturar-alpha: ProRes 4444 4K nativo -->
+  <style>
+    *{box-sizing:border-box} html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:transparent}
+    #stage{position:relative;width:3840px;height:2160px;font-family:var(--fonte);color:var(--texto)}
+    #card{position:absolute;left:150px;bottom:150px;width:2920px;min-height:560px;padding:68px 84px 72px 700px;border-radius:42px;background:linear-gradient(135deg,color-mix(in srgb,var(--fundo) 95%,transparent),color-mix(in srgb,var(--painel) 89%,transparent));box-shadow:0 36px 120px rgba(0,0,0,.5),inset 0 0 0 3px color-mix(in srgb,var(--texto) 7%,transparent);opacity:0;overflow:hidden}
+    #marca{font-size:104px;font-weight:var(--peso-heroi,900);letter-spacing:.12em;color:var(--dado);margin-bottom:24px}#titulo{font-size:max(260px,var(--piso-heroi,260px));font-weight:var(--peso-heroi,900);line-height:.9;letter-spacing:-.04em;text-wrap:balance}
+    #visual{position:absolute;left:0;top:0;width:590px;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.15) brightness(.76)}
+    #degrade{position:absolute;left:0;top:0;width:770px;height:100%;background:linear-gradient(90deg,transparent 44%,color-mix(in srgb,var(--fundo) 98%,transparent) 92%)}
+    /* [porte Regie] 48 px estava abaixo do piso de rótulo (104) do palco 4K */
+    #elemento{position:absolute;left:44px;bottom:38px;width:470px;padding:18px 24px;border-left:12px solid var(--dado);background:color-mix(in srgb,var(--fundo) 72%,transparent);font-size:var(--piso-rotulo,104px);font-weight:var(--peso-heroi,900);line-height:1.05;text-transform:uppercase}
+    #logo{position:absolute;right:180px;top:160px;width:330px;height:auto}
+  </style>
+</head><body><main id="stage" data-qc-composicao="título alpha; frame real do assunto; marca no canto reservado">
+  <section id="card"><img id="visual" alt=""><div id="degrade"></div><div id="elemento"></div><div id="marca"></div><div id="titulo"></div></section>
+  <img id="logo" alt="">
+</main><script>/*__DADOS__*/</script><script>
+  // [porte Regie] exemplo neutro; kicker e logo vêm do gerador
+  const D=window.__DADOS||{titulo:"O título do trecho",dur:5,kicker:"",imagem:"",elemento:"",logo:null};window.__duracao=Number(D.dur)||5;document.getElementById("titulo").textContent=D.titulo;document.getElementById("marca").textContent=D.kicker||"";const vis=document.getElementById("visual");if(D.imagem){vis.src=D.imagem;}else{vis.remove();}document.getElementById("elemento").textContent=D.elemento||"";
+  const logo=document.getElementById("logo"); if(D.logo){logo.src=D.logo;} else {logo.remove();}
+  const clamp=x=>Math.max(0,Math.min(1,x));const ease=x=>1-Math.pow(1-clamp(x),3);
+  window.__renderAt=function(t){const a=ease(t/.55),b=ease((window.__duracao-t)/.55);const op=Math.min(a,b);const c=document.getElementById("card");c.style.opacity=op;c.style.transform=`translateY(${(1-a)*70}px)`;const v=document.getElementById("visual");if(v)v.style.transform=`scale(${1.04+t*.004}) translateX(${t*2}px)`;};
+  // [porte Regie] prontidão: imagens (o evento já pode ter passado: complete basta) + faces da fonte
+  window.__fotosProntas=Promise.all([...[...document.images].map(im=>im.complete?0:new Promise(r=>{im.addEventListener("load",r);im.addEventListener("error",r);})),document.fonts?document.fonts.ready:0]).then(()=>true);
+  window.__prepararCaptura=()=>window.__renderAt(window.__duracao*.5);window.__renderAt(0);
+</script></body></html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html><html lang="pt-BR" data-render="4k-native"><head><meta charset="utf-8"><style>
+/* s28 · BOMBEAR, DEGRAU POR DEGRAU — M21 processo (100% DESENHO, pedido do Mateus 04/ago:
+   "quero que seja 100% desenho animado explicado" — o footage de Medemblik saiu).
+   inSec 153.633 · dur 14.567 (espelho re-ancorado 04/ago, master novo sem retakes na janela).
+   METÁFORA (conceito-visual): escadaria de água ao contrário — bombas âmbar erguem a água
+   degrau por degrau (pôlder → canal → canal mais alto) até que, na maré baixa, a comporta
+   abre e o último lance escorre SOZINHO pro mar. A gravidade só coopera no último passo.
+   Word-lock (t local = bruto − 153.633):
+     0.00 "sem parar."      → o sistema JÁ está girando (nunca para) — parafusos rodando
+     0.99–2.73 "As estações de bombeamento" → as duas casas de bomba acendem âmbar
+     2.83 "erguem a água"   → pacotes d'água sobem pôlder→canal em destaque
+     4.35 "polder"          → rótulo PÔLDER
+     5.31–6.09 "canal mais alto" → bomba 2 em destaque, rótulo CANAL MAIS ALTO (5.71)
+     8.21–8.85 "degrau por degrau" → pulso sequencial nas 3 superfícies + chevrons subindo
+     10.15–10.43 "maré baixar" → o MAR desce; linha tracejada marca a maré alta; seta ↓
+     12.09 "escorrer"       → comporta abre, cachoeira pelo talude externo
+     12.97 "mar"            → rótulo MAR
+     13.69 "gravidade."     → seta âmbar de queda ao longo do talude; sistema todo fluindo
+   Resolve em 14.31 (fim de "gravidade."); 14.31→14.567 = hold vivo, nada novo.
+   Cor: NAVY=céu/mar · TEAL=água administrada · ÂMBAR=bombas/engenharia · AREIA=terra dos
+   diques. Sem vermelho. Canvas com SANGRIA (4400×2400 em −280,−120) pra câmera panorâmica
+   viajar pôlder→mar sem mostrar borda. */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:3840px;height:2160px;overflow:hidden;background:#081A2A;}
+#palco{position:relative;width:3840px;height:2160px;overflow:hidden;
+  font-family:"Neue Haas Grotesk Display Pro","Helvetica Neue",Arial,sans-serif;}
+#cam{position:absolute;inset:0;transform-origin:1920px 1300px;will-change:transform;}
+#mundo{position:absolute;left:-280px;top:-120px;width:4400px;height:2400px;}
+/* rótulos dentro do #cam (viajam com a câmera) · Ã/Ô maiúsculo → weight 900 */
+.rot{position:absolute;font-weight:900;letter-spacing:.03em;opacity:0;white-space:nowrap;
+  will-change:transform,opacity;text-shadow:0 6px 36px rgba(3,12,24,.9);}
+#rPol{left:466px;top:1826px;font-size:112px;color:#EAD9A8;}
+#rCan{left:1478px;top:1092px;font-size:112px;color:#8FE8DC;line-height:1.08;white-space:normal;width:660px;}
+#rMar{left:3450px;top:806px;font-size:112px;color:#9FD4EE;}
+#vig{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 46%,rgba(0,0,0,0) 56%,rgba(2,8,16,.42) 100%);}
+#grain{position:absolute;inset:0;opacity:.11;mix-blend-mode:overlay;pointer-events:none;}
+</style></head><body><div id="palco">
+<div id="cam">
+  <canvas id="mundo" width="4400" height="2400"></canvas>
+  <div id="rPol" class="rot lbl">P&Ocirc;LDER</div>
+  <div id="rCan" class="rot lbl">CANAL<br>MAIS ALTO</div>
+  <div id="rMar" class="rot lbl">MAR</div>
+</div>
+<div id="vig"></div>
+<div id="grain"></div>
+</div>
+<script>
+var DUR=14.567; window.__duracao=DUR;
+var E=function(id){return document.getElementById(id);};
+function cl(v,a,b){return v<a?a:v>b?b:v;}
+function seg(t,a,d){return cl((t-a)/d,0,1);}
+function eo(p){p=cl(p,0,1);return 1-Math.pow(1-p,3);}
+function eb(p){p=cl(p,0,1);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;}
+function h1(n){var x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x);}
+
+/* grão determinístico */
+(function(){
+  var c=document.createElement('canvas');c.width=256;c.height=256;
+  var g=c.getContext('2d');var s=71553;
+  function rnd(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);
+    t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}
+  var im=g.createImageData(256,256);
+  for(var i=0;i<im.data.length;i+=4){var v=rnd()*255;im.data[i]=v;im.data[i+1]=v;im.data[i+2]=v;im.data[i+3]=34;}
+  g.putImageData(im,0,0);
+  var el=E('grain');if(el)el.style.backgroundImage='url('+c.toDataURL()+')';
+})();
+
+/* ---------- GEOMETRIA DO MUNDO (coords do palco; canvas tem offset 280,120) ---------- */
+var OX=280, OY=120;               // offset do canvas-sangria
+var YPOL_BED=1780, YC1_BED=1660, YC2_BED=1400, YSEA_BED=1880;
+var D1={x0:1160,x1:1300,y:1360};  // dique 1 (crista)
+var D2={x0:2170,x1:2310,y:1100};  // dique 2
+var DS={x0:3150,x1:3400,y:950};   // dique do mar (crista) — talude externo até (3620,1880)
+var SLOPE_A={x:3400,y:950}, SLOPE_B={x:3620,y:1880};
+var TIDE_HI=1060, TIDE_LO=1330;
+
+/* níveis d'água (funções de t) */
+function yPol(t){return 1700+22*eo(seg(t,2.83,8));}          /* pôlder esvaziando devagar */
+function yC1(t){return 1440-14*eo(seg(t,2.83,7));}
+function yC2(t){return 1180-12*eo(seg(t,5.31,6));}
+function yMar(t){return TIDE_HI+8*Math.sin(t*0.8)+(TIDE_LO-TIDE_HI)*eo(seg(t,10.43,1.5));}
+function slopeX(y){return SLOPE_A.x+(y-SLOPE_A.y)/(SLOPE_B.y-SLOPE_A.y)*(SLOPE_B.x-SLOPE_A.x);}
+
+/* bombas (parafuso de Arquimedes): [x0,y0]=captação → [x1,y1]=descarga */
+var P1={x0:950,y0:1755,x1:1370,y1:1405};
+var P2={x0:2000,y0:1625,x1:2420,y1:1145};
+function pumpGeo(p){
+  var dx=p.x1-p.x0,dy=p.y1-p.y0;
+  return {len:Math.sqrt(dx*dx+dy*dy),ang:Math.atan2(dy,dx)};
+}
+var G1=pumpGeo(P1), G2=pumpGeo(P2);
+
+/* destaque das bombas (word-lock) */
+function hi1(t){return Math.sin(Math.PI*cl(seg(t,0.99,1.9),0,1))*0.6+0.4*eo(seg(t,2.83,0.8));}
+function hi2(t){return Math.sin(Math.PI*cl(seg(t,5.31,1.6),0,1));}
+
+var cv=E('mundo'), ctx=cv?cv.getContext('2d'):null;
+
+function drawSky(t){
+  var g=ctx.createLinearGradient(0,-OY,0,1500);
+  g.addColorStop(0,'#0C2B45');g.addColorStop(.55,'#0A2138');g.addColorStop(1,'#123B54');
+  ctx.fillStyle=g;ctx.fillRect(-OX,-OY,4400,2400);
+  /* nuvens macias derivando */
+  ctx.fillStyle='#0E2E48';
+  for(var i=0;i<4;i++){
+    var cx2=((520+i*980+t*(14+i*4))%4600)-380;
+    var cy2=200+150*h1(i*3+1);
+    ctx.globalAlpha=0.75-0.12*i;
+    ctx.beginPath();ctx.ellipse(cx2,cy2,430-40*i,110-10*i,0,0,6.3);ctx.fill();
+    ctx.beginPath();ctx.ellipse(cx2+230,cy2+34,240,74,0,0,6.3);ctx.fill();
+  }
+  ctx.globalAlpha=1;
+}
+
+function terrainPath(){
+  ctx.beginPath();
+  ctx.moveTo(-OX,YPOL_BED);
+  ctx.lineTo(1000,YPOL_BED);
+  ctx.lineTo(D1.x0,D1.y);ctx.lineTo(D1.x1,D1.y);
+  ctx.lineTo(1400,YC1_BED);ctx.lineTo(2020,YC1_BED);
+  ctx.lineTo(D2.x0,D2.y);ctx.lineTo(D2.x1,D2.y);
+  ctx.lineTo(2410,YC2_BED);ctx.lineTo(3000,YC2_BED);
+  ctx.lineTo(DS.x0,DS.y);ctx.lineTo(DS.x1,DS.y);
+  ctx.lineTo(SLOPE_B.x,SLOPE_B.y);ctx.lineTo(4120,YSEA_BED);
+  ctx.lineTo(4120,2280);ctx.lineTo(-OX,2280);ctx.closePath();
+}
+
+function drawTerrain(){
+  var g=ctx.createLinearGradient(0,950,0,2280);
+  g.addColorStop(0,'#B99F6B');g.addColorStop(.45,'#8F754A');g.addColorStop(1,'#4E3E28');
+  ctx.fillStyle=g;terrainPath();ctx.fill();
+  /* relva escura nas cristas e no chão do pôlder */
+  ctx.strokeStyle='#2F5E45';ctx.lineWidth=20;ctx.lineCap='round';
+  ctx.beginPath();ctx.moveTo(-OX,YPOL_BED-4);ctx.lineTo(545,YPOL_BED-4);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(D1.x0+8,D1.y-4);ctx.lineTo(D1.x1-8,D1.y-4);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(D2.x0+8,D2.y-4);ctx.lineTo(D2.x1-8,D2.y-4);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(DS.x0+8,DS.y-4);ctx.lineTo(DS.x1-8,DS.y-4);ctx.stroke();
+  /* contorno sutil do perfil */
+  ctx.strokeStyle='rgba(20,40,58,.55)';ctx.lineWidth=6;terrainPath();ctx.stroke();
+}
+
+function waveTop(x0,x1,y,amp,ph,t,step){
+  ctx.beginPath();
+  for(var x=x0;x<=x1;x+=step){
+    var yy=y+amp*Math.sin(x*0.014+t*1.9+ph);
+    if(x===x0)ctx.moveTo(x,yy);else ctx.lineTo(x,yy);
+  }
+}
+function drawWater(x0,x1,ySurf,yBed,t,ph,pulse){
+  var g=ctx.createLinearGradient(0,ySurf,0,yBed);
+  g.addColorStop(0,'rgba(46,197,182,.92)');g.addColorStop(.5,'rgba(15,91,102,.95)');
+  g.addColorStop(1,'rgba(10,58,76,.96)');
+  ctx.fillStyle=g;
+  ctx.beginPath();ctx.moveTo(x0,ySurf);
+  for(var x=x0;x<=x1;x+=60){ctx.lineTo(x,ySurf+6*Math.sin(x*0.014+t*1.9+ph));}
+  ctx.lineTo(x1,yBed);ctx.lineTo(x0,yBed);ctx.closePath();ctx.fill();
+  /* superfície viva (pulsa no seu "degrau") */
+  ctx.strokeStyle=pulse>0?'#B6F6EC':'#7FE8DC';
+  ctx.lineWidth=8+8*pulse;ctx.globalAlpha=0.85+0.15*pulse;
+  waveTop(x0,x1,ySurf,6,ph,t,60);ctx.stroke();
+  ctx.globalAlpha=1;
+  if(pulse>0.05){
+    ctx.strokeStyle='rgba(182,246,236,'+(0.5*pulse).toFixed(2)+')';
+    ctx.lineWidth=26;waveTop(x0,x1,ySurf,6,ph,t,60);ctx.stroke();
+  }
+}
+
+function drawSea(t){
+  var y=yMar(t);
+  var xs=slopeX(y);
+  var g=ctx.createLinearGradient(0,y,0,2100);
+  g.addColorStop(0,'#1E6E8C');g.addColorStop(.5,'#0F4A66');g.addColorStop(1,'#072B42');
+  ctx.fillStyle=g;
+  ctx.beginPath();ctx.moveTo(xs,y);
+  for(var x=xs;x<=4120;x+=70){ctx.lineTo(x,y+9*Math.sin(x*0.011+t*1.4));}
+  ctx.lineTo(4120,YSEA_BED);ctx.lineTo(SLOPE_B.x,SLOPE_B.y);ctx.closePath();ctx.fill();
+  ctx.strokeStyle='#3ED8C8';ctx.lineWidth=9;ctx.globalAlpha=.9;
+  waveTop(xs,4120,y,9,0,t*0.74,70);ctx.stroke();ctx.globalAlpha=1;
+
+  /* marca da MARÉ ALTA (tracejada) + seta ↓ — a partir de "baixar" (10.43) */
+  var mk=eo(seg(t,10.43,0.8));
+  if(mk>0){
+    ctx.save();
+    ctx.strokeStyle='rgba(159,212,238,'+(0.85*mk).toFixed(2)+')';
+    ctx.lineWidth=8;ctx.setLineDash([44,30]);ctx.lineDashOffset=-((t*40)%74);
+    ctx.beginPath();ctx.moveTo(slopeX(TIDE_HI),TIDE_HI);ctx.lineTo(4120,TIDE_HI);ctx.stroke();
+    ctx.setLineDash([]);
+    var aY0=TIDE_HI+40, aY1=TIDE_HI+40+(y-TIDE_HI-70)*mk;
+    if(aY1>aY0+40){
+      ctx.strokeStyle='rgba(159,212,238,'+(0.95*mk).toFixed(2)+')';
+      ctx.lineWidth=12;ctx.lineCap='round';
+      ctx.beginPath();ctx.moveTo(3740,aY0);ctx.lineTo(3740,aY1);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(3700,aY1-44);ctx.lineTo(3740,aY1);ctx.lineTo(3780,aY1-44);ctx.stroke();
+    }
+    ctx.restore();
+  }
+}
+
+/* moinho silhueta (pôlder respira história) */
+function drawWindmill(t){
+  var bx=470,by=YPOL_BED;
+  ctx.fillStyle='#16334C';
+  ctx.beginPath();ctx.moveTo(bx-64,by);ctx.lineTo(bx-34,by-250);ctx.lineTo(bx+34,by-250);ctx.lineTo(bx+64,by);ctx.closePath();ctx.fill();
+  ctx.beginPath();ctx.ellipse(bx,by-268,44,30,0,0,6.3);ctx.fill();
+  /* janelinha acesa */
+  ctx.fillStyle='rgba(244,232,200,.85)';ctx.fillRect(bx-12,by-150,24,34);
+  /* pás girando devagar */
+  ctx.save();ctx.translate(bx,by-268);ctx.rotate(t*0.4);
+  ctx.strokeStyle='#1E4258';ctx.lineWidth=14;ctx.lineCap='round';
+  for(var i=0;i<4;i++){
+    ctx.save();ctx.rotate(i*Math.PI/2);
+    ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,-190);ctx.stroke();
+    ctx.strokeStyle='rgba(30,66,88,.7)';ctx.lineWidth=8;
+    ctx.strokeRect(-26,-186,26,150);
+    ctx.restore();ctx.strokeStyle='#1E4258';ctx.lineWidth=14;
+  }
+  ctx.restore();
+}
+function drawHouse(){
+  var bx=250,by=YPOL_BED;
+  ctx.fillStyle='#1B3A54';ctx.strokeStyle='#2E6E96';ctx.lineWidth=6;
+  ctx.fillRect(bx-95,by-125,190,125);ctx.strokeRect(bx-95,by-125,190,125);
+  ctx.fillStyle='#E0892F';ctx.strokeStyle='#B06A20';
+  ctx.beginPath();ctx.moveTo(bx-112,by-125);ctx.lineTo(bx,by-198);ctx.lineTo(bx+112,by-125);ctx.closePath();
+  ctx.fill();ctx.stroke();
+  ctx.fillStyle='rgba(244,232,200,.85)';ctx.fillRect(bx-40,by-96,36,40);
+}
+
+/* bomba: parafuso inclinado + casa de máquinas na descarga */
+function drawPump(P,G,t,hi,active){
+  ctx.save();
+  ctx.translate(P.x0,P.y0);ctx.rotate(G.ang);
+  /* tubo */
+  ctx.fillStyle='rgba(14,42,68,.94)';
+  ctx.strokeStyle=hi>0.25?'#FFB13D':'#8FA25E';
+  ctx.lineWidth=10;
+  var w=118;
+  ctx.beginPath();
+  if(ctx.roundRect)ctx.roundRect(-30,-w/2,G.len+60,w,28);else ctx.rect(-30,-w/2,G.len+60,w);
+  ctx.fill();ctx.stroke();
+  if(hi>0.05){
+    ctx.strokeStyle='rgba(255,177,61,'+(0.4*hi).toFixed(2)+')';ctx.lineWidth=30;
+    ctx.beginPath();
+    if(ctx.roundRect)ctx.roundRect(-30,-w/2,G.len+60,w,28);else ctx.rect(-30,-w/2,G.len+60,w);
+    ctx.stroke();
+  }
+  /* espiral do parafuso (fase avança = rotação; NUNCA para — "sem parar") */
+  ctx.strokeStyle='rgba(255,177,61,.75)';ctx.lineWidth=9;ctx.lineCap='round';
+  var pass=64, off=(t*150)%pass;
+  for(var s=off;s<G.len;s+=pass){
+    ctx.beginPath();ctx.moveTo(s-22,w/2-14);ctx.lineTo(s+22,-w/2+14);ctx.stroke();
+  }
+  /* pacotes d'água subindo por dentro */
+  if(active>0.02){
+    ctx.fillStyle='#3ED8C8';
+    for(var k=0;k<5;k++){
+      var pp=((t*0.55+k/5)%1);
+      ctx.globalAlpha=active*Math.sin(Math.PI*pp)*0.95;
+      ctx.beginPath();ctx.arc(pp*G.len,10*Math.sin(t*3+k),16,0,6.3);ctx.fill();
+    }
+    ctx.globalAlpha=1;
+  }
+  ctx.restore();
+  /* casa de máquinas na descarga */
+  var hx=P.x1,hy=P.y1-46;
+  ctx.fillStyle='#123049';ctx.strokeStyle=hi>0.25?'#FFB13D':'#41586E';ctx.lineWidth=8;
+  ctx.fillRect(hx-78,hy-96,156,96);ctx.strokeRect(hx-78,hy-96,156,96);
+  ctx.beginPath();ctx.moveTo(hx-92,hy-96);ctx.lineTo(hx,hy-152);ctx.lineTo(hx+92,hy-96);ctx.closePath();
+  ctx.fillStyle='#0E2A44';ctx.fill();ctx.stroke();
+  /* luz da estação (acende com o destaque) */
+  ctx.fillStyle='rgba(255,177,61,'+(0.35+0.65*cl(hi,0,1)).toFixed(2)+')';
+  ctx.beginPath();ctx.arc(hx,hy-58,16,0,6.3);ctx.fill();
+  /* respingo na descarga */
+  if(active>0.02){
+    ctx.fillStyle='#7FE8DC';
+    for(var d=0;d<4;d++){
+      var dp=((t*1.3+d/4)%1);
+      ctx.globalAlpha=active*Math.sin(Math.PI*dp)*0.8;
+      ctx.beginPath();
+      ctx.arc(hx+40+dp*80,hy+40+90*dp*dp-40*dp,9,0,6.3);ctx.fill();
+    }
+    ctx.globalAlpha=1;
+  }
+}
+
+/* chevrons "degrau por degrau" (sobem a escada em sequência) */
+function drawChevron(cx,cy,on,t){
+  if(on<=0)return;
+  ctx.save();
+  ctx.translate(cx,cy-30*on);ctx.rotate(-0.62);
+  ctx.strokeStyle='rgba(255,177,61,'+(0.95*on).toFixed(2)+')';
+  ctx.lineWidth=16;ctx.lineCap='round';ctx.lineJoin='round';
+  for(var i=0;i<2;i++){
+    ctx.beginPath();ctx.moveTo(-44,26-i*54);ctx.lineTo(0,-18-i*54);ctx.lineTo(44,26-i*54);ctx.stroke();
+  }
+  ctx.restore();
+}
+
+/* comporta + cachoeira da maré baixa */
+var CH={x0:3070,x1:3462,yTop:1155,yBot:1250,gx:3255};
+function drawSluice(t){
+  /* canal através do dique */
+  ctx.fillStyle='#0B2233';
+  ctx.fillRect(CH.x0,CH.yTop,CH.x1-CH.x0,CH.yBot-CH.yTop);
+  ctx.strokeStyle='rgba(65,88,110,.9)';ctx.lineWidth=6;
+  ctx.strokeRect(CH.x0,CH.yTop,CH.x1-CH.x0,CH.yBot-CH.yTop);
+  var open=eb(seg(t,12.0,0.9));
+  /* fluxo por gravidade (só com a comporta aberta) */
+  var flow=seg(t,12.25,0.6);
+  if(flow>0){
+    /* dentro do canal */
+    ctx.fillStyle='#2EC5B6';
+    for(var k=0;k<6;k++){
+      var pp=((t*1.1+k/6)%1);
+      ctx.globalAlpha=flow*Math.sin(Math.PI*pp)*0.95;
+      ctx.beginPath();ctx.arc(CH.x0+18+pp*(CH.x1-CH.x0-30),(CH.yTop+CH.yBot)/2+8*Math.sin(t*4+k),13,0,6.3);ctx.fill();
+    }
+    ctx.globalAlpha=1;
+    /* cachoeira desce o talude externo até o mar */
+    var y=yMar(t), xs=slopeX(y);
+    ctx.strokeStyle='rgba(62,216,200,'+(0.95*flow).toFixed(2)+')';
+    ctx.lineWidth=34;ctx.lineCap='round';
+    ctx.setLineDash([54,40]);ctx.lineDashOffset=-((t*260)%94);
+    ctx.beginPath();ctx.moveTo(CH.x1-6,CH.yBot-24);
+    ctx.quadraticCurveTo(slopeX((CH.yBot+y)/2)+120,(CH.yBot+y)/2,xs+60,y-6);
+    ctx.stroke();ctx.setLineDash([]);
+    /* espuma no encontro com o mar */
+    ctx.fillStyle='rgba(182,246,236,'+(0.8*flow).toFixed(2)+')';
+    for(var f=0;f<4;f++){
+      ctx.beginPath();
+      ctx.arc(xs+26+34*h1(f*5+2),y+6*Math.sin(t*5+f),10+6*h1(f*3),0,6.3);ctx.fill();
+    }
+  }
+  /* comporta âmbar (desliza pra cima em "escorrer") */
+  ctx.fillStyle='#FFB13D';ctx.strokeStyle='#B06A20';ctx.lineWidth=6;
+  var gy=CH.yTop-58-open*150;
+  ctx.fillRect(CH.gx-16,gy,32,CH.yBot-CH.yTop+58);
+  ctx.strokeRect(CH.gx-16,gy,32,CH.yBot-CH.yTop+58);
+  /* pórtico da comporta */
+  ctx.strokeStyle='#41586E';ctx.lineWidth=10;
+  ctx.beginPath();ctx.moveTo(CH.gx-40,CH.yTop-60);ctx.lineTo(CH.gx-40,CH.yTop-235);
+  ctx.lineTo(CH.gx+40,CH.yTop-235);ctx.lineTo(CH.gx+40,CH.yTop-60);ctx.stroke();
+}
+
+/* seta âmbar da GRAVIDADE (13.69) */
+function drawGravArrow(t){
+  var on=eo(seg(t,13.6,0.6));
+  if(on<=0)return;
+  ctx.save();
+  ctx.strokeStyle='rgba(255,177,61,'+(0.95*on).toFixed(2)+')';
+  ctx.lineWidth=16;ctx.lineCap='round';
+  var x0=3585,y0=1130,x1=3585+95*on,y1=1130+330*on;
+  ctx.beginPath();ctx.moveTo(x0,y0);ctx.quadraticCurveTo(x0+80,(y0+y1)/2,x1,y1);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x1-58,y1-26);ctx.lineTo(x1,y1);ctx.lineTo(x1-8,y1-64);ctx.stroke();
+  ctx.restore();
+}
+
+window.__renderAt=function(t){
+  try{
+    t=cl(t,0,DUR);
+    /* câmera: viagem pôlder → centro → mar, acompanhando a água (o beat manda) */
+    var cam=E('cam');
+    if(cam){
+      var tx=260-260*eo(seg(t,2.6,3.0))-265*eo(seg(t,9.63,2.2));
+      var ty=-55+55*eo(seg(t,2.6,3.0))+22*eo(seg(t,9.63,2.2));
+      var z=1.16-0.085*eo(seg(t,2.6,3.0))+0.045*eo(seg(t,9.63,2.2))+0.006*Math.sin(t*0.6);
+      cam.style.transform='scale('+z.toFixed(4)+') translate('+(tx+6*Math.sin(t*0.42+1.2)).toFixed(1)+'px,'+(ty+4*Math.sin(t*0.31+3.9)).toFixed(1)+'px)';
+    }
+
+    if(ctx){
+      ctx.save();
+      ctx.setTransform(1,0,0,1,OX,OY);       /* mundo (0,0) → canvas (280,120) */
+      drawSky(t);
+      drawSea(t);
+      drawTerrain();
+      drawHouse();
+      drawWindmill(t);
+
+      /* pulso sequencial "degrau por degrau" (8.21 / 8.60 / 9.00) */
+      var pu1=Math.sin(Math.PI*cl(seg(t,8.21,0.9),0,1));
+      var pu2=Math.sin(Math.PI*cl(seg(t,8.60,0.9),0,1));
+      var pu3=Math.sin(Math.PI*cl(seg(t,9.00,0.9),0,1));
+      drawWater(560,1005,yPol(t),YPOL_BED,t,0,pu1);        /* vala do pôlder (casa fica no seco) */
+      drawWater(1330,2090,yC1(t),YC1_BED,t,1.3,pu2);       /* canal */
+      drawWater(2380,3080,yC2(t),YC2_BED,t,2.2,pu3);       /* canal mais alto */
+
+      drawSluice(t);
+
+      /* bombas: ativas DESDE t=0 ("sem parar"); destaque word-locked */
+      drawPump(P1,G1,t,hi1(t),0.55+0.45*eo(seg(t,2.83,0.8)));
+      drawPump(P2,G2,t,hi2(t),0.55+0.45*eo(seg(t,5.31,0.8)));
+
+      /* chevrons sobem a escada em "degrau por degrau" */
+      drawChevron(1235,1240,pu1,t);
+      drawChevron(2240,980,pu2,t);
+      drawChevron(3275,830,pu3,t);
+
+      drawGravArrow(t);
+      ctx.restore();
+    }
+
+    /* rótulos word-locked (entram na palavra, aposentam antes do corte) */
+    function lbl(id,t0,t1){
+      var e=E(id); if(!e)return;
+      var p=eo(seg(t,t0,0.7))*(1-seg(t,t1,0.5));
+      e.style.opacity=p.toFixed(2);
+      e.style.transform='translateY('+((1-eo(seg(t,t0,0.7)))*40+2.4*Math.sin(t*0.8)).toFixed(1)+'px)';
+    }
+    lbl('rPol',4.35,9.55);   /* aposenta quando a câmera parte pro mar (senão fica cortado na borda) */
+    lbl('rCan',5.71,14.05);
+    lbl('rMar',12.97,14.25);
+
+    var gr=E('grain');
+    if(gr) gr.style.backgroundPosition=((t*41)%256).toFixed(1)+'px '+((t*29)%256).toFixed(1)+'px';
+  }catch(err){/* nunca lançar */}
+};
+
+window.__fotosProntas=Promise.resolve();  /* cena 100% desenhada, sem mídia */
+window.__prepararCaptura=function(){window.__renderAt(0);};
+window.__renderAt(0);
+</script></body></html>

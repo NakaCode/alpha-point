@@ -1,0 +1,241 @@
+{
+  "_porte": {
+    "origem": "top10-estudio/infra/modelos.json",
+    "commit": "4afda12",
+    "portado_em": "2026-09-23",
+    "o_que_mudou": [
+      "Neste canal quem roda os agentes é o Claude Code do dono, na assinatura DELE: o modelo sai da sessão ou do frontmatter do agente. Esta tabela diz qual modelo e qual esforço cada PAPEL usava no Top10, para o dono decidir; nenhum script do canal a lê ainda.",
+      "SAIU (infra do Top10): policy.anthropic (transporte claude-cli por oauth_token de cascata, ANTHROPIC_API_KEY proibida), provider openai_oauth (Codex CLI), operator_contract e cli (scripts/lib/modelos.mjs e a bancada não vieram), candidatos (testes do Top10), agentes.qc-visual.politica_fixa (decisão do Mateus sobre as cotas DELE).",
+      "SAIU de quem_usa: agentes que só existem no Top10 (assistente-da-holding, assistente-producao-vm, vigia-de-ia, atendente-email, curador-de-produtos, construtor-de-site, diretor-de-cronograma, atualizador-membros, cartografo-de-grafo, catalogador-de-midia, cacador-de-problemas, executor-de-molde, remapeador-de-cenas, assistente-estudio, decupador).",
+      "ROTAS DE PACKAGING (packaging-texto, packaging-pro): modelos do Google via API. Precisam da chave do DONO (GEMINI_API_KEY em %USERPROFILE%\\.regie\\chaves.env) e de um executor, que a Régie v1 NÃO tem: o curador-titulos-thumbs gera títulos na sessão e, para imagem, para e diz ao dono (NÃO MEDIDO).",
+      "ESTADO DA ARTE (23/09/2026): os papéis apontam os modelos atuais do registry da empresa (company-claude-config/registry/models.md, verificado em 21/09/2026) — claude-fable-5-1 no lugar de claude-fable-5 (arte), claude-opus-5-5 no lugar de claude-opus-5 (julgamento, conserto, decisão, escrita, coleta), claude-sonnet-5 (qc-visual), gemini-3.1-pro no lugar de gemini-3.1-pro-preview (packaging-texto) e gemini-3-pro-image (packaging-pro). Os IDs do Top10 em 17/09 ficam em papeis.<papel>.modelo_top10. Preço só onde há fonte: o que não foi verificado fica null, nunca inventado.",
+      "CONSERTO 23/09/2026 (noite): quem_usa lista só agentes que existem em template/.claude/agents/ — roteirista (no lugar de roteirista-narracao e doutor-de-roteiro), sem critico-de-clareza, critico-de-locucao e curador-de-acervo (não vieram); o roteirista escreve com Fable (agentes.roteirista, decisão do Mateus em _modelos.json). Preços: claude-sonnet-5 em US$ 2/US$ 10 (registry da empresa de 21/09 e skill claude-api; o US$ 3/US$ 15 do Top10 era o de antes do fim do período intro) e claude-opus-5-5 em US$ 4/US$ 20 (skill claude-api)."
+    ]
+  },
+  "schema_version": "2.1.0",
+  "providers": {
+    "anthropic": {
+      "provider": "anthropic",
+      "transport": "claude-code (a sessão do dono)",
+      "billing_mode": "assinatura do dono"
+    },
+    "google_api": {
+      "provider": "google",
+      "transport": "gemini-api",
+      "auth_mode": "api_key",
+      "billing_mode": "metered_api",
+      "credential_env": "GEMINI_API_KEY"
+    }
+  },
+  "models": {
+    "claude-fable-5": {
+      "route": "anthropic",
+      "input_usd_per_mtok": 10,
+      "output_usd_per_mtok": 50,
+      "cache_read_usd_per_mtok": 1,
+      "cache_write_usd_per_mtok": 12.5,
+      "price_basis": "api_list_equivalent",
+      "price_verified_on": "2026-08-17",
+      "price_source": "https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5",
+      "tokenizer_family": "claude-4.7-plus",
+      "tokenizer_note": "A documentação oficial estima aproximadamente 30% mais tokens para o mesmo texto em 4.7+; medir por workload.",
+      "runtime_note": "Reservado à concepção e execução visual criativa; preço de lista equivalente de API: US$ 10/MTok de entrada e US$ 50/MTok de saída."
+    },
+    "claude-opus-5": {
+      "route": "anthropic",
+      "input_usd_per_mtok": 5,
+      "output_usd_per_mtok": 25,
+      "cache_read_usd_per_mtok": 0.5,
+      "cache_write_usd_per_mtok": 6.25,
+      "price_basis": "api_list_equivalent",
+      "price_verified_on": "2026-08-17",
+      "price_source": "https://platform.claude.com/docs/en/about-claude/models/whats-new-opus-5",
+      "tokenizer_family": "claude-4.7-plus",
+      "tokenizer_note": "Mesma família de tokenização do Opus 4.8; não presumir economia por troca nominal.",
+      "runtime_note": "Mesmo preço de lista do Opus 4.8. Adaptive thinking vem habilitado por padrão; comparar custo efetivo por artefato aprovado, incluindo thinking, effort, cache, retries e consumo de cota OAuth."
+    },
+    "gemini-3.1-pro-preview": {
+      "route": "google_api",
+      "input_usd_per_mtok": 2,
+      "output_usd_per_mtok": 12,
+      "input_usd_per_mtok_over_200k": 4,
+      "output_usd_per_mtok_over_200k": 18,
+      "cache_read_usd_per_mtok": 0.2,
+      "cache_read_usd_per_mtok_over_200k": 0.4,
+      "long_context_threshold_tokens": 200000,
+      "price_basis": "api_list",
+      "price_verified_on": "2026-08-17",
+      "price_source": "https://ai.google.dev/gemini-api/docs/pricing",
+      "preview": true
+    },
+    "claude-sonnet-5": {
+      "route": "anthropic",
+      "input_usd_per_mtok": 2,
+      "output_usd_per_mtok": 10,
+      "cache_read_usd_per_mtok": 0.2,
+      "cache_write_usd_per_mtok": 2.5,
+      "price_basis": "api_list_equivalent",
+      "price_verified_on": "2026-09-23",
+      "price_source": "registry da empresa (company-claude-config/registry/models.md, verificado em 21/09/2026: «$2/$10 por MTok (preço padrão — período intro encerrado 2026-08-31)») e skill claude-api (tabela de modelos: $2,00/$10,00). Cache pelos multiplicadores da skill claude-api (leitura ~0,1×, escrita 5 min ~1,25× da entrada).",
+      "tokenizer_family": "claude-4.7-plus",
+      "tokenizer_note": "Mesma família do Opus 5; trocar de tier não muda a contagem de tokens, só o preço por token.",
+      "runtime_note": "US$ 2/US$ 10 por MTok é o preço PADRÃO desde 31/ago/2026 (o registry da empresa encerrou o período intro nessa data; o US$ 3/US$ 15 que o Top10 anotou em 20/ago saiu). Entrou no catálogo do Top10 em 20/ago/2026 como destino de FALLBACK do julgamento visual; desde 09/set/2026 é o modelo FIXO do qc-visual por ordem do dono de lá — ver agentes.qc-visual."
+    },
+    "gemini-3-pro-image": {
+      "route": "google_api",
+      "price_basis": "provider_usage_receipt",
+      "runtime_note": "Imagem 4K/16:9; escolha explícita do Mateus em 05/set/2026, piloto brasil-portugues. Sem preço estimado não verificado."
+    },
+    "gemini-3.1-flash-image": {
+      "route": "google_api",
+      "price_basis": "provider_usage_receipt",
+      "runtime_note": "Imagem 4K/16:9; escolha explícita do Mateus em 05/set/2026, piloto brasil-portugues. Sem preço estimado não verificado."
+    },
+    "claude-fable-5-1": {
+      "route": "anthropic",
+      "input_usd_per_mtok": 10,
+      "output_usd_per_mtok": 50,
+      "cache_read_usd_per_mtok": 0.25,
+      "price_basis": "api_list_equivalent",
+      "price_verified_on": "2026-09-23",
+      "price_source": "skill claude-api (shared/models.md: «same per-token price ($10/$50 per MTok; cache reads $0.25/MTok)») e registry da empresa de 21/09/2026",
+      "runtime_note": "Sucessor do Fable 5 no mesmo nível e preço. Aqui o modelo sai da sessão do Claude Code do dono; esta linha é referência."
+    },
+    "claude-opus-5-5": {
+      "route": "anthropic",
+      "input_usd_per_mtok": 4,
+      "output_usd_per_mtok": 20,
+      "cache_read_usd_per_mtok": 0.2,
+      "price_basis": "api_list_equivalent",
+      "price_verified_on": "2026-09-23",
+      "price_source": "skill claude-api (tabela de modelos e seção «Claude Opus 5.5»: «$4 / $20 per MTok, cache reads $0.20»). O registry da empresa de 21/09/2026 ainda não lista o Opus 5.5 — atualizar o registry na próxima revisão.",
+      "runtime_note": "Sucessor do Opus 5, mais barato (US$ 4/US$ 20). A skill claude-api o marca como «launching»; o esforço padrão dele é medium (um abaixo do Opus 5), por isso os papéis declaram effort explícito. Aqui o modelo sai da sessão do Claude Code do dono; esta linha é referência."
+    },
+    "gemini-3.1-pro": {
+      "route": "google_api",
+      "price_basis": null,
+      "price_verified_on": null,
+      "runtime_note": "GA desde fev/2026 (registry da empresa, 21/09/2026). Preço não reconferido no porte: o do -preview (Top10, 17/08) está na entrada gemini-3.1-pro-preview. Confirmar o ID exato em ai.google.dev antes de dar executor à rota."
+    }
+  },
+  "papeis": {
+    "arte": {
+      "modelo": "claude-fable-5-1",
+      "effort": "high",
+      "env": "MODELO_ARTE",
+      "quem_usa": [
+        "arquiteto-de-marca",
+        "editor-de-arte",
+        "diretor-de-arte"
+      ],
+      "porque": "Concepção visual e execução de cenas que exigem metáfora, composição ou linguagem gráfica inédita. Julgamento, geometria factual e correção cirúrgica pertencem a outros papéis.",
+      "modelo_top10": "claude-fable-5"
+    },
+    "julgamento": {
+      "modelo": "claude-opus-5-5",
+      "effort": "high",
+      "env": "MODELO_JULGAMENTO",
+      "quem_usa": [
+        "analista-de-audiencia",
+        "analista-de-videos",
+        "qc-visual",
+        "critico-de-roteiro",
+        "qa-montagem",
+        "revisor-criativo",
+        "verificador-de-fatos"
+      ],
+      "porque": "Avaliar artefato pronto, aplicar critérios e emitir veredito rastreável. PRESERVAR e AJUSTAR permanecem neste fluxo; RECRIAR escala para o papel de arte.",
+      "modelo_top10": "claude-opus-5"
+    },
+    "conserto": {
+      "modelo": "claude-opus-5-5",
+      "effort": "high",
+      "env": "MODELO_CONSERTO",
+      "quem_usa": [],
+      "porque": "Correção cirúrgica de cena existente: reposicionar, reescalar, ajustar timing, margens e elementos órfãos segundo diagnóstico já emitido. Não inclui recriação visual.",
+      "escala_para": "arte",
+      "quando_escalar": "o achado exige INVENTAR imagem nova — desenhar geometria que não existe, trocar a metáfora da cena, redesenhar um elemento em vocabulário novo. Aí é RECRIAR, e RECRIAR é do Fable. A separação já existia no revisor-criativo (PRESERVAR/AJUSTAR/RECRIAR); aqui ela passa a valer também no conserto em lote.",
+      "modelo_top10": "claude-opus-5"
+    },
+    "decisao": {
+      "modelo": "claude-opus-5-5",
+      "effort": "high",
+      "env": "MODELO_DECISAO",
+      "quem_usa": [
+        "arquiteto-de-canais",
+        "montador",
+        "regente-de-imagem",
+        "mapista",
+        "designer-de-navegacao",
+        "designer-de-post",
+        "reaproveitador-de-cenas",
+        "recortador-de-shorts"
+      ],
+      "porque": "Selecionar entradas, enquadramento e encaminhamento com base em fatos e contratos. Erro neste papel propaga para as etapas seguintes.",
+      "modelo_top10": "claude-opus-5"
+    },
+    "escrita": {
+      "modelo": "claude-opus-5-5",
+      "effort": "high",
+      "env": "MODELO_ESCRITA",
+      "quem_usa": [
+        "roteirista",
+        "redator-de-tela",
+        "social-media",
+        "tradutor-de-narracao",
+        "tradutor-de-tela",
+        "curador-titulos-thumbs"
+      ],
+      "porque": "Produzir texto público aderente à voz, ao contrato editorial e às evidências do canal.",
+      "modelo_top10": "claude-opus-5"
+    },
+    "coleta": {
+      "modelo": "claude-opus-5-5",
+      "effort": "medium",
+      "env": "MODELO_COLETA",
+      "quem_usa": [
+        "pesquisa-imagens",
+        "pesquisa-dados",
+        "pesquisa-geo",
+        "pesquisa-logos",
+        "pesquisa-pessoas",
+        "pesquisa-documentos",
+        "pesquisador-de-pauta",
+        "tecnico-stock"
+      ],
+      "porque": "Localizar, adquirir e verificar mídia e dados reais. Identidade, aderência semântica, procedência e cobertura da fonte são critérios de aceitação obrigatórios.",
+      "modelo_top10": "claude-opus-5"
+    },
+    "packaging-texto": {
+      "modelo": "gemini-3.1-pro",
+      "effort": "high",
+      "execution_policy": "deterministic_first",
+      "porque": "Packaging admitido após entrega XML confirmada; imagens somente após escolha humana dos três títulos.",
+      "env": "MODELO_PACKAGING_TEXTO",
+      "quem_usa": [],
+      "executor": null,
+      "modelo_top10": "gemini-3.1-pro-preview"
+    },
+    "packaging-pro": {
+      "modelo": "gemini-3-pro-image",
+      "effort": "high",
+      "execution_policy": "deterministic_first",
+      "porque": "Packaging admitido após entrega XML confirmada; imagens somente após escolha humana dos três títulos.",
+      "env": "MODELO_PACKAGING_PRO",
+      "quem_usa": [],
+      "executor": null
+    }
+  },
+  "agentes": {
+    "qc-visual": {
+      "modelo": "claude-sonnet-5",
+      "effort": "high",
+      "porque": "No Top10, ordem do Mateus (09/set/2026) por causa das cotas DELE: o QC de cena rodava só em Sonnet 5, esforço alto. Aqui é referência; o dono do canal decide."
+    },
+    "roteirista": {
+      "modelo": "claude-fable-5-1",
+      "effort": "high",
+      "porque": "Decisão do Mateus (23/09/2026, template/.claude/agents/_modelos.json): o roteirista enxuto escreve com Fable. O papel dele continua sendo escrita; o modelo é a exceção declarada aqui, como a do qc-visual."
+    }
+  }
+}

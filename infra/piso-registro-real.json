@@ -1,0 +1,66 @@
+{
+  "_porte": {
+    "origem": "top10-estudio/infra/piso-registro-real.json",
+    "commit": "4afda12",
+    "portado_em": "2026-09-23",
+    "o_que_mudou": [
+      "O piso de mídia real é DECISÃO DO DONO DO CANAL. O do Top10 (50%, Mateus em 16/set/2026) não vale aqui: piso fica null, sem decidido_por, e o gate scripts/qc-piso-real.mjs mede, imprime a parcela e diz NÃO SE APLICA (exit 0) até o dono preencher piso + decidido_por.",
+      "recomendado = 35 (alvo 45): a MEDIÇÃO da Holding sobre 39 espelhos do Top10 (16/09/2026), guardada como ponto de partida para a decisão do dono, não como régua. O gate só a usa se chamado com --duro (e lib/piso-real.mjs exige um recomendado válido no arquivo). O 50 do Top10 é DECISÃO do Mateus para o canal DELE e não sobe: fica só em referencia_top10.",
+      "SAIU: a exceção do Top10 (estreito-de-ormuz) e as receitas `top10 espelhar`/estações. Quem lê este arquivo: scripts/qc-piso-real.mjs, pela régua scripts/lib/piso-real.mjs (lerConfig)."
+    ]
+  },
+  "_leia": [
+    "O PISO DE IMAGEM DO MUNDO NO ESPELHO, EM SEGUNDOS — DONO ÚNICO DO NÚMERO. Quem precisa dele LÊ AQUI.",
+    "",
+    "A RÉGUA (scripts/lib/piso-real.mjs): segundos das cenas de cobertura com `midia` footage|foto|drone,",
+    "`modo` fora de documento|mapa|mapa3d e pedido que diz o que buscar (midia_termos ou midia_necessidade),",
+    "divididos pelos segundos de cobertura (fora titulo-topico, navegacao, nenhum e anima:false).",
+    "",
+    "Com `piso` preenchido E `decidido_por`, o gate REPROVA (exit 1) o espelho abaixo dele. `piso` preenchido sem",
+    "`decidido_por` faz o gate sair 2 (INDEFINIDO). Com `piso` null, o gate mede e diz NÃO SE APLICA (exit 0);",
+    "o `recomendado` só entra com `--duro`, a pedido.",
+    "",
+    "⚠️ NÃO REPITA ESTES NÚMEROS EM NENHUM OUTRO DOCUMENTO. A doutrina aponta para cá (ARTE-323).",
+    "",
+    "EXCEÇÃO DE PROJETO: só aqui, em `excecoes[]`, com slug, motivo, decidido_por e em. Exceção escrita no espelho não vale."
+  ],
+  "unidade": "% do tempo de cobertura do espelho",
+  "lei": "ARTE-323",
+  "piso": null,
+  "decidido_por": null,
+  "decidido_em": null,
+  "escopo": "espelhos de vídeos novos deste canal, a partir da decisão do dono",
+  "recomendado": {
+    "piso": 35,
+    "alvo": 45,
+    "por": "acervo do Top10, 39 espelhos, 16/set/2026 (banda vazia 33,4–40,6%; alvo = P75) — Holding",
+    "em": "2026-09-16",
+    "por_que": [
+      "Ponto de partida MEDIDO no acervo do Top10, não decisão: o dono deste canal decide o número; até lá o gate diz NÃO SE APLICA.",
+      "Medido no estúdio do Top10 em 2026-09-16, com esta mesma régua (scripts/lib/piso-real.mjs), sobre os",
+      "39 espelhos comparáveis guardados no bucket do Top10 (44 listados;",
+      "fora: 4 compilados e 1 vertical sem `midia`).",
+      "Distribuição: P10 16,9 · P25 23,7 · P50 28,9 · P75 45,0 · P90 53,1.",
+      "O vídeo que o dono reprovou em 16/set (petroleo-foz-do-amazonas) é o ÚLTIMO: 10,6%.",
+      "Abaixo de 30% a distribuição é uma rampa contínua (vizinhos a menos de 1,2 pp): qualquer piso ali",
+      "reprova um vídeo e aprova o vizinho quase igual. A ÚNICA banda vazia da região densa vai de 33,4%",
+      "(planeta-em-meteorito) a 40,6% (fatos-a380); o piso de 35 mora nela, como a ARTE-77 pede.",
+      "O alvo de 45 é o P75 do acervo.",
+      "Custo medido: com 35, 26 dos 39 ficariam abaixo, faltando 2.947 s no total (média 113 s por vídeo);",
+      "com 30, 20 dos 39 e 1.701 s; com 25, 12 dos 39 e 853 s.",
+      "O que NÃO está medido: se a banda vazia separa vídeo bom de ruim. Os rótulos que existem estão",
+      "todos abaixo dela: petroleo 10,6 (reprovado em 16/set), orcas-nao-matam 27,5 (o dono pediu mais",
+      "footage em 03/ago), e os re-espelhos feitos DEPOIS de reclamação por falta de footage —",
+      "paises-baixos-mar 30,0 e nilo-nao-secou 32,3. Se o dono aprovou esses re-espelhos, não sei."
+    ]
+  },
+  "cobertura_minima_s": 240,
+  "excecoes": [],
+  "referencia_top10": {
+    "piso": 50,
+    "decidido_por": "Mateus",
+    "decidido_em": "2026-09-16",
+    "citacao": "Piso de mídia real pode ser 50% eu diria para os próximos/novos, o do Ormuz pode ser só o que puder... E não precisa ser 15-20, pode ser menos",
+    "nota": "decisão do dono do Top10 para o canal DELE; não vale aqui"
+  }
+}

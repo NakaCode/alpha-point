@@ -521,3 +521,93 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       `narracao`, e a pergunta "tela final?" no roteiro de cada vídeo.
 - **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
   5 afetam qualquer um no primeiro `atualizar`.
+
+## 26/09/2026 — os especialistas da pré-v1 instalados num canal v0.1.0 (pré-v1 em `7ab9543`)
+
+### 35. O `.gitattributes` que o `create-regie` escreve não protege os bytes que a procedência mede
+
+- **Problema:** o apoio dos especialistas veio byte a byte do molde, com o sha256 de cada arquivo no `ORIGEM.json`.
+  Duas bandeiras, `assets/flags/mn.svg` e `mn-contorno.svg`, vieram do estúdio com CRLF. O `.gitattributes` do
+  canal (`* text=auto eol=lf`) as gravaria com LF no commit: num clone novo, o sha256 delas deixaria de bater com o
+  `ORIGEM.json`, e a promessa de que o sha256 prova a origem cairia sem ninguém ver. Medido num repositório de
+  teste: com o `.gitattributes` antigo, 134 de 136 arquivos de `assets/` batiam depois do clone; as duas bandeiras
+  não.
+- **O que resolveu:** `assets/** -text` no `.gitattributes` do canal, antes do primeiro commit do apoio. Com ela, 136
+  de 136 batem no clone, com `core.autocrlf` `true` ou `false`. Os outros 364 arquivos novos (agentes, roupas,
+  `scripts/`, `contratos/`, `knowledge/`, `seed/`, `regua/`…) não mudam no commit: o git grava os bytes crus deles.
+- **Para o motor (vale avisar o Lucas Barrios e o Mateus):** a pré-v1 já tem `template/assets/** -text` no `.gitattributes` do próprio
+  motor, com o comentário de 23/09 sobre esta mesma bandeira. Mas o `bin/create-regie:346` escreve no canal só
+  `* text=auto eol=lf` e uma lista de extensões binárias, sem `svg` e sem a regra de `assets/`. Todo canal novo
+  nasce com o mesmo furo.
+- **Por que serve a qualquer canal:** qualquer canal que receba o apoio do molde herda as bandeiras.
+
+### 36. O que a instalação dos especialistas mostrou, e que é do motor e não da roupa
+
+- **Problema:** as roupas deste canal tinham começado a guardar estado de ferramenta ("o `quadro.mjs` cai com PNG
+  acima de 4 MB", "o `qc-pais-bandeira` só conhece nomes em português") e regra de ofício. Nada disso é gosto do
+  canal: vale para qualquer canal nesta máquina, e envelhece na primeira versão nova do motor.
+- **O que resolveu:** a roupa diz o que fazer aqui e aponta para o `CLAUDE.md` ("Os especialistas", "Tropeços
+  conhecidos do apoio"), que se atualiza com o motor. O `marca/agentes/LEIA-ME.md` do canal ganhou essa regra.
+- **Para o motor (vale avisar o Lucas Barrios e o Mateus).** Medido no código ou no canal em 26/09:
+  1. **O `renderizar.mjs` grava cena `4k-native` em 1080p quando falta `--4k`** (DPR 0,5), e o carimbo
+     (`<id>.mp4.de-html`) guarda a resolução. Num canal 4K, um render de prova sem `--4k` obriga a renderizar de
+     novo, e em cena de mapa paga os tiles de novo. As roupas deste canal omitiam o `--4k` nos comandos.
+  2. **A tabela de marcadores traduz `roteiro-<persona>.md` como `out/<proj>/roteiro.md`**, que é o texto que o
+     `narrar` lê. Num canal com folha de pronúncia, esse texto tem aliases (`Gladyshevsky` no lugar de
+     `Gladziszewski`) e números por extenso: usado como grafia de tela ou como objeto do `verificador-de-fatos`,
+     põe o alias na tela. O texto aprovado precisa de um marcador próprio.
+  3. **A roupa do montador no molde põe `drone` como `modo`** (`template/marca/agentes/montador.md:78`). Desde
+     07/ago o `modo` é `aereo-real`, e `drone` só vale em `midia`: o `validar-contrato` reprova (exit 1, medido).
+  4. O `qc-pais-bandeira` compara com uma lista de nomes em português (`CANADÁ`): num canal en-US ele não conta
+     `CANADA`, nem com o npm instalado.
+  5. O `lib/erratas-gravadas.mjs` procura o laudo em `out/<slug>/qc-roteiro/entrada/`. Canal que guarda o dossiê
+     fora de `out/` recebe NÃO MEDIDO.
+  6. O `decupagem/corrigir-nomes.mjs` só corrige `words-final`/`words-limpo`: no faceless, que só tem `words.json`,
+     sai com exit 2.
+  7. O `scripts/lib/motor.mjs`, num canal cujo `motor.caminho` aponta a v0.1.0, diz "atualize o motor para a
+     versão que o canal.json declara" (`MOTOR_SEM_ARQUIVO`) quando falta só a variável `REGIE_MOTOR`. O
+     `stock/lib/ferramentas.mjs` importa o motor no topo (`await`), e o `procedencia-reconciliar` quebra com
+     pilha e exit 1 até sem argumento: parece reprovação.
+  8. O `LEIA-ME.md` das roupas no molde diz que as roupas vêm do Top10 e que o `testes/roupas.test.mjs` as
+     garante. Esse teste só lê `template/marca/agentes/`: num canal, ninguém confere os caminhos das roupas.
+  9. **Para o agent-core:** o `verificador-de-fatos` manda marcar o volátil para reconferir "antes da gravação".
+     No Juneau, a reconferência depois da gravação achou um volátil com prazo (o HB 3 muda a frase se o vídeo sair
+     depois de janeiro de 2027), e ficou a ordem de repetir na véspera de publicar
+     (`roteiros/juneau/volateis-conferidos.md`). "Reconfira na véspera de publicar" serviria a qualquer canal.
+  10. **Para o agent-core (`mapista`):** duas regras que o ofício não tem e que valem em qualquer canal. Saíram da
+      roupa deste canal em 26/09.
+      (a) O MapLibre não lê `var(--…)`: a cena lê os tokens com `getComputedStyle(document.documentElement)`, como
+      o `tok()` da cena de teste do canal (`out/prova-mapa/graphics/landsat-juneau.html`). O molde
+      `src/mapa/moldes/mapa-base.html` traz a cor do território cravada em hex (`#E8B04B`, linha 122).
+      (b) Nunca acrescentar `--disable-gpu` ao Chrome: a rasterização por software cortava pedaços de cena
+      (`src/lib/chrome.mjs:270`). O log que acusa SwiftShader ou llvmpipe vai ao report. Esta está na roupa do
+      Top10 (`template/marca/agentes/mapista.md:393`), não no ofício.
+  11. **Os portões não aceitam o mesmo alvo.** A maioria recebe o slug, mas o `qc-src-existe` só aceita
+      `out/<proj>` ou o HTML e, com o slug, quebra com pilha de `ENOENT` e exit 1 (parece reprovação). O `qc-hex`,
+      o `qc-contrato` e o `shot` saem 2 com o slug, e o 2 é o código de NÃO MEDIDO: quem lê só o código registra
+      como NÃO MEDIDO um portão que mede. O `qc-laudo`, o `qc-cena` e o `qc-midia-real` já aceitam as duas formas;
+      os outros deveriam também, ou sair com um código próprio de uso errado. Medido num canal de teste em 26/09.
+      Nos portões que pedem npm, o aviso de npm vem antes da leitura do alvo e esconde o uso errado.
+  12. **O estado de ferramenta que ainda estava nas roupas foi para o `CLAUDE.md`** ("Tropeços conhecidos do
+      apoio"), em 26/09. A origem de cada linha, lida no código:
+      - `buscar-midia` sem `marca/midia.json`: nenhuma fonte desligada pelo canal e largura mínima de 1600 px
+        (`src/midia/canal.mjs:13` e `:20`; `src/midia/busca.mjs:251`). NARA só com `tipos: ["imagem"]`; LoC e
+        Internet Archive com `desligada`, a LoC por 403 do Cloudflare, `medido_em` 23/09 (`src/midia/fontes.mjs`);
+      - `image.upscale.classic`: nenhuma ocorrência em `src/` nem em `template/scripts/` da pré-v1;
+      - `src/agent/data-tools.mjs`: só `ibgePopEstados` e `worldBank` (linhas 29 e 39);
+      - `src/geo/catalogo.mjs:25-26`: lê `CACHE_GEO()` (`~/.regie/geo`) e `acervo/geojson` do motor, não o
+        `assets/geojson/` do canal;
+      - `scripts/navegacao/gerar.mjs:14-18`: "INOPERANTE NA v1";
+      - relevo e câmera 3D da MapTiler: o `CLAUDE.md` (item 7) registra só um pedido de teste ao `satellite-v2`
+        (200, 25/09), nenhum ao `terrain-rgb-v2`;
+      - `assets/flags/`: as 89 PNG variam de 160 a 2560 px de largura (ffprobe em todas, 26/09). A primeira
+        versão desta linha generalizou a `us.png` (320 × 168) para o conjunto, e o verificador derrubou. As do
+        Juneau, `us.png` (320 × 168) e `ca.png` (320 × 160), são pequenas para o círculo de 640 px da PRANCHA;
+      - PyMuPDF 1.28.0 importa no Python da máquina; nenhum PDF foi rasterizado com ele.
+  13. **Para o agent-core (`editor-de-arte`):** uma lição que só estava na roupa do Top10, e que vale em qualquer
+      canal: na procedência, a `licenca` decide **se** a peça leva crédito, e o `credito_na_tela` decide **como**
+      ele aparece. Confundir os dois ou põe crédito em domínio público (poluindo a tela) ou tira o de CC BY (quebra
+      a licença). Saiu da roupa deste canal em 26/09, porque é ofício, e a roupa aponta para cá até o ofício a ter.
+- **Por que serve a qualquer canal:** os itens 1 a 3 e 8 atingem todo canal 4K, com folha de pronúncia ou com
+  roupa copiada do molde; os itens 4 a 7, todo canal en-US, faceless ou nascido na v0.1.0; os itens 10 a 12,
+  todo canal que despacha o mapista, roda os portões ou escreve roupa.

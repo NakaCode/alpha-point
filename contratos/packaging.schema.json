@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Estado de títulos e thumbnails por entrega XML",
+  "type": "object",
+  "required": ["schema_version", "slug", "entrega", "fonteSha256", "fase", "titulos", "selecao", "jobs", "comandos", "tentativas"],
+  "properties": {
+    "schema_version": {"const": "1.1.0", "description": "Estado atual: toda geração e revisão usa exclusivamente Pro."},
+    "slug": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,119}$"},
+    "entrega": {"type": "object"},
+    "fonteSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "fase": {"enum": ["titulos_pendentes", "titulos_executando", "titulos_incerto", "aguardando_titulos", "conceitos_pendentes", "conceitos_executando", "conceitos_incerto", "gerando_thumbs", "aguardando_thumbs", "requer_atencao"]},
+    "titulos": {"type": "array", "maxItems": 20},
+    "selecao": {"type": ["object", "null"]},
+    "jobs": {"type": "array", "items": {"type": "object", "required": ["id", "thumbId", "tituloId", "papel", "status", "revisao", "pai"], "properties": {
+      "id": {"type": "string", "pattern": "^[ABC][1-5]-v[1-9][0-9]*$"},
+      "papel": {"const": "packaging-pro"},
+      "status": {"enum": ["pendente", "executando", "concluido", "incerto"]},
+      "migracoesRota": {"type": "array", "items": {"type": "object", "required": ["de", "para", "motivo", "em"], "properties": {
+        "de": {"const": "packaging-flash"},
+        "para": {"const": "packaging-pro"},
+        "motivo": {"const": "politica_pro_exclusiva"},
+        "em": {"type": "string"}
+      }}}
+    }}},
+    "comandos": {"type": "array"},
+    "tentativas": {"type": "array"}
+  }
+}

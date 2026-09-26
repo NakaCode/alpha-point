@@ -1,0 +1,55 @@
+{
+  "$id": "decupagem.schema.json",
+  "title": "Decupagem do vídeo pré-editado — Estúdio Top10",
+  "description": "Saída de scripts/analisar-video-editado.mjs, enriquecida pelo montador (tipo/qualidade/veredito/motivo). FIN-01: recorrente (2+) é presunção de TROCA — silêncio/manter-por-default não é aceito sem motivo.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "src": { "type": "string" },
+    "dur": { "type": "number" },
+    "n": { "type": "integer" },
+    "gerado": { "type": "string" },
+    "dhashLimiar": { "type": "number" },
+    "segmentos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "i": { "type": "integer", "description": "índice do plano (0-based, ordem cronológica)" },
+          "inSec": { "type": "number" },
+          "outSec": { "type": "number" },
+          "dur": { "type": "number" },
+          "narracao": { "type": "string", "description": "trecho de words.json coberto por este plano (até 240 chars)" },
+          "frame": { "type": "string", "description": "path do frame extraído (meio do plano)" },
+          "tipo": {
+            "type": "string",
+            "enum": ["?", "apresentador", "footage", "imagem", "reportagem-antiga", "vazio"],
+            "description": "\"?\" = ainda não classificado (o montador preenche olhando o frame/mosaico)"
+          },
+          "qualidade": {
+            "type": ["string", "null"],
+            "enum": ["boa", "fraca", "generica", null],
+            "description": "julgamento ATIVO do montador — nunca deixar null num plano já classificado (tipo != \"?\"). \"boa\" = ilustra bem de verdade, mantém padrão do canal. \"fraca\" = baixa qualidade/produção amadora. \"generica\" = presente mas não diz nada específico (stock genérico, mapa cinza chapado)."
+          },
+          "recorrente": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "description": "índices de OUTROS planos visualmente quase-idênticos (dHash automático, scripts/analisar-video-editado.mjs). Presença aqui (2+ planos) é sinal FORTE de gráfico/ilustração reciclado pela equipe — FIN-01: presunção de veredito=trocar, a menos que motivo declare por que manter mesmo assim."
+          },
+          "veredito": {
+            "type": ["string", "null"],
+            "enum": ["manter", "trocar", "recompor", "converter", null],
+            "description": "a decisão do montador para este plano (vocabulário de knowledge/DEPARTAMENTOS + montador.md). \"adicionar\" não existe aqui — isso é decidido no espelho.json para BURACOS entre planos, não para um plano existente."
+          },
+          "motivo": {
+            "type": ["string", "null"],
+            "description": "por que esse veredito — obrigatório quando veredito != null. Se recorrente não-vazio e veredito=\"manter\", o motivo tem que justificar explicitamente por que manter mesmo reciclado (ex.: apresentador falando, não a ilustração)."
+          }
+        },
+        "required": ["i", "inSec", "outSec", "dur", "narracao", "frame", "tipo", "recorrente"]
+      }
+    }
+  },
+  "required": ["src", "dur", "n", "segmentos"]
+}

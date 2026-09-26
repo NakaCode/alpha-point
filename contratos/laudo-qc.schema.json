@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://estudio.top10/contratos/laudo-qc.schema.json",
+  "title": "Laudo de QC — painel de críticos (Estúdio Top10)",
+  "description": "Veredito consolidado de UMA cena. Baseado em src/agent/criticos.mjs: cada lente = um crítico do PAINEL (foco único); nota 0-10; aprovado quando nenhuma lente reprova (nota<7) e nenhum gate DURO (colisão/tamanho/crédito-fantasma) vivo. Um laudo com aprovado:false só passa no gate se trouxer resolvido:true E motivo.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "cena": {
+      "type": "string"
+    },
+    "aprovado": {
+      "type": "boolean"
+    },
+    "resolvido": {
+      "type": "boolean",
+      "description": "Reconciliação de um laudo com aprovado:false — o gate scripts/qc-laudo.mjs lê ESTE campo. Marcar true sem `motivo` é o mesmo que apagar o laudo pra passar no gate."
+    },
+    "motivo": {
+      "type": "string",
+      "minLength": 8,
+      "description": "Por que a cena reprovada pode seguir. Obrigatório em prosa pelo qc-laudo.mjs; agora também pelo contrato."
+    },
+    "gatesDuros": {
+      "type": "array",
+      "description": "Nomes dos gates determinísticos (bbox/px medido) ainda reprovando — colisao, tamanho, fonte...",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lentes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "lente": {
+            "type": "string",
+            "description": "As 14 lentes canônicas (knowledge/qc/lentes.md). As 5 últimas nasceram do feedback de jul/2026: cobertura (ARTE-88, a coisa nomeada aparece em imagem real), cadencia (ARTE-89, footage troca antes de ~8s), autoria (ARTE-91, capa/logo/embalagem se busca e nunca se desenha), camadas (ARTE-90, lente de OPORTUNIDADE — piso 7, nunca reprova) e circulo (ROT-48 na tela, a cena repete o que a irmã já mostrou).",
+            "enum": [
+              "espaco",
+              "factual",
+              "wordlock",
+              "abordagem",
+              "acessibilidade",
+              "poluicao",
+              "motion",
+              "fonte",
+              "tema",
+              "cobertura",
+              "cadencia",
+              "autoria",
+              "camadas",
+              "circulo"
+            ]
+          },
+          "nota": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "problemas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "correcoes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "origem": {
+            "type": "string",
+            "enum": [
+              "julgada",
+              "herdada"
+            ],
+            "description": "`julgada` = o modelo olhou os frames DESTA geração do HTML. `herdada` = a nota veio do laudo da geração anterior porque o re-julgamento foi incremental. Ausente em laudo antigo, que é sempre integralmente julgado."
+          },
+          "herdada_de": {
+            "type": "string",
+            "description": "sha256 do HTML que produziu a nota herdada. Existe para o laudo dizer sobre QUE arquivo aquela lente se pronunciou."
+          }
+        },
+        "required": [
+          "lente",
+          "nota",
+          "problemas",
+          "correcoes"
+        ]
+      }
+    },
+    "julgamento": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Como esta passada foi feita. Re-julgar as 14 lentes sobre 11 frames a cada rodada custava ~17 min por cena mesmo quando a cena voltou por UMA lente (medido na estudio-top10, 19-20/ago/2026).",
+      "properties": {
+        "modo": {
+          "type": "string",
+          "enum": [
+            "completo",
+            "incremental"
+          ]
+        },
+        "lentes_julgadas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lentes_herdadas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rodadas_incrementais": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Quantas passadas incrementais seguidas esta cena acumulou. Ao bater o teto, a próxima volta a ser completa — nota herdada não pode envelhecer indefinidamente."
+        },
+        "porque": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "modo",
+        "lentes_julgadas",
+        "lentes_herdadas"
+      ]
+    }
+  },
+  "required": [
+    "cena",
+    "aprovado",
+    "gatesDuros",
+    "lentes"
+  ]
+}

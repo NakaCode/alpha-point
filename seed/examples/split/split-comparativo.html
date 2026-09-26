@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+<!-- [porte Regie] Origem: top10-estudio/seed/examples/split/split-comparativo.html, commit 4afda12. Molde de partida do modo: copie a ESTRUTURA.
+  A fonte e as cores vêm da marca do canal (marca/tokens.css, ligado pelo <link> abaixo; a cena mora em
+  out/<proj>/graphics/, por isso ../../../). O que era Neue Haas e hex do Top10 virou var(--fonte) e tokens.
+  ⚠ PALCO 1920×1080 (legado): este molde NÃO é 4K-nativo. Copiar os números dele produz cena na metade do tamanho; portar para 4K é trabalho novo (pendência registrada). -->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  TEMPLATE REUTILIZÁVEL · SPLIT COMPARATIVO (M08) — tela dividida ESQ × DIR
+  Usar quando o CONTRASTE é a mensagem: vídeo×vídeo, antes×depois, X×Y (Heathrow×Guarulhos,
+  carro×avião). O Diretor preenche cada lado com <img> OU <video> OU um mini-cenário SVG,
+  os rótulos grandes e o veredito central opcional. Divisor entra animado (wipe).
+  Regras v5: ROUPA-CENA.md (profundidade em cada lado, movimento contínuo, guard-rail:
+  os 2 rótulos + veredito = 3 blocos, word-lock nos data-in).
+═══════════════════════════════════════════════════════════════════════════ -->
+<style>
+  :root{
+    --bgL1:#173A5C; --bgL2:#0B2138;        /* fundo do lado ESQ (tema) */
+    --bgR1:#5C2A17; --bgR2:#381509;        /* fundo do lado DIR (tema) */
+    --acL:#5FB6D6; --acR:#F4A62A;          /* acento de cada lado */
+    /* [porte Regie] --texto vem de marca/tokens.css */ --divisor:var(--texto);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:#06090F;}
+  #stage{position:relative;width:1920px;height:1080px;overflow:hidden;
+    font-family:var(--fonte);color:var(--texto);} /* [porte Regie] */
+  .lado{position:absolute;top:0;bottom:0;width:960px;overflow:hidden;}
+  #ladoL{left:0;background:radial-gradient(120% 100% at 70% 42%,var(--bgL1) 0%,var(--bgL2) 100%);}
+  #ladoR{left:960px;background:radial-gradient(120% 100% at 30% 42%,var(--bgR1) 0%,var(--bgR2) 100%);}
+  .midia{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92;}
+  .scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,8,14,.72) 0%,rgba(3,8,14,.08) 45%);}
+  .rotulo{position:absolute;left:0;right:0;bottom:96px;text-align:center;font-weight:800;font-size:74px;
+    letter-spacing:-.01em;text-shadow:0 4px 22px rgba(0,0,0,.8);opacity:0;}
+  #rotL b{color:var(--acL);} #rotR b{color:var(--acR);}
+  .sub{display:block;font-size:42px;font-weight:700;color:#C9D6E4;margin-top:10px;}
+  /* divisor central animado */
+  #div{position:absolute;left:952px;top:0;bottom:0;width:16px;background:linear-gradient(180deg,transparent,var(--divisor) 18%,var(--divisor) 82%,transparent);
+    box-shadow:0 0 34px rgba(255,255,255,.45);opacity:0;}
+  #vs{position:absolute;left:0;right:0;top:84px;text-align:center;opacity:0;}
+  #vs span{display:inline-block;font-size:64px;font-weight:800;background:var(--texto);color:#0B1622;
+    padding:10px 34px;border-radius:52px;box-shadow:0 14px 40px rgba(0,0,0,.5);}
+  /* veredito central opcional (conclusão word-locked) */
+  #veredito{position:absolute;left:0;right:0;bottom:0;top:auto;height:0;display:flex;align-items:center;justify-content:center;opacity:0;}
+  #veredito span{font-size:56px;font-weight:800;background:rgba(8,16,26,.88);padding:16px 44px;border-radius:18px;
+    box-shadow:0 16px 44px rgba(0,0,0,.55);}
+  #vin{position:absolute;inset:0;background:radial-gradient(135% 115% at 50% 46%,transparent 52%,rgba(0,0,0,.5) 100%);pointer-events:none;}
+</style></head><body><div id="stage">
+  <div class="lado" id="ladoL">
+    <!-- MÍDIA/CENÁRIO ESQ: <img class="midia"> ou <video class="midia"> ou SVG de cenário -->
+    <img class="midia" id="mL" style="display:none">
+    <div class="scrim"></div>
+    <div class="rotulo lbl" id="rotL" data-in="1.0"><b>LADO A</b><span class="sub">contexto curto</span></div>
+  </div>
+  <div class="lado" id="ladoR">
+    <img class="midia" id="mR" style="display:none">
+    <div class="scrim"></div>
+    <div class="rotulo lbl" id="rotR" data-in="2.2"><b>LADO B</b><span class="sub">contexto curto</span></div>
+  </div>
+  <div id="div"></div>
+  <div id="vs" class="lbl"><span>×</span></div>
+  <div id="veredito" class="lbl" data-in="6.5" style="top:872px;"><span>veredito word-locked aqui</span></div>
+  <div id="vin"></div>
+</div>
+<script>
+var DUR=10; window.__duracao=DUR;                 // o Diretor ajusta pra janela real
+var E=function(id){return document.getElementById(id);};
+function cl(v,a,b){return v<a?a:v>b?b:v;}
+function eo(t){t=cl(t,0,1);return 1-Math.pow(1-t,3);}
+function eb(t){t=cl(t,0,1);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+function seg(t,a,d){return cl((t-a)/d,0,1);}
+window.__fotosProntas=true;                        // vira gate real se usar <img>/<video>
+
+window.__renderAt=function(t){
+  // wipe de abertura: lados entram de fora pra dentro + divisor acende
+  var wL=eb(seg(t,0.15,0.8)), wR=eb(seg(t,0.35,0.8));
+  var L=E('ladoL'), R=E('ladoR');
+  if(L) L.style.transform='translateX('+((-1+wL)*180).toFixed(1)+'px)';
+  if(R) R.style.transform='translateX('+((1-wR)*180).toFixed(1)+'px)';
+  if(L) L.style.opacity=wL.toFixed(3); if(R) R.style.opacity=wR.toFixed(3);
+  var dv=E('div'); if(dv){dv.style.opacity=eo(seg(t,0.8,0.5)).toFixed(3);
+    dv.style.boxShadow='0 0 '+(26+10*Math.sin(t*2.4)).toFixed(0)+'px rgba(255,255,255,.45)';}
+  var vs=E('vs'); var vp=eb(seg(t,1.0,0.6));
+  if(vs){vs.style.opacity=vp.toFixed(3); vs.style.transform='scale('+(0.8+0.2*vp+0.02*Math.sin(t*2.2)).toFixed(3)+')';}
+  // Ken Burns contínuo em cada mídia (movimento sempre)
+  var z=1.05+0.05*(t/DUR);
+  var mL=E('mL'); if(mL&&mL.style.display!=='none') mL.style.transform='scale('+z.toFixed(4)+')';
+  var mR=E('mR'); if(mR&&mR.style.display!=='none') mR.style.transform='scale('+(z+0.01).toFixed(4)+')';
+  // rótulos e veredito word-locked (data-in)
+  [].slice.call(document.querySelectorAll('[data-in]')).forEach(function(el){
+    var ti=+el.getAttribute('data-in'); var p=eb(seg(t,ti,0.7));
+    el.style.opacity=p.toFixed(3);
+    if(el.id!=='veredito') el.style.transform='translateY('+((1-p)*24).toFixed(1)+'px)';
+  });
+};
+window.__prepararCaptura=function(){window.__renderAt(0);};
+window.__renderAt(0);
+</script></body></html>

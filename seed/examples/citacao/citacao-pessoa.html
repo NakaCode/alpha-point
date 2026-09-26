@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="pt-BR" data-render="4k-native"><head><meta charset="utf-8">
+<!-- [porte Regie] Origem: top10-estudio/seed/examples/citacao/citacao-pessoa.html, commit 4afda12. Molde de partida do modo: copie a ESTRUTURA.
+  A fonte e as cores vêm da marca do canal (marca/tokens.css, ligado pelo <link> abaixo; a cena mora em
+  out/<proj>/graphics/, por isso ../../../). O que era Neue Haas e hex do Top10 virou var(--fonte) e tokens. -->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  TEMPLATE REUTILIZÁVEL · CITAÇÃO DE PESSOA REAL
+  PALCO 3840×2160 (4K-NATIVO, REND-13) — portado em 22/jul/2026. Todas as medidas estão em
+  coordenadas 4K; NÃO use canvas HiDPI/ctx.setTransform aqui. Pisos do QC dobrados: 260/104/72/72.
+  Usar quando o roteiro CITA uma pessoa (executivo, autoridade, especialista).
+  O agente [citador-pessoas] preenche:
+    • #foto  → foto REAL (LinkedIn / site oficial da empresa / gov / instituição), recortada + upscalada 4K.
+              ROSTO INTEIRO no quadro, nunca decapitar. NUNCA fabricar rosto.
+    • #nome / #cargo → nome + função (caixa de acento — regra 16 do canal; SEM anos de vida)
+    • .falaLine → a citação em blocos curtos (grife com <span class="hl"> o trecho-chave)
+    • :root   → paleta do TEMA (o Diretor injeta as cores do vídeo — ADAPTÁVEL)
+  ORNAMENTO: a aspa (#aspa) leva `data-qc-ornamento` — glifo decorativo com line-height .7 tem BBOX
+  muito maior que a tinta que desenha, e o check-overlap acusava colisão com a 1ª linha da fala sem
+  sobreposição visual nenhuma (conferido à vista, frame t=7,5s: a aspa fica ACIMA do texto).
+  O atributo tira o elemento da checagem, e o gate REPORTA quantos ornamentos ignorou — não é
+  escapatória silenciosa. Use só em glifo decorativo, nunca em texto que o espectador lê.
+  GUARD-RAIL: conta 2 blocos-de-info (card da pessoa + a fala). Nunca vira sopa de rótulos.
+  Animação PADRÃO (fixa entre temas): foto revela+Ken Burns, nome/cargo sobem, aspas gigantes,
+  fala revela em blocos word-locked, MOVIMENTO contínuo (push-in, float, pulso do acento).
+═══════════════════════════════════════════════════════════════════════════ -->
+<style>
+  :root{
+    /* [porte Regie] --acento, --texto e --sec vêm de marca/tokens.css; aqui só os apelidos deste molde */
+    --bg1:var(--painel); --bg2:var(--fundo); --bg3:color-mix(in srgb,var(--fundo) 70%,#000);
+    --acento2:var(--dado);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:3840px;height:2160px;overflow:hidden;background:var(--bg3);}
+  #stage{position:relative;width:3840px;height:2160px;overflow:hidden;
+    font-family:var(--fonte);color:var(--texto); /* [porte Regie] */
+    background:radial-gradient(120% 100% at 34% 42%,var(--bg1) 0%,var(--bg2) 52%,var(--bg3) 100%);}
+  #glow{position:absolute;inset:0;background:radial-gradient(48% 46% at 30% 44%,color-mix(in srgb,var(--acento) 16%,transparent) 0%,transparent 60%);}
+  #vin{position:absolute;inset:0;background:radial-gradient(130% 110% at 42% 46%,transparent 44%,rgba(2,8,14,.82) 100%);pointer-events:none;}
+  /* ENQUADRAMENTO (22/jul): a FALA é texto-herói (piso 260px), então ela manda no layout.
+     O retrato encolheu de 1240 → 980 de largura pra fala ganhar ~360px de linha. Decisão do
+     Mateus na pendência 6, que previa "mexe no template e no enquadramento". */
+  #fotoWrap{position:absolute;left:240px;top:360px;width:980px;height:1234px;border-radius:52px;overflow:hidden;
+    box-shadow:0 60px 180px rgba(0,0,0,.55),0 0 0 6px color-mix(in srgb,var(--acento) 55%,transparent);opacity:0;}
+  #foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%;will-change:transform;}
+  #fotoScrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,14,24,.92) 0%,rgba(4,14,24,0) 42%);}
+  #ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1c3350,#0e2033);}
+  /* card da pessoa (nome+cargo) = 1 bloco-de-info */
+  #nomeBox{position:absolute;left:240px;top:1660px;max-width:1080px;opacity:0;}
+  #nome{display:inline-block;background:var(--acento);color:#fff;font-size:112px;font-weight:800;padding:16px 48px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+  #cargo{display:block;margin-top:28px;margin-left:12px;font-size:104px;font-weight:700;line-height:1.14;color:var(--sec);} /* 104 = piso de rótulo; era 80 e passava só porque o gate não media */
+  /* a fala = 1 bloco-de-info, e é o HERÓI da cena */
+  #aspa{position:absolute;left:1300px;top:430px;font-size:560px;line-height:.7;font-weight:800;color:var(--acento);opacity:0;font-family:Georgia,serif;}
+  #falaWrap{position:absolute;left:1360px;top:760px;width:2240px;opacity:0;}
+  .falaLine{display:block;font-size:260px;font-weight:800;line-height:1.1;letter-spacing:-.015em;margin-bottom:36px;opacity:0;text-shadow:0 6px 40px rgba(0,0,0,.5);}
+  .falaLine .hl{color:var(--acento2);}
+</style></head><body><div id="stage">
+  <div id="glow"></div>
+
+  <div id="fotoWrap">
+    <!-- FOTO REAL AQUI: o caçador-pessoas troca por <img id="foto" src="URL"> visível -->
+    <div id="ph"><svg width="720" height="880" viewBox="0 0 360 440"><g fill="none" stroke="#3a556f" stroke-width="10"><circle cx="180" cy="150" r="92"/><path d="M46 430 C 60 300 120 262 180 262 C 240 262 300 300 314 430"/></g><text x="180" y="410" fill="#5b7590" font-size="26" font-family="Helvetica Neue,Arial" font-weight="700" text-anchor="middle">FOTO REAL</text></svg></div>
+    <img id="foto" style="display:none">
+    <div id="fotoScrim"></div>
+  </div>
+
+  <div id="nomeBox" class="lbl"><span id="nome">Nome Sobrenome</span><span id="cargo">Cargo · Empresa/Instituição</span></div>
+
+  <div id="aspa" data-qc-ornamento>&ldquo;</div>
+  <div id="falaWrap" class="lbl">
+    <!-- ORÇAMENTO DE TEXTO a 260px na coluna de 2240px: ~16 caracteres por linha,
+         e cabem 4 LINHAS VISUAIS no total (de y=640 até a margem segura em y=2074).
+         Bloco mais longo que isso quebra em 2 linhas e come o orçamento de outro.
+         Fala longa NÃO encolhe a fonte: corta em mais blocos e usa 2 cenas. -->
+    <span class="falaLine" data-in="1.8">A <span class="hl">fala entra</span></span>
+    <span class="falaLine" data-in="4.2">em blocos,</span>
+    <span class="falaLine" data-in="6.4">word-locked.</span>
+  </div>
+  <div id="vin"></div>
+</div>
+<script>
+var DUR=10; window.__duracao=DUR;              // o Diretor ajusta p/ a janela real da cena
+var E=function(id){return document.getElementById(id);};
+function cl(v,a,b){return v<a?a:v>b?b:v;}
+function eo(t){t=cl(t,0,1);return 1-Math.pow(1-t,3);}
+function eb(t){t=cl(t,0,1);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+function seg(t,a,d){return cl((t-a)/d,0,1);}
+var linhas=[].slice.call(document.querySelectorAll('.falaLine'));
+
+window.__renderAt=function(t){
+  // MOVIMENTO GLOBAL contínuo: push-in lento
+  var st=E('stage'); if(st) st.style.transform='scale('+(1+0.028*(t/DUR)).toFixed(4)+') translate('+(10*Math.sin(t*0.2)).toFixed(1)+'px,0)';
+  // foto: revela (máscara vertical) + Ken Burns + float contínuo
+  var fr=eb(seg(t,0.2,0.9)); var fw=E('fotoWrap');
+  if(fw){fw.style.opacity=fr.toFixed(3); fw.style.clipPath='inset('+((1-fr)*100).toFixed(1)+'% 0 0 0)';}
+  var fo=E('foto'); if(fo){var z=1.08+0.06*(t/DUR); fo.style.transform='scale('+z.toFixed(4)+') translateY('+(8*Math.sin(t*0.7)).toFixed(1)+'px)';}
+  var ph=E('ph'); if(ph) ph.style.transform='scale('+(1.06+0.05*(t/DUR)).toFixed(4)+')';
+  // card nome+cargo sobe
+  var nb=E('nomeBox'); var np=eb(seg(t,0.7,0.7)); if(nb){nb.style.opacity=np.toFixed(3); nb.style.transform='translateY('+((1-np)*52).toFixed(1)+'px)';}
+  // aspas gigantes: escala + pulsa continuamente
+  var ap=E('aspa'); var apn=eb(seg(t,1.3,0.6)); if(ap){ap.style.opacity=(apn*0.9).toFixed(3); ap.style.transform='scale('+(0.7+0.3*apn+0.02*Math.sin(t*2)).toFixed(3)+')';}
+  // a fala (1 bloco): wrapper aparece com a 1ª linha; cada linha entra no seu tempo (word-lock) e sobe
+  var fwr=E('falaWrap'); if(fwr) fwr.style.opacity=eb(seg(t,1.8,0.6)).toFixed(3);
+  for(var i=0;i<linhas.length;i++){var ti=+(linhas[i].getAttribute('data-in')||(2+i*2)); var fp=eb(seg(t,ti,0.7));
+    linhas[i].style.opacity=fp.toFixed(3); linhas[i].style.transform='translateY('+((1-fp)*44).toFixed(1)+'px)';}
+};
+window.__prepararCaptura=function(){window.__renderAt(0);};
+window.__renderAt(0);
+</script></body></html>

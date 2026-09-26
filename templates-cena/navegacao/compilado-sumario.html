@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR" data-render="4k-native">
+<head>
+  <meta charset="utf-8">
+  <!-- [porte Regie] Origem: top10-estudio/templates-cena/navegacao/compilado-sumario.html, commit 4afda12.
+    O que mudou: fonte e cores vêm da marca do canal (marca/tokens.css) — eram Neue Haas e hex do Top10;
+    o kicker "NESTE COMPILADO" e a logo do Top10 viraram dado (__DADOS.kicker, __DADOS.logo; sem logo, o
+    elemento sai); os títulos entram por textContent, como antes; __fotosProntas espera as faces da fonte. -->
+  <link rel="stylesheet" href="../../../marca/tokens.css">
+  <!-- render via capturar-alpha: ProRes 4444 4K nativo -->
+  <style>
+    *{box-sizing:border-box} html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:transparent}
+    #stage{position:relative;width:3840px;height:2160px;font-family:var(--fonte);color:var(--texto)}
+    #painel{position:absolute;left:150px;top:160px;width:2940px;padding:86px 110px 96px;border-radius:44px;background:linear-gradient(145deg,color-mix(in srgb,var(--fundo) 94%,transparent),color-mix(in srgb,var(--painel) 87%,transparent));box-shadow:0 38px 120px rgba(0,0,0,.48),inset 0 0 0 3px color-mix(in srgb,var(--texto) 7%,transparent);opacity:0;overflow:hidden;--drift:0px}
+    #painel::after{content:"";position:absolute;z-index:0;left:-1100px;top:-240px;width:900px;height:2600px;pointer-events:none;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--geo) 7.5%,transparent),color-mix(in srgb,var(--dado) 4.5%,transparent),transparent);transform:translateX(var(--drift)) skewX(-14deg)}
+    #kicker,#lista{position:relative;z-index:1}
+    #kicker{font-size:104px;font-weight:var(--peso-heroi,900);letter-spacing:.12em;color:var(--dado);margin-bottom:54px}
+    .item{display:grid;grid-template-columns:110px 1fr 650px;gap:34px;align-items:center;padding:30px 0;border-top:3px solid color-mix(in srgb,var(--sec) 20%,transparent);opacity:0;transform:translateY(28px)}
+    .num{font-size:82px;font-weight:var(--peso-heroi,900);color:var(--acento)}.titulo{font-size:102px;line-height:1.02;font-weight:var(--peso-heroi,900)}.tempo{font-size:72px;font-weight:var(--peso-heroi,900);letter-spacing:.025em;text-align:right;color:var(--sec)}
+    #logo{position:absolute;right:180px;top:160px;width:330px;height:auto}
+  </style>
+</head><body><main id="stage" data-qc-composicao="índice único; todos os blocos e faixas derivados da timeline" data-qc-sem-heroi="sumário editorial em formato de índice, sem herói único">
+  <section id="painel"><div id="kicker" data-qc-papel="rotulo"></div><div id="lista"></div></section>
+  <img id="logo" alt="">
+</main><script>/*__DADOS__*/</script><script>
+  const D=window.__DADOS||{dur:12,itens:[],kicker:"NESTE COMPILADO",logo:null}; window.__duracao=Number(D.dur)||12;
+  document.getElementById("kicker").textContent=D.kicker||"NESTE COMPILADO";   // [porte Regie]
+  const logo=document.getElementById("logo"); if(D.logo){logo.src=D.logo;} else {logo.remove();}   // [porte Regie]
+  const lista=document.getElementById("lista"); (D.itens||[]).forEach((x,i)=>{const row=document.createElement("div");row.className="item";for(const [c,v] of [["num",String(i+1).padStart(2,"0")],["titulo",x.titulo],["tempo",`${x.inicio} → ${x.fim}`]]){const el=document.createElement("div");el.className=c;el.textContent=v;row.appendChild(el)}lista.appendChild(row)});
+  const clamp=x=>Math.max(0,Math.min(1,x)); const ease=x=>1-Math.pow(1-clamp(x),3);
+  const linhas=[...document.querySelectorAll(".item")];
+  window.__renderAt=function(t){const a=ease(t/.7),b=ease((window.__duracao-t)/.7);const op=Math.min(a,b);const p=document.getElementById("painel");p.style.opacity=op;p.style.transform=`translateX(${(1-a)*-80}px)`;p.style.setProperty("--drift",`${clamp(t/window.__duracao)*4500}px`);linhas.forEach((row,i)=>{const entrada=ease((t-(1.8+i*1.5))/.45);row.style.opacity=Math.min(entrada,b);row.style.transform=`translateY(${(1-entrada)*28}px)`})};
+  window.__fotosProntas=(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>true);   // [porte Regie]
+  window.__prepararCaptura=()=>window.__renderAt(window.__duracao*.5); window.__renderAt(0);
+</script></body></html>

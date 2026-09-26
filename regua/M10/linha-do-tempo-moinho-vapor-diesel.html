@@ -1,0 +1,421 @@
+<!DOCTYPE html><html lang="pt-BR" data-render="4k-native"><head><meta charset="utf-8"><style>
+/* s45 · DO VENTO AO VAPOR, AO DIESEL, À ELETRICIDADE — M10 linha do tempo
+   inSec 348.4 (relógio MASTER pós-realinhamento 04/ago) · dur 19.77 (18.37 + 1.4s pedidos
+   pelo Mateus no fim, mantendo o ritmo — o fecho segura o estado final vivo).
+   Beats deslocados +0.45s: o words.json antigo (B1) estava uniformemente 0.45s adiantado
+   em relação à transcrição verdadeira do master — conferido palavra a palavra em 04/ago.
+   SEM ícone de turbina eólica no "HOJE" (decisão A2): Climate Monitor Waterschappen 2024
+   (Arcadis/Unie van Waterschappen) — eólica é só 12% da energia que os conselhos geram
+   (biogás 66%, solar 14%), cobrindo 62% do consumo; as bombas rodam na REDE. A fonte não
+   sustenta "a água hoje sai por vento".
+   Metáfora (conceito-visual): um revezamento de 200 anos com o MESMO balde — o moinho passa o
+   balde luminoso pra máquina a vapor, que passa pro diesel, que passa pra estação elétrica
+   silenciosa. As mãos mudam de século; o balde nunca toca o chão. A continuidade do gesto É a
+   tese (o balde é O MESMO da s30).
+   Word-lock (−659.92): 0.18–0.58 "século XIX" eixo desenha · 1.40 "moinhos" moinho em foco ·
+   2.26–3.32 "não davam mais conta" pás perdem ritmo/estremecem · 4.08 "entraram" câmera parte ·
+   5.45 "vapor" HANDOFF 1 + rótulo SÉC. XIX · 6.84 "diesel" HANDOFF 2 + SÉC. XX · 8.49–9.79
+   "estações elétricas silenciosas" HANDOFF 3 · 11.95 "hoje." pill HOJE pulsa (estamos aqui) ·
+   12.97 "tecnologia mudou" WIDE: os quatro juntos · 14.49–15.95 "tarefa é a mesma" todos
+   pulsam + linha âmbar liga as eras · 16.59–17.93 "tirar a água sem folga" os fluxos d'água
+   pulsam em uníssono.
+   Cor: NAVY=fundo · TEAL=água · ÂMBAR=o balde e a mão humana. Sem vermelho.
+   Eixo (M10): MOINHOS · SÉC. XIX · SÉC. XX · HOJE — o 1º marco NÃO leva data (QC 04/ago):
+   a fala diz "no século DEZENOVE os moinhos não davam mais conta"; "SÉC. XV" na tela
+   contradizia o áudio e o roteiro nunca data o moinho. Fecho vivo (QC 04/ago): tese
+   destilada na faixa de cima em "tirar a água sem folga" + o balde MERGULHA até o canal
+   no mesmo beat — os últimos 4s deixaram de ser quadro parado. */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:3840px;height:2160px;overflow:hidden;background:#050F1C;}
+#palco{position:relative;width:3840px;height:2160px;overflow:hidden;
+  font-family:"Neue Haas Grotesk Display Pro","Helvetica Neue",Arial,sans-serif;}
+#cam{position:absolute;inset:0;transform-origin:0 0;will-change:transform;}
+#cam > svg{position:absolute;inset:0;width:3840px;height:2160px;overflow:visible;}
+#vig{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 520px 150px rgba(2,8,16,.42);}
+#grain{position:absolute;inset:0;opacity:.13;mix-blend-mode:overlay;pointer-events:none;}
+</style></head><body><div id="palco">
+<div id="cam"><svg viewBox="0 0 3840 2160">
+  <defs>
+    <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0A2138"/><stop offset=".6" stop-color="#071A2E"/><stop offset="1" stop-color="#050F1C"/>
+    </linearGradient>
+    <linearGradient id="aguaG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2EC5B6"/><stop offset=".6" stop-color="#0F5B66"/><stop offset="1" stop-color="#0A3A4C"/>
+    </linearGradient>
+    <linearGradient id="torreG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#123049"/><stop offset="1" stop-color="#0A1D30"/>
+    </linearGradient>
+    <radialGradient id="lumi" cx=".5" cy=".4" r=".8">
+      <stop offset="0" stop-color="#1E5E86" stop-opacity=".4"/><stop offset="1" stop-color="#1E5E86" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="baldeGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFB13D" stop-opacity=".55"/><stop offset="1" stop-color="#FFB13D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="-1000" y="-400" width="6200" height="2960" fill="url(#ceu)"/>
+  <rect x="-1000" y="-400" width="6200" height="2960" fill="url(#lumi)"/>
+  <g id="nuvens" fill="#0D2A42" opacity=".75">
+    <ellipse cx="900" cy="240" rx="500" ry="130"/>
+    <ellipse cx="2800" cy="190" rx="560" ry="140" opacity=".8"/>
+  </g>
+
+  <!-- O CANAL D'ÁGUA (embaixo, contínuo: a tarefa de sempre) -->
+  <g id="canalG">
+    <rect x="-1000" y="1800" width="6200" height="760" fill="url(#aguaG)"/>
+    <path id="sCanal" fill="none" stroke="#7FE8DC" stroke-width="9" opacity=".85"/>
+    <g id="fluxo" fill="#7FE8DC"></g>
+  </g>
+
+  <!-- EIXO DA LINHA DO TEMPO -->
+  <g id="eixoG">
+    <line id="eixo" x1="360" y1="1560" x2="360" y2="1560" stroke="#41586E" stroke-width="10"/>
+    <g id="ticks" stroke="#41586E" stroke-width="8"></g>
+  </g>
+
+  <!-- fluxos de elevação (cada era tira água) -->
+  <g id="lifts" fill="#3ED8C8"></g>
+
+  <!-- AS QUATRO ERAS -->
+  <g id="eras"></g>
+
+  <!-- rótulos do eixo -->
+  <g id="rotulos" font-family="Neue Haas Grotesk Display Pro,Helvetica Neue,Arial,sans-serif"
+     font-weight="900" font-size="184" text-anchor="middle">
+    <text id="r0" x="700"  y="1728" fill="#DACB9C" opacity="0">MOINHOS</text>
+    <text id="r1" x="1600" y="1728" fill="#DACB9C" opacity="0">SÉC. XIX</text>
+    <text id="r2" x="2500" y="1728" fill="#DACB9C" opacity="0">SÉC. XX</text>
+  </g>
+  <!-- pill HOJE (estamos aqui) -->
+  <g id="hojeG" opacity="0">
+    <rect x="3100" y="1560" width="600" height="240" rx="120" fill="#FFB13D"/>
+    <circle id="hojeRing" cx="3400" cy="1680" r="0" fill="none" stroke="#FFB13D" stroke-width="10" opacity="0"/>
+    <text x="3400" y="1746" font-weight="900" font-size="184" text-anchor="middle" fill="#0A1D30"
+      font-family="Neue Haas Grotesk Display Pro,Helvetica Neue,Arial,sans-serif">HOJE</text>
+  </g>
+
+  <!-- linha da continuidade (a mesma tarefa) -->
+  <path id="fioTarefa" fill="none" stroke="#FFB13D" stroke-width="10" opacity="0"
+    stroke-linecap="round" d="M 700 1240 L 1600 1240 L 2500 1240 L 3400 1240"/>
+
+  <!-- TESE destilada no fecho (word-lock "tirar a água sem folga" 16.59–17.93) -->
+  <g id="teseG" font-family="Neue Haas Grotesk Display Pro,Helvetica Neue,Arial,sans-serif"
+     font-weight="900" text-anchor="middle" fill="#F2F6F9">
+    <text id="tese1" x="1920" y="520" font-size="320" opacity="0">TIRAR A ÁGUA,</text>
+    <text id="tese2" x="1920" y="880" font-size="320" opacity="0">SEM FOLGA</text>
+  </g>
+
+  <!-- O BALDE luminoso -->
+  <g id="baldeG">
+    <circle r="150" fill="url(#baldeGlow)"/>
+    <g id="baldeIco">
+      <path d="M -56 -10 L 56 -10 L 42 72 L -42 72 Z" fill="#FFB13D" stroke="#E0892F" stroke-width="8"/>
+      <path d="M -56 -10 Q 0 -74 56 -10" fill="none" stroke="#E0892F" stroke-width="9"/>
+      <rect x="-40" y="0" width="80" height="26" fill="#2EC5B6"/>
+    </g>
+  </g>
+</svg></div>
+
+<div id="vig"></div>
+<div id="grain"></div>
+</div>
+<script>
+var DUR=19.77; window.__duracao=DUR;
+var E=function(id){return document.getElementById(id);};
+function cl(v,a,b){return v<a?a:v>b?b:v;}
+function seg(t,a,d){return cl((t-a)/d,0,1);}
+function eo(p){p=cl(p,0,1);return 1-Math.pow(1-p,3);}
+function eb(p){p=cl(p,0,1);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;}
+function h1(n){var x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x);}
+var NS='http://www.w3.org/2000/svg';
+var SX=[700,1600,2500,3400];
+
+/* grão */
+(function(){
+  var c=document.createElement('canvas');c.width=256;c.height=256;
+  var g=c.getContext('2d');var s=88159;
+  function rnd(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);
+    t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}
+  var im=g.createImageData(256,256);
+  for(var i=0;i<im.data.length;i+=4){var v=rnd()*255;im.data[i]=v;im.data[i+1]=v;im.data[i+2]=v;im.data[i+3]=34;}
+  g.putImageData(im,0,0);
+  var el=E('grain');if(el)el.style.backgroundImage='url('+c.toDataURL()+')';
+})();
+
+/* ticks do eixo */
+(function(){
+  var g=E('ticks'); if(!g)return; var o='';
+  for(var i=0;i<4;i++) o+='<line x1="'+SX[i]+'" y1="1532" x2="'+SX[i]+'" y2="1588"/>';
+  g.innerHTML=o;
+})();
+
+/* fluxo do canal (partículas que correm) */
+var FLU=[];
+(function(){
+  var g=E('fluxo'); if(!g)return;
+  for(var i=0;i<16;i++){
+    var e=document.createElementNS(NS,'circle');
+    e.setAttribute('r',(6+(i%3)*3)); g.appendChild(e);
+    FLU.push({el:e,ph:h1(i*7),y:1860+h1(i*13)*240});
+  }
+})();
+/* fluxos de elevação: 5 gotas por era */
+var LIF=[];
+(function(){
+  var g=E('lifts'); if(!g)return;
+  for(var i=0;i<20;i++){
+    var e=document.createElementNS(NS,'circle');
+    e.setAttribute('r',(13-(i%3)*3)); g.appendChild(e);
+    LIF.push({el:e,ph:(i%5)/5,era:i%4});
+  }
+})();
+
+/* AS ERAS (desenhos) */
+var ERAS=[];
+(function(){
+  var g=E('eras'); if(!g)return;
+  var mk=function(inner,x){
+    var grp=document.createElementNS(NS,'g');
+    grp.setAttribute('transform','translate('+x+',1500)');
+    grp.innerHTML=inner;
+    g.appendChild(grp);
+    return grp;
+  };
+  /* 0 · MOINHO (séc. XV) */
+  var m=mk(
+    '<path d="M -80 0 L -52 -300 L 52 -300 L 80 0 Z" fill="url(#torreG)" stroke="#1E4A6B" stroke-width="7"/>'+
+    '<path d="M -58 -300 Q 0 -366 58 -300 Z" fill="#0E2A44" stroke="#1E4A6B" stroke-width="6"/>'+
+    '<rect x="-20" y="-150" width="40" height="58" rx="20" fill="#FFB13D" opacity=".8"/>'+
+    '<g class="pasG"><g class="pas" stroke="#E8D9AE" stroke-width="8" fill="rgba(232,217,174,.14)">'+
+      '<g><line x1="0" y1="0" x2="0" y2="-230"/><rect x="-3" y="-230" width="44" height="180" rx="8"/></g>'+
+      '<g transform="rotate(90)"><line x1="0" y1="0" x2="0" y2="-230"/><rect x="-3" y="-230" width="44" height="180" rx="8"/></g>'+
+      '<g transform="rotate(180)"><line x1="0" y1="0" x2="0" y2="-230"/><rect x="-3" y="-230" width="44" height="180" rx="8"/></g>'+
+      '<g transform="rotate(270)"><line x1="0" y1="0" x2="0" y2="-230"/><rect x="-3" y="-230" width="44" height="180" rx="8"/></g>'+
+    '</g><circle r="22" fill="#FFB13D"/></g>',700);
+  ERAS.push({grp:m,pasG:m.querySelector('.pasG')});
+  /* 1 · VAPOR (séc. XIX) */
+  var v=mk(
+    '<rect x="-130" y="-200" width="260" height="200" rx="18" fill="url(#torreG)" stroke="#1E4A6B" stroke-width="7"/>'+
+    '<rect x="-150" y="-240" width="300" height="52" rx="14" fill="#0E2A44" stroke="#1E4A6B" stroke-width="6"/>'+
+    '<rect x="60" y="-390" width="56" height="160" fill="#123049" stroke="#1E4A6B" stroke-width="6"/>'+
+    '<g class="fuma" fill="#8FA8B8"></g>'+
+    '<g class="volante"><circle r="64" fill="none" stroke="#FFB13D" stroke-width="12"/>'+
+      '<line x1="-64" y1="0" x2="64" y2="0" stroke="#FFB13D" stroke-width="10"/>'+
+      '<line x1="0" y1="-64" x2="0" y2="64" stroke="#FFB13D" stroke-width="10"/></g>',1600);
+  ERAS.push({grp:v,fuma:v.querySelector('.fuma'),volante:v.querySelector('.volante')});
+  /* 2 · DIESEL (séc. XX) */
+  var d=mk(
+    '<rect x="-140" y="-170" width="280" height="170" rx="16" fill="url(#torreG)" stroke="#1E4A6B" stroke-width="7"/>'+
+    '<rect x="-100" y="-230" width="120" height="60" rx="12" fill="#0E2A44" stroke="#1E4A6B" stroke-width="6"/>'+
+    '<rect x="88" y="-300" width="30" height="130" fill="#123049" stroke="#1E4A6B" stroke-width="6"/>'+
+    '<g class="fuma" fill="#77899A"></g>'+
+    '<circle class="polia" cx="-40" cy="-90" r="44" fill="none" stroke="#FFB13D" stroke-width="11"/>'+
+    '<line class="biela" x1="-40" y1="-90" x2="30" y2="-90" stroke="#FFB13D" stroke-width="10" stroke-linecap="round"/>',2500);
+  ERAS.push({grp:d,fuma:d.querySelector('.fuma'),polia:d.querySelector('.polia'),biela:d.querySelector('.biela')});
+  /* 3 · ELÉTRICA (hoje) */
+  var e2=mk(
+    '<rect x="-150" y="-210" width="300" height="210" rx="20" fill="url(#torreG)" stroke="#1E4A6B" stroke-width="7"/>'+
+    '<rect x="-150" y="-210" width="300" height="54" rx="20" fill="#0E2A44" stroke="#1E4A6B" stroke-width="6"/>'+
+    '<path class="raio" d="M 8 -170 L -34 -96 L -4 -96 L -22 -30 L 34 -112 L 4 -112 Z" fill="#FFB13D"/>'+
+    '<circle class="halo" r="120" cy="-105" fill="none" stroke="#FFB13D" stroke-width="8" opacity="0"/>',3400);
+  ERAS.push({grp:e2,raio:e2.querySelector('.raio'),halo:e2.querySelector('.halo')});
+  /* fumaças */
+  ERAS.forEach(function(er,ix){
+    if(!er.fuma)return;
+    er.puffs=[];
+    for(var i=0;i<5;i++){
+      var c=document.createElementNS(NS,'circle');
+      c.setAttribute('r',16+8*h1(i+ix*3));
+      er.fuma.appendChild(c);
+      er.puffs.push({el:c,ph:i/5});
+    }
+  });
+})();
+
+/* handoffs: era ativa em função de t */
+var HAND=[5.45,6.84,8.55];                 // momentos de passagem
+function eraAtiva(t){
+  if(t<HAND[0])return 0;
+  if(t<HAND[1])return 1;
+  if(t<HAND[2])return 2;
+  return 3;
+}
+/* posição do balde: repousa AO LADO da torre (fora do rotor — nunca "capacete" no hub),
+   sobre a coluna de gotas que sobe; no 1º handoff sobe pra linha 1235 e viaja com arco */
+function baldePos(t){
+  var R0x=505, R0y=1445;
+  var p0=eb(seg(t,HAND[0],0.85));
+  var x=R0x+(SX[1]-R0x)*p0;
+  var y=R0y+(1235-R0y)*p0;
+  y-=(p0>0&&p0<1)?260*Math.sin(Math.PI*p0):0;
+  for(var i=1;i<3;i++){
+    var p=eb(seg(t,HAND[i],0.85));
+    x+=(SX[i+1]-SX[i])*p;
+    y-=(p>0&&p<1)?260*Math.sin(Math.PI*p):0;
+  }
+  /* beat final (QC 04/ago): em "tirar a água"(16.7) o balde desce num gesto de coleta e volta
+     (amplitude 240: para o pico ficar ACIMA do topo da pílula HOJE em y=1560 — sem cobrir texto) */
+  var dip=Math.sin(Math.PI*seg(t,16.7,1.7));
+  y+=240*dip;
+  /* balanço vivo do balde pendurado */
+  return [x,y+8*Math.sin(t*1.7),dip];
+}
+
+window.__renderAt=function(t){
+  t-=0.45;   /* realinhamento 04/ago: os beats abaixo foram autorados no relógio antigo (B1),
+                uniformemente 0.45s adiantado; deslocar t preserva o ritmo inteiro. */
+  /* câmera: perto do moinho → viaja com o balde → wide em "tecnologia mudou"(12.97) */
+  var w=eb(seg(t,12.6,1.5));
+  var fx=SX[0]
+    +(SX[1]-SX[0])*eb(seg(t,HAND[0]-0.4,1.1))
+    +(SX[2]-SX[1])*eb(seg(t,HAND[1]-0.35,1.1))
+    +(SX[3]-SX[2])*eb(seg(t,HAND[2]-0.35,1.2));
+  var z=1.5-0.5*w+0.028*eo(seg(t,15.0,4.3));   /* push-in contínuo no fecho (+1.4s vivos) */
+  var cx=fx*(1-w)+1920*w, cy=1330*(1-w)+1080*w;
+  var tx=1920/z-cx+7*Math.sin(t*0.26), ty=1080/z-cy+5*Math.sin(t*0.19);
+  var cam=E('cam');
+  if(cam) cam.style.transform='scale('+z.toFixed(4)+') translate('+tx.toFixed(1)+'px,'+ty.toFixed(1)+'px)';
+
+  var nv=E('nuvens'); if(nv) nv.setAttribute('transform','translate('+(30*Math.sin(t*0.12)).toFixed(1)+',0)');
+
+  /* eixo desenha em "século XIX"(0.18) */
+  var ep=eo(seg(t,0.18,1.1));
+  var ex=E('eixo');
+  if(ex){ex.setAttribute('x1','360');ex.setAttribute('x2',(360+3200*ep).toFixed(0));
+    ex.setAttribute('y1','1560');ex.setAttribute('y2','1560');}
+  var tk=E('ticks');
+  if(tk) tk.setAttribute('opacity',ep.toFixed(2));
+
+  /* canal vivo */
+  var yC=1806+6*Math.sin(t*1.1);
+  var sc=E('sCanal');
+  if(sc){
+    var d='M -800 '+yC.toFixed(0);
+    for(var x=-800;x<=4640;x+=170) d+=' Q '+(x+85)+' '+(yC+11*Math.sin(x*0.012+t*1.7)).toFixed(0)+' '+(x+170)+' '+yC.toFixed(0);
+    sc.setAttribute('d',d);
+  }
+  for(var f=0;f<FLU.length;f++){
+    var fl=FLU[f], pp=((t*0.10+fl.ph)%1);
+    fl.el.setAttribute('cx',(-700+pp*5200).toFixed(0));
+    fl.el.setAttribute('cy',(fl.y+8*Math.sin(t*1.3+f)).toFixed(0));
+    fl.el.setAttribute('opacity',(0.3+0.25*Math.sin(t*2+f)).toFixed(2));
+  }
+
+  var era=eraAtiva(t);
+  var unis=Math.sin(Math.PI*seg(t,16.59,1.4));            // "tirar a água sem folga"
+  if(t>17.99) unis=0.35+0.35*Math.sin((t-17.99)*2.6);     // fecho respira até o corte
+  var tarefa=eo(seg(t,14.49,1.0));                        // "a tarefa é a mesma"
+  var intro=eo(seg(t,0.6,0.9));                           // eras vizinhas entram DEPOIS do moinho
+
+  /* ERA 0 · moinho: gira, PERDE ritmo em 2.26 ("não davam conta") */
+  var e0=ERAS[0];
+  if(e0){
+    var strain=eo(seg(t,2.26,1.1));
+    var spd=120-70*strain;
+    var wob=strain*5*Math.sin(t*9);
+    if(e0.pasG) e0.pasG.setAttribute('transform','translate(0,-340) rotate('+((t*spd+wob)%360).toFixed(1)+')');
+    e0.grp.setAttribute('opacity',(era===0||w>0.3||tarefa>0?1:0.55).toFixed(2));
+  }
+  /* ERA 1 · vapor */
+  var e1=ERAS[1];
+  if(e1){
+    var on1=eo(seg(t,HAND[0],0.7));
+    if(e1.volante) e1.volante.setAttribute('transform','translate(-70,-100) rotate('+((t*220*on1)%360).toFixed(1)+')');
+    e1.grp.setAttribute('opacity',(intro*(0.55+0.45*cl(on1+tarefa,0,1))).toFixed(2));
+    if(e1.puffs) for(var p1=0;p1<e1.puffs.length;p1++){
+      var pf=e1.puffs[p1], q=((t*0.5+pf.ph)%1);
+      pf.el.setAttribute('cx',(88+16*Math.sin(t+p1)).toFixed(0));
+      pf.el.setAttribute('cy',(-400-q*180).toFixed(0));
+      pf.el.setAttribute('opacity',(on1*(1-q)*0.5).toFixed(2));
+    }
+  }
+  /* ERA 2 · diesel */
+  var e2=ERAS[2];
+  if(e2){
+    var on2=eo(seg(t,HAND[1],0.7));
+    if(e2.polia) e2.polia.setAttribute('stroke-dasharray','40 24'),
+      e2.polia.setAttribute('stroke-dashoffset',(-t*260*on2).toFixed(0));
+    if(e2.biela) e2.biela.setAttribute('x2',(30+22*Math.sin(t*10*on2)).toFixed(1));
+    e2.grp.setAttribute('opacity',(intro*(0.55+0.45*cl(on2+tarefa,0,1))).toFixed(2));
+    if(e2.puffs) for(var p2=0;p2<e2.puffs.length;p2++){
+      var pf2=e2.puffs[p2], q2=((t*0.6+pf2.ph)%1);
+      pf2.el.setAttribute('cx',(103+12*Math.sin(t*1.2+p2)).toFixed(0));
+      pf2.el.setAttribute('cy',(-310-q2*150).toFixed(0));
+      pf2.el.setAttribute('opacity',(on2*(1-q2)*0.4).toFixed(2));
+    }
+  }
+  /* ERA 3 · elétrica: silenciosa — só um halo suave */
+  var e3=ERAS[3];
+  if(e3){
+    var on3=eo(seg(t,HAND[2],0.8));
+    e3.grp.setAttribute('opacity',(intro*(0.55+0.45*cl(on3+tarefa,0,1))).toFixed(2));
+    if(e3.raio) e3.raio.setAttribute('opacity',(0.35+0.65*on3*(0.7+0.3*Math.sin(t*2.4))).toFixed(2));
+    if(e3.halo){
+      var hq=((t*0.5)%1);
+      e3.halo.setAttribute('r',(60+90*hq).toFixed(0));
+      e3.halo.setAttribute('opacity',(on3*(1-hq)*0.4).toFixed(2));
+    }
+  }
+
+  /* fluxos de elevação: a era ativa tira água; no fim, TODAS juntas */
+  for(var l=0;l<LIF.length;l++){
+    var lf=LIF[l];
+    var ativa=(lf.era===era)?1:0;
+    var vivo=cl(ativa+tarefa,0,1)*(0.5+0.5*unis+(lf.era===era?0.5:0));
+    var q3=((t*0.7+lf.ph)%1);
+    lf.el.setAttribute('cx',(SX[lf.era]-210+14*Math.sin(t*2+l)).toFixed(0));
+    lf.el.setAttribute('cy',(1800-q3*280).toFixed(0));
+    lf.el.setAttribute('opacity',(cl(vivo,0,1)*Math.sin(Math.PI*q3)*0.9).toFixed(2));
+  }
+
+  /* rótulos do eixo word-locked */
+  function rot(id,t0){
+    var e=E(id); if(!e)return;
+    e.setAttribute('opacity',(eo(seg(t,t0,0.7))).toFixed(2));
+  }
+  rot('r0',0.9); rot('r1',5.45); rot('r2',6.84);
+  var hj=E('hojeG');
+  if(hj) hj.setAttribute('opacity',eo(seg(t,8.7,0.7)).toFixed(2));
+  var hr=E('hojeRing');
+  if(hr){
+    var hp=seg(t,11.95,0.9);
+    hr.setAttribute('r',(60+160*eo(hp)).toFixed(0));
+    hr.setAttribute('opacity',(hp>0&&hp<1?(0.9*(1-hp)):0).toFixed(2));
+  }
+
+  /* fio da continuidade (14.49): varre da esquerda pra direita */
+  var ft=E('fioTarefa');
+  if(ft){
+    ft.setAttribute('stroke-dasharray','2700 2700');
+    ft.setAttribute('stroke-dashoffset',(2700*(1-tarefa)).toFixed(0));
+    ft.setAttribute('opacity',(tarefa*(0.62+0.22*Math.sin(t*2.8))).toFixed(2));
+  }
+
+  /* TESE destilada no fecho — line1 em "tirar a água"(16.7), line2 em "sem folga"(17.5) */
+  var t1=E('tese1'), t2=E('tese2');
+  if(t1){
+    var q1=eo(seg(t,16.7,0.7));
+    t1.setAttribute('opacity',q1.toFixed(2));
+    t1.setAttribute('y',(520+40*(1-q1)+6*Math.sin(t*0.9)).toFixed(1));
+  }
+  if(t2){
+    var q2t=eo(seg(t,17.5,0.7));
+    t2.setAttribute('opacity',q2t.toFixed(2));
+    t2.setAttribute('y',(880+40*(1-q2t)+6*Math.sin(t*0.9+0.6)).toFixed(1));
+  }
+
+  /* O BALDE — entra word-locked em "moinhos"(1.40): o moinho abre a cena SOZINHO */
+  var bp=baldePos(t);
+  var bg=E('baldeG');
+  if(bg){
+    var dsc=1+0.20*(bp[2]||0);   /* pulso do glow no mergulho */
+    bg.setAttribute('transform','translate('+bp[0].toFixed(1)+','+bp[1].toFixed(1)+') rotate('+(5*Math.sin(t*1.7+1)).toFixed(1)+') scale('+dsc.toFixed(3)+')');
+    bg.setAttribute('opacity',eo(seg(t,1.35,0.6)).toFixed(2));
+  }
+
+  var gr=E('grain');
+  if(gr) gr.style.backgroundPosition=((t*41)%256).toFixed(1)+'px '+((t*29)%256).toFixed(1)+'px';
+};
+window.__prepararCaptura=function(){window.__renderAt(0);};
+window.__renderAt(0);
+</script></body></html>

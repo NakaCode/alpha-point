@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://estudio.top10/contratos/laudo-finalizacao.schema.json",
+  "title": "Laudo de FINALIZAÇÃO — o gate do qa-montagem (Estúdio Top10)",
+  "description": "Veredito consolidado do COMPOSTO/entrega, ANTES de postar. É o que a FIN-13 exige e que faltava: sem este artefato, o gate dependia de alguém LER o relatório e obedecer. O entregar.mjs recusa promover se o veredito for FAIL, ou se o laudo não existir (salvo --sem-qa, para migração de entrega antiga). Espelha o laudo-qc de CENA, um nível acima. Os ITENS específicos são da marca do canal (a checklist de 7 do Top10); o contrato só cobra a forma.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["proj", "veredito", "itens", "em"],
+  "properties": {
+    "proj": { "type": "string" },
+    "veredito": {
+      "type": "string",
+      "enum": ["PASS", "FAIL"],
+      "description": "PASS só quando NENHUM item reprova. Um item que reprova derruba o veredito — não se compensa item com item."
+    },
+    "itens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["item", "veredito"],
+        "properties": {
+          "item": { "type": "string", "description": "o nome do item da checklist (da marca)" },
+          "veredito": { "type": "string", "enum": ["PASS", "FAIL", "NA"] },
+          "medicao": { "type": "string", "description": "o valor REAL que a ferramenta imprimiu (codec, dB, duração, span) — não 'parece ok'" },
+          "conserto": { "type": "string", "description": "quando FAIL: o conserto exato e o agente-raiz" }
+        }
+      }
+    },
+    "resolvido": {
+      "type": "boolean",
+      "description": "Reconciliação de um laudo FAIL — o gate lê ESTE campo. Marcar true sem `motivo` é apagar o laudo pra passar."
+    },
+    "motivo": { "type": "string", "minLength": 8 },
+    "em": { "type": "string", "description": "ISO timestamp de quando o laudo foi emitido" }
+  }
+}

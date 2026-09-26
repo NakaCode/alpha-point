@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="pt-BR" data-render="4k-native"><head><meta charset="utf-8"><style>
+/* s33 · O MOTOR QUE SECOU O PAÍS — M12 montagem histórica · inSec 383.05 · dur 15.95 (janela limpa,
+   sem corte interno — ARTE-94 conferido em _cortes.json).
+   METÁFORA: "não é foto, é motor" — a cena COMEÇA como um quadro emoldurado na parede (o cartão-postal)
+   e, na palavra "foto", a moldura cai e o acervo vira MÁQUINA: gravura 1610 (o moinho na paisagem) →
+   mapa 1612 do Beemster (o país que ele SECOU, 40 moinhos lidos no próprio cartucho) → prancha técnica
+   1734 INVERTIDA em blueprint navy (o traço acende), a energia âmbar desce das velas pelo eixo até a
+   RODA DE PÁS, e a câmera mergulha nela — entregando a deixa exata pra s34.
+   Os ANOS REAIS das peças (1610 · 1612 · 1734) são o texto: "por séculos" provado por datas de acervo.
+   NUNCA rotular peça como "século XV" (as peças não são do séc. XV — rigor factual).
+   Mídia REAL (domínio público, Rijksmuseum/Waterlands Archief/Commons — PD ⇒ sem linha de crédito):
+     moinho-drenagem-e-dique-hondsbossche-gravura-1610.jpg (6190×2902, Claes Jansz. Visscher II)
+     mapa-polder-beemster-drenado-40-moinhos-1612.jpg (5120×3940, Lucas Jansz. Sinck — o cartucho
+       declara "inden Iare MDCXII met XL meulens drooghgemalen": 1612, 40 moinhos)
+     moinho-dupla-roda-de-pas-corte-1734.jpg (4441×5529, Van Natrus/Polly/Van Vuuren)
+   Word-lock (−383.05):
+     0.26 "moinhos de vento holandeses" → gravura 1610 emoldurada, Ken Burns no moinho
+     1.40 rótulo "1610 · GRAVURA DE ÉPOCA"
+     4.04 "foto"  → a MOLDURA cai (fade+lift), a gravura toma a tela full-bleed
+     6.72 "motor" → crossfade pro mapa Beemster (calor âmbar entra: a mão humana)
+     7.56 "secou o país" → rótulo "1612 · PÔLDER BEEMSTER · DRENADO POR 40 MOINHOS"
+     11.86 "um moinho" → prancha 1734 vira BLUEPRINT (invertida, traço claro sobre navy)
+     12.48 "pega a força do vento" → rótulo "1734 · PRANCHA TÉCNICA"; energia âmbar desce das velas
+     14.06 "gira uma roda com pás" → câmera MERGULHA na roda de pás; anel âmbar gira sobre ela
+   anti-eco ✓ (texto = anos reais + nomes próprios + dado do objeto). Cor: NAVY+ÂMBAR, sem vermelho. */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:3840px;height:2160px;overflow:hidden;background:#050F1C;}
+#palco{position:relative;width:3840px;height:2160px;overflow:hidden;
+  font-family:"Neue Haas Grotesk Display Pro","Helvetica Neue",Arial,sans-serif;}
+.peca{position:absolute;inset:0;overflow:hidden;opacity:0;will-change:opacity;}
+.kb{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;}
+.kb img{position:absolute;left:0;top:0;display:block;}
+#im1{width:5545px;filter:grayscale(.9) sepia(.3) saturate(1.05) contrast(1.1) brightness(.78);}
+#im2{width:4400px;filter:grayscale(.85) sepia(.34) saturate(1.1) contrast(1.08) brightness(.8);}
+#im3{width:3840px;filter:invert(1) grayscale(1) contrast(1.22) brightness(.94);}
+.tintNavy{position:absolute;left:0;top:0;background:#16324C;mix-blend-mode:color;opacity:.42;}
+#quente2{position:absolute;left:0;top:0;mix-blend-mode:soft-light;opacity:0;
+  background:linear-gradient(160deg,rgba(255,177,61,.85),rgba(255,177,61,.12) 70%);}
+#navyLift{position:absolute;left:0;top:0;width:3840px;height:4781px;background:#0A2138;mix-blend-mode:lighten;}
+#calor{position:absolute;left:634px;top:2748px;width:1600px;height:1600px;opacity:0;mix-blend-mode:screen;
+  background:radial-gradient(closest-side,rgba(255,177,61,.34),rgba(255,177,61,0) 70%);}
+.fluxo{position:absolute;width:84px;border-radius:42px;mix-blend-mode:screen;opacity:0;
+  background:linear-gradient(180deg,rgba(255,177,61,0),rgba(255,177,61,.55) 30%,rgba(255,177,61,.34));}
+#fluxoA{left:1924px;top:900px;height:0px;}
+#fluxoB{left:1513px;top:2250px;height:0px;}
+#anel{position:absolute;left:0;top:0;width:3840px;height:4781px;}
+.scrim{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(2900px 1900px at 50% 44%,rgba(5,15,28,0) 46%,rgba(5,15,28,.62) 100%);}
+#scrimBaixo{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(3,10,20,0) 60%,rgba(3,10,20,.5) 100%);}
+#moldura{position:absolute;inset:110px;border:16px solid rgba(236,227,206,.88);border-radius:4px;
+  box-shadow:0 0 0 120px rgba(3,10,20,.62),inset 0 0 140px rgba(3,10,20,.4);
+  will-change:transform,opacity;pointer-events:none;}
+.rot{position:absolute;left:260px;opacity:0;will-change:transform,opacity;}
+#rot1,#rot2{top:1600px;}
+#rot3{top:240px;}
+.rot .fundo{position:absolute;left:-260px;top:-90px;width:2300px;height:640px;pointer-events:none;
+  background:linear-gradient(80deg,rgba(3,10,20,.74),rgba(3,10,20,0) 78%);}
+.rot .ano{position:relative;font-size:170px;font-weight:900;line-height:1;color:#F2F7FA;
+  letter-spacing:.01em;text-shadow:0 8px 50px rgba(2,8,16,.85);}
+.rot .barra{position:relative;width:340px;height:10px;border-radius:5px;margin:26px 0 24px;
+  background:linear-gradient(90deg,#3EC8FF,#FFB13D);}
+.rot .nome{position:relative;font-size:110px;font-weight:800;line-height:1.12;color:#F2F7FA;
+  letter-spacing:.012em;text-shadow:0 6px 40px rgba(2,8,16,.85);}
+.rot .sub{position:relative;font-size:76px;font-weight:600;line-height:1.2;color:#AFC4D6;
+  letter-spacing:.1em;margin-top:14px;text-shadow:0 5px 34px rgba(2,8,16,.85);}
+.rot .sub b{font-weight:800;color:#FFB13D;}
+#vig{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 560px 170px rgba(2,8,16,.5);}
+#grain{position:absolute;inset:0;opacity:.22;mix-blend-mode:overlay;pointer-events:none;}
+#intro{position:absolute;inset:0;background:#050F1C;pointer-events:none;}
+</style></head><body><div id="palco">
+
+<!-- P1 · gravura 1610 (o "cartão-postal" de época) -->
+<div class="peca" id="p1">
+  <div class="kb" id="kb1">
+    <img id="im1" src="../_media/foto/moinho-historico/moinho-drenagem-e-dique-hondsbossche-gravura-1610.jpg" alt="">
+    <div class="tintNavy" style="width:5545px;height:2600px;"></div>
+  </div>
+  <div class="scrim"></div>
+</div>
+<div id="moldura"></div>
+
+<!-- P2 · mapa Beemster 1612 (o país que ele secou) -->
+<div class="peca" id="p2">
+  <div class="kb" id="kb2">
+    <img id="im2" src="../_media/foto/moinho-historico/mapa-polder-beemster-drenado-40-moinhos-1612.jpg" alt="">
+    <div class="tintNavy" style="width:4400px;height:3387px;opacity:.3;"></div>
+    <div id="quente2" style="width:4400px;height:3387px;"></div>
+  </div>
+  <div class="scrim"></div>
+</div>
+
+<!-- P3 · prancha 1734 em blueprint (a máquina liga) -->
+<div class="peca" id="p3" style="background:#050F1C;">
+  <div class="kb" id="kb3">
+    <img id="im3" src="../_media/foto/moinho-historico/moinho-dupla-roda-de-pas-corte-1734.jpg" alt="">
+    <div id="navyLift"></div>
+    <div id="calor"></div>
+    <div class="fluxo" id="fluxoA"></div>
+    <div class="fluxo" id="fluxoB"></div>
+    <svg id="anel" viewBox="0 0 3840 4781">
+      <g id="anelG" opacity="0" transform="rotate(-8 1434 3548)">
+        <ellipse id="anelE" cx="1434" cy="3548" rx="395" ry="480" fill="none"
+          stroke="#FFB13D" stroke-width="12" stroke-linecap="round" stroke-dasharray="44 30"/>
+        <circle cx="1434" cy="3548" r="26" fill="#FFB13D"/>
+      </g>
+    </svg>
+  </div>
+  <div class="scrim"></div>
+</div>
+
+<div id="scrimBaixo"></div>
+
+<!-- rótulos: os anos REAIS do acervo (1610 → 1612 → 1734) -->
+<div class="rot lbl" id="rot1">
+  <div class="fundo"></div>
+  <div class="ano" data-qc-papel="rotulo">1610</div>
+  <div class="barra"></div>
+  <div class="sub" data-qc-papel="legenda">GRAVURA DE ÉPOCA</div>
+</div>
+<div class="rot lbl" id="rot2">
+  <div class="fundo"></div>
+  <div class="ano" data-qc-papel="rotulo">1612</div>
+  <div class="barra"></div>
+  <div class="nome" data-qc-papel="rotulo">PÔLDER BEEMSTER</div>
+  <div class="sub" data-qc-papel="legenda">DRENADO POR <b>40 MOINHOS</b></div>
+</div>
+<div class="rot lbl" id="rot3">
+  <div class="fundo"></div>
+  <div class="ano" data-qc-papel="rotulo">1734</div>
+  <div class="barra"></div>
+  <div class="sub" data-qc-papel="legenda">PRANCHA TÉCNICA</div>
+</div>
+
+<div id="vig"></div>
+<div id="grain"></div>
+<div id="intro"></div>
+</div>
+<script>
+window.__duracao=15.95;
+var E=function(id){return document.getElementById(id);};
+function cl(v,a,b){return v<a?a:v>b?b:v;}
+function seg(t,a,d){return cl((t-a)/d,0,1);}
+function eo(p){p=cl(p,0,1);return 1-Math.pow(1-p,3);}
+function eio(p){p=cl(p,0,1);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;}
+function lp(a,b,p){return a+(b-a)*p;}
+
+/* grão de filme (determinístico) */
+(function(){
+  var c=document.createElement('canvas');c.width=256;c.height=256;
+  var g=c.getContext('2d');var s=33077;
+  function rnd(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);
+    t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}
+  var im=g.createImageData(256,256);
+  for(var i=0;i<im.data.length;i+=4){var v=rnd()*255;im.data[i]=v;im.data[i+1]=v;im.data[i+2]=v;im.data[i+3]=48;}
+  g.putImageData(im,0,0);
+  var el=E('grain');if(el)el.style.backgroundImage='url('+c.toDataURL()+')';
+})();
+
+/* enquadra o ponto (fx,fy) da peça no centro do palco, com zoom z (origin 0 0) */
+function kbT(el,fx,fy,z){
+  if(!el)return;
+  el.style.transform='translate('+(1920-fx*z).toFixed(1)+'px,'+(1080-fy*z).toFixed(1)+'px) scale('+z.toFixed(4)+')';
+}
+function fadeRot(el,tIn,tOut,t){
+  if(!el)return;
+  var o=eo(seg(t,tIn,0.5))*(1-eo(seg(t,tOut,0.55)));
+  el.style.opacity=o.toFixed(3);
+  el.style.transform='translateY('+((1-eo(seg(t,tIn,0.6)))*26).toFixed(1)+'px)';
+}
+
+window.__renderAt=function(t){try{
+  var dr1=2.5*Math.sin(t*0.7), dr2=2*Math.sin(t*0.53+1.7);   /* micro-deriva contínua */
+
+  /* ---- P1 · gravura 1610 ---- */
+  var p1=E('p1'),kb1=E('kb1');
+  if(p1)p1.style.opacity=(1-eo(seg(t,7.5,0.4))).toFixed(3);
+  if(kb1){
+    var fx,fy,z;
+    if(t<4){var p=cl(t/4,0,1);fx=lp(1560,1500,p);fy=lp(1100,1064,p);z=lp(1.25,1.35,p);}
+    else{var q=eo(seg(t,4,1.4));fx=lp(1500,1472,q)-2*Math.max(0,t-5.4);
+         fy=lp(1064,1050,q)-1.5*Math.max(0,t-5.4);z=lp(1.35,1.44,q)+0.012*Math.max(0,t-5.4);}
+    kbT(kb1,fx+dr1,fy+dr2,z);
+  }
+  /* a moldura cai em "foto" (4.04) */
+  var mo=E('moldura');
+  if(mo){
+    var mq=eo(seg(t,4.04,0.85));
+    mo.style.opacity=((1-mq)*(1-eo(seg(t,7.2,0.3)))).toFixed(3);
+    mo.style.transform='scale('+(1+0.07*mq).toFixed(4)+')';
+  }
+
+  /* ---- P2 · mapa Beemster 1612 ---- */
+  var p2=E('p2'),kb2=E('kb2');
+  if(p2)p2.style.opacity=(eo(seg(t,6.6,0.8))*(1-eo(seg(t,12.5,0.45)))).toFixed(3);
+  if(kb2){
+    var p2p=cl((t-6.6)/5.9,0,1);
+    kbT(kb2,lp(1980,2100,p2p)+dr2,lp(1422,1560,p2p)+dr1,lp(1.45,1.14,p2p));
+  }
+  var qt=E('quente2');
+  if(qt)qt.style.opacity=(0.72*eo(seg(t,6.72,1.2))).toFixed(3);
+
+  /* ---- P3 · prancha 1734 (blueprint) ---- */
+  var p3=E('p3'),kb3=E('kb3');
+  if(p3)p3.style.opacity=eo(seg(t,11.6,0.8)).toFixed(3);
+  if(kb3){
+    var fx3,fy3,z3;
+    if(t<14.06){var a=cl((t-11.6)/2.46,0,1);fx3=lp(1920,1880,a);fy3=lp(1150,1420,a);z3=lp(1.02,1.10,a);}
+    else{var b=eio(seg(t,14.06,1.34));fx3=lp(1880,1380,b);fy3=lp(1420,3600,b)+6*Math.max(0,t-15.4);
+         z3=lp(1.10,1.58,b)+0.03*Math.max(0,t-15.4);}
+    kbT(kb3,fx3+0.6*dr1,fy3+0.6*dr2,z3);
+  }
+  /* energia âmbar: desce o eixo (12.9) e o braço até a roda (13.5) */
+  var fa=E('fluxoA'),fb=E('fluxoB');
+  if(fa){var ha=1350*eo(seg(t,12.9,0.62));fa.style.height=ha.toFixed(0)+'px';
+    fa.style.opacity=(0.85*eo(seg(t,12.9,0.3))).toFixed(3);}
+  if(fb){var hb=1210*eo(seg(t,13.5,0.62));fb.style.height=hb.toFixed(0)+'px';
+    fb.style.opacity=(0.85*eo(seg(t,13.5,0.3))).toFixed(3);}
+  /* a roda de pás acende e "gira" (14.06) */
+  var ag=E('anelG'),ae=E('anelE'),ca=E('calor');
+  if(ag)ag.setAttribute('opacity',(eo(seg(t,14.1,0.6))*(0.72+0.18*Math.sin(t*2.2))).toFixed(3));
+  if(ae)ae.setAttribute('stroke-dashoffset',(-(Math.max(0,t-14.1))*150).toFixed(1));
+  if(ca)ca.style.opacity=(eo(seg(t,14.1,0.9))).toFixed(3);
+
+  /* rótulos (anos reais do acervo) */
+  fadeRot(E('rot1'),1.4,6.4,t);
+  fadeRot(E('rot2'),7.8,11.4,t);
+  fadeRot(E('rot3'),12.4,99,t);
+
+  var gr=E('grain');if(gr)gr.style.backgroundPosition=((t*41)%256).toFixed(1)+'px '+((t*29)%256).toFixed(1)+'px';
+  var it=E('intro');if(it)it.style.opacity=(1-eo(seg(t,0,0.35))).toFixed(3);
+}catch(e){}};
+
+window.__fotosProntas=Promise.all([].slice.call(document.images).map(function(im){
+  return (im.complete&&im.naturalWidth>0)?Promise.resolve():new Promise(function(r){
+    im.addEventListener('load',r);im.addEventListener('error',r);});}));
+window.__prepararCaptura=function(){window.__renderAt(0);};
+window.__renderAt(0);
+</script>
+</body></html>

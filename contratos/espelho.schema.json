@@ -1,0 +1,205 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://estudio.top10/contratos/espelho.schema.json",
+  "title": "Espelho de edição — Estúdio Top10",
+  "description": "Extraído FIELMENTE do SCHEMA do roteirista (src/agent/roteirista.mjs). O espelho (histórico: plano-roteirista.json) divide o master em segmentos/cenas e decide, por trecho, se anima e em qual modo. ⚠️ CONVENÇÃO DE ANOTAÇÃO (declarada em 22/jul, D12): campo com prefixo `_` é ANOTAÇÃO INTERNA do montador — prosa direcionada a um humano ou ao editor-de-arte, fora do vocabulário do contrato — e é ACEITO em qualquer nível (`patternProperties: ^_`). Campo SEM underscore que não está no schema continua sendo deriva e vira aviso (erro sob `--estrito`). A linha é essa: o underscore DECLARA 'isto é nota minha'; o nome nu AFIRMA 'isto é vocabulário' — e aí tem que estar aqui. Legitimar a convenção (e não cada nome ad-hoc) preserva o gate contra o erro que ele existe pra pegar: o typo em campo real (`titluo`, `inSeg`).",
+  "type": "object",
+  "additionalProperties": false,
+  "patternProperties": {
+    "^_": {
+      "description": "Anotação interna do montador (ver a convenção na descrição do schema)."
+    }
+  },
+  "properties": {
+    "tema": {
+      "type": "string"
+    },
+    "paleta": {
+      "type": "string"
+    },
+    "segmentos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^_": {
+            "description": "Anotação interna do montador — prosa dirigida ao editor-de-arte/mapista, não vocabulário do contrato. Em uso real: `_base_mapa` (qual base e zoom o mapa usa), `_overlay`/`_asset` (qual transição de branding entra), `_nota_geo`/`_nota_dado` (ressalva de word-lock ou de malha), `_fundido`/`_mergedInto` (registro de fusão do re-espelho, nos planos era-2)."
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "inSec": {
+            "type": "number"
+          },
+          "dur": {
+            "type": "number"
+          },
+          "anima": {
+            "type": "boolean"
+          },
+          "modo": {
+            "type": "string",
+            "enum": [
+              "dados",
+              "mapa",
+              "mapa3d",
+              "aereo-real",
+              "desenho",
+              "footage",
+              "cinematico",
+              "foto",
+              "citacao",
+              "documento",
+              "split",
+              "split-footage",
+              "titulo-topico",
+              "navegacao",
+              "apresentador",
+              "apresentador-info",
+              "apresentador-midia",
+              "gravura-colagem",
+              "mosaico"
+            ],
+            "description": "Modo da cena — aponta o modelo do CATALOGO-MODELOS.md, que e o DONO do teto do catalogo: nao repita a faixa aqui (o codigo em si e validado pelo `pattern` do campo `modelo`, logo abaixo). Em 07/ago/2026 o enum ganhou `gravura-colagem` e `mosaico`. Vocabulario FECHADO: nao inventar modo ad-hoc (publi-manual inventou 4 para 5 cenas; foram mapeados para os canonicos em 22/jul). ⚠️ Este enum tem que COBRIR a coluna '`modo` roteirista' do catalogo — senao a doutrina manda escrever um valor que o gate reprova. Acrescentados em 22/jul (D12), os dois que a doutrina prescrevia e o enum nao tinha: `split-footage` (M25 'Split de footage', status ✅, exemplar em seed/examples/dourados/M25/) e `titulo-topico` (card de titulo NAO-narrado, prescrito por FIN-06 e knowledge/TITULOS-TOPICOS.md:38). ⚠️ `titulo-topico` e o modo do SEGMENTO; nao confundir com o campo `titulo` (o titulo da cena, string) nem com `format:\"titulo-topico\"` do project.json, que e outro artefato. NAO fazem parte deste enum: `apresentador-composite` (valor de `format` do project.json — aqui o modo e `apresentador`) e `titulo` puro (FIN-06 cita como alias, mas colide com o campo `titulo`; use `titulo-topico`). ⚠️ DOIS VALORES SAIRAM EM 07/ago/2026, com as cenas migradas: `drone` virou **`aereo-real`** porque colidia com `mapa3d` no unico lugar onde o nome importa — a cabeca de quem escolhe (os dois se chamam \"drone\" na fala, mas `aereo-real` e FOOTAGE aereo de verdade e `mapa3d` e a camera orbitando um satelite); e `nenhum` foi REMOVIDO porque ele so descrevia a cena sem arte, que agora tem modelo proprio (M32, apresentador puro). Escape sem nome e escape que ninguem sabe quando usar. ⚠️ ASSIMETRIA DELIBERADA: o valor `drone` CONTINUA valido no campo `midia`, onde nao colide com nada e diz o tipo de plano que a pesquisa deve cacar. Sao campos diferentes: `modo` e a forma da cena, `midia` e o material que ela pede."
+          },
+          "modelo": {
+            "type": "string",
+            "pattern": "^M(0[1-9]|[12][0-9]|3[0-3])$",
+            "description": "OPCIONAL — o CODIGO exato do modelo em CATALOGO-MODELOS.md, quando o montador sabe qual dos modelos da familia e. Existe porque `modo` e a familia e a familia e UM-PARA-MUITOS: `dados` cobre M09 M10 M11 M13 M15 M17 M18 M23, `foto` cobre M07 M12 M16 M19 M20. Escrever so a familia PERDE informacao, e foi por isso que o compilado-previsoes-jiang passou a escrever `modo:\"M03\"` — invalido pelo enum, mas mais preciso. Acrescentado em 26/jul para que a precisao caiba SEM alargar o vocabulario fechado do `modo`: o montador escreve os dois (`modo:\"mapa\"` + `modelo:\"M03\"`), e quem busca a regua de arte (src/modos.mjs) prefere o `modelo` quando ele existe. Ausente = a familia e tudo que se sabe, e a regua e a uniao dos modelos dela."
+          },
+          "titulo": {
+            "type": "string"
+          },
+          "tese": {
+            "type": "string"
+          },
+          "ancora": {
+            "type": "string"
+          },
+          "motivo": {
+            "type": "string"
+          },
+          "midia": {
+            "type": "string",
+            "description": "Que tipo de material a cena PEDE à pesquisa. `apresentador` acrescentado em 07/ago/2026: cena de apresentador puro nao pede material nenhum, e ate entao ela declarava `footage` — o que mandava o pesquisa-imagens cacar footage para 31 cenas em que a tela e o rosto dele. Valor errado num campo de pedido nao fica parado: vira trabalho.",
+            "enum": [
+              "animacao",
+              "footage",
+              "foto",
+              "drone",
+              "apresentador"
+            ]
+          },
+          "midia_termos": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "midia_necessidade": {
+            "type": "string"
+          },
+          "needs": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^_": {
+                "description": "Anotação interna (ver a convenção na descrição do schema)."
+              }
+            },
+            "properties": {
+              "geo": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "patternProperties": {
+                    "^_": {
+                      "description": "Anotação interna do montador. A convenção `^_` é declarada como valida em QUALQUER nivel na descricao deste schema, mas so estava implementada no segmento e no `needs` — aqui dentro ela reprovava. Em uso real: `_exige` (o que o poligono precisa provar: 'poligono do enclave, nao pino')."
+                    }
+                  },
+                  "properties": {
+                    "tipo": {
+                      "type": "string",
+                      "enum": [
+                        "pais",
+                        "uf_br",
+                        "estado_mundo",
+                        "circuito_f1",
+                        "cidade",
+                        "outro"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "rotulo": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "tipo",
+                    "id",
+                    "rotulo"
+                  ]
+                }
+              },
+              "dados": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "logos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "As LOGOS e BANDEIRAS oficiais que a cena exige, uma por linha em prosa ('bandeira oficial do Marrocos', 'logo da Associated Press'). Quem atende e o `pesquisa-logos`. Acrescentado em 07/ago/2026: o montador ja escrevia este campo e o schema o REJEITAVA (`additionalProperties:false`), enquanto nenhum script do repositorio o lia. Funcionava so porque o agente le o espelho inteiro e INTERPRETAVA o pedido — o `logos.json` do ceuta chega a dizer 'Pedido explicito no needs._logos'. Isso e o agente sendo esperto, nao o sistema funcionando: num video em que ele estivesse mais ocupado, as bandeiras nao sairiam e ninguem notaria. Pedido de midia sem campo formal e pedido que depende de sorte."
+              },
+              "midia": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "GRAFIA CANÔNICA. Os assets REAIS que a cena exige — caminhos relativos (`_media/footage/…`). É o mecanismo da PESQ-16: quando a tese ou o `midia_necessidade` NOMEIA uma mídia real ('a viz do BedMachine', 'o mapa real do relevo'), o montador PROMOVE o asset pra cá em vez de deixá-lo na prosa; a pesquisa sourceia, o editor-de-arte integra. Adicionado em 22/jul (D12): o campo era EXIGIDO pela doutrina e não existia no contrato — 70 ocorrências reais em `lago-peigneur` caíam como propriedade não prevista. `midia` (PT-BR) casa com os campos irmãos `midia`, `midia_termos` e `midia_necessidade`."
+              },
+              "media": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "⚠️ Grafia LEGADA/EN. É como a PESQ-16 escreve ('o montador PROMOVE esse asset pra needs.media') — o texto da lei ficou em inglês enquanto o repo inteiro é PT-BR, e o disco escreveu `midia`. Aceito para não reprovar o montador que obedeceu a lei ao pé da letra; ESCREVA `midia`. Mesmo tratamento que `validadoPorVisao`/`validado_por_visao` recebeu em pauta-pesquisa.schema.json. Consertar a grafia em seed/regras/PESQ.md aposenta este campo."
+              }
+            },
+            "required": [
+              "geo",
+              "dados"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "inSec",
+          "dur",
+          "anima",
+          "modo",
+          "titulo",
+          "tese",
+          "ancora",
+          "motivo",
+          "needs",
+          "midia"
+        ]
+      }
+    }
+  },
+  "required": [
+    "tema",
+    "paleta",
+    "segmentos"
+  ]
+}

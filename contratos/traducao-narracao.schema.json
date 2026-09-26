@@ -1,0 +1,29 @@
+{
+  "$id": "traducao-narracao.schema.json",
+  "title": "Narração em frases — original e traduzida (estação INTERNACIONAL)",
+  "description": "O MESMO contrato para os dois lados do par: `<JOB>/transcript/segments.json` (pt-BR, a lista de frases) e `<JOB>/translations/<lang>.json` (a mesma lista com o `text` traduzido), copiados para `out/<proj>/dub/segments.json` e `out/<proj>/dub/translations/<lang>.json`. Quem escreve é o agente [tradutor-de-narracao] (assinatura, zero API) — e o dublagem-agent PULA os passos format/translate por existência destes arquivos. Formato errado não dá erro: dá voz sintetizada em cima de lixo, e o crédito de TTS não volta. Por isso o gate roda ANTES do TTS (scripts/internacional/dublar.mjs). A lista traduzida tem que ter o MESMO tamanho e os MESMOS id/type/start/end/durationSec da original — só `text` muda; silêncio passa intacto com texto vazio.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "integer", "description": "sequencial de 0 a N, SEM buraco nem repetição — é a chave que casa original × tradução" },
+      "type": {
+        "type": "string",
+        "enum": ["speech", "silence"],
+        "description": "silêncio é CONTEÚDO (a respiração da montagem), não ausência de dado: item próprio, com tempo e texto vazio"
+      },
+      "start": { "type": "number", "description": "segundos no áudio do master — NUNCA se altera na tradução" },
+      "end": { "type": "number" },
+      "durationSec": { "type": "number", "description": "end − start. É o que fixa o teto de palavras: ⌊durationSec × wordsPerSec do idioma⌋" },
+      "text": { "type": "string", "description": "a frase. Vazia em `silence` e em fala que não é do narrador (source=\"clip\": áudio de terceiro, não se dubla)" },
+      "speaker": { "type": ["string", "null"], "description": "locutor dominante quando há diarização; null no narrador único. Só existe no lado pt (segments.json)" },
+      "source": {
+        "type": ["string", "null"],
+        "enum": ["narrator", "clip", null],
+        "description": "\"narrator\" = nossa locução (traduz e dubla) · \"clip\" = fala solta de material de terceiro (mantém o áudio original). Ausente = narrator."
+      }
+    },
+    "required": ["id", "type", "start", "end", "durationSec", "text"]
+  }
+}

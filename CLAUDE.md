@@ -260,6 +260,155 @@ automatizada em bancos pagos (os termos proíbem robô); `gerar-imagem`; `marca 
 não comporta a paleta por papéis do canal). O levantamento inteiro, com arquivo e linha de cada coisa, está em
 `midia/_motor/pre-v1-levantamento-2026-09-25.json`, só nesta máquina.
 
+## Os especialistas (desde 26/09/2026)
+
+O Lucas mandou instalar 15 especialistas da pré-v1. Eles estão em `.claude/agents/<id>.md` e o apoio que mandam
+rodar e ler está em `scripts/`, `contratos/`, `knowledge/`, `seed/`, `regua/`, `infra/`, `templates-cena/`
+(com o `_rig.js`), `assets/`, `src/agent/` e `marca/_neutra/`. Tudo foi copiado byte a byte do molde da
+pré-v1 (commit `7ab9543`), com o sha256 conferido. Os `ORIGEM.json` (na raiz, em `scripts/`, `contratos/` e
+`regua/`) guardam a procedência, e o `.gitattributes` guarda `assets/` sem conversão de fim de linha, para o
+sha256 valer também num clone. **Nada disso se edita**: a próxima versão do motor passaria por cima, e o sha256
+deixaria de provar a origem. O gosto do canal vai na roupa. O `package.json` do molde não veio, porque o npm
+não está autorizado.
+
+**Quem entra em que passo** da linha (`regie graph`):
+- `mirror`: `montador` (`words.json` + `roteiros/<proj>/roteiro-narrador.md` → `espelho.json`);
+- `research`: `pesquisa-imagens`, `-documentos`, `-dados`, `-geo`, `-pessoas`, `-logos`
+  (`out/<proj>/_pesquisa/pauta-<tipo>.json`);
+- `art_direction`: `diretor-de-arte` (`conceito-visual.json`);
+- `conducting`: `regente-de-imagem` (`regencia.json`);
+- `screen_text`: `redator-de-tela` (`textos-tela.json`). Junto dele, o `verificador-de-fatos` dá veredito a toda
+  afirmação que vai à tela ou que a pesquisa trouxe;
+- `art`: `editor-de-arte` (as cenas HTML) e `mapista` (as cenas de mapa);
+- `qc`: `qc-visual` (`qc/<cena>.laudo.json`). Ele julga, não conserta;
+- `designer-de-navegacao`: não tem trabalho no Juneau. Card de capítulo, título de tópico e sumário não vão à
+  tela (o Lucas decidiu em 26/09 que os capítulos ficam só na descrição).
+
+**Como se despacha:** quem despacha é o Claude central, um passo por vez, e o pedido diz o `<proj>` e o passo.
+O artefato vence o relato: antes de `regie advance`, confira no disco o arquivo que o especialista diz ter
+gravado. Portão ausente do disco, ou que sai com exit 2 chamado com o alvo certo ("Os scripts do canal",
+abaixo), é **NÃO MEDIDO**, com o nome do portão. Nunca é simulado nem "medido no olho": olhar um quadro
+(`quadro.mjs`, ou o render e o ffmpeg) é olhar, não é portão.
+
+**Os modelos** estão no frontmatter, e **cada especialista roda no modelo com que vem do motor** (decisão do
+Lucas, 26/09/2026: "os que vierem com fable devem continuar como fable, os que vierem opus como opus"). Não passe
+outro modelo no despacho:
+- `diretor-de-arte` e `editor-de-arte` usam `fable` (o plano do Lucas é o Max);
+- `qc-visual` usa `sonnet`;
+- os outros usam `opus`.
+
+**O roteiro** dos próximos vídeos é escrito aqui, em **Fable 5.1** (Lucas, 26/09: "pode ser por aqui sim"), e não
+no claude.ai: o navegador gasta do mesmo limite da assinatura Max (`C:/projetos/regie-v1/docs/CONTAS.md`, "Uma cota
+para tudo") e não tem as fontes locais nem a bancada do canal.
+
+Ainda não se viu o app subir um agente com `fable`. Se não subir, avise o Lucas; não edite o `.md`. Agente novo
+em `.claude/agents/` só carrega numa **sessão nova** do app.
+
+**A roupa** de cada um é `marca/agentes/<id>.md`, escrita para este canal. Enquanto a de um especialista não
+existir, vale a marca ativa sobre o piso `marca/_neutra/`, e ele diz que a roupa faltou. O `LEIA-ME.md` dessa
+pasta veio do molde e foi adaptado ao canal (quem escreve, e que não há teste automático das roupas aqui).
+Roupa não guarda estado de ferramenta: o que cai nesta máquina ou sai NÃO MEDIDO fica neste arquivo e no
+`APRENDIZADOS.md` (itens 17 e 36), e a roupa aponta para cá.
+`seed/`, `regua/` e parte de `knowledge/` são do Top10: fonte Neue Haas, hex cravado e números em
+pt-BR. Servem de estrutura; cor, fonte e formato vêm de `marca/` (§7 da identidade).
+
+**Os marcadores** vêm da tabela genérica, em `C:/projetos/regie-v1/template/.claude/agents/PLACEHOLDERS.md` (só
+leitura). Onde ela diverge desta lista, vale esta:
+- `<consumer-repository>` e `<workspace>` são a raiz do canal. Todo caminho é relativo, com `/`, e todo comando
+  roda com cwd na raiz;
+- `<proj>` = `<slug-do-projeto>` é o vídeo (hoje, `juneau`), com a produção em `out/<proj>/`;
+- o texto e o dossiê **não** ficam em `out/<proj>/`, ao contrário da tabela:
+  - `roteiro-<persona>.md` e `knowledge/roteiros/<proj>.md` = `roteiros/<proj>/roteiro-narrador.md`, o texto
+    aprovado. O `out/<proj>/roteiro.md` é a cópia para a voz, com aliases de pronúncia e números por extenso
+    (`roteiros/<proj>/voz/trocas.md`): nunca é grafia de tela nem objeto de checagem;
+  - `roteiro-editor.md`, `roteiro.json` e `qc-roteiro/` = `roteiros/<proj>/…` (onde gravar o laudo de fatos dos
+    próximos vídeos é decisão do Lucas; até lá, como no Juneau);
+  - `pauta-fundamento.json` = `pautas/<proj>/fundamento.json`;
+- `<canal>` = `alpha-point`, e `marcas/<canal>/…` é `marca/…`;
+- `marcas/_neutra/` é `marca/_neutra/`, e `<registro-da-sede>` é `marca/`;
+- `<lang>` = `en-US`;
+- `<motor>`, para as ferramentas (`src/ferramentas`, `geo`, `mapa`, `finalize`, `lib`, `cena`), é
+  `C:/projetos/regie-v1`: `node C:/projetos/regie-v1/src/ferramentas/<x>.mjs`. Não é o `motor.caminho` do
+  `canal.json`;
+- `<channel-cli>` é `node C:/projetos/regie/bin/regie` (v0.1.0), só para os verbos do banco, e nunca com `--help`;
+- o relógio é um só, `out/<proj>/words.json`. Não existem `words-final`, `words-limpo`, `_cortes` nem
+  `_master-decupado`. O master é `out/<proj>/_media/_master.mp4` sobre a `narracao.wav`, que termina em 20 s sem
+  voz (o segmento `pausa`, para a tela final do YouTube);
+- não se usam a pausa de card, o `knowledge/TITULOS-TOPICOS.md` nem o `templates-cena/navegacao/`;
+- `/tmp/…` é `out/<proj>/_tmp/`, que fica fora do git;
+- `assets/geojson/` e `assets/dados/` ficam na raiz do canal. A geometria do Juneau já está em
+  `out/juneau/_media/geo/`, registrada no `pauta-geo.json`;
+- `<tile-source>` e `<dem-source>` vêm do perfil `maptiler` (`canal.json` › `mapa.perfil`). A chave só se lê
+  por `src/lib/chaves.mjs` da pré-v1, nunca dentro do HTML. O "mapista fora da v1" da tabela não vale aqui.
+  Antes da primeira cena de mapa renderizada, avise o Lucas e anote o contador da MapTiler.
+
+**Os scripts do canal** rodam de dentro do canal, sempre com o alvo que o ofício do agente dá. Sem alvo,
+alguns varrem todos os projetos de `out/`. Na maioria, o alvo é o `<proj>` (`node scripts/<portão>.mjs <proj>`);
+nestes, não:
+- `qc-src-existe`: `out/<proj>` ou o HTML da cena. Com o `<proj>` solto, quebra com pilha e exit 1;
+- `qc-hex`, `qc-contrato` e `qc-fora-do-quadro`: `out/<proj>/graphics` ou o HTML da cena;
+- `shot` e `probe-elemento` (`<html> <t>`), `check-overlap`, `qc-carga`, `qc-tamanho`, `qc-pais-bandeira` e
+  `qc-video-avanca`: o HTML da cena;
+- `validar-contrato`: `<tipo> <arquivo.json>`; `alinhar-timestamps`: `<plano.json> <words.json> --dry`.
+
+Saída de uso errado ("uso:", "não encontrado", "nenhum .html", pilha de `ENOENT`) não é NÃO MEDIDO nem
+reprovação: repita com o alvo certo.
+
+Os que importam do motor precisam de `REGIE_MOTOR` no mesmo comando:
+- no Git Bash: `REGIE_MOTOR=C:/projetos/regie-v1 node scripts/<portão>.mjs …`;
+- no PowerShell: `$env:REGIE_MOTOR='C:\projetos\regie-v1'; node scripts/<portão>.mjs …`, na mesma chamada.
+
+Sem ela, o script cai na v0.1.0 e diz "atualize o motor para a versão que o canal.json declara"
+(`MOTOR_SEM_ARQUIVO`). Às vezes sai com exit 1 e uma pilha, o que parece reprovação. Isso quer dizer só "faltou
+`REGIE_MOTOR`". Nunca mexa no motor nem no `canal.json`, e nunca rode `regie atualizar`, por causa dessa mensagem.
+
+Sem `npm.cmd install`, que o Lucas ainda não autorizou, saem NÃO MEDIDO (exit 2) os portões que abrem a cena
+no Chrome e os que medem imagem:
+- `shot`, `probe-elemento`, `check-overlap`, `qc-carga` e `qc-tamanho`;
+- `qc-contrato`, na parte que roda a cena;
+- `qc-pais-bandeira`, `qc-fora-do-quadro`, `qc-credito-fantasma`, `qc-video-avanca`, `qc-rodape-contraste`,
+  `_audit-til` e `medir-imagem`.
+
+Por causa deles, o `qc-cena` não dá carimbo a nenhuma cena.
+
+Não se rodam:
+- `stock/_phil.mjs`, `stock/_contato.mjs` e `_capturar-pagina.mjs`, que mandam cabeçalho de navegador (a regra
+  anti-robô de "A marca"). Site que recusa o User-Agent do canal para ali;
+- os scripts de banco pago, porque a caça automatizada em banco pago está fora: `stock/setup-login`,
+  `sessao-conferir`, `chrome-daemon`, `registrar-download`, `api-oficial` e `lib/teto-shutterstock`;
+- o `narrar.mjs` e o `transcrever.mjs` da pré-v1, que gastam crédito e refazem o relógio.
+
+O `stock/_commons-baixar` não trava licença, então confira cada uma.
+
+**Tropeços conhecidos do apoio** (as roupas apontam para esta lista; a origem de cada um está no
+`APRENDIZADOS.md`, item 36):
+- `renderizar.mjs` sem `--4k` grava a cena 4k-native em 1080p, e o carimbo (`<id>.mp4.de-html`) guarda a
+  resolução: um render sem `--4k` obriga a renderizar de novo e, em cena de mapa, a pagar a MapTiler de novo.
+  Todo render, inclusive o de prova, leva `--4k`, e o clipe só vale se o carimbo termina em `2160p`;
+- `qc-pais-bandeira` só reconhece nome de país em português (`CANADÁ`, não `CANADA`): nem com npm ele conta
+  país escrito em inglês;
+- `lib/erratas-gravadas.mjs` procura o laudo em `out/<proj>/qc-roteiro/entrada/`, e o deste canal está em
+  `roteiros/<proj>/qc-roteiro/`: a saída dele é NÃO MEDIDO, e o laudo se lê direto;
+- `decupagem/corrigir-nomes.mjs` só corrige `words-final`/`words-limpo`: aqui sai com exit 2, e o `words.json`
+  nunca se corrige;
+- `jq`, `turf`, `mapshaper`, `identify` e `pdftoppm` não existem nesta máquina. O PyMuPDF importa no Python,
+  mas não foi testado para rasterizar PDF;
+- `quadro.mjs` com satélite, `geo-recorte-bbox --nome` e `geo-osm-rota`: "Peças da pré-v1 em uso", itens 6 e 7;
+- `buscar-midia` sem `marca/midia.json` (o canal não tem) consulta todas as fontes ligadas, inclusive as que o
+  `midia.md` não cita, e tira da lista o que tem menos de 1600 px de largura (conta em `abaixo_do_minimo`). A
+  NARA só devolve imagem. A Library of Congress e o Internet Archive vêm desligados: a pré-v1 registra 403 do
+  Cloudflare da LoC a toda consulta por script (23/09);
+- o upscale não-generativo que o `pesquisa-pessoas` pede (`image.upscale.classic`) não existe no canal nem na
+  pré-v1;
+- `src/agent/data-tools.mjs` só cobre IBGE e World Bank;
+- o `catalogo` da pré-v1 lê o cache da máquina e o acervo do motor, não `assets/geojson/` (que veio vazio);
+- `navegacao/gerar.mjs` está inoperante: a entrada vinha do `curador-de-acervo`, que não veio, e a saída não tem
+  leitor;
+- relevo (`terrain-rgb-v2`) e câmera 3D da MapTiler não têm prova registrada nesta máquina;
+- as bandeiras de `assets/flags/` variam de tamanho (de 160 a 2560 px de largura): meça cada uma com o
+  `ffprobe`. As do Juneau, `us.png` (320 × 168) e `ca.png` (320 × 160), são pequenas para o círculo de 640 px da
+  PRANCHA.
+
 ## A marca
 
 `marca/identidade.md` (cor, tipo, alvos, cenas), `marca/voz.md` (o narrador e o que ele
@@ -271,7 +420,10 @@ Todo passo que pede "a marca ativa" lê os três. `marca/prancha.html` é a conf
 Site que recusa leitura automática (403, captcha, verificação de robô) não se contorna: nem por
 `curl`, nem por outro cliente, nem trocando cabeçalho. Vale para você e para todo subagente, e o
 pedido a ele tem de dizer isso. Use a cópia local, ou confira pelo navegador do app com o Lucas vendo,
-e pare se o site pedir verificação.
+e pare se o site pedir verificação. A cópia arquivada (web.archive.org e afins) de um site que recusou robô
+vale como cópia ou conta como contorno? DECISÃO DO LUCAS PENDENTE (no Juneau, em 23/09, as eleições foram lidas
+assim: `roteiros/juneau/roteiro-editor.md` › "Voláteis"). Até ele decidir, ninguém a usa em checagem ou
+pesquisa nova: o item fica NÃO CONFERIDO e vai ao navegador do app.
 
 ## O vídeo fala inglês; a casa fala português
 
@@ -300,10 +452,11 @@ Os ofícios foram escritos para vídeo em pt-BR, então, ao rodar os passos:
   - sintagmas que não se partem → `central bank`, `thirty-seven percent`;
   - número por extenso → `nineteen` = 19.
   "A norma de grafia de hoje" é o AP Stylebook vigente.
-- **O que os ofícios citam e não existe aqui**: os scripts de gate (`qc-*`, `render/capturar.mjs`)
-  e o `tradutor-de-tela`. Se o canal escrever um gate, as listas de fala que ele procura
-  (despedida, mic-check, número por extenso) nascem em inglês. As chaves, enums, classes, nomes
-  de lente e o "título" que ele procura no `motivo` continuam em português.
+- **O que os ofícios citam e não existe aqui**: o `render/capturar.mjs` (o render é o `renderizar.mjs` da
+  pré-v1) e o `tradutor-de-tela`. Os portões `qc-*` vieram do molde em 26/09 (ver "Os especialistas"), com as
+  listas de fala em português; as que tropeçam em texto inglês estão nos tropeços de lá. Se o canal escrever um
+  gate, as listas de fala que ele procura (despedida, mic-check, número por extenso) nascem em inglês. As chaves,
+  enums, classes, nomes de lente e o "título" que ele procura no `motivo` continuam em português.
 
 ## As regras deste canal
 

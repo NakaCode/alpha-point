@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="pt-BR" data-render="4k-native"><head><meta charset="utf-8">
+<!-- [porte Regie] Origem: top10-estudio/templates-cena/navegacao/card-progresso.html, commit 4afda12.
+  O que mudou: (1) fonte e cores vêm da marca do canal (marca/tokens.css; a cena mora em out/<proj>/graphics/,
+  por isso ../../../) — era Neue Haas e hex do Top10 cravados; (2) os tamanhos subiram aos pisos do palco 4K
+  (o kicker tinha 34 px e o nome 64 px, abaixo dos pisos 72/104 — piso é ofício, não gosto); (3) os rótulos
+  "você está em"/"a seguir" e o idioma chegam do gerador (window.__NAV_TEXTO), porque o canal pode falar inglês;
+  (4) o exemplo embutido era um tema do Top10 e virou neutro; (5) o #stage declara data-qc-sem-heroi: o card não
+  tem texto-herói (o dado é o anel), e sem a declaração o qc-tamanho do canal cobrava 260 px do rótulo e reprovava
+  todo nav-NN.html gerado (a cena de navegação não está no espelho, então o gate não acha o modo e cobra herói). -->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  CARD DE NAVEGAÇÃO / PROGRESSO — "onde você está" (designer-de-navegacao)
+  PALCO 3840×2160, SEM FUNDO (overlay V4 sobre o conteúdo — o vídeo por baixo continua).
+  O gerador (scripts/navegacao/gerar.mjs) injeta window.__NAV = [{rotulo, relogio 0..1, atual}].
+  Este é um template FUNCIONAL de partida; o designer-de-navegacao refina a linguagem visual.
+  Contrato: __renderAt/__duracao. Público 35+: discreto, elegante, sem gritar.
+═══════════════════════════════════════════════════════════════════════════ -->
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:3840px;height:2160px;overflow:hidden;background:transparent;}   /* SEM-BG */
+  #stage{position:relative;width:3840px;height:2160px;font-family:var(--fonte);}   /* [porte Regie] */
+  /* o card mora no rodapé-esquerdo, discreto, sobre o conteúdo; fora da margem de segurança nunca */
+  #card{position:absolute;left:var(--safe-x,154px);bottom:150px;display:flex;gap:96px;align-items:center;
+        padding:56px 80px;border-radius:44px;opacity:0;
+        background:linear-gradient(180deg,color-mix(in srgb,var(--painel) 88%,transparent),color-mix(in srgb,var(--fundo) 93%,transparent));
+        box-shadow:0 30px 90px rgba(0,0,0,.5),inset 0 0 0 2px color-mix(in srgb,var(--texto) 6%,transparent);}
+  .assunto{display:flex;align-items:center;gap:40px;}
+  .ring{position:relative;width:200px;height:200px;flex:none;}
+  .rotulo{display:flex;flex-direction:column;gap:10px;}
+  /* [porte Regie] 34 → var(--fs-eixo) e 64 → var(--fs-rotulo): os pisos 72/104 do palco 4K */
+  .kicker{font-size:var(--fs-eixo,88px);font-weight:var(--peso-rotulo,600);letter-spacing:.06em;text-transform:uppercase;color:var(--sec);}
+  .nome{font-size:var(--fs-rotulo,140px);font-weight:var(--peso-heroi,900);color:var(--texto);line-height:1.02;max-width:1500px;}
+  .assunto.prox .nome,.assunto.prox .kicker{opacity:.5;}   /* o próximo esmaece */
+  .sep{width:4px;height:200px;background:color-mix(in srgb,var(--texto) 12%,transparent);}
+</style></head><body><div id="stage" data-qc-sem-heroi="card de navegação: o dado é o anel de progresso; os textos são rótulo e eixo, sem herói">
+  <div id="card"></div>
+</div>
+<script>/*__NAV__*/</script>
+<script>
+var DUR=5; window.__duracao=DUR;
+// [porte Regie] exemplo neutro: o do estúdio era um tema do Top10
+var NAV = window.__NAV || [{rotulo:"O assunto em que o espectador está",relogio:0.5,atual:true},{rotulo:"O próximo assunto",relogio:0,atual:false}];
+var TXT = window.__NAV_TEXTO || {atual:"você está em", proximo:"a seguir"};   // [porte Regie]
+var R=86, C=2*Math.PI*R;
+function ringSVG(){
+  // trilho neutro + arco de progresso na cor de acento da marca (animado no __renderAt). SEM número.
+  return '<svg class="ring" viewBox="0 0 200 200">'
+    + '<circle cx="100" cy="100" r="'+R+'" fill="none" stroke="color-mix(in srgb,var(--texto) 12%,transparent)" stroke-width="18"/>'
+    + '<circle class="prog" cx="100" cy="100" r="'+R+'" fill="none" stroke="var(--acento)" stroke-width="18" stroke-linecap="round" '
+    + 'stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="'+C.toFixed(1)+'" transform="rotate(-90 100 100)"/></svg>';
+}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}  // [porte Regie] o rótulo vem de dado
+var card=document.getElementById("card"), html="";
+NAV.forEach(function(a,i){
+  if(i>0) html+='<div class="sep"></div>';
+  html+='<div class="assunto '+(a.atual?"atual":"prox")+'">'+ringSVG()
+      + '<div class="rotulo"><span class="kicker" data-qc-papel="eixo">'+esc(a.atual?TXT.atual:TXT.proximo)+'</span><span class="nome" data-qc-papel="rotulo">'+esc(a.rotulo)+'</span></div></div>';
+});
+card.innerHTML=html;
+var progs=[].slice.call(card.querySelectorAll(".prog"));
+function eb(t){t=t<0?0:t>1?1:t;return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+window.__renderAt=function(t){
+  // entra e sai suave; fica na tela o miolo da janela (não pisca — público 35+)
+  var ein=eb(t/0.6), eout=eb((DUR-t)/0.6);
+  var op=Math.min(t<0.6?ein:1, t>DUR-0.6?eout:1);
+  card.style.opacity=op.toFixed(3);
+  card.style.transform="translateY("+((1-Math.min(t/0.6,1))*40).toFixed(1)+"px)";
+  // o anel anda: preenche de 0 até a posição do assunto em ~1,6s (o espectador vê avançar)
+  var fill=eb(Math.min(Math.max(t-0.2,0)/1.6,1));
+  NAV.forEach(function(a,idx){
+    var v=Math.max(0,Math.min(1,(a.relogio||0)*fill));
+    if(progs[idx]) progs[idx].setAttribute("stroke-dashoffset",(C*(1-v)).toFixed(1));
+  });
+};
+// [porte Regie] a fonte da marca é arquivo (@font-face): a captura espera as faces, senão sai na reserva
+window.__fotosProntas = (document.fonts && document.fonts.ready) ? document.fonts.ready.then(function(){return true;}) : Promise.resolve(true);
+window.__prepararCaptura=function(){window.__renderAt(DUR/2);};
+window.__renderAt(DUR/2);
+</script></body></html>

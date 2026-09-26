@@ -1,0 +1,472 @@
+<!DOCTYPE html><html lang="pt-BR" data-render="4k-native"><head><meta charset="utf-8"><style>
+/* ═══════════════════════════════════════════════════════════════════════════
+   TERRAS-RARAS-RANKING · M11 (ranking de barras top-N) · 7.9s · 4K nativo
+   Metáfora: O PÓDIO ESTÁ ENTERRADO — mina a céu aberto ao amanhecer; as
+   reservas sobem do chão como testemunhos de sondagem (colunas de minério).
+   A China esmaga (44 Mt), o Brasil acende âmbar em 2º (11 Mt). 2ª batida:
+   produção 2025 — tem no chão, não tira.
+   DESPOLUÍDA (25/jul, pedido do Mateus — "muita informação ao mesmo tempo"):
+   só CHINA e BRASIL têm rótulo grande; a cauda entra em hierarquia MENOR.
+   Painel de produção: bandeira+barra+valor, sem repetir nomes (estabelecidos
+   na mesma cena, §7b) e sem ícones de chip/bateria (eco visual da narração).
+   DADO: USGS Mineral Commodity Summaries 2026 (fev/2026) — RE-VERIFICADO no PDF
+   primário em 26/jul (tabela "Mine production e Reserves", p. 2):
+   China 44 · Brasil 11 · Austrália 6,3 · Rússia 3,8 · Vietnã 3,5 · EUA 1,9 (Mt REO)
+   Produção 2025: China 270.000 t · Brasil 2.000 t.
+   ⚠️ O 11 Mt do Brasil PARECE errado a quem lembra dos 21 Mt: essa é a edição
+   ANTERIOR. O próprio USGS avisa na mesma página — "Reserves for Australia,
+   Brazil, and Malaysia were revised based on Government reports" —, a Índia
+   virou "NA" e o total mundial caiu de >90 para >75 Mt. O crédito na tela diz
+   2026 e o número na tela é o de 2026: não trocar por 21 sem trocar o crédito.
+   PROIBIDO nesta cena: "terceiro" (morto desde MCS 2025) e "maior do mundo".
+   REVISÃO CRIATIVA (26/jul) — 4 dos 5 achados do diretor consertados aqui:
+    (1) o gráfico não dizia O QUE media → kicker fixo "RESERVAS DE TERRAS RARAS /
+        em milhões de toneladas" desde o 1º frame, e o card ganhou a unidade
+        ("em toneladas") para as duas métricas nunca se confundirem;
+    (2) cauda anônima → AUSTRÁLIA/RÚSSIA/VIETNÃ ganham bandeira+nome+valor em
+        hierarquia menor (58px cinza-azulado contra 104/116px dos protagonistas).
+        Elas são LEGENDA DE EIXO, não mensagem: nascem juntas no estabelecimento
+        e se aposentam quando o card entra — é o que mantém o pico em 9 blocos,
+        o teto do `qc-carga`. Os EUA seguem silhueta pelo MESMO teto: o 10º bloco
+        reprovaria a cena inteira, e o revisor pediu "ao menos a 3ª–5ª";
+    (4) o 44 Mt sumia @4.6 e o 11 Mt ficava → agora fica até o último frame,
+        colado ao TOPO da coluna. Saiu de cima da coluna para o LADO dela porque
+        o push-in (scale 1.045→1.148) empurra o que está no topo para fora: no
+        lugar antigo ele invadia o kicker por volta de 5s. Os nomes do piso de
+        China/Brasil também deixaram de se aposentar;
+    (5) o card nascia @4.9 e já esmaecia @7.45, com a 2ª linha ilegível → entra
+        @3.5 ("essenciais"), linhas @4.95 ("fabricação") e @5.70 ("chips"), e
+        NÃO tem mais fade-out: a saída é o corte. A linha do Brasil passou de
+        ~0,9s para 1,7s de opacidade cheia.
+   Word-lock (t local): 0 kicker+nomes+cauda (estabelecimento, sob a intro) ·
+   0.4 reserva (barras crescem em cascata) · 0.9 mundial (Brasil acende) ·
+   1.15 herói 11 Mt · 2.0 raras (44 Mt conta) · 2.8 materiais (sparkles) ·
+   3.15 cauda se aposenta · 3.5 essenciais (card) · 4.95 fabricação (linha
+   China) · 5.7 chips (linha Brasil).
+   Estreias de TEXTO ≥0,75s entre si (ARTE-55): 1.15 · 2.0 · 3.5 · 4.95 · 5.70.
+   ═══════════════════════════════════════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:3840px;height:2160px;overflow:hidden;background:#0E2238;}
+#stage{position:relative;width:3840px;height:2160px;overflow:hidden;
+  font-family:"Neue Haas Grotesk Display Pro","Helvetica Neue",Arial,sans-serif;}
+#cam{position:absolute;inset:0;transform-origin:50% 58%;will-change:transform;}
+#cam > svg{position:absolute;inset:0;width:3840px;height:2160px;}
+.lbl{position:absolute;pointer-events:none;}
+/* kicker do gráfico — o que as colunas MEDEM. UM bloco de texto (::first-line
+   estiliza o título; a 2ª linha é a unidade), para não gastar o orçamento de
+   densidade do qc-carga com duas caixas onde o espectador lê um cabeçalho só.
+   Vive fora do #cam: se sofresse o push-in ele sairia por cima da tela. */
+#kick{left:110px;top:64px;width:1760px;}
+#kick .tt{font-size:62px;font-weight:500;color:#9FB4C8;letter-spacing:1px;line-height:1.28;
+  text-shadow:0 3px 16px rgba(4,12,22,.85);}
+#kick .tt::first-line{font-size:78px;font-weight:900;color:#FFFFFF;letter-spacing:2px;}
+/* herói Brasil — UM bloco (::first-line estiliza o "2º") */
+#heroBR{left:1010px;top:1000px;width:760px;text-align:center;opacity:0;}
+#heroBR .n{font-size:280px;font-weight:800;line-height:1;color:#FFB13D;
+  letter-spacing:-6px;text-shadow:0 12px 48px rgba(6,16,28,.7);}
+#heroBR .n::first-line{font-size:130px;font-weight:800;letter-spacing:0;color:#FFE2B0;}
+/* painel produção — só o essencial: bandeira + barra + valor (nomes já
+   estabelecidos no piso; repetir era eco visual) */
+#prod{left:2310px;top:400px;width:1400px;opacity:0;
+  background:rgba(7,18,31,.78);border-radius:34px;padding:0 0 52px 0;
+  box-shadow:0 24px 80px rgba(3,10,18,.55);}
+#prod .tarja{height:14px;border-radius:34px 34px 0 0;
+  background:linear-gradient(90deg,#3EC8FF,#FFB13D);}
+#prod .kick{padding:44px 56px 14px 56px;}
+#prod .kick .tt{font-size:72px;font-weight:500;color:#9FB4C8;letter-spacing:1px;line-height:1.35;}
+#prod .kick .tt::first-line{font-size:96px;font-weight:900;color:#FFFFFF;letter-spacing:2px;}
+/* a linha nasce COLAPSADA (max-height 0) e o container cresce com o conteúdo —
+   caixa vazia esperando conteúdo é defeito (despoluição 25/jul) */
+#prod .row{display:flex;align-items:center;gap:32px;padding:0 56px;opacity:0;
+  max-height:0;overflow:hidden;}
+#prod .row > img{height:84px;width:auto;flex:none;
+  box-shadow:0 0 0 3px rgba(234,241,247,.3);}
+#prod .row .tr{position:relative;height:44px;flex:1;background:rgba(159,180,200,.14);
+  border-radius:22px;overflow:hidden;}
+#prod .row .fill{position:absolute;left:0;top:0;bottom:0;border-radius:22px;}
+/* line-height explícito + caixa 200px: com o max-height de 160 o glyph de 104px
+   era CORTADO pelo overflow:hidden da própria linha (gate fora-do-quadro
+   acusava "270 mil t · topo 8px · baixo 19px"). Corte por contêiner, não por
+   borda de tela — e o frame parado não denuncia. */
+#prod .row .vl{font-size:104px;line-height:1.25;font-weight:800;color:#FFFFFF;width:500px;flex:none;
+  text-align:right;font-variant-numeric:tabular-nums;}
+/* fonte */
+#foot{right:110px;top:96px;font-size:72px;font-weight:600;color:#C7D6E4;opacity:0;
+  text-shadow:0 3px 14px rgba(4,12,22,.8);}
+/* acabamento */
+#vig{position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 420px 140px rgba(4,12,22,.62);}
+#grain{position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;}
+#intro{position:absolute;inset:0;background:#050C14;pointer-events:none;}
+</style></head><body><div id="stage">
+<div id="cam">
+<svg viewBox="0 0 3840 2160">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0C1E33"/><stop offset=".45" stop-color="#173453"/>
+      <stop offset=".78" stop-color="#3D5570"/><stop offset="1" stop-color="#8A6B52"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFD9A0" stop-opacity=".95"/>
+      <stop offset=".4" stop-color="#F2A45C" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#F2A45C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rimFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A3F58"/><stop offset="1" stop-color="#1D2F45"/>
+    </linearGradient>
+    <linearGradient id="bench1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#243A50"/><stop offset="1" stop-color="#1A2B3E"/>
+    </linearGradient>
+    <linearGradient id="bench2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1E3145"/><stop offset="1" stop-color="#152535"/>
+    </linearGradient>
+    <linearGradient id="bench3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#182A3C"/><stop offset="1" stop-color="#111F2E"/>
+    </linearGradient>
+    <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#132335"/><stop offset="1" stop-color="#0B1826"/>
+    </linearGradient>
+    <!-- núcleos de sondagem -->
+    <linearGradient id="coreCN" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7E2A30"/><stop offset=".45" stop-color="#A8383E"/>
+      <stop offset=".62" stop-color="#C4494F"/><stop offset="1" stop-color="#5E1E23"/>
+    </linearGradient>
+    <linearGradient id="coreBR" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9A6212"/><stop offset=".45" stop-color="#E09A2E"/>
+      <stop offset=".62" stop-color="#FFC463"/><stop offset="1" stop-color="#7A4C0C"/>
+    </linearGradient>
+    <linearGradient id="coreST" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3A4E63"/><stop offset=".45" stop-color="#54718C"/>
+      <stop offset=".62" stop-color="#6C8BA6"/><stop offset="1" stop-color="#2C3D4F"/>
+    </linearGradient>
+    <radialGradient id="brGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFB13D" stop-opacity=".5"/>
+      <stop offset=".55" stop-color="#FFB13D" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#FFB13D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- céu de amanhecer + sol baixo -->
+  <rect width="3840" height="1160" fill="url(#sky)"/>
+  <circle id="sunG" cx="520" cy="1010" r="620" fill="url(#sun)"/>
+  <g id="cl1" opacity=".5"><ellipse cx="900" cy="360" rx="300" ry="64" fill="#2E4A68"/><ellipse cx="1110" cy="326" rx="190" ry="48" fill="#355474"/></g>
+  <g id="cl2" opacity=".38"><ellipse cx="2900" cy="260" rx="360" ry="70" fill="#2A4560"/><ellipse cx="3140" cy="222" rx="200" ry="50" fill="#31506E"/></g>
+
+  <!-- borda distante da cava -->
+  <path d="M 0 1080 L 520 1010 L 980 1060 L 1560 1000 L 2280 1058 L 2900 1006 L 3460 1052 L 3840 1020 L 3840 1220 L 0 1220 Z" fill="url(#rimFar)"/>
+  <!-- bancadas da mina (terraços descendo até o piso) -->
+  <path d="M 0 1195 C 700 1130 3100 1130 3840 1195 L 3840 1370 C 3100 1300 700 1300 0 1370 Z" fill="url(#bench1)"/>
+  <path d="M 0 1360 C 760 1292 3080 1292 3840 1360 L 3840 1545 C 3080 1472 760 1472 0 1545 Z" fill="url(#bench2)"/>
+  <path d="M 0 1535 C 820 1462 3020 1462 3840 1535 L 3840 1735 C 3020 1660 820 1660 0 1735 Z" fill="url(#bench3)"/>
+  <!-- fios de luz quente nas cristas das bancadas -->
+  <path d="M 0 1195 C 700 1130 3100 1130 3840 1195" fill="none" stroke="#F4A62A" stroke-width="5" opacity=".34"/>
+  <path d="M 0 1360 C 760 1292 3080 1292 3840 1360" fill="none" stroke="#F4A62A" stroke-width="5" opacity=".26"/>
+  <path d="M 0 1535 C 820 1462 3020 1462 3840 1535" fill="none" stroke="#F4A62A" stroke-width="5" opacity=".2"/>
+  <!-- piso da cava -->
+  <rect y="1725" width="3840" height="435" fill="url(#floorG)"/>
+  <path d="M 0 1725 C 900 1755 2940 1755 3840 1725" fill="none" stroke="#F4A62A" stroke-width="4" opacity=".14"/>
+
+  <!-- escavadeira (silhueta, escala) na bancada esquerda -->
+  <g id="excav" opacity=".9">
+    <g transform="translate(320,1435) scale(1.18)">
+      <rect x="0" y="54" width="150" height="40" rx="12" fill="#0D1926"/>
+      <rect x="16" y="20" width="86" height="44" rx="8" fill="#122334"/>
+      <rect x="24" y="28" width="30" height="22" rx="4" fill="#F4A62A" opacity=".55"/>
+      <g id="excArm"><path d="M 96 34 L 196 -18 L 210 -8 L 116 44 Z" fill="#122334"/>
+      <path d="M 196 -18 L 252 16 L 236 34 L 196 -2 Z" fill="#0F1E2D"/>
+      <path d="M 236 30 q 26 10 18 34 q -24 4 -34 -16 Z" fill="#0D1926"/></g>
+    </g>
+  </g>
+  <g id="dustPl"></g>
+
+  <!-- caminhão de mina no piso, direita (escala) -->
+  <g id="truck" opacity=".92">
+    <g transform="translate(3300,1836) scale(1.25)">
+      <path d="M 0 40 L 12 6 L 120 -2 L 150 20 L 150 40 Z" fill="#13273A"/>
+      <rect x="118" y="14" width="44" height="30" rx="6" fill="#0E1E2E"/>
+      <rect x="126" y="20" width="16" height="12" rx="3" fill="#F4A62A" opacity=".5"/>
+      <circle cx="38" cy="52" r="20" fill="#0A1520"/><circle cx="38" cy="52" r="8" fill="#33475A"/>
+      <circle cx="122" cy="52" r="20" fill="#0A1520"/><circle cx="122" cy="52" r="8" fill="#33475A"/>
+    </g>
+  </g>
+
+  <!-- glow do Brasil (atrás da coluna) -->
+  <ellipse id="brHalo" cx="1390" cy="1520" rx="520" ry="420" fill="url(#brGlow)" opacity="0"/>
+
+  <!-- AS COLUNAS (testemunhos de sondagem) — construídas via JS -->
+  <g id="bars"></g>
+  <!-- brilhos minerais -->
+  <g id="sparks"></g>
+  <!-- poeira que sobe -->
+  <g id="motes"></g>
+</svg>
+</div>
+
+<!-- herói Brasil — SEM ordinal, e isto é deliberado (25/jul).
+     A narração deste compilado é gravação REAPROVEITADA e diz, em 3618,4s, "o Brasil tem a
+     TERCEIRA maior reserva mundial de terras raras" — enquanto o dado atual (USGS MCS 2026) é 2º.
+     A tela mostrava "2º" e o espectador OUVIA "terceira": contradição audível, e o áudio não muda.
+     Escrever "3º" seria pôr na tela um dado morto desde o MCS 2025; escrever "2º" desmente o
+     apresentador. A saída honesta é não afirmar posição nenhuma: 11 Mt é verdade nas duas versões
+     do ranking, e a proporção das colunas (China esmagando, Brasil destacado, cauda apagada) conta
+     a história inteira sem cravar um ordinal que envelheceu entre a gravação e a montagem. -->
+<div class="lbl" id="heroBR"><div class="n">11 Mt</div></div>
+
+<!-- o que as colunas medem — fixo do 1º ao último frame -->
+<div class="lbl" id="kick"><div class="tt">RESERVAS DE TERRAS RARAS<br>em milh&otilde;es de toneladas</div></div>
+
+<!-- painel produção (bandeira identifica; o nome foi estabelecido no piso).
+     A UNIDADE é obrigatória na 2ª linha: sem ela o card entrava ao lado de
+     colunas em Mt e induzia a ler "produção" como se fosse a mesma medida —
+     ordens de grandeza incompatíveis (44 Mt contra 270 mil t). -->
+<div class="lbl" id="prod">
+  <div class="tarja"></div>
+  <div class="kick"><div class="tt">TIRAR DO CH&Atilde;O<br>produ&ccedil;&atilde;o em 2025 &mdash; em toneladas</div></div>
+  <div class="row" id="rowCN"><img src="../../../assets/flags/cn.png" alt="">
+    <div class="tr"><div class="fill" id="fCN" style="background:#C4494F;width:0;"></div></div>
+    <div class="vl" id="vCN">270 mil t</div></div>
+  <div class="row" id="rowBR"><img src="../../../assets/flags/br.png" alt="">
+    <div class="tr"><div class="fill" id="fBR2" style="background:#FFB13D;width:0;"></div></div>
+    <div class="vl" id="vBR2" style="color:#FFC463;">2 mil t</div></div>
+</div>
+
+<div class="lbl" id="foot">Fonte: USGS &mdash; Mineral Commodity Summaries 2026</div>
+<div id="vig"></div>
+<canvas id="grain" width="3840" height="2160"></canvas>
+<div id="intro"></div>
+</div>
+<script>
+var DUR=7.9; window.__duracao=DUR;
+var E=function(id){return document.getElementById(id);};
+function cl(v,a,b){return v<a?a:v>b?b:v;}
+function seg(t,a,d){return cl((t-a)/d,0,1);}
+function eo(p){p=cl(p,0,1);return 1-Math.pow(1-p,3);}
+function eb(p){p=cl(p,0,1);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;}
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+/* ── dados VERIFICADOS (USGS MCS 2026) — reservas em Mt de REO ── */
+var K=1250/44; /* px por Mt (China = 1250px) */
+var FLOOR=1800;
+/* Bandeira oficial ao lado do nome (ARTE-57; fH/fW ~0,88× a caixa-alta do texto).
+   TRÊS PESOS, não dois: China/Brasil carregam a tese (104/116px); a cauda
+   AUSTRÁLIA/RÚSSIA/VIETNÃ é LEGENDA DE EIXO (58px cinza-azulado, nome e valor
+   no MESMO bloco) — sem ela metade do quadro eram blocos mudos que ninguém
+   sabia se eram Índia, Rússia ou enfeite. Os EUA continuam silhueta: o teto do
+   `qc-carga` é 9 blocos simultâneos e o 10º reprova a cena.
+   O `val` fica junto do nome de propósito — dois textos por país custariam o
+   dobro do orçamento de densidade e diriam a mesma coisa.
+   `t0` em cascata curta: a coluna nasce logo depois do rótulo que já está no
+   piso, senão o "6,3" fica órfão sobre o chão vazio. Alturas = dados do USGS. */
+var BARS=[
+ {id:'cn', name:'CHINA',  mt:44,  x:560,  w:360, fill:'url(#coreCN)', cap:'#D64045', t0:0.40, lbl:1, fW:99,  fH:66},
+ {id:'br', name:'BRASIL', mt:11,  x:1390, w:330, fill:'url(#coreBR)', cap:'#FFB13D', t0:0.70, lbl:1, hero:1, fW:106, fH:74},
+ {id:'au', name:'AUSTRÁLIA', val:'6,3', mt:6.3, x:2060, w:260, fill:'url(#coreST)', cap:'#6C8BA6', t0:0.85, lbl:1, cauda:1, fW:80, fH:40},
+ {id:'ru', name:'RÚSSIA',    val:'3,8', mt:3.8, x:2670, w:260, fill:'url(#coreST)', cap:'#6C8BA6', t0:0.95, lbl:1, cauda:1, fW:60, fH:40},
+ {id:'vn', name:'VIETNÃ',    val:'3,5', mt:3.5, x:3200, w:250, fill:'url(#coreST)', cap:'#6C8BA6', t0:1.05, lbl:1, cauda:1, fW:60, fH:40},
+ {id:'us', mt:1.9, x:3600, w:220, fill:'url(#coreST)', cap:'#6C8BA6', t0:1.15}
+];
+var NS='http://www.w3.org/2000/svg';
+(function(){var g=E('bars');if(!g)return;
+  BARS.forEach(function(b){
+    var gr=document.createElementNS(NS,'g');gr.setAttribute('id','bar_'+b.id);
+    var h=b.mt*K;
+    /* corpo do testemunho (cresce por scaleY ancorado no piso) */
+    var body=document.createElementNS(NS,'g');body.setAttribute('id','bd_'+b.id);
+    body.setAttribute('transform','translate('+b.x+','+FLOOR+') scale(1,0.001)');
+    var r=document.createElementNS(NS,'rect');
+    r.setAttribute('x',-b.w/2);r.setAttribute('y',-h);r.setAttribute('width',b.w);r.setAttribute('height',h);
+    r.setAttribute('rx',Math.min(26,b.w/6));r.setAttribute('fill',b.fill);
+    body.appendChild(r);
+    /* bandas de minério (segmentos do core) */
+    var n=Math.max(2,Math.round(h/120));
+    for(var i=1;i<n;i++){var ln=document.createElementNS(NS,'line');
+      ln.setAttribute('x1',-b.w/2+14);ln.setAttribute('x2',b.w/2-14);
+      ln.setAttribute('y1',-h*i/n);ln.setAttribute('y2',-h*i/n);
+      ln.setAttribute('stroke','#0A1520');ln.setAttribute('stroke-width','7');ln.setAttribute('opacity','.5');
+      body.appendChild(ln);}
+    /* tampa */
+    var cp=document.createElementNS(NS,'rect');
+    cp.setAttribute('x',-b.w/2);cp.setAttribute('y',-h);cp.setAttribute('width',b.w);cp.setAttribute('height',20);
+    cp.setAttribute('rx',10);cp.setAttribute('fill',b.cap);
+    body.appendChild(cp);
+    gr.appendChild(body);
+    /* sombra na base */
+    var sh=document.createElementNS(NS,'ellipse');
+    sh.setAttribute('cx',b.x);sh.setAttribute('cy',FLOOR+16);sh.setAttribute('rx',b.w*0.72);sh.setAttribute('ry',26);
+    sh.setAttribute('fill','#050C14');sh.setAttribute('opacity','.45');sh.setAttribute('id','sh_'+b.id);
+    gr.insertBefore(sh,body);
+    /* valor da China — AO LADO do topo da coluna, não acima dele.
+       Acima ele não sobrevive à cena: o push-in tem origem em 58% da altura e
+       escala até 1,148, então tudo que está no alto SOBE — medido, o "44 Mt"
+       cruzava a linha do kicker por volta de 5s. Ao lado, ele continua colado
+       ao topo da barra (o transform do render acompanha o crescimento) e o
+       canto superior esquerdo fica livre para dizer o que a cena mede. */
+    if(b.id==='cn'){var vt=document.createElementNS(NS,'text');
+      vt.setAttribute('id','vt_'+b.id);vt.setAttribute('x',b.x+b.w/2+70);vt.setAttribute('y',FLOOR-h+62);
+      vt.setAttribute('text-anchor','start');vt.setAttribute('font-size',200);
+      vt.setAttribute('font-weight','800');vt.setAttribute('fill','#FFFFFF');vt.setAttribute('opacity','0');
+      vt.setAttribute('font-family','"Neue Haas Grotesk Display Pro","Helvetica Neue",Arial');
+      vt.textContent='';gr.appendChild(vt);}
+    /* nome no piso + bandeira (lbl:1); weight 900 pelo bug do Bold 600–749 em
+       caps acentuadas — RÚSSIA e VIETNÃ dependem disso */
+    if(b.lbl){
+      var ly=FLOOR+130, fs=b.hero?116:b.cauda?58:104;
+      var nt=document.createElementNS(NS,'text');
+      nt.setAttribute('id','nt_'+b.id);nt.setAttribute('x',b.x);nt.setAttribute('y',ly);
+      nt.setAttribute('text-anchor','middle');nt.setAttribute('font-size',fs);
+      nt.setAttribute('font-weight','900');nt.setAttribute('fill',b.hero?'#FFC463':b.cauda?'#9FB4C8':'#C7D6E4');nt.setAttribute('opacity','0');
+      nt.setAttribute('font-family','"Neue Haas Grotesk Display Pro","Helvetica Neue",Arial');
+      nt.textContent=b.cauda?(b.name+' '+b.val):b.name;gr.appendChild(nt);
+      /* bandeira oficial ao lado do nome (posicionada no render, após medir o texto) */
+      var capH=Math.round(fs*0.72), fy=ly-capH/2-b.fH/2;
+      var fl=document.createElementNS(NS,'image');
+      fl.setAttribute('id','fl_'+b.id);fl.setAttribute('href','../../../assets/flags/'+b.id+'.png');
+      fl.setAttribute('width',b.fW);fl.setAttribute('height',b.fH);fl.setAttribute('y',fy);
+      fl.setAttribute('preserveAspectRatio','xMidYMid slice');fl.setAttribute('opacity','0');
+      gr.appendChild(fl);
+    }
+    g.appendChild(gr);
+  });
+})();
+/* brilhos minerais dentro das colunas */
+(function(){var g=E('sparks');if(!g)return;var rnd=mulberry32(77);window._spk=[];
+  BARS.forEach(function(b){var h=b.mt*K;var n=Math.max(2,Math.round(h/170));
+    for(var i=0;i<n;i++){var p=document.createElementNS(NS,'path');
+      var sx=b.x+(rnd()-0.5)*(b.w-90), sy=FLOOR-30-rnd()*(h-60), s=10+rnd()*12;
+      p.setAttribute('d','M '+sx+' '+(sy-s)+' L '+(sx+s*0.62)+' '+sy+' L '+sx+' '+(sy+s)+' L '+(sx-s*0.62)+' '+sy+' Z');
+      p.setAttribute('fill',b.hero?'#FFE2B0':'#BFE2F8');p.setAttribute('opacity','0');
+      g.appendChild(p);window._spk.push({el:p,ph:rnd()*6.28,barT0:b.t0});}});
+})();
+/* poeira que sobe */
+(function(){var g=E('motes');if(!g)return;var rnd=mulberry32(41);window._mot=[];
+  for(var i=0;i<12;i++){var c=document.createElementNS(NS,'circle');
+    c.setAttribute('r',(5+rnd()*8).toFixed(1));c.setAttribute('fill','#C7A574');c.setAttribute('opacity','0');
+    g.appendChild(c);window._mot.push({el:c,x:200+rnd()*3400,ph:rnd(),sp:0.06+rnd()*0.08});}
+})();
+/* plumas de poeira da escavadeira */
+(function(){var g=E('dustPl');if(!g)return;window._dpl=[];
+  for(var i=0;i<4;i++){var e=document.createElementNS(NS,'ellipse');
+    e.setAttribute('fill','#3D5570');e.setAttribute('opacity','0');g.appendChild(e);window._dpl.push({el:e,ph:i/4});}
+})();
+/* grain determinístico */
+(function(){var cv=E('grain');if(!cv)return;var ctx=cv.getContext('2d');
+  var rnd=mulberry32(1234);var im=ctx.createImageData(480,270);
+  for(var i=0;i<im.data.length;i+=4){var v=(rnd()*255)|0;im.data[i]=v;im.data[i+1]=v;im.data[i+2]=v;im.data[i+3]=26;}
+  var off=document.createElement('canvas');off.width=480;off.height=270;
+  off.getContext('2d').putImageData(im,0,0);
+  window._gr={ctx:ctx,off:off};
+})();
+
+function op(id,v){var e=E(id);if(e)e.style.opacity=v;}
+
+window.__renderAt=function(t){
+  /* câmera viva: push-in + micro-deriva */
+  var cm=E('cam'); if(cm)cm.style.transform='scale('+(1.045+0.013*t).toFixed(4)+') translate('+(6*Math.sin(t*0.23)).toFixed(1)+'px,'+(4.5*Math.sin(t*0.17)).toFixed(1)+'px)';
+  /* intro */
+  var iv=E('intro'); if(iv)iv.style.opacity=(1-eo(seg(t,0,0.45))).toFixed(3);
+  /* sol respira, nuvens derivam */
+  var sn=E('sunG'); if(sn)sn.setAttribute('opacity',(0.85+0.15*Math.sin(t*0.9)).toFixed(2));
+  var c1=E('cl1'); if(c1)c1.setAttribute('transform','translate('+(t*26%600-80).toFixed(0)+',0)');
+  var c2=E('cl2'); if(c2)c2.setAttribute('transform','translate('+(-(t*20%600)+60).toFixed(0)+',0)');
+  /* escavadeira: braço cava devagar + plumas */
+  var arm=E('excArm'); if(arm)arm.setAttribute('transform','rotate('+(7*Math.sin(t*0.9)).toFixed(2)+' 96 34)');
+  if(window._dpl)for(var i=0;i<window._dpl.length;i++){var d=window._dpl[i];var pr=(t*0.35+d.ph)%1;
+    d.el.setAttribute('cx',(660+40*pr+16*Math.sin(t+i)).toFixed(0));
+    d.el.setAttribute('cy',(1465-110*pr).toFixed(0));
+    d.el.setAttribute('rx',(26+70*pr).toFixed(0));d.el.setAttribute('ry',(14+30*pr).toFixed(0));
+    d.el.setAttribute('opacity',(0.4*pr*(1-pr)*4*0.5).toFixed(2));}
+  /* poeira global */
+  if(window._mot)for(var i=0;i<window._mot.length;i++){var m=window._mot[i];var pr=(t*m.sp+m.ph)%1;
+    m.el.setAttribute('cx',(m.x+30*Math.sin(t*0.6+i)).toFixed(0));
+    m.el.setAttribute('cy',(2050-1500*pr).toFixed(0));
+    m.el.setAttribute('opacity',(0.3*Math.sin(Math.PI*pr)).toFixed(2));}
+
+  /* ── AS COLUNAS: crescem word-locked (0.4→~2.0) + respiram ── */
+  BARS.forEach(function(b){
+    var p=eo(seg(t,b.t0,1.15));
+    var ov=1+0.05*Math.sin(Math.PI*cl(seg(t,b.t0,1.35),0,1)); /* leve overshoot */
+    var br=1+0.006*Math.sin(t*0.9+b.x*0.01);                  /* respiração */
+    var sc=Math.max(0.001,p*ov*br);
+    var bd=E('bd_'+b.id); if(bd)bd.setAttribute('transform','translate('+b.x+','+FLOOR+') scale(1,'+sc.toFixed(4)+')');
+    var sh=E('sh_'+b.id); if(sh)sh.setAttribute('opacity',(0.45*p).toFixed(2));
+    var nt=E('nt_'+b.id);
+    if(nt){
+      /* Todos os nomes moram no piso desde t=0 (sob a intro). China e Brasil
+         NÃO se aposentam mais — o revisor pegou o quadro ficando oco na 2ª
+         metade. A cauda sai @3.15, antes de o card cruzar a visibilidade:
+         é ela que libera o 9º bloco do orçamento de densidade, e o ranking
+         já foi lido nos 3,2s em que esteve na tela. */
+      var ntOp=(b.cauda?0.86*(1-eo(seg(t,3.15,0.5))):0.92).toFixed(2);
+      nt.setAttribute('opacity',ntOp);
+      /* bloco bandeira+nome centrado no eixo da barra (mede o texto e cacheia) */
+      if(!window._ntW)window._ntW={};
+      if(!window._ntW[b.id]){var tw=0;try{tw=nt.getComputedTextLength();}catch(e){}
+        window._ntW[b.id]=tw>0?tw:(nt.textContent||'').length*(b.hero?70:b.cauda?35:63);}
+      var tw2=window._ntW[b.id], gap=26, tot=b.fW+gap+tw2, lft=b.x-tot/2;
+      nt.setAttribute('x',(lft+b.fW+gap+tw2/2).toFixed(1));
+      var fl=E('fl_'+b.id); if(fl){fl.setAttribute('x',lft.toFixed(1));fl.setAttribute('opacity',ntOp);}
+    }
+    /* 44 Mt: estreia @2.0 ("raras") — ≥0,75s depois do herói (1.15) e antes só a
+       coluna fala; conta 1.7→3.0 e FICA ATÉ O ÚLTIMO FRAME. O fade-out @4.6
+       deixava a barra que carrega a comparação inteira sem número na metade
+       final da cena, ao lado de um "11 Mt" que permanecia — quem entrava ali
+       via o menor rotulado e o maior mudo. Não havia colisão que justificasse:
+       o card entra no canto oposto. */
+    if(b.id==='cn'){var vt=E('vt_'+b.id);
+      if(vt){vt.setAttribute('opacity',eo(seg(t,2.0,0.5)).toFixed(2));
+        var h2b=b.mt*K*sc; vt.setAttribute('transform','translate(0,'+(b.mt*K-h2b).toFixed(1)+')');
+        var cnt=eo(seg(t,1.7,1.3));
+        vt.textContent=Math.round(44*cnt)+' Mt';}}
+  });
+  /* Brasil acende em "mundial" (0.9) */
+  var halo=E('brHalo'); if(halo)halo.setAttribute('opacity',(eo(seg(t,0.9,0.8))*(0.75+0.25*Math.sin(t*1.6))).toFixed(2));
+  /* herói 11 Mt — nasce com a coluna do Brasil, sobe com ela */
+  var hb=E('heroBR'); if(hb){var hp=eb(seg(t,1.15,0.7));
+    hb.style.opacity=hp.toFixed(3);
+    hb.style.transform='translateY('+((1-hp)*60).toFixed(1)+'px) scale('+(0.92+0.08*hp+0.011*Math.sin(t*2.1)).toFixed(3)+')';}
+  /* brilhos minerais em "materiais" (2.8) */
+  if(window._spk){var sOn=eo(seg(t,2.75,0.8));
+    for(var i=0;i<window._spk.length;i++){var s=window._spk[i];
+      s.el.setAttribute('opacity',(sOn*cl(0.25+0.75*Math.sin(t*2.6+s.ph),0,1)*0.85).toFixed(2));}}
+  /* painel produção @3.5 ("essenciais", a virada da frase) — o cabeçalho chega
+     ANTES dos números, que entram no word-lock: linha China @4.95
+     ("fabricação"), linha Brasil @5.70 ("chips"); estreias ≥0,75s (ARTE-55).
+     SEM FADE-OUT: quem tira o card da tela é o corte da cena. O fade @7.45
+     começava a apagar o painel com a 2ª linha recém-nascida — o "2 mil t" só
+     existia esmaecendo, e o espectador simplesmente não lia. Agora ele tem
+     1,7s de opacidade cheia. */
+  var pd=E('prod'); if(pd){var pv=eb(seg(t,3.5,0.6));
+    pd.style.opacity=pv.toFixed(3);
+    pd.style.transform='translateY('+((1-pv)*70).toFixed(1)+'px) translateX('+(2.5*Math.sin(t*0.8)).toFixed(1)+'px)';}
+  /* DOIS TEMPOS, e a ordem importa: a CAIXA abre (0,26s) e só então o conteúdo
+     aparece. Animar altura e opacidade juntos com `overflow:hidden` significa
+     desenhar o "270 mil t" dentro de uma caixa que ainda não tem altura para
+     ele — corte por CONTÊINER, que o frame parado não denuncia e o gate
+     fora-do-quadro pega varrendo a duração. Com opacidade exatamente 0
+     enquanto a caixa cresce, não há instante em que letra apareça cortada. */
+  var _row=function(id,t0){var e=E(id);if(!e)return;
+    var g=eo(seg(t,t0,0.26)), p=eo(seg(t,t0+0.26,0.42));
+    e.style.maxHeight=(g*200).toFixed(0)+'px';
+    e.style.paddingTop=(g*24).toFixed(0)+'px';
+    e.style.opacity=p.toFixed(3);};
+  _row('rowCN',4.95); _row('rowBR',5.70);
+  var fcn=E('fCN'); if(fcn)fcn.style.width=(eo(seg(t,5.10,0.9))*100).toFixed(1)+'%';
+  var fbr=E('fBR2'); if(fbr)fbr.style.width=(eo(seg(t,5.85,0.7))*0.74).toFixed(2)+'%'; /* 2/270 da barra cheia */
+  /* fonte fica a cena toda (nasce sob a intro) */
+  op('foot','0.95');
+  /* grain deriva */
+  if(window._gr){var g=window._gr;g.ctx.clearRect(0,0,3840,2160);
+    g.ctx.save();g.ctx.translate(-((t*61)%480),-((t*37)%270));
+    var pat=g.ctx.createPattern(g.off,'repeat');g.ctx.fillStyle=pat;g.ctx.fillRect(0,0,4320,2430);g.ctx.restore();}
+};
+window.__fotosProntas=Promise.all(
+  [].slice.call(document.images).map(function(im){
+    return (im.complete&&im.naturalWidth>0)?Promise.resolve()
+      :new Promise(function(r){im.addEventListener('load',r);im.addEventListener('error',r);});
+  }).concat([].slice.call(document.querySelectorAll('svg image')).map(function(im){
+    return new Promise(function(r){im.addEventListener('load',r);im.addEventListener('error',r);setTimeout(r,5000);});
+  }))
+);
+window.__prepararCaptura=function(){window.__renderAt(0);};
+window.__renderAt(0);
+</script></body></html>

@@ -1,0 +1,133 @@
+<!-- Roupa do Alpha Point para o pesquisa-logos. Escrita em 26/09/2026, na instalação dos especialistas da
+     pré-v1 da Régie. Molde de formato: template/marca/agentes/pesquisa-logos.md da pré-v1 (commit 7ab9543),
+     que é a roupa do Canal Top10 — nenhum valor dele foi copiado. Cada valor abaixo cita a fonte do canal:
+     marca/identidade.md, marca/voz.md, marca/tokens.css, canal.json, CLAUDE.md, roteiros/<proj>/… Onde o
+     canal ainda não decidiu, a linha diz "DECISÃO DO LUCAS PENDENTE" e o que se faz até lá. -->
+
+# ROUPA ALPHA POINT — pesquisa-logos
+
+> Só o que é do canal. O ofício (nunca redesenhar logo, a versão da época da entidade, uso editorial sem
+> endosso, variante monocromática do vetor original) está em `.claude/agents/pesquisa-logos.md` e não se
+> discute aqui. Marca ativa: `marca/identidade.md`, `marca/voz.md`, `marca/midia.md`.
+
+## 0 · O canal, em uma tela (vale para todo especialista)
+
+- **Faceless.** Ninguém fala para a câmera (identidade.md §0). O master é a narração sobre tela preta
+  3840×2160, e 100 % do tempo é coberto por cena (identidade.md §5). Há um relógio só,
+  `out/<proj>/words.json`.
+- **Idioma.** Tela e busca em **inglês dos EUA** (`canal.json › idiomas.origem`). Relatório e notas, em
+  português.
+- **Formato de tela** (identidade.md §7): `2,700`, `$2.8 billion`, `ALMOST 3,000×`, `28.0×`,
+  `22.2 ft (6.76 m)`, `MAY 1, 1994` (em caixa normal, `March 3, 2024`). ⚠️ Os exemplos do ofício estão no
+  formato brasileiro (`QUASE 3.000×`, `28,0×`, `R$ 2 bi`, linha explicativa em português): **não se
+  copiam**.
+- **Vocabulário de máquina não se traduz:** chaves de JSON, enums, `data-qc-*`, `NÃO MEDIDO`, e o nome
+  do arquivo no Commons (`Flag_of_<x>.svg`) fica como está (CLAUDE.md, "O vídeo fala inglês").
+- **Cena HTML**, se alguma entrega sua virar uma: `<html lang="en-US" data-render="4k-native">`, ligando
+  `marca/tokens.css` (CLAUDE.md). A cena é do `editor-de-arte` ou do `mapista`.
+- **`<motor>` nesta roupa é a pré-v1 da Régie**, clonada só para leitura (CLAUDE.md, "Peças da pré-v1 em
+  uso"), e **não** o `motor.caminho` do `canal.json` (a v0.1.0). Script de `scripts/` que importa do motor
+  (`scripts/stock/_commons-cat.mjs`, `scripts/stock/_svg-para-png.mjs`) pede `REGIE_MOTOR=<motor>` na
+  mesma chamada; `MOTOR_SEM_ARQUIVO` ou "atualize o motor" quer dizer só que faltou a variável. Nunca
+  mexa no motor nem no `canal.json` por causa disso.
+- **Gate que pede `sharp` ou `playwright-core` sai NÃO MEDIDO**, com o nome: o `npm install` não foi
+  autorizado pelo Lucas. Não simule gate.
+- **Nunca** rode `narrar.mjs` nem `transcrever.mjs`: gastam crédito da ElevenLabs e refazem o relógio
+  (CLAUDE.md).
+- **Site que recusa leitura automática** (403, 405, captcha, verificação de robô, página "Just a
+  moment…"): pare nele. Não tente de novo por `curl`, por outro programa, trocando o User-Agent nem
+  qualquer outro cabeçalho. Diga no relatório a URL e o que ela respondeu; o Claude central confere no
+  navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md, item 14). A cópia arquivada
+  (web.archive.org e afins) de um site que recusou robô também não se usa: DECISÃO DO LUCAS PENDENTE se vale
+  como cópia ou conta como contorno (CLAUDE.md, "A marca"). Até lá, o item fica NÃO CONFERIDO.
+- **Quem decide é o Lucas Rosa** (`canal.json › owner`). As leis `[PESQ-NN]` (`seed/regras/PESQ.md`)
+  e `knowledge/MIDIA-REAL.md` vieram do Top10: valem como ofício; onde falam de dono, fundo, cor ou
+  exemplo, vale esta roupa.
+
+## 1 · O fundo em que a logo entra (identidade.md §2, §5)
+
+O canal tem três fundos, e cada um pede uma variante:
+
+| Modelo | Fundo | Variante |
+|---|---|---|
+| MAPA, REGISTRO | satélite escurecido, footage ou foto | branca |
+| PRANCHA | `--fundo` `#0E1726` (cartão em `--painel` `#172338`) | branca |
+| DADO, DOCUMENTO | `--papel` `#ECE8DF`, claro | a original, ou a preta |
+
+Quando o espelho não disser o modelo, entregue a original e a branca. A variante é a monocromática do
+vetor original; recolorir não é (ofício).
+
+## 2 · Bandeira (identidade.md §1, §2, §5)
+
+- Na PRANCHA, a bandeira oficial vai **dentro do círculo do ator**: 640 px, traço de 6 px na cor do papel
+  dele, nome embaixo. Ícone, em círculo de 160 px.
+- Bandeira é asset oficial, **não é fonte de paleta**: não se pinta território com as cores dela.
+- **Bandeira ao lado do nome de país fora da PRANCHA** (no MAPA, sobre registro): o ofício do `mapista` e o do
+  `editor-de-arte` a pedem; a identidade só a põe dentro do ator da PRANCHA (§5); a cena de teste de
+  25/09/2026 pôs CANADA sem bandeira. **DECISÃO DO LUCAS PENDENTE.** Até ele decidir, vale o padrão das roupas
+  do `mapista`, do `editor-de-arte` e do `qc-visual`: bandeira ao lado de todo nome de país. Por isso,
+  entregue a bandeira de cada país que aparece no mapa ou na cena, mesmo sem pedido no espelho. No Juneau,
+  Canadá e Estados Unidos: `assets/flags/ca.png` e `assets/flags/us.png` já existem.
+- Para o círculo de 640 px, prefira o SVG oficial do Commons (`Flag_of_<x>.svg`) às PNG de `assets/flags/`
+  (a medida delas: CLAUDE.md, tropeços do apoio) e, se a cena pedir raster,
+  `scripts/stock/_svg-para-png.mjs <arquivo.svg> <saida.png> --w=<largura>` (pede `REGIE_MOTOR`).
+- Estado e província (Alasca, Colúmbia Britânica, Yukon) não estão em `assets/flags/`: Commons, com a
+  licença conferida. Entidade histórica leva o símbolo da época dela (ofício).
+
+## 3 · Tamanho
+
+A identidade não tem papel "logo" (§4.1). **DECISÃO DO LUCAS PENDENTE: a altura da logo em destaque e da
+logo como selo.** Até lá: vetor (SVG) sempre que existir, porque escala sem perda; raster, na maior
+resolução disponível, com a medida no relatório. A medida sai do `ffprobe` (`identify` e `medir-imagem` não
+servem aqui; CLAUDE.md, "Os especialistas"). SVG não precisa dela.
+
+## 4 · Imprensa e órgão estadual
+
+**DECISÃO DO LUCAS PENDENTE: se entram logos de veículo de imprensa (ex.: Anchorage Daily News, KTOO) e
+de órgão estadual (ex.: Alaska Division of Elections, Alaska DOT&PF, Alaska Marine Highway), e o selo do
+Estado.** As regras de uso do selo do Estado do Alasca não foram conferidas pelo canal, e documento do
+Estado não é domínio público automático. Até lá:
+- pesquise e registre o arquivo oficial, a versão, a URL e a condição de uso que a origem declara;
+- a proposta para a cena é o **nome em Inter 700 na pílula `--rotulo`** (`#0B0F14` a 88 %, texto em
+  `--tinta`; identidade.md §2, §3, §4.1), nunca uma caixa em `--destaque`, que é a cor do protagonista.
+
+## 5 · A linha que explica a entidade
+
+O público não acompanha geopolítica, e o termo se define na primeira vez (identidade.md §0; voz.md §1).
+Para entidade pouco conhecida, sugira ao `redator-de-tela` uma linha curta em inglês, como legenda
+(84 px, Inter 500): no formato `<ENTITY> — <what it is, in plain English>`. Ex., tirado do roteiro do
+Juneau: `Alaska Marine Highway — the state ferry system`.
+
+## 6 · O que o canal não põe na cena
+
+Logo do próprio canal. O canto inferior direito de 400 × 400 px fica livre para a marca-d'água do
+YouTube (identidade.md §4.2; `marca/tokens.css`), e nenhuma logo de terceiro cai ali nem na faixa abaixo
+de y = 1880.
+
+## 7 · Decisões do Lucas que tocam o ofício
+
+- **Sem título de capítulo na tela**; capítulo só na descrição (CLAUDE.md). Logo para card de capítulo
+  é engano: devolva ao `montador`.
+- **Os últimos 20 s não têm voz**: são da tela final do YouTube (`canal.json › narracao.cauda_tela_final_s`).
+- **Mapa = MapTiler**, com `© MapTiler © OpenStreetMap contributors` na tela durante todo o mapa
+  (`canal.json › mapa.perfil`; identidade.md §6). Isso é do `mapista`; você não pede tile, e o gasto de
+  pedidos na MapTiler ainda não foi liberado: nenhum quadro ou render de mapa sem o ok do Lucas.
+- **Banco pago** (midia.md §1, §2): só para B-roll genérico, baixado só pelo Lucas, à mão, na conta dele
+  (§2.3; robô e script proibidos, §2.5). Logo não é B-roll genérico e não sai de banco; você não baixa nem
+  abre o site de banco.
+
+## 8 · Os portões, e a quem devolver
+
+```
+node scripts/validar-contrato.mjs pauta-pesquisa out/<proj>/_pesquisa/pauta-logos.json
+REGIE_MOTOR=<motor> node scripts/stock/_commons-cat.mjs "Category:<logos of X>" --json=<arquivo.json>
+REGIE_MOTOR=<motor> node scripts/qc-procedencia.mjs <proj>
+```
+
+- O `_commons-cat` usa o `contato` do `canal.json` no User-Agent. O `qc-procedencia` e o
+  `scripts/procedencia-reconciliar.mjs` pedem `REGIE_MOTOR`.
+- Não há ledger de insumos nem seção "A ESCADA" neste canal. A devolução é a **última linha da sua
+  resposta**: a cena, o degrau em que você parou e quem decide agora — `montador` (o que entra e onde),
+  `regente-de-imagem` (o que a frase exige da tela), `diretor-de-arte` (se mexe no arco) e o Lucas, quando
+  for uso de logo de imprensa, de órgão ou do selo. A troca de modo é o nome da instituição na tipografia
+  do canal, nunca uma logo redesenhada.

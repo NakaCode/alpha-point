@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="pt-BR" data-render="4k-native"><head><meta charset="utf-8"><style>
+/* s42 · A PROVÍNCIA MAIS NOVA (1986) — run fundido s42+s43 (mesmo mapa de Flevoland)
+   Metáfora: terra tão nova que tem certidão — um carimbo de cartório desce sobre o mapa
+   ('1986 · PROVÍNCIA OFICIAL') e o chão cru ao redor do selo se organiza em talhões
+   retos, prontos pra florir (o pavio da s43).
+   M10: linha do tempo curta com EIXO DE DATAS (1579 · 1840 · ➜1986) varrendo até o marco.
+   Continuidade: MESMO mapa/projeção do s41 (FCX 1330, FCY 1040, K=1900).
+   Word-lock (−601.8): 0.21 província · 1.09 nova · 2.35 virou · 3.27 oficial ·
+   4.13 "86" (carimbo BATE aqui) · 5.31 Boa · 6.63 novo · 7.33 canteiro · 7.95 flor.
+   ⚠️ Corte de retake na janela bruta (t≈8.5→37.2 não vai ao ar): conteúdo em 0→8.5s;
+   depois estado estável (talhões prontos respirando) até o rabinho que casa com a s43.
+   Cor semântica: NAVY=mar · TEAL=água administrada · ÂMBAR=mão humana/certidão. */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:3840px;height:2160px;overflow:hidden;background:#050F1C;}
+#palco{position:relative;width:3840px;height:2160px;overflow:hidden;
+  font-family:"Neue Haas Grotesk Display Pro","Helvetica Neue",Arial,sans-serif;}
+#cam{position:absolute;inset:0;transform-origin:42% 48%;will-change:transform;}
+#cam > svg{position:absolute;inset:0;width:3840px;height:2160px;}
+#lkFlev{position:absolute;left:640px;top:280px;opacity:0;}
+#lkFlev .n{font-size:132px;font-weight:900;color:#F2F7FA;letter-spacing:.01em;text-shadow:0 6px 40px rgba(3,12,24,.9);}
+#selo{position:absolute;left:2350px;top:480px;opacity:0;will-change:transform,opacity;transform-origin:50% 50%;}
+#selo .anel{width:840px;height:840px;border:26px solid #FFB13D;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:0 0 120px rgba(255,177,61,.25), inset 0 0 90px rgba(255,177,61,.12);}
+#selo .ano{font-size:280px;font-weight:800;color:#F2F7FA;line-height:1;font-variant-numeric:tabular-nums;}
+#selo .rot{font-size:74px;font-weight:900;color:#FFB13D;letter-spacing:.06em;margin-top:18px;
+  text-align:center;line-height:1.2;max-width:720px;}
+#eixo{position:absolute;left:2280px;top:1560px;width:1250px;opacity:0;}
+#eixo .tr{position:relative;height:14px;border-radius:7px;background:#1B3A55;overflow:hidden;}
+#eixo .tr .fill{position:absolute;left:0;top:0;bottom:0;width:0;
+  background:linear-gradient(90deg,#3EC8FF,#FFB13D);}
+#eixo .marcas{position:relative;height:120px;margin-top:22px;}
+#eixo .m{position:absolute;font-size:72px;font-weight:600;color:#5E7890;transform:translateX(-50%);}
+#eixo .m.on{color:#FFB13D;font-weight:800;}
+#vig{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 520px 150px rgba(2,8,16,.42);}
+</style></head><body><div id="palco">
+<div id="cam"><svg viewBox="0 0 3840 2160">
+  <defs>
+    <linearGradient id="mar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0A2A47"/><stop offset=".5" stop-color="#07203A"/><stop offset="1" stop-color="#040F1E"/>
+    </linearGradient>
+    <linearGradient id="terraNova" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9DB36A"/><stop offset=".6" stop-color="#7FA65A"/><stop offset="1" stop-color="#5E8D4E"/>
+    </linearGradient>
+    <radialGradient id="lumi" cx=".42" cy=".45" r=".7">
+      <stop offset="0" stop-color="#1E5E86" stop-opacity=".5"/><stop offset="1" stop-color="#1E5E86" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="flclip"><path id="flclipP"/></clipPath>
+  </defs>
+
+  <rect width="3840" height="2160" fill="url(#mar)"/>
+  <rect width="3840" height="2160" fill="url(#lumi)"/>
+
+  <g id="ondasFundo" stroke="#2E7EA6" stroke-width="6" fill="none" opacity=".35">
+    <path d="M 260 360 q 70 -26 140 0 q 70 26 140 0"/>
+    <path d="M 3050 1950 q 70 -26 140 0 q 70 26 140 0"/>
+    <path d="M 420 1880 q 70 -26 140 0 q 70 26 140 0"/>
+  </g>
+  <g id="bolhas"></g>
+
+  <g id="flevG">
+    <path id="flSombra" fill="#031019" opacity=".55" transform="translate(24,38)"/>
+    <path id="flBase" fill="url(#terraNova)" stroke="#F3E9CF" stroke-width="10" stroke-linejoin="round"/>
+    <g clip-path="url(#flclip)">
+      <g id="talhoes" stroke="#4E7A40" stroke-width="6" opacity=".9"></g>
+    </g>
+    <path id="flGlow" fill="none" stroke="#FFB13D" stroke-width="26" opacity="0" stroke-linejoin="round"/>
+  </g>
+</svg></div>
+
+<div id="lkFlev" class="lbl"><div class="n">FLEVOLAND</div></div>
+
+<div id="selo" class="lbl">
+  <div class="anel">
+    <div class="ano">1986</div>
+    <div class="rot">PROVÍNCIA OFICIAL</div>
+  </div>
+</div>
+
+<div id="eixo" class="lbl">
+  <div class="tr"><div class="fill" id="eixoFill"></div></div>
+  <div class="marcas">
+    <div class="m" style="left:0%">1579</div>
+    <div class="m" style="left:46%">1840</div>
+    <div class="m on" id="m1986" style="left:100%">1986</div>
+  </div>
+</div>
+<div id="vig"></div>
+</div>
+<script>
+var DUR=37.48; window.__duracao=DUR;
+var E=function(id){return document.getElementById(id);};
+function cl(v,a,b){return v<a?a:v>b?b:v;}
+function seg(t,a,d){return cl((t-a)/d,0,1);}
+function eo(p){p=cl(p,0,1);return 1-Math.pow(1-p,3);}
+function eb(p){p=cl(p,0,1);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;}
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+var FLEV_PATH="M114.2 -507.3 L125.4 -500.3 L154.2 -469.8 L165.8 -440.7 L250.4 -394.6 L304.0 -351.0 L317.4 -333.1 L325.5 -319.5 L342.0 -271.1 L350.7 -222.4 L344.3 -212.1 L339.6 -201.0 L331.2 -193.1 L329.1 -189.9 L332.3 -186.8 L342.2 -182.1 L388.8 -168.3 L411.3 -156.0 L436.7 -125.1 L399.9 -104.5 L344.1 -85.4 L333.2 -84.7 L314.4 -87.8 L307.9 -91.7 L292.7 -90.7 L234.0 -63.8 L232.9 -62.5 L220.5 -48.2 L220.5 -25.6 L236.7 -11.3 L260.3 94.9 L260.3 95.2 L259.1 126.0 L246.6 173.1 L226.7 207.9 L200.6 248.9 L178.2 275.5 L149.5 300.1 L105.9 320.6 L54.9 345.2 L15.0 361.6 L-16.1 380.0 L-47.2 406.6 L-72.1 431.2 L-90.8 478.3 L-103.2 519.3 L-125.7 560.3 L-166.7 574.6 L-248.9 584.9 L-268.6 577.6 L-271.3 576.7 L-318.1 548.3 L-316.4 548.0 L-414.2 481.2 L-453.5 468.9 L-477.8 468.9 L-520.7 471.9 L-556.2 462.7 L-619.8 395.1 L-621.6 333.6 L-556.2 272.1 L-517.0 272.1 L-546.9 189.1 L-602.9 106.1 L-631.0 -19.9 L-438.5 -145.9 L-419.8 -216.6 L-384.3 -241.2 L-326.4 -222.8 L-313.3 -413.4 L-313.2 -415.3 L-311.5 -413.4 L-96.6 -419.5 L-48.1 -456.4 L-10.7 -487.2 L17.3 -499.5 L45.4 -505.6 L71.5 -505.6 L87.5 -503.0 L90.6 -503.6 L114.2 -507.3 Z";
+var FCX=1330,FCY=1040;
+(function(){
+  var b=E('flBase'),s=E('flSombra'),c=E('flclipP'),g=E('flGlow');
+  if(b)b.setAttribute('d',FLEV_PATH); if(s)s.setAttribute('d',FLEV_PATH);
+  if(c)c.setAttribute('d',FLEV_PATH); if(g)g.setAttribute('d',FLEV_PATH);
+})();
+
+// TALHÕES: grade de campos retos (linhas que se desenham varrendo — o cartório organiza o chão)
+var TAL=[];
+(function(){
+  var g=E('talhoes'); if(!g)return; var NS='http://www.w3.org/2000/svg';
+  var rnd=mulberry32(1986);
+  var i=0;
+  for(var y=-500;y<=580;y+=108){                       // linhas horizontais
+    var e=document.createElementNS(NS,'line');
+    e.setAttribute('x1',-640); e.setAttribute('y1',y);
+    e.setAttribute('x2',450);  e.setAttribute('y2',y);
+    e.setAttribute('opacity','0'); g.appendChild(e);
+    TAL.push({el:e,tw:5.31+2.3*(i/24),h:1,ph:rnd()*6.28}); i++;
+  }
+  for(var x=-600;x<=420;x+=146){                        // linhas verticais (talhões estreitos)
+    var e2=document.createElementNS(NS,'line');
+    e2.setAttribute('x1',x); e2.setAttribute('y1',-520);
+    e2.setAttribute('x2',x); e2.setAttribute('y2',600);
+    e2.setAttribute('opacity','0'); g.appendChild(e2);
+    TAL.push({el:e2,tw:5.31+2.3*(i/24),h:0,ph:rnd()*6.28}); i++;
+  }
+})();
+// bolhas do mar
+(function(){
+  var g=E('bolhas'); if(!g)return; var NS='http://www.w3.org/2000/svg';
+  window._bo=[];
+  for(var i=0;i<14;i++){
+    var cx=200+((i*761)%3500), r=4+((i*37)%9);
+    var e=document.createElementNS(NS,'circle');
+    e.setAttribute('r',r); e.setAttribute('fill','#7FC8E8'); e.setAttribute('opacity','.22');
+    g.appendChild(e); window._bo.push({el:e,x:cx,ph:(i*0.618)%1});
+  }
+})();
+
+window.__renderAt=function(t){
+  var cam=E('cam');
+  if(cam){
+    var s=1.08+0.05*eo(seg(t,0,8.5));
+    cam.style.transform='scale('+s.toFixed(4)+') translate('+(5*Math.sin(t*0.27)).toFixed(1)+'px,'+(3.5*Math.sin(t*0.2)).toFixed(1)+'px)';
+  }
+  var on=E('ondasFundo'); if(on) on.setAttribute('transform','translate('+(22*Math.sin(t*0.6)).toFixed(1)+','+(6*Math.sin(t*0.9)).toFixed(1)+')');
+  if(window._bo) for(var i=0;i<window._bo.length;i++){var b=window._bo[i];
+    var p=((t*0.05+b.ph)%1);
+    b.el.setAttribute('cx',(b.x+18*Math.sin(t*0.7+i)).toFixed(0));
+    b.el.setAttribute('cy',(2160-p*2300).toFixed(0));
+    b.el.setAttribute('opacity',(0.22*Math.sin(Math.PI*p)).toFixed(2));
+  }
+  var flo=E('flevG');
+  if(flo) flo.setAttribute('transform','translate('+FCX+','+(FCY+7*Math.sin(t*0.6)).toFixed(1)+')');
+
+  // rótulo (continuidade do s41)
+  var lk=E('lkFlev');
+  if(lk){var lp=eb(seg(t,0.5,0.7));
+    lk.style.opacity=lp.toFixed(3);
+    lk.style.transform='translateY('+((1-lp)*40).toFixed(1)+'px)';}
+
+  // EIXO DE DATAS (M10): entra em "virou província" (2.35), varre até 1986 em "oficial…86"
+  var ex=E('eixo');
+  if(ex){var ep=eb(seg(t,2.2,0.7));
+    ex.style.opacity=ep.toFixed(3);
+    ex.style.transform='translateY('+((1-ep)*40).toFixed(1)+'px)';}
+  var ef=E('eixoFill'); if(ef) ef.style.width=(100*eo(seg(t,2.5,1.6))).toFixed(1)+'%';
+  var m86=E('m1986'); if(m86){var mp=seg(t,3.9,0.4);
+    m86.style.transform='translateX(-50%) scale('+(1+0.5*Math.sin(Math.PI*mp)).toFixed(3)+')';}
+
+  // O CARIMBO: bate EXATO em "86" (4.13) — desce com impacto
+  var sl=E('selo');
+  if(sl){
+    var sp=seg(t,4.13,0.42);
+    var e=eb(sp);
+    var punch=1.8-0.8*e;                                  // 1.8 → 1.0 (batida)
+    var shake=(sp>0.9&&sp<1)?(6*Math.sin(t*70)):0;
+    sl.style.opacity=(sp<=0?0:cl(sp*2.4,0,1)).toFixed(3);
+    sl.style.transform='scale('+(punch+0.012*Math.sin(t*1.7)*(sp>=1?1:0)).toFixed(4)+') translateY('+shake.toFixed(1)+'px)';
+  }
+  // pulso âmbar no contorno quando o carimbo bate
+  var gl=E('flGlow'); if(gl) gl.setAttribute('opacity',(0.55*Math.sin(Math.PI*seg(t,4.13,1.1))+0.08*Math.sin(t*1.8)*(t>5?1:0)).toFixed(2));
+
+  // TALHÕES se armam (5.31 "Boa parte desse chão novo…" → 7.95 "flor")
+  for(var k=0;k<TAL.length;k++){
+    var ta=TAL[k];
+    var p=eo(seg(t,ta.tw,0.55));
+    ta.el.setAttribute('opacity',(p*(0.55+0.1*Math.sin(t*1.2+ta.ph))).toFixed(2));
+    if(ta.h) ta.el.setAttribute('x2',(-640+1090*p).toFixed(0));
+    else ta.el.setAttribute('y2',(-520+1120*p).toFixed(0));
+  }
+};
+window.__prepararCaptura=function(){window.__renderAt(0);};
+window.__renderAt(0);
+</script></body></html>

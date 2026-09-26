@@ -1,0 +1,45 @@
+{
+  "$id": "glossario-idioma.schema.json",
+  "title": "Glossário de termos por idioma — a ponte narração × tela (estação INTERNACIONAL)",
+  "description": "`out/<proj>/dub/glossario-<lang>.json`. O termo que o espectador OUVE é o termo que ele tem que LER: sem este arquivo a consistência entre a narração dublada e a tela traduzida não é verificável por máquina, e as duas divergem sem ninguém ver (achado D11). O esqueleto é GERADO (`top10 internacional <proj> glossario --lang <l>`) a partir dos conceitos que aparecem na narração pt E na tela pt, já com a frase traduzida alinhada como evidência; quem preenche `alvo` é o agente [tradutor-de-tela] (ou o [tradutor-de-narracao], se vier antes). O gate `scripts/internacional/qc-idioma.mjs` cobra: o termo-alvo existe na narração traduzida E aparece em TODA cena traduzida cuja original usava o termo pt.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["proj", "lang", "termos"],
+  "properties": {
+    "proj": { "type": "string" },
+    "lang": { "type": "string", "description": "locale-alvo: en-US · es-ES · de-DE · fr-FR" },
+    "gerado_em": { "type": "string", "description": "carimbo do esqueleto (proveniência; não é lido por ninguém)" },
+    "fonte": { "type": "string", "description": "de onde saíram os candidatos (ex.: \"narração pt ∩ tela pt\")" },
+    "termos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pt", "alvo"],
+        "properties": {
+          "pt": { "type": "string", "description": "o termo como a TELA pt-BR o escreve (minúsculo, sem acento é aceito — a comparação é normalizada)" },
+          "alvo": { "type": "string", "description": "o termo escolhido no idioma-alvo. VAZIO = pendente: o gate reprova, porque glossário pela metade não confronta nada." },
+          "variantes": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "flexões/composições legítimas do MESMO termo no idioma-alvo (plural, caso, composto alemão). Existe para o gate não acusar o que é gramática — e não para abrigar sinônimo: sinônimo é justamente a divergência que este arquivo veio matar."
+          },
+          "telaDiverge": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["termo", "motivo"],
+            "description": "A ÚNICA porta para a tela usar palavra diferente da voz — e ela custa uma justificativa escrita. O OFÍCIO permite divergir quando o rótulo precisa de forma mais curta que a falada, desde que a escolha seja CONSCIENTE E REPORTADA, nunca acidental. Declarado aqui, o gate passa a cobrar `termo` em TODAS as cenas (a consistência continua de pé) e exige `motivo` não-vazio.",
+            "properties": {
+              "termo": { "type": "string", "description": "o que a TELA escreve" },
+              "motivo": { "type": "string", "description": "por que a tela não pode usar o termo da voz — com a MEDIÇÃO quando o motivo é espaço (ex.: colide com o bloco vizinho)" }
+            }
+          },
+          "ondeNarracao": { "type": "array", "items": { "type": "integer" }, "description": "ids das frases da narração pt onde o termo aparece (gerado)" },
+          "ondeTela": { "type": "array", "items": { "type": "string" }, "description": "cenas cuja tela pt usa o termo (gerado) — são as cenas que o gate confronta" },
+          "exemplo": { "type": "string", "description": "frase traduzida alinhada, colada pelo gerador: é lendo isto que o agente escolhe `alvo` sem gastar pesquisa" },
+          "nota": { "type": "string", "description": "por que este termo, quando a escolha não é óbvia (o registro que sobrevive à sessão)" }
+        }
+      }
+    }
+  }
+}

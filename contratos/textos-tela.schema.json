@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://estudio.top10/contratos/textos-tela.schema.json",
+  "title": "Textos de tela — Estúdio Top10",
+  "description": "A lista FECHADA das palavras que vao aparecer escritas no video, cada uma com a fonte que a sustenta. Dono: o agente `redator-de-tela`, entre a pesquisa e o editor-de-arte. Existe porque o texto era escrito cena a cena, sem ninguem ver o conjunto — e o erro de CONJUNTO e invisivel para um QC de cena. Medido no `ceuta` em 07/ago/2026, com todas as cenas individualmente corretas: o mesmo homem escrito Sbihi/Esberri/Esbirri em tres lugares; 'o carpinteiro de 33 anos' inventado pela fusao de duas pessoas reais de cenas distantes; a tela dizendo '≈28×' enquanto a voz diz 'quase trinta vezes'; e o nome do proprio video indo ao ar como 'Celta' porque o transcritor ouviu errado. CONVENCAO: campo com prefixo `_` e anotacao interna, aceita em qualquer nivel.",
+  "type": "object",
+  "additionalProperties": false,
+  "patternProperties": { "^_": { "description": "Anotação interna." } },
+  "required": ["projeto", "glossario", "nao_vai_para_tela"],
+  "properties": {
+    "projeto": { "type": "string" },
+    "glossario": {
+      "type": "array",
+      "description": "UMA grafia por referente, no video inteiro. A grafia vem da FONTE PRIMARIA, nunca da transcricao — o transcritor transcreve som, nao ortografia.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": { "description": "Anotação interna." } },
+        "required": ["referente", "tipo", "grafia", "fonte"],
+        "properties": {
+          "referente": { "type": "string" },
+          "tipo": {
+            "type": "string",
+            "enum": ["pessoa", "instituicao", "empresa", "veiculo", "lugar", "lei", "tratado", "unidade", "outro"]
+          },
+          "grafia": { "type": "string", "minLength": 1 },
+          "variantes_ouvidas": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Como a transcricao trouxe. E por aqui que o gate cruza a tela com o words-final: variante listada que ninguem falou faz o gate cacar fantasma."
+          },
+          "fonte": { "type": "string", "minLength": 8 },
+          "conferido": { "type": "boolean" }
+        }
+      }
+    },
+    "cards_pessoa": {
+      "type": "array",
+      "description": "Toda pessoa real citada ganha identificacao. `data_do_cargo` nao vai a tela mas decide os outros tres campos: cargo e datado, e card sem data envelhece afirmando algo falso.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": { "description": "Anotação interna." } },
+        "required": ["cena", "nome", "o_que_e", "data_do_cargo", "fonte"],
+        "properties": {
+          "cena": { "type": "string" },
+          "nome": { "type": "string", "minLength": 1 },
+          "o_que_e": {
+            "type": "string",
+            "minLength": 4,
+            "description": "O cargo ou funcao escrito como se explica para quem nao conhece ('dirige a associacao local dos agentes da Guarda Civil'), nunca a sigla nua."
+          },
+          "vinculo": { "type": "string" },
+          "data_do_cargo": { "type": "string", "minLength": 4 },
+          "fonte": { "type": "string", "minLength": 8 }
+        }
+      }
+    },
+    "rotulos_dado": {
+      "type": "array",
+      "description": "Onde o numero exato e o falado divergem, quem manda no ROTULO e a fala e a exatidao vive no DESENHO (barra em proporcao real, eixo honesto). Rotulo que corrige a narracao faz o espectador ouvir uma coisa e ler outra, e desconfiar das duas.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": { "description": "Anotação interna." } },
+        "required": ["cena", "na_tela", "fonte"],
+        "properties": {
+          "cena": { "type": "string" },
+          "na_tela": { "type": "string", "minLength": 1 },
+          "valor_exato": { "type": "string" },
+          "por_que_diverge": {
+            "type": "string",
+            "minLength": 10,
+            "description": "OBRIGATORIO quando `valor_exato` difere de `na_tela` — a divergencia e uma decisao, e decisao sem motivo escrito vira erro na proxima leitura."
+          },
+          "unidade": { "type": "string" },
+          "fonte": { "type": "string", "minLength": 8 },
+          "data": {
+            "type": "string",
+            "description": "Obrigatoria para dado volatil (cotacao, populacao, ranking, preco). E ela que transforma 'esta errado' em 'era assim naquele dia'."
+          }
+        }
+      }
+    },
+    "nao_vai_para_tela": {
+      "type": "array",
+      "description": "O julgamento mais importante e o unico que ninguem cobra. Nao existe terceira gaveta: todo referente citado esta no glossario OU aqui, com motivo.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": { "^_": { "description": "Anotação interna." } },
+        "required": ["o_que", "motivo"],
+        "properties": {
+          "o_que": { "type": "string", "minLength": 1 },
+          "onde": { "type": "string" },
+          "motivo": { "type": "string", "minLength": 15 }
+        }
+      }
+    }
+  }
+}
