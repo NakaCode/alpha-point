@@ -171,8 +171,10 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
 2. **`narracao.wav` e master preto sintético** pelo gerador da pré-v1 (`garantirMasterSintetico`, com carimbo).
    **Feito em 26/09:** `out/juneau/_pesquisa/gerar-master.mjs juneau` chama o gerador direto (o finalizar só o chama
    no fim), em 3840×2160 e 30 fps: `out/juneau/_media/_master.mp4`, com 10:46, −14,1 LUFS e o carimbo da narração
-   tratada. O script recusa narração sem `tratamento_canal`. O Juneau ainda não foi aberto na linha da Régie
-   (`regie queue` vazia): o `open` e o `ingest` vêm agora.
+   tratada. O script recusa narração sem `tratamento_canal`. **O Juneau foi aberto na linha da Régie em 26/09**
+   (`regie open juneau "Alaska Voted for a New Capital in 1974. It Was Never Built."`, no passo `ingest`).
+   Cuidado: a v0.1.0 não tem `--help` nos verbos; `regie open --help` abre um vídeo chamado "--help". Aconteceu,
+   e o registro foi removido do banco com cópia de segurança em `db/antes-de-tirar-help-*.canal.db`.
 3. **Conferência palavra a palavra e `words.json`** no contrato da pré-v1, com o faster-whisper local.
    Normalize os números antes de comparar. O Scribe da pré-v1 fica de fora: é pago, e o local faz o mesmo.
 4. **Plano de cenas em `espelho.json`**, o contrato da pré-v1. Feche os tempos à mão: o `alinhar-timestamps`
@@ -240,7 +242,9 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
      06/08/2024 saiu enevoada a 30 m;
    - a divisa em branco a 35 % quase sumia sobre o campo de gelo. O Lucas pediu o contorno escuro por baixo
      (25/09), e ele virou regra da §6 (`--fronteira-contorno-*` no `marca/tokens.css`).
-   Qual base o Juneau usa de verdade (Landsat ou MapTiler) também é decisão dele.
+   **A base do Juneau é a MapTiler** (o Lucas decidiu em 26/09: "será o maptiler"): `canal.json` › `mapa.perfil:
+   "maptiler"`, que o `preparar-cena` lê. O Landsat fica como teste. Toda cena de mapa leva o crédito
+   `© MapTiler © OpenStreetMap contributors` na tela, mais a linha na descrição.
 8. **XML do Premiere** pelo `finalizar.mjs`, primeiro com `--sem-trilha`. Será a primeira abertura real dele no
    Windows.
 9. Do vídeo 2 em diante, **narração pela API** com `narrar.mjs` (mesma voz, modelo, estabilidade e blocos).
