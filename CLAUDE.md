@@ -95,6 +95,12 @@ produz o master. O deste canal nasce assim:
        `out/juneau/_pesquisa/conferir-paragrafos.py <proj>` transcreve e compara parágrafo por parágrafo, e
        `conferir-trechos.py` confere os pontos suspeitos em recorte curto.
      - Parágrafo com erro se refaz sozinho: `narrar.mjs <proj> --refazer=N`.
+     - **Depois de qualquer rodada do narrar**, rode `python out/juneau/_pesquisa/tratar-narracao.py <proj>`. O narrar
+       não esmaece as pontas dos trechos (estalo no fim de 14 dos 36 parágrafos do Juneau), e remonta a
+       `narracao.wav` do zero a cada rodada. O script esmaece as pontas sem mudar tempos, registra o que fez em
+       `narracao.json` › `tratamento_canal` e se recusa a tratar duas vezes.
+     - A API pode cortar o último som de um parágrafo (o "-y" de "ferry" no Juneau), e o Whisper escreve a palavra
+       mesmo assim, por expectativa. Desconfie de última palavra com probabilidade baixa (< 0,8).
      - O histórico inteiro está em `out/juneau/_pesquisa/narracao-conferencia.md`.
    - A conta compartilhada da ElevenLabs serve a vários canais. O Lucas entra nela pelo navegador do app, e o
      Claude opera o site com ele vendo; nunca digite a senha dele.
@@ -112,7 +118,8 @@ produz o master. O deste canal nasce assim:
      com o contador da conta. A narração inteira pede um ok próprio. **Em 26/09 o Lucas liberou o gasto para chegar
      ao cenário ideal do Juneau** ("Não tem problema gastar crédito a troco de chegarmos no cenário ideal"): testes
      e a narração inteira pela API. Ainda assim, diga o que vai gastar antes de cada rodada. Gasto em 26/09: 2.673 no
-     teste de velocidade, 2.781 em 3 rodadas de Remix e 1.083 no teste da voz calma escolhida (`narracao-conferencia.md`);
+     teste de velocidade, 2.781 em 3 rodadas de Remix, 1.083 no teste da voz calma escolhida, 6.621 na narração
+     inteira do Juneau e 173 no parágrafo 32 refeito: 13.331 no dia (`narracao-conferencia.md`);
    - O navegador do app corta downloads grandes em uns 1,8 MB: o MP3 de um bloco chegou com 112 s de 4 min
      29 s. Para baixar a narração, use outro caminho (o Lucas baixa no navegador dele, ou a API).
 5. master = a narração sobre tela preta 3840×2160 (`marca/identidade.md` §5).
@@ -156,8 +163,11 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    palavras batem com o texto aprovado, e nenhuma foi pulada. **O Lucas ouviu em 25/09: a voz muda em 3:09.** Pelo
    diagnóstico e pelo teste às cegas, o que pesava era a pausa entre parágrafos dobrada. Em 26/09, a narração foi
    remontada sem gasto com a pausa da 1b (9:11); o Lucas achou a troca "perceptível, mas nada muito incômodo".
-   **Aberto: a voz fala a 200 palavras/min, e a marca pede 150–160** (o roteiro contava com ~11,4 min). Tudo em
-   `narracao-conferencia.md`.
+   A voz corria a 200 palavras/min. **Tudo isso foi superado em 26/09:** a narração inteira foi refeita pela API com
+   a voz calma, em `out/juneau/narracao.wav` (10:46, 171 palavras/min, os 36 parágrafos de um jeito só, tratada
+   por `tratar-narracao.py`). Verificação final: 100 % das palavras; o parágrafo 32 foi refeito porque a API cortou
+   o "-y" de "ferry". **Espera o ouvido do Lucas.** As gerações antigas (1b, `out/juneau-voz/`,
+   `narracao-completa.wav`) ficam como histórico. Tudo em `narracao-conferencia.md`.
 2. **`narracao.wav` e master preto sintético** pelo gerador da pré-v1 (`garantirMasterSintetico`, com carimbo).
 3. **Conferência palavra a palavra e `words.json`** no contrato da pré-v1, com o faster-whisper local.
    Normalize os números antes de comparar. O Scribe da pré-v1 fica de fora: é pago, e o local faz o mesmo.

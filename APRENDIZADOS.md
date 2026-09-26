@@ -495,5 +495,16 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       pausa resolveu, sem gasto e só com o cache. O timbre pesou pouco: o v3 não tem "request stitching", e cada
       pedido abre um pouco mais claro, mas um EQ para compensar não melhorou nada no ouvido. Serviria ao narrar:
       medir o silêncio das pontas de cada trecho e descontá-lo da pausa, ou documentar que ela se soma a ele.
+  31. **O `narrar.mjs` cola os trechos da API no silêncio digital da pausa sem esmaecer as pontas**, e a API
+      costuma terminar o trecho "seco", com a voz ainda soando. No Juneau, 14 dos 36 fins de parágrafo davam um
+      estalo (salto de até 0,21 da última amostra para o zero). Resolveu, no canal, esmaecer 5 ms na entrada e 15 ms
+      na saída de cada trecho, sem mudar o comprimento (`out/juneau/_pesquisa/tratar-narracao.py`). Como o narrar
+      remonta a `narracao.wav` a cada rodada, o tratamento tem de vir depois. Serviria ao narrar: esmaecer na
+      própria montagem.
+  32. **A API do eleven_v3 pode cortar o último som de um parágrafo, e a conferência por palavra não vê.** No
+      Juneau, um parágrafo terminou no "r" de "ferry", sem o "-y". O Whisper escreveu "ferry" mesmo assim, por
+      expectativa: probabilidade 0,715, contra 0,99 nos outros "ferry". Só a medida dos formantes (F2 que não subia)
+      e um verificador cético pegaram. Serviria a qualquer conferência de narração: tratar como suspeita a última
+      palavra de um trecho com probabilidade baixa, ou que acaba com a voz ainda soando.
 - **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
   5 afetam qualquer um no primeiro `atualizar`.

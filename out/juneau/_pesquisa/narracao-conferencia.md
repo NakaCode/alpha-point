@@ -178,3 +178,28 @@ e ~11 min. Conferência por parágrafo: 6 de 6 completos. Prévia para o Lucas e
   numa amostra.
 - As pausas inseridas com ruído copiado repetem um microtransiente audível em fone (T1-V4, depois de "price."): se
   for alongar pausa, não repetir um pedaço curto de ruído.
+
+## A narração final: voz calma, inteira pela API (26/09/2026)
+
+- `out/juneau/roteiro.md`: os 36 parágrafos; `narrar.mjs juneau`, 36 pedidos, 10.995 caracteres, **6.621 créditos**
+  (recibos = contador). 171 palavras/min (antes 200); o Lucas ouviu 3 versões dos 5 primeiros parágrafos (como
+  saiu, esticada 5 % e esticada 8 %) e escolheu "1", como saiu.
+- **Verificação final** (3 conferências e um verificador cético; material em
+  `C:\Users\zangp\AppData\Local\Temp\apmapa\final\`):
+  - palavras: 100 % depois de explicadas as grafias do transcritor, 0 puladas. O arquivo inteiro deu 99,0 %, com 9
+    ecos de janela, um "percent" fantasma e um "and" por "in", todos desfeitos no recorte. O "million" a mais do
+    parágrafo 17 era eco (o parágrafo tem 32 s, mais que a janela de 30 s do Whisper);
+  - "twenty-seventh": ~85 ms de fricção surda depois do "n", no nível do "th" de "north"; os controles "-n," não
+    têm. Confiança alta;
+  - **defeito real, achado só pelo verificador cético:** o parágrafo 32 terminava no "r" de "another ferry", sem o
+    "-y" (a API cortou; formantes: F2 não subia). O Whisper escrevia "ferry" por expectativa (p 0,715, contra 0,99
+    nos outros "ferry"). **Refeito** (`--refazer=32`, 173 créditos): agora o F2 sobe a 1.950–2.260 Hz e o F1 cai
+    a 180–310 Hz (o "ee"), e "ferry" sai com p 0,99;
+  - estalos: 14 fins de parágrafo saltavam mais de 0,02 para o zero da pausa (o narrar não esmaece). Resolvido por
+    `tratar-narracao.py` (5 ms na entrada, 15 ms na saída; sons soltos no fim zerados: p4 em 0:53,00 e p36).
+    Comprimento igual, todas as pontas terminam em zero; registrado em `narracao.json` › `tratamento_canal`;
+  - volume −14,0 LUFS, LRA 2,7 LU. **True peak −0,2 dBTP: limitar a −1 dBTP no master**, não na voz;
+  - timbre: cada parágrafo abre um pouco mais claro (+15,6 Hz nos 3 s iniciais), o esperado sem "request
+    stitching". Nenhuma fronteira passa da variação que há dentro dos parágrafos.
+- **words.json:** alinhar o texto aprovado aos tempos (o contrato da pré-v1). A transcrição crua do arquivo inteiro
+  tem ecos e grafias do Whisper.
