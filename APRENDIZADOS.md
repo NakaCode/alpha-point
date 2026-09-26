@@ -506,5 +506,9 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       expectativa: probabilidade 0,715, contra 0,99 nos outros "ferry". Só a medida dos formantes (F2 que não subia)
       e um verificador cético pegaram. Serviria a qualquer conferência de narração: tratar como suspeita a última
       palavra de um trecho com probabilidade baixa, ou que acaba com a voz ainda soando.
+  33. **Na v0.1.0, `regie open --help` abre um vídeo chamado "--help".** O `open` pega o primeiro argumento como
+      slug, sem olhar se é opção, e não há verbo para fechar ou apagar um vídeo. Para desfazer, foi preciso copiar o
+      `db/canal.db` e apagar a linha de `production` (o `event` sai em cascata). Serviria ao motor: recusar slug que
+      começa com "-" e ter um verbo para descartar uma produção aberta por engano.
 - **Por que serve a qualquer canal:** todo canal nascido na v0.1.0 vai passar por esta migração. Os itens 1, 2, 3 e
   5 afetam qualquer um no primeiro `atualizar`.
