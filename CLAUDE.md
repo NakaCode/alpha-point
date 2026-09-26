@@ -169,6 +169,10 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    o "-y" de "ferry". **Espera o ouvido do Lucas.** As gerações antigas (1b, `out/juneau-voz/`,
    `narracao-completa.wav`) ficam como histórico. Tudo em `narracao-conferencia.md`.
 2. **`narracao.wav` e master preto sintético** pelo gerador da pré-v1 (`garantirMasterSintetico`, com carimbo).
+   **Feito em 26/09:** `out/juneau/_pesquisa/gerar-master.mjs juneau` chama o gerador direto (o finalizar só o chama
+   no fim), em 3840×2160 e 30 fps: `out/juneau/_media/_master.mp4`, com 10:46, −14,1 LUFS e o carimbo da narração
+   tratada. O script recusa narração sem `tratamento_canal`. O Juneau ainda não foi aberto na linha da Régie
+   (`regie queue` vazia): o `open` e o `ingest` vêm agora.
 3. **Conferência palavra a palavra e `words.json`** no contrato da pré-v1, com o faster-whisper local.
    Normalize os números antes de comparar. O Scribe da pré-v1 fica de fora: é pago, e o local faz o mesmo.
 4. **Plano de cenas em `espelho.json`**, o contrato da pré-v1. Feche os tempos à mão: o `alinhar-timestamps`

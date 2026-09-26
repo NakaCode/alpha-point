@@ -203,3 +203,18 @@ e ~11 min. Conferência por parágrafo: 6 de 6 completos. Prévia para o Lucas e
     stitching". Nenhuma fronteira passa da variação que há dentro dos parágrafos.
 - **words.json:** alinhar o texto aprovado aos tempos (o contrato da pré-v1). A transcrição crua do arquivo inteiro
   tem ecos e grafias do Whisper.
+
+## O master (26/09/2026)
+
+O Lucas aprovou a narração final ("pode seguir com o master").
+- **Pico:** `tratar-narracao.py` ganhou um limitador leve (`alimiter`, sem ganho automático e com a latência
+  compensada). A narração bruta foi remontada do cache (0 créditos, mesmo sha `4e29a9f3…`) e tratada numa passada:
+  true peak de −0,2 para **−1,4 dBTP**, loudness de −14,0 para **−14,1 LUFS**. Comprimento igual, deslocamento 0 em
+  três pontos, pontas e pausas em zero. sha tratado `b843ada8…`.
+- **Master** (`gerar-master.mjs juneau`, que chama o `garantirMasterSintetico` da pré-v1 com 3840×2160 e 30 fps):
+  `out/juneau/_media/_master.mp4`, 51 MB, 10:46,05.
+  - H.264 all-intra, bt709, com preto puro (conferido um quadro em 5:00).
+  - AAC estéreo 48 kHz, −14,1 LUFS, pico −4,4 dBFS: a voz mono vai aos dois canais a −3 dB, e a loudness do
+    programa fica igual.
+  - O carimbo `_master.mp4.de-narracao` aponta para a narração tratada. O `finalizar`, com as cenas em 4K, vai
+    reusá-lo.
