@@ -15,6 +15,14 @@
 - **Faceless.** Ninguém fala para a câmera; a tela é sempre mapa, registro real, prancha ou dado
   (identidade.md §0). A voz é sintética (ElevenLabs), lida do roteiro aprovado; o master é essa narração
   sobre tela preta 3840×2160 (`out/<proj>/_media/_master.mp4`). Não há apresentador nem gravação.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** O texto que você checa é **inglês dos EUA** (`canal.json › idiomas.origem`), e não há
   dublagem (`canal.json › idiomas.localizados` vazio). O laudo é em português; a frase checada vai
   literal, em inglês.
@@ -104,11 +112,16 @@ levou 403 do Legislativo e contornou por `curl`).
 - No formato de tela en-US (identidade.md §7), e com o recorte do que o número mede: no Juneau, os 57 %
   de 1974 saíram da voz e vão para a tela, e **nunca** como `57% of Alaska voters`, que o boletim oficial
   não sustenta (`roteiros/juneau/aprovacao.md`; APRENDIZADOS.md item 14).
-- Crédito também é afirmação: sem crédito na tela vai só o domínio público que a identidade.md §7 nomeia.
-  Documento do governo do Estado do Alasca e imprensa (ADN, KTOO) não estão lá, e nos EUA a obra do
-  governo federal é domínio público por lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça. Se a tela tratar um deles como livre, é achado
-  (DECISÃO DO LUCAS PENDENTE: a regra de uso deles na tela; até lá, só entram com a licença conferida e
-  gravada na procedência, midia.md §1).
+- Crédito também é afirmação: sem crédito na tela vai só o domínio público que a identidade.md §7 nomeia, e
+  o retrato oficial de pessoa citada em uso editorial (midia.md §7.2). Documento do governo do Estado do
+  Alasca e imprensa (ADN, KTOO) não estão lá, e nos EUA a obra do governo federal é domínio público por lei
+  (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça. Eles só vão à tela com
+  permissão de uso clara, conferida e gravada na procedência; sem ela, a cena recria o trecho com o texto
+  citado fiel e a fonte citada (Lucas, 26/09/2026; midia.md §7.1). Se a tela tratar um deles como livre sem a
+  permissão gravada, ou se a recriação mudar o texto citado, é achado. A foto do governo do Alasca e a de
+  jornal são outra regra: entram com a fonte creditada na tela (Lucas, 26/09/2026; midia.md §7.5), e o
+  achado é o crédito que falta ou não bate com a origem. Sala de imprensa federal e DVIDS são domínio
+  público federal, sem crédito na tela (midia.md §7.3).
 
 ## 6 · Depois da narração, consertar custa
 

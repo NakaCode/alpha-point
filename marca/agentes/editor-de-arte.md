@@ -20,6 +20,14 @@
   tela preta 3840×2160 (`out/<proj>/_media/_master.mp4`), e **100 % do tempo é coberto por cena**: o que
   você não cobre sai preto. Não existem apresentador, bruto, `words-final.json`, `words-limpo.json`,
   `_cortes.json` nem `compor-base-youtube`: o relógio é um só, `out/<proj>/words.json`, e `cleanDur = dur`.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Os últimos 20 s não têm voz**: são da tela final do YouTube (`canal.json` › `narracao.cauda_tela_final_s`,
   Lucas, 26/09/2026). Ver §7.
 - **Sem título de capítulo na tela, nunca** (CLAUDE.md; Lucas, 26/09/2026): capítulos só na descrição. As
@@ -94,8 +102,8 @@
 |---|---|---|---|
 | número-herói / título | 360 px | 560 px | 5 |
 | fala citada | 280 px | 340 px | 12 |
-| rótulo, inclui nome de lugar (card de pessoa: §6) | 128 px | 160 px | 3 |
-| eixo / legenda | 84 px | 104 px | — |
+| rótulo, inclui nome de lugar e o nome do card de pessoa (§6) | 128 px | 160 px | 3 |
+| eixo / legenda, inclui o cargo do card de pessoa (§6) | 84 px | 104 px | — |
 | crédito / fonte | 76 px | 88 px | — |
 
 Os pisos que reprovam (260/104/72/72) são do ofício.
@@ -137,18 +145,18 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
 | REGISTRO | `footage`, `foto`, `aereo-real` | o asset real em tela cheia, sem moldura, com rótulo de lugar e crédito |
 | PRANCHA | `desenho` | sobre `--fundo`. Ator = círculo de 640 px, traço de 6 px na cor do papel dele, bandeira oficial dentro, nome embaixo. Setas e linhas de 6 px. Ícone em círculo de 160 px |
 | DADO | `dados` | sobre `--papel`. Série do protagonista em `--destaque`, da contraparte em `--contraparte`, eixo em `--eixo-cor` (`--tinta-escura` a 60 %) |
-| DOCUMENTO | `documento` | sobre `--papel`. A página real, nunca redesenhada; o trecho que importa grifado em `--grifo-cor` (`--destaque` a 35 %), texto em `--tinta-escura` |
+| DOCUMENTO | `documento` | sobre `--papel`. A página real, nunca redesenhada, quando há permissão de uso clara; sem ela (documento do Estado do Alasca, imprensa), o trecho recriado no visual do canal, com o texto citado fiel e a fonte citada, nunca um fac-símile (midia.md §7.1). O trecho que importa grifado em `--grifo-cor` (`--destaque` a 35 %), texto em `--tinta-escura` |
 
 - `titulo-topico`, `navegacao` e `apresentador*` não existem neste canal. Outro `modo` do enum (`citacao`,
   `split`, `split-footage`, `cinematico`, `gravura-colagem`, `mosaico`) não é modelo da identidade: execute
   dentro de um dos cinco e diga qual, ou devolva ao montador a troca proposta.
 - Pessoa real nomeada = registro real, identificada por nome e cargo (identidade.md §5; o contrato exige o
-  cargo, `contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`). Os dois não cabem nas 3
-  palavras do rótulo (identidade.md §4.1): "Assembly member Maria Gladziszewski" tem 4. **DECISÃO DO LUCAS
-  PENDENTE: como o card de pessoa cabe na identidade.** Proposta do verificador, ainda não aprovada: o nome
-  no rótulo (até 3 palavras) e o cargo logo abaixo como legenda, 84 px, Inter 500 (o papel "eixo /
-  legenda" de identidade.md §4.1; `--fs-eixo` e `--peso-texto` em `marca/tokens.css`). Até a decisão, o
-  card vai ao report como pendente, e o `qc-visual` sinaliza sem reprovar a contagem de palavras dele.
+  cargo, `contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`). **O card de pessoa** (Lucas,
+  26/09/2026; identidade.md §5): o nome na pílula `--rotulo`, 128 px, Inter 700, até 3 palavras
+  (`--fs-rotulo`, `--peso-rotulo`), e o cargo numa linha menor logo abaixo, no papel "eixo / legenda", 84 px,
+  Inter 500 (`--fs-eixo`, `--peso-texto` em `marca/tokens.css`). Exemplo aprovado: `MARIA GLADZISZEWSKI` em
+  cima e `Assembly member, City of Juneau` embaixo. O rosto, quando há, segue midia.md §7.2; sem foto em
+  fonte autorizada, o card sai só com nome e cargo.
 - A bandeira é o asset oficial de `assets/flags/<iso2>.png`, pelo caminho `../../../assets/flags/<iso2>.png`
   (procedência em `assets/flags/_PROCEDENCIA.json`; `ca.png` e `us.png` estão lá). O `_INDICE.json` mapeia
   nomes em português: procure pelo código ISO. Faltou: peça à `pesquisa-logos`. Nunca desenhe, nunca emoji,
@@ -197,8 +205,10 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   76 px, na faixa abaixo de y = 1880, com `data-qc-papel="credito"`. Sobre mapa ou registro, na pílula
   `--rotulo` com texto `--sec`, Inter 500, como no exemplar `landsat-juneau.html`. Sobre `--papel`, em
   `--tinta-escura`, que é o texto sobre papel (identidade.md §2).
+- Foto do governo do Alasca e de jornal leva crédito na tela sempre: a fonte como a origem a credita,
+  `<author> / <outlet>`, ou só o veículo ou o órgão (Lucas, 26/09/2026; midia.md §7.5).
 - Domínio público **não** leva crédito na tela (NASA, Landsat/USGS, Natural Earth, NARA, obra do governo
-  federal): crédito supérfluo reprova. O Copernicus Sentinel leva `Contains modified Copernicus Sentinel
+  federal, inclusive DVIDS e sala de imprensa federal): crédito supérfluo reprova. O Copernicus Sentinel leva `Contains modified Copernicus Sentinel
   data <ano>`.
 - Mapa sobre base MapTiler, mesmo dentro de uma cena sua: `© MapTiler © OpenStreetMap contributors` na tela do
   primeiro ao último quadro de mapa, com `data-qc-credito="mapa"`. Geometria do OpenStreetMap leva
@@ -209,22 +219,38 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
 ## 10 · Mídia (midia.md; identidade.md §6)
 
 - **Evento real específico** (votação, pessoa pública, obra, cédula): só de acervo aberto ou oficial, com data
-  e local conferidos na origem: NARA, Library of Congress, NASA, USGS, sala de imprensa oficial e Wikimedia
-  Commons, com a licença
-  conferida arquivo a arquivo. Imagem "ilustrativa" de outro evento ou de outro ano não entra.
-- **Documento ou foto do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
-  estudo estadual, foto oficial de governador ou de legislador, Alaska State Library) **e de imprensa**
-  (Anchorage Daily News, KTOO) não estão no domínio público que a identidade.md §7 isenta de crédito; nos EUA,
-  a obra do governo federal é domínio público por lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça. DECISÃO DO LUCAS PENDENTE: a regra
-  de uso deles na tela. Até lá, a peça só entra com a licença conferida e gravada no `_PROCEDENCIA.json`
-  (midia.md §1); sem ela, bloqueio reportado, não improviso.
+  e local conferidos na origem: NARA, Library of Congress, NASA, USGS, Smithsonian e Wikimedia Commons, com a
+  licença conferida arquivo a arquivo, e as fontes federais: sala de imprensa de órgão federal dos EUA e DVIDS,
+  domínio público, sem crédito na tela (Lucas, 26/09/2026; midia.md §7.3). Imagem "ilustrativa" de outro
+  evento ou de outro ano não entra.
+- **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
+  estudo estadual, Alaska State Library) **e de imprensa** (Anchorage Daily News, KTOO) não estão no domínio
+  público que a identidade.md §7 isenta de crédito; nos EUA, a obra do governo federal é domínio público por
+  lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça. **Regra** (Lucas,
+  26/09/2026; midia.md §7.1): a peça só vai à tela com permissão de uso clara (domínio público comprovado,
+  licença aberta ou autorização escrita), conferida e gravada no `_PROCEDENCIA.json`. Sem ela, a cena
+  recria o trecho no visual do canal (DOCUMENTO, tipografia e cores da marca), com o texto citado fiel e a
+  fonte citada. Licença não se inventa nem se deduz da origem.
+- **Foto do governo do Alasca e de jornal** (inclusive de agência), que não é retrato de pessoa citada:
+  entra citando a fonte, com o crédito na tela (§9) e a procedência gravada (Lucas, 26/09/2026; midia.md
+  §7.5). Foto de agência só vai à cena depois do ok do Lucas àquela foto (Content ID); foto Reuters não
+  entra (midia.md §7.4, item 2).
+- **Foto de outra origem sem licença**, e vídeo do Estado ou de jornal sem licença, não entram nem se
+  redesenham: bloqueio reportado, não improviso (midia.md §7.5; §7.4, item 3).
+- **Logo de jornal ou de órgão do Alasca, e o selo do Estado**: não vão à cena, nem redesenhados. Vai o
+  nome da instituição na pílula `--rotulo`, Inter 700 (Lucas, 26/09/2026; midia.md §7.6).
+- **Retrato oficial** de governador ou de legislador, para ilustrar a citação dele: uso editorial, sem
+  crédito na tela, com a procedência gravada (Lucas, 26/09/2026; midia.md §7.2).
 - **Banco pago** (midia.md §1, §2): evento real específico nunca vem dele. B-roll genérico (paisagem, cidade,
   porto, indústria, drone) vem, na ordem Envato Elements → Motion Array → Storyblocks → Shutterstock, com as
   regras do §2 (editorial nunca; pessoa de banco nunca em política; Storyblocks só neutro). Quem baixa é só o
   Lucas, à mão, na conta dele (§2.3, assento único); robô e script são proibidos (§2.5; CLAUDE.md, "Fora, por
   ora"). Faltou B-roll genérico: entregue a lista do que procurar (termos em inglês, cena, duração, por que é
   genérico). Nunca baixe de banco, nem abra o site dele, nem peça a uma pesquisa que o faça.
-- As fontes do `buscar-midia` que midia.md não cita (Pexels, Pixabay e outras): DECISÃO DO LUCAS PENDENTE.
+- Acervo gratuito, só os oficiais e as fontes federais: Wikimedia Commons, NASA, NARA, USGS, Library of
+  Congress, Smithsonian, sala de imprensa de órgão federal e DVIDS. Pexels, Pixabay e as outras fontes
+  gratuitas ficam fora (Lucas, 26/09/2026; midia.md §7.3; o `buscar-midia` as desliga por
+  `marca/midia.json`).
 - A lição do crédito pela procedência está no APRENDIZADOS.md, item 36. O `_commons-baixar` não trava
   licença: confira cada arquivo antes de pôr o `src` (CLAUDE.md, item 5).
 - Faltou mídia: bloqueio reportado (ofício §9). Nunca o clipe da cena vizinha, nunca fundo chapado.
@@ -258,9 +284,18 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
 - Cenas de REGISTRO, PRANCHA, DADO e DOCUMENTO; todo mapa é do mapista. Grafia de nome de pessoa (Gladziszewski,
   Kiehl, Stoops, Knowles, Walker, Frank Harris, Reamer) confere contra `roteiros/juneau/roteiro-editor.md`, que
   traz a fonte de cada frase.
-- Caem na regra do §10 (só entram com a licença conferida e gravada; a regra de uso espera o Lucas):
-  - os folhetos eleitorais de 1978, 1982 e 1994;
-  - as fotos oficiais do estado, inclusive as da balsa estadual;
-  - as mascotes Access Annie e Football Fannie.
+- Caem no §10:
+  - os folhetos eleitorais de 1978, 1982 e 1994: documento, só com permissão de uso clara; sem ela, o
+    trecho de texto é recriado (midia.md §7.1);
+  - as fotos oficiais do estado, inclusive as da balsa estadual: entram com a fonte creditada na tela
+    (midia.md §7.5);
+  - as mascotes Access Annie e Football Fannie: peça de campanha (anúncio, folheto) é documento (§7.1);
+    foto de jornal, §7.5;
+  - o estudo de 2018 (Final SEIS e ROD, da FHWA com o Alaska DOT&PF): conta como estadual (pesquisado a
+    pedido do Lucas, 26/09/2026; midia.md §7.1, "O estudo de 2018"). Página, capa, figura, mapa, o logo
+    "Juneau Access" e as assinaturas não vão à cena. O trecho citado se recria em DOCUMENTO com
+    `Source: Alaska DOT&PF and FHWA, 2018`, e a frase de decisão do ROD com `Source: Federal Highway
+    Administration, 2018`. Número de tabela vira DADO com a mesma fonte do estudo. O aviso da FHWA no Federal
+    Register de 30/07/2018 (83 FR 36661) é obra federal: pode ir como está, sem crédito na tela.
 - A fala citada (Gladziszewski, Stoops) segue o §4: até 12 palavras na tela. Quem corta o trecho é o
   `redator-de-tela`.

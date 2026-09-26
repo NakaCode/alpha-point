@@ -98,6 +98,8 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 - Pílula do rótulo: `--rotulo`, cantos de 12 px, respiro interno de 24 px × 40 px.
 - Texto de relação sobre a seta de uma PRANCHA (ex.: `claims the same waters`) é **legenda**:
   84 px, Inter 500, `--tinta` a 80 %.
+- **Card de pessoa** (Lucas, 26/09/2026): o nome é **rótulo** (pílula, 128 px, Inter 700, até 3 palavras) e
+  o cargo é **legenda**, numa linha menor logo abaixo (84 px, Inter 500). A regra inteira está em §5.
 
 ### 4.2 · Espaço
 
@@ -146,14 +148,24 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 | **REGISTRO** | footage ou foto real em tela cheia, com rótulo de lugar e crédito | o próprio asset |
 | **PRANCHA** | atores e relações, causa → efeito. Ator = círculo de 640 px, traço de 6 px na cor do papel dele, bandeira oficial dentro e nome embaixo. Setas e linhas de 6 px; ícone em círculo de 160 px | `--fundo` |
 | **DADO** | gráfico com série do protagonista em `--destaque` e da contraparte em `--contraparte`; eixo em `--tinta-escura` a 60 % | `--papel` |
-| **DOCUMENTO** | recorte de tratado, mapa histórico, manchete real; o trecho que importa grifado em `--destaque` a 35 % | `--papel` |
+| **DOCUMENTO** | recorte de tratado, mapa histórico, manchete real; o trecho que importa grifado em `--destaque` a 35 %. Peça do Estado do Alasca ou de imprensa, só com permissão clara; sem ela, o trecho recriado no visual do canal, com o texto fiel e a fonte citada (`midia.md` §7.1) | `--papel` |
 
 **Faceless**: nenhum plano de pessoa falando para a câmera no papel de narrador, e nenhuma pessoa gerada
 por IA apresentada como real.
 - **Cota de apresentador: 0 %.** O montador supõe 10–15 % de rosto do apresentador; aqui não há rosto.
 - **O master é a narração** sobre tela preta 3840×2160, e **100 % do tempo é coberto por cena**. Não
-  existe veredito `manter`, porque não há imagem de origem a manter. Discurso ou entrevista de uma fonte real é REGISTRO, com rótulo de nome
-completo e cargo (ofício).
+  existe veredito `manter`, porque não há imagem de origem a manter.
+- **Pessoa real citada**: discurso ou entrevista de uma fonte real é REGISTRO, identificado por nome completo e
+  cargo (ofício). O **card de pessoa** (Lucas, 26/09/2026: "Nome grande, cargo embaixo"):
+  - o **nome** no papel **rótulo** de §4.1: pílula `--rotulo`, alvo 128 px (teto 160), Inter 700, **até 3
+    palavras** (`--fs-rotulo` e `--peso-rotulo` em `tokens.css`);
+  - o **cargo** numa linha menor logo abaixo, no papel **eixo / legenda** de §4.1: alvo 84 px (teto 104),
+    Inter 500 (`--fs-eixo` e `--peso-texto`). A legenda não tem teto de palavras, e o cargo é o que a fonte diz;
+  - exemplo aprovado (a caixa também é a do exemplo): `MARIA GLADZISZEWSKI` em cima e
+    `Assembly member, City of Juneau` embaixo;
+  - o contrato continua pedindo o cargo, em `cards_pessoa` › `o_que_e`;
+  - o nome não vai em `--destaque` (§2). O rosto, quando há, segue `midia.md` §7.2; sem foto em fonte
+    autorizada, o card sai só com nome e cargo.
 
 ## 6 · Base de mapa e mídia
 
@@ -191,12 +203,15 @@ registrada aqui.
 nunca adota a reivindicação de um lado.
 
 **Doutrina de mídia**:
-- **Acervos abertos**: Library of Congress, National Archives (NARA), NASA, USGS, Wikimedia Commons
-  (licença conferida arquivo a arquivo).
+- **Acervos abertos**: Library of Congress, National Archives (NARA), NASA, USGS, Smithsonian, Wikimedia
+  Commons (licença conferida arquivo a arquivo), e as fontes federais: sala de imprensa de órgão federal dos
+  EUA e DVIDS. Nenhum outro acervo gratuito: Pexels, Pixabay e os demais ficam fora (`midia.md` §7.3, Lucas,
+  26/09/2026). Foto do governo do Alasca e de jornal entra citando a fonte (`midia.md` §7.5).
 - **Catálogo pago**: Envato Elements, Motion Array, Storyblocks e Shutterstock. A ordem de uso, o
   que cada licença permite e como registrar cada download estão em **`midia.md`**.
-- **Evento real específico** (guerra, protesto, cúpula, desastre, pessoa pública): só de acervo
-  aberto ou oficial, com data e local conferidos na origem, e **nunca de banco pago** (`midia.md` §1).
+- **Evento real específico** (guerra, protesto, cúpula, desastre, pessoa pública): de acervo aberto ou
+  oficial, ou foto do governo do Alasca ou de jornal com a fonte na tela (`midia.md` §7.5), sempre com data e
+  local conferidos na origem, e **nunca de banco pago** (`midia.md` §1).
   Imagem "ilustrativa" de outro evento ou de outro ano não entra.
 
 ## 7 · Grafia de tela
@@ -211,6 +226,10 @@ nunca adota a reivindicação de um lado.
 - Crédito: `Source: <instituição>, <ano>`. Crédito de mídia: `<autor> / <acervo> · <licença>`.
 - **Domínio público** (NASA, Landsat/USGS, Natural Earth, NARA…): **sem crédito na tela**. O ofício
   reprova crédito supérfluo. Copernicus Sentinel não é domínio público e leva o crédito de §6.
+- **Retrato oficial** de pessoa citada, em uso editorial: sem crédito na tela; a procedência fica registrada
+  (`midia.md` §7.2).
+- **Foto do governo do Alasca e de jornal**: crédito na tela sempre, a fonte como a origem a credita,
+  `<autor> / <veículo>`, ou só o veículo ou o órgão (`midia.md` §7.5, Lucas, 26/09/2026).
 - B-roll de banco pago não leva crédito na tela, **exceto Shutterstock**. Vai a linha
   `Image(s) and/or video used under license from Shutterstock.com` na faixa de crédito da última cena,
   repetida na descrição do YouTube. Em contexto editorial ou de comentário, também

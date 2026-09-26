@@ -18,6 +18,14 @@
   `out/<proj>/roteiro.md`) com os tempos. O que a voz disse diferente (palavra pulada ou trocada) está em
   `out/<proj>/transcricao.json` › `alinhamento.conteudo`. O que a narração afirma = o `words.json` mais
   essas divergências. Como o `words.json` se faz: CLAUDE.md, "Peças da pré-v1 em uso", item 3.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** Tela e busca em **inglês dos EUA** (`canal.json › idiomas.origem`). Relatório e notas, em
   português.
 - **Formato de tela** (identidade.md §7): `2,700`, `$2.8 billion`, `ALMOST 3,000×`, `28.0×`,
@@ -69,7 +77,9 @@ já tem.
 
 - O órgão que **produz** o dado, no lugar do tema (ofício). No Juneau: Alaska Division of Elections
   (boletins oficiais de apuração), Alaska Department of Labor and Workforce Development, Alaska
-  Legislature (BASIS), Alaska DOT&PF com a FHWA (`pautas/juneau/fundamento.json`).
+  Legislature (BASIS), Alaska DOT&PF com a FHWA (`pautas/juneau/fundamento.json`). Número do estudo de 2018
+  deles (custo, os 41 corredores de avalanche) vai com `Source: Alaska DOT&PF and FHWA, 2018`: o estudo conta
+  como estadual (pesquisado a pedido do Lucas, 26/09/2026; midia.md §7.1, "O estudo de 2018").
 - Dado estadual dos EUA vem do órgão que o produz, não de `src/agent/data-tools.mjs` (o que ele cobre:
   CLAUDE.md, tropeços do apoio).
 
@@ -125,8 +135,9 @@ vídeos.** Até lá, não grave fato lá, nem pelo `src/agent/dados-biblioteca.m
   §2.5). Dado não sai de banco. Se uma cena sua pedir B-roll genérico, entregue a lista do que procurar
   (termos em inglês, cena, duração, por que é genérico); nunca baixe nem abra o site do banco.
 - **Licença.** Tabela ou gráfico de jornal ou de documento do Estado do Alasca não é domínio público
-  automático: você entrega os valores, e quem desenha refaz o gráfico na marca do canal. Mostrar a página
-  original é DOCUMENTO, e o uso dela é **DECISÃO DO LUCAS PENDENTE** (`pesquisa-documentos`).
+  automático: você entrega os valores, e quem desenha refaz o gráfico na marca do canal, com a fonte citada.
+  Mostrar a página original é DOCUMENTO, e só com permissão de uso clara, conferida e gravada na procedência
+  (Lucas, 26/09/2026; midia.md §7.1; `pesquisa-documentos`).
 
 ## 8 · Os portões, e a quem devolver
 

@@ -38,10 +38,11 @@ O roteiro não tem linha `**Título**`, e nenhuma se acrescenta (CLAUDE.md).
   - **mapa = MapTiler** (`canal.json` › `mapa.perfil`), com `© MapTiler © OpenStreetMap contributors` na tela
     durante todo o mapa, e o que vem do OSM com o crédito do OSM (identidade.md §6; CLAUDE.md, pré-v1 item 6).
     O gasto de pedidos na MapTiler ainda não foi liberado: nenhum quadro ou render de mapa sem o ok dele;
-  - **documento do governo do Estado do Alasca e imprensa** (ADN, KTOO) não estão no domínio público que a
-    identidade.md §7 isenta de crédito, e nos EUA a obra do governo federal é domínio público por lei
-    (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça. DECISÃO DO LUCAS PENDENTE: a regra de uso deles na tela; até lá, só entram com a
-    licença conferida e gravada na procedência (midia.md §1);
+  - **documento do governo do Estado do Alasca e documento de imprensa** (ADN, KTOO) só vão à tela com
+    permissão de uso clara (domínio público comprovado, licença aberta ou autorização escrita), conferida e
+    gravada na procedência; sem ela, a cena recria o trecho no visual do canal, com o texto citado fiel e a
+    fonte citada (Lucas, 26/09/2026; midia.md §7.1). Foto do Estado e de jornal entra citando a fonte
+    (midia.md §7.5); logo de jornal, de órgão do Alasca e o selo, só o nome escrito (midia.md §7.6);
   - **banco pago** (midia.md §1, §2): evento real nunca vem dele; B-roll genérico vem, na ordem Envato
     Elements → Motion Array → Storyblocks → Shutterstock, baixado só pelo Lucas, à mão, na conta dele
     (§2.3; robô e script proibidos, §2.5). Você entrega a lista do que procurar, nunca baixa nem abre o banco;

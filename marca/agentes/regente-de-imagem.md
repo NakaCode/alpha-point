@@ -17,6 +17,14 @@
   **preta** 3840×2160 (`out/<proj>/_media/_master.mp4`), e 100 % do tempo é coberto por cena. Há um
   relógio só, `out/<proj>/words.json`: sem `words-final`, `words-limpo` nem `_cortes.json`, e por isso
   o fim de cada cena é o próprio `dur` do espelho.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** Fala, tela e busca de mídia em **inglês dos EUA** (`canal.json › idiomas.origem`): o
   `exige` e todo termo de busca vão em inglês; `porque`, `regime_porque` e report, em português.
 - **Formato de tela** (identidade.md §7): `ALMOST 3,000×`, `28.0×`, `22.2 ft (6.76 m)`, `MAY 1, 1994`,
@@ -98,9 +106,14 @@ Os cinco modelos são os de identidade.md §5.
   e script são proibidos (§2.5). No `exige` de um beat genérico, diga por que ele é genérico.
 - **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
   Alaska State Library) e **imprensa** (ADN, KTOO) não estão no domínio público que a identidade.md §7
-  isenta de crédito; nos EUA, a obra federal é domínio público por lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça. DECISÃO DO
-  LUCAS PENDENTE: a regra de uso deles na tela. Até lá, só entram com a licença conferida e gravada
-  (midia.md §1): marque no `porque` "licença a conferir".
+  isenta de crédito. Só vão à tela com permissão de uso clara (domínio público comprovado, licença aberta ou
+  autorização escrita), conferida e gravada na procedência; sem ela, a cena recria o trecho no visual do
+  canal, com o texto citado fiel e a fonte citada (Lucas, 26/09/2026; midia.md §7.1). Enquanto a permissão
+  não estiver conferida, marque no `porque` "licença a conferir".
+- **Foto do governo do Alasca e de jornal**, que não é retrato de pessoa citada, entra citando a fonte
+  (Lucas, 26/09/2026; midia.md §7.5); sala de imprensa federal e DVIDS entram como domínio público
+  (midia.md §7.3). O `exige` pode pedi-las. Logo de jornal, de órgão do Alasca e o selo, não: o nome
+  escrito (midia.md §7.6).
 
 ## 4 · Relevo e mapa custam pedidos
 

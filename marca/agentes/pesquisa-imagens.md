@@ -16,6 +16,14 @@
 - **Faceless.** Ninguém fala para a câmera (identidade.md §0). O master é a narração sobre tela preta
   3840×2160, e 100 % do tempo é coberto por cena (identidade.md §5). Há um relógio só,
   `out/<proj>/words.json`.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** Tela e **busca de mídia em inglês dos EUA** (`canal.json › idiomas.origem`). Relatório e
   notas, em português.
 - **Formato de tela** (identidade.md §7): `2,700`, `$2.8 billion`, `ALMOST 3,000×`, `28.0×`,
@@ -67,7 +75,7 @@
 
 | A cena pede | De onde vem |
 |---|---|
-| **evento real específico, pessoa pública, registro histórico** | só acervo aberto ou oficial, com data e local conferidos na origem: NARA, NASA, USGS, Wikimedia Commons (licença conferida arquivo a arquivo), sala de imprensa oficial, Library of Congress (só pelo navegador, §3). **Nunca banco pago.** Imagem "ilustrativa" de outro evento ou de outro ano não entra |
+| **evento real específico, pessoa pública, registro histórico** | só acervo aberto ou oficial, com data e local conferidos na origem: NARA, NASA, USGS, Smithsonian, Wikimedia Commons (licença conferida arquivo a arquivo), Library of Congress (só pelo navegador, §3), e as fontes federais: sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3). Nenhum outro acervo gratuito. Foto do governo do Alasca e de jornal entra com a fonte creditada na tela (midia.md §7.5; §5 abaixo). O retrato de pessoa citada segue midia.md §7.2. **Nunca banco pago.** Imagem "ilustrativa" de outro evento ou de outro ano não entra |
 | **B-roll genérico**: paisagem, cidade, porto, indústria, balsa, drone | bancos pagos, nesta ordem: Envato Elements → Motion Array → Storyblocks → Shutterstock. **Quem baixa é só o Lucas**; você entrega a lista (§4) |
 | **mapa, satélite** | não é seu: as bases de identidade.md §6, com o `mapista` |
 
@@ -83,17 +91,24 @@ Vale sempre (midia.md §2):
 ## 3 · O acervo aberto: a porta que é sua
 
 ```
-node <motor>/src/ferramentas/buscar-midia.mjs <proj> buscar "<1-3 words in English>" --cena=<id> --fontes=commons,nasa,nara
+node <motor>/src/ferramentas/buscar-midia.mjs <proj> buscar "<1-3 words in English>" --cena=<id>
 node <motor>/src/ferramentas/buscar-midia.mjs <proj> baixar --cena=<id> --indice=<n>
 node <motor>/src/ferramentas/buscar-midia.mjs <proj> entregar --cena=<id> --arquivo=<rascunho> --nome=<descriptive-name>
 ```
 
-- **Passe sempre `--fontes=commons,nasa,nara`**, as fontes da doutrina do canal (identidade.md §6). O que o
-  `buscar-midia` faz sem `marca/midia.json`, e por que a lista vai explícita: CLAUDE.md, tropeços do apoio.
-  Vídeo se pede a Commons e NASA. **DECISÃO DO LUCAS PENDENTE: quais fontes ficam ligadas** (um
-  `marca/midia.json` do canal, com `fontes_desligadas`) **e se Pexels e Pixabay entram.**
-- **USGS** não tem adaptador na ferramenta: busque no site do USGS, com a regra de robô do §0, e registre
-  a origem com a mesma prova que o `entregar` grava (URL, licença, sha256).
+- **As fontes ligadas vêm de `marca/midia.json`** (campo `fontes_desligadas`), com a decisão do Lucas de
+  26/09/2026: acervo gratuito, só os oficiais e as fontes federais (midia.md §7.3). O `buscar-midia` consulta
+  `commons`, `nasa`, `nara`, `smithsonian` e `dvids`, e registra as outras (Openverse, Met, Europeana,
+  Internet Archive, Pexels, Pixabay, Library of Congress) como desligadas. Não passe `--fontes=` para ligar
+  uma delas: ela continua desligada, e o `baixar` a recusa. O `--fontes=` só estreita a busca dentro das
+  ligadas. A NARA e o Smithsonian só devolvem imagem e pedem chave; o DVIDS devolve imagem e vídeo e pede a
+  chave `DVIDS_API_KEY`; vídeo se pede a Commons, NASA e DVIDS.
+- **DVIDS**: o `buscar-midia` grava em cada item a política dele (obra de servidor federal) e as ressalvas:
+  material de terceiro pode vir sem aviso, e insígnia ou selo militar pode ser marca registrada. Confira o
+  crédito que o item declara: foto "courtesy" ou de terceiro não é obra federal (midia.md §7.3).
+- **USGS e sala de imprensa de órgão federal** não têm adaptador na ferramenta: busque no site do órgão, com
+  a regra de robô do §0, e registre a origem com a mesma prova que o `entregar` grava (URL, licença,
+  sha256), mais o órgão autor, a data e o local.
 - **Library of Congress:** não se consulta por script (por quê: CLAUDE.md, tropeços do apoio); peça ao
   Claude central a conferência no navegador do app.
 - O User-Agent das buscas leva o `contato` do `canal.json`. Não troque.
@@ -130,11 +145,25 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
 
 - **Documento e foto do Estado do Alasca** (inclusive o acervo digital da Alaska State Library),
   **jornal** (ex.: Anchorage Daily News) e **rádio** (ex.: KTOO) **não são domínio público automático**.
-  Registre autor, URL e o que a origem diz sobre direitos. Sem licença clara, o item não entra na pasta
-  de mídia da cena: vai ao relatório como candidato. **DECISÃO DO LUCAS PENDENTE: se entram, com que
-  crédito e sob que justificativa.**
-- Obra do governo federal dos EUA (NARA, NASA, USGS) é domínio público **nos Estados Unidos**, e o
-  registro diz assim. Material "courtesy" de terceiro dentro de acervo federal não é: confira.
+  Registre autor, URL e o que a origem diz sobre direitos.
+- **Documento** do Estado e de imprensa **só entra com permissão de uso clara** (domínio público comprovado,
+  licença aberta ou autorização escrita), conferida e gravada; o crédito é o que a permissão pede (Lucas,
+  26/09/2026; midia.md §7.1). Sem permissão, o documento não entra na pasta de mídia da cena: vai ao
+  relatório como candidato, com o motivo, e a cena recria o trecho de texto no visual do canal.
+- **Foto** do governo do Alasca e de jornal, que não é retrato de pessoa citada, **entra citando a fonte**
+  (Lucas, 26/09/2026; midia.md §7.5):
+  - `credito_na_tela` com a fonte como a origem a credita (§7);
+  - na procedência: URL, data da foto e da conferência, autor e veículo ou órgão, e o que a origem diz sobre
+    uso, copiado. A `licenca` leva esse texto e `midia.md §7.5 (Lucas, 26/09/2026)`, nunca `a_confirmar`;
+  - foto de agência (AP, Getty): registre também que agência costuma reivindicar direitos no YouTube
+    (Content ID), e deixe a foto para o Lucas pesar; a `excecao_autorizada` só se escreve depois do ok dele.
+    Foto Reuters não entra: o portão a veta (midia.md §7.4, item 2);
+  - vídeo do Estado ou de jornal não é esta regra: sem licença conferida, fica fora (midia.md §7.4, item 3).
+- **Foto de outra origem sem licença** (prefeitura, empresa, particular, site de terceiro) não entra: procure
+  outro registro nos acervos do §3 (midia.md §7.5).
+- **Retrato de pessoa citada** é do `pesquisa-pessoas` (midia.md §7.2).
+- Obra do governo federal dos EUA (NARA, NASA, USGS, DVIDS, sala de imprensa de órgão federal) é domínio
+  público **nos Estados Unidos**, e o registro diz assim. Material "courtesy" de terceiro dentro de acervo federal não é: confira.
 - Commons: licença arquivo a arquivo (identidade.md §6). Licença "desconhecida" não entra.
 
 ## 6 · Formato, resolução, taxa
@@ -157,7 +186,11 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
 
 - `credito_na_tela` em inglês, no formato `<author> / <archive> · <license>`. Ex.:
   `Jane Doe / Wikimedia Commons · CC BY-SA 4.0`.
-- **Domínio público** (NASA, Landsat/USGS, Natural Earth, NARA…) vai **sem crédito na tela**. Escreva isso
+- **Foto do governo do Alasca e de jornal** (midia.md §7.5): crédito na tela sempre, a fonte como a origem
+  a credita, `<author> / <outlet>`; sem autor nomeado, só o veículo ou o órgão. Ex.:
+  `Jane Doe / Anchorage Daily News`.
+- **Domínio público** (NASA, Landsat/USGS, Natural Earth, NARA, DVIDS, sala de imprensa federal…) vai
+  **sem crédito na tela**. Escreva isso
   no registro, com a licença, para ninguém deduzir um crédito depois. O registro na pauta continua
   obrigatório.
 - Banco pago não leva crédito na tela, exceto Shutterstock: a linha `Image(s) and/or video used under

@@ -19,6 +19,14 @@
   sobre tela preta 3840×2160, e o relógio é um só, `out/<proj>/words.json` (não há `words-final`, `_cortes`
   nem apresentador). Os últimos 20 s não têm voz: são da tela final do YouTube (`canal.json` ›
   `narracao.cauda_tela_final_s`). **Sem título de capítulo na tela** (CLAUDE.md; Lucas, 26/09/2026).
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Tudo roda no PC do Lucas, no Windows, com a GPU dele**: não há máquina de render remota. `<motor>` é a
   pré-v1 (CLAUDE.md, "Os especialistas"), **nunca** o `motor.caminho` do `canal.json` (a v0.1.0). O
   `maprender.mjs`, o `render.webgl.4k`, o `tools/map-renderer` e o `tools/terrain-renderer` do ofício não
@@ -208,9 +216,13 @@ necessidade.
 - Mídia que não é mapa (foto do lugar, cartografia histórica como imagem) segue `marca/midia.md`:
   - evento real e registro histórico, só de acervo aberto ou oficial, com a licença conferida arquivo a
     arquivo (§1);
-  - documento do governo do Estado do Alasca e imprensa não estão no domínio público que a identidade.md §7
-    isenta de crédito (nos EUA, a obra federal é domínio público por lei, 17 U.S.C. §105; a estadual não tem essa regra geral: confira peça a peça). Só entram com
-    a licença conferida e gravada (DECISÃO DO LUCAS PENDENTE: a regra de uso deles na tela);
+  - figura, mapa ou traçado de documento do governo do Estado do Alasca ou de imprensa só vai à tela com
+    permissão de uso clara (domínio público comprovado, licença aberta ou autorização escrita), conferida e
+    gravada na procedência (Lucas, 26/09/2026; midia.md §7.1). Sem ela, não entra nem se redesenha: bloqueio
+    reportado. A recriação que a decisão manda é do texto citado, e é do `editor-de-arte`; se o canal aceita
+    esquema declarado espera o Lucas (`marca/agentes/pesquisa-geo.md` §6);
+  - foto do lugar vinda do governo do Alasca ou de jornal entra com a fonte creditada na tela (Lucas,
+    26/09/2026; midia.md §7.5);
   - B-roll genérico de banco pago não é seu: só o Lucas baixa, à mão, na conta dele (midia.md §1, §2.3), e
     você não abre o site de banco.
 

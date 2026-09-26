@@ -17,6 +17,14 @@
   **preta** 3840×2160 (`out/<proj>/_media/_master.mp4`): o que nenhuma cena cobre aparece preto. Onde o
   ofício fala de apresentador, take, `words-final`, `words-limpo` ou `_cortes.json`: não existe aqui. Há
   um relógio só, `out/<proj>/words.json`.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** Fala, tela e busca de mídia (a `query` de um `FALTA`) em **inglês dos EUA**
   (`canal.json › idiomas.origem`). `nota`, `metafora`, `tecnica` e report: português.
 - **Formato de tela** (identidade.md §7): `ALMOST 3,000×`, `28.0×`, `22.2 ft (6.76 m)`, `MAY 1, 1994`,
@@ -103,8 +111,9 @@ lugar ou objeto real, e diga que é proposta.
 - `construída` só quando **não existe registro** do que a cena diz. B-roll genérico que espera o download
   do Lucas e fonte ainda não liberada são `FALTA`, com a `query` em inglês dos EUA — nunca `construída`.
 - **Evento real específico** (votação, pessoa pública, obra datada) só de acervo aberto ou oficial:
-  NARA, Library of Congress, NASA, USGS, sala de imprensa oficial, Commons com licença conferida; **nunca**
-  de banco pago (midia.md §1).
+  NARA, Library of Congress, NASA, USGS, Smithsonian, Commons com licença conferida, e as fontes federais:
+  sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3); **nunca** de banco
+  pago (midia.md §1). O retrato de pessoa citada segue midia.md §7.2.
 - **B-roll genérico** (paisagem, cidade, porto, indústria, drone) vem dos bancos pagos, na ordem Envato
   Elements → Motion Array → Storyblocks → Shutterstock, com as regras de midia.md §2 (editorial nunca;
   pessoa de banco nunca em política; Storyblocks só neutro). Quem baixa é **só o Lucas**, à mão, na conta
@@ -112,11 +121,15 @@ lugar ou objeto real, e diga que é proposta.
   a lista do que procurar (termos em inglês, cena, duração, por que é genérico), nunca baixa nem abre o
   site do banco.
 - **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
-  Alaska State Library) e **imprensa** (ADN, KTOO) não estão no domínio público que a identidade.md §7
-  isenta de crédito; nos EUA, a obra do governo federal é domínio público por lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça.
-  DECISÃO DO LUCAS PENDENTE: a regra de uso deles na tela. Até lá, a peça só entra com a licença conferida
-  e gravada na procedência (midia.md §1): quando a âncora for uma delas, o report lista a cena como
-  "licença a conferir", e o `midia_ancora` segue uma das quatro formas.
+  Alaska State Library) e **imprensa** (ADN, KTOO) só vão à tela com permissão de uso clara (domínio
+  público comprovado, licença aberta ou autorização escrita), conferida e gravada na procedência; sem ela,
+  a cena recria o trecho no visual do canal, com o texto citado fiel e a fonte citada (Lucas, 26/09/2026;
+  midia.md §7.1). Quando a âncora for uma delas e a permissão ainda não estiver conferida, o report lista a
+  cena como "licença a conferir", e o `midia_ancora` segue uma das quatro formas.
+- **Foto do governo do Alasca e de jornal** (inclusive de agência), que não é retrato de pessoa citada, é
+  âncora possível: entra com a fonte creditada na tela (Lucas, 26/09/2026; midia.md §7.5). Foto de agência
+  espera o ok do Lucas àquela foto (Content ID); Reuters não entra (midia.md §7.4, item 2). Logo de jornal,
+  de órgão do Alasca e o selo não são âncora: vai o nome escrito (midia.md §7.6).
 - Antes de escrever `FALTA`, olhe `out/<proj>/_media/` e a geometria de `out/<proj>/_pesquisa/pauta-geo.json`:
   o que já está no disco é âncora, não falta.
 

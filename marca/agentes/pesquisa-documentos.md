@@ -15,6 +15,14 @@
 - **Faceless.** Ninguém fala para a câmera (identidade.md §0). O master é a narração sobre tela preta
   3840×2160, e 100 % do tempo é coberto por cena (identidade.md §5). Há um relógio só,
   `out/<proj>/words.json`: é dele que saem os tempos do grifo.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** Tela e busca em **inglês dos EUA** (`canal.json › idiomas.origem`). Relatório e notas, em
   português.
 - **Formato de tela** (identidade.md §7): `2,700`, `$2.8 billion`, `ALMOST 3,000×`, `28.0×`,
@@ -53,7 +61,8 @@
 - O registro é o do mapa de briefing de uma redação internacional (identidade.md §1), sóbrio: nada de
   estética de telejornal.
 - Quando o objeto em si é o assunto (a cédula, o folheto oficial, a página do boletim de apuração), ele é
-  REGISTRO real tratado, não recriação (ofício §4).
+  REGISTRO real tratado, não recriação (ofício §4), **se houver permissão de uso clara**; sem ela, a cena
+  recria o trecho no visual do canal (§4 abaixo; midia.md §7.1).
 - **O grifo.** O ofício pede cor fixa, que não muda com a paleta. No canal, o `--grifo` segue o
   `--destaque`, e o `RIG.paleta({destaque})` o arrasta junto (`marca/tokens.css`). **DECISÃO DO LUCAS
   PENDENTE: se o grifo fica fixo em `#F5A524` a 35 % quando a cena troca o `--destaque`.** Você não
@@ -88,16 +97,31 @@
   Legislativo), **jornal** (ex.: Anchorage Daily News) e **rádio** (ex.: KTOO) **não são domínio público
   automático**: a identidade.md §7 só isenta de crédito o domínio público que nomeia, e nos EUA a obra do
   governo federal é domínio público por lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça. Registre autor, URL e o que a origem diz sobre
-  direitos. **DECISÃO DO LUCAS PENDENTE: se a imagem do documento vai à tela, e com que crédito.** Até lá, a
-  peça só entra com a licença conferida e gravada na procedência (midia.md §1); sem ela, a proposta de troca
-  de modo é a citação tipografada com atribuição, e quem decide é o Lucas.
-- Obra do governo federal dos EUA: declare o órgão autor. Documento de autoria conjunta com o Estado
-  (ex.: o estudo ambiental de 2018 da estrada de Juneau, da FHWA com o Alaska DOT&PF) conta como estadual
-  até a decisão.
+  direitos.
+- **A regra** (Lucas, 26/09/2026; midia.md §7.1): a imagem da peça só vai à tela com **permissão de uso
+  clara** (domínio público comprovado, licença aberta ou autorização escrita), conferida e gravada na
+  procedência. Com ela, o crédito é o que a permissão pede, no formato de identidade.md §7. Licença não se
+  inventa nem se deduz da origem.
+- **Sem permissão clara, a cena recria o trecho** no visual do canal (DOCUMENTO sobre `--papel`, tipografia
+  e cores da marca, não um fac-símile), com o texto citado fiel e a fonte citada, `Source: <institution>,
+  <year>`. Você entrega o texto exato, os trechos a grifar com os tempos e a prova; a captura fica como
+  prova, fora da tela.
+- Obra do governo federal dos EUA: declare o órgão autor. Só é federal o que se prova escrito por
+  funcionário federal no serviço (17 U.S.C. §101); aprovar, assinar ou publicar não basta. Documento de
+  autoria conjunta com o Estado conta como estadual no que não se prova federal (midia.md §7.1, "O estudo de
+  2018"; pesquisado a pedido do Lucas, 26/09/2026).
+- **O estudo de 2018 da estrada de Juneau** (Final SEIS e ROD, da FHWA com o Alaska DOT&PF) **conta como
+  estadual**: foi preparado pelo DOT&PF e escrito sobretudo pela HDR, e o Estado reserva os direitos. Página,
+  capa, figura e mapa dele só com autorização escrita do DOT&PF. O texto citado se recria (`Source: Alaska
+  DOT&PF and FHWA, 2018`; a frase de decisão do ROD, `Source: Federal Highway Administration, 2018`). O
+  original federal que pode ir à tela é o aviso da FHWA no Federal Register de 30/07/2018 (83 FR 36661).
 - Sem crédito na tela, pela identidade, só o domínio público que ela nomeia: NASA, Landsat/USGS, Natural
   Earth, NARA (identidade.md §7).
-- Logo de veículo ou de órgão no clipping: é do `pesquisa-logos`, e o uso de logo de imprensa e de órgão
-  estadual também é **DECISÃO DO LUCAS PENDENTE**. Até lá, o nome em tipografia limpa.
+- Logo do veículo ou do órgão do Alasca ao lado do recorte, e o selo do Estado, não vão à cena: vai o nome
+  da instituição escrito na pílula `--rotulo`, Inter 700 (Lucas, 26/09/2026; midia.md §7.6). Logo de órgão
+  federal é do `pesquisa-logos`, e lá está pendente.
+- Foto do governo do Alasca e de jornal não é documento: entra citando a fonte, pela regra do
+  `pesquisa-imagens` (midia.md §7.5).
 
 ## 5 · Antes de buscar: o que o canal já leu
 

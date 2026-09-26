@@ -18,6 +18,14 @@
   (`out/<proj>/_media/_master.mp4`). Não há apresentador que improvisa nem take: a divergência possível
   entre texto e voz é a voz pular ou trocar palavra (CLAUDE.md, "Como se gera"). Há um relógio só,
   `out/<proj>/words.json`: sem `words-final`, `words-limpo` nem `_cortes.json`.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** Toda a tela em **inglês dos EUA** (`canal.json › idiomas.origem`); não há tradução para
   outros idiomas (`canal.json › idiomas.localizados` vazio). Motivos, notas e report em português.
 - **Formato de tela** (identidade.md §7): `ALMOST 3,000×`, `28.0×`, `22.2 ft (6.76 m)`, `MAY 1, 1994`,
@@ -86,7 +94,8 @@ recusou e o que ficou sem conferir, e a sessão central confere no navegador do 
 - **Número tem dono**: toda cifra na tela tem instituição e ano, na voz ou no crédito (voz.md §2).
 - Escala americana quando couber: `about the size of Texas` (identidade.md §7).
 - **Tamanho de texto** (identidade.md §4.1): herói até **5** palavras, fala citada até **12**, rótulo
-  (inclui nome de lugar) até **3** (o card de pessoa é pendência, §4). Tamanho e posição são do
+  (inclui nome de lugar e o nome do card de pessoa) até **3**; o cargo do card é legenda, sem teto de
+  palavras (§4). Tamanho e posição são do
   `editor-de-arte`; a contagem de palavras é sua.
 
 ## 4 · O que cada tipo de texto leva
@@ -94,14 +103,16 @@ recusou e o que ficou sem conferir, e a sessão central confere no navegador do 
 - **Nome de lugar:** país e região em **CAIXA ALTA**; cidade, rio e estreito em caixa normal
   (identidade.md §3). Nome de lugar é rótulo, nunca herói (identidade.md §4.1).
 - **Card de pessoa:** nome completo e cargo (identidade.md §5), com `data_do_cargo`. Político pelo cargo,
-  sem rótulo partidário (`roteiro-editor.md` › "Decisões editoriais", no Juneau). **DECISÃO DO LUCAS
-  PENDENTE: como o card de pessoa cabe na identidade.** O contrato exige o cargo
-  (`contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`), e nome e cargo passam das 3 palavras
-  do rótulo (identidade.md §4.1): "Assembly member Maria Gladziszewski" tem 4. Proposta do verificador,
-  ainda não aprovada: o `nome` no rótulo (até 3 palavras) e o cargo logo abaixo como legenda, 84 px, Inter
-  500 (o papel "eixo / legenda" de identidade.md §4.1). Até a decisão, preencha `nome` e `o_que_e` pelo
-  contrato e ponha o card no report como pendente.
+  sem rótulo partidário (`roteiro-editor.md` › "Decisões editoriais", no Juneau). **A forma** (Lucas,
+  26/09/2026; identidade.md §5): o `nome` vai no rótulo, até 3 palavras, e o cargo numa linha menor logo
+  abaixo, como legenda (84 px, Inter 500). Exemplo aprovado: `MARIA GLADZISZEWSKI` em cima e
+  `Assembly member, City of Juneau` embaixo. O contrato continua pedindo o cargo
+  (`contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`): preencha `nome` e `o_que_e` pelo
+  contrato. Nome que passe de 3 palavras não se encurta por conta própria: vai ao report.
 - **Fronteira disputada:** rótulo `DISPUTED`, e nunca a reivindicação de um lado (identidade.md §6).
+- **Jornal, órgão do Alasca e o Estado** aparecem pelo nome escrito, na pílula `--rotulo`: logo e selo não
+  vão à cena (Lucas, 26/09/2026; midia.md §7.6). O texto do nome é seu, com o limite de palavras do rótulo
+  (§3); nome maior que isso vai ao report.
 - **Palavra que escolhe lado** (`regime` para um governo e `government` para outro): só entre aspas e
   atribuída (voz.md §2). Nada de `shocking`, `crazy`, `World War 3` na tela (voz.md §2).
 - **Glossário institucional:** o canal se chama `Alpha Point` (`canal.json › titulo`) e não tem produto,
@@ -127,9 +138,15 @@ do texto é a da casa, e ela tem de casar com o seu glossário.
 - **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
   Alaska State Library) e **imprensa** (ADN, KTOO) não estão no domínio público que a identidade.md §7
   isenta de crédito, e nos EUA a obra do governo federal é domínio público por lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça.
-  DECISÃO DO LUCAS PENDENTE: a regra de crédito e de uso deles na tela. Até lá, a peça só entra com a
-  licença conferida e gravada na procedência (midia.md §1): cada uma vai em `nao_vai_para_tela` ou com essa
-  licença e a linha "crédito a decidir" no report.
+  **Regra** (Lucas, 26/09/2026; midia.md §7.1): a peça só vai à tela com permissão de uso clara (domínio
+  público comprovado, licença aberta ou autorização escrita), conferida e gravada na procedência; com ela,
+  o crédito é o que a permissão pede (identidade.md §7). Sem ela, a peça vai em `nao_vai_para_tela`, e a
+  cena recria o trecho no visual do canal, com o texto citado fiel e `Source: <institution>, <year>`.
+- **Foto do governo do Alasca e de jornal** (inclusive de agência): crédito na tela sempre, a fonte como a
+  origem a credita, `<author> / <outlet>`, ou só o veículo ou o órgão; ex.: `Jane Doe / Anchorage Daily
+  News` (Lucas, 26/09/2026; midia.md §7.5).
+- **Sala de imprensa federal e DVIDS**: domínio público federal, sem crédito na tela (midia.md §7.3).
+- **Retrato oficial** de pessoa citada, em uso editorial: sem crédito na tela (midia.md §7.2).
 - O crédito mora na faixa y > 1880, à esquerda, e nunca encolhe: quebra em duas linhas (identidade.md §4.2).
 
 ## 6 · Erratas e conserto da fala
@@ -169,7 +186,8 @@ grep -n "<variante>" out/<proj>/words.json          # toda variante_ouvida exist
 ## 8 · O report, além do que o contrato pede
 
 - toda URL que recusou robô e o que ficou sem conferir por isso;
-- os créditos que dependem de decisão (documento estadual, imprensa) e os cards de pessoa (§4);
+- as peças de documento estadual ou de imprensa sem permissão clara, que a cena recria (§5), e os nomes de
+  card de pessoa com mais de 3 palavras (§4);
 - as divergências entre a voz e o texto que tocam a tela, com o parágrafo. Elas **não** aparecem no
   `words.json` (ele tem o texto da cópia para a voz, por construção): estão em
   `out/<proj>/transcricao.json` › `alinhamento.conteudo` (cada bloco trocado, palavra pulada ou a mais, com

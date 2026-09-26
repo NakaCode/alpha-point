@@ -17,6 +17,14 @@
   como real (identidade.md §0, §5). O master é a narração sobre tela preta 3840×2160, e 100 % do tempo é
   coberto por cena. Discurso ou entrevista de uma fonte real é REGISTRO, com rótulo de nome completo e
   cargo (identidade.md §5). Há um relógio só, `out/<proj>/words.json`.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** Tela e busca em **inglês dos EUA** (`canal.json › idiomas.origem`). Relatório e notas, em
   português.
 - **Formato de tela** (identidade.md §7): `2,700`, `$2.8 billion`, `ALMOST 3,000×`, `28.0×`,
@@ -50,16 +58,23 @@
 
 ## 1 · Se a pessoa aparece, e de onde vem o retrato
 
-**DECISÃO DO LUCAS PENDENTE: se o vídeo mostra o rosto das pessoas citadas, e de que fontes de retrato.**
-A identidade não trata de retrato de terceiro. Até lá:
-- Entra só retrato de **acervo aberto com licença** conferida arquivo a arquivo: Wikimedia Commons, NARA,
-  acervos federais dos EUA (identidade.md §6; midia.md §1).
-- **Retrato oficial do governo estadual, foto de jornal, perfil de LinkedIn e foto de site de empresa não
-  são domínio público automático**, e o "uso editorial" do ofício (§9) não se presume neste canal.
-  Registre fonte, URL e o que a origem diz sobre direitos, e devolva ao Lucas.
+**Decisão do Lucas (26/09/2026; midia.md §7.2): segue o ofício** (§3, §8 e §9 de
+`.claude/agents/pesquisa-pessoas.md`).
+- O rosto vem de **fonte autorizada**, a que responde pela foto: site oficial do órgão ou do Legislativo,
+  com o retrato oficial; página institucional. Pessoa histórica: arquivo público, museu, Wikimedia Commons
+  com licença conferida.
+- **Retrato oficial publicado pelo próprio governo ou instituição** entra como **uso editorial**, só para
+  ilustrar a citação daquela pessoa: sem crédito na tela, e com fonte, URL, licença ou uso e arquivo
+  registrados na pauta (ofício §9).
+- **Agência de notícias** (o fallback 5 do ofício §3) e foto de jornal, **como retrato da pessoa citada**,
+  só com licença conferida (midia.md §7.2). A regra que deixa entrar foto de jornal e de agência citando a
+  fonte (midia.md §7.5) não vale para o retrato de pessoa citada. A assinatura Reuters é do Top10 e não
+  serve a este canal.
+- **Rosto gerado ou alterado por IA, nunca**; upscale generativo também não (ofício §6, §8).
 - Foto de banco nunca é a pessoa citada, e pessoa de banco nunca ilustra política, conflito ou assunto
   sensível (midia.md §2.2).
-- Sem retrato aceito, a entrega é o pacote de dados: nome completo e cargo conforme a fonte, com a URL.
+- Sem foto em fonte autorizada, o card sai só com nome e cargo (§6), com a caça registrada: consultas e
+  resultados (ofício §8).
 
 ## 2 · Na tela (identidade.md §2, §3, §4.1, §4.2)
 
@@ -68,12 +83,11 @@ A identidade não trata de retrato de terceiro. Até lá:
   cargo é o que a fonte diz.
 - Rótulo na pílula `--rotulo` (`#0B0F14` a 88 %), texto em `--tinta`, Inter 700, **128 px** (teto 160,
   até 3 palavras), cantos de 12 px, respiro de 24 × 40 px.
-- **DECISÃO DO LUCAS PENDENTE: como o card de pessoa cabe na identidade.** A identidade pede nome e cargo
-  (§5) e põe o rótulo em até 3 palavras (§4.1); o contrato exige o cargo (`contratos/textos-tela.schema.json`
-  › `cards_pessoa` › `o_que_e`). Nenhum citado do Juneau cabe: "Assembly member Maria Gladziszewski" tem 4.
-  Proposta do verificador, ainda não aprovada: o nome no rótulo (até 3 palavras) e o cargo logo abaixo como
-  legenda, 84 px, Inter 500 (o papel "eixo / legenda" de identidade.md §4.1). Você entrega nome e cargo
-  separados; a forma na tela espera o Lucas.
+- **O card de pessoa** (Lucas, 26/09/2026; identidade.md §5): o nome no rótulo (a pílula acima, até 3
+  palavras) e o cargo numa linha menor logo abaixo, no papel "eixo / legenda", 84 px, Inter 500. Exemplo
+  aprovado: `MARIA GLADZISZEWSKI` em cima e `Assembly member, City of Juneau` embaixo. O contrato continua
+  pedindo o cargo (`contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`). Você entrega nome e
+  cargo separados, como a fonte os escreve.
 - O nome não vai em `--destaque`: a cor é do protagonista do vídeo, e em texto só no rótulo dele
   (identidade.md §2).
 - **Fala citada** em Inter, **280 px** (teto 340, até 12 palavras). Fala mais longa não encolhe: corta em
@@ -94,6 +108,8 @@ A identidade não trata de retrato de terceiro. Até lá:
   `Jane Doe / Wikimedia Commons · CC BY-SA 4.0`.
 - Domínio público (NARA e outros acervos federais) vai sem crédito na tela; o registro na pauta continua
   obrigatório.
+- Retrato oficial em uso editorial (§1) também vai sem crédito na tela, com o registro na pauta (midia.md
+  §7.2).
 
 ## 4 · Grafia do nome
 
@@ -110,8 +126,8 @@ A identidade não trata de retrato de terceiro. Até lá:
 
 ## 6 · Sem foto
 
-A pílula `--rotulo` com nome e cargo (a forma espera a decisão do §2), sem silhueta, sem rosto genérico, com
-o aviso no relatório. Quem escolhe entre ela e a troca de modo é o `montador`.
+O card só com nome e cargo, na forma do §2 (o nome no rótulo, o cargo na legenda), sem silhueta, sem rosto
+genérico, com o aviso no relatório. Quem escolhe entre ele e a troca de modo é o `montador`.
 
 ## 7 · Decisões do Lucas que tocam o ofício
 
@@ -135,4 +151,4 @@ REGIE_MOTOR=<motor> node scripts/qc-procedencia.mjs <proj>
 - Não há ledger de insumos nem seção "A ESCADA" neste canal. A devolução é a **última linha da sua
   resposta**: a cena, o degrau em que você parou e quem decide agora — `montador` (o que entra e onde),
   `regente-de-imagem` (o que a frase exige da tela), `diretor-de-arte` (se mexe no arco) e o Lucas, quando
-  for rosto, licença de retrato ou o card.
+  um retrato ou um card fugir da regra do §1 ou do §2.

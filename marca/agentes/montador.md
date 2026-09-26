@@ -17,6 +17,14 @@
   a narração sobre tela **preta** 3840×2160 (`out/<proj>/_media/_master.mp4`), e 100 % do tempo é
   coberto por cena. Onde o ofício fala de apresentador, rosto, take, decupagem, `words-final`,
   `words-limpo` ou `_cortes.json`: não existe aqui. Há um relógio só, `out/<proj>/words.json`.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** Fala, tela e busca de mídia (`midia_termos`, `exige`, `query`) em **inglês dos EUA**
   (`canal.json › idiomas.origem`). Notas, `motivo`, `tese`, report: português.
 - **Formato de tela** (identidade.md §7): `ALMOST 3,000×`, `28.0×`, `22.2 ft (6.76 m)`, `MAY 1, 1994`,
@@ -61,7 +69,7 @@
   fronteira de tópico nem card.
 - A `ancora` vem do `words.json`, que tem a grafia da cópia para a voz: número **por extenso**
   (`nineteen seventy-four`; `1974` não está lá e dá `ancora-fora-da-fala`) e o alias de pronúncia
-  (`Gladyshevsky`, `Kay-too`, `Mat-Sue`, `N F L` no Juneau). Isso fica na âncora; a grafia de tela vai em
+  (`Gladyshevsky`, `Kay-too`, `Keel`, `Mat-Sue`, `N F L` no Juneau). Isso fica na âncora; a grafia de tela vai em
   `_grafias`, tirada do `roteiro-narrador.md` (§6).
 - Tempos se fecham **à mão**. `alinhar-timestamps` só com `--dry`: no faceless ele deixa vãos e
   sobreposições (CLAUDE.md, pré-v1 item 4).
@@ -114,22 +122,30 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
 - `midia_termos` em **inglês dos EUA**, com assunto, lugar e época (`Juneau waterfront 1970s archival
   photo`), nunca em português.
 - **Evento real específico** (votação, pessoa pública, obra datada): só de acervo aberto ou oficial, com
-  data e local conferidos — NARA, Library of Congress, NASA, USGS, sala de imprensa oficial, Wikimedia
-  Commons (midia.md §1; identidade.md §6). Nunca de banco pago.
+  data e local conferidos — NARA, Library of Congress, NASA, USGS, Smithsonian, Wikimedia Commons (midia.md
+  §1, §7.3; identidade.md §6), e as fontes federais: sala de imprensa de órgão federal dos EUA e DVIDS
+  (Lucas, 26/09/2026; midia.md §7.3). Nunca de banco pago. O retrato de pessoa citada segue midia.md §7.2.
 - **B-roll genérico** (paisagem, cidade, porto, indústria, drone): dos bancos pagos, na ordem Envato
   Elements → Motion Array → Storyblocks → Shutterstock (midia.md §1), com as regras do §2: editorial nunca,
   pessoa de banco nunca em política, e Storyblocks só em cena neutra (§3.3). Quem baixa é só o Lucas, à
   mão, na conta dele (§2.3, assento único); robô e script são proibidos (§2.5; CLAUDE.md, "Fora, por
   ora"). O pedido é a lista do que procurar: termos em inglês, cena, duração e por que é genérico.
-- Fontes do `buscar-midia` que `midia.md` não cita (Openverse, Met, DVIDS, Smithsonian, Europeana,
-  Pexels, Pixabay): DECISÃO DO LUCAS PENDENTE. Até lá, não as peça pelo nome. Item da Library of Congress,
-  só pelo navegador do app, com o Lucas vendo (por quê: CLAUDE.md, tropeços do apoio).
+- **Acervo gratuito, só os oficiais e as fontes federais** (Lucas, 26/09/2026; midia.md §7.3): Wikimedia
+  Commons, NASA, NARA, USGS, Library of Congress, Smithsonian, sala de imprensa de órgão federal e DVIDS.
+  Openverse, Met, Europeana, Internet Archive, Pexels e Pixabay ficam fora: não os peça (o `buscar-midia`
+  já os desliga, por `marca/midia.json`). Item da Library
+  of Congress, só pelo navegador do app, com o Lucas vendo (por quê: CLAUDE.md, tropeços do apoio).
 - **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
-  Alaska State Library) e **imprensa** (ADN, KTOO) não estão no domínio público que a identidade.md §7
-  isenta de crédito; nos EUA, a obra do governo federal é domínio público por lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça.
-  DECISÃO DO LUCAS PENDENTE: a regra de uso deles na tela. Até lá, a peça só entra com a licença conferida
-  e gravada na procedência (midia.md §1): peça o documento e marque no `midia_necessidade` "licença a
-  conferir".
+  Alaska State Library) e **imprensa** (ADN, KTOO) só vão à tela com permissão de uso clara (domínio
+  público comprovado, licença aberta ou autorização escrita), conferida e gravada na procedência; sem ela,
+  a cena recria o trecho no visual do canal, com o texto citado fiel e a fonte citada (Lucas, 26/09/2026;
+  midia.md §7.1). Peça o documento e marque no `midia_necessidade` "licença a conferir" até a pesquisa
+  gravar a permissão, ou dizer que não há.
+- **Foto do governo do Alasca e de jornal** (inclusive de agência), que não é retrato de pessoa citada:
+  pode ser pedida; entra com a fonte creditada na tela (Lucas, 26/09/2026; midia.md §7.5). Foto de agência
+  espera o ok do Lucas àquela foto (Content ID); Reuters não entra (midia.md §7.4, item 2).
+- **Logo de jornal, de órgão do Alasca e o selo do Estado** não se pedem: vai o nome da instituição escrito
+  na pílula `--rotulo` (Lucas, 26/09/2026; midia.md §7.6).
 - `needs.geo`: quando a geometria já existe, o `id` é o slug registrado no `pauta-geo.json`, e o `tipo`
   é o que cabe no enum (`estado_mundo`, `cidade`, `outro` para rio, estrada e canal). `uf_br` e
   `circuito_f1` nunca.

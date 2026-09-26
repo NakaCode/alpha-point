@@ -1,0 +1,39 @@
+{
+  "_leia": [
+    "Configuracao de midia DESTE canal. Tudo aqui e opcional: apagar um campo volta ao padrao.",
+    "marcas_vetadas / fontes_desligadas / largura_minima: lidos pelo motor (src/midia/canal.mjs) e pelo qc-procedencia. O canal so RESTRINGE.",
+    "shutterstock: a SUA conta Shutterstock (ADR 0009 D). conta = apelido (sem e-mail); sem ele vale o dono do canal (canal.json > owner). teto_dia = downloads por dia do seu plano; fuso = onde o dia vira. O contador fica em %USERPROFILE%\\.regie\\estado\\shutterstock\\<conta>.jsonl (scripts/stock/lib/teto-shutterstock.mjs).",
+    "shutterstock.api_oficial: DESLIGADA por padrao. So ligue com um token da SUA conta em SHUTTERSTOCK_TOKEN_PROPRIO (arquivo de chaves da maquina) e o seu usuario em 'usuario' (o script confere que o token e dessa conta). SHUTTERSTOCK_API_TOKEN e o token do estudio (Top10): o script nunca o usa e recusa o mesmo valor com outro nome.",
+    "caca: a caca pelo Chrome (skill cacar-no-chrome + scripts/stock/registrar-download.mjs). pasta_downloads = onde o SEU Chrome salva (null = %USERPROFILE%\\Downloads; aceita ~ e %USERPROFILE%). espera_download_s = quanto o 'recolher' espera o Chrome terminar (5 a 7200; padrao 180 — se sair 6, rode de novo). contas = de quem e cada conta, como aparece na procedencia. envato_projeto = o nome de projeto que o Envato pede ao licenciar (null = o titulo do canal).",
+    "ALPHA POINT, fontes_desligadas (Lucas, 26/09/2026; marca/midia.md 7.3): acervo gratuito so os oficiais - Wikimedia Commons, NASA, NARA, USGS, Library of Congress e Smithsonian - e, desde a 2a rodada do mesmo dia ('Sim, as federais'), as fontes federais: sala de imprensa de orgao federal dos EUA e DVIDS, dominio publico por lei (17 U.S.C. 105). Ficam ligadas no buscar-midia: commons, nasa, nara, smithsonian, dvids (o DVIDS foi religado: id 'dvids' em src/midia/fontes.mjs, FONTES_LIVRES; pede a chave DVIDS_API_KEY). As outras vao desligadas com o id do motor. O USGS e a sala de imprensa federal nao sao fonte do buscar-midia. A LoC e o Internet Archive o motor ja desliga; o canal os repete para continuarem fora se o motor os ligar.",
+    "ALPHA POINT, caca.contas: as quatro contas de banco pago deste canal sao individuais, do Lucas, de assento unico (marca/midia.md, cabecalho e 2.3). O molde dizia Top10 para Storyblocks, Envato e Motion Array. A caca por robo em banco pago esta fora do canal (CLAUDE.md, 'Fora, por ora'); o campo so muda o texto da procedencia.",
+    "ALPHA POINT, o que ficou no padrao do molde: marcas_vetadas vazio (Pexels e Pixabay ja estao desligados); largura_minima ausente de proposito, vale o padrao do motor (1600 px), porque a resolucao minima do registro historico e decisao do Lucas ainda aberta (marca/agentes/pesquisa-imagens.md 6); shutterstock.teto_dia 100 e o padrao do molde, e o plano Shutterstock do Lucas (cota ou Unlimited) ainda esta em aberto; envato_projeto: nenhum script le este campo, e no Envato o projeto recebe o slug do video, a mao (marca/midia.md 2.8)."
+  ],
+  "marcas_vetadas": [],
+  "fontes_desligadas": {
+    "openverse": "fora da lista de acervos oficiais do canal (Lucas, 26/09/2026; marca/midia.md 7.3)",
+    "met": "fora da lista de acervos oficiais do canal (Lucas, 26/09/2026; marca/midia.md 7.3)",
+    "europeana": "fora da lista de acervos oficiais do canal (Lucas, 26/09/2026; marca/midia.md 7.3)",
+    "pexels": "Pexels fica fora: so acervos oficiais (Lucas, 26/09/2026; marca/midia.md 7.3)",
+    "pixabay": "Pixabay fica fora: so acervos oficiais (Lucas, 26/09/2026; marca/midia.md 7.3)",
+    "internet-archive": "fora da lista de acervos oficiais do canal (Lucas, 26/09/2026; marca/midia.md 7.3); o motor tambem a desliga",
+    "loc": "a LoC esta na lista do canal, mas por script continua desligada: 403 do Cloudflare, e o canal nao contorna. Conferencia pelo navegador do app, com o Lucas (Lucas, 26/09/2026; marca/midia.md 7.3)"
+  },
+  "shutterstock": {
+    "conta": null,
+    "teto_dia": 100,
+    "fuso": "America/Sao_Paulo",
+    "api_oficial": { "ligada": false, "usuario": null }
+  },
+  "caca": {
+    "pasta_downloads": null,
+    "espera_download_s": 180,
+    "contas": {
+      "shutterstock": "propria do dono (conta individual do Lucas)",
+      "storyblocks": "propria do dono (conta individual do Lucas)",
+      "envato": "propria do dono (conta individual do Lucas)",
+      "motionarray": "propria do dono (conta individual do Lucas)"
+    },
+    "envato_projeto": null
+  }
+}

@@ -15,6 +15,14 @@
 - **Faceless.** Ninguém fala para a câmera (identidade.md §0). O master é a narração sobre tela preta
   3840×2160, e 100 % do tempo é coberto por cena (identidade.md §5). Há um relógio só,
   `out/<proj>/words.json`.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** Tela e busca em **inglês dos EUA** (`canal.json › idiomas.origem`). Relatório e notas, em
   português.
 - **Formato de tela** (identidade.md §7): `2,700`, `$2.8 billion`, `ALMOST 3,000×`, `28.0×`,
@@ -81,15 +89,17 @@ logo como selo.** Até lá: vetor (SVG) sempre que existir, porque escala sem pe
 resolução disponível, com a medida no relatório. A medida sai do `ffprobe` (`identify` e `medir-imagem` não
 servem aqui; CLAUDE.md, "Os especialistas"). SVG não precisa dela.
 
-## 4 · Imprensa e órgão estadual
+## 4 · Imprensa, órgão do Alasca e o selo do Estado: só o nome escrito
 
-**DECISÃO DO LUCAS PENDENTE: se entram logos de veículo de imprensa (ex.: Anchorage Daily News, KTOO) e
-de órgão estadual (ex.: Alaska Division of Elections, Alaska DOT&PF, Alaska Marine Highway), e o selo do
-Estado.** As regras de uso do selo do Estado do Alasca não foram conferidas pelo canal, e documento do
-Estado não é domínio público automático. Até lá:
-- pesquise e registre o arquivo oficial, a versão, a URL e a condição de uso que a origem declara;
-- a proposta para a cena é o **nome em Inter 700 na pílula `--rotulo`** (`#0B0F14` a 88 %, texto em
-  `--tinta`; identidade.md §2, §3, §4.1), nunca uma caixa em `--destaque`, que é a cor do protagonista.
+**Regra** (Lucas, 26/09/2026: "Só o nome escrito"; midia.md §7.6): logo de jornal ou veículo de imprensa
+(ex.: Anchorage Daily News, KTOO), logo de órgão do Estado do Alasca (ex.: Alaska Division of Elections,
+Alaska DOT&PF, Alaska Marine Highway) e o selo do Estado **não vão à cena**, nem redesenhados.
+- Vai o **nome da instituição em Inter 700 na pílula `--rotulo`** (`#0B0F14` a 88 %, texto em `--tinta`;
+  identidade.md §2, §3, §4.1), nunca numa caixa em `--destaque`, que é a cor do protagonista.
+- Você não busca nem entrega a logo nem o selo. Entrega o nome oficial, como a instituição o escreve, com a
+  URL de onde saiu; a linha curta que o explica é a do §5.
+- **Logo de órgão federal e de outras instituições** não foi perguntado ao Lucas: **DECISÃO DO LUCAS
+  PENDENTE**, sem regra nova. Até lá vale o ofício, com o tamanho pendente do §3.
 
 ## 5 · A linha que explica a entidade
 
@@ -129,5 +139,6 @@ REGIE_MOTOR=<motor> node scripts/qc-procedencia.mjs <proj>
 - Não há ledger de insumos nem seção "A ESCADA" neste canal. A devolução é a **última linha da sua
   resposta**: a cena, o degrau em que você parou e quem decide agora — `montador` (o que entra e onde),
   `regente-de-imagem` (o que a frase exige da tela), `diretor-de-arte` (se mexe no arco) e o Lucas, quando
-  for uso de logo de imprensa, de órgão ou do selo. A troca de modo é o nome da instituição na tipografia
-  do canal, nunca uma logo redesenhada.
+  for logo de órgão federal ou de outra instituição (§4, pendente). Logo de imprensa, de órgão do Alasca e o
+  selo não se levam a ele: a regra já é o nome escrito (midia.md §7.6). A troca de modo é o nome da
+  instituição na tipografia do canal, nunca uma logo redesenhada.

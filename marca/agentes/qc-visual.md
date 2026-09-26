@@ -18,6 +18,14 @@
   3840×2160, e 100 % do tempo tem de estar coberto por cena. O relógio é um só, `out/<proj>/words.json`: não há
   `_cortes.json`, retake, `words-final` nem mídia na nuvem. O ⚠️⚠️ do ofício sobre corte bruto (contrato §4)
   não tem objeto aqui.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Os últimos 20 s não têm voz**: são da tela final do YouTube (`canal.json` › `narracao.cauda_tela_final_s`).
   Ver §6.
 - **Sem título de capítulo na tela** (CLAUDE.md; Lucas, 26/09/2026). O gate duro do card de título (ofício §2)
@@ -89,8 +97,9 @@
 - **espaco** (identidade.md §4.1–§4.2):
   - alvo e teto: herói e título 360 e 560 px, até 5 palavras; fala citada 280 e 340 px, até 12; rótulo e nome
     de lugar 128 e 160 px, até 3; eixo e legenda 84 e 104 px; crédito 76 e 88 px. O teto reprova como o piso;
-  - card de pessoa: DECISÃO DO LUCAS PENDENTE (lente **abordagem**, abaixo). A contagem de palavras dele
-    sinaliza, não reprova;
+  - card de pessoa (Lucas, 26/09/2026; identidade.md §5): o nome é rótulo (128 e 160 px, Inter 700, até 3
+    palavras) e o cargo é legenda (84 e 104 px, Inter 500, sem teto de palavras). Valem os números acima: o
+    nome com mais de 3 palavras reprova como rótulo;
   - margem de 200 px nas laterais e 160 px no topo;
   - abaixo de y = 1880, só crédito, de x = 200 até antes de x = 1720;
   - o canto inferior direito, 400 × 400 px, vazio; nenhuma logo;
@@ -122,11 +131,13 @@
   deveria ser. Registro real ≥ 60 % do tempo do vídeo (identidade.md §4.3). Pessoa real nomeada é registro
   real, identificada por nome e cargo (identidade.md §5; `contratos/textos-tela.schema.json` ›
   `cards_pessoa` › `o_que_e`).
-  - **DECISÃO DO LUCAS PENDENTE: como o card de pessoa cabe na identidade.** Nome e cargo passam das 3
-    palavras do rótulo (identidade.md §4.1): "Assembly member Maria Gladziszewski" tem 4. Proposta do
-    verificador, ainda não aprovada: o nome no rótulo (até 3 palavras) e o cargo logo abaixo como legenda,
-    84 px, Inter 500 (o papel "eixo / legenda" de identidade.md §4.1; `--fs-eixo` e `--peso-texto` em
-    `marca/tokens.css`). Até a decisão, sinalize o card e **não** reprove a contagem de palavras dele.
+  - **O card de pessoa** (Lucas, 26/09/2026; identidade.md §5): o nome no rótulo (pílula `--rotulo`, até 3
+    palavras) e o cargo numa linha menor logo abaixo, no papel "eixo / legenda" (84 px, Inter 500;
+    `--fs-eixo` e `--peso-texto` em `marca/tokens.css`). Exemplo aprovado: `MARIA GLADZISZEWSKI` em cima e
+    `Assembly member, City of Juneau` embaixo. Card sem o cargo, ou com nome e cargo juntos no rótulo,
+    reprova; o nome com mais de 3 palavras reprova na lente **espaco**.
+  - O rosto, quando há, vem de fonte autorizada, com a procedência gravada (midia.md §7.2). O retrato oficial
+    em uso editorial vai sem crédito na tela. Rosto gerado ou alterado por IA reprova.
 - **acessibilidade** (identidade.md §0; voz.md §1): o espectador é norte-americano, de 25 a 60 anos, e não
   acompanha geopolítica. Ele entende a cena em 2 segundos sem saber o vocabulário?
 - **factual**, grafia (identidade.md §7; CLAUDE.md):
@@ -157,18 +168,48 @@
   supérfluo, reprova (`fonte`; identidade.md §7).
 - Formatos do crédito: `Source: <instituição>, <ano>` e `<autor> / <acervo> · <licença>`. O Copernicus Sentinel
   leva a própria linha (identidade.md §6).
-- **Documento ou foto do governo do Estado do Alasca, ou de imprensa** (Anchorage Daily News, KTOO): não estão
+- **Documento do governo do Estado do Alasca, ou documento de imprensa** (Anchorage Daily News, KTOO): não estão
   no domínio público que a identidade.md §7 isenta de crédito, e nos EUA a obra do governo federal é domínio
-  público por lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça. DECISÃO DO LUCAS PENDENTE: a regra de uso deles na tela. Até lá, a peça só
-  entra com a licença conferida e gravada no `_PROCEDENCIA.json` (midia.md §1):
-  - **sem licença gravada** (`licenca` vazia ou `"a_confirmar"`, que é o que a pré-v1 grava quando não mediu
-    a licença na fonte), reprova (`fonte`). Não invente licença nem a deduza da origem;
-  - **com a licença gravada**, **sinalize** (`fonte`), citando a licença que a procedência grava e "regra de uso
-    na tela: aguarda o Lucas".
+  público por lei (17 U.S.C. §105), e a estadual não tem essa regra geral: confira peça a peça. **Regra**
+  (Lucas, 26/09/2026; midia.md §7.1): a peça só vai à tela com permissão de uso clara (domínio público
+  comprovado, licença aberta ou autorização escrita), conferida e gravada no `_PROCEDENCIA.json`; sem ela, a
+  cena recria o trecho no visual do canal, com o texto citado fiel e a fonte citada:
+  - **a peça real sem permissão gravada** (`licenca` vazia ou `"a_confirmar"`, que é o que a pré-v1 grava
+    quando não mediu a licença na fonte), ou com uma "permissão" que não é nenhuma das três, reprova
+    (`fonte`). Não invente licença nem a deduza da origem;
+  - **com a permissão gravada**, o crédito segue o que ela pede (identidade.md §7);
+  - **a recriação** sem a fonte citada na tela reprova (`fonte`); fora do visual do canal (outra tipografia,
+    outras cores, imitação do original), reprova (`abordagem`);
+  - o retrato oficial de pessoa citada segue midia.md §7.2, não esta regra;
+  - **o estudo de 2018** (Final SEIS e ROD, da FHWA com o Alaska DOT&PF) conta como estadual (pesquisado a
+    pedido do Lucas, 26/09/2026; midia.md §7.1, "O estudo de 2018"): página, capa, figura, mapa, o logo
+    "Juneau Access" ou as assinaturas dele na tela, sem autorização escrita do DOT&PF gravada, reprovam
+    (`fonte`). A recriação leva `Source: Alaska DOT&PF and FHWA, 2018`, ou `Source: Federal Highway
+    Administration, 2018` na frase de decisão do ROD. O aviso da FHWA no Federal Register (83 FR 36661) é
+    obra federal: crédito na tela para ele é supérfluo.
+- **Foto do governo do Estado do Alasca ou de jornal**, inclusive de agência (AP, Getty), que não é retrato
+  de pessoa citada: entra citando a fonte (Lucas, 26/09/2026; midia.md §7.5).
+  - **Sem o crédito na tela**, reprova (`fonte`). O crédito é a fonte como a origem a credita:
+    `<author> / <outlet>`, ou só o veículo ou o órgão, em 76 px na faixa de crédito.
+  - Sem a procedência (URL, data, autor e veículo ou órgão, o que a origem diz sobre uso), reprova
+    (`fonte`). Foto de agência sem o aviso de Content ID na procedência também.
+  - Foto Reuters reprova (`fonte`): o portão de procedência a veta (midia.md §7.4, item 2).
+  - Foto de qualquer outra origem sem licença conferida reprova (`fonte`; midia.md §7.5). Vídeo do Estado ou
+    de jornal sem licença, também (midia.md §7.4, item 3).
+- **Logo de jornal ou veículo** (Anchorage Daily News, KTOO), **logo de órgão do Estado do Alasca** (Division
+  of Elections, DOT&PF, Alaska Marine Highway) **ou o selo do Estado** como elemento gráfico da cena, real ou
+  redesenhado, reprova (`fonte`). O certo é o nome da instituição escrito na pílula `--rotulo`, Inter 700
+  (Lucas, 26/09/2026; midia.md §7.6). Logo de órgão federal ou de outra instituição não foi decidida: julgue
+  pelo ofício.
 - **Mídia de banco pago que não foi baixada pelo Lucas nem registrada** (midia.md §2.3 e §2.8) reprova
   (`fonte`). Evento real específico vindo de banco pago também (midia.md §1).
-  - As fontes do `buscar-midia` que midia.md não cita (Pexels, Pixabay e outras): DECISÃO DO LUCAS PENDENTE.
-    Ter a chave delas na máquina não as libera.
+  - Acervo gratuito, só os oficiais e as fontes federais: Commons, NASA, NARA, USGS, Library of Congress,
+    Smithsonian, sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3). Mídia
+    de Pexels, Pixabay, Openverse, Met, Europeana ou Internet Archive reprova (`fonte`). Ter a chave delas na
+    máquina não as libera.
+  - Sala de imprensa federal e DVIDS são domínio público federal: crédito na tela para elas reprova como
+    supérfluo (acima). Foto "courtesy" ou de terceiro dentro delas não é obra federal: sem licença, reprova
+    (`fonte`; midia.md §7.3). A foto da sala de imprensa do governo do Alasca é foto do Estado (acima).
 - **Card de capítulo, título de tópico ou navegação na tela** reprova (`abordagem`; CLAUDE.md).
 - **Apresentador, ou pessoa gerada por IA apresentada como real**, reprova (`abordagem`; identidade.md §5).
 - **Cena sem `<html lang="en-US" data-render="4k-native">`** reprova (`espaco`): sem a marca, o render cai no

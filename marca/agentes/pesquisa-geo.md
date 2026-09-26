@@ -15,6 +15,14 @@
 - **Faceless.** Ninguém fala para a câmera (identidade.md §0). O master é a narração sobre tela preta
   3840×2160, e 100 % do tempo é coberto por cena (identidade.md §5). Há um relógio só,
   `out/<proj>/words.json`.
+- **O `words.json` tem a grafia da cópia para a voz**, não a do roteiro: aliases de pronúncia e números por
+  extenso (no Juneau, `Kay-too` = KTOO, `Keel` = Kiehl, `Mat-Sue` = Mat-Su, `N F L` = NFL, `Gladyshevsky` =
+  Gladziszewski, `nineteen seventy-four` = 1974, `nine hundred sixty-six million dollars` = $966 million). A
+  lista de cada vídeo é `roteiros/<proj>/voz/trocas.md`. Entidade, grafia de tela, número de tela e termo de
+  busca saem de `roteiros/<proj>/roteiro-narrador.md`; do `words.json` sai o tempo, e uma âncora se procura
+  nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
+  `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
+  uso", item 3.
 - **Idioma.** Tela e busca em **inglês dos EUA** (`canal.json › idiomas.origem`). Relatório e notas, em
   português.
 - **Formato de tela** (identidade.md §7): `2,700`, `$2.8 billion`, `ALMOST 3,000×`, `28.0×`,
@@ -118,7 +126,7 @@ A proposta de troca de modo do Top10 era o "desenho esquemático declarado como 
 LUCAS PENDENTE: se o canal aceita esquema declarado.** Até lá, vale só o ofício: **bloqueio reportado**,
 com o que existe de mais próximo (a divisão de nível acima; a figura de um documento oficial, que vira
 DOCUMENTO pelo `pesquisa-documentos`). Figura de documento do Estado do Alasca não é domínio público
-automático: o uso dela na tela também é decisão do Lucas.
+automático: só vai à tela com permissão de uso clara, conferida e gravada (Lucas, 26/09/2026; midia.md §7.1).
 
 ## 7 · Decisões do Lucas que tocam o ofício
 
@@ -130,10 +138,17 @@ automático: o uso dela na tela também é decisão do Lucas.
 - **Banco pago** (midia.md §1, §2) não é seu: serve só a B-roll genérico, na ordem Envato Elements → Motion
   Array → Storyblocks → Shutterstock, baixado só pelo Lucas, à mão, na conta dele (§2.3; robô e script
   proibidos, §2.5). Você nunca baixa nem abre o site de banco.
-- **Documento do governo do Estado do Alasca e imprensa** não estão no domínio público que a identidade.md §7
-  isenta de crédito (nos EUA, a obra federal é domínio público por lei, 17 U.S.C. §105; a estadual não tem essa regra geral: confira peça a peça): figura, mapa ou
-  traçado tirado deles só entra com a licença conferida e gravada (DECISÃO DO LUCAS PENDENTE: a regra de uso
-  na tela; §6).
+- **Documento do governo do Estado do Alasca e documento de imprensa** não estão no domínio público que a
+  identidade.md §7 isenta de crédito (nos EUA, a obra federal é domínio público por lei, 17 U.S.C. §105; a
+  estadual não tem essa regra geral: confira peça a peça). Figura, mapa ou traçado tirado deles só vai à tela
+  com permissão de uso clara (domínio público comprovado, licença aberta ou autorização escrita), conferida
+  e gravada (Lucas, 26/09/2026; midia.md §7.1). **Sem ela, não entra: bloqueio reportado** (§6). A decisão
+  manda recriar o texto citado, não a figura; se o canal aceita um esquema declarado no lugar continua
+  DECISÃO DO LUCAS PENDENTE (§6).
+- **O estudo de 2018 da estrada de Juneau** (FHWA com o Alaska DOT&PF) **conta como estadual** (pesquisado a
+  pedido do Lucas, 26/09/2026; midia.md §7.1, "O estudo de 2018"). Os mapas e figuras dele, feitos pela HDR
+  para o DOT&PF, não entram sem autorização escrita do DOT&PF, nem o relevo de fundo, que não tem fonte. O
+  traçado da Alt. 2B não se decalca (§6). O fim da estrada o canal já tem, do OSM (`estrada-juneau-cascade`).
 
 ## 8 · Os portões, e a quem devolver
 
