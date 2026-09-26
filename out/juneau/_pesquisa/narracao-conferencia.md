@@ -169,3 +169,12 @@ pausa 0,07): parágrafos 1–4 a **185** palavras/min (a voz atual lê a 227, e 
 (a atual, 194). O ritmo da prévia se mantém. São ~17 % mais devagar, o que na narração inteira dá ~165 palavras/min
 e ~11 min. Conferência por parágrafo: 6 de 6 completos. Prévia para o Lucas em
 `out/juneau/_narracao/escuta-voz/voz-calma-teste.mp3`.
+
+**Esticar sem gasto (versões e verificador, 26/09; arquivos em `C:\Users\zangp\AppData\Local\Temp\apmapa\ritmo\`):**
+- Só pausas não basta. Para 165 palavras/min, cada fim de frase precisa de +0,6 a +0,9 s, e isso soa "programado".
+- O `rubberband` deste ffmpeg roda o motor R2 (o R3, "finer", não liga). A 0,90 com `smooth/long`, perde 35–39 %
+  dos quadros periódicos da voz; com `crisp`, 16–17 %; com o `atempo` do próprio ffmpeg, 5–6 %.
+- Para completar pouco (voz calma a ~165 → ~157), o recomendado é o `atempo` a 0,95–0,97, e o ouvido do Lucas decide
+  numa amostra.
+- As pausas inseridas com ruído copiado repetem um microtransiente audível em fone (T1-V4, depois de "price."): se
+  for alongar pausa, não repetir um pedaço curto de ruído.
