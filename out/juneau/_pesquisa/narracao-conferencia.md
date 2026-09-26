@@ -159,3 +159,13 @@ Contra os 227 da voz atual, é ~20 % mais devagar; na narração inteira (200), 
 que a prévia do Remix mantenha esse ritmo no text-to-speech do v3. Isso se testa depois de o Lucas escolher.
 Escuta com o mesmo volume em `out/juneau/_narracao/escuta-voz/` (fora do git). A chave está em
 `remix-ritmo.json`; a 0,7 ficou de fora.
+
+**Escolha do Lucas (26/09): "a B é a melhor"** (força 0,3, opção 2: timbre −2 %, tom −1 semitom). Salva na
+conta como **"Alpha Point - Narrator (conversational, calm)", `829pig94w9GefZ9jJQYl`**
+(`salvar-voz-remix.mjs`; procedência em `remix-ritmo.json` › `voz_salva`).
+
+**Teste de text-to-speech com ela** (1.083 créditos, conferidos no contador; mesma configuração: v3, "Criativo",
+pausa 0,07): parágrafos 1–4 a **185** palavras/min (a voz atual lê a 227, e a prévia deu 188); 14 e 27 a **163**
+(a atual, 194). O ritmo da prévia se mantém. São ~17 % mais devagar, o que na narração inteira dá ~165 palavras/min
+e ~11 min. Conferência por parágrafo: 6 de 6 completos. Prévia para o Lucas em
+`out/juneau/_narracao/escuta-voz/voz-calma-teste.mp3`.

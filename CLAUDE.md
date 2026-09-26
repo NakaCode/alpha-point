@@ -110,7 +110,7 @@ produz o master. O deste canal nasce assim:
      com o contador da conta. A narração inteira pede um ok próprio. **Em 26/09 o Lucas liberou o gasto para chegar
      ao cenário ideal do Juneau** ("Não tem problema gastar crédito a troco de chegarmos no cenário ideal"): testes
      e a narração inteira pela API. Ainda assim, diga o que vai gastar antes de cada rodada. Gasto em 26/09: 2.673 no
-     teste de velocidade e 2.781 em 3 rodadas de Remix (`narracao-conferencia.md`);
+     teste de velocidade, 2.781 em 3 rodadas de Remix e 1.083 no teste da voz calma escolhida (`narracao-conferencia.md`);
    - O navegador do app corta downloads grandes em uns 1,8 MB: o MP3 de um bloco chegou com 112 s de 4 min
      29 s. Para baixar a narração, use outro caminho (o Lucas baixa no navegador dele, ou a API).
 5. master = a narração sobre tela preta 3840×2160 (`marca/identidade.md` §5).
