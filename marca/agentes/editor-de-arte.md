@@ -143,7 +143,7 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
 | Modelo | `modo` | Como é neste canal |
 |---|---|---|
 | MAPA | `mapa`, `mapa3d` | é do **mapista**: delegue |
-| REGISTRO | `footage`, `foto`, `aereo-real` | o asset real em tela cheia, sem moldura, com rótulo de lugar e crédito. Sobre arquivo com `lugar_na_origem: null` no veredito do conferente, sem rótulo de lugar (midia.md §2.7): declare no report, e isso não reprova |
+| REGISTRO | `footage`, `foto`, `aereo-real` | o asset real em tela cheia, sem moldura, com rótulo de lugar e crédito; a foto com `aviso_de_ano: true` no veredito leva o aviso do ano (§10). A foto de época com menos de 1.600 px de largura vai impressa sobre a mesa, até 1,4 vez o tamanho do arquivo, e nunca em tela cheia (identidade.md §5, "A foto antiga pequena"). Sobre arquivo com `lugar_na_origem: null` no veredito do conferente, sem rótulo de lugar (midia.md §2.7): declare no report, e isso não reprova |
 | PRANCHA | `desenho` | sobre `--fundo`. Ator = círculo de 640 px, traço de 6 px na cor do papel dele, bandeira oficial dentro, nome embaixo. Setas e linhas de 6 px. Ícone em círculo de 160 px |
 | DADO | `dados` | sobre `--papel`. Série do protagonista em `--destaque`, da contraparte em `--contraparte`, eixo em `--eixo-cor` (`--tinta-escura` a 60 %) |
 | DOCUMENTO | `documento` | a **folha de papel sobre a mesa** (Lucas, 27/09/2026; identidade.md §5, "A folha de documento"): folha em `--papel` com textura, borda de baixo rasgada, fita nos cantos de cima, sombra e até `--doc-inclinacao` de inclinação, sobre `--fundo`. Texto em `--fonte-doc` (Courier Prime): corpo 400 em `--doc-corpo` (piso 84 px), cabeçalho 700 em `--doc-cabecalho`, com a referência da peça numa caixa de contorno. A folha cresce com o texto: pelo menos `--doc-margem-rasgo` de branco entre a última linha e o rasgo, e a fita fora do texto. Texto que não cabe: a câmera desce pela folha com a voz, ou a folha recua e escurece e o trecho da voz aparece ampliado ao lado (literal, até 12 palavras). A página real, com permissão de uso clara, entra como a folha, sem redesenho; sem ela (documento do Estado do Alasca, imprensa), o trecho recriado com o texto citado fiel e a fonte citada, nunca um fac-símile: sem brasão, selo, timbre, logo ou assinatura (midia.md §7.1, §7.6). O trecho que importa grifado em `--grifo-cor` (`--destaque` a 35 %), passando com a voz; texto em `--tinta-escura` |
@@ -164,6 +164,7 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
   - a fala citada, quando há, vai num cartão de papel ao lado, em `--papel`, Inter 700 (`--fs-fala`, piso 260),
     até 12 palavras, entrando com a voz;
   - o cargo nunca passa por baixo do cartão. Sem `--destaque` no card.
+  - o retrato com `aviso_de_ano: true` no veredito leva o aviso do ano na margem de baixo da foto impressa (§10).
 - A bandeira é o asset oficial de `assets/flags/<iso2>.png`, pelo caminho `../../../assets/flags/<iso2>.png`
   (procedência em `assets/flags/_PROCEDENCIA.json`; `ca.png` e `us.png` estão lá). O `_INDICE.json` mapeia
   nomes em português: procure pelo código ISO. Faltou: peça à `pesquisa-logos`. A que ela entregar em
@@ -231,7 +232,16 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   e local conferidos na origem: NARA, Library of Congress, NASA, USGS, Smithsonian e Wikimedia Commons, com a
   licença conferida arquivo a arquivo, e as fontes federais: sala de imprensa de órgão federal dos EUA e DVIDS,
   domínio público, sem crédito na tela (Lucas, 26/09/2026; midia.md §7.3). Imagem "ilustrativa" de outro
-  evento ou de outro ano não entra.
+  evento não entra.
+- **Foto de outro ano, com o aviso na tela** (Lucas, 27/09/2026; identidade.md §4.1, §5 e §6). A foto ou o
+  retrato com `aviso_de_ano: true` no veredito do `conferente-de-midia` leva o aviso durante todo o tempo em que
+  aparece:
+  - na foto em tela cheia, `Photo from <ano>` numa pílula `--rotulo` logo abaixo do rótulo de lugar (ou no
+    lugar dele), 84 px, Inter 500, com respiro de 16 × 28 px;
+  - no card, na margem de baixo da foto impressa, sem pílula, em `--tinta-escura` a 72 %, 84 px, Inter 500;
+  - nunca na faixa de crédito, e não conta como elemento.
+  - O ano sai do `data_na_origem` do veredito, na grafia do `redator-de-tela` (identidade.md §7).
+  - Marque o elemento com `data-qc-aviso-ano`, para o `qc-visual` achá-lo.
 - **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
   estudo estadual, Alaska State Library) **e de imprensa** (Anchorage Daily News, KTOO) não estão no domínio
   público que a identidade.md §7 isenta de crédito; nos EUA, a obra do governo federal é domínio público por

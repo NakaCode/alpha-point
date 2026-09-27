@@ -189,7 +189,17 @@ Este ofício aponta; a marca manda.
   candidato no `conferencia-caca.json`); `null` se a origem não nomeia lugar. É por ele que o `redator-de-tela` e
   o `qc-visual` conferem que o rótulo não nomeia lugar mais específico que a origem (§2.7 da mídia).
 - **A época**: fala com data pede imagem com a data conferida na origem e nada anacrônico no quadro (carro, roupa,
-  celular ou tela plana numa fala de 1974). Imagem "ilustrativa" de outro evento ou ano não entra (identidade §6).
+  celular ou tela plana numa fala de 1974). Imagem "ilustrativa" de outro evento não entra (identidade §6).
+- **A foto de outro ano** (identidade §6; Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver foto pode
+  utilizar com um aviso em tela"). Foto e retrato de outro ano que o do fato passam no `contexto` quando:
+  - mostram o mesmo assunto que a fala nomeia: o lugar, a pessoa, o prédio ou a coisa, e nunca outro evento no
+    papel do evento nomeado;
+  - e têm a data lida na origem: o ano, ou a aproximação que ela dá (`ca. 1900`, `1990s`).
+  Nesse caso, grave `data_na_origem` e `aviso_de_ano: true`. O anacronismo que o aviso declara não reprova, desde
+  que o quadro não contradiga o que a fala diz (a cidade de hoje numa fala sobre o povoado de 1900 falha). Entre
+  as que servem, vale a do ano mais perto do fato, e ela é grande e com qualidade (identidade §6; Lucas, 27/09/2026:
+  "A prioridade ainda deve ser fotos grandes e com qualidade, a exceção deve ser para casos MUITO específicos"): a pequena é outro caso, o da tabela do §5.3. Sem data na origem, o `contexto` falha. O vídeo de outro ano continua fora, e o
+  B-roll genérico de banco, que não afirma data, não leva aviso.
 - **Evento nomeado** (a votação de 1974, uma cúpula, um desastre): o registro real **daquele** evento, com data e
   local na origem, de acervo aberto ou oficial; nunca "algo parecido", e nunca de banco pago (`marca/midia.md` §1;
   `pesquisa-imagens`, §5). No `caca`, se o item da lista pede ao banco o que a marca manda buscar em acervo,
@@ -291,7 +301,8 @@ motivo diz o que falta, sem completar. O que se mede, você mede e grava no seu 
 | footage e foto de banco pago | 3840×2160 ou mais, na horizontal (4096×2160 serve; `2160×3840` é vertical) | falha: a skill não traz esse candidato (§2.3), o registrador recusa esse arquivo (§3.1, saída 7), e na caça não há exceção de resolução (skill, §3, passo 3) |
 | B-roll de acervo (footage) | a mesma: o footage nasce na resolução do master (ofício do `pesquisa-imagens`, §8; roupa dele, §6) | falha |
 | footage de registro real recente, de qualquer fonte (um evento de 2015 que o DVIDS só tem em 1920×1080) | a mesma | `pendente_lucas`, com a medida e dizendo que ele é real: o ofício o rejeita, e a exceção, caso a caso, é do Lucas |
-| registro histórico: footage ou foto de época, documento antigo | DECISÃO DO LUCAS PENDENTE (roupa do `pesquisa-imagens`, §6). Até lá, de 1600 px de largura para cima, passa com a medida escrita, sem pedir ampliação | abaixo de 1600 px: `pendente_lucas`. A roupa o deixa fora da cena até a decisão |
+| registro histórico: foto de época e documento antigo (Lucas, 27/09/2026; identidade §5, "A foto antiga pequena") | foto de época de 1.600 px de largura para cima: passa com a medida, e vai em tela cheia. De 800 px no lado maior até 1.600 de largura, só no caso muito específico (identidade §5): o registro daquilo que a fala nomeia, sem foto grande e com qualidade que sirva, nem de outro ano, e com qualidade, com a justificativa escrita de quem a propôs. Aí passa com a medida e a nota "impressa sobre a mesa, até 1,4×", e nunca vai em tela cheia. Sem o caso específico: `trocar`, com o `trocar_por` na foto grande ou no mapa. Documento antigo: a página real só até 1,4 vez o tamanho dela; acima disso, a recriação | abaixo de 800 px no lado maior: falha |
+| registro histórico: footage de época | DECISÃO DO LUCAS PENDENTE (roupa do `pesquisa-imagens`, §6). Até lá, de 1600 px de largura para cima, passa com a medida escrita, sem pedir ampliação | abaixo de 1600 px: `pendente_lucas`. A roupa o deixa fora da cena até a decisão |
 | foto que não é de banco pago nem registro histórico: B-roll de acervo, a foto atual de um lugar nomeado, a do Estado ou de jornal, a página de documento com permissão | a maior versão que a origem oferece, sem piso (ofício do `pesquisa-imagens`, §8: "Foto, na maior resolução disponível") | falha só se a página de origem (§7) mostra uma versão maior que a entregue: dê a URL da maior. Sendo a maior, passa com a medida; se ela aguenta a tela cheia é enquadramento, do `diretor-de-arte` |
 | retrato, logo e bandeira, que não ocupam a tela cheia | a roupa do especialista: o retrato na medida que tem, sem ampliar (roupa do `pesquisa-pessoas`, §5); logo e bandeira em vetor, ou na maior resolução disponível (roupa do `pesquisa-logos`, §2 e §3) | escreva a medida; nunca peça ampliação |
 
@@ -594,6 +605,10 @@ balsa de carros em Juneau) e `s004-b` ("by air"), com `quantos: 1` cada; não h�
   arquivo (ofício, §2).
 - `quem_entregou`: a quem voltam o `trocar_por` e a retirada (ofício, §6.2). `preferencia`: só no `caca`.
 - `lugar_na_origem`: o trecho da origem que nomeia o lugar, copiado, ou `null` (ofício, §5.1), em todo veredito.
+- `data_na_origem` e `aviso_de_ano`: na foto e no retrato do `midia`. `data_na_origem` é a data como a origem a
+  escreve, copiada (`ca. 1900`, `1998-07-04`), ou `null` quando a origem não dá data. `aviso_de_ano` é `true`
+  quando a foto é de outro ano que o do fato da frase, e `false` quando não é (ofício, §5.1). O `redator-de-tela`
+  escreve o aviso a partir dos dois, e o `qc-visual` o confere (identidade §6). No `caca` e no vídeo, ficam fora.
 - `fonte.data` e `fonte.local`: só na fonte federal, quando lidos na origem (ofício, §5.2).
 - `fonte.copia_arquivada`: `{ "url": "<a URL da cópia>", "captura": "<AAAA-MM-DD, do endereço da cópia>" }` quando a
   origem, página oficial do Estado do Alasca, foi lida pela cópia arquivada (ofício, §7); senão, fica fora. Ela
@@ -646,7 +661,7 @@ Veredito não se apaga. Isso só é seguro porque há um despacho por vez em cad
 |---|---|---|
 | 1 | O JSON é válido | `python -c "import json,sys; json.load(open(sys.argv[1], encoding='utf-8'))" out/<proj>/_pesquisa/conferencia-<fluxo>.json` |
 | 2 | Quantos de quantos: todo candidato recebido está em `candidatos`, e o `laudo` bate com eles | a contagem, no próprio JSON |
-| 3 | Todo `aprovado` tem `arquivos_olhados`, os quatro critérios em `passa`, a frase coberta com `texto`, `t0`, `t1` e `janela_s`, e a chave `lugar_na_origem`; no `midia`, também `sha256` | releitura |
+| 3 | Todo `aprovado` tem `arquivos_olhados`, os quatro critérios em `passa`, a frase coberta com `texto`, `t0`, `t1` e `janela_s`, e a chave `lugar_na_origem`; no `midia`, também `sha256`, e na foto e no retrato, `data_na_origem` e `aviso_de_ano` | releitura |
 | 4 | Todo `trocar` tem `trocar_por` e `quem_entregou`; todo `nao_conferido`, `reconferir`; todo `pendente_lucas`, `pendente`; toda `excecao_lucas`, `mensagem`, `hora`, `cobre` e `sobre` | releitura |
 | 5 | No `caca`, todo vídeo `aprovado` teve as três prévias olhadas. No `midia` de banco pago, todo candidato tem `id_candidato` e `mesmo_item`, e todo `aprovado` tem `mesmo_item: true` | releitura |
 | 6 | Nada mudou em `out/<proj>/_media/` | ao começar e ao terminar: `find "out/<proj>/_media" -type f -print0 \| LC_ALL=C sort -z \| xargs -0 sha256sum > "out/<proj>/_tmp/conferencia/_media-<antes\|depois>.txt"`, e o `diff` das duas listas. Mudou algo: diga qual arquivo, e não entregue como se nada tivesse acontecido. Sem `_media/`, anote que ela não existia |

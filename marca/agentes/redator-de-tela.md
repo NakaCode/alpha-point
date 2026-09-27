@@ -162,6 +162,14 @@ do texto é a da casa, e ela tem de casar com o seu glossário.
   licença pede.
 - **Sala de imprensa federal e DVIDS**: domínio público federal, sem crédito na tela (midia.md §7.3).
 - **Retrato oficial** de pessoa citada, em uso editorial: sem crédito na tela (midia.md §7.2).
+- **O aviso do ano da foto** não é crédito, mas a forma é sua (Lucas, 27/09/2026; identidade.md §6 e §7).
+  - Ele vai toda vez que o veredito `aprovado` que casa com a foto, em
+    `out/<proj>/_pesquisa/conferencia-midia.json`, trouxer `aviso_de_ano: true`.
+  - O texto: `Photo from 1998`, com o ano do `data_na_origem` desse veredito. A aproximação vai como a origem a
+    dá, na forma do AP Stylebook (`Photo from the 1990s`), e nunca vai um ano que a origem não diz.
+  - Com `data_na_origem: null`, a foto não devia ter sido aprovada: vai ao report.
+  - O contrato `textos-tela` não tem campo para o aviso. A lista dos avisos do vídeo (cena, arquivo, texto) vai
+    no seu report.
 - O crédito mora na faixa y > 1880, à esquerda, e nunca encolhe: quebra em duas linhas (identidade.md §4.2).
 
 ## 6 · Erratas e conserto da fala

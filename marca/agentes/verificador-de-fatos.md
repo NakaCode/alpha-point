@@ -128,6 +128,9 @@ levou 403 do Legislativo e contornou por `curl`).
   jornal são outra regra: entram com a fonte creditada na tela (Lucas, 26/09/2026; midia.md §7.5), e o
   achado é o crédito que falta ou não bate com a origem. Sala de imprensa federal e DVIDS são domínio
   público federal, sem crédito na tela (midia.md §7.3).
+- O **aviso do ano da foto** (`Photo from 1998`; Lucas, 27/09/2026; identidade.md §6) também é afirmação:
+  - o ano tem de ser o que a origem da foto diz (o `data_na_origem` do veredito do `conferente-de-midia`);
+  - a foto de outro ano sem o aviso é achado, como o aviso sobre foto do ano do fato.
 
 ## 6 · Depois da narração, consertar custa
 

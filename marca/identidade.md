@@ -106,6 +106,9 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
   84 px, Inter 500, `--tinta` a 80 %.
 - **Card de pessoa** (Lucas, 26/09/2026): o nome é **rótulo** (pílula, 128 px, Inter 700, até 3 palavras) e
   o cargo é **legenda**, numa linha menor logo abaixo (84 px, Inter 500). A regra inteira está em §5.
+- **Aviso do ano da foto** (Lucas, 27/09/2026): é **legenda** (84 px, Inter 500, `--tinta`). Sobre a foto, vai
+  numa pílula `--rotulo`, com cantos de 12 px e respiro interno de 16 px × 28 px. Na margem da foto impressa do
+  card, vai sem pílula, em `--tinta-escura` a 72 %. A regra inteira está em §6.
 
 ### 4.2 · Espaço
 
@@ -151,7 +154,7 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 | Modelo | O que é | Base |
 |---|---|---|
 | **MAPA** | território aceso sobre satélite; a viagem de câmera | satélite escurecido (§6) |
-| **REGISTRO** | footage ou foto real em tela cheia, com rótulo de lugar e crédito | o próprio asset |
+| **REGISTRO** | footage ou foto real em tela cheia, com rótulo de lugar e crédito; a foto de outro ano, com o aviso do ano (§6) | o próprio asset |
 | **PRANCHA** | atores e relações, causa → efeito. Ator = círculo de 640 px, traço de 6 px na cor do papel dele, bandeira oficial dentro e nome embaixo. Setas e linhas de 6 px; ícone em círculo de 160 px | `--fundo` |
 | **DADO** | gráfico com série do protagonista em `--destaque` e da contraparte em `--contraparte`; eixo em `--tinta-escura` a 60 % | `--papel` |
 | **DOCUMENTO** | lei, tratado, cédula, folheto, manchete real, como **folha de papel sobre a mesa** (a regra da folha, logo abaixo); o trecho que importa grifado em `--destaque` a 35 %, passando junto com a voz. Peça do Estado do Alasca ou de imprensa, só com permissão clara; sem ela, o trecho recriado no visual do canal, com o texto fiel e a fonte citada (`midia.md` §7.1) | `--fundo` (a mesa), com a folha em `--papel` |
@@ -174,8 +177,31 @@ recortar textos longos (aparentou que pode acontecer)". A folha foi corrigida, e
 - **Com permissão de uso clara**, a página real (foto ou scan) entra como a folha, com a mesma fita e sombra, sem
   redesenho.
 - A textura, a fita e a sombra não contam como elemento (§4.2).
-- A conferência visual da folha e do card é `marca/prancha-documento-card.html` (abre no navegador, com as fontes
-  de `marca/fontes/`): é montagem de referência, não cena do pipeline.
+- A conferência visual da folha, do card e do aviso do ano da foto (§6) é `marca/prancha-documento-card.html`
+  (abre no navegador, com as fontes de `marca/fontes/`): é montagem de referência, não cena do pipeline.
+
+**A foto antiga pequena, impressa sobre a mesa** (Lucas, 27/09/2026). A pergunta: "Muitas fotos do ano certo (de 1880 a 1990) são pequenas para a tela 4K. Como elas entram?" A resposta: "Impressa sobre a mesa (Recomendado)". A opção dizia: "Entra como foto impressa, com borda clara, fita e sombra, como o documento e o card. Ampliada no máximo 1,4 vez e sem melhoria artificial."
+Logo depois, ele completou: "A prioridade ainda deve ser fotos grandes e com qualidade, a exceção deve ser para casos MUITO específicos".
+- **É exceção, para casos muito específicos.** A foto pequena só entra quando as três coisas valem juntas:
+  - ela é o registro daquilo que a fala nomeia, naquele momento (o evento, a pessoa ou o lugar no ano da fala), e
+    não uma vista qualquer;
+  - não há foto grande e com qualidade (§6) que sirva ao plano, nem do ano do fato nem de outro ano com o aviso;
+  - ela tem qualidade: nítida, sem retícula de impressão, sem compressão pesada, sem marca-d'água.
+  Quem a propõe escreve por que o caso é específico, e o `conferente-de-midia` julga. Na dúvida, ela não entra.
+- **Vale para** a foto de época (registro histórico) com menos de 1.600 px de largura, que nunca vai em tela
+  cheia. A de 1.600 px ou mais segue o REGISTRO em tela cheia.
+- **A foto impressa**: moldura clara em `--tinta`, fita, sombra e até 2° de inclinação, sobre `--fundo`, como a foto
+  do card. Na tela, fica no máximo **1,4 vez** o tamanho do arquivo.
+- **Nada de melhoria artificial**: nenhum upscale, clássico ou generativo, nenhum filtro e nenhum recorte que mude o
+  sentido.
+- O rótulo de lugar e o aviso do ano (§6), quando há, ficam sobre a mesa, fora da foto. O crédito fica na faixa de
+  sempre.
+- **Piso**, padrão do canal e não pergunta do Lucas: 800 px no lado maior. Abaixo disso, a foto fica pequena demais
+  na tela e não entra.
+- Conta na régua de mundo real como registro (§4.3).
+- **Documento antigo**, pela mesma lógica: a página real, com permissão, entra como a folha só até 1,4 vez o tamanho
+  dela. Acima disso, vai a recriação datilografada, que já é o caminho de quando não há permissão.
+- **Vídeo de época** abaixo de 4K não foi perguntado: continua DECISÃO DO LUCAS PENDENTE.
 
 **Animação para explicar** (Lucas, 27/09/2026: "Acredito que para os próximos vídeos a gente possa utilizar
 animações para ilustrar coisas específicas"). Vale a partir do vídeo 2.
@@ -224,7 +250,10 @@ por IA apresentada como real.
     foto. Sem retrato autorizado, os dois ficam no lugar da foto;
   - **a fala citada**, quando há, vai num cartão de papel ao lado (a mesma folha do documento, em `--papel`), em
     Inter 700 (alvo 280 px, piso 260), até 12 palavras, entrando junto com a voz;
-  - o cargo não passa por baixo do cartão, e nada no card entra na faixa do crédito (§4.2).
+  - o cargo não passa por baixo do cartão, e nada no card entra na faixa do crédito (§4.2);
+  - **o aviso do ano**, quando o retrato é de outro ano que o do fato (§6; Lucas, 27/09/2026): `Photo from 2013`
+    na margem de baixo da foto impressa, em `--tinta-escura` a 72 %, 84 px, Inter 500. A moldura tem altura para
+    ele: a margem de baixo é de 190 px na prancha.
 
 ## 6 · Base de mapa e mídia
 
@@ -269,17 +298,52 @@ nunca adota a reivindicação de um lado.
   (`midia.md` §7.5); vídeo de jornal, só com licença conferida (Lucas, 27/09/2026).
 - **Catálogo pago**: Envato Elements, Motion Array, Storyblocks e Shutterstock. A ordem de uso, o
   que cada licença permite e como registrar cada download estão em **`midia.md`**.
+- **Foto grande e com qualidade** (Lucas, 27/09/2026: "A prioridade ainda deve ser fotos grandes e com qualidade, a exceção deve ser para casos MUITO específicos"):
+  - grande é 1.600 px de largura ou mais, a régua do `buscar-midia`. O B-roll e o footage seguem as réguas deles
+    (`midia.md`; `.claude/agents/conferente-de-midia.md` §5.3);
+  - qualidade é a foto nítida no tamanho em que vai à tela, sem retícula de impressão, sem compressão pesada, sem
+    marca-d'água, e que não é foto de tela nem de página impressa;
+  - a borda do cartão ou da página que a origem escaneou junto sai no enquadramento, sem mudar o sentido.
 - **Evento real específico** (guerra, protesto, cúpula, desastre, pessoa pública): de acervo aberto ou
   oficial, ou foto ou vídeo do governo do Alasca, ou foto de jornal, com a fonte na tela (`midia.md` §7.5), sempre com data e
   local conferidos na origem, e **nunca de banco pago** (`midia.md` §1).
-  Imagem "ilustrativa" de outro evento ou de outro ano não entra.
-  - **Confirmado pelo Lucas em 27/09/2026**, ao pé da letra: sem foto do ano do fato, o plano vira mapa ou
-    desenho. Foto do mesmo lugar de poucos anos antes ou depois não entra, nem sem o ano na tela, nem com a data
-    real da foto no crédito.
-  - A pergunta: "Quando não existir foto do ano exato (por exemplo, Juneau em 1880 ou a Suprema Corte do Alasca
-    em 1974), pode entrar foto do mesmo lugar de poucos anos antes ou depois, sem o ano na tela e com a data real
-    da foto no crédito?" A resposta: "Não: sem foto do ano, vira mapa ou desenho". A opção dizia: "É a sua regra
-    ao pé da letra: imagem de outro ano não entra."
+  Imagem "ilustrativa" de outro evento não entra. Foto de outro ano só entra com o aviso do ano na tela (logo
+  abaixo).
+- **Foto de outro ano, com o aviso na tela** (Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver foto
+  pode utilizar com um aviso em tela"). Essa mensagem mudou a resposta que ele tinha dado mais cedo no mesmo dia
+  (o último item).
+  - **A ordem** (Lucas, 27/09/2026, nas duas mensagens seguintes: "A prioridade ainda não fotos com a data certa,
+    mas quando não houver, ai sim entra essa exceção com a data da foto utilizada" e "A prioridade ainda deve ser fotos grandes e com qualidade, a exceção deve ser para casos MUITO específicos"):
+    1. a foto grande e com qualidade do ano do fato;
+    2. sem ela, a foto grande e com qualidade do mesmo assunto de outro ano, o mais perto do ano do fato, com o
+       aviso da data dela;
+    3. a foto pequena, impressa sobre a mesa, só no caso muito específico de §5 ("A foto antiga pequena");
+    4. sem nenhuma, o plano vira mapa ou desenho.
+  - **É exceção**: a foto de outro ano só entra depois de a busca pela foto do ano ter passado pelos acervos
+    onde ela provavelmente está. Isso inclui os que recusam robô, que o Claude central vê pelo navegador do app,
+    sem o Lucas precisar acompanhar (CLAUDE.md, "A marca"). O relatório da pesquisa diz onde a foto do ano foi
+    procurada.
+  - **O mesmo assunto**: o lugar, a pessoa, o prédio ou a coisa que a fala nomeia. A foto de outro ano de um
+    evento nomeado (a votação de 1974) mostra o lugar ou a pessoa, nunca outro evento no papel daquele.
+  - **O ano mais perto, e nada que contradiga a fala**: entre as fotos de outro ano que servem, vale a do ano mais
+    perto do fato. O aviso declara o ano, mas não conserta uma foto que desminta a fala: a cidade de hoje numa fala
+    sobre o povoado de 1900 não entra.
+  - **A data vem da origem**: o ano, ou a aproximação que a origem dá (`ca. 1900`, `1990s`), lido na página de
+    origem e gravado na procedência. Foto sem data na origem não entra, porque o aviso não teria o que dizer.
+  - **O aviso**: `Photo from 1998` (a grafia está em §7), no papel legenda de §4.1: 84 px, Inter 500. Ele fica na
+    tela durante todo o tempo da foto e fora da faixa de crédito.
+    - Na foto em tela cheia (REGISTRO), vai numa pílula `--rotulo` logo abaixo do rótulo de lugar, ou no lugar
+      dele, quando não há rótulo.
+    - No card de pessoa, vai na margem de baixo da foto impressa (§5).
+    - Não conta como elemento (§4.2), como o crédito.
+  - **Vale para foto e para retrato**, inclusive o de pessoa citada, que continua pedindo fonte autorizada
+    (`midia.md` §7.2). **Vídeo de outro ano não foi perguntado** e continua fora.
+  - O aviso não substitui o crédito nem a licença: a foto segue o `midia.md` como qualquer outra.
+  - **A resposta anterior, superada.** Mais cedo, na 3ª rodada, a pergunta tinha sido: "Quando não existir foto do
+    ano exato (por exemplo, Juneau em 1880 ou a Suprema Corte do Alasca em 1974), pode entrar foto do mesmo lugar
+    de poucos anos antes ou depois, sem o ano na tela e com a data real da foto no crédito?" A resposta foi "Não:
+    sem foto do ano, vira mapa ou desenho". O que muda é o aviso na tela: a data só no crédito, que era a opção
+    recusada, continua não bastando.
 
 ## 7 · Grafia de tela
 
@@ -291,6 +355,8 @@ nunca adota a reivindicação de um lado.
 - Datas absolutas: `March 3, 2024`. Nunca "last week" nem "recently" na tela.
 - Comparação de tamanho em escala americana, quando couber: `about the size of Texas`.
 - Crédito: `Source: <instituição>, <ano>`. Crédito de mídia: `<autor> / <acervo> · <licença>`.
+- **Aviso do ano da foto** (§6; Lucas, 27/09/2026): `Photo from 1998`. A aproximação vai como a origem a dá, na
+  forma do AP Stylebook: `Photo from the 1990s`. Nunca vai um ano que a origem não diz.
 - **Domínio público** (NASA, Landsat/USGS, Natural Earth, NARA…): **sem crédito na tela**. O ofício
   reprova crédito supérfluo. Copernicus Sentinel não é domínio público e leva o crédito de §6.
 - **Retrato oficial** de pessoa citada, em uso editorial: sem crédito na tela; a procedência fica registrada

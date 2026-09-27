@@ -133,6 +133,11 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
   data e local conferidos — NARA, Library of Congress, NASA, USGS, Smithsonian, Wikimedia Commons (midia.md
   §1, §7.3; identidade.md §6), e as fontes federais: sala de imprensa de órgão federal dos EUA e DVIDS
   (Lucas, 26/09/2026; midia.md §7.3). Nunca de banco pago. O retrato de pessoa citada segue midia.md §7.2.
+- **Sem foto do ano do fato** (Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela"; identidade.md §6):
+  - o plano continua pedindo foto, e a de outro ano do mesmo assunto entra com o aviso do ano na tela;
+  - o plano só muda de regime (mapa ou desenho, num re-espelho com o mesmo id) quando não há foto nenhuma do
+    assunto, ou só há foto sem data na origem;
+  - vídeo de outro ano não entra.
 - **B-roll genérico** (paisagem, cidade, porto, indústria, drone): dos bancos pagos, na ordem Envato
   Elements → Motion Array → Storyblocks → Shutterstock (midia.md §1), com as regras do §2: editorial nunca,
   pessoa de banco nunca em política, e Storyblocks só em cena neutra (§3.3). O download é na conta do Lucas

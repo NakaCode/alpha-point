@@ -77,6 +77,14 @@
   sensível (midia.md §2.2).
 - Sem foto em fonte autorizada, o card sai só com nome e cargo (§6), com a caça registrada: consultas e
   resultados (ofício §8).
+- **Retrato de outro ano que o do fato** (Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela"; identidade.md §5 e §6; midia.md
+  §7.2). Primeiro, o retrato do ano do fato.
+  - Sem ele, entregue o da mesma pessoa de outro ano, de fonte autorizada, com a data lida na origem e gravada
+    na pauta e na procedência. Entre os que servem, o do ano mais perto do fato, e com qualidade: nítido, sem
+    retícula de impressão nem compressão pesada (identidade.md §6, "Foto grande e com qualidade").
+  - O card leva o aviso `Photo from <ano>` na margem de baixo da foto impressa.
+  - Retrato sem data na origem não entra.
+  - O cargo no card continua o da época do fato (`data_do_cargo`).
 
 ## 2 · Na tela (identidade.md §2, §3, §4.1, §4.2)
 
@@ -128,7 +136,7 @@
 
 ## 6 · Sem foto
 
-O card só com nome e cargo, na forma do §2 (o nome no rótulo, o cargo na legenda), sem silhueta, sem rosto
+Sem retrato em fonte autorizada, nem do ano do fato nem de outro ano (§1): o card só com nome e cargo, na forma do §2 (o nome no rótulo, o cargo na legenda), sem silhueta, sem rosto
 genérico, com o aviso no relatório. Quem escolhe entre ele e a troca de modo é o `montador`.
 
 ## 7 · Decisões do Lucas que tocam o ofício

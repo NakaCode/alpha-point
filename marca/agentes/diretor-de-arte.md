@@ -92,7 +92,7 @@ Cada modelo tem a sua base, e ela é marca (identidade.md §5, §6):
 | modelo | base |
 |---|---|
 | MAPA | satélite escurecido — brilho 65 %, saturação 70 % |
-| REGISTRO | o próprio asset |
+| REGISTRO | o próprio asset; a foto de época com menos de 1.600 px de largura, impressa sobre `--fundo`, até 1,4 vez o tamanho (Lucas, 27/09/2026; identidade.md §5) |
 | PRANCHA | `--fundo` |
 | DADO | `--papel` |
 | DOCUMENTO | `--fundo`, com a folha de papel (`--papel`, textura, fita, borda rasgada) sobre ele (Lucas, 27/09/2026; identidade.md §5) |

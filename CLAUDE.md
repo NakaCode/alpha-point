@@ -323,6 +323,9 @@ não está autorizado.
     não vai à cena. O veredito vale para a cena da frase que ele julgou: noutra cena, conferência nova ou o reuso
     declarado. E o rótulo de lugar sobre o arquivo não nomeia lugar mais específico que o `lugar_na_origem` do
     veredito (`marca/midia.md` §2.7): quem escreve o rótulo é o `redator-de-tela`, e quem o confere, o `qc-visual`.
+    A foto e o retrato de outro ano que o do fato entram com o aviso do ano na tela (`marca/identidade.md` §6;
+    Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela"). O ano
+    sai do `data_na_origem` do veredito, e a obrigação do aviso, do `aviso_de_ano`.
   - **O `pendente_lucas`** é o que a marca deixa para o Lucas pesar: footage de registro real abaixo de 4K ou na
     vertical (o B-roll genérico assim, de banco ou de acervo, se recusa, e na caça nem vira candidato), foto
     de agência, o arquivo do banco que não se pôde comparar com a prévia, e uma DECISÃO DO LUCAS PENDENTE que,
@@ -485,9 +488,16 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
   mas não foi testado para rasterizar PDF;
 - `quadro.mjs` com satélite, `geo-recorte-bbox --nome` e `geo-osm-rota`: "Peças da pré-v1 em uso", itens 6 e 7;
 - `buscar-midia` lê o `marca/midia.json` do canal (desde 26/09, com as fontes que o Lucas escolheu; `midia.md`
-  §7), e tira da lista o que tem menos de 1600 px de largura (conta em `abaixo_do_minimo`). A NARA só devolve
+  §7), e tira da lista o que tem menos de 1600 px de largura (conta em `abaixo_do_minimo`). A foto de época pequena é
+  exceção de caso muito específico (Lucas, 27/09/2026; identidade §5): só para ela se usa `--min-w=800`, e ela entra
+  impressa sobre a mesa. A NARA só devolve
   imagem. A Library of Congress e o Internet Archive vêm desligados: a pré-v1 registra 403 do Cloudflare da LoC a
   toda consulta por script (23/09);
+- a NARA, pela API oficial v2 (`catalog.archives.gov/api/v2`, com a chave do canal, como o `buscar-midia` faz), e o
+  `objectUrl` que ela devolve, inclusive as leituras Range em `/medialz` para medir e baixar, são a porta que a NARA
+  abre para programas: valem, apesar do `Disallow: /` do robots.txt do catálogo (decisão do Claude central, 27/09/2026).
+  O endpoint interno do site (`/proxy/…`) e as páginas do catálogo fora da API, não: no Juneau, o 1º round do
+  `pesquisa-imagens` usou o `/proxy/` e ele foi cortado;
 - o upscale não-generativo que o `pesquisa-pessoas` pede (`image.upscale.classic`) não existe no canal nem na
   pré-v1;
 - `src/agent/data-tools.mjs` só cobre IBGE e World Bank;
@@ -796,14 +806,32 @@ aleatório, flag que esconde automação ou troca de cabeçalho.
 `marca/identidade.md` (cor, tipo, alvos, cenas), `marca/voz.md` (o narrador e o que ele
 nunca diz) e `marca/midia.md` (de onde vem cada imagem e o que as licenças deixam fazer).
 Todo passo que pede "a marca ativa" lê os três. `marca/prancha.html` é a conferência visual, e
-`marca/prancha-documento-card.html` é a da folha de documento e do card de pessoa (Lucas, 27/09/2026; identidade §5).
+`marca/prancha-documento-card.html` é a da folha de documento e do card de pessoa (Lucas, 27/09/2026; identidade §5),
+e a do aviso do ano da foto (Lucas, 27/09/2026; identidade §6).
 `marca/pronuncias.md` é a folha permanente de pronúncias do canal: a folha de cada vídeo começa dela.
 `marca/embalagem.md` é como o canal faz título e miniatura: os moldes das referências, as regras e a receita da miniatura.
 
 Site que recusa leitura automática (403, captcha, verificação de robô) não se contorna: nem por
 `curl`, nem por outro cliente, nem trocando cabeçalho. Vale para você e para todo subagente, e o
-pedido a ele tem de dizer isso. Use a cópia local, ou confira pelo navegador do app com o Lucas vendo,
-e pare se o site pedir verificação.
+pedido a ele tem de dizer isso. Use a cópia local, ou confira pelo navegador do app, e pare se o site pedir
+verificação.
+
+**O navegador do app, sem o Lucas acompanhando** (decisão do Lucas, 27/09/2026). Ele quis a busca nesses sites
+autônoma ("Há alguma forma de deixar isso autônomo? Não quero participar nas próximas"). A pergunta: "Posso buscar
+sozinho nos acervos que bloqueiam robô, pelo navegador do app, sem você acompanhando?" A resposta: "Sim, pode
+(Recomendado)". A opção dizia: "Eu procuro devagar, só nas páginas necessárias, e paro em qualquer verificação de
+robô. Para baixar, te mando uma lista no chat, e você responde "sim" quando puder."
+- Onde este arquivo, a marca, uma roupa ou o conferente dizem "pelo navegador do app, com o Lucas vendo", vale esta
+  regra: o Lucas não precisa acompanhar.
+- Só o Claude central opera o navegador do app (as ferramentas `mcp__Claude_Browser__*`). Subagente, nunca.
+- Devagar, e só as páginas que o item pede: nenhuma varredura, nenhum laço de páginas.
+- Verificação de robô, captcha, "unusual traffic", pedido de login ou desafio do Cloudflare: o Claude para naquele site
+  pelo resto da tarefa, sem tentar de novo e sem pedir ao Lucas que resolva.
+- Baixar arquivo pelo navegador do app só com o "sim" do Lucas a uma lista no chat, com o arquivo, a fonte e o tamanho
+  de cada linha. Ele responde quando puder. O que existe num acervo aberto (o Commons, a API da NARA) se baixa por lá,
+  sem o navegador. Arquivo acima de uns 1,8 MB chega cortado pelo navegador do app: confira o tamanho e a imagem.
+- Não vale para a caça nos bancos pagos, que segue a skill `cacar-no-chrome` no Chrome do Lucas, nem para a conta da
+  ElevenLabs, que o Claude opera com ele vendo.
 
 **A cópia arquivada de página oficial do Alasca vale como fonte** (decisão do Lucas, 27/09/2026). A pergunta:
 "Algumas páginas oficiais do Alasca bloqueiam leitura automática. Os resultados das eleições de 1974 a 2002 e os

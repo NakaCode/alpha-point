@@ -7,6 +7,7 @@
 <!-- Referência visual da identidade §5 (Lucas, 27/09/2026: documento "B · Arquivo datilografado, corrigido" e
      card "B · Foto e cartão de papel"). Montagem para conferência, não cena do pipeline: a cena de verdade
      liga marca/tokens.css e segue o contrato do editor-de-arte. Fontes locais de marca/fontes/, sem rede.
+     O aviso do ano da foto (Lucas, 27/09/2026; identidade §6) entrou depois, no fim.
      Medidas no palco 3840×2160 em unidades --u (1 px do 4K). -->
 <style>
 @font-face { font-family: "Inter"; src: url("fontes/inter/Inter-VF.ttf") format("truetype"); font-weight: 100 900; }
@@ -160,6 +161,11 @@ h1 { font: 800 clamp(36px, 6vw, 60px)/.95 var(--titulo); text-transform: upperca
 @media (max-width: 560px) { .op-h button { margin-left: 0; } }
 
 body { padding-inline: 16px; }
+/* aviso do ano da foto (Lucas, 27/09/2026; identidade §4.1, §5 e §6) */
+.aviso-ano { background: var(--rotulo); color: var(--tinta); font: 500 calc(84 * var(--u))/1.2 var(--fonte); padding: calc(16 * var(--u)) calc(28 * var(--u)); border-radius: calc(12 * var(--u)); white-space: nowrap; }
+.aviso-margem { position: absolute; left: calc(44 * var(--u)); right: calc(44 * var(--u)); bottom: calc(40 * var(--u)); font: 500 calc(84 * var(--u))/1.2 var(--fonte); color: color-mix(in srgb, var(--tinta-escura) 72%, transparent); }
+.foto-cheia { position: absolute; inset: 0; background: #2A3548; display: grid; place-items: center; }
+.foto-cheia em { font: italic 500 calc(64 * var(--u))/1 var(--fonte); color: color-mix(in srgb, var(--tinta) 55%, transparent); }
 </style>
 </head>
 <body>
@@ -167,7 +173,7 @@ body { padding-inline: 16px; }
   <header class="topo">
     <span class="eyebrow">Alpha Point · identidade §5</span>
     <h1>Documento e card de pessoa</h1>
-    <p class="sub">Os dois tratamentos escolhidos pelo Lucas em 27/09/2026. As regras estão em marca/identidade.md §5 ("A folha de documento" e "A composição do card"); as medidas, em marca/tokens.css (--fonte-doc, --doc-*).</p>
+    <p class="sub">Os dois tratamentos escolhidos pelo Lucas em 27/09/2026. No fim, o aviso do ano da foto, para quando a foto é de outro ano (identidade §6). As regras estão em marca/identidade.md §5 ("A folha de documento" e "A composição do card"); as medidas, em marca/tokens.css (--fonte-doc, --doc-*).</p>
     <div class="ctrl"><button type="button" id="bt-guias" aria-pressed="false">Mostrar as áreas reservadas</button></div>
   </header>
   <section class="bloco">
@@ -200,6 +206,33 @@ body { padding-inline: 16px; }
           <div class="legenda a-sobe" style="--d:1.15s">Alaska state senator (Juneau)</div>
         </div>
         <div class="el credito">Source: KTOO, June 13, 2025</div>
+        <div class="guias"><div class="g g-margem"></div><div class="g g-credito"><span>crédito</span></div><div class="g g-yt"><span>legenda do YouTube</span></div><div class="g g-canto"><span>marca-d'água</span></div></div>
+      </div></div>
+    </div>
+  </section>
+  <section class="bloco">
+    <h2>Aviso do ano da foto</h2>
+    <p>Só quando não existe foto do ano do fato e entra uma de outro ano (identidade §6). A data é a da origem da foto, e o aviso fica na tela durante toda a foto, fora da faixa de crédito.</p>
+    <div class="op"><div class="op-h"><h3>Foto em tela cheia: o aviso logo abaixo do rótulo de lugar</h3></div>
+    <div class="quadro"><div class="palco">
+        <div class="foto-cheia"><em>foto real do acervo</em></div>
+        <div class="el pilula" style="left:calc(200*var(--u)); top:calc(1380*var(--u))">Juneau</div>
+        <div class="el aviso-ano" style="left:calc(200*var(--u)); top:calc(1600*var(--u))">Photo from 1998</div>
+        <div class="el credito">Jane Doe / Anchorage Daily News</div>
+        <div class="guias"><div class="g g-margem"></div><div class="g g-credito"><span>crédito</span></div><div class="g g-yt"><span>legenda do YouTube</span></div><div class="g g-canto"><span>marca-d'água</span></div></div>
+      </div></div>
+    </div>
+    <div class="op"><div class="op-h"><h3>Card de pessoa: o aviso na margem da foto impressa</h3></div>
+    <div class="quadro"><div class="palco mesa">
+        <div class="el polaroide" style="left:calc(260*var(--u)); top:calc(200*var(--u)); width:calc(1020*var(--u))"><div class="foto"><svg viewBox='0 0 100 100' aria-hidden='true'><circle cx='50' cy='38' r='17' fill='currentColor'/><path d='M18 92c2-19 15-30 32-30s30 11 32 30z' fill='currentColor'/></svg><em style="top:calc(40*var(--u))">retrato</em></div><div class="aviso-margem">Photo from 2013</div></div>
+        <div class="fita" style="left:calc(520*var(--u)); top:calc(130*var(--u)); transform:rotate(-4deg); width:calc(460*var(--u))"></div>
+        <div class="el folha" style="--rot:1.3deg; left:calc(1420*var(--u)); top:calc(330*var(--u)); width:calc(2000*var(--u)); padding:calc(130*var(--u)) calc(150*var(--u))">
+          <div class="fala-papel">“The person's words go here.”</div>
+        </div>
+        <div class="el" style="left:calc(260*var(--u)); top:calc(1390*var(--u)); width:calc(1020*var(--u)); display:grid; gap:calc(28*var(--u)); justify-items:start; z-index:2">
+          <div class="pilula">FULL NAME</div>
+          <div class="legenda">Role at the time of the quote</div>
+        </div>
         <div class="guias"><div class="g g-margem"></div><div class="g g-credito"><span>crédito</span></div><div class="g g-yt"><span>legenda do YouTube</span></div><div class="g g-canto"><span>marca-d'água</span></div></div>
       </div></div>
     </div>

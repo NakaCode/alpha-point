@@ -79,7 +79,7 @@
 
 | A cena pede | De onde vem |
 |---|---|
-| **evento real específico, pessoa pública, registro histórico** | só acervo aberto ou oficial, com data e local conferidos na origem: NARA, NASA, USGS, Smithsonian, Wikimedia Commons (licença conferida arquivo a arquivo), Library of Congress (só pelo navegador, §3), e as fontes federais: sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3). Nenhum outro acervo gratuito. Foto do governo do Alasca e de jornal entra com a fonte creditada na tela (midia.md §7.5; §5 abaixo). O retrato de pessoa citada segue midia.md §7.2. **Nunca banco pago.** Imagem "ilustrativa" de outro evento ou de outro ano não entra |
+| **evento real específico, pessoa pública, registro histórico** | só acervo aberto ou oficial, com data e local conferidos na origem: NARA, NASA, USGS, Smithsonian, Wikimedia Commons (licença conferida arquivo a arquivo), Library of Congress (só pelo navegador, §3), e as fontes federais: sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3). Nenhum outro acervo gratuito. Foto do governo do Alasca e de jornal entra com a fonte creditada na tela (midia.md §7.5; §5 abaixo). O retrato de pessoa citada segue midia.md §7.2. **Nunca banco pago.** Imagem "ilustrativa" de outro evento não entra; foto de outro ano do mesmo assunto, só com o aviso do ano (§9) |
 | **B-roll genérico**: paisagem, cidade, porto, indústria, balsa, drone | bancos pagos, nesta ordem: Envato Elements → Motion Array → Storyblocks → Shutterstock, baixado na conta individual do Lucas, pela caça no Chrome dele, que ele aprova item por item (midia.md §8); você entrega a lista (§4) |
 | **mapa, satélite** | não é seu: as bases de identidade.md §6, com o `mapista` |
 
@@ -209,11 +209,18 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
 - B-roll genérico abaixo de 3840×2160 se rejeita (ofício §8), de banco ou de acervo. O footage de registro real
   recente abaixo de 4K (um evento que o DVIDS só tem em 1080p) não se rejeita sozinho: fica no rascunho, com a
   medida, e o `conferente-de-midia` o leva ao Lucas (`pendente_lucas`; ofício dele, §5.3).
-- **Registro histórico** quase sempre é SD ou foto pequena. **DECISÃO DO LUCAS PENDENTE: a resolução
-  mínima do arquivo histórico, se ele entra em tela cheia no REGISTRO, e se há upscale.** Até lá: não o
-  rejeite só pela resolução e não o amplie (upscale: CLAUDE.md, tropeços do apoio). Entregue com a medida
-  no relatório. O enquadramento é do `diretor-de-arte`, com o Lucas. Candidato abaixo da largura mínima do
-  `buscar-midia` (§3) fica listado com link, medida e licença, sem entrega na cena.
+- **Registro histórico** quase sempre é SD ou foto pequena.
+  - **Foto de época** (Lucas, 27/09/2026; identidade.md §5, "A foto antiga pequena"): de 1.600 px de largura
+    para cima, vai em tela cheia. A prioridade é a foto grande e com qualidade (Lucas: "A prioridade ainda deve ser fotos grandes e com qualidade, a exceção deve ser para casos MUITO específicos").
+  - A pequena, impressa sobre a mesa, até 1,4 vez o tamanho e **a partir de 800 px no lado maior**, é exceção de
+    caso muito específico (identidade.md §5): o registro daquilo que a fala nomeia, sem foto grande que sirva,
+    nem de outro ano com o aviso, e com qualidade. Escreva no relatório por que o caso é específico. Nunca a
+    amplie (upscale: CLAUDE.md, tropeços do apoio), e entregue com a medida.
+  - Busque sempre primeiro as grandes, com o `buscar` sem opção. Só no caso específico, rode o `buscar` com
+    `--min-w=800`: sem ele, o `buscar-midia` tira da lista o que tem menos de 1.600 px (§3). Candidato abaixo de
+    800 px fica listado com link, medida e licença, sem entrega.
+  - **Vídeo de época** abaixo de 4K: DECISÃO DO LUCAS PENDENTE. Até lá, não o rejeite só pela resolução e não o
+    amplie. Entregue no rascunho com a medida, e o `conferente-de-midia` o leva ao Lucas.
 - **Medir:** largura e altura de foto e de vídeo se leem com `ffprobe`, e o relatório diz "medido por
   ffprobe" (`identify` e `medir-imagem`: CLAUDE.md, "Os especialistas").
 - Clipe fora de 30 fps: registre a taxa. `scripts/normalizar-footage.mjs <proj> --dry` (pede
@@ -253,6 +260,18 @@ O canal não tem `out/<proj>/pauta-fundamento.json`. O equivalente:
 - **Mapa = MapTiler** (`canal.json › mapa.perfil`): nunca peça tile. O plano cobra por pedido, e o gasto
   espera o ok do Lucas (identidade.md §6). A cena de mapa leva `© MapTiler © OpenStreetMap contributors`
   na tela o tempo todo; isso é do `mapista`. O Landsat foi só teste (CLAUDE.md).
+- **Foto de outro ano, com o aviso na tela** (Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela"; identidade.md §6).
+  - Busque primeiro a foto do ano do fato.
+  - Sem ela, entregue a melhor foto do **mesmo assunto** de outro ano: o mesmo lugar, prédio ou coisa, e nunca
+    outro evento no papel do evento nomeado.
+  - A data vem da página de origem: o ano, ou a aproximação que ela dá (`ca. 1900`, `1990s`). Ela vai para a
+    procedência e para a pauta. Foto sem data na origem não entra.
+  - A ordem inteira (identidade.md §6, "A ordem"): a grande e com qualidade do ano do fato; a grande e com
+    qualidade de outro ano, a do ano mais perto, com o aviso; a pequena, só no caso muito específico (§6 acima);
+    e, sem nenhuma, NÃO ACHADO, que leva o plano a mapa ou desenho.
+  - A de outro ano não pode desmentir a fala: a cidade de hoje numa fala sobre o povoado de 1900 não entra.
+  - O aviso na tela é do `editor-de-arte`, com a grafia do `redator-de-tela`. **Vídeo** de outro ano continua
+    fora.
 
 ## 10 · Os portões, e a quem devolver
 

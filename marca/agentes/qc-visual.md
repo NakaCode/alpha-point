@@ -147,6 +147,11 @@
     - a foto não se altera; recorte que muda o sentido, ou filtro no rosto, reprova.
   - **O DOCUMENTO** é a folha de papel sobre `--fundo` (identidade.md §5, "A folha de documento"). Documento
     chapado em tela cheia de `--papel` é a versão anterior a 27/09/2026 e reprova na **abordagem**.
+  - **A foto de época pequena** (Lucas, 27/09/2026; identidade.md §5, "A foto antiga pequena"): com menos de
+    1.600 px de largura, vai impressa sobre a mesa. Reprova:
+    - ela em tela cheia;
+    - ela ampliada acima de 1,4 vez o tamanho do arquivo;
+    - upscale ou filtro nela.
   - O rosto, quando há, vem de fonte autorizada, com a procedência gravada (midia.md §7.2). O retrato oficial
     em uso editorial vai sem crédito na tela. Rosto gerado ou alterado por IA reprova.
 - **acessibilidade** (identidade.md §0; voz.md §1): o espectador é norte-americano, de 25 a 60 anos, e não
@@ -162,6 +167,14 @@
     `conferente-de-midia` que casa com ele (§5): lugar mais específico que o da origem, ou rótulo sobre arquivo
     com `lugar_na_origem: null`, reprova (midia.md §2.7). O REGISTRO sem rótulo de lugar sobre esse arquivo não
     reprova pela falta dele (identidade.md §5 pede o rótulo, mas a origem não o sustenta): declare no laudo.
+  - **o aviso do ano da foto** (Lucas, 27/09/2026; identidade.md §6): a foto ou o retrato com `aviso_de_ano: true`
+    no veredito do conferente que casa com ele leva `Photo from <ano>` durante todo o tempo em que aparece.
+    O ano é o do `data_na_origem`, o texto tem 84 px ou mais e fica fora da faixa de crédito
+    (`data-qc-aviso-ano`). Reprova:
+    - a foto sem o aviso;
+    - o aviso com outro ano;
+    - o aviso só no crédito;
+    - o aviso sobre foto com `aviso_de_ano: false`, porque é afirmação falsa.
   - ⚠️ **Os exemplos do ofício estão no formato brasileiro e não se copiam**. Formato brasileiro na tela
     (`R$`, vírgula decimal, `1º DE MAIO`) reprova. O certo é `ALMOST 3,000×`, `28.0×`, `22.2 ft (6.76 m)`,
     `MAY 1, 1994`, `$265 billion`.

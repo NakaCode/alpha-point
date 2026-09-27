@@ -267,7 +267,10 @@ especialista, e vencem o que uma roupa (`agentes/<id>.md`) disser em contrário.
   - **vídeo do governo do Alasca** entra citando a fonte, como a foto; vídeo de jornal, só com licença conferida:
     §7.5 (o §7.4, item 3, ficou como ponteiro);
   - **logo de órgão federal e de outras instituições**: só o nome escrito, como a do Alasca: §7.6;
-  - **sem foto do ano do fato, o plano vira mapa ou desenho**; foto de outro ano não entra: `identidade.md` §6.
+  - sem foto do ano do fato, o plano vira mapa ou desenho, e foto de outro ano não entra. **Superada no mesmo
+    dia** por mensagem dele: "Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela".
+    Agora **foto de outro ano do mesmo assunto entra com o aviso do ano na tela**, e o mapa ou o desenho ficam
+    para quando não há foto nenhuma: `identidade.md` §6.
 - **O §7.4 é o avesso**: o que as rodadas **não** decidiram. Nada nele é regra do Lucas; é pergunta
   aberta, com o que vale enquanto ele não responde. Ele fica com o número 4 porque as roupas o citam assim.
 
@@ -364,6 +367,8 @@ especialista, e vencem o que uma roupa (`agentes/<id>.md`) disser em contrário.
   agência citando a fonte) não vale para o retrato de pessoa citada. A assinatura Reuters é do Top10 e não
   serve a este canal.
 - **Rosto gerado ou alterado por IA: nunca.**
+- **Retrato de outro ano que o do fato** entra com o aviso do ano na tela (`identidade.md` §5 e §6; Lucas,
+  27/09/2026). A fonte continua a autorizada, e a data vem da origem. Retrato sem data na origem não entra.
 - **Sem foto em fonte autorizada**, o card sai só com nome e cargo (`identidade.md` §5), e o relatório
   registra a caça feita e esgotada (o fallback documentado do ofício §8).
 

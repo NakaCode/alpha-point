@@ -115,6 +115,11 @@ Os cinco modelos são os de identidade.md §5.
   (midia.md §7.3). O `exige` pode pedi-las. O **vídeo do governo do Alasca** (no Juneau, a balsa estadual
   filmada pelo próprio Estado) também, com a fonte na tela; o vídeo de jornal, de veículo ou de agência, só com
   licença conferida na origem (Lucas, 27/09/2026; midia.md §7.5).
+- **Foto de outro ano, com o aviso na tela** (Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela"; identidade.md §6):
+  - a ordem é a foto do ano do fato, depois a foto do mesmo assunto de outro ano com o aviso, e só então mapa
+    ou desenho;
+  - o `exige` pode aceitar a de outro ano, e o `porque` diz qual foi;
+  - vídeo de outro ano não entra.
 - **Logo de qualquer instituição** (jornal, órgão do Alasca, órgão federal como a FHWA e os tribunais federais,
   empresa, liga) **e o selo do Estado**, não: o nome escrito, na pílula `--rotulo` (Lucas, 26/09/2026 e, a
   logo federal e a de outras instituições, 27/09/2026; midia.md §7.6). O `exige` não pede logo.
