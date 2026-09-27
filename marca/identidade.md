@@ -246,6 +246,16 @@ por IA apresentada como real.
 - **A composição do card** (Lucas, 27/09/2026: escolheu "B · Foto e cartão de papel" na página de opções):
   - **o retrato** vem como foto impressa, com moldura clara (`--tinta`), presa com fita e levemente torta sobre
     `--fundo`. A moldura é da cena; a foto não se altera: nada de recorte que mude o sentido nem filtro no rosto;
+  - **o tamanho do retrato** (Lucas, 27/09/2026). A pergunta: "No card de pessoa, a foto aparece num quadro de uns
+    930 px. Um retrato que enche esse quadro sem ser ampliado conta como foto grande?" A resposta: "Sim, se enche
+    sem ampliar (Recomendado)". A opção dizia: "Entram retratos oficiais comuns (1.000 a 1.500 px), nítidos no
+    tamanho em que aparecem. O do senador Kiehl entra. O do Tony Knowles não entra: precisaria ser ampliado 1,6
+    vez, e o card dele sai só com nome e cargo."
+    - no card, o retrato é grande quando o recorte que vai ao quadro da foto (932 × 932 px na prancha) o enche sem
+      ampliar, ou seja, quando o recorte tem 932 px ou mais. A régua de 1.600 px de largura (§6) é a da foto em
+      tela cheia;
+    - recorte que pede ampliação não é grande. Retrato de época pequeno só entra pela exceção da foto pequena ("A
+      foto antiga pequena", abaixo: caso muito específico, até 1,4 vez); fora dela, o card sai só com nome e cargo;
   - **o nome e o cargo** ficam logo abaixo da foto: o nome na pílula e o cargo embaixo, quebrando na largura da
     foto. Sem retrato autorizado, os dois ficam no lugar da foto;
   - **a fala citada**, quando há, vai num cartão de papel ao lado (a mesma folha do documento, em `--papel`), em
@@ -345,6 +355,37 @@ relê.
 
 **Fronteira disputada**: linha tracejada e rótulo `DISPUTED`. Mostra a linha de controle de fato e
 nunca adota a reivindicação de um lado.
+
+**País no mapa: o nome escrito, sem bandeira** (Lucas, 27/09/2026). A pergunta: "O governo do Canadá diz que a
+bandeira dele (e as das províncias) só se usa com autorização, mesmo em vídeo educativo. Como identificamos os
+países nos mapas?" A resposta: "Só o nome escrito (Recomendado)". A opção dizia: "CANADA e UNITED STATES escritos
+na letra do canal, sem bandeira nenhuma, em todos os mapas. Sem risco e sem pedir nada, como já fazemos com as
+logos."
+- Vale para todo mapa e para toda bandeira, a dos EUA também.
+- O motivo:
+  - o Canadian Heritage diz que a bandeira do Canadá "is protected by the Trademarks Act (Section 9) against
+    unauthorized use for commercial purposes", e que o pedido de uso "also applies to non-commercial,
+    public-facing uses, including educational or recreational" (canada.ca, lida em 27/09/2026;
+    `out/juneau/_pesquisa/research-logos.md` §2);
+  - as bandeiras das províncias e dos territórios têm a mesma proteção.
+- Fora do mapa, o nome de país sobre outra cena não foi perguntado. Vai sem bandeira também, que é o caminho sem
+  risco.
+- A PRANCHA põe a bandeira oficial dentro do círculo do ator (§5), e isso não foi perguntado. A bandeira do Canadá,
+  das províncias e dos territórios canadenses tem a mesma condição de uso. Até o Lucas decidir, o ator deles vai
+  só com o nome. DECISÃO DO LUCAS PENDENTE.
+
+**Rota que nunca foi construída, desenhada como esquema** (Lucas, 27/09/2026). A pergunta: "A estrada pela margem
+leste do Lynn Canal nunca foi construída, e não existe traçado oficial livre para usar. Podemos desenhar uma linha
+aproximada no mapa?" A resposta: "Sim, tracejada e com aviso (Recomendado)". A opção dizia: "Uma linha tracejada
+pelo que o texto do estudo descreve (a margem leste, a partir do fim da estrada), com 'Approximate route' na tela.
+Não copia as figuras do estudo, que são do Estado."
+- A linha é tracejada e sai do texto da fonte: o que ela descreve (a margem, os pontos que nomeia) e o ponto de
+  partida real (no Juneau, o fim da estrada, do OSM). Nunca se decalca figura de documento sem permissão
+  (`midia.md` §7.1).
+- O aviso `Approximate route`, no papel legenda de §4.1 (como o aviso do ano da foto), fica na tela todo o tempo da
+  linha.
+- No Juneau, vale para a estrada da margem leste, nas cenas s48 e s50 (a Alt. 2B de 2006 é essa estrada). Os
+  corredores de s44 (o do Taku e o do Lynn Canal) são rotas na mesma situação e seguem a mesma forma.
 
 **Doutrina de mídia**:
 - **Acervos abertos**: Library of Congress, National Archives (NARA), NASA, USGS, Smithsonian, Wikimedia

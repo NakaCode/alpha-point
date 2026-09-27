@@ -170,11 +170,12 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
   nomes em português: procure pelo código ISO. Faltou: peça à `pesquisa-logos`. A que ela entregar em
   `out/<proj>/_media/logo/` passa pelo `conferente-de-midia` antes de a cena a citar (§10). Nunca desenhe, nunca
   emoji, não baixe você.
-- DECISÃO DO LUCAS PENDENTE: bandeira ao lado de nome de país **fora** da PRANCHA. O ofício a pede (§2); a
-  identidade só a põe dentro do ator (§5); a cena de teste de 25/09 pôs CANADA sem bandeira. Até ele decidir,
-  siga o ofício (ao lado do nome, alinhada pelo centro, altura perto da caixa-alta) e diga no resumo que a
-  decisão está aberta. O `qc-pais-bandeira` não mede nome de país deste canal (CLAUDE.md, "Os especialistas",
-  tropeços): NÃO MEDIDO. Confira no quadro.
+- **Bandeira ao lado de nome de país: não** (Lucas, 27/09/2026; identidade.md §6, "País no mapa"). O país se
+  identifica pelo nome escrito, no mapa e fora dele, sem bandeira nenhuma, nem a dos EUA, embora o ofício (§2)
+  a peça: vale a decisão do Lucas. Na PRANCHA, a bandeira vai dentro do ator (identidade §5), menos a do Canadá,
+  das províncias e dos territórios canadenses, que vão só com o nome até o Lucas decidir (DECISÃO DO LUCAS
+  PENDENTE). O `qc-pais-bandeira` não se usa: ele cobra bandeira ao lado do nome e não lê nome em inglês
+  (CLAUDE.md, tropeços).
 
 ## 7 · Os 20 s finais: o fundo da tela final do YouTube
 

@@ -264,9 +264,14 @@
   e §6). Véu, scrim ou vinheta empilhados por cima reprovam. Rótulo ou relevo ilegível: sinalize, citando o
   quadro.
   - DECISÃO DO LUCAS PENDENTE: os 65 % contra o piso de ~0,90 do ofício. Eles só foram vistos sobre Landsat.
-- **Bandeira**: DECISÃO DO LUCAS PENDENTE fora da PRANCHA (o ofício a pede ao lado do nome de país; a identidade
-  só a põe no ator). Até ele decidir, a falta dela fora da PRANCHA **sinaliza**, não reprova. Bandeira errada ou
-  desenhada reprova sempre (`factual`, asset correto).
+- **Bandeira**: nenhuma ao lado de nome de país, no mapa ou fora dele (Lucas, 27/09/2026; identidade.md §6, "País
+  no mapa"). Bandeira ali reprova (`fonte`), e a falta dela não sinaliza nada. Na PRANCHA, a bandeira vai no ator,
+  menos a do Canadá, das províncias e dos territórios canadenses, que reprova (`fonte`) até o Lucas decidir
+  (condição de uso; DECISÃO DO LUCAS PENDENTE). Bandeira errada ou desenhada reprova sempre (`factual`, asset
+  correto).
+- **Rota que nunca foi construída** (Lucas, 27/09/2026; identidade.md §6): linha tracejada com o aviso
+  `Approximate route` na tela todo o tempo da linha. Sem o aviso, ou decalcada de figura sem permissão, reprova
+  (`fonte`).
 
 ## 6 · A cena que é fundo da tela final
 

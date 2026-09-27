@@ -74,12 +74,12 @@ tabela não tem uso hoje: fica para o dia em que a marca deixar entrar uma.
 - Na PRANCHA, a bandeira oficial vai **dentro do círculo do ator**: 640 px, traço de 6 px na cor do papel
   dele, nome embaixo. Ícone, em círculo de 160 px.
 - Bandeira é asset oficial, **não é fonte de paleta**: não se pinta território com as cores dela.
-- **Bandeira ao lado do nome de país fora da PRANCHA** (no MAPA, sobre registro): o ofício do `mapista` e o do
-  `editor-de-arte` a pedem; a identidade só a põe dentro do ator da PRANCHA (§5); a cena de teste de
-  25/09/2026 pôs CANADA sem bandeira. **DECISÃO DO LUCAS PENDENTE.** Até ele decidir, vale o padrão das roupas
-  do `mapista`, do `editor-de-arte` e do `qc-visual`: bandeira ao lado de todo nome de país. Por isso,
-  entregue a bandeira de cada país que aparece no mapa ou na cena, mesmo sem pedido no espelho. No Juneau,
-  Canadá e Estados Unidos: `assets/flags/ca.png` e `assets/flags/us.png` já existem.
+- **Bandeira ao lado do nome de país: não** (Lucas, 27/09/2026; identidade.md §6, "País no mapa"). O país se
+  identifica pelo nome escrito, em todo mapa e fora dele, sem bandeira nenhuma, nem a dos EUA. Não entregue
+  bandeira para mapa nem para nome de país.
+- Na PRANCHA (acima), a bandeira do Canadá, das províncias e dos territórios canadenses fica de fora: o Canadian
+  Heritage pede autorização até para uso educativo (`out/juneau/_pesquisa/research-logos.md` §2). Até o Lucas
+  decidir, esse ator vai só com o nome (DECISÃO DO LUCAS PENDENTE).
 - Para o círculo de 640 px, prefira o SVG oficial do Commons (`Flag_of_<x>.svg`) às PNG de `assets/flags/`
   (a medida delas: CLAUDE.md, tropeços do apoio) e, se a cena pedir raster,
   `scripts/stock/_svg-para-png.mjs <arquivo.svg> <saida.png> --w=<largura>` (pede `REGIE_MOTOR`).

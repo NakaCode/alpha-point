@@ -131,6 +131,11 @@
 
 - O upscale não-generativo que o ofício pede (`image.upscale.classic`) é NÃO MEDIDO aqui (CLAUDE.md, tropeços
   do apoio). Foto pequena vai com a medida no relatório, sem ampliar; upscale generativo nunca.
+- **O retrato do card é grande quando enche o quadro da foto sem ampliar** (Lucas, 27/09/2026; identidade.md
+  §5, "o tamanho do retrato"): o recorte que vai ao quadro de 932 × 932 px da prancha tem 932 px ou mais.
+  Grave na pauta a janela do recorte e a escala dela no quadro. Recorte que pede ampliação não é grande: o
+  retrato de época pequeno só entra pela exceção da foto pequena (identidade §5, até 1,4 vez); fora dela, o card
+  sai só com nome e cargo (§6).
 - A medida da foto sai do `ffprobe`, e o relatório diz "medido por ffprobe" (`identify` e `medir-imagem`:
   CLAUDE.md, "Os especialistas").
 

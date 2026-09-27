@@ -132,8 +132,13 @@
 
 ## 6 · Quando não há geometria real
 
-A proposta de troca de modo do Top10 era o "desenho esquemático declarado como esquema". **DECISÃO DO
-LUCAS PENDENTE: se o canal aceita esquema declarado.** Até lá, vale só o ofício: **bloqueio reportado**,
+A proposta de troca de modo do Top10 era o "desenho esquemático declarado como esquema". **O canal aceita
+esquema declarado de rota que nunca foi construída** (Lucas, 27/09/2026; identidade.md §6, "Rota que nunca foi
+construída"): linha tracejada pelo texto da fonte, a partir do ponto de partida real, com o aviso
+`Approximate route` na tela. Você entrega o que o `mapista` precisa: o ponto de partida real (no Juneau, o fim da
+estrada, do OSM), os pontos que o texto nomeia, com a geometria real de cada um, e o trecho da fonte, copiado,
+de onde a linha sai. Nunca decalque figura sem permissão. Para o que não é rota, vale só o ofício: **bloqueio
+reportado**,
 com o que existe de mais próximo (a divisão de nível acima; a figura de um documento oficial, que vira
 DOCUMENTO pelo `pesquisa-documentos`). Figura de documento do Estado do Alasca não é domínio público
 automático: só vai à tela com permissão de uso clara, conferida e gravada (Lucas, 26/09/2026; midia.md §7.1).
@@ -153,8 +158,8 @@ automático: só vai à tela com permissão de uso clara, conferida e gravada (L
   estadual não tem essa regra geral: confira peça a peça). Figura, mapa ou traçado tirado deles só vai à tela
   com permissão de uso clara (domínio público comprovado, licença aberta ou autorização escrita), conferida
   e gravada (Lucas, 26/09/2026; midia.md §7.1). **Sem ela, não entra: bloqueio reportado** (§6). A decisão
-  manda recriar o texto citado, não a figura; se o canal aceita um esquema declarado no lugar continua
-  DECISÃO DO LUCAS PENDENTE (§6).
+  manda recriar o texto citado, não a figura; o esquema declarado de rota que nunca foi construída, o
+  canal aceita (§6).
 - **O estudo de 2018 da estrada de Juneau** (FHWA com o Alaska DOT&PF) **conta como estadual** (pesquisado a
   pedido do Lucas, 26/09/2026; midia.md §7.1, "O estudo de 2018"). Os mapas e figuras dele, feitos pela HDR
   para o DOT&PF, não entram sem autorização escrita do DOT&PF, nem o relevo de fundo, que não tem fonte. O

@@ -121,13 +121,14 @@ necessidade.
 - ⚠️ **Os exemplos do ofício e do molde estão em português ou no formato brasileiro e não se copiam**:
   `lang="pt-BR"`, `aprox.`, `AMAZÔNIA`, vírgula decimal (`−6,1 m`). Aqui seria
   `20 ft (6.1 m) BELOW SEA LEVEL`.
-- **Bandeira**: o ofício (§9) manda a bandeira oficial ao lado de todo nome de país sobre o mapa; a identidade
-  só a põe no ator da PRANCHA (§5); a cena de teste de 25/09 pôs CANADA sem bandeira. DECISÃO DO LUCAS
-  PENDENTE. Até ele decidir, siga o ofício: `assets/flags/<iso2>.png` (`ca.png`, `us.png`), pelo caminho
-  `../../../assets/flags/<iso2>.png`, no mesmo container do rótulo, para não descolar com a câmera. Diga no
-  report que a decisão está aberta.
-- O `qc-pais-bandeira` não mede nome de país deste canal (CLAUDE.md, "Os especialistas", tropeços): NÃO
-  MEDIDO. Confira a bandeira no quadro. Se um dia ele rodar aqui, é com `--teto=160`, o teto de rótulo da marca.
+- **País no mapa: o nome escrito, sem bandeira** (Lucas, 27/09/2026; identidade.md §6, "País no mapa"). Nenhuma
+  bandeira no mapa, nem a dos EUA, embora o ofício (§9) a peça: vale a decisão do Lucas. O nome vai no mesmo
+  container do território, para não descolar com a câmera.
+- O `qc-pais-bandeira` não se usa: ele cobra a bandeira ao lado do nome e não lê nome em inglês (CLAUDE.md, "Os
+  especialistas", tropeços).
+- **Rota que nunca foi construída** (Lucas, 27/09/2026; identidade.md §6, "Rota que nunca foi construída"): linha
+  tracejada pelo texto da fonte, a partir do ponto de partida real, com o aviso `Approximate route` na tela todo o
+  tempo da linha; nunca decalcada de figura sem permissão. No Juneau: s48, s50 e os corredores de s44.
 
 ## 5 · Crédito na tela e na descrição (identidade.md §6 e §7)
 
@@ -232,8 +233,8 @@ necessidade.
   - figura, mapa ou traçado de documento do governo do Estado do Alasca ou de imprensa só vai à tela com
     permissão de uso clara (domínio público comprovado, licença aberta ou autorização escrita), conferida e
     gravada na procedência (Lucas, 26/09/2026; midia.md §7.1). Sem ela, não entra nem se redesenha: bloqueio
-    reportado. A recriação que a decisão manda é do texto citado, e é do `editor-de-arte`; se o canal aceita
-    esquema declarado espera o Lucas (`marca/agentes/pesquisa-geo.md` §6);
+    reportado. A recriação que a decisão manda é do texto citado, e é do `editor-de-arte`; o esquema de rota
+    que nunca foi construída, o canal aceita (identidade.md §6, "Rota que nunca foi construída");
   - foto do lugar vinda do governo do Alasca ou de jornal entra com a fonte creditada na tela (Lucas,
     26/09/2026; midia.md §7.5), e o vídeo do governo do Alasca também; vídeo de jornal, só com licença
     conferida (Lucas, 27/09/2026; midia.md §7.5). Logo de instituição nenhuma vai ao mapa: o nome escrito
