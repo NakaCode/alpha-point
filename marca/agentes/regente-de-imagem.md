@@ -112,7 +112,7 @@ Os cinco modelos são os de identidade.md §5.
   não estiver conferida, marque no `porque` "licença a conferir".
 - **Foto do governo do Alasca e de jornal**, que não é retrato de pessoa citada, entra citando a fonte
   (Lucas, 26/09/2026; midia.md §7.5); sala de imprensa federal e DVIDS entram como domínio público
-  (midia.md §7.3). O `exige` pode pedi-las. O **vídeo do governo do Alasca** (no Juneau, a balsa estadual
+  (midia.md §7.3), e as fontes da 4ª rodada também (Lucas, 27/09/2026; midia.md §7.3). O `exige` pode pedi-las. O **vídeo do governo do Alasca** (no Juneau, a balsa estadual
   filmada pelo próprio Estado) também, com a fonte na tela; o vídeo de jornal, de veículo ou de agência, só com
   licença conferida na origem (Lucas, 27/09/2026; midia.md §7.5).
 - **Foto de outro ano, com o aviso na tela** (Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela"; identidade.md §6):

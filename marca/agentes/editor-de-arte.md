@@ -270,7 +270,8 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   bancos pagos"). Faltou B-roll genérico: entregue a lista do que procurar (termos em inglês, cena, duração, por que é
   genérico). Nunca baixe de banco, nem abra o site dele, nem peça a uma pesquisa que o faça.
 - Acervo gratuito, só os oficiais e as fontes federais: Wikimedia Commons, NASA, NARA, USGS, Library of
-  Congress, Smithsonian, sala de imprensa de órgão federal e DVIDS. Pexels, Pixabay e as outras fontes
+  Congress, Smithsonian, sala de imprensa de órgão federal e DVIDS, e, desde 27/09/2026, as fontes da 4ª
+  rodada (midia.md §7.3), com o crédito que identidade.md §6 e §7 dão a cada uma. Pexels, Pixabay e as outras fontes
   gratuitas ficam fora (Lucas, 26/09/2026; midia.md §7.3; o `buscar-midia` as desliga por
   `marca/midia.json`).
 - **A cena só cita arquivo de `out/<proj>/_media/` que tem `aprovado` em

@@ -271,6 +271,12 @@ especialista, e vencem o que uma roupa (`agentes/<id>.md`) disser em contrário.
     dia** por mensagem dele: "Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela".
     Agora **foto de outro ano do mesmo assunto entra com o aviso do ano na tela**, e o mapa ou o desenho ficam
     para quando não há foto nenhuma: `identidade.md` §6.
+- **4ª rodada (27/09/2026)**: o levantamento de acervos que o Lucas pediu ("se conseguir encontrar mais
+  bancos/acervos livres/oficiais para futuros trabalhos também, melhor ainda"), em `marca/acervos/`, e três
+  perguntas:
+  - os quatro grupos de acervo e as fontes de dados e fronteiras entram: §7.3 ("A 4ª rodada") e
+    `identidade.md` §6;
+  - a foto da Alaska State Library entra citando a fonte, apesar do pedido de permissão escrita dela: §7.5.
 - **O §7.4 é o avesso**: o que as rodadas **não** decidiram. Nada nele é regra do Lucas; é pergunta
   aberta, com o que vale enquanto ele não responde. Ele fica com o número 4 porque as roupas o citam assim.
 
@@ -389,13 +395,13 @@ especialista, e vencem o que uma roupa (`agentes/<id>.md`) disser em contrário.
     marca registrada; o uso é por conta de quem usa), que o `buscar-midia` grava em cada item.
   - A sala de imprensa do **governo do Alasca** não entra por esta regra: a foto e o vídeo dela são do governo
     do Alasca (§7.5), e o documento dela, §7.1.
-- **Ficam fora**: Pexels e Pixabay, e toda outra fonte gratuita de imagem e vídeo: Openverse, The Met,
+- **Ficam fora**: Pexels e Pixabay, e toda outra fonte gratuita que esta seção não nomeia: Openverse, The Met,
   Europeana, Internet Archive. No registro do `buscar-midia` (`src/midia/fontes.mjs` da pré-v1) cada uma é
   fonte própria, e nenhuma é a mesma coisa que uma da lista: o Openverse agrega origens diversas (o item diz
   de onde veio, por exemplo Flickr).
-- **Esta decisão é sobre acervo de imagem e vídeo.** Base de mapa e geometria não passam por ela: Natural
-  Earth, OpenStreetMap, Copernicus Sentinel, Landsat/USGS e MapTiler seguem `identidade.md` §6, com o crédito
-  e a licença que ela dá a cada uma.
+- **Esta decisão é sobre acervo de imagem e vídeo.** Base de mapa, geometria e dado de gráfico não passam por
+  ela: Natural Earth, OpenStreetMap, Copernicus Sentinel, Landsat/USGS e MapTiler, e as bases, a geometria e
+  os dados aceitos em 27/09/2026, seguem `identidade.md` §6, com o crédito e a licença que ela dá a cada uma.
 - **No `buscar-midia`**, quem aplica isto é o `marca/midia.json`, campo `fontes_desligadas`, com o id de
   cada fonte no motor: `openverse`, `met`, `europeana`, `internet-archive`, `pexels`, `pixabay` e `loc`.
   Ficam ligadas `commons`, `nasa`, `nara`, `smithsonian` e `dvids` (religado na 2ª rodada). Vídeo, por ele,
@@ -404,12 +410,95 @@ especialista, e vencem o que uma roupa (`agentes/<id>.md`) disser em contrário.
   desligada não a liga.
 - **Library of Congress**: continua desligada por script (403 do Cloudflare a toda consulta, medido pela
   pré-v1 em 23/09/2026; site que recusa robô não se contorna). A conferência nela é pelo navegador do app,
-  com o Lucas vendo. A cópia arquivada vale só para página oficial do Estado do Alasca (Lucas, 27/09/2026;
+  pelo Claude central, sem o Lucas acompanhar (CLAUDE.md, "A marca").
+  A cópia arquivada vale só para página oficial do Estado do Alasca (Lucas, 27/09/2026;
   CLAUDE.md, "A marca"): a da LoC não se usa.
 - **USGS e a sala de imprensa federal** não são fonte do `buscar-midia`: vão pelo site do órgão, com a regra
   de robô (CLAUDE.md, "A marca") e a mesma prova de procedência (URL, licença, sha256).
 - O retrato oficial do §7.2, a peça com permissão do §7.1, a foto do Estado e de jornal do §7.5 e o vídeo do
   Estado do §7.5 vêm da própria instituição ou do veículo, fora desta lista.
+
+**A 4ª rodada (Lucas, 27/09/2026).** O levantamento está em `marca/acervos/`, com o texto de cada licença; o
+LEIA-ME de lá diz como ler. O Lucas escolheu vendo a página "Acervos livres e oficiais" (artifact privado no
+claude.ai).
+- **As perguntas**:
+  - "Quais grupos de acervos entram para os próximos vídeos? Os detalhes estão na página." A resposta: os quatro
+    grupos, "Federais dos EUA (Recomendado)", "Mapas históricos (Recomendado)", "Outros governos (Recomendado)" e
+    "Google Earth e relevo (Recomendado)";
+  - "E as fontes de dados e fronteiras (Banco Mundial, geoBoundaries, Census, Our World in Data)?" A resposta:
+    "Entram (Recomendado)".
+- **Federais dos EUA.** A opção dizia: "Qualquer órgão federal, não só a sala de imprensa: NASA em 4K, satélites,
+  parques, fauna, obras. Domínio público, sem crédito na tela."
+  - Entra o acervo oficial de mídia de **qualquer órgão do governo federal dos EUA**, com as regras das fontes
+    federais acima: só a obra do próprio governo (foto "courtesy", de terceiro ou de contratado, não), data e
+    local conferidos na origem, sem crédito na tela e procedência gravada.
+  - Na página: NASA Scientific Visualization Studio (vídeo 4K e 5K reais), NASA Earth Observatory, Worldview e
+    GIBS, a NASA na ISS, os satélites GOES da NOAA, National Park Service, U.S. Fish & Wildlife Service, a
+    Digital Library do U.S. Army Corps of Engineers, a foto aérea NAIP do USDA e a FEMA. A FEMA, com ressalva:
+    parte vem de terceiros, e se confere item a item.
+  - O vídeo federal é quase todo HD. Pela régua de 4K, o que fica abaixo dela só entra como registro real, caso
+    a caso (o conferente o leva ao Lucas como `pendente_lucas`); o B-roll genérico abaixo de 4K se recusa. O SVS
+    da NASA é a exceção.
+  - A música que vem no vídeo (SVS, ISS) nunca entra: o clipe vai sem o áudio. O logo da NASA e o símbolo do
+    NPS não viram elemento da cena (§7.6).
+  - Não servem: os perfis do USDA e do Forest Service no Flickr (exigem crédito e proíbem editar a foto); as
+    embaixadas no Flickr (várias proíbem uso comercial); o CBP (pede permissão para "international use", e o
+    YouTube é mundial); o CDC (fora do tema); e o Bureau of Reclamation (CC BY-SA no Flickr).
+- **Mapas históricos.** A opção dizia: "Topográficos do USGS, cartas antigas da NOAA, Harvard, Canadá. Mapa
+  antigo em domínio público vai sem crédito na tela."
+  - Entram, pela página:
+    - USGS topoView;
+    - as cartas históricas da NOAA (o site veta robô: a busca é pelo navegador do app);
+    - a Harvard Map Collection, sem usar o nome de Harvard como endosso;
+    - o Leventhal Map Center, da Boston Public Library (pelo navegador do app);
+    - a Stanford Libraries, só no item marcado em domínio público, e nunca nos da coleção Rumsey;
+    - a National Library of Scotland, depois de conferida a licença dos mapas, que não abriu no levantamento.
+  - Mapa antigo em domínio público vai sem crédito na tela. O crédito que a coleção pede vai na descrição do
+    vídeo.
+  - O Atlas of Canada (NRCan) é licença, não domínio público: entra pela Open Government Licence – Canada, com a
+    linha dela, `Contains information licensed under the Open Government Licence – Canada.`, na faixa de crédito
+    e na descrição.
+  - Não servem: o David Rumsey (CC BY-NC-SA, não comercial); Old Maps Online e DPLA (recusaram robô); e os mapas
+    da CIA, que saíram do site com o fim do World Factbook (os que estão no Commons seguem a regra do Commons).
+- **Outros governos.** A opção dizia: "Arquivo nacional da Holanda, União Europeia, Câmara dos Deputados, Canadá,
+  ESO. CC0 ou CC BY, com o crédito na tela."
+  - Entram, pela página:
+    - o Nationaal Archief da Holanda (CC0, pelo Commons);
+    - o EU Audiovisual Service (CC BY 4.0). Vídeo só até 1080p; pessoa comum e música pedem autorização à parte;
+    - a Câmara dos Deputados (CC BY);
+    - as fotos aéreas históricas do NRCan (Open Government Licence – Canada);
+    - o ESO (CC BY 4.0, sem a música);
+    - o Parlamento Europeu no Flickr (CC BY 4.0). A página de termos dele não abriu: lê-se antes do primeiro uso;
+    - o Himawari da JMA (licença de dados públicos 1.0). A resolução se mede no arquivo.
+  - O crédito vai na faixa de crédito, no formato de mídia do `identidade.md` §7 (`<autor> / <acervo> ·
+    <licença>`), com a licença conferida arquivo a arquivo. Vale também para o CC0, porque a opção dizia "com o
+    crédito na tela".
+  - O vídeo abaixo de 4K segue a mesma régua dos federais.
+  - Não servem:
+    - a ONU (cobra por foto em vídeo);
+    - UNESCO e OTAN (não comerciais);
+    - Banco Mundial e FMI no Flickr, Parlamento britânico e Downing Street (NC-ND);
+    - a Agência Brasil (todos os direitos reservados);
+    - o Senado (a política dele veda uso comercial);
+    - o Planalto (proíbe alterar, até recorte);
+    - México, o portal do governo japonês, JAXA, DLR e a Agência Espacial Canadense (proíbem uso comercial);
+    - o governo do Canadá, no padrão dos sites, e as Forças Armadas do Canadá (pedem permissão para uso
+      comercial).
+
+    O kremlin.ru não respondeu e ficou não conferido.
+- **Google Earth e relevo**, e **dados e fronteiras**: são base de mapa, geometria e dado, e moram em
+  `identidade.md` §6 ("Bases, geometria e dados aceitos em 27/09/2026").
+- **O que não foi perguntado.** Os relatórios têm outras fontes que a página não mostrou. Entre elas: a ESA, a
+  British Library, a NYPL, o Rijksmuseum, o Kantei, a Presidência de Taiwan, a AIEA e os arquivos nórdicos. Elas
+  não entram por esta decisão.
+- **Como se busca**:
+  - o `buscar-midia` não conhece essas fontes (a fonte `nasa` dele é a NASA Image and Video Library). O
+    pesquisador busca pela API ou pelo site, com a regra de robô (CLAUDE.md, "A marca") e a mesma procedência:
+    URL, licença copiada, data e sha256;
+  - o que só se busca pelo navegador (o Flickr inteiro, as cartas da NOAA, o Leventhal) o Claude central busca
+    pelo navegador do app;
+  - antes do primeiro uso de uma fonte num vídeo, a página de termos se relê e se compara com o texto copiado em
+    `marca/acervos/`: licença muda.
 
 ### 7.4 · O que continua em aberto: espera o Lucas
 
@@ -472,6 +561,28 @@ do Estado e de jornal, na 3ª (§7.5).
     do canal deixa AP e Getty pendentes (`EDITORIAL_SEM_LICENCA`) até o `_PROCEDENCIA.json` do arquivo trazer
     `excecao_autorizada` com `por`, `em` e `motivo`, escrita depois que o Lucas pesou aquela foto, nunca
     antes.
+- **A Alaska State Library** (Lucas, 27/09/2026). O levantamento achou que ela pede permissão por escrito para
+  uso em vídeo (`marca/acervos/3-museus-bibliotecas-mapas.md`, item 12).
+  - A pergunta: "A Biblioteca do Estado do Alasca pede permissão por escrito para usar as fotos dela em vídeo, e
+    cobra US$ 30 pela alta resolução. O que fazemos?" Ele perguntou de volta: "30 dólares por foto?". A página diz
+    só "High-resolution order form ($30 fee prepayment required before delivery)", sem dizer se é por foto ou por
+    pedido.
+  - A pergunta seguinte: "Com isso esclarecido: o que fazemos com as fotos da Biblioteca do Estado do Alasca?" A
+    resposta: "Entra citando a fonte". A opção dizia: "Como as outras fotos do governo do Alasca: com a fonte na
+    tela e o risco de reclamação, porque a biblioteca pede permissão." A recomendada era pedir a permissão, só
+    quando valer; ele escolheu esta.
+  - A foto da biblioteca (Alaska's Digital Archives, vilda.alaska.edu) segue a regra desta seção: crédito na
+    tela, e na procedência o que a origem diz sobre uso, copiado:
+    - "Permission to reproduce these images in any other form must be obtained in writing from the Alaska State
+      Library or Alaska State Archives. This includes use in electronic or paper publishing, World Wide Web sites,
+      film, DVD, CD, video, exhibits, interior design, and product presentation or advertising."
+    - A página é library.alaska.gov/hist/vilda_rights.html, lida em 27/09/2026 ("Page last updated 03/09/2026").
+  - O arquivo é o que a biblioteca oferece sem pedido: "Download from Web low-resolution 72dpi jpeg (Free)". A
+    alta resolução pede formulário e pagamento: é compra, e só com o sim do Lucas.
+  - A busca é pelo navegador do app, pelo Claude central: o robots do site veta as buscas.
+  - A foto pequena segue a exceção de caso muito específico (`identidade.md` §5): a prioridade é a foto grande.
+  - A pergunta tratou das fotos. Documento da biblioteca continua no §7.1 (só com permissão clara), e vídeo dela
+    não foi perguntado.
 - **Foto ou vídeo de qualquer outra origem sem licença** (prefeitura, empresa, particular, site de terceiro,
   material "courtesy" numa sala de imprensa federal): segue o ofício, e sem licença conferida não vai ao ar.
 

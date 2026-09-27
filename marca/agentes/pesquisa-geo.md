@@ -102,6 +102,13 @@
 - Ponto sobre a costa simplificada do NE pode cair na água: Cascade Point fica a 236 m da costa do NE
   1:10M. Se a cena pintar a terra com o polígono do NE, declare o deslocamento.
 - As Aleutas além de 180° ficam fora do recorte do Alasca.
+- **Fontes aceitas desde 27/09/2026** (Lucas, 4ª rodada; identidade.md §6, "Bases, geometria e dados aceitos em
+  27/09/2026"; as licenças e os créditos em `marca/acervos/5-dados-e-fronteiras.md`):
+  - geometria: geoBoundaries, US Census TIGER, Statistics Canada, LSIB (o arquivo vem pelo navegador do app,
+    com o sim do Lucas à lista, porque o servidor recusa robô), HydroSHEDS v2 e Marine Regions;
+  - relevo: Copernicus DEM, USGS 3DEP (o Alasca a 5 m), GEBCO e ETOPO. O SRTM e o NASADEM param em 60°N;
+  - cada uma com o crédito que a licença dela pede;
+  - não servem: GADM, UN SALB e Eurostat GISCO (não comerciais).
 
 ## 4 · O rótulo (identidade.md §3, §4.1, §7)
 

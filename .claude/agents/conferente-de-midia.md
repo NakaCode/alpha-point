@@ -227,11 +227,13 @@ Leia o que a origem diz, onde ela diz: no `caca`, o `candidatos-caca.json`; no `
 §7.1).
 
 - **A fonte está na lista do canal?** Acervo aberto: só os do §7.3 da mídia (Wikimedia Commons, com licença
-  arquivo a arquivo; NASA; NARA; USGS; Library of Congress; Smithsonian; sala de imprensa de órgão federal; DVIDS).
+  arquivo a arquivo; NASA; NARA; USGS; Library of Congress; Smithsonian; sala de imprensa de órgão federal; DVIDS)
+  e, desde 27/09/2026, as fontes da 4ª rodada (§7.3, "A 4ª rodada": o acervo de qualquer órgão federal dos EUA, os
+  mapas históricos e os outros governos que ela nomeia).
   Banco pago: só os quatro do §1, só B-roll genérico, nas contas individuais do Lucas (§2.3), e só nas
   `plataformas` do item; o Shutterstock, só com `shutterstock.teto_dia` maior que 0 no `marca/midia.json` (§3.4 e
   §8 da mídia). Qualquer outra fonte (Pexels, Pixabay, Openverse, Met, Europeana, Internet Archive, Artlist, Pond5,
-  Reuters…): falha. Essa lista é a do acervo de imagem e vídeo (§7.3): o retrato do §7.2 (inclusive o de pessoa
+  Reuters…) falha, e a que a 4ª rodada pôs em "não servem" ou não perguntou também. Essa lista é a do acervo de imagem e vídeo (§7.3): o retrato do §7.2 (inclusive o de pessoa
   histórica, de arquivo público, museu ou Commons, com licença conferida), o documento do §7.1 e a foto do §7.5
   vêm da própria instituição ou do veículo, e se julgam pelos itens deles, abaixo.
 - **Banco pago**: editorial nunca (§2.1; o campo `editorial`). O clique só aceita a janela de licença do Envato,
@@ -244,8 +246,17 @@ Leia o que a origem diz, onde ela diz: no `caca`, o `candidatos-caca.json`; no `
     paisagem humana ao fundo); marca ou logotipo de terceiro legível (produto, loja, empresa, companhia aérea ou de
     navegação, canal de TV); propriedade privada identificável como assunto do quadro (interior de casa ou de loja,
     obra de arte). É a leitura conservadora do canal; se o Lucas a mudar, vale a dele.
-- **Acervo federal** (NARA, NASA, USGS, DVIDS, sala de imprensa federal): domínio público só a obra do próprio
-  governo federal. Foto "courtesy", de terceiro ou de contratado não é (§7.3).
+- **Acervo federal** (NARA, NASA, USGS, DVIDS, sala de imprensa federal e, desde 27/09/2026, o de qualquer órgão
+  federal): domínio público só a obra do próprio governo federal. Foto "courtesy", de terceiro ou de contratado não
+  é (§7.3). A música que vem no vídeo nunca entra: o clipe vai sem o áudio.
+- **Mapa antigo e outros governos** (4ª rodada, §7.3): a licença do item, lida na página dele.
+  - Mapa: domínio público item a item. Na Stanford, só o item marcado assim, e nunca um da coleção Rumsey; na
+    National Library of Scotland, só depois de conferida a licença dos mapas; o Atlas of Canada, pela Open
+    Government Licence – Canada.
+  - Outros governos: CC0 ou CC BY conferida arquivo a arquivo. Pessoa comum e música no EU Audiovisual Service
+    pedem autorização à parte: sem ela, falha.
+- **Foto da Alaska State Library**: entra pela regra da foto do Estado (§7.5; Lucas, 27/09/2026), com o texto de
+  permissão dela copiado na procedência. Documento dela continua no §7.1.
 - **Commons**: a licença do arquivo, lida na página dele. NC, ND e "desconhecida" nunca: o canal é monetizado, e a
   cena é obra derivada (`scripts/qc-procedencia.mjs`).
 - **Documento** do Estado do Alasca ou de imprensa: só com permissão clara gravada (§7.1). Sem ela, falha, e a cena
@@ -268,7 +279,8 @@ Leia o que a origem diz, onde ela diz: no `caca`, o `candidatos-caca.json`; no `
 - **O crédito na tela** que a marca exige vai em `credito_na_tela` (identidade §7; `marca/midia.md` §3.4 e §7.5):
   domínio público e retrato oficial, sem crédito; Commons com atribuição, `<author> / Wikimedia Commons ·
   <license>`; foto do Estado ou de jornal, `<author> / <outlet>`, ou só o veículo ou o órgão; banco pago, nenhum,
-  salvo a linha do Shutterstock.
+  salvo a linha do Shutterstock; as fontes da 4ª rodada, o que a identidade §7 dá a cada uma (outros governos,
+  `<author> / <acervo> · <license>`; a Open Government Licence – Canada, a linha dela).
 
 **A procedência, pela seção da marca de cada tipo.** Quem a grava é quem baixa e entrega; você a lê e não a edita.
 Se falta nela o que não se mede (a URL de origem, a licença, a permissão ou o uso), `licenca_fonte` falha, e o
@@ -280,7 +292,8 @@ motivo diz o que falta, sem completar. O que se mede, você mede e grava no seu 
 | banco pago, candidato (`caca`) | `candidatos-caca.json` | banco, URL da página do item, ID, e o que a página marca de editorial, IA e pessoas | nada: vale a medida declarada pela página |
 | banco pago, arquivo (§2.8 da mídia) | a linha do item no `manifest.jsonl` e o `_PROCEDENCIA.json` de `_media/_caca/<cena>/<plataforma>/` | banco, URL do item, ID, conta e data | `sha256`, resolução, duração. O PDF de licença vem depois do clipe (skill, §3.2) e não é seu |
 | acervo aberto, pelo `buscar-midia` | a linha do rascunho no `manifest.jsonl`, que o `entregar` copia para o `_PROCEDENCIA.json` da cena (no já entregue, esse `_PROCEDENCIA.json`) | fonte, URL e a licença medida na origem (`licenca_medida_na_fonte: true`; sem ela, o `entregar` grava `a_confirmar`) | `sha256`, resolução, duração |
-| fonte federal, USGS e sala de imprensa federal (§7.3) | a mesma, ou a linha da pauta | órgão autor e URL | `sha256`; a data e o local, se faltarem, lidos na página de origem (§7) e gravados em `fonte.data` e `fonte.local`, com a falta anotada no `motivo` para quem entregou; se a origem não os diz, "a origem não diz" |
+| mapa antigo e outros governos (4ª rodada, §7.3) | a linha do rascunho ou da pauta, e o `_PROCEDENCIA.json` da cena | fonte, URL do item e a licença copiada da página dele (no mapa, a marca de domínio público do item) | `sha256`, resolução e, no vídeo, a duração |
+| fonte federal (qualquer órgão), USGS e sala de imprensa federal (§7.3) | a mesma, ou a linha da pauta | órgão autor e URL | `sha256`; a data e o local, se faltarem, lidos na página de origem (§7) e gravados em `fonte.data` e `fonte.local`, com a falta anotada no `motivo` para quem entregou; se a origem não os diz, "a origem não diz" |
 | retrato (§7.2) | a linha de `pauta-pessoas.json` | fonte, URL, e a licença ou o uso | `sha256`, resolução |
 | documento (§7.1) | a linha de `pauta-documentos.json` | fonte, URL e o texto da permissão | `sha256`, resolução; a data da conferência é a sua, quando você relê a permissão na origem |
 | logo e bandeira (roupa do `pesquisa-logos`) | a linha de `pauta-logos.json` | fonte, URL e licença | `sha256`; a resolução, ou "vetor" |

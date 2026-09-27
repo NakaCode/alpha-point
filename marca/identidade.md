@@ -284,8 +284,64 @@ teste de Juneau, o contraste sobre o campo de gelo era de 1,5:1.
   - **O custo:** o plano cobra por pedido de mapa, e render pede muitos. Olhe o painel da MapTiler no
     primeiro mês.
 
-Qualquer outra base (Google Earth Studio, Mapbox, Esri) só entra **depois** de a licença ser lida e
-registrada aqui.
+Qualquer outra base (Mapbox, Esri) só entra **depois** de a licença ser lida e registrada aqui.
+
+**Bases, geometria e dados aceitos em 27/09/2026.** Lucas, 4ª rodada: "Google Earth e relevo (Recomendado)" e,
+para dados e fronteiras, "Entram (Recomendado)" (`midia.md` §7.3). As licenças lidas na origem e o texto exato de
+cada crédito estão em `marca/acervos/` (relatórios 4 e 5). Antes do primeiro uso num vídeo, a página de termos se
+relê.
+- **Google Earth Timelapse** (CC BY 4.0): vídeo 4K da Terra mudando desde 1984.
+  - A resolução é de 30 m por pixel até 2014 e 19,11 m depois: serve para cidade, rio e geleira vistos de cima,
+    não para close.
+  - Use a versão sem rótulo (`src`).
+  - Crédito na tela: `Google Earth Timelapse (Google, Landsat, Copernicus)`; no período Sentinel, também
+    `Contains modified Copernicus Sentinel data <anos>`. Na descrição, o link da licença e a indicação de
+    mudança.
+- **Google Earth Studio**: voos de câmera em 3D.
+  - As diretrizes do Google liberam o vídeo educativo no YouTube, mesmo monetizado, sem pedir.
+  - O crédito `Google Earth` e o dos provedores de imagem ficam na tela a cena inteira. Nunca se movem para os
+    créditos finais, nem se cobrem ou cortam.
+  - A imagem não se repinta: a paleta do canal não muda a cor do satélite do Google.
+  - Nada de download em massa, e nada dele em trecho de patrocínio ou de propaganda.
+  - Pede conta Google e acesso por formulário: é trabalho do Lucas, na conta dele, antes do primeiro uso.
+- **Relevo**:
+  - Copernicus DEM GLO-30: o mundo a 30 m, inclusive acima de 60°N, com a linha de crédito fixa da licença
+    Copernicus (DLR e Airbus). Pede conta gratuita;
+  - USGS 3DEP: os EUA, com o Alasca a 5 m;
+  - GEBCO e ETOPO: o fundo do mar junto com a terra, com a citação que cada um pede;
+  - o SRTM e o NASADEM param em 60°N: não cobrem a maior parte do Alasca nem o norte do Canadá.
+- **Satélite**:
+  - NASA Worldview e GIBS (domínio público), sem a camada de rótulos, que é da Esri e de outros, e sem a de
+    bordas, que vem do OpenStreetMap;
+  - USDA NAIP: foto aérea dos EUA de 0,3 a 1 m, sem o Alasca;
+  - NOAA GOES (as Américas) e o Himawari da JMA (Ásia e Oceania);
+  - o Copernicus Browser, como ferramenta da base Sentinel-2 com data escolhida.
+- **Fronteiras e divisões**:
+  - geoBoundaries (CC BY 4.0, com a licença de origem de cada limite): o crédito `geoBoundaries` e o da fonte
+    original;
+  - US Census TIGER (domínio público);
+  - Statistics Canada (Open Licence) e os dados do NRCan (Open Government Licence – Canada), com a linha da
+    licença de cada um;
+  - LSIB, do Departamento de Estado (domínio público), mais fino que o Natural Earth. O servidor recusa robô: o
+    arquivo vem pelo navegador do app, com o sim do Lucas à lista;
+  - HydroSHEDS v2, os rios a 30 m (CC BY 4.0), e Marine Regions, as zonas marítimas (CC BY).
+
+  A fronteira disputada segue a regra logo abaixo.
+- **Dados para gráfico**, com o crédito de §7 na tela (`Source: <instituição>, <ano>`) e a licença na descrição:
+  - Banco Mundial WDI (CC BY 4.0, conferida indicador por indicador: a página geral diz "não comercial, salvo
+    indicação");
+  - Our World in Data (CC BY; o dado de terceiro vale pela licença dele, e o crédito cita os dois);
+  - Census, BLS, BEA e EIA (domínio público);
+  - Global Carbon Project, GHSL e WorldPop (CC BY 4.0).
+- **Não servem**, porque o levantamento reprovou:
+  - GADM, UN SALB e Eurostat GISCO (não comerciais);
+  - ACLED (uso comercial pede licença paga);
+  - o Eurostat para país de fora da Europa;
+  - Esri World Imagery (não comercial sem permissão) e Mapbox (vídeo só com direito comprado);
+  - o satélite EOX de 2018 a 2025 (não comercial). Do EOX, só a camada de 2016 é livre, e é a que a pré-v1 usa:
+    nunca trocar de ano.
+- **O que não foi perguntado**: o relatório tem outras fontes marcadas "recomendo" que a página não mostrou (entre
+  elas Overture, ESA WorldCover e Maddison). Não entram por esta decisão.
 
 **Fronteira disputada**: linha tracejada e rótulo `DISPUTED`. Mostra a linha de controle de fato e
 nunca adota a reivindicação de um lado.
@@ -293,9 +349,11 @@ nunca adota a reivindicação de um lado.
 **Doutrina de mídia**:
 - **Acervos abertos**: Library of Congress, National Archives (NARA), NASA, USGS, Smithsonian, Wikimedia
   Commons (licença conferida arquivo a arquivo), e as fontes federais: sala de imprensa de órgão federal dos
-  EUA e DVIDS. Nenhum outro acervo gratuito: Pexels, Pixabay e os demais ficam fora (`midia.md` §7.3, Lucas,
-  26/09/2026). Foto do governo do Alasca e de jornal, e vídeo do governo do Alasca, entram citando a fonte
-  (`midia.md` §7.5); vídeo de jornal, só com licença conferida (Lucas, 27/09/2026).
+  EUA e DVIDS. Desde 27/09/2026, também as fontes da 4ª rodada (`midia.md` §7.3): o acervo de qualquer
+  órgão federal dos EUA, os mapas históricos e os outros governos que ela nomeia. Nenhum outro acervo
+  gratuito: Pexels, Pixabay e os demais ficam fora (`midia.md` §7.3, Lucas, 26/09/2026). Foto do governo do
+  Alasca e de jornal, e vídeo do governo do Alasca, entram citando a fonte (`midia.md` §7.5); vídeo de jornal,
+  só com licença conferida (Lucas, 27/09/2026).
 - **Catálogo pago**: Envato Elements, Motion Array, Storyblocks e Shutterstock. A ordem de uso, o
   que cada licença permite e como registrar cada download estão em **`midia.md`**.
 - **Foto grande e com qualidade** (Lucas, 27/09/2026: "A prioridade ainda deve ser fotos grandes e com qualidade, a exceção deve ser para casos MUITO específicos"):
@@ -367,6 +425,13 @@ nunca adota a reivindicação de um lado.
 - **Página oficial do Estado do Alasca lida pela cópia arquivada** (web.archive.org): o crédito é o do órgão
   que publicou a página (no Juneau, a Divisão de Eleições do Alasca), nunca o arquivo (Lucas, 27/09/2026;
   CLAUDE.md, "A marca"). A cópia é fonte do texto, não permissão para mostrar a página (`midia.md` §7.1).
+- **As fontes da 4ª rodada** (Lucas, 27/09/2026; `midia.md` §7.3 e §6):
+  - órgão federal dos EUA e mapa antigo em domínio público: sem crédito na tela. O crédito que a coleção de
+    mapas pede vai na descrição;
+  - outros governos, em CC0 ou CC BY: o crédito de mídia na tela, `<autor> / <acervo> · <licença>`;
+  - Open Government Licence – Canada (Atlas of Canada, fotos aéreas do NRCan): a linha da licença,
+    `Contains information licensed under the Open Government Licence – Canada.`;
+  - Google Earth, relevo, satélite, fronteiras e dados: o crédito que o §6 dá a cada um.
 - B-roll de banco pago não leva crédito na tela, **exceto Shutterstock**. Vai a linha
   `Image(s) and/or video used under license from Shutterstock.com` na faixa de crédito da última cena,
   repetida na descrição do YouTube. Em contexto editorial ou de comentário, também

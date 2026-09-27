@@ -117,7 +117,8 @@ lugar ou objeto real, e diga que é proposta.
   do Lucas e fonte ainda não liberada são `FALTA`, com a `query` em inglês dos EUA — nunca `construída`.
 - **Evento real específico** (votação, pessoa pública, obra datada) só de acervo aberto ou oficial:
   NARA, Library of Congress, NASA, USGS, Smithsonian, Commons com licença conferida, e as fontes federais:
-  sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3); **nunca** de banco
+  sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3), e as fontes da 4ª
+  rodada (Lucas, 27/09/2026; midia.md §7.3); **nunca** de banco
   pago (midia.md §1). O retrato de pessoa citada segue midia.md §7.2.
 - **B-roll genérico** (paisagem, cidade, porto, indústria, drone) vem dos bancos pagos, na ordem Envato
   Elements → Motion Array → Storyblocks → Shutterstock, com as regras de midia.md §2 (editorial nunca;

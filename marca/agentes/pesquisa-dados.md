@@ -86,6 +86,15 @@ já tem.
   como estadual (pesquisado a pedido do Lucas, 26/09/2026; midia.md §7.1, "O estudo de 2018").
 - Dado estadual dos EUA vem do órgão que o produz, não de `src/agent/data-tools.mjs` (o que ele cobre:
   CLAUDE.md, tropeços do apoio).
+- **Fontes aceitas desde 27/09/2026** (Lucas, 4ª rodada: "Entram (Recomendado)"; identidade.md §6; as licenças
+  e os créditos em `marca/acervos/5-dados-e-fronteiras.md`):
+  - Banco Mundial WDI (CC BY 4.0, conferida indicador por indicador: a página geral diz "não comercial, salvo
+    indicação");
+  - Our World in Data (CC BY; o dado de terceiro vale pela licença dele, e o crédito cita os dois);
+  - Census, BLS, BEA e EIA (domínio público);
+  - Global Carbon Project, GHSL e WorldPop (CC BY 4.0);
+  - não servem: ACLED (uso comercial pede licença paga) e o Eurostat para país de fora da Europa (não
+    comercial). FMI, OCDE, IEA e ACNUR ficaram não conferidos.
 
 ## 3 · Na tela (identidade.md §7; voz.md §1)
 

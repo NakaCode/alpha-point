@@ -75,8 +75,18 @@ necessidade.
 - **Não há base de emergência declarada.** Se a MapTiler cair (403 ou 429 no terminal), é bloqueio, com a saída
   colada no report. Outra base só entra depois de a licença ser lida e registrada na identidade.md §6. Esri
   não: vídeo monetizado exige licença escrita da Esri (`<motor>/docs/CREDITO-DE-MAPA.md` §0).
+- **Bases aceitas desde 27/09/2026** (Lucas, 4ª rodada; identidade.md §6, "Bases, geometria e dados aceitos em
+  27/09/2026"):
+  - o Google Earth Timelapse (vídeo 4K da Terra mudando desde 1984) e o Google Earth Studio (voos 3D), cada um
+    com o crédito do Google na tela como a §6 manda. O satélite do Google não se repinta com a paleta do canal,
+    e o Earth Studio pede conta Google e acesso por formulário, que é trabalho do Lucas;
+  - o relevo do Copernicus DEM, do USGS 3DEP, do GEBCO e do ETOPO;
+  - o satélite do Worldview/GIBS, do NAIP, do GOES, do Himawari e do Copernicus Browser.
+
+  No Juneau, a base continua a MapTiler.
 - DECISÃO DO LUCAS PENDENTE: a política de base dos próximos vídeos. A identidade aceita várias bases por escala
-  (Blue Marble, Landsat, Sentinel-2, MapTiler; §6), e o ofício pede uma por vídeo. No Juneau é só MapTiler.
+  (Blue Marble, Landsat, Sentinel-2, MapTiler e, desde 27/09/2026, as do item acima; §6), e o ofício pede uma
+  por vídeo. No Juneau é só MapTiler.
 
 ## 3 · A base na tela: tratamento e cores (identidade.md §1, §2 e §6; tokens.css)
 

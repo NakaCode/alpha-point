@@ -235,9 +235,13 @@
   da cena, ou baixada fora da conta individual do Lucas; midia.md §2.3, §2.8 e §8) reprova
   (`fonte`). Evento real específico vindo de banco pago também (midia.md §1).
   - Acervo gratuito, só os oficiais e as fontes federais: Commons, NASA, NARA, USGS, Library of Congress,
-    Smithsonian, sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3). Mídia
-    de Pexels, Pixabay, Openverse, Met, Europeana ou Internet Archive reprova (`fonte`). Ter a chave delas na
-    máquina não as libera.
+    Smithsonian, sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3), e as
+    fontes da 4ª rodada (Lucas, 27/09/2026; midia.md §7.3). Mídia de Pexels, Pixabay, Openverse, Met, Europeana
+    ou Internet Archive reprova (`fonte`), e a de fonte que a 4ª rodada pôs em "não servem" também. Ter a
+    chave delas na máquina não as libera.
+  - O crédito das fontes da 4ª rodada segue identidade.md §6 e §7: nenhum na tela para órgão federal e mapa
+    antigo em domínio público; o crédito de mídia na tela para os outros governos (CC0 ou CC BY) e a linha da
+    licença canadense. O do Google Earth fica na tela a cena inteira: movido, coberto ou cortado, reprova.
   - Sala de imprensa federal e DVIDS são domínio público federal: crédito na tela para elas reprova como
     supérfluo (acima). Foto "courtesy" ou de terceiro dentro delas não é obra federal: sem licença, reprova
     (`fonte`; midia.md §7.3). A foto da sala de imprensa do governo do Alasca é foto do Estado (acima).

@@ -14,6 +14,13 @@ página de licença de cerca de 170 fontes. Algumas aparecem em mais de um grupo
 hoje continua em `marca/midia.md` §7.3 (foto e vídeo) e em `marca/identidade.md` §6 (base de mapa). O que ele
 aprovar vai para lá, com a data e a resposta dele, e esta pasta fica como a prova das licenças.
 
+**O que o Lucas decidiu, em 27/09/2026:**
+- os quatro grupos da página (federais dos EUA, mapas históricos, outros governos, Google Earth e relevo) e as
+  fontes de dados e fronteiras entram, cada fonte como a página a mostrou (`marca/midia.md` §7.3, "A 4ª rodada",
+  e `marca/identidade.md` §6);
+- a foto da Alaska State Library entra citando a fonte (`marca/midia.md` §7.5);
+- o que os relatórios têm e a página não mostrou não foi perguntado, e não entra.
+
 | Arquivo | O grupo |
 |---|---|
 | `1-federais-eua.md` | órgãos federais dos EUA além dos que o canal já usa: NASA SVS, NASA Earth Observatory, NOAA, NPS, USFWS, USACE, USDA, FEMA, CBP e outros |
@@ -39,7 +46,8 @@ A página que o Lucas viu para escolher é o artifact "Acervos livres e oficiais
   - a State Library of New South Wales lida por outro programa, quando o leitor normal recebeu página vazia. Pela
     leitura estrita, ela conta como não conferida.
 - **O que já mexe no canal** (achados, não decisões):
-  - a Alaska State Library pede permissão por escrito para uso em vídeo (`3-museus-bibliotecas-mapas.md`, item 12);
+  - a Alaska State Library pede permissão por escrito para uso em vídeo (`3-museus-bibliotecas-mapas.md`, item 12).
+    O Lucas decidiu que a foto dela entra citando a fonte (`marca/midia.md` §7.5);
   - do satélite EOX, só a camada de 2016 é livre para uso comercial (`5-dados-e-fronteiras.md`);
   - o SRTM e o NASADEM param em 60°N: para o Alasca, use o USGS 3DEP ou o Copernicus DEM;
   - a Agência Brasil não é mais Creative Commons;

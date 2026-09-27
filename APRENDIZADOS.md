@@ -714,3 +714,32 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   todo canal no Windows que baixar do Motion Array tem o 2. O motor poderia fazer a prova do perfil num verbo, e o
   registrador poderia ele mesmo recusar um `marcar` feito menos de 15 s depois de mover um arquivo da pasta
   Downloads. Vale avisar o Lucas.
+
+## 27/09/2026 — acervos livres e oficiais (pré-v1 em `7ab9543`)
+
+### 41. As licenças de uns 170 acervos lidas na origem, e o que elas mudam no motor
+
+- **Problema:** o `buscar-midia` da pré-v1 conhece 12 fontes, e o canal só liga cinco (mais a sala de imprensa
+  federal, fora dele). Para geografia faltavam vídeo 4K de satélite, mapa histórico e fronteira com licença
+  comercial, e ninguém tinha lido as licenças.
+- **O que resolveu:** cinco pesquisadores leram, em 27/09/2026, a página de licença de cerca de 170 fontes, sem
+  contornar bloqueio (site que recusou robô ficou "não conferido"). O resultado está em `marca/acervos/`. O Lucas
+  aprovou quatro grupos e as fontes de dados e fronteiras (`marca/midia.md` §7.3, "A 4ª rodada";
+  `marca/identidade.md` §6).
+- **O que é do motor**, e vale para qualquer canal que use a pré-v1:
+  - o `src/mapa/perfis.json` escreve o crédito da EOX com "Contains modified Copernicus Sentinel data 2016 &
+    2017", e o WMTS da EOX diz hoje "(Contains modified Copernicus Sentinel data 2016)";
+  - da EOX, só a camada de 2016 é CC BY 4.0. As de 2018 a 2025 são CC BY-NC-SA 4.0: o motor nunca deveria
+    oferecer outro ano a um canal monetizado;
+  - o SRTM e o NASADEM param em 60°N. Para relevo acima disso: o USGS 3DEP (EUA, o Alasca a 5 m) ou o Copernicus
+    DEM (o mundo);
+  - no NASA GIBS e no Worldview, a camada de rótulos é da Esri e de outros, e a de bordas vem do OpenStreetMap.
+    Só as imagens são domínio público;
+  - o `buscar-midia` não tem o NASA Scientific Visualization Studio: vídeo 4K e 5K em domínio público, com API
+    sem chave. Seria a fonte de vídeo 4K livre mais útil para geografia;
+  - o robots.txt do Flickr veta tudo, inclusive a API: nenhum canal busca lá por script;
+  - endereços que mudaram: o CIA World Factbook acabou em 04/02/2026, o NASA NEO foi desligado em setembro de 2026
+    e o Earth Observatory mudou para science.nasa.gov.
+- **Por que serve a qualquer canal:** a licença de uma fonte não depende do nicho. Um canal de culinária usaria os
+  mesmos federais, o mesmo Commons e as mesmas regras de crédito. O motor poderia guardar o levantamento como
+  catálogo comum, com a data da leitura, e o `buscar-midia` poderia ganhar o SVS. Vale avisar o Lucas.

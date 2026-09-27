@@ -145,6 +145,7 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
   bancos pagos"). O pedido é a lista do que procurar: termos em inglês, cena, duração e por que é genérico.
 - **Acervo gratuito, só os oficiais e as fontes federais** (Lucas, 26/09/2026; midia.md §7.3): Wikimedia
   Commons, NASA, NARA, USGS, Library of Congress, Smithsonian, sala de imprensa de órgão federal e DVIDS.
+  Desde 27/09/2026, também as fontes da 4ª rodada (midia.md §7.3).
   Openverse, Met, Europeana, Internet Archive, Pexels e Pixabay ficam fora: não os peça (o `buscar-midia`
   já os desliga, por `marca/midia.json`). Item da Library
   of Congress, só pelo navegador do app, com o Lucas vendo (por quê: CLAUDE.md, tropeços do apoio).
