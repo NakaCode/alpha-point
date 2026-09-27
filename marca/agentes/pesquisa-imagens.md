@@ -48,9 +48,13 @@
 - **Site que recusa leitura automática** (403, 405, captcha, verificação de robô, página "Just a
   moment…"): pare nele. Não tente de novo por `curl`, por outro programa, trocando o User-Agent nem
   qualquer outro cabeçalho. Diga no relatório a URL e o que ela respondeu; o Claude central confere no
-  navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md, item 14). A cópia arquivada
-  (web.archive.org e afins) de um site que recusou robô também não se usa: DECISÃO DO LUCAS PENDENTE se vale
-  como cópia ou conta como contorno (CLAUDE.md, "A marca"). Até lá, o item fica NÃO CONFERIDO.
+  navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md, item 14). Se o site é
+  **página oficial do Estado do Alasca**, a cópia pública arquivada (web.archive.org) dela **vale como fonte**
+  do que a página dizia (Lucas, 27/09/2026; CLAUDE.md, "A marca"): data, local, autor e crédito. Registre a URL
+  da cópia, a original e a data da captura; o crédito na tela é o do órgão, nunca o arquivo. Ler essa cópia não
+  é contorno. Ela não prova licença, permissão, "courtesy" nem o que a origem diz sobre uso: isso se lê na
+  origem de hoje. A cópia arquivada de outro site (a Library of Congress, jornal, empresa) não foi perguntada ao
+  Lucas e não se usa. O que a cópia não resolve vai ao navegador do app.
 - **Quem decide é o Lucas Rosa** (`canal.json › owner`). As leis `[PESQ-NN]` que o agente cita
   (`seed/regras/PESQ.md`) e os guias `knowledge/MIDIA-REAL.md` e `knowledge/FONTES-MIDIA.md` vieram do
   Top10: valem como ofício. Onde falam de dono, conta, banco, norte editorial, formato ou exemplo, vale
@@ -187,7 +191,10 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
     (Content ID), e deixe a foto para o Lucas pesar (o conferente a dá `pendente_lucas`); a `excecao_autorizada`
     só se escreve depois do ok dele, a partir da `excecao_lucas` que o conferente gravou.
     Foto Reuters não entra: o portão a veta (midia.md §7.4, item 2);
-  - vídeo do Estado ou de jornal não é esta regra: sem licença conferida, fica fora (midia.md §7.4, item 3).
+  - o **vídeo do governo do Alasca** segue esta mesma regra (Lucas, 27/09/2026; midia.md §7.5): crédito na tela
+    e a procedência acima, com a base `midia.md §7.5 (Lucas, 27/09/2026)`. A medida é a do footage (§6);
+  - vídeo de jornal, de veículo ou de agência não é esta regra: só com licença conferida na origem, porque os
+    jornais costumam reivindicar direitos no YouTube; sem ela, fica fora (Lucas, 27/09/2026; midia.md §7.5).
 - **Foto de outra origem sem licença** (prefeitura, empresa, particular, site de terceiro) não entra: procure
   outro registro nos acervos do §3 (midia.md §7.5).
 - **Retrato de pessoa citada** é do `pesquisa-pessoas` (midia.md §7.2).

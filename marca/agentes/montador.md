@@ -87,6 +87,10 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
 | **DOCUMENTO** — tratado, lei, cédula, manchete real, grifado | `documento` | |
 | fala citada de pessoa real | `citacao` | até **12 palavras** na tela (identidade.md §4.1); o verbatim sai do `roteiro-narrador.md` |
 
+- **Mais mapa, quando a fala pede** (Lucas, 27/09/2026, do vídeo 2 em diante; identidade.md §5): fala de
+  lugar, distância, rota, território, fronteira ou posição relativa vai a `mapa` antes de REGISTRO genérico e
+  de PRANCHA. Fala que não é sobre espaço não vira mapa forçado, e evento nomeado continua pedindo o registro
+  real. O report diz quantas cenas e quantos segundos são mapa.
 - **Nunca** `titulo-topico`, `navegacao`, `apresentador*` nem `anima:false` (que aqui é tela preta).
 - **Mapa seguido de mapa é UMA viagem de câmera** (`fundir`), nunca corte; corte seco só na troca de
   regime, mapa → registro, registro → prancha (identidade.md §4.4).
@@ -143,9 +147,12 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
   gravar a permissão, ou dizer que não há.
 - **Foto do governo do Alasca e de jornal** (inclusive de agência), que não é retrato de pessoa citada:
   pode ser pedida; entra com a fonte creditada na tela (Lucas, 26/09/2026; midia.md §7.5). Foto de agência
-  espera o ok do Lucas àquela foto (Content ID); Reuters não entra (midia.md §7.4, item 2).
-- **Logo de jornal, de órgão do Alasca e o selo do Estado** não se pedem: vai o nome da instituição escrito
-  na pílula `--rotulo` (Lucas, 26/09/2026; midia.md §7.6).
+  espera o ok do Lucas àquela foto (Content ID); Reuters não entra (midia.md §7.4, item 2). O vídeo do
+  governo do Alasca também pode ser pedido, com a fonte na tela; o de jornal, só com licença conferida
+  (Lucas, 27/09/2026; midia.md §7.5).
+- **Logo de qualquer instituição** (jornal, órgão do Alasca, órgão federal, empresa, liga) **e o selo do
+  Estado** não se pedem: vai o nome da instituição escrito na pílula `--rotulo` (Lucas, 26/09/2026 e, a logo
+  federal e a de outras instituições, 27/09/2026; midia.md §7.6).
 - `needs.geo`: quando a geometria já existe, o `id` é o slug registrado no `pauta-geo.json`, e o `tipo`
   é o que cabe no enum (`estado_mundo`, `cidade`, `outro` para rio, estrada e canal). `uf_br` e
   `circuito_f1` nunca.

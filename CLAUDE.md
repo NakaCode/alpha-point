@@ -381,6 +381,12 @@ outro modelo no despacho:
 no claude.ai: o navegador gasta do mesmo limite da assinatura Max (`C:/projetos/regie-v1/docs/CONTAS.md`, "Uma cota
 para tudo") e não tem as fontes locais nem a bancada do canal.
 
+**Mais mapa** (Lucas, 27/09/2026: "nos próximos devemos usar mais mapas (mas claro que somente se o contexto
+permitir"): do vídeo 2 em diante, a pauta e o roteiro preferem o ângulo espacial quando o assunto o tem, e fala de
+lugar, rota, distância ou território vai a mapa antes de B-roll genérico. Nunca mapa forçado. O Juneau fica como
+está. A regra mora em `marca/identidade.md` §5, e as roupas do montador, do diretor-de-arte e do regente apontam
+para lá.
+
 Ainda não se viu o app subir um agente com `fable`. Se não subir, avise o Lucas; não edite o `.md`. Agente novo
 em `.claude/agents/` só carrega numa **sessão nova** do app.
 
@@ -506,7 +512,9 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
 
 **O método** é o da pré-v1, com a skill adaptada ao canal:
 - A skill `.claude/skills/cacar-no-chrome/SKILL.md` é a **cópia adaptada do canal**, com sha256
-  `ebce3123c0129a3576749170ed501727e24df22315f5ebe640b7134f0da78de5` em 26/09/2026. Na última revisão: o `inUse`
+  `8cb8abc0b3037e6ec14ec75bd46b77615e827039bab1b1bbca5e0915fc49ea4b` em 27/09/2026. Em 27/09, uma linha só: o
+  exemplo de gatilho do `pendente_lucas` perdeu o "vídeo do Estado" (§2.5), que o Lucas decidiu nesse dia
+  (`marca/midia.md` §7.5). Na revisão de 26/09: o `inUse`
   e a conta conferidos também antes do clique do PDF (§0, item 5, e §3.2); a regra do banco cujo primeiro PDF
   não cita o ID (§3.2); o `pendente_lucas` que hoje nenhum candidato de banco produz (§2.5); e o perfil e a conta
   quando o Lucas baixa ele mesmo (§5). Antes: a seleção do navegador conferida pelo `inUse`, a prova refeita
@@ -794,10 +802,38 @@ Todo passo que pede "a marca ativa" lê os três. `marca/prancha.html` é a conf
 Site que recusa leitura automática (403, captcha, verificação de robô) não se contorna: nem por
 `curl`, nem por outro cliente, nem trocando cabeçalho. Vale para você e para todo subagente, e o
 pedido a ele tem de dizer isso. Use a cópia local, ou confira pelo navegador do app com o Lucas vendo,
-e pare se o site pedir verificação. A cópia arquivada (web.archive.org e afins) de um site que recusou robô
-vale como cópia ou conta como contorno? DECISÃO DO LUCAS PENDENTE (no Juneau, em 23/09, as eleições foram lidas
-assim: `roteiros/juneau/roteiro-editor.md` › "Voláteis"). Até ele decidir, ninguém a usa em checagem ou
-pesquisa nova: o item fica NÃO CONFERIDO e vai ao navegador do app.
+e pare se o site pedir verificação.
+
+**A cópia arquivada de página oficial do Alasca vale como fonte** (decisão do Lucas, 27/09/2026). A pergunta:
+"Algumas páginas oficiais do Alasca bloqueiam leitura automática. Os resultados das eleições de 1974 a 2002 e os
+folhetos oficiais foram lidos pela cópia pública do web.archive.org. Essa cópia vale como fonte?" A resposta:
+"Vale, com a data (Recomendado)". A opção dizia: "A cópia é uma foto pública da página oficial. Registro a data da
+cópia, e o crédito na tela continua sendo a Divisão de Eleições do Alasca."
+- **O que cobre:** a cópia pública do web.archive.org de **página oficial do Estado do Alasca** que recusou robô:
+  a da Divisão de Eleições (`elections.alaska.gov`), a do Legislativo (`akleg.gov`, com o BASIS) e a de outro
+  órgão do Estado. Ela vale como fonte **do que a página dizia na data da captura**: o texto, o número, o nome,
+  a data. A procedência ou a checagem registra a URL da cópia, a URL original e a **data da captura**, que é a do
+  endereço da cópia (`web/<AAAAMMDDhhmmss>/…`). O crédito na tela é o do órgão que publicou a página (no Juneau,
+  a Divisão de Eleições do Alasca), nunca o arquivo.
+- **O que não cobre:**
+  - **a licença e a permissão de uso** de documento (`marca/midia.md` §7.1) ou de foto e vídeo do Estado (§7.5),
+    nem o "courtesy" nem o que a origem diz sobre uso. A pergunta tratou da cópia como fonte do texto, e a
+    licença pode ter mudado depois da captura. Elas se leem na origem, hoje; se o site recusa robô, no navegador
+    do app, com o Lucas vendo;
+  - **o fato que muda** (os "Voláteis" do dossiê): continua pedindo a leitura de hoje;
+  - **a cópia arquivada de outros sites**: federais (a Library of Congress, o eCFR), jornais, empresas, o
+    LinkedIn, prefeituras. Não foi perguntado. Para eles vale a regra de antes: ninguém usa a cópia em checagem
+    ou pesquisa, e o item fica NÃO CONFERIDO e vai ao navegador do app, com o Lucas vendo.
+- **O que não muda:** a regra acima continua. Bloqueio não se contorna por outro cliente nem trocando cabeçalho.
+  Ler a cópia pública arquivada da página oficial do Alasca não é contorno, por decisão do Lucas. Se o próprio
+  arquivo recusar a leitura automática, vale a mesma regra: para ali. E o que o arquivo não tiver (página sem
+  captura, captura sem o trecho) continua indo ao navegador do app, com o Lucas vendo.
+- No Juneau, os boletins e os folhetos da Divisão de Eleições lidos assim em 23/09
+  (`roteiros/juneau/roteiro-editor.md` › "Voláteis") valem como fonte. A data de cada captura está em
+  `url_acessada`, no `pautas/juneau/fundamento.json`. A pergunta nomeou os resultados de 1974 a 2002; os boletins
+  de 1960 e 1962 (doc-08 e doc-09) são do mesmo arquivo oficial da Divisão (`elections.alaska.gov/Core/Archive/`)
+  e entram pela primeira frase dela, "páginas oficiais do Alasca". A permissão para mostrar a página original
+  continua a conferir (`marca/midia.md` §7.1), no navegador do app.
 
 ## O vídeo fala inglês; a casa fala português
 

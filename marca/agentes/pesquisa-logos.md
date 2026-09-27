@@ -45,9 +45,12 @@
 - **Site que recusa leitura automática** (403, 405, captcha, verificação de robô, página "Just a
   moment…"): pare nele. Não tente de novo por `curl`, por outro programa, trocando o User-Agent nem
   qualquer outro cabeçalho. Diga no relatório a URL e o que ela respondeu; o Claude central confere no
-  navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md, item 14). A cópia arquivada
-  (web.archive.org e afins) de um site que recusou robô também não se usa: DECISÃO DO LUCAS PENDENTE se vale
-  como cópia ou conta como contorno (CLAUDE.md, "A marca"). Até lá, o item fica NÃO CONFERIDO.
+  navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md, item 14). Se o site é
+  **página oficial do Estado do Alasca**, a cópia pública arquivada (web.archive.org) dela **vale como fonte**
+  do que a página dizia (Lucas, 27/09/2026; CLAUDE.md, "A marca"), como o nome oficial de um órgão: registre a
+  URL da cópia, a original e a data da captura. Ler essa cópia não é contorno. Ela não prova licença de
+  bandeira nem de arquivo, que se lê na origem de hoje. A cópia arquivada de outro site não foi perguntada ao
+  Lucas e não se usa. O que a cópia não resolve vai ao navegador do app.
 - **Quem decide é o Lucas Rosa** (`canal.json › owner`). As leis `[PESQ-NN]` (`seed/regras/PESQ.md`)
   e `knowledge/MIDIA-REAL.md` vieram do Top10: valem como ofício; onde falam de dono, fundo, cor ou
   exemplo, vale esta roupa.
@@ -63,7 +66,8 @@ O canal tem três fundos, e cada um pede uma variante:
 | DADO, DOCUMENTO | `--papel` `#ECE8DF`, claro | a original, ou a preta |
 
 Quando o espelho não disser o modelo, entregue a original e a branca. A variante é a monocromática do
-vetor original; recolorir não é (ofício).
+vetor original; recolorir não é (ofício). Desde 27/09/2026, nenhuma logo de instituição vai à cena (§4), e esta
+tabela não tem uso hoje: fica para o dia em que a marca deixar entrar uma.
 
 ## 2 · Bandeira (identidade.md §1, §2, §5)
 
@@ -84,22 +88,23 @@ vetor original; recolorir não é (ofício).
 
 ## 3 · Tamanho
 
-A identidade não tem papel "logo" (§4.1). **DECISÃO DO LUCAS PENDENTE: a altura da logo em destaque e da
-logo como selo.** Até lá: vetor (SVG) sempre que existir, porque escala sem perda; raster, na maior
-resolução disponível, com a medida no relatório. A medida sai do `ffprobe` (`identify` e `medir-imagem` não
-servem aqui; CLAUDE.md, "Os especialistas"). SVG não precisa dela.
+A identidade não tem papel "logo" (§4.1), e desde 27/09/2026 nenhuma logo vai à cena (§4): a altura da logo
+em destaque e da logo como selo deixou de ser pergunta. Para a bandeira: vetor (SVG) sempre que existir, porque
+escala sem perda; raster, na maior resolução disponível, com a medida no relatório. A medida sai do `ffprobe`
+(`identify` e `medir-imagem` não servem aqui; CLAUDE.md, "Os especialistas"). SVG não precisa dela.
 
-## 4 · Imprensa, órgão do Alasca e o selo do Estado: só o nome escrito
+## 4 · Logo de qualquer instituição, e o selo do Estado: só o nome escrito
 
-**Regra** (Lucas, 26/09/2026: "Só o nome escrito"; midia.md §7.6): logo de jornal ou veículo de imprensa
-(ex.: Anchorage Daily News, KTOO), logo de órgão do Estado do Alasca (ex.: Alaska Division of Elections,
-Alaska DOT&PF, Alaska Marine Highway) e o selo do Estado **não vão à cena**, nem redesenhados.
+**Regra** (midia.md §7.6): logo de jornal ou veículo de imprensa (ex.: Anchorage Daily News, KTOO), logo de
+órgão do Estado do Alasca (ex.: Alaska Division of Elections, Alaska DOT&PF, Alaska Marine Highway) e o selo do
+Estado (Lucas, 26/09/2026: "Só o nome escrito"), e logo de órgão federal (ex.: FHWA, os tribunais federais, o
+Federal Register) e de outras instituições, públicas ou privadas (ex.: NFL, Dittman Research) (Lucas,
+27/09/2026: "Só o nome escrito (Recomendado)"), **não vão à cena**, nem redesenhados. Onde o ofício pede a logo
+da entidade, vale esta roupa.
 - Vai o **nome da instituição em Inter 700 na pílula `--rotulo`** (`#0B0F14` a 88 %, texto em `--tinta`;
   identidade.md §2, §3, §4.1), nunca numa caixa em `--destaque`, que é a cor do protagonista.
-- Você não busca nem entrega a logo nem o selo. Entrega o nome oficial, como a instituição o escreve, com a
-  URL de onde saiu; a linha curta que o explica é a do §5.
-- **Logo de órgão federal e de outras instituições** não foi perguntado ao Lucas: **DECISÃO DO LUCAS
-  PENDENTE**, sem regra nova. Até lá vale o ofício, com o tamanho pendente do §3.
+- Você não busca nem entrega logo nem selo. Entrega o nome oficial, como a instituição o escreve, com a URL de
+  onde saiu; a linha curta que o explica é a do §5. A bandeira não é logo: segue o §2.
 
 ## 5 · A linha que explica a entidade
 
@@ -158,7 +163,6 @@ REGIE_MOTOR=<motor> node scripts/qc-procedencia.mjs <proj>
     `_media/logo/`, e sem arquivo sem veredito (CLAUDE.md, "Os especialistas").
 - Não há ledger de insumos nem seção "A ESCADA" neste canal. A devolução é a **última linha da sua
   resposta**: a cena, o degrau em que você parou e quem decide agora — `montador` (o que entra e onde),
-  `regente-de-imagem` (o que a frase exige da tela), `diretor-de-arte` (se mexe no arco) e o Lucas, quando
-  for logo de órgão federal ou de outra instituição (§4, pendente). Logo de imprensa, de órgão do Alasca e o
-  selo não se levam a ele: a regra já é o nome escrito (midia.md §7.6). A troca de modo é o nome da
-  instituição na tipografia do canal, nunca uma logo redesenhada.
+  `regente-de-imagem` (o que a frase exige da tela) e `diretor-de-arte` (se mexe no arco). Nem logo de
+  instituição nem o selo vão ao Lucas: a regra já é o nome escrito (§4; midia.md §7.6). A troca de modo é o
+  nome da instituição na tipografia do canal, nunca uma logo redesenhada.

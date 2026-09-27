@@ -47,7 +47,9 @@
 ## 1 · A regra da rede (você tem `WebSearch` e `WebFetch`)
 
 Site que recusa leitura automática — **403, 405, captcha, verificação de robô** — não se contorna por
-meio nenhum: nem `curl`, nem outro cliente, nem trocando cabeçalho. Pare, e escreva no laudo, na linha
+meio nenhum: nem `curl`, nem outro cliente, nem trocando cabeçalho. Pare no site. Se ele é página oficial do
+Estado do Alasca, leia a cópia pública arquivada da página, que vale como fonte (abaixo). Sem ela, sem o trecho
+nela, ou se o site é de outro dono, escreva no laudo, na linha
 do item: **"NÃO FOI CHECADO — o site recusou robô (<URL>, <código>)"**. A sessão central confere no
 navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md item 14, em que um subagente
 levou 403 do Legislativo e contornou por `curl`).
@@ -55,9 +57,13 @@ levou 403 do Legislativo e contornou por `curl`).
 - Já se sabe que recusam robô: **akleg.gov** e **elections.alaska.gov** (HTTP 405 e verificação humana:
   `roteiros/juneau/roteiro-editor.md` › "Voláteis"; `roteiros/juneau/volateis-conferidos.md`). Comece pela
   cópia local: o trecho que o dossiê registrou em "De onde vem cada frase".
-- No Juneau, em 23/09/2026, o site de eleições foi lido pelo web.archive.org (dossiê › "Voláteis"). Se a
-  cópia arquivada de um site que recusou robô vale como cópia ou conta como contorno: DECISÃO DO LUCAS
-  PENDENTE (CLAUDE.md, "A marca"). Até lá, não a use em checagem nova; o item fica "NÃO FOI CHECADO".
+- No Juneau, em 23/09/2026, o site de eleições foi lido pelo web.archive.org (dossiê › "Voláteis"). A cópia
+  pública arquivada de **página oficial do Estado do Alasca** que recusou robô **vale como fonte** (Lucas,
+  27/09/2026; CLAUDE.md, "A marca"): o laudo registra a URL da cópia, a original e a data da captura (no
+  Juneau, em `url_acessada`, no `pautas/juneau/fundamento.json`). A cópia prova o que a página dizia na data
+  da captura: o volátil continua pedindo a leitura de hoje, e a licença de uso não se lê nela. A cópia
+  arquivada de outro site (federal, jornal, empresa) não foi perguntada ao Lucas e não se usa: o item fica "NÃO
+  FOI CHECADO". O que a cópia não resolve vai ao navegador do app, com o Lucas vendo.
 
 ## 2 · Onde as coisas moram neste canal
 

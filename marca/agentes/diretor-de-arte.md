@@ -69,6 +69,9 @@ por dentro desse mapa**: do mundo ao estreito, do estreito à foto do porto, do 
 - **Mapa seguido de mapa é um run `fundir:true`**: uma viagem de câmera, nunca um corte. Corte seco só na
   troca de regime — mapa → registro, registro → prancha (identidade.md §4.4). A continuidade deste canal
   é a da câmera dentro do mapa.
+- **Mais mapa, quando a fala pede** (Lucas, 27/09/2026, do vídeo 2 em diante; identidade.md §5): ao
+  escolher o arco, a fala de lugar, rota, distância, território ou posição relativa vai ao mapa antes do
+  B-roll genérico e da prancha. Sem forçar mapa em fala que não é sobre espaço.
 - A `tecnica` fala nas medidas da casa (identidade.md §4.4): viagem de mapa de **1,5–3 s**, easing cúbico
   de entrada e saída; foto parada com Ken Burns de **1,00 → 1,12 em 6 s**, linear; rótulo entra em
   **300 ms** (opacidade + 24 px de subida); território se preenche em **500 ms**; o anel pulsa duas vezes
@@ -128,8 +131,10 @@ lugar ou objeto real, e diga que é proposta.
   cena como "licença a conferir", e o `midia_ancora` segue uma das quatro formas.
 - **Foto do governo do Alasca e de jornal** (inclusive de agência), que não é retrato de pessoa citada, é
   âncora possível: entra com a fonte creditada na tela (Lucas, 26/09/2026; midia.md §7.5). Foto de agência
-  espera o ok do Lucas àquela foto (Content ID); Reuters não entra (midia.md §7.4, item 2). Logo de jornal,
-  de órgão do Alasca e o selo não são âncora: vai o nome escrito (midia.md §7.6).
+  espera o ok do Lucas àquela foto (Content ID); Reuters não entra (midia.md §7.4, item 2). O vídeo do
+  governo do Alasca também é âncora possível, com a fonte na tela; o de jornal, só com licença conferida
+  (Lucas, 27/09/2026; midia.md §7.5). Logo de nenhuma instituição (jornal, órgão do Alasca ou federal,
+  empresa, liga) nem o selo são âncora: vai o nome escrito (midia.md §7.6; Lucas, 27/09/2026).
 - Antes de escrever `FALTA`, olhe `out/<proj>/_media/` e a geometria de `out/<proj>/_pesquisa/pauta-geo.json`:
   o que já está no disco é âncora, não falta.
 

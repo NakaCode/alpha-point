@@ -55,8 +55,11 @@ recusou e o que ficou sem conferir, e a sessão central confere no navegador do 
   Eleições; HTTP 405 e verificação humana: `roteiros/juneau/roteiro-editor.md` › "Voláteis";
   `roteiros/juneau/volateis-conferidos.md`). Comece pela cópia local: o trecho que o dossiê já registrou
   em "De onde vem cada frase".
-- A cópia arquivada (web.archive.org e afins) de um site que recusou robô: DECISÃO DO LUCAS PENDENTE se vale
-  (CLAUDE.md, "A marca"). Até lá, não use; declare como não conferido.
+- A cópia pública arquivada (web.archive.org) de **página oficial do Estado do Alasca** que recusou robô, como
+  essas duas, **vale como fonte** do que a página dizia (Lucas, 27/09/2026; CLAUDE.md, "A marca"), com a data
+  da captura registrada. O crédito na tela é o do órgão (no Juneau, a Divisão de Eleições do Alasca), nunca o
+  arquivo. A cópia arquivada de outro site não foi perguntada ao Lucas e não se usa. O que a cópia não resolve
+  vai ao navegador do app.
 
 ## 2 · De onde vem cada grafia, neste canal
 
@@ -117,9 +120,10 @@ recusou e o que ficou sem conferir, e a sessão central confere no navegador do 
   (`contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`): preencha `nome` e `o_que_e` pelo
   contrato. Nome que passe de 3 palavras não se encurta por conta própria: vai ao report.
 - **Fronteira disputada:** rótulo `DISPUTED`, e nunca a reivindicação de um lado (identidade.md §6).
-- **Jornal, órgão do Alasca e o Estado** aparecem pelo nome escrito, na pílula `--rotulo`: logo e selo não
-  vão à cena (Lucas, 26/09/2026; midia.md §7.6). O texto do nome é seu, com o limite de palavras do rótulo
-  (§3); nome maior que isso vai ao report.
+- **Toda instituição** (jornal, órgão do Alasca, o Estado, órgão federal como a FHWA, os tribunais federais e
+  o Federal Register, empresa, liga) aparece pelo nome escrito, na pílula `--rotulo`: logo e selo não vão à
+  cena (Lucas, 26/09/2026 e, a logo federal e a de outras instituições, 27/09/2026; midia.md §7.6). O texto do
+  nome é seu, com o limite de palavras do rótulo (§3); nome maior que isso vai ao report.
 - **Palavra que escolhe lado** (`regime` para um governo e `government` para outro): só entre aspas e
   atribuída (voz.md §2). Nada de `shocking`, `crazy`, `World War 3` na tela (voz.md §2).
 - **Glossário institucional:** o canal se chama `Alpha Point` (`canal.json › titulo`) e não tem produto,
@@ -152,6 +156,10 @@ do texto é a da casa, e ela tem de casar com o seu glossário.
 - **Foto do governo do Alasca e de jornal** (inclusive de agência): crédito na tela sempre, a fonte como a
   origem a credita, `<author> / <outlet>`, ou só o veículo ou o órgão; ex.: `Jane Doe / Anchorage Daily
   News` (Lucas, 26/09/2026; midia.md §7.5).
+- **Vídeo do governo do Alasca** (no Juneau, a balsa estadual filmada pelo próprio Estado): o mesmo crédito da
+  foto do Estado, na tela sempre, a fonte como a origem a credita, ou só o órgão (Lucas, 27/09/2026; midia.md
+  §7.5). Vídeo de jornal, de veículo ou de agência só entra com licença conferida, e aí o crédito é o que a
+  licença pede.
 - **Sala de imprensa federal e DVIDS**: domínio público federal, sem crédito na tela (midia.md §7.3).
 - **Retrato oficial** de pessoa citada, em uso editorial: sem crédito na tela (midia.md §7.2).
 - O crédito mora na faixa y > 1880, à esquerda, e nunca encolhe: quebra em duas linhas (identidade.md §4.2).

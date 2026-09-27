@@ -207,7 +207,8 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   `--rotulo` com texto `--sec`, Inter 500, como no exemplar `landsat-juneau.html`. Sobre `--papel`, em
   `--tinta-escura`, que é o texto sobre papel (identidade.md §2).
 - Foto do governo do Alasca e de jornal leva crédito na tela sempre: a fonte como a origem a credita,
-  `<author> / <outlet>`, ou só o veículo ou o órgão (Lucas, 26/09/2026; midia.md §7.5).
+  `<author> / <outlet>`, ou só o veículo ou o órgão (Lucas, 26/09/2026; midia.md §7.5). O vídeo do governo do
+  Alasca, o mesmo (Lucas, 27/09/2026).
 - Domínio público **não** leva crédito na tela (NASA, Landsat/USGS, Natural Earth, NARA, obra do governo
   federal, inclusive DVIDS e sala de imprensa federal): crédito supérfluo reprova. O Copernicus Sentinel leva `Contains modified Copernicus Sentinel
   data <ano>`.
@@ -236,10 +237,13 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   entra citando a fonte, com o crédito na tela (§9) e a procedência gravada (Lucas, 26/09/2026; midia.md
   §7.5). Foto de agência só vai à cena depois do ok do Lucas àquela foto (Content ID); foto Reuters não
   entra (midia.md §7.4, item 2).
-- **Foto de outra origem sem licença**, e vídeo do Estado ou de jornal sem licença, não entram nem se
-  redesenham: bloqueio reportado, não improviso (midia.md §7.5; §7.4, item 3).
-- **Logo de jornal ou de órgão do Alasca, e o selo do Estado**: não vão à cena, nem redesenhados. Vai o
-  nome da instituição na pílula `--rotulo`, Inter 700 (Lucas, 26/09/2026; midia.md §7.6).
+- **Vídeo do governo do Alasca** entra como a foto dele: crédito na tela (§9) e procedência gravada (Lucas,
+  27/09/2026; midia.md §7.5).
+- **Foto de outra origem sem licença**, e vídeo de jornal, de veículo ou de agência sem licença conferida, não
+  entram nem se redesenham: bloqueio reportado, não improviso (midia.md §7.5; Lucas, 27/09/2026).
+- **Logo de qualquer instituição** (jornal, órgão do Alasca, órgão federal, empresa, liga) **e o selo do
+  Estado**: não vão à cena, nem redesenhados. Vai o nome da instituição na pílula `--rotulo`, Inter 700
+  (Lucas, 26/09/2026 e, a logo federal e a de outras instituições, 27/09/2026; midia.md §7.6).
 - **Retrato oficial** de governador ou de legislador, para ilustrar a citação dele: uso editorial, sem
   crédito na tela, com a procedência gravada (Lucas, 26/09/2026; midia.md §7.2).
 - **Banco pago** (midia.md §1, §2): evento real específico nunca vem dele. B-roll genérico (paisagem, cidade,

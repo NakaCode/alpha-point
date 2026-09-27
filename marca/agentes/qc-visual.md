@@ -198,13 +198,15 @@
   - Sem a procedência (URL, data, autor e veículo ou órgão, o que a origem diz sobre uso), reprova
     (`fonte`). Foto de agência sem o aviso de Content ID na procedência também.
   - Foto Reuters reprova (`fonte`): o portão de procedência a veta (midia.md §7.4, item 2).
-  - Foto de qualquer outra origem sem licença conferida reprova (`fonte`; midia.md §7.5). Vídeo do Estado ou
-    de jornal sem licença, também (midia.md §7.4, item 3).
-- **Logo de jornal ou veículo** (Anchorage Daily News, KTOO), **logo de órgão do Estado do Alasca** (Division
-  of Elections, DOT&PF, Alaska Marine Highway) **ou o selo do Estado** como elemento gráfico da cena, real ou
-  redesenhado, reprova (`fonte`). O certo é o nome da instituição escrito na pílula `--rotulo`, Inter 700
-  (Lucas, 26/09/2026; midia.md §7.6). Logo de órgão federal ou de outra instituição não foi decidida: julgue
-  pelo ofício.
+  - Foto de qualquer outra origem sem licença conferida reprova (`fonte`; midia.md §7.5). Vídeo de jornal, de
+    veículo ou de agência sem licença conferida, também (Lucas, 27/09/2026; midia.md §7.5).
+  - **Vídeo do governo do Alasca** entra como a foto dele (Lucas, 27/09/2026; midia.md §7.5): sem o crédito na
+    tela ou sem a procedência, reprova (`fonte`), pelos mesmos itens acima.
+- **Logo de qualquer instituição**: jornal ou veículo (Anchorage Daily News, KTOO), órgão do Estado do Alasca
+  (Division of Elections, DOT&PF, Alaska Marine Highway), órgão federal (FHWA, tribunais federais, Federal
+  Register) ou outra instituição (NFL, Dittman Research), **ou o selo do Estado**, como elemento gráfico da
+  cena, real ou redesenhado, reprova (`fonte`). O certo é o nome da instituição escrito na pílula `--rotulo`,
+  Inter 700 (Lucas, 26/09/2026 e, a logo federal e a de outras instituições, 27/09/2026; midia.md §7.6).
 - **Mídia de banco pago sem registro** (sem a linha no `manifest.jsonl` da caça e a entrada no `_PROCEDENCIA.json`
   da cena, ou baixada fora da conta individual do Lucas; midia.md §2.3, §2.8 e §8) reprova
   (`fonte`). Evento real específico vindo de banco pago também (midia.md §1).

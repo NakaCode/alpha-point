@@ -354,7 +354,7 @@ O que a página não mostra vai escrito assim ("o site não mostra"), nunca esti
 - **Só o `aprovado` e o `pendente_lucas` entram na lista de aprovação** (§2.6). O `pendente_lucas` é o que a marca
   deixa para o Lucas pesar (ofício dele, §6.1), e entra marcado. **Hoje nenhum candidato de banco sai
   `pendente_lucas`**: banco abaixo de 4K ou na vertical é `reprovado`, os outros gatilhos do ofício dele (§6) são
-  de fora do banco (registro real, agência, vídeo do Estado), e a marca não tem DECISÃO DO LUCAS PENDENTE sobre
+  de fora do banco (registro real e agência), e a marca não tem DECISÃO DO LUCAS PENDENTE sobre
   banco. As regras do `pendente_lucas` na lista (§2.6) ficam para quando um couber. O `reprovado` e o `trocar`
   vão para o relato, com o motivo. O `trocar_por` do conferente (o que a frase pede e o candidato não tem) vai
   também ao `pesquisa-imagens`, que decide se muda as `buscas` do item. Item sem candidato na lista volta ao §2

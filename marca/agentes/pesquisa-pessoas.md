@@ -48,10 +48,12 @@
   moment…", pedido de login): pare nele. Não tente de novo por `curl`, por outro programa, trocando o
   User-Agent nem qualquer outro cabeçalho. Diga no relatório a URL e o que ela respondeu; o Claude central
   confere no navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md, item 14). A
-  política de robô do LinkedIn, de jornais e de sites de empresa não foi conferida pelo canal. A cópia
-  arquivada (web.archive.org e afins) de um site que recusou robô também não se usa: DECISÃO DO LUCAS
-  PENDENTE se vale como cópia ou conta como contorno (CLAUDE.md, "A marca"). Até lá, o item fica NÃO
-  CONFERIDO.
+  política de robô do LinkedIn, de jornais e de sites de empresa não foi conferida pelo canal, e a cópia
+  arquivada deles **não se usa**: a decisão do Lucas de 27/09/2026 não os cobre, porque não foi perguntado. Ela
+  vale só para **página oficial do Estado do Alasca** que recusou robô (CLAUDE.md, "A marca"), e só como fonte
+  do que a página dizia (o nome, o cargo, a data): registre a URL da cópia, a original e a data da captura; o
+  crédito na tela é o do órgão, nunca o arquivo. Ler essa cópia não é contorno. Ela não prova licença nem
+  permissão de uso de retrato, que se leem na origem de hoje. O que a cópia não resolve vai ao navegador do app.
 - **Quem decide é o Lucas Rosa** (`canal.json › owner`). As leis `[PESQ-NN]` (`seed/regras/PESQ.md`)
   vieram do Top10: valem como ofício; onde falam de dono, card, cor, fonte tipográfica ou exemplo, vale
   esta roupa.

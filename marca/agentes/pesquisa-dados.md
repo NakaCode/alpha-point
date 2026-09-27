@@ -51,10 +51,14 @@
   qualquer outro cabeçalho. Diga no relatório a URL e o que ela respondeu; o Claude central confere no
   navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md, item 14). Já aconteceu com
   as duas fontes de número mais usadas no Juneau: o `akleg.gov` deu 403, e o `elections.alaska.gov` pediu
-  verificação humana (`roteiros/juneau/volateis-conferidos.md`). A cópia arquivada (web.archive.org e afins)
-  de um site que recusou robô também não se usa: DECISÃO DO LUCAS PENDENTE se vale como cópia ou conta como
-  contorno (CLAUDE.md, "A marca"). O dossiê do Juneau leu as eleições assim em 23/09: isso não é precedente.
-  Até ele decidir, o volátil fica NÃO CONFERIDO.
+  verificação humana (`roteiros/juneau/volateis-conferidos.md`). A cópia pública arquivada (web.archive.org)
+  de **página oficial do Estado do Alasca** que recusou robô, como essas duas, **vale como fonte** (Lucas,
+  27/09/2026; CLAUDE.md, "A marca"): leia-a antes, e registre a URL da cópia, a original e a data da captura; o
+  crédito na tela é o do órgão, nunca o arquivo. Ler essa cópia não é contorno. O dossiê do Juneau leu as
+  eleições assim em 23/09, e elas valem (a data de cada captura está em `url_acessada`, no
+  `pautas/juneau/fundamento.json`). A cópia prova o número na data da captura: o volátil, que muda, continua
+  pedindo a leitura de hoje. A cópia arquivada de outro site (federal, jornal, empresa) não foi perguntada ao
+  Lucas e não se usa. O que a cópia não resolve vai ao navegador do app.
 - **Quem decide é o Lucas Rosa** (`canal.json › owner`), inclusive a divergência de número (§5). As leis
   `[PESQ-NN]` (`seed/regras/PESQ.md`) e `knowledge/MIDIA-REAL.md` vieram do Top10: valem como ofício; onde
   falam de dono, formato ou exemplo, vale esta roupa.

@@ -46,10 +46,15 @@
   o User-Agent nem qualquer outro cabeçalho. Diga no relatório a URL e o que ela respondeu; o Claude
   central confere no navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md, item 14).
   Já aconteceu aqui: o `akleg.gov` deu 403 a um subagente, e o `elections.alaska.gov` pediu verificação
-  humana (`roteiros/juneau/volateis-conferidos.md`). A cópia arquivada (web.archive.org e afins) de um site
-  que recusou robô também não se usa: DECISÃO DO LUCAS PENDENTE se vale como cópia ou conta como contorno
-  (CLAUDE.md, "A marca"). O dossiê do Juneau leu as eleições assim em 23/09: isso não é precedente. Até ele
-  decidir, o item fica NÃO CONFERIDO.
+  humana (`roteiros/juneau/volateis-conferidos.md`). A cópia pública arquivada (web.archive.org) de **página
+  oficial do Estado do Alasca** que recusou robô, como essas duas, **vale como fonte** do que a página dizia
+  (Lucas, 27/09/2026; CLAUDE.md, "A marca"): leia-a antes, e registre a URL da cópia, a original e a data da
+  captura; o crédito na tela é o do órgão (no Juneau, a Divisão de Eleições do Alasca), nunca o arquivo. Ler
+  essa cópia não é contorno. O dossiê do Juneau leu as eleições e os folhetos assim em 23/09, e eles valem (a
+  data de cada captura está em `url_acessada`, no `pautas/juneau/fundamento.json`). A permissão de uso de cada
+  peça (midia.md §7.1) é outra coisa: a cópia não a prova, e ela se confere na origem de hoje, pelo navegador do
+  app quando o site recusa robô. A cópia arquivada de outro site (federal, jornal, empresa) não foi perguntada ao
+  Lucas e não se usa. O que a cópia não resolve vai ao navegador do app.
 - **Quem decide é o Lucas Rosa** (`canal.json › owner`). As leis `[PESQ-NN]` (`seed/regras/PESQ.md`)
   vieram do Top10: valem como ofício; onde falam de dono, formato ou exemplo, vale esta roupa.
 
@@ -123,9 +128,9 @@
   original federal que pode ir à tela é o aviso da FHWA no Federal Register de 30/07/2018 (83 FR 36661).
 - Sem crédito na tela, pela identidade, só o domínio público que ela nomeia: NASA, Landsat/USGS, Natural
   Earth, NARA (identidade.md §7).
-- Logo do veículo ou do órgão do Alasca ao lado do recorte, e o selo do Estado, não vão à cena: vai o nome
-  da instituição escrito na pílula `--rotulo`, Inter 700 (Lucas, 26/09/2026; midia.md §7.6). Logo de órgão
-  federal é do `pesquisa-logos`, e lá está pendente.
+- Logo de qualquer instituição ao lado do recorte (o veículo, o órgão do Alasca, o órgão federal, outra
+  instituição), e o selo do Estado, não vão à cena: vai o nome da instituição escrito na pílula `--rotulo`,
+  Inter 700 (Lucas, 26/09/2026 e, a logo federal e a de outras instituições, 27/09/2026; midia.md §7.6).
 - Foto do governo do Alasca e de jornal não é documento: entra citando a fonte, pela regra do
   `pesquisa-imagens` (midia.md §7.5).
 

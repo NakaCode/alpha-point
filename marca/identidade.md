@@ -150,6 +150,19 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 | **DADO** | gráfico com série do protagonista em `--destaque` e da contraparte em `--contraparte`; eixo em `--tinta-escura` a 60 % | `--papel` |
 | **DOCUMENTO** | recorte de tratado, mapa histórico, manchete real; o trecho que importa grifado em `--destaque` a 35 %. Peça do Estado do Alasca ou de imprensa, só com permissão clara; sem ela, o trecho recriado no visual do canal, com o texto fiel e a fonte citada (`midia.md` §7.1) | `--papel` |
 
+**Mais mapa, quando a fala pede** (Lucas, 27/09/2026: "Eu acredito que nos próximos devemos usar mais mapas
+(mas claro que somente se o contexto permitir"). Vale a partir do vídeo 2, e o Juneau fica como está: perguntado
+se valia também para ele, o Lucas respondeu "Só a partir do próximo".
+- Quando a fala trata de lugar, distância, rota, território, fronteira ou de onde uma coisa fica em relação a
+  outra, o **MAPA é a primeira escolha**, antes do REGISTRO genérico (B-roll de banco) e da PRANCHA.
+- "Se o contexto permitir": fala que não é sobre espaço (voto, lei, dinheiro, fala citada) não vira mapa
+  forçado. O que a fala pede continua mandando (ofício do montador, §6), e o registro real de um evento
+  nomeado não se troca por mapa.
+- Na pauta e no roteiro: se o assunto tem um ângulo espacial, ele é preferido, sem mudar o assunto por causa
+  do mapa.
+- O mapa sobre satélite de geometria real conta na régua de mundo real (§4.3). Cada mapa renderizado gasta da
+  MapTiler (§6): o contador se acompanha com o Lucas.
+
 **Faceless**: nenhum plano de pessoa falando para a câmera no papel de narrador, e nenhuma pessoa gerada
 por IA apresentada como real.
 - **Cota de apresentador: 0 %.** O montador supõe 10–15 % de rosto do apresentador; aqui não há rosto.
@@ -206,13 +219,21 @@ nunca adota a reivindicação de um lado.
 - **Acervos abertos**: Library of Congress, National Archives (NARA), NASA, USGS, Smithsonian, Wikimedia
   Commons (licença conferida arquivo a arquivo), e as fontes federais: sala de imprensa de órgão federal dos
   EUA e DVIDS. Nenhum outro acervo gratuito: Pexels, Pixabay e os demais ficam fora (`midia.md` §7.3, Lucas,
-  26/09/2026). Foto do governo do Alasca e de jornal entra citando a fonte (`midia.md` §7.5).
+  26/09/2026). Foto do governo do Alasca e de jornal, e vídeo do governo do Alasca, entram citando a fonte
+  (`midia.md` §7.5); vídeo de jornal, só com licença conferida (Lucas, 27/09/2026).
 - **Catálogo pago**: Envato Elements, Motion Array, Storyblocks e Shutterstock. A ordem de uso, o
   que cada licença permite e como registrar cada download estão em **`midia.md`**.
 - **Evento real específico** (guerra, protesto, cúpula, desastre, pessoa pública): de acervo aberto ou
-  oficial, ou foto do governo do Alasca ou de jornal com a fonte na tela (`midia.md` §7.5), sempre com data e
+  oficial, ou foto ou vídeo do governo do Alasca, ou foto de jornal, com a fonte na tela (`midia.md` §7.5), sempre com data e
   local conferidos na origem, e **nunca de banco pago** (`midia.md` §1).
   Imagem "ilustrativa" de outro evento ou de outro ano não entra.
+  - **Confirmado pelo Lucas em 27/09/2026**, ao pé da letra: sem foto do ano do fato, o plano vira mapa ou
+    desenho. Foto do mesmo lugar de poucos anos antes ou depois não entra, nem sem o ano na tela, nem com a data
+    real da foto no crédito.
+  - A pergunta: "Quando não existir foto do ano exato (por exemplo, Juneau em 1880 ou a Suprema Corte do Alasca
+    em 1974), pode entrar foto do mesmo lugar de poucos anos antes ou depois, sem o ano na tela e com a data real
+    da foto no crédito?" A resposta: "Não: sem foto do ano, vira mapa ou desenho". A opção dizia: "É a sua regra
+    ao pé da letra: imagem de outro ano não entra."
 
 ## 7 · Grafia de tela
 
@@ -229,7 +250,11 @@ nunca adota a reivindicação de um lado.
 - **Retrato oficial** de pessoa citada, em uso editorial: sem crédito na tela; a procedência fica registrada
   (`midia.md` §7.2).
 - **Foto do governo do Alasca e de jornal**: crédito na tela sempre, a fonte como a origem a credita,
-  `<autor> / <veículo>`, ou só o veículo ou o órgão (`midia.md` §7.5, Lucas, 26/09/2026).
+  `<autor> / <veículo>`, ou só o veículo ou o órgão (`midia.md` §7.5, Lucas, 26/09/2026). O vídeo do governo do
+  Alasca, o mesmo (Lucas, 27/09/2026).
+- **Página oficial do Estado do Alasca lida pela cópia arquivada** (web.archive.org): o crédito é o do órgão
+  que publicou a página (no Juneau, a Divisão de Eleições do Alasca), nunca o arquivo (Lucas, 27/09/2026;
+  CLAUDE.md, "A marca"). A cópia é fonte do texto, não permissão para mostrar a página (`midia.md` §7.1).
 - B-roll de banco pago não leva crédito na tela, **exceto Shutterstock**. Vai a linha
   `Image(s) and/or video used under license from Shutterstock.com` na faixa de crédito da última cena,
   repetida na descrição do YouTube. Em contexto editorial ou de comentário, também

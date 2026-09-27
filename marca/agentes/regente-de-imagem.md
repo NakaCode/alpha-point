@@ -70,7 +70,7 @@ Os cinco modelos são os de identidade.md §5.
 
 | a fala… | `tipo` | modelo do canal |
 |---|---|---|
-| situa lugar, rota, fronteira, distância | `mapa` | MAPA: território aceso sobre satélite |
+| situa lugar, rota, fronteira, distância | `mapa` | MAPA: território aceso sobre satélite. Do vídeo 2 em diante é a primeira escolha para essa fala, antes de B-roll genérico e de prancha (Lucas, 27/09/2026; identidade.md §5, "Mais mapa") |
 | argumenta altura, profundidade, inclinação | `mapa_relevo` | MAPA com relevo — só com o ok do Lucas (§4) |
 | afirma que algo aconteceu, existe, é assim; nomeia coisa que se move | `footage_real` · `foto_real` | REGISTRO |
 | cita lei, cédula, tratado, folheto, manchete | `documento_real` | DOCUMENTO, em `--papel` |
@@ -112,8 +112,12 @@ Os cinco modelos são os de identidade.md §5.
   não estiver conferida, marque no `porque` "licença a conferir".
 - **Foto do governo do Alasca e de jornal**, que não é retrato de pessoa citada, entra citando a fonte
   (Lucas, 26/09/2026; midia.md §7.5); sala de imprensa federal e DVIDS entram como domínio público
-  (midia.md §7.3). O `exige` pode pedi-las. Logo de jornal, de órgão do Alasca e o selo, não: o nome
-  escrito (midia.md §7.6).
+  (midia.md §7.3). O `exige` pode pedi-las. O **vídeo do governo do Alasca** (no Juneau, a balsa estadual
+  filmada pelo próprio Estado) também, com a fonte na tela; o vídeo de jornal, de veículo ou de agência, só com
+  licença conferida na origem (Lucas, 27/09/2026; midia.md §7.5).
+- **Logo de qualquer instituição** (jornal, órgão do Alasca, órgão federal como a FHWA e os tribunais federais,
+  empresa, liga) **e o selo do Estado**, não: o nome escrito, na pílula `--rotulo` (Lucas, 26/09/2026 e, a
+  logo federal e a de outras instituições, 27/09/2026; midia.md §7.6). O `exige` não pede logo.
 
 ## 4 · Relevo e mapa custam pedidos
 

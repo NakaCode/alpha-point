@@ -210,9 +210,12 @@ necessidade.
   Pare, diga no report, e o Claude central confere no navegador do app com o Lucas vendo (CLAUDE.md, "A
   marca"). Resposta de carga (429, 504 do Overpass) se respeita esperando, nunca trocando de cliente ou de
   endereço.
-- A cópia arquivada (web.archive.org e afins) de um site que recusou robô também não se usa: DECISÃO DO LUCAS
-  PENDENTE se vale como cópia ou conta como contorno (CLAUDE.md, "A marca"). Até lá, o item fica NÃO
-  CONFERIDO.
+- A cópia pública arquivada (web.archive.org) de **página oficial do Estado do Alasca** que recusou robô
+  **vale como fonte** do que a página dizia na data da captura (Lucas, 27/09/2026; CLAUDE.md, "A marca"):
+  registre a URL da cópia, a original e a data da captura, e o crédito na tela é o do órgão, nunca o arquivo.
+  Ler essa cópia não é contorno. Ela não prova licença nem permissão de uso, que se leem na origem de hoje. A
+  cópia arquivada de outro site (Library of Congress, David Rumsey, Gallica, jornal) não foi perguntada ao
+  Lucas e não se usa. O que a cópia não resolve vai ao navegador do app.
 - Mídia que não é mapa (foto do lugar, cartografia histórica como imagem) segue `marca/midia.md`:
   - evento real e registro histórico, só de acervo aberto ou oficial, com a licença conferida arquivo a
     arquivo (§1);
@@ -222,7 +225,9 @@ necessidade.
     reportado. A recriação que a decisão manda é do texto citado, e é do `editor-de-arte`; se o canal aceita
     esquema declarado espera o Lucas (`marca/agentes/pesquisa-geo.md` §6);
   - foto do lugar vinda do governo do Alasca ou de jornal entra com a fonte creditada na tela (Lucas,
-    26/09/2026; midia.md §7.5);
+    26/09/2026; midia.md §7.5), e o vídeo do governo do Alasca também; vídeo de jornal, só com licença
+    conferida (Lucas, 27/09/2026; midia.md §7.5). Logo de instituição nenhuma vai ao mapa: o nome escrito
+    (midia.md §7.6);
   - B-roll genérico de banco pago não é seu: vem da caça no Chrome do Lucas, que ele aprova item
     por item (midia.md §1, §2.3, §8), e você não abre o site de banco.
 

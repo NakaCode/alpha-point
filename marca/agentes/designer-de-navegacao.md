@@ -42,7 +42,10 @@ O roteiro não tem linha `**Título**`, e nenhuma se acrescenta (CLAUDE.md).
     permissão de uso clara (domínio público comprovado, licença aberta ou autorização escrita), conferida e
     gravada na procedência; sem ela, a cena recria o trecho no visual do canal, com o texto citado fiel e a
     fonte citada (Lucas, 26/09/2026; midia.md §7.1). Foto do Estado e de jornal entra citando a fonte
-    (midia.md §7.5); logo de jornal, de órgão do Alasca e o selo, só o nome escrito (midia.md §7.6);
+    (midia.md §7.5), e o vídeo do Estado também; vídeo de jornal, só com licença conferida (Lucas,
+    27/09/2026; midia.md §7.5). Logo de qualquer instituição (jornal, órgão do Alasca ou federal, empresa,
+    liga) e o selo, só o nome escrito (Lucas, 26/09/2026 e, a logo federal e a de outras instituições,
+    27/09/2026; midia.md §7.6);
   - **banco pago** (midia.md §1, §2): evento real nunca vem dele; B-roll genérico vem, na ordem Envato
     Elements → Motion Array → Storyblocks → Shutterstock, baixado na conta do Lucas, pela caça no Chrome dele que
     ele aprova item por item (§2.3, §8). Você entrega a lista do que procurar, nunca baixa nem abre o banco;

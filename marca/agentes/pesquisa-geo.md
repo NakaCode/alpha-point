@@ -46,9 +46,12 @@
 - **Site que recusa leitura automática** (403, 405, captcha, verificação de robô, página "Just a
   moment…"): pare nele. Não tente de novo por `curl`, por outro programa, trocando o User-Agent nem
   qualquer outro cabeçalho. Diga no relatório a URL e o que ela respondeu; o Claude central confere no
-  navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md, item 14). A cópia arquivada
-  (web.archive.org e afins) de um site que recusou robô também não se usa: DECISÃO DO LUCAS PENDENTE se vale
-  como cópia ou conta como contorno (CLAUDE.md, "A marca"). Até lá, o item fica NÃO CONFERIDO. OSM, Overpass
+  navegador do app, com o Lucas vendo (CLAUDE.md, "A marca"; APRENDIZADOS.md, item 14). Se o site é
+  **página oficial do Estado do Alasca**, a cópia pública arquivada (web.archive.org) dela **vale como fonte**
+  do que a página dizia (Lucas, 27/09/2026; CLAUDE.md, "A marca"): leia-a antes, e registre a URL da cópia, a
+  original e a data da captura; o crédito na tela é o do órgão, nunca o arquivo. Ler essa cópia não é
+  contorno. Ela não prova licença nem permissão de uso, que se leem na origem de hoje. A cópia arquivada de
+  outro site não foi perguntada ao Lucas e não se usa. O que a cópia não resolve vai ao navegador do app. OSM, Overpass
   e Nominatim têm política de uso: diante de 429, 504 ou verificação, espace as tentativas ou pare
   (APRENDIZADOS.md, item 17, achado 22).
 - **Quem decide é o Lucas Rosa** (`canal.json › owner`). As leis `[PESQ-NN]` (`seed/regras/PESQ.md`)

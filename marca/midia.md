@@ -12,7 +12,7 @@
 
 | O que a cena pede | De onde vem |
 |---|---|
-| **Evento real específico**: guerra, protesto, cúpula, desastre, pessoa pública | acervo aberto ou oficial, com data e local conferidos: NARA, Library of Congress, NASA, USGS, Smithsonian, Wikimedia Commons (licença conferida arquivo a arquivo), e as fontes federais: sala de imprensa de órgão do governo federal dos EUA e DVIDS (§7.3). Acervo gratuito fora dessa lista não entra. Documento do Estado do Alasca e documento de imprensa, só com permissão clara (§7.1); foto do governo do Alasca e de jornal, com a fonte creditada na tela (§7.5); rosto de pessoa citada, pelo §7.2. **Nunca dos bancos pagos** (decisão do canal). No Motion Array, na Storyblocks e no Shutterstock, material de evento real costuma vir marcado "editorial", que não entra (§2.1). O Envato não tem categoria editorial, mas não garante as autorizações (§3.1) e proíbe pessoa ligada a *sensitive subjects* (§2.2) |
+| **Evento real específico**: guerra, protesto, cúpula, desastre, pessoa pública | acervo aberto ou oficial, com data e local conferidos: NARA, Library of Congress, NASA, USGS, Smithsonian, Wikimedia Commons (licença conferida arquivo a arquivo), e as fontes federais: sala de imprensa de órgão do governo federal dos EUA e DVIDS (§7.3). Acervo gratuito fora dessa lista não entra. Documento do Estado do Alasca e documento de imprensa, só com permissão clara (§7.1); foto do governo do Alasca e de jornal, e vídeo do governo do Alasca, com a fonte creditada na tela (§7.5); vídeo de jornal, só com licença conferida (§7.5); rosto de pessoa citada, pelo §7.2. **Nunca dos bancos pagos** (decisão do canal). No Motion Array, na Storyblocks e no Shutterstock, material de evento real costuma vir marcado "editorial", que não entra (§2.1). O Envato não tem categoria editorial, mas não garante as autorizações (§3.1) e proíbe pessoa ligada a *sensitive subjects* (§2.2) |
 | **B-roll genérico**: paisagem, cidade, porto, indústria, drone | bancos pagos, nesta ordem: **Envato Elements → Motion Array → Storyblocks → Shutterstock** |
 | **Mapa** | as bases de `identidade.md` §6 |
 
@@ -245,11 +245,11 @@ toda trilha é escolhida pelo canal e entra numa faixa própria, depois. Para ca
   - [busca e filtros](https://www.shutterstock.com/help/en/articles/10617117-how-can-i-find-images)
   - [IA no acervo](https://www.shutterstock.com/help/en/articles/10594949-get-to-know-the-ai-generated-content-tool-on-shutterstock)
 
-## 7 · Decisões de 26/09/2026 (Lucas)
+## 7 · Decisões de 26 e 27/09/2026 (Lucas)
 
-Respondidas pelo Lucas em 26/09/2026, em duas rodadas de múltipla escolha no mesmo dia. Cite assim: "Lucas,
-26/09/2026". Valem para toda cena e todo especialista, e vencem o que uma roupa (`agentes/<id>.md`) disser em
-contrário.
+Respondidas pelo Lucas em 26/09/2026, em duas rodadas de múltipla escolha no mesmo dia, e em 27/09/2026, numa
+terceira. Cite assim: "Lucas, 26/09/2026" ou "Lucas, 27/09/2026", pela data da resposta. Valem para toda cena e todo
+especialista, e vencem o que uma roupa (`agentes/<id>.md`) disser em contrário.
 
 - **1ª rodada**: §7.1 (documento do Estado e da imprensa), §7.2 (rosto de pessoa citada) e §7.3 (acervos
   gratuitos). A outra decisão dessa rodada, o card de pessoa, está em `identidade.md` §5.
@@ -258,7 +258,17 @@ contrário.
   §7.5; logo e selo, no §7.6.
 - **Pesquisado a pedido do Lucas** (2ª rodada): o estudo de 2018 da FHWA com o Alaska DOT&PF. A resposta, com
   as provas, está no §7.1 ("O estudo de 2018"). Não é escolha dele: é o que a pesquisa provou.
-- **O §7.4 é o avesso**: o que as duas rodadas **não** decidiram. Nada nele é regra do Lucas; é pergunta
+- **3ª rodada (27/09/2026)**: quatro perguntas de múltipla escolha, na produção do Juneau. Cada resposta está,
+  literal, onde a regra mora:
+  - a cópia arquivada (web.archive.org) de **página oficial do Estado do Alasca** que recusa robô **vale como
+    fonte** do que a página dizia, com a data da captura: CLAUDE.md, "A marca". Ela não prova licença nem
+    permissão de uso (§7.1, §7.5), que se leem na origem de hoje; e a cópia de outros sites (a Library of
+    Congress, abaixo, no §7.3) não foi perguntada e não se usa;
+  - **vídeo do governo do Alasca** entra citando a fonte, como a foto; vídeo de jornal, só com licença conferida:
+    §7.5 (o §7.4, item 3, ficou como ponteiro);
+  - **logo de órgão federal e de outras instituições**: só o nome escrito, como a do Alasca: §7.6;
+  - **sem foto do ano do fato, o plano vira mapa ou desenho**; foto de outro ano não entra: `identidade.md` §6.
+- **O §7.4 é o avesso**: o que as rodadas **não** decidiram. Nada nele é regra do Lucas; é pergunta
   aberta, com o que vale enquanto ele não responde. Ele fica com o número 4 porque as roupas o citam assim.
 
 ### 7.1 · Documento do Estado do Alasca e da imprensa na tela: só com permissão clara
@@ -281,8 +291,8 @@ contrário.
   são permissão. A obra do estado não tem a regra federal de domínio público (17 U.S.C. §105): cada peça se
   confere.
 - O retrato oficial da pessoa citada, para ilustrar a citação dela, segue o §7.2, não esta regra.
-- Logo de jornal e de órgão do Estado, e o selo do Estado: §7.6. Documento de autoria conjunta com órgão
-  federal: o bloco abaixo.
+- Logo de qualquer instituição (jornal, órgão do Estado, órgão federal, outras) e o selo do Estado: §7.6.
+  Documento de autoria conjunta com órgão federal: o bloco abaixo.
 
 #### O estudo de 2018 da estrada de Juneau: estadual, não federal
 
@@ -372,8 +382,8 @@ contrário.
     sala de imprensa federal, não é domínio público por essa lei: sem licença, não entra (§7.5, último
     item). O DVIDS avisa o mesmo na política dele, e soma duas ressalvas (insígnia e selo militar podem ser
     marca registrada; o uso é por conta de quem usa), que o `buscar-midia` grava em cada item.
-  - A sala de imprensa do **governo do Alasca** não entra por esta regra: a foto dela é foto do governo do
-    Alasca (§7.5), e o documento dela, §7.1.
+  - A sala de imprensa do **governo do Alasca** não entra por esta regra: a foto e o vídeo dela são do governo
+    do Alasca (§7.5), e o documento dela, §7.1.
 - **Ficam fora**: Pexels e Pixabay, e toda outra fonte gratuita de imagem e vídeo: Openverse, The Met,
   Europeana, Internet Archive. No registro do `buscar-midia` (`src/midia/fontes.mjs` da pré-v1) cada uma é
   fonte própria, e nenhuma é a mesma coisa que uma da lista: o Openverse agrega origens diversas (o item diz
@@ -389,18 +399,20 @@ contrário.
   desligada não a liga.
 - **Library of Congress**: continua desligada por script (403 do Cloudflare a toda consulta, medido pela
   pré-v1 em 23/09/2026; site que recusa robô não se contorna). A conferência nela é pelo navegador do app,
-  com o Lucas vendo.
+  com o Lucas vendo. A cópia arquivada vale só para página oficial do Estado do Alasca (Lucas, 27/09/2026;
+  CLAUDE.md, "A marca"): a da LoC não se usa.
 - **USGS e a sala de imprensa federal** não são fonte do `buscar-midia`: vão pelo site do órgão, com a regra
   de robô (CLAUDE.md, "A marca") e a mesma prova de procedência (URL, licença, sha256).
-- O retrato oficial do §7.2, a peça com permissão do §7.1 e a foto do Estado e de jornal do §7.5 vêm da
-  própria instituição ou do veículo, fora desta lista.
+- O retrato oficial do §7.2, a peça com permissão do §7.1, a foto do Estado e de jornal do §7.5 e o vídeo do
+  Estado do §7.5 vêm da própria instituição ou do veículo, fora desta lista.
 
 ### 7.4 · O que continua em aberto: espera o Lucas
 
 Cada item diz a pergunta, por que ela ficou aberta e o que vale até a resposta. O que vale até lá é o caminho
 mais seguro para a licença, não uma decisão. Quando a resposta vier, ela vai para o §7 decidido, com a data, e
 o item sai daqui. As perguntas sobre sala de imprensa, foto do Estado, foto sem permissão, logo e selo foram
-respondidas na 2ª rodada (§7.3, §7.5 e §7.6); o estudo de 2018, pela pesquisa que o Lucas pediu (§7.1).
+respondidas na 2ª rodada (§7.3, §7.5 e §7.6); o estudo de 2018, pela pesquisa que o Lucas pediu (§7.1); o vídeo
+do Estado e de jornal, na 3ª (§7.5).
 
 1. **Respondido em 26/09/2026.** O documento de autoria conjunta (o estudo de 2018 da FHWA com o Alaska
    DOT&PF) foi pesquisado a pedido do Lucas: conta como estadual. A resposta e as provas estão no §7.1 ("O
@@ -413,52 +425,64 @@ respondidas na 2ª rodada (§7.3, §7.5 e §7.6); o estudo de 2018, pela pesquis
      Barrios e o Mateus).
    - Até lá: foto Reuters não entra (o portão a reprova), e a pesquisa registra o achado. AP e Getty seguem o
      §7.5.
-3. **Vídeo do governo do Alasca ou de jornal** (ex.: uma reportagem em vídeo da KTOO). A 2ª rodada perguntou
-   de foto.
-   - Pergunta: o vídeo segue o §7.5?
-   - Até a resposta: sem licença conferida, não vai ao ar, como era antes.
+3. **Respondido em 27/09/2026.** O vídeo do governo do Alasca e o de jornal: o do Estado entra citando a fonte, e
+   o de jornal só com licença conferida. A pergunta, a resposta e a regra estão no §7.5. O item fica só como
+   ponteiro, para a numeração não mudar nas roupas.
 
-### 7.5 · Foto do governo do Alasca e de jornal: entra citando a fonte
+### 7.5 · Foto do governo do Alasca e de jornal, e vídeo do governo do Alasca: entram citando a fonte
 
-- **A resposta** (2ª rodada): "Podem entrar citando a fonte". O Lucas escolheu sabendo do risco: a opção
-  dizia "com risco de reclamação de direitos".
+- **A resposta sobre foto** (2ª rodada): "Podem entrar citando a fonte". O Lucas escolheu sabendo do risco: a
+  opção dizia "com risco de reclamação de direitos".
+- **A resposta sobre vídeo** (3ª rodada, 27/09/2026). A pergunta: "Vídeo do governo do Alasca ou de jornal (por
+  exemplo, a balsa estadual filmada pelo próprio Estado, ou uma reportagem da KTOO) pode entrar citando a fonte,
+  como você decidiu para as fotos?" A resposta: "Do Estado sim; de jornal não (Recomendado)". A opção dizia:
+  "Vídeo do governo do Alasca entra com a fonte na tela. Vídeo de jornal só com licença conferida, porque os
+  jornais costumam reivindicar direitos no YouTube."
 - **O que cobre**: **foto** do governo do Estado do Alasca (ex.: a foto oficial de uma balsa do Estado; a
   sala de imprensa do governador) e foto de jornal ou veículo de imprensa (Anchorage Daily News, KTOO), que
   não seja retrato de pessoa citada. **Foto de agência de notícias** (AP, Reuters, Getty) é foto de jornal e
-  entra por esta regra; a Reuters tem pendência no §7.4, item 2.
+  entra por esta regra; a Reuters tem pendência no §7.4, item 2. E o **vídeo do governo do Estado do Alasca**
+  (ex.: a balsa estadual filmada pelo próprio Estado), pela mesma regra da foto (Lucas, 27/09/2026).
 - **Não cobre**:
   - documento (página, cédula, folheto, boletim, estatuto impresso, recorte de jornal como documento):
     continua no §7.1, só com permissão clara;
   - o retrato de pessoa citada: §7.2;
   - rosto gerado ou alterado por IA: nunca;
-  - vídeo: §7.4, item 3.
-- **A regra**:
+  - **vídeo de jornal, de veículo de imprensa ou de agência** (ex.: uma reportagem em vídeo da KTOO): só com
+    licença conferida na origem, porque os jornais costumam reivindicar direitos no YouTube (Lucas, 27/09/2026).
+    Sem ela, não vai ao ar.
+- **A regra**, para a foto e para o vídeo do Estado:
   - **Crédito na tela, sempre**: a fonte como a origem a credita, o autor e o veículo, ou o órgão (ex.:
     `Jane Doe / Anchorage Daily News`; sem autor nomeado, só o veículo ou o órgão). É o formato de crédito de
     mídia do `identidade.md` §7 sem a parte da licença, que não há. 76 px, na faixa de crédito
     (`identidade.md` §4.1, §4.2).
-  - **Na procedência** (`_PROCEDENCIA.json`): a URL, a data da foto e a da conferência, o autor e o veículo
-    ou órgão, e **o que a origem diz sobre uso**, copiado (ou "a origem não diz nada sobre uso"). O campo
-    `licenca` leva esse texto e a base, `midia.md §7.5 (Lucas, 26/09/2026)`: nunca uma licença inventada e
-    nunca `a_confirmar`.
+  - **Na procedência** (`_PROCEDENCIA.json`): a URL, a data da foto (ou do vídeo) e a da conferência, o autor e
+    o veículo ou órgão, e **o que a origem diz sobre uso**, copiado (ou "a origem não diz nada sobre uso"). O
+    campo `licenca` leva esse texto e a base, `midia.md §7.5 (Lucas, 26/09/2026)` na foto e `midia.md §7.5
+    (Lucas, 27/09/2026)` no vídeo do Estado: nunca uma licença inventada e nunca `a_confirmar`.
+  - **Vídeo do Estado**: a licença não muda a régua de resolução. O arquivo se mede como todo footage
+    (`.claude/agents/conferente-de-midia.md` §5.3).
   - **Foto de agência** (AP, Reuters, Getty): a procedência registra também que agência costuma reivindicar
     direitos no YouTube (Content ID), para o Lucas pesar antes de a foto ir à cena. O portão de procedência
     do canal deixa AP e Getty pendentes (`EDITORIAL_SEM_LICENCA`) até o `_PROCEDENCIA.json` do arquivo trazer
     `excecao_autorizada` com `por`, `em` e `motivo`, escrita depois que o Lucas pesou aquela foto, nunca
     antes.
-- **Foto de qualquer outra origem sem licença** (prefeitura, empresa, particular, site de terceiro, material
-  "courtesy" numa sala de imprensa federal): segue o ofício, e sem licença conferida não vai ao ar.
+- **Foto ou vídeo de qualquer outra origem sem licença** (prefeitura, empresa, particular, site de terceiro,
+  material "courtesy" numa sala de imprensa federal): segue o ofício, e sem licença conferida não vai ao ar.
 
-### 7.6 · Logo de jornal e de órgão do Alasca, e o selo do Estado: só o nome escrito
+### 7.6 · Logo de qualquer instituição, e o selo do Estado: só o nome escrito
 
-- **A resposta** (2ª rodada): "Só o nome escrito".
+- **A resposta** (2ª rodada), sobre jornal, órgão do Alasca e o selo: "Só o nome escrito".
+- **A resposta sobre as outras** (3ª rodada, 27/09/2026). A pergunta: "Logos de órgãos federais e de outras
+  instituições (FHWA, tribunais federais, Federal Register, NFL, Dittman Research): vale a mesma regra dos órgãos
+  do Alasca, só o nome escrito?" A resposta: "Só o nome escrito (Recomendado)".
 - **O que cobre**: logo de jornal ou veículo de imprensa (Anchorage Daily News, KTOO), logo de órgão do Estado
-  do Alasca (Alaska Division of Elections, Alaska DOT&PF, Alaska Marine Highway) e o selo do Estado.
+  do Alasca (Alaska Division of Elections, Alaska DOT&PF, Alaska Marine Highway), o selo do Estado e, desde
+  27/09/2026, logo de órgão federal (FHWA, os tribunais federais, o Federal Register) e de outras instituições,
+  públicas ou privadas (a NFL, a Dittman Research).
 - **A regra**: nenhum deles vai à cena como elemento gráfico: nem a logo, nem uma logo redesenhada, nem o
   selo. Vai o **nome da instituição escrito na tipografia do canal**: a pílula `--rotulo`, Inter 700
   (`identidade.md` §4.1), nunca numa caixa em `--destaque`, que é a cor do protagonista.
-- **Não cobre** logo de órgão federal nem de outras instituições: não foi perguntado. Segue como está em
-  `agentes/pesquisa-logos.md`, pendente, sem regra nova aqui.
 
 ## 8 · A caça pelo Chrome do Lucas (Lucas, 26/09/2026)
 
