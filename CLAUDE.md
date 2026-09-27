@@ -498,6 +498,19 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
   abre para programas: valem, apesar do `Disallow: /` do robots.txt do catálogo (decisão do Claude central, 27/09/2026).
   O endpoint interno do site (`/proxy/…`) e as páginas do catálogo fora da API, não: no Juneau, o 1º round do
   `pesquisa-imagens` usou o `/proxy/` e ele foi cortado;
+- o Wikimedia Commons, pela API do MediaWiki (`/w/api.php`), é a porta que a Wikimedia abre para programas: vale,
+  apesar do `Disallow: /w/` do robots.txt (decisão do Claude central, 27/09/2026, como a da NARA).
+  - O robots.txt fala a quem varre páginas: "Friendly, low-speed bots are welcome viewing article pages, but not
+    dynamically-generated pages please".
+  - A página de etiqueta da API diz como um programa a usa: "API requests to Wikimedia wikis must include a
+    meaningful User-Agent header" (mediawiki.org/wiki/API:Etiquette, lida em 27/09/2026), e pedidos "in series
+    rather than in parallel".
+  - O `buscar-midia`, o `_commons-cat` e o `_commons-baixar` já mandam o User-Agent com o contato do canal: o Lucas
+    escolheu o contato em 25/09 para isso ("A busca de mídia de acervo (Wikimedia Commons, NASA, NARA) envia um
+    contato do canal em cada pedido, como esses acervos exigem").
+  - Script de pesquisador que chame a API também leva o User-Agent do canal e faz um pedido por vez.
+  - O arquivo vem de `upload.wikimedia.org`, cujo robots.txt só veta `/wikipedia/commons/archive/`.
+  - As páginas dinâmicas do site fora da API (`index.php`, a busca do site, o histórico), não;
 - o upscale não-generativo que o `pesquisa-pessoas` pede (`image.upscale.classic`) não existe no canal nem na
   pré-v1;
 - `src/agent/data-tools.mjs` só cobre IBGE e World Bank;
