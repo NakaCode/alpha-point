@@ -83,8 +83,9 @@
   `--destaque` × `--contraparte`. No máximo 3 matizes por cena, fora a base de satélite. Bandeira não é
   fonte de paleta.
 - Sem degradê (`--degrade: none`) e sem véu: a cena de teste de mapa tirou o véu escuro do molde porque a
-  identidade não tem degradê (CLAUDE.md, item 7). Fundo sólido (PRANCHA em `--fundo`, DADO e DOCUMENTO em
-  `--papel`) fica vivo pela câmera e pelas camadas, como o ofício pede (§8). DECISÃO DO LUCAS PENDENTE: se o
+  identidade não tem degradê (CLAUDE.md, item 7). Fundo sólido (PRANCHA e DOCUMENTO em `--fundo`, DADO em
+  `--papel`) fica vivo pela câmera e pelas camadas, como o ofício pede (§8). A textura, a fita e a sombra da
+  folha de documento e do cartão da fala não são degradê de fundo: são o objeto sobre a mesa (identidade.md §5). DECISÃO DO LUCAS PENDENTE: se o
   fundo sólido ganha vinheta. Até lá, não ganha.
 
 ## 3 · Tipo (identidade.md §3; tokens.css)
@@ -145,7 +146,7 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
 | REGISTRO | `footage`, `foto`, `aereo-real` | o asset real em tela cheia, sem moldura, com rótulo de lugar e crédito. Sobre arquivo com `lugar_na_origem: null` no veredito do conferente, sem rótulo de lugar (midia.md §2.7): declare no report, e isso não reprova |
 | PRANCHA | `desenho` | sobre `--fundo`. Ator = círculo de 640 px, traço de 6 px na cor do papel dele, bandeira oficial dentro, nome embaixo. Setas e linhas de 6 px. Ícone em círculo de 160 px |
 | DADO | `dados` | sobre `--papel`. Série do protagonista em `--destaque`, da contraparte em `--contraparte`, eixo em `--eixo-cor` (`--tinta-escura` a 60 %) |
-| DOCUMENTO | `documento` | sobre `--papel`. A página real, nunca redesenhada, quando há permissão de uso clara; sem ela (documento do Estado do Alasca, imprensa), o trecho recriado no visual do canal, com o texto citado fiel e a fonte citada, nunca um fac-símile (midia.md §7.1). O trecho que importa grifado em `--grifo-cor` (`--destaque` a 35 %), texto em `--tinta-escura` |
+| DOCUMENTO | `documento` | a **folha de papel sobre a mesa** (Lucas, 27/09/2026; identidade.md §5, "A folha de documento"): folha em `--papel` com textura, borda de baixo rasgada, fita nos cantos de cima, sombra e até `--doc-inclinacao` de inclinação, sobre `--fundo`. Texto em `--fonte-doc` (Courier Prime): corpo 400 em `--doc-corpo` (piso 84 px), cabeçalho 700 em `--doc-cabecalho`, com a referência da peça numa caixa de contorno. A folha cresce com o texto: pelo menos `--doc-margem-rasgo` de branco entre a última linha e o rasgo, e a fita fora do texto. Texto que não cabe: a câmera desce pela folha com a voz, ou a folha recua e escurece e o trecho da voz aparece ampliado ao lado (literal, até 12 palavras). A página real, com permissão de uso clara, entra como a folha, sem redesenho; sem ela (documento do Estado do Alasca, imprensa), o trecho recriado com o texto citado fiel e a fonte citada, nunca um fac-símile: sem brasão, selo, timbre, logo ou assinatura (midia.md §7.1, §7.6). O trecho que importa grifado em `--grifo-cor` (`--destaque` a 35 %), passando com a voz; texto em `--tinta-escura` |
 
 - `titulo-topico`, `navegacao` e `apresentador*` não existem neste canal. Outro `modo` do enum (`citacao`,
   `split`, `split-footage`, `cinematico`, `gravura-colagem`, `mosaico`) não é modelo da identidade: execute
@@ -156,7 +157,13 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
   (`--fs-rotulo`, `--peso-rotulo`), e o cargo numa linha menor logo abaixo, no papel "eixo / legenda", 84 px,
   Inter 500 (`--fs-eixo`, `--peso-texto` em `marca/tokens.css`). Exemplo aprovado: `MARIA GLADZISZEWSKI` em
   cima e `Assembly member, City of Juneau` embaixo. O rosto, quando há, segue midia.md §7.2; sem foto em
-  fonte autorizada, o card sai só com nome e cargo.
+  fonte autorizada, o card sai só com nome e cargo. **A composição** (Lucas, 27/09/2026; identidade.md §5):
+  - o retrato vem como foto impressa, com moldura em `--tinta`, fita e leve inclinação sobre `--fundo`, sem
+    alterar a foto;
+  - o nome e o cargo ficam logo abaixo dela, e o cargo quebra na largura da foto;
+  - a fala citada, quando há, vai num cartão de papel ao lado, em `--papel`, Inter 700 (`--fs-fala`, piso 260),
+    até 12 palavras, entrando com a voz;
+  - o cargo nunca passa por baixo do cartão. Sem `--destaque` no card.
 - A bandeira é o asset oficial de `assets/flags/<iso2>.png`, pelo caminho `../../../assets/flags/<iso2>.png`
   (procedência em `assets/flags/_PROCEDENCIA.json`; `ca.png` e `us.png` estão lá). O `_INDICE.json` mapeia
   nomes em português: procure pelo código ISO. Faltou: peça à `pesquisa-logos`. A que ela entregar em

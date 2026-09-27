@@ -94,7 +94,9 @@ Cada modelo tem a sua base, e ela é marca (identidade.md §5, §6):
 | MAPA | satélite escurecido — brilho 65 %, saturação 70 % |
 | REGISTRO | o próprio asset |
 | PRANCHA | `--fundo` |
-| DADO e DOCUMENTO | `--papel` |
+| DADO | `--papel` |
+| DOCUMENTO | `--fundo`, com a folha de papel (`--papel`, textura, fita, borda rasgada) sobre ele (Lucas, 27/09/2026; identidade.md §5) |
+| card de pessoa com fala | `--fundo`: retrato como foto impressa com fita e a fala num cartão de papel (Lucas, 27/09/2026; identidade.md §5) |
 
 A identidade não tem degradê (`marca/tokens.css`, `--degrade: none`). Onde o ofício ou o acervo do Top10
 chamam fundo escuro liso de defeito, **neste canal a PRANCHA sobre `--fundo` é a marca**. DECISÃO DO

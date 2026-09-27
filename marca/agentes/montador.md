@@ -91,6 +91,10 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
   lugar, distância, rota, território, fronteira ou posição relativa vai a `mapa` antes de REGISTRO genérico e
   de PRANCHA. Fala que não é sobre espaço não vira mapa forçado, e evento nomeado continua pedindo o registro
   real. O report diz quantas cenas e quantos segundos são mapa.
+- **Animação para explicar** (Lucas, 27/09/2026, do vídeo 2 em diante; identidade.md §5): o mecanismo, o
+  processo ou a regra que não tem imagem real vai a `desenho`, com a semente do que animar (§9 e §10 do ofício).
+  O que a fala nomeia de concreto continua pedindo registro real. A animação não conta na régua de mundo real:
+  o report diz quantos segundos são animação.
 - **Nunca** `titulo-topico`, `navegacao`, `apresentador*` nem `anima:false` (que aqui é tela preta).
 - **Mapa seguido de mapa é UMA viagem de câmera** (`fundir`), nunca corte; corte seco só na troca de
   regime, mapa → registro, registro → prancha (identidade.md §4.4).

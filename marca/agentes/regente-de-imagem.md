@@ -73,7 +73,7 @@ Os cinco modelos são os de identidade.md §5.
 | situa lugar, rota, fronteira, distância | `mapa` | MAPA: território aceso sobre satélite. Do vídeo 2 em diante é a primeira escolha para essa fala, antes de B-roll genérico e de prancha (Lucas, 27/09/2026; identidade.md §5, "Mais mapa") |
 | argumenta altura, profundidade, inclinação | `mapa_relevo` | MAPA com relevo — só com o ok do Lucas (§4) |
 | afirma que algo aconteceu, existe, é assim; nomeia coisa que se move | `footage_real` · `foto_real` | REGISTRO |
-| cita lei, cédula, tratado, folheto, manchete | `documento_real` | DOCUMENTO, em `--papel` |
+| cita lei, cédula, tratado, folheto, manchete | `documento_real` | DOCUMENTO: a folha de papel sobre `--fundo` (identidade.md §5, "A folha de documento"). Texto longo pede tempo: a câmera desce pela folha com a voz, ou o trecho da voz aparece ampliado |
 | dá número, série, comparação | `grafico` | DADO, em `--papel` |
 | relaciona atores, causa → efeito | `desenho`, com `PRANCHA` no `porque` | PRANCHA, em `--fundo` |
 | a ideia continua e a tela já a serve | `continua` | — |

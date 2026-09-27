@@ -99,7 +99,13 @@
     de lugar 128 e 160 px, até 3; eixo e legenda 84 e 104 px; crédito 76 e 88 px. O teto reprova como o piso;
   - card de pessoa (Lucas, 26/09/2026; identidade.md §5): o nome é rótulo (128 e 160 px, Inter 700, até 3
     palavras) e o cargo é legenda (84 e 104 px, Inter 500, sem teto de palavras). Valem os números acima: o
-    nome com mais de 3 palavras reprova como rótulo;
+    nome com mais de 3 palavras reprova como rótulo. O cargo que passa por baixo do cartão da fala reprova
+    (composição de 27/09/2026);
+  - folha de documento (Lucas, 27/09/2026; identidade.md §5): **palavra cortada reprova**, pelo rasgo, pela
+    fita, pela moldura ou pela borda do quadro. Também reprovam o branco menor que 240 px entre a última linha e o
+    rasgo, o corpo abaixo de 84 px, e a letra da folha que não seja a Courier Prime: meça no primeiro quadro;
+    fallback de fonte reprova. Brasão, selo, timbre, logo ou assinatura na folha recriada reprova (midia.md §7.1
+    e §7.6). A Inter continua nunca abaixo de 500; o piso de 400 do `--peso-minimo` é só para a Courier Prime;
   - margem de 200 px nas laterais e 160 px no topo;
   - abaixo de y = 1880, só crédito, de x = 200 até antes de x = 1720;
   - o canto inferior direito, 400 × 400 px, vazio; nenhuma logo;
@@ -135,7 +141,12 @@
     palavras) e o cargo numa linha menor logo abaixo, no papel "eixo / legenda" (84 px, Inter 500;
     `--fs-eixo` e `--peso-texto` em `marca/tokens.css`). Exemplo aprovado: `MARIA GLADZISZEWSKI` em cima e
     `Assembly member, City of Juneau` embaixo. Card sem o cargo, ou com nome e cargo juntos no rótulo,
-    reprova; o nome com mais de 3 palavras reprova na lente **espaco**.
+    reprova; o nome com mais de 3 palavras reprova na lente **espaco**. A composição de 27/09/2026:
+    - o retrato vem como foto impressa com fita, com o nome e o cargo embaixo;
+    - a fala vai num cartão de papel;
+    - a foto não se altera; recorte que muda o sentido, ou filtro no rosto, reprova.
+  - **O DOCUMENTO** é a folha de papel sobre `--fundo` (identidade.md §5, "A folha de documento"). Documento
+    chapado em tela cheia de `--papel` é a versão anterior a 27/09/2026 e reprova na **abordagem**.
   - O rosto, quando há, vem de fonte autorizada, com a procedência gravada (midia.md §7.2). O retrato oficial
     em uso editorial vai sem crédito na tela. Rosto gerado ou alterado por IA reprova.
 - **acessibilidade** (identidade.md §0; voz.md §1): o espectador é norte-americano, de 25 a 60 anos, e não

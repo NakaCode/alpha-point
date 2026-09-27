@@ -113,8 +113,8 @@
   clara** (domínio público comprovado, licença aberta ou autorização escrita), conferida e gravada na
   procedência. Com ela, o crédito é o que a permissão pede, no formato de identidade.md §7. Licença não se
   inventa nem se deduz da origem.
-- **Sem permissão clara, a cena recria o trecho** no visual do canal (DOCUMENTO sobre `--papel`, tipografia
-  e cores da marca, não um fac-símile), com o texto citado fiel e a fonte citada, `Source: <institution>,
+- **Sem permissão clara, a cena recria o trecho** no visual do canal (DOCUMENTO como folha de papel sobre
+  `--fundo`, em Courier Prime, identidade.md §5; não um fac-símile), com o texto citado fiel e a fonte citada, `Source: <institution>,
   <year>`. Você entrega o texto exato, os trechos a grifar com os tempos e a prova; a captura fica como
   prova, fora da tela.
 - Obra do governo federal dos EUA: declare o órgão autor. Só é federal o que se prova escrito por

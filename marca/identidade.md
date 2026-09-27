@@ -41,7 +41,7 @@ Cor com PAPEL. Uma cor = um significado, no vídeo inteiro.
 |---|---|---|
 | `--fundo` | `#0E1726` | fundo de prancha (atores, fluxos, causa → efeito) |
 | `--painel` | `#172338` | cartão sobre `--fundo` |
-| `--papel` | `#ECE8DF` | fundo claro de DADO e DOCUMENTO (gráfico, tratado, manchete) |
+| `--papel` | `#ECE8DF` | fundo claro de DADO (gráfico); a folha de DOCUMENTO e o cartão da fala citada, sobre `--fundo` (§5) |
 | `--tinta` | `#F4F1EA` | texto sobre escuro, contorno do território protagonista |
 | `--tinta-escura` | `#14181F` | texto sobre `--papel` |
 | `--rotulo` | `#0B0F14` a 88% | pílula do rótulo sobre mapa ou registro |
@@ -71,8 +71,14 @@ abaixo dos 3:1 de elemento gráfico. O novo fica a 15,8 do `--contraparte` no pi
 | número-herói, título de bloco | **Barlow Condensed** | 800 | SIL Open Font License 1.1 |
 | rótulo, legenda, eixo, crédito, fala citada | **Inter** | 500 corpo · 700 rótulo · 800 ênfase | SIL Open Font License 1.1 |
 | alternativa declarada (glifo que falte, escrita não latina) | **Noto Sans** (e a Noto da escrita: Arabic, Hebrew, CJK…) | mesmos pesos | SIL Open Font License 1.1 |
+| o texto da folha de documento (corpo e cabeçalho), e só ele | **Courier Prime** | 400 corpo · 700 cabeçalho | SIL Open Font License 1.1 |
 
-As três vêm do Google Fonts. A alternativa entra no **bloco inteiro**, nunca no meio da linha (ofício).
+As quatro vêm do Google Fonts. A alternativa entra no **bloco inteiro**, nunca no meio da linha (ofício).
+
+A **Courier Prime** entrou em 27/09/2026, com a folha de documento (§5), e o Lucas autorizou o download. Ela
+está em `marca/fontes/courierprime/`, com a procedência no `ORIGEM.json`: google/fonts, commit `23e54b51`. O
+`provar-fonte` da pré-v1 passou nos pesos 400 e 700 (`marca/provas/fonte-courierprime.png`). Ela só escreve
+dentro da folha; fora dela, nunca: a fala citada no cartão de papel do card continua em Inter.
 
 - Números em Inter com algarismos tabulares (`font-variant-numeric: tabular-nums`) em tabela e eixo.
 - Nome de país e de região: **CAIXA ALTA**, Inter 700, tracking `+0.04em`. Cidade, rio, estreito:
@@ -148,7 +154,39 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 | **REGISTRO** | footage ou foto real em tela cheia, com rótulo de lugar e crédito | o próprio asset |
 | **PRANCHA** | atores e relações, causa → efeito. Ator = círculo de 640 px, traço de 6 px na cor do papel dele, bandeira oficial dentro e nome embaixo. Setas e linhas de 6 px; ícone em círculo de 160 px | `--fundo` |
 | **DADO** | gráfico com série do protagonista em `--destaque` e da contraparte em `--contraparte`; eixo em `--tinta-escura` a 60 % | `--papel` |
-| **DOCUMENTO** | recorte de tratado, mapa histórico, manchete real; o trecho que importa grifado em `--destaque` a 35 %. Peça do Estado do Alasca ou de imprensa, só com permissão clara; sem ela, o trecho recriado no visual do canal, com o texto fiel e a fonte citada (`midia.md` §7.1) | `--papel` |
+| **DOCUMENTO** | lei, tratado, cédula, folheto, manchete real, como **folha de papel sobre a mesa** (a regra da folha, logo abaixo); o trecho que importa grifado em `--destaque` a 35 %, passando junto com a voz. Peça do Estado do Alasca ou de imprensa, só com permissão clara; sem ela, o trecho recriado no visual do canal, com o texto fiel e a fonte citada (`midia.md` §7.1) | `--fundo` (a mesa), com a folha em `--papel` |
+
+**A folha de documento** (Lucas, 27/09/2026). Ele viu três caminhos numa página de opções e escolheu o
+"Arquivo datilografado". Da versão anterior, apontou o risco de o rasgo cortar texto longo: "tenho medo da B
+recortar textos longos (aparentou que pode acontecer)". A folha foi corrigida, e ele confirmou a B corrigida.
+- **A folha**: `--papel` com textura de papel, levemente torta (até 1,5°), com sombra, sobre `--fundo`. A borda de
+  baixo é rasgada, e a folha fica presa por fita nos cantos de cima.
+- **A letra**: o texto da folha em **Courier Prime** (§3). O corpo em 400, alvo 86 px, piso 84 px (o da legenda).
+  O cabeçalho em 700, 84 px, com a referência da peça (ex.: `AS 44.06.055`) numa caixa de contorno.
+- **Nenhuma palavra cortada**: a folha cresce com o texto, e nunca o texto com a folha.
+  - O rasgo fica só na margem em branco: pelo menos **240 px** entre a última linha e o rasgo.
+  - A fita fica fora da área do texto.
+  - Texto que não cabe na tela nessas medidas tem duas saídas:
+    - a câmera desce pela folha junto com a voz;
+    - ou a folha recua e escurece, e o trecho que a voz diz aparece ampliado ao lado, literal e com até 12
+      palavras.
+- **Recriação, nunca fac-símile**: sem brasão, selo, timbre, logo ou assinatura (`midia.md` §7.1 e §7.6).
+- **Com permissão de uso clara**, a página real (foto ou scan) entra como a folha, com a mesma fita e sombra, sem
+  redesenho.
+- A textura, a fita e a sombra não contam como elemento (§4.2).
+- A conferência visual da folha e do card é `marca/prancha-documento-card.html` (abre no navegador, com as fontes
+  de `marca/fontes/`): é montagem de referência, não cena do pipeline.
+
+**Animação para explicar** (Lucas, 27/09/2026: "Acredito que para os próximos vídeos a gente possa utilizar
+animações para ilustrar coisas específicas"). Vale a partir do vídeo 2.
+- **Mecanismo, processo ou regra**, o que não tem imagem real (como uma votação de títulos funciona, onde a
+  avalanche cruza a estrada), vira animação desenhada. Quem a faz é o `editor-de-arte`.
+- **Coisa concreta que a fala nomeia** (uma balsa, um lugar, uma pessoa) continua em imagem real: a animação
+  compõe, mas não substitui o registro (ofício do `editor-de-arte` e do `montador`, §10).
+- **Animação não conta na régua de mundo real** (§4.3). Mapa e registro cobrem o que existe; a animação, o que é
+  abstrato.
+- **O estilo das animações**, além da PRANCHA, ainda não está na identidade. Quando o vídeo 2 pedir, o Lucas vê
+  opções numa página, como viu as do documento.
 
 **Mais mapa, quando a fala pede** (Lucas, 27/09/2026: "Eu acredito que nos próximos devemos usar mais mapas
 (mas claro que somente se o contexto permitir"). Vale a partir do vídeo 2, e o Juneau fica como está: perguntado
@@ -179,6 +217,14 @@ por IA apresentada como real.
   - o contrato continua pedindo o cargo, em `cards_pessoa` › `o_que_e`;
   - o nome não vai em `--destaque` (§2). O rosto, quando há, segue `midia.md` §7.2; sem foto em fonte
     autorizada, o card sai só com nome e cargo.
+- **A composição do card** (Lucas, 27/09/2026: escolheu "B · Foto e cartão de papel" na página de opções):
+  - **o retrato** vem como foto impressa, com moldura clara (`--tinta`), presa com fita e levemente torta sobre
+    `--fundo`. A moldura é da cena; a foto não se altera: nada de recorte que mude o sentido nem filtro no rosto;
+  - **o nome e o cargo** ficam logo abaixo da foto: o nome na pílula e o cargo embaixo, quebrando na largura da
+    foto. Sem retrato autorizado, os dois ficam no lugar da foto;
+  - **a fala citada**, quando há, vai num cartão de papel ao lado (a mesma folha do documento, em `--papel`), em
+    Inter 700 (alvo 280 px, piso 260), até 12 palavras, entrando junto com a voz;
+  - o cargo não passa por baixo do cartão, e nada no card entra na faixa do crédito (§4.2).
 
 ## 6 · Base de mapa e mídia
 

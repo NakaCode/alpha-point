@@ -63,7 +63,7 @@ O canal tem três fundos, e cada um pede uma variante:
 |---|---|---|
 | MAPA, REGISTRO | satélite escurecido, footage ou foto | branca |
 | PRANCHA | `--fundo` `#0E1726` (cartão em `--painel` `#172338`) | branca |
-| DADO, DOCUMENTO | `--papel` `#ECE8DF`, claro | a original, ou a preta |
+| DADO, e a folha de DOCUMENTO | `--papel` `#ECE8DF`, claro (a folha fica sobre `--fundo`, identidade.md §5) | a original, ou a preta |
 
 Quando o espelho não disser o modelo, entregue a original e a branca. A variante é a monocromática do
 vetor original; recolorir não é (ofício). Desde 27/09/2026, nenhuma logo de instituição vai à cena (§4), e esta

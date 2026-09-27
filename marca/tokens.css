@@ -14,7 +14,8 @@
    DE ONDE VEM CADA COISA
    - A LEI é marca/identidade.md. Nada aqui tem cor ou tamanho que não esteja lá:
        cores ............ §2 (paleta por papel; o --neutro é #737D8E desde 25/09/2026)
-       fontes e pesos ... §3 (Barlow Condensed 800 · Inter 500/700/800 · Noto Sans de alternativa)
+       fontes e pesos ... §3 (Barlow Condensed 800 · Inter 500/700/800 · Noto Sans de alternativa ·
+                          Courier Prime 400/700 só na folha de documento, desde 27/09/2026)
        alvos/pisos/tetos  §4.1 · margens, faixa de crédito e canto reservado §4.2 · movimento §4.4
        pílula, anel, ator e linhas §4.1, §4.4, §5 e §6
    - Os arquivos de fonte estão em marca/fontes/<família>/, cada um com OFL.txt e ORIGEM.json
@@ -47,11 +48,18 @@
    um glifo faltar, e o render espera document.fonts.ready a cada quadro. */
 @font-face { font-family: "MarcaAlt"; src: url("fontes/notosans/NotoSans-VF.ttf") format("truetype"); font-weight: 100 900; font-stretch: 62.5% 100%; font-style: normal; font-display: block; }
 
+/* Courier Prime — SIL Open Font License 1.1 (marca/fontes/courierprime/OFL.txt). Só o texto da FOLHA DE
+   DOCUMENTO (identidade §3 e §5, Lucas, 27/09/2026): 400 no corpo, 700 no cabeçalho. Fora da folha, nunca.
+   Como a "MarcaAlt", o RIG não espera por ela: a cena de documento confere no primeiro quadro que a letra
+   é a Courier Prime (o render espera document.fonts.ready a cada quadro). */
+@font-face { font-family: "MarcaDoc"; src: url("fontes/courierprime/CourierPrime-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "MarcaDoc"; src: url("fontes/courierprime/CourierPrime-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: block; }
+
 :root {
   /* ---- COR · a paleta do canal, por papel (identidade §2) ---- */
   --fundo:        #0E1726;   /* fundo de prancha (atores, fluxos, causa → efeito) */
   --painel:       #172338;   /* cartão sobre --fundo */
-  --papel:        #ECE8DF;   /* fundo claro de DADO e DOCUMENTO */
+  --papel:        #ECE8DF;   /* fundo claro de DADO; a folha de DOCUMENTO e o cartão da fala (sobre --fundo) */
   --tinta:        #F4F1EA;   /* texto sobre escuro, contorno do território protagonista */
   --tinta-escura: #14181F;   /* texto sobre --papel */
   --rotulo:       rgba(11, 15, 20, 0.88);   /* #0B0F14 a 88 %: pílula do rótulo sobre mapa ou registro */
@@ -105,7 +113,9 @@
      var(--fonte-alt). Escritas não latinas (árabe, hebraico, CJK) pedem a Noto da escrita, que ainda
      não está em marca/fontes/. */
   --fonte-alt: "MarcaAlt", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-doc: "MarcaDoc", "Courier Prime", "Courier New", ui-monospace, monospace;   /* só na folha de documento (§5) */
   --fonte-nome:     "Inter";
+  --fonte-doc-nome: "Courier Prime";
   --fonte-sec-nome: "Barlow Condensed";
   --fonte-alt-nome: "Noto Sans";
   --peso-heroi:  800;   /* Barlow Condensed, número-herói */
@@ -115,7 +125,12 @@
   --peso-enfase: 800;   /* Inter, ênfase: destaque em texto de leitura é PESO, não cor */
   --peso-caixa-alta: 700;   /* nome de país e região em CAIXA ALTA: Inter 700 */
   --pesos-proibidos-caixa-alta: "";
-  --peso-minimo: 500;   /* o canal não escreve abaixo de 500; o portão de tipografia da pré-v1 lê isto */
+  --peso-minimo: 400;   /* o piso do portão de tipografia da pré-v1, que lê isto. Era 500 até 27/09/2026: a
+                           Inter continua nunca abaixo de 500 (identidade §3, o qc-visual confere), mas a
+                           Courier Prime da folha de documento escreve em 400, o peso regular dela. 400 é o
+                           piso do ofício (qc-tipografia: "nunca abaixo de 400"). */
+  --peso-doc:    400;   /* Courier Prime, corpo da folha de documento */
+  --peso-doc-cabecalho: 700;   /* Courier Prime, cabeçalho da folha */
   --tracking-lugar: 0.04em;    /* país e região, em caixa alta */
   --tracking-heroi: -0.01em;   /* só herói de 1–2 palavras em Barlow Condensed; texto de leitura, 0 */
   --numeros: tabular-nums;     /* font-variant-numeric em tabela e eixo */
@@ -127,6 +142,14 @@
   --fs-rotulo:  128px;   /* inclui NOME DE LUGAR */
   --fs-eixo:    84px;    /* eixo e legenda (a legenda de relação da prancha também) */
   --fs-credito: 76px;
+
+  /* ---- FOLHA DE DOCUMENTO (identidade §5, Lucas, 27/09/2026) ----
+     Fora do padrão --fs-* de propósito: o portão lê os papéis --fs-<papel> da lista dele, e a folha não é
+     um papel novo de texto. O corpo é legenda em tamanho (piso 84 px); o cabeçalho, 84 px. */
+  --doc-corpo:      86px;    /* Courier Prime 400, alvo; piso 84 px */
+  --doc-cabecalho:  84px;    /* Courier Prime 700 */
+  --doc-margem-rasgo: 240px; /* branco mínimo entre a última linha e a borda rasgada: nada se corta */
+  --doc-inclinacao: 1.5deg;  /* a folha fica torta até isto, para um lado ou para o outro */
 
   /* ---- TAMANHO · pisos que reprovam (ofício; a marca não os baixa) ---- */
   --piso-heroi:   260px;
