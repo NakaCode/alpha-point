@@ -810,6 +810,8 @@ Todo passo que pede "a marca ativa" lê os três. `marca/prancha.html` é a conf
 e a do aviso do ano da foto (Lucas, 27/09/2026; identidade §6).
 `marca/pronuncias.md` é a folha permanente de pronúncias do canal: a folha de cada vídeo começa dela.
 `marca/embalagem.md` é como o canal faz título e miniatura: os moldes das referências, as regras e a receita da miniatura.
+`marca/acervos/` é o levantamento de acervos livres e oficiais de 27/09/2026, com a licença de cada fonte lida na
+origem. É levantamento, não regra: o que o Lucas aprovar vai para `midia.md` §7.3 e `identidade.md` §6.
 
 Site que recusa leitura automática (403, captcha, verificação de robô) não se contorna: nem por
 `curl`, nem por outro cliente, nem trocando cabeçalho. Vale para você e para todo subagente, e o
