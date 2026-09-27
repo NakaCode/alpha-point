@@ -116,8 +116,8 @@ lugar ou objeto real, e diga que é proposta.
   pago (midia.md §1). O retrato de pessoa citada segue midia.md §7.2.
 - **B-roll genérico** (paisagem, cidade, porto, indústria, drone) vem dos bancos pagos, na ordem Envato
   Elements → Motion Array → Storyblocks → Shutterstock, com as regras de midia.md §2 (editorial nunca;
-  pessoa de banco nunca em política; Storyblocks só neutro). Quem baixa é **só o Lucas**, à mão, na conta
-  dele (§2.3, assento único); robô e script são proibidos (§2.5; CLAUDE.md, "Fora, por ora"). Você entrega
+  pessoa de banco nunca em política; Storyblocks só neutro). O download é **na conta do Lucas**
+  (§2.3, assento único), pela caça no Chrome dele que ele aprova item por item (§8; CLAUDE.md, "Caça nos bancos pagos"). Você entrega
   a lista do que procurar (termos em inglês, cena, duração, por que é genérico), nunca baixa nem abre o
   site do banco.
 - **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
@@ -187,6 +187,6 @@ REGIE_MOTOR=<pré-v1> node scripts/qc-espelho-cortes.mjs <proj>
 - a conta de mundo real pela régua da marca, e as outras contas como informação (§4);
 - os picos escolhidos e o porquê;
 - as propostas `ESCALAR` (sobretudo relevo) e o que cada uma custaria em cenas de mapa;
-- as `FALTA`, cada uma com a `query` em inglês e se espera o download do Lucas em banco pago, uma fonte
+- as `FALTA`, cada uma com a `query` em inglês e se espera a caça em banco pago, uma fonte
   não liberada ou a licença de documento estadual/imprensa;
 - a lista de **DECISÃO DO LUCAS PENDENTE** que tocou este conceito, uma linha cada.

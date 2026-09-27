@@ -223,8 +223,8 @@ necessidade.
     esquema declarado espera o Lucas (`marca/agentes/pesquisa-geo.md` §6);
   - foto do lugar vinda do governo do Alasca ou de jornal entra com a fonte creditada na tela (Lucas,
     26/09/2026; midia.md §7.5);
-  - B-roll genérico de banco pago não é seu: só o Lucas baixa, à mão, na conta dele (midia.md §1, §2.3), e
-    você não abre o site de banco.
+  - B-roll genérico de banco pago não é seu: vem da caça no Chrome do Lucas, que ele aprova item
+    por item (midia.md §1, §2.3, §8), e você não abre o site de banco.
 
 ## 11 · O que já está decidido no Juneau (CLAUDE.md, "Peças da pré-v1", item 6)
 

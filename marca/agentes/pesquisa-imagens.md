@@ -76,7 +76,7 @@
 | A cena pede | De onde vem |
 |---|---|
 | **evento real específico, pessoa pública, registro histórico** | só acervo aberto ou oficial, com data e local conferidos na origem: NARA, NASA, USGS, Smithsonian, Wikimedia Commons (licença conferida arquivo a arquivo), Library of Congress (só pelo navegador, §3), e as fontes federais: sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3). Nenhum outro acervo gratuito. Foto do governo do Alasca e de jornal entra com a fonte creditada na tela (midia.md §7.5; §5 abaixo). O retrato de pessoa citada segue midia.md §7.2. **Nunca banco pago.** Imagem "ilustrativa" de outro evento ou de outro ano não entra |
-| **B-roll genérico**: paisagem, cidade, porto, indústria, balsa, drone | bancos pagos, nesta ordem: Envato Elements → Motion Array → Storyblocks → Shutterstock. **Quem baixa é só o Lucas**; você entrega a lista (§4) |
+| **B-roll genérico**: paisagem, cidade, porto, indústria, balsa, drone | bancos pagos, nesta ordem: Envato Elements → Motion Array → Storyblocks → Shutterstock, baixado na conta individual do Lucas, pela caça no Chrome dele, que ele aprova item por item (midia.md §8); você entrega a lista (§4) |
 | **mapa, satélite** | não é seu: as bases de identidade.md §6, com o `mapista` |
 
 Vale sempre (midia.md §2):
@@ -95,6 +95,9 @@ node <motor>/src/ferramentas/buscar-midia.mjs <proj> buscar "<1-3 words in Engli
 node <motor>/src/ferramentas/buscar-midia.mjs <proj> baixar --cena=<id> --indice=<n>
 node <motor>/src/ferramentas/buscar-midia.mjs <proj> entregar --cena=<id> --arquivo=<rascunho> --nome=<descriptive-name>
 ```
+
+- **Entre o `baixar` e o `entregar`, o `conferente-de-midia` julga o rascunho**, e só se entrega o `aprovado`
+  (§10).
 
 - **As fontes ligadas vêm de `marca/midia.json`** (campo `fontes_desligadas`), com a decisão do Lucas de
   26/09/2026: acervo gratuito, só os oficiais e as fontes federais (midia.md §7.3). O `buscar-midia` consulta
@@ -123,23 +126,48 @@ node <motor>/src/ferramentas/buscar-midia.mjs <proj> entregar --cena=<id> --arqu
   `scripts/stock/_grade-fotos.mjs` (fotos) e `scripts/stock/_frames-de-clipe.mjs` (quadros de clipe), os
   dois com `REGIE_MOTOR`.
 
-## 4 · Banco pago: você entrega a lista, o Lucas baixa
+## 4 · Banco pago: você entrega a lista, o conferente julga, o Lucas aprova, o Claude central caça
 
 B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md §1).
-- **Quem baixa é o Lucas, à mão, na conta dele**: as quatro licenças são de assento único (midia.md §2.3).
-  Robô e script são proibidos pelos termos dos quatro (midia.md §2.5), e a caça automatizada em banco pago
-  está fora do canal (CLAUDE.md, "Fora, por ora"). Você não baixa de banco nem abre o site dele.
-- A sua entrega é a lista, em `out/<proj>/_pendencias-banco-pago.md`: por cena, 3 ou 4 buscas em inglês, a
-  duração, por que é genérico, o que **tem de aparecer**, o que se **recusa** (midia.md §2), e o banco na
-  ordem Envato → Motion Array → Storyblocks → Shutterstock. As outras cenas seguem.
-- **DECISÃO DO LUCAS PENDENTE: qual é o plano do Shutterstock dele (cota ou Unlimited).** O midia.md §1 o
-  dá como plano com cota; o §3.4 mostra o que muda no Unlimited (um uso por download, nada de estocar).
-- Não se rodam: `scripts/stock/api-oficial.mjs`, `scripts/stock/registrar-download.mjs`,
-  `scripts/stock/chrome-daemon.mjs`, `scripts/stock/setup-login.mjs` e `scripts/stock/sessao-conferir.mjs`.
-  São a caça por Chrome ou API em banco pago.
-- Tetos, para a lista do Lucas: Motion Array, 150 downloads por dia (midia.md §3.2); Shutterstock
-  conforme o plano (midia.md §3.4). Cada download dele é registrado com banco, ID, URL, data, vídeo, prova
-  de licença e hash (midia.md §2.8).
+- **A caça é pelo Chrome do Lucas, nas contas individuais dele, feita pelo Claude central** (Lucas, 26/09/2026;
+  midia.md §8; CLAUDE.md, "Caça nos bancos pagos"). Os candidatos passam pelo `conferente-de-midia`, e a lista
+  de aprovação do Lucas vem antes de cada download.
+  - As quatro licenças são de assento único (midia.md §2.3).
+  - Você não abre o site do banco, não baixa e não roda o registrador: é uma caça por vez, no Chrome dele.
+  - Você não usa nenhuma ferramenta `mcp__claude-in-chrome__*` nem do painel de navegador do app: só o Claude
+    central opera o Chrome (skill `cacar-no-chrome`, §0).
+- A sua entrega são dois arquivos:
+  - `out/<proj>/_pendencias-banco-pago.md`, para o Lucas ler. Por cena: 3 ou 4 buscas em inglês, a duração, por
+    que é genérico, o que **tem de aparecer**, o que se **recusa** (midia.md §2), e o banco na ordem Envato →
+    Motion Array → Storyblocks → Shutterstock. As outras cenas seguem;
+  - `out/<proj>/_pesquisa/lista-de-caca.json`, para a caça, no formato do §1 da skill
+    `.claude/skills/cacar-no-chrome/SKILL.md` (a cópia adaptada do canal): `proj`, e por item `id`, `cena`,
+    `tipo` (`video` ou `foto`; música fica fora), `plataformas`, `buscas` (inglês, de 2 a 4 palavras),
+    `tem_de_aparecer`, `recusa`, `quantos` e `nome_final`.
+- Na lista de caça:
+  - `plataformas` na ordem `envato`, `motionarray`, `storyblocks`, `shutterstock`;
+  - sem `storyblocks` em cena sobre ator político ou conflito (midia.md §3.3);
+  - o `envato` pode ir na lista: enquanto o Lucas não entrar nele e confirmar o *Always ask*, o Claude central
+    o pula e segue para a plataforma seguinte (skill, §0);
+  - só B-roll genérico: item que nomeia evento, pessoa pública ou data não entra (midia.md §1);
+  - a `recusa` diz sempre: editorial; pessoa reconhecível em primeiro plano; pessoa falando para a câmera; marca
+    ou logotipo de terceiro legível; propriedade privada identificável como assunto do quadro; gerado por IA;
+    lugar diferente do rótulo; retrato; abaixo de 3840×2160 (midia.md §2.1, §2.2, §2.6, §2.7 e §3.1; skill
+    `cacar-no-chrome`, §2.3; `conferente-de-midia`, §5.1 e §5.2);
+  - se a cena rotula um lugar, o `tem_de_aparecer` diz que a descrição do item tem de nomear esse lugar;
+  - `quantos` é o que a cena usa, não mais (midia.md §2.5).
+  O `tem_de_aparecer` e a `recusa` são também o que o `conferente-de-midia` lê ao julgar os candidatos: escreva-os
+  para a cena e para a fala dela, não para a busca.
+- **O Shutterstock entra na caça, em último** (Lucas, 26/09/2026): o plano dele é o de downloads ilimitados
+  (midia.md §3.4). Cada download vale para um uso, e nada se baixa para estocar. Um clipe dele na tela pede a
+  linha de crédito do Shutterstock na última cena e na descrição (midia.md §3.4).
+- **Não se rodam** `scripts/stock/api-oficial.mjs`, `chrome-daemon.mjs`, `setup-login.mjs`, `sessao-conferir.mjs`,
+  `sessao-veredito.mjs` e `antibot.mjs` (CLAUDE.md, "Caça nos bancos pagos"). O `registrar-download.mjs` e o
+  `_instalar-lote.mjs` são do Claude central, dentro da caça.
+- **Tetos**: Motion Array, 150 downloads por dia (midia.md §3.2); Shutterstock, 100 por dia, contados pelo
+  registrador como guarda (midia.md §3.4).
+- **Registro**: cada arquivo caçado é registrado com banco, ID, URL, data, conta, busca, cena e sha256 (midia.md
+  §2.8). A prova de licença vai para `…/<banco>/licencas/`, e a confirmação da conta, para o relato da caça.
 
 ## 5 · Licença: o que não é domínio público automático
 
@@ -156,7 +184,8 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
   - na procedência: URL, data da foto e da conferência, autor e veículo ou órgão, e o que a origem diz sobre
     uso, copiado. A `licenca` leva esse texto e `midia.md §7.5 (Lucas, 26/09/2026)`, nunca `a_confirmar`;
   - foto de agência (AP, Getty): registre também que agência costuma reivindicar direitos no YouTube
-    (Content ID), e deixe a foto para o Lucas pesar; a `excecao_autorizada` só se escreve depois do ok dele.
+    (Content ID), e deixe a foto para o Lucas pesar (o conferente a dá `pendente_lucas`); a `excecao_autorizada`
+    só se escreve depois do ok dele, a partir da `excecao_lucas` que o conferente gravou.
     Foto Reuters não entra: o portão a veta (midia.md §7.4, item 2);
   - vídeo do Estado ou de jornal não é esta regra: sem licença conferida, fica fora (midia.md §7.4, item 3).
 - **Foto de outra origem sem licença** (prefeitura, empresa, particular, site de terceiro) não entra: procure
@@ -170,7 +199,9 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
 
 - Palco **3840×2160**, paisagem (identidade.md §4; `marca/tokens.css`). O master sai em 3840×2160 a
   **30 fps** (CLAUDE.md, peça 2 da pré-v1).
-- B-roll genérico abaixo de 3840×2160 se rejeita (ofício §8).
+- B-roll genérico abaixo de 3840×2160 se rejeita (ofício §8), de banco ou de acervo. O footage de registro real
+  recente abaixo de 4K (um evento que o DVIDS só tem em 1080p) não se rejeita sozinho: fica no rascunho, com a
+  medida, e o `conferente-de-midia` o leva ao Lucas (`pendente_lucas`; ofício dele, §5.3).
 - **Registro histórico** quase sempre é SD ou foto pequena. **DECISÃO DO LUCAS PENDENTE: a resolução
   mínima do arquivo histórico, se ele entra em tela cheia no REGISTRO, e se há upscale.** Até lá: não o
   rejeite só pela resolução e não o amplie (upscale: CLAUDE.md, tropeços do apoio). Entregue com a medida
@@ -229,6 +260,29 @@ REGIE_MOTOR=<motor> node scripts/qc-procedencia.mjs <proj>
   o `scripts/procedencia-reconciliar.mjs` pedem `REGIE_MOTOR`. O `_brief-arte.mjs` (ofício §3.7) não
   existe: NÃO MEDIDO.
 - Em lote, a pauta é `pauta-imagens-<lote>.json`, para um lote não apagar o outro.
+- **O que você traz passa pelo `conferente-de-midia`** (`.claude/agents/conferente-de-midia.md`, do canal)
+  antes da lista do Lucas e da cena: o candidato da caça em `out/<proj>/_pesquisa/conferencia-caca.json`, o
+  arquivo do acervo aberto em `conferencia-midia.json`. O `aprovado` dele não dispensa a sua validação por visão
+  (ofício §4).
+- **No acervo aberto, o conferente julga o rascunho, e você só entrega o que ele aprovou.** A ordem:
+  1. `buscar` e `baixar` (§3): o arquivo fica no rascunho, `out/<proj>/_media/_caca/<cena>/acervo-livre/`. Não
+     rode o `entregar` ainda. A sua resposta termina com a lista do que ficou no rascunho, cena por cena;
+  2. o Claude central despacha o conferente no fluxo `midia` sobre esse rascunho;
+  3. você volta, num despacho novo, e roda o `entregar` só dos arquivos que estão com `veredito: aprovado` em
+     `out/<proj>/_pesquisa/conferencia-midia.json`. Leia o veredito no disco: o relato não vale.
+  - O `reprovado` e o `trocar` não se entregam: ficam no rascunho, como estão, e vão ao seu relatório com o
+    `motivo`. O `trocar` volta a você com o que faltou (`trocar_por`), e é busca nova, que passa de novo pelo
+    conferente. O `reprovado` com `reconferir` espera a conferência no navegador do app, com o Lucas vendo.
+  - O `pendente_lucas` também fica no rascunho, até o Lucas responder à pergunta do conferente e ele regravar o
+    veredito como `aprovado`, com a `excecao_lucas`. Só então se entrega.
+  - A cena só cita o que tem `aprovado` no veredito que casa com o arquivo (CLAUDE.md, "Os especialistas"). O
+    `entregar` guarda o sha256 do rascunho no `_PROCEDENCIA.json` da cena: é por ele que o veredito casa.
+  - **Arquivo já entregue** (de antes desta regra, ou de outra via) que o conferente reprovou ou mandou trocar:
+    retire-o de `out/<proj>/_media/<tipo>/<cena>/` pelo ofício, §3.6 (as citações dele viram `FALTA — <pedido>`
+    ou apontam o substituto). Mova-o para `out/<proj>/_media/_caca/<cena>/_retirado/`, nunca o apague, e diga
+    no relatório o que saiu e por quê.
+  - O `regie advance` do `research` só se faz sem `reprovado` nem `trocar` em arquivo que continua em
+    `_media/<tipo>/<cena>/` (CLAUDE.md, "Os especialistas").
 - Não há ledger de insumos nem seção "A ESCADA" neste canal. A devolução é a **última linha da sua
   resposta**: a cena, o degrau em que você parou e quem decide agora — `montador` (o que entra e onde),
   `regente-de-imagem` (o que a frase exige da tela), `diretor-de-arte` (se mexe no arco) e o Lucas, quando

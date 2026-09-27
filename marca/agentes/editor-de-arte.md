@@ -142,7 +142,7 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
 | Modelo | `modo` | Como é neste canal |
 |---|---|---|
 | MAPA | `mapa`, `mapa3d` | é do **mapista**: delegue |
-| REGISTRO | `footage`, `foto`, `aereo-real` | o asset real em tela cheia, sem moldura, com rótulo de lugar e crédito |
+| REGISTRO | `footage`, `foto`, `aereo-real` | o asset real em tela cheia, sem moldura, com rótulo de lugar e crédito. Sobre arquivo com `lugar_na_origem: null` no veredito do conferente, sem rótulo de lugar (midia.md §2.7): declare no report, e isso não reprova |
 | PRANCHA | `desenho` | sobre `--fundo`. Ator = círculo de 640 px, traço de 6 px na cor do papel dele, bandeira oficial dentro, nome embaixo. Setas e linhas de 6 px. Ícone em círculo de 160 px |
 | DADO | `dados` | sobre `--papel`. Série do protagonista em `--destaque`, da contraparte em `--contraparte`, eixo em `--eixo-cor` (`--tinta-escura` a 60 %) |
 | DOCUMENTO | `documento` | sobre `--papel`. A página real, nunca redesenhada, quando há permissão de uso clara; sem ela (documento do Estado do Alasca, imprensa), o trecho recriado no visual do canal, com o texto citado fiel e a fonte citada, nunca um fac-símile (midia.md §7.1). O trecho que importa grifado em `--grifo-cor` (`--destaque` a 35 %), texto em `--tinta-escura` |
@@ -159,8 +159,9 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
   fonte autorizada, o card sai só com nome e cargo.
 - A bandeira é o asset oficial de `assets/flags/<iso2>.png`, pelo caminho `../../../assets/flags/<iso2>.png`
   (procedência em `assets/flags/_PROCEDENCIA.json`; `ca.png` e `us.png` estão lá). O `_INDICE.json` mapeia
-  nomes em português: procure pelo código ISO. Faltou: peça à `pesquisa-logos`. Nunca desenhe, nunca emoji,
-  não baixe você.
+  nomes em português: procure pelo código ISO. Faltou: peça à `pesquisa-logos`. A que ela entregar em
+  `out/<proj>/_media/logo/` passa pelo `conferente-de-midia` antes de a cena a citar (§10). Nunca desenhe, nunca
+  emoji, não baixe você.
 - DECISÃO DO LUCAS PENDENTE: bandeira ao lado de nome de país **fora** da PRANCHA. O ofício a pede (§2); a
   identidade só a põe dentro do ator (§5); a cena de teste de 25/09 pôs CANADA sem bandeira. Até ele decidir,
   siga o ofício (ao lado do nome, alinhada pelo centro, altura perto da caixa-alta) e diga no resumo que a
@@ -243,14 +244,26 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   crédito na tela, com a procedência gravada (Lucas, 26/09/2026; midia.md §7.2).
 - **Banco pago** (midia.md §1, §2): evento real específico nunca vem dele. B-roll genérico (paisagem, cidade,
   porto, indústria, drone) vem, na ordem Envato Elements → Motion Array → Storyblocks → Shutterstock, com as
-  regras do §2 (editorial nunca; pessoa de banco nunca em política; Storyblocks só neutro). Quem baixa é só o
-  Lucas, à mão, na conta dele (§2.3, assento único); robô e script são proibidos (§2.5; CLAUDE.md, "Fora, por
-  ora"). Faltou B-roll genérico: entregue a lista do que procurar (termos em inglês, cena, duração, por que é
+  regras do §2 (editorial nunca; pessoa de banco nunca em política; Storyblocks só neutro). O download é na conta
+  do Lucas (§2.3, assento único), pela caça no Chrome dele que ele aprova item por item (§8; CLAUDE.md, "Caça nos
+  bancos pagos"). Faltou B-roll genérico: entregue a lista do que procurar (termos em inglês, cena, duração, por que é
   genérico). Nunca baixe de banco, nem abra o site dele, nem peça a uma pesquisa que o faça.
 - Acervo gratuito, só os oficiais e as fontes federais: Wikimedia Commons, NASA, NARA, USGS, Library of
   Congress, Smithsonian, sala de imprensa de órgão federal e DVIDS. Pexels, Pixabay e as outras fontes
   gratuitas ficam fora (Lucas, 26/09/2026; midia.md §7.3; o `buscar-midia` as desliga por
   `marca/midia.json`).
+- **A cena só cita arquivo de `out/<proj>/_media/` que tem `aprovado` em
+  `out/<proj>/_pesquisa/conferencia-midia.json`**, no veredito do `conferente-de-midia` que casa com ele
+  (CLAUDE.md, "Os especialistas"; ofício do conferente, §2): no banco pago, pela `url` do `_PROCEDENCIA.json` da
+  cena; no acervo aberto, pelo `medido.sha256` ou `medido.medido_no_download.sha256` dele; em `_media/pessoa/`,
+  `logo/` e `documento/`, pelo `sha256sum` do arquivo. O veredito que casa tem de ser da cena que cita o arquivo
+  (o campo `cena` dele), ou haver o reuso declarado (ofício do conferente, §5.4). Com `pendente_lucas`,
+  `reprovado`, `trocar`, sem veredito ou com o veredito de outra cena, o arquivo não vai ao `src`: peça a
+  conferência ao Claude central, ou reporte o bloqueio. Ficam fora
+  dessa regra as bandeiras de `assets/flags/`, a geometria de `_media/geo/`, a base de mapa (`_media/base/`, ou a
+  do perfil do `canal.json`) e as bibliotecas do mapa em `_media/_vendor/`.
+- **Arquivo com `-prova` no nome** (a captura e a página sem permissão do `pesquisa-documentos`) nunca vai à tela.
+  Só vai a página com a permissão do midia.md §7.1, sem `-prova` e com o `aprovado` do conferente.
 - A lição do crédito pela procedência está no APRENDIZADOS.md, item 36. O `_commons-baixar` não trava
   licença: confira cada arquivo antes de pôr o `src` (CLAUDE.md, item 5).
 - Faltou mídia: bloqueio reportado (ofício §9). Nunca o clipe da cena vizinha, nunca fundo chapado.

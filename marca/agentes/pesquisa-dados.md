@@ -131,8 +131,8 @@ vídeos.** Até lá, não grave fato lá, nem pelo `src/agent/dados-biblioteca.m
   durante todo o mapa. Dado sobre mapa é do `mapista`; você não pede tile, e o gasto na MapTiler espera o
   ok do Lucas.
 - **Banco pago** (midia.md §1, §2): só para B-roll genérico, na ordem Envato Elements → Motion Array →
-  Storyblocks → Shutterstock, baixado só pelo Lucas, à mão, na conta dele (§2.3; robô e script proibidos,
-  §2.5). Dado não sai de banco. Se uma cena sua pedir B-roll genérico, entregue a lista do que procurar
+  Storyblocks → Shutterstock, baixado na conta do Lucas, pela caça no Chrome dele que ele aprova item por item
+  (§2.3, §8). Dado não sai de banco. Se uma cena sua pedir B-roll genérico, entregue a lista do que procurar
   (termos em inglês, cena, duração, por que é genérico); nunca baixe nem abra o site do banco.
 - **Licença.** Tabela ou gráfico de jornal ou de documento do Estado do Alasca não é domínio público
   automático: você entrega os valores, e quem desenha refaz o gráfico na marca do canal, com a fonte citada.

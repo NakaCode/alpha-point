@@ -146,7 +146,11 @@
   - número com vírgula de milhar e dinheiro em dólar convertido pela cotação da data da fonte;
   - a tela preserva o hedge da voz (voz.md §1);
   - nome de pessoa e de lugar confere contra a fonte da frase, no dossiê do roteiro
-    (`roteiros/<proj>/roteiro-editor.md`).
+    (`roteiros/<proj>/roteiro-editor.md`);
+  - o rótulo de lugar sobre um arquivo de `_media/` confere também contra o `lugar_na_origem` do veredito do
+    `conferente-de-midia` que casa com ele (§5): lugar mais específico que o da origem, ou rótulo sobre arquivo
+    com `lugar_na_origem: null`, reprova (midia.md §2.7). O REGISTRO sem rótulo de lugar sobre esse arquivo não
+    reprova pela falta dele (identidade.md §5 pede o rótulo, mas a origem não o sustenta): declare no laudo.
   - ⚠️ **Os exemplos do ofício estão no formato brasileiro e não se copiam**. Formato brasileiro na tela
     (`R$`, vírgula decimal, `1º DE MAIO`) reprova. O certo é `ALMOST 3,000×`, `28.0×`, `22.2 ft (6.76 m)`,
     `MAY 1, 1994`, `$265 billion`.
@@ -201,7 +205,8 @@
   redesenhado, reprova (`fonte`). O certo é o nome da instituição escrito na pílula `--rotulo`, Inter 700
   (Lucas, 26/09/2026; midia.md §7.6). Logo de órgão federal ou de outra instituição não foi decidida: julgue
   pelo ofício.
-- **Mídia de banco pago que não foi baixada pelo Lucas nem registrada** (midia.md §2.3 e §2.8) reprova
+- **Mídia de banco pago sem registro** (sem a linha no `manifest.jsonl` da caça e a entrada no `_PROCEDENCIA.json`
+  da cena, ou baixada fora da conta individual do Lucas; midia.md §2.3, §2.8 e §8) reprova
   (`fonte`). Evento real específico vindo de banco pago também (midia.md §1).
   - Acervo gratuito, só os oficiais e as fontes federais: Commons, NASA, NARA, USGS, Library of Congress,
     Smithsonian, sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3). Mídia
@@ -210,6 +215,17 @@
   - Sala de imprensa federal e DVIDS são domínio público federal: crédito na tela para elas reprova como
     supérfluo (acima). Foto "courtesy" ou de terceiro dentro delas não é obra federal: sem licença, reprova
     (`fonte`; midia.md §7.3). A foto da sala de imprensa do governo do Alasca é foto do Estado (acima).
+- **Arquivo de `out/<proj>/_media/` na cena sem `aprovado` do `conferente-de-midia`** reprova (`fonte`). Cada `src`
+  de `_media/` tem de casar com um veredito `aprovado` de `out/<proj>/_pesquisa/conferencia-midia.json` (CLAUDE.md,
+  "Os especialistas"; ofício do conferente, §2): no banco pago, pela `url` do `_PROCEDENCIA.json` da cena; no
+  acervo aberto, pelo `medido.sha256` ou `medido.medido_no_download.sha256` dele; em `_media/pessoa/`, `logo/` e
+  `documento/`, pelo `sha256sum` do arquivo. O veredito que casa tem de ser da cena julgada (o campo `cena` dele),
+  ou haver o reuso declarado (ofício do conferente, §5.4). `pendente_lucas`, `reprovado`, `trocar`, nenhum
+  veredito ou só o de outra cena: reprova.
+  Ficam fora as bandeiras de `assets/flags/`, a geometria de `_media/geo/`, a base de mapa (`_media/base/`, ou a
+  do perfil do `canal.json`) e as bibliotecas do mapa em `_media/_vendor/`.
+- **Arquivo com `-prova` no nome na tela** reprova (`fonte`): é prova do `pesquisa-documentos`, e só vai à tela a
+  página com a permissão do midia.md §7.1, sem `-prova` e com o `aprovado` do conferente.
 - **Card de capítulo, título de tópico ou navegação na tela** reprova (`abordagem`; CLAUDE.md).
 - **Apresentador, ou pessoa gerada por IA apresentada como real**, reprova (`abordagem`; identidade.md §5).
 - **Cena sem `<html lang="en-US" data-render="4k-native">`** reprova (`espaco`): sem a marca, o render cai no

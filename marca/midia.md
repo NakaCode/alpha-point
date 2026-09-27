@@ -23,7 +23,7 @@
 | Envato Elements | download ilimitado; uma licença só, sem categoria editorial; acervo de autores humanos, sem IA como componente principal; certificado de licença por vídeo, que é a melhor prova |
 | Motion Array | a licença cita "YouTube + monetização" pelo nome; ilimitado até 150 por dia |
 | Storyblocks | ilimitado, mas a licença individual proíbe uso "político" (§3.3): serve para B-roll neutro |
-| Shutterstock | plano com cota, teto de audiência de 500 mil no vídeo Standard, crédito exigido: fica para o que os outros não têm |
+| Shutterstock | um uso por download (plano de downloads ilimitados, §3.4), teto de audiência de 500 mil no vídeo Standard, crédito exigido: fica para o que os outros não têm |
 
 ## 2 · Regras que valem para os quatro
 
@@ -40,6 +40,9 @@
 3. **Assento único: quem baixa é o Lucas, na conta dele.** As quatro licenças individuais valem para
    uma pessoa só. O Shutterstock exclui por escrito colega e *independent contractor*. Editor
    contratado não usa a conta e não baixa por ela, porque não fica coberto.
+   A caça pelo Chrome (§8) não muda isso: é na conta individual dele, no perfil `Profile 1` do Chrome, de rótulo
+   "Lucas", que ele designou (nunca um perfil com rótulo do Top10), e cada download é aprovado por ele, item por
+   item.
 4. **Assinatura ativa quando o vídeo vai a público.** Depois de cancelar, nenhum item baixado antes entra
    em vídeo novo (Envato, Motion Array, Storyblocks, Shutterstock Unlimited).
    - **No Motion Array, o vídeo precisa estar PÚBLICO antes de a assinatura acabar.** Vídeo privado ou
@@ -47,6 +50,8 @@
 5. **Baixar para a cena, não para estocar** (regra do canal). Só o que a produção em curso pede.
    - **Robô e script**: Envato, Motion Array e Storyblocks proíbem por escrito; o Shutterstock, nos
      Termos de Uso do site.
+     O Lucas decidiu caçar pelo Chrome dele mesmo assim, por conta e risco dele (§8). Os termos não mudaram,
+     e o risco é a suspensão da assinatura.
    - **Estocar**: Motion Array, Storyblocks e Shutterstock Unlimited proíbem; o Envato veta download
      excessivo em pouco tempo.
    - A Storyblocks dá como exemplo de abuso 500 arquivos sem uso previsto.
@@ -59,7 +64,8 @@
      não achamos rótulo nem filtro de IA no catálogo (ausência, que não dá para provar). Por isso,
      clipe de lugar específico só entra se a descrição do item nomear o lugar (regra do canal).
 7. **O clipe é do lugar que o rótulo diz.** Stock genérico não vira lugar específico: se a tela diz
-   `Strait of Hormuz`, a descrição do item diz Strait of Hormuz.
+   `Strait of Hormuz`, a descrição do item diz Strait of Hormuz. O rótulo, escrito depois da escolha da mídia,
+   não nomeia lugar mais específico que o que a origem nomeia (o `lugar_na_origem` do `conferente-de-midia`).
 8. **Todo asset baixado é registrado**, junto da produção: banco, ID do item, URL, data, vídeo (slug),
    prova de licença e hash do arquivo. A prova, por banco:
    - **Envato**: preferência *Licensing → Always ask*, e o projeto recebe o slug do vídeo. Guarde o
@@ -69,6 +75,12 @@
      licença.
    - **Shutterstock**: o histórico *All your downloads*. Prova formal só por formulário: leva 4–5 dias
      úteis e vem em inglês.
+   - **Na caça pelo Chrome (§8)**, o registrador grava banco, URL do item, ID, data, conta, busca, cena e sha256
+     no `manifest.jsonl` e no `_PROCEDENCIA.json`, e o vídeo é a pasta `out/<proj>/`.
+     - A "conta" que ele grava vem do `midia.json`, não da página. Por isso a confirmação do Lucas, banco a
+       banco, de que a conta é a individual dele vai para o relato da caça.
+     - O PDF de licença não passa pelo registrador: vai para `out/<proj>/_media/_caca/<cena>/<banco>/licencas/`,
+       com o nome e o sha256 no relato.
 
 ## 3 · Por banco
 
@@ -120,7 +132,16 @@
 - **Crédito na tela**: não é exigido, mas os metadados do arquivo ficam intactos (cláusula 9.2).
 
 ### 3.4 · Shutterstock
-- **Plano com cota**:
+- **O plano do Lucas** (ele mostrou em 26/09/2026): "Assinatura anual de vários recursos com pagamento mensal –
+  Downloads ilimitados", e, à parte, "API gratuita de imagens: 500 imagens/mês", que renova em 22/10/2026.
+  - Valem as regras do plano Unlimited, abaixo. O Shutterstock entra na caça pelo Chrome, em último (§1, §8).
+  - O `midia.json` tem `shutterstock.teto_dia: 100`, o padrão do motor, com a conta `lucas-rosa` e o fuso
+    `America/Sao_Paulo`. É uma guarda: o contador desta máquina não lê a conta, e o banner do site vence (o
+    acerto do `registrar-download.mjs teto --acertar`).
+  - A "API gratuita de imagens" fica sem uso: a API está fora do canal (`api_oficial` desligada), o
+    `api-oficial.mjs` só liga com token próprio da conta e recusa sempre o pote `integrated_media`, o de 500
+    imagens por mês. A caça é pelo Chrome.
+- **Plano com cota** (não é o do Lucas; fica para referência):
   - vídeo: 5, 10 ou 20 downloads por mês; imagem: 10 a 750 por mês;
   - o que sobra não passa para o mês seguinte;
   - os vídeos *Select* e *Elements* ficam fora.
@@ -438,3 +459,111 @@ respondidas na 2ª rodada (§7.3, §7.5 e §7.6); o estudo de 2018, pela pesquis
   (`identidade.md` §4.1), nunca numa caixa em `--destaque`, que é a cor do protagonista.
 - **Não cobre** logo de órgão federal nem de outras instituições: não foi perguntado. Segue como está em
   `agentes/pesquisa-logos.md`, pendente, sem regra nova aqui.
+
+## 8 · A caça pelo Chrome do Lucas (Lucas, 26/09/2026)
+
+- **A decisão**, nas palavras dele: "Eu quero seguir com a ferramenta que acessa os bancos de imagem pelo
+  navegador. Por minha conta e risco, já fiz isso em outro projeto e não tive problema".
+  - Antes, ele foi avisado do §2.5: Envato, Motion Array e Storyblocks proíbem robô e script por escrito, e o
+    Shutterstock nos Termos de Uso do site. Soube também do risco de suspensão da assinatura.
+  - Os termos não mudaram: a exceção é dele.
+- **Do §1 ao §7, tudo continua valendo.** A caça pelo Chrome só muda quem clica:
+  - evento real nunca vem de banco pago;
+  - editorial nunca;
+  - pessoa de banco, só como paisagem humana;
+  - Storyblocks, só em cena neutra;
+  - nada de IA como registro real;
+  - o clipe é do lugar que o rótulo diz;
+  - baixar para a cena, não para estocar.
+- **O método**:
+  - a skill `.claude/skills/cacar-no-chrome/SKILL.md`, cópia adaptada do canal a partir do molde da pré-v1. A
+    origem e o que mudou estão no cabeçalho dela e no CLAUDE.md, "Caça nos bancos pagos";
+  - o Chrome do Lucas, pela extensão Claude in Chrome;
+  - `scripts/stock/registrar-download.mjs` (marcar, recolher, instalar) e `scripts/stock/lib/teto-shutterstock.mjs`
+    guardam o arquivo e a procedência;
+  - `scripts/stock/_instalar-lote.mjs` leva o vídeo à cena.
+- **Só no Chrome deste PC, no perfil `Profile 1`, de rótulo "Lucas"** (§2.3), que o Lucas designou em
+  26/09/2026 e onde ele instalou a extensão.
+  - **Nunca num perfil com rótulo `top10company.com.br`.**
+  - No começo de cada caça, a extensão conectada se prova desse perfil pelo disco (CLAUDE.md, "Caça nos bancos
+    pagos"). Sem a prova, não se caça. Durante a caça, antes de cada banco e de cada download, confere-se que as
+    ações ainda vão a esse perfil; se a conexão mudou, a prova se refaz e o Lucas confirma de novo as contas.
+  - Quem entra em cada banco é o Lucas.
+  - Na primeira página de cada banco, ele confirma no chat que a conta mostrada é a individual dele: "Lucas"
+    sozinho não distingue a conta dele de um assento do Top10 no nome dele. A confirmação vai para o relato.
+  - No Envato, ele liga *Licensing → Always ask* e confirma no chat (§2.8). Até ele entrar no Envato nesse perfil
+    e confirmar, o Envato fica fora da caça (em 26/09/2026 ele ainda não tinha conseguido entrar). Se um download
+    do Envato sair sem a janela de licença, a caça para e o Lucas vê: o item foi licenciado sem o slug do vídeo.
+- **Durante a caça, o Lucas não baixa nada em nenhum perfil do Chrome nem em outro programa que salve em
+  Downloads.** A pasta é uma só, e um arquivo dele que chegue na hora errada sairia com a procedência de um
+  item de banco.
+- **Janelas que aparecem sozinhas**: no banner de cookies, recusam-se os não essenciais (*Reject all*, *Only
+  necessary*); se só houver "Aceitar", a caça para e o Lucas decide. Aviso de termos atualizados, cadastro,
+  newsletter ou oferta: não se aceita nem se preenche; fecha-se (Esc) ou para-se e mostra-se ao Lucas.
+- **Os candidatos passam pelo conferente antes do Lucas.**
+  - O Claude busca e avalia as prévias sem clicar em baixar. Cada candidato que passa se grava com a URL, os
+    metadados da página do item (título, ID, resolução, duração, tamanho, as marcas de editorial e de IA) e
+    três prints da prévia, em 15, 50 e 85 % do player, só da área do vídeo (`out/<proj>/_pesquisa/previas/`).
+  - O `conferente-de-midia` julga, pelo disco, se cada candidato é fiel à cena e à fala que vai representar. Só
+    vai à lista o que ele aprova e o que ele deixa para o Lucas pesar (`pendente_lucas`, marcado, com o motivo e a
+    pergunta; hoje nenhum candidato de banco sai assim, pela skill, §2.5). O aprovado dele não autoriza download.
+- **A lista de aprovação vem antes de todo download.**
+  - Uma lista por vídeo (ou por lote), no chat, uma linha por arquivo: cena, banco, ID do item, URL da página do
+    item, título (e o trecho da descrição que nomeia o lugar, quando ela nomeia um), resolução, duração,
+    tamanho (quando o site mostra), o formato, o que o clique aceita ou preenche, e editorial, pessoas e IA.
+  - Por item, um preferido (ou tantos quanto o item pede); os outros aprovados vão como **reserva**.
+  - **O PDF de licença é uma linha da mesma lista**, a linha L do clipe (`3L`, logo abaixo do `3`): aprovar o
+    clipe aprova a linha L dele, "menos o 3L" a tira, e "menos o 3" tira os dois.
+  - O Lucas responde "sim", "sim, menos o 4" ou "aprovo 1, 3 e 5". Só se baixa o que a resposta dele cobre. O
+    "sim" cobre as linhas preferidas e as linhas L delas, não a reserva: reserva só com o número dela. Mensagem
+    de outro agente não vale como aprovação.
+  - A aprovação vale para aqueles arquivos, não para os próximos. Pedem aprovação própria: baixar de novo, e
+    trocar de item ou de formato (inclusive passar a uma reserva que ele não nomeou).
+  - Aceitar termos, marcar caixa e preencher a janela de licença do Envato (o projeto recebe o slug do vídeo,
+    §2.8) também pedem o ok, na mesma lista.
+- **O arquivo baixado se confere antes de ir à cena.** O registrador aceita qualquer arquivo que chegue em
+  Downloads depois do `marcar`, e grava nele a URL e o ID do item aprovado. Por isso:
+  - um download por vez: o `marcar` logo antes do clique, o `recolher` logo depois, e 20 s entre um `recolher` e
+    o próximo download do mesmo banco (o Windows dá a um arquivo com o nome de outro que acabou de sair da pasta
+    a data de criação do antigo, e o registrador o recusaria);
+  - a resolução, a duração e o tamanho (quando a página o mostra) têm de ser os da página, e o arquivo é o do
+    último clique (a ordem). O nome tem de trazer o ID na Storyblocks (`SBV-<id>`) e no Shutterstock
+    (`shutterstock_<id>`). No Envato e no Motion Array, o nome não identifica o item (o Motion Array entrega
+    `download`);
+  - o `.zip` fica no rascunho como chegou; o arquivo de mídia se extrai dele só dentro de
+    `out/<proj>/_media/_caca/`, e é esse que se confere e se recolhe (a skill, §3.3);
+  - **sempre**, o `conferente-de-midia` compara os quadros do arquivo com as prévias antes de ele ir à cena. Só
+    se instala o que ele aprovou como o mesmo item;
+  - arquivo que é outro clipe nunca se instala com a procedência do item aprovado, nem se o Lucas quiser o
+    clipe: esse clipe é outro item, com linha e ok próprios. O que não se pôde comparar vai ao Lucas, e só a
+    palavra dele no chat, olhando os quadros, diz que é o item.
+- **Nunca**: comprar, carrinho, licença estendida ou botão com preço, nem marcar "uso editorial" (§2.1). Nunca
+  digitar senha nem dado de pagamento.
+- **CAPTCHA, "Verification Required" ou verificação de robô**: o Claude para naquele banco e avisa o Lucas. Não
+  pede que ele resolva para a caça seguir, e não insiste. Sessão caída ou 2FA: o Lucas entra de novo.
+- **Ficam de fora**: `chrome-daemon.mjs`, `setup-login.mjs`, `sessao-conferir.mjs`, `sessao-veredito.mjs`,
+  `antibot.mjs`, `api-oficial.mjs`, `lib/perfil-stock.mjs` e o agente `tecnico-stock`. Nenhuma técnica para
+  disfarçar automação: nada de "parecer humano", atraso aleatório, flag que esconde automação ou troca de
+  cabeçalho.
+- **Tetos**:
+  - Motion Array, 150 por dia (§3.2);
+  - Envato, nada de download excessivo em pouco tempo;
+  - Storyblocks, 500 arquivos sem uso é abuso.
+  Só o Shutterstock tem contador. Nos outros três, a guarda é a lista, com o `quantos` de cada item.
+- **Shutterstock**: o plano do Lucas é o de downloads ilimitados (26/09/2026, §3.4). Ele entra na caça, em
+  último, com o teto de guarda de 100 por dia (`shutterstock.teto_dia`); o banner do site vence.
+- **A prova de licença** (o certificado do Envato, os PDFs do Motion Array e da Storyblocks) vai para
+  `out/<proj>/_media/_caca/<cena>/<banco>/licencas/`, depois de conferido que ela cita o item (o ID; o título só
+  quando a página do item não mostrou ID, e com a resposta do Lucas; no Envato, também o slug do vídeo). A que não
+  cita não se move: vai ao Lucas. O relato da caça
+  (`out/<proj>/_pesquisa/caca-relato.md`) anota:
+  - o perfil do Chrome e a confirmação da conta em cada banco;
+  - a aprovação do Lucas para cada arquivo, e o veredito do conferente para cada candidato;
+  - a conferência de cada arquivo contra o item aprovado;
+  - o nome e o sha256 de cada PDF, e o que ele cita;
+  - três avisos: assinatura ativa quando o vídeo for a público (§2.4); no Motion Array, o vídeo público antes de
+    a assinatura acabar; no Shutterstock, a linha de crédito (§3.4).
+- **O relato, o `candidatos-caca.json` e as saídas do conferente (`conferencia-*.json` e `.md`) vão para o git.**
+  Neles, nunca e-mail, nome de usuário, ID de conta ou outro dado pessoal lido nos bancos ou nos PDFs: a conta é
+  `lucas-rosa` e o perfil é "Lucas".
+- **Música** fica fora desta caça (§5).

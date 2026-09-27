@@ -102,6 +102,13 @@ recusou e o que ficou sem conferir, e a sessão central confere no navegador do 
 
 - **Nome de lugar:** país e região em **CAIXA ALTA**; cidade, rio e estreito em caixa normal
   (identidade.md §3). Nome de lugar é rótulo, nunca herói (identidade.md §4.1).
+- **Rótulo de lugar sobre mídia real** (REGISTRO: `footage`, `foto`, `aereo-real`): não nomeia lugar mais
+  específico que o `lugar_na_origem` dos vereditos `aprovado` da cena em
+  `out/<proj>/_pesquisa/conferencia-midia.json` (o `conferente-de-midia`, ofício §5.1; midia.md §2.7). A origem
+  diz "Southeast Alaska": o rótulo não diz `Juneau`. Com `lugar_na_origem: null`, ou sem veredito, o rótulo de
+  lugar sobre aquela mídia vai ao report, não à tela. O Claude central leva esse report ao `montador`, que
+  decide trocar a mídia (o `trocar_por` ao `pesquisa-imagens`, com conferência nova) ou manter o REGISTRO sem
+  rótulo de lugar, o que se declara na cena e no laudo do `qc-visual` (midia.md §2.7).
 - **Card de pessoa:** nome completo e cargo (identidade.md §5), com `data_do_cargo`. Político pelo cargo,
   sem rótulo partidário (`roteiro-editor.md` › "Decisões editoriais", no Juneau). **A forma** (Lucas,
   26/09/2026; identidade.md §5): o `nome` vai no rótulo, até 3 palavras, e o cargo numa linha menor logo

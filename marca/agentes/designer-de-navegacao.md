@@ -44,8 +44,8 @@ O roteiro não tem linha `**Título**`, e nenhuma se acrescenta (CLAUDE.md).
     fonte citada (Lucas, 26/09/2026; midia.md §7.1). Foto do Estado e de jornal entra citando a fonte
     (midia.md §7.5); logo de jornal, de órgão do Alasca e o selo, só o nome escrito (midia.md §7.6);
   - **banco pago** (midia.md §1, §2): evento real nunca vem dele; B-roll genérico vem, na ordem Envato
-    Elements → Motion Array → Storyblocks → Shutterstock, baixado só pelo Lucas, à mão, na conta dele
-    (§2.3; robô e script proibidos, §2.5). Você entrega a lista do que procurar, nunca baixa nem abre o banco;
+    Elements → Motion Array → Storyblocks → Shutterstock, baixado na conta do Lucas, pela caça no Chrome dele que
+    ele aprova item por item (§2.3, §8). Você entrega a lista do que procurar, nunca baixa nem abre o banco;
   - o `npm install` não foi autorizado: portão de navegador sai NÃO MEDIDO (CLAUDE.md, "Os especialistas").
 
 ## 3 · O que valeria, se o Lucas mudar a decisão

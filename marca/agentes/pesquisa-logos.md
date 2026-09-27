@@ -122,8 +122,8 @@ de y = 1880.
 - **Mapa = MapTiler**, com `© MapTiler © OpenStreetMap contributors` na tela durante todo o mapa
   (`canal.json › mapa.perfil`; identidade.md §6). Isso é do `mapista`; você não pede tile, e o gasto de
   pedidos na MapTiler ainda não foi liberado: nenhum quadro ou render de mapa sem o ok do Lucas.
-- **Banco pago** (midia.md §1, §2): só para B-roll genérico, baixado só pelo Lucas, à mão, na conta dele
-  (§2.3; robô e script proibidos, §2.5). Logo não é B-roll genérico e não sai de banco; você não baixa nem
+- **Banco pago** (midia.md §1, §2): só para B-roll genérico, baixado na conta do Lucas, pela caça no Chrome dele que ele aprova item por item
+  (§2.3, §8). Logo não é B-roll genérico e não sai de banco; você não baixa nem
   abre o site de banco.
 
 ## 8 · Os portões, e a quem devolver
@@ -136,6 +136,26 @@ REGIE_MOTOR=<motor> node scripts/qc-procedencia.mjs <proj>
 
 - O `_commons-cat` usa o `contato` do `canal.json` no User-Agent. O `qc-procedencia` e o
   `scripts/procedencia-reconciliar.mjs` pedem `REGIE_MOTOR`.
+- **A logo e a bandeira que você entrega passam pelo `conferente-de-midia`**
+  (`.claude/agents/conferente-de-midia.md`, do canal; ofício dele, §2) antes de uma cena citá-las, em qualquer
+  passo: também a bandeira que o `editor-de-arte` pede no `art`. O ofício grava direto em `out/<proj>/_media/logo/`,
+  sem rascunho, e a cena só cita o arquivo com `aprovado` no veredito que casa com o sha256 dele. As bandeiras de
+  `assets/flags/` ficam fora do conferente. A ordem, entrega → conferente → cena:
+  1. entregue e registre na pauta, como o ofício manda: fonte, URL e licença. A sua resposta lista os arquivos
+     entregues;
+  2. o Claude central despacha o conferente no fluxo `midia` sobre eles. O veredito fica em
+     `out/<proj>/_pesquisa/conferencia-midia.json`. Ele olha o SVG por uma cópia em PNG, feita pelo
+     `_svg-para-png` (ofício dele, §4);
+  3. num despacho novo, você retira o `reprovado` e o `trocar`. Leia o veredito no disco: o relato não vale. O
+     `pendente_lucas` fica onde está, fora da cena, até o Lucas responder e o conferente regravar o veredito.
+     - Mova o arquivo para `out/<proj>/_media/_caca/_retirado/logo/`, nunca o apague.
+     - Reconcilie quem o cita (ofício do `pesquisa-imagens`, §3.6): a linha da pauta aponta o substituto ou
+       diz `FALTA — <pedido>`.
+  - O `trocar` volta com o que faltou (`trocar_por`), e a busca nova passa de novo pelo conferente. O
+    `reprovado` com `reconferir` espera a conferência no navegador do app, com o Lucas vendo.
+  - O `aprovado` dele não dispensa a sua validação (ofício §4).
+  - O `regie advance` do `research` só se faz sem `reprovado` nem `trocar` em arquivo que continua em
+    `_media/logo/`, e sem arquivo sem veredito (CLAUDE.md, "Os especialistas").
 - Não há ledger de insumos nem seção "A ESCADA" neste canal. A devolução é a **última linha da sua
   resposta**: a cena, o degrau em que você parou e quem decide agora — `montador` (o que entra e onde),
   `regente-de-imagem` (o que a frase exige da tela), `diretor-de-arte` (se mexe no arco) e o Lucas, quando

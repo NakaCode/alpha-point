@@ -127,9 +127,9 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
   (Lucas, 26/09/2026; midia.md §7.3). Nunca de banco pago. O retrato de pessoa citada segue midia.md §7.2.
 - **B-roll genérico** (paisagem, cidade, porto, indústria, drone): dos bancos pagos, na ordem Envato
   Elements → Motion Array → Storyblocks → Shutterstock (midia.md §1), com as regras do §2: editorial nunca,
-  pessoa de banco nunca em política, e Storyblocks só em cena neutra (§3.3). Quem baixa é só o Lucas, à
-  mão, na conta dele (§2.3, assento único); robô e script são proibidos (§2.5; CLAUDE.md, "Fora, por
-  ora"). O pedido é a lista do que procurar: termos em inglês, cena, duração e por que é genérico.
+  pessoa de banco nunca em política, e Storyblocks só em cena neutra (§3.3). O download é na conta do Lucas
+  (§2.3, assento único), pela caça no Chrome dele que ele aprova item por item (§8; CLAUDE.md, "Caça nos
+  bancos pagos"). O pedido é a lista do que procurar: termos em inglês, cena, duração e por que é genérico.
 - **Acervo gratuito, só os oficiais e as fontes federais** (Lucas, 26/09/2026; midia.md §7.3): Wikimedia
   Commons, NASA, NARA, USGS, Library of Congress, Smithsonian, sala de imprensa de órgão federal e DVIDS.
   Openverse, Met, Europeana, Internet Archive, Pexels e Pixabay ficam fora: não os peça (o `buscar-midia`
@@ -207,6 +207,6 @@ REGIE_MOTOR=<pré-v1> node scripts/qc-respiro.mjs <proj>
 - a cena da cauda de 20 s e o que ficou pendente nela;
 - o protagonista proposto para `--destaque`;
 - as cenas de mapa (quantas, e quais pedem relevo), porque cada uma custa pedidos MapTiler no render;
-- a lista de B-roll genérico para o Lucas baixar de banco pago, e os pedidos que dependem de fonte ainda
+- a lista de B-roll genérico para a caça em banco pago (o `pesquisa-imagens` a escreve; o Lucas aprova), e os pedidos que dependem de fonte ainda
   não liberada ou da licença de documento estadual/imprensa;
 - a lista de **DECISÃO DO LUCAS PENDENTE** que tocou este espelho, uma linha cada.

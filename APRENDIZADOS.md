@@ -636,3 +636,81 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
     Todo agente que "confirma a entidade" ou procura âncora nele precisa saber disso (as roupas avisam no §0).
 - **Por que serve a qualquer canal:** todo canal que narra pela ElevenLabs tem o alinhamento no histórico de graça,
   e todo canal que roda o faster-whisper na máquina carrega o modelo do mesmo jeito. Vale avisar o Lucas.
+
+## 26/09/2026 — o conferente de mídia, entre a pesquisa e a aprovação (pré-v1 em `7ab9543`)
+
+### 38. Quem acha a mídia não é quem a confere, e o conferente julga contra a frase, não contra a busca
+
+- **Problema:** na pré-v1, quem busca a mídia também a valida por visão (ofício do `pesquisa-imagens`, §4), e a
+  caça nos bancos pagos vai da avaliação ao clique de baixar sem um segundo olhar. Quem escolheu tende a ver o que
+  procurou: a balsa certa num fiorde da Noruega passa por "balsa de carros". E a lista de aprovação do dono só
+  serve se o que chega a ela já foi julgado contra a fala, e não contra o termo de busca.
+- **O que resolveu:** um especialista do canal, `.claude/agents/conferente-de-midia.md`, que não baixa nem edita.
+  Por candidato, ele monta a frase na fonte (espelho, `words.json` e roteiro aprovado), abre a imagem, e julga
+  quatro critérios (contexto, licença e fonte pela marca, técnica, repetição por hash e por ID). O veredito é
+  `aprovado`, `reprovado` (defeito do arquivo ou da prova dele, ou algo que não se conferiu), `trocar` (o
+  arquivo presta, mas não para esta frase) ou `pendente_lucas` (o que a marca deixa o dono pesar), e fica no
+  disco. Só o `aprovado` e o `pendente_lucas` vão à lista do dono, e o `aprovado` não vale como o sim do dono.
+  Ainda não rodou num candidato real.
+- **Ajuste da revisão (26/09):** a duração do candidato se mede contra o plano que ele vai ocupar, não contra a
+  cena. A regência, que divide a cena em planos, nasce depois da pesquisa, e com a cena inteira como janela um
+  clipe de 5 s numa cena de 20 s saía `trocar` e voltava à busca. Sem regência, a janela da cena se divide
+  pelos planos escritos, ou pelo mínimo que o teto de permanência deixa, e a cobertura da cena vira recado sobre
+  o conjunto, não veredito de um arquivo. E a mídia que chega sem rascunho (retrato, logo, documento) também
+  passa por ele, sobre o arquivo entregue.
+- **Ajuste da segunda revisão (26/09):** três remendos seguidos abriram defeito novo, e o ofício foi reescrito
+  num desenho só. (1) O que a marca deixa para o dono decidir (footage abaixo de 4K, foto de agência, arquivo que
+  não se pôde comparar com a prévia) sai `pendente_lucas`, e a resposta dele volta ao conferente, literal e com a
+  hora, como `excecao_lucas`: sem isso, a exceção prometida não tinha onde ficar, e o orquestrador era empurrado a
+  passar por cima do veredito. (2) A regra vale na cena, em qualquer passo: a cena só cita arquivo com `aprovado`
+  no veredito que casa com ele (pela URL do item no banco pago, pelo sha256 do arquivo julgado no resto). Um
+  portão só no fim da pesquisa deixava passar a mídia pedida depois. (3) A procedência se cobra pela régua de cada
+  tipo, e o conferente mede o que dá para medir (sha256, resolução, duração) em vez de reprovar quem não o gravou.
+- **Por que serve a qualquer canal:** um canal de culinária também mostra o prato errado sob a frase certa, e
+  todo canal que baixa por assinatura paga o download que ninguém devia ter aprovado. O motor pode ter o ofício
+  (a pré-v1 não tem) e deixar a régua de licença na marca de cada canal. Vale avisar o Lucas.
+
+### 39. O `recolher` da pré-v1 não sabe se o arquivo é o item, e o nome não o prova em dois dos quatro bancos
+
+- **Problema:** o `scripts/stock/registrar-download.mjs recolher` aceita qualquer arquivo que chegue em Downloads
+  depois do `marcar`, e grava nele a URL, o ID e a conta do item. Só no Shutterstock ele exige o ID no nome. Na
+  bancada de teste (26/09, Downloads e home falsos, sem rede), o mesmo clipe pessoal saiu com exit 0 como item da
+  Storyblocks (`ferias praia.mp4`, gravado como `SBV-111222333`), do Motion Array (`download`, gravado como
+  `download.mp4`) e do Envato (URL de item com UUID, que o nome não traz). O `_instalar-lote` o levou à cena com
+  a procedência do item. E o nome não salva: o Motion Array entrega sempre `download`.
+- **O que resolveu (texto, sem mexer no script do molde):** a identidade se prova pelo olho. Na Fase A, três
+  prévias em pontos fixos (15, 50 e 85 % da barra do player), só da área do vídeo (`zoom` com `save_to_disk`).
+  Depois do `recolher`, o `conferente-de-midia` tira os quadros do arquivo nos mesmos pontos
+  (`_frames-de-clipe.mjs`, com o nome inteiro no `--so=`, porque ele casa por trecho) e grava `mesmo_item`. Só o
+  `aprovado` com `mesmo_item: true` se instala, e outro clipe nunca se instala com a procedência do item (skill
+  `cacar-no-chrome`, §3, passos 4 e 5).
+- **Por que serve a qualquer canal:** todo canal que caçar pelo navegador com esse registrador tem o mesmo buraco.
+  O motor poderia deixar de declarar a procedência no `recolher` e declará-la só no `instalar`, depois de uma
+  confirmação de identidade registrada. Vale avisar o Lucas.
+
+### 40. Qual perfil do Chrome a extensão opera se prova pelo disco, e o NTFS herda a data de um nome repetido
+
+- **Problema 1:** `list_connected_browsers` da extensão Claude in Chrome não diz o perfil. Os nomes ("Browser 1",
+  "Browser 2") trocam de ordem, o `isLocal` só compara o sistema operacional, e neste PC a extensão estava também
+  em perfis do Top10. Caçar no perfil errado baixa na conta errada.
+- **O que resolveu:** a prova pelo disco, no começo de cada caça (skill `cacar-no-chrome`, §0, item 5): `select_browser`
+  com o `deviceId` do perfil do dono, uma aba numa URL única (`https://example.com/?alpha-point-perfil-<marca>`),
+  e a marca procurada só no `History` desse perfil (`User Data/Profile 1/History`). Achou, é ele. O `deviceId`
+  identifica o navegador entre as caças, e muda se a extensão for reinstalada.
+- **Ajuste da revisão (26/09):** a prova do começo não basta. Se a extensão cair e voltar no meio da caça, a
+  seleção pode se perder, e um pedido de conexão aceito na janela de outro perfil manda os downloads seguintes
+  para lá. Por isso, antes de cada banco e de cada clique que baixa (o do clipe e o do PDF de licença), o `inUse`
+  de `list_connected_browsers` tem de estar
+  no `deviceId` do perfil do dono; se não estiver, ou se a extensão reconectar, a prova se refaz e o dono
+  confirma de novo as contas. Pedido de conexão da extensão durante a caça se recusa, em qualquer perfil.
+- **Problema 2:** o `recolher` da pré-v1 recusa o arquivo "criado ANTES do 'marcar'". No Windows, o NTFS dá a um
+  arquivo que nasce com o nome de outro que saiu da pasta até 15 s antes a data de criação do antigo (o
+  *tunneling*). O Motion Array entrega sempre `download`: na bancada (26/09, Downloads e home falsos), o segundo
+  `download`, recolhido logo depois do primeiro, saiu 3 com a data de criação do primeiro; com 20 s de espera,
+  saiu 0. O erro é do lado seguro, mas trava a caça e gasta a aprovação do download.
+- **O que resolveu (texto, sem mexer no script do molde):** um download por vez e 20 s entre um `recolher` e o
+  próximo download do mesmo banco (skill, §3).
+- **Por que serve a qualquer canal:** todo canal que caçar pelo Chrome com mais de um perfil tem o problema 1, e
+  todo canal no Windows que baixar do Motion Array tem o 2. O motor poderia fazer a prova do perfil num verbo, e o
+  registrador poderia ele mesmo recusar um `marcar` feito menos de 15 s depois de mover um arquivo da pasta
+  Downloads. Vale avisar o Lucas.

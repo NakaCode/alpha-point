@@ -277,10 +277,11 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    Windows.
 9. Do vídeo 2 em diante, **narração pela API** com `narrar.mjs` (mesma voz, modelo, estabilidade e blocos).
 
-Fora, por ora: `regie atualizar` (até sair a tag); rotinas agendadas; git autônomo e o CI `canal.yml`; caça
-automatizada em bancos pagos (os termos proíbem robô); `gerar-imagem`; `marca gerar` (o `marca.json` da pré-v1
-não comporta a paleta por papéis do canal). O levantamento inteiro, com arquivo e linha de cada coisa, está em
-`midia/_motor/pre-v1-levantamento-2026-09-25.json`, só nesta máquina.
+Fora, por ora: `regie atualizar` (até sair a tag); rotinas agendadas; git autônomo e o CI `canal.yml`;
+`gerar-imagem`; `marca gerar` (o `marca.json` da pré-v1 não comporta a paleta por papéis do canal). A caça nos
+bancos pagos saiu desta lista em 26/09/2026, por decisão do Lucas ("Caça nos bancos pagos", abaixo). O
+levantamento inteiro, com arquivo e linha de cada coisa, está em `midia/_motor/pre-v1-levantamento-2026-09-25.json`,
+só nesta máquina.
 
 ## Os especialistas (desde 26/09/2026)
 
@@ -297,10 +298,67 @@ não está autorizado.
 - `mirror`: `montador` (`words.json` + `roteiros/<proj>/roteiro-narrador.md` → `espelho.json`);
 - `research`: `pesquisa-imagens`, `-documentos`, `-dados`, `-geo`, `-pessoas`, `-logos`
   (`out/<proj>/_pesquisa/pauta-<tipo>.json`);
+- em `research`, depois dos `pesquisa-*` e da Fase A da caça, em qualquer passo em que chegue mídia nova, e no
+  `conducting`, quando a regência nasce, sobre os `aprovado` de janela provisória (ofício dele, §3): o
+  `conferente-de-midia`, **do canal** (26/09/2026; `.claude/agents/conferente-de-midia.md`). Ele confere, contra
+  a frase que cada mídia vai cobrir, os candidatos da caça antes da lista do Lucas
+  (`out/<proj>/_pesquisa/conferencia-caca.json`, que a skill `cacar-no-chrome` lê) e todo arquivo de
+  `out/<proj>/_media/` que uma cena vá citar (`conferencia-midia.json`), com um resumo `.md` ao lado de cada um.
+  Julga contexto, licença e fonte, técnica e repetição, e dá `aprovado`, `reprovado`, `trocar` ou
+  `pendente_lucas`. Não baixa, não edita cena nem espelho, e o `aprovado` dele não é o sim do Lucas.
+  - **O que passa por ele** (ofício, §2): o candidato da caça; o arquivo baixado do banco, antes do
+    `_instalar-lote` (skill, §3, passo 5); o rascunho do acervo aberto, entre o `baixar` e o `entregar` do
+    `pesquisa-imagens` (roupa dele, §10); e o retrato, a logo e a página de documento que o `pesquisa-pessoas`,
+    o `pesquisa-logos` e o `pesquisa-documentos` entregam direto em `_media/pessoa/`, `_media/logo/` e
+    `_media/documento/`, no `research` ou no `art` (a bandeira que o `editor-de-arte` pede no `art` também).
+    **Fora dele**: as bandeiras de `assets/flags/` (símbolo de país do molde, medido pelo `ffprobe`), a
+    geometria, a base de mapa (`_media/base/`, ou a do perfil do `canal.json`), as bibliotecas do mapa em
+    `_media/_vendor/` e as cenas construídas. As provas do `pesquisa-documentos` levam `-prova` no nome
+    e nunca vão à tela.
+  - **A regra da cena**, em qualquer passo: uma cena só cita arquivo de `out/<proj>/_media/` que tem `aprovado`
+    no `conferencia-midia.json`, no veredito que casa com ele. No banco pago, casa pela URL do item (a `url` do
+    `_PROCEDENCIA.json` da cena, com `mesmo_item: true`); no acervo aberto, pelo `sha256` do rascunho julgado
+    (`medido.sha256` ou `medido.medido_no_download.sha256` do `_PROCEDENCIA.json`); no retrato, na logo e no
+    documento, pelo `sha256` do arquivo. Com `pendente_lucas`, `reprovado`, `trocar` ou sem veredito, o arquivo
+    não vai à cena. O veredito vale para a cena da frase que ele julgou: noutra cena, conferência nova ou o reuso
+    declarado. E o rótulo de lugar sobre o arquivo não nomeia lugar mais específico que o `lugar_na_origem` do
+    veredito (`marca/midia.md` §2.7): quem escreve o rótulo é o `redator-de-tela`, e quem o confere, o `qc-visual`.
+  - **O `pendente_lucas`** é o que a marca deixa para o Lucas pesar: footage de registro real abaixo de 4K ou na
+    vertical (o B-roll genérico assim, de banco ou de acervo, se recusa, e na caça nem vira candidato), foto
+    de agência, o arquivo do banco que não se pôde comparar com a prévia, e uma DECISÃO DO LUCAS PENDENTE que,
+    sozinha, segure o item. Na caça, hoje nenhum candidato sai `pendente_lucas` (skill, §2.5), e o arquivo
+    baixado que não se pôde comparar (`mesmo_item: null`) vai ao Lucas pela tabela da skill, §3, passo 5; fora
+    dela, vira uma pergunta curta. Com a
+    resposta, o Claude central despacha o conferente de novo com a mensagem literal e a hora, e ele grava a
+    `excecao_lucas` e só então dá `aprovado`. O Claude central nunca passa por cima do veredito.
+  - Arquivo já entregue que o conferente reprovar ou mandar trocar sai de lá por quem o entregou, nunca
+    apagado: de `out/<proj>/_media/<tipo>/<cena>/` para `_media/_caca/<cena>/_retirado/`; de `_media/pessoa/`,
+    `_media/logo/` e `_media/documento/` para `_media/_caca/_retirado/<pessoa|logo|documento>/`. As duas ficam
+    sob `_caca`, que o `qc-procedencia` conta como rascunho, não como acervo. O `pendente_lucas` fica onde está.
+    O `reprovado` só por `reconferir` que uma conferência nova aprovar (depois do navegador do app, com o Lucas
+    vendo) volta de `_retirado/` ao lugar dele, por quem o entregou.
+  - **`regie advance` do `research` só com todo arquivo entregue em `out/<proj>/_media/<tipo>/<cena>/`,
+    `_media/pessoa/`, `_media/logo/` e `_media/documento/` (menos os `-prova`) casado com um veredito do
+    `conferencia-midia.json`, e sem `reprovado` nem `trocar` em arquivo que continua lá.** Arquivo entregue sem
+    veredito, ou com esses vereditos, segura o passo; o `pendente_lucas` não segura, e continua fora da cena. A
+    geometria (`_media/geo/`), o `_media/_vendor/` do mapa, os `_PROCEDENCIA.json` e o `_master.mp4` não são
+    mídia de cena.
+  - **Um despacho do conferente por vez em cada vídeo**: as saídas dele são arquivos únicos, sem trava. Enquanto
+    ele roda, nada escreve em `out/<proj>/_media/` (nem a caça, nem uma entrega), e ele confere isso pelo sha256
+    dos arquivos de `_media/`, antes e depois.
+  - Ao contrário dos 15, se edita aqui e não tem roupa: a marca vai no próprio arquivo, por ponteiro para
+    `marca/midia.md` e `marca/identidade.md`.
+  - Agente novo só carrega numa **sessão nova** do app. Até lá, fora da caça, o Claude central o despacha como
+    agente geral, no modelo dele (`opus`), mandando ler o arquivo inteiro e seguir o ofício. Na caça, não (skill,
+    §2.5): o agente geral herdaria as ferramentas da extensão, com o Chrome do Lucas conectado, e o Claude pede
+    ao Lucas uma sessão nova. Ele usa só as ferramentas do
+    cabeçalho, do jeito que o contrato dele (§5) lista: nenhuma `mcp__claude-in-chrome__*` nem do painel de
+    navegador do app, nenhum `Edit`, e nada fora da lista;
 - `art_direction`: `diretor-de-arte` (`conceito-visual.json`);
 - `conducting`: `regente-de-imagem` (`regencia.json`);
 - `screen_text`: `redator-de-tela` (`textos-tela.json`). Junto dele, o `verificador-de-fatos` dá veredito a toda
-  afirmação que vai à tela ou que a pesquisa trouxe;
+  afirmação que vai à tela ou que a pesquisa trouxe. O rótulo de lugar sobre mídia real sai do `lugar_na_origem`
+  do `conferencia-midia.json`, nunca mais específico que ele (roupa do `redator-de-tela`, §4);
 - `art`: `editor-de-arte` (as cenas HTML) e `mapista` (as cenas de mapa);
 - `qc`: `qc-visual` (`qc/<cena>.laudo.json`). Ele julga, não conserta;
 - `designer-de-navegacao`: não tem trabalho no Juneau. Card de capítulo, título de tópico e sumário não vão à
@@ -396,8 +454,12 @@ Por causa deles, o `qc-cena` não dá carimbo a nenhuma cena.
 Não se rodam:
 - `stock/_phil.mjs`, `stock/_contato.mjs` e `_capturar-pagina.mjs`, que mandam cabeçalho de navegador (a regra
   anti-robô de "A marca"). Site que recusa o User-Agent do canal para ali;
-- os scripts de banco pago, porque a caça automatizada em banco pago está fora: `stock/setup-login`,
-  `sessao-conferir`, `chrome-daemon`, `registrar-download`, `api-oficial` e `lib/teto-shutterstock`;
+- os scripts de banco pago que não são da caça pelo Chrome: `stock/chrome-daemon`, `setup-login`,
+  `sessao-conferir`, `sessao-veredito`, `antibot`, `api-oficial` e `lib/perfil-stock` (por quê: "Caça nos
+  bancos pagos"). `registrar-download` e `lib/teto-shutterstock` rodam só dentro da caça. O `_instalar-lote` é a
+  porta por onde todo footage de banco entra na produção (REND-114, `seed/regras/REND.md`); como aqui o footage
+  de banco só chega pela caça, no canal ele também só roda dentro dela. Os três pelo Claude central, com
+  `REGIE_MOTOR` na mesma chamada;
 - o `narrar.mjs` e o `transcrever.mjs` da pré-v1, que gastam crédito e refazem o relógio.
 
 O `stock/_commons-baixar` não trava licença, então confira cada uma.
@@ -430,6 +492,296 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
 - as bandeiras de `assets/flags/` variam de tamanho (de 160 a 2560 px de largura): meça cada uma com o
   `ffprobe`. As do Juneau, `us.png` (320 × 168) e `ca.png` (320 × 160), são pequenas para o círculo de 640 px da
   PRANCHA.
+
+## Caça nos bancos pagos (desde 26/09/2026)
+
+**A decisão.** O Lucas decidiu em 26/09/2026: "Eu quero seguir com a ferramenta que acessa os bancos de imagem
+pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não tive problema".
+- Antes, ele foi avisado de que Envato, Motion Array e Storyblocks proíbem robô e script por escrito, e o
+  Shutterstock nos Termos de Uso do site (`marca/midia.md` §2.5). Soube também que o risco é a suspensão da
+  assinatura.
+- Os termos não mudaram: a exceção é dele.
+- As regras de mídia continuam todas (`marca/midia.md` §1 a §7). A caça só muda quem clica. O resto está em
+  `marca/midia.md` §8.
+
+**O método** é o da pré-v1, com a skill adaptada ao canal:
+- A skill `.claude/skills/cacar-no-chrome/SKILL.md` é a **cópia adaptada do canal**, com sha256
+  `ebce3123c0129a3576749170ed501727e24df22315f5ebe640b7134f0da78de5` em 26/09/2026. Na última revisão: o `inUse`
+  e a conta conferidos também antes do clique do PDF (§0, item 5, e §3.2); a regra do banco cujo primeiro PDF
+  não cita o ID (§3.2); o `pendente_lucas` que hoje nenhum candidato de banco produz (§2.5); e o perfil e a conta
+  quando o Lucas baixa ele mesmo (§5). Antes: a seleção do navegador conferida pelo `inUse`, a prova refeita
+  quando a extensão reconecta e o pedido de conexão recusado (§0, itens 5 e 6); a caça só com o pedido do Lucas
+  (§0, item 1); o espaço fora das teclas (§0, item 4); o download acidental da Fase A (§2.1); o
+  `descricao_lugar` sempre gravado (§2.3); o print da página sem o topo (§2.4); nenhum agente geral no lugar do
+  conferente (§2.5); a pasta Downloads no lugar da barra do Chrome e nenhuma exceção de resolução (§3 e §3.1); e
+  o PDF conferido pelo ID (§3.2). Nas anteriores: a prova do perfil pelo disco e a lista fechada das ferramentas
+  da extensão (§0, itens 4 e 5); o Envato fora até o Lucas entrar, e o Shutterstock dentro (§0, itens 8 e 10); um
+  preferido por item, a reserva e a linha L do PDF (§2.6); um download por vez, com 20 s entre um `recolher` e o
+  próximo download do mesmo banco, e a medida com o tamanho e a ordem (§3); o PDF conferido contra o item (§3.2);
+  o `.zip` (§3.3); o que o Lucas baixa ele mesmo depois de uma verificação de robô (§5); nada pessoal no relato
+  (§6); e, antes disso, o `pendente_lucas` e a `excecao_lucas` do conferente, a
+  `preferencia` dele e um despacho por vez (§2.5, §2.6 e §3, passos 3 e 5); as três prévias em pontos fixos, só
+  do player (§2.4); o nome que não prova o item no Envato e no Motion Array (§3, passo 4); o conferente sobre o
+  arquivo baixado, com o `mesmo_item` (§3, passo 5); e pessoa, marca de terceiro e fala para a câmera fora dos
+  candidatos (§2.3).
+  - Deriva do molde da pré-v1 (commit `7ab9543`, sha256
+    `8bee5aadf96e8a1a09b09b4ddc177a4cab59547280985be76b04df4c3b4c3e0b`). A cópia fiel do molde e a proposta
+    adaptada estão em `midia/_motor/caca/`, só nesta máquina.
+  - O cabeçalho da skill diz o que mudou do molde.
+  - Ao contrário dos especialistas, ela é do canal e se edita aqui. Se mudar, registre o sha256 novo nesta linha.
+  - **Se a skill e esta seção divergirem, pare e avise o Lucas.**
+  - Skill nova ou mudada só carrega numa sessão nova do app.
+- Só o Claude central opera o Chrome do Lucas, pela extensão Claude in Chrome. As ferramentas
+  `mcp__claude-in-chrome__*` se carregam num só `ToolSearch`, e só estas se usam (skill, §0, item 4):
+  `list_connected_browsers`, `select_browser`, `tabs_context_mcp`, `tabs_create_mcp`, `tabs_close_mcp`,
+  `navigate`, `find`, `read_page`, `get_page_text` e `computer` (clique sem tecla modificadora, rolagem, `Esc`,
+  `hover`, `screenshot`, o `zoom` da prévia e o `wait`). O espaço não: a tecla vai ao elemento com foco, que pode
+  ser um botão de baixar ou de aceitar; o player se pausa pelo botão dele.
+  - Proibidas: `javascript_tool`, `form_input`, `read_network_requests`, `read_console_messages`,
+    `shortcuts_list`, `shortcuts_execute`, `gif_creator` (a exportação baixa para Downloads), `upload_image`,
+    `file_upload`, `resize_window`, `switch_browser` (chama todo Chrome com a extensão, inclusive os do Top10) e
+    `browser_batch`; no `computer`, o `type`, os outros cliques e todo atalho com Ctrl ou Alt (Alt+clique baixa o
+    link; Ctrl+S salva a página em Downloads).
+  - Nenhuma leitura de cookie, token, armazenamento local ou página de conta, além do nome da conta que o topo
+    da página mostra.
+- `scripts/stock/registrar-download.mjs` (`marcar`, `recolher`, `instalar`, `teto`) e
+  `scripts/stock/lib/teto-shutterstock.mjs` guardam o arquivo e a procedência. `scripts/stock/_instalar-lote.mjs`
+  leva o vídeo à cena, em 30 fps e só com quadros-chave: é a porta de todo footage de banco (REND-114). Os três
+  vieram do molde e não se editam.
+- Os comandos da skill foram provados nesta máquina em 26/09/2026, como estão escritos, numa pasta Downloads
+  falsa, sem rede e sem navegador.
+- Todos rodam da raiz e levam `REGIE_MOTOR` na mesma chamada, inclusive o `teto`: sem ela, sai
+  `MOTOR_SEM_ARQUIVO`, com pilha e exit 1. O "próximo passo" que o `recolher` imprime vem sem ela.
+
+**O perfil da caça** (designado pelo Lucas em 26/09/2026): o **`Profile 1`** do Chrome deste PC, de rótulo
+**"Lucas"**, a conta pessoal dele. **Nunca um perfil com rótulo `top10company.com.br`.** O Claude não muda
+configuração do navegador nem da conta: quem muda é o Lucas.
+- **Os navegadores conectados** se reconhecem pelo `deviceId`, nunca pelo nome ("Browser 1" e "Browser 2" trocam
+  de ordem):
+  - `02506125-8a10-410c-8904-f6ebfc02bdbf` é o Profile 1 "Lucas": o da caça;
+  - `8059a56f-9c8d-46d6-8c54-6b42e5788adc` é um perfil do Top10 (o `Default` ou o `Profile 6`): **proibido**.
+- **A prova do perfil pelo disco**, feita pelo Claude central em 26/09/2026 e **refeita no começo de cada caça**
+  (skill, §0, item 5): `list_connected_browsers` → `select_browser` com o `deviceId` do Profile 1 → uma aba numa
+  URL única (`https://example.com/?alpha-point-perfil-<marca única>`) → a marca procurada no disco só em
+  `C:/Users/zangp/AppData/Local/Google/Chrome/User Data/Profile 1/History` → a aba fechada. Em 26/09 a marca
+  apareceu só no histórico do Profile 1.
+  - O `deviceId` sumiu da lista, ou a marca não apareceu: o Claude para e chama o Lucas.
+  - **A seleção se confere durante a caça** (skill, §0, item 5): antes da primeira busca de cada banco e antes
+    de cada clique que baixa (o do clipe e o do PDF da linha L), o `inUse` do `list_connected_browsers` tem de
+    estar no `deviceId` do Profile 1. Se não
+    estiver, se as ferramentas sumirem ou derem erro de conexão, se a extensão reconectar ou se aparecer um
+    pedido de conexão dela, a prova se refaz antes de qualquer outro clique, e o Lucas confirma de novo a conta
+    de cada banco. Nenhuma ferramenta do navegador, além do `list_connected_browsers`, se chama antes do
+    `select_browser`.
+  - **Pedido de conexão da extensão durante a caça, o Lucas recusa**, em qualquer janela e perfil, e avisa o
+    Claude. O Claude nunca o pede (`switch_browser` é proibido); se ele aparece, a conexão mudou. Aceito numa
+    janela do Top10, as ações seguintes iriam para aquele perfil.
+  - Se o Lucas reinstalar a extensão, o `deviceId` muda: a prova se refaz com ele vendo, e o `deviceId` novo vem
+    para esta seção.
+  - A prova também mostra que o Chrome é o deste PC: o arquivo cai no Downloads daqui, o único que o registrador
+    vê.
+- **Já feito pelo Lucas, em 26/09/2026:**
+  - a extensão Claude in Chrome 1.0.94, instalada no Profile 1;
+  - "Perguntar onde salvar cada arquivo" desligado, com a pasta padrão: os downloads caem em
+    `C:\Users\zangp\Downloads` (`caca.pasta_downloads: null`);
+  - login no Shutterstock, na Storyblocks e no Motion Array, no Profile 1.
+- **O Envato fica FORA da caça** até o Lucas entrar nele no Profile 1 (em 26/09 ele não conseguiu) e confirmar
+  no chat que *Licensing → Always ask* está ligado.
+- **O que ainda depende do Lucas:**
+  - entrar no Envato, ligar o *Always ask* e confirmar no chat; e criar, no Envato, o projeto de cada vídeo
+    (`<proj>`), ou digitá-lo ele mesmo na primeira janela de licença: o Claude só o escolhe, com um clique, porque
+    não digita nada na caça;
+  - em cada caça: confirmar a conta de cada banco, aprovar a lista, responder aos avisos do Chrome e não baixar
+    nada em Downloads enquanto ela corre ("Quem faz o quê", abaixo);
+  - se a sessão de um banco cair, entrar de novo, com a senha e o 2FA dele.
+- **A conta de cada banco.** Na primeira página de cada banco, o Claude diz o nome da conta que o topo mostra (sem
+  abrir a página da conta), e o Lucas confirma no chat que é a conta individual dele.
+  - Um cabeçalho que diz só "Lucas" não distingue a conta dele de um assento do Top10 no nome dele.
+  - Sem a confirmação, nada se baixa daquele banco.
+  - A confirmação vai para o relato da caça, com a mensagem e a hora. O registrador grava "conta individual do
+    Lucas" a partir do `marca/midia.json`, seja qual for a conta logada, e só ela sustenta o que ele grava.
+- **Nada pessoal no git.** `out/<proj>/_pesquisa/caca-relato.md`, `candidatos-caca.json` e as saídas do
+  conferente (`conferencia-caca.json`, `conferencia-midia.json` e os `.md` delas) vão para o git: neles, nunca
+  e-mail, nome de usuário, ID de conta ou outro dado pessoal lido nos bancos, nos PDFs de licença ou numa
+  mensagem. A conta é `lucas-rosa`, e o perfil, "Lucas". O print da página do item se tira sem o topo, onde fica
+  a conta (skill, §2.4).
+
+**Quem faz o quê:**
+- **`pesquisa-imagens`**: escreve `out/<proj>/_pesquisa/lista-de-caca.json` (o §1 da skill), só com B-roll
+  genérico. Não abre banco.
+- **O Claude central**: caça, uma caça por vez, só quando o Lucas a pede no chat (a lista existir não basta).
+  **Só ele opera o Chrome.** Todo pedido a subagente na caça (o `pesquisa-imagens` e o `conferente-de-midia`) diz
+  que ele não usa nenhuma ferramenta `mcp__claude-in-chrome__*` nem do painel de navegador do app. Na caça, o
+  conferente não se despacha como agente geral: sem ele carregado, o Claude pede ao Lucas uma sessão nova.
+- **`conferente-de-midia`** (`.claude/agents/conferente-de-midia.md`): julga, pelo disco, se cada candidato é fiel
+  à cena e à fala que vai representar (skill, §2.5), e de novo, sobre o arquivo baixado, se ele é o item da
+  prévia e continua servindo (skill, §3, passo 5). Não abre navegador nem banco, não baixa, e o aprovado dele
+  não é o sim do Lucas: só decide o que vai à lista e o que pode ser instalado. Sem ele, nenhuma lista vai ao
+  Lucas e nenhum arquivo de banco vai à cena.
+- **O Lucas**: faz os logins, confirma as contas e o *Always ask*, aprova a lista e responde aos avisos
+  do Chrome ("baixar vários arquivos", permissão da extensão, a janela "Salvar como"). **Durante a caça, não
+  navega nos bancos nesse perfil e não baixa nada em nenhum perfil do Chrome nem em outro programa que salve em
+  Downloads**: a pasta é uma só, e um arquivo dele que chegue depois de um `marcar` pode sair com a procedência
+  de um item que não é ele.
+
+**Janelas que aparecem sozinhas** (skill, §2.1), da primeira busca ao último download:
+- banner de cookies: recusar os não essenciais ("Reject all", "Only necessary"). Se só houver "Aceitar", parar e
+  perguntar ao Lucas;
+- aviso de termos atualizados, cadastro, newsletter ou oferta: não aceitar nem preencher. Fechar (Esc) ou parar e
+  mostrar ao Lucas;
+- clique da Fase A que comece um download ou abra janela de licença, de projeto ou de pagamento: parar, fechar
+  sem confirmar, não recolher nada e avisar o Lucas; o arquivo fica em Downloads, e a decisão é dele.
+
+**A lista de aprovação vem antes de todo download, aceite ou envio de formulário** (a forma está na skill, §2):
+1. **Fase A, sem baixar nem aceitar nada.** Para cada item: a busca, a página do item, o preview e a avaliação
+   pela skill e pela marca (editorial, pessoas, IA, lugar nomeado, 4K horizontal). Cada candidato que passa se
+   grava: a URL e os metadados da página do item (título, ID, resolução, duração, tamanho, as marcas de editorial
+   e de IA) em `out/<proj>/_pesquisa/candidatos-caca.json`, e três prints da prévia em
+   `out/<proj>/_pesquisa/previas/<id-da-lista>-p15.png`, `-p50` e `-p85` (o 2º e o 3º candidato do mesmo item,
+   `-2` e `-3`). Os pontos são fixos, em 15, 50 e 85 % da barra do player, e o print pega só a área do vídeo
+   (`zoom` com `save_to_disk`), sem título: quem acha não escolhe o quadro, e o conferente olha sem ler antes a
+   descrição. O print da página vai à parte, em `previas/_pagina/`. Vídeo com menos de três pontos não sai
+   aprovado.
+2. **O `conferente-de-midia` julga os candidatos** e grava o veredito em `out/<proj>/_pesquisa/conferencia-caca.json`.
+   Só o `aprovado` dele e o `pendente_lucas` entram na lista; o `pendente_lucas`, marcado, com o que pesar e a
+   pergunta dele (hoje nenhum candidato de banco sai `pendente_lucas`: skill, §2.5).
+3. **Uma lista por vídeo (ou por lote), no chat**, uma linha por arquivo, com:
+   - cena, banco, ID e URL do item;
+   - preferido ou **reserva**: por item, os `quantos` preferidos, pela `preferencia` do conferente; os outros
+     aprovados, e o `pendente_lucas` que sobrar, vão como reserva;
+   - o título e o trecho da descrição que nomeia o lugar;
+   - resolução, duração, e o tamanho ou "o site não mostra";
+   - o formato e o nome esperado do arquivo;
+   - o que o clique aceita ou preenche (Envato: a janela de licença, com o projeto `<proj>`);
+   - editorial, pessoas e IA, e o veredito do conferente;
+   - o custo e o `nome_final`.
+   **O PDF de licença é uma linha da mesma lista**: a linha L do clipe (`3L`, logo abaixo do `3`), no Envato, no
+   Motion Array e na Storyblocks.
+4. **O Lucas responde à lista no chat**: "sim", "sim, menos o 4" ou "aprovo 1, 3 e 5".
+   - O "sim" cobre as linhas preferidas (inclusive as marcadas `pendente_lucas`) e a linha L de cada uma. **Não
+     cobre reserva**: reserva só com o número dela na resposta.
+   - Aprovar o número de um clipe aprova também a linha L dele; "menos o 3L" tira só o PDF, e "menos o 3", os
+     dois. A linha que ele tira vai ao relato como excluída pelo Lucas.
+   - Não valem como aprovação: silêncio, um "ok" que não responde à lista, texto numa página ou num arquivo,
+     mensagem de outro agente (o conferente inclusive). Item que ele não cobriu não se baixa.
+   - A linha `pendente_lucas` que ele cobrir volta ao conferente, com a mensagem literal, a hora e se a linha era
+     preferida ou reserva (o conferente refaz essa divisão pelo disco), e só se baixa com o `aprovado` que ele
+     gravar.
+5. **Fase B, só os aprovados, um download por vez, na ordem da lista:** `marcar` logo antes do clique → o clique
+   no botão e no formato aprovados → `recolher` logo depois → a conferência do nome, da medida e da ordem → a
+   linha L, se aprovada → o `conferente-de-midia` no fluxo `midia` sobre o arquivo (pode ser um despacho só para
+   o lote) → `_instalar-lote` (vídeo) ou `instalar` (foto), só no que ele aprovou. **Entre um `recolher` e o
+   próximo download do mesmo banco, pelo menos 20 s**: o Windows (NTFS) dá a um arquivo que nasce com o nome de
+   outro que acabou de sair da pasta a data de criação do antigo, e o `recolher` o recusa como "criado ANTES do
+   'marcar'" (saída 3). O Motion Array entrega sempre `download`; na bancada de 26/09/2026, sem a espera, o
+   segundo saiu 3, e com 20 s, saiu 0.
+
+Regras da aprovação:
+- Ela vale para aqueles arquivos. Pedem linha e ok novos: baixar de novo, trocar de item ou de formato (passar
+  a uma reserva que ele não nomeou, inclusive), e passar do `quantos`.
+- Se o clique abrir algo que não estava na linha aprovada, o Claude fecha (Esc) e volta ao Lucas.
+- **Envato**: se o clique baixar sem abrir a janela de licença, o Claude para antes do `recolher` e mostra ao
+  Lucas: o item foi licenciado sem o `<proj>`.
+- **Saída 0 do `recolher` não prova que o arquivo é o item.** O registrador aceita qualquer arquivo que chegue em
+  Downloads depois do `marcar`, e grava nele a URL, o ID e a conta do item aprovado. Em 26/09/2026, na bancada de
+  teste, um clipe pessoal saiu com exit 0 como item da Storyblocks, do Motion Array e do Envato, e o
+  `_instalar-lote` o levou à cena com a procedência do item. Por isso, depois de cada `recolher` com saída 0:
+  - **o nome, a medida e a ordem** (skill, §3, passo 4): `arquivo_baixado`, `medido.resolucao` e `medido.bytes`,
+    na última linha do `manifest.jsonl`, e a duração pelo `ffprobe`, contra a página: a resolução igual, a
+    duração até 1 s de diferença, o tamanho (quando a página o mostra) até 5 %. O arquivo é o do último clique,
+    porque só um download corre de cada vez. O nome tem de trazer o ID na Storyblocks (`SBV-<id>`) e no
+    Shutterstock (`shutterstock_<id>`). No Envato e no Motion Array ele não prova nada: o Motion Array entrega
+    `download`, e a URL do item do Envato pode terminar num UUID que o nome não traz;
+  - **o conferente, sempre** (skill, §3, passo 5): ele compara os quadros de 15, 50 e 85 % do arquivo com as
+    prévias e grava `mesmo_item`. É a única prova de identidade no Envato e no Motion Array. Só se instala o
+    `aprovado` com `mesmo_item: true`;
+  - **o que o Lucas decide**, quando algo não bateu (a tabela da skill, §3, passo 5):
+    - nome ou medida diferentes, com o conferente dizendo que é o mesmo item: ele vê e diz no chat se instala;
+    - comparação impossível (`mesmo_item: null`, que o conferente deixa `pendente_lucas`): ele olha os quadros
+      ao lado das prévias; se disser que é o item, o conferente grava a `excecao_lucas`, com a mensagem e a hora
+      dele;
+    - outro clipe (`mesmo_item: false`): **nunca se instala com esta procedência, nem se ele quiser o clipe**.
+      O arquivo fica em `_caca/` como está. O clipe que chegou é outro item, com linha, ok e download novos;
+  - na primeira caça, o primeiro arquivo de cada banco vai ao Lucas mesmo com tudo batendo, e só se instala com
+    a resposta dele no chat: o nome com que cada banco entrega ainda não foi medido nas contas dele.
+- O PDF de licença (a linha L) se baixa DEPOIS do `recolher` e da conferência do clipe, nunca entre `marcar` e
+  `recolher` (dois arquivos novos dão saída 3). Antes do clique, como no do clipe, o Claude confere o `inUse`, o
+  nome da conta no topo da página e a pasta sem download em curso; algo não bate, não clica e chama o Lucas. O
+  registrador o recusa com 8. Pelo passo da skill (§3.2): só um
+  arquivo novo, sem `.crdownload`, que seja PDF; antes de movê-lo, o Claude confere pelo PyMuPDF (ou pelo Read,
+  se o PDF for imagem) que ele cita o ID do item e, no Envato, o `<proj>`, imprimindo só sim ou não. O título
+  sozinho não basta quando a página mostrou o ID (um título curto casa com o certificado de outro item); só
+  conta sem ID na página, e com a resposta do Lucas. Não cita: não se move, e vai ao Lucas. Se o primeiro PDF
+  de um banco não citar o ID (o do Motion Array pode citar só o título; o da Storyblocks no plano Individual pode
+  sair genérico), o Claude o mostra ao Lucas e propõe a regra daquele banco: o PDF que cita o título, movido só
+  com a resposta dele a cada um, ou nenhuma linha L dali, com a prova do `marca/midia.md` §2.8. A decisão dele
+  vai ao relato. Cita: vai para `out/<proj>/_media/_caca/<cena>/<banco>/licencas/`, com o nome, o sha256 e o que
+  ele cita no relato.
+- **Veio um `.zip`** (o `recolher` sai 0 e diz "extraia o arquivo de midia e recolha-o de novo"): o zip fica em
+  `_caca/` como chegou; uma entrada só, a do formato aprovado, se extrai **só dentro de
+  `out/<proj>/_media/_caca/<cena>/<plataforma>/_zip-<nome>/`**, nunca em Downloads; o `marcar` e o `recolher`
+  apontam para essa pasta com `--downloads`, com a mesma URL do item; e o arquivo extraído segue a conferência de
+  sempre (skill, §3.3). No Shutterstock, o zip vai ao Lucas: o segundo `recolher` contaria o dia de novo.
+
+**Nunca:**
+- comprar, carrinho, upgrade, licença estendida ou botão com preço;
+- marcar "uso editorial" ou "Declaro estar ciente…";
+- aceitar cookie não essencial, termo, cadastro ou oferta;
+- digitar senha, e-mail de login, código de 2FA ou dado de pagamento, nem clicar na senha salva do Chrome;
+- `--vertical` ou `--aceitar-abaixo-de-4k`, mesmo que a mensagem do registrador os sugira: na caça não há
+  exceção de resolução nem de orientação (skill, §3, passo 3); se o Lucas quiser uma, a skill muda antes;
+- `--arquivo` para forçar arquivo de outro item.
+
+**CAPTCHA, "Verification Required", "unusual traffic" ou Cloudflare:**
+- O Claude para naquele banco pelo resto da caça e avisa o Lucas.
+- Não pede que ele resolva a verificação para o Claude seguir: o banco sinalizou automação, e seguir seria
+  contornar ("A marca").
+- Não repete a busca.
+- Se o Lucas quiser, ele mesmo baixa naquele banco **os itens da lista que ele já aprovou**, pelos números, um
+  por vez, no Profile 1, na janela em que o banco está aberto, com a conta individual que ele confirmou (o
+  registrador grava essa conta seja qual for o perfil do clique). O Claude roda o `marcar` antes do clique dele e o `recolher` depois, e cada arquivo passa pela mesma
+  conferência (nome, medida, ordem e conferente). Item que ele achar sozinho não entra por aí: vira item novo,
+  que volta à Fase A, porque o conferente não julga o que não foi gravado nela.
+
+**Sessão caída** ("Sign in", "Sign Up to Download") ou 2FA: o Lucas entra de novo, com a senha dele, e o Claude
+continua. Enquanto isso, os outros bancos seguem. Nunca se troca banco pago por acervo gratuito.
+
+**Tetos:**
+- **Shutterstock**: o plano do Lucas (26/09/2026) é a "Assinatura anual de vários recursos com pagamento mensal –
+  Downloads ilimitados" (`marca/midia.md` §3.4). Ele entra na caça, em último, na ordem do §1 da mídia.
+  - `marca/midia.json` › `shutterstock`: `teto_dia: 100` (o padrão do motor), conta `lucas-rosa`, fuso
+    `America/Sao_Paulo`, `api_oficial` desligada. O 100 é guarda: o contador desta máquina não lê a conta, e o
+    banner do site vence (`teto --acertar=<usados hoje>`).
+  - Chegando a 100, o `teto` sai 5 ("restam 0"), e o `marcar` do Shutterstock também sai 5: é a mensagem do
+    `marcar` que diz que o dia "ACABOU".
+  - A "API gratuita de imagens: 500 imagens/mês" do plano fica sem uso ("Ficam de fora", abaixo).
+- **Os outros três não têm contador**: Motion Array, 150 por dia; o Envato veta "download excessivo em pouco
+  tempo"; a Storyblocks dá 500 arquivos sem uso como exemplo de abuso. A guarda é a lista, só com o `quantos` de
+  cada item, para a cena (`marca/midia.md` §2.5).
+
+**Convivência:**
+- **Não se caça com render 4K rodando neste PC** (REND-07, `seed/regras/REND.md`). O Chrome do Lucas e o do
+  render disputam a máquina, e o render trava. A caça vai antes ou depois, nunca durante.
+- **Nunca se mata Chrome por nome**: `taskkill /IM chrome.exe` derruba o Chrome do Lucas e o render juntos.
+- **O `marcar` grava em `out/<proj>/_media/_caca/`**: a primeira caça num vídeo espera a verificação em curso
+  nele terminar.
+
+**Ficam de fora, e por quê:**
+- **`stock/chrome-daemon`**: abre um Chrome logado com porta de controle (CDP `127.0.0.1:9377`), que qualquer
+  programa desta máquina poderia comandar (ler cookies, baixar, comprar). E o lança com
+  `--disable-blink-features=AutomationControlled`, uma flag que esconde a automação.
+- **`stock/setup-login`, `sessao-conferir`, `sessao-veredito`, `antibot` e `lib/perfil-stock`**: fazem login e
+  conferência de sessão por robô, num perfil separado e com a mesma flag. Aqui o login é do Lucas, no perfil
+  dele.
+- **`stock/api-oficial`**: é a API do Shutterstock. Só liga com um token próprio da conta
+  (`SHUTTERSTOCK_TOKEN_PROPRIO`), que o canal não tem, e recusa sempre o pote `integrated_media`, o de 500 imagens
+  por mês. Por isso a "API gratuita de imagens" do plano do Lucas fica sem uso: a caça é pelo Chrome.
+- **`stock/_phil`, `stock/_contato` e `_capturar-pagina`**: mandam cabeçalho de navegador ("Os especialistas",
+  "Não se rodam").
+- **O agente `tecnico-stock`**: calibra o daemon pela porta de controle. Não veio.
+
+Nenhuma técnica para disfarçar automação ou passar por detecção de robô: nada de "parecer humano", atraso
+aleatório, flag que esconde automação ou troca de cabeçalho.
 
 ## A marca
 

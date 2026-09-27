@@ -75,6 +75,12 @@
   como cena.
 - Entregue **dados e prova**: título exato, órgão ou veículo, data, autor, URL, os trechos a grifar com
   os tempos do `words.json`, e a página rasterizada. A cena fica com o `editor-de-arte`.
+- **O nome do arquivo diz se ele vai à tela.** O `conferente-de-midia` e o portão do `research` se guiam por
+  ele (CLAUDE.md, "Os especialistas"):
+  - prova e referência, que não vão à tela, levam `-prova`: `<slug>-prova.png` (a captura, ofício §2.1) e
+    `<slug>-prova-p<N>.jpg` (a página rasterizada sem permissão de uso, §4);
+  - a página que vai à tela como registro, só com permissão clara (§4), é `<slug>-p<N>.jpg` (ofício §2.1,
+    "quando o objeto importa"), e passa pelo conferente (§8).
 
 ## 3 · A tela, em inglês (identidade.md §7, §4.1)
 
@@ -169,6 +175,26 @@ REGIE_MOTOR=<motor> node scripts/qc-procedencia.mjs <proj>
 
 - O `qc-procedencia` e o `scripts/procedencia-reconciliar.mjs` pedem `REGIE_MOTOR`. Rascunho de trabalho
   vai em `out/<proj>/_tmp/`, não em `/tmp`.
+- **A página que vai à tela passa pelo `conferente-de-midia`** (`.claude/agents/conferente-de-midia.md`, do
+  canal; ofício dele, §2) antes de uma cena citá-la, em qualquer passo (no `research` ou no `art`). O ofício grava
+  direto em `out/<proj>/_media/documento/`, sem rascunho, e a cena só cita a página com `aprovado` no veredito
+  que casa com o sha256 dela. Os `-prova` (§2) ficam fora do conferente e nunca vão à tela. A ordem, entrega →
+  conferente → cena:
+  1. entregue e registre na pauta, como o ofício manda: fonte, URL e o texto da permissão (midia.md §7.1). A sua
+     resposta lista os arquivos entregues, com o `-prova` separado do que vai à tela;
+  2. o Claude central despacha o conferente no fluxo `midia` sobre eles. O veredito fica em
+     `out/<proj>/_pesquisa/conferencia-midia.json`;
+  3. num despacho novo, você retira o `reprovado` e o `trocar`. Leia o veredito no disco: o relato não vale. O
+     `pendente_lucas` fica onde está, fora da cena, até o Lucas responder e o conferente regravar o veredito.
+     - Mova o arquivo para `out/<proj>/_media/_caca/_retirado/documento/`, nunca o apague.
+     - Reconcilie quem o cita (ofício do `pesquisa-imagens`, §3.6): a linha da pauta aponta o substituto ou
+       diz `FALTA — <pedido>`.
+     - Sem a página aprovada, a cena recria o trecho (§4). O texto e a prova continuam valendo.
+  - O `trocar` volta com o que faltou (`trocar_por`), e a busca nova passa de novo pelo conferente. O
+    `reprovado` com `reconferir` espera a conferência no navegador do app, com o Lucas vendo.
+  - O `aprovado` dele não dispensa a sua confirmação da citação (ofício §3).
+  - O `regie advance` do `research` só se faz sem `reprovado` nem `trocar` em arquivo que continua em
+    `_media/documento/`, e sem arquivo sem veredito (CLAUDE.md, "Os especialistas").
 - Não há ledger de insumos nem seção "A ESCADA" neste canal. A devolução é a **última linha da sua
   resposta**: a cena, o degrau em que você parou e quem decide agora — `montador` (o que entra e onde),
   `regente-de-imagem` (o que a frase exige da tela), `diretor-de-arte` (se mexe no arco) e o Lucas, quando

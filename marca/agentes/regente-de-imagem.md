@@ -102,8 +102,8 @@ Os cinco modelos são os de identidade.md §5.
   o `exige` o nomeia.
 - **Banco pago** (midia.md §1, §2): só para B-roll genérico, na ordem Envato Elements → Motion Array →
   Storyblocks → Shutterstock; editorial nunca, pessoa de banco nunca em política, Storyblocks nunca sobre
-  ator político ou conflito (§2.1, §2.2, §3.3). Quem baixa é só o Lucas, à mão, na conta dele (§2.3); robô
-  e script são proibidos (§2.5). No `exige` de um beat genérico, diga por que ele é genérico.
+  ator político ou conflito (§2.1, §2.2, §3.3). O download é na conta do Lucas, pela caça no Chrome dele que ele
+  aprova item por item (§2.3, §8; os termos proíbem robô, §2.5, e a exceção é dele). No `exige` de um beat genérico, diga por que ele é genérico.
 - **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
   Alaska State Library) e **imprensa** (ADN, KTOO) não estão no domínio público que a identidade.md §7
   isenta de crédito. Só vão à tela com permissão de uso clara (domínio público comprovado, licença aberta ou
@@ -155,6 +155,6 @@ também `documento_real`.
 - as parcelas de respiro e rajada pelas definições do canal (§1);
 - a parcela de mundo real pela régua do canal e, como informação, as outras duas contas (§5);
 - os beats que pediriam relevo (§4) e quantos beats de mapa o vídeo tem;
-- os beats `imprescindivel` que esperam o download do Lucas em banco pago, uma fonte não liberada ou a
+- os beats `imprescindivel` que esperam a caça em banco pago (aprovada pelo Lucas), uma fonte não liberada ou a
   licença de documento estadual/imprensa;
 - a lista de **DECISÃO DO LUCAS PENDENTE** que tocou esta partitura, uma linha cada.

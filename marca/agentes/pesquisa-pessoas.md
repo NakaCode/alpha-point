@@ -148,6 +148,25 @@ REGIE_MOTOR=<motor> node scripts/qc-procedencia.mjs <proj>
 
 - Os portões de navegador saem NÃO MEDIDO sem npm (a lista está no CLAUDE.md, "Os especialistas"). O `qc-procedencia` e o
   `scripts/procedencia-reconciliar.mjs` pedem `REGIE_MOTOR`. Rascunho vai em `out/<proj>/_tmp/`.
+- **O retrato que você entrega passa pelo `conferente-de-midia`** (`.claude/agents/conferente-de-midia.md`, do
+  canal; ofício dele, §2) antes de uma cena citá-lo, em qualquer passo (no `research` ou no `art`). O ofício grava
+  direto em `out/<proj>/_media/pessoa/`, sem rascunho, e a cena só cita o retrato com `aprovado` no veredito que
+  casa com o sha256 dele. A ordem, entrega → conferente → cena:
+  1. entregue e registre na pauta, como o ofício manda: fonte, URL, e a licença ou o uso (midia.md §7.2). A sua
+     resposta lista os arquivos entregues;
+  2. o Claude central despacha o conferente no fluxo `midia` sobre eles. O veredito fica em
+     `out/<proj>/_pesquisa/conferencia-midia.json`;
+  3. num despacho novo, você retira o `reprovado` e o `trocar`. Leia o veredito no disco: o relato não vale. O
+     `pendente_lucas` fica onde está, fora da cena, até o Lucas responder e o conferente regravar o veredito.
+     - Mova o arquivo para `out/<proj>/_media/_caca/_retirado/pessoa/`, nunca o apague.
+     - Reconcilie quem o cita (ofício do `pesquisa-imagens`, §3.6): a linha da pauta aponta o substituto ou
+       diz `FALTA — <pedido>`.
+     - Sem retrato aprovado, vale o §6: o card só com nome e cargo.
+  - O `trocar` volta com o que faltou (`trocar_por`), e a busca nova passa de novo pelo conferente. O
+    `reprovado` com `reconferir` espera a conferência no navegador do app, com o Lucas vendo.
+  - O `aprovado` dele não dispensa a sua verificação da identidade (ofício §2 e §4).
+  - O `regie advance` do `research` só se faz sem `reprovado` nem `trocar` em arquivo que continua em
+    `_media/pessoa/`, e sem arquivo sem veredito (CLAUDE.md, "Os especialistas").
 - Não há ledger de insumos nem seção "A ESCADA" neste canal. A devolução é a **última linha da sua
   resposta**: a cena, o degrau em que você parou e quem decide agora — `montador` (o que entra e onde),
   `regente-de-imagem` (o que a frase exige da tela), `diretor-de-arte` (se mexe no arco) e o Lucas, quando
