@@ -79,11 +79,14 @@ por dentro desse mapa**: do mundo ao estreito, do estreito à foto do porto, do 
 - **Picos por vídeo:** DECISÃO DO LUCAS PENDENTE (o canal não tem número). Candidatos naturais: a
   abertura (a contradição dos primeiros 15 s, voz.md §1), as cenas onde o **"Livro-razão da promessa"**
   de `roteiros/<proj>/roteiro-editor.md` diz que a promessa é paga, e o fecho. Declare quantos escolheu e
-  por quê.
+  por quê. No Juneau, 5 (s01, s23, s32, s44, s59), como o diretor propôs (Lucas, 28/09/2026: "Sim, tudo como ele
+  propôs (Recomendado)"). O número é do Juneau, não do canal.
 - **Cena densa não passa do teto:** 6 elementos simultâneos, alvo 4 a 5; um herói por cena, ou nenhum
   (identidade.md §4.2).
-- **A tela final dos 20 s** fecha o arco. O que fica nela: DECISÃO DO LUCAS PENDENTE. Até lá, a
-  `tecnica` da cena da cauda diz "pendente de decisão do Lucas", e o report a lista.
+- **A tela final dos 20 s** fecha o arco. O que fica nela, no Juneau (Lucas, 28/09/2026: "A última cena, parada e
+  escurecendo (Recomendado)"): "O quadro final (o YES da votação e a linha do preço vazia) para e escurece aos
+  poucos, sem texto novo. Não disputa com os botões." Escurece sem chegar ao preto (identidade.md §5: 100 %
+  coberto). Nos próximos vídeos, essa é a proposta, e a pergunta volta ao Lucas; o report a lista.
 
 ## 3 · As bases do canal não são "fundo chapado"
 
@@ -102,7 +105,8 @@ A identidade não tem degradê (`marca/tokens.css`, `--degrade: none`). Onde o o
 chamam fundo escuro liso de defeito, **neste canal a PRANCHA sobre `--fundo` é a marca**. DECISÃO DO
 LUCAS PENDENTE: se PRANCHA e DADO ganham inset de prova real (foto do lugar dentro do cartão) e em que
 medida, dentro do teto de 6 elementos. Até lá, proponha o inset na `tecnica` só quando a cena nomeia
-lugar ou objeto real, e diga que é proposta.
+lugar ou objeto real, e diga que é proposta. No Juneau, o Lucas aprovou os dois propostos, s05 e s57: o mapa
+escurecido atrás do cartão de pessoa, a 1/4 do quadro (28/09/2026: "Sim, tudo como ele propôs (Recomendado)").
 
 ## 4 · A conta de mundo real
 
@@ -113,6 +117,9 @@ lugar ou objeto real, e diga que é proposta.
   `qc-piso-real` tira mapa e documento.
 - DECISÃO DO LUCAS PENDENTE, só nisto: se o documento deveria contar (mudaria a identidade) e que piso vai em
   `infra/piso-registro-real.json` (hoje `null`, e o `qc-piso-real` diz NÃO SE APLICA). Não edite o arquivo.
+- No Juneau, o Lucas aceitou a régua abaixo de 60 %, com os dois mapas a mais que o diretor propôs (s13 e s43;
+  47,2 % da fala). A resposta, de 28/09/2026: "Aceitar, com 2 mapas a mais (Recomendado)". A pergunta do documento
+  continua pendente.
 - `construída` só quando **não existe registro** do que a cena diz. B-roll genérico que espera o download
   do Lucas e fonte ainda não liberada são `FALTA`, com a `query` em inglês dos EUA — nunca `construída`.
 - **Evento real específico** (votação, pessoa pública, obra datada) só de acervo aberto ou oficial:
@@ -146,9 +153,10 @@ lugar ou objeto real, e diga que é proposta.
 - O relevo real do canal é o `terrain-rgb-v2` da MapTiler (identidade.md §6), e toda cena de mapa gasta
   pedidos no render (identidade.md §6, "O custo"). O estado do relevo e da câmera 3D nesta máquina: CLAUDE.md,
   tropeços do apoio.
-- DECISÃO DO LUCAS PENDENTE: liberar o gasto de pedidos MapTiler e dizer se vale relevo (`mapa3d`). Até
-  lá, uma frase que argumenta altura, profundidade ou inclinação recebe `ESCALAR mapa3d — <o que o relevo
-  prova>` como **proposta** no report; a cena segue `mapa` no espelho.
+- No Juneau, o gasto está liberado, com o relevo só em s44, o campo de gelo (Lucas, 28/09/2026; identidade.md §6,
+  "O gasto do Juneau, liberado"). Nos próximos vídeos, o gasto e o relevo pedem um ok próprio (DECISÃO DO LUCAS
+  PENDENTE). Até ele, uma frase que argumenta altura, profundidade ou inclinação recebe `ESCALAR mapa3d — <o que
+  o relevo prova>` como **proposta** no report; a cena segue `mapa` no espelho.
 - Toda cena de mapa leva `© MapTiler © OpenStreetMap contributors` o tempo todo; a geometria que veio do
   OSM (no Juneau: Taku, Willow, Haines, a estrada e Cascade Point) põe o crédito OSM na tela da cena
   (CLAUDE.md, pré-v1 item 6). Crédito ocupa a faixa y > 1880, à esquerda (identidade.md §4.2): não dirija

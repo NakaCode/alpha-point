@@ -278,8 +278,10 @@
 - Os 20 s finais sem voz são o fundo dos elementos da tela final do YouTube, que chegam depois, no YouTube
   Studio. Julgue a cena **como fundo** (ofício §2.3). Ela vem declarada com `data-qc-sem-heroi` e o motivo.
   Nunca reprove pela falta desses elementos.
-- DECISÃO DO LUCAS PENDENTE: o que vai por baixo. Até lá, texto novo ou herói nesses 20 s **sinaliza** (os
-  elementos do YouTube vão cobrir). Buraco preto reprova (identidade.md §5: 100 % coberto).
+- O que vai por baixo, no Juneau (Lucas, 28/09/2026: "A última cena, parada e escurecendo (Recomendado)"): o
+  quadro final da cena anterior, parado e escurecendo aos poucos, sem texto novo. Nos próximos vídeos, até o Lucas
+  decidir de novo, a do Juneau é a proposta. Texto novo ou herói nesses 20 s **sinaliza** (os elementos do YouTube
+  vão cobrir). Buraco preto reprova, inclusive o escurecer que chega ao preto (identidade.md §5: 100 % coberto).
 - Se o vídeo usa Shutterstock, a linha `Image(s) and/or video used under license from Shutterstock.com` tem de
   estar na faixa de crédito desta última cena (identidade.md §7). Sem ela, reprova (`fonte`).
 - Nenhuma outra camada chega depois neste canal. O canal não tem `marca/finalizacao.json`.

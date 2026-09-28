@@ -35,8 +35,11 @@
 - **Cena HTML:** `<html lang="en-US" data-render="4k-native">` (CLAUDE.md).
 - **Sem títulos de capítulo na tela** (Lucas, 26/09/2026; CLAUDE.md): não há vão de card a cobrir.
 - **Os últimos 20 s não têm voz**: são da tela final do YouTube (`canal.json › narracao.cauda_tela_final_s`).
-  O que cobre esse trecho: DECISÃO DO LUCAS PENDENTE. Até lá, a cena da cauda leva um beat único
-  `continua`, `forca: livre`, com o `porque` "provisório: tela final pendente de decisão do Lucas".
+  O que cobre esse trecho, no Juneau (Lucas, 28/09/2026: "A última cena, parada e escurecendo (Recomendado)"): o
+  quadro final da cena anterior, parado e escurecendo aos poucos, sem chegar ao preto e sem texto novo. A cena da
+  cauda leva um beat único `continua`, `forca: livre`, com o `porque` "tela final: a última cena, parada e
+  escurecendo (Lucas, 28/09/2026)". Nos próximos vídeos, até o Lucas decidir de novo, o `porque` diz "proposta: a
+  tela final do Juneau".
 - **Mapa = MapTiler** (`canal.json › mapa.perfil`, Lucas, 26/09/2026), com `© MapTiler © OpenStreetMap
   contributors` na tela durante todo o mapa (identidade.md §6). O Landsat foi só teste (CLAUDE.md).
 - **Nunca** rode `narrar.mjs` nem `transcrever.mjs`: gastam crédito e refazem o relógio (CLAUDE.md).
@@ -128,9 +131,11 @@ Os cinco modelos são os de identidade.md §5.
 
 - `mapa_relevo` roda sobre o `terrain-rgb-v2` da MapTiler (identidade.md §6; o estado dele nesta máquina:
   CLAUDE.md, tropeços do apoio). Todo beat de mapa gasta pedidos no render.
-- DECISÃO DO LUCAS PENDENTE: o gasto de pedidos MapTiler e o uso de relevo. Até lá, o beat que argumenta
-  altura sai `mapa` com `forca: recomendado`, e o `porque` diz que o relevo provaria a frase: o report
-  junta esses beats numa lista.
+- No Juneau, o gasto de pedidos MapTiler está liberado, e o relevo vale só em s44, o campo de gelo (Lucas,
+  28/09/2026; identidade.md §6, "O gasto do Juneau, liberado"). Lá, o beat que argumenta altura sai `mapa_relevo`.
+  Fora de s44, e nos próximos vídeos até um ok próprio (DECISÃO DO LUCAS PENDENTE), o beat que argumenta altura
+  sai `mapa` com `forca: recomendado`, e o `porque` diz que o relevo provaria a frase: o report junta esses beats
+  numa lista.
 - A geometria real já pronta está em `out/<proj>/_pesquisa/pauta-geo.json` e `out/<proj>/_media/geo/`.
   O que veio do OSM (no Juneau: Taku, Willow, Haines, a estrada e Cascade Point) leva "© OpenStreetMap
   contributors" na tela da cena (CLAUDE.md, pré-v1 item 6).

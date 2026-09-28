@@ -1,5 +1,5 @@
 {
-  "_sobre": "Procedência dos arquivos de dado desta pasta (pesquisa-dados, 27/09/2026). Cada chave é um arquivo; 'leitura_hoje' é a única tentativa feita hoje em cada URL, com o User-Agent do canal.",
+  "_sobre": "Procedência dos arquivos de dado desta pasta (pesquisa-dados, 27/09/2026). Cada chave é um arquivo; 'leitura_hoje' é a única tentativa feita hoje em cada URL, com o User-Agent do canal. Em 28/09/2026, a entrada s54.json ganhou a série diária do Alaska Department of Revenue, lida pelo Claude central no navegador do app ('leitura_navegador_app'); 'leitura_hoje' continua sendo a tentativa de 27/09.",
   "s01.json": {
     "arquivo": "_dados/s01.json",
     "tipo": "dado",
@@ -1536,8 +1536,8 @@
     "arquivo": "_dados/s54.json",
     "tipo": "dado",
     "cena": "s54",
-    "fonte": "Alaska DOT&PF and FHWA",
-    "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+    "fonte": "Alaska Department of Revenue",
+    "url": "https://tax.alaska.gov/programs/oil/dailyoil/dailyoilold.aspx",
     "fontes": [
       {
         "chave": "fseis",
@@ -1562,11 +1562,11 @@
       {
         "chave": "dor",
         "provedor": "Alaska Department of Revenue, Tax Division",
-        "documento": "Crude Oil and Natural Gas Prices (daily oil prices page) — a fonte do Graph 2-1 do FSEIS ('State of Alaska, 2017b')",
-        "url": "https://tax.alaska.gov/programs/oil/dailyoil/dailyoil.aspx",
-        "url_lida": null,
+        "documento": "Crude Oil and Natural Gas Prices (Old Format): a tabela diária, coluna 'ANS West Coast'; a fonte do Graph 2-1 do FSEIS ('State of Alaska, 2017b')",
+        "url": "https://tax.alaska.gov/programs/oil/dailyoil/dailyoilold.aspx",
+        "url_lida": "https://tax.alaska.gov/programs/oil/dailyoil/dailyoilold.aspx",
         "captura_arquivo": null,
-        "copia_local": null,
+        "copia_local": "out/juneau/_pesquisa/s54-serie-ans-west-coast-dor.json",
         "leitura_hoje": {
           "url_lida": "https://tax.alaska.gov/programs/oil/dailyoil/dailyoil.aspx",
           "http": 200,
@@ -1576,7 +1576,38 @@
           "igual_a_copia_local": null,
           "nota": "RECUSOU: a página respondeu 'Request Rejected' (firewall). Parado aí."
         },
-        "licenca": "Dado ou texto de publicação do Estado do Alasca: vai à tela recriado, com a fonte citada. Mostrar a página original exige permissão clara (midia.md §7.1)."
+        "licenca": "Dado ou texto de publicação do Estado do Alasca: vai à tela recriado, com a fonte citada. Mostrar a página original exige permissão clara (midia.md §7.1).",
+        "url_citada_no_fseis": "http://www.tax.alaska.gov/programs/oil/dailyoil/dailyoil.aspx",
+        "sha256_copia_local": "d8d5098277687c48f6ae2839a63fd0e4dc10517fcc2b59f9e40c1ab2ed027c74",
+        "leitura_navegador_app": {
+          "por": "Claude central, no navegador do app (CLAUDE.md, 'O navegador do app, sem o Lucas acompanhando'); a página recusa leitura por script, e no navegador do app abriu sem verificação de robô",
+          "url_lida": "https://tax.alaska.gov/programs/oil/dailyoil/dailyoilold.aspx",
+          "em": "2026-09-28T14:41:44Z",
+          "consulta": {
+            "de": "2/1/2013",
+            "ate": "1/31/2016",
+            "coluna": "ANS West Coast"
+          },
+          "formulario_de_datas_enviado_com_o_sim_do_lucas": {
+            "pergunta": "Para a cena s54 ganhar a linha do preço do petróleo (de mais de $116 a $26), preciso consultar a tabela do Departamento de Receita do Alasca. São só datas, de 02/2013 a 01/2016, em poucas consultas, no navegador do app. Posso enviar esse formulário?",
+            "resposta": "Sim, pode consultar (Recomendado)",
+            "opcao": "Leio a tabela na tela, sem baixar arquivo, e registro a fonte. A cena mostra a linha diária do preço.",
+            "hora": "28/09/2026, 11:3x de Brasília"
+          },
+          "download": false,
+          "como": "a tabela lida na tela: a coluna 'ANS West Coast' da tabela de cabeçalho Date, ANS West Coast, West Texas Intermediate, Henry Hub, Brent, ANS Production",
+          "nota_da_pagina": "Sources: Daily ANS prices are estimated by the Department of Revenue. WTI, Brent, and Henry Hub prices are estimated by Bloomberg.",
+          "unidade_da_pagina": "$ per barrel and mcf",
+          "copia": "out/juneau/_pesquisa/s54-serie-ans-west-coast-dor.json",
+          "sha256_do_arquivo_da_copia": "d8d5098277687c48f6ae2839a63fd0e4dc10517fcc2b59f9e40c1ab2ed027c74",
+          "prova_da_copia": {
+            "linhas_com_preco": 748,
+            "linhas_sem_preco": 346,
+            "soma_centavos": 6265799,
+            "sha256_da_tabela": "2539e4f1f7e3b3c5b5d6e1b29cdcac33b8fd094036b62230a6811c3cedda344e",
+            "conferida": "pesquisa-dados, 28/09/2026: o sha256 da cadeia, a contagem e a soma em centavos, recalculados no arquivo, são iguais aos calculados na página"
+          }
+        }
       },
       {
         "chave": "eia",
@@ -1598,10 +1629,10 @@
       }
     ],
     "licenca": "Dado de estudo estadual (Alaska DOT&PF com a FHWA, 2018; midia.md §7.1, \"O estudo de 2018\"): número e texto vão à tela recriados, com \"Source: Alaska DOT&PF and FHWA, 2018\" (a frase de decisão do ROD, com \"Source: Federal Highway Administration, 2018\"). Página, figura e gráfico do estudo não vão à tela sem autorização escrita do DOT&PF. | Dado ou texto de publicação do Estado do Alasca: vai à tela recriado, com a fonte citada. Mostrar a página original exige permissão clara (midia.md §7.1). | Domínio público: obra do governo federal dos EUA (17 U.S.C. §105).",
-    "data_do_dado": "2013-02; 2016-01",
-    "data_consulta": "2026-09-27",
-    "conferido_por": "imagem da página (e texto, quando havia)",
-    "conferencia_status": "CONFERE, com a BUSCA NOVA NÃO ENCONTRADA"
+    "data_do_dado": "2013-02-01/2016-01-29",
+    "data_consulta": "2026-09-28",
+    "conferido_por": "a tabela lida na tela pelo Claude central (navegador do app) e a cópia conferida pelo sha256; os extremos e a série inteira conferidos contra o texto e a imagem do Graph 2-1 do FSEIS (cópia local), por out/juneau/_pesquisa/s54-conferir-serie.py",
+    "conferencia_status": "CONFERE"
   },
   "s55.json": {
     "arquivo": "_dados/s55.json",

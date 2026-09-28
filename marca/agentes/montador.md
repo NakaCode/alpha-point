@@ -105,10 +105,12 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
 
 ## 4 · Cobertura e números da casa
 
-- **100 % coberto**, inclusive os **20 s finais sem voz**. DECISÃO DO LUCAS PENDENTE: o que fica sob a
-  tela final do YouTube. Até lá, **um segmento próprio** cobre a cauda, com `motivo` "tela final do
-  YouTube, 20 s sem voz — conteúdo pendente de decisão do Lucas", e o report o lista. Nunca deixe a
-  janela sem segmento (sai preto), nem estique a última cena sem dizer.
+- **100 % coberto**, inclusive os **20 s finais sem voz**. **Um segmento próprio** cobre a cauda. O que fica sob
+  a tela final do YouTube, no Juneau (Lucas, 28/09/2026, 11:2x de Brasília: "A última cena, parada e escurecendo
+  (Recomendado)"): o quadro final da cena anterior para e escurece aos poucos, sem chegar ao preto e sem texto
+  novo. Está no espelho do Juneau, em s63 › `_tela_final`. Nos próximos vídeos, a do Juneau é a proposta, e o
+  report a lista até o Lucas decidir de novo. Nunca deixe a janela sem segmento (sai preto), nem estique a última
+  cena sem dizer.
 - Ritmo (identidade.md §4.3): beat ≥ **1,5 s**; footage ou foto **parada** ≤ **6 s**; rajada (beats
   < 2,5 s) ≤ **20 %** do tempo; respiro (beat ≥ 6 s com movimento lento) ≥ **10 %**; texto no ar
   ≥ **2,0 s**.
@@ -168,15 +170,17 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
   `circuito_f1` nunca.
 - Toda cena `mapa`/`mapa3d` custa pedidos MapTiler no render e leva o crédito MapTiler/OSM o tempo todo;
   o que vem do OSM (no Juneau: Taku, Willow, Haines, a estrada e Cascade Point) põe "© OpenStreetMap
-  contributors" na tela da cena (CLAUDE.md, pré-v1 item 6). Planejar não gasta; o gasto de render é
-  DECISÃO DO LUCAS PENDENTE, pedida antes da primeira cena de mapa renderizada.
+  contributors" na tela da cena (CLAUDE.md, pré-v1 item 6). Planejar não gasta. O gasto de render do Juneau
+  está liberado, com o relevo só em s44 (Lucas, 28/09/2026; identidade.md §6, "O gasto do Juneau, liberado").
+  Nos próximos vídeos, ele é DECISÃO DO LUCAS PENDENTE, pedida antes da primeira cena de mapa renderizada.
 
 ## 6 · Paleta e grafia
 
 - `paleta`: **um** protagonista por vídeo em `--destaque`, o segundo ator em `--contraparte`, do terceiro
   em diante `--neutro`; `--tensao` nunca é a cor de um lado; vermelho contra azul como dois lados é
   proibido (identidade.md §2). Nome de token, nunca cor escrita. Proponha o protagonista a partir da tese
-  do dossiê; quem confirma é o Lucas (no Juneau: DECISÃO DO LUCAS PENDENTE).
+  do dossiê; quem confirma é o Lucas. No Juneau, ele confirmou Juneau em `--destaque` e Willow/Wasilla em
+  `--contraparte` (28/09/2026: "Sim, tudo como ele propôs (Recomendado)").
 - `_grafias`: en-US pelo **AP Stylebook** vigente, nome próprio e sigla como estão no
   `roteiro-narrador.md`, nunca como o alias da voz ou a transcrição (`Gladziszewski`, `Kiehl`, `KTOO`,
   `Mat-Su`). O dossiê é escrito em português com números no formato brasileiro (`91.049 × 102.083`): na

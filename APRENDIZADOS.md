@@ -768,3 +768,16 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** todo canal que usa foto de jornal por decisão própria, ou uma fonte com crédito
   diferente do que o Commons declara, cai nos mesmos limites. O teto de 720 px do vilda e o de 1024 px do Flickr valem
   para qualquer nicho. Vale avisar o Lucas.
+
+### 43. No Git Bash do Windows, o fuso nomeado dá UTC sem avisar
+
+- **Problema:** em 28/09/2026, a hora de uma decisão do Lucas se tirou com `TZ=America/Sao_Paulo date`, no Git
+  Bash, e foi gravada como "14:2x de Brasília". Era UTC: a hora de Brasília era 11:2x. O Git Bash não traz a base de
+  fusos (tzdata). Com um fuso nomeado que ele não conhece, cai em UTC e não dá erro nem aviso.
+- **O que resolveu:** a conferência com o PowerShell (`Get-Date`, `[DateTime]::UtcNow` e `Get-TimeZone`: "E. South
+  America Standard Time"). No mesmo Git Bash, o `date` sem `TZ` dá a hora local certa, e o `date -u`, a UTC. As horas
+  "de Brasília" gravadas antes nesta máquina saíram do `date` sem `TZ` e estão certas. A de 28/09 se corrigiu na
+  `marca/identidade.md` §6 e no pedido ao montador, antes de chegar ao espelho.
+- **Por que serve a qualquer canal:** todo canal que registra a hora de uma decisão do dono (a regra "a mensagem
+  literal e a hora") e roda no Windows pode gravar a hora 3 h fora, sem perceber. A hora local sai do `date` sem
+  `TZ` ou do `Get-Date`, nunca de `TZ=<Continente/Cidade>` no Git Bash. Vale avisar o Lucas.

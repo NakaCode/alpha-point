@@ -51,6 +51,7 @@ As colunas **Licença** e **Tela** dizem se a camada põe crédito na tela. Dom�
 | `matsu-borough` (s15, s33, s39) | `matsu-borough.json` | U.S. Census TIGERweb, Counties 500K, GEOID 02170 (vintage 01/01/2025) | Domínio público federal · nada | 1 polígono, 258 vértices, 7 KB | Willow, Wasilla, Palmer e Talkeetna dentro; Anchorage e Fairbanks fora |
 | `raio-30mi-anchorage`, `raio-30mi-fairbanks` (s12) | `raio-30mi-*.json` | Medição: Vincenty no WGS84 a partir do ponto do NE, 360 azimutes | Domínio público · nada | 361 vértices | O inverso dá 48.280,26–48.280,37 m (30 mi = 48.280,32). Do ponto de Anchorage: a vila de Willow a 37,2 mi, o lago Larson a 77,6 e o cume do Mt. Yenlo a 78,9. São as feições, não os locais. A travessia do Little Susitna pela ferrovia fica a **28,6 mi, dentro do círculo** (item 4 da seção 3) |
 | `taku-inlet` (s44), **só o rótulo** | `taku-inlet-gnis.json` | USGS GNIS 1410576, Bay (ed. 12/02/2010) | Domínio público · nada | 1 ponto | Cai na água, a 18,7 km da foz do `rio-taku-osm`. O nó do OSM é esse mesmo ponto, importado do GNIS |
+| `thane-road-fim` (s44), **pedido da direção de arte, 28/09** (seção 7) | `thane-road-fim.json` (**nova**) | OSM node/5691733230 (`highway=turning_circle`), a ponta sudeste da way/653314254 (`name=Thane Road`) (Overpass, 28/09 06:30Z) | ODbL · OSM | 1 ponto | 58.2454469, -134.2958702. **Terra**: a 62 m da costa do OSM, e também no NE 1:10M (a 154 m da costa simplificada). A 8,92 km (5,5 mi) do ponto de Juneau do NE, a 7,87 km (4,9 mi) pela via desde a ponta do centro |
 | `lynn-canal` (s44, s48, s50), **só o rótulo** | `lynn-canal-gnis.json` | GNIS 1423488, Channel, BGN (ed. 16/06/2011) | Domínio público · nada | 1 ponto | Cai na água, a 10,2 km de Cascade Point |
 | `echo-cove` (s50) | `echo-cove-gnis.json` | GNIS 1421647, Bay, Juneau (ed. 27/12/2010) | Domínio público · nada | 1 ponto | Fica a 0,52 km da estrada. No NE 1:10M cai em terra (a enseada é pequena demais para ele). Ver o item 3.3 |
 | `terminal-katzehin` (s50): **o mais próximo** | `katzehin-river-gnis.json` | GNIS 1422993, a **foz** do rio (ed. 17/08/2010) | Domínio público · nada | 1 ponto | Margem leste, a 9,8 km de Haines. **Não é o terminal** (seção 2) |
@@ -68,7 +69,7 @@ As colunas **Licença** e **Tela** dizem se a camada põe crédito na tela. Dom�
 | `sitio-capital-willow-1976`: o ponto e o contorno do local (s15) | Nem o GNIS (não tem "capital site"), nem o OSM, nem o NE têm o local. O folheto de 1976 (doc-16, p. 48 = PDF p. 2, lido na imagem em 27/09) dá: cerca de 70 milhas de estrada ao norte de Anchorage; a vila de Willow 5 mi a oeste; o local "generally bounded" por Willow Creek (N), o Little Susitna River (S) e a Alaska Railroad (O); a cidade no sopé dos Talkeetna Mountains, junto do Deception Creek. Não dá coordenada nem limite a leste. A mesma página traz o mapa WILLOW SITE, com o contorno do local (em degraus) e uma "development area" sobre um riacho | (1) **O mapa da p. 48**: figura do Estado, que só vai à tela com permissão clara (midia.md §7.1). É do pesquisa-documentos, e a `pauta-documentos.json` ainda não tem o folheto de 1976 (a "p. 48" de lá é a do folheto de 1978). (2) **As feições reais que o texto nomeia**, em `limites-sitio-willow-1976`, com o ponto do GNIS de cada curso: Willow Creek 1412108, Little Susitna River 1405547, Deception Creek 1401055. Elas mostram entre o quê o local ficava, sem fechar o contorno. (3) A vila (`cidade-willow-osm`), com "about five miles east" em texto |
 | Contorno de `taku-inlet` (s44) | Nem o GNIS, nem o OSM (só o nó importado do GNIS) nem o NE (`ne_10m_geography_marine_polys`, baixado e lido) têm o polígono | Só o rótulo (`taku-inlet-gnis`) |
 | Eixo ou contorno de `lynn-canal` (s44, s48, s50) | O GNIS tem só o ponto. O OSM (consulta de 27/09) não tem feição de água com esse nome, só um quartel de bombeiros e um cabo submarino. O NE também não | Só o rótulo (`lynn-canal-gnis`) |
-| `rota-margem-leste-lynn-canal` (s48) e `rota-2b-2006` (s50) | O OSM não tem estrada proposta ou em obra na margem leste (58,6–59,5° N; só um way em obra dentro de Haines). As figuras do FSEIS são do Estado e não vão sem autorização escrita (midia.md §7.1, "O estudo de 2018") | O esquema declarado é **DECISÃO DO LUCAS PENDENTE** (roupa §6) |
+| `rota-margem-leste-lynn-canal` (s48) e `rota-2b-2006` (s50) | O OSM não tem estrada proposta ou em obra na margem leste (58,6–59,5° N; só um way em obra dentro de Haines). As figuras do FSEIS são do Estado e não vão sem autorização escrita (midia.md §7.1, "O estudo de 2018") | O esquema declarado foi **decidido pelo Lucas em 27/09/2026**: "Sim, tracejada e com aviso (Recomendado)" (identidade §6, "Rota que nunca foi construída"; roupa §6). A linha é tracejada, sai do texto da fonte e do ponto de partida real, com `Approximate route` na tela |
 | `terminal-katzehin` (s50) | A fonte dá só "a new ferry terminal 2 miles north of the Katzehin River" (mec-01), sem coordenada | A foz do rio (`katzehin-river-gnis`) |
 
 O contorno dos locais de **Larson Lake** e de **Mt. Yenlo** também só existe nos mapas das p. 49 e 50 do mesmo folheto (figuras do Estado, §7.1). Para esses dois há âncora real: o lago e o cume (seção 1).
@@ -179,3 +180,69 @@ Agora decidem:
 - o **verificador-de-fatos**, que confere Dawson Creek, os 2,08 × 2,9 mi e a leitura da lei dos 30 mi diante da travessia a 28,6 mi;
 - o **pesquisa-documentos**, que decide o caso dos mapas das p. 48 a 50 do folheto de 1976 (§7.1);
 - o **Lucas**, que decide o esquema declarado das rotas e dos corredores.
+
+## 7. Pedido da direção de arte, 28/09: o fim da Thane Road (s44)
+
+**O pedido.** É um ponto só, que a direção de arte devolveu à pesquisa antes da arte (FALTA do `conceito-visual.json`, s44): `thane-road-fim`, o ponto de partida real do esquema tracejado do corredor do Taku (`espelho.json` › s44 › `needs.geo` e `_esquema.taku.parte_de`).
+- O Juneau está no `art_direction`, e o `research` continua fechado.
+- Cópias de antes (a pauta, este relato e o manifest do cache da máquina): `out/juneau/_tmp/bkp-thane-road-fim-20260928-032906/`.
+
+**O trecho da fonte, de onde a linha sai.** FSEIS 2018, p. 2-2, §2.2.1 Taku River Valley Highway (`midia/juneau/fontes/triagem/fseis.txt:3665-3668`; o rodapé "2-2" da página está na linha 3696): "a 118-mile-long highway from the end of Thane Road in Juneau, northeast along the Taku Inlet, across the Alaska-Canada border, up the Taku River Valley". A frase inteira está em `fonte_diz`, no arquivo do ponto, e o script a confere letra a letra no `fseis.txt`.
+
+**A fonte do ponto, pela ordem da roupa (§3):**
+- **Natural Earth:** não tem estrada perto. O vértice mais perto do `ne_10m_roads` (as camadas `rede-rodoviaria-*`) fica a 128,6 km, em Haines.
+- **GNIS:** o `DomesticNames_AK.txt` do disco (sha256 4ff9df033d78…, o mesmo do `geo-gnis-juneau.mjs`, lido sem rede) não tem nenhuma classe de estrada (Stream, Lake, Summit…, sem Road nem Trail). Tem a vila de **Thane** (1410784, Populated Place), que entrou só como conferência do caminho.
+- **OSM:** a ponta da via com `name=Thane Road`. Um pedido ao Overpass, com o User-Agent do canal (`lerConfigCanal().ua`, da pré-v1), respondido na primeira (osm_base 2026-09-28T06:30:51Z). A resposta está em `out/juneau/_tmp/geo-fontes/osm-thane-road.json` (sha256 9dabbed4e3c4…). Nenhum site recusou leitura.
+
+**Qual ponta, e como decidi:**
+- As 4 ways com `name=Thane Road` (356851234, 642406027, a ponte 653314253 e 653314254) formam um trecho só, de 115 nós, com 2 pontas soltas. Nenhuma outra via da janela tem nome começando por "Thane".
+- As duas pontas saem da varredura dupla no grafo (a mais longe, pela via, de um nó qualquer, e a mais longe dela). Entre elas há 7,87 km.
+- A **ponta do centro** (node/3266711489, 58.2923267, -134.3940194) fica a 1,29 km do ponto de Juneau do NE. Ali a via continua como South Franklin Street (AK 7).
+- A **outra ponta** (node/5691733230) fica a 8,92 km do ponto de Juneau, a sudeste da ponta do centro (azimute 132,2°).
+  - O nó tem `highway=turning_circle`, o retorno do fim da estrada.
+  - Nenhuma outra via de carro sai dele. Só sai a Dupont Trail (`highway=path`), que segue pela costa.
+- A via corre ao longo do Gastineau Channel: a mediana dos nós fica a 71 m da costa do OSM (o máximo é 363 m).
+- A vila de Thane do GNIS fica a 0,07 km da via, entre as duas pontas: a 4,89 km da ponta do centro e a 2,98 km do fim, pela via.
+- O script para, sem gravar, se qualquer uma dessas condições falhar.
+
+**A medida:**
+
+| O quê | Valor |
+|---|---|
+| Coordenada | **58.2454469, -134.2958702** (lat, lon), a do nó do OSM, sem mudança |
+| Até o ponto de Juneau do NE (`cidades-ne`) | 8,92 km (5,5 mi) em linha reta (Vincenty, WGS84) |
+| Pela Thane Road, desde a ponta do centro | 7,87 km (4,9 mi) |
+| Terra ou água, pela costa do OSM | **Terra**, a 62 m da linha de costa (way/835580602). No OSM, a costa se desenha com a terra à esquerda do sentido do way. Os controles passaram: o ponto do Gastineau Channel no GNIS (1402497) deu água, e os 115 nós da via deram terra |
+| No NE 1:10M (`panhandle-juneau`) | **Terra** (United States of America), a 154 m da costa simplificada. Ao contrário de Cascade Point, não há deslocamento a declarar |
+| Até o ponto do Taku Inlet (GNIS 1410576) | 16,19 km, azimute 65° |
+
+**Crédito.** É OSM (ODbL): `© OpenStreetMap contributors` na tela de s44, que a base MapTiler já mostra, e openstreetmap.org/copyright na descrição. A s44 já carregava OSM (a estrada, Cascade Point, o Taku e as rodovias do Yukon), e nada muda no crédito dela.
+
+**Para quem desenha, e o que o texto não diz:**
+- O ponto é só o começo. O texto diz que a estrada sai do fim da Thane Road "northeast along the Taku Inlet", mas não diz por onde ela vai do Gastineau Channel até o inlet.
+  - Entre os dois fica a ponta de Bishop Point (GNIS 1399098, Cape), a 9,68 km do fim (azimute 119°). Do fim até o ponto do Taku Inlet no GNIS são 16,19 km (azimute 65°).
+  - A Figure 2-1 do estudo mostra o traçado, mas é do Estado e não se decalca (midia.md §7.1).
+  - Como a linha vai do ponto ao inlet é da arte, dentro do `Approximate route`. Não pus ponto intermediário, porque a fonte não nomeia nenhum.
+- O fim é o de hoje no OSM. O FSEIS (2018) não dá coordenada; o que prova que é o fim da estrada é o nó do retorno, com a trilha que sai dele.
+- As prévias (olhar, não portão): `out/juneau/_tmp/olhar-thane-road-fim-perto.png` (a via, a costa do OSM, a trilha e o ponto) e `olhar-thane-road-fim-taku.png` (o ponto, o Taku Inlet e o rio Taku). As camadas delas (`olhar-thane-*.json`) são só para a prévia.
+
+**Portões:**
+- `node out/juneau/_pesquisa/conferir-pauta-geo.mjs juneau`: **41/41 ✓**, exit 0.
+- `REGIE_MOTOR=C:/projetos/regie-v1 node scripts/validar-contrato.mjs pauta-pesquisa out/juneau/_pesquisa/pauta-geo.json`: **✓ válido**, exit 0.
+- `REGIE_MOTOR=C:/projetos/regie-v1 node scripts/qc-procedencia.mjs juneau`: PASS, exit 0. Ele não lê `.json`, então não mede geometria.
+- A pauta passa a ter 41 itens. As 40 entradas de antes estão iguais byte a byte à cópia, e só a nova entrou.
+- No cache da máquina, as 42 entradas de antes estão iguais, e a nova (`thane-road-fim`) é idêntica à da produção.
+- `build-geo-manifest.mjs`: **NÃO MEDIDO (build-geo-manifest)**, como na seção 4.
+- O `gravarGeo` não escreveu `_creditos-mapa.md`, porque a produção ainda não tem `_media/_vendor/perfil-mapa.json`.
+
+**Como refazer.** `node out/juneau/_pesquisa/geo-thane-road-fim.mjs baixar` é o único passo com rede: um pedido ao Overpass. Depois vêm `conferir` e `gravar`, sem rede. Com a resposta guardada, o `gravar` refaz o arquivo idêntico, byte a byte (conferido).
+
+**Para o APRENDIZADOS.md** (quem registra é o Claude central):
+1. O GNIS Domestic Names não tem estrada: o arquivo do Alasca não tem classe Road nem Trail. O ponto de "fim da estrada" vem do OSM. A prova de que é o fim é o nó com `highway=turning_circle` (ou `noexit=yes`), sem nenhuma outra via de carro saindo dele.
+2. Para saber se um ponto junto à costa cai em terra, a linha de costa do OSM (`natural=coastline`, terra à esquerda do sentido do way) mede ao metro, e o teste se prova com controles: os nós da própria via dão terra, e um ponto de água do GNIS dá água. O NE 1:10M erra por centenas de metros junto ao mar (Cascade Point caiu na água, a 236 m da costa).
+
+---
+Devolução (28/09): em s44, o ponto de partida do esquema do Taku está entregue (`thane-road-fim`). Agora decidem:
+- o **Claude central**, que muda o `_existe` de `thane-road-fim` no espelho depois de conferir o arquivo no disco;
+- o **mapista**, que desenha o esquema tracejado do Taku a partir deste ponto, com `Approximate route` e sem decalcar a Figure 2-1. O caminho do ponto até o Taku Inlet não está no texto (acima);
+- o **redator-de-tela**, se o ponto tiver rótulo (o espelho diz que não tem).

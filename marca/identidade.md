@@ -305,6 +305,16 @@ teste de Juneau, o contraste sobre o campo de gelo era de 1,5:1.
     do GEOlayers. Os mantenedores da Régie as conferiram em 23/09/2026 (`docs/CREDITO-DE-MAPA.md` da pré-v1).
   - **O custo:** o plano cobra por pedido de mapa, e render pede muitos. Olhe o painel da MapTiler no
     primeiro mês.
+  - **O gasto do Juneau, liberado** (Lucas, 28/09/2026, 11:2x de Brasília). A pergunta: "As cenas de mapa usam o
+    satélite da MapTiler, que cobra por pedido. São 13 cenas com mapa. Posso gastar?" A resposta: "Sim, e com relevo
+    3D no campo de gelo". A opção dizia: "Igual, e a cena do campo de gelo (s44) ganha relevo real. Custa mais
+    pedidos e ainda não foi testado neste PC." O "igual" é a opção recomendada, "Sim, medindo na 1ª cena": "Anoto
+    o contador antes e depois da primeira cena de mapa e te conto o custo real antes de fazer as outras."
+    - Cobre as cenas de mapa do Juneau e o relevo (`terrain-rgb-v2`, câmera 3D) só em s44, o campo de gelo.
+    - Antes do primeiro render de mapa, o contador da MapTiler se anota; depois dele, de novo. O custo real dessa
+      cena vai ao Lucas, no chat, antes das outras. Se ele projetar um gasto muito maior que o do plano, o render
+      para até a resposta dele.
+    - Os próximos vídeos pedem um ok próprio.
 
 Qualquer outra base (Mapbox, Esri) só entra **depois** de a licença ser lida e registrada aqui.
 

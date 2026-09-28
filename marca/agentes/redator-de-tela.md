@@ -38,7 +38,9 @@
 - **Sem títulos de capítulo na tela** (Lucas, 26/09/2026; CLAUDE.md): nenhum texto de card de título ou
   de capítulo. Os capítulos vão só na descrição.
 - **Os últimos 20 s não têm voz**: são da tela final do YouTube (`canal.json › narracao.cauda_tela_final_s`).
-  Texto ali: DECISÃO DO LUCAS PENDENTE; até lá, nenhum.
+  Texto ali: nenhum. No Juneau, o Lucas decidiu o fundo (28/09/2026: "A última cena, parada e escurecendo
+  (Recomendado)"): o quadro final da cena anterior para e escurece aos poucos, "sem texto novo". Nos próximos vídeos,
+  até ele decidir de novo, vale o mesmo.
 - **Nunca** rode `narrar.mjs` nem `transcrever.mjs`: gastam crédito e refazem o relógio (CLAUDE.md).
 - **Quem decide é o Lucas Rosa** (`canal.json › owner`). Decisão de outro canal citada no ofício ou no
   acervo do Top10 (`knowledge/DICIONARIO.md`, `seed/regras/`) não vale aqui.
