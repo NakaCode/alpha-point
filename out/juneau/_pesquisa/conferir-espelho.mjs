@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // conferir-espelho.mjs — prova, por conta, o que o montador afirma sobre out/<proj>/espelho.json.
 // Só LÊ: o espelho, o words.json, o narracao.json, o texto aprovado, a cópia para a voz, a tabela de trocas e
-// (se o ffprobe existir) a contagem de quadros do master. Não guarda nenhum tempo próprio (o espelho é a fonte
-// única de timing, ofício do montador §7.1).
+// (se o ffprobe existir) a contagem de quadros do master; desde a décima primeira revisão, também a lista de
+// out/<proj>/_media/geo/ e, se existir, out/<proj>/_pesquisa/conferencia-midia.json (os vereditos do conferente).
+// Não guarda nenhum tempo próprio (o espelho é a fonte única de timing, ofício do montador §7.1).
 //
 // Uso (cwd na raiz do canal):  node out/juneau/_pesquisa/conferir-espelho.mjs [proj] [--json] [--espelho=<outro.json>]
 // Saída: 0 = todas as provas passaram · 1 = alguma prova falhou · 2 = não mediu (arquivo ausente/ilegível)
@@ -87,6 +88,25 @@
 // Alasca, não de "site que recusa robô" em geral, e prova o texto, não a licença: nenhum texto a generaliza, e nenhuma
 // licença ou permissão se confere "pela cópia arquivada". As guardas de (2) e (3) leem a oração inteira: vídeo do
 // Estado dado como pendente ou negado, e logo dada como pendente ou deixada entrar, reprovam (com e sem maiúscula).
+//
+// 28/09/2026 (décima primeira revisão; o re-espelho que a pesquisa de mídia devolve, que o despacho do research chama de
+// sétima; as decisões do Lucas de 27 e 28/09). As provas que a regra nova deixou velhas mudaram com ela, sem afrouxar:
+// (1) país no mapa: o nome escrito, sem bandeira (identidade §6; Lucas, 27/09/2026: "Só o nome escrito (Recomendado)"):
+// needs.logos não pede nada (nem bandeira), a cena com país no mapa diz a regra na _nota_logos, e a bandeira pendente
+// entrou nas DECIDIDAS. (2) Rota que nunca foi construída (identidade §6; Lucas, 27/09/2026: "Sim, tracejada e com aviso
+// (Recomendado)"): o plano dos corredores de s44 diz o esquema tracejado pelo texto da fonte, o aviso Approximate route,
+// a identidade §6 e que não decalca a figura do estudo (a seta sem linha e a citação do mapista §6c eram a solução
+// provisória da quinta revisão); o Taku Inlet pode ser o ponto do GNIS (taku-inlet-gnis); a cláusula de mapa que diz o
+// esquema tracejado não é "traçar sem geometria"; toda cena com esquema tem `_esquema` (a regra, e por rota o plano, o
+// ponto de partida em needs.geo, a fonte entre aspas e, com o ponto fora do disco, o que o plano faz sem ele), e os
+// planos dele dizem o aviso; o esquema pendente entrou nas DECIDIDAS. (3) Foto de outro ano, com o aviso na tela
+// (identidade §6; Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em
+// tela"; a peça de acervo fotografada depois, sem aviso, 28/09): a decisão em `_decisoes_do_lucas` é essa, e a de antes
+// ("Não: sem foto do ano, vira mapa ou desenho") não volta como vigente; os 11 planos da pergunta de 27/09 e os oito que
+// ficaram sem nenhuma foto seguem a ordem da identidade §6 (registro com o aviso do ano, ou "sem aviso", ou, sem foto,
+// outro regime com o mesmo id, dito no objeto); a cláusula que aceita foto de outro ano passa se diz o aviso; e cada foto
+// ou retrato que o conferente aprovou tem, no objeto do plano, o aviso do ano (aviso_de_ano true) ou "sem aviso"
+// (false). (4) `_existe` diz o disco: true só com out/<proj>/_media/geo/<id>.json, false só sem ele.
 import { readFileSync, existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 
@@ -633,8 +653,9 @@ for (const p of (DR.documentos || {}).pecas || []) if (String(p.caca || "").trim
 }
 // a cauda é fundo provisório renderizado, nunca "não se renderiza"
 { const c = S.at(-1); if (!/FUNDO PROVISÓRIO/.test(c.motivo || "") || /não se renderiza|não desenhar/i.test(JSON.stringify(c))) F(`${c.id}: a cauda tem de ser fundo provisório renderizado (roupas do editor-de-arte §7, do regente e do qc-visual §6)`); }
-// país no mapa: a bandeira em needs.logos, ou o porquê em _nota_logos
-for (const s of S) if ((s.needs.geo || []).some((g) => g.tipo === "pais") && !(s.needs.logos || []).length && !s._nota_logos) F(`${s.id}: país no mapa sem needs.logos nem _nota_logos`);
+// país no mapa: o porquê em _nota_logos. Décima primeira revisão (Lucas, 27/09/2026: "Só o nome escrito (Recomendado)";
+// identidade §6): o nome escrito, sem bandeira; a _nota_logos diz a regra, e needs.logos fica vazio (a prova de needs.logos, abaixo)
+for (const s of S) if ((s.needs.geo || []).some((g) => g.tipo === "pais") && !(/sem bandeira/.test(s._nota_logos || "") && /identidade §6/.test(s._nota_logos || ""))) F(`${s.id}: país no mapa sem a _nota_logos da regra (o nome escrito, sem bandeira; identidade §6)`);
 // a cadeia referencial: cada cena que abre, paga ou fecha uma promessa diz isso em _cadeia
 for (const c of E._cadeia_referencial || []) for (const papel of ["abre", "paga", "fecha"]) for (const id of [].concat(c[papel] || [])) {
   const s = S.find((x) => x.id === id);
@@ -688,10 +709,13 @@ for (const [p, t] of textos) if (!/\._geografia\b/.test(p)) for (const cl of t.s
   if (/Taku/.test(cl) && /Cascade Point|fim da estrada|fim dela/.test(cl) && !NEGA.test(cl)) F(`${p}: cita o Taku e Cascade Point (ou o fim da estrada) na mesma frase, sem negação ("${cl.slice(0, 90)}…"); o do Taku sai de Juneau`);
 // quarta revisão: o corredor do Taku segue o Taku Inlet (FSEIS 2018, p. 2-2); a reta do ponto de Juneau à foz corre por terra
 { const s44 = S.find((x) => x.id === "s44"); const p3 = s44?._planos?.find((p) => /corredores/.test(p.objeto));
-  if (s44 && !(s44.needs.geo || []).some((g) => g.id === "taku-inlet")) F("s44: o corredor do Taku segue o Taku Inlet (FSEIS 2018, p. 2-2) e needs.geo não pede taku-inlet");
+  // décima primeira revisão: o Taku Inlet é o ponto do GNIS (taku-inlet-gnis): o contorno não existe em nenhuma fonte (research-geo.md §2)
+  if (s44 && !(s44.needs.geo || []).some((g) => /^taku-inlet\b/.test(g.id))) F("s44: o corredor do Taku segue o Taku Inlet (FSEIS 2018, p. 2-2) e needs.geo não pede o Taku Inlet (taku-inlet ou taku-inlet-gnis)");
   if (p3 && !/Taku Inlet/.test(p3.objeto)) F("s44: o plano dos corredores não diz que o do Taku segue o Taku Inlet");
-  // quinta revisão: sem GeoJSON do corredor, ele não se traça (mapista §6c): os corredores entram como seta, e o plano cita a régua
-  if (p3 && (!/\bseta\b/.test(p3.objeto) || !/§6c/.test(p3.objeto))) F("s44: o plano dos corredores não diz que eles entram como seta, sem traçado (mapista §6c)"); }
+  // quinta revisão: sem GeoJSON do corredor, ele não se traçava (mapista §6c), e os corredores entravam como seta, até a decisão.
+  // Décima primeira revisão (Lucas, 27/09/2026: "Sim, tracejada e com aviso (Recomendado)"; identidade §6, "Rota que nunca foi
+  // construída"): esquema tracejado pelo texto da fonte, com o aviso Approximate route, sem decalcar a figura do estudo de 2018
+  if (p3 && !(/esquema tracejado/.test(p3.objeto) && /Approximate route/.test(p3.objeto) && /identidade §6/.test(p3.objeto) && /figura do estudo/.test(p3.objeto))) F("s44: o plano dos corredores não diz o esquema tracejado pelo texto da fonte, com o aviso Approximate route, sem decalcar a figura do estudo (identidade §6)"); }
 // quinta revisão: plano de mapa não manda traçar corredor, caminho ou rota sem geometria (mapista §6c: "Não há geometria
 // publicada? Não desenhe a linha"). Frase (entre ponto e vírgula, ponto ou quebra de linha) que cita corredor, caminho ou
 // rota com traçar, desenhar, linha ou "segue ao longo", sem negação ("não", "nunca", "nem", "sem", "nenhum"), reprova;
@@ -700,8 +724,30 @@ const NEGA_TRACO = /(^|[\s(,—:])(não|nunca|nem|sem|nenhum|nenhuma)(?=[\s,:;)]
 for (const s of S) (s._planos || []).forEach((p, i) => {
   if (!REGIME_MAPA.has(p.regime)) return;
   for (const cl of String(p.objeto || "").split(/;\s|\.\s|\n/))
-    if (/\b(corredor|corredores|caminho|rota|rotas)\b/.test(cl) && /\b(traç\w*|desenh\w*|linha|segue ao longo)\b/.test(cl) && !NEGA_TRACO.test(cl)) F(`${s.id} plano ${i + 1}: manda traçar corredor, caminho ou rota ("${cl.slice(0, 90)}…"); sem GeoJSON, seta, halo ou rótulo (mapista §6c)`);
+    if (/\b(corredor|corredores|caminho|rota|rotas)\b/.test(cl) && /\b(traç\w*|desenh\w*|linha|segue ao longo)\b/.test(cl) && !NEGA_TRACO.test(cl) && !(/\besquema\b/.test(cl) && /tracejad/.test(cl))) F(`${s.id} plano ${i + 1}: manda traçar corredor, caminho ou rota ("${cl.slice(0, 90)}…"); sem GeoJSON, só o esquema tracejado da identidade §6 (rota que nunca foi construída), ou seta, halo ou rótulo (mapista §6c)`);
 });
+// décima primeira revisão: o esquema da rota que nunca foi construída (identidade §6) mora em `_esquema` da cena: a regra, e,
+// para cada rota, o plano (ou os planos), o ponto de partida (um id de needs.geo da cena), a fonte entre aspas e, se o ponto
+// não está em disco, o que o plano faz sem ele (`sem_o_ponto`); todo plano que o esquema cita é mapa e diz o aviso Approximate
+// route, e todo plano de mapa que cita o esquema tracejado está numa cena com `_esquema`
+let esquemas = 0;
+for (const s of S) {
+  const es = s._esquema, cita = (s._planos || []).some((p) => REGIME_MAPA.has(p.regime) && /esquema tracejado/.test(p.objeto));
+  if (cita && !es) F(`${s.id}: plano de mapa com esquema tracejado, e a cena não tem _esquema (identidade §6)`);
+  if (!es) continue;
+  if (!/Approximate route/.test(es.regra || "") || !/identidade §6/.test(es.regra || "")) F(`${s.id}: _esquema.regra não diz o aviso Approximate route e a identidade §6`);
+  for (const [k, r] of Object.entries(es)) {
+    if (k === "regra") continue;
+    esquemas++;
+    const g = (s.needs.geo || []).find((x) => x.id === r.parte_de);
+    if (!g) F(`${s.id}: _esquema.${k} parte de "${r.parte_de}", que não está em needs.geo da cena`);
+    else if (g._existe !== true && !String(r.sem_o_ponto || "").trim()) F(`${s.id}: _esquema.${k} parte de ${r.parte_de}, que não está em disco, e não diz o que o plano faz sem ele (sem_o_ponto)`);
+    if (!/["“]/.test(r.fonte || "")) F(`${s.id}: _esquema.${k} sem o texto da fonte entre aspas`);
+    const ns = [].concat(r.plano ?? r.planos ?? []);
+    if (!ns.length) F(`${s.id}: _esquema.${k} não diz o plano`);
+    for (const n of ns) { const p = s._planos?.[n - 1]; if (!p || !REGIME_MAPA.has(p.regime) || !/Approximate route/.test(p.objeto)) F(`${s.id}: _esquema.${k} cita o plano ${n}, que não é mapa com o aviso Approximate route no objeto`); }
+  }
+}
 for (const [p, t] of textos) if (!/\._geografia\b|\._revisao$/.test(p) && /Se a arte não traçar|caminho pela água/.test(t)) F(`${p}: manda ou cogita traçar o caminho do Taku pela água ("Se a arte não traçar" / "caminho pela água"); sem GeoJSON não se traça (mapista §6c)`);
 // quarta revisão: a malha continental chega ao panhandle (Haines e Skagway, mec-01.8); nenhum pedido diz que ela para antes dele
 for (const [p, t] of textos) if (/\b(para|parava|termina|acaba)\s+antes do panhandle/.test(t)) F(`${p}: diz que a malha para antes do panhandle; ela chega a Haines e Skagway pelo Canadá (mec-01.8)`);
@@ -743,7 +789,7 @@ for (const [p, t] of textos) if (!/\._revisao$/.test(p) && REGRA_CREDITO.test(t)
 // aceita foto ("serve", "pode ser", "aceita"…, sem negação logo antes) com um ano que não é o do fato: os anos que os objetos
 // dos planos de registro da cena dão, com os anos de dentro de um intervalo ("de 1900 a 1906", "1939–1940").
 const CREDITO_OUTRAS = /\b(ano|data) da foto\b|\bdata real\b|\b(data|ano)\b[^.;]{0,30}\b(na|no) (legenda|procedência|metadado|rodapé)\b/i;
-for (const [p, t] of textos) if (!/\._revisao$/.test(p) && CREDITO_OUTRAS.test(t)) F(`${p}: separa a data da foto do ano do fato ("${CREDITO_OUTRAS.exec(t)[0]}"): é a regra do crédito com outras palavras, e foto de outro ano não entra (identidade §6; oitava revisão)`);
+for (const [p, t] of textos) if (!/\._revisao$/.test(p) && CREDITO_OUTRAS.test(t)) F(`${p}: separa a data da foto do ano do fato ("${CREDITO_OUTRAS.exec(t)[0]}"): é a regra do crédito com outras palavras; foto de outro ano só entra com o aviso do ano na tela, nunca com a data escondida no crédito ou na legenda (identidade §6; oitava revisão; a mensagem, décima primeira)`);
 // (b) plano de registro que não é B-roll de hoje pede foto do tempo do fato: nenhum termo pede a década; e, se algum termo
 // pede ano, o objeto diz o ano (ou os extremos do intervalo) do fato, e todo termo pede um ano exato que o objeto dá.
 // (c) "sem rótulo de ano" só vale para B-roll de hoje (o objeto diz "de hoje"), que não afirma fato datado (s33, s40, s52).
@@ -774,7 +820,8 @@ for (const s of S) {
   for (const [onde, t] of campos) for (const cl of String(t || "").split(/[.;]\s/)) {
     if (!aceita(cl)) continue;
     const outros = [...anosDe(cl)].filter((y) => !fatos.has(y));
-    if (outros.length) F(`${s.id} (${onde}): "${cl.trim().slice(0, 90)}…" aceita foto de ${outros.join(", ")}, fora do ano do fato (${[...fatos].sort().join(", ") || "nenhum"}): foto de outro ano não entra (identidade §6; oitava revisão)`);
+    // décima primeira revisão (Lucas, 27/09/2026; identidade §6): foto de outro ano entra com o aviso do ano na tela
+    if (outros.length && !/\baviso\b/.test(cl)) F(`${s.id} (${onde}): "${cl.trim().slice(0, 90)}…" aceita foto de ${outros.join(", ")}, fora do ano do fato (${[...fatos].sort().join(", ") || "nenhum"}), sem o aviso do ano: foto de outro ano só entra com o aviso na tela (identidade §6; oitava revisão, com a décima primeira)`);
   }
 }
 // sétima revisão: s06 pede Juneau de 1900 a 1906 e o acampamento de 1880; nenhuma referência a s06 como "século XIX"
@@ -785,12 +832,43 @@ for (const [p, t] of textos) if (!/\._revisao$/.test(p) && /s06 \([^)]*século X
 // objeto que, sem foto do tempo do fato, mudam de regime num re-espelho, com o mesmo id (para mapa ou desenho).
 // (As provas da sétima revisão sobre o custo de um sim saíram com a pergunta: não há mais sim a pesar.)
 if ((E._decisoes_pendentes || []).some((d) => /poucos anos antes ou depois/.test(d))) F("_decisoes_pendentes: a pergunta sobre foto do lugar de poucos anos antes ou depois foi respondida pelo Lucas em 27/09 (identidade §6) e não volta");
-if (!(E._decisoes_do_lucas || []).some((d) => /^27\/09\/2026/.test(d) && /sem foto do ano/.test(d) && /mapa ou desenho/.test(d) && /identidade §6/.test(d))) F("_decisoes_do_lucas: falta a decisão de 27/09 (sem foto do ano, mapa ou desenho; identidade §6)");
+// Décima primeira revisão: a resposta da nona ("Não: sem foto do ano, vira mapa ou desenho") foi mudada pelo próprio Lucas
+// no mesmo dia ("Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela"; identidade §6, "a
+// ordem": a foto do ano; sem ela, a do mesmo assunto de outro ano, com o aviso; sem nenhuma, mapa ou desenho). A decisão
+// em `_decisoes_do_lucas` é a vigente, e a de antes não volta como vigente. Os 11 planos da pergunta e os oito que a pesquisa
+// deixou sem nenhuma foto (NÃO ACHADO, research-imagens.md; a metade de Anchorage de s09 virou o plano 3) seguem a ordem:
+// plano de registro diz o aviso do ano, ou "sem aviso", e a identidade §6; o que mudou de regime diz o re-espelho com o
+// mesmo id e a identidade §6.
+if (!(E._decisoes_do_lucas || []).some((d) => /^27\/09\/2026/.test(d) && /Quando não houver foto do ano/.test(d) && /\baviso\b/.test(d) && /mapa ou desenho/.test(d) && /identidade §6/.test(d))) F("_decisoes_do_lucas: falta a decisão de 27/09 que vale (foto de outro ano com o aviso na tela; sem nenhuma foto, mapa ou desenho; identidade §6)");
+if ((E._decisoes_do_lucas || []).some((d) => /^27\/09\/2026 — sem foto do ano do fato, o plano vira mapa ou desenho, e foto do mesmo lugar de outro ano não entra/.test(d))) F("_decisoes_do_lucas: a resposta superada (\"Não: sem foto do ano, vira mapa ou desenho\") aparece como decisão vigente");
 const LISTA_DA_PERGUNTA = [["s06", 1], ["s06", 2], ["s07", 2], ["s09", 1], ["s09", 2], ["s10", 1], ["s13", 1], ["s16", 1], ["s16", 2], ["s22", 1], ["s23", 4]];
-for (const [id, n] of LISTA_DA_PERGUNTA) {
+const SEM_FOTO = [["s09", 3], ["s13", 1], ["s20", 1], ["s29", 2], ["s31", 5], ["s56", 2], ["s58", 4], ["s62", 1]];
+for (const [id, n] of [...LISTA_DA_PERGUNTA, ...SEM_FOTO]) {
   const p = S.find((x) => x.id === id)?._planos?.[n - 1];
-  if (!p || !REGIME_REAL.has(p.regime)) F(`${id} plano ${n}: estava na pergunta ao Lucas sobre o ano da foto e não é mais plano de registro (a mudança de regime é num re-espelho, com o mesmo id)`);
-  else if (!/re-espelho/.test(p.objeto) || !/mesmo id/.test(p.objeto)) F(`${id} plano ${n}: o objeto não diz que, sem foto do tempo do fato, muda de regime num re-espelho com o mesmo id`);
+  if (!p) { F(`${id} plano ${n}: estava na ordem da foto do ano (a pergunta de 27/09 ou o NÃO ACHADO do research) e não existe`); continue; }
+  const sem = SEM_FOTO.some(([a, b]) => a === id && b === n);
+  if (REGIME_REAL.has(p.regime)) {
+    if (sem) F(`${id} plano ${n}: a pesquisa não achou nenhuma foto, e o plano continua de registro (identidade §6: sem nenhuma, mapa ou desenho)`);
+    else if (!/\baviso\b/.test(p.objeto) || !/identidade §6/.test(p.objeto)) F(`${id} plano ${n}: plano de registro da ordem da identidade §6 sem dizer o aviso do ano (ou "sem aviso", foto do ano do fato) e a regra`);
+  } else if (!/re-espelho/.test(p.objeto) || !/mesmo id/.test(p.objeto) || !/identidade §6/.test(p.objeto)) F(`${id} plano ${n}: sem nenhuma foto, mudou de regime, e o objeto não diz o re-espelho com o mesmo id e a identidade §6`);
+}
+// décima primeira revisão: cada foto ou retrato que o conferente aprovou tem, no objeto do plano, o aviso do ano (aviso_de_ano
+// true) ou "sem aviso" (false; a foto do ano do fato, a de hoje e a peça de acervo). Sem o arquivo, a prova não roda.
+const CONF = `out/${proj}/_pesquisa/conferencia-midia.json`;
+let avisosConferidos = null;
+if (existsSync(CONF)) {
+  let C = null; try { C = ler(CONF); } catch (e) { F(`conferencia-midia.json ilegível (${e.message})`); }
+  avisosConferidos = 0;
+  for (const x of C?.candidatos || []) {
+    if (x.veredito !== "aprovado" || !["foto", "retrato"].includes(x.tipo)) continue;
+    const m = /^(s\d{2})\s+plano\s+(\d+)/.exec(String(x.plano || ""));
+    if (!m) { F(`conferencia-midia.json: o candidato aprovado ${x.id} não diz a cena e o plano ("sNN plano N")`); continue; }
+    const p = S.find((y) => y.id === m[1])?._planos?.[+m[2] - 1];
+    if (!p) { F(`${m[1]} plano ${m[2]}: o conferente aprovou ${x.id} para ele, e o plano não existe`); continue; }
+    if (x.aviso_de_ano === true && (!/\baviso\b/.test(p.objeto) || /sem aviso/.test(p.objeto))) F(`${m[1]} plano ${m[2]}: o conferente aprovou ${x.id} com o aviso do ano (${x.data_na_origem}), e o objeto não diz o aviso (identidade §6)`);
+    else if (x.aviso_de_ano === false && !/sem aviso/.test(p.objeto)) F(`${m[1]} plano ${m[2]}: o conferente aprovou ${x.id} sem aviso do ano, e o objeto não diz "sem aviso"`);
+    else avisosConferidos++;
+  }
 }
 // nona revisão: as pendências decididas em 27/09 não voltam a nenhum texto vivo (o histórico de `_revisao` fica)
 // Décima revisão (verificação da nona): a guarda do vídeo não distinguia maiúscula (faltava o /i), e a da logo só
@@ -799,6 +877,9 @@ const DECIDIDAS = [
   [/cópia arquivada[^.;]{0,80}(NÃO CONFERID|PENDENTE)|(NÃO CONFERID|PENDENTE)[^.;]{0,80}cópia arquivada|nao_conferido_ate_o_navegador/i, "a cópia arquivada de página oficial do Alasca vale como fonte (CLAUDE.md, \"A marca\")"],
   [/v[íi]deos? do (governo do Alasca|Estado)[^.;]{0,80}(espera|aguarda|pendente|decide depois|a decidir|sem decisão|pergunta aberta)|§7\.4, item 3/i, "vídeo do governo do Alasca entra com a fonte na tela, e o de jornal só com licença (midia.md §7.5)"],
   [/\blogos?\b[^.;]{0,80}DECISÃO DO LUCAS PENDENTE|Se (o Lucas|ele) decidir pela logo/i, "logo de órgão federal e de outras instituições: só o nome escrito (midia.md §7.6)"],
+  // décima primeira revisão: as duas decisões de 27/09 que o re-espelho aplicou
+  [/DECISÃO DO LUCAS PENDENTE:? bandeira|bandeira[^.;]{0,80}(ao lado|no mapa)[^.;]{0,80}(DECISÃO DO LUCAS PENDENTE|até (o Lucas|ele) decidir)/i, "país no mapa: o nome escrito, sem bandeira (identidade §6; Lucas, 27/09/2026)"],
+  [/esquema declarado[^.;]{0,120}(DECISÃO DO LUCAS PENDENTE|espera o Lucas|até a decisão)|DECISÃO DO LUCAS PENDENTE:? esquema/i, "rota que nunca foi construída: esquema tracejado pelo texto da fonte, com o aviso Approximate route (identidade §6; Lucas, 27/09/2026)"],
 ];
 for (const [p, t] of textos) if (!/\._revisao$/.test(p)) for (const [re, regra] of DECIDIDAS) if (re.test(t)) F(`${p}: trata como pendente o que o Lucas decidiu em 27/09 ("${re.exec(t)[0].slice(0, 60)}"): ${regra}`);
 // Décima revisão. (a) Vídeo do governo do Alasca negado: a oração que o nomeia não diz que ele não entra (o "não" que
@@ -827,7 +908,17 @@ for (const [p, t] of textos) {
   if (COPIA_GERAL.test(t)) F(`${p}: "${COPIA_GERAL.exec(t)[0]}…": a decisão de 27/09 cobre a cópia arquivada de página oficial do Estado do Alasca, não de site em geral (CLAUDE.md, "A marca")`);
   if (LICENCA_NA_COPIA.test(t)) F(`${p}: "${LICENCA_NA_COPIA.exec(t)[0].slice(0, 70)}…": a cópia arquivada prova o texto, não a licença; a permissão se confere na origem de hoje (CLAUDE.md, "A marca")`);
 }
-for (const s of S) for (const l of s.needs.logos || []) if (!/^bandeira\b/i.test(l)) F(`${s.id}: needs.logos pede "${l.slice(0, 50)}", e logo de instituição não vai à cena (midia.md §7.6; Lucas, 27/09/2026): só bandeira`);
+// décima primeira revisão: nem bandeira (identidade §6: país no mapa, o nome escrito); needs.logos não pede nada
+for (const s of S) for (const l of s.needs.logos || []) F(`${s.id}: needs.logos pede "${l.slice(0, 50)}": logo de instituição não vai à cena (midia.md §7.6) e país no mapa vai com o nome escrito, sem bandeira (identidade §6; Lucas, 27/09/2026)`);
+// décima primeira revisão: `_existe` diz o disco (o que o pesquisa-geo entregou em out/<proj>/_media/geo/, registrado no pauta-geo.json)
+let geoNoDisco = 0;
+for (const s of S) for (const g of s.needs.geo || []) {
+  const ha = existsSync(`out/${proj}/_media/geo/${g.id}.json`);
+  if (typeof g._existe !== "boolean") F(`${s.id}: needs.geo › ${g.id} sem _existe (true ou false)`);
+  else if (g._existe && !ha) F(`${s.id}: needs.geo › ${g.id} diz _existe: true, e out/${proj}/_media/geo/${g.id}.json não existe`);
+  else if (!g._existe && ha) F(`${s.id}: needs.geo › ${g.id} diz _existe: false, e a geometria está em disco (out/${proj}/_media/geo/${g.id}.json)`);
+  else if (g._existe) geoNoDisco++;
+}
 // imagem de hoje não leva rótulo de ano (identidade §6): plano de registro com ano no objeto pede época no termo, ou diz "sem rótulo de ano"
 const ANO = /\b(1[89]\d\d|20[0-2]\d)s?\b/;
 for (const s of S) (s._planos || []).forEach((p, i) => {
@@ -990,6 +1081,7 @@ const out = {
   respiro_candidatos: { planos: respiroCand.map((p) => `${p.cena} ${p.de}–${p.ate} (${p.dur} s, ${p.regime})`), s: dur(respiroCand.map((p) => p.dur)), pct_do_video: pct(dur(respiroCand.map((p) => p.dur)), FIM_VIDEO), alvo_pct: 10 },
   cenas_longas: longas,
   travas_de_texto: travas, grifos_com_voz_provada: grifosProvados,
+  avisos_do_conferente_conferidos: avisosConferidos, esquemas_de_rota: esquemas, geo_em_disco_conferida: geoNoDisco,
   texto_na_voz: { varridos, entradas: entradasVoz, travessias: D2.travessias, conflitos_para_o_regente: D2.conflitos, numeros_antes_da_voz: antecipados },
   falhas,
 };
@@ -1012,6 +1104,7 @@ else {
   const curtas = travas.filter((x) => x.no_ar_ate_o_fim_do_plano_s < 2.0);
   console.log(`texto travado numa palavra: ${travas.length} trava(s), menor tempo no ar até o fim do plano ${travas.length ? Math.min(...travas.map((x) => x.no_ar_ate_o_fim_do_plano_s)) : "—"} s${curtas.length ? ` (abaixo de 2,0 s, com _texto_no_ar: ${curtas.map((x) => `${x.cena} p${x.plano}`).join(", ")})` : ""} · grifos com a voz provada dentro dos planos: ${grifosProvados}`);
   console.log(`texto na voz (sexta a oitava revisões): ${varridos.length} números ou frases citadas que o objeto põe na tela e a voz diz no plano, medidos da fala ao fim do plano (abaixo de 2,0 s, com _texto_no_ar; desde a oitava, também a fala do modo citação, parte por parte); ${antecipados.length} números que um objeto põe na tela antes do plano em que a voz os diz; ${entradasVoz.length} comparações entre a palavra de entrada que o objeto declara (verbo de entrada e palavra entre aspas) e o momento em que a voz diz o que entra (número, data pelo mês, frase entre aspas): cada uma reprova se a voz o diz depois do fim da palavra de entrada, ou se a entrada vem mais de 1,0 s depois da voz no plano (${[...new Set(entradasVoz.map((x) => `${x.cena} p${x.plano}`))].join(", ") || "—"}); ${D2.travessias.length} atravessam o plano seguinte da cena (${D2.travessias.join(", ") || "—"}); ${D2.conflitos.length} conflitos para o regente-de-imagem (${D2.conflitos.join(", ") || "—"}); não se mede o texto descrito em português sem verbo de entrada, sem número e sem aspas (a parte de um bloco que a voz diz noutra frase), nem rótulo de lugar`);
+  console.log(`décima primeira revisão: ${avisosConferidos === null ? "vereditos do conferente NÃO MEDIDOS (sem conferencia-midia.json)" : `${avisosConferidos} fotos e retratos aprovados pelo conferente com o aviso do ano (ou "sem aviso") no objeto`} · ${esquemas} rotas em esquema tracejado (_esquema) · ${geoNoDisco} pedidos de needs.geo com _existe: true e o arquivo em disco`);
   console.log(falhas.length ? `\n✗ ${falhas.length} falha(s):\n  ${falhas.join("\n  ")}` : "\n✓ todas as provas passaram");
 }
 process.exit(falhas.length ? 1 : 0);

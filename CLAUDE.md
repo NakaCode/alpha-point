@@ -513,6 +513,11 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
   - As páginas dinâmicas do site fora da API (`index.php`, a busca do site, o histórico), não;
 - o upscale não-generativo que o `pesquisa-pessoas` pede (`image.upscale.classic`) não existe no canal nem na
   pré-v1;
+- o `entregar` do `buscar-midia` só entrega linha selada de acervo livre. A foto de jornal e a do governo do Alasca
+  (`marca/midia.md` §7.5) se entregam à mão, com os campos da roupa do `pesquisa-imagens` (§5) e o sha256 do rascunho
+  julgado (`_media/foto/s56/`, 27/09/2026). Ele também copia a licença do Commons, sem o crédito que o canal pede à
+  fonte: esse crédito viaja no veredito do conferente (s22). E o `buscar` consulta só as 3 primeiras frases de cada
+  chamada, sem avisar (`APRENDIZADOS.md`, item 42);
 - `src/agent/data-tools.mjs` só cobre IBGE e World Bank;
 - o `catalogo` da pré-v1 lê o cache da máquina e o acervo do motor, não `assets/geojson/` (que veio vazio);
 - `navegacao/gerar.mjs` está inoperante: a entrada vinha do `curador-de-acervo`, que não veio, e a saída não tem

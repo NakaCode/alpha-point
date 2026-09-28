@@ -1,11 +1,14 @@
 # Espelho do Juneau: o report do montador (§2.3 do contrato)
 
-- **Vídeo:** juneau, "Alaska Voted for a New Capital in 1974. It Was Never Built.", passo `mirror`.
+- **Vídeo:** juneau, "Alaska Voted for a New Capital in 1974. It Was Never Built.", passo `mirror`; a décima primeira revisão
+  é o re-espelho do passo `research`.
 - **Montado em:** 26/09/2026. **Revisado em:** 27/09/2026, depois dos três verificadores (tempo, editorial e completude),
   de novo no mesmo dia, depois da segunda rodada deles (§0b), uma terceira vez, depois da terceira rodada (§0c), uma
   quarta, depois da quarta rodada (lentes geo-fato, editorial e tempo; §0d), e uma quinta, depois da quinta rodada (as mesmas
   três lentes; §0e), uma sexta, com as decisões do Claude central sobre o que sobrou (§0f), e uma nona, com as quatro
-  decisões do Lucas de 27/09 e uma do Claude central para o regente-de-imagem (§0g).
+  decisões do Lucas de 27/09 e uma do Claude central para o regente-de-imagem (§0g). **Revisado de novo em 28/09/2026**, na
+  décima primeira revisão: o re-espelho que a pesquisa de mídia devolve, com as decisões do Lucas de 27 e 28/09 (§0h; o
+  despacho do research a chama de sétima).
   O agente `montador` ainda não carrega nesta sessão. A sessão seguiu o manual inteiro (`.claude/agents/montador.md`:
   ofício e contrato), a roupa `marca/agentes/montador.md` e o `CLAUDE.md` por cima.
 - **Estado do material:** 1, do zero, num canal faceless. Não há imagem de origem, então o único veredito é ADICIONAR.
@@ -454,6 +457,273 @@ negado, o vídeo e a logo em maiúsculas, a cópia estendida a "site que recusa 
 arquivada" e o aviso de s11 com "NÃO CONFERIDA". O espelho de antes desta revisão reprova com 15 falhas: 14 de licença
 e 1 de alcance.
 
+## 0h · A décima primeira revisão, de 28/09: o re-espelho que a pesquisa de mídia devolve
+
+O despacho do Claude central chama esta revisão de **sétima**: ele conta as do passo `research`, e o `_revisao` do espelho conta
+todas, com as de verificação de 27/09 (a sétima à décima). É a mesma revisão. O passo na linha é `research`, e os ids são os
+mesmos.
+
+**As entradas, no disco:**
+- os vereditos do conferente: `out/juneau/_pesquisa/conferencia-midia.json` e o `.md` (5 despachos, o último de 28/09 às
+  01:14; 35 candidatos: 25 aprovados, 9 trocar e 1 reprovado; sha256 `f1f699e3…`);
+- as seis pautas (`pauta-*.json`) e os seis relatórios (`research-*.md`) dos pesquisadores, o `navegador-relato.md` e o
+  `pauta-geo.json` (40 camadas);
+- a lista de `out/juneau/_media/` (só os nomes: o montador não abre mídia) e o `_RETIRADO.json` das bandeiras;
+- a marca: `identidade.md` §5 e §6 (a ordem da foto do ano, o aviso, a peça de acervo, o país no mapa, a rota nunca
+  construída, o documento antigo e o de outra data) e `midia.md` §7;
+- as fontes locais dos trechos novos: `fseis.txt` (ES-4.3, linhas 538-544; §2.2.1, 3665-3668; o ROD, 233-238),
+  `ca9_2011.pdf.txt` (87-88 e 120-124) e `cap-boucher.json` (Caselaw Access Project).
+
+Nada foi escrito em `out/juneau/_media/`, nos `conferencia-*.json` nem na `pauta-imagens.json`. O `words.json` (`a8d5ec77…`), o
+texto aprovado (`28aa6630…`) e a `narracao.wav` (`468b045b…`) estão intactos.
+
+**Ids e tempos.** Os 61 ids ficam, nenhuma cena nasceu nem morreu, e nenhuma borda de cena mudou: `inSec`, `dur`, `_quadros`,
+`_borda`, `ancora` e `_texto_aprovado` são os de antes, cena a cena (conferido por script contra o espelho do commit
+`093c9cc`). Uma borda de **plano** é nova: o plano 2 de s09 se partiu em **82,9 s** (quadro 2.487), na pausa entre "bases"
+(acaba em 82,89) e "went" (82,922), e a metade de Anchorage virou o plano 3, de mapa. São 141 planos (eram 140).
+
+### 0h.1 · O que mudou, pelos oito pontos do despacho
+
+**1 · País no mapa, sem bandeira** (identidade §6; Lucas, 27/09/2026: "Só o nome escrito (Recomendado)").
+- s03, s10 e s44 perderam os pedidos de bandeira. `needs.logos` está vazio no vídeo inteiro, e `_despacho_research` › `logos` ›
+  `pedidos` também.
+- A `_nota_logos` das três diz a regra e que as 8 bandeiras entregues saíram de `_media/logo/` para
+  `_media/_caca/_retirado/logo/` (27/09). Em s44, a regra vale também para a British Columbia e o Yukon.
+- Saíram a pendência e as notas do despacho que a davam como pendente. A bandeira dentro do círculo da PRANCHA não foi
+  perguntada (identidade §6), e nenhuma cena do Juneau a pede.
+
+**2 · Rota que nunca foi construída, como esquema** (identidade §6; Lucas, 27/09/2026: "Sim, tracejada e com aviso
+(Recomendado)").
+- s44 plano 3, s48 planos 1 e 2 e s50 planos 1 e 2: esquema tracejado pelo texto da fonte, a partir do ponto de partida real,
+  com o aviso `Approximate route` no papel legenda de §4.1, na tela todo o tempo da linha. A figura do estudo de 2018 não se
+  decalca (midia.md §7.1).
+- Cada cena tem `_esquema`, com a regra e, por rota, os planos, o ponto de partida, o caminho e a fonte entre aspas:
+
+| Rota | Parte de | Por onde | Fonte |
+|---|---|---|---|
+| s44, o corredor do Lynn Canal | `cascade-point` | para o norte, pela margem leste do fiorde, rumo a Haines e Skagway | FSEIS 2018, p. 1-6 (mec-01.7) e ES-4.3 |
+| s44, o corredor do Taku | `thane-road-fim` (**pedido novo**) | para o nordeste ao longo do Taku Inlet, cruzando a fronteira e subindo o vale do rio | FSEIS 2018, p. 2-2, §2.2.1 (fseis.txt:3665-3668) |
+| s48, a margem leste (2000) | `cascade-point` | para o norte pela margem leste, até perto do delta do Katzehin | 9º Circuito, 2011, p. 5896 (ca9_2011.pdf.txt:120-124) |
+| s50, a Alternativa 2B (2006) | `echo-cove-gnis` | de Echo Cove a Cascade Point, a estrada que existe (traço cheio); dali ao norte do delta do Katzehin (tracejado); a balsa até Haines e Skagway (tracejada) | FSEIS 2018, ES-4.3 (fseis.txt:538-544) |
+
+- O ponto de partida do Taku, o fim da Thane Road, não está em disco. É o único pedido aberto ao pesquisa-geo
+  (`thane-road-fim`, `_existe: false`; `_despacho_research` › `geo`). Sem ele, o esquema do Taku não se desenha, e o plano 3 fica
+  com o rio, o rótulo do Taku Inlet e a voz (`_esquema.taku.sem_o_ponto`).
+- A geometria que os esquemas usam veio do research: o Lynn Canal e o Taku Inlet como pontos do GNIS (`lynn-canal-gnis`,
+  `taku-inlet-gnis`), só com o rótulo, porque eixo e contorno não existem em nenhuma fonte (research-geo.md §2); a foz do
+  Katzehin (`katzehin-river-gnis`) e Echo Cove (`echo-cove-gnis`), do GNIS; e Cascade Point, do OSM. O terminal previsto e a rota
+  2B foram para `_geo_nao_achado` de s50.
+- A seta sem linha da quinta revisão (s44) saiu: era a solução provisória até a decisão.
+
+**3 · Foto de outro ano, com o aviso do ano** (identidade §6; Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver
+foto pode utilizar com um aviso em tela"), e **peça de acervo fotografada depois, sem aviso** (Lucas, 28/09/2026: "Sem aviso,
+como documento (Recomendado)").
+- Nenhum texto diz mais que foto de outro ano não entra, nem que o plano sem foto do ano muda de regime (a divergência 1 do
+  conferente).
+- O ano de cada aviso é o `data_na_origem` do veredito, conferido um a um contra o objeto (tabela do ponto 4).
+- A decisão que a nona revisão gravou em `_decisoes_do_lucas` ("Não: sem foto do ano, vira mapa ou desenho") foi reescrita com
+  a mensagem que a mudou no mesmo dia, e a de antes fica registrada como superada.
+- A camiseta de s28 vai sem aviso. O veredito dela foi regravado assim no 5º despacho do conferente (`aviso_de_ano: false`).
+
+**4 · O que a pesquisa entregou.** Os vereditos `aprovado` do conferente, com os arquivos em `_media/foto/`, `_media/pessoa/` e
+`_media/documento/`. Os objetos dizem o arquivo, a origem, o crédito (ou domínio público, sem crédito) e o que o conferente pediu
+no enquadramento.
+
+| Plano | Arquivo | Data na origem | Na tela |
+|---|---|---|---|
+| s01 p1 | `foto/s01/juneau-downtown-front-street-ca1987-gillfoto.jpg` | circa 1987 | aviso do ano; Gillfoto / Wikimedia Commons · CC BY-SA 4.0 |
+| s06 p1 | `foto/s06/juneau-harbor-gastineau-channel-ca1899-pillsbury-cleveland.jpg` | circa 1899 | aviso do ano; domínio público |
+| s06 p2 | `foto/s06/juneau-city-1887-partridge-smu.jpg` | 1887 | aviso do ano, ao lado do 1880 da tela; domínio público |
+| s07 p2 | `foto/s07/sitka-1906-case-draper-loc-2004672324.jpg` | 1906 | sem aviso (o ano do fato); a foto pequena, impressa sobre a mesa, até 1,4× |
+| s09 p1 | `foto/s09/anchorage-white-city-tent-camp-1915-07-01-pyatt.jpg` | 1º/7/1915 | aviso do ano, ao lado do 1914; domínio público |
+| s09 p2 | `foto/s09/ladd-field-operations-hangar-1943-07-09-nara-204947418.jpg` (e, de reserva, o pátio, `…apron…-204947416.jpg`) | 9/7/1943 | aviso do ano; domínio público federal |
+| s10 p1 | `foto/s10/alaska-highway-1942-06-02-corduroy-charlie-lake.jpg` | 2/6/1942 | sem aviso; domínio público federal |
+| s16 p1 | `foto/s16/fairbanks-downtown-chena-1973-08-documerica-cowals-550551.jpg` | agosto de 1973 | aviso do ano; Dennis Cowals / National Archives (exceção do DOCUMERICA) |
+| s16 p2 | `foto/s16/fairbanks-downtown-international-hotel-1972-08-chesi.jpg` | agosto de 1972 | aviso do ano, no quadro do 1977; Piergiuliano Chesi / Wikimedia Commons · CC BY 3.0 |
+| s22 p1 | `foto/s22/alaska-house-5th-legislature-1967-68-capitol-steps.jpg` | 1967/1968 | aviso do ano; State of Alaska / Alaska State Library |
+| s23 p4 | `foto/s23/juneau-downtown-hillside-homes-aerial-ca1993-gillfoto.jpg` | circa 1993 | aviso do ano; Gillfoto / Wikimedia Commons · CC BY-SA 4.0 |
+| s28 p3 | `foto/s28/anchorage-stealers-1982-tshirt-back-asm-97-20-1-gelotte-adn.jpg` | 2015 (a peça é de 1982) | sem aviso (peça de acervo); Dave Gelotte / Alaska State Museum |
+| s35 p1 | `foto/s35/wasilla-lake-chugach-2010-06-06-foubister.jpg` | 6/6/2010 | aviso do ano; Murray Foubister / Wikimedia Commons · CC BY-SA 2.0 |
+| s37 p1 | `foto/s37/alaska-house-chamber-2024-08-15-ifly6.jpg` | 15/8/2024 | sem aviso (a regra de hoje); Ifly6 / Wikimedia Commons · CC BY-SA 4.0 |
+| s37 p2 | `foto/s37/alaska-senate-floor-session-2020-03-24-brooks.jpg` | 24/3/2020 | sem aviso (a regra de hoje); James Brooks / Wikimedia Commons · CC BY 2.0 |
+| s41 p1 | `pessoa/s41/kiehl-jesse-senator-2025-01-21-senate-majority.jpg` | 21/1/2025 (EXIF) | card com retrato, sem aviso |
+| s49 p1 | `foto/s49/juneau-downtown-mount-roberts-1997-04-gillfoto.jpg` | 21/4/1997 | aviso do ano; Gillfoto / Wikimedia Commons · CC BY-SA 4.0 |
+| s55 p1 | `foto/s55/walker-bill-governor-2016-11-15-togiak.jpg` | 15/11/2016 | card com retrato, sem aviso; domínio público federal |
+| s56 p1 | `foto/s56/juneau-assembly-2017-01-23-dais-je-penn.jpg` | 23/1/2017 | sem aviso; Michael Penn / Juneau Empire |
+| s57 p1 | `pessoa/s57/gladziszewski-maria-assemblymember-2020-09-12-cbj-retrato.jpg` | 2020 | card com retrato e o aviso Photo from 2020 na margem de baixo |
+| s07 p1 e p4 | `documento/s07/stat-31-321-1900-p1.jpg` e `stat-37-512-1912-p1.jpg` | — | originais, até 1,4×; mais perto, a recriação datilografada |
+| s52 p1 | `documento/s52/ca9-2011-seacc-p04.jpg` | 4/5/2011 | original, com o rótulo "upheld on appeal, 2011" |
+| s58 p1 | `documento/s58/federal-register-2018-16263-p1.jpg` | 30/7/2018 | original, com o recorte do conferente |
+
+**5 · Sem nenhuma foto: o regime novo, com o mesmo id** (identidade §6, "a ordem": sem nenhuma foto, o plano vira mapa ou
+desenho). A pesquisa passou pelos acervos abertos e pelo navegador do app antes (research-imagens.md).
+
+| Plano | Era | Agora | Por quê, e o que vai à tela |
+|---|---|---|---|
+| s09 p3 (a metade de Anchorage do antigo p2, de 82,9 a 85,167 s) | foto | mapa | Fort Richardson (1940) só se compra na Alaska State Library, e o Lucas decidiu não comprar ("Não comprar (Recomendado)"). O mapa acende Anchorage e Fairbanks, e a foto da Ladd Field encolhe para o ponto de Fairbanks (ofício §6.7) |
+| s13 p1 | foto | documento | A corte de 1974 não se achou, nem de outro ano. A folha recriada de Boucher v. Engstrom (1974), pelo texto do Caselaw Access Project, sem a página do Pacific Reporter, que é da West. O plano 2 já era documento (o parecer de 1993) |
+| s20 p1 | foto | dados | A eleição de 7/11/1978 não se achou. A cédula no DADO: a cena fica em DADO do começo ao fim |
+| s29 p2 | foto | dados | A eleição de 2/11/1982 não se achou. O placar no DADO, depois da pesquisa de opinião do plano 1 |
+| s31 p5 | foto | desenho | A campanha de 1982 não se achou. O gasto na PRANCHA, como os planos 1 a 3 |
+| s56 p2 | foto | dados | A segunda foto da sessão de 23/1/2017 não se achou, e foto de outra sessão não entra. A data e o 6 a 3 no DADO |
+| s58 p4 | foto | documento | A briga pública com os dois lados não se achou (as do comício de 2014 da KTOO mostram um lado só; trocar). O ROD recriado segue na tela, com o grifo "Controversy on the JAI Project is high among the public" em "a public fight over the road" |
+| s62 p1 | foto | desenho | O voto de 1974 não se achou, e a foto de s01 não cobre esta fala (trocar). O YES da abertura, sem os números, com a linha do preço em branco. Desenho, e não DADO: o placar de s60, 8,8 s antes, já é DADO |
+
+- **s26 também mudou de regime**, fora da lista do despacho: as mascotes se acharam só na coluna do ADN de 2026, sem permissão
+  (research-documentos.md §3 e §4), e o retrato de Stoops não se achou. Os três planos passaram de documento a desenho (a
+  PRANCHA com os nomes escritos e o card só com nome e cargo).
+- **s28 p2**, o estádio, continua na lista da caça nos bancos pagos, como estava.
+- **As viradas.** Saíram as de s13, s20, s29 e s58, porque a cena ficou num regime só. Entraram s09 (foto → mapa, em "went") e
+  s56 (foto → dados). Em s31, a segunda virada é agora citação → desenho. A de s10 continua foto → mapa e agora é **corte
+  seco**: a origem da foto dá o setor de Fort St. John, ao norte do Charlie Lake, e nenhum ponto desse trecho está em
+  `needs.geo`. São 22 viradas em 17 cenas (eram 24 em 19).
+
+**6 · Cards de pessoa.**
+- Só com nome e cargo (identidade §5): Harris (s05, s25), Clark (s25), Stoops (s26, s27, s31), Reamer, Dittman e Rae (s31) e
+  Knowles (s48). Os planos perderam `midia_termos` e `_pedido_a` e ficam com `_pessoa`. s05, s25, s26, s27, s31 e s48 passaram a
+  `midia: animacao`.
+- Com retrato: Kiehl (s41), Walker (s55, em `_media/foto/s55/`) e Gladziszewski (s57, o de 2020, com o aviso Photo from 2020 na
+  margem de baixo da foto impressa).
+- `_despacho_research` › `retratos` guarda o `resultado` de cada pessoa.
+
+**7 · Documentos.**
+- s07 planos 1 e 4: as leis de 1900 e 1912, originais, como a folha só até 1,4× (a página inteira na altura da tela pede
+  1,26×), e o trecho visto mais perto na recriação datilografada (identidade §5, "Documento antigo").
+- s13 plano 1: Boucher v. Engstrom recriada (ponto 5). A nota da ordem de 27/06/1974, que confere o "that same year", está em
+  `conferir`.
+- s31 plano 4: a Trends de junho de 1990 recriada com a fonte, e a página como prova (Lucas: "Recriar com a fonte
+  (Recomendado)").
+- s52 plano 1: a página 4 da decisão do 9º Circuito de 4/5/2011, com o rótulo "upheld on appeal, 2011" na tela todo o tempo da
+  página (identidade §5; Lucas: "Sim, com o rótulo (Recomendado)"). O grifo "The district court vacated the FHWA’s Record of
+  Decision (“ROD”)" varre enquanto a voz diz "a federal court threw out that choice" (542,62 s). A de 2009 continua NÃO ACHADA,
+  e a capa do acórdão saiu.
+- s58 plano 1: o aviso original do Federal Register, com o recorte do conferente (fora o fim do aviso da FAA e os contatos; o
+  cabeçalho de July 30, 2018 ou fica fora, ou entra junto com a linha "issued on June 18, 2018"). Plano 4: o grifo da
+  controvérsia (ponto 5).
+- `_despacho_research` › `documentos` acompanha: 29 trechos a grifar (eram 27), cada um com a voz provada dentro dos planos.
+
+**8 · As pendências.** Saíram as duas que o Lucas decidiu (a bandeira e o esquema). As outras 16 ficaram, cada uma com a data
+desta revisão. Mudaram o gasto de render (13 cenas com mapa, com s09), o relevo (as fontes foram aceitas em 27/09; usar em s44
+continua pendente), a régua (44,9%), o número sobre registro (saíram s29 p2, s31 p5 e s56 p2) e a divergência do §1b (s26).
+`_decisoes_do_lucas` tem 13 decisões: a da foto de outro ano, reescrita, e 9 novas (o país no mapa, a rota, o documento de outra
+data, o documento antigo, a Trends, a Alaska State Library, o DOCUMERICA, o download da camiseta e a peça de acervo).
+
+**A geometria.** O research entregou 40 camadas em `_media/geo/` (`pauta-geo.json`; research-geo.md).
+- Os pedidos que estavam `_existe: false` e estão em disco passaram a `true`, com a fonte e a licença no `_exige` (s03, s10,
+  s12, s15, s33, s39 e s44).
+- Ids novos, todos em disco: `estrada-glennallen-tok` (s10: sem ele, a Glenn do OSM não chega à Alaska Highway),
+  `limites-sitio-willow-1976`, `larson-lake-gnis` e `mount-yenlo-gnis` (s15), `alaska-highway-trecho-yukon`,
+  `haines-junction-osm` e `taku-inlet-gnis` (s44), `lynn-canal-gnis` (s44, s48 e s50), `katzehin-river-gnis` e `cascade-point`
+  (s48 e s50) e `echo-cove-gnis` (s50).
+- O que não se achou foi para `_geo_nao_achado` da cena, com o que vai no lugar: as áreas de Anchorage e Fairbanks (s10), os
+  distritos eleitorais de 1974 (s12), o ponto e o contorno do local de Willow e o contorno de Larson Lake e Mt. Yenlo (s15), e o
+  terminal do Katzehin e a rota 2B (s50).
+- O único pedido aberto é `thane-road-fim` (s44).
+
+**A pesquisa-dados.** A conferência das 45 cenas voltou sem número que contradiga a voz (research-dados.md, 27/09), e o espelho
+não muda por ela. A busca nova de s54, a série diária do preço do petróleo, não se achou por script: ela é do Department of
+Revenue, cujo site recusa robô, e a da EIA é mensal e é outra medida. O pedido fica aberto ao Claude central, no navegador do
+app, e sem a série a tela mostra os pontos extremos da fonte, sem linha, como a `_figura` já dizia. O `needs.dados`, o
+`_despacho_research` › `dados` › `busca_nova`, a `midia_necessidade` e o objeto do plano de s54 dizem isso. O achado da
+pesquisa, o título do Graph 2-1 ("Daily ANS West Coast Oil Price 2012-2016"), foi para o `needs.dados` de s54: a sigla tem
+fonte, e usá-la é do redator-de-tela.
+
+### 0h.2 · O verificador
+
+As provas que a regra nova deixou velhas mudaram com ela, sem afrouxar, e o cabeçalho do `conferir-espelho.mjs` registra a
+mudança (28/09/2026, décima primeira revisão):
+
+| Prova velha | Por que ficou velha | Agora |
+|---|---|---|
+| País no mapa pede `needs.logos` (a bandeira) ou `_nota_logos` | o Lucas decidiu o nome escrito, sem bandeira | a `_nota_logos` diz "sem bandeira" e a identidade §6; `needs.logos` não pede nada (nem bandeira); a bandeira pendente entrou nas DECIDIDAS |
+| s44 pede `taku-inlet` | o contorno não existe em nenhuma fonte; veio o ponto do GNIS | aceita `taku-inlet` ou `taku-inlet-gnis` |
+| O plano dos corredores de s44 diz "seta" e cita o mapista §6c | a seta sem linha era a solução provisória até a decisão | diz o esquema tracejado, o aviso Approximate route, a identidade §6 e que não decalca a figura do estudo |
+| Plano de mapa não manda traçar corredor ou rota | a identidade §6 manda desenhar a rota nunca construída como esquema | a cláusula que diz o esquema tracejado passa; toda cena com esquema tem `_esquema` (a regra; e, por rota, o plano, o ponto de partida em `needs.geo`, a fonte entre aspas e, com o ponto fora do disco, o que o plano faz sem ele), e os planos dele dizem o aviso; o esquema pendente entrou nas DECIDIDAS |
+| A decisão de 27/09 é "sem foto do ano, mapa ou desenho" | o Lucas mudou a resposta no mesmo dia | a decisão vigente cita a mensagem dele, o aviso, "mapa ou desenho" e a identidade §6, e a de antes não volta como vigente |
+| Os 11 planos da pergunta continuam de registro e dizem o re-espelho | a foto de outro ano entra com o aviso | os 11 e os 8 sem foto seguem a ordem da identidade §6: registro com o aviso (ou "sem aviso") e a regra, ou, sem nenhuma foto, outro regime, com o re-espelho e o mesmo id no objeto |
+| A cláusula que aceita foto de outro ano reprova | idem | passa se diz o aviso |
+| A mensagem da regra do crédito dizia "foto de outro ano não entra" | idem | a regra continua proibida (a data não se esconde no crédito nem na legenda), com a mensagem certa |
+
+Provas novas:
+- cada foto ou retrato que o conferente aprovou tem, no objeto do plano, o aviso do ano (`aviso_de_ano: true`) ou "sem aviso"
+  (`false`). O verificador lê o `conferencia-midia.json` quando ele existe; sem ele, diz NÃO MEDIDOS: **21 conferidos**;
+- `_existe` diz o disco: `true` só com `out/<proj>/_media/geo/<id>.json`, e `false` só sem ele: **97 conferidos**.
+
+**A prova contra as duas cópias.**
+- O verificador novo, sobre o espelho de antes (o do commit `093c9cc`), sai com exit 1 e **85 falhas**: 3 cenas com país no
+  mapa sem a regra, 8 pedidos de bandeira, 13 frases que davam como pendente o que o Lucas decidiu (a bandeira e o esquema), o
+  plano dos corredores de s44, 2 na decisão superada, 19 nos planos da ordem, 21 avisos que o objeto não dizia e 18 geometrias
+  em disco que o espelho dava como `_existe: false`.
+- O verificador de antes (a cópia do início desta revisão), sobre o espelho novo, sai com **13 falhas**, e são exatamente as
+  provas velhas da tabela: o `taku-inlet`, a seta com o §6c e os 11 planos da pergunta.
+- O verificador novo, sobre o espelho novo: **exit 0, todas as provas passaram**.
+
+### 0h.3 · Os portões e as medidas
+
+Todos com o alvo certo e `REGIE_MOTOR=C:/projetos/regie-v1` onde importa do motor, sobre o espelho final (`8099cbc6…`):
+
+| Medida | Até a décima | Agora |
+|---|---|---|
+| `conferir-espelho.mjs juneau` | exit 0 | **exit 0** |
+| `validar-contrato espelho` (e `--estrito`) | ✓ | **✓** (os dois) |
+| `mapa-limpo juneau --conferir` | ✓ | **✓** |
+| `checar-plano` | ESPELHO REDONDO | **ESPELHO REDONDO** |
+| `alinhar-timestamps --dry` (numa cópia) | 17 sugestões, não aplicadas | **as mesmas 17**, não aplicadas; o sha256 da cópia igual antes e depois |
+| `qc-espelho-midia` | PASS, 41/61 = 67,2% | **PASS, 30/61 = 49,2%**; 13 cenas com `needs.geo` |
+| `qc-deserto-real` | PASS, 35 s | **PASS, 50 s** |
+| `qc-piso-real` (sem `--laudo`) | 49,5%, NÃO SE APLICA | **36,2%, NÃO SE APLICA**; o laudo em disco intacto (`0148a36f…`) |
+| `qc-espelho-modelo`, `qc-fusao-espelho`, `qc-respiro` | PASS; nada a cobrar; sem HTML | os mesmos |
+| `qc-espelho-cortes` | 1 alerta (s63) | o mesmo alerta |
+| `qc-midia-real juneau` | — | **NÃO MEDIDO** (exit 2: "sem out\juneau\graphics/"): é portão da arte |
+| Régua do canal (registro + satélite) | 316,8 s = 49,0% da fala | **290,2 s = 44,9% da fala** (43,6% do vídeo) |
+| Maior janela sem footage ou foto (por plano) | 40,6 s | **49,9 s** (86,933–136,833, até s13) |
+| Maior janela sem registro nem satélite | 40,0 s | **49,3 s** (167,133–216,4, até s20) |
+| Rajada (planos < 2,5 s) | 30,2 s = 4,5% | **34,5 s = 5,2%** |
+| Respiro candidato | 73,2 s = 11,0% | o mesmo |
+| Texto na voz | 29 travas, 104 frases, 30 planos com `_texto_no_ar` | **30 travas, 112 frases**, os mesmos 30 planos (15 atravessam, 15 conflitos para o regente) |
+
+A régua caiu 4,1 pontos: sete planos de registro ficaram sem nenhuma foto (26,7 s), e a metade de Anchorage de s09 (2,3 s)
+virou mapa, que continua na régua como satélite. É defeito declarado (§5.1), e nenhuma foto de outro evento entrou no lugar.
+
+### 0h.4 · O que fica para quem
+
+**Para o `diretor-de-arte`** (o conceito visual, no passo `art_direction`):
+- o aviso do ano em 11 planos de foto e no card de s57: a pílula `--rotulo` logo abaixo do rótulo de lugar, ou no lugar dele,
+  todo o tempo da foto; no card, a margem de baixo da foto impressa (identidade §6);
+- os enquadramentos que o conferente pediu, plano a plano, nos objetos: as bordas de cartão e de página que saem (s06, s09, s22,
+  s23), as ampliações (s06 p1, 1,39×; s09 p1, 1,54×; s35, sem ampliar o quadro inteiro), a foto vertical da camiseta (s28 p3,
+  1440×2156) e o recorte que tira pessoas e marcas (s01 p1, s37, s56 p1);
+- s01 p1: 6,567 s de foto parada, acima dos 6 s da identidade §4.3, pede o Ken Burns da identidade §4.4 (conferente);
+- as fotos pequenas e os documentos antigos: Sitka (s07 p2) impressa sobre a mesa, até 1,4×; as leis de s07 até 1,4×, com a
+  recriação datilografada mais perto;
+- os regimes novos: a folha recriada de s13 p1, os DADOs de s20, s29 p2 e s56 p2, a PRANCHA de s26 e de s31 p5, o ROD de s58 p4
+  e o fecho de s62 (o YES sem números e a linha do preço em branco);
+- os esquemas tracejados de s44, s48 e s50, com o aviso Approximate route na legenda todo o tempo da linha, e o mapa novo de
+  s09 (a foto da Ladd Field encolhendo para Fairbanks);
+- continua a leitura do número pousado sobre registro (s01, s24, s28, s33, s35, s51 e s53), agora em sete cenas.
+
+**Para o Lucas** (`_decisoes_pendentes`, 16 itens, todos com a data desta revisão: 14 são dele, a 15ª é dele e do Mateus, e a
+16ª é do regente-de-imagem): o conteúdo da tela final (s63), a cor do
+protagonista, o relevo em s44, o gasto de render na MapTiler (13 cenas com mapa, anotando o contador antes da primeira), a
+música, a PRANCHA fora do enum, o catálogo de modelos, se respiro é tela sem texto, a régua (44,9%, abaixo dos 60%; se o
+documento original fotografado conta), os pisos da taxa de pedido e da maior janela, o 57% em s11, a autorização do DOT&PF, o
+número sobre registro e os picos. Nenhuma pergunta nova.
+
+**Para o Claude central:**
+- despachar o pesquisa-geo só com `thane-road-fim` (`_despacho_research` › `geo`);
+- se quiser a linha de s54, consultar o formulário do Department of Revenue no navegador do app (`out/juneau/_dados/s54.json` ›
+  `busca_nova`); sem ela, a tela fica com os pontos extremos da fonte;
+- os 16 textos de licença e de nota do despacho que dizem "no navegador do app, com o Lucas vendo" são de antes da regra de
+  27/09, que vale para eles: o Lucas não precisa acompanhar (§9);
+- a caça nos bancos pagos continua à espera do pedido do Lucas (`lista-de-caca.json`, 23 itens, com s28 p2);
+- o `research-geo.md` (§1, linha 71) ainda diz que o esquema declarado é DECISÃO DO LUCAS PENDENTE: a identidade §6 decidiu
+  depois, e o espelho segue a identidade (o arquivo é do pesquisa-geo, e o montador não o edita);
+- o `regie advance` do `research` segue a regra do conferente (CLAUDE.md, "Os especialistas"): isso é do Claude central, e esta
+  revisão não o roda.
+
+**Para o regente-de-imagem** (passo `conducting`): os mesmos 15 conflitos de texto no ar e, na `_nota_texto_no_ar`, os rótulos
+de Anchorage e Fairbanks do mapa novo de s09, que ficariam 1,83 s e 1,25 s no ar se entrassem com a voz.
+
 ## 1 · Entradas lidas
 
 | Arquivo | Para quê | sha256 (início) |
@@ -465,7 +735,7 @@ e 1 de alcance.
 | `out/juneau/roteiro.md` e `roteiros/juneau/voz/trocas.md` (82 trocas) | a cópia para a voz, que é a grafia do `words.json` | `459b07ed…` |
 | `roteiros/juneau/roteiro-editor.md`, `roteiro.json`, `aprovacao.md`, `volateis-conferidos.md` | o dossiê: o livro-razão da promessa, "De onde vem cada frase", as decisões e os voláteis | — |
 | `pautas/juneau/fundamento.json`, `verificacao.json` | o fundamento: os ids `doc-`, `mec-`, `evt-` e a URL de onde cada fonte foi lida | — |
-| `out/juneau/_pesquisa/pauta-geo.json` e `_media/geo/` | a geometria já feita (16 camadas) | — |
+| `out/juneau/_pesquisa/pauta-geo.json` e `_media/geo/` | a geometria já feita (16 camadas; 40 na décima primeira revisão, com a fonte e a licença de cada uma) | — |
 | `out/juneau/transcricao.json` › `alinhamento.conteudo` | o que o Whisper ouviu diferente do texto | — |
 | `marca/identidade.md`, `voz.md`, `midia.md`, `agentes/montador.md`, `contratos/espelho.schema.json` | a marca ativa e o contrato | — |
 | as roupas dos consumidores (`marca/agentes/editor-de-arte.md`, `regente-de-imagem.md`, `qc-visual.md`, `diretor-de-arte.md`, `pesquisa-imagens.md`, `pesquisa-logos.md`, `pesquisa-pessoas.md`) e os contratos do pesquisa-dados, do pesquisa-logos e do pesquisa-pessoas | o que cada estação seguinte espera do espelho (segunda revisão) | — |
@@ -477,11 +747,16 @@ e 1 de alcance.
 | `midia/juneau/fontes/triagem/fseis.txt` (quarta revisão) | o cascalho de Echo Cove a Cascade Point (linhas 2850-2861); os títulos do §1.3 e do §1.4.2 (linhas 2931, 3267 e 3321-3323); o Taku "northeast along the Taku Inlet" (3665-3666) | — |
 | `midia/juneau/fontes/evento/adn_reamer.html` (quarta revisão) | "founded the NFL Access Committee", "Designed by Bob Grogan", a entrevista de Stoops (2/2/2026, na lista de fontes) e a avaliação de Dittman | — |
 | `roteiros/juneau/roteiro-editor.md`, f-033 e decisões (quarta revisão); `marca/agentes/diretor-de-arte.md` §2 | a assinatura da declaração de 1978 e por que o roteiro não a nomeia; os três critérios de candidata a showpiece | — |
-| `.claude/agents/mapista.md` §6c e §7 (check 9), `marca/agentes/mapista.md` §10, `marca/agentes/pesquisa-geo.md` §6 e §7 (quinta revisão) | a régua do traçado: sem GeoJSON não se desenha linha (seta, halo, rótulo); o esquema declarado é DECISÃO DO LUCAS PENDENTE | — |
+| `.claude/agents/mapista.md` §6c e §7 (check 9), `marca/agentes/mapista.md` §10, `marca/agentes/pesquisa-geo.md` §6 e §7 (quinta revisão) | a régua do traçado: sem GeoJSON não se desenha linha (seta, halo, rótulo); o esquema declarado era DECISÃO DO LUCAS PENDENTE (o Lucas decidiu em 27/09: §0h) | — |
 | `midia/juneau/fontes/evento/adn_reamer.html`, "Key sources" e legendas (quinta revisão) | o primeiro anúncio no Juneau Empire de 8/10/1982, p. 7; as imagens da coluna (ADN, 21/10 e 18/10/1982) e os anúncios do ADN de 25/10 e 27/10/1982 | — |
 | `midia/juneau/fontes/experiencia/ktoo_assembly2017.txt`:25 e `ktoo_larson2025.html` (quinta revisão) | a pontuação da fonte nas falas de Gladziszewski e de Kiehl | — |
 | `pautas/juneau/fundamento.json`, evt-23.9, evt-23.6, doc-21.7, doc-17.2, doc-17.3, doc-23.2, evt-05.1, esc-10.4, mec-01.8 (quinta revisão) | o comunicado à imprensa de Walker; a Alt. 2B escolhida em 2006 e orçada em 2018; o comitê de Fairbanks em 1977; a decisão de 1974 pelo resumo do AG; a pontuação da fonte em s07, s18 e s31; a Klondike Highway | — |
 | `roteiros/juneau/roteiro-narrador.md`, marcas `<!-- pN · título -->` (quinta revisão) | as partes, para o conferente provar os capítulos | `28aa6630…` |
+| `out/juneau/_pesquisa/conferencia-midia.json` e `.md` (décima primeira revisão) | os vereditos do conferente: 5 despachos, 35 candidatos, 25 aprovados; o `aviso_de_ano`, o `data_na_origem`, o `lugar_na_origem`, o crédito e o que ele pediu no enquadramento | `f1f699e3…` |
+| `out/juneau/_pesquisa/research-*.md`, `pauta-*.json` e `navegador-relato.md`, e `out/juneau/_dados/s54.json` › `busca_nova` (décima primeira revisão) | o que cada pesquisador entregou, o que não achou e onde procurou; a série de s54, não achada, e o nome que a fonte dá ao preço | — |
+| a lista de `out/juneau/_media/` (`foto/`, `pessoa/`, `documento/`, `geo/`, `_caca/_retirado/`) (décima primeira revisão) | os arquivos entregues, só pelos nomes (o montador não abre mídia), e as 40 camadas de geometria | — |
+| `marca/identidade.md` §5 e §6, `marca/midia.md` §7 (décima primeira revisão) | as decisões do Lucas de 27 e 28/09: a ordem da foto do ano e o aviso, a peça de acervo, o país no mapa, a rota nunca construída, o documento antigo e o de outra data | — |
+| `midia/juneau/fontes/triagem/fseis.txt` (538-544, 3665-3668 e 233-238), `midia/juneau/fontes/mecanismo/ca9_2011.pdf.txt` (87-88 e 120-124) e `midia/juneau/fontes/documento/pesquisa-documentos/cap-boucher.json` (décima primeira revisão) | a fonte de cada esquema, o grifo de s52, a controvérsia do ROD e a nota da ordem de 27/06/1974 | — |
 
 O `roteiro-editor.md` não tem marcações `[IMAGEM SUGERIDA]`. A intenção do autor foi lida no "Livro-razão da promessa", na
 tabela das partes e nas decisões (roupa §1). As indicações "para a tela" que ele traz estão no espelho: os 57%, 1880, 1914,
@@ -504,28 +779,29 @@ nota de que a decisão de pôr ou não é do redator-de-tela.
 | Regra da borda | O quadro de 30 fps imediatamente anterior ao início da primeira palavra da cena seguinte. A cauda abre no primeiro quadro inteiro do segmento `pausa` da narração |
 | Âncora = fala da janela | **61/61**, e as âncoras somam **1.836/1.836 palavras**. A da cauda é vazia, porque a janela não tem fala |
 | Texto aprovado ↔ fala | **61/61**. O `_texto_aprovado` de cada cena vira a `ancora` com as 82 trocas de `voz/trocas.md`; somados em ordem, reproduzem o texto aprovado inteiro |
-| Planos | 140 planos, sem vão. O `convocado_por` de cada um são as primeiras palavras do próprio plano, conferidas palavra a palavra no `words.json` (nenhuma do plano seguinte). Bordas de plano na grade; nenhuma corta palavra (onde duas palavras se tocam, a borda é o quadro antes da seguinte). Nenhum plano abaixo do piso de beat de 1,5 s. O `modo` é o regime do primeiro plano em todas as cenas |
+| Planos | 141 planos (décima primeira revisão: o plano 2 de s09 se partiu em 82,9 s), sem vão. O `convocado_por` de cada um são as primeiras palavras do próprio plano, conferidas palavra a palavra no `words.json` (nenhuma do plano seguinte). Bordas de plano na grade; nenhuma corta palavra (onde duas palavras se tocam, a borda é o quadro antes da seguinte). Nenhum plano abaixo do piso de beat de 1,5 s. O `modo` é o regime do primeiro plano em todas as cenas |
 | Texto no ar | Nenhum plano de não-registro abaixo de 2,0 s sem `_texto_no_ar` (só s12 plano 3, que declara). Desde a sexta revisão, `_texto_no_ar` é uma lista de {texto, palavra, de, ate, sobre}: a palavra é dita no plano em `de`; sem conflito, o texto fica ≥ 2,0 s, dentro da cena, e `sobre` lista os planos que ele atravessa; com conflito, a cena corta antes de 2,0 s, e o plano está na pendência do regente-de-imagem |
-| Texto na voz (sexta a oitava revisões; na quinta, "Texto travado numa palavra") | O que se mede: (1) as **29 travas explícitas** (verbo de entrada e palavra entre aspas) nomeiam a palavra, dita dentro do plano, e nenhuma leva na mesma cláusula uma frase citada que a voz diz depois; (2) **desde a sétima**, em cada trava, o que ela põe na tela (números, que a voz diz por extenso, "a million" incluído; datas, pelo mês; frases entre aspas; "a data" = as datas do objeto) contra o momento em que a voz o diz: reprova se a voz o diz depois do fim da palavra de entrada, ou se a entrada vem mais de 1,0 s depois da voz no mesmo plano (9 comparações em 7 planos: s01, s05, s25, s28, s29, s31 e s56); (3) nenhum texto fala em "ênfase" de um bloco que entra antes; (4) a varredura acha **104** números ditos por extenso e frases citadas que o objeto põe na tela e mede da fala ao fim do plano (desde a oitava, também a fala do modo citação, parte por parte: cada frase e cada trecho entre as interrupções do narrador): abaixo de 2,0 s, o plano declara `_texto_no_ar` para aquela palavra (30 planos: 15 atravessam o plano seguinte da cena, e 15 são conflito para o regente-de-imagem; §0f); (5) **desde a oitava**, texto que se soma a um bloco nomeia a palavra de entrada, o ano posto "na tela" que a voz da cena não diz nomeia a palavra que o convoca, e nenhum objeto põe na tela um número que a voz só diz num plano seguinte da cena. **Não se mede:** texto descrito sem verbo de entrada ("acende", "aparece com"), sem número e sem aspas, ou em português (a parte de um bloco que a voz diz noutra frase só a leitura acha); o que entra e a voz não diz na cena, fora o ano posto "na tela" (o 57% de s01, o placar de s29), que entra na palavra que o convoca só pela leitura do objeto; rótulo de lugar no mapa e no registro (word-lock do mapista; `_nota_texto_no_ar`). Na quinta revisão, s28, s29, s31 e s56 cumpriam o piso pondo o número na tela antes da voz |
-| Viradas | 24 viradas em 19 cenas (25 até a segunda revisão: o plano 3 de s28 virou foto, e a volta para DADO saiu), todas declaradas em `_virada` (lista), com a palavra e o índice dela no `words.json` |
+| Texto na voz (sexta a oitava revisões; na quinta, "Texto travado numa palavra") | O que se mede (décima primeira revisão: 30 travas e 112 frases; os mesmos 30 planos com `_texto_no_ar`): (1) as **29 travas explícitas** (verbo de entrada e palavra entre aspas) nomeiam a palavra, dita dentro do plano, e nenhuma leva na mesma cláusula uma frase citada que a voz diz depois; (2) **desde a sétima**, em cada trava, o que ela põe na tela (números, que a voz diz por extenso, "a million" incluído; datas, pelo mês; frases entre aspas; "a data" = as datas do objeto) contra o momento em que a voz o diz: reprova se a voz o diz depois do fim da palavra de entrada, ou se a entrada vem mais de 1,0 s depois da voz no mesmo plano (9 comparações em 7 planos: s01, s05, s25, s28, s29, s31 e s56); (3) nenhum texto fala em "ênfase" de um bloco que entra antes; (4) a varredura acha **104** números ditos por extenso e frases citadas que o objeto põe na tela e mede da fala ao fim do plano (desde a oitava, também a fala do modo citação, parte por parte: cada frase e cada trecho entre as interrupções do narrador): abaixo de 2,0 s, o plano declara `_texto_no_ar` para aquela palavra (30 planos: 15 atravessam o plano seguinte da cena, e 15 são conflito para o regente-de-imagem; §0f); (5) **desde a oitava**, texto que se soma a um bloco nomeia a palavra de entrada, o ano posto "na tela" que a voz da cena não diz nomeia a palavra que o convoca, e nenhum objeto põe na tela um número que a voz só diz num plano seguinte da cena. **Não se mede:** texto descrito sem verbo de entrada ("acende", "aparece com"), sem número e sem aspas, ou em português (a parte de um bloco que a voz diz noutra frase só a leitura acha); o que entra e a voz não diz na cena, fora o ano posto "na tela" (o 57% de s01, o placar de s29), que entra na palavra que o convoca só pela leitura do objeto; rótulo de lugar no mapa e no registro (word-lock do mapista; `_nota_texto_no_ar`). Na quinta revisão, s28, s29, s31 e s56 cumpriam o piso pondo o número na tela antes da voz |
+| Viradas | 22 viradas em 17 cenas (décima primeira revisão: saíram as de s13, s20, s29 e s58, que ficaram num regime só, e entraram as de s09 e s56; até a décima, 24 em 19; 25 até a segunda revisão), todas declaradas em `_virada` (lista), com a palavra e o índice dela no `words.json` |
 | Sementes | Todas com até 6 palavras (a cauda não tem) |
 | Pedido | 0 pedido mudo; todo plano de registro tem termo; os termos da cena são a união dos termos dos planos; nenhum termo se repete entre cenas sem repetição declarada |
 | `needs.dados` | Só pedido de dado: nenhum aviso, figura semântica ou instrução. O aviso da cópia arquivada está em `_fonte_arquivada` nas 22 cenas que usam a Divisão de Eleições |
-| Decisões de 27/09 (nona revisão) | O aviso de `_fonte_arquivada` diz que a cópia vale como fonte e traz a data da captura de cada doc-NN e mec-NN citado, conferida contra o `url_acessada` do `fundamento.json`. Nenhum texto vivo trata como pendente a cópia arquivada, o vídeo do Estado ou a logo de instituição; `needs.logos` só pede bandeira; a pergunta do ano da foto não volta, e `_decisoes_do_lucas` tem a decisão (§0g) |
-| Despacho | Nenhum plano de retrato na lista do pesquisa-imagens; todos na lista `retratos`, com `_pessoas` na cena. Nenhum plano do pesquisa-documentos (`_pedido_a: "pesquisa-documentos"`, as mascotes de s26) na lista do pesquisa-imagens; todos em `documentos` (quarta revisão). Desde a quinta, isso vale também sem o `_pedido_a`: nenhum plano de peça com `caca` (os da peça e os que o texto de `caca` nomeia) está na lista `cenas`. Todo outro plano com termo está na lista do pesquisa-imagens. A lista `cenas` (33 cenas, 47 planos) bate com o espelho no `modo`, na `midia` e, plano a plano, no `de`, no `ate`, no `regime` e nos `midia_termos` (quinta revisão) |
+| Decisões de 27/09 (nona revisão) | O aviso de `_fonte_arquivada` diz que a cópia vale como fonte e traz a data da captura de cada doc-NN e mec-NN citado, conferida contra o `url_acessada` do `fundamento.json`. Nenhum texto vivo trata como pendente a cópia arquivada, o vídeo do Estado ou a logo de instituição; `needs.logos` só pede bandeira; a pergunta do ano da foto não volta, e `_decisoes_do_lucas` tem a decisão (§0g). **Décima primeira revisão:** `needs.logos` não pede nada, nem bandeira; a bandeira e o esquema das rotas, dados como pendentes, reprovam; a decisão vigente da foto de outro ano é a do aviso (§0h.2) |
+| Despacho | Nenhum plano de retrato na lista do pesquisa-imagens; todos na lista `retratos`, com `_pessoas` na cena. Nenhum plano do pesquisa-documentos (`_pedido_a: "pesquisa-documentos"`, as mascotes de s26) na lista do pesquisa-imagens; todos em `documentos` (quarta revisão). Desde a quinta, isso vale também sem o `_pedido_a`: nenhum plano de peça com `caca` (os da peça e os que o texto de `caca` nomeia) está na lista `cenas`. Todo outro plano com termo está na lista do pesquisa-imagens. A lista `cenas` (décima primeira revisão: 27 cenas, 40 planos; até a décima, 33 e 47; e nenhum plano leva mais `_pedido_a: "pesquisa-documentos"`, porque s26 virou desenho) bate com o espelho no `modo`, na `midia` e, plano a plano, no `de`, no `ate`, no `regime` e nos `midia_termos` (quinta revisão) |
 | Capítulos (quinta revisão) | Os 7 `_capitulos` batem com as marcas `<!-- pN · título -->` do texto aprovado (parte, título e ordem); cada `em_s` cai dentro da cena citada e é a borda da cena que abre na primeira palavra da parte (p1 a p6) ou o início dessa palavra ("In", 598,85 s, dentro de s58, na p7). O texto aprovado trocado para a voz tem as 1.836 palavras do `words.json`, e é por essa conta que a primeira palavra de cada parte se acha |
 | Cauda | s63 é fundo provisório renderizado (nenhuma instrução de não renderizar) |
-| Bandeiras | As três cenas com país no mapa (s03, s10 e s44; s10 na terceira revisão) pedem a bandeira em `needs.logos`, e todo `needs.logos` está nos pedidos do pesquisa-logos |
+| País no mapa (décima primeira revisão) | As três cenas com país no mapa (s03, s10 e s44) dizem na `_nota_logos` a regra: o nome escrito, sem bandeira (identidade §6). Nenhum `needs.logos` no vídeo. Até a décima, as três pediam a bandeira |
 | Cadeia nos dois sentidos (terceira revisão) | Todo "ABRE/PAGA/FECHA X" da `_cadeia` de uma cena está em `_cadeia_referencial`, e vice-versa. O `motivo` de s01 e o de s02, que dizem onde A e B são pagas e fechadas, citam exatamente as cenas de `_cadeia_referencial` |
 | Candidatas a showpiece (terceira e quarta revisões) | Pela roupa do diretor-de-arte §2 inteira: a abertura (s01), as 20 cenas que pagam uma promessa e o fecho (toda cena que fecha uma: s59 a s62) têm a marca na `_cadeia`; a cauda não; a marca e a indicação do montador batem com `_candidatas_a_showpiece` (25); `_nota_showpiece` cita os três critérios |
-| O corredor do Taku (terceira e quarta revisões) | Nenhuma frase do espelho (entre ponto, ponto e vírgula ou quebra de linha), fora de `_geografia`, cita o Taku e Cascade Point (ou o fim da estrada) sem negação; nenhuma faz "os corredores" partirem do mesmo ponto; o rótulo de `cascade-point` não fala em corredores; o plano 3 de s44 diz que o do Taku sai de Juneau e cita o Taku Inlet, e s44 pede `taku-inlet`. **Limite** (quarta revisão): frase com negação ("não", "nunca", "nem") passa, e duas frases seguidas não se leem juntas; a prova da terceira pegava só a ordem "Taku … sai de … Cascade Point". **Quinta revisão:** nenhum plano de mapa manda traçar corredor, caminho ou rota (frase com corredor, caminho ou rota e traçar, desenhar, linha ou "segue ao longo", sem negação); "Se a arte não traçar" e "caminho pela água" não aparecem fora de `_geografia`; o plano dos corredores de s44 diz "seta" e cita o §6c do mapista. Mesmo limite de negação |
+| O corredor do Taku (terceira e quarta revisões) | Nenhuma frase do espelho (entre ponto, ponto e vírgula ou quebra de linha), fora de `_geografia`, cita o Taku e Cascade Point (ou o fim da estrada) sem negação; nenhuma faz "os corredores" partirem do mesmo ponto; o rótulo de `cascade-point` não fala em corredores; o plano 3 de s44 diz que o do Taku sai de Juneau e cita o Taku Inlet, e s44 pede `taku-inlet`. **Limite** (quarta revisão): frase com negação ("não", "nunca", "nem") passa, e duas frases seguidas não se leem juntas; a prova da terceira pegava só a ordem "Taku … sai de … Cascade Point". **Quinta revisão:** nenhum plano de mapa manda traçar corredor, caminho ou rota (frase com corredor, caminho ou rota e traçar, desenhar, linha ou "segue ao longo", sem negação); "Se a arte não traçar" e "caminho pela água" não aparecem fora de `_geografia`; o plano dos corredores de s44 diz "seta" e cita o §6c do mapista. Mesmo limite de negação. **Décima primeira revisão:** o plano dos corredores diz o esquema tracejado pelo texto da fonte, com o aviso Approximate route, a identidade §6 e que não decalca a figura do estudo; o Taku Inlet pode ser o ponto do GNIS; a cláusula de mapa que diz o esquema tracejado não é "traçar sem geometria"; as 4 rotas em esquema têm `_esquema` (o plano, o ponto de partida em `needs.geo`, a fonte entre aspas e, com o ponto fora do disco, o que o plano faz sem ele) |
 | A malha e o fim da estrada (quarta revisão) | Nenhum texto diz que a malha continental para antes do panhandle; nenhum fala do fim do asfalto ou do "asfalto que acaba" (o marco é o fim da estrada, em Cascade Point) |
-| Ano sobre imagem (terceira e sexta revisões) | Nenhum plano de registro tem ano no objeto sem um termo que peça a época (identidade §6). **Sexta revisão:** a regra do crédito da quarta e da quinta saiu; nenhum texto do espelho a usa, fora o histórico de `_revisao` (a pergunta ao Lucas, que a citava, saiu na nona revisão). Nenhum termo de plano de registro pede a década, e, se algum termo pede ano, todos pedem um ano exato que o objeto dá (o do fato, ou os extremos do intervalo). "Sem rótulo de ano" só no B-roll de hoje (s33, s40, s52). **Nona revisão:** a pergunta ao Lucas foi respondida (não; sem foto do ano, mapa ou desenho) e não volta às pendências; a decisão está em `_decisoes_do_lucas`; os 11 planos que ela listava dizem no objeto o re-espelho com o mesmo id. **Oitava revisão:** a regra com outras palavras também reprova ("o ano da foto", "a data real", a data "na legenda" ou "na procedência", ou uma cláusula que aceita foto de um ano fora do fato). **Não se mede:** a mesma regra escrita sem nenhuma dessas formas |
+| Ano sobre imagem (terceira e sexta revisões) | Nenhum plano de registro tem ano no objeto sem um termo que peça a época (identidade §6). **Sexta revisão:** a regra do crédito da quarta e da quinta saiu; nenhum texto do espelho a usa, fora o histórico de `_revisao` (a pergunta ao Lucas, que a citava, saiu na nona revisão). Nenhum termo de plano de registro pede a década, e, se algum termo pede ano, todos pedem um ano exato que o objeto dá (o do fato, ou os extremos do intervalo). "Sem rótulo de ano" só no B-roll de hoje (s33, s40, s52). **Nona revisão:** a pergunta ao Lucas foi respondida (não; sem foto do ano, mapa ou desenho) e não volta às pendências; a decisão está em `_decisoes_do_lucas`; os 11 planos que ela listava dizem no objeto o re-espelho com o mesmo id. **Oitava revisão:** a regra com outras palavras também reprova ("o ano da foto", "a data real", a data "na legenda" ou "na procedência", ou uma cláusula que aceita foto de um ano fora do fato). **Não se mede:** a mesma regra escrita sem nenhuma dessas formas. **Décima primeira revisão:** a decisão vigente é a do aviso (foto de outro ano com o aviso na tela; sem nenhuma, mapa ou desenho); os 11 planos da pergunta e os 8 sem foto seguem a ordem (registro com o aviso, ou "sem aviso", e a identidade §6; sem foto, outro regime, com o re-espelho e o mesmo id); a cláusula que aceita foto de outro ano passa se diz o aviso; e as 21 fotos e retratos que o conferente aprovou dizem, no objeto, o aviso ou "sem aviso", como o veredito |
 | Fatos da quinta revisão | Nenhum texto, fora de aspas, diz "South Klondike" nem prende a 2006 o orçamento de US$ 680 milhões ("estrada/rota/versão de 2006 orçada"); o `motivo` de s55 dá o comunicado à imprensa (evt-23.9) e não cogita entrevista coletiva; s28 e a peça de campanha dão o primeiro anúncio no Juneau Empire de 8/10/1982, p. 7, e a peça separa as imagens da coluna em `pistas`; nenhum verbatim termina em vírgula, ponto e vírgula ou dois-pontos |
 | Figura semântica (terceira revisão) | Toda cena com número na fala (fora data e ano) e plano de registro ou de mapa tem `_figura`: 18 cenas |
 | Citações (quarta revisão) | `_citacao.palavras` é a contagem do verbatim em todas as cenas com `_citacao`, e todo "N palavras" do `motivo` (fora "teto de 12") bate com ela. s18 tem `_citacao.assinatura`, e nenhum texto dela diz "sem autor" |
-| Documentos (terceira e quarta revisões) | As 17 cenas `documento` ou `citacao` têm `_documentos`; as 29 cenas com `_documentos` estão em `_despacho_research` › `documentos`, e os planos de lá batem com o espelho no tempo e, desde a quarta, no `regime` e na palavra que convoca o plano (`voz` = `convocado_por`). Entrada com trecho a grifar não lista plano de registro (o que só se confere vai em `conferir`). **Quinta revisão:** entrada com grifo lista só planos de documento, citação ou dado, e não mais só "sem registro": o mapa também fica fora (desde a sexta, sem exceção para a PRANCHA). Cada um dos **27 trechos** a grifar (29 até a quinta; o de s16 e o primeiro de s61 foram para `conferir` na sexta) tem em `voz_do_grifo` as palavras da voz, e toda palavra dessa frase cai dentro dos planos listados; desde a sexta, na ordem de `grifar` |
-| Mesmo lugar e rótulos (sexta revisão) | O mesmo par de nomes próprios nos termos de planos de registro de cenas diferentes (fora "Alaska") está numa só entrada de `mesmo_lugar_clipes_diferentes` ou de `mesmo_arquivo`, com todas essas cenas (o Capitólio, a balsa, o legislativo, a estrada de Juneau e o Lynn Canal). O `rotulo` de `needs.geo` não tem português, parênteses, dois-pontos, ponto e vírgula nem referência de dossiê, e, desde a oitava, nem vírgula (dois nomes, duas entradas) |
+| Documentos (terceira e quarta revisões) | As 17 cenas `documento` ou `citacao` têm `_documentos`; as 29 cenas com `_documentos` estão em `_despacho_research` › `documentos`, e os planos de lá batem com o espelho no tempo e, desde a quarta, no `regime` e na palavra que convoca o plano (`voz` = `convocado_por`). Entrada com trecho a grifar não lista plano de registro (o que só se confere vai em `conferir`). **Quinta revisão:** entrada com grifo lista só planos de documento, citação ou dado, e não mais só "sem registro": o mapa também fica fora (desde a sexta, sem exceção para a PRANCHA). Cada um dos **29 trechos** a grifar (décima primeira revisão: entraram o de s52, na página de 2011, e o da controvérsia de s58, no plano 4; até a décima, 27; 29 até a quinta; o de s16 e o primeiro de s61 foram para `conferir` na sexta) tem em `voz_do_grifo` as palavras da voz, e toda palavra dessa frase cai dentro dos planos listados; desde a sexta, na ordem de `grifar` |
+| Mesmo lugar e rótulos (sexta revisão) | O mesmo par de nomes próprios nos termos de planos de registro de cenas diferentes (fora "Alaska") está numa só entrada de `mesmo_lugar_clipes_diferentes` ou de `mesmo_arquivo`, com todas essas cenas (o Capitólio, a balsa, o legislativo, a estrada de Juneau e o Lynn Canal; desde a décima primeira revisão, também Juneau, com as fotos entregues). O `rotulo` de `needs.geo` não tem português, parênteses, dois-pontos, ponto e vírgula nem referência de dossiê, e, desde a oitava, nem vírgula (dois nomes, duas entradas) |
+| Geometria em disco (décima primeira revisão) | Os 97 pedidos de `needs.geo` com `_existe: true` têm o arquivo em `out/juneau/_media/geo/`, e o único `_existe: false` (`thane-road-fim`) não tem |
 | `_borda` (quarta revisão) | O `_borda` das 60 cenas com fala confere com o `words.json` (índices da primeira e da última palavra, a primeira palavra, o início dela e o fim da anterior); o da cauda, com o fim da última palavra (645,81) |
 
 ## 3 · Os portões do §3 do contrato e da roupa (todos com o alvo certo; `REGIE_MOTOR=C:/projetos/regie-v1` onde importa do motor)
@@ -533,7 +809,8 @@ nota de que a decisão de pôr ou não é do redator-de-tela.
 Todos rodaram de novo depois da terceira revisão, de novo depois da quarta, da quinta e da sexta, com os mesmos resultados
 abaixo, salvo onde a linha diz outra coisa. Na quarta e na quinta, o `alinhar-timestamps --dry` rodou numa cópia do espelho no
 scratchpad, e o sha256 da cópia ficou igual antes e depois (na quinta, `42f9c87a…`; na sexta, `f510a5a9…`, com as mesmas 17 sugestões); o `qc-piso-real` rodou sem `--laudo`, e o
-laudo em disco seguiu intacto (`0148a36f…`, conferido antes e depois).
+laudo em disco seguiu intacto (`0148a36f…`, conferido antes e depois). **Na décima primeira revisão (28/09)**, todos rodaram de
+novo sobre o espelho final (`8099cbc6…`); o que mudou está nas linhas, e o resumo, no §0h.3.
 
 | # | Portão | Resultado |
 |---|---|---|
@@ -545,13 +822,14 @@ laudo em disco seguiu intacto (`0148a36f…`, conferido antes e depois).
 | 8 | `alinhar-timestamps.mjs … --dry` | Rodou só em `--dry`, e o sha256 do espelho é o mesmo antes e depois (também na segunda e na terceira revisão). Sugeriu 17 ajustes do tipo que o CLAUDE.md já prevê no faceless: mover o início ≤ 0,03 s para cima da palavra (tirando a borda da grade) e puxar o fim para o fim da última palavra, o que abriria vãos de 0,09 a 0,35 s. O ofício §7 proíbe esses vãos. **Não aplicados** |
 | 9 | `checar-plano.mjs out/juneau/espelho.json` (advisory) | ✓ "ESPELHO REDONDO": sem tela preta, sem 3 modos iguais seguidos, sem buraco > 25 s, sem sobreposição |
 | 10 | Interseção de ids num re-espelho | Ver §4.8: correção do primeiro espelho, sem artefato em disco |
-| 11 | `qc-espelho-midia.mjs juneau` | ✓ PASS: 41 de 61 cenas pedem registro real (67,2%), 0 pedido mudo, 12 cenas com `needs.geo` |
-| 12 | `qc-deserto-real.mjs juneau` | ✓ PASS: maior janela sem footage/foto/drone de **35 s**, contada por cena. Os 180 s de padrão são do Top10, e o canal não tem número |
+| 11 | `qc-espelho-midia.mjs juneau` | ✓ PASS: 30 de 61 cenas pedem registro real (49,2%; até a décima, 41, 67,2%), 0 pedido mudo, 13 cenas com `needs.geo` (s09 entrou) |
+| 12 | `qc-deserto-real.mjs juneau` | ✓ PASS: maior janela sem footage/foto/drone de **50 s** (até a décima, 35 s), contada por cena. Os 180 s de padrão são do Top10, e o canal não tem número |
 | 14 | Cenas ≥ 10 s × planos | Todas as cenas longas têm um plano por objeto que a fala atravessa. s44 (36,1 s) tem 7; s40 e s55 foram partidas na primeira revisão; na segunda, s26 ganhou o terceiro plano, e s30, s55 e s60 juntaram planos que só separavam uma frase do mesmo objeto (§0b B5) |
-| — | `qc-piso-real.mjs juneau --laudo` (roupa §8) | MUNDO 329,4 s = **49,5%**. **NÃO SE APLICA**: `piso: null` em `infra/piso-registro-real.json`. O portão regravou `out/juneau/_laudo-piso-real.json` (candidatas no §5.1). **Terceira revisão:** rodado **sem** `--laudo`, porque esta rodada só pode escrever o espelho, o report e o conferente; deu o mesmo 329,4 s = 49,5% (ele conta por cena, e s28 já contava pelo estádio) e NÃO SE APLICA. O laudo em disco é o da segunda revisão (sha256 `0148a36f…`, intacto). **Quarta revisão:** de novo sem `--laudo`, o mesmo 329,4 s = 49,5% e NÃO SE APLICA; o laudo segue intacto (`0148a36f…`, conferido antes e depois) |
+| — | `qc-piso-real.mjs juneau --laudo` (roupa §8) | MUNDO 329,4 s = **49,5%**. **NÃO SE APLICA**: `piso: null` em `infra/piso-registro-real.json`. O portão regravou `out/juneau/_laudo-piso-real.json` (candidatas no §5.1). **Terceira revisão:** rodado **sem** `--laudo`, porque esta rodada só pode escrever o espelho, o report e o conferente; deu o mesmo 329,4 s = 49,5% (ele conta por cena, e s28 já contava pelo estádio) e NÃO SE APLICA. O laudo em disco é o da segunda revisão (sha256 `0148a36f…`, intacto). **Quarta revisão:** de novo sem `--laudo`, o mesmo 329,4 s = 49,5% e NÃO SE APLICA; o laudo segue intacto (`0148a36f…`, conferido antes e depois). **Décima primeira revisão:** sem `--laudo`, MUNDO **240,9 s = 36,2%** (os planos de registro que a pesquisa não achou saíram da conta), NÃO SE APLICA; o laudo segue intacto (`0148a36f…`) |
 | — | `qc-respiro.mjs juneau` | **Não mediu nesta estação**: "(sem HTML ainda — rode depois da estação ARTE)", com exit 0 |
 | — | `qc-fusao-espelho.mjs juneau` | "nenhum run fundido no conceito-visual (nada a cobrar)": o `conceito-visual.json` ainda não existe |
 | — | `qc-espelho-modelo.mjs juneau` | ✓ PASS: 0 cenas declaram `modelo` (campo ausente de propósito, roupa §3) |
+| — | `qc-midia-real.mjs juneau` (décima primeira revisão) | **NÃO MEDIDO**, exit 2: "sem out\juneau\graphics/ — projeto sem arte local". É portão da arte, e o alvo é o certo (o `<proj>`) |
 | — | `qc-espelho-cortes.mjs juneau` | Relógio ÚNICO, 0 cortes. **1 alerta:** "s63 começa a 0,77 s da fronteira de palavra mais próxima". É a cauda: ela abre em 646,067, no silêncio depois da última palavra ("approve.", de 645,30 a 645,81), e o portão mede a distância até o **início** da palavra. A borda é de propósito, e não há tempo copiado de outro relógio |
 
 ## 4 · O report que o contrato pede (§2.3)
@@ -560,21 +838,25 @@ laudo em disco seguiu intacto (`0148a36f…`, conferido antes e depois).
 
 | `modo` (regime de abertura) | Cenas | Tempo | Cenas |
 |---|---|---|---|
-| `foto` | 13 | 118,2 s | s01, s06, s09, s10, s13, s16, s20, s22, s35, s37, s49, s56, s62 |
 | `footage` | 12 | 105,3 s | s04, s14, s21, s24, s33, s40, s42, s43, s47, s51, s53, s59 |
-| `documento` | 11 | 128,8 s | s02, s07, s19, s23, s26, s30, s32, s36, s52, s58, s61 |
+| `documento` | 11 | 127,9 s | s02, s07, s13, s19, s23, s30, s32, s36, s52, s58, s61 |
+| `foto` | 10 | 95,4 s | s01, s06, s09, s10, s16, s22, s35, s37, s49, s56 |
 | `mapa` | 8 | 112,6 s | s03, s08, s12, s15, s39, s44, s48, s50 |
-| `desenho` (PRANCHA, e a cauda) | 6 | 83,8 s | s17, s25, s31, s38, s55 e s63 |
+| `desenho` (PRANCHA, o fecho e a cauda) | 8 | 98,1 s | s17, s25, s26, s31, s38, s55, s62 e s63 |
 | `citacao` | 6 | 60,7 s | s05, s18, s27, s34, s41, s57 |
-| `dados` | 5 | 56,7 s | s11, s28, s29, s54, s60 |
+| `dados` | 6 | 66,0 s | s11, s20, s28, s29, s54, s60 |
+
+Décima primeira revisão: s13 passou de `foto` a `documento`, s20 de `foto` a `dados`, s26 de `documento` a `desenho` e s62 de
+`foto` a `desenho` (§0h). Até a décima, eram foto 13, documento 11, desenho 6 e dados 5.
 
 - **Cobertura:** 666,067 de 666,067 s (100%), sem vão.
-- **Modo e regime:** o `modo` é o regime de ABERTURA (ofício §11b). **19 cenas viram por dentro, com 24 viradas**, todas em
-  `_virada`: s01, s07 (3), s10, s13, s16, s20, s23 (2), s28, s29, s31 (2), s33, s35, s40, s43, s44 (2), s49, s52, s58 e
-  s59. (Na terceira revisão, s28 passou de 2 viradas para 1: o plano 3 virou foto, a camiseta, e não volta mais a DADO.) Em s07, s10, s33, s44 e s59 a virada é uma ancoragem de imagem em mapa (ofício §6.7). s03 também ancora, na entrada,
-  mas sem virada de plano: a imagem de s01 reaparece e encolhe para o ponto (`_ancoragem`).
-- **s10 é uma cena de mapa que abre em foto**: por isso o `modo` dela é `foto` (o regime de abertura), e ela conta aqui como
-  foto. Tem três planos de mapa (§5.5).
+- **Modo e regime:** o `modo` é o regime de ABERTURA (ofício §11b). **17 cenas viram por dentro, com 22 viradas**, todas em
+  `_virada`: s01, s07 (3), s09, s10, s16, s23 (2), s28, s31 (2), s33, s35, s40, s43, s44 (2), s49, s52, s56 e s59. Em s07,
+  s09, s33, s44 e s59 a virada é uma ancoragem de imagem em mapa (ofício §6.7); em s10, desde a décima primeira revisão, é
+  corte seco (nenhum ponto do trecho da foto está em `needs.geo`). s03 também ancora, na entrada, mas sem virada de plano: a
+  imagem de s01 reaparece e encolhe para o ponto (`_ancoragem`).
+- **s09 e s10 abrem em foto e viram mapa**: por isso o `modo` delas é `foto` (o regime de abertura). s10 tem três planos de
+  mapa, e s09, desde a décima primeira revisão, um (§5.5).
 
 A tabela das 61 cenas está no fim deste report.
 
@@ -584,59 +866,65 @@ A tabela das 61 cenas está no fim deste report.
 
 ### 4.3 · Cenas com necessidade pendente: a fila da pesquisa
 
-**Geografia (pesquisa-geo).** São os pedidos de geometria que ainda não existe (`_existe:false`), cada um com o `_exige` que
-diz de onde ela pode vir e o que não se inventa:
+**Décima primeira revisão (28/09): a pesquisa correu, e esta seção diz o que voltou e o que continua aberto.** Até a décima
+revisão, era a fila inteira, antes do `research`. O que cada revisão mudou nos pedidos está no §0 ao §0h e no `_revisao`.
 
-| Pedido | Cenas |
-|---|---|
-| rede de rodovias do continente (quarta revisão: basta mostrar que ela não chega a Juneau; ela chega a Haines e Skagway pelo Canadá, mec-01.8, e a camada não se corta antes do panhandle) | s03, s10 |
-| Glenn Highway, de Anchorage até a ligação com a Alaska Highway, com os extremos da fonte (até a segunda revisão, "Anchorage–Tok", sem fonte) | s10 |
-| Alaska Highway, a rota inteira até a rede do continente, com os extremos da fonte (em s44, só o trecho do Yukon) | s10, s44 |
-| o ponto em que a Alaska Highway encontra a rede do continente, com o nome da fonte (terceira revisão) | s10 |
-| as "áreas" de Anchorage e Fairbanks como a AKDOLWD as conta | s10 |
-| distritos eleitorais de 1974 | s12 |
-| raios de 30 milhas em torno de Anchorage e Fairbanks | s12 |
-| Mat-Su Borough | s15, s33, s39 |
-| o terreno da capital em Willow | s15 |
-| Larson Lake e Mount Yenlo | s15 |
-| estrada Anchorage–Willow | s15 |
-| rede de rodovias do Alasca | s33 |
-| British Columbia, Juneau Icefield, Yukon | s44 |
-| Taku Inlet (quarta revisão): o contorno e o rótulo do braço de mar que chega à foz do Taku, só com o nome na fonte (quinta revisão: é contorno e rótulo, e nenhum corredor se desenha sobre ele) | s44 |
-| Lynn Canal (em s44, o eixo só entra como linha se vier como GeoJSON; quinta revisão) | s44, s48, s50 |
-| Haines Highway, Klondike Highway e Haines Junction (a Klondike com o nome e os extremos da fonte da geometria: o dossiê só diz que ela liga Skagway à Alaska Highway perto de Whitehorse, mec-01.8; até a quarta revisão, "South Klondike Highway (Skagway–Whitehorse)") | s44 |
-| a rota pela margem leste (2000) | s48 |
-| a rota 2B (2006), o terminal do Katzehin e Echo Cove | s50 |
+**Geografia (pesquisa-geo).** O research entregou 40 camadas em `_media/geo/`, registradas no `pauta-geo.json`
+(research-geo.md). Os 97 pedidos de `needs.geo` com `_existe: true` têm o arquivo em disco, e o conferente cobra isso. O único
+`_existe: false` é o pedido novo desta revisão, na lista nova do despacho (`_despacho_research` › `geo`):
 
-- As rotas de 2000 e de 2006 não têm geometria aberta, e a figura do estudo de 2018 não vai à tela sem autorização
-  (midia.md §7.1). O esquema declarado espera o Lucas. Desde a quinta revisão, a mesma pendência cobre os corredores de s44:
-  sem GeoJSON, nenhum corredor se traça (mapista §6c).
-- A geometria que já existe está citada pelo slug do `pauta-geo.json`: `cidades-ne` (com `_feature`), `estrada-juneau-cascade`,
-  `cascade-point`, `rio-taku-osm`, `cidade-haines-osm`, `cidade-willow-osm`, `panhandle-juneau`, `alasca-e-vizinhos`,
-  `matsu-anchorage`, `rios-matsu`, `eua` e `canada` (este, desde a terceira revisão, também em s10: o recorte
-  `alasca-e-vizinhos` acaba em -125°, e o ponto em que a Alaska Highway encontra a rede do continente pode cair a leste dele).
-- **Em s44, os dois corredores entram só com geometria real, e nenhum se traça como linha** (quinta revisão; mapista §6c).
-  O do Taku é o vale do rio (`rio-taku-osm`), a leste de Juneau, com uma seta ou um halo de Juneau rumo ao vale do rio; o contorno e
-  o rótulo do Taku Inlet entram só se a pesquisa-geo trouxer a geometria. O do Lynn Canal é uma seta para o norte a partir do
-  anel de Cascade Point. O caminho que o FSEIS dá à alternativa do Taku ("from the end of Thane Road in Juneau, northeast along
-  the Taku Inlet", p. 2-2) é contexto, em `s44._geografia`, com as contas. Ele não se desenha: o fim da Thane Road e esse
-  caminho não estão na geometria em disco, e a busca em grade da quarta revisão não é geometria publicada. A reta do ponto de
-  Juneau à foz também não se desenha, porque corre por terra (39 dos 41 pontos, quarta revisão). Corredor traçado é esquema
-  declarado, DECISÃO DO LUCAS PENDENTE (#9). (Terceira revisão: o do Taku sai de Juneau, e não de Cascade Point. Quarta
-  revisão: mandava a arte segui-lo pelo Taku Inlet, o que seria traçado sem GeoJSON; corrigido na quinta.)
+| Pedido | Cena | Para quê |
+|---|---|---|
+| `thane-road-fim`, o fim da Thane Road, em Juneau | s44 | o ponto de partida real do esquema do corredor do Taku ("from the end of Thane Road in Juneau, northeast along the Taku Inlet", FSEIS 2018, p. 2-2): a ponta da via no OSM, com o crédito, ou o GNIS. Sem ele, o esquema do Taku não se desenha, e o plano 3 fica com o rio, o rótulo do Taku Inlet e a voz (`_esquema`) |
+
+O que a fila de até a décima pedia, e o que veio:
+
+| Pedido de até a décima | O que veio | Cenas |
+|---|---|---|
+| rede de rodovias do continente | `rede-rodoviaria-continente` | s03, s10 |
+| Glenn Highway, de Anchorage até a Alaska Highway | `glenn-highway` e `estrada-glennallen-tok` (sem ele, a Glenn do OSM não chega à Alaska Highway) | s10 |
+| Alaska Highway | `alaska-highway` (s10) e `alaska-highway-trecho-yukon` (s44) | s10, s44 |
+| o ponto em que a Alaska Highway encontra a rede do continente | `alaska-highway-ligacao-continente` | s10 |
+| as "áreas" de Anchorage e Fairbanks como a AKDOLWD as conta | **NÃO ACHADO**: a fonte não dá limite, e borough de hoje seria anacrônico. O plano 3 acende os pontos das duas cidades, sem polígono | s10 |
+| distritos eleitorais de 1974 | **NÃO ACHADO**: só há distritos de 2013 em diante, e o mapa de 1972–74 é figura do Estado. A cena marca as regiões pelos pontos das cidades e pelo panhandle, com os nomes do boletim | s12 |
+| raios de 30 milhas em torno de Anchorage e Fairbanks | `raio-30mi-anchorage` e `raio-30mi-fairbanks` | s12 |
+| Mat-Su Borough | `matsu-borough` | s15, s33, s39 |
+| o terreno da capital em Willow | **NÃO ACHADO** o ponto e o contorno. No lugar, as feições reais que o folheto de 1976 nomeia (`limites-sitio-willow-1976`) e a vila (`cidade-willow-osm`), com o "about five miles east" em texto | s15 |
+| Larson Lake e Mount Yenlo | o lago e o cume do GNIS (`larson-lake-gnis`, `mount-yenlo-gnis`); o contorno dos locais, **NÃO ACHADO** (só nos mapas do folheto, figuras do Estado) | s15 |
+| estrada Anchorage–Willow | `estrada-anchorage-willow` | s15 |
+| rede de rodovias do Alasca | `rede-rodoviaria-alasca` | s33 |
+| British Columbia, Juneau Icefield, Yukon | `british-columbia`, `juneau-icefield`, `yukon` | s44 |
+| Taku Inlet | o ponto do GNIS (`taku-inlet-gnis`), só com o rótulo: o contorno não existe em nenhuma fonte (research-geo.md §2) | s44 |
+| Lynn Canal | o ponto do GNIS (`lynn-canal-gnis`), só com o rótulo: o eixo não existe em nenhuma fonte | s44, s48, s50 |
+| Haines Highway, Klondike Highway e Haines Junction | `haines-highway`, `klondike-highway` e `haines-junction-osm` | s44 |
+| a rota pela margem leste (2000) | esquema tracejado pelo texto da fonte, de `cascade-point` até perto da foz do Katzehin (`katzehin-river-gnis`) | s48 |
+| a rota 2B (2006), o terminal do Katzehin e Echo Cove | a rota, esquema tracejado (`_esquema`); o terminal, **NÃO ACHADO** (fica a foz do rio, que não é o terminal); Echo Cove, `echo-cove-gnis` | s50 |
+
+- O que não se achou está em `_geo_nao_achado` de cada cena (s10, s12, s15 e s50), com o que vai no lugar. Nada foi
+  desenhado nem aproximado no lugar da geometria que falta.
+- **As rotas que nunca foram construídas** vão como esquema tracejado pelo texto da fonte, a partir do ponto de partida real,
+  com o aviso `Approximate route` todo o tempo da linha (identidade §6; Lucas, 27/09/2026). São quatro, em `_esquema` de s44,
+  s48 e s50: a tabela está no §0h, ponto 2. A figura do estudo de 2018 não se decalca (midia.md §7.1). A pendência do esquema
+  declarado (a #9) e a seta sem linha da quinta revisão saíram.
+- O caminho que o FSEIS dá à alternativa do Taku e as contas de `s44._geografia` (a reta por terra, o caminho pela água) são
+  contexto: o esquema segue o texto da fonte, não essas contas.
 
 **Dados (pesquisa-dados).** O `needs.dados` só tem pedido de dado: **71 itens em 45 cenas** (segunda revisão; antes, 97 itens
-em 48 cenas, misturados com avisos, figuras e instruções). A lista para o despacho está em `_despacho_research` › `dados`:
+em 48 cenas, misturados com avisos, figuras e instruções). A lista para o despacho está em `_despacho_research` › `dados`.
+A pesquisa-dados voltou em 27/09 (`research-dados.md`; `out/juneau/_dados/`, 48 arquivos; `pauta-dados.json`):
 
-- **conferência**, 70 itens em 45 cenas: dado que o dossiê já documenta, com o id do claim. A pesquisa-dados confere que a url
-  abre e contém o número;
-- **busca nova**, uma só: **a série diária do preço do petróleo "West Coast" de fevereiro de 2013 a janeiro de 2016** (s54),
-  com o nome que o FSEIS dá a ele e de fonte primária. Como a linha se desenha está em `_figura` de s54: ela tem de reproduzir
-  os dois extremos da fonte e a queda acima de 75%; sem a série, a tela mostra só os dois pontos com as datas;
-- **lidas de cópia arquivada** (`lidas_de_copia_arquivada`; até a nona revisão, "não conferido até o navegador do app"): as
-  22 cenas com `_fonte_arquivada` (o parágrafo seguinte). A cópia da página oficial do Alasca vale como fonte (Lucas,
-  27/09/2026): a conferência do número se faz nela, com a data da captura, sem insistir no site que recusou; só o que ela não
-  tiver vai ao navegador do app.
+- **a conferência**: nenhum número contradiz a voz. As divergências que ela lista (o 26,542 de 1962, o 91,049 de 1982, a base
+  monetária dos $680 milhões de s51, as 41,9 milhas da geometria contra as "about 43 miles" da fonte) já estavam tratadas no
+  espelho e no dossiê;
+- **a busca nova**, a série diária do preço do petróleo "West Coast" de fevereiro de 2013 a janeiro de 2016 (s54): **NÃO ACHADA
+  por script**. Ela é do Alaska Department of Revenue, cujo site recusa robô, e a cópia arquivada só guardou o formulário; a da
+  EIA é mensal e é outra medida, e não serve. **Décima primeira revisão:** o pedido fica aberto ao Claude central, no navegador
+  do app (o formulário do Department of Revenue; `out/juneau/_dados/s54.json` › `busca_nova`), e sem ela a tela mostra os
+  pontos extremos da fonte, com as datas e sem linha, como a `_figura` de s54 já dizia. O achado da pesquisa, o título do
+  Graph 2-1 ("Daily ANS West Coast Oil Price 2012-2016"), foi para o `needs.dados` de s54: a sigla tem fonte, e usá-la é do
+  redator-de-tela;
+- **lidas de cópia arquivada** (`lidas_de_copia_arquivada`): as 22 cenas com `_fonte_arquivada` (o parágrafo seguinte). As 16
+  cópias arquivadas da Divisão de Eleições abriram, e os números se leram na imagem das páginas.
 
 A figura semântica de cada número sobre lugar está em `_figura`, em **18 cenas** (terceira revisão; antes, 6): s01, s03, s10,
 s12, s15, s20, s23, s28, s29, s31, s35, s39, s49, s51, s53, s54, s56 e s59. Em s51, a base monetária dos $680 milhões é
@@ -646,209 +934,151 @@ ambígua na fonte (2015 × 2016) e não vai à tela sem o verificador-de-fatos.
 (`roteiro-editor.md`, "Voláteis"): os **boletins** de 1960, 1962, 1974, 1976, 1978, 1982, 1994 e 2002 **e os folhetos
 oficiais** de 1976, 1978, 1982, 1994 e 2002. Deles saem o $966 MILLION de s19, o $2.8 BILLION e a conta de s23, os termos
 de s32, o "on the road system" de s33 e as falas de s05, s18 e s34. As 22 cenas que usam essas fontes levam o aviso
-"CÓPIA ARQUIVADA — VALE COMO FONTE" em `_fonte_arquivada` (até a segunda revisão, ele estava no `needs.dados`; até a nona, dizia
-"NÃO CONFERIDO"): s01, s02, s05, s11, s12, s15, s16, s17, s18, s19, s20, s22, s23, s25,
-s29, s30, s32, s33, s34, s35, s39 e s60. O Lucas decidiu em 27/09 que a cópia arquivada de página oficial do Alasca vale como fonte, com a data (CLAUDE.md,
-"A marca"; os boletins de 1960 e 1962, que a pergunta não nomeou, entram por serem do mesmo arquivo oficial da Divisão): cada aviso traz a data da captura de cada fonte, pelo `url_acessada` do dossiê, e o crédito na tela é o da Divisão
-de Eleições do Alasca. A permissão de uso das peças (midia.md §7.1) continua a conferir, na origem de hoje, pelo navegador do
-app: a cópia prova o texto, não a licença. O AS 44.06 e o HB 3 foram conferidos no
-navegador do app em 26/09.
+"CÓPIA ARQUIVADA — VALE COMO FONTE" em `_fonte_arquivada`: s01, s02, s05, s11, s12, s15, s16, s17, s18, s19, s20, s22, s23,
+s25, s29, s30, s32, s33, s34, s35, s39 e s60. O Lucas decidiu em 27/09 que a cópia arquivada de página oficial do Alasca vale
+como fonte, com a data (CLAUDE.md, "A marca"; os boletins de 1960 e 1962 entram por serem do mesmo arquivo oficial da
+Divisão): cada aviso traz a data da captura de cada fonte, e o crédito na tela é o da Divisão de Eleições do Alasca. A
+permissão de uso das peças (midia.md §7.1) continua a conferir, na origem de hoje: a cópia prova o texto, não a licença.
 
-**Mídia (pesquisa-imagens).** São 33 cenas com planos de registro, todas com termos por plano. A lista plano a plano, **sem os
-retratos e sem as mascotes de s26**, está em `espelho.json` › `_despacho_research` › `cenas`: 33 cenas. Até a terceira
-revisão eram 34, porque as mascotes também estavam lá; na quarta, elas ficaram só com o pesquisa-documentos (§0d E2).
+**Mídia (pesquisa-imagens, e o conferente).** A lista `_despacho_research` › `cenas` tem agora **27 cenas e 40 planos** (eram
+33 e 47): saíram os sete planos que, sem nenhuma foto, mudaram de regime (s13 p1, s20 p1, s29 p2, s31 p5, s56 p2, s58 p4 e
+s62 p1), e o plano 2 de s09 acaba em 82,9 s, só com a Ladd Field (`cenas_nota`). O conferente julgou 35 candidatos em cinco
+despachos (`conferencia-midia.json`, `f1f699e3…`): 25 aprovados, 9 trocar e 1 reprovado. Dos 40 planos:
 
-- **Registro de evento ou de lugar histórico**, só de acervo aberto ou oficial, ou foto do governo do Alasca ou de jornal com
-  a fonte na tela, com data e local conferidos na origem (midia.md §7.3, §7.5). Foto de outro ano não entra (identidade §6):
-  - s01 plano 1, o voto de 1974, que é o **mesmo arquivo** de s62;
-  - s06, Juneau de 1900 a 1906, quando ganhou a capital, e o acampamento de ouro em 1880, o ano que vai na tela (sexta revisão);
-  - s07 plano 2, Sitka de 1900 a 1906, a foto que encolhe para o ponto de Sitka no mapa do plano 3 (a Juneau de 1906 saiu na
-    segunda revisão; o ano da foto, na sexta);
-  - s09, Ship Creek em 1914, e Fort Richardson e Ladd Field em 1939–1940 (mec-15; sexta revisão);
-  - **s10 plano 1, a construção da Alaska Highway em 1942**, a foto que encolhe para o traçado no mapa (era s09 plano 3;
-    segunda revisão). Sem local na origem, a virada é corte seco. A Glenn Highway saiu do pedido na sexta revisão, porque o
-    dossiê não dá o ano da obra dela;
-  - s13, a Suprema Corte do Alasca em 1974 (os juízes ou a sala), o ano da decisão (doc-23.2); em outro ano, a composição da
-    corte pode ser outra (quinta e sexta revisões);
-  - s16, Fairbanks em 1977, em duas fotos diferentes; o 1977 é o ano do comitê (doc-17.2) e entra no plano 2, com a voz (sexta
-    revisão);
-  - **s20, a eleição de 7/11/1978** (nova);
-  - s22, o legislativo em 1981 (a 12ª Legislatura), sem a sessão de 1982 (sexta revisão);
-  - **s23 plano 4, Juneau em 1982**, a cidade dos moradores que a conta indenizaria (segunda revisão); a tela não repete o ano,
-    que está na cédula do plano 1 (sexta revisão: saíram o "early 1980s" e o "sem rótulo de ano");
-  - **s28 plano 3, a camiseta "Anchorage Stealers" do NFL Access Committee (1982), no Alaska State Museum (ASM 97-20-1)**
-    (terceira revisão): de preferência a foto das costas, com o 2.84; do museu ou da coluna do ADN, pela regra do midia.md
-    §7.5, com a fonte na tela; é foto da própria peça de 1982, o objeto do fato, e não de lugar. Sobre ela, o $800 million entra em
-    "that" e o ABOUT A QUARTER em "about a quarter", quando a voz o diz (sexta revisão; conflito para o regente, §0f);
-  - **s29, a eleição de 2/11/1982** (nova), com o placar pousando em "the no side won" e o quase 53% entrando quando a voz o
-    diz (sexta revisão; conflito para o regente, §0f);
-  - **s31 plano 5, a campanha de 1982 contra a mudança** (nova), com o gasto entrando em duas partes, cada uma quando a voz a
-    diz (sexta revisão; conflito para o regente, §0f);
-  - **s35, a eleição de 8/11/1994** (nova), com o 55% pousando;
-  - s37, o legislativo hoje, em outra foto;
-  - **s49, a votação consultiva de outubro de 2000 em Juneau** (nova);
-  - s56, a Assembleia de Juneau em 23/01/2017 (KTOO): duas fotos diferentes da MESMA sessão, com a data no termo dos dois
-    planos (terceira revisão: o do plano 2 era genérico). A data entra em "January 2017", e o 6 a 3 em "six to three", quando
-    a voz o diz (sexta revisão; conflito para o regente, §0f);
-  - s58 plano 4, a briga pública pela estrada, em foto diferente da de s56.
-
-  Sem o registro de época, cada um desses planos volta ao regime anterior num re-espelho, com o mesmo id (s13, s16, s20, s22,
-  s23, s28, s29, s31, s35 e s49 dizem isso na `midia_necessidade` ou no `motivo`; desde a sexta revisão, s06, s07, s09, s10,
-  s13, s16, s22 e s23 dizem também no objeto do plano; o Lucas confirmou em 27/09 que foto de outro ano não entra, e o destino
-  é mapa ou desenho, identidade §6). O número pousado sobre o registro (s28,
-  s29, s31, s35) é leitura do montador, pendente do diretor-de-arte e do Lucas (§5.1).
-- **B-roll de lugar para a caça nos bancos pagos.** Quem escreve a lista é o `pesquisa-imagens`, e quem aprova é o Lucas
-  (midia.md §8). A descrição do item tem de nomear o lugar (§2.7):
+- **17 receberam a foto aprovada** (a tabela do §0h, ponto 4): s01 p1, s06 p1 e p2, s07 p2, s09 p1 e p2, s10 p1, s16 p1 e
+  p2, s22 p1, s23 p4, s28 p3, s35 p1, s37 p1 e p2, s49 p1 e s56 p1. O objeto de cada um diz o arquivo, a data na origem, o
+  aviso do ano (ou "sem aviso"), o crédito e o que o conferente pediu no enquadramento. Das 17, 11 são de outro ano e levam
+  o aviso (identidade §6);
+- **23 são B-roll de hoje para a caça nos bancos pagos**, na `lista-de-caca.json` do pesquisa-imagens. A caça espera o pedido
+  do Lucas (CLAUDE.md, "Caça nos bancos pagos"), e quem aprova cada arquivo é ele (midia.md §8). A descrição do item tem de
+  nomear o lugar (§2.7):
   - s01 planos 2 e 3, o Capitólio e Juneau vista do ar. O plano 3 é o arquivo que reaparece em s03 e ancora no ponto de Juneau;
   - s04, a balsa ou barcaça e o jato em Juneau;
   - s14, detalhe do Capitólio;
   - s21 (do ar) e s24 plano 1 (do chão), Willow;
   - s24 plano 2, o Capitólio do nível da rua;
-  - s28, estádio coberto sem marca de time nem de liga;
-  - s33, Wasilla, em dois clipes; o do plano 2 é o que ancora. São imagens de hoje e não levam rótulo de ano (terceira
-    revisão: o plano 1 dizia "1994"; identidade §6);
-  - s40, Anchorage, de hoje e sem rótulo de ano (terceira revisão);
+  - s28 plano 2, estádio coberto sem marca de time nem de liga;
+  - s33, Wasilla, em dois clipes; o do plano 2 é o que ancora. São imagens de hoje e não levam rótulo de ano (identidade §6);
+  - s40, Anchorage, de hoje e sem rótulo de ano;
   - s42, a Glacier Highway seguindo;
   - s43, a margem leste do Lynn Canal;
   - s44 plano 5, o fiorde do Lynn Canal;
-  - s47, a balsa estadual navegando;
-  - s51, as encostas de avalanche;
-  - **s52 plano 2, a balsa chegando a Haines** (nova): B-roll do sistema, de hoje, sem rótulo de ano. O plano não afirma que o
-    navio estava na frota de 2009, porque o dossiê não tem a frota daquele ano (quarta revisão);
-  - s53, o oleoduto Trans-Alaska;
-  - s59, o fim da estrada **em Cascade Point**, que é o fim do cascalho e não o do asfalto (quarta revisão; FSEIS p. 1-8): a
-    descrição do item tem de nomear Cascade Point. Echo Cove é outro lugar (a
-    estrada segue 2,9 milhas além dele) e, antes de 2011, era o fim antigo: clipe só de Echo Cove entra rotulado assim, não
-    ancora no anel e a virada vira corte seco (segunda revisão).
+  - s47, a balsa estadual navegando (o vídeo do governo do Alasca também entra, com a fonte na tela; midia.md §7.5);
+  - s51, as encostas de avalanche, em dois clipes;
+  - s52 plano 2, a balsa chegando a Haines: B-roll do sistema, de hoje, sem rótulo de ano. O plano não afirma que o navio
+    estava na frota de 2009, porque o dossiê não tem a frota daquele ano;
+  - s53, o oleoduto Trans-Alaska, em dois clipes;
+  - s59, o fim da estrada **em Cascade Point**, que é o fim do cascalho e não o do asfalto (FSEIS p. 1-8): a descrição do item
+    tem de nomear Cascade Point. Echo Cove é outro lugar (a estrada segue 2,9 milhas além dele) e, antes de 2011, era o fim
+    antigo: clipe só de Echo Cove entra rotulado assim, não ancora no anel e a virada vira corte seco.
 
   Os clipes do mesmo lugar são diferentes, e a exigência está na `midia_necessidade` de cada cena e em
-  `_despacho_research` › `mesmo_lugar_clipes_diferentes`.
+  `_despacho_research` › `mesmo_lugar_clipes_diferentes` (desde esta revisão, com Juneau: as fotos de s01, s06, s23 e s49 e o
+  aéreo de s01 são arquivos diferentes).
 
-**Pessoas (pesquisa-pessoas).** Os retratos vão **só** ao pesquisa-pessoas, pela lista `_despacho_research` › `retratos`
-(pessoa, cenas e planos, cargo da fonte, época, fonte, termos e o mesmo arquivo). O retrato não é do pesquisa-imagens (roupa
-dele; midia.md §7.2), e dois agentes caçando o mesmo rosto quebrariam o mesmo arquivo de Harris (s05, s25) e de Stoops (s26,
-s27, s31). No espelho, os 13 planos de retrato levam `_pedido_a: "pesquisa-pessoas"` e `_pessoa`.
+**Pessoas (pesquisa-pessoas).** Os retratos foram **só** ao pesquisa-pessoas, pela lista `_despacho_research` › `retratos`,
+que guarda agora o `resultado` de cada pessoa:
 
-| Pessoa | Cenas (plano) |
-|---|---|
-| Frank W. Harris | s05 (1), s25 (1) |
-| Jim Clark | s25 (2) |
-| Lee Stoops | s26 (2), s27 (1), s31 (1) |
-| David Reamer | s31 (2); em s27, card opcional |
-| Dave Dittman | s31 (3) |
-| Brian Rae | s31 (4) |
-| Jesse Kiehl | s41 (1) |
-| Tony Knowles | s48 (1) |
-| Bill Walker | s55 (1) |
-| Maria Gladziszewski | s57 (1) |
+| Pessoa | Cenas (plano) | Resultado |
+|---|---|---|
+| Frank W. Harris | s05 (1), s25 (1) | não achado em fonte autorizada: card só com nome e cargo |
+| Jim Clark | s25 (2) | não achado (a foto da bio do DNR é de ~2013 e não prova o cargo de 1982): card só com nome e cargo |
+| Lee Stoops | s26 (2), s27 (1), s31 (1) | não achado: card só com nome e cargo, o mesmo nas três cenas |
+| David Reamer | s31 (2); em s27, card opcional | sem licença que sirva (a foto da UAA é CC BY-NC; o retrato do ADN é foto de jornal): card só com nome e cargo |
+| Dave Dittman | s31 (3) | não achado: card só com nome e cargo |
+| Brian Rae | s31 (4) | não achado (os artigos não têm foto do autor): card só com nome e cargo |
+| Jesse Kiehl | s41 (1) | **entregue**: `_media/pessoa/s41/`, de 21/1/2025, sem aviso |
+| Tony Knowles | s48 (1) | o de 2000 não se achou; o de 2002 iria ampliado 1,64× no card, e o conferente mandou trocar: card só com nome e cargo |
+| Bill Walker | s55 (1) | **entregue**: `_media/foto/s55/`, de 15/11/2016 (DVIDS, domínio público federal), sem aviso |
+| Maria Gladziszewski | s57 (1) | **entregue**: `_media/pessoa/s57/`, de 2020, com o aviso Photo from 2020 na margem de baixo da foto impressa |
 
 - Nome e cargo vêm da fonte (`_pessoas`). O nome completo de Harris e os cargos de Harris e Clark vêm do folheto de 1982, lido
   de cópia arquivada, que vale como fonte (Lucas, 27/09/2026; captura de 18/02/2017).
-- O rosto só entra de fonte autorizada (midia.md §7.2). Sem foto, o card sai só com nome e cargo.
-- Foto de jornal como retrato de pessoa citada (Stoops, Reamer) exige licença.
+- Os 13 planos de card levam `_pessoa`; só os três com retrato entregue (s41, s55 e s57) levam também
+  `_pedido_a: "pesquisa-pessoas"`. Os cards sem retrato perderam os termos (§0h, ponto 6).
 
-**Documentos (pesquisa-documentos).** A lista para o despacho é `espelho.json` › `_despacho_research` › `documentos`
-(terceira revisão; até a segunda, o pesquisa-documentos não tinha lista, e esta seção não batia com `_documentos`). Cada entrada
-diz a peça, o id do claim no fundamento, a URL, a licença, o papel na tela (original, recriada ou só conferência e fonte
-escrita), as cenas e os planos em que ela entra, com o tempo e a palavra que convoca cada plano, e os trechos a grifar, tirados
-literalmente da fonte. O word-lock do grifo é dele. Desde a quinta revisão, cada trecho a grifar tem em `voz_do_grifo` as
-palavras que a voz diz enquanto o marca-texto o varre (a citação literal ou a paráfrase do narrador), na grafia do `words.json`,
-e o conferente prova que elas caem dentro dos planos listados. Frase que a voz não diz, ou que cairia num plano sem documento na
-tela, vai em `conferir`, sem grifo. As **29 cenas com `_documentos`** estão todas na lista, e as 17 cenas
-`documento` ou `citacao` têm `_documentos` (o conferente cobra as duas coisas).
+**Documentos (pesquisa-documentos).** A lista para o despacho é `espelho.json` › `_despacho_research` › `documentos`: 12 peças
+e 4 matérias, com cena, planos, URL, licença, o papel na tela, os trechos a grifar e o que só se confere. Cada trecho a grifar
+tem em `voz_do_grifo` as palavras da voz em que o marca-texto o varre, e o conferente prova que elas caem dentro dos planos
+listados. São **29 trechos** (eram 27). As **29 cenas com `_documentos`** estão todas na lista, e as 17 cenas `documento` ou
+`citacao` têm `_documentos`. O que voltou (research-documentos.md):
 
-- **Federais, em domínio público, que podem ir originais, sem crédito na tela:**
-  - as leis de 1900 e de 1912 (s07, planos 1 e 4);
-  - **a decisão da corte distrital federal de 13/02/2009** (s52, plano 1): o nome e o número do caso a pesquisa localiza;
-  - a decisão do 9º Circuito de 2011 (s52), só rotulada "upheld on appeal, 2011";
-  - o Federal Register de 30/07/2018 (s58, plano 1).
-- **Do Estado, originais só com permissão clara; sem ela, recriados** (midia.md §7.1), todos com licença a conferir:
-  - o folheto de 1982, em s02, s05 (a página da fala de Harris), s23, s30 e s32, e em s25 só como conferência;
+- **Federais, em domínio público, originais, sem crédito na tela:**
+  - as leis de 1900 e de 1912 (s07, planos 1 e 4): **entregues** (`_media/documento/s07/`). A folha vai só até 1,4×, e o
+    trecho visto mais perto vai na recriação datilografada (identidade §5, "Documento antigo");
+  - a decisão da corte distrital federal de 13/02/2009 (s52): **NÃO ACHADA**. No lugar, a página 4 da decisão do 9º Circuito
+    de 4/5/2011 (`_media/documento/s52/`), com o rótulo "upheld on appeal, 2011" todo o tempo da página (Lucas, 27/09/2026) e
+    o grifo "The district court vacated the FHWA’s Record of Decision (“ROD”)" em "a federal court threw out that choice". A
+    capa do acórdão saiu;
+  - o Federal Register de 30/07/2018 (s58, plano 1): **entregue** (`_media/documento/s58/`), com o recorte do conferente.
+- **Do Estado, originais só com permissão clara; sem ela, recriados** (midia.md §7.1), com a licença a conferir na origem de
+  hoje:
+  - o folheto de 1982, em s02, s05, s23, s30 e s32, e em s25 só como conferência;
   - o folheto de 1978, em s16 (a sigla, como texto de tela), s18 (a declaração contra a Frank, p. 49, assinada por Frank
-    Harris, que a tela não nomeia; quarta revisão) e s19;
-  - o folheto de 1994, em s33 (só conferência: a página não vai à tela ali) e s34 (a declaração contrária, p. B-24);
-  - o parecer do AG de 1993 e, pelo resumo dele, Boucher v. Engstrom (1974), cujo acórdão o dossiê não abriu (s13, plano 2);
-  - o Alaska Economic Trends de 1990 (s31, plano 4);
-  - AS 44.06 (s36, s61), com o texto literal da AS 44.06.055 em `_citacao`: o grifo cai nele, não na paráfrase da voz;
-  - o HB 3 (s40);
-  - o FSEIS e o **ROD de 2018**, só o texto recriado: s03 (a frase opcional, em `conferir` e sem grifo desde a quinta
-    revisão: o plano 1 é mapa, e a voz parafraseia), s43 (a percepção de capital isolada, §1.4.2,
-    p. 1-16; até a quarta revisão, o despacho dizia §1.3), s51 (os números viram DADO), s53 e s55 (a voz cita "the study") e
-    s58 (o ROD de 18/06/2018, "Basis for Decision", p. 3; terceira revisão). Desde a quarta, o ROD entra nos planos 2 e 3 de
-    s58: o 2 abre a peça, sem grifo, e o 3 grifa o orçamento. A frase da controvérsia é só conferência e fonte escrita do
-    plano 4, que é foto, e não vai sobre ela.
+    Harris, que a tela não nomeia) e s19;
+  - o folheto de 1994, em s33 (só conferência) e s34 (a declaração contrária, p. B-24);
+  - o parecer do AG de 1993 (s13, plano 2) e, **desde esta revisão, Boucher v. Engstrom (1974) na folha recriada do plano 1
+    de s13**, pelo texto do Caselaw Access Project, sem a página do Pacific Reporter, que é da West. A nota da ordem de
+    27/06/1974, que confere o "that same year", está em `conferir`;
+  - o Alaska Economic Trends de 1990 (s31, plano 4): **sem permissão provada**, recriado com a fonte, e a página fica como prova
+    (Lucas, 27/09/2026: "Recriar com a fonte (Recomendado)");
+  - AS 44.06 (s36, s61), com o grifo no texto literal da AS 44.06.055, e o HB 3 (s40);
+  - o FSEIS e o ROD de 2018, só o texto recriado: s03 (em `conferir`), s43, s51, s53, s55 e s58. Em s58, o ROD entra nos
+    planos 2, 3 e, desde esta revisão, 4, que era a foto da briga pública (não achada): o grifo "Controversy on the JAI Project
+    is high among the public" varre em "a public fight over the road".
 - **Imprensa, com a fala citada** (a página só com permissão; sem ela, a fala recriada com a fonte escrita, sem logo): a coluna
   de Reamer no ADN (s27, e s31 como conferência), a matéria da KTOO de 13/06/2025 (s41) e a da CoastAlaska publicada pela KTOO
-  em 24/01/2017 (s57), com autor, manchete, data e URL.
-- **Campanha de 1982:** as mascotes (s26, planos 1 e 3) e o primeiro anúncio da Football Fannie (s28, plano 1), com licença a
-  conferir. Figura não é texto: sem permissão, a imagem não vai.
-  - O primeiro anúncio, pela lista de fontes da coluna, é o do **Juneau Empire de 8/10/1982, p. 7** (quinta revisão; que seja
-    a peça inaugural citada, a pesquisa confere no original).
-  - As imagens da coluna são outras peças: a Football Fannie do ADN de 21/10/1982 e a Access Annie do ADN de 18/10/1982. A
-    lista dá ainda anúncios do ADN de 25/10 (p. D-3) e de 27/10/1982 (p. E-3). Estão em `pistas`, como pistas das mascotes de
-    s26, e nenhuma entra como o primeiro anúncio.
-  - Em s28, o grifo é só "28 NFL Teams", dito no plano 1. O resto da frase é dito no plano 2, que é foto, e vai para
-    `conferir` (quinta revisão). **A caça dessas peças é só do pesquisa-documentos**, que
-  localiza o original, confere a permissão e grava a procedência. Os planos 1 e 3 de s26 levam
-  `_pedido_a: "pesquisa-documentos"`, e o pesquisa-imagens não os caça. Até a terceira revisão, as mascotes estavam também na
-  lista `cenas`, sem dono (quarta revisão, §0d E2). A camiseta "Anchorage Stealers" (s28, plano 3) é foto de objeto e está na
-  lista do pesquisa-imagens.
-- **Saiu na terceira revisão:** 42 U.S.C. §4332 (s43). A voz parafraseia a lei ("federal project" × "federal action"), e a
-  página poria na tela uma frase que a voz não diz; a conferência dela continua na pesquisa-dados.
+  em 24/01/2017 (s57).
+- **Campanha de 1982:** as mascotes de s26 se acharam só na coluna do ADN de 2026, **sem permissão**. Ficam como prova, fora da
+  tela, e s26 virou desenho: a PRANCHA com os nomes escritos e o card de Stoops só com nome e cargo. Os planos perderam o
+  `_pedido_a`. O primeiro anúncio da Football Fannie (s28, plano 1) vai recriado no DADO com a fonte; o original do Juneau
+  Empire de 8/10/1982 não se achou, e o texto fica NÃO CONFERIDO no original (research-documentos.md §1). A camiseta "Anchorage
+  Stealers" (s28, plano 3) é foto de objeto, veio pelo pesquisa-imagens e vai sem aviso (a peça de acervo; Lucas, 28/09/2026).
 
-**Logos e bandeiras (pesquisa-logos, `needs.logos`)**, nova na segunda revisão. A lista está em `_despacho_research` › `logos`.
+**Logos e bandeiras (pesquisa-logos).** **Nenhum pedido:** `needs.logos` está vazio no vídeo inteiro, e `_despacho_research`
+› `logos` › `pedidos` também. País no mapa vai com o nome escrito, sem bandeira, também nas províncias e nos territórios
+(identidade §6; Lucas, 27/09/2026: "Só o nome escrito (Recomendado)"). As 8 bandeiras que o pesquisa-logos tinha entregado
+para s03, s10 e s44 saíram de `_media/logo/` para `_media/_caca/_retirado/logo/` em 27/09 (research-logos.md, terceira
+entrega).
 
-| Cena | Pedido ou nota |
+| Cena | `_nota_logos` |
 |---|---|
-| s03 | `needs.logos`: as bandeiras dos EUA e do Canadá, ao lado do nome do país no mapa (`assets/flags/us.png` e `ca.png` existem) |
-| s10 | `needs.logos`: as mesmas duas, se o nome do país for à tela (terceira revisão: o palco pede `eua` e `canada`) |
-| s44 | `needs.logos`: as mesmas duas, mais as da British Columbia e do Yukon (não estão em `assets/flags/`: Commons, com a licença conferida) |
-| s03, s10, s44 | `_nota_logos`: bandeira ao lado de nome de país fora da PRANCHA é DECISÃO DO LUCAS PENDENTE; até lá vale o padrão das roupas (bandeira ao lado do nome) |
-| s29, s31 | `_nota_logos`: a logo da Dittman Research (empresa) é logo de outra instituição, que não vai à cena: só o nome escrito (Lucas, 27/09/2026; midia.md §7.6) |
-| s26 | `_nota_logos`: a logo do ADN não se pede, vai o nome escrito (midia.md §7.6) |
-| s28 | `_nota_logos`: a logo da NFL não se pede (a NFL é só a unidade da paródia, e logo de liga é marca de terceiro); logo de outra instituição não vai à cena, só o nome escrito (Lucas, 27/09/2026) |
-| s43, s52, s58 | `_nota_logos`: logo de órgão federal (FHWA, as cortes federais, o Federal Register) não vai à cena, só o nome escrito (Lucas, 27/09/2026); a fonte vai escrita |
+| s03, s10, s44 | país no mapa: o nome escrito, sem bandeira (em s44, também a British Columbia e o Yukon) |
+| s26 | a logo do ADN não se pede, vai o nome escrito (midia.md §7.6) |
+| s28 | a logo da NFL e a de times não se pedem (a NFL é só a unidade da paródia, e logo de liga é marca de terceiro) |
+| s29, s31 | a logo da Dittman Research (empresa) não vai à cena, só o nome escrito (Lucas, 27/09/2026) |
+| s43, s52, s58 | logo de órgão federal (FHWA, as cortes federais, o Federal Register) não vai à cena, só o nome escrito (Lucas, 27/09/2026) |
 
-Logo de nenhuma instituição (jornal, órgão do Alasca, inclusive a Alaska Marine Highway e o DOT&PF, órgão federal, empresa,
-liga) nem o selo do Estado se pede (midia.md §7.6; a federal e as outras, Lucas, 27/09/2026).
-
-**Nome escrito** (terceira revisão): `_despacho_research` › `logos` › `nome_escrito` lista as 12 entidades que a voz nomeia ou
-que vão como fonte escrita (ADN; KTOO e CoastAlaska; Alaska Marine Highway System; Alaska Division of Elections; Alaska
-DOT&PF; FHWA; o departamento do trabalho do Alasca; a Juneau Assembly; o Legislativo; a Suprema Corte e o Department of Law;
-a Dittman Research; o Alaska State Museum), com as cenas e a forma da voz. Para cada uma, o pesquisa-logos entrega o nome
-oficial como a instituição o escreve, com a URL de onde saiu, e a linha curta que a explica (roupa dele, §4 e §5). Os nomes
-estão como o dossiê os registra, não conferidos; duas linhas curtas vêm do próprio texto aprovado ("the state ferry system",
-"the city council").
+**Nome escrito:** `_despacho_research` › `logos` › `nome_escrito` lista as 12 entidades que a voz nomeia ou que vão como fonte
+escrita, com as cenas e a forma da voz. O pesquisa-logos entregou o nome oficial de cada uma em `pauta-logos.json` ›
+`nomes_escritos` (research-logos.md §3). O espelho guarda os nomes como o dossiê os registra, e o redator-de-tela lê os
+oficiais de lá.
 
 ### 4.4 · Taxa de pedido
 
-**41 de 61 cenas de cobertura = 67,2%** pedem registro real, pelo `qc-espelho-midia` (antes da primeira revisão: 34 de 63 =
-54,0%; antes da segunda: 39 de 61 = 63,9%). A composição:
+**30 de 61 cenas de cobertura = 49,2%** pedem registro real, pelo `qc-espelho-midia` (décima primeira revisão; até a décima,
+41 de 61 = 67,2%; antes da primeira revisão, 34 de 63 = 54,0%). A composição:
 
-- **33 cenas têm plano de registro** (footage ou foto do mundo): s01, s04, s06, s07, s09, s10, s13, s14, s16, s20, s21, s22,
-  s23, s24, s28, s29, s31, s33, s35, s37, s40, s42, s43, s44, s47, s49, s51, s52, s53, s56, s58, s59 e s62 (s10 e s23 entraram
-  na segunda revisão; na terceira, s28 ganhou um segundo plano de registro, a camiseta, e a conta não muda);
-- **8 cenas pedem só retrato para card ou peça impressa**: s05, s25, s26, s27, s41, s48, s55 e s57.
+- **27 cenas têm plano de registro** (footage ou foto do mundo): s01, s04, s06, s07, s09, s10, s14, s16, s21, s22, s23, s24,
+  s28, s33, s35, s37, s40, s42, s43, s44, s47, s49, s51, s52, s53, s56 e s59;
+- **3 cenas pedem só o retrato do card**: s41, s55 e s57.
 
-A mediana do acervo do Top10 é 44,6%, mas a conta do Top10 também mistura os dois tipos. O canal não tem piso para essa taxa
-(DECISÃO DO LUCAS PENDENTE, roupa §4).
+A queda é o que a pesquisa não achou: s13, s20, s29, s31, s58 e s62 perderam o único plano de registro, e s56 perdeu um de
+dois (§0h, ponto 5); s05, s25, s26, s27 e s48 deixaram de pedir retrato ou peça (pontos 5 e 6). Nenhum pedido ficou mudo. A
+mediana do acervo do Top10 é 44,6%, e o canal não tem piso para essa taxa (DECISÃO DO LUCAS PENDENTE, roupa §4).
 
 ### 4.5 · A maior janela sem registro real
 
 | Medida | Resultado |
 |---|---|
-| Por cena, `qc-deserto-real` | **35 s** |
-| Por plano, só footage e foto (o conferente) | **40,6 s**, de 86,933 a 127,567: os planos de mapa de s10, s11 (dados) e s12 (mapa), até a foto da corte em s13 |
-| Por plano, sem registro **nem satélite** (a régua do canal) | **40,0 s**, de 167,133 a 207,1: o plano 3 de s16 (a sigla), s17, s18 e s19, até o registro da eleição de 1978 em s20 |
+| Por cena, `qc-deserto-real` | **50 s** (até a décima, 35 s) |
+| Por plano, só footage e foto (o conferente) | **49,9 s**, de 86,933 a 136,833: os planos de mapa de s10, s11 (dados), s12 (mapa) e s13, que desde a décima primeira revisão é documento do começo ao fim (a corte de 1974 não se achou) |
+| Por plano, sem registro **nem satélite** (a régua do canal) | **49,3 s**, de 167,133 a 216,4: o plano 3 de s16 (a sigla), s17, s18, s19 e s20, que desde a décima primeira revisão é DADO do começo ao fim (a eleição de 1978 não se achou) |
 
-A janela de 26/09 (50,2 s, de 290,6 a 340,8) foi quebrada pelos registros novos de s29 (a eleição de 1982) e de s31 (a
-campanha). Na segunda revisão, a foto da obra das rodovias passou de s09 (85,2 a 89,3) para a abertura de s10 (85,2 a 86,9),
-e a frase da ligação ao continente virou mapa. Por isso a janela só de footage e foto cresceu de 38,3 s para 40,6 s. Pela régua
-do canal, que conta o satélite de geometria real como mundo (identidade §4.3), essa janela é quase toda satélite, e a maior
-continua a de p3 (40,0 s): a regra da Frank, a fala dos defensores e a cédula de 1978. Tudo ali é papel ou mecanismo, e as
-linhas `REGISTRO (§10.1)` de s17, s18 e s19 dizem por quê. A intervenção que a quebraria é levar o registro da eleição de 1978
-para o plano 1 de s19 ("the Frank initiative went to the voters"); não fiz, porque s19 pede a cédula (documento) e o registro
-da eleição cabe melhor em "the same voters", em s20. O canal não tem limite; o padrão do Top10 é 180 s.
+As duas janelas cresceram porque os registros que as quebravam (a corte em s13; a eleição de 1978 em s20) não se acharam, nem
+de outro ano (research-imagens.md). Até a décima revisão, eram 40,6 s e 40,0 s. O que as quebraria seria outro registro com
+fonte, que o dossiê não tem; foto de outro evento no lugar não entra (identidade §6). O canal não tem limite; o padrão do
+Top10 é 180 s.
 
 ### 4.6 · Trechos sem cobertura
 
@@ -893,9 +1123,12 @@ pede e não se renderiza": isso deixaria 20 s pretos no XML e foi corrigido (§0
    literal da fonte.
 9. **Avalanches:** a voz diz 41. A fonte diz "41 dos 43" corredores do lado leste.
 10. **O petróleo:** a fonte nomeia o preço como "Daily West Coast". "Alaska North Slope" não está nela para 2013–2016 e não
-    vai à tela sem fonte.
+    vai à tela sem fonte. **Décima primeira revisão:** o título dentro do Graph 2-1 é "Daily ANS West Coast Oil Price 2012-2016"
+    (research-dados.md): a sigla ANS tem fonte, e a forma por extenso continua sem (o FSEIS não a expande). Usá-la é do
+    redator-de-tela; o `needs.dados` de s54 diz isso.
 11. **2009 × 2011:** a voz fala da anulação de 2009 (corte distrital federal). A decisão de 2011 é a do 9º Circuito, que a
-    manteve; só entra rotulada assim.
+    manteve; só entra rotulada assim. **Décima primeira revisão:** a de 2009 não se achou, e a página 4 da de 2011 entra no
+    plano 1 de s52 com o rótulo "upheld on appeal, 2011" todo o tempo da página (identidade §5; Lucas, 27/09/2026).
 12. **Citações acima do teto de 12 palavras de tela** (identidade §4.1): Harris (15), Stoops (27), Kiehl (14), Gladziszewski
     (28) e a frase opcional do FSEIS (15). O verbatim está em `_citacao`, e o recorte é do `redator-de-tela`. (Até a terceira
     revisão, as contagens eram 14, 26 e 26, e a de 1978 era 9; ela tem 10 e fica abaixo do teto. Todas foram recontadas no
@@ -924,7 +1157,9 @@ pede e não se renderiza": isso deixaria 20 s pretos no XML e foi corrigido (§0
     Inlet, como a fonte diz ("along the Taku Inlet"). Pela água do recorte, o caminho desce para o sudeste junto de Juneau e sobe
     para o nordeste até a foz. **Quinta revisão:** esse caminho é contexto, e não se desenha. Não há GeoJSON dele, e o mapista não
     traça linha sem geometria real (§6c). Na tela, o Taku é o rio, uma seta de Juneau rumo ao vale do rio e, se a geometria vier, o
-    contorno e o rótulo do Taku Inlet.
+    contorno e o rótulo do Taku Inlet. **Décima primeira revisão:** o corredor vai como esquema tracejado pelo texto da fonte,
+    com o aviso Approximate route (identidade §6; Lucas, 27/09/2026), a partir do fim da Thane Road, que a pesquisa-geo busca
+    (`thane-road-fim`). O Taku Inlet é o ponto do GNIS, só com o rótulo: o contorno não existe em nenhuma fonte.
 18. **Os extremos das rodovias de s10** (terceira revisão): "Anchorage–Tok", "Dawson Creek" e "Delta Junction" estavam no
     espelho e não estão no dossiê, que só diz que a Alaska e a Glenn ligaram Anchorage à rede (mec-15.6). Saíram; os
     extremos vêm da fonte da geometria, com o nome que ela der.
@@ -949,7 +1184,9 @@ pede e não se renderiza": isso deixaria 20 s pretos no XML e foi corrigido (§0
 24. **O primeiro anúncio da Football Fannie** (quinta revisão): a coluna põe o anúncio inaugural no primeiro dia dos anúncios,
     8/10/1982, e a lista de fontes dela dá "Football Fannie advertisement. Juneau Empire. October 8, 1982, 7". Por isso o espelho
     diz Juneau Empire, 8/10/1982, p. 7. Que seja a peça citada é leitura, e a pesquisa confere no original. As imagens da coluna
-    são outras peças: uma Football Fannie do ADN de 21/10/1982 e uma Access Annie do ADN de 18/10/1982.
+    são outras peças: uma Football Fannie do ADN de 21/10/1982 e uma Access Annie do ADN de 18/10/1982. **Décima primeira
+    revisão:** o original não se achou, e o texto fica NÃO CONFERIDO no original (research-documentos.md §1); ele vai recriado no
+    DADO, com a fonte.
 25. **O anúncio de Walker** (quinta revisão): foi um comunicado à imprensa de 15/12/2016 (evt-23.9, "a press release dated
     December 15, 2016"). O `motivo` de s55 dizia que a fonte não dizia onde a declaração foi feita, e cogitava uma entrevista
     coletiva.
@@ -1000,31 +1237,41 @@ mudou de regime e nenhum plano nasceu ou morreu. Mudaram textos (objetos, motivo
 pendência #9 e, no despacho do pesquisa-documentos, os grifos de s03 e s28, o campo `voz_do_grifo` e as `pistas` da peça de
 campanha. A interseção com artefatos em disco continua zero.
 
+**Décima primeira revisão (28/09): 61 identidades preservadas, 0 morreram, 0 nasceram.** Nenhuma borda de cena mudou. Uma borda
+de plano nasceu: o plano 2 de s09 se partiu em 82,9 s, e o plano 3, de mapa, é novo; nenhum outro plano mudou de número ou de
+tempo. Mudaram de regime, com o mesmo número, s13 p1, s20 p1, s29 p2, s31 p5, s56 p2, s58 p4, s62 p1 e os três planos de s26, e
+o `modo` mudou em s13, s20, s26 e s62 (§0h). A interseção com artefatos em disco continua zero: não há `conceito-visual.json`,
+`graphics/` nem render (o `qc-midia-real` diz "sem out\juneau\graphics/"). As mídias entregues em `_media/` são insumo da arte, e
+as pastas delas são por cena; os vereditos do conferente citam planos cujo número não mudou.
+
 ## 5 · O que a roupa acrescenta (§9)
 
 ### 5.1 · Mundo real pela régua do canal
 
 A régua do canal soma footage, foto e satélite de geometria real, sem documento e sem a cauda (identidade §4.3). No Juneau:
 
-- **316,8 s**: 184,6 s de registro e 132,3 s de satélite (antes da primeira revisão: 298,7 s; antes da segunda: 311,8 s; antes
-  da terceira: 314,1 s);
-- **= 49,0% dos 646,067 s de fala**, ou **47,6% do vídeo** (antes da primeira revisão: 46,2%; antes da segunda: 46,8%; antes
-  da terceira: 48,6% e 47,2%);
+- **290,2 s**: 155,6 s de registro e 134,5 s de satélite (décima primeira revisão; até a décima, 316,8 s, com 184,6 s e
+  132,3 s; antes da primeira revisão: 298,7 s; antes da segunda: 311,8 s; antes da terceira: 314,1 s);
+- **= 44,9% dos 646,067 s de fala**, ou **43,6% do vídeo** (até a décima, 49,0% e 47,6%; antes da primeira revisão: 46,2%;
+  antes da segunda: 46,8%; antes da terceira: 48,6% e 47,2%);
 - **o alvo é 60%. Isto é defeito declarado.**
+
+Na décima primeira revisão, a régua caiu 4,1 pontos: sete planos de registro ficaram sem nenhuma foto e mudaram de regime (s13
+p1, s20 p1, s29 p2, s31 p5, s56 p2, s58 p4 e s62 p1: 26,7 s), e a metade de Anchorage de s09 (2,3 s) virou mapa, que continua
+na régua como satélite. Nenhuma foto de outro evento entrou no lugar (identidade §6).
 
 Na terceira revisão, o registro ganhou 2,7 s: a camiseta "Anchorage Stealers" no plano 3 de s28, o registro real que o dossiê
 marca como tal (exp-01.15). Na segunda revisão, o registro caiu 3,2 s (a Juneau de 1906 saiu de s07; a foto das rodovias encurtou de 4,1 s para 1,8 s) e
 ganhou 2,3 s (Juneau em 1982, s23), e o satélite subiu 5,5 s (os mapas novos de s07 e s10).
 
-O porquê não é mais um rótulo. Toda cena sem plano de registro (27, fora a cauda) diz na linha `REGISTRO (§10.1)` do `motivo`
+O porquê não é mais um rótulo. Toda cena sem plano de registro (33, fora a cauda, desde a décima primeira revisão; eram 27) diz na linha `REGISTRO (§10.1)` do `motivo`
 por que o registro não entra, numa de quatro formas:
 
 | Forma | Cenas |
 |---|---|
 | **isto não foi filmado**, e o porquê (papel impresso, texto escrito, lei, mecanismo, número) | s02, s05, s17, s18, s19, s25, s27, s30, s32, s34, s36, s38, s54, s55 (o comunicado à imprensa de 15/12/2016, evt-23.9; quinta revisão), s60, s61 |
 | **satélite** de geometria real (conta na régua) | s03, s08, s12, s15, s39, s48, s50 |
-| **FALTA DECLARADA**: pode haver registro, e o motivo de não pedir | s11 (as votações de 1960 e 1962), s41 (gravação da KTOO), s57 (gravação da sessão). Até a quarta revisão, também s55, que cogitava uma entrevista coletiva que a fonte não dá |
-| a **peça pedida**, que é documento | s26 (as mascotes) |
+| **FALTA DECLARADA**: pode haver registro, e o motivo de não pedir, ou de não ter | s11 (as votações de 1960 e 1962), s41 (gravação da KTOO), s57 (gravação da sessão) e, desde a décima primeira revisão, o que a pesquisa não achou: s13 (a corte de 1974), s20 (a eleição de 1978), s26 (as mascotes, sem permissão), s29 (a eleição de 1982), s31 (a campanha de 1982), s58 (a briga pela estrada) e s62 (o voto de 1974). Até a quarta revisão, também s55, que cogitava uma entrevista coletiva que a fonte não dá |
 
 s10 e s23 saíram da tabela na segunda revisão: agora têm plano de registro (a obra das rodovias; Juneau em 1982).
 
@@ -1035,15 +1282,15 @@ documento não conta na régua (identidade §4.3), e os documentos do Estado, se
 
 | Candidata | O que o espelho faz agora |
 |---|---|
-| s35 | **Pedido:** o registro da eleição de 1994, no plano 1, com o 55% pousando |
+| s35 | **Entregue** (décima primeira revisão): Wasilla em 6/6/2010 (o lago, a cidade e as montanhas), com o aviso do ano e o 55% pousando; a foto da eleição de 1994 não se achou |
 | s11 | **Falta declarada:** duas votações em 4,8 s num plano só; uma foto seria de uma delas, e a contagem da outra pousaria em imagem de outro ano; a de 1974 já está em s01 e s62. O "nome próprio" é "August" |
 | s17 | **Isto não foi filmado:** condição de lei e mecanismo de crédito |
-| s29 | **Pedido:** o registro da eleição de 1982, no plano 2, com o placar pousando; a pesquisa de opinião (plano 1) é número |
+| s29 | **Falta declarada** (décima primeira revisão): a eleição de 1982 não se achou, e o placar vai no DADO do plano 2; a pesquisa de opinião (plano 1) é número |
 | s38 | **Isto não foi filmado:** a comissão é uma previsão da lei |
 | s18 | **Isto não foi filmado:** a declaração foi escrita no folheto de 1978. É assinada por Frank Harris, que o roteiro não nomeia porque a identidade com o Harris de 1982 não está provada, e por isso não há card de pessoa (quarta revisão: até a terceira, esta linha dizia "sem autor"). O "nome próprio" é "Frank"; Willow está dentro da fala citada, e o registro dela está em s21 e s24 |
-| s20 | **Pedido:** o registro da eleição de 1978, no plano 1 |
+| s20 | **Falta declarada** (décima primeira revisão): a eleição de 1978 não se achou, e a cena é DADO do começo ao fim |
 | s34 | **Isto não foi filmado:** a declaração foi escrita e não é assinada. O "nome próprio" é "This", a abertura da citação |
-| s49 | **Pedido:** o registro da votação de outubro de 2000 em Juneau, no plano 1. "Better ferries" é a opção da cédula; a balsa está em s47 e em s52 |
+| s49 | **Entregue** (décima primeira revisão): Juneau do outro lado do canal, com o Mount Roberts, em 21/4/1997, com o aviso do ano; a foto da votação de outubro de 2000 não se achou. "Better ferries" é a opção da cédula; a balsa está em s47 e em s52 |
 
 O laudo regravado em 27/09 lista outras sete (s18, s34, s60, s11, s17, s38 e s54). Todas têm a linha `REGISTRO (§10.1)`: o
 sinal "senha-não-foi-filmado" aparece agora justamente porque o `motivo` escreve a forma que o ofício exige. O laudo é
@@ -1055,17 +1302,20 @@ e o petróleo de s54, dizem por que não (a balsa e o oleoduto estão nas cenas 
 
 **O que ainda subiria a régua:**
 
-- **a camiseta "Anchorage Stealers"** do Alaska State Museum (ASM 97-20-1), o único item que o dossiê marca como "registro
-  real" (exp-01.15) e que o espelho não pedia nem dispensava. Na terceira revisão ela foi pedida no plano 3 de s28 (+2,7 s já
-  contados acima); se a foto não vier com a origem conferida, o plano volta a DADO e a régua volta a 48,6%;
+- um registro com fonte para a corte de 1974, as eleições de 1978 e 1982, a campanha de 1982, a segunda foto da sessão de 2017,
+  a briga de 2018 ou o voto de 1974: a pesquisa não achou nenhum, nem de outro ano (research-imagens.md);
 - **contar o documento original fotografado** é decisão do Lucas, não do montador (mudaria a régua, roupa §4).
 
+A camiseta "Anchorage Stealers", que até a décima revisão estava nesta lista, foi entregue e aprovada (`_media/foto/s28/`), sem
+aviso do ano, pela regra da peça de acervo (Lucas, 28/09/2026): os 2,7 s dela já estão na conta.
+
 **O número pousado sobre o registro é pergunta aberta, não erro resolvido** (segunda revisão, corrigindo a primeira). O espelho
-pousa número ou texto sobre footage e foto em nove cenas: s01 (o 57%), s28 plano 3 (o texto sobre a camiseta, terceira
-revisão; desde a sexta, o $800 million em "that" e o ABOUT A QUARTER quando a voz o diz; sobre o estádio do plano 2, só os
-0,33 s em que o 28 do plano 1 atravessa), s29 (o placar de 1982), s31 plano 5 (more than a million dollars), s33 plano 2 (the
-ballot carried no price), s35 (o 55%), s51 ($680 million), s53 (~90%), s56 (o 6 a 3) e s24 plano 1 (winner take all, que
-faltava na lista até a sexta). Desde a sexta revisão, cada texto entra na palavra que o diz, nunca antes (§2, "Texto na voz"). A
+pousa número ou texto sobre footage e foto em sete cenas (décima primeira revisão; eram nove, e s29, s31 e s56 saíram, porque o
+plano virou DADO ou PRANCHA sem foto): s01 (o 57%, sobre Juneau de circa 1987, com o aviso do ano), s28 plano 3 (o texto sobre
+a camiseta, terceira revisão; desde a sexta, o $800 million em "that" e o ABOUT A QUARTER quando a voz o diz; sobre o estádio
+do plano 2, só os 0,33 s em que o 28 do plano 1 atravessa), s33 plano 2 (the ballot carried no price), s35 (o 55%, sobre
+Wasilla em 2010, com o aviso do ano), s51 ($680 million), s53 (~90%) e s24 plano 1 (winner take all, que faltava na lista até
+a sexta). Desde a sexta revisão, cada texto entra na palavra que o diz, nunca antes (§2, "Texto na voz"). A
 identidade §5 dá ao DADO a base `--papel` e ao REGISTRO só "rótulo de lugar e crédito"; a roupa do diretor-de-arte diz o
 mesmo ("DADO e DOCUMENTO | `--papel`"). Ler o número pousado (ofício §6.7; §10.1, trava 3) como texto sobre o registro, e não
 como o modelo DADO, é leitura do montador: o diretor-de-arte confirma ou devolve, e o Lucas decide se isso muda a identidade.
@@ -1073,16 +1323,17 @@ A primeira revisão tirou a pergunta da lista dizendo que o report de 26/09 "err
 `_decisoes_pendentes`.
 
 Como informação, a parcela do `qc-piso-real` (outra régua: conta por cena, tira mapa e documento, e conta cena com retrato) é
-**49,5%** (antes da segunda revisão: 48,1%; na terceira não mudou, porque s28 já contava pelo estádio).
+**36,2%** (décima primeira revisão; até a décima, 49,5%; antes da segunda revisão: 48,1%; na terceira não mudou, porque s28
+já contava pelo estádio).
 
 ### 5.2 · Ritmo
 
 | Medida | Resultado |
 |---|---|
-| Rajada (planos < 2,5 s) | 30,2 s = **4,5%** (teto 20%). Nenhum plano abaixo do piso de beat de 1,5 s |
-| Texto no ar ≥ 2,0 s (roupa §4; identidade §4.3) | Medido na segunda revisão. Os cinco planos de texto abaixo de 2,0 s (s12 p3, s30 p2, s55 p3, s60 p2 e p4, na numeração de antes) foram resolvidos: s30, s55 e s60 juntaram o plano ao vizinho do mesmo objeto; em s12, o placar de Fairbanks fica no palco durante o plano 4 (`_texto_no_ar`). Abaixo de 2,0 s sobram só dois planos de registro sem texto além do crédito: s10 p1 (a foto da obra, 1,766 s, que encolhe para o mapa) e s53 p1 (o oleoduto, 1,834 s). O conferente reprova plano de não-registro abaixo de 2,0 s sem `_texto_no_ar`. **Quinta revisão:** a conta acima media só a duração do plano, e o texto posto sobre registro, travado na palavra, ficava abaixo do piso em quatro planos: s28 p3 (1,87 s), s31 p5 (1,45 s), s56 p2 (1,58 s) e s29 p2, que não dizia a palavra (1,38 s se travasse em "nearly"). A quinta resolveu isso antecipando o número, e a sexta desfez: o texto entra quando a voz o diz, e o piso se cumpre deixando o texto ficar depois (`_texto_no_ar`: 15 planos atravessam o seguinte da cena; 15 são conflito para o regente-de-imagem, porque a cena corta antes de 2,0 s: 10 na sexta revisão, s54 p1 na sétima, e s34 p2, s41 p2, s55 p2 e s57 p2 na oitava; §0f) |
+| Rajada (planos < 2,5 s) | 34,5 s = **5,2%** (teto 20%; décima primeira revisão: entraram os planos 2 e 3 de s09, de 2,1 s e 2,3 s; até a décima, 30,2 s = 4,5%). Nenhum plano abaixo do piso de beat de 1,5 s |
+| Texto no ar ≥ 2,0 s (roupa §4; identidade §4.3) | Medido na segunda revisão. Os cinco planos de texto abaixo de 2,0 s (s12 p3, s30 p2, s55 p3, s60 p2 e p4, na numeração de antes) foram resolvidos: s30, s55 e s60 juntaram o plano ao vizinho do mesmo objeto; em s12, o placar de Fairbanks fica no palco durante o plano 4 (`_texto_no_ar`). Abaixo de 2,0 s sobram só dois planos de registro sem texto além do crédito: s10 p1 (a foto da obra, 1,766 s; desde a décima primeira revisão, com corte seco para o mapa) e s53 p1 (o oleoduto, 1,834 s). O conferente reprova plano de não-registro abaixo de 2,0 s sem `_texto_no_ar`. **Quinta revisão:** a conta acima media só a duração do plano, e o texto posto sobre registro, travado na palavra, ficava abaixo do piso em quatro planos: s28 p3 (1,87 s), s31 p5 (1,45 s), s56 p2 (1,58 s) e s29 p2, que não dizia a palavra (1,38 s se travasse em "nearly"). A quinta resolveu isso antecipando o número, e a sexta desfez: o texto entra quando a voz o diz, e o piso se cumpre deixando o texto ficar depois (`_texto_no_ar`: 15 planos atravessam o seguinte da cena; 15 são conflito para o regente-de-imagem, porque a cena corta antes de 2,0 s: 10 na sexta revisão, s54 p1 na sétima, e s34 p2, s41 p2, s55 p2 e s57 p2 na oitava; §0f) |
 | Respiro | Planos ≥ 6 s de registro ou satélite somam 73,2 s = 11,0%. **Não medido pela régua do `qc-respiro`**, que precisa de HTML e roda depois da ARTE. Quase todos esses planos carregam texto ou dado. Se respiro tiver de ser tela sem texto (DECISÃO DO LUCAS PENDENTE), a parcela real fica bem abaixo de 10% |
-| Foto parada acima de 6 s | Só s01 plano 1 (6,6 s). Ele tem Ken Burns e o dado do 57% entrando em word-lock, o que é movimento com propósito. As outras fotos longas estão partidas em planos (s16, s37, s56, s58) |
+| Foto parada acima de 6 s | Só s01 plano 1 (6,6 s), agora a foto de circa 1987, com o aviso do ano. Ele tem Ken Burns e o dado do 57% entrando em word-lock, o que é movimento com propósito, e o conferente lembra que a janela passa dos 6 s de foto parada (identidade §4.3) e pede o Ken Burns da identidade §4.4. As outras fotos longas estão partidas em planos (s16, s37, s56). Em s56, o segundo plano de foto virou DADO, e em s58 a foto do plano 4 virou documento (décima primeira revisão) |
 
 ### 5.3 · A cauda de 20 s
 
@@ -1108,81 +1359,116 @@ Tudo isso está em `paleta`, como proposta. Quem confirma é o Lucas: **DECISÃO
 
 ### 5.5 · Cenas de mapa
 
-São **12 cenas com planos de mapa**: s03, s07, s08, s10, s12, s15, s33, s39, s44, s48, s50 e s59. Na primeira revisão eram
-11 (s46 foi fundida em s44); na segunda, s07 ganhou o mapa Sitka → Juneau, e s10 continua com três planos de mapa, embora
-abra em foto. Somam 132,3 s de satélite MapTiler, e cada uma custa pedidos no render.
+São **13 cenas com planos de mapa**: s03, s07, s08, s09, s10, s12, s15, s33, s39, s44, s48, s50 e s59. s09 entrou na décima
+primeira revisão: a metade de Anchorage do antigo plano 2, sem foto, virou o mapa do plano 3, que acende Anchorage e
+Fairbanks, e a foto da Ladd Field encolhe para o ponto de Fairbanks (ofício §6.7). Na primeira revisão eram 11 (s46 foi
+fundida em s44); na segunda, s07 ganhou o mapa Sitka → Juneau. s10 continua com três planos de mapa, embora abra em foto.
+Somam **134,5 s** de satélite MapTiler (eram 132,3 s), e cada uma custa pedidos no render.
 
-- O crédito `© MapTiler © OpenStreetMap contributors` fica na tela o tempo todo.
-- O que vem do OSM leva o crédito do OSM: estrada, Cascade Point, Taku, Haines, Willow e as rotas e estradas pedidas. Em s44,
-  a estrada e Cascade Point entraram na segunda revisão; na terceira, o plano dos corredores passou a fazer o do Taku sair de
-  Juneau, e só o do Lynn Canal seguir do fim da estrada (`s44._geografia`); na quarta, o do Taku seguia o Taku Inlet até a foz
-  (pedido `taku-inlet`, com crédito se vier do OSM), nunca a reta por terra. Na quinta, **nenhum corredor se traça**: sem
-  GeoJSON, o mapista não desenha linha (§6c). O Taku é o rio, uma seta de Juneau rumo ao vale do rio e o Taku Inlet só como contorno
-  e rótulo; o Lynn Canal, uma seta para o norte a partir de Cascade Point. Corredor traçado é a pendência #9.
-- s10 pede, desde a terceira revisão, `eua` e `canada` inteiros: o palco vai até onde a Alaska Highway encontra a rede do
-  continente, e esse ponto pode cair a leste do recorte `alasca-e-vizinhos` (-125°).
-- **Nenhuma pede relevo.** A candidata natural é **s44** (o campo de gelo e as encostas), mas `mapa3d` depende do ok do Lucas
-  e não tem prova nesta máquina.
+- O crédito `© MapTiler © OpenStreetMap contributors` fica na tela o tempo todo do mapa.
+- O que vem do OSM leva o crédito do OSM: a estrada de Juneau e Cascade Point, o Taku, Haines, Haines Junction, Willow e os
+  limites do local de 1976, as rodovias com nome (a Glenn, a Alaska Highway, a Haines, a Klondike, a de Glennallen a Tok e a de
+  Anchorage a Willow) e, se vier dele, o fim da Thane Road. O Natural Earth (países, províncias, rios, lagos, cidades, o campo
+  de gelo e as duas redes de estradas), o GNIS e o TIGER são domínio público. A fonte e a licença de cada camada estão no
+  `pauta-geo.json`.
+- **As rotas que nunca foram construídas** (identidade §6; Lucas, 27/09/2026) vão como esquema tracejado pelo texto da fonte, a
+  partir do ponto de partida real, com o aviso `Approximate route` no papel legenda todo o tempo da linha:
+  - s44 plano 3, os dois corredores: o do Lynn Canal sai do anel de Cascade Point para o norte, e o do Taku sai do fim da
+    Thane Road, em Juneau, para o nordeste ao longo do Taku Inlet;
+  - s48 planos 1 e 2, a margem leste (2000), de Cascade Point até perto da foz do Katzehin;
+  - s50 planos 1 e 2, a Alternativa 2B (2006): de Echo Cove a Cascade Point é a estrada que existe, em traço cheio; dali ao
+    norte do delta do Katzehin, e a balsa até Haines e Skagway, tracejados.
+
+  A figura do estudo de 2018 não se decalca (midia.md §7.1). O do Taku espera `thane-road-fim`, o único pedido aberto de
+  geometria; sem ele, o plano 3 de s44 fica com o rio (`rio-taku-osm`), o rótulo do Taku Inlet (`taku-inlet-gnis`) e a voz.
+  Até a décima revisão, nenhum corredor se traçava: s44 tinha a seta sem linha (mapista §6c), e o esquema era a pendência #9.
+- s10 pede `eua` e `canada` inteiros: o palco vai até onde a Alaska Highway encontra a rede do continente
+  (`alaska-highway-ligacao-continente`, agora em disco).
+- País no mapa vai com o nome escrito, sem bandeira (s03, s10 e s44; identidade §6).
+- **Nenhuma pede relevo.** A candidata natural é **s44** (o campo de gelo e as encostas). As fontes de relevo foram aceitas em
+  27/09 (identidade §6, "Bases, geometria e dados aceitos"), mas usar relevo ou câmera 3D em s44 continua pendente, e `mapa3d`
+  não tem prova nesta máquina.
 - O gasto de render na MapTiler se pede antes da primeira cena renderizada, anotando o contador.
 
-Mapa seguido de mapa não acontece: s44 é agora uma viagem só, com o registro do fiorde ancorado dentro dela, e entre os outros
+Mapa seguido de mapa não acontece: s44 é uma viagem só, com o registro do fiorde ancorado dentro dela, e entre os outros
 mapas sempre há outro regime (identidade §4.4).
 
 ### 5.6 · Pedidos que dependem de fonte não liberada ou de licença
 
-- Todo documento do Estado e da imprensa listado em 4.3 (midia.md §7.1).
+- Todo documento do Estado e da imprensa listado em 4.3 (midia.md §7.1): o original só com permissão clara, conferida na origem
+  de hoje; sem ela, recriado com a fonte. A Trends de 1990 já tem a decisão: recriada, com a página como prova (Lucas,
+  27/09/2026).
 - Tudo o que veio da Divisão de Eleições (boletins e folhetos) foi lido de cópia arquivada, que vale como fonte, com a data da
   captura (Lucas, 27/09/2026); mostrar a página original ainda pede permissão clara (midia.md §7.1).
-- A Library of Congress, só pelo navegador do app (s06, s07, s09, s10).
-- Os sites da Divisão de Eleições e o BASIS recusam robô. A conferência do texto vai pela cópia arquivada, com a data (página
-  oficial do Alasca); a da licença e o que a cópia não tiver, pelo navegador do app, com o Lucas vendo.
-- A foto de agência depende do ok do Lucas àquela foto, e a Reuters está fora (§7.4).
+- Os sites da Divisão de Eleições, o BASIS e o do Department of Revenue recusam robô. A conferência do texto vai pela cópia
+  arquivada, com a data (página oficial do Alasca). A da licença, o que a cópia não tiver e a série de s54 vão ao navegador do
+  app, que só o Claude central opera, e desde 27/09 sem o Lucas precisar acompanhar (CLAUDE.md, "A marca"). Os textos de licença
+  do espelho ainda dizem "com o Lucas vendo" (§9).
+- As mascotes de 1982 (s26) se acharam sem permissão: nenhuma figura vai à tela sem autorização escrita dos detentores (o NFL
+  Access Committee, o Capital Access Committee e o ADN, dono da digitalização), e ninguém a pediu. s26 é desenho.
+- O retrato só entra de fonte autorizada (midia.md §7.2). Os que não se acharam, e o de Reamer, que só existe em CC BY-NC ou em
+  foto de jornal, saem só com nome e cargo.
+- A foto de agência depende do ok do Lucas àquela foto, e a Reuters está fora (§7.4). Nenhuma entrou.
 - Vídeo do governo do Alasca (a balsa, em s47 e s52) entra com a fonte na tela; vídeo de jornal, só com licença conferida
   (Lucas, 27/09/2026; midia.md §7.5).
-- O original do estudo de 2018 precisa de autorização escrita do DOT&PF, que ninguém pediu.
-- A foto da camiseta "Anchorage Stealers" (s28, plano 3): do Alaska State Museum ou da coluna do ADN, pelo §7.5, com a fonte na
-  tela; quem responde pela foto e o que a origem diz sobre uso a pesquisa confere na origem (terceira revisão).
+- O original do estudo de 2018 precisa de autorização escrita do DOT&PF, que ninguém pediu (pendência 12).
+- As fotos fora do domínio público vão com o crédito que o conferente aprovou, copiado para o objeto do plano: CC BY e CC BY-SA
+  do Commons, a foto do Estado (s22, State of Alaska / Alaska State Library), a foto de jornal (s56 p1, Michael Penn / Juneau
+  Empire), a camiseta de s28 (Dave Gelotte / Alaska State Museum; midia.md §7.5; Lucas: "Sim, pode baixar (Recomendado)") e o
+  DOCUMERICA de s16 p1, pela exceção (Lucas, 27/09/2026; midia.md §7.3). O domínio público federal vai sem crédito na tela.
+- As fotos da Alaska State Library que só se compram não se compram (Lucas, 27/09/2026): Juneau em 1905 (s06) e Fort Richardson
+  em 1940 (s09) ficaram fora.
 
 ### 5.7 · DECISÃO DO LUCAS PENDENTE que tocou este espelho
 
-A mesma lista está em `espelho.json` › `_decisoes_pendentes`.
+A mesma lista está em `espelho.json` › `_decisoes_pendentes`, na mesma ordem, e cada item leva a data desta revisão (décima
+primeira, 28/09). Até a décima, este report numerava 20 itens e guardava as decididas no lugar delas; desde esta revisão, a
+numeração é a do espelho, e as decisões ficam em `_decisoes_do_lucas` (abaixo).
 
 1. O conteúdo definitivo, a trilha e o CTA dos 20 s da tela final (s63). Até lá, fundo provisório renderizado.
 2. A cor do protagonista (`--destaque` = Juneau, proposta).
-3. Relevo/câmera 3D (`mapa3d`), com s44 como candidata.
-4. O gasto de render na MapTiler (12 cenas com mapa).
+3. Relevo/câmera 3D (`mapa3d`), com s44 como candidata. As fontes de relevo foram aceitas em 27/09 (identidade §6); usar relevo
+   ou câmera 3D em s44 continua pendente.
+4. O gasto de render na MapTiler: 13 cenas com mapa (s09 entrou), pedido antes da primeira cena renderizada, com o contador
+   anotado.
 5. Música e transições (`marca/finalizacao.json` não existe).
 6. A PRANCHA não tem modo no enum: o espelho usa `desenho` + "PRANCHA" no motivo.
 7. O catálogo de modelos do canal: o campo `modelo` ficou ausente.
-8. **Decidida pelo Lucas em 27/09** (§0g): a cópia arquivada de página oficial do Alasca vale como fonte do texto, com a data
-   da captura. Fica o número, para a
-   lista não mudar.
-9. O esquema declarado das rotas da estrada (s48, s50) e, desde a quinta revisão, dos corredores de s44 (o do Taku e o do Lynn
-   Canal), sem a figura do estudo de 2018. Até a decisão, s44 mostra os corredores com seta e rótulo, sem linha (mapista §6c).
-10. **Decidida pelo Lucas em 27/09** (§0g): vídeo do governo do Alasca entra com a fonte na tela; o de jornal, só com licença.
-11. Se respiro tem de ser tela sem texto.
-12. A régua de mundo real: se o documento original fotografado deveria contar.
-13. Os pisos do canal para a taxa de pedido e para a maior janela sem registro.
-14. (leve) A sugestão da rodada 6 de mostrar o 57% também em "they approved it" (s11). Não foi aplicada: o espelho segue a
+8. Se respiro tem de ser tela sem texto.
+9. A régua de mundo real, agora em 44,9% da fala: se o documento original fotografado deveria contar.
+10. Os pisos do canal para a taxa de pedido e para a maior janela sem registro.
+11. (leve) A sugestão da rodada 6 de mostrar o 57% também em "they approved it" (s11). Não foi aplicada: o espelho segue a
     decisão aprovada da Abertura (57% em s01).
-15. Pedir ao DOT&PF a autorização para o original do estudo de 2018.
-16. (voltou na segunda revisão) O número ou texto pousado sobre REGISTRO (§5.1; s28 plano 3 entrou na terceira revisão, e
-    s24 plano 1 na sexta): leitura do montador, a confirmar pelo diretor-de-arte e pelo Lucas. Desde a sexta revisão, cada
+12. Pedir ao DOT&PF a autorização para o original do estudo de 2018.
+13. O número ou texto pousado sobre REGISTRO (§5.1), agora em sete cenas: s01, s24, s28, s33, s35, s51 e s53. Saíram s29
+    plano 2, s31 plano 5 e s56 plano 2, que viraram DADO ou PRANCHA sem foto. Em s01 e s35, o número pousa sobre foto de outro
+    ano, que já leva o aviso do ano no mesmo quadro. É leitura do montador, a confirmar pelo diretor-de-arte e pelo Lucas; cada
     texto entra na palavra que o diz, nunca antes.
-17. (segunda revisão) A bandeira ao lado de nome de país fora da PRANCHA (s03, s44 e, na terceira revisão, s10).
-18. **Decidida pelo Lucas em 27/09** (§0g): logo de órgão federal e de outras instituições, só o nome escrito.
-19. (lembrete da terceira revisão, sem pergunta nova) Quantos picos o vídeo tem: as 25 candidatas a showpiece são as da roupa
-    do diretor-de-arte §2 (a abertura, as parcelas e o fecho; 21 até a quarta revisão, sem a abertura e sem s60 a s62); a
-    escolha é do diretor-de-arte, e o número de picos é pendência da roupa dele (§6).
-20. **Decidida pelo Lucas em 27/09** (§0g): sem foto do ano, o plano vira mapa ou desenho; foto de outro ano não entra.
+14. (lembrete, sem pergunta nova) Quantos picos o vídeo tem: as 25 candidatas a showpiece são as da roupa do diretor-de-arte §2,
+    e a escolha é dele.
+15. Para o Lucas e o Mateus, não decisão de vídeo: a divergência de contrato do §8, item 1. Desde esta revisão, a linha diz
+    também que as mascotes de s26 se acharam sem permissão, e a cena virou desenho.
+16. Para o regente-de-imagem, não para o Lucas: os 15 conflitos de texto no ar (10 na sexta; s54 na sétima; s34, s41, s55 e s57
+    na oitava), em que o corte para a cena seguinte vem antes de 2,0 s da palavra (§0f), com a decisão do Claude central de
+    27/09: a palavra exata de entrada é da regência, e a `_nota_texto_no_ar` é proposta (§0g).
 
-Para o regente-de-imagem, e não para o Lucas (sexta revisão): os 15 conflitos de texto no ar (10 na sexta; s54 na sétima; s34, s41, s55 e s57 na oitava), em que o corte para a cena
-seguinte vem antes de 2,0 s da palavra (§0f; em `_decisoes_pendentes`, a pendência PARA O REGENTE-DE-IMAGEM). Desde a nona
-revisão, a mesma pendência leva a decisão do Claude central: a palavra exata de entrada é da regência, e a `_nota_texto_no_ar`
-é proposta (§0g).
+Na lista de até a décima, **saíram duas, que o Lucas decidiu em 27/09**: a #9, o esquema declarado das rotas e dos corredores
+("Sim, tracejada e com aviso (Recomendado)"), e a #17, a bandeira ao lado de nome de país ("Só o nome escrito
+(Recomendado)"). As #8, #10, #18 e #20 já eram decididas e só guardavam o número.
 
-E uma divergência de contrato para o Lucas e o Mateus, que não é decisão de vídeo: a do §8, item 1. Na quarta revisão, a
-linha dela em `_decisoes_pendentes` passou a citar também a lista `documentos` e o dono das mascotes de s26.
+**Decididas pelo Lucas** (`_decisoes_do_lucas`, 13 entradas, cada uma com a mensagem literal e o que mudou no espelho):
+- em 27/09, na nona revisão (§0g): a cópia arquivada de página oficial do Alasca vale como fonte, com a data; vídeo do governo
+  do Alasca entra, o de jornal só com licença; logo de órgão federal e de outras instituições, só o nome escrito;
+- em 27/09, e mudada no mesmo dia: foto de outro ano entra com o aviso do ano, e sem nenhuma foto o plano vira mapa ou desenho
+  ("Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela"). A resposta de antes ("Não: sem foto do
+  ano, vira mapa ou desenho"), que a nona revisão tinha gravado, fica registrada como superada;
+- em 27/09, novas nesta revisão: país no mapa, o nome escrito, sem bandeira; rota que nunca foi construída, esquema tracejado
+  com Approximate route; documento de outra data, com o rótulo; documento antigo, a folha até 1,4× e a recriação mais perto; a
+  Trends de 1990, recriada; as fotos da Alaska State Library que só se compram não se compram; a exceção do DOCUMERICA; o
+  download da camiseta;
+- em 28/09: peça de acervo fotografada depois entra sem aviso do ano, como a página de documento.
+
+E uma divergência de contrato para o Lucas e o Mateus, que não é decisão de vídeo: a do §8, item 1 (a pendência 15).
 
 ## 6 · Cadeia referencial e candidatas a showpiece
 
@@ -1237,15 +1523,17 @@ As repetições são intencionais e declaradas em `_repeticao_intencional`:
 - a linha do preço, em s02, s23 e s30;
 - o mapa da estrada, em s03 e s59, e a estrada com o anel de Cascade Point dentro do palco de s44;
 - a lei, em s36 e s61, com o grifo no texto literal da AS 44.06.055;
-- o registro de 1974, em s01 e s62;
+- o YES do voto de 1974, no placar de s01 e no fecho de s62, sem os números (décima primeira revisão; até a décima, a mesma
+  foto nas duas, e o conferente mandou trocar a de s62);
 - Juneau do ar, de s01 (plano 3) reaparecendo na entrada de s03;
-- os retratos de Harris (s05, s25) e de Stoops (s26, s27, s31), que o pesquisa-pessoas entrega como o mesmo arquivo
-  (`_despacho_research` › `retratos`);
-- a foto que ancora no mapa dentro da mesma cena: Sitka em s07 (plano 2 → plano 3) e a obra da rodovia em s10 (plano 1 →
-  plano 2), na segunda revisão.
+- os cards de Harris (s05, s25) e de Stoops (s26, s27, s31): o mesmo card, só com nome e cargo, porque os retratos não se
+  acharam (décima primeira revisão; `_despacho_research` › `retratos`, com o resultado);
+- a foto que ancora no mapa dentro da mesma cena: Sitka em s07 (plano 2 → plano 3) e, desde a décima primeira revisão, a Ladd
+  Field em s09 (plano 2 → plano 3). A obra da rodovia de s10 deixou de ancorar: a virada é corte seco, porque nenhum ponto do
+  trecho da foto está em `needs.geo`.
 
 Os mesmos lugares em cenas diferentes pedem clipes diferentes: o Capitólio, Willow, a balsa, o Lynn Canal, o legislativo, a
-estrada, Fairbanks e Wasilla (`_despacho_research` › `mesmo_lugar_clipes_diferentes`).
+estrada, Fairbanks, Wasilla e, desde a décima primeira revisão, Juneau (`_despacho_research` › `mesmo_lugar_clipes_diferentes`).
 
 ## 7 · Capítulos (só para a descrição; nada disso vai à tela)
 
@@ -1299,12 +1587,17 @@ versão em inglês é de quem escreve a embalagem.
        na peça). Dizendo: "o `_documentos` de cada cena é o registro dela; a lista é a fila; as mascotes de s26 são suas, e o
        pesquisa-imagens não as caça; os folhetos e boletins da Divisão de Eleições foram lidos de cópia arquivada, que vale como
        fonte, com a data da captura (Lucas, 27/09/2026); site que recusa robô não se contorna".
+   - **Décima primeira revisão (28/09):** o research correu com estas listas e voltou. Lido ao pé da letra, o §1b perde agora
+     4 cenas com pedido (s07, s23, s44 e s52): s58 saiu, porque o plano 4 virou documento. No sentido inverso, só s55: s25 deixou
+     de pedir retrato. As listas de hoje: `cenas`, com 27 cenas e 40 planos; `retratos`, com o `resultado` de cada pessoa;
+     `documentos`, com 29 trechos a grifar; `logos`, sem pedido; e `geo`, nova, com o único pedido aberto (`thane-road-fim`).
 2. `drone` não é `modo`: vale só em `midia` (roupa §3). Não foi usado.
 3. O enum não tem prancha. O `desenho` cobre a PRANCHA e o fundo provisório da cauda.
 4. **`citacao` não é modelo da identidade** (roupa do editor-de-arte §6: "execute dentro de um dos cinco e diga qual"). A
    regra do espelho, desde a segunda revisão: o `motivo` de cada cena `citacao` diz o modelo em que ela se executa.
    - **REGISTRO**, com card de pessoa e a fala recriada com a fonte, quando há pessoa real identificada (identidade §5): s05
-     (Harris), s27 (Stoops), s41 (Kiehl) e s57 (Gladziszewski).
+     (Harris), s27 (Stoops), s41 (Kiehl) e s57 (Gladziszewski). Desde a décima primeira revisão, os cards de s05 e s27 saem só
+     com nome e cargo (os retratos não se acharam), e os de s41 e s57, com o retrato.
    - **DOCUMENTO recriado**, com o texto fiel e a fonte, quando a declaração é escrita e a voz não nomeia quem a fez. São dois
      casos diferentes:
      - s18 (folheto de 1978) é assinada por Frank Harris, mas o roteiro não o nomeia, porque a identidade com o Harris de 1982
@@ -1316,62 +1609,70 @@ versão em inglês é de quem escreve a embalagem.
 
 ## 9 · O que NÃO está provado
 
-- **Existência das imagens.** Que existam os registros de época pedidos (o voto de 1974, a corte de 1974, Fairbanks em
-  1977, Juneau e Sitka de 1900 a 1906, Ship Creek em 1914, as bases em 1939–1940, a obra de 1942, as eleições de 1978, 1982, 1994 e de outubro de 2000 em Juneau, a campanha de 1982, o legislativo de 1981), as
-  mascotes com licença e os clipes de Willow, do fim da estrada, das encostas e da balsa em Haines com a descrição nomeando o
-  lugar. É a pesquisa que prova. Se faltar, o plano muda de regime num re-espelho, com o mesmo id. Da segunda revisão: o clipe
-  do fim da estrada **em Cascade Point** (não em Echo Cove), a foto de Juneau em 1982 (s23) e a foto de Sitka e a da
-  obra da rodovia com o local na origem, que é o que permite a ancoragem no mapa (s07, s10); sem o local, corte seco.
-- **A geometria nova de s10.** A Glenn Highway, a Alaska Highway inteira, a rede continental e o ponto em que a Alaska Highway
-  a encontra ainda não existem (`_existe: false`); o traçado de hoje não é o de 1942, e a tela não o rotula assim. Os extremos
-  das duas rodovias e o nome daquele ponto vêm da fonte da geometria; que o palco precise do Canadá a leste de -125° é
-  possibilidade, não medida. É o pesquisa-geo que prova.
-- **O corredor do Taku em s44** (terceira, quarta e quinta revisões). A origem vem do FSEIS (o fim da Thane Road, em Juneau) e
-  do texto aprovado ("to the east"), e o caminho ao longo do Taku Inlet vem do FSEIS ("northeast along the Taku Inlet"). O fim
-  da Thane Road e esse caminho não estão na geometria em disco, e **nenhum traçado de corredor vai à tela**: o mapista só
-  desenha linha de GeoJSON real (§6c; até a quarta revisão, esta linha dizia "o traçado é do mapista", e isso contrariava o
-  ofício dele). Na tela vão o rio (`rio-taku-osm`), uma seta de Juneau rumo ao vale do rio e, se a pesquisa-geo o achar com o nome, o
-  contorno e o rótulo do Taku Inlet (`taku-inlet`, pedido novo). Que o braço de mar que chega à foz seja o Taku Inlet, e onde
-  ele começa, é a fonte da geometria que prova.
-  - A reta por terra (39 de 41 pontos) e o caminho pela água (sai de junto de Juneau, desce para o sudeste até cerca de
-    58,20° N e sobe até a foz) são contas minhas sobre os polígonos do NE 1:10M. O caminho saiu de uma busca em grade de
-    0,004° × 0,002°: não é rota, nem distância de estrada, nem prova de que a estrada seguiria esse caminho. É contexto, e
-    não se desenha (quinta revisão).
+- **O que a pesquisa não achou** (décima primeira revisão). O voto de 1974 (s62), a corte de 1974 (s13), as eleições de 1978
+  (s20) e 1982 (s29), a campanha de 1982 (s31), a segunda foto da sessão de 2017 (s56), a briga pública de 2018 (s58) e a
+  metade de Anchorage de s09 ficaram NÃO ACHADO pelo pesquisa-imagens, nos acervos abertos e no navegador do app
+  (research-imagens.md). O NÃO ACHADO é dele: o montador não buscou nada. Que não exista foto é o que a pesquisa diz, não prova.
+  Se uma aparecer com a origem conferida, o plano volta a registro num re-espelho, com o mesmo id.
+- **Os clipes da caça.** Os 23 planos de B-roll de hoje (a lista do §4.3) ainda não têm arquivo: a caça espera o pedido do
+  Lucas, e cada clipe passa pelo conferente. Continua sem prova, da segunda revisão: o clipe do fim da estrada **em Cascade
+  Point** (não em Echo Cove), o de Willow e o da balsa em Haines com a descrição nomeando o lugar.
+- **As fotos entregues.** O montador não abriu nenhuma. Arquivo, data e lugar na origem, crédito, aviso e enquadramento vêm do
+  `conferencia-midia.json` (`f1f699e3…`) e dos research-*.md. O conferente do espelho prova que cada foto ou retrato aprovado
+  tem, no objeto, o aviso do ano ou "sem aviso", como o veredito (21); o ano escrito em cada aviso foi conferido à mão contra o
+  `data_na_origem`, e o verificador não o compara.
+- **A geometria nova.** O conferente prova só que o arquivo existe em `_media/geo/` (`_existe`, 97 pedidos). O conteúdo, os
+  extremos de cada rodovia e a licença de cada camada vêm do `pauta-geo.json` e do research-geo.md, sem conferência minha. O
+  `thane-road-fim` ainda não existe.
+- **Os esquemas.** O caminho de cada esquema é o texto da fonte, entre aspas em `_esquema`. Que a linha tracejada o siga é do
+  mapista, e nenhuma geometria o prova: é esquema, declarado como aproximado na tela. Que o corredor do Taku sai do fim da Thane
+  Road vem do FSEIS ("from the end of Thane Road in Juneau, northeast along the Taku Inlet", p. 2-2).
+  - A reta por terra (39 de 41 pontos) e o caminho pela água de `s44._geografia` são contas minhas sobre os polígonos do NE
+    1:10M, numa busca em grade de 0,004° × 0,002°: não são rota, nem distância de estrada, nem o traçado do esquema. São
+    contexto, e não se desenham.
   - O nome Gastineau Channel para o canal junto de Juneau vem do dossiê (evt-03.7) e da proximidade, não da geometria.
   - As distâncias e rumos de `_geografia` são contas minhas sobre as coordenadas em disco (grande círculo), sem outra
     conferência.
+  - O Taku Inlet e o Lynn Canal são pontos do GNIS: o rótulo fica onde o GNIS põe o ponto, não num contorno.
 - **A frota de 2009** (quarta revisão). Quais navios serviam o Lynn Canal em 2009 não está no dossiê. Por isso s52 não liga o
   clipe a 2009.
-- **A camiseta "Anchorage Stealers"** (terceira revisão). Que a foto exista fora da coluna do ADN, quem responde por ela (o
-  museu, que a coluna credita, ou o jornal) e o que a origem diz sobre uso: a pesquisa confere. Que o Alaska State Museum é
-  órgão do Estado não está no dossiê.
-- **O despacho de documentos** (terceira revisão). Os trechos a grifar foram copiados das passagens do `fundamento.json`; as
-  páginas e os localizadores são os de lá. Nenhuma URL foi aberta nesta revisão.
-- **Os nomes escritos** (terceira revisão). As 12 entidades estão como o dossiê as registra; o nome oficial é o pesquisa-logos
-  que confere.
+- **O despacho de documentos.** Os trechos a grifar foram copiados das passagens do `fundamento.json` e, nesta revisão, das
+  cópias locais (`ca9_2011.pdf.txt`, linhas 87-88; `fseis.txt`, o ROD, linhas 233-238). Nenhuma URL foi aberta. O conferente prova que a voz de cada
+  grifo cai nos planos, não que a página entregue traga o trecho no lugar em que a arte o grifará.
+- **Boucher v. Engstrom** (s13, plano 1). O texto vem do Caselaw Access Project (`cap-boucher.json`), pela pesquisa-documentos.
+  Que a nota da ordem de 27/06/1974 confirma o "that same year" da voz é leitura minha, em `conferir`, para o
+  verificador-de-fatos.
+- **A decisão de 2009.** Continua NÃO ACHADA, e o nome e o número do caso da corte distrital não estão no dossiê. A tela mostra a
+  de 2011, com o rótulo "upheld on appeal, 2011".
+- **O primeiro anúncio da Football Fannie** (s28). O texto só existe, em fonte aberta, na citação da coluna do ADN; o original
+  do Juneau Empire de 8/10/1982 não se achou, e o texto fica NÃO CONFERIDO no original (research-documentos.md §1). Que esse
+  item da lista de fontes seja a peça inaugural que a coluna cita continua leitura minha.
+- **Os nomes escritos.** As 12 entidades estão no espelho como o dossiê as registra; o nome oficial está na `pauta-logos.json`,
+  e o montador não o conferiu.
 - **O número pousado sobre o registro** (§5.1) é leitura do montador, sem decisão do Lucas nem confirmação do diretor-de-arte.
 - **Texto no ar.** O espelho declara os tempos; que o texto fique no ar 2,0 s é da arte, e só o quadro renderizado prova. O
-  conferente mede a trava que o objeto do plano escreve (a palavra entre aspas), e não o que a arte fará: uma trava que o
-  regente ou o editor-de-arte ponham noutra palavra ele não vê (quinta revisão). A varredura da sexta reconhece número dito
-  por extenso e frase citada entre aspas no objeto; texto de tela descrito sem número nem aspas ela não vê (§0f, conhecidos).
-- **O primeiro anúncio da Football Fannie** (quinta revisão). Que o item "Juneau Empire, October 8, 1982, 7" da lista de fontes
-  seja a peça inaugural que a coluna cita é leitura minha (o primeiro dia dos anúncios foi 8/10/1982); a pesquisa confere no
-  original.
-- **A composição da Suprema Corte em 1974** (quinta revisão) não está no dossiê. Por isso s13 exige que a foto dos juízes seja
-  datada de 1974 na origem, sem afirmar quem eram.
-- **A voz de cada grifo** (quinta revisão). `voz_do_grifo` é a leitura do montador de qual trecho da fala cita cada peça; o
-  conferente prova que essas palavras são ditas nos planos listados, não que a paráfrase seja fiel. A fidelidade é do
-  verificador-de-fatos.
-- **A decisão de 2009.** O nome e o número do caso da corte distrital não estão no dossiê; o espelho pede, não afirma.
-- **Licenças.** Nenhuma licença foi conferida. As marcações ("a conferir", "domínio público federal") vêm do dossiê e do
-  midia.md, não de conferência nova.
-- **As fontes da Divisão de Eleições.** Boletins e folhetos foram lidos de cópia arquivada, que vale como fonte desde a
-  decisão do Lucas de 27/09. A data de cada captura vem do dossiê; ninguém reabriu as cópias nesta revisão.
+  conferente mede a trava que o objeto do plano escreve (a palavra entre aspas), e não o que a arte fará. A varredura reconhece
+  número dito por extenso e frase citada entre aspas no objeto; texto de tela descrito sem número nem aspas ela não vê. Os
+  rótulos de Anchorage e de Fairbanks do mapa novo de s09 (1,83 s e 1,25 s no ar, se entrarem com a voz) estão só na
+  `_nota_texto_no_ar`, como os outros rótulos de lugar: o conferente não os mede.
+- **A voz de cada grifo.** `voz_do_grifo` é a leitura do montador de qual trecho da fala cita cada peça; o conferente prova que
+  essas palavras são ditas nos planos listados, não que a paráfrase seja fiel. A fidelidade é do verificador-de-fatos.
+- **A série de s54.** Que o formulário do Department of Revenue a entregue pelo navegador do app não está provado; sem ela, a
+  tela fica com os pontos extremos da fonte.
+- **Licenças.** O montador não conferiu licença nenhuma. As marcações vêm do dossiê, do midia.md e, desde esta revisão, dos
+  vereditos do conferente, que julga licença e fonte, e dos research-*.md. Os 16 textos de licença e de nota do despacho que
+  dizem "no navegador do app, com o Lucas vendo" são de antes da regra de 27/09 ("O navegador do app, sem o Lucas
+  acompanhando", CLAUDE.md, "A marca"), que vale para eles: não os mudei, porque o despacho não pediu.
+- **As fontes da Divisão de Eleições.** Boletins e folhetos foram lidos de cópia arquivada, que vale como fonte desde a decisão do
+  Lucas de 27/09. A pesquisa-dados reabriu as 16 cópias em 27/09 (research-dados.md); o montador não as reabriu.
+- **O research-geo.md** (§1, linha 71) ainda diz que o esquema declarado é DECISÃO DO LUCAS PENDENTE. A identidade §6 decidiu
+  depois, e o espelho segue a identidade; o arquivo é do pesquisa-geo.
 - **Escuta.** Ninguém ouviu as bordas. Elas foram provadas contra o `words.json`, que foi verificado pelo som em 26/09 (CLAUDE.md,
-  pré-v1 item 3). O silêncio da borda da cauda foi medido (−68,8 dB), não ouvido.
+  pré-v1 item 3). A borda nova de plano em s09 (82,9 s) cai na pausa entre "bases" (acaba em 82,89) e "went" (82,922), pelo
+  `words.json`, sem escuta. O silêncio da borda da cauda foi medido (−68,8 dB), não ouvido.
 - **O pipeline.** A conta de quadros reproduz as duas linhas do `renderizar.mjs` e do `xml-premiere.mjs`; nenhum dos dois rodou.
-- **s44 numa sessão só.** Que o mapista consiga executar o palco de 36 s com o fiorde ancorado numa sessão só é suposição do
-  ofício (§11), não medida.
+- **s44 numa sessão só.** Que o mapista consiga executar o palco de 36 s, agora com os esquemas e o fiorde ancorado, numa sessão
+  só é suposição do ofício (§11), não medida.
 - **Respiro:** não medido (sem HTML).
 
 ## Anexo · As 61 cenas
@@ -1382,33 +1683,33 @@ versão em inglês é de quem escreve a embalagem.
 | s02 | 13,600 | 4,533 | documento | animacao | documento | A promessa: uma linha nas cédulas seguintes, o preço |
 | s03 | 18,133 | 8,034 | mapa | animacao | mapa › mapa | Sem estrada para o continente: 43 milhas e fim |
 | s04 | 26,167 | 8,500 | footage | footage | footage › footage | Tudo chega por ar ou por mar |
-| s05 | 34,667 | 11,733 | citacao | foto | citacao › citacao | Harris, 1982: caro e demorado demais |
+| s05 | 34,667 | 11,733 | citacao | animacao | citacao › citacao | Harris, 1982: caro e demorado demais |
 | s06 | 46,400 | 6,733 | foto | foto | foto › foto | Juneau, capital cedo; a cidade nasceu do ouro |
 | s07 | 53,133 | 22,367 | documento | foto | documento › foto › mapa › documento | A capital em etapas: 1900, Sitka, 1906, 1912 |
 | s08 | 75,500 | 2,600 | mapa | animacao | mapa | A população vai para o norte |
-| s09 | 78,100 | 7,067 | foto | foto | foto › foto | Ferrovia e guerra: o norte cresce |
+| s09 | 78,100 | 7,067 | foto | foto | foto › foto › mapa | Ferrovia e guerra: o norte cresce |
 | s10 | 85,167 | 13,366 | foto | foto | foto › mapa › mapa › mapa | As rodovias ligam Anchorage ao continente; Anchorage e Fairbanks: de 15% a mais da metade |
 | s11 | 98,533 | 12,100 | dados | animacao | dados › dados | Não, não, sim: 1960, 1962 e 1974 |
 | s12 | 110,633 | 16,934 | mapa | animacao | mapa › mapa › mapa › mapa | O voto de 1974 no mapa e a regra das 30 milhas |
-| s13 | 127,567 | 9,266 | foto | foto | foto › documento | A Suprema Corte mantém; o procurador resume a premissa |
+| s13 | 127,567 | 9,266 | documento | animacao | documento › documento | A Suprema Corte mantém; o procurador resume a premissa |
 | s14 | 136,833 | 6,567 | footage | footage | footage › footage | Decidido sair; faltava o lugar e o preço |
 | s15 | 143,400 | 16,667 | mapa | animacao | mapa › mapa › mapa | 1976: três locais, Willow vence |
 | s16 | 160,067 | 12,133 | foto | foto | foto › foto › desenho | Fairbanks: o comitê que queria o preço primeiro |
 | s17 | 172,200 | 11,033 | desenho | animacao | desenho › desenho | A regra da Frank e o que é um título |
 | s18 | 183,233 | 9,400 | citacao | animacao | citacao › citacao | 1978: "o verdadeiro objetivo é impedir a ida para Willow" |
 | s19 | 192,633 | 14,467 | documento | animacao | documento › documento | Novembro de 1978: a Frank e o dinheiro na mesma cédula |
-| s20 | 207,100 | 9,300 | foto | foto | foto › dados › dados | As duas escolhas: sim à Frank, não aos títulos |
+| s20 | 207,100 | 9,300 | dados | animacao | dados › dados › dados | As duas escolhas: sim à Frank, não aos títulos |
 | s21 | 216,400 | 2,933 | footage | footage | footage | Willow: um lugar e nenhum dinheiro |
 | s22 | 219,333 | 5,634 | foto | foto | foto | 1981: o legislativo reescreve as regras |
 | s23 | 224,967 | 20,066 | documento | foto | documento › documento › dados › foto | 1982: a pergunta e o preço impresso |
 | s24 | 245,033 | 6,400 | footage | footage | footage › footage | Tudo ou nada: Willow ou Juneau |
-| s25 | 251,433 | 9,667 | desenho | foto | desenho › desenho | Harris × Clark no folheto de 1982 |
-| s26 | 261,100 | 10,133 | documento | foto | documento › documento › documento | Access Annie contra Football Fannie |
-| s27 | 271,233 | 12,134 | citacao | foto | citacao › citacao | Stoops, 2026: "fazer piada do processo inteiro" |
+| s25 | 251,433 | 9,667 | desenho | animacao | desenho › desenho | Harris × Clark no folheto de 1982 |
+| s26 | 261,100 | 10,133 | desenho | animacao | desenho › desenho › desenho | Access Annie contra Football Fannie |
+| s27 | 271,233 | 12,134 | citacao | animacao | citacao › citacao | Stoops, 2026: "fazer piada do processo inteiro" |
 | s28 | 283,367 | 9,966 | dados | foto | dados › foto › foto | 28 times da NFL e 3 estádios: um quarto do preço |
-| s29 | 293,333 | 10,434 | dados | foto | dados › foto | A pesquisa dava sim; a urna deu não |
+| s29 | 293,333 | 10,434 | dados | animacao | dados › dados | A pesquisa dava sim; a urna deu não |
 | s30 | 303,767 | 6,933 | documento | animacao | documento | O porquê se discute; o objeto do não, não |
-| s31 | 310,700 | 21,800 | desenho | foto | desenho › desenho › desenho › citacao › foto | Por que o não venceu: cada versão com dono |
+| s31 | 310,700 | 21,800 | desenho | animacao | desenho › desenho › desenho › citacao › desenho | Por que o não venceu: cada versão com dono |
 | s32 | 332,500 | 8,300 | documento | animacao | documento | O não de 1982 revoga todas as leis da mudança |
 | s33 | 340,800 | 13,267 | footage | footage | footage › footage › mapa | 1994: Wasilla, sem preço, na rede de estradas |
 | s34 | 354,067 | 9,033 | citacao | animacao | citacao › citacao | "Desta vez, sem etiqueta de preço" |
@@ -1423,7 +1724,7 @@ versão em inglês é de quem escreve a embalagem.
 | s43 | 445,167 | 17,966 | footage | footage | footage › documento | O estudo ambiental e a capital isolada |
 | s44 | 463,133 | 36,067 | mapa | footage | mapa › mapa › mapa › mapa › footage › mapa › mapa | O problema no mapa: gelo, fronteira, dois corredores e a saída pelo Canadá |
 | s47 | 499,200 | 6,367 | footage | footage | footage | A rodovia oficial de Juneau é uma balsa |
-| s48 | 505,567 | 12,533 | mapa | foto | mapa › mapa | 2000: Knowles escolhe a margem leste, mas não a leva adiante |
+| s48 | 505,567 | 12,533 | mapa | animacao | mapa › mapa | 2000: Knowles escolhe a margem leste, mas não a leva adiante |
 | s49 | 518,100 | 6,833 | foto | foto | foto › dados | Juneau dividida: 79 votos |
 | s50 | 524,933 | 9,334 | mapa | animacao | mapa › mapa | 2006: a estrada que terminava numa balsa |
 | s51 | 534,267 | 7,000 | footage | footage | footage › footage | 41 corredores de avalanche e 680 milhões |
@@ -1431,11 +1732,11 @@ versão em inglês é de quem escreve a embalagem.
 | s53 | 548,533 | 11,100 | footage | footage | footage › footage | O dinheiro acabou: o petróleo pagava 90% |
 | s54 | 559,633 | 6,800 | dados | animacao | dados | O petróleo cai mais de três quartos |
 | s55 | 566,433 | 11,700 | desenho | foto | desenho › desenho | 2016: Walker prefere "No Action" |
-| s56 | 578,133 | 6,800 | foto | foto | foto › foto | Janeiro de 2017: a Assembleia de Juneau ainda apoia, 6 a 3 |
+| s56 | 578,133 | 6,800 | foto | foto | foto › dados | Janeiro de 2017: a Assembleia de Juneau ainda apoia, 6 a 3 |
 | s57 | 584,933 | 10,400 | citacao | foto | citacao › citacao | Gladziszewski: "é uma estrada até outra balsa" |
-| s58 | 595,333 | 13,834 | documento | foto | documento › documento › documento › foto | 2018: No Action definitiva; a estrada também esbarrou num preço |
+| s58 | 595,333 | 13,834 | documento | animacao | documento › documento › documento › documento | 2018: No Action definitiva; a estrada também esbarrou num preço |
 | s59 | 609,167 | 6,533 | footage | footage | footage › mapa | A estrada ainda para em Cascade Point |
 | s60 | 615,700 | 17,367 | dados | animacao | dados › dados › dados | A pergunta mudou: se sair, depois quanto |
 | s61 | 633,067 | 8,800 | documento | animacao | documento › documento | Desde 1994, a lei pergunta o preço primeiro |
-| s62 | 641,867 | 4,200 | foto | foto | foto | O sim foi real |
+| s62 | 641,867 | 4,200 | desenho | animacao | desenho | O sim foi real |
 | s63 | 646,067 | 20,000 | desenho | animacao | desenho | Tela final do YouTube (20 s sem voz): fundo provisório |

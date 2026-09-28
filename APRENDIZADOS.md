@@ -743,3 +743,28 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** a licença de uma fonte não depende do nicho. Um canal de culinária usaria os
   mesmos federais, o mesmo Commons e as mesmas regras de crédito. O motor poderia guardar o levantamento como
   catálogo comum, com a data da leitura, e o `buscar-midia` poderia ganhar o SVS. Vale avisar o Lucas.
+
+### 42. O `entregar` não serve à foto de jornal, e dois acervos limitam o tamanho que dão de graça
+
+- **Problema:** na 3ª passada do `pesquisa-imagens` do Juneau (27/09/2026, noite) apareceram cinco limites:
+  - o `entregar` do `buscar-midia` recusou a foto do Juneau Empire (saída 3): a linha do manifesto não tem selo,
+    porque a foto não veio pelo `buscar-midia`. E, com selo, ele gravaria licença `a_confirmar`, que o canal proíbe
+    para foto de jornal. O motor não tem caminho para entregar foto que entra por decisão de licença do canal (aqui,
+    o `marca/midia.md` §7.5);
+  - o `entregar` copia a licença que o Commons declara e não leva o crédito que o canal pede à fonte. No s22, o
+    Commons diz "Public domain", e o crédito na tela é "State of Alaska / Alaska State Library";
+  - o `buscar` consulta só as 3 primeiras frases de cada chamada (`maxFrases = 3`), sem avisar;
+  - o Alaska's Digital Archives (vilda) mostra, das fotos da Alaska State Library, só a cópia grátis de 720 px de
+    largura. O `info.json` do IIIF diz o máximo. A alta resolução é compra;
+  - o Flickr só libera o download até 1024 px em conta gratuita, mesmo com o original maior.
+- **O que resolveu:**
+  - a foto de jornal se entregou à mão, com os campos da roupa do `pesquisa-imagens` (§5) e o sha256 do rascunho
+    julgado. Os precedentes são `_media/pessoa/s41/` e `_media/foto/s56/`, e o Claude central aceitou a entrega
+    (`out/juneau/_pesquisa/research-imagens.md`, "3ª passada");
+  - o crédito do s22 viaja no veredito do conferente;
+  - a foto do vilda se mede pelo `info.json` antes de ser proposta (`marca/midia.md` §7.5).
+- **Para o motor:** o `entregar` poderia aceitar uma linha declarada à mão, com a licença e a base da decisão do
+  canal, e um campo de crédito que sobreponha o da fonte. O `buscar` deveria avisar quando corta frases.
+- **Por que serve a qualquer canal:** todo canal que usa foto de jornal por decisão própria, ou uma fonte com crédito
+  diferente do que o Commons declara, cai nos mesmos limites. O teto de 720 px do vilda e o de 1024 px do Flickr valem
+  para qualquer nicho. Vale avisar o Lucas.

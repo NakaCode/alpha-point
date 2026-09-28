@@ -393,6 +393,26 @@ especialista, e vencem o que uma roupa (`agentes/<id>.md`) disser em contrário.
     sala de imprensa federal, não é domínio público por essa lei: sem licença, não entra (§7.5, último
     item). O DVIDS avisa o mesmo na política dele, e soma duas ressalvas (insígnia e selo militar podem ser
     marca registrada; o uso é por conta de quem usa), que o `buscar-midia` grava em cada item.
+  - **A exceção do DOCUMERICA** (Lucas, 27/09/2026, 23:1x de Brasília).
+    - A pergunta: "Fotos do DOCUMERICA (EPA, anos 1970, 22 mil fotos na NARA): a NARA diz que não conhece
+      restrição de direitos e que não é preciso permissão escrita, mas os fotógrafos eram freelancers contratados,
+      e nenhum texto diz com quem ficaram os direitos. Pela marca, foto de contratado sem licença não entra.
+      Abrimos uma exceção para o DOCUMERICA?"
+    - A resposta: "Sim, abrir exceção (Recomendado)". A opção dizia: "O centro de Fairbanks de 1973 entra na cena
+      16, com 'Photo from 1973' na tela. O risco de reclamação é menor que o das fotos de jornal que você já
+      aceitou. A série fica aberta para os próximos vídeos."
+    - **O que cobre:** as fotos da série DOCUMERICA da NARA (série 542493, Record Group 412, EPA, 1972 a 1977),
+      item a item, quando o registro do item no catálogo diz `useRestriction` "Unrestricted". A NARA explica o que
+      isso quer dizer na página das fotos dela no Flickr (https://www.archives.gov/social-media/flickr-faqs.html,
+      lida em 27/09/2026): "Their use restriction status in our online catalog is 'unrestricted.' Therefore, no
+      written permission is required to use them."
+    - **Como entra:** com a fonte na tela, como no §7.5, porque não é domínio público provado: o fotógrafo e a
+      origem, na forma do `identidade.md` §7 (ex.: `Dennis Cowals / National Archives`). A pergunta não tratou do
+      crédito, e vale o caminho mais conservador. O aviso do ano segue a `identidade.md` §6.
+    - **Na procedência:** a URL do item no catálogo, o `useRestriction`, o texto da NARA copiado e a base
+      `midia.md §7.3, exceção do DOCUMERICA (Lucas, 27/09/2026)`.
+    - **Não cobre:** outra série da NARA feita por contratado, nem foto do DOCUMERICA cujo item não diga
+      "Unrestricted".
   - A sala de imprensa do **governo do Alasca** não entra por esta regra: a foto e o vídeo dela são do governo
     do Alasca (§7.5), e o documento dela, §7.1.
 - **Ficam fora**: Pexels e Pixabay, e toda outra fonte gratuita que esta seção não nomeia: Openverse, The Met,
@@ -581,6 +601,10 @@ do Estado e de jornal, na 3ª (§7.5).
     alta resolução pede formulário e pagamento: é compra, e só com o sim do Lucas.
   - A busca é pelo navegador do app, pelo Claude central: o robots do site veta as buscas.
   - A foto pequena segue a exceção de caso muito específico (`identidade.md` §5): a prioridade é a foto grande.
+  - **A cópia grátis tem 720 px de largura.** O IIIF do vilda (`/iiif/2/<coleção>:<id>/info.json`) deu 720×485,
+    720×582 e 720×595 nos três itens da ASL conferidos em 27/09/2026. É menos que o piso da foto pequena, de 800 px
+    no lado maior (`identidade.md` §5). Na prática, a foto da ASL só entra com a alta resolução comprada. Antes de
+    propor uma, meça o `info.json` do item.
   - A pergunta tratou das fotos. Documento da biblioteca continua no §7.1 (só com permissão clara), e vídeo dela
     não foi perguntado.
 - **Foto ou vídeo de qualquer outra origem sem licença** (prefeitura, empresa, particular, site de terceiro,

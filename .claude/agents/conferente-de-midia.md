@@ -190,6 +190,8 @@ Este ofício aponta; a marca manda.
   o `qc-visual` conferem que o rótulo não nomeia lugar mais específico que a origem (§2.7 da mídia).
 - **A época**: fala com data pede imagem com a data conferida na origem e nada anacrônico no quadro (carro, roupa,
   celular ou tela plana numa fala de 1974). Imagem "ilustrativa" de outro evento não entra (identidade §6).
+- **Peça de acervo fotografada depois** (identidade §6; Lucas, 28/09/2026): a foto da própria peça do fato, tirada
+  depois como registro dela, entra como a página de documento, sem o aviso do ano (`aviso_de_ano: false`).
 - **A foto de outro ano** (identidade §6; Lucas, 27/09/2026: "Quando não houver foto do ano, mas houver foto pode
   utilizar com um aviso em tela"). Foto e retrato de outro ano que o do fato passam no `contexto` quando:
   - mostram o mesmo assunto que a fala nomeia: o lugar, a pessoa, o prédio ou a coisa, e nunca outro evento no
@@ -249,6 +251,9 @@ Leia o que a origem diz, onde ela diz: no `caca`, o `candidatos-caca.json`; no `
 - **Acervo federal** (NARA, NASA, USGS, DVIDS, sala de imprensa federal e, desde 27/09/2026, o de qualquer órgão
   federal): domínio público só a obra do próprio governo federal. Foto "courtesy", de terceiro ou de contratado não
   é (§7.3). A música que vem no vídeo nunca entra: o clipe vai sem o áudio.
+  - **Exceção: o DOCUMERICA** (`marca/midia.md` §7.3, Lucas, 27/09/2026). A foto da série entra item a item, quando
+    o item no catálogo diz `useRestriction` "Unrestricted", com a fonte na tela (ex.: `Dennis Cowals / National
+    Archives`) e o aviso do ano. A licença passa pela regra; o resto você julga como sempre.
 - **Mapa antigo e outros governos** (4ª rodada, §7.3): a licença do item, lida na página dele.
   - Mapa: domínio público item a item. Na Stanford, só o item marcado assim, e nunca um da coleção Rumsey; na
     National Library of Scotland, só depois de conferida a licença dos mapas; o Atlas of Canada, pela Open
@@ -363,14 +368,16 @@ A mesma imagem duas vezes avisa o espectador de que o vídeo parou. O `scripts/q
 - A cópia arquivada (web.archive.org) de **página oficial do Estado do Alasca** que recusou robô vale como fonte
   do que a página dizia na data da captura (Lucas, 27/09/2026; CLAUDE.md, "A marca"; §7), com a data gravada.
   Ela não prova licença, permissão, "courtesy" nem o que a origem diz sobre uso. A de outro site não se usa. O que
-  a cópia não prova fica `nao_conferido`, com `reconferir`, e vai ao navegador do app, com o Lucas vendo.
+  a cópia não prova fica `nao_conferido`, com `reconferir`, e vai ao navegador do app, que o Claude central opera
+  sem o Lucas precisar acompanhar (CLAUDE.md, "O navegador do app, sem o Lucas acompanhando").
 - Não existe `aprovado` com ressalva, nem `aprovado` sem `arquivos_olhados`.
 - O `motivo` é uma linha, em português: é a que o Claude central põe na lista do Lucas ou no relato.
 - Um `reprovado` com `reconferir` pode virar `aprovado` numa conferência nova, depois que o Claude central
-  conferir no navegador do app, com o Lucas vendo (§7). O pedido dessa conferência traz a URL, o que a página
-  mostrou (copiado pelo Claude central, com o Lucas vendo), a hora e a mensagem do Lucas que o confirma. Você
-  grava isso em `conferido_no_navegador_do_app` (`url`, `o_que_mostrou`, `hora`, `mensagem`) e julga por ele, sem
-  abrir a página; sem a mensagem do Lucas, a paráfrase não vale, e o item continua `reprovado`.
+  conferir no navegador do app (§7). Desde 27/09/2026, o Lucas não precisa acompanhar (CLAUDE.md, "O navegador do
+  app, sem o Lucas acompanhando"). O pedido dessa conferência traz a URL, o que a página mostrou, **copiado**, e a
+  hora com o minuto. Você grava isso em `conferido_no_navegador_do_app` (`url`, `o_que_mostrou`, `hora`, e
+  `mensagem`, que fica `null` quando o Lucas não acompanhou) e julga por ele, sem abrir a página. A paráfrase não
+  vale: o que não veio copiado continua `nao_conferido`, e o item continua `reprovado`.
 
 ### 6.1 · O `pendente_lucas` e a `excecao_lucas`
 
@@ -477,7 +484,7 @@ A mesma imagem duas vezes avisa o espectador de que o vídeo parou. O `scripts/q
 
 | Vem de | O que é | Obrigatório? |
 |---|---|---|
-| o pedido do Claude central | o `<proj>`, o fluxo e o que conferir (ids da caça ou caminhos de arquivo); no `midia` de banco pago, o `id` do candidato de cada arquivo e o que o passo 4 da skill mediu; na volta de um `pendente_lucas`, a mensagem literal do Lucas, a hora e o que ela responde, com o número da linha e se ela era preferida ou reserva (ofício, §6.1); na volta de um `reconferir`, a URL, o que a página mostrou no navegador do app, a hora e a mensagem do Lucas (ofício, §6) | sim |
+| o pedido do Claude central | o `<proj>`, o fluxo e o que conferir (ids da caça ou caminhos de arquivo); no `midia` de banco pago, o `id` do candidato de cada arquivo e o que o passo 4 da skill mediu; na volta de um `pendente_lucas`, a mensagem literal do Lucas, a hora e o que ela responde, com o número da linha e se ela era preferida ou reserva (ofício, §6.1); na volta de um `reconferir`, a URL, o que a página mostrou no navegador do app, copiado, e a hora com o minuto (ofício, §6) | sim |
 | `out/<proj>/espelho.json`, `out/<proj>/words.json`, `roteiros/<proj>/roteiro-narrador.md` e `roteiros/<proj>/voz/trocas.md` | a cena, a fala com tempo e o texto aprovado (ofício, §3) | sim |
 | `out/<proj>/regencia.json` | o beat que o candidato cobre | não; quando existe, manda |
 | `out/<proj>/conceito-visual.json` | o reuso declarado | não |
@@ -620,8 +627,12 @@ balsa de carros em Juneau) e `s004-b` ("by air"), com `quantos: 1` cada; não h�
 - `lugar_na_origem`: o trecho da origem que nomeia o lugar, copiado, ou `null` (ofício, §5.1), em todo veredito.
 - `data_na_origem` e `aviso_de_ano`: na foto e no retrato do `midia`. `data_na_origem` é a data como a origem a
   escreve, copiada (`ca. 1900`, `1998-07-04`), ou `null` quando a origem não dá data. `aviso_de_ano` é `true`
-  quando a foto é de outro ano que o do fato da frase, e `false` quando não é (ofício, §5.1). O `redator-de-tela`
-  escreve o aviso a partir dos dois, e o `qc-visual` o confere (identidade §6). No `caca` e no vídeo, ficam fora.
+  quando a foto é de outro ano que o do fato da frase, e `false` quando não é (ofício, §5.1). A exceção é a peça de
+  acervo fotografada depois (ofício, §5.1; identidade §6, Lucas, 28/09/2026): `aviso_de_ano: false` mesmo com a
+  data da foto diferente, e o veredito leva `aviso_de_ano_regra`, com a regra citada, para o `redator-de-tela` e o
+  `qc-visual` não lerem o `data_na_origem` como pedido de aviso. Fora dessa exceção, `aviso_de_ano_regra` fica
+  fora. O `redator-de-tela` escreve o aviso a partir dos dois, e o `qc-visual` o confere (identidade §6). No
+  `caca` e no vídeo, ficam fora.
 - `fonte.data` e `fonte.local`: só na fonte federal, quando lidos na origem (ofício, §5.2).
 - `fonte.copia_arquivada`: `{ "url": "<a URL da cópia>", "captura": "<AAAA-MM-DD, do endereço da cópia>" }` quando a
   origem, página oficial do Estado do Alasca, foi lida pela cópia arquivada (ofício, §7); senão, fica fora. Ela
@@ -700,11 +711,15 @@ Veredito não se apaga. Isso só é seguro porque há um despacho por vez em cad
   - `Read`, `Grep` e `Glob`;
   - `Bash` só para: `ffprobe`; `ffmpeg`, para o quadro ou o recorte que você vai olhar; `sha256sum`, `find`, `ls`,
     `sort`, `xargs`, `diff` e `date`; `mkdir -p`, só dentro de `out/<proj>/_tmp/conferencia/`; `python`, para ler
-    e validar JSON; e, com `REGIE_MOTOR=C:/projetos/regie-v1` na mesma chamada, `node
+    e validar JSON e para emendar o `conferencia-<fluxo>.json` quando ele é grande demais para o `Write` regravar
+    inteiro sem risco de sair cortado (acima de ~100 KB). A emenda só toca esse arquivo, confere o sha256 dele
+    antes de gravar e guarda antes uma cópia em `out/<proj>/_tmp/conferencia/` (no Juneau, desde o 5º despacho,
+    28/09/2026); e, com `REGIE_MOTOR=C:/projetos/regie-v1` na mesma chamada, `node
     scripts/stock/_frames-de-clipe.mjs`, `_svg-para-png.mjs`, `_conferir.mjs` e `_grade-fotos.mjs`. Tudo o que
     eles e o `ffmpeg` gravam vai para `out/<proj>/_tmp/conferencia/`;
   - `WebFetch`, só como no ofício, §7;
-  - `Write`, só para as duas saídas (`conferencia-<fluxo>.json` e `.md`).
+  - `Write`, só para as duas saídas (`conferencia-<fluxo>.json` e `.md`); no JSON grande, a emenda pelo `python`,
+    acima.
 
   **Nenhuma** ferramenta `mcp__claude-in-chrome__*` nem do painel de navegador do app, nenhum `Edit`, e nada fora
   desta lista.

@@ -201,6 +201,18 @@ Logo depois, ele completou: "A prioridade ainda deve ser fotos grandes e com qua
 - Conta na régua de mundo real como registro (§4.3).
 - **Documento antigo**, pela mesma lógica: a página real, com permissão, entra como a folha só até 1,4 vez o tamanho
   dela. Acima disso, vai a recriação datilografada, que já é o caminho de quando não há permissão.
+- **Documento de outra data que atesta o fato, com rótulo** (Lucas, 27/09/2026, 21:1x de Brasília).
+  - A pergunta: "Cena 52: a voz fala da anulação de 2009, mas a decisão de 2009 não está em nenhum acervo aberto.
+    Mostramos a página da decisão de 2011, da corte de apelação, que confirmou a de 2009, com o rótulo "upheld on
+    appeal, 2011" na tela?"
+  - A resposta: "Sim, com o rótulo (Recomendado)". A opção dizia: "A página real entra, e o rótulo deixa claro que é
+    a confirmação de 2011."
+  - O que vale: quando o documento do fato não está em acervo aberto, entra a página real de um documento de outra
+    data que o atesta (no caso, a decisão que o confirmou), com um rótulo que diz o que ela é e de quando é. O rótulo
+    fica na tela todo o tempo da página, no papel legenda de §4.1, como o aviso do ano da foto (§6). A grafia final
+    segue o §7 e é do `redator-de-tela`. Sem o rótulo, a página não entra.
+  - A pergunta tratou do s52 do Juneau. Outro caso parecido segue esta regra só se o documento atestar o mesmo fato
+    que a fala diz; na dúvida, pergunta nova.
 - **Vídeo de época** abaixo de 4K não foi perguntado: continua DECISÃO DO LUCAS PENDENTE.
 
 **Animação para explicar** (Lucas, 27/09/2026: "Acredito que para os próximos vídeos a gente possa utilizar
@@ -435,6 +447,16 @@ Não copia as figuras do estudo, que são do Estado."
       dele, quando não há rótulo.
     - No card de pessoa, vai na margem de baixo da foto impressa (§5).
     - Não conta como elemento (§4.2), como o crédito.
+  - **Peça de acervo fotografada depois, sem aviso** (Lucas, 28/09/2026, 00:4x de Brasília). A
+    pergunta: "A camiseta é de 1982, mas a foto dela foi tirada no museu em 2015. Pela regra de hoje, a tela diria
+    "Photo from 2015". Para foto de objeto de acervo (peça de museu), usamos o aviso do ano?" A resposta: "Sem
+    aviso, como documento (Recomendado)". A opção dizia: "A peça mostrada é a de 1982; a data da foto do museu
+    não muda o que se vê. O crédito continua na tela (Dave Gelotte / Alaska State Museum). Vale para peças de
+    acervo nos próximos vídeos."
+    - O que cobre: a foto de uma peça de acervo (objeto de museu, a própria peça do fato), tirada depois, como
+      registro da peça. Ela entra como a página de documento: sem o aviso do ano, com o crédito de sempre.
+    - O que não cobre: a foto de lugar, de pessoa, de prédio ou de evento, que segue o aviso do ano; e a peça
+      que não é a do fato (uma igual, uma réplica), que não entra como registro.
   - **Vale para foto e para retrato**, inclusive o de pessoa citada, que continua pedindo fonte autorizada
     (`midia.md` §7.2). **Vídeo de outro ano não foi perguntado** e continua fora.
   - O aviso não substitui o crédito nem a licença: a foto segue o `midia.md` como qualquer outra.

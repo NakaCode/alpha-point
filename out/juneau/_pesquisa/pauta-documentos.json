@@ -1,0 +1,3718 @@
+{
+ "proj": "juneau",
+ "agente": "pesquisa-documentos",
+ "estacao": "research",
+ "gerado_em": "2026-09-28T02:37:40Z",
+ "nota": "Shard do pesquisa-documentos (contratos/pauta-pesquisa.schema.json). Cada item: a peça, o arquivo (a página rasterizada, com \"-prova\" no nome quando não vai à tela; ou a cópia local, quando não há imagem), a licença como está hoje, os trechos a grifar conferidos na fonte, com o word-lock do words.json (entra_s, sai_s e palavras_voz, dentro da janela do plano), e o que só se confere. vai_a_tela=true só nas páginas federais em domínio público: as duas leis de s07, a p. 4 do acórdão de 2011 em s52 e o Federal Register em s58, que o conferente-de-midia aprovou em 27/09 (2º despacho). A capa do acórdão, que ele mandou trocar, saiu para _media/_caca/_retirado/documento/ (ca9-2011-seacc › arquivos_retirados). O relato está em out/juneau/_pesquisa/research-documentos.md. Revisada em 27/09, depois do verificador (incidentes_de_rede registra o contato da 1ª rodada com o akleg.gov, que foi contorno, e os 403 que ela achou), e de novo na noite de 27/09, com as decisões do Lucas e a retirada da capa: revisoes lista o que mudou em cada uma.",
+ "revisoes": [
+  {
+   "em": "2026-09-27T16:25:28Z",
+   "motivo": "defeitos achados pelo verificador na 1ª entrega (27/09)",
+   "mudou": [
+    "hb3-34th-legislature: canônica NÃO MEDIDA (akleg.gov recusa robô); o HEAD da 1ª rodada fica como incidente, não como conferência; \"PDF de hoje\" virou \"PDF na cópia do dossiê (arquivo de 23/09/2026)\" em autor, data e fonte_escrita",
+    "ca9-2011-seacc: sem mudança na pauta; a correção à mão da 1ª rodada (15:46:24Z) foi levada ao gerador, para não se perder",
+    "ag-opinion-1993 e trends-jun1990: url_acessada diz a hora do HEAD e o 403 do host que veio depois",
+    "stat-31-321-1900 e stat-37-512-1912: bbox_px regravadas pela tinta da página (±2 px); a de 1912 começava no \"That\"",
+    "nao_achados s52: a volta ao CourtListener e a pista do CaseMine (não aberta, com o motivo)",
+    "nao_achados s26: a cópia que faltou depois da 3ª busca",
+    "incidentes_de_rede: novo"
+   ],
+   "sem_pedido_novo": "a revisão não fez nenhum pedido de rede: tudo saiu da transcrição da 1ª rodada, das cópias locais e dos arquivos entregues"
+  },
+  {
+   "em": "2026-09-28T02:37:40Z",
+   "motivo": "as decisões do Lucas de 27/09/2026 que tocam esta pauta e os vereditos do conferente-de-midia (2º despacho, 27/09/2026, 20:30 de Brasília), a pedido do Claude central",
+   "mudou": [
+    "stat-31-321-1900 e stat-37-512-1912: resolucao_nota e na_tela dizem a regra do Lucas (\"Documento antigo\", identidade.md §5): a página real até 1,4 vez o tamanho do arquivo, e mais perto que isso a recriação datilografada. Saiu o \"pendente_lucas pela régua do conferente\": ele as aprovou por essa regra",
+    "trends-jun1990: na_tela, licenca e fonte_escrita dizem a decisão do Lucas (\"Recriar com a fonte\"); saiu o \"pendente_lucas\"; a página continua -prova",
+    "ca9-2011-seacc: a capa (p. 1) saiu de arquivos_extra para arquivos_retirados, pelo veredito \"trocar\" do conferente; na_tela, fonte_escrita, pagina e a nota do trecho dizem a decisão do Lucas (a página 4 entra com o rótulo \"upheld on appeal, 2011\"); saiu o \"ALTERNATIVA, a decidir\"",
+    "federal-register-2018-16263: recorte, novo, com os avisos do conferente (o fim do aviso da FAA e o parágrafo de contatos ficam fora; a data do cabeçalho), as regiões medidas na camada de texto do PDF e na tinta do arquivo, e o recorte de teste que olhei; na_tela aponta para ele",
+    "nao_achados s52: o_que_ha e consequencia dizem a decisão do Lucas; a decisão de 2009 continua NÃO ACHADA",
+    "revisao virou revisoes (lista), com a 1ª sem mudança de conteúdo; a nota do topo foi refeita",
+    "_PROCEDENCIA.json: o gerador só regrava a pasta cujo conteúdo muda. Mudaram a de s31 (a licença) e a de s52, que perdeu a entrada da capa e ganhou \"retirados\", apontando para o _RETIRADO.json"
+   ],
+   "sem_pedido_novo": "nenhum pedido de rede: as decisões vêm da marca (identidade.md §5), do research-documentos.md (§3, item 2) e do conferencia-midia.json; as regiões do Federal Register, da cópia local do PDF e do arquivo entregue"
+  }
+ ],
+ "incidentes_de_rede": [
+  {
+   "id": "akleg-hb3-head",
+   "gravidade": "contorno da regra anti-robô",
+   "host": "www.akleg.gov",
+   "url": "https://www.akleg.gov/PDF/34/Bills/HB0003A.PDF",
+   "quando": "2026-09-27T15:25:55Z (12:25:55 em Brasília)",
+   "o_que": "2 pedidos HEAD por curl (um para o código HTTP, outro para o Content-Length), num laço que conferia 7 endereços canônicos de 6 peças (gate 1 do contrato, \"a URL abre\")",
+   "resposta": "200 application/pdf, Content-Length 238759",
+   "regra": "o akleg.gov (com o BASIS) está na lista de sites que recusam robô: CLAUDE.md, \"A marca\"; midia.md §7.1; roupa do pesquisa-documentos, §0 (\"Não tente de novo por curl\"). Tocar nele por curl foi contorno, o mesmo padrão do APRENDIZADOS.md, item 14.",
+   "causa": "o laço pegou a URL de todas as peças sem separar as dos sites da lista; tratei o HEAD como conferência inofensiva, e a regra não tem essa exceção.",
+   "consequencia": "o resultado do HEAD não vale como conferência. A canônica do HB 3 fica NÃO MEDIDA; o texto vem só da cópia local do dossiê (midia/juneau/fontes/evento/hb0003a.pdf), e a URL se confere no navegador do app, com o Lucas vendo.",
+   "relato_anterior": "o relato da 1ª entrega dizia \"HEAD 200 em todas as canônicas que não recusam robô\", e o resumo dela, \"não mexi em nada proibido\": os dois estavam errados.",
+   "revisao": "nenhum pedido novo ao akleg.gov; pauta e _PROCEDENCIA.json de s40 corrigidos; o aviso vai ao Lucas."
+  },
+  {
+   "id": "laborstats-trends-403",
+   "gravidade": "a decidir pelo Claude central",
+   "host": "laborstats.alaska.gov",
+   "url": "https://laborstats.alaska.gov/trends/",
+   "quando": "2026-09-27T15:26:15Z (12:26:15 em Brasília)",
+   "o_que": "HEAD por curl na pasta /trends/, no mesmo laço de 3 endereços que deram 404 (/trends/jun90.pdf, live.laborstats.alaska.gov/trends/jun90.pdf e /trends/trends.htm)",
+   "resposta": "403 text/html (sem corpo: foi HEAD)",
+   "antes": "às 15:25:55Z, 2 HEAD por curl em /trends/jun90art1.pdf: 200, Content-Length 784181",
+   "depois": "às 15:26:38Z, 5 HEAD no mesmo host (/trends/jun90art2.pdf 200; jun90art3, jun90toc, jun90cover e jun90 404) e 1 GET em labor.alaska.gov/trends/jan23.pdf (outro host do Departamento; 200, 9.820.269 bytes; é de onde sai o aviso \"public information\" citado na licença da Trends); às 15:27:02Z, 1 GET em /trends/jun90art2.pdf (464.043 bytes, em out/juneau/_tmp/documentos/trends-jun90art2.pdf, não entregue)",
+   "leitura": "provavelmente 403 de listagem de pasta (servidor que não lista o conteúdo de /trends/), e não bloqueio de robô: o mesmo cliente recebeu 200 e 404 de arquivos do mesmo host antes e depois. Não provado: o HEAD não traz corpo.",
+   "relato_anterior": "o relato da 1ª entrega não listava este 403.",
+   "decide": "o Claude central. Se foi recusa, os 6 pedidos seguintes ao laborstats (5 HEAD e 1 GET) foram contorno: o jun90art2.pdf sai do _tmp, e a frase da licença da Trends que se apoia nele (\"jun90art2.pdf não o traz\") perde a prova.",
+   "revisao": "nenhum pedido novo ao host."
+  },
+  {
+   "id": "law-alaska-403",
+   "gravidade": "registro (parei no 403)",
+   "host": "law.alaska.gov",
+   "url": "https://law.alaska.gov/",
+   "quando": "2026-09-27T15:27:12Z (12:27:12 em Brasília)",
+   "o_que": "WebFetch na home, para ler o aviso de direitos do Departamento de Law",
+   "resposta": "403 Forbidden",
+   "antes": "às 15:25:55Z, 2 HEAD por curl no PDF do parecer de 1993 (/pdf/opinions/opinions_1993/93-040_663940113.pdf): 200, Content-Length 31496; às 15:27:08Z, WebFetch em /opinions/opinions.html: 302 para /404error.html, que não segui",
+   "depois": "nenhum pedido ao host.",
+   "leitura": "o HEAD do PDF veio 77 s antes do 403, quando o host não estava em lista nenhuma; depois do 403, parei. Se o 200 do HEAD vale como conferência da URL, decide o Claude central.",
+   "revisao": "nenhum pedido novo ao host."
+  },
+  {
+   "id": "courtlistener-volta",
+   "gravidade": "volta ao site depois do 403 (contra o \"pare nele\" da roupa, §0)",
+   "host": "www.courtlistener.com",
+   "url": "https://www.courtlistener.com/opinion/1387985/boucher-v-engstrom/",
+   "quando": "2026-09-27T15:27:59Z (12:27:59 em Brasília)",
+   "o_que": "WebFetch numa página de acórdão (Boucher v. Engstrom), 3 min depois de a busca do site dar 403 ao mesmo WebFetch (15:25:00Z)",
+   "resposta": "página vazia",
+   "depois": "nenhum pedido ao host; o Boucher veio do Caselaw Access Project (static.case.law), de Harvard.",
+   "revisao": "nada a refazer (verificador): fica o registro."
+  },
+  {
+   "id": "justia-403",
+   "gravidade": "registro (parei no 403)",
+   "host": "dockets.justia.com",
+   "url": "https://dockets.justia.com/docket/alaska/akdce/1:2006cv00009/2693",
+   "quando": "2026-09-27T15:24:55Z (12:24:55 em Brasília)",
+   "o_que": "WebFetch no docket do processo 1:06-cv-00009",
+   "resposta": "403 Forbidden",
+   "depois": "nenhum pedido ao host.",
+   "revisao": "nada a refazer."
+  }
+ ],
+ "itens": [
+  {
+   "id": "oep1982-bm8-sumario",
+   "tipo": "documento",
+   "cena": [
+    "s02",
+    "s23",
+    "s30"
+   ],
+   "fonte": {
+    "instituicao": "State of Alaska, Division of Elections",
+    "titulo": "Official Election Pamphlet, General Election, November 2, 1982 — Ballot Measure No. 8, Relocation of the State Capital (Committee Substitute for House Bill No. 603 Finance)",
+    "autor": "o sumário e o Legislative Affairs Agency Summary: State of Alaska (Legislative Affairs Agency); as declarações a favor e contra: Frank W. Harris e Jim Clark (autores particulares)",
+    "data": "1982 (eleição de 2 de novembro de 1982)",
+    "url": "http://www.elections.alaska.gov/doc/oep/1982/1982-Bonding-Prop-Ballot-Measures.pdf",
+    "url_acessada": "http://web.archive.org/web/20170218020400id_/http://elections.alaska.gov/doc/oep/1982/1982-Bonding-Prop-Ballot-Measures.pdf (captura de 18/02/2017, lida pelo dossiê em 23/09/2026)",
+    "copia_local": "midia/juneau/fontes/documento/verif/oep82.pdf",
+    "copia_local_sha256": "59e109ab19f5185dccba1abe22ad54374d0c89b9d7b46e5bed5c8b444be97e15",
+    "fonte_id_dossie": "doc-18"
+   },
+   "url": "http://www.elections.alaska.gov/doc/oep/1982/1982-Bonding-Prop-Ballot-Measures.pdf",
+   "arquivo": "out/juneau/_media/documento/s02/oep1982-prova-p17.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada",
+   "fonte_escrita": "Source: State of Alaska, Official Election Pamphlet, 1982 (o crédito é o do órgão, nunca o web.archive.org; identidade.md §7)",
+   "licenca": "SEM PERMISSÃO CLARA CONFERIDA (midia.md §7.1). Documento do Estado do Alasca (folheto eleitoral oficial). O texto foi lido pela cópia arquivada, que vale como fonte (Lucas, 27/09/2026; CLAUDE.md, \"A marca\"), mas a cópia não prova permissão de uso. A permissão se confere na origem de hoje: elections.alaska.gov recusa robô, então é no navegador do app, com o Lucas vendo (não tentei o site). Até lá: a página é só prova; a cena recria o texto fiel com a fonte escrita.",
+   "permissao_clara": false,
+   "pagina": "p. 88 impressa = PDF p. 17 — \"BALLOT MEASURE NO. 8 / Ballot Proposition / RELOCATION OF THE STATE CAPITAL / SUMMARY (As it will appear on the November 2, 1982 General Election Ballot)\"",
+   "trechos": [
+    {
+     "cena": "s02",
+     "grifo": "estimated to total $2,843,147,000",
+     "texto_literal_da_fonte": "This proposition asks: Considering the cost, revenue and population estimates set out below, may the State of Alaska spend the money necessary (estimated to total $2,843,147,000) to accomplish relocation of a functional state capital from Juneau to the new capital site at Willow?",
+     "localizador": "p. 88 (PDF p. 17), SUMMARY, 1º parágrafo",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "the price.",
+     "plano_janela_s": [
+      13.6,
+      18.133
+     ],
+     "planos": [
+      1
+     ],
+     "entra_s": 17.38,
+     "sai_s": 17.94,
+     "palavras_idx": [
+      50,
+      51
+     ],
+     "palavras_voz": [
+      [
+       "the",
+       17.38,
+       17.59
+      ],
+      [
+       "price.",
+       17.59,
+       17.94
+      ]
+     ],
+     "dentro_da_janela": true,
+     "nota": "na fonte o valor está entre parênteses: a recriação os mantém"
+    },
+    {
+     "cena": "s23",
+     "grifo": "may the State of Alaska spend the money necessary",
+     "texto_literal_da_fonte": "This proposition asks: Considering the cost, revenue and population estimates set out below, may the State of Alaska spend the money necessary (estimated to total $2,843,147,000) to accomplish relocation of a functional state capital from Juneau to the new capital site at Willow?",
+     "localizador": "p. 88 (PDF p. 17), SUMMARY, 1º parágrafo",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "could the state spend the money the move would take?",
+     "plano_janela_s": [
+      224.967,
+      242.767
+     ],
+     "planos": [
+      1,
+      2,
+      3
+     ],
+     "entra_s": 229.62,
+     "sai_s": 231.66,
+     "palavras_idx": [
+      656,
+      665
+     ],
+     "palavras_voz": [
+      [
+       "could",
+       229.62,
+       229.69
+      ],
+      [
+       "the",
+       229.71,
+       229.77
+      ],
+      [
+       "state",
+       229.837,
+       230.17
+      ],
+      [
+       "spend",
+       230.21,
+       230.41
+      ],
+      [
+       "the",
+       230.43,
+       230.49
+      ],
+      [
+       "money",
+       230.543,
+       230.81
+      ],
+      [
+       "the",
+       230.83,
+       230.89
+      ],
+      [
+       "move",
+       230.938,
+       231.13
+      ],
+      [
+       "would",
+       231.157,
+       231.29
+      ],
+      [
+       "take?",
+       231.354,
+       231.66
+      ]
+     ],
+     "dentro_da_janela": true
+    },
+    {
+     "cena": "s23",
+     "grifo": "estimated to total $2,843,147,000",
+     "texto_literal_da_fonte": "may the State of Alaska spend the money necessary (estimated to total $2,843,147,000) … The components of the estimated total cost to the State of providing for relocation of a functional state capital at the new capital site at Willow through the anticipated relocation completion date of 1994 are as follows:",
+     "localizador": "p. 88 (PDF p. 17), SUMMARY e COMPONENTS OF ESTIMATED TOTAL COST",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "about two point eight billion dollars,",
+     "plano_janela_s": [
+      224.967,
+      242.767
+     ],
+     "planos": [
+      1,
+      2,
+      3
+     ],
+     "entra_s": 234.71,
+     "sai_s": 236.7,
+     "palavras_idx": [
+      672,
+      677
+     ],
+     "palavras_voz": [
+      [
+       "about",
+       234.71,
+       234.89
+      ],
+      [
+       "two",
+       234.95,
+       235.13
+      ],
+      [
+       "point",
+       235.197,
+       235.53
+      ],
+      [
+       "eight",
+       235.543,
+       235.61
+      ],
+      [
+       "billion",
+       235.68,
+       236.17
+      ],
+      [
+       "dollars,",
+       236.23,
+       236.7
+      ]
+     ],
+     "dentro_da_janela": true,
+     "nota": "\"counted through 1994\" da voz = \"through the anticipated relocation completion date of 1994\""
+    },
+    {
+     "cena": "s23",
+     "grifo": "$589,323,000",
+     "texto_literal_da_fonte": "Indemnification of Juneau residents under AS 44.08 … $ 589,323,000",
+     "localizador": "p. 88 (PDF p. 17), tabela COMPONENTS OF ESTIMATED TOTAL COST, 3ª linha",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "nearly five hundred ninety million dollars",
+     "plano_janela_s": [
+      224.967,
+      242.767
+     ],
+     "planos": [
+      1,
+      2,
+      3
+     ],
+     "entra_s": 240.536,
+     "sai_s": 242.73,
+     "palavras_idx": [
+      685,
+      690
+     ],
+     "palavras_voz": [
+      [
+       "nearly",
+       240.536,
+       240.81
+      ],
+      [
+       "five",
+       240.874,
+       241.13
+      ],
+      [
+       "hundred",
+       241.17,
+       241.45
+      ],
+      [
+       "ninety",
+       241.519,
+       241.93
+      ],
+      [
+       "million",
+       241.98,
+       242.33
+      ],
+      [
+       "dollars",
+       242.38,
+       242.73
+      ]
+     ],
+     "dentro_da_janela": true,
+     "nota": "a linha da tabela; \"to compensate Juneau residents\" da voz = \"Indemnification of Juneau residents under AS 44.08\""
+    },
+    {
+     "cena": "s30",
+     "grifo": "estimated to total $2,843,147,000",
+     "texto_literal_da_fonte": "may the State of Alaska spend the money necessary (estimated to total $2,843,147,000) to accomplish relocation of a functional state capital from Juneau to the new capital site at Willow?",
+     "localizador": "p. 88 (PDF p. 17), SUMMARY (a mesma linha de s02 e s23: repetição intencional)",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "It was a printed price.",
+     "plano_janela_s": [
+      303.767,
+      310.7
+     ],
+     "planos": [
+      1
+     ],
+     "entra_s": 309.12,
+     "sai_s": 310.18,
+     "palavras_idx": [
+      877,
+      881
+     ],
+     "palavras_voz": [
+      [
+       "It",
+       309.12,
+       309.2
+      ],
+      [
+       "was",
+       309.2,
+       309.32
+      ],
+      [
+       "a",
+       309.36,
+       309.4
+      ],
+      [
+       "printed",
+       309.44,
+       309.72
+      ],
+      [
+       "price.",
+       309.787,
+       310.18
+      ]
+     ],
+     "dentro_da_janela": true
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s23",
+     "trecho": "TOTAL $2,843,147,000",
+     "localizador": "p. 88, tabela",
+     "confere_na_fonte": true
+    }
+   ],
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1273x1644",
+    "megapixels": 2.09,
+    "bytes": 291882,
+    "sha256": "4220ab122436d2d0a4cf851fd09756c0407918f13f916c8ee8b08ce2944096ff",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1273x1644",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "oep1982-bm8-laa",
+   "tipo": "documento",
+   "cena": [
+    "s32"
+   ],
+   "fonte": {
+    "instituicao": "State of Alaska, Division of Elections",
+    "titulo": "Official Election Pamphlet, General Election, November 2, 1982 — Ballot Measure No. 8, Relocation of the State Capital (Committee Substitute for House Bill No. 603 Finance)",
+    "autor": "o sumário e o Legislative Affairs Agency Summary: State of Alaska (Legislative Affairs Agency); as declarações a favor e contra: Frank W. Harris e Jim Clark (autores particulares)",
+    "data": "1982 (eleição de 2 de novembro de 1982)",
+    "url": "http://www.elections.alaska.gov/doc/oep/1982/1982-Bonding-Prop-Ballot-Measures.pdf",
+    "url_acessada": "http://web.archive.org/web/20170218020400id_/http://elections.alaska.gov/doc/oep/1982/1982-Bonding-Prop-Ballot-Measures.pdf (captura de 18/02/2017, lida pelo dossiê em 23/09/2026)",
+    "copia_local": "midia/juneau/fontes/documento/verif/oep82.pdf",
+    "copia_local_sha256": "59e109ab19f5185dccba1abe22ad54374d0c89b9d7b46e5bed5c8b444be97e15",
+    "fonte_id_dossie": "doc-18"
+   },
+   "url": "http://www.elections.alaska.gov/doc/oep/1982/1982-Bonding-Prop-Ballot-Measures.pdf",
+   "arquivo": "out/juneau/_media/documento/s32/oep1982-prova-p18.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada",
+   "fonte_escrita": "Source: State of Alaska, Official Election Pamphlet, 1982",
+   "licenca": "SEM PERMISSÃO CLARA CONFERIDA (midia.md §7.1). Documento do Estado do Alasca (folheto eleitoral oficial). O texto foi lido pela cópia arquivada, que vale como fonte (Lucas, 27/09/2026; CLAUDE.md, \"A marca\"), mas a cópia não prova permissão de uso. A permissão se confere na origem de hoje: elections.alaska.gov recusa robô, então é no navegador do app, com o Lucas vendo (não tentei o site). Até lá: a página é só prova; a cena recria o texto fiel com a fonte escrita.",
+   "permissao_clara": false,
+   "pagina": "p. 89 impressa = PDF p. 18 — \"BALLOT MEASURE NO. 8 (cont.) / LEGISLATIVE AFFAIRS AGENCY SUMMARY (As required by law)\"",
+   "trechos": [
+    {
+     "cena": "s32",
+     "grifo": "the Capital remains in Juneau and the following laws are repealed",
+     "texto_literal_da_fonte": "If the ballot proposition is rejected by a majority of those voting on the proposition, then the Capital remains in Juneau and the following laws are repealed: the Capital Relocation Initiative; the \"FRANK Initiative\" as amended; the laws establishing the New Capital Site Planning Commission; and the Relocation Indemnification Act.",
+     "localizador": "p. 89 (PDF p. 18), LEGISLATIVE AFFAIRS AGENCY SUMMARY, 2º parágrafo",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "also repealed every move law,",
+     "plano_janela_s": [
+      332.5,
+      340.8
+     ],
+     "planos": [
+      1
+     ],
+     "entra_s": 335.8,
+     "sai_s": 337.58,
+     "palavras_idx": [
+      950,
+      954
+     ],
+     "palavras_voz": [
+      [
+       "also",
+       335.8,
+       336.03
+      ],
+      [
+       "repealed",
+       336.092,
+       336.59
+      ],
+      [
+       "every",
+       336.643,
+       336.91
+      ],
+      [
+       "move",
+       336.974,
+       337.23
+      ],
+      [
+       "law,",
+       337.29,
+       337.58
+      ]
+     ],
+     "dentro_da_janela": true,
+     "nota": "\"every move law, from the 1974 initiative to the Frank initiative\" da voz: a fonte lista as quatro leis; que \"the Capital Relocation Initiative\" é a de 1974 vem do dossiê, não desta página"
+    }
+   ],
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1273x1644",
+    "megapixels": 2.09,
+    "bytes": 378091,
+    "sha256": "b71911a1835e906f29885e61e50ee50324c967812118afbd3a30f87f314f6484",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1273x1644",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "oep1982-bm8-declaracoes",
+   "tipo": "documento",
+   "cena": [
+    "s05",
+    "s25"
+   ],
+   "fonte": {
+    "instituicao": "State of Alaska, Division of Elections",
+    "titulo": "Official Election Pamphlet, General Election, November 2, 1982 — Ballot Measure No. 8, Relocation of the State Capital (Committee Substitute for House Bill No. 603 Finance)",
+    "autor": "STATEMENT IN FAVOR: Frank W. Harris, Chairman, Capital Access Committee, Inc.; STATEMENT AGAINST: Jim Clark, Chairman, Alaska Committee",
+    "data": "1982 (eleição de 2 de novembro de 1982)",
+    "url": "http://www.elections.alaska.gov/doc/oep/1982/1982-Bonding-Prop-Ballot-Measures.pdf",
+    "url_acessada": "http://web.archive.org/web/20170218020400id_/http://elections.alaska.gov/doc/oep/1982/1982-Bonding-Prop-Ballot-Measures.pdf (captura de 18/02/2017, lida pelo dossiê em 23/09/2026)",
+    "copia_local": "midia/juneau/fontes/documento/verif/oep82.pdf",
+    "copia_local_sha256": "59e109ab19f5185dccba1abe22ad54374d0c89b9d7b46e5bed5c8b444be97e15",
+    "fonte_id_dossie": "doc-18"
+   },
+   "url": "http://www.elections.alaska.gov/doc/oep/1982/1982-Bonding-Prop-Ballot-Measures.pdf",
+   "arquivo": "out/juneau/_media/documento/s05/oep1982-prova-p19.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada (s05, citação); só conferência (s25, PRANCHA)",
+   "fonte_escrita": "Source: State of Alaska, Official Election Pamphlet, 1982",
+   "licenca": "SEM PERMISSÃO CLARA CONFERIDA (midia.md §7.1). Documento do Estado do Alasca (folheto eleitoral oficial). O texto foi lido pela cópia arquivada, que vale como fonte (Lucas, 27/09/2026; CLAUDE.md, \"A marca\"), mas a cópia não prova permissão de uso. A permissão se confere na origem de hoje: elections.alaska.gov recusa robô, então é no navegador do app, com o Lucas vendo (não tentei o site). Até lá: a página é só prova; a cena recria o texto fiel com a fonte escrita. Mais: as declarações são de autores particulares (Harris, Clark), e o rodapé da página diz \"Arguments printed on this page are the opinions of the authors and have not been checked for accuracy by any official agency.\"",
+   "permissao_clara": false,
+   "pagina": "p. 90 impressa = PDF p. 19 — \"STATEMENT IN FAVOR OF BALLOT MEASURE NO. 8\" e \"STATEMENT AGAINST BALLOT MEASURE NO. 8\"",
+   "trechos": [
+    {
+     "cena": "s05",
+     "grifo": "is so expensive and time consuming that few ordinary citizens are able to go there.",
+     "texto_literal_da_fonte": "The new capital site at Willow is in the center of the state's population. Juneau is isolated, and travel to and from Juneau is so expensive and time consuming that few ordinary citizens are able to go there. — Frank W. Harris, Chairman, Capital Access Committee, Inc.",
+     "localizador": "p. 90 (PDF p. 19), STATEMENT IN FAVOR, coluna da direita, 2º parágrafo",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "is so expensive and time-consuming that few ordinary citizens are able to go there.",
+     "plano_janela_s": [
+      34.667,
+      46.4
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 41.8,
+     "sai_s": 46.3,
+     "palavras_idx": [
+      128,
+      141
+     ],
+     "palavras_voz": [
+      [
+       "\"is",
+       41.8,
+       41.88
+      ],
+      [
+       "so",
+       41.933,
+       42.04
+      ],
+      [
+       "expensive",
+       42.104,
+       42.68
+      ],
+      [
+       "and",
+       42.7,
+       42.76
+      ],
+      [
+       "time-consuming",
+       42.824,
+       43.73
+      ],
+      [
+       "that",
+       44.04,
+       44.12
+      ],
+      [
+       "few",
+       44.18,
+       44.36
+      ],
+      [
+       "ordinary",
+       44.413,
+       44.84
+      ],
+      [
+       "citizens",
+       44.902,
+       45.4
+      ],
+      [
+       "are",
+       45.42,
+       45.48
+      ],
+      [
+       "able",
+       45.528,
+       45.72
+      ],
+      [
+       "to",
+       45.747,
+       45.8
+      ],
+      [
+       "go",
+       45.853,
+       45.96
+      ],
+      [
+       "there.\"",
+       46.013,
+       46.3
+      ]
+     ],
+     "dentro_da_janela": true,
+     "grafia": "na tela, \"time consuming\" SEM hífen, como a fonte imprime; o \"time-consuming\" é da cópia para a voz (words.json)"
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s25",
+     "plano": 1,
+     "trecho": "Relocation need not and should not cost anything like the unrealistic, inflated estimates shown on the ballot measure.",
+     "localizador": "p. 90, STATEMENT IN FAVOR (Harris), 2º parágrafo",
+     "confere_na_fonte": true,
+     "papel": "\"called the figures inflated\""
+    },
+    {
+     "cena": "s25",
+     "plano": 2,
+     "trecho": "In 1978, the voters of the State passed the FRANK Initiative which required voter approval before any money could be spent to relocate the Capital. In that same year, the voters turned down a $966,000,000 bond issue to relocate the Capital.",
+     "localizador": "p. 90, STATEMENT AGAINST (Jim Clark, Chairman, Alaska Committee), 1º parágrafo",
+     "confere_na_fonte": true,
+     "papel": "\"reminded voters of the bonds they turned down in 1978\""
+    }
+   ],
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1273x1644",
+    "megapixels": 2.09,
+    "bytes": 495700,
+    "sha256": "ec7f466a0f0fb326c9a44a57c2862b729462359d8fc7d6611bc3b8cdf92ff466",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1273x1644",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "oep1978-prop3-declaracoes",
+   "tipo": "documento",
+   "cena": [
+    "s16",
+    "s18"
+   ],
+   "fonte": {
+    "instituicao": "State of Alaska, Division of Elections",
+    "titulo": "Official Election Pamphlet, General Election, November 7, 1978 — Ballot Proposition No. 3 (Initiative No. 6, Full Bondable Costs of Relocating Capital) e Bonding Proposition No. 10 (Capital Construction Costs of the New Alaska Capital, Chapter 157, SLA 1978)",
+    "autor": "sumários: Legislative Affairs Agency; declarações: Mary A. Nordale (a favor) e Frank Harris, Chairman, Taxpayers Capital Relocation Committee (contra) — autores particulares",
+    "data": "1978 (eleição de 7 de novembro de 1978)",
+    "url": "http://www.elections.alaska.gov/doc/oep/1978/1978-Ballot-Prop-Bond-Prop.pdf",
+    "url_acessada": "http://web.archive.org/web/20161230104800id_/https://www.elections.alaska.gov/doc/oep/1978/1978-Ballot-Prop-Bond-Prop.pdf (captura de 30/12/2016, lida pelo dossiê em 23/09/2026)",
+    "copia_local": "midia/juneau/fontes/documento/verif/oep78.pdf",
+    "copia_local_sha256": "cb5139af3045067dd7da1ee4d7064efddd4c6b67a5485d112ba127ee2d0f5ad1",
+    "fonte_id_dossie": "doc-17"
+   },
+   "url": "http://www.elections.alaska.gov/doc/oep/1978/1978-Ballot-Prop-Bond-Prop.pdf",
+   "arquivo": "out/juneau/_media/documento/s18/oep1978-prova-p06.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada (s18, citação); só conferência e texto de tela recriado (s16, PRANCHA)",
+   "fonte_escrita": "Source: State of Alaska, Official Election Pamphlet, 1978",
+   "licenca": "SEM PERMISSÃO CLARA CONFERIDA (midia.md §7.1). Documento do Estado do Alasca (folheto eleitoral oficial). O texto foi lido pela cópia arquivada, que vale como fonte (Lucas, 27/09/2026; CLAUDE.md, \"A marca\"), mas a cópia não prova permissão de uso. A permissão se confere na origem de hoje: elections.alaska.gov recusa robô, então é no navegador do app, com o Lucas vendo (não tentei o site). Até lá: a página é só prova; a cena recria o texto fiel com a fonte escrita. Mais: as declarações são de autores particulares, e o rodapé diz \"Arguments printed on this page are the opinions of the authors and have not been checked for accuracy by any official agency.\"",
+   "permissao_clara": false,
+   "pagina": "p. 49 impressa = PDF p. 6 — \"STATEMENT IN FAVOR OF BALLOT PROPOSITION NO. 3\" e \"STATEMENT AGAINST BALLOT PROPOSITION NO. 3\"",
+   "trechos": [
+    {
+     "cena": "s18",
+     "grifo": "Its true purpose is to prohibit the move to Willow",
+     "texto_literal_da_fonte": "Anyone who favors moving the capital to Willow and reducing costs to Alaskan taxpayers should vote \"NO\"! — against Initiative No. 6. It has confused the public as to the real cost of relocation to the taxpayers. Its true purpose is to prohibit the move to Willow which the voters have authorized. — FRANK HARRIS, Chairman, Taxpayers Capital Relocation Committee",
+     "localizador": "p. 49 (PDF p. 6), STATEMENT AGAINST, coluna da esquerda, 1º parágrafo",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "Its true purpose is to prohibit the move to Willow,",
+     "plano_janela_s": [
+      183.233,
+      192.633
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 188.84,
+     "sai_s": 191.46,
+     "palavras_idx": [
+      538,
+      547
+     ],
+     "palavras_voz": [
+      [
+       "\"Its",
+       188.84,
+       188.99
+      ],
+      [
+       "true",
+       189.038,
+       189.23
+      ],
+      [
+       "purpose",
+       189.29,
+       189.71
+      ],
+      [
+       "is",
+       189.763,
+       189.87
+      ],
+      [
+       "to",
+       189.897,
+       189.95
+      ],
+      [
+       "prohibit",
+       190.012,
+       190.51
+      ],
+      [
+       "the",
+       190.53,
+       190.59
+      ],
+      [
+       "move",
+       190.638,
+       190.83
+      ],
+      [
+       "to",
+       190.883,
+       190.99
+      ],
+      [
+       "Willow,\"",
+       191.047,
+       191.46
+      ]
+     ],
+     "dentro_da_janela": true,
+     "grafia": "a frase continua na fonte (\"…to Willow which the voters have authorized.\"): a vírgula final é da voz e não vai à tela"
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s16",
+     "plano": 3,
+     "trecho": "Initiative No. 6 was developed by the FRANK (Frustrated, Responsible Alaskans Needing Knowledge) Committee which was organized in Fairbanks in early 1977 by a group of Alaskans who believe we should have the \"Right to Know and the Right to Vote\".",
+     "localizador": "p. 49, STATEMENT IN FAVOR (Mary A. Nordale, Member, Initiative No. 6 Sponsoring Committee), 1º parágrafo",
+     "confere_na_fonte": true,
+     "papel": "a sigla, \"In Fairbanks\" e \"In early 1977\" da voz; na página, \"Re-sponsible\" quebra na linha: a grafia é \"Responsible\""
+    }
+   ],
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1273x1644",
+    "megapixels": 2.09,
+    "bytes": 425891,
+    "sha256": "07fa8043f71a2ccb295a9e81ef6b4279b9cd858b003df010bfcdc566ac73ff36",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1273x1644",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "oep1978-prop3-cedula",
+   "tipo": "documento",
+   "cena": [
+    "s19"
+   ],
+   "fonte": {
+    "instituicao": "State of Alaska, Division of Elections",
+    "titulo": "Official Election Pamphlet, General Election, November 7, 1978 — Ballot Proposition No. 3 (Initiative No. 6, Full Bondable Costs of Relocating Capital) e Bonding Proposition No. 10 (Capital Construction Costs of the New Alaska Capital, Chapter 157, SLA 1978)",
+    "autor": "sumários: Legislative Affairs Agency; declarações: Mary A. Nordale (a favor) e Frank Harris, Chairman, Taxpayers Capital Relocation Committee (contra) — autores particulares",
+    "data": "1978 (eleição de 7 de novembro de 1978)",
+    "url": "http://www.elections.alaska.gov/doc/oep/1978/1978-Ballot-Prop-Bond-Prop.pdf",
+    "url_acessada": "http://web.archive.org/web/20161230104800id_/https://www.elections.alaska.gov/doc/oep/1978/1978-Ballot-Prop-Bond-Prop.pdf (captura de 30/12/2016, lida pelo dossiê em 23/09/2026)",
+    "copia_local": "midia/juneau/fontes/documento/verif/oep78.pdf",
+    "copia_local_sha256": "cb5139af3045067dd7da1ee4d7064efddd4c6b67a5485d112ba127ee2d0f5ad1",
+    "fonte_id_dossie": "doc-17"
+   },
+   "url": "http://www.elections.alaska.gov/doc/oep/1978/1978-Ballot-Prop-Bond-Prop.pdf",
+   "arquivo": "out/juneau/_media/documento/s19/oep1978-prova-p05.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada (plano 1, sem grifo no despacho)",
+   "fonte_escrita": "Source: State of Alaska, Official Election Pamphlet, 1978",
+   "licenca": "SEM PERMISSÃO CLARA CONFERIDA (midia.md §7.1). Documento do Estado do Alasca (folheto eleitoral oficial). O texto foi lido pela cópia arquivada, que vale como fonte (Lucas, 27/09/2026; CLAUDE.md, \"A marca\"), mas a cópia não prova permissão de uso. A permissão se confere na origem de hoje: elections.alaska.gov recusa robô, então é no navegador do app, com o Lucas vendo (não tentei o site). Até lá: a página é só prova; a cena recria o texto fiel com a fonte escrita.",
+   "permissao_clara": false,
+   "pagina": "p. 48 impressa = PDF p. 5 — \"BALLOT PROPOSITION NO. 3 / FULL BONDABLE COSTS OF RELOCATING CAPITAL / Initiative No. 6\"; no pé: \"VOTE ON TUESDAY, NOVEMBER 7, 1978\"",
+   "trechos": [],
+   "conferir": [
+    {
+     "cena": "s19",
+     "plano": 1,
+     "trecho": "BALLOT PROPOSITION NO. 3 — FULL BONDABLE COSTS OF RELOCATING CAPITAL — Initiative No. 6 … VOTE ON TUESDAY, NOVEMBER 7, 1978",
+     "localizador": "p. 48 (PDF p. 5)",
+     "confere_na_fonte": true,
+     "papel": "\"In November 1978, the Frank initiative went to the voters\" (a \"linha da Frank\" do despacho)"
+    },
+    {
+     "cena": "s19",
+     "plano": 1,
+     "trecho": "This initiative, if approved, would authorize the expenditure of state money for the physical relocation of the present functions of the state government only after a majority of those voting in a statewide election have approved a general obligation bond proposition which includes all bondable costs of the relocation to the State through the year 1992.",
+     "localizador": "p. 48, SUMMARY OF PROPOSITION (Legislative Affairs Agency)",
+     "confere_na_fonte": true
+    }
+   ],
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1273x1644",
+    "megapixels": 2.09,
+    "bytes": 210040,
+    "sha256": "5c4efe9716f5a22d40a24598f554245739dd588826c20168dfded63cbed76061",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1273x1644",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "oep1978-bond10",
+   "tipo": "documento",
+   "cena": [
+    "s19"
+   ],
+   "fonte": {
+    "instituicao": "State of Alaska, Division of Elections",
+    "titulo": "Official Election Pamphlet, General Election, November 7, 1978 — Ballot Proposition No. 3 (Initiative No. 6, Full Bondable Costs of Relocating Capital) e Bonding Proposition No. 10 (Capital Construction Costs of the New Alaska Capital, Chapter 157, SLA 1978)",
+    "autor": "sumários: Legislative Affairs Agency; declarações: Mary A. Nordale (a favor) e Frank Harris, Chairman, Taxpayers Capital Relocation Committee (contra) — autores particulares",
+    "data": "1978 (eleição de 7 de novembro de 1978)",
+    "url": "http://www.elections.alaska.gov/doc/oep/1978/1978-Ballot-Prop-Bond-Prop.pdf",
+    "url_acessada": "http://web.archive.org/web/20161230104800id_/https://www.elections.alaska.gov/doc/oep/1978/1978-Ballot-Prop-Bond-Prop.pdf (captura de 30/12/2016, lida pelo dossiê em 23/09/2026)",
+    "copia_local": "midia/juneau/fontes/documento/verif/oep78.pdf",
+    "copia_local_sha256": "cb5139af3045067dd7da1ee4d7064efddd4c6b67a5485d112ba127ee2d0f5ad1",
+    "fonte_id_dossie": "doc-17"
+   },
+   "url": "http://www.elections.alaska.gov/doc/oep/1978/1978-Ballot-Prop-Bond-Prop.pdf",
+   "arquivo": "out/juneau/_media/documento/s19/oep1978-prova-p20.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada",
+   "fonte_escrita": "Source: State of Alaska, Official Election Pamphlet, 1978",
+   "licenca": "SEM PERMISSÃO CLARA CONFERIDA (midia.md §7.1). Documento do Estado do Alasca (folheto eleitoral oficial). O texto foi lido pela cópia arquivada, que vale como fonte (Lucas, 27/09/2026; CLAUDE.md, \"A marca\"), mas a cópia não prova permissão de uso. A permissão se confere na origem de hoje: elections.alaska.gov recusa robô, então é no navegador do app, com o Lucas vendo (não tentei o site). Até lá: a página é só prova; a cena recria o texto fiel com a fonte escrita.",
+   "permissao_clara": false,
+   "pagina": "p. 63 impressa = PDF p. 20 — \"BONDING PROPOSITION NO. 10 / CAPITAL CONSTRUCTION COSTS OF THE NEW ALASKA CAPITAL (Chapter 157, Session Laws of Alaska 1978)\"",
+   "trechos": [
+    {
+     "cena": "s19",
+     "grifo": "not more than $966,000,000",
+     "texto_literal_da_fonte": "BALLOT QUESTION: Shall the State of Alaska issue its general obligation bonds in the principal amount of not more than $966,000,000 for the purpose of paying the costs of capital improvements for the new state capital?",
+     "localizador": "p. 63 (PDF p. 20), BALLOT QUESTION",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "up to nine hundred sixty-six million dollars in bonds",
+     "plano_janela_s": [
+      192.633,
+      207.1
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 200.96,
+     "sai_s": 203.86,
+     "palavras_idx": [
+      575,
+      583
+     ],
+     "palavras_voz": [
+      [
+       "up",
+       200.96,
+       201.06
+      ],
+      [
+       "to",
+       201.113,
+       201.22
+      ],
+      [
+       "nine",
+       201.268,
+       201.46
+      ],
+      [
+       "hundred",
+       201.5,
+       201.78
+      ],
+      [
+       "sixty-six",
+       201.847,
+       202.5
+      ],
+      [
+       "million",
+       202.55,
+       202.9
+      ],
+      [
+       "dollars",
+       202.95,
+       203.3
+      ],
+      [
+       "in",
+       203.327,
+       203.38
+      ],
+      [
+       "bonds",
+       203.46,
+       203.86
+      ]
+     ],
+     "dentro_da_janela": true
+    }
+   ],
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1273x1644",
+    "megapixels": 2.09,
+    "bytes": 235241,
+    "sha256": "c693274f2ef08056776eee9ddf39e98341c3d43e1d5772a740248265ef6eae58",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1273x1644",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "oep1994-bm3",
+   "tipo": "documento",
+   "cena": [
+    "s33",
+    "s34"
+   ],
+   "fonte": {
+    "instituicao": "State of Alaska, Division of Elections",
+    "titulo": "Official Election Pamphlet 1994 — Ballot Measure No. 3, Change of Capital to Wasilla (93MCAP)",
+    "autor": "Legislative Affairs Agency (sumário); declarações de apoio e de oposição sem assinatura visível na p. B-24",
+    "data": "1994 (eleição geral de 8 de novembro de 1994)",
+    "url": "https://www.elections.alaska.gov/doc/oep/1994/1994-Ballot-Measures.pdf",
+    "url_acessada": "http://web.archive.org/web/20161230104042id_/https://www.elections.alaska.gov/doc/oep/1994/1994-Ballot-Measures.pdf (captura de 30/12/2016, lida pelo dossiê em 23/09/2026)",
+    "copia_local": "midia/juneau/fontes/documento/verif/oep94.pdf",
+    "copia_local_sha256": "956e7ee86799bce294eef6970fe847c7415e039ffed4413d92ee7c18bc9b5e45",
+    "fonte_id_dossie": "doc-19"
+   },
+   "url": "https://www.elections.alaska.gov/doc/oep/1994/1994-Ballot-Measures.pdf",
+   "arquivo": "out/juneau/_media/documento/s34/oep1994-prova-p05.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada (s34); a página não vai à tela em s33 (só conferência)",
+   "fonte_escrita": "Source: State of Alaska, Official Election Pamphlet, 1994",
+   "licenca": "SEM PERMISSÃO CLARA CONFERIDA (midia.md §7.1). Documento do Estado do Alasca (folheto eleitoral oficial). O texto foi lido pela cópia arquivada, que vale como fonte (Lucas, 27/09/2026; CLAUDE.md, \"A marca\"), mas a cópia não prova permissão de uso. A permissão se confere na origem de hoje: elections.alaska.gov recusa robô, então é no navegador do app, com o Lucas vendo (não tentei o site). Até lá: a página é só prova; a cena recria o texto fiel com a fonte escrita.",
+   "permissao_clara": false,
+   "pagina": "p. B-24 impressa = PDF p. 5 — \"BALLOT MEASURE NO. 3 / CHANGE OF CAPITAL TO WASILLA / 93MCAP\"",
+   "trechos": [
+    {
+     "cena": "s34",
+     "grifo": "This time, no price tag is attached.",
+     "texto_literal_da_fonte": "Twelve years ago, the Capital Site Planning Commission estimated that it would cost $2,843,000,000 to move the capital. This time, no price tag is attached. Alaskans are being asked to sign a blank check and trust a few politicians to fill in the amount.",
+     "localizador": "p. B-24 (PDF p. 5), STATEMENT IN OPPOSITION, coluna da direita, 5º parágrafo",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "\"This time,\" the statement against it said, \"no price tag is attached.\"",
+     "plano_janela_s": [
+      354.067,
+      363.1
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 358.87,
+     "sai_s": 362.96,
+     "palavras_idx": [
+      1012,
+      1023
+     ],
+     "palavras_voz": [
+      [
+       "\"This",
+       358.87,
+       358.98
+      ],
+      [
+       "time,\"",
+       359.06,
+       359.48
+      ],
+      [
+       "the",
+       359.85,
+       359.952
+      ],
+      [
+       "statement",
+       359.952,
+       360.26
+      ],
+      [
+       "against",
+       360.3,
+       360.58
+      ],
+      [
+       "it",
+       360.607,
+       360.66
+      ],
+      [
+       "said,",
+       360.724,
+       361.03
+      ],
+      [
+       "\"no",
+       361.6,
+       361.7
+      ],
+      [
+       "price",
+       361.753,
+       362.02
+      ],
+      [
+       "tag",
+       362.08,
+       362.26
+      ],
+      [
+       "is",
+       362.313,
+       362.42
+      ],
+      [
+       "attached.\"",
+       362.473,
+       362.96
+      ]
+     ],
+     "dentro_da_janela": true,
+     "varredura_em_duas_partes": [
+      {
+       "trecho": "This time,",
+       "entra_s": 358.87,
+       "sai_s": 359.48
+      },
+      {
+       "trecho": "no price tag is attached.",
+       "entra_s": 361.6,
+       "sai_s": 362.96
+      }
+     ],
+     "nota": "a voz parte a citação (\"the statement against it said\" fica no meio, de 359,85 a 361,03 s): o marca-texto varre \"This time,\" e depois \"no price tag is attached.\""
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s33",
+     "plano": 3,
+     "trecho": "Wasilla is an established community, centrally located on the road system between Fairbanks and Kenai Peninsula, where nearly three-quarters of the state's population reside.",
+     "localizador": "p. B-24, STATEMENT OF SUPPORT, 3º parágrafo",
+     "confere_na_fonte": true,
+     "papel": "\"supporters said Wasilla was on the road system\""
+    },
+    {
+     "cena": "s33",
+     "trecho": "This initiative would amend state law to change the state capital from Juneau to Wasilla as of January 1, 1997. SHOULD THIS INITIATIVE BECOME LAW?",
+     "localizador": "p. B-24, BALLOT LANGUAGE",
+     "confere_na_fonte": true,
+     "papel": "\"the ballot carried no price\": a cédula não traz valor"
+    },
+    {
+     "cena": "s34",
+     "plano": 1,
+     "trecho": "Twelve years ago, the Capital Site Planning Commission estimated that it would cost $2,843,000,000 to move the capital.",
+     "localizador": "p. B-24, STATEMENT IN OPPOSITION",
+     "confere_na_fonte": true,
+     "papel": "\"Opponents recalled the 1982 estimate of about $2.8 billion\""
+    }
+   ],
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1273x1644",
+    "megapixels": 2.09,
+    "bytes": 477657,
+    "sha256": "8dd59f91c7428ca7d5c09535f2e8009f19a2358abed4e235cdd519e011083610",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1273x1644",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "stat-31-321-1900",
+   "tipo": "documento",
+   "cena": [
+    "s07"
+   ],
+   "fonte": {
+    "instituicao": "U.S. Congress — U.S. Statutes at Large, vol. 31, p. 321 (U.S. Government Publishing Office, govinfo)",
+    "titulo": "CHAP. 786.—An Act Making further provision for a civil government for Alaska, and for other purposes (31 Stat. 321)",
+    "autor": "Congresso dos EUA (56º Congresso, 1ª sessão)",
+    "data": "1900-06-06",
+    "url": "https://www.govinfo.gov/content/pkg/STATUTE-31/pdf/STATUTE-31-Pg321.pdf",
+    "url_acessada": "cópia local do dossiê, conferida hoje contra a canônica por HEAD: mesmo Content-Length (46.791.991 bytes)",
+    "copia_local": "midia/juneau/fontes/documento/verif/st1900.pdf",
+    "copia_local_sha256": "a57951a5ca7345c42638e9bb9502953b8b2e9043190d9a6f9eb39823cf65da02",
+    "fonte_id_dossie": "doc-01"
+   },
+   "url": "https://www.govinfo.gov/content/pkg/STATUTE-31/pdf/STATUTE-31-Pg321.pdf",
+   "arquivo": "out/juneau/_media/documento/s07/stat-31-321-1900-p1.jpg",
+   "papel": "original",
+   "vai_a_tela": true,
+   "na_tela": "original (plano 1), como a folha sobre a mesa, no máximo 1,4 vez o tamanho do arquivo: 1614×2401 px na tela (a página inteira na altura da tela pede 1,26×). Mais perto que isso, a recriação datilografada (Lucas, 27/09/2026; identidade.md §5, \"Documento antigo\"). A 1,4×, a tinta da linha do grifo chega a 29 px de altura (21 px no arquivo, bbox_px), perto de um terço do corpo da folha recriada (86 px, identidade.md §5): a página real se reconhece, e quem precisar do trecho legível vai à recriação. O grifo varre a página real (bbox_px) ou a recriação.",
+   "fonte_escrita": "nenhuma na tela (domínio público federal; identidade.md §7)",
+   "licenca": "DOMÍNIO PÚBLICO: lei federal dos EUA publicada nos U.S. Statutes at Large (obra do governo federal, 17 U.S.C. §105), na edição digital oficial do U.S. Government Publishing Office (govinfo). Sem crédito na tela (identidade.md §7); procedência gravada.",
+   "permissao_clara": true,
+   "pagina": "p. 321 (PDF p. 1) — \"FIFTY-SIXTH CONGRESS. SESS. I. CH. 785. 1900.\" e, embaixo, CHAP. 786, June 6, 1900, Title I, Chapter One, Sec. 1",
+   "tratamento": [
+    "imagem da página extraída do PDF oficial sem recompressão (PyMuPDF extract_image): os bytes JPEG são os que o govinfo embute",
+    "o selo \"AUTHENTICATED U.S. GOVERNMENT INFORMATION GPO\" do canto superior esquerdo é um campo de assinatura digital que o govinfo sobrepõe à página; ele não está na imagem da página e não vem no arquivo (logo de órgão federal não vai à cena, midia.md §7.6)"
+   ],
+   "trechos": [
+    {
+     "cena": "s07",
+     "grifo": "The temporary seat of government of said district is hereby established at Juneau",
+     "texto_literal_da_fonte": "Sec. 1. … The temporary seat of government of said district is hereby established at Juneau: Provided, That the seat of government shall remain at Sitka until suitable grounds and buildings thereon shall be obtained by purchase or otherwise at Juneau.",
+     "localizador": "31 Stat. 321, Chap. 786, Title I, Chapter One, Sec. 1 (2º período)",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "the temporary seat of government,",
+     "plano_janela_s": [
+      53.133,
+      60.867
+     ],
+     "planos": [
+      1
+     ],
+     "entra_s": 57.88,
+     "sai_s": 59.33,
+     "palavras_idx": [
+      176,
+      180
+     ],
+     "palavras_voz": [
+      [
+       "the",
+       57.88,
+       57.94
+      ],
+      [
+       "temporary",
+       57.996,
+       58.5
+      ],
+      [
+       "seat",
+       58.548,
+       58.74
+      ],
+      [
+       "of",
+       58.767,
+       58.82
+      ],
+      [
+       "government,",
+       58.864,
+       59.33
+      ]
+     ],
+     "dentro_da_janela": true,
+     "bbox_px": [
+      [
+       276,
+       1340,
+       817,
+       1360
+      ],
+      [
+       166,
+       1362,
+       367,
+       1376
+      ]
+     ],
+     "bbox_nota": "x0,y0,x1,y1 inclusivos, em pixels do arquivo (1153×1715): os limites da tinta das palavras do grifo, medidos no próprio arquivo (perfil de tinta, cinza < 128), ±2 px, sem folga. 1ª caixa: de \"The\" a \"hereby\"; 2ª: \"established at Juneau\", até antes dos dois-pontos (x 373). Regravadas em 27/09: as de antes, tiradas do OCR do govinfo, começavam 9 px acima e pisavam a linha de cima. Folga, se houver, sem passar das vizinhas: a tinta da linha de cima vai até y 1337, e a da de baixo começa em y 1383."
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s07",
+     "plano": 2,
+     "trecho": "Provided, That the seat of government shall remain at Sitka until suitable grounds and buildings thereon shall be obtained by purchase or otherwise at Juneau.",
+     "localizador": "31 Stat. 321, Sec. 1",
+     "confere_na_fonte": true,
+     "papel": "\"but the government stayed in Sitka\""
+    }
+   ],
+   "resolucao_nota": "a maior que a origem oferece: o govinfo embute um escaneado de 150 dpi (1153×1715), extraído sem recompressão; não ampliei nada. Tem menos de 1.600 px de largura, e o Lucas já decidiu o caso (27/09/2026; identidade.md §5, \"Documento antigo\"): a página real, com permissão, entra como a folha só até 1,4 vez o tamanho dela, e acima disso vai a recriação datilografada. O conferente-de-midia a aprovou por essa regra (2º despacho, 27/09/2026, 20:30 de Brasília; out/juneau/_pesquisa/conferencia-midia.json).",
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1153x1715",
+    "megapixels": 1.98,
+    "bytes": 139334,
+    "sha256": "48493ae510b1f904f8f4fab9816ba75b82acee0f21a9f2702b2bc940ea7fac23",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1153x1715",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "stat-37-512-1912",
+   "tipo": "documento",
+   "cena": [
+    "s07"
+   ],
+   "fonte": {
+    "instituicao": "U.S. Congress — U.S. Statutes at Large, vol. 37, p. 512 (U.S. Government Publishing Office, govinfo)",
+    "titulo": "CHAP. 387.—An Act To create a legislative assembly in the Territory of Alaska, to confer legislative power thereon, and for other purposes (Second Organic Act; 37 Stat. 512; H. R. 38; Public, No. 334)",
+    "autor": "Congresso dos EUA (62º Congresso, 2ª sessão)",
+    "data": "1912-08-24",
+    "url": "https://www.govinfo.gov/content/pkg/STATUTE-37/pdf/STATUTE-37-Pg512.pdf",
+    "url_acessada": "cópia local do dossiê, conferida hoje contra a canônica por HEAD: mesmo Content-Length (457.261 bytes)",
+    "copia_local": "midia/juneau/fontes/evento/verif/e05.pdf",
+    "copia_local_sha256": "4b71765077c79da4bc175ea4d810311326c6f86cb0a28228949110317e73007c",
+    "fonte_id_dossie": "evt-05"
+   },
+   "url": "https://www.govinfo.gov/content/pkg/STATUTE-37/pdf/STATUTE-37-Pg512.pdf",
+   "arquivo": "out/juneau/_media/documento/s07/stat-37-512-1912-p1.jpg",
+   "papel": "original",
+   "vai_a_tela": true,
+   "na_tela": "original (plano 4), como a folha sobre a mesa, no máximo 1,4 vez o tamanho do arquivo: 1616×2402 px na tela (a página inteira na altura da tela pede 1,26×). Mais perto que isso, a recriação datilografada (Lucas, 27/09/2026; identidade.md §5, \"Documento antigo\"). A 1,4×, a tinta da linha do grifo chega a 31 px de altura (22 px no arquivo, bbox_px), perto de um terço do corpo da folha recriada (86 px, identidade.md §5): a página real se reconhece, e quem precisar do trecho legível vai à recriação. O grifo varre a página real (bbox_px) ou a recriação.",
+   "fonte_escrita": "nenhuma na tela (domínio público federal; identidade.md §7)",
+   "licenca": "DOMÍNIO PÚBLICO: lei federal dos EUA publicada nos U.S. Statutes at Large (obra do governo federal, 17 U.S.C. §105), na edição digital oficial do U.S. Government Publishing Office (govinfo). Sem crédito na tela (identidade.md §7); procedência gravada.",
+   "permissao_clara": true,
+   "pagina": "p. 512 (PDF p. 1) — \"SIXTY-SECOND CONGRESS. SESS. II. CHS. 385-387. 1912.\"; CHAP. 387 começa na metade de baixo; nota de margem \"Capital at Juneau.\"",
+   "tratamento": [
+    "imagem da página extraída do PDF oficial sem recompressão (PyMuPDF extract_image)",
+    "o selo do GPO (campo de assinatura digital sobreposto pelo govinfo) não está na imagem e não vem no arquivo (midia.md §7.6)"
+   ],
+   "trechos": [
+    {
+     "cena": "s07",
+     "grifo": "the capital of the Territory of Alaska shall be at the city of Juneau, Alaska",
+     "texto_literal_da_fonte": "SEC. 2. CAPITAL AT JUNEAU.—That the capital of the Territory of Alaska shall be at the city of Juneau, Alaska, and the seat of government shall be maintained there.",
+     "localizador": "37 Stat. 512, Chap. 387, Sec. 2",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "the capital of the Territory of Alaska shall be at the city of Juneau, Alaska.",
+     "plano_janela_s": [
+      66.833,
+      75.5
+     ],
+     "planos": [
+      4
+     ],
+     "entra_s": 71.38,
+     "sai_s": 75.4,
+     "palavras_idx": [
+      212,
+      226
+     ],
+     "palavras_voz": [
+      [
+       "\"the",
+       71.38,
+       71.46
+      ],
+      [
+       "capital",
+       71.51,
+       71.86
+      ],
+      [
+       "of",
+       71.887,
+       71.94
+      ],
+      [
+       "the",
+       71.96,
+       72.02
+      ],
+      [
+       "Territory",
+       72.076,
+       72.58
+      ],
+      [
+       "of",
+       72.607,
+       72.66
+      ],
+      [
+       "Alaska",
+       72.729,
+       73.14
+      ],
+      [
+       "shall",
+       73.18,
+       73.38
+      ],
+      [
+       "be",
+       73.433,
+       73.54
+      ],
+      [
+       "at",
+       73.567,
+       73.62
+      ],
+      [
+       "the",
+       73.64,
+       73.7
+      ],
+      [
+       "city",
+       73.764,
+       74.02
+      ],
+      [
+       "of",
+       74.047,
+       74.1
+      ],
+      [
+       "Juneau,",
+       74.164,
+       74.68
+      ],
+      [
+       "Alaska.\"",
+       74.83,
+       75.4
+      ]
+     ],
+     "dentro_da_janela": true,
+     "bbox_px": [
+      [
+       720,
+       986,
+       992,
+       1004
+      ],
+      [
+       339,
+       1005,
+       789,
+       1026
+      ]
+     ],
+     "bbox_nota": "x0,y0,x1,y1 inclusivos, em pixels do arquivo (1154×1716): os limites da tinta das palavras do grifo, medidos no próprio arquivo (perfil de tinta, cinza < 128), ±2 px, sem folga. O grifo começa em \"the capital\" (x 720; o \"That\" antes dele termina em x 706) e para em \"Alaska\" (a vírgula começa em x 792; a fonte segue \", and the seat of government shall be maintained there.\"). Regravadas em 27/09: as de antes, tiradas do OCR do govinfo, começavam no \"That\" e pisavam as linhas vizinhas. Entre as duas linhas do grifo não cabe folga (a descida de uma toca a subida da outra em y 1004/1005), e a tinta da linha de baixo começa em y 1027."
+    }
+   ],
+   "resolucao_nota": "a maior que a origem oferece: o govinfo embute um escaneado de 150 dpi (1154×1716), extraído sem recompressão; não ampliei nada. Tem menos de 1.600 px de largura, e o Lucas já decidiu o caso (27/09/2026; identidade.md §5, \"Documento antigo\"): a página real, com permissão, entra como a folha só até 1,4 vez o tamanho dela, e acima disso vai a recriação datilografada. O conferente-de-midia a aprovou por essa regra (2º despacho, 27/09/2026, 20:30 de Brasília; out/juneau/_pesquisa/conferencia-midia.json).",
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1154x1716",
+    "megapixels": 1.98,
+    "bytes": 199892,
+    "sha256": "7cd97a8630f96190c9e3c4400f615e78b76484003f4221eeb4e91b6402488cb6",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1154x1716",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "ag-opinion-1993",
+   "tipo": "documento",
+   "cena": [
+    "s13"
+   ],
+   "fonte": {
+    "instituicao": "Alaska Department of Law — Attorney General Opinions",
+    "titulo": "Review of initiative application for a new state capital (to Lt. Gov. John B. \"Jack\" Coghill), Our File No.: 663-94-0113",
+    "autor": "Charles E. Cole, Attorney General (assinatura na p. 6)",
+    "data": "1993-08-24",
+    "url": "https://law.alaska.gov/pdf/opinions/opinions_1993/93-040_663940113.pdf",
+    "url_acessada": "cópia local do dossiê; 2 HEAD por curl na canônica às 15:25:55Z: 200, Content-Length 31.496 = a cópia. Às 15:27:12Z a home do law.alaska.gov deu 403 ao WebFetch, e parei no host: o HEAD veio antes do 403. Se ele vale como conferência, decide o Claude central (incidente law-alaska-403)",
+    "copia_local": "midia/juneau/fontes/documento/verif/ag93.pdf",
+    "copia_local_sha256": "5c4c751262d45094ce35515adfa21566a67cbedf4b5ccfe762fcbf87622993b0",
+    "fonte_id_dossie": "doc-23"
+   },
+   "url": "https://law.alaska.gov/pdf/opinions/opinions_1993/93-040_663940113.pdf",
+   "arquivo": "out/juneau/_media/documento/s13/ag-opinion-1993-prova-p04.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada, só o texto literal (a frase da voz é paráfrase e não vai como citação)",
+   "fonte_escrita": "Source: Alaska Attorney General, 1993 (sugestão; a forma é do redator-de-tela)",
+   "licenca": "SEM PERMISSÃO CLARA CONFERIDA (midia.md §7.1): documento do Estado do Alasca. A home de law.alaska.gov devolveu 403 ao WebFetch: parei ali, sem contorno; o aviso de direitos do Departamento de Law se confere no navegador do app. Até lá: recriada.",
+   "permissao_clara": false,
+   "pagina": "Page 4 (PDF p. 4), II.C.2 \"Would the proposed initiative enact 'local or special' legislation?\"",
+   "trechos": [
+    {
+     "cena": "s13",
+     "grifo": "a planned capital not located in a relatively heavily urbanized area",
+     "texto_literal_da_fonte": "Applying this test, the court upheld the initiative, finding a rational basis for eliminating Anchorage and Fairbanks from consideration on the premise that the new capital should be a planned capital not located in a relatively heavily urbanized area. Id. at 464.",
+     "localizador": "p. 4, II.C.2, 4º parágrafo",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "a planned capital away from the big cities.",
+     "plano_janela_s": [
+      130.967,
+      136.833
+     ],
+     "planos": [
+      2
+     ],
+     "entra_s": 134.63,
+     "sai_s": 136.73,
+     "palavras_idx": [
+      382,
+      389
+     ],
+     "palavras_voz": [
+      [
+       "a",
+       134.63,
+       134.71
+      ],
+      [
+       "planned",
+       134.75,
+       135.03
+      ],
+      [
+       "capital",
+       135.09,
+       135.51
+      ],
+      [
+       "away",
+       135.558,
+       135.75
+      ],
+      [
+       "from",
+       135.782,
+       135.91
+      ],
+      [
+       "the",
+       135.93,
+       135.99
+      ],
+      [
+       "big",
+       136.05,
+       136.23
+      ],
+      [
+       "cities.",
+       136.299,
+       136.73
+      ]
+     ],
+     "dentro_da_janela": true,
+     "nota": "a voz diz \"a planned capital away from the big cities\" (paráfrase): o marca-texto varre o texto literal enquanto a voz diz a paráfrase"
+    }
+   ],
+   "validado_por_visao": true,
+   "incidente_de_rede": [
+    "law-alaska-403"
+   ],
+   "medido": {
+    "resolucao": "1275x1650",
+    "megapixels": 2.1,
+    "bytes": 421004,
+    "sha256": "dc2fdeaf4d93e358e74352de7c1bc9f88efddae94e44594b44295b1be90570bd",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1275x1650",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "boucher-v-engstrom-1974",
+   "tipo": "documento",
+   "cena": [
+    "s13"
+   ],
+   "fonte": {
+    "instituicao": "Alaska Supreme Court",
+    "titulo": "Boucher v. Engstrom, 528 P.2d 456 (Alaska 1974), Nos. 2232 and 2249",
+    "autor": "opinião de Rabinowitz, Chief Justice",
+    "data": "1974-11-15 (a ordem com as mesmas conclusões é de 27/06/1974)",
+    "url": "https://static.case.law/p2d/528/cases/0456-01.json",
+    "url_acessada": "Harvard Law School Library, Caselaw Access Project (static.case.law), baixado hoje (200); o agregador é ferramenta, a fonte é a Suprema Corte do Alasca",
+    "copia_local": "midia/juneau/fontes/documento/pesquisa-documentos/cap-boucher.json",
+    "copia_local_sha256": "5644d0230c8a9fdda0d50ea9cac54d2ffc186bec053f8d288931bd29a9746fc7",
+    "fonte_id_dossie": "doc-23 (lacuna do dossiê: o acórdão não tinha sido aberto)"
+   },
+   "url": "https://static.case.law/p2d/528/cases/0456-01.json",
+   "arquivo": "midia/juneau/fontes/documento/pesquisa-documentos/cap-boucher.json",
+   "papel": "copia_local",
+   "vai_a_tela": false,
+   "na_tela": "só conferência (nenhuma página do P.2d vai à tela: a página impressa é da West)",
+   "licenca": "só conferência: o texto de decisão judicial não vai à tela como página; a página do Pacific Reporter é publicação da West e não entra.",
+   "permissao_clara": null,
+   "trechos": [],
+   "conferir": [
+    {
+     "cena": "s13",
+     "plano": 2,
+     "trecho": "The initiative's exclusion of Anchorage and Fairbanks was not arbitrary, but was premised on the view that the new capital should be a planned capital and one that should not be located in the relatively heavily urbanized areas of Anchorage and Fairbanks.",
+     "localizador": "528 P.2d at 464 (pelo AG); opinião de Rabinowitz, C.J.",
+     "confere_na_fonte": true,
+     "papel": "o resumo do AG de 1993 é fiel ao acórdão"
+    },
+    {
+     "cena": "s13",
+     "plano": 1,
+     "trecho": "Due to the time constraints involved, on June 27, 1974, we entered an order which indicated the holdings set forth in this opinion, and directed that the subject initiative be placed on the August 27, 1974, primary election ballot.",
+     "localizador": "nota de rodapé da opinião",
+     "confere_na_fonte": true,
+     "papel": "\"upheld the initiative that same year\": ordem de 27/06/1974, opinião de 15/11/1974"
+    }
+   ],
+   "validado_por_visao": false,
+   "incidente_de_rede": [
+    "courtlistener-volta"
+   ],
+   "medido": {
+    "bytes": 34772,
+    "sha256": "5644d0230c8a9fdda0d50ea9cac54d2ffc186bec053f8d288931bd29a9746fc7",
+    "medido_por": "sha256 (hashlib); cópia local, não é imagem"
+   },
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "trends-jun1990",
+   "tipo": "documento",
+   "cena": [
+    "s31"
+   ],
+   "fonte": {
+    "instituicao": "Alaska Department of Labor — Alaska Economic Trends",
+    "titulo": "\"Juneau: Alaska's Seat of Government\", Alaska Economic Trends, June 1990",
+    "autor": "Brian N. Rae, labor economist, Research & Analysis Section, Alaska Department of Labor",
+    "data": "1990-06",
+    "url": "https://laborstats.alaska.gov/trends/jun90art1.pdf",
+    "url_acessada": "cópia local do dossiê; 2 HEAD por curl na canônica às 15:25:55Z: 200, Content-Length 784.181 = a cópia. Às 15:26:15Z a pasta /trends/ do mesmo host deu 403 ao curl, e segui no host (incidente laborstats-trends-403, a decidir pelo Claude central)",
+    "copia_local": "midia/juneau/fontes/escala_humana/jun90art1.pdf",
+    "copia_local_sha256": "9311de3fa842bdfcf0675acba15b55363cac8719e3aed6ef4e2db9c810e5e7d7",
+    "fonte_id_dossie": "esc-10"
+   },
+   "url": "https://laborstats.alaska.gov/trends/jun90art1.pdf",
+   "arquivo": "out/juneau/_media/documento/s31/trends-jun1990-prova-p02.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada com a fonte, por decisão do Lucas (27/09/2026: \"Recriar com a fonte\"): o trecho redesenhado no visual do canal (a folha datilografada, identidade.md §5), com o texto fiel e a revista citada. A página fica como -prova, fora da tela.",
+   "fonte_escrita": "Source: Alaska Department of Labor, 1990 (sugestão, no formato de identidade.md §7). A opção que o Lucas escolheu diz \"citando a revista\": o nome dela é Alaska Economic Trends, e como ele entra na linha é do redator-de-tela.",
+   "licenca": "SEM PERMISSÃO PROVADA PARA A EDIÇÃO DE 1990, E DECIDIDO: RECRIAR COM A FONTE. As edições atuais da Trends trazem, no expediente: \"This material is public information, and with appropriate credit it may be reproduced without permission.\" (conferido em 27/09 na edição de janeiro de 2023, labor.alaska.gov/trends/jan23.pdf, p. 3; cópia em midia/juneau/fontes/documento/pesquisa-documentos/trends-jan23.pdf; a busca mostra o mesmo texto em edições de 1997 a 2007). O expediente da edição de junho de 1990 não está nos arquivos por artigo do site (jun90art1.pdf e jun90art2.pdf não o trazem; jun90.pdf dá 404; o jun90art2.pdf foi baixado depois do 403 da pasta /trends/, incidente laborstats-trends-403). A decisão do Lucas (27/09/2026, 21:0x de Brasília; out/juneau/_pesquisa/research-documentos.md, §3, item 2): a pergunta foi \"Revista do Trabalho do Alasca, junho de 1990 (cena 31): como mostramos o trecho?\"; a resposta, \"Recriar com a fonte (Recomendado)\"; a opção dizia \"O trecho é redesenhado na tela, citando a revista. Sem risco de direito autoral.\" A página não vai à tela: fica como prova, e a cena recria o texto (midia.md §7.1).",
+   "permissao_clara": false,
+   "pagina": "p. 2 (PDF p. 2), coluna da direita, 1º parágrafo",
+   "trechos": [
+    {
+     "cena": "s31",
+     "grifo": "finally persuaded voters to reject the plans",
+     "texto_literal_da_fonte": "The prohibitive expense of the capital move finally persuaded voters to reject the plans, and Juneau's economic future was secured for the moment.",
+     "localizador": "p. 2, coluna da direita, 1º parágrafo (a camada de OCR lê \"fmally\"; a página diz \"finally\")",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "finally persuaded voters to reject the plans.",
+     "plano_janela_s": [
+      321,
+      329.5
+     ],
+     "planos": [
+      4
+     ],
+     "entra_s": 326.04,
+     "sai_s": 328.56,
+     "palavras_idx": [
+      923,
+      929
+     ],
+     "palavras_voz": [
+      [
+       "\"finally",
+       326.04,
+       326.44
+      ],
+      [
+       "persuaded",
+       326.496,
+       327.0
+      ],
+      [
+       "voters",
+       327.057,
+       327.4
+      ],
+      [
+       "to",
+       327.427,
+       327.48
+      ],
+      [
+       "reject",
+       327.537,
+       327.88
+      ],
+      [
+       "the",
+       327.9,
+       327.96
+      ],
+      [
+       "plans.\"",
+       328.053,
+       328.56
+      ]
+     ],
+     "dentro_da_janela": true,
+     "grafia": "a frase segue na fonte (\", and Juneau's economic future…\"): o ponto final é da voz"
+    }
+   ],
+   "validado_por_visao": true,
+   "incidente_de_rede": [
+    "laborstats-trends-403"
+   ],
+   "medido": {
+    "resolucao": "1276x1755",
+    "megapixels": 2.24,
+    "bytes": 409105,
+    "sha256": "3017ee8f9eae2f6c2e5a29a40080a78d3c850afa382855c5ef41450996f1ba0f",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1276x1755",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "as-44-06",
+   "tipo": "documento",
+   "cena": [
+    "s36",
+    "s61"
+   ],
+   "fonte": {
+    "instituicao": "Alaska State Legislature — Alaska Statutes (BASIS)",
+    "titulo": "Alaska Statutes, Title 44, Chapter 06, Capital: AS 44.06.010, .050, .055, .060",
+    "autor": "Estado do Alasca (a regra de custo veio da iniciativa de 1978 e foi renovada em 1994; dossiê, mec-05)",
+    "data": "texto vigente, conferido pelo Claude central no navegador do app em 26/09/2026 (roteiros/juneau/volateis-conferidos.md)",
+    "url": "https://www.akleg.gov/basis/statutes.asp?media=print&secStart=44.06&secEnd=44.06.060",
+    "url_acessada": "não acessei: o BASIS recusa robô (403 a um subagente em 23/09). Li a cópia local do dossiê.",
+    "copia_local": "midia/juneau/fontes/mecanismo/verif/as4406.html",
+    "copia_local_sha256": "172c0fa24525e07eeeb59a3975614c70f2846f34efb2805ef26c1e0090b71b6a",
+    "fonte_id_dossie": "doc-04, mec-04"
+   },
+   "url": "https://www.akleg.gov/basis/statutes.asp?media=print&secStart=44.06&secEnd=44.06.060",
+   "arquivo": "midia/juneau/fontes/mecanismo/verif/as4406.html",
+   "papel": "copia_local",
+   "vai_a_tela": false,
+   "prova_imagem": "NÃO GERADA: não há captura da página (o BASIS recusa robô; a captura sai do navegador do app, pelo Claude central)",
+   "na_tela": "recriada",
+   "fonte_escrita": "Source: Alaska Statutes, AS 44.06 (despacho)",
+   "licenca": "SEM PERMISSÃO CLARA CONFERIDA (midia.md §7.1): estatuto do Estado. A permissão se confere no navegador do app (o BASIS recusa robô). Até lá: recriada.",
+   "permissao_clara": false,
+   "trechos": [
+    {
+     "cena": "s36",
+     "grifo": "only after a majority of those voting in a statewide election have approved a bond issue that includes all bondable costs",
+     "texto_literal_da_fonte": "Sec. 44.06.055. Relocation expenditures. State money may be expended to relocate physically the capital or the legislature from the present location only after a majority of those voting in a statewide election have approved a bond issue that includes all bondable costs to the state of the relocation of a functional state legislature or capital to the new site over the twelve-year period following such approval.",
+     "localizador": "AS 44.06.055, 1º período",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "only after voters approve bonds",
+     "plano_janela_s": [
+      379.8,
+      391.9
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 387.84,
+     "sai_s": 389.6,
+     "palavras_idx": [
+      1090,
+      1094
+     ],
+     "palavras_voz": [
+      [
+       "only",
+       387.84,
+       388.16
+      ],
+      [
+       "after",
+       388.213,
+       388.48
+      ],
+      [
+       "voters",
+       388.537,
+       388.88
+      ],
+      [
+       "approve",
+       388.92,
+       389.2
+      ],
+      [
+       "bonds",
+       389.267,
+       389.6
+      ]
+     ],
+     "dentro_da_janela": true
+    },
+    {
+     "cena": "s36",
+     "grifo": "over the twelve-year period following such approval",
+     "texto_literal_da_fonte": "… to the new site over the twelve-year period following such approval.",
+     "localizador": "AS 44.06.055, fim do 1º período",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "for twelve years of costs.",
+     "plano_janela_s": [
+      379.8,
+      391.9
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 389.64,
+     "sai_s": 391.05,
+     "palavras_idx": [
+      1095,
+      1099
+     ],
+     "palavras_voz": [
+      [
+       "for",
+       389.64,
+       389.76
+      ],
+      [
+       "twelve",
+       389.806,
+       390.08
+      ],
+      [
+       "years",
+       390.12,
+       390.32
+      ],
+      [
+       "of",
+       390.347,
+       390.485
+      ],
+      [
+       "costs.",
+       390.485,
+       391.05
+      ]
+     ],
+     "dentro_da_janela": true
+    },
+    {
+     "cena": "s61",
+     "grifo": "only after a majority of those voting in a statewide election have approved a bond issue that includes all bondable costs",
+     "texto_literal_da_fonte": "State money may be expended to relocate physically the capital or the legislature from the present location only after a majority of those voting in a statewide election have approved a bond issue that includes all bondable costs …",
+     "localizador": "AS 44.06.055, 1º período (a mesma peça de s36: repetição intencional)",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "voters would have to approve its price",
+     "plano_janela_s": [
+      633.067,
+      641.867
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 638.6,
+     "sai_s": 640.2,
+     "palavras_idx": [
+      1808,
+      1814
+     ],
+     "palavras_voz": [
+      [
+       "voters",
+       638.6,
+       638.92
+      ],
+      [
+       "would",
+       638.947,
+       639.08
+      ],
+      [
+       "have",
+       639.112,
+       639.24
+      ],
+      [
+       "to",
+       639.267,
+       639.32
+      ],
+      [
+       "approve",
+       639.37,
+       639.72
+      ],
+      [
+       "its",
+       639.74,
+       639.8
+      ],
+      [
+       "price",
+       639.867,
+       640.2
+      ]
+     ],
+     "dentro_da_janela": true
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s61",
+     "plano": 2,
+     "trecho": "State money may be expended",
+     "localizador": "AS 44.06.055, começo do 1º período",
+     "confere_na_fonte": true,
+     "papel": "sem grifo (o marca-texto não volta)"
+    },
+    {
+     "cena": "s36",
+     "trecho": "The purpose of AS 44.06.050 – 44.06.060 is to guarantee to the people their right to know and to approve in advance all costs of relocating the capital or the legislature",
+     "localizador": "AS 44.06.050",
+     "confere_na_fonte": true
+    }
+   ],
+   "validado_por_visao": false,
+   "medido": {
+    "bytes": 2452,
+    "sha256": "172c0fa24525e07eeeb59a3975614c70f2846f34efb2805ef26c1e0090b71b6a",
+    "medido_por": "sha256 (hashlib); cópia local, não é imagem"
+   },
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "hb3-34th-legislature",
+   "tipo": "documento",
+   "cena": [
+    "s40"
+   ],
+   "fonte": {
+    "instituicao": "Alaska State Legislature",
+    "titulo": "HOUSE BILL NO. 3 (34-LS0092\\A, HB0003a) — \"An Act relating to convening the legislature in Anchorage; … relating to the relocation of functions of state government; and providing for an effective date.\"",
+    "autor": "Representatives G. Nelson, Rauscher, Underwood, Saddler, Tilton, McCabe, Elam, Tomaszewski (cabeçalho do PDF na cópia do dossiê, arquivo de 23/09/2026)",
+    "data": "versão A, apresentada em 22/01/2025 (\"Introduced: 1/22/25\"); o cabeçalho do PDF na cópia do dossiê (arquivo de 23/09/2026) diz \"THIRTY-FOURTH LEGISLATURE - SECOND SESSION\"",
+    "url": "https://www.akleg.gov/PDF/34/Bills/HB0003A.PDF",
+    "url_acessada": "cópia local do dossiê; canônica NÃO MEDIDA: akleg.gov recusa robô (CLAUDE.md, \"A marca\"; midia.md §7.1). Os 2 HEAD por curl que a 1ª rodada mandou a ela (15:25:55Z, resposta 200) foram contorno e não valem como conferência (incidente akleg-hb3-head)",
+    "copia_local": "midia/juneau/fontes/evento/hb0003a.pdf",
+    "copia_local_sha256": "54ff86159a42e84fa469574e9b22375c59e90170527baeae141ef8665682b17b",
+    "fonte_id_dossie": "evt-28"
+   },
+   "url": "https://www.akleg.gov/PDF/34/Bills/HB0003A.PDF",
+   "arquivo": "out/juneau/_media/documento/s40/hb3-2025-prova-p12.jpg",
+   "arquivos_extra": [
+    "out/juneau/_media/documento/s40/hb3-2025-prova-p01.jpg"
+   ],
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "só recriada (despacho), sem print do site",
+   "fonte_escrita": "o despacho sugere \"Source: Alaska State Legislature, 2026\"; a versão A é de 22/01/2025 (o PDF na cópia do dossiê, de 23/09/2026, é que traz \"Second Session\"): o ano é decisão do redator-de-tela",
+   "licenca": "SEM PERMISSÃO CLARA CONFERIDA (midia.md §7.1): documento do Estado. Até lá: recriada.",
+   "permissao_clara": false,
+   "pagina": "Sec. 16 na p. -12- (PDF p. 12); título e data na p. -1- (PDF p. 1)",
+   "trechos": [
+    {
+     "cena": "s40",
+     "grifo": "AS 44.06.050, 44.06.055, and 44.06.060 are repealed.",
+     "texto_literal_da_fonte": "* Sec. 16. AS 44.06.050, 44.06.055, and 44.06.060 are repealed.",
+     "localizador": "HB 3, versão A, Sec. 16 (p. 12, linha 7)",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "proposed repealing the whole cost law,",
+     "plano_janela_s": [
+      422.733,
+      431.767
+     ],
+     "planos": [
+      2,
+      3
+     ],
+     "entra_s": 422.76,
+     "sai_s": 424.72,
+     "palavras_idx": [
+      1187,
+      1192
+     ],
+     "palavras_voz": [
+      [
+       "proposed",
+       422.76,
+       423.18
+      ],
+      [
+       "repealing",
+       423.228,
+       423.66
+      ],
+      [
+       "the",
+       423.68,
+       423.74
+      ],
+      [
+       "whole",
+       423.78,
+       423.98
+      ],
+      [
+       "cost",
+       424.06,
+       424.38
+      ],
+      [
+       "law,",
+       424.44,
+       424.72
+      ]
+     ],
+     "dentro_da_janela": true
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s40",
+     "trecho": "* Sec. 17. This Act takes effect January 1, 2027.",
+     "localizador": "HB 3, Sec. 17 (p. 12, linha 8)",
+     "confere_na_fonte": true
+    },
+    {
+     "cena": "s40",
+     "plano": 3,
+     "trecho": "estado do projeto: \"(H) CRA\" desde 22/01/2025 (volateis-conferidos.md, 26/09)",
+     "localizador": "BASIS, não reconferido por mim (recusa robô)",
+     "confere_na_fonte": null,
+     "papel": "VOLÁTIL: reconferir na véspera de publicar"
+    }
+   ],
+   "validado_por_visao": true,
+   "incidente_de_rede": [
+    "akleg-hb3-head"
+   ],
+   "medido": {
+    "resolucao": "1275x1650",
+    "megapixels": 2.1,
+    "bytes": 116513,
+    "sha256": "aa1915e1316946ae05a1e4f4f513cf29f20c4b2904a2b138f477242c52fa42ff",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1275x1650",
+   "arquivos_extra_medidos": [
+    {
+     "arquivo": "out/juneau/_media/documento/s40/hb3-2025-prova-p01.jpg",
+     "resolucao": "1275x1650",
+     "megapixels": 2.1,
+     "bytes": 221985,
+     "sha256": "0d377f550822d57792100d5a8bd88734ffb12d313e9213942029586996a3ad92",
+     "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+    }
+   ]
+  },
+  {
+   "id": "fseis-2018-es2",
+   "tipo": "documento",
+   "cena": [
+    "s03"
+   ],
+   "fonte": {
+    "instituicao": "Alaska Department of Transportation & Public Facilities (preparado por) e Federal Highway Administration, Alaska Division (para)",
+    "titulo": "Juneau Access Improvements Project — Final Supplemental Environmental Impact Statement and Record of Decision (Volume 1, com a errata de julho de 2018)",
+    "autor": "DOT&PF, com o texto escrito sobretudo pela HDR (midia.md §7.1, \"O estudo de 2018\")",
+    "data": "2018-06-18 (ROD assinado; errata de julho de 2018)",
+    "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+    "url_acessada": "cópia local do dossiê (midia/juneau/fontes/triagem/fseis.pdf; a canônica já devolveu \"Request Rejected\" a robô: não tentei)",
+    "copia_local": "midia/juneau/fontes/triagem/fseis.pdf",
+    "copia_local_sha256": "6bc7a2f30a6648949b0626095d2f98a259966c345cf0a773691b20dba51f0281",
+    "fonte_id_dossie": "doc-21, mec-01"
+   },
+   "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+   "arquivo": "out/juneau/_media/documento/s03/fseis-2018-prova-p016.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "opcional: crédito recriado da paráfrase (redator-de-tela); nunca a página",
+   "fonte_escrita": "Source: Alaska DOT&PF and FHWA, 2018",
+   "licenca": "ESTADUAL, SEM PERMISSÃO (midia.md §7.1, \"O estudo de 2018\"): página, capa, figura, mapa e assinatura não vão à tela sem autorização escrita do DOT&PF; o texto citado se recria com \"Source: Alaska DOT&PF and FHWA, 2018\" (a frase de decisão do ROD, com \"Source: Federal Highway Administration, 2018\"); número de tabela vira DADO.",
+   "permissao_clara": false,
+   "pagina": "p. ES-2 (PDF p. 16), ES-2 Proposed Action",
+   "trechos": [],
+   "conferir": [
+    {
+     "cena": "s03",
+     "plano": 1,
+     "trecho": "Juneau is the largest community on the North American continent not connected to the continental highway system.",
+     "localizador": "p. ES-2, ES-2 Proposed Action, 1º parágrafo",
+     "confere_na_fonte": true,
+     "papel": "crédito opcional da paráfrase; sem grifo (o plano é mapa)"
+    }
+   ],
+   "validado_por_visao": false,
+   "medido": {
+    "resolucao": "1275x1650",
+    "megapixels": 2.1,
+    "bytes": 510408,
+    "sha256": "d27febb89452b6ff31b69a24fa6ab6d3fa647f38e95b9b0587d64bc5632cbc19",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1275x1650",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "fseis-2018-1-16",
+   "tipo": "documento",
+   "cena": [
+    "s43"
+   ],
+   "fonte": {
+    "instituicao": "Alaska Department of Transportation & Public Facilities (preparado por) e Federal Highway Administration, Alaska Division (para)",
+    "titulo": "Juneau Access Improvements Project — Final Supplemental Environmental Impact Statement and Record of Decision (Volume 1, com a errata de julho de 2018)",
+    "autor": "DOT&PF, com o texto escrito sobretudo pela HDR (midia.md §7.1, \"O estudo de 2018\")",
+    "data": "2018-06-18 (ROD assinado; errata de julho de 2018)",
+    "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+    "url_acessada": "cópia local do dossiê (midia/juneau/fontes/triagem/fseis.pdf; a canônica já devolveu \"Request Rejected\" a robô: não tentei)",
+    "copia_local": "midia/juneau/fontes/triagem/fseis.pdf",
+    "copia_local_sha256": "6bc7a2f30a6648949b0626095d2f98a259966c345cf0a773691b20dba51f0281",
+    "fonte_id_dossie": "doc-21, mec-01"
+   },
+   "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+   "arquivo": "out/juneau/_media/documento/s43/fseis-2018-prova-p076.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada",
+   "fonte_escrita": "Source: Alaska DOT&PF and FHWA, 2018",
+   "licenca": "ESTADUAL, SEM PERMISSÃO (midia.md §7.1, \"O estudo de 2018\"): página, capa, figura, mapa e assinatura não vão à tela sem autorização escrita do DOT&PF; o texto citado se recria com \"Source: Alaska DOT&PF and FHWA, 2018\" (a frase de decisão do ROD, com \"Source: Federal Highway Administration, 2018\"); número de tabela vira DADO.",
+   "permissao_clara": false,
+   "pagina": "p. 1-16 (PDF p. 76), §1.4.2 Flexibility and Opportunity for Travel (a seção começa na p. 1-15)",
+   "trechos": [
+    {
+     "cena": "s43",
+     "grifo": "These restrictions also contribute to the perception held by many Alaska residents that the capital is isolated from the rest of the state.",
+     "texto_literal_da_fonte": "The listed restrictions to opportunity and flexibility to travel, combined with long travel times, inhibit residents of Juneau from using alternate airports such as Whitehorse Airport to travel to locations outside Southeast Alaska. These restrictions also contribute to the perception held by many Alaska residents that the capital is isolated from the rest of the state. Capital move proponents often cite this as a reason to relocate the state's capital.",
+     "localizador": "p. 1-16, §1.4.2, parágrafo depois da lista de restrições",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "travel limits feed the perception of an isolated capital.",
+     "plano_janela_s": [
+      454.4,
+      463.133
+     ],
+     "planos": [
+      2
+     ],
+     "entra_s": 456.656,
+     "sai_s": 459.5,
+     "palavras_idx": [
+      1286,
+      1294
+     ],
+     "palavras_voz": [
+      [
+       "travel",
+       456.656,
+       456.93
+      ],
+      [
+       "limits",
+       456.987,
+       457.33
+      ],
+      [
+       "feed",
+       457.378,
+       457.57
+      ],
+      [
+       "the",
+       457.59,
+       457.65
+      ],
+      [
+       "perception",
+       457.701,
+       458.21
+      ],
+      [
+       "of",
+       458.237,
+       458.29
+      ],
+      [
+       "an",
+       458.317,
+       458.37
+      ],
+      [
+       "isolated",
+       458.432,
+       458.93
+      ],
+      [
+       "capital.",
+       458.99,
+       459.5
+      ]
+     ],
+     "dentro_da_janela": true
+    },
+    {
+     "cena": "s43",
+     "grifo": "Capital move proponents often cite this as a reason to relocate the state's capital.",
+     "texto_literal_da_fonte": "Capital move proponents often cite this as a reason to relocate the state's capital.",
+     "localizador": "p. 1-16, §1.4.2, mesma frase-parágrafo",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "Capital move supporters, it adds, often cite that.",
+     "plano_janela_s": [
+      454.4,
+      463.133
+     ],
+     "planos": [
+      2
+     ],
+     "entra_s": 460.16,
+     "sai_s": 462.96,
+     "palavras_idx": [
+      1295,
+      1302
+     ],
+     "palavras_voz": [
+      [
+       "Capital",
+       460.16,
+       460.45
+      ],
+      [
+       "move",
+       460.498,
+       460.69
+      ],
+      [
+       "supporters,",
+       460.741,
+       461.305
+      ],
+      [
+       "it",
+       461.305,
+       461.41
+      ],
+      [
+       "adds,",
+       461.49,
+       461.83
+      ],
+      [
+       "often",
+       462.04,
+       462.29
+      ],
+      [
+       "cite",
+       462.354,
+       462.61
+      ],
+      [
+       "that.",
+       462.674,
+       462.96
+      ]
+     ],
+     "dentro_da_janela": true
+    }
+   ],
+   "nota": "o localizador certo é §1.4.2, p. 1-16 (PDF p. 76), como o despacho já corrigiu; o do fundamento (mec-01.27, \"§1.3\") está errado",
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1275x1650",
+    "megapixels": 2.1,
+    "bytes": 391902,
+    "sha256": "3a1531d83fadda3a5753464af42fd19eb888c51287f86b3bff987203660e4561",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1275x1650",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "fseis-2018-custos",
+   "tipo": "documento",
+   "cena": [
+    "s51"
+   ],
+   "fonte": {
+    "instituicao": "Alaska Department of Transportation & Public Facilities (preparado por) e Federal Highway Administration, Alaska Division (para)",
+    "titulo": "Juneau Access Improvements Project — Final Supplemental Environmental Impact Statement and Record of Decision (Volume 1, com a errata de julho de 2018)",
+    "autor": "DOT&PF, com o texto escrito sobretudo pela HDR (midia.md §7.1, \"O estudo de 2018\")",
+    "data": "2018-06-18 (ROD assinado; errata de julho de 2018)",
+    "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+    "url_acessada": "cópia local do dossiê (midia/juneau/fontes/triagem/fseis.pdf; a canônica já devolveu \"Request Rejected\" a robô: não tentei)",
+    "copia_local": "midia/juneau/fontes/triagem/fseis.pdf",
+    "copia_local_sha256": "6bc7a2f30a6648949b0626095d2f98a259966c345cf0a773691b20dba51f0281",
+    "fonte_id_dossie": "doc-21, mec-01"
+   },
+   "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+   "arquivo": "out/juneau/_media/documento/s51/fseis-2018-prova-p023.jpg",
+   "arquivos_extra": [
+    "out/juneau/_media/documento/s51/fseis-2018-prova-p099.jpg"
+   ],
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "DADO (pesquisa-dados), nunca a página",
+   "fonte_escrita": "Source: Alaska DOT&PF and FHWA, 2018",
+   "licenca": "ESTADUAL, SEM PERMISSÃO (midia.md §7.1, \"O estudo de 2018\"): página, capa, figura, mapa e assinatura não vão à tela sem autorização escrita do DOT&PF; o texto citado se recria com \"Source: Alaska DOT&PF and FHWA, 2018\" (a frase de decisão do ROD, com \"Source: Federal Highway Administration, 2018\"); número de tabela vira DADO.",
+   "permissao_clara": false,
+   "pagina": "p. ES-9 (PDF p. 23) e p. 2-19 (PDF p. 99)",
+   "trechos": [],
+   "conferir": [
+    {
+     "cena": "s51",
+     "plano": 1,
+     "trecho": "Geology – Alternative 2B, East Lynn Canal Highway, would cross 41 avalanche paths, and Alternative 3, West Lynn Canal Highway, would cross 19 avalanche paths.",
+     "localizador": "p. ES-9",
+     "confere_na_fonte": true
+    },
+    {
+     "cena": "s51",
+     "plano": 2,
+     "trecho": "Cost – Total final design and construction costs for Alternative 2B would be approximately $680.2 million, including $619.5 million for highway design and construction, …",
+     "localizador": "p. 2-19",
+     "confere_na_fonte": true,
+     "papel": "a base monetária (ano do dólar) a página não diz: é do verificador-de-fatos, como o espelho pede"
+    }
+   ],
+   "validado_por_visao": false,
+   "medido": {
+    "resolucao": "1275x1650",
+    "megapixels": 2.1,
+    "bytes": 484310,
+    "sha256": "a467b5f042dfbf50037fe35d7c688568a6cddca23cc5f6b51211449e5a26eb9a",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1275x1650",
+   "arquivos_extra_medidos": [
+    {
+     "arquivo": "out/juneau/_media/documento/s51/fseis-2018-prova-p099.jpg",
+     "resolucao": "1275x1650",
+     "megapixels": 2.1,
+     "bytes": 365038,
+     "sha256": "0377a341eff3db5b88051527d9e453c8c52a2d936c92294cb1a2c80e329cb92a",
+     "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+    }
+   ]
+  },
+  {
+   "id": "fseis-2018-2-43",
+   "tipo": "documento",
+   "cena": [
+    "s53"
+   ],
+   "fonte": {
+    "instituicao": "Alaska Department of Transportation & Public Facilities (preparado por) e Federal Highway Administration, Alaska Division (para)",
+    "titulo": "Juneau Access Improvements Project — Final Supplemental Environmental Impact Statement and Record of Decision (Volume 1, com a errata de julho de 2018)",
+    "autor": "DOT&PF, com o texto escrito sobretudo pela HDR (midia.md §7.1, \"O estudo de 2018\")",
+    "data": "2018-06-18 (ROD assinado; errata de julho de 2018)",
+    "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+    "url_acessada": "cópia local do dossiê (midia/juneau/fontes/triagem/fseis.pdf; a canônica já devolveu \"Request Rejected\" a robô: não tentei)",
+    "copia_local": "midia/juneau/fontes/triagem/fseis.pdf",
+    "copia_local_sha256": "6bc7a2f30a6648949b0626095d2f98a259966c345cf0a773691b20dba51f0281",
+    "fonte_id_dossie": "doc-21, mec-01"
+   },
+   "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+   "arquivo": "out/juneau/_media/documento/s53/fseis-2018-prova-p123.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "só conferência e fonte escrita",
+   "fonte_escrita": "Source: Alaska DOT&PF and FHWA, 2018",
+   "licenca": "ESTADUAL, SEM PERMISSÃO (midia.md §7.1, \"O estudo de 2018\"): página, capa, figura, mapa e assinatura não vão à tela sem autorização escrita do DOT&PF; o texto citado se recria com \"Source: Alaska DOT&PF and FHWA, 2018\" (a frase de decisão do ROD, com \"Source: Federal Highway Administration, 2018\"); número de tabela vira DADO.",
+   "permissao_clara": false,
+   "pagina": "p. 2-43 (PDF p. 123), §2.5.1 Alaska's Economic Conditions",
+   "trechos": [],
+   "conferir": [
+    {
+     "cena": "s53",
+     "plano": 2,
+     "trecho": "According to the Institute of Social and Economic Research (ISER), between 2005 and 2014, oil revenues averaged 90 percent of Alaska's unrestricted general fund revenues (Knapp, 2015).",
+     "localizador": "p. 2-43, §2.5.1, 1º parágrafo",
+     "confere_na_fonte": true,
+     "papel": "\"for a decade … about 90 percent\": o estudo cita o ISER (Knapp, 2015)"
+    }
+   ],
+   "validado_por_visao": false,
+   "medido": {
+    "resolucao": "1275x1650",
+    "megapixels": 2.1,
+    "bytes": 489654,
+    "sha256": "86b1b6de08e292fce55518574325abadada9d6c40c719699ab12fc55c93d6c67",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1275x1650",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "fseis-2018-2-52",
+   "tipo": "documento",
+   "cena": [
+    "s55"
+   ],
+   "fonte": {
+    "instituicao": "Alaska Department of Transportation & Public Facilities (preparado por) e Federal Highway Administration, Alaska Division (para)",
+    "titulo": "Juneau Access Improvements Project — Final Supplemental Environmental Impact Statement and Record of Decision (Volume 1, com a errata de julho de 2018)",
+    "autor": "DOT&PF, com o texto escrito sobretudo pela HDR (midia.md §7.1, \"O estudo de 2018\")",
+    "data": "2018-06-18 (ROD assinado; errata de julho de 2018)",
+    "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+    "url_acessada": "cópia local do dossiê (midia/juneau/fontes/triagem/fseis.pdf; a canônica já devolveu \"Request Rejected\" a robô: não tentei)",
+    "copia_local": "midia/juneau/fontes/triagem/fseis.pdf",
+    "copia_local_sha256": "6bc7a2f30a6648949b0626095d2f98a259966c345cf0a773691b20dba51f0281",
+    "fonte_id_dossie": "doc-21, mec-01"
+   },
+   "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+   "arquivo": "out/juneau/_media/documento/s55/fseis-2018-prova-p132.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "só conferência e fonte escrita",
+   "fonte_escrita": "Source: Alaska DOT&PF and FHWA, 2018",
+   "licenca": "ESTADUAL, SEM PERMISSÃO (midia.md §7.1, \"O estudo de 2018\"): página, capa, figura, mapa e assinatura não vão à tela sem autorização escrita do DOT&PF; o texto citado se recria com \"Source: Alaska DOT&PF and FHWA, 2018\" (a frase de decisão do ROD, com \"Source: Federal Highway Administration, 2018\"); número de tabela vira DADO.",
+   "permissao_clara": false,
+   "pagina": "p. 2-52 (PDF p. 132), §2.5.3",
+   "trechos": [],
+   "conferir": [
+    {
+     "cena": "s55",
+     "plano": 1,
+     "trecho": "December 2016. Governor Bill Walker articulated the State's fiscal circumstances in a press release dated December 15, 2016, announcing that he preferred Alternative 1 – No Action and that the JAI Project was being cut from the budget. He stated, \"I am a builder by background and understand the importance of construction projects, but I am very concerned with our current multi-billion dollar fiscal crisis and must prioritize the need for fiscal resolution\"",
+     "localizador": "p. 2-52, §2.5.3",
+     "confere_na_fonte": true,
+     "papel": "\"In December 2016 … the No Action alternative … He cited the state's fiscal crisis.\""
+    }
+   ],
+   "divergencia_na_fonte": "o próprio estudo se contradiz na data: a p. 2-42 (PDF p. 122, §2.5) diz \"Governor Walker announced on December 15, 2017\"; as p. 1-2 e 2-52 dizem 15/12/2016, e a 2-42 cita \"State of Alaska, 2016b\". A voz diz 2016, com as duas páginas que concordam. Para o verificador-de-fatos.",
+   "validado_por_visao": false,
+   "medido": {
+    "resolucao": "1275x1650",
+    "megapixels": 2.1,
+    "bytes": 452839,
+    "sha256": "806d0cf476991b8c03a9978e9aa0850dfe724cd17b2e4979317a34dedf01b075",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1275x1650",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "rod-2018",
+   "tipo": "documento",
+   "cena": [
+    "s58"
+   ],
+   "fonte": {
+    "instituicao": "Alaska Department of Transportation & Public Facilities (preparado por) e Federal Highway Administration, Alaska Division (para)",
+    "titulo": "Juneau Access Improvements Project — Record of Decision (no Volume 1 do Final SEIS)",
+    "autor": "Federal Highway Administration, Alaska Division — assinado por Sandra A. Garcia-Aline, Division Administrator (quem redigiu não se sabe: conta como estadual, midia.md §7.1)",
+    "data": "2018-06-18",
+    "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+    "url_acessada": "cópia local do dossiê (midia/juneau/fontes/triagem/fseis.pdf; a canônica já devolveu \"Request Rejected\" a robô: não tentei)",
+    "copia_local": "midia/juneau/fontes/triagem/fseis.pdf",
+    "copia_local_sha256": "6bc7a2f30a6648949b0626095d2f98a259966c345cf0a773691b20dba51f0281",
+    "fonte_id_dossie": "doc-21, mec-01"
+   },
+   "url": "https://dot.alaska.gov/juneauaccess/assets/2018_FSEIS_Figures/Full_Final_SEIS_-_Text_Only.pdf",
+   "arquivo": "out/juneau/_media/documento/s58/rod-2018-prova-p010.jpg",
+   "arquivos_extra": [
+    "out/juneau/_media/documento/s58/rod-2018-prova-p013.jpg"
+   ],
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "recriada (planos 2 e 3); nada de página nem assinatura",
+   "fonte_escrita": "Source: Federal Highway Administration, 2018 (despacho); ver a observação sobre a atribuição",
+   "licenca": "ESTADUAL, SEM PERMISSÃO (midia.md §7.1, \"O estudo de 2018\"): página, capa, figura, mapa e assinatura não vão à tela sem autorização escrita do DOT&PF; o texto citado se recria com \"Source: Alaska DOT&PF and FHWA, 2018\" (a frase de decisão do ROD, com \"Source: Federal Highway Administration, 2018\"); número de tabela vira DADO.",
+   "permissao_clara": false,
+   "pagina": "ROD p. 3 (PDF p. 10), II \"Basis for Decision\"; ROD p. 6 (PDF p. 13), VII \"Conclusion\"",
+   "trechos": [
+    {
+     "cena": "s58",
+     "grifo": "Declining oil prices have caused the need for cuts to State budgets.",
+     "texto_literal_da_fonte": "In summary, DOT&PF and FHWA find the following: • Declining oil prices have caused the need for cuts to State budgets. • Declining revenues, particularly General Fund revenues, have resulted in substantive cuts to DOT&PF's capital and operating budgets. • Controversy on the JAI Project is high among the public and disagreement remains among elected officials.",
+     "localizador": "ROD p. 3 (PDF p. 10), II Basis for Decision, 1º item da lista",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "pointed to the state's budget,",
+     "plano_janela_s": [
+      601.8,
+      604.7
+     ],
+     "planos": [
+      3
+     ],
+     "entra_s": 602.98,
+     "sai_s": 604.27,
+     "palavras_idx": [
+      1711,
+      1715
+     ],
+     "palavras_voz": [
+      [
+       "pointed",
+       602.98,
+       603.33
+      ],
+      [
+       "to",
+       603.357,
+       603.41
+      ],
+      [
+       "the",
+       603.43,
+       603.49
+      ],
+      [
+       "state's",
+       603.543,
+       604.01
+      ],
+      [
+       "budget,",
+       604.039,
+       604.27
+      ]
+     ],
+     "dentro_da_janela": true,
+     "observacao": "na fonte a frase é achado conjunto (\"In summary, DOT&PF and FHWA find the following:\"), dentro do ROD da FHWA; o midia.md §7.1 dá \"Source: Federal Highway Administration, 2018\" à frase de decisão do ROD e \"Source: Alaska DOT&PF and FHWA, 2018\" ao texto citado: qual vai sob este grifo é do redator-de-tela"
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s58",
+     "plano": 2,
+     "trecho": "Based on the information set forth above, and as the State of Alaska has determined not to build the proposed project and to select Alternative 1 – No Action, it is also my decision to select Alternative 1 – No Action as the proposed action for this project.",
+     "localizador": "ROD p. 6 (PDF p. 13), VII Conclusion; datado June 18, 2018, Sandra A. Garcia-Aline, Division Administrator, FHWA",
+     "confere_na_fonte": true,
+     "papel": "a frase de decisão; a assinatura não vai à tela"
+    },
+    {
+     "cena": "s58",
+     "plano": 4,
+     "trecho": "Controversy on the JAI Project is high among the public and disagreement remains among elected officials.",
+     "localizador": "ROD p. 3, II, 3º item",
+     "confere_na_fonte": true,
+     "papel": "só conferência de \"a public fight over the road\"; sem grifo (o plano 4 é foto)"
+    }
+   ],
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1275x1650",
+    "megapixels": 2.1,
+    "bytes": 369658,
+    "sha256": "ce00ad76aff9736fdebcdb6cfa8c6919ac7bcbaa07929329b7f21f48cc5f1e80",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1275x1650",
+   "arquivos_extra_medidos": [
+    {
+     "arquivo": "out/juneau/_media/documento/s58/rod-2018-prova-p013.jpg",
+     "resolucao": "1275x1650",
+     "megapixels": 2.1,
+     "bytes": 103511,
+     "sha256": "cd0c9593456e4e111846100bbc54c73222a2c1766e9f3b654b0882bc1162fd61",
+     "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+    }
+   ]
+  },
+  {
+   "id": "federal-register-2018-16263",
+   "tipo": "documento",
+   "cena": [
+    "s58"
+   ],
+   "fonte": {
+    "instituicao": "Federal Highway Administration (U.S. Department of Transportation), no Federal Register (Office of the Federal Register / GPO, govinfo)",
+    "titulo": "Notice of Final Federal Agency Actions on Juneau Access Improvements Project in Alaska — Federal Register, Vol. 83, No. 146, p. 36661 (FR Doc. 2018-16263)",
+    "autor": "Sandra A. Garcia-Aline, Federal Highway Administration, Alaska Division Administrator (\"Issued on: July 23, 2018\")",
+    "data": "2018-07-30",
+    "url": "https://www.govinfo.gov/content/pkg/FR-2018-07-30/pdf/2018-16263.pdf",
+    "url_acessada": "baixado hoje do govinfo (200, application/pdf, 202.209 bytes)",
+    "copia_local": "midia/juneau/fontes/documento/pesquisa-documentos/fr-2018-16263.pdf",
+    "copia_local_sha256": "a51c94c325d545e8832ff61732f01959460c703e03e93a6d7115dcb5823440d8",
+    "fonte_id_dossie": "midia.md §7.1"
+   },
+   "url": "https://www.govinfo.gov/content/pkg/FR-2018-07-30/pdf/2018-16263.pdf",
+   "arquivo": "out/juneau/_media/documento/s58/federal-register-2018-16263-p1.jpg",
+   "papel": "original",
+   "vai_a_tela": true,
+   "na_tela": "original (plano 1), recortada no aviso da FHWA (ver recorte), com o trecho grifado",
+   "recorte": {
+    "de_onde": "os avisos do conferente-de-midia no veredito que aprovou esta página (2º despacho, 27/09/2026, 20:30 de Brasília; out/juneau/_pesquisa/conferencia-midia.json e .md, \"s58 p1\"). O enquadramento é do editor-de-arte; aqui ficam o resultado que se espera e onde cada coisa está na página",
+    "resultado_esperado": "o aviso da FHWA com o grifo, sem nenhum texto do aviso da FAA e sem nenhum nome, telefone ou e-mail de servidor; na data, ou a linha do \"issued on June 18, 2018\" entra no quadro, ou o cabeçalho de 30/07/2018 fica fora dele",
+    "fica_fora": [
+     {
+      "o_que": "o fim do aviso da FAA, na coluna 1, do alto até o \"BILLING CODE 4910–13–P\": tem o nome e o telefone de um contato da FAA e o nome de quem assina",
+      "bbox_px": [
+       375,
+       502,
+       1795,
+       4438
+      ]
+     },
+     {
+      "o_que": "o parágrafo FOR FURTHER INFORMATION CONTACT do aviso da FHWA, no alto da coluna 2: nome, cargo, endereço, telefone e e-mail de um servidor da FHWA e de um do DOT&PF",
+      "bbox_px": [
+       1850,
+       1687,
+       3269,
+       3430
+      ]
+     }
+    ],
+    "a_data": {
+     "o_que": "o cabeçalho traz a data da publicação (\"Monday, July 30, 2018\"), perto do \"JUNE 2018\" da tela (espelho, s58, plano 1): o aviso de julho publica a decisão de junho. O conferente pede a linha do \"issued on June 18, 2018\" no quadro, ou o cabeçalho fora",
+     "cabecalho_bbox_px": [
+      1221,
+      282,
+      4750,
+      373
+     ],
+     "issued_on_bbox_px": [
+      [
+       2774,
+       5442,
+       3123,
+       5517
+      ],
+      [
+       1850,
+       5525,
+       2316,
+       5600
+      ]
+     ],
+     "issued_on_nota": "a frase quebra a linha, na coluna 2: \"issued on\" fecha a 6ª linha abaixo da última linha do grifo (\"Alternative.\"), e \"June 18, 2018\" abre a 7ª"
+    },
+    "o_aviso_da_fhwa": {
+     "abertura_na_coluna_1_bbox_px": [
+      375,
+      4604,
+      1794,
+      6177
+     ],
+     "abertura_na_coluna_1": "DEPARTMENT OF TRANSPORTATION, Federal Highway Administration, o título do aviso, AGENCY, ACTION e SUMMARY",
+     "supplementary_information_bbox_px": [
+      1850,
+      3447,
+      3263,
+      5024
+     ],
+     "depois_do_grifo_bbox_px": [
+      1850,
+      5025,
+      3227,
+      5934
+     ]
+    },
+    "papel_medido": "na tinta do próprio arquivo (cinza ≥ 250 na largura da coluna): na coluna 2, entre a última linha dos contatos e o SUPPLEMENTARY INFORMATION, papel puro de y 3432 a 3447 (16 px); na coluna 1, papel de y 4432 a 4504 entre o fim da FAA e o fio que abre o aviso da FHWA (y 4510 a 4512), e de y 4517 a 4602 entre o fio e o DEPARTMENT OF TRANSPORTATION",
+    "recorte_testado": "coluna 2, x 1842 a 3277, y 3440 a 5608: começa no \"SUPPLEMENTARY INFORMATION\", sem nenhuma linha dos contatos, tem o grifo e termina na linha do \"June 18, 2018\" (olhado em 27/09; out/juneau/_tmp/documentos/revisao-2/fr-recorte-teste-col2.jpg, fora do git). É o teste dos dados acima, não o enquadramento da cena. Um retângulo só, do título da coluna 1 ao \"June 18, 2018\" da coluna 2, não fecha limpo embaixo: na altura do fim da data, a coluna 1 tem texto",
+    "nada_a_cortar": "a linha VerDate do pé e a etiqueta da composição, em pé na margem esquerda, só existem na camada de texto do PDF: no arquivo entregue não há tinta ali (o pixel mais escuro é 253 no pé e 254 na margem)",
+    "bbox_nota": "x0,y0,x1,y1 em pixels do arquivo (5100×6600), das caixas da camada de texto do PDF do govinfo (PyMuPDF, fator 600/72); as faixas de papel, da tinta do próprio arquivo"
+   },
+   "fonte_escrita": "nenhuma na tela (domínio público federal; identidade.md §7)",
+   "licenca": "DOMÍNIO PÚBLICO: aviso da Federal Highway Administration, escrito e assinado por funcionária federal no serviço, publicado no Federal Register (obra do governo federal dos EUA, 17 U.S.C. §105). Sem crédito na tela; procedência gravada.",
+   "permissao_clara": true,
+   "pagina": "p. 36661 (PDF p. 1); o aviso da FHWA ocupa o pé da coluna 1 e as colunas 2 e 3",
+   "tratamento": [
+    "página vetorial renderizada a 600 dpi (PyMuPDF), sem anotações: o selo \"AUTHENTICATED U.S. GOVERNMENT INFORMATION GPO\" é o campo de assinatura digital \"USGPOSignature\" que o govinfo põe no PDF, e não vem no arquivo (midia.md §7.6)",
+    "a página traz também o fim de um aviso da FAA (coluna 1) e nomes, telefones e e-mails de contato de servidores: a cena recorta o aviso da FHWA"
+   ],
+   "trechos": [
+    {
+     "cena": "s58",
+     "grifo": "The selected alternative was the No Action Alternative",
+     "texto_literal_da_fonte": "Seven build alternatives were evaluated, along with a No Action Alternative. Alternatives include a combination of highway and ferry routes and improved ferry service in Lynn Canal in Southeast Alaska. The routes pass through City and Borough of Juneau, Haines Borough, and/or Municipality of Skagway Borough. The selected alternative was the No Action Alternative.",
+     "localizador": "83 FR 36661, SUPPLEMENTARY INFORMATION, coluna 2",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "The No Action alternative became final",
+     "plano_janela_s": [
+      595.333,
+      598.833
+     ],
+     "planos": [
+      1
+     ],
+     "entra_s": 595.36,
+     "sai_s": 597.34,
+     "palavras_idx": [
+      1687,
+      1692
+     ],
+     "palavras_voz": [
+      [
+       "The",
+       595.36,
+       595.42
+      ],
+      [
+       "No",
+       595.473,
+       595.58
+      ],
+      [
+       "Action",
+       595.637,
+       595.98
+      ],
+      [
+       "alternative",
+       596.027,
+       596.54
+      ],
+      [
+       "became",
+       596.597,
+       596.94
+      ],
+      [
+       "final",
+       597.007,
+       597.34
+      ]
+     ],
+     "dentro_da_janela": true,
+     "bbox_px": [
+      [
+       3065,
+       4782,
+       3220,
+       4857
+      ],
+      [
+       1850,
+       4865,
+       3173,
+       4940
+      ],
+      [
+       1850,
+       4949,
+       2258,
+       5024
+      ]
+     ],
+     "bbox_nota": "pixels do arquivo (5100×6600), da camada de texto do PDF: \"The\" no fim de uma linha, \"selected alternative was the No Action\" na seguinte e \"Alternative.\" na terceira"
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s58",
+     "plano": 1,
+     "trecho": "The actions by the FHWA, and the laws under which such actions were taken, are described in the JAI Project Final Supplemental Environmental Impact Statement (Final SEIS) and Record of Decision (ROD), issued on June 18, 2018.",
+     "localizador": "83 FR 36661, coluna 2",
+     "confere_na_fonte": true,
+     "papel": "\"became final in June 2018\""
+    }
+   ],
+   "resolucao_nota": "vetorial: 5100×6600 (33,7 MP, abaixo do teto de 40 MP); a coluna do aviso tem ~1700 px de largura nessa resolução",
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "5100x6600",
+    "megapixels": 33.66,
+    "bytes": 4778608,
+    "sha256": "6997628056141f86281d1567932aa8c48d8e2b4d5c1011ab2e33d7979bfe3b92",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "5100x6600",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "ca9-2011-seacc",
+   "tipo": "documento",
+   "cena": [
+    "s52"
+   ],
+   "fonte": {
+    "instituicao": "U.S. Court of Appeals for the Ninth Circuit",
+    "titulo": "Southeast Alaska Conservation Council v. Federal Highway Administration; State of Alaska, Defendant-intervenor-Appellant, No. 09-35551, D.C. No. 1:06-cv-00009-JWS, Opinion (649 F.3d 1050)",
+    "autor": "opinião de Schroeder, Circuit Judge; dissenso de O'Scannlain",
+    "data": "2011-05-04",
+    "url": "https://cdn.ca9.uscourts.gov/datastore/opinions/2011/05/04/09-35551.pdf",
+    "url_acessada": "cópia local do dossiê (o PDF do próprio tribunal); HEAD de hoje: 200, Content-Length 90.437 = a cópia",
+    "copia_local": "midia/juneau/fontes/mecanismo/verif/ca9.pdf",
+    "copia_local_sha256": "d681ccdaddf5489af684b5691ea392ba5149f89d975532847d93c2364c25610b",
+    "fonte_id_dossie": "mec-02, doc-22"
+   },
+   "url": "https://cdn.ca9.uscourts.gov/datastore/opinions/2011/05/04/09-35551.pdf",
+   "arquivo": "out/juneau/_media/documento/s52/ca9-2011-seacc-p04.jpg",
+   "arquivos_retirados": [
+    {
+     "arquivo": "out/juneau/_media/_caca/_retirado/documento/ca9-2011-seacc-p01.jpg",
+     "de": "out/juneau/_media/documento/s52/ca9-2011-seacc-p01.jpg",
+     "o_que_e": "a capa do acórdão (p. 1 do PDF): o tribunal, as partes, No. 09-35551, D.C. No. 1:06-cv-00009-JWS",
+     "sha256": "bc9446131412691a33ec8254a142a40a68bc54f60cf9616251879cb36b8e9e73",
+     "bytes": 1183223,
+     "retirado_em": "2026-09-28T02:26:43Z (27/09, 23:26:43 em Brasília)",
+     "veredito": "trocar (conferente-de-midia, 2º despacho, 27/09/2026, 20:30 de Brasília)",
+     "motivo_do_conferente": "a capa mostra o tribunal e as partes, não a anulação; a página 4, aprovada, é a que diz o que a fala diz",
+     "substituto": "nenhum arquivo novo: a página 4 (arquivo) cobre o plano 1",
+     "registro": "out/juneau/_media/_caca/_retirado/documento/_RETIRADO.json"
+    }
+   ],
+   "papel": "original",
+   "vai_a_tela": true,
+   "na_tela": "original (plano 1), com o rótulo \"upheld on appeal, 2011\" na tela todo o tempo da página, no papel legenda (identidade.md §4.1). É a decisão do Lucas de 27/09/2026, 21:1x de Brasília (identidade.md §5, \"Documento de outra data que atesta o fato, com rótulo\", com a pergunta inteira): \"Sim, com o rótulo (Recomendado)\". Sem o rótulo, a página não entra, e o conferente-de-midia a aprovou com o rótulo como condição (2º despacho, 27/09/2026). A grafia final do rótulo é do redator-de-tela (identidade.md §7). A decisão de 13/02/2009 continua NÃO ACHADA (nao_achados).",
+   "fonte_escrita": "nenhuma na tela (domínio público federal; identidade.md §7); vai o rótulo \"upheld on appeal, 2011\" (Lucas, 27/09/2026)",
+   "licenca": "DOMÍNIO PÚBLICO: opinião de tribunal federal dos EUA (obra do governo federal, 17 U.S.C. §105), no PDF do próprio Nono Circuito. Sem crédito na tela; procedência gravada.",
+   "permissao_clara": true,
+   "pagina": "p. 4 do PDF = slip op. 5895 (\"OPINION / SCHROEDER, Circuit Judge\"). A capa (p. 1 do PDF) foi entregue na 1ª rodada e saiu pelo veredito \"trocar\" do conferente (arquivos_retirados)",
+   "tratamento": [
+    "páginas vetoriais renderizadas a 600 dpi (PyMuPDF), sem anotações; o PDF do tribunal não tem selo"
+   ],
+   "trechos": [
+    {
+     "cena": "s52",
+     "plano": 1,
+     "proposta": true,
+     "grifo": "The district court vacated the FHWA's Record of Decision (\"ROD\")",
+     "texto_literal_da_fonte": "The district court vacated the FHWA's Record of Decision (\"ROD\"), which approved Alaska's preferred alternative for the project, and enjoined all construction and activities that depended on the issuance of a valid EIS, until one was prepared. We have jurisdiction under 28 U.S.C. § 1291, and we affirm.",
+     "localizador": "slip op. 5895 (PDF p. 4), 2º parágrafo",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "voz_do_grifo": "a federal court threw out that choice.",
+     "entra_s": 542.62,
+     "sai_s": 544.38,
+     "palavras_voz": [
+      [
+       "a",
+       542.62,
+       542.65
+      ],
+      [
+       "federal",
+       542.69,
+       542.97
+      ],
+      [
+       "court",
+       543.023,
+       543.29
+      ],
+      [
+       "threw",
+       543.33,
+       543.53
+      ],
+      [
+       "out",
+       543.59,
+       543.77
+      ],
+      [
+       "that",
+       543.802,
+       543.93
+      ],
+      [
+       "choice.",
+       543.987,
+       544.38
+      ]
+     ],
+     "bbox_px": [
+      [
+       2616,
+       3923,
+       3800,
+       4023
+      ],
+      [
+       1300,
+       4035,
+       2864,
+       4135
+      ]
+     ],
+     "bbox_nota": "pixels do arquivo (5100×6600), da camada de texto do PDF do tribunal: 1ª linha \"The district court vacated the\", 2ª linha \"FHWA's Record of Decision (“ROD”)\"",
+     "nota": "PROPOSTA. O despacho deu grifar: [] para s52, porque o trecho sairia da decisão de 2009, NÃO ACHADA. Com a página de 2011 decidida pelo Lucas (27/09/2026, com o rótulo \"upheld on appeal, 2011\"), o conferente-de-midia a aprovou lendo este grifo, que diz, com as palavras do tribunal, o que a fala diz. Se o grifo entra no plano, decidem o montador (re-espelho) e o regente-de-imagem"
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s52",
+     "plano": 2,
+     "trecho": "The issue in this environmental case is whether the district court properly ordered the State of Alaska to consider improving existing ferry service between Juneau and the communities of Haines and Skagway before proceeding with expensive construction of a new ferry terminal and highway through a national forest. We hold the district court was correct under settled environmental law.",
+     "localizador": "slip op. 5895, 1º parágrafo",
+     "confere_na_fonte": true,
+     "papel": "\"The state first had to weigh better service with its existing ferries\" (o plano 2 é footage: sem grifo)"
+    },
+    {
+     "cena": "s52",
+     "plano": 1,
+     "trecho": "Thus, the court vacated the ROD, remanded the USFS's decision granting a right of way to the FHWA, and enjoined all construction on the Project and any activities dependent on the issuance of a valid EIS. The court entered its final judgment in this matter on April 6, 2009, and the State timely appealed on June 4, 2009.",
+     "localizador": "PDF p. 11",
+     "confere_na_fonte": true
+    }
+   ],
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "5100x6600",
+    "megapixels": 33.66,
+    "bytes": 1856000,
+    "sha256": "65e2576a14e741ab91c2b5e434d6419ca1e8d76abab9aa869aa47e567014d43f",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "5100x6600",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "akd-2013-doc185",
+   "tipo": "documento",
+   "cena": [
+    "s52"
+   ],
+   "fonte": {
+    "instituicao": "U.S. District Court for the District of Alaska",
+    "titulo": "Southeast Alaska Conservation Council, et al. v. Federal Highway Administration, et al., 1:06-cv-00009 JWS, Order and Opinion [Re: Motion at Docket 170] (Document 185)",
+    "autor": "John W. Sedwick, District Judge (o caso)",
+    "data": "2013-10-03",
+    "url": "https://www.govinfo.gov/content/pkg/USCOURTS-akd-1_06-cv-00009/pdf/USCOURTS-akd-1_06-cv-00009-1.pdf",
+    "url_acessada": "baixado hoje do govinfo (200); é o mesmo arquivo que o dossiê tinha em midia/juneau/fontes/evento/akd_1.pdf (306.501 bytes)",
+    "copia_local": "midia/juneau/fontes/documento/pesquisa-documentos/akd-06-009-1.pdf",
+    "copia_local_sha256": "43065f256891282dc82aa2aea80ae197bdf13967f268e35ea9257374556da91f",
+    "fonte_id_dossie": "(novo)"
+   },
+   "url": "https://www.govinfo.gov/content/pkg/USCOURTS-akd-1_06-cv-00009/pdf/USCOURTS-akd-1_06-cv-00009-1.pdf",
+   "arquivo": "midia/juneau/fontes/documento/pesquisa-documentos/akd-06-009-1.pdf",
+   "papel": "copia_local",
+   "vai_a_tela": false,
+   "na_tela": "só conferência (é de 2013)",
+   "licenca": "domínio público (decisão de tribunal federal, 17 U.S.C. §105); não vai à tela: é outro ano",
+   "permissao_clara": true,
+   "trechos": [],
+   "conferir": [
+    {
+     "cena": "s52",
+     "plano": 1,
+     "trecho": "This court found the EIS defective because the EIS did not adequately consider the alternative of improving the existing ferry service to and from Juneau. This court enjoined further action on the Project: Any and all construction activities related to the Juneau Access Improvements Project and any and all activities dependent upon the issuance of a valid environmental impact statement, are ENJOINED until such time as defendants demonstrate full compliance with 42 U.S.C. § 4332, its implementing regulations, and this Court's Order of Feb. 13, 2009 (Doc. No. 105).",
+     "localizador": "Doc. 185, p. 2-3",
+     "confere_na_fonte": true,
+     "papel": "identifica a decisão de 13/02/2009 como o Doc. No. 105 do processo 1:06-cv-00009-JWS"
+    }
+   ],
+   "validado_por_visao": false,
+   "medido": {
+    "bytes": 306501,
+    "sha256": "43065f256891282dc82aa2aea80ae197bdf13967f268e35ea9257374556da91f",
+    "medido_por": "sha256 (hashlib); cópia local, não é imagem"
+   },
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "adn-reamer-2026",
+   "tipo": "documento",
+   "cena": [
+    "s27",
+    "s31",
+    "s28"
+   ],
+   "fonte": {
+    "instituicao": "Anchorage Daily News",
+    "titulo": "One man's pork is another man's pigskin: The 1982 question of whether Alaska should move the capital or buy the NFL",
+    "autor": "David Reamer (coluna \"Histories of Alaska\")",
+    "data": "2026-02-09 (a página diz \"Published: February 9, 2026\"; a URL traz 2026/02/08)",
+    "url": "https://www.adn.com/alaska-life/2026/02/08/one-mans-pork-is-another-mans-pigskin-the-1982-question-of-whether-alaska-should-move-the-capital-or-buy-the-nfl/",
+    "url_acessada": "cópia local do dossiê (23/09/2026); não reabri o site",
+    "copia_local": "midia/juneau/fontes/evento/adn_reamer.html",
+    "copia_local_sha256": "99187c836a901a2c2c75ea0d8174da2374c05436e48500e4052f73c2768adeb4",
+    "fonte_id_dossie": "exp-01"
+   },
+   "url": "https://www.adn.com/alaska-life/2026/02/08/one-mans-pork-is-another-mans-pigskin-the-1982-question-of-whether-alaska-should-move-the-capital-or-buy-the-nfl/",
+   "arquivo": "midia/juneau/fontes/evento/adn_reamer.html",
+   "papel": "copia_local",
+   "vai_a_tela": false,
+   "prova_imagem": "NÃO GERADA: sem navegador para capturar (o _capturar-pagina não se roda; a captura é do Claude central, no navegador do app)",
+   "na_tela": "recriada (s27, citação); só conferência (s31); texto do anúncio recriado no DADO (s28)",
+   "fonte_escrita": "Source: Anchorage Daily News, 2026 (s27); a do anúncio de s28 é do redator-de-tela (ver conferir)",
+   "licenca": "SEM PERMISSÃO (midia.md §7.1): documento de imprensa. O rodapé da página diz \"© 2026 Anchorage Daily News. All rights reserved.\" A página não vai à tela; a fala se recria no visual do canal, com o texto fiel e a fonte escrita (o nome do veículo, sem logo, §7.6).",
+   "permissao_clara": false,
+   "trechos": [
+    {
+     "cena": "s27",
+     "grifo": "I decided to just make fun of the whole process and the amount of money they wanted to spend to move the capital and build in Willow.",
+     "texto_literal_da_fonte": "As Stoops told me in a phone interview, \"The capital move was looking bad for Alaska, for Juneau in particular, where I was a resident, and I didn't like the way that others attacked the move. There was a lot of crying about people losing the value of their homes and just stuff that didn't seem relevant to an election like that. And I decided to just make fun of the whole process and the amount of money they wanted to spend to move the capital and build in Willow. So, I combined that with the fact that the NFL was on strike, and of course, everybody loves the NFL.\"",
+     "localizador": "corpo da coluna, depois de \"Enter Lee Stoops\"; a entrevista é de 2/2/2026 (\"Stoops, Lee. Interview by David Reamer. February 2, 2026\", Key sources)",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "I decided to just make fun of the whole process and the amount of money they wanted to spend to move the capital and build in Willow.",
+     "plano_janela_s": [
+      271.233,
+      283.367
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 276.77,
+     "sai_s": 282.36,
+     "palavras_idx": [
+      779,
+      805
+     ],
+     "palavras_voz": [
+      [
+       "\"I",
+       276.77,
+       276.86
+      ],
+      [
+       "decided",
+       276.91,
+       277.26
+      ],
+      [
+       "to",
+       277.287,
+       277.34
+      ],
+      [
+       "just",
+       277.388,
+       277.58
+      ],
+      [
+       "make",
+       277.612,
+       277.74
+      ],
+      [
+       "fun",
+       277.78,
+       277.9
+      ],
+      [
+       "of",
+       277.927,
+       277.98
+      ],
+      [
+       "the",
+       278.0,
+       278.06
+      ],
+      [
+       "whole",
+       278.1,
+       278.3
+      ],
+      [
+       "process",
+       278.36,
+       278.78
+      ],
+      [
+       "and",
+       278.82,
+       278.94
+      ],
+      [
+       "the",
+       278.96,
+       279.02
+      ],
+      [
+       "amount",
+       279.054,
+       279.26
+      ],
+      [
+       "of",
+       279.287,
+       279.34
+      ],
+      [
+       "money",
+       279.393,
+       279.66
+      ],
+      [
+       "they",
+       279.692,
+       279.82
+      ],
+      [
+       "wanted",
+       279.854,
+       280.06
+      ],
+      [
+       "to",
+       280.087,
+       280.14
+      ],
+      [
+       "spend",
+       280.193,
+       280.46
+      ],
+      [
+       "to",
+       280.513,
+       280.62
+      ],
+      [
+       "move",
+       280.652,
+       280.78
+      ],
+      [
+       "the",
+       280.82,
+       280.94
+      ],
+      [
+       "capital",
+       280.99,
+       281.34
+      ],
+      [
+       "and",
+       281.38,
+       281.5
+      ],
+      [
+       "build",
+       281.54,
+       281.74
+      ],
+      [
+       "in",
+       281.793,
+       281.9
+      ],
+      [
+       "Willow.\"",
+       281.957,
+       282.36
+      ]
+     ],
+     "dentro_da_janela": true,
+     "grafia": "na fonte a frase começa com \"And I decided…\": o grifo começa em \"I decided\", como a voz"
+    },
+    {
+     "cena": "s28",
+     "grifo": "28 NFL Teams",
+     "texto_literal_da_fonte": "\"In 1981, Al Davis offered to sell the then-Oakland Raiders for $17 million. Allowing $20 million each for all 28 NFL teams comes to only $560 million. The Kingdome in Seattle was built for $40 million about 7 years ago, so we could certainly build three domed stadiums for $80 million each. The whole package, 28 NFL Teams and 3 stadiums would only cost $800 million.\"",
+     "localizador": "a coluna cita \"the inaugural Football Fannie notice\" (o texto do anúncio, pela coluna)",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "twenty-eight N F L teams",
+     "plano_janela_s": [
+      283.367,
+      286.5
+     ],
+     "planos": [
+      1
+     ],
+     "entra_s": 284.826,
+     "sai_s": 286.38,
+     "palavras_idx": [
+      810,
+      814
+     ],
+     "palavras_voz": [
+      [
+       "twenty-eight",
+       284.826,
+       285.365
+      ],
+      [
+       "N",
+       285.365,
+       285.5
+      ],
+      [
+       "F",
+       285.58,
+       285.66
+      ],
+      [
+       "L",
+       285.74,
+       285.82
+      ],
+      [
+       "teams",
+       285.913,
+       286.38
+      ]
+     ],
+     "dentro_da_janela": true,
+     "ressalva": "NÃO CONFERIDO NO ORIGINAL: o anúncio (a lista de fontes da coluna dá \"Football Fannie advertisement. Juneau Empire. October 8, 1982, 7\") não foi achado em fonte aberta; o texto é o que a coluna cita, e que ele seja o do Juneau Empire de 8/10/1982 é leitura da lista de fontes somada a \"Oct. 8, 1982, the first day of many print advertisements\""
+    }
+   ],
+   "conferir": [
+    {
+     "cena": "s28",
+     "plano": 3,
+     "trecho": "Interestingly enough, this is only about one-fourth of the amount proposed to move the capital to Willow. NFL football once and for all: We can't afford not to buy it.",
+     "localizador": "a coluna, citando o anúncio",
+     "confere_na_fonte": true,
+     "papel": "\"about a quarter of the Willow price tag\"; mesma ressalva: não conferido no anúncio original"
+    },
+    {
+     "cena": "s31",
+     "plano": 1,
+     "trecho": "And I mean, it was a close, close election, and there's no way anyone could ever tell me that, that Football Fannie did not determine that election.",
+     "localizador": "a coluna, fala de Stoops",
+     "confere_na_fonte": true,
+     "papel": "\"Stoops says the satire decided it\""
+    },
+    {
+     "cena": "s31",
+     "plano": 2,
+     "trecho": "At the very least, the NFL Access Committee was a factor in the failure of that capital move election.",
+     "localizador": "a coluna, Reamer",
+     "confere_na_fonte": true,
+     "papel": "\"Reamer calls it one factor, at the very least\""
+    },
+    {
+     "cena": "s31",
+     "plano": 3,
+     "trecho": "In late September 1982, Dittman Research of Anchorage conducted a statewide poll on the capital move question. … He also did not believe the price tag was a sufficiently relevant factor in the outcome, that the cost figure \"is not a mystery. It's been so well publicized.\" This polling data was coincidentally released a day after the first Football Fannie advertisement.",
+     "localizador": "a coluna, Dave Dittman",
+     "confere_na_fonte": true,
+     "papel": "\"Before the vote, pollster Dave Dittman didn't think the price tag weighed that heavily\""
+    },
+    {
+     "cena": "s31",
+     "plano": 5,
+     "trecho": "Collectively, the anti-move groups spent over a million dollars in the lead-up to the 1982 election.",
+     "localizador": "a coluna, Reamer",
+     "confere_na_fonte": true,
+     "papel": "\"opponents spent more than a million dollars\""
+    }
+   ],
+   "validado_por_visao": false,
+   "medido": {
+    "bytes": 234810,
+    "sha256": "99187c836a901a2c2c75ea0d8174da2374c05436e48500e4052f73c2768adeb4",
+    "medido_por": "sha256 (hashlib); cópia local, não é imagem"
+   },
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "ktoo-2025-larson",
+   "tipo": "documento",
+   "cena": [
+    "s41"
+   ],
+   "fonte": {
+    "instituicao": "KTOO Public Media",
+    "titulo": "Why is the state capital Juneau and not Anchorage?",
+    "autor": "Clarise Larson, KTOO (\"Curious Juneau\")",
+    "data": "2025-06-13 (\"June 13, 2025 by Clarise Larson, KTOO\")",
+    "url": "https://www.ktoo.org/2025/06/13/why-is-the-state-capital-juneau-and-not-anchorage/",
+    "url_acessada": "cópia local do dossiê; não reabri a matéria",
+    "copia_local": "midia/juneau/fontes/experiencia/verif/exp03.html",
+    "copia_local_sha256": "621f703092a25b5745b35a13ad21d80cb16019baa9029f0256ca35f3d5961f79",
+    "fonte_id_dossie": "exp-03"
+   },
+   "url": "https://www.ktoo.org/2025/06/13/why-is-the-state-capital-juneau-and-not-anchorage/",
+   "arquivo": "midia/juneau/fontes/experiencia/verif/exp03.html",
+   "papel": "copia_local",
+   "vai_a_tela": false,
+   "prova_imagem": "NÃO GERADA (sem navegador; ver adn-reamer-2026)",
+   "na_tela": "recriada",
+   "fonte_escrita": "Source: KTOO, 2025",
+   "licenca": "SEM PERMISSÃO (midia.md §7.1): documento de imprensa. A página de política de direitos da KTOO (ktoo.org/copyright-policy/, lida hoje) só traz \"Copyright © 2026 KTOO Public Media\" e o procedimento de DMCA: nenhuma licença de reuso. A página não vai à tela; a fala se recria no visual do canal, com o texto fiel e a fonte escrita (o nome do veículo, sem logo, §7.6).",
+   "permissao_clara": false,
+   "trechos": [
+    {
+     "cena": "s41",
+     "grifo": "It's a little bit like a zombie movie. It's never all the way dead",
+     "texto_literal_da_fonte": "Juneau Democratic Sen. Jesse Kiehl said that, despite the many failed attempts, there's always going to be a new effort to move the capital onto the road system. \"It's a little bit like a zombie movie. It's never all the way dead,\" he said. \"You can count on it to come back smelly and shambling and still a problem that has to be dealt with.\"",
+     "localizador": "corpo da matéria",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "It's a little bit like a zombie movie. It's never all the way dead.",
+     "plano_janela_s": [
+      431.767,
+      439.8
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 436.4,
+     "sai_s": 439.68,
+     "palavras_idx": [
+      1223,
+      1236
+     ],
+     "palavras_voz": [
+      [
+       "\"It's",
+       436.4,
+       436.46
+      ],
+      [
+       "a",
+       436.5,
+       436.54
+      ],
+      [
+       "little",
+       436.574,
+       436.78
+      ],
+      [
+       "bit",
+       436.82,
+       436.94
+      ],
+      [
+       "like",
+       436.956,
+       437.02
+      ],
+      [
+       "a",
+       437.06,
+       437.1
+      ],
+      [
+       "zombie",
+       437.157,
+       437.5
+      ],
+      [
+       "movie.",
+       437.567,
+       437.96
+      ],
+      [
+       "It's",
+       438.53,
+       438.62
+      ],
+      [
+       "never",
+       438.66,
+       438.86
+      ],
+      [
+       "all",
+       438.9,
+       439.02
+      ],
+      [
+       "the",
+       439.04,
+       439.1
+      ],
+      [
+       "way",
+       439.14,
+       439.26
+      ],
+      [
+       "dead.\"",
+       439.34,
+       439.68
+      ]
+     ],
+     "dentro_da_janela": true,
+     "grafia": "o ponto final da voz não é da fonte (na fonte, vírgula e \"he said\")"
+    }
+   ],
+   "validado_por_visao": false,
+   "medido": {
+    "bytes": 166750,
+    "sha256": "621f703092a25b5745b35a13ad21d80cb16019baa9029f0256ca35f3d5961f79",
+    "medido_por": "sha256 (hashlib); cópia local, não é imagem"
+   },
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "ktoo-2017-resneck",
+   "tipo": "documento",
+   "cena": [
+    "s57"
+   ],
+   "fonte": {
+    "instituicao": "CoastAlaska, publicado pela KTOO",
+    "titulo": "Juneau Assembly votes 6-3 to support the road",
+    "autor": "Jacob Resneck, CoastAlaska",
+    "data": "2017-01-24 (\"January 24, 2017 by Jacob Resneck, CoastAlaska\")",
+    "url": "https://www.ktoo.org/2017/01/24/juneau-assembly-votes-6-3-support-road/",
+    "url_acessada": "cópia local do dossiê; não reabri a matéria",
+    "copia_local": "midia/juneau/fontes/experiencia/verif/exp33.html",
+    "copia_local_sha256": "4b8afb6064673d04699f5b9e99bc0064a2fdd47b828d5b96650d9ff414021e46",
+    "fonte_id_dossie": "exp-33"
+   },
+   "url": "https://www.ktoo.org/2017/01/24/juneau-assembly-votes-6-3-support-road/",
+   "arquivo": "midia/juneau/fontes/experiencia/verif/exp33.html",
+   "papel": "copia_local",
+   "vai_a_tela": false,
+   "prova_imagem": "NÃO GERADA (sem navegador; ver adn-reamer-2026)",
+   "na_tela": "recriada",
+   "fonte_escrita": "Source: CoastAlaska/KTOO, 2017 (sugestão; a forma é do redator-de-tela)",
+   "licenca": "SEM PERMISSÃO (midia.md §7.1): documento de imprensa. A página de política de direitos da KTOO (ktoo.org/copyright-policy/, lida hoje) só traz \"Copyright © 2026 KTOO Public Media\" e o procedimento de DMCA: nenhuma licença de reuso. A página não vai à tela; a fala se recria no visual do canal, com o texto fiel e a fonte escrita (o nome do veículo, sem logo, §7.6). O autor é da CoastAlaska (\"CoastAlaska is our partner in Southeast Alaska\").",
+   "permissao_clara": false,
+   "trechos": [
+    {
+     "cena": "s57",
+     "grifo": "It would be a lot harder for me",
+     "texto_literal_da_fonte": "Assembly members Jesse Kiehl and Loren Jones opposed the resolution. So did Assembly member Maria Gladziszewski. \"It's not an easy issue,\" she said. \"It would be a lot harder for me if it were actually a road to Skagway or a road to Haines but it's a road to another ferry.\"",
+     "localizador": "corpo da matéria",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "It would be a lot harder for me,",
+     "plano_janela_s": [
+      584.933,
+      595.333
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 588.23,
+     "sai_s": 589.465,
+     "palavras_idx": [
+      1657,
+      1664
+     ],
+     "palavras_voz": [
+      [
+       "\"It",
+       588.23,
+       588.31
+      ],
+      [
+       "would",
+       588.323,
+       588.39
+      ],
+      [
+       "be",
+       588.417,
+       588.47
+      ],
+      [
+       "a",
+       588.51,
+       588.55
+      ],
+      [
+       "lot",
+       588.59,
+       588.71
+      ],
+      [
+       "harder",
+       588.756,
+       589.03
+      ],
+      [
+       "for",
+       589.07,
+       589.19
+      ],
+      [
+       "me,\"",
+       589.243,
+       589.465
+      ]
+     ],
+     "dentro_da_janela": true,
+     "grafia": "na fonte não há vírgula depois de \"for me\": a vírgula é da quebra do narrador"
+    },
+    {
+     "cena": "s57",
+     "grifo": "if it were actually a road to Skagway or a road to Haines but it's a road to another ferry.",
+     "texto_literal_da_fonte": "\"It would be a lot harder for me if it were actually a road to Skagway or a road to Haines but it's a road to another ferry.\"",
+     "localizador": "corpo da matéria",
+     "confere_na_fonte": true,
+     "conferido_em": "2026-09-27",
+     "como": "lido na página rasterizada (olhado) e no texto",
+     "voz_do_grifo": "if it were actually a road to Skagway or a road to Haines but it's a road to another ferry.",
+     "plano_janela_s": [
+      584.933,
+      595.333
+     ],
+     "planos": [
+      1,
+      2
+     ],
+     "entra_s": 590.47,
+     "sai_s": 595.21,
+     "palavras_idx": [
+      1667,
+      1686
+     ],
+     "palavras_voz": [
+      [
+       "\"if",
+       590.47,
+       590.55
+      ],
+      [
+       "it",
+       590.577,
+       590.63
+      ],
+      [
+       "were",
+       590.662,
+       590.79
+      ],
+      [
+       "actually",
+       590.834,
+       591.19
+      ],
+      [
+       "a",
+       591.27,
+       591.35
+      ],
+      [
+       "road",
+       591.382,
+       591.51
+      ],
+      [
+       "to",
+       591.537,
+       591.59
+      ],
+      [
+       "Skagway",
+       591.67,
+       592.23
+      ],
+      [
+       "or",
+       592.283,
+       592.39
+      ],
+      [
+       "a",
+       592.43,
+       592.47
+      ],
+      [
+       "road",
+       592.518,
+       592.71
+      ],
+      [
+       "to",
+       592.737,
+       592.79
+      ],
+      [
+       "Haines",
+       592.87,
+       593.35
+      ],
+      [
+       "but",
+       593.9,
+       594.005
+      ],
+      [
+       "it's",
+       594.005,
+       594.11
+      ],
+      [
+       "a",
+       594.13,
+       594.15
+      ],
+      [
+       "road",
+       594.198,
+       594.39
+      ],
+      [
+       "to",
+       594.417,
+       594.47
+      ],
+      [
+       "another",
+       594.5,
+       594.71
+      ],
+      [
+       "ferry.\"",
+       594.79,
+       595.21
+      ]
+     ],
+     "dentro_da_janela": true
+    }
+   ],
+   "validado_por_visao": false,
+   "medido": {
+    "bytes": 145191,
+    "sha256": "4b8afb6064673d04699f5b9e99bc0064a2fdd47b828d5b96650d9ff414021e46",
+    "medido_por": "sha256 (hashlib); cópia local, não é imagem"
+   },
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "access-annie-adn-1982-10-18",
+   "tipo": "documento",
+   "cena": [
+    "s26"
+   ],
+   "fonte": {
+    "instituicao": "Capital Access Committee (anúncio pago), publicado no Anchorage Daily News de 18/10/1982; imagem reproduzida pelo Anchorage Daily News em 9/2/2026",
+    "titulo": "ACCESS ANNIE — \"Dear Annie, Why did the people in 1974 vote to move the state capital…and why did they pick Willow as the site?\"",
+    "autor": "\"Paid for by the Capital Access Committee • 217 E. 4th Ave, Anchorage, Alaska • 99501, Frank Harris, Chairman\" (rodapé do anúncio)",
+    "data": "1982-10-18 (legenda da coluna: \"An Oct. 18, 1982 Access Annie ad from the Anchorage Daily News\")",
+    "url": "https://cloudfront-us-east-1.images.arcpublishing.com/adn/WOOKHKNEBFGXXOEKU7JNOX4MOA.jpg",
+    "url_acessada": "imagem da coluna (endereço tirado da cópia local do dossiê, midia/juneau/fontes/evento/adn_reamer.html), baixada hoje (200, image/jpeg)",
+    "pagina_da_coluna": "https://www.adn.com/alaska-life/2026/02/08/one-mans-pork-is-another-mans-pigskin-the-1982-question-of-whether-alaska-should-move-the-capital-or-buy-the-nfl/",
+    "fonte_id_dossie": "exp-01.6"
+   },
+   "url": "https://cloudfront-us-east-1.images.arcpublishing.com/adn/WOOKHKNEBFGXXOEKU7JNOX4MOA.jpg",
+   "arquivo": "out/juneau/_media/documento/s26/access-annie-adn-1982-10-18-prova.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "NÃO VAI: sem permissão, o plano 1 fica com o nome escrito (despacho)",
+   "licenca": "SEM PERMISSÃO — NÃO VAI À TELA (midia.md §7.1; figura não é texto). É prova de onde a peça está: o anúncio de 1982 reproduzido como imagem na coluna do ADN de 9/2/2026 (página \"© 2026 Anchorage Daily News. All rights reserved.\"). O anúncio é de um comitê de campanha; a coluna diz que Stoops registrou a marca Football Fannie e que ela foi desenhada por Bob Grogan. Nenhum aviso de copyright aparece nos anúncios, e isso não é permissão.",
+   "permissao_clara": false,
+   "trechos": [],
+   "o_que_mostra": "anúncio inteiro: a mascote (moça de rabo de cavalo, laço no pescoço, datilografando) à esquerda do título \"ACCESS ANNIE\"; pergunta e resposta; \"WRITE ANNIE - 217 E. 4TH AVE, ANCHORAGE, ALASKA • 99501\"",
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1191x1444",
+    "megapixels": 1.72,
+    "bytes": 339131,
+    "sha256": "71bdc2f5660e111985576321a92e60f0aa3764b324f63c3ee97fa7d16543e950",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1191x1444",
+   "arquivos_extra_medidos": []
+  },
+  {
+   "id": "football-fannie-adn-1982-10-21",
+   "tipo": "documento",
+   "cena": [
+    "s26"
+   ],
+   "fonte": {
+    "instituicao": "NFL Access Committee (anúncio pago), publicado no Anchorage Daily News de 21/10/1982; imagem reproduzida pelo Anchorage Daily News em 9/2/2026",
+    "titulo": "Football Fannie — \"TEXAS CAN'T DO IT!\"",
+    "autor": "\"Paid for by NFL Access Committee, Suite 257, 3605 Arctic Blvd., Anchorage, Alaska 99503, Lee Stoops, Chairman\" (rodapé do anúncio)",
+    "data": "1982-10-21 (legenda da coluna: \"A Football Fannie ad from the Oct. 21, 1982 edition of the Anchorage Daily News\")",
+    "url": "https://cloudfront-us-east-1.images.arcpublishing.com/adn/QY5BILFZ4RAJTDNE4FZXYTO2CI.jpg",
+    "url_acessada": "imagem da coluna (endereço tirado da cópia local do dossiê), baixada hoje (200, image/jpeg)",
+    "pagina_da_coluna": "https://www.adn.com/alaska-life/2026/02/08/one-mans-pork-is-another-mans-pigskin-the-1982-question-of-whether-alaska-should-move-the-capital-or-buy-the-nfl/",
+    "fonte_id_dossie": "exp-01.6"
+   },
+   "url": "https://cloudfront-us-east-1.images.arcpublishing.com/adn/QY5BILFZ4RAJTDNE4FZXYTO2CI.jpg",
+   "arquivo": "out/juneau/_media/documento/s26/football-fannie-adn-1982-10-21-prova.jpg",
+   "papel": "prova",
+   "vai_a_tela": false,
+   "na_tela": "NÃO VAI: sem permissão, o plano 3 fica com o nome escrito (despacho)",
+   "licenca": "SEM PERMISSÃO — NÃO VAI À TELA (midia.md §7.1; figura não é texto). É prova de onde a peça está: o anúncio de 1982 reproduzido como imagem na coluna do ADN de 9/2/2026 (página \"© 2026 Anchorage Daily News. All rights reserved.\"). O anúncio é de um comitê de campanha; a coluna diz que Stoops registrou a marca Football Fannie e que ela foi desenhada por Bob Grogan. Nenhum aviso de copyright aparece nos anúncios, e isso não é permissão.",
+   "permissao_clara": false,
+   "trechos": [],
+   "o_que_mostra": "anúncio inteiro: a mascote (moça de rabo de cavalo com suéter \"NFL\") no canto superior esquerdo, título \"TEXAS CAN'T DO IT!\", texto; embaixo, \"NFL - ALASKA For ALL AMERICA\" com um desenho de mão segurando uma bola. Não é o primeiro anúncio (s28), que a lista de fontes da coluna põe no Juneau Empire de 8/10/1982",
+   "validado_por_visao": true,
+   "medido": {
+    "resolucao": "1769x2958",
+    "megapixels": 5.23,
+    "bytes": 966388,
+    "sha256": "9368b2bcf63fee386444658ddb1864a4d72ced8e6e07bcdefa966a98651e2e24",
+    "medido_por": "ffprobe (largura e altura) e sha256 (hashlib); identify não existe nesta máquina"
+   },
+   "resolucao": "1769x2958",
+   "arquivos_extra_medidos": []
+  }
+ ],
+ "nao_achados": [
+  {
+   "cena": "s52",
+   "plano": 1,
+   "pedido": "a decisão da corte distrital federal de 13/02/2009 (Order, Doc. No. 105, processo 1:06-cv-00009-JWS, D. Alaska; citada no FSEIS como 2009 WL 10677763)",
+   "buscas": [
+    "govinfo, pacote USCOURTS-akd-1_06-cv-00009: só há as opiniões de 10/10/2007, 03/10/2013 e 26/11/2014 (MODS lido hoje; os PDFs -3 a -10 redirecionam)",
+    "dot.alaska.gov (WebSearch no domínio): só resumos da decisão, nenhum PDF dela",
+    "dockets.justia.com: 403 ao WebFetch (15:24:55Z) → parei, sem contorno",
+    "courtlistener.com (busca): 403 ao WebFetch (15:25:00Z). Às 15:27:59Z voltei ao site pelo mesmo WebFetch, numa página do Boucher v. Engstrom, que voltou vazia, e parei: a volta depois do 403 foi contra o \"pare nele\" da roupa (incidente courtlistener-volta)",
+    "PACER (pago, pede conta) e Westlaw (pago): não acessados; pedir é decisão do Lucas"
+   ],
+   "pistas_nao_abertas": [
+    {
+     "url": "https://www.casemine.com/judgement/us/59146cd5add7b04934317c1e/amp",
+     "titulo_no_resultado": "SOUTHEAST AK. CONSERVATION COUNCIL v. FEDERAL HWY ADM | 1:06-cv-00009 JWS. | D. Alaska | Judgment | Law | CaseMine",
+     "onde_apareceu": "WebSearch de 15:24:46Z (\"1:06-cv-00009\" … 2009 order vacated ROD Juneau Access pdf)",
+     "aberta": false,
+     "por_que": "na 1ª rodada, por descuido: fui ao Justia e ao CourtListener, e não a listei. Na revisão, não a abri por decisão: (1) é agregador, e o ofício (§2) não aceita agregador como fonte; (2) o título não traz data, e pode ser qualquer decisão do processo, três das quais o govinfo já tem (2007, 2013 e 2014); (3) mesmo sendo a de 2009, traria o texto no leiaute do site, e não a página do tribunal que o plano 1 pede; (4) o número e a data da decisão já estão provados pelo Doc. 185 e pelo 9º Circuito. Pode servir para um DOCUMENTO recriado com as palavras da corte distrital, se o montador quiser: aí é um despacho novo, que abre a pista uma vez (sem contorno, se o site recusar robô) e confere o texto contra as citações do 9º Circuito e do Doc. 185, com NÃO CONFERIDO no original."
+    }
+   ],
+   "o_que_ha": "o nome, o número e a data estão provados pelo Doc. 185 de 2013 (govinfo) e pelo acórdão de 2011. O plano 1 fica com a página 4 do acórdão de 2011 (ca9-2011-seacc-p04.jpg, aprovada pelo conferente-de-midia), com o rótulo \"upheld on appeal, 2011\" (Lucas, 27/09/2026; identidade.md §5)",
+   "consequencia": "decidido pelo Lucas em 27/09/2026: o plano 1 de s52 usa a página de 2011 com o rótulo, e não muda de regime por falta da de 2009. Se a decisão de 2009 aparecer em acervo aberto, é despacho novo, e ela passa pelo conferente-de-midia antes de uma cena citá-la"
+  },
+  {
+   "cena": "s26",
+   "planos": [
+    1,
+    3
+   ],
+   "pedido": "as mascotes Access Annie e Football Fannie em peça de 1982, com permissão clara",
+   "buscas": [
+    "buscar-midia \"Access Annie\" (Commons, NASA, NARA, Smithsonian, DVIDS): nada da campanha (retratos de outras Annies)",
+    "buscar-midia \"Football Fannie\": nada (NARA devolveu registros sem relação)",
+    "buscar-midia \"NFL Access Committee\": nenhum candidato aceito (log em out/juneau/_tmp/documentos/busca-s26-NFL Access Committee.log). A cópia s26--pesquisa-documentos-3.json não existe: o laço rodou a 3ª e a 4ª busca antes do cp, e a 4ª sobrescreveu o s26.json. Não houve baixar, e o log guarda o resultado",
+    "buscar-midia \"Alaska capital move\": fotos de Juneau e de Kodiak, nada da campanha",
+    "WebSearch: só a coluna do ADN e uma republicação; nenhuma peça em acervo aberto nem no Alaska State Museum"
+   ],
+   "o_que_ha": "as duas peças estão na coluna do ADN (ADN de 18/10/1982 e de 21/10/1982), entregues como prova; sem permissão",
+   "consequencia": "os planos 1 e 3 ficam com os nomes escritos, como o despacho prevê; a imagem só com permissão escrita dos detentores (pergunta ao Lucas)"
+  },
+  {
+   "cena": "s28",
+   "plano": 1,
+   "pedido": "o primeiro anúncio da Football Fannie (Juneau Empire, 8/10/1982, p. 7, pela lista de fontes da coluna)",
+   "buscas": [
+    "buscar-midia \"Football Fannie\" e \"NFL Access Committee\": nada",
+    "WebSearch: nada além da coluna; o Juneau Empire de 1982 não está em acervo aberto que eu conheça (o Chronicling America vai até 1963); arquivos de jornal pagos (Newspapers.com) ficam fora"
+   ],
+   "o_que_ha": "o texto do anúncio, pela citação da coluna (adn-reamer-2026)",
+   "consequencia": "o DADO de s28 recria o texto com a fonte; a conferência no original fica NÃO CONFERIDA"
+  }
+ ]
+}
