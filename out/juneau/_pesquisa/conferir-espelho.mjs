@@ -107,6 +107,14 @@
 // outro regime com o mesmo id, dito no objeto); a cláusula que aceita foto de outro ano passa se diz o aviso; e cada foto
 // ou retrato que o conferente aprovou tem, no objeto do plano, o aviso do ano (aviso_de_ano true) ou "sem aviso"
 // (false). (4) `_existe` diz o disco: true só com out/<proj>/_media/geo/<id>.json, false só sem ele.
+//
+// 28/09/2026 (a fusão do diretor-de-arte, contrato dele §3.2; ajuste do Claude central). Um run `fundir:true` do
+// conceito-visual vira UM arquivo: cada filho leva `_mergedInto: "<mãe>"`, e a `dur` e o `_quadros.out` da mãe cobrem a
+// janela do run inteiro. As provas de conteúdo (fala, âncora, planos, borda, números, capítulos e as contas) continuam na
+// janela PRÓPRIA de cada cena, que na mãe acaba onde começa o primeiro filho: o script lê a mãe com essa janela. O arquivo
+// fundido se prova à parte (§0b): os filhos logo depois da mãe, sem cadeia de fusão, a `dur` da mãe até o fim do último
+// filho e o `_quadros` do arquivo no arredondamento do pipeline, fechando no quadro do último filho. Contra o espelho de
+// antes da fusão, nenhuma prova muda.
 import { readFileSync, existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 
@@ -131,6 +139,30 @@ const r3 = (x) => Math.round(x * 1000) / 1000;
 const falhas = [];
 const F = (m) => falhas.push(m);
 const desvio = (t) => { const q = t * FPS; return Math.abs(q - Math.round(q)); };
+
+// ── 0b · a fusão (28/09/2026): o arquivo fundido provado à parte; daqui em diante, a mãe na janela própria ──
+const FILHOS = {};
+for (const s of S) if (s._mergedInto) (FILHOS[s._mergedInto] ??= []).push(s);
+const FUNDIDOS = [];
+for (const [maeId, filhos] of Object.entries(FILHOS)) {
+  const iMae = S.findIndex((s) => s.id === maeId);
+  const mae = S[iMae];
+  if (!mae) { F(`fusão: ${filhos.map((f) => f.id).join(", ")} apontam _mergedInto para "${maeId}", que não está no espelho`); continue; }
+  if (mae._mergedInto) F(`fusão: ${maeId} é mãe e também filha de ${mae._mergedInto} (cadeia de fusão)`);
+  const seguintes = S.slice(iMae + 1, iMae + 1 + filhos.length).map((s) => s.id);
+  if (seguintes.join() !== filhos.map((f) => f.id).join()) F(`fusão: os filhos de ${maeId} (${filhos.map((f) => f.id).join(", ")}) não vêm logo depois dela (vêm ${seguintes.join(", ")})`);
+  const ult = filhos.at(-1);
+  const durArquivo = mae.dur, qArq = mae._quadros ? { ...mae._quadros } : null;
+  const janelaRun = r3(ult.inSec + ult.dur - mae.inSec);
+  if (Math.abs(durArquivo - janelaRun) > 1e-3) F(`fusão: ${maeId}: dur ${durArquivo} ≠ a janela do run, ${janelaRun} (de ${mae.inSec} ao fim de ${ult.id})`);
+  const qIn = Math.round(mae.inSec * FPS), qFimArq = qIn + Math.round(durArquivo * FPS);
+  if (!qArq || qArq.in !== qIn || qArq.out !== qFimArq) F(`fusão: ${maeId}: _quadros {${qArq?.in}, ${qArq?.out}} ≠ o arquivo no pipeline {${qIn}, ${qFimArq}}`);
+  else if (ult._quadros && qArq.out !== ult._quadros.out) F(`fusão: ${maeId}: o arquivo fecha no quadro ${qArq.out}, e ${ult.id} no ${ult._quadros.out}`);
+  // a janela própria da mãe acaba onde começa o primeiro filho: é assim que as provas de conteúdo a leem (só em memória)
+  mae.dur = r3(filhos[0].inSec - mae.inSec);
+  if (mae._quadros) mae._quadros = { ...mae._quadros, out: qIn + Math.round(mae.dur * FPS) };
+  FUNDIDOS.push({ mae: maeId, filhos: filhos.map((f) => f.id), de: mae.inSec, ate: r3(mae.inSec + durArquivo), dur_arquivo: durArquivo, quadros_arquivo: qArq, dur_propria: mae.dur });
+}
 
 // ── 0 · o fim do vídeo: quadros do master pelo ffprobe; sem ele, o primeiro quadro inteiro depois do áudio ──
 const MASTER = `out/${proj}/_media/_master.mp4`;
@@ -1066,7 +1098,7 @@ const formaDispensa = (s) => { const r = (s.motivo || "").split("REGISTRO (§10.
 
 const out = {
   proj, espelho: P.esp, cenas: S.length, primeira_inSec: S[0].inSec, ultima_fim: fimUlt, audio_s: FIM_AUDIO, video_s: r3(FIM_VIDEO), fonte_do_fim: fonteFim, soma_dur: soma,
-  maior_vao_s: maiorVao, maior_sobreposicao_s: maiorSobre, pipeline_desencontros: pipeline.length,
+  maior_vao_s: maiorVao, maior_sobreposicao_s: maiorSobre, pipeline_desencontros: pipeline.length, fusao: FUNDIDOS,
   bordas_internas: bordas.length, bordas_na_pausa: bordas.filter((b) => b.na_pausa).length, bordas_na_grade: bordas.filter((b) => b.na_grade).length,
   folga_max_antes_da_palavra_s: Math.max(...bordas.filter((b) => b.folga_antes_da_palavra_s !== null).map((b) => b.folga_antes_da_palavra_s)),
   ancoras_ok: ancoraOk.filter((x) => x.ok).length, palavras_cobertas: totalPal, palavras_words_json: W.length,
@@ -1090,6 +1122,7 @@ else {
   console.log(`# conferir-espelho — ${proj}`);
   console.log(`cenas ${out.cenas} · primeira em ${out.primeira_inSec} · última fecha em ${out.ultima_fim} (vídeo ${out.video_s}, ${fonteFim}; áudio ${FIM_AUDIO}) · soma ${out.soma_dur}`);
   console.log(`maior vão ${out.maior_vao_s} s · maior sobreposição ${out.maior_sobreposicao_s} s · desencontros no arredondamento do pipeline: ${pipeline.length}`);
+  console.log(`fusão (diretor-de-arte): ${FUNDIDOS.length ? FUNDIDOS.map((x) => `${x.mae} ← ${x.filhos.join(", ")}: um arquivo de ${x.de} a ${x.ate} s (${x.dur_arquivo} s; quadros ${x.quadros_arquivo?.in}–${x.quadros_arquivo?.out}); a mãe lida na janela própria, ${x.dur_propria} s`).join(" · ") : "nenhuma"}`);
   console.log(`bordas internas ${out.bordas_internas}: ${out.bordas_na_pausa} na pausa, ${out.bordas_na_grade} na grade, sem isenção (folga máx. antes da palavra ${out.folga_max_antes_da_palavra_s} s)`);
   console.log(`âncoras = fala da janela: ${out.ancoras_ok}/${S.length} · palavras ${totalPal}/${W.length}`);
   console.log(`texto aprovado → voz = âncora: ${out.texto_aprovado_ok}/${S.length} (${trocas.length} trocas lidas)`);
