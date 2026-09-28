@@ -595,8 +595,16 @@ for (const s of S) {
 }
 // (c) cada `_texto_no_ar`: a palavra é dita no plano, em `de`; sem conflito, fica ≥ 2,0 s, dentro da cena, e `sobre` lista
 // exatamente os planos seguintes que o texto atravessa; com conflito, a cena corta antes de 2,0 s, o texto vai até o corte, e
-// o plano está na pendência do regente-de-imagem (que só cita planos com conflito declarado)
+// o plano está na pendência do regente-de-imagem (que só cita planos com conflito declarado) ou resolvido na regência
 const PEND_REGENTE = (E._decisoes_pendentes || []).find((d) => /^PARA O REGENTE-DE-IMAGEM/.test(d)) || "";
+// Décima terceira revisão (28/09/2026; o Claude central mudou esta prova, não o montador): a regência nasceu e resolveu os
+// conflitos (`out/<proj>/regencia.json` › `_conflitos` › `do_espelho`, um item por plano, com a `saida`), e a pendência
+// PARA O REGENTE-DE-IMAGEM fechou. O conflito declarado vale se o plano está na pendência aberta OU resolvido na regência
+// com a saída escrita; e a regência não resolve conflito de plano que não o declara.
+const P_REG = `out/${proj}/regencia.json`;
+let REG_CONFLITOS = [];
+if (existsSync(P_REG)) { try { REG_CONFLITOS = ler(P_REG)?._conflitos?.do_espelho || []; } catch (e) { F(`a regência (${P_REG}) é ilegível: ${e.message}`); } }
+const resolvidoNaRegencia = (id, n) => REG_CONFLITOS.some((c) => c && c.plano === `${id} p${n}` && String(c.saida || "").trim());
 const D2 = { travessias: [], conflitos: [] };
 for (const s of S) {
   const pl = s._planos || [], fimCena = r3(s.inSec + s.dur);
@@ -609,7 +617,7 @@ for (const s of S) {
       if (x.conflito) {
         if (fimCena - x.de >= 2.0 - 1e-9) F(`${s.id} plano ${i + 1}: _texto_no_ar "${x.texto}" declara conflito, e da palavra ao fim da cena há ${r3(fimCena - x.de)} s: cabe atravessar o plano seguinte`);
         if (Math.abs(x.ate - fimCena) > 1e-3) F(`${s.id} plano ${i + 1}: o conflito de _texto_no_ar vai até ${x.ate}, e a cena corta em ${fimCena}`);
-        if (!new RegExp(`\\b${s.id} plano ${i + 1}\\b`).test(PEND_REGENTE)) F(`${s.id} plano ${i + 1}: o conflito do texto no ar não está na pendência PARA O REGENTE-DE-IMAGEM (_decisoes_pendentes)`);
+        if (!new RegExp(`\\b${s.id} plano ${i + 1}\\b`).test(PEND_REGENTE) && !resolvidoNaRegencia(s.id, i + 1)) F(`${s.id} plano ${i + 1}: o conflito do texto no ar não está na pendência PARA O REGENTE-DE-IMAGEM (_decisoes_pendentes) nem resolvido na regência (regencia.json › _conflitos › do_espelho, com a saida)`);
         D2.conflitos.push(`${s.id} p${i + 1} (${r3(fimCena - x.de)} s)`);
       } else {
         if (x.ate - x.de < 2.0 - 1e-6) F(`${s.id} plano ${i + 1}: _texto_no_ar "${x.texto}" fica ${r3(x.ate - x.de)} s no ar, abaixo de 2,0 s, sem conflito declarado`);
@@ -625,6 +633,7 @@ for (const s of S) {
   });
 }
 for (const m of PEND_REGENTE.matchAll(/\b(s\d{2}) plano (\d+)\b/g)) { const p = S.find((x) => x.id === m[1])?._planos?.[+m[2] - 1]; if (!p || !listaTNA(p).some((x) => x && x.conflito)) F(`a pendência do regente cita ${m[1]} plano ${m[2]}, que não declara conflito em _texto_no_ar`); }
+for (const c of REG_CONFLITOS) { const m = /^(s\d{2}) p(\d+)$/.exec(String(c?.plano || "")); const p = m && S.find((x) => x.id === m[1])?._planos?.[+m[2] - 1]; if (!p || !listaTNA(p).some((x) => x && x.conflito)) F(`a regência resolve o conflito de ${c?.plano}, que não declara conflito em _texto_no_ar`); }
 // o mesmo termo de busca em duas cenas só com a repetição declarada
 const porTermo = new Map();
 for (const s of S) for (const t of new Set(s.midia_termos || [])) porTermo.set(t, [...(porTermo.get(t) || []), s]);
