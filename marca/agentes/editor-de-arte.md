@@ -156,7 +156,7 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
   26/09/2026; identidade.md §5): o nome na pílula `--rotulo`, 128 px, Inter 700, até 3 palavras
   (`--fs-rotulo`, `--peso-rotulo`), e o cargo numa linha menor logo abaixo, no papel "eixo / legenda", 84 px,
   Inter 500 (`--fs-eixo`, `--peso-texto` em `marca/tokens.css`). Exemplo aprovado: `MARIA GLADZISZEWSKI` em
-  cima e `Assembly member, City of Juneau` embaixo. O rosto, quando há, segue midia.md §7.2; sem foto em
+  cima e `Assembly member, City and Borough of Juneau (2017)` embaixo (identidade.md §5; Lucas, 28/09/2026). O rosto, quando há, segue midia.md §7.2; sem foto em
   fonte autorizada, o card sai só com nome e cargo. **A composição** (Lucas, 27/09/2026; identidade.md §5):
   - o retrato vem como foto impressa, com moldura em `--tinta`, fita e leve inclinação sobre `--fundo`, sem
     alterar a foto;

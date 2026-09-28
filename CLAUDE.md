@@ -391,6 +391,18 @@ Dá mais trabalho para você a cada passo."
   defeitos de volta para a conversa da peça. Commit, `regie advance`, Discord e Telegram continuam só com ele.
 - A conversa da peça confere, antes de trabalhar, que roda em `C:\projetos\alpha-point` (e não numa cópia): em
   outra pasta, ela para e avisa.
+- **O nome da conversa** é `<Vídeo> · <peça>` (ex.: `Juneau · redator-de-tela`), e quem o dá é o Claude central
+  (`set_session_title`), logo que acha a conversa. O vídeo muda a cada vídeo, e a peça, a cada passo.
+- **Os grupos da barra lateral** (Lucas, 28/09/2026: "Você consegue criar grupos, nomear e agrupar as peças que
+  fazem sentido serem do mesmo grupo?"). O Claude central põe cada conversa de peça no grupo dela
+  (`move_sessions`), junto com o nome:
+  - **Orquestrador** (criado pelo Lucas): a conversa do Claude central, "Sala de controle";
+  - **Pesquisa e mídia**: os seis `pesquisa-*` e o `conferente-de-midia`;
+  - **Direção**: o `montador`, o `diretor-de-arte` e o `regente-de-imagem`;
+  - **Texto e fatos**: o `redator-de-tela` e o `verificador-de-fatos`;
+  - **Arte**: o `editor-de-arte` e o `mapista`;
+  - **Qualidade**: o `qc-visual`.
+  Os grupos valem para todos os vídeos: quem diz o vídeo é o nome da conversa.
 - **Na caça, não**: lá o conferente continua como subagente, aqui, sem as ferramentas do Chrome (skill, §2.5). Uma
   conversa nova teria a extensão ligada.
 

@@ -251,7 +251,18 @@ por IA apresentada como real.
   - o **cargo** numa linha menor logo abaixo, no papel **eixo / legenda** de §4.1: alvo 84 px (teto 104),
     Inter 500 (`--fs-eixo` e `--peso-texto`). A legenda não tem teto de palavras, e o cargo é o que a fonte diz;
   - exemplo aprovado (a caixa também é a do exemplo): `MARIA GLADZISZEWSKI` em cima e
-    `Assembly member, City of Juneau` embaixo;
+    `Assembly member, City and Borough of Juneau` embaixo. O exemplo dizia `City of Juneau`; o nome oficial da
+    prefeitura é City and Borough of Juneau, e o Lucas escolheu o oficial (28/09/2026, 19:5x de Brasília). A
+    pergunta: "No card da Maria Gladziszewski (cena 57), qual cargo vai na tela?" A resposta: "City and Borough
+    of Juneau (Recomendado)". A opção dizia: "O nome oficial da prefeitura, que ela usa para assinar. O exemplo
+    da marca (identidade §5) muda junto. O cargo fica mais longo e quebra em duas linhas sob a foto.";
+  - **o ano do cargo** (Lucas, 28/09/2026, 20:2x de Brasília): cargo de outra época leva o ano entre parênteses no
+    fim quando a cena não mostra a data, e o card do exemplo também. A pergunta: "No card da Maria Gladziszewski
+    (cena 57), o cargo leva o ano no fim, como os outros cards de outra época?" A resposta: "Com o ano, (2017)
+    (Recomendado)". A opção dizia: "Fica "Assembly member, City and Borough of Juneau (2017)". Faz série com
+    Harris, Clark, Stoops e Dittman, que levam "(1982)". Ao lado da foto vai "Photo from 2020", e sem o ano o
+    cargo parece ser o de hoje." No Juneau, o card de s57 fica `Assembly member, City and Borough of Juneau
+    (2017)`;
   - o contrato continua pedindo o cargo, em `cards_pessoa` › `o_que_e`;
   - o nome não vai em `--destaque` (§2). O rosto, quando há, segue `midia.md` §7.2; sem foto em fonte
     autorizada, o card sai só com nome e cargo.

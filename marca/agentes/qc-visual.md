@@ -140,7 +140,7 @@
   - **O card de pessoa** (Lucas, 26/09/2026; identidade.md §5): o nome no rótulo (pílula `--rotulo`, até 3
     palavras) e o cargo numa linha menor logo abaixo, no papel "eixo / legenda" (84 px, Inter 500;
     `--fs-eixo` e `--peso-texto` em `marca/tokens.css`). Exemplo aprovado: `MARIA GLADZISZEWSKI` em cima e
-    `Assembly member, City of Juneau` embaixo. Card sem o cargo, ou com nome e cargo juntos no rótulo,
+    `Assembly member, City and Borough of Juneau (2017)` embaixo (identidade.md §5; Lucas, 28/09/2026). Card sem o cargo, ou com nome e cargo juntos no rótulo,
     reprova; o nome com mais de 3 palavras reprova na lente **espaco**. A composição de 27/09/2026:
     - o retrato vem como foto impressa com fita, com o nome e o cargo embaixo;
     - a fala vai num cartão de papel;

@@ -163,6 +163,16 @@
     última cena e repete na descrição do YouTube;
   - em contexto editorial ou de comentário, crédito junto da imagem, `<artista>/Shutterstock.com`, na
     faixa de crédito da cena.
+  - **No Juneau, o crédito do artista vai** (Lucas, 28/09/2026, 19:5x de Brasília). A pergunta: "Se a caça
+    trouxer algum clipe do Shutterstock, o nome do artista também vai na faixa de crédito da cena?" A resposta:
+    "Sim, com o artista (Recomendado)". A opção dizia: "O Juneau explica um fato político e histórico, o que se
+    aproxima do uso editorial. Pôr '<artista>/Shutterstock.com' na cena é o caminho sem risco e ocupa uma linha
+    de crédito." Por isso, na caça, o candidato do Shutterstock grava o nome do artista (o contribuidor) que a
+    página do item mostra, e a cena do clipe leva `<artista>/Shutterstock.com` na faixa de crédito, além da
+    linha do fim. A pergunta tratou do Juneau; nos próximos vídeos, pergunta nova, ou o Lucas estende.
+  - A pergunta falou de clipe. A foto do Shutterstock (no Juneau, a caça pode trazer a do estádio de s28) segue a
+    mesma regra: a razão da resposta é o uso editorial do vídeo, e este §3.4 pede o crédito "junto da imagem". É
+    a leitura do Claude central (28/09/2026), no sentido de mais crédito, e o Lucas pode desfazê-la.
 
 ## 4 · O que muda fora do plano individual
 

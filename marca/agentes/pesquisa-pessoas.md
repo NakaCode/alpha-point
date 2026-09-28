@@ -95,7 +95,7 @@
   até 3 palavras), cantos de 12 px, respiro de 24 × 40 px.
 - **O card de pessoa** (Lucas, 26/09/2026; identidade.md §5): o nome no rótulo (a pílula acima, até 3
   palavras) e o cargo numa linha menor logo abaixo, no papel "eixo / legenda", 84 px, Inter 500. Exemplo
-  aprovado: `MARIA GLADZISZEWSKI` em cima e `Assembly member, City of Juneau` embaixo. O contrato continua
+  aprovado: `MARIA GLADZISZEWSKI` em cima e `Assembly member, City and Borough of Juneau (2017)` embaixo (identidade.md §5; Lucas, 28/09/2026). O contrato continua
   pedindo o cargo (`contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`). Você entrega nome e
   cargo separados, como a fonte os escreve.
 - O nome não vai em `--destaque`: a cor é do protagonista do vídeo, e em texto só no rótulo dele

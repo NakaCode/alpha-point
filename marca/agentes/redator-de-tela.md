@@ -121,7 +121,7 @@ recusou e o que ficou sem conferir, e a sessão central confere no navegador do 
   sem rótulo partidário (`roteiro-editor.md` › "Decisões editoriais", no Juneau). **A forma** (Lucas,
   26/09/2026; identidade.md §5): o `nome` vai no rótulo, até 3 palavras, e o cargo numa linha menor logo
   abaixo, como legenda (84 px, Inter 500). Exemplo aprovado: `MARIA GLADZISZEWSKI` em cima e
-  `Assembly member, City of Juneau` embaixo. O contrato continua pedindo o cargo
+  `Assembly member, City and Borough of Juneau (2017)` embaixo (identidade.md §5; Lucas, 28/09/2026). O contrato continua pedindo o cargo
   (`contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`): preencha `nome` e `o_que_e` pelo
   contrato. Nome que passe de 3 palavras não se encurta por conta própria: vai ao report.
 - **Fronteira disputada:** rótulo `DISPUTED`, e nunca a reivindicação de um lado (identidade.md §6).
