@@ -115,6 +115,26 @@
 // fundido se prova à parte (§0b): os filhos logo depois da mãe, sem cadeia de fusão, a `dur` da mãe até o fim do último
 // filho e o `_quadros` do arquivo no arredondamento do pipeline, fechando no quadro do último filho. Contra o espelho de
 // antes da fusão, nenhuma prova muda.
+//
+// 28/09/2026 (décima segunda revisão; as quatro respostas do Lucas ao conceito visual, 28/09, 11:2x de Brasília). As
+// provas que as respostas deixaram velhas mudaram com elas, sem afrouxar: (1) a cauda ("A última cena, parada e
+// escurecendo (Recomendado)"): a prova da segunda revisão (o fundo provisório renderizado) virou a do fundo decidido. O
+// motivo da última cena cita a resposta e diz o quadro final da cena anterior, parado, escurecendo sem chegar ao preto,
+// sem texto novo, e RENDERIZADO; nenhum texto da cauda a chama de provisória nem de decisão pendente do Lucas, nem diz que
+// não se renderiza. (2) "Aceitar, com 2 mapas a mais (Recomendado)": s13 plano 2 e s43 plano 2 passaram de documento a
+// mapa, com o mesmo id, e o documento continua na tela, como a folha recriada sobre o satélite; a peça é a de
+// `_documento_na_tela` (um `o_que` de `_documentos` da cena). A prova do grifo (só com o documento na tela: documento,
+// citação ou dado) aceita esses dois planos, e só eles, pela folha; os dois têm de ser mapa, com a folha sobre o satélite,
+// a peça, a resposta do Lucas e o mesmo id no objeto; nenhum outro plano declara `_documento_na_tela`. (3) "Sim, e com
+// relevo 3D no campo de gelo": relevo (mapa3d) só em s44, que tem o modo mapa3d e, em `_base_mapa`, o terreno
+// (terrain-rgb-v2) e a resposta. (4) As pendências decididas entram nas DECIDIDAS: a tela final, a paleta, o relevo, o
+// gasto de render na MapTiler, o número sobre a foto, os picos e a régua abaixo de 60% (da pendência da régua, só a
+// pergunta do documento original fotografado continua aberta); e as quatro respostas estão em `_decisoes_do_lucas`, com
+// a data e a hora, a pergunta, a resposta e a opção, literais. A prova do `_existe` (décima primeira) não mudou: o
+// thane-road-fim passou porque chegou ao disco (58.2454469, -134.2958702; pauta-geo.json). Contra o espelho de antes, o
+// verificador novo reprova 37 vezes (a cauda, os dois planos, o relevo, o thane-road-fim, as pendências decididas e as
+// quatro respostas); o verificador de antes, contra o espelho novo, só as 3 provas que as respostas deixaram velhas (a
+// cauda provisória e os dois grifos em plano de mapa).
 import { readFileSync, existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 
@@ -683,8 +703,20 @@ for (const p of (DR.documentos || {}).pecas || []) if (String(p.caca || "").trim
   for (const m of String(p.caca).matchAll(/\b(s\d{2})\s*\(planos?\s+([\d\s,e]+)\)/g)) for (const n of m[2].match(/\d+/g)) cacados.add(`${m[1]}#${n}`);
   for (const k of cacados) if (naLista.has(k)) F(`${k.replace("#", " plano ")}: a peça "${p.peca.slice(0, 50)}…" é caçada pelo pesquisa-documentos (caca) e o plano também está na lista do pesquisa-imagens (dois donos)`);
 }
-// a cauda é fundo provisório renderizado, nunca "não se renderiza"
-{ const c = S.at(-1); if (!/FUNDO PROVISÓRIO/.test(c.motivo || "") || /não se renderiza|não desenhar/i.test(JSON.stringify(c))) F(`${c.id}: a cauda tem de ser fundo provisório renderizado (roupas do editor-de-arte §7, do regente e do qc-visual §6)`); }
+// a cauda. Segunda revisão: fundo provisório renderizado, nunca "não se renderiza". Décima segunda revisão (Lucas,
+// 28/09/2026: "A última cena, parada e escurecendo (Recomendado)"): o fundo está decidido. O motivo cita a resposta e diz
+// o quadro final da cena anterior, parado, escurecendo sem chegar ao preto (identidade §5: 100% coberto), sem texto novo,
+// e RENDERIZADO (roupas do editor-de-arte §7, do regente §0 e do qc-visual §6); nenhum texto da cauda a chama de
+// provisória nem de decisão pendente do Lucas, nem diz que ela não se renderiza
+let caudaDecidida = false;
+{ const c = S.at(-1), ant = S.at(-2), m = String(c.motivo || "");
+  const deve = [[/A última cena, parada e escurecendo \(Recomendado\)/, "a resposta do Lucas"], [new RegExp(`quadro final de ${ant.id}\\b`), `o quadro final de ${ant.id}`],
+    [/\bparad[oa]\b/, "parado"], [/escurec/, "escurecendo"], [/sem chegar ao preto/, "sem chegar ao preto"], [/sem texto novo/, "sem texto novo"], [/RENDERIZAD[OA]/, "RENDERIZADO"]];
+  const falta = deve.filter(([re]) => !re.test(m)).map(([, o]) => o);
+  if (falta.length) F(`${c.id}: a cauda é o fundo que o Lucas decidiu em 28/09 (o quadro final de ${ant.id}, parado, escurecendo sem chegar ao preto, sem texto novo, renderizado), e o motivo não diz: ${falta.join(", ")} (roupas do editor-de-arte §7, do regente §0 e do qc-visual §6; décima segunda revisão)`);
+  const velho = /provis[óo]ri|DECISÃO DO LUCAS PENDENTE|não se renderiza|não desenhar/i.exec(JSON.stringify(c));
+  if (velho) F(`${c.id}: a cauda ainda diz "${velho[0]}"; o fundo foi decidido e se renderiza (Lucas, 28/09/2026; décima segunda revisão)`);
+  caudaDecidida = !falta.length && !velho; }
 // país no mapa: o porquê em _nota_logos. Décima primeira revisão (Lucas, 27/09/2026: "Só o nome escrito (Recomendado)";
 // identidade §6): o nome escrito, sem bandeira; a _nota_logos diz a regra, e needs.logos fica vazio (a prova de needs.logos, abaixo)
 for (const s of S) if ((s.needs.geo || []).some((g) => g.tipo === "pais") && !(/sem bandeira/.test(s._nota_logos || "") && /identidade §6/.test(s._nota_logos || ""))) F(`${s.id}: país no mapa sem a _nota_logos da regra (o nome escrito, sem bandeira; identidade §6)`);
@@ -718,7 +750,7 @@ for (const s of S) {
   if (/\bPAGA [A-E]\b/.test(c) && !marcada) F(`${s.id}: paga uma promessa e a _cadeia não a marca como candidata a showpiece (contrato do montador §2)`);
   if (/\bFECHA [A-E]\b/.test(c) && !marcada) F(`${s.id}: fecha uma promessa (o fecho) e a _cadeia não a marca como candidata a showpiece (roupa do diretor-de-arte §2)`);
   if (s === S[0] && !marcada) F(`${s.id}: é a abertura e a _cadeia não a marca como candidata a showpiece (roupa do diretor-de-arte §2)`);
-  if (s.id === ultimaId && (marcada || na)) F(`${s.id}: a cauda não é candidata a showpiece (fundo provisório)`);
+  if (s.id === ultimaId && (marcada || na)) F(`${s.id}: a cauda não é candidata a showpiece (é o fundo da tela final)`);
   if (marcada !== !!na) F(`${s.id}: candidata a showpiece na _cadeia e em _candidatas_a_showpiece não batem`);
   if (na && /indicação do montador/.test(c) !== na.ind) F(`${s.id}: a indicação do montador diverge entre _cadeia e _candidatas_a_showpiece`);
 }
@@ -912,8 +944,25 @@ const DECIDIDAS = [
   // décima primeira revisão: as duas decisões de 27/09 que o re-espelho aplicou
   [/DECISÃO DO LUCAS PENDENTE:? bandeira|bandeira[^.;]{0,80}(ao lado|no mapa)[^.;]{0,80}(DECISÃO DO LUCAS PENDENTE|até (o Lucas|ele) decidir)/i, "país no mapa: o nome escrito, sem bandeira (identidade §6; Lucas, 27/09/2026)"],
   [/esquema declarado[^.;]{0,120}(DECISÃO DO LUCAS PENDENTE|espera o Lucas|até a decisão)|DECISÃO DO LUCAS PENDENTE:? esquema/i, "rota que nunca foi construída: esquema tracejado pelo texto da fonte, com o aviso Approximate route (identidade §6; Lucas, 27/09/2026)"],
+  // décima segunda revisão: as quatro respostas do Lucas ao conceito visual (28/09/2026, 11:2x de Brasília)
+  [/fundo provis[óo]rio|DECISÃO DO LUCAS PENDENTE:?[^.;]{0,40}(conteúdo definitivo|tela final)/i, "a tela final: a última cena, parada e escurecendo (Lucas, 28/09/2026)"],
+  [/PROPOSTA — DECISÃO DO LUCAS PENDENTE|proposta em "paleta"|DECISÃO DO LUCAS PENDENTE:? a cor do protagonista|(paleta|cor do protagonista)[^.;]{0,80}pendente do Lucas/i, "a paleta: --destaque = Juneau, --contraparte = Willow e Wasilla (Lucas, 28/09/2026)"],
+  [/(relevo|mapa3d|câmera 3D)[^.;]{0,120}(DECISÃO DO LUCAS PENDENTE|só com o ok do Lucas|pendente do Lucas)|DECISÃO DO LUCAS PENDENTE:? relevo/i, "o relevo real só em s44 (Lucas, 28/09/2026; identidade §6)"],
+  [/DECISÃO DO LUCAS PENDENTE:? o gasto|(gasto|custo)[^.;]{0,40}(de render|MapTiler)[^.;]{0,80}(DECISÃO DO LUCAS PENDENTE|_decisoes_pendentes)/i, "o gasto de render na MapTiler do Juneau, liberado (Lucas, 28/09/2026; identidade §6)"],
+  [/DECISÃO DO LUCAS PENDENTE[^.;]{0,60}(número ou texto pousado|sobre REGISTRO)|leitura do montador pendente|pendência do número sobre REGISTRO/i, "o número sobre a foto, como o diretor-de-arte propôs (Lucas, 28/09/2026)"],
+  [/DECISÃO DO LUCAS PENDENTE[^.]{0,160}(quantos|número de) picos|(quantos picos|número de picos)[^.;]{0,80}(DECISÃO DO LUCAS PENDENTE|pendente)/i, "os cinco picos do diretor-de-arte (Lucas, 28/09/2026)"],
+  [/DECISÃO DO LUCAS PENDENTE:? a régua de mundo real|régua[^.;]{0,80}abaixo dos 60 ?%[^.;]{0,40}(DECISÃO DO LUCAS PENDENTE|pendente)/i, "a régua abaixo de 60% no Juneau, com os dois mapas a mais (Lucas, 28/09/2026); só a pergunta do documento original fotografado continua aberta"],
 ];
-for (const [p, t] of textos) if (!/\._revisao$/.test(p)) for (const [re, regra] of DECIDIDAS) if (re.test(t)) F(`${p}: trata como pendente o que o Lucas decidiu em 27/09 ("${re.exec(t)[0].slice(0, 60)}"): ${regra}`);
+// décima segunda revisão: as quatro respostas do Lucas ao conceito visual estão em `_decisoes_do_lucas`, cada uma com a
+// data e a hora (28/09/2026, 11:2x de Brasília), a pergunta, a resposta e a opção, literais
+const RESPOSTAS_28_09 = [
+  ["Os últimos 20 s do vídeo não têm narração: é onde o YouTube põe os botões de outro vídeo e de inscrição. O que fica no fundo?", "A última cena, parada e escurecendo (Recomendado)", "O quadro final (o YES da votação e a linha do preço vazia) para e escurece aos poucos, sem texto novo. Não disputa com os botões."],
+  ["O vídeo tem imagem real (foto, vídeo, satélite) em 45 % do tempo, e o alvo da marca é 60 %. Algumas fotos da história não existem nos acervos abertos. Como seguimos?", "Aceitar, com 2 mapas a mais (Recomendado)", "Duas cenas que hoje são desenho (s13 e s43) ganham o mapa de satélite, e o vídeo chega a 47 %. É o máximo sem inventar imagem."],
+  ["As cenas de mapa usam o satélite da MapTiler, que cobra por pedido. São 13 cenas com mapa. Posso gastar?", "Sim, e com relevo 3D no campo de gelo", "Igual, e a cena do campo de gelo (s44) ganha relevo real. Custa mais pedidos e ainda não foi testado neste PC."],
+  ["O diretor propôs: 5 momentos de destaque; Juneau na cor de destaque da marca e Willow/Wasilla na cor de contraparte; números por cima de algumas fotos; e um mapa escurecido atrás de 2 cartões de pessoa. Seguimos assim?", "Sim, tudo como ele propôs (Recomendado)", "A arte segue esse plano."],
+];
+for (const [perg, resp, opc] of RESPOSTAS_28_09) if (!(E._decisoes_do_lucas || []).some((d) => d.startsWith("28/09/2026, 11:2x de Brasília — ") && d.includes(`A pergunta: "${perg}"`) && d.includes(`A resposta: "${resp}"`) && d.includes(`A opção dizia: "${opc}"`))) F(`_decisoes_do_lucas: falta a resposta "${resp}" (28/09/2026, 11:2x de Brasília), com a pergunta, a resposta e a opção literais (décima segunda revisão)`);
+for (const [p, t] of textos) if (!/\._revisao$/.test(p)) for (const [re, regra] of DECIDIDAS) if (re.test(t)) F(`${p}: trata como pendente o que o Lucas decidiu em 27 ou 28/09 ("${re.exec(t)[0].slice(0, 60)}"): ${regra}`);
 // Décima revisão. (a) Vídeo do governo do Alasca negado: a oração que o nomeia não diz que ele não entra (o "não" que
 // vem depois de "jornal", "veículo" ou "agência" é do vídeo de jornal, e vale). (b) Logo como substantivo ("a logo",
 // "logo de…", "sem logo"; o advérbio "logo depois" não conta): a oração não a trata como pendente, e, sem negação, não
@@ -970,6 +1019,36 @@ for (const s of S) {
   if (["documento", "citacao"].includes(s.modo) && !(s._documentos || []).length) F(`${s.id}: modo ${s.modo} sem _documentos`);
   if ((s._documentos || []).length && !docCenas.has(s.id)) F(`${s.id}: tem _documentos e não está em _despacho_research › documentos`);
 }
+// décima segunda revisão (Lucas, 28/09/2026: "Aceitar, com 2 mapas a mais (Recomendado)"; o ESCALAR do diretor-de-arte):
+// s13 plano 2 e s43 plano 2 passaram de documento a mapa com o mesmo id, e o documento continua na tela, como a folha
+// recriada sobre o satélite. São esses dois, e só eles: o plano é mapa, `_documento_na_tela` nomeia uma peça de
+// `_documentos` da cena, e o objeto diz a folha recriada sobre o satélite, a resposta do Lucas e o mesmo id. Aí o grifo (o
+// documento na tela) vale, como no plano de documento; qualquer outro plano de mapa com grifo continua reprovando.
+const FOLHA_SOBRE_MAPA = [["s13", 2], ["s43", 2]];
+const folhaNaTela = (s, n) => {
+  const p = s?._planos?.[n - 1];
+  return FOLHA_SOBRE_MAPA.some(([a, b]) => a === s.id && b === n) && !!p && REGIME_MAPA.has(p.regime)
+    && (s._documentos || []).some((d) => d.o_que === p._documento_na_tela)
+    && /folha recriada/.test(p.objeto || "") && /sobre o satélite/.test(p.objeto || "");
+};
+for (const [id, n] of FOLHA_SOBRE_MAPA) {
+  const s = S.find((x) => x.id === id), p = s?._planos?.[n - 1];
+  if (!p) { F(`${id} plano ${n}: não existe (décima segunda revisão)`); continue; }
+  if (!folhaNaTela(s, n)) F(`${id} plano ${n}: o Lucas aceitou o mapa (28/09/2026: "Aceitar, com 2 mapas a mais"), e o plano não é mapa com a folha recriada sobre o satélite e a peça em _documento_na_tela (um o_que de _documentos da cena) (décima segunda revisão)`);
+  else if (!/Aceitar, com 2 mapas a mais \(Recomendado\)/.test(p.objeto) || !/mesmo id/.test(p.objeto)) F(`${id} plano ${n}: o objeto não diz a resposta do Lucas ("Aceitar, com 2 mapas a mais (Recomendado)") e o re-espelho com o mesmo id (décima segunda revisão)`);
+}
+for (const s of S) (s._planos || []).forEach((p, i) => { if (p._documento_na_tela !== undefined && !FOLHA_SOBRE_MAPA.some(([a, b]) => a === s.id && b === i + 1)) F(`${s.id} plano ${i + 1}: _documento_na_tela fora dos dois planos que o Lucas aceitou como mapa com a folha (décima segunda revisão)`); });
+// décima segunda revisão (Lucas, 28/09/2026: "Sim, e com relevo 3D no campo de gelo"; identidade §6, "O gasto do Juneau,
+// liberado"): relevo real só em s44. Nenhuma outra cena tem modo ou plano mapa3d; s44 tem o modo mapa3d, e o `_base_mapa`
+// dela diz o terreno (terrain-rgb-v2) e a resposta
+const RELEVO_EM = new Set(["s44"]);
+for (const s of S) {
+  if (!RELEVO_EM.has(s.id) && (s.modo === "mapa3d" || (s._planos || []).some((p) => p.regime === "mapa3d"))) F(`${s.id}: relevo (mapa3d) fora de s44; o Lucas liberou o relevo só no campo de gelo (28/09/2026; identidade §6)`);
+  if (RELEVO_EM.has(s.id)) {
+    if (s.modo !== "mapa3d") F(`${s.id}: o Lucas liberou o relevo no campo de gelo (28/09/2026), e o modo é ${s.modo}`);
+    if (!/terrain-rgb-v2/.test(s._base_mapa || "") || !/Sim, e com relevo 3D no campo de gelo/.test(s._base_mapa || "")) F(`${s.id}: o _base_mapa não diz o terreno (terrain-rgb-v2) e a resposta do Lucas ("Sim, e com relevo 3D no campo de gelo") (décima segunda revisão)`);
+  }
+}
 for (const c of docItens) {
   const s = S.find((x) => x.id === c.cena);
   if (!s) { F(`_despacho_research › documentos: ${c.cena} não existe`); continue; }
@@ -989,9 +1068,11 @@ for (const c of docItens) {
   // ela é dita", pesquisa-documentos §7).
   // sexta revisão: sem exceção para a PRANCHA (s16): a sigla vai como texto de tela recriado, e a página não vai à tela;
   // o que não tem documento na tela vai em `conferir`
+  // décima segunda revisão: a folha recriada sobre o satélite dos dois planos que o Lucas aceitou como mapa (s13 plano 2
+  // e s43 plano 2; FOLHA_SOBRE_MAPA, acima) é documento na tela; nenhum outro plano de mapa leva grifo
   const REGIME_GRIFO = new Set(["documento", "citacao", "dados"]);
   if ((c.grifar || []).length) {
-    for (const x of c.planos || []) if (!REGIME_GRIFO.has(x.regime)) F(`_despacho_research › documentos: ${c.cena} tem trecho a grifar e lista o plano ${x.n}, que é ${x.regime} (sem documento na tela); o que só se confere vai em \`conferir\``);
+    for (const x of c.planos || []) if (!REGIME_GRIFO.has(x.regime) && !folhaNaTela(s, x.n)) F(`_despacho_research › documentos: ${c.cena} tem trecho a grifar e lista o plano ${x.n}, que é ${x.regime} (sem documento na tela); o que só se confere vai em \`conferir\``);
     const vz = c.voz_do_grifo || [];
     if (vz.length !== c.grifar.length) F(`_despacho_research › documentos: ${c.cena} tem ${c.grifar.length} trecho(s) a grifar e ${vz.length} em voz_do_grifo`);
     const janela = (c.planos || []).map((x) => s._planos?.[x.n - 1]).filter(Boolean);
@@ -1138,6 +1219,7 @@ else {
   console.log(`texto travado numa palavra: ${travas.length} trava(s), menor tempo no ar até o fim do plano ${travas.length ? Math.min(...travas.map((x) => x.no_ar_ate_o_fim_do_plano_s)) : "—"} s${curtas.length ? ` (abaixo de 2,0 s, com _texto_no_ar: ${curtas.map((x) => `${x.cena} p${x.plano}`).join(", ")})` : ""} · grifos com a voz provada dentro dos planos: ${grifosProvados}`);
   console.log(`texto na voz (sexta a oitava revisões): ${varridos.length} números ou frases citadas que o objeto põe na tela e a voz diz no plano, medidos da fala ao fim do plano (abaixo de 2,0 s, com _texto_no_ar; desde a oitava, também a fala do modo citação, parte por parte); ${antecipados.length} números que um objeto põe na tela antes do plano em que a voz os diz; ${entradasVoz.length} comparações entre a palavra de entrada que o objeto declara (verbo de entrada e palavra entre aspas) e o momento em que a voz diz o que entra (número, data pelo mês, frase entre aspas): cada uma reprova se a voz o diz depois do fim da palavra de entrada, ou se a entrada vem mais de 1,0 s depois da voz no plano (${[...new Set(entradasVoz.map((x) => `${x.cena} p${x.plano}`))].join(", ") || "—"}); ${D2.travessias.length} atravessam o plano seguinte da cena (${D2.travessias.join(", ") || "—"}); ${D2.conflitos.length} conflitos para o regente-de-imagem (${D2.conflitos.join(", ") || "—"}); não se mede o texto descrito em português sem verbo de entrada, sem número e sem aspas (a parte de um bloco que a voz diz noutra frase), nem rótulo de lugar`);
   console.log(`décima primeira revisão: ${avisosConferidos === null ? "vereditos do conferente NÃO MEDIDOS (sem conferencia-midia.json)" : `${avisosConferidos} fotos e retratos aprovados pelo conferente com o aviso do ano (ou "sem aviso") no objeto`} · ${esquemas} rotas em esquema tracejado (_esquema) · ${geoNoDisco} pedidos de needs.geo com _existe: true e o arquivo em disco`);
+  console.log(`décima segunda revisão: a folha recriada sobre o satélite em ${FOLHA_SOBRE_MAPA.filter(([id, n]) => folhaNaTela(S.find((x) => x.id === id), n)).map(([id, n]) => `${id} p${n}`).join(", ") || "nenhum plano"} · relevo (mapa3d) em ${S.filter((s) => s.modo === "mapa3d" || (s._planos || []).some((p) => p.regime === "mapa3d")).map((s) => s.id).join(", ") || "nenhuma cena"} · a cauda ${S.at(-1).id}: ${caudaDecidida ? `o quadro final de ${S.at(-2).id}, parado e escurecendo sem chegar ao preto, renderizado (Lucas, 28/09/2026)` : "fora do fundo decidido"} · ${DECIDIDAS.length} guardas de decisão tomada`);
   console.log(falhas.length ? `\n✗ ${falhas.length} falha(s):\n  ${falhas.join("\n  ")}` : "\n✓ todas as provas passaram");
 }
 process.exit(falhas.length ? 1 : 0);

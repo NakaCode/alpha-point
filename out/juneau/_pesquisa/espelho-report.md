@@ -1,14 +1,16 @@
 # Espelho do Juneau: o report do montador (§2.3 do contrato)
 
 - **Vídeo:** juneau, "Alaska Voted for a New Capital in 1974. It Was Never Built.", passo `mirror`; a décima primeira revisão
-  é o re-espelho do passo `research`.
+  é o re-espelho do passo `research`, e a décima segunda, no passo `art_direction`, grava as respostas do Lucas ao conceito
+  visual (§0i).
 - **Montado em:** 26/09/2026. **Revisado em:** 27/09/2026, depois dos três verificadores (tempo, editorial e completude),
   de novo no mesmo dia, depois da segunda rodada deles (§0b), uma terceira vez, depois da terceira rodada (§0c), uma
   quarta, depois da quarta rodada (lentes geo-fato, editorial e tempo; §0d), e uma quinta, depois da quinta rodada (as mesmas
   três lentes; §0e), uma sexta, com as decisões do Claude central sobre o que sobrou (§0f), e uma nona, com as quatro
   decisões do Lucas de 27/09 e uma do Claude central para o regente-de-imagem (§0g). **Revisado de novo em 28/09/2026**, na
   décima primeira revisão: o re-espelho que a pesquisa de mídia devolve, com as decisões do Lucas de 27 e 28/09 (§0h; o
-  despacho do research a chama de sétima).
+  despacho do research a chama de sétima). **E na décima segunda, também em 28/09**, com as quatro respostas do Lucas ao
+  conceito visual do diretor-de-arte e a série diária de s54 (§0i). O corpo do report, do §1 ao Anexo, está atualizado até ela.
   O agente `montador` ainda não carrega nesta sessão. A sessão seguiu o manual inteiro (`.claude/agents/montador.md`:
   ofício e contrato), a roupa `marca/agentes/montador.md` e o `CLAUDE.md` por cima.
 - **Estado do material:** 1, do zero, num canal faceless. Não há imagem de origem, então o único veredito é ADICIONAR.
@@ -724,6 +726,261 @@ número sobre registro e os picos. Nenhuma pergunta nova.
 **Para o regente-de-imagem** (passo `conducting`): os mesmos 15 conflitos de texto no ar e, na `_nota_texto_no_ar`, os rótulos
 de Anchorage e Fairbanks do mapa novo de s09, que ficariam 1,83 s e 1,25 s no ar se entrassem com a voz.
 
+## 0i · A décima segunda revisão, de 28/09: as quatro respostas do Lucas ao conceito visual, e a série de s54
+
+O passo na linha é `art_direction`. O conceito visual do diretor-de-arte está pronto (`out/juneau/conceito-visual.json`,
+`278a26f9…`), e o Lucas respondeu, pelo chat e em múltipla escolha, às quatro perguntas que ele deixou: **28/09/2026, 11:2x de
+Brasília** (14:2x UTC; a primeira versão do pedido dizia 14:2x de Brasília, porque o relógio do Git Bash dá UTC). No mesmo dia,
+o Claude central leu a série diária de s54 e pediu que ela entrasse nesta revisão.
+
+**As entradas, no disco:**
+- as quatro respostas, literais, pelo despacho do Claude central. A regra do gasto e do relevo está na `marca/identidade.md` §6
+  ("O gasto do Juneau, liberado"); a da tela final e a da régua, nas roupas do diretor-de-arte (§2 e §4), do editor-de-arte
+  (§7), do regente-de-imagem (§0), do qc-visual (§6) e do redator-de-tela;
+- o `conceito-visual.json`, só lido: os ESCALAR de s13, s43 e s44 (`midia_ancora`), a técnica de cada cena, os cinco
+  `showpiece` e os runs de `fluxo`;
+- `out/juneau/_media/geo/thane-road-fim.json` (`678f29bd…`), registrado no `pauta-geo.json` e no research-geo.md §7;
+- `out/juneau/_pesquisa/s54-serie-ans-west-coast-dor.json` (`d8d50982…`). Refiz a prova da cópia que o arquivo traz: as 748
+  linhas com preço, a soma de 6.265.799 centavos e o sha256 da tabela (`2539e4f1…`) batem com os que a página calculou. O
+  máximo é $116.26, em 12/02/2013, e o mínimo, $26.23, em 20/01/2016 (queda de 77,44%);
+- no fim, `out/juneau/_dados/s54.json`, só lido: a pesquisa-dados gravou nele a `serie` em paralelo a esta revisão (em disco às
+  12:01 de Brasília, com 748 pontos e os mesmos extremos em `serie_meta`).
+
+Nada foi escrito em `out/juneau/_media/`, no `conceito-visual.json`, nos `conferencia-*.json`, nas `pauta-*.json`, nos
+`research-*.md` nem em `out/juneau/_dados/`. O `words.json` (`a8d5ec77…`), o texto aprovado (`28aa6630…`) e a `narracao.wav`
+(`468b045b…`) estão intactos. O espelho de antes é o do commit `df89f59` (`e1633b3c…`); o de agora é `a0ec7f4b…`. A revisão
+se fez por um script que confere cada trecho de antes (uma ocorrência só) e para em qualquer divergência.
+
+**Ids e tempos.** Os 61 ids ficam, e nenhuma borda mudou: `inSec`, `dur`, `_quadros`, `_borda` e as bordas dos 141 planos são
+as de antes, cena a cena e plano a plano (conferido por script contra o espelho do commit `df89f59`). A fusão do diretor-de-arte
+fica como ele a gravou depois da décima primeira revisão: s08 com `dur` 23,033 e `_quadros` 2265–2956, e s09 e s10 com
+`_mergedInto: "s08"`. Este report ainda não a registrava; agora o §3 e o Anexo registram.
+
+### 0i.1 · O que mudou, resposta a resposta
+
+**1 · A tela final.** A pergunta: "Os últimos 20 s do vídeo não têm narração: é onde o YouTube põe os botões de outro vídeo e de
+inscrição. O que fica no fundo?" A resposta: "A última cena, parada e escurecendo (Recomendado)". A opção dizia: "O quadro final
+(o YES da votação e a linha do preço vazia) para e escurece aos poucos, sem texto novo. Não disputa com os botões."
+- Em s63, o título, a tese, o motivo, a `midia_necessidade` e o objeto do plano dizem o fundo decidido: o quadro final de s62 (o
+  YES e a linha do preço vazia) parado, escurecendo aos poucos sem chegar ao preto (identidade §5: 100% coberto), sem texto
+  novo, sem herói, com `data-qc-sem-heroi`, e **renderizado**. `_pendente` virou `_tela_final`, no mesmo lugar, e entrou
+  `_repeticao_intencional`.
+- O motivo diz também o que as roupas pedem aos consumidores: o beat único `continua`, `forca: livre`, com o porquê "tela final:
+  a última cena, parada e escurecendo (Lucas, 28/09/2026)" (regente §0); o qc-visual reprova o escurecer que chega ao preto
+  (§6); e a linha do Shutterstock vai na faixa de crédito, se algum clipe vier de lá.
+- O quadro de s62 só se garante por construção (ofício §11): num run fundido s62+s63, que é do diretor-de-arte, ou com a cena
+  feita a partir do arquivo de s62. O espelho não promete continuidade entre sessões isoladas.
+- A trilha continua na pendência de música e transições. O `modo` `desenho` e a `midia` `animacao` são os de s62.
+
+**2 · A régua.** A pergunta: "O vídeo tem imagem real (foto, vídeo, satélite) em 45 % do tempo, e o alvo da marca é 60 %.
+Algumas fotos da história não existem nos acervos abertos. Como seguimos?" A resposta: "Aceitar, com 2 mapas a mais
+(Recomendado)". A opção dizia: "Duas cenas que hoje são desenho (s13 e s43) ganham o mapa de satélite, e o vídeo chega a 47 %.
+É o máximo sem inventar imagem."
+
+| Plano | Era | Agora | O que vai à tela |
+|---|---|---|---|
+| s13 p2 (130,967–136,833) | documento | mapa | a folha recriada do parecer do procurador-geral de 1993 sobre o satélite de s12 (`alasca-e-vizinhos`), com os dois raios de 30 milhas (`raio-30mi-anchorage`, `raio-30mi-fairbanks`) e os pontos de Anchorage e Fairbanks (`cidades-ne`) |
+| s43 p2 (454,4–463,133) | documento | mapa | a folha recriada do estudo de 2018 sobre o satélite do panhandle (`panhandle-juneau`), no enquadramento em que s44 abre: Juneau (`cidades-ne`), a estrada que existe (`estrada-juneau-cascade`) e o anel em Cascade Point (`cascade-point`), as duas últimas do OSM, com o crédito na tela |
+
+- É o ESCALAR do diretor-de-arte (`midia_ancora` das duas cenas), com o mesmo id e as mesmas bordas. A geometria é só a que já
+  está em disco: 5 pedidos em s13 e 4 em s43, todos com `_existe: true`. Nenhum pedido novo.
+- O documento continua na tela, como a folha. A peça está em `_documento_na_tela` (um `o_que` de `_documentos`), a nota da peça
+  diz a folha sobre o satélite, e o grifo continua com a voz. No despacho, `documentos` lista os dois planos como `mapa`, com
+  uma nota.
+- s13 ganhou a `_virada` documento → mapa em "As" (130,967 s, palavra 369), e a de s43 passou a footage → mapa. As duas têm
+  `_base_mapa` (MapTiler satellite-v2, relevo não pedido) e `_repeticao_intencional` (o palco de s12; o enquadramento de s44).
+- **A régua foi de 290,2 s a 304,8 s** (+14,6 s: 5,866 s de s13 e 8,733 s de s43), ou seja, **de 44,9% a 47,2% da fala** (de
+  43,6% a 45,8% do vídeo). O "47 %" da opção bate.
+- A pendência da régua ficou só com a parte que a resposta não tocou: se o documento original fotografado conta.
+- A opção chamava os dois planos de "desenho". No espelho eram documento (a folha recriada), que também não conta na régua, e
+  por isso a resposta vale do mesmo jeito.
+
+**3 · O gasto da MapTiler e o relevo.** A pergunta: "As cenas de mapa usam o satélite da MapTiler, que cobra por pedido. São 13
+cenas com mapa. Posso gastar?" A resposta: "Sim, e com relevo 3D no campo de gelo". A opção dizia: "Igual, e a cena do campo de
+gelo (s44) ganha relevo real. Custa mais pedidos e ainda não foi testado neste PC." O "igual" é o da opção recomendada, "Sim,
+medindo na 1ª cena": "Anoto o contador antes e depois da primeira cena de mapa e te conto o custo real antes de fazer as
+outras."
+- s44 passou a `mapa3d`: o modo e os seis planos de mapa (o plano 5 continua o registro do fiorde). As viradas passaram a
+  mapa3d → footage → mapa3d.
+- O `_base_mapa` de s44 diz satellite-v2 + terrain-rgb-v2, a resposta e que não há prova nesta máquina: a primeira é o render
+  desta cena. O motivo diz por que o relevo prova o que a voz argumenta ("an icefield straddles the border", "a long fjord
+  between steep mountains"; mapista §5 e §6; ARTE-31), e que a escala do desnível e o exagero são do mapista, medidos no DEM.
+- Nenhuma outra cena pede relevo: s03, s09, s13 e s43 dizem "relevo não pedido" em `_base_mapa`.
+- O gasto: os motivos de s07 e s09 deixaram de apontar para a pendência. O contador da MapTiler se anota antes e depois do
+  primeiro render de mapa, e o custo real vai ao Lucas antes das outras cenas (identidade §6).
+- A pergunta contava 13 cenas. Com a resposta 2, são **15 cenas com mapa** (entraram s13 e s43), e a regra da identidade §6
+  cobre "as cenas de mapa do Juneau".
+
+**4 · A proposta do diretor.** A pergunta: "O diretor propôs: 5 momentos de destaque; Juneau na cor de destaque da marca e
+Willow/Wasilla na cor de contraparte; números por cima de algumas fotos; e um mapa escurecido atrás de 2 cartões de pessoa.
+Seguimos assim?" A resposta: "Sim, tudo como ele propôs (Recomendado)". A opção dizia: "A arte segue esse plano."
+- A `paleta` deixou de ser proposta: começa por "DECIDIDA (Lucas, 28/09/2026, 11:2x de Brasília…". A `_nota_cor` de s12 diz o
+  mesmo.
+- Os picos são os cinco que o diretor-de-arte marcou: s01, s23, s32, s44 e s59 (`conceito-visual.json` › `showpiece`), e a
+  `_nota_showpiece` diz isso. As 25 candidatas e a indicação do montador (s19, s23, s32, s44 e s59) ficam como registro. Ele
+  trocou s19 por s01.
+- O número sobre a foto: os `_figura` de s01, s35 e s53, o motivo de s28, a nota do `_texto_no_ar` do plano 1 e o objeto do
+  plano 3 de s28 deixaram de dizer "leitura do montador pendente". A técnica, cena a cena, é do diretor-de-arte ("o
+  número-herói pousa sobre registro real em sete cenas", no arco dele).
+- O mapa escurecido atrás dos cards de s05 e s57 está na técnica do diretor-de-arte: o satélite do panhandle com o anel em
+  Juneau (s05) e o mapa de s50 (s57), com geometria em disco. Não muda tempo, plano nem regime: o card continua sendo o regime,
+  e o inset não conta na régua. São renders de satélite a mais, dentro do gasto liberado.
+
+**s54 · A série diária** (pedido do Claude central na mesma revisão).
+- O pedido deixou de estar aberto. A série é a do Alaska Department of Revenue, Tax Division, na coluna "ANS West Coast", o
+  mesmo nome do Graph 2-1 do FSEIS. O Claude central a leu no navegador do app, com o sim do Lucas para enviar o formulário de
+  datas ("Sim, pode consultar (Recomendado)", 28/09/2026, 11:3x de Brasília).
+- s54 aponta para o arquivo de `_pesquisa`: a tese, o motivo, a `midia_necessidade`, os dois itens de `needs.dados`, o objeto e
+  a `_figura`. A tela mostra **a linha diária entre os dois extremos da fonte**, o pico de $116.26 em 12/02/2013 e o fundo de
+  $26.23 em 20/01/2016, e não só os dois pontos. Média mensal ou suavização não servem, e os dias sem preço não ganham valor
+  inventado.
+- **O número que vai à tela continua sendo o que a voz diz**: os anos e a queda, "more than three quarters", que entra na palavra
+  (564,528 s) e fica 1,905 s até o corte, e o conflito para o regente continua. Os valores dos extremos fazem a linha. A série
+  dá 77,4%, e as contas arredondadas do FSEIS, 77,6%. Na pendência PARA O REGENTE-DE-IMAGEM, só o parêntese de s54 mudou.
+- No despacho da pesquisa-dados, `busca_nova` ficou vazia, e `busca_nova_atendida` guarda o item, o arquivo, o sha256 e onde a
+  pesquisa-dados o gravou.
+
+**E mais:**
+- **O `thane-road-fim` chegou** (s44): `_existe: true`, com o crédito do OSM e o `_exige` com o ponto (58.2454469, -134.2958702,
+  node/5691733230).
+  - O esquema do Taku agora sai dele. O objeto do plano 3, `_esquema.taku.sem_o_ponto`, `_geografia.taku` e a
+    `midia_necessidade` dizem isso.
+  - O despacho do pesquisa-geo ficou com `pedidos: []` e `entregues`, e a decisão da rota em `_decisoes_do_lucas` ganhou a
+    linha da chegada.
+- Os 16 textos de licença e de nota do despacho dizem agora "no navegador do app, sem o Lucas precisar acompanhar" (CLAUDE.md,
+  "A marca", 27/09). O verificador não depende desse texto.
+- `_decisoes_pendentes` foi de 16 para 10. Saíram as seis decididas: a tela final, a cor do protagonista, o relevo, o gasto na
+  MapTiler, o número sobre REGISTRO e os picos. A da régua ficou só com o documento original fotografado.
+- `_decisoes_do_lucas` foi de 13 para 17. As quatro respostas entraram, cada uma com "28/09/2026, 11:2x de Brasília", a pergunta,
+  a resposta e a opção literais, e o que mudou no espelho.
+
+### 0i.2 · O verificador
+
+As provas que as respostas deixaram velhas mudaram com elas, sem afrouxar, e o cabeçalho do `conferir-espelho.mjs` registra a
+mudança (28/09/2026, décima segunda revisão):
+
+| Prova velha | Por que ficou velha | Agora |
+|---|---|---|
+| A cauda é "fundo provisório renderizado" (segunda revisão) | o Lucas decidiu o fundo | o motivo cita a resposta e diz o quadro final da cena anterior, parado, escurecendo sem chegar ao preto, sem texto novo e RENDERIZADO; nenhum texto da cauda diz "provisório", DECISÃO DO LUCAS PENDENTE, "não se renderiza" ou "não desenhar" |
+| Entrada com grifo só lista plano de documento, citação ou dado (quinta revisão) | s13 p2 e s43 p2 viraram mapa, com o documento na tela como a folha | a exceção vale só para esses dois, e só se o plano é mapa, se `_documento_na_tela` é um `o_que` de `_documentos` e se o objeto diz a folha recriada sobre o satélite; qualquer outro plano de mapa com grifo continua reprovando |
+
+Provas novas:
+- s13 p2 e s43 p2 são mapa, com a folha, a peça, a resposta do Lucas e o mesmo id no objeto; nenhum outro plano declara
+  `_documento_na_tela`;
+- relevo (`mapa3d`) só em s44, com o modo mapa3d e, em `_base_mapa`, o terreno e a resposta;
+- as quatro respostas estão em `_decisoes_do_lucas`, com a data e a hora, a pergunta, a resposta e a opção literais;
+- sete guardas novas nas DECIDIDAS: a tela final, a paleta, o relevo, o gasto, o número sobre a foto (também "leitura do
+  montador pendente"), os picos e a régua abaixo de 60%. Agora são 12.
+
+A prova do `_existe` não mudou: o `thane-road-fim` passou porque chegou. São **107 pedidos com `_existe: true`**, e nenhum
+`false`.
+
+**A prova contra as duas cópias.**
+- O verificador novo, sobre o espelho de antes (`df89f59`), sai com exit 1 e **37 falhas**:
+  - 26 frases que davam como pendente o que o Lucas decidiu: 8 da tela final, 6 do número sobre a foto, 3 da paleta, 3 do
+    gasto, 3 do relevo, 2 dos picos e 1 da régua;
+  - 2 da cauda e 2 do relevo de s44;
+  - os 2 planos que o Lucas aceitou como mapa;
+  - o `thane-road-fim` com `_existe: false`;
+  - as 4 respostas que faltavam.
+- O verificador de antes (o do commit, `10899ae1…`), sobre o espelho novo, sai com **3 falhas**, exatamente as provas velhas da
+  tabela: a cauda provisória e os dois grifos em plano de mapa.
+- O verificador novo, sobre o espelho novo: **exit 0, todas as provas passaram**.
+
+### 0i.3 · Os portões e as medidas
+
+Todos com o alvo certo e `REGIE_MOTOR=C:/projetos/regie-v1` onde importa do motor. A coluna do meio é a medida do começo desta
+revisão, sobre o espelho do commit `df89f59`, já com a fusão do diretor-de-arte; a da direita, sobre o espelho final
+(`a0ec7f4b…`).
+
+| Medida | No começo desta revisão | Agora |
+|---|---|---|
+| `conferir-espelho.mjs juneau` | exit 1 (o `thane-road-fim` chegou ao disco, e o espelho dizia `_existe: false`) | **exit 0** |
+| `validar-contrato espelho` (e `--estrito`) | ✓ | **✓** (os dois) |
+| `mapa-limpo juneau --conferir` | ✓ | **✓** |
+| `checar-plano` | ESPELHO REDONDO | **ESPELHO REDONDO** (modos: mapa×7 e mapa3d×1) |
+| `alinhar-timestamps --dry` (numa cópia) | 18 sugestões | **as mesmas 18**, não aplicadas; o sha256 da cópia igual antes e depois (`a0ec7f4b…`). São as 17 de sempre e s08, que o script lê pela `dur` do arquivo fundido (23,033 s) e quer levar a 2,58 s |
+| `qc-espelho-midia` | PASS, 30/61 = 49,2%; 13 cenas com `needs.geo` | **PASS, 30/61 = 49,2%; 15 cenas com `needs.geo`** (s13 e s43) |
+| `qc-deserto-real` | PASS, 50 s | **PASS, 50 s** |
+| `qc-piso-real` (sem `--laudo`) | 35,1%, NÃO SE APLICA | **35,1%, NÃO SE APLICA**; o laudo em disco intacto (`0148a36f…`) |
+| `qc-espelho-modelo` | PASS | PASS |
+| `qc-fusao-espelho` | PASS, 1 run, 2/2 filhos gravados | o mesmo |
+| `qc-respiro` | sem HTML | sem HTML |
+| `qc-espelho-cortes` | 1 alerta (s63) | o mesmo alerta |
+| `qc-direcao-real` | PASS; mapas no plano 8, 3D 0 | **PASS; 8, e 3D 1** (s44; o portão conta por `modo`) |
+| `qc-midia-real juneau` | NÃO MEDIDO (exit 2) | **NÃO MEDIDO** (exit 2: "sem out\juneau\graphics/"); é portão da arte |
+| Régua do canal (registro + satélite) | 290,2 s = 44,9% da fala | **304,8 s = 47,2% da fala** (45,8% do vídeo): 155,6 s de registro e 149,1 s de satélite |
+| Cenas com plano de mapa | 13 | **15** |
+| Viradas | 22 em 17 cenas | **23 em 18** (s13) |
+| Maior janela sem footage ou foto | 49,9 s (86,933–136,833) | a mesma |
+| Maior janela sem registro nem satélite | 49,3 s (167,133–216,4) | a mesma |
+| Respiro candidato | 73,2 s = 11,0% | **81,9 s = 12,3%** (o plano 2 de s43, 8,7 s de satélite) |
+| Sem plano de registro | 33: isto não foi filmado 16, satélite 7, falta declarada 10 | 33: 16, **8** e **9** (o verificador conta s13 como satélite pelo plano 2; o motivo dela continua a declarar a foto da corte que falta) |
+| Texto na voz | 30 travas, 112 frases, 15 atravessam, 15 conflitos | os mesmos |
+
+**Duas medidas do §0h.3 mudaram antes desta revisão**, com a fusão do diretor-de-arte, e não por ela:
+- o `qc-piso-real` foi de 36,2% para 35,1%. Os 240,9 s de MUNDO são os mesmos, mas o denominador foi de 666,1 s para 686,5 s,
+  porque o portão soma a `dur` do arquivo fundido de s08 e também as de s09 e s10;
+- o `alinhar-timestamps` foi de 17 para 18 sugestões, pelo s08.
+
+O `qc-piso-real` conta por `modo`, e o `modo` de s13 (documento) e o de s43 (footage) não mudaram: por isso os dois mapas novos
+não aparecem na parcela dele.
+
+### 0i.4 · O que fica para quem
+
+**Para o diretor-de-arte** (o `conceito-visual.json` é dele, e o montador não o edita):
+- **atualizar o conceito com as respostas.** O que ainda fala de antes:
+  - s13 e s43 (plano 2) passam de ESCALAR a mapa, e s44 passa a `mapa3d`;
+  - s63 deixa de ser "fundo provisório" e "conteúdo definitivo pendente do Lucas";
+  - s54 deixa de ser "DADO dos dois pontos" e de ter FALTA: a série chegou, e a tela mostra a linha diária entre os extremos;
+  - em s05, s24 e s57, a técnica deixa de dizer "pendente do Lucas" (o inset de mapa e o texto sobre registro);
+- **a fusão s12+s13**, que ele deixou condicional a este aceite: o plano a sustenta.
+  - As duas cenas são contíguas: 110,633 → 136,833 s, quadros 3.319 → 4.105, 26,2 s.
+  - O plano 2 de s13 usa as camadas de s12 (`alasca-e-vizinhos`, `cidades-ne` e os dois raios).
+  - O plano 1 de s13 (a folha de Boucher v. Engstrom, 3,4 s) fica entre os dois mapas. Num arquivo só, o palco segue por baixo
+    das duas folhas, e o plano 1 continua documento na régua.
+  - A fusão se grava como a de s08: `_mergedInto: "s12"` em s13, e a `dur` e o `_quadros.out` de s12. É um render MapTiler a
+    menos;
+- **s43+s44**: mapa seguido de mapa em 463,133 s, no mesmo enquadramento.
+  - A identidade §4.4 pede UMA viagem de câmera (`fundir: true`), e ele deixou s44 em arquivo próprio ("54 s juntos seria um ato
+    inteiro"). A janela fundida iria de 445,167 a 499,2 s (quadros 13.355 → 14.976; 54,033 s).
+  - Com dois arquivos, a viagem só se garante por construção: o último quadro do plano 2 de s43 igual ao primeiro de s44, que
+    tem relevo, e o plano 2 não tem. Casar os dois nesse quadro é do mapista (§5c e §6);
+- **s62+s63**: o quadro parado de s62 só se garante por construção, ou num run fundido (641,867 → 666,067 s; quadros 19.256 →
+  19.982; 24,2 s);
+- s40 plano 2 (a folha do HB 3 sobre Anchorage escurecida) tem a forma que s43 tinha. A resposta nomeou só s13 e s43, e ele
+  fica como está.
+
+**Para o redator-de-tela:** o `out/juneau/_dados/s54.json` que a pesquisa-dados gravou traz um `texto_para_tela` com os
+extremos ("MORE THAN $116 (FEBRUARY 2013) → JUST OVER $26 (JANUARY 2016) · DOWN MORE THAN THREE QUARTERS") e uma alternativa com
+as datas exatas. O pedido desta revisão diz que o número que vai à tela é o que a voz diz, e a voz não diz os dólares. O espelho
+segue o pedido. Pôr os extremos na tela seria número que a voz não diz, e a escolha é do redator-de-tela, com o Claude central.
+
+**Para o mapista e o editor-de-arte:**
+- o relevo de s44 é a primeira prova de `terrain-rgb-v2` e da câmera 3D nesta máquina;
+- antes do primeiro render de mapa, o Claude central anota o contador da MapTiler, e de novo depois dele. Com o relevo, vale
+  anotar também em volta do render de s44, que pede mais;
+- as folhas recriadas de s13 e s43 ficam sobre o satélite com o crédito `© MapTiler © OpenStreetMap contributors` o tempo todo
+  do mapa, e s43 ainda leva o do OSM pela estrada e por Cascade Point.
+
+**Para o Lucas** (`_decisoes_pendentes`, 10 itens): música e transições; a PRANCHA fora do enum; o catálogo de modelos; se
+respiro é tela sem texto; se o documento original fotografado conta na régua; os pisos da taxa de pedido e da maior janela; o
+57% em s11; e a autorização do DOT&PF. Os dois últimos itens não são dele: um é dele e do Mateus (a divergência do §8, item 1),
+e o outro é do regente-de-imagem. Nenhuma pergunta nova.
+
+**Para o Claude central:**
+- a roupa do montador (`marca/agentes/montador.md`) ainda diz DECISÃO DO LUCAS PENDENTE em três pontos que o Lucas decidiu no
+  Juneau:
+  - o que fica sob a tela final (§4, com o motivo "conteúdo pendente de decisão do Lucas");
+  - o gasto de render na MapTiler (§5);
+  - o protagonista da paleta (§6).
+
+  O espelho segue as respostas. A roupa é do canal, e o montador não a mudou nesta revisão;
+- o `regie advance` do `art_direction` é dele, e esta revisão não o roda.
+
+**Para o regente-de-imagem** (passo `conducting`): os mesmos 15 conflitos de texto no ar, e o beat único da cauda que o motivo
+de s63 descreve.
+
 ## 1 · Entradas lidas
 
 | Arquivo | Para quê | sha256 (início) |
@@ -757,6 +1014,10 @@ de Anchorage e Fairbanks do mapa novo de s09, que ficariam 1,83 s e 1,25 s no ar
 | a lista de `out/juneau/_media/` (`foto/`, `pessoa/`, `documento/`, `geo/`, `_caca/_retirado/`) (décima primeira revisão) | os arquivos entregues, só pelos nomes (o montador não abre mídia), e as 40 camadas de geometria | — |
 | `marca/identidade.md` §5 e §6, `marca/midia.md` §7 (décima primeira revisão) | as decisões do Lucas de 27 e 28/09: a ordem da foto do ano e o aviso, a peça de acervo, o país no mapa, a rota nunca construída, o documento antigo e o de outra data | — |
 | `midia/juneau/fontes/triagem/fseis.txt` (538-544, 3665-3668 e 233-238), `midia/juneau/fontes/mecanismo/ca9_2011.pdf.txt` (87-88 e 120-124) e `midia/juneau/fontes/documento/pesquisa-documentos/cap-boucher.json` (décima primeira revisão) | a fonte de cada esquema, o grifo de s52, a controvérsia do ROD e a nota da ordem de 27/06/1974 | — |
+| `out/juneau/conceito-visual.json` (décima segunda revisão), só lido | os ESCALAR de s13, s43 e s44, a técnica de cada cena, os cinco `showpiece` e os runs de `fluxo` (as fusões) | `278a26f9…` |
+| as quatro respostas do Lucas de 28/09, pelo despacho do Claude central; `marca/identidade.md` §6 ("O gasto do Juneau, liberado") e as roupas do diretor-de-arte, do editor-de-arte, do regente-de-imagem, do qc-visual e do redator-de-tela (décima segunda revisão) | a tela final, a régua com dois mapas a mais, o gasto liberado com o relevo só em s44, e a proposta do diretor aprovada | — |
+| `out/juneau/_media/geo/thane-road-fim.json` (décima segunda revisão) | o ponto de partida do esquema do Taku, que chegou | `678f29bd…` |
+| `out/juneau/_pesquisa/s54-serie-ans-west-coast-dor.json` e, só lido no fim, `out/juneau/_dados/s54.json` › `serie` (décima segunda revisão) | a série diária ANS West Coast do Department of Revenue: a procedência, a autorização do Lucas, a prova da cópia (refeita) e os extremos | `d8d50982…` |
 
 O `roteiro-editor.md` não tem marcações `[IMAGEM SUGERIDA]`. A intenção do autor foi lida no "Livro-razão da promessa", na
 tabela das partes e nas decisões (roupa §1). As indicações "para a tela" que ele traz estão no espelho: os 57%, 1880, 1914,
@@ -782,14 +1043,14 @@ nota de que a decisão de pôr ou não é do redator-de-tela.
 | Planos | 141 planos (décima primeira revisão: o plano 2 de s09 se partiu em 82,9 s), sem vão. O `convocado_por` de cada um são as primeiras palavras do próprio plano, conferidas palavra a palavra no `words.json` (nenhuma do plano seguinte). Bordas de plano na grade; nenhuma corta palavra (onde duas palavras se tocam, a borda é o quadro antes da seguinte). Nenhum plano abaixo do piso de beat de 1,5 s. O `modo` é o regime do primeiro plano em todas as cenas |
 | Texto no ar | Nenhum plano de não-registro abaixo de 2,0 s sem `_texto_no_ar` (só s12 plano 3, que declara). Desde a sexta revisão, `_texto_no_ar` é uma lista de {texto, palavra, de, ate, sobre}: a palavra é dita no plano em `de`; sem conflito, o texto fica ≥ 2,0 s, dentro da cena, e `sobre` lista os planos que ele atravessa; com conflito, a cena corta antes de 2,0 s, e o plano está na pendência do regente-de-imagem |
 | Texto na voz (sexta a oitava revisões; na quinta, "Texto travado numa palavra") | O que se mede (décima primeira revisão: 30 travas e 112 frases; os mesmos 30 planos com `_texto_no_ar`): (1) as **29 travas explícitas** (verbo de entrada e palavra entre aspas) nomeiam a palavra, dita dentro do plano, e nenhuma leva na mesma cláusula uma frase citada que a voz diz depois; (2) **desde a sétima**, em cada trava, o que ela põe na tela (números, que a voz diz por extenso, "a million" incluído; datas, pelo mês; frases entre aspas; "a data" = as datas do objeto) contra o momento em que a voz o diz: reprova se a voz o diz depois do fim da palavra de entrada, ou se a entrada vem mais de 1,0 s depois da voz no mesmo plano (9 comparações em 7 planos: s01, s05, s25, s28, s29, s31 e s56); (3) nenhum texto fala em "ênfase" de um bloco que entra antes; (4) a varredura acha **104** números ditos por extenso e frases citadas que o objeto põe na tela e mede da fala ao fim do plano (desde a oitava, também a fala do modo citação, parte por parte: cada frase e cada trecho entre as interrupções do narrador): abaixo de 2,0 s, o plano declara `_texto_no_ar` para aquela palavra (30 planos: 15 atravessam o plano seguinte da cena, e 15 são conflito para o regente-de-imagem; §0f); (5) **desde a oitava**, texto que se soma a um bloco nomeia a palavra de entrada, o ano posto "na tela" que a voz da cena não diz nomeia a palavra que o convoca, e nenhum objeto põe na tela um número que a voz só diz num plano seguinte da cena. **Não se mede:** texto descrito sem verbo de entrada ("acende", "aparece com"), sem número e sem aspas, ou em português (a parte de um bloco que a voz diz noutra frase só a leitura acha); o que entra e a voz não diz na cena, fora o ano posto "na tela" (o 57% de s01, o placar de s29), que entra na palavra que o convoca só pela leitura do objeto; rótulo de lugar no mapa e no registro (word-lock do mapista; `_nota_texto_no_ar`). Na quinta revisão, s28, s29, s31 e s56 cumpriam o piso pondo o número na tela antes da voz |
-| Viradas | 22 viradas em 17 cenas (décima primeira revisão: saíram as de s13, s20, s29 e s58, que ficaram num regime só, e entraram as de s09 e s56; até a décima, 24 em 19; 25 até a segunda revisão), todas declaradas em `_virada` (lista), com a palavra e o índice dela no `words.json` |
+| Viradas | 23 viradas em 18 cenas (décima segunda revisão: entrou a de s13, documento → mapa em "As", e as de s43 e s44 trocaram documento e mapa por mapa e mapa3d; na décima primeira, 22 em 17: saíram as de s13, s20, s29 e s58, que ficaram num regime só, e entraram as de s09 e s56; até a décima, 24 em 19; 25 até a segunda revisão), todas declaradas em `_virada` (lista), com a palavra e o índice dela no `words.json` |
 | Sementes | Todas com até 6 palavras (a cauda não tem) |
 | Pedido | 0 pedido mudo; todo plano de registro tem termo; os termos da cena são a união dos termos dos planos; nenhum termo se repete entre cenas sem repetição declarada |
 | `needs.dados` | Só pedido de dado: nenhum aviso, figura semântica ou instrução. O aviso da cópia arquivada está em `_fonte_arquivada` nas 22 cenas que usam a Divisão de Eleições |
 | Decisões de 27/09 (nona revisão) | O aviso de `_fonte_arquivada` diz que a cópia vale como fonte e traz a data da captura de cada doc-NN e mec-NN citado, conferida contra o `url_acessada` do `fundamento.json`. Nenhum texto vivo trata como pendente a cópia arquivada, o vídeo do Estado ou a logo de instituição; `needs.logos` só pede bandeira; a pergunta do ano da foto não volta, e `_decisoes_do_lucas` tem a decisão (§0g). **Décima primeira revisão:** `needs.logos` não pede nada, nem bandeira; a bandeira e o esquema das rotas, dados como pendentes, reprovam; a decisão vigente da foto de outro ano é a do aviso (§0h.2) |
 | Despacho | Nenhum plano de retrato na lista do pesquisa-imagens; todos na lista `retratos`, com `_pessoas` na cena. Nenhum plano do pesquisa-documentos (`_pedido_a: "pesquisa-documentos"`, as mascotes de s26) na lista do pesquisa-imagens; todos em `documentos` (quarta revisão). Desde a quinta, isso vale também sem o `_pedido_a`: nenhum plano de peça com `caca` (os da peça e os que o texto de `caca` nomeia) está na lista `cenas`. Todo outro plano com termo está na lista do pesquisa-imagens. A lista `cenas` (décima primeira revisão: 27 cenas, 40 planos; até a décima, 33 e 47; e nenhum plano leva mais `_pedido_a: "pesquisa-documentos"`, porque s26 virou desenho) bate com o espelho no `modo`, na `midia` e, plano a plano, no `de`, no `ate`, no `regime` e nos `midia_termos` (quinta revisão) |
 | Capítulos (quinta revisão) | Os 7 `_capitulos` batem com as marcas `<!-- pN · título -->` do texto aprovado (parte, título e ordem); cada `em_s` cai dentro da cena citada e é a borda da cena que abre na primeira palavra da parte (p1 a p6) ou o início dessa palavra ("In", 598,85 s, dentro de s58, na p7). O texto aprovado trocado para a voz tem as 1.836 palavras do `words.json`, e é por essa conta que a primeira palavra de cada parte se acha |
-| Cauda | s63 é fundo provisório renderizado (nenhuma instrução de não renderizar) |
+| Cauda | Décima segunda revisão: s63 é o fundo que o Lucas decidiu em 28/09. O motivo cita a resposta ("A última cena, parada e escurecendo (Recomendado)") e diz o quadro final de s62, parado, escurecendo sem chegar ao preto, sem texto novo e RENDERIZADO; nenhum texto da cauda diz "provisório", DECISÃO DO LUCAS PENDENTE, "não se renderiza" ou "não desenhar". Até a décima primeira, a prova era a do fundo provisório renderizado |
 | País no mapa (décima primeira revisão) | As três cenas com país no mapa (s03, s10 e s44) dizem na `_nota_logos` a regra: o nome escrito, sem bandeira (identidade §6). Nenhum `needs.logos` no vídeo. Até a décima, as três pediam a bandeira |
 | Cadeia nos dois sentidos (terceira revisão) | Todo "ABRE/PAGA/FECHA X" da `_cadeia` de uma cena está em `_cadeia_referencial`, e vice-versa. O `motivo` de s01 e o de s02, que dizem onde A e B são pagas e fechadas, citam exatamente as cenas de `_cadeia_referencial` |
 | Candidatas a showpiece (terceira e quarta revisões) | Pela roupa do diretor-de-arte §2 inteira: a abertura (s01), as 20 cenas que pagam uma promessa e o fecho (toda cena que fecha uma: s59 a s62) têm a marca na `_cadeia`; a cauda não; a marca e a indicação do montador batem com `_candidatas_a_showpiece` (25); `_nota_showpiece` cita os três critérios |
@@ -799,9 +1060,10 @@ nota de que a decisão de pôr ou não é do redator-de-tela.
 | Fatos da quinta revisão | Nenhum texto, fora de aspas, diz "South Klondike" nem prende a 2006 o orçamento de US$ 680 milhões ("estrada/rota/versão de 2006 orçada"); o `motivo` de s55 dá o comunicado à imprensa (evt-23.9) e não cogita entrevista coletiva; s28 e a peça de campanha dão o primeiro anúncio no Juneau Empire de 8/10/1982, p. 7, e a peça separa as imagens da coluna em `pistas`; nenhum verbatim termina em vírgula, ponto e vírgula ou dois-pontos |
 | Figura semântica (terceira revisão) | Toda cena com número na fala (fora data e ano) e plano de registro ou de mapa tem `_figura`: 18 cenas |
 | Citações (quarta revisão) | `_citacao.palavras` é a contagem do verbatim em todas as cenas com `_citacao`, e todo "N palavras" do `motivo` (fora "teto de 12") bate com ela. s18 tem `_citacao.assinatura`, e nenhum texto dela diz "sem autor" |
-| Documentos (terceira e quarta revisões) | As 17 cenas `documento` ou `citacao` têm `_documentos`; as 29 cenas com `_documentos` estão em `_despacho_research` › `documentos`, e os planos de lá batem com o espelho no tempo e, desde a quarta, no `regime` e na palavra que convoca o plano (`voz` = `convocado_por`). Entrada com trecho a grifar não lista plano de registro (o que só se confere vai em `conferir`). **Quinta revisão:** entrada com grifo lista só planos de documento, citação ou dado, e não mais só "sem registro": o mapa também fica fora (desde a sexta, sem exceção para a PRANCHA). Cada um dos **29 trechos** a grifar (décima primeira revisão: entraram o de s52, na página de 2011, e o da controvérsia de s58, no plano 4; até a décima, 27; 29 até a quinta; o de s16 e o primeiro de s61 foram para `conferir` na sexta) tem em `voz_do_grifo` as palavras da voz, e toda palavra dessa frase cai dentro dos planos listados; desde a sexta, na ordem de `grifar` |
+| Documentos (terceira e quarta revisões) | As 17 cenas `documento` ou `citacao` têm `_documentos`; as 29 cenas com `_documentos` estão em `_despacho_research` › `documentos`, e os planos de lá batem com o espelho no tempo e, desde a quarta, no `regime` e na palavra que convoca o plano (`voz` = `convocado_por`). Entrada com trecho a grifar não lista plano de registro (o que só se confere vai em `conferir`). **Quinta revisão:** entrada com grifo lista só planos de documento, citação ou dado, e não mais só "sem registro": o mapa também fica fora (desde a sexta, sem exceção para a PRANCHA). Cada um dos **29 trechos** a grifar (décima primeira revisão: entraram o de s52, na página de 2011, e o da controvérsia de s58, no plano 4; até a décima, 27; 29 até a quinta; o de s16 e o primeiro de s61 foram para `conferir` na sexta) tem em `voz_do_grifo` as palavras da voz, e toda palavra dessa frase cai dentro dos planos listados; desde a sexta, na ordem de `grifar`. **Décima segunda revisão:** s13 p2 e s43 p2 são mapa com o documento na tela, como a folha recriada sobre o satélite (Lucas, 28/09/2026), e o grifo vale neles, e só neles: o plano tem de ser mapa, `_documento_na_tela` tem de ser um `o_que` de `_documentos` e o objeto tem de dizer a folha sobre o satélite, a resposta do Lucas e o mesmo id; nenhum outro plano declara `_documento_na_tela` |
 | Mesmo lugar e rótulos (sexta revisão) | O mesmo par de nomes próprios nos termos de planos de registro de cenas diferentes (fora "Alaska") está numa só entrada de `mesmo_lugar_clipes_diferentes` ou de `mesmo_arquivo`, com todas essas cenas (o Capitólio, a balsa, o legislativo, a estrada de Juneau e o Lynn Canal; desde a décima primeira revisão, também Juneau, com as fotos entregues). O `rotulo` de `needs.geo` não tem português, parênteses, dois-pontos, ponto e vírgula nem referência de dossiê, e, desde a oitava, nem vírgula (dois nomes, duas entradas) |
-| Geometria em disco (décima primeira revisão) | Os 97 pedidos de `needs.geo` com `_existe: true` têm o arquivo em `out/juneau/_media/geo/`, e o único `_existe: false` (`thane-road-fim`) não tem |
+| Geometria em disco (décima primeira revisão) | Os 107 pedidos de `needs.geo` com `_existe: true` têm o arquivo em `out/juneau/_media/geo/`, e não há `_existe: false` (décima segunda revisão: o `thane-road-fim` chegou, e s13 e s43 ganharam 9 pedidos, todos em disco; na décima primeira, 97, e o `thane-road-fim` era o único `false`) |
+| Decisões de 28/09 (décima segunda revisão) | As quatro respostas do Lucas estão em `_decisoes_do_lucas`, com "28/09/2026, 11:2x de Brasília", a pergunta, a resposta e a opção literais. O relevo (`mapa3d`) só em s44, com o modo mapa3d e, em `_base_mapa`, o terreno (terrain-rgb-v2) e a resposta. As DECIDIDAS têm 12 guardas: às cinco de antes somam-se a tela final, a paleta, o relevo, o gasto na MapTiler, o número sobre a foto, os picos e a régua abaixo de 60% (§0i.2) |
 | `_borda` (quarta revisão) | O `_borda` das 60 cenas com fala confere com o `words.json` (índices da primeira e da última palavra, a primeira palavra, o início dela e o fim da anterior); o da cauda, com o fim da última palavra (645,81) |
 
 ## 3 · Os portões do §3 do contrato e da roupa (todos com o alvo certo; `REGIE_MOTOR=C:/projetos/regie-v1` onde importa do motor)
@@ -810,7 +1072,8 @@ Todos rodaram de novo depois da terceira revisão, de novo depois da quarta, da 
 abaixo, salvo onde a linha diz outra coisa. Na quarta e na quinta, o `alinhar-timestamps --dry` rodou numa cópia do espelho no
 scratchpad, e o sha256 da cópia ficou igual antes e depois (na quinta, `42f9c87a…`; na sexta, `f510a5a9…`, com as mesmas 17 sugestões); o `qc-piso-real` rodou sem `--laudo`, e o
 laudo em disco seguiu intacto (`0148a36f…`, conferido antes e depois). **Na décima primeira revisão (28/09)**, todos rodaram de
-novo sobre o espelho final (`8099cbc6…`); o que mudou está nas linhas, e o resumo, no §0h.3.
+novo sobre o espelho final (`8099cbc6…`); o que mudou está nas linhas, e o resumo, no §0h.3. **Na décima segunda (28/09)**,
+de novo, sobre o espelho final (`a0ec7f4b…`), e também antes dela, sobre o espelho do commit `df89f59`; o resumo está no §0i.3.
 
 | # | Portão | Resultado |
 |---|---|---|
@@ -819,15 +1082,16 @@ novo sobre o espelho final (`8099cbc6…`); o que mudou está nas linhas, e o re
 | 2–4 | `validar-contrato decupagem …` e os campos da decupagem | **não se aplica** (sem `_analise/segmentos.json`; ver o topo) |
 | 5, 6 | Primeira em 0; zero vão e zero sobreposição | ✓ (seção 2) |
 | 7 | Janela de material de origem com 0 < dur < 2 s | ✓ nenhuma: não há `anima:false`, e o `checar-plano` diz "sem tela preta" |
-| 8 | `alinhar-timestamps.mjs … --dry` | Rodou só em `--dry`, e o sha256 do espelho é o mesmo antes e depois (também na segunda e na terceira revisão). Sugeriu 17 ajustes do tipo que o CLAUDE.md já prevê no faceless: mover o início ≤ 0,03 s para cima da palavra (tirando a borda da grade) e puxar o fim para o fim da última palavra, o que abriria vãos de 0,09 a 0,35 s. O ofício §7 proíbe esses vãos. **Não aplicados** |
+| 8 | `alinhar-timestamps.mjs … --dry` | Rodou só em `--dry`, e o sha256 do espelho é o mesmo antes e depois (também na segunda e na terceira revisão). Sugeriu 17 ajustes do tipo que o CLAUDE.md já prevê no faceless: mover o início ≤ 0,03 s para cima da palavra (tirando a borda da grade) e puxar o fim para o fim da última palavra, o que abriria vãos de 0,09 a 0,35 s. O ofício §7 proíbe esses vãos. **Não aplicados**. Desde a fusão do diretor-de-arte, são 18: o script lê s08 pela `dur` do arquivo fundido (23,033 s) e quer levá-la a 2,58 s, o que desfaria a fusão (décima segunda revisão: as mesmas 18, e o sha256 da cópia igual antes e depois) |
 | 9 | `checar-plano.mjs out/juneau/espelho.json` (advisory) | ✓ "ESPELHO REDONDO": sem tela preta, sem 3 modos iguais seguidos, sem buraco > 25 s, sem sobreposição |
 | 10 | Interseção de ids num re-espelho | Ver §4.8: correção do primeiro espelho, sem artefato em disco |
-| 11 | `qc-espelho-midia.mjs juneau` | ✓ PASS: 30 de 61 cenas pedem registro real (49,2%; até a décima, 41, 67,2%), 0 pedido mudo, 13 cenas com `needs.geo` (s09 entrou) |
+| 11 | `qc-espelho-midia.mjs juneau` | ✓ PASS: 30 de 61 cenas pedem registro real (49,2%; até a décima, 41, 67,2%), 0 pedido mudo, 15 cenas com `needs.geo` (na décima primeira, 13, com s09; na décima segunda, entraram s13 e s43) |
 | 12 | `qc-deserto-real.mjs juneau` | ✓ PASS: maior janela sem footage/foto/drone de **50 s** (até a décima, 35 s), contada por cena. Os 180 s de padrão são do Top10, e o canal não tem número |
 | 14 | Cenas ≥ 10 s × planos | Todas as cenas longas têm um plano por objeto que a fala atravessa. s44 (36,1 s) tem 7; s40 e s55 foram partidas na primeira revisão; na segunda, s26 ganhou o terceiro plano, e s30, s55 e s60 juntaram planos que só separavam uma frase do mesmo objeto (§0b B5) |
-| — | `qc-piso-real.mjs juneau --laudo` (roupa §8) | MUNDO 329,4 s = **49,5%**. **NÃO SE APLICA**: `piso: null` em `infra/piso-registro-real.json`. O portão regravou `out/juneau/_laudo-piso-real.json` (candidatas no §5.1). **Terceira revisão:** rodado **sem** `--laudo`, porque esta rodada só pode escrever o espelho, o report e o conferente; deu o mesmo 329,4 s = 49,5% (ele conta por cena, e s28 já contava pelo estádio) e NÃO SE APLICA. O laudo em disco é o da segunda revisão (sha256 `0148a36f…`, intacto). **Quarta revisão:** de novo sem `--laudo`, o mesmo 329,4 s = 49,5% e NÃO SE APLICA; o laudo segue intacto (`0148a36f…`, conferido antes e depois). **Décima primeira revisão:** sem `--laudo`, MUNDO **240,9 s = 36,2%** (os planos de registro que a pesquisa não achou saíram da conta), NÃO SE APLICA; o laudo segue intacto (`0148a36f…`) |
+| — | `qc-piso-real.mjs juneau --laudo` (roupa §8) | MUNDO 329,4 s = **49,5%**. **NÃO SE APLICA**: `piso: null` em `infra/piso-registro-real.json`. O portão regravou `out/juneau/_laudo-piso-real.json` (candidatas no §5.1). **Terceira revisão:** rodado **sem** `--laudo`, porque esta rodada só pode escrever o espelho, o report e o conferente; deu o mesmo 329,4 s = 49,5% (ele conta por cena, e s28 já contava pelo estádio) e NÃO SE APLICA. O laudo em disco é o da segunda revisão (sha256 `0148a36f…`, intacto). **Quarta revisão:** de novo sem `--laudo`, o mesmo 329,4 s = 49,5% e NÃO SE APLICA; o laudo segue intacto (`0148a36f…`, conferido antes e depois). **Décima primeira revisão:** sem `--laudo`, MUNDO **240,9 s = 36,2%** (os planos de registro que a pesquisa não achou saíram da conta), NÃO SE APLICA; o laudo segue intacto (`0148a36f…`). **Décima segunda revisão:** sem `--laudo`, os mesmos 240,9 s, agora **35,1%**: o denominador foi a 686,5 s com a fusão do diretor-de-arte, porque o portão soma a `dur` do arquivo fundido de s08 e também as de s09 e s10; NÃO SE APLICA; o laudo segue intacto (`0148a36f…`) |
 | — | `qc-respiro.mjs juneau` | **Não mediu nesta estação**: "(sem HTML ainda — rode depois da estação ARTE)", com exit 0 |
-| — | `qc-fusao-espelho.mjs juneau` | "nenhum run fundido no conceito-visual (nada a cobrar)": o `conceito-visual.json` ainda não existe |
+| — | `qc-fusao-espelho.mjs juneau` | Até a décima primeira revisão: "nenhum run fundido no conceito-visual (nada a cobrar)". **Décima segunda:** ✓ PASS, 1 run, 2/2 filhos gravados (a fusão do diretor-de-arte, s08 ← s09, s10) |
+| — | `qc-direcao-real.mjs juneau` (décima segunda revisão) | ✓ PASS: 41 de 61 cenas com registro real por modo (67,2%); 15 cenas com `needs.geo`; mapas no plano: 8, dos quais 3D: 1 (s44). O portão conta por `modo` |
 | — | `qc-espelho-modelo.mjs juneau` | ✓ PASS: 0 cenas declaram `modelo` (campo ausente de propósito, roupa §3) |
 | — | `qc-midia-real.mjs juneau` (décima primeira revisão) | **NÃO MEDIDO**, exit 2: "sem out\juneau\graphics/ — projeto sem arte local". É portão da arte, e o alvo é o certo (o `<proj>`) |
 | — | `qc-espelho-cortes.mjs juneau` | Relógio ÚNICO, 0 cortes. **1 alerta:** "s63 começa a 0,77 s da fronteira de palavra mais próxima". É a cauda: ela abre em 646,067, no silêncio depois da última palavra ("approve.", de 645,30 a 645,81), e o portão mede a distância até o **início** da palavra. A borda é de propósito, e não há tempo copiado de outro relógio |
@@ -841,20 +1105,24 @@ novo sobre o espelho final (`8099cbc6…`); o que mudou está nas linhas, e o re
 | `footage` | 12 | 105,3 s | s04, s14, s21, s24, s33, s40, s42, s43, s47, s51, s53, s59 |
 | `documento` | 11 | 127,9 s | s02, s07, s13, s19, s23, s30, s32, s36, s52, s58, s61 |
 | `foto` | 10 | 95,4 s | s01, s06, s09, s10, s16, s22, s35, s37, s49, s56 |
-| `mapa` | 8 | 112,6 s | s03, s08, s12, s15, s39, s44, s48, s50 |
+| `mapa` | 7 | 76,5 s | s03, s08, s12, s15, s39, s48, s50 |
+| `mapa3d` | 1 | 36,1 s | s44 |
 | `desenho` (PRANCHA, o fecho e a cauda) | 8 | 98,1 s | s17, s25, s26, s31, s38, s55, s62 e s63 |
 | `citacao` | 6 | 60,7 s | s05, s18, s27, s34, s41, s57 |
 | `dados` | 6 | 66,0 s | s11, s20, s28, s29, s54, s60 |
 
 Décima primeira revisão: s13 passou de `foto` a `documento`, s20 de `foto` a `dados`, s26 de `documento` a `desenho` e s62 de
-`foto` a `desenho` (§0h). Até a décima, eram foto 13, documento 11, desenho 6 e dados 5.
+`foto` a `desenho` (§0h). Até a décima, eram foto 13, documento 11, desenho 6 e dados 5. Décima segunda: s44 passou de `mapa` a
+`mapa3d` (o relevo, Lucas, 28/09/2026). s13 e s43 continuam `documento` e `footage`, que são os regimes de abertura delas: o
+mapa novo está no plano 2 de cada uma (§0i). O tempo de s08 é o da janela própria (2,6 s), fora o arquivo fundido.
 
 - **Cobertura:** 666,067 de 666,067 s (100%), sem vão.
-- **Modo e regime:** o `modo` é o regime de ABERTURA (ofício §11b). **17 cenas viram por dentro, com 22 viradas**, todas em
-  `_virada`: s01, s07 (3), s09, s10, s16, s23 (2), s28, s31 (2), s33, s35, s40, s43, s44 (2), s49, s52, s56 e s59. Em s07,
-  s09, s33, s44 e s59 a virada é uma ancoragem de imagem em mapa (ofício §6.7); em s10, desde a décima primeira revisão, é
-  corte seco (nenhum ponto do trecho da foto está em `needs.geo`). s03 também ancora, na entrada, mas sem virada de plano: a
-  imagem de s01 reaparece e encolhe para o ponto (`_ancoragem`).
+- **Modo e regime:** o `modo` é o regime de ABERTURA (ofício §11b). **18 cenas viram por dentro, com 23 viradas**, todas em
+  `_virada`: s01, s07 (3), s09, s10, s13, s16, s23 (2), s28, s31 (2), s33, s35, s40, s43, s44 (2), s49, s52, s56 e s59. Em
+  s07, s09, s33, s44 e s59 a virada é uma ancoragem de imagem em mapa (ofício §6.7); em s10, desde a décima primeira revisão, é
+  corte seco (nenhum ponto do trecho da foto está em `needs.geo`). Em s13 e s43, desde a décima segunda, a folha recriada vai
+  para cima do satélite. s03 também ancora, na entrada, mas sem virada de plano: a imagem de s01 reaparece e encolhe para o
+  ponto (`_ancoragem`).
 - **s09 e s10 abrem em foto e viram mapa**: por isso o `modo` delas é `foto` (o regime de abertura). s10 tem três planos de
   mapa, e s09, desde a décima primeira revisão, um (§5.5).
 
@@ -870,12 +1138,13 @@ A tabela das 61 cenas está no fim deste report.
 revisão, era a fila inteira, antes do `research`. O que cada revisão mudou nos pedidos está no §0 ao §0h e no `_revisao`.
 
 **Geografia (pesquisa-geo).** O research entregou 40 camadas em `_media/geo/`, registradas no `pauta-geo.json`
-(research-geo.md). Os 97 pedidos de `needs.geo` com `_existe: true` têm o arquivo em disco, e o conferente cobra isso. O único
-`_existe: false` é o pedido novo desta revisão, na lista nova do despacho (`_despacho_research` › `geo`):
+(research-geo.md), e em 28/09 o ponto que faltava. Os **107 pedidos** de `needs.geo` têm `_existe: true` e o arquivo em disco,
+e o conferente cobra isso. **Não há mais pedido aberto** (décima segunda revisão): o despacho (`_despacho_research` › `geo`)
+tem `pedidos: []` e a entrega em `entregues`. Os mapas novos de s13 e s43 (plano 2) usam só geometria que já estava em disco.
 
-| Pedido | Cena | Para quê |
+| Pedido da décima primeira | Cena | O que veio (28/09) |
 |---|---|---|
-| `thane-road-fim`, o fim da Thane Road, em Juneau | s44 | o ponto de partida real do esquema do corredor do Taku ("from the end of Thane Road in Juneau, northeast along the Taku Inlet", FSEIS 2018, p. 2-2): a ponta da via no OSM, com o crédito, ou o GNIS. Sem ele, o esquema do Taku não se desenha, e o plano 3 fica com o rio, o rótulo do Taku Inlet e a voz (`_esquema`) |
+| `thane-road-fim`, o fim da Thane Road, em Juneau | s44 | o nó OSM node/5691733230 (58.2454469, -134.2958702), a ponta sudeste da via com name=Thane Road, com o crédito do OSM (pauta-geo.json; research-geo.md §7). É o ponto de partida real do esquema do corredor do Taku ("from the end of Thane Road in Juneau, northeast along the Taku Inlet", FSEIS 2018, p. 2-2), que agora se desenha dele (`_esquema`). O caminho do Gastineau Channel ao Taku Inlet não está na fonte: é da arte, dentro do Approximate route |
 
 O que a fila de até a décima pedia, e o que veio:
 
@@ -918,11 +1187,14 @@ A pesquisa-dados voltou em 27/09 (`research-dados.md`; `out/juneau/_dados/`, 48 
   espelho e no dossiê;
 - **a busca nova**, a série diária do preço do petróleo "West Coast" de fevereiro de 2013 a janeiro de 2016 (s54): **NÃO ACHADA
   por script**. Ela é do Alaska Department of Revenue, cujo site recusa robô, e a cópia arquivada só guardou o formulário; a da
-  EIA é mensal e é outra medida, e não serve. **Décima primeira revisão:** o pedido fica aberto ao Claude central, no navegador
-  do app (o formulário do Department of Revenue; `out/juneau/_dados/s54.json` › `busca_nova`), e sem ela a tela mostra os
-  pontos extremos da fonte, com as datas e sem linha, como a `_figura` de s54 já dizia. O achado da pesquisa, o título do
-  Graph 2-1 ("Daily ANS West Coast Oil Price 2012-2016"), foi para o `needs.dados` de s54: a sigla tem fonte, e usá-la é do
-  redator-de-tela;
+  EIA é mensal e é outra medida, e não serve. Na décima primeira revisão, o pedido ficou aberto ao Claude central, no navegador
+  do app. O achado da pesquisa, o título do Graph 2-1 ("Daily ANS West Coast Oil Price 2012-2016"), foi para o `needs.dados` de
+  s54: a sigla tem fonte, e usá-la é do redator-de-tela. **Décima segunda revisão: ATENDIDA em 28/09.** O Claude central leu a
+  coluna "ANS West Coast" do Department of Revenue no navegador do app, com o sim do Lucas para enviar o formulário de datas
+  (`out/juneau/_pesquisa/s54-serie-ans-west-coast-dor.json`: 748 dias com preço; o pico de $116.26 em 12/02/2013 e o fundo de
+  $26.23 em 20/01/2016). A pesquisa-dados a gravou em `out/juneau/_dados/s54.json` › `serie`. A tela mostra a linha diária entre
+  os dois extremos, não só os dois pontos, e o número que vai à tela continua sendo o que a voz diz (§0i). `busca_nova` ficou
+  vazia no despacho, e o item está em `busca_nova_atendida`;
 - **lidas de cópia arquivada** (`lidas_de_copia_arquivada`): as 22 cenas com `_fonte_arquivada` (o parágrafo seguinte). As 16
   cópias arquivadas da Divisão de Eleições abriram, e os números se leram na imagem das páginas.
 
@@ -1017,15 +1289,18 @@ listados. São **29 trechos** (eram 27). As **29 cenas com `_documentos`** estã
   - o folheto de 1978, em s16 (a sigla, como texto de tela), s18 (a declaração contra a Frank, p. 49, assinada por Frank
     Harris, que a tela não nomeia) e s19;
   - o folheto de 1994, em s33 (só conferência) e s34 (a declaração contrária, p. B-24);
-  - o parecer do AG de 1993 (s13, plano 2) e, **desde esta revisão, Boucher v. Engstrom (1974) na folha recriada do plano 1
-    de s13**, pelo texto do Caselaw Access Project, sem a página do Pacific Reporter, que é da West. A nota da ordem de
-    27/06/1974, que confere o "that same year", está em `conferir`;
+  - o parecer do AG de 1993 (s13, plano 2) e, **desde a décima primeira revisão, Boucher v. Engstrom (1974) na folha recriada
+    do plano 1 de s13**, pelo texto do Caselaw Access Project, sem a página do Pacific Reporter, que é da West. A nota da ordem
+    de 27/06/1974, que confere o "that same year", está em `conferir`. **Desde a décima segunda**, a folha do parecer fica
+    sobre o satélite de s12, com os dois raios (o plano 2 é mapa, e a peça está em `_documento_na_tela`);
   - o Alaska Economic Trends de 1990 (s31, plano 4): **sem permissão provada**, recriado com a fonte, e a página fica como prova
     (Lucas, 27/09/2026: "Recriar com a fonte (Recomendado)");
   - AS 44.06 (s36, s61), com o grifo no texto literal da AS 44.06.055, e o HB 3 (s40);
   - o FSEIS e o ROD de 2018, só o texto recriado: s03 (em `conferir`), s43, s51, s53, s55 e s58. Em s58, o ROD entra nos
-    planos 2, 3 e, desde esta revisão, 4, que era a foto da briga pública (não achada): o grifo "Controversy on the JAI Project
-    is high among the public" varre em "a public fight over the road".
+    planos 2, 3 e, desde a décima primeira revisão, 4, que era a foto da briga pública (não achada): o grifo "Controversy on
+    the JAI Project is high among the public" varre em "a public fight over the road". Em s43, desde a décima segunda, a folha
+    do estudo fica sobre o satélite do panhandle, no enquadramento em que s44 abre (o plano 2 é mapa, e a peça está em
+    `_documento_na_tela`).
 - **Imprensa, com a fala citada** (a página só com permissão; sem ela, a fala recriada com a fonte escrita, sem logo): a coluna
   de Reamer no ADN (s27, e s31 como conferência), a matéria da KTOO de 13/06/2025 (s41) e a da CoastAlaska publicada pela KTOO
   em 24/01/2017 (s57).
@@ -1072,7 +1347,7 @@ mediana do acervo do Top10 é 44,6%, e o canal não tem piso para essa taxa (DEC
 | Medida | Resultado |
 |---|---|
 | Por cena, `qc-deserto-real` | **50 s** (até a décima, 35 s) |
-| Por plano, só footage e foto (o conferente) | **49,9 s**, de 86,933 a 136,833: os planos de mapa de s10, s11 (dados), s12 (mapa) e s13, que desde a décima primeira revisão é documento do começo ao fim (a corte de 1974 não se achou) |
+| Por plano, só footage e foto (o conferente) | **49,9 s**, de 86,933 a 136,833: os planos de mapa de s10, s11 (dados), s12 (mapa) e s13, que desde a décima primeira revisão não tem foto (a corte de 1974 não se achou). Na décima segunda, o plano 2 de s13 virou mapa: a janela é a mesma, porque satélite não é footage nem foto, mas deixou de ser janela sem satélite |
 | Por plano, sem registro **nem satélite** (a régua do canal) | **49,3 s**, de 167,133 a 216,4: o plano 3 de s16 (a sigla), s17, s18, s19 e s20, que desde a décima primeira revisão é DADO do começo ao fim (a eleição de 1978 não se achou) |
 
 As duas janelas cresceram porque os registros que as quebravam (a corte em s13; a eleição de 1978 em s20) não se acharam, nem
@@ -1084,12 +1359,13 @@ Top10 é 180 s.
 
 **Nenhum.**
 
-A cauda de 20 s sem voz tem segmento próprio (`s63`) e não sai preta. O conteúdo definitivo, a trilha e o CTA são DECISÃO DO
-LUCAS PENDENTE. Até lá, s63 é **executada e renderizada como fundo provisório**, como as roupas dos consumidores definem: sem
-texto novo, sem herói, com movimento lento, `data-qc-sem-heroi` (editor-de-arte §7); um beat único `continua`, `forca: livre`
-(regente-de-imagem §0); julgada como fundo, e buraco preto reprova (qc-visual §6). O `modo` `desenho` e a `midia` `animacao` são
-os valores que o schema exige para um fundo sem registro pedido. A primeira revisão dizia que a cena "não se desenha, não se
-pede e não se renderiza": isso deixaria 20 s pretos no XML e foi corrigido (§0b, M1).
+A cauda de 20 s sem voz tem segmento próprio (`s63`) e não sai preta. **O fundo está decidido** (Lucas, 28/09/2026: "A última
+cena, parada e escurecendo (Recomendado)"; §0i): o quadro final de s62 (o YES e a linha do preço vazia) parado, escurecendo aos
+poucos sem chegar ao preto, sem texto novo, sem herói, `data-qc-sem-heroi` (editor-de-arte §7), e **renderizado**; um beat único
+`continua`, `forca: livre` (regente-de-imagem §0); julgada como fundo, e buraco preto reprova, inclusive o escurecer que chega ao
+preto (qc-visual §6). A trilha continua pendente (música e transições). O `modo` `desenho` e a `midia` `animacao` são os de s62.
+Até a décima primeira revisão, s63 era o fundo provisório. A primeira revisão dizia que a cena "não se desenha, não se pede e não
+se renderiza": isso deixaria 20 s pretos no XML e foi corrigido (§0b, M1).
 
 ### 4.7 · Divergências factuais e de grafia
 
@@ -1250,11 +1526,17 @@ as pastas delas são por cena; os vereditos do conferente citam planos cujo núm
 
 A régua do canal soma footage, foto e satélite de geometria real, sem documento e sem a cauda (identidade §4.3). No Juneau:
 
-- **290,2 s**: 155,6 s de registro e 134,5 s de satélite (décima primeira revisão; até a décima, 316,8 s, com 184,6 s e
-  132,3 s; antes da primeira revisão: 298,7 s; antes da segunda: 311,8 s; antes da terceira: 314,1 s);
-- **= 44,9% dos 646,067 s de fala**, ou **43,6% do vídeo** (até a décima, 49,0% e 47,6%; antes da primeira revisão: 46,2%;
-  antes da segunda: 46,8%; antes da terceira: 48,6% e 47,2%);
-- **o alvo é 60%. Isto é defeito declarado.**
+- **304,8 s**: 155,6 s de registro e 149,1 s de satélite (décima segunda revisão; na décima primeira, 290,2 s, com 155,6 s e
+  134,5 s; até a décima, 316,8 s, com 184,6 s e 132,3 s; antes da primeira revisão: 298,7 s; antes da segunda: 311,8 s; antes
+  da terceira: 314,1 s);
+- **= 47,2% dos 646,067 s de fala**, ou **45,8% do vídeo** (na décima primeira, 44,9% e 43,6%; até a décima, 49,0% e 47,6%;
+  antes da primeira revisão: 46,2%; antes da segunda: 46,8%; antes da terceira: 48,6% e 47,2%);
+- **o alvo é 60%.** O Lucas aceitou em 28/09/2026 que o Juneau fique abaixo dele, com os dois mapas a mais ("Aceitar, com 2
+  mapas a mais (Recomendado)"; §0i). Continua abaixo do alvo, agora com a decisão dele.
+
+Na décima segunda revisão, a régua subiu 2,3 pontos: o plano 2 de s13 (5,866 s) e o de s43 (8,733 s) passaram de documento a
+mapa, a folha recriada sobre o satélite, o ESCALAR do diretor-de-arte que a resposta aceitou. A opção dizia "o vídeo chega a 47
+%", e chegou a 47,2%.
 
 Na décima primeira revisão, a régua caiu 4,1 pontos: sete planos de registro ficaram sem nenhuma foto e mudaram de regime (s13
 p1, s20 p1, s29 p2, s31 p5, s56 p2, s58 p4 e s62 p1: 26,7 s), e a metade de Anchorage de s09 (2,3 s) virou mapa, que continua
@@ -1270,8 +1552,8 @@ por que o registro não entra, numa de quatro formas:
 | Forma | Cenas |
 |---|---|
 | **isto não foi filmado**, e o porquê (papel impresso, texto escrito, lei, mecanismo, número) | s02, s05, s17, s18, s19, s25, s27, s30, s32, s34, s36, s38, s54, s55 (o comunicado à imprensa de 15/12/2016, evt-23.9; quinta revisão), s60, s61 |
-| **satélite** de geometria real (conta na régua) | s03, s08, s12, s15, s39, s48, s50 |
-| **FALTA DECLARADA**: pode haver registro, e o motivo de não pedir, ou de não ter | s11 (as votações de 1960 e 1962), s41 (gravação da KTOO), s57 (gravação da sessão) e, desde a décima primeira revisão, o que a pesquisa não achou: s13 (a corte de 1974), s20 (a eleição de 1978), s26 (as mascotes, sem permissão), s29 (a eleição de 1982), s31 (a campanha de 1982), s58 (a briga pela estrada) e s62 (o voto de 1974). Até a quarta revisão, também s55, que cogitava uma entrevista coletiva que a fonte não dá |
+| **satélite** de geometria real (conta na régua) | s03, s08, s12, s15, s39, s48, s50 e, desde a décima segunda revisão, s13 pelo plano 2 (a linha `REGISTRO` dela continua a declarar a foto da corte de 1974 que falta no plano 1) |
+| **FALTA DECLARADA**: pode haver registro, e o motivo de não pedir, ou de não ter | s11 (as votações de 1960 e 1962), s41 (gravação da KTOO), s57 (gravação da sessão) e, desde a décima primeira revisão, o que a pesquisa não achou: s20 (a eleição de 1978), s26 (as mascotes, sem permissão), s29 (a eleição de 1982), s31 (a campanha de 1982), s58 (a briga pela estrada) e s62 (o voto de 1974). s13 (a corte de 1974) estava aqui na décima primeira. Até a quarta revisão, também s55, que cogitava uma entrevista coletiva que a fonte não dá |
 
 s10 e s23 saíram da tabela na segunda revisão: agora têm plano de registro (a obra das rodovias; Juneau em 1982).
 
@@ -1295,7 +1577,8 @@ documento não conta na régua (identidade §4.3), e os documentos do Estado, se
 O laudo regravado em 27/09 lista outras sete (s18, s34, s60, s11, s17, s38 e s54). Todas têm a linha `REGISTRO (§10.1)`: o
 sinal "senha-não-foi-filmado" aparece agora justamente porque o `motivo` escreve a forma que o ofício exige. O laudo é
 heurística de ordenação, e nenhuma delas é pedido mudo. O laudo da segunda revisão lista as mesmas sete e a cauda s63 (o
-sinal é o mesmo; s63 é o fundo provisório da tela final, sem registro pedido até o Lucas decidir o conteúdo).
+sinal é o mesmo; s63 é o fundo da tela final, sem registro pedido: desde 28/09, o quadro final de s62, parado e escurecendo,
+por decisão do Lucas).
 
 **As coisas nomeadas que ficaram sem pedido na revisão anterior:** as balsas de s52 viraram pedido (plano 2); as de s49 e s55,
 e o petróleo de s54, dizem por que não (a balsa e o oleoduto estão nas cenas vizinhas, e um clipe a mais reciclaria).
@@ -1304,13 +1587,19 @@ e o petróleo de s54, dizem por que não (a balsa e o oleoduto estão nas cenas 
 
 - um registro com fonte para a corte de 1974, as eleições de 1978 e 1982, a campanha de 1982, a segunda foto da sessão de 2017,
   a briga de 2018 ou o voto de 1974: a pesquisa não achou nenhum, nem de outro ano (research-imagens.md);
-- **contar o documento original fotografado** é decisão do Lucas, não do montador (mudaria a régua, roupa §4).
+- **contar o documento original fotografado** é decisão do Lucas, não do montador (mudaria a régua, roupa §4). É a única parte
+  da pendência da régua que continua aberta.
+
+Os dois mapas a mais que o diretor-de-arte propôs (s13 e s43, plano 2) já entraram (décima segunda revisão). A opção do Lucas
+os chamava de "o máximo sem inventar imagem".
 
 A camiseta "Anchorage Stealers", que até a décima revisão estava nesta lista, foi entregue e aprovada (`_media/foto/s28/`), sem
 aviso do ano, pela regra da peça de acervo (Lucas, 28/09/2026): os 2,7 s dela já estão na conta.
 
-**O número pousado sobre o registro é pergunta aberta, não erro resolvido** (segunda revisão, corrigindo a primeira). O espelho
-pousa número ou texto sobre footage e foto em sete cenas (décima primeira revisão; eram nove, e s29, s31 e s56 saíram, porque o
+**O número pousado sobre o registro está decidido** (décima segunda revisão: o Lucas aprovou a proposta do diretor-de-arte
+inteira, "Sim, tudo como ele propôs (Recomendado)", e ela tem "números por cima de algumas fotos"; a técnica, cena a cena, é do
+diretor-de-arte). O que segue é o registro de como a pergunta andou. Até a décima primeira, era **pergunta aberta, não erro
+resolvido** (segunda revisão, corrigindo a primeira). O espelho pousa número ou texto sobre footage e foto em sete cenas (décima primeira revisão; eram nove, e s29, s31 e s56 saíram, porque o
 plano virou DADO ou PRANCHA sem foto): s01 (o 57%, sobre Juneau de circa 1987, com o aviso do ano), s28 plano 3 (o texto sobre
 a camiseta, terceira revisão; desde a sexta, o $800 million em "that" e o ABOUT A QUARTER quando a voz o diz; sobre o estádio
 do plano 2, só os 0,33 s em que o 28 do plano 1 atravessa), s33 plano 2 (the ballot carried no price), s35 (o 55%, sobre
@@ -1323,7 +1612,8 @@ A primeira revisão tirou a pergunta da lista dizendo que o report de 26/09 "err
 `_decisoes_pendentes`.
 
 Como informação, a parcela do `qc-piso-real` (outra régua: conta por cena, tira mapa e documento, e conta cena com retrato) é
-**36,2%** (décima primeira revisão; até a décima, 49,5%; antes da segunda revisão: 48,1%; na terceira não mudou, porque s28
+**35,1%** (décima segunda revisão: os mesmos 240,9 s sobre 686,5 s, porque o portão soma o arquivo fundido de s08 e também
+s09 e s10; na décima primeira, 36,2%; até a décima, 49,5%; antes da segunda revisão: 48,1%; na terceira não mudou, porque s28
 já contava pelo estádio).
 
 ### 5.2 · Ritmo
@@ -1332,21 +1622,30 @@ já contava pelo estádio).
 |---|---|
 | Rajada (planos < 2,5 s) | 34,5 s = **5,2%** (teto 20%; décima primeira revisão: entraram os planos 2 e 3 de s09, de 2,1 s e 2,3 s; até a décima, 30,2 s = 4,5%). Nenhum plano abaixo do piso de beat de 1,5 s |
 | Texto no ar ≥ 2,0 s (roupa §4; identidade §4.3) | Medido na segunda revisão. Os cinco planos de texto abaixo de 2,0 s (s12 p3, s30 p2, s55 p3, s60 p2 e p4, na numeração de antes) foram resolvidos: s30, s55 e s60 juntaram o plano ao vizinho do mesmo objeto; em s12, o placar de Fairbanks fica no palco durante o plano 4 (`_texto_no_ar`). Abaixo de 2,0 s sobram só dois planos de registro sem texto além do crédito: s10 p1 (a foto da obra, 1,766 s; desde a décima primeira revisão, com corte seco para o mapa) e s53 p1 (o oleoduto, 1,834 s). O conferente reprova plano de não-registro abaixo de 2,0 s sem `_texto_no_ar`. **Quinta revisão:** a conta acima media só a duração do plano, e o texto posto sobre registro, travado na palavra, ficava abaixo do piso em quatro planos: s28 p3 (1,87 s), s31 p5 (1,45 s), s56 p2 (1,58 s) e s29 p2, que não dizia a palavra (1,38 s se travasse em "nearly"). A quinta resolveu isso antecipando o número, e a sexta desfez: o texto entra quando a voz o diz, e o piso se cumpre deixando o texto ficar depois (`_texto_no_ar`: 15 planos atravessam o seguinte da cena; 15 são conflito para o regente-de-imagem, porque a cena corta antes de 2,0 s: 10 na sexta revisão, s54 p1 na sétima, e s34 p2, s41 p2, s55 p2 e s57 p2 na oitava; §0f) |
-| Respiro | Planos ≥ 6 s de registro ou satélite somam 73,2 s = 11,0%. **Não medido pela régua do `qc-respiro`**, que precisa de HTML e roda depois da ARTE. Quase todos esses planos carregam texto ou dado. Se respiro tiver de ser tela sem texto (DECISÃO DO LUCAS PENDENTE), a parcela real fica bem abaixo de 10% |
+| Respiro | Planos ≥ 6 s de registro ou satélite somam 81,9 s = 12,3% (décima segunda revisão: entrou o plano 2 de s43, 8,7 s de satélite; na décima primeira, 73,2 s = 11,0%). **Não medido pela régua do `qc-respiro`**, que precisa de HTML e roda depois da ARTE. Quase todos esses planos carregam texto ou dado. Se respiro tiver de ser tela sem texto (DECISÃO DO LUCAS PENDENTE), a parcela real fica bem abaixo de 10% |
 | Foto parada acima de 6 s | Só s01 plano 1 (6,6 s), agora a foto de circa 1987, com o aviso do ano. Ele tem Ken Burns e o dado do 57% entrando em word-lock, o que é movimento com propósito, e o conferente lembra que a janela passa dos 6 s de foto parada (identidade §4.3) e pede o Ken Burns da identidade §4.4. As outras fotos longas estão partidas em planos (s16, s37, s56). Em s56, o segundo plano de foto virou DADO, e em s58 a foto do plano 4 virou documento (décima primeira revisão) |
 
 ### 5.3 · A cauda de 20 s
 
-`s63`, de 646,067 a 666,067 (quadros 19.382 a 19.982). O conteúdo definitivo, a trilha e o CTA são **DECISÃO DO LUCAS
-PENDENTE**. Até a decisão, a cena é executada e **renderizada** como fundo provisório (sem texto novo, sem herói, movimento
-lento, `data-qc-sem-heroi`; roupas do editor-de-arte §7, do regente-de-imagem §0 e do qc-visual §6), e é isso que garante que
-nada sai preto: um segmento sem render sairia preto do mesmo jeito. Se algum clipe do vídeo vier do Shutterstock, a linha
-`Image(s) and/or video used under license from Shutterstock.com` vai na faixa de crédito desta cena (identidade §7; midia.md
-§3.4; `_creditos` de s63).
+`s63`, de 646,067 a 666,067 (quadros 19.382 a 19.982). **O fundo está decidido** (Lucas, 28/09/2026, 11:2x de Brasília: "A
+última cena, parada e escurecendo (Recomendado)"; a opção dizia: "O quadro final (o YES da votação e a linha do preço vazia)
+para e escurece aos poucos, sem texto novo. Não disputa com os botões."):
+- o quadro final de s62 (o YES e a linha do preço vazia) parado, escurecendo aos poucos **sem chegar ao preto** (identidade §5:
+  100% coberto), sem texto novo, sem herói e sem elemento-chave, com `data-qc-sem-heroi` (editor-de-arte §7);
+- **renderizado**, e é isso que garante que nada sai preto: um segmento sem render sairia preto do mesmo jeito;
+- um beat único `continua`, `forca: livre`, com o porquê "tela final: a última cena, parada e escurecendo (Lucas, 28/09/2026)"
+  (regente-de-imagem §0); o qc-visual a julga como fundo e reprova o escurecer que chega ao preto (§6);
+- o quadro de s62 só se garante por construção (ofício §11): num run fundido s62+s63, que é do diretor-de-arte, ou com a cena
+  feita a partir do arquivo de s62;
+- os elementos finais do YouTube caem por cima, no YouTube Studio. A trilha continua pendente (música e transições).
 
-### 5.4 · Protagonista proposto para `--destaque`
+Se algum clipe do vídeo vier do Shutterstock, a linha `Image(s) and/or video used under license from Shutterstock.com` vai na
+faixa de crédito desta cena (identidade §7; midia.md §3.4; `_creditos` de s63). Até a décima primeira revisão, o conteúdo era
+DECISÃO DO LUCAS PENDENTE, e a cena, o fundo provisório.
 
-**Juneau**, a capital que ficou: o ponto, a estrada que para, o anel em Cascade Point. A proposta completa:
+### 5.4 · Protagonista em `--destaque` (decidido)
+
+**Juneau**, a capital que ficou: o ponto, a estrada que para, o anel em Cascade Point. A paleta completa:
 
 - `--contraparte`: o destino da mudança (Willow, depois Wasilla);
 - `--neutro`: Anchorage, Fairbanks, Sitka, o Canadá e a British Columbia;
@@ -1355,15 +1654,21 @@ nada sai preto: um segmento sem render sairia preto do mesmo jeito. Se algum cli
   Wasilla) em `--contraparte`, nunca vermelho × azul. A primeira revisão escrevia "sim × não: `--destaque` × `--contraparte`",
   que, lido na ordem, pintava o sim com a cor de Juneau (segunda revisão).
 
-Tudo isso está em `paleta`, como proposta. Quem confirma é o Lucas: **DECISÃO DO LUCAS PENDENTE**.
+Tudo isso está em `paleta`. Até a décima primeira revisão era proposta, pendente do Lucas. **Decidida em 28/09/2026**: o
+diretor-de-arte seguiu esta paleta ("Juneau na cor de destaque da marca e Willow/Wasilla na cor de contraparte"), e o Lucas
+aprovou a proposta dele inteira ("Sim, tudo como ele propôs (Recomendado)"; §0i). A execução é do diretor-de-arte.
 
 ### 5.5 · Cenas de mapa
 
-São **13 cenas com planos de mapa**: s03, s07, s08, s09, s10, s12, s15, s33, s39, s44, s48, s50 e s59. s09 entrou na décima
-primeira revisão: a metade de Anchorage do antigo plano 2, sem foto, virou o mapa do plano 3, que acende Anchorage e
-Fairbanks, e a foto da Ladd Field encolhe para o ponto de Fairbanks (ofício §6.7). Na primeira revisão eram 11 (s46 foi
-fundida em s44); na segunda, s07 ganhou o mapa Sitka → Juneau. s10 continua com três planos de mapa, embora abra em foto.
-Somam **134,5 s** de satélite MapTiler (eram 132,3 s), e cada uma custa pedidos no render.
+São **15 cenas com planos de mapa**: s03, s07, s08, s09, s10, s12, s13, s15, s33, s39, s43, s44, s48, s50 e s59. **s13 e s43
+entraram na décima segunda revisão**, cada uma pelo plano 2: a folha recriada sobre o satélite (Lucas, 28/09/2026: "Aceitar,
+com 2 mapas a mais (Recomendado)"; §0i). s09 entrou na décima primeira: a metade de Anchorage do antigo plano 2, sem foto,
+virou o mapa do plano 3, que acende Anchorage e Fairbanks, e a foto da Ladd Field encolhe para o ponto de Fairbanks (ofício
+§6.7). Na primeira revisão eram 11 (s46 foi fundida em s44); na segunda, s07 ganhou o mapa Sitka → Juneau. s10 continua com
+três planos de mapa, embora abra em foto. Somam **149,1 s** de satélite MapTiler (na décima primeira, 134,5 s; antes, 132,3 s),
+e cada uma custa pedidos no render. **O gasto está liberado** (Lucas, 28/09/2026; identidade §6, "O gasto do Juneau,
+liberado"): o contador da MapTiler se anota antes e depois do primeiro render de mapa, e o custo real vai ao Lucas antes das
+outras cenas. s08, s09 e s10 são um arquivo só (a fusão do diretor-de-arte), e isso já é um render a menos.
 
 - O crédito `© MapTiler © OpenStreetMap contributors` fica na tela o tempo todo do mapa.
 - O que vem do OSM leva o crédito do OSM: a estrada de Juneau e Cascade Point, o Taku, Haines, Haines Junction, Willow e os
@@ -1379,19 +1684,28 @@ Somam **134,5 s** de satélite MapTiler (eram 132,3 s), e cada uma custa pedidos
   - s50 planos 1 e 2, a Alternativa 2B (2006): de Echo Cove a Cascade Point é a estrada que existe, em traço cheio; dali ao
     norte do delta do Katzehin, e a balsa até Haines e Skagway, tracejados.
 
-  A figura do estudo de 2018 não se decalca (midia.md §7.1). O do Taku espera `thane-road-fim`, o único pedido aberto de
-  geometria; sem ele, o plano 3 de s44 fica com o rio (`rio-taku-osm`), o rótulo do Taku Inlet (`taku-inlet-gnis`) e a voz.
-  Até a décima revisão, nenhum corredor se traçava: s44 tinha a seta sem linha (mapista §6c), e o esquema era a pendência #9.
+  A figura do estudo de 2018 não se decalca (midia.md §7.1). O do Taku sai de `thane-road-fim`, que chegou em 28/09 (OSM
+  node/5691733230; décima segunda revisão); até ali, o plano 3 de s44 ficaria com o rio (`rio-taku-osm`), o rótulo do Taku
+  Inlet (`taku-inlet-gnis`) e a voz. O caminho do Gastineau Channel ao Taku Inlet não está na fonte, e é da arte, dentro do
+  Approximate route. Até a décima revisão, nenhum corredor se traçava: s44 tinha a seta sem linha (mapista §6c), e o esquema
+  era a pendência #9.
 - s10 pede `eua` e `canada` inteiros: o palco vai até onde a Alaska Highway encontra a rede do continente
   (`alaska-highway-ligacao-continente`, agora em disco).
 - País no mapa vai com o nome escrito, sem bandeira (s03, s10 e s44; identidade §6).
-- **Nenhuma pede relevo.** A candidata natural é **s44** (o campo de gelo e as encostas). As fontes de relevo foram aceitas em
-  27/09 (identidade §6, "Bases, geometria e dados aceitos"), mas usar relevo ou câmera 3D em s44 continua pendente, e `mapa3d`
-  não tem prova nesta máquina.
-- O gasto de render na MapTiler se pede antes da primeira cena renderizada, anotando o contador.
+- **Só s44 pede relevo** (décima segunda revisão; Lucas, 28/09/2026: "Sim, e com relevo 3D no campo de gelo"): `mapa3d` no
+  modo e nos seis planos de mapa, com o terreno (terrain-rgb-v2) em `_base_mapa`. O relevo prova o que a voz argumenta, o gelo
+  e o fiorde "entre montanhas íngremes" (mapista §5 e §6; ARTE-31). A escala do desnível e o exagero são do mapista, medidos
+  no DEM. `mapa3d` não tem prova nesta máquina, e a primeira é o render desta cena. As outras cenas de mapa dizem "relevo não
+  pedido" ou não pedem.
+- A folha recriada de s13 e a de s43 (plano 2) ficam sobre o satélite, com o crédito do mapa o tempo todo. s13 usa o palco de
+  s12 (os dois raios), e s43, o enquadramento em que s44 abre.
 
-Mapa seguido de mapa não acontece: s44 é uma viagem só, com o registro do fiorde ancorado dentro dela, e entre os outros
-mapas sempre há outro regime (identidade §4.4).
+**Mapa seguido de mapa**, desde a décima segunda revisão, acontece uma vez: o plano 2 de s43 (mapa) e s44 (`mapa3d`) se tocam
+em 463,133 s, no mesmo enquadramento. A identidade §4.4 pede UMA viagem de câmera (`fundir: true`). O diretor-de-arte deixou
+s44 em arquivo próprio ("54 s juntos seria um ato inteiro"), e rever isso é dele (§0i.4). Com dois arquivos, a viagem só se
+garante por construção, com o último quadro de s43 igual ao primeiro de s44 (ofício §11). s44 continua uma viagem só, com o
+registro do fiorde ancorado dentro dela. Entre s12 e o plano 2 de s13 há a folha de 1974 (documento), e o diretor-de-arte
+deixou a fusão s12+s13 condicional a este aceite: o plano a sustenta (§0i.4). Entre os outros mapas sempre há outro regime.
 
 ### 5.6 · Pedidos que dependem de fonte não liberada ou de licença
 
@@ -1401,9 +1715,10 @@ mapas sempre há outro regime (identidade §4.4).
 - Tudo o que veio da Divisão de Eleições (boletins e folhetos) foi lido de cópia arquivada, que vale como fonte, com a data da
   captura (Lucas, 27/09/2026); mostrar a página original ainda pede permissão clara (midia.md §7.1).
 - Os sites da Divisão de Eleições, o BASIS e o do Department of Revenue recusam robô. A conferência do texto vai pela cópia
-  arquivada, com a data (página oficial do Alasca). A da licença, o que a cópia não tiver e a série de s54 vão ao navegador do
-  app, que só o Claude central opera, e desde 27/09 sem o Lucas precisar acompanhar (CLAUDE.md, "A marca"). Os textos de licença
-  do espelho ainda dizem "com o Lucas vendo" (§9).
+  arquivada, com a data (página oficial do Alasca). A da licença e o que a cópia não tiver vão ao navegador do app, que só o
+  Claude central opera, e desde 27/09 sem o Lucas precisar acompanhar (CLAUDE.md, "A marca"). Desde a décima segunda revisão,
+  os 16 textos de licença e de nota do despacho dizem isso. A série de s54 já veio assim, em 28/09, com o sim do Lucas para
+  enviar o formulário de datas (§0i).
 - As mascotes de 1982 (s26) se acharam sem permissão: nenhuma figura vai à tela sem autorização escrita dos detentores (o NFL
   Access Committee, o Capital Access Committee e o ADN, dono da digitalização), e ninguém a pediu. s26 é desenho.
 - O retrato só entra de fonte autorizada (midia.md §7.2). Os que não se acharam, e o de Reamer, que só existe em CC BY-NC ou em
@@ -1411,7 +1726,8 @@ mapas sempre há outro regime (identidade §4.4).
 - A foto de agência depende do ok do Lucas àquela foto, e a Reuters está fora (§7.4). Nenhuma entrou.
 - Vídeo do governo do Alasca (a balsa, em s47 e s52) entra com a fonte na tela; vídeo de jornal, só com licença conferida
   (Lucas, 27/09/2026; midia.md §7.5).
-- O original do estudo de 2018 precisa de autorização escrita do DOT&PF, que ninguém pediu (pendência 12).
+- O original do estudo de 2018 precisa de autorização escrita do DOT&PF, que ninguém pediu (pendência 8; era a 12 até a
+  décima primeira revisão). Em s43, a folha recriada fica sobre o satélite desde a décima segunda.
 - As fotos fora do domínio público vão com o crédito que o conferente aprovou, copiado para o objeto do plano: CC BY e CC BY-SA
   do Commons, a foto do Estado (s22, State of Alaska / Alaska State Library), a foto de jornal (s56 p1, Michael Penn / Juneau
   Empire), a camiseta de s28 (Dave Gelotte / Alaska State Museum; midia.md §7.5; Lucas: "Sim, pode baixar (Recomendado)") e o
@@ -1421,54 +1737,53 @@ mapas sempre há outro regime (identidade §4.4).
 
 ### 5.7 · DECISÃO DO LUCAS PENDENTE que tocou este espelho
 
-A mesma lista está em `espelho.json` › `_decisoes_pendentes`, na mesma ordem, e cada item leva a data desta revisão (décima
-primeira, 28/09). Até a décima, este report numerava 20 itens e guardava as decididas no lugar delas; desde esta revisão, a
-numeração é a do espelho, e as decisões ficam em `_decisoes_do_lucas` (abaixo).
+A mesma lista está em `espelho.json` › `_decisoes_pendentes`, na mesma ordem. Cada item leva a data da revisão que o manteve:
+os que a décima segunda não tocou continuam "mantida na décima primeira revisão, 28/09"; a da régua e a do regente dizem o que a
+décima segunda mudou nelas. Até a décima, este report numerava 20 itens e guardava as decididas no lugar delas; desde a décima
+primeira, a numeração é a do espelho, e as decisões ficam em `_decisoes_do_lucas` (abaixo).
 
-1. O conteúdo definitivo, a trilha e o CTA dos 20 s da tela final (s63). Até lá, fundo provisório renderizado.
-2. A cor do protagonista (`--destaque` = Juneau, proposta).
-3. Relevo/câmera 3D (`mapa3d`), com s44 como candidata. As fontes de relevo foram aceitas em 27/09 (identidade §6); usar relevo
-   ou câmera 3D em s44 continua pendente.
-4. O gasto de render na MapTiler: 13 cenas com mapa (s09 entrou), pedido antes da primeira cena renderizada, com o contador
-   anotado.
-5. Música e transições (`marca/finalizacao.json` não existe).
-6. A PRANCHA não tem modo no enum: o espelho usa `desenho` + "PRANCHA" no motivo.
-7. O catálogo de modelos do canal: o campo `modelo` ficou ausente.
-8. Se respiro tem de ser tela sem texto.
-9. A régua de mundo real, agora em 44,9% da fala: se o documento original fotografado deveria contar.
-10. Os pisos do canal para a taxa de pedido e para a maior janela sem registro.
-11. (leve) A sugestão da rodada 6 de mostrar o 57% também em "they approved it" (s11). Não foi aplicada: o espelho segue a
-    decisão aprovada da Abertura (57% em s01).
-12. Pedir ao DOT&PF a autorização para o original do estudo de 2018.
-13. O número ou texto pousado sobre REGISTRO (§5.1), agora em sete cenas: s01, s24, s28, s33, s35, s51 e s53. Saíram s29
-    plano 2, s31 plano 5 e s56 plano 2, que viraram DADO ou PRANCHA sem foto. Em s01 e s35, o número pousa sobre foto de outro
-    ano, que já leva o aviso do ano no mesmo quadro. É leitura do montador, a confirmar pelo diretor-de-arte e pelo Lucas; cada
-    texto entra na palavra que o diz, nunca antes.
-14. (lembrete, sem pergunta nova) Quantos picos o vídeo tem: as 25 candidatas a showpiece são as da roupa do diretor-de-arte §2,
-    e a escolha é dele.
-15. Para o Lucas e o Mateus, não decisão de vídeo: a divergência de contrato do §8, item 1. Desde esta revisão, a linha diz
-    também que as mascotes de s26 se acharam sem permissão, e a cena virou desenho.
-16. Para o regente-de-imagem, não para o Lucas: os 15 conflitos de texto no ar (10 na sexta; s54 na sétima; s34, s41, s55 e s57
+1. Música e transições (`marca/finalizacao.json` não existe).
+2. A PRANCHA não tem modo no enum: o espelho usa `desenho` + "PRANCHA" no motivo.
+3. O catálogo de modelos do canal: o campo `modelo` ficou ausente.
+4. Se respiro tem de ser tela sem texto.
+5. Se o documento original fotografado deveria contar na régua de mundo real. É o que sobrou da pendência da régua: o Lucas
+   aceitou que o Juneau fique abaixo dos 60%, com os dois mapas a mais (28/09), e a régua foi a 47,2% da fala.
+6. Os pisos do canal para a taxa de pedido e para a maior janela sem registro.
+7. (leve) A sugestão da rodada 6 de mostrar o 57% também em "they approved it" (s11). Não foi aplicada: o espelho segue a
+   decisão aprovada da Abertura (57% em s01).
+8. Pedir ao DOT&PF a autorização para o original do estudo de 2018.
+9. Para o Lucas e o Mateus, não decisão de vídeo: a divergência de contrato do §8, item 1. Desde a décima primeira revisão, a
+   linha diz também que as mascotes de s26 se acharam sem permissão, e a cena virou desenho.
+10. Para o regente-de-imagem, não para o Lucas: os 15 conflitos de texto no ar (10 na sexta; s54 na sétima; s34, s41, s55 e s57
     na oitava), em que o corte para a cena seguinte vem antes de 2,0 s da palavra (§0f), com a decisão do Claude central de
-    27/09: a palavra exata de entrada é da regência, e a `_nota_texto_no_ar` é proposta (§0g).
+    27/09: a palavra exata de entrada é da regência, e a `_nota_texto_no_ar` é proposta (§0g). Na décima segunda, o parêntese
+    de s54 passou a dizer a queda que a voz diz (a série dá 77,4%, e as contas arredondadas do FSEIS, 77,6%).
 
-Na lista de até a décima, **saíram duas, que o Lucas decidiu em 27/09**: a #9, o esquema declarado das rotas e dos corredores
-("Sim, tracejada e com aviso (Recomendado)"), e a #17, a bandeira ao lado de nome de país ("Só o nome escrito
+**Na décima segunda revisão saíram seis, que o Lucas decidiu em 28/09** (as quatro respostas ao conceito visual; §0i): o
+conteúdo da tela final (a #1 da lista de antes), a cor do protagonista (#2), o relevo (#3), o gasto na MapTiler (#4), o número
+sobre REGISTRO (#13) e quantos picos (#14). A da régua (#9) ficou só com o documento original fotografado.
+
+Na décima primeira, **saíram duas, que o Lucas decidiu em 27/09**: a #9 da lista de até a décima, o esquema declarado das rotas e
+dos corredores ("Sim, tracejada e com aviso (Recomendado)"), e a #17, a bandeira ao lado de nome de país ("Só o nome escrito
 (Recomendado)"). As #8, #10, #18 e #20 já eram decididas e só guardavam o número.
 
-**Decididas pelo Lucas** (`_decisoes_do_lucas`, 13 entradas, cada uma com a mensagem literal e o que mudou no espelho):
+**Decididas pelo Lucas** (`_decisoes_do_lucas`, 17 entradas, cada uma com a mensagem literal e o que mudou no espelho):
 - em 27/09, na nona revisão (§0g): a cópia arquivada de página oficial do Alasca vale como fonte, com a data; vídeo do governo
   do Alasca entra, o de jornal só com licença; logo de órgão federal e de outras instituições, só o nome escrito;
 - em 27/09, e mudada no mesmo dia: foto de outro ano entra com o aviso do ano, e sem nenhuma foto o plano vira mapa ou desenho
   ("Quando não houver foto do ano, mas houver foto pode utilizar com um aviso em tela"). A resposta de antes ("Não: sem foto do
   ano, vira mapa ou desenho"), que a nona revisão tinha gravado, fica registrada como superada;
-- em 27/09, novas nesta revisão: país no mapa, o nome escrito, sem bandeira; rota que nunca foi construída, esquema tracejado
-  com Approximate route; documento de outra data, com o rótulo; documento antigo, a folha até 1,4× e a recriação mais perto; a
-  Trends de 1990, recriada; as fotos da Alaska State Library que só se compram não se compram; a exceção do DOCUMERICA; o
-  download da camiseta;
-- em 28/09: peça de acervo fotografada depois entra sem aviso do ano, como a página de documento.
+- em 27/09, novas na décima primeira revisão: país no mapa, o nome escrito, sem bandeira; rota que nunca foi construída,
+  esquema tracejado com Approximate route; documento de outra data, com o rótulo; documento antigo, a folha até 1,4× e a
+  recriação mais perto; a Trends de 1990, recriada; as fotos da Alaska State Library que só se compram não se compram; a
+  exceção do DOCUMERICA; o download da camiseta;
+- em 28/09: peça de acervo fotografada depois entra sem aviso do ano, como a página de documento;
+- em 28/09, às 11:2x de Brasília, novas na décima segunda revisão (§0i): a tela final, a última cena parada e escurecendo; a
+  régua abaixo dos 60%, com dois mapas a mais (s13 e s43); o gasto da MapTiler liberado, com relevo só em s44; e a proposta do
+  diretor-de-arte aprovada inteira (a paleta, os cinco picos, o número sobre a foto e o mapa atrás dos cards de s05 e s57). A
+  decisão da rota ganhou a linha da chegada do `thane-road-fim`.
 
-E uma divergência de contrato para o Lucas e o Mateus, que não é decisão de vídeo: a do §8, item 1 (a pendência 15).
+E uma divergência de contrato para o Lucas e o Mateus, que não é decisão de vídeo: a do §8, item 1 (a pendência 9).
 
 ## 6 · Cadeia referencial e candidatas a showpiece
 
@@ -1508,13 +1823,15 @@ dos primeiros 15 s, voz.md §1), as cenas onde o 'Livro-razão da promessa' … 
 - **o fecho**: as cenas da p7 que fecham as promessas. s59 fecha C e E na imagem de p1, s60 fecha A e B, s61 fecha B e D, e
   s62 fecha A e B. s58, onde a p7 começa, já é candidata como parcela de C.
 
-A cauda s63 não é candidata, porque é o fundo provisório. São **25** em `_candidatas_a_showpiece`, e a `_cadeia` de cada uma
+A cauda s63 não é candidata, porque é o fundo da tela final. São **25** em `_candidatas_a_showpiece`, e a `_cadeia` de cada uma
 diz "candidata a showpiece". Até a quarta revisão eram 21: a nota citava a roupa pela metade, e a abertura e s60 a s62
 ficavam de fora (§0d E4). Cinco levam a **indicação do
 montador**, nos dois campos: **s19** (1978: o preço chega à cédula), **s23** (o preço impresso de 1982), **s32** (a
 revogação), **s44** (o problema no mapa, com o fiorde e a saída pelo Canadá) e **s59** (a estrada ainda para em Cascade
-Point). Quem escolhe os picos, entre as indicadas ou não, e marca `showpiece` é o diretor-de-arte; o número de picos é
-pendência da roupa dele. `_nota_showpiece` diz isso. (Terceira revisão: até a segunda, só as cinco estavam em
+Point). Quem escolhe os picos, entre as indicadas ou não, e marca `showpiece` é o diretor-de-arte. **Ele marcou cinco: s01,
+s23, s32, s44 e s59** (`conceito-visual.json` › `showpiece`; trocou s19 pela abertura), e o Lucas aprovou a proposta dele
+inteira em 28/09/2026 ("Sim, tudo como ele propôs (Recomendado)"; décima segunda revisão). O número de picos era pendência da
+roupa dele e saiu. `_nota_showpiece` diz isso. (Terceira revisão: até a segunda, só as cinco estavam em
 `_candidatas_a_showpiece`, as outras parcelas diziam só "PAGA", e este parágrafo dizia que elas chegavam como candidatas pela
 `_cadeia`, o que o campo não dizia.)
 
@@ -1530,7 +1847,10 @@ As repetições são intencionais e declaradas em `_repeticao_intencional`:
   acharam (décima primeira revisão; `_despacho_research` › `retratos`, com o resultado);
 - a foto que ancora no mapa dentro da mesma cena: Sitka em s07 (plano 2 → plano 3) e, desde a décima primeira revisão, a Ladd
   Field em s09 (plano 2 → plano 3). A obra da rodovia de s10 deixou de ancorar: a virada é corte seco, porque nenhum ponto do
-  trecho da foto está em `needs.geo`.
+  trecho da foto está em `needs.geo`;
+- desde a décima segunda revisão: o palco de s12 (o satélite com os dois raios) sob a folha do parecer de 1993, no plano 2 de
+  s13; o enquadramento em que s44 abre (Juneau, a estrada e o anel em Cascade Point) sob a folha do estudo de 2018, no plano 2
+  de s43; e o quadro final de s62, parado e escurecendo, em s63.
 
 Os mesmos lugares em cenas diferentes pedem clipes diferentes: o Capitólio, Willow, a balsa, o Lynn Canal, o legislativo, a
 estrada, Fairbanks, Wasilla e, desde a décima primeira revisão, Juneau (`_despacho_research` › `mesmo_lugar_clipes_diferentes`).
@@ -1591,8 +1911,12 @@ versão em inglês é de quem escreve a embalagem.
      4 cenas com pedido (s07, s23, s44 e s52): s58 saiu, porque o plano 4 virou documento. No sentido inverso, só s55: s25 deixou
      de pedir retrato. As listas de hoje: `cenas`, com 27 cenas e 40 planos; `retratos`, com o `resultado` de cada pessoa;
      `documentos`, com 29 trechos a grifar; `logos`, sem pedido; e `geo`, nova, com o único pedido aberto (`thane-road-fim`).
+   - **Décima segunda revisão (28/09):** `geo` ficou sem pedido (o `thane-road-fim` chegou; `entregues`), e `dados` sem busca
+     nova (a série de s54 chegou; `busca_nova_atendida`). Em `documentos`, os planos 2 de s13 e de s43 estão como `mapa`, com o
+     documento na tela como a folha recriada sobre o satélite; em `cenas`, s44 está como `mapa3d`.
 2. `drone` não é `modo`: vale só em `midia` (roupa §3). Não foi usado.
-3. O enum não tem prancha. O `desenho` cobre a PRANCHA e o fundo provisório da cauda.
+3. O enum não tem prancha. O `desenho` cobre a PRANCHA e o fundo da cauda (desde 28/09, o quadro final de s62, parado e
+   escurecendo).
 4. **`citacao` não é modelo da identidade** (roupa do editor-de-arte §6: "execute dentro de um dos cinco e diga qual"). A
    regra do espelho, desde a segunda revisão: o `motivo` de cada cena `citacao` diz o modelo em que ela se executa.
    - **REGISTRO**, com card de pessoa e a fala recriada com a fonte, quando há pessoa real identificada (identidade §5): s05
@@ -1621,9 +1945,10 @@ versão em inglês é de quem escreve a embalagem.
   `conferencia-midia.json` (`f1f699e3…`) e dos research-*.md. O conferente do espelho prova que cada foto ou retrato aprovado
   tem, no objeto, o aviso do ano ou "sem aviso", como o veredito (21); o ano escrito em cada aviso foi conferido à mão contra o
   `data_na_origem`, e o verificador não o compara.
-- **A geometria nova.** O conferente prova só que o arquivo existe em `_media/geo/` (`_existe`, 97 pedidos). O conteúdo, os
+- **A geometria nova.** O conferente prova só que o arquivo existe em `_media/geo/` (`_existe`, 107 pedidos). O conteúdo, os
   extremos de cada rodovia e a licença de cada camada vêm do `pauta-geo.json` e do research-geo.md, sem conferência minha. O
-  `thane-road-fim` ainda não existe.
+  `thane-road-fim` chegou em 28/09: as coordenadas e o nó do OSM no `_exige` são os do pauta-geo.json e do research-geo.md §7,
+  e o montador não abriu o arquivo além de saber que ele existe.
 - **Os esquemas.** O caminho de cada esquema é o texto da fonte, entre aspas em `_esquema`. Que a linha tracejada o siga é do
   mapista, e nenhuma geometria o prova: é esquema, declarado como aproximado na tela. Que o corredor do Taku sai do fim da Thane
   Road vem do FSEIS ("from the end of Thane Road in Juneau, northeast along the Taku Inlet", p. 2-2).
@@ -1649,7 +1974,18 @@ versão em inglês é de quem escreve a embalagem.
   item da lista de fontes seja a peça inaugural que a coluna cita continua leitura minha.
 - **Os nomes escritos.** As 12 entidades estão no espelho como o dossiê as registra; o nome oficial está na `pauta-logos.json`,
   e o montador não o conferiu.
-- **O número pousado sobre o registro** (§5.1) é leitura do montador, sem decisão do Lucas nem confirmação do diretor-de-arte.
+- **O número pousado sobre o registro** (§5.1) está decidido desde 28/09 (a proposta do diretor-de-arte, aprovada inteira), e
+  a técnica é dele. Que cada número entre na palavra que o diz e fique legível sobre a foto é da arte, e só o quadro
+  renderizado prova.
+- **O relevo de s44.** `terrain-rgb-v2` e a câmera 3D não têm prova nesta máquina (CLAUDE.md, tropeços do apoio); a primeira é
+  o render desta cena. Que o relevo mostre o que a voz argumenta, e em que exagero, é do mapista, medido no DEM.
+- **A cauda.** O espelho diz o quadro final de s62, parado, escurecendo sem chegar ao preto. Que o arquivo de s63 repita o
+  quadro de s62 e que o escurecer pare antes do preto, só o render prova, e o qc-visual julga.
+- **As fusões e a continuidade.** A fusão s12+s13 é do diretor-de-arte, e o plano a sustenta (§0i.4), mas ninguém a testou.
+  Sem fusão, a viagem de s43 (plano 2) para s44 e o quadro de s62 em s63 só se garantem por construção, entre arquivos que o
+  espelho não une (ofício §11).
+- **As folhas sobre o satélite** (s13 e s43, plano 2). Que a folha recriada caiba sobre o mapa com o crédito da MapTiler e o
+  do OSM na tela, e que o grifo continue legível, é da arte.
 - **Texto no ar.** O espelho declara os tempos; que o texto fique no ar 2,0 s é da arte, e só o quadro renderizado prova. O
   conferente mede a trava que o objeto do plano escreve (a palavra entre aspas), e não o que a arte fará. A varredura reconhece
   número dito por extenso e frase citada entre aspas no objeto; texto de tela descrito sem número nem aspas ela não vê. Os
@@ -1657,22 +1993,27 @@ versão em inglês é de quem escreve a embalagem.
   `_nota_texto_no_ar`, como os outros rótulos de lugar: o conferente não os mede.
 - **A voz de cada grifo.** `voz_do_grifo` é a leitura do montador de qual trecho da fala cita cada peça; o conferente prova que
   essas palavras são ditas nos planos listados, não que a paráfrase seja fiel. A fidelidade é do verificador-de-fatos.
-- **A série de s54.** Que o formulário do Department of Revenue a entregue pelo navegador do app não está provado; sem ela, a
-  tela fica com os pontos extremos da fonte.
+- **A série de s54** chegou em 28/09, lida pelo Claude central no navegador do app. Refiz a prova da cópia que o arquivo traz
+  (748 linhas, a soma em centavos e o sha256 da tabela), mas não abri a página nem a tabela: que os números sejam os da página
+  é o que essa prova e a leitura do Claude central dizem. Que o FSEIS tenha desenhado o Graph 2-1 com esta série é o que o
+  nome e os extremos indicam, não prova. O `_dados/s54.json` da pesquisa-dados foi só lido, no fim, e o espelho não depende
+  dele.
 - **Licenças.** O montador não conferiu licença nenhuma. As marcações vêm do dossiê, do midia.md e, desde esta revisão, dos
   vereditos do conferente, que julga licença e fonte, e dos research-*.md. Os 16 textos de licença e de nota do despacho que
-  dizem "no navegador do app, com o Lucas vendo" são de antes da regra de 27/09 ("O navegador do app, sem o Lucas
-  acompanhando", CLAUDE.md, "A marca"), que vale para eles: não os mudei, porque o despacho não pediu.
+  diziam "no navegador do app, com o Lucas vendo" eram de antes da regra de 27/09 ("O navegador do app, sem o Lucas
+  acompanhando", CLAUDE.md, "A marca"). Na décima segunda revisão, com o pedido do Claude central, passaram a "no navegador do
+  app, sem o Lucas precisar acompanhar".
 - **As fontes da Divisão de Eleições.** Boletins e folhetos foram lidos de cópia arquivada, que vale como fonte desde a decisão do
   Lucas de 27/09. A pesquisa-dados reabriu as 16 cópias em 27/09 (research-dados.md); o montador não as reabriu.
-- **O research-geo.md** (§1, linha 71) ainda diz que o esquema declarado é DECISÃO DO LUCAS PENDENTE. A identidade §6 decidiu
-  depois, e o espelho segue a identidade; o arquivo é do pesquisa-geo.
+- **O research-geo.md** (§1, linha 71) dizia, até a décima primeira revisão, que o esquema declarado era DECISÃO DO LUCAS
+  PENDENTE. Na entrega do `thane-road-fim` (28/09), o pesquisa-geo o corrigiu: a linha diz agora que o Lucas decidiu em 27/09.
+  O espelho seguia a identidade §6 desde antes; o arquivo é do pesquisa-geo.
 - **Escuta.** Ninguém ouviu as bordas. Elas foram provadas contra o `words.json`, que foi verificado pelo som em 26/09 (CLAUDE.md,
   pré-v1 item 3). A borda nova de plano em s09 (82,9 s) cai na pausa entre "bases" (acaba em 82,89) e "went" (82,922), pelo
   `words.json`, sem escuta. O silêncio da borda da cauda foi medido (−68,8 dB), não ouvido.
 - **O pipeline.** A conta de quadros reproduz as duas linhas do `renderizar.mjs` e do `xml-premiere.mjs`; nenhum dos dois rodou.
-- **s44 numa sessão só.** Que o mapista consiga executar o palco de 36 s, agora com os esquemas e o fiorde ancorado, numa sessão
-  só é suposição do ofício (§11), não medida.
+- **s44 numa sessão só.** Que o mapista consiga executar o palco de 36 s, agora com os esquemas, o fiorde ancorado e, desde a
+  décima segunda revisão, o relevo, numa sessão só é suposição do ofício (§11), não medida.
 - **Respiro:** não medido (sem HTML).
 
 ## Anexo · As 61 cenas
@@ -1686,12 +2027,12 @@ versão em inglês é de quem escreve a embalagem.
 | s05 | 34,667 | 11,733 | citacao | animacao | citacao › citacao | Harris, 1982: caro e demorado demais |
 | s06 | 46,400 | 6,733 | foto | foto | foto › foto | Juneau, capital cedo; a cidade nasceu do ouro |
 | s07 | 53,133 | 22,367 | documento | foto | documento › foto › mapa › documento | A capital em etapas: 1900, Sitka, 1906, 1912 |
-| s08 | 75,500 | 2,600 | mapa | animacao | mapa | A população vai para o norte |
-| s09 | 78,100 | 7,067 | foto | foto | foto › foto › mapa | Ferrovia e guerra: o norte cresce |
-| s10 | 85,167 | 13,366 | foto | foto | foto › mapa › mapa › mapa | As rodovias ligam Anchorage ao continente; Anchorage e Fairbanks: de 15% a mais da metade |
+| s08 | 75,500 | 2,600 (o arquivo fundido: 23,033) | mapa | animacao | mapa | A população vai para o norte (a mãe do run s08 ← s09, s10 do diretor-de-arte) |
+| s09 | 78,100 | 7,067 | foto | foto | foto › foto › mapa | Ferrovia e guerra: o norte cresce (fundida em s08) |
+| s10 | 85,167 | 13,366 | foto | foto | foto › mapa › mapa › mapa | As rodovias ligam Anchorage ao continente; Anchorage e Fairbanks: de 15% a mais da metade (fundida em s08) |
 | s11 | 98,533 | 12,100 | dados | animacao | dados › dados | Não, não, sim: 1960, 1962 e 1974 |
 | s12 | 110,633 | 16,934 | mapa | animacao | mapa › mapa › mapa › mapa | O voto de 1974 no mapa e a regra das 30 milhas |
-| s13 | 127,567 | 9,266 | documento | animacao | documento › documento | A Suprema Corte mantém; o procurador resume a premissa |
+| s13 | 127,567 | 9,266 | documento | animacao | documento › mapa | A Suprema Corte mantém; o procurador resume a premissa |
 | s14 | 136,833 | 6,567 | footage | footage | footage › footage | Decidido sair; faltava o lugar e o preço |
 | s15 | 143,400 | 16,667 | mapa | animacao | mapa › mapa › mapa | 1976: três locais, Willow vence |
 | s16 | 160,067 | 12,133 | foto | foto | foto › foto › desenho | Fairbanks: o comitê que queria o preço primeiro |
@@ -1721,8 +2062,8 @@ versão em inglês é de quem escreve a embalagem.
 | s40 | 418,433 | 13,334 | footage | footage | footage › documento › documento | 2025: um projeto para levar as sessões a Anchorage |
 | s41 | 431,767 | 8,033 | citacao | foto | citacao › citacao | Kiehl: "como um filme de zumbi" |
 | s42 | 439,800 | 5,367 | footage | footage | footage | E a estrada? Por que não construir uma? |
-| s43 | 445,167 | 17,966 | footage | footage | footage › documento | O estudo ambiental e a capital isolada |
-| s44 | 463,133 | 36,067 | mapa | footage | mapa › mapa › mapa › mapa › footage › mapa › mapa | O problema no mapa: gelo, fronteira, dois corredores e a saída pelo Canadá |
+| s43 | 445,167 | 17,966 | footage | footage | footage › mapa | O estudo ambiental e a capital isolada |
+| s44 | 463,133 | 36,067 | mapa3d | footage | mapa3d › mapa3d › mapa3d › mapa3d › footage › mapa3d › mapa3d | O problema no mapa: gelo, fronteira, dois corredores e a saída pelo Canadá |
 | s47 | 499,200 | 6,367 | footage | footage | footage | A rodovia oficial de Juneau é uma balsa |
 | s48 | 505,567 | 12,533 | mapa | animacao | mapa › mapa | 2000: Knowles escolhe a margem leste, mas não a leva adiante |
 | s49 | 518,100 | 6,833 | foto | foto | foto › dados | Juneau dividida: 79 votos |
@@ -1739,4 +2080,4 @@ versão em inglês é de quem escreve a embalagem.
 | s60 | 615,700 | 17,367 | dados | animacao | dados › dados › dados | A pergunta mudou: se sair, depois quanto |
 | s61 | 633,067 | 8,800 | documento | animacao | documento › documento | Desde 1994, a lei pergunta o preço primeiro |
 | s62 | 641,867 | 4,200 | desenho | animacao | desenho | O sim foi real |
-| s63 | 646,067 | 20,000 | desenho | animacao | desenho | Tela final do YouTube (20 s sem voz): fundo provisório |
+| s63 | 646,067 | 20,000 | desenho | animacao | desenho | Tela final do YouTube (20 s sem voz): a última cena, parada e escurecendo |
