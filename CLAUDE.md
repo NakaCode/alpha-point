@@ -836,7 +836,18 @@ te marca quando algo depende de você. As respostas continuam aqui no chat. É o
   o topo do arquivo diz como), sem npm. A chave `DISCORD_BOT_TOKEN` fica no arquivo de chaves da máquina e nunca se
   imprime; o estado (servidor, canais, dono, último aprendizado postado) fica em `db/discord-estado.json`, fora do
   git. Antes de todo envio, uma guarda barra valor do arquivo de chaves e e-mail que não seja o contato do canal.
-- **Os canais:** `#status`, `#pendencias`, `#aprendizados` e `#erros`. O `preparar` cria os que faltam.
+- **Onde:** no servidor da equipe do Lucas, numa categoria "Alpha Point" (Lucas, 28/09/2026: "Na verdade eu quero
+  colocar em um outro servidor já existente. Um servidor que é da minha equipe, mas ter os chats específicos para o
+  meu projeto"). A categoria saiu sem permissão própria: quem é do servidor vê os canais, e o que a equipe escrever lá
+  não é ordem. O servidor, a categoria, os canais e o usuário do Lucas ficam no estado, fora do git. A marcação
+  (`--marcar`) é sempre do Lucas, nunca do dono do servidor.
+- **Os canais:** `#status`, `#pendencias`, `#aprendizados` e `#erros`, dentro da categoria. A ferramenta só procura
+  canal dentro dela: num servidor de equipe, um "status" pode ser de outra pessoa.
+- **Feito em 28/09/2026:** o bot "Alpha Point" (não público), a chave no arquivo da máquina, a categoria e os 4 canais
+  criados pelo bot (`preparar --criar`), a mensagem de teste, os 27 aprendizados, o status do Juneau e a lista do que
+  depende do Lucas. O Lucas pôs o bot no servidor com o primeiro convite, que dava "Gerenciar canais" no servidor
+  inteiro; o convite de hoje (`conferir`) pede só ver canais, enviar, links e histórico. Tirar essa permissão do bot
+  é do Lucas (Configurações do servidor › Cargos).
 - **Quando o Claude central posta**, sem pedir de novo (foi o que o Lucas escolheu):
   - `#status`: a cada `regie advance` e a cada marco que ele avisaria no chat, em uma ou duas linhas;
   - `#pendencias`, com `--marcar`: cada pergunta ou lista que espera o Lucas, com "responda no chat do Claude";
@@ -847,9 +858,8 @@ te marca quando algo depende de você. As respostas continuam aqui no chat. É o
   em banco, PDF ou mensagem, mídia, quadro ou arquivo de `midia/`. Mensagem curta, em português, sem jargão.
 - **Só o Claude central posta.** Subagente não usa a ferramenta, e o pedido a ele não a cita.
 - Discord fora do ar ou chave recusada: o aviso fica no chat, e o trabalho não para por isso.
-- **O que depende do Lucas** (até ele fazer, `preparar` sai NÃO RODOU, exit 2, e nada se posta): criar o servidor
-  e o bot no Discord, pôr a chave no arquivo de chaves (no PC; nunca no chat) e aceitar o convite que o `conferir`
-  imprime.
+- A chave nova, se um dia precisar (o Lucas a refaz em "Bot" › "Redefinir token"), entra pelo Lucas no Bloco de
+  Notas, no arquivo de chaves, nunca pelo chat.
 
 ## A marca
 

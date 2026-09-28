@@ -10,15 +10,20 @@
 // A chave: DISCORD_BOT_TOKEN no arquivo de chaves da máquina (%USERPROFILE%\.regie\chaves.env), lida pelo leitor
 // da pré-v1 (src/lib/chaves.mjs, com REGIE_MOTOR ou C:/projetos/regie-v1). Nunca se imprime. O estado (o
 // servidor, os canais, o dono e o último aprendizado postado) fica em db/discord-estado.json, fora do git.
-// Sem dependência: o fetch e o WebSocket do próprio Node (24+). Sem npm.
+// Sem dependência: o fetch do próprio Node (24+). Sem npm.
 //
 // Uso (cwd na raiz do canal):
 //   node ferramentas/discord.mjs conferir                       a chave funciona? o nome do bot e o link de convite
-//   node ferramentas/discord.mjs preparar [--servidor=<nome>]   acha o servidor, cria os canais que faltam, manda o teste
+//   node ferramentas/discord.mjs preparar --servidor=<nome> --categoria=<nome> --eu=<usuário do Lucas> [--criar]
+//        acha o servidor, a categoria do projeto e os 4 canais dentro dela, e o Lucas pelo usuário; manda o teste.
+//        Os canais se procuram SÓ dentro da categoria: num servidor de equipe, "status" pode ser de outra pessoa.
+//        Sem --criar, o canal que falta só se relata; com --criar, se cria na categoria (o bot precisa de "Gerenciar
+//        canais", que o convite padrão não pede).
 //   node ferramentas/discord.mjs avisar <canal> [--marcar] [--simular] (--arquivo=<txt> | <texto...>)
 //   node ferramentas/discord.mjs aprendizados [--simular] [--desde=<n>]   os itens novos do APRENDIZADOS.md
 //   node ferramentas/discord.mjs status [--marcar] [--simular]  a fila da Régie (regie queue)
-// Canais: status · pendencias · aprendizados · erros.
+// Canais: status · pendencias · aprendizados · erros. O --marcar marca o Lucas (o usuário do --eu), nunca o dono do
+// servidor: o servidor pode ser da equipe (Lucas, 28/09/2026).
 // Saída: 0 = feito · 1 = o Discord recusou, ou a mensagem foi barrada pela guarda · 2 = não rodou (uso, chave, estado)
 //
 // A guarda, antes de todo envio: nenhuma mensagem sai com um valor do arquivo de chaves (nem do .env do canal),
@@ -32,7 +37,6 @@ const MOTOR = process.env.REGIE_MOTOR || "C:/projetos/regie-v1";
 const { lerChave, onde, interpretar, ARQUIVO_MAQUINA } = await import(pathToFileURL(path.join(MOTOR, "src/lib/chaves.mjs")).href);
 
 const API = "https://discord.com/api/v10";
-const GATEWAY = "wss://gateway.discord.gg/?v=10&encoding=json";
 const UA = "DiscordBot (https://github.com/top10-company/alpha-point, 0.1)"; // o formato que o Discord pede aos bots
 const CANAIS = {
   status: "Cada etapa dos vídeos do Alpha Point.",
@@ -40,8 +44,9 @@ const CANAIS = {
   aprendizados: "As notas do APRENDIZADOS.md, uma por mensagem.",
   erros: "Portão que reprovou, especialista que falhou, site que bloqueou.",
 };
-// MANAGE_CHANNELS (só para criar os canais que faltam) · VIEW_CHANNEL · SEND_MESSAGES · EMBED_LINKS · READ_MESSAGE_HISTORY
-const PERMISSOES = 16 + 1024 + 2048 + 16384 + 65536;
+// O mínimo, para um servidor de equipe: VIEW_CHANNEL · SEND_MESSAGES · EMBED_LINKS · READ_MESSAGE_HISTORY. Sem
+// "Gerenciar canais": quem cria a categoria e os canais é o Lucas (ou o --criar, num servidor dele, com a permissão dada).
+const PERMISSOES = 1024 + 2048 + 16384 + 65536;
 const ESTADO = path.join("db", "discord-estado.json");
 const LIMITE = 1900; // o Discord aceita 2000 caracteres por mensagem; a folga é da menção
 
@@ -106,25 +111,11 @@ async function api(metodo, rota, corpo) {
   throw new Error(`o Discord seguiu limitando (429) em ${metodo} ${rota.replace(/\d{15,}/g, "<id>")}`);
 }
 
-// Uma identificação no gateway, no `preparar`. A documentação antiga do Discord pedia que o bot se identificasse
-// uma vez antes do primeiro post pela API; a de hoje (discord/discord-api-docs, lida em 28/09/2026) não traz mais a
-// frase. Fica porque não custa e prova a chave por outro caminho.
-function gatewayUmaVez() {
-  return new Promise((resolve, reject) => {
-    const ws = new WebSocket(GATEWAY);
-    let feito = false;
-    const acabar = (fn, v) => { if (feito) return; feito = true; clearTimeout(relogio); try { ws.close(1000); } catch { /* já fechado */ } fn(v); };
-    const relogio = setTimeout(() => acabar(reject, new Error("o gateway do Discord não respondeu em 20 s")), 20000);
-    ws.onmessage = (ev) => {
-      let m; try { m = JSON.parse(typeof ev.data === "string" ? ev.data : Buffer.from(ev.data).toString("utf8")); } catch { return; }
-      if (m.op === 10) ws.send(JSON.stringify({ op: 2, d: { token: token(), intents: 1, properties: { os: "windows", browser: "alpha-point", device: "alpha-point" } } }));
-      else if (m.op === 0 && m.t === "READY") acabar(resolve, m.d?.user?.username ?? "?");
-      else if (m.op === 9) acabar(reject, new Error("o gateway recusou a identificação (sessão inválida)"));
-    };
-    ws.onclose = (ev) => acabar(reject, new Error(ev.code === 4004 ? "o Discord recusou a chave (4004): confira a DISCORD_BOT_TOKEN" : `o gateway fechou (${ev.code})`));
-    ws.onerror = () => { /* o onclose diz o porquê */ };
-  });
-}
+// Sem gateway. A documentação antiga do Discord pedia que o bot se identificasse no gateway uma vez antes do primeiro
+// post pela API; a de hoje (discord/discord-api-docs, lida em 28/09/2026) não traz mais a frase. Este bot se identificou
+// no gateway em 28/09/2026 (dois READY), e a identificação saiu daqui: no Windows, o Node 24 cai ao sair do processo
+// depois de um WebSocket ("Assertion failed: !(handle->flags & UV_HANDLE_CLOSING)", exit 127), e identificações
+// seguidas voltam "sessão inválida". A chave se prova pela API (`conferir`).
 
 function lerEstado() { try { return JSON.parse(fs.readFileSync(ESTADO, "utf8")); } catch { return null; } }
 function gravarEstado(e) { fs.mkdirSync(path.dirname(ESTADO), { recursive: true }); fs.writeFileSync(ESTADO, JSON.stringify(e, null, 2) + "\n"); }
@@ -152,15 +143,16 @@ async function postar(canal, texto, { marcar = false, simular = false } = {}) {
   const pedacos = partes(texto);
   if (simular) { console.log(`[simulação] #${canal}${marcar ? " (marcando o Lucas)" : ""}, ${pedacos.length} mensagem(ns):\n${pedacos.join("\n---\n")}`); return; }
   const e = exigirEstado();
+  if (marcar && !e.lucas) console.error("aviso: o Lucas não está no estado (rode o preparar com --eu=<usuário>); vai sem marcar.");
   for (let i = 0; i < pedacos.length; i++) {
-    const marca = marcar && i === 0 && e.dono ? `<@${e.dono}> ` : "";
+    const marca = marcar && i === 0 && e.lucas ? `<@${e.lucas}> ` : "";
     await api("POST", `/channels/${e.canais[canal]}/messages`, {
       content: marca + pedacos[i],
-      allowed_mentions: { parse: [], users: marca ? [e.dono] : [] },
+      allowed_mentions: { parse: [], users: marca ? [e.lucas] : [] },
     });
     if (i < pedacos.length - 1) await dormir(1200);
   }
-  console.log(`enviado a #${canal}: ${pedacos.length} mensagem(ns)${marcar ? ", marcando o Lucas" : ""}`);
+  console.log(`enviado a #${canal}: ${pedacos.length} mensagem(ns)${marcar && e.lucas ? ", marcando o Lucas" : ""}`);
 }
 
 // ---------- os aprendizados ----------
@@ -199,23 +191,42 @@ try {
     console.log(`servidores: ${servidores.length ? servidores.map((g) => g.name).join(", ") : "nenhum ainda"}`);
     console.log(`convite: https://discord.com/oauth2/authorize?client_id=${app.id}&scope=bot&permissions=${PERMISSOES}`);
   } else if (cmd === "preparar") {
-    const nomeBot = await gatewayUmaVez();
+    const [pServidor, pCategoria, pEu] = [valor("servidor"), valor("categoria"), valor("eu")];
+    if (!pServidor || !pCategoria || !pEu) sair(2, "uso: node ferramentas/discord.mjs preparar --servidor=<nome> --categoria=<nome> --eu=<usuário do Lucas> [--criar]");
+    const nomeBot = (await api("GET", "/users/@me")).username;
     const servidores = await api("GET", "/users/@me/guilds");
-    const pedido = valor("servidor");
-    const g = pedido ? servidores.find((x) => x.name === pedido) : servidores.length === 1 ? servidores[0] : null;
-    if (!g) sair(2, `NÃO RODOU — ${servidores.length ? `o bot está em ${servidores.length} servidores (${servidores.map((x) => x.name).join(", ")}); diga qual com --servidor=<nome>` : "o bot ainda não está em nenhum servidor: use o link de convite do `conferir`"}.`);
-    const guild = await api("GET", `/guilds/${g.id}`);
+    const norm = (s) => String(s || "").trim().toLowerCase();
+    const g = servidores.find((x) => norm(x.name) === norm(pServidor));
+    if (!g) sair(2, `NÃO RODOU — o bot não está num servidor chamado "${pServidor}" (está em ${servidores.length ? servidores.map((x) => `"${x.name}"`).join(", ") : "nenhum ainda: use o link de convite do `conferir`"}).`);
     const existentes = await api("GET", `/guilds/${g.id}/channels`);
+    // o Lucas primeiro: se não o achar, nada se cria no servidor
+    // (a busca de membros não pede intenção privilegiada; discord-api-docs, 28/09/2026). "Nome#1234" é o formato antigo:
+    // a busca vai pelo nome, e o número desempata quando a conta ainda o tem.
+    const [eu, disc] = pEu.split("#");
+    const achados = await api("GET", `/guilds/${g.id}/members/search?query=${encodeURIComponent(eu)}&limit=10`);
+    const exatos = achados.filter((m) => (disc && m.user?.discriminator === disc && norm(m.user?.username) === norm(eu))
+      || [m.user?.username, m.user?.global_name, m.nick].some((n) => norm(n) === norm(eu)));
+    const lucas = exatos.length === 1 ? exatos[0] : achados.length === 1 ? achados[0] : null;
+    if (!lucas) sair(2, `NÃO RODOU — ${achados.length ? `${achados.length} membros começam com "${eu}" (${achados.map((m) => m.user?.username).join(", ")}); diga o usuário exato` : `nenhum membro começa com "${eu}"`}.`);
+    let cats = existentes.filter((x) => x.type === 4 && norm(x.name) === norm(pCategoria));
+    if (!cats.length && flag("criar")) cats = [await api("POST", `/guilds/${g.id}/channels`, { name: pCategoria, type: 4 })];
+    if (cats.length !== 1) sair(2, `NÃO RODOU — ${cats.length ? `há ${cats.length} categorias` : "não há categoria"} chamada "${pCategoria}" em "${g.name}"${cats.length ? "" : " (com --criar, ela se cria)"}.`);
+    const cat = cats[0];
     const antes = lerEstado() || {};
-    const canais = {}; const criados = [];
+    const canais = {}; const faltam = []; const criados = [];
     for (const [nome, topico] of Object.entries(CANAIS)) {
-      let c = existentes.find((x) => x.type === 0 && x.name === nome);
-      if (!c) { c = await api("POST", `/guilds/${g.id}/channels`, { name: nome, type: 0, topic: topico }); criados.push(nome); }
-      canais[nome] = c.id;
+      let c = existentes.find((x) => x.type === 0 && x.parent_id === cat.id && norm(x.name) === nome);
+      if (!c && flag("criar")) { c = await api("POST", `/guilds/${g.id}/channels`, { name: nome, type: 0, topic: topico, parent_id: cat.id }); criados.push(nome); }
+      if (c) canais[nome] = c.id; else faltam.push(nome);
     }
-    gravarEstado({ servidor: { id: g.id, nome: g.name }, dono: guild.owner_id, canais, aprendizados_ultimo: antes.aprendizados_ultimo ?? 0, preparado_em: new Date().toISOString() });
-    console.log(`bot ${nomeBot} no servidor "${g.name}" · canais criados agora: ${criados.join(", ") || "nenhum (já existiam)"}`);
-    await postar("status", `Olá! Sou o bot do Alpha Point (${agora()}). Aqui chegam o status dos vídeos; em #pendencias, o que espera você; em #aprendizados, as notas do canal; em #erros, o que deu errado. As respostas continuam no chat do Claude.`, { marcar: true });
+    if (faltam.length) sair(2, `NÃO RODOU — faltam na categoria "${cat.name}" os canais de texto: ${faltam.join(", ")} (crie-os, ou rode com --criar se o bot tiver "Gerenciar canais").`);
+    gravarEstado({
+      servidor: { id: g.id, nome: g.name }, categoria: { id: cat.id, nome: cat.name },
+      lucas: lucas.user.id, lucas_como: lucas.nick || lucas.user.global_name || lucas.user.username,
+      canais, aprendizados_ultimo: antes.aprendizados_ultimo ?? 0, preparado_em: new Date().toISOString(),
+    });
+    console.log(`bot ${nomeBot} em "${g.name}" › "${cat.name}" · o Lucas é "${lucas.nick || lucas.user.global_name || lucas.user.username}" · canais criados agora: ${criados.join(", ") || "nenhum"}`);
+    await postar("status", `Olá! Sou o bot do Alpha Point (${agora()}). Aqui chegam o status dos vídeos; em #pendencias, o que espera o Lucas; em #aprendizados, as notas do canal; em #erros, o que deu errado. Eu só posto: não leio o que se escreve aqui, e as respostas do Lucas continuam no chat do Claude.`, { marcar: true });
   } else if (cmd === "avisar") {
     const canal = livres[0];
     const arq = valor("arquivo");
@@ -244,5 +255,6 @@ try {
     sair(2, "uso: node ferramentas/discord.mjs conferir | preparar | avisar | aprendizados | status (veja o topo do arquivo)");
   }
 } catch (err) {
-  sair(1, `FALHOU — ${err.message}`);
+  const dica = err.status === 403 ? " · o bot não tem permissão ali: se a categoria é privada, dê a ele, nas permissões dela, ver canais, enviar mensagens e ler o histórico" : "";
+  sair(1, `FALHOU — ${err.message}${dica}`);
 }
