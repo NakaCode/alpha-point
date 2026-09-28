@@ -874,6 +874,38 @@ te marca quando algo depende de você. As respostas continuam aqui no chat. É o
 - A chave nova, se um dia precisar (o Lucas a refaz em "Bot" › "Redefinir token"), entra pelo Lucas no Bloco de
   Notas, no arquivo de chaves, nunca pelo chat.
 
+## Os avisos no celular: o Telegram (desde 28/09/2026)
+
+**A decisão.** O Lucas pediu (28/09/2026): "Teria como receber notificações no whatsapp? Notificações simples, erros,
+limites atingidos ou algo esperando por mim". Escolheu primeiro "WhatsApp oficial (Recomendado)": a API da Meta, pelo
+número de teste. No mesmo dia, a Meta travou a conta nova do WhatsApp ("Business account has been locked", erro
+131031, sem motivo dito e sem solução confirmada nos fóruns). A pergunta: "A Meta travou a conta nova do WhatsApp.
+Como seguimos?" A resposta: "Telegram agora". A opção dizia: "Oficial, grátis e sem essa trava: um bot criado no
+próprio app do Telegram, em uns 10 minutos. Não é o WhatsApp."
+- **A ferramenta:** `node ferramentas/telegram.mjs` (`conferir`, `convite`, `preparar`, `avisar [--simular]
+  [--silencioso]`; o topo do arquivo diz como), sem npm. O bot "Alpha Point Avisos" foi criado pelo Lucas no
+  @BotFather. A chave `TELEGRAM_BOT_TOKEN` fica no arquivo de chaves da máquina, posta por ele no Bloco de Notas, e
+  nunca se imprime. O chat dele fica em `db/telegram-estado.json`, fora do git.
+- **Só envia.** A única leitura foi a do `preparar`, uma vez: o chat que mandou o código do convite (de uso único,
+  válido por 2 h), com a fila descartada depois. O que o Lucas escrever lá não se lê e não vale como resposta.
+- **Quando o Claude central manda** (o que o Lucas pediu), curto, em português, sem jargão:
+  - o que espera o Lucas: toda vez que ele for marcado em `#pendencias` no Discord, o mesmo aviso vai ao Telegram;
+  - o erro que segura o vídeo e depende dele: toda vez que `#erros` levar `--marcar`;
+  - o limite atingido: o teto do dia de um banco, o crédito da ElevenLabs, a cota da MapTiler.
+  - Status e aprendizados ficam só no Discord. `--silencioso` manda sem som, para o que não tem pressa.
+  - Se o limite de uso do Claude acabar, ou o PC estiver desligado, nada avisa: o aviso só sai com o Claude
+    trabalhando.
+- **O que nunca vai:** o mesmo do Discord (chave, e-mail, dado pessoal, mídia). A mesma guarda roda antes de todo
+  envio. Só o Claude central manda; subagente não usa a ferramenta.
+- Chave recusada (401): o Lucas pede outra ao @BotFather (`/token`) e troca a linha no Bloco de Notas. Bot bloqueado
+  (403): ele toca em Reiniciar no bot, e o chat se liga de novo com `convite` e `preparar`.
+- **O WhatsApp fica parado, pronto:** `ferramentas/whatsapp.mjs` (`conferir`, `modelo [--criar]`, `teste`, `avisar`)
+  pela API oficial da Meta. O app "Alpha Point Avisos" e a conta do WhatsApp existem, mas a conta está travada, e as
+  4 chaves (`WHATSAPP_TOKEN`, `_NUMERO_ID`, `_CONTA_ID`, `_PARA`) não estão no arquivo de chaves. Para voltar: a trava
+  cair (`business.facebook.com/accountquality`, o pedido de análise é do Lucas), o usuário do sistema e a chave
+  permanente, criados por ele, e o modelo do aviso mandado à Meta só com o ok dele. Número do Brasil: o
+  `WHATSAPP_PARA` é o que o painel mostra em "Destinatário", porque a Meta pode guardá-lo sem o nono dígito.
+
 ## A marca
 
 `marca/identidade.md` (cor, tipo, alvos, cenas), `marca/voz.md` (o narrador e o que ele

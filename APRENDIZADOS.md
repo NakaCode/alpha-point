@@ -812,3 +812,25 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   chat ("Avisos primeiro (Recomendado)").
 - **Por que serve a qualquer canal:** todo canal tem um dono que nem sempre está no PC. Vale levar ao motor, ao lado
   do painel.
+
+### 45. Os avisos no celular pelo Telegram, e por que o WhatsApp da Meta ficou parado
+- **Problema:** o dono quer no celular, no app que ele olha, o que espera por ele, o erro que segura o vídeo e o
+  limite atingido. O Discord já marca (item 44), mas nem todo dono vive no Discord.
+- **O que resolveu:** `ferramentas/telegram.mjs`, a Bot API oficial do Telegram, só com o `fetch` do Node. O dono cria
+  o bot no @BotFather (grátis, uns 5 minutos) e põe a chave no arquivo de chaves pelo Bloco de Notas. O chat dele se
+  liga por um link `t.me/<bot>?start=<código>`, de uso único e válido por 2 h: o `preparar` só aceita o chat que
+  mandou aquele código, e descarta a fila. Dali em diante, a ferramenta só envia, com a mesma guarda do Discord.
+- **O WhatsApp oficial, tentado no mesmo dia:** o número de teste da Meta é grátis e não pede cartão, mas:
+  - fora da janela de 24 h, só entrega modelo aprovado;
+  - a chave de teste vence em 24 h, e a permanente pede um usuário do sistema, que só se cria com um app no
+    portfólio;
+  - a conta nova foi travada na primeira mensagem ("Business account has been locked", 131031), sem motivo dito.
+    Nos fóruns, há o mesmo relato desde maio de 2026, sem solução confirmada.
+
+  O jeito não oficial (WhatsApp Web automatizado, serviço que repassa a mensagem) vai contra as regras do WhatsApp ou
+  passa o número do dono por terceiros. `ferramentas/whatsapp.mjs` fica pronto para quando a conta destravar.
+- **Tropeços:** a Bot API do Telegram leva a chave no caminho da URL, então nenhuma mensagem de erro da ferramenta
+  mostra a URL. O código do convite só chega depois que o dono aperta Iniciar: por isso são dois comandos, `convite`
+  e `preparar`.
+- **Por que serve a qualquer canal:** todo dono quer saber, longe do PC, quando o vídeo espera por ele. Vale levar ao
+  motor junto com o Discord, e ao guia dos amigos.
