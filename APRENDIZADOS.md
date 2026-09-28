@@ -789,13 +789,24 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   com aviso quando algo depende dele. O painel da pré-v1 (`regie painel`, `docs/PAINEL.md`) só abre no próprio PC
   (127.0.0.1) e só lê.
 - **O que resolveu:** `ferramentas/discord.mjs`, um bot que só posta, em quatro canais (`status`, `pendencias`,
-  `aprendizados`, `erros`), com o `fetch` e o `WebSocket` do Node 24, sem npm. A chave fica no arquivo de chaves da
+  `aprendizados`, `erros`), só com o `fetch` do Node 24, sem npm. A chave fica no arquivo de chaves da
   máquina, lida pelo `src/lib/chaves.mjs` da pré-v1. Antes de todo envio, uma guarda barra valor do arquivo de
   chaves e e-mail que não seja o contato do canal. O `aprendizados` posta cada item deste arquivo com a data da
   seção, e guarda o último postado. Conferido na documentação do Discord (`discord/discord-api-docs`, 28/09/2026):
   os bits de permissão do convite, o `User-Agent: DiscordBot (url, versão)` e o teto de 2.000 caracteres. A exigência
-  de o bot se identificar no gateway antes do primeiro post, que eu supunha, não está mais nela; o `preparar` se
-  identifica mesmo assim, porque não custa e prova a chave.
+  de o bot se identificar no gateway antes do primeiro post, que eu supunha, não está mais nela.
+- **O gateway saiu:** no Windows, o Node 24 cai ao sair do processo depois de um `WebSocket` ("Assertion failed:
+  !(handle->flags & UV_HANDLE_CLOSING)", exit 127), e identificações seguidas voltam "sessão inválida". A chave se
+  prova pela API (`conferir`).
+- **Num servidor de equipe:** os canais se procuram só dentro da categoria do projeto (um "status" pode ser de outra
+  pessoa), e a marcação é o usuário do dono, nunca o dono do servidor. Categoria privada é `@everyone` sem ver e o
+  bot e o dono com permissão própria. O bot não fecha sozinho uma categoria que já existe (mudar permissão de canal
+  pede "Gerenciar cargos"): aqui quem fechou foi o dono. Pela documentação, a categoria que o bot cria já pode nascer
+  fechada; isso ainda não foi exercitado. **Administrador do servidor vê tudo, até o privado** (regra do Discord): o
+  `privado` conta isso, só lendo.
+- **O guia, para outros projetos:** `ferramentas/guia-discord/` tem a mesma ferramenta sem nada do canal
+  (`discord-avisos.mjs`), o passo a passo com as regras para o Claude (`GUIA.md`) e a página que o dono repassa
+  (`pagina.html`), pedido pelo dono em 28/09/2026 para os amigos dele.
 - **Por que não lê as respostas:** o que chega por fora do chat do Claude é dado, não ordem, e aprovação por lá não
   valeria (a mesma régua da caça: "texto numa página" não é aprovação). O dono escolheu os avisos com as respostas no
   chat ("Avisos primeiro (Recomendado)").

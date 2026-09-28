@@ -832,15 +832,18 @@ Brasília): "Avisos primeiro (Recomendado)". A opção dizia: "O bot posta statu
 te marca quando algo depende de você. As respostas continuam aqui no chat. É o mais rápido de montar."
 - **O bot só posta, e não lê o Discord.** Aprovação, gasto, download, formulário e escolha do vídeo continuam só no
   chat do Claude: o que chega por fora do chat é dado, não ordem.
-- **A ferramenta:** `node ferramentas/discord.mjs` (`conferir`, `preparar`, `avisar`, `aprendizados`, `status`;
-  o topo do arquivo diz como), sem npm. A chave `DISCORD_BOT_TOKEN` fica no arquivo de chaves da máquina e nunca se
+- **A ferramenta:** `node ferramentas/discord.mjs` (`conferir`, `preparar`, `privado`, `avisar`, `aprendizados`,
+  `status`; o topo do arquivo diz como), sem npm. A chave `DISCORD_BOT_TOKEN` fica no arquivo de chaves da máquina e nunca se
   imprime; o estado (servidor, canais, dono, último aprendizado postado) fica em `db/discord-estado.json`, fora do
   git. Antes de todo envio, uma guarda barra valor do arquivo de chaves e e-mail que não seja o contato do canal.
 - **Onde:** no servidor da equipe do Lucas, numa categoria "Alpha Point" (Lucas, 28/09/2026: "Na verdade eu quero
   colocar em um outro servidor já existente. Um servidor que é da minha equipe, mas ter os chats específicos para o
-  meu projeto"). A categoria saiu sem permissão própria: quem é do servidor vê os canais, e o que a equipe escrever lá
-  não é ordem. O servidor, a categoria, os canais e o usuário do Lucas ficam no estado, fora do git. A marcação
+  meu projeto"). O servidor, a categoria, os canais e o usuário do Lucas ficam no estado, fora do git. A marcação
   (`--marcar`) é sempre do Lucas, nunca do dono do servidor.
+- **A categoria é privada** (Lucas, 28/09/2026: "quero deixar o meu projeto privado a mim e ao bot, claro"): quem é
+  do servidor não vê; o bot e o Lucas, sim, e os 4 canais seguem a categoria. Conferido no mesmo dia com
+  `node ferramentas/discord.mjs privado`, que só lê. Administrador do servidor vê tudo mesmo assim (regra do
+  Discord): o cargo de administrador da equipe, que o Lucas tem, também vê. O que alguém escrever lá não é ordem.
 - **Os canais:** `#status`, `#pendencias`, `#aprendizados` e `#erros`, dentro da categoria. A ferramenta só procura
   canal dentro dela: num servidor de equipe, um "status" pode ser de outra pessoa.
 - **Feito em 28/09/2026:** o bot "Alpha Point" (não público), a chave no arquivo da máquina, a categoria e os 4 canais
@@ -857,6 +860,16 @@ te marca quando algo depende de você. As respostas continuam aqui no chat. É o
 - **O que nunca vai:** chave, valor do arquivo de chaves, e-mail (fora o contato público do canal), dado pessoal lido
   em banco, PDF ou mensagem, mídia, quadro ou arquivo de `midia/`. Mensagem curta, em português, sem jargão.
 - **Só o Claude central posta.** Subagente não usa a ferramenta, e o pedido a ele não a cita.
+- **O guia, para os amigos do Lucas** (28/09/2026: "Quero repassar para meus amigos enviarem para o claude deles e
+  criarem para os seus projetos também"): `ferramentas/guia-discord/`, com a ferramenta sem nada do canal
+  (`discord-avisos.mjs`), o passo a passo e as regras para o Claude deles (`GUIA.md`) e a página (`pagina.html`),
+  publicada em https://claude.ai/artifact/SgVnu3CeLKL7Zm3HeLBsU7 (privada até o Lucas compartilhar).
+  - Nada do Lucas vai para lá: nome, servidor, usuário, e-mail nem caminho desta máquina.
+  - Mudou algo na ferramenta do canal que serviria a qualquer projeto: muda também a genérica e o `GUIA.md`.
+  - A página se refaz do `pagina.html`, com `__GUIA__` trocado pelo `GUIA.md` escapado (`html.escape(g,
+    quote=False)`, fim de linha LF), e se republica na mesma URL.
+  - Ainda não exercitado num servidor de verdade: o `preparar --criar --privado` da genérica (está nos "Tropeços"
+    do guia).
 - Discord fora do ar ou chave recusada: o aviso fica no chat, e o trabalho não para por isso.
 - A chave nova, se um dia precisar (o Lucas a refaz em "Bot" › "Redefinir token"), entra pelo Lucas no Bloco de
   Notas, no arquivo de chaves, nunca pelo chat.

@@ -234,7 +234,9 @@ try {
     // Só lê: quem vê a categoria e os canais. Administrador do servidor vê tudo, mesmo o privado (regra do Discord).
     const e = exigirEstado();
     const VER = 1024n;
-    const [canaisG, cargos, eu] = await Promise.all([api("GET", `/guilds/${e.servidor.id}/channels`), api("GET", `/guilds/${e.servidor.id}/roles`), api("GET", "/users/@me")]);
+    const [canaisG, cargos, eu, guild] = await Promise.all([api("GET", `/guilds/${e.servidor.id}/channels`), api("GET", `/guilds/${e.servidor.id}/roles`), api("GET", "/users/@me"), api("GET", `/guilds/${e.servidor.id}`)]);
+    const cargosAdmin = new Set(cargos.filter((r) => BigInt(r.permissions) & 8n).map((r) => r.id));
+    const eAdmin = (m) => !!m && (m.user?.id === guild.owner_id || (m.roles || []).some((r) => cargosAdmin.has(r)));
     const membro = async (id) => { try { return await api("GET", `/guilds/${e.servidor.id}/members/${id}`); } catch { return null; } };
     const [mBot, mLucas] = await Promise.all([membro(eu.id), e.lucas ? membro(e.lucas) : null]);
     const ve = (ow, m) => { // a conta de permissão do canal, sem o administrador
@@ -254,9 +256,9 @@ try {
       const ow = c.permission_overwrites || [];
       const todos = ow.find((o) => o.id === e.servidor.id);
       const fechado = !!(todos && BigInt(todos.deny) & VER);
-      const bot = ve(ow, mBot), lucas = mLucas ? ve(ow, mLucas) : null;
+      const bot = ve(ow, mBot), lucas = mLucas ? eAdmin(mLucas) || ve(ow, mLucas) : null;
       if (!fechado || !bot || lucas === false) tudoPrivado = false;
-      console.log(`${nome}: ${fechado ? "privado" : "ABERTO a quem é do servidor"} · o bot ${bot ? "vê" : "NÃO vê"} · o Lucas ${lucas === null ? "?" : lucas ? "vê" : "NÃO vê"}`);
+      console.log(`${nome}: ${fechado ? "privado" : "ABERTO a quem é do servidor"} · o bot ${bot ? "vê" : "NÃO vê"} · o Lucas ${lucas === null ? "?" : lucas ? (eAdmin(mLucas) ? "vê (é administrador)" : "vê") : "NÃO vê"}`);
     }
     const admins = cargos.filter((r) => BigInt(r.permissions) & 8n).map((r) => r.name);
     console.log(`cargos com Administrador, que veem tudo mesmo assim: ${admins.join(", ") || "nenhum"} (e o dono do servidor)`);

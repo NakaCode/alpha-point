@@ -1,0 +1,144 @@
+<title>Avisos no Discord</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #F3F5F4; --surface: #FFFFFF; --ink: #16201C; --muted: #56635D; --rule: #D9E0DC;
+  --accent: #127A59; --accent-ink: #FFFFFF; --lamp: #1FB57F; --warn-bg: #FFF6E0; --warn-ink: #6B4A00;
+  --side: #1D2521; --side-ink: #C9D4CE; --side-muted: #86958D; --side-hi: #2A3530;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0F1513; --surface: #161E1B; --ink: #E7EEEA; --muted: #9DAAA3; --rule: #27322D;
+    --accent: #3DD6A0; --accent-ink: #0C1411; --lamp: #3DD6A0; --warn-bg: #2A2413; --warn-ink: #F2D38A;
+    --side: #0B100E; --side-ink: #C9D4CE; --side-muted: #7E8C85; --side-hi: #1A2420;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0F1513; --surface: #161E1B; --ink: #E7EEEA; --muted: #9DAAA3; --rule: #27322D;
+  --accent: #3DD6A0; --accent-ink: #0C1411; --lamp: #3DD6A0; --warn-bg: #2A2413; --warn-ink: #F2D38A;
+  --side: #0B100E; --side-ink: #C9D4CE; --side-muted: #7E8C85; --side-hi: #1A2420;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--sans); padding-inline: 16px; }
+.pag { max-width: 760px; margin: 0 auto; padding-block: 40px 72px; display: grid; gap: 40px; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 700 clamp(32px, 6vw, 46px)/1.05 var(--sans); margin: 10px 0 12px; letter-spacing: -.01em; text-wrap: balance; }
+h2 { font: 700 22px/1.2 var(--sans); margin: 0 0 12px; text-wrap: balance; }
+p { margin: 0 0 12px; max-width: 66ch; }
+.sub { color: var(--muted); font-size: 18px; }
+.topo { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; }
+@media (max-width: 640px) { .topo { grid-template-columns: 1fr; } }
+/* a barra lateral de exemplo: a categoria do projeto, fechada, com os quatro canais */
+.lateral { background: var(--side); color: var(--side-ink); border-radius: 10px; padding: 14px 10px; width: 230px; max-width: 100%; font: 500 14px/1.2 var(--mono); }
+.cat { display: flex; align-items: center; gap: 6px; color: var(--side-muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 8px 8px; }
+.cat svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
+.canal { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-radius: 6px; }
+.canal b { color: var(--side-muted); font-weight: 500; }
+.canal.ativo { background: var(--side-hi); color: #fff; }
+.canal .ping { margin-left: auto; min-width: 18px; height: 18px; border-radius: 9px; background: var(--lamp); color: #0C1411; font: 700 11px/18px var(--sans); text-align: center; padding: 0 5px; }
+.regra { background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 8px; padding: 16px 18px; }
+.regra p:last-child { margin-bottom: 0; }
+.canais { list-style: none; padding: 0; margin: 0 0 14px; display: grid; gap: 8px; }
+.canais li { display: grid; grid-template-columns: 140px 1fr; gap: 12px; align-items: baseline; }
+@media (max-width: 480px) { .canais li { grid-template-columns: 1fr; gap: 2px; } }
+.canais code { font: 600 14px/1.4 var(--mono); color: var(--accent); }
+ul.simples { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 66ch; }
+ol.passos { list-style: none; counter-reset: p; padding: 0; margin: 0; display: grid; gap: 18px; }
+ol.passos > li { counter-increment: p; display: grid; grid-template-columns: 34px 1fr; gap: 14px; }
+ol.passos > li::before { content: counter(p); width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font: 700 15px/34px var(--sans); text-align: center; }
+ol.passos b { font-weight: 600; }
+ol.passos > li > div, .canais li > span, .regra p, ul.simples li { min-width: 0; overflow-wrap: anywhere; }
+.ui { font: 500 14px/1.4 var(--mono); background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; padding: 1px 6px; overflow-wrap: anywhere; }
+.aviso { background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: 12px 16px; font-size: 15px; margin-top: 18px; }
+.claude { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; display: grid; gap: 14px; }
+.claude p { margin: 0; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+button { font: 600 16px/1 var(--sans); background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 8px; padding: 14px 20px; cursor: pointer; }
+button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+#msg { color: var(--muted); font-size: 15px; min-height: 1.4em; }
+textarea { width: 100%; height: 260px; resize: vertical; background: var(--bg); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 12px; font: 400 13px/1.5 var(--mono); }
+.pe { color: var(--muted); font-size: 14px; border-top: 1px solid var(--rule); padding-top: 16px; margin: 0; }
+</style>
+
+<div class="pag">
+  <header class="topo">
+    <div>
+      <span class="eyebrow">Guia · Claude Code + Discord</span>
+      <h1>Avisos no Discord</h1>
+      <p class="sub">Um bot que posta o andamento do seu projeto num canto privado do Discord e te marca quando algo depende de você.</p>
+    </div>
+    <div class="lateral" aria-label="Exemplo: a categoria do projeto, privada, com os quatro canais">
+      <div class="cat"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>seu projeto</div>
+      <div class="canal"><b>#</b>status</div>
+      <div class="canal ativo"><b>#</b>pendencias<span class="ping">1</span></div>
+      <div class="canal"><b>#</b>aprendizados</div>
+      <div class="canal"><b>#</b>erros</div>
+    </div>
+  </header>
+
+  <section>
+    <h2>O que ele faz</h2>
+    <ul class="canais">
+      <li><code>#status</code><span>cada etapa que termina</span></li>
+      <li><code>#pendencias</code><span>o que espera você, com uma marcação que faz o celular avisar</span></li>
+      <li><code>#aprendizados</code><span>as notas de aprendizado do projeto, uma por mensagem</span></li>
+      <li><code>#erros</code><span>o que deu errado</span></li>
+    </ul>
+    <div class="regra">
+      <p><b>O bot só posta. Ele não lê o Discord.</b> As suas respostas continuam no chat do Claude.</p>
+      <p>O que chega por fora do chat é informação, não ordem. Assim ninguém do servidor aprova, gasta ou decide por você, e uma mensagem falsa não vira ação.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que você precisa</h2>
+    <ul class="simples">
+      <li>O Claude Code (o app no computador ou o terminal) tocando o seu projeto, com o Node.js 18 ou mais novo.</li>
+      <li>Uma conta no Discord e um servidor em que você possa pôr bots (a permissão "Gerenciar servidor"). Pode ser seu ou da sua equipe.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Passo a passo</h2>
+    <ol class="passos">
+      <li><div><b>Crie o app do bot.</b> Abra discord.com/developers/applications, clique em <span class="ui">New Application</span>, dê um nome e aceite os termos do Discord.</div></li>
+      <li><div><b>Em <span class="ui">Installation</span> (Instalação)</b>, mude <span class="ui">Install Link</span> para <span class="ui">None</span> (Nenhum) e salve. Sem isso, o Discord não deixa fazer o passo seguinte.</div></li>
+      <li><div><b>Em <span class="ui">Bot</span></b>, desligue <span class="ui">Public Bot</span> (Bot público) e salve. Depois clique em <span class="ui">Reset Token</span>, confirme e clique em <span class="ui">Copy</span>. <b>Não cole a chave no chat do Claude.</b></div></li>
+      <li><div><b>Diga ao seu Claude: "copiei a chave do bot".</b> Ele abre o arquivo de chaves no editor de texto. Você escreve <span class="ui">DISCORD_BOT_TOKEN=</span> e cola a chave logo depois, sem espaço. Salva e fecha.</div></li>
+      <li><div><b>O Claude confere a chave e te dá um link de convite.</b> Abra, escolha o servidor e autorize.</div></li>
+      <li><div><b>Diga ao Claude</b> o nome do servidor, o nome que você quer para a categoria (por exemplo, o do projeto) e o seu usuário no Discord. Ele cria a categoria já privada, com os quatro canais, e manda a primeira mensagem te marcando.</div></li>
+      <li><div><b>Opcional:</b> depois, tire do bot a permissão "Gerenciar canais", em Configurações do servidor, Cargos. Ele só precisa dela para criar a categoria.</div></li>
+    </ol>
+    <p class="aviso">Administrador do servidor vê tudo, até categoria privada. É regra do Discord.</p>
+  </section>
+
+  <section class="claude">
+    <h2>Para o seu Claude</h2>
+    <p>O texto abaixo tem este passo a passo, as regras de segurança que o Claude deve seguir e o código da ferramenta, pronto. Copie e cole no chat do Claude Code do seu projeto, com um pedido como "quero esse bot de avisos no Discord".</p>
+    <div class="acoes">
+      <button id="copiar" type="button">Copiar o guia para o Claude</button>
+      <span id="msg" role="status"></span>
+    </div>
+    <textarea id="texto" readonly aria-label="O guia completo, para colar no Claude">__GUIA__</textarea>
+  </section>
+
+  <p class="pe">Testado no Windows com o Node 24 em 28/09/2026. O que ainda não foi exercitado num servidor de verdade está nos "Tropeços conhecidos", dentro do texto para o Claude.</p>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById("copiar"), area = document.getElementById("texto"), msg = document.getElementById("msg");
+  btn.addEventListener("click", function () {
+    function selecionar() { area.focus(); area.select(); msg.textContent = "Selecionei o texto: aperte Ctrl+C (ou Cmd+C) e cole no chat do seu Claude."; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(area.value).then(function () { msg.textContent = "Copiado. Cole no chat do Claude do seu projeto."; }, selecionar);
+    } else { selecionar(); }
+  });
+})();
+</script>
