@@ -830,7 +830,8 @@ aleatório, flag que esconde automação ou troca de cabeçalho.
 nunca diz) e `marca/midia.md` (de onde vem cada imagem e o que as licenças deixam fazer).
 Todo passo que pede "a marca ativa" lê os três. `marca/prancha.html` é a conferência visual, e
 `marca/prancha-documento-card.html` é a da folha de documento e do card de pessoa (Lucas, 27/09/2026; identidade §5),
-e a do aviso do ano da foto (Lucas, 27/09/2026; identidade §6).
+e a do aviso do ano da foto (Lucas, 27/09/2026; identidade §6). `marca/prancha-fim.html` é a do carimbo e da tela
+final do Juneau (Lucas, 28/09/2026; identidade §5, "A tela final e o carimbo do Juneau").
 `marca/pronuncias.md` é a folha permanente de pronúncias do canal: a folha de cada vídeo começa dela.
 `marca/embalagem.md` é como o canal faz título e miniatura: os moldes das referências, as regras e a receita da miniatura.
 `marca/acervos/` é o levantamento de acervos livres e oficiais de 27/09/2026, com a licença de cada fonte lida na

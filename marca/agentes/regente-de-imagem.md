@@ -36,7 +36,8 @@
 - **Sem títulos de capítulo na tela** (Lucas, 26/09/2026; CLAUDE.md): não há vão de card a cobrir.
 - **Os últimos 20 s não têm voz**: são da tela final do YouTube (`canal.json › narracao.cauda_tela_final_s`).
   O que cobre esse trecho, no Juneau (Lucas, 28/09/2026: "A última cena, parada e escurecendo (Recomendado)"): o
-  quadro final da cena anterior, parado e escurecendo aos poucos, sem chegar ao preto e sem texto novo. A cena da
+  quadro final da cena anterior, parado e escurecendo aos poucos até metade do brilho (Lucas, 28/09/2026: "Médio
+  (Recomendado)"), sem chegar ao preto e sem texto novo (identidade.md §5, "A tela final e o carimbo do Juneau"; a conferência visual é `marca/prancha-fim.html`). A cena da
   cauda leva um beat único `continua`, `forca: livre`, com o `porque` "tela final: a última cena, parada e
   escurecendo (Lucas, 28/09/2026)". Nos próximos vídeos, até o Lucas decidir de novo, o `porque` diz "proposta: a
   tela final do Juneau".

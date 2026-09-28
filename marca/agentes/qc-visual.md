@@ -279,8 +279,11 @@
   Studio. Julgue a cena **como fundo** (ofício §2.3). Ela vem declarada com `data-qc-sem-heroi` e o motivo.
   Nunca reprove pela falta desses elementos.
 - O que vai por baixo, no Juneau (Lucas, 28/09/2026: "A última cena, parada e escurecendo (Recomendado)"): o
-  quadro final da cena anterior, parado e escurecendo aos poucos, sem texto novo. Nos próximos vídeos, até o Lucas
-  decidir de novo, a do Juneau é a proposta. Texto novo ou herói nesses 20 s **sinaliza** (os elementos do YouTube
+  quadro final da cena anterior, parado e escurecendo aos poucos, sem texto novo, até metade do brilho, linear em
+  20 s (Lucas, 28/09/2026: "Médio (Recomendado)"), com a composição na metade esquerda e a direita livre para os
+  botões do YouTube ("B, carimbo de borracha à esquerda (Recomendado)"; identidade.md §5, "A tela final e o carimbo do Juneau"; a conferência visual é `marca/prancha-fim.html`). No Juneau, o último
+  quadro com o brilho longe de 50 % sinaliza, e elemento na metade direita, onde caem os botões, também. Nos próximos
+  vídeos, até o Lucas decidir de novo, a do Juneau é a proposta. Texto novo ou herói nesses 20 s **sinaliza** (os elementos do YouTube
   vão cobrir). Buraco preto reprova, inclusive o escurecer que chega ao preto (identidade.md §5: 100 % coberto).
 - Se o vídeo usa Shutterstock, a linha `Image(s) and/or video used under license from Shutterstock.com` tem de
   estar na faixa de crédito desta última cena (identidade.md §7). Sem ela, reprova (`fonte`).

@@ -184,7 +184,11 @@ em posição escolhida no YouTube Studio, que o canal ainda não fixou.
 
 O que vai por baixo, no Juneau (Lucas, 28/09/2026: "A última cena, parada e escurecendo (Recomendado)"): "O quadro
 final (o YES da votação e a linha do preço vazia) para e escurece aos poucos, sem texto novo. Não disputa com os
-botões." Ele escurece sem chegar ao preto (identidade.md §5: 100 % coberto). A cena é fundo: sem texto novo, sem
+botões." Ele escurece até metade do brilho, linear em 20 s, sem chegar ao preto (Lucas, 28/09/2026: "Médio
+(Recomendado)"; identidade.md §5, "A tela final e o carimbo do Juneau": 100 % coberto). A composição fica na metade
+esquerda, e a direita, livre para os botões do YouTube ("B, carimbo de borracha à esquerda (Recomendado)"). O YES é o
+carimbo de borracha da abertura (s01): a caixa, a letra, a inclinação e a tinta gasta estão na identidade, e a
+conferência visual é `marca/prancha-fim.html`. A cena é fundo: sem texto novo, sem
 herói e sem elemento-chave, e declarada com `data-qc-sem-heroi="fundo da tela final do YouTube
 (canal.json › narracao.cauda_tela_final_s)"`. É assim que o qc-visual a julga como fundo (ofício dele, §2.3). Nos
 próximos vídeos, até o Lucas decidir de novo, a do Juneau é a proposta; antes dela, a cena era fundo com movimento

@@ -277,6 +277,42 @@ por IA apresentada como real.
     na margem de baixo da foto impressa, em `--tinta-escura` a 72 %, 84 px, Inter 500. A moldura tem altura para
     ele: a margem de baixo é de 190 px na prancha.
 
+**A tela final e o carimbo do Juneau** (Lucas, 28/09/2026). Duas perguntas no mesmo dia:
+- **O fundo da tela final** (11:2x de Brasília). A pergunta: "Os últimos 20 s do vídeo não têm narração: é onde o
+  YouTube põe os botões de outro vídeo e de inscrição. O que fica no fundo?" A resposta: "A última cena, parada e
+  escurecendo (Recomendado)". A opção dizia: "O quadro final (o YES da votação e a linha do preço vazia) para e
+  escurece aos poucos, sem texto novo. Não disputa com os botões."
+- **O estilo e o quanto escurece** (12:3x de Brasília), numa página com três caminhos animados
+  (https://claude.ai/artifact/QDi33hvuNYC1aoV1mcybwr):
+  - A pergunta: "Qual caminho para o fim do vídeo? O YES é o mesmo carimbo da abertura, então a escolha vale para
+    as duas cenas." A resposta: "B, carimbo de borracha à esquerda (Recomendado)". A opção dizia: "O YES com caixa
+    e tinta gasta, e a linha do preço embaixo. A direita fica livre para os botões do YouTube, e a mensagem
+    continua à vista nos 20 s."
+  - E: "Quanto a tela escurece nos 20 s da tela final?" A resposta: "Médio (Recomendado)". A opção dizia: "Termina
+    com metade do brilho: o YES segue legível e os botões se destacam."
+
+O que vale, em px do palco 3840×2160:
+- **O carimbo** é o YES da abertura (s01) e o do fim (s62), o mesmo:
+  - Barlow Condensed 800, 360 px, em `--tinta`, numa caixa de traço de 18 px em `--tinta`, com cantos de 26 px;
+  - inclinado −7°, com a tinta gasta (uma máscara de ruído sobre a caixa e a letra);
+  - entra batido, como carimbo: grande e transparente, bate e assenta em menos de meio segundo.
+  - Na abertura, o que vai dentro e em volta da caixa (a porcentagem, a contagem) é do `diretor-de-arte` e do
+    `redator-de-tela`; a caixa, a letra e a tinta são estas.
+- **A linha do preço** (o motivo de s02) fica logo abaixo do carimbo:
+  - o `$` em Barlow Condensed 800, 360 px, em `--tinta`;
+  - a lacuna de 1.180 px, com o traço de 12 px em `--destaque` e o grifo (`--destaque` a 35 %) numa faixa de 72 px
+    logo acima do traço. Nenhum número.
+- **Tudo na metade esquerda**, a partir de x = 330, e a direita livre para os botões do YouTube (os vídeos
+  sugeridos e o botão de inscrição). Nada no canto reservado de 400 × 400 px nem na faixa do crédito (§4.2).
+- **A tela final** (a cena da cauda, s63) é o último quadro de s62, parado:
+  - o brilho vai de 100 % a 50 % em 20 s, linear, e nunca chega ao preto (100 % coberto, acima);
+  - nenhum texto novo e nenhum movimento além do escurecer;
+  - o crédito, quando há, fica fora do escurecer, legível até o fim.
+- **A conferência visual** é `marca/prancha-fim.html` (abre no navegador, com as fontes de `marca/fontes/`): mostra a
+  voz e os 20 s, os botões do YouTube por cima e as áreas reservadas. É montagem de referência, não cena do pipeline.
+- **Nos próximos vídeos**, a tela final parada e escurecendo até metade do brilho, com a composição à esquerda, é a
+  proposta; o que vai nela (o carimbo, a linha do preço) depende do motivo de cada vídeo, e o Lucas decide de novo.
+
 ## 6 · Base de mapa e mídia
 
 **Tratamento da base de satélite**: brilho a 65 %, saturação a 70 %. Contorno do protagonista em

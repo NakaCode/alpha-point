@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prancha: o fim do Juneau</title>
+<!-- Referência visual da identidade §5 (Lucas, 28/09/2026, 12:3x de Brasília: "B, carimbo de borracha à esquerda
+     (Recomendado)" e "Médio (Recomendado)", na página de opções https://claude.ai/artifact/QDi33hvuNYC1aoV1mcybwr).
+     Montagem para conferência, não cena do pipeline: a cena de verdade liga marca/tokens.css e segue o contrato do
+     editor-de-arte. Fontes locais de marca/fontes/, sem rede. Medidas no palco 3840×2160 em unidades --u (1 px do 4K). -->
+<style>
+@font-face { font-family: "Inter"; src: url("fontes/inter/Inter-VF.ttf") format("truetype"); font-weight: 100 900; }
+@font-face { font-family: "Barlow Condensed"; src: url("fontes/barlowcondensed/BarlowCondensed-ExtraBold.ttf") format("truetype"); font-weight: 600 800; }
+
+:root {
+  --bg: #ECE8DF; --surface: #F5F2EB; --ink: #14181F; --muted: #5A6170; --rule: #D6D0C3; --accent-ink: #8F5500;
+  --fundo: #0E1726; --painel: #172338; --papel: #ECE8DF; --tinta: #F4F1EA; --tinta-escura: #14181F;
+  --destaque: #F5A524; --contraparte: #2EC4B6; --neutro: #737D8E;
+  --grifo: color-mix(in srgb, #F5A524 35%, transparent);
+  --fonte: "Inter", "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --titulo: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --fim: .5;            /* o brilho do último quadro da tela final (nunca 0: sem chegar ao preto) */
+  --cauda: 20s;         /* a duração da tela final na prévia */
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { color-scheme: dark; --bg: #0A111D; --surface: #111B2D; --ink: #F4F1EA; --muted: #A7B0C0; --rule: #24314A; --accent-ink: #F5A524; }
+}
+:root[data-theme="dark"] { color-scheme: dark; --bg: #0A111D; --surface: #111B2D; --ink: #F4F1EA; --muted: #A7B0C0; --rule: #24314A; --accent-ink: #F5A524; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 400 15px/1.55 var(--fonte); padding-inline: 16px; }
+.pag { max-width: 1120px; margin: 0 auto; padding-block: 36px 72px; display: grid; gap: 48px; }
+.topo { display: grid; gap: 14px; }
+.eyebrow { font: 700 12px/1 var(--fonte); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 800 clamp(36px, 6vw, 60px)/.95 var(--titulo); text-transform: uppercase; margin: 0; text-wrap: balance; }
+.sub { margin: 0; color: var(--muted); max-width: 70ch; }
+.ctrls { display: grid; gap: 10px; }
+.ctrl { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+.ctrl > span.rot { font: 700 12px/1 var(--fonte); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); min-width: 118px; }
+.ctrl button, .op-h button { font: 600 13px/1 var(--fonte); color: var(--ink); background: transparent; border: 1px solid var(--ink); border-radius: 999px; padding: 9px 14px; cursor: pointer; }
+.ctrl button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.ctrl button:focus-visible, .op-h button:focus-visible { outline: 2px solid var(--destaque); outline-offset: 2px; }
+.bloco { display: grid; gap: 26px; }
+.op { display: grid; gap: 12px; }
+.op-h { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.letra { font: 800 30px/1 var(--titulo); color: var(--accent-ink); }
+.op-h h3 { margin: 0; font: 700 18px/1.2 var(--fonte); }
+.op-h button { margin-left: auto; }
+.estado { font: 500 13px/1.3 var(--fonte); color: var(--muted); min-height: 1.3em; font-variant-numeric: tabular-nums; }
+.notas { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 14px; color: var(--muted); max-width: 80ch; }
+.notas b { color: var(--ink); font-weight: 700; }
+.fim { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 20px clamp(16px, 3vw, 26px); display: grid; gap: 8px; }
+.fim h2 { margin: 0; font: 800 24px/1 var(--titulo); text-transform: uppercase; }
+.fim p { margin: 0; color: var(--muted); max-width: 72ch; }
+
+/* ---------- o quadro 3840×2160 ---------- */
+.quadro { position: relative; width: 100%; aspect-ratio: 16 / 9; container-type: inline-size; overflow: hidden; border-radius: 4px; box-shadow: 0 1px 0 var(--rule), 0 10px 30px -18px rgba(0,0,0,.45); }
+.palco { --u: calc(100cqw / 3840); position: absolute; inset: 0; font-family: var(--fonte); color: var(--tinta); overflow: hidden; background: #000; }
+.cena { position: absolute; inset: 0; background: var(--fundo); }
+.cena::after { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); background-size: calc(480 * var(--u)); pointer-events: none; }
+.el { position: absolute; }
+.credito { left: calc(200 * var(--u)); top: calc(1940 * var(--u)); max-width: calc(1520 * var(--u)); font: 500 calc(76 * var(--u))/1.2 var(--fonte); color: color-mix(in srgb, var(--tinta) 80%, transparent); z-index: 3; opacity: 0; }
+
+/* o YES: Barlow Condensed 800, o carimbo da abertura (s01) */
+.yes { font: 800 calc(360 * var(--u))/.86 var(--titulo); letter-spacing: .01em; color: var(--tinta); white-space: nowrap; }
+.yes.grande { font-size: calc(480 * var(--u)); color: var(--contraparte); }
+/* B: o carimbo de borracha — caixa, tinta gasta, inclinado */
+.borracha { border: calc(18 * var(--u)) solid var(--tinta); border-radius: calc(26 * var(--u)); padding: calc(46 * var(--u)) calc(90 * var(--u)) calc(34 * var(--u)); transform: rotate(-7deg); }
+.gasta { -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>"); mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>"); -webkit-mask-size: calc(640 * var(--u)); mask-size: calc(640 * var(--u)); }
+
+/* a linha do preço: o cifrão e nada (o motivo de s02), com o grifo --destaque a 35 % na lacuna */
+.preco { display: flex; align-items: flex-end; gap: calc(50 * var(--u)); }
+.cifrao { font: 800 calc(360 * var(--u))/.86 var(--titulo); color: var(--tinta); }
+.lacuna { position: relative; height: calc(300 * var(--u)); }
+.lacuna .grifo { position: absolute; left: 0; right: 0; bottom: calc(12 * var(--u)); height: calc(72 * var(--u)); background: var(--grifo); transform-origin: left center; }
+.lacuna .traco { position: absolute; left: 0; right: 0; bottom: 0; height: calc(12 * var(--u)); background: var(--destaque); transform-origin: left center; }
+
+/* os botões do YouTube por cima (só com o botão ligado) */
+.yt { position: absolute; inset: 0; z-index: 6; display: none; pointer-events: none; }
+.com-yt .yt { display: block; }
+.yt .v { position: absolute; border: calc(8 * var(--u)) solid rgba(255,255,255,.92); border-radius: calc(14 * var(--u)); background: rgba(20, 28, 44, .82); display: grid; place-items: center; box-shadow: 0 calc(20 * var(--u)) calc(60 * var(--u)) rgba(0,0,0,.5); }
+.yt .v::before { content: ""; width: calc(220 * var(--u)); height: calc(220 * var(--u)); background: rgba(255,255,255,.9); clip-path: polygon(30% 20%, 30% 80%, 80% 50%); }
+.yt .s { position: absolute; border-radius: 50%; border: calc(8 * var(--u)) solid rgba(255,255,255,.92); background: rgba(20, 28, 44, .82); display: grid; place-items: center; box-shadow: 0 calc(20 * var(--u)) calc(60 * var(--u)) rgba(0,0,0,.5); }
+.yt .s::before { content: ""; width: 42%; height: 30%; background: rgba(255,255,255,.9); border-radius: calc(18 * var(--u)); }
+
+/* guias */
+.guias { position: absolute; inset: 0; pointer-events: none; display: none; z-index: 9; }
+.com-guias .guias { display: block; }
+.g { position: absolute; font: 700 calc(56 * var(--u))/1.1 var(--fonte); color: #fff; }
+.g-margem { left: calc(200 * var(--u)); right: calc(200 * var(--u)); top: calc(160 * var(--u)); bottom: calc(280 * var(--u)); border: calc(5 * var(--u)) dashed rgba(255, 90, 170, .9); }
+.g-credito { left: calc(200 * var(--u)); width: calc(1520 * var(--u)); top: calc(1880 * var(--u)); bottom: 0; background: rgba(46, 196, 182, .28); border-top: calc(5 * var(--u)) solid rgba(46, 196, 182, .95); padding: calc(10 * var(--u)) calc(16 * var(--u)); display: flex; align-items: flex-end; }
+.g-legenda { left: calc(1720 * var(--u)); right: calc(400 * var(--u)); top: calc(1880 * var(--u)); bottom: 0; background: rgba(255,255,255,.14); border-top: calc(5 * var(--u)) dashed rgba(255,255,255,.7); display: flex; align-items: flex-end; justify-content: center; padding-bottom: calc(10 * var(--u)); }
+.g-canto { right: 0; bottom: 0; width: calc(400 * var(--u)); height: calc(400 * var(--u)); background: rgba(228, 87, 46, .38); border: calc(5 * var(--u)) solid rgba(228, 87, 46, .95); display: flex; align-items: center; justify-content: center; text-align: center; }
+.g span { background: rgba(0,0,0,.55); padding: calc(6 * var(--u)) calc(12 * var(--u)); border-radius: calc(6 * var(--u)); }
+
+/* em repouso com "o último quadro" ligado: o fim escurecido, o crédito da cauda */
+.ultimo .quadro:not(.tocar) .cena { filter: brightness(var(--fim)); }
+.ultimo .quadro:not(.tocar) .credito { opacity: 1; }
+
+/* ---------- a animação (s62 com a voz, depois os 20 s da s63) ---------- */
+@keyframes carimba { 0% { opacity: 0; transform: scale(1.55) rotate(var(--r, 0deg)); } 70% { opacity: 1; transform: scale(.97) rotate(var(--r, 0deg)); } 100% { opacity: 1; transform: scale(1) rotate(var(--r, 0deg)); } }
+@keyframes sobe { from { opacity: 0; transform: translateY(calc(24 * var(--u))); } to { opacity: 1; transform: none; } }
+@keyframes risca { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes escurece { from { filter: brightness(1); } to { filter: brightness(var(--fim)); } }
+@keyframes aparece { from { opacity: 0; } to { opacity: 1; } }
+.tocar .a-yes { animation: carimba .38s cubic-bezier(.2,.8,.2,1) .05s both; }
+.tocar .a-cifrao { animation: sobe .3s ease-out 1.88s both; }
+.tocar .a-traco { animation: risca .6s cubic-bezier(.3,.7,.2,1) 2.0s both; }
+.tocar .a-grifo { animation: risca .55s linear 2.45s both; }
+.tocar .cena { animation: escurece var(--cauda) linear 4.2s both; }
+.tocar .credito { animation: aparece .4s ease-out 4.2s both; }
+.tocar .yt { animation: aparece .4s ease-out 4.7s both; }
+@media (prefers-reduced-motion: reduce) { .tocar * { animation-duration: .01s !important; } }
+@media (max-width: 560px) { .op-h button { margin-left: 0; } .ctrl > span.rot { min-width: 0; width: 100%; } }
+</style>
+</head>
+<body>
+
+<div class="pag" id="pag">
+  <header class="topo">
+    <span class="eyebrow">Alpha Point · referência da identidade §5</span>
+    <h1>Prancha: o fim do Juneau</h1>
+    <p class="sub">O quadro final da narração (cena s62) e os 20 segundos da tela final (s63), como o Lucas escolheu em 28/09/2026 na página de opções: "B, carimbo de borracha à esquerda (Recomendado)" e o escurecer "Médio (Recomendado)". O YES é o mesmo carimbo da abertura (s01). A regra está em marca/identidade.md §5 ("A tela final e o carimbo do Juneau"). Montagem de referência, não cena do pipeline: a cena de verdade liga marca/tokens.css e segue o contrato do editor-de-arte.</p>
+    <div class="ctrls">
+      <div class="ctrl"><span class="rot">Por cima</span><button type="button" id="bt-yt" aria-pressed="false">Mostrar os botões do YouTube</button><span style="font-size:13px;color:var(--muted)">os retângulos são os vídeos sugeridos; o círculo, o botão de inscrição</span><button type="button" id="bt-guias" aria-pressed="false">Mostrar as áreas reservadas</button></div>
+      <div class="ctrl"><span class="rot">Em repouso</span><button type="button" id="bt-ultimo" aria-pressed="false">Ver o último quadro da tela final</button></div>
+      <div class="ctrl" role="group" aria-label="Velocidade da tela final"><span class="rot">Tela final</span><button type="button" data-cauda="20s" aria-pressed="true">Tempo real (20 s)</button><button type="button" data-cauda="5s" aria-pressed="false">Rápida (5 s)</button></div>
+    </div>
+  </header>
+
+  <section class="bloco">
+
+    <div class="op">
+      <div class="op-h"><span class="letra">B</span><h3>Carimbo de borracha, à esquerda (a escolhida)</h3><button type="button" data-tocar="f-b">Ver o fim</button></div>
+      <div class="quadro" id="f-b"><div class="palco">
+        <div class="cena">
+          <div class="el borracha gasta a-yes" style="--r:-7deg; left:calc(330*var(--u)); top:calc(300*var(--u))"><div class="yes">YES</div></div>
+          <div class="el preco" style="left:calc(330*var(--u)); top:calc(1080*var(--u))">
+            <span class="cifrao a-cifrao">$</span>
+            <span class="lacuna" style="width:calc(1180*var(--u))"><i class="grifo a-grifo"></i><i class="traco a-traco"></i></span>
+          </div>
+        </div>
+        <div class="el credito">Image(s) and/or video used under license from Shutterstock.com</div>
+        <div class="yt">
+          <div class="v" style="left:calc(2180*var(--u)); top:calc(300*var(--u)); width:calc(1220*var(--u)); height:calc(686*var(--u))"></div>
+          <div class="v" style="left:calc(2180*var(--u)); top:calc(1100*var(--u)); width:calc(1220*var(--u)); height:calc(686*var(--u))"></div>
+          <div class="s" style="left:calc(1760*var(--u)); top:calc(1500*var(--u)); width:calc(330*var(--u)); height:calc(330*var(--u))"></div>
+        </div>
+        <div class="guias"><div class="g g-margem"></div><div class="g g-credito"><span>crédito</span></div><div class="g g-legenda"><span>legenda do YouTube</span></div><div class="g g-canto"><span>marca-d'água</span></div></div>
+      </div></div>
+      <div class="estado" data-estado="f-b">Aperte "Ver o fim": a voz (4,2 s) e depois a tela final.</div>
+      <ul class="notas"><li><b>O que muda:</b> o YES vira um carimbo de verdade, com caixa, tinta gasta e torto, como um carimbo de repartição. A linha do preço fica logo abaixo.</li><li><b>Os botões do YouTube:</b> tudo fica na metade esquerda. A direita fica livre para os vídeos, e o YES e a linha continuam à vista durante os 20 s.</li><li><b>Na abertura:</b> o "57% YES" de s01 cai com o mesmo carimbo de caixa.</li></ul>
+    </div>
+
+  </section>
+
+  <section class="fim">
+    <h2>As medidas</h2>
+    <p>No palco 3840×2160, em px do 4K. O YES em Barlow Condensed 800, 360 px, em --tinta, numa caixa de traço de 18 px e cantos de 26 px, inclinada −7°, com a tinta gasta (máscara de ruído). Abaixo, a linha do preço: o "$" em Barlow Condensed 800, 360 px, em --tinta, e a lacuna de 1.180 px com o traço de 12 px em --destaque e o grifo (--destaque a 35 %) numa faixa de 72 px logo acima dele. Tudo na metade esquerda, a partir de x = 330: a direita fica livre para os botões do YouTube.</p>
+    <p>A tela final: o quadro final parado, sem movimento, com o brilho indo de 100 % a 50 % em 20 s, linear, sem chegar ao preto e sem texto novo. O crédito fica fora do escurecer; a linha do Shutterstock só entra se algum vídeo do Juneau vier de lá.</p>
+  </section>
+</div>
+
+<script>
+(function () {
+  var pag = document.getElementById("pag"), root = document.documentElement;
+  var cauda = 20;
+  function fmt(s) { return s.toFixed(1).replace(".", ","); }
+  function tocar(id) {
+    var q = document.getElementById(id); if (!q) return;
+    var est = document.querySelector('[data-estado="' + id + '"]');
+    q.classList.remove("tocar"); void q.offsetWidth; q.classList.add("tocar");
+    (q._ts || []).forEach(clearTimeout);
+    var t0 = performance.now();
+    cancelAnimationFrame(q._raf);
+    (function passo() {
+      var t = (performance.now() - t0) / 1000;
+      if (est) {
+        if (t < 4.2) est.textContent = "Cena s62 · a voz · " + fmt(t) + " s de 4,2";
+        else if (t < 4.2 + cauda) est.textContent = "Cena s63 · a tela final · " + fmt(t - 4.2) + " s de " + cauda;
+        else { est.textContent = "Fim: o último quadro, escurecido."; return; }
+      }
+      q._raf = requestAnimationFrame(passo);
+    })();
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-tocar]"), function (b) {
+    b.addEventListener("click", function () { tocar(b.getAttribute("data-tocar")); });
+  });
+  function alterna(bt, classe, on, off) {
+    bt.addEventListener("click", function () {
+      var v = bt.getAttribute("aria-pressed") !== "true";
+      bt.setAttribute("aria-pressed", String(v)); pag.classList.toggle(classe, v);
+      bt.textContent = v ? off : on;
+    });
+  }
+  alterna(document.getElementById("bt-yt"), "com-yt", "Mostrar os botões do YouTube", "Esconder os botões do YouTube");
+  alterna(document.getElementById("bt-guias"), "com-guias", "Mostrar as áreas reservadas", "Esconder as áreas reservadas");
+  alterna(document.getElementById("bt-ultimo"), "ultimo", "Ver o último quadro da tela final", "Voltar ao quadro da voz");
+  function grupo(attr, aplica) {
+    var bs = document.querySelectorAll("[" + attr + "]");
+    Array.prototype.forEach.call(bs, function (b) {
+      b.addEventListener("click", function () {
+        Array.prototype.forEach.call(bs, function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        aplica(b.getAttribute(attr));
+      });
+    });
+  }
+  grupo("data-cauda", function (v) { root.style.setProperty("--cauda", v); cauda = parseFloat(v); });
+})();
+</script>
+</body>
+</html>

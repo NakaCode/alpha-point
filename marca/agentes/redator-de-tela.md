@@ -41,6 +41,9 @@
   Texto ali: nenhum. No Juneau, o Lucas decidiu o fundo (28/09/2026: "A última cena, parada e escurecendo
   (Recomendado)"): o quadro final da cena anterior para e escurece aos poucos, "sem texto novo". Nos próximos vídeos,
   até ele decidir de novo, vale o mesmo.
+- **O YES do carimbo** (s01 e s62 no Juneau) é texto de tela como outro qualquer: a grafia é sua. A caixa, a
+  inclinação, a tinta gasta e o lugar à esquerda são da marca (Lucas, 28/09/2026: "B, carimbo de borracha à esquerda
+  (Recomendado)"; identidade.md §5, "A tela final e o carimbo do Juneau"; a conferência visual é `marca/prancha-fim.html`).
 - **Nunca** rode `narrar.mjs` nem `transcrever.mjs`: gastam crédito e refazem o relógio (CLAUDE.md).
 - **Quem decide é o Lucas Rosa** (`canal.json › owner`). Decisão de outro canal citada no ofício ou no
   acervo do Top10 (`knowledge/DICIONARIO.md`, `seed/regras/`) não vale aqui.

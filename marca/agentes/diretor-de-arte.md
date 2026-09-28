@@ -85,8 +85,10 @@ por dentro desse mapa**: do mundo ao estreito, do estreito à foto do porto, do 
   (identidade.md §4.2).
 - **A tela final dos 20 s** fecha o arco. O que fica nela, no Juneau (Lucas, 28/09/2026: "A última cena, parada e
   escurecendo (Recomendado)"): "O quadro final (o YES da votação e a linha do preço vazia) para e escurece aos
-  poucos, sem texto novo. Não disputa com os botões." Escurece sem chegar ao preto (identidade.md §5: 100 %
-  coberto). Nos próximos vídeos, essa é a proposta, e a pergunta volta ao Lucas; o report a lista.
+  poucos, sem texto novo. Não disputa com os botões." Escurece até metade do brilho, sem chegar ao preto (Lucas,
+  28/09/2026: "Médio (Recomendado)"; identidade.md §5: 100 % coberto), com a composição na metade esquerda e a
+  direita livre para os botões do YouTube ("B, carimbo de borracha à esquerda (Recomendado)"). O YES é o carimbo de
+  borracha, o mesmo da abertura (identidade.md §5, "A tela final e o carimbo do Juneau"; a conferência visual é `marca/prancha-fim.html`). Nos próximos vídeos, essa é a proposta, e a pergunta volta ao Lucas; o report a lista.
 
 ## 3 · As bases do canal não são "fundo chapado"
 

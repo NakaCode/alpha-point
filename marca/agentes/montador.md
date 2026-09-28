@@ -108,7 +108,9 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
 - **100 % coberto**, inclusive os **20 s finais sem voz**. **Um segmento próprio** cobre a cauda. O que fica sob
   a tela final do YouTube, no Juneau (Lucas, 28/09/2026, 11:2x de Brasília: "A última cena, parada e escurecendo
   (Recomendado)"): o quadro final da cena anterior para e escurece aos poucos, sem chegar ao preto e sem texto
-  novo. Está no espelho do Juneau, em s63 › `_tela_final`. Nos próximos vídeos, a do Juneau é a proposta, e o
+  novo. Às 12:3x, ele fechou o quanto e o estilo: até metade do brilho ("Médio (Recomendado)"), com a composição à
+  esquerda e a direita livre para os botões ("B, carimbo de borracha à esquerda (Recomendado)"; identidade.md §5, "A tela final e o carimbo do Juneau"; a conferência visual é `marca/prancha-fim.html`).
+  Está no espelho do Juneau, em s63 › `_tela_final`. Nos próximos vídeos, a do Juneau é a proposta, e o
   report a lista até o Lucas decidir de novo. Nunca deixe a janela sem segmento (sai preto), nem estique a última
   cena sem dizer.
 - Ritmo (identidade.md §4.3): beat ≥ **1,5 s**; footage ou foto **parada** ≤ **6 s**; rajada (beats
