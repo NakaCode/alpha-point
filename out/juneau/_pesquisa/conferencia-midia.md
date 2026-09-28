@@ -1,15 +1,100 @@
-# Conferência de mídia · juneau · fluxo `midia` · despachos 1 a 5 · 28/09/2026, 01:14 (BRT)
+# Conferência de mídia · juneau · fluxo `midia` · despachos 1 a 6 · 28/09/2026, 15:02 (BRT)
 
-**Laudo do arquivo: 25 aprovados de 35 conferidos (1 reprovado, 9 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 35.** São os 18 vereditos do lote 1 que ficam, os 15 do 2º despacho que ficam, o s16 p1 do 4º e a camiseta do s28 p3, regravada no 5º. Os 5 vereditos antigos (os 4 do s16 e o da camiseta do 4º despacho) estão em `substituidos`.
+**Laudo do arquivo: 25 aprovados de 35 conferidos (1 reprovado, 9 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 35.** Os 25 aprovados foram regravados no 6º despacho, com a janela do beat da regência: 14 do lote 1, 9 do 2º despacho, o s16 p1 do 4º e a camiseta do s28 p3, do 5º. Os 10 que não são `aprovado` ficam como estão: 4 `trocar` do lote 1; 5 `trocar` e 1 `reprovado` do 2º. Os 30 vereditos antigos (os 5 de antes e os 25 deste despacho) estão em `substituidos`.
 
-**Laudo deste despacho (o 5º): 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1.**
+**Laudo deste despacho (o 6º): 25 aprovados de 25 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 25.**
 
-- **Quem conferiu:** o Claude central despachou esta conferência como agente geral, no ofício `.claude/agents/conferente-de-midia.md`. O ofício ganhou em 28/09 o item "Peça de acervo fotografada depois" (§5.1).
+- **Quem conferiu:** o Claude central despachou esta conferência como agente geral, no ofício `.claude/agents/conferente-de-midia.md`, no passo `conducting`.
 - **O que o veredito vale:** nenhum veredito aqui é o sim do Lucas.
-- **As janelas:** não há regência nem conceito visual, então todas são as do plano no espelho, provisórias. Conferido às 01:0x de 28/09: o espelho ainda é o de 27/09, 10:12, o `words.json` o de 26/09 e o roteiro o de 24/09. O `montador` trabalha no espelho ao mesmo tempo, e não escrevi nele.
+- **O que se fez:** o ofício, §3, item 6 ("A janela provisória se revê").
+  - Os 25 `aprovado` tinham `janela_provisoria: true`. Com o `regencia.json` pronto, a janela de cada um passou a ser a do beat que cita o arquivo entregue. Nenhum deles tem beat `continua` depois (o único da regência é o s63#1).
+  - Contexto, licença e fonte já estavam julgados e não foram refeitos, salvo o contexto da Ladd Field, cuja parte da frase mudou. Cada veredito diz o que foi refeito e o que não foi.
+- **Nenhum veredito mudou.** Os 25 continuam `aprovado`.
+- **As fontes, conferidas pelo sha256:**
+  - a regência, `07d29f73…` (gerada às 17:01:37Z de 28/09), que não mudou durante o trabalho;
+  - o conceito: `655b6d7c…`, o que a regência cita, e `20d24f0f…`, depois de o `diretor-de-arte` o editar às 14:14. Nas cenas dos 25 arquivos, só a técnica de s16 p3 mudou (a PRANCHA do FRANK, sem mídia);
+  - o espelho: `675267…`, o que a regência cita, e `fb3a9835…`, a décima terceira revisão (17:36Z), só de texto. Nenhum tempo, borda, fusão ou id mudou, e as entradas da regência têm o `inSec` e a `dur` dele;
+  - o `words.json` (`a8d5ec77…`) e o roteiro (`28aa6630…`), os de sempre.
 - **`out/juneau/_media/` não mudou durante o trabalho**, conferido pelo sha256. As horas estão na nota do fim.
 
-## O veredito deste despacho (o 5º): a camiseta, regravada
+## Os vereditos deste despacho (o 6º): a janela da regência
+
+A janela é a do beat, no relógio do master (de `inSec + t0` a `inSec + t1`). Em todos, a medida e o sha256 do arquivo entregue são os do veredito anterior. O quadro, olhado de novo numa cópia reduzida (em `out/juneau/_tmp/conferencia/d6/`), é o mesmo.
+
+| arquivo (entregue em `_media/`) | cena | beat | janela | fonte | veredito | motivo |
+|---|---|---|---|---|---|---|
+| foto/s01/juneau-downtown-front-street-ca1987-gillfoto.jpg | s01 | s01#1 | 0 a 6,567 s (6,567 s) | Commons (Gillfoto) | aprovado, mantido | 6,567 s com o Ken Burns 1,00→1,12, que a tira do teto de foto parada; o carimbo YES bate por cima; o arquivo não volta mais em s62 |
+| foto/s06/juneau-harbor-gastineau-channel-ca1899-pillsbury-cleveland.jpg | s06 | s06#1 | 46,4 a 50,967 s (4,567 s) | Commons (Seattle Public Library, pela DPLA) | aprovado, mantido | pan lateral numa faixa a 0,75×, na cópia entregue de 5120 px (o rascunho julgado, reduzido) |
+| foto/s06/juneau-city-1887-partridge-smu.jpg | s06 | s06#2 | 50,967 a 53,133 s (2,166 s) | Commons (SMU Libraries) | aprovado, mantido | em tela cheia, a uns 1,01× |
+| documento/s07/stat-31-321-1900-p1.jpg | s07 | s07#1 | 53,133 a 60,866 s (7,733 s) | govinfo (Statutes at Large) | aprovado, mantido | acima dos 6 s, a página se move: o grifo com a voz (57,996 a 59,33 s) e a recriação que sobe; o maior trecho parado tem 4,86 s |
+| foto/s07/sitka-1906-case-draper-loc-2004672324.jpg | s07 | s07#2 | 60,866 a 63,7 s (2,834 s) | Commons (Library of Congress) | aprovado, mantido | impressa sobre a mesa a 1,4×; encolhe ao ponto de Sitka no beat seguinte |
+| documento/s07/stat-37-512-1912-p1.jpg | s07 | s07#4 | 66,833 a 75,5 s (8,667 s) | govinfo (Statutes at Large) | aprovado, mantido | acima dos 6 s, a página se move: a queda da folha e o grifo com a citação (71,38 a 75,4 s); o maior trecho parado tem no máximo uns 4,5 s |
+| foto/s09/anchorage-white-city-tent-camp-1915-07-01-pyatt.jpg | s09 (na mãe s08) | s08#2 | 78,1 a 80,833 s (2,733 s) | Commons (Anchorage Museum) | aprovado, mantido | sobe do ponto de Anchorage e fica impressa a 1,4×; sem "Anchorage" sobre a foto |
+| **foto/s09/ladd-field-operations-hangar-1943-07-09-nara-204947418.jpg** | s09 (na mãe s08) | s08#3 | 80,833 a 82,9 s (**2,067 s**; era 2,167) | NARA (API v2) | aprovado, mantido, **com o contexto refeito** | a fala do beat agora é "Around World War Two, military bases": uma base militar na guerra, que sobe do ponto de Fairbanks; Anchorage e Fairbanks vão ao mapa do beat seguinte |
+| **foto/s09/ladd-field-lend-lease-apron-1943-07-09-nara-204947416.jpg** | s09 (na mãe s08) | s08#3, reserva | 80,833 a 82,9 s (**2,067 s**; era 2,167) | NARA (API v2) | aprovado, mantido, **com o contexto refeito** | a reserva do hangar, para a mesma fala nova; entra no lugar dele, nunca junto |
+| foto/s10/alaska-highway-1942-06-02-corduroy-charlie-lake.jpg | s10 (na mãe s08) | s08#5 | 85,167 a 86,933 s (1,766 s) | Commons (USACE) | aprovado, mantido | foto parada acima do piso de beat e abaixo do teto, com corte seco do mapa para ela e de volta |
+| foto/s16/fairbanks-downtown-chena-1973-08-documerica-cowals-550551.jpg | s16 | s16#1 | 160,067 a 163,367 s (3,3 s) | NARA 550551 (DOCUMERICA), pelo Commons | aprovado, mantido | em tela cheia, a 1,28× |
+| foto/s16/fairbanks-downtown-international-hotel-1972-08-chesi.jpg | s16 | s16#2 | 163,367 a 167,134 s (3,767 s) | Commons (Piergiuliano Chesi) | aprovado, mantido | impressa sobre a mesa a 1,4×; a fala do beat é uma das duas que o veredito anterior julgou |
+| foto/s22/alaska-house-5th-legislature-1967-68-capitol-steps.jpg | s22 | s22#1 | 219,333 a 224,967 s (5,634 s) | Commons (State of Alaska; vilda) | aprovado, mantido | Ken Burns; **o rótulo "Alaska State Capitol, Juneau", que a regência pede, não tem origem e não entra** |
+| foto/s23/juneau-downtown-hillside-homes-aerial-ca1993-gillfoto.jpg | s23 | s23#4 | 242,767 a 245,033 s (2,266 s) | Commons (Gillfoto) | aprovado, mantido | em tela cheia a 1,23×, com a fatia de US$ 590 milhões por cima |
+| foto/s28/anchorage-stealers-1982-tshirt-back-asm-97-20-1-gelotte-adn.jpg | s28 | s28#3 | 290,6 a 293,333 s (2,733 s) | Alaska State Museum, pelo ADN (Dave Gelotte) | aprovado, mantido | foto parada, sem aviso do ano (peça de acervo) |
+| foto/s35/wasilla-lake-chugach-2010-06-06-foubister.jpg | s35 | s35#1 | 363,1 a 368,667 s (5,567 s) | Commons (Murray Foubister, Flickr) | aprovado, mantido | Ken Burns no quadro inteiro, sem ampliar |
+| foto/s37/alaska-house-chamber-2024-08-15-ifly6.jpg | s37 | s37#1 | 391,9 a 394,267 s (2,367 s) | Commons (Ifly6) | aprovado, mantido | Ken Burns leve |
+| foto/s37/alaska-senate-floor-session-2020-03-24-brooks.jpg | s37 | s37#2 | 394,267 a 398,467 s (4,2 s) | Commons (James Brooks, Flickr) | aprovado, mantido | Ken Burns |
+| pessoa/s41/kiehl-jesse-senator-2025-01-21-senate-majority.jpg | s41 | s41#1 | 431,767 a 436,4 s (4,633 s) | Alaska Senate Majority | aprovado, mantido | o card fica com a fala até 8,033 s, mudando com a voz |
+| foto/s49/juneau-downtown-mount-roberts-1997-04-gillfoto.jpg | s49 | s49#1 | 518,1 a 521,8 s (3,7 s) | Commons (Gillfoto) | aprovado, mantido | Ken Burns |
+| documento/s52/ca9-2011-seacc-p04.jpg | s52 | s52#1 | 541,267 a 545,1 s (3,833 s) | Nono Circuito | aprovado, mantido | com "upheld on appeal, 2011" todo o tempo da página e o grifo com a voz |
+| foto/s55/walker-bill-governor-2016-11-15-togiak.jpg | s55 | s55#1 | 566,433 a 573,366 s (6,933 s) | Commons (DVIDS) | aprovado, mantido | acima dos 6 s, o card muda com a voz (o maior trecho sem mudança tem 2,93 s) |
+| foto/s56/juneau-assembly-2017-01-23-dais-je-penn.jpg | s56 | s56#1 | 578,133 a 580,366 s (2,233 s) | Juneau Empire (Michael Penn) | aprovado, mantido | impressa sobre a mesa a 1,4× |
+| pessoa/s57/gladziszewski-maria-assemblymember-2020-09-12-cbj-retrato.jpg | s57 | s57#1 | 584,933 a 588,2 s (3,267 s) | prefeitura de Juneau | aprovado, mantido | com o aviso do ano; o card fica até 10,4 s, mudando com a voz |
+| documento/s58/federal-register-2018-16263-p1.jpg | s58 | s58#1 | 595,333 a 598,833 s (3,5 s) | govinfo (Federal Register) | aprovado, mantido | com o grifo na No Action |
+
+### O que a janela mudou
+
+- **18 janelas são as mesmas da provisória.** Em mais 4, a diferença é só o arredondamento do espelho, de 0,001 s: s07#1 (7,733 s), s07#2 (2,834 s), s55#1 (6,933 s) e s56#1 (2,233 s).
+- **O hotel de Chesi (s16#2):** o veredito anterior o julgou contra as duas falas de s16, e a janela provisória era a de um dos dois planos. A regência o pôs no plano 2, de 163,367 a 167,134 s (3,767 s; o espelho dava 3,766). A fala do beat, "In early 1977, they organized the Frank committee,", é uma das duas que ele julgou, e o contexto não foi refeito.
+- **A Ladd Field (s08#3, o hangar e a reserva): a parte da frase mudou.**
+  - A janela provisória (2,167 s) era a metade do plano 2 de s09 do espelho, dividido entre Anchorage e Fairbanks.
+  - A regência dá à foto só "Around World War Two, military bases", de 80,833 a 82,9 s (2,067 s). O "went up at Anchorage and Fairbanks." vai ao mapa de s08#4, em que a foto encolhe ao ponto de Fairbanks e o de Anchorage acende sem foto.
+  - O contexto foi refeito para a fala nova e passa: o quadro é uma base militar na guerra, que a fala diz no plural. A foto sobe do ponto de Fairbanks, e nada nela a põe em Anchorage. O rótulo "Ladd Field" é o que a origem nomeia.
+- **A técnica, contra o beat: passa em todos.**
+  - Acima dos 6 s de imagem parada, quatro beats. Os quatro estão na lista de respiro da auditoria da regência:
+    - **s01#1 (6,567 s):** o Ken Burns 1,00→1,12 é o movimento com propósito que a tira do teto (identidade §4.3 e §4.4; a regência diz o mesmo). A nota do veredito anterior para a cena ("passa dos 6 s de foto parada") está resolvida.
+    - **s07#1 (7,733 s) e s07#4 (8,667 s):** a página se move com o grifo, a recriação e, no s07#4, a queda da folha (identidade §5, DOCUMENTO). O maior trecho sem movimento tem 4,86 s no s07#1 e no máximo uns 4,5 s no s07#4.
+    - **s55#1 (6,933 s):** o retrato fica parado, mas o card muda com a voz (DECEMBER 2016 em 566,533 s, o cargo em 568,166, BILL WALKER em 568,466 e NO ACTION em 571,4). O maior trecho sem mudança tem 2,93 s.
+  - Os outros 21 ficam entre o piso de beat (1,5 s) e o teto de 6 s. O menor é o da obra da Alaska Highway (1,766 s).
+  - Nos cards de pessoa, o retrato fica mais que o beat: 8,033 s em s41, 11,7 s em s55 e 10,4 s em s57, com o plano mudando com a voz. Isso é da cena, não do arquivo (ofício §5.3).
+- **A repetição, sobre a regência: passa em todos.** Cada arquivo está num beat só da regência, e o sha256 dele só aparece em `_media/` no rascunho e na entrega da mesma cena (o de s22 também no rascunho de s05 do `pesquisa-pessoas`, que nenhuma pauta propõe). O arquivo de s01 não volta mais em s62: o espelho (décima primeira revisão) e a regência atenderam o `trocar` de s62. O que volta em s62 é o carimbo YES, desenhado.
+
+### Avisos para a cena, deste despacho
+
+- **s22, o rótulo de lugar:** a regência (s22#1) e o conceito pedem "Alaska State Capitol, Juneau". Pela marca (midia.md §2, item 7), ele não entra: o `lugar_na_origem` é `null`.
+  - A página do item no Commons, relida neste despacho, descreve só "The 5th Alaska State Legislature (1967-1968 session)", e a legenda impressa, "5th Alaska State Legislature / House Of Representatives".
+  - As categorias da página ("Alaska State Capitol"; "Juneau, Alaska in the 1960s") são de editores do Commons, não a descrição do item. O "local_na_origem" da `pauta-imagens` não traz trecho copiado da origem.
+  - Entraria se a ficha do vilda (cdmg21/id/10107) nomeasse o lugar. Ela recusa robô, e fica em "Para reconferir", opcional.
+  - A fala não nomeia lugar: sem o rótulo, a foto é honesta, e o veredito não depende dele.
+- **s01#1:** o carimbo YES bate sobre a foto em "approved", com o placar fora da caixa (Lucas, 28/09/2026: "B, carimbo de borracha à esquerda (Recomendado)"). Não muda o que a foto afirma. O recorte que o conceito pede (sem a mulher em primeiro plano, os letreiros e o neon) amplia além dos 1,14× do Ken Burns: a nitidez nessa escala é do `editor-de-arte` olhar no quadro.
+- **s07#1:** o conceito dá o grifo em ≈56,5 s, e a voz diz "temporary" em 57,996 s. O grifo anda com a voz.
+- **s28#3:** a regência pede "full height at 1.0×" e "crop just below the 2.84". O corte logo abaixo do 2.84 fica perto de y≈1285 do original. A 1,0×, a foto cortada teria uns 1440x1285 na tela, e na altura inteira do quadro pediria uns 1,7×. As duas instruções não cabem juntas: é enquadramento, do `diretor-de-arte` e do `editor-de-arte`.
+- **s56#1:** as placas de nome se leem na cópia reduzida (0,68×), e a 1,4× se lerão; o conceito diz que ficam ilegíveis pela distância. A tela não nomeia ninguém sobre a foto, e o veredito não muda.
+- **A Ladd Field:** a regência pede o rótulo "Ladd Field", e o conceito, "Ladd Field, Fairbanks". Os dois passam (Fairbanks é mais largo que a origem), e a regência manda.
+- **s55:** a auditoria da regência conta o s55#1 como respiro, sem movimento lento escrito para o retrato. O card muda com a voz, e o retrato fica 11,7 s na tela: se a cena o ler como foto parada, a solução é dela.
+
+### As 25 entregas casam com os aprovados
+
+- O `sha256sum` de cada arquivo entregue está no `_PROCEDENCIA.json` da pasta dele e é o sha256 do veredito.
+- O panorama de s06 casa pelo sha256 do rascunho julgado (o `medido.medido_no_download.sha256` da procedência); a cópia entregue, de 5120x1552, é esse rascunho reduzido (PSNR de 44,6 dB contra ele, no mesmo tamanho).
+- A lista, arquivo por arquivo, está no JSON (`despachos`, n 6, `entregas_conferidas`).
+
+## O veredito do 5º despacho: a camiseta, regravada
+
+_Regravado de novo no 6º despacho, com a janela da regência (s28#3, 2,733 s). O que está abaixo é o do 5º despacho, e o veredito dele está em `substituidos`._
+
+**Laudo do 5º despacho: 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1.**
+
+- **Quem conferiu:** o Claude central despachou esta conferência como agente geral, no ofício `.claude/agents/conferente-de-midia.md`. O ofício ganhou em 28/09 o item "Peça de acervo fotografada depois" (§5.1).
+- **As janelas:** não havia regência nem conceito visual, então todas eram as do plano no espelho, provisórias. Conferido às 01:0x de 28/09: o espelho ainda era o de 27/09, 10:12, o `words.json` o de 26/09 e o roteiro o de 24/09. O `montador` trabalhava no espelho ao mesmo tempo, e não escrevi nele.
+- **`out/juneau/_media/` não mudou durante o trabalho**, conferido pelo sha256.
 
 | arquivo | cena | fonte | veredito | motivo |
 |---|---|---|---|---|
@@ -53,18 +138,20 @@ Abri de novo a entrega (`_media/foto/s28/`), numa cópia reduzida feita dela: o 
 
 **Repetição: passa.** O sha256 aparece duas vezes em `_media/`: no rascunho e na entrega da mesma cena e do mesmo plano. É a cópia entregue, não repetição. O item (a peça ASM 97-20-1) só aparece no manifesto do rascunho e na procedência da entrega, e nenhum outro veredito o cita.
 
-### As duas entregas de hoje casam com os aprovados
+### As duas entregas conferidas no 5º despacho casam com os aprovados
 
 | entrega | sha256 | casa com |
 |---|---|---|
-| `_media/foto/s28/anchorage-stealers-1982-tshirt-back-asm-97-20-1-gelotte-adn.jpg` | `0d5b56c3…` | o aprovado do s28 p3 (regravado neste despacho) |
+| `_media/foto/s28/anchorage-stealers-1982-tshirt-back-asm-97-20-1-gelotte-adn.jpg` | `0d5b56c3…` | o aprovado do s28 p3 (regravado no 5º despacho) |
 | `_media/foto/s16/fairbanks-downtown-chena-1973-08-documerica-cowals-550551.jpg` | `993acd16…` | o aprovado do s16 p1 (4º despacho); a procedência dá o plano 1, como o veredito |
 
 - Em cada uma, os quatro sha256 são iguais: o `sha256sum` do arquivo, o `medido.sha256` e o `medido.medido_no_download.sha256` do `_PROCEDENCIA.json` da pasta, e o do veredito.
 - A procedência da camiseta já traz `aviso_de_ano: false` e a regra; agora o veredito também.
 - A do 550551 traz a base da exceção do DOCUMERICA, o crédito e o aviso `Photo from 1973`, como o veredito.
 
-## O veredito do 4º despacho que fica: o DOCUMERICA (s16 p1)
+## O veredito do 4º despacho que ficou: o DOCUMERICA (s16 p1)
+
+_Regravado no 6º despacho, com a janela da regência (s16#1, 3,3 s). O que está abaixo é o do 4º despacho, e o veredito dele está em `substituidos`._
 
 | arquivo | cena | fonte | veredito | motivo |
 |---|---|---|---|---|
@@ -79,11 +166,11 @@ A fala do plano (de 160,067 a 163,367 s): "In Fairbanks, a group wanted to know 
 
 **O resto, como antes.** O arquivo tem o mesmo sha256 (`993acd16…`). Contexto, técnica e repetição continuam passando. A pauta registra onde a foto do ano foi procurada.
 
-**O plano: o 1.** O hotel de Chesi, aprovado no 2º despacho e entregue em `_media/foto/s16/`, fica com o plano 2 (de 163,367 a 167,133 s, com "1977" na tela), como a pauta propõe. São duas fotos diferentes, de pontos de vista diferentes (do alto e da rua), sem repetição em planos seguidos.
+**O plano: o 1.** O hotel de Chesi, aprovado no 2º despacho e entregue em `_media/foto/s16/`, fica com o plano 2 (de 163,367 a 167,133 s, com "1977" na tela), como a pauta propõe. São duas fotos diferentes, de pontos de vista diferentes (do alto e da rua), sem repetição em planos seguidos. A regência confirmou a divisão (s16#1 e s16#2).
 
 O `conferido_no_navegador_do_app` do veredito tem a hora de cada página, e `mensagem: null`, porque o Lucas não acompanhou (o ofício §6 diz isso desde 27/09).
 
-### Os avisos para a cena
+### Os avisos para a cena, do 5º despacho
 
 | | s28 p3, a camiseta | s16 p1, o DOCUMERICA |
 |---|---|---|
@@ -95,16 +182,17 @@ O `conferido_no_navegador_do_app` do veredito tem a hora de cada página, e `men
 | rótulo de lugar | a origem só diz "collection item at the Alaska State Museum": se houver rótulo, não passa disso | no máximo "Downtown Fairbanks" (a origem: "DOWNTOWN FAIRBANKS, VIEW SOUTHWEST") |
 | medida | 1440x2156, vertical: 1,0× na altura inteira; não vai em tela cheia na largura | 3000x2022: tela cheia a 1,28× |
 
-- **Os textos da tela no s28 p3:** o "$800 million" (em "that", 291,292 s) e o "ABOUT A QUARTER" (de 291,46 a 293,333 s) vão sobre a foto. O 2.84 continua à vista, porque é o que liga a foto à fala. O conflito entre os dois textos, que o espelho aponta, é do regente.
-- **As duas foram entregues hoje**, e as procedências casam com estes vereditos:
+- **Os textos da tela no s28 p3:** o "$800 million" (em "that", 291,292 s) e o "ABOUT A QUARTER" (de 291,46 a 293,333 s) vão sobre a foto. O 2.84 continua à vista, porque é o que liga a foto à fala. O conflito entre os dois textos, que o espelho aponta, é do regente. _No 6º despacho: a regência resolveu o conflito (R1): o $800 MILLION entra em "that", como um prato de balança contra o 2.84, e o ABOUT A QUARTER não entra; a fração fica na voz._
+- **As duas foram entregues na madrugada de 28/09, entre o 4º e o 5º despachos**, e as procedências casam com estes vereditos:
   - **o 550551:** o `_PROCEDENCIA.json` de `_media/foto/s16/` leva a base da exceção, o `useRestriction`, o texto da NARA, o crédito e o aviso. O `pesquisa-imagens` corrigiu o "Public domain" que o `entregar` copiou do Commons;
   - **a camiseta:** o `_PROCEDENCIA.json` de `_media/foto/s28/` tem os campos do §7.5, `aviso_de_ano: false` e a regra. O crédito vem deste veredito.
 
-## Os vereditos do 2º despacho que ficam
+## Os vereditos do 2º despacho que ficaram
 
 - Estes 15 vereditos são os mesmos da conferência de 20:30.
 - O do s16 p1 foi julgado de novo no 3º e no 4º despachos, e os antigos estão em `substituidos`.
-- O hotel de Chesi ("s16 p2 ou p1" no veredito) fica com o plano 2, desde o 4º despacho.
+- O hotel de Chesi ("s16 p2 ou p1" no veredito) fica com o plano 2, desde o 4º despacho, e a regência o pôs no s16#2.
+- **Os 9 aprovados desta tabela foram regravados no 6º despacho**, com a janela do beat (a tabela do 6º). O motivo aqui é o do veredito que ficou em `substituidos`. Os `trocar` e o `reprovado` ficam como estão.
 
 Quem entregou:
 - os três primeiros blocos (o s16 e o s35), o `pesquisa-imagens`, como rascunhos em `_media/_caca/`;
@@ -129,11 +217,12 @@ Quem entregou:
 | documento/s52/ca9-2011-seacc-p01.jpg | s52 p1 | Nono Circuito | trocar | a capa mostra o tribunal e as partes, não a anulação; a página 4, aprovada, é a que diz o que a fala diz |
 | documento/s58/federal-register-2018-16263-p1.jpg | s58 p1 | govinfo (Federal Register) | aprovado | o aviso oficial da FHWA no Federal Register (domínio público federal): 'The selected alternative was the No Action Alternative', com o Record of Decision de 18/6/2018 |
 
-## Os vereditos do lote 1 que ficam
+## Os vereditos do lote 1 que ficaram
 
 - Estes 18 vereditos são os mesmos da conferência de 19:07.
 - Os arquivos estão em `out/juneau/_media/_caca/<cena>/<origem>/`, e foi o `pesquisa-imagens` que os entregou.
 - As 14 fotos aprovadas já foram entregues em `_media/foto/`. Casam com estes vereditos pelo sha256 da procedência.
+- **As 14 aprovadas foram regravadas no 6º despacho**, com a janela do beat (a tabela do 6º). O motivo aqui é o do veredito que ficou em `substituidos`. Os 4 `trocar` ficam como estão.
 
 | arquivo | cena | fonte | veredito | motivo |
 |---|---|---|---|---|
@@ -158,10 +247,11 @@ Quem entregou:
 
 ## Substituídos
 
-Os vereditos antigos do s16 e o da camiseta ficam em `substituidos`, sem nenhuma outra mudança.
-- Nos três primeiros, o motivo é o mesmo: a reconferência que eles pediam, ou deixavam aberta, foi feita.
+Os vereditos antigos ficam em `substituidos`, sem nenhuma outra mudança, com `substituido_em`, `substituido_por` e `razao_da_substituicao`.
+- Nos três primeiros do s16, o motivo é o mesmo: a reconferência que eles pediam, ou deixavam aberta, foi feita.
 - No quarto, veio a regra nova do Lucas que o veredito do 3º despacho dizia que o reabriria.
 - No quinto, veio a resposta do Lucas à pergunta opcional do 4º despacho.
+- Nos 25 do 6º despacho, veio a regência: a janela provisória se reviu (ofício §3, item 6).
 
 | arquivo | cena | veredito antigo | substituído | o que mudou |
 |---|---|---|---|---|
@@ -170,33 +260,34 @@ Os vereditos antigos do s16 e o da camiseta ficam em `substituidos`, sem nenhuma
 | fairbanks-downtown-chena-1973-08-documerica-cowals-550551.jpg | s16 p1 | reprovado (licença `falha`), do 2º despacho | às 21:15 | a segunda leitura (a página da NARA sobre o DOCUMERICA, a declaração de direitos dela no Flickr e a foto irmã) não diz quem ficou com os direitos dos contratados: continua reprovado, com os motivos refeitos |
 | fairbanks-downtown-chena-1973-08-documerica-cowals-550551.jpg | s16 p1 | reprovado (licença `falha`), do 3º despacho | às 00:10 de 28/09 | a exceção do DOCUMERICA (midia.md §7.3; Lucas, 27/09) e o "Unrestricted" do item no catálogo: a licença passou a `passa`, e o veredito, a aprovado |
 | anchorage-stealers-1982-tshirt-back-asm-97-20-1-gelotte-adn.jpg | s28 p3 | aprovado (`aviso_de_ano: true`, `Photo from 2015`), do 4º despacho | às 01:14 de 28/09 | a regra nova do Lucas sobre a peça de acervo (identidade §6): `aviso_de_ano` passou a `false`, e o veredito continua aprovado. Licença, crédito, técnica e avisos de enquadramento não mudaram; a repetição foi refeita com a entrega |
+| os 25 aprovados: 14 do lote 1, 9 do 2º despacho, o s16 p1 do 4º e a camiseta do 5º | as cenas deles | aprovado, com `janela_provisoria: true` | às 15:02 de 28/09 | a janela passou a ser a do beat da regência, e nenhum veredito mudou. A Ladd Field (o hangar e a reserva) teve o contexto refeito, porque a parte da frase mudou; nos outros, o contexto e a licença não foram refeitos, e a técnica e a repetição foram refeitas contra o beat e a regência |
 
 ## Para o Lucas pesar
 
 Nada. Nenhum candidato saiu `pendente_lucas`.
 
-- **A pergunta opcional do 4º despacho** (o aviso do ano na foto de peça de acervo) foi feita, e o Lucas respondeu: "Sem aviso, como documento (Recomendado)" (28/09/2026, 00:4x; identidade §6). A camiseta foi regravada neste despacho.
+- **A pergunta opcional do 4º despacho** (o aviso do ano na foto de peça de acervo) foi feita, e o Lucas respondeu: "Sem aviso, como documento (Recomendado)" (28/09/2026, 00:4x; identidade §6). A camiseta foi regravada no 5º despacho.
 - **As respostas do Lucas de 27/09** que a pauta registra (`quarta_passada`):
   - o download da camiseta: "Sim, pode baixar (Recomendado)". A camiseta entrou pela licença do §7.5, e não por esse "sim", que é ao download;
   - a compra da alta resolução da Alaska State Library: "Não comprar (Recomendado)".
 
 ## Para reconferir no navegador do app
 
-Nada.
-- Nada ficou `nao_conferido`.
+Nada ficou `nao_conferido`.
 - A busca da foto do ano certo foi feita (`navegador-relato.md`), e o Lucas decidiu não comprar as fotos grandes da ASL. Juneau em 23/09/1905 (s06 p1) e Fort Richardson em 1940 (s09 p2) ficam fora do Juneau.
+- **Opcional, do 6º despacho: a ficha do vilda da foto de s22** (https://vilda.alaska.edu/digital/collection/cdmg21/id/10107/rec/39), só se a cena quiser o rótulo "Alaska State Capitol, Juneau". O vilda recusa robô. O rótulo só entra se a ficha nomear o lugar, e o veredito não depende disso.
 
 ## Para trocar
 
 **`pesquisa-imagens`**
 - **s16:** resolvido.
-  - O plano 1 fica com o DOCUMERICA (550551), aprovado no 4º despacho e entregue hoje em `_media/foto/s16/`, com a base da exceção e o crédito.
+  - O plano 1 fica com o DOCUMERICA (550551), aprovado no 4º despacho e entregue em `_media/foto/s16/`, com a base da exceção e o crédito.
   - O plano 2 fica com o hotel de Chesi, já entregue.
   - O Rose Building (`trocar`) e o 550557 (`reprovado`) ficam no rascunho, como estão. Nada a retirar.
-- **s28 p3:** resolvido pela camiseta, entregue hoje em `_media/foto/s28/`, sem o aviso do ano.
+- **s28 p3:** resolvido pela camiseta, entregue em `_media/foto/s28/`, sem o aviso do ano.
   - O recado da divergência 13 deixa de valer (abaixo). O `pesquisa-imagens` respondeu mesmo assim, no relatório e na pauta.
-- **s58 p4** (A e C, do lote 1): continua sem aprovado. A busca pelo navegador não achou nada (alaskapublic.org, khns.org e Flickr), e o plano voltou ao `montador` (4ª passada).
-- **s62 p1** (lote 1): "Alaska primary election August 27 1974 voters polling place photograph". O arquivo atual serve em s01 p1, onde está aprovado.
+- **s58 p4** (A e C, do lote 1): continua sem aprovado. A busca pelo navegador não achou nada (alaskapublic.org, khns.org e Flickr), e o plano voltou ao `montador` (4ª passada). _Na regência, o s58#4 é tipografia (o grifo no ROD recriado) e não pede foto; os `trocar` ficam como estão._
+- **s62 p1** (lote 1): "Alaska primary election August 27 1974 voters polling place photograph". O arquivo atual serve em s01 p1, onde está aprovado. _No espelho (décima primeira revisão) e na regência, o s62 é desenho (o carimbo YES), sem foto; o `trocar` fica como está._
 - **s35 p1:** resolvido desde o 2º despacho (Foubister, entregue).
 
 **`pesquisa-pessoas`**: a retirada está feita. O Knowles de 2002 e as duas fotos de 2017 de s57 estão em `_media/_caca/_retirado/pessoa/`, com o `_RETIRADO.json`.
@@ -207,8 +298,8 @@ Nada.
 - A página 4 cobre o plano, com o rótulo.
 - A decisão de 2009 continua NÃO ACHADA.
 
-**Para o `regie advance` do `research`:**
-- Na lista de 01:00 de 28/09, há 25 entregas, fora as provas `-prova` e os `_PROCEDENCIA.json`:
+**As entregas, para quem avança a linha:**
+- Na lista de 15:01 de 28/09 (254 arquivos), as entregas são as mesmas 25 da lista de 01:00, fora as provas `-prova` e os `_PROCEDENCIA.json`:
   - 19 em `_media/foto/`;
   - 2 em `_media/pessoa/`;
   - 4 em `_media/documento/`.
@@ -217,22 +308,25 @@ Nada.
 - Pela regra do conferente (CLAUDE.md, "Os especialistas"), nenhuma entrega segura o passo.
 
 **Avisos do conjunto da cena**, para o `regente-de-imagem` e o `montador`:
-- **Planos de foto sem nenhum aprovado:** o s58 p4 e o s62 p1.
+- **Do 6º despacho**, com a regência:
+  - os avisos deste despacho estão na seção dele, acima (o rótulo do s22, o carimbo de s01, o grifo de s07#1, o enquadramento de s28#3, as placas de s56, o rótulo da Ladd Field e o card de s55);
+  - a auditoria da regência conta como respiro quatro beats com mídia deste arquivo: s01#1, s07#1 e s07#4, com movimento escrito (o Ken Burns, o grifo e a queda da folha), e s55#1, o card que muda com a voz.
+- **Planos de foto sem nenhum aprovado:** o s58 p4 e o s62 p1. _Na regência, nenhum dos dois pede foto (o s58#4 é tipografia; o s62, desenho)._
 - **s16:** duas fotos aprovadas, entregues e diferentes nos dois planos de foto.
-  - O plano 1 tem a aérea de 1973, com 3,3 s. O plano 2 tem a rua de 1972, com 3,766 s. As duas ficam abaixo dos 6 s de foto parada.
+  - O plano 1 tem a aérea de 1973, com 3,3 s. O plano 2 tem a rua de 1972, com 3,766 s. As duas ficam abaixo dos 6 s de foto parada. _Na regência: s16#1 com 3,3 s, em tela cheia a 1,28×, e s16#2 com 3,767 s, impressa sobre a mesa a 1,4×._
   - Na tela, ficam "Photo from 1973" no plano 1 e, no plano 2, o "1977" e o "Photo from 1972". A grafia e a posição são do `redator-de-tela` e do `editor-de-arte`.
 - **s28:** o plano 3 tem a camiseta, com 2,733 s, sem aviso do ano. O plano 2, o estádio, está na lista de caça (banco pago), fora deste fluxo.
-- **s09 p2** (lote 1): a parte de Anchorage continua NÃO ACHADO. O Lucas decidiu não comprar a foto da ASL (Fort Richardson, 1940).
+- **s09 p2** (lote 1): a parte de Anchorage continua NÃO ACHADO. O Lucas decidiu não comprar a foto da ASL (Fort Richardson, 1940). _Na regência, Anchorage fica só no ponto do mapa (s08#4), e a Ladd Field cobre "Around World War Two, military bases" (s08#3)._
 - **s06 p1** (lote 1): fica o panorama de circa 1899, aprovado e entregue.
 - **s56 p2** (lote 1): continua NÃO ACHADO.
 - **s52 p1:** coberto pela página 4 do ca9, com o rótulo "upheld on appeal, 2011", que o Lucas aprovou (identidade §5, "Documento de outra data que atesta o fato, com rótulo").
 - **s48:** o card de Knowles, sobre o mapa, sai só com nome e cargo.
-- **s01 p1** (lote 1): a janela de 6,567 s passa dos 6 s de foto parada. A conta é do plano.
-- **s48 p1 e s55 p1:** o card fica no ar 7,433 s e 6,934 s. A foto do card é parte de uma cena de mapa e de desenho, e não foto em tela cheia; a conta do tempo é da cena.
+- **s01 p1** (lote 1): a janela de 6,567 s passa dos 6 s de foto parada. A conta é do plano. _Resolvido no 6º despacho: a regência dá à foto o Ken Burns 1,00→1,12._
+- **s48 p1 e s55 p1:** o card fica no ar 7,433 s e 6,934 s. A foto do card é parte de uma cena de mapa e de desenho, e não foto em tela cheia; a conta do tempo é da cena. _Na regência, o s55#1 tem 6,933 s, e o card muda com a voz._
 - **Respiro:**
   - Nenhum aprovado do 2º despacho tem movimento: são fotos, retratos e páginas paradas. Recebem mídia dele, com 6 s ou mais, as cenas s07, s16, s35, s41, s48, s52, s55, s57 e s58.
   - Os dois aprovados do 4º despacho também são fotos paradas. A s16 tem 12,133 s, de 160,067 a 172,2, e a s28 tem 9,966 s.
-  - Nenhuma dessas cenas ganha respiro por essa mídia.
+  - Nenhuma dessas cenas ganha respiro por essa mídia. _Com a regência, o movimento que o conceito dá a várias delas (o Ken Burns, o grifo, a queda da folha) está no bloco "Do 6º despacho", acima._
 
 **Notas do 2º despacho, que continuam valendo, para quem entrega e para a cena:**
 - **Aviso do ano na tela:**
@@ -254,7 +348,7 @@ Nada.
 - **s58 p1:** o recorte do aviso da FHWA deixa fora o fim do aviso da FAA e o parágrafo de contatos, com nomes, telefones e e-mails de servidores.
   - O cabeçalho diz "July 30, 2018", perto do "JUNE 2018" da tela.
   - Mostre a linha "issued on June 18, 2018", ou deixe o cabeçalho fora.
-- **s16, o hotel:** vai a 1,9× em tela cheia.
+- **s16, o hotel:** vai a 1,9× em tela cheia. _Na regência, vai impressa sobre a mesa a 1,4×._
   - O JPEG é bem comprimido, mas não mostra blocos no tamanho da tela.
   - Os letreiros e o anúncio podem sair no enquadramento.
 - **s35:** a cidade é a faixa da margem de lá. O recorte só dela pede uns 1,95×, e o quadro inteiro não amplia.
@@ -264,7 +358,7 @@ Nada.
   - Para quem entrega: o `_media/foto/s55/_PROCEDENCIA.json` não tem a data nem o local. Estão neste veredito, lidos no DVIDS: November 15, 2016, em Togiak, Alaska.
 
 **Notas do lote 1, que continuam valendo:**
-- **s06 p1:** o arquivo tem 51 MP, e o `entregar` o reduz a 5120x1552. A tela cheia pede 1,39×.
+- **s06 p1:** o arquivo tem 51 MP, e o `entregar` o reduz a 5120x1552. A tela cheia pede 1,39×. _Na regência, o panorama vai inteiro numa faixa a 0,75×, com pan lateral._
 - **s07 p2:** a foto é pequena. Vai impressa sobre a mesa, até 1,4×, nunca em tela cheia.
 - **s22:** o crédito na tela é "State of Alaska / Alaska State Library". O `_PROCEDENCIA.json` não o terá, então ele vem do veredito.
 - **Aviso do ano na tela:**
@@ -325,17 +419,37 @@ Nada.
 15. **O `aviso_de_ano` no contrato.** O contrato, §2.1, ainda define o campo só pela data: "`true` quando a foto é de outro ano que o do fato da frase".
     - O ofício, §5.1, e a identidade §6 já tiram dele a peça de acervo fotografada depois.
     - Segui a marca: `false`, com a regra em `aviso_de_ano_regra`. A frase do §2.1 pode ganhar a exceção; o ofício é do canal e se edita aqui.
-16. **Como o JSON foi regravado.** O contrato, §5, dá o `Write` para as duas saídas e o `python` só para ler e validar JSON. Mas o `Write` regrava o arquivo inteiro de uma vez, e este JSON tem 248 KB: arriscava sair cortado.
-    - Emendei só os trechos que mudam, por um script Python no scratchpad da sessão, fora do canal. Ele gravou só este JSON e uma cópia de segurança do anterior, em `out/juneau/_tmp/conferencia/conferencia-midia.antes-despacho5.json`.
-    - Antes de gravar, o script conferiu o sha256 do arquivo e que só o veredito da camiseta mudava. O `.md` foi pelo `Write`.
-    - O §5 pode deixar o `python` gravar as duas saídas; é decisão de quem edita o ofício.
+16. **Como o JSON foi regravado: resolvida.** No 5º despacho, o contrato, §5, dava o `python` só para ler e validar JSON, e o `Write` regravaria o arquivo inteiro de uma vez (248 KB), com o risco de sair cortado. Emendei só os trechos que mudavam, por um script Python no scratchpad da sessão, com uma cópia de segurança do anterior em `out/juneau/_tmp/conferencia/conferencia-midia.antes-despacho5.json`.
+    - O §5 do ofício agora deixa o `python` emendar o JSON grande, com a cópia antes em `_tmp/conferencia/` e o sha256 conferido antes de gravar.
+    - No 6º despacho, a emenda foi assim. O comando inteiro passava de ~8 KB, e o Bash desta máquina corta a linha nesse tamanho; por isso o script e os dados ficaram em `out/juneau/_tmp/conferencia/_d6-emenda/`, fora do git, e rodaram de lá. O `.md` foi pelo `Write`.
+17. **O rótulo de lugar do s22 na regência e no conceito.** A regência (s22#1) e o conceito pedem "Alaska State Capitol, Juneau" sobre a foto da 5ª Legislatura.
+    - O `midia.md` §2, item 7, diz que o rótulo não nomeia lugar mais específico que o que a origem nomeia, e o `lugar_na_origem` deste arquivo é `null`.
+    - Segui a marca: o rótulo não entra, salvo se a ficha do vilda nomear o lugar ("Para reconferir"). O `redator-de-tela` escreve o rótulo, e o `qc-visual` o confere.
+
+**Nota do despacho (o 6º):**
+- A lista de `out/juneau/_media/`, pelo sha256 de cada arquivo:
+  - ao começar, às 14:06:53 de 28/09 (Brasília), em `_media-antes-d6.txt`: 254 arquivos, sha256 da lista `c51c55e8…`;
+  - às 14:33:01 (`_media-meio-d6.txt`), às 15:01:20, logo antes de gravar o JSON (`_media-pre-gravacao-d6.txt`), e às 15:02:37, depois de gravá-lo (`_media-depois-d6.txt`): os mesmos 254 arquivos e o mesmo sha256 da lista, sem nenhuma diferença;
+  - depois de gravar este `.md`, de novo, em `_media-depois-d6-fim.txt`. O resultado vai na resposta do despacho.
+- Entre o fim do 5º despacho (01:18) e o começo deste, `_media/` mudou fora de mim, de 252 para 254 arquivos: a geometria nova de `_media/geo/` (`thane-road-fim.js` e `thane-road-fim.json`, do `pesquisa-geo`), fora do meu alcance (ofício §2). Nada mais.
+- As cópias reduzidas que olhei ficaram em `out/juneau/_tmp/conferencia/d6/`, fora de `_media`.
+- A emenda do JSON rodou primeiro em ensaio, sem gravar, e depois gravou às 15:02:37.
+  - A cópia de antes está em `out/juneau/_tmp/conferencia/conferencia-midia.antes-despacho6.json` (sha256 `f1f699e3…`, 248.364 bytes), e o sha256 do arquivo foi conferido antes de gravar.
+  - O JSON gravado tem 434.348 bytes, sha256 `c20ee40b…`.
+- O JSON, conferido depois de gravado:
+  - é válido, em UTF-8 sem BOM;
+  - os 10 vereditos que ficam e os 5 substituídos antigos estão idênticos aos do arquivo de antes, pela impressão digital do JSON canônico de cada um;
+  - os 25 vereditos antigos estão em `substituidos`, idênticos, mais `substituido_em`, `substituido_por` e `razao_da_substituicao`;
+  - nos 25 vereditos novos, mudaram só a `frase_coberta`, os `arquivos_olhados`, o `o_que_viu`, os `criterios` e o `motivo`, e entraram `conferido_em` e `despacho`; os outros campos são os de antes;
+  - no topo, mudaram o `conferido_em`, a `entrada` (a regência, o conceito e o `despacho_6`), os `despachos`, o `laudo`, o `laudo_por_despacho` e a `media_sem_mudanca`;
+  - o laudo bate com os vereditos, e as checagens do contrato §3 passam.
 
 **Nota do despacho (o 5º):**
 - A lista de `out/juneau/_media/`, pelo sha256 de cada arquivo:
   - ao começar, às 01:00:36 de 28/09 (Brasília), em `_media-antes-despacho5.txt`: 252 arquivos, sha256 da lista `4a6a45a7…`;
   - depois de gravar o JSON, às 01:14:09: os mesmos 252 arquivos e o mesmo sha256 da lista, sem nenhuma diferença (`_media-depois-despacho5.txt`);
-  - depois de gravar este `.md`, de novo, em `_media-depois-despacho5-fim.txt`. O resultado vai na resposta do despacho.
-- Entre o fim do 4º despacho (00:35) e o começo deste, `_media/` mudou fora de mim, de 249 para 252 arquivos, como a 5ª passada do `pesquisa-imagens` registra:
+  - depois de gravar o `.md`, de novo, em `_media-depois-despacho5-fim.txt`. O resultado foi na resposta do despacho.
+- Entre o fim do 4º despacho (00:35) e o começo do 5º, `_media/` mudou fora de mim, de 249 para 252 arquivos, como a 5ª passada do `pesquisa-imagens` registra:
   - a camiseta e o `_PROCEDENCIA.json` dela, entregues em `_media/foto/s28/`;
   - o 550551, entregue em `_media/foto/s16/`, com o `_PROCEDENCIA.json` de lá regravado.
   - Nada mais.

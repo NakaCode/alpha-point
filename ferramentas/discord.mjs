@@ -19,6 +19,8 @@
 //        Os canais se procuram SÓ dentro da categoria: num servidor de equipe, "status" pode ser de outra pessoa.
 //        Sem --criar, o canal que falta só se relata; com --criar, se cria na categoria (o bot precisa de "Gerenciar
 //        canais", que o convite padrão não pede).
+//   node ferramentas/discord.mjs privado                        só lê: a categoria e os canais estão só com o Lucas e o bot?
+//        (sai 0 se sim, 1 se não; lista os cargos com Administrador, que veem tudo mesmo no privado)
 //   node ferramentas/discord.mjs avisar <canal> [--marcar] [--simular] (--arquivo=<txt> | <texto...>)
 //   node ferramentas/discord.mjs aprendizados [--simular] [--desde=<n>]   os itens novos do APRENDIZADOS.md
 //   node ferramentas/discord.mjs status [--marcar] [--simular]  a fila da Régie (regie queue)
@@ -216,7 +218,8 @@ try {
     const canais = {}; const faltam = []; const criados = [];
     for (const [nome, topico] of Object.entries(CANAIS)) {
       let c = existentes.find((x) => x.type === 0 && x.parent_id === cat.id && norm(x.name) === nome);
-      if (!c && flag("criar")) { c = await api("POST", `/guilds/${g.id}/channels`, { name: nome, type: 0, topic: topico, parent_id: cat.id }); criados.push(nome); }
+      // o canal novo leva as permissões da categoria (fica "sincronizado"): categoria privada dá canal privado
+      if (!c && flag("criar")) { c = await api("POST", `/guilds/${g.id}/channels`, { name: nome, type: 0, topic: topico, parent_id: cat.id, permission_overwrites: cat.permission_overwrites || [] }); criados.push(nome); }
       if (c) canais[nome] = c.id; else faltam.push(nome);
     }
     if (faltam.length) sair(2, `NÃO RODOU — faltam na categoria "${cat.name}" os canais de texto: ${faltam.join(", ")} (crie-os, ou rode com --criar se o bot tiver "Gerenciar canais").`);
@@ -227,6 +230,38 @@ try {
     });
     console.log(`bot ${nomeBot} em "${g.name}" › "${cat.name}" · o Lucas é "${lucas.nick || lucas.user.global_name || lucas.user.username}" · canais criados agora: ${criados.join(", ") || "nenhum"}`);
     await postar("status", `Olá! Sou o bot do Alpha Point (${agora()}). Aqui chegam o status dos vídeos; em #pendencias, o que espera o Lucas; em #aprendizados, as notas do canal; em #erros, o que deu errado. Eu só posto: não leio o que se escreve aqui, e as respostas do Lucas continuam no chat do Claude.`, { marcar: true });
+  } else if (cmd === "privado") {
+    // Só lê: quem vê a categoria e os canais. Administrador do servidor vê tudo, mesmo o privado (regra do Discord).
+    const e = exigirEstado();
+    const VER = 1024n;
+    const [canaisG, cargos, eu] = await Promise.all([api("GET", `/guilds/${e.servidor.id}/channels`), api("GET", `/guilds/${e.servidor.id}/roles`), api("GET", "/users/@me")]);
+    const membro = async (id) => { try { return await api("GET", `/guilds/${e.servidor.id}/members/${id}`); } catch { return null; } };
+    const [mBot, mLucas] = await Promise.all([membro(eu.id), e.lucas ? membro(e.lucas) : null]);
+    const ve = (ow, m) => { // a conta de permissão do canal, sem o administrador
+      const todos = ow.find((o) => o.id === e.servidor.id);
+      let pode = !(todos && (BigInt(todos.deny) & VER));
+      const dosCargos = ow.filter((o) => o.type === 0 && m?.roles?.includes(o.id));
+      if (dosCargos.some((o) => BigInt(o.allow) & VER)) pode = true;
+      else if (dosCargos.some((o) => BigInt(o.deny) & VER)) pode = false;
+      const dele = ow.find((o) => o.type === 1 && o.id === m?.user?.id);
+      if (dele && BigInt(dele.allow) & VER) pode = true; else if (dele && BigInt(dele.deny) & VER) pode = false;
+      return pode;
+    };
+    let tudoPrivado = true;
+    for (const [nome, id] of [[`categoria "${e.categoria.nome}"`, e.categoria.id], ...Object.entries(e.canais).map(([n, id]) => [`#${n}`, id])]) {
+      const c = canaisG.find((x) => x.id === id);
+      if (!c) { console.log(`${nome}: o bot não o enxerga`); tudoPrivado = false; continue; }
+      const ow = c.permission_overwrites || [];
+      const todos = ow.find((o) => o.id === e.servidor.id);
+      const fechado = !!(todos && BigInt(todos.deny) & VER);
+      const bot = ve(ow, mBot), lucas = mLucas ? ve(ow, mLucas) : null;
+      if (!fechado || !bot || lucas === false) tudoPrivado = false;
+      console.log(`${nome}: ${fechado ? "privado" : "ABERTO a quem é do servidor"} · o bot ${bot ? "vê" : "NÃO vê"} · o Lucas ${lucas === null ? "?" : lucas ? "vê" : "NÃO vê"}`);
+    }
+    const admins = cargos.filter((r) => BigInt(r.permissions) & 8n).map((r) => r.name);
+    console.log(`cargos com Administrador, que veem tudo mesmo assim: ${admins.join(", ") || "nenhum"} (e o dono do servidor)`);
+    console.log(tudoPrivado ? "✓ só o Lucas e o bot, fora os administradores" : "✗ ainda não está só com o Lucas e o bot");
+    process.exitCode = tudoPrivado ? 0 : 1;
   } else if (cmd === "avisar") {
     const canal = livres[0];
     const arq = valor("arquivo");
