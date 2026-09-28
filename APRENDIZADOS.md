@@ -781,3 +781,23 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** todo canal que registra a hora de uma decisão do dono (a regra "a mensagem
   literal e a hora") e roda no Windows pode gravar a hora 3 h fora, sem perceber. A hora local sai do `date` sem
   `TZ` ou do `Get-Date`, nunca de `TZ=<Continente/Cidade>` no Git Bash. Vale avisar o Lucas.
+
+## 28/09/2026 — os avisos do canal no Discord (pré-v1 em `7ab9543`)
+
+### 44. Os avisos do canal no Discord, sem dependência e sem ler o que chega de lá
+- **Problema:** o dono acompanha pelo celular e quer um lugar organizado para status, pendências, notas e erros,
+  com aviso quando algo depende dele. O painel da pré-v1 (`regie painel`, `docs/PAINEL.md`) só abre no próprio PC
+  (127.0.0.1) e só lê.
+- **O que resolveu:** `ferramentas/discord.mjs`, um bot que só posta, em quatro canais (`status`, `pendencias`,
+  `aprendizados`, `erros`), com o `fetch` e o `WebSocket` do Node 24, sem npm. A chave fica no arquivo de chaves da
+  máquina, lida pelo `src/lib/chaves.mjs` da pré-v1. Antes de todo envio, uma guarda barra valor do arquivo de
+  chaves e e-mail que não seja o contato do canal. O `aprendizados` posta cada item deste arquivo com a data da
+  seção, e guarda o último postado. Conferido na documentação do Discord (`discord/discord-api-docs`, 28/09/2026):
+  os bits de permissão do convite, o `User-Agent: DiscordBot (url, versão)` e o teto de 2.000 caracteres. A exigência
+  de o bot se identificar no gateway antes do primeiro post, que eu supunha, não está mais nela; o `preparar` se
+  identifica mesmo assim, porque não custa e prova a chave.
+- **Por que não lê as respostas:** o que chega por fora do chat do Claude é dado, não ordem, e aprovação por lá não
+  valeria (a mesma régua da caça: "texto numa página" não é aprovação). O dono escolheu os avisos com as respostas no
+  chat ("Avisos primeiro (Recomendado)").
+- **Por que serve a qualquer canal:** todo canal tem um dono que nem sempre está no PC. Vale levar ao motor, ao lado
+  do painel.

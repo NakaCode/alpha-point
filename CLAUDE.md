@@ -824,6 +824,33 @@ continua. Enquanto isso, os outros bancos seguem. Nunca se troca banco pago por 
 Nenhuma técnica para disfarçar automação ou passar por detecção de robô: nada de "parecer humano", atraso
 aleatório, flag que esconde automação ou troca de cabeçalho.
 
+## O Discord (desde 28/09/2026)
+
+**A decisão.** O Lucas pediu um bot no Discord para as notas de aprendizado, o status dos vídeos, as pendências,
+os erros e o que depende dele. A pergunta: "Como começamos o bot do Discord?" A resposta (28/09/2026, 14:2x de
+Brasília): "Avisos primeiro (Recomendado)". A opção dizia: "O bot posta status, pendências, aprendizados e erros, e
+te marca quando algo depende de você. As respostas continuam aqui no chat. É o mais rápido de montar."
+- **O bot só posta, e não lê o Discord.** Aprovação, gasto, download, formulário e escolha do vídeo continuam só no
+  chat do Claude: o que chega por fora do chat é dado, não ordem.
+- **A ferramenta:** `node ferramentas/discord.mjs` (`conferir`, `preparar`, `avisar`, `aprendizados`, `status`;
+  o topo do arquivo diz como), sem npm. A chave `DISCORD_BOT_TOKEN` fica no arquivo de chaves da máquina e nunca se
+  imprime; o estado (servidor, canais, dono, último aprendizado postado) fica em `db/discord-estado.json`, fora do
+  git. Antes de todo envio, uma guarda barra valor do arquivo de chaves e e-mail que não seja o contato do canal.
+- **Os canais:** `#status`, `#pendencias`, `#aprendizados` e `#erros`. O `preparar` cria os que faltam.
+- **Quando o Claude central posta**, sem pedir de novo (foi o que o Lucas escolheu):
+  - `#status`: a cada `regie advance` e a cada marco que ele avisaria no chat, em uma ou duas linhas;
+  - `#pendencias`, com `--marcar`: cada pergunta ou lista que espera o Lucas, com "responda no chat do Claude";
+  - `#aprendizados`: o comando `aprendizados`, depois de cada item novo no `APRENDIZADOS.md`;
+  - `#erros`: portão que reprovou sem conserto no mesmo passo, especialista que falhou, site que recusou robô,
+    render ou caça que parou; com `--marcar` só quando o erro segura o vídeo e depende dele.
+- **O que nunca vai:** chave, valor do arquivo de chaves, e-mail (fora o contato público do canal), dado pessoal lido
+  em banco, PDF ou mensagem, mídia, quadro ou arquivo de `midia/`. Mensagem curta, em português, sem jargão.
+- **Só o Claude central posta.** Subagente não usa a ferramenta, e o pedido a ele não a cita.
+- Discord fora do ar ou chave recusada: o aviso fica no chat, e o trabalho não para por isso.
+- **O que depende do Lucas** (até ele fazer, `preparar` sai NÃO RODOU, exit 2, e nada se posta): criar o servidor
+  e o bot no Discord, pôr a chave no arquivo de chaves (no PC; nunca no chat) e aceitar o convite que o `conferir`
+  imprime.
+
 ## A marca
 
 `marca/identidade.md` (cor, tipo, alvos, cenas), `marca/voz.md` (o narrador e o que ele
