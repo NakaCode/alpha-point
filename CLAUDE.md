@@ -373,6 +373,27 @@ gravado. Portão ausente do disco, ou que sai com exit 2 chamado com o alvo cert
 abaixo), é **NÃO MEDIDO**, com o nome do portão. Nunca é simulado nem "medido no olho": olhar um quadro
 (`quadro.mjs`, ou o render e o ffmpeg) é olhar, não é portão.
 
+**Uma conversa por peça** (Lucas, 28/09/2026, para ver o que cada peça faz). A pergunta: "Como você quer acompanhar o
+que cada peça está fazendo?" A resposta: "Uma conversa por peça no app". O Claude central não consegue abrir conversa
+no app sozinho: o único caminho dele é o botão de tarefa, que abre a conversa numa cópia separada do projeto (worktree),
+sem áudio, mídia nem banco. A segunda pergunta: "Uma conversa por peça eu não consigo abrir sozinho. Qual destes
+caminhos você prefere?" A resposta: "Você abre as conversas". A opção dizia: "Para cada peça, você cria uma conversa
+nova no app, na pasta do projeto (sem cópia separada), e cola um pedido que eu te passo. Eu acompanho e confiro daqui.
+Dá mais trabalho para você a cada passo."
+- **O pedido** é do Claude central, pronto para colar: quem a peça é (ela mesma lê o ofício, `.claude/agents/<id>.md`, e
+  a roupa, `marca/agentes/<id>.md`, e faz o trabalho na própria conversa, não por subagente), o `<proj>`, o passo, a
+  tarefa, as ferramentas que o cabeçalho do ofício lista (e só elas), e o fim: um relato, sem commit, sem `regie
+  advance` e sem Discord ou Telegram.
+- **O Lucas abre a conversa** na pasta `C:\projetos\alpha-point`, sem cópia separada, e escolhe **o modelo da peça**:
+  Fable no `diretor-de-arte` e no `editor-de-arte`, Sonnet no `qc-visual`, Opus nos outros ("Os modelos", abaixo).
+- **O Claude central acompanha** pela leitura da conversa (`list_events`), confere o que ela gravou no disco, roda os
+  portões e os verificadores independentes (esses continuam aqui, e aparecem no painel de tarefas) e manda os
+  defeitos de volta para a conversa da peça. Commit, `regie advance`, Discord e Telegram continuam só com ele.
+- A conversa da peça confere, antes de trabalhar, que roda em `C:\projetos\alpha-point` (e não numa cópia): em
+  outra pasta, ela para e avisa.
+- **Na caça, não**: lá o conferente continua como subagente, aqui, sem as ferramentas do Chrome (skill, §2.5). Uma
+  conversa nova teria a extensão ligada.
+
 **Os modelos** estão no frontmatter, e **cada especialista roda no modelo com que vem do motor** (decisão do
 Lucas, 26/09/2026: "os que vierem com fable devem continuar como fable, os que vierem opus como opus"). Não passe
 outro modelo no despacho:
