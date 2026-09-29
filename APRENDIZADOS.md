@@ -834,3 +834,19 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   e `preparar`.
 - **Por que serve a qualquer canal:** todo dono quer saber, longe do PC, quando o vídeo espera por ele. Vale levar ao
   motor junto com o Discord, e ao guia dos amigos.
+
+## 28/09/2026 — os textos de tela do Juneau, numa conversa por peça (pré-v1 em `7ab9543`)
+
+### 46. A decisão do dono copiada em várias roupas envelhece em todas de uma vez
+- **Problema:** a decisão de gastar na MapTiler (28/09, identidade §6) entrou na identidade, no CLAUDE.md e em três
+  roupas (diretor de arte, montador e regente). Outras sete roupas continuaram dizendo "o gasto ainda não foi
+  liberado": o mapista e o editor de arte, que são os que renderizam, parariam antes de cada mapa pedindo um ok
+  que o dono já tinha dado. Quem achou foi o verificador de fatos, lendo a própria roupa; nenhum portão pega isso.
+- **O que resolveu:** as sete corrigidas no mesmo commit, e uma varredura (`grep` pela frase velha em
+  `marca/agentes/`) antes de dar a decisão por registrada.
+- **Como evitar:** a roupa não repete o estado de uma decisão; aponta para o lugar dela (a seção da identidade).
+  Quando repetir for inevitável, a decisão nova só se dá por registrada depois do `grep` pela frase antiga em todas
+  as instruções do canal. O mesmo aconteceu, no mesmo dia, com o exemplo do card de pessoa, em quatro roupas.
+- **Por que serve a qualquer canal:** todo canal tem várias instruções de agente que citam as decisões do dono. Vale
+  levar ao motor como regra de escrita das roupas, e como um portão simples: frase da marca que contradiz a
+  identidade.
