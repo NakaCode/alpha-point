@@ -423,8 +423,12 @@ lugar, rota, distância ou território vai a mapa antes de B-roll genérico. Nun
 está. A regra mora em `marca/identidade.md` §5, e as roupas do montador, do diretor-de-arte e do regente apontam
 para lá.
 
-Ainda não se viu o app subir um agente com `fable`. Se não subir, avise o Lucas; não edite o `.md`. Agente novo
-em `.claude/agents/` só carrega numa **sessão nova** do app.
+Uma conversa de peça em `fable` já rodou (29/09/2026, "Juneau · diretor-de-arte"): as respostas saíram como
+`claude-fable-5-1`. Ela abriu no modelo padrão do app, o Opus. O Claude central confere o modelo logo que acha a
+conversa (`get_session`); se não for o da peça, troca com `set_session_model`, que só vale da próxima volta. Com a
+volta já correndo, interrompe (`stop_session`), confere no disco que nada foi gravado e manda recomeçar. Um
+subagente com `fable` ainda não se viu subir: se não subir, avise o Lucas e não edite o `.md`. Agente novo em
+`.claude/agents/` só carrega numa **sessão nova** do app.
 
 **A roupa** de cada um é `marca/agentes/<id>.md`, escrita para este canal. Enquanto a de um especialista não
 existir, vale a marca ativa sobre o piso `marca/_neutra/`, e ele diz que a roupa faltou. O `LEIA-ME.md` dessa

@@ -850,3 +850,16 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** todo canal tem várias instruções de agente que citam as decisões do dono. Vale
   levar ao motor como regra de escrita das roupas, e como um portão simples: frase da marca que contradiz a
   identidade.
+
+### 47. A conversa de peça abre no modelo padrão do app, não no da peça
+- **Problema:** o diretor de arte roda no `fable` (frontmatter do ofício, decisão do dono), mas a conversa que o
+  dono abriu para ele subiu no modelo padrão do app, o Opus, e começou a trabalhar. A troca de modelo só vale da
+  próxima volta, e a tarefa inteira da peça cabe numa volta só: sem intervenção, o conceito sairia do modelo errado.
+  O nome da conversa e o relato não mostram o modelo.
+- **O que resolveu:** logo que a conversa aparece, o Claude central confere o modelo (`get_session`). Se não é o da
+  peça, troca (`set_session_model`), interrompe a volta (`stop_session`), confere no disco que nada foi gravado e
+  manda recomeçar. As respostas seguintes saíram como `claude-fable-5-1`, conferidas no transcript.
+- **Como evitar:** o pedido que o dono cola já diz o modelo, mas o app não o aplica sozinho. A conferência do
+  modelo entra no roteiro do Claude central junto com o nome e o grupo da conversa.
+- **Por que serve a qualquer canal:** todo canal que roda uma peça por conversa, com modelo por peça, tem o mesmo
+  furo. Vale levar ao motor: o despacho confere o modelo antes de aceitar o trabalho.
