@@ -37,7 +37,7 @@ O roteiro não tem linha `**Título**`, e nenhuma se acrescenta (CLAUDE.md).
 - As outras decisões do Lucas que valem para todo especialista, também aqui:
   - **mapa = MapTiler** (`canal.json` › `mapa.perfil`), com `© MapTiler © OpenStreetMap contributors` na tela
     durante todo o mapa, e o que vem do OSM com o crédito do OSM (identidade.md §6; CLAUDE.md, pré-v1 item 6).
-    O gasto de pedidos na MapTiler ainda não foi liberado: nenhum quadro ou render de mapa sem o ok dele;
+    No Juneau, o gasto de pedidos na MapTiler está liberado, com o relevo 3D só em s44 (Lucas, 28/09/2026; identidade.md §6, "O gasto do Juneau, liberado"); nos próximos vídeos, nenhum quadro ou render de mapa sem o ok dele;
   - **documento do governo do Estado do Alasca e documento de imprensa** (ADN, KTOO) só vão à tela com
     permissão de uso clara (domínio público comprovado, licença aberta ou autorização escrita), conferida e
     gravada na procedência; sem ela, a cena recria o trecho no visual do canal, com o texto citado fiel e a

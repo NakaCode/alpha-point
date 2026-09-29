@@ -46,8 +46,14 @@
 A base do canal cobra **por pedido de mapa**, e render pede muitos (identidade.md §6). Todo quadro
 (`quadro.mjs`), todo render (`renderizar.mjs`) e toda sonda de DEM de uma cena MapTiler é pedido pago.
 
-**O gasto ainda não foi liberado.** Você pode preparar e escrever a cena. Antes do **primeiro** quadro, render
-ou sonda, pare e devolva ao Claude central, que pergunta ao Lucas:
+**No Juneau, o gasto está liberado** (Lucas, 28/09/2026; identidade.md §6, "O gasto do Juneau, liberado"), com
+o relevo (`terrain-rgb-v2`, câmera 3D) só em s44, o campo de gelo. Você pode preparar e escrever a cena. Antes
+do **primeiro** quadro, render ou sonda de mapa do vídeo, pare e devolva ao Claude central: ele anota o contador
+do painel da MapTiler antes e depois dessa primeira cena, e o custo real vai ao Lucas antes das outras. Se o
+custo projetado for muito maior que o do plano, o render para até a resposta dele.
+
+Nos próximos vídeos, o gasto e o relevo pedem um ok próprio (DECISÃO DO LUCAS PENDENTE). Até ele, antes do
+primeiro quadro, render ou sonda, pare e devolva ao Claude central, que pergunta ao Lucas:
 - que cenas;
 - quantos segundos;
 - se liga o DEM (3D ou corte de perfil).
@@ -165,11 +171,10 @@ necessidade.
   órbita contínua (ofício §6b). Até ele decidir, siga o ofício: deslocamento contínuo do primeiro ao último
   quadro. Sem órbita, só quando outro movimento carrega o quadro o tempo todo (a estrada se desenhando, o
   território preenchendo).
-- **3D com DEM** quando a frase argumenta com a vertical (ofício §5b). No Juneau:
-  - o campo de gelo e as "steep mountains" do Lynn Canal (`roteiros/juneau/roteiro-narrador.md`, linha 70);
-  - os "41 avalanche paths" (linha 76).
-
-  O DEM é pedido pago: proponha a cena em 3D e espere o ok do gasto (§1).
+- **3D com DEM** quando a frase argumenta com a vertical (ofício §5b). No Juneau, o relevo está liberado só em
+  s44, o campo de gelo (§1). As "steep mountains" do Lynn Canal (`roteiros/juneau/roteiro-narrador.md`, linha
+  70) e os "41 avalanche paths" (linha 76) também argumentam com a vertical, mas o relevo fora de s44 não foi
+  liberado: proponha a cena em 3D e espere o ok do Lucas, pelo Claude central.
 
 ## 7 · Espaço (identidade.md §4.2)
 

@@ -65,9 +65,10 @@
 - **Cena de mapa**: a prova é o clipe, não o `quadro.mjs` (por quê: CLAUDE.md, "Peças da pré-v1", item 7). O
   `maprender.mjs` do ofício não existe aqui.
   - Se o clipe vale, tire os quadros dele com o ffmpeg. Não custa nada.
-  - Sem clipe, ou com clipe velho, o render pede tiles pagos da MapTiler, e esse gasto ainda não foi
-    liberado. **Não renderize.** A cena fica **não julgada** (bloqueio): diga isso ao Claude central, que
-    pergunta ao Lucas. Nunca aprove cena de mapa sem quadro.
+  - Sem clipe, ou com clipe velho, **não renderize**: o render pede tiles pagos da MapTiler e é do
+    `editor-de-arte` ou do `mapista` (no Juneau, o gasto de pedidos na MapTiler está liberado, com o relevo 3D só em s44 (Lucas, 28/09/2026; identidade.md §6, "O gasto do Juneau, liberado"), com o
+    contador anotado pelo Claude central). A cena fica **não julgada** (bloqueio): diga isso ao Claude
+    central. Nunca aprove cena de mapa sem quadro.
 - Os quadros saem do `quadro.mjs` ou, na cena de satélite, do MP4 renderizado, com o ffmpeg: o `quadro.mjs`
   não fotografa satélite nesta máquina (acima). A medida sai do `ffprobe`. Os quadros ficam em
   `out/<proj>/_tmp/`, fora do git.

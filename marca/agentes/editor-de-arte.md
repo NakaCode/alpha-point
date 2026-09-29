@@ -320,8 +320,10 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   `node scripts/qc-tipografia.mjs out/<proj>/graphics/<id>.html`.
 - Quadro, rascunho e teste de fonte ficam em `out/<proj>/_tmp/` (o `/tmp` do ofício; fora do git), nunca em
   `graphics/`, que é só da cena entregue.
-- Cena com mapa MapTiler dentro: quadro e render pedem tiles pagos. O gasto na MapTiler ainda não foi
-  liberado. Antes do primeiro quadro, pare e devolva o pedido ao Claude central, que pergunta ao Lucas.
+- Cena com mapa MapTiler dentro: quadro e render pedem tiles pagos. No Juneau, o gasto de pedidos na MapTiler está liberado, com o relevo 3D só em s44 (Lucas, 28/09/2026; identidade.md §6, "O gasto do Juneau, liberado"). Antes do primeiro
+  quadro de mapa do vídeo, pare e devolva ao Claude central: ele anota o contador da MapTiler antes e depois
+  dessa cena, e o custo real vai ao Lucas antes das outras. Nos próximos vídeos, o gasto pede um ok próprio
+  (DECISÃO DO LUCAS PENDENTE).
 
 ## 12 · No Juneau
 

@@ -35,8 +35,8 @@
   data-render="4k-native">` (CLAUDE.md).
 - **Sem títulos de capítulo na tela** (Lucas, 26/09/2026): os capítulos vão só na descrição. **Os últimos
   20 s não têm voz** (`canal.json › narracao.cauda_tela_final_s`). **Mapa** = MapTiler, com o crédito
-  `© MapTiler © OpenStreetMap contributors` na tela (identidade.md §6); o gasto de pedidos na MapTiler ainda
-  não foi liberado, e nenhum quadro ou render de mapa sai sem o ok do Lucas.
+  `© MapTiler © OpenStreetMap contributors` na tela (identidade.md §6). No Juneau, o gasto de pedidos na MapTiler está liberado, com o relevo 3D só em s44 (Lucas, 28/09/2026; identidade.md §6, "O gasto do Juneau, liberado"):
+  o contador se anota antes e depois da primeira cena de mapa.
 - **Banco pago** de imagem (midia.md §1, §2): só B-roll genérico, baixado na conta do Lucas, pela caça no Chrome dele que ele aprova item por item
   (§2.3, §8). Evento real específico vem de acervo aberto ou oficial, nunca de banco.
 - **Nunca** rode `narrar.mjs` nem `transcrever.mjs` (CLAUDE.md).

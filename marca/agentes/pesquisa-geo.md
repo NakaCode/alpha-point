@@ -61,7 +61,8 @@
 
 - O **`mapista`**, sobre a base **MapTiler** satellite-v2 + terrain-rgb-v2 (`canal.json › mapa.perfil`,
   decisão do Lucas em 26/09/2026; identidade.md §6). Você não escolhe base, câmera nem cor, e **não pede
-  tile**: o plano cobra por pedido, e o gasto na MapTiler espera o ok do Lucas.
+  tile**: o plano cobra por pedido, e quem o pede é o mapista (no Juneau, com o gasto liberado: identidade.md §6,
+  "O gasto do Juneau, liberado").
 - Para quem desenha (identidade.md §6): base a 65 % de brilho e 70 % de saturação; o protagonista
   preenchido em `--destaque` a 85 %, com contorno `--tinta` de 6 px; as outras fronteiras em branco a
   35 %, 3 px, sobre um contorno escuro de 7 px.
@@ -148,7 +149,7 @@ automático: só vai à tela com permissão de uso clara, conferida e gravada (L
 - **Sem título de capítulo na tela**; capítulo só na descrição (CLAUDE.md). Pedido de geometria para card
   de capítulo é engano: devolva ao `montador`.
 - **Os últimos 20 s não têm voz**: são da tela final do YouTube (`canal.json › narracao.cauda_tela_final_s`).
-- **MapTiler** decidida, crédito dela na tela, gasto não liberado (§1). O Landsat foi só teste
+- **MapTiler** decidida, crédito dela na tela; no Juneau, gasto liberado, com relevo só em s44 (§1). O Landsat foi só teste
   (CLAUDE.md).
 - **Banco pago** (midia.md §1, §2) não é seu: serve só a B-roll genérico, na ordem Envato Elements → Motion
   Array → Storyblocks → Shutterstock, baixado na conta do Lucas, pela caça no Chrome dele que ele aprova item por
