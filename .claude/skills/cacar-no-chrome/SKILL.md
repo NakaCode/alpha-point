@@ -27,7 +27,10 @@ description: Caça B-roll genérico nos bancos pagos do Alpha Point (Envato Elem
 > - no CAPTCHA, para-se o banco; o projeto do Envato é o `<proj>`, com *Always ask* confirmado pelo Lucas, e o
 >   Envato fica fora até ele entrar;
 > - todo comando leva `REGIE_MOTOR`; a ordem e os filtros são os da marca; o Shutterstock entra, com o teto de
->   guarda de 100 por dia; música fica fora; entram o PDF de licença e a aprovação no relato.
+>   guarda de 100 por dia; música fica fora; entram o PDF de licença e a aprovação no relato;
+> - no Shutterstock, o candidato grava o artista (o contribuidor) que a página do item mostra, para o crédito
+>   `<artista>/Shutterstock.com` da cena (`marca/midia.md` §3.4; Lucas, 28/09/2026, no Juneau; 29/09/2026 nesta
+>   cópia).
 >
 > **Acima desta skill:** o CLAUDE.md ("Caça nos bancos pagos") e `marca/midia.md` (§1 a §8). Se algo aqui
 > divergir deles, pare e avise o Lucas.
@@ -260,6 +263,12 @@ ordem:
    a cena um lugar ou não: o rótulo de tela nasce depois, no `screen_text`, e não pode nomear lugar mais
    específico que esse trecho (`marca/midia.md` §2.7). Se a cena rotula um lugar e a descrição não o nomeia, fica
    de fora.
+7. **O artista, no Shutterstock**: o nome do contribuidor como a página do item o mostra ("Contributor",
+   "Colaborador" ou o nome ao lado do ID), copiado letra por letra, para `artista` (§2.4). É o crédito
+   `<artista>/Shutterstock.com` que a cena do clipe ou da foto leva na faixa de crédito (`marca/midia.md` §3.4:
+   no Juneau, decisão do Lucas de 28/09/2026; nos próximos vídeos, pergunta nova, ou o Lucas estende). É dado
+   público do item, não da conta. Se a página não mostra o artista, o candidato não entra: o crédito da cena não
+   se completaria. Nos outros bancos, `artista` fica `null`.
 
 O que cai num desses pontos não vira candidato: anote no relato o item e o motivo. O que passa, grave (§2.4).
 Até 3 candidatos por item da lista, para o conferente ter escolha.
@@ -308,6 +317,7 @@ lido da área da conta (§6).
       "url": "<URL da página do item>",
       "id_no_banco": "<o ID que a página ou a URL mostra>",
       "titulo": "<o título, como a página o escreve>",
+      "artista": "<no Shutterstock, o contribuidor como a página do item o mostra; nos outros bancos, null>",
       "descricao_lugar": "<o trecho da descrição que nomeia o lugar, ou null se ela não nomeia lugar>",
       "resolucao": "3840x2160",
       "orientacao": "horizontal",
@@ -396,6 +406,7 @@ quantos e quantos deixou para o Lucas pesar, e **como a resposta cobre as linhas
 - o veredito do conferente, numa linha, e a `preferencia` dele;
 - no `pendente_lucas`, a marca **`pendente_lucas`**, o que pesar e a pergunta do conferente (o `pendente` dele);
 - o custo (Shutterstock: 1 do dia) e o `nome_final`;
+- no Shutterstock, o artista e o crédito que a cena leva, `<artista>/Shutterstock.com` (§2.3, item 7);
 - os caminhos das prévias e o da página.
 
 **O Lucas responde no chat, à lista:** "sim", "sim, menos o 4" ou "aprovo 1, 3 e 5". Aprovado é o que a resposta
@@ -707,7 +718,8 @@ bancos ou no PDF de licença: a conta é `lucas-rosa` (o apelido do `marca/midia
 - os PDFs de licença, com nome, sha256 e o que cada um cita (ID, título, projeto);
 - três avisos: a assinatura tem de estar ativa quando o vídeo for a público (`marca/midia.md` §2.4); no Motion
   Array, o vídeo tem de ficar público antes de a assinatura acabar; no Shutterstock, a linha de crédito vai na
-  faixa de crédito da última cena e na descrição (§3.4);
+  faixa de crédito da última cena e na descrição, e, no Juneau, `<artista>/Shutterstock.com` na faixa da cena de
+  cada clipe ou foto dele, com o artista de cada item (§3.4);
 - se o Shutterstock entrou, o dia dele no fim (`registrar-download.mjs teto`, com `REGIE_MOTOR`).
 
 Confira no disco antes de dizer "pronto": `out/<proj>/_media/<tipo>/<cena>/` tem os arquivos e o

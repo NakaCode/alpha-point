@@ -284,7 +284,10 @@ Leia o que a origem diz, onde ela diz: no `caca`, o `candidatos-caca.json`; no `
 - **O crédito na tela** que a marca exige vai em `credito_na_tela` (identidade §7; `marca/midia.md` §3.4 e §7.5):
   domínio público e retrato oficial, sem crédito; Commons com atribuição, `<author> / Wikimedia Commons ·
   <license>`; foto do Estado ou de jornal, `<author> / <outlet>`, ou só o veículo ou o órgão; banco pago, nenhum,
-  salvo a linha do Shutterstock; as fontes da 4ª rodada, o que a identidade §7 dá a cada uma (outros governos,
+  salvo a linha do Shutterstock e, no Juneau, `<artista>/Shutterstock.com` na cena de cada clipe ou foto dele
+  (`marca/midia.md` §3.4; Lucas, 28/09/2026), com o `artista` que a caça gravou no candidato
+  (`out/<proj>/_pesquisa/candidatos-caca.json`); candidato do Shutterstock sem `artista` falha em `licenca_fonte`,
+  e o motivo diz que falta o artista; as fontes da 4ª rodada, o que a identidade §7 dá a cada uma (outros governos,
   `<author> / <acervo> · <license>`; a Open Government Licence – Canada, a linha dela).
 
 **A procedência, pela seção da marca de cada tipo.** Quem a grava é quem baixa e entrega; você a lê e não a edita.

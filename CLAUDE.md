@@ -582,7 +582,11 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
 
 **O método** é o da pré-v1, com a skill adaptada ao canal:
 - A skill `.claude/skills/cacar-no-chrome/SKILL.md` é a **cópia adaptada do canal**, com sha256
-  `8cb8abc0b3037e6ec14ec75bd46b77615e827039bab1b1bbca5e0915fc49ea4b` em 27/09/2026. Em 27/09, uma linha só: o
+  `e0bc86dd89912c1a742b2883ca5dafac16b288da4e36a3375f5dd47aac80e816` em 29/09/2026. Em 29/09: no Shutterstock, o
+  candidato grava o artista (o contribuidor) que a página do item mostra, e a lista e o relato levam o crédito
+  `<artista>/Shutterstock.com` da cena (§2.3, item 7; §2.4; §2.6; §6), pela decisão do Lucas de 28/09
+  (`marca/midia.md` §3.4); sem o artista na página, o candidato não entra. O `conferente-de-midia` põe esse
+  crédito no `credito_na_tela`. Em 27/09, uma linha só: o
   exemplo de gatilho do `pendente_lucas` perdeu o "vídeo do Estado" (§2.5), que o Lucas decidiu nesse dia
   (`marca/midia.md` §7.5). Na revisão de 26/09: o `inUse`
   e a conta conferidos também antes do clique do PDF (§0, item 5, e §3.2); a regra do banco cujo primeiro PDF
