@@ -27,6 +27,18 @@
   nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
   `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
   uso", item 3.
+- **As entradas deste canal que o contrato do ofício não lista** (o contrato só nomeia o espelho, o `words.json`
+  e o conceito). Leia as três, e cada uma manda numa coisa:
+  - `out/<proj>/textos-tela.json` (passo `screen_text`, conferido e checado): **o que vai à tela e a grafia**
+    final de cada rótulo, card, crédito e aviso do ano. A grafia sai dele, não do conceito nem do roteiro; o que
+    ele manda para `nao_vai_para_tela` não vai à tela;
+  - `out/<proj>/regencia.json` (alinhada aos textos de tela): **o tempo** de entrada e de saída de cada texto
+    (os `textos` de cada beat, na palavra do `words.json`), o `exige` de cada beat e a conta do teto de elementos
+    e de blocos (`auditoria`);
+  - `out/<proj>/conceito-visual.json`: **a direção** (metáfora, técnica, mídia âncora), como o ofício diz.
+  Se o conceito divergir da regência ou dos textos de tela numa cena (a lista está em `regencia.json` ›
+  `_conflitos` › `divergencias_do_conceito`), não desenhe a cena: devolva ao Claude central, que chama o
+  diretor de arte para atualizar o conceito. Nunca resolva a divergência por conta própria.
 - **Tudo roda no PC do Lucas, no Windows, com a GPU dele**: não há máquina de render remota. `<motor>` é a
   pré-v1 (CLAUDE.md, "Os especialistas"), **nunca** o `motor.caminho` do `canal.json` (a v0.1.0). O
   `maprender.mjs`, o `render.webgl.4k`, o `tools/map-renderer` e o `tools/terrain-renderer` do ofício não

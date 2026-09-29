@@ -28,6 +28,18 @@
   nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
   `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
   uso", item 3.
+- **As entradas deste canal que o contrato do ofício não lista** (o contrato só nomeia o espelho, o `words.json`
+  e o conceito). Leia as três, e cada uma manda numa coisa:
+  - `out/<proj>/textos-tela.json` (passo `screen_text`, conferido e checado): **o que vai à tela e a grafia**
+    final de cada rótulo, card, crédito e aviso do ano. A grafia sai dele, não do conceito nem do roteiro; o que
+    ele manda para `nao_vai_para_tela` não vai à tela;
+  - `out/<proj>/regencia.json` (alinhada aos textos de tela): **o tempo** de entrada e de saída de cada texto
+    (os `textos` de cada beat, na palavra do `words.json`), o `exige` de cada beat e a conta do teto de elementos
+    e de blocos (`auditoria`);
+  - `out/<proj>/conceito-visual.json`: **a direção** (metáfora, técnica, mídia âncora), como o ofício diz.
+  Se o conceito divergir da regência ou dos textos de tela numa cena (a lista está em `regencia.json` ›
+  `_conflitos` › `divergencias_do_conceito`), não desenhe a cena: devolva ao Claude central, que chama o
+  diretor de arte para atualizar o conceito. Nunca resolva a divergência por conta própria.
 - **Os últimos 20 s não têm voz**: são da tela final do YouTube (`canal.json` › `narracao.cauda_tela_final_s`,
   Lucas, 26/09/2026). Ver §7.
 - **Sem título de capítulo na tela, nunca** (CLAUDE.md; Lucas, 26/09/2026): capítulos só na descrição. As
@@ -143,7 +155,7 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
 | Modelo | `modo` | Como é neste canal |
 |---|---|---|
 | MAPA | `mapa`, `mapa3d` | é do **mapista**: delegue |
-| REGISTRO | `footage`, `foto`, `aereo-real` | o asset real em tela cheia, sem moldura, com rótulo de lugar e crédito; a foto com `aviso_de_ano: true` no veredito leva o aviso do ano (§10). A foto de época com menos de 1.600 px de largura vai impressa sobre a mesa, até 1,4 vez o tamanho do arquivo, e nunca em tela cheia (identidade.md §5, "A foto antiga pequena"). Sobre arquivo com `lugar_na_origem: null` no veredito do conferente, sem rótulo de lugar (midia.md §2.7): declare no report, e isso não reprova |
+| REGISTRO | `footage`, `foto`, `aereo-real` | o asset real em tela cheia, sem moldura, com rótulo de lugar e crédito; a foto com `aviso_de_ano: true` no veredito leva o aviso do ano (§10). A foto de época com menos de 1.600 px de largura vai impressa sobre a mesa, até 1,4 vez o tamanho do arquivo, e nunca em tela cheia (identidade.md §5, "A foto antiga pequena"). A de 1.600 px ou mais que, para encher a tela, passaria de 1,4 vez também vai impressa, até 1,4 vez (Lucas, 29/09/2026; identidade.md §5, "A foto média também vai impressa"). Sobre arquivo com `lugar_na_origem: null` no veredito do conferente, sem rótulo de lugar (midia.md §2.7): declare no report, e isso não reprova |
 | PRANCHA | `desenho` | sobre `--fundo`. Ator = círculo de 640 px, traço de 6 px na cor do papel dele, bandeira oficial dentro, nome embaixo. Setas e linhas de 6 px. Ícone em círculo de 160 px |
 | DADO | `dados` | sobre `--papel`. Série do protagonista em `--destaque`, da contraparte em `--contraparte`, eixo em `--eixo-cor` (`--tinta-escura` a 60 %) |
 | DOCUMENTO | `documento` | a **folha de papel sobre a mesa** (Lucas, 27/09/2026; identidade.md §5, "A folha de documento"): folha em `--papel` com textura, borda de baixo rasgada, fita nos cantos de cima, sombra e até `--doc-inclinacao` de inclinação, sobre `--fundo`. Texto em `--fonte-doc` (Courier Prime): corpo 400 em `--doc-corpo` (piso 84 px), cabeçalho 700 em `--doc-cabecalho`, com a referência da peça numa caixa de contorno. A folha cresce com o texto: pelo menos `--doc-margem-rasgo` de branco entre a última linha e o rasgo, e a fita fora do texto. Texto que não cabe: a câmera desce pela folha com a voz, ou a folha recua e escurece e o trecho da voz aparece ampliado ao lado (literal, até 12 palavras). A página real, com permissão de uso clara, entra como a folha, sem redesenho; sem ela (documento do Estado do Alasca, imprensa), o trecho recriado com o texto citado fiel e a fonte citada, nunca um fac-símile: sem brasão, selo, timbre, logo ou assinatura (midia.md §7.1, §7.6). O trecho que importa grifado em `--grifo-cor` (`--destaque` a 35 %), passando com a voz; texto em `--tinta-escura` |

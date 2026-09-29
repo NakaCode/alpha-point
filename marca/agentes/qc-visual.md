@@ -26,6 +26,11 @@
   nele na grafia da voz (`KTOO` não está lá; `Kay-too`, sim). O que a voz disse diferente do texto está em
   `out/<proj>/transcricao.json` › `alinhamento.conteudo`. Como ele se faz: CLAUDE.md, "Peças da pré-v1 em
   uso", item 3.
+- **O texto na tela se julga contra o `out/<proj>/textos-tela.json`** (passo `screen_text`, conferido e checado),
+  que o contrato do ofício não lista: é ele que diz o que vai à tela e a grafia final de cada rótulo, card,
+  crédito e aviso do ano, e o que fica fora (`nao_vai_para_tela`). O tempo de cada texto e a conta do teto
+  (`auditoria`) estão na `out/<proj>/regencia.json`, que o contrato lista. Texto na cena que não está no
+  textos-tela, grafia diferente dele, ou texto do `nao_vai_para_tela` na tela: reprova na lente **factual**.
 - **Os últimos 20 s não têm voz**: são da tela final do YouTube (`canal.json` › `narracao.cauda_tela_final_s`).
   Ver §6.
 - **Sem título de capítulo na tela** (CLAUDE.md; Lucas, 26/09/2026). O gate duro do card de título (ofício §2)
@@ -153,6 +158,8 @@
     - ela em tela cheia;
     - ela ampliada acima de 1,4 vez o tamanho do arquivo;
     - upscale ou filtro nela.
+  - **A foto média** (Lucas, 29/09/2026; identidade.md §5, "A foto média também vai impressa"): a de 1.600 px ou mais que, em tela cheia,
+    passaria de 1,4 vez vai impressa sobre a mesa, e reprova pelas mesmas três coisas.
   - O rosto, quando há, vem de fonte autorizada, com a procedência gravada (midia.md §7.2). O retrato oficial
     em uso editorial vai sem crédito na tela. Rosto gerado ou alterado por IA reprova.
 - **acessibilidade** (identidade.md §0; voz.md §1): o espectador é norte-americano, de 25 a 60 anos, e não

@@ -198,7 +198,16 @@ Logo depois, ele completou: "A prioridade ainda deve ser fotos grandes e com qua
   - ela tem qualidade: nítida, sem retícula de impressão, sem compressão pesada, sem marca-d'água.
   Quem a propõe escreve por que o caso é específico, e o `conferente-de-midia` julga. Na dúvida, ela não entra.
 - **Vale para** a foto de época (registro histórico) com menos de 1.600 px de largura, que nunca vai em tela
-  cheia. A de 1.600 px ou mais segue o REGISTRO em tela cheia.
+  cheia. A de 1.600 px ou mais segue o REGISTRO em tela cheia, se a enche sem passar de 1,4 vez (abaixo).
+- **A foto média também vai impressa** (Lucas, 29/09/2026, 03:3x de Brasília): a de 1.600 px ou mais que, para
+  encher os 3.840 px da tela, seria ampliada mais de 1,4 vez vai impressa sobre a mesa, como a pequena, e nunca é
+  ampliada além de 1,4 vez. A pergunta: "Três fotos do Juneau têm entre 1.600 e 2.500 px de largura: a de 1915, a
+  de Fairbanks em 1972 e a da sessão de 2017. Pela regra, foto de 1.600 px ou mais vai em tela cheia, mas para
+  encher a tela 4K estas seriam ampliadas de 1,5 a 1,9 vez e ficariam menos nítidas. Como elas entram?" A
+  resposta: "Impressa na mesa (Recomendado)". A opção dizia: "Como está no plano: foto impressa sobre a mesa, com
+  borda, fita e sombra, ampliada no máximo 1,4 vez. Fica nítida. É a mesma lógica do retrato: foto que precisa ser
+  ampliada não conta como grande. Vira regra para os próximos vídeos." No Juneau: s09, s16 e s56. Em tela cheia,
+  então, só a foto que a enche sem passar de 1,4 vez (2.743 px de largura ou mais).
 - **A foto impressa**: moldura clara em `--tinta`, fita, sombra e até 2° de inclinação, sobre `--fundo`, como a foto
   do card. Na tela, fica no máximo **1,4 vez** o tamanho do arquivo.
 - **Nada de melhoria artificial**: nenhum upscale, clássico ou generativo, nenhum filtro e nenhum recorte que mude o
@@ -476,7 +485,8 @@ Não copia as figuras do estudo, que são do Estado."
 - **Catálogo pago**: Envato Elements, Motion Array, Storyblocks e Shutterstock. A ordem de uso, o
   que cada licença permite e como registrar cada download estão em **`midia.md`**.
 - **Foto grande e com qualidade** (Lucas, 27/09/2026: "A prioridade ainda deve ser fotos grandes e com qualidade, a exceção deve ser para casos MUITO específicos"):
-  - grande é 1.600 px de largura ou mais, a régua do `buscar-midia`. O B-roll e o footage seguem as réguas deles
+  - grande é 1.600 px de largura ou mais, a régua do `buscar-midia` (em tela cheia, só se a enche sem passar de 1,4
+    vez; a outra vai impressa: §5, "A foto média também vai impressa"). O B-roll e o footage seguem as réguas deles
     (`midia.md`; `.claude/agents/conferente-de-midia.md` §5.3);
   - qualidade é a foto nítida no tamanho em que vai à tela, sem retícula de impressão, sem compressão pesada, sem
     marca-d'água, e que não é foto de tela nem de página impressa;

@@ -211,7 +211,8 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
   medida, e o `conferente-de-midia` o leva ao Lucas (`pendente_lucas`; ofício dele, §5.3).
 - **Registro histórico** quase sempre é SD ou foto pequena.
   - **Foto de época** (Lucas, 27/09/2026; identidade.md §5, "A foto antiga pequena"): de 1.600 px de largura
-    para cima, vai em tela cheia. A prioridade é a foto grande e com qualidade (Lucas: "A prioridade ainda deve ser fotos grandes e com qualidade, a exceção deve ser para casos MUITO específicos").
+    para cima, vai em tela cheia se a enche sem passar de 1,4 vez (2.743 px ou mais); a de 1.600 a 2.742 px vai
+    impressa sobre a mesa, até 1,4 vez (Lucas, 29/09/2026; identidade.md §5, "A foto média também vai impressa"). A prioridade é a foto grande e com qualidade (Lucas: "A prioridade ainda deve ser fotos grandes e com qualidade, a exceção deve ser para casos MUITO específicos").
   - A pequena, impressa sobre a mesa, até 1,4 vez o tamanho e **a partir de 800 px no lado maior**, é exceção de
     caso muito específico (identidade.md §5): o registro daquilo que a fala nomeia, sem foto grande que sirva,
     nem de outro ano com o aviso, e com qualidade. Escreva no relatório por que o caso é específico. Nunca a
