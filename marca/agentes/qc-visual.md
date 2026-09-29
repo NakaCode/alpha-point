@@ -114,7 +114,7 @@
 - **poluicao** (identidade.md §4.2): teto de 6 elementos simultâneos, alvo de 4 a 5.
   - Contam texto e gráfico. Não contam a base de tela cheia, o crédito e a textura. O ator com bandeira e nome
     conta como um.
-  - Até 3 blocos de texto vivos (`--max-blocos`).
+  - Até 3 blocos de texto vivos (`--max-blocos`; o que é bloco: identidade.md §4.2: texto de leitura, não rótulo curto).
   - Cena que encosta no teto está no pior extremo: sinalize.
 - **tema** (identidade.md §2):
   - cor por papel no vídeo inteiro. `--destaque` só no protagonista (uma entidade) e no anel;

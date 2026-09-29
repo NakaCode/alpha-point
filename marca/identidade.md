@@ -125,6 +125,15 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
   - **Não contam** a base de tela cheia (satélite, footage), o crédito e a textura.
   - O círculo de ator com a bandeira e o nome embaixo é **um** cartão.
   - Cena que encosta no teto está no pior extremo, não no bom.
+- **Até 3 blocos de texto vivos ao mesmo tempo**, dentro dos 6 elementos (`--max-blocos` em `tokens.css`; o teto
+  da neutra, que não sobe). **Bloco é texto de leitura** (Lucas, 28/09/2026, 21:5x de Brasília): a fala citada,
+  a folha de documento (uma folha é um bloco), a legenda longa em frase, o card com o cargo. Nome de lugar,
+  número e rótulo de até 3 palavras não são bloco: contam só no teto de 6 elementos. A pergunta: "A marca limita
+  o texto na tela a 3 blocos ao mesmo tempo, dentro do teto de 6 elementos. O que conta como um bloco?" A
+  resposta: "Só texto de leitura (Recomendado)". A opção dizia: "Bloco é o que se lê como frase: a fala citada,
+  a folha, a legenda longa, o card com cargo. Nome de lugar, número e rótulo de até 3 palavras contam só no teto
+  de 6 elementos. O mapa da cena 44, com 5 nomes, passa. O portão do motor já trata assim: aceita até 9 rótulos,
+  e a média das cenas aprovadas é 4."
 - Um herói por cena, ou nenhum.
 
 ### 4.3 · Tempo e ritmo

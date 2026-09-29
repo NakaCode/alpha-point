@@ -100,7 +100,7 @@
   DO LUCAS PENDENTE: em que papel entram a manchete e o trecho citado.** A manchete não se encurta para
   caber (ofício §5): se passar do papel, diga no relatório.
 - Teto de carga: 3 blocos de texto e 6 elementos por cena, alvo de 4 a 5 (`marca/tokens.css`;
-  identidade.md §4.2). O documento conta como um bloco.
+  identidade.md §4.2, que diz o que é bloco). O documento conta como um bloco.
 
 ## 4 · Licença do que vai à tela
 

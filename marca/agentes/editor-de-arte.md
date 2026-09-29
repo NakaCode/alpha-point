@@ -118,7 +118,7 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
 - Canto inferior direito, 400 × 400 px: vazio (marca-d'água do YouTube). Nenhuma logo do canal na cena.
 - **Teto de 6 elementos simultâneos; alvo de 4 a 5.** Contam texto e gráfico (rótulo, número, seta, barra,
   anel, território aceso, cartão). Não contam a base de tela cheia, o crédito e a textura. O círculo de ator
-  com a bandeira e o nome embaixo conta como um. Blocos de texto vivos: até 3 (`--max-blocos`). Um herói por
+  com a bandeira e o nome embaixo conta como um. Blocos de texto vivos: até 3 (`--max-blocos`; o que é bloco: identidade.md §4.2). Um herói por
   cena, ou nenhum.
 - O `qc-carga` conta em outra unidade e com os tetos do ofício, não com os 6 da marca, e sem npm sai NÃO
   MEDIDO. Conte os 6 da marca nos quadros e escreva a conta no cabeçalho do HTML como conta sua, não como
