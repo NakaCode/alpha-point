@@ -863,3 +863,22 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   modelo entra no roteiro do Claude central junto com o nome e o grupo da conversa.
 - **Por que serve a qualquer canal:** todo canal que roda uma peça por conversa, com modelo por peça, tem o mesmo
   furo. Vale levar ao motor: o despacho confere o modelo antes de aceitar o trabalho.
+
+## 29/09/2026 — a primeira caça do Juneau nos bancos pagos (pré-v1 em `7ab9543`)
+
+### 48. A aba da extensão do Chrome não toca prévia, e o banco recusou a caça no meio
+- **Problema:** na Fase A, a prévia do Shutterstock ficava parada em 0:00, com o círculo girando, e no Motion Array
+  nem as miniaturas carregavam. A extensão Claude in Chrome abre toda aba do grupo dela em segundo plano, e o Chrome
+  não toca vídeo sem som nem carrega o que é preguiçoso numa aba que não está à vista. Nenhuma ferramenta permitida
+  da extensão ativa a aba, e o Windows recusou o clique mandado por programa. Uma prévia gravada assim é o pôster,
+  não um quadro do ponto: a primeira de 15 % saiu idêntica à de 50 %. Depois, na 20ª busca do Shutterstock (uma a
+  cada 10–20 s, e as duas últimas sem espera entre elas), o site respondeu 403 do CloudFront ("Request blocked").
+- **O que resolveu:** a prévia se confere antes de gravar (o tempo do player anda, e o quadro muda entre os
+  pontos), e o dono dá um clique na aba do grupo, com a janela à vista, antes da Fase A. A rolagem ainda carrega a
+  grade de resultados com a aba escondida, o que basta para ler os títulos. No 403, o banco saiu da caça sem nova
+  tentativa, como manda a regra de robô.
+- **Como evitar:** a skill ganha, no começo da Fase A, "a aba da caça ativa e à vista, conferida pela prévia que
+  anda", e uma espera maior entre as buscas do mesmo banco, com uma lista de buscas curta por item (as que o
+  pesquisador escreveu, sem extras).
+- **Por que serve a qualquer canal:** todo canal que caça pelo Chrome com a extensão tem a mesma aba em segundo
+  plano e o mesmo risco de recusa do banco. Vale levar ao motor, no molde da skill.
