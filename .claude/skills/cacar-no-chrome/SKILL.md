@@ -30,7 +30,11 @@ description: Caça B-roll genérico nos bancos pagos do Alpha Point (Envato Elem
 >   guarda de 100 por dia; música fica fora; entram o PDF de licença e a aprovação no relato;
 > - no Shutterstock, o candidato grava o artista (o contribuidor) que a página do item mostra, para o crédito
 >   `<artista>/Shutterstock.com` da cena (`marca/midia.md` §3.4; Lucas, 28/09/2026, no Juneau; 29/09/2026 nesta
->   cópia).
+>   cópia);
+> - as prévias só com a aba da caça à vista, provada pela prévia que anda, numa aba fixa que fica aberta de uma
+>   caça para a outra (Lucas, 30/09/2026); um ritmo fixo de 30 s por banco, só com as buscas da lista; e o banco
+>   que recusou volta só numa caça nova que o Lucas peça nomeando-o (§2.0, §2.2 e §5; a primeira caça do Juneau,
+>   29/09/2026, `APRENDIZADOS.md` item 48; 30/09/2026 nesta cópia).
 >
 > **Acima desta skill:** o CLAUDE.md ("Caça nos bancos pagos") e `marca/midia.md` (§1 a §8). Se algo aqui
 > divergir deles, pare e avise o Lucas.
@@ -67,7 +71,7 @@ ao Lucas, com prova no disco, o que achou e o que não achou.
      item: sem ele, traz também o que não se vê, como o menu da conta);
    - `computer`, só com: `left_click`, sem `modifiers`; `scroll` e `scroll_to`; `hover` (mostrar os controles do
      player); `key`, só `Escape` (fechar janela); `screenshot`; `zoom` (a prévia do §2.4); e `wait` (as esperas
-     do item 5 e do §3). O player se pausa clicando no botão de pausa dele, nunca pelo espaço: a tecla vai ao
+     do item 5, da prova do §2.0, do ritmo do §2.2 e do §3). O player se pausa clicando no botão de pausa dele, nunca pelo espaço: a tecla vai ao
      elemento que tem o foco, que pode ser um botão de baixar ou o "Accept" de um banner.
 
    **Proibidas, sempre:** `javascript_tool`, `form_input`, `read_network_requests`, `read_console_messages`,
@@ -122,7 +126,11 @@ ao Lucas, com prova no disco, o que achou e o que não achou.
    - os avisos do próprio Chrome (baixar vários arquivos, permissão da extensão, a janela "Salvar como") são dele;
    - um pedido de conexão da extensão ("Connect") que apareça numa janela do Chrome durante a caça, em qualquer
      perfil, ele **recusa** e avisa você: você nunca o pede (o `switch_browser` é proibido), e se ele aparece, a
-     conexão mudou (item 5). Aceito numa janela do Top10, as ações seguintes iriam para aquele perfil.
+     conexão mudou (item 5). Aceito numa janela do Top10, as ações seguintes iriam para aquele perfil;
+   - a janela do Chrome da caça fica aberta, e ele não a usa nem a minimiza, fora o download que o §5 lhe pede num
+     banco que recusou: a aba da caça fica aberta nela de uma caça para a outra (a aba fixa, §2.0). Deixá-la sem
+     outra janela por cima, na Fase A, é parte deste combinado, e se diz a ele a cada caça. Quando a extensão abrir a aba da caça em segundo plano, o
+     clique na aba é dele, quando você pedir.
 7. **As contas.** Na primeira página de cada banco, diga ao Lucas o nome da conta que o topo da página mostra,
    sem abrir a página da conta. Ele confirma no chat que é a conta individual dele. Um cabeçalho que diz só
    "Lucas" não distingue a conta dele de um assento do Top10 no nome dele. Sem a confirmação, nada se baixa
@@ -194,6 +202,57 @@ chamada.
 Um item por vez, na ordem da lista. Para cada plataforma do item, na ordem. A Fase A abre os bancos antes de
 existir lista aprovada: **nenhum clique dela baixa, aceita, assina ou preenche nada.**
 
+### 2.0 · A aba da caça à vista, antes da primeira prévia
+
+A extensão abre as abas do grupo dela em segundo plano, e o Chrome não toca vídeo sem som, nem carrega as imagens
+que a página só pede quando aparecem na tela, numa aba que não está à vista ou numa janela minimizada (coberta por outra janela: não medido).
+A prévia fica parada em 0:00, e o print sai o pôster do clipe, não o quadro do ponto: na primeira caça do Juneau
+(29/09/2026), a prévia de 15 % saiu idêntica à de 50 % (`APRENDIZADOS.md` item 48). A grade de resultados carrega
+com a rolagem mesmo com a aba escondida, e as buscas se leem assim; as prévias, não.
+
+- **A aba fixa da caça** (Lucas, 30/09/2026: "Aba fixa da caça (Recomendado)"; a opção dizia "No fim de cada caça,
+  deixo a aba dela aberta, e você não usa nem minimiza aquela janela do Chrome. O clique só volta a ser preciso se
+  o Chrome reiniciar. A regra da caça não muda."). A caça inteira roda numa aba só, a do grupo da extensão, e no
+  fim da caça ela **fica aberta**: não a feche com `tabs_close_mcp`. As outras abas que você abrir (a da prova do
+  perfil, §0, item 5) se fecham. Que a aba fixa sobreviva a isso e volte na caça seguinte ainda não foi medido
+  numa caça nova: em 29/09/2026, fechar uma aba do grupo desfez o grupo, e a outra aba ficou fora do alcance da
+  extensão; em 30/09, com a extensão reconectada, veio um grupo novo, e fechar a aba da prova e duas abas antigas
+  não mexeu na da caça (`out/juneau/_tmp/caca-notas.md`). Se o `tabs_context_mcp` não devolver a aba fixa, a aba da
+  caça mudou (o bullet de baixo), e a antiga fica aberta: quem a fecha é o Lucas.
+- **Antes da primeira prévia de cada caça**, e de novo depois de a extensão reconectar, de o Chrome reiniciar ou
+  de a aba da caça mudar: a janela do Chrome da caça está aberta, não minimizada nem coberta por outra janela, e a
+  aba ativa dela é a da caça.
+- **A prova é a prévia que anda.** Dê play e tire dois `screenshot` com uns segundos entre eles (`wait`): o tempo
+  do player avançou, e o quadro mudou. Só então grave os pontos (§2.4).
+- **Não andou:** peça ao Lucas um clique na aba da caça (a do grupo da extensão), com a janela à vista, e espere a
+  resposta dele no chat antes da próxima prévia. Nenhuma ferramenta permitida da extensão ativa uma aba (§0, item
+  4), e clique ou tecla mandados por programa fora da extensão (`SetCursorPos`, `SendInput`, `mouse_event`) não se
+  usam: não são ferramenta desta skill, e em 29/09/2026 o Windows os recusou.
+- **Janela minimizada ou coberta:** peça ao Lucas que a traga para a frente e a deixe à vista, e espere a resposta
+  dele no chat. Você não mexe em janela do Windows (restaurar, trazer à frente, redimensionar): nenhuma ferramenta
+  desta skill faz isso (§0, item 4), e o `resize_window` da extensão é proibido. Em 29/09/2026, a um "Traga você" do
+  Lucas, a janela foi restaurada pelo Windows; isso não se repete sem o comando exato registrado antes no §0,
+  item 4, e no CLAUDE.md, com o ok dele.
+- **Não andou nem com o clique do Lucas** (ele disse que clicou, e a aba ativa é a da caça): veja se a página mostra
+  um sinal do §5; se mostrar, vale o §5. Se não, recarregue a página uma vez só, no ritmo do §2.2. Se ainda não
+  andar, o candidato fica sem os pontos naquele banco (vai ao relato, com o motivo) e você conta ao Lucas, sem
+  repetir o pedido de clique nem recarregar de novo.
+- **Depois de gravar os pontos de um vídeo**, confira duas coisas: (a) pelo `sha256sum` dos três, nenhum par é
+  igual; (b) abrindo os três PNG com o Read, o quadro muda de um para outro, e não só a barra, o tempo ou o círculo
+  de carregamento do player. Par igual, quadro que não muda ou círculo de carregamento em algum deles é o pôster:
+  não registre o candidato, refaça os três uma vez, com a aba à vista, e grave por cima deles. Pode ser plano
+  parado se o refeito sair igual e o player tiver mostrado o tempo de cada ponto, sem círculo de carregamento: grave
+  e escreva em `previas_pontos` "quadros quase iguais: plano parado?", com o tempo do player em cada ponto, e o
+  conferente julga. Com círculo, ou com o tempo em 0:00, vale o "Não andou nem com o clique do Lucas".
+- **Na foto**, a prévia única é a imagem já carregada, não o quadro cinza nem a miniatura borrada: confira no
+  `zoom` antes de gravar.
+- **Enquanto a aba não estiver à vista**, só as buscas do item em curso seguem (a grade), no ritmo do §2.2.
+  Depois delas, espere o clique: as buscas dos itens seguintes não se adiantam, porque o limite de 3 candidatos do
+  §2.2 talvez as dispensasse. Página de item não se
+  abre, porque a avaliação do §2.3 começa pela prévia: anote em `out/<proj>/_tmp/` as URLs de item que a grade
+  sugere, e abra as páginas depois do clique do Lucas. Nenhuma prévia gravada com a aba escondida vai ao
+  conferente.
+
 ### 2.1 · Janelas que aparecem sem você pedir (valem na caça inteira)
 
 - **Banner de cookies ou de consentimento**: recuse os não essenciais, pelo botão que já recusa ("Reject all",
@@ -230,6 +289,27 @@ Abra a busca pela URL. Troque `<q>` pela busca, com os espaços como `%20` (Enva
   - Storyblocks: o arquivo diz *Editorial: No*;
   - Shutterstock: *Usage → Non editorial* e *Exclua imagens geradas por IA*. A rota com `unlimited=true` mostra
     os itens do plano de downloads ilimitados do Lucas (`marca/midia.md` §3.4).
+- **O ritmo, por banco: entre duas páginas do mesmo banco, pelo menos 30 s**, contados com `wait` (três de 10 s).
+  Vale para toda página que você abre ou recarrega nele: a busca, a página do item, a volta à busca.
+  - O intervalo é fixo, nunca sorteado. Não é para parecer gente, que o CLAUDE.md proíbe ("Caça nos bancos
+    pagos": nada de atraso aleatório nem de "parecer humano"): é para não pesar no site. Em 29/09/2026, com uma
+    página a cada 10 a 20 s e as duas últimas sem espera, o Shutterstock respondeu 403 do CloudFront ("Request
+    blocked… too much traffic") na 20ª busca (`APRENDIZADOS.md` item 48).
+  - Trocar de banco não zera a conta do outro: a espera é de cada banco.
+  - Vale também na Fase B: a página do item (§3, passo 1) e a da licença (§3.2). Onde a espera de 20 s do §3
+    também vale, conta a maior.
+- **Só as buscas da lista**, na ordem, e só até o item ter 3 candidatos gravados (§2.3). Busca que a lista não tem
+  não se faz, nem para conferir um lugar vizinho: em 29/09/2026, "echo cove juneau" foi uma. Se as buscas da
+  lista não acham, o item fica **NÃO ACHADO** naquele banco, e a ideia da busca nova vai ao `pesquisa-imagens`,
+  que decide se muda a lista.
+- **O banco que recusou** (403, "Request blocked", verificação de robô) fica fora pelo resto da caça (§5), sem nova
+  tentativa, e você avisa o Lucas com a fala do §5. Retomar a caça que parou (limite do Claude, sessão nova, outro
+  dia) é continuar a mesma caça: o banco continua fora. Ele só volta numa caça nova que o Lucas peça no chat
+  nomeando esse banco, depois de você lhe dizer que ele recusou, quando e com que mensagem. Você não propõe essa
+  volta. Se o pedido vier com uma caça em curso, ela se encerra ali: escreva a seção dela no relato (§6), e a caça
+  nova começa pelo §0 inteiro, como toda caça: a prova do perfil nova (item 5), mesmo que a de minutos antes tenha
+  passado; o combinado, com o ok dele (item 6); a conta de cada banco (item 7); e o `teto` do Shutterstock (item 10). Se ele recusar de novo, fica fora e vai ao Lucas: para voltar a ele, não se aumenta a espera nem se mudam
+  as buscas (o ritmo é um só, o de cima).
 - **Envato**: a grade carrega aos poucos: role até os cards aparecerem (é para a página carregar, não para
   imitar pessoa). Os cards de vídeo apontam para `/search/stock-video/…`, os de foto para `/photos/…` (fora
   `/photos/music/…`, que é trilha).
@@ -668,27 +748,30 @@ CAPTCHA.** Nem se o Chrome oferecer a senha salva: não clique.
 |---|---|---|
 | "Sign in" / "Entrar" no topo; "Sign Up to Download" no lugar do botão (Storyblocks); pedido de 2FA | sessão caída | "O <banco> saiu da conta. Pode entrar de novo, no Profile 1, com a sua conta individual? Me avise quando entrar." Enquanto isso, siga nos outros bancos |
 | "Just a moment…", "Verification Required", "Verifique que você é humano", CAPTCHA, "unusual traffic", "acesso restrito" | verificação de robô | **Pare naquele banco pelo resto da caça.** Diga: "O <banco> pediu verificação de robô. Parei nele e não vou insistir. Se quiser, você mesmo baixa os itens desse banco que já aprovou na lista (diga os números), no Profile 1, na janela em que o banco está aberto, com a sua conta individual, um por vez: eu rodo o `marcar` antes do seu clique e o `recolher` depois, e cada arquivo passa pela mesma conferência." Não peça que ele resolva a verificação para você seguir: o banco sinalizou automação, e seguir seria contornar (CLAUDE.md, "A marca"). Não repita a busca |
+| 403 do banco ou do CloudFront ("Request blocked", "The request could not be satisfied", "too much traffic") | o banco recusou a caça | **Pare naquele banco pelo resto da caça**, sem nova tentativa (§2.2). Diga: "O <banco> recusou o acesso (403). Parei nele e não vou insistir." O resto é o da linha acima: ofereça ao Lucas os itens desse banco que ele já aprovou, e não peça que ele destrave o site |
 | banner de cookies só com "Aceitar"; aviso de termos, cadastro ou oferta que não fecha sem aceitar | uma janela pede aceite | §2.1: pare e mostre ao Lucas |
 | banner "Você atingiu o limite de downloads por hoje" (Shutterstock) | o dia acabou | rode `teto --acertar=<usados hoje> --motivo="banner do site"`, com `REGIE_MOTOR`, e siga nos outros bancos |
 | o botão de baixar desabilitado em item após item, com a conta logada | quase sempre um limite | leia o banner da página antes de concluir outra coisa, e conte ao Lucas |
 | página de erro do Chrome (`ERR_…`) | internet do PC | "A internet caiu ou está lenta?" Página de erro não é "o banco não tem" |
 
-**Quando o Lucas baixa ele mesmo** (depois de uma verificação de robô):
+**Quando o Lucas baixa ele mesmo** (depois de uma verificação de robô ou de um 403):
 - só itens da lista que ele aprovou, pelos números, um por vez, e com a espera de 20 s do §3 entre um `recolher`
   e o clique seguinte;
-- só no Profile 1, na janela em que o banco está aberto, com a conta individual que ele confirmou (§0, item 7):
+- só no Profile 1, na janela em que o banco está aberto (a da aba fixa: ao terminar, ele deixa a aba da caça
+  ativa, §2.0), com a conta individual que ele confirmou (§0, item 7):
   o registrador grava essa conta seja qual for o perfil do clique;
 - cada arquivo passa pelo mesmo caminho: `marcar` antes do clique dele, `recolher` com a URL da linha aprovada,
   os passos 4 e 5 do §3 e o §4 só no que a tabela manda instalar;
 - item que ele achar sozinho não entra por aqui: o conferente não julga o que não foi gravado na Fase A. Vira
-  item novo, que volta à Fase A noutra plataforma, ou naquela quando o banco voltar a abrir.
+  item novo, que volta à Fase A noutra plataforma, ou naquela numa caça nova em que o Lucas o traga de volta (§2.2).
 
 Sessão caída não é resposta sobre a mídia: é uma porta. Nunca troque um banco assinado por um banco gratuito
 genérico para "destravar": a mídia tem de ser a coisa pedida, com procedência.
 
 ## 6 · O relato
 
-Ao terminar a lista, ou ao parar, escreva `out/<proj>/_pesquisa/caca-relato.md`.
+Ao terminar a lista, ou ao parar, escreva `out/<proj>/_pesquisa/caca-relato.md`: uma seção por caça, com a data
+e a hora do começo. A seção de uma caça anterior do mesmo vídeo não se apaga.
 
 **O relato, o `candidatos-caca.json` e as saídas do conferente (`conferencia-caca.json`, `conferencia-midia.json`
 e os `.md` delas) vão para o git** (`out/*/_pesquisa/` não está no `.gitignore`). Neles,
@@ -709,8 +792,11 @@ bancos ou no PDF de licença: a conta é `lucas-rosa` (o apelido do `marca/midia
   ficou sem linha aprovada;
 - a resposta do Lucas sobre o primeiro arquivo de cada banco (§3, passo 4);
 - as janelas que apareceram sozinhas (cookies recusados, avisos fechados) e as que pararam a caça;
-- as portas que fecharam (sessão caída, verificação de robô) e o que o Lucas fez, com os números dos itens que
-  ele mesmo baixou;
+- a aba da caça fora de vista (§2.0): quando a prévia não andou, o que se fez (o clique do Lucas, a janela que ele
+  trouxe para a frente, com a resposta dele) e as prévias refeitas; e a aba fixa, deixada aberta no fim da caça;
+- as portas que fecharam (sessão caída, verificação de robô, 403) e o que o Lucas fez, com os números dos itens que
+  ele mesmo baixou; e o banco que recusou numa caça anterior e voltou nesta, com o que você disse ao Lucas (quando e
+  com que mensagem ele recusou) e o pedido dele, com a mensagem e a hora (§2.2);
 - o arquivo que chegou sem bater com o item aprovado, ou com `mesmo_item` diferente de `true`, e o que o Lucas
   decidiu (a mensagem e a hora);
 - o `.zip` que chegou, a entrada extraída e a pasta `_zip-…`;

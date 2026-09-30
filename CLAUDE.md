@@ -582,7 +582,13 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
 
 **O método** é o da pré-v1, com a skill adaptada ao canal:
 - A skill `.claude/skills/cacar-no-chrome/SKILL.md` é a **cópia adaptada do canal**, com sha256
-  `e0bc86dd89912c1a742b2883ca5dafac16b288da4e36a3375f5dd47aac80e816` em 29/09/2026. Em 29/09: no Shutterstock, o
+  `b0979fb30196153f52e3d285c6e94f6a02621b17daa702f7721d740776f229e0` em 30/09/2026. Em 30/09 (a primeira caça do Juneau, `APRENDIZADOS.md` item 48): as prévias só com a
+  aba da caça à vista, provada pela prévia que anda, e o clique do Lucas na aba quando ela não anda (§2.0); a aba
+  fixa da caça, que fica aberta de uma caça para a outra (Lucas, 30/09/2026: "Aba fixa da caça (Recomendado)";
+  §2.0 e §0, item 6); 30 s entre páginas do mesmo banco, nas duas fases, contados com `wait`, e só as buscas da
+  lista (§2.2); e o banco que recusou (403 inclusive, §5) volta só numa caça nova que o Lucas peça nomeando-o,
+  depois de saber quando e como ele recusou (§2.2); com uma caça em curso, ela se encerra com o relato, e a nova
+  começa pelo §0 da skill. Em 29/09: no Shutterstock, o
   candidato grava o artista (o contribuidor) que a página do item mostra, e a lista e o relato levam o crédito
   `<artista>/Shutterstock.com` da cena (§2.3, item 7; §2.4; §2.6; §6), pela decisão do Lucas de 28/09
   (`marca/midia.md` §3.4); sem o artista na página, o candidato não entra. O `conferente-de-midia` põe esse
@@ -675,6 +681,12 @@ configuração do navegador nem da conta: quem muda é o Lucas.
     não digita nada na caça;
   - em cada caça: confirmar a conta de cada banco, aprovar a lista, responder aos avisos do Chrome e não baixar
     nada em Downloads enquanto ela corre ("Quem faz o quê", abaixo);
+  - deixar aberta, sem usar nem minimizar (fora o download que ele mesmo faz num banco que recusou, abaixo), a
+    janela do Chrome com a aba fixa da caça: o que o Lucas escolheu em 30/09/2026 ("Aba fixa da caça
+    (Recomendado)"), depois de pedir menos presença nessa parte; o outro caminho, julgar o arquivo baixado sem
+    prévia, mudaria a regra da caça. Deixá-la sem outra janela por cima, na Fase A, não estava na opção: vai no
+    combinado de cada caça (skill, §0, item 6). E dar o clique nessa aba quando o Claude pedir (skill, §2.0: o
+    Chrome não toca a prévia numa aba escondida);
   - se a sessão de um banco cair, entrar de novo, com a senha e o 2FA dele.
 - **A conta de cada banco.** Na primeira página de cada banco, o Claude diz o nome da conta que o topo mostra (sem
   abrir a página da conta), e o Lucas confirma no chat que é a conta individual dele.
@@ -701,7 +713,8 @@ configuração do navegador nem da conta: quem muda é o Lucas.
   não é o sim do Lucas: só decide o que vai à lista e o que pode ser instalado. Sem ele, nenhuma lista vai ao
   Lucas e nenhum arquivo de banco vai à cena.
 - **O Lucas**: faz os logins, confirma as contas e o *Always ask*, aprova a lista e responde aos avisos
-  do Chrome ("baixar vários arquivos", permissão da extensão, a janela "Salvar como"). **Durante a caça, não
+  do Chrome ("baixar vários arquivos", permissão da extensão, a janela "Salvar como"). Deixa à vista a janela da
+  aba fixa da caça e clica nessa aba quando o Claude pede (skill, §2.0). **Durante a caça, não
   navega nos bancos nesse perfil e não baixa nada em nenhum perfil do Chrome nem em outro programa que salve em
   Downloads**: a pasta é uma só, e um arquivo dele que chegue depois de um `marcar` pode sair com a procedência
   de um item que não é ele.
