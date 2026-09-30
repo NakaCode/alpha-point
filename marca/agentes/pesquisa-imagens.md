@@ -80,7 +80,7 @@
 | A cena pede | De onde vem |
 |---|---|
 | **evento real específico, pessoa pública, registro histórico** | só acervo aberto ou oficial, com data e local conferidos na origem: NARA, NASA, USGS, Smithsonian, Wikimedia Commons (licença conferida arquivo a arquivo), Library of Congress (só pelo navegador, §3), e as fontes federais: sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3), e as fontes da 4ª rodada (Lucas, 27/09/2026; midia.md §7.3: o acervo de qualquer órgão federal dos EUA, os mapas históricos e os outros governos que ela nomeia, com o crédito que a licença pede; o `buscar-midia` não as conhece, e o "Como se busca" de lá diz o caminho). Nenhum outro acervo gratuito. Foto do governo do Alasca e de jornal entra com a fonte creditada na tela (midia.md §7.5; §5 abaixo). O retrato de pessoa citada segue midia.md §7.2. **Nunca banco pago.** Imagem "ilustrativa" de outro evento não entra; foto de outro ano do mesmo assunto, só com o aviso do ano (§9) |
-| **B-roll genérico**: paisagem, cidade, porto, indústria, balsa, drone | bancos pagos, nesta ordem: Envato Elements → Motion Array → Storyblocks → Shutterstock, baixado na conta individual do Lucas, pela caça no Chrome dele, que ele aprova item por item (midia.md §8); você entrega a lista (§4) |
+| **B-roll genérico**: paisagem, cidade, porto, indústria, balsa, drone | bancos pagos, nesta ordem: Envato Elements → Motion Array → Storyblocks → Shutterstock, baixado nas contas que o Lucas designou (midia.md §2.3), pela caça no Chrome dele, que ele aprova item por item (midia.md §8); você entrega a lista (§4) |
 | **mapa, satélite** | não é seu: as bases de identidade.md §6, com o `mapista` |
 
 Vale sempre (midia.md §2):
@@ -133,10 +133,11 @@ node <motor>/src/ferramentas/buscar-midia.mjs <proj> entregar --cena=<id> --arqu
 ## 4 · Banco pago: você entrega a lista, o conferente julga, o Lucas aprova, o Claude central caça
 
 B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md §1).
-- **A caça é pelo Chrome do Lucas, nas contas individuais dele, feita pelo Claude central** (Lucas, 26/09/2026;
-  midia.md §8; CLAUDE.md, "Caça nos bancos pagos"). Os candidatos passam pelo `conferente-de-midia`, e a lista
-  de aprovação do Lucas vem antes de cada download.
-  - As quatro licenças são de assento único (midia.md §2.3).
+- **A caça é pelo Chrome do Lucas, feita pelo Claude central** (Lucas, 26/09/2026; midia.md §8; CLAUDE.md, "Caça
+  nos bancos pagos"). Os candidatos passam pelo `conferente-de-midia`, e a lista de aprovação do Lucas vem antes de
+  cada download.
+  - O Shutterstock e o Motion Array são contas individuais dele, de assento único. A Storyblocks e o Envato são a
+    assinatura da Top10, que ele designou em 30/09/2026 (midia.md §2.3, "A exceção da Top10").
   - Você não abre o site do banco, não baixa e não roda o registrador: é uma caça por vez, no Chrome dele.
   - Você não usa nenhuma ferramenta `mcp__claude-in-chrome__*` nem do painel de navegador do app: só o Claude
     central opera o Chrome (skill `cacar-no-chrome`, §0).
@@ -154,6 +155,13 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
   - o `envato` pode ir na lista: enquanto o Lucas não entrar nele e confirmar o *Always ask*, o Claude central
     o pula e segue para a plataforma seguinte (skill, §0);
   - só B-roll genérico: item que nomeia evento, pessoa pública ou data não entra (midia.md §1);
+  - **separe antes** (Lucas, 30/09/2026: "Separar antes (Recomendado)"). A opção dizia: "Ao montar a lista, a
+    pesquisa manda lugar muito específico (um prédio, uma cidade pequena, um terminal) direto para acervo aberto,
+    foto do Estado ou mapa. Só B-roll genérico e cidades grandes vão aos bancos. É o maior ganho, sem risco novo."
+    - Na caça 2 do Juneau, 18 dos 23 itens não tinham vídeo nos bancos: o Capitólio, Willow, Wasilla, a estrada,
+      o Lynn Canal, a balsa estadual, Haines, Cascade Point e o aeroporto. Anchorage e o oleoduto tinham.
+    - Por isso, esse lugar vai direto ao §3 (acervo aberto), à foto do Estado (midia.md §7.5) ou, como NÃO ACHADO,
+      ao mapa. Na lista de caça, só entra o que um banco tem chance real de ter.
   - a `recusa` diz sempre: editorial; pessoa reconhecível em primeiro plano; pessoa falando para a câmera; marca
     ou logotipo de terceiro legível; propriedade privada identificável como assunto do quadro; gerado por IA;
     lugar diferente do rótulo; retrato; abaixo de 3840×2160 (midia.md §2.1, §2.2, §2.6, §2.7 e §3.1; skill

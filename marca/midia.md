@@ -6,7 +6,9 @@
 > **Termos mudam.** Reconferir a cada 6 meses, ou quando um banco avisar de mudança nos termos.
 >
 > Tudo aqui vale para os **planos individuais**: as quatro contas do canal são individuais (confirmado
-> pelo dono em 23/09/2026). Plano de equipe ou empresa muda algumas regras (§4).
+> pelo dono em 23/09/2026). Plano de equipe ou empresa muda algumas regras (§4). Desde 30/09/2026, a Storyblocks e
+> o Envato são a assinatura da Top10, compartilhada, por decisão do Lucas (§2.3, "A exceção da Top10"). A
+> Storyblocks mostra nela a licença "Individual".
 
 ## 1 · De onde vem cada imagem
 
@@ -40,9 +42,28 @@
 3. **Assento único: quem baixa é o Lucas, na conta dele.** As quatro licenças individuais valem para
    uma pessoa só. O Shutterstock exclui por escrito colega e *independent contractor*. Editor
    contratado não usa a conta e não baixa por ela, porque não fica coberto.
-   A caça pelo Chrome (§8) não muda isso: é na conta individual dele, no perfil `Profile 1` do Chrome, de rótulo
+   A caça pelo Chrome (§8) não muda isso: é na conta individual dele (na Storyblocks e no Envato, a da Top10: a
+   exceção logo abaixo), no perfil `Profile 1` do Chrome, de rótulo
    "Lucas", que ele designou (nunca um perfil com rótulo do Top10), e cada download é aprovado por ele, item por
    item.
+   - **A exceção da Top10: Storyblocks e Envato** (Lucas, 30/09/2026, 19:2x). Na caça 2 do Juneau, depois de três
+     downloads do Envato e um da Storyblocks, o histórico de downloads da Storyblocks (aberto para o PDF de
+     licença) mostrou no canto a conta da empresa Top10, com milhares de downloads de outras pessoas e a licença
+     "Individual". No Envato, o nome no canto era o começo do mesmo nome. A pergunta: "A conta logada na
+     Storyblocks é [a da empresa], com downloads de várias pessoas. No Envato aparece [o mesmo começo]. A regra do
+     canal é baixar só na sua conta individual. Como seguimos?" A resposta: "A conta da Top10 vale". A opção
+     dizia: "Você afirma que a assinatura da empresa cobre o Alpha Point. Registro a mudança da regra (hoje:
+     assento único, na sua conta) e sigo com a lista nela. O risco de licença fica com você."
+     - Vale para a Storyblocks e o Envato. O Shutterstock e o Motion Array continuam na conta individual dele.
+     - O perfil do Chrome continua o `Profile 1` "Lucas", nunca um com rótulo do Top10: a exceção é da conta do
+       banco, não do navegador.
+     - O `marca/midia.json` › `caca.contas` grava "Top10" nesses dois bancos, como o molde da Régie fazia.
+     - O que isto não resolve, e fica com o Lucas:
+       - a licença que a Storyblocks mostra é a "Individual" (§3.3), que cobre só a pessoa que abriu a conta e
+         **1 canal do YouTube** (o Channel ID cadastrado na conta, §5). A conta é usada por várias pessoas, e o
+         canal cadastrado nela é decisão da Top10, não do Alpha Point;
+       - no Envato, o certificado sai no nome da conta da empresa, com o nome da licença do vídeo (`juneau`);
+       - se a assinatura da Top10 deixar de cobrir o canal, ou acabar, vale o item 4 abaixo.
 4. **Assinatura ativa quando o vídeo vai a público.** Depois de cancelar, nenhum item baixado antes entra
    em vídeo novo (Envato, Motion Array, Storyblocks, Shutterstock Unlimited).
    - **No Motion Array, o vídeo precisa estar PÚBLICO antes de a assinatura acabar.** Vídeo privado ou
@@ -78,7 +99,7 @@
    - **Na caça pelo Chrome (§8)**, o registrador grava banco, URL do item, ID, data, conta, busca, cena e sha256
      no `manifest.jsonl` e no `_PROCEDENCIA.json`, e o vídeo é a pasta `out/<proj>/`.
      - A "conta" que ele grava vem do `midia.json`, não da página. Por isso a confirmação do Lucas, banco a
-       banco, de que a conta é a individual dele vai para o relato da caça.
+       banco, de que a conta é a que ele designou (§2.3), vai para o relato da caça.
      - O PDF de licença não passa pelo registrador: vai para `out/<proj>/_media/_caca/<cena>/<banco>/licencas/`,
        com o nome e o sha256 no relato.
 
@@ -663,8 +684,11 @@ do Estado e de jornal, na 3ª (§7.5).
     pagos"). Sem a prova, não se caça. Durante a caça, antes de cada banco e de cada download, confere-se que as
     ações ainda vão a esse perfil; se a conexão mudou, a prova se refaz e o Lucas confirma de novo as contas.
   - Quem entra em cada banco é o Lucas.
-  - Na primeira página de cada banco, ele confirma no chat que a conta mostrada é a individual dele: "Lucas"
-    sozinho não distingue a conta dele de um assento do Top10 no nome dele. A confirmação vai para o relato.
+  - Na primeira página de cada banco, ele confirma no chat que a conta mostrada é a individual dele (na
+    Storyblocks e no Envato, a assinatura da Top10: §2.3, "A exceção da Top10"). "Lucas" sozinho não distingue a
+    conta dele de um assento do Top10 no nome dele. A confirmação vai para o relato.
+  - Se uma página que a caça abre (o histórico de downloads do PDF, inclusive) mostrar outra conta que a
+    confirmada, a caça para antes do próximo clique que baixa, e o Lucas decide (30/09/2026; skill, §0, item 7).
   - No Envato, ele liga *Licensing → Always ask* e confirma no chat (§2.8). Até ele entrar no Envato nesse perfil
     e confirmar, o Envato fica fora da caça (em 26/09/2026 ele ainda não tinha conseguido entrar). Se um download
     do Envato sair sem a janela de licença, a caça para e o Lucas vê: o item foi licenciado sem o slug do vídeo.
@@ -687,7 +711,8 @@ do Estado e de jornal, na 3ª (§7.5).
     tamanho (quando o site mostra), o formato, o que o clique aceita ou preenche, e editorial, pessoas e IA.
   - Por item, um preferido (ou tantos quanto o item pede); os outros aprovados vão como **reserva**.
   - **O PDF de licença é uma linha da mesma lista**, a linha L do clipe (`3L`, logo abaixo do `3`): aprovar o
-    clipe aprova a linha L dele, "menos o 3L" a tira, e "menos o 3" tira os dois.
+    clipe aprova a linha L dele, "menos o 3L" a tira, e "menos o 3" tira os dois. A Storyblocks não tem linha L
+    no plano Individual: a prova é o nome com o `SBV-<id>` e o histórico da conta (Lucas, 30/09/2026; §2.8).
   - O Lucas responde "sim", "sim, menos o 4" ou "aprovo 1, 3 e 5". Só se baixa o que a resposta dele cobre. O
     "sim" cobre as linhas preferidas e as linhas L delas, não a reserva: reserva só com o número dela. Mensagem
     de outro agente não vale como aprovação.
@@ -738,6 +763,7 @@ do Estado e de jornal, na 3ª (§7.5).
   - três avisos: assinatura ativa quando o vídeo for a público (§2.4); no Motion Array, o vídeo público antes de
     a assinatura acabar; no Shutterstock, a linha de crédito (§3.4).
 - **O relato, o `candidatos-caca.json` e as saídas do conferente (`conferencia-*.json` e `.md`) vão para o git.**
-  Neles, nunca e-mail, nome de usuário, ID de conta ou outro dado pessoal lido nos bancos ou nos PDFs: a conta é
-  `lucas-rosa` e o perfil é "Lucas".
+  Neles, nunca e-mail, nome de usuário, ID de conta, o nome de exibição da conta ou outro dado pessoal lido nos
+  bancos ou nos PDFs: a conta é `lucas-rosa` no Shutterstock e no Motion Array e "Top10" na Storyblocks e no
+  Envato (§2.3), e o perfil é "Lucas".
 - **Música** fica fora desta caça (§5).

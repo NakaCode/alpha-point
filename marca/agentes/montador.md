@@ -144,8 +144,8 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
   - vídeo de outro ano não entra.
 - **B-roll genérico** (paisagem, cidade, porto, indústria, drone): dos bancos pagos, na ordem Envato
   Elements → Motion Array → Storyblocks → Shutterstock (midia.md §1), com as regras do §2: editorial nunca,
-  pessoa de banco nunca em política, e Storyblocks só em cena neutra (§3.3). O download é na conta do Lucas
-  (§2.3, assento único), pela caça no Chrome dele que ele aprova item por item (§8; CLAUDE.md, "Caça nos
+  pessoa de banco nunca em política, e Storyblocks só em cena neutra (§3.3). O download é nas contas que o Lucas designou
+  (§2.3: a assinatura da Top10 na Storyblocks e no Envato), pela caça no Chrome dele que ele aprova item por item (§8; CLAUDE.md, "Caça nos
   bancos pagos"). O pedido é a lista do que procurar: termos em inglês, cena, duração e por que é genérico.
 - **Acervo gratuito, só os oficiais e as fontes federais** (Lucas, 26/09/2026; midia.md §7.3): Wikimedia
   Commons, NASA, NARA, USGS, Library of Congress, Smithsonian, sala de imprensa de órgão federal e DVIDS.

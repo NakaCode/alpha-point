@@ -1,6 +1,6 @@
 ---
 name: cacar-no-chrome
-description: Caça B-roll genérico nos bancos pagos do Alpha Point (Envato Elements, Motion Array, Storyblocks e Shutterstock), nas contas individuais do Lucas, no perfil "Profile 1" do Chrome, provado pelo disco a cada caça e conferido de novo antes de cada download, com a extensão Claude in Chrome. Grava cada candidato com três prints da prévia, passa os candidatos pelo conferente-de-midia, mostra ao Lucas a lista (um preferido por item e as reservas) e só baixa o que ele aprovar no chat, um download por vez; depois confere o arquivo e o PDF de licença contra o item, e só então leva o arquivo à cena. Use na sessão deste canal só quando o Lucas pedir a caça no chat ("caça no Chrome", "baixa do Envato/Motion Array/Storyblocks/Shutterstock", "pega os clipes da lista"); a lista de caça existir não basta.
+description: Caça B-roll genérico nos bancos pagos do Alpha Point (Envato Elements, Motion Array, Storyblocks e Shutterstock), nas contas que o Lucas designou (as individuais dele no Shutterstock e no Motion Array; a assinatura da Top10 na Storyblocks e no Envato), no perfil "Profile 1" do Chrome, provado pelo disco a cada caça e conferido de novo antes de cada download, com a extensão Claude in Chrome. Grava cada candidato com três prints da prévia, passa os candidatos pelo conferente-de-midia, mostra ao Lucas a lista (um preferido por item e as reservas) e só baixa o que ele aprovar no chat, um download por vez; depois confere o arquivo e o PDF de licença contra o item, e só então leva o arquivo à cena. Use na sessão deste canal só quando o Lucas pedir a caça no chat ("caça no Chrome", "baixa do Envato/Motion Array/Storyblocks/Shutterstock", "pega os clipes da lista"); a lista de caça existir não basta.
 ---
 
 # Caçar no Chrome, cópia adaptada do Alpha Point
@@ -12,7 +12,9 @@ description: Caça B-roll genérico nos bancos pagos do Alpha Point (Envato Elem
 > risco, já fiz isso em outro projeto e não tive problema".
 >
 > **O que mudou do molde:**
-> - as contas são individuais do Lucas, no perfil `Profile 1` do Chrome (rótulo "Lucas"), e a extensão conectada
+> - as contas são as que o Lucas designou: as individuais dele no Shutterstock e no Motion Array, e a assinatura da
+>   Top10 na Storyblocks e no Envato, desde 30/09/2026, como o molde já fazia (`marca/midia.md` §2.3, "A exceção da
+>   Top10"). O perfil é o `Profile 1` do Chrome (rótulo "Lucas"), e a extensão conectada
 >   se prova desse perfil pelo disco no começo de cada caça, com a seleção conferida de novo pelo `inUse` antes de
 >   cada banco e de cada clique que baixa (o clipe e o PDF da linha L), e a prova refeita se a extensão
 >   reconectar (§0, item 5);
@@ -65,7 +67,7 @@ ao Lucas, com prova no disco, o que achou e o que não achou.
    - `list_connected_browsers` e `select_browser` (a prova do perfil, item 5);
    - `tabs_context_mcp`, `tabs_create_mcp` e `tabs_close_mcp` (as abas da caça);
    - `navigate`, só para as rotas de busca e as páginas de item do §2.2, para a URL da prova do perfil e, na
-     linha L aprovada, para a página de onde sai a prova de licença (Envato: *My Downloads → View licenses*;
+     linha L aprovada, para a página de onde sai a prova de licença (Envato: a página do item, painel *Licenses*;
      Motion Array e Storyblocks: a página do item ou a lista de downloads da conta), só para o clique do PDF;
    - `find`, `read_page` e `get_page_text`, para ler a página do item (o `read_page` com o `ref_id` da área do
      item: sem ele, traz também o que não se vê, como o menu da conta);
@@ -132,10 +134,13 @@ ao Lucas, com prova no disco, o que achou e o que não achou.
      outra janela por cima, na Fase A, é parte deste combinado, e se diz a ele a cada caça. Quando a extensão abrir a aba da caça em segundo plano, o
      clique na aba é dele, quando você pedir.
 7. **As contas.** Na primeira página de cada banco, diga ao Lucas o nome da conta que o topo da página mostra,
-   sem abrir a página da conta. Ele confirma no chat que é a conta individual dele. Um cabeçalho que diz só
-   "Lucas" não distingue a conta dele de um assento do Top10 no nome dele. Sem a confirmação, nada se baixa
-   daquele banco. Anote a mensagem dele e a hora: o registrador grava "conta individual do Lucas" a partir do
-   `marca/midia.json`, seja qual for a conta logada, e só essa confirmação sustenta o que ele grava. E-mail,
+   sem abrir a página da conta. Ele confirma no chat que é a conta individual dele (na Storyblocks e no Envato, a
+   assinatura da Top10 que ele designou em 30/09/2026: `marca/midia.md` §2.3, "A exceção da Top10"). Um cabeçalho
+   que diz só "Lucas" não distingue a conta dele de um assento do Top10 no nome dele. Sem a confirmação, nada se
+   baixa daquele banco. Anote a mensagem dele e a hora: o registrador grava a conta de cada banco a partir do
+   `marca/midia.json` › `caca.contas`, seja qual for a conta logada, e só essa confirmação sustenta o que ele grava.
+   Se uma página que a caça abre (o histórico de downloads do PDF, inclusive) mostrar outra conta que a
+   confirmada, pare antes do próximo clique que baixa e pergunte ao Lucas. E-mail,
    nome de usuário ou ID de conta que a página mostre não se copiam para arquivo nenhum (§6).
 8. **Envato: fica fora da caça até o Lucas entrar nele no Profile 1 e confirmar no chat que a preferência
    *Licensing → Always ask* está ligada** (em 26/09/2026 ele ainda não tinha conseguido entrar). É configuração
@@ -194,6 +199,10 @@ chamada.
   `tem_de_aparecer` pede, o item não vira candidato. Mídia errada é pior que mídia nenhuma, porque afirma algo
   falso.
 - Se a cena rotula um lugar, a descrição do item tem de nomear esse lugar (§2.6 e §2.7 da mídia).
+- **Separe antes** (Lucas, 30/09/2026: "Separar antes (Recomendado)"; a roupa do `pesquisa-imagens`, §4). Lugar
+  muito específico (um prédio, uma cidade pequena, um terminal) não entra na lista: vai direto ao acervo aberto, à
+  foto do Estado ou ao mapa. Na caça 2 do Juneau, 18 dos 23 itens eram assim e nenhum banco os tinha. Se a lista
+  trouxer um item assim, cace-o normalmente: quem separa é o pesquisador.
 - Se a lista pedir outra plataforma (Artlist, Pond5, Reuters…), não vá: o canal não tem essa assinatura. Anote e
   siga.
 
@@ -276,7 +285,7 @@ Abra a busca pela URL. Troque `<q>` pela busca, com os espaços como `%20` (Enva
 
 | Banco | Vídeo | Foto |
 |---|---|---|
-| Envato | `https://app.envato.com/search?itemType=stock-video&term=<q>` | `https://app.envato.com/photos?term=<q>` |
+| Envato | `https://app.envato.com/search?itemType=stock-video&term=<q>` | `https://app.envato.com/search?itemType=photos&term=<q>` |
 | Motion Array | `https://motionarray.com/stock-video/?q=<q>` | (sem rota de foto medida) |
 | Storyblocks | `https://www.storyblocks.com/all-video/search/<q>` | (sem rota de foto medida) |
 | Shutterstock | `https://www.shutterstock.com/video/search/<q>?unlimited=true&orientation=horizontal` | `https://www.shutterstock.com/search/<q>?image_type=photo&orientation=horizontal` |
@@ -296,6 +305,11 @@ Abra a busca pela URL. Troque `<q>` pela busca, com os espaços como `%20` (Enva
     página a cada 10 a 20 s e as duas últimas sem espera, o Shutterstock respondeu 403 do CloudFront ("Request
     blocked… too much traffic") na 20ª busca (`APRENDIZADOS.md` item 48).
   - Trocar de banco não zera a conta do outro: a espera é de cada banco.
+  - **Alterne os bancos** (Lucas, 30/09/2026: "Alternar os bancos (Recomendado)"). A opção dizia: "Uma página em
+    cada banco, em rodízio. Cada banco continua com 30 s entre as páginas dele, e os três andam juntos: cerca de um
+    terço do tempo." Na aba fixa (§2.0), abra a página seguinte no banco cuja espera já venceu, em vez de esperar
+    parado no mesmo banco. O rodízio não encurta a espera de nenhum banco, e cada banco segue só as buscas da lista,
+    na ordem dele.
   - Vale também na Fase B: a página do item (§3, passo 1) e a da licença (§3.2). Onde a espera de 20 s do §3
     também vale, conta a maior.
 - **Só as buscas da lista**, na ordem, e só até o item ter 3 candidatos gravados (§2.3). Busca que a lista não tem
@@ -311,8 +325,9 @@ Abra a busca pela URL. Troque `<q>` pela busca, com os espaços como `%20` (Enva
   passado; o combinado, com o ok dele (item 6); a conta de cada banco (item 7); e o `teto` do Shutterstock (item 10). Se ele recusar de novo, fica fora e vai ao Lucas: para voltar a ele, não se aumenta a espera nem se mudam
   as buscas (o ritmo é um só, o de cima).
 - **Envato**: a grade carrega aos poucos: role até os cards aparecerem (é para a página carregar, não para
-  imitar pessoa). Os cards de vídeo apontam para `/search/stock-video/…`, os de foto para `/photos/…` (fora
-  `/photos/music/…`, que é trilha).
+  imitar pessoa). Os cards de vídeo apontam para `/search/stock-video/…`, os de foto para `/search/photos/…` (fora
+  `/photos/music/…`, que é trilha). A rota de foto `app.envato.com/photos?term=` do estúdio não busca: a da tabela
+  foi medida na caça de 30/09/2026 (`APRENDIZADOS.md` item 51).
 - **Motion Array**: os cards de verdade ficam na grade de previews. O link "Stock Video" do menu leva de volta à
   busca, não a um item.
 - **Storyblocks**: os cards levam a `/video/stock/…`.
@@ -468,10 +483,17 @@ quantos e quantos deixou para o Lucas pesar, e **como a resposta cobre as linhas
   tiver menos `aprovado` que o `quantos`, os `pendente_lucas` completam, na ordem dos candidatos (`s012-a`,
   `-2`, `-3`). Um item com `quantos: 1` tem um preferido só.
 - **Reserva**: os outros `aprovado` e `pendente_lucas` do item, cada um marcado **reserva**.
-- **A linha L**: logo abaixo de cada linha de clipe do Envato, do Motion Array e da Storyblocks, a prova de
-  licença dele, com o mesmo número e a letra L (`3L`): o certificado do Envato (*My Downloads → View licenses*)
-  ou o PDF do Motion Array e da Storyblocks. O Shutterstock não tem linha L: a prova é o histórico da conta
+- **A linha L**: logo abaixo de cada linha de clipe do Envato e do Motion Array, a prova de licença dele, com o
+  mesmo número e a letra L (`3L`): o certificado do Envato ("Download license", no painel *Licenses* da página do
+  item) ou o PDF do Motion Array. O Shutterstock não tem linha L: a prova é o histórico da conta
   (`marca/midia.md` §2.8).
+  - **A Storyblocks também não tem linha L** (Lucas, 30/09/2026). No plano Individual, que é o da assinatura da
+    Top10, não há PDF por item: no histórico de downloads, a linha do item só oferece o vídeo de novo. A prova é o
+    nome do arquivo com o `SBV-<id>` e o histórico da conta. A pergunta dizia que a Storyblocks não dá documento
+    de licença por vídeo, e a opção que ele escolheu ("Usar mesmo assim"): "A prova de cada um é o nome do
+    arquivo (com o número do vídeo) e a lista de downloads da conta. O risco de licença fica com você." Antes,
+    no chat, o Claude tinha explicado a pergunta como "se aceita isso como prova daqui em diante". Se a conta
+    passar ao plano Business, o *Rights Certificate* volta a ser a linha L (`marca/midia.md` §3.3).
 
 **Cada linha de arquivo** traz:
 - nº, cena, banco, ID do item e URL da página do item;
@@ -746,8 +768,8 @@ CAPTCHA.** Nem se o Chrome oferecer a senha salva: não clique.
 
 | Sinal | Causa | O que fazer |
 |---|---|---|
-| "Sign in" / "Entrar" no topo; "Sign Up to Download" no lugar do botão (Storyblocks); pedido de 2FA | sessão caída | "O <banco> saiu da conta. Pode entrar de novo, no Profile 1, com a sua conta individual? Me avise quando entrar." Enquanto isso, siga nos outros bancos |
-| "Just a moment…", "Verification Required", "Verifique que você é humano", CAPTCHA, "unusual traffic", "acesso restrito" | verificação de robô | **Pare naquele banco pelo resto da caça.** Diga: "O <banco> pediu verificação de robô. Parei nele e não vou insistir. Se quiser, você mesmo baixa os itens desse banco que já aprovou na lista (diga os números), no Profile 1, na janela em que o banco está aberto, com a sua conta individual, um por vez: eu rodo o `marcar` antes do seu clique e o `recolher` depois, e cada arquivo passa pela mesma conferência." Não peça que ele resolva a verificação para você seguir: o banco sinalizou automação, e seguir seria contornar (CLAUDE.md, "A marca"). Não repita a busca |
+| "Sign in" / "Entrar" no topo; "Sign Up to Download" no lugar do botão (Storyblocks); pedido de 2FA | sessão caída | "O <banco> saiu da conta. Pode entrar de novo, no Profile 1, com a conta que você confirmou para ele (§0, item 7)? Me avise quando entrar." Enquanto isso, siga nos outros bancos |
+| "Just a moment…", "Verification Required", "Verifique que você é humano", CAPTCHA, "unusual traffic", "acesso restrito" | verificação de robô | **Pare naquele banco pelo resto da caça.** Diga: "O <banco> pediu verificação de robô. Parei nele e não vou insistir. Se quiser, você mesmo baixa os itens desse banco que já aprovou na lista (diga os números), no Profile 1, na janela em que o banco está aberto, com a conta que você confirmou para ele, um por vez: eu rodo o `marcar` antes do seu clique e o `recolher` depois, e cada arquivo passa pela mesma conferência." Não peça que ele resolva a verificação para você seguir: o banco sinalizou automação, e seguir seria contornar (CLAUDE.md, "A marca"). Não repita a busca |
 | 403 do banco ou do CloudFront ("Request blocked", "The request could not be satisfied", "too much traffic") | o banco recusou a caça | **Pare naquele banco pelo resto da caça**, sem nova tentativa (§2.2). Diga: "O <banco> recusou o acesso (403). Parei nele e não vou insistir." O resto é o da linha acima: ofereça ao Lucas os itens desse banco que ele já aprovou, e não peça que ele destrave o site |
 | banner de cookies só com "Aceitar"; aviso de termos, cadastro ou oferta que não fecha sem aceitar | uma janela pede aceite | §2.1: pare e mostre ao Lucas |
 | banner "Você atingiu o limite de downloads por hoje" (Shutterstock) | o dia acabou | rode `teto --acertar=<usados hoje> --motivo="banner do site"`, com `REGIE_MOTOR`, e siga nos outros bancos |
@@ -758,7 +780,7 @@ CAPTCHA.** Nem se o Chrome oferecer a senha salva: não clique.
 - só itens da lista que ele aprovou, pelos números, um por vez, e com a espera de 20 s do §3 entre um `recolher`
   e o clique seguinte;
 - só no Profile 1, na janela em que o banco está aberto (a da aba fixa: ao terminar, ele deixa a aba da caça
-  ativa, §2.0), com a conta individual que ele confirmou (§0, item 7):
+  ativa, §2.0), com a conta que ele confirmou (§0, item 7):
   o registrador grava essa conta seja qual for o perfil do clique;
 - cada arquivo passa pelo mesmo caminho: `marcar` antes do clique dele, `recolher` com a URL da linha aprovada,
   os passos 4 e 5 do §3 e o §4 só no que a tabela manda instalar;
@@ -786,7 +808,7 @@ bancos ou no PDF de licença: a conta é `lucas-rosa` (o apelido do `marca/midia
   lugar, não era a coisa); o veredito do conferente para cada candidato, com o caminho de
   `conferencia-caca.json`; e os **NÃO ACHADOS**, com as buscas tentadas;
 - o perfil ("Lucas", `Profile 1`) e a hora da prova do perfil pelo disco, e cada vez que ela se refez, com o
-  porquê (§0, item 5); por banco, a confirmação do Lucas de que a conta é a individual, com a mensagem e a hora;
+  porquê (§0, item 5); por banco, a confirmação do Lucas de que a conta é a que ele designou (§0, item 7), com a mensagem e a hora;
   no Envato, a confirmação do *Always ask*;
 - as linhas **excluídas pelo Lucas**, com a mensagem dele, e o recado ao `pesquisa-imagens` sobre o item que
   ficou sem linha aprovada;

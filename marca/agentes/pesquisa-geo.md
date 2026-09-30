@@ -152,7 +152,7 @@ automático: só vai à tela com permissão de uso clara, conferida e gravada (L
 - **MapTiler** decidida, crédito dela na tela; no Juneau, gasto liberado, com relevo só em s44 (§1). O Landsat foi só teste
   (CLAUDE.md).
 - **Banco pago** (midia.md §1, §2) não é seu: serve só a B-roll genérico, na ordem Envato Elements → Motion
-  Array → Storyblocks → Shutterstock, baixado na conta do Lucas, pela caça no Chrome dele que ele aprova item por
+  Array → Storyblocks → Shutterstock, baixado nas contas que o Lucas designou (midia.md §2.3: a assinatura da Top10 na Storyblocks e no Envato), pela caça no Chrome dele que ele aprova item por
   item (§2.3, §8). Você nunca baixa nem abre o site de banco.
 - **Documento do governo do Estado do Alasca e documento de imprensa** não estão no domínio público que a
   identidade.md §7 isenta de crédito (nos EUA, a obra federal é domínio público por lei, 17 U.S.C. §105; a

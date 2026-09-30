@@ -106,7 +106,7 @@ Os cinco modelos são os de identidade.md §5.
   o `exige` o nomeia.
 - **Banco pago** (midia.md §1, §2): só para B-roll genérico, na ordem Envato Elements → Motion Array →
   Storyblocks → Shutterstock; editorial nunca, pessoa de banco nunca em política, Storyblocks nunca sobre
-  ator político ou conflito (§2.1, §2.2, §3.3). O download é na conta do Lucas, pela caça no Chrome dele que ele
+  ator político ou conflito (§2.1, §2.2, §3.3). O download é nas contas que o Lucas designou (midia.md §2.3: a assinatura da Top10 na Storyblocks e no Envato), pela caça no Chrome dele que ele
   aprova item por item (§2.3, §8; os termos proíbem robô, §2.5, e a exceção é dele). No `exige` de um beat genérico, diga por que ele é genérico.
 - **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,
   Alaska State Library) e **imprensa** (ADN, KTOO) não estão no domínio público que a identidade.md §7

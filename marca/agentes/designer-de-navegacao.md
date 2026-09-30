@@ -47,7 +47,7 @@ O roteiro não tem linha `**Título**`, e nenhuma se acrescenta (CLAUDE.md).
     liga) e o selo, só o nome escrito (Lucas, 26/09/2026 e, a logo federal e a de outras instituições,
     27/09/2026; midia.md §7.6);
   - **banco pago** (midia.md §1, §2): evento real nunca vem dele; B-roll genérico vem, na ordem Envato
-    Elements → Motion Array → Storyblocks → Shutterstock, baixado na conta do Lucas, pela caça no Chrome dele que
+    Elements → Motion Array → Storyblocks → Shutterstock, baixado nas contas que o Lucas designou (midia.md §2.3: a assinatura da Top10 na Storyblocks e no Envato), pela caça no Chrome dele que
     ele aprova item por item (§2.3, §8). Você entrega a lista do que procurar, nunca baixa nem abre o banco;
   - o `npm install` não foi autorizado: portão de navegador sai NÃO MEDIDO (CLAUDE.md, "Os especialistas").
 

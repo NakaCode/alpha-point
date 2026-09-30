@@ -131,8 +131,8 @@ escurecido atrás do cartão de pessoa, a 1/4 do quadro (28/09/2026: "Sim, tudo 
   pago (midia.md §1). O retrato de pessoa citada segue midia.md §7.2.
 - **B-roll genérico** (paisagem, cidade, porto, indústria, drone) vem dos bancos pagos, na ordem Envato
   Elements → Motion Array → Storyblocks → Shutterstock, com as regras de midia.md §2 (editorial nunca;
-  pessoa de banco nunca em política; Storyblocks só neutro). O download é **na conta do Lucas**
-  (§2.3, assento único), pela caça no Chrome dele que ele aprova item por item (§8; CLAUDE.md, "Caça nos bancos pagos"). Você entrega
+  pessoa de banco nunca em política; Storyblocks só neutro). O download é **nas contas que o Lucas designou**
+  (§2.3: a assinatura da Top10 na Storyblocks e no Envato), pela caça no Chrome dele que ele aprova item por item (§8; CLAUDE.md, "Caça nos bancos pagos"). Você entrega
   a lista do que procurar (termos em inglês, cena, duração, por que é genérico), nunca baixa nem abre o
   site do banco.
 - **Documento do governo do Estado do Alasca** (cédula, folheto eleitoral, boletim, estatuto impresso,

@@ -882,3 +882,78 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   pesquisador escreveu, sem extras).
 - **Por que serve a qualquer canal:** todo canal que caça pelo Chrome com a extensão tem a mesma aba em segundo
   plano e o mesmo risco de recusa do banco. Vale levar ao motor, no molde da skill.
+- **Em 30/09**, o Shutterstock recusou de novo (o mesmo 403) já na primeira página do dia seguinte, umas 30 h depois
+  da última: o bloqueio não caiu com o tempo. O Lucas testou à mão, noutra máquina, e o site abriu para ele. A recusa
+  é do acesso automático daqui, e o ritmo mais lento não a desfaz no dia seguinte. Trocar de navegador para voltar
+  a um site que recusou é contornar: o banco fica fora da caça.
+
+### 49. A troca de conta do Claude deixa a extensão do Chrome na conta antiga, e some com as conversas e os grupos
+- **Problema:** em 30/09/2026 o Lucas trocou de conta do Claude no meio do Juneau (a antiga bateu o limite semanal).
+  Na conta nova, `list_connected_browsers` veio vazio: a extensão Claude in Chrome continuava na conta antiga. As
+  conversas de peça e os grupos da barra lateral (Orquestrador, Pesquisa e mídia, Direção…) não aparecem na conta
+  nova, e a sessão antiga não se retoma por ela.
+- **O que resolveu:** o Lucas entrou na extensão, no perfil da caça, com a conta nova; o `deviceId` continuou o mesmo,
+  e a prova do perfil pelo disco se refez antes de qualquer busca. Os seis grupos se recriaram pelo `create_group`.
+  O estado do trabalho veio do disco (notas da caça, `linha.md`, a memória) e do transcrito da sessão antiga, que
+  fica em `~/.claude/projects/<pasta>/<sessão>.jsonl` na mesma máquina.
+- **Como evitar:** na retomada depois de uma troca de conta, conferir primeiro a extensão (`list_connected_browsers`)
+  e os grupos (`list_groups`), e refazer a prova do perfil. As conversas de peça de passos já fechados não precisam
+  voltar; as do passo em curso, o dono abre de novo.
+- **Por que serve a qualquer canal:** todo canal que orquestra peças por conversa e caça pelo Chrome depende de
+  estado preso à conta do Claude (extensão, conversas, grupos). Vale levar ao motor: a retomada confere esse estado
+  antes de trabalhar.
+
+## 30/09/2026 — a caça 2 do Juneau, com downloads (pré-v1 em `7ab9543`)
+
+### 50. O topo da página não prova de quem é a conta do banco
+- **Problema:** na primeira página de cada banco, a skill manda dizer ao dono o nome que o topo mostra, e ele confirma
+  que a conta é a individual dele. O topo da Storyblocks só mostra um ícone, e o canto do Envato, uma palavra genérica.
+  O Lucas confirmou as duas como dele. Depois de quatro downloads, o histórico de downloads da Storyblocks (aberto
+  para o PDF de licença) mostrou o nome inteiro: uma conta da empresa Top10, compartilhada, com milhares de downloads
+  de outras pessoas. O registrador já tinha gravado "conta individual do Lucas" nos quatro arquivos, porque grava o
+  texto do `marca/midia.json`, seja qual for a conta logada.
+- **O que resolveu:** o Claude parou antes do próximo clique que baixava e perguntou. O Lucas decidiu que a conta da
+  empresa vale ("A conta da Top10 vale"), com o risco de licença com ele (`marca/midia.md` §2.3, "A exceção da Top10").
+  O `caca.contas` passou a dizer Top10 nesses dois bancos (como o molde já dizia), e os quatro registros foram
+  corrigidos, com os originais guardados. A skill ganhou a regra: página da caça que mostre outra conta que a
+  confirmada, pare e pergunte.
+- **Como evitar:** a confirmação da conta precisa de uma página que mostre o nome inteiro. Proposta para decidir com o
+  dono: antes do primeiro download de cada banco, abrir a lista de downloads da conta só para ler o nome (hoje a skill
+  só a abre para o PDF).
+- **Por que serve a qualquer canal:** todo canal que usa assinatura de banco num estúdio tem conta de empresa e conta
+  pessoal no mesmo navegador, e o registrador grava o texto fixo, não a conta logada. Vale levar ao motor: o
+  registrador poderia gravar "a confirmar" até a conta ser provada, e a skill, provar a conta por uma página que a
+  nomeia.
+- **Dois tropeços do registrador, achados por uma revisão independente no mesmo dia:**
+  - ele corta o texto de `caca.contas` em 80 caracteres, sem avisar. O primeiro texto da Top10 tinha 84, e o
+    download seguinte saiu com a data pela metade. O texto ficou com 65, e os registros se refizeram;
+  - o campo `licenca` é fixo no molde ("licença de assinatura do canal", `scripts/stock/lib/instalacao-procedencia.mjs`,
+    que não se edita), e a instalação de vídeo não copia a `conta`. A conta da Top10 foi para a `--nota` do
+    `_instalar-lote`. Na foto, que se instala sem `--nota`, a nota se acrescentou à mão no `_PROCEDENCIA.json`.
+  Vale levar ao motor: o `caca.contas` precisa de validação de tamanho, e a licença gravada, de seguir a conta.
+
+### 51. No Envato, o nome da licença é da conta inteira, e o clique que o confirma já baixa
+- **Problema:** com *Licensing → Always ask*, o "Download" abre uma lista de nomes de licença. A lista traz os
+  projetos de toda a conta (de outros canais também), e o do vídeo não existia. A skill não deixa o Claude digitar.
+  O dono digitou `juneau` e confirmou, e esse clique de confirmar já baixou o arquivo; ele achou que tinha baixado
+  "por acidente". A rota de busca de foto da skill (`app.envato.com/photos?term=`) também não busca.
+- **O que resolveu:** o arquivo era o da linha aprovada, e o `recolher` o pegou normalmente. Nas linhas seguintes, o
+  nome já existia e se escolheu com um clique. O certificado ("Download license", no painel *Licenses* da página do
+  item) cita o ID, o título e o nome da licença. A rota de foto que funciona é
+  `app.envato.com/search?itemType=photos&term=`.
+- **Como evitar:** no primeiro download de cada vídeo, o `marcar` roda ANTES de pedir ao dono que digite o nome, e o
+  pedido avisa que confirmar já baixa. Nomes de outros projetos vistos na lista não vão para arquivo nenhum.
+- **Por que serve a qualquer canal:** vale para todo canal que usa o Envato com *Always ask*. Vale levar ao molde da
+  skill: a rota de foto e a ordem `marcar` → nome → confirmar.
+
+### 52. A Storyblocks no plano Individual não dá prova de licença por item
+- **Problema:** a lista tinha uma linha L (o PDF de licença) para cada clipe da Storyblocks. A página do item não tem
+  PDF. No histórico de downloads, o botão da linha do item só oferece o vídeo de novo. Os metadados do arquivo trazem
+  o título e o produtor, mas não o ID. O *Rights Certificate* é do plano Business (`marca/midia.md` §3.3).
+- **O que resolveu:** nenhum clique a mais. A prova do item fica sendo a do `marca/midia.md` §2.8: o nome do arquivo
+  com o SBV-ID e o histórico da conta. O dono aceitou essa prova ("Usar mesmo assim"), e a Storyblocks saiu da
+  linha L (skill §2.6).
+- **Como evitar:** a lista de aprovação não põe linha L na Storyblocks sem plano Business. Diz "prova: nome com o ID
+  e histórico da conta".
+- **Por que serve a qualquer canal:** o plano é da conta, não do canal. Vale levar ao molde da skill: a linha L da
+  Storyblocks depende do plano.

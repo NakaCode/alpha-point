@@ -1,8 +1,76 @@
-# Conferência de mídia · juneau · fluxo `midia` · despachos 1 a 6 · 28/09/2026, 15:02 (BRT)
+# Conferência de mídia · juneau · fluxo `midia` · despachos 1 a 7 · 30/09/2026, 19:37 (BRT)
 
-**Laudo do arquivo: 25 aprovados de 35 conferidos (1 reprovado, 9 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 35.** Os 25 aprovados foram regravados no 6º despacho, com a janela do beat da regência: 14 do lote 1, 9 do 2º despacho, o s16 p1 do 4º e a camiseta do s28 p3, do 5º. Os 10 que não são `aprovado` ficam como estão: 4 `trocar` do lote 1; 5 `trocar` e 1 `reprovado` do 2º. Os 30 vereditos antigos (os 5 de antes e os 25 deste despacho) estão em `substituidos`.
+**Laudo do arquivo: 30 aprovados de 40 conferidos (1 reprovado, 9 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 40.** Aos 25 aprovados do 6º despacho somam-se os 5 arquivos da caça 2, do 7º. Os 10 que não são `aprovado` ficam como estão: 4 `trocar` do lote 1; 5 `trocar` e 1 `reprovado` do 2º. Os 30 vereditos antigos estão em `substituidos`.
 
-**Laudo deste despacho (o 6º): 25 aprovados de 25 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 25.**
+**Laudo deste despacho (o 7º): 5 aprovados de 5 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 5.**
+
+## O 7º despacho: os 5 arquivos da caça 2 (30/09/2026)
+
+- **Quem conferiu:** o `conferente-de-midia`, despachado pelo Claude central como subagente, na caça 2 (skill `cacar-no-chrome`, §3, passo 5). Nenhuma ferramenta de navegador; nenhum site aberto.
+- **O que o veredito vale:** nenhum veredito aqui é o sim do Lucas. O "sim" dele foi à lista (`caca-lista-2026-09-30.md`, "Sim. Concordo.", 19:05); o `aprovado` daqui só diz que o arquivo pode ser instalado.
+- **O que se fez:** para cada arquivo, os quadros de 15, 50 e 85 % (`_frames-de-clipe.mjs`) ao lado das prévias do mesmo ponto; na foto, a cópia reduzida contra a prévia única; recortes 1:1 do original nos pontos de dúvida (as marcas da torre, o navio, a bandeira da praça), o primeiro e o último quadro, o `ffprobe` e o `sha256sum`. O contexto foi julgado de novo nos quadros do arquivo.
+- **Os 5 são o item da prévia** (`mesmo_item: true`), e os 5 continuam servindo à cena e à frase do veredito do candidato.
+- **A conta:** a assinatura da empresa Top10, pela exceção que o Lucas decidiu às 19:22 ("A conta da Top10 vale"; `marca/midia.md` §2.3). Não é `pendente_lucas`: é decisão dele, registrada.
+- **As fontes da frase** não mudaram depois dos vereditos de candidato (regência `085d5f8b…`, espelho `fb3a9835…`, `words.json` `a8d5ec77…`, roteiro `28aa6630…`).
+- **`out/juneau/_media/` não mudou durante o trabalho** (270 arquivos, a mesma lista às 19:26, 19:32 e 19:37).
+
+| linha | arquivo (em `_media/_caca/`) | cena · beat | candidato | `mesmo_item` | medida (ffprobe) | veredito | motivo |
+|---|---|---|---|---|---|---|---|
+| 1 | s01/envato/juneau-alaska-aerial-push-in-2026-09-17-18-22-12-utc.mp4 | s01 · s01#3 (3,8 s) | s01-p3-2 | true | 3840x2160, 23,976 fps, 11,345 s, sem áudio | aprovado | o centro de Juneau do ar com o Gastineau Channel, a ponte e Douglas Island; no 4K, nenhum navio de cruzeiro nem letreiro legível |
+| 3 | s28/envato/top-view-in-winter-of-a-modern-sports-complex-with-2026-09-24-09-40-46-utc.jpg | s28 · s28#2 (4,1 s) | s28-p2 | true | 5464x3640, JPEG | aprovado | a arena de cúpula vista de cima na neve, sem marca de time nem letreiro legível no original; a tela não rotula lugar |
+| 4 | s40/envato/aerial-orbit-anchorage-alaska-2026-09-17-07-39-06-utc.mp4 | s40 · s40#1 (4,3 s) | s40-p1-2 | true | 3840x2160, 23,976 fps, 9,843 s, sem áudio | aprovado | o centro de Anchorage com as Chugach atrás; as duas marcas no alto das torres não deixam ler nome no 4K |
+| 5 | s53/storyblocks/aerial-view-of-the-trans-alaska-pipeline-system-winding-through-a-vibrant-forest.mp4 | s53 · s53#1 (1,833 s) | s53-p1 | true | 3840x2160, 59,94 fps, 7,659 s, com áudio AAC | aprovado | o TAPS em zigue-zague na floresta boreal; o zigue-zague se lê desde o primeiro quadro |
+| 7 | s53/storyblocks/aerial-view-of-the-long-trans-alaska-pipeline-system-cutting-through-a-dense-for.mp4 | s53 · s53#2 (9,267 s) | s53-p2 | true | 3840x2160, 59,94 fps, 11,663 s, com áudio AAC | aprovado | o TAPS em plano lento pelo vale, terreno diferente do plano 1; 2,4 s de folga sobre o beat |
+
+Crédito na tela: nenhum nos cinco (o Envato e a Storyblocks não exigem; na Storyblocks, os metadados do arquivo ficam intactos, `midia.md` §3.3).
+
+### O que mudou em relação ao veredito de candidato
+
+- **s01 (linha 1):** nada no veredito. No cais da esquerda há um navio branco de porte médio atracado (de guarda costeira ou de pesquisa), não de cruzeiro. O último quadro, sem fade, põe o centro no meio, para o s03.
+- **s28 (linha 3):** nada no veredito. O original mostra duas coisas que a prévia não mostrava:
+  - numa praça à direita (x≈4600, y≈2430), uma bandeira vermelha e verde caída no mastro, de uns 25x40 px, que não se lê como bandeira nacional;
+  - no chão, letras grandes cobertas de neve, ilegíveis.
+  - Para quem monta: no corte em que a cúpula enche a altura do quadro, a bandeira cai na borda direita (uns 23x37 px no 4K). Com a borda direita antes de x≈4550 no original, ela fica de fora.
+- **s40 (linha 4):** o veredito não mudou, mas vale pesar a leitura.
+  - A marca da coroa da torre mais alta (a da ConocoPhillips, que reprovou o s40-p1): uns 36x12 px no 4K, e nenhuma letra se lê nem ampliada 4 vezes.
+  - No topo da torre escura da esquerda, o 4K mostra um emblema oval com um "H" (a prévia o dava só como "marca pequena"): uns 22x16 px no 4K, 11x8 no 1080p, ao fundo. O "H" se distingue no recorte 1:1, e nenhum nome se lê.
+  - Li as duas pela mesma régua do veredito do candidato: pequenas demais para o nome se ler, e não são o assunto do quadro. Por isso não as li como "marca ou logotipo de terceiro legível" (ofício §5.2; `midia.md` §3.1). Se o Lucas quiser a régua mais dura (nenhuma marca reconhecível, mesmo sem nome), o clipe sai `reprovado`, e o s40 volta à busca.
+  - Para quem monta: nenhum zoom, recorte ou Ken Burns que aproxime o alto das torres.
+  - A duração medida é 9,843 s (a página diz 9 s).
+- **s53 (linhas 5 e 7):** nada no veredito. O zigue-zague do plano 1 se lê desde o primeiro quadro; o plano 2 é lento e tem outro terreno (o morro, os suportes escuros, a estrada). Os dois arquivos trazem uma faixa de áudio (AAC, 48 kHz), que o `_instalar-lote` tira (`-an`).
+
+### A licença e a prova de cada item
+
+- **Envato (linhas 1, 3 e 4):** os três certificados estão em `licencas/`, com os sha256 que conferi (`c6d3d88d…`, `546a6857…`, `16b82cd8…`), os mesmos do `caca-relato.md`. Não abri o texto deles: traz a conta. Que citam o ID, o título e `juneau` é a conferência do Claude central.
+- **Storyblocks (linhas 5 e 7):** não há PDF por item no plano Individual. A prova do item fica sendo a do `midia.md` §2.8:
+  - o nome com que o arquivo chegou, com o SBV-ID;
+  - os metadados embutidos, com o título da filmagem e o produtor, sem o ID;
+  - o histórico da conta, que o Claude central viu às 19:20.
+  - A falta do PDF não entra neste veredito (ofício §5.2: "o PDF de licença vem depois do clipe e não é seu"). A regra da linha L deste banco é do Lucas.
+- **A procedência, lida e não julgada:**
+  - os registros de s01, s28, s40 e da linha 5 foram regravados pelo Claude central às 19:23 com a conta da Top10 (os originais em `out/juneau/_tmp/antes-da-conta-top10/`, como o relato registra);
+  - na linha 7, o texto da conta saiu do registrador cortado em 80 caracteres ("… em 30/09/2"). A conta se identifica mesmo assim, e o veredito não depende disso.
+
+### Avisos para a cena, deste despacho
+
+- **s40, o conjunto da cena (para o `regente-de-imagem` e o `montador`, pelo Claude central):** a regência põe a folha do HB 3 dos beats #2 e #3 sobre este clipe até 13,334 s da cena, sem marcar `continua`. O clipe mede 9,843 s: faltam uns 3,5 s. A cena pede outro plano, um congelamento declarado ou a folha sobre o fundo sem o clipe no fim.
+- **s28:** o corte da cúpula com a borda direita antes de x≈4550 no original deixa a bandeira da praça de fora.
+- **s40:** nenhum zoom no alto das torres.
+
+### Para o Lucas pesar, deste despacho
+
+Nada saiu `pendente_lucas`. Ficam com ele, pela skill e pela marca, e não por este veredito:
+- o primeiro arquivo de cada banco, que vai a ele antes de instalar enquanto o nome com que cada banco entrega não foi medido nas contas (skill §3, passo 4);
+- a regra da linha L da Storyblocks;
+- se quiser, a leitura das duas marcas do s40 (acima).
+
+### Para reconferir e para trocar, deste despacho
+
+Nada.
+
+## O 6º despacho (28/09/2026, 15:02)
+
+**Laudo do 6º despacho: 25 aprovados de 25 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 25.**
 
 - **Quem conferiu:** o Claude central despachou esta conferência como agente geral, no ofício `.claude/agents/conferente-de-midia.md`, no passo `conducting`.
 - **O que o veredito vale:** nenhum veredito aqui é o sim do Lucas.
@@ -17,7 +85,7 @@
   - o `words.json` (`a8d5ec77…`) e o roteiro (`28aa6630…`), os de sempre.
 - **`out/juneau/_media/` não mudou durante o trabalho**, conferido pelo sha256. As horas estão na nota do fim.
 
-## Os vereditos deste despacho (o 6º): a janela da regência
+## Os vereditos do 6º despacho: a janela da regência
 
 A janela é a do beat, no relógio do master (de `inSec + t0` a `inSec + t1`). Em todos, a medida e o sha256 do arquivo entregue são os do veredito anterior. O quadro, olhado de novo numa cópia reduzida (em `out/juneau/_tmp/conferencia/d6/`), é o mesmo.
 
@@ -425,6 +493,29 @@ Nada ficou `nao_conferido`.
 17. **O rótulo de lugar do s22 na regência e no conceito.** A regência (s22#1) e o conceito pedem "Alaska State Capitol, Juneau" sobre a foto da 5ª Legislatura.
     - O `midia.md` §2, item 7, diz que o rótulo não nomeia lugar mais específico que o que a origem nomeia, e o `lugar_na_origem` deste arquivo é `null`.
     - Segui a marca: o rótulo não entra, salvo se a ficha do vilda nomear o lugar ("Para reconferir"). O `redator-de-tela` escreve o rótulo, e o `qc-visual` o confere.
+
+18. **A conta do banco pago (7º despacho).** O ofício §5.2 ainda diz "nas contas individuais do Lucas (§2.3)". A marca ganhou em 30/09 "A exceção da Top10" (`midia.md` §2.3; `midia.json` › `caca.contas`), pela decisão do Lucas às 19:22: na Storyblocks e no Envato, a conta da empresa Top10 vale.
+    - Segui a marca: a conta da Top10 não reprova nem vira `pendente_lucas`.
+    - O ofício é do canal e pode ganhar a exceção.
+19. **A pasta dos quadros (7º despacho).** O pedido mandava os quadros para `out/juneau/_tmp/conferente/`. O contrato §5 só deixa criar pasta em `out/juneau/_tmp/conferencia/`, e o ofício §4 manda os quadros para lá. Segui o contrato: `_tmp/conferencia/<id do candidato>/arquivo/`. As duas ficam fora do git e fora de `_media`.
+20. **O `.md` grande (7º despacho).** O contrato §5 deixa o `python` emendar o JSON grande, e não fala do `.md`, que já tem uns 60 KB. Regravá-lo inteiro pelo `Write` tinha o mesmo risco de sair cortado. Emendei-o pelo `python`, do mesmo jeito do JSON: a cópia de antes em `out/juneau/_tmp/conferencia/conferencia-midia.antes-despacho7.md` e o sha256 conferido antes de gravar. O §5 pode dizer isso também do `.md`.
+21. **A lista `_media-antes.txt` (7º despacho).** Como no 4º despacho, a lista do começo foi gravada no nome que o contrato §3 dá e ficou por cima da de um despacho anterior. Ela está copiada em `_media-antes-despacho7.txt`.
+
+**Nota do despacho (o 7º):**
+- A lista de `out/juneau/_media/`, pelo sha256 de cada arquivo:
+  - ao começar, às 19:26 de 30/09 (Brasília), em `_media-antes.txt`, copiada para `_media-antes-despacho7.txt`: 270 arquivos, sha256 da lista `aee16e95…`;
+  - às 19:32 (`_media-meio-despacho7.txt`) e às 19:37, logo antes de gravar o JSON (`_media-depois-despacho7.txt`): os mesmos 270 arquivos e o mesmo sha256 da lista, sem nenhuma diferença;
+  - depois de gravar este `.md`, de novo, em `_media-depois-despacho7-fim.txt`. O resultado vai na resposta do despacho.
+- Os quadros e os recortes que olhei ficaram em `out/juneau/_tmp/conferencia/<id do candidato>/arquivo/` e em `out/juneau/_tmp/conferencia/_pontas-grade.png`, fora de `_media`.
+- A emenda do JSON e deste `.md` rodou pelo `python`, com os dados em `out/juneau/_tmp/conferencia/_d7-emenda/` (o Bash desta máquina corta um comando de ~8 KB).
+  - As cópias de antes: `conferencia-midia.antes-despacho7.json` (sha256 `c20ee40b…`) e `conferencia-midia.antes-despacho7.md` (sha256 `3c758312…`), em `out/juneau/_tmp/conferencia/`; o sha256 de cada arquivo foi conferido antes de gravar.
+  - O JSON gravado tem 513.031 bytes, sha256 `06480824…`. O arquivo antes tinha listas compactadas à mão; o de agora sai com a indentação de 2 espaços do `python`, sem mudar conteúdo.
+- O JSON, conferido depois de gravado:
+  - é válido, em UTF-8 sem BOM;
+  - os 35 vereditos anteriores e os 30 substituídos estão idênticos aos do arquivo de antes, pela impressão digital do JSON canônico de cada um; os campos do topo que não são deste despacho também;
+  - no topo, mudaram o `conferido_em` e o `laudo`, e entraram o 7º item de `despachos` e de `laudo_por_despacho`, a `entrada.despacho_7` e a `media_sem_mudanca.despacho_7`;
+  - o laudo bate com os vereditos, e as checagens do contrato §3 passam (nos 5 novos: `arquivos_olhados`, os quatro critérios em `passa`, a frase com `texto`, `t0`, `t1` e `janela_s`, `lugar_na_origem`, `sha256`, `id_candidato`, `mesmo_item: true`, o `medido`; na foto, `data_na_origem` e `aviso_de_ano`).
+- Nada pessoal: nenhum nome de conta, e-mail, ID de conta nem o nome pessoal do produtor que está nos metadados da Storyblocks. O contribuidor vai como a página o mostra, "Amazing Aerial".
 
 **Nota do despacho (o 6º):**
 - A lista de `out/juneau/_media/`, pelo sha256 de cada arquivo:

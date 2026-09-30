@@ -240,7 +240,9 @@
   cena, real ou redesenhado, reprova (`fonte`). O certo é o nome da instituição escrito na pílula `--rotulo`,
   Inter 700 (Lucas, 26/09/2026 e, a logo federal e a de outras instituições, 27/09/2026; midia.md §7.6).
 - **Mídia de banco pago sem registro** (sem a linha no `manifest.jsonl` da caça e a entrada no `_PROCEDENCIA.json`
-  da cena, ou baixada fora da conta individual do Lucas; midia.md §2.3, §2.8 e §8) reprova
+  da cena, ou baixada fora das contas que o Lucas designou: a individual dele no Shutterstock e no Motion Array, a
+  assinatura da Top10 na Storyblocks e no Envato, desde 30/09/2026; midia.md §2.3, "A exceção da Top10", §2.8 e §8)
+  reprova
   (`fonte`). Evento real específico vindo de banco pago também (midia.md §1).
   - Acervo gratuito, só os oficiais e as fontes federais: Commons, NASA, NARA, USGS, Library of Congress,
     Smithsonian, sala de imprensa de órgão federal dos EUA e DVIDS (Lucas, 26/09/2026; midia.md §7.3), e as

@@ -37,7 +37,7 @@
   20 s não têm voz** (`canal.json › narracao.cauda_tela_final_s`). **Mapa** = MapTiler, com o crédito
   `© MapTiler © OpenStreetMap contributors` na tela (identidade.md §6). No Juneau, o gasto de pedidos na MapTiler está liberado, com o relevo 3D só em s44 (Lucas, 28/09/2026; identidade.md §6, "O gasto do Juneau, liberado"):
   o contador se anota antes e depois da primeira cena de mapa.
-- **Banco pago** de imagem (midia.md §1, §2): só B-roll genérico, baixado na conta do Lucas, pela caça no Chrome dele que ele aprova item por item
+- **Banco pago** de imagem (midia.md §1, §2): só B-roll genérico, baixado nas contas que o Lucas designou (midia.md §2.3: a assinatura da Top10 na Storyblocks e no Envato), pela caça no Chrome dele que ele aprova item por item
   (§2.3, §8). Evento real específico vem de acervo aberto ou oficial, nunca de banco.
 - **Nunca** rode `narrar.mjs` nem `transcrever.mjs` (CLAUDE.md).
 - **Quem decide é o Lucas Rosa** (`canal.json › owner`). A rubrica e as leis do Top10 que vieram com o

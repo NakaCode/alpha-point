@@ -127,7 +127,7 @@ de y = 1880.
 - **Mapa = MapTiler**, com `© MapTiler © OpenStreetMap contributors` na tela durante todo o mapa
   (`canal.json › mapa.perfil`; identidade.md §6). Isso é do `mapista`; você não pede tile nem faz quadro
   ou render de mapa (no Juneau, o gasto de pedidos na MapTiler está liberado, com o relevo 3D só em s44 (Lucas, 28/09/2026; identidade.md §6, "O gasto do Juneau, liberado")).
-- **Banco pago** (midia.md §1, §2): só para B-roll genérico, baixado na conta do Lucas, pela caça no Chrome dele que ele aprova item por item
+- **Banco pago** (midia.md §1, §2): só para B-roll genérico, baixado nas contas que o Lucas designou (midia.md §2.3: a assinatura da Top10 na Storyblocks e no Envato), pela caça no Chrome dele que ele aprova item por item
   (§2.3, §8). Logo não é B-roll genérico e não sai de banco; você não baixa nem
   abre o site de banco.
 

@@ -112,7 +112,7 @@ produz o master. O deste canal nasce assim:
    - O arquivo de chaves da API está em `C:\Users\zangp\.regie\chaves.env` desde 25/09/2026. Foi copiado, sem
      abrir os valores, de um arquivo que o Lucas deixou na Área de Trabalho. Tem ElevenLabs, MapTiler e as
      chaves dos acervos (NARA, Smithsonian, DVIDS, Europeana, Pexels, Pixabay). A da ElevenLabs foi testada sem
-     gasto: `narrar.mjs --vozes` lista as duas vozes do canal. Nunca imprima nem leia os valores; para saber de
+     gasto: `narrar.mjs --vozes` lista as duas vozes do canal. **Em 30/09/2026 o Lucas mandou pelo chat uma chave nova da ElevenLabs**: trocada no arquivo (a anterior ficou em `chaves.env.antes-da-troca-elevenlabs-2026-09-30`, na mesma pasta) e testada sem gasto (`--vozes` lista as três vozes do canal). Nunca imprima nem leia os valores; para saber de
      onde vem uma chave, use `onde()` de `src/lib/chaves.mjs` da pré-v1.
    - Gastar crédito pede o ok do Lucas. Gasto em 24/09, conferido no saldo: 2.433 nas amostras e na escolha
      da voz; 15.564 na narração do texto aprovado (o bloco 1 com quebras de linha, o teste sem quebras e os 3
@@ -582,7 +582,12 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
 
 **O método** é o da pré-v1, com a skill adaptada ao canal:
 - A skill `.claude/skills/cacar-no-chrome/SKILL.md` é a **cópia adaptada do canal**, com sha256
-  `b0979fb30196153f52e3d285c6e94f6a02621b17daa702f7721d740776f229e0` em 30/09/2026. Em 30/09 (a primeira caça do Juneau, `APRENDIZADOS.md` item 48): as prévias só com a
+  `0bf75542f77b7a05be7ed07db614f8ad1e5b99b56c363e19f803f9996352a866` em 30/09/2026. Às 19:2x: a conta da Top10 na
+  Storyblocks e no Envato, e a parada quando uma página da caça mostra outra conta que a confirmada (§0, item 7;
+  `marca/midia.md` §2.3, "A exceção da Top10"). Às 19:5x, depois de uma revisão independente: "a conta que ele
+  confirmou" nas falas do §5 e no relato (§6), a rota de foto do Envato e o certificado no painel *Licenses* (§2.2 e
+  §0, item 4), o rodízio dos bancos ("Alternar os bancos", §2.2), o "Separar antes" (§1) e a Storyblocks sem linha L
+  (§2.6). Em 30/09 (a primeira caça do Juneau, `APRENDIZADOS.md` item 48): as prévias só com a
   aba da caça à vista, provada pela prévia que anda, e o clique do Lucas na aba quando ela não anda (§2.0); a aba
   fixa da caça, que fica aberta de uma caça para a outra (Lucas, 30/09/2026: "Aba fixa da caça (Recomendado)";
   §2.0 e §0, item 6); 30 s entre páginas do mesmo banco, nas duas fases, contados com `wait`, e só as buscas da
@@ -690,10 +695,15 @@ configuração do navegador nem da conta: quem muda é o Lucas.
   - se a sessão de um banco cair, entrar de novo, com a senha e o 2FA dele.
 - **A conta de cada banco.** Na primeira página de cada banco, o Claude diz o nome da conta que o topo mostra (sem
   abrir a página da conta), e o Lucas confirma no chat que é a conta individual dele.
+  - **Na Storyblocks e no Envato, a conta é a assinatura da Top10** (Lucas, 30/09/2026: "A conta da Top10 vale",
+    depois que o histórico de downloads da Storyblocks mostrou a conta da empresa, compartilhada; `marca/midia.md`
+    §2.3, "A exceção da Top10"). O risco de licença é dele. O perfil do Chrome continua o `Profile 1` "Lucas".
   - Um cabeçalho que diz só "Lucas" não distingue a conta dele de um assento do Top10 no nome dele.
-  - Sem a confirmação, nada se baixa daquele banco.
-  - A confirmação vai para o relato da caça, com a mensagem e a hora. O registrador grava "conta individual do
-    Lucas" a partir do `marca/midia.json`, seja qual for a conta logada, e só ela sustenta o que ele grava.
+  - Sem a confirmação, nada se baixa daquele banco. Página da caça que mostre outra conta que a confirmada: parar
+    antes do próximo clique que baixa e perguntar.
+  - A confirmação vai para o relato da caça, com a mensagem e a hora. O registrador grava a conta de cada banco a
+    partir do `marca/midia.json` › `caca.contas` ("Top10" na Storyblocks e no Envato, "conta individual do Lucas"
+    nos outros), seja qual for a conta logada, e só ela sustenta o que ele grava.
 - **Nada pessoal no git.** `out/<proj>/_pesquisa/caca-relato.md`, `candidatos-caca.json` e as saídas do
   conferente (`conferencia-caca.json`, `conferencia-midia.json` e os `.md` delas) vão para o git: neles, nunca
   e-mail, nome de usuário, ID de conta ou outro dado pessoal lido nos bancos, nos PDFs de licença ou numa
@@ -750,8 +760,9 @@ configuração do navegador nem da conta: quem muda é o Lucas.
    - o que o clique aceita ou preenche (Envato: a janela de licença, com o projeto `<proj>`);
    - editorial, pessoas e IA, e o veredito do conferente;
    - o custo e o `nome_final`.
-   **O PDF de licença é uma linha da mesma lista**: a linha L do clipe (`3L`, logo abaixo do `3`), no Envato, no
-   Motion Array e na Storyblocks.
+   **O PDF de licença é uma linha da mesma lista**: a linha L do clipe (`3L`, logo abaixo do `3`), no Envato e no
+   Motion Array. A Storyblocks não tem linha L (Lucas, 30/09/2026, "Usar mesmo assim"): no plano Individual não
+   há PDF por item, e a prova é o nome com o `SBV-<id>` e o histórico da conta (skill, §2.6).
 4. **O Lucas responde à lista no chat**: "sim", "sim, menos o 4" ou "aprovo 1, 3 e 5".
    - O "sim" cobre as linhas preferidas (inclusive as marcadas `pendente_lucas`) e a linha L de cada uma. **Não
      cobre reserva**: reserva só com o número dela na resposta.
@@ -833,7 +844,7 @@ Regras da aprovação:
   contornar ("A marca").
 - Não repete a busca.
 - Se o Lucas quiser, ele mesmo baixa naquele banco **os itens da lista que ele já aprovou**, pelos números, um
-  por vez, no Profile 1, na janela em que o banco está aberto, com a conta individual que ele confirmou (o
+  por vez, no Profile 1, na janela em que o banco está aberto, com a conta que ele confirmou (o
   registrador grava essa conta seja qual for o perfil do clique). O Claude roda o `marcar` antes do clique dele e o `recolher` depois, e cada arquivo passa pela mesma
   conferência (nome, medida, ordem e conferente). Item que ele achar sozinho não entra por aí: vira item novo,
   que volta à Fase A, porque o conferente não julga o que não foi gravado nela.

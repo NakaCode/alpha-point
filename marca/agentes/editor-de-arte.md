@@ -286,8 +286,8 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   crédito na tela, com a procedência gravada (Lucas, 26/09/2026; midia.md §7.2).
 - **Banco pago** (midia.md §1, §2): evento real específico nunca vem dele. B-roll genérico (paisagem, cidade,
   porto, indústria, drone) vem, na ordem Envato Elements → Motion Array → Storyblocks → Shutterstock, com as
-  regras do §2 (editorial nunca; pessoa de banco nunca em política; Storyblocks só neutro). O download é na conta
-  do Lucas (§2.3, assento único), pela caça no Chrome dele que ele aprova item por item (§8; CLAUDE.md, "Caça nos
+  regras do §2 (editorial nunca; pessoa de banco nunca em política; Storyblocks só neutro). O download é nas contas
+  que o Lucas designou (§2.3: a assinatura da Top10 na Storyblocks e no Envato), pela caça no Chrome dele que ele aprova item por item (§8; CLAUDE.md, "Caça nos
   bancos pagos"). Faltou B-roll genérico: entregue a lista do que procurar (termos em inglês, cena, duração, por que é
   genérico). Nunca baixe de banco, nem abra o site dele, nem peça a uma pesquisa que o faça.
 - Acervo gratuito, só os oficiais e as fontes federais: Wikimedia Commons, NASA, NARA, USGS, Library of

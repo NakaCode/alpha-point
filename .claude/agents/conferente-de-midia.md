@@ -232,7 +232,9 @@ Leia o que a origem diz, onde ela diz: no `caca`, o `candidatos-caca.json`; no `
   arquivo a arquivo; NASA; NARA; USGS; Library of Congress; Smithsonian; sala de imprensa de órgão federal; DVIDS)
   e, desde 27/09/2026, as fontes da 4ª rodada (§7.3, "A 4ª rodada": o acervo de qualquer órgão federal dos EUA, os
   mapas históricos e os outros governos que ela nomeia).
-  Banco pago: só os quatro do §1, só B-roll genérico, nas contas individuais do Lucas (§2.3), e só nas
+  Banco pago: só os quatro do §1, só B-roll genérico, nas contas que o Lucas designou (§2.3: as individuais dele
+  no Shutterstock e no Motion Array; a assinatura da Top10 na Storyblocks e no Envato, desde 30/09/2026, "A
+  exceção da Top10"), e só nas
   `plataformas` do item; o Shutterstock, só com `shutterstock.teto_dia` maior que 0 no `marca/midia.json` (§3.4 e
   §8 da mídia). Qualquer outra fonte (Pexels, Pixabay, Openverse, Met, Europeana, Internet Archive, Artlist, Pond5,
   Reuters…) falha, e a que a 4ª rodada pôs em "não servem" ou não perguntou também. Essa lista é a do acervo de imagem e vídeo (§7.3): o retrato do §7.2 (inclusive o de pessoa
