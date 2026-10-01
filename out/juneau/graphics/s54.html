@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s54 · "From a high in 2013 to a low in early 2016, oil prices fell by more than three quarters."
+  Word-lock (−559.633) · inSec 559.633 · dur 6.8 (204 quadros a 30 fps; espelho.json, _quadros 16789→16993)
+  Modo do espelho: dados · Modelo da identidade: DADO sobre --papel (a linha diária real do preço do petróleo, 748 dias
+  com preço, desenhada ponto a ponto com a voz; nada de seta, nada de reta)
+
+  O que manda em cada coisa: o espelho (s54), o conceito (s54), a regência (s54: um beat), os textos finais do redator
+  (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s54, _creditos s54,
+  nao_vai_para_tela s54), a série (out/juneau/_dados/s54.json › serie, 748 pontos do Alaska Department of Revenue, de
+  $116.26 em 12/02/2013 a $26.23 em 20/01/2016) e a marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM
+  LUGAR SÓ: o objeto TEXTOS.
+
+  O BEAT (tempo local = master − 559,633; palavras do words.json):
+    b1  0,000–6,800  "From a high in twenty thirteen to a low in early twenty sixteen, oil prices fell by more than
+        three quarters."  (regência s54#1)
+        O GRÁFICO sobre --papel: o eixo do tempo (y 1.700, de 1º/02/2013 em x 300 a 29/01/2016 em x 3.200; o eixo é de
+        dias de calendário: fim de semana e feriado ficam como vão no eixo, sem ponto e sem valor inventado; a linha liga
+        os dias com preço consecutivos, sem suavizar e sem média mensal), o valor de 0 em y 1.700 a 120 em y 300, em
+        --tinta-escura (não em --destaque, que é só do protagonista). A LINHA se desenha da esquerda para a direita com a
+        voz: do primeiro dia (0) até o pico em "high" (0,3; o ponto marcado, sem valor), do pico ao fundo em "low" (1,8; o
+        ponto marcado, sem valor), e o rabo de 9 dias logo depois. No eixo, só o que a voz diz: 2013 (sob o pico) em
+        "twenty" (0,733) e EARLY 2016 (sob o fundo) em "early" (2,167), Inter, algarismos tabulares, caixa alta. O nome
+        da linha, Daily oil price (legenda, caixa normal; a sigla ANS não vai), em "oil" (3,767), à direita do pico (420/200: a perna do p a uns 50 px acima da linha). Em
+        "fell" (4,433) um COLCHETE vertical vai do pico ao fundo (x 3.330), dividido em quartos do pico (116,26 → 87,20 →
+        58,13 → 29,07), e em "more" (4,9) os quartos ACENDEM de cima para baixo, em --tensao (perda), um a um: três
+        inteiros e o quarto só até o fundo, 2,84 abaixo da marca: mais de três quartos, sem texto (MORE THAN THREE
+        QUARTERS fica na voz, R1). Os extremos $116.26 e $26.23 não vão à tela. 4 elementos (a linha com o nome, 2013 e
+        EARLY 2016 com os pontos, e o colchete). Blocos: 0. Herói: nenhum.
+    Crédito Source: Alaska Department of Revenue, 2013–2016 em --tinta-escura a 72 % sobre o papel, desde o primeiro quadro.
+
+  A MÍDIA: construída (DADO). A série está embutida abaixo (SERIE: [dia desde 1º/02/2013, US$/barril], 748 pares,
+  copiados de out/juneau/_dados/s54.json › serie na montagem da cena). O Graph 2-1 do FSEIS é figura do Estado e não vai à
+  tela (midia.md §7.1).
+
+  A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). O --papel inteiro, sem mesa (DADO
+  sobre papel, como s29 e s35). Margens 200/160; canto inferior direito (400×400) vazio (EARLY 2016 acaba antes de
+  x 3.440); crédito em x = 200, y > 1880.
+
+  O CONTRATO: window.__duracao = 6.8; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
+  __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia
+  inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+-->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): a perna do p de "price" (rótulo em 420/250) encostava no pico da linha
+     em x ≈ 726–731 (o pé da perna em y ≈ 336 e o topo da linha em ≈ 342, sob a câmera). Agora o rótulo está em 420/200:
+     o pé da perna fica em y ≈ 286 e a folga da linha passa a uns 55 px, em todo quadro (a câmera só afasta os dois do
+     centro). O topo do rótulo sob a câmera no último quadro: y 186 (≥ 160). -->
+<head>
+<meta charset="utf-8">
+<title>s54 — From a high in 2013 to a low in early 2016, oil prices fell by more than three quarters</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--papel);
+    font-family: var(--fonte); color: var(--tinta-escura); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
+
+  /* o gráfico: o eixo em --eixo-cor (tinta-escura a 60 %), a linha e os pontos em --tinta-escura, os quartos acesos em --tensao */
+  #grafico { position: absolute; inset: 0; width: 3840px; height: 2160px; overflow: visible; }
+  #eixo { stroke: var(--eixo-cor); stroke-width: 4px; stroke-linecap: round; fill: none; }
+  #linha { stroke: var(--tinta-escura); stroke-width: var(--linha-espessura); stroke-linecap: round; stroke-linejoin: round; fill: none; }
+  .ponto { fill: var(--tinta-escura); }
+  #colchete line { stroke: var(--tinta-escura); stroke-width: var(--linha-espessura); stroke-linecap: round; }
+  #colchete .quarto { fill: var(--tensao); }
+  .rotuloEixo { position: absolute; white-space: nowrap; transform: translateX(-50%); font-family: var(--fonte); font-weight: var(--peso-texto);
+    font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0; font-variant-numeric: var(--numeros); color: var(--tinta-escura); opacity: 0; }
+  #nome { position: absolute; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
+    line-height: 1.2; letter-spacing: 0; color: color-mix(in srgb, var(--tinta-escura) 80%, transparent); opacity: 0; }
+
+  /* o crédito (§4.2): 76 px, sobre o papel em --tinta-escura a 72 % */
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x)); }
+  .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1;
+    color: color-mix(in srgb, var(--tinta-escura) 72%, transparent); letter-spacing: 0; opacity: 0; }
+  .cred[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="DADO da linha diária do preço do petróleo: 2013, EARLY 2016 e Daily oil price são eixo e legenda; a queda é o colchete, sem número; nenhum herói (ofício do editor-de-arte §6)">
+  <div id="cam">
+    <svg id="grafico" viewBox="0 0 3840 2160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path id="eixo" d="M300,1700 L3200,1700 M329.2,1700 v22 M3176.1,1700 v22"/>
+      <path id="linha" d=""/>
+      <circle class="ponto" id="pPico" cx="329.2" cy="343.6" r="0"/>
+      <circle class="ponto" id="pFundo" cx="3176.1" cy="1394.0" r="0"/>
+      <g id="colchete" style="opacity:0">
+        <line id="cTronco" x1="3330" y1="343.6" x2="3330" y2="343.6"/>
+        <line x1="3310" y1="343.6" x2="3350" y2="343.6"/>
+        <line id="cT1" x1="3330" y1="682.7" x2="3362" y2="682.7" style="opacity:0"/>
+        <line id="cT2" x1="3330" y1="1021.8" x2="3362" y2="1021.8" style="opacity:0"/>
+        <line id="cT3" x1="3330" y1="1360.9" x2="3362" y2="1360.9" style="opacity:0"/>
+        <line id="cFim" x1="3310" y1="1394" x2="3350" y2="1394" style="opacity:0"/>
+        <rect class="quarto" id="q1" x="3321" y="343.6" width="18" height="0"/>
+        <rect class="quarto" id="q2" x="3321" y="682.7" width="18" height="0"/>
+        <rect class="quarto" id="q3" x="3321" y="1021.8" width="18" height="0"/>
+        <rect class="quarto" id="q4" x="3321" y="1360.9" width="18" height="0"/>
+      </g>
+    </svg>
+    <div class="rotuloEixo" id="l2013" data-qc-papel="eixo" style="left:329.2px;top:1740px"></div>
+    <div class="rotuloEixo" id="l2016" data-qc-papel="eixo" style="left:3176.1px;top:1740px"></div>
+    <div id="nome" data-qc-papel="eixo" style="left:420px;top:200px"></div>
+  </div>
+  <div id="creds">
+    <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
+  </div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo;
+  var E = function (id) { return document.getElementById(id); };
+  var lerp = function (a, b, p) { return a + (b - a) * p; };
+  var DUR = 6.8;
+  window.__duracao = DUR;
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é a do textos-tela.json do disco) ═══════════════════════════
+  var TEXTOS = {
+    l2013:     "2013",                                            // textos-tela.json › rotulos_dado s54 (eixo, junto do pico)
+    l2016:     "EARLY 2016",                                      // textos-tela.json › rotulos_dado s54 (eixo, junto do fundo)
+    nome:      "Daily oil price",                                 // textos-tela.json › rotulos_dado s54 (o nome da linha, caixa normal)
+    credFonte: "Source: Alaska Department of Revenue, 2013–2016"  // textos-tela.json › _creditos s54 (a linha diária)
+  };
+  // NÃO vão à tela (textos-tela.json › nao_vai_para_tela s54): MORE THAN THREE QUARTERS (o colchete mostra), $116.26 e
+  // $26.23 (a voz não os diz), ANS / ANS West Coast (sigla nua)
+  // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
+  E("l2013").textContent = TEXTOS.l2013; E("l2016").textContent = TEXTOS.l2016; E("nome").textContent = TEXTOS.nome;
+
+  // ── a série: [dia desde 1º/02/2013, US$/barril], 748 dias com preço (out/juneau/_dados/s54.json › serie) ──
+  var SERIE = [[0,112.27],[3,110.67],[4,111.14],[5,111.12],[6,113.83],[7,114.47],[10,115.78],[11,116.26],[12,115.76],[13,116.06],[14,114.61],[18,115.41],[20,111.19],[21,111.52],[24,111.55],[25,109.88],[26,109.01],[27,108.3],[28,106.93],[31,106.37],[32,107.72],[33,107.33],[34,108.46],[35,108.85],[38,108.96],[39,109.44],[40,109.42],[41,109.93],[42,110.35],[45,110.64],[46,109.06],[47,109.86],[48,109.03],[49,110.29],[52,111.46],[53,108.84],[54,109.08],[55,109.73],[59,109.57],[60,109.69],[61,106.95],[62,106.51],[63,105.95],[66,106.61],[67,107.45],[68,107.89],[69,106.76],[70,104.54],[73,101.96],[74,100.72],[75,98.68],[76,99.73],[77,100.01],[80,100.76],[81,100.83],[82,103.06],[83,105.29],[84,104.87],[87,106.37],[88,105.33],[89,100.9],[90,103.85],[91,105.49],[94,106.15],[95,105.72],[96,106.7],[97,106.34],[98,106.14],[101,105.19],[102,104.33],[103,104.29],[104,105.33],[105,105.97],[108,106.64],[109,105.85],[110,103.8],[111,103.49],[112,103.31],[116,104.11],[117,102.05],[118,102.12],[119,99.53],[122,100.52],[123,100.62],[124,100.94],[125,101.87],[126,103.17],[129,102.91],[130,102.3],[131,102.87],[132,103.76],[133,107.33],[136,107.31],[137,107.92],[138,106.99],[139,104.18],[140,102.65],[143,104.07],[144,104.34],[145,104.71],[146,106.03],[147,105.6],[150,106.92],[151,108.43],[152,109.89],[154,111.6],[157,111.79],[158,112.12],[159,114.86],[160,112.72],[161,114.03],[164,114.37],[165,113.91],[166,113.37],[167,115.63],[168,114.75],[171,113.4],[172,111.97],[173,110.03],[174,110.12],[175,109.28],[178,109.0],[179,107.59],[180,109.43],[181,111.51],[182,110.67],[185,110.36],[186,109.35],[187,107.9],[188,106.53],[189,109.24],[192,109.56],[193,110.22],[194,110.52],[195,110.91],[196,111.09],[199,110.62],[200,108.96],[201,108.65],[202,109.96],[203,111.24],[206,110.41],[207,113.59],[208,114.28],[209,113.41],[210,112.28],[214,113.88],[215,112.02],[216,113.7],[217,114.59],[220,113.81],[221,110.86],[222,111.52],[223,112.24],[224,112.0],[227,111.12],[228,109.3],[229,112.05],[230,110.15],[231,109.58],[234,107.97],[235,107.65],[236,107.27],[237,107.06],[238,107.01],[241,106.48],[242,105.65],[243,107.78],[244,106.69],[245,107.37],[248,106.36],[249,106.88],[250,104.96],[251,106.46],[252,105.92],[255,106.41],[256,105.17],[257,106.5],[258,104.78],[259,104.95],[262,103.7],[263,102.78],[264,101.9],[265,102.41],[266,103.07],[269,103.89],[270,103.2],[271,104.52],[272,101.86],[273,100.3],[276,100.28],[277,99.28],[278,100.47],[279,99.74],[280,100.33],[283,100.87],[284,99.22],[285,100.02],[286,100.32],[287,102.0],[290,101.22],[291,101.6],[292,102.04],[293,103.7],[294,103.72],[297,103.22],[298,103.13],[299,102.28],[304,104.8],[305,107.53],[306,108.2],[307,108.24],[308,108.51],[311,108.2],[312,109.21],[313,108.18],[314,108.26],[315,107.51],[318,108.51],[319,106.68],[320,107.08],[321,108.03],[322,108.03],[325,108.84],[326,109.24],[328,109.52],[329,110.06],[332,108.93],[333,107.95],[335,104.98],[336,104.3],[339,103.17],[340,103.49],[341,102.24],[342,101.81],[343,102.48],[346,101.71],[347,102.39],[348,103.96],[349,102.95],[350,103.34],[354,103.86],[355,105.39],[356,105.43],[357,104.78],[360,103.58],[361,105.01],[362,105.0],[363,105.59],[364,104.79],[367,103.38],[368,103.16],[369,102.15],[370,102.77],[371,104.8],[374,104.66],[375,104.77],[376,105.3],[377,105.62],[378,105.83],[382,107.92],[383,108.51],[384,108.4],[385,107.87],[388,108.49],[389,108.37],[390,108.52],[391,109.02],[392,109.57],[395,111.55],[396,109.98],[397,107.88],[398,108.43],[399,108.31],[402,106.85],[403,106.38],[404,104.87],[405,106.12],[406,106.78],[409,105.8],[410,106.88],[411,107.28],[412,106.93],[413,107.74],[416,107.81],[417,107.58],[418,108.79],[419,109.86],[420,110.41],[423,110.36],[424,106.88],[425,104.83],[426,105.7],[427,106.49],[430,105.83],[431,107.11],[432,107.96],[433,107.72],[434,108.0],[437,108.4],[438,108.56],[439,108.55],[440,109.26],[444,109.53],[445,107.83],[446,107.52],[447,107.94],[448,106.68],[451,106.93],[452,107.1],[453,105.81],[454,105.11],[455,105.58],[458,105.2],[459,105.34],[460,106.4],[461,105.95],[462,106.35],[465,107.01],[466,107.69],[467,108.21],[468,107.88],[469,108.34],[472,108.89],[473,109.48],[474,110.75],[475,110.55],[476,111.2],[480,111.06],[481,109.78],[482,109.72],[483,108.81],[486,108.14],[487,108.37],[488,107.97],[489,107.55],[490,107.61],[493,109.21],[494,108.94],[495,109.12],[496,111.43],[497,111.69],[500,111.63],[501,111.47],[502,111.28],[503,111.87],[504,113.0],[507,112.29],[508,113.0],[509,113.17],[510,112.56],[511,112.86],[514,112.8],[515,111.56],[516,110.71],[517,110.4],[521,109.81],[522,109.65],[523,108.29],[524,109.2],[525,107.13],[528,106.7],[529,105.79],[530,105.64],[531,107.85],[532,107.16],[535,107.99],[536,107.15],[537,108.0],[538,106.83],[539,106.91],[542,106.32],[543,105.65],[544,105.44],[545,103.84],[546,103.52],[549,104.05],[550,103.27],[551,102.79],[552,103.36],[553,103.68],[556,103.88],[557,103.14],[558,103.32],[559,101.17],[560,102.7],[563,101.52],[564,100.3],[565,100.04],[566,100.4],[567,100.09],[570,99.86],[571,100.38],[572,99.86],[573,99.59],[574,100.47],[578,97.06],[579,99.4],[580,98.56],[581,97.25],[584,96.53],[585,96.27],[586,95.19],[587,96.28],[588,95.54],[591,96.1],[592,97.91],[593,97.18],[594,94.72],[595,94.96],[598,94.22],[599,94.23],[600,95.42],[601,95.01],[602,95.87],[605,96.68],[606,92.78],[607,91.28],[608,91.48],[609,89.99],[612,90.69],[613,88.53],[614,87.64],[615,85.96],[616,86.55],[619,85.99],[620,82.8],[621,81.94],[622,82.82],[623,82.64],[626,82.41],[627,83.09],[628,81.03],[629,82.93],[630,81.99],[633,81.85],[634,82.77],[635,83.47],[636,82.71],[637,82.33],[640,80.44],[641,79.21],[642,80.61],[643,79.63],[644,80.47],[647,79.17],[648,79.58],[649,78.87],[650,75.43],[651,77.17],[654,76.88],[655,75.4],[656,75.5],[657,77.26],[658,77.33],[661,76.52],[662,74.71],[663,74.32],[668,69.86],[669,68.01],[670,68.01],[671,67.36],[672,66.58],[675,63.67],[676,64.38],[677,61.91],[678,60.8],[679,59.5],[682,57.7],[683,57.57],[684,58.42],[685,56.68],[686,59.05],[689,57.38],[690,58.92],[691,57.84],[696,55.78],[697,56.11],[698,55.48],[700,55.18],[703,52.48],[704,50.4],[705,51.03],[706,51.44],[707,50.77],[710,48.38],[711,47.95],[712,49.54],[713,47.28],[714,49.5],[718,47.12],[719,47.94],[720,47.06],[721,46.74],[724,46.35],[725,47.21],[726,45.76],[727,45.96],[728,49.69],[731,51.95],[732,54.48],[733,50.78],[734,53.05],[735,53.78],[738,54.68],[739,52.58],[740,51.25],[741,53.47],[742,55.06],[746,55.54],[747,54.66],[748,54.82],[749,50.12],[752,53.05],[753,53.09],[754,55.7],[755,54.7],[756,55.62],[759,56.02],[760,56.78],[761,56.38],[762,55.58],[763,54.41],[766,54.48],[767,52.95],[768,52.77],[769,51.64],[770,49.5],[773,48.58],[774,47.5],[775,49.37],[776,48.35],[777,50.66],[780,51.43],[781,51.44],[782,52.94],[783,53.03],[784,52.94],[787,52.24],[788,51.23],[789,54.11],[790,52.33],[794,55.07],[795,56.44],[796,53.77],[797,54.08],[798,56.02],[801,56.27],[802,57.02],[803,60.11],[804,60.97],[805,60.35],[808,60.83],[809,59.42],[810,59.29],[811,60.81],[812,61.43],[815,61.25],[816,61.64],[817,62.35],[818,62.56],[819,63.02],[822,62.81],[823,63.81],[824,66.21],[825,64.32],[826,64.66],[829,64.55],[830,66.38],[831,65.56],[832,65.18],[833,65.28],[836,64.99],[837,62.91],[838,63.63],[839,65.45],[840,64.41],[844,61.48],[845,60.79],[846,62.06],[847,64.43],[850,65.07],[851,66.13],[852,64.42],[853,62.81],[854,64.01],[857,63.12],[858,65.34],[859,66.14],[860,65.3],[861,64.92],[864,64.92],[865,64.99],[866,64.55],[867,65.17],[868,64.08],[871,64.37],[872,65.1],[873,64.19],[874,63.58],[875,63.49],[878,62.08],[879,63.46],[880,61.22],[881,61.04],[885,56.87],[886,56.84],[887,56.19],[888,57.28],[889,57.3],[892,56.7],[893,57.77],[894,56.49],[895,55.94],[896,55.85],[899,55.08],[900,56.69],[901,55.83],[902,55.58],[903,55.12],[906,54.25],[907,54.86],[908,54.16],[909,53.85],[910,52.47],[913,50.79],[914,51.29],[915,50.71],[916,50.3],[917,49.45],[920,50.6],[921,48.99],[922,49.67],[923,48.52],[924,48.48],[927,47.73],[928,48.19],[929,46.36],[930,46.39],[931,45.61],[934,43.4],[935,44.56],[936,43.12],[937,46.99],[938,49.61],[941,52.9],[942,49.41],[943,51.15],[944,51.57],[945,50.9],[949,50.63],[950,49.06],[951,50.55],[955,48.64],[956,49.26],[957,51.51],[958,48.46],[959,46.82],[962,48.28],[963,47.92],[964,46.04],[965,47.07],[966,47.78],[969,46.54],[970,47.16],[971,47.28],[972,47.21],[973,47.87],[976,48.7],[977,51.2],[978,50.54],[979,52.04],[980,52.07],[983,49.74],[984,49.05],[985,48.29],[986,48.57],[987,49.01],[990,47.7],[991,47.16],[992,46.33],[993,46.54],[994,45.93],[997,45.24],[998,44.85],[999,47.57],[1000,47.39],[1001,48.09],[1004,48.09],[1005,49.76],[1006,48.24],[1007,47.25],[1008,45.82],[1011,45.57],[1012,45.51],[1013,44.54],[1014,43.21],[1015,42.26],[1018,43.08],[1019,42.16],[1020,42.34],[1021,42.34],[1022,42.38],[1025,42.27],[1026,42.71],[1027,42.93],[1032,41.5],[1033,42.2],[1034,40.5],[1035,41.66],[1036,41.33],[1039,38.29],[1040,38.35],[1041,37.84],[1042,37.39],[1043,36.24],[1046,36.4],[1047,37.45],[1048,35.97],[1049,35.08],[1050,34.99],[1053,34.65],[1054,34.73],[1055,36.21],[1056,36.69],[1060,35.4],[1061,36.16],[1062,35.25],[1063,35.71],[1067,35.95],[1068,34.82],[1069,32.53],[1070,31.78],[1071,31.73],[1074,29.76],[1075,28.99],[1076,28.81],[1077,29.47],[1078,27.89],[1082,26.97],[1083,26.23],[1084,27.37],[1085,29.95],[1088,28.27],[1089,29.19],[1090,30.63],[1091,31.72],[1092,32.15]];
+  var PLOT = { x0: 300, x1: 3200, dias: 1092, y0: 1700, vMax: 120, h: 1400 };
+  var PICO = { d: 11, v: 116.26 }, FUNDO = { d: 1083, v: 26.23 };     // 12/02/2013 e 20/01/2016, os extremos da fonte
+  function X(d) { return PLOT.x0 + d / PLOT.dias * (PLOT.x1 - PLOT.x0); }
+  function Y(v) { return PLOT.y0 - v / PLOT.vMax * PLOT.h; }
+
+  // ── os tempos (locais, −559,633), da regência s54 e do words.json ──
+  var T = {
+    alto: 0.3,                          // "high" (559,933): a linha chega ao pico
+    baixo: 1.8, rabo: 0.12,             // "low" (561,433): a linha chega ao fundo; o rabo de 9 dias logo depois
+    ano2013: 0.733,                     // "twenty" (560,367): 2013 no eixo
+    early: 2.167,                       // "early" (561,8): EARLY 2016 no eixo
+    nome: 3.767,                        // "oil" (563,4): o nome da linha
+    fell: 4.433, colcheteDur: 0.4,      // "fell" (564,067): o colchete do pico ao fundo
+    mais: 4.9, quartoDur: 0.2, passo: 0.1   // "more" (564,533): os quartos acendem, um a um
+  };
+
+  function cabeca(t) {   // o dia em que a cabeça da linha está
+    if (t < T.alto) return lerp(0, PICO.d, seg(t, 0, T.alto));
+    if (t < T.baixo) return lerp(PICO.d, FUNDO.d, seg(t, T.alto, T.baixo - T.alto));
+    return lerp(FUNDO.d, PLOT.dias, seg(t, T.baixo, T.rabo));
+  }
+  function caminho(dHead) {   // a linha até a cabeça: liga os dias com preço consecutivos; o último trecho, interpolado
+    var d = "", prev = null;
+    for (var i = 0; i < SERIE.length; i++) {
+      var p = SERIE[i];
+      if (p[0] > dHead) {
+        if (prev && p[0] > prev[0]) { var f = (dHead - prev[0]) / (p[0] - prev[0]); d += " L" + X(dHead).toFixed(1) + "," + Y(prev[1] + (p[1] - prev[1]) * f).toFixed(1); }
+        break;
+      }
+      d += (d ? " L" : "M") + X(p[0]).toFixed(1) + "," + Y(p[1]).toFixed(1);
+      prev = p;
+    }
+    return d;
+  }
+  function rotulo(el, op) {
+    op = clamp(op, 0, 1);
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = "translate(-50%," + ((1 - op) * 24).toFixed(1) + "px)";   // rótulo: 300 ms, opacidade + 24 px (§4.4)
+  }
+  function legenda(el, op) {
+    op = clamp(op, 0, 1);
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = "translateY(" + ((1 - op) * 24).toFixed(1) + "px)";
+  }
+  function quarto(el, yA, yB, p) { el.setAttribute("height", ((yB - yA) * clamp(p, 0, 1)).toFixed(1)); }
+
+  function cena(t) {
+    t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
+    R.camera(E("cam"), t, { base: 1.0 });
+
+    // ── a linha se desenha com a voz; os pontos do pico e do fundo quando a cabeça chega ──
+    E("linha").setAttribute("d", caminho(cabeca(t)));
+    E("pPico").setAttribute("r", (16 * eo(seg(t, T.alto, 0.25))).toFixed(2));
+    E("pFundo").setAttribute("r", (16 * eo(seg(t, T.baixo, 0.25))).toFixed(2));
+
+    // ── o eixo: 2013 e EARLY 2016 nas palavras; o nome da linha em "oil" ──
+    rotulo(E("l2013"), eo(seg(t, T.ano2013, 0.3)));
+    rotulo(E("l2016"), eo(seg(t, T.early, 0.3)));
+    legenda(E("nome"), eo(seg(t, T.nome, 0.3)));
+
+    // ── o colchete em "fell": do pico ao fundo em 0,4 s; as marcas dos quartos aparecem quando o tronco passa ──
+    var yPico = Y(PICO.v), yFundo = Y(FUNDO.v), c = eo(seg(t, T.fell, T.colcheteDur)), yAte = lerp(yPico, yFundo, c);
+    E("colchete").style.opacity = seg(t, T.fell, 0.1).toFixed(3);
+    E("cTronco").setAttribute("y2", yAte.toFixed(1));
+    var ys = [Y(PICO.v * 0.75), Y(PICO.v * 0.5), Y(PICO.v * 0.25), yFundo], ids = ["cT1", "cT2", "cT3", "cFim"];
+    for (var i = 0; i < 4; i++) E(ids[i]).style.opacity = yAte >= ys[i] - 0.5 ? "1" : "0";
+    // ── em "more" os quartos acendem, de cima para baixo: três inteiros e o quarto só até o fundo ──
+    quarto(E("q1"), yPico, ys[0], eo(seg(t, T.mais, T.quartoDur)));
+    quarto(E("q2"), ys[0], ys[1], eo(seg(t, T.mais + T.passo, T.quartoDur)));
+    quarto(E("q3"), ys[1], ys[2], eo(seg(t, T.mais + 2 * T.passo, T.quartoDur)));
+    quarto(E("q4"), ys[2], yFundo, eo(seg(t, T.mais + 3 * T.passo, T.quartoDur)));
+
+    // ── o crédito, desde o primeiro quadro ──
+    var cr = E("credFonte"), opC = eo(seg(t, 0, 0.3));
+    if (cr.textContent !== TEXTOS.credFonte) cr.textContent = TEXTOS.credFonte;
+    cr.hidden = opC <= 0; cr.style.opacity = opC.toFixed(3);
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // nunca lança
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); };
+  window.__fotosProntas = R.prontas();
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

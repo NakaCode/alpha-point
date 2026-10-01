@@ -307,3 +307,30 @@ Devolução (01/10): em s52, plano 2, a rota da balsa estadual está entregue in
 - o **Claude central**, que muda o `_existe` de `rota-balsa-lynn-canal-osm` no espelho depois de conferir o arquivo no disco;
 - o **mapista**, que desenha a rota sobre o satélite, com `© OpenStreetMap contributors` na tela, e declara o deslocamento das pontas se pintar a terra com o NE;
 - o **redator-de-tela**, se a rota ou os terminais tiverem rótulo (o espelho diz que não têm).
+
+## 9. Pedido do Claude central, 01/10 (passo `art`): a Thane Road como linha (s44)
+
+**O pedido.** Na s44, o mapista mediu um vão de ~240 px em 4K entre o começo da estrada sólida (`estrada-juneau-cascade`, que a cena carrega inteira em `CENA.estrada`) e o fim da Thane Road (`thane-road-fim`), de onde sai o corredor do Taku. A linha nova fecha o vão pela estrada real.
+
+**O que é e de onde vem:** `estrada-juneau-thane`, 1 LineString, **169 vértices, 8,91 km (5,54 mi), 0 órfãos**. São 8 ways do OSM, todos membros da Alaska Route 7 (relation/535397, a mesma da `estrada-juneau-cascade`):
+
+| Nome no OSM | Ways | No caminho |
+|---|---|---|
+| Marine Way (AK 7) | way/1228596723, way/554125346 | 0,17 km |
+| South Franklin Street (AK 7) | way/554125347, way/8966705 | 0,89 km |
+| Thane Road | way/356851234, way/642406027, way/653314253 (a ponte), way/653314254 | 7,85 km |
+
+- **Primeiro ponto:** −134.405702, 58.299359 (node/6047914395). Fica a **0,04 m** do primeiro ponto da `estrada-juneau-cascade`: é o mesmo nó, e a diferença é o arredondamento a 6 casas do arquivo da estrada.
+- **Último ponto:** −134.29587, 58.245447 (node/5691733230, `highway=turning_circle`). Fica a **0 m** do `thane-road-fim`.
+- **Como:** o caminho mais curto no grafo dos ways (vértice = nó do OSM), do nó do começo da estrada ao nó do fim da Thane Road, como na `estrada-juneau-cascade.mjs`. O caminho entra no `derivarRota` do `geo-osm-rota` como um way só (`--tol=0`) e é gravado pelo `gravarGeo`. Os mesmos 8 ways costurados inteiros pelo `derivarRota` também dão 0 órfãos (9,00 km), mas começam no começo de way/1228596723, 95 m antes, por cima da estrada sólida. Por isso fica o caminho no grafo, que começa no nó compartilhado.
+- **A terra:** os 169 nós caem em terra pela costa do OSM da janela (54 ways `natural=coastline`, terra à esquerda do sentido do way), de 2 a 363 m da costa (mediana de 69 m). Os controles passaram: o Gastineau Channel (GNIS 1402497) deu água, e a vila de Thane (GNIS 1410784) deu terra.
+- A Thane Road no caminho mede 7,85 km, o mesmo que a medida de 28/09 entre as duas pontas dela (7,87 km; §7).
+
+**Crédito.** OSM (ODbL): `© OpenStreetMap contributors` na tela de s44, que a cena já leva, e openstreetmap.org/copyright na descrição. O `gravarGeo` acrescentou a linha ao `_creditos-mapa.md`.
+
+**Portões:** `validar-contrato pauta-pesquisa` ✓ válido; `qc-procedencia juneau` (com `REGIE_MOTOR`) PASS; `conferir-pauta-geo.mjs juneau` 43/43 ✓; a checagem 1 do contrato (FeatureCollection, 1 LineString, 169 pares, nada vazio). `build-geo-manifest`: NÃO MEDIDO (build-geo-manifest).
+
+**Como refazer.** `node out/juneau/_pesquisa/estrada-juneau-thane.mjs baixar` (um pedido ao Overpass, base OSM 2026-10-01T13:01:46Z, respondido na primeira), depois `conferir` e `gravar`, sem rede.
+
+---
+Devolução (01/10): em s44, o vão entre a estrada sólida e o fim da Thane Road tem a geometria real (`estrada-juneau-thane`). Agora decide o **mapista**, que a desenha na cena junto com a `estrada-juneau-cascade`; o aviso vai pelo Claude central.

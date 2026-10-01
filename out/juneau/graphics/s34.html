@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s34 · "Opponents recalled the 1982 estimate of about $2.8 billion. "This time," the statement against it said, "no price
+  tag is attached.""
+  Word-lock (−354.067) · inSec 354.067 · dur 9.033 (271 quadros a 30 fps; espelho.json, _quadros 10622→10893)
+  Modo do espelho: citacao · Modelo da identidade: DOCUMENTO recriado (a declaração do folheto de 1994, sem autor) no
+  cartão de papel da fala, e o herói na etiqueta de preço pendurada num fio (conceito s34), sobre a mesa de feltro sob a luz
+
+  O que manda em cada coisa: o espelho (s34), o conceito (s34), a regência (s34: dois beats), os textos finais do redator
+  (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s34, _creditos s34) e a marca
+  (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS.
+
+  OS BEATS (tempo local = master − 354,067; palavras do words.json):
+    b1  0,000–4,800  "Opponents recalled the nineteen eighty-two estimate of about two point eight billion dollars."
+        A mesa vazia, com a luz no alto. Em "about" (2,267) a ETIQUETA DE PREÇO desce pendurada num FIO de 6 px (--neutro)
+        que vem do alto do quadro (x 1.917): 1982 · ABOUT $2.8 BILLION, o herói (Barlow Condensed 800, 300 px: dentro
+        da faixa do herói, piso 260 e teto 560; a 360 px a etiqueta inteira furaria as margens de 200), em --tinta-escura
+        sobre --papel com textura, o furo no alto. Ela desce em 0,6 s e fica BALANÇANDO devagar no fio (±3°, pivô no furo),
+        com a ressalva da voz ("about"). 2 elementos (o fio e a etiqueta).
+    b2  4,800–9,033  ""This time," the statement against it said, "no price tag is attached.""
+        Em "This (4,833) a etiqueta SE SOLTA do fio e cai pelo pé do quadro (queda e giro, some em ~0,8 s); o FIO FICA,
+        vazio, com um recuo curto. No mesmo quadro o CARTÃO DA FALA (--papel, textura, Inter 700, 280 px, --tinta-escura)
+        entra no lugar dela, abaixo da ponta do fio, em duas partes no MESMO cartão (a regência): “This time, em "This
+        (4,833) e no price tag is attached.” em "no (7,533; 1,5 s até o corte: o piso de ofício, conflito declarado). O
+        cartão nasce com o tamanho das duas linhas (a 2ª vazia até a voz) e acende em 0,3 s, enquanto a etiqueta, em
+        queda rápida (12.000 px/s²), passa POR CIMA dele e some pelo pé do quadro em ~0,35 s. No instante da queda,
+        3 elementos (o fio, a etiqueta a cair e o cartão), o teto; depois, 2. Blocos: 1 (o cartão).
+    A luz: atrás da etiqueta pendurada (1.920/760) e, quando ela se solta, desliza em 300 ms para trás do cartão
+    (1.920/1.110). Crédito Source: Alaska Division of Elections, 1994 solto na mesa, de 2,267 ao fim.
+
+  A MÍDIA: nenhuma. A declaração contrária do folheto de 1994 (p. B-24) é documento do Estado sem permissão clara
+  (midia.md §7.1): a fala recriada com a fonte; a prova de página do pesquisa-documentos fica fora da tela, e o caminho
+  dela não se escreve aqui (qc-midia-real §3).
+
+  A MESA (identidade §5): a luz é o fundo de #cam, o feltro é #mesa, primeiro filho, os dois POR BAIXO de tudo, só pelos
+  tokens --mesa-*.
+  A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Margens 200/160 (a etiqueta e o
+  cartão centrados em x 1.920, medidos no navegador para caberem nas margens); canto inferior direito (400×400) vazio;
+  crédito em x = 200, y > 1880.
+
+  O CONTRATO: window.__duracao = 9.033; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
+  __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia
+  inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+-->
+<head>
+<meta charset="utf-8">
+<title>s34 — Opponents recalled the 1982 estimate of about $2.8 billion. "This time," the statement against it said, "no price tag is attached."</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
+      var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+  #mesa { position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
+
+  /* o fio de 6 px, do alto do quadro ao furo da etiqueta; gira pelo topo quando a etiqueta se solta */
+  #fio { position: absolute; left: 1917px; top: 0; width: var(--linha-espessura); height: 0; background: var(--neutro); transform-origin: 50% 0; }
+  /* a etiqueta de preço: --papel com textura, o furo no alto, o herói em Barlow Condensed 800 a 300 px; pivô no furo */
+  #etiqueta { position: absolute; left: 1917px; top: 0; white-space: nowrap; background: var(--papel); color: var(--tinta-escura);
+    padding: 90px 100px 50px; transform-origin: 50% 40px; opacity: 0;
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  #etiqueta::before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
+    background-size: 420px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  #etiqueta .furo { position: absolute; left: 50%; top: 40px; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%; background: var(--fundo);
+    box-shadow: inset 0 2px 4px color-mix(in srgb, var(--tinta-escura) 40%, transparent); }
+  #etiqueta .heroi { position: relative; font-family: var(--fonte-sec); font-weight: var(--peso-heroi); font-size: 300px; line-height: .86;
+    letter-spacing: .01em; color: var(--tinta-escura); }
+
+  /* o cartão da fala (identidade §5): --papel com textura, a fala em Inter 700, 280 px, em duas linhas (as duas partes) */
+  .folha { position: absolute; left: 0; top: 0; background: var(--papel); color: var(--tinta-escura); transform-origin: 50% 50%; opacity: 0;
+    padding: 56px 60px;
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  .folha::before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
+    background-size: 420px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .fala { position: relative; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-fala); line-height: 1.06;
+    letter-spacing: -0.005em; color: var(--tinta-escura); }
+  .fala span { display: block; opacity: 0; }
+
+  /* o crédito (§4.2): 76 px, --sec, x = 200, abaixo de y = 1880, solto sobre a mesa */
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x)); }
+  .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1; color: var(--sec);
+    letter-spacing: 0; opacity: 0; }
+  .cred[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <div id="cam">
+    <div id="mesa"></div>
+    <div id="fio"></div>
+    <div class="folha" id="falaCard"><div class="fala" data-qc-papel="fala"><span id="l1"></span><span id="l2"></span></div></div>
+    <div id="etiqueta" data-qc-papel="heroi"><div class="furo"></div><div class="heroi" id="heroi"></div></div>
+  </div>
+  <div id="creds">
+    <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
+  </div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo, eb = R.eb;
+  var E = function (id) { return document.getElementById(id); };
+  var lerp = function (a, b, p) { return a + (b - a) * p; };
+  var DUR = 9.033;
+  window.__duracao = DUR;
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é a do textos-tela.json do disco) ═══════════════════════════
+  var TEXTOS = {
+    heroi:     "1982 · ABOUT $2.8 BILLION",                       // textos-tela.json › rotulos_dado s34 (a etiqueta, o herói; o "·" é da tela)
+    fala:      "“This time, no price tag is attached.”",          // textos-tela.json › rotulos_dado s34 (a fala, 7 palavras)
+    parte1:    "“This time,",                                     // a 1ª parte da mesma fala (regência s34#2: entra em "This)
+    parte2:    "no price tag is attached.”",                      // a 2ª parte, no mesmo cartão (regência s34#2: entra em "no)
+    credFonte: "Source: Alaska Division of Elections, 1994"       // textos-tela.json › _creditos s34 (a etiqueta e a fala)
+  };
+  // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
+  E("heroi").textContent = TEXTOS.heroi; E("l1").textContent = TEXTOS.parte1; E("l2").textContent = TEXTOS.parte2;
+
+  // ── os tempos (locais, −354,067), da regência s34 e do words.json ──
+  var T = {
+    etiqueta: 2.267, desceDur: 0.6,     // "about" (356,333): a etiqueta desce no fio
+    solta: 4.833,                       // "This (358,9): a etiqueta se solta; o cartão entra no lugar dela
+    cardDur: 0.5,
+    parte2: 7.533                       // "no (361,6): a 2ª parte no mesmo cartão (1,5 s até o corte)
+  };
+  var FIO = { x: 1917, furo: 600 };     // o furo da etiqueta pendurada, a 600 px do alto do quadro
+  var CARD = { cx: 1920, y: 760, w: 0, h: 0 };
+  var LUZ1 = { x: 1920, y: 760 }, LUZ2 = { x: 1920, y: 1110 };
+
+  var medido = false;
+  function medir() {
+    var l1 = E("l1"), l2 = E("l2"), card = E("falaCard");
+    card.style.width = "";                                   // solta a largura: o cartão encolhe ao texto antes da medida
+    if (!l1.offsetWidth) return;
+    CARD.w = Math.max(l1.offsetWidth, l2.offsetWidth) + 120;
+    CARD.h = E("falaCard").offsetHeight;
+    medido = true;
+  }
+  function por(el, cx, cy, w, h, rot, s, op) {
+    el.style.transform = "translate(" + (cx - w / 2).toFixed(2) + "px," + (cy - h / 2).toFixed(2) + "px) rotate(" +
+      rot.toFixed(3) + "deg) scale(" + s.toFixed(5) + ")";
+    if (op !== undefined) el.style.opacity = clamp(op, 0, 1).toFixed(3);
+  }
+
+  function cena(t) {
+    t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
+    if (!medido) medir();
+    var cam = E("cam");
+    R.camera(cam, t, { base: 1.0 });
+
+    // ── b1: a etiqueta desce no fio e balança; b2: se solta e cai; o fio fica ──
+    var d = eo(seg(t, T.etiqueta, T.desceDur));
+    var yFuro = lerp(-420, FIO.furo, d);                       // o furo desce do alto até 600
+    var tau = Math.max(0, t - T.solta);                        // tempo desde a soltura
+    var theta = 3 * Math.sin(3.1 * (t - T.etiqueta));          // o balanço no fio, pivô no furo
+    var et = E("etiqueta"), opE = t >= T.etiqueta ? 1 : 0;
+    if (tau > 0) { yFuro = FIO.furo + 12000 * tau * tau; theta = theta + 34 * tau; if (yFuro > 2800) opE = 0; }   // a queda rápida: em 0,3 s a etiqueta já passou do cartão
+    et.style.opacity = opE.toFixed(0);
+    et.style.transform = "translate(-50%," + yFuro.toFixed(2) + "px) rotate(" + theta.toFixed(3) + "deg)";
+    var fio = E("fio");
+    fio.style.height = Math.max(0, tau > 0 ? FIO.furo : yFuro).toFixed(1) + "px";
+    fio.style.opacity = t >= T.etiqueta ? "1" : "0";
+    fio.style.transform = "rotate(" + (tau > 0 ? 1.5 * Math.sin(8 * tau) * Math.exp(-2 * tau) : 0).toFixed(3) + "deg)";
+
+    // ── b2: o cartão da fala no lugar da etiqueta, em duas partes no mesmo cartão ──
+    var p = eo(seg(t, T.solta, T.cardDur));
+    por(E("falaCard"), CARD.cx, CARD.y + CARD.h / 2, CARD.w, CARD.h, 0, 0.92 + 0.08 * p, seg(t, T.solta, 0.3));
+    E("falaCard").style.width = CARD.w ? CARD.w + "px" : "";
+    E("l1").style.opacity = eo(seg(t, T.solta, 0.3)).toFixed(3);
+    E("l2").style.opacity = eo(seg(t, T.parte2, 0.3)).toFixed(3);
+
+    // a luz: atrás da etiqueta; quando ela se solta, desliza para trás do cartão
+    var u = eb(seg(t, T.solta, 0.3));
+    cam.style.setProperty("--luz-x", lerp(LUZ1.x, LUZ2.x, u).toFixed(1) + "px");
+    cam.style.setProperty("--luz-y", lerp(LUZ1.y, LUZ2.y, u).toFixed(1) + "px");
+
+    // ── o crédito, da etiqueta ao fim ──
+    var c = E("credFonte"), opC = eo(seg(t, T.etiqueta, 0.3));
+    if (c.textContent !== TEXTOS.credFonte) c.textContent = TEXTOS.credFonte;
+    c.hidden = opC <= 0; c.style.opacity = opC.toFixed(3);
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // nunca lança
+  };
+  window.__prepararCaptura = function () { medir(); window.__renderAt(0); };
+  window.__fotosProntas = R.prontas().then(function () { medir(); return true; });
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

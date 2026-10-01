@@ -15,24 +15,26 @@
   OS BEATS (tempo local = master − 261,1; palavras do words.json):
     b1  0,000–3,733  "The pro-move side had a mascot, Access Annie."  (regência s26#1)
         A mesa vazia, com a luz no centro, até o primeiro objeto. Em "Access" (2,067): ACCESS ANNIE (pílula --rotulo,
-        128 px) à esquerda (260/700), com a legenda Capital Access Committee (84 px, --legenda-cor; sem o ano) logo abaixo
-        (260/940). A luz vai para trás da pílula.
+        128 px) à esquerda (300/700), com a legenda Capital Access Committee (84 px, --legenda-cor; sem o ano) logo abaixo
+        (300/940). A luz vai para trás da pílula.
     b2  3,733–6,767  "Lee Stoops, a legislative aide who lived in Juneau,"  (regência s26#2)
         O card de Stoops (só nome e cargo, identidade §5) no CENTRO: LEE STOOPS em "Lee" (3,767; pílula centrada em
         x 1.920, y 700) e Legislative aide (1982) em "legislative" (4,767; 940). A luz desliza em 300 ms para trás do
         card, e fica ali até o fim.
     b3  6,767–10,133  "answered with a rival: Football Fannie."  (regência s26#3)
-        FOOTBALL FANNIE (pílula) à DIREITA em "Football" (8,333; encostada na margem de 200, y 700), com a legenda NFL
-        Access Committee abaixo (940), e a SETA DE RELAÇÃO de 6 px (--neutro) se desenha no mesmo instante, por baixo do
-        card de Stoops: desce da legenda de Annie (x 750), corre em y 1.200 e sobe até a legenda de Fannie (x 3.150), com
+        FOOTBALL FANNIE (pílula) à DIREITA em "Football" (8,333; alinhada à direita em x 3.540, y 700), com a legenda NFL
+        Access Committee abaixo (940, também até x 3.540), e a SETA DE RELAÇÃO de 6 px (--neutro) se desenha no mesmo
+        instante, por baixo do card de Stoops: desce da legenda de Annie (x 794), corre em y 1.200 e sobe até a legenda de
+        Fannie (x 3.104), com
         a ponta nela (0,5 s). TUDO PARADO de 8,9 s (270,0 s) em diante: o quadro final (as duas pílulas com as legendas, a
         seta e o card) é o quadro de abertura de s27, que o reproduz com as mesmas constantes (reaparição declarada, como
         s63 de s62): o nome NÃO sai no corte.
         Elementos no quadro final: 4 (cada pílula com a legenda dela conta um, como o card com o cargo, identidade §4.2);
         6 contando as legendas à parte, o teto. Blocos: 0. Herói: nenhum (data-qc-sem-heroi).
     Crédito Source: Anchorage Daily News, 2026 solto na mesa, desde a primeira pílula (2,067), até o corte.
-    A GEOMETRIA DO QUADRO FINAL (as constantes G, abaixo, copiadas em s27.html): Annie 260/700 (legenda 260/940); Stoops
-    1.502/700 (cargo 1.516/940); Fannie 2.446/700 (legenda 2.771/940); a seta 750,1041 → 750,1200 → 3.150,1200 → 3.150,1041;
+    A GEOMETRIA DO QUADRO FINAL (as constantes G, abaixo, copiadas em s27.html): Annie 300/700 (legenda 300/940); Stoops
+    1.502/700 (cargo 1.516/940); Fannie até x 3.540 (right 300: a pílula 2.326→3.540, a legenda 2.669→3.540, medidas no
+    quadro); a seta 794,1041 → 794,1200 → 3.104,1200 → 3.104,1041;
     a luz em 1.920/820; a câmera do RIG em t = 10,133 (s27 reproduz esse instante com o mesmo deslocamento).
 
   A MÍDIA: nenhuma. Os anúncios do ADN de 18 e 21/10/1982 (Access Annie e Football Fannie) ficam como prova na pasta de
@@ -42,12 +44,18 @@
   A MESA (identidade §5): a luz é o fundo de #cam, o feltro é #mesa, primeiro filho, os dois POR BAIXO de tudo, só pelos
   tokens --mesa-*.
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Nome de veículo escrito, sem logo.
-  Margens 200/160 (as pílulas em x 260 e até 3.640); canto inferior direito (400×400) vazio; crédito em x = 200, y > 1880.
+  Margens 200/160 (as pílulas de x 300 a 3.540: sob a câmera de s27, que continua a desta até 1,0534, nada passa de 200 nem
+  de 3.640); canto inferior direito (400×400) vazio; crédito em x = 200, y > 1880.
 
   O CONTRATO: window.__duracao = 10.133; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL (a seta se desenha por
   stroke-dashoffset posto pelo __renderAt). O RIG abaixo é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): a pílula FOOTBALL FANNIE (left 2.446) e a legenda NFL Access Committee
+     (left 2.771) passavam de x 3.640 (a pílula ia a 3.703 aqui e a 3.720 em s27, cuja câmera continua a desta). Agora as
+     duas são alinhadas à direita em x 3.540 (right 300), e ACCESS ANNIE com a legenda vão para x 300 (eram 260): sob a
+     câmera de s27 (até 1,0534: margens em x 293→3.547) nada passa. A seta liga os centros novos das legendas (794 e
+     3.104). A mesma geometria está em s27.html: o corte continua invisível. -->
 <head>
 <meta charset="utf-8">
 <title>s26 — The pro-move side had a mascot, Access Annie. Lee Stoops answered with a rival: Football Fannie</title>
@@ -85,15 +93,15 @@
   <div id="cam">
     <div id="mesa"></div>
     <svg id="graf" viewBox="0 0 3840 2160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path id="seta" pathLength="1" d="M 750 1041 L 750 1200 L 3150 1200 L 3150 1041" stroke-dasharray="1" stroke-dashoffset="1"/>
-      <polygon id="ponta" points="3150,1030 3118,1086 3182,1086"/>
+      <path id="seta" pathLength="1" d="M 794 1041 L 794 1200 L 3104 1200 L 3104 1041" stroke-dasharray="1" stroke-dashoffset="1"/>
+      <polygon id="ponta" points="3104,1030 3072,1086 3136,1086"/>
     </svg>
-    <div class="pilula"  id="annie"     data-qc-papel="rotulo" style="left:260px;top:700px"></div>
-    <div class="legenda" id="annieLeg"  data-qc-papel="eixo"   style="left:260px;top:940px"></div>
+    <div class="pilula"  id="annie"     data-qc-papel="rotulo" style="left:300px;top:700px"></div>
+    <div class="legenda" id="annieLeg"  data-qc-papel="eixo"   style="left:300px;top:940px"></div>
     <div class="pilula"  id="nome"      data-qc-papel="rotulo" style="left:1502px;top:700px"></div>
     <div class="legenda" id="cargo"     data-qc-papel="eixo"   style="left:1516px;top:940px"></div>
-    <div class="pilula"  id="fannie"    data-qc-papel="rotulo" style="left:2446px;top:700px"></div>
-    <div class="legenda" id="fannieLeg" data-qc-papel="eixo"   style="left:2771px;top:940px"></div>
+    <div class="pilula"  id="fannie"    data-qc-papel="rotulo" style="right:300px;top:700px"></div>
+    <div class="legenda" id="fannieLeg" data-qc-papel="eixo"   style="right:300px;top:940px"></div>
   </div>
   <div id="creds">
     <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
@@ -214,7 +222,7 @@
     parado: 8.9                   // 270,0: tudo parado daqui ao fim (o quadro final abre s27)
   };
   // A GEOMETRIA DO QUADRO FINAL (copiada em s27.html): a luz
-  var G = { luz0: { x: 1920, y: 1000 }, luzAnnie: { x: 750, y: 820 }, luzCard: { x: 1920, y: 820 } };
+  var G = { luz0: { x: 1920, y: 1000 }, luzAnnie: { x: 794, y: 820 }, luzCard: { x: 1920, y: 820 } };
 
   function rotulo(el, op) {
     op = clamp(op, 0, 1);

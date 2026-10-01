@@ -29,13 +29,15 @@
         Corte seco para a mesa de feltro sob a luz: a CAMISETA "Anchorage Stealers" (ASM 97-20-1; 1440×2156, vertical)
         IMPRESSA (moldura --tinta de 48 px, fita, sombra, +1,0°), à direita, a 1,0×, com o recorte LOGO ABAIXO DO 2.84
         (y 0→1.266 do arquivo: FRANK O. HARRIS e o 2.84 ficam; o botão FOR EGAN GOVERNOR e o bordão saem), pousando em
-        0,6 s a partir do corte (como as outras fotos impressas), centrada em (2.600, 900): y 219→1.581, entre a margem e
-        a faixa de crédito. Sem aviso do ano (peça de acervo fotografada depois; Lucas, 28/09/2026). Sem o nome de Harris
+        0,6 s a partir do corte (como as outras fotos impressas), centrada em (2.600, 950): y 269→1.631 (girada 1°, com as
+        fitas dos cantos, de y 227 para baixo: sob a câmera, 1,0239 no fim, nada passa da margem de cima), entre a margem
+        e a faixa de crédito. Sem aviso do ano (peça de acervo fotografada depois; Lucas, 28/09/2026). Sem o nome de Harris
         na tela. Em "that" (7,933) o $800 MILLION (rótulo, pílula) entra à ESQUERDA, como o prato de uma BALANÇA contra o
         2.84: o travessão de 6 px (--neutro) se desenha do prato do rótulo (alto) ao pé da camiseta (baixo), com o fulcro
         no meio: a liga inteira pesa menos que a camiseta. ABOUT A QUARTER não entra (R1). A luz atrás da camiseta.
         Créditos soltos na mesa: Dave Gelotte / Alaska State Museum (a camiseta, desde o corte) e Source: Anchorage Daily
-        News, 2026 (o $800 MILLION, desde "that"). Elementos: a camiseta (1) + o $800 MILLION com a balança (1) = 2.
+        News, 2026 (o $800 MILLION, desde "that"). A linha que entra cresce com o fade (altura × opacidade): a outra não
+        salta (roupa §4). Elementos: a camiseta (1) + o $800 MILLION com a balança (1) = 2.
     Herói: nenhum (data-qc-sem-heroi). Blocos: 0.
 
   A MÍDIA (conferencia-midia.json › candidatos, vereditos aprovados para s28):
@@ -59,6 +61,11 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia
   inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): (1) em 7,933, quando a linha Source: Anchorage Daily News, 2026 entrava, a
+     linha Dave Gelotte / Alaska State Museum saltava 83 px de um quadro para o outro: agora a altura de cada linha anda
+     com o fade (max-height × opacidade), e nada salta. (2) Pela regra da margem sob a câmera, a camiseta impressa desceu de
+     (2.600, 900) para (2.600, 950): a fita da esquerda, que chegava a y 147 sob a câmera, fica em y ≥ 180; a balança desce
+     junto (o pé em y 1.710, acima do canto). A pílula $800 MILLION foi de x 243 para 250 (sob a câmera, x ≥ 204). -->
 <head>
 <meta charset="utf-8">
 <title>s28 — Fannie's first ad priced 28 NFL teams and three domed stadiums at $800 million, about a quarter of the Willow price tag</title>
@@ -113,6 +120,7 @@
     letter-spacing: 0; opacity: 0; }
   #creds.papel .cred { color: color-mix(in srgb, var(--tinta-escura) 72%, transparent); }
   .cred[hidden] { display: none; }
+  .cred { overflow: hidden; }   /* a altura da linha anda com o fade: o crédito não salta (roupa §4, 01/10/2026) */
 </style>
 </head>
 <body>
@@ -131,8 +139,8 @@
     <svg id="balanca" viewBox="0 0 3840 2160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <line id="trav" x1="700" y1="1380" x2="700" y2="1380"/>
       <line id="fioE" x1="700" y1="1324" x2="700" y2="1380"/>
-      <line id="fioD" x1="2600" y1="1590" x2="2600" y2="1660"/>
-      <polygon id="fulcro" points="1650,1520 1590,1640 1710,1640"/>
+      <line id="fioD" x1="2600" y1="1640" x2="2600" y2="1710"/>
+      <polygon id="fulcro" points="1650,1545 1590,1665 1710,1665"/>
     </svg>
     <!-- 1440×1266 (o recorte do arquivo, logo abaixo do 2.84) a 1,0×; o grupo 1536×1362 -->
     <div class="impressa" id="p3" style="width:1536px;height:1362px">
@@ -143,7 +151,7 @@
       <div class="fita" id="p3fe" style="left:-70px;top:-14px"></div>
       <div class="fita" id="p3fd" style="left:1086px;top:-14px"></div>
     </div>
-    <div class="pilula" id="oitocentos" data-qc-papel="rotulo" style="left:243px;top:1100px"></div>
+    <div class="pilula" id="oitocentos" data-qc-papel="rotulo" style="left:250px;top:1100px"></div>
   </div>
   <div id="vinteOito" data-qc-papel="rotulo"></div>
   <div id="creds" class="papel">
@@ -282,8 +290,8 @@
     pousaDur: 0.6, fita: 0.45,
     that: 7.933, balancaDur: 0.5                           // "that" (291,3): o $800 MILLION e a balança
   };
-  var P3 = { w: 1536, h: 1362, cx: 2600, cy: 900, rot: 1.0 };
-  var BAL = { x0: 700, y0: 1380, x1: 2600, y1: 1660 };
+  var P3 = { w: 1536, h: 1362, cx: 2600, cy: 950, rot: 1.0 };   // y 269→1.631; as fitas de y 227 para baixo: sob a câmera (1,0239 no fim) nada passa da margem de cima
+  var BAL = { x0: 700, y0: 1380, x1: 2600, y1: 1710 };
 
   function por(el, cx, cy, w, h, rot, s, op) {
     el.style.transform = "translate(" + (cx - w / 2).toFixed(2) + "px," + (cy - h / 2).toFixed(2) + "px) rotate(" +
@@ -302,7 +310,11 @@
   }
   function credito(el, texto, op) {
     if (el.textContent !== texto) el.textContent = texto;
-    el.hidden = op <= 0; el.style.opacity = clamp(op, 0, 1).toFixed(3);
+    op = clamp(op, 0, 1);
+    el.hidden = false;
+    if (!el.dataset.h) { el.style.maxHeight = "none"; el.dataset.h = String(el.offsetHeight || 84); }   // a altura natural da linha, medida uma vez
+    el.style.maxHeight = (parseFloat(el.dataset.h) * op).toFixed(1) + "px";   // a linha cresce com o fade: a outra não salta
+    el.style.opacity = op.toFixed(3);
   }
 
   function cena(t) {

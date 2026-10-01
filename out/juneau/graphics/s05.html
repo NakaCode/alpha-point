@@ -74,6 +74,11 @@
   (tile que não chega, chave que falta e perfil errado são ERRO, nunca quadro cego). Nada de relógio, sorteio,
   @keyframes ou transition. O RIG abaixo é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): sob a câmera do RIG (1,0282 no último quadro) o inset passava de x 3.640 e de
+     y 160, a pílula FRANK W. HARRIS passava de y 160 e o cartão da fala passava de x 200. Agora: o inset em (2.027, 190) → termina
+     em x 3.587 e começa em y 190; a pílula em (262, 190) e o cargo em (262, 410); o cartão em x 266 (girado, 257), até x 3.066;
+     Juneau continua na coluna à vista do inset (3.287 × 1.030 na tela). As duas linhas de crédito ocupam o lugar desde o 1º quadro.
+     Os números do cabeçalho abaixo que divergirem (2.080/160, 200, 3.000→3.640) são os de antes desta correção. -->
 <head>
 <meta charset="utf-8">
 <title>s05 — One of them, Harris, chaired a committee pushing the move</title>
@@ -98,7 +103,7 @@
 
   /* O INSET do satélite: 1560×1200 no canto de cima à direita, sobre o feltro, atrás dos cartões; só o tratamento de
      mapa da marca na pintura da camada (identidade §6); a sombra de uma impressão; nenhum véu por cima. */
-  #inset { position: absolute; left: 2080px; top: 160px; width: 1560px; height: 1200px; overflow: hidden; background: var(--painel);
+  #inset { position: absolute; left: 2027px; top: 190px; width: 1560px; height: 1200px; overflow: hidden; background: var(--painel);
     box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent), 0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
   #map { position: absolute; inset: 0; }
   svg#ov { position: absolute; inset: 0; width: 1560px; height: 1200px; pointer-events: none; }
@@ -153,8 +158,8 @@
       </svg>
     </div>
     <!-- o card de Harris: nome e cargo, no lugar do retrato -->
-    <div class="pilula" id="nome" data-qc-papel="rotulo" style="left:260px;top:160px"></div>
-    <div class="cargo" id="cargo" data-qc-papel="eixo" style="left:260px;top:380px"><span id="cargoTxt"></span><span id="cargoAno"></span></div>
+    <div class="pilula" id="nome" data-qc-papel="rotulo" style="left:262px;top:190px"></div>
+    <div class="cargo" id="cargo" data-qc-papel="eixo" style="left:262px;top:410px"><span id="cargoTxt"></span><span id="cargoAno"></span></div>
     <!-- o cartão da fala: 2800 px, texto de 2680 px, 4 linhas -->
     <div class="folha" id="fala" style="width:2800px;padding:56px 60px">
       <div class="fala" data-qc-papel="fala"><span id="fala1"></span><span id="fala2"></span></div>
@@ -283,7 +288,7 @@
     // o inset: parado; a câmera põe Juneau no ponto local (1260, 840), na coluna que o cartão não cobre
     inset: { zoom: 7.4, juneauEm: [1260, 840], juneau: { geo: "cidades-ne", nome: "Juneau" }, anel: { entra: 0.0, pulso: 1.2 } },
     // o cartão da fala: 2800 × (medido), em (200, 530), 0,8°
-    cartao: { x: 200, y: 530, w: 2800, rot: 0.8 },
+    cartao: { x: 266, y: 530, w: 2800, rot: 0.8 },   // correção do render (01/10/2026): x 266 (o papel girado começa em 257 ≥ 253, o limite sob a câmera a 1,0282)
     luz: [880, 380]                // a luz da mesa, atrás do card de Harris
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
@@ -515,7 +520,7 @@
     if (!el) return;
     op = clamp(op, 0, 1);
     if (el.textContent !== texto) el.textContent = texto;
-    el.hidden = op <= 0;
+    el.hidden = false;   // as duas linhas ocupam o lugar delas desde o começo: o crédito não salta (roupa §4, 01/10/2026)
     el.style.opacity = op.toFixed(3);
   }
 

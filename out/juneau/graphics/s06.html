@@ -55,6 +55,12 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes ou transition. O RIG abaixo é a cópia inteira
   de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): (1) a borda clara do papel da digitalização entrava pela faixa de cima da janela
+     (o recorte começava em y 28 do arquivo): agora começa em y 72 (a borda clara acaba por volta de y 36–40; o céu claro do panorama engana a medida automática, e a folga é de 32 px), altura limpa 1383. (2) O cartão
+     impresso de x 200 a 3.640 saía da margem com o push-in (1,0162 no fim) e a inclinação, e as fitas chegavam a x 93 e 3.738:
+     agora a 0,80× (era 0,85×), 3243 × 1202, centro 1.920 × 1.078: girado, x 282→3558 e y 454→1702; as fitas por dentro do cartão (40 px das
+     bordas). A janela mostra os mesmos 3.934 px do arquivo e o pan é o mesmo (x 40→1.150). Os números do cabeçalho abaixo que
+     divergirem são os de antes desta correção. -->
 <head>
 <meta charset="utf-8">
 <title>s06 — Juneau got the capital early, and the rest of Alaska grew up somewhere else</title>
@@ -110,13 +116,13 @@
   <div id="cam">
     <div id="mesa"></div>
     <!-- recorte 3344×1213 (a janela de 3.934 × 1.427 px do arquivo a 0,85×); grupo 3440×1309; a imagem inteira 4352×1319,2 -->
-    <div class="impressa" id="p1" style="width:3440px;height:1309px">
+    <div class="impressa" id="p1" style="width:3243px;height:1202px">
       <div class="moldura"></div>
-      <div class="recorte" style="width:3344px;height:1213px">
-        <img id="img1" src="../_media/foto/s06/juneau-harbor-gastineau-channel-ca1899-pillsbury-cleveland.jpg" alt="" style="width:4352px;height:1319.2px;top:-23.8px;left:0">
+      <div class="recorte" style="width:3147px;height:1106px">
+        <img id="img1" src="../_media/foto/s06/juneau-harbor-gastineau-channel-ca1899-pillsbury-cleveland.jpg" alt="" style="width:4096.0px;height:1241.6px;top:-57.6px;left:0">
       </div>
-      <div class="fita" style="left:-80px;top:-12px;transform:rotate(-5deg)"></div>
-      <div class="fita" style="left:3000px;top:-12px;transform:rotate(4deg)"></div>
+      <div class="fita" style="left:40px;top:-12px;transform:rotate(-5deg)"></div>
+      <div class="fita" style="left:2683px;top:-12px;transform:rotate(4deg)"></div>
     </div>
   </div>
   <!-- b2: Juneau City, 1887, em tela cheia -->
@@ -248,7 +254,7 @@
     panX0: 40, panX1: 1150       // o pan dentro do recorte: a janela de 3.934 px vai de x 40 a x 1150 do arquivo, linear, até o corte
   };
   // p1: grupo 3440×1309, centrado em (1920, 1078), −0,8°: y ≈ 400 → 1757, entre as pílulas (até 369) e a faixa (1880)
-  var P1 = { w: 3440, h: 1309, cx: 1920, cy: 1078, rot: -0.8, escala: 0.85 };
+  var P1 = { w: 3243, h: 1202, cx: 1920, cy: 1078, rot: -0.8, escala: 0.80 };   // correção do render (01/10/2026): 0,80× e o recorte de y 72, dentro da margem sob a câmera (1,0162)
 
   function por(el, cx, cy, w, h, rot) {
     if (!el) return;

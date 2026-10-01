@@ -60,3 +60,23 @@ quando ele mostrar.
 | s15 | 07:04:26 | 07:07:23 | 2160p |
 | s21 | 07:07:23 | 07:07:58 | 2160p |
 | s33 | 07:07:58 | 07:10:31 | 2160p |
+| s08 (2ª vez) | 07:10:48 | 07:12:34 | falhou de novo no quadro 42 |
+| s07 (2ª vez) | 07:12:34 | 07:15:49 | falhou de novo no quadro 335 |
+| s24 | 07:15:49 | 07:17:02 | 2160p |
+
+- **Por que a s07 e a s08 caem** (diagnóstico do Claude central, 07:2x, com duas aberturas da cena fora do render: a
+  s08 em t = 1,4 e a s07 em t = 11,1667, umas poucas dezenas de tiles cada): no quadro que cai, os tiles estão todos
+  carregados, mas em dois níveis vizinhos (na s08, 24 do nível 7 e 5 do nível 8, no zoom 7,493). O `nivelUnico()` do
+  molde exige um nível só e espera até o teto. Não é a rede: repetir o render paga os tiles de novo e cai no mesmo
+  quadro. O conserto foi ao mapista: aceitar dois níveis vizinhos quando nenhum tile está carregando.
+| s57 (o inset do editor, 2 capturas de conferência pelo `quadro.mjs`) | ~08:0x | — | a 1ª sem quadro (a espera de nível único travou depois de um `jumpTo`), a 2ª saiu; as duas pediram tiles |
+| capturas de conferência do mapista, lote 3 (uma por cena, `quadro.mjs`) | s42 07:20, s44 08:39 (com relevo), s48 08:49, s50 09:51, s59 09:57 | — | mais 10 tiles de DEM z9 (terrain-rgb-v2) às 07:24, para medir o relevo da s44 |
+| s05 (2º render: a correção das margens; o inset de mapa) | 09:06:40 | 09:08:53 | 2160p |
+| s39 | 10:00:43 | 10:02:44 | 2160p |
+| s44 (o relevo 3D: satellite-v2 + terrain-rgb-v2; será refeita com a Thane Road) | 10:02:44 | 10:09:44 | 2160p, MP4 de 731 MB |
+| s48 | 10:09:45 | 10:12:03 | 2160p |
+| s59 | 10:12:03 | 10:13:38 | 2160p |
+| s57 (1 captura reduzida de conferência pelo editor, com a tracejada da s50) | ~10:2x | — | — |
+| s57 (o inset do editor) | 10:23:37 | 10:25:34 | 2160p |
+| s39 (2º render: a faixa da lei dentro da margem) | 10:25:46 | 10:27:54 | 2160p |
+| s42 | 10:27:55 | 10:34:13 | 2160p |

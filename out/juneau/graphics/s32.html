@@ -16,10 +16,12 @@
         A folha de 1982 (a mesma de s23 e s30: o cabeçalho BALLOT MEASURE NO. 8 · NOVEMBER 1982, 3.040 px, +0,8°) na mesa
         de feltro sob a luz, com o topo em y 300. Abaixo do fio, a PRÓPRIA FRASE DA CÉDULA (p. 88, Courier Prime 86/1,5):
         If a majority votes NO, laws and initiatives relating to capital relocation and indemnification are repealed.,
-        que o GRIFO (--grifo-cor) varre em "ballot's" (0,233; 0,55 s; nas duas linhas). Depois da quebra tracejada entre
-        as páginas, o cabeçalho literal da p. 89 em caixa (LEGISLATIVE AFFAIRS AGENCY SUMMARY: sem ele, a tela atribuiria
+        que o GRIFO (--grifo-cor) varre em "ballot's" (0,233; 0,55 s; nas três linhas). Depois da quebra tracejada entre
+        as páginas (a p. 89 começa 1.100 px abaixo da frase: no b1 ela fica inteira fora do quadro, e sob a faixa do crédito
+        só passa papel em branco), o cabeçalho literal da p. 89 em caixa (LEGISLATIVE AFFAIRS AGENCY SUMMARY: sem ele, a tela atribuiria
         à cédula a lista que ela não trazia) e o literal do resumo, com CADA LEI NUMA LINHA (recuada). A CÂMERA DESCE ao
-        resumo (o rolo sobe 860 px, de 1,6 a 3,1 s, ease-in-out). Em "repealed" (3,6) a CANETA toca o papel: um traço de
+        resumo (o rolo sobe 1.800 px, de 1,6 a 3,4 s, ease-in-out: a p. 88 sai inteira pelo alto e a p. 89 chega de y 365
+        a 1.698, dentro das margens). Em "repealed" (3,6) a CANETA toca o papel: um traço de
         tinta de 10 px (--tinta-escura, 140 px) na margem, ao lado da primeira lei: o risco começa.
     b2  5,433–8,300  "from the nineteen seventy-four initiative to the Frank initiative."  (regência s32#2)
         O risco de 10 px atravessa cada lei com a voz, linha a linha (0,25 s cada; a borracha, não um grifo): the Capital
@@ -29,8 +31,8 @@
         (à metade: Barlow 360 × 0,5) em "nineteen" (5,667), à direita das leis, e recebe o risco na última palavra
         ("initiative.", 7,767). Elementos: a folha, com o grifo e os riscos (1) + o YES pequeno (1) = 2. Blocos: 1.
         Herói: nenhum (data-qc-sem-heroi).
-    DESVIO DO CONCEITO, COM DONO: o conceito põe o YES pequeno "na borda escura, no canto". A folha ocupa de x 400 a
-    3.440, e o canto escuro que sobra (200 px até a margem de 200) não comporta o carimbo nem à metade (357 px) sem furar
+    DESVIO DO CONCEITO, COM DONO: o conceito põe o YES pequeno "na borda escura, no canto". A folha ocupa de x 380 a
+    3.420, e o canto escuro que sobra (200 px até a margem de 200) não comporta o carimbo nem à metade (357 px) sem furar
     a margem; e, na rolagem da câmera, o canto de cima sai do quadro. O YES vai SOBRE A FOLHA, à direita das leis, em
     --tinta-escura (o de s01 é --tinta, que sobre --papel não se lê): o carimbo de 1974 sobre a cédula de 1982, riscado.
     Dono: diretor-de-arte. Crédito Source: Alaska Division of Elections, 1982 na pílula --rotulo, a cena toda.
@@ -47,6 +49,13 @@
   __fotosProntas = RIG.prontas() e, a mais, as duas faces da Courier Prime (MarcaDoc 400 e 700). Nada de relógio, sorteio,
   @keyframes ou transition. O RIG abaixo é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): (1) no b1 a lista da p. 89 entrava na faixa do crédito (a linha "the laws
+     establishing…" em y 2.110→2.160, cortada e sob a pílula). Agora a p. 89 começa 1.100 px abaixo da frase da cédula (a
+     quebra tracejada com 300/794 de margem, a folha com 3.600 de altura): no b1 ela fica inteira abaixo do quadro, e sob
+     a faixa só passa papel. (2) Depois do rolo (860 px) a frase da cédula ficava cortada no topo. Agora o rolo sobe 1.800 px
+     (1,6→3,4 s): a p. 88 sai inteira pelo alto (a última linha dela em y −754) e a p. 89 fica de y 365 (o cabeçalho) a
+     1.698 (a última lei), dentro das margens sob a câmera (1,02 no fim). O YES pequeno acompanha as leis (top 2.574 na
+     folha). (3) A folha foi de x 400 para 380: a borda de baixo, girada 0,8°, não entra no canto do YouTube. -->
 <head>
 <meta charset="utf-8">
 <title>s32 — By the ballot's own terms, the 1982 no vote also repealed every move law, from the 1974 initiative to the Frank initiative</title>
@@ -62,12 +71,12 @@
       var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
   #mesa { position: absolute; inset: 0; pointer-events: none;
     background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
-  #grupo { position: absolute; left: 400px; top: 0; width: 3040px; height: 2300px; transform-origin: 50% 50%; }
+  #grupo { position: absolute; left: 380px; top: 0; width: 3040px; height: 3600px; transform-origin: 50% 50%; }
 
-  .folha-sombra { position: absolute; left: 0; top: 0; width: 3040px; height: 2196px;
+  .folha-sombra { position: absolute; left: 0; top: 0; width: 3040px; height: 3438px;
     box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
                 0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
-  .folha { position: absolute; left: 0; top: 0; width: 3040px; height: 2300px; padding: 160px 150px 0; background: var(--papel); color: var(--tinta-escura); overflow: hidden; }
+  .folha { position: absolute; left: 0; top: 0; width: 3040px; height: 3600px; padding: 160px 150px 0; background: var(--papel); color: var(--tinta-escura); overflow: hidden; }
   .folha::before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
     background-size: 420px;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
@@ -84,14 +93,14 @@
     letter-spacing: 0; color: var(--tinta-escura); white-space: pre-wrap; }
   .grifo { background-image: linear-gradient(var(--grifo-cor), var(--grifo-cor)); background-repeat: no-repeat;
     background-size: 0% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-  .quebra { height: 0; margin: 28px 0 32px; border-top: 4px dashed color-mix(in srgb, var(--tinta-escura) 30%, transparent); }
+  .quebra { height: 0; margin: 300px 0 794px; border-top: 4px dashed color-mix(in srgb, var(--tinta-escura) 30%, transparent); }
   /* a borracha: o risco de 10 px em --tinta-escura atravessa cada lei, linha a linha (box-decoration-break: clone), nunca um grifo */
   .lei { background-image: linear-gradient(var(--tinta-escura), var(--tinta-escura)); background-repeat: no-repeat;
     background-size: 0% 10px; background-position: 0 54%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
   /* a caneta toca o papel: um traço de 140 px na margem, ao lado da primeira lei */
   #tique { position: absolute; left: 20px; width: 110px; height: 10px; background: var(--tinta-escura); transform-origin: 0% 50%; transform: scaleX(0); border-radius: 5px; }
   /* o carimbo YES de s01, à metade, sobre a folha, em --tinta-escura; o risco por cima, na última palavra */
-  .carimbo { position: absolute; left: 2740px; top: 1540px; transform-origin: 50% 50%; opacity: 0; color: var(--tinta-escura);
+  .carimbo { position: absolute; left: 2740px; top: 2574px; transform-origin: 50% 50%; opacity: 0; color: var(--tinta-escura);
     border: 18px solid currentColor; border-radius: 26px; padding: 46px 90px 34px; }
   .carimbo .yes { font-family: var(--fonte-sec); font-weight: var(--peso-heroi); font-size: var(--fs-heroi); line-height: .86;
     letter-spacing: .01em; color: currentColor; white-space: nowrap; }
@@ -259,15 +268,15 @@
   // ── os tempos (locais, −332,5), da regência s32 e do words.json ──
   var T = {
     grifo: 0.233, grifoDur: 0.55,       // "ballot's" (332,733): o grifo na frase da cédula
-    desce: 1.6, desceDur: 1.5,          // a câmera desce ao resumo da p. 89 (o rolo sobe 860 px)
+    desce: 1.6, desceDur: 1.8,          // a câmera desce ao resumo da p. 89 (o rolo sobe 1.800 px, até 3,4; a caneta em 3,6)
     tique: 3.6,                         // "repealed" (336,1): a caneta toca o papel
     riscos: [5.467, 7.2, 7.433, 7.6],   // "from" (337,967) · "to" (339,7) · "Frank" (339,933) · 7,6: cada lei, linha a linha
     riscoDur: 0.25,
     yes: 5.667, batida: 0.38,           // "nineteen" (338,167): o YES pequeno
     yesRisco: 7.767                     // "initiative." (340,267): o risco no YES
   };
-  var FOLHA = { topo1: 300, topo2: -560, rot: 0.8 };
-  var LUZ = { y1: 300 + 510, y2: -560 + 1740 };   // atrás da frase da cédula; depois atrás das leis
+  var FOLHA = { topo1: 300, topo2: -1500, rot: 0.8 };   // b1: a p. 88 de y 460; b2: a p. 89 de y 365 a 1.698 (a p. 88 inteira fora do quadro)
+  var LUZ = { y1: 300 + 573, y2: -1500 + 2875 };   // atrás da frase da cédula; depois atrás das leis
 
   var tiquePronto = false;
   function medir() {

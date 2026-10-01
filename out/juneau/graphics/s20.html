@@ -13,7 +13,7 @@
 
   OS BEATS (tempo local = master − 207,1; palavras do words.json):
     b1  0,000–2,200  "The same voters made two choices."  (regência s20#1)
-        Sobre o --papel, a CÉDULA de 7/11/1978 (um cartão --tinta de 2.000 × 1.400, x 200→2.200, y 380→1.780, com sombra)
+        Sobre o --papel, a CÉDULA de 7/11/1978 (um cartão --tinta de 2.000 × 1.400, x 270→2.270, y 380→1.780, com sombra)
         cai de cima e assenta em 0,45 s (ease-out), com as duas linhas impressas (Inter 700, 128 px, --tinta-escura):
         INITIATIVE NO. 6 (como a cédula a imprimia; FRANK INITIATIVE não entra: nao_vai_para_tela) e BONDS. Sem número.
         Elementos: a cédula (1).
@@ -45,6 +45,9 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes ou transition. O RIG abaixo é a cópia inteira de
   templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): a cédula, montada em x 200→2.200 com −0,6°, saía da margem esquerda com o
+     empurrão da câmera. Agora o centro é x 1.270 (x 270→2.270; girada, 263→2.277): sob a câmera (1,0223 no último quadro,
+     margem em x ≥ 243) a borda fica em x ≥ 262. -->
 <head>
 <meta charset="utf-8">
 <title>s20 — The same voters made two choices. They passed the Frank initiative, with nearly 56 percent. And they rejected the bonds</title>
@@ -224,7 +227,7 @@
     nearly: 4.033, nearlyFim: 6.033,    // "nearly" (211,133) → 6,033, e 300 ms de fade (até 6,333)
     rejected: 6.2, barrasDur: 0.5       // "rejected" (213,3): NO, as barras e o placar dos títulos
   };
-  var CED = { w: 2000, h: 1400, cx: 1200, cy: 1080, rot: -0.6 };
+  var CED = { w: 2000, h: 1400, cx: 1270, cy: 1080, rot: -0.6 };   // x 270→2.270 (girada, 263): sob a câmera (1,0223 no fim) nada passa de x 200
 
   // o carimbo bate: escala 1,55 → 0,97 em 70 % da batida e → 1 no resto; opacidade 0 → 1 na primeira metade
   function carimbo(el, t, t0) {

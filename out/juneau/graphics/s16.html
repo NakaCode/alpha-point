@@ -67,6 +67,13 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes ou transition. O RIG abaixo é a cópia inteira de
   templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): (1) a moldura do diapositivo entrava pela borda direita do b1 nos primeiros quadros
+     (o arquivo escurece a partir de x ≈ 2.960): o recorte passa a x 25→2.950, y 184→1829, a 1.3128× (× 1,066 do Ken Burns do b1 = 1.3995,
+     abaixo do teto de 1,4×). (2) A foto impressa de 1972 passava de x 3.640 (a fita a mais) e a moldura chegava a y 158: agora a 1,0×
+     (2.026 × 1.425, sem ampliar), 2.122 × 1.521 com a moldura, centro (2.300, 1.000): girada, x 1.223→3.377 e y 218→1.782; a fita
+     da direita termina em x 3.421 (acima do canto); sob a câmera (1,0291 no fim) nada passa de x 3.585, de y 191, nem entra no canto
+     (y > 1.736 → x ≤ 3.391). (3) O crédito: da mesa em diante as duas linhas ocupam o lugar delas (a da fonte antes de acender em
+     "early", a da foto depois de apagar no b3): nenhum salto de 83 px. Os números do cabeçalho abaixo que divergirem são os de antes. -->
 <head>
 <meta charset="utf-8">
 <title>s16 — In Fairbanks, a group wanted to know the price first. In early 1977, they organized the Frank committee</title>
@@ -79,7 +86,7 @@
 
   /* b1: REGISTRO em tela cheia; 3000×2022 a 1,3017× = 3905×2632; recorte x 25, y 184 (32,5 / 239,5 na tela) */
   .cheia { position: absolute; inset: 0; width: 3840px; height: 2160px; overflow: hidden; visibility: hidden; background: var(--painel); }
-  #img1 { position: absolute; display: block; left: -32.5px; top: -239.5px; width: 3905.1px; height: 2632px; transform-origin: 1952.5px 1319.5px; }
+  #img1 { position: absolute; display: block; left: -32.8px; top: -241.6px; width: 3938.5px; height: 2654.5px; transform-origin: 1952.8px 1321.6px; }   /* correção (01/10/2026): recorte x 25→2.950, y 184→1829 a 1.3128× */
 
   /* b2 e b3: a mesa (feltro sob a luz). A luz é o fundo de #cam; o feltro é #mesa, PRIMEIRO filho de #cam. */
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; visibility: hidden;
@@ -136,13 +143,13 @@
   <div id="cam">
     <div id="mesa"></div>
     <!-- 2026×1425 a 1,08× = 2188×1539; o grupo 2284×1635 -->
-    <div class="impressa" id="p2" style="width:2284px;height:1635px;opacity:0">
+    <div class="impressa" id="p2" style="width:2122px;height:1521px;opacity:0">
       <div class="moldura"></div>
-      <div class="recorte" style="width:2188px;height:1539px">
-        <img src="../_media/foto/s16/fairbanks-downtown-international-hotel-1972-08-chesi.jpg" alt="" style="width:2188px;height:1539px">
+      <div class="recorte" style="width:2026px;height:1425px">
+        <img src="../_media/foto/s16/fairbanks-downtown-international-hotel-1972-08-chesi.jpg" alt="" style="width:2026px;height:1425px">
       </div>
       <div class="fita" id="p2fe" style="left:-60px;top:-10px"></div>
-      <div class="fita" id="p2fd" style="left:1824px;top:-10px"></div>
+      <div class="fita" id="p2fd" style="left:1662px;top:-10px"></div>
     </div>
     <!-- b3: a sigla que se explica -->
     <div id="frank" data-qc-papel="heroi"><span id="lF"></span><span id="lR"></span><span id="lA"></span><span id="lN"></span><span id="lK"></span></div>
@@ -292,7 +299,7 @@
     acende: 0.3
   };
   // p2: grupo 2284×1635, centrado em (2480, 1010), +1,2°: x 1338→3622, y 192→1828 (os cantos girados, 168 e 1851)
-  var P2 = { w: 2284, h: 1635, cx: 2480, cy: 1010, rot: 1.2 };
+  var P2 = { w: 2122, h: 1521, cx: 2300, cy: 1000, rot: 1.2 };   // correção do render (01/10/2026): a foto a 1,0× (2.026 × 1.425), x 1.239→3.361 (+16 girado), y 240→1.760 (+22): fora da margem e do canto sob a câmera (1,0291)
   var LUZ_FRANK = { x: 1920, y: 940 };
 
   function por(el, cx, cy, w, h, rot, s, op) {
@@ -313,9 +320,10 @@
     el.style.opacity = p.toFixed(3);
     el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + rot + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
   }
-  function credito(el, texto, op) {
+  function credito(el, texto, op, reservar) {
     creditoTexto(el, texto);
-    el.hidden = op <= 0; el.style.opacity = clamp(op, 0, 1).toFixed(3);
+    el.hidden = !reservar && op <= 0;   // com reservar, a linha ocupa o lugar dela mesmo apagada: a outra não salta (roupa §4, 01/10/2026)
+    el.style.opacity = clamp(op, 0, 1).toFixed(3);
   }
 
   function cena(t) {
@@ -357,8 +365,8 @@
     // ── os créditos: a foto de 1973 na pílula (b1); a de 1972 e a fonte soltas na mesa (b2); só a fonte (b3) ──
     var opFoto = b1 ? eo(seg(t, 0, 0.3)) : (b2 ? eo(seg(t, T.corte1, 0.3)) : 0);
     var opFonte = b1 ? 0 : eo(seg(t, T.data, 0.3));
-    credito(E("credFoto"), b1 ? TEXTOS.credFoto1 : TEXTOS.credFoto2, opFoto);
-    credito(E("credFonte"), TEXTOS.credFonte, opFonte);
+    credito(E("credFoto"), b1 ? TEXTOS.credFoto1 : TEXTOS.credFoto2, opFoto, !b1);   // da mesa em diante as duas linhas têm lugar fixo: a da foto fica (apagada) no b3
+    credito(E("credFonte"), TEXTOS.credFonte, opFonte, !b1);                      // e a da fonte já ocupa o lugar antes de acender em "early"
     E("creds").classList.toggle("caixa", b1);
     E("creds").style.opacity = Math.max(opFoto, opFonte).toFixed(3);   // a pílula acende junto com a primeira linha
   }

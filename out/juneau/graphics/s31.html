@@ -36,9 +36,10 @@
         to reject the plans.""  (regência s31#4)
         O CARTÃO DA FALA (--papel, textura; o cabeçalho em caixa ALASKA ECONOMIC TRENDS · 1990, Courier Prime 700, 84 px,
         recriado com a fonte; a página fica como prova, fora da tela) entra em "nineteen" (10,433), dentro da luz, sobre o
-        centro (x 400→2.860, y 200→≈1.330; cobre a cadeira e as texturas), e nesse mesmo quadro o card de Dittman recua.
+        centro (x 400→2.860, y 230→≈1.400; cobre a cadeira e as texturas), e nesse mesmo quadro o card de Dittman recua, e as
+        teses the satire e not that heavily, que o cartão cobriria, recuam à textura (Claude central, 01/10/2026).
         Em "Brian" (12,7) o card BRIAN RAE · Labor economist, Alaska Department of Labor entra inteiro, baixo à direita,
-        e no mesmo quadro as três frases recuam à textura. A frase “finally persuaded voters to reject the plans” (Inter
+        e no mesmo quadro a tese de Reamer recua à textura (as outras duas já recuaram com o cartão). A frase “finally persuaded voters to reject the plans” (Inter
         700, 280 px, 3 linhas) se escreve no cartão em "finally" (15,367). No fim do beat (18,8) o cartão sai e o card
         de Rae recua, no mesmo quadro.
     b5  18,8–21,8  "Reamer adds that opponents spent more than a million dollars."  (regência s31#5)
@@ -59,13 +60,25 @@
   A MESA (identidade §5): a luz é o fundo de #cam, o feltro é #mesa, primeiro filho, os dois POR BAIXO de tudo, só pelos
   tokens --mesa-*; a luz parada atrás da cadeira.
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Nome de veículo e de instituto
-  escritos, sem logo. Margens 200/160 (os cards de x 260 a 3.640); canto inferior direito (400×400) vazio (o card de Rae
-  acaba em y 1.641); crédito em x = 200, y > 1880.
+  escritos, sem logo. Margens 200/160 (os cards de x 360 a 3.560: sob a câmera e a órbita, que no fim desloca a mesa 50 px
+  para a esquerda e no meio a inclina 0,8°, nada passa de 200 nem de 3.640); canto inferior direito (400×400) vazio (o
+  card de Rae acaba em y 1.641); crédito em x = 200, y > 1880. A mesa (luz e feltro) tem uma camada 140 px maior que o
+  quadro, por baixo de #cam: a órbita não descobre o --fundo.
 
   O CONTRATO: window.__duracao = 21.8; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
   __fotosProntas = RIG.prontas() e, a mais, a Courier Prime 700 do cabeçalho do cartão (MarcaDoc). Nada de relógio,
   sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): (1) a órbita (50 px, 0,8°) descobria o --fundo nas bordas (faixa de 50 px à
+     esquerda, cunha de 29 px no topo): a mesa ganhou uma camada 140 px maior que o quadro (#fundoMesa, luz e feltro) por
+     baixo de #cam; sob a órbita e a câmera, a mesa entra no máximo 57 px. (2) A coluna da direita (Reamer, a tese one
+     factor, Rae, OPPONENTS), montada até x 3.640, chegava a 3.711 (a órbita +50 e o push-in): agora é alinhada à direita em
+     x 3.560 (right 280), e a da esquerda vai de 260 para 360 (no fim a órbita desloca a mesa 50 px para a esquerda e a
+     câmera está em 1,052: x 200 nominal cairia em 54). Pela conta, com a órbita e a câmera: o lado direito fica em x ≤ 3.631
+     e o esquerdo em x ≥ 214 em todo quadro. O cartão da fala desce de y 200 para 230 (girado 0,8°, o canto chegava a y 154
+     sob a órbita). (3) As teses the satire e not that heavily recuam em 10,433, com o cartão que as cobriria, e não em
+     Brian. (4) O crédito da fala de Rae entrava e saía com salto de 83 px na linha do ADN: a altura de cada linha anda
+     com o fade (max-height × opacidade). -->
 <head>
 <meta charset="utf-8">
 <title>s31 — Stoops says the satire decided it. Reamer calls it one factor. Dittman, Rae in 1990, and the opponents' million</title>
@@ -78,6 +91,12 @@
 
   /* a câmera que gira devagar em torno da cadeira: #orbita descreve o círculo; dentro, a câmera do RIG */
   #orbita { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 1920px 1000px; }
+  /* a mesa estendida 140 px além do quadro, por baixo de #cam: a órbita (50 px e 0,8°) descobre até 57 px das bordas, e o
+     --fundo não aparece; a luz, parada atrás da cadeira, continua no mesmo ponto (2.060/1.140 nesta camada) */
+  #fundoMesa { position: absolute; left: -140px; top: -140px; width: 4120px; height: 2440px; pointer-events: none;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at 2060px 1140px,
+      var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+  #mesa2 { position: absolute; inset: 0; background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
     background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
       var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
@@ -96,10 +115,10 @@
     line-height: 1.2; letter-spacing: 0; color: var(--sec); }
   .tese { position: absolute; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
     line-height: 1.2; letter-spacing: 0; color: var(--legenda-cor); opacity: 0; }
-  #opponents { position: absolute; left: 2799px; top: 860px; opacity: 0; }
+  #opponents { position: absolute; right: 280px; top: 860px; opacity: 0; }
 
   /* o cartão da fala de Rae (identidade §5): --papel com textura, o cabeçalho em caixa (Courier Prime 700, 84 px), a fala em Inter 700, 280 px */
-  .folha { position: absolute; left: 400px; top: 200px; width: 2460px; background: var(--papel); color: var(--tinta-escura); transform-origin: 50% 50%; opacity: 0;
+  .folha { position: absolute; left: 400px; top: 230px; width: 2460px; background: var(--papel); color: var(--tinta-escura); transform-origin: 50% 50%; opacity: 0;
     padding: 56px 60px 60px;
     box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
                 0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
@@ -121,36 +140,38 @@
   .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1; color: var(--sec);
     letter-spacing: 0; opacity: 0; }
   .cred[hidden] { display: none; }
+  .cred { overflow: hidden; }   /* a altura da linha anda com o fade: o crédito não salta (roupa §4, 01/10/2026) */
 </style>
 </head>
 <body>
 <div id="palco" data-qc-sem-heroi="PRANCHA de quatro cards de pessoa em volta da cadeira vazia: nomes, cargos, teses em legenda e uma fala citada; nenhum herói (ofício do editor-de-arte §6)">
   <div id="orbita">
+    <div id="fundoMesa"><div id="mesa2"></div></div>
     <div id="cam">
       <div id="mesa"></div>
       <div id="cadeira"></div>
       <!-- Stoops: alto à esquerda -->
       <div class="card" id="cStoops">
-        <div class="pilula" id="nStoops" data-qc-papel="rotulo" style="left:260px;top:300px"></div>
-        <div class="cargo"  id="gStoops" data-qc-papel="eixo"   style="left:260px;top:540px"></div>
+        <div class="pilula" id="nStoops" data-qc-papel="rotulo" style="left:360px;top:300px"></div>
+        <div class="cargo"  id="gStoops" data-qc-papel="eixo"   style="left:360px;top:540px"></div>
       </div>
-      <div class="tese" id="tStoops" data-qc-papel="eixo" style="left:260px;top:680px"></div>
+      <div class="tese" id="tStoops" data-qc-papel="eixo" style="left:360px;top:680px"></div>
       <!-- Reamer: alto à direita -->
       <div class="card" id="cReamer">
-        <div class="pilula" id="nReamer" data-qc-papel="rotulo" style="left:2652px;top:300px"></div>
-        <div class="cargo"  id="gReamer" data-qc-papel="eixo"   style="left:2404px;top:540px"></div>
+        <div class="pilula" id="nReamer" data-qc-papel="rotulo" style="right:280px;top:300px"></div>
+        <div class="cargo"  id="gReamer" data-qc-papel="eixo"   style="right:280px;top:540px"></div>
       </div>
-      <div class="tese" id="tReamer" data-qc-papel="eixo" style="left:2970px;top:680px"></div>
+      <div class="tese" id="tReamer" data-qc-papel="eixo" style="right:280px;top:680px"></div>
       <!-- Dittman: baixo à esquerda (a tese acima do card) -->
       <div class="card" id="cDittman">
-        <div class="pilula" id="nDittman" data-qc-papel="rotulo" style="left:260px;top:1300px"></div>
-        <div class="cargo"  id="gDittman" data-qc-papel="eixo"   style="left:260px;top:1540px"></div>
+        <div class="pilula" id="nDittman" data-qc-papel="rotulo" style="left:360px;top:1300px"></div>
+        <div class="cargo"  id="gDittman" data-qc-papel="eixo"   style="left:360px;top:1540px"></div>
       </div>
-      <div class="tese" id="tDittman" data-qc-papel="eixo" style="left:260px;top:1180px"></div>
+      <div class="tese" id="tDittman" data-qc-papel="eixo" style="left:360px;top:1180px"></div>
       <!-- Rae: baixo à direita -->
       <div class="card" id="cRae">
-        <div class="pilula" id="nRae" data-qc-papel="rotulo" style="left:2924px;top:1300px"></div>
-        <div class="cargo"  id="gRae" data-qc-papel="eixo"   style="left:1973px;top:1540px"></div>
+        <div class="pilula" id="nRae" data-qc-papel="rotulo" style="right:280px;top:1300px"></div>
+        <div class="cargo"  id="gRae" data-qc-papel="eixo"   style="right:280px;top:1540px"></div>
       </div>
       <!-- o cartão da fala de Rae -->
       <div class="folha" id="falaCard">
@@ -305,7 +326,7 @@
     spent: 20.1, empurraDur: 0.5,             // "spent" (330,8): as fichas
     recua: 0.3, textura: 0.18, escalaTextura: 0.94
   };
-  var CENTROS = { cStoops: [810, 540], cReamer: [3022, 540], cDittman: [810, 1470], cRae: [2806, 1470] };
+  var CENTROS = { cStoops: [910, 540], cReamer: [2942, 540], cDittman: [910, 1470], cRae: [2726, 1470] };   // o centro de cada card, com as colunas em x 360 e até 3.560
   var CADEIRA = { x: 1920, y: 1000 }, FICHAS = { x1: 2560, y1: 1140 };
 
   function card(id, entra, recuaEm, voltaEm) {
@@ -324,6 +345,14 @@
     el.style.transform = "translateY(" + ((1 - e) * 24).toFixed(1) + "px)";
   }
   var t_ = 0;
+  function credito(el, texto, op) {
+    if (el.textContent !== texto) el.textContent = texto;
+    op = clamp(op, 0, 1);
+    el.hidden = false;
+    if (!el.dataset.h) { el.style.maxHeight = "none"; el.dataset.h = String(el.offsetHeight || 84); }   // a altura natural da linha, medida uma vez
+    el.style.maxHeight = (parseFloat(el.dataset.h) * op).toFixed(1) + "px";   // a linha cresce com o fade: a outra não salta
+    el.style.opacity = op.toFixed(3);
+  }
 
   function cena(t) {
     t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
@@ -341,7 +370,7 @@
     card("cDittman", T.dittman, T.cartao, null);
     card("cRae", T.rae, T.fimCartao, null);
     // as teses: entram na palavra; recuam juntas em "Brian"
-    tese("tStoops", T.tStoops, T.rae); tese("tReamer", T.tReamer, T.rae); tese("tDittman", T.tDittman, T.rae);
+    tese("tStoops", T.tStoops, T.cartao); tese("tReamer", T.tReamer, T.rae); tese("tDittman", T.tDittman, T.cartao);   // as de Stoops e Dittman recuam com o cartão, que as cobriria (Claude central, 01/10/2026); a de Reamer, em "Brian"
 
     // ── b4: o cartão da fala, dentro da luz; o 1990 com a voz; a frase em "finally"; sai em 18,8 ──
     var f = E("falaCard"), ent = eo(seg(t, T.cartao, 0.5)), sai = eo(seg(t, T.fimCartao, 0.3));
@@ -358,12 +387,8 @@
     fi.style.transform = "translate(" + (lerp(CADEIRA.x, FICHAS.x1, k) - 120).toFixed(1) + "px," + (lerp(CADEIRA.y, FICHAS.y1, k) - 160).toFixed(1) + "px)";
 
     // ── os créditos: a fonte do ADN a cena toda; a do Departamento do Trabalho com o cartão ──
-    var c1 = E("credFonte"), op1 = eo(seg(t, T.stoops, 0.3));
-    if (c1.textContent !== TEXTOS.credFonte) c1.textContent = TEXTOS.credFonte;
-    c1.hidden = op1 <= 0; c1.style.opacity = op1.toFixed(3);
-    var c2 = E("credRae"), op2 = eo(seg(t, T.cartao, 0.3)) * (1 - sai);
-    if (c2.textContent !== TEXTOS.credRae) c2.textContent = TEXTOS.credRae;
-    c2.hidden = op2 <= 0; c2.style.opacity = op2.toFixed(3);
+    credito(E("credFonte"), TEXTOS.credFonte, eo(seg(t, T.stoops, 0.3)));
+    credito(E("credRae"), TEXTOS.credRae, eo(seg(t, T.cartao, 0.3)) * (1 - sai));
   }
 
   window.__renderAt = function (t) {

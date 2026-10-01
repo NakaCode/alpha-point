@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s41 · "Juneau's state senator, Jesse Kiehl, told KTOO in 2025: "It's a little bit like a zombie movie. It's never all
+  the way dead.""
+  Word-lock (−431.767) · inSec 431.767 · dur 8.033 (241 quadros a 30 fps; espelho.json, _quadros 12953→13194)
+  Modo do espelho: citacao · Modelo da identidade: o CARD DE PESSOA com retrato (a foto impressa, presa com fita, o nome
+  na pílula e o cargo embaixo; identidade §5, "A composição do card") e a fala citada no cartão de papel ao lado, sobre
+  a mesa de feltro sob a luz
+
+  O que manda em cada coisa: o espelho (s41), o conceito (s41), a regência (s41: dois beats), os textos finais do redator
+  (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s41, cards_pessoa s41, _creditos
+  s41, nao_vai_para_tela s41) e a marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto
+  TEXTOS.
+
+  OS BEATS (tempo local = master − 431,767; palavras do words.json):
+    b1  0,000–4,633  "Juneau's state senator, Jesse Keel, told Kay-too in twenty twenty-five:"  (regência s41#1)
+        O RETRATO oficial de Kiehl (1050×1363) como FOTO IMPRESSA (moldura --tinta de 44 px, a margem de baixo de 190,
+        fita, −2°), à esquerda (x 260→1.280, y 200→1.366), pousando em 0,6 s desde o primeiro quadro: o recorte de
+        932 × 932 a 1,0× (x 59→991, y 110→1.042 do arquivo: o rosto e o terno; fora a borda e parte da pintura ao fundo),
+        sem ampliar (o retrato enche o quadro da foto: foto grande, identidade §5). Sem aviso do ano (retrato de 2025, o
+        ano da fala), sem crédito (uso editorial, midia.md §7.2), sem partido. O card na ORDEM DA VOZ: o cargo Alaska
+        state senator, Juneau (legenda 84 px, --sec, na largura da foto) em "Juneau's" (0,033), a primeira palavra; o
+        nome JESSE KIEHL (pílula --rotulo, 128 px) em "Jesse" (1,167), logo abaixo da foto. 1 elemento (o card).
+    b2  4,633–8,033  ""It's a little bit like a zombie movie. It's never all the way dead.""  (regência s41#2)
+        O CARTÃO DA FALA (--papel, textura, Inter 700, 280 px, --tinta-escura) ao lado do card, na borda da poça, com
+        o recorte do redator, só a primeira frase, “It’s a little bit like a zombie movie.” (8 palavras), em duas
+        linhas, em "It's (4,633): o cartão cresce 8 % em 0,5 s enquanto a fala aparece. Em "never" (6,893) o cartão
+        AFUNDA 24 px e sobe de novo, sem texto novo: a segunda frase fica na voz (R3). O cartão se mede no navegador: a
+        largura vem das duas linhas, e ele encosta na margem de 200 pela direita; se não couber a 280 px, desce a 270 e
+        a 260 (o piso da fala, identidade §4.1). 2 elementos (o card e o cartão); 2 blocos.
+    A luz: atrás do retrato impresso (770/783), parada; o cartão entra na borda da poça. Crédito Source: KTOO, 2025
+    (o nome do veículo escrito, sem logo) solto na mesa, de "It's ao fim.
+
+  A MÍDIA (conferencia-midia.json › candidatos, veredito aprovado para s41 plano 1):
+    ../_media/pessoa/s41/kiehl-jesse-senator-2025-01-21-senate-majority.jpg  1050×1363
+      sha256 a3122b2e5aed453e2b496a6b0e11e2f269aef873a0ed2fa8ef15bd0c07f3ca40 · retrato oficial, a página do senador na
+      Alaska Senate Majority · uso editorial, credito_na_tela nenhum · data_na_origem 2025-01-21 · aviso_de_ano false
+    Nenhum upscale, filtro ou recorte que mude o sentido: 1,0×, o rosto inteiro.
+
+  A MESA (identidade §5): a luz é o fundo de #cam, o feltro é #mesa, primeiro filho, os dois POR BAIXO de tudo, só pelos
+  tokens --mesa-*.
+  A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Margens 200/160 (o card em x 260,
+  como os de s05 e s25); canto inferior direito (400×400) vazio; crédito em x = 200, y > 1880; nada do card na faixa.
+
+  O CONTRATO: window.__duracao = 8.033; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
+  __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia
+  inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+-->
+<head>
+<meta charset="utf-8">
+<title>s41 — Juneau's state senator, Jesse Kiehl, told KTOO in 2025: "It's a little bit like a zombie movie."</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
+      var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+  #mesa { position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
+
+  /* o retrato impresso (identidade §5, "A composição do card"): moldura --tinta de 44 px, a margem de baixo de 190, fita */
+  .impressa { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; opacity: 0; }
+  .impressa .moldura { position: absolute; inset: 0; background: var(--tinta);
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  .impressa .recorte { position: absolute; left: 44px; top: 44px; width: 932px; height: 932px; overflow: hidden; background: var(--painel); }
+  .impressa .recorte img { position: absolute; left: -59px; top: -110px; width: 1050px; height: 1363px; display: block; }
+  .fita { position: absolute; width: 460px; height: 150px; background: color-mix(in srgb, var(--papel) 62%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--tinta-escura) 18%, transparent);
+    clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 86%, 97% 100%, 0 100%, 4% 88%, 0 72%, 4% 56%, 0 40%, 4% 24%);
+    transform-origin: 50% 50%; opacity: 0; }
+  /* o nome na pílula --rotulo (128 px, Inter 700) e o cargo embaixo (84 px, --sec), na largura da foto */
+  .pilula { position: absolute; white-space: nowrap; background: var(--rotulo); color: var(--tinta); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-family: var(--fonte); font-weight: var(--peso-rotulo);
+    font-size: var(--fs-rotulo); line-height: 1.1; letter-spacing: 0; opacity: 0; }
+  .cargo { position: absolute; width: 1020px; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
+    line-height: 1.2; letter-spacing: 0; color: var(--sec); opacity: 0; }
+
+  /* o cartão da fala (identidade §5): --papel com textura, a fala em Inter 700, 280 px (piso 260), duas linhas */
+  .folha { position: absolute; left: 0; top: 0; background: var(--papel); color: var(--tinta-escura); transform-origin: 50% 50%; opacity: 0;
+    padding: 56px 60px;
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  .folha::before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
+    background-size: 420px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .fala { position: relative; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-fala); line-height: 1.06;
+    letter-spacing: -0.005em; color: var(--tinta-escura); }
+  .fala span { display: block; }
+
+  /* o crédito (§4.2): 76 px, --sec, x = 200, abaixo de y = 1880, solto sobre a mesa */
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x)); }
+  .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1; color: var(--sec);
+    letter-spacing: 0; opacity: 0; }
+  .cred[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="card de pessoa com retrato e a fala citada: o nome é rótulo, a fala é bloco de leitura; nenhum herói (ofício do editor-de-arte §6)">
+  <div id="cam">
+    <div id="mesa"></div>
+    <!-- o retrato impresso: 1020 × 1166 (44 + 932 + 190), a foto 932 × 932 a 1,0× -->
+    <div class="impressa" id="pola" style="width:1020px;height:1166px">
+      <div class="moldura"></div>
+      <div class="recorte"><img src="../_media/pessoa/s41/kiehl-jesse-senator-2025-01-21-senate-majority.jpg" alt=""></div>
+      <div class="fita" id="fita" style="left:280px;top:-62px"></div>
+    </div>
+    <div class="pilula" id="nome" data-qc-papel="rotulo" style="left:260px;top:1390px"></div>
+    <div class="cargo"  id="cargo" data-qc-papel="eixo" style="left:260px;top:1608px"></div>
+    <div class="folha" id="falaCard"><div class="fala" id="fala" data-qc-papel="fala"><span id="l1"></span><span id="l2"></span></div></div>
+  </div>
+  <div id="creds">
+    <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
+  </div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo;
+  var E = function (id) { return document.getElementById(id); };
+  var lerp = function (a, b, p) { return a + (b - a) * p; };
+  var DUR = 8.033;
+  window.__duracao = DUR;
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é a do textos-tela.json do disco) ═══════════════════════════
+  var TEXTOS = {
+    nome:      "JESSE KIEHL",                                      // textos-tela.json › cards_pessoa s41 (nome; a voz diz "Keel")
+    cargo:     "Alaska state senator, Juneau",                     // textos-tela.json › cards_pessoa s41 (o_que_e; sem partido)
+    fala:      "“It’s a little bit like a zombie movie.”",         // textos-tela.json › rotulos_dado s41 (o recorte: a 1ª frase, 8 palavras)
+    linha1:    "“It’s a little bit like",                          // a mesma fala, em duas linhas
+    linha2:    "a zombie movie.”",
+    credFonte: "Source: KTOO, 2025"                                // textos-tela.json › _creditos s41 (a fala)
+  };
+  // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
+  E("nome").textContent = TEXTOS.nome; E("cargo").textContent = TEXTOS.cargo;
+  E("l1").textContent = TEXTOS.linha1; E("l2").textContent = TEXTOS.linha2;
+
+  // ── os tempos (locais, −431,767), da regência s41 e do words.json ──
+  var T = {
+    pousa: 0.033, pousaDur: 0.6, fita: 0.45,   // o retrato impresso pousa desde o primeiro quadro
+    cargo: 0.033,                              // "Juneau's" (431,8): o cargo, a primeira palavra
+    nome: 1.167,                               // "Jesse" (432,933): o nome na pílula
+    fala: 4.633, falaDur: 0.5,                 // "It's (436,4): o cartão da fala
+    never: 6.893, afundaDur: 0.5               // "never" (438,66): o cartão afunda 24 px e sobe
+  };
+  var POLA = { w: 1020, h: 1166, cx: 770, cy: 783, rot: -2 };
+  var CARD = { left: 1440, top: 440, w: 0, h: 0 };
+  var LUZ = { x: 770, y: 783 };
+
+  var medido = false;
+  function medir() {
+    var l1 = E("l1"), l2 = E("l2"), fala = E("fala"), card = E("falaCard");
+    card.style.width = "";                                   // solta a largura: o cartão encolhe ao texto antes da medida
+    if (!l1.offsetWidth) return;
+    var tamanhos = [280, 270, 260], i = 0, w;
+    for (; i < tamanhos.length; i++) {
+      fala.style.fontSize = tamanhos[i] + "px"; card.style.width = "";
+      w = Math.max(l1.offsetWidth, l2.offsetWidth) + 120;
+      if (3620 - w >= 1380) break;              // cabe ao lado do card, dentro da margem de 200
+    }
+    CARD.w = w; CARD.left = Math.min(1440, 3620 - w); CARD.h = E("falaCard").offsetHeight;
+    E("falaCard").style.width = w + "px";
+    medido = true;
+  }
+  function por(el, cx, cy, w, h, rot, s, op) {
+    el.style.transform = "translate(" + (cx - w / 2).toFixed(2) + "px," + (cy - h / 2).toFixed(2) + "px) rotate(" +
+      rot.toFixed(3) + "deg) scale(" + s.toFixed(5) + ")";
+    if (op !== undefined) el.style.opacity = clamp(op, 0, 1).toFixed(3);
+  }
+  function rotulo(el, op) {
+    op = clamp(op, 0, 1);
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = "translateY(" + ((1 - op) * 24).toFixed(1) + "px)";
+  }
+  function fita(el, t, t0, rot) {
+    var p = eo(seg(t, t0, 0.3));
+    el.style.opacity = p.toFixed(3);
+    el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + rot + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
+  }
+
+  function cena(t) {
+    t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
+    if (!medido) medir();
+    var cam = E("cam");
+    R.camera(cam, t, { base: 1.0 });
+
+    // ── b1: o retrato impresso pousa; o cargo em "Juneau's"; o nome em "Jesse" ──
+    var q = eo(seg(t, T.pousa, T.pousaDur));
+    por(E("pola"), POLA.cx, POLA.cy + 240 * (1 - q), POLA.w, POLA.h, lerp(-4, POLA.rot, q), 0.72 + 0.28 * q, seg(t, T.pousa, 0.22));
+    fita(E("fita"), t, T.pousa + T.fita, -4);
+    rotulo(E("cargo"), eo(seg(t, T.cargo, 0.3)));
+    rotulo(E("nome"), eo(seg(t, T.nome, 0.3)));
+
+    // ── b2: o cartão da fala ao lado; em "never" afunda 24 px e sobe de novo ──
+    var p = eo(seg(t, T.fala, T.falaDur));
+    var afunda = 24 * Math.sin(Math.PI * seg(t, T.never, T.afundaDur));
+    por(E("falaCard"), CARD.left + CARD.w / 2, CARD.top + CARD.h / 2 + afunda, CARD.w, CARD.h, 0.6, 0.92 + 0.08 * p, seg(t, T.fala, 0.2));
+
+    // a luz: atrás do retrato, parada
+    cam.style.setProperty("--luz-x", LUZ.x + "px"); cam.style.setProperty("--luz-y", LUZ.y + "px");
+
+    // ── o crédito, da fala ao fim ──
+    var c = E("credFonte"), opC = eo(seg(t, T.fala, 0.3));
+    if (c.textContent !== TEXTOS.credFonte) c.textContent = TEXTOS.credFonte;
+    c.hidden = opC <= 0; c.style.opacity = opC.toFixed(3);
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // nunca lança
+  };
+  window.__prepararCaptura = function () { medir(); window.__renderAt(0); };
+  window.__fotosProntas = R.prontas().then(function () { medido = false; medir(); return true; });
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

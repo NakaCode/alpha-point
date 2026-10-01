@@ -66,6 +66,10 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes ou transition. O RIG abaixo é a cópia inteira
   de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): a foto impressa do jato (2.040 × 1.393, 1,3°) pousava com o canto girado em
+     (3.640, 1.846) e a fita da direita em x 3.743, dentro do canto do YouTube e fora da margem sob a câmera. Agora o centro é
+     (2.300, 1.000): o papel girado vai de x 1.264 a 3.336 e de y 280 a 1.720, a fita da direita termina em x 3.380; sob a câmera
+     (1,0204 no último quadro) nada passa de x 3.600 nem entra no canto (y > 1.742 → x ≤ 3.404). -->
 <head>
 <meta charset="utf-8">
 <title>s04 — Every car, passenger and load of freight comes and goes by air or by sea</title>
@@ -250,7 +254,7 @@
   };
   // p2: grupo 2040×1393, centrado em (2604, 1126,5), +1,3°: x 1584→3624, y 430→1823 (os cantos girados, 3640 e 1846):
   // abaixo da pílula do rótulo (y 180→357) e acima da faixa de crédito (1880); fora do canto reservado
-  var P2 = { w: 2040, h: 1393, cx: 2604, cy: 1126.5, rot: 1.3 };
+  var P2 = { w: 2040, h: 1393, cx: 2300, cy: 1000, rot: 1.3 };   // correção do render (01/10/2026): x 1.280→3.320 (+16 girado), y 303→1.697 (+23): fora do canto e da margem, com a câmera a 1,0204 no fim
 
   function por(el, cx, cy, w, h, rot, s, op) {
     if (!el) return;

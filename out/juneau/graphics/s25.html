@@ -15,17 +15,19 @@
   OS BEATS (tempo local = master − 251,433; palavras do words.json):
     b1  0,000–4,433  "Harris, the committee chair quoted earlier, called the figures inflated."  (regência s25#1)
         O card de Harris (o mesmo de s05: o nome na pílula --rotulo, 128 px, e o cargo embaixo, legenda 84 px --sec)
-        entra PELA ESQUERDA, cada peça na palavra dela: FRANK W. HARRIS em "Harris," (0,033; desliza 120 px da esquerda
+        entra PELA ESQUERDA, cada peça na palavra dela: FRANK W. HARRIS em "Harris," (0,033; desliza 48 px da esquerda
         em 300 ms) e Chairman, Capital Access Committee (1982) em "committee" (0,667). Em "inflated." (3,3) a fala
         “inflated” SOBE do card dele num cartão de papel (--papel, textura, Inter 700, 280 px, --tinta-escura), abaixo
         do cargo, presa ao card de Harris a cena toda (nunca solta ao lado do de Clark): sobe 180 px e assenta em 0,5 s.
         Elementos: o card (1) + a fala (1) = 2.
     b2  4,433–9,667  "Jim Clark, against the move, reminded voters of the bonds they turned down in nineteen
         seventy-eight."  (regência s25#2)
-        O card de Clark entra PELA DIREITA: JIM CLARK em "Jim" (4,467) e Chairman, Alaska Committee (1982) em "against"
-        (5,0). A LINHA de 6 px (--neutro) se desenha entre as duas pílulas no mesmo instante do nome (y 810, de x 1.444
-        a 2.876), sem legenda (a voz não diz 1982 aqui). A MINI-CÉDULA de s20 (o cartão --tinta, à metade: 1.000 × 700,
-        com BONDS impresso em 128 px) cai ao lado dele, abaixo do cargo, em "bonds" (7,133), e recebe o carimbo NO
+        O card de Clark entra PELA DIREITA (desliza 48 px): JIM CLARK em "Jim" (4,467) e Chairman, Alaska Committee (1982)
+        em "against" (5,0), os dois alinhados à direita em x 3.550 (sob a câmera, 1,0232 no fim, nada passa de x 3.600). A
+        LINHA de 6 px (--neutro) se desenha entre as duas pílulas no mesmo instante do nome (y 810, de x 1.444 a 2.754),
+        sem legenda (a voz não diz 1982 aqui). A MINI-CÉDULA de s20 (o cartão --tinta, à metade: 1.000 × 700, com BONDS
+        impresso em 128 px) cai abaixo do cargo dele (x 2.390→3.390, y 1.090→1.790: fora do canto do YouTube e dentro da
+        margem sob a câmera), em "bonds" (7,133), e recebe o carimbo NO
         (--destaque, à metade do de s20) em "turned" (7,667). O 1978 fica na voz (R1).
         Elementos: os dois cards (2) + “inflated” (1) + a mini-cédula com o NO (1) + a linha (1) = 5. Blocos: 3 (os dois
         cards e a fala), no teto. Herói: nenhum (data-qc-sem-heroi).
@@ -44,6 +46,12 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia
   inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): (1) a pílula JIM CLARK (left 2.916) nascia com a borda direita em x 3.697 e
+     o cargo com o ")" além de 3.640. Agora os dois são alinhados à direita em x 3.550 (right 290), e o deslize de entrada
+     caiu de 120 para 48 px (a pílula de Harris também: a 48 px, nem a entrada passa da margem): sob a câmera (1,0232 no
+     último quadro, margem em x ≤ 3.595) a borda fica em x ≤ 3.579. A linha entre as pílulas acaba em x 2.754 (era 2.876).
+     (2) A mini-cédula (x 2.640→3.640, y 1.080→1.780) tocava o canto do YouTube e passava da margem; agora está em
+     x 2.390→3.390, y 1.090→1.790 (girada, 3.394 / 1.795): o canto (y > 1.740 → x ≤ 3.400) e a faixa ficam livres. -->
 <head>
 <meta charset="utf-8">
 <title>s25 — Harris called the figures inflated. Jim Clark reminded voters of the bonds they turned down in 1978</title>
@@ -67,7 +75,7 @@
   .cargo { position: absolute; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
     line-height: 1.2; letter-spacing: 0; color: var(--sec); opacity: 0; }
   /* a linha de 6 px entre os dois cards (sem legenda) */
-  #linha { position: absolute; left: 1444px; top: 807px; width: 1432px; height: var(--linha-espessura); background: var(--neutro);
+  #linha { position: absolute; left: 1444px; top: 807px; width: 1310px; height: var(--linha-espessura); background: var(--neutro);
     transform-origin: 0% 50%; transform: scaleX(0); }
 
   /* o cartão da fala (identidade §5): --papel com textura, a fala em Inter 700, 280 px, --tinta-escura */
@@ -112,8 +120,8 @@
     <div class="cargo"  id="cargo1" data-qc-papel="eixo" style="left:260px;top:940px"></div>
     <div class="folha" id="falaCard"><div class="fala" id="fala" data-qc-papel="fala"></div></div>
     <!-- o card de Clark, à direita -->
-    <div class="pilula" id="nome2" data-qc-papel="rotulo" style="left:2916px;top:700px"></div>
-    <div class="cargo"  id="cargo2" data-qc-papel="eixo" style="left:2330px;top:940px"></div>
+    <div class="pilula" id="nome2" data-qc-papel="rotulo" style="right:290px;top:700px"></div>
+    <div class="cargo"  id="cargo2" data-qc-papel="eixo" style="right:290px;top:940px"></div>
     <!-- a mini-cédula de s20 com BONDS e o carimbo NO -->
     <div class="cedula" id="cedula">
       <div class="linhaCed" id="bonds" data-qc-papel="rotulo"></div>
@@ -243,7 +251,7 @@
     carimbo: 7.667, batida: 0.38          // "turned" (259,1): o NO bate
   };
   var FALA = { x: 260, y: 1080, w: 1207, h: 409, rot: 0.8 };     // abaixo do cargo de Harris, presa ao card dele
-  var CED = { w: 1000, h: 700, cx: 3140, cy: 1430, rot: -0.6 };  // ao lado de Clark, abaixo do cargo (x 2640→3640, y 1080→1780)
+  var CED = { w: 1000, h: 700, cx: 2890, cy: 1440, rot: -0.6 };  // abaixo do cargo de Clark (x 2390→3390, y 1090→1790): fora do canto do YouTube e dentro da margem sob a câmera
   var LUZ1 = { x: 860, y: 900 }, LUZ2 = { x: 2160, y: 810 };
 
   function rotulo(el, op, dx) {
@@ -271,14 +279,14 @@
     R.camera(cam, t, { base: 1.0 });
 
     // ── b1: o card de Harris pela esquerda; a fala sobe dele ──
-    rotulo(E("nome1"), eo(seg(t, T.nome1, 0.3)), -120);
-    rotulo(E("cargo1"), eo(seg(t, T.cargo1, 0.3)), -120);
+    rotulo(E("nome1"), eo(seg(t, T.nome1, 0.3)), -48);
+    rotulo(E("cargo1"), eo(seg(t, T.cargo1, 0.3)), -48);
     var p = eo(seg(t, T.fala, T.falaDur));
     por(E("falaCard"), FALA.x + FALA.w / 2, FALA.y + FALA.h / 2 + 180 * (1 - p), FALA.w, FALA.h, lerp(-3, FALA.rot, p), 0.94 + 0.06 * p, seg(t, T.fala, 0.2));
 
     // ── b2: o card de Clark pela direita; a linha; a mini-cédula cai; o NO bate ──
-    rotulo(E("nome2"), eo(seg(t, T.nome2, 0.3)), 120);
-    rotulo(E("cargo2"), eo(seg(t, T.cargo2, 0.3)), 120);
+    rotulo(E("nome2"), eo(seg(t, T.nome2, 0.3)), 48);
+    rotulo(E("cargo2"), eo(seg(t, T.cargo2, 0.3)), 48);
     E("linha").style.transform = "scaleX(" + eb(seg(t, T.linha, T.linhaDur)).toFixed(4) + ")";
     var c = eo(seg(t, T.cedula, T.caiDur)), ced = E("cedula");
     por(ced, CED.cx, CED.cy - 220 * (1 - c), CED.w, CED.h, lerp(CED.rot - 2, CED.rot, c), 1.06 - 0.06 * c, seg(t, T.cedula, 0.15));

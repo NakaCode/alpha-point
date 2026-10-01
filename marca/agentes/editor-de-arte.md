@@ -133,6 +133,16 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
 - Margem: 200 px nas laterais, 160 px no topo. Abaixo de y = 1880, só crédito, a partir de x = 200 e
   terminando antes de x = 1720. Crédito longo quebra em duas linhas de 76 px e nunca encolhe. O centro dessa
   faixa fica livre para a legenda automática do YouTube e a barra do player.
+- **A margem, a faixa do crédito e o canto valem em todo quadro, sob a câmera** (Claude central, 01/10/2026, depois
+  da conferência dos primeiros renders do Juneau; `APRENDIZADOS.md`, item 58). O `R.camera` do RIG tem zoom contínuo
+  (base + 0,0024 por segundo), e a órbita e a deriva movem o palco. Quem é posto rente à margem na montagem sai dela
+  no fim da cena: no Juneau, 20 a 55 px em 13 cenas. Monte o que encosta na margem recuado pelo zoom máximo da cena:
+  com escala final `s`, o limite esquerdo vira `1920 − (1920 − 200) / s`, o direito `1920 + (1920 − 200) / s`, o de
+  cima `1080 − (1080 − 160) / s` e o da faixa de baixo `1080 + (1880 − 1080) / s` (com a origem da câmera no centro;
+  com outra origem, a conta muda). A borda de papel, a fita e a moldura contam como o elemento. Confira no último
+  quadro do render, não só no primeiro.
+- Uma linha de crédito que entra ou sai não faz a outra saltar: a pílula muda de altura junto com o fade, ou as
+  duas linhas já ocupam o lugar delas desde o começo. Um salto de 83 px num quadro só, com `hidden`, é defeito.
 - Canto inferior direito, 400 × 400 px: vazio (marca-d'água do YouTube). Nenhuma logo do canal na cena.
 - **Teto de 6 elementos simultâneos; alvo de 4 a 5.** Contam texto e gráfico (rótulo, número, seta, barra,
   anel, território aceso, cartão). Não contam a base de tela cheia, o crédito e a textura. O círculo de ator

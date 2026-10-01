@@ -46,6 +46,11 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou animação SMIL. O RIG abaixo é a
   cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): (1) a cena abria com 55 quadros de papel liso: agora as três RANHURAS (o lugar
+     de cada cédula: retângulos tracejados de 1.000 × 1.240 em --tinta-escura a 20 %, sem texto) estão no papel desde o quadro 0; a
+     cédula de 1974, empurrada um palmo, deixa a ranhura dela à mostra embaixo. Conta como um elemento (o desenho). (2) As colunas
+     das pontas saíam da margem com o push-in (1,029 no fim): c1 em cx 764 (x 264→1.264) e c3 em cx 3.070 (x 2.570→3.570); as mãos em
+     x 2.620→3.380, fora do canto. Os números do cabeçalho abaixo que divergirem (700, 3.140) são os de antes. -->
 <head>
 <meta charset="utf-8">
 <title>s11 — Voters rejected moving the capital in 1960 and 1962. In August 1974, they approved it</title>
@@ -56,6 +61,9 @@
   #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--papel);
     font-family: var(--fonte); color: var(--tinta-escura); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
+  /* as ranhuras: o lugar de cada cédula, em traço de 6 px --tinta-escura a 20 %, tracejado; nenhum texto */
+  #ranhuras { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
+  #ranhuras rect { fill: none; stroke: color-mix(in srgb, var(--tinta-escura) 20%, transparent); stroke-width: var(--linha-espessura); stroke-dasharray: 36 24; }
 
   /* A CÉDULA: um cartão --tinta sobre o --papel, com sombra; o grupo é posto pelo __renderAt (translate/rotate/scale) */
   .cedula { position: absolute; left: 0; top: 0; width: 1000px; height: 1240px; background: var(--tinta); transform-origin: 50% 50%; opacity: 0;
@@ -80,7 +88,7 @@
     -webkit-mask-size: 640px; mask-size: 640px; }
 
   /* AS MÃOS de pictograma (--neutro): sobem de baixo do quadro e empurram a terceira cédula; ficam POR BAIXO dela */
-  #maos { position: absolute; left: 2760px; top: 1580px; width: 760px; height: 320px; opacity: 0; overflow: visible; }
+  #maos { position: absolute; left: 2620px; top: 1580px; width: 760px; height: 320px; opacity: 0; overflow: visible; }   /* correção (01/10/2026): até x 3.380, fora do canto */
   #maos rect { fill: var(--neutro); }
 
   /* o crédito (§4.2): 76 px, x = 200, abaixo de y = 1880; sobre o --papel, em --tinta-escura a 72 % (prancha, .papelf .credito) */
@@ -93,6 +101,10 @@
 <body>
 <div id="palco" data-qc-sem-heroi="DADO de placar: os carimbos são o veredito de cada coluna (papel carimbo da identidade §5); nenhum é o herói da cena (ofício do editor-de-arte §6)">
   <div id="cam">
+    <!-- as três ranhuras das cédulas, desenhadas desde o quadro 0 (correção do render, 01/10/2026: a cena abria com 1,83 s de papel vazio) -->
+    <svg id="ranhuras" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="264" y="420" width="1000" height="1240" rx="16"/><rect x="1420" y="420" width="1000" height="1240" rx="16"/><rect x="2570" y="420" width="1000" height="1240" rx="16"/>
+    </svg>
     <!-- as mãos, por baixo das cédulas -->
     <svg id="maos" viewBox="0 0 760 320" width="760" height="320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <g id="maoE">
@@ -244,9 +256,9 @@
   };
   // as colunas: cédulas de 1000 × 1240 em x 200, 1420 e 2640 (centros 700, 1920 e 3140), y 420 → 1660
   var COL = [
-    { id: "c1", cx: 700,  cy: 1040, rot: -0.8 },
+    { id: "c1", cx: 764,  cy: 1040, rot: -0.8 },   // correção do render (01/10/2026): 264→1.264 (girado, 255 ≥ 254 sob a câmera a 1,029)
     { id: "c2", cx: 1920, cy: 1040, rot: 0.6 },
-    { id: "c3", cx: 3140, cy: 1040, rot: -0.4 }
+    { id: "c3", cx: 3070, cy: 1040, rot: -0.4 }    // idem: 2.570→3.570 (girado, 3.579 ≤ 3.586)
   ];
   var W = 1000, H = 1240;
 

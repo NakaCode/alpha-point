@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s56 · "The Juneau Assembly, the city council, still backed the road in January 2017, six to three."
+  Word-lock (−578.133) · inSec 578.133 · dur 6.8 (204 quadros a 30 fps; espelho.json, _quadros 17344→17548)
+  Modo do espelho: foto → dados · Modelos da identidade: a FOTO MÉDIA IMPRESSA sobre a mesa de feltro sob a luz (a sessão
+  de 23/1/2017, até 1,4×; identidade §5, "A foto média também vai impressa") e o DADO sobre --papel (nove círculos, seis
+  cheios: o placar sem número)
+
+  O que manda em cada coisa: o espelho (s56), o conceito (s56), a regência (s56: dois beats), os textos finais do redator
+  (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s56, _creditos s56,
+  nao_vai_para_tela s56) e a marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS.
+
+  OS BEATS (tempo local = master − 578,133; palavras do words.json):
+    b1  0,000–2,233  "The Juneau Assembly, the city council,"  (regência s56#1, rajada)
+        A foto da sessão (2048×1089) IMPRESSA sobre a mesa a 1,4× (o teto): o RECORTE À MESA DOS MEMBROS, a faixa de cima
+        do arquivo (x 0→2048, y 0→196: os nove membros à mesa, com a geleira na parede; o homem da jarra, cuja cabeça
+        começa em y ≈ 200, fica FORA, e com ele o público e as placas de nome, que ficam abaixo de y 196: ninguém é nomeado
+        nem legível), 2.867 × 274 na tela, com a moldura --tinta de 48 px (2.963 × 370), duas fitas, −1,2°, centrada em
+        (1.920/1.085: y 900→1.270), pousando em 0,6 s desde o primeiro quadro. O recorte é só de enquadramento: não muda o
+        sentido (a Assembleia em sessão). Sem aviso (ano do fato). A pílula Juneau Assembly (438/640, alinhada à borda
+        esquerda da foto) sobre a mesa, fora da foto, desde o primeiro quadro. A luz atrás da foto. 2 elementos.
+    b2  2,233–6,800  "still backed the road in January twenty seventeen, six to three."  (regência s56#2)
+        Corte seco para o DADO sobre --papel: NOVE CÍRCULOS (a Assembleia; traço de 6 px, --tinta-escura, r 110, em linha
+        em y 1.000, x 520→3.320) desde o começo do beat (2,233; um a cada 40 ms); JANUARY 2017 na pílula --rotulo (200/160, fora da
+        câmera do DADO, como o OCTOBER 2000 de s49) em "January" (3,367); em "six" (5,217) SEIS deles se ENCHEM, da esquerda para a direita, um a cada 50 ms, em
+        --destaque (a cidade, o protagonista, insiste na estrada): o placar sem número (6–3 fica na voz, R1). 2 elementos
+        (os círculos e JANUARY 2017). Blocos: 0. Herói: nenhum.
+    Créditos: Michael Penn / Juneau Empire solto na mesa (--sec) no b1; Source: KTOO, 2017 em --tinta-escura a 72 % sobre
+    o papel no b2.
+
+  A MÍDIA (conferencia-midia.json › candidatos, veredito aprovado para s56 plano 1):
+    ../_media/foto/s56/juneau-assembly-2017-01-23-dais-je-penn.jpg  2048×1089
+      sha256 18c4a41d8da4caecbbdfbcd333a4f2fca6d61708b8a6ad17e5e5658df5a49faa · Michael Penn / Juneau Empire (o crédito
+      na tela; foto de jornal citando a fonte, midia.md §7.5) · lugar_na_origem "Juneau Assembly members take up the
+      Juneau Access Road resolution … Jan. 23, 2017" (o rótulo: Juneau Assembly) · data_na_origem Jan. 23, 2017 ·
+      aviso_de_ano false.
+    Nenhum upscale além de 1,4×, nenhum filtro, nenhum recorte que mude o sentido. O p2 é DADO construído (KTOO, 2017).
+
+  A MESA (identidade §5): a luz é o fundo de #cam, o feltro é #mesa, primeiro filho, os dois POR BAIXO de tudo, só pelos
+  tokens --mesa-*. A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Margens 200/160;
+  canto inferior direito (400×400) vazio; crédito em x = 200, y > 1880.
+
+  O CONTRATO: window.__duracao = 6.8; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
+  __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia
+  inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+-->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): a pílula JANUARY 2017, montada em 200/160 dentro da câmera do DADO, saía
+     da margem com a aproximação (borda esquerda em x 178→190, topo em y 150→155). Agora ela fica fora de #cam2, como o
+     OCTOBER 2000 de s49: em 200/160 em todo quadro; os círculos continuam sob a câmera. -->
+<head>
+<meta charset="utf-8">
+<title>s56 — The Juneau Assembly, the city council, still backed the road in January 2017, six to three</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+
+  /* b1: a mesa e a foto impressa */
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
+      var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+  #mesa { position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
+  .impressa { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; opacity: 0; }
+  .impressa .moldura { position: absolute; inset: 0; background: var(--tinta);
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  /* 2048×196 do arquivo a 1,4× = 2867×274; a imagem inteira a 1,4× (2867×1525), recortada à faixa de cima */
+  .impressa .recorte { position: absolute; left: 48px; top: 48px; width: 2867px; height: 274px; overflow: hidden; background: var(--painel); }
+  .impressa .recorte img { position: absolute; left: 0; top: 0; width: 2867px; height: 1525px; display: block; }
+  .fita { position: absolute; width: 460px; height: 150px; background: color-mix(in srgb, var(--papel) 62%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--tinta-escura) 18%, transparent);
+    clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 86%, 97% 100%, 0 100%, 4% 88%, 0 72%, 4% 56%, 0 40%, 4% 24%);
+    transform-origin: 50% 50%; opacity: 0; }
+  .pilula { position: absolute; white-space: nowrap; background: var(--rotulo); color: var(--tinta); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-family: var(--fonte); font-weight: var(--peso-rotulo);
+    font-size: var(--fs-rotulo); line-height: 1.1; letter-spacing: 0; opacity: 0; }
+
+  /* b2: o DADO sobre --papel: os nove círculos */
+  #papel { position: absolute; inset: 0; width: 3840px; height: 2160px; background: var(--papel); visibility: hidden; }
+  #cam2 { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
+  #circulos { position: absolute; inset: 0; width: 3840px; height: 2160px; overflow: visible; }
+  #circulos .aro { stroke: var(--tinta-escura); stroke-width: var(--linha-espessura); fill: none; }
+  #circulos .cheio { fill: var(--destaque); stroke: none; }
+
+  /* o crédito (§4.2): 76 px; solto em --sec sobre a mesa; sobre o papel em --tinta-escura a 72 % */
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x)); }
+  .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1; color: var(--sec);
+    letter-spacing: 0; opacity: 0; }
+  #creds.papel .cred { color: color-mix(in srgb, var(--tinta-escura) 72%, transparent); }
+  .cred[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="foto impressa da sessão e DADO dos nove círculos: Juneau Assembly e JANUARY 2017 são rótulos; o placar é figura, sem número; nenhum herói (ofício do editor-de-arte §6)">
+  <!-- b1: a mesa, a foto da sessão impressa -->
+  <div id="cam">
+    <div id="mesa"></div>
+    <!-- 2963 × 370 (48 + 2867 + 48 / 48 + 274 + 48) -->
+    <div class="impressa" id="foto" style="width:2963px;height:370px">
+      <div class="moldura"></div>
+      <div class="recorte"><img src="../_media/foto/s56/juneau-assembly-2017-01-23-dais-je-penn.jpg" alt=""></div>
+      <div class="fita" id="fitaE" style="left:-60px;top:-14px"></div>
+      <div class="fita" id="fitaD" style="left:2563px;top:-14px"></div>
+    </div>
+    <div class="pilula" id="rLugar" data-qc-papel="rotulo" style="left:438px;top:640px"></div>
+  </div>
+  <!-- b2: os nove círculos sobre o papel -->
+  <div id="papel">
+    <div id="cam2">
+      <svg id="circulos" viewBox="0 0 3840 2160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
+    </div>
+    <!-- fora da câmera do DADO (como o OCTOBER 2000 de s49): a pílula fica em 200/160 em todo quadro -->
+    <div class="pilula" id="data" data-qc-papel="rotulo" style="left:200px;top:160px"></div>
+  </div>
+  <div id="creds">
+    <div class="cred" id="credFoto"  data-qc-papel="credito" hidden></div>
+    <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
+  </div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo;
+  var E = function (id) { return document.getElementById(id); };
+  var lerp = function (a, b, p) { return a + (b - a) * p; };
+  var DUR = 6.8;
+  window.__duracao = DUR;
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é a do textos-tela.json do disco) ═══════════════════════════
+  var TEXTOS = {
+    rLugar:    "Juneau Assembly",                                 // textos-tela.json › rotulos_dado s56 (lugar_registro, pelo lugar_na_origem)
+    data:      "JANUARY 2017",                                    // textos-tela.json › rotulos_dado s56 (data)
+    credFoto:  "Michael Penn / Juneau Empire",                    // textos-tela.json › _creditos s56 (a foto do p1, midia.md §7.5)
+    credFonte: "Source: KTOO, 2017"                               // textos-tela.json › _creditos s56 (os seis círculos cheios de nove)
+  };
+  // 6–3 NÃO vai à tela (textos-tela.json › nao_vai_para_tela s56; R1 da regência): os seis círculos cheios de nove mostram
+  // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
+  E("rLugar").textContent = TEXTOS.rLugar; E("data").textContent = TEXTOS.data;
+
+  // ── os nove círculos (a Assembleia): r 110, em linha, x 520→3.320, y 1.000 ──
+  var NS = "http://www.w3.org/2000/svg", AROS = [], CHEIOS = [];
+  (function () {
+    var svg = E("circulos");
+    for (var i = 0; i < 9; i++) {
+      var cx = 520 + i * 350;
+      var c = document.createElementNS(NS, "circle"); c.setAttribute("class", "cheio"); c.setAttribute("cx", cx); c.setAttribute("cy", 1000); c.setAttribute("r", 0); svg.appendChild(c); CHEIOS.push(c);
+      var a = document.createElementNS(NS, "circle"); a.setAttribute("class", "aro"); a.setAttribute("cx", cx); a.setAttribute("cy", 1000); a.setAttribute("r", 110); a.style.opacity = "0"; svg.appendChild(a); AROS.push(a);
+    }
+  })();
+
+  // ── os tempos (locais, −578,133), da regência s56 e do words.json ──
+  var T = {
+    pousa: 0.033, pousaDur: 0.6, fita: 0.45,   // a foto impressa pousa desde o primeiro quadro
+    corte: 67 / 30,                            // 2,233: "still" (o DADO sobre o papel)
+    aros: 2.233, aroPasso: 0.04,               // os nove círculos, um a cada 40 ms
+    data: 3.367,                               // "January" (581,5): JANUARY 2017
+    six: 5.217, sixPasso: 0.05, encheDur: 0.22 // "six" (583,35): seis se enchem, um a cada 50 ms
+  };
+  var FOTO = { w: 2963, h: 370, cx: 1920, cy: 1085, rot: -1.2 };
+  var LUZ = { x: 1920, y: 1085 };
+
+  function por(el, cx, cy, w, h, rot, s, op) {
+    el.style.transform = "translate(" + (cx - w / 2).toFixed(2) + "px," + (cy - h / 2).toFixed(2) + "px) rotate(" +
+      rot.toFixed(3) + "deg) scale(" + s.toFixed(5) + ")";
+    if (op !== undefined) el.style.opacity = clamp(op, 0, 1).toFixed(3);
+  }
+  function rotulo(el, op) {
+    op = clamp(op, 0, 1);
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = "translateY(" + ((1 - op) * 24).toFixed(1) + "px)";   // rótulo: 300 ms, opacidade + 24 px (§4.4)
+  }
+  function fita(el, t, t0, rot) {
+    var p = eo(seg(t, t0, 0.3));
+    el.style.opacity = p.toFixed(3);
+    el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + rot + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
+  }
+  function credito(el, texto, op) {
+    if (el.textContent !== texto) el.textContent = texto;
+    el.hidden = op <= 0; el.style.opacity = clamp(op, 0, 1).toFixed(3);
+  }
+
+  function cena(t) {
+    t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
+    var b1 = t < T.corte;
+
+    // ── b1: a mesa; a foto da sessão impressa pousa; o rótulo desde o primeiro quadro ──
+    var cam = E("cam");
+    cam.style.visibility = b1 ? "visible" : "hidden";
+    R.camera(cam, t, { base: 1.0 });
+    var q = eo(seg(t, T.pousa, T.pousaDur));
+    por(E("foto"), FOTO.cx, FOTO.cy + 240 * (1 - q), FOTO.w, FOTO.h, lerp(FOTO.rot - 2, FOTO.rot, q), 0.8 + 0.2 * q, seg(t, T.pousa, 0.22));
+    fita(E("fitaE"), t, T.pousa + T.fita, -4); fita(E("fitaD"), t, T.pousa + T.fita + 0.12, 4);
+    rotulo(E("rLugar"), b1 ? eo(seg(t, 0, 0.3)) : 0);
+    cam.style.setProperty("--luz-x", LUZ.x + "px"); cam.style.setProperty("--luz-y", LUZ.y + "px");
+
+    // ── b2: os nove círculos; JANUARY 2017 em "January"; seis se enchem em "six" ──
+    E("papel").style.visibility = b1 ? "hidden" : "visible";
+    R.camera(E("cam2"), t, { base: 1.0 });
+    for (var i = 0; i < 9; i++) {
+      var a = b1 ? 0 : eo(seg(t, T.aros + i * T.aroPasso, 0.3));
+      AROS[i].style.opacity = a.toFixed(3);
+      AROS[i].setAttribute("r", (110 * (0.8 + 0.2 * a)).toFixed(2));
+      var f = (b1 || i >= 6) ? 0 : eo(seg(t, T.six + i * T.sixPasso, T.encheDur));
+      CHEIOS[i].setAttribute("r", (110 * f).toFixed(2));
+    }
+    rotulo(E("data"), b1 ? 0 : eo(seg(t, T.data, 0.3)));
+
+    // ── os créditos: solto na mesa no b1; sobre o papel no b2 ──
+    E("creds").classList.toggle("papel", !b1);
+    credito(E("credFoto"), TEXTOS.credFoto, b1 ? eo(seg(t, 0, 0.3)) : 0);
+    credito(E("credFonte"), TEXTOS.credFonte, b1 ? 0 : eo(seg(t, T.corte, 0.3)));
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // nunca lança
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); };
+  window.__fotosProntas = R.prontas();
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

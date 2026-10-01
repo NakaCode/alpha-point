@@ -1056,3 +1056,25 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   bate nesse teto, e a mensagem do motor manda olhar o Chrome, que não tem culpa. No motor, o conserto é o
   `chrome.mjs` abrir o WebSocket sem a compressão (o mesmo truque), ou pedir o quadro em pedaços. Vale avisar o
   Lucas e o Mateus.
+
+### 58. O render mostra o que o quadro de montagem não mostra: a câmera do RIG leva o que está na margem para fora
+- **Problema:** depois dos primeiros 35 renders do Juneau, uma conferência independente nos MP4 (7 conferentes e 7
+  céticos, 1.054 quadros) confirmou 34 defeitos que nenhum portão pegou, porque os portões que abrem a cena no Chrome
+  estão NÃO MEDIDO sem o npm, e o editor conferia a montagem pelo primeiro quadro:
+  - **a margem sob a câmera:** o `R.camera` do RIG tem zoom contínuo (base + 0,0024 por segundo), e a órbita e a deriva
+    movem o palco. O que foi montado rente à margem de 200 px sai dela no fim da cena: 20 a 55 px em 13 cenas;
+  - **o canto do YouTube e a faixa do crédito:** a foto impressa e o cartão da fala entram neles pelo mesmo motivo, e
+    uma fala quebrou em 5 linhas no render, e não nas 3 que o relato previa;
+  - **o salto do crédito:** com duas linhas num bloco ancorado embaixo, a que entra por `hidden` faz a outra subir
+    83 px num quadro só;
+  - **o recorte da foto conferido só num instante:** a borda da digitalização, a moldura do diapositivo, um pedaço da
+    aeronave e uma placa com o nome de uma deputada continuaram no quadro em outros momentos, ou com o Ken Burns.
+- **O que resolveu:** a regra na roupa do `editor-de-arte` (o que encosta na margem se monta recuado pelo zoom
+  máximo da cena, com a conta escrita; o crédito muda de altura junto com o fade), e a conferência dos clipes
+  renderizados por quadros do MP4, em vários instantes de cada beat, com um cético por achado. A lista está em
+  `out/juneau/_tmp/verificacao-render-2026-10-01.json` (fora do git).
+- **Como evitar:** confira a cena no último quadro e no meio de cada movimento, não só no primeiro. Com o npm
+  autorizado, o `qc-fora-do-quadro` e o `check-overlap` mediriam isso em toda cena.
+- **Por que serve a qualquer canal:** o RIG é do motor, e todo canal que monta cena com a câmera dele e conferência
+  pelo primeiro quadro vai ter o mesmo desvio. No molde, vale o RIG expor a escala máxima da cena, ou o editor de arte
+  do motor trazer a conta da margem sob a câmera.

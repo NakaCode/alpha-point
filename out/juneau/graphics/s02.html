@@ -49,6 +49,9 @@
   carregar, vai para window.__fontesFaltando, e o render reprova. Nada de relógio, sorteio, @keyframes ou transition.
   O RIG abaixo é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): o grifo da lacuna fecha em 4,4 (0,4 s), antes do corte; a folha nasce em y 240
+     (era 170) e as fitas em y 200/210 (eram 95/105): no primeiro quadro nada passa da margem de cima (o canto girado da folha em 221,
+     a fita girada em 168); a rolagem desce 1.632 (70 a mais), e o enquadramento em repouso é o mesmo. -->
 <head>
 <meta charset="utf-8">
 <title>s02 — The answer comes down to one line that showed up on later ballots: the price</title>
@@ -119,14 +122,14 @@
       <!-- a folha: 2.760 × 2.980, em (540, 170), 0,8°; o rasgo começa em 95,5 % (2.846); a sombra acaba onde o rasgo começa.
            O literal começa em y 2.040 da folha (fora do quadro em t = 0: a câmera o procura) e a linha do cifrão fica em
            2.427 → 2.556; de lá ao rasgo sobram 290 px em branco (--doc-margem-rasgo: 240). -->
-      <div class="folha-sombra" style="left:540px;top:170px;width:2760px;height:2846px;transform:rotate(0.8deg)"></div>
-      <div class="folha rasgada" id="folha" style="left:540px;top:170px;width:2760px;height:2980px;padding:160px 170px 0;transform:rotate(0.8deg)">
+      <div class="folha-sombra" style="left:540px;top:240px;width:2760px;height:2846px;transform:rotate(0.8deg)"></div>
+      <div class="folha rasgada" id="folha" style="left:540px;top:240px;width:2760px;height:2980px;padding:160px 170px 0;transform:rotate(0.8deg)">
         <div class="cab"><span class="caixa-ref" id="cab"></span></div>
         <div class="fio" style="margin:44px 0 50px"></div>
         <p class="corpo" id="corpo" style="margin-top:1650px"><span id="literal"></span><span class="lacuna"><i class="grifo" id="grifo"></i></span></p>
       </div>
-      <div class="fita" style="left:400px;top:95px;transform:rotate(-7deg)"></div>
-      <div class="fita" style="left:2920px;top:105px;transform:rotate(6deg)"></div>
+      <div class="fita" style="left:400px;top:200px;transform:rotate(-7deg)"></div>
+      <div class="fita" style="left:2920px;top:210px;transform:rotate(6deg)"></div>
     </div>
   </div>
   <div id="creds">
@@ -237,8 +240,8 @@
 
   // ── os tempos (locais, −13,6), do words.json e da regência s02 ──
   var T = {
-    desce: 0.0, desceDur: 3.0, desceD: 1562,   // a câmera desce 1.562 px em 3 s (ease-in-out cúbico): a linha do cifrão (y 2.427→2.556 da folha) para em y ≈ 1.100
-    grifo: 4.0, grifoDur: 0.55                 // "price" (17,59 s): o grifo cresce da esquerda para a direita e fica
+    desce: 0.0, desceDur: 3.0, desceD: 1632,   // a câmera desce 1.632 px em 3 s (ease-in-out cúbico): a linha do cifrão (y 2.427→2.556 da folha) para em y ≈ 1.100 (a folha começa 70 px mais baixa)
+    grifo: 4.0, grifoDur: 0.4                  // "price" (17,59 s): o grifo cresce da esquerda para a direita e fica (fecha em 4,4, antes do corte em 4,533)
   };
 
   function cena(t) {
