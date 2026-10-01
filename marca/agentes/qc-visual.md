@@ -93,6 +93,13 @@
 - **O `aprovado`** segue o ofício: todas as lentes ≥ 7 **e** `gatesDuros` vazio, com os portões rodados. Portão
   que mediu e reprovou vai a `gatesDuros`. Portão que não rodou numa cena (exit 2 com o alvo certo) segue NÃO
   MEDIDO, pelo nome, e a cena fica `aprovado: false` até ele rodar.
+- **A exceção do Lucas** (CLAUDE.md, "Os portões medem", 01/10/2026). Uma reprovação que a triagem deu como limitação
+  do portão vai ao Lucas, cena por cena. Se ele manda manter, ela fica em `out/<proj>/qc/_excecoes-portao.json`, com a
+  cena, o portão, o sha1 do HTML e a mensagem dele.
+  - Essa reprovação, e só ela, sai de `gatesDuros`. Ela vai à lente `fonte` ou `espaco` como problema citado:
+    "exceção do Lucas: <portão>, <mensagem>, <hora>".
+  - Só vale com o sha1 do HTML igual ao da exceção. Qualquer outra reprovação na cena continua em `gatesDuros`.
+  - Sem a exceção no arquivo, a reprovação fica em `gatesDuros`, mesmo que a triagem diga que é limitação.
 - **Os 12 laudos do 1º lote** (escritos antes da instalação, com os portões NÃO MEDIDO) se refazem com o
   resultado do `qc-cena`: as lentes não mudam, e o `aprovado` passa a valer pela regra acima.
 

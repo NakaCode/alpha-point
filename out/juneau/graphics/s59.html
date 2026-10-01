@@ -43,11 +43,23 @@
   abertura (sete, nos zooms 12,5 e 13) evita a passagem, e à esquerda a divisa fica a 5 px da legenda na câmera nomeada.
   Parada, a legenda fica fora de toda linha.
 
-  A CONTA E O LUGAR (minha, pelo ensaio a seco, não portão: o qc-carga sai NÃO MEDIDO sem npm): nenhum rótulo sobre
-  linha; margens de 200/160; a faixa de 1880 só com crédito; o canto vazio; medido nos 196 quadros, sem tile.
+  A CONTA E O LUGAR (minha, pelo ensaio a seco; desde 01/10/2026 os portões de navegador também medem, no qc-cena):
+  nenhum rótulo sobre linha; margens de 200/160; a faixa de 1880 só com crédito; o canto vazio; medido nos 196
+  quadros, sem tile.
 
   O MAPA: o perfil do canal (maptiler: satellite-v2), brilho 65 % e saturação 70 % na camada, sem véu, sem relevo. A divisa
   é a única linha branca.
+
+  OS NÍVEIS DA BASE NO RECUO (correção 2 do Claude central, 01/10/2026, item 1): o MapLibre mostra a base raster num
+  nível de tile só, o arredondado do zoom, e troca o nível inteiro quando o zoom cruza x,5. Na MapTiler, aqui, cada
+  nível tem um tom; no recuo (13 → 8,72), a base escurecia e mudava de cor num quadro só em 12,5, 11,5 e 10,5 (o
+  brilho médio caía 5,5, 2,9 e 8,9 de um quadro para o seguinte). Agora a troca é um cruzamento determinístico pelo
+  zoom (CENA.niveis): para cada nível N de 12 a 9, uma camada da mesma base presa a N (maxzoom N) entra por cima da
+  base, com a opacidade indo de 0 a 1 enquanto o zoom desce de "de" a N + 0,5. Em N + 0,5 ela cobre a base inteira,
+  e logo abaixo a base já está em N: ela sai sem que se veja (é o mesmo nível). O tom muda junto com o zoom, sem
+  degrau. A camada fica desligada (visibility none) fora da janela dela, e não pede tile. Na parada do b1 (zoom 13) e
+  na câmera nomeada (8,72) nenhuma camada a mais está acesa: a base é a de antes. O estilo não tem transição
+  (transition 0, a correção 1): a opacidade de cada quadro é a do __renderAt dele.
 
   O CONTRATO: var DUR = 6.533 (o qc-janela lê o número escrito); __renderAt(t) determinístico e à prova de erro;
   __prepararCaptura; __ready (o mapa); __aguardarMapa; __fotosProntas. Nada de relógio, sorteio, @keyframes, transition
@@ -228,6 +240,9 @@
     // ── A CÂMERA: parada perto do anel (b1); recua em 2,4 s até a câmera nomeada da s03 (b2), com o anel ancorado
     perto: { zoom: 13.0, anelTela: [1920, 1000] },
     recuo: { de: 2.133, dura: 2.4 },
+    // os níveis da base no recuo (OS NÍVEIS DA BASE NO RECUO, no cabeçalho): a camada presa ao nível "nivel" entra de 0
+    // (zoom "de") a 1 (zoom nivel + 0,5); a 1ª janela começa no zoom de perto (13), para a parada do b1 ficar como está
+    niveis: [{ nivel: 12, de: 13.0 }, { nivel: 11, de: 12.5 }, { nivel: 10, de: 11.5 }, { nivel: 9, de: 10.5 }],
     nomeada: { lng: -134.9510, lat: 58.7560, zoom: 8.72, bearing: 0, pitch: 0 },   // "Juneau–estrada–anel" (s03)
 
     estrada: { geo: "estrada-juneau-cascade", apaga: 3.833, apagaDur: 0.3, traca: 3.833, tracaDur: 1.0 },
@@ -387,8 +402,17 @@
 
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    return { version: 8, sources: { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } },
-      layers: [{ id: "base", type: "raster", source: "base", paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+    var pinta = { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 };
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var camadas = [{ id: "base", type: "raster", source: "base", paint: pinta }];
+    // as camadas presas a cada nível (CENA.niveis), por cima da base, desligadas até a janela delas
+    CENA.niveis.forEach(function (N) {
+      fontes["base-z" + N.nivel] = { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: N.nivel };
+      camadas.push({ id: "base-z" + N.nivel, type: "raster", source: "base-z" + N.nivel, layout: { visibility: "none" },
+        paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0, "raster-opacity": 0 } });
+    });
+    // sem transição: a pintura de cada quadro é a do __renderAt dele (correção 1 do Claude central, 01/10/2026)
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -564,10 +588,19 @@
     el.style.transform = "translate(" + tx + ",-50%) translateY(" + ((1 - ent) * 24).toFixed(1) + "px)";
   }
   var ultimaFrac = null;
+  var nivelAntes = {};
   function aplicar(t) {
     if (!mapaCarregado) return;
     t = t + 0.0005;   // meio milissegundo: os tempos são quadros arredondados a 3 casas (4,533 = 136/30)
-    map.jumpTo(cameraAt(t));
+    var camT = cameraAt(t);
+    map.jumpTo(camT);
+    // ── os níveis da base: a camada de cada nível pela fração do zoom; fora da janela, desligada ──
+    CENA.niveis.forEach(function (N) {
+      var z = camT.zoom, a = z < N.nivel + 0.5 ? 0 : cl((N.de - z) / (N.de - N.nivel - 0.5), 0, 1), id = "base-z" + N.nivel;
+      var vis = a > 0 ? "visible" : "none", k = vis + "|" + a.toFixed(4);
+      if (nivelAntes[id] === k) return;
+      map.setLayoutProperty(id, "visibility", vis); map.setPaintProperty(id, "raster-opacity", +a.toFixed(4)); nivelAntes[id] = k;
+    });
     var C = CENA;
     // ── a estrada: inteira até "forty-three"; aí se apaga (300 ms) e se traça de volta, de Cascade Point a Juneau ──
     var Es = C.estrada, oe = 1 - eo(seg(t, Es.apaga, Es.apagaDur));

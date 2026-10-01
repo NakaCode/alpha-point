@@ -92,5 +92,8 @@ quando ele mostrar.
 | s44 (3º render: a Thane Road, a divisa larga, o Taku sem fantasma; com o relevo) | 12:19:10 | 12:25:22 | 2160p |
 | s50 (2º render: as pílulas pela caixa real, o giro de 20° no b6, a divisa larga) | 12:25:23 | 12:29:23 | 2160p |
 | s05 (3º render: o cartão da fala assentando no lugar; o inset de mapa) | 12:30:47 | 12:32:53 | 2160p |
-| s57 (2 cargas do editor na rodada 7: o qc-cena e uma captura) | ~13:1x | — | o inset |
+| s57 (2 cargas do editor na rodada 7: o qc-cena e uma captura) | antes das 12:55 | — | o inset |
 | s57 (3º render: o tronco espera os ramos) | 12:55:06 | 12:56:57 | 2160p |
+| s59 e s48 (4 cargas do mapista na correção 2: o qc-cena da s59 às 13:04, da s48 às 13:05 e das duas às 13:12) | 13:04 | 13:12 | qc-cena |
+| s59 (2º render: o recuo cruza os níveis com o CENA.niveis; pede os níveis 12 a 9) | 13:14:16 | 13:15:44 | 2160p |
+| s48 (2º render: a pílula Lynn Canal sobre o ponto do GNIS) | 13:15:44 | 13:17:57 | 2160p |

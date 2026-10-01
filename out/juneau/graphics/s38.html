@@ -21,8 +21,11 @@
         FITAS DE PAPEL (--papel, Inter 500, 84 px, --tinta-escura) deslizando da direita para a conta, cada uma na sua
         palavra: social em "social," (3,762), economic em "economic" (4,318), environmental em "environmental" (5,019).
     b2  6,800–9,566  "The stated purpose is the people's "right to know.""  (regência s38#2)
-        O RECIBO EM BRANCO (--papel, 360 × 820, o topo rasgado, sem texto) SOBE DA CONTA em "The stated purpose" (6,813),
-        0,8 s, dentro da luz, por trás da calculadora, até o alto do quadro (y 150→970). RIGHT TO KNOW fica na voz (R1:
+        O RECIBO EM BRANCO (--papel, 320 × 820, o topo rasgado, sem texto; 360 até 01/10/2026, quando ele encostava na
+        cadeira da esquerda no alto) SOBE DA CONTA em "The stated purpose" (6,813),
+        0,8 s, dentro da luz, por trás da calculadora (começa INTEIRO atrás dela, com o topo no topo dela, y 620; o que
+        ficaria abaixo do pé dela é cortado por uma janela até y 1.376), 435 px, até o alto do quadro (y 185→1.005; o ponto
+        mais alto, girado, em 182, que a câmera do fim leva a 166, dentro da margem de 160). RIGHT TO KNOW fica na voz (R1:
         ficaria 0,85 s até o corte, e a linha já esteve na cédula de s35).
     Elementos: a roda das nove cadeiras (1), a calculadora (1), as três fitas (3) e o recibo (1): o conceito conta 5. Blocos:
     0. Herói: nenhum (data-qc-sem-heroi). A luz: atrás da calculadora, parada. Crédito Source: Alaska State Legislature,
@@ -39,6 +42,27 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia
   inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4; correcao-render-5.md, item 1; qc-visual, lente motion): o recibo nascia em y
+     1.000→1.820 e subia 850 px; a calculadora acaba em y 1.380, e por 5 quadros (6,833–6,967) os 440 px de baixo do recibo
+     apareciam SOB a calculadora antes de passarem para trás dela. Agora o recibo nasce com o topo no topo da calculadora
+     (y 620→1.440) e sobe 470 px, no mesmo tempo (6,813, 0,8 s, ease-out) e até a mesma chegada (y 150→970); os 60 px que
+     ficariam abaixo do pé dela (1.380→1.440) são cortados por uma janela (#reciboJanela, overflow hidden até y 1.376),
+     dentro de #cam, que escala com a calculadora. No 1º quadro o recibo está inteiro atrás dela; dali em diante só o que
+     emerge por cima dela aparece. O rasgo do topo e a inclinação de −1,2° são os de antes. -->
+<!-- CORREÇÃO DO RENDER 2 (01/10/2026; qc-visual s38, lente espaço, a pedido do Claude central): na chegada, o recibo de 360 px
+     encostava no traço da cadeira da esquerda do alto (folga ~0) e ficava a ~10 px da da direita, porque a inclinação de −1,2°
+     leva o topo dele 8,6 px para a esquerda. Abrir a roda não cabe: as cadeiras de cima (y 184→350) ficam a 168 px do alto sob
+     a câmera do fim (1,023), e a de baixo já toca y 1.882; 20 px a mais de raio levariam as de cima a y 149. O recibo passa
+     a 320 × 820, em left 1.766 (centro em 1.926): na altura do centro das cadeiras (y 267), a borda esquerda dele fica em
+     x ≈ 1.760 e a direita em ≈ 2.080; as bordas internas das cadeiras em 1.736 e 2.104: ~24 px de folga de cada lado, as
+     mesmas sob a câmera (a roda e o recibo escalam juntos). O recibo continua inteiro atrás da calculadora no começo
+     (x 1.766→2.086 dentro de 1.640→2.200) e sem texto. -->
+<!-- CORREÇÃO DO RENDER 3 (01/10/2026; roupa §4, a margem em todo quadro sob a câmera; APRENDIZADOS 58): a chegada do recibo
+     em y 150 ficava em y ≈ 134–138 sob a câmera (1,016→1,023, com a deriva), fora da margem de 160, enquanto ele está no ar
+     (6,813 ao fim). A chegada desce para y 185 (o recibo sobe 435 px em vez de 470, no mesmo tempo): o ponto mais alto, o
+     canto de cima à direita girado em −1,2°, fica em y 181,7, que a câmera leva a 168 em 6,813 e a 166 no último quadro.
+     As folgas das cadeiras do alto ficam as mesmas (a inclinação muda a borda em 0,7 px): ≈ 23 px à esquerda e 25 à direita
+     na altura do centro delas; o pé (y 1.005→1.008) continua atrás da calculadora. -->
 <head>
 <meta charset="utf-8">
 <title>s38 — The law calls for a nine-member commission to tally the costs, including social, economic and environmental ones. The stated purpose is the people's right to know</title>
@@ -70,7 +94,10 @@
   .pautada { background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 96px, color-mix(in srgb, var(--tinta-escura) 14%, transparent) 96px, color-mix(in srgb, var(--tinta-escura) 14%, transparent) 100px); }
   #calc { left: 1640px; top: 620px; width: 560px; height: 760px; opacity: 0; }
   #calc .total { position: absolute; left: 40px; right: 40px; bottom: 60px; height: 0; border-top: 6px dashed color-mix(in srgb, var(--tinta-escura) 40%, transparent); }
-  #recibo { left: 1740px; top: 1000px; width: 360px; height: 820px; opacity: 0;
+  /* a janela corta o que do recibo ficaria abaixo do pé da calculadora (y 1.380) enquanto ele sobe por trás dela; 4 px acima
+     do pé, para a borda cortada não aparecer sob a borda da calculadora (correção do render, 01/10/2026) */
+  #reciboJanela { position: absolute; left: 0; top: 0; width: 3840px; height: 1376px; overflow: hidden; pointer-events: none; }
+  #recibo { left: 1766px; top: 620px; width: 320px; height: 820px; opacity: 0;   /* 320 de largura, 26 px à direita do centro: ~24 px de folga para cada cadeira do alto na chegada (a inclinação de −1,2° puxa o topo 8,6 px à esquerda); correção 2 do render, 01/10/2026 */
     clip-path: polygon(0% 1.6%, 4% 0%, 8% 1.8%, 12% .4%, 16% 2%, 20% .6%, 24% 1.9%, 28% .2%, 32% 1.7%, 36% .5%, 40% 2%, 44% .3%, 48% 1.8%, 52% .6%, 56% 1.9%, 60% .2%, 64% 1.6%, 68% .4%, 72% 2%, 76% .5%, 80% 1.8%, 84% .3%, 88% 1.9%, 92% .6%, 96% 1.7%, 100% .4%, 100% 100%, 0% 100%); }
   .fitaPapel { position: absolute; left: 1700px; white-space: nowrap; padding: 24px 40px; font-family: var(--fonte); font-weight: var(--peso-texto);
     font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0; color: var(--tinta-escura); opacity: 0;
@@ -88,7 +115,7 @@
   <div id="cam">
     <div id="mesa"></div>
     <svg id="roda" viewBox="0 0 3840 2160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
-    <div class="papel pautada" id="recibo"></div>
+    <div id="reciboJanela"><div class="papel pautada" id="recibo"></div></div>
     <div class="papel pautada" id="calc"><div class="total"></div></div>
     <div class="papel fitaPapel" id="f0" data-qc-papel="eixo" style="top:680px"></div>
     <div class="papel fitaPapel" id="f1" data-qc-papel="eixo" style="top:840px"></div>
@@ -241,7 +268,7 @@
     // ── b2: o recibo em branco sobe da conta, por trás da calculadora ──
     var r = eo(seg(t, T.recibo, T.reciboDur));
     E("recibo").style.opacity = (t >= T.recibo ? 1 : 0).toFixed(0);
-    E("recibo").style.transform = "translateY(" + (-850 * r).toFixed(1) + "px) rotate(" + (-1.2 * r).toFixed(2) + "deg)";
+    E("recibo").style.transform = "translateY(" + (-435 * r).toFixed(1) + "px) rotate(" + (-1.2 * r).toFixed(2) + "deg)";   // de y 620 a 185 (435 px; era de 1.000 a 150, 850 px: 440 px apareciam sob a calculadora, e o topo em 150 saía da margem sob a câmera; correções do render, 01/10/2026)
 
     // a luz: atrás da calculadora, parada
     cam.style.setProperty("--luz-x", CX + "px"); cam.style.setProperty("--luz-y", CY + "px");

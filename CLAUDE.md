@@ -513,6 +513,20 @@ nas cenas de mapa. Custa algumas horas a mais."
   `maptiler-gasto.md`.
 - Quem roda os portões é o Claude central (e o `editor-de-arte` e o `mapista` antes de entregar). O `qc-visual` lê o
   resultado e só aprova com todas as lentes ≥ 7 e nenhum portão duro reprovado.
+- **A limitação do portão vai ao Lucas, cena por cena** (01/10/2026).
+  - **A pergunta:** em 7 cenas do Juneau, o portão reprova com uma régua do Top10 que a marca não tem, e não há
+    declaração honesta que ele aceite. O código dele vem do motor e não se edita. "Como seguimos?"
+  - **A resposta:** "3. Você vê cada uma antes. Eu te mando o trecho das 7, e você decide cena por cena". As outras
+    opções eram a exceção registrada e mudar as cenas até o portão passar.
+  - **O caminho:** reprovação de portão passa por triagem, com triador e cético (`out/<proj>/_tmp/triagem-portoes-*.json`).
+    - O que sai **declarar** ou **defeito** vai ao editor ou ao mapista.
+    - O que sai **limitação** vai ao Lucas, com o trecho da cena (1080p, com a narração e o ponto marcado) e o texto do
+      que mudaria.
+  - **Se ele manda manter:** a exceção vai a `out/<proj>/qc/_excecoes-portao.json`, com a cena, o portão, o sha1 do
+    HTML, a mensagem literal e a hora dele. O `qc-visual` aprova a cena com aquele portão vermelho, citando a exceção, e
+    só ele. A exceção vale para aquela reprovação. Se o HTML mudar, o Claude central confere que a reprovação continua a mesma
+    (o mesmo texto, o mesmo par, o mesmo tempo) e grava o sha1 novo. Se ela mudou, volta ao Lucas.
+  - **Se ele manda mudar:** é conserto, como qualquer outro.
 
 Não se rodam:
 - `stock/_phil.mjs`, `stock/_contato.mjs` e `_capturar-pagina.mjs`, que mandam cabeçalho de navegador (a regra
