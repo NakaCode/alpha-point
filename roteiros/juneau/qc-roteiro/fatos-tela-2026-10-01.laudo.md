@@ -692,3 +692,29 @@ Checagem de **01/10/2026**. As datas de cada parte:
 2. Os rótulos, os créditos e os avisos das fotos novas seguem o veredito do conferente à risca. O aviso do ano segue um critério só, a fala com ou sem marca de tempo.
 
 VEREDITO: RESSALVA
+
+---
+
+## Adendo de 01/10/2026: um crédito novo em s55
+
+*Copiado da conversa "Juneau · verificador-de-fatos" pelo Claude central (14:5x de Brasília), sem mudança no conteúdo.*
+
+**O objeto.** `out/juneau/textos-tela.json`, sha256 `323244041ec21514119393e83ad313157f4780b4c6a1843a81a3cfd5b7fe0002`.
+- Comparado com a versão checada (`98e3e7f8…`, commit `c5c0dff`), a única mudança é um item novo em `_creditos`, na posição 72, logo depois do crédito da FSEIS em s55.
+- Os outros 410 itens são iguais, byte a byte.
+
+**O id.** K71a. Assim os ids da tabela do laudo não mudam. No arquivo, os créditos K72 a K80 descem uma posição.
+
+| id | afirmação (tela) | veredito | o que a fonte diz | URL |
+|---|---|---|---|---|
+| K71a | s55 `Source: Alaska Department of Revenue, 2013–2016` (a linha diária de s54, pequena, ao lado das fichas, de 9,847 a 11,7 s) | CONFIRMADA · nova | Em `out/juneau/graphics/s55.html`, a linha é o array `SERIE`, com 748 pontos. Ele é idêntico ao da `s54.html` e ao `out/juneau/_dados/s54.json` › `serie`, conferido dia a dia e valor a valor. A série vai de 2013-02-01 a 2016-01-29, em US dollars per barrel: é o preço diário ANS West Coast do Alaska Department of Revenue, Tax Division, com máximo de US$ 116.26 e mínimo de US$ 26.23. O texto e o recorte de anos são os mesmos do K70 (s54), já confirmado. | DOR |
+
+**COBERTURA:** 411 de 411. São 406 CONFIRMADA, 3 NADA A CHECAR e 2 DIVERGE (F1).
+
+**NOTA:** 9.0/10, sem mudança.
+
+**VEREDITO:** RESSALVA, sem mudança, pelo F1.
+
+**Sem rede.** Tudo saiu de arquivos locais: o `textos-tela.json`, as duas cenas e o `s54.json`. A data da série é a do K70 (o Claude central a leu no navegador do app em 28/09).
+
+**Observação, fora do veredito:** a `s55.html` de hoje ainda escreve só a linha da FSEIS (`Source: Alaska DOT&PF and FHWA, 2018`). A linha nova do Department of Revenue precisa entrar na arte, com render novo da s55, para a tela ter o crédito que o texto agora declara. *(Nota do Claude central: pedido ao editor-de-arte na rodada 9, `out/juneau/_tmp/art/correcao-render-5.md`, item 13.)*
