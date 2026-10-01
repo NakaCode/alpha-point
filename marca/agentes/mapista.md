@@ -114,7 +114,9 @@ necessidade.
 - DECISÃO DO LUCAS PENDENTE: os 65 % contra o piso de ~0,90 do ofício (§9). Eles só foram vistos sobre Landsat,
   nunca sobre MapTiler. Até ele decidir, use 65 %, e diga no report se algum rótulo ou relevo ficou ilegível.
 - **Território protagonista**: preenchimento `--territorio-cor` (`--destaque` a 85 %, para o relevo
-  transparecer) e contorno `--tinta` de 6 px. O segundo ator em `--contraparte`, do terceiro em diante
+  transparecer) e contorno `--tinta` de 6 px. O território da contraparte se preenche mais leve, em
+  `--territorio-contraparte-cor` (`--contraparte` a 35 %; Lucas, 01/10/2026, identidade §6, "O território da
+  contraparte, mais leve"): a 85 % ele engolia as linhas verde-água de dentro dele. O segundo ator em `--contraparte`, do terceiro em diante
   `--neutro`, conflito ou risco em `--tensao` (**nunca** a cor de um lado). Vermelho contra azul como dois
   lados é proibido. No máximo 3 matizes, fora a base.
 - **Demais fronteiras**: branco a 70 %, 5 px (`--fronteira-cor`, `--fronteira-espessura`), sobre um contorno

@@ -1010,3 +1010,24 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   Overpass, a mesma consulta com a janela da linha no filtro (`(bbox)(around:…)`) respondeu.
 - **Por que serve a qualquer canal:** rota partida em várias relations é comum no OSM (balsa, trilha, rodovia por
   estado). Vale levar ao motor um modo de várias relations no `geo-osm-rota`.
+
+## 01/10/2026 — o conceito revisto do Juneau
+
+### 56. Prova de cor de mapa sobre base aberta, sem pagar o provedor; e o território da cor de uma linha a engole
+- **Problema 1 (o custo):** a dúvida era de cor (a estrada e o destino proposto, ambos em verde-água). A base de verdade
+  é a MapTiler, e cada quadro renderizado sobre ela gasta pedidos pagos, sem cache. Uma prova de quatro opções seriam
+  quatro gastos para responder uma pergunta de cor.
+- **O que resolveu:** a prova foi desenhada sobre uma base Landsat (USGS, domínio público) baixada pela API aberta do
+  Planetary Computer, com o mesmo tratamento da base (brilho 65 %, saturação 70 %), as fontes e os tokens do canal, e
+  fotografada pelo Chrome sem interface, com perfil temporário (`out/juneau/_tmp/prova-verde-agua/gerar.py`). A
+  legenda da prova diz que a base não é a do vídeo. O dono perguntou por que não era a MapTiler, e aceitou: "Se o
+  resultado final será com o map, sem problemas".
+- **Problema 2 (o que a prova mostrou):** o conceito pintava o território da contraparte a 85 %, como o do
+  protagonista. Com isso, o quadro ficou quase todo verde-água, e as linhas finas da mesma cor sumiram dentro dele.
+  A pergunta era sobre a estrada, e o defeito maior estava no preenchimento.
+- **O que resolveu:** o território da contraparte passou a 35 % (`--territorio-contraparte-cor`; identidade §6).
+- **Como evitar:** antes de pôr uma linha dentro de um território, confira se o preenchimento é da mesma cor que
+  ela. A 85 %, a linha só se lê pelo contorno escuro.
+- **Por que serve a qualquer canal:** todo canal com mapa pago tem dúvidas de cor e de legibilidade que não pedem a
+  base paga, e a regra de 85 % do protagonista, aplicada por analogia a outro ator, cria o mesmo choque em qualquer
+  paleta.
