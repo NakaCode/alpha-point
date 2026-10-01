@@ -131,3 +131,12 @@ quando ele mostrar.
 | s42, s33 e s59 (11 cargas do mapista na correção 7, seção 6: s42 3, s33 5, s59 3) | ~17:15–17:45 | — | medidas e qc-cena |
 | s33 (render da correção 7, seção 6: a fase de 0,5 px no zoom 10) | 17:35:55 | 17:39:16 | 2160p |
 | s59 (render da correção 7, seção 6: a fase de 0,5 px no zoom 13) | 17:39:16 | 17:41:00 | 2160p |
+| s03, s15, s50 e s33 (15 cargas do mapista na correção 8, 2 delas na comparação do texto liso com a câmera parada: a troca que sobe, o patamar em 8,5, o texto liso, a estrada fora da faixa do crédito; 6 delas do qc-cena) | ~18:00–18:55 | — | medidas e qc-cena |
+| s12, s21, s24, s39, s48, s42, s44, s07, s08, s59 e mais uma (22 cargas do qc-visual no lote 4: o `qc-rodape-contraste` e o `qc-video-avanca`, 2 por cena; os quadros vieram dos MP4) | ~18:10–18:42 | — | portões do qc |
+| s03 (render da correção 8: a troca que sobe com o nível 8 preso, o texto liso) | 18:54:59 | 18:56:52 | 2160p |
+| s15 (render da correção 8: o texto liso, o estilo sem transição, a espera da s44) | 18:56:52 | 19:00:39 | 2160p |
+| s50 (render da correção 8: o patamar em 8,5 com saída pelo tempo) | 19:00:40 | 19:05:48 | 2160p |
+| s33 (render da correção 8: as fusões da entrada, a estrada e o distrito fora da faixa do crédito) | 19:05:48 | 19:08:56 | 2160p |
+| s44 e s48 (6 cargas do mapista na correção 9, o texto liso: s48 1, s44 2 com 299 quadros, qc-cena 3) | ~19:10–19:30 | — | medidas e qc-cena |
+| s48 (render da correção 9: o texto liso no Lynn Canal, o estilo sem transição, a espera da s44) | 19:31:42 | 19:34:38 | 2160p |
+| s44 (7º render: correção 9, o texto liso nos dez rótulos presos ao chão) | 19:34:38 | 19:43:01 | 2160p |

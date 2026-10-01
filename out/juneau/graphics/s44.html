@@ -233,6 +233,41 @@
       aceita dois níveis vizinhos carregados, caso que agora não deve mais aparecer.
       Medido com tile, nos 1.083 quadros em ordem, como o render: a base fica num nível só em todos (o 9 até o 73, o 10
       de 74 a 955, o 9 de 956 a 983 e o 8 dali ao fim), e a cena não acusou erro.
+  O TEXTO LISO (correção 9 do Claude central, 01/10/2026; o mesmo da s03 e da s15, correção 8): o Chrome põe a linha de
+  base de todo texto reto em pixel inteiro na vertical, no HTML, no SVG e no fillText do canvas. As pílulas, as linhas e
+  os pontos andam lisos com o mapa, e o texto dos rótulos andava em degraus de 1 px contra eles: no MP4 da correção 7,
+  de 0,47 a 0,60 px fora do lugar na vertical, em 34 a 220 quadros por rótulo (British Columbia, Taku Inlet, Taku River,
+  Lynn Canal, Haines, Skagway e Alaska Highway; o 1993, o 2003 e CANADA, em 20, 3 e 5). Com left e top, a pílula também
+  ia a pixel inteiro. Agora, nos dez rótulos presos ao chão:
+    · a pílula anda pelo transform, sem arredondar (pilula);
+    · o texto (classe liso) fica transparente no DOM, que continua com a caixa, o texto, a fonte e o tamanho que os
+      portões medem;
+    · o texto se pinta no canvas #tintaRotulos, por cima das pílulas, na posição exata do texto no DOM (a caixa do texto
+      pelo Range, que é a da pílula na tela: a pílula não se inclina com o mapa, só anda com o ponto): desenhado em 4×
+      (nesse tamanho o Chrome desenha o glifo como forma, na posição exata) e reduzido em duas metades na grade, com a
+      fonte, a cor, o espaçamento e a opacidade que o DOM dá a ele (pintarTextoLiso; o mesmo da s03);
+    · na entrada e na saída (300 ms), com a opacidade da pílula abaixo de 1, o texto se pinta sobre a pílula já
+      transparente, e não junto com ela (no DOM, por trás do texto aparece o mapa; aqui, a pílula):
+      medido com tile, no mesmo quadro, o texto liso contra o do DOM nos pixels de dentro da letra: no 1º quadro da
+      entrada (opacidade 0,30), de 9 a 14 níveis (de 0 a 255) mais escuro, de 8 a 11 %; no 2º (0,53), de 11 a 17, de 7 a
+      10 % (o pior, o 2003, sobre o mapa claro); no 4º (0,83), de 9 a 11, de 4 a 5 %; no 7º (0,99), de 4 a 5, o mesmo que
+      com a pílula inteira (de 3 a 5 níveis, de 1,3 a 2,2 %: o antialias). No liso e no DOM, a entrada sobe sem degrau,
+      e o texto continua muito mais claro que a pílula (de 142 a 148 contra 40 a 50, no 2º quadro). Na saída do Taku
+      Inlet (linear), até 10 níveis, de 3,5 a 7,3 %.
+  MEDIDO COM TILE pelo caminho do render (o quadroJS e 100 ms de parede antes da foto), numa página só, em cinco janelas
+  curtas, cada uma em ordem (172–200, 420–475, 495–545, 822–872 e 1020–1082: as entradas e trechos em que os rótulos
+  andavam devagar), para pedir menos tile. O centro da tinta do texto contra o centro da caixa do texto no DOM, tirada a
+  deriva lenta por reta local (±7 quadros), sem o 1º quadro de cada janela (ele vem de um salto):
+    · na vertical, até 0,037 px em oito rótulos. No British Columbia, 0,052, com o mapa claro aparecendo pela pílula
+      translúcida. Medido de novo (183–205 e 420–445), com a foto da pílula sem texto, no mesmo quadro, tirada da conta: o
+      texto liso fica a 0,021 px na vertical e 0,022 na horizontal, e o texto do DOM, nos mesmos quadros, a 0,49 e 0,34;
+    · na horizontal, até 0,083 px. No British Columbia, 0,207, sobre o mapa claro;
+    · o 2003 só entra nas janelas pela entrada e pelo 545, e o 1993, que anda com ele, fica a 0,014 px;
+    · a tinta do texto nunca sai da pílula.
+  Com a câmera inclinada a 50° (o 470 e o 545), na mesma foto com o texto do DOM: o texto liso cai onde cai o do DOM, com
+  o centro a até 0,47 px (o arredondamento do DOM), 2,5 a 2,9 % menos tinta e nenhuma diferença fora da borda das letras.
+  O mesmo no 872 e no 1082, com o mapa plano. A base fica num nível só em todos os quadros medidos, e a cena não acusou
+  erro.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -273,6 +308,10 @@
     font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1;
     letter-spacing: 0; color: var(--tinta); }
   .rotulo.regiao { letter-spacing: var(--tracking-lugar); }
+  /* O TEXTO LISO (cabeçalho): o texto do rótulo que anda com o mapa sai do canvas #tintaRotulos; no DOM ele fica
+     transparente (a caixa, o texto e o tamanho continuam aqui, para os portões medirem) */
+  .rotulo.liso { -webkit-text-fill-color: transparent; }
+  #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
   /* o AVISO da rota (identidade §6, "Rota que nunca foi construída"): papel legenda de §4.1, numa pílula --rotulo com
      respiro de 16 × 28 (o do aviso do ano), presa à tela, todo o tempo das linhas tracejadas */
   .aviso { position: absolute; white-space: nowrap; background: var(--rotulo); color: var(--tinta); border-radius: var(--cantos);
@@ -320,16 +359,17 @@
     <circle class="ponto" id="pontoSkagway" cx="0" cy="0" r="16" opacity="0"/>
   </svg>
   <div id="rotulos">
-    <div class="rotulo regiao" id="rBC" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="rTakuInlet" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="rTakuRiver" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="rLynn" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="r1993" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="r2003" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="rHaines" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="rSkagway" data-qc-papel="rotulo"></div>
-    <div class="rotulo regiao" id="rCanada" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="rAH" data-qc-papel="rotulo"></div>
+    <div class="rotulo regiao liso" id="rBC" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="rTakuInlet" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="rTakuRiver" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="rLynn" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="r1993" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="r2003" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="rHaines" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="rSkagway" data-qc-papel="rotulo"></div>
+    <div class="rotulo regiao liso" id="rCanada" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="rAH" data-qc-papel="rotulo"></div>
+    <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
   <div class="aviso" id="aviso" data-qc-papel="eixo"></div>
   <div id="legenda" data-qc-papel="legenda">
@@ -981,11 +1021,60 @@
 
   // ── as peças ────────────────────────────────────────────────────────────────────────────────────
   function entrada(t, t0) { return t0 <= 0 ? 1 : t < t0 ? 0 : eo(seg(t, t0, 0.3)); }
+  // a pílula anda pelo transform, sem arredondar (O TEXTO LISO, no cabeçalho): com left e top, ela ia a pixel inteiro
   function pilula(el, x, y, lado, op, ent) {
     var tx = lado === "direita" ? "0%" : lado === "esquerda" ? "-100%" : "-50%";
-    el.style.left = x.toFixed(1) + "px"; el.style.top = y.toFixed(1) + "px"; el.style.opacity = cl(op, 0, 1).toFixed(3);
-    el.style.transform = "translate(" + tx + ",-50%) translateY(" + ((1 - ent) * 24).toFixed(1) + "px)";
+    el.style.opacity = cl(op, 0, 1).toFixed(3);
+    el.style.transform = "translate(" + x.toFixed(3) + "px," + y.toFixed(3) + "px) translate(" + tx + ",-50%) translateY(" +
+      ((1 - ent) * 24).toFixed(2) + "px)";
   }
+  // ── O TEXTO LISO (cabeçalho; o mesmo da s03): o texto dos rótulos de classe liso, pintado em #tintaRotulos na posição exata do DOM ──
+  // O Chrome põe a linha de base de todo texto reto em pixel inteiro na vertical (no HTML, no SVG e no fillText do
+  // canvas); a pílula anda lisa pelo transform, e o texto não andava com ela. Aqui ele é desenhado em 4× (nesse tamanho
+  // o Chrome desenha o glifo como forma, na posição exata) e reduzido em duas metades, na grade: cada pixel é a média
+  // exata do bloco 4 × 4 dele
+  var TL = { x4: document.createElement("canvas"), x2: document.createElement("canvas") };
+  function opacidadeEfetiva(el) {
+    var o = 1;
+    for (var n = el; n && n.nodeType === 1; n = n.parentElement) {
+      var s = getComputedStyle(n);
+      if (s.display === "none" || s.visibility === "hidden") return 0;
+      o *= parseFloat(s.opacity);
+    }
+    return o;
+  }
+  function pintarTextoLiso() {
+    var cv = E("tintaRotulos"); if (!cv) return;
+    var g = cv.getContext("2d"), cr = cv.getBoundingClientRect(), k = cr.width / cv.width || 1;
+    g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.clearRect(0, 0, cv.width, cv.height);
+    var els = document.querySelectorAll(".rotulo.liso");
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i], tn = el.firstChild, op = opacidadeEfetiva(el);
+      if (el.childNodes.length !== 1 || !tn || tn.nodeType !== 3) { falhar("o rótulo " + el.id + " não é um texto só: o texto liso não o pintaria."); return; }
+      if (!(op > 0) || !tn.data) continue;
+      var cs = getComputedStyle(el), fs = parseFloat(cs.fontSize), ls = parseFloat(cs.letterSpacing) || 0;
+      var fonte = cs.fontStyle + " " + cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+      var rg = document.createRange(); rg.selectNodeContents(el); var rr = rg.getBoundingClientRect();
+      var g4 = TL.x4.getContext("2d"); g4.font = fonte; g4.letterSpacing = ls + "px";
+      var m = g4.measureText(tn.data), A = m.fontBoundingBoxAscent, D = m.fontBoundingBoxDescent;
+      // a linha de base: no DOM, a caixa do texto começa A acima dela
+      var bx = (rr.left - cr.left) / k, by = (rr.top - cr.top) / k + A, pad = Math.ceil(fs * 0.5);
+      var x0 = Math.floor(bx) - pad, y0 = Math.floor(by - A) - pad;
+      var W = Math.ceil(m.width + Math.abs(ls)) + 2 * pad + 1, H = Math.ceil(A + D) + 2 * pad + 1;
+      if (x0 > cv.width || y0 > cv.height || x0 + W < 0 || y0 + H < 0) continue;
+      if (TL.x4.width < W * 4 || TL.x4.height < H * 4) { TL.x4.width = Math.max(TL.x4.width, W * 4); TL.x4.height = Math.max(TL.x4.height, H * 4); }
+      if (TL.x2.width < W * 2 || TL.x2.height < H * 2) { TL.x2.width = Math.max(TL.x2.width, W * 2); TL.x2.height = Math.max(TL.x2.height, H * 2); }
+      g4 = TL.x4.getContext("2d"); g4.setTransform(1, 0, 0, 1, 0, 0); g4.clearRect(0, 0, W * 4, H * 4);
+      g4.setTransform(4, 0, 0, 4, 0, 0); g4.font = fonte; g4.letterSpacing = ls + "px"; g4.fillStyle = cs.color;
+      g4.textBaseline = "alphabetic"; g4.textAlign = "left"; g4.fillText(tn.data, bx - x0, by - y0);
+      var g2 = TL.x2.getContext("2d"); g2.setTransform(1, 0, 0, 1, 0, 0); g2.clearRect(0, 0, W * 2, H * 2);
+      g2.imageSmoothingEnabled = true; g2.imageSmoothingQuality = "low"; g2.drawImage(TL.x4, 0, 0, W * 4, H * 4, 0, 0, W * 2, H * 2);
+      g.globalAlpha = op; g.imageSmoothingEnabled = true; g.imageSmoothingQuality = "low";
+      g.drawImage(TL.x2, 0, 0, W * 2, H * 2, x0, y0, W, H);
+    }
+    g.globalAlpha = 1;
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { try { pintarTextoLiso(); } catch (e) {} });
   var ultimo = {};
   function dados(id, coords, chaveFrac) {
     if (ultimo[id] === chaveFrac) return;
@@ -1092,6 +1181,7 @@
       var ent = entrada(t, r.entra), o = ent * (r.sai ? 1 - seg(t, r.sai, 0.3) : 1), q = map.project(r.p);
       pilula(E(r.id), q.x + r.dx, q.y + r.dy, r.lado, o, ent);
     });
+    pintarTextoLiso();
     // ── o aviso Approximate route, preso à tela, todo o tempo das linhas tracejadas ──
     var av = E("aviso"), A = CENA.aviso, ea = entrada(t, A.entra);
     av.style.left = A.x + "px"; av.style.top = A.y + "px"; av.style.opacity = ea.toFixed(3);

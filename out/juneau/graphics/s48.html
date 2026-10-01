@@ -63,6 +63,42 @@
   trechos da conferência. No render de antes, o desvio chegava a 0,74 px de 60 a 95, e de 285 a 320 a vertical
   alternava em 25 dos 35 pares. A nitidez do recorte muda no máximo 0,51 % de um quadro para o outro.
 
+  O ESTILO SEM TRANSIÇÃO (transition: {duration: 0, delay: 0}; correção 9 do Claude central, 01/10/2026; o da s44): a
+  linha tracejada muda de opacidade a cada quadro (setPaintProperty), da subida em "east" à queda a 40 % em "high". Sem
+  ele, o MapLibre anima cada troca de pintura em 300 ms de relógio de parede, e o quadro sai com parte do valor do
+  anterior, conforme a espera do render (o defeito da correção 1 da s50). Com ele, a pintura de cada quadro é a do
+  __renderAt dele.
+  A ÚLTIMA ATUALIZAÇÃO DOS TILES (correção 9; a espera da s44): um tile novo da base conta como "entrando em
+  esmaecimento" até a primeira pintura dele, e enquanto isso o MapLibre deixa pintados por cima dele os filhos já
+  carregados (SourceCache.update); com o esmaecimento de 0 ms, eles só saem na atualização seguinte, que nenhum movimento
+  pede. Agora, quando os tiles estão carregados, o __aguardarMapa atualiza o mapa mais duas vezes no mesmo lugar (um
+  jumpTo para o centro em que ele está), cada uma com a pintura dela, e só então confere; repete, até 6, enquanto a
+  conferência não fechar, e recomeça do zero quando um tile volta a carregar. O nivelUnico aceita dois níveis vizinhos
+  carregados (o da s42). O zoom desta cena (9,25 a 9,32) não cruza nível de tile.
+  Medido com tile, nos 377 quadros em ordem, como o render: a base fica no nível 9 em todos, e a cena não acusou erro.
+  O TEXTO LISO (correção 9 do Claude central, 01/10/2026; o mesmo da s03, da s15 e da s44): o Chrome põe a linha de base
+  de todo texto reto em pixel inteiro na vertical, no HTML, no SVG e no fillText do canvas. Lynn Canal anda com o mapa
+  (o push-in), e o texto dele andava em degraus de 1 px contra a pílula, a linha e o anel: no MP4 da correção 6, 0,49 px
+  fora do lugar na vertical, em 58 quadros. Com left e top, a pílula também ia a pixel inteiro. Agora:
+    · a pílula anda pelo transform, sem arredondar;
+    · o texto (classe liso) fica transparente no DOM, que continua com a caixa, o texto, a fonte e o tamanho que os
+      portões medem;
+    · o texto se pinta no canvas #tintaRotulos, por cima da pílula e por baixo do card, do aviso, da legenda e do
+      crédito, na posição exata do texto no DOM: desenhado em 4× (nesse tamanho o Chrome desenha o glifo como forma, na
+      posição exata) e reduzido em duas metades na grade, com a fonte, a cor, o espaçamento e a opacidade que o DOM dá a
+      ele (pintarTextoLiso; o mesmo da s03);
+    · na entrada (300 ms), com a opacidade da pílula abaixo de 1, o texto se pinta sobre a pílula já transparente, e não
+      junto com ela (no DOM, por trás do texto aparece o mapa; aqui, a pílula):
+      medido com tile, no mesmo quadro, o texto liso contra o do DOM nos pixels de dentro da letra: no 2º quadro da
+      entrada (opacidade 0,53), 5,5 níveis (de 0 a 255) mais escuro, 4,0 %; com a pílula inteira, 4,1 níveis (o
+      antialias). Sobre a água escura do canal, a diferença da entrada quase não aparece.
+  MEDIDO COM TILE pelo caminho do render (o quadroJS e 100 ms de parede antes da foto), nos 377 quadros em ordem. O
+  centro da tinta do texto contra o centro da caixa do texto no DOM, tirada a deriva lenta por reta local (±7 quadros),
+  nos 188 quadros com Lynn Canal inteiro: até 0,013 px na vertical e 0,047 na horizontal. No MP4 da correção 6, ele
+  ficava a 0,49 px na vertical, a escada de 1 px. A tinta nunca sai da pílula. No 300 e no 376, na mesma foto com o
+  texto do DOM: o centro a até 0,50 px (o arredondamento do DOM), 2,7 a 2,9 % menos tinta e nenhuma diferença fora da
+  borda das letras.
+
   A LINHA (identidade §6; espelho › s48 › _esquema): tracejada, do anel de Cascade Point para o norte pela margem leste,
   em terra, colada à água, até 2,4 km ao norte da foz do Katzehin (katzehin-river-gnis): o ponto de "just north of the
   Katzehin River delta" (FSEIS 2018, ES-4.3) e de "near the Katzehin River Delta" (9º Circuito, 2011). É o caminho de
@@ -118,6 +154,11 @@
     padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
     font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1;
     letter-spacing: 0; color: var(--tinta); }
+  /* O TEXTO LISO (cabeçalho): o texto do Lynn Canal sai do canvas #tintaRotulos; no DOM ele fica transparente (a
+     caixa, o texto e o tamanho continuam aqui, para os portões medirem). O canvas fica no plano da pílula (z 40), logo
+     depois dela: por cima dela, e por baixo do card, do aviso, da legenda e do crédito */
+  .rotulo.liso { -webkit-text-fill-color: transparent; }
+  #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 40; }
   /* o CARD DE PESSOA sem retrato (identidade §5): o nome na pílula --rotulo (128 px, Inter 700) e o cargo embaixo
      (84 px, --sec), num cartão --painel à esquerda (sobre o satélite, o cargo precisa do cartão) */
   #card { position: absolute; left: 200px; top: 1169px; z-index: 42; opacity: 0;
@@ -170,7 +211,8 @@
     <div class="rotulo" id="nome" data-qc-papel="rotulo"></div>
     <div id="cargo" data-qc-papel="eixo"></div>
   </div>
-  <div class="rotulo" id="rLynn" data-qc-papel="rotulo"></div>
+  <div class="rotulo liso" id="rLynn" data-qc-papel="rotulo"></div>
+  <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   <div class="aviso" id="aviso" data-qc-papel="eixo"></div>
   <div id="legenda" data-qc-papel="legenda">
     <div class="item" id="legBorder"><svg viewBox="0 0 120 101" aria-hidden="true"><line class="contorno" x1="13" y1="50.5" x2="107" y2="50.5"/><line class="nucleo" x1="13" y1="50.5" x2="107" y2="50.5"/></svg><span id="legBorderTxt"></span></div>
@@ -444,7 +486,9 @@
 
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    return { version: 8, sources: { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } },
+    // sem transição: a pintura de cada quadro é a do __renderAt dele (O ESTILO SEM TRANSIÇÃO, no cabeçalho)
+    return { version: 8, transition: { duration: 0, delay: 0 },
+      sources: { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } },
       layers: [{ id: "base", type: "raster", source: "base", paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
   }
 
@@ -606,6 +650,53 @@
 
   // ── as peças ────────────────────────────────────────────────────────────────────────────────────
   function entrada(t, t0) { return t0 <= 0 ? 1 : t < t0 ? 0 : eo(seg(t, t0, 0.3)); }
+  // ── O TEXTO LISO (cabeçalho; o mesmo da s03): o texto dos rótulos de classe liso, pintado em #tintaRotulos na posição exata do DOM ──
+  // O Chrome põe a linha de base de todo texto reto em pixel inteiro na vertical (no HTML, no SVG e no fillText do
+  // canvas); a pílula anda lisa pelo transform, e o texto não andava com ela. Aqui ele é desenhado em 4× (nesse tamanho
+  // o Chrome desenha o glifo como forma, na posição exata) e reduzido em duas metades, na grade: cada pixel é a média
+  // exata do bloco 4 × 4 dele
+  var TL = { x4: document.createElement("canvas"), x2: document.createElement("canvas") };
+  function opacidadeEfetiva(el) {
+    var o = 1;
+    for (var n = el; n && n.nodeType === 1; n = n.parentElement) {
+      var s = getComputedStyle(n);
+      if (s.display === "none" || s.visibility === "hidden") return 0;
+      o *= parseFloat(s.opacity);
+    }
+    return o;
+  }
+  function pintarTextoLiso() {
+    var cv = E("tintaRotulos"); if (!cv) return;
+    var g = cv.getContext("2d"), cr = cv.getBoundingClientRect(), k = cr.width / cv.width || 1;
+    g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.clearRect(0, 0, cv.width, cv.height);
+    var els = document.querySelectorAll(".rotulo.liso");
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i], tn = el.firstChild, op = opacidadeEfetiva(el);
+      if (el.childNodes.length !== 1 || !tn || tn.nodeType !== 3) { falhar("o rótulo " + el.id + " não é um texto só: o texto liso não o pintaria."); return; }
+      if (!(op > 0) || !tn.data) continue;
+      var cs = getComputedStyle(el), fs = parseFloat(cs.fontSize), ls = parseFloat(cs.letterSpacing) || 0;
+      var fonte = cs.fontStyle + " " + cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+      var rg = document.createRange(); rg.selectNodeContents(el); var rr = rg.getBoundingClientRect();
+      var g4 = TL.x4.getContext("2d"); g4.font = fonte; g4.letterSpacing = ls + "px";
+      var m = g4.measureText(tn.data), A = m.fontBoundingBoxAscent, D = m.fontBoundingBoxDescent;
+      // a linha de base: no DOM, a caixa do texto começa A acima dela
+      var bx = (rr.left - cr.left) / k, by = (rr.top - cr.top) / k + A, pad = Math.ceil(fs * 0.5);
+      var x0 = Math.floor(bx) - pad, y0 = Math.floor(by - A) - pad;
+      var W = Math.ceil(m.width + Math.abs(ls)) + 2 * pad + 1, H = Math.ceil(A + D) + 2 * pad + 1;
+      if (x0 > cv.width || y0 > cv.height || x0 + W < 0 || y0 + H < 0) continue;
+      if (TL.x4.width < W * 4 || TL.x4.height < H * 4) { TL.x4.width = Math.max(TL.x4.width, W * 4); TL.x4.height = Math.max(TL.x4.height, H * 4); }
+      if (TL.x2.width < W * 2 || TL.x2.height < H * 2) { TL.x2.width = Math.max(TL.x2.width, W * 2); TL.x2.height = Math.max(TL.x2.height, H * 2); }
+      g4 = TL.x4.getContext("2d"); g4.setTransform(1, 0, 0, 1, 0, 0); g4.clearRect(0, 0, W * 4, H * 4);
+      g4.setTransform(4, 0, 0, 4, 0, 0); g4.font = fonte; g4.letterSpacing = ls + "px"; g4.fillStyle = cs.color;
+      g4.textBaseline = "alphabetic"; g4.textAlign = "left"; g4.fillText(tn.data, bx - x0, by - y0);
+      var g2 = TL.x2.getContext("2d"); g2.setTransform(1, 0, 0, 1, 0, 0); g2.clearRect(0, 0, W * 2, H * 2);
+      g2.imageSmoothingEnabled = true; g2.imageSmoothingQuality = "low"; g2.drawImage(TL.x4, 0, 0, W * 4, H * 4, 0, 0, W * 2, H * 2);
+      g.globalAlpha = op; g.imageSmoothingEnabled = true; g.imageSmoothingQuality = "low";
+      g.drawImage(TL.x2, 0, 0, W * 2, H * 2, x0, y0, W, H);
+    }
+    g.globalAlpha = 1;
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { try { pintarTextoLiso(); } catch (e) {} });
   var ultimaFrac = null;
   function aplicar(t) {
     if (!mapaCarregado) return;
@@ -637,8 +728,11 @@
 
     // ── Lynn Canal no ponto do GNIS ──
     var Y = CENA.lynn, el = entrada(t, Y.entra), q = map.project(LYNN), rl = E("rLynn");
-    rl.style.left = (q.x + Y.dx).toFixed(1) + "px"; rl.style.top = (q.y + Y.dy).toFixed(1) + "px"; rl.style.opacity = el.toFixed(3);
-    rl.style.transform = "translate(-100%,-50%) translateY(" + ((1 - el) * 24).toFixed(1) + "px)";
+    // a pílula anda pelo transform, sem arredondar (O TEXTO LISO, no cabeçalho): com left e top, ela ia a pixel inteiro
+    rl.style.opacity = el.toFixed(3);
+    rl.style.transform = "translate(" + (q.x + Y.dx).toFixed(3) + "px," + (q.y + Y.dy).toFixed(3) + "px) translate(-100%,-50%) translateY(" +
+      ((1 - el) * 24).toFixed(2) + "px)";
+    pintarTextoLiso();
 
     // ── o aviso, preso à tela, todo o tempo da linha ──
     var A = CENA.aviso, ea = entrada(t, A.entra), av = E("aviso");
@@ -708,10 +802,19 @@
           return nivelUnico();
         } catch (e) { return false; }
       };
-      var t0 = performance.now(), seguidas = 0;
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
       (function tick() {
         barrarTileComErro();
-        seguidas = pronto() ? seguidas + 1 : 0;
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        // A ÚLTIMA ATUALIZAÇÃO DOS TILES (cabeçalho; a da s44): com os tiles carregados, o mapa se atualiza mais duas vezes
+        // no mesmo lugar, cada uma com a pintura dela (a 1ª pinta os tiles que acabaram de chegar; a 2ª tira os filhos que
+        // o MapLibre guardou para o esmaecimento deles), e de novo, até 6, enquanto a conferência não fechar; ela só conta
+        // depois da 2ª. Começa pelo carregado, não pela conferência, e recomeça do zero quando um tile volta a carregar
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.jumpTo({ center: map.getCenter() }); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
         if (window.__erroCena || seguidas >= 2) return res(true);
         if (performance.now() - t0 > teto) {
           window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
