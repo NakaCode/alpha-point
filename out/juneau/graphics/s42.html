@@ -94,6 +94,73 @@
   da regência não muda (a saída segue em 2,267–2,567, depois de a voz dizer "Juneau"). A cena confere a caixa com as
   fontes carregadas (CENA.caixas, conferirCaixas).
 
+  O NÍVEL DA BASE NO VOO (correção 2 do Claude central, 01/10/2026, item da s42): o MapLibre mostra a base raster num
+  nível de tile só, o arredondado do zoom, e troca o nível inteiro quando o zoom cruza x,5. Na MapTiler, aqui, cada
+  nível tem um tom; no voo (10,7 → 9,7), o zoom cruza 10,5 entre os quadros 131 e 132 (4,4 s), com a câmera quase
+  parada, e o quadro inteiro escurecia num quadro só (o brilho médio caía 8,34, 40 vezes o passo dos vizinhos; a água
+  do canal mudava de cor em blocos). Agora a troca é um cruzamento determinístico pelo zoom (CENA.niveis, como na
+  s59): uma camada da mesma base presa ao nível 10 (maxzoom 10) entra por cima da base, com a opacidade indo de 0 a 1
+  enquanto o zoom desce de 10,7 (o 1º quadro) a 10,5. Em 10,5 ela cobre a base inteira, e logo abaixo a base já está
+  no nível 10: ela sai sem que se veja (é o mesmo nível). O tom muda devagar, de 0 a 4,4 s, sem degrau. A camada
+  fica desligada (visibility none) fora da janela dela, e não pede tile. No 1º quadro (10,7) ela está a zero: a base
+  é a de antes. O estilo não tem transição (transition 0): a opacidade de cada quadro é a do __renderAt dele.
+  O 9,5 DO RECUO (correção 6 do Claude central, 01/10/2026, item 3): no recuo, o zoom cruza 9,5 entre os quadros 385
+  e 386 (12,867 s), a base troca do nível 10 para o 9 num quadro, e o mapa inteiro ficava 35 a 41 % mais macio de uma
+  vez (o brilho quase não muda, −0,44, e por isso o cruzamento tinha ficado). Agora ele cruza como o 10,5 do voo e o
+  9,5 da s59: a camada presa ao nível 9 entra de 0 a 1 enquanto o zoom desce de 9,7 (o fim do voo, 11,933 s) a 9,5
+  (CENA.niveis), em 28 quadros. O zoom só desce na cena inteira, e no voo nunca fica abaixo de 9,7: a camada do 9 não
+  aparece no voo, e a do 10 não aparece no recuo. Medido com tile, em ordem: no render de antes, a variância do
+  laplaciano do quadro inteiro caía 66 % de 385 para 386; agora ela cai aos poucos de 361 a 385, no máximo 6,3 % por
+  quadro, e sobe 2,1 % no 386.
+  A ÚLTIMA ATUALIZAÇÃO DOS TILES (correção 6, item 2): no quadro 132, quando a base troca do nível 11 para o 10, as
+  bordas (a faixa da esquerda, o alto à esquerda e o canto de baixo à direita) saíam por um quadro com o tom do nível
+  11. A causa é do MapLibre (4.7.1, SourceCache.update): um tile de base recém-chegado conta como "entrando em
+  esmaecimento" até a primeira pintura dele, e enquanto isso o MapLibre deixa os filhos já carregados (o nível 11 do
+  quadro anterior) pintados por cima; com o esmaecimento de 0 ms, eles só saem na atualização seguinte, que nenhum
+  movimento pede. Medido com tile, em ordem: no 132, 24 tiles do nível 10 e 19 do 11 à vista; no 133, só os 24 do 10.
+  Agora, quando o mapa fica pronto, o __aguardarMapa o atualiza mais duas vezes no mesmo lugar (um jumpTo para o centro
+  em que ele está), cada uma com a pintura dela, e só então confere de novo: a 1ª pinta os tiles que acabaram de chegar
+  (é a pintura que marca o fim do esmaecimento deles), e a 2ª tira os filhos. Com uma só, sobravam 13 dos 19. Medido
+  com tile, em ordem: agora o 132 tem só os 24 tiles do nível 10, e o brilho da faixa da esquerda, do alto à esquerda e
+  do canto de baixo à direita muda −0,2, +0,4 e +0,7 de 131 para 132 (no render de antes, +19,5, +13,9 e +9,6, e de
+  volta no 133). No 386, a troca do 10 para o 9 tinha a mesma sobra (7 tiles do 10 com uma atualização só); agora
+  tem só os 24 do 9. É também o que deixava a tela em "dois níveis
+  vizinhos, todos carregados" (o nivelUnico, abaixo, ainda aceita esse caso, que agora não deve mais aparecer).
+  No render, não (correção 7 do Claude central, 01/10/2026, item 6a): o 132 ainda saiu com retângulos de tile do 11 nas
+  bordas. O renderizar.mjs espera o __aguardarMapa a cada quadro, como a minha medida, e fotografa 100 ms depois; a
+  diferença é o tempo. As duas atualizações começavam quando a conferência fechava, e ela podia fechar antes de o mapa
+  pintar o jumpTo do quadro, com os tiles do quadro anterior: a 1ª saía ali, antes de o quadro pedir os tiles dele, e só
+  a 2ª caía depois dos tiles novos, na mesma pintura que os desenhava pela primeira vez, que é a que ainda guarda os
+  filhos. Na s44, a mesma espera deixou 2 tiles do 9 entre 28 do 8 numa troca que desce. Agora a espera é a da s44
+  (correção 7): as atualizações começam quando os tiles estão carregados, se repetem até 6 enquanto a conferência não
+  fechar, e a contagem recomeça do zero sempre que um tile volta a carregar.
+  MEDIDO COM TILE pelo caminho do render (o mesmo quadroJS do renderizar.mjs e 100 ms de parede antes da foto), nos
+  quadros 0 a 420 em ordem, com a versão de antes rodando ao mesmo tempo (o render faz duas cenas por vez): a de antes
+  repetiu a corrida no 386 (13 tiles do 10 entre 24 do 9; no 132, não, dessa vez); a de agora tem a base num nível só
+  em todos os quadros. No 132, o brilho das bordas muda no máximo 0,4 de um quadro para o outro (no render de antes, um
+  pico de 20,2 no 132, que voltava no 133).
+  A BASE ANDA LISA (correção 6, conferência das cenas com câmera por jumpTo): o MapLibre 4.7.1 desenha a base raster
+  alinhada a pixel inteiro quando o mapa não está "em movimento" (aligned = !painter.options.moving), e com jumpTo
+  ele nunca está: a base andava em degraus de 1 px e tremia meio pixel contra as linhas e os rótulos, que andam lisos.
+  Na conta sem tile, a câmera anda em 439 quadros e a base salta mais de 0,5 px contra as linhas em 229, 34 deles com
+  a câmera devagar (o canto andando menos de 3 px por quadro). Agora toda pintura do mapa vai como "em movimento"
+  (o painter.render recebe moving: true), e a base anda com as linhas. Essa opção só mexe no alinhamento da base e do
+  relevo sombreado (as duas únicas leituras dela no MapLibre desta cena). Medido com tile no recuo (352 a 397, num
+  recorte de 1000 × 600 px): o passo da base fica a 0,02 px da média dos passos vizinhos (mediana; máximo 0,21). No
+  render de antes, a 0,59 px (máximo 1,35).
+  O VOO SEM QUADRO NO ZOOM INTEIRO (correção 7 do Claude central, 01/10/2026, item 6b): no voo, o zoom cruza o 10 no
+  quadro 207 (6,9 s) a 0,0001 dele, descendo 0,006 por quadro, com a câmera andando 7 px por quadro. Com a base em 1:1
+  e a câmera reta, a amostragem cai no mesmo ponto de cada texel em toda a tela e não mistura os vizinhos, e esse
+  quadro saía de 23 a 34 % mais nítido que os outros (a reconferência da correção 6); nos vizinhos, a 0,006 do 10, o
+  ponto da amostragem já varia ao longo da tela. Na conta sem tile das 15 cenas de mapa com câmera andando, é o único
+  quadro assim isolado (relato da correção 7). Agora o zoom leva uma lombada de cosseno de 0,0029 no 207, de 197 a 217
+  (CENA.inteiro): o 207 fica a +0,0030 do 10 e o 208 a −0,0030, e o passo do zoom muda no máximo 8 % nesses quadros. A
+  tela se afasta no máximo 4,4 px de onde estava (no canto, no 207), com os rótulos e as linhas juntos. A cena confere,
+  ao carregar, que nenhum quadro com a câmera andando pousa a menos de 0,002 de um zoom inteiro, e falha se pousar.
+  MEDIDO COM TILE pelo caminho do render (como em A ÚLTIMA ATUALIZAÇÃO DOS TILES): de 203 a 211, o maior passo de nitidez de um quadro para o outro, na tela
+  inteira e nos quatro quadrantes, é de 3,2 % (no render de antes, +29 % no 207 e −21 % no 208; a versão de antes,
+  nessa medida, +18 % e −15 %).
+
   O CONTRATO: var DUR = 23.333 (o qc-janela lê o número escrito); __renderAt(t) determinístico e à prova de erro;
   __prepararCaptura; __ready (o mapa); __aguardarMapa; __fotosProntas (as fontes da folha). Nada de relógio, sorteio,
   @keyframes, transition ou SMIL. O RIG é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
@@ -332,6 +399,13 @@
     // ── O RECUO (b2): de onde o voo parou até a câmera nomeada "Juneau–estrada–anel" (a da s03), em 2,7 s
     recuo: { de: 11.933, dura: 2.7, abre: 0.5, fecha: 0.5,
              para: { lng: -134.9510, lat: 58.7560, zoom: 8.72, bearing: 0, pitch: 0 } },
+    // ── o nível da base no voo e no recuo (O NÍVEL DA BASE NO VOO e O 9,5 DO RECUO, no cabeçalho): a camada presa ao
+    //    nível "nivel" entra de 0 (zoom "de") a 1 (zoom nivel + 0,5); a do 10 começa no zoom do 1º quadro (10,7), e a
+    //    do 9, no zoom do fim do voo (9,7)
+    niveis: [{ nivel: 10, de: 10.7 }, { nivel: 9, de: 9.7 }],
+    // ── o quadro no zoom inteiro (O VOO SEM QUADRO NO ZOOM INTEIRO, no cabeçalho): o voo cruza o zoom 10 no quadro
+    //    "quadro"; ali o zoom leva "desvio" a mais, numa lombada de cosseno de "meia" quadros para cada lado
+    inteiro: { quadro: 207, desvio: 0.0029, meia: 10 },
 
     // ── Juneau: o ponto e o nome à direita dele (a borda esquerda do rótulo a dx do ponto, o centro dy acima dele),
     //    desde o 1º quadro; saem juntos em 300 ms antes de o rótulo chegar à faixa de baixo (y 1880). Na altura do ponto,
@@ -597,8 +671,16 @@
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
-    var s = { version: 8, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+    var camadas = [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }];
+    // as camadas presas a cada nível (CENA.niveis), por cima da base, desligadas até a janela delas
+    CENA.niveis.forEach(function (N) {
+      fontes["base-z" + N.nivel] = { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: N.nivel };
+      camadas.push({ id: "base-z" + N.nivel, type: "raster", source: "base-z" + N.nivel, layout: { visibility: "none" },
+        paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0, "raster-opacity": 0 } });
+    });
+    // sem transição: a pintura de cada quadro é a do __renderAt dele (correção 2 do Claude central, 01/10/2026)
+    var s = { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
     if (CENA.relevo && P.dem) {
       fontes.dem = { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding };
       s.terrain = { source: "dem", exaggeration: (P.terreno && P.terreno.exagero) || 1.25 };
@@ -721,6 +803,24 @@
     if (t >= RC.de + RC.dura) return { center: [RC.para.lng, RC.para.lat], zoom: RC.para.zoom, bearing: 0, pitch: 0 };   // a câmera nomeada, pelos números
     return recuoAt(t - RC.de);
   };
+  // O VOO SEM QUADRO NO ZOOM INTEIRO (cabeçalho): a lombada do zoom em volta do quadro em que o voo cruza o 10
+  var cameraSemLombada = cameraAt;
+  cameraAt = function (t) {
+    var c = cameraSemLombada(t), I = CENA.inteiro, dq = t * 30 - I.quadro;
+    if (Math.abs(dq) >= I.meia) return c;
+    return { center: c.center, zoom: c.zoom + I.desvio * 0.5 * (1 + Math.cos(Math.PI * dq / I.meia)), bearing: c.bearing, pitch: c.pitch };
+  };
+  // e nenhum quadro com a câmera andando pousa a menos de 0,002 de um zoom inteiro (com a câmera reta, a base sairia em
+  // 1:1 e mais nítida num quadro só)
+  (function () {
+    var N = Math.round(CENA.duracao * 30), ant = cameraAt(0);
+    for (var q = 1; q < N; q++) {
+      var c = cameraAt(q / 30), d = Math.abs(c.zoom - Math.round(c.zoom)), ws = 512 * Math.pow(2, c.zoom), a = merc(ant.center), b = merc(c.center);
+      var anda = Math.abs(c.zoom - ant.zoom) > 1e-6 || Math.hypot(b[0] - a[0], b[1] - a[1]) * ws > 0.01;
+      if (d < 0.002 && anda) return falhar("no quadro " + q + " o zoom pousa a " + d.toFixed(4) + " do " + Math.round(c.zoom) + " com a câmera andando: a base sairia em 1:1, mais nítida num quadro só. Refaça CENA.inteiro.");
+      ant = c;
+    }
+  })();
   // âncora: no quadro do anel, a água do canal (lynn-canal-gnis) fica no quadro, à esquerda do anel
   (function () {
     var c = cameraAt(CENA.voo.anelEm), ws = 512 * Math.pow(2, c.zoom), m0 = merc(c.center), m1 = merc(CANAL);
@@ -741,6 +841,12 @@
     return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
   }
   window.map = map;
+  // A BASE ANDA LISA (cabeçalho): toda pintura vai como "em movimento", para a base não se alinhar a pixel inteiro
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
 
     // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
   window.__errosMapa = 0;
@@ -818,9 +924,18 @@
     var d = Math.min(x - r - 200, 3640 - x - r, y - r - 160, 1880 - y - r, Math.max(3440 - x - r, 1760 - y - r));
     return cl(d / 60, 0, 1);
   }
+  var nivelAntes = {};
   function aplicar(t) {
     if (!mapaCarregado) return;
-    map.jumpTo(cameraAt(t));
+    var camT = cameraAt(t);
+    map.jumpTo(camT);
+    // ── o nível da base: a camada presa ao nível pela fração do zoom; fora da janela, desligada ──
+    CENA.niveis.forEach(function (N) {
+      var z = camT.zoom, a = z < N.nivel + 0.5 ? 0 : cl((N.de - z) / (N.de - N.nivel - 0.5), 0, 1), id = "base-z" + N.nivel;
+      var vis = a > 0 ? "visible" : "none", k = vis + "|" + a.toFixed(4);
+      if (nivelAntes[id] === k) return;
+      map.setLayoutProperty(id, "visibility", vis); map.setPaintProperty(id, "raster-opacity", +a.toFixed(4)); nivelAntes[id] = k;
+    });
 
     // ── a divisa: entra no recuo, com o item Border ──
     var vf = +eo(seg(t, CENA.fronteira.entra, 0.3)).toFixed(3);
@@ -922,10 +1037,20 @@
           return nivelUnico();
         } catch (e) { return false; }
       };
-      var t0 = performance.now(), seguidas = 0;
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
       (function tick() {
         barrarTileComErro();
-        seguidas = pronto() ? seguidas + 1 : 0;
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        // A ÚLTIMA ATUALIZAÇÃO DOS TILES (cabeçalho): com os tiles carregados, o mapa se atualiza mais duas vezes no mesmo
+        // lugar, cada uma com a pintura dela (a 1ª pinta os tiles que acabaram de chegar; a 2ª tira os filhos que o
+        // MapLibre guardou para o esmaecimento deles), e de novo, até 6, enquanto a conferência não fechar; ela só conta
+        // depois da 2ª. E recomeça do zero quando um tile volta a carregar: a 1ª podia sair antes de o quadro pedir os
+        // tiles dele, e aí só uma caía depois deles
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.jumpTo({ center: map.getCenter() }); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
         if (window.__erroCena || seguidas >= 2) return res(true);
         if (performance.now() - t0 > teto) {
           window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;

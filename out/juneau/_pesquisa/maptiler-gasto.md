@@ -107,3 +107,27 @@ quando ele mostrar.
 | s42 (3º render: o CENA.niveis na troca de nível do quadro 131→132) | 14:04:41 | 14:10:10 | 2160p |
 | s12 (render com a deriva da correção 4) | 14:10:23 | 14:15:29 | 2160p |
 | s48 (render com a deriva da correção 4) | 14:15:29 | 14:17:47 | 2160p |
+| s44 (20 cargas do mapista na correção 5: as linhas sobre o relevo, freeRtt, nível único com teto 11; o palco pede 94–150 tiles por quadro, antes ~34) | ~14:40–15:39 | — | qc-cena e capturas |
+| s44 (5º render: as linhas sobre o relevo da correção 5, freeRtt, nível único com teto 11, fusões) | 15:40:55 | 15:49:50 | 2160p |
+| s12, s42 e s48 (8 cargas do mapista na correção 6: moving true, a dupla atualização no __aguardarMapa, o nível 9 da s42) | ~15:50–16:01 | — | qc-cena e capturas |
+| s12 (render da correção 6: a base lisa) | 16:04:09 | 16:09:09 | 2160p |
+| s48 (render da correção 6: a base lisa) | 16:09:09 | 16:11:38 | 2160p |
+| s42 (render da correção 6: o clarão do q132, o nível 9 do recuo, a base lisa) | 16:11:38 | 16:16:57 | 2160p |
+| s03, s15, s21, s24, s39 e s50 (12 cargas do mapista na correção 7, lote A: a base lisa e a dupla atualização) | ~16:20–16:35 | — | medidas e qc-cena |
+| s03 (render da correção 7, lote A: a base lisa) | 16:18:18 | 16:20:20 | 2160p |
+| s15 (render da correção 7, lote A) | 16:20:20 | 16:24:07 | 2160p |
+| s21 (render da correção 7, lote A) | 16:24:07 | 16:24:49 | 2160p |
+| s24 (render da correção 7, lote A) | 16:24:50 | 16:26:31 | 2160p |
+| s39 (render da correção 7, lote A) | 16:26:31 | 16:29:05 | 2160p |
+| s50 (render da correção 7, lote A) | 16:29:05 | 16:34:31 | 2160p |
+| s07, s08, s33 e s59 (12 cargas do mapista na correção 7, lote B: a base lisa, a dupla atualização, a fusão do degrau de foco, o diagnóstico da trava da s33) | ~16:35–16:45 | — | medidas e qc-cena |
+| s07 (render da correção 7, lote B: a base lisa, a fusão do degrau de foco) | 16:35:29 | 16:40:56 | 2160p |
+| s08 (render da correção 7, lote B) | 16:40:57 | 16:46:23 | 2160p |
+| s33 (render da correção 7, lote B) | 16:46:23 | 16:49:52 | 2160p |
+| s59 (render da correção 7, lote B: a base lisa) | 16:49:52 | 16:51:34 | 2160p |
+| s44 (correção 7: 6 páginas com tile e 22 tiles baixados à parte pelo mapista, para achar a emenda do nível 11 no Lynn Canal) | ~16:50–17:15 | — | medidas e qc-cena |
+| s44 (6º render: correção 7, o nível 10 no mergulho, as fusões do mapa plano, a base lisa) | 16:59:37 | 17:09:37 | 2160p |
+| s42 (render da correção 7: a espera com o furo consertado, a lombada no zoom 10) | 17:25:28 | 17:31:40 | 2160p |
+| s42, s33 e s59 (11 cargas do mapista na correção 7, seção 6: s42 3, s33 5, s59 3) | ~17:15–17:45 | — | medidas e qc-cena |
+| s33 (render da correção 7, seção 6: a fase de 0,5 px no zoom 10) | 17:35:55 | 17:39:16 | 2160p |
+| s59 (render da correção 7, seção 6: a fase de 0,5 px no zoom 13) | 17:39:16 | 17:41:00 | 2160p |
