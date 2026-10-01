@@ -65,6 +65,15 @@
      de cima e subia com a câmera. Agora a gaveta desce de y 60→240 para 160→340, a etiqueta fica em y 200→301 (sob a
      câmera, 1,032 no fim, o topo dela em y ≥ 166) e a folha pousa em y 400 (era 300) e entra na gaveta pela ranhura em
      y 340. A gaveta no alto continua o desvio aceito. -->
+<!-- CORREÇÃO DO RENDER 2 (01/10/2026, roupa §4; correcao-render-2.md): a folha não sumia na ranhura desenhada: o recorte
+     (#ranhura, top 340) ficava fora de #cam, e a gaveta, sob a câmera (1,021 no corte), tinha o traço de baixo em y 326→331;
+     entre o traço e a folha passava uma faixa de mesa, e no fim as pontas rasgadas apareciam abaixo da gaveta. Agora (1) a
+     câmera do RIG recomeça no corte (R.camera com t − T.corte: escala 1 e deriva 0 em 8,867, 1,0107 no fim; a etiqueta fica
+     com o topo em y ≥ 190); (2) a ranhura fica em 0/2.160, com transform-origin no centro, e recebe a MESMA transformação
+     de #cam (em b1–b2, a identidade nos dois); (3) o recorte é um clip-path inset(343px 0 0 0), o pé do traço de baixo da
+     gaveta (y 340 + 3 de traço), nas coordenadas da câmera: o recorte e o traço coincidem em todo quadro, e no fim do
+     deslize (10,5) nada da folha fica abaixo do traço (o ponto mais baixo da borda rasgada, girada 0,8°, em y ≈ 331). A
+     folha não se move no corte: em 8,867 a transformação é a identidade. -->
 <head>
 <meta charset="utf-8">
 <title>s40 — In 2025, a House bill to hold legislative sessions in Anchorage proposed repealing the whole cost law. As of September 2026, the bill hadn't left its first committee</title>
@@ -93,8 +102,9 @@
   #asof { position: absolute; left: 2270px; top: 200px; white-space: nowrap; transform: translateX(-50%); font-family: var(--fonte);
     font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0; color: var(--sec); opacity: 0; }
 
-  /* a folha do HB 3, sobre as duas bases; no b3 a ranhura a recorta na gaveta */
-  #ranhura { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: hidden; }
+  /* a folha do HB 3, sobre as duas bases; no b3 a ranhura leva a MESMA transformação de #cam (a câmera da mesa e da gaveta)
+     e recorta a folha por clip-path na ranhura de baixo da gaveta: o recorte e o traço coincidem em todo quadro (01/10/2026) */
+  #ranhura { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: hidden; transform-origin: 50% 50%; }
   #grupo { position: absolute; left: 1440px; top: 0; width: 2000px; height: 1300px; transform-origin: 50% 50%; }
   .folha-sombra { position: absolute; left: 0; top: 0; width: 2000px; height: 1241px;
     box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
@@ -300,18 +310,21 @@
     rotulo(E("rLugar"), b3 ? 0 : eo(seg(t, T.lugar, 0.3)));
 
     // ── b3: a mesa, a gaveta e a etiqueta ──
-    var cam = E("cam");
+    var cam = E("cam"), ran = E("ranhura");
     cam.style.visibility = b3 ? "visible" : "hidden";
-    R.camera(cam, t, { base: 1.0 });
+    // a câmera do RIG recomeça no corte (t − T.corte: escala 1 e deriva 0 em 8,867; 1,0107 no fim): a folha não se move no
+    // corte. A ranhura leva a MESMA transformação da mesa e da gaveta (o recorte coincide com o traço em todo quadro); em
+    // b1–b2 os dois ficam na identidade (a folha rasteriza do mesmo jeito dos dois lados do corte)
+    var tc = b3 ? t - T.corte : 0;
+    R.camera(cam, tc, { base: 1.0 }); R.camera(ran, tc, { base: 1.0 });
     asof(E("asof"), b3 ? eo(seg(t, T.gaveta, 0.3)) : 0);
 
     // ── a folha: desce sobre o clipe em "proposed"; no b3 desliza para dentro da gaveta pela ranhura ──
     var d = eo(seg(t, T.folha, T.desceDur)), g = eb(seg(t, T.gaveta, T.gavetaDur));
     var y = t < T.folha ? FOLHA.yAlto : lerp(FOLHA.yAlto, FOLHA.y1, d);
     if (b3) y = lerp(FOLHA.y1, FOLHA.yGaveta, g);
-    var ran = E("ranhura"), topo = b3 ? 340 : 0;
-    ran.style.top = topo + "px"; ran.style.height = (2160 - topo) + "px";
-    E("grupo").style.transform = "translate(0px," + (y - topo).toFixed(2) + "px) rotate(" + lerp(FOLHA.rot - 1.6, FOLHA.rot, d).toFixed(3) + "deg)";
+    ran.style.clipPath = b3 ? "inset(343px 0 0 0)" : "none";   // o recorte no pé do traço de baixo da gaveta (y 340 + 3), nas coordenadas da câmera
+    E("grupo").style.transform = "translate(0px," + y.toFixed(2) + "px) rotate(" + lerp(FOLHA.rot - 1.6, FOLHA.rot, d).toFixed(3) + "deg)";
     E("g").style.backgroundSize = (100 * eo(seg(t, T.grifo, T.grifoDur))).toFixed(2) + "% 100%";
     cam.style.setProperty("--luz-x", LUZ.x + "px");
     cam.style.setProperty("--luz-y", lerp(LUZ.y1, LUZ.y2, g).toFixed(1) + "px");

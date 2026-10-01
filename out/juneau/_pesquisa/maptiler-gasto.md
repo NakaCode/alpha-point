@@ -80,3 +80,8 @@ quando ele mostrar.
 | s57 (o inset do editor) | 10:23:37 | 10:25:34 | 2160p |
 | s39 (2º render: a faixa da lei dentro da margem) | 10:25:46 | 10:27:54 | 2160p |
 | s42 | 10:27:55 | 10:34:13 | 2160p |
+| s44 (2º render: o anel na margem e a Thane Road; com o relevo) | 10:37:51 | 10:44:19 | 2160p |
+| s50 (1º render: a câmera do b6 e a página dentro da margem) | 10:44:19 | 10:48:20 | 2160p |
+| s12 (2º render: os créditos em sequência, as fitas na margem e a folha de 1993 no lugar) | 10:52:11 | 10:56:46 | 2160p |
+| s07 (3ª vez, com o nivelUnico consertado e as fitas na margem) | 10:56:46 | 11:00:50 | 2160p |
+| s08 (3ª vez) | — | — | não começou: o disco ficou com 2,9 GB, e o render guarda os quadros em JPEG antes de juntar |

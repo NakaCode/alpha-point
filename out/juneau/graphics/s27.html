@@ -29,14 +29,15 @@
     b2  5,533–12,134  ""I decided to just make fun of the whole process and the amount of money they wanted to spend to
         move the capital and build in Willow.""  (regência s27#2)
         No começo do beat (5,533) o card de Stoops, com a legenda, DESLIZA para a coluna da esquerda (x 310) em 0,4 s,
-        abrindo a mesa para o cartão da fala (a legenda, em 1.100 px, quebra em duas linhas sob o card). O CARTÃO DA FALA
+        abrindo a mesa para o cartão da fala (a legenda, em 1.100 px desde a entrada, uma parte por linha, vai com ele; o
+        cartão entra quando o deslize acaba, 5,933→6,233). O CARTÃO DA FALA
         (--papel, textura, Inter 700, 280 px, --tinta-escura) à direita (x 1.440→3.336, y 236→1.816, +0,8°: a fala em 5
         linhas de até 12 caracteres, "make fun of / the whole / process and / the amount / of money"; fora do canto do
         YouTube, que sob a câmera começa em y 1.721 e pede x ≤ 3.357, fora da faixa do crédito e dentro da margem direita
         em todo quadro), com o recorte de 11 palavras do redator, “make fun of the whole process and the amount of money”,
         INTEIRO em "make" (6,4): o cartão cresce 8 % (0,92 → 1) em 0,5 s enquanto a fala aparece. O card de Stoops fica ao
         lado, com a legenda, até o fim.
-        A luz: atrás do card no lugar em que s26 a deixou (1.920/820); em 5,533 desliza em 300 ms para trás do cartão da
+        A luz: atrás do card no lugar em que s26 a deixou (1.819/820); em 5,533 desliza em 300 ms para trás do cartão da
         fala. Elementos: 3 (o card, a legenda da atribuição e a fala); blocos: 3, no teto. Herói: nenhum.
     Crédito Source: Anchorage Daily News, 2026 solto na mesa, a cena toda (as pílulas e o card herdados, e a fala).
 
@@ -59,6 +60,13 @@
      (2) A coluna da esquerda (pílula em x 260 depois do deslize) ia a x 166 sob a câmera: o deslize leva a pílula a 310, o
      cargo a 324 e a legenda a 310 (sob a câmera, x ≥ 217). (3) As pílulas herdadas de s26 (Annie 300, Fannie até 3.540) e a
      seta são as de s26.html corrigido: o corte continua invisível. -->
+<!-- CORREÇÃO DO RENDER 2 (01/10/2026, roupa §4; correcao-render-2.md): (1) a linha herdada de s26: LEE STOOPS em x 1.394
+     (→2.244) e o cargo em 1.408, a 81 px de cada mascote (as pílulas de Stoops e de Fannie se sobrepunham); o deslize passa a
+     −1.084 px, e a pílula continua a chegar a x 310 (o cargo a 324, a legenda a 310). (2) A legenda da atribuição animava a
+     largura de 1.300 para 1.100 px no deslize e a quebra de linha mudava num quadro só (2 → 3 linhas): agora nasce com
+     1.100 px e três linhas (2026 / · Anchorage Daily News / · David Reamer), e a largura não anima. (3) O cartão da fala
+     entrava em fade enquanto a legenda ainda deslizava por baixo dele: entra quando o deslize acaba (5,933→6,233; era
+     5,733→6,033); a fala continua em "make" (6,4). O corte s26→s27 continua invisível (as mesmas constantes). -->
 <head>
 <meta charset="utf-8">
 <title>s27 — In 2026, he told Anchorage Daily News columnist David Reamer why: make fun of the whole process and the amount of money</title>
@@ -82,8 +90,9 @@
     line-height: 1.2; letter-spacing: 0; color: var(--legenda-cor); opacity: 0; }
   /* o grupo do card de Stoops (a pílula, o cargo e a legenda da atribuição), que desliza para a esquerda no b2 */
   #card { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
-  /* a legenda da atribuição: três partes, cada uma na palavra dela; em 1.100 px sob o card da esquerda, quebra em duas linhas */
-  #atrib { position: absolute; left: 1502px; top: 1080px; width: 1300px; font-family: var(--fonte); font-weight: var(--peso-texto);
+  /* a legenda da atribuição: três partes, cada uma na palavra dela, em 1.100 px desde a entrada (uma parte por linha: a
+     largura não anima e a quebra não muda no deslize; 01/10/2026) */
+  #atrib { position: absolute; left: 1394px; top: 1080px; width: 1100px; font-family: var(--fonte); font-weight: var(--peso-texto);
     font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0; color: var(--legenda-cor); }
   #atrib span { white-space: nowrap; opacity: 0; display: inline-block; }
   #graf { position: absolute; inset: 0; width: 3840px; height: 2160px; overflow: visible; }
@@ -124,8 +133,8 @@
     <div class="legenda" id="fannieLeg" data-qc-papel="eixo"   style="right:300px;top:940px"></div>
     <!-- o card de Stoops (herdado, no mesmo lugar) e a legenda da atribuição -->
     <div id="card">
-      <div class="pilula"  id="nome"  data-qc-papel="rotulo" style="left:1502px;top:700px"></div>
-      <div class="legenda" id="cargo" data-qc-papel="eixo"   style="left:1516px;top:940px"></div>
+      <div class="pilula"  id="nome"  data-qc-papel="rotulo" style="left:1394px;top:700px"></div>
+      <div class="legenda" id="cargo" data-qc-papel="eixo"   style="left:1408px;top:940px"></div>
       <div id="atrib" data-qc-papel="eixo"><span id="at1"></span> <span id="at2"></span> <span id="at3"></span></div>
     </div>
     <!-- a fala -->
@@ -259,8 +268,8 @@
     make: 6.4, cresce: 0.5                     // "make" (277,633): a fala inteira; o cartão cresce 8 %
   };
   // A GEOMETRIA HERDADA DE s26 (as mesmas constantes de s26.html): o card centrado em x 1.920; a luz atrás dele
-  var S26 = { dur: 10.133, luzCard: { x: 1920, y: 820 } };
-  var CARD = { dx: -1192 };   // o deslize: a pílula de 1.502 para 310; o cargo de 1.516 para 324; a legenda (310, 1.100 px) quebra em duas linhas; sob a câmera (1,0534 no fim) nada passa de x 200
+  var S26 = { dur: 10.133, luzCard: { x: 1819, y: 820 } };
+  var CARD = { dx: -1084 };   // o deslize: a pílula de 1.394 para 310; o cargo de 1.408 para 324; a legenda (310, 1.100 px, uma parte por linha) vai junto; sob a câmera (1,0534 no fim) nada passa de x 200
   var LUZ_FALA = { x: 2388, y: 1026 };   // o centro do cartão da fala
 
   function rotulo(el, op) {
@@ -286,10 +295,9 @@
 
     // ── b2: o card desliza para a esquerda; o cartão da fala cresce com a fala ──
     var d = eb(seg(t, T.b2, T.desliza));
-    E("card").style.transform = "translateX(" + (CARD.dx * d).toFixed(1) + "px)";
-    E("atrib").style.width = (lerp(1300, 1100, d)).toFixed(0) + "px";
+    E("card").style.transform = "translateX(" + (CARD.dx * d).toFixed(1) + "px)";   // a legenda vai no grupo, com a largura fixa de 1.100 px
     var g = eo(seg(t, T.make, T.cresce)), folha = E("falaCard");
-    folha.style.opacity = seg(t, T.b2 + 0.2, 0.3).toFixed(3);
+    folha.style.opacity = seg(t, T.b2 + T.desliza, 0.3).toFixed(3);   // o cartão entra DEPOIS do deslize (5,933→6,233): a legenda nunca passa por baixo dele
     folha.style.transform = "rotate(0.8deg) scale(" + (0.92 + 0.08 * g).toFixed(4) + ")";
     E("fala").style.opacity = eo(seg(t, T.make, 0.3)).toFixed(3);
 

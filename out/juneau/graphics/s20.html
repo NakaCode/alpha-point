@@ -48,6 +48,11 @@
 <!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): a cédula, montada em x 200→2.200 com −0,6°, saía da margem esquerda com o
      empurrão da câmera. Agora o centro é x 1.270 (x 270→2.270; girada, 263→2.277): sob a câmera (1,0223 no último quadro,
      margem em x ≥ 243) a borda fica em x ≥ 262. -->
+<!-- CORREÇÃO DO RENDER 2 (01/10/2026, roupa §4; correcao-render-2.md): no quadro 1 (0,033, a 23 % de opacidade) a cédula
+     entrava de fora das margens (o canto de cima à esquerda em x 196, a borda de cima em y 120→184). A queda agora começa
+     100 px acima do pouso (eram 260), a 1,02× (era 1,06) e com 1° a mais de inclinação (eram 2°): pela conta, no quadro 0 o
+     canto de cima à esquerda fica em x ≥ 230 e a borda de cima em y ≥ 237; no quadro 1, x ≥ 237 e y ≥ 266. O pouso (0,45 s,
+     ease-out) e o quadro final não mudam. -->
 <head>
 <meta charset="utf-8">
 <title>s20 — The same voters made two choices. They passed the Frank initiative, with nearly 56 percent. And they rejected the bonds</title>
@@ -251,8 +256,10 @@
     // ── b1: a cédula cai e assenta ──
     var p = eo(seg(t, 0, T.caiDur)), ced = E("cedula");
     ced.style.opacity = seg(t, 0, 0.15).toFixed(3);
-    ced.style.transform = "translate(" + (CED.cx - CED.w / 2).toFixed(2) + "px," + (CED.cy - CED.h / 2 - 260 * (1 - p)).toFixed(2) + "px) rotate(" +
-      lerp(CED.rot - 2, CED.rot, p).toFixed(3) + "deg) scale(" + (1.06 - 0.06 * p).toFixed(5) + ")";
+    // a queda começa já dentro das margens (01/10/2026): 100 px acima do pouso, a 1,02× e com 1° a mais de inclinação
+    // (eram 260 px, 1,06× e 2°: no quadro 1 a cédula passava de x 200 e de y 160)
+    ced.style.transform = "translate(" + (CED.cx - CED.w / 2).toFixed(2) + "px," + (CED.cy - CED.h / 2 - 100 * (1 - p)).toFixed(2) + "px) rotate(" +
+      lerp(CED.rot - 1, CED.rot, p).toFixed(3) + "deg) scale(" + (1.02 - 0.02 * p).toFixed(5) + ")";
 
     // ── b2: YES e o placar da Frank em "passed"; NEARLY 56% em "nearly", até 6,033 (+300 ms) ──
     carimbo(E("carSim"), t, T.passed);

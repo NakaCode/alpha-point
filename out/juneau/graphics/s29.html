@@ -26,7 +26,8 @@
         o não oficial ULTRAPASSA a ponta do sim da pesquisa (1.691 > 1.664), enquanto o sim encolhe: a virada, honesta.
         O placar 102,083 to 91,049 (o vencedor primeiro, em votos) se escreve sob elas (250/1480), e o carimbo NO
         (--destaque; Barlow Condensed 800, 360 px, caixa de 18 px, −7°, tinta gasta; batida de 0,38 s) CAI 120 px além
-        da ponta da barra do não (canto 2.061/1.250). NEARLY 53% não entra (R1: as barras mostram a vitória).
+        da ponta da barra do não (a borda esquerda da caixa em x 2.061, o centro em 2.349/1.250; a caixa de ~575 × 395, girada −7°,
+        começa em x ≈ 2.039 e acaba em ≈ 2.660). NEARLY 53% não entra (R1: as barras mostram a vitória).
         Elementos: as barras da pesquisa com a legenda e o placar (1) + NOVEMBER 1982 (1) + as barras oficiais com o
         placar e o carimbo (1) = 3 (6 contando cada rótulo à parte). Blocos: 1. Herói: nenhum (data-qc-sem-heroi).
     Crédito Source: Anchorage Daily News, 2026; Alaska Division of Elections, 1982 (em duas linhas, a quebra no "; ")
@@ -47,6 +48,11 @@
 <!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4): a câmera do RIG (1,0 → 1,025) levava para dentro da margem esquerda tudo
      o que estava alinhado em x 200 (as barras a 162, os textos a 167 no fim). Agora o conteúdo da câmera fica em x 250
      (o carimbo em 2.061, 120 px além da barra do não); o crédito, fora da câmera, continua em 200. -->
+<!-- CORREÇÃO DO RENDER 2 (01/10/2026, roupa §4; correcao-render-2.md): o carimbo NO não caía 120 px além da ponta da barra do
+     não: o CSS o centrava em x 2.061 (translate −50 %), a caixa começava em ~1.751 e a barra (até 1.941, também --destaque)
+     cobria a haste esquerda do N. Agora o centro é 2.349: a borda esquerda da caixa fica em 2.061 (girada −7°, o ponto mais à
+     esquerda em ~2.039, 98 px além da ponta da barra) e a direita em ~2.660; nenhuma barra toca letra. O carimbo continua o
+     último filho de #cam (por cima das barras). A correção anterior dizia "o carimbo em 2.061": era o centro. -->
 <head>
 <meta charset="utf-8">
 <title>s29 — A Dittman Research poll in late September had the move ahead, 52 to 45. In November 1982, the no side won</title>
@@ -67,8 +73,9 @@
   #pB { top: 600px; width: 1440px; background: var(--neutro); }
   #oNao { top: 1200px; width: 1691px; background: var(--destaque); }    /* 102,083 de 193,132 = 52,86 % × 32 px (a escala das barras da pesquisa) */
   #oSim { top: 1340px; width: 1508px; background: var(--contraparte); } /* 91,049 de 193,132 = 47,14 % × 32 px */
-  /* O CARIMBO DE BORRACHA (identidade §5; marca/prancha-fim.html): NO em --destaque, 120 px além da ponta da barra do não */
-  .carimbo { position: absolute; left: 2061px; top: 1250px; transform-origin: 50% 50%; opacity: 0; color: var(--destaque);
+  /* O CARIMBO DE BORRACHA (identidade §5; marca/prancha-fim.html): NO em --destaque, 120 px além da ponta da barra do não:
+     a caixa (~575 × 395) é centrada pelo translate(−50 %), então o centro fica em 2.349 e a borda esquerda em 2.061 (01/10/2026) */
+  .carimbo { position: absolute; left: 2349px; top: 1250px; transform-origin: 50% 50%; opacity: 0; color: var(--destaque);
     border: 18px solid currentColor; border-radius: 26px; padding: 46px 90px 34px; }
   .carimbo .yes { font-family: var(--fonte-sec); font-weight: var(--peso-heroi); font-size: var(--fs-heroi); line-height: .86;
     letter-spacing: .01em; color: currentColor; white-space: nowrap; }
