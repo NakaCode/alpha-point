@@ -34,7 +34,9 @@
         dois carimbos NO (o mesmo carimbo a 0,6, em --destaque, o lado de Juneau) BATEM em "no," (14,467; o segundo
         120 ms depois) à direita de cada linha (centro 2.400); à direita deles, o ESPAÇO EM BRANCO de "why is still
         debated": nenhum texto.
-    Crédito Source: Alaska Division of Elections, 1974–1982 solto sobre o papel (--tinta-escura a 72 %), a cena toda.
+    Crédito Source: Alaska Division of Elections, 1974–1982 solto sobre o papel (--tinta-escura a 72 %), a cena toda, em duas
+    linhas (Source: Alaska Division of Elections, / 1974–1982): o intervalo de anos vai num span nowrap e não parte na quebra
+    (01/10/2026; antes quebrava em "1974–" / "1982").
     A MARGEM SOB A CÂMERA (roupa §4, 01/10/2026): escala final 1 + 0,0024 × 17,367 = 1,042 (mais a deriva de 6/4,8 px):
     tudo dentro de x 274→3.566, y 202→1.843 em todo quadro: a caixa em y 330 (240 depois da descida de 90), o 1974 em
     y 176 (a 1,6 s a escala é 1,004), e o NO de 1982 termina em y 1.822 (centro 1.762 − 90 + 150 de meia altura girada).
@@ -49,6 +51,11 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes ou transition. O RIG abaixo é a cópia inteira de
   templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, rodada 9, correcao-render-5.md, item 14): o crédito Source: Alaska Division of Elections,
+     1974–1982 (76 px, na largura de 1.520 do #creds) quebrava em duas linhas DENTRO do intervalo: "…Elections, 1974–" / "1982".
+     O intervalo de anos vai agora num span com white-space: nowrap (creditoSemPartir, que monta o texto do TEXTOS em nós, sem
+     mudar uma letra; o textContent continua igual ao textos-tela): a quebra cai antes dele, "Source: Alaska Division of
+     Elections," / "1974–1982". Duas linhas de 83,6 px, em y ≈ 1.979→2.146, dentro da faixa do crédito. -->
 <head>
 <meta charset="utf-8">
 <title>s60 — So what happened to that yes vote in 1974? The question changed: whether to move, then how much</title>
@@ -86,11 +93,13 @@
     mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>");
     -webkit-mask-size: 640px; mask-size: 640px; }
 
-  /* o crédito (§4.2): 76 px, x = 200, abaixo de y = 1880, solto sobre o papel, em --tinta-escura a 72 % */
+  /* o crédito (§4.2): 76 px, x = 200, abaixo de y = 1880, solto sobre o papel, em --tinta-escura a 72 %; em duas linhas, e o
+     intervalo de anos (1974–1982) não parte na quebra (01/10/2026) */
   #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x)); }
   .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1;
     color: color-mix(in srgb, var(--tinta-escura) 72%, transparent); letter-spacing: 0; opacity: 0; }
   .cred[hidden] { display: none; }
+  .cred .intervalo { white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -261,6 +270,15 @@
     el.style.opacity = op.toFixed(3);
     el.style.transform = "translateY(" + ((1 - op) * 24).toFixed(1) + "px)";
   }
+  function creditoSemPartir(el, texto) {   // o intervalo de anos (AAAA–AAAA) vai num span nowrap: a quebra de linha não o parte (01/10/2026)
+    if (el.textContent === texto) return;
+    while (el.firstChild) el.removeChild(el.firstChild);
+    var m = /^([\s\S]*?)(\d{4}–\d{4})([\s\S]*)$/.exec(texto);
+    if (!m) { el.textContent = texto; return; }
+    el.appendChild(document.createTextNode(m[1]));
+    var s = document.createElement("span"); s.className = "intervalo"; s.textContent = m[2]; el.appendChild(s);
+    if (m[3]) el.appendChild(document.createTextNode(m[3]));
+  }
 
   function cena(t) {
     t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
@@ -291,7 +309,7 @@
 
     // ── o crédito, a cena toda ──
     var c = E("credFonte"), opC = eo(seg(t, 0, 0.3));
-    if (c.textContent !== TEXTOS.credFonte) c.textContent = TEXTOS.credFonte;
+    creditoSemPartir(c, TEXTOS.credFonte);   // 1974–1982 junto, na segunda linha
     c.hidden = false; c.style.opacity = opC.toFixed(3);
   }
 

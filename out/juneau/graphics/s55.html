@@ -10,8 +10,8 @@
 
   O que manda em cada coisa: o espelho (s55), o conceito (s55), a regência (s55: três beats), os textos finais do redator
   (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s55, cards_pessoa s55, _creditos
-  s55, nao_vai_para_tela s55) e a marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto
-  TEXTOS.
+  s55, nao_vai_para_tela s55; o segundo crédito, da série do petróleo, entrou em 01/10/2026 no sha256 32324404…) e a
+  marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS.
 
   OS BEATS (tempo local = master − 566,433; palavras do words.json):
     b1  0,000–6,933  "In December twenty sixteen, Governor Bill Walker said he preferred what the study calls the No
@@ -35,8 +35,13 @@
         Em "He" (9,847) a LINHA DO PREÇO de s54 (a mesma série, 748 dias, o mesmo eixo de dias e de valor) volta PEQUENA
         numa ficha de --papel ao lado das fichas (700 × 516, 2.870/900; o viewBox de 760 × 560 escala a 0,92), em --tinta-escura como lá, sem texto: fiscal
         crisis fica na voz (R1). 5 elementos (o card, NO ACTION, as duas fichas e a linha). Blocos: 0. Herói: nenhum.
-    Crédito Source: Alaska DOT&PF and FHWA, 2018 solto na mesa (--sec), de "December" (0,1) ao fim: é o crédito da data do
-    comunicado, que o textos-tela diz cobrir (NO ACTION e o comunicado).
+    Créditos soltos na mesa (--sec, x 200, y > 1.880): Source: Alaska DOT&PF and FHWA, 2018, de "December" (0,1) ao fim, é
+    o crédito da data do comunicado, que o textos-tela diz cobrir (NO ACTION e o comunicado), e fica no lugar dele, embaixo,
+    a cena toda; Source: Alaska Department of Revenue, 2013–2016 (a linha diária de s54, pequena; identidade §7: dado de
+    gráfico leva a fonte) ACENDE ACIMA dele em "He" (9,847), em duas linhas (…Revenue, / 2013–2016), e fica até o fim: o
+    lugar das duas linhas é reservado desde o primeiro quadro (a de cima fica no layout a 0 até acender), e a de baixo não
+    salta (roupa §4). O bloco dos créditos fica em y ≈ 1.895→2.146 (três linhas de 83,6 px, acima da faixa de 1.880).
+    Nenhum intervalo de anos parte na quebra (span nowrap).
 
   A MÍDIA (conferencia-midia.json › candidatos, veredito aprovado para s55 plano 1):
     ../_media/foto/s55/walker-bill-governor-2016-11-15-togiak.jpg  5472×3648
@@ -62,6 +67,15 @@
      em x 260 nominal, 213 sob a câmera), e o nome e o cargo acompanham, em x 280. A luz segue o card. (3) A pílula DECEMBER
      2016 subia a y 149: vai de y 160 a 180 (sob a câmera em 7,233, 1,017×: y 169). (4) O crédito Source: Alaska DOT&PF and
      FHWA, 2018 entra com DECEMBER 2016 (0,1), porque é o crédito da data do comunicado; antes entrava em "No" (4,967). -->
+<!-- CORREÇÃO DO RENDER 2 (01/10/2026, rodada 9, correcao-render-5.md, item 13): O SEGUNDO CRÉDITO. A linha diária do preço de
+     s54 volta pequena de 9,847 ao fim, e só o crédito da FSEIS estava na tela; o redator acrescentou ao textos-tela (sha256
+     32324404…) o crédito Source: Alaska Department of Revenue, 2013–2016 para a s55. Ele entra ACIMA da linha da FSEIS, no
+     #creds ancorado embaixo (bottom 14): a linha da FSEIS não sai do lugar (y 2.062→2.146) em quadro nenhum, e a nova, em
+     duas linhas (…Revenue, / 2013–2016; y ≈ 1.895→2.062), só acende no lugar dela em "He" (9,847), em 0,3 s, com a ficha
+     pequena, e fica até o fim. O lugar das duas é reservado desde o primeiro quadro (a de cima fica no layout com opacidade 0
+     até acender). O intervalo de anos vai num span nowrap, como na s60 (item 14), e não parte na quebra. O bloco dos créditos
+     fica inteiro acima da faixa de 1.880 (três linhas de 83,6 px: y ≈ 1.895) e abaixo do cargo do card (y ≤ 1.834 sob a
+     câmera do fim). -->
 <head>
 <meta charset="utf-8">
 <title>s55 — In December 2016, Governor Bill Walker said he preferred the No Action alternative: keep the ferries and build no road</title>
@@ -115,11 +129,13 @@
   #miniEixo { stroke: var(--eixo-cor); stroke-width: 3px; fill: none; stroke-linecap: round; }
   #miniLinha { stroke: var(--tinta-escura); stroke-width: 4px; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
-  /* o crédito (§4.2): 76 px, --sec, x = 200, abaixo de y = 1880, solto sobre a mesa */
+  /* os créditos (§4.2): 76 px, --sec, x = 200, abaixo de y = 1880, soltos sobre a mesa; o de baixo (a FSEIS) fica no lugar a cena
+     toda, e o da série do petróleo acende acima dele (01/10/2026). O intervalo de anos (2013–2016) não parte na quebra de linha. */
   #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x)); }
   .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1; color: var(--sec);
     letter-spacing: 0; opacity: 0; }
   .cred[hidden] { display: none; }
+  .cred .intervalo { white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -169,6 +185,8 @@
     </div>
   </div>
   <div id="creds">
+    <!-- a série do petróleo em cima (acende em 9,847 acima da linha da FSEIS, que não sai do lugar); a FSEIS embaixo, a cena toda -->
+    <div class="cred" id="credSerie" data-qc-papel="credito" hidden></div>
     <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
   </div>
 </div>
@@ -272,7 +290,8 @@
     noAction:  "NO ACTION",                                       // textos-tela.json › rotulos_dado s55 (rótulo: 'Alternative 1 – No Action')
     ficha1:    "keep the ferries",                                // textos-tela.json › rotulos_dado s55 (legenda)
     ficha2:    "build no road",                                   // textos-tela.json › rotulos_dado s55 (legenda)
-    credFonte: "Source: Alaska DOT&PF and FHWA, 2018"            // textos-tela.json › _creditos s55 (NO ACTION e o comunicado)
+    credFonte: "Source: Alaska DOT&PF and FHWA, 2018",           // textos-tela.json › _creditos s55 (NO ACTION e o comunicado)
+    credSerie: "Source: Alaska Department of Revenue, 2013–2016"  // textos-tela.json › _creditos s55 (a linha diária de s54, pequena, de 9,847 ao fim; sha256 32324404…)
   };
   // fiscal crisis NÃO vai à tela (textos-tela.json › nao_vai_para_tela s55; R1 da regência): a linha de s54 volta pequena
   // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
@@ -323,6 +342,15 @@
     var p = eo(seg(t, t0, 0.3));
     por(el, F.x + F.w / 2, F.y + F.h / 2 + 24 * (1 - p), F.w, F.h, rot, 0.96 + 0.04 * p, seg(t, t0, 0.2));
   }
+  function creditoSemPartir(el, texto) {   // o intervalo de anos (AAAA–AAAA) vai num span nowrap: a quebra de linha não o parte (01/10/2026)
+    if (el.textContent === texto) return;
+    while (el.firstChild) el.removeChild(el.firstChild);
+    var m = /^([\s\S]*?)(\d{4}–\d{4})([\s\S]*)$/.exec(texto);
+    if (!m) { el.textContent = texto; return; }
+    el.appendChild(document.createTextNode(m[1]));
+    var s = document.createElement("span"); s.className = "intervalo"; s.textContent = m[2]; el.appendChild(s);
+    if (m[3]) el.appendChild(document.createTextNode(m[3]));
+  }
 
   function cena(t) {
     t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
@@ -352,10 +380,15 @@
     var l = eo(seg(t, T.luz, T.luzDur));
     cam.style.setProperty("--luz-x", lerp(LUZ.x1, LUZ.x2, l).toFixed(1) + "px"); cam.style.setProperty("--luz-y", lerp(LUZ.y1, LUZ.y2, l).toFixed(1) + "px");
 
-    // ── o crédito, de DECEMBER 2016 ao fim: é o crédito da data do comunicado (o textos-tela diz que cobre NO ACTION e o comunicado) ──
+    // ── os créditos: a FSEIS, de DECEMBER 2016 ao fim, embaixo, no lugar dela (o textos-tela diz que cobre NO ACTION e o comunicado);
+    //    a série do petróleo ACIMA dela, de "He" (9,847) ao fim, enquanto a linha pequena está no ar: o lugar das duas é reservado
+    //    desde o primeiro quadro (a de cima fica no layout a 0 até acender), e a de baixo não salta (roupa §4; 01/10/2026) ──
     var c = E("credFonte"), opC = eo(seg(t, T.data, 0.3));
-    if (c.textContent !== TEXTOS.credFonte) c.textContent = TEXTOS.credFonte;
+    creditoSemPartir(c, TEXTOS.credFonte);
     c.hidden = opC <= 0; c.style.opacity = opC.toFixed(3);
+    var c2 = E("credSerie"), opC2 = eo(seg(t, T.mini, 0.3));
+    creditoSemPartir(c2, TEXTOS.credSerie);
+    c2.hidden = false; c2.style.opacity = opC2.toFixed(3);
   }
 
   window.__renderAt = function (t) {
