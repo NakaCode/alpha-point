@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s21</title>
+<!--
+  CANAL ALPHA POINT — JUNEAU, CENA s21 (216,400 → 219,333 s do master; 2,933 s; quadros 6492 → 6580 a 30 fps).
+  "Willow had a site, and no money approved to build on it."
+  Mapista, 01/10/2026, passo art.
+
+  O que manda em cada coisa:
+    · o QUE vai à tela e a grafia: out/juneau/textos-tela.json (s21: rotulos_dado Willow e _creditos), o do disco de
+      01/10 (sha 98e3e7f8…, commit c5c0dff), ainda sem o laudo de fatos; cada texto mora num lugar só, CENA.textos;
+    · o TEMPO e o exige: out/juneau/regencia.json (s21, 1 beat); a direção: conceito-visual.json (s21);
+      a marca: marca/identidade.md §4–§7 e marca/tokens.css.
+
+  O BEAT (tempo local = master − 216,4; palavras do words.json): 'Willow' 216,43 → 0,030 (a regência, 0,033).
+    b1  0,000–2,933  mapa num arquivo próprio: a câmera parte do enquadramento final de s15 (a câmera nomeada
+        "Willow–Anchorage", reutilizada pelo número: lng -149.86514, lat 61.54527, zoom 9.3; a reaparição do lugar,
+        declarada no conceito) e faz um push-in lento nos 2,933 s, zoom +0,15 com rampa cúbica suave (eb), EM TORNO DO
+        SÍTIO: o ponto do sítio (5 milhas a leste da vila, o mesmo da s15) fica parado na tela, e o resto se abre em
+        volta dele. As feições do sítio (limites-sitio-willow-1976) em traço fino de 6 px em --contraparte, sem
+        preencher, desde o 1º quadro; o ponto da vila (cidade-willow-osm) e o nome Willow em "Willow" (0,033), no mesmo
+        lugar da s15 (embaixo e à esquerda do ponto), fora de toda linha. Nada do estado da s15 volta: nem a régua, nem
+        a seta, nem MAT-SU VALLEY, nem o anel, nem a estrada. Uma linha de um tipo só: sem legenda das cores.
+        Crédito © MapTiler © OpenStreetMap contributors na faixa, a cena toda.
+
+  A CONTA DOS 6 ELEMENTOS (identidade §4.2; minha, pelo ensaio a seco, não portão): o sítio contornado e Willow com o
+  nome = 2.
+
+  O MAPA: o perfil do canal (maptiler), sem relevo, brilho 65 % e saturação 70 % na camada, sem véu. O recorte
+  matsu-anchorage não tem fronteira de país: nenhuma linha branca. NENHUM RÓTULO SOBRE UMA LINHA: o nome de Willow fica a
+  70 px ou mais das feições do sítio em todo o push-in, medido quadro a quadro sem tile.
+
+  O CONTRATO: var DUR = 2.933 (o qc-janela lê o número escrito); __renderAt(t) determinístico e à prova de erro;
+  __prepararCaptura; __ready (o mapa); __aguardarMapa; __fotosProntas. Nada de relógio, sorteio, @keyframes,
+  transition ou SMIL. O RIG é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/camera-mapa.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<!-- UMA linha por geometria usada na cena (slugs de out/juneau/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/limites-sitio-willow-1976.js"></script>
+<script src="../_media/geo/cidade-willow-osm.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; overflow: visible; }
+  .ponto { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6; }
+  #rotulos { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+  .rotulo { position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1;
+    letter-spacing: 0; color: var(--tinta); }
+  .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
+    font: 500 76px/1.15 sans-serif; font-family: var(--fonte); letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); }
+  #credito { bottom: 52px; }
+  .credito[hidden] { display: none; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="mapa: a cena não tem herói; o nome do lugar é rótulo (ofício do editor-de-arte §6)">
+  <div id="map"></div>
+  <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+    <circle class="ponto" id="pontoW" cx="0" cy="0" r="16" opacity="0"/>
+  </svg>
+  <div id="rotulos">
+    <div class="rotulo" id="rotWillow" data-qc-papel="rotulo"></div>
+  </div>
+  <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+
+  // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
+  var CENA = {
+    duracao: 2.933,                                  // espelho.json › s21 › dur
+    largura: 3840, altura: 2160,
+    perfil: "maptiler", relevo: false,
+
+    // ── OS TEXTOS DA TELA: um lugar só (textos-tela.json do disco de 01/10, sha 98e3e7f8…: rotulos_dado e _creditos s21)
+    textos: { willow: "Willow", creditoMapa: "© MapTiler © OpenStreetMap contributors" },
+
+    // ── a câmera: parte da câmera nomeada "Willow–Anchorage" (o quadro final da s15) e sobe 0,15 de zoom em torno do sítio
+    inicio: { lng: -149.86514, lat: 61.54527, zoom: 9.3 },
+    pushIn: { zoom: 0.15, dura: 2.933 },
+    sitio: { geo: "limites-sitio-willow-1976", milhasLeste: 5 },
+    vila: { geo: "cidade-willow-osm", entra: 0.033 },
+    // o nome de Willow no lugar da s15: a borda direita 89 px à esquerda do ponto, o centro 115 px abaixo dele
+    rotulo: { id: "rotWillow", texto: "willow", lado: "esquerda", dx: -89, dy: 115, entra: 0.033 }
+  };
+  // ═════════════════════════════════════════════════════════════════════════════════════════════════
+
+  var DUR = 2.933;
+  window.__duracao = DUR;
+  var R = window.RIG, cl = R.clamp, seg = R.seg, eb = R.eb;
+  var eo = function (p) { return R.eo(cl(p, 0, 1)); };
+  var E = function (id) { return document.getElementById(id); };
+  var X = CENA.textos;
+
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena s21] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+  if (DUR !== CENA.duracao) falhar("a duração escrita (" + DUR + " s) não é a do bloco CENA (" + CENA.duracao + " s).");
+
+  E(CENA.rotulo.id).textContent = X[CENA.rotulo.texto];
+
+  // ── o mapa: o que a cena precisa ter recebido ───────────────────────────────────────────────────
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== CENA.perfil) return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa '" + CENA.perfil + "' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster; esta cena desenha sobre satélite.");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo. Gere com as ferramentas src/geo/*.");
+    return g;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+  var PW = (function () {
+    var fc = geo(CENA.vila.geo), f = fc && (fc.features || []).filter(function (x) { return x.geometry && x.geometry.type === "Point"; })[0];
+    if (!f) { falhar("não achei o ponto da vila em '" + CENA.vila.geo + "'."); return null; }
+    return f.geometry.coordinates;
+  })();
+  if (window.__erroCena) return;
+  // o sítio: 5 milhas a leste da vila, na mesma latitude (o folheto e a voz), o mesmo ponto da s15
+  var PS = [PW[0] + (CENA.sitio.milhasLeste * 1.609344) / (111.32 * Math.cos(PW[1] * Math.PI / 180)), PW[1]];
+  var SITIO = (function () {
+    var fc = geo(CENA.sitio.geo); if (!fc) return null;
+    var ls = [];
+    (fc.features || []).forEach(function (f) {
+      var g = f.geometry; if (g.type === "LineString") ls.push(g.coordinates); else if (g.type === "MultiLineString") ls = ls.concat(g.coordinates);
+    });
+    if (!ls.length) { falhar("'" + CENA.sitio.geo + "' não tem linhas."); return null; }
+    return { type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: ls } };
+  })();
+  if (window.__erroCena) return;
+
+  // ── o push-in em torno do sítio, em Mercator: o ponto do sítio fica parado na tela, e o zoom sobe 0,15 ─────────
+  var merc = function (p) { var s = Math.sin(p[1] * Math.PI / 180); return [p[0] / 360 + 0.5, 0.5 - 0.25 * Math.log((1 + s) / (1 - s)) / Math.PI]; };
+  var desmerc = function (q) { return [(q[0] - 0.5) * 360, 360 / Math.PI * Math.atan(Math.exp((0.5 - q[1]) * 2 * Math.PI)) - 90]; };
+  var mS = merc(PS), mC = merc([CENA.inicio.lng, CENA.inicio.lat]);
+  function cameraAt(t) {
+    var z = CENA.inicio.zoom + CENA.pushIn.zoom * eb(seg(t, 0, CENA.pushIn.dura)), k = Math.pow(2, CENA.inicio.zoom - z);
+    return { center: desmerc([mS[0] + (mC[0] - mS[0]) * k, mS[1] + (mC[1] - mS[1]) * k]), zoom: z, bearing: 0, pitch: 0 };
+  }
+
+  // ── crédito de mapa: base (pelo perfil) + toda geometria cuja licença exige (molde) ───────────────────
+  var creditoTexto = (function () {
+    var partes = [];
+    if (P.atribuicao && P.atribuicao.exigida) {
+      if (!P.atribuicao.tela) { falhar("a base '" + P.nome + "' exige crédito na tela e o perfil não traz o texto (atribuicao.tela)."); return ""; }
+      partes.push(P.atribuicao.tela);
+    }
+    var geos = window.__GEO || {}, meta = window.__GEO_META || {};
+    var slugs = Object.keys(geos);
+    for (var i = 0; i < slugs.length; i++) {
+      var m = meta[slugs[i]];
+      if (!m) { falhar("a geometria '" + slugs[i] + "' foi carregada sem procedência (fonte/licença). Gere pelas ferramentas src/geo/* e rode preparar-cena."); return ""; }
+      if (!m.exige_credito) continue;
+      var t = m.credito_tela || (m.fonte && m.licenca ? "Geometria: " + m.fonte + " (" + m.licenca + ")" : "");
+      if (!t) { falhar("a geometria '" + slugs[i] + "' exige crédito e a procedência não diz o texto. Rode preparar-cena de novo."); return ""; }
+      var junto = partes.join(" · ");
+      if (/OpenStreetMap/i.test(t) && /OpenStreetMap/i.test(junto)) continue;
+      if (junto.indexOf(t) >= 0) continue;
+      partes.push(t);
+    }
+    var c = E("credito");
+    if (c) { c.textContent = partes.join(" · "); c.hidden = !partes.length; }
+    return partes.join(" · ");
+  })();
+  window.__creditoMapa = creditoTexto;
+  if (!window.__erroCena && creditoTexto !== X.creditoMapa)
+    falhar("o crédito de mapa montado ('" + creditoTexto + "') não é o do textos-tela.json ('" + X.creditoMapa + "').");
+  if (window.__erroCena) return;
+
+  // ── a base, montada do perfil, SEM o relevo ─────────────────────────────────────────────────────
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  function estilo() {
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var s = { version: 8, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+    if (CENA.relevo && P.dem) {
+      fontes.dem = { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding };
+      s.terrain = { source: "dem", exaggeration: (P.terreno && P.terreno.exagero) || 1.25 };
+    }
+    return s;
+  }
+
+  // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  /*<imagem>*/
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  /*</imagem>*/
+  function erroCorpo(msg, url, st) {
+    var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e;
+  }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) {
+          var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http";
+          throw e;
+        }
+        if (params.type === "json") return r.text().then(function (t) {
+          try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); }
+        });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+
+  var c0 = cameraAt(0);
+  var map;
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: c0.bearing, pitch: c0.pitch
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
+  }
+  window.map = map;
+
+  // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg)) {
+      return "mandou tile CORROMPIDO" + n + ": a resposta chegou, mas a imagem veio cortada ou ilegível (" +
+        String(msg).replace(/^tile corrompido: /, "") + "). Não é falta de internet: o servidor ou a conexão estão cortando " +
+        "respostas. Renderize de novo.";
+    }
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + " (internet lenta ou servidor sobrecarregado). Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ". Confira o bloco CENA (ids de camada/fonte, valores).");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : "") +
+      (msg && !err.status && err.falha !== "corrompido" && err.falha !== "tempo" && !/could not be decoded|could not load image/i.test(msg) ? " — " + msg : ""));
+  });
+
+  var mapaCarregado = false;
+  map.on("load", function () {
+    try {
+      // as feições do sítio: traço fino de 6 px em --contraparte, sem contorno, desde o 1º quadro
+      map.addSource("sitio", { type: "geojson", data: SITIO });
+      map.addLayer({ id: "sitio", type: "line", source: "sitio", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": tok("--contraparte", "#2EC4B6"), "line-width": 6, "line-opacity": 1 } });
+    } catch (e) { return falhar("não consegui desenhar o sítio: " + e.message); }
+    mapaCarregado = true;
+    map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
+  });
+
+  function aplicar(t) {
+    if (!mapaCarregado) return;
+    map.jumpTo(cameraAt(t));
+    var q = map.project(PW), v = t < CENA.vila.entra ? 0 : eo(seg(t, CENA.vila.entra, 0.3));
+    var d = E("pontoW"); d.setAttribute("cx", q.x.toFixed(1)); d.setAttribute("cy", q.y.toFixed(1)); d.setAttribute("opacity", v.toFixed(3));
+    var r = CENA.rotulo, el = E(r.id), ent = t < r.entra ? 0 : eo(seg(t, r.entra, 0.3));
+    el.style.left = (q.x + r.dx).toFixed(1) + "px";
+    el.style.top = (q.y + r.dy).toFixed(1) + "px";
+    el.style.opacity = ent.toFixed(3);
+    el.style.transform = "translate(-100%,-50%) translateY(" + ((1 - ent) * 24).toFixed(1) + "px)";
+  }
+
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }
+  };
+
+  function nivelUnico() {
+    try {
+      if (map.getTerrain() || map.getPitch() > 1) return true;
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      var cache = sc.base; if (!cache) return true;
+      var ids = cache.getRenderableIds ? cache.getRenderableIds() : Object.keys(cache._tiles || {});
+      var tiles = ids.map(function (id) { return cache._tiles[id]; }).filter(Boolean);
+      if (!tiles.length) return false;
+      if (tiles.some(function (x) { return x.state === "loading"; })) return false;
+      var niveis = new Set(tiles.map(function (x) { return x.tileID && x.tileID.canonical && x.tileID.canonical.z; }));
+      return niveis.size <= 1;
+    } catch (e) { return true; }
+  }
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) {
+        var ts = (sc[id] && sc[id]._tiles) || {};
+        for (var k in ts) if (ts[k] && ts[k].state === "errored") return id;
+      }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou (HTTP 404 ou resposta inválida). O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!map.areTilesLoaded() || map.isMoving()) return false;
+          if (!map.isSourceLoaded("sitio") || !map.isSourceLoaded("base")) return false;
+          if (CENA.relevo && P.dem && (!map.isSourceLoaded("dem") || !map.getTerrain())) return false;
+          return nivelUnico();
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0;
+      (function tick() {
+        barrarTileComErro();
+        seguidas = pronto() ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo; se repetir, confira a conexão.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  window.__fotosProntas = R.prontas().then(function () { return true; });
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__fotosProntas.then(function () { window.__renderAt(0); return true; });
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+</script>
+</body>
+</html>

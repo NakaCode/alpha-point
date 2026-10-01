@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s32 · "By the ballot's own terms, the 1982 no vote also repealed every move law, from the 1974 initiative to the Frank
+  initiative."
+  Word-lock (−332.5) · inSec 332.5 · dur 8.3 (249 quadros a 30 fps; espelho.json, _quadros 9975→10224)
+  Modo do espelho: documento · Modelo da identidade: DOCUMENTO recriado (a folha de 1982 de s23 e s30) com a borracha:
+  o risco de tinta sobre cada lei; o carimbo YES de s01, pequeno, riscado por último. O pico do miolo (showpiece).
+
+  O que manda em cada coisa: o espelho (s32), o conceito (s32), a regência (s32: dois beats), os textos finais do redator
+  (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s32, _creditos s32,
+  nao_vai_para_tela s32) e a marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS.
+
+  OS BEATS (tempo local = master − 332,5; palavras do words.json):
+    b1  0,000–5,433  "By the ballot's own terms, the nineteen eighty-two no vote also repealed every move law,"
+        A folha de 1982 (a mesma de s23 e s30: o cabeçalho BALLOT MEASURE NO. 8 · NOVEMBER 1982, 3.040 px, +0,8°) na mesa
+        de feltro sob a luz, com o topo em y 300. Abaixo do fio, a PRÓPRIA FRASE DA CÉDULA (p. 88, Courier Prime 86/1,5):
+        If a majority votes NO, laws and initiatives relating to capital relocation and indemnification are repealed.,
+        que o GRIFO (--grifo-cor) varre em "ballot's" (0,233; 0,55 s; nas duas linhas). Depois da quebra tracejada entre
+        as páginas, o cabeçalho literal da p. 89 em caixa (LEGISLATIVE AFFAIRS AGENCY SUMMARY: sem ele, a tela atribuiria
+        à cédula a lista que ela não trazia) e o literal do resumo, com CADA LEI NUMA LINHA (recuada). A CÂMERA DESCE ao
+        resumo (o rolo sobe 860 px, de 1,6 a 3,1 s, ease-in-out). Em "repealed" (3,6) a CANETA toca o papel: um traço de
+        tinta de 10 px (--tinta-escura, 140 px) na margem, ao lado da primeira lei: o risco começa.
+    b2  5,433–8,300  "from the nineteen seventy-four initiative to the Frank initiative."  (regência s32#2)
+        O risco de 10 px atravessa cada lei com a voz, linha a linha (0,25 s cada; a borracha, não um grifo): the Capital
+        Relocation Initiative (a iniciativa de 1974) em "from" (5,467); the “FRANK Initiative” as amended em "to" (7,2);
+        the laws establishing the New Capital Site Planning Commission (duas linhas, dois riscos) em "Frank" (7,433); and
+        the Relocation Indemnification Act em 7,6. A folha TREME 2 px a cada risco. O carimbo YES de s01 aparece PEQUENO
+        (à metade: Barlow 360 × 0,5) em "nineteen" (5,667), à direita das leis, e recebe o risco na última palavra
+        ("initiative.", 7,767). Elementos: a folha, com o grifo e os riscos (1) + o YES pequeno (1) = 2. Blocos: 1.
+        Herói: nenhum (data-qc-sem-heroi).
+    DESVIO DO CONCEITO, COM DONO: o conceito põe o YES pequeno "na borda escura, no canto". A folha ocupa de x 400 a
+    3.440, e o canto escuro que sobra (200 px até a margem de 200) não comporta o carimbo nem à metade (357 px) sem furar
+    a margem; e, na rolagem da câmera, o canto de cima sai do quadro. O YES vai SOBRE A FOLHA, à direita das leis, em
+    --tinta-escura (o de s01 é --tinta, que sobre --papel não se lê): o carimbo de 1974 sobre a cédula de 1982, riscado.
+    Dono: diretor-de-arte. Crédito Source: Alaska Division of Elections, 1982 na pílula --rotulo, a cena toda.
+
+  A MÍDIA: nenhuma. A folha é recriação (midia.md §7.1); a prova de página do pesquisa-documentos fica fora da tela, e
+  o caminho dela não se escreve aqui (qc-midia-real §3).
+
+  A MESA (identidade §5): a luz é o fundo de #cam, o feltro é #mesa, primeiro filho, os dois POR BAIXO de tudo, só pelos
+  tokens --mesa-*; a luz atrás da folha, descendo com a câmera até a lista das leis; cada risco se faz dentro da poça.
+  A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Courier Prime só na folha. Margens
+  200/160; canto inferior direito (400×400) vazio; crédito em x = 200, y > 1880. --degrade: none fora da luz da mesa.
+
+  O CONTRATO: window.__duracao = 8.3; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
+  __fotosProntas = RIG.prontas() e, a mais, as duas faces da Courier Prime (MarcaDoc 400 e 700). Nada de relógio, sorteio,
+  @keyframes ou transition. O RIG abaixo é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+-->
+<head>
+<meta charset="utf-8">
+<title>s32 — By the ballot's own terms, the 1982 no vote also repealed every move law, from the 1974 initiative to the Frank initiative</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
+      var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+  #mesa { position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
+  #grupo { position: absolute; left: 400px; top: 0; width: 3040px; height: 2300px; transform-origin: 50% 50%; }
+
+  .folha-sombra { position: absolute; left: 0; top: 0; width: 3040px; height: 2196px;
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  .folha { position: absolute; left: 0; top: 0; width: 3040px; height: 2300px; padding: 160px 150px 0; background: var(--papel); color: var(--tinta-escura); overflow: hidden; }
+  .folha::before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
+    background-size: 420px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .folha::after { content: ""; position: absolute; left: 0; right: 0; top: 46%; height: 3px; pointer-events: none;
+    background: color-mix(in srgb, var(--tinta-escura) 7%, transparent);
+    box-shadow: 0 2px 0 color-mix(in srgb, var(--tinta) 50%, transparent); }
+  .rasgada { clip-path: polygon(0% 0%, 100% 0%, 100% 95.5%, 100.00% 96.89%, 98.44% 96.15%, 96.88% 98.30%, 95.31% 95.81%, 93.75% 97.80%, 92.19% 97.07%, 90.62% 95.75%, 89.06% 97.68%, 87.50% 95.66%, 85.94% 97.36%, 84.38% 95.80%, 82.81% 95.89%, 81.25% 97.33%, 79.69% 99.06%, 78.12% 96.03%, 76.56% 96.46%, 75.00% 98.20%, 73.44% 99.58%, 71.88% 97.98%, 70.31% 97.21%, 68.75% 99.70%, 67.19% 95.70%, 65.62% 99.19%, 64.06% 96.75%, 62.50% 96.12%, 60.94% 96.01%, 59.38% 96.83%, 57.81% 99.01%, 56.25% 96.28%, 54.69% 98.00%, 53.12% 98.25%, 51.56% 97.10%, 50.00% 97.86%, 48.44% 95.77%, 46.88% 95.76%, 45.31% 96.39%, 43.75% 98.43%, 42.19% 97.34%, 40.62% 96.85%, 39.06% 98.02%, 37.50% 97.45%, 35.94% 96.79%, 34.38% 98.92%, 32.81% 98.51%, 31.25% 96.55%, 29.69% 97.97%, 28.12% 97.76%, 26.56% 99.26%, 25.00% 98.64%, 23.44% 96.74%, 21.88% 99.71%, 20.31% 96.01%, 18.75% 97.30%, 17.19% 98.76%, 15.62% 96.15%, 14.06% 97.60%, 12.50% 95.67%, 10.94% 98.37%, 9.38% 98.79%, 7.81% 97.96%, 6.25% 99.26%, 4.69% 96.85%, 3.12% 98.49%, 1.56% 98.06%, 0.00% 97.99%); }
+  .cab { display: flex; align-items: center; height: 132px; }
+  .caixa-ref { font-family: var(--fonte-doc); font-weight: var(--peso-doc-cabecalho); font-size: var(--doc-cabecalho); line-height: 1;
+    letter-spacing: .02em; white-space: nowrap; padding: 18px 26px;
+    border: 6px solid color-mix(in srgb, var(--tinta-escura) 55%, transparent); color: color-mix(in srgb, var(--tinta-escura) 70%, transparent); }
+  .fio { height: 4px; margin: 44px 0 40px; background: color-mix(in srgb, var(--tinta-escura) 25%, transparent); }
+  .corpo { font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: var(--doc-corpo); line-height: 1.5;
+    letter-spacing: 0; color: var(--tinta-escura); white-space: pre-wrap; }
+  .grifo { background-image: linear-gradient(var(--grifo-cor), var(--grifo-cor)); background-repeat: no-repeat;
+    background-size: 0% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .quebra { height: 0; margin: 28px 0 32px; border-top: 4px dashed color-mix(in srgb, var(--tinta-escura) 30%, transparent); }
+  /* a borracha: o risco de 10 px em --tinta-escura atravessa cada lei, linha a linha (box-decoration-break: clone), nunca um grifo */
+  .lei { background-image: linear-gradient(var(--tinta-escura), var(--tinta-escura)); background-repeat: no-repeat;
+    background-size: 0% 10px; background-position: 0 54%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  /* a caneta toca o papel: um traço de 140 px na margem, ao lado da primeira lei */
+  #tique { position: absolute; left: 20px; width: 110px; height: 10px; background: var(--tinta-escura); transform-origin: 0% 50%; transform: scaleX(0); border-radius: 5px; }
+  /* o carimbo YES de s01, à metade, sobre a folha, em --tinta-escura; o risco por cima, na última palavra */
+  .carimbo { position: absolute; left: 2740px; top: 1540px; transform-origin: 50% 50%; opacity: 0; color: var(--tinta-escura);
+    border: 18px solid currentColor; border-radius: 26px; padding: 46px 90px 34px; }
+  .carimbo .yes { font-family: var(--fonte-sec); font-weight: var(--peso-heroi); font-size: var(--fs-heroi); line-height: .86;
+    letter-spacing: .01em; color: currentColor; white-space: nowrap; }
+  .carimbo .risco { position: absolute; left: -40px; top: 50%; width: calc(100% + 80px); height: 20px; margin-top: -10px; background: var(--tinta-escura);
+    transform-origin: 0% 50%; transform: scaleX(0) rotate(-4deg); }
+  .gasta { -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>");
+    -webkit-mask-size: 640px; mask-size: 640px; }
+  .fita { position: absolute; width: 520px; height: 150px; background: color-mix(in srgb, var(--papel) 62%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--tinta-escura) 18%, transparent);
+    clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 86%, 97% 100%, 0 100%, 4% 88%, 0 72%, 4% 56%, 0 40%, 4% 24%);
+    transform-origin: 50% 50%; }
+
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x));
+    background: var(--rotulo); border-radius: var(--cantos); padding: 6px 24px 8px; opacity: 0; }
+  .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1; color: var(--sec);
+    letter-spacing: 0; opacity: 0; }
+  .cred[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="a folha de 1982 riscada: impressão da folha, grifo, riscos e o carimbo YES de s01 pequeno; nenhum herói (ofício do editor-de-arte §6)">
+  <div id="cam">
+    <div id="mesa"></div>
+    <div id="grupo">
+      <div class="folha-sombra"></div>
+      <div class="folha rasgada" id="folha">
+        <div class="cab"><span class="caixa-ref" id="cab"></span></div>
+        <div class="fio"></div>
+        <p class="corpo" id="clausula"></p>
+        <div class="quebra"></div>
+        <div class="cab"><span class="caixa-ref" id="resumo"></span></div>
+        <p class="corpo" id="lista" style="margin-top:40px"></p>
+        <div id="tique"></div>
+        <div class="carimbo gasta" id="carimbo" data-qc-papel="carimbo"><div class="yes" id="carTxt"></div><div class="risco" id="riscoYes"></div></div>
+      </div>
+      <div class="fita" id="fitaE" style="left:-80px;top:-70px;transform:rotate(-7deg)"></div>
+      <div class="fita" id="fitaD" style="left:2600px;top:-66px;transform:rotate(6deg)"></div>
+    </div>
+  </div>
+  <div id="creds">
+    <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
+  </div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo, eb = R.eb;
+  var E = function (id) { return document.getElementById(id); };
+  var lerp = function (a, b, p) { return a + (b - a) * p; };
+  var DUR = 8.3;
+  window.__duracao = DUR;
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é a do textos-tela.json do disco) ═══════════════════════════
+  var TEXTOS = {
+    cabecalho: "BALLOT MEASURE NO. 8 · NOVEMBER 1982",      // a folha de s23 e s30 (textos-tela.json › rotulos_dado s23, o cabeçalho; reaparição declarada)
+    clausula:  "If a majority votes NO, laws and initiatives relating to capital relocation and indemnification are repealed.",   // textos-tela.json › rotulos_dado s32 (a frase da própria cédula, p. 88; o grifo em "ballot's")
+    resumo:    "LEGISLATIVE AFFAIRS AGENCY SUMMARY",         // textos-tela.json › rotulos_dado s32 (o cabeçalho literal da p. 89)
+    intro:     "If the ballot proposition is rejected by a majority of those voting on the proposition, then the Capital remains in Juneau and the following laws are repealed:",   // textos-tela.json › rotulos_dado s32 (o literal da p. 89; cada lei numa linha, abaixo)
+    leis: [                                                 // textos-tela.json › rotulos_dado s32 (o mesmo literal: as quatro leis, cada uma numa linha, riscadas com a voz)
+      "the Capital Relocation Initiative;",
+      "the “FRANK Initiative” as amended;",
+      "the laws establishing the New Capital Site Planning Commission;",
+      "and the Relocation Indemnification Act."
+    ],
+    carimbo:   "YES",                                       // textos-tela.json › rotulos_dado s32 (o carimbo de s01, pequeno)
+    credFonte: "Source: Alaska Division of Elections, 1982" // textos-tela.json › _creditos s32 (a folha)
+  };
+  // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
+  E("cab").textContent = TEXTOS.cabecalho; E("resumo").textContent = TEXTOS.resumo; E("carTxt").textContent = TEXTOS.carimbo;
+  (function () {
+    var c = E("clausula"); c.textContent = "";
+    var g = document.createElement("span"); g.className = "grifo"; g.id = "grifoClausula"; g.textContent = TEXTOS.clausula; c.appendChild(g);
+    var l = E("lista"); l.textContent = "";
+    l.appendChild(document.createTextNode(TEXTOS.intro));
+    TEXTOS.leis.forEach(function (lei, i) {
+      l.appendChild(document.createTextNode("\n    "));
+      var s = document.createElement("span"); s.className = "lei"; s.id = "lei" + i; s.textContent = lei; l.appendChild(s);
+    });
+  })();
+
+  // ── os tempos (locais, −332,5), da regência s32 e do words.json ──
+  var T = {
+    grifo: 0.233, grifoDur: 0.55,       // "ballot's" (332,733): o grifo na frase da cédula
+    desce: 1.6, desceDur: 1.5,          // a câmera desce ao resumo da p. 89 (o rolo sobe 860 px)
+    tique: 3.6,                         // "repealed" (336,1): a caneta toca o papel
+    riscos: [5.467, 7.2, 7.433, 7.6],   // "from" (337,967) · "to" (339,7) · "Frank" (339,933) · 7,6: cada lei, linha a linha
+    riscoDur: 0.25,
+    yes: 5.667, batida: 0.38,           // "nineteen" (338,167): o YES pequeno
+    yesRisco: 7.767                     // "initiative." (340,267): o risco no YES
+  };
+  var FOLHA = { topo1: 300, topo2: -560, rot: 0.8 };
+  var LUZ = { y1: 300 + 510, y2: -560 + 1740 };   // atrás da frase da cédula; depois atrás das leis
+
+  var tiquePronto = false;
+  function medir() {
+    var l0 = E("lei0"); if (!l0 || !l0.offsetTop) return;
+    E("tique").style.top = (l0.offsetTop + 60).toFixed(0) + "px";   // na linha da primeira lei (offsetTop é relativo à folha)
+    tiquePronto = true;
+  }
+  function carimbo(el, t, t0) {
+    var p = seg(t, t0, T.batida), s, op;
+    if (p < 0.7) { var q = eo(p / 0.7); s = lerp(1.55, 0.97, q); op = clamp(p / 0.35, 0, 1); }
+    else { s = lerp(0.97, 1, (p - 0.7) / 0.3); op = 1; }
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = "translate(-50%,-50%) rotate(-7deg) scale(" + (0.5 * s).toFixed(4) + ")";
+  }
+
+  function cena(t) {
+    t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
+    if (!tiquePronto) medir();
+    var cam = E("cam");
+    R.camera(cam, t, { base: 1.0 });
+
+    // ── a folha: parada; o rolo sobe ao resumo; treme 2 px a cada risco ──
+    var d = eb(seg(t, T.desce, T.desceDur));
+    var treme = 0;
+    T.riscos.concat([T.yesRisco]).forEach(function (t0) { treme += 2 * Math.sin(Math.PI * seg(t, t0, 0.13)); });
+    E("grupo").style.transform = "translate(" + treme.toFixed(2) + "px," + lerp(FOLHA.topo1, FOLHA.topo2, d).toFixed(2) + "px) rotate(" + FOLHA.rot + "deg)";
+
+    // ── b1: o grifo na frase da cédula; a caneta toca o papel em "repealed" ──
+    E("grifoClausula").style.backgroundSize = (100 * eo(seg(t, T.grifo, T.grifoDur))).toFixed(2) + "% 100%";
+    E("tique").style.transform = "scaleX(" + eo(seg(t, T.tique, 0.2)).toFixed(4) + ")";
+
+    // ── b2: o risco atravessa cada lei com a voz; o YES pequeno entra e recebe o risco por último ──
+    T.riscos.forEach(function (t0, i) {
+      E("lei" + i).style.backgroundSize = (100 * eo(seg(t, t0, T.riscoDur))).toFixed(2) + "% 10px";
+    });
+    carimbo(E("carimbo"), t, T.yes);
+    E("riscoYes").style.transform = "scaleX(" + eo(seg(t, T.yesRisco, T.riscoDur)).toFixed(4) + ") rotate(-4deg)";
+
+    // a luz: atrás da frase da cédula, e desce com a câmera até as leis
+    cam.style.setProperty("--luz-x", "1920px");
+    cam.style.setProperty("--luz-y", lerp(LUZ.y1, LUZ.y2, d).toFixed(1) + "px");
+
+    // ── o crédito, a cena toda ──
+    var c = E("credFonte"), opC = eo(seg(t, 0, 0.3));
+    if (c.textContent !== TEXTOS.credFonte) c.textContent = TEXTOS.credFonte;
+    c.hidden = false; c.style.opacity = opC.toFixed(3);
+    E("creds").style.opacity = opC.toFixed(3);
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // nunca lança
+  };
+  window.__prepararCaptura = function () { medir(); window.__renderAt(0); };
+  window.__fotosProntas = R.prontas().then(function () {
+    if (!document.fonts) return true;
+    return Promise.all([
+      document.fonts.load('400 86px "MarcaDoc"').then(function (f) { if (!f.length) window.__fontesFaltando.push("MarcaDoc 400 (Courier Prime da folha)"); }, function () { window.__fontesFaltando.push("MarcaDoc 400 (Courier Prime da folha)"); }),
+      document.fonts.load('700 84px "MarcaDoc"').then(function (f) { if (!f.length) window.__fontesFaltando.push("MarcaDoc 700 (Courier Prime da folha)"); }, function () { window.__fontesFaltando.push("MarcaDoc 700 (Courier Prime da folha)"); })
+    ]).then(function () { medir(); return true; });
+  });
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

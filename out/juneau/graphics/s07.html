@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s07</title>
+<!--
+  CANAL ALPHA POINT — JUNEAU, CENA s07 (53,133 → 75,500 s do master; 22,367 s; quadros 1594 → 2265 a 30 fps).
+  "The capital came in stages. In 1900, a federal law named Juneau the temporary seat of government, but the government
+  stayed in Sitka, the old Russian capital. The governor's office moved to Juneau in 1906. And the 1912 law creating the
+  Territory of Alaska was plain: 'the capital of the Territory of Alaska shall be at the city of Juneau, Alaska.'"
+  Mapista, 01/10/2026, passo art. Um arquivo só (o run de 4 planos do espelho: documento → foto → mapa → documento).
+
+  O que manda em cada coisa:
+    · o QUE vai à tela e a grafia: out/juneau/textos-tela.json (s07). os textos batem com o arquivo do disco de
+      01/10 (sha 98e3e7f8…), ainda sem o laudo de fatos; cada um mora num lugar só, CENA.textos, e a troca é de uma linha;
+    · o TEMPO de cada texto e o exige de cada beat: out/juneau/regencia.json (s07), no relógio do words.json;
+    · a direção: out/juneau/conceito-visual.json (s07); a marca: marca/identidade.md §4–§7 e marca/tokens.css;
+    · a mesa e a foto impressa seguem a cena de referência s09 (identidade §5); a folha datilografada, a
+      marca/prancha-documento-card.html (o .folha, o .rasgada, o .caixa-ref, o grifo e a fita);
+    · o mapa segue a s03 (o molde src/mapa/moldes/mapa-base.html da pré-v1, commit 7ab9543, com o que o canal muda nele).
+
+  OS BEATS (tempo local = master − 53,133; palavras do words.json):
+    b1  0,000–7,733  "The capital came in stages. In nineteen hundred, a federal law named Juneau the temporary seat of
+        government, but the government stayed in"  — DOCUMENTO sobre a MESA
+        A página real da lei de 1900 (31 Stat. 321; o alto, fim de outra lei, fica fora) pousa com fita no centro da
+        mesa a 1,4× (o teto) e fica sozinha 1,4 s. Em 1,4–2,0 s a recriação datilografada (Courier Prime) sobe dela
+        para a esquerda, e a página real vai para a direita, a 1,0×: as duas ficam lado a lado, a real inteira à vista.
+        1900 entra na caixa do cabeçalho da folha em "nineteen" (2,067). O grifo (--grifo-cor) anda com a voz,
+        palavra a palavra, em "temporary seat of government" (4,863–6,197). A luz da mesa sai de trás da página real e
+        passa para trás da recriação, que é o objeto principal.
+    —   7,733–8,033  as duas folhas recuam e se apagam (o 1900 sai com elas) enquanto a foto de Sitka pousa por cima.
+    b2  7,733–10,567 "Sitka, the old Russian capital."  — FOTO IMPRESSA sobre a MESA (como a s09)
+        Sitka, 1906 (Case & Draper / Library of Congress, domínio público), impressa a 1,4× (o teto; a borda cinza do
+        scan fica fora), moldura --tinta, fita e sombra, +1,2°. "Sitka, Alaska" (lugar_na_origem) na mesa, fora da foto,
+        todo o tempo dela. A luz passa para trás da foto em 300 ms. Sem aviso (ano do fato), sem crédito.
+    b3  10,567–13,700 "The governor's office moved to Juneau in nineteen oh-six."  — MAPA
+        Corte para o satélite (a mesa sai): a foto encolhe ao ponto de Sitka em 0,6 s, "Sitka, Alaska" se apaga em
+        300 ms e o Sitka do mapa entra (3 elementos na troca). A câmera viaja 2,5 s (rampa suave nas duas pontas) de
+        Sitka à câmera nomeada "Juneau–capital" (abaixo), onde s08 abre. Juneau entra em "Juneau" (11,767), 1906 em
+        "nineteen" (12,3) e fica 2,0 s (sai em 14,3, sob nada: a folha de 1912 não chega a ele).
+    b4  13,700–22,367 "And the nineteen twelve law creating the Territory of Alaska was plain: 'the capital of the
+        Territory of Alaska shall be at the city of Juneau, Alaska.'"  — DOCUMENTO sobre o MAPA
+        A página real da lei de 1912 (37 Stat. 512; o alto, fim de outros capítulos, fora) cai à direita (13,7), e a
+        recriação datilografada cai à esquerda logo depois (13,75), cobrindo o ponto de Juneau ("a terceira folha cobre
+        o ponto", conceito) e os nomes Sitka e Juneau, que ficam sob ela até o corte. O mapa fica no tratamento de
+        sempre (65/70), sem segundo escurecimento nem véu, sem mesa. 1912 entra na caixa do cabeçalho em "nineteen"
+        (13,9). O grifo anda com a citação, palavra a palavra, de '"the' (18,247) a 'Alaska."' (22,267).
+
+  A CONTA DOS 6 ELEMENTOS (identidade §4.2; minha, pelo ensaio a seco, não portão: o qc-carga sai NÃO MEDIDO sem npm).
+  A textura, a luz, o feltro, a fita, a sombra, a divisa (tratamento da base) e o crédito não contam:
+    b1: a página real (1) + a recriação com o 1900 impresso (1) = 2
+    troca b1→b2: as duas folhas saindo (2) + a foto (1) + "Sitka, Alaska" (1) = 4
+    b2: a foto (1) + "Sitka, Alaska" (1) = 2
+    troca b2→b3: a foto encolhendo (1) + "Sitka, Alaska" saindo (1) + Sitka no mapa (1) = 3
+    b3: Sitka, Juneau, 1906 = 3
+    b4, pico 13,7–14,6: Sitka e Juneau (até a recriação cobri-los) + 1906 + as duas folhas = 5
+    b4, depois: as duas folhas = 2 (Sitka e Juneau sob a recriação)
+  Herói: nenhum (data, lugar e impressão da folha não são herói): data-qc-sem-heroi.
+
+  A MÍDIA (out/juneau/_pesquisa/conferencia-midia.json, candidatos, cena s07, veredito aprovado; casa pelo sha256):
+    ../_media/documento/s07/stat-31-321-1900-p1.jpg   1153×1715  sha256 48493ae5…a7fac23  (b1)
+      recorte x 0–1132, y 998–1700 (o alto, fim de outra lei, e a borda escura do scan ficam fora); 1,4× → 1,0×.
+    ../_media/foto/s07/sitka-1906-case-draper-loc-2004672324.jpg  1536×1063  sha256 ff5c3c61…  (b2–b3)
+      lugar_na_origem "Sitka, Alaska", data_na_origem 1906, aviso_de_ano false, crédito na tela nenhum.
+      recorte x 16–1526, y 19–1039 (a borda cinza e o fio preto do scan ficam fora); 1,4×.
+    ../_media/documento/s07/stat-37-512-1912-p1.jpg   1154×1716  sha256 7cd97a86…d6cb6  (b4)
+      recorte x 20–1136, y 725–1695 (o alto, fim dos capítulos 385 e 386, e a borda escura ficam fora); 1,0×.
+  Nenhum upscale, filtro ou recorte que mude o sentido; nada acima de 1,4×. Sem crédito de mídia na tela (domínio
+  público federal e PD; identidade §7). O crédito de mapa, "© MapTiler © OpenStreetMap contributors", do primeiro
+  quadro com mapa (10,567) ao corte.
+
+  O MAPA: o perfil do canal (maptiler), sem relevo (só em s44), brilho 65 % e saturação 70 % na camada, sem véu. A
+  divisa (só as arestas que o Canadá e os EUA dividem no recorte alasca-e-vizinhos, o mesmo da s08), nos tokens
+  --fronteira-*, é tratamento da base, como na s03 e na s08: sozinha, sem segundo tipo de linha, não pede legenda
+  (regência s08). Não é o panhandle-juneau do espelho, de propósito: o recorte dele acaba em 56,6° N, e na câmera
+  final a divisa pararia no meio da Colúmbia Britânica, em (2209, 1434); a do alasca-e-vizinhos vai até a costa,
+  é a mesma da s08 (o corte não pula) e se afasta da do panhandle-juneau no máximo 0,31 km (menos de 1 px aqui).
+  CÂMERA NOMEADA "Juneau–capital" (o fim de b3, e onde s08 abre): lng -132.8786, lat 57.2993, zoom 7.60, bearing 0,
+  pitch 0, no palco 3840×2160: Juneau em (1500, 560) e Sitka em (1244, 1202).
+  NENHUM RÓTULO SOBRE UMA LINHA (identidade §6): Sitka, Juneau e 1906 medidos contra a divisa quadro a quadro na
+  viagem, sem tile (relato do mapista de 01/10/2026).
+
+  O CONTRATO: var DUR = 22.367 (o qc-janela lê o número escrito); __renderAt(t) determinístico e à prova de erro;
+  __prepararCaptura; __ready (o mapa); __aguardarMapa; __fotosProntas (imagens e fontes, Courier Prime inclusive).
+  Nada de relógio, sorteio, @keyframes, transition ou animação SMIL. O RIG é a cópia inteira de templates-cena/_rig.js
+  (pré-v1, commit 7ab9543), como na s09.
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/camera-mapa.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<!-- UMA linha por geometria usada na cena (slugs de out/juneau/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/alasca-e-vizinhos.js"></script>
+<script src="../_media/geo/cidades-ne.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+
+  /* A MESA (b1–b2; identidade §5, "A mesa: feltro sob a luz"), como na s09: a luz é o fundo de #cam, centrada atrás do
+     objeto principal (--luz-x/--luz-y, que o __renderAt move com ele); o feltro é #mesa, o PRIMEIRO filho de #cam. As
+     duas ficam POR BAIXO das folhas, da foto, das fitas e dos textos, e só usam os tokens --mesa-*. A câmera do RIG
+     empurra o grupo inteiro (push-in + deriva). Em 10,567 s a mesa sai no corte para o mapa (.sem-mesa): o fundo e o
+     feltro somem, e o que está em #cam (a foto que encolhe) fica sobre o satélite. */
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; z-index: 10; transform-origin: 50% 50%;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
+      var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+  #mesa { position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
+  #cam.sem-mesa { background: none; }
+  #cam.sem-mesa #mesa { display: none; }
+  /* as folhas de b4 caem sobre o mapa, POR CIMA dos pontos e dos nomes (Sitka e Juneau ficam sob a folha), com a
+     mesma câmera do RIG, contada a partir da queda */
+  #cam2 { position: absolute; inset: 0; width: 3840px; height: 2160px; z-index: 42; transform-origin: 50% 50%; pointer-events: none; }
+
+  /* todo objeto da mesa é um GRUPO posto pelo __renderAt por translate/rotate/scale (a partir da origem dele) */
+  .grupo { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; opacity: 0; }
+
+  /* A PÁGINA REAL (identidade §5: "com permissão de uso clara, a página real entra como a folha, com a mesma fita e
+     sombra, sem redesenho"): o recorte do scan, de bordas retas, com a sombra da folha. O tamanho do recorte e da
+     imagem vem do __renderAt (k = vezes o tamanho do arquivo, nunca acima de 1,4). */
+  .pagina .papel { position: absolute; inset: 0; overflow: hidden; background: var(--papel);
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  .pagina .papel img { position: absolute; left: 0; top: 0; display: block; }
+
+  /* A FOLHA DATILOGRAFADA (identidade §5, "A folha de documento"; a B corrigida da prancha): --papel com textura,
+     torta até 1,5°, borda de baixo rasgada só na margem em branco (≥ 240 px entre a última linha e o rasgo), fita nos
+     cantos de cima, fora do texto. A sombra é um drop-shadow no invólucro (.sombra), porque o clip-path do rasgo
+     cortaria um box-shadow. Corpo Courier Prime 400 a 86 px (--doc-corpo); cabeçalho 700 a 84 px numa caixa de
+     contorno (--doc-cabecalho). As linhas vêm quebradas pelo __renderAt (monoespaçada, white-space: pre): a folha
+     cresce com o texto, nunca o texto com a folha. */
+  .sombra { position: absolute; inset: 0;
+    filter: drop-shadow(0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent))
+            drop-shadow(0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent)); }
+  .folha { position: absolute; inset: 0; background: var(--papel); color: var(--tinta-escura); }
+  .folha::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 420px; }
+  .rasgada { clip-path: polygon(0% 0%, 100% 0%, 100% 95.5%, 100.00% 96.89%, 98.44% 96.15%, 96.88% 98.30%, 95.31% 95.81%, 93.75% 97.80%, 92.19% 97.07%, 90.62% 95.75%, 89.06% 97.68%, 87.50% 95.66%, 85.94% 97.36%, 84.38% 95.80%, 82.81% 95.89%, 81.25% 97.33%, 79.69% 99.06%, 78.12% 96.03%, 76.56% 96.46%, 75.00% 98.20%, 73.44% 99.58%, 71.88% 97.98%, 70.31% 97.21%, 68.75% 99.70%, 67.19% 95.70%, 65.62% 99.19%, 64.06% 96.75%, 62.50% 96.12%, 60.94% 96.01%, 59.38% 96.83%, 57.81% 99.01%, 56.25% 96.28%, 54.69% 98.00%, 53.12% 98.25%, 51.56% 97.10%, 50.00% 97.86%, 48.44% 95.77%, 46.88% 95.76%, 45.31% 96.39%, 43.75% 98.43%, 42.19% 97.34%, 40.62% 96.85%, 39.06% 98.02%, 37.50% 97.45%, 35.94% 96.79%, 34.38% 98.92%, 32.81% 98.51%, 31.25% 96.55%, 29.69% 97.97%, 28.12% 97.76%, 26.56% 99.26%, 25.00% 98.64%, 23.44% 96.74%, 21.88% 99.71%, 20.31% 96.01%, 18.75% 97.30%, 17.19% 98.76%, 15.62% 96.15%, 14.06% 97.60%, 12.50% 95.67%, 10.94% 98.37%, 9.38% 98.79%, 7.81% 97.96%, 6.25% 99.26%, 4.69% 96.85%, 3.12% 98.49%, 1.56% 98.06%, 0.00% 97.99%); }
+  .miolo { position: absolute; left: 0; top: 0; right: 0; }
+  .cab { display: flex; justify-content: flex-end; align-items: center; height: 132px; }
+  .caixa-ref { font-family: var(--fonte-doc); font-weight: var(--peso-doc-cabecalho); font-size: var(--doc-cabecalho);
+    line-height: 1; letter-spacing: 0; padding: 18px 26px;
+    border: 6px solid color-mix(in srgb, var(--tinta-escura) 55%, transparent);
+    color: color-mix(in srgb, var(--tinta-escura) 70%, transparent); }
+  .caixa-ref .ano { opacity: 0; }
+  .fio { height: 4px; margin: 40px 0 44px; background: color-mix(in srgb, var(--tinta-escura) 25%, transparent); }
+  .corpo { font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: var(--doc-corpo); line-height: 1.5;
+    letter-spacing: 0; white-space: pre; }
+  .corpo .ln { display: block; height: 129px; }
+  /* o grifo (§5): --grifo-cor (= --destaque a 35 %), que varre cada palavra enquanto a voz a diz */
+  .corpo mark { color: inherit; background: linear-gradient(var(--grifo-cor), var(--grifo-cor)) no-repeat left center / 0% 100%; }
+
+  /* A FOTO IMPRESSA (identidade §5), sem divergir da s09: moldura --tinta, sombra, recorte da foto e fita */
+  .impressa .moldura { position: absolute; inset: 0; background: var(--tinta);
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  .impressa .recorte { position: absolute; left: 48px; top: 48px; overflow: hidden; background: var(--painel); }
+  .impressa .recorte img { position: absolute; left: 0; top: 0; display: block; }
+  /* a fita, como na s09 e na prancha: translúcida, dentes nas pontas, leve sombra; o tom vem do --papel */
+  .fita { position: absolute; width: 520px; height: 150px; background: color-mix(in srgb, var(--papel) 62%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--tinta-escura) 18%, transparent);
+    clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 86%, 97% 100%, 0 100%, 4% 88%, 0 72%, 4% 56%, 0 40%, 4% 24%);
+    transform-origin: 50% 50%; opacity: 0; }
+  /* nas folhas, a fita atravessa o CANTO (um triângulo de ~60 px dentro do papel): fora do texto da página real, onde
+     o recorte do alto deixa pouca margem, e fora do texto da folha datilografada (identidade §5) */
+  .fita.canto { width: 440px; height: 110px; }
+
+  svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; }
+  .ponto { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6; }
+  #rotulos { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+  /* o RÓTULO da marca (identidade §3 e §4.1): pílula --rotulo, cantos 12, respiro 24 × 40, Inter 700 a 128 px em
+     --tinta; cidade e lugar em caixa normal, tracking 0 (como na s03) */
+  .rotulo { position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1;
+    letter-spacing: 0; color: var(--tinta); }
+  /* o rótulo da foto na mesa (b2), numa camada FIXA acima da câmera, como os da s09: a margem de 200 px vale na tela */
+  #textos { position: absolute; inset: 0; pointer-events: none; z-index: 45; }
+  /* o crédito de mapa (§4.1/§4.2): 76 px, --sec sobre a pílula --rotulo, de x = 200, na faixa abaixo de y = 1880 */
+  .credito { position: absolute; left: var(--credito-x); bottom: 52px; max-width: 1520px; z-index: 50;
+    font: 500 76px/1.15 sans-serif; font-family: var(--fonte); letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); }
+  .credito[hidden] { display: none; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="documento, foto impressa e mapa: a cena não tem herói; ano, lugar e a impressão da folha são rótulo e folha (ofício do editor-de-arte §6)">
+  <div id="map"></div>
+  <div id="cam">
+    <div id="mesa"></div>
+    <!-- b1: a página real de 1900 (recorte e tamanho pelo __renderAt) -->
+    <div class="grupo pagina" id="pag00">
+      <div class="papel" id="pag00p"><img id="pag00img" src="../_media/documento/s07/stat-31-321-1900-p1.jpg" alt=""></div>
+      <div class="fita canto" id="pag00fe"></div><div class="fita canto" id="pag00fd"></div>
+    </div>
+    <!-- b1: a recriação datilografada de 1900 (o texto vem de CENA.textos) -->
+    <div class="grupo" id="rec00">
+      <div class="sombra"><div class="folha rasgada"><div class="miolo" id="rec00m">
+        <div class="cab"><span class="caixa-ref" data-qc-papel="eixo"><span class="ano" id="ano1900"></span></span></div>
+        <div class="fio"></div>
+        <div class="corpo" id="rec00corpo" data-qc-papel="eixo"></div>
+      </div></div></div>
+      <div class="fita canto" id="rec00fe"></div><div class="fita canto" id="rec00fd"></div>
+    </div>
+    <!-- b2–b3: Sitka, 1906, impressa a 1,4× (recorte 1510×1020 → 2114×1428; grupo 2210×1524) -->
+    <div class="grupo impressa" id="foto" style="width:2210px;height:1524px">
+      <div class="moldura"></div>
+      <div class="recorte" style="width:2114px;height:1428px">
+        <img src="../_media/foto/s07/sitka-1906-case-draper-loc-2004672324.jpg" alt="" style="width:2150.4px;height:1488.2px;left:-22.4px;top:-26.6px">
+      </div>
+      <div class="fita" id="fotofe" style="left:-40px;top:-6px"></div>
+      <div class="fita" id="fotofd" style="left:1830px;top:-6px"></div>
+    </div>
+  </div>
+  <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+    <circle class="ponto" id="pontoSitka" cx="0" cy="0" r="16" opacity="0"/>
+    <circle class="ponto" id="pontoJuneau" cx="0" cy="0" r="16" opacity="0"/>
+  </svg>
+  <div id="rotulos">
+    <div class="rotulo" id="rotSitka" data-qc-papel="rotulo"></div>
+    <div class="rotulo" id="rotJuneau" data-qc-papel="rotulo"></div>
+    <div class="rotulo" id="rot1906" data-qc-papel="rotulo"></div>
+  </div>
+  <div id="cam2">
+    <!-- b4: a página real de 1912, à direita -->
+    <div class="grupo pagina" id="pag12">
+      <div class="papel" id="pag12p"><img id="pag12img" src="../_media/documento/s07/stat-37-512-1912-p1.jpg" alt=""></div>
+      <div class="fita canto" id="pag12fe"></div><div class="fita canto" id="pag12fd"></div>
+    </div>
+    <!-- b4: a recriação datilografada de 1912, à esquerda, sobre o ponto de Juneau -->
+    <div class="grupo" id="rec12">
+      <div class="sombra"><div class="folha rasgada"><div class="miolo" id="rec12m">
+        <div class="cab"><span class="caixa-ref" data-qc-papel="eixo"><span class="ano" id="ano1912"></span></span></div>
+        <div class="fio"></div>
+        <div class="corpo" id="rec12corpo" data-qc-papel="eixo"></div>
+      </div></div></div>
+      <div class="fita canto" id="rec12fe"></div><div class="fita canto" id="rec12fd"></div>
+    </div>
+  </div>
+  <div id="textos">
+    <div class="rotulo" id="rotSitkaFoto" data-qc-papel="rotulo" style="left:200px;top:1400px"></div>
+  </div>
+  <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+
+  // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
+  // Tempos em segundos DESTA cena (0 = 53,133 s do master), do words.json: 'nineteen' 55,176 → 2,043 (a regência
+  // quantiza o 1900 em 2,067) · 'temporary' 57,996 → 4,863 · 'government,' acaba em 59,33 → 6,197 · 'Sitka,' 60,88 →
+  // 7,747 (o beat vira em 7,733) · 'The' 63,71 → 10,577 (o beat vira em 10,567) · 'Juneau' 64,884 → 11,751 (11,767) ·
+  // 'nineteen' 65,416 → 12,283 (12,3) · 'And' 66,86 → 13,727 (o beat vira em 13,7) · 'nineteen' 67,024 → 13,891
+  // (13,9) · '"the' 71,38 → 18,247 · 'Alaska."' acaba em 75,40 → 22,267.
+  var CENA = {
+    duracao: 22.367,                                 // espelho.json › s07 › dur
+    largura: 3840, altura: 2160,                     // o palco; nunca mude (o zoom depende dele)
+    perfil: "maptiler",                              // a base do vídeo inteiro (canal.json › mapa.perfil)
+    relevo: false,                                   // relevo só em s44 (identidade §6)
+
+    // ── OS TEXTOS DA TELA: um lugar só. Os do out/juneau/textos-tela.json do disco de 01/10 (sha 98e3e7f8…), ainda sem
+    //    o laudo de fatos (s07 › rotulos_dado e _creditos); a troca pelo texto final é de uma linha. O grifo tem de ser um trecho LITERAL do literal.
+    textos: {
+      ano1900:     "1900",
+      literal1900: "The temporary seat of government of said district is hereby established at Juneau: Provided, That the seat of government shall remain at Sitka until suitable grounds and buildings thereon shall be obtained by purchase or otherwise at Juneau.",
+      grifo1900:   "temporary seat of government",
+      sitkaFoto:   "Sitka, Alaska",
+      sitka:       "Sitka",
+      juneau:      "Juneau",
+      ano1906:     "1906",
+      ano1912:     "1912",
+      literal1912: "That the capital of the Territory of Alaska shall be at the city of Juneau, Alaska, and the seat of government shall be maintained there.",
+      grifo1912:   "the capital of the Territory of Alaska shall be at the city of Juneau, Alaska",
+      creditoMapa: "© MapTiler © OpenStreetMap contributors"
+    },
+    // a VOZ de cada palavra do grifo, [início, fim] no relógio desta cena (words.json − 53,133). O grifo de uma palavra
+    // varre do início dela ao início da seguinte (o espaço junto); o da última, do início ao fim dela. Se o grifo mudar
+    // de número de palavras, a cena barra (estes tempos são da voz, não do texto).
+    voz1900: [[4.863, 5.367], [5.415, 5.607], [5.634, 5.687], [5.731, 6.197]],
+    voz1912: [[18.247, 18.327], [18.377, 18.727], [18.754, 18.807], [18.827, 18.887], [18.943, 19.447], [19.474, 19.527],
+              [19.596, 20.007], [20.047, 20.247], [20.300, 20.407], [20.434, 20.487], [20.507, 20.567], [20.631, 20.887],
+              [20.914, 20.967], [21.031, 21.547], [21.697, 22.267]],
+
+    // ── a folha datilografada: colunas (Courier Prime a 86 px avança 52 px por letra), respiros e o rasgo
+    folha: { avanco: 52, linha: 129, cab: 132, fio: 88, margemRasgo: 240, rasgo: 0.045, altoMax: 1600 },
+    rec00: { colunas: 36, respiro: [140, 150, 0, 150] },
+    rec12: { colunas: 38, respiro: [140, 130, 0, 130] },
+
+    // ── b1 (mesa): a página real de 1900 e a recriação. Centros no plano da mesa (#cam), em px do palco.
+    pag00: { arquivo: [1153, 1715], recorte: [0, 998, 1132, 702],
+             pousa: { c: [1920, 1060], k: 1.4, rot: -1.2 },          // sozinha, a 1,4× (o teto)
+             lado:  { c: [3020, 1020], k: 1.0, rot: 1.0 } },          // ao lado da recriação, a 1,0×
+    rec00pos: { c: [1338, 1020], rot: -0.8, sobeDe: 0.55 },
+    // ── b2 (mesa): Sitka, 1906, impressa a 1,4× (o grupo tem 2210×1524 no HTML)
+    foto: { c: [2290, 990], rot: 1.2, w: 2210, h: 1524 },
+    // ── b4 (mapa): a página real de 1912, à direita, e a recriação, à esquerda, sobre o ponto de Juneau
+    pag12: { arquivo: [1154, 1716], recorte: [20, 725, 1116, 970], k: 1.0, topoDir: [3586, 560], rot: 0.9 },
+    rec12pos: { topoCentro: [1380, 530], rot: -0.6 },
+
+    T: {
+      pousa00: 0.0, pousaDur: 0.55, fita00: 0.45,
+      sobe: 1.40, sobeDur: 0.60, fitaRec00: 2.00,
+      ano1900: 2.067,
+      troca1: 7.733, trocaDur: 0.30,                 // as folhas de 1900 saem; Sitka pousa
+      pousaFoto: 7.733, fitaFoto: 8.18, rotSitkaFoto: 7.733,
+      mapa: 10.567, encolhe: 0.60,                   // o corte para o mapa; a foto encolhe ao ponto de Sitka
+      rotSitka: 10.567, rotJuneau: 11.767, ano1906: 12.3, sai1906: 14.3,
+      cai12: 13.70, caiRec12: 13.75, caiDur: 0.55, fita12: 14.15, fitaRec12: 14.20, ano1912: 13.9
+    },
+
+    // ── o mapa
+    fronteira: { geo: "alasca-e-vizinhos", a: "US1", b: "CAN" },
+    cidades: "cidades-ne",
+    // A câmera: parada sobre Sitka (onde a foto encolhe) até o corte, viaja 2,5 s com rampa suave nas duas pontas, e
+    // fica na câmera nomeada "Juneau–capital" até o fim (s08 abre nela).
+    viewports: [
+      { lng: -136.0035, lat: 56.9815, zoom: 8.60, bearing: 0, pitch: 0 },   // Sitka em (2293, 1000)
+      { lng: -132.8786, lat: 57.2993, zoom: 7.60, bearing: 0, pitch: 0 }    // "Juneau–capital"
+    ],
+    viagem: { de: 10.567, dura: 2.5 },
+    // rótulos: âncora na cidade; lado = de que lado do ponto a pílula fica; dx/dy em px do palco.
+    // NENHUMA PÍLULA SOBRE UMA LINHA (identidade §6): medidas contra a divisa em todos os quadros da viagem.
+    rotulos: [
+      { id: "rotSitka",  texto: "sitka",   ref: "Sitka",  lado: "esquerda", dx: -40,  dy: 0,    entra: 10.567 },
+      { id: "rotJuneau", texto: "juneau",  ref: "Juneau", lado: "centro",   dx: -60,  dy: 140,  entra: 11.767 },
+      { id: "rot1906",   texto: "ano1906", ref: "Juneau", lado: "centro",   dx: -260, dy: -170, entra: 12.3, sai: 14.3 }
+    ]
+  };
+  // ═════════════════════════════════════════════════════════════════════════════════════════════════
+
+  // o número escrito, e não CENA.duracao: o qc-janela lê `var DUR = <número>` no texto, sem rodar a cena. A guarda
+  // logo depois de falhar() confere que os dois são iguais.
+  var DUR = 22.367;
+  window.__duracao = DUR;
+  var R = window.RIG, cl = R.clamp, seg = R.seg, eb = R.eb;
+  var eo = function (p) { return R.eo(cl(p, 0, 1)); };
+  var lerp = function (a, b, p) { return a + (b - a) * p; };
+  var E = function (id) { return document.getElementById(id); };
+  var T = CENA.T, X = CENA.textos;
+  window.__avisos = window.__avisos || [];
+
+  // ── erro legível: nunca um quadro cinza calado (molde) ─────────────────────────────────────────
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () { /* o erro vive em __erroCena; o render confere */ });
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena s07] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+  if (DUR !== CENA.duracao) falhar("a duração escrita (" + DUR + " s) não é a do bloco CENA (" + CENA.duracao + " s).");
+
+  // ── os textos nos seus lugares (só daqui) ──────────────────────────────────────────────────────
+  E("ano1900").textContent = X.ano1900;
+  E("ano1912").textContent = X.ano1912;
+  E("rotSitkaFoto").textContent = X.sitkaFoto;
+  CENA.rotulos.forEach(function (r) { E(r.id).textContent = X[r.texto]; });
+
+  // ── a folha datilografada: quebra o literal em colunas (monoespaçada) e marca o grifo palavra a palavra ──────
+  function quebrar(txt, cols) {
+    var ls = [], cur = null;
+    txt.split(" ").forEach(function (w) {
+      if (cur === null) cur = [w];
+      else if ((cur.join(" ") + " " + w).length <= cols) cur.push(w);
+      else { ls.push(cur); cur = [w]; }
+    });
+    if (cur) ls.push(cur);
+    return ls;   // linhas de palavras
+  }
+  function montarFolha(id, literal, grifo, voz, cfg) {
+    var F = CENA.folha, linhas = quebrar(literal, cfg.colunas), corpo = E(id + "corpo");
+    var todas = [].concat.apply([], linhas), g = grifo.split(" "), g0 = -1;
+    // a última palavra do grifo pode vir colada a uma pontuação no literal ("Alaska," no de 1912): a pontuação fica fora
+    var casa = function (w, j) { return w === g[j] || (j === g.length - 1 && w.indexOf(g[j]) === 0 && /^[,.;:]+$/.test(w.slice(g[j].length))); };
+    for (var i = 0; i + g.length <= todas.length && g0 < 0; i++) {
+      var ok = true; for (var j = 0; j < g.length; j++) if (!casa(todas[i + j], j)) { ok = false; break; }
+      if (ok) g0 = i;
+    }
+    if (g0 < 0) { falhar("o grifo '" + grifo + "' não é um trecho literal do texto da folha " + id + "."); return null; }
+    if (g.length !== voz.length) { falhar("o grifo da folha " + id + " tem " + g.length + " palavras, e a voz dele tem " + voz.length + " tempos."); return null; }
+    var marks = [], k = 0, largest = 0;
+    linhas.forEach(function (ws) {
+      var ln = document.createElement("span"); ln.className = "ln";
+      largest = Math.max(largest, ws.join(" ").length);
+      ws.forEach(function (w, n) {
+        var noGrifo = k >= g0 && k < g0 + g.length, ultimaDaLinha = n === ws.length - 1;
+        var proxNoGrifo = k + 1 >= g0 && k + 1 < g0 + g.length;
+        if (noGrifo) {
+          var m = document.createElement("mark"), gw = g[k - g0], resto = w.slice(gw.length);
+          m.textContent = gw + (!ultimaDaLinha && proxNoGrifo ? " " : "");
+          var a = voz[k - g0][0], b = proxNoGrifo && k + 1 - g0 < voz.length ? voz[k + 1 - g0][0] : voz[k - g0][1];
+          marks.push({ el: m, de: a, ate: b });
+          ln.appendChild(m);
+          if (resto) ln.appendChild(document.createTextNode(resto));
+          if (!ultimaDaLinha && !proxNoGrifo) ln.appendChild(document.createTextNode(" "));
+        } else {
+          ln.appendChild(document.createTextNode(w + (ultimaDaLinha ? "" : " ")));
+        }
+        k++;
+      });
+      corpo.appendChild(ln);
+    });
+    if (largest > cfg.colunas) { falhar("uma palavra da folha " + id + " passa de " + cfg.colunas + " colunas."); return null; }
+    var rp = cfg.respiro, w = cfg.colunas * F.avanco + rp[1] + rp[3];
+    // a altura: o texto + a margem branca até o rasgo (≥ 240 px) + a faixa do rasgo (4,5 % da folha)
+    var texto = rp[0] + F.cab + F.fio + linhas.length * F.linha, h = Math.ceil((texto + F.margemRasgo) / (1 - F.rasgo));
+    if (h > F.altoMax) { falhar("a folha " + id + " ficaria com " + h + " px de altura (teto " + F.altoMax + "): o texto não cabe na tela."); return null; }
+    var miolo = E(id + "m"); miolo.style.padding = rp[0] + "px " + rp[1] + "px 0 " + rp[3] + "px";
+    var gr = E(id); gr.style.width = w + "px"; gr.style.height = h + "px";
+    // a fita atravessa os cantos de cima, centrada no canto, a ±38°: fica no respiro, fora do texto
+    var fe = E(id + "fe"), fd = E(id + "fd");
+    fe.style.left = (-220) + "px"; fe.style.top = (-55) + "px";
+    fd.style.left = (w - 220) + "px"; fd.style.top = (-55) + "px";
+    return { w: w, h: h, linhas: linhas.length, marks: marks, fitaRot: [-38, 38] };
+  }
+  var F00 = montarFolha("rec00", X.literal1900, X.grifo1900, CENA.voz1900, CENA.rec00);
+  var F12 = montarFolha("rec12", X.literal1912, X.grifo1912, CENA.voz1912, CENA.rec12);
+  if (window.__erroCena) return;
+  window.__folhas = { rec00: { w: F00.w, h: F00.h, linhas: F00.linhas }, rec12: { w: F12.w, h: F12.h, linhas: F12.linhas } };
+
+  // ── as páginas reais: o recorte do scan, k vezes o tamanho do arquivo (nunca acima de 1,4) ─────────────
+  function pagina(id, cfg, k) {
+    var rc = cfg.recorte, w = rc[2] * k, h = rc[3] * k;
+    var gr = E(id), im = E(id + "img");
+    gr.style.width = w.toFixed(1) + "px"; gr.style.height = h.toFixed(1) + "px";
+    im.style.width = (cfg.arquivo[0] * k).toFixed(1) + "px"; im.style.height = (cfg.arquivo[1] * k).toFixed(1) + "px";
+    im.style.left = (-rc[0] * k).toFixed(1) + "px"; im.style.top = (-rc[1] * k).toFixed(1) + "px";
+    var fe = E(id + "fe"), fd = E(id + "fd");
+    fe.style.left = "-220px"; fe.style.top = "-55px";
+    fd.style.left = (w - 220).toFixed(1) + "px"; fd.style.top = "-55px";
+    return { w: w, h: h };
+  }
+  if (CENA.pag00.pousa.k > 1.4 || CENA.pag00.lado.k > 1.4 || CENA.pag12.k > 1.4) return falhar("uma página real passaria de 1,4× o tamanho do arquivo (identidade §5).");
+
+  // ── o que a cena precisa ter recebido (mapa) ──────────────────────────────────────────────────────
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (typeof criarCameraMapa !== "function") return falhar("não carregou ../_media/_vendor/camera-mapa.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== CENA.perfil) return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa '" + CENA.perfil + "' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster; esta cena desenha sobre satélite.");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo. Gere com as ferramentas src/geo/*.");
+    return g;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+
+  // os pontos das cidades (Natural Earth), tirados do arquivo (nada à mão)
+  var CID = {};
+  (function () {
+    var fc = geo(CENA.cidades); if (!fc) return;
+    ["Sitka", "Juneau"].forEach(function (n) {
+      var f = (fc.features || []).filter(function (x) { return x.properties && x.properties.name === n; })[0];
+      if (!f || !f.geometry || f.geometry.type !== "Point") return falhar("não achei o ponto " + n + " em '" + CENA.cidades + "'.");
+      CID[n] = f.geometry.coordinates;
+    });
+  })();
+  if (window.__erroCena) return;
+  CENA.rotulos.forEach(function (r) { r.p = CID[r.ref]; });
+
+  // a divisa: as arestas do Canadá cujas duas pontas também são vértices dos EUA (como na s03)
+  var FRONTEIRA = (function () {
+    var fc = geo(CENA.fronteira.geo); if (!fc) return null;
+    var de = function (sov) { return (fc.features || []).filter(function (x) { return x.properties && x.properties.SOV_A3 === sov; })[0]; };
+    var fa = de(CENA.fronteira.a), fb = de(CENA.fronteira.b);
+    if (!fa || !fb) { falhar("o recorte '" + CENA.fronteira.geo + "' não tem os dois países (" + CENA.fronteira.a + ", " + CENA.fronteira.b + ")."); return null; }
+    var aneis = function (f) { var g = f.geometry; return g.type === "Polygon" ? g.coordinates : g.type === "MultiPolygon" ? [].concat.apply([], g.coordinates) : []; };
+    var k = function (p) { return p[0].toFixed(6) + "," + p[1].toFixed(6); };
+    var va = {};
+    aneis(fa).forEach(function (r) { r.forEach(function (p) { va[k(p)] = 1; }); });
+    var linhas = [];
+    aneis(fb).forEach(function (r) {
+      var trechos = [], cur = null;
+      for (var i = 1; i < r.length; i++) {
+        if (va[k(r[i - 1])] && va[k(r[i])]) { if (!cur) { cur = { i0: i - 1, pts: [r[i - 1]] }; trechos.push(cur); } cur.pts.push(r[i]); cur.i1 = i; }
+        else cur = null;
+      }
+      if (trechos.length > 1 && trechos[0].i0 === 0 && trechos[trechos.length - 1].i1 === r.length - 1) {
+        var u = trechos.pop(); trechos[0].pts = u.pts.concat(trechos[0].pts.slice(1));
+      }
+      trechos.forEach(function (x) { if (x.pts.length > 1) linhas.push(x.pts); });
+    });
+    if (!linhas.length) { falhar("não achei a divisa (aresta comum) entre " + CENA.fronteira.a + " e " + CENA.fronteira.b + " em '" + CENA.fronteira.geo + "'."); return null; }
+    return { type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: linhas } };
+  })();
+  if (window.__erroCena) return;
+
+  // ── crédito na tela: base (pelo perfil) + toda geometria cuja licença exige (molde) ─────────────────
+  var creditoTexto = (function () {
+    var partes = [];
+    if (P.atribuicao && P.atribuicao.exigida) {
+      if (!P.atribuicao.tela) { falhar("a base '" + P.nome + "' exige crédito na tela e o perfil não traz o texto (atribuicao.tela)."); return ""; }
+      partes.push(P.atribuicao.tela);
+    }
+    var geos = window.__GEO || {}, meta = window.__GEO_META || {};
+    var slugs = Object.keys(geos);
+    for (var i = 0; i < slugs.length; i++) {
+      var m = meta[slugs[i]];
+      if (!m) { falhar("a geometria '" + slugs[i] + "' foi carregada sem procedência (fonte/licença). Gere pelas ferramentas src/geo/* e rode preparar-cena."); return ""; }
+      if (!m.exige_credito) continue;
+      var t = m.credito_tela || (m.fonte && m.licenca ? "Geometria: " + m.fonte + " (" + m.licenca + ")" : "");
+      if (!t) { falhar("a geometria '" + slugs[i] + "' exige crédito e a procedência não diz o texto. Rode preparar-cena de novo."); return ""; }
+      var junto = partes.join(" · ");
+      if (/OpenStreetMap/i.test(t) && /OpenStreetMap/i.test(junto)) continue;
+      if (junto.indexOf(t) >= 0) continue;
+      partes.push(t);
+    }
+    var c = E("credito");
+    if (c) { c.textContent = partes.join(" · "); c.hidden = !partes.length; }
+    return partes.join(" · ");
+  })();
+  window.__creditoMapa = creditoTexto;
+  // a grafia do crédito é a do textos-tela.json (s07 › _creditos): se o perfil ou a procedência mudarem, a cena barra
+  if (!window.__erroCena && creditoTexto !== X.creditoMapa)
+    falhar("o crédito de mapa montado ('" + creditoTexto + "') não é o do textos-tela.json ('" + X.creditoMapa + "').");
+  if (window.__erroCena) return;
+
+  // ── a base, montada do perfil, SEM o relevo ─────────────────────────────────────────────────────
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  function estilo() {
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // tratamento da base (identidade §6): brilho a 65 %, saturação a 70 % (raster-saturation -0,3)
+    var s = { version: 8, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+    if (CENA.relevo && P.dem) {
+      fontes.dem = { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding };
+      s.terrain = { source: "dem", exaggeration: (P.terreno && P.terreno.exagero) || 1.25 };
+    }
+    return s;
+  }
+
+  // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  /*<imagem>*/
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  /*</imagem>*/
+  function erroCorpo(msg, url, st) {
+    var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e;
+  }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) {
+          var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http";
+          throw e;
+        }
+        if (params.type === "json") return r.text().then(function (t) {
+          try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); }
+        });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+
+  // a câmera: o camera-mapa.js da Régie com a duração da VIAGEM (2,5 s) e a rampa suave nas duas metades; antes da
+  // viagem ela fica no 1º viewport, depois no último (o progresso dele é preso a 0–1)
+  var cameraViagem = criarCameraMapa({ viewports: CENA.viewports, duration: CENA.viagem.dura, width: CENA.largura, height: CENA.altura,
+    bearingLoop: null, cameraAbre: 0.5, cameraFecha: 0.5 });
+  var cameraAt = function (t) { return cameraViagem(cl(t - CENA.viagem.de, 0, CENA.viagem.dura)); };
+  var c0 = cameraAt(0);
+  var map;
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: c0.bearing, pitch: c0.pitch
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
+  }
+  window.map = map;
+
+  // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg)) {
+      return "mandou tile CORROMPIDO" + n + ": a resposta chegou, mas a imagem veio cortada ou ilegível (" +
+        String(msg).replace(/^tile corrompido: /, "") + "). Não é falta de internet: o servidor ou a conexão estão cortando " +
+        "respostas. Renderize de novo.";
+    }
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + " (internet lenta ou servidor sobrecarregado). Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ". Confira o bloco CENA (ids de camada/fonte, valores).");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : "") +
+      (msg && !err.status && err.falha !== "corrompido" && err.falha !== "tempo" && !/could not be decoded|could not load image/i.test(msg) ? " — " + msg : ""));
+  });
+
+  var mapaCarregado = false;
+  map.on("load", function () {
+    try {
+      // a divisa (identidade §6, "A divisa mais grossa"): branco a 70 %, 5 px, sobre contorno escuro a 60 %, 12 px. Os
+      // valores vêm SÓ dos tokens; o segundo argumento do tok() é a reserva, com os mesmos números
+      map.addSource("fronteira", { type: "geojson", data: FRONTEIRA });
+      map.addLayer({ id: "fronteira-contorno", type: "line", source: "fronteira", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": tok("--fronteira-contorno-cor", "rgba(11,15,20,0.60)"),
+                 "line-width": parseFloat(tok("--fronteira-contorno-espessura", "12")) } });
+      map.addLayer({ id: "fronteira", type: "line", source: "fronteira", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": tok("--fronteira-cor", "rgba(255,255,255,0.70)"),
+                 "line-width": parseFloat(tok("--fronteira-espessura", "5")) } });
+    } catch (e) { return falhar("não consegui desenhar a divisa: " + e.message); }
+    mapaCarregado = true;
+    map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
+  });
+
+  // ── os objetos da mesa e das folhas ─────────────────────────────────────────────────────────────
+  // grupo posto pelo centro (cx, cy) no plano da sua câmera, com giro e escala a partir da origem dada
+  function por(el, cx, cy, w, h, rot, s, op, origem) {
+    if (!el) return;
+    el.style.transformOrigin = origem || "50% 50%";
+    el.style.transform = "translate(" + (cx - w / 2).toFixed(2) + "px," + (cy - h / 2).toFixed(2) + "px) rotate(" +
+      rot.toFixed(3) + "deg) scale(" + s.toFixed(5) + ")";
+    if (op !== undefined) el.style.opacity = cl(op, 0, 1).toFixed(3);
+  }
+  // a fita cola: desce 40 px e assenta em 300 ms (como na s09)
+  function fita(el, t, t0, rot) {
+    if (!el) return;
+    var p = eo(seg(t, t0, 0.3));
+    el.style.opacity = p.toFixed(3);
+    el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + rot + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
+  }
+  // a câmera do RIG como número (a mesma conta do RIG.camera): para levar um ponto da TELA ao plano da mesa
+  function rigCam(t) { return { s: 1.0 + 0.0024 * t, x: 6 * Math.sin(t * 0.23), y: 4.8 * Math.sin(t * 0.17) }; }
+  function telaParaMesa(t, X_, Y_) { var c = rigCam(t); return [1920 + (X_ - 1920) / c.s - c.x, 1080 + (Y_ - 1080) / c.s - c.y]; }
+  // o grifo: cada palavra varre enquanto a voz a diz
+  function grifar(F, t) {
+    F.marks.forEach(function (m) {
+      var p = m.ate > m.de ? cl((t - m.de) / (m.ate - m.de), 0, 1) : (t >= m.de ? 1 : 0);
+      m.el.style.backgroundSize = (p * 100).toFixed(2) + "% 100%";
+    });
+  }
+  // rótulo do mapa: ao lado do ponto; entra com opacidade + 24 px de subida em 300 ms, ease-out, e sai só com a
+  // opacidade (identidade §4.4). op = a opacidade no quadro; entrada = o progresso da entrada (a subida)
+  function placeRotulo(r, op, entrada) {
+    var el = E(r.id); if (!el || !r.p) return;
+    var p = map.project(r.p);
+    var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
+    el.style.left = (p.x + (r.dx || 0)).toFixed(1) + "px";
+    el.style.top = (p.y + (r.dy || 0)).toFixed(1) + "px";
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = "translate(" + tx + ",-50%) translateY(" + ((1 - entrada) * 24).toFixed(1) + "px)";
+  }
+
+  function aplicar(t) {
+    if (!mapaCarregado) return;
+    map.jumpTo(cameraAt(t));
+    var naMesa = t < T.mapa;
+
+    // ── a mesa: a câmera do RIG (push-in + deriva, base 1,0 como na s09) e a luz atrás do objeto principal ──
+    var cam = E("cam");
+    R.camera(cam, t, { base: 1.0 });
+    cam.classList.toggle("sem-mesa", !naMesa);
+
+    // ── b1: a página real de 1900 pousa a 1,4×, e em 1,4 s vai para a direita, a 1,0×, enquanto a recriação sobe dela ──
+    var A = CENA.pag00, pp = eo(seg(t, T.pousa00, T.pousaDur)), u = eo(seg(t, T.sobe, T.sobeDur));
+    var sai = seg(t, T.troca1, T.trocaDur), saiS = 1 - 0.03 * eo(sai);
+    var k00 = lerp(A.pousa.k, A.lado.k, u), d00 = pagina("pag00", A, k00);
+    var cx00 = lerp(A.pousa.c[0], A.lado.c[0], u), cy00 = lerp(A.pousa.c[1] + 240 * (1 - pp), A.lado.c[1], u);
+    por(E("pag00"), cx00, cy00, d00.w, d00.h, lerp(lerp(-1.8, A.pousa.rot, pp), A.lado.rot, u), (0.72 + 0.28 * pp) * saiS,
+        seg(t, T.pousa00, 0.22) * (1 - sai));
+    fita(E("pag00fe"), t, T.fita00, -38); fita(E("pag00fd"), t, T.fita00 + 0.12, 38);
+
+    var B = CENA.rec00pos, vr = seg(t, T.sobe, 0.15);
+    por(E("rec00"), lerp(cx00, B.c[0], u), lerp(cy00, B.c[1], u), F00.w, F00.h, lerp(A.pousa.rot, B.rot, u),
+        lerp(B.sobeDe, 1, u) * saiS, vr * (1 - sai));
+    fita(E("rec00fe"), t, T.fitaRec00, -38); fita(E("rec00fd"), t, T.fitaRec00 + 0.12, 38);
+    E("ano1900").style.opacity = eo(seg(t, T.ano1900, 0.3)).toFixed(3);
+    grifar(F00, t);
+
+    // ── b2: Sitka pousa (como a de 1915 na s09), e em 10,567 s encolhe ao ponto de Sitka no mapa ──
+    var Fo = CENA.foto, pf = eo(seg(t, T.pousaFoto, T.pousaDur));
+    var q = eb(seg(t, T.mapa, T.encolhe)), fx = Fo.c[0], fy = Fo.c[1] + 240 * (1 - pf), fs = 0.72 + 0.28 * pf, frot = lerp(1.8, Fo.rot, pf);
+    var ps = map.project(CID.Sitka);
+    if (t >= T.mapa) {
+      var alvo = telaParaMesa(t, ps.x, ps.y), cs = rigCam(t).s;
+      fx = lerp(Fo.c[0], alvo[0], q); fy = lerp(Fo.c[1], alvo[1], q);
+      fs = lerp(1, 0.012 / cs, q); frot = lerp(Fo.rot, 0, q);
+    }
+    var opF = t < T.pousaFoto ? 0 : seg(t, T.pousaFoto, 0.22) * (1 - seg(t, T.mapa + T.encolhe - 0.25, 0.25));
+    por(E("foto"), fx, fy, Fo.w, Fo.h, frot, fs, opF);
+    fita(E("fotofe"), t, T.fitaFoto, -4); fita(E("fotofd"), t, T.fitaFoto + 0.12, 4);
+    // "Sitka, Alaska" na mesa, fora da foto, todo o tempo dela; sai em 300 ms no corte para o mapa
+    var rs = E("rotSitkaFoto"), vs = eo(seg(t, T.rotSitkaFoto, 0.3)) * (1 - seg(t, T.mapa, 0.3));
+    if (rs) { rs.style.opacity = vs.toFixed(3); rs.style.transform = "translateY(" + ((1 - eo(seg(t, T.rotSitkaFoto, 0.3))) * 24).toFixed(1) + "px)"; }
+
+    // a luz da mesa: atrás da página real, depois da recriação (1,4–2,0 s), depois da foto (7,733–8,033 s)
+    var lx = lerp(cx00, B.c[0], u), ly = lerp(cy00, B.c[1], u), w2 = eo(seg(t, T.pousaFoto, 0.3));
+    lx = lerp(lx, Fo.c[0], w2); ly = lerp(ly, Fo.c[1] + 240 * (1 - pf), w2);
+    cam.style.setProperty("--luz-x", lx.toFixed(1) + "px"); cam.style.setProperty("--luz-y", ly.toFixed(1) + "px");
+
+    // ── b3: os pontos e os nomes no mapa ──
+    var pj = map.project(CID.Juneau);
+    var dS = E("pontoSitka"), dJ = E("pontoJuneau");
+    dS.setAttribute("cx", ps.x.toFixed(1)); dS.setAttribute("cy", ps.y.toFixed(1));
+    dS.setAttribute("opacity", eo(seg(t, T.rotSitka, 0.3)).toFixed(3));
+    dJ.setAttribute("cx", pj.x.toFixed(1)); dJ.setAttribute("cy", pj.y.toFixed(1));
+    dJ.setAttribute("opacity", eo(seg(t, T.rotJuneau, 0.3)).toFixed(3));
+    CENA.rotulos.forEach(function (r) {
+      var v = eo(seg(t, r.entra, 0.3)) * (r.sai ? 1 - seg(t, r.sai, 0.3) : 1);
+      placeRotulo(r, t < r.entra ? 0 : v, eo(seg(t, r.entra, 0.3)));
+    });
+
+    // ── b4: as folhas de 1912 caem sobre o mapa (a real à direita, a recriação à esquerda, sobre Juneau) ──
+    var cam2 = E("cam2"), t2 = Math.max(0, t - T.cai12);
+    R.camera(cam2, t2, { base: 1.0 });
+    var G = CENA.pag12, d12 = pagina("pag12", G, G.k), p12 = eo(seg(t, T.cai12, T.caiDur));
+    // a real cai do canto de cima à direita (a origem): cresce para a esquerda, nunca para fora da margem
+    por(E("pag12"), G.topoDir[0] - d12.w / 2, G.topoDir[1] + d12.h / 2, d12.w, d12.h, lerp(2.4, G.rot, p12), 1 + 0.05 * (1 - p12),
+        t < T.cai12 ? 0 : seg(t, T.cai12, 0.15), "100% 0%");
+    fita(E("pag12fe"), t, T.fita12, -38); fita(E("pag12fd"), t, T.fita12 + 0.12, 38);
+    var H = CENA.rec12pos, p2r = eo(seg(t, T.caiRec12, T.caiDur));
+    // a recriação cai do meio do topo (a origem): o topo fica abaixo do 1906, que ainda está no ar
+    por(E("rec12"), H.topoCentro[0], H.topoCentro[1] + F12.h / 2, F12.w, F12.h, lerp(-2.0, H.rot, p2r), 1 + 0.05 * (1 - p2r),
+        t < T.caiRec12 ? 0 : seg(t, T.caiRec12, 0.15), "50% 0%");
+    fita(E("rec12fe"), t, T.fitaRec12, -38); fita(E("rec12fd"), t, T.fitaRec12 + 0.12, 38);
+    E("ano1912").style.opacity = eo(seg(t, T.ano1912, 0.3)).toFixed(3);
+    grifar(F12, t);
+
+    // o crédito de mapa: do primeiro quadro com mapa (o corte, 10,567 s) ao último
+    var c1 = E("credito"); if (c1) c1.style.visibility = naMesa ? "hidden" : "visible";
+  }
+
+  // ── o contrato de captura ───────────────────────────────────────────────────────────────────
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // NUNCA lança
+  };
+
+  // espera de um nível de tile só na tela (molde): conta só os tiles que vão ser desenhados
+  function nivelUnico() {
+    try {
+      if (map.getTerrain() || map.getPitch() > 1) return true;
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      var cache = sc.base; if (!cache) return true;
+      var ids = cache.getRenderableIds ? cache.getRenderableIds() : Object.keys(cache._tiles || {});
+      var tiles = ids.map(function (id) { return cache._tiles[id]; }).filter(Boolean);
+      if (!tiles.length) return false;
+      if (tiles.some(function (x) { return x.state === "loading"; })) return false;
+      var niveis = new Set(tiles.map(function (x) { return x.tileID && x.tileID.canonical && x.tileID.canonical.z; }));
+      return niveis.size <= 1;
+    } catch (e) { return true; }
+  }
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) {
+        var ts = (sc[id] && sc[id]._tiles) || {};
+        for (var k in ts) if (ts[k] && ts[k].state === "errored") return id;
+      }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou (HTTP 404 ou resposta inválida). O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!map.areTilesLoaded() || map.isMoving()) return false;
+          if (!map.isSourceLoaded("fronteira") || !map.isSourceLoaded("base")) return false;
+          if (CENA.relevo && P.dem && (!map.isSourceLoaded("dem") || !map.getTerrain())) return false;
+          return nivelUnico();
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0;
+      (function tick() {
+        barrarTileComErro();
+        seguidas = pronto() ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo; se repetir, confira a conexão.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  // as imagens e as fontes da marca (o RIG espera "Marca"/"MarcaSec"); a Courier Prime da folha ("MarcaDoc") também
+  var docPronta = Promise.all(["400 86px MarcaDoc", "700 84px MarcaDoc"].map(function (f) {
+    return document.fonts.load(f).then(function (l) {
+      if (!l || !l.length) (window.__fontesFaltando = window.__fontesFaltando || []).push("MarcaDoc " + f.split(" ")[0] + ": não carregou");
+    }, function () { (window.__fontesFaltando = window.__fontesFaltando || []).push("MarcaDoc " + f.split(" ")[0] + ": erro"); });
+  }));
+  window.__fotosProntas = R.prontas().then(function () { return docPronta; }).then(function () { return true; });
+
+  // prévia: auto-loop só quando pedido (#preview). A captura nunca é a prévia.
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__fotosProntas.then(function () { window.__renderAt(0); return true; });
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+</script>
+</body>
+</html>

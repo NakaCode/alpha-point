@@ -42,3 +42,21 @@ A s05 tem um inset de mapa (MapTiler satellite-v2, zoom 7,4, câmera parada). O 
 de conferência com o `quadro.mjs`, cerca de 20 tiles cada, segundo o relato dele (`out/juneau/_tmp/art/lote1-relato.md`).
 O render da s05 carregará os tiles mais uma vez. Daqui em diante, cada cena com mapa tem no máximo uma captura de
 conferência antes do render.
+
+## 01/10/2026, 06:5x–07:1x — os renders de mapa do art (Claude central)
+
+Todos com `renderizar.mjs --4k` e a pré-carga `ferramentas/cdp-sem-compressao.mjs` (`APRENDIZADOS.md`, item 57), um
+por vez, antes do laudo de fatos (o Lucas pediu resultado o quanto antes e liberou o custo; se o laudo mudar um texto,
+a cena se refaz). Horas de Brasília (UTC −3: todos caem em 01/10 UTC). O painel não foi lido: a conta vai ao Lucas
+quando ele mostrar.
+
+| cena | início | fim | resultado |
+|---|---|---|---|
+| s03 (5º render: o apóstrofo curvo) | 06:51:19 | 06:52:50 | 2160p |
+| s05 (o inset do editor) | 06:52:50 | 06:54:52 | 2160p |
+| s07 | 06:54:52 | 06:58:05 | falhou no quadro 335: os tiles não chegaram em 90 s (os tiles até ali foram pedidos) |
+| s08 | 06:58:05 | 06:59:52 | falhou no quadro 42, pelo mesmo motivo |
+| s12 | 06:59:52 | 07:04:25 | 2160p |
+| s15 | 07:04:26 | 07:07:23 | 2160p |
+| s21 | 07:07:23 | 07:07:58 | 2160p |
+| s33 | 07:07:58 | 07:10:31 | 2160p |

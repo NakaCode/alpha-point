@@ -1031,3 +1031,28 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** todo canal com mapa pago tem dúvidas de cor e de legibilidade que não pedem a
   base paga, e a regra de 85 % do protagonista, aplicada por analogia a outro ator, cria o mesmo choque em qualquer
   paleta.
+
+## 01/10/2026 — o art do Juneau
+
+### 57. O Chrome do render cai em quadro de 4 MB: é o WebSocket do Node 24, e o conserto fica fora do motor
+- **Problema:** o `renderizar.mjs --4k` da pré-v1 caiu duas vezes, sempre no mesmo quadro, com "a conexão com o
+  navegador caiu (o Chrome fechou ou travou)". Na s22 do Juneau caiu no primeiro quadro, e na s01, no corte para a
+  foto do Capitólio. As duas cenas mostram uma foto cheia de detalhe em tela cheia. Outras dez cenas, com fotos
+  menores ou mais lisas, saíram. O achado 27 do item 17 já registrava o mesmo corte no `quadro.mjs` com PNG acima
+  de ~4 MB, e supunha que o JPEG do render passava sempre. Não passa.
+- **A causa, medida:**
+  - o WebSocket embutido do Node 24 (o undici) sempre oferece a compressão `permessage-deflate`, e o Chrome a aceita;
+  - ao descomprimir, o undici derruba a conexão quando a mensagem passa de 4 MB (`kDefaultMaxDecompressedSize`, fixo e
+    sem opção). O quadro 4K em JPEG 95 da s22 tem 3,3 MB, que em base64 passam de 4 MB;
+  - numa bancada com servidor local, o undici recebeu 8 MB sem compressão. Com compressão, 3 MB passaram e 5 MB caíram
+    com o código 1006. No Chrome, os mesmos quadros saíram em JPEG 90 (2,2 MB) e caíram em JPEG 95.
+- **O que resolveu:** `ferramentas/cdp-sem-compressao.mjs`, uma pré-carga do Node (`node --import`). Ela troca o
+  WebSocket global por uma subclasse que tira o cabeçalho `Sec-WebSocket-Extensions` do pedido de abertura, e o
+  Chrome passa a mandar sem compressão. O motor não muda, e a qualidade continua 95. A s22 saiu inteira, em 2160p.
+  O resto do Node (fetch, http) não muda. O uso está no topo do arquivo e nos tropeços do CLAUDE.md.
+- **Como evitar:** em todo render e todo `quadro.mjs` deste canal, carregue a pré-carga antes da ferramenta. Ela não
+  custa nada nas cenas que já passavam.
+- **Por que serve a qualquer canal:** todo canal que renderiza 4K com foto ou satélite, numa máquina com o Node 24,
+  bate nesse teto, e a mensagem do motor manda olhar o Chrome, que não tem culpa. No motor, o conserto é o
+  `chrome.mjs` abrir o WebSocket sem a compressão (o mesmo truque), ou pedir o quadro em pedaços. Vale avisar o
+  Lucas e o Mateus.

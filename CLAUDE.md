@@ -262,8 +262,9 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    (`window.__BASE_CANAL`) no lugar do perfil da pré-v1, e tirou o véu escuro do molde (a identidade não tem
    degradê). Saiu em 4K pelo `renderizar.mjs` (210 quadros em 114 s) e passou por revisão contra a marca.
    Cuidados:
-   - o `quadro.mjs` não fotografa cena de satélite nesta máquina (PNG acima de ~4 MB derruba a conexão com o
-     Chrome; `APRENDIZADOS.md` item 17, achado 27): renderize e tire o quadro do MP4 com o ffmpeg;
+   - o `quadro.mjs` sozinho não fotografa cena de satélite nesta máquina (PNG acima de ~4 MB derruba a conexão com o
+     Chrome; `APRENDIZADOS.md` item 17, achado 27). A causa é o WebSocket do Node 24, e a pré-carga do canal a resolve
+     (item 57; "Tropeços conhecidos do apoio"). Sem ela, renderize e tire o quadro do MP4 com o ffmpeg;
    - depois de qualquer `preparar-cena prova-mapa`, rode o `base-landsat.py` de novo: ele regrava o
      `_creditos-mapa.md`, que a pré-v1 escreveria com o crédito da EOX;
    - não há data de verão limpa nessa janela: as limpas são de março e abril, com neve até perto do mar. A de
@@ -519,6 +520,11 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
 - `renderizar.mjs` sem `--4k` grava a cena 4k-native em 1080p, e o carimbo (`<id>.mp4.de-html`) guarda a
   resolução: um render sem `--4k` obriga a renderizar de novo e, em cena de mapa, a pagar a MapTiler de novo.
   Todo render, inclusive o de prova, leva `--4k`, e o clipe só vale se o carimbo termina em `2160p`;
+- **todo render e todo `quadro.mjs` levam a pré-carga do canal** (01/10/2026; `APRENDIZADOS.md`, item 57):
+  `node --import file:///C:/projetos/alpha-point/ferramentas/cdp-sem-compressao.mjs C:/projetos/regie-v1/src/ferramentas/renderizar.mjs <proj> --cena=<id> --4k`.
+  Sem ela, o WebSocket do Node 24 derruba a conexão com o Chrome quando um quadro passa de 4 MB (foto cheia de
+  detalhe em tela cheia, satélite), e o render sai com "a conexão com o navegador caiu (o Chrome fechou ou travou)":
+  o Chrome não tem culpa, e o render se repete com a pré-carga;
 - `qc-pais-bandeira` só reconhece nome de país em português (`CANADÁ`, não `CANADA`): nem com npm ele conta
   país escrito em inglês;
 - `lib/erratas-gravadas.mjs` procura o laudo em `out/<proj>/qc-roteiro/entrada/`, e o deste canal está em

@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s25 · "Harris, the committee chair quoted earlier, called the figures inflated. Jim Clark, against the move, reminded
+  voters of the bonds they turned down in 1978."
+  Word-lock (−251.433) · inSec 251.433 · dur 9.667 (290 quadros a 30 fps; espelho.json, _quadros 7543→7833)
+  Modo do espelho: desenho · Modelo da identidade: PRANCHA sobre a mesa, com dois cards de pessoa sem retrato (nome e
+  cargo, identidade §5), a fala citada num cartão de papel e a mini-cédula de s20 com o carimbo NO
+
+  O que manda em cada coisa: o espelho (s25), o conceito (s25), a regência (s25: dois beats), os textos finais do redator
+  (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s25, cards_pessoa s25, _creditos
+  s25, nao_vai_para_tela s25) e a marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto
+  TEXTOS.
+
+  OS BEATS (tempo local = master − 251,433; palavras do words.json):
+    b1  0,000–4,433  "Harris, the committee chair quoted earlier, called the figures inflated."  (regência s25#1)
+        O card de Harris (o mesmo de s05: o nome na pílula --rotulo, 128 px, e o cargo embaixo, legenda 84 px --sec)
+        entra PELA ESQUERDA, cada peça na palavra dela: FRANK W. HARRIS em "Harris," (0,033; desliza 120 px da esquerda
+        em 300 ms) e Chairman, Capital Access Committee (1982) em "committee" (0,667). Em "inflated." (3,3) a fala
+        “inflated” SOBE do card dele num cartão de papel (--papel, textura, Inter 700, 280 px, --tinta-escura), abaixo
+        do cargo, presa ao card de Harris a cena toda (nunca solta ao lado do de Clark): sobe 180 px e assenta em 0,5 s.
+        Elementos: o card (1) + a fala (1) = 2.
+    b2  4,433–9,667  "Jim Clark, against the move, reminded voters of the bonds they turned down in nineteen
+        seventy-eight."  (regência s25#2)
+        O card de Clark entra PELA DIREITA: JIM CLARK em "Jim" (4,467) e Chairman, Alaska Committee (1982) em "against"
+        (5,0). A LINHA de 6 px (--neutro) se desenha entre as duas pílulas no mesmo instante do nome (y 810, de x 1.444
+        a 2.876), sem legenda (a voz não diz 1982 aqui). A MINI-CÉDULA de s20 (o cartão --tinta, à metade: 1.000 × 700,
+        com BONDS impresso em 128 px) cai ao lado dele, abaixo do cargo, em "bonds" (7,133), e recebe o carimbo NO
+        (--destaque, à metade do de s20) em "turned" (7,667). O 1978 fica na voz (R1).
+        Elementos: os dois cards (2) + “inflated” (1) + a mini-cédula com o NO (1) + a linha (1) = 5. Blocos: 3 (os dois
+        cards e a fala), no teto. Herói: nenhum (data-qc-sem-heroi).
+    A luz da mesa: atrás do card de Harris no b1; quando o card de Clark entra (4,433), desliza em 300 ms para o meio,
+    atrás da linha que liga os dois, e fica. Crédito Source: Alaska Division of Elections, 1982 solto na mesa, a cena toda.
+
+  A MÍDIA: nenhuma. Os retratos não se acharam em fonte autorizada (research-pessoas.md, 27/09): cards só com nome e
+  cargo. Nada do folheto de 1982 vai à tela (a página pede permissão clara, midia.md §7.1).
+
+  A MESA (identidade §5): a luz é o fundo de #cam, o feltro é #mesa, primeiro filho, os dois POR BAIXO de tudo, só pelos
+  tokens --mesa-*.
+  A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Margens 200/160 (o card de Harris
+  em x 260, como em s05); canto inferior direito (400×400) vazio; crédito em x = 200, y > 1880.
+
+  O CONTRATO: window.__duracao = 9.667; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
+  __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia
+  inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+-->
+<head>
+<meta charset="utf-8">
+<title>s25 — Harris called the figures inflated. Jim Clark reminded voters of the bonds they turned down in 1978</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
+      var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+  #mesa { position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
+
+  /* o card de pessoa (identidade §5; o de s05): o nome na pílula --rotulo (128 px, Inter 700) e o cargo embaixo (84 px, --sec) */
+  .pilula { position: absolute; white-space: nowrap; background: var(--rotulo); color: var(--tinta); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-family: var(--fonte); font-weight: var(--peso-rotulo);
+    font-size: var(--fs-rotulo); line-height: 1.1; letter-spacing: 0; opacity: 0; }
+  .cargo { position: absolute; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
+    line-height: 1.2; letter-spacing: 0; color: var(--sec); opacity: 0; }
+  /* a linha de 6 px entre os dois cards (sem legenda) */
+  #linha { position: absolute; left: 1444px; top: 807px; width: 1432px; height: var(--linha-espessura); background: var(--neutro);
+    transform-origin: 0% 50%; transform: scaleX(0); }
+
+  /* o cartão da fala (identidade §5): --papel com textura, a fala em Inter 700, 280 px, --tinta-escura */
+  .folha { position: absolute; left: 0; top: 0; background: var(--papel); color: var(--tinta-escura); transform-origin: 50% 50%; opacity: 0;
+    padding: 56px 60px;
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  .folha::before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
+    background-size: 420px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .fala { position: relative; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-fala); line-height: 1.06;
+    letter-spacing: -0.005em; color: var(--tinta-escura); }
+
+  /* a mini-cédula de s20, à metade: o cartão --tinta com BONDS impresso; o carimbo NO à metade (escala 0,5) */
+  .cedula { position: absolute; left: 0; top: 0; width: 1000px; height: 700px; background: var(--tinta); transform-origin: 50% 50%; opacity: 0;
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 30px 80px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  .cedula .linhaCed { position: absolute; left: 60px; top: 60px; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-rotulo);
+    font-size: var(--fs-rotulo); line-height: 1.1; letter-spacing: .02em; color: var(--tinta-escura); }
+  .carimbo { position: absolute; left: 640px; top: 430px; transform-origin: 50% 50%; opacity: 0; color: var(--destaque);
+    border: 18px solid currentColor; border-radius: 26px; padding: 46px 90px 34px; }
+  .carimbo .yes { font-family: var(--fonte-sec); font-weight: var(--peso-heroi); font-size: var(--fs-heroi); line-height: .86;
+    letter-spacing: .01em; color: currentColor; white-space: nowrap; }
+  .gasta { -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>");
+    -webkit-mask-size: 640px; mask-size: 640px; }
+
+  /* o crédito (§4.2): 76 px, --sec, x = 200, abaixo de y = 1880, solto sobre a mesa */
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x)); }
+  .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1; color: var(--sec);
+    letter-spacing: 0; opacity: 0; }
+  .cred[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="PRANCHA de dois cards de pessoa: os nomes são rótulos, a fala é bloco de leitura, BONDS é impressão da cédula e NO é carimbo; nenhum herói (ofício do editor-de-arte §6)">
+  <div id="cam">
+    <div id="mesa"></div>
+    <div id="linha"></div>
+    <!-- o card de Harris, à esquerda (o mesmo de s05) -->
+    <div class="pilula" id="nome1" data-qc-papel="rotulo" style="left:260px;top:700px"></div>
+    <div class="cargo"  id="cargo1" data-qc-papel="eixo" style="left:260px;top:940px"></div>
+    <div class="folha" id="falaCard"><div class="fala" id="fala" data-qc-papel="fala"></div></div>
+    <!-- o card de Clark, à direita -->
+    <div class="pilula" id="nome2" data-qc-papel="rotulo" style="left:2916px;top:700px"></div>
+    <div class="cargo"  id="cargo2" data-qc-papel="eixo" style="left:2330px;top:940px"></div>
+    <!-- a mini-cédula de s20 com BONDS e o carimbo NO -->
+    <div class="cedula" id="cedula">
+      <div class="linhaCed" id="bonds" data-qc-papel="rotulo"></div>
+      <div class="carimbo gasta" id="carimbo" data-qc-papel="carimbo"><div class="yes" id="carTxt"></div></div>
+    </div>
+  </div>
+  <div id="creds">
+    <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
+  </div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo, eb = R.eb;
+  var E = function (id) { return document.getElementById(id); };
+  var lerp = function (a, b, p) { return a + (b - a) * p; };
+  var DUR = 9.667;
+  window.__duracao = DUR;
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é a do textos-tela.json do disco) ═══════════════════════════
+  var TEXTOS = {
+    nome1:     "FRANK W. HARRIS",                                 // textos-tela.json › cards_pessoa s25 (nome; o card de s05)
+    cargo1:    "Chairman, Capital Access Committee (1982)",       // textos-tela.json › cards_pessoa s25 (o_que_e)
+    fala:      "“inflated”",                                      // textos-tela.json › rotulos_dado s25 (fala citada, presa ao card de Harris)
+    nome2:     "JIM CLARK",                                       // textos-tela.json › cards_pessoa s25 (nome)
+    cargo2:    "Chairman, Alaska Committee (1982)",               // textos-tela.json › cards_pessoa s25 (o_que_e)
+    bonds:     "BONDS",                                           // textos-tela.json › rotulos_dado s25 (a mini-cédula de s20)
+    carimbo:   "NO",                                              // textos-tela.json › rotulos_dado s25 (o carimbo)
+    credFonte: "Source: Alaska Division of Elections, 1982"       // textos-tela.json › _creditos s25 (os cards e 'inflated')
+  };
+  // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
+  E("nome1").textContent = TEXTOS.nome1; E("cargo1").textContent = TEXTOS.cargo1; E("fala").textContent = TEXTOS.fala;
+  E("nome2").textContent = TEXTOS.nome2; E("cargo2").textContent = TEXTOS.cargo2;
+  E("bonds").textContent = TEXTOS.bonds; E("carTxt").textContent = TEXTOS.carimbo;
+
+  // ── os tempos (locais, −251,433), da regência s25 e do words.json ──
+  var T = {
+    nome1: 0.033, cargo1: 0.667,          // "Harris," (251,467) · "committee" (252,1)
+    fala: 3.3, falaDur: 0.5,              // "inflated." (254,733): a fala sobe do card
+    corte: 133 / 30,                      // 4,433: o beat de Clark; a luz desliza para o meio
+    nome2: 4.467, cargo2: 5.0,            // "Jim" (255,9) · "against" (256,433)
+    linha: 4.467, linhaDur: 0.5,
+    cedula: 7.133, caiDur: 0.45,          // "bonds" (258,567): a mini-cédula cai
+    carimbo: 7.667, batida: 0.38          // "turned" (259,1): o NO bate
+  };
+  var FALA = { x: 260, y: 1080, w: 1207, h: 409, rot: 0.8 };     // abaixo do cargo de Harris, presa ao card dele
+  var CED = { w: 1000, h: 700, cx: 3140, cy: 1430, rot: -0.6 };  // ao lado de Clark, abaixo do cargo (x 2640→3640, y 1080→1780)
+  var LUZ1 = { x: 860, y: 900 }, LUZ2 = { x: 2160, y: 810 };
+
+  function rotulo(el, op, dx) {
+    op = clamp(op, 0, 1);
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = "translate(" + ((1 - op) * (dx || 0)).toFixed(1) + "px," + ((1 - op) * 24).toFixed(1) + "px)";   // rótulo: 300 ms, opacidade + 24 px (§4.4); o card desliza do lado dele
+  }
+  function por(el, cx, cy, w, h, rot, s, op) {
+    el.style.transform = "translate(" + (cx - w / 2).toFixed(2) + "px," + (cy - h / 2).toFixed(2) + "px) rotate(" +
+      rot.toFixed(3) + "deg) scale(" + s.toFixed(5) + ")";
+    if (op !== undefined) el.style.opacity = clamp(op, 0, 1).toFixed(3);
+  }
+  // o carimbo bate à metade do tamanho: escala 1,55 → 0,97 → 1, vezes 0,5
+  function carimbo(el, t, t0) {
+    var p = seg(t, t0, T.batida), s, op;
+    if (p < 0.7) { var q = eo(p / 0.7); s = lerp(1.55, 0.97, q); op = clamp(p / 0.35, 0, 1); }
+    else { s = lerp(0.97, 1, (p - 0.7) / 0.3); op = 1; }
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = "translate(-50%,-50%) rotate(-7deg) scale(" + (0.5 * s).toFixed(4) + ")";
+  }
+
+  function cena(t) {
+    t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
+    var cam = E("cam");
+    R.camera(cam, t, { base: 1.0 });
+
+    // ── b1: o card de Harris pela esquerda; a fala sobe dele ──
+    rotulo(E("nome1"), eo(seg(t, T.nome1, 0.3)), -120);
+    rotulo(E("cargo1"), eo(seg(t, T.cargo1, 0.3)), -120);
+    var p = eo(seg(t, T.fala, T.falaDur));
+    por(E("falaCard"), FALA.x + FALA.w / 2, FALA.y + FALA.h / 2 + 180 * (1 - p), FALA.w, FALA.h, lerp(-3, FALA.rot, p), 0.94 + 0.06 * p, seg(t, T.fala, 0.2));
+
+    // ── b2: o card de Clark pela direita; a linha; a mini-cédula cai; o NO bate ──
+    rotulo(E("nome2"), eo(seg(t, T.nome2, 0.3)), 120);
+    rotulo(E("cargo2"), eo(seg(t, T.cargo2, 0.3)), 120);
+    E("linha").style.transform = "scaleX(" + eb(seg(t, T.linha, T.linhaDur)).toFixed(4) + ")";
+    var c = eo(seg(t, T.cedula, T.caiDur)), ced = E("cedula");
+    por(ced, CED.cx, CED.cy - 220 * (1 - c), CED.w, CED.h, lerp(CED.rot - 2, CED.rot, c), 1.06 - 0.06 * c, seg(t, T.cedula, 0.15));
+    carimbo(E("carimbo"), t, T.carimbo);
+
+    // a luz: atrás do card de Harris; desliza para o meio, atrás da linha, quando Clark entra
+    var u = eb(seg(t, T.corte, 0.3));
+    cam.style.setProperty("--luz-x", lerp(LUZ1.x, LUZ2.x, u).toFixed(1) + "px");
+    cam.style.setProperty("--luz-y", lerp(LUZ1.y, LUZ2.y, u).toFixed(1) + "px");
+
+    // ── o crédito, a cena toda ──
+    var cr = E("credFonte"), op = eo(seg(t, T.nome1, 0.3));
+    if (cr.textContent !== TEXTOS.credFonte) cr.textContent = TEXTOS.credFonte;
+    cr.hidden = op <= 0; cr.style.opacity = op.toFixed(3);
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // nunca lança
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); };
+  window.__fotosProntas = R.prontas();
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

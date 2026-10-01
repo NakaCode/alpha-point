@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s02 · "The answer comes down to one line that showed up on later ballots: the price."
+  Word-lock (−13.6) · inSec 13.6 · dur 4.533 (136 quadros a 30 fps; espelho.json, _quadros 408→544)
+  Modo do espelho: documento · Modelo da identidade: DOCUMENTO (a folha datilografada sobre a mesa, identidade §5;
+  conferência visual: marca/prancha-documento-card.html, "A folha de papel sobre a mesa")
+
+  O que manda em cada coisa: o espelho (s02), o conceito (s02), a regência (s02: um beat, 0 → 4,533), os textos
+  (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s02 e _creditos s02; o literal
+  da cédula e o cabeçalho, sem o ano; a grafia é a mesma do commit a7ba5a9 com que a cena foi montada) e a marca
+  (identidade §4–§7, tokens.css: --fonte-doc, --doc-*). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS.
+
+  O BEAT (tempo local = master − 13,6; palavras do words.json):
+    b1  0,000–4,533  "The answer comes down to one line that showed up on later ballots: the price."
+        A folha --papel (2.760 × 2.980 px, inclinada 0,8°, textura multiply, fita nos dois cantos de cima, borda de
+        baixo rasgada) sobre a mesa de feltro sob a luz, desde o primeiro quadro (corte seco do clipe de s01).
+        No alto, o cabeçalho BALLOT MEASURE NO. 8 em caixa de contorno (Courier Prime 700, 84 px; sem o ano: a voz
+        não o diz nesta cena), um fio, e muito papel em branco; mais abaixo, o literal da cédula em Courier Prime
+        400, 86 px, em 4 linhas, até o cifrão: "…(estimated to / total $" — o número fica em branco (a voz só o diz
+        em s23; nenhum número antes da voz). A medida da folha (2.420 px de texto, 46 caracteres por linha) foi
+        escolhida para o "$" cair no começo da última linha, com a lacuna comprida ao lado.
+        A CÂMERA desce pela folha em 3 s (ease-in-out cúbico), como um dedo que procura, 1.562 px, e para com a
+        linha do cifrão em y ≈ 1.100; a borda rasgada entra pelo pé do quadro e a mesa fica por baixo. Depois,
+        só a câmera viva do RIG (push-in + deriva).
+        Em "price" (4,0 s, o quadro de "price", 17,59 s do master) o GRIFO (--grifo-cor, --destaque a 35 %, uma
+        faixa de 72 px) sublinha a lacuna vazia depois do cifrão, da esquerda para a direita em 0,55 s, e fica.
+        Crédito Source: Alaska Division of Elections, 1982 na faixa (76 px --sec, na pílula --rotulo: a folha passa
+        por baixo da faixa durante a descida), a cena toda.
+        Conta de elementos: a folha (1), com o cabeçalho, o literal e o grifo pousados nela. Blocos de texto: 1.
+        Herói: nenhum (data-qc-sem-heroi).
+
+  A MÍDIA: nenhuma. A folha é recriação (midia.md §7.1: o folheto é documento do Estado sem permissão clara); a
+  prova de página do pesquisa-documentos (a "-prova" da pasta de documento da mídia) nunca vai à tela (CLAUDE.md,
+  "o conferente"), e por isso o caminho dela não se escreve aqui (qc-midia-real §3: caminho só em comentário é fantasma).
+
+  A MESA (identidade §5, "A mesa: feltro sob a luz"; a s09 do piloto é a referência): a luz é o fundo de #cam, o
+  feltro é #mesa, primeiro filho de #cam, os dois POR BAIXO da folha, da fita e do grifo, só pelos tokens --mesa-*.
+  A luz fica centrada atrás do trecho da folha que está no quadro e desce com a câmera (--luz-y vai de 1.100 a 850);
+  o feltro rola junto com a folha (background-position), para a câmera descer sobre a mesa inteira.
+
+  A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Courier Prime só na folha
+  (--fonte-doc, --doc-corpo 86 px, --doc-cabecalho 84 px, --doc-margem-rasgo 240 px, --doc-inclinacao ≤ 1,5°).
+  Margens 200/160; canto inferior direito (400×400) vazio; crédito em x = 200, y > 1880. --degrade: none fora da
+  luz da mesa.
+
+  O CONTRATO: window.__duracao = 4.533; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
+  __fotosProntas = RIG.prontas() e, a mais, as duas faces da Courier Prime (MarcaDoc 400 e 700): se uma não
+  carregar, vai para window.__fontesFaltando, e o render reprova. Nada de relógio, sorteio, @keyframes ou transition.
+  O RIG abaixo é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+-->
+<head>
+<meta charset="utf-8">
+<title>s02 — The answer comes down to one line that showed up on later ballots: the price</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+
+  /* a mesa: feltro sob a luz (identidade §5). A luz é o fundo de #cam (--luz-x/--luz-y do __renderAt); o feltro é
+     #mesa, PRIMEIRO filho de #cam, e rola com a folha (background-position). Nunca um ::after por cima. */
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
+      var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+  #mesa { position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
+  /* o rolo: a folha e as fitas descem juntas (translateY posto pelo __renderAt) */
+  #rolo { position: absolute; inset: 0; }
+
+  /* A FOLHA DE DOCUMENTO (identidade §5; prancha-documento-card.html, documento B): --papel, --tinta-escura, textura
+     multiply, vinco leve, inclinada até --doc-inclinacao, borda de baixo rasgada (clip-path). O clip-path corta a
+     sombra: ela vai numa camada irmã por baixo (.folha-sombra), que acaba onde o rasgo começa. */
+  .folha-sombra { position: absolute; transform-origin: 50% 50%;
+    box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
+                0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
+  .folha { position: absolute; background: var(--papel); color: var(--tinta-escura); transform-origin: 50% 50%; overflow: hidden; }
+  .folha::before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
+    background-size: 420px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .folha::after { content: ""; position: absolute; left: 0; right: 0; top: 46%; height: 3px; pointer-events: none;
+    background: color-mix(in srgb, var(--tinta-escura) 7%, transparent);
+    box-shadow: 0 2px 0 color-mix(in srgb, var(--tinta) 50%, transparent); }
+  .rasgada { clip-path: polygon(0% 0%, 100% 0%, 100% 95.5%, 100.00% 96.89%, 98.44% 96.15%, 96.88% 98.30%, 95.31% 95.81%, 93.75% 97.80%, 92.19% 97.07%, 90.62% 95.75%, 89.06% 97.68%, 87.50% 95.66%, 85.94% 97.36%, 84.38% 95.80%, 82.81% 95.89%, 81.25% 97.33%, 79.69% 99.06%, 78.12% 96.03%, 76.56% 96.46%, 75.00% 98.20%, 73.44% 99.58%, 71.88% 97.98%, 70.31% 97.21%, 68.75% 99.70%, 67.19% 95.70%, 65.62% 99.19%, 64.06% 96.75%, 62.50% 96.12%, 60.94% 96.01%, 59.38% 96.83%, 57.81% 99.01%, 56.25% 96.28%, 54.69% 98.00%, 53.12% 98.25%, 51.56% 97.10%, 50.00% 97.86%, 48.44% 95.77%, 46.88% 95.76%, 45.31% 96.39%, 43.75% 98.43%, 42.19% 97.34%, 40.62% 96.85%, 39.06% 98.02%, 37.50% 97.45%, 35.94% 96.79%, 34.38% 98.92%, 32.81% 98.51%, 31.25% 96.55%, 29.69% 97.97%, 28.12% 97.76%, 26.56% 99.26%, 25.00% 98.64%, 23.44% 96.74%, 21.88% 99.71%, 20.31% 96.01%, 18.75% 97.30%, 17.19% 98.76%, 15.62% 96.15%, 14.06% 97.60%, 12.50% 95.67%, 10.94% 98.37%, 9.38% 98.79%, 7.81% 97.96%, 6.25% 99.26%, 4.69% 96.85%, 3.12% 98.49%, 1.56% 98.06%, 0.00% 97.99%); }
+  /* o que está impresso na folha: Courier Prime (--fonte-doc), 400 no corpo (--doc-corpo) e 700 no cabeçalho */
+  .cab { display: flex; align-items: center; }
+  .caixa-ref { font-family: var(--fonte-doc); font-weight: var(--peso-doc-cabecalho); font-size: var(--doc-cabecalho); line-height: 1;
+    letter-spacing: .02em; white-space: nowrap; padding: 18px 26px;
+    border: 6px solid color-mix(in srgb, var(--tinta-escura) 55%, transparent); color: color-mix(in srgb, var(--tinta-escura) 70%, transparent); }
+  .fio { height: 4px; background: color-mix(in srgb, var(--tinta-escura) 25%, transparent); }
+  .corpo { font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: var(--doc-corpo); line-height: 1.5;
+    letter-spacing: 0; color: var(--tinta-escura); }
+  /* a lacuna depois do cifrão: o lugar do número que a voz ainda não disse; o grifo cresce dentro dela em "price" */
+  .lacuna { display: inline-block; position: relative; width: 2000px; height: 129px; vertical-align: bottom; }
+  .lacuna .grifo { position: absolute; left: 0; bottom: 18px; width: 100%; height: 72px; background: var(--grifo-cor);
+    transform-origin: left center; transform: scaleX(0); }
+  /* a fita, como na prancha: translúcida, dentes nas pontas, leve sombra; o tom vem do --papel */
+  .fita { position: absolute; width: 520px; height: 150px; background: color-mix(in srgb, var(--papel) 62%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--tinta-escura) 18%, transparent);
+    clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 86%, 97% 100%, 0 100%, 4% 88%, 0 72%, 4% 56%, 0 40%, 4% 24%);
+    transform-origin: 50% 50%; }
+
+  /* o crédito (§4.2): 76 px, --sec, x = 200, abaixo de y = 1880. Na pílula --rotulo (--texto-tratamento: caixa): a folha
+     passa por baixo da faixa de crédito durante a descida (até ~2,3 s), e o --sec solto sobre o --papel não se leria. */
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x));
+    background: var(--rotulo); border-radius: var(--cantos); padding: 6px 24px 8px; opacity: 0; }
+  .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1; color: var(--sec);
+    letter-spacing: 0; opacity: 0; }
+  .cred[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="documento: a cena é a folha sobre a mesa; o cabeçalho e o literal são impressão da folha, não herói (ofício do editor-de-arte §6)">
+  <div id="cam">
+    <div id="mesa"></div>
+    <div id="rolo">
+      <!-- a folha: 2.760 × 2.560, em (540, 170), 0,8°; o texto tem 2.420 px de largura (46 caracteres de Courier a 86 px) -->
+      <!-- a folha: 2.760 × 2.980, em (540, 170), 0,8°; o rasgo começa em 95,5 % (2.846); a sombra acaba onde o rasgo começa.
+           O literal começa em y 2.040 da folha (fora do quadro em t = 0: a câmera o procura) e a linha do cifrão fica em
+           2.427 → 2.556; de lá ao rasgo sobram 290 px em branco (--doc-margem-rasgo: 240). -->
+      <div class="folha-sombra" style="left:540px;top:170px;width:2760px;height:2846px;transform:rotate(0.8deg)"></div>
+      <div class="folha rasgada" id="folha" style="left:540px;top:170px;width:2760px;height:2980px;padding:160px 170px 0;transform:rotate(0.8deg)">
+        <div class="cab"><span class="caixa-ref" id="cab"></span></div>
+        <div class="fio" style="margin:44px 0 50px"></div>
+        <p class="corpo" id="corpo" style="margin-top:1650px"><span id="literal"></span><span class="lacuna"><i class="grifo" id="grifo"></i></span></p>
+      </div>
+      <div class="fita" style="left:400px;top:95px;transform:rotate(-7deg)"></div>
+      <div class="fita" style="left:2920px;top:105px;transform:rotate(6deg)"></div>
+    </div>
+  </div>
+  <div id="creds">
+    <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
+  </div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo, eb = R.eb;
+  var E = function (id) { return document.getElementById(id); };
+  var lerp = function (a, b, p) { return a + (b - a) * p; };
+  var DUR = 4.533;
+  window.__duracao = DUR;
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia final é do redator-de-tela) ══════════════════════════════
+  var TEXTOS = {
+    cabecalho: "BALLOT MEASURE NO. 8",                                                                     // textos-tela.json › rotulos_dado s02 (sem o ano)
+    literal:   "Considering the cost, revenue and population estimates set out below, may the State of Alaska spend the money necessary (estimated to total $",   // idem: o literal da cédula, até o cifrão
+    credFonte: "Source: Alaska Division of Elections, 1982"                                               // textos-tela › _creditos s02
+  };
+  // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
+  E("cab").textContent = TEXTOS.cabecalho;
+  E("literal").textContent = TEXTOS.literal;
+
+  // ── os tempos (locais, −13,6), do words.json e da regência s02 ──
+  var T = {
+    desce: 0.0, desceDur: 3.0, desceD: 1562,   // a câmera desce 1.562 px em 3 s (ease-in-out cúbico): a linha do cifrão (y 2.427→2.556 da folha) para em y ≈ 1.100
+    grifo: 4.0, grifoDur: 0.55                 // "price" (17,59 s): o grifo cresce da esquerda para a direita e fica
+  };
+
+  function cena(t) {
+    t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
+    // a câmera do RIG, sobre a mesa inteira (base 1,0: a de 1,02 empurrava a margem)
+    R.camera(E("cam"), t, { base: 1.0 });
+    // a descida: o rolo (folha + fitas) sobe D px, e o feltro rola junto; a luz fica atrás do trecho da folha no quadro
+    var d = T.desceD * eb(seg(t, T.desce, T.desceDur));
+    E("rolo").style.transform = "translateY(" + (-d).toFixed(2) + "px)";
+    E("mesa").style.backgroundPosition = "0px " + (-d).toFixed(2) + "px";
+    var cam = E("cam");
+    cam.style.setProperty("--luz-x", "1920px");
+    cam.style.setProperty("--luz-y", lerp(1100, 850, d / T.desceD).toFixed(1) + "px");
+    // o grifo, em "price"
+    E("grifo").style.transform = "scaleX(" + seg(t, T.grifo, T.grifoDur).toFixed(4) + ")";
+    // o crédito, a cena toda (a pílula acende junto com a linha)
+    var c = E("credFonte"), opC = eo(seg(t, 0, 0.3));
+    if (c.textContent !== TEXTOS.credFonte) c.textContent = TEXTOS.credFonte;
+    c.hidden = false; c.style.opacity = opC.toFixed(3);
+    E("creds").style.opacity = opC.toFixed(3);
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // nunca lança
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); };
+  // a prontidão: as faces da marca (RIG) e, a mais, as duas da Courier Prime da folha (MarcaDoc 400 e 700): o RIG não
+  // espera por elas, e uma folha sem a Courier sairia na fonte reserva, calada. O que faltar vai a __fontesFaltando.
+  window.__fotosProntas = R.prontas().then(function () {
+    if (!document.fonts) return true;
+    return Promise.all([
+      document.fonts.load('400 86px "MarcaDoc"').then(function (f) { if (!f.length) window.__fontesFaltando.push("MarcaDoc 400 (Courier Prime da folha)"); }, function () { window.__fontesFaltando.push("MarcaDoc 400 (Courier Prime da folha)"); }),
+      document.fonts.load('700 84px "MarcaDoc"').then(function (f) { if (!f.length) window.__fontesFaltando.push("MarcaDoc 700 (Courier Prime da folha)"); }, function () { window.__fontesFaltando.push("MarcaDoc 700 (Courier Prime da folha)"); })
+    ]).then(function () { return true; });
+  });
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>
