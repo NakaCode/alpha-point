@@ -999,3 +999,14 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   que é cada linha?". E todo molde de cena declara a duração em número.
 - **Por que serve a qualquer canal:** o molde e o portão são do motor, e a confusão entre tipos de linha aparece em
   qualquer mapa explicativo. Vale levar ao molde (`var DUR = <número>`) e ao `qc-janela` (ler `CENA.duracao`).
+
+### 55. O `geo-osm-rota` costura uma relation só, e o `around` do Overpass com linha longa dá 504
+- **Problema:** a rota da balsa estadual no Lynn Canal está no OpenStreetMap em duas relations com um nó em comum
+  (Juneau–Haines e Haines–Skagway, que se encontram no terminal de Lutak). O `derivarRota` da pré-v1 lê só os
+  membros da primeira relation do dump. Na conferência da água, um `around` do Overpass com a linha longa, sozinho,
+  respondeu 504 (sobrecarga).
+- **O que resolveu:** os dois caminhos entraram pelos ways, sem as relations, e a costura de sempre (`--tol=0`) os
+  colou no nó comum: 146,46 km, 0 órfãos. O script do canal é `out/juneau/_pesquisa/geo-balsa-lynn-canal.mjs`. No
+  Overpass, a mesma consulta com a janela da linha no filtro (`(bbox)(around:…)`) respondeu.
+- **Por que serve a qualquer canal:** rota partida em várias relations é comum no OSM (balsa, trilha, rodovia por
+  estado). Vale levar ao motor um modo de várias relations no `geo-osm-rota`.

@@ -246,3 +246,64 @@ Devolução (28/09): em s44, o ponto de partida do esquema do Taku está entregu
 - o **Claude central**, que muda o `_existe` de `thane-road-fim` no espelho depois de conferir o arquivo no disco;
 - o **mapista**, que desenha o esquema tracejado do Taku a partir deste ponto, com `Approximate route` e sem decalcar a Figure 2-1. O caminho do ponto até o Taku Inlet não está no texto (acima);
 - o **redator-de-tela**, se o ponto tiver rótulo (o espelho diz que não tem).
+
+## 8. Pedido do montador, 30/09: a rota da balsa estadual no Lynn Canal (s52)
+
+**O pedido.** `rota-balsa-lynn-canal-osm` (`espelho.json` › s52 › `needs.geo`, décima quarta revisão): a rota da Alaska Marine Highway no Lynn Canal, do terminal de Auke Bay, em Juneau, a Haines e a Skagway, como o OSM a mapeia (`route=ferry`). É o serviço que existe: sem esquema e sem `Approximate route`. Despachado em 01/10, o último pedido do `research`.
+
+**O que o OSM tem.** A descoberta (um pedido ao Overpass, só etiquetas e centros: `route=ferry` e `amenity=ferry_terminal` na janela 58.25–59.6 N, 134.5–135.9 W) achou o serviço do Estado em duas relations, com `operator=Alaska Marine Highway` e um way cada:
+
+| Relation | Nome no OSM | Way | Vértices | Comprimento |
+|---|---|---|---|---|
+| relation/12533329 | Juneau - Haines | way/196083744 | 27 | 122,64 km (76,2 mi) |
+| relation/12533328 | Haines - Skagway | way/468651609 | 20 | 23,81 km (14,8 mi) |
+
+- Os dois ways começam no mesmo nó, node/4631478695, "Alaska Marine Highway Terminal - Haines (Lutak)". O Juneau - Haines acaba no node/65663494, "Alaska Marine Highway Terminal - Juneau", e o Haines - Skagway no node/6232504244, "Alaska State Ferry Terminal - Skagway". As pontas são os próprios nós de terminal.
+- **Fora:** way/1110587425 "Skagway - Haines", do Haines Skagway Fast Ferry (`operator=Haines Skagway Fast Ferry`): empresa privada, não o Estado. E as outras rotas da AMH que saem de Juneau (Sitka, Hoonah, Gustavus…), que não são do Lynn Canal.
+- As relations não têm etiqueta `distance` para comparar. Os ways têm `duration` (08:30 e 00:45), que não entrou: não foi pedida nem conferida.
+
+**Como foi costurada.** Pelo `derivarRota` do `geo-osm-rota` da pré-v1 (a mesma costura pelas pontas e a mesma medida), com `--tol=0`, e gravada pelo `gravarGeo`, como no `geo-osm-rodovias.mjs`.
+- O `geo-osm-rota` pela linha de comando lê uma relation só: o `derivarRota` usa os membros da primeira relation que acha no dump. Por isso os dois ways entram sem as relations. Cada um entra no sentido da viagem (Juneau → Lutak, Lutak → Skagway; inverter a ordem dos vértices não muda o traçado), e a costura os cola no nó comum de Lutak.
+- **0 órfãos.** 1 LineString, 46 vértices, **146,46 km (91,0 mi)**. A linha começa em Juneau, passa por Lutak no km 122,64 e acaba em Skagway. Bbox [-135.46188, 58.34383, -134.68155, 59.44879], WGS84 lon/lat, 6 KB.
+- Nada foi desenhado, aproximado nem ligado à mão.
+
+**Os terminais** (distâncias geodésicas das pontas da linha):
+
+| Ponta | Nó do OSM na ponta | Conferência |
+|---|---|---|
+| Juneau | node/65663494, ferry_terminal (0 m) | o outro nó do mesmo terminal (node/2062659390) a 104 m; o prédio "Alaska State Ferry Terminal" (way/409578915) a 139 m; **Auke Bay** no GNIS a 1,60 km (1398468, Bay) e a 1,49 km (1398469, Populated Place) |
+| Haines (Lutak) | node/4631478695, ferry_terminal (0 m) | o prédio do terminal (way/1093562756) a 82 m; **Lutak Inlet** no GNIS (1423480, o ponto no meio do braço) a 3,21 km; a cidade de Haines a 6,00 km (GNIS 1422400) e a 5,20 km (`cidade-haines-osm`). O cais da cidade (Port Chilkoot Dock, node/8196315079) fica a 6,01 km e não é o terminal da balsa |
+| Skagway | node/6232504244, ferry_terminal (0 m) | **Skagway** a 1,25 km (GNIS 1414754) e a 1,25 km (`cidades-ne`, NE) |
+
+**A água:**
+- **Pela costa do OSM** (`natural=coastline` a até 600 m da rota, 15 ways; a terra fica à esquerda do sentido do way): **nenhum cruzamento** da costa e **nenhum trecho em terra**, em 2.952 amostras a cada 50 m. Fora da chegada (a mais de 1 km de cada terminal), a linha passa a, no mínimo, **241 m da costa** (km 4,19, saindo de Auke Bay).
+- **Os controles** (decidem só os que somam até 600 m entre a rota e a costa; dos 50 candidatos, 47 ficaram sem veredito e estão contados no arquivo): os prédios dos terminais de Juneau (way/409578915) e de Lutak (way/1093562756) deram **terra**, e a Auke Nu Cove (GNIS 1398474, Bay) deu **água**. Os três passaram.
+- **No NE 1:10M** (`panhandle-juneau`), o meio da rota é água. Só as pontas caem na terra simplificada: 199 m em Juneau, 97 m em volta de Lutak e 646 m em Skagway. **Se a cena pintar a terra com o polígono do NE, declare esse deslocamento.** Sobre o satélite, vale a costa do OSM.
+
+**Crédito.** É OSM (ODbL 1.0): `© OpenStreetMap contributors` na tela de s52, que a base MapTiler já mostra (`© MapTiler © OpenStreetMap contributors`), e openstreetmap.org/copyright na descrição. O `gravarGeo` acrescentou a linha ao `out/juneau/_creditos-mapa.md`.
+
+**Para quem desenha:**
+- O traçado é o desenho que o OSM dá ao serviço: 46 vértices em 146 km, uma linha de pontos espaçados. Não se lê como o caminho exato de cada viagem.
+- O ponto de junção é o terminal de Lutak, a uns 6 km ao norte do centro de Haines. No OSM, as duas relations da AMH chegam a esse terminal, não ao cais da cidade (Port Chilkoot Dock).
+- `rotulo` é `""`, como no espelho. O `name_pt` leva o nome em inglês (roupa, §4): "Alaska Marine Highway ferry route: Juneau – Haines – Skagway". O rótulo de tela, se houver, é do `redator-de-tela`.
+- No arquivo, as propriedades guardam as duas relations, os trechos, os terminais com as distâncias, o teste da água com os controles e o que ficou fora.
+
+**Portões:**
+- `node scripts/validar-contrato.mjs pauta-pesquisa out/juneau/_pesquisa/pauta-geo.json`: **✓ válido**, exit 0.
+- `REGIE_MOTOR=C:/projetos/regie-v1 node scripts/qc-procedencia.mjs juneau`: **PASS**, exit 0. Ele não lê `.json`, então não mede geometria.
+- `node out/juneau/_pesquisa/conferir-pauta-geo.mjs juneau`: **42/42 ✓**, exit 0.
+- A checagem 1 do contrato: FeatureCollection, 1 feature, LineString, 46 pares, nenhuma geometria vazia.
+- A pauta passa a ter 42 itens. As 41 entradas de antes não mudaram (o `git diff` só acrescenta a nova).
+- `build-geo-manifest.mjs`: **NÃO MEDIDO (build-geo-manifest)**, como na seção 4.
+
+**Como refazer.** `node out/juneau/_pesquisa/geo-balsa-lynn-canal.mjs baixar <osm-descoberta-balsa-lynn|osm-balsa-lynn|osm-balsa-lynn-costa|todos>` é o único passo com rede. As respostas ficam em `out/juneau/_tmp/geo-fontes/`, com as bases OSM 2026-10-01T03:12:09Z, 03:18:17Z e 03:19:21Z. Depois vêm `conferir` e `gravar`, sem rede. O pedido da costa deu 504 uma vez, só com o `around`; com a janela da rota no mesmo filtro, respondeu na segunda tentativa, 45 s depois. Nenhum site recusou leitura.
+
+**Para o APRENDIZADOS.md** (quem registra é o Claude central):
+1. O `geo-osm-rota` costura uma relation só: o `derivarRota` lê os membros da primeira relation do dump. Uma rota que o OSM parte em duas relations com um nó comum (aqui, Juneau - Haines e Haines - Skagway) entra pelos ways, sem as relations, e a costura os cola no nó comum. Um modo de várias relations na ferramenta serviria a qualquer canal.
+2. No Overpass, `around` com uma linha longa, sozinho, pesa no servidor (504). A mesma consulta com a janela da linha no filtro (`(bbox)(around:…)`) respondeu.
+
+---
+Devolução (01/10): em s52, plano 2, a rota da balsa estadual está entregue inteira (`rota-balsa-lynn-canal-osm`, Auke Bay → Haines (Lutak) → Skagway, 0 órfãos). Agora decidem:
+- o **Claude central**, que muda o `_existe` de `rota-balsa-lynn-canal-osm` no espelho depois de conferir o arquivo no disco;
+- o **mapista**, que desenha a rota sobre o satélite, com `© OpenStreetMap contributors` na tela, e declara o deslocamento das pontas se pintar a terra com o NE;
+- o **redator-de-tela**, se a rota ou os terminais tiverem rótulo (o espelho diz que não têm).
