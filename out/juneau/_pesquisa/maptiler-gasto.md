@@ -10,6 +10,7 @@ primeira cena de mapa, e o custo real vai ao Lucas antes das outras.
 | 30/09/2026 22:17 (Brasília) | 2º render da s03 (a divisa mais grossa e os rótulos fora das linhas; câmera 100 px mais baixa) | sem leitura: entra na de 01/10 | — |
 | 30/09/2026 23:06 (Brasília) | depois dos 2 renders da s03 (21:33 e 22:17) | total 10.689, sem mudança; a barra de 30/09 diz "Static maps: 30" e "Estimate: 30.349" (total 30.379) | print do Lucas |
 | 01/10/2026 00:00 (Brasília) | 3º render da s03 (a opção D: estradas em `--rede-cor` e o ROADS), 00:00:43–00:03:11 = 03:00–03:03 UTC de 01/10 | sem leitura | — |
+| 01/10/2026 00:36 (Brasília) | 4º render da s03 (a legenda das cores no lugar do ROADS), 00:36:26–00:38:14 = 03:36–03:38 UTC de 01/10 | sem leitura | — |
 
 - **Às 23h de 30/09, o dia ainda não estava somado:** o total segue em 10.689, e a barra do dia mostra só 30 pedidos
   contados, como "Static maps". O resto é a estimativa do site. Os renders pedem tiles (`/tiles/satellite-v2/…` e

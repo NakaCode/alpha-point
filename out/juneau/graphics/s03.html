@@ -33,8 +33,9 @@
       É tratamento da base, como o satélite: não conta como elemento (§4.2). As bordas do recorte não se desenham.
     · A MALHA DO CONTINENTE (Natural Earth ne_10m_roads, sem balsas) se acende em --rede-cor (= --contraparte)
       vindo do Canadá: uma frente que fecha sobre Juneau e para na ponta mais perto dela (Haines). Ela nunca chega a
-      Juneau: a cena confere a distância mínima da malha no carregamento. A pílula ROADS a nomeia de 1,813 s
-      ("continent") a 3,833 s.
+      Juneau: a cena confere a distância mínima da malha no carregamento. A LEGENDA DAS CORES, no canto de cima à
+      direita, diz o que cada linha é: Border (1,433 s), Roads (1,813 s) e Juneau's roads (3,833 s); sai inteira de
+      5,267 a 5,567 s, antes de Cascade Point.
     · A ESTRADA de Juneau (OSM, Alaska Route 7, 67,48 km) se desenha em --destaque, de Juneau para o norte, em
       sincronia com "forty-three miles north"; o rótulo ABOUT 43 MILES entra quando ela chega ao meio (4,465 s).
     · O ANEL de Cascade Point (identidade §4.4) e os rótulos em pílula (§4.1), ancorados por projeção.
@@ -77,6 +78,16 @@
     · ABOUT 43 MILES e a linha da fonte passam de 3,567 s ("about") a 4,465 s, quando a estrada chega ao meio, onde a
       régua se ancora ("miles", 4,384–4,717 s): o rótulo de uma linha só entra com a linha;
     · as folgas foram medidas de novo sem tile, nos 242 quadros (relato do mapista de 30/09/2026).
+
+  5ª versão (01/10/2026, 00:3x, a B do Lucas: "2. Mas menor", e logo depois "Perdão, na verdade o tamanho está bom.
+  Estava ampliado"; identidade §6, "A legenda das cores, no lugar do nome na linha"). Ele propôs, depois de ver o
+  ROADS: "Acho que talvez ao invés de 'ROADS' e etc, poderíamos ter um guia de o que cada cor representa, algo
+  discreto":
+    · sai a pílula ROADS; entra a legenda das cores (div#legenda), presa à tela no canto de cima à direita, com uma
+      amostra de cada linha da cena e uma palavra: Border, Roads e Juneau's roads, cada uma com a sua linha;
+    · ela conta como um elemento e sai inteira de 5,267 a 5,567 s, antes de Cascade Point: o item laranja fica 1,43 s
+      inteiro no ar (3,833 → 5,267), menos que os 2,0 s de texto no ar, por escolha do Lucas (a opção dizia isso);
+    · a malha em --rede-cor, ABOUT 43 MILES em 4,465 s e a linha da fonte continuam como na 4ª versão.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -108,6 +119,27 @@
     font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1;
     letter-spacing: 0; color: var(--tinta); }
   .rotulo.pais { letter-spacing: var(--tracking-lugar); }
+  /* a LEGENDA DAS CORES (identidade §6, a B do Lucas, 01/10/2026): caixa --rotulo com cantos 12 e o respiro da
+     pílula de legenda (16 × 28, §4.1), no canto de cima à direita, dentro das margens (160 no topo, 200 do lado);
+     letra no papel legenda: Inter 500, --fs-eixo (84 px), em --legenda-cor (--tinta a 80 %). A largura é a do
+     texto mais longo (os três itens estão no fluxo desde o começo, invisíveis); a altura e as opacidades vêm do
+     __renderAt. Cada item: a amostra de 120 px, 28 px de vão e a palavra, numa linha de 101 px, com 12 px entre
+     as linhas. */
+  #legenda { position: absolute; top: 160px; right: 200px; z-index: 45; pointer-events: none; opacity: 0;
+    overflow: hidden; box-sizing: border-box; height: 133px; padding: 16px 28px;
+    background: var(--rotulo); border-radius: var(--cantos);
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-eixo); line-height: 101px; letter-spacing: 0;
+    color: var(--legenda-cor); white-space: nowrap; }
+  #legenda .item { display: flex; align-items: center; height: 101px; opacity: 0; }
+  #legenda .item + .item { margin-top: 12px; }
+  #legenda svg { flex: none; width: 120px; height: 101px; margin-right: 28px; overflow: visible; }
+  #legenda line { stroke-linecap: round; }
+  #legBorder .contorno { stroke: var(--fronteira-contorno-cor); stroke-width: var(--fronteira-contorno-espessura); }
+  #legBorder .nucleo { stroke: var(--fronteira-cor); stroke-width: var(--fronteira-espessura); }
+  #legRoads .contorno { stroke: var(--rotulo); stroke-width: 24px; }
+  #legRoads .nucleo { stroke: var(--rede-cor); stroke-width: 11px; }
+  #legJuneau .contorno { stroke: var(--rotulo); stroke-width: 26px; opacity: 0.85; }
+  #legJuneau .nucleo { stroke: var(--destaque); stroke-width: 14px; }
   #anel circle { fill: none; stroke: var(--destaque); }
   #pontoJuneau { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6; }
   /* CRÉDITOS (identidade §4.1/§4.2; docs/CREDITO-DE-MAPA.md §6 da pré-v1): 76 px, Inter 500, texto --sec sobre a
@@ -143,9 +175,14 @@
     <div class="rotulo" id="rotJuneau" data-qc-papel="rotulo">Juneau</div>
     <div class="rotulo pais" id="rotEUA" data-qc-papel="rotulo">UNITED STATES</div>
     <div class="rotulo pais" id="rotCanada" data-qc-papel="rotulo">CANADA</div>
-    <div class="rotulo" id="rotRoads" data-qc-papel="rotulo">ROADS</div>
     <div class="rotulo" id="rotRegua" data-qc-papel="rotulo">ABOUT 43 MILES</div>
     <div class="rotulo" id="rotCascade" data-qc-papel="rotulo">Cascade Point</div>
+  </div>
+  <!-- a legenda das cores: cada amostra é a linha da cena (cor, espessura e contorno), só mais curta -->
+  <div id="legenda" data-qc-papel="legenda">
+    <div class="item" id="legBorder"><svg viewBox="0 0 120 101" aria-hidden="true"><line class="contorno" x1="13" y1="50.5" x2="107" y2="50.5"/><line class="nucleo" x1="13" y1="50.5" x2="107" y2="50.5"/></svg>Border</div>
+    <div class="item" id="legRoads"><svg viewBox="0 0 120 101" aria-hidden="true"><line class="contorno" x1="13" y1="50.5" x2="107" y2="50.5"/><line class="nucleo" x1="13" y1="50.5" x2="107" y2="50.5"/></svg>Roads</div>
+    <div class="item" id="legJuneau"><svg viewBox="0 0 120 101" aria-hidden="true"><line class="contorno" x1="13" y1="50.5" x2="107" y2="50.5"/><line class="nucleo" x1="13" y1="50.5" x2="107" y2="50.5"/></svg>Juneau's roads</div>
   </div>
   <div id="creditoFonte" class="credito" data-qc-papel="credito">Source: Alaska DOT&amp;PF and FHWA, 2018</div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
@@ -158,7 +195,8 @@
   // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
   // Tempos em segundos DESTA cena (0 = 18,133 s do master), do words.json, no quadro seguinte ao início da
   // palavra (a regência os quantiza assim): 'Juneau' 18,914 → 0,8 · 'rest' 19,538 → 1,433 · 'continent' 19,946 →
-  // 1,813 (o ROADS; o início exato da palavra) · 'about' 21,69 → 3,567 (a régua entrava aqui até a 4ª versão) ·
+  // 1,813 (o item Roads da legenda; o início exato da palavra) · 'about' 21,69 → 3,567 (a régua entrava aqui até a
+  // 4ª versão) ·
   // 'forty-three' 21,943 → 3,833 · 'miles' 22,517 → 4,384 (a estrada chega ao meio em 4,465, e a régua entra aí) ·
   // 'north,' acaba em 23,23 → 5,097 · 'Cascade' 23,669 → 5,567 · 'stop.' 25,026 → 6,9.
   var CENA = {
@@ -198,16 +236,21 @@
       { id: "rotJuneau",  ref: "juneau",  lado: "centro",   dx: 0,    dy: 140, entra: 0.8 },   // embaixo do ponto
       { id: "rotEUA",     lnglat: [-136.68, 58.24], lado: "centro", dx: 0, dy: 0, entra: 1.433 },   // a sudoeste, longe da divisa
       { id: "rotCanada",  lnglat: [-133.16, 59.04], lado: "centro", dx: 0, dy: 0, entra: 1.433 },
-      // o nome do tipo de linha (identidade §6, "Estrada não se confunde com fronteira", opção D do Lucas): junto da
-      // malha e fora dela, em "continent" (1,813 s), e sai em 300 ms quando a estrada de Juneau começa (3,833 s),
-      // antes de o quadro passar de 6 elementos. Grafia proposta; a final é do redator-de-tela.
-      { id: "rotRoads",   lnglat: [-133.04, 59.54], lado: "centro", dx: 0, dy: 0, entra: 1.813, sai: 3.833 },
       // a régua entra quando a estrada chega ao meio, onde ela se ancora (em "miles", 4,384–4,717 s), e não em
       // "about": o rótulo de uma linha só entra com a linha (identidade §6)
       { id: "rotRegua",   ref: "regua",   lado: "esquerda", dx: -130, dy: 0,   entra: 4.465 },   // a oeste do meio da estrada
       { id: "rotCascade", ref: "anel",    lado: "esquerda", dx: -64,  dy: 0,   entra: 5.567 }
     ],
-    creditos: { mapa: "© MapTiler © OpenStreetMap contributors", fonteEntra: 4.465, base: 52, vao: 8, faixa: 1880 }
+    creditos: { mapa: "© MapTiler © OpenStreetMap contributors", fonteEntra: 4.465, base: 52, vao: 8, faixa: 1880 },
+    // a LEGENDA DAS CORES (identidade §6, "A legenda das cores, no lugar do nome na linha", Lucas, 01/10/2026: a B):
+    // presa à tela no canto de cima à direita (top 160, right 200), fora de toda linha em todo o movimento da câmera;
+    // cada item entra como rótulo junto com a sua linha (Border com os países, Roads em "continent", com a malha já
+    // na tela, e Juneau's roads com a estrada); a caixa cresce uma linha por item. Ela conta como UM elemento e sai
+    // inteira em 300 ms, de 5,267 a 5,567 s: no quadro de 5,567 s ela já está a zero, e Cascade Point (o anel e o
+    // nome) entra no seguinte, sem o quadro passar de 6. É o mais tarde que o teto deixa. linha, vao e respiro são
+    // os do CSS de #legenda. Grafia proposta; a final é do redator-de-tela.
+    legenda: { itens: [{ id: "legBorder", entra: 1.433 }, { id: "legRoads", entra: 1.813 }, { id: "legJuneau", entra: 3.833 }],
+               sai: 5.267, linha: 101, vao: 12, respiro: 16 }
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -599,15 +642,14 @@
   });
 
   // ── overlay ancorado por projeção ─────────────────────────────────────────────────────────────
-  // rótulo ao lado do ponto; entra com opacidade + 24 px de subida em 300 ms, ease-out (identidade §4.4); o que
-  // tem `sai` (o ROADS) se apaga em 300 ms, só na opacidade, sem se mover
-  function placeRotulo(r, entrada, saida) {
+  // rótulo ao lado do ponto; entra com opacidade + 24 px de subida em 300 ms, ease-out (identidade §4.4)
+  function placeRotulo(r, entrada) {
     var el = E(r.id); if (!el || !r.p) return;
     var p = map.project(r.p);
     var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
     el.style.left = (p.x + (r.dx || 0)).toFixed(1) + "px";
     el.style.top = (p.y + (r.dy || 0)).toFixed(1) + "px";
-    el.style.opacity = (entrada * saida).toFixed(3);
+    el.style.opacity = entrada.toFixed(3);
     el.style.transform = "translate(" + tx + ",-50%) translateY(" + ((1 - entrada) * 24).toFixed(1) + "px)";
   }
 
@@ -633,9 +675,24 @@
     map.setPaintProperty("estrada", "line-opacity", ve);
 
     // rótulos
-    CENA.rotulos.forEach(function (r) {
-      placeRotulo(r, eo(seg(t, r.entra, 0.3)), r.sai == null ? 1 : 1 - eio(seg(t, r.sai, 0.3)));
-    });
+    CENA.rotulos.forEach(function (r) { placeRotulo(r, eo(seg(t, r.entra, 0.3))); });
+
+    // a legenda das cores: a caixa aparece com o 1º item e sai inteira em 300 ms; cada item seguinte entra como
+    // rótulo (opacidade + 24 px de subida em 300 ms, ease-out) enquanto a caixa cresce a linha dele
+    var Lg = CENA.legenda, cxL = E("legenda");
+    if (cxL) {
+      var hL = 2 * Lg.respiro + Lg.linha;
+      Lg.itens.forEach(function (it, i) {
+        var v = eo(seg(t, it.entra, 0.3)), el = E(it.id);
+        if (i > 0) hL += (Lg.linha + Lg.vao) * v;
+        if (el) {
+          el.style.opacity = (i === 0 ? 1 : v).toFixed(3);   // o 1º aparece com a caixa (a opacidade é dela)
+          el.style.transform = "translateY(" + ((1 - v) * 24).toFixed(1) + "px)";
+        }
+      });
+      cxL.style.height = hL.toFixed(1) + "px";
+      cxL.style.opacity = (eo(seg(t, Lg.itens[0].entra, 0.3)) * (1 - eio(seg(t, Lg.sai, 0.3)))).toFixed(3);
+    }
 
     // o ponto de Juneau
     var pj = map.project(PONTO_JUNEAU), dotJ = E("pontoJuneau");
