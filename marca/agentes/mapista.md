@@ -124,6 +124,8 @@ necessidade.
 - **Nenhum rótulo sobre uma linha do mapa** (identidade §6): a pílula não passa por cima nem encosta na divisa, na
   malha, na estrada ou na rota. Rótulo no caminho de uma linha muda de lugar; a linha, não. Confira em cada quadro
   que você recebe, do começo ao fim do movimento da câmera.
+- **A referência aprovada** é a s03 do Juneau (render de 30/09/2026, 22:18; identidade §6, "A cena de mapa de
+  referência"). O Lucas: "o mapa está bom agora". Parta dela em medidas, hierarquia e créditos.
 - **Fronteira disputada**: linha tracejada e rótulo `DISPUTED`. Mostra a linha de controle de fato e nunca
   adota a reivindicação de um lado.
 - As cores das camadas vêm de `marca/tokens.css`, lidas pela função `tok()` do exemplar

@@ -379,6 +379,10 @@ texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para tod
   crédito. Os rótulos vão sempre por cima das linhas, e quem fica no caminho de uma divisa muda de lugar: a
   divisa é geografia e não se move. O que vale para a divisa vale para as outras linhas do mapa (a malha, a
   estrada, a rota): a pílula não fica sobre elas.
+- **A cena de mapa de referência** é a s03 do Juneau, no render de 30/09/2026, 22:18 (carimbo `ad0970a2…`, 2160p),
+  com a divisa nova e os rótulos fora das linhas. O Lucas viu a prévia com a narração e disse: "o mapa está bom
+  agora". Ela mostra o tratamento da base, a malha do continente (11 px sobre 24 px), a estrada protagonista (14 px
+  sobre 26 px), o anel, as pílulas e os créditos empilhados. As outras cenas de mapa partem dela.
 
 **Bases aceitas** (licença conferida para uso comercial):
 - escala de mundo e continente: **NASA Blue Marble**, domínio público;
