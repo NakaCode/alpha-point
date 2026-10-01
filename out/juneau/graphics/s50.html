@@ -116,6 +116,46 @@
   O CONTRATO: var DUR = 23.6 (o qc-janela lê o número escrito); __renderAt(t) determinístico e à prova de erro;
   __prepararCaptura; __ready (o mapa); __aguardarMapa; __fotosProntas (fontes, a foto e a página). Nada de relógio,
   sorteio, @keyframes, transition ou SMIL. O RIG é a cópia inteira de templates-cena/_rig.js (pré-v1, 7ab9543).
+  A BASE ANDA LISA E A ÚLTIMA ATUALIZAÇÃO DOS TILES (correção 7 do Claude central, 01/10/2026: os dois blocos da s12 e
+  da s42, da correção 6, em todas as cenas de mapa, para o vídeo inteiro pintar a base de um jeito só):
+    · o MapLibre 4.7.1 desenha a base raster alinhada a pixel inteiro quando o mapa não está "em movimento"
+      (aligned = !painter.options.moving), e com jumpTo ele nunca está: com a câmera andando, a base anda em degraus de
+      1 px e treme meio pixel contra as linhas e os rótulos, que andam lisos. Agora toda pintura vai como "em movimento"
+      (o painter.render recebe moving: true; a cena falha se o MapLibre não tiver essa peça). Essa opção só mexe no
+      alinhamento da base e do relevo sombreado (as duas únicas leituras dela no MapLibre desta cena).
+      Medido com tile (os quadros 608 a 652 em ordem, como o render, num recorte de 600 × 600 px só de base): a câmera
+      daqui acelera de 0 a 17 px por quadro e volta, e a régua é o passo previsto pela câmera da cena; nos 18 quadros em
+      que o centro do recorte anda menos de 3 px, o passo da base fica a 0,05 px do previsto (mediana); no render de
+      antes, a 0,32 px. O máximo, 7,2 px nos dois, é de um quadro em que a previsão sem mapa não acompanha a câmera.
+    · um tile novo da base conta como "entrando em esmaecimento" até a primeira pintura dele, e enquanto isso o MapLibre
+      deixa pintados por cima dele os filhos já carregados (SourceCache.update); com o esmaecimento de 0 ms, eles só saem
+      na atualização seguinte, que nenhum movimento pede. Na s42, isso deu um quadro com as bordas no tom do nível de
+      cima, quando o nível da base desceu. Agora, com os tiles carregados, o __aguardarMapa o atualiza mais duas vezes
+      no mesmo lugar (um jumpTo para o centro em que ele está), cada uma com a pintura dela, e de novo, até 6, enquanto
+      a conferência não fechar; ela só conta depois da 2ª. A 1ª pinta os tiles que acabaram de chegar, e a 2ª tira os
+      filhos. E a contagem recomeça do zero quando um tile volta a carregar (a espera da s44, na correção 7; nesta cena,
+      desde a correção 8): a 1ª podia sair antes de o quadro pedir os tiles dele. O nivelUnico, abaixo, ainda aceita
+      dois níveis vizinhos carregados, caso que agora não deve mais aparecer.
+      Medido com tile, nos mesmos quadros: a base fica num nível só em todos.
+  O DEGRAU DE FOCO NA SAÍDA DE 8,5 (correção 8 do Claude central, 01/10/2026, item 2): a câmera fica parada no zoom 8,5
+  exato de 0 a 20,5 s (os quadros 0 a 615), e aí a base mostra o nível 9 reduzido a 0,71. A textura da base é amostrada
+  pelo nível de mipmap mais perto (LINEAR_MIPMAP_NEAREST), e reduzida a 0,71 ela fica bem na fronteira entre o nível 0
+  e o 1: no patamar, saía o 1, macio. Na aproximação do b6, o zoom passa de 8,5 e o 9 vai ao nível 0 (nítido) no quadro
+  617, com o zoom em 8,5008: a base inteira ficava nítida num quadro só (+80 % na tela inteira). Agora uma camada da
+  mesma base presa ao nível 8 (maxzoom 8) fica a 1 por cima dela no patamar inteiro (o 8 ampliado 1,41 vez, macio como
+  a base saía) e sai aos poucos na aproximação do b6, pelo tempo, numa curva suave de 20,533 s (o quadro 616, o 1º com
+  a câmera andando) a 21,5 s (o 645, quando ela para), no máximo 0,052 por quadro (CENA.niveis). Pelo zoom, a saída se
+  juntava nos últimos 4 quadros (o zoom acelera), e a tela ficava de 10 a 17 % mais nítida por quadro. Depois de 21,5 s
+  ela fica desligada e não pede tile. A câmera, o zoom e o quadro não mudam. Os nomes das cidades entram em 21,5 s, com a câmera já parada (a 0,15 px
+  do lugar no quadro 645 e parada do 646 em diante): nenhum rótulo anda com o mapa nesta cena, e o texto liso da s03 e
+  da s15 não veio para cá.
+  MEDIDO COM TILE pelo caminho do render (o quadroJS do renderizar.mjs e 100 ms de parede antes da foto), nos quadros 560
+  a 707 em ordem, pela nitidez (a média do |laplaciano| do cinza) da tela inteira e de cada quadrante, de um quadro para o
+  outro: no 617, +0,0 % (no MP4 da correção 7, +80 % na tela e de 77 a 96 % em três quadrantes); na aproximação (618 a
+  645), no máximo +6,5 % por quadro na tela inteira. Nos quadrantes, o de baixo à esquerda muda até 25 % por quadro
+  de 627 a 631, e o MP4 da correção 7 muda o mesmo ali (até 24 %): é a terra nova que entra com a câmera a 75–117 px
+  por quadro. Pela saída por zoom (a 1ª tentativa, medida assim), a tela inteira subia de 10 a 17 % por quadro de 627 a
+  630. A base fica num nível só em todos os quadros.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -396,6 +436,10 @@
     //    regência (b6: "the camera does not move", "north up"), declarado no relato
     camera: { lng: -137.5400, lat: 58.7000, zoom: 8.5, bearing: 0, pitch: 0 },
     cameraB6: { lng: -135.6600, lat: 58.9800, zoom: 9.15, bearing: 20, de: 20.5, dura: 1.0 },
+    // ── o degrau de foco na saída de 8,5 (O DEGRAU DE FOCO NA SAÍDA DE 8,5, no cabeçalho): a camada presa ao nível 8 fica a 1
+    //    com o zoom em 8,5 ou acima (o patamar inteiro, de 0 a 20,533) e sai pelo tempo, em curva suave, de sai[0] a sai[1]
+    //    (a aproximação do b6, do 1º quadro em que a câmera anda ao quadro em que ela para)
+    niveis: [{ nivel: 8, sai: [20.533, 21.5] }],
 
     // ── os cortes de regime (corte seco): a foto do b3 cobre o palco do mapa, que não se move nem muda de estado
     cortes: { foto: 9.333, mapa: 12.8 },
@@ -727,8 +771,30 @@
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
     // sem transição: a pintura de cada quadro é a do __renderAt dele (O ESTILO SEM TRANSIÇÃO, no cabeçalho)
-    return { version: 8, transition: { duration: 0, delay: 0 }, sources: { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } },
+    var s = { version: 8, transition: { duration: 0, delay: 0 }, sources: { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } },
       layers: [{ id: "base", type: "raster", source: "base", paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+    // O DEGRAU DE FOCO NA SAÍDA DE 8,5 (cabeçalho): a camada presa ao nível (CENA.niveis), logo acima da base, desligada
+    // fora da janela dela; a opacidade não tem transição, para valer no quadro em que o __renderAt a pede
+    CENA.niveis.forEach(function (N) {
+      s.sources["base-z" + N.nivel] = { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: N.nivel };
+      s.layers.push({ id: "base-z" + N.nivel, type: "raster", source: "base-z" + N.nivel, layout: { visibility: "none" },
+        paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0, "raster-opacity": 0,
+                 "raster-opacity-transition": { duration: 0, delay: 0 } } });
+    });
+    return s;
+  }
+  // O DEGRAU DE FOCO NA SAÍDA DE 8,5 (cabeçalho): a opacidade da camada presa: 0 com o zoom abaixo de nivel + 0,5; acima,
+  // 1 até sai[0] e daí até 0 em sai[1], numa curva suave pelo tempo (o zoom acelera na aproximação, e pelo zoom a saída
+  // se juntava nos últimos quadros); desligada, ela não pede tile
+  var nivelAntes = {};
+  function nivelDaBase(z, t) {
+    CENA.niveis.forEach(function (N) {
+      var u = cl((t - N.sai[0]) / (N.sai[1] - N.sai[0]), 0, 1);
+      var a = z < N.nivel + 0.5 ? 0 : 1 - u * u * (3 - 2 * u), id = "base-z" + N.nivel;
+      var vis = a > 0 ? "visible" : "none", k = vis + "|" + a.toFixed(4);
+      if (nivelAntes[id] === k) return;
+      map.setLayoutProperty(id, "visibility", vis); map.setPaintProperty(id, "raster-opacity", +a.toFixed(4)); nivelAntes[id] = k;
+    });
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -841,6 +907,12 @@
     return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
   }
   window.map = map;
+  // A BASE ANDA LISA (cabeçalho): toda pintura vai como "em movimento", para a base não se alinhar a pixel inteiro
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
 
   // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
   window.__errosMapa = 0;
@@ -949,6 +1021,7 @@
     if (!mapaCarregado || !TELA) return;
     t = t + 0.0005;   // meio milissegundo: os tempos são quadros arredondados a 3 casas (2,267 = 68/30)
     map.jumpTo(cameraAt(t));
+    nivelDaBase(map.getZoom(), t);
     var C = CENA, foto = t >= C.cortes.foto && t < C.cortes.mapa;
     var sai2B = saida(t, C.sai2B);
 
@@ -1118,10 +1191,20 @@
           return nivelUnico();
         } catch (e) { return false; }
       };
-      var t0 = performance.now(), seguidas = 0;
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
       (function tick() {
         barrarTileComErro();
-        seguidas = pronto() ? seguidas + 1 : 0;
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        // A ÚLTIMA ATUALIZAÇÃO DOS TILES (cabeçalho): com os tiles carregados, o mapa se atualiza mais duas vezes no mesmo
+        // lugar, cada uma com a pintura dela (a 1ª pinta os tiles que acabaram de chegar; a 2ª tira os filhos que o
+        // MapLibre guardou para o esmaecimento deles), e de novo, até 6, enquanto a conferência não fechar; ela só conta
+        // depois da 2ª. E recomeça do zero quando um tile volta a carregar: a 1ª podia sair antes de o quadro pedir os
+        // tiles dele, e aí só uma caía depois deles
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.jumpTo({ center: map.getCenter() }); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
         if (window.__erroCena || seguidas >= 2) return res(true);
         if (performance.now() - t0 > teto) {
           window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;

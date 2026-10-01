@@ -69,6 +69,96 @@
   transition ou SMIL. O RIG é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
   CÂMERA FINAL: lng -141.22966, lat 60.14827, zoom 6.3, bearing 0, pitch 0 (Wasilla em (1000, 750), Juneau em
   (2685, 1484)).
+  A BASE ANDA LISA E A ÚLTIMA ATUALIZAÇÃO DOS TILES (correção 7 do Claude central, 01/10/2026: os dois blocos da s12 e
+  da s42, da correção 6, em todas as cenas de mapa, para o vídeo inteiro pintar a base de um jeito só):
+    · o MapLibre 4.7.1 desenha a base raster alinhada a pixel inteiro quando o mapa não está "em movimento"
+      (aligned = !painter.options.moving), e com jumpTo ele nunca está: com a câmera andando, a base anda em degraus de
+      1 px e treme meio pixel contra as linhas e os rótulos, que andam lisos. Agora toda pintura vai como "em movimento"
+      (o painter.render recebe moving: true; a cena falha se o MapLibre não tiver essa peça). Essa opção só mexe no
+      alinhamento da base e do relevo sombreado (as duas únicas leituras dela no MapLibre desta cena).
+      Medido com tile (os quadros 80 a 98 em ordem, como o render, num recorte de 720 × 720 px só de base): o passo da
+      base fica a 0,04 px da média dos dois passos vizinhos (mediana; máximo 0,24); no render de antes, a 0,26 px
+      (máximo 1,02).
+    · um tile novo da base conta como "entrando em esmaecimento" até a primeira pintura dele, e enquanto isso o MapLibre
+      deixa pintados por cima dele os filhos já carregados (SourceCache.update); com o esmaecimento de 0 ms, eles só saem
+      na atualização seguinte, que nenhum movimento pede. Na s42, isso deu um quadro com as bordas no tom do nível de
+      cima, quando o nível da base desceu. Agora, quando o mapa fica pronto, o __aguardarMapa o atualiza mais duas vezes
+      no mesmo lugar (um jumpTo para o centro em que ele está), cada uma com a pintura dela, e só então confere de novo:
+      a 1ª pinta os tiles que acabaram de chegar, e a 2ª tira os filhos. As duas começam quando os tiles estão carregados,
+      e não quando a conferência fecha, e se repetem, até 6, enquanto ela não fechar: o nivelUnico desta cena, abaixo, só
+      aceita um nível à vista, e com os filhos guardados ele não fecharia nunca (na troca de 9,5, o quadro 265 esgotava
+      os 90 s). E recomeçam do zero quando um tile volta a carregar (a espera da s44, na correção 7): a 1ª podia sair
+      antes de o quadro pedir os tiles dele, e na s42 o render saiu assim, com os filhos à vista no quadro 132.
+      Medido com tile, nos quadros 60 a 292: a base fica num nível só em todos.
+  A BASE NO ZOOM INTEIRO (correção 7, item 6b do Claude central; achado na conta sem tile das cenas de mapa): a câmera
+  chega ao zoom 10 no quadro 75 e desliza para leste no 10 exato, de 84 a 144, de 0 a 29 px por quadro. Com a base em
+  1:1 e a câmera reta, toda a tela amostra os texels no mesmo ponto, e esse ponto muda com o deslizar: a base ficava
+  nítida (no centro dos texels) ou macia (entre eles) de um quadro para o outro. No render da correção 7 (lote B, com o
+  moving: true), a nitidez da tela pulava de 3 a 18 % por quadro, para cima e para baixo, de 86 a 145. Antes, com a
+  base alinhada a pixel, ela ficava sempre no centro dos texels, mas andava em degraus de 1 px contra as linhas.
+  Agora, com o zoom a 0,0001 ou menos do inteiro e a câmera reta, o centro da câmera vai para um ponto a 0,5 px de um
+  pixel inteiro da base em x e a 0 em y (CENA.fase): no deslizar, a amostragem fica no mesmo ponto dos texels em todo
+  quadro, e a base anda com as linhas e os rótulos, que vão com a mesma câmera, em passos de pixel inteiro (nunca mais
+  que 0,5 px de onde a câmera estava). Ele vai com a câmera parada, de 75 a 84 (de 2,5 a 2,8 s), e na saída para o
+  recuo volta ao centro da câmera enquanto o zoom se afasta do 10 de 0,002 a 0,006 (253 e 254). A chegada ao 10 fica
+  como estava no render da correção 7.
+  O (0,5; 0): é o patamar com a saída mais lisa. Nos últimos quadros em que o zoom chega ao inteiro ou sai dele, a
+  amostragem passa de variar pela tela a ficar no mesmo ponto em toda ela, e o ponto de cada quadrante corre pelo texel
+  nesses quadros, seja qual for o centro. Pela conta sem render (os tiles do nível 10 da MapTiler, com a interpolação
+  bilinear e a deriva da tela de 3840 px), o menor salto por quadrante na saída vem com 0,5 px no eixo da tela larga,
+  onde a nitidez quase não muda perto do 0,5, e 0 no outro; a conta acertou a saída do render da correção 7 (16,4 %
+  previstos, 16,5 % medidos). Nesse patamar, a base tem 0,724 da nitidez do centro dos texels, e a amostragem que varia
+  pela tela, 0,66 a 0,68. Tentativas que não ficaram: o centro no pixel inteiro já na chegada (a chegada saltava 20 % em
+  dois quadros na tela) e o 0,22 nos dois eixos na chegada (até 15 % nos quadrantes).
+  MEDIDO COM TILE pelo caminho do render (o quadroJS do renderizar.mjs e 100 ms de parede antes da foto), nos quadros 0
+  a 300 em ordem, pela nitidez da tela inteira e de cada quadrante (1920 × 1080), de um quadro para o outro:
+    · no deslizar (84 a 144): nenhum passo acima de 2 % que não seja o preenchimento do distrito entrando (138 a 144,
+      de −3 a −6 % por quadro, o contraste caindo); no render da correção 7, de 3 a 18 % por quadro;
+    · a ida da fase, com a câmera parada (75 a 84): no máximo 4 % por quadro;
+    · a chegada (70 a 74): no máximo 8,2 % num quadrante (8,0 % no render da correção 7);
+    · a saída para o recuo (252 a 262): no máximo 6,2 % num quadrante (16,5 % no render da correção 7, no 254);
+    · a base num nível só em todos os quadros.
+  O DEGRAU DE FOCO NA TROCA DE NÍVEL (correção 7 do Claude central, 01/10/2026, item 5; a classe da s42 q386):
+    · na saída, a câmera abre rápido e a base troca de nível quatro vezes (do 10 para o 9 no quadro 265, do 9 para o 8 no
+      272, do 8 para o 7 no 278 e do 7 para o 6 no 287), e a nitidez das regiões de base caía de 24 a 63 % num quadro só
+      em cada uma (medido no MP4 de antes). Agora a camada presa ao nível de baixo entra antes de cada troca: a do 9 de
+      10,0 a 9,5 (12 quadros), a do 8 de 9,4 a 8,5 (6), a do 7 de 8,4 a 7,5 (5) e a do 6 de 7,4 a 6,5 (8), só dentro da
+      janela de 8,3 a 9,7 s: na entrada da cena, o zoom sobe pelos mesmos valores, e ali elas ficam desligadas.
+      Como na s42 e na s59, a camada tem o mesmo tratamento da base, fica desligada (não pede tile) fora da fusão e sai
+      quando a base chega ao nível dela (é o mesmo nível). A opacidade dela não tem transição.
+      Medido com tile, em ordem, de 250 a 292, pela média geométrica da nitidez de quatro regiões só de base (as faixas
+      da esquerda, da direita e do alto e o meio à direita): nos quadros da troca, a nitidez caía 54, 53, 77 e 62 % num
+      quadro (265, 272, 278 e 287); agora muda +5, +9, +9 e +2 %. A maior queda de um quadro é de 14 % (antes, 77 %), e a
+      soma das quedas no trecho vai de 279 % para 99 %. As faixas sozinhas ainda mudam muito de um quadro para o outro:
+      com a câmera abrindo a até 300 px por quadro, entra terra nova nas bordas.
+  A TROCA QUE SOBE NA ENTRADA (correção 8 do Claude central, 01/10/2026, item 4): na entrada, o zoom sobe de 7,3 a 10 e
+  a base troca de nível três vezes, subindo (do 7 para o 8 no quadro 20, do 8 para o 9 no 37 e do 9 para o 10 no 49). O
+  nível de baixo sai ampliado 1,41 vez (macio) e o de cima, reduzido a 0,71 (nítido): a base ficava de 1,8 a 2,4 vezes
+  mais nítida num quadro só (a reconferência do lote B). As fusões da correção 7 só valiam na saída (a janela de 8,3 a
+  9,7 s). Agora, também na janela de 0 a 2,6 s, a camada presa ao nível de baixo está a 1 no quadro da troca (o mesmo
+  nível que a base mostrava: a troca não se vê) e sai aos poucos até o zoom 'de': a do 7 até 8,9 (do quadro 20 ao 39),
+  a do 8 até 9,9 (do 37 ao 59) e a do 9 até 10,0 (do 49 ao 73; no 74, a câmera chega ao 10). A do 7 e a do 8 passam da
+  troca seguinte: com o zoom andando até 0,1 por quadro (no 37), uma saída que acabasse antes dela tiraria 12 % da
+  camada por quadro, e assim tira no máximo 7 %. Elas se empilham na ordem dos níveis (a de nível mais baixo por cima).
+  As camadas são as mesmas da saída (uma por nível; em cada quadro só uma janela vale), e as fusões da saída não mudam.
+  MEDIDO COM TILE pelo caminho do render (o quadroJS do renderizar.mjs e 100 ms de parede antes da foto), nos quadros 0 a
+  300 em ordem, pela nitidez (a média do |laplaciano| do cinza) da tela inteira e de cada quadrante, de um quadro para o
+  outro: de 5 a 80, o maior passo da tela inteira é de 6,0 % (o 74, a chegada ao 10, como no render de antes) e o de um
+  quadrante, −11 % (o 42, a base ampliando com o zoom; no MP4 de antes, −16 % ali). No MP4 da correção 7, na mesma
+  medida: +131 % no 20, +69 % no 37 e +76 % no 49. Na saída (263 a 292), os passos são os do MP4 aprovado (no 272, +11,5
+  % agora e +11,8 % lá), e o deslizar (80 a 145) fica abaixo de 4 % na tela. A base fica num nível só em todos os
+  quadros.
+  A FAIXA DO CRÉDITO (correção 8, item 5; identidade §6, "Nenhum rótulo sobre a divisa", e §4.2, a faixa de y > 1880 só
+  do crédito): a Parks e a Glenn (estrada-anchorage-willow) desciam até o pé do quadro e passavam por trás das duas
+  pílulas de crédito e no vão de 8 px entre elas, de 2,8 a 8,6 s, com a câmera parada de 5,2 a 8,4 s; o preenchimento
+  do matsu-borough descia sob a pílula Source, de 4,7 a 8,7 s. Agora as duas são cortadas, na tela e em todo quadro, na
+  câmera do quadro, acima da faixa de y = 1880 na largura inteira: o eixo da Parks em y = 1852 (com o contorno de 24 px,
+  ela acaba em 1864) e o borough em 1864, 16 px acima da faixa (CENA.faixa, cortarNaFaixa). Na tela, a Parks acaba ali
+  e o borough tem a borda de baixo reta nessa altura, como numa moldura. A malha, a divisa e a estrada de Juneau não
+  chegam à faixa (conferido sem tile, quadro a quadro, nos 398 quadros), e não são cortadas.
+  Conferido sem tile, quadro a quadro, nos 398 quadros: nenhuma linha nem território aceso na faixa de x 200 a 1720, y
+  de 1880 para baixo (antes, a Parks de 76 a 263, 115 quadros com a câmera parada, e o borough de 137 a 260, 111). Com
+  tile, nos quadros 152 e 200, a Parks acaba acima da pílula Source e o borough tem a borda reta em 1864.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -242,7 +332,24 @@
 
   // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
   var CENA = {
+    // ── o degrau de foco na troca de nível (O DEGRAU DE FOCO NA TROCA DE NÍVEL, no cabeçalho): as quatro trocas da saída (9,5 no quadro 265, 8,5 no 272, 7,5 no 278 e 6,5 no 287), com a câmera abrindo rápido;
+    //    cada camada presa entra do zoom 'de' até a troca dela, só dentro da janela 'em' (s): na entrada da cena o zoom
+    //    sobe pelos mesmos valores, e ali elas ficam desligadas
+    niveis: [{ nivel: 9, de: 10.0, em: [8.3, 9.7] }, { nivel: 8, de: 9.4, em: [8.3, 9.7] }, { nivel: 7, de: 8.4, em: [8.3, 9.7] }, { nivel: 6, de: 7.4, em: [8.3, 9.7] },
+    // ── e as três trocas da entrada, que SOBEM (A TROCA QUE SOBE NA ENTRADA, no cabeçalho): 7,5 no quadro 20, 8,5 no 37 e 9,5 no
+    //    49; a camada presa ao nível de baixo está a 1 quando a base troca (o mesmo nível que ela mostrava) e sai até o zoom
+    //    'de', passando da troca seguinte (as do 7 e do 8 se sobrepõem à seguinte); só dentro da janela 'em' (s). As
+    //    camadas são as mesmas da saída (uma por nível), e em cada quadro só uma janela vale
+             { nivel: 7, de: 8.9, em: [0, 2.6] }, { nivel: 8, de: 9.9, em: [0, 2.6] }, { nivel: 9, de: 10.0, em: [0, 2.6] }],
     duracao: 13.267,                                 // espelho.json › s33 › dur
+    // ── a faixa do crédito (A FAIXA DO CRÉDITO, no cabeçalho): a Parks (o eixo; o contorno de 24 px acaba 12 px abaixo) e
+    //    o preenchimento do borough cortados na tela acima destas linhas, para pararem a 16 px da faixa de y = 1880
+    faixa: { yLinha: 1852, yTerritorio: 1864 },
+    // ── a base no zoom inteiro (A BASE NO ZOOM INTEIRO, no cabeçalho): com o zoom a 0,0001 ou menos de um inteiro e a
+    //    câmera reta, o centro vai para um ponto da base a valor[0] px (x) e valor[1] px (y) de um pixel inteiro: aos
+    //    poucos e com a câmera parada, de janela[0] a janela[1] (s); e, na saída, volta ao centro da câmera enquanto o zoom
+    //    se afasta do inteiro de solta[0] a solta[1]
+    fase: { valor: [0.5, 0], janela: [2.5, 2.8], solta: [0.002, 0.006] },
     largura: 3840, altura: 2160,
     perfil: "maptiler", relevo: false,
 
@@ -472,6 +579,15 @@
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
     var s = { version: 8, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
       paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+    // O DEGRAU DE FOCO NA TROCA DE NÍVEL (cabeçalho): as camadas presas a cada nível (CENA.niveis), logo acima da base,
+    // desligadas fora da janela delas; a opacidade não tem transição, para valer no quadro em que o __renderAt a pede
+    CENA.niveis.forEach(function (N) {
+      if (fontes["base-z" + N.nivel]) return;   // uma camada por nível: a entrada e a saída usam a mesma
+      fontes["base-z" + N.nivel] = { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: N.nivel };
+      s.layers.push({ id: "base-z" + N.nivel, type: "raster", source: "base-z" + N.nivel, layout: { visibility: "none" },
+        paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0, "raster-opacity": 0,
+                 "raster-opacity-transition": { duration: 0, delay: 0 } } });
+    });
     if (CENA.relevo && P.dem) {
       fontes.dem = { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding };
       s.terrain = { source: "dem", exaggeration: (P.terreno && P.terreno.exagero) || 1.25 };
@@ -587,6 +703,12 @@
     return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
   }
   window.map = map;
+  // A BASE ANDA LISA (cabeçalho): toda pintura vai como "em movimento", para a base não se alinhar a pixel inteiro
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
 
   // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
   window.__errosMapa = 0;
@@ -661,10 +783,102 @@
   }
 
   var ultimoRaio = null;
+  // O DEGRAU DE FOCO NA TROCA DE NÍVEL (cabeçalho): a opacidade de cada camada presa pelo zoom, de 0 (zoom "de") a 1 (zoom
+  // nivel + 0,5), e 0 abaixo da troca ou fora da janela "em"; desligada, ela não pede tile
+  var nivelAntes = {};
+  function nivelDaBase(t, z) {
+    var porId = {};
+    CENA.niveis.forEach(function (N) {
+      var fora = (N.em && (t < N.em[0] || t > N.em[1])) || z < N.nivel + 0.5;
+      var a = fora ? 0 : Math.max(0, Math.min(1, (N.de - z) / (N.de - N.nivel - 0.5))), id = "base-z" + N.nivel;
+      porId[id] = Math.max(porId[id] || 0, a);   // a entrada e a saída usam a mesma camada; fora da janela, 0
+    });
+    Object.keys(porId).forEach(function (id) {
+      var a = porId[id], vis = a > 0 ? "visible" : "none", k = vis + "|" + a.toFixed(4);
+      if (nivelAntes[id] === k) return;
+      map.setLayoutProperty(id, "visibility", vis); map.setPaintProperty(id, "raster-opacity", +a.toFixed(4)); nivelAntes[id] = k;
+    });
+  }
+  // A FAIXA DO CRÉDITO (cabeçalho): a Parks e o preenchimento do borough cortados, na tela, acima da faixa do crédito
+  // (y = CENA.faixa.y, a tela inteira de largura). O corte é feito a cada quadro, na câmera do quadro: cada vértice vai à
+  // tela (map.project), a geometria se corta na linha (Sutherland–Hodgman no polígono; a linha, em trechos), e o ponto de
+  // corte volta ao mapa (map.unproject); os vértices de cima continuam os do arquivo
+  function cortarNaFaixa(geo, yMax) {
+    var pr = function (ll) { var q = map.project(ll); return [q.x, q.y]; };
+    var de = function (xy) { var l = map.unproject(xy); return [l.lng, l.lat]; };
+    var corte = function (a, b, pa, pb) { var u = (yMax - pa[1]) / (pb[1] - pa[1]); return de([pa[0] + u * (pb[0] - pa[0]), yMax]); };
+    function linha(cs) {
+      var out = [], cur = [], pa = null, ia = false;
+      for (var i = 0; i < cs.length; i++) {
+        var pb = pr(cs[i]), ib = pb[1] <= yMax;
+        if (i > 0 && ib !== ia) { var X = corte(cs[i - 1], cs[i], pa, pb); if (ib) cur = [X]; else { cur.push(X); if (cur.length > 1) out.push(cur); cur = []; } }
+        if (ib) cur.push(cs[i]);
+        pa = pb; ia = ib;
+      }
+      if (cur.length > 1) out.push(cur);
+      return out;
+    }
+    function anel(cs) {
+      var n = cs.length - 1, out = [];   // o anel do GeoJSON repete o 1º vértice no fim
+      if (n < 3) return null;
+      var P_ = []; for (var i = 0; i < n; i++) P_.push(pr(cs[i]));
+      for (var j = 0; j < n; j++) {
+        var k = (j + n - 1) % n, ic = P_[j][1] <= yMax, ip = P_[k][1] <= yMax;
+        if (ic) { if (!ip) out.push(corte(cs[k], cs[j], P_[k], P_[j])); out.push(cs[j]); }
+        else if (ip) out.push(corte(cs[k], cs[j], P_[k], P_[j]));
+      }
+      if (out.length < 3) return null;
+      out.push(out[0]);
+      return out;
+    }
+    var feats = (geo.type === "FeatureCollection" ? geo.features : [geo]).map(function (f) {
+      var g = f.geometry, ng = null;
+      if (g.type === "LineString" || g.type === "MultiLineString") {
+        var ls = []; (g.type === "LineString" ? [g.coordinates] : g.coordinates).forEach(function (c) { ls = ls.concat(linha(c)); });
+        ng = ls.length ? { type: "MultiLineString", coordinates: ls } : null;
+      } else if (g.type === "Polygon" || g.type === "MultiPolygon") {
+        var ps = [];
+        (g.type === "Polygon" ? [g.coordinates] : g.coordinates).forEach(function (pol) {
+          var ext = anel(pol[0]); if (!ext) return;
+          var r = [ext]; for (var h = 1; h < pol.length; h++) { var b = anel(pol[h]); if (b) r.push(b); }
+          ps.push(r);
+        });
+        ng = ps.length ? { type: "MultiPolygon", coordinates: ps } : null;
+      }
+      return { type: "Feature", properties: f.properties || {}, geometry: ng || { type: "MultiLineString", coordinates: [] } };
+    });
+    return { type: "FeatureCollection", features: feats };
+  }
+  var faixaAntes = {};
+  function cortarAcesas(cam, t) {
+    var F = CENA.faixa, k = [cam.center[0] !== undefined ? cam.center[0] : cam.center.lng, cam.center[1] !== undefined ? cam.center[1] : cam.center.lat,
+      cam.zoom, cam.bearing || 0, cam.pitch || 0].map(function (v) { return (+v).toFixed(9); }).join("|");
+    [["estrada", ESTRADA, F.yLinha], ["borough", BOROUGH, F.yTerritorio]].forEach(function (x) {
+      if (faixaAntes[x[0]] === k) return;
+      var src = map.getSource(x[0]); if (!src || !x[1]) return;
+      src.setData(cortarNaFaixa(x[1], x[2])); faixaAntes[x[0]] = k;
+    });
+  }
+  // A BASE NO ZOOM INTEIRO (cabeçalho): com o zoom perto do inteiro e a câmera reta, o centro da câmera vai para um
+  // ponto a CENA.fase.valor px de um pixel inteiro da base: a base fica em 1:1 com a amostragem no mesmo ponto dos texels
+  // em toda a tela. Entra com a câmera parada (CENA.fase.janela) e sai pelo zoom (CENA.fase.solta)
+  function pixelInteiro(c, t) {
+    var n = Math.round(c.zoom), d = Math.abs(c.zoom - n), Fa = CENA.fase, J = Fa.janela, L = Fa.solta;
+    if (d >= L[1] || Math.abs(c.pitch || 0) > 1e-6 || Math.abs(c.bearing || 0) > 1e-6) return c;
+    var wt = cl((t - J[0]) / (J[1] - J[0]), 0, 1), wd = cl((L[1] - d) / (L[1] - L[0]), 0, 1), w = Math.min(wt, wd);
+    w = w * w * (3 - 2 * w);
+    if (w <= 0) return c;
+    // do lado do pixel inteiro em que ele já está: o caminho não passa pelo centro dos texels
+    var ws = 512 * Math.pow(2, n), m = merc(c.center), x = m[0] * ws, y = m[1] * ws, rx = Math.round(x), ry = Math.round(y);
+    x += w * (rx + (x >= rx ? Fa.valor[0] : -Fa.valor[0]) - x); y += w * (ry + (y >= ry ? Fa.valor[1] : -Fa.valor[1]) - y);
+    return { center: desmerc([x / ws, y / ws]), zoom: d < 1e-4 ? n : c.zoom, bearing: c.bearing || 0, pitch: c.pitch || 0 };
+  }
   function aplicar(t) {
     if (!mapaCarregado) return;
-    var cam = cameraAt(t);
+    var cam = pixelInteiro(cameraAt(t), t);
     map.jumpTo(cam);
+    nivelDaBase(t, map.getZoom());
+    cortarAcesas(cam, t);
     var qW = map.project(PWA), qJ = map.project(PJ), qA = map.project(PANEL);
 
     // ── o vale, a Parks e a malha ──
@@ -767,10 +981,21 @@
           return nivelUnico();
         } catch (e) { return false; }
       };
-      var t0 = performance.now(), seguidas = 0;
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
       (function tick() {
         barrarTileComErro();
-        seguidas = pronto() ? seguidas + 1 : 0;
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        // A ÚLTIMA ATUALIZAÇÃO DOS TILES (cabeçalho): com os tiles carregados, o mapa se atualiza mais duas vezes no mesmo
+        // lugar, cada uma com a pintura dela (a 1ª pinta os tiles que acabaram de chegar; a 2ª tira os filhos que o
+        // MapLibre guardou para o esmaecimento deles), e de novo, até 6, enquanto a conferência não fechar; ela só conta
+        // depois da 2ª. Começa pelo carregado, não pela conferência: os filhos guardados dão dois níveis à vista, e o
+        // nivelUnico, abaixo, não fecharia nunca. E recomeça do zero quando um tile volta a carregar: a 1ª podia sair antes
+        // de o quadro pedir os tiles dele, e aí só uma caía depois deles
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.jumpTo({ center: map.getCenter() }); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
         if (window.__erroCena || seguidas >= 2) return res(true);
         if (performance.now() - t0 > teto) {
           window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;

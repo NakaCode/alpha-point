@@ -81,6 +81,50 @@
   transition ou SMIL. O RIG é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
   CÂMERA NOMEADA "Willow–Anchorage" (o quadro final, onde a s21 abre): lng -149.86514, lat 61.54527, zoom 9.3,
   bearing 0, pitch 0: Anchorage em (1900, 1700), a vila de Willow em (1765, 699) e o anel em (1902, 699).
+  A BASE ANDA LISA E A ÚLTIMA ATUALIZAÇÃO DOS TILES (correção 7 do Claude central, 01/10/2026: os dois blocos da s12 e
+  da s42, da correção 6, em todas as cenas de mapa, para o vídeo inteiro pintar a base de um jeito só):
+    · o MapLibre 4.7.1 desenha a base raster alinhada a pixel inteiro quando o mapa não está "em movimento"
+      (aligned = !painter.options.moving), e com jumpTo ele nunca está: com a câmera andando, a base anda em degraus de
+      1 px e treme meio pixel contra as linhas e os pontos, que andam lisos. Agora toda pintura vai como "em movimento"
+      (o painter.render recebe moving: true; a cena falha se o MapLibre não tiver essa peça). Essa opção só mexe no
+      alinhamento da base e do relevo sombreado (as duas únicas leituras dela no MapLibre desta cena).
+      Medido com tile (os quadros 100 a 145 em ordem, como o render, num recorte de 720 × 600 px só de base): o passo da base
+      fica a 0,01 px da média dos dois passos vizinhos (mediana; máximo 0,04); no render de antes, a 0,98 px (máximo 1,02).
+    · um tile novo da base conta como "entrando em esmaecimento" até a primeira pintura dele, e enquanto isso o MapLibre
+      deixa pintados por cima dele os filhos já carregados (SourceCache.update); com o esmaecimento de 0 ms, eles só saem
+      na atualização seguinte, que nenhum movimento pede. Na s42, isso deu um quadro com as bordas no tom do nível de
+      cima, quando o nível da base desceu. Agora, com os tiles carregados, o __aguardarMapa o atualiza mais duas vezes
+      no mesmo lugar (um jumpTo para o centro em que ele está), cada uma com a pintura dela, e de novo, até 6, enquanto
+      a conferência não fechar; ela só conta depois da 2ª. A 1ª pinta os tiles que acabaram de chegar, e a 2ª tira os
+      filhos. E a contagem recomeça do zero quando um tile volta a carregar (a espera da s44, na correção 7; nesta cena,
+      desde a correção 8): a 1ª podia sair antes de o quadro pedir os tiles dele. O nivelUnico, abaixo, aceita dois
+      níveis vizinhos carregados (o da s42, desde a correção 8; antes, aqui, só um), caso que não deve mais aparecer.
+      Medido com tile, nos mesmos quadros: a base fica num nível só em todos.
+  O ESTILO SEM TRANSIÇÃO (correção 8; como na s50, correção 1): sem ele, o MapLibre anima toda troca de pintura em 300
+  ms de relógio de parede, e o quadro saía com o valor do anterior, conforme a espera do render (o distrito esmaecia e
+  a estrada acendia atrasados). Com ele, a pintura de cada quadro é a do __renderAt dele.
+  O TEXTO LISO (correção 8 do Claude central, 01/10/2026, item 3): o Chrome põe a linha de base de todo texto reto em
+  pixel inteiro na vertical, no HTML, no SVG e no fillText do canvas (medido numa página de prova, sem mapa: o texto de
+  uma pílula andando 0,13 px por quadro ficava até 0,52 px fora do lugar na vertical, em degraus de 1 px; na horizontal,
+  até 0,12). Os pontos e as linhas andam lisos, e o texto dos rótulos andava em degraus contra eles. Com left e top, a
+  pílula também ia a pixel inteiro. Agora:
+    · a pílula anda pelo transform, sem arredondar (placeRotulo);
+    · o texto dos seis rótulos (classe liso) fica transparente no DOM, que continua com a caixa, o texto, a fonte e o
+      tamanho que os portões medem;
+    · o texto se pinta no canvas #tintaRotulos, por cima das pílulas, na posição exata do texto no DOM: desenhado em 4×
+      (nesse tamanho o Chrome desenha o glifo como forma, na posição exata) e reduzido em duas metades na grade, com a
+      fonte, a cor, o espaçamento e a opacidade que o DOM dá a ele (pintarTextoLiso; o mesmo da s03). Na página de prova:
+      até 0,04 px fora do lugar nos dois eixos, a mesma largura de tinta que o texto do DOM e 2,5 % menos tinta (o
+      desenho em forma é um pouco mais fino), com a nitidez variando de um quadro para o outro como a do texto do DOM;
+    · na entrada e na saída (300 ms), com a opacidade da pílula abaixo de 1, o texto se pinta sobre a pílula já
+      transparente, e não junto com ela: no meio da entrada, o texto sai um pouco mais escuro por trás que no DOM.
+  MEDIDO COM TILE pelo caminho do render (o quadroJS do renderizar.mjs e 100 ms de parede antes da foto), nos quadros 0 a
+  499 em ordem, com cada rótulo inteiro na tela: o centro da tinta do texto contra o centro da caixa do texto no DOM (que
+  anda com o ponto), tirada a deriva lenta (a média de ±7 quadros; o mapa por trás da pílula translúcida): até 0,044 px
+  na vertical nos seis rótulos, e na horizontal até 0,06 px (o ABOUT 70 MILES, até 0,18). No MP4 da correção 7, o texto
+  contra o lugar do ponto (o ensaio a seco), na mesma medida: de 0,48 a 0,62 px na vertical (p95 de 0,34 a 0,50), a
+  escada de 1 px. A nitidez da tela não muda mais que 3,1 % de um quadro para o outro (o 296 a 298, o placar saindo), e
+  a base fica num nível só em todos os quadros.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -115,6 +159,10 @@
     font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1;
     letter-spacing: 0; color: var(--tinta); }
   .rotulo.regiao { letter-spacing: var(--tracking-lugar); }
+  /* O TEXTO LISO (cabeçalho): o texto do rótulo que anda com o mapa sai do canvas #tintaRotulos; no DOM ele fica
+     transparente (a caixa, o texto e o tamanho continuam aqui, para os portões medirem) */
+  .rotulo.liso { -webkit-text-fill-color: transparent; }
+  #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
 
   /* a LEGENDA DAS CORES (identidade §6; a s03 é o molde): a caixa cresce uma linha por item */
   #legenda { position: absolute; top: 160px; right: 200px; z-index: 46; pointer-events: none; opacity: 0;
@@ -156,12 +204,13 @@
     </g>
   </svg>
   <div id="rotulos">
-    <div class="rotulo" id="n56" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="n33" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="n16" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="rotWillow" data-qc-papel="rotulo"></div>
-    <div class="rotulo regiao" id="rotMatsu" data-qc-papel="rotulo"></div>
-    <div class="rotulo" id="rotRegua" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="n56" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="n33" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="n16" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="rotWillow" data-qc-papel="rotulo"></div>
+    <div class="rotulo regiao liso" id="rotMatsu" data-qc-papel="rotulo"></div>
+    <div class="rotulo liso" id="rotRegua" data-qc-papel="rotulo"></div>
+    <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
   <div id="legenda" data-qc-papel="legenda">
     <div class="item" id="legSitio"><svg viewBox="0 0 120 101" aria-hidden="true"><line class="nucleo" x1="13" y1="50.5" x2="107" y2="50.5"/></svg><span id="legSitioTxt"></span></div>
@@ -444,7 +493,8 @@
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
-    var s = { version: 8, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
+    // sem transição (O ESTILO SEM TRANSIÇÃO, no cabeçalho): a pintura de cada quadro é a do __renderAt dele
+    var s = { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
       paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
     if (CENA.relevo && P.dem) {
       fontes.dem = { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding };
@@ -549,6 +599,12 @@
     return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
   }
   window.map = map;
+  // A BASE ANDA LISA (cabeçalho): toda pintura vai como "em movimento", para a base não se alinhar a pixel inteiro
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
 
   // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
   window.__errosMapa = 0;
@@ -602,15 +658,63 @@
   // ── as peças ────────────────────────────────────────────────────────────────────────────────────
   // o que entra em 0 já está inteiro no 1º quadro (a regência: "from the first frame"); o resto, 300 ms de ease-out
   function entrada(t, t0) { return t0 <= 0 ? 1 : t < t0 ? 0 : eo(seg(t, t0, 0.3)); }
+  // O TEXTO LISO (cabeçalho): a posição vai inteira no transform, sem arredondar (left e top ficam no 0 do CSS); com left
+  // e top, o Chrome punha a pílula em pixel inteiro
   function placeRotulo(r, op, ent) {
     var el = E(r.id); if (!el || !r.p) return;
     var p = map.project(r.p);
     var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
-    el.style.left = (p.x + (r.dx || 0)).toFixed(1) + "px";
-    el.style.top = (p.y + (r.dy || 0)).toFixed(1) + "px";
     el.style.opacity = op.toFixed(3);
-    el.style.transform = "translate(" + tx + ",-50%) translateY(" + ((1 - ent) * 24).toFixed(1) + "px)";
+    el.style.transform = "translate(" + (p.x + (r.dx || 0)).toFixed(3) + "px," + (p.y + (r.dy || 0)).toFixed(3) + "px) translate(" + tx +
+      ",-50%) translateY(" + ((1 - ent) * 24).toFixed(2) + "px)";
   }
+  // ── O TEXTO LISO (cabeçalho): o texto dos rótulos de classe liso, pintado em #tintaRotulos na posição exata do DOM ──
+  // O Chrome põe a linha de base de todo texto reto em pixel inteiro na vertical (no HTML, no SVG e no fillText do
+  // canvas); a pílula anda lisa pelo transform, e o texto não andava com ela. Aqui ele é desenhado em 4× (nesse tamanho
+  // o Chrome desenha o glifo como forma, na posição exata) e reduzido em duas metades, na grade: cada pixel é a média
+  // exata do bloco 4 × 4 dele
+  var TL = { x4: document.createElement("canvas"), x2: document.createElement("canvas") };
+  function opacidadeEfetiva(el) {
+    var o = 1;
+    for (var n = el; n && n.nodeType === 1; n = n.parentElement) {
+      var s = getComputedStyle(n);
+      if (s.display === "none" || s.visibility === "hidden") return 0;
+      o *= parseFloat(s.opacity);
+    }
+    return o;
+  }
+  function pintarTextoLiso() {
+    var cv = E("tintaRotulos"); if (!cv) return;
+    var g = cv.getContext("2d"), cr = cv.getBoundingClientRect(), k = cr.width / cv.width || 1;
+    g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.clearRect(0, 0, cv.width, cv.height);
+    var els = document.querySelectorAll(".rotulo.liso");
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i], tn = el.firstChild, op = opacidadeEfetiva(el);
+      if (el.childNodes.length !== 1 || !tn || tn.nodeType !== 3) { falhar("o rótulo " + el.id + " não é um texto só: o texto liso não o pintaria."); return; }
+      if (!(op > 0) || !tn.data) continue;
+      var cs = getComputedStyle(el), fs = parseFloat(cs.fontSize), ls = parseFloat(cs.letterSpacing) || 0;
+      var fonte = cs.fontStyle + " " + cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+      var rg = document.createRange(); rg.selectNodeContents(el); var rr = rg.getBoundingClientRect();
+      var g4 = TL.x4.getContext("2d"); g4.font = fonte; g4.letterSpacing = ls + "px";
+      var m = g4.measureText(tn.data), A = m.fontBoundingBoxAscent, D = m.fontBoundingBoxDescent;
+      // a linha de base: no DOM, a caixa do texto começa A acima dela
+      var bx = (rr.left - cr.left) / k, by = (rr.top - cr.top) / k + A, pad = Math.ceil(fs * 0.5);
+      var x0 = Math.floor(bx) - pad, y0 = Math.floor(by - A) - pad;
+      var W = Math.ceil(m.width + Math.abs(ls)) + 2 * pad + 1, H = Math.ceil(A + D) + 2 * pad + 1;
+      if (x0 > cv.width || y0 > cv.height || x0 + W < 0 || y0 + H < 0) continue;
+      if (TL.x4.width < W * 4 || TL.x4.height < H * 4) { TL.x4.width = Math.max(TL.x4.width, W * 4); TL.x4.height = Math.max(TL.x4.height, H * 4); }
+      if (TL.x2.width < W * 2 || TL.x2.height < H * 2) { TL.x2.width = Math.max(TL.x2.width, W * 2); TL.x2.height = Math.max(TL.x2.height, H * 2); }
+      g4 = TL.x4.getContext("2d"); g4.setTransform(1, 0, 0, 1, 0, 0); g4.clearRect(0, 0, W * 4, H * 4);
+      g4.setTransform(4, 0, 0, 4, 0, 0); g4.font = fonte; g4.letterSpacing = ls + "px"; g4.fillStyle = cs.color;
+      g4.textBaseline = "alphabetic"; g4.textAlign = "left"; g4.fillText(tn.data, bx - x0, by - y0);
+      var g2 = TL.x2.getContext("2d"); g2.setTransform(1, 0, 0, 1, 0, 0); g2.clearRect(0, 0, W * 2, H * 2);
+      g2.imageSmoothingEnabled = true; g2.imageSmoothingQuality = "low"; g2.drawImage(TL.x4, 0, 0, W * 4, H * 4, 0, 0, W * 2, H * 2);
+      g.globalAlpha = op; g.imageSmoothingEnabled = true; g.imageSmoothingQuality = "low";
+      g.drawImage(TL.x2, 0, 0, W * 2, H * 2, x0, y0, W, H);
+    }
+    g.globalAlpha = 1;
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { try { pintarTextoLiso(); } catch (e) {} });
 
   var ultimaFracao = null;
   function aplicar(t) {
@@ -659,6 +763,7 @@
       var ent = entrada(t, r.entra), op = ent * (r.sai ? 1 - seg(t, r.sai, 0.3) : 1);
       placeRotulo(r, op, ent);
     });
+    pintarTextoLiso();
 
     // ── a legenda das cores: a caixa aparece com o 1º item e sai inteira; cada item seguinte faz a caixa crescer ──
     var Lg = CENA.legenda, cxL = E("legenda"), hL = 2 * Lg.respiro + Lg.linha;
@@ -685,17 +790,22 @@
     catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }
   };
 
+  // pronto quando nenhum tile da base está carregando e os níveis à vista são no máximo dois, vizinhos (o da s42): perto
+  // da fronteira de meio nível, com os tiles que os quadros anteriores deixaram no cache, o MapLibre pode cobrir a tela
+  // com dois níveis vizinhos já carregados e não sair disso sozinho. O pai borrado no lugar do filho que ainda carrega
+  // continua barrado: esse filho está "loading" no cache, e aí não está pronto
   function nivelUnico() {
     try {
       if (map.getTerrain() || map.getPitch() > 1) return true;
       var sc = map.style.sourceCaches || map.style._sourceCaches || {};
       var cache = sc.base; if (!cache) return true;
-      var ids = cache.getRenderableIds ? cache.getRenderableIds() : Object.keys(cache._tiles || {});
-      var tiles = ids.map(function (id) { return cache._tiles[id]; }).filter(Boolean);
-      if (!tiles.length) return false;
-      if (tiles.some(function (x) { return x.state === "loading"; })) return false;
-      var niveis = new Set(tiles.map(function (x) { return x.tileID && x.tileID.canonical && x.tileID.canonical.z; }));
-      return niveis.size <= 1;
+      var todos = cache._tiles || {};
+      for (var k in todos) { var st = todos[k] && todos[k].state; if (st === "loading" || st === "reloading") return false; }
+      var ids = cache.getRenderableIds ? cache.getRenderableIds() : Object.keys(todos);
+      var zs = ids.map(function (id) { var x = todos[id]; return x && x.tileID && x.tileID.canonical ? x.tileID.canonical.z : null; })
+        .filter(function (z) { return z !== null; });
+      if (!zs.length) return false;
+      return Math.max.apply(null, zs) - Math.min.apply(null, zs) <= 1;
     } catch (e) { return true; }
   }
   function tileComErro() {
@@ -727,10 +837,20 @@
           return nivelUnico();
         } catch (e) { return false; }
       };
-      var t0 = performance.now(), seguidas = 0;
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
       (function tick() {
         barrarTileComErro();
-        seguidas = pronto() ? seguidas + 1 : 0;
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        // A ÚLTIMA ATUALIZAÇÃO DOS TILES (cabeçalho): com os tiles carregados, o mapa se atualiza mais duas vezes no mesmo
+        // lugar, cada uma com a pintura dela (a 1ª pinta os tiles que acabaram de chegar; a 2ª tira os filhos que o
+        // MapLibre guardou para o esmaecimento deles), e de novo, até 6, enquanto a conferência não fechar; ela só conta
+        // depois da 2ª. E recomeça do zero quando um tile volta a carregar: a 1ª podia sair antes de o quadro pedir os
+        // tiles dele, e aí só uma caía depois deles
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.jumpTo({ center: map.getCenter() }); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
         if (window.__erroCena || seguidas >= 2) return res(true);
         if (performance.now() - t0 > teto) {
           window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
