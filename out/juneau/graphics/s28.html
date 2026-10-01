@@ -36,8 +36,10 @@
         2.84: o travessão de 6 px (--neutro) se desenha do prato do rótulo (alto) ao pé da camiseta (baixo), com o fulcro
         no meio: a liga inteira pesa menos que a camiseta. ABOUT A QUARTER não entra (R1). A luz atrás da camiseta.
         Créditos soltos na mesa: Dave Gelotte / Alaska State Museum (a camiseta, desde o corte) e Source: Anchorage Daily
-        News, 2026 (o $800 MILLION, desde "that"). A linha que entra cresce com o fade (altura × opacidade): a outra não
-        salta (roupa §4). Elementos: a camiseta (1) + o $800 MILLION com a balança (1) = 2.
+        News, 2026 (o $800 MILLION, desde "that"). As duas linhas têm o lugar reservado desde o corte (7,233): a do museu
+        acende em cima, e embaixo dela fica um vão vazio de 0,7 s até a linha Source acender em "that", no lugar dela, sem
+        crescer (decisão do Lucas, 01/10/2026; roupa §4: nada salta). No papel e no estádio só a linha Source tem lugar:
+        não há vão. Elementos: a camiseta (1) + o $800 MILLION com a balança (1) = 2.
     Herói: nenhum (data-qc-sem-heroi). Blocos: 0.
 
   A MÍDIA (conferencia-midia.json › candidatos, vereditos aprovados para s28):
@@ -66,6 +68,14 @@
      com o fade (max-height × opacidade), e nada salta. (2) Pela regra da margem sob a câmera, a camiseta impressa desceu de
      (2.600, 900) para (2.600, 950): a fita da esquerda, que chegava a y 147 sob a câmera, fica em y ≥ 180; a balança desce
      junto (o pé em y 1.710, acima do canto). A pílula $800 MILLION foi de x 243 para 250 (sob a câmera, x ≥ 204). -->
+<!-- CORREÇÃO DO RENDER 2 (01/10/2026, decisão do Lucas sobre a seção D da triagem, correcao-render-5.md, item 12): a linha de
+     crédito SÓ ACENDE NO LUGAR DELA. A correção (1) acima fazia a linha crescer com o fade (max-height × opacidade), e o texto
+     aparecia fatiado por 0,2 s, três vezes (0,03–0,23, a linha Source sobre o papel; 7,27–7,40, a linha do museu; 7,97–8,17, a
+     linha Source em "that", que o qc-fora-do-quadro acusava). Agora nada cresce: cada linha tem o lugar dela e só a opacidade
+     anda. No papel e no estádio, a linha do museu fica fora do layout ([hidden]) e a linha Source é a única: sem vão. Na mesa,
+     as duas estão no layout desde o corte (7,233): a do museu acende em cima (y 1.978→2.062) e embaixo dela fica o vão vazio
+     da linha Source (2.062→2.146) por 0,7 s, até ela acender em "that" (7,933). Nenhuma linha muda de lugar em quadro nenhum.
+     O max-height e o overflow: hidden da correção (1) saíram. -->
 <head>
 <meta charset="utf-8">
 <title>s28 — Fannie's first ad priced 28 NFL teams and three domed stadiums at $800 million, about a quarter of the Willow price tag</title>
@@ -113,14 +123,14 @@
     padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-family: var(--fonte); font-weight: var(--peso-rotulo);
     font-size: var(--fs-rotulo); line-height: 1.1; letter-spacing: 0; opacity: 0; }
 
-  /* o crédito (§4.2): 76 px; sobre o papel em --tinta-escura a 72 %; sobre o registro, na pílula; na mesa, solto em --sec */
+  /* o crédito (§4.2): 76 px; sobre o papel em --tinta-escura a 72 %; sobre o registro, na pílula; na mesa, solto em --sec.
+     Cada linha acende no lugar dela, sem crescer; a que não tem lugar fica fora do layout ([hidden]). Decisão do Lucas, 01/10/2026. */
   #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x)); }
   #creds.caixa { background: var(--rotulo); border-radius: var(--cantos); padding: 6px 24px 8px; }
   .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1; color: var(--sec);
     letter-spacing: 0; opacity: 0; }
   #creds.papel .cred { color: color-mix(in srgb, var(--tinta-escura) 72%, transparent); }
   .cred[hidden] { display: none; }
-  .cred { overflow: hidden; }   /* a altura da linha anda com o fade: o crédito não salta (roupa §4, 01/10/2026) */
 </style>
 </head>
 <body>
@@ -308,13 +318,10 @@
     el.style.opacity = p.toFixed(3);
     el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + rot + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
   }
-  function credito(el, texto, op) {
+  function credito(el, texto, op, lugar) {
     if (el.textContent !== texto) el.textContent = texto;
-    op = clamp(op, 0, 1);
-    el.hidden = false;
-    if (!el.dataset.h) { el.style.maxHeight = "none"; el.dataset.h = String(el.offsetHeight || 84); }   // a altura natural da linha, medida uma vez
-    el.style.maxHeight = (parseFloat(el.dataset.h) * op).toFixed(1) + "px";   // a linha cresce com o fade: a outra não salta
-    el.style.opacity = op.toFixed(3);
+    el.hidden = !lugar;                                // sem lugar reservado, a linha sai do layout (display: none)
+    el.style.opacity = clamp(op, 0, 1).toFixed(3);     // com lugar, só acende onde está: nada cresce nem salta (decisão do Lucas, 01/10/2026)
   }
 
   function cena(t) {
@@ -352,13 +359,15 @@
     E("fulcro").style.opacity = eo(seg(t, T.that + 0.2, 0.2)).toFixed(3);
     cam.style.setProperty("--luz-x", P3.cx + "px"); cam.style.setProperty("--luz-y", (P3.cy + 240 * (1 - q)).toFixed(1) + "px");
 
-    // ── os créditos: a fonte do anúncio no b1 (sobre o papel) e nos 0,33 s do 28 sobre o estádio (pílula), e de "that"; a foto da camiseta desde o corte ──
+    // ── os créditos: a fonte do anúncio no b1 (sobre o papel) e nos 0,33 s do 28 sobre o estádio (pílula), e de "that"; a foto da camiseta desde o corte.
+    //    Cada linha acende no lugar dela, sem crescer. Na mesa, as duas têm o lugar reservado desde o corte (7,233): a do museu em cima,
+    //    e embaixo o vão vazio da linha Source até "that" (7,933). No papel e no estádio só a linha Source tem lugar: não há vão. ──
     var creds = E("creds");
     creds.classList.toggle("papel", b1); creds.classList.toggle("caixa", b2 && t < T.vinteOitoFim);
     var opFonte = b1 ? eo(seg(t, 0, 0.3)) : (b2 ? (t < T.vinteOitoFim ? 1 : 0) : eo(seg(t, T.that, 0.3)));
     var opFoto = b3 ? eo(seg(t, T.corte2, 0.3)) : 0;
-    credito(E("credFoto"), TEXTOS.credFoto, opFoto);
-    credito(E("credFonte"), TEXTOS.credFonte, opFonte);
+    credito(E("credFoto"), TEXTOS.credFoto, opFoto, b3);
+    credito(E("credFonte"), TEXTOS.credFonte, opFonte, true);
     creds.style.opacity = Math.max(opFonte, opFoto).toFixed(3);
   }
 
