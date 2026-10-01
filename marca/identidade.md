@@ -410,6 +410,26 @@ texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para tod
   com a divisa nova e os rótulos fora das linhas. O Lucas viu a prévia com a narração e disse: "o mapa está bom
   agora". Ela mostra o tratamento da base, a malha do continente (11 px sobre 24 px), a estrada protagonista (14 px
   sobre 26 px), o anel, as pílulas e os créditos empilhados. As outras cenas de mapa partem dela.
+- **Estrada não se confunde com fronteira** (Lucas, 30/09/2026, 23:4x de Brasília). Ao rever a s03 aprovada, ele
+  apontou o quadro de 0:03: "O que é estrada e o que é fronteira acabou por não ficar claro, quem não sabe não irá
+  conseguir entender do que se tratam os elementos". A malha cinza e a divisa branca eram duas linhas claras com
+  contorno escuro. Ele viu quatro opções desenhadas sobre o render (`out/juneau/_tmp/piloto/s03/prova-legibilidade-1080p.png`).
+  A pergunta: "Como separamos estrada de fronteira nos mapas? Vale para a s03 e para os outros mapas do canal. Em
+  todas as opções, o 'ABOUT 43 MILES' passa a entrar quando a estrada laranja chega ao meio, e não antes dela." A
+  resposta: "D, cor e o nome ROADS (Recomendado)". A opção dizia: "Estradas do continente em verde-água e a de
+  Juneau em laranja. 'ROADS' aparece no começo, junto das estradas. A fronteira fica sendo a única linha branca,
+  entre UNITED STATES e CANADA."
+  - **As cores das linhas:** a fronteira é a única linha branca do mapa (`--fronteira-*`), fora o contorno do
+    território protagonista em `--tinta`, que também é fronteira e vem com o preenchimento. A estrada, a rota ou a
+    malha que não é a protagonista vai em `--contraparte` (`--rede-cor` nos tokens), e a protagonista em
+    `--destaque`. Cinza (`--neutro`) não se usa em linha de mapa, porque se confunde com a fronteira.
+  - **O nome do tipo de linha:** na primeira vez que um tipo de linha que não se explica sozinho entra no mapa (as
+    estradas, uma rota, um oleoduto), uma pílula curta diz o que ele é ("ROADS"), junto dele e fora dele. Ela sai
+    antes de o quadro passar de 6 elementos. A grafia é do `redator-de-tela`. A fronteira se explica pelos nomes
+    dos dois países, um de cada lado dela.
+  - **O rótulo de uma linha só entra com a linha:** o rótulo que fala de uma linha (uma distância, um nome) entra
+    quando ela já está na tela, nunca antes. Na s03, o ABOUT 43 MILES passa a entrar quando a estrada chega ao meio
+    (em "miles"), e não em "about".
 
 **Bases aceitas** (licença conferida para uso comercial):
 - escala de mundo e continente: **NASA Blue Marble**, domínio público;

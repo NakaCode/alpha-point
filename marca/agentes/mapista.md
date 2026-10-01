@@ -126,6 +126,11 @@ necessidade.
   que você recebe, do começo ao fim do movimento da câmera.
 - **A referência aprovada** é a s03 do Juneau (render de 30/09/2026, 22:18; identidade §6, "A cena de mapa de
   referência"). O Lucas: "o mapa está bom agora". Parta dela em medidas, hierarquia e créditos.
+- **Estrada não se confunde com fronteira** (Lucas, 30/09/2026, a opção D; identidade §6): a fronteira é a única
+  linha branca; estrada, rota ou malha que não é a protagonista vai em `--rede-cor` (`--contraparte`), nunca em
+  `--neutro`; a protagonista em `--destaque`. Na primeira vez que um tipo de linha entra, uma pílula curta diz o que
+  ele é ("ROADS"), fora da linha e dentro do teto de 6 elementos. E o rótulo de uma linha só entra com a linha já na
+  tela.
 - **Fronteira disputada**: linha tracejada e rótulo `DISPUTED`. Mostra a linha de controle de fato e nunca
   adota a reivindicação de um lado.
 - As cores das camadas vêm de `marca/tokens.css`, lidas pela função `tok()` do exemplar

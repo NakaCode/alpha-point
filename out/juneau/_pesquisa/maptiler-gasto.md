@@ -15,6 +15,11 @@ primeira cena de mapa, e o custo real vai ao Lucas antes das outras.
   `terrain-rgb-v2`, no perfil `maptiler` da pré-v1), e nada no canal chama a API de mapa estático. De onde vêm esses 30
   continua sem explicação, e o painel não mostra a origem. A leitura que vale é a do dia 01/10, à tarde, com o 30/09
   fechado.
+- **O dia do painel pode ser o UTC.** Os dois renders da s03 foram às 21:33 e às 22:17 de Brasília, que já são 00:33 e
+  01:17 UTC de **01/10**. Se o gráfico conta pelo UTC (o painel não diz), os renders caem na barra de 01/10, e não na
+  de 30/09. Isso explicaria os só 30 pedidos de 30/09. Nesse caso, a leitura que fecha a conta é a de 02/10, com o
+  01/10 inteiro, e todo render até 21:00 de Brasília de 01/10 entra na mesma barra. Por isso cada render se anota
+  aqui com a hora, e a divisão é pelo número de renders da barra.
 - **Na leitura de 01/10, o 30/09 tem dois renders da s03.** O custo de uma cena de mapa é a diferença do dia
   dividida por 2 (os dois têm a mesma duração e quase o mesmo enquadramento).
 
