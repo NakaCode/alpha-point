@@ -423,10 +423,22 @@ texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para tod
     território protagonista em `--tinta`, que também é fronteira e vem com o preenchimento. A estrada, a rota ou a
     malha que não é a protagonista vai em `--contraparte` (`--rede-cor` nos tokens), e a protagonista em
     `--destaque`. Cinza (`--neutro`) não se usa em linha de mapa, porque se confunde com a fronteira.
-  - **O nome do tipo de linha:** na primeira vez que um tipo de linha que não se explica sozinho entra no mapa (as
-    estradas, uma rota, um oleoduto), uma pílula curta diz o que ele é ("ROADS"), junto dele e fora dele. Ela sai
-    antes de o quadro passar de 6 elementos. A grafia é do `redator-de-tela`. A fronteira se explica pelos nomes
-    dos dois países, um de cada lado dela.
+  - **A legenda das cores, no lugar do nome na linha** (Lucas, 01/10/2026, 00:3x de Brasília). Depois de ver o
+    ROADS na s03, ele propôs: "Acho que talvez ao invés de 'ROADS' e etc, poderíamos ter um guia de o que cada cor
+    representa, algo discreto". Viu três legendas desenhadas sobre o render
+    (`out/juneau/_tmp/piloto/s03/prova-legenda-1080p.png`). A pergunta: "Qual legenda fica valendo nos mapas, no
+    lugar do 'ROADS'?…" A resposta: "2. Mas menor". A opção 2 dizia: "A mesma caixa, mas cada item entra com a sua
+    linha, e a estrada laranja ganha 'Juneau's roads'. O item laranja ficaria só 1,4 s, menos que o mínimo de 2 s
+    para ler."
+    - Uma caixa `--rotulo` discreta no canto de cima, dentro das margens (nunca o canto do YouTube nem a faixa de
+      crédito), com uma amostra curta de cada linha (na cor, na espessura e no contorno da cena) e uma palavra ao
+      lado. A grafia é do `redator-de-tela`.
+    - **Cada item entra com a sua linha**, e a protagonista também ganha o seu item.
+    - **O tamanho é o da proposta:** a letra no alvo do papel legenda, 84 px (`--fs-eixo`, §4.1). Logo depois do
+      "Mas menor", o Lucas corrigiu: "Perdão, na verdade o tamanho está bom. Estava ampliado".
+    - **Conta como um elemento** (§4.2). Quando o quadro chega a 6, ela sai antes de o elemento novo entrar. Por
+      escolha do Lucas, o item que entra por último pode ficar menos que os 2,0 s de texto no ar (§4.3).
+    - A fronteira é "Border", e os nomes dos dois países continuam um de cada lado dela.
   - **O rótulo de uma linha só entra com a linha:** o rótulo que fala de uma linha (uma distância, um nome) entra
     quando ela já está na tela, nunca antes. Na s03, o ABOUT 43 MILES passa a entrar quando a estrada chega ao meio
     (em "miles"), e não em "about".

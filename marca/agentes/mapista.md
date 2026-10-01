@@ -128,9 +128,10 @@ necessidade.
   referência"). O Lucas: "o mapa está bom agora". Parta dela em medidas, hierarquia e créditos.
 - **Estrada não se confunde com fronteira** (Lucas, 30/09/2026, a opção D; identidade §6): a fronteira é a única
   linha branca; estrada, rota ou malha que não é a protagonista vai em `--rede-cor` (`--contraparte`), nunca em
-  `--neutro`; a protagonista em `--destaque`. Na primeira vez que um tipo de linha entra, uma pílula curta diz o que
-  ele é ("ROADS"), fora da linha e dentro do teto de 6 elementos. E o rótulo de uma linha só entra com a linha já na
-  tela.
+  `--neutro`; a protagonista em `--destaque`. O que cada cor é vai numa **legenda discreta** no canto de cima (Lucas,
+  01/10/2026: "2. Mas menor"; identidade §6): caixa `--rotulo`, amostra de cada linha e uma palavra, letra de 84 px (`--fs-eixo`),
+  cada item entrando com a sua linha, a protagonista também. Ela conta como um elemento e sai antes de o quadro
+  passar de 6. O rótulo de uma linha só entra com a linha já na tela.
 - **Fronteira disputada**: linha tracejada e rótulo `DISPUTED`. Mostra a linha de controle de fato e nunca
   adota a reivindicação de um lado.
 - As cores das camadas vêm de `marca/tokens.css`, lidas pela função `tok()` do exemplar

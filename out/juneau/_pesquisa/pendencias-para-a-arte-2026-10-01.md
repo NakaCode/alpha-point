@@ -8,21 +8,23 @@ Juntado pelo Claude central a partir de três fontes:
 Cada item diz quem o pega. Nada aqui é decisão nova: as decisões estão na marca, com a data e a fala do Lucas.
 
 ## As referências do piloto
-- **Mapa:** a s03, com a divisa de 5 px a 70 % sobre 12 px, rótulos fora das linhas, a malha em `--rede-cor` e o
-  ROADS de 1,813 a 3,833 s (identidade §6).
+- **Mapa:** a s03, com a divisa de 5 px a 70 % sobre 12 px, rótulos fora das linhas, a malha em `--rede-cor` e a
+  legenda das cores no canto de cima (Border, Roads, Juneau's roads, cada item com a sua linha; identidade §6,
+  "A legenda das cores", Lucas, 01/10/2026). O ROADS saiu.
 - **Mesa:** a s09, feltro sob a luz, com a textura por baixo de tudo (identidade §5; `marca/tokens.css`, "A MESA").
 
 ## A regra das linhas nas outras cenas (levantamento do mapista, sem edição)
 
 **s03, nos documentos:**
-- `diretor-de-arte`: a técnica da s03 no conceito ainda diz `--neutro`. Falta pôr o ROADS e a régua em 4,465, e o
-  momento de 6 elementos entre 3,833 e 4,133 s.
+- `diretor-de-arte`: a técnica da s03 no conceito ainda diz `--neutro`. Falta pôr a legenda das cores e a régua em
+  4,465. Toda cena de mapa com mais de um tipo de linha (s44, s50…) reserva um elemento do teto para a legenda.
 - `regente`: o ABOUT 43 MILES passa de 3,567 s ("about") para 4,465 s ("miles"), e a linha da fonte vai junto.
-- `redator-de-tela`: o ROADS entra no `textos-tela` (1,813–3,833 s, mais 300 ms de apagar). A grafia é dele.
+- `redator-de-tela`: a legenda da s03 entra no `textos-tela` ("Border", "Roads", "Juneau's roads", nos tempos
+  que o mapista gravar na `s03.html`). A grafia é dele.
 
 **Estradas que vão a `--rede-cor`:**
-- s10: o traço Glenn, Glennallen–Tok e Alaska Highway (hoje `--tinta` a 70 %, uma linha branca) e a rede. Sem ROADS,
-  porque o tipo já foi nomeado na s03.
+- s10: o traço Glenn, Glennallen–Tok e Alaska Highway (hoje `--tinta` a 70 %, uma linha branca) e a rede. A legenda
+  entra se a cena tiver mais de um tipo de linha.
 - s15: a estrada Anchorage–Willow. O traço fino das feições do sítio e a seta curta também não podem ser brancos nem
   cinza.
 - s44: a Haines Highway, a Klondike Highway e a Alaska Highway, trecho do Yukon.
@@ -41,8 +43,8 @@ Cada item diz quem o pega. Nada aqui é decisão nova: as decisões estão na ma
 - s44: os corredores tracejados não têm cor escrita, e não podem ser brancos nem cinza.
 - s48 e s50: a estrada tracejada da margem leste vai em `--destaque` se for a de Juneau que continua, ou em
   `--rede-cor` se não for.
-- s50: o pontilhado da balsa é um tipo novo de linha. Pede uma pílula FERRY, ou basta a voz? O inset da s57 segue
-  a s50.
+- s50: o pontilhado da balsa é um tipo novo de linha e entra na legenda ("Ferry", grafia do redator). O inset da s57
+  segue a s50.
 
 ## A revisão do espelho (montador, 01/10)
 - 8 planos trocaram vídeo por foto (s01 p2, s04 p1 e p2, s14 p1 e p2, s24 p2, s47 p1, s51 p1). Só a s04 p2 vai impressa
