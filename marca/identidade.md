@@ -690,3 +690,23 @@ Não copia as figuras do estudo, que são do Estado."
   `Image(s) and/or video used under license from Shutterstock.com` na faixa de crédito da última cena,
   repetida na descrição do YouTube. Em contexto editorial ou de comentário, também
   `<artista>/Shutterstock.com` na faixa de crédito da cena (`midia.md` §3.4).
+
+## 8 · O logo: a agulha
+
+**A decisão** (Lucas, 01/10/2026). Ele pediu: "Ainda não temos logo e nem banner para o canal, como podemos proceder com
+isso?", e escolheu "Eu desenho aqui". Da 1ª rodada (4 propostas), respondeu "Consegue novas versões? Não gostei muito".
+Para a 2ª, escolheu os caminhos "Símbolo simples e moderno" e "Bússola e cartografia", e "Manter as da marca" nas cores.
+Das 5 propostas da 2ª rodada, escolheu **"A agulha"**.
+
+- **O símbolo:** uma agulha de bússola em pé, em dois triângulos chapados. O norte, em `--destaque`, é o A de Alpha, com
+  pernas retas e o miolo cortado. O sul, em `--tinta`, completa o losango. Um corte inclinado de 12° separa as duas peças.
+  A agulha aponta para o norte e para lugar nenhum: sem mostrador, rosa ou linhas que se cruzem.
+- **Os arquivos** ficam em `marca/logo/agulha/`. O `README.md` de lá diz qual vai onde e como se refaz cada um.
+- **As cores:** no avatar e no banner, as duas cores sobre `--fundo`. Em uma cor, `--tinta` sobre escuro e
+  `--tinta-escura` sobre `--papel`.
+  - A **marca d'água** do vídeo vai sem laranja: a agulha toda em `--tinta`, num disco `--fundo` a 65 %. O laranja na tela
+    é do protagonista do vídeo (§2).
+- **O nome no banner:** ALPHA POINT em Barlow Condensed 800, com a frase "Geography and geopolitics, on the map." em Inter
+  500. A frase veio com a proposta; quando o Lucas pediu para escolher, ele respondeu sem preferência.
+- **As propostas** das duas rodadas ficam em `marca/logo/propostas/` e `marca/logo/propostas-2/`, fora do git: as
+  checagens têm quadros do vídeo com satélite da MapTiler e footage de banco.
