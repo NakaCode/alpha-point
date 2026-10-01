@@ -79,6 +79,12 @@
      em x 3.587 e começa em y 190; a pílula em (262, 190) e o cargo em (262, 410); o cartão em x 266 (girado, 257), até x 3.066;
      Juneau continua na coluna à vista do inset (3.287 × 1.030 na tela). As duas linhas de crédito ocupam o lugar desde o 1º quadro.
      Os números do cabeçalho abaixo que divergirem (2.080/160, 200, 3.000→3.640) são os de antes desta correção. -->
+<!-- CORREÇÃO DO RENDER 2 (01/10/2026, roupa §4; correcao-render-3.md, item 8): o cartão da fala pousava de 180 px abaixo, e de
+     f202 a f206 (6,733–6,867) o pé dele passava de y 1.880 com opacidade de 0,14 a 0,8 (até 1.981 em f203). Em repouso, o pé
+     girado (0,8°) fica em y 1.849, que a câmera do fim (1,0282) leva a 1.876: não há folga para subida nenhuma. A pousada
+     passa a ser só o assentar (de −3° a 0,8° e da escala 0,94 a 1, em 0,5 s): com a escala menor e a inclinação passando
+     por zero, o pé fica em y ≤ 1.859 em todo quadro (1.876 sob a câmera), e o alto não sobe de y 501 (a 0,94×, invisível) nem
+     de 508 no 1º quadro visível, longe do cargo (que acaba em 511, só à esquerda de x 2.100). -->
 <head>
 <meta charset="utf-8">
 <title>s05 — One of them, Harris, chaired a committee pushing the move</title>
@@ -537,10 +543,12 @@
     rotulo(E("cargo"), eo(seg(t, T.cargo, 0.3)));
     E("cargoAno").style.opacity = eo(seg(t, T.ano, 0.3)).toFixed(3);
 
-    // o cartão da fala: pousa em "wrote," (de 180 px abaixo e −3°, escala 0,94 → 1), e as duas partes aparecem
+    // o cartão da fala: pousa em "wrote," (no lugar: de −3° a 0,8° e da escala 0,94 a 1, SEM subir; correção 2 do render,
+    // 01/10/2026: o pé do cartão em repouso fica a 4 px da faixa do crédito sob a câmera do fim, e os 180 px de subida
+    // entravam nela de f202 a f206), e as duas partes aparecem
     var p = eo(seg(t, T.cartao, T.cartaoDur));
     var h = cartaoH || 1300;
-    por(E("fala"), C.x + C.w / 2, C.y + h / 2 + 180 * (1 - p), C.w, h, lerp(-3, C.rot, p), 0.94 + 0.06 * p, seg(t, T.cartao, 0.2));
+    por(E("fala"), C.x + C.w / 2, C.y + h / 2, C.w, h, lerp(-3, C.rot, p), 0.94 + 0.06 * p, seg(t, T.cartao, 0.2));
     E("fala1").style.opacity = eo(seg(t, T.fala1, 0.3)).toFixed(3);
     E("fala2").style.opacity = eo(seg(t, T.fala2, 0.3)).toFixed(3);
 

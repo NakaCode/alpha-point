@@ -49,7 +49,7 @@ O roteiro não tem linha `**Título**`, e nenhuma se acrescenta (CLAUDE.md).
   - **banco pago** (midia.md §1, §2): evento real nunca vem dele; B-roll genérico vem, na ordem Envato
     Elements → Motion Array → Storyblocks → Shutterstock, baixado nas contas que o Lucas designou (midia.md §2.3: a assinatura da Top10 na Storyblocks e no Envato), pela caça no Chrome dele que
     ele aprova item por item (§2.3, §8). Você entrega a lista do que procurar, nunca baixa nem abre o banco;
-  - o `npm install` não foi autorizado: portão de navegador sai NÃO MEDIDO (CLAUDE.md, "Os especialistas").
+  - o `npm install` foi autorizado em 01/10/2026: os portões de navegador rodam (CLAUDE.md, "Os portões medem").
 
 ## 3 · O que valeria, se o Lucas mudar a decisão
 

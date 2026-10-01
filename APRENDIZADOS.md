@@ -1078,3 +1078,23 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** o RIG é do motor, e todo canal que monta cena com a câmera dele e conferência
   pelo primeiro quadro vai ter o mesmo desvio. No molde, vale o RIG expor a escala máxima da cena, ou o editor de arte
   do motor trazer a conta da margem sob a câmera.
+
+### 59. O conserto cria o defeito ao lado, e a conta escrita no cabeçalho não é a caixa que o navegador desenha
+- **Problema:** nas rodadas de correção dos clipes do Juneau (01/10), cada reconferência confirmou os consertos pedidos
+  e achou defeitos novos nascidos deles, perto do lugar mexido:
+  - a foto impressa recentrada para sair da margem (s04, s16) passou a correr sob a pílula do rótulo, que ficou parada
+    na camada fixa;
+  - a linha do preço que subiu (s19) pôs o herói sobre a quebra tracejada; a pílula alinhada à direita (s26) encostou
+    na vizinha; o cartão que desceu (s31) cobriu a pílula ao lado; a legenda que encolheu no deslize (s27) mudou de
+    quebra num quadro só;
+  - os cabeçalhos das cenas seguiam com as contas de antes do conserto ("a pílula termina em y≈357"), e o mapista
+    mediu no ensaio sem tile uma pílula de 512 px que o navegador desenhou com 622 (s50), ancorada pela direita, sobre
+    a divisa.
+- **O que resolveu:** a reconferência de cada rodada procura também o defeito novo, e não só o antigo: o mesmo
+  conferente olha os achados anteriores e a cena inteira de novo, e um cético tenta derrubar cada achado. O pedido de
+  correção diz "confira também o que ficou perto do conserto".
+- **Como evitar:** ao mover um elemento, refaça a conta de tudo o que divide a área com ele, inclusive o que está numa
+  camada fixa fora da câmera, e reescreva a conta do cabeçalho. Meça largura de pílula e de texto no DOM, depois do
+  `document.fonts.ready`, e não por conta.
+- **Por que serve a qualquer canal:** toda cena com camadas (mesa sob a câmera, rótulo fixo por cima) e todo ensaio
+  sem navegador tem esse risco; a conferência que só confirma o conserto pedido deixa passar o defeito que ele criou.

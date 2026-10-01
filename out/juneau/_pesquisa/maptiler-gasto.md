@@ -84,4 +84,11 @@ quando ele mostrar.
 | s50 (1º render: a câmera do b6 e a página dentro da margem) | 10:44:19 | 10:48:20 | 2160p |
 | s12 (2º render: os créditos em sequência, as fitas na margem e a folha de 1993 no lugar) | 10:52:11 | 10:56:46 | 2160p |
 | s07 (3ª vez, com o nivelUnico consertado e as fitas na margem) | 10:56:46 | 11:00:50 | 2160p |
-| s08 (3ª vez) | — | — | não começou: o disco ficou com 2,9 GB, e o render guarda os quadros em JPEG antes de juntar |
+| s08 (3ª vez) | — | — | não começou às 11:00: o disco ficou com 2,9 GB, e o render guarda os quadros em JPEG antes de juntar |
+| s08 (3ª vez, depois de o Lucas liberar o disco) | 12:02:57 | 12:07:00 | 2160p |
+| s07 (4ª vez: o recorte da foto de Sitka sem a borda do scan) | 12:10:51 | 12:14:43 | 2160p |
+| s05 (3 capturas de conferência do editor pelo `quadro.mjs`, a rodada 6: duas antes do conserto, uma depois) | ~12:1x | — | as três pediram tiles do inset |
+| s42 (2º render: a pílula do Juneau fora do canto) | 12:14:52 | 12:19:10 | 2160p |
+| s44 (3º render: a Thane Road, a divisa larga, o Taku sem fantasma; com o relevo) | 12:19:10 | 12:25:22 | 2160p |
+| s50 (2º render: as pílulas pela caixa real, o giro de 20° no b6, a divisa larga) | 12:25:23 | 12:29:23 | 2160p |
+| s05 (3º render: o cartão da fala assentando no lugar; o inset de mapa) | 12:30:47 | 12:32:53 | 2160p |

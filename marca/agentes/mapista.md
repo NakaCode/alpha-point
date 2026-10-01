@@ -44,8 +44,10 @@
   `maprender.mjs`, o `render.webgl.4k`, o `tools/map-renderer` e o `tools/terrain-renderer` do ofício não
   existem: o render é `<motor>/src/ferramentas/renderizar.mjs`.
 - **Portões**: `node scripts/<portão>.mjs`, com `REGIE_MOTOR` na mesma linha (CLAUDE.md, "Os especialistas").
-  Sem npm (DECISÃO DO LUCAS PENDENTE), os portões de navegador saem **NÃO MEDIDO** (a lista está no CLAUDE.md,
-  "Os especialistas"). Diga o nome de cada um; não simule.
+  Os portões de navegador medem desde 01/10/2026 (o Lucas autorizou o npm; CLAUDE.md, "Os portões medem"): antes
+  de entregar, `node scripts/qc-cena.mjs out/<proj>/graphics/<id>.html` em cada cena que você mexeu, até sair 0.
+  Ele abre o mapa e pede tiles: diga quantas rodadas fez, para o `maptiler-gasto.md`. Portão que sair exit 2 com o
+  alvo certo é NÃO MEDIDO, pelo nome; não simule.
 - **Nunca rode** `narrar.mjs` nem `transcrever.mjs` (gastam crédito da ElevenLabs e refazem o relógio).
 - **Tela e pedido de mídia em inglês dos EUA** (`canal.json` › `idiomas.origem`), AP Stylebook (§4). O id de
   um arquivo de geometria (`panhandle-juneau`, `alasca-e-vizinhos`) é vocabulário de máquina e fica como está,
@@ -231,10 +233,10 @@ necessidade.
   `node <motor>/src/ferramentas/renderizar.mjs <proj> --cena=<id> --4k`. Confira que o
   `graphics/<id>.mp4.de-html` termina em `2160p`. Os quadros saem do MP4:
   `ffmpeg -ss <t> -i out/<proj>/graphics/<id>.mp4 -frames:v 1 out/<proj>/_tmp/<id>@<t>.png`.
-- Sem npm, não há portão de navegador. Os do Top10 para mapa não vieram (`qc-mapa-movimento`, `qc-mapa-borda`,
-  `qc-rotulo-territorio`, `qc-base-unica`, `qc-chave-mapa`). O que eles mediriam, você olha nos quadros e diz
-  "olhado, portão não rodou".
-- Rodam sem npm: `node scripts/qc-hex.mjs out/<proj>/graphics/<id>.html` e
+- Os portões de navegador gerais rodam pelo `qc-cena` desde 01/10/2026. Os do Top10 para mapa não vieram
+  (`qc-mapa-movimento`, `qc-mapa-borda`, `qc-rotulo-territorio`, `qc-base-unica`, `qc-chave-mapa`, e o `mapa-vivo`
+  que o `qc-cena` cita): o que eles mediriam, você olha nos quadros e diz "olhado, portão não veio".
+- Também rodam: `node scripts/qc-hex.mjs out/<proj>/graphics/<id>.html` e
   `node scripts/qc-src-existe.mjs out/<proj>/graphics/<id>.html`.
 
 ## 10 · Rede, geometria e a regra anti-robô

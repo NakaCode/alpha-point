@@ -40,8 +40,8 @@
   uso"), e **não** o `motor.caminho` do `canal.json` (a v0.1.0). Script de `scripts/` que importa do motor
   pede `REGIE_MOTOR=<motor>` na mesma chamada; `MOTOR_SEM_ARQUIVO` ou "atualize o motor" quer dizer só que
   faltou a variável. Nunca mexa no motor nem no `canal.json` por causa disso.
-- **Gate que pede `sharp` ou `playwright-core` sai NÃO MEDIDO**, com o nome: o `npm install` não foi
-  autorizado pelo Lucas. Não simule gate.
+- **Gate que pede `sharp` ou `playwright-core` roda desde 01/10/2026**: o Lucas autorizou o npm (CLAUDE.md, "Os
+  portões medem"), com `REGIE_MOTOR` na mesma chamada. Gate que sai exit 2 com o alvo certo é NÃO MEDIDO, pelo nome. Não simule gate.
 - **Nunca** rode `narrar.mjs` nem `transcrever.mjs`: gastam crédito da ElevenLabs e refazem o relógio
   (CLAUDE.md).
 - **Site que recusa leitura automática** (403, 405, captcha, verificação de robô, página "Just a
@@ -161,7 +161,7 @@ node scripts/validar-contrato.mjs pauta-pesquisa out/<proj>/_pesquisa/pauta-pess
 REGIE_MOTOR=<motor> node scripts/qc-procedencia.mjs <proj>
 ```
 
-- Os portões de navegador saem NÃO MEDIDO sem npm (a lista está no CLAUDE.md, "Os especialistas"). O `qc-procedencia` e o
+- Os portões de navegador rodam desde 01/10/2026 (o npm foi autorizado; CLAUDE.md, "Os portões medem"). O `qc-procedencia` e o
   `scripts/procedencia-reconciliar.mjs` pedem `REGIE_MOTOR`. Rascunho vai em `out/<proj>/_tmp/`.
 - **O retrato que você entrega passa pelo `conferente-de-midia`** (`.claude/agents/conferente-de-midia.md`, do
   canal; ofício dele, §2) antes de uma cena citá-lo, em qualquer passo (no `research` ou no `art`). O ofício grava

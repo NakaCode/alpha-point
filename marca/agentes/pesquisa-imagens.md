@@ -41,8 +41,8 @@
   (Git Bash: `REGIE_MOTOR=<motor> node scripts/<x>.mjs …`; PowerShell: `$env:REGIE_MOTOR='<motor>';
   node scripts/<x>.mjs …`). Sem ela, ele diz `MOTOR_SEM_ARQUIVO` e "atualize o motor": isso quer dizer só
   que faltou a variável. Nunca mexa no motor nem no `canal.json` por causa dessa mensagem.
-- **Gate que pede `sharp` ou `playwright-core` sai NÃO MEDIDO**, com o nome: o `npm install` não foi
-  autorizado pelo Lucas. Gate que não está no disco, também. Não simule gate.
+- **Gate que pede `sharp` ou `playwright-core` roda desde 01/10/2026**: o Lucas autorizou o npm (CLAUDE.md, "Os
+  portões medem"), com `REGIE_MOTOR` na mesma chamada. Gate que sai exit 2 com o alvo certo é NÃO MEDIDO, pelo nome. Gate que não está no disco, também. Não simule gate.
 - **Nunca** rode `narrar.mjs` nem `transcrever.mjs`: gastam crédito da ElevenLabs e refazem o relógio
   (CLAUDE.md).
 - **Site que recusa leitura automática** (403, 405, captcha, verificação de robô, página "Just a

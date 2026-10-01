@@ -60,6 +60,12 @@
         acesas e a linha tracejada mostram a metade; as 6 além dela, em degradê de 0,8 a 0,1, dizem "acima da metade" sem
         cravar fração: nenhuma figura a mais fica acesa por inteiro, e a mancha não para numa contagem.
 
+  AS FITAS DA FOTO DE 1915 (Claude central, 01/10/2026: a margem vale em todo quadro; antes, a da esquerda passava até
+  35 px acima de 160 ao colar, 3,067–3,267): a da foto impressa da prancha (520 × 150, −4° e 4°), com o centro 88 px
+  abaixo do topo, colando em 3,15 (a foto já pousada) de 4 px acima a 1,06×. A guarda da cena falha se a foto pousada ou
+  uma fita sair da área segura; no ensaio a seco, a menor folga é de 12 px. A foto se move como antes (o ensaio a seco
+  compara os 692 quadros).
+
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; minha, pelo ensaio a seco, não portão: o qc-carga sai NÃO MEDIDO sem npm).
   O ponto e o nome de uma cidade são um elemento; a divisa (tratamento da base), o crédito e o aviso do ano não contam.
     b1: Anchorage, Fairbanks, Juneau = 3 · b2: + a foto de 1915 + 1914 = 5 · troca b2→b3: Anchorage, Fairbanks,
@@ -379,7 +385,11 @@
                 fonte: [[2.633, 5.333], [16.967, 99]] },   // a linha da fonte: enquanto 1914, ROUGHLY 15%, 1940 e 1960 estão no ar
 
     // ── as fotos (as medidas da s09)
-    p1: { w: 2846, h: 1361, c: [1713, 890], rot: 1.5, sobe: 2.6, sobeDur: 0.55, fita: 3.05, recolhe: 5.333, recolheDur: 0.3 },
+    // as fitas da foto (a da foto impressa da prancha, 520 × 150, −4° e 4°): colam quando a foto acaba de subir (3,15), de
+    // 4 px acima a 1,06× em 300 ms, com o centro 88 px abaixo do topo (antes: 69 px, de 40 px acima a 1,08×, em 3,05, o
+    // que levava a da esquerda até 35 px acima da margem de 160; Claude central, 01/10/2026: a margem vale em todo quadro)
+    p1: { w: 2846, h: 1361, c: [1713, 890], rot: 1.5, sobe: 2.6, sobeDur: 0.55, fita: 3.15, recolhe: 5.333, recolheDur: 0.3,
+          fitas: { w: 520, h: 150, rot: [-4, 4], cai: 4, escala: 1.06, pos: [[220, 88], [2726, 88]] } },
     p2: { pw: 3664, ph: 2690, px: 392, py: 456, janelaH: 2061, janelaY: 400, F: 3840 / 3664,
           sobe: 5.333, sobeDur: 0.30, encolhe: 7.4, encolheDur: 0.6 },
     p3: { arquivo: [3020, 2317], janelaY: 300, escala: 3840 / 3020, de: 9.667, ate: 11.433 },
@@ -506,6 +516,38 @@
   })();
   if (window.__erroCena) return;
   CENA.rotulos.forEach(function (r) { r.p = r.lnglat || CID[r.ref]; });
+
+  // as fitas da foto de 1915: o tamanho e o lugar (CENA.p1.fitas), e a guarda das margens em todo quadro (Claude central,
+  // 01/10/2026): os cantos da foto pousada (1,0×, +1,5°) e os das fitas, colando (4 px acima, 1,06×) e coladas. As fitas
+  // colam com a foto já pousada (CENA.p1.fita ≥ o fim da subida); na subida e na volta ao ponto de Anchorage, a foto e as
+  // fitas encolhem até o ponto, que fica dentro da área segura
+  (function () {
+    var Q = CENA.p1, FT = Q.fitas, rad = Math.PI / 180;
+    if (Q.fita < Q.sobe + Q.sobeDur - 1e-6) return falhar("as fitas da foto de 1915 colariam antes de ela pousar.");
+    [["p1fe", 0], ["p1fd", 1]].forEach(function (x) {
+      var el = E(x[0]), c = FT.pos[x[1]]; if (!el) return;
+      el.style.width = FT.w + "px"; el.style.height = FT.h + "px";
+      el.style.left = (c[0] - FT.w / 2) + "px"; el.style.top = (c[1] - FT.h / 2) + "px";
+    });
+    var gira = function (p, r) { var c = Math.cos(r * rad), s = Math.sin(r * rad); return [p[0] * c - p[1] * s, p[0] * s + p[1] * c]; };
+    var tela = function (p) { var q = gira([p[0] - Q.w / 2, p[1] - Q.h / 2], Q.rot); return [Q.c[0] + q[0], Q.c[1] + q[1]]; };
+    var pts = [];
+    [[0, 0], [Q.w, 0], [Q.w, Q.h], [0, Q.h]].forEach(function (p) { pts.push(["a foto de 1915", tela(p)]); });
+    FT.pos.forEach(function (c, j) {
+      [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function (sg) {
+        [[FT.escala, -FT.cai], [1, 0]].forEach(function (e) {
+          var q = gira([sg[0] * FT.w / 2 * e[0], sg[1] * FT.h / 2 * e[0]], FT.rot[j]);
+          pts.push(["a fita da foto de 1915", tela([c[0] + q[0], c[1] + q[1] + e[1]])]);
+        });
+      });
+    });
+    for (var i = 0; i < pts.length; i++) {
+      var p = pts[i][1];
+      if (p[0] < 200 || p[0] > 3640 || p[1] < 160 || p[1] > 1880 || (p[0] > 3440 && p[1] > 1760))
+        return falhar(pts[i][0] + " sai das margens (o canto " + p[0].toFixed(0) + ", " + p[1].toFixed(0) + ").");
+    }
+  })();
+  if (window.__erroCena) return;
 
   // a divisa: as arestas do Canadá cujas duas pontas também são vértices dos EUA (como na s03 e na s07)
   var FRONTEIRA = (function () {
@@ -814,11 +856,12 @@
       rot.toFixed(3) + "deg) scale(" + s.toFixed(5) + ")";
     if (op !== undefined) el.style.opacity = cl(op, 0, 1).toFixed(3);
   }
+  // a fita cola: desce CENA.p1.fitas.cai de CENA.p1.fitas.escala e assenta em 300 ms (o "cola" da prancha)
   function fita(el, t, t0, rot) {
     if (!el) return;
-    var p = eo(seg(t, t0, 0.3));
+    var FT = CENA.p1.fitas, p = eo(seg(t, t0, 0.3));
     el.style.opacity = p.toFixed(3);
-    el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + rot + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
+    el.style.transform = "translateY(" + ((1 - p) * -FT.cai).toFixed(1) + "px) rotate(" + rot + "deg) scale(" + (1 + (1 - p) * (FT.escala - 1)).toFixed(4) + ")";
   }
   // texto fixo: entra com opacidade + 24 px de subida em 300 ms (ease-out) e sai só com a opacidade (identidade §4.4)
   function textoFixo(id, t) {
@@ -864,7 +907,7 @@
     var x1 = lerp(lerp(pA.x, Q.c[0], u1), pA.x, q1), y1 = lerp(lerp(pA.y, Q.c[1], u1), pA.y, q1);
     var s1 = lerp(lerp(0.012, 1, u1), 0.012, q1);
     por(E("p1"), x1, y1, Q.w, Q.h, lerp(lerp(0, Q.rot, u1), 0, q1), s1, t < Q.sobe || t >= Q.recolhe + Q.recolheDur ? 0 : seg(t, Q.sobe, 0.12));
-    fita(E("p1fe"), t, Q.fita, -4); fita(E("p1fd"), t, Q.fita + 0.12, 4);
+    fita(E("p1fe"), t, Q.fita, Q.fitas.rot[0]); fita(E("p1fd"), t, Q.fita + 0.12, Q.fitas.rot[1]);
 
     // ── b3: a Ladd Field sobe do ponto de Fairbanks para a tela cheia (opaca desde o 1º quadro); b4: encolhe a ele ──
     var Q2 = CENA.p2, u2 = eo(seg(t, Q2.sobe, Q2.sobeDur)), m2 = eb(seg(t, Q2.encolhe, Q2.encolheDur));
@@ -922,16 +965,22 @@
   };
 
   function nivelUnico() {
+    // pronto quando nenhum tile da base está carregando e os níveis à vista são no máximo dois, vizinhos (pedido do Claude
+    // central, 01/10/2026): perto da fronteira de meio nível, com os tiles que os quadros anteriores deixaram no cache, o
+    // MapLibre cobre a tela com dois níveis vizinhos já carregados e não sai disso sozinho (s08, quadro 42: 24 tiles do
+    // nível 7 e 5 do 8, todos carregados, por 12 s). O pai borrado no lugar do filho que ainda carrega continua barrado:
+    // esse filho está "loading" no cache, e aí não está pronto
     try {
       if (map.getTerrain() || map.getPitch() > 1) return true;
       var sc = map.style.sourceCaches || map.style._sourceCaches || {};
       var cache = sc.base; if (!cache) return true;
-      var ids = cache.getRenderableIds ? cache.getRenderableIds() : Object.keys(cache._tiles || {});
-      var tiles = ids.map(function (id) { return cache._tiles[id]; }).filter(Boolean);
-      if (!tiles.length) return false;
-      if (tiles.some(function (x) { return x.state === "loading"; })) return false;
-      var niveis = new Set(tiles.map(function (x) { return x.tileID && x.tileID.canonical && x.tileID.canonical.z; }));
-      return niveis.size <= 1;
+      var todos = cache._tiles || {};
+      for (var k in todos) { var st = todos[k] && todos[k].state; if (st === "loading" || st === "reloading") return false; }
+      var ids = cache.getRenderableIds ? cache.getRenderableIds() : Object.keys(todos);
+      var zs = ids.map(function (id) { var x = todos[id]; return x && x.tileID && x.tileID.canonical ? x.tileID.canonical.z : null; })
+        .filter(function (z) { return z !== null; });
+      if (!zs.length) return false;
+      return Math.max.apply(null, zs) - Math.min.apply(null, zs) <= 1;
     } catch (e) { return true; }
   }
   function tileComErro() {

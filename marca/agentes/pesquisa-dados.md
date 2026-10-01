@@ -42,8 +42,8 @@
   `REGIE_MOTOR=<motor>` na mesma chamada. `MOTOR_SEM_ARQUIVO`, "atualize o motor" ou uma pilha com exit 1
   querem dizer só que faltou a variável (CLAUDE.md, "Os especialistas"), não reprovação. Nunca mexa no
   motor nem no `canal.json` por causa disso.
-- **Gate que pede `sharp` ou `playwright-core` sai NÃO MEDIDO**, com o nome: o `npm install` não foi
-  autorizado pelo Lucas. Não simule gate.
+- **Gate que pede `sharp` ou `playwright-core` roda desde 01/10/2026**: o Lucas autorizou o npm (CLAUDE.md, "Os
+  portões medem"), com `REGIE_MOTOR` na mesma chamada. Gate que sai exit 2 com o alvo certo é NÃO MEDIDO, pelo nome. Não simule gate.
 - **Nunca** rode `narrar.mjs` nem `transcrever.mjs`: gastam crédito da ElevenLabs e refazem o relógio
   (CLAUDE.md).
 - **Site que recusa leitura automática** (403, 405, captcha, verificação de robô, página "Just a

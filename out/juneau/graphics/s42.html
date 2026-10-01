@@ -25,7 +25,7 @@
   'supporters,' acaba em 461,305 → 21,505 · 'often' 462,04 → 22,240 · 'that.' 462,674 → 22,874.
     b1  0,000–5,367 "Then there's the road. If getting to Juneau is the complaint, why not just build one?"  — UMA câmera
         contínua no arquivo inteiro. Ela abre perto de Juneau (o ponto do cidades-ne em (2750, 1050), com o rótulo Juneau à
-        direita, fora da estrada, desde o 1º quadro) e voa baixo para o norte ao longo da estrada-juneau-cascade, já
+        direita e acima do ponto, fora da estrada, desde o 1º quadro) e voa baixo para o norte ao longo da estrada-juneau-cascade, já
         traçada (--destaque, 14 px sobre a sombra de 26 px, como a s03), num deslizar só (rampa suave só nas pontas do
         voo), com a água à esquerda e a montanha à direita; o anel de Cascade Point (56 px, traço de 10 px, parado, sem
         pulso) passa pelo centro do quadro em 5,367. Juneau, o ponto e o nome, sai em 2,267–2,567 (300 ms), antes de o
@@ -86,6 +86,13 @@
 
   O MAPA: o perfil do canal (maptiler), sem relevo, brilho 65 % e saturação 70 % na camada, sem véu.
   NENHUM RÓTULO SOBRE UMA LINHA: medido quadro a quadro, sem tile (relato do mapista de 01/10/2026).
+  O NOME JUNEAU (correção 1 do Claude central, 01/10/2026, item da s42): com a caixa do DOM (520 × 189; o ensaio usava
+  502), à direita e na altura do ponto, a pílula entrava 15 px no canto do YouTube em 2,3–2,533, enquanto saía com a
+  câmera andando. À esquerda do ponto ela não cabe: a estrada passa por ali, e o melhor lugar desse lado fica a 33 px
+  dela. Ela continua à direita, com a borda esquerda a 40 px do ponto, e sobe: o centro 125 px acima dele. Assim fica a
+  58 px ou mais da estrada, a 137 px ou mais das margens e fora do canto em todo quadro em que se vê (0–2,567), e o tempo
+  da regência não muda (a saída segue em 2,267–2,567, depois de a voz dizer "Juneau"). A cena confere a caixa com as
+  fontes carregadas (CENA.caixas, conferirCaixas).
 
   O CONTRATO: var DUR = 23.333 (o qc-janela lê o número escrito); __renderAt(t) determinístico e à prova de erro;
   __prepararCaptura; __ready (o mapa); __aguardarMapa; __fotosProntas (as fontes da folha). Nada de relógio, sorteio,
@@ -326,9 +333,12 @@
     recuo: { de: 11.933, dura: 2.7, abre: 0.5, fecha: 0.5,
              para: { lng: -134.9510, lat: 58.7560, zoom: 8.72, bearing: 0, pitch: 0 } },
 
-    // ── Juneau: o ponto e o nome à direita dele (a borda esquerda do rótulo a dx do ponto, centrado na altura dele),
-    //    desde o 1º quadro; saem juntos em 300 ms antes de o rótulo chegar à faixa de baixo (y 1880)
-    rotJuneau: { dx: 40, sai: 2.267 },
+    // ── Juneau: o ponto e o nome à direita dele (a borda esquerda do rótulo a dx do ponto, o centro dy acima dele),
+    //    desde o 1º quadro; saem juntos em 300 ms antes de o rótulo chegar à faixa de baixo (y 1880). Na altura do ponto,
+    //    a pílula (520 × 189 no DOM) entrava no canto do YouTube na saída (O NOME JUNEAU, no cabeçalho)
+    rotJuneau: { dx: 40, dy: -125, sai: 2.267 },
+    // a caixa real do nome ([largura, altura] no DOM do Chrome, depois do document.fonts.ready, sem tile)
+    caixas: { rotJuneau: [520, 189] },
 
     legenda: { itens: [{ id: "legJuneau", entra: 0 }, { id: "legBorder", entra: 13.333 }], linha: 101, vao: 12, respiro: 16 },
 
@@ -379,6 +389,16 @@
   E("rotJuneau").textContent = X.juneau;
   E("legJuneauTxt").textContent = X.legJuneau; E("legBorderTxt").textContent = X.legBorder;
   E("creditoFonte").textContent = X.fonte;
+  // a caixa real: com as fontes carregadas, o nome não pode sair maior que a medida com que o ensaio a seco mediu as
+  // folgas (CENA.caixas): maior, ele pode ficar sobre a estrada ou no canto, e a cena reprova em vez de mostrar
+  function conferirCaixas() {
+    for (var id in CENA.caixas) {
+      var el = E(id), c = CENA.caixas[id];
+      if (!el || typeof el.offsetWidth !== "number" || !el.offsetWidth) continue;
+      if (el.offsetWidth > c[0] + 2 || el.offsetHeight > c[1] + 2)
+        return falhar("a pílula " + id + " mede " + el.offsetWidth + " × " + el.offsetHeight + " px no DOM, e as folgas foram medidas com " + c[0] + " × " + c[1] + " (CENA.caixas).");
+    }
+  }
 
   // ── a folha datilografada (como na s12): quebra o literal em colunas e marca os grifos palavra a palavra ──────
   var FL = CENA.folha;
@@ -810,7 +830,7 @@
     // ── Juneau: o ponto e o nome, desde o 1º quadro; saem juntos antes de o rótulo chegar à faixa de baixo ──
     var pj = map.project(JUNEAU), oj = 1 - seg(t, CENA.rotJuneau.sai, 0.3), dj = E("pontoJuneau"), rj = E("rotJuneau");
     dj.setAttribute("cx", pj.x.toFixed(1)); dj.setAttribute("cy", pj.y.toFixed(1)); dj.setAttribute("opacity", oj.toFixed(3));
-    rj.style.left = (pj.x + CENA.rotJuneau.dx).toFixed(1) + "px"; rj.style.top = pj.y.toFixed(1) + "px";
+    rj.style.left = (pj.x + CENA.rotJuneau.dx).toFixed(1) + "px"; rj.style.top = (pj.y + CENA.rotJuneau.dy).toFixed(1) + "px";
     rj.style.opacity = oj.toFixed(3); rj.style.transform = "translate(0,-50%)";
 
     // ── o anel de Cascade Point: parado, sem pulso, o arquivo inteiro (fora do quadro no começo do voo). Entra pelo alto
@@ -917,7 +937,9 @@
     });
   };
 
-  window.__fotosProntas = R.prontas().then(function () { return true; });
+  window.__fotosProntas = R.prontas().then(function () {
+    return (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () { conferirCaixas(); return true; });
+  });
 
   var capturando = false, rafId = 0;
   var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";

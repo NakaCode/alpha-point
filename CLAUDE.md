@@ -292,8 +292,8 @@ rodar e ler está em `scripts/`, `contratos/`, `knowledge/`, `seed/`, `regua/`, 
 pré-v1 (commit `7ab9543`), com o sha256 conferido. Os `ORIGEM.json` (na raiz, em `scripts/`, `contratos/` e
 `regua/`) guardam a procedência, e o `.gitattributes` guarda `assets/` sem conversão de fim de linha, para o
 sha256 valer também num clone. **Nada disso se edita**: a próxima versão do motor passaria por cima, e o sha256
-deixaria de provar a origem. O gosto do canal vai na roupa. O `package.json` do molde não veio, porque o npm
-não está autorizado.
+deixaria de provar a origem. O gosto do canal vai na roupa. O `package.json` do molde veio em 01/10/2026, quando
+o Lucas autorizou o npm ("Os portões medem", abaixo), copiado byte a byte (sha256 `1428f2e4…`).
 
 **Quem entra em que passo** da linha (`regie graph`):
 - `mirror`: `montador` (`words.json` + `roteiros/<proj>/roteiro-narrador.md` → `espelho.json`);
@@ -493,14 +493,26 @@ Sem ela, o script cai na v0.1.0 e diz "atualize o motor para a versão que o can
 (`MOTOR_SEM_ARQUIVO`). Às vezes sai com exit 1 e uma pilha, o que parece reprovação. Isso quer dizer só "faltou
 `REGIE_MOTOR`". Nunca mexa no motor nem no `canal.json`, e nunca rode `regie atualizar`, por causa dessa mensagem.
 
-Sem `npm.cmd install`, que o Lucas ainda não autorizou, saem NÃO MEDIDO (exit 2) os portões que abrem a cena
-no Chrome e os que medem imagem:
-- `shot`, `probe-elemento`, `check-overlap`, `qc-carga` e `qc-tamanho`;
-- `qc-contrato`, na parte que roda a cena;
-- `qc-pais-bandeira`, `qc-fora-do-quadro`, `qc-credito-fantasma`, `qc-video-avanca`, `qc-rodape-contraste`,
-  `_audit-til` e `medir-imagem`.
-
-Por causa deles, o `qc-cena` não dá carimbo a nenhuma cena.
+**Os portões medem** (desde 01/10/2026). A pergunta ao Lucas: "O qc-visual julgou as 12 primeiras cenas com nota
+boa em todas as lentes (8 a 10), mas não pode aprovar nenhuma: os portões que medem cada cena no Chrome (colisão,
+fora do quadro, crédito, contraste) não rodam sem o npm, e a regra deixa essa decisão com você. Como seguimos?" A
+resposta: "Instalar o npm (Recomendado)". A opção dizia: "Eu instalo só duas peças, as que o molde da Régie pede:
+playwright-core (usa o Chrome que já está no PC, não baixa navegador) e sharp. Os portões passam a medir cada cena
+quadro a quadro, como o motor prevê. Pode achar mais defeitos (mais uma rodada de conserto) e pede tiles da MapTiler
+nas cenas de mapa. Custa algumas horas a mais."
+- O `package.json` é o do molde (`C:/projetos/regie-v1/template/package.json`); o `npm.cmd install` pôs 9 pacotes em
+  `node_modules/`, que fica fora do git. O `package-lock.json` vai ao git.
+- Agora rodam, com `REGIE_MOTOR` na mesma chamada: `shot`, `probe-elemento`, `check-overlap`, `qc-carga`,
+  `qc-tamanho`, `qc-contrato` (inteiro), `qc-fora-do-quadro`, `qc-credito-fantasma`, `qc-video-avanca`,
+  `qc-rodape-contraste`, `_audit-til`, `medir-imagem` e o `qc-pais-bandeira` (que só lê nome de país em português).
+- **O `qc-cena`** (`node scripts/qc-cena.mjs out/<proj> --conc=3`, ou os HTML de cenas) roda contrato, carga,
+  colisão, tamanho, til, src-existe, fora do quadro e crédito-fantasma em toda cena, grava o carimbo em
+  `out/<proj>/_portao.json` (que o XML do motor lê) e sai 0 só com todas passando. O `mapa-vivo` não veio do
+  estúdio e fica fora do portão (ele avisa). O `qc-rodape-contraste` e o `qc-video-avanca` rodam à parte.
+- Cena de mapa nos portões abre o mapa no Chrome e pede tiles à MapTiler: conta como render no
+  `maptiler-gasto.md`.
+- Quem roda os portões é o Claude central (e o `editor-de-arte` e o `mapista` antes de entregar). O `qc-visual` lê o
+  resultado e só aprova com todas as lentes ≥ 7 e nenhum portão duro reprovado.
 
 Não se rodam:
 - `stock/_phil.mjs`, `stock/_contato.mjs` e `_capturar-pagina.mjs`, que mandam cabeçalho de navegador (a regra

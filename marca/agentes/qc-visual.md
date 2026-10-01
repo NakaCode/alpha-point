@@ -59,7 +59,8 @@
 ## 2 · Os quadros, nesta máquina (ofício, contrato §4)
 
 - **Cena sem mapa**: `node <motor>/src/ferramentas/quadro.mjs out/<proj>/graphics/<cena>.html
-  out/<proj>/_tmp/qc-<cena>@<t>.png --t=<t>`. Ele usa CDP, sem npm. O `shot.mjs` sai NÃO MEDIDO.
+  out/<proj>/_tmp/qc-<cena>@<t>.png --t=<t>`. Ele usa CDP, sem npm. O `shot.mjs` roda desde 01/10/2026 (o npm
+  foi autorizado), com `REGIE_MOTOR` na mesma chamada.
 - Se o `quadro.mjs` cair com a conexão fechada (foto ou satélite em tela cheia; por quê: CLAUDE.md, "Peças da
   pré-v1", item 7), use o clipe renderizado, desde que ele valha (abaixo):
   `ffmpeg -ss <t> -i out/<proj>/graphics/<cena>.mp4 -frames:v 1 out/<proj>/_tmp/qc-<cena>@<t>.png`.
@@ -80,23 +81,20 @@
 
 ## 3 · Os portões: o que rodou, o que não rodou, e o `aprovado`
 
-- **Rodam sem npm**: `qc-janela`, `qc-src-existe` e `qc-hex`. Quem desenhou os roda e manda o veredito no
-  resumo; você lê, com a contagem de itens.
-- **Saem NÃO MEDIDO** enquanto o npm não for autorizado (DECISÃO DO LUCAS PENDENTE): os portões de navegador
-  da lista do CLAUDE.md ("Os especialistas"). O `qc-cena` não dá carimbo a nenhuma cena por causa deles. Isso
-  **não** é verde e **não** é reprova. No laudo, cada um vai pelo nome.
-- Com os quadros na mão, você ainda olha o que eles mediriam: colisão, tamanho, fora do quadro. Olhar não é
-  medir. No laudo, a frase é "olhado; portão NÃO MEDIDO", nunca "passou".
-- **O `aprovado`, até o Lucas decidir se cena vai ao 4K sem esses portões** (DECISÃO DO LUCAS PENDENTE):
-  - as 14 lentes são julgadas normalmente;
-  - na lente em que cada portão mediria (`espaco` para colisão, tamanho e borda; `poluicao` para carga;
-    `fonte` para crédito-fantasma e contraste do rodapé), vai um problema `"NÃO MEDIDO: <portão>
-    (sem playwright-core)"`;
-  - `gatesDuros` lista só portão que mediu e reprovou;
-  - `aprovado` fica `false`, porque "zero portão duro vivo" não foi provado. No report: "lentes ≥ 7; aguarda
-    portões NÃO MEDIDO".
-  - O `qc-laudo` barra. Quem destrava é o Lucas: com a decisão dele, o laudo ganha `"resolvido": true` e um
-    `motivo` com a data e as palavras dele. Não é você que marca `resolvido`.
+- **Os portões medem desde 01/10/2026**: o Lucas autorizou o npm ("Instalar o npm (Recomendado)"; CLAUDE.md, "Os
+  portões medem"). O `playwright-core` e o `sharp` estão no canal.
+- **Quem roda**: o Claude central roda o `qc-cena` (contrato, carga, colisão, tamanho, til, src-existe, fora do
+  quadro e crédito-fantasma) em toda cena e grava o resultado em `out/<proj>/_tmp/qc-cena-*.txt` e o carimbo em
+  `out/<proj>/_portao.json`; o `qc-rodape-contraste` e o `qc-video-avanca` rodam à parte. Você lê o resultado, com
+  a contagem de itens, e pode rodar um portão você mesmo numa cena (com `REGIE_MOTOR` na mesma chamada). O
+  `qc-janela`, o `qc-src-existe` e o `qc-hex` seguem como antes.
+- O `mapa-vivo` não veio do estúdio: o `qc-cena` avisa que ele fica fora. Ele não é NÃO MEDIDO de cena; não
+  vai ao laudo como problema.
+- **O `aprovado`** segue o ofício: todas as lentes ≥ 7 **e** `gatesDuros` vazio, com os portões rodados. Portão
+  que mediu e reprovou vai a `gatesDuros`. Portão que não rodou numa cena (exit 2 com o alvo certo) segue NÃO
+  MEDIDO, pelo nome, e a cena fica `aprovado: false` até ele rodar.
+- **Os 12 laudos do 1º lote** (escritos antes da instalação, com os portões NÃO MEDIDO) se refazem com o
+  resultado do `qc-cena`: as lentes não mudam, e o `aprovado` passa a valer pela regra acima.
 
 ## 4 · Os números da marca, por lente
 

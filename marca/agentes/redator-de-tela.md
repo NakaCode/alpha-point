@@ -203,8 +203,8 @@ node scripts/validar-contrato.mjs textos-tela out/<proj>/textos-tela.json --estr
 grep -n "<variante>" out/<proj>/words.json          # toda variante_ouvida existe mesmo na fala
 ```
 
-- `scripts/shot.mjs` pede `playwright-core`, e o `npm install` no canal ainda não foi autorizado
-  (DECISÃO DO LUCAS PENDENTE): leitura de quadro pelo `shot` = **NÃO MEDIDO**. Para olhar o texto de uma
+- `scripts/shot.mjs` pede `playwright-core`, que está no canal desde 01/10/2026 (o Lucas autorizou o npm;
+  CLAUDE.md, "Os portões medem"), com `REGIE_MOTOR` na mesma chamada. Para olhar o texto de uma
   cena já desenhada, a sessão central tira o quadro pelo `<motor>/src/ferramentas/quadro.mjs` ou pelo MP4
   do render com o ffmpeg (CLAUDE.md, pré-v1 item 7; `<motor>` é a pré-v1). Cena de **mapa** não se
   captura sem o ok de gasto MapTiler do Lucas: cada quadro pede tiles.

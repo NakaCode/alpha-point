@@ -50,9 +50,11 @@
 - **Portões**: `node scripts/<portão>.mjs`, com `REGIE_MOTOR` na mesma linha (CLAUDE.md, "Os especialistas").
   `MOTOR_SEM_ARQUIVO` = faltou a variável; nunca siga o "atualize o motor". O `render/capturar.mjs` do
   ofício não existe: o render é `<motor>/src/ferramentas/renderizar.mjs`.
-- **Sem npm** (o `npm install` não foi autorizado; DECISÃO DO LUCAS PENDENTE): os portões de navegador e o
-  `medir-imagem` saem **NÃO MEDIDO** (a lista está no CLAUDE.md, "Os especialistas"). Diga o nome de cada um.
-  Não simule, não chame de verde.
+- **Os portões de navegador medem desde 01/10/2026** (o Lucas autorizou o npm; CLAUDE.md, "Os portões medem").
+  Antes de entregar, rode `node scripts/qc-cena.mjs out/<proj>/graphics/<id>.html` (com `REGIE_MOTOR` na mesma
+  chamada) em cada cena que você mexeu, e conserte até sair 0; no relato, a saída de cada uma. Portão que sair
+  exit 2 com o alvo certo é NÃO MEDIDO, pelo nome. Não simule, não chame de verde. Cena com mapa no `qc-cena`
+  pede tiles: diga quantas rodadas fez, para o `maptiler-gasto.md`.
 - **Nunca rode** `narrar.mjs` nem `transcrever.mjs`: gastam crédito da ElevenLabs e refazem o relógio
   (CLAUDE.md). Onde o ofício manda "o relógio sai do transcrever", aqui ele já vem pronto.
 - **Você não vai à rede.** Mídia vem das pesquisas. Site que recusa leitura automática (403, captcha,
@@ -148,8 +150,7 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
   anel, território aceso, cartão). Não contam a base de tela cheia, o crédito e a textura. O círculo de ator
   com a bandeira e o nome embaixo conta como um. Blocos de texto vivos: até 3 (`--max-blocos`; o que é bloco: identidade.md §4.2). Um herói por
   cena, ou nenhum.
-- O `qc-carga` conta em outra unidade e com os tetos do ofício, não com os 6 da marca, e sem npm sai NÃO
-  MEDIDO. Conte os 6 da marca nos quadros e escreva a conta no cabeçalho do HTML como conta sua, não como
+- O `qc-carga` conta em outra unidade e com os tetos do ofício, não com os 6 da marca. Conte os 6 da marca nos quadros e escreva a conta no cabeçalho do HTML como conta sua, não como
   portão. DECISÃO DO LUCAS PENDENTE: como passar esse teto aos flags do `qc-carga`.
 
 ## 5 · Tempo e movimento (identidade.md §4.3–§4.4)
@@ -336,10 +337,10 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   `node <motor>/src/ferramentas/renderizar.mjs <proj> --cena=<id> --4k` (sempre `--4k`, e o carimbo
   `<id>.mp4.de-html` terminando em `2160p`; CLAUDE.md, "Os especialistas", tropeços) e depois
   `ffmpeg -ss <t> -i out/<proj>/graphics/<id>.mp4 -frames:v 1 out/<proj>/_tmp/<id>@<t>.png`. O `shot.mjs`
-  sai NÃO MEDIDO.
-- **Itens 2, 2c, 3, 4 e 7** do contrato: são portões de navegador, NÃO MEDIDO sem npm (a lista está no
-  CLAUDE.md, "Os especialistas"). Olhe nos quadros o que eles mediriam e escreva no resumo "olhado, portão não
-  rodou".
+  roda desde 01/10/2026, com `REGIE_MOTOR`.
+- **Itens 2, 2c, 3, 4 e 7** do contrato: são portões de navegador e rodam desde 01/10/2026 (o `qc-cena` roda a
+  maior parte; a lista está no CLAUDE.md, "Os portões medem"). Os portões medem o HTML em instantes que eles
+  escolhem: continue olhando nos quadros do clipe o que ficou entre esses instantes (a câmera, as entradas).
 - **Item 5**: `node scripts/qc-src-existe.mjs out/<proj>/graphics/<id>.html`.
 - **Item 6**: `node scripts/qc-hex.mjs out/<proj>/graphics/<id>.html`, no lugar do `perl` do ofício.
 - **Item 9** (lastro): `node scripts/mapa-limpo.mjs <proj> --tc <início>-<fim>`, em timecode `hh:mm:ss:ff`.
