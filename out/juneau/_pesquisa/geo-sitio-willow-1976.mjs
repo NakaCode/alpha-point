@@ -271,5 +271,11 @@ else if (ACAO === "conferir" || ACAO === "gravar") {
       url: "https://www.openstreetmap.org/copyright", exige_credito: true,
       derivado_por: `out/juneau/_pesquisa/geo-sitio-willow-1976.mjs gravar (dumps ${DUMP_OSM} e ${DUMP_NHD}; cursos costurados pelas pontas; ferrovia pelo caminho mais curto entre as travessias; Douglas–Peucker 0.0002°)` } });
     console.error(`✓ ${SLUG}\n${relatarGravacao(g)}`);
+    // a ressalva no registro da pauta, que é o que o conceito, a regência e o redator leem (laudo de fatos da tela de
+    // 01/10/2026, F1: o aviso ficava só neste cabeçalho); o gravarGeo refaz o item sem ela, então ela entra aqui depois
+    const arqPauta = "out/juneau/_pesquisa/pauta-geo.json", pauta = JSON.parse(readFileSync(arqPauta, "utf8"));
+    pauta.itens.find((x) => x.arquivo === `_media/geo/${SLUG}.json`).ressalva = "são as feições que limitam o local, inteiras; não são o local";
+    writeFileSync(arqPauta, JSON.stringify(pauta, null, 2) + "\n");
+    console.error("  → ressalva escrita no item da pauta (são as feições inteiras, não o local); os trechos: limites-sitio-willow-1976-trechos");
   }
 } else { console.error("uso: node out/juneau/_pesquisa/geo-sitio-willow-1976.mjs baixar|conferir|gravar"); process.exit(2); }

@@ -2,7 +2,7 @@
 dele pelo Claude central, sem mudar uma palavra: o ofício do verificador não tem Write. O laudo de 28/09 continua em
 fatos-tela.laudo.md. -->
 
-## Nota do Claude central (01/10/2026, 13:1x), sobre o F1
+## Nota do Claude central (01/10/2026, 13:0x), sobre o F1
 
 - **A escolha:** o conserto na arte, o recomendado pelo laudo. As feições do sítio de Willow se cortam ao trecho em volta
   do anel, e o texto `Proposed site` fica como está; o `textos-tela.json` não muda.

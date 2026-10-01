@@ -334,3 +334,44 @@ Devolução (01/10): em s52, plano 2, a rota da balsa estadual está entregue in
 
 ---
 Devolução (01/10): em s44, o vão entre a estrada sólida e o fim da Thane Road tem a geometria real (`estrada-juneau-thane`). Agora decide o **mapista**, que a desenha na cena junto com a `estrada-juneau-cascade`; o aviso vai pelo Claude central.
+
+## 10. Pedido do Claude central, 01/10 (passo `art`): as feições do sítio de Willow cortadas (s15, s21, s24)
+
+**O pedido.** O laudo de fatos da tela de 01/10 (`roteiros/juneau/qc-roteiro/fatos-tela-2026-10-01.laudo.md`, F1) pegou a legenda `Proposed site` sobre a camada `limites-sitio-willow-1976`, que desenha as quatro feições inteiras. O Claude central escolheu o conserto na arte: uma camada com cada feição cortada ao trecho que limita o local, e a ressalva no registro da pauta, que é a raiz.
+
+**A camada nova:** `limites-sitio-willow-1976-trechos`, derivada sem rede da camada gravada (conferido o sha256 `e1b42ab5…bbf4` contra a pauta). Cada linha nova fica exatamente sobre a de hoje, só com os pontos de corte acrescentados. A camada de hoje fica como está, porque as cenas ainda a usam.
+
+**A regra do corte.** O folheto (p. 48) dá Willow Creek ao norte, o Little Susitna ao sul e a ferrovia a oeste, e põe a cidade junto do Deception Creek. Não dá o limite leste.
+- **Willow Creek e Little Susitna:** só o leito principal (a primeira parte da camada de hoje; os braços com o mesmo nome saem). Vão do ponto do rio mais perto da travessia da ferrovia que a camada registra (a 8,8 m e a 5,1 m dela) até o **meridiano do ponto mais a leste do Deception Creek** (−149,682696°). Cada leito cruza esse meridiano uma vez só.
+  - O corte literal "até o Deception Creek" não serve a nenhum dos dois. O riacho deságua no Willow Creek a uns 600 m da ferrovia, o que deixaria meio quilômetro de rio, e não chega ao Little Susitna. A regra usa só a longitude da ponta leste dele, e por isso cabe nos dois.
+- **A ferrovia:** como estava, entre as duas travessias.
+- **O Deception Creek:** inteiro. A ponta leste dele é o próprio meridiano do corte, e a oeste ele deságua no Willow Creek, dentro do trecho.
+- Nada fecha polígono, liga uma ponta à outra nem põe ponto "5 mi a leste".
+
+**A conferência**, medida sobre a geometria gravada (simplificada a 0,0002°; a conferência de 27/09, na resolução completa, dava 69,3, 199,7 e 33,0 km para os três cursos). O anel da s15 é o ponto da vila (`cidade-willow-osm`) mais 5 milhas a leste, na mesma latitude (−149,884795°, 61,74722°), pela mesma conta de `PT.S`.
+
+| Feição | Antes | Depois | Do anel, antes (mín.–máx.) | Do anel, depois (mín.–máx.) |
+|---|---|---|---|---|
+| Willow Creek | 68,15 km, 12 partes (leito 58,76) | 26,62 km, 1 parte | 3,10–30,00 km | 3,10–10,78 km |
+| Little Susitna River | 196,09 km, 13 partes (leito 156,11) | 14,47 km, 1 parte | 13,39–57,37 km | 13,63–16,20 km |
+| Deception Creek | 30,89 km | 30,89 km (inteiro) | 1,39–12,16 km | 1,39–12,16 km |
+| Alaska Railroad | 20,63 km | 20,63 km (como estava) | 7,51–13,70 km | 7,51–13,70 km |
+
+A partir do anel, até 50 km em cada direção:
+- **ao norte**, o Willow Creek, a 3,59 km;
+- **ao sul**, o Deception Creek, a 2,10 km, e depois a ferrovia, a 11,12 km;
+- **a oeste**, o Deception Creek, a 1,96 km, e depois a ferrovia, a 8,28 km;
+- **a leste**, nada: o lado que o folheto não fecha.
+
+O trecho do Little Susitna fica a sul-sudeste do anel (13,6–16,2 km), entre a travessia de Houston e o meridiano. O sul exato do anel cruza a ferrovia antes, porque ela corre na diagonal, de Houston a Willow.
+
+**A raiz, na pauta.** O item de `limites-sitio-willow-1976` ganhou o campo `ressalva`: "são as feições que limitam o local, inteiras; não são o local". O item novo leva a ressalva dos trechos com a regra do corte. Para que a ressalva do item antigo não suma se a camada for regravada, o `geo-sitio-willow-1976.mjs gravar` passou a escrevê-la depois do `gravarGeo` (que refaz o item sem ela); a geometria dele não mudou. O `geo-sitio-willow-1976-trechos.mjs gravar` escreve as duas.
+
+**Crédito.** O mesmo da camada de hoje: `© OpenStreetMap contributors` na tela (Willow Creek, Little Susitna, ferrovia) e openstreetmap.org/copyright na descrição; o Deception Creek é do NHD, domínio público. O `gravarGeo` acrescentou a linha ao `_creditos-mapa.md`.
+
+**Portões:** `validar-contrato pauta-pesquisa` ✓ válido; `qc-procedencia juneau` (com `REGIE_MOTOR`) PASS; `conferir-pauta-geo.mjs juneau` 45/45 ✓; a checagem 1 do contrato (FeatureCollection, 4 features, 4 LineStrings, 727 pares, nada vazio; 27 KB). `build-geo-manifest`: NÃO MEDIDO (build-geo-manifest).
+
+**Como refazer.** `node out/juneau/_pesquisa/geo-sitio-willow-1976-trechos.mjs conferir` e `gravar`, sem rede.
+
+---
+Devolução (01/10): em s15, s21 e s24, as feições do sítio de Willow estão cortadas ao trecho que limita o local (`limites-sitio-willow-1976-trechos`). Agora decide o **mapista**, que troca a camada nas três cenas; o aviso vai pelo Claude central.
