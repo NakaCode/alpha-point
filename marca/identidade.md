@@ -191,6 +191,9 @@ que mais muda o 'chapado'. O azul fica um pouco mais acinzentado. Libera o degra
   5,3:1; aviso do ano na pílula, 12,0:1. Os dois acima do piso. O feltro clareia a mesa: a cena que puser texto
   direto sobre ela confere o contraste de novo.
 - O feltro e a luz são textura e não contam como elemento (§4.2).
+- **A cena de referência** é a s09 do Juneau, no render de 30/09/2026, 22:54 (carimbo `0b1ed726…`, 2160p): a foto de
+  1915 impressa e a Ladd Field, com a luz atrás da foto que está na mesa. O Lucas viu a prévia com a narração e disse:
+  "Sim, ficou bom".
 
 **A folha de documento** (Lucas, 27/09/2026). Ele viu três caminhos numa página de opções e escolheu o
 "Arquivo datilografado". Da versão anterior, apontou o risco de o rasgo cortar texto longo: "tenho medo da B
