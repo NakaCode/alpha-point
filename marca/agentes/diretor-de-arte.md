@@ -103,7 +103,9 @@ Cada modelo tem a sua base, e ela é marca (identidade.md §5, §6):
 | DOCUMENTO | `--fundo`, com a folha de papel (`--papel`, textura, fita, borda rasgada) sobre ele (Lucas, 27/09/2026; identidade.md §5) |
 | card de pessoa com fala | `--fundo`: retrato como foto impressa com fita e a fala num cartão de papel (Lucas, 27/09/2026; identidade.md §5) |
 
-A identidade não tem degradê (`marca/tokens.css`, `--degrade: none`). Onde o ofício ou o acervo do Top10
+A identidade não tem degradê (`marca/tokens.css`, `--degrade: none`), com uma exceção: a mesa das cenas sem mapa
+sobre `--fundo` é feltro sob a luz (Lucas, 30/09/2026; identidade.md §5, "A mesa: feltro sob a luz"). Na `tecnica`,
+diga atrás de qual objeto a luz fica. Onde o ofício ou o acervo do Top10
 chamam fundo escuro liso de defeito, **neste canal a PRANCHA sobre `--fundo` é a marca**. DECISÃO DO
 LUCAS PENDENTE: se PRANCHA e DADO ganham inset de prova real (foto do lugar dentro do cartão) e em que
 medida, dentro do teto de 6 elementos. Até lá, proponha o inset na `tecnica` só quando a cena nomeia

@@ -97,8 +97,14 @@
 - Sem degradê (`--degrade: none`) e sem véu: a cena de teste de mapa tirou o véu escuro do molde porque a
   identidade não tem degradê (CLAUDE.md, item 7). Fundo sólido (PRANCHA e DOCUMENTO em `--fundo`, DADO em
   `--papel`) fica vivo pela câmera e pelas camadas, como o ofício pede (§8). A textura, a fita e a sombra da
-  folha de documento e do cartão da fala não são degradê de fundo: são o objeto sobre a mesa (identidade.md §5). DECISÃO DO LUCAS PENDENTE: se o
-  fundo sólido ganha vinheta. Até lá, não ganha.
+  folha de documento e do cartão da fala não são degradê de fundo: são o objeto sobre a mesa (identidade.md §5).
+- **A mesa é feltro sob a luz** (Lucas, 30/09/2026, a variante E; identidade.md §5, "A mesa: feltro sob a luz"). Toda
+  cena sem mapa sobre `--fundo` (DOCUMENTO, card, foto impressa, PRANCHA) leva a luz no fundo da câmera, centrada atrás
+  do objeto principal e andando com ele, e o feltro numa camada `#mesa`, que é o primeiro filho da câmera. Os
+  valores e o modo de usar estão em `marca/tokens.css`, "A MESA". É a única exceção ao `--degrade: none`. **Nada
+  disso vai por cima** da foto, da fita, da folha, do card ou do texto: nunca um `::after` de textura sobre a cena
+  (`APRENDIZADOS.md` item 53). A referência é a s09 do Juneau, depois da correção. O DADO continua em `--papel`, e o
+  mapa e o registro em tela cheia continuam sem degradê nem vinheta.
 
 ## 3 · Tipo (identidade.md §3; tokens.css)
 

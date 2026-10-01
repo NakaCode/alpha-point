@@ -39,7 +39,7 @@ Cor com PAPEL. Uma cor = um significado, no vídeo inteiro.
 
 | Token | Valor | Papel |
 |---|---|---|
-| `--fundo` | `#0E1726` | fundo de prancha (atores, fluxos, causa → efeito) |
+| `--fundo` | `#0E1726` | fundo de prancha (atores, fluxos, causa → efeito) e a mesa das cenas sem mapa, com o feltro e a luz (§5, "A mesa") |
 | `--painel` | `#172338` | cartão sobre `--fundo` |
 | `--papel` | `#ECE8DF` | fundo claro de DADO (gráfico); a folha de DOCUMENTO e o cartão da fala citada, sobre `--fundo` (§5) |
 | `--tinta` | `#F4F1EA` | texto sobre escuro, contorno do território protagonista |
@@ -167,6 +167,30 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 | **PRANCHA** | atores e relações, causa → efeito. Ator = círculo de 640 px, traço de 6 px na cor do papel dele, bandeira oficial dentro e nome embaixo. Setas e linhas de 6 px; ícone em círculo de 160 px | `--fundo` |
 | **DADO** | gráfico com série do protagonista em `--destaque` e da contraparte em `--contraparte`; eixo em `--tinta-escura` a 60 % | `--papel` |
 | **DOCUMENTO** | lei, tratado, cédula, folheto, manchete real, como **folha de papel sobre a mesa** (a regra da folha, logo abaixo); o trecho que importa grifado em `--destaque` a 35 %, passando junto com a voz. Peça do Estado do Alasca ou de imprensa, só com permissão clara; sem ela, o trecho recriado no visual do canal, com o texto fiel e a fonte citada (`midia.md` §7.1) | `--fundo` (a mesa), com a folha em `--papel` |
+
+**A mesa: feltro sob a luz** (Lucas, 30/09/2026, 22:4x de Brasília). Ao ver a prévia da s09 do Juneau, ele disse
+sobre a foto impressa: "Achei esse fundo meio sem graça, um azul 'chapado'". Viu cinco fundos lado a lado, no mesmo
+quadro (`out/juneau/_tmp/piloto/mesa/prova-mesa-ladd-1080p.png` e `prova-mesa-1915-1080p.png`). A pergunta: "Qual
+fundo de mesa fica valendo nas cenas sem mapa (documentos, cards e fotos impressas, cerca de metade do vídeo)? A D
+(sobre o mapa) já é o que o vídeo final faz neste trecho da s09, mas não serve para documento nem card." A resposta:
+"E, feltro sob a luz (Recomendado)". A opção dizia: "Material com textura visível e uma luz suave atrás da foto. É a
+que mais muda o 'chapado'. O azul fica um pouco mais acinzentado. Libera o degradê na marca, que hoje é proibido."
+- **O que é:** a mesa continua em `--fundo`, com duas camadas a mais:
+  - **o feltro**: fibra e grão procedurais, sem arquivo de terceiros (`--mesa-feltro`);
+  - **a luz**: uma poça de luz suave atrás do objeto principal (a foto, a folha, o card), que cai para um azul mais
+    escuro nas bordas (`--mesa-luz-*`). O CSS está em `marca/tokens.css`, "A MESA".
+- **Onde:** em toda cena sem mapa cuja base é `--fundo`: DOCUMENTO, card de pessoa, foto impressa e PRANCHA (§5,
+  tabela dos modelos). A pergunta disse "as cenas sem mapa", e a PRANCHA é uma delas. O DADO continua em `--papel`.
+  O MAPA e o REGISTRO em tela cheia continuam sem degradê, véu ou vinheta (§6).
+- **A luz é a única exceção ao "sem degradê"** (`--degrade: none` nos tokens). Ela segue o objeto principal: o centro
+  da poça fica atrás dele, e anda com ele quando ele anda.
+- **As duas ficam por baixo de tudo:** da foto, da fita, da folha, do card e de todo texto. Textura ou luz por cima
+  de uma foto é filtro sobre a foto, e a regra da foto impressa proíbe isso (logo abaixo). Na s09 do Juneau, a
+  textura de antes estava num `::after` por cima de tudo e foi corrigida (`APRENDIZADOS.md` item 53).
+- **Contraste medido na escolha** (quadro 4K da s09, pior ponto, com o fundo atrás da letra): crédito em `--sec`,
+  5,3:1; aviso do ano na pílula, 12,0:1. Os dois acima do piso. O feltro clareia a mesa: a cena que puser texto
+  direto sobre ela confere o contraste de novo.
+- O feltro e a luz são textura e não contam como elemento (§4.2).
 
 **A folha de documento** (Lucas, 27/09/2026). Ele viu três caminhos numa página de opções e escolheu o
 "Arquivo datilografado". Da versão anterior, apontou o risco de o rasgo cortar texto longo: "tenho medo da B

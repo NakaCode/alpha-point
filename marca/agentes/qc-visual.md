@@ -125,8 +125,11 @@
   - cor por papel no vídeo inteiro. `--destaque` só no protagonista (uma entidade) e no anel;
   - `--tensao` nunca é a cor de um lado. Vermelho contra azul como dois lados reprova;
   - no máximo 3 matizes, fora a base de satélite. Território pintado com as cores da bandeira reprova;
-  - sem degradê. DECISÃO DO LUCAS PENDENTE: se fundo sólido (`--fundo`, `--papel`) sem vinheta basta. Até lá,
-    não reprove o fundo liso vivo pela câmera; reprove o parado.
+  - sem degradê, com uma exceção: a mesa das cenas sem mapa sobre `--fundo` (DOCUMENTO, card, foto impressa,
+    PRANCHA) leva o feltro e a luz (Lucas, 30/09/2026; identidade.md §5, "A mesa: feltro sob a luz"; tokens "A MESA").
+    Reprove a mesa lisa, sem o feltro e a luz. Reprove também a textura ou a luz por cima da foto, da fita, da folha,
+    do card ou do texto: é filtro sobre a foto. Para provar, compare um recorte dentro da foto com a mesma cena sem
+    textura (`APRENDIZADOS.md` item 53). Degradê, véu ou vinheta no mapa, no registro ou no DADO continuam reprovando.
 - **motion** (identidade.md §4.4):
   - mapa seguido de mapa é uma viagem, e o corte seco entre dois mapas reprova;
   - viagem de 1,5 a 3 s, cúbica;

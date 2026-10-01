@@ -957,3 +957,27 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   e histórico da conta".
 - **Por que serve a qualquer canal:** o plano é da conta, não do canal. Vale levar ao molde da skill: a linha L da
   Storyblocks depende do plano.
+
+## 30/09/2026 — o piloto do Juneau: o mapa e a foto na mesa (pré-v1 em `7ab9543`)
+
+### 53. Textura de fundo num `::after` pinta por cima da foto e do texto, e a medida de contraste pelo vizinho mente
+- **Problema:** a cena de foto impressa (s09) e a prancha de referência da marca punham o grão da mesa num
+  `#cam::after` (ou `.palco.mesa::after`) de `inset: 0`. Sendo o último filho, ele pinta por cima de tudo: a foto (até
+  em tela cheia), a fita e os rótulos que estão dentro da câmera. A 9 % mal se via. Quando o dono pediu uma mesa com
+  mais corpo e a textura subiu para 10–26 %, a trama apareceu sobre as barracas da foto de 1915: é filtro sobre a foto,
+  que a marca proíbe. Na mesma prova, a medida de contraste do crédito deu 1,3:1 numa linha que se lia bem. Ela tomava
+  como "fundo" os pixels 24 px em volta da letra, e a borda suavizada das próprias letras entrava como fundo claro.
+- **O que resolveu:**
+  - a textura virou uma camada `#mesa`, o PRIMEIRO filho da câmera, e a luz foi para o fundo da própria câmera. As
+    duas ficam por baixo de tudo;
+  - a prova é um recorte dentro da foto comparado com a mesma cena sem textura nenhuma. Antes da correção, a
+    diferença média era de 6,5 (de 255). Depois, ficou em 0,65, o nível da compressão, nas cinco variantes;
+  - o contraste se mede contra a mesma cena renderizada sem os textos: o fundo de cada letra é o pixel que está atrás
+    dela, e a letra conta só o miolo, a 2 px ou mais da borda;
+  - a prancha da marca, que tem uma cópia própria dos tokens no `:root`, ganhou o bloco da mesa. Sem ele,
+    `var(--mesa-feltro)` invalidava a declaração inteira, e a mesa voltava lisa sem erro nenhum.
+- **Como evitar:** textura, luz, vinheta ou grão de fundo nunca vão em pseudo-elemento por cima da cena. Vão como
+  primeira camada ou como fundo do contêiner. O `qc-visual` confere com o recorte dentro da foto.
+- **Por que serve a qualquer canal:** todo canal que põe foto sobre um fundo com textura em HTML cai nisso, e a
+  medida de contraste pelo vizinho erra em qualquer texto pequeno. Vale levar ao molde: o `_rig.js` e os exemplos
+  de cena com mesa.
