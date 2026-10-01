@@ -29,3 +29,9 @@ primeira cena de mapa, e o custo real vai ao Lucas antes das outras.
   é a estimativa do site (mais ou menos 30 mil), não é uso.
 - O painel pode atrasar algumas horas. O "depois" se lê com folga depois do render, e de novo no dia seguinte.
 - O `renderizar.mjs` da pré-v1 não guarda cópia de tiles: cada render pede tudo à MapTiler (o perfil `maptiler`, `src/mapa/perfis.mjs`). O 10.689 inalterado depois do render é atraso do painel, não render de graça. A leitura que vale é a de 01/10, com o dia 30/09 fechado.
+
+## 01/10/2026, 02:2x — o custo fecha depois
+
+O Lucas liberou as outras cenas de mapa sem esperar o custo da primeira: "Na verdade pode seguir o uso do maptiler,
+podemos fechar o custo outra hora. Preciso de resultados o quanto antes" (identidade §6, "O gasto do Juneau,
+liberado"). O contador continua anotado a cada render, aqui, e a conta vai a ele quando o painel a mostrar.

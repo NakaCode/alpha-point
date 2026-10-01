@@ -468,8 +468,9 @@ leitura). Onde ela diverge desta lista, vale esta:
   por `src/lib/chaves.mjs` da pré-v1, nunca dentro do HTML. O "mapista fora da v1" da tabela não vale aqui.
   Antes da primeira cena de mapa renderizada, avise o Lucas e anote o contador da MapTiler. No Juneau, o gasto
   está liberado, com o relevo 3D só em s44 (Lucas, 28/09/2026; `marca/identidade.md` §6, "O gasto do Juneau,
-  liberado"): o contador se anota antes e depois da primeira cena de mapa, e o custo real vai a ele antes das
-  outras.
+  liberado"): o contador se anota antes e depois de cada render de mapa. Em 01/10/2026 o Lucas liberou as outras
+  cenas sem esperar o custo da primeira ("pode seguir o uso do maptiler, podemos fechar o custo outra hora"): a
+  conta vai a ele quando o painel a mostrar.
 
 **Os scripts do canal** rodam de dentro do canal, sempre com o alvo que o ofício do agente dá. Sem alvo,
 alguns varrem todos os projetos de `out/`. Na maioria, o alvo é o `<proj>` (`node scripts/<portão>.mjs <proj>`);

@@ -488,6 +488,10 @@ texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para tod
     - Antes do primeiro render de mapa, o contador da MapTiler se anota; depois dele, de novo. O custo real dessa
       cena vai ao Lucas, no chat, antes das outras. Se ele projetar um gasto muito maior que o do plano, o render
       para até a resposta dele.
+    - **O custo fecha depois** (Lucas, 01/10/2026, 02:2x de Brasília, sem pergunta): "Na verdade pode seguir o uso
+      do maptiler, podemos fechar o custo outra hora. Preciso de resultados o quanto antes". As outras cenas de mapa
+      do Juneau se renderizam sem esperar o custo da primeira. O contador continua anotado a cada render
+      (`out/juneau/_pesquisa/maptiler-gasto.md`), e a conta vai a ele quando o painel a mostrar.
     - Os próximos vídeos pedem um ok próprio.
 
 Qualquer outra base (Mapbox, Esri) só entra **depois** de a licença ser lida e registrada aqui.
