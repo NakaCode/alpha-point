@@ -17,7 +17,8 @@
   OS BEATS (tempo local = master − 224,967; palavras do words.json):
     b1  0,000–7,567  "Instead, voters would get one last question in November nineteen eighty-two: could the state
         spend the money the move would take?"  (regência s23#1)
-        A folha da Ballot Measure 8 (3.040 × 2.000 px, x 400→3.440, +0,8°; textura multiply, fita, borda rasgada) já na
+        A folha da Ballot Measure 8 (3.040 × 2.000 px, x 340→3.380, +0,8°; era 400→3.440, rente ao canto: correção do render,
+        01/10/2026; textura multiply, fita, borda rasgada) já na
         mesa de feltro sob a luz, com o topo em y 360. O cabeçalho em caixa de contorno (Courier Prime 700, 84 px):
         BALLOT MEASURE NO. 8 · impresso desde a folha, e NOVEMBER 1982 entrando em "November" (2,633; 300 ms). Abaixo
         do fio, o literal da pergunta (Courier Prime 400, 86 px, entrelinha 1,5, 6 linhas), com o "$2,843,147,000" EM
@@ -84,6 +85,12 @@
   para window.__fontesFaltando, e o render reprova. Nada de relógio, sorteio, @keyframes ou transition. O RIG abaixo é a
   cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- DECLARAÇÃO E CORREÇÃO (01/10/2026, a triagem dos portões e a reconferência das 13:2x, correcao-render-5.md, A1, A2 e B8):
+     data-qc-fonte-livre nos textos da folha (Courier Prime, identidade §3 e §5) e "eixo" no ano do cabeçalho (84 px); e o #grupo da
+     folha vai de left 400 para 340: montada em x 400→3.440 e girada +0,8°, a borda direita do papel entrava até x 3.488 na caixa do
+     canto (x > 3.440, y > 1.760) sob a câmera (1,043 no fim). Em 340, a borda direita nas linhas do canto fica em x ≤ 3.370 (3.426
+     sob a câmera do fim, com a deriva), e a esquerda em x ≥ 329 (265 sob a câmera): fora do canto e dentro das margens. A conta da
+     fatia que sai do papel usa o mesmo 340. Texto e descida não mudam. -->
 <head>
 <meta charset="utf-8">
 <title>s23 — One last question in November 1982: could the state spend the money the move would take? About $2.8 billion</title>
@@ -100,7 +107,7 @@
       var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
   #mesa { position: absolute; inset: 0; pointer-events: none;
     background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
-  #grupo { position: absolute; left: 400px; top: 0; width: 3040px; height: 2000px; transform-origin: 50% 50%; }
+  #grupo { position: absolute; left: 340px; top: 0; width: 3040px; height: 2000px; transform-origin: 50% 50%; }   /* 340 (era 400): a borda direita do papel girado fica em x ≤ 3.370 nas linhas do canto, 3.426 sob a câmera do fim (correção do render, 01/10/2026) */
 
   /* A FOLHA DE DOCUMENTO (identidade §5) */
   .folha-sombra { position: absolute; left: 0; top: 0; width: 3040px; height: 1910px;
@@ -179,11 +186,11 @@
       <div class="folha-sombra"></div>
       <div class="folha-sombra forte" id="sombraForte"></div>
       <div class="folha rasgada" id="folha">
-        <div class="cab"><span class="caixa-ref"><span id="cabImpresso"></span><span id="ano" data-qc-papel="rotulo"></span></span></div>
+        <div class="cab" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"><span class="caixa-ref"><span id="cabImpresso"></span><span id="ano" data-qc-papel="eixo"></span></span></div>
         <div class="fio"></div>
-        <p class="corpo" id="pergunta"></p>
+        <p class="corpo" id="pergunta" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"></p>
         <div class="preco" id="preco">
-          <span class="cifrao" id="cifrao"></span><span class="traco" id="traco"></span>
+          <span class="cifrao" id="cifrao" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"></span><span class="traco" id="traco"></span>
           <div class="heroi" id="heroi" data-qc-papel="heroi"></div>
         </div>
         <div class="dado" id="through" data-qc-papel="rotulo"></div>
@@ -369,7 +376,7 @@
     var cx = 1520, cy = 1000;   // o centro do grupo, local
     var rx = FATIA.localX + FATIA.w / 2 - cx, ry = FATIA.localY + FATIA.h / 2 - cy;
     var a = FOLHA.rot * Math.PI / 180, c = Math.cos(a), sn = Math.sin(a);
-    return { x: 400 + cx + rx * c - ry * sn, y: topo + cy + rx * sn + ry * c };
+    return { x: 340 + cx + rx * c - ry * sn, y: topo + cy + rx * sn + ry * c };   // 340 = o left do #grupo (era 400)
   }
   function rotulo(el, op) {
     op = clamp(op, 0, 1);

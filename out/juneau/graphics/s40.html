@@ -34,8 +34,9 @@
     b3  8,867–13,334  "As of September twenty twenty-six, the bill hadn't left its first committee."  (regência s40#3)
         Em "As" (8,897; o quadro 266, em que o clipe acaba) a BASE TROCA num corte seco (registro → DOCUMENTO): a cidade
         sai e a folha, que NÃO SE MOVE no corte, está sobre a mesa de feltro sob a luz, com a GAVETA desenhada (traço de
-        6 px --neutro, a frente no alto, x 1.000→3.540, y 160→340) e a etiqueta AS OF SEPTEMBER 2026 (84 px, Inter 500,
-        --sec, centrada nela em y 200→301: abaixo da margem de cima sob a câmera) nela, em "As" (8,9). A folha DESLIZA
+        6 px --neutro, a frente no alto, x 1.000→3.540, y 176→340; era 160→340, com o traço 3 px dentro da margem: correção
+        do render de 01/10/2026) e a etiqueta AS OF SEPTEMBER 2026 (84 px, Inter 500, --sec, centrada nela em y 208→309:
+        abaixo da margem de cima sob a câmera) nela, em "As" (8,9). A folha DESLIZA
         PARA DENTRO DA GAVETA pela ranhura de baixo (y 340), de 8,9 a 10,5 s,
         e não sai dela; a luz anda com a folha até a gaveta. Sem o (H) CRA nem o nome da comissão. VOLÁTIL: reconferir o
         HB 3 na véspera de publicar. O clipe não se estica para cobrir este beat.
@@ -74,6 +75,15 @@
      gaveta (y 340 + 3 de traço), nas coordenadas da câmera: o recorte e o traço coincidem em todo quadro, e no fim do
      deslize (10,5) nada da folha fica abaixo do traço (o ponto mais baixo da borda rasgada, girada 0,8°, em y ≈ 331). A
      folha não se move no corte: em 8,867 a transformação é a identidade. -->
+<!-- DECLARAÇÃO E CORREÇÃO (01/10/2026, a triagem dos portões de navegador, correcao-render-5.md, A1 e B7): data-qc-fonte-livre nos
+     textos da folha (Courier Prime, identidade §3 e §5); e a folha, que esperava 4,3 s inteira e opaca acima do quadro (o qc-fora-do-
+     quadro a contava como nascida fora), fica com visibility hidden até T.folha. Muda no máximo a franja de sombra do topo. -->
+<!-- CORREÇÃO DO RENDER 3 (01/10/2026, roupa §4, a margem em todo quadro sob a câmera; correcao-render-5.md, item 10): o rect da
+     gaveta estava em y 160, com o traço de 6 px centrado nele: começava em 157, 3 px dentro da margem de 160, e a câmera do b3
+     (1,0107 no fim) o levava a ~150. O rect passa a y 176, altura 164: o pé continua em 340 (a ranhura, o recorte da folha e o
+     yGaveta não mudam), o traço de cima começa em 173 e fica em y ≥ 164 sob a câmera em todo quadro do b3. A etiqueta AS OF
+     desce 8 px (top 208) para continuar centrada na gaveta (176→340, centro 258; a etiqueta 208→309), e sob a câmera fica em
+     y ≥ 202. -->
 <head>
 <meta charset="utf-8">
 <title>s40 — In 2025, a House bill to hold legislative sessions in Anchorage proposed repealing the whole cost law. As of September 2026, the bill hadn't left its first committee</title>
@@ -99,7 +109,7 @@
     background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
   #gaveta { position: absolute; inset: 0; width: 3840px; height: 2160px; overflow: visible; }
   #gaveta rect { fill: none; stroke: var(--neutro); stroke-width: var(--linha-espessura); }
-  #asof { position: absolute; left: 2270px; top: 200px; white-space: nowrap; transform: translateX(-50%); font-family: var(--fonte);
+  #asof { position: absolute; left: 2270px; top: 208px; white-space: nowrap; transform: translateX(-50%); font-family: var(--fonte);   /* 208 (era 200): centrada na gaveta de 176→340 (correção do render, 01/10/2026) */
     font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0; color: var(--sec); opacity: 0; }
 
   /* a folha do HB 3, sobre as duas bases; no b3 a ranhura leva a MESMA transformação de #cam (a câmera da mesa e da gaveta)
@@ -144,7 +154,7 @@
   <div id="cam">
     <div id="mesa"></div>
     <svg id="gaveta" viewBox="0 0 3840 2160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect x="1000" y="160" width="2540" height="180" rx="4"/>
+      <rect x="1000" y="176" width="2540" height="164" rx="4"/>   <!-- y 176→340 (era 160→340): o traço de 6 px começa em 173, e sob a câmera do fim (1,0107) em 164, fora da margem de 160; o pé fica em 340, onde a ranhura recorta (correção do render, 01/10/2026) -->
     </svg>
     <div id="asof" data-qc-papel="eixo"></div>
   </div>
@@ -153,11 +163,11 @@
     <div id="grupo">
       <div class="folha-sombra"></div>
       <div class="folha rasgada" id="folha">
-        <div class="cab"><span class="caixa-ref" id="cab"></span></div>
+        <div class="cab" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"><span class="caixa-ref" id="cab"></span></div>
         <div class="fio"></div>
-        <p class="corpo" id="titulo"></p>
+        <p class="corpo" id="titulo" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"></p>
         <div class="quebra"></div>
-        <p class="corpo" id="sec"></p>
+        <p class="corpo" id="sec" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"></p>
       </div>
     </div>
   </div>
@@ -287,7 +297,7 @@
     gaveta: 8.9, gavetaDur: 1.6,        // "As" (427,33): AS OF SEPTEMBER 2026; a folha desliza para dentro da gaveta
     clipeQuadro0: 14                    // o ponto de entrada no clipe (0,467 s): 14 + 266 = 280 ≤ 294
   };
-  var FOLHA = { yAlto: -1400, y1: 400, yGaveta: 340 - 1300, rot: 0.8 };   // a gaveta em y 160→340; a folha pousa em y 400
+  var FOLHA = { yAlto: -1400, y1: 400, yGaveta: 340 - 1300, rot: 0.8 };   // a gaveta em y 176→340 (o pé continua em 340); a folha pousa em y 400
   var LUZ = { x: 2270, y1: 1050, y2: 250 };
 
   function rotulo(el, op) {
@@ -324,6 +334,7 @@
     var y = t < T.folha ? FOLHA.yAlto : lerp(FOLHA.yAlto, FOLHA.y1, d);
     if (b3) y = lerp(FOLHA.y1, FOLHA.yGaveta, g);
     ran.style.clipPath = b3 ? "inset(343px 0 0 0)" : "none";   // o recorte no pé do traço de baixo da gaveta (y 340 + 3), nas coordenadas da câmera
+    E("grupo").style.visibility = t < T.folha ? "hidden" : "visible";   // a folha estacionada acima do quadro fica escondida até a descida (qc-fora-do-quadro, nasceuFora; correção do render, 01/10/2026)
     E("grupo").style.transform = "translate(0px," + y.toFixed(2) + "px) rotate(" + lerp(FOLHA.rot - 1.6, FOLHA.rot, d).toFixed(3) + "deg)";
     E("g").style.backgroundSize = (100 * eo(seg(t, T.grifo, T.grifoDur))).toFixed(2) + "% 100%";
     cam.style.setProperty("--luz-x", LUZ.x + "px");
