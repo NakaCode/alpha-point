@@ -28,9 +28,10 @@
         (x 2.180→3.580, y 590→1.720), POR CIMA do inset. Nele, a estrada que ela descreve, DESENHADA a tinta
         (--tinta-escura, 12 px): o tronco sobe do pé do cartão (3,9→5,0); o ramo da direita se desenha até a etiqueta
         Skagway (5,7→6,7; a pílula em "Skagway", 6,767); o ramo da esquerda até Haines (7,0→7,9; a pílula em "Haines",
-        7,967). Em "but" (8,967) a estrada PARA ANTES: os ramos somem (0,3 s), o tronco recua até um CAIS desenhado
-        (o píer com as estacas e a água, 9,1), e do cais saem duas linhas PONTILHADAS até as etiquetas (a outra balsa,
-        9,3); as duas etiquetas esmaecem a 55 % e ficam legíveis até o corte. As palavras da fala ficam na voz (R1).
+        7,967). Em "but" (8,967) a estrada PARA ANTES: os ramos se recolhem ao garfo (0,25 s) e SÓ ENTÃO o tronco recua
+        (0,3 s, 9,217→9,517) até um CAIS desenhado (o píer com as estacas e a água, 9,4, quando o tronco chega a ele), e do
+        cais saem duas linhas PONTILHADAS até as etiquetas (a outra balsa, 9,6); as duas etiquetas esmaecem a 55 % e
+        ficam legíveis até o corte. As palavras da fala ficam na voz (R1).
     O INSET (regência s57#2): o mapa de s50, um quarto de quadro (1.920 × 1.080, x 1.672→3.592, y 190→1.270), parado,
         sobre o feltro com a sombra de uma impressão, atrás do cartão (o cartão cobre a parte de baixo à direita; fica à
         vista a faixa de cima e a coluna da esquerda, x 1.672→2.180, onde a câmera do inset põe a rota inteira): a
@@ -80,6 +81,13 @@
      (rota-balsa-lynn-canal-osm, OSM, com o crédito) sai do fim dessa linha. Os 11 pontos de apoio antigos, só desta cena,
      saíram; a decisão do Lucas de 27/09 (identidade §6) já cobria uma tracejada aproximada, e o que importa é a linha ser
      a mesma das cenas de mapa. -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4; correcao-render-4.md, item 1): em "but" os ramos se recolhiam ao garfo (0,3 s)
+     ao mesmo tempo que o tronco recuava do garfo ao cais (0,4 s), e por 8 quadros (9,067–9,233) o resto dos ramos ficava
+     solto acima do tronco, com a forma de um ✓. Agora o tronco espera: os ramos se recolhem em 0,25 s (8,967→9,217; no último
+     quadro deles, 9,2, sobra um ponto no garfo, ainda preso ao tronco) e só então o tronco recua, em 0,3 s (9,217→9,517). O
+     cais se desenha em 9,4, quando a ponta do tronco chega a ele (y 780 em 9,4; 790 em 9,517), e as pontilhadas da outra
+     balsa saem em 9,6 (completas em 9,9, meio segundo antes do corte, 10,4). Os tempos de 9,1 e 9,3 do cabeçalho são os de
+     antes. -->
 <head>
 <meta charset="utf-8">
 <title>s57 — Assembly member Maria Gladziszewski voted no: a road to another ferry</title>
@@ -338,8 +346,8 @@
       etqSkagway: 6.767,
       haines: 7.0, hainesDur: 0.9,     // o ramo da esquerda; a etiqueta em "Haines" (7,967)
       etqHaines: 7.967,
-      but: 8.967,                  // "but" (593,9): a estrada para antes, num cais
-      cais: 9.1, balsa: 9.3        // o cais se desenha; as pontilhadas até as etiquetas
+      but: 8.967, someDur: 0.25, recuoDur: 0.3,   // "but" (593,9): a estrada para antes: os ramos somem (0,25 s) e SÓ ENTÃO o tronco recua (0,3 s, 9,217→9,517)
+      cais: 9.4, balsa: 9.6        // o cais se desenha quando o tronco chega a ele (9,4); as pontilhadas até as etiquetas (9,6)
     },
     // o inset: parado; a câmera põe Juneau e Skagway nos pontos locais (a coluna da esquerda, que o cartão não cobre)
     inset: { juneauEm: [440, 980], skagwayEm: [140, 240], juneau: { geo: "cidades-ne", nome: "Juneau" }, skagway: { geo: "cidades-ne", nome: "Skagway" },
@@ -670,9 +678,9 @@
     // ── b2: o cartão pousa em "It"; a estrada se desenha; em "but" para num cais ──
     var p = eo(seg(t, T.cartao, T.cartaoDur));
     por(E("cartao"), C.x + C.w / 2, C.y + C.h / 2 + 180 * (1 - p), C.w, C.h, lerp(-3, C.rot, p), 0.94 + 0.06 * p, seg(t, T.cartao, 0.2));
-    var recuo = eo(seg(t, T.but, 0.4));                      // o tronco recua do garfo (620) até o cais (790): de 1 a 0,667
+    var recuo = eo(seg(t, T.but + T.someDur, T.recuoDur));   // o tronco recua do garfo (620) até o cais (790), de 1 a 0,667, SÓ DEPOIS de os ramos sumirem (correção do render, 01/10/2026)
     traco(E("tronco"), eo(seg(t, T.tronco, T.troncoDur)) * lerp(1, 0.6667, recuo));
-    var some = 1 - eo(seg(t, T.but, 0.3));
+    var some = 1 - eo(seg(t, T.but, T.someDur));             // os ramos se recolhem ao garfo em 0,25 s, com o tronco ainda no garfo: nenhum pedaço solto
     traco(E("ramoSkagway"), eo(seg(t, T.skagway, T.skagwayDur)) * some);
     traco(E("ramoHaines"), eo(seg(t, T.haines, T.hainesDur)) * some);
     var dim = lerp(1, 0.55, eo(seg(t, T.but, 0.3)));

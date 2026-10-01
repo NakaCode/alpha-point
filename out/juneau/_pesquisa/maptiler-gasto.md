@@ -92,3 +92,5 @@ quando ele mostrar.
 | s44 (3º render: a Thane Road, a divisa larga, o Taku sem fantasma; com o relevo) | 12:19:10 | 12:25:22 | 2160p |
 | s50 (2º render: as pílulas pela caixa real, o giro de 20° no b6, a divisa larga) | 12:25:23 | 12:29:23 | 2160p |
 | s05 (3º render: o cartão da fala assentando no lugar; o inset de mapa) | 12:30:47 | 12:32:53 | 2160p |
+| s57 (2 cargas do editor na rodada 7: o qc-cena e uma captura) | ~13:1x | — | o inset |
+| s57 (3º render: o tronco espera os ramos) | 12:55:06 | 12:56:57 | 2160p |
