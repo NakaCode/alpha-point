@@ -35,3 +35,10 @@ primeira cena de mapa, e o custo real vai ao Lucas antes das outras.
 O Lucas liberou as outras cenas de mapa sem esperar o custo da primeira: "Na verdade pode seguir o uso do maptiler,
 podemos fechar o custo outra hora. Preciso de resultados o quanto antes" (identidade §6, "O gasto do Juneau,
 liberado"). O contador continua anotado a cada render, aqui, e a conta vai a ele quando o painel a mostrar.
+
+## 01/10/2026, 05:0x — o inset da s05, montado pelo editor-de-arte
+
+A s05 tem um inset de mapa (MapTiler satellite-v2, zoom 7,4, câmera parada). O `editor-de-arte` tirou 2 capturas
+de conferência com o `quadro.mjs`, cerca de 20 tiles cada, segundo o relato dele (`out/juneau/_tmp/art/lote1-relato.md`).
+O render da s05 carregará os tiles mais uma vez. Daqui em diante, cada cena com mapa tem no máximo uma captura de
+conferência antes do render.
