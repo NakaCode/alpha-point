@@ -1,6 +1,47 @@
-# Conferência de mídia · juneau · fluxo `midia` · despachos 1 a 8 · 30/09/2026, 20:54 (BRT)
+# Conferência de mídia · juneau · fluxo `midia` · despachos 1 a 9 · 01/10/2026, 03:50 (BRT)
 
-**Laudo do arquivo: 39 aprovados de 51 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 51.** Aos 30 aprovados dos despachos 6 e 7 somam-se os 9 rascunhos do acervo aberto aprovados no 8º. Os 12 que não são `aprovado`: 4 `trocar` do lote 1; 5 `trocar` e 1 `reprovado` do 2º; 2 `trocar` do 8º. Os 30 vereditos antigos estão em `substituidos`.
+**Laudo do arquivo: 39 aprovados de 51 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 51.** Nenhum veredito mudou no 9º despacho. Os 69 vereditos antigos estão em `substituidos`.
+
+**Laudo deste despacho (o 9º): 39 aprovados de 39 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 39.** 38 têm beat na regência nova; 1 (a reserva da LeConte, gillfoto-35) não tem, e fica fora da cena.
+
+## O 9º despacho: as janelas contra a regência de 01/10 (01/10/2026)
+
+- **Quem conferiu:** o conferente-de-midia, despachado pelo Claude central no passo conducting. Sem rede e sem navegador: nada pediu a origem de novo.
+- **O que mudou na entrada:** a regência foi refeita pelo regente-de-imagem em 01/10 (`regencia.json`, sha256 2165a816…; a de antes, 085d5f8b…, em `_tmp/regencia-antes-2026-10-01.json`). O espelho ganhou as fusões s42←s43 e s50←s51,s52 (sha256 8ae02609…), e o conceito é o de 01/10 (9bbdfcbc…).
+- **Como:** cada aprovado casado com o arquivo que o `exige` cita, pelo nome na pasta entregue e pelo sha256 do `_PROCEDENCIA.json`. Todos os `sha256sum` dos entregues batem com a procedência e com o veredito. As palavras de cada beat batem com o `words.json`, palavra a palavra. Contexto e técnica revistos contra a frase nova; licença, fonte, lugar e ano não se refizeram, porque nada pediu.
+- **Olhos novos, não:** as fotos e os documentos já tinham sido abertos nos despachos que os aprovaram. Abri quadros novos só nos dois clipes cujo trecho a regência agora diz: s01, de 7,6, 9,45 e 11,3 s; s40, de 0,3, 4,4 e 8,8 s, ambos no instalado (`_tmp/conferencia/r9-s01/` e `r9-s40/`).
+- **`out/juneau/_media/` não mudou:** são 325 arquivos. A lista de 06:38:10Z e a de 06:45:37Z (antes de gravar) têm o mesmo sha256 (d4ca32ff…). Depois de gravar o JSON e o .md, às 06:47:27Z, a lista tem os mesmos 325 arquivos e o mesmo sha256 (`_media-depois-despacho9.txt`): nenhuma diferença.
+
+### O que a regência nova mudou, por arquivo
+
+| arquivo | beat (janela) | o que mudou | veredito |
+|---|---|---|---|
+| footage/s01/juneau-aereo-gastineau.mp4 | s01#3 (3,8 s) | a frase coberta era a cena inteira; agora é o beat, com o trecho 7,533–11,333 s do clipe de 11,333 s, a 1,0×. Os quadros do trecho mostram Juneau do ar, sem navio de cruzeiro nem letreiro legível | aprovado |
+| foto/s28/estadio-coberto-exterior.jpg | s28#2 (4,1 s) | a frase coberta passa a ser só a do beat. A regência confirma o que o veredito pediu: sem rótulo (a origem diz Minsk), sem aviso do ano e com o recorte sem a bandeira | aprovado |
+| footage/s40/anchorage-aereo-centro.mp4 | s40#1 + s40#2 (8,867 s) | o clipe corre no b1 e sob a folha do HB 3 no b2, até 427,3 s; o clipe tem 9,833 s e cobre a 1,0×. O b3 vai à mesa: **o aviso do 7º despacho (uns 3,5 s descobertos) está resolvido** | aprovado |
+| footage/s53/oleoduto-trans-alaska-aereo.mp4 | s53#1 (1,833 s) | a frase coberta passa a ser a do beat; usa 1,834 s de 7,667 s | aprovado |
+| footage/s53/oleoduto-trans-alaska-paisagem.mp4 | s53#2 (9,267 s) | a frase coberta passa a ser a do beat; usa 9,266 s de 11,667 s, plano lento | aprovado |
+| foto/s01, s04 (2), s14 (2) e s24 | s01#2, s04#1, s04#2, s14#1, s14#2, s24#2 | o beat passou de footage_real para foto_real e cita o arquivo; os tempos e as palavras são os que o 8º despacho julgou; rótulos e avisos como o veredito pediu | aprovado |
+| foto/s47/amhs-mv-leconte-chilkat-range-lynn-canal-2009-04-29-gillfoto-44.jpg | s47#1 (6,367 s) | a regência dá agora o Ken Burns 1,00→1,12: **o aviso do 8º despacho (foto parada acima de 6 s) está resolvido** | aprovado |
+| foto/s51/lynn-canal-avalanche-chutes-eldred-rock-2011-05-15-lcgs-russ.jpg | s50#3 (3,467 s) | passou de s51#1 para s50#3 pela fusão, com a mesma frase e a mesma janela; o rótulo continua no máximo "Lynn Canal" | aprovado |
+| documento/s52/ca9-2011-seacc-p04.jpg | s50#5 (3,834 s) | passou de s52#1 para s50#5 pela fusão, com a mesma frase e a mesma janela; desce sobre o mapa 2B a uns 0,26×, com "Upheld on appeal, 2011" | aprovado |
+| os outros 24 (s01#1, s06, s07, s08, s16, s22, s23, s28#3, s35, s37, s41, s49, s55, s56, s57, s58) | o mesmo beat | os mesmos tempos e palavras; em s01#1 e s06#1 o exige muda só o enquadramento (Ken Burns até 1,10; o panorama impresso na mesa a uns 0,85×, sem ampliar) | aprovado |
+| _caca/s47/acervo-livre/…-gillfoto-35.jpg | **nenhum** | a reserva da LeConte não está em beat nenhum e não foi entregue: não vai à cena; o veredito fica, com a nota `sem_beat_na_regencia` | aprovado (fora da cena) |
+
+### Avisos para a cena, deste despacho
+
+- **s50 cita arquivos de pastas filhas** (`_media/foto/s51/` e `_media/documento/s52/`): é a fusão, não reuso. O veredito casa pelo sha256, e a frase é a mesma.
+- **s50#5, a página a uns 0,26×** (uns 1.326 × 1.716 px no 4K): o trecho grifado tem de se ler nesse tamanho. Isso é do editor-de-arte e do qc-visual.
+- **Para o regente, sem urgência:** em `_conflitos`, o item "rótulos de lugar sobre footage ainda sem veredito" ainda lista beats que hoje têm veredito ou viraram mapa (s01#2 e #3, s04#1, s14#1, s24, s40#1, s47#1, s51#1, s52#2, s53#1…). Vale atualizar a lista na próxima passada. Nada nos tempos depende disso.
+- **Nada para o montador.**
+
+### Para o Lucas pesar, reconferir e trocar, deste despacho
+
+Nada.
+
+---
+
+**Laudo do arquivo, ao fim do 8º despacho: 39 aprovados de 51 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 51.** Aos 30 aprovados dos despachos 6 e 7 somam-se os 9 rascunhos do acervo aberto aprovados no 8º. Os 12 que não são `aprovado`: 4 `trocar` do lote 1; 5 `trocar` e 1 `reprovado` do 2º; 2 `trocar` do 8º. Os 30 vereditos antigos estão em `substituidos`.
 
 **Laudo deste despacho (o 8º): 9 aprovados de 11 conferidos (0 reprovados, 2 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 11.**
 
