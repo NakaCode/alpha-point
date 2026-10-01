@@ -92,7 +92,7 @@
   passava disso em 31,9. Começando em 31,2, o zoom está em 9,44 em "cross" e em 8,91 em "Canada", e os dois cabem: o nome
   de Skagway acima e à esquerda do ponto, o de Haines abaixo e à esquerda (a Haines Highway sai de Haines para oeste).
 
-  A CONTA DOS 6 ELEMENTOS (a da regência; minha, pelo ensaio a seco, não portão: o qc-carga sai NÃO MEDIDO sem npm). A
+  A CONTA DOS 6 ELEMENTOS (a da regência; minha, pelo ensaio a seco; desde 01/10/2026 os portões medem, no qc-cena). A
   divisa e o crédito não contam; a estrada com o anel é um; os dois corredores com o aviso são um até os rótulos deles;
   cada território aceso com o nome é um; cada ponto com o nome é um.
 
@@ -109,6 +109,94 @@
   último (o corredor do Taku a 0 em 19,6) nunca se pintava: o corredor ficava a ~11 % até a câmera trocar de tiles no
   mergulho (21,6). Reproduzido sem tile, com um DEM sintético servido em 127.0.0.1: sem a transição, a linha fica presa
   no último valor; com ela, segue a opacidade pedida quadro a quadro e some no 0.
+  A NITIDEZ DAS LATERAIS COM O RELEVO (correção 3 do Claude central, 01/10/2026, item 3): ao ligar o relevo (32→33) as
+  laterais e a faixa de cima amoleciam de uma vez, e ao desligar (854→855) endureciam de uma vez, com a câmera plana. A
+  causa é do MapLibre (4.7.1, Transform.coveringTiles): sem relevo e com inclinação até 60°, a base vem toda no nível do
+  zoom; com o relevo ligado, o tile a mais de 2 tiles do ponto da câmera pode parar um nível abaixo (e o a mais de 4,
+  dois), na base e na malha do relevo, em que a base se pinta. Em 4K, metade da largura são 3,75 tiles de 512 px, e as
+  laterais caíam de nível mesmo com o mapa plano. A correção 3 subiu o nível mínimo em degraus de inclinação; a 5 trocou
+  os degraus por UM NÍVEL SÓ NA TELA (abaixo).
+
+  UM NÍVEL SÓ NA TELA (correção 5 do Claude central, 01/10/2026, itens 3 e 4): com os degraus da correção 3, o nível da
+  base ainda mudava em blocos de tiles de uma vez com a câmera andando (684→685: os tiles do nível 10 passaram de 4 a 14;
+  707→708: entraram 9 do nível 12, com o tom mais claro da MapTiler), e o degrau de 28° punha o canto de cima um nível
+  acima por um quadro só (818). Agora, com o relevo ligado, o embrulho de map.transform.coveringTiles (só a base e a
+  malha, nunca o DEM) pede um nível só para a tela inteira: o da base é o arredondado do zoom, até CENA.nivelMax (11),
+  em qualquer inclinação (CENA.lodDegraus: nenhum nível abaixo); o da malha, um abaixo do da base, porque a textura de
+  cada tile da malha tem o dobro dos pontos de um tile da base (a malha um nível abaixo pinta a base ponto por ponto,
+  como no mapa plano; no mesmo nível, a textura sai com o dobro dos pontos e serrilha: +10,8 % de nitidez ao ligar o
+  relevo). O nível só muda quando o zoom cruza x,5, e essas trocas entram em fusão (AS TROCAS DE NÍVEL EM FUSÃO). O teto
+  de 11: no nível 12 (o fim do mergulho, zoom até 11,95) o mosaico de satélite da MapTiler junta imagens de tons
+  diferentes, e o Lynn Canal ganhava um trapézio escuro no meio da água, com o quadro mais claro (brilho médio de 35 para
+  50 em 25,3 s). No 11 a emenda voltou, e no mergulho o teto agora é 10 (A EMENDA DO LYNN CANAL, abaixo). O custo: o
+  palco pede de 94 a 150 tiles da base (antes, ~34), ou seja, mais pedidos à MapTiler por render (o gasto do Juneau está
+  liberado); e o quadro inteiro fica no nível do zoom, ou no teto: o alto, antes de um a três níveis abaixo, fica mais
+  nítido.
+  AS TROCAS DE NÍVEL EM FUSÃO (correção 5): numa troca de x,5 com o relevo ligado (a de 9,5, subindo, em 2,467 s), uma
+  camada da mesma base presa ao nível de antes (base-zN, uniforme) fica por cima: a 1 no quadro da troca e por mais
+  CENA.fusaoPlato de zoom; depois some (subindo) ou, antes, entra (descendo) até o zoom "de" de CENA.fusoes, só dentro
+  da janela de tempo dela (o palco, num zoom parecido, não a vê). As trocas de 10,5 do mergulho (22,867 s) e da subida
+  (27,3 s) e a de 11,5 não mudam mais o nível da base (o teto de 10 no mergulho, A EMENDA DO LYNN CANAL), e as fusões
+  delas saíram na correção 7. A camada fica desligada fora da janela e não pede tile. A rampa dura 20 quadros na subida
+  do palco: com 4 a 6, a nitidez mudava de 12 a 17 % por quadro; com ela, até 8 %, aos poucos. O que sobra é a
+  diferença de amostragem quando a malha sobe ou desce um nível sob a base, no quadro da troca, com a câmera no máximo:
+  73→74 −14 %, 685→686 −16 % e 818→819 +21 % de nitidez (antes, até +43 % e +83 %), iguais com o teto de 10. A camada
+  presa ampliada ponto a ponto ("nearest") piorou (+48 %) e não ficou. CENA.fusao20 (a fusão do degrau de 20°) fica
+  vazia: sem degrau, não há o que fundir.
+  A EMENDA DO LYNN CANAL (correção 7 do Claude central, 01/10/2026, item 4a): com o teto de 11, a emenda do mosaico
+  voltou na água do Lynn Canal, nos quadros 700 a 805 (a reconferência, no render da correção 5): uma área de outro tom,
+  de arestas retas. A causa é da imagem da MapTiler: no nível 11 do satellite-v2 há um retângulo mais escuro dentro dos
+  tiles, que não segue a grade deles; fora dele, a água do 11 é de 10 a 20 pontos mais clara que a do 10, e o retângulo
+  tem o tom do 10 (os tiles do 11 e do 10 em volta de 58,8° N, 135,2° O, baixados e comparados). Trocar o nível só dos
+  tiles da emenda levaria a aresta para a borda desses tiles. Agora a base fica no nível 10 de 22,0 a 27,6 s
+  (CENA.nivelTeto; nessas duas pontas o zoom está abaixo de 10,5, e o nível não muda nelas): só a base. A malha do
+  relevo segue um nível abaixo do arredondado do zoom, e as linhas pintadas nela não perdem pontos.
+  MEDIDO COM TILE, nos quadros 676 a 858 em ordem, como o render, contra o teto de 11 (a mesma medida da correção 5):
+    · a emenda: nenhuma área de arestas retas na água em quadro nenhum; no 760, a aresta que cruzava a água em x 1900
+      ia de 30,8 a 18,5 de brilho, e agora de 19,2 a 20,1 (o mesmo tom dos dois lados);
+    · as linhas: a área do laranja e a espessura da estrada e do tracejado iguais quadro a quadro (área a 0,999,
+      espessura mediana igual);
+    · o custo em nitidez: de 700 a 805, a média do |laplaciano| das faixas das laterais, do topo e do centro cai a 0,63
+      a 0,70 da de antes (mediana por faixa; de 0,56 a 0,76 quadro a quadro), e o brilho do quadro a 0,76 (no 760, de
+      42,2 para 32,3; no render da correção 3, antes do teto, 35,3). Descontado o brilho, a nitidez fica de 0,82 a 0,92
+      da de antes (mediana por faixa). A imagem de satélite do mergulho fica mais macia e mais escura; os rótulos e as
+      linhas, não;
+    · a base pede menos tiles: 15 no quadro 760, contra 46 com o teto de 11.
+  O DEGRAU DE FOCO NO MAPA PLANO (correção 7 do Claude central, 01/10/2026, item 4b; a classe da s42 q386): na abertura
+  ao Yukon, com o relevo já desligado, a base troca do nível 10 para o 9 no quadro 956 e do 9 para o 8 no 984, com a
+  câmera abrindo, e a nitidez da tela inteira caía de 40 a 52 % num quadro só (a reconferência, no render da correção
+  5). As fusões de CENA.fusoes só valiam com o relevo ligado. Agora duas delas, marcadas "plano", valem só com o relevo
+  desligado: a camada presa ao 9 entra de 9,65 a 9,58 (de 31,3 a 31,7 s; a troca é em 31,867) e a presa ao 8, de 9,45
+  a 8,58 (de 31,9 a 32,7 s; a troca é em 32,8). De 28,5 a 31,3 s o zoom fica entre 9,60 e 9,65, e a janela da do 9
+  começa quando ele desce.
+  MEDIDO COM TILE, nos quadros 856 a 1000 em ordem, como o render: de 945 a 990, o maior passo de nitidez de um quadro
+  para o outro na tela inteira, nas faixas das laterais (1280 px) e no topo (700 px) é de 10 % (antes, de −37 a −47 %
+  no 956 e no 984). A camada presa ao 9 entra de 945 a 951, com a câmera começando a abrir: a nitidez da tela desce de 6
+  a 8 % por quadro (num recorte só de base no canto de cima, até 13 %), aos poucos. A presa ao 8 entra de 958 a 981:
+  até 4 %. No 956 e no 984, nenhum salto de brilho nem de nitidez nas bordas além do dos quadros vizinhos.
+  A ESPESSURA DAS LINHAS SOBRE O RELEVO (correção 5, itens 1, 2 e 4): com o relevo ligado, a base e as linhas (a estrada,
+  os corredores, a divisa) se pintam numa textura de cada tile da malha, e o MapLibre só a refaz quando um tile ou a
+  pintura muda. A largura da linha nessa textura vem do zoom do quadro em que ela foi pintada: com a câmera subindo, a
+  estrada engrossava até ~21 px e voltava a ~14 num quadro (129→130, quando o gelo entrou); descendo, o tracejado
+  afinava a ~10 e voltava a 14 quando o relevo desligou (854→855). Agora, com o relevo ligado, a textura se refaz em
+  todo quadro (map.terrain.sourceCache.freeRtt e triggerRepaint, no fim do aplicar; a cena falha se o MapLibre não tiver
+  essa peça). A linha fica na largura da marca no zoom de cada quadro: 14 px com a câmera plana e no palco; na
+  inclinação do mergulho, a parte longe afina com a perspectiva, como o chão, e a mediana fica em 8 a 12 px, sem salto.
+  A NITIDEZ DO MAPA PLANO DEPOIS DO RELEVO (correção 5): o MapLibre liga a filtragem anisotrópica na textura de um tile
+  da base quando a inclinação passa de 20° e nunca mais a desliga. Nesta cena ela não serve (com a câmera inclinada o
+  relevo está ligado, e a base se pinta ponto por ponto na textura dele) e deixava o mapa plano depois do relevo mais
+  borrado nos tiles já usados no palco e no mergulho: 16 % menos nítido de 854 para 855, na ordem do render. Aqui o
+  pedido dessa filtragem (gl.texParameterf com TEXTURE_MAX_ANISOTROPY_EXT) não chega à placa de vídeo.
+  MEDIDO COM TILE, nos quadros 0 a 860 em ordem, como o render (relato do mapista de 01/10/2026, correção 5), pela área e
+  pela espessura do laranja e pela média do laplaciano em faixas de 480 px nas laterais e de 300 px no topo, e no centro:
+    · 129→130 (a estrada, câmera parada): área do laranja −35 % antes, −0 % agora; espessura de 14 px de 125 a 134;
+    · 854→855 (o tracejado, o relevo desligando): +32 % antes, +1 % agora; nitidez +1 %;
+    · 684→685 e 707→708 (o mergulho): nitidez +43 % e +41 % antes, −7 % e −3 % agora; brilho +4,9 antes, −0,6 agora;
+    · 65→66 e 823→824 (os 20°): −45 % e +83 % antes, −3 % e +12 % agora; 817→818→819 (o clarão do degrau de 28°):
+      +26 % e −27 % antes, +8 % e +21 % agora (a troca de 10,5 da descida);
+    · ao ligar (32→33): −1 % antes e agora.
+  Nenhum tempo, câmera, exagero, linha ou rótulo mudou.
+
   NENHUM RÓTULO SOBRE UMA LINHA: medido nos 1.083 quadros, sem tile, com o relevo do DEM medido e as caixas do DOM
   (CENA.caixas, medidas no Chrome depois do document.fonts.ready; correção 1 do Claude central, 01/10/2026): os dez
   rótulos a 40 px ou mais de toda linha acesa (o mais perto, Haines, a 40 da estrada canadense de Haines, em 31,967),
@@ -121,6 +209,30 @@
   O CONTRATO: var DUR = 36.067 (o qc-janela lê o número escrito); __renderAt(t) determinístico e à prova de erro;
   __prepararCaptura; __ready (o mapa); __aguardarMapa (com o DEM quando o relevo está ligado); __fotosProntas. Nada de
   relógio, sorteio, @keyframes, transition ou SMIL. O RIG é a cópia inteira de templates-cena/_rig.js (pré-v1, 7ab9543).
+  A BASE ANDA LISA E A ÚLTIMA ATUALIZAÇÃO DOS TILES (correção 7 do Claude central, 01/10/2026: os dois blocos da s12 e
+  da s42, da correção 6, em todas as cenas de mapa, para o vídeo inteiro pintar a base de um jeito só):
+    · o MapLibre 4.7.1 desenha a base raster alinhada a pixel inteiro quando o mapa não está "em movimento"
+      (aligned = !painter.options.moving), e com jumpTo ele nunca está: com a câmera andando, a base anda em degraus de
+      1 px e treme meio pixel contra as linhas e os rótulos, que andam lisos. Agora toda pintura vai como "em movimento"
+      (o painter.render recebe moving: true; a cena falha se o MapLibre não tiver essa peça). Essa opção só mexe no
+      alinhamento da base e do relevo sombreado (as duas únicas leituras dela no MapLibre desta cena).
+      Medido com tile (os quadros 856 a 955 em ordem, como o render, num recorte de 480 × 300 px só de base no canto de
+      cima, com a câmera plana andando até 30 px por quadro): o passo da base fica a 0,01 px da média dos dois passos
+      vizinhos (mediana; máximo 0,16); no render de antes, a 0,74 px (máximo 1,92), acima de 0,3 px em 91 de 97
+      quadros. De 956 em diante a câmera abre rápido, e a medida por deslocamento não vale. Com o relevo ligado (33 a
+      854), a base se pinta na textura da malha, que o MapLibre não alinha a pixel.
+    · um tile novo da base conta como "entrando em esmaecimento" até a primeira pintura dele, e enquanto isso o MapLibre
+      deixa pintados por cima dele os filhos já carregados (SourceCache.update); com o esmaecimento de 0 ms, eles só saem
+      na atualização seguinte, que nenhum movimento pede. Na s42, isso deu um quadro com as bordas no tom do nível de
+      cima, quando o nível da base desceu. Agora, quando o mapa fica pronto, o __aguardarMapa o atualiza mais duas vezes
+      no mesmo lugar (um jumpTo para o centro em que ele está), cada uma com a pintura dela, e só então confere de novo:
+      a 1ª pinta os tiles que acabaram de chegar, e a 2ª tira os filhos. As duas começam quando os tiles estão carregados,
+      e não quando a conferência fecha, e se repetem, até 6, enquanto ela não fechar. E recomeçam do zero quando um tile
+      volta a carregar: na 1ª medida, a 1ª atualização saía antes de o quadro pedir os tiles dele, e o 984 ficou com 2
+      tiles do nível 9 entre 28 do 8 (sem salto de nitidez nem de brilho medido nas bordas). O nivelUnico, abaixo, ainda
+      aceita dois níveis vizinhos carregados, caso que agora não deve mais aparecer.
+      Medido com tile, nos 1.083 quadros em ordem, como o render: a base fica num nível só em todos (o 9 até o 73, o 10
+      de 74 a 955, o 9 de 956 a 983 e o 8 dali ao fim), e a cena não acusou erro.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -354,6 +466,25 @@
     // em "Any" desce ao plano junto com a câmera, que volta a olhar de cima (eb), e se desliga quando chega a 0 (o Yukon
     // visto de cima não pede DEM)
     relevoSobe: [1.067, 2.5], relevoDesce: [25.987, 2.5], exagero: 1.5,
+    // com o relevo ligado, um nível só na tela (UM NÍVEL SÓ NA TELA, no cabeçalho): [inclinação até a qual vale, quantos
+    // níveis abaixo do arredondado do zoom]; nenhum, em qualquer inclinação. E o teto do nível da base: no 12, o mosaico de
+    // satélite da MapTiler mostra emendas de tom no Lynn Canal (e no 11, no mergulho: nivelTeto, abaixo)
+    lodDegraus: [[91, 0]],
+    nivelMax: 11,
+    // o teto do nível da base no mergulho (A EMENDA DO LYNN CANAL, no cabeçalho): de "de" a "ate" (s), no máximo "nivel"
+    nivelTeto: [{ de: 22.0, ate: 27.6, nivel: 10 }],
+    // as fusões da base com o relevo ligado (AS TROCAS DE NÍVEL EM FUSÃO, no cabeçalho). Numa troca do nível do zoom (x,5),
+    // a camada presa ao nível "nivel", com o mesmo nível mínimo da base, fica a 1 do zoom nivel + 0,5 a nivel + 0,5 +
+    // "plato" (mais que o zoom de um quadro) e a 0 no zoom "de", só dentro de "em" (s): ela some depois de uma subida e
+    // entra antes de uma descida. A do degrau de 20° (fusao20) fica sem nível, porque não há mais degrau: se voltar, a
+    // camada uniforme de um nível abaixo do zoom fica a 1 de 20 − "plato" a 20 + "plato" e a 0 em 20 ± ("plato" + "meia");
+    // "marca" é o minzoom que a distingue
+    // as duas últimas, com "plano", valem só com o relevo desligado: as trocas de 9,5 e 8,5 da abertura ao Yukon (O DEGRAU
+    // DE FOCO NO MAPA PLANO, no cabeçalho); as outras, só com o relevo ligado
+    fusoes: [{ nivel: 9, de: 9.98, em: [1.0, 3.5] },
+             { nivel: 9, de: 9.65, em: [31.3, 32.1], plano: true }, { nivel: 8, de: 9.45, em: [31.85, 33.0], plano: true }],
+    fusaoPlato: 0.08,
+    fusao20: { niveis: [], meia: 5, plato: 1.5, marca: 1 },
 
     // a divisa do panhandle-juneau-largo (A DIVISA INTEIRA, no cabeçalho): o panhandle-juneau acabava dentro do quadro
     fronteira: { geo: "panhandle-juneau-largo", a: "US1", b: "CAN" },
@@ -607,8 +738,21 @@
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
     if (CENA.relevo && P.dem) fontes.dem = { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding };
     // sem transição: a pintura de cada quadro é a do __renderAt dele (O ESTILO SEM TRANSIÇÃO, no cabeçalho)
-    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+    var camadas = [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }];
+    // as camadas presas a um nível (AS TROCAS DE NÍVEL EM FUSÃO, no cabeçalho), por cima da base, desligadas até a janela
+    // delas: "base-zN" com o nível mínimo da base, "base-uN" uniforme (o minzoom CENA.fusao20.marca a distingue)
+    var presas = [];
+    CENA.fusoes.forEach(function (F) { if (presas.indexOf("z" + F.nivel) < 0) presas.push("z" + F.nivel); });
+    CENA.fusao20.niveis.forEach(function (n) { presas.push("u" + n); });
+    presas.forEach(function (id) {
+      var n = +id.slice(1), f = { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: n };
+      if (id[0] === "u") f.minzoom = CENA.fusao20.marca;
+      fontes["base-" + id] = f;
+      camadas.push({ id: "base-" + id, type: "raster", source: "base-" + id, layout: { visibility: "none" },
+        paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0, "raster-opacity": 0 } });
+    });
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
 
     // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -718,6 +862,51 @@
     return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
   }
   window.map = map;
+  // A BASE ANDA LISA (cabeçalho): toda pintura vai como "em movimento", para a base não se alinhar a pixel inteiro
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
+  // A NITIDEZ DO MAPA PLANO DEPOIS DO RELEVO (cabeçalho): o MapLibre liga a filtragem anisotrópica na textura de um tile da
+  // base quando a inclinação passa de 20° e nunca mais a desliga. Nesta cena ela não serve: com a câmera inclinada o relevo
+  // está ligado, e a base se pinta ponto por ponto na textura dele. E deixava o mapa plano do fim (a câmera reta, depois
+  // do relevo) mais borrado nos tiles já usados no palco e no mergulho: 16 % menos nítido de um quadro para o outro em
+  // 854→855. Aqui o pedido dessa filtragem não chega à placa de vídeo
+  (function () {
+    var ctx = map.painter && map.painter.context, gl = ctx && ctx.gl, ext = ctx && ctx.extTextureFilterAnisotropic;
+    if (!gl || !ext) return;   // sem a extensão, o MapLibre não a usa
+    var orig = gl.texParameterf;
+    gl.texParameterf = function (alvo, nome, valor) { if (nome === ext.TEXTURE_MAX_ANISOTROPY_EXT) return; return orig.call(gl, alvo, nome, valor); };
+  })();
+  // UM NÍVEL SÓ NA TELA (cabeçalho): com o relevo ligado, o MapLibre só deixa um tile parar abaixo do nível pedido até o
+  // minzoom, e não passa do maxzoom. Aqui os dois ficam no mesmo nível, só em dois pedidos: o da base (fonte raster,
+  // roundZoom true; a camada presa, uniforme, também) e o da malha do relevo (o do TerrainSourceCache: reparseOverscaled
+  // false, sem roundZoom). O do DEM (roundZoom false) fica como o MapLibre faz
+  (function () {
+    var tr = map.transform, cobrir = tr && tr.coveringTiles;
+    if (typeof cobrir !== "function" || typeof tr.coveringZoomLevel !== "function") return falhar("o MapLibre desta cena não tem transform.coveringTiles: a nitidez das laterais com o relevo não se garante.");
+    tr.coveringTiles = function (o) {
+      var base = o && o.roundZoom === true, malha = o && o.reparseOverscaled === false && o.roundZoom === undefined;
+      if (o && o.terrain && (base || malha)) {
+        var uniforme = base && o.minzoom === CENA.fusao20.marca, deg = uniforme ? 0 : null;
+        if (!uniforme) for (var i = 0; i < CENA.lodDegraus.length; i++) if (this.pitch < CENA.lodDegraus[i][0]) { deg = CENA.lodDegraus[i][1]; break; }
+        if (deg !== null) {
+          // um nível só na tela inteira (min = max): o da base é o arredondado do zoom (até CENA.nivelMax); o da malha, um
+          // abaixo dele, porque a textura de cada tile da malha tem o dobro da resolução de um tile da base (ponto por ponto)
+          if (malha) o = Object.assign({}, o, { roundZoom: true });
+          var z = this.coveringZoomLevel(o), piso = uniforme ? 0 : (o.minzoom || 0);
+          if (o.maxzoom !== undefined && z > o.maxzoom) z = o.maxzoom;
+          // o teto do mergulho vale só para a base: a malha segue um abaixo do arredondado do zoom, e as linhas pintadas nela
+          // não perdem pontos (A EMENDA DO LYNN CANAL, no cabeçalho)
+          z = Math.min(z, CENA.nivelMax, malha ? Infinity : tetoAgora());
+          z = Math.max(z - deg - (malha ? 1 : 0), piso);
+          o = Object.assign({}, o, { minzoom: z, maxzoom: z });
+        }
+      }
+      return cobrir.call(this, o);
+    };
+  })();
 
     // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
   window.__errosMapa = 0;
@@ -820,12 +1009,39 @@
     var d = Math.min(x - r - 200, 3640 - x - r, y - r - 160, 1880 - y - r, Math.max(3440 - x - r, 1760 - y - r));
     return cl(d / 60, 0, 1);
   }
+  // AS TROCAS DE NÍVEL EM FUSÃO (cabeçalho): a opacidade de cada camada presa, pelo zoom (nas trocas de x,5) e pela
+  // inclinação (no degrau de 20°), só com o relevo ligado; fora da janela, desligada (não pede tile)
+  var presaAntes = {};
+  function presa(id, a) {
+    var vis = a > 0 ? "visible" : "none", k = vis + "|" + a.toFixed(4);
+    if (presaAntes[id] === k) return;
+    map.setLayoutProperty(id, "visibility", vis); map.setPaintProperty(id, "raster-opacity", +a.toFixed(4)); presaAntes[id] = k;
+  }
+  function fusoes(t, ligado) {
+    var z = map.getZoom(), pi = map.getPitch(), op = {};
+    CENA.fusoes.forEach(function (F) {
+      var vale = F.plano ? !ligado : ligado;
+      var a = !vale || t < F.em[0] || t > F.em[1] || z < F.nivel + 0.5 ? 0 : cl((F.de - z) / (F.de - F.nivel - 0.5 - CENA.fusaoPlato), 0, 1);
+      op["base-z" + F.nivel] = Math.max(op["base-z" + F.nivel] || 0, a);
+    });
+    var V = CENA.fusao20, nu = Math.round(z) - 1, a20 = ligado ? cl((V.meia + V.plato - Math.abs(pi - 20)) / V.meia, 0, 1) : 0;
+    V.niveis.forEach(function (n) { op["base-u" + n] = n === nu ? a20 : 0; });
+    for (var id in op) presa(id, op[id]);
+  }
+  // A EMENDA DO LYNN CANAL (cabeçalho): o teto do nível da base no quadro de agora (o tempo vem do aplicar)
+  var tQuadro = 0;
+  function tetoAgora() {
+    for (var i = 0; i < CENA.nivelTeto.length; i++) { var T = CENA.nivelTeto[i]; if (tQuadro >= T.de && tQuadro <= T.ate) return T.nivel; }
+    return Infinity;
+  }
   function aplicar(t) {
+    tQuadro = t;
     if (!mapaCarregado) return;
     var ex = relevo(t);
     map.jumpTo(cameraAt(t));
     if (map.terrain && map.transform.elevation !== 0) map.transform.elevation = 0;
     window.__exagero = ex;
+    fusoes(t, ex > 0);
 
     // ── os territórios e o gelo ──
     var G = CENA.gelo, B = CENA.bc, Y = CENA.yukon;
@@ -894,6 +1110,14 @@
     });
     var cxL = E("legenda"); cxL.style.height = hL.toFixed(1) + "px"; cxL.style.opacity = "1";
 
+    // ── A ESPESSURA DAS LINHAS SOBRE O RELEVO (cabeçalho): com o relevo ligado, a textura em que a base e as linhas se
+    //    pintam sobre o relevo se pinta de novo em todo quadro, no zoom dele ──
+    if (map.terrain) {
+      var tsc = map.terrain.sourceCache;
+      if (!tsc || typeof tsc.freeRtt !== "function") return falhar("o MapLibre desta cena não tem terrain.sourceCache.freeRtt: a espessura das linhas sobre o relevo não se garante.");
+      tsc.freeRtt(); map.triggerRepaint();
+    }
+
     // ── os créditos: o da MapTiler a cena toda; o da fonte dos corredores de 9,533 ao corte ──
     var c1 = E("credito"), cf = E("creditoFonte");
     if (c1 && cf) {
@@ -953,10 +1177,21 @@
           return nivelUnico();
         } catch (e) { return false; }
       };
-      var t0 = performance.now(), seguidas = 0;
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
       (function tick() {
         barrarTileComErro();
-        seguidas = pronto() ? seguidas + 1 : 0;
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        // A ÚLTIMA ATUALIZAÇÃO DOS TILES (cabeçalho): com os tiles carregados, o mapa se atualiza mais duas vezes no mesmo
+        // lugar, cada uma com a pintura dela (a 1ª pinta os tiles que acabaram de chegar; a 2ª tira os filhos que o
+        // MapLibre guardou para o esmaecimento deles), e de novo, até 6, enquanto a conferência não fechar; ela só conta
+        // depois da 2ª. Começa pelo carregado, não pela conferência: os filhos guardados dão dois níveis à vista, e o
+        // nivelUnico, abaixo, não fecharia nunca. E recomeça do zero quando um tile volta a carregar: a 1ª podia sair antes
+        // de o quadro pedir os tiles dele, e aí só uma caía depois deles
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.jumpTo({ center: map.getCenter() }); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
         if (window.__erroCena || seguidas >= 2) return res(true);
         if (performance.now() - t0 > teto) {
           window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
