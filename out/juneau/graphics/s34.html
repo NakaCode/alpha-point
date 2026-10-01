@@ -43,6 +43,12 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia
   inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- CORREÇÃO DO RENDER (01/10/2026, a triagem dos portões, correcao-render-5.md, B5; check-overlap e qc-fora-do-quadro): (1) na
+     queda, a etiqueta opaca passava sob o crédito sem fundo em 5,167–5,2 (f155–f156); agora ela esmaece de 0,25 a 0,31 s depois de
+     se soltar (1 − seg(tau, 0,25, 0,06)), e some nos dois últimos quadros da queda, antes de chegar ao crédito; a queda e o giro são
+     os de antes. (2) A nota do cético: em 5,03–5,07 as letras do herói passavam sobre "This time," da fala. A etiqueta passa a vir
+     ANTES do cartão no DOM: cai por trás dele, e a fala fica por cima dela em todo quadro. A queda não muda; só a ordem das camadas
+     (o fio já ficava atrás do cartão). -->
 <head>
 <meta charset="utf-8">
 <title>s34 — Opponents recalled the 1982 estimate of about $2.8 billion. "This time," the statement against it said, "no price tag is attached."</title>
@@ -98,8 +104,9 @@
   <div id="cam">
     <div id="mesa"></div>
     <div id="fio"></div>
-    <div class="folha" id="falaCard"><div class="fala" data-qc-papel="fala"><span id="l1"></span><span id="l2"></span></div></div>
+    <!-- a etiqueta ANTES do cartão: ela cai por trás dele, e as letras do herói não passam sobre a fala (correção do render, 01/10/2026) -->
     <div id="etiqueta" data-qc-papel="heroi"><div class="furo"></div><div class="heroi" id="heroi"></div></div>
+    <div class="folha" id="falaCard"><div class="fala" data-qc-papel="fala"><span id="l1"></span><span id="l2"></span></div></div>
   </div>
   <div id="creds">
     <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
@@ -246,8 +253,8 @@
     var tau = Math.max(0, t - T.solta);                        // tempo desde a soltura
     var theta = 3 * Math.sin(3.1 * (t - T.etiqueta));          // o balanço no fio, pivô no furo
     var et = E("etiqueta"), opE = t >= T.etiqueta ? 1 : 0;
-    if (tau > 0) { yFuro = FIO.furo + 12000 * tau * tau; theta = theta + 34 * tau; if (yFuro > 2800) opE = 0; }   // a queda rápida: em 0,3 s a etiqueta já passou do cartão
-    et.style.opacity = opE.toFixed(0);
+    if (tau > 0) { yFuro = FIO.furo + 12000 * tau * tau; theta = theta + 34 * tau; opE = 1 - seg(tau, 0.25, 0.06); }   // a queda rápida: em 0,3 s a etiqueta já passou do cartão; esmaece de 0,25 a 0,31 s, antes de chegar ao crédito (correção do render, 01/10/2026)
+    et.style.opacity = opE.toFixed(3);
     et.style.transform = "translate(-50%," + yFuro.toFixed(2) + "px) rotate(" + theta.toFixed(3) + "deg)";
     var fio = E("fio");
     fio.style.height = Math.max(0, tau > 0 ? FIO.furo : yFuro).toFixed(1) + "px";
