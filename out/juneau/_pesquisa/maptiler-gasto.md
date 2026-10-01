@@ -97,3 +97,13 @@ quando ele mostrar.
 | s59 e s48 (4 cargas do mapista na correção 2: o qc-cena da s59 às 13:04, da s48 às 13:05 e das duas às 13:12) | 13:04 | 13:12 | qc-cena |
 | s59 (2º render: o recuo cruza os níveis com o CENA.niveis; pede os níveis 12 a 9) | 13:14:16 | 13:15:44 | 2160p |
 | s48 (2º render: a pílula Lynn Canal sobre o ponto do GNIS) | 13:15:44 | 13:17:57 | 2160p |
+| s44, s15, s21 e s24 (8 cargas do mapista na correção 3: 4 aberturas da s44 para medir, às 13:26, 13:29, 13:30 e 13:32, e o qc-cena das 4 cenas) | 13:26 | ~13:35 | medida e qc-cena |
+| s42 (1 carga do mapista: o qc-cena depois do CENA.niveis) | ~13:41 | — | qc-cena |
+| s12 e s48 (2 cargas do mapista na correção 4: o qc-cena das duas, com a deriva) | ~13:50 | — | qc-cena |
+| s15 (2º render: a câmera anda; a camada cortada do sítio) | 13:52:18 | 13:55:37 | 2160p |
+| s21 (2º render: a camada cortada do sítio) | 13:55:37 | 13:56:15 | 2160p |
+| s24 (2º render: o p1 com push-in; a camada cortada do sítio) | 13:56:15 | 13:57:35 | 2160p |
+| s44 (4º render: o CENA.lodDegraus, a nitidez das laterais com o relevo) | 13:57:35 | 14:04:29 | 2160p |
+| s42 (3º render: o CENA.niveis na troca de nível do quadro 131→132) | 14:04:41 | 14:10:10 | 2160p |
+| s12 (render com a deriva da correção 4) | 14:10:23 | 14:15:29 | 2160p |
+| s48 (render com a deriva da correção 4) | 14:15:29 | 14:17:47 | 2160p |

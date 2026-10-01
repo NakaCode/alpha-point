@@ -19,9 +19,11 @@
   OS BEATS (tempo local = master − 245,033; palavras do words.json): 'winner' 245,246 → 0,213 (a regência, 0,233) ·
   'Willow.' 248,137 → 3,104 · 'A' (de "A no vote") 249,08 → 4,047 (o corte, em 4,033) · 'Juneau' 249,984 → 4,951.
     b1  0,000–4,033  "It was winner take all. A yes vote meant building at Willow."  — mapa (satélite matsu-anchorage,
-        câmera parada) mais aberto que o da s21 (zoom 8,6 contra 9,3–9,45, e a vila no meio do quadro, não no alto):
+        a câmera num push-in lento preso à vila: A CÂMERA ANDA, abaixo) mais aberto que o da s21 (zoom 8,6–8,67 contra
+        9,3–9,45, e a vila no meio do quadro, não no alto):
         a vila de Willow (cidade-willow-osm) com o nome em cima do ponto, desde o 1º quadro; as feições do sítio de 1976
-        (limites-sitio-willow-1976, traço fino de 6 px em --contraparte, sem preencher); a estrada de Anchorage
+        (limites-sitio-willow-1976-trechos, as mesmas da s15 e da s21, traço fino de 6 px em --contraparte, sem
+        preencher); a estrada de Anchorage
         (estrada-anchorage-willow) chegando a Willow pelo sul em --rede-cor, 11 px sobre o contorno --rotulo de 24 px;
         o Susitna como o satélite o mostra (nenhum traço de rio). A legenda das cores (um elemento) desde o 1º quadro com
         Proposed site e Roads, as duas linhas já na tela, cada amostra na espessura da sua linha. WINNER-TAKE-ALL na
@@ -40,7 +42,23 @@
       credito_na_tela "Jay Galvin / Wikimedia Commons · CC BY 2.0". Nenhum upscale, filtro ou recorte que mude o
       sentido: 0,8989× (até 0,941×), abaixo de 1,4×.
 
-  A CONTA DOS 6 ELEMENTOS (identidade §4.2; minha, pelo ensaio a seco, não portão):
+  A CÂMERA ANDA (correção 3 do Claude central, 01/10/2026, item 1; o qc-visual reprovou a lente motion: no p1, escala
+  1,0000 e deslocamento 0 de 0,03 a 3,9 s). De 0 até o corte (4,033), um push-in de 1,00 a 1,05 (zoom 8,6 → 8,670), em
+  velocidade constante desde o 1º quadro, preso à vila: o ponto de Willow fica parado na tela, em (1960, 760), com o
+  nome em cima, e o resto se abre em volta dele (CENA.deriva, cameraAt). WINNER-TAKE-ALL e a legenda ficam presos à
+  tela. O zoom não cruza 8,5 nem 9,5: a base não troca de nível de tile.
+  O DESVIO: o conceito-visual.json › s24 e a regência › s24#1 dizem "câmera parada", e o ofício (lente motion: "mapa
+  parado é foto cara") e o laudo do qc-visual pedem a deriva. A cena segue o ofício; o texto vai ao diretor-de-arte e
+  ao regente-de-imagem pelo Claude central.
+
+  AS FEIÇÕES CORTADAS (correção 3, item 2; achado F1 do laudo de fatos da tela): a camada inteira
+  (limites-sitio-willow-1976) desenhava o Little Susitna da serra até Cook Inlet e o Willow Creek com os braços, e a
+  legenda Proposed site nomeava linhas longe do sítio. A do pesquisa-geo (limites-sitio-willow-1976-trechos;
+  pauta-geo.json, com a ressalva; research-geo.md §10) tem o Willow Creek e o Little Susitna só no leito principal, da
+  travessia da ferrovia ao meridiano da ponta leste do Deception Creek, e a ferrovia e o Deception Creek como estavam;
+  cada linha fica sobre a de antes. O texto Proposed site não muda.
+
+  A CONTA DOS 6 ELEMENTOS (identidade §4.2; minha, pelo ensaio a seco):
     b1: Willow com o nome, o sítio, a estrada, WINNER-TAKE-ALL e a legenda = 5 (antes de 0,233, 4);
     b2: o rótulo = 1 (o aviso e o crédito não contam).
 
@@ -56,7 +74,7 @@
 <script src="../_media/_vendor/maplibre-gl.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/juneau/_pesquisa/pauta-geo.json): -->
-<script src="../_media/geo/limites-sitio-willow-1976.js"></script>
+<script src="../_media/geo/limites-sitio-willow-1976-trechos.js"></script>
 <script src="../_media/geo/cidade-willow-osm.js"></script>
 <script src="../_media/geo/estrada-anchorage-willow.js"></script>
 <style>
@@ -249,13 +267,15 @@
     },
 
     corte: 4.033,                                    // o corte seco do mapa para a foto ('A' de "A no vote", 4,047)
-    // ── b1: a câmera parada, mais aberta que a da s21: a vila em (1960, 760), Anchorage em (2043, 1376)
+    // ── b1: o 1º quadro, mais aberto que o da s21: a vila em (1960, 760), Anchorage em (2043, 1376); dali, o push-in de
+    //    1,00 a "escala" até o corte, em velocidade constante, preso à vila (A CÂMERA ANDA, no cabeçalho)
     camera: { lng: -150.10998, lat: 61.47151, zoom: 8.6, bearing: 0, pitch: 0 },
-    sitio: { geo: "limites-sitio-willow-1976" },
+    deriva: { escala: 1.05 },
+    sitio: { geo: "limites-sitio-willow-1976-trechos" },
     vila: { geo: "cidade-willow-osm" },
     estrada: { geo: "estrada-anchorage-willow" },
     // o nome da vila em cima do ponto (embaixo dele passam as voltas do Little Susitna); WINNER-TAKE-ALL embaixo à
-    // esquerda, preso à tela (o quadro não anda), longe de toda linha
+    // esquerda, preso à tela, longe de toda linha em todo o push-in
     rotulos: [
       { id: "rotWillow", texto: "willow", ancora: "vila", lado: "centro", dx: 0, dy: -215, entra: 0 },
       { id: "rotWta", texto: "wta", tela: [200, 1540], lado: "direita", dx: 0, dy: 0, entra: 0.233 }
@@ -456,6 +476,15 @@
   var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
 
   var C = CENA.camera, map;
+  // a câmera do b1: o push-in preso à vila. Em Mercator normalizado, o vão entre a vila e o centro encolhe na razão
+  // inversa da escala, e assim o ponto da vila fica no mesmo pixel em todo quadro
+  var merc = function (lng, lat) { return [(180 + lng) / 360, (180 - (180 / Math.PI) * Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360))) / 360]; };
+  var unmerc = function (x, y) { return [x * 360 - 180, (Math.atan(Math.exp((180 - y * 360) * Math.PI / 180)) * 360) / Math.PI - 90]; };
+  function cameraAt(t) {
+    var u = cl(t / CENA.corte, 0, 1), dz = Math.log(CENA.deriva.escala) / Math.LN2 * u, k = Math.pow(2, -dz);
+    var mc = merc(C.lng, C.lat), mv = merc(PW[0], PW[1]);
+    return { center: unmerc(mv[0] - (mv[0] - mc[0]) * k, mv[1] - (mv[1] - mc[1]) * k), zoom: C.zoom + dz, bearing: C.bearing, pitch: C.pitch };
+  }
   try {
     map = new maplibregl.Map({
       container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
@@ -523,7 +552,7 @@
     var vMapa = foto ? "hidden" : "visible";
     ["ov", "rotulos", "legenda", "credito"].forEach(function (id) { E(id).style.visibility = vMapa; });
     if (!mapaCarregado) return;
-    map.jumpTo({ center: [C.lng, C.lat], zoom: C.zoom, bearing: C.bearing, pitch: C.pitch });
+    map.jumpTo(cameraAt(t));
     var q = map.project(PW), d = E("pontoW");
     d.setAttribute("cx", q.x.toFixed(1)); d.setAttribute("cy", q.y.toFixed(1)); d.setAttribute("opacity", "1");
     CENA.rotulos.forEach(function (r) {
