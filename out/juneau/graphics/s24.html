@@ -68,6 +68,23 @@
   O CONTRATO: var DUR = 6.4 (o qc-janela lê o número escrito); __renderAt(t) determinístico e à prova de erro;
   __prepararCaptura; __ready (o mapa); __aguardarMapa; __fotosProntas (a foto e as faces). Nada de relógio, sorteio,
   @keyframes, transition ou SMIL. O RIG é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+  A BASE ANDA LISA E A ÚLTIMA ATUALIZAÇÃO DOS TILES (correção 7 do Claude central, 01/10/2026: os dois blocos da s12 e
+  da s42, da correção 6, em todas as cenas de mapa, para o vídeo inteiro pintar a base de um jeito só):
+    · o MapLibre 4.7.1 desenha a base raster alinhada a pixel inteiro quando o mapa não está "em movimento"
+      (aligned = !painter.options.moving), e com jumpTo ele nunca está: com a câmera andando, a base anda em degraus de
+      1 px e treme meio pixel contra as linhas e os rótulos, que andam lisos. Agora toda pintura vai como "em movimento"
+      (o painter.render recebe moving: true; a cena falha se o MapLibre não tiver essa peça). Essa opção só mexe no
+      alinhamento da base e do relevo sombreado (as duas únicas leituras dela no MapLibre desta cena).
+      Medido com tile (os quadros 45 a 85 em ordem, como o render, num recorte de 720 × 720 px só de base): o passo da base
+      fica a 0,01 px da média dos dois passos vizinhos (mediana; máximo 0,02); no render de antes, a 0,49 px (máximo 1,01).
+    · um tile novo da base conta como "entrando em esmaecimento" até a primeira pintura dele, e enquanto isso o MapLibre
+      deixa pintados por cima dele os filhos já carregados (SourceCache.update); com o esmaecimento de 0 ms, eles só saem
+      na atualização seguinte, que nenhum movimento pede. Na s42, isso deu um quadro com as bordas no tom do nível de
+      cima, quando o nível da base desceu. Agora, quando o mapa fica pronto, o __aguardarMapa o atualiza mais duas vezes
+      no mesmo lugar (um jumpTo para o centro em que ele está), cada uma com a pintura dela, e só então confere de novo:
+      a 1ª pinta os tiles que acabaram de chegar, e a 2ª tira os filhos. O nivelUnico, abaixo, ainda aceita dois níveis
+      vizinhos carregados, caso que agora não deve mais aparecer.
+      Medido com tile, nos mesmos quadros: a base fica num nível só em todos.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -495,6 +512,12 @@
     return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
   }
   window.map = map;
+  // A BASE ANDA LISA (cabeçalho): toda pintura vai como "em movimento", para a base não se alinhar a pixel inteiro
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
 
   // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
   window.__errosMapa = 0;
@@ -612,10 +635,16 @@
           return nivelUnico();
         } catch (e) { return false; }
       };
-      var t0 = performance.now(), seguidas = 0;
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
       (function tick() {
         barrarTileComErro();
-        seguidas = pronto() ? seguidas + 1 : 0;
+        var ok = pronto();
+        // A ÚLTIMA ATUALIZAÇÃO DOS TILES (cabeçalho): pronto, o mapa se atualiza mais duas vezes no mesmo lugar, cada
+        // uma com a pintura dela (a 1ª pinta os tiles que acabaram de chegar; a 2ª tira os filhos que o MapLibre guardou
+        // para o esmaecimento deles), e a conferência só conta depois da 2ª
+        if (ok && pintou && forcadas < 2) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.jumpTo({ center: map.getCenter() }); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
         if (window.__erroCena || seguidas >= 2) return res(true);
         if (performance.now() - t0 > teto) {
           window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
