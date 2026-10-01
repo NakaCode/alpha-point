@@ -436,12 +436,29 @@ texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para tod
     - **Cada item entra com a sua linha**, e a protagonista também ganha o seu item.
     - **O tamanho é o da proposta:** a letra no alvo do papel legenda, 84 px (`--fs-eixo`, §4.1). Logo depois do
       "Mas menor", o Lucas corrigiu: "Perdão, na verdade o tamanho está bom. Estava ampliado".
-    - **Conta como um elemento** (§4.2). Quando o quadro chega a 6, ela sai antes de o elemento novo entrar. Por
+    - **Conta como um elemento** (§4.2). O quadro pode ficar com 6 contando a legenda, como na s03 aprovada (de 21,966
+      a 23,4 s do master). Quando um elemento novo faria o quadro passar de 6, ela sai antes de ele entrar. Por
       escolha do Lucas, o item que entra por último pode ficar menos que os 2,0 s de texto no ar (§4.3).
+    - A fronteira é tratamento da base (§6, acima) e não conta no teto, como na s03 aprovada (§4.2: a base de tela
+      cheia não conta). Conta só onde a cena a desenha como assunto, e a técnica tem de dizer isso.
     - A fronteira é "Border", e os nomes dos dois países continuam um de cada lado dela.
   - **O rótulo de uma linha só entra com a linha:** o rótulo que fala de uma linha (uma distância, um nome) entra
     quando ela já está na tela, nunca antes. Na s03, o ABOUT 43 MILES passa a entrar quando a estrada chega ao meio
     (em "miles"), e não em "about".
+  - **O território da contraparte, mais leve** (Lucas, 01/10/2026, 01:5x de Brasília). Nos mapas do Mat-Su do Juneau
+    (a pergunta nomeou s15, s24 p1 e s33; a s39 também pinta o Mat-Su, e segue a mesma regra), o verde-água é a cor do destino proposto (Willow, Wasilla, o vale) e também a das estradas,
+    e o conceito pintava o vale a 85 %, como o protagonista. Ele viu quatro versões do quadro de Willow desenhadas
+    sobre satélite Landsat (`out/juneau/_tmp/prova-verde-agua/prova-verde-agua-4-opcoes.png`). A pergunta: "Nos mapas
+    do Mat-Su (s15, s24 e s33), o verde-água é a cor de Willow e do vale, e também a das estradas. Na versão 1, como o
+    conceito está hoje, o vale pintado a 85 % esconde as linhas do sítio. Qual versão fica valendo?" A resposta: "2,
+    vale mais leve (Recomendado)". A opção dizia: "O vale passa a 35 %, e o satélite aparece por baixo. A estrada
+    continua no mesmo verde-água, mais grossa e com contorno escuro. A diferença das linhas fica na espessura e na
+    legenda. Só os mapas do Mat-Su mudam, e a s03 fica como foi aprovada."
+    - O preenchimento do território da contraparte é `--contraparte` a **35 %** (`--territorio-contraparte-cor` nos
+      tokens). O do protagonista continua a 85 %.
+    - A estrada que não é a protagonista continua em `--rede-cor` (= `--contraparte`), com o contorno escuro, mesmo
+      dentro do território verde-água. A linha fina do sítio e a estrada se separam pela espessura e pela legenda.
+    - Do vídeo 2 em diante, o território da contraparte a 35 % é a proposta, até o Lucas decidir de novo.
 
 **Bases aceitas** (licença conferida para uso comercial):
 - escala de mundo e continente: **NASA Blue Marble**, domínio público;
