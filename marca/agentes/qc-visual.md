@@ -160,6 +160,9 @@
     - upscale ou filtro nela.
   - **A foto média** (Lucas, 29/09/2026; identidade.md §5, "A foto média também vai impressa"): a de 1.600 px ou mais que, em tela cheia,
     passaria de 1,4 vez vai impressa sobre a mesa, e reprova pelas mesmas três coisas.
+  - **A foto pequena na lacuna**, do vídeo 2 em diante (Lucas, 30/09/2026; identidade.md §5, "A foto pequena preenche a lacuna"): de hoje ou de época, uma ou mais na mesma
+    mesa. Reprova pelas mesmas três coisas e também quando uma foto cobre a parte que importa de outra ou quando
+    uma delas vai sem o crédito dela.
   - O rosto, quando há, vem de fonte autorizada, com a procedência gravada (midia.md §7.2). O retrato oficial
     em uso editorial vai sem crédito na tela. Rosto gerado ou alterado por IA reprova.
 - **acessibilidade** (identidade.md §0; voz.md §1): o espectador é norte-americano, de 25 a 60 anos, e não

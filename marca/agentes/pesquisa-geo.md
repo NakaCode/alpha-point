@@ -65,7 +65,7 @@
   "O gasto do Juneau, liberado").
 - Para quem desenha (identidade.md §6): base a 65 % de brilho e 70 % de saturação; o protagonista
   preenchido em `--destaque` a 85 %, com contorno `--tinta` de 6 px; as outras fronteiras em branco a
-  35 %, 3 px, sobre um contorno escuro de 7 px.
+  70 %, 5 px, sobre um contorno escuro a 60 %, de 12 px (desde 30/09/2026).
 - **Território é polígono inteiro; ponto é anel** (identidade.md §1, §4.4). País, estado ou região: entregue
   o polígono completo, nunca um ponto. Estreito, base, porto, fim de estrada: entregue o ponto real, que o
   anel vai marcar.

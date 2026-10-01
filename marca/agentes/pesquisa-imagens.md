@@ -225,7 +225,12 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
     caso muito específico (identidade.md §5): o registro daquilo que a fala nomeia, sem foto grande que sirva,
     nem de outro ano com o aviso, e com qualidade. Escreva no relatório por que o caso é específico. Nunca a
     amplie (upscale: CLAUDE.md, tropeços do apoio), e entregue com a medida.
-  - Busque sempre primeiro as grandes, com o `buscar` sem opção. Só no caso específico, rode o `buscar` com
+  - **A lacuna**, do vídeo 2 em diante; no Juneau, não (Lucas, 30/09/2026; identidade.md §5, "A foto pequena preenche a lacuna"): item que ficou sem foto grande e sem vídeo que sirva (o NÃO ACHADO) pode ser
+    preenchido por foto pequena, de hoje ou de época, impressa sobre a mesa, **uma ou mais** do mesmo assunto na
+    mesma composição. Ela mostra o que a fala nomeia, tem qualidade, 800 px ou mais no lado maior e data na origem.
+    Não precisa escrever o caso específico: a lacuna é o caso. Entregue o conjunto (até 3 ou 4 fotos) no rascunho,
+    e diga na pauta que são para a mesma mesa.
+  - Busque sempre primeiro as grandes, com o `buscar` sem opção. Só no caso específico e na lacuna, rode o `buscar` com
     `--min-w=800`: sem ele, o `buscar-midia` tira da lista o que tem menos de 1.600 px (§3). Candidato abaixo de
     800 px fica listado com link, medida e licença, sem entrega.
   - **Vídeo de época** abaixo de 4K: DECISÃO DO LUCAS PENDENTE. Até lá, não o rejeite só pela resolução e não o
@@ -276,7 +281,8 @@ O canal não tem `out/<proj>/pauta-fundamento.json`. O equivalente:
   - A data vem da página de origem: o ano, ou a aproximação que ela dá (`ca. 1900`, `1990s`). Ela vai para a
     procedência e para a pauta. Foto sem data na origem não entra.
   - A ordem inteira (identidade.md §6, "A ordem"): a grande e com qualidade do ano do fato; a grande e com
-    qualidade de outro ano, a do ano mais perto, com o aviso; a pequena, só no caso muito específico (§6 acima);
+    qualidade de outro ano, a do ano mais perto, com o aviso; a pequena, no caso muito específico e na lacuna, uma ou
+    mais na mesma mesa (§6 acima);
     e, sem nenhuma, NÃO ACHADO, que leva o plano a mapa ou desenho.
   - A de outro ano não pode desmentir a fala: a cidade de hoje numa fala sobre o povoado de 1900 não entra.
   - O aviso na tela é do `editor-de-arte`, com a grafia do `redator-de-tela`. **Vídeo** de outro ano continua

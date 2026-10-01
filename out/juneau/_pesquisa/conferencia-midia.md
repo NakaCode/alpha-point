@@ -1,10 +1,89 @@
-# Conferência de mídia · juneau · fluxo `midia` · despachos 1 a 7 · 30/09/2026, 19:37 (BRT)
+# Conferência de mídia · juneau · fluxo `midia` · despachos 1 a 8 · 30/09/2026, 20:54 (BRT)
 
-**Laudo do arquivo: 30 aprovados de 40 conferidos (1 reprovado, 9 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 40.** Aos 25 aprovados do 6º despacho somam-se os 5 arquivos da caça 2, do 7º. Os 10 que não são `aprovado` ficam como estão: 4 `trocar` do lote 1; 5 `trocar` e 1 `reprovado` do 2º. Os 30 vereditos antigos estão em `substituidos`.
+**Laudo do arquivo: 39 aprovados de 51 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 51.** Aos 30 aprovados dos despachos 6 e 7 somam-se os 9 rascunhos do acervo aberto aprovados no 8º. Os 12 que não são `aprovado`: 4 `trocar` do lote 1; 5 `trocar` e 1 `reprovado` do 2º; 2 `trocar` do 8º. Os 30 vereditos antigos estão em `substituidos`.
 
-**Laudo deste despacho (o 7º): 5 aprovados de 5 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 5.**
+**Laudo deste despacho (o 8º): 9 aprovados de 11 conferidos (0 reprovados, 2 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 11.**
+
+## O 8º despacho: os 11 rascunhos do acervo aberto (30/09/2026)
+
+- **Quem conferiu:** o conferente-de-midia, despachado pelo Claude central no passo research, reaberto em 30/09 para os 18 itens da caça sem vídeo nos bancos (decisão do Lucas, 18:5x: "Acervo aberto e mapa (Recomendado)"). Nenhuma ferramenta de navegador; só o WebFetch nas 10 páginas de arquivo do Commons, uma por vez, entre 23:40 e 23:50Z. Nenhuma recusou.
+- **O que o veredito vale:** nenhum veredito aqui é o sim do Lucas. O aprovado só diz que o pesquisa-imagens pode entregar o rascunho, num despacho novo.
+- **O que se julgou:** os 11 arquivos de itens da pauta-imagens-acervo-r6.json, contra o beat da regência, a fala do words.json, o texto do roteiro e o item da lista-de-caca.json. Os 7 de reprovados_por_mim e os 9 nao_achados ficaram fora, a pedido.
+- **Como:** cada arquivo aberto inteiro (cópia reduzida) e em recortes a 100 % nos pontos de dúvida (a picape do s01, a barcaça do s04, o jato e o fundo do s04 p2, as pessoas e o carro do s24, a margem do s43, os navios do s47, o farol e os corredores do s51), o ffprobe, o sha256sum e a licença lida na página do arquivo.
+- **Olhos novos, não:** a pauta, com o que o pesquisador viu e por que escolheu, foi lida antes de abrir as imagens, porque o pedido a dava como entrada. O que está em o_que_viu é o que eu vi no arquivo.
+- **Os sha256 conferem** com os da pauta e dos manifest.jsonl, os 11 inteiros.
+- **out/juneau/_media/ não mudou durante o trabalho** (304 arquivos; a lista às 20:40 e às 20:53, antes de gravar; a de depois vai na nota do despacho, abaixo).
+
+| # | arquivo (em _media/_caca/) | cena · beat (janela) | item · papel | medida (ffprobe) | veredito | motivo |
+|---|---|---|---|---|---|---|
+| 1 | s01/acervo-livre/alaska-state-capitol-exterior-2017-03-04-gillfoto-gf7174.jpg | s01 · s01#2 (3,233 s) | s01-p2 · preferido | 5719x4016 JPEG | aprovado | o Capitólio inteiro em Juneau, 04/03/2017; cobre "the capital is still in Juneau", com "Photo from 2017" |
+| 2 | s04/acervo-livre/alaska-marine-highway-kennicott-freight-barge-to-auke-bay-2020-09-30-gillfoto-01.jpg | s04 · s04#1 (3,567 s) | s04-p1 · preferido | 6016x4016 JPEG | aprovado | a balsa estadual Kennicott e a barcaça de carga no Stephens Passage, a caminho de Auke Bay; rótulo no máximo "Stephens Passage" |
+| 3 | s04/acervo-livre/juneau-airport-commercial-jet-landing-2018-12-05-gillfoto-681.jpg | s04 · s04#2 (4,933 s) | s04-p2 · preferido | 2700x1802 JPEG | aprovado | o jato pousando no Juneau Airport; impresso sobre a mesa até 1,4× (foto média) |
+| 4 | s14/acervo-livre/alaska-state-capitol-brick-facade-detail-2017-09-05-gillfoto-jul2017-28.jpg | s14 · s14#1 (3,3 s) | s14-p1 · preferido | 4000x2670 JPEG | aprovado | a fachada de tijolo e as colunas com o nome gravado; "Photo from 2017" |
+| 5 | s14/acervo-livre/alaska-state-capitol-portico-columns-2008-08-05-highsmith-loc-2010630417.tif | s14 · s14#2 (3,267 s) | s14-p2 · preferido | 5436x4632 TIFF rgb48be, 151 MB | aprovado | o pórtico de frente com as colunas e as portas, domínio público; "Photo from 2008"; o TIFF vai convertido pelo entregar |
+| 6 | s14/acervo-livre/alaska-state-capitol-entrance-detail-2024-11-19-gillfoto-gf34.jpg | s14 · s14#2 (3,267 s) | s14-p2 · reserva | 4800x3200 JPEG | trocar | não mostra as portas e fica 16 anos mais longe de 1974 que a de Highsmith, que serve ao mesmo beat |
+| 7 | s24/acervo-livre/alaska-state-capitol-main-street-2010-08-31-jay-galvin.jpg | s24 · s24#2 (2,367 s) | s24-p2 · preferido | 4272x2848 JPEG | aprovado | o Capitólio da rua, em plano aberto; "Photo from 2010" |
+| 8 | s43/acervo-livre/berners-bay-lynn-canal-aerial-mount-golub-2023-03-08-gillfoto-gf274.jpg | s43 · s43#1 (9,233 s) | s43-p1 · preferido | 5411x3591 JPEG | trocar | o pico do Mount Golub, da margem oeste, domina; a margem leste é uma faixa de sombra e grão no fundo, ilegível |
+| 9 | s47/acervo-livre/alaska-marine-highway-mv-leconte-chilkat-range-2009-04-29-gillfoto-44.jpg | s47 · s47#1 (6,367 s) | s47 · preferido | 3648x2736 JPEG | aprovado | a balsa estadual LeConte de lado no Lynn Canal, com a Chilkat Range; a preferida |
+| 10 | s47/acervo-livre/alaska-marine-highway-mv-leconte-lynn-canal-2009-04-29-gillfoto-35.jpg | s47 · s47#1 (6,367 s) | s47 · reserva | 3648x2736 JPEG | aprovado | a mesma LeConte 3 min 36 s antes, mais mole e na névoa: reserva; só uma vai à cena |
+| 11 | s51/acervo-livre/lynn-canal-avalanche-chutes-eldred-rock-2011-05-15-lcgs-russ.jpg | s51 · s51#1 (3,467 s) | s51-p1 · preferido | 4000x3000 JPEG | aprovado | o farol de Eldred Rock com os corredores de avalanche que a origem nomeia; "Photo from 2011"; rótulo "Lynn Canal" |
+
+**A preferência, onde há reserva** (no fluxo midia o campo preferencia fica null; vai aqui e no motivo): no s14 p2, a de Highsmith (a reserva saiu trocar); no s47, a 44 ("LeConte Chilkat Range"), mais nítida e com o lugar no quadro, e a 35 como reserva. As duas do s47 juntas na cena seriam repetição.
+
+**Lugar na origem, ano e crédito na tela:**
+
+| # | lugar_na_origem (copiado) | data_na_origem | aviso_de_ano | credito_na_tela |
+|---|---|---|---|---|
+| 1 | Alaska State Capitol Building, Fourth St, Juneau, Alaska. | 4 March 2017, 14:25:26 | true: Photo from 2017 | Gillfoto / Wikimedia Commons · CC BY-SA 4.0 |
+| 2 | Alaska Marine Highway System ferry the mv Kennicott passing AML Barge with freight Containers and Train carriages heading to Auke Bay, Stephens Passage, Southeast Alaska. | 30 September 2020, 10:41:16 | false | Gillfoto / Wikimedia Commons · CC BY-SA 4.0 |
+| 3 | Commercial jet landing at Juneau Airport - Southeast Alaska. | 5 December 2018, 13:08:02 | false | Gillfoto / Wikimedia Commons · CC BY-SA 4.0 |
+| 4 | The Alaska State Capitol with new brick and stone siding (descrição); Juneau Building Jul2017 28.jpg (título) | 5 September 2017, 12:24:53 | true: Photo from 2017 | Gillfoto / Wikimedia Commons · CC BY-SA 4.0 |
+| 5 | State Capitol, front elevation detail, Juneau, Alaska (título) | Taken on 5 August 2008, 19:00 (according to Exif data) | true: Photo from 2008 | nenhum (domínio público); na descrição, Carol M. Highsmith's America, Library of Congress, Prints and Photographs Division (LCCN 2010630417) |
+| 6 | Detail of entrance to Alaska State Capitol Building, Juneau, Alaska. | 19 November 2024, 13:02:45 | (trocar) | (não vai) |
+| 7 | Juneau. Alaska State Capitol Building. | 31 August 2010, 20:52 | true: Photo from 2010 | Jay Galvin / Wikimedia Commons · CC BY 2.0 |
+| 8 | Mount Golub with Berners Bay and USA and Canada Mountain border, Southeast Alaska. | 8 March 2023, 09:57:50 | (trocar) | (não vai) |
+| 9 | m/v LeConte and the Chilkat Range, Lynn Canal - Southeast Alaska. | 29 April 2009, 17:25:34 | false | Gillfoto / Wikimedia Commons · CC BY-SA 4.0 |
+| 10 | m/v LeConte heading to Juneau on the Lynn Canal - Southeast Alaska. | 29 April 2009, 17:21:58 | false | Gillfoto / Wikimedia Commons · CC BY-SA 4.0 |
+| 11 | Eldred Rock Light in Lynn Canal, showing a few of the numerous avalanche chutes on the shores of the Lynn Canal | 15 May 2011 | true: Photo from 2011 | LCGS Russ / Wikimedia Commons · CC BY-SA 3.0 |
+
+**Como li o ano.** O aviso vai quando a fala põe o fato num tempo (um ano, uma data, ou uma marca como "Half a century later") e a foto é de outro ano. Quando a fala diz uma condição de hoje, sem marca de tempo ("comes and goes by air or by sea", "is the state ferry system"), não há ano do fato, e a foto que mostra essa condição fica sem aviso, como no s37 (despachos 1 e 6). Por isso: aviso em 1 (a fala marca 50 anos depois de 1974), 4 e 5 (o voto de 1974), 7 (a cédula de 1982) e 11 (o estudo de 2018); sem aviso em 2, 3, 9 e 10. Se o Claude central ou o Lucas lerem a regra de outro jeito, os avisos que faltariam são "Photo from 2020" (2), "Photo from 2018" (3) e "Photo from 2009" (9 e 10).
+
+**Os pontos que o pesquisador pediu:**
+- **s04 p2 (2700 px):** não é a exceção da foto pequena, que vale para menos de 1.600 px e pede o caso muito específico. É a regra da foto média (identidade §5; Lucas, 29/09/2026): a tela cheia pediria 1,42×, então vai impressa sobre a mesa, até 1,4×, sem justificativa. 2700 px é a maior versão que a origem oferece. As montanhas: o topo está na nuvem, e a base da encosta, com mata e casas, aparece atrás da cerca. O assunto do beat, o jato chegando a Juneau, está inteiro.
+- **s43 p1:** saiu trocar, e não pelo rótulo: o quadro é do Mount Golub, e a margem leste, a 100 %, é sombra e grão. Testei o recorte que tira o pico (2743x1543 do alto, a 1,4×): fica a cordilheira da fronteira e a mesma margem escura.
+- **s51 p1:** a margem leste, que a origem não diz, eu também a medi, à parte, e cheguei ao mesmo: o farol fica a 3,25 km da margem leste e a 8,4 km da oeste (Natural Earth); pelo EXIF (12,8 mm na DMC-ZS6), o pico sobe uns 14,7° acima da linha d'água, o que pede uns 1.500 a 2.300 m de montanha a 5 a 9 km (a leste) e mais de 2.600 m a 10 km ou mais (a oeste); e a encosta está de frente para o sol da tarde. A altura das montanhas daquela costa é de memória, não medida. O rótulo fica "Lynn Canal".
+- **Foto no lugar de vídeo:** não reprovou nenhum. A troca de regime é do montador.
+- **Licenças:** CC BY-SA 4.0 (Gillfoto), CC BY 2.0 (Jay Galvin, revisada no upload em 15/09/2010), CC BY-SA 3.0 (LCGS Russ) e domínio público (Highsmith, Library of Congress, pelo Commons: "no known copyright restrictions on the use of this work", categoria PD-Highsmith). Todas lidas na página do arquivo; nenhuma NC nem ND.
+- **O TIFF do s14 p2:** abre (o ffmpeg o leu inteiro), tem 5436x4632 em 16 bits por canal e 25,2 MP. A cena não lê TIFF: a conversão é do entregar, em 8 bits, sem redimensionar e sem mudar as cores. O convertido terá outro sha256; o veredito casa pelo sha256 do rascunho (medido.medido_no_download.sha256).
+
+### Avisos para a cena, deste despacho
+
+- **s43 (para o montador e o regente-de-imagem):** o beat #1 (9,233 s, regime respiro) ficou sem nenhum aprovado. Os caminhos que a pauta dá: o mapa (o mesmo enquadramento do beat #2) ou nova busca de Berners Bay do ar.
+- **s47:** a foto aprovada cobre os 6,367 s inteiros, acima dos 6 s de foto parada (identidade §4.3): pede o movimento lento de §4.4, como o s01#1. O regime da cena é respiro, e nenhum aprovado tem movimento próprio.
+- **s51:** o beat #2 (3,533 s, o $680 MILLION) ficou sem mídia (nao_achados). Se a foto do farol segurar a cena inteira (7 s), passa dos 6 s e pede movimento.
+- **s24:** o beat #1 (Willow) ficou sem mídia (nao_achados).
+- **s04:** os dois planos são fotos, um em tela cheia (a balsa) e outro impresso sobre a mesa (o jato): a mistura é do montador.
+- **s14:** dois Capitólios em 6,567 s, com "Photo from 2017" e depois "Photo from 2008"; o tijolo muda de cor entre os dois (o de 2008 é de antes da reforma). Nada contradiz a fala; a composição é do redator-de-tela e do editor-de-arte. Para quem monta: o plano 1 enquadrado do lado do tijolo e das janelas separa os dois planos, que mostram as colunas.
+- **Rótulos de lugar** (o redator-de-tela, pelo lugar_na_origem): s01 p2, s14 e s24, "Alaska State Capitol" ou "Juneau"; s04 p1, no máximo "Stephens Passage" (a origem não põe a foto em Auke Bay nem em Juneau, como a regência previa); s04 p2, "Juneau Airport" ou "Juneau"; s47 e s51, "Lynn Canal".
+- **Enquadramento:** s01 p2, a picape no quinto de baixo (um recorte 16:9 mais alto a tira); s04 p1, nenhum zoom sobre a barcaça (o "AML" dos contêineres).
+
+### Para o Lucas pesar, deste despacho
+
+Nada saiu pendente_lucas. Se ele quiser, a leitura do ano em fala sem marca de tempo (acima, "Como li o ano").
+
+### Para reconferir no navegador do app, deste despacho
+
+Nada.
+
+### Para trocar, deste despacho (pesquisa-imagens)
+
+- **s14 p2 (a reserva gf34):** nada a buscar: a foto de Highsmith, aprovada, cobre o beat. Fica no rascunho, como está.
+- **s43 p1:** "Berners Bay Alaska aerial, east shore of Lynn Canal coastline and forest", com a descrição nomeando Berners Bay ou o Lynn Canal. Ou o mapa, que é decisão do montador. Fica no rascunho, como está.
+- **Para quem entrega:** só os 9 aprovado, e no s47 só um (a 44, preferida). Nada a retirar: nada foi entregue.
 
 ## O 7º despacho: os 5 arquivos da caça 2 (30/09/2026)
+
+**Laudo deste despacho (o 7º): 5 aprovados de 5 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 5.**
 
 - **Quem conferiu:** o `conferente-de-midia`, despachado pelo Claude central como subagente, na caça 2 (skill `cacar-no-chrome`, §3, passo 5). Nenhuma ferramenta de navegador; nenhum site aberto.
 - **O que o veredito vale:** nenhum veredito aqui é o sim do Lucas. O "sim" dele foi à lista (`caca-lista-2026-09-30.md`, "Sim. Concordo.", 19:05); o `aprovado` daqui só diz que o arquivo pode ser instalado.
@@ -334,6 +413,8 @@ Os vereditos antigos ficam em `substituidos`, sem nenhuma outra mudança, com `s
 
 Nada. Nenhum candidato saiu `pendente_lucas`.
 
+- **Do 8º despacho:** nada; se ele quiser, a leitura do ano em fala sem marca de tempo (seção do 8º despacho, "Como li o ano").
+
 - **A pergunta opcional do 4º despacho** (o aviso do ano na foto de peça de acervo) foi feita, e o Lucas respondeu: "Sem aviso, como documento (Recomendado)" (28/09/2026, 00:4x; identidade §6). A camiseta foi regravada no 5º despacho.
 - **As respostas do Lucas de 27/09** que a pauta registra (`quarta_passada`):
   - o download da camiseta: "Sim, pode baixar (Recomendado)". A camiseta entrou pela licença do §7.5, e não por esse "sim", que é ao download;
@@ -348,6 +429,7 @@ Nada ficou `nao_conferido`.
 ## Para trocar
 
 **`pesquisa-imagens`**
+- **Do 8º despacho:** o s14 p2 (a reserva gf34, nada a buscar: a de Highsmith cobre o beat) e o s43 p1 ("Berners Bay Alaska aerial, east shore of Lynn Canal coastline and forest", ou o mapa). Os dois ficam no rascunho; nada foi entregue.
 - **s16:** resolvido.
   - O plano 1 fica com o DOCUMERICA (550551), aprovado no 4º despacho e entregue em `_media/foto/s16/`, com a base da exceção e o crédito.
   - O plano 2 fica com o hotel de Chesi, já entregue.
@@ -500,6 +582,22 @@ Nada ficou `nao_conferido`.
 19. **A pasta dos quadros (7º despacho).** O pedido mandava os quadros para `out/juneau/_tmp/conferente/`. O contrato §5 só deixa criar pasta em `out/juneau/_tmp/conferencia/`, e o ofício §4 manda os quadros para lá. Segui o contrato: `_tmp/conferencia/<id do candidato>/arquivo/`. As duas ficam fora do git e fora de `_media`.
 20. **O `.md` grande (7º despacho).** O contrato §5 deixa o `python` emendar o JSON grande, e não fala do `.md`, que já tem uns 60 KB. Regravá-lo inteiro pelo `Write` tinha o mesmo risco de sair cortado. Emendei-o pelo `python`, do mesmo jeito do JSON: a cópia de antes em `out/juneau/_tmp/conferencia/conferencia-midia.antes-despacho7.md` e o sha256 conferido antes de gravar. O §5 pode dizer isso também do `.md`.
 21. **A lista `_media-antes.txt` (7º despacho).** Como no 4º despacho, a lista do começo foi gravada no nome que o contrato §3 dá e ficou por cima da de um despacho anterior. Ela está copiada em `_media-antes-despacho7.txt`.
+
+22. **"today" na regência × o ano mais perto (8º despacho).** A regência pede "today" no s14#1 e a lista pede "hoje" no s01 p2. A identidade §6 pede, na foto de outro ano, o aviso e a do ano mais perto do fato. Segui a marca: no s14 e no s24 a fala tem fato com data (1974 e 1982), e as fotos levam o aviso; no s14 p2, a de 2008 vence a de 2024. A regência pode trocar "today" pelo ano mais perto.
+23. **O rótulo do s04 p1 (8º despacho).** A regência previa o rótulo "Auke Bay or Juneau". A origem põe a foto no Stephens Passage, com a barcaça "heading to Auke Bay". Segui o midia.md §2.7: no máximo "Stephens Passage" ou "Southeast Alaska".
+24. **O ano em fala sem marca de tempo (8º despacho).** Nem o ofício §5.1 nem a identidade §6 dizem qual é o ano do fato quando a fala diz uma condição de hoje. Segui o precedente do s37 (despachos 1 e 6): sem aviso. O ofício pode dizer isso por escrito; a leitura vai ao Lucas, se ele quiser (seção do 8º despacho).
+25. **A preferência no fluxo midia (8º despacho).** O contrato §2.1 diz que a preferencia é null no midia, e o pedido pedia a preferência onde há reserva. Segui o contrato no JSON e pus a preferência no motivo e neste .md.
+26. **A emenda (8º despacho).** Como no 7º, o JSON e este .md foram emendados pelo python, com a cópia de antes e o sha256 conferido antes de gravar. O comando inteiro passava do limite da linha de comando (ENAMETOOLONG), e alguns trechos longos em heredoc o Bash não leu; por isso os vereditos e os textos foram montados em partes em out/juneau/_tmp/conferencia/d8/ (_novo-NN.json, _md-*.md, _helpers.py), fora do git, e juntados no fim. A lista _media-antes.txt ficou, como no 4º e no 7º, por cima da de um despacho anterior; a do começo deste está também em _media-antes-despacho8.txt.
+
+**Nota do despacho (o 8º):**
+- A lista de out/juneau/_media/, pelo sha256 de cada arquivo:
+  - ao começar, às 20:40 de 30/09 (Brasília), em _media-antes.txt e _media-antes-despacho8.txt: 304 arquivos, sha256 da lista 1b1c4490…;
+  - às 20:53, antes de gravar o JSON (_media-meio-despacho8.txt): os mesmos 304 arquivos, sem diferença;
+  - depois de gravar o JSON e este .md, de novo, em _media-depois-despacho8.txt. O resultado vai na resposta do despacho.
+- As cópias reduzidas e os recortes que olhei ficaram em out/juneau/_tmp/conferencia/d8/, fora de _media.
+- As cópias de antes: d8/conferencia-midia.antes-despacho8.json (sha256 06480824…) e d8/conferencia-midia.antes-despacho8.md (sha256 573f4ba9…).
+- O JSON, conferido depois de gravado: é válido, em UTF-8 sem BOM, com a indentação de 2 espaços de antes; os 40 vereditos anteriores, os 30 substituídos, os 7 despachos e as entradas anteriores estão idênticos aos do arquivo de antes; no topo, mudaram o conferido_em e o laudo, e entraram o 8º item de despachos e de laudo_por_despacho, a entrada.despacho_8 e a media_sem_mudanca.despacho_8; o laudo bate com os vereditos (39 aprovado, 11 trocar, 1 reprovado em 51), e as checagens do contrato §3 passam nos 11 novos.
+- Nada pessoal nas saídas: o nome do fotógrafo que a página do Commons dá ao lado de Gillfoto não foi copiado; vai o nome de usuário, como nos créditos de antes.
 
 **Nota do despacho (o 7º):**
 - A lista de `out/juneau/_media/`, pelo sha256 de cada arquivo:

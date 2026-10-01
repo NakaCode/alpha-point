@@ -631,7 +631,9 @@ do Estado e de jornal, na 3ª (§7.5).
   - O arquivo é o que a biblioteca oferece sem pedido: "Download from Web low-resolution 72dpi jpeg (Free)". A
     alta resolução pede formulário e pagamento: é compra, e só com o sim do Lucas.
   - A busca é pelo navegador do app, pelo Claude central: o robots do site veta as buscas.
-  - A foto pequena segue a exceção de caso muito específico (`identidade.md` §5): a prioridade é a foto grande.
+  - A foto pequena segue a exceção de caso muito específico e, do vídeo 2 em diante, a da lacuna (`identidade.md`
+    §5): a prioridade é a
+    foto grande.
   - **A cópia grátis tem 720 px de largura.** O IIIF do vilda (`/iiif/2/<coleção>:<id>/info.json`) deu 720×485,
     720×582 e 720×595 nos três itens da ASL conferidos em 27/09/2026. É menos que o piso da foto pequena, de 800 px
     no lado maior (`identidade.md` §5). Na prática, a foto da ASL só entra com a alta resolução comprada. Antes de

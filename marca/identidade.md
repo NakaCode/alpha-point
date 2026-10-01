@@ -208,6 +208,25 @@ Logo depois, ele completou: "A prioridade ainda deve ser fotos grandes e com qua
   borda, fita e sombra, ampliada no máximo 1,4 vez. Fica nítida. É a mesma lógica do retrato: foto que precisa ser
   ampliada não conta como grande. Vira regra para os próximos vídeos." No Juneau: s09, s16 e s56. Em tela cheia,
   então, só a foto que a enche sem passar de 1,4 vez (2.743 px de largura ou mais).
+- **A foto pequena preenche a lacuna, uma ou mais sobre a mesa** (Lucas, 30/09/2026, 20:5x de Brasília, sem
+  pergunta, depois de ouvir que 9 dos 18 itens da caça do Juneau não tinham foto nem vídeo e iriam a mapa: "Às
+  imagens pequenas poderiam adotar aquele método de 'exibir em cima da mesa', uma composição com talvez mais que
+  uma foto", e logo depois "pra preencher essas lacunas").
+  - **Do vídeo 2 em diante.** No Juneau, as lacunas seguem para o mapa, como o `montador` já ia fazer (Lucas,
+    30/09/2026, 21:0x, quando o Claude disse que mandaria a pesquisa atrás dessas fotos nas 9 lacunas do Juneau:
+    "Talvez isso deva vir somente no próximo vídeo").
+  - **Quando:** o plano ficou sem foto grande e sem vídeo que sirva, do ano do fato ou de outro ano (a lacuna, o
+    NÃO ACHADO). Aí a foto pequena entra antes de o plano virar mapa ou desenho. O caso específico acima deixa de
+    ser exigido para ela: a lacuna já é o caso. A foto grande continua em primeiro lugar.
+  - **Qual foto:** a que mostra o que a fala nomeia (o lugar, a coisa, o evento), não uma vista qualquer. Tem
+    qualidade (nítida, sem retícula, sem compressão pesada, sem marca-d'água), 800 px ou mais no lado maior, data
+    na origem e, se é de outro ano, o aviso do ano (§6). Vale para foto de hoje e de época.
+  - **Uma ou mais na mesma mesa:** várias fotos impressas do mesmo assunto do plano, lado a lado ou sobrepostas
+    pelas bordas, cada uma com a moldura, a fita, a sombra e a inclinação da foto impressa. Nenhuma cobre a parte
+    que importa de outra, e cada uma fica em até 1,4 vez o tamanho do arquivo. Cada uma leva o seu crédito e o seu
+    rótulo de lugar, quando há. A disposição é do `diretor-de-arte` e do `editor-de-arte`. A composição ainda não
+    tem prancha: a primeira cena assim vai ao Lucas como prévia antes de virar molde.
+  - O `conferente-de-midia` julga cada foto. A escolha entre a mesa e o mapa, plano por plano, é do `montador`.
 - **A foto impressa**: moldura clara em `--tinta`, fita, sombra e até 2° de inclinação, sobre `--fundo`, como a foto
   do card. Na tela, fica no máximo **1,4 vez** o tamanho do arquivo.
 - **Nada de melhoria artificial**: nenhum upscale, clássico ou generativo, nenhum filtro e nenhum recorte que mude o
@@ -345,11 +364,21 @@ O que vale, em px do palco 3840×2160:
 ## 6 · Base de mapa e mídia
 
 **Tratamento da base de satélite**: brilho a 65 %, saturação a 70 %. Contorno do protagonista em
-`--tinta`, 6 px. Demais fronteiras em branco a 35 %, 3 px, sobre um contorno escuro de `#0B0F14` a 45 %,
-7 px. Preenchimento do protagonista: `--destaque` a 85 %, para o relevo transparecer.
+`--tinta`, 6 px. Demais fronteiras em branco a 70 %, 5 px, sobre um contorno escuro de `#0B0F14` a 60 %,
+12 px. Preenchimento do protagonista: `--destaque` a 85 %, para o relevo transparecer.
 
 O contorno escuro entrou em 25/09/2026, por decisão do Lucas. Sem ele, a divisa sumia sobre neve e gelo: no
 teste de Juneau, o contraste sobre o campo de gelo era de 1,5:1.
+
+**A divisa mais grossa** (Lucas, 30/09/2026, 21:5x, no piloto da s03). Até então eram 3 px a 35 % sobre 7 px a
+45 %, e no 1080p a divisa virava um fio que sumia no campo de gelo. A pergunta, com as duas lado a lado
+(`out/juneau/_tmp/piloto/s03/prova-divisa-1080p.png`): "Qual espessura de divisa entre países fica valendo nos
+mapas do canal? (vale para todos os mapas, não só este)". A resposta: "a proposta é melhor, mas está sobrepondo o
+texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para todos os mapas do canal.
+- **Nenhum rótulo sobre a divisa.** A linha não passa por baixo nem encosta em pílula, nome de país, régua ou
+  crédito. Os rótulos vão sempre por cima das linhas, e quem fica no caminho de uma divisa muda de lugar: a
+  divisa é geografia e não se move. O que vale para a divisa vale para as outras linhas do mapa (a malha, a
+  estrada, a rota): a pílula não fica sobre elas.
 
 **Bases aceitas** (licença conferida para uso comercial):
 - escala de mundo e continente: **NASA Blue Marble**, domínio público;
@@ -504,7 +533,9 @@ Não copia as figuras do estudo, que são do Estado."
     1. a foto grande e com qualidade do ano do fato;
     2. sem ela, a foto grande e com qualidade do mesmo assunto de outro ano, o mais perto do ano do fato, com o
        aviso da data dela;
-    3. a foto pequena, impressa sobre a mesa, só no caso muito específico de §5 ("A foto antiga pequena");
+    3. a foto pequena, impressa sobre a mesa: no caso muito específico de §5 ("A foto antiga pequena") e, do vídeo
+       2 em diante (no Juneau, não), para preencher a lacuna do plano sem foto grande nem vídeo, uma ou mais na mesma mesa (§5, "A
+       foto pequena preenche a lacuna");
     4. sem nenhuma, o plano vira mapa ou desenho.
   - **É exceção**: a foto de outro ano só entra depois de a busca pela foto do ano ter passado pelos acervos
     onde ela provavelmente está. Isso inclui os que recusam robô, que o Claude central vê pelo navegador do app,

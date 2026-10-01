@@ -117,9 +117,13 @@ necessidade.
   transparecer) e contorno `--tinta` de 6 px. O segundo ator em `--contraparte`, do terceiro em diante
   `--neutro`, conflito ou risco em `--tensao` (**nunca** a cor de um lado). Vermelho contra azul como dois
   lados é proibido. No máximo 3 matizes, fora a base.
-- **Demais fronteiras**: branco a 35 %, 3 px (`--fronteira-cor`, `--fronteira-espessura`), sobre um contorno
-  escuro de `#0B0F14` a 45 %, 7 px (`--fronteira-contorno-cor`, `--fronteira-contorno-espessura`). O contorno
-  entrou por pedido do Lucas em 25/09/2026: sem ele, a divisa sumia sobre o campo de gelo.
+- **Demais fronteiras**: branco a 70 %, 5 px (`--fronteira-cor`, `--fronteira-espessura`), sobre um contorno
+  escuro de `#0B0F14` a 60 %, 12 px (`--fronteira-contorno-cor`, `--fronteira-contorno-espessura`). O contorno
+  entrou por pedido do Lucas em 25/09/2026, e a espessura de agora, em 30/09/2026 (identidade §6, "A divisa mais
+  grossa"): no 1080p, a de 3 px sumia sobre o campo de gelo.
+- **Nenhum rótulo sobre uma linha do mapa** (identidade §6): a pílula não passa por cima nem encosta na divisa, na
+  malha, na estrada ou na rota. Rótulo no caminho de uma linha muda de lugar; a linha, não. Confira em cada quadro
+  que você recebe, do começo ao fim do movimento da câmera.
 - **Fronteira disputada**: linha tracejada e rótulo `DISPUTED`. Mostra a linha de controle de fato e nunca
   adota a reivindicação de um lado.
 - As cores das camadas vêm de `marca/tokens.css`, lidas pela função `tok()` do exemplar

@@ -531,7 +531,9 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
 - `quadro.mjs` com satélite, `geo-recorte-bbox --nome` e `geo-osm-rota`: "Peças da pré-v1 em uso", itens 6 e 7;
 - `buscar-midia` lê o `marca/midia.json` do canal (desde 26/09, com as fontes que o Lucas escolheu; `midia.md`
   §7), e tira da lista o que tem menos de 1600 px de largura (conta em `abaixo_do_minimo`). A foto de época pequena é
-  exceção de caso muito específico (Lucas, 27/09/2026; identidade §5): só para ela se usa `--min-w=800`, e ela entra
+  exceção de caso muito específico (Lucas, 27/09/2026; identidade §5), e do vídeo 2 em diante (no Juneau, não) também preenche a
+  lacuna do plano sem foto grande nem vídeo, de hoje ou de época, uma ou mais na mesma mesa (identidade §5, "A foto pequena
+  preenche a lacuna"): só para elas se usa `--min-w=800`, e ela entra
   impressa sobre a mesa. A NARA só devolve
   imagem. A Library of Congress e o Internet Archive vêm desligados: a pré-v1 registra 403 do Cloudflare da LoC a
   toda consulta por script (23/09);
