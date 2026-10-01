@@ -981,3 +981,21 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** todo canal que põe foto sobre um fundo com textura em HTML cai nisso, e a
   medida de contraste pelo vizinho erra em qualquer texto pequeno. Vale levar ao molde: o `_rig.js` e os exemplos
   de cena com mesa.
+
+### 54. O `qc-janela` não lê a duração das cenas de mapa do molde, e estrada se confundia com fronteira
+- **Problema 1 (o portão):** o `qc-janela` acha a duração da cena por `window.__duracao = <número>` ou por
+  `var DUR = <número>`. O molde de mapa da pré-v1 (`src/mapa/moldes/mapa-base.html:134`) escreve
+  `var DUR = CENA.duracao`, e aí o portão não acha número nenhum e reprova. Isso acontece com toda cena de mapa que
+  sai do `preparar-cena`, por mais certa que esteja.
+- **O que resolveu:** na s03, o mapista escreveu `var DUR = 8.034`, com uma guarda que dá erro na cena se o número for
+  diferente de `CENA.duracao`. O portão passou.
+- **Problema 2 (a leitura):** na s03 aprovada, a malha de estradas (cinza, `--neutro`) e a divisa (branca) eram
+  duas linhas claras com contorno escuro. O dono, que não conhece o lugar de cor, não soube dizer qual era a estrada
+  e qual era a fronteira. Medida de folga e contraste não pegam isso: só um olho de fora pega.
+- **O que resolveu:** a regra de que a fronteira é a única linha branca, as outras linhas vão em cor (`--rede-cor`),
+  o tipo de linha que não se explica sozinho leva o nome na primeira vez ("ROADS"), e o rótulo de uma linha só
+  entra com a linha já na tela (identidade §6).
+- **Como evitar:** toda cena de mapa responde, antes do render, "um espectador que nunca viu o lugar sabe dizer o
+  que é cada linha?". E todo molde de cena declara a duração em número.
+- **Por que serve a qualquer canal:** o molde e o portão são do motor, e a confusão entre tipos de linha aparece em
+  qualquer mapa explicativo. Vale levar ao molde (`var DUR = <número>`) e ao `qc-janela` (ler `CENA.duracao`).

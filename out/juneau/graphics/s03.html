@@ -31,11 +31,12 @@
       no estilo da identidade §6, "A divisa mais grossa" (branco 70 %, 5 px, sobre contorno escuro 60 %, 12 px),
       com os valores lidos só dos tokens (--fronteira-*).
       É tratamento da base, como o satélite: não conta como elemento (§4.2). As bordas do recorte não se desenham.
-    · A MALHA DO CONTINENTE (Natural Earth ne_10m_roads, sem balsas) se acende em --neutro vindo do Canadá: uma
-      frente que fecha sobre Juneau e para na ponta mais perto dela (Haines). Ela nunca chega a Juneau: a cena
-      confere a distância mínima da malha no carregamento.
+    · A MALHA DO CONTINENTE (Natural Earth ne_10m_roads, sem balsas) se acende em --rede-cor (= --contraparte)
+      vindo do Canadá: uma frente que fecha sobre Juneau e para na ponta mais perto dela (Haines). Ela nunca chega a
+      Juneau: a cena confere a distância mínima da malha no carregamento. A pílula ROADS a nomeia de 1,813 s
+      ("continent") a 3,833 s.
     · A ESTRADA de Juneau (OSM, Alaska Route 7, 67,48 km) se desenha em --destaque, de Juneau para o norte, em
-      sincronia com "forty-three miles north"; o rótulo ABOUT 43 MILES segue a voz e a fonte (textos-tela).
+      sincronia com "forty-three miles north"; o rótulo ABOUT 43 MILES entra quando ela chega ao meio (4,465 s).
     · O ANEL de Cascade Point (identidade §4.4) e os rótulos em pílula (§4.1), ancorados por projeção.
     · Os CRÉDITOS na faixa (§4.2): a linha da MapTiler o tempo todo e "Source: Alaska DOT&PF and FHWA, 2018"
       enquanto ABOUT 43 MILES está no ar, empilhados, 76 px, de x = 200 até antes de x = 1720.
@@ -64,6 +65,18 @@
         – CANADA desceu um pouco ([-133.16, 59.04]);
         – ABOUT 43 MILES ancora no meio da estrada e fica à esquerda dela, longe da divisa;
         – Cascade Point e os créditos já estavam livres e não mudaram.
+
+  4ª versão (30/09/2026, 23:4x, a opção D do Lucas: "D, cor e o nome ROADS (Recomendado)"; identidade §6, "Estrada
+  não se confunde com fronteira"). Ele viu o quadro de 0:03: "O que é estrada e o que é fronteira acabou por não ficar
+  claro":
+    · a malha passa de --neutro a --rede-cor (= --contraparte); o contorno escuro de 24 px continua. A fronteira fica
+      sendo a única linha branca, entre UNITED STATES e CANADA;
+    · a pílula ROADS ([-133.04, 59.54], na terra do Canadá, junto da malha e longe da divisa) entra em "continent"
+      (1,813 s), com a malha já acesa ali, e se apaga em 300 ms a partir de 3,833 s, quando a estrada de Juneau começa:
+      o quadro nunca passa de 6 elementos;
+    · ABOUT 43 MILES e a linha da fonte passam de 3,567 s ("about") a 4,465 s, quando a estrada chega ao meio, onde a
+      régua se ancora ("miles", 4,384–4,717 s): o rótulo de uma linha só entra com a linha;
+    · as folgas foram medidas de novo sem tile, nos 242 quadros (relato do mapista de 30/09/2026).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -130,6 +143,7 @@
     <div class="rotulo" id="rotJuneau" data-qc-papel="rotulo">Juneau</div>
     <div class="rotulo pais" id="rotEUA" data-qc-papel="rotulo">UNITED STATES</div>
     <div class="rotulo pais" id="rotCanada" data-qc-papel="rotulo">CANADA</div>
+    <div class="rotulo" id="rotRoads" data-qc-papel="rotulo">ROADS</div>
     <div class="rotulo" id="rotRegua" data-qc-papel="rotulo">ABOUT 43 MILES</div>
     <div class="rotulo" id="rotCascade" data-qc-papel="rotulo">Cascade Point</div>
   </div>
@@ -143,9 +157,10 @@
 
   // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
   // Tempos em segundos DESTA cena (0 = 18,133 s do master), do words.json, no quadro seguinte ao início da
-  // palavra (a regência os quantiza assim): 'Juneau' 18,914 → 0,8 · 'rest' 19,538 → 1,433 · 'about' 21,69 →
-  // 3,567 · 'forty-three' 21,943 → 3,833 · 'north,' acaba em 23,23 → 5,097 · 'Cascade' 23,669 → 5,567 ·
-  // 'stop.' 25,026 → 6,9.
+  // palavra (a regência os quantiza assim): 'Juneau' 18,914 → 0,8 · 'rest' 19,538 → 1,433 · 'continent' 19,946 →
+  // 1,813 (o ROADS; o início exato da palavra) · 'about' 21,69 → 3,567 (a régua entrava aqui até a 4ª versão) ·
+  // 'forty-three' 21,943 → 3,833 · 'miles' 22,517 → 4,384 (a estrada chega ao meio em 4,465, e a régua entra aí) ·
+  // 'north,' acaba em 23,23 → 5,097 · 'Cascade' 23,669 → 5,567 · 'stop.' 25,026 → 6,9.
   var CENA = {
     duracao: 8.034,                                  // espelho.json › s03 › dur
     largura: 3840, altura: 2160,                     // o palco; nunca mude (o zoom depende dele)
@@ -183,14 +198,22 @@
       { id: "rotJuneau",  ref: "juneau",  lado: "centro",   dx: 0,    dy: 140, entra: 0.8 },   // embaixo do ponto
       { id: "rotEUA",     lnglat: [-136.68, 58.24], lado: "centro", dx: 0, dy: 0, entra: 1.433 },   // a sudoeste, longe da divisa
       { id: "rotCanada",  lnglat: [-133.16, 59.04], lado: "centro", dx: 0, dy: 0, entra: 1.433 },
-      { id: "rotRegua",   ref: "regua",   lado: "esquerda", dx: -130, dy: 0,   entra: 3.567 },   // a oeste do meio da estrada
+      // o nome do tipo de linha (identidade §6, "Estrada não se confunde com fronteira", opção D do Lucas): junto da
+      // malha e fora dela, em "continent" (1,813 s), e sai em 300 ms quando a estrada de Juneau começa (3,833 s),
+      // antes de o quadro passar de 6 elementos. Grafia proposta; a final é do redator-de-tela.
+      { id: "rotRoads",   lnglat: [-133.04, 59.54], lado: "centro", dx: 0, dy: 0, entra: 1.813, sai: 3.833 },
+      // a régua entra quando a estrada chega ao meio, onde ela se ancora (em "miles", 4,384–4,717 s), e não em
+      // "about": o rótulo de uma linha só entra com a linha (identidade §6)
+      { id: "rotRegua",   ref: "regua",   lado: "esquerda", dx: -130, dy: 0,   entra: 4.465 },   // a oeste do meio da estrada
       { id: "rotCascade", ref: "anel",    lado: "esquerda", dx: -64,  dy: 0,   entra: 5.567 }
     ],
-    creditos: { mapa: "© MapTiler © OpenStreetMap contributors", fonteEntra: 3.567, base: 52, vao: 8, faixa: 1880 }
+    creditos: { mapa: "© MapTiler © OpenStreetMap contributors", fonteEntra: 4.465, base: 52, vao: 8, faixa: 1880 }
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  // o número escrito, e não CENA.duracao: o qc-janela lê `var DUR = <número>` no texto, sem rodar a cena (o molde
+  // escreve CENA.duracao, e aí ele não lê nada). A guarda logo depois de falhar() confere que os dois são iguais.
+  var DUR = 8.034;
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -213,6 +236,7 @@
     try { console.error("[cena de mapa] " + msg); } catch (e) {}
     rejeitarPronto(new Error(msg));
   }
+  if (DUR !== CENA.duracao) falhar("a duração escrita (" + DUR + " s) não é a do bloco CENA (" + CENA.duracao + " s).");
 
   // ── a abertura: o último quadro do clipe aéreo de s01 p3, desenhado UMA vez no canvas ─────────────
   // O <video> fica fora do documento e é solto depois do desenho: o quadro é sempre o mesmo, e o render não
@@ -552,14 +576,16 @@
       map.addLayer({ id: "fronteira", type: "line", source: "fronteira", layout: { "line-join": "round", "line-cap": "round" },
         paint: { "line-color": tok("--fronteira-cor", "rgba(255,255,255,0.70)"),
                  "line-width": parseFloat(tok("--fronteira-espessura", "5")) } });
-      // a malha do continente: --neutro, 11 px, sobre o contorno da pílula (--rotulo, 24 px). No 1º render (6 px
-      // sobre contorno a 45 %) ela virava um fio de 3 px no 1080p e sumia na neve; esta medida foi provada sobre os
-      // quadros do 1º render, desenhada por cima deles e reduzida a 1080p, sem pedido de tile.
+      // a malha do continente: --rede-cor (= --contraparte), 11 px, sobre o contorno da pílula (--rotulo, 24 px).
+      // A cor é a regra "Estrada não se confunde com fronteira" (identidade §6, Lucas, 30/09/2026, opção D): a
+      // fronteira é a única linha branca, e linha de mapa não vai em --neutro. No 1º render (6 px sobre contorno a
+      // 45 %) ela virava um fio de 3 px no 1080p e sumia na neve; a medida de 11 px foi provada sobre os quadros do
+      // 1º render, desenhada por cima deles e reduzida a 1080p, sem pedido de tile.
       map.addSource("rede", { type: "geojson", data: redeAte(CENA.rede.raioIni) });
       map.addLayer({ id: "rede-contorno", type: "line", source: "rede", layout: { "line-join": "round", "line-cap": "round" },
         paint: { "line-color": tok("--rotulo", "rgba(11,15,20,0.88)"), "line-width": 24, "line-opacity": 0 } });
       map.addLayer({ id: "rede", type: "line", source: "rede", layout: { "line-join": "round", "line-cap": "round" },
-        paint: { "line-color": tok("--neutro", "#737D8E"), "line-width": 11, "line-opacity": 0 } });
+        paint: { "line-color": tok("--rede-cor", "#2EC4B6"), "line-width": 11, "line-opacity": 0 } });
       // a estrada de Juneau, a protagonista: --destaque, 14 px, sobre uma sombra escura de 26 px (acima da malha
       // na hierarquia: mais grossa e na cor do protagonista)
       map.addSource("estrada", { type: "geojson", data: trechoDaEstrada(0) });
@@ -573,14 +599,15 @@
   });
 
   // ── overlay ancorado por projeção ─────────────────────────────────────────────────────────────
-  // rótulo ao lado do ponto; entra com opacidade + 24 px de subida em 300 ms, ease-out (identidade §4.4)
-  function placeRotulo(r, entrada) {
+  // rótulo ao lado do ponto; entra com opacidade + 24 px de subida em 300 ms, ease-out (identidade §4.4); o que
+  // tem `sai` (o ROADS) se apaga em 300 ms, só na opacidade, sem se mover
+  function placeRotulo(r, entrada, saida) {
     var el = E(r.id); if (!el || !r.p) return;
     var p = map.project(r.p);
     var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
     el.style.left = (p.x + (r.dx || 0)).toFixed(1) + "px";
     el.style.top = (p.y + (r.dy || 0)).toFixed(1) + "px";
-    el.style.opacity = entrada.toFixed(3);
+    el.style.opacity = (entrada * saida).toFixed(3);
     el.style.transform = "translate(" + tx + ",-50%) translateY(" + ((1 - entrada) * 24).toFixed(1) + "px)";
   }
 
@@ -606,7 +633,9 @@
     map.setPaintProperty("estrada", "line-opacity", ve);
 
     // rótulos
-    CENA.rotulos.forEach(function (r) { placeRotulo(r, eo(seg(t, r.entra, 0.3))); });
+    CENA.rotulos.forEach(function (r) {
+      placeRotulo(r, eo(seg(t, r.entra, 0.3)), r.sai == null ? 1 : 1 - eio(seg(t, r.sai, 0.3)));
+    });
 
     // o ponto de Juneau
     var pj = map.project(PONTO_JUNEAU), dotJ = E("pontoJuneau");
