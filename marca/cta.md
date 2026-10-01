@@ -20,10 +20,25 @@
     vir como ficam."
   - Até ele decidir, a chamada é só de tela, e `marca/voz.md` não muda.
 
-## 2 · O que falta
+## 2 · O estilo: a faixa mínima (Lucas, 01/10/2026)
 
-- Desenhar as duas peças sobre o logo escolhido, com a marca (paleta, tipo, alvos de §4 da identidade, a margem, o
-  canto do YouTube e a faixa do crédito), e mostrar ao Lucas antes de virar regra.
+- Três estilos foram desenhados sobre o logo "A agulha" (§8 da identidade), cada um com as duas peças, e julgados por
+  três lentes (marca e áreas reservadas; leitura do espectador; técnica e reuso). As propostas ficam em
+  `marca/cta/propostas/`, fora do git: as prévias usam quadros do vídeo com satélite e footage licenciados.
+- **A pergunta:** "Qual estilo de chamada (inscrição e comentário) vira o do canal? As prévias estão aqui no chat."
+  - **A resposta (01/10/2026, 19:4x de Brasília):** "C, a faixa mínima". A opção dizia: "Uma faixa de rodapé com "ALPHA
+    POINT" e o "Subscribe" claro, e a pergunta numa linha larga. Ficou em 2º (6,5): parece mais com os rótulos de lugar."
+  - As outras opções eram "A, a agulha" (o 1º dos juízes, recomendado), "B, o cartão da mesa" e "Nenhum, nova rodada".
+- **O estilo:** a peça escura com a agulha em uma cor e ALPHA POINT em Barlow Condensed 800, presa por um vão inclinado
+  a 12° (o corte do símbolo) à peça clara, o botão "Subscribe" em --tinta, que entra em contorno e se enche. O
+  comentário é da mesma família: a pergunta grande na peça escura e "Answer in the comments" na peça clara.
+- **Em refino:** o que os juízes apontaram nele (parecer rótulo de lugar, a pergunta longa larga demais, a saída com
+  estalo, o símbolo copiado no código, as entradas-limite) se corrige mantendo o visual que o Lucas escolheu. A versão
+  refinada volta a ele antes de virar regra.
+
+## 3 · O que falta
+
+- Refinar o estilo C e mostrar ao Lucas antes de virar regra.
 - Decidir com ele a voz (§1) e onde a chamada entra no vídeo (que momento, quantas vezes).
 - Depois: a regra aqui, o molde da cena e o que o `regente-de-imagem` e o `redator-de-tela` fazem com ela (as roupas
   apontam para cá).
