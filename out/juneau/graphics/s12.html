@@ -20,11 +20,38 @@
     · o mapa, os pontos, a legenda e os créditos seguem a s03 (a cena de referência de mapa); as folhas recriadas
       seguem as da s07 (a prancha marca/prancha-documento-card.html, a folha B corrigida).
 
-  A CÂMERA fica PARADA o arquivo inteiro (regência: "still camera"; conceito: "o satélite não sai do lugar"), num
-  quadro do Alasca com Anchorage (1100, 900), Fairbanks (1250, 348) e Juneau (2168, 1299). A metade direita fica
+  O QUADRO, no 1º quadro: o Alasca com Anchorage (1100, 900), Fairbanks (1250, 348) e Juneau (2168, 1299). A metade direita fica
   livre para as folhas de s13, que caem POR CIMA do Southeast: elas têm 2.172 px de largura (36 colunas de Courier a
   86 px, o literal inteiro) e não cabem ao lado do mapa sem encolhê-lo a ponto de os raios de 30 milhas virarem
   pontos. Anchorage e Fairbanks, com os raios e o 30 MILES, ficam à vista ao lado delas, como a regência pede no b6.
+
+  A CÂMERA ANDA (correção 4 do Claude central, 01/10/2026, pelo laudo do qc-visual: a lente motion reprovou a câmera
+  parada, com 5 s de quadros idênticos de 8,5 a 13,5 s): um push-in lento e ininterrupto de 1,00 a 1,05 (zoom 5,6 →
+  5,670) do 1º ao último quadro, em velocidade constante (o zoom linear no tempo, sem rampa), preso a um ponto do mapa
+  (CENA.deriva.ancora, −145,5385, 61,2140, em (1400, 900) no 1º quadro, na borda esquerda das folhas): ele fica parado
+  na tela, e o resto se abre em volta dele. Anchorage e Fairbanks, à esquerda dele, andam para a esquerda, e os raios
+  se afastam das folhas, nunca se aproximam. O zoom não cruza nível de tile. Os pontos, os placares, os rótulos, o
+  Southeast e os raios andam com o mapa; a legenda, os créditos e as folhas ficam presos à tela.
+  Medido quadro a quadro, sem tile (787 quadros): a câmera anda em todo quadro (o canto do quadro, 0,10 px ou mais por
+  quadro; na cena, Anchorage anda 15 px, Fairbanks 29 e Juneau 43); os raios e os pontos ficam a 49 px da folha de 1974
+  (antes, 46) e a 74 da de 1993 (antes, 71); o placar de Juneau a 84 px da divisa (como antes), SOUTHEAST a 91 do
+  contorno (antes, 97) e 30 MILES a 102 dos raios (antes, 96); a margem do placar de Fairbanks fica em 12 px (antes,
+  16), a das folhas não muda; a conta não muda (5 no máximo).
+  O DESVIO: o conceito-visual.json › s12 ("o satélite não sai do lugar") e a regência › s12 ("still camera") pedem a
+  câmera parada. Esta cena segue o ofício do mapista (§6b) e o laudo do qc-visual, e o desvio vai ao diretor-de-arte e
+  ao regente-de-imagem pelo Claude central.
+  A BASE ANDA LISA (correção 6 do Claude central, 01/10/2026, item 1): sob o push-in, a base de satélite andava em
+  degraus de 1 px e tremia meio pixel de um quadro para o outro, enquanto as linhas, os pontos e os placares andavam lisos. A causa é do
+  MapLibre (4.7.1): ele desenha a base raster alinhada a pixel inteiro quando o mapa não está "em movimento"
+  (aligned = !painter.options.moving), e com jumpTo ele nunca está. A conta sem tile reproduz a medida do render: com o
+  alinhamento, a base salta mais de 0,5 px contra as linhas em 415 dos 785 quadros em que a câmera anda, e o
+  sentido vertical do salto alterna em 703 pares. Agora toda pintura do mapa vai como "em movimento" (o
+  painter.render recebe moving: true; a cena falha se o MapLibre não tiver essa peça), e a base anda com as linhas.
+  Essa opção só mexe no alinhamento da base e do relevo sombreado (as duas únicas leituras dela no MapLibre desta cena).
+  Medido com tile (os quadros 285 a 330 em ordem, como o render, num recorte de 900 × 680 px só de base, à direita):
+  a base anda +0,086 px por quadro na horizontal e +0,032 na vertical, com desvio máximo de 0,04 px. No render de
+  antes, ela saltava −0,77 px a cada 6–7 quadros, e a vertical alternava ±0,47 px em 38 dos 44 pares. A nitidez do
+  recorte muda no máximo 0,14 % de um quadro para o outro.
 
   OS BEATS (tempo local = master − 110,633; palavras do words.json):
     b1  0,000–3,167 "Anchorage's districts voted eighty percent yes."  — os pontos de Anchorage, Fairbanks e Juneau
@@ -56,7 +83,7 @@
 
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; a da regência, auditoria › teto_de_elementos › s12: o ponto da cidade é
   parte do placar e do raio dela, 30 MILES é o nome dos raios, a divisa e o crédito não contam). Minha, pelo ensaio a
-  seco, não portão (o qc-carga sai NÃO MEDIDO sem npm):
+  seco; desde 01/10/2026 os portões de navegador também medem, no qc-cena:
     b1: Anchorage com o placar, Fairbanks, Juneau = 3 · b2: + o Southeast com SOUTHEAST = 4 · b3: os três placares e o
     Southeast = 4 · de "thirty" (14,367) em diante, com os placares já em zero: os dois raios, Juneau, o
     Southeast e a legenda = 5 · b5: a folha de 1974, os dois raios e o
@@ -347,8 +374,11 @@
       fonteLei: "Source: Alaska Department of Law, 1993"
     },
 
-    // ── a câmera, parada: Anchorage em (1100, 900) a zoom 5,6
+    // ── a câmera do 1º quadro: Anchorage em (1100, 900) a zoom 5,6
     camera: { lng: -138.0003, lat: 59.9322, zoom: 5.6, bearing: 0, pitch: 0 },
+    // ── o push-in (A CÂMERA ANDA, no cabeçalho): de 1,00 a "escala" do 1º ao último quadro, em velocidade constante,
+    //    com "ancora" ([lng, lat]) parada na tela
+    deriva: { escala: 1.05, ancora: [-145.5385, 61.2140] },
 
     fronteira: { geo: "alasca-e-vizinhos", a: "US1", b: "CAN" },
     cidades: { geo: "cidades-ne", A: "Anchorage", F: "Fairbanks", J: "Juneau" },
@@ -767,9 +797,17 @@
   maplibregl.addProtocol("regie+http", buscarComRetentativa);
   var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
 
-  // a câmera parada, pelo camera-mapa.js da Régie com um viewport só
-  var cameraAt = criarCameraMapa({ viewports: [CENA.camera, CENA.camera], duration: DUR, width: CENA.largura, height: CENA.altura,
+  // a câmera do 1º quadro, pelo camera-mapa.js da Régie com um viewport só, e o push-in preso à âncora (A CÂMERA ANDA,
+  // no cabeçalho): o zoom sobe linear no tempo, e o centro se aproxima da âncora na mesma razão, em Mercator
+  var cameraFixa = criarCameraMapa({ viewports: [CENA.camera, CENA.camera], duration: DUR, width: CENA.largura, height: CENA.altura,
     bearingLoop: null, cameraAbre: 0, cameraFecha: 0 });
+  var merc = function (lng, lat) { return [(180 + lng) / 360, (180 - (180 / Math.PI) * Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360))) / 360]; };
+  var unmerc = function (x, y) { return [x * 360 - 180, (Math.atan(Math.exp((180 - y * 360) * Math.PI / 180)) * 360) / Math.PI - 90]; };
+  function cameraAt(t) {
+    var c = cameraFixa(t), u = cl(t / DUR, 0, 1), dz = Math.log(CENA.deriva.escala) / Math.LN2 * u, k = Math.pow(2, -dz);
+    var mc = merc(c.center[0], c.center[1]), ma = merc(CENA.deriva.ancora[0], CENA.deriva.ancora[1]);
+    return { center: unmerc(ma[0] - (ma[0] - mc[0]) * k, ma[1] - (ma[1] - mc[1]) * k), zoom: c.zoom + dz, bearing: c.bearing || 0, pitch: c.pitch || 0 };
+  }
   var c0 = cameraAt(0);
   var map;
   try {
@@ -782,6 +820,12 @@
     return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
   }
   window.map = map;
+  // A BASE ANDA LISA (cabeçalho): toda pintura vai como "em movimento", para a base não se alinhar a pixel inteiro
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
 
   // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
   window.__errosMapa = 0;

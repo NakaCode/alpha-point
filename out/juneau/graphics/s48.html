@@ -22,7 +22,7 @@
   OS BEATS (tempo local = master − 505,567; palavras do words.json): 'January' 505,760 → 0,193 (0,2) · 'Governor'
   507,180 → 1,613 (1,633) · 'Tony' 507,524 → 1,957 (1,967) · 'east' 510,948 → 5,381 (5,4) · 'Lynn' 511,572 → 6,005
   (6,033) · 'high' 513,492 → 7,925 (7,933).
-    b1  0–7,433  o mapa parado (a câmera não se move na cena inteira): a estrada de Juneau (estrada-juneau-cascade, traço
+    b1  0–7,433  o mapa com o push-in lento (A CÂMERA ANDA, abaixo): a estrada de Juneau (estrada-juneau-cascade, traço
         cheio --destaque) e o anel de Cascade Point desde o 1º quadro, com a legenda das cores (Border e Juneau’s roads:
         as duas linhas já estão na tela); JANUARY 2000 (pílula de data) em "January" (0,2); o card de Knowles só com nome e
         cargo (sem retrato: identidade §5), num cartão --painel à esquerda, na ordem da voz: o cargo Governor of Alaska em
@@ -33,7 +33,35 @@
         5 elementos (o card, JANUARY 2000, a estrada com a continuação tracejada, o anel e o aviso, um objeto, Lynn Canal
         e a legenda) e 1 bloco (o card).
     b2  7,433–12,533  em "high" (7,933) a linha tracejada cai a 40 % (300 ms) e o card vira de lado (gira 32° em torno da
-        borda esquerda, 600 ms); nada se apaga; a câmera não se move.
+        borda esquerda, 600 ms); nada se apaga; o push-in segue até o último quadro.
+
+  A CÂMERA ANDA (correção 4 do Claude central, 01/10/2026, pela régua do qc-visual: a câmera parada deixava 3,0 s
+  (2,43–5,40) e 4,0 s (8,53–12,50) de quadros idênticos): um push-in lento e ininterrupto de 1,00 a 1,05 (zoom 9,25 →
+  9,320) do 1º ao último quadro, em velocidade constante (o zoom linear no tempo, sem rampa), preso a um ponto do mapa
+  (CENA.deriva.ancora, −133,50375, 59,30664, no canto de cima à direita da área segura, (3640, 160), no 1º quadro): ele
+  fica parado na tela, e o mapa se abre para baixo e para a esquerda. É o único canto que afasta a divisa da legenda
+  (de 39 para 59 px; presa ao centro do quadro ou ao anel, a divisa passava por baixo dela). O zoom não cruza nível de
+  tile. O anel, a estrada, a linha tracejada e Lynn Canal andam com o mapa (o anel anda 80 px na cena; o fim da linha
+  fica em y 316); JANUARY 2000, o card, o aviso, a legenda e o crédito ficam presos à tela.
+  Medido quadro a quadro, sem tile (377 quadros): a câmera anda em todo quadro (o canto do quadro, 0,47 px ou mais por
+  quadro); a legenda fica a 59 px da divisa (antes, 39), JANUARY 2000 a 81 (antes, 87) e o card a 306 (antes, 316);
+  Lynn Canal fica a 53 px da linha tracejada (antes, 49), a 47 do anel (antes, 44) e a 131 do card no último quadro; as
+  margens e o canto como antes; a conta não muda (5 no máximo).
+  O DESVIO: o conceito-visual.json › s48 e a regência › s48 b2 ("the camera does not move") pedem a câmera parada.
+  Esta cena segue o ofício do mapista (§6b) e a régua do qc-visual, e o desvio vai ao diretor-de-arte e ao
+  regente-de-imagem pelo Claude central.
+  A BASE ANDA LISA (correção 6 do Claude central, 01/10/2026, item 1): sob o push-in, a base de satélite andava em
+  degraus de 1 px e tremia meio pixel de um quadro para o outro, enquanto a divisa, a estrada, o anel e Lynn Canal andavam lisos. A causa é do
+  MapLibre (4.7.1): ele desenha a base raster alinhada a pixel inteiro quando o mapa não está "em movimento"
+  (aligned = !painter.options.moving), e com jumpTo ele nunca está. A conta sem tile reproduz a medida do render: com o
+  alinhamento, a base salta mais de 0,5 px contra as linhas em 221 dos 375 quadros em que a câmera anda, e o
+  sentido vertical do salto alterna em 127 pares. Agora toda pintura do mapa vai como "em movimento" (o
+  painter.render recebe moving: true; a cena falha se o MapLibre não tiver essa peça), e a base anda com as linhas.
+  Essa opção só mexe no alinhamento da base e do relevo sombreado (as duas únicas leituras dela no MapLibre desta cena).
+  Medido com tile (os quadros 58 a 320 em ordem, como o render, num recorte de 560 × 560 px só de base, abaixo da
+  legenda): a base anda −0,036 px por quadro na horizontal e +0,198 na vertical, com desvio máximo de 0,01 px nos dois
+  trechos da conferência. No render de antes, o desvio chegava a 0,74 px de 60 a 95, e de 285 a 320 a vertical
+  alternava em 25 dos 35 pares. A nitidez do recorte muda no máximo 0,51 % de um quadro para o outro.
 
   A LINHA (identidade §6; espelho › s48 › _esquema): tracejada, do anel de Cascade Point para o norte pela margem leste,
   em terra, colada à água, até 2,4 km ao norte da foz do Katzehin (katzehin-river-gnis): o ponto de "just north of the
@@ -50,7 +78,9 @@
   ponta esquerda. Agora a pílula cobre o ponto: a borda direita fica 76 px a leste dele, sobre o canal, a 43 px do anel,
   com 21 % de canal por baixo e nenhuma outra água; o resto fica sobre a península a oeste, e o canal segue visível
   acima e abaixo dela, com a estrada na margem leste, logo à direita. O "over the water" da regência (s48 b1) se cumpre
-  só em parte: o desvio vai ao regente, no relato do mapista.
+  só em parte: o desvio vai ao regente, no relato do mapista. Com o push-in (A CÂMERA ANDA), a pílula segue presa ao
+  ponto, e o canal sob ela fica igual ao da câmera parada: 22 % em 6,067, 9,0 e 12,5 s, na mesma medida (a grade de
+  4 px, a janela do canal de −135,30 a −134,80 e de 58,25 a 59,30).
 
   A CONTA E O LUGAR (minha, pelo ensaio a seco; desde 01/10/2026 os portões de navegador também medem, no qc-cena):
   nenhum rótulo sobre linha; margens de 200/160; a faixa de 1880 só com o crédito; o canto vazio; medido nos 377
@@ -249,8 +279,11 @@
       creditoMapa: "© MapTiler © OpenStreetMap contributors"
     },
 
-    // ── A CÂMERA: parada a cena inteira (regência s48 b2: "the camera does not move")
+    // ── A CÂMERA do 1º quadro
     camera: { lng: -135.4900, lat: 58.7600, zoom: 9.25, bearing: 0, pitch: 0 },
+    // ── o push-in (A CÂMERA ANDA, no cabeçalho): de 1,00 a "escala" do 1º ao último quadro, em velocidade constante,
+    //    com "ancora" ([lng, lat]) parada na tela
+    deriva: { escala: 1.05, ancora: [-133.50375, 59.30664] },
 
     estrada: { geo: "estrada-juneau-cascade" },
     anel: { geo: "cascade-point" },
@@ -490,9 +523,16 @@
   maplibregl.addProtocol("regie+http", buscarComRetentativa);
   var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
 
-  // ── A CÂMERA: parada ────────────────────────────────────────────────────────────────────────────
+  // ── A CÂMERA: o push-in preso à âncora (A CÂMERA ANDA, no cabeçalho): o zoom sobe linear no tempo, e o centro se
+  //    aproxima da âncora na mesma razão, em Mercator ─────────────────────────────────────────────────
   var CAM = CENA.camera;
-  var cameraAt = function () { return { center: [CAM.lng, CAM.lat], zoom: CAM.zoom, bearing: CAM.bearing, pitch: CAM.pitch }; };
+  var merc = function (lng, lat) { return [(180 + lng) / 360, (180 - (180 / Math.PI) * Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360))) / 360]; };
+  var unmerc = function (x, y) { return [x * 360 - 180, (Math.atan(Math.exp((180 - y * 360) * Math.PI / 180)) * 360) / Math.PI - 90]; };
+  var cameraAt = function (t) {
+    var u = cl((+t || 0) / DUR, 0, 1), dz = Math.log(CENA.deriva.escala) / Math.LN2 * u, k = Math.pow(2, -dz);
+    var mc = merc(CAM.lng, CAM.lat), ma = merc(CENA.deriva.ancora[0], CENA.deriva.ancora[1]);
+    return { center: unmerc(ma[0] - (ma[0] - mc[0]) * k, ma[1] - (ma[1] - mc[1]) * k), zoom: CAM.zoom + dz, bearing: CAM.bearing, pitch: CAM.pitch };
+  };
   window.__cameraAt = cameraAt;   // para o ensaio a seco (só leitura)
   var map;
   try {
@@ -505,6 +545,12 @@
     return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa: confira a placa de vídeo/driver ou o Chrome usado pelo render.");
   }
   window.map = map;
+  // A BASE ANDA LISA (cabeçalho): toda pintura vai como "em movimento", para a base não se alinhar a pixel inteiro
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
 
     // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
   window.__errosMapa = 0;
