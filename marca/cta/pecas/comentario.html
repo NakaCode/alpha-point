@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>Alpha Point · chamada de comentário · a faixa mínima</title>
+<!--
+  A FAIXA MÍNIMA · o pedido de comentário perto do fim (só tela, sem som). É a peça do CANAL, do vídeo 2 em diante: o
+  Lucas aprovou a faixa mínima refinada em 01/10/2026, 20:3x de Brasília ("Aprovo (Recomendado)"; marca/cta.md §3). A
+  regra de uso (o momento, quantas vezes, a pergunta, os comandos) está em marca/cta.md §4 a §8.
+  O que mudou da versão 3 da proposta (marca/cta/propostas/c-faixa-minima/, fora do git), e por quê:
+    - o ALVO do corpo da pergunta passou de 192 a 176 px. Na mesma aprovação, o Lucas escolheu "176 px, um pouco
+      menor" ("A mesma faixa, cobrindo um pouco menos da cena"; a outra opção era "192 px, a que vi"). A padrão
+      ocupa uns 14 % do quadro, contra uns 16 % a 192. A lógica de descer ficou: 176 → 160 só para caber em 2 linhas
+      com uma quebra boa; 3 linhas só a 160; 1 linha a 176. O __info() diz o corpo_alvo e o corpo_piso;
+    - os caminhos relativos das fontes e do símbolo, de ../../../ para ../../: a pasta subiu um nível
+      (marca/cta/pecas/). O desenho, a quebra, o tempo e o lugar não mudaram, e o __info() ganhou o ponteiro para a
+      regra.
+
+  O desenho, da mesma família da inscrição:
+    - A peça escura, em --painel com aro de --tinta a 18 %, cortada a 12° na ponta esquerda (um paralelogramo). À
+      esquerda, a CÉLULA da agulha (--fundo), fechada à direita por um fio de --tinta a 18 % no mesmo corte de 12°, com
+      o símbolo em uma cor de marca/logo/agulha/simbolo-tinta.svg: 204 px na placa de uma linha (como na inscrição) e
+      uns 55 % da altura nas maiores, até 288 px.
+      Depois, a PERGUNTA em Barlow Condensed 800: o papel "a pergunta da chamada" da identidade §4.1 (alvo 176 px,
+      piso 160; entre o teto do rótulo, 160, e o piso do título, 260).
+    - Presa embaixo à direita, por um vão de 18 px, a peça clara "Answer in the comments" (Inter 700, 112 px: o papel
+      "a ação da chamada" da identidade §4.1, com o "Subscribe" da inscrição), de borda esquerda a 12°, que entra em contorno e se
+      enche como o botão da inscrição, com o contorno de --tinta-escura a 60 %, 5 px por fora, para fundo claro.
+  A PERGUNTA é parâmetro: comentario.html?q=<pergunta> (inglês dos EUA). Sem ?q, ou com ?q só de espaços, vale o
+  PADRAO abaixo. Aspas e apóstrofo retos viram curvos (‘ ’ “ ”; o ’ antes de algarismo, como em ’70s).
+    - Só letras latinas, algarismos e pontuação comum: tag (<b>), emoji ou outra escrita dão erro alto, e cada
+      caractere se confere na fonte (a Barlow do canal tem de desenhá-lo; a voz §2 não tem emoji, e a §3 só aceita a
+      alternativa no bloco inteiro).
+    - O CORPO é 176 px (o alvo, decisão do Lucas de 01/10/2026). Ele desce a 160 só quando a pergunta não cabe em 2
+      linhas a 176 com uma quebra boa; 3 linhas, só a 160 e só quando 2 não cabem. Uma linha só a 176: a pergunta mais
+      curta nunca sai com letra menor que a mais longa. Assim a placa de 2 linhas nunca passa da altura da padrão (uns
+      437 px), e a de 3 linhas (uns 566 px) é só a das perguntas mais longas. ?corpo=160 baixa o teto, para comparar
+      (?corpo=176 é o padrão; o 192 da proposta não vale mais e dá erro).
+    - A placa nunca passa de x = 1340 para a esquerda (fora do terço esquerdo do quadro), e nunca fica mais estreita que
+      a peça clara embaixo dela.
+    - A quebra é a de menor custo: de preferência depois de pontuação (":", ",", "—", "?") ou antes de palavra que abre
+      um sintagma (preposição, conjunção, artigo, determinante, auxiliar), com a linha de baixo mais curta. NUNCA depois
+      de artigo, determinante ou numeral, preposição, conjunção, palavra interrogativa, modal ou "not"; depois de
+      auxiliar, só antes do complemento ("should be / Alaska’s capital", nunca "would you have / put"); depois de
+      pronome, só antes de preposição ou conjunção. A quebra que parte um sintagma (duas palavras de conteúdo, "a new /
+      capital"; um possessivo, "Alaska’s / capital"; um nome próprio, "Prince William / Sound") só sai se nenhuma outra
+      couber, nem em 3 linhas, e aí o __info() avisa. Custa uma palavra sozinha na última linha. O travessão fica no
+      fim da linha.
+    - "|" na pergunta força a quebra ali: é exceção, para quando a quebra automática não servir.
+    - Uma palavra mais larga que a linha, mais de 3 linhas a 160 px, caractere fora da lista, ou fonte e símbolo que
+      não carregaram: window.__pronto rejeita e render() lança erro ("encurte a pergunta", "reescreva a pergunta"). A
+      peça nunca desenha fora da zona nem encolhe abaixo de 160 px. A quebra que só sai partindo um nome desenha, com
+      aviso no __info().
+    - O conjunto fixo de perguntas reais, com a quebra esperada de cada uma, está em _perguntas.mjs (rode a cada
+      mudança da quebra).
+  A DURAÇÃO sai da pergunta e da ação: a pergunta fica inteira na tela por max(5,0 s; 1,6 s + 0,3 s por palavra,
+  contando as 4 de "Answer in the comments"), e a peça inteira arredonda para o meio segundo de cima. Está em
+  window.__info().duracao, com o corpo e as linhas; o marca/cta/_capturar.mjs a usa com --dur=auto. ?dur=<s> força
+  outra (a saída se ancora no fim); abaixo do tempo de leitura, o __info() avisa.
+  O lugar (§4.2): embaixo à direita, a peça clara com a base em y = 1718 e a borda direita em x = 3622 (com o contorno,
+  3627; com a subida de 24 px, 1747): 12 px de folga até a margem de 200 px (x 3640) e até o canto do YouTube (x ≥ 3440
+  e y ≥ 1760), e longe da faixa do crédito (y ≥ 1880). A placa cresce para cima.
+  ?lugar=cima: a placa com o topo em y = 200, e a peça clara embaixo dela.
+  O movimento (§4.4, com a saída espelhada): a placa entra (24 px de subida em ease-out, opacidade em curva suave de
+  360 ms, que começa e termina perto de 0); as linhas, 80 ms uma depois da outra; a peça clara aos 0,40 s, que se
+  enche de 1,00 a 1,50 s; a agulha assenta no norte num giro amortecido curto. Na saída, a peça clara primeiro, e
+  0,12 s depois a placa (400 ms, curva suave, 24 px de descida). O primeiro e o último quadro do clipe ficam vazios.
+  Outros parâmetros: ?gira=0 (sem o giro), ?t=<s> (o instante mostrado ao abrir a página).
+-->
+<style>
+@font-face{font-family:"MarcaSec";src:url("../../fontes/barlowcondensed/BarlowCondensed-ExtraBold.ttf") format("truetype");font-weight:800;font-style:normal;font-display:block}
+@font-face{font-family:"Marca";src:url("../../fontes/inter/Inter-VF.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:block}
+html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:transparent}
+svg{display:block}
+.perg{font-family:"MarcaSec";font-weight:800;letter-spacing:0}
+.acao{font-family:"Marca";font-weight:700;letter-spacing:0}
+</style>
+</head>
+<body>
+<svg id="palco" xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160"></svg>
+<script>
+(() => {
+  // ---- a pergunta: ?q=… na URL; sem ela (ou só com espaços), esta ----
+  const PADRAO = "Where would you have put the capital?";
+  const ACAO = "Answer in the comments", ACAO_PALAVRAS = 4;
+
+  // ---- a marca (identidade §2, §3, §4, §8) ----
+  const COR = { painel: "#172338", fundo: "#0E1726", tinta: "#F4F1EA", escura: "#14181F" };
+  const SIMBOLO = "../../logo/agulha/simbolo-tinta.svg";
+  const SVG_W = 508, SVG_H = 1008, AG_ALT = 900;      // viewBox -254 -614 508 1008; a agulha: 400 × 900, centro (0, -110)
+
+  const P = new URLSearchParams(location.search);
+  const LUGAR = P.get("lugar") === "cima" ? "cima" : "baixo";
+  const GIRA = P.get("gira") !== "0";
+  const bruta = (P.get("q") || "").replace(/\s+/g, " ").trim();
+  const ORIGINAL = bruta.replace(/\|/g, "").trim() ? bruta : PADRAO;
+  // aspas curvas: os pares de " primeiro; a ' que abre (no começo, ou depois de espaço, parêntese ou “) vira ‘, a não
+  // ser antes de algarismo (’70s); as outras, ’
+  const PERGUNTA = ORIGINAL
+    .replace(/\s*\|\s*/g, "|").replace(/\|{2,}/g, "|").replace(/^\||\|$/g, "")
+    .replace(/"([^"|]*)"/g, "“$1”").replace(/(^|[\s(|])"/g, "$1“").replace(/"/g, "”")
+    .replace(/(^|[\s(“|])'(?!\d)/g, "$1‘").replace(/'/g, "’");
+  const TRECHOS = PERGUNTA.split("|").map((s) => s.split(" ").filter(Boolean)).filter((s) => s.length);
+  const PALAVRAS = TRECHOS.flat();
+  const OBRIG = new Set();            // as quebras do "|" (índice da palavra que abre a linha)
+  // o que a pergunta aceita: letras latinas (com acento), algarismos e pontuação comum; nada de tag, emoji ou outra escrita
+  const VALE = /^[A-Za-z0-9À-ž .,;:!?'’‘"“”()\-—–&%$°/|]+$/u;
+
+  // ---- a geometria (px do palco) ----
+  const R = 3622;                     // borda direita das duas peças; o contorno da clara fecha em 3627 (folga de 12 px)
+  const XMIN = 1340;                  // a placa nunca passa daqui para a esquerda
+  const BASE = 1718, TOPO = 200;      // baixo: a base da peça clara (com a subida e o contorno, 1747); cima: o topo da placa
+  const TAN = Math.tan(12 * Math.PI / 180);
+  const VAO = 18;
+  const ACAO_PX = 112, HT = 168, PAD_A = 64;          // a peça clara: o texto a 112 px numa peça de 168 px de altura
+  // o corpo da pergunta: alvo 176 px (Lucas, 01/10/2026: "176 px, um pouco menor"; a proposta tinha 192), piso 160
+  const CORPO_ALVO = 176, CORPO_PISO = 160;
+  const CORPO_MAX = P.get("corpo");
+  const CORPOS = [CORPO_ALVO, CORPO_PISO].filter((q) => !CORPO_MAX || q <= Number(CORPO_MAX));
+  const MAX_LINHAS = 3, ENTRELINHA = 1.06;
+  // a agulha cresce com a placa: 204 px na de uma linha (como na inscrição), uns 55 % da altura nas maiores, até 288;
+  // a célula acompanha, com o mesmo respiro dos lados (168 px de largura para a agulha de 204, como na inscrição).
+  // Se a agulha maior não deixar a placa caber, ela volta a 204 antes de o corpo da pergunta descer.
+  const AG_MIN = 204;
+  const agulha = (h) => Math.round(Math.min(288, Math.max(AG_MIN, 0.55 * h)));
+  const celulaDe = (ag) => 168 + (ag - AG_MIN) * 400 / 900;
+  const H_MIN = 272;                  // a placa de uma linha não fica mais baixa que isto (a agulha com 34 px de respiro)
+  const respiro = (q) => ({ v: 0.36 * q, n: 0.30 * q, r: 0.42 * q });   // em cima e embaixo; do fio ao texto; do texto à borda
+  const ARO = 3, ARO_OP = 0.18, TRACO = 6, CONTORNO = 5, CONTORNO_OP = 0.6;
+
+  // ---- o tempo (s): a pergunta inteira por max(5,0; 1,6 + 0,3 × palavras), contando as da ação ----
+  const SUB = 24, ENT = 0.36, SAI = 0.40;
+  const LEITURA = +Math.max(5.0, 1.6 + 0.3 * (PALAVRAS.length + ACAO_PALAVRAS)).toFixed(2);
+  const T0 = { placa: 0.00, linha0: 0.06, linhaPasso: 0.08, giro: 0.05, giroDur: 0.90, acao: 0.40, enche: 1.00, encheDur: 0.50 };
+
+  const NS = "http://www.w3.org/2000/svg", svg = document.getElementById("palco");
+  const el = (tag, at, pai) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); (pai || svg).appendChild(e); return e; };
+  const pts = (a) => a.map(([x, y]) => x.toFixed(2) + "," + y.toFixed(2)).join(" ");
+  const clamp = (v) => Math.max(0, Math.min(1, v));
+  const fase = (t, t0, d) => clamp((t - t0) / d);
+  const easeOut = (p) => 1 - Math.pow(1 - p, 3);
+  const easeInOut = (p) => p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+  const suave = (p) => p * p * (3 - 2 * p);
+
+  function falhar(msg) { window.__erro = msg; document.title = "ERRO: " + msg; throw new Error(msg); }
+  function conferirPergunta() {
+    if (CORPO_MAX !== null && ![String(CORPO_ALVO), String(CORPO_PISO)].includes(CORPO_MAX))
+      falhar(`?corpo= aceita ${CORPO_ALVO} ou ${CORPO_PISO} (veio "${CORPO_MAX}"): o alvo do canal é ${CORPO_ALVO} px (marca/cta.md §3), e o 192 da proposta não vale mais`);
+    if (!VALE.test(ORIGINAL)) {
+      const fora = [...new Set([...ORIGINAL].filter((c) => !VALE.test(c)))];
+      falhar(`a pergunta tem caractere que a peça não desenha (${fora.map((c) => `"${c}" U+${c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0")}`).join(", ")}): ` +
+        `só letras latinas, algarismos e pontuação comum, sem tag, emoji ou outra escrita. Reescreva a pergunta`);
+    }
+  }
+  function conferirFontes() {
+    for (const [fam, spec, txt] of [["MarcaSec", `800 ${CORPO_ALVO}px "MarcaSec"`, PERGUNTA], ["Marca", `700 ${ACAO_PX}px "Marca"`, ACAO]]) {
+      const faces = [...document.fonts].filter((f) => f.family.replace(/["']/g, "") === fam);
+      if (!faces.length || faces.some((f) => f.status !== "loaded") || !document.fonts.check(spec, txt))
+        falhar(`a fonte ${fam} não carregou: os caminhos são relativos (../../fontes/), a página saiu da pasta dela?`);
+    }
+    // o document.fonts.check não diz se a fonte TEM o glifo: com dois substitutos diferentes, a largura só muda se o
+    // caractere cair no substituto
+    const cv = document.createElement("canvas").getContext("2d"), larg = (f, c) => { cv.font = f; return cv.measureText(c).width; };
+    const sem = [...new Set(PERGUNTA.replace(/[\s|]/g, ""))].filter((c) => {
+      const a = larg(`800 100px "MarcaSec", monospace`, c), b = larg(`800 100px "MarcaSec", serif`, c), d = larg(`800 100px "MarcaSec", cursive`, c);
+      return Math.abs(a - b) > 0.01 || Math.abs(a - d) > 0.01;
+    });
+    if (sem.length) falhar(`a Barlow Condensed do canal não tem ${sem.map((c) => `"${c}"`).join(", ")}: reescreva a pergunta`);
+  }
+  function carregarSimbolo() {
+    return new Promise((ok, erro) => {
+      const im = new Image();
+      im.onload = () => (im.naturalWidth === SVG_W && im.naturalHeight === SVG_H) ? ok()
+        : erro(new Error(`o símbolo mudou de caixa (${im.naturalWidth} × ${im.naturalHeight}; esperado ${SVG_W} × ${SVG_H}): confira marca/logo/agulha/simbolo-tinta.svg`));
+      im.onerror = () => erro(new Error(`o símbolo não carregou (${SIMBOLO}): a página saiu da pasta dela?`));
+      im.src = SIMBOLO;
+    });
+  }
+
+  // ---- a quebra ----
+  const conj = (s) => new Set(s.split(" "));
+  const CLASSES = [
+    ["ART", conj("a an the")],
+    ["PREP", conj("to of in on at for by with from into onto over under about than as like near between across toward towards through within without along around before after since until during against among beyond behind via per out")],
+    ["CONJ", conj("and or nor but so if because while although though whether unless yet")],
+    ["WH", conj("what which who whom whose where when why how")],
+    ["MODAL", conj("would could should will can may might must shall do does did")],
+    ["AUX", conj("have has had is are was were be been being am")],
+    ["PRON", conj("i you we they he she it me him us them")],
+    ["MOD", conj("not very more most less least too quite rather")],
+    ["DET", conj("this these those that my your our their its his her each every any some all another other both many much few several such no one two three four five six seven eight nine ten")],
+  ];
+  const limpa = (w) => w.toLowerCase().replace(/[“”"’‘().,;:!?—–-]+$/g, "").replace(/^[“"‘(]+/, "");
+  function classe(w) {
+    const a = limpa(w);
+    if (/n’t$/.test(a) || /’(d|ll|re|ve|m)$/.test(a)) return "MODAL";            // wouldn’t, you’d, we’ll: prendem o verbo
+    const s = a.match(/^(.*)’s$/);
+    if (s) return CLASSES.some(([k, c]) => (k === "PRON" || k === "WH") && c.has(s[1])) || ["that", "there", "here"].includes(s[1]) ? "AUX" : "POSS";
+    for (const [k, c] of CLASSES) if (c.has(a)) return k;
+    return /^\d/.test(a) ? "NUM" : "CONT";
+  }
+  const maiuscula = (w) => /^[“‘(]?[A-ZÀ-Þ]/.test(w);
+  const FUNCAO = new Set(["ART", "DET", "PREP", "CONJ", "WH", "MODAL", "AUX"]);   // palavra que abre um sintagma
+  // advérbios que abrem um sintagma de lugar ou direção: "capital / away from Juneau", "the road / north of Juneau"
+  const ABRE = conj("away back up down off together apart ahead north south east west home");
+  // a quebra que parte um sintagma (duas palavras de conteúdo, um possessivo, um nome próprio): só se não houver outra
+  const FRACA = 1.5;
+  // o custo de terminar a linha em `antes` e abrir a seguinte com `depois`; Infinity: a quebra não sai
+  function custoDaQuebra(antes, depois) {
+    if (/^[—–]/.test(depois)) return Infinity;                 // o travessão fica no fim da linha, não no começo
+    if (/[.?!]["”’)]?$/.test(antes)) return -0.6;
+    if (/[:;—–]["”’)]?$/.test(antes)) return -0.5;
+    if (/,["”’)]?$/.test(antes)) return -0.4;
+    const ca = classe(antes), cb = classe(depois);
+    switch (ca) {
+      case "ART": case "PREP": case "CONJ": case "WH": case "MODAL": case "MOD": return Infinity;
+      case "DET": return ["MODAL", "AUX", "PREP", "CONJ", "WH"].includes(cb) ? 0.3 : Infinity;              // "which one / would"
+      case "AUX": return ["ART", "DET", "PREP", "NUM"].includes(cb) || maiuscula(depois) ? 0.3 : Infinity;   // "should be / Alaska’s"
+      case "PRON": return ["PREP", "CONJ", "WH"].includes(cb) ? 0.2 : Infinity;                           // "move it / to Willow"
+      case "POSS": return FRACA;                                                                           // "Alaska’s / capital"
+    }
+    if (maiuscula(antes) && maiuscula(depois)) return FRACA;   // um nome próprio partido ("Prince William / Sound")
+    if (ABRE.has(limpa(antes)) && cb === "PREP") return 0.5;   // "away / from", "north / of": melhor juntos
+    if (FUNCAO.has(cb) || ABRE.has(limpa(depois))) return -0.15;   // antes de palavra que abre sintagma: "build / a new capital"
+    if (maiuscula(depois)) return 0.3;                         // antes de um nome: "moved / Alaska’s capital"
+    if (cb === "PRON") return 0.1;
+    return FRACA;                                              // duas palavras de conteúdo: "strangest / border", "new / capital"
+  }
+  // todas as quebras de até MAX_LINHAS linhas, com as quebras do "|" obrigatórias
+  function candidatas() {
+    const n = PALAVRAS.length, obrig = OBRIG;
+    let k = 0; TRECHOS.slice(0, -1).forEach((tr) => { k += tr.length; obrig.add(k); });
+    if (obrig.size + 1 > MAX_LINHAS) falhar(`a pergunta tem ${obrig.size + 1} linhas forçadas por "|" (máximo ${MAX_LINHAS}): encurte a pergunta`);
+    const livres = []; for (let i = 1; i < n; i++) if (!obrig.has(i)) livres.push(i);
+    const extra = MAX_LINHAS - 1 - obrig.size, out = [];
+    (function rec(ini, esc) {
+      const cortes = [...obrig, ...esc].sort((x, y) => x - y), idx = [0, ...cortes, n], linhas = [];
+      for (let i = 0; i < idx.length - 1; i++) linhas.push(PALAVRAS.slice(idx[i], idx[i + 1]).join(" "));
+      out.push({ linhas, cortes });
+      if (esc.length >= extra) return;
+      for (let j = ini; j < livres.length; j++) rec(j + 1, esc.concat(livres[j]));
+    })(0, []);
+    return out;
+  }
+  const DEGRAU = 0.5;                 // cada degrau de corpo abaixo do teto
+  function custo(c, ws, iq) {
+    const n = ws.length, wmax = Math.max(...ws);
+    let s = 0.5 * (n - 1) + (n === 3 ? 0.8 : 0) + DEGRAU * iq;   // a 2ª linha custa um pouco; a 3ª, mais
+    c.quebras = c.cortes.map((i) => ({ antes: PALAVRAS[i - 1], depois: PALAVRAS[i], custo: OBRIG.has(i) ? 0 : custoDaQuebra(PALAVRAS[i - 1], PALAVRAS[i]) }));
+    c.quebras.forEach((q) => { s += q.custo; });
+    c.fracas = c.quebras.filter((q) => q.custo >= FRACA).length;
+    c.linhas.slice(0, -1).forEach((l) => {                    // o começo da oração seguinte pendurado depois da pontuação
+      const m = l.match(/[,;:—]\s+(\S+(?:\s+\S+)?)$/); if (m && !/[,;:.?!]$/.test(l)) s += 0.5;
+    });
+    for (let i = 0; i < n - 1; i++) s += Math.pow((wmax - ws[i]) / wmax, 2);
+    if (n > 1) {
+      if (ws[n - 1] > ws[n - 2]) s += 1.5 * (ws[n - 1] - ws[n - 2]) / wmax;   // a de baixo mais curta
+      if (ws[n - 1] < 0.33 * wmax) s += 0.6;                                // nem curta demais
+      if (!/ /.test(c.linhas[n - 1])) s += 0.8;                             // nem uma palavra sozinha
+    }
+    return s;
+  }
+  // a quebra que cabe na largura com menos quebras fracas e, entre essas, a de menor custo. Uma linha só no corpo
+  // maior; 3 linhas só no menor.
+  function diagramar(cv, larguraMin) {
+    const todas = candidatas();
+    let presa = false, melhor = null;
+    for (const [iq, q] of CORPOS.entries()) {
+      cv.font = `800 ${q}px "MarcaSec"`;
+      const cap = cv.measureText("H").actualBoundingBoxAscent, LH = q * ENTRELINHA, rp = respiro(q);
+      for (const c of todas) {
+        const n = c.linhas.length;
+        if ((n === 1 && iq > 0) || (n === 3 && iq < CORPOS.length - 1)) continue;
+        const ws = c.linhas.map((l) => cv.measureText(l).width), lmax = Math.max(...ws);
+        const h = Math.max(H_MIN, 2 * rp.v + cap + (n - 1) * LH), pv = (h - cap - (n - 1) * LH) / 2;
+        let ag = agulha(h), xLb = R - rp.r - lmax - rp.n - celulaDe(ag) - (h - pv) * TAN;   // a ponta de baixo à esquerda
+        if (xLb < XMIN && ag > AG_MIN) { ag = AG_MIN; xLb = R - rp.r - lmax - rp.n - celulaDe(ag) - (h - pv) * TAN; }
+        if (xLb < XMIN) continue;
+        const k = custo(c, ws, iq);
+        if (!isFinite(k)) { presa = true; continue; }
+        if (!melhor || c.fracas < melhor.fracas || (c.fracas === melhor.fracas && k < melhor.k))
+          melhor = { k, fracas: c.fracas, q, cap, LH, rp, linhas: c.linhas, quebras: c.quebras, ws, h, pv, xLb: Math.min(xLb, larguraMin), lmax, ag };
+      }
+    }
+    if (melhor) return melhor;
+    const q = CORPOS[CORPOS.length - 1];
+    cv.font = `800 ${q}px "MarcaSec"`;
+    const rp = respiro(q), cap = cv.measureText("H").actualBoundingBoxAscent;
+    const lim = R - rp.r - rp.n - celulaDe(AG_MIN) - (H_MIN - (H_MIN - cap) / 2) * TAN - XMIN;
+    const larga = PALAVRAS.find((w) => cv.measureText(w).width > lim);
+    if (larga) falhar(`a palavra "${larga}" é mais larga que a linha (${Math.round(lim)} px a ${q} px): encurte a pergunta`);
+    if (presa) falhar(`a pergunta só cabe em ${MAX_LINHAS} linhas partindo a oração no meio (${PERGUNTA.replace(/\|/g, " ").length} caracteres): encurte a pergunta, ou force a quebra com "|"`);
+    falhar(`a pergunta não cabe em ${MAX_LINHAS} linhas a ${q} px (${PERGUNTA.replace(/\|/g, " ").length} caracteres): encurte a pergunta`);
+  }
+
+  let L = null, N = {}, imgPronta = null, T = null, DUR = 0, DUR_MIN = 0;
+  function montar() {
+    const cv = document.createElement("canvas").getContext("2d");
+    // a peça clara primeiro: a placa nunca fica mais estreita que ela
+    cv.font = `700 ${ACAO_PX}px "Marca"`; const acaoW = cv.measureText(ACAO).width, capA = cv.measureText("H").actualBoundingBoxAscent;
+    const SLT = HT * TAN, aMid = R - PAD_A - acaoW - PAD_A, aBot = aMid - SLT / 2, aTop = aMid + SLT / 2;
+    const D = diagramar(cv, aTop - 40);
+    const n = D.linhas.length, h = D.h;
+    // onde: baixo, a peça clara na base e a placa em cima dela; cima, a placa no topo e a peça clara embaixo
+    let yT, yB, tTop, B;
+    if (LUGAR === "cima") { yT = TOPO; yB = yT + h; tTop = yB + VAO; B = tTop + HT; }
+    else { B = BASE; tTop = B - HT; yB = tTop - VAO; yT = yB - h; }
+    const xLb = D.xLb, xLt = xLb + h * TAN, CEL = celulaDe(D.ag), AG_H = D.ag;
+    const placa = [[xLt, yT], [R, yT], [R, yB], [xLb, yB]];
+    const cel = [[xLt, yT], [xLt + CEL, yT], [xLb + CEL, yB], [xLb, yB]];
+    const agCy = (yT + yB) / 2, agCx = xLb + (yB - agCy) * TAN + CEL / 2;
+    const xt = xLb + (h - D.pv) * TAN + CEL + D.rp.n;
+    const base0 = yT + D.pv + D.cap;
+    const clara = [[aTop, tTop], [R, tTop], [R, B], [aBot, B]];
+
+    // o tempo, agora que o número de linhas é conhecido
+    const tInteira = T0.linha0 + (n - 1) * T0.linhaPasso + ENT;
+    DUR_MIN = Math.ceil((tInteira + LEITURA + SAI + 0.10) * 2) / 2;
+    DUR = Number(P.get("dur")) > 0 ? Number(P.get("dur")) : DUR_MIN;
+    const saiPlaca = DUR - SAI - 0.10;
+    T = { ...T0, tInteira, saiPlaca, saiAcao: saiPlaca - 0.12 };
+
+    const defs = el("defs", {});
+    el("polygon", { points: pts(placa) }, el("clipPath", { id: "cPlaca" }, defs));
+    el("polygon", { points: pts(clara) }, el("clipPath", { id: "cClara" }, defs));
+    N.encheP = el("polygon", { points: pts(clara) }, el("clipPath", { id: "cEnche" }, defs));
+
+    // a placa: --painel, a célula da agulha com o fio, o aro, a agulha, a pergunta
+    N.gPlaca = el("g", {});
+    el("polygon", { points: pts(placa), fill: COR.painel }, N.gPlaca);
+    el("polygon", { points: pts(cel), fill: COR.fundo }, N.gPlaca);
+    el("line", { x1: (xLt + CEL).toFixed(2), y1: yT, x2: (xLb + CEL).toFixed(2), y2: yB, stroke: COR.tinta, "stroke-opacity": ARO_OP, "stroke-width": ARO, "clip-path": "url(#cPlaca)" }, N.gPlaca);
+    el("polygon", { points: pts(placa), fill: "none", stroke: COR.tinta, "stroke-opacity": ARO_OP, "stroke-width": 2 * ARO, "stroke-linejoin": "miter", "clip-path": "url(#cPlaca)" }, N.gPlaca);
+    N.gAg = el("g", {}, N.gPlaca);
+    const s = AG_H / AG_ALT;
+    const img = el("image", { href: SIMBOLO, x: (agCx - SVG_W * s / 2).toFixed(2), y: (agCy - SVG_H * s / 2).toFixed(2), width: (SVG_W * s).toFixed(2), height: (SVG_H * s).toFixed(2) }, N.gAg);
+    imgPronta = new Promise((ok, erro) => { img.addEventListener("load", ok); img.addEventListener("error", () => erro(new Error(`o símbolo não entrou no palco (${SIMBOLO})`))); });
+    const gTexto = el("g", { "clip-path": "url(#cPlaca)" }, N.gPlaca);
+    N.linhas = D.linhas.map((txt, i) => {
+      const g = el("g", {}, gTexto);
+      el("text", { x: xt.toFixed(2), y: (base0 + i * D.LH).toFixed(2), class: "perg", "font-size": D.q, fill: COR.tinta }, g).textContent = txt;
+      return g;
+    });
+
+    // a peça clara: "Answer in the comments", com o contorno escuro por baixo
+    N.gAcao = el("g", {});
+    el("polygon", { points: pts(clara), fill: "none", stroke: COR.escura, "stroke-opacity": CONTORNO_OP, "stroke-width": 2 * CONTORNO, "stroke-linejoin": "miter" }, N.gAcao);
+    el("polygon", { points: pts(clara), fill: COR.painel }, N.gAcao);
+    el("polygon", { points: pts(clara), fill: "none", stroke: COR.tinta, "stroke-width": 2 * TRACO, "stroke-linejoin": "miter", "clip-path": "url(#cClara)" }, N.gAcao);
+    const yA = tTop + HT / 2 + capA / 2, xA = aMid + PAD_A;
+    el("text", { x: xA.toFixed(2), y: yA.toFixed(2), class: "acao", "font-size": ACAO_PX, fill: COR.tinta }, N.gAcao).textContent = ACAO;
+    const gCheio = el("g", { "clip-path": "url(#cEnche)" }, N.gAcao);
+    el("polygon", { points: pts(clara), fill: COR.tinta }, gCheio);
+    el("text", { x: xA.toFixed(2), y: yA.toFixed(2), class: "acao", "font-size": ACAO_PX, fill: COR.escura }, gCheio).textContent = ACAO;
+
+    L = { agCx, agCy, aBot, tTop, B, SLT };
+    const fraca = D.quebras.filter((q) => q.custo >= FRACA).map((q) => `"${q.antes} / ${q.depois}"`);
+    const avisos = [DUR < DUR_MIN ? `duração abaixo do tempo de leitura (${DUR_MIN} s)` : null,
+      fraca.length ? `a quebra parte um sintagma (${fraca.join(", ")}), porque nenhuma outra cabe: confira no quadro, ou force outra com "|"` : null].filter(Boolean);
+    window.__info = () => ({ peca: "comentario", regra: "marca/cta.md §4 a §8", pergunta: PERGUNTA, caracteres: PERGUNTA.replace(/\|/g, " ").length,
+      palavras: PALAVRAS.length, corpo: D.q, corpo_alvo: CORPO_ALVO, corpo_piso: CORPO_PISO, corpo_max: CORPOS[0], agulha_px: AG_H, linhas: D.linhas, larguras: D.ws.map((w) => Math.round(w)),
+      quebras: D.quebras.map((q) => ({ ...q, custo: +q.custo.toFixed(2) })), custo: +D.k.toFixed(3),
+      acao_px: ACAO_PX, acao_w: +acaoW.toFixed(1),
+      duracao: DUR, duracao_minima: DUR_MIN, leitura_s: LEITURA,
+      pergunta_inteira_s: [+T.tInteira.toFixed(2), +T.saiPlaca.toFixed(2)], lugar: LUGAR, gira: GIRA,
+      placa: { x0: Math.round(xLb), y0: Math.round(yT), x1: R, y1: Math.round(yB), altura: Math.round(h) },
+      clara: { x0: Math.round(aBot), y0: Math.round(tTop), x1: R, y1: Math.round(B), contorno_ate: R + CONTORNO },
+      aviso: avisos.length ? avisos.join("; ") : null });
+  }
+
+  function presenca(t, tIn, tOut) {
+    const pi = fase(t, tIn, ENT), po = fase(t, tOut, SAI);
+    return { op: suave(pi) * (1 - suave(po)), dy: SUB * (1 - easeOut(pi)) + SUB * easeInOut(po) };
+  }
+
+  window.render = function (t) {
+    if (window.__erro) throw new Error(window.__erro);
+    if (!L) throw new Error("a peça ainda não carregou: espere window.__pronto");
+    if (!Number.isFinite(t)) throw new Error(`render(t): t precisa ser um número de segundos (veio ${t})`);
+    const c = presenca(t, T.placa, T.saiPlaca), a = presenca(t, T.acao, T.saiAcao);
+    N.gPlaca.setAttribute("opacity", c.op.toFixed(4)); N.gPlaca.setAttribute("transform", `translate(0 ${c.dy.toFixed(2)})`);
+    N.linhas.forEach((g, i) => {
+      const p = fase(t, T.linha0 + i * T.linhaPasso, ENT);
+      g.setAttribute("opacity", suave(p).toFixed(4)); g.setAttribute("transform", `translate(0 ${(SUB * (1 - easeOut(p))).toFixed(2)})`);
+    });
+    N.gAcao.setAttribute("opacity", a.op.toFixed(4)); N.gAcao.setAttribute("transform", `translate(0 ${a.dy.toFixed(2)})`);
+    let ang = 0;
+    if (GIRA) { const p = fase(t, T.giro, T.giroDur); ang = -12 * Math.exp(-3.5 * p) * Math.cos(2.3 * Math.PI * p) * (1 - Math.pow(p, 4)); }
+    N.gAg.setAttribute("transform", `rotate(${ang.toFixed(3)} ${L.agCx.toFixed(2)} ${L.agCy.toFixed(2)})`);
+    const e = easeInOut(fase(t, T.enche, T.encheDur));
+    const x0 = L.aBot - L.SLT - 8, xb = L.aBot - 8 + e * (R + 8 - (L.aBot - 8) + L.SLT);
+    N.encheP.setAttribute("points", pts([[x0, L.tTop - 10], [xb + L.SLT, L.tTop - 10], [xb, L.B + 10], [x0, L.B + 10]]));
+  };
+
+  window.__pronto = (async () => {
+    try {
+      await Promise.all(CORPOS.map((q) => document.fonts.load(`800 ${q}px "MarcaSec"`, PERGUNTA)).concat(document.fonts.load(`700 ${ACAO_PX}px "Marca"`, ACAO)));
+    } catch (e) { /* a falha da fonte se diz abaixo, com a mensagem do canal */ }
+    try {
+      conferirPergunta();
+      conferirFontes();
+      await carregarSimbolo();
+      montar();
+      await imgPronta;
+      window.render(P.get("t") !== null && Number(P.get("t")) >= 0 ? Number(P.get("t")) : 3);
+    } catch (e) { if (!window.__erro) { window.__erro = e.message; document.title = "ERRO: " + e.message; } throw e; }
+  })();
+})();
+</script>
+</body>
+</html>

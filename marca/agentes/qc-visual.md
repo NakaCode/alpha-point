@@ -277,6 +277,20 @@
   do perfil do `canal.json`) e as bibliotecas do mapa em `_media/_vendor/`.
 - **Arquivo com `-prova` no nome na tela** reprova (`fonte`): é prova do `pesquisa-documentos`, e só vai à tela a
   página com a permissão do midia.md §7.1, sem `-prova` e com o `aprovado` do conferente.
+- **A chamada (CTA), do vídeo 2 em diante** (Lucas, 01/10/2026; `marca/cta.md`). O Juneau não tem. Você confere cada
+  item de `regencia.json` › `_chamadas`, no laudo da cena que fica por baixo dele:
+  - o momento (`cta.md` §5 e §6): a inscrição entre 35 % e 60 % do vídeo e fora do 1º minuto; o comentário terminando
+    pelo menos 1 s antes da cauda; nunca as duas no mesmo minuto; cena calma, sem corte e sem número-herói, território
+    acendendo, anel, viagem de câmera, fala citada ou folha sendo lidas;
+  - a distância: a caixa da peça (`cta.md` §4, ou a `uniao` de `out/<proj>/cta/<nome>.medidas.json`) contra a de cada
+    rótulo da cena, pelo `probe-elemento` (com `REGIE_MOTOR`), no começo, no meio e no fim. Menos de ~80 px, ou a mesma
+    faixa de altura de uma pílula no mesmo terço, reprova (`espaco`). Não há portão que meça isso: a conta é sua, e o
+    laudo diz os números;
+  - o quadro: a peça gravada por cima desses três quadros (`--fundos=` do gravador), com o gravador saindo 0. Os
+    quadros e essa gravação vão a `out/<proj>/_tmp/` e `out/<proj>/_tmp/cta/`, nunca a `out/<proj>/cta/` (a peça da
+    montagem) nem a `_media/`, onde o `qc-procedencia` a contaria como acervo sem procedência (`cta.md` §5 e §8). O
+    comentário conta nos 3 blocos e nos 6 elementos, e a inscrição, como 1 (`poluicao`). A pergunta na peça é a que o
+    `redator-de-tela` entregou, palavra por palavra (`factual`).
 - **Card de capítulo, título de tópico ou navegação na tela** reprova (`abordagem`; CLAUDE.md).
 - **Apresentador, ou pessoa gerada por IA apresentada como real**, reprova (`abordagem`; identidade.md §5).
 - **Cena sem `<html lang="en-US" data-render="4k-native">`** reprova (`espaco`): sem a marca, o render cai no

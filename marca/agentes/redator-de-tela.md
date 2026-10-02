@@ -133,6 +133,17 @@ recusou e o que ficou sem conferir, e a sessão central confere no navegador do 
   atribuída (voz.md §2). Nada de `shocking`, `crazy`, `World War 3` na tela (voz.md §2).
 - **Glossário institucional:** o canal se chama `Alpha Point` (`canal.json › titulo`) e não tem produto,
   clube nem cupom.
+- **A chamada (CTA), do vídeo 2 em diante** (Lucas, 01/10/2026; `marca/cta.md` §7). O Juneau não tem. A pergunta do
+  comentário é sua, uma por vídeo; a inscrição não tem texto seu ("ALPHA POINT" e "Subscribe" são fixos da peça).
+  - Em inglês dos EUA, calma, em segunda pessoa, ligada ao assunto e respondível por quem acabou de assistir ("Where
+    would you have put the capital?"). Nunca pede like ou inscrição; sem emoji, opinião de partido ou "who's right?"
+    (voz.md §2).
+  - Antes de entregar, rode `node marca/cta/pecas/_perguntas.mjs --q="<pergunta>"` e leia o `corpo`, as `linhas`, a
+    `duracao` e o `aviso`. Erro, reescreva. A contagem de caracteres não garante o corpo (uma de 42 já desce a 160, e
+    uma de 47 fica a 176; `cta.md` §7): quem diz é o `--q`.
+  - Se ela afirma ou pressupõe um fato, ele vai ao `verificador-de-fatos`.
+  - O contrato `textos-tela` não tem campo para ela: a pergunta e o que o `_perguntas.mjs` disse vão no report. A
+    mesma pergunta vai também na descrição e no comentário fixado.
 
 ## 5 · Créditos na tela
 

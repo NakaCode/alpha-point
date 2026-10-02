@@ -109,6 +109,17 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 - **Aviso do ano da foto** (Lucas, 27/09/2026): é **legenda** (84 px, Inter 500, `--tinta`). Sobre a foto, vai
   numa pílula `--rotulo`, com cantos de 12 px e respiro interno de 16 px × 28 px. Na margem da foto impressa do
   card, vai sem pílula, em `--tinta-escura` a 72 %. A regra inteira está em §6.
+- **A chamada (CTA)** (Lucas, 01/10/2026; do vídeo 2 em diante). Três textos que só existem dentro dela. A regra
+  inteira está em `marca/cta.md`:
+  - **a pergunta da chamada**: Barlow Condensed 800, alvo **176 px**, piso 160, e nunca acima do alvo (Lucas: "176 px,
+    um pouco menor"). Ela desce a 160 só para caber em 2 linhas com uma quebra boa; 3 linhas, só a 160; 1 linha, só a
+    176. Até 3 linhas, sem teto de palavras nem de caracteres: o que não cabe em 3 linhas a 160, ou só cabe partindo a
+    oração, a página recusa (`marca/cta.md` §7). Fica entre o teto do rótulo (160) e o piso do título (260), e é bloco
+    de leitura (§4.2);
+  - **a ação da chamada**: Inter 700, o texto do botão claro. "Subscribe" a 128 px (o alvo do rótulo) e "Answer in the
+    comments" a 112 px (acima do piso do rótulo, 104). "Answer in the comments" tem 4 palavras, uma a mais que o
+    máximo do rótulo: é a exceção;
+  - **ALPHA POINT**, na faixa da inscrição, é o nome do canal, como no banner (§8): Barlow Condensed 800, 112 px.
 
 ### 4.2 · Espaço
 
@@ -157,6 +168,18 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
   **500 ms**.
 - **O anel (o ponto)**: círculo de **56 px** de diâmetro, traço de **10 px** em `--destaque`, e um pulso
   que vai de escala 1 → 1,8 e opacidade 1 → 0 em **1,2 s**, duas vezes, e para.
+- **O movimento da chamada (CTA)** (Lucas, 01/10/2026; `marca/cta.md`). É diferente do rótulo em três pontos:
+  - **a entrada**: **360 ms**, com a opacidade em curva suave (smoothstep) e **24 px** de subida em ease-out (o rótulo
+    tem 300 ms em ease-out). O primeiro e o último quadro visível ficam abaixo de 5 % de opacidade, sem estalo. Na
+    inscrição, o botão entra 0,12 s depois da faixa; no comentário, as linhas da pergunta entram 80 ms uma depois da
+    outra, e a peça clara aos 0,40 s;
+  - **a saída**, que o rótulo não define: espelhada, **400 ms**, opacidade em curva suave e 24 px de descida em
+    ease-in-out, a peça clara 0,12 s antes da escura;
+  - **o giro da agulha**: ao entrar, a agulha assenta no norte num giro amortecido curto. Começa a −12°, oscila e
+    para em 0° exato em **0,9 s**, uma vez por chamada. Estava nas prévias que o Lucas aprovou, e fica (`marca/cta.md`
+    §3).
+  - O botão claro se enche de `--tinta` em **500 ms**, como o preenchimento de território, com a frente inclinada a
+    12°, o corte da agulha.
 
 ## 5 · Os modelos de cena
 

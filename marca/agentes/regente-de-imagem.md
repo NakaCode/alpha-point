@@ -41,6 +41,18 @@
   cauda leva um beat único `continua`, `forca: livre`, com o `porque` "tela final: a última cena, parada e
   escurecendo (Lucas, 28/09/2026)". Nos próximos vídeos, até o Lucas decidir de novo, o `porque` diz "proposta: a
   tela final do Juneau".
+- **A chamada (CTA), do vídeo 2 em diante** (Lucas, 01/10/2026; `marca/cta.md`). O Juneau não tem. Você escolhe o
+  momento das duas chamadas e o grava na regência:
+  - a inscrição, uma vez, entre 35 % e 60 % do vídeo e nunca no 1º minuto; o comentário, uma vez, perto do fim,
+    terminando pelo menos 1 s antes da cauda. Em vídeo com menos de 5 min, só o comentário (`cta.md` §6);
+  - o trecho tem o canto livre (nada a menos de ~80 px da caixa da peça, nem pílula na mesma faixa de altura no mesmo
+    terço), cena calma, nenhum corte, e fala que não depende da tela (`cta.md` §5). Com o canto de baixo ocupado,
+    `lugar: cima`; com os dois, outro momento;
+  - o item vai em `regencia.json` › `_chamadas`: `peca`, `lugar`, `inSec` (o fim da frase, no `words.json`),
+    `depois_de`, `dur`, `cena` e `porque` (`cta.md` §5). O comentário conta nos 3 blocos e nos 6 elementos da cena
+    por baixo; a inscrição, como 1 elemento;
+  - a pergunta do comentário é do `redator-de-tela` e chega depois: até ela, reserve os 6 s da padrão, e confira o
+    trecho de novo com a duração dela.
 - **Mapa = MapTiler** (`canal.json › mapa.perfil`, Lucas, 26/09/2026), com `© MapTiler © OpenStreetMap
   contributors` na tela durante todo o mapa (identidade.md §6). O Landsat foi só teste (CLAUDE.md).
 - **Nunca** rode `narrar.mjs` nem `transcrever.mjs`: gastam crédito e refazem o relógio (CLAUDE.md).
