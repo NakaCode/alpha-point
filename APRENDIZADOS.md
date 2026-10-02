@@ -1098,3 +1098,20 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   `document.fonts.ready`, e não por conta.
 - **Por que serve a qualquer canal:** toda cena com camadas (mesa sob a câmera, rótulo fixo por cima) e todo ensaio
   sem navegador tem esse risco; a conferência que só confirma o conserto pedido deixa passar o defeito que ele criou.
+
+## 01/10/2026 — o primeiro XML do Premiere, e o pacote para outro computador (pré-v1 em `7ab9543`)
+
+### 60. O XML do `finalizar` só abre na máquina que o gerou; o pacote leva tudo para outra
+- **Problema:** o `finalizar.mjs` da pré-v1 grava cada `<pathurl>` com o caminho absoluto desta máquina
+  (`file://localhost/C%3a/projetos/alpha-point/out/juneau/...`). É de propósito (o estúdio reescrevia tudo para o Mac
+  de uma pessoa), e a conferência dele prova que as referências existem AQUI. O Lucas precisou abrir o projeto em
+  outro computador: lá, as 56 referências viriam offline, espalhadas entre `_media/` e `graphics/`.
+- **O que resolveu:** `ferramentas/pacote-premiere.py <proj> --destino C:/Juneau-Premiere`. Ele copia cada arquivo
+  citado para uma pasta `midia/` só, confere o sha256 da cópia contra o original, reescreve só as `<pathurl>` para o
+  destino, prova que nada mais mudou no XML, e grava um LEIA-ME e um manifesto. A pasta vai para o mesmo caminho no
+  outro computador. Se o caminho mudar, o Premiere pede um arquivo e acha o resto na mesma pasta. As três
+  conferências do motor (`xml-conferir.mjs`: bem-formado, referências, geometria) passaram no XML do pacote.
+- **Como evitar:** a entrega do XML vem sempre com o pacote, e o destino se combina com o dono antes (Windows ou
+  Mac, e onde a pasta fica). Os nomes dos arquivos precisam ser únicos: o pacote recusa dois arquivos com o mesmo nome.
+- **Por que serve a qualquer canal:** todo canal da Régie entrega o XML para alguém editar, e quase nunca na mesma
+  máquina. Vale levar ao motor como um `--pacote <destino>` do `finalizar`.
