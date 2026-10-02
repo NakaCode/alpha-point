@@ -1,8 +1,7 @@
 # MARCA — as chamadas (CTA)
 
 > Como o Alpha Point pede inscrição e comentário dentro do vídeo. Vale do vídeo 2 em diante; o Juneau fica como está.
-> Em construção: as peças se desenham depois que o Lucas escolher o logo (`marca/logo/`), porque a chamada de
-> inscrição leva o logo.
+> Aprovado pelo Lucas em 01/10/2026 (§3). As peças moram em `marca/cta/pecas/`, e a regra de uso está em §4 a §8.
 
 ## 1 · O que o Lucas pediu (01/10/2026)
 
@@ -32,13 +31,34 @@
 - **O estilo:** a peça escura com a agulha em uma cor e ALPHA POINT em Barlow Condensed 800, presa por um vão inclinado
   a 12° (o corte do símbolo) à peça clara, o botão "Subscribe" em --tinta, que entra em contorno e se enche. O
   comentário é da mesma família: a pergunta grande na peça escura e "Answer in the comments" na peça clara.
-- **Em refino:** o que os juízes apontaram nele (parecer rótulo de lugar, a pergunta longa larga demais, a saída com
-  estalo, o símbolo copiado no código, as entradas-limite) se corrige mantendo o visual que o Lucas escolheu. A versão
-  refinada volta a ele antes de virar regra.
+- **O refino:** o que os juízes apontaram nele (parecer rótulo de lugar, a pergunta longa larga demais, a saída com
+  estalo, o símbolo copiado no código, as entradas-limite) foi corrigido mantendo o visual que o Lucas escolheu, em duas
+  rodadas, com três juízes no meio (notas 8,5, 7,5 e 7,5, as três com "o visual do Lucas mantido"). O registro está em
+  `marca/cta/propostas/c-faixa-minima/_resultado-refino.json`, fora do git.
 
-## 3 · O que falta
+## 3 · A aprovação (Lucas, 01/10/2026, 20:3x de Brasília)
 
-- Refinar o estilo C e mostrar ao Lucas antes de virar regra.
-- Decidir com ele a voz (§1) e onde a chamada entra no vídeo (que momento, quantas vezes).
-- Depois: a regra aqui, o molde da cena e o que o `regente-de-imagem` e o `redator-de-tela` fazem com ela (as roupas
-  apontam para cá).
+Ele viu a folha com a inscrição sobre o mapa e a mesa e o comentário com a pergunta curta e a longa, e as duas peças em
+movimento.
+- **"A faixa mínima refinada (as prévias estão no chat) vira a chamada do canal a partir do vídeo 2?"**
+  - **A resposta:** "Aprovo (Recomendado)". A opção dizia: "Vira regra em marca/cta.md e na identidade. O regente põe
+    as chamadas, o redator escreve a pergunta de cada vídeo e o qc confere."
+- **"O tamanho da pergunta do comentário: a de 192 px, que você viu, ocupa ~16 % da tela. A de 176 px tem a mesma cara e
+  ocupa ~14 %. Qual fica?"**
+  - **A resposta:** "176 px, um pouco menor". A opção dizia: "A mesma faixa, cobrindo um pouco menos da cena."
+  - A outra opção era "192 px, a que vi (Recomendado)".
+- **"Quantas vezes a chamada entra em cada vídeo?"**
+  - **A resposta:** "Uma de cada (Recomendado)". A opção dizia: "A inscrição uma vez no meio (entre 35 e 60 % do vídeo,
+    nunca no 1º minuto) e o comentário perto do fim, saindo antes da tela final. Em vídeo com menos de 5 min, só o
+    comentário."
+- O giro da agulha ao entrar estava nas prévias que ele aprovou: fica. A voz continua "Decidir depois" (§1).
+
+## 4 a 8 · A regra de uso
+
+(Em escrita: as peças em `marca/cta/pecas/`, o momento, quantas vezes, a pergunta, a legenda automática do YouTube e os
+comandos, a partir de `marca/cta/propostas/c-faixa-minima/REGRA-PROPOSTA.md`, com a pergunta a 176 px.)
+
+## O que falta
+- A voz (§1), quando o Lucas decidir.
+- Medir a faixa com a legenda automática do YouTube ligada (pede um envio, decisão do Lucas) e abrir o `.mov` no
+  Premiere pela primeira vez (no vídeo 2).
