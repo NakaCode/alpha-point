@@ -140,3 +140,4 @@ quando ele mostrar.
 | s44 e s48 (6 cargas do mapista na correção 9, o texto liso: s48 1, s44 2 com 299 quadros, qc-cena 3) | ~19:10–19:30 | — | medidas e qc-cena |
 | s48 (render da correção 9: o texto liso no Lynn Canal, o estilo sem transição, a espera da s44) | 19:31:42 | 19:34:38 | 2160p |
 | s44 (7º render: correção 9, o texto liso nos dez rótulos presos ao chão) | 19:34:38 | 19:43:01 | 2160p |
+| s05 (9 fotos de maquete pelo `quadro.mjs`, para a revisão do Lucas no Premiere: 6 na 1ª rodada e 3 na 2ª; cópias em `_tmp/prop-s05-*.html`, nada renderizado) | ~23:55 de 01/10 a ~01:00 de 02/10 | — | maquete |

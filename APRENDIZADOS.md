@@ -1115,3 +1115,36 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   Mac, e onde a pasta fica). Os nomes dos arquivos precisam ser únicos: o pacote recusa dois arquivos com o mesmo nome.
 - **Por que serve a qualquer canal:** todo canal da Régie entrega o XML para alguém editar, e quase nunca na mesma
   máquina. Vale levar ao motor como um `--pacote <destino>` do `finalizar`.
+
+## 02/10/2026 — a revisão do Lucas no Premiere (pré-v1 em `7ab9543`)
+
+### 61. A conferência por cena aprova o que o espectador estranha num olhar; falta uma revisão de espectador antes do dono
+- **Problema:** o `qc-visual` julgou as 55 cenas do Juneau por lente (legibilidade, factualidade, sincronia,
+  composição, movimento, acessibilidade, coerência) e aprovou todas, com nota de 8 a 10. O Lucas abriu o XML no
+  Premiere e achou, num olhar só, oito defeitos de espectador:
+  - seis coisas para ler de uma vez (s01);
+  - o crédito que pesa (s01);
+  - um grifo sobre uma lacuna vazia (s02);
+  - um começo que não se entende (s05);
+  - um campo em branco antes do número (s23);
+  - quase 3 s de mesa vazia (s40);
+  - uma foto recortada numa tira fina (s56);
+  - um fim pobre (s62 e s63).
+  Cada um tinha um porquê escrito no cabeçalho da cena, e a régua da marca os deixava passar. O crédito e o aviso do
+  ano não contam no teto de elementos, o campo vazio cumpria "nenhum número antes da voz", e o recorte cumpria o teto
+  de 1,4×. O conferente lê o porquê, e o espectador não lê.
+- **O que resolveu:** uma revisão de espectador antes de o vídeo ir ao dono (CLAUDE.md, "A autonomia do vídeo 2 em
+  diante"). Um revisor que não lê cabeçalho nem conceito vê os quadros em 1080p a cada 0,5 s, com a fala ao lado, e
+  pergunta só o que o espectador perguntaria:
+  - dá para entender no primeiro segundo?
+  - quantas coisas há para ler?
+  - há marca sem conteúdo?
+  - há mais de 2 s sem nada que acompanhe a fala?
+  - algo fica pequeno demais no celular?
+  Um cético tenta derrubar cada achado.
+- **Como evitar:** recurso que só funciona com a explicação (o campo em branco que "espera" a voz, a tira que evita
+  um rosto) vai ao dono como pergunta antes de virar cena. A conta da régua (elementos, escala) não substitui olhar o
+  quadro como quem nunca leu a cena.
+- **Por que serve a qualquer canal:** todo canal que confere cena por cena com régua escrita tem esse ponto cego.
+  A conferência por regra aprova o que cumpre a regra, e o espectador julga o que vê. Vale levar ao motor como uma
+  lente "espectador" do `qc-visual`, que julga sem o cabeçalho.

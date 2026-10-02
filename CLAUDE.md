@@ -79,6 +79,13 @@ produz o master. O deste canal nasce assim:
      conversa falava a ~200 palavras/min, e nenhum ajuste a desacelerava: velocidade, "Natural" e `[slowly]` o v3
      ignora. O ritmo vem da voz. A calma fez 171 no Juneau, e o Lucas preferiu assim a esticar (26/09). Fichas de
      cada voz: `marca/vozes.html`.
+   - **Do vídeo 2 em diante, a voz ou o ajuste muda** (Lucas, 02/10/2026). No vídeo montado do Juneau, ele ouviu "diversas
+     mudanças de tom com o decorrer do vídeo" e "transição abrupta também na fala", e sugeriu "utilizar uma voz padrão". O
+     Juneau fica com a narração de 26/09: trocar agora refaria o relógio das 55 cenas. A pergunta foi se a troca valeria
+     já; a resposta: "Sim, a mudança seria realmente apenas para o vídeo 2". A causa provável é o v3 em "Criativo"
+     (`stability: 0`), com um pedido por parágrafo e sem "request stitching". A voz e o ajuste do vídeo 2 saem de um
+     teste às cegas, com gasto que pede o ok dele. A medida do Juneau por parágrafo está em
+     `out/juneau/_pesquisa/revisao-premiere-lucas.md` e em `out/juneau/_tmp/revisao-premiere/voz/`.
    - **Como se gera** (decidido pelo Lucas em 25–26/09): **pela API**, com
      `node C:\projetos\regie-v1\src\ferramentas\narrar.mjs <proj>`, **um pedido por parágrafo**. O roteiro fica em
      `out/<proj>/roteiro.md`, com parágrafos separados por linha em branco. Voz, modelo e ajustes vêm de
@@ -114,6 +121,8 @@ produz o master. O deste canal nasce assim:
      chaves dos acervos (NARA, Smithsonian, DVIDS, Europeana, Pexels, Pixabay). A da ElevenLabs foi testada sem
      gasto: `narrar.mjs --vozes` lista as duas vozes do canal. **Em 30/09/2026 o Lucas mandou pelo chat uma chave nova da ElevenLabs**: trocada no arquivo (a anterior ficou em `chaves.env.antes-da-troca-elevenlabs-2026-09-30`, na mesma pasta) e testada sem gasto (`--vozes` lista as três vozes do canal). Nunca imprima nem leia os valores; para saber de
      onde vem uma chave, use `onde()` de `src/lib/chaves.mjs` da pré-v1.
+   - **Do vídeo 2 em diante, até 15.000 créditos por vídeo sem pedir ok** (Lucas, 02/10/2026; "A autonomia do vídeo 2
+     em diante"), com o gasto registrado e avisado depois. Acima disso, e no Juneau, vale o que segue.
    - Gastar crédito pede o ok do Lucas. Gasto em 24/09, conferido no saldo: 2.433 nas amostras e na escolha
      da voz; 15.564 na narração do texto aprovado (o bloco 1 com quebras de linha, o teste sem quebras e os 3
      blocos em "Criativo"); 709 no teste do v2; 1.498 na prova do tom de conversa (teste com a voz anterior e o
@@ -374,6 +383,9 @@ gravado. Portão ausente do disco, ou que sai com exit 2 chamado com o alvo cert
 abaixo), é **NÃO MEDIDO**, com o nome do portão. Nunca é simulado nem "medido no olho": olhar um quadro
 (`quadro.mjs`, ou o render e o ffmpeg) é olhar, não é portão.
 
+**Uma conversa por peça: só até o Juneau.** Do vídeo 2 em diante, o Claude central roda as peças daqui, e o Lucas não
+abre conversa nenhuma ("A autonomia do vídeo 2 em diante", abaixo). O que segue é a regra do Juneau.
+
 **Uma conversa por peça** (Lucas, 28/09/2026, para ver o que cada peça faz). A pergunta: "Como você quer acompanhar o
 que cada peça está fazendo?" A resposta: "Uma conversa por peça no app". O Claude central não consegue abrir conversa
 no app sozinho: o único caminho dele é o botão de tarefa, que abre a conversa numa cópia separada do projeto (worktree),
@@ -603,6 +615,58 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
 - as bandeiras de `assets/flags/` variam de tamanho (de 160 a 2560 px de largura): meça cada uma com o
   `ffprobe`. As do Juneau, `us.png` (320 × 168) e `ca.png` (320 × 160), são pequenas para o círculo de 640 px da
   PRANCHA.
+
+## A autonomia do vídeo 2 em diante (02/10/2026)
+
+O Lucas perguntou (02/10/2026, 00:0x de Brasília): "o que conseguimos reduzir minha interferência? Digo, dar autonomia sem
+mim". Antes das perguntas, o Claude central disse o que não sai dele, por ser regra de segurança e não do canal: o "sim" a
+uma lista antes de baixar pelo navegador e nos bancos pagos (uma lista só por vídeo), e senha, código, verificação de
+robô, termos e compra. As quatro respostas:
+- **As peças.** A pergunta: "Para você não precisar abrir uma conversa para cada peça, eu posso rodar os especialistas
+  daqui, cada um no modelo dele. Como seguimos do vídeo 2 em diante?" A resposta: "Eu rodo daqui (Recomendado)". A opção
+  dizia: "Você não abre conversa nenhuma. Cada peça roda aqui dentro, no modelo dela (Fable, Opus, Sonnet), e você
+  acompanha pelo #status no Discord e pelos relatos. Você perde a janela ao vivo de cada peça." Logo depois ele
+  perguntou: "Cada novo vídeo eu terei que abrir todas às conversas?". Não terá.
+  - Como: `Agent` com o `subagent_type` do especialista (o `id` de `.claude/agents/<id>.md`), sem passar modelo: o
+    modelo vem do frontmatter ("Os modelos", acima). O pedido é o mesmo que ia para a conversa da peça: o `<proj>`, o
+    passo, a tarefa, que ele lê o ofício e a roupa, e o fim (um relato, sem commit, sem `regie advance` e sem Discord ou
+    Telegram). O resto de "Como se despacha" continua: o artefato vence o relato, os portões e os verificadores
+    independentes rodam aqui, e o defeito volta à peça por um despacho novo (ou pelo `SendMessage`, se ela ainda estiver
+    viva).
+  - O `diretor-de-arte` e o `editor-de-arte` vêm em `fable`, e um subagente em `fable` ainda não se viu subir. No
+    primeiro despacho, confira no relato e no transcript do subagente que ele subiu em `fable`. Se não subir, pare,
+    avise o Lucas e não edite o `.md` nem troque o modelo.
+  - No `#status` do Discord, uma linha a cada peça que começa e a cada uma que termina, com o que ela gravou.
+- **O roteiro.** A pergunta: "Até onde você quer aprovar o texto do vídeo?" A resposta: "Pauta e roteiro (Recomendado)".
+  Ele aprova o tema e lê o roteiro uma vez, como no Juneau.
+- **O que o Claude central decide sozinho.** A pergunta: "O que eu posso decidir sozinho, registrando tudo para você ver
+  depois?" Das três opções, ele marcou uma: "Crédito da voz até 15 mil". A opção dizia: "Até 15.000 créditos da
+  ElevenLabs por vídeo sem pedir ok (a narração inteira do Juneau gastou 6.621; o resto foram testes). Acima disso,
+  pergunto." As outras duas ficaram com ele: a reprovação de portão que a marca não tem continua indo a ele cena por
+  cena, e os ajustes depois da revisão dele continuam indo como lista de opções.
+  - O gasto se registra antes e depois de cada rodada (o saldo da conta e o recibo, como em
+    `narracao-conferencia.md`) e se avisa no `#status` depois. A conta é por vídeo: a soma de testes, narração e
+    parágrafos refeitos. O que passar de 15.000 no vídeo pede o ok antes da rodada que passaria.
+  - O teste às cegas da voz do vídeo 2 (item 4 da narração, acima) entra nos 15.000.
+- **Os bancos pagos.** A pergunta: "A caça nos bancos pagos é a parte que mais pede você: a janela à vista, os cliques na
+  aba e a lista. Como fica no vídeo 2?" A resposta: "Como hoje". A opção dizia: "Caça sempre que a lista de mídia pedir."
+  "Caça nos bancos pagos", abaixo, não muda.
+
+**A revisão de espectador, antes do Lucas** (decisão do Claude central, 02/10/2026; `APRENDIZADOS.md`, item 61).
+- **Por quê:** o `qc-visual` aprovou as 55 cenas do Juneau, e o Lucas achou no Premiere, num olhar só, oito defeitos de
+  espectador: tela com informação demais (s01), crédito que pesa (s01), grifo sobre lacuna vazia (s02), começo que não
+  se entende (s05), campo em branco antes do número (s23), mesa vazia por quase 3 s (s40), foto em tira fina (s56) e um
+  fim pobre (s62 e s63).
+- **Como:** antes de o XML ir ao Lucas, um revisor olha o vídeo como ele, sem ler cabeçalho nem conceito. Ele vê os
+  quadros dos clipes em 1080p a cada 0,5 s, com a fala do `words.json` ao lado, e só pergunta o que um espectador
+  perguntaria:
+  - dá para entender o que a cena mostra no primeiro segundo?
+  - quantas coisas há para ler de uma vez?
+  - há marca, campo ou moldura sem conteúdo?
+  - há mais de 2 s sem nada que acompanhe a fala?
+  - algum texto ou foto pequeno demais para o celular?
+- **O que faz com o achado:** um cético tenta derrubar cada um. O que sobra vai ao `editor-de-arte` ou ao `mapista`
+  como defeito, ou ao Lucas, se mexer em regra da marca.
 
 ## Caça nos bancos pagos (desde 26/09/2026)
 
