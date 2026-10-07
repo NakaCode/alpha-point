@@ -114,7 +114,8 @@
 
 ## 3 · Crédito (identidade.md §7)
 
-- `credito_na_tela` em inglês: `<author> / <archive> · <license>`, em 76 px na faixa de crédito. Ex.:
+- `credito_na_tela` em inglês: `<author> / <archive> · <license>`, em 56 px na faixa de crédito (Lucas, 07/10/2026;
+  identidade.md §4.1, "Crédito a 56 px"; 76 no Juneau). Ex.:
   `Jane Doe / Wikimedia Commons · CC BY-SA 4.0`.
 - Domínio público (NARA e outros acervos federais) vai sem crédito na tela; o registro na pauta continua
   obrigatório.

@@ -254,7 +254,8 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
   obrigatório.
 - Banco pago não leva crédito na tela, exceto Shutterstock: a linha `Image(s) and/or video used under
   license from Shutterstock.com` na faixa de crédito da última cena e na descrição (midia.md §3.4).
-- O crédito entra em 76 px, de x = 200 até antes de x = 1720, e quebra em duas linhas sem encolher.
+- O crédito entra em 56 px (Lucas, 07/10/2026; identidade.md §4.1, "Crédito a 56 px"; 76 no Juneau), de x = 200 até
+  antes de x = 1720, e quebra em duas linhas sem encolher.
 
 ## 8 · Antes de buscar: o que o canal já leu
 

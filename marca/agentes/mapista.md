@@ -169,10 +169,21 @@ necessidade.
 - **Na tela**: `© MapTiler © OpenStreetMap contributors`, do primeiro ao último quadro em que o mapa aparece. O
   plano pago dispensa o logo, não o crédito. Descrição ou créditos finais sozinhos não bastam
   (`<motor>/docs/CREDITO-DE-MAPA.md` §0).
-- **Onde e como**: 76 px, Inter 500, texto `--sec` sobre pílula `--rotulo`, cantos `--cantos`. Começa em
-  x = 200, termina antes de x = 1720, dentro da faixa abaixo de y = 1880. Crédito longo quebra em duas linhas e
-  nunca encolhe. Marque `data-qc-papel="credito" data-qc-credito="mapa"`. O molde põe 46 px em x = 154: troque
-  como no exemplar (APRENDIZADOS.md item 17, achado 25).
+- **Onde e como**: 56 px (Lucas, 07/10/2026: "quero diminuir o tamanho dos créditos num geral" e "Quero reduzir para
+  56px"; identidade.md §4.1, "Crédito a 56 px"; teto 64), Inter 500, texto `--sec` sobre pílula `--rotulo`, cantos
+  `--cantos`. Começa em x = 200, termina antes de x = 1720, dentro da faixa abaixo de y = 1880. Crédito longo quebra em
+  duas linhas e nunca encolhe. Marque `data-qc-papel="credito" data-qc-credito="mapa"`, e a marca de mapa **só no
+  crédito de mapa**: ela dá a ele o piso de 40 px do portão (`docs/CREDITO-DE-MAPA.md` §6.2 da pré-v1, que recomenda
+  46), e a 56 px o crédito de mapa passa no `qc-tamanho` sem exceção nenhuma. O portão a aceita num ancestral
+  (`closest`), por isso ela vai **no próprio elemento da linha** do crédito de mapa (ou num ancestral que só contenha
+  ela), nunca no contêiner comum dos créditos (a pílula que empilha a linha do mapa e a de uma foto) nem no `#palco`:
+  marcado o contêiner, a linha da foto passa a 56 sem reprovar, e é verde falso (medido em 07/10/2026). O molde põe 46
+  px em x = 154: troque por `var(--fs-credito)`, nunca por um px fixo (APRENDIZADOS.md item 17, achado 25). O exemplar
+  (§8) e a maior parte das cenas de mapa do Juneau têm 76 px fixo, e nenhum portão pega 46 nem 76 num crédito de mapa
+  (o piso do portão é 40, e o teto de 64 ninguém lê). Diga no report o tamanho medido de cada crédito. **No Juneau, 76
+  px**: cena do Juneau refeita declara `--fs-credito: 76px` no `:root`, num `<style>` posto **depois** do `<link>` do
+  `tokens.css` (antes dele, perde para o 56), para não misturar dois tamanhos no mesmo vídeo. Sem o override, nenhum
+  render do Juneau, nem com `--forcar`: o carimbo `.mp4.de-html` não enxerga a troca da marca.
 - **Geometria do OpenStreetMap** (no Juneau: o Taku, Willow, Haines, a estrada e Cascade Point) já está coberta
   pelo `© OpenStreetMap contributors` da linha da MapTiler: não repita. Numa cena sem MapTiler, ela leva a
   linha sozinha (CLAUDE.md, item 6).
@@ -184,6 +195,16 @@ necessidade.
   `out/<proj>/_creditos-mapa.md` gravado pelo `preparar-cena` diz o mesmo, e entregue a linha no report.
 - Geometria histórica CC BY-SA leva crédito e a legenda de contorno aproximado (ofício §8). DECISÃO DO LUCAS
   PENDENTE: a palavra em inglês dessa legenda. No Juneau não há geometria histórica.
+- **Contorno traçado de mapa antigo em domínio público** (Lucas, 07/10/2026: "mapa antigo sim"; identidade.md §6, "Mapa
+  antigo digitalizado como geometria de tela"): entra como geometria, **sem crédito na tela** (identidade.md §7: mapa
+  antigo em domínio público), com a incerteza que a `pesquisa-geo` declarou em `out/<proj>/_pesquisa/pauta-geo.md`. No
+  vídeo 2: a folha de Hamlin (1916), com ±50 m ao norte de 33,86 N e ±150 a ±200 m ao sul, depois da correção do
+  sudeste; as do USGS (1896, 1903 e 1923), georreferenciadas pelo próprio USGS, com ±4 a ±11 m de leitura
+  (`pauta-geo.md`, "As camadas"); a folha de 1896 (1:62.500) põe Deadman's Island a ~240 m da de 1923 (`pauta-geo.md`,
+  fim da "Correção do sudeste de Hamlin"), e é isso que limita a câmera sobre os traços de 1896 (o molhe, as ilhas e a
+  água, que não tem camada e é só indicativa, ±150 m). Não aproxime a câmera além do que a incerteza de cada contorno
+  sustenta, e diga no report a escala máxima que usou sobre cada um. Se esse contorno leva a legenda de aproximado do ofício (§8), não foi
+  perguntado: segue a DECISÃO DO LUCAS PENDENTE acima.
 
 ## 6 · Câmera e modo (identidade.md §1 e §4.4)
 
@@ -219,7 +240,7 @@ necessidade.
   - `lang="en-US"`;
   - o link do `marca/tokens.css`;
   - a pílula de rótulo;
-  - o crédito de 76 px em x = 200;
+  - o crédito em x = 200 (lá ainda a 76 px; desde 07/10/2026 é 56: §5);
   - o tratamento de 65 % e 70 %;
   - o contorno escuro da fronteira;
   - o anel.
@@ -245,6 +266,11 @@ necessidade.
   `preparar-cena` recusa arquivo sem fonte e licença lá. O catálogo da máquina:
   `node <motor>/src/geo/catalogo.mjs --busca=<termo>`.
 - Faltou geometria: peça à `pesquisa-geo` e reporte bloqueio. Nunca desenhe.
+- **Mapa antigo digitalizado como geometria** (Lucas, 07/10/2026: "mapa antigo sim"; identidade.md §6): o contorno
+  traçado de um mapa antigo em domínio público provado, georreferenciado por pontos de controle e com a incerteza
+  medida e declarada na `pauta-geo` é geometria real para você, como a do TIGER ou a do Natural Earth. O que a folha não
+  fecha não se fecha na cena (no vídeo 2, a divisa de San Pedro de 1909 é linha aberta). A folha como imagem é outro
+  uso, pelo `midia.md`.
 - **Site que recusa leitura automática** (403, captcha, verificação de robô) não se contorna por meio nenhum:
   - nem `curl`;
   - nem outro cliente;

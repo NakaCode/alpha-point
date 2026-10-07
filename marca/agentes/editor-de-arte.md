@@ -81,7 +81,8 @@
   `--destaque`, não o contrário (CLAUDE.md, "Peças da pré-v1", item 7). A paleta em prosa do espelho não
   se aplica sozinha.
 - Exemplares do canal: `out/prova-marca/graphics/prova-marca.html` (tokens, RIG, fontes, o anel) e
-  `out/prova-mapa/graphics/landsat-juneau.html` (pílula de rótulo, crédito de 76 px, anel sobre mapa).
+  `out/prova-mapa/graphics/landsat-juneau.html` (pílula de rótulo, crédito a 76 px, de antes de 07/10/2026: hoje
+  o crédito é 56, §4 e §9; anel sobre mapa).
   `marca/prancha.html` é o esquema de MAPA, DADO e PRANCHA a 1/4 do palco. `regua/`, `seed/examples/` e
   `knowledge/` vieram do Top10: servem de estrutura; cor, fonte, número e língua de lá não se copiam.
   O exemplo de documento da pré-v1 declara uma `--tinta` escura própria que vence a do canal: ao copiar,
@@ -132,15 +133,28 @@
 | fala citada | 280 px | 340 px | 12 |
 | rótulo, inclui nome de lugar e o nome do card de pessoa (§6) | 128 px | 160 px | 3 |
 | eixo / legenda, inclui o cargo do card de pessoa (§6) | 84 px | 104 px | — |
-| crédito / fonte | 76 px | 88 px | — |
+| crédito / fonte | 56 px (76 no Juneau) | 64 px (88 no Juneau) | — |
 
 Os pisos que reprovam (260/104/72/72) são do ofício.
+
+- **Crédito a 56 px** (Lucas, 07/10/2026: "quero diminuir o tamanho dos créditos num geral" e "Quero reduzir para 56px";
+  identidade.md §4.1, "Crédito a 56 px"). Do vídeo 2 em diante, todo crédito (foto, documento, vídeo, dado, mapa) vai a
+  `var(--fs-credito)`, que é 56 px, teto 64. O portão do motor continua cobrando 72 no crédito que não é de mapa
+  (`qc-tamanho`): a cena sua vai reprovar nele **só pelo crédito**, e isso é esperado. Não suba o crédito para passar;
+  diga no relato que a única reprovação do `qc-tamanho` é o crédito a 56, e o Claude central grava a exceção em
+  `out/<proj>/qc/_excecoes-portao.json`, sem nova pergunta ao Lucas. Qualquer outra reprovação do `qc-tamanho` é
+  conserto seu. **Nem tire o `data-qc-papel="credito"`**: sem ele, o `qc-tamanho` só avisa e o `portao-mapa rodape` não
+  mede o contraste. É verde comprado, como a marca de mapa fora do crédito de mapa (§9). **No Juneau, 76 px**: cena do
+  Juneau refeita declara `--fs-credito: 76px` no `:root`, num `<style>` posto **depois** do `<link>` do `tokens.css`
+  (antes dele, perde para o 56), para não misturar dois tamanhos no mesmo vídeo (44 das 56 cenas dele leem
+  `var(--fs-credito)`, e todas têm o `<link>` antes do primeiro `<style>`). Sem o override, nenhum render do Juneau,
+  nem com `--forcar`: o carimbo `.mp4.de-html` não enxerga a troca da marca.
 
 - Texto sobre mapa ou registro vai na pílula: `--rotulo`, cantos de 12 px, respiro de 24 × 40 px. Nada de
   scrim, sombra ou contorno no texto (`--texto-tratamento: "caixa"`, `--texto-sombra: none`).
 - Legenda de relação sobre a seta da PRANCHA (ex.: `claims the same waters`): 84 px, Inter 500, `--legenda-cor`.
 - Margem: 200 px nas laterais, 160 px no topo. Abaixo de y = 1880, só crédito, a partir de x = 200 e
-  terminando antes de x = 1720. Crédito longo quebra em duas linhas de 76 px e nunca encolhe. O centro dessa
+  terminando antes de x = 1720. Crédito longo quebra em duas linhas de 56 px (76 no Juneau) e nunca encolhe. O centro dessa
   faixa fica livre para a legenda automática do YouTube e a barra do player.
 - **A margem, a faixa do crédito e o canto valem em todo quadro, sob a câmera** (Claude central, 01/10/2026, depois
   da conferência dos primeiros renders do Juneau; `APRENDIZADOS.md`, item 58). O `R.camera` do RIG tem zoom contínuo
@@ -164,7 +178,7 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
 
 - Bloco de texto no ar: ≥ 2,0 s (o ofício diz ~1,5 s; a marca sobe). Beat: ≥ 1,5 s.
 - Foto ou footage **parado**, sem movimento com propósito: ≤ 6 s. Foto parada leva Ken Burns de escala
-  1,00 → 1,12 em 6 s, linear.
+  1,00 → 1,12 em 6 s, linear (do vídeo 2 em diante, com direção e o teto do produto: "A mão que arruma", abaixo).
 - No vídeo inteiro: rajada (beats < 2,5 s) ≤ 20 % do tempo; respiro (beat ≥ 6 s com movimento lento) ≥ 10 %;
   registro real (footage, foto, satélite de geometria real) ≥ 60 %.
 - Rótulo entra em 300 ms (opacidade + 24 px de subida, ease-out). Território preenche em 500 ms.
@@ -173,6 +187,25 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
 - **O anel**, a assinatura do canal: círculo de 56 px, traço de 10 px em `--destaque`; pulso de escala
   1 → 1,8 e opacidade 1 → 0 em 1,2 s, duas vezes, e para. Ele marca PONTO (estreito, porto, usina). País e
   região são sempre o polígono inteiro.
+- **A mão que arruma** (Lucas, 07/10/2026: "movimento A"; identidade.md §4.4, "A mão que arruma", e §5; os números em
+  `marca/tokens.css`, "A mão que arruma"). Do vídeo 2 em diante, em toda cena de mesa: a folha, a foto impressa e o
+  retrato do card chegam com **assentamento** (1,03 → 1,00 nos últimos 200–240 ms, `eo`, uma vez, sem voltar); a
+  **sombra solta** é um elemento próprio com desfoque fixo, animando só `transform` e `opacity` (no ar +64 px, 1,05, 0,35;
+  assentada +12 px, 1,00, 0,80; nunca o raio do blur); a **luz** segue o centro do objeto 120 ms atrás; a câmera da folha
+  **chega 0,3 s antes da primeira palavra do grifo e para** enquanto ele corre; a troca de foto na mesa é **"a antiga
+  fica, a luz escolhe"**, e a saída de um objeto é o **levantar** (350 ms, escala 1,00 → 1,04 em ease-in cúbico,
+  `p => p*p*p`: a única curva fora do `eo` e do `eb` do RIG); o rótulo e o aviso do ano entram 150 ms depois do
+  assentamento; **o texto já na tela fica parado enquanto se lê**: todo movimento que o leva (a câmera sobre a folha, o
+  objeto com o grifo, a fala citada) termina pelo menos 0,25 s antes da primeira palavra que o lê (a entrada do número e
+  do cartão da fala, na palavra, não conta); nos 250 ms antes de um corte, nada se move além da deriva (a retomada da folha e o push-in do RIG
+  terminam antes). **O Ken Burns com direção** (até 80 px rumo ao assunto, com a direção e o produto das escalas no
+  cabeçalho) vale em toda foto em tela cheia, a de REGISTRO desde o primeiro quadro e a que sobe da mesa (identidade.md
+  §4.4), e não só na cena de mesa. Escreva no cabeçalho da cena o produto máximo das escalas e a direção do Ken Burns: na
+  mesa, o produto conta o 1,03; em tela cheia, é a escala de encher × o Ken Burns, e na foto que enche a tela a mais de
+  1,25 vez o Ken Burns termina em 1,4 ÷ (a escala de encher), e não em 1,12 (o produto fica ≤ 1,4). **B e C não foram
+  escolhidas**: nenhum deslize pela borda, antecipação de câmera, viagem de câmera pela mesa, mergulho nem still com
+  sangria. O Juneau fica como está (a demo da A está em
+  `out/juneau/_tmp/movimento/`, BRIEF.md §D.A).
 
 ## 6 · Os cinco modelos (identidade.md §5) e o `modo` do espelho
 
@@ -256,7 +289,8 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
 ## 9 · Crédito (identidade.md §6–§7)
 
 - Dado: `Source: <instituição>, <ano>`. Mídia cuja licença pede atribuição: `<autor> / <acervo> · <licença>`.
-  76 px, na faixa abaixo de y = 1880, com `data-qc-papel="credito"`. Sobre mapa ou registro, na pílula
+  56 px (Lucas, 07/10/2026; identidade.md §4.1, "Crédito a 56 px"; 76 no Juneau, pelo override do §4), na faixa abaixo
+  de y = 1880, com `data-qc-papel="credito"`. Sobre mapa ou registro, na pílula
   `--rotulo` com texto `--sec`, Inter 500, como no exemplar `landsat-juneau.html`. Sobre `--papel`, em
   `--tinta-escura`, que é o texto sobre papel (identidade.md §2).
 - Foto do governo do Alasca e de jornal leva crédito na tela sempre: a fonte como a origem a credita,
@@ -266,7 +300,12 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   federal, inclusive DVIDS e sala de imprensa federal): crédito supérfluo reprova. O Copernicus Sentinel leva `Contains modified Copernicus Sentinel
   data <ano>`.
 - Mapa sobre base MapTiler, mesmo dentro de uma cena sua: `© MapTiler © OpenStreetMap contributors` na tela do
-  primeiro ao último quadro de mapa, com `data-qc-credito="mapa"`. Geometria do OpenStreetMap leva
+  primeiro ao último quadro de mapa, com `data-qc-credito="mapa"`, **e só nele**: a marcação dá a esse crédito o piso
+  de 40 px do portão (`docs/CREDITO-DE-MAPA.md` §6.2 da pré-v1), e a 56 px ele passa no `qc-tamanho` sem exceção; posta
+  no crédito de uma foto ou de um documento, compraria um verde falso. O portão a aceita num ancestral (`closest`), por
+  isso ela vai **no próprio elemento da linha** do crédito de mapa (ou num ancestral que só contenha ela), nunca no
+  contêiner comum dos créditos (o `#creds` da pílula com duas linhas) nem no `#palco`: marcado o contêiner, a linha da
+  foto ao lado passa a 56 sem reprovar (medido em 07/10/2026). Geometria do OpenStreetMap leva
   `© OpenStreetMap contributors` mesmo sem MapTiler; com MapTiler, não se repete (CLAUDE.md, item 6).
   No Juneau vêm do OSM o Taku, Willow, Haines, a estrada e Cascade Point. A regra de "zero crédito de mapa na
   tela" do Top10 (ARTE-104, em `seed/regras/ARTE.md`) **não vale** aqui. Natural Earth: nada.
@@ -280,7 +319,8 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
   evento não entra.
 - **Foto de outro ano, com o aviso na tela** (Lucas, 27/09/2026; identidade.md §4.1, §5 e §6). A foto ou o
   retrato com `aviso_de_ano: true` no veredito do `conferente-de-midia` leva o aviso durante todo o tempo em que
-  aparece:
+  aparece assentado (do vídeo 2 em diante, o aviso entra 150 ms depois de a foto assentar, 300 ms, opacidade + 24 px,
+  salvo quando a voz o convoca antes: identidade.md §4.4, "A mão que arruma", e §6, "O aviso"):
   - na foto em tela cheia, `Photo from <ano>` numa pílula `--rotulo` logo abaixo do rótulo de lugar (ou no
     lugar dele), 84 px, Inter 500, com respiro de 16 × 28 px;
   - no card, na margem de baixo da foto impressa, sem pílula, em `--tinta-escura` a 72 %, 84 px, Inter 500;

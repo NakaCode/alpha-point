@@ -89,14 +89,15 @@
 
 ## 3 · A tela, em inglês (identidade.md §7, §4.1)
 
-- Atribuição: `Source: <institution>, <year>`, na faixa de crédito, em 76 px (x = 200 até antes de
+- Atribuição: `Source: <institution>, <year>`, na faixa de crédito, em 56 px (Lucas, 07/10/2026; identidade.md §4.1,
+  "Crédito a 56 px"; 76 no Juneau; x = 200 até antes de
   x = 1720, abaixo de y = 1880; identidade.md §4.2). Data: `March 3, 2024`; em caixa alta, `MAY 1, 1994`.
 - Título e números como a fonte imprime. Na tela, o hedge da voz fica (voz.md §1).
 - Fonte em outra língua: tradução natural para o inglês dos EUA. **DECISÃO DO LUCAS PENDENTE: o texto,
   em inglês, da nota de tradução** (a do ofício está em português). Até lá, original e tradução vão no
   relatório, e a nota fica para o `redator-de-tela`.
 - **Tamanhos.** O canal não tem papel "manchete". Os que existem: título 360 px (teto 560, até 5
-  palavras), fala citada 280 (teto 340, até 12), legenda 84, crédito 76 (identidade.md §4.1). **DECISÃO
+  palavras), fala citada 280 (teto 340, até 12), legenda 84, crédito 56 (76 no Juneau; identidade.md §4.1). **DECISÃO
   DO LUCAS PENDENTE: em que papel entram a manchete e o trecho citado.** A manchete não se encurta para
   caber (ofício §5): se passar do papel, diga no relatório.
 - Teto de carga: 3 blocos de texto e 6 elementos por cena, alvo de 4 a 5 (`marca/tokens.css`;

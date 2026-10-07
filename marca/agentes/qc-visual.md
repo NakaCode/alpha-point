@@ -66,7 +66,7 @@
   `ffmpeg -ss <t> -i out/<proj>/graphics/<cena>.mp4 -frames:v 1 out/<proj>/_tmp/qc-<cena>@<t>.png`.
 - **O clipe vale** só se o `<cena>.mp4.de-html` tem as duas linhas certas: a primeira igual ao `sha1sum` do HTML
   (o clipe é deste HTML) e a segunda `2160p` (o render foi `--4k`). Com `1080p`, os quadros saem em meia
-  escala, e as medidas da §4 (rótulo de 128 px, crédito de 76 px, margem de 200 px) não se julgam neles:
+  escala, e as medidas da §4 (rótulo de 128 px, crédito de 56 px, ou 76 no Juneau, margem de 200 px) não se julgam neles:
   clipe velho (CLAUDE.md, "Os especialistas", tropeços).
 - **Cena de mapa**: a prova é o clipe, não o `quadro.mjs` (por quê: CLAUDE.md, "Peças da pré-v1", item 7). O
   `maprender.mjs` do ofício não existe aqui.
@@ -106,6 +106,29 @@
     "exceção do Lucas: <portão>, <mensagem>, <hora>".
   - Só vale com o sha1 do HTML igual ao da exceção. Qualquer outra reprovação na cena continua em `gatesDuros`.
   - Sem a exceção no arquivo, a reprovação fica em `gatesDuros`, mesmo que a triagem diga que é limitação.
+- **A exceção do crédito a 56 px** (Lucas, 07/10/2026: "Quero reduzir para 56px"; identidade.md §4.1, "Crédito a 56
+  px"; do vídeo 2 em diante). O `qc-tamanho` cobra 72 px no crédito que não é de mapa, e o canal escreve o crédito a 56:
+  a reprovação dele que é **só** o crédito (o texto do crédito, com `data-qc-papel="credito"`, medido entre 56 e 71 px;
+  outro item reprovado na mesma cena continua em `gatesDuros`, pelo caminho normal, e não impede esta exceção) vira
+  exceção em `out/<proj>/qc/_excecoes-portao.json`, gravada pelo Claude central cena a cena, com a cena, o portão, o
+  sha1 do HTML, a reprovação (o texto e o px medido), a mensagem literal e a hora (07/10/2026, 11:3x), **sem triagem e
+  sem nova pergunta ao Lucas**: a decisão dele já cobre todas. Vale para aquele sha1: se o HTML mudar, o Claude central
+  confere que a reprovação continua sendo só o crédito e grava o sha1 novo. Com ela no arquivo e o sha1 igual, você
+  aprova citando-a na lente `espaco` ("exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026"), como a de cima. Sem
+  ela no arquivo, a reprovação fica em `gatesDuros`, como qualquer outra. A exceção só vale para a reprovação **com o
+  papel declarado**: crédito sem `data-qc-papel="credito"` reprova (`fonte`), porque sem ele o `qc-tamanho` só avisa e o
+  `portao-mapa rodape` não mede o contraste; um aviso de legibilidade do `qc-tamanho` sobre texto de crédito é crédito
+  sem o papel, e reprova até ser marcado. O crédito de mapa (`data-qc-credito="mapa"`) tem piso de 40 no portão e passa
+  a 56 sem exceção; a marca de mapa num crédito que não é de mapa reprova (`fonte`): é verde comprado. O portão a aceita
+  num ancestral (`closest`): um elemento com `data-qc-credito="mapa"` que contenha outro crédito (foto, documento, dado,
+  vídeo) reprova em `fonte` como verde comprado, porque esse outro crédito passou a 56 sem o piso de 72 (medido em
+  07/10/2026). Crédito abaixo de 56 ou acima de 64 reprova pela §4, e nenhum portão mede isso. O `qc-tamanho` tem piso
+  de 40 no crédito de mapa, não lê o `--teto-credito` e não lista o tamanho do que passa: um crédito de mapa a 46, o
+  tamanho do molde, sai verde (medido em 07/10/2026), e qualquer crédito a 76, o dos exemplares do Juneau, também (76
+  passa os pisos de 40 e de 72, e o teto ninguém lê). A conta é sua, como a da chamada (§5): meça cada crédito pelo
+  `probe-elemento <html> <t> --ids=<id>` (com `REGIE_MOTOR`), dividindo a altura da caixa de uma linha pela line-height
+  da cena. Confira também no HTML que o tamanho vem de `var(--fs-credito)`, sem px fixo. O laudo diz o número. No
+  Juneau, 76 e 88 continuam.
 - **Os 12 laudos do 1º lote** (escritos antes da instalação, com os portões NÃO MEDIDO) se refazem com o
   resultado do `qc-cena`: as lentes não mudam, e o `aprovado` passa a valer pela regra acima.
 
@@ -113,7 +136,8 @@
 
 - **espaco** (identidade.md §4.1–§4.2):
   - alvo e teto: herói e título 360 e 560 px, até 5 palavras; fala citada 280 e 340 px, até 12; rótulo e nome
-    de lugar 128 e 160 px, até 3; eixo e legenda 84 e 104 px; crédito 76 e 88 px. O teto reprova como o piso;
+    de lugar 128 e 160 px, até 3; eixo e legenda 84 e 104 px; crédito 56 e 64 px (Lucas, 07/10/2026; identidade.md
+    §4.1, "Crédito a 56 px"; no Juneau, 76 e 88). O teto reprova como o piso;
   - card de pessoa (Lucas, 26/09/2026; identidade.md §5): o nome é rótulo (128 e 160 px, Inter 700, até 3
     palavras) e o cargo é legenda (84 e 104 px, Inter 500, sem teto de palavras). Valem os números acima: o
     nome com mais de 3 palavras reprova como rótulo. O cargo que passa por baixo do cartão da fala reprova
@@ -145,8 +169,29 @@
   - mapa seguido de mapa é uma viagem, e o corte seco entre dois mapas reprova;
   - viagem de 1,5 a 3 s, cúbica;
   - rótulo entra em 300 ms; território em 500 ms;
-  - foto parada com Ken Burns de 1,00 a 1,12 em 6 s;
+  - foto parada com Ken Burns de 1,00 a 1,12 em 6 s; do vídeo 2 em diante, na foto que enche a tela a mais de 1,25 vez,
+    ele termina em 1,4 ÷ (a escala de encher), e o Ken Burns menor que 1,12 por isso não reprova (identidade.md §4.4);
   - o anel pulsa duas vezes e para.
+  - **A mão que arruma** (Lucas, 07/10/2026: "movimento A"; identidade.md §4.4, "A mão que arruma", e §5; do vídeo 2
+    em diante, e no Juneau não se julga). Nas cenas de mesa, você julga a linguagem A, nos quadros do clipe; o Ken
+    Burns com direção (abaixo) você julga também na foto de REGISTRO em tela cheia, desde o primeiro quadro:
+    - o **assentamento** acontece **uma vez** (a escala chega a 1,03 e assenta em 1,00 nos últimos 200–240 ms da
+      chegada) e **não oscila**: na chegada, um segundo retorno, um bounce ou uma escala que passa de 1,03 reprova (o
+      levantar, 1,00 → 1,04, e o número, 1,04 → 1,00, são outros gestos e não entram nesta conta);
+    - a **câmera da folha está parada durante o grifo** (só a deriva do RIG), e chegou pelo menos 0,3 s antes da
+      primeira palavra do trecho: câmera andando enquanto o grifo corre reprova;
+    - **o texto já na tela fica parado enquanto se lê**: movimento que leva texto (a câmera sobre a folha, o objeto
+      com o grifo, a fala citada) e ainda anda a menos de 0,25 s da primeira palavra que o lê reprova; a entrada do
+      número e do cartão da fala, na palavra, não conta;
+    - **nada se move nos 250 ms antes do corte**, fora a deriva (a retomada da folha, 1,08 → 1,10, e o push-in do RIG
+      terminam antes): objeto, câmera ou rótulo em movimento no último quarto de segundo da cena reprova;
+    - a **sombra solta** tem desfoque fixo (o raio não muda entre dois quadros) e fica por baixo do objeto, sem tocar
+      a foto; a **luz** segue o objeto 120 ms atrás, e no Juneau sem atraso;
+    - o **Ken Burns** de toda foto em tela cheia, de mesa ou de REGISTRO, anda até 80 px rumo ao assunto, e a direção
+      está no cabeçalho; o produto (escala de encher × Ken Burns) fica ≤ 1,4, e o Ken Burns menor que 1,12 por causa
+      dele não reprova; na foto na mesa, o produto conta o 1,03 do assentamento;
+    - **deslize pela borda, antecipação ou viagem de câmera pela mesa, mergulho na foto ou na folha, still com
+      sangria** são as linguagens B e C, que o Lucas não escolheu: reprova (`motion`).
   - DECISÃO DO LUCAS PENDENTE: norte para cima ou órbita. Até lá, julgue pelo ofício (deslocamento contínuo),
     sem reprovar a falta de giro quando a rota ou o território carregam o quadro o tempo todo.
 - **cadencia** (identidade.md §4.3):
@@ -193,10 +238,12 @@
     com `lugar_na_origem: null`, reprova (midia.md §2.7). O REGISTRO sem rótulo de lugar sobre esse arquivo não
     reprova pela falta dele (identidade.md §5 pede o rótulo, mas a origem não o sustenta): declare no laudo.
   - **o aviso do ano da foto** (Lucas, 27/09/2026; identidade.md §6): a foto ou o retrato com `aviso_de_ano: true`
-    no veredito do conferente que casa com ele leva `Photo from <ano>` durante todo o tempo em que aparece.
-    O ano é o do `data_na_origem`, o texto tem 84 px ou mais e fica fora da faixa de crédito
+    no veredito do conferente que casa com ele leva `Photo from <ano>` durante todo o tempo em que aparece assentado.
+    Do vídeo 2 em diante, o aviso entra 150 ms depois de a foto assentar (identidade.md §4.4, "A mão que arruma", e
+    §6, "O aviso"), salvo quando a voz o convoca antes: o quadro da chegada sem o aviso não reprova; no Juneau, com a
+    foto. O ano é o do `data_na_origem`, o texto tem 84 px ou mais e fica fora da faixa de crédito
     (`data-qc-aviso-ano`). Reprova:
-    - a foto sem o aviso;
+    - a foto assentada sem o aviso;
     - o aviso com outro ano;
     - o aviso só no crédito;
     - o aviso sobre foto com `aviso_de_ano: false`, porque é afirmação falsa.
@@ -213,8 +260,9 @@
 - **Mapa sem `© MapTiler © OpenStreetMap contributors` na tela**, em qualquer quadro em que o mapa apareça
   (`fonte`).
   - É o contrário da roupa do Top10, e o próprio ofício concorda: atribuição segue a licença.
-  - O crédito: 76 px, na faixa abaixo de y = 1880, legível, com `data-qc-credito="mapa"` (identidade.md §6;
-    CLAUDE.md).
+  - O crédito: 56 px (76 no Juneau), na faixa abaixo de y = 1880, legível, com `data-qc-credito="mapa"` (identidade.md
+    §6 e §4.1, "Crédito a 56 px"; CLAUDE.md). A marca de mapa só nele, na própria linha, nunca no contêiner que guarda
+    também o crédito de uma foto (§3).
   - Geometria do OpenStreetMap sem `© OpenStreetMap contributors` reprova. Com a linha da MapTiler, já está
     coberta.
 - **Crédito na tela para domínio público** (NASA, Landsat/USGS, NARA, Natural Earth, obra do governo federal):
@@ -243,7 +291,7 @@
 - **Foto do governo do Estado do Alasca ou de jornal**, inclusive de agência (AP, Getty), que não é retrato
   de pessoa citada: entra citando a fonte (Lucas, 26/09/2026; midia.md §7.5).
   - **Sem o crédito na tela**, reprova (`fonte`). O crédito é a fonte como a origem a credita:
-    `<author> / <outlet>`, ou só o veículo ou o órgão, em 76 px na faixa de crédito.
+    `<author> / <outlet>`, ou só o veículo ou o órgão, em 56 px (76 no Juneau) na faixa de crédito.
   - Sem a procedência (URL, data, autor e veículo ou órgão, o que a origem diz sobre uso), reprova
     (`fonte`). Foto de agência sem o aviso de Content ID na procedência também.
   - Foto Reuters reprova (`fonte`): o portão de procedência a veta (midia.md §7.4, item 2).

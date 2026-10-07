@@ -96,6 +96,14 @@ Os cinco modelos são os de identidade.md §5.
 
 - **Mapa seguido de mapa não é troca de plano**: é a mesma viagem de câmera (identidade.md §4.4). Beat
   de mapa que só move a câmera para o próximo lugar é `mapa`, e o `porque` diz "a câmera anda".
+- **A mão que arruma** (Lucas, 07/10/2026: "movimento A"; identidade.md §4.4, "A mão que arruma"; do vídeo 2 em
+  diante). O movimento das cenas de mesa custa tempo que a sua partitura reserva: a câmera da folha chega 0,3 s antes
+  da primeira palavra do trecho e para enquanto o grifo corre (o beat de `documento_real` com grifo conta isso no
+  `dur`); a passagem de um objeto da mesa ao próximo sem corte ("a mesa se arruma") leva uns 1,65 s, do rótulo que sai ao
+  fim do pouso, com as etapas sobrepostas (BRIEF §D.A, transição, 0,50–2,15 s: rótulo sai, levantar, luz volta, mesa
+  vazia, o próximo pousa); o rótulo e o aviso do ano entram 150 ms depois de o objeto assentar, salvo
+  quando a voz os convoca antes. Nenhum beat pede deslize, antecipação, viagem de câmera pela mesa nem mergulho: as
+  linguagens B e C não entraram. O Juneau fica como está.
 - **Pessoa nomeada** → `foto_real` com nome completo e cargo (identidade.md §5), de acervo aberto ou
   oficial. **Evento real específico** → registro daquele evento, com data e local conferidos, nunca de
   banco pago (midia.md §1).

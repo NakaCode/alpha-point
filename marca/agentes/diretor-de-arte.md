@@ -73,9 +73,20 @@ por dentro desse mapa**: do mundo ao estreito, do estreito à foto do porto, do 
   escolher o arco, a fala de lugar, rota, distância, território ou posição relativa vai ao mapa antes do
   B-roll genérico e da prancha. Sem forçar mapa em fala que não é sobre espaço.
 - A `tecnica` fala nas medidas da casa (identidade.md §4.4): viagem de mapa de **1,5–3 s**, easing cúbico
-  de entrada e saída; foto parada com Ken Burns de **1,00 → 1,12 em 6 s**, linear; rótulo entra em
+  de entrada e saída; foto parada com Ken Burns de **1,00 → 1,12 em 6 s**, linear (do vídeo 2 em diante, na foto que
+  enche a tela a mais de 1,25 vez, ele termina em 1,4 ÷ a escala de encher, e o produto fica ≤ 1,4: identidade.md
+  §4.4); rótulo entra em
   **300 ms** (opacidade + 24 px de subida); território se preenche em **500 ms**; o anel pulsa duas vezes
   e para.
+- **A mão que arruma** (Lucas, 07/10/2026: "movimento A"; identidade.md §4.4, "A mão que arruma", e §5; o BRIEF é o
+  seu, `out/juneau/_tmp/movimento/BRIEF.md`, §0, §0b e §A). Do vídeo 2 em diante, a `tecnica` das cenas de mesa fala
+  nesses termos: assentamento (1,03 → 1,00, uma vez), sombra solta, luz com 120 ms de atraso, a câmera parada durante
+  o grifo (chegando 0,3 s antes), o Ken Burns com direção (até 80 px rumo ao assunto, que **você nomeia**: "rumo à
+  torre"), "a antiga fica, a luz escolhe" e o levantar. O Ken Burns com direção vale também na `tecnica` da cena de
+  REGISTRO com foto em tela cheia, desde o primeiro quadro, e não só na de mesa: nomeie a direção ali também
+  (identidade.md §4.4). Diga atrás de qual objeto a luz fica e para onde ela vai quando a mesa se arruma. **B e C não
+  foram escolhidas**: nenhum deslize, antecipação, viagem de câmera pela mesa, mergulho nem still com sangria entra na
+  `tecnica`. O Juneau fica como está.
 - **Picos por vídeo:** DECISÃO DO LUCAS PENDENTE (o canal não tem número). Candidatos naturais: a
   abertura (a contradição dos primeiros 15 s, voz.md §1), as cenas onde o **"Livro-razão da promessa"**
   de `roteiros/<proj>/roteiro-editor.md` diz que a promessa é paga, e o fecho. Declare quantos escolheu e

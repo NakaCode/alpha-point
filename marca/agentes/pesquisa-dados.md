@@ -107,7 +107,8 @@ já tem.
 - **O hedge da voz fica na tela** (`almost 3 million`; voz.md §1), e a tela não afirma mais que a fonte:
   os 57 % de 1974 são dos votos, não "57% of Alaska voters" (`roteiros/juneau/aprovacao.md`).
 - `fonte`, `legenda` e `texto_para_tela` vão à tela: em inglês. A `fonte` é o nome da instituição que
-  entra no crédito `Source: <institution>, <year>` (identidade.md §7), em 76 px na faixa de crédito. A
+  entra no crédito `Source: <institution>, <year>` (identidade.md §7), em 56 px na faixa de crédito (Lucas,
+  07/10/2026; identidade.md §4.1, "Crédito a 56 px"; 76 no Juneau). A
   `nota` é da casa: em português.
 
 ## 4 · Como o dado aparece (identidade.md §2, §4.1, §5) — para quem desenha
@@ -116,7 +117,7 @@ já tem.
   `--contraparte`, do terceiro ator em diante em `--neutro`, e o eixo em `--tinta-escura` a 60 %.
 - **Vermelho contra azul como dois lados: proibido** (para o público dos EUA é cor de partido). `--tensao`
   é zona de risco ou perda, nunca a cor de um lado.
-- Número-herói 360 px (teto 560, até 5 palavras), rótulo 128, eixo e legenda 84, crédito 76.
+- Número-herói 360 px (teto 560, até 5 palavras), rótulo 128, eixo e legenda 84, crédito 56 (76 no Juneau).
 - Na `nota`, diga qual série é do protagonista quando o espelho não disser.
 
 ## 5 · Quando a narração e a fonte divergem

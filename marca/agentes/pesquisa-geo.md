@@ -110,6 +110,21 @@
   - relevo: Copernicus DEM, USGS 3DEP (o Alasca a 5 m), GEBCO e ETOPO. O SRTM e o NASADEM param em 60°N;
   - cada uma com o crédito que a licença dela pede;
   - não servem: GADM, UN SALB e Eurostat GISCO (não comerciais).
+- **Mapa antigo digitalizado como geometria de tela** (Lucas, 07/10/2026: "mapa antigo sim"; identidade.md §6, "Mapa
+  antigo digitalizado como geometria de tela"). O contorno traçado de um mapa antigo entra como geometria quando as três
+  coisas valem juntas: domínio público **provado** (lido na origem e gravado na procedência, com o sha256 da folha);
+  georreferência por **pontos de controle independentes** (do TIGER, do PLSS, de folha do USGS), com o resíduo do ajuste
+  e a validação cruzada, **ou pela própria fonte oficial** (as folhas do USGS, que o USGS georreferenciou; aí a
+  incerteza é a de leitura do traço na escala da folha e a diferença medida contra outra folha ou fonte independente, e
+  vale a maior das duas); e a **incerteza medida e declarada** em `out/<proj>/_pesquisa/pauta-geo.md` e no
+  `pauta-geo.json`, por região da folha, com as conferências contra fonte
+  independente. Sem crédito na tela (identidade.md §7); o crédito que a coleção pede vai na descrição. Mapa com licença
+  fechada ou não lida, ou sem a incerteza medida, não entra; a folha como imagem é do `pesquisa-imagens`, pelo
+  `midia.md`. O que a folha não fecha não se inventa: vai como linha aberta, e o relatório diz. No vídeo 2, é assim que
+  entraram a folha de Hamlin (1916), com ±50 m ao norte de 33,86 N e ±150 a ±200 m ao sul, depois da correção do sudeste;
+  e as do USGS (1896, 1903 e 1923), georreferenciadas pelo próprio USGS, com ±4 a ±11 m de leitura (`pauta-geo.md`, "As
+  camadas"); a folha de 1896 (1:62.500) põe Deadman's Island a ~240 m da de 1923 (`pauta-geo.md`, fim da "Correção do
+  sudeste de Hamlin"), e é isso que limita a câmera sobre os traços de 1896.
 
 ## 4 · O rótulo (identidade.md §3, §4.1, §7)
 
@@ -129,7 +144,8 @@
 - **A base MapTiler** leva `© MapTiler © OpenStreetMap contributors` na tela durante todo o mapa: isso é
   do `mapista`.
 - **Copernicus Sentinel**, se um dia entrar: `Contains modified Copernicus Sentinel data <ano>`.
-- O crédito entra em 76 px, na faixa abaixo de y = 1880, de x = 200 até antes de x = 1720.
+- O crédito entra em 56 px (Lucas, 07/10/2026; identidade.md §4.1, "Crédito a 56 px"; 76 no Juneau), na faixa abaixo
+  de y = 1880, de x = 200 até antes de x = 1720.
 
 ## 6 · Quando não há geometria real
 
@@ -143,6 +159,8 @@ reportado**,
 com o que existe de mais próximo (a divisão de nível acima; a figura de um documento oficial, que vira
 DOCUMENTO pelo `pesquisa-documentos`). Figura de documento do Estado do Alasca não é domínio público
 automático: só vai à tela com permissão de uso clara, conferida e gravada (Lucas, 26/09/2026; midia.md §7.1).
+Antes de dar bloqueio por falta de geometria histórica, olhe o caminho do mapa antigo em domínio público (§3): desde
+07/10/2026 ele é geometria real quando a incerteza está medida e declarada.
 
 ## 7 · Decisões do Lucas que tocam o ofício
 

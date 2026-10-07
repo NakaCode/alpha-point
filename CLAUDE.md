@@ -89,8 +89,10 @@ produz o master. O deste canal nasce assim:
    - **O vídeo 2 vai no ElevenLabs v4** (Lucas, 07/10/2026: "Quero fazer um novo vídeo do zero, com um novo tema, hook de início
      mais "forte" e intrigante, utilizando Elevenlabs v4"). A API lista `eleven_v4` ("Our fastest and most emotive model") e
      `eleven_v4_turbo`, com até 10.000 caracteres por pedido (o v3 aceita 5.000), conferido em 07/10 por `GET /v1/models`, sem gasto.
-     A voz e os ajustes no v4 saem do teste às cegas acima, dentro dos 15.000 créditos do vídeo. O `canal.json` › `narracao` continua no
-     v3 até o teste decidir, e o `narrar.mjs` da pré-v1 ainda não foi provado com o v4.
+     A voz e os ajustes no v4 saem do teste às cegas acima, dentro dos 15.000 créditos do vídeo. **Feito em 07/10/2026**: o `canal.json`
+     › `narracao` está no v4 (a mesma voz, stability 0,5, pausa 0,25 s; o porquê em `narracao_v4_decidido`), e o `narrar.mjs` da pré-v1
+     narrou o vídeo 2 inteiro no v4 (`out/los-angeles/_pesquisa/narracao-conferencia.md`). A voz fala a ~184 palavras/min no v4, acima
+     dos 150–160 da marca; o Lucas ouviu e aceitou (07/10/2026: "ritmo ok"). Mais devagar pediria uma voz nova (o v4 ignora velocidade).
    - **Como se gera** (decidido pelo Lucas em 25–26/09): **pela API**, com
      `node C:\projetos\regie-v1\src\ferramentas\narrar.mjs <proj>`, **um pedido por parágrafo**. O roteiro fica em
      `out/<proj>/roteiro.md`, com parágrafos separados por linha em branco. Voz, modelo e ajustes vêm de
@@ -288,6 +290,19 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    **A base do Juneau é a MapTiler** (o Lucas decidiu em 26/09: "será o maptiler"): `canal.json` › `mapa.perfil:
    "maptiler"`, que o `preparar-cena` lê. O Landsat fica como teste. Toda cena de mapa leva o crédito
    `© MapTiler © OpenStreetMap contributors` na tela, mais a linha na descrição.
+   **O vídeo 2 também vai na MapTiler** (Lucas, 07/10/2026, depois de ver que 24 das 56 cenas são mapa: "pode seguir com maptiler
+   (quero diminuir o tamanho dos créditos num geral)", e logo depois "Quero reduzir para 56px"). O crédito de todo tipo passa de 76 a
+   56 px no palco 4K, do vídeo 2 em diante; o Juneau fica com 76. O piso do motor é 72 no crédito que não é de mapa e 40 no de mapa
+   (`data-qc-credito="mapa"`): o caminho da reprovação do `qc-tamanho` a 56 px está em `marca/identidade.md` §4.1. O contador da
+   MapTiler se anota antes e depois de cada render de mapa, como no Juneau.
+   **O Juneau, depois dos 56 px** (revisão da marca, 07/10/2026): o `tokens.css` mudou, e 44 das 56 cenas do Juneau leem
+   `var(--fs-credito)` sem override.
+   - Nada de `qc-cena out/juneau` no projeto inteiro: com o `hash_marca` novo, ele re-mediria as 56 cenas, reprovaria o crédito a 56
+     e gravaria `ok:false` sobre clipes certos a 76 (e pediria tiles nas 17 de mapa, com a pré-carga).
+   - Portão e render do Juneau, só em cena refeita, com `:root { --fs-credito: 76px; }` num `<style>` depois do `<link>` do
+     `tokens.css` (identidade §4.1). O carimbo `.mp4.de-html` guarda só o sha1 do HTML: um render a 56 sairia com carimbo válido.
+   - A linha do tempo serve o `tokens.css` ao vivo: nela, o Juneau aparece com o crédito a 56, que não é o entregue.
+   - Pôr o override nas 44 cenas de uma vez muda o sha1 de todas e pede render novo (MapTiler nas de mapa): não sem o Lucas.
 8. **XML do Premiere** pelo `finalizar.mjs`, primeiro com `--sem-trilha`. Será a primeira abertura real dele no
    Windows.
 9. Do vídeo 2 em diante, **narração pela API** com `narrar.mjs` (mesma voz, modelo, estabilidade e blocos).
@@ -692,6 +707,9 @@ robô, termos e compra. As quatro respostas:
   - algum texto ou foto pequeno demais para o celular?
 - **O que faz com o achado:** um cético tenta derrubar cada um. O que sobra vai ao `editor-de-arte` ou ao `mapista`
   como defeito, ou ao Lucas, se mexer em regra da marca.
+- **O crédito a 56 px não é achado** (do vídeo 2 em diante): é decisão do Lucas, de 07/10/2026 ("Quero reduzir para 56px"). No
+  celular deitado, em tela cheia, ele fica com uns 10 pt (a Apple recomenda 11 no mínimo); a conta foi dita ao Lucas no chat em 07/10/2026, e a decisão é dele.
+  Crédito menor que 56, ou sem contraste, continua achado.
 
 ## A linha do tempo pré-render (desde 02/10/2026)
 

@@ -22,7 +22,10 @@
      (google/fonts, commit 23e54b51, sha256 conferido). Os url() abaixo são RELATIVOS a este arquivo:
      o Chrome os resolve a partir de marca/, qualquer que seja a pasta da cena.
    - Os pisos que reprovam (260/104/72/72) são do ofício; os portões da pré-v1 os leem daqui
-     (template/scripts/lib/marca-tokens.mjs lê --fs-* e --piso-*), e a marca só pode SUBI-los.
+     (template/scripts/lib/marca-tokens.mjs lê --fs-* e --piso-*), e a marca só pode SUBI-los. A única
+     exceção é o CRÉDITO, a 56 px desde 07/10/2026 (Lucas: "Quero reduzir para 56px"): o --piso-credito
+     abaixo diz 56, o portão continua cobrando 72 (e 40 no crédito de mapa), e a reprovação que é só isso
+     vira exceção registrada do canal (identidade §4.1, "Crédito a 56 px").
    - Os NOMES DO CANAL (--fundo, --painel, --papel, --tinta, --tinta-escura, --rotulo, --destaque,
      --contraparte, --neutro, --tensao) são os de verdade. Os nomes da pré-v1 (--texto, --sec,
      --acento, --dado, --geo, --alerta, --grifo, --linha) existem só como APELIDOS que apontam para
@@ -151,7 +154,10 @@
   --fs-fala:    280px;   /* fala citada */
   --fs-rotulo:  128px;   /* inclui NOME DE LUGAR */
   --fs-eixo:    84px;    /* eixo e legenda (a legenda de relação da prancha também) */
-  --fs-credito: 76px;
+  --fs-credito: 56px;    /* 56 desde 07/10/2026 (Lucas: "pode seguir com maptiler (quero diminuir o tamanho dos créditos
+                            num geral)" e, logo depois, "Quero reduzir para 56px"); era 76. Vale do vídeo 2 (los-angeles) em
+                            diante, para todo crédito: foto, documento, vídeo, dado e mapa. O Juneau fica com 76: cena dele
+                            refeita declara --fs-credito: 76px no próprio HTML (identidade §4.1, "Crédito a 56 px"). */
 
   /* ---- FOLHA DE DOCUMENTO (identidade §5, Lucas, 27/09/2026) ----
      Fora do padrão --fs-* de propósito: o portão lê os papéis --fs-<papel> da lista dele, e a folha não é
@@ -161,13 +167,20 @@
   --doc-margem-rasgo: 240px; /* branco mínimo entre a última linha e a borda rasgada: nada se corta */
   --doc-inclinacao: 1.5deg;  /* a folha fica torta até isto, para um lado ou para o outro */
 
-  /* ---- TAMANHO · pisos que reprovam (ofício; a marca não os baixa) ---- */
+  /* ---- TAMANHO · pisos que reprovam (ofício; a marca não os baixa, fora o crédito, abaixo) ---- */
   --piso-heroi:   260px;
   --piso-titulo:  260px;
   --piso-fala:    260px;
   --piso-rotulo:  104px;
   --piso-eixo:    72px;
-  --piso-credito: 72px;
+  --piso-credito: 56px;  /* O piso da MARCA para o crédito, desde 07/10/2026 (Lucas: "Quero reduzir para 56px"). O PORTÃO
+                            não lê isto para baixo: o qc-tamanho fica com o MAIOR entre o ofício e este valor
+                            (scripts/lib/marca-tokens.mjs › pisosEfetivos), então continua cobrando 72 px no crédito de
+                            foto, documento, dado e vídeo, e 40 px no crédito de MAPA (data-qc-credito="mapa", nele ou num
+                            ancestral; docs/CREDITO-DE-MAPA.md §6.2 da pré-v1, que recomenda 46). Crédito de mapa a 56
+                            passa; o outro crédito a 56 reprova no qc-tamanho, e essa reprovação, quando é SÓ ela, vira
+                            exceção registrada em out/<proj>/qc/_excecoes-portao.json, cena a cena, sem nova pergunta ao
+                            Lucas (identidade §4.1, "Crédito a 56 px"). */
 
   /* ---- TAMANHO · tetos, que também reprovam (identidade §4.1) ---- */
   --teto-heroi:   560px;
@@ -175,7 +188,7 @@
   --teto-fala:    340px;
   --teto-rotulo:  160px;   /* vale para nome de lugar: é rótulo, nunca herói */
   --teto-eixo:    104px;
-  --teto-credito: 88px;
+  --teto-credito: 64px;   /* era 88; desceu com o alvo em 07/10/2026 (identidade §4.1, "Crédito a 56 px") */
 
   /* ---- PALCO E MARGEM (identidade §4.2) ---- */
   --palco-largura: 3840px;
@@ -265,4 +278,13 @@
   --mov-viagem-max: 3s;
   --mov-anel-pulso: 1.2s;         /* escala 1 → 1.8 e opacidade 1 → 0, duas vezes, e para */
   --mov-kenburns: 6s;             /* foto parada: escala 1.00 → 1.12, linear */
+
+  /* ---- MOVIMENTO · "A mão que arruma" (Lucas, 07/10/2026: "movimento A"; identidade §4.4 e §5) ----
+     Do vídeo 2 (los-angeles) em diante; o Juneau fica como está. Os números são os do BRIEF do diretor-de-arte
+     (out/juneau/_tmp/movimento/BRIEF.md, §0b e §A). Continuam dado, não animação CSS: a cena os lê e anima por
+     __renderAt(t). As linguagens B e C não entraram: nenhum token de deslize, antecipação, reenquadre ou mergulho. */
+  --mov-assentamento: 0.22s;      /* a chegada termina 1,03 → 1,00 nos últimos 200–240 ms, uma vez, sem voltar */
+  --mov-luz-atraso: 0.12s;        /* a luz da mesa segue o centro do objeto principal 120 ms atrás */
+  --mov-levantar: 0.35s;          /* o objeto sai da mesa: 1,00 → 1,04, a sombra solta cresce, opacidade 1 → 0 nos últimos 200 ms */
+  --mov-kenburns-vetor: 80px;     /* o Ken Burns da foto em tela cheia anda ATÉ isto rumo ao assunto, declarado no cabeçalho */
 }

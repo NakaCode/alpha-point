@@ -105,9 +105,47 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 | fala citada | 260 | **280** | 340 | 12 |
 | rótulo (inclui NOME DE LUGAR) | 104 | **128** | 160 | 3 |
 | eixo / legenda | 72 | **84** | 104 | — |
-| crédito / fonte | 72 | **76** | 88 | — |
+| crédito / fonte | 72 (ofício; 40 no crédito de mapa) | **56** | 64 | — |
 
 - Nome de lugar é rótulo, **nunca** herói (ofício): o teto de 160 px vale para ele.
+- **Crédito a 56 px** (Lucas, 07/10/2026, 11:3x de Brasília; do vídeo 2 em diante). Ao liberar a MapTiler no vídeo 2, ele
+  disse: "pode seguir com maptiler (quero diminuir o tamanho dos créditos num geral)" e, logo depois, "Quero reduzir para
+  56px". Antes, soube que o piso de 72 px no palco 4K vem dos portões do motor, que a marca não o baixa, e que dentro da
+  regra só caberiam uns 5 % a menos. Escolheu 56 sabendo disso.
+  - **O que vale:** todo crédito (foto, documento, vídeo, dado e mapa) a **56 px**, teto **64 px**, do vídeo 2
+    (`los-angeles`) em diante. Longo, quebra em duas linhas e nunca encolhe (§4.2). O "num geral" é dele: nenhum crédito
+    fica em 76.
+  - **A conta do motor** (`scripts/qc-tamanho.mjs` e `scripts/lib/marca-tokens.mjs`, só leitura): o piso que o portão
+    cobra é o MAIOR entre o ofício (crédito 72 no 4K) e o `--piso-credito` do `tokens.css`; a marca sobe, não desce. O
+    crédito de MAPA (`data-qc-credito="mapa"`, nele ou num ancestral: o portão usa `closest`, e a marca num contêiner
+    cobre tudo que está dentro dele) tem piso próprio de 40 px no 4K (`docs/CREDITO-DE-MAPA.md` §6.2 da pré-v1, que
+    recomenda 46). Então: o crédito de mapa a 56 **passa**; o crédito de foto, documento, dado ou vídeo a 56 **reprova**
+    no `qc-tamanho`, por 16 px.
+  - **O caminho da exceção:** a reprovação do `qc-tamanho` que é só o crédito (o texto com `data-qc-papel="credito"`,
+    medido entre 56 e 71 px) vira exceção registrada em `out/<proj>/qc/_excecoes-portao.json`, cena a cena, com a cena,
+    o portão, o sha1 do HTML, a reprovação (o texto e o px medido), a mensagem literal "Quero reduzir para 56px" e a hora
+    (07/10/2026, 11:3x de Brasília), **sem triagem e sem nova pergunta a ele**: a decisão já cobre todas. Vale para aquele
+    sha1: se o HTML mudar, o Claude central confere que a reprovação continua sendo só o crédito e grava o sha1 novo. O
+    `qc-visual` aprova citando a exceção (roupa dele, §3). Outra reprovação do `qc-tamanho` na mesma cena (um rótulo
+    pequeno, um texto sem papel) segue o caminho normal, com triagem e pergunta, e não impede a exceção do crédito.
+  - **O Juneau fica com 76 px, teto 88**: está entregue. Cena do Juneau refeita declara `--fs-credito: 76px` num `<style>`
+    posto **depois** do `<link>` do `tokens.css` (antes dele, perde para o 56), para não misturar dois tamanhos no mesmo
+    vídeo. O `tokens.css` já diz 56, e 44 das 56 cenas do Juneau leem `var(--fs-credito)` sem o override (medido em
+    07/10/2026; as 56 têm o `<link>` antes do primeiro `<style>`, então o override vale nelas). Todo render do Juneau, de
+    cena refeita ou com `--forcar`, só depois de o HTML declarar o override: o carimbo `.mp4.de-html` guarda só o sha1
+    do HTML e a resolução, e um render a 56 sem o override sairia com carimbo válido. Nada de `qc-cena out/juneau` no
+    projeto inteiro: o `hash_marca` dos 56 carimbos é o da marca antiga, e a rodada re-mediria as 56 cenas (17 de mapa,
+    que com a pré-carga pedem tiles), reprovando no tamanho até 44 delas sobre clipes certos a 76. Portão e render do Juneau só na cena
+    refeita, com o override. E a linha do tempo serve o `tokens.css` ao vivo: nela o Juneau mostra o crédito a 56, que
+    não é o entregue, e não serve para conferi-lo.
+  - **No celular**, a 56 px no 4K o crédito fica com 28 px no 1080p e uns 10 pt no iPhone deitado em tela cheia (a
+    Apple pede 11 pt no iOS; a 76 eram 13,7), pela conta do `CREDITO-DE-MAPA.md` §6.2. É o tamanho que ele escolheu: a
+    revisão de espectador não o dá como achado.
+  - **As marcações** (roupas do `editor-de-arte` §4 e §9, do `mapista` §5 e do `qc-visual` §3): todo crédito leva
+    `data-qc-papel="credito"` (sem ele, o `qc-tamanho` só avisa e o `portao-mapa rodape` não mede o contraste: é verde
+    comprado), e `data-qc-credito="mapa"` vai no próprio elemento da linha do crédito de mapa (ou num ancestral que só
+    contenha ela), nunca no contêiner comum dos créditos nem no `#palco`: marcado o contêiner, o crédito da foto ao lado
+    passaria a 56 sem reprovar, e seria verde falso.
 - Pílula do rótulo: `--rotulo`, cantos de 12 px, respiro interno de 24 px × 40 px.
 - **O nome dentro do território de contexto** (04/10/2026, com as cores de contexto) é o segundo tratamento de texto
   sobre mapa, ao lado da pílula: caixa alta, Inter 700, 104–128 px, `--tracking-lugar`, letra em `--tinta`, contorno
@@ -137,9 +175,15 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 
 - Margem de segurança: **200 px** nas laterais, **160 px** no topo.
 - Faixa inferior, **y > 1880**: só crédito, alinhado à esquerda em x = 200 e terminando antes de
-  x = 1720. Crédito mais longo quebra em duas linhas de 76 px e nunca encolhe: é o caso da linha do
+  x = 1720. Crédito mais longo quebra em duas linhas de 56 px (76 no Juneau; §4.1, "Crédito a 56 px") e nunca encolhe: é o caso da linha do
   Shutterstock e da do Copernicus. O centro dessa faixa fica livre para a legenda automática do YouTube
   e para a barra do player.
+- O crédito fica **fora da câmera** (não escala nem deriva com ela): entra em 300 ms no primeiro quadro em que o asset
+  aparece e fica até o último; o crédito de mapa, não: ele já está inteiro no primeiro quadro em que o mapa aparece e
+  fica até o último (§6; a licença da MapTiler o pede em todo quadro de mapa, e a s03 do Juneau já fazia assim). Dois
+  assets no quadro dão duas linhas empilhadas, e a do antigo só sai quando o asset dele sai (Lucas, 07/10/2026,
+  "movimento A"; BRIEF do movimento, §0). Com "a antiga fica" (§5), as duas linhas são o caso comum da troca de foto na
+  mesa.
 - **Canto reservado**: caixa de **400 × 400 px** no canto inferior direito, sem texto nem elemento-chave.
   É onde o YouTube sobrepõe a marca-d'água do canal.
 - **Teto de elementos simultâneos: 6. Alvo: 4 a 5.**
@@ -175,11 +219,71 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 - **Mapa seguido de mapa é UMA viagem de câmera** (`fundir: true`), nunca um corte. Corte seco só
   na troca de regime: mapa → registro, registro → prancha.
 - Viagem de mapa: **1,5–3 s**, easing cúbico de entrada e saída.
-- Foto parada: Ken Burns de escala 1,00 → 1,12 em 6 s, linear.
+- Foto parada: Ken Burns de escala 1,00 → 1,12 em 6 s, linear. Do vídeo 2 em diante, na foto que enche a tela a mais de
+  1,25 vez, ele termina em 1,4 ÷ (a escala de encher), e não em 1,12: o produto das escalas fica ≤ 1,4 ("A mão que
+  arruma", abaixo).
 - Rótulo entra em **300 ms** (opacidade + 24 px de subida), ease-out. Preenchimento de território:
   **500 ms**.
 - **O anel (o ponto)**: círculo de **56 px** de diâmetro, traço de **10 px** em `--destaque`, e um pulso
   que vai de escala 1 → 1,8 e opacidade 1 → 0 em **1,2 s**, duas vezes, e para.
+- **A mão que arruma** (Lucas, 07/10/2026: "movimento A"; do vídeo 2 em diante, e o Juneau fica como está). Em 07/10,
+  04:3x, ele pediu "um pouco mais de motion design nas 'páginas sobre a mesa' e em alguns outros momentos/elementos do
+  vídeo". O `diretor-de-arte` escreveu três linguagens (`out/juneau/_tmp/movimento/BRIEF.md`: A, "a mão que arruma"; B,
+  "a câmera anda pela mesa"; C, "o dossiê, num plano só"), e ele escolheu a A. **B e C não entraram**: nada de deslize
+  pela borda, antecipação de câmera, viagem de câmera pela mesa, mergulho na foto ou na folha, nem still de satélite com
+  sangria. A ideia da A: tudo que já existe, mas cada objeto tem peso: chega, assenta, faz sombra, e a luz chega um
+  instante depois; a câmera para quando se lê. Nenhum objeto muda de lugar, nenhuma câmera viaja. Os números
+  (`tokens.css`, "A mão que arruma"; `eo` e `eb` são o cúbico de saída e o de entrada e saída do RIG, sem easing novo além
+  do ease-in cúbico do levantar, `p => p*p*p`, a metade de entrada do `eb`, que o RIG não traz pronto):
+  - **o assentamento**: o objeto (folha, foto impressa, retrato do card) chega 3 % maior e assenta no tamanho final nos
+    últimos 200–240 ms da chegada, em `eo`: a curva de escala termina 1,03 → 1,00 (`--mov-assentamento: 0.22s`), **uma
+    vez, sem voltar**. Não é oscilação: é um ajuste de 3 % que termina. Na foto impressa, o produto das escalas (§5: até
+    1,4 vez o arquivo) conta o 1,03. A folha desce 420 px em 0,80 s, girando de −1,5° a +1,2°, e assenta em 0,56–0,80 s;
+    a foto pousa como hoje (desce 240 px, −2° → −1,5°), com a escala indo de 0,72 a 1,03 até 0,33 s e assentando em 1,00
+    até 0,55 s (220 ms, `--mov-assentamento`; a demo da A chegava a 1,03 em 0,40 s, e os 150 ms de assentamento ficavam
+    fora da faixa: BRIEF §D.A); a fita cola em 300 ms, como hoje;
+  - **a sombra solta**: a sombra é um elemento próprio (a `.folha-sombra`; na foto, um irmão com a silhueta do cartão),
+    com **desfoque fixo**, e o que anima é só `transform` (translateY e escala) e `opacity`. No ar: translateY +64 px,
+    escala 1,05, opacidade 0,35; assentada: +12 px, 1,00, 0,80. **Nunca se anima o raio do desfoque**: é o único custo
+    de render que pesa. Ela entra na chegada e no levantar;
+  - **a luz com atraso**: a poça de luz da mesa (§5) segue o centro do objeto principal com **120 ms** de atraso
+    (`--mov-luz-atraso`): `luz(t) = centro(t − 0,12 s)`, e antes disso a posição inicial. A luz "chega depois";
+  - **o levantar**: o objeto sai da mesa como se uma mão o pegasse: escala 1,00 → 1,04 (o ease-in cúbico, acima), a sombra solta cresce
+    (+12 → +64 px, 0,80 → 0,35), opacidade 1 → 0 nos últimos 200 ms; **350 ms** ao todo (`--mov-levantar`). O rótulo
+    preso a ele sai 300 ms antes (opacidade + 24 px para baixo);
+  - **o Ken Burns com direção**: a foto em tela cheia continua 1,00 → 1,12 em 6 s, linear, e a janela **anda até 80 px
+    rumo ao assunto da foto** ao longo dos 6 s (`--mov-kenburns-vetor`), com a direção escrita no cabeçalho da cena
+    ("rumo à torre"). O produto (a escala de encher × o Ken Burns) fica ≤ 1,4: na foto que enche a tela a mais de 1,25
+    vez (menos de 3.072 px de largura), o Ken Burns termina em 1,4 ÷ (a escala de encher), e não em 1,12 (a régua de
+    2.743 px da tela cheia, §5, fica). Na foto na mesa, a câmera do RIG continua como hoje (push-in e deriva),
+    e o push-in para nos 250 ms antes do corte (abaixo);
+  - **a câmera para durante o grifo**, chegando 0,3 s antes (§5, "A folha de documento");
+  - **"a antiga fica, a luz escolhe"** na troca de foto na mesa, e o **levantar** como saída (§5, "Uma ou mais na mesma
+    mesa");
+  - **o rótulo de lugar e o aviso do ano** entram 150 ms depois do assentamento do objeto (300 ms, opacidade + 24 px),
+    salvo quando a voz os convoca antes: aí entram no tempo da voz, como o "1914" da s09 do Juneau. No card de pessoa, o
+    nome entra 150 ms depois do assentamento (300 ms), o cargo 120 ms depois do nome, e o cartão da fala na palavra;
+  - **o número que a voz diz** entra na palavra: 300 ms, opacidade + 24 px e escala 1,04 → 1,00 (`eo`). Sem contagem;
+  - **o texto parado enquanto se lê**: todo movimento que leva texto **que já está na tela** (a câmera sobre a folha, o
+    objeto com o grifo, a fala citada já posta) termina pelo menos **0,25 s antes da primeira palavra que o lê**, e nada
+    de texto girando, tremendo ou desfocado enquanto se lê (BRIEF do movimento, §0). A entrada do texto não conta: o
+    número e o cartão da fala entram na palavra, e o rótulo e o aviso do ano 150 ms depois do assentamento, como acima, e
+    daí em diante ficam parados;
+  - **"a mesa se arruma"**, a passagem de um objeto da mesa ao próximo sem corte: o rótulo sai (300 ms), o objeto levanta
+    (350 ms), a luz volta ao centro da mesa (0,6 s, `eb`), a mesa fica vazia 300 ms, o próximo pousa (0,8 s). As etapas
+    se sobrepõem, não se somam (BRIEF §D.A, transição: 1,65 s do rótulo que sai ao fim do pouso). Sem viagem de câmera: o
+    still de satélite com 56 px de sangria basta;
+  - **mesa ↔ mapa e mesa ↔ footage ou outra cena em tela cheia** (a passagem entre cenas): corte seco, como já era (a
+    troca de regime, acima), com **250 ms de repouso no fim da cena de mesa**: nesses 250 ms nada se move além da deriva
+    do RIG (o push-in também para, e a retomada da folha termina antes). Dentro da mesma cena, a foto que vai da mesa à
+    tela cheia sobe de um ponto, opaca, em 300 ms, e volta à mesa recolhendo (0,6 s, `eb`), como na s09 da demo da A
+    (BRIEF §D.A, a que o Lucas escolheu; §5). Isso não é corte e não pede os 250 ms de repouso.
+
+  O que a A não muda já é regra e não se repete aqui: texto no ar ≥ 2,0 s (§4.3); nada por cima da foto, o produto das
+  escalas ≤ 1,4, a inclinação assentada de foto ≤ 2° e de folha ≤ 1,5° (§5); o crédito fixo na faixa dele, fora da câmera
+  (§4.2); o teto de 6 elementos e 3 blocos (§4.2); nenhum efeito de template (glitch, flash, partículas, bounce); tudo determinístico por `__renderAt(t)`, sem
+  `@keyframes` nem `transition`; o still de satélite não anda sozinho e nunca vira mapa (§5). O mapa tem a regra própria
+  (acima, e "Mapa nunca fica parado", §5). A animação desenhada de mecanismo é outra decisão.
 - **O movimento da chamada (CTA)** (Lucas, 01/10/2026; `marca/cta.md`). É diferente do rótulo em três pontos:
   - **a entrada**: **360 ms**, com a opacidade em curva suave (smoothstep) e **24 px** de subida em ease-out (o rótulo
     tem 300 ms em ease-out). O primeiro e o último quadro visível ficam abaixo de 5 % de opacidade, sem estalo. Na
@@ -218,7 +322,8 @@ que mais muda o 'chapado'. O azul fica um pouco mais acinzentado. Libera o degra
   tabela dos modelos). A pergunta disse "as cenas sem mapa", e a PRANCHA é uma delas. O DADO continua em `--papel`.
   O MAPA e o REGISTRO em tela cheia continuam sem degradê, véu ou vinheta (§6).
 - **A luz é a única exceção ao "sem degradê"** (`--degrade: none` nos tokens). Ela segue o objeto principal: o centro
-  da poça fica atrás dele, e anda com ele quando ele anda.
+  da poça fica atrás dele, e anda com ele quando ele anda. Do vídeo 2 em diante, anda **120 ms atrás** dele (§4.4, "A
+  mão que arruma"); no Juneau, sem atraso.
 - **As duas ficam por baixo de tudo:** da foto, da fita, da folha, do card e de todo texto. Textura ou luz por cima
   de uma foto é filtro sobre a foto, e a regra da foto impressa proíbe isso (logo abaixo). Na s09 do Juneau, a
   textura de antes estava num `::after` por cima de tudo e foi corrigida (`APRENDIZADOS.md` item 53).
@@ -267,7 +372,8 @@ Acredito também que está perfeita deste modo". Logo depois: "Desconsidere o Ju
 - **Onde:** onde valia a mesa de 30/09 (DOCUMENTO, card de pessoa, foto impressa e PRANCHA), do vídeo 2 em diante. O
   Juneau fica com o feltro sob a luz.
 - **O que continua:**
-  - a luz é a única exceção ao "sem degradê";
+  - a luz é a única exceção ao "sem degradê", e segue o objeto principal com 120 ms de atraso (§4.4, "A mão que
+    arruma");
   - tudo fica por baixo do objeto e do texto;
   - o still, o véu e o feltro são textura: não contam como elemento (§4.2) nem como registro de mundo real;
   - o still é o lugar do vídeo, mas nada nele se lê: nenhum rótulo, ponto, divisa ou anel sobre ele.
@@ -289,7 +395,11 @@ recortar textos longos (aparentou que pode acontecer)". A folha foi corrigida, e
   - O rasgo fica só na margem em branco: pelo menos **240 px** entre a última linha e o rasgo.
   - A fita fica fora da área do texto.
   - Texto que não cabe na tela nessas medidas tem duas saídas:
-    - a câmera desce pela folha junto com a voz;
+    - a câmera desce pela folha junto com a voz. Do vídeo 2 em diante (§4.4, "A mão que arruma"), ela lê como hoje
+      (escala 1,00 → 1,08 a velocidade constante, descendo até o alvo, sem tirar o cabeçalho do quadro), **chega 0,3 s
+      antes da primeira palavra do trecho e PARA** (só a deriva do RIG) enquanto o grifo corre palavra a palavra; depois
+      do grifo, retoma 1,08 → 1,10 (`eb`), terminando 250 ms antes do corte; nesses 250 ms nada se move além da deriva.
+      No Juneau, a câmera lê a velocidade constante até o fim, como está;
     - ou a folha recua e escurece, e o trecho que a voz diz aparece ampliado ao lado, literal e com até 12
       palavras.
 - **Recriação, nunca fac-símile**: sem brasão, selo, timbre, logo ou assinatura (`midia.md` §7.1 e §7.6).
@@ -336,6 +446,15 @@ Logo depois, ele completou: "A prioridade ainda deve ser fotos grandes e com qua
     que importa de outra, e cada uma fica em até 1,4 vez o tamanho do arquivo. Cada uma leva o seu crédito e o seu
     rótulo de lugar, quando há. A disposição é do `diretor-de-arte` e do `editor-de-arte`. A composição ainda não
     tem prancha: a primeira cena assim vai ao Lucas como prévia antes de virar molde.
+  - **A troca de uma foto por outra na mesa: "a antiga fica, a luz escolhe"** (Lucas, 07/10/2026, "movimento A"; §4.4,
+    "A mão que arruma"; do vídeo 2 em diante). A nova pousa sobrepondo só a borda da antiga que não importa (até 25 % da
+    área dela, nunca a parte que importa); **a antiga fica**, e a luz vai para a nova com os 120 ms de atraso: a antiga
+    apaga por ficar fora da poça (a foto antiga não muda: nem opacidade, nem brilho, nem filtro; o que escurece é a mesa
+    em volta dela, porque a luz fica por baixo de tudo, §5). O rótulo da antiga sai 300 ms antes de a nova pousar; o crédito da antiga só sai
+    quando ela sai. Se a nova cobriria a parte que importa, a antiga **levanta** antes (350 ms). Várias na mesma mesa
+    pousam uma de cada vez, cada uma com o seu pouso (0,55 s, com o assentamento no fim), 120 ms entre o fim do pouso de
+    uma e o começo da outra; a luz fica na última a pousar. Mesa → tela cheia, dentro da mesma cena, continua como hoje
+    (sobe de um ponto, opaca, 300 ms: é troca de regime, sem corte; §4.4).
   - O `conferente-de-midia` julga cada foto. A escolha entre a mesa e o mapa, plano por plano, é do `montador`.
 - **A foto impressa**: moldura clara em `--tinta`, fita, sombra e até 2° de inclinação, sobre `--fundo`, como a foto
   do card. Na tela, fica no máximo **1,4 vez** o tamanho do arquivo.
@@ -653,7 +772,7 @@ texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para tod
     é preciso pedir à MapTiler uma licença custom.
   - **O crédito na tela:** `© MapTiler © OpenStreetMap contributors`, durante todo o tempo em que o mapa
     aparece, salvo acordo por escrito com a MapTiler. O plano pago dispensa o logo, não o crédito. O texto
-    segue §4.1 e §4.2 (76 px, faixa de crédito).
+    segue §4.1 e §4.2 (56 px desde 07/10/2026, "Crédito a 56 px"; 76 no Juneau; na faixa de crédito).
   - **O crédito na descrição:** `Mapas: © MapTiler (https://www.maptiler.com/copyright/) · © OpenStreetMap
     contributors — Open Database License (https://www.openstreetmap.org/copyright)`.
   - **As fontes:** os Termos Cloud (maptiler.com/terms/cloud/, "Limited Videos"), a página de copyright e a
@@ -738,6 +857,37 @@ relê.
 - **O que não foi perguntado**: o relatório tem outras fontes marcadas "recomendo" que a página não mostrou (entre
   elas Overture, ESA WorldCover e Maddison). Não entram por esta decisão.
 
+**Mapa antigo digitalizado como geometria de tela** (Lucas, 07/10/2026: "mapa antigo sim"). A pergunta, na página do vídeo
+2: "O contorno de 1906 pode vir de um mapa da época? Os mapas de 1850, 1906 e 1909 foram desenhados a partir do mapa oficial
+de anexações da cidade, de 1916, que é domínio público. Ele foi encaixado no terreno com precisão de 50 a 100 metros, e as
+medidas batem com o dossiê: a faixa de 1906 tem 14,84 milhas. A alternativa seria a camada do condado, que não tem licença
+aberta. Um mapa antigo digitalizado ainda não está na lista de fontes aprovadas em 27/09, por isso a pergunta."
+- **O que cobre:** o mapa digitalizado em **domínio público provado** (lido na origem e gravado na procedência),
+  **georreferenciado por pontos de controle independentes, ou pela própria fonte oficial** (as folhas do USGS, que o
+  USGS georreferenciou), com a **incerteza medida e declarada** em `out/<proj>/_pesquisa/pauta-geo.md` e no
+  `pauta-geo.json` (o resíduo do ajuste, a validação cruzada e as conferências contra fonte independente, quando o ajuste
+  é do canal; o erro de leitura do traço e a diferença medida contra outra folha ou fonte independente, quando a
+  georreferência é da fonte, e a câmera se limita pela maior das duas). O contorno traçado dele
+  vai à tela como geometria, pelo `mapista`, como a de qualquer outra fonte desta lista. O crédito na tela segue §7 e
+  este §6: mapa antigo em domínio público, **sem crédito na tela**; o crédito que a coleção pede vai na descrição.
+- **O que não cobre:** mapa com licença fechada ou não lida (a licença continua se lendo na origem, hoje); mapa sem a
+  incerteza medida (um contorno encaixado no olho não entra); e **a folha como imagem** na tela, que é outro uso e já
+  seguia o `midia.md` (§7.3, mapas históricos) e a regra da foto e do documento (§5). A decisão é sobre o contorno
+  traçado, não sobre mostrar a folha. E se o contorno leva a legenda de aproximado do ofício do `mapista` (§8): não foi
+  perguntado, e segue a DECISÃO DO LUCAS PENDENTE da roupa dele. Até lá, a câmera não se aproxima além do que a
+  incerteza declarada sustenta (roupa do `mapista`, §5).
+- **No vídeo 2** (`los-angeles`): a folha de anexações de Homer Hamlin, City Engineer, de 1916 (Library of Congress, via
+  Wikimedia Commons), para os contornos de 1850, 1899, 1906 e 1909 e a faixa, georreferenciada pelo canal sobre pontos
+  de controle do TIGER, do PLSS e do USGS; e as folhas topográficas do USGS de 1896, 1903 e 1923, georreferenciadas
+  pelo próprio USGS, para o molhe, o quebra-mar, o Long Wharf e a divisa de Terminal Island, com ±4 a ±11 m de
+  leitura (`pauta-geo.md`, "As camadas"). A folha de 1896 (1:62.500) põe Deadman's Island a ~240 m da de 1923
+  (`pauta-geo.md`, fim da "Correção do sudeste de Hamlin"), e é isso que limita a câmera sobre o molhe, as ilhas e a
+  água de 1896. A água de 1896 não tem camada: é só medida indicativa (±150 m; `pauta-geo.md`, "A água de 1886–1888").
+  A precisão de "50 a 100 metros" da pergunta ficou desatualizada no mesmo dia, pela correção do sudeste de Hamlin: a declarada hoje para os contornos de Hamlin é **±50 m ao norte de 33,86 N e ±150
+  a ±200 m ao sul** (`pauta-geo.md`, "Correção do sudeste de Hamlin"), e as medidas continuam de pé (a faixa de 1906 com
+  14,81 mi; 14,84 antes da correção). O que a folha não fecha não se inventa: a divisa de San Pedro de 1909 vai como
+  linha aberta.
+
 **Fronteira disputada**: linha tracejada e rótulo `DISPUTED`. Mostra a linha de controle de fato e
 nunca adota a reivindicação de um lado.
 
@@ -818,7 +968,8 @@ Não copia as figuras do estudo, que são do Estado."
   - **A data vem da origem**: o ano, ou a aproximação que a origem dá (`ca. 1900`, `1990s`), lido na página de
     origem e gravado na procedência. Foto sem data na origem não entra, porque o aviso não teria o que dizer.
   - **O aviso**: `Photo from 1998` (a grafia está em §7), no papel legenda de §4.1: 84 px, Inter 500. Ele fica na
-    tela durante todo o tempo da foto e fora da faixa de crédito.
+    tela durante todo o tempo da foto assentada e fora da faixa de crédito. Do vídeo 2 em diante, entra 150 ms depois de
+    a foto assentar (§4.4, "A mão que arruma"), salvo quando a voz o convoca antes; no Juneau, com a foto.
     - Na foto em tela cheia (REGISTRO), vai numa pílula `--rotulo` logo abaixo do rótulo de lugar, ou no lugar
       dele, quando não há rótulo.
     - No card de pessoa, vai na margem de baixo da foto impressa (§5).

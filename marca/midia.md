@@ -599,8 +599,8 @@ do Estado e de jornal, na 3ª (§7.5).
 - **A regra**, para a foto e para o vídeo do Estado:
   - **Crédito na tela, sempre**: a fonte como a origem a credita, o autor e o veículo, ou o órgão (ex.:
     `Jane Doe / Anchorage Daily News`; sem autor nomeado, só o veículo ou o órgão). É o formato de crédito de
-    mídia do `identidade.md` §7 sem a parte da licença, que não há. 76 px, na faixa de crédito
-    (`identidade.md` §4.1, §4.2).
+    mídia do `identidade.md` §7 sem a parte da licença, que não há. 56 px, na faixa de crédito (Lucas, 07/10/2026;
+    `identidade.md` §4.1, "Crédito a 56 px", e §4.2; 76 no Juneau).
   - **Na procedência** (`_PROCEDENCIA.json`): a URL, a data da foto (ou do vídeo) e a da conferência, o autor e
     o veículo ou órgão, e **o que a origem diz sobre uso**, copiado (ou "a origem não diz nada sobre uso"). O
     campo `licenca` leva esse texto e a base, `midia.md §7.5 (Lucas, 26/09/2026)` na foto e `midia.md §7.5
