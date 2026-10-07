@@ -70,3 +70,13 @@ recibos (`characterCost` de cada `out/los-angeles/_narracao/<chave>.json`).
     arquivo inteiro, cabeçalho incluído. A ferramenta e o `voz/trocas.md` foram corrigidos (07/10, 16:1x); a próxima rodada do
     `preparar-voz.mjs` já escreve "o do roteiro-narrador.md".
 
+- **Um ponto que faltava à escuta: o "can" do trecho 1** (07/10, 20:3x, achado pelo `redator-de-tela`). O `conferir-paragrafos.py` da
+  rodada 3 marcou REPETIU no trecho 1, aos 0:17 ("wrote that it can [[]] never"; o Whisper do parágrafo inteiro escreveu "can can"), e
+  os recortes curtos desta rodada só ouviram o trecho 18. O trecho 1 é o da rodada 1 (`FWrBuc3sqLLeDumUVK6u`), nunca refeito.
+  - **A medida aponta um "can" só:** em recorte curto (2,6, 1,4 e 4,5 s) o Whisper ouve "can never" uma vez, mas com p 0,27 a 0,33
+    (0,83 no recorte que começa no "can"); a energia tem a pausa limpa da abertura das aspas (17,32–17,60 s) e voz contínua de 17,62
+    a 18,26 s; do "can" ao "be" vão 0,65 s, contra 0,555 s no "can never be" do trecho 10 (189,17 s). Um "can" a mais pediria uns
+    0,2 a 0,25 s que não existem ali.
+  - **Quem decide é o ouvido** (a repetição é o que o Whisper erra; CLAUDE.md, ingest, "Limites do script"):
+    `out/los-angeles/_tmp/escuta/escuta-trecho1-can.mp3` (7,2 s, de 13,5 a 20,7 s da `narracao.wav` `7c7d971a27e9`), mandado ao Lucas
+    junto da `escuta-r3a.mp3`. Se ele ouvir "can can", o trecho 1 se refaz (uns 49 créditos), e o relógio e o espelho andam com ele.
