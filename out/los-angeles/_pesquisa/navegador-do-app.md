@@ -65,3 +65,11 @@ canal, com a linha de fonte (`pauta-documentos.json` › `rodada_2.recriacao`).
   download, só "Print this article". O navegador do app não salva imagem sem botão (o mesmo do Juneau,
   `out/juneau/_pesquisa/navegador-relato.md`), e baixar por script contornaria o `Disallow: /` do site. Nada foi baixado. Caminho que
   sobra: o Lucas salva a imagem no navegador dele e a manda no chat; sem isso, a s20 fica com o cartão de nome e cargo.
+- **O download do Willard**, depois do "sim" do Lucas ("Sim, baixe a linha 2"), às 20:0x. Na USC Digital Library (CHS-11375),
+  o banner de cookies ficou em "Accept essential only". O botão Download abre dois formatos, "Medium res. comp." (~800×600) e "Medium
+  res." (~1000×1000), da prancha inteira. Dois cliques no "Standard download" (o segundo pelo ponto do botão) não baixaram nada:
+  nenhum arquivo novo em Downloads nem fora dele, nenhum pedido na rede, e a página avisa que o downloader pede cookies funcionais.
+  Não aceitei cookie não essencial. E o arquivo não serviria: a prancha é vertical (a miniatura do Calisphere tem 219×300), o maior
+  formato tem uns 1000 px de altura, e o rosto do Willard, um dos 18 ou mais do oval, sairia com uns 80 a 100 px, ampliado 6 a 8
+  vezes no cartão. **Nada foi baixado.** A s18 fica com o cartão de nome e cargo (`pauta-pessoas.json` › `rodada_2b.download_usc`).
+  A aba se fechou.
