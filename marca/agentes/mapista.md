@@ -203,8 +203,9 @@ necessidade.
   (`pauta-geo.md`, "As camadas"); a folha de 1896 (1:62.500) põe Deadman's Island a ~240 m da de 1923 (`pauta-geo.md`,
   fim da "Correção do sudeste de Hamlin"), e é isso que limita a câmera sobre os traços de 1896 (o molhe, as ilhas e a
   água, que não tem camada e é só indicativa, ±150 m). Não aproxime a câmera além do que a incerteza de cada contorno
-  sustenta, e diga no report a escala máxima que usou sobre cada um. Se esse contorno leva a legenda de aproximado do ofício (§8), não foi
-  perguntado: segue a DECISÃO DO LUCAS PENDENTE acima.
+  sustenta, e diga no report a escala máxima que usou sobre cada um. **Os contornos de Hamlin no vídeo 2 vão SEM a legenda de
+  aproximado** (Lucas, 07/10/2026: "Não, só a câmera limitada (Recomendado)"; identidade.md §6): a câmera limitada pela incerteza é a garantia, e a
+  descrição do vídeo cita o mapa de 1916. Outro mapa antigo: pergunta nova.
 
 ## 6 · Câmera e modo (identidade.md §1 e §4.4)
 

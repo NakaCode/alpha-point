@@ -608,6 +608,10 @@ O que vale, em px do palco 3840×2160:
   voz e os 20 s, os botões do YouTube por cima e as áreas reservadas. É montagem de referência, não cena do pipeline.
 - **Nos próximos vídeos**, a tela final parada e escurecendo até metade do brilho, com a composição à esquerda, é a
   proposta; o que vai nela (o carimbo, a linha do preço) depende do motivo de cada vídeo, e o Lucas decide de novo.
+- **No vídeo 2** (`los-angeles`; Lucas, 07/10/2026). A pergunta: "A tela final do vídeo 2 (os 20 s sem narração, com os botões do YouTube por cima). O diretor propõe: o último mapa, com as camadas 1850, 1906, 1909 e hoje e o fio até o porto, fica na tela, escurece devagar até a metade, a câmera se aproxima do fio, e nenhum texto novo. Pode ser assim?" A resposta: "Sim, assim (Recomendado)". A opção dizia:
+  "O mapa final continua, escurecendo até a metade em 20 s, composição à esquerda e o canto direito livre para os botões, como você aprovou no Juneau." As outras eram "Com o carimbo do canal" e "Tela da mesa, sem mapa". Então a tela final é o último
+  mapa (as camadas e o fio), parado na composição, escurecendo de 100 % a 50 % em 20 s, a câmera se aproximando devagar do
+  fio, sem texto novo e sem carimbo; o crédito do mapa fica legível até o fim (`conceito-visual.json` › s55 e s56).
 
 **A linha do preço vazia sai** (Lucas, 02/10/2026, na revisão do Juneau no Premiere;
 `out/juneau/_pesquisa/revisao-premiere-lucas.md`).
@@ -886,9 +890,10 @@ aberta. Um mapa antigo digitalizado ainda não está na lista de fontes aprovada
 - **O que não cobre:** mapa com licença fechada ou não lida (a licença continua se lendo na origem, hoje); mapa sem a
   incerteza medida (um contorno encaixado no olho não entra); e **a folha como imagem** na tela, que é outro uso e já
   seguia o `midia.md` (§7.3, mapas históricos) e a regra da foto e do documento (§5). A decisão é sobre o contorno
-  traçado, não sobre mostrar a folha. E se o contorno leva a legenda de aproximado do ofício do `mapista` (§8): não foi
-  perguntado, e segue a DECISÃO DO LUCAS PENDENTE da roupa dele. Até lá, a câmera não se aproxima além do que a
-  incerteza declarada sustenta (roupa do `mapista`, §5).
+  traçado, não sobre mostrar a folha. **A legenda de aproximado nos contornos de Hamlin** (vídeo 2), perguntada em
+  07/10/2026: "Os contornos antigos de Los Angeles (1850, 1906 e 1909) vêm do mapa de Homer Hamlin, de 1916, encaixado sobre o mapa de hoje, com margem de erro medida de 150 a 200 metros. Eles levam a palavra "Approximate" na tela?" A resposta: "Não, só a câmera limitada (Recomendado)". A opção dizia: "Sem texto a mais na tela. A câmera nunca chega tão perto que 200 m apareçam (na escala da cidade, é menos que a espessura da linha), e a descrição do vídeo cita o mapa de 1916." A outra era "Sim, \"Approximate\"
+  pequeno". Então: sem a palavra na tela, e a câmera nunca se aproxima além do que a incerteza declarada sustenta
+  (roupa do `mapista`, §5). Outro mapa antigo, ou contorno com incerteza maior: pergunta nova.
 - **No vídeo 2** (`los-angeles`): a folha de anexações de Homer Hamlin, City Engineer, de 1916 (Library of Congress, via
   Wikimedia Commons), para os contornos de 1850, 1899, 1906 e 1909 e a faixa, georreferenciada pelo canal sobre pontos
   de controle do TIGER, do PLSS e do USGS; e as folhas topográficas do USGS de 1896, 1903 e 1923, georreferenciadas
