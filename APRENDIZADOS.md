@@ -1247,3 +1247,18 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   recusou. O crítico transversal procura a mesma coisa de propósito.
 - **Por que serve a qualquer canal:** todo canal que espalha a pesquisa por vários agentes em paralelo tem esse ponto cego: a recusa
   fica no registro de um agente, e o vizinho não a vê.
+
+### 67. A API abre a porta, e o arquivo que ela aponta mora num servidor que veta robô
+
+- **O problema:** no vídeo 2, o `pesquisa-pessoas` procurou retratos pela API aberta do Smithsonian (`api.si.edu`, com a chave do
+  canal; esse servidor não tem robots.txt). A API devolve o link de cada imagem em outro servidor, o `ids.si.edu`, cujo robots.txt
+  libera só alguns buscadores pelo nome e veta o resto (`User-agent: *` / `Disallow: /`). O agente baixou dois retratos por esses
+  links, um pedido cada, antes de ler o robots.txt inteiro: a primeira leitura tinha saído cortada. Ele apagou os dois sem olhar nem
+  usar, e disse isso no relato. O Claude central conferiu no disco que não sobrou nada e leu os dois robots.txt.
+- **O que resolveu:** nada se usou daquela porta, e o retrato do vídeo veio do Commons. A pergunta "o link que a API devolve vale como
+  porta para programas?" ficou em aberto para o Smithsonian. Na NARA e no Commons ela foi respondida que sim (CLAUDE.md, "Tropeços
+  conhecidos do apoio"), mas cada acervo se decide pelo que ele próprio diz. Até a decisão, o `ids.si.edu` fica fora.
+- **Como evitar:** antes do primeiro pedido a um servidor novo, o robots.txt dele se lê inteiro, e o host do ARQUIVO conta tanto
+  quanto o da busca. Se a leitura sai cortada ou falha, o servidor fica fora até ser lido.
+- **Por que serve a qualquer canal:** todo acervo com API costuma servir o arquivo de outro host (CDN, servidor de imagens). Quem lê
+  a regra só da API está lendo a regra errada.
