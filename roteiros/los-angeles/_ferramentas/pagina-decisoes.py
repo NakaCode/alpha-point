@@ -145,6 +145,7 @@ pagina = f"""<title>Vídeo 2 · Los Angeles</title>
       <li><b>O ilustrador</b>: um teste, sim ou não.</li>
       <li><b>O mapa antigo</b> como contorno na tela.</li>
       <li><b>O ritmo da voz</b>, depois de ouvir.</li>
+      <li><b>A base dos mapas</b>: com crédito na tela ou sem.</li>
     </ol>
   </header>
 
@@ -190,10 +191,22 @@ pagina = f"""<title>Vídeo 2 · Los Angeles</title>
     <p>No v4, a voz do canal fala a cerca de 184 palavras por minuto. No Juneau foram 171, e a marca pede de 150 a 160. O v4 não aceita ajuste de velocidade: para ir mais devagar, seria preciso uma voz nova, feita como a calma do Juneau, e narrar de novo (uns 2 mil créditos).</p>
   </section>
 
+  <section class="q" aria-labelledby="q7">
+    <span class="rotulo">7 · A base dos mapas</span>
+    <h2 id="q7">Os mapas com crédito na tela, ou sem?</h2>
+    <p>O plano de cenas ficou pronto em rascunho: 56 cenas, e 24 são mapa, 58 % do vídeo. No Juneau foram 31 %. É o assunto que pede: a cidade com forma de faixa até o porto, e a regra “mais mapa” de 27/09.</p>
+    <ul class="lista">
+      <li><b>MapTiler, como no Juneau.</b> Nítido de perto, e a câmera voa livre. Mas o crédito “© MapTiler © OpenStreetMap contributors” fica na tela em toda cena de mapa, mais da metade do vídeo, e cada render cobra na sua conta.</li>
+      <li><b>Satélite público, o mesmo da mesa.</b> Sem crédito na tela e sem custo. Mais suave de perto: cada ponto da imagem tem 30 metros, e a faixa tem uns 800 de largura. Já foi testado numa cena do Juneau, em 25/09. Sugestão: eu faço primeiro a cena da medida da faixa assim, você vê na linha do tempo, e se ficar mole demais os closes vão para o MapTiler.</li>
+      <li><b>Misto.</b> Público nas vistas largas, MapTiler só nos closes, com o crédito só neles.</li>
+    </ul>
+    <p>Responda <code>mapas público</code>, <code>mapas maptiler</code> ou <code>mapas misto</code>. Nada para enquanto isso: o primeiro mapa só se renderiza depois da direção de arte.</p>
+  </section>
+
   <section class="resposta" aria-labelledby="q-resp">
     <span class="rotulo">Como responder</span>
     <h2 id="q-resp">No chat do Claude, numa mensagem só</h2>
-    <p>Por exemplo: <code>título 1, roteiro ok, movimento B, ilustrador sim, mapa antigo sim, ritmo ok</code>. Pode responder só uma parte, e o resto espera.</p>
+    <p>Por exemplo: <code>título 1, roteiro ok, movimento B, ilustrador sim, mapa antigo sim, ritmo ok, mapas público</code>. Pode responder só uma parte, e o resto espera.</p>
   </section>
 </main>
 """
