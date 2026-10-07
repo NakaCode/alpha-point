@@ -164,6 +164,15 @@ trecho em que as três coisas abaixo valem durante toda a permanência dela.
   menos 1 s antes de a cauda começar, porque na cauda a metade direita é dos elementos do YouTube. Num vídeo de 10:00,
   a cauda começa em 9:40, e o comentário sai até 9:39.
 - **Vídeo com menos de 5 min:** só o comentário.
+- **Quando não há trecho antes da cauda: o comentário na tela final, à esquerda** (Lucas, 07/10/2026, no vídeo 2). A
+  pergunta: "A chamada de comentário (a pergunta grande "Answer in the comments") precisa vir depois de o vídeo responder à pergunta do título e sair antes da tela final. No vídeo 2, esse trecho é só a conclusão (12:03 a 12:09), quando a voz diz a frase principal ("The strip was never a road to the sea...") e o canal do porto acende no mapa. Como fazemos?" A resposta: "Na tela final, à esquerda (Recomendado)". A opção dizia: "A pergunta entra nos 20 s finais, sem narração, na metade esquerda (a direita é dos botões do YouTube), sobre o mapa escurecendo. Pede uma posição nova da peça, à esquerda, e muda a regra do cta só nesse ponto." As outras eram "Na conclusão, em cima" e "Sem
+  comentário na tela".
+  - No vídeo 2, o comentário entra na cauda (os 20 s sem voz), **na metade esquerda**, sobre o mapa final escurecendo, e
+    sai antes do fim; a metade direita e o canto de 400 × 400 px continuam livres para os elementos do YouTube.
+  - A peça ganha uma posição nova, à esquerda (`?lugar=esquerda` em `marca/cta/pecas/comentario.html`): quem a faz é o
+    `editor-de-arte`, no `art`, com a mesma família e os mesmos tamanhos; a caixa se mede como as outras (§5).
+  - Nos próximos vídeos, o comentário continua antes da cauda (acima). A tela final só se usa quando nenhum trecho antes
+    dela cumprir o §5, e isso volta ao Lucas.
 - **O Juneau fica como está**, sem chamada.
 
 ## 7 · A pergunta do comentário
