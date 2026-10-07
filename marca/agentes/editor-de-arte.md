@@ -206,6 +206,28 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
   escolhidas**: nenhum deslize pela borda, antecipação de câmera, viagem de câmera pela mesa, mergulho nem still com
   sangria. O Juneau fica como está (a demo da A está em
   `out/juneau/_tmp/movimento/`, BRIEF.md §D.A).
+- **O ilustrador, com a física** (Lucas, 07/10/2026: "Sim, com a física (Recomendado)", depois de ver o antes e depois da
+  s34 do Juneau; identidade.md §4.4, "O ilustrador"). Do vídeo 2 em diante, em toda cena com uma **peça construída que
+  age** (objeto pendurado ou preso, queda, encaixe, abertura, mecanismo, líquido, mão, corpo):
+  - **antes de construir a peça**, leia inteiros `ilustracao/habilidades/ilustracao-narrativa/SKILL.md` e
+    `ilustracao/knowledge/ilustracao/CONSTRUCAO.md`, e, pelo `references/movimento-fisica.md` da habilidade, só o estudo do
+    fenômeno (`ilustracao/laboratorio/estudo-<fenômeno>/ESTUDO.md`). Aplique: contato e pivô no lugar físico (o fio entra
+    no furo, a porta gira na dobradiça), oclusão certa, proporção, e **um executor por transformação**;
+  - **a cena continua sua**: direção, metáfora (quando o ofício deixa), composição, câmera, tempos, textos, créditos e
+    render. Se a peça pedir composição nova, não a mude: diga no relato;
+  - **quando a física e o repouso brigam com a "vida"**, vencem a física e o repouso: o texto fica parado enquanto se lê
+    (acima), e o objeto pode quase não se mover (no piloto, o balanço caiu de ±3° para 0,43°). Nunca balanço que não
+    amortece (amplitude sem fonte de energia), nunca peça que finge estar presa;
+  - **no cabeçalho da cena**, escreva o que aplicou (arquivo:linha certo) e o que fica fora da prova do pacote: pêndulo e
+    rotação são "exercício futuro" no `estudo-dinamica-objetos/ESTUDO.md` (linha 53), e a mão v003 e os módulos de
+    movimento e física são experimentais (a mão v003 não tem aceite artístico: nunca como padrão aprovado);
+  - **a medida que prova o contato vem do DOM ou dos quadros** (`getBoundingClientRect`, `elementFromPoint`, o render),
+    nunca da fórmula do próprio código: no piloto, o "20,00 px em todos os quadros" do gancho repetia `fioFim = furoY +
+    FURO.r` e não provava nada; quem provou foi o DOM e o MP4;
+  - **a marca vence o pacote**: o adaptador `adaptadores/alpha-point/` do pacote está desatualizado e não se copia; cor,
+    fonte, crédito e áreas vêm de `marca/`. O agente opcional `ilustrador-tecnico` não está ligado no canal;
+  - a pasta `ilustracao/` é cópia conferida do núcleo v1.4.0 (`ilustracao/ORIGEM.json`) e **não se edita**. O piloto, com
+    o antes e depois, os portões e os dois laudos, está em `out/prova-ilustracao/` (fora do git, nesta máquina).
 
 ## 6 · Os cinco modelos (identidade.md §5) e o `modo` do espelho
 

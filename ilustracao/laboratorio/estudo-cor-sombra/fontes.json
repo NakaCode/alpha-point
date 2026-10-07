@@ -1,0 +1,113 @@
+{
+  "versao": 1,
+  "consulta": "2026-09-29",
+  "escopo": "Estudo aplicado de cor e sombreamento para o laboratorio Alpha. Pesquisa e propostas; nao altera identidade ou comprova implementacao dos tratamentos.",
+  "fontes_locais": [
+    {
+      "arquivo": "../../marca/identidade.md",
+      "sha256": "ff53c636f087ff10dcd421224d35dc879f3c9004c536f5a8812c8d78857bffd7",
+      "trechos": ["2: paleta por papel, tres matizes e semantica dos atores", "4.1 e 4.2: texto, seguranca, densidade", "5: modelos de cena e sombra especifica da folha"]
+    },
+    {
+      "arquivo": "../../marca/tokens.css",
+      "sha256": "764dde8becda7eddfdca3c4c5075f8b50777f36907561eaa9cbee35d97008a74",
+      "linhas": ["59-76: cores base e derivados definidos", "78-106: aliases e alerta de semantica", "185-194: sem degrade/sombra de texto e linhas"]
+    },
+    {
+      "arquivo": "../../marca/agentes/editor-de-arte.md",
+      "sha256": "203605e2c9f8e7c22855b66edf70a4cad5b11081c4d162d412ca6f57e373bec3",
+      "linhas": ["69-74: tokens e ausencia de cores literais", "89-101: papeis, fundo solido, sem degrade/veu/vinheta", "124-129: tratamento de texto e faixa segura"]
+    }
+  ],
+  "fontes_primarias_externas": [
+    {
+      "id": "css-color-4",
+      "titulo": "W3C CSS Color Module Level 4",
+      "url": "https://www.w3.org/TR/css-color-4/",
+      "secoes": ["2 Color Terminology", "9.2 Oklab and OkLCh", "10.2 sRGB", "10.3 srgb-linear"],
+      "consulta": "Texto primario lido via ferramenta web; Candidate Recommendation Draft consultado.",
+      "uso": "Dimensoes de cor e diferenca entre componente codificado e luz linear."
+    },
+    {
+      "id": "css-color-5",
+      "titulo": "W3C CSS Color Module Level 5",
+      "url": "https://www.w3.org/TR/css-color-5/#color-mix",
+      "secoes": ["3 Mixing Colors", "3.1 Colorspace for mixing", "3.2 Percentage Normalization", "3.3 Calculating the Result"],
+      "consulta": "HTML primario obtido diretamente do W3C com urllib apos falha de abertura pelo indexador web; documento em desenvolvimento.",
+      "sha256_html_consultado": "edd73a15937fb6e90b5ca5d940bd0a760b87cc78a591a0985390176ab26c9666",
+      "uso": "Espaco, proporcoes e alpha em color-mix; nao se pressupoe suporte do navegador a todo o draft."
+    },
+    {
+      "id": "w3c-contrast-text",
+      "titulo": "W3C Understanding SC 1.4.3 Contrast (Minimum)",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "secoes": ["Contrast ratio", "Relative luminance"],
+      "consulta": "Texto primario lido via ferramenta web.",
+      "uso": "Formula de luminancia relativa sRGB e razao de contraste do teste local."
+    },
+    {
+      "id": "w3c-contrast-nontext",
+      "titulo": "W3C Understanding SC 1.4.11 Non-text Contrast",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+      "secoes": ["Success Criterion", "Graphical Objects", "Required for Understanding", "Testing Principles"],
+      "consulta": "Texto primario lido via ferramenta web.",
+      "uso": "Escopo contextual de controles/partes necessarias, evitando aplicar 3:1 automaticamente a toda face decorativa."
+    },
+    {
+      "id": "pbrt-integrals",
+      "titulo": "PBRT 3rd edition — Working with Radiometric Integrals",
+      "url": "https://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Working_with_Radiometric_Integrals",
+      "secoes": ["5.5", "Figure 5.12"],
+      "consulta": "Texto primario dos autores lido via ferramenta web.",
+      "uso": "Fator cosseno, normal e integral das contribuicoes incidentes; base para distinguir classificador de planos e render fisico."
+    },
+    {
+      "id": "pbrt-radiometry",
+      "titulo": "PBRT 4th edition — Radiometry",
+      "url": "https://pbr-book.org/4ed/Radiometry,_Spectra,_and_Color/Radiometry",
+      "secoes": ["4.1", "4.1.1 Basic Quantities"],
+      "consulta": "Texto primario dos autores lido via ferramenta web, apos busca da pagina.",
+      "uso": "Linearidade e conservacao no transporte de energia; limites da simplificacao editorial."
+    },
+    {
+      "id": "blender-principled",
+      "titulo": "Blender Manual — Principled BSDF",
+      "url": "https://docs.blender.org/manual/en/dev/render/shader_nodes/shader/principled.html",
+      "secoes": ["Layers", "Base Color", "Roughness", "Metallic"],
+      "consulta": "Trecho indexado da documentacao oficial consultado; abertura integral retornou erro. Pagina dev, nao especificacao de versao instalada.",
+      "uso": "Distincao entre cor de base, rugosidade e resposta metalica. Sem adotar Blender no fluxo."
+    },
+    {
+      "id": "blender-ao",
+      "titulo": "Blender 2.90 Manual — World Settings, Ambient Occlusion",
+      "url": "https://docs.blender.org/manual/en/2.90/render/cycles/world_settings.html",
+      "secoes": ["Ambient Occlusion"],
+      "consulta": "Trecho indexado da documentacao oficial consultado; abertura integral retornou erro. Edicao historica usada para conceito, nao operacao do software atual.",
+      "uso": "Aproximacao de oclusao por proximidade, sem prometer iluminacao indireta fisicamente completa."
+    },
+    {
+      "id": "w3c-compositing",
+      "titulo": "W3C Compositing and Blending Level 1",
+      "url": "https://www.w3.org/TR/compositing-1/#simplealphacompositing",
+      "secoes": ["5 Simple alpha compositing", "8 Compositing groups"],
+      "consulta": "HTML primario obtido diretamente do W3C com urllib apos falha do indexador web.",
+      "sha256_html_consultado": "0fb91119308e706a5e4df368a91fa3b43cd5fe8cd8f192418b2df0a30ba8a62b",
+      "uso": "Composicao source-over, dependencia do fundo e agrupamento."
+    }
+  ],
+  "observacoes_de_integracao": [
+    {
+      "origem": "Mensagem do responsavel pela integracao nesta tarefa",
+      "conteudo": "Agrupamento de faces opacas consecutivas da mesma cor em um path sem stroke reduziu, mas nao eliminou costuras. Agrupamento mais stroke da propria cor de 4 px no palco 4K removeu a rede triangular na inspecao UI do detalhe a 9,7 s, em escala aproximada de 0,31. Silhuetas e vaos permaneceram legiveis. Raio de 2 px incluido nos bounds; agrupamento preserva oclusores e ordem de pintura, e transparencias seguem em faces isoladas.",
+      "evidencia_render": "../referencia-maleta/render-resultados.json",
+      "render_concluido": "Relatorio local lido: ffprobe confirma 20 segundos, 30 fps e 600 quadros nas saidas 3840x2160 e 1920x1080. QA passou 36 comparacoes de pixels em nove instantes, incluindo nove verificacoes com pagina nova; lista de erros do navegador vazia.",
+      "limite": "Resultado visual observado e reportado pelo integrador, nao reinspecionado neste estudo. Nao e regra universal nem prova para toda escala. O relatorio final confere render e determinismo nos instantes amostrados, nao qualidade visual de toda a sequencia, anatomia ou aprovacao artistica. A correcao tecnica nao implementa os tres tratamentos de cor e sombra propostos."
+    }
+  ],
+  "separacao_de_evidencia": {
+    "medido": "Calculo numerico a partir dos tokens opacos e verificacao de conversao no medir-cor.cjs/medidas.json. Relatorio local do integrador lido confirma formato/contagem/duracao do render e determinismo de pixels nos nove instantes registrados.",
+    "proposto": "Plano, planos de volume e contato discreto na mesma maleta; criterios de comparacao e mapeamentos dependentes da roupa.",
+    "nao_medido": "Implementacao dos tratamentos, qualidade visual em toda a sequencia e em toda escala, desempenho de render, legibilidade com usuarios, simulacao de daltonismo, QC independente e aceite."
+  },
+  "direitos": "Sinteses proprias e aplicacao original; nenhum trecho longo, imagem, diagrama ou codigo de renderizador foi reproduzido. As sinteses cientificas foram limitadas a menos de 200 palavras por fonte."
+}

@@ -1,0 +1,78 @@
+{
+  "study": "líquidos",
+  "version": 1,
+  "date": "2026-10-05",
+  "status": "PASS",
+  "tests": 7,
+  "results": [
+    {
+      "name": "volume e superfície confinada em nove combinações",
+      "status": "PASS",
+      "frames": 9729,
+      "maxVolumeErrorM3": 3.1086244689504383e-15,
+      "minClearanceM": 0.3806360983661137,
+      "maxAmplitudeM": 0.15980124456333444,
+      "maxAmplitudeOverMeanDepth": 0.23628641403912876
+    },
+    {
+      "name": "repouso inicial e energia decrescente após último deslocamento",
+      "status": "PASS",
+      "maxEnergyIncrease": 0,
+      "finalAmplitudeM": 0.00015302326431487767,
+      "finalEnergyRatio": 0.000006571382735374186
+    },
+    {
+      "name": "resposta inicial oposta à aceleração do tanque",
+      "status": "PASS",
+      "time": 1.8,
+      "accelerationMPerS2": 0.4566201453532315,
+      "leftHeightM": 1.0455113856674019,
+      "rightHeightM": 0.9344886143325982
+    },
+    {
+      "name": "seek independente de ordem, cache e repetição",
+      "status": "PASS",
+      "instants": 8,
+      "cacheEvictionExercised": true
+    },
+    {
+      "name": "continuidade de posição, aceleração e superfície nas transições",
+      "status": "PASS",
+      "windowSeconds": 0.000002,
+      "maxSurfaceJumpM": 2.443420057396395e-7,
+      "maxAccelerationJumpMPerS2": 0.0000018289874521351632
+    },
+    {
+      "name": "convergência por refinamento temporal RK4",
+      "status": "PASS",
+      "coarseStepSeconds": 0.004166666666666667,
+      "fineStepSeconds": 0.0020833333333333333,
+      "maxSurfaceDifferenceM": 1.074531574829507e-10,
+      "toleranceM": 0.000001
+    },
+    {
+      "name": "área segura da bancada e entradas inválidas",
+      "status": "PASS",
+      "tankBounds": {
+        "left": 221.99999999999997,
+        "right": 774,
+        "top": 130.4,
+        "bottom": 446
+      },
+      "safeBounds": [
+        50,
+        40,
+        910,
+        465
+      ],
+      "note": "Limites geométricos analíticos; não substituem inspeção visual ou QC oficial."
+    }
+  ],
+  "notMeasured": [
+    "CFD, forças reais ou material calibrado",
+    "Oclusões e legibilidade artística independentes",
+    "QC oficial",
+    "Empuxo, capilaridade, turbulência, espuma e derramamento"
+  ],
+  "model": "Três modos lineares 2D, RK4 1/240 s, profundidade extrudida constante, volume analiticamente conservado."
+}

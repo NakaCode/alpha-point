@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "entrega-cena-ilustrada v1",
+  "type": "object",
+  "properties": {
+    "versao_contrato": {
+      "type": "integer",
+      "const": 1
+    },
+    "projeto": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cena": {
+      "type": "string",
+      "minLength": 1
+    },
+    "versao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "estado": {
+      "type": "string",
+      "enum": [
+        "preparado",
+        "conferido",
+        "integrado",
+        "aprovado",
+        "bloqueado"
+      ]
+    },
+    "pedido": {
+      "type": "object",
+      "properties": {
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "arquivo",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "roupa": {
+      "type": "object",
+      "properties": {
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "arquivo",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "arquivos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "arquivo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "funcao": {
+            "type": "string",
+            "enum": [
+              "cena",
+              "fonte",
+              "previa",
+              "evidencia",
+              "audio"
+            ]
+          }
+        },
+        "required": [
+          "arquivo",
+          "sha256",
+          "funcao"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "animacao": {
+      "type": "object",
+      "properties": {
+        "executor": {
+          "type": "string",
+          "enum": [
+            "html-svg-js"
+          ]
+        },
+        "entrada": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hook_tempo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "quadros": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "duracao": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "executor",
+        "entrada",
+        "hook_tempo",
+        "fps",
+        "quadros",
+        "duracao"
+      ],
+      "additionalProperties": false
+    },
+    "partes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "funcao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "movimento": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "funcao",
+          "movimento"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "verificacoes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "estrutura",
+              "determinismo",
+              "movimento",
+              "areas_seguras",
+              "identidade",
+              "texto_credito",
+              "audio",
+              "qc_independente"
+            ]
+          },
+          "estado": {
+            "type": "string",
+            "enum": [
+              "passou",
+              "falhou",
+              "nao_medido",
+              "nao_aplicavel"
+            ]
+          },
+          "evidencia": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "tipo",
+          "estado",
+          "evidencia"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 8
+    },
+    "pendencias": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "versao_contrato",
+    "projeto",
+    "cena",
+    "versao",
+    "estado",
+    "pedido",
+    "roupa",
+    "arquivos",
+    "animacao",
+    "partes",
+    "verificacoes",
+    "pendencias"
+  ],
+  "additionalProperties": false
+}

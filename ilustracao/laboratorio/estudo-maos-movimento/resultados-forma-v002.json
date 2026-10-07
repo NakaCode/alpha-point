@@ -1,0 +1,123 @@
+{
+  "study": "maos-forma-v002",
+  "date": "2026-10-05",
+  "status": "PASSOU — equivalência cinemática",
+  "scope": "Equivalência do movimento nos instantes amostrados entre a referência v001 e o redesenho v002; registra também reuso direto do rig. Não compara superfícies.",
+  "baseline": "revisoes/v001/maos.mjs",
+  "candidate": "maos-forma-v002.mjs",
+  "sharedRig": "maos.mjs",
+  "moduleSha256": {
+    "baseline": "c2b325831aae025508e9176cfead002797c650e335f7dbf4da9b3a3b42aef45d",
+    "candidate": "68f587562704ec3d630f9f6280dd2e8ab612312db034d1015083858a69d23419",
+    "activeRig": "c2b325831aae025508e9176cfead002797c650e335f7dbf4da9b3a3b42aef45d"
+  },
+  "rigReuse": {
+    "baselineAndActiveRigHaveSameBytes": true,
+    "candidateExportsSameSampleFunction": true
+  },
+  "tolerance": 1e-10,
+  "samplesPerMode": 361,
+  "modes": {
+    "fechamento": {
+      "samples": 361,
+      "maxAbsoluteDifference": 0,
+      "numbersCompared": 87001,
+      "mismatchCount": 0,
+      "outOfOrder": "PASSOU",
+      "samplesWithMismatch": []
+    },
+    "pinca": {
+      "samples": 361,
+      "maxAbsoluteDifference": 0,
+      "numbersCompared": 87362,
+      "mismatchCount": 0,
+      "outOfOrder": "PASSOU",
+      "samplesWithMismatch": []
+    },
+    "punho": {
+      "samples": 361,
+      "maxAbsoluteDifference": 0,
+      "numbersCompared": 87001,
+      "mismatchCount": 0,
+      "outOfOrder": "PASSOU",
+      "samplesWithMismatch": []
+    }
+  },
+  "sentinels": {
+    "status": "PASSOU",
+    "detects": [
+      "joint displacement",
+      "contact active state",
+      "contact gap",
+      "wrist angle",
+      "nonfinite value",
+      "missing structure"
+    ]
+  },
+  "geometry": {
+    "status": "NÃO MEDIDO",
+    "surfaceMeshAvailable": true,
+    "note": "A ausência de surfaceMesh em um desenho 2D não reprova o movimento. Contorno, penetração visual, contato da pele, oclusões, proporção e área segura exigem auditoria própria da nova representação."
+  },
+  "visualChecklist": [
+    {
+      "gesto": "fechamento",
+      "t": 0,
+      "foco": "Silhueta aberta",
+      "criterios": [
+        "Cinco dedos reconhecíveis, implantação e espaço do polegar claros.",
+        "Palma, bases dos dedos e punho formam um contorno contínuo.",
+        "Dedos têm espessura e comprimento visual coerentes, sem ganchos ou membranas excessivas."
+      ],
+      "resultado": "PENDENTE"
+    },
+    {
+      "gesto": "fechamento",
+      "t": 2,
+      "foco": "Intermediário",
+      "criterios": [
+        "Flexões continuam nos mesmos centros sem falanges aparentarem quebradas ou alongadas.",
+        "Transições de pele não geram picos, furos ou degraus nas bases.",
+        "A leitura do gesto permanece clara na escala final."
+      ],
+      "resultado": "PENDENTE"
+    },
+    {
+      "gesto": "fechamento",
+      "t": 4.5,
+      "foco": "Mão fechada",
+      "criterios": [
+        "Massas dos dedos e palma mantêm volume aparente e oclusão legível.",
+        "Polegar se implanta na região tenar; não parece um segmento extra flutuante.",
+        "Junções não formam uma massa derretida ou linhas internas falsas."
+      ],
+      "resultado": "PENDENTE"
+    },
+    {
+      "gesto": "pinca",
+      "t": 5,
+      "foco": "Pinça em contato",
+      "criterios": [
+        "Laço, indicador e polegar são reconhecíveis na vista escolhida.",
+        "Superfícies desenhadas se encontram sem vão ou interpenetração visível.",
+        "A melhora do contorno não mascara desvio entre alvo matemático e pele."
+      ],
+      "resultado": "PENDENTE"
+    },
+    {
+      "gesto": "punho",
+      "t": 2.1,
+      "foco": "Ligação punho–antebraço",
+      "criterios": [
+        "Base da mão permanece ligada ao antebraço, sem estrangulamento ou órbita artificial.",
+        "Espessura da ligação e silhueta continuam coerentes ao flexionar.",
+        "Comparação com os quadros vizinhos confirma continuidade; uma pose isolada não aprova o movimento."
+      ],
+      "resultado": "PENDENTE"
+    }
+  ],
+  "artisticApproval": "PENDENTE",
+  "officialQC": "NÃO MEDIDO",
+  "integration": "NÃO MEDIDA",
+  "failures": []
+}

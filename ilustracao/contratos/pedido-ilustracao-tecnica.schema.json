@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "pedido-ilustracao-tecnica v1",
+  "type": "object",
+  "properties": {
+    "versao_contrato": {
+      "type": "integer",
+      "const": 1
+    },
+    "tipo_contrato": {
+      "type": "string",
+      "const": "ilustracao-tecnica"
+    },
+    "projeto": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revisao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modo": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "componente",
+        "ilustracao_independente"
+      ]
+    },
+    "objetivo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brief": {
+      "type": "object",
+      "properties": {
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "arquivo",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "roupa": {
+      "type": "object",
+      "properties": {
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "arquivo",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "entradas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "arquivo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "arquivo",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "palco": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "area_destino": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "autoridade": {
+      "type": "object",
+      "properties": {
+        "composicao": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "consumidor",
+            "ilustrador"
+          ]
+        },
+        "funcao_recebida": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composicao",
+        "funcao_recebida"
+      ],
+      "additionalProperties": false
+    },
+    "consumidor": {
+      "type": "object",
+      "properties": {
+        "responsavel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interface": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "svg-estatico",
+            "poses-js",
+            "animacao-html"
+          ]
+        },
+        "hook": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "responsavel",
+        "interface"
+      ],
+      "additionalProperties": false
+    },
+    "limites": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "saidas_esperadas": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "enum": [
+          "asset",
+          "fonte",
+          "api",
+          "previa",
+          "evidencia"
+        ]
+      },
+      "minItems": 1
+    },
+    "controles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tipo": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "numero",
+              "inteiro",
+              "enum"
+            ]
+          },
+          "minimo": {
+            "type": "number"
+          },
+          "maximo": {
+            "type": "number"
+          },
+          "inicial_numero": {
+            "type": "number"
+          },
+          "opcoes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "inicial_opcao": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "tipo"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "tempo": {
+      "type": "object",
+      "properties": {
+        "fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "quadros": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "duracao": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "fps",
+        "quadros",
+        "duracao"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "versao_contrato",
+    "tipo_contrato",
+    "projeto",
+    "id",
+    "revisao",
+    "modo",
+    "objetivo",
+    "brief",
+    "roupa",
+    "entradas",
+    "palco",
+    "area_destino",
+    "autoridade",
+    "consumidor",
+    "limites",
+    "saidas_esperadas",
+    "controles"
+  ],
+  "additionalProperties": false
+}

@@ -1352,3 +1352,21 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Como evitar:** todo leitor de cache por trecho escolhe pelo identificador que o manifesto atual registra, nunca pelo número
   de posição. Desconfie de "trocou o texto inteiro" num trecho que acabou de ser refeito.
 - **Por que serve a qualquer canal:** todo canal que narra pela API, um pedido por parágrafo, e refaz parágrafos.
+
+### 75. A física certa e o texto parado na leitura podem apagar o movimento que dava vida à cena
+
+- **O problema:** no teste do pacote de ilustração numa cópia da s34 do Juneau (a etiqueta de preço pendurada num fio), o
+  editor consertou a construção: o fio passou a entrar no furo, e a etiqueta, a girar no ponto de contato. Mas a escala da
+  queda, já aprovada, fixa o período do pêndulo em 2,8 s, e a regra da marca pede o texto parado 0,25 s antes de a voz lê-lo.
+  As duas juntas só cabem com o balanço quase zerado: de ±3° para 0,43°, e a etiqueta parece parada por 2 s. O `qc-visual` deu
+  nota 7 em movimento, e a escolha entre "certo" e "vivo" não era técnica.
+- **O que resolveu:** o antes e o depois lado a lado, com a narração e um recorte do furo, e uma pergunta só ao dono do canal
+  ("com a física", "com balanço visível" ou "não usar"). Ele escolheu a física; a regra foi para a marca e para as roupas do
+  editor e do QC.
+- **Como evitar:** antes de pôr física num objeto que carrega texto, conte o período e o amortecimento contra o tempo que a
+  leitura deixa. Se não cabem, a decisão é de direção: diga cedo, com o antes e o depois, em vez de "ajustar" a física.
+- **E a prova:** o editor mediu "fio a 20,00 px do furo em todos os quadros" pelo próprio gancho, que calculava `fioFim = furoY +
+  r`: a medida repetia a fórmula e não provava nada. Quem provou foi um verificador pelo DOM (`getBoundingClientRect`,
+  `elementFromPoint`) e pelos quadros do MP4. Medida de contato vem de fora do código que a produz.
+- **Por que serve a qualquer canal:** todo canal com objeto animado que carrega texto (etiqueta, placa, papel, cartão), e todo
+  canal que aceita uma medida escrita pela mesma peça que desenha.

@@ -1,0 +1,359 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "entrega-ilustracao-tecnica v1",
+  "type": "object",
+  "properties": {
+    "versao_contrato": {
+      "type": "integer",
+      "const": 1
+    },
+    "tipo_contrato": {
+      "type": "string",
+      "const": "ilustracao-tecnica"
+    },
+    "projeto": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "versao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "estado": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "preparado",
+        "conferido",
+        "integrado",
+        "aprovado",
+        "bloqueado"
+      ]
+    },
+    "modo": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "componente",
+        "ilustracao_independente"
+      ]
+    },
+    "autoridade": {
+      "type": "object",
+      "properties": {
+        "composicao": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "consumidor",
+            "ilustrador"
+          ]
+        },
+        "funcao_recebida": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composicao",
+        "funcao_recebida"
+      ],
+      "additionalProperties": false
+    },
+    "pedido": {
+      "type": "object",
+      "properties": {
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "arquivo",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "roupa": {
+      "type": "object",
+      "properties": {
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "arquivo",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "arquivos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "arquivo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "funcao": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "asset",
+              "fonte",
+              "api",
+              "previa",
+              "evidencia"
+            ]
+          }
+        },
+        "required": [
+          "arquivo",
+          "sha256",
+          "funcao"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "api": {
+      "type": "object",
+      "properties": {
+        "interface": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "svg-estatico",
+            "poses-js",
+            "animacao-html"
+          ]
+        },
+        "entrada": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hook": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "interface",
+        "entrada"
+      ],
+      "additionalProperties": false
+    },
+    "partes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "funcao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pivot": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "bounds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 6
+          }
+        },
+        "required": [
+          "id",
+          "funcao"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "poses_exemplo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "valores": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "controle": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "numero": {
+                  "type": "number"
+                },
+                "opcao": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "controle"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "id",
+          "valores"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "verificacoes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "estrutura",
+              "integridade",
+              "areas_seguras",
+              "identidade",
+              "movimento",
+              "determinismo",
+              "qc_independente"
+            ]
+          },
+          "estado": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "passou",
+              "falhou",
+              "nao_medido",
+              "nao_aplicavel"
+            ]
+          },
+          "motivo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidencia": {
+            "type": "object",
+            "properties": {
+              "arquivo": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "arquivo",
+              "sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "tipo",
+          "estado",
+          "motivo"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 7
+    },
+    "pendencias": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "tempo": {
+      "type": "object",
+      "properties": {
+        "fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "quadros": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "duracao": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "fps",
+        "quadros",
+        "duracao"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "versao_contrato",
+    "tipo_contrato",
+    "projeto",
+    "id",
+    "versao",
+    "estado",
+    "modo",
+    "autoridade",
+    "pedido",
+    "roupa",
+    "arquivos",
+    "api",
+    "partes",
+    "poses_exemplo",
+    "verificacoes",
+    "pendencias"
+  ],
+  "additionalProperties": false
+}

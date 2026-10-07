@@ -1,0 +1,121 @@
+{
+  "estudo": "Texturas: estabilidade e orçamento de detalhe",
+  "versao": 1,
+  "data_execucao": "2026-09-29",
+  "codigo": "verificar-texturas.cjs",
+  "codigo_sha256": "97af5bf1c5aa0f03d83f1e8bd1ded61a7149e21a61a70112f339ef664f613cb7",
+  "metodo": "Node.js, apenas matemática e assert; sem imagens, dependências externas ou browser.",
+  "grupos": [
+    {
+      "id": "identidade-e-seed",
+      "estado": "passou",
+      "marcas": 256,
+      "sha256_padrao": "8b4dc93d5d6c56070f3a166aab434155deb6958ab41c324013764bb7aee8732d",
+      "negativo_seed_diferente": "detectado",
+      "limite": "Amostra delimitada; não prova ausência de colisões em todas as identidades de 32 bits."
+    },
+    {
+      "id": "ordem-independente",
+      "estado": "passou",
+      "comparacoes": 263,
+      "negativo_indice_consumido_por_ordem": "detectado"
+    },
+    {
+      "id": "superficie-e-transformacao",
+      "estado": "passou",
+      "poses": 6,
+      "pontos": 7680,
+      "erro_uv_maximo": 4.57756679852e-16,
+      "erro_raio_maximo": 9.09494701773e-13,
+      "erro_rigidez_maximo": 2.27373675443e-13,
+      "limite": "Cilindro analítico; não testa dobra do livro, interpolação de segmentos ou rasterização."
+    },
+    {
+      "id": "negativo-textura-presa-a-tela",
+      "estado": "passou",
+      "deriva_detectada_px": 233.273550141,
+      "tolerancia_px": 0.5,
+      "negativo_rejeitado": true
+    },
+    {
+      "id": "footprint-e-transicao",
+      "estado": "passou",
+      "orientacoes": 891,
+      "salto_maximo_em_passo_de_01_grau": 0.0160842362305,
+      "amostras": [
+        {
+          "graus": 0,
+          "min": 467.500000002,
+          "max": 658.750000002,
+          "pitch": 58.4375000003,
+          "width": 5.61000000002,
+          "contribution": 1
+        },
+        {
+          "graus": 60,
+          "min": 329.375000001,
+          "max": 467.500000002,
+          "pitch": 41.1718750001,
+          "width": 3.95250000001,
+          "contribution": 1
+        },
+        {
+          "graus": 75,
+          "min": 170.497045968,
+          "max": 467.500000002,
+          "pitch": 21.3121307461,
+          "width": 2.04596455162,
+          "contribution": 0.700040429491
+        },
+        {
+          "graus": 80,
+          "min": 114.390737036,
+          "max": 467.500000002,
+          "pitch": 14.2988421295,
+          "width": 1.37268884444,
+          "contribution": 0.0270097978891
+        },
+        {
+          "graus": 87,
+          "min": 34.4763111798,
+          "max": 467.500000002,
+          "pitch": 4.30953889747,
+          "width": 0.413715734157,
+          "contribution": 0
+        },
+        {
+          "graus": 89,
+          "min": 11.4967727427,
+          "max": 467.500000002,
+          "pitch": 1.43709659284,
+          "width": 0.137961272912,
+          "contribution": 0
+        }
+      ],
+      "negativo_sem_lod": "detectado",
+      "limite": "Amostras centrais de folha plana em perspectiva; LOD matemático não é garantia temporal ou visual de antialias."
+    },
+    {
+      "id": "cobertura-parametrica",
+      "estado": "passou",
+      "marcas_exemplo": 64,
+      "cobertura_superior": 0.00989680141834,
+      "limite_experimental": 0.06,
+      "negativo_2048_marcas": 0.86016,
+      "negativo_rejeitado": true,
+      "limite": "Soma de áreas UV; limite superior de união, não cobertura de pixels e não teste de contraste."
+    }
+  ],
+  "resumo": {
+    "grupos_passaram": 6,
+    "falhas": 0,
+    "qc_visual": "nao_medido",
+    "qc_oficial": "nao_medido"
+  },
+  "limites": [
+    "Não implementa materiais naturais.",
+    "Não audita a cena do livro ou anatomia da mão.",
+    "Não mede pixels, compressão de vídeo, moiré, cintilação ou percepção.",
+    "Os limiares e pesos de LOD são experimentais, condicionados à roupa quando aplicados."
+  ]
+}

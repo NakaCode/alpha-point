@@ -284,6 +284,19 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
   (§4.2); o teto de 6 elementos e 3 blocos (§4.2); nenhum efeito de template (glitch, flash, partículas, bounce); tudo determinístico por `__renderAt(t)`, sem
   `@keyframes` nem `transition`; o still de satélite não anda sozinho e nunca vira mapa (§5). O mapa tem a regra própria
   (acima, e "Mapa nunca fica parado", §5). A animação desenhada de mecanismo é outra decisão.
+- **O ilustrador, com a física** (Lucas, 07/10/2026; do vídeo 2 em diante, e o Juneau fica como está). O pacote
+  `ilustracao-narrativa` v1.4.0 foi testado numa cópia da s34 do Juneau (a etiqueta de preço no fio): o fio passou a entrar
+  no furo e a etiqueta a girar no ponto de contato, mas, para ela parar antes de a voz ler o valor (o texto parado, acima),
+  o balanço caiu de ±3° para 0,43°, e ela parece parada por uns 2 s. A pergunta: "Uso o ilustrador no vídeo 2?" A
+  resposta: "Sim, com a física (Recomendado)". A opção dizia: "O editor usa o ilustrador nas cenas com objetos (fio,
+  queda, encaixe), como na direita: tudo preso no lugar certo, e o objeto parado quando o texto é lido. Fica mais sóbrio,
+  menos "vivo"." As outras eram "Sim, mas com balanço visível" (uma exceção ao repouso para objeto pendurado) e "Não usar".
+  - **A regra:** peça construída que age (pendurada, presa, caindo, encaixando, abrindo, mecanismo, líquido, mão, corpo)
+    se constrói pelo método da habilidade: contato e pivô no lugar físico, oclusão certa, um executor por transformação.
+  - **Quando a física e o repouso brigam com a "vida", vencem a física e o repouso.** Nenhuma exceção ao texto parado
+    enquanto se lê por causa de um objeto que balança; nenhum balanço que não amortece.
+  - Quem aplica é o `editor-de-arte`, pela roupa dele (§5, "O ilustrador, com a física"), lendo a cópia do núcleo em
+    `ilustracao/` (`ilustracao/ORIGEM.json`). A marca vence o pacote: cor, fonte, crédito e áreas vêm daqui.
 - **O movimento da chamada (CTA)** (Lucas, 01/10/2026; `marca/cta.md`). É diferente do rótulo em três pontos:
   - **a entrada**: **360 ms**, com a opacidade em curva suave (smoothstep) e **24 px** de subida em ease-out (o rótulo
     tem 300 ms em ease-out). O primeiro e o último quadro visível ficam abaixo de 5 % de opacidade, sem estalo. Na

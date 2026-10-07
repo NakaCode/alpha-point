@@ -456,6 +456,21 @@ lugar, rota, distância ou território vai a mapa antes de B-roll genérico. Nun
 está. A regra mora em `marca/identidade.md` §5, e as roupas do montador, do diretor-de-arte e do regente apontam
 para lá.
 
+**O ilustrador, com a física** (desde 07/10/2026, do vídeo 2 em diante). O pacote `ilustracao-narrativa` v1.4.0 (em
+`v1.4.0-ilustracao-narrativa/`, fora do git, nesta máquina) foi testado numa cópia da s34 do Juneau (`out/prova-ilustracao/`,
+fora do git): o fio passou a entrar no furo, mas o balanço caiu de ±3° para 0,43° para a etiqueta parar antes da leitura. A
+pergunta: "Uso o ilustrador no vídeo 2?" A resposta: "Sim, com a física (Recomendado)" (o resto em `marca/identidade.md` §4.4,
+"O ilustrador, com a física").
+- **Não é peça nova nem passo novo**: é método que o `editor-de-arte` aplica no `art`. O ponto de ativação é a roupa dele
+  (`marca/agentes/editor-de-arte.md` §5); o `qc-visual` julga a construção pela roupa dele (§5).
+- **A cópia do núcleo** está em `ilustracao/` (80 arquivos, cada um com o sha256 do manifesto do pacote; `ilustracao/ORIGEM.json`
+  diz o que veio, o que ficou no pacote e como se conferiu). **Não se edita**: versão nova do pacote vem por cópia nova, conferida
+  contra o `MANIFESTO.json` dela. Ficaram no pacote a vitrine, as bancadas HTML e o agente opcional `ilustrador-tecnico`, que não
+  está ligado no canal.
+- Conferido em 07/10/2026: os testes dos validadores na cópia (47 de 47), as auditorias dos estudos (exit 0) e o
+  `verificar-pacote.py --com-node` do pacote (22 de 22). Isso é integridade técnica, não aceite artístico: a mão v003 e os
+  módulos de movimento e física continuam experimentais.
+
 Uma conversa de peça em `fable` já rodou (29/09/2026, "Juneau · diretor-de-arte"): as respostas saíram como
 `claude-fable-5-1`. Ela abriu no modelo padrão do app, o Opus. O Claude central confere o modelo logo que acha a
 conversa (`get_session`); se não for o da peça, troca com `set_session_model`, que só vale da próxima volta. Com a

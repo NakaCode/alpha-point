@@ -361,6 +361,12 @@
 - **Rota que nunca foi construída** (Lucas, 27/09/2026; identidade.md §6): linha tracejada com o aviso
   `Approximate route` na tela todo o tempo da linha. Sem o aviso, ou decalcada de figura sem permissão, reprova
   (`fonte`).
+- **Peça construída que não se sustenta** (do vídeo 2 em diante; Lucas, 07/10/2026, "Sim, com a física"; identidade.md
+  §4.4, "O ilustrador, com a física"; roupa do `editor-de-arte`, §5): fio que não chega ao furo, objeto que gira fora do
+  ponto de contato, oclusão trocada, mão que não toca o que segura, ou balanço que não amortece reprova (`factual`).
+  Objeto que quase não se move para o texto ficar parado na leitura NÃO é achado: foi a escolha do Lucas. A prova do
+  contato é a medida do DOM ou dos quadros; o número que só repete a fórmula do código não vale como prova
+  (sinalize, `factual`).
 
 ## 6 · A cena que é fundo da tela final
 

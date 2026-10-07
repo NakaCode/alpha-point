@@ -1,0 +1,68 @@
+{
+  "estudo": "Líquidos: causalidade, volume e superfície legível",
+  "data_consulta": "2026-10-05",
+  "metodo": "Pesquisa web em publicações primárias/oficiais de MIT OpenCourseWare, NASA e OpenStax. Sem assets copiados, downloads de mídia, instalação de dependências ou calibração experimental. Derivação modal, código, limiares e recomendações de desenho são trabalho aplicado próprio.",
+  "fontes": [
+    {
+      "id": "mit-relacoes",
+      "titulo": "MIT 6.642 — Lecture 5: Laws, Approximations, and Relations of Fluid Mechanics",
+      "url": "https://ocw.mit.edu/courses/6-642-continuum-electromechanics-fall-2008/resources/lec05_f08/",
+      "tipo": "Curso oficial da universidade",
+      "consulta": "Página de recursos aberta; resumo de tópicos lido.",
+      "sustenta": ["Conservação de massa e momento, interface, condições de fronteira e tensão superficial como tópicos distintos"],
+      "limite": "O resumo não valida as equações próprias nem fornece calibragem de material."
+    },
+    {
+      "id": "mit-ondas",
+      "titulo": "MIT 2.20 Marine Hydrodynamics — Lecture 20, Water Waves",
+      "url": "https://ocw.mit.edu/courses/2-20-marine-hydrodynamics-13-021-spring-2005/5d48a5937971d973fd8ca90c051a83f8_lecture20.pdf",
+      "tipo": "Notas oficiais de curso, primavera de 2005",
+      "consulta": "PDF aberto e texto extraído consultado, especialmente páginas 2–6 sobre fronteiras, linearização e dispersão.",
+      "sustenta": ["Hipótese de ondas de pequena amplitude/inclinação", "Relação omega² = g k tanh(kh)", "Condições de superfície livre e fronteira impermeável"],
+      "limite": "O tanque de três modos e seu forçamento foram construídos para a bancada; não se copiou uma solução de CFD ou se demonstrou onda quebrando."
+    },
+    {
+      "id": "nasa-slosh",
+      "titulo": "NASA@SC15 — Predicting Baffled Propellant Tank Slosh for Spacecraft",
+      "url": "https://www.nas.nasa.gov/SC15/demos/demo12.html",
+      "tipo": "Relato técnico oficial NASA",
+      "consulta": "Página aberta; visão geral, desafios de amortecimento e comparação com experimentos consultados.",
+      "sustenta": ["Movimento do recipiente excita o líquido", "Amortecimento depende de tanque, paredes e defletores", "CFD real precisa resolver efeitos e comparar com dados"],
+      "limite": "Não fornece valores de amortecimento para esta bancada nem aprova sua fidelidade quantitativa."
+    },
+    {
+      "id": "openstax-viscosidade",
+      "titulo": "OpenStax — University Physics Volume 1, 14.7 Viscosity and Turbulence",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/14-7-viscosity-and-turbulence",
+      "tipo": "Livro didático do editor original",
+      "consulta": "Página aberta e trechos das definições de viscosidade, laminaridade e turbulência lidos.",
+      "sustenta": ["Viscosidade como resistência ao movimento relativo no fluido", "Distinção entre escoamento laminar e turbulento"],
+      "limite": "A bancada não resolve perfis viscosos nem Reynolds; damping não é uma viscosidade medida."
+    },
+    {
+      "id": "openstax-empuxo",
+      "titulo": "OpenStax — College Physics 2e, 11.7 Archimedes’ Principle",
+      "url": "https://openstax.org/books/college-physics-2e/pages/11-7-archimedes-principle",
+      "tipo": "Livro didático do editor original",
+      "consulta": "Página aberta e resultados primários consultados sobre volume deslocado e flutuação.",
+      "sustenta": ["Empuxo e peso do fluido deslocado", "Relação de densidade com flutuar ou afundar"],
+      "limite": "Estudo apenas: esta prova não incorpora corpo imerso, estabilidade naval ou ondas geradas por navio."
+    },
+    {
+      "id": "openstax-interface",
+      "titulo": "OpenStax — College Physics 2e, 11.8 Cohesion and Adhesion in Liquids",
+      "url": "https://openstax.org/books/college-physics-2e/pages/11-8-cohesion-and-adhesion-in-liquids-surface-tension-and-capillary-action",
+      "tipo": "Livro didático do editor original",
+      "consulta": "Trecho extenso primário retornado pela pesquisa sobre coesão, adesão, interface, gotas e bolhas.",
+      "sustenta": ["Tensão superficial e redução de área", "Coesão, adesão, gotas e meniscos como fenômenos de interface"],
+      "limite": "Estudo apenas: capilaridade, tensão superficial e meniscos não foram simulados."
+    }
+  ],
+  "prova": {
+    "modulo": "liquidos.mjs",
+    "auditoria": "node laboratorio/estudo-liquidos/auditar.mjs",
+    "relatorio": "resultados.json",
+    "modelo": "Três modos lineares 2D com profundidade extrudida constante, RK4 e amortecimento fenomenológico",
+    "fora_do_escopo": ["CFD geral", "Turbulência", "Fluido não newtoniano", "Empuxo", "Derramamento", "Espuma", "Capilaridade", "Calibragem experimental", "QC oficial"]
+  }
+}

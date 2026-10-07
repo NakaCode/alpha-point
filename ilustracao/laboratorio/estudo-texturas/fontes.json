@@ -1,0 +1,85 @@
+{
+  "estudo": "Texturas aplicadas ao ilustrador portátil",
+  "data_consulta": "2026-09-29",
+  "metodo": "Consulta web a fontes primárias; trechos retornados pela busca e abertura de páginas quando disponível. Não foram baixadas imagens, copiados capítulos, aceitos termos de licença ou incorporados assets externos. Métodos e limiares de desenho são propostas próprias, não prescrições das fontes.",
+  "fontes": [
+    {
+      "id": "pbrt-texturas",
+      "titulo": "Physically Based Rendering, 4th edition — Textures and Materials",
+      "url": "https://www.pbr-book.org/4ed/Textures_and_Materials",
+      "tipo": "Livro técnico dos autores",
+      "consulta": "Trecho extenso da página retornado pela busca web; introdução consultada.",
+      "sustenta": ["Separação entre variação espacial de textura e resposta do material"],
+      "limite": "Não fornece regras estéticas do Alpha."
+    },
+    {
+      "id": "pbrt-coordenadas",
+      "titulo": "Physically Based Rendering, 4th edition — Texture Coordinate Generation",
+      "url": "https://www.pbr-book.org/4ed/Textures_and_Materials/Texture_Coordinate_Generation",
+      "tipo": "Livro técnico dos autores",
+      "consulta": "Trecho primário indexado retornado pela busca; abertura integral falhou por restrição de URL da ferramenta.",
+      "sustenta": ["Coordenadas de textura e estimativas de derivadas para amostragem"],
+      "limite": "A superfície cilíndrica de teste é uma construção própria, não código extraído do PBRT."
+    },
+    {
+      "id": "pbrt-amostragem",
+      "titulo": "Physically Based Rendering, 4th edition — Texture Sampling and Antialiasing",
+      "url": "https://www.pbr-book.org/4ed/Textures_and_Materials/Texture_Sampling_and_Antialiasing",
+      "tipo": "Livro técnico dos autores",
+      "consulta": "Trechos primários indexados sobre frequências, amostragem e filtro; abertura integral falhou por restrição de URL da ferramenta.",
+      "sustenta": ["Relação entre conteúdo de frequência e aliasing", "Filtrar a textura conforme a taxa de amostragem"],
+      "limite": "Limiares 4–8 px e 1,25–2,5 px são escolhas experimentais locais, sem garantia universal de antialias."
+    },
+    {
+      "id": "pbrt-imagem",
+      "titulo": "Physically Based Rendering, 4th edition — Image Texture",
+      "url": "https://www.pbr-book.org/4ed/Textures_and_Materials/Image_Texture",
+      "tipo": "Livro técnico dos autores",
+      "consulta": "Página aberta pela ferramenta web, além de trechos indexados; seções de filtragem e avaliação consultadas.",
+      "sustenta": ["Mipmaps e filtragem de imagem", "Taxa de amostragem dependente de geometria, mapeamento e câmera"],
+      "limite": "O laboratório não implementa o filtro EWA do livro neste estudo."
+    },
+    {
+      "id": "w3c-pattern",
+      "titulo": "SVG 2 Candidate Recommendation, 15 September 2016 — Paint Servers, Patterns",
+      "url": "https://www.w3.org/TR/2016/CR-SVG2-20160915/pservers.html#Patterns",
+      "tipo": "Especificação primária W3C, edição identificada",
+      "consulta": "Definições extensas de patternUnits, patternContentUnits, patternTransform e viewBox retornadas pela busca. Abertura direta falhou por restrição de URL da ferramenta.",
+      "sustenta": ["Sistemas de coordenadas distintos do motivo e do conteúdo", "Defaults declarados e efeito de viewBox", "Transformação adicional do pattern"],
+      "limite": "Consulta de edição identificada não prova compatibilidade em todos os navegadores; não se usou a extensão hatch desse rascunho."
+    },
+    {
+      "id": "w3c-filtros",
+      "titulo": "Filter Effects Module Level 1 — Working Draft, 18 December 2018",
+      "url": "https://www.w3.org/TR/filter-effects-1/#feTurbulenceElement",
+      "tipo": "Documento primário W3C em desenvolvimento",
+      "consulta": "Página aberta pela ferramenta web; introdução e feTurbulence consultados.",
+      "sustenta": ["Filtros operam na imagem renderizada", "feTurbulence tem seed, frequência e oitavas"],
+      "limite": "Documento em desenvolvimento; a existência da primitiva não certifica textura de um material nem resultado igual entre implementações."
+    },
+    {
+      "id": "blender-deslocamento",
+      "titulo": "Blender Manual — Displacement",
+      "url": "https://docs.blender.org/manual/en/latest/render/materials/components/displacement.html",
+      "tipo": "Manual oficial do executor",
+      "consulta": "Trecho primário extenso de Bump Only, Displacement Only e combinação retornado pela busca. Abertura direta recebeu HTTP 402; nenhuma tentativa de contornar.",
+      "sustenta": ["Bump altera sombreamento, deslocamento real altera a superfície", "Geometria de deslocamento exige subdivisão suficiente"],
+      "limite": "Blender usado apenas como referência conceitual; nenhum novo executor ou dependência instalado."
+    },
+    {
+      "id": "alpha-local",
+      "titulo": "Identidade e roupa do Alpha Point",
+      "arquivos": ["marca/identidade.md", "marca/tokens.css", "marca/agentes/editor-de-arte.md"],
+      "tipo": "Regras locais do projeto, somente leitura",
+      "consulta": "Arquivos locais lidos no laboratório isolado, cópia base 16f0ebbf00f45d0c3cc0050c2e31c8163430ef75.",
+      "sustenta": ["Paleta por papel e limite de três matizes fora do satélite", "PRANCHA em fundo sólido sem degradê, véu ou vinheta", "Textura excluída do teto formal de elementos", "Derivações de opacidade têm usos específicos"],
+      "limite": "Regras deste canal; não universais para o núcleo portátil."
+    }
+  ],
+  "reproducao": {
+    "comando": "node laboratorio/estudo-texturas/verificar-texturas.cjs",
+    "conferencia": "node laboratorio/estudo-texturas/verificar-texturas.cjs --check",
+    "evidencia": "resultados.json",
+    "escopo": "Teste matemático local, sem render de pixels e sem QC visual."
+  }
+}

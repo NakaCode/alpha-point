@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-05",
+  "status": "PASSOU",
+  "moduleSha256": "1a9cf8e97ab6edc62b1d37ea1ed9e03457a3db34f7d6a0d01f47ae954a777a09",
+  "groups": [
+    {
+      "name": "Contrato de entrada e tempo",
+      "status": "PASSOU",
+      "evidence": {
+        "invalidTimesRejected": 3,
+        "finiteTimeClamped": [
+          0,
+          12
+        ],
+        "unknownGestureRejected": true
+      }
+    },
+    {
+      "name": "Comprimentos reais, coordenadas finitas e superfície em 722 estados",
+      "status": "PASSOU",
+      "evidence": {
+        "fechamento": {
+          "frames": 361,
+          "maxBoneError": 1.7763568394002505e-14,
+          "maxLocalJointStepAt30fps": 2.8749379399535275,
+          "pathCount": [
+            87,
+            92
+          ]
+        },
+        "punho": {
+          "frames": 361,
+          "maxBoneError": 1.0658141036401503e-14,
+          "maxLocalJointStepAt30fps": 0,
+          "pathCount": [
+            87,
+            88
+          ]
+        }
+      }
+    },
+    {
+      "name": "Seeks fora de ordem retornam exatamente a mesma geometria",
+      "status": "PASSOU",
+      "evidence": {
+        "seeks": 722,
+        "permutationMultiplier": 137
+      }
+    },
+    {
+      "name": "Contrafactual: juntas de cada dedo realmente dirigem a pele",
+      "status": "PASSOU",
+      "evidence": {
+        "probes": 32,
+        "note": "Perturbação deliberada fora da pose válida somente para provar dependência do desenho; não é uma pose entregue."
+      }
+    },
+    {
+      "name": "Punho transforma a mão; manga permanece fixa",
+      "status": "PASSOU",
+      "evidence": {
+        "movingParts": 6,
+        "fixedSleeveParts": 3,
+        "projectionColumnsMeasured": [
+          [
+            -0.05382011917964746,
+            -1.8295322528063593
+          ],
+          [
+            1.8140742500282272,
+            0
+          ],
+          [
+            0.358800794531021,
+            -0.2744298379209624
+          ]
+        ],
+        "scope": "quatro dedos fora da transição proximal do punho"
+      }
+    },
+    {
+      "name": "Controles negativos detectam osso deformado e coordenada inválida",
+      "status": "PASSOU",
+      "evidence": {
+        "detectedMutations": 3
+      }
+    },
+    {
+      "name": "Estados retornados não compartilham listas mutáveis internas",
+      "status": "PASSOU",
+      "evidence": {
+        "mutableSharedLists": false
+      }
+    }
+  ],
+  "scope": {
+    "fingers": "quatro dedos FK que dirigem a superfície",
+    "wrist": "transformação e manga fixa",
+    "thumb": "NÃO MEDIDO como FK; contorno dirigido",
+    "palm": "contorno dirigido",
+    "pinch": "NÃO MEDIDO neste auditor; componente separado",
+    "visual": "PENDENTE de revisão artística de Lucas; testes não aprovam a forma"
+  },
+  "limits": [
+    "Não mede colisões entre dedos, contato com palma/objetos nem conservação de volume.",
+    "Verifica comprimentos dos eixos ósseos, não comprimentos dos contornos 2D.",
+    "A oclusão e o desenho das polpas requerem inspeção de pixels; dependência das juntas não aprova sua anatomia.",
+    "Não é QC oficial nem autorização para integrar no Alpha."
+  ]
+}

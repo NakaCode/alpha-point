@@ -1,0 +1,380 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "roupa-ilustrador v1",
+  "type": "object",
+  "properties": {
+    "versao_contrato": {
+      "type": "integer",
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revisao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "idioma_tela": {
+      "type": "string",
+      "minLength": 1
+    },
+    "palco": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "documentos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "arquivo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "arquivo",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "tokens_css": {
+      "type": "object",
+      "properties": {
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "arquivo",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "papeis_cor": {
+      "type": "object",
+      "properties": {
+        "fundo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "superficie": {
+          "type": "string",
+          "minLength": 1
+        },
+        "papel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tinta": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tinta_papel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contorno": {
+          "type": "string",
+          "minLength": 1
+        },
+        "protagonista": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contraparte": {
+          "type": "string",
+          "minLength": 1
+        },
+        "risco": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "fundo",
+        "superficie",
+        "papel",
+        "tinta",
+        "tinta_papel",
+        "contorno",
+        "protagonista",
+        "contraparte",
+        "risco"
+      ],
+      "additionalProperties": false
+    },
+    "tipografia": {
+      "type": "object",
+      "properties": {
+        "heroi": {
+          "type": "object",
+          "properties": {
+            "familia_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "peso_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "tamanho_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "piso": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "alvo": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "teto": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "familia_token",
+            "peso_token",
+            "tamanho_token",
+            "piso",
+            "alvo",
+            "teto"
+          ],
+          "additionalProperties": false
+        },
+        "rotulo": {
+          "type": "object",
+          "properties": {
+            "familia_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "peso_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "tamanho_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "piso": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "alvo": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "teto": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "familia_token",
+            "peso_token",
+            "tamanho_token",
+            "piso",
+            "alvo",
+            "teto"
+          ],
+          "additionalProperties": false
+        },
+        "legenda": {
+          "type": "object",
+          "properties": {
+            "familia_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "peso_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "tamanho_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "piso": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "alvo": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "teto": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "familia_token",
+            "peso_token",
+            "tamanho_token",
+            "piso",
+            "alvo",
+            "teto"
+          ],
+          "additionalProperties": false
+        },
+        "credito": {
+          "type": "object",
+          "properties": {
+            "familia_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "peso_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "tamanho_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "piso": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "alvo": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "teto": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "familia_token",
+            "peso_token",
+            "tamanho_token",
+            "piso",
+            "alvo",
+            "teto"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "heroi",
+        "rotulo",
+        "legenda",
+        "credito"
+      ],
+      "additionalProperties": false
+    },
+    "areas": {
+      "type": "object",
+      "properties": {
+        "conteudo": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "credito": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "reservadas": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "conteudo",
+        "credito",
+        "reservadas"
+      ],
+      "additionalProperties": false
+    },
+    "limites": {
+      "type": "object",
+      "properties": {
+        "elementos": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "blocos_leitura": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "herois": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "elementos",
+        "blocos_leitura",
+        "herois"
+      ],
+      "additionalProperties": false
+    },
+    "regras": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "executor_padrao": {
+      "type": "string",
+      "enum": [
+        "html-svg-js"
+      ]
+    }
+  },
+  "required": [
+    "versao_contrato",
+    "id",
+    "revisao",
+    "idioma_tela",
+    "palco",
+    "documentos",
+    "tokens_css",
+    "papeis_cor",
+    "tipografia",
+    "areas",
+    "limites",
+    "regras",
+    "executor_padrao"
+  ],
+  "additionalProperties": false
+}

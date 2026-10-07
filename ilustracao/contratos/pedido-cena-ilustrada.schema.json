@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "pedido-cena-ilustrada v1",
+  "type": "object",
+  "properties": {
+    "versao_contrato": {
+      "type": "integer",
+      "const": 1
+    },
+    "projeto": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cena": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revisao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "roupa": {
+      "type": "object",
+      "properties": {
+        "arquivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "arquivo",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "entradas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "arquivo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "arquivo",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "fala": {
+      "type": "string",
+      "minLength": 1
+    },
+    "direcao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relacao_visual": {
+      "type": "string",
+      "minLength": 1
+    },
+    "regime_midia": {
+      "type": "string",
+      "minLength": 1
+    },
+    "executor": {
+      "type": "string",
+      "enum": [
+        "html-svg-js"
+      ]
+    },
+    "tempo": {
+      "type": "object",
+      "properties": {
+        "inicio_global": {
+          "type": "number",
+          "minimum": 0
+        },
+        "fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "quadros": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "inicio_global",
+        "fps",
+        "quadros"
+      ],
+      "additionalProperties": false
+    },
+    "palco": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "area_destino": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "eventos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "em": {
+            "type": "number",
+            "minimum": 0
+          },
+          "acao": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "em",
+          "acao"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "textos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "conteudo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "papel": {
+            "type": "string",
+            "enum": [
+              "heroi",
+              "rotulo",
+              "legenda",
+              "credito"
+            ]
+          },
+          "em": {
+            "type": "number",
+            "minimum": 0
+          },
+          "ate": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "id",
+          "conteudo",
+          "papel",
+          "em",
+          "ate"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "limites_editoriais": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "consumidor": {
+      "type": "object",
+      "properties": {
+        "responsavel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hook_tempo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "composicao": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "responsavel",
+        "hook_tempo",
+        "composicao"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "versao_contrato",
+    "projeto",
+    "cena",
+    "revisao",
+    "roupa",
+    "entradas",
+    "fala",
+    "direcao",
+    "relacao_visual",
+    "regime_midia",
+    "executor",
+    "tempo",
+    "palco",
+    "area_destino",
+    "eventos",
+    "textos",
+    "limites_editoriais",
+    "consumidor"
+  ],
+  "additionalProperties": false
+}
