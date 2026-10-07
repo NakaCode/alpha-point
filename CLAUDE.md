@@ -86,6 +86,11 @@ produz o master. O deste canal nasce assim:
      (`stability: 0`), com um pedido por parágrafo e sem "request stitching". A voz e o ajuste do vídeo 2 saem de um
      teste às cegas, com gasto que pede o ok dele. A medida do Juneau por parágrafo está em
      `out/juneau/_pesquisa/revisao-premiere-lucas.md` e em `out/juneau/_tmp/revisao-premiere/voz/`.
+   - **O vídeo 2 vai no ElevenLabs v4** (Lucas, 07/10/2026: "Quero fazer um novo vídeo do zero, com um novo tema, hook de início
+     mais "forte" e intrigante, utilizando Elevenlabs v4"). A API lista `eleven_v4` ("Our fastest and most emotive model") e
+     `eleven_v4_turbo`, com até 10.000 caracteres por pedido (o v3 aceita 5.000), conferido em 07/10 por `GET /v1/models`, sem gasto.
+     A voz e os ajustes no v4 saem do teste às cegas acima, dentro dos 15.000 créditos do vídeo. O `canal.json` › `narracao` continua no
+     v3 até o teste decidir, e o `narrar.mjs` da pré-v1 ainda não foi provado com o v4.
    - **Como se gera** (decidido pelo Lucas em 25–26/09): **pela API**, com
      `node C:\projetos\regie-v1\src\ferramentas\narrar.mjs <proj>`, **um pedido por parágrafo**. O roteiro fica em
      `out/<proj>/roteiro.md`, com parágrafos separados por linha em branco. Voz, modelo e ajustes vêm de

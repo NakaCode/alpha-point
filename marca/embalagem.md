@@ -32,6 +32,27 @@ ILHA DOS HOMENS?". Os recursos delas:
   com a bandeira);
 - setas curvas e caixinhas de rótulo.
 
+**Geography By Geoff** (1,1 mi de inscritos): o exemplo que o Lucas mandou em 07/10/2026, "esse é um bom exemplo de
+vídeo, título, início". Logo depois: "O uso de mapa é dispensável, vamos continuar com o nosso jeito". Daqui vêm o
+título e o começo; o mapa continua o da §1 da identidade. O vídeo é "Why Almost NOBODY Lives On Australia's West
+Coast" (https://youtu.be/I5QMtbO-DNk, 15:22), com 5,3 mi de views em 7 dias, lidos na página em 07/10. O mesmo molde
+rende no canal: "Why nobody lives on this HUGE stretch of African coast" (3,2 mi) e "Why Australia doesn't have a major
+city in the North" (3,1 mi).
+- **O título:** "Why" + "quase ninguém" + um lugar que se conhece. A palavra da virada vai em caixa alta (NOBODY), e o
+  "Almost" deixa a frase honesta. O vídeo paga a promessa no primeiro minuto.
+- **O começo** (0:00 a 0:30, lido nas legendas; uns 85 palavras), em cinco tempos:
+  1. **A escala, com uma comparação:** "Western Australia is the second largest administrative division on Earth,
+     roughly the size of Western Europe".
+  2. **O "But":** "But despite taking up roughly a third of Australia and having a huge coastline, it is exceptionally
+     empty."
+  3. **O contraste que o mapa mostra:** a costa leste tem várias cidades grandes, "the West Coast only has Perth".
+  4. **A segunda virada, a que prende:** "So why don't more Australians live in Western Australia if it's basically
+     closer to everything?". O fato que o espectador não esperava vira a pergunta do vídeo.
+  5. **A assinatura do canal:** "I'm Jeff and this is the weird geographic story of Western Australia". Logo depois, o
+     capítulo 1 abre com "The first reason…", sem introdução longa.
+- **O que o Alpha Point não herda:** o apresentador na câmera, aos 0:26 (o canal é faceless). As razões viram
+  capítulos, como lá ("The first reason…" na voz), mas sem número de contagem na tela (`identidade.md` §1).
+
 **MirAtlas60**: listas numeradas. O canal **não** herda esse molde (`identidade.md` §1: nada de contagem nem de
 "fato absurdo").
 
