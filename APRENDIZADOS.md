@@ -1233,3 +1233,17 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   e o portão se reabre se uma cena real chegar perto dele.
 - **Por que serve a qualquer canal:** todo canal que escreve portão e o põe à prova com revisores adversariais cai no mesmo laço: o
   revisor sempre acha mais um jeito de enganar uma régua de pixels.
+
+### 66. O servidor que recusou o robô foi lido pela API dele, por outro pesquisador, minutos depois
+
+- **O problema:** no dossiê do vídeo 2, o servidor do porto de Long Beach recusou o robô do canal duas vezes, em dois agentes
+  diferentes. Outros dois agentes, que não sabiam disso, leram o mesmo servidor pela API JSON do site, e os números de Long Beach
+  entraram no dossiê por esse caminho. Cada agente seguiu a regra no que viu: o que recusou parou, e o que leu pela API não tinha
+  visto recusa nenhuma. Quem juntou as pontas foi o crítico transversal, que lê os registros de todas as dimensões.
+- **O que resolveu:** o Claude central contou como contorno. A regra veda ler de novo, por outro cliente, o servidor que recusou, e
+  a API é outro caminho para o mesmo servidor. As provas saíram, e Long Beach entrou pela republicação de uma revista do setor.
+- **Como evitar:** o pedido a cada pesquisador diz que a recusa vale para o servidor inteiro, em qualquer caminho (página, API,
+  feed, arquivo), e que antes de ler um servidor ele procura nos registros dos outros agentes do mesmo trabalho se esse servidor já
+  recusou. O crítico transversal procura a mesma coisa de propósito.
+- **Por que serve a qualquer canal:** todo canal que espalha a pesquisa por vários agentes em paralelo tem esse ponto cego: a recusa
+  fica no registro de um agente, e o vizinho não a vê.
