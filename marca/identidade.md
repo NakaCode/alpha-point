@@ -502,8 +502,17 @@ animações para ilustrar coisas específicas"). Vale a partir do vídeo 2.
   compõe, mas não substitui o registro (ofício do `editor-de-arte` e do `montador`, §10).
 - **Animação não conta na régua de mundo real** (§4.3). Mapa e registro cobrem o que existe; a animação, o que é
   abstrato.
-- **O estilo das animações**, além da PRANCHA, ainda não está na identidade. Quando o vídeo 2 pedir, o Lucas vê
-  opções numa página, como viu as do documento.
+- **O estilo das animações: o traço de engenheiro** (Lucas, 07/10/2026). Ele viu a cena 52 do vídeo 2 (o que é um TEU)
+  desenhada em três acabamentos, com os mesmos tempos e a mesma física (`out/prova-estilo/`, fora do git: `ESTILOS.md`,
+  os três clipes 4K e `_comparar/`). A pergunta: "Qual estilo vira o das animações desenhadas do canal (o vídeo de 18 s e a imagem acima)? Tempos, movimento e física são iguais nos três; só o acabamento muda. No vídeo 2 ele vale para as cenas 13, 36 e 52 e para o medidor de profundidade." A resposta: "A — traço de engenheiro". A opção dizia: "Só linha clara e fina, sem preenchimento, como desenho técnico. Foi o que o diretor de arte propôs: explica sem fingir ser objeto." As outras
+  eram "B — papel recortado" e "C — contorno e vidro". O estilo, do vídeo 2 em diante:
+  - o objeto é **só linha**, em `--tinta`, **6 px**, **sem preenchimento**, com as arestas escondidas **tracejadas**;
+  - a **cota** (a medida) em Inter **84 px**, com a linha de cota fina; os **rótulos soltos** sobre a mesa ou o mapa, sem
+    pílula nem etiqueta;
+  - a sombra é a **sombra solta do próprio traço** (movimento A, §4.4); nada de gradiente nem de volume pintado;
+  - **peça chapada nas cores dos papéis só quando representa território** (§2), como as peças da lei na s36;
+  - a física do ilustrador para tudo que age (§4.4, "O ilustrador, com a física");
+  - a referência é `out/prova-estilo/graphics/s52-a.html` (nesta máquina). A PRANCHA continua como era.
 
 **Mais mapa, quando a fala pede** (Lucas, 27/09/2026: "Eu acredito que nos próximos devemos usar mais mapas
 (mas claro que somente se o contexto permitir"). Vale a partir do vídeo 2, e o Juneau fica como está: perguntado

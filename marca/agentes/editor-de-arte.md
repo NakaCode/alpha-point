@@ -226,6 +226,11 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
     FURO.r` e não provava nada; quem provou foi o DOM e o MP4;
   - **a marca vence o pacote**: o adaptador `adaptadores/alpha-point/` do pacote está desatualizado e não se copia; cor,
     fonte, crédito e áreas vêm de `marca/`. O agente opcional `ilustrador-tecnico` não está ligado no canal;
+  - **o acabamento da animação desenhada é o traço de engenheiro** (Lucas, 07/10/2026: "A — traço de engenheiro"; identidade.md §5,
+    "Animação para explicar"): só linha `--tinta` de 6 px sem preenchimento, arestas escondidas tracejadas, cota em Inter
+    84 px, rótulos soltos, a sombra solta do próprio traço; chapado só no que representa território. A referência é
+    `out/prova-estilo/graphics/s52-a.html` (nesta máquina), e o `= 2 TEU` dela fica 0,89 s no ar: na produção, a regência e
+    o redator resolvem os 2 s;
   - a pasta `ilustracao/` é cópia conferida do núcleo v1.4.0 (`ilustracao/ORIGEM.json`) e **não se edita**. O piloto, com
     o antes e depois, os portões e os dois laudos, está em `out/prova-ilustracao/` (fora do git, nesta máquina).
 
