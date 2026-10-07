@@ -1,6 +1,166 @@
-# Conferência de mídia: los-angeles, fluxo midia, 07/10/2026 11:33, 13:55, 14:15 e 17:02 (Brasília)
+# Conferência de mídia: los-angeles, fluxo midia, 07/10/2026 11:33, 13:55, 14:15, 17:02 e 19:40 (Brasília)
 
-**Laudo:** 37 aprovados de 64 conferidos (17 reprovados, 10 trocar, 0 pendente_lucas); 3 com algo não conferido; recebidos: 64.
+**Laudo (o arquivo inteiro):** 43 aprovados de 72 conferidos (17 reprovados, 12 trocar, 0 pendente_lucas); 3 com algo não conferido; recebidos: 72.
+
+## Rodada das 19:40: a regência nasceu (passo `conducting`)
+
+**Laudo da rodada:** 37 aprovados de 39 vereditos sobre 38 conferidos (0 reprovados, 2 trocar, 0 pendente_lucas); 0 com algo não
+conferido; recebidos: 38 (os 37 usos de `regencia.json` › `_conferencia_de_janelas` e a página nova `sdoc18-1897-p25.jpg`). O uso
+da foto de 1982 em s49 deu dois vereditos: o beat 0 aprovado e o beat 1 `trocar`.
+
+O que entrou: `regencia.json` (sha256 `a5b3ad1d…`), o `espelho.json` de hoje (`cbc9c2e0…`), o `conceito-visual.json` (as
+reaparições declaradas), o mesmo `words.json` da r3 (`90f3e24a…`) e o `roteiro-narrador.md` (`d7d88dce…`). Os `t0`/`t1` da
+regência são relativos à cena; a janela de cada uso é `inSec` + `t0`/`t1` dos beats que citam o arquivo. Todo `_texto_aprovado`
+das cenas julgadas é trecho literal do roteiro (conferido por script; s48 só passa por cima de um comentário de parágrafo).
+
+Como ficou no JSON: nas confirmações, o veredito antigo foi copiado para `substituidos` e a `frase_coberta` passou à janela do
+beat (`janela_provisoria: false`), com a nota `revisao_r4`; os reusos noutra cena, o beat 1 de s49 e a p. 25 ganharam vereditos
+novos (`uso_de` aponta o veredito de origem). Cada veredito novo de foto casa pelo sha256 do rascunho, como antes, e leva também
+o `sha256_instalado`. `_media/` não mudou durante a conferência (sha256 dos 179 arquivos, antes e depois).
+
+Olhei de novo todos os 31 arquivos parados (cópias de 1.600 px em `out/los-angeles/_tmp/conferencia/r4/olhar/`) e os quadros dos
+dois footages no trecho que a regência usa (`r4/s01/`, de 3,0 a 7,6 s; `r4/s54/`, de 0,0 a 4,7 s). Não foi de olhos novos: os
+vereditos anteriores, a regência e a pauta foram lidos antes.
+
+| id | cena (beats) | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `footage/s01/los-angeles-downtown-aerea.mp4` | s01 (0–1) | Motion Array 2212473 | aprovado | o centro de LA do ar no trecho de 3,0 s em diante, sem a escultura pichada; cobre 0–3,1 s em tela cheia e o encolher até 4,633 s |
+| `documento/arce1888-p2123.jpg` | s02 (0) | govinfo | aprovado | o "never" literal, 12,3–20,733 s |
+| `foto/s04/los-angeles-plain-1876-watkins.jpg` | s04 (0) | Commons (Met, CC0) | aprovado | a cidade na planície, sem água, 1876 |
+| `foto/s04/plaza-…-ca1880-watkins.jpg` | **s05** (1), reuso | Commons (Getty) | aprovado | a Plaza c. 1880 como miniatura no ponto da Plaza; s04 não a usa mais, e o conceito a declara |
+| `pessoa/s06/dana-…-1842-commons.jpg` | s06 (0–1) | Commons | aprovado | Dana Jr. em 1842 no card, que fica quando a p. 109 pousa |
+| `documento/dana-1895-commons-p109.jpg` | s06 (1) | Commons | aprovado | "the worst place we had seen yet" |
+| `foto/s09/wilmington-bannings-landing-railroad-1870.jpg` | s09 (0–1) | Commons (LAPL) | aprovado | o trem no cais de Wilmington, 1870, impressa sobre a mesa (fica no beat 1, o mesmo porto) |
+| `foto/s09/birds-eye-view-wilmington-inset-1877-glover.jpg` | s09 (1) | Commons (LoC, mapa) | aprovado | o porto de Wilmington em 1877, litografia, nunca "Photo from" |
+| `foto/s11/deadmans-island-san-pedro-ca1910.jpg` | s11 (0) | Commons (USC/CHS) | aprovado | Deadman's Island c. 1910, tela cheia |
+| `foto/s11/jetty-to-deadmans-island-ca1903.jpg` | s11 (1) | Commons (USC/CHS) | aprovado | o molhe até a ilha c. 1903, com JULY 1871 e Mendell |
+| `foto/s11/deadmans-island-san-pedro-ca1910.jpg` | **s12** (1), reuso | Commons (USC/CHS) | aprovado | miniatura no ponto da ilha, 9,3 s depois de s11; volta declarada no conceito |
+| `documento/arce1888-p2122.jpg` | s13 (0–3) | govinfo | aprovado | a carta de 8/11/1886 nos quatro beats (171,6–200,267 s) |
+| `documento/arce1888-p2123.jpg` | **s13** (2–3), reuso | govinfo | aprovado | o "never" e o teto de 18 ou 20 pés; volta declarada no espelho |
+| `documento/arce1888-p2124.jpg` | s15 (0–2) | govinfo | aprovado | o levantamento de 13/02/1888 com o primeiro quebra-mar |
+| `documento/arce1888-p2126.jpg` | s15 (2) | govinfo | aprovado | o endosso de Mendell |
+| `foto/s11/jetty-to-deadmans-island-ca1903.jpg` | **s16** (1–2), reuso | Commons (USC/CHS) | **trocar** | a volta, 90,9 s depois de s11, só a regência a declara; nem o espelho nem o conceito (lá a etiqueta tem um traço desenhado, sem foto) |
+| `foto/s18/long-wharf-port-los-angeles-ca1900.jpg` | s18 (0–2) | Commons (USC/CHS) | aprovado | o Long Wharf de Port Los Angeles c. 1900 |
+| `foto/s18/longest-wharf-…-postcard-1902.png` | s18 (1–2) | Commons (NYPL) | aprovado | o mesmo píer, cartão de 1902 |
+| `foto/s18/longest-wharf-…-postcard-1902.png` | **s19** (0), reuso | Commons (NYPL) | aprovado | miniatura no ponto de Port Los Angeles; contínua com s18 e declarada no conceito |
+| `documento/hed41-1892-p28.jpg` | s20 (0–3) | govinfo | aprovado | a audiência de 08/09/1892 |
+| `documento/hed41-1892-p58.jpg` | s20 (2–3) | govinfo | aprovado | "would go to the wall" |
+| `documento/willard-1899-commons-p1.jpg` | s22 (0) | Commons | aprovado | "open to competition" |
+| `documento/stat29-1896-p213.jpg` | s24 (0–2) | govinfo | aprovado | a lei de 1896, a junta e "final as to the location" |
+| `documento/sdoc18-1897-p24.jpg` | s24 (2) | govinfo | aprovado | "this Board reports in favor of San Pedro" |
+| `documento/sdoc18-1897-p25.jpg` | **s25** (1), nova | govinfo | aprovado | o relatório de minoria de Richard Price Morgan, 15/03/1897: atesta a frase inteira do beat |
+| `foto/s27/free-harbor-jubilee-poster-1899.jpg` | s27 (0–2) | Commons (LoC) | aprovado | o cartaz do jubileu de 1899 |
+| `pessoa/s27/mckinley-…-1898-loc-commons.jpg` | s27 (2) | Commons (LoC) | aprovado | McKinley, 1898 |
+| `foto/s33/san-pedro-harbor-town-ca1891-1910-jackson.jpg` | s33 (0–1) | Commons (Denver PL) | aprovado | San Pedro em tela cheia; no beat 1 é miniatura presa a San Pedro, nunca a Wilmington |
+| `documento/ca-stat1883-p97.jpg` | s35 (0–1) | Assembleia da Califórnia | aprovado | o Sec. 8 de 1883 ("contiguous municipal corporations") |
+| `documento/ca-stat1883-p98.jpg` | s35 (1–2) | Assembleia da Califórnia | aprovado | "may become consolidated into one corporation" |
+| `documento/ca-stat1889-p360.jpg` | s35 (2) | Assembleia da Califórnia | aprovado | a proibição de anexar o que já é cidade |
+| `documento/hamlin-1916-p1.jpg` | s39 (0–1) | Commons (LoC) | aprovado | o mapa de anexações de 1916 com a faixa |
+| `documento/ca-stat1909-p282.jpg` | s43 (0) | Assembleia da Califórnia | aprovado | a lei de 11/03/1909 com "each one of which is contiguous to the other" |
+| `foto/s47/dredging-wilmington-harbor-ca1912.jpg` | s47 (0) | Commons (USC/CHS) | aprovado | a frente de água de Wilmington c. 1912, 7,4 s com movimento |
+| `foto/s47/los-angeles-harbor-light-breakwater-1914.jpg` | s47 (1–2) | NARA | aprovado | o quebra-mar terminado com o farol, 1914 |
+| `foto/s47/los-angeles-harbor-light-breakwater-1914.jpg` | **s48** (0), reuso | NARA | aprovado | miniatura na linha do muro; contínua com s47 e declarada no conceito |
+| `foto/s49/harbor-deepening-dredge-1982-usace.jpg` | s49 (0) | Commons (USACE) | aprovado | o aprofundamento de 1982, só em "deepened by dredges" (668–671,1 s) |
+| `foto/s49/harbor-deepening-dredge-1982-usace.jpg` | **s49 (1)** | Commons (USACE) | **trocar** | como miniatura no Main Channel durante "By twenty thirteen…", a draga de 1982 faz o papel do aprofundamento de 2008–2013 |
+| `footage/s54/angels-gate-quebra-mar-aereo.mp4` | s54 (0) | Envato 90e9da08… | aprovado | o farol na ponta do quebra-mar de San Pedro, no trecho 0,0–4,8 s; o farol está no centro do quadro, não no terço esquerdo |
+
+**Os grifos retravados** (pauta-documentos, rodada 3; `r4/grifos.txt`): em s13, s15, s24, s25, s35, s39, s41 e s43, cada índice
+de palavra bate com o `words.json` em texto e em tempo, cada grifo cai dentro do plano do espelho que a pauta diz, e o texto
+grifado é o que a página atesta para aquelas palavras. Os problemas são de quando a folha está na mesa, e vão abaixo, à arte.
+A s41 é prova (`la0007-prova-p2.jpg`): não vai à tela e não passa por mim; a cena recria o texto, e os dois tempos de lá batem
+com a voz.
+
+Os 5 aprovados que a regência não cita (`sdoc18-1897-p3`, `hood-1892-commons-p1` e `-p40`, a página do álbum de 1913 e a vista
+aérea de 1982) continuam aprovados sobre a janela provisória, como reserva. Se algum voltar a uma cena, ele pede conferência
+contra o beat.
+
+## Para o Lucas pesar
+
+Nenhum `pendente_lucas`.
+
+## Para reconferir no navegador do app
+
+Nada novo. Os itens das rodadas anteriores continuam como estavam (abaixo, no histórico).
+
+## Para trocar, e o que muda para a regência e a arte
+
+**Os dois `trocar`:**
+- **s16, o molhe de s11 como miniatura** (`quem_entregou`: pesquisa-imagens). Para passar, basta o diretor-de-arte declarar a
+  volta no `conceito-visual.json` (ou o montador no espelho) e a miniatura levar "Photo from about 1903". Sem isso, fica a
+  etiqueta desenhada do conceito ("JETTY · 1871" com um traço), que é o `fallback_tipo` da própria regência. Outra foto do molhe:
+  `Mendell jetty Rattlesnake Island Deadman's Island San Pedro photograph 1870s 1880s`.
+- **s49, beat 1, a foto de 1982** (pesquisa-imagens). Ela sai da tela antes de "twenty" (671,335 s): corte seco para o mapa, ou
+  o encolher termina antes disso. A miniatura no Main Channel só com foto do aprofundamento de 2008–2013:
+  `Port of Los Angeles Main Channel deepening 2008-2013 dredge photo USACE Los Angeles District` (spl.usace.army.mil recusou
+  robô: pelo navegador do app).
+
+**Para a regência (`regente-de-imagem`):**
+- **s54:** o beat diz "the lighthouse in the left third". Nos quadros de 0,0 a 4,7 s, o farol está no centro (~48 a 52 % da
+  largura), com o muro até a borda direita. O conteúdo serve; a descrição não bate.
+- **s35:** a regência pede a p. 97 "then" a p. 98, mas a voz diz "consolidate" (464,8 s) antes de "contiguous" (468,325 s). A
+  pauta grifa a p. 98 em 462,08–465,5 s e a p. 97 em 467,63–469,02 s, e o conceito pousa a p. 98 em ~466,4 s, depois do grifo
+  dela. O Sec. 8 começa na p. 97 e termina na p. 98: as duas folhas lado a lado desde "Since" resolvem.
+
+**Para a arte (`editor-de-arte` e `mapista`):**
+- **s13:** o grifo da pauta "12 to 14 feet draught" (180,66–183,23 s) está na p. 2123, que só pousa em 186,1 s. No beat 1 ela não
+  está na mesa: ou pousa antes, ou esse grifo sai e o "12–14 FT" do desenho cobre.
+- **Grifos que começam antes de a folha assentar** (pouso de 0,8 s, câmera parada 0,3 s antes do grifo, identidade §4.4):
+  - s15, p. 2124: o grifo começa em 228,93 s, e a folha pousa em 228,9 s. Começar em "design" (231,755 s) ou "breakwater" (232,46 s).
+  - s35, p. 360: começa em 471,1 s ("And"); o conceito pousa a folha em ~471,6 s. Começar em "forbade" (472,32 s).
+  - s39, Hamlin: começa em 521,61 s, com a folha pousando. Começar em "December" (522,555 s).
+  - s25, p. 25: começa em 360,28 s ("Richard"); a folha pousa em 359,6 s e assenta em ~360,4 s. Começar em "filed" (361,26 s). A
+    página entra pela regência: o conceito tinha s25 sobre `--papel`, sem folha.
+- **s04, a Watkins de 1876:** a foto, sem a montagem, tem ~2.840 px de largura no arquivo de 3601. Em tela cheia ela enche a
+  ~1,35×, e o Ken Burns termina em 1,4 ÷ 1,35 ≈ 1,03. O "1,066×" do conceito é a montagem inteira, com a margem branca e o
+  "Los Angeles" manuscrito.
+- **s47, a NARA de 1914:** no arquivo instalado (5120 px), a foto, sem a prancha, tem ~3.280 px. Enche a ~1,17×, e o Ken Burns
+  até 1,12 cabe (1,31 ≤ 1,4). O "0,75×" do conceito é a prancha.
+- **s33, beat 1:** a miniatura de San Pedro fica presa à pílula San Pedro, com o aviso do ano, e nunca a Wilmington.
+- **s09:** a foto de 1870 tem 800 px: só impressa, até 1,4×.
+
+**Avisos do conjunto da cena:**
+- **s47, beat 0:** 7,4 s de foto em tela cheia passam do teto de 6 s da foto parada. Só vale com o Ken Burns com direção, que o
+  conceito prevê.
+- **s15, beat 1:** a prancha do quebra-mar de 1888 continua em falta (a pauta, rodada 3, não achou). A p. 2124 fica na mesa, e o
+  esboço declarado é a alternativa.
+- **s18 (Willard) e s20 (Hood):** os retratos continuam em falta, e a etiqueta de nome e cargo cobre. Nenhum arquivo meu muda
+  por isso.
+
+## Para quem escreve a tela (redator-de-tela e verificador-de-fatos)
+
+- **s05, s12, s19 e s48 (miniaturas):** cada uma leva o aviso do ano na margem: "Photo from about 1880", "Photo from about 1910",
+  "Postcard from 1902" e "Photo from 1914".
+- **s19:** a pílula "Port Los Angeles" é do ponto do mapa. Na miniatura, só "Postcard from 1902" (e "Santa Monica", se houver
+  rótulo): a origem do cartão diz "Santa Monica, Cal.". Que o píer é o de Port Los Angeles vem da CHS-842, cuja origem diz
+  "Long Wharf of Port of Los Angeles". Os dois mostram o mesmo píer.
+- **s25:** a página imprime "Richard Price Morgan" e "Richard P. Morgan". A tela diz "Richard Morgan", como o espelho. O "two
+  weeks later" é a conta de 1º/03 a 15/03/1897, com as duas datas impressas na página.
+- **s13:** a voz parafraseia o teto ("could be obtained", "would have reached"). O grifo e a tela seguem a fonte ("can be
+  obtained", "will have received its maximum development").
+- **s35, p. 97:** a página não imprime "1883" nem o nome da lei ("Twenty-fifth session"). A pílula "1883 · Municipal
+  Corporations Act" é do dossiê, e quem a confere é o verificador-de-fatos.
+- **s24, p. 24:** a página não traz data. O "MARCH 1, 1897" é pílula (a p. 25 cita "the report dated March 1, 1897").
+- **s49:** "Photo from 1982", e o rótulo não diz "dredge" (a origem diz "spill barge").
+
+## Divergências e notas (rodada das 19:40)
+
+- **Entre a marca e este ofício:** nenhuma.
+- **O reuso declarado:** o ofício (§5.4) aceita a volta que o montador ou o diretor-de-arte escreveram. A regência chama de
+  "reuso declarado" as voltas de s05, s12, s13, s16, s19 e s48. Cinco estão também no espelho ou no conceito; a de s16, só na
+  regência, e por isso é `trocar`. Se o Lucas ou o Claude central quiserem que a regência baste, a regra muda no ofício, não
+  aqui.
+- **`sdoc18-1897-p3`:** o grifo da data "March 1, 1897" está preso, na pauta, às palavras da citação (355,1–357,45 s), e não a
+  "On March first, eighteen ninety-seven". A página não está na regência; se voltar, o grifo vai para a data na voz.
+- **A p. 25:** a pauta diz que a imagem foi gravada byte a byte do PDF do govinfo. Isso eu não medi (o PyMuPDF não está na
+  minha lista); medi o arquivo (2137x3573, cinza, sha256 `4ee73e9c…`) e li a página.
+
+---
+
+# Histórico (rodadas anteriores, como estavam)
+
+O que segue são as rodadas das 11:33, 13:55, 14:15 e 17:02. Onde a rodada das 19:40 mudou a janela de um aprovado, vale a de
+cima: as janelas abaixo eram provisórias. O laudo das 17:02 era: 37 aprovados de 64 conferidos (17 reprovados, 10 trocar,
+0 pendente_lucas); 3 com algo não conferido; recebidos: 64.
 
 ## Rodada das 17:02
 
@@ -86,12 +246,12 @@ retrato de Dana e 13 documentos), a frase é a mesma, e o objeto do plano també
 
 Os dois aprovados da s04 que mudaram (as fotos pequenas da LAPL) estão na tabela acima.
 
-## Para o Lucas pesar
+### Para o Lucas pesar (17:02)
 
 Nenhum `pendente_lucas`. Para ele saber, sem pergunta: li a cópia do Commons de um scan do Internet Archive como "a mesma
 página numa fonte aprovada" (acima). Se ele não concordar, Dana e Willard vão à recriação, já escrita.
 
-## Para reconferir no navegador do app
+### Para reconferir no navegador do app (17:02)
 
 - **s28, "Celebration of Harbor Day. San Pedro." (USACE, 1899):** falta uma fonte que ligue "Harbor Day" ao dia de San Pedro do
   Free Harbor Jubilee (26/04/1899). Pode vir do `verificador-de-fatos`, pelo dossiê, ou de outra cópia do mesmo registro com
@@ -101,7 +261,7 @@ página numa fonte aprovada" (acima). Se ele não concordar, Dana e Willard vão
 - Continuam da rodada das 11:33: s01, o aéreo do Dronalist (licença no YouTube), e o TIFF da s18. O TIFF fica superado pelo PNG
   aprovado e não precisa mais de conferência.
 
-## Para trocar
+### Para trocar (17:02)
 
 **pesquisa-documentos:** mover os 10 reprovados do IA para `_media/_caca/_retirado/documento/` e seguir a recriação das 6 do
 Times.
@@ -127,7 +287,7 @@ Times.
 - **s04:** um plano de 4,5 s e duas aprovadas (a Watkins de 1876 e o estereograma). Uma basta, e a escolha é do montador e do
   regente: a de 1876 mostra a planície, e o estereograma nomeia a Plaza.
 
-## Para quem escreve a tela (redator-de-tela e verificador-de-fatos)
+### Para quem escreve a tela (17:02)
 
 - **s09, a litografia:** o aviso diz o gênero e o ano ("Lithograph from 1877" ou "Bird's-eye view, 1877"), nunca "Photo from". O
   rótulo de lugar vai até "Wilmington", como a legenda do encarte.
@@ -140,7 +300,7 @@ Times.
 - **s49:** "Photo from 1982". A origem chama o equipamento de "spill barge", não de draga: o rótulo, se houver, não diz
   "dredge".
 
-## Divergências e notas (rodada das 17:02)
+### Divergências e notas (rodada das 17:02)
 
 - **Entre a marca e este ofício:** nenhuma.
 - **Olhos novos:** em parte. O pedido do Claude central e os nomes de arquivo vieram antes. Os 9 rascunhos de imagem foram
@@ -151,9 +311,7 @@ Times.
 - **As fotos de 1982 da s49:** o fotógrafo não é nomeado. O Commons as marca como obra de funcionário do USACE, e a origem diz
   "Approved for public release, distribution unlimited". Contam como federais, como as outras do acervo do Corpo de Engenheiros.
 
----
-
-# Histórico (rodadas anteriores, como estavam)
+## Rodadas das 11:33, 13:55 e 14:15
 
 As linhas abaixo são das conferências das 11:33, 13:55 e 14:15. Onde a rodada das 17:02 mudou um veredito, vale a tabela de
 cima: os 10 do IA, que eram `pendente_lucas`, e as duas fotos da LAPL na s04, que eram aprovadas. A seção "Para o Lucas pesar"
@@ -227,7 +385,7 @@ foi um olhar de olhos novos.
 | `_caca/s54/envato/san-pedro-harbor-lighthouse-bathed-in-the-warm-hue-….mp4` | s54 | Envato 90e9da08… | aprovado | o mesmo item da prévia: o farol na ponta do quebra-mar de San Pedro, hoje, 4K, 19 s para 4,8 s; rótulo só San Pedro/Los Angeles |
 | `_caca/s01/motionarray/Los_Angeles_Downtown_Aerial_Fly_Drone_original_2212473.mov` | s01 | Motion Array 2212473 | aprovado | o mesmo item da prévia (mesmo_item true), agora no Original 4096x2160 (ProRes 422 LT, 22 s): o centro de Los Angeles do ar, sem letreiro legível, cobre "second-largest city"; o .mp4 3840x2026 continua reprovado e fora da cena |
 
-## Para o Lucas pesar (11:33; respondida às 12:03)
+### Para o Lucas pesar (11:33; respondida às 12:03)
 
 Os 10 `pendente_lucas` são a mesma pergunta: dana-1895-p109, hood-1892-p40, hood-1892-p1, willard-1899-p1,
 lat-1899-04-27-barcaca-p10, lat-1899-04-27-publico-p10, lat-1906-11-13-p1, lat-1906-11-20-p2, lat-1906-11-21-p2 e
@@ -242,7 +400,7 @@ lat-1909-08-13-p1.
   trecho (literal, com a fonte)?"
 - Nas duas do Hood, a pergunta pode sumir se a mesma digitalização estiver no loc.gov, que é acervo da lista.
 
-## Para reconferir no navegador do app (11:33)
+### Para reconferir no navegador do app (11:33)
 
 - s01, o aéreo do Dronalist: https://www.youtube.com/watch?v=FFRW43AVTQk. Copiar a licença que a página mostra e o nome do
   canal. No Commons, a revisão de licença do arquivo está pendente.
@@ -251,7 +409,7 @@ lat-1909-08-13-p1.
 - Os 10 documentos do IA: https://archive.org/about/terms.php, copiar o que os termos dizem sobre uso.
 - s20, Hood: procurar no loc.gov a transcrição de 1892 ("Before the honorable Board of government engineers", Craighill).
 
-## Para trocar (11:33)
+### Para trocar (11:33)
 
 **pesquisa-imagens:**
 - s04: `Los Angeles Plaza 1870s view over the plain, photograph 1600 px wide or larger` (o panorama de 1869 é tira fina).
@@ -272,7 +430,7 @@ lat-1909-08-13-p1.
 - s33 plano 2 (Wilmington) e s47 planos 1–2: lacunas.
 - s28 plano 2: o espelho pede foto da multidão. A página do Times só serve se a cena mantiver o documento.
 
-## Divergências e notas para quem escreve a tela (11:33)
+### Divergências e notas para quem escreve a tela (11:33)
 
 - s33 (Jackson): o aviso dá o intervalo da origem, "ca. 1891–1910", e não "the 1890s".
 - s38: o recorte de 21/11/1906 imprime "218". Ele fica só no plano 2, e o "213" vai na folha de 20/11.
@@ -282,7 +440,7 @@ lat-1909-08-13-p1.
 - s06 (Dana): a origem não diz o meio do retrato. A forma do aviso é do `redator-de-tela`.
 - Entre a marca e este ofício: nenhuma divergência.
 
-## Banco pago, caça 2 (13:55)
+### Banco pago, caça 2 (13:55)
 
 `mesmo_item`: **true nos três**. Cada quadro do arquivo (15, 50 e 85 %, pelo `_frames-de-clipe`) foi posto ao lado da
 prévia do mesmo ponto: mesmo enquadramento, luz, movimento e coisas nos mesmos lugares. Na s01 e na s51, o
@@ -315,7 +473,7 @@ longo do clipe, então o trecho escolhido decide onde ele fica.
   O recorte 1:1 do arquivo é o que pega isso.
 - Olhos novos só em parte: os vereditos da caça foram lidos antes de abrir os quadros dos arquivos.
 
-## Banco pago, caça 2, o Original da s01 (14:15)
+### Banco pago, caça 2, o Original da s01 (14:15)
 
 Um arquivo: `_caca/s01/motionarray/Los_Angeles_Downtown_Aerial_Fly_Drone_original_2212473.mov`, candidato s01-p1-3, o mesmo
 item do `.mp4` reprovado às 13:55. Baixado no formato Original, que a skill (§3, passo 2, mudada em 07/10/2026) permite
