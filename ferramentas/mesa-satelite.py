@@ -9,6 +9,9 @@
 # render de mapa pedem crédito na tela e NÃO servem à mesa: a ferramenta não tem como saber de onde veio a imagem, e
 # quem a chama responde por --fonte e --licenca, que vão para a procedência.
 # Saída: <saida.png> (3840×2160) e <saida.png>.json (a procedência: a entrada e o sha256, a cadeia, as medidas, a fonte).
+# A exposição: a cadeia sozinha deixa uma cena de cidade quase preta (Los Angeles: luma média 9,6) e uma de neve no visual
+# aprovado (Juneau: 17,7). A ferramenta procura um ganho, antes do desfoque, que leve a luma média ao alvo aprovado
+# (--mesa-satelite-luma-alvo, 17,7: o quadro que o Lucas viu), sem passar do piso do crédito. O ganho vai à procedência.
 # A conta do crédito: o crédito (--sec, a --tinta a 80 %) fica sobre a faixa x 200–1720, y 1880–2160. A ferramenta
 # mede o pixel MAIS CLARO dessa faixa no still e calcula o contraste do --sec sobre ele (WCAG). Recusa abaixo de 6:1:
 # o véu da luz e o feltro ainda clareiam um pouco a mesa na cena, e o piso de texto é 4,5:1 (identidade §2). A medida
@@ -21,6 +24,8 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 FAIXA = (200, 1880, 1720, 2160)       # x0, y0, x1, y1 da faixa do crédito no palco 4K (--credito-x, --faixa-credito-y)
 PISO = 6.0
+CORTE = "crop=3840:2160"              # o ganho de exposição entra logo depois do corte, antes do desfoque
+TOLERANCIA = 0.6                      # luma média dentro de ±0,6 do alvo
 
 def sair(cod, msg):
     print(msg, file=sys.stderr if cod else sys.stdout)
@@ -35,6 +40,13 @@ def cadeia():
     if not m:
         sair(2, "não achei --mesa-satelite-tratamento em marca/tokens.css")
     return m.group(1)
+
+def luma_alvo():
+    css = (RAIZ / "marca" / "tokens.css").read_text(encoding="utf-8")
+    m = re.search(r"--mesa-satelite-luma-alvo:\s*([\d.]+)", css)
+    if not m:
+        sair(2, "não achei --mesa-satelite-luma-alvo em marca/tokens.css")
+    return float(m.group(1))
 
 def hex_rgb(h):
     h = h.lstrip("#")
@@ -87,14 +99,35 @@ def main():
         sair(2, f"não encontrado: {entrada}")
     if not opts.get("seco") and not all(isinstance(opts.get(k), str) and opts.get(k) for k in ("fonte", "licenca", "url")):
         sair(2, "faltam --fonte, --licenca e --url: a procedência do still é obrigatória")
-    vf = cadeia()
+    base = cadeia()
+    alvo_media = luma_alvo()
     with tempfile.TemporaryDirectory() as tmp:
         alvo = Path(tmp) / "still.png"
-        r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(entrada), "-vf", vf, "-frames:v", "1", str(alvo)],
-                           capture_output=True, text=True)
-        if r.returncode or not alvo.is_file():
-            sair(2, "o ffmpeg falhou: " + (r.stderr or "").strip()[-400:])
-        m = medir(alvo)
+        def render(g):
+            vf = base if abs(g - 1) < 0.005 else base.replace(CORTE, f"{CORTE},lutrgb=r='val*{g:.4f}':g='val*{g:.4f}':b='val*{g:.4f}'", 1)
+            r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(entrada), "-vf", vf, "-frames:v", "1", str(alvo)],
+                               capture_output=True, text=True)
+            if r.returncode or not alvo.is_file():
+                sair(2, "o ffmpeg falhou: " + (r.stderr or "").strip()[-400:])
+            return vf, medir(alvo)
+        # A exposição: a mesma cadeia escurece de jeitos diferentes uma cena de neve (Juneau) e uma de cidade (Los
+        # Angeles). O visual aprovado tem luma média --mesa-satelite-luma-alvo; um ganho antes do desfoque leva cada
+        # imagem até ele (busca binária), sem passar do piso do crédito. Ganho 1 = a cadeia pura, byte a byte.
+        g, (vf, m) = 1.0, render(1.0)
+        if abs(m["luma_media"] - alvo_media) > TOLERANCIA:
+            lo, hi = (1.0, 8.0) if m["luma_media"] < alvo_media else (0.125, 1.0)
+            for _ in range(12):
+                g = (lo * hi) ** 0.5
+                vf, m = render(g)
+                if abs(m["luma_media"] - alvo_media) <= TOLERANCIA:
+                    break
+                if m["luma_media"] < alvo_media: lo = g
+                else: hi = g
+            while m["contraste_credito_pior"] < PISO and g > 0.2:     # o crédito manda: recua o ganho até passar
+                g *= 0.9
+                vf, m = render(g)
+        m["ganho_exposicao"] = round(g, 4)
+        m["luma_alvo"] = alvo_media
         passa = bool(m["contraste_credito_pior"] >= PISO)
         print(json.dumps({"medidas": m, "passa": passa}, ensure_ascii=False))
         if opts.get("seco"):

@@ -228,11 +228,14 @@
        #mesa { ... como acima ...; opacity: var(--mesa-satelite-feltro); }
      e, por quadro: escala do still = 1 + (escala da câmera − 1) × paralaxe; translação = a da câmera × paralaxe.
      O still se faz com `python ferramentas/mesa-satelite.py <imagem pública> out/<proj>/_media/base/mesa-<lugar>.png`,
-     que aplica --mesa-satelite-tratamento (lido daqui) e recusa a imagem que deixa a faixa do crédito clara demais. */
+     que aplica --mesa-satelite-tratamento (lido daqui), com um ganho de exposição antes do desfoque que leva a luma
+     média a --mesa-satelite-luma-alvo (a cidade escurece mais que a neve), e recusa a imagem que deixa a faixa do
+     crédito clara demais. */
   --mesa-satelite-opacidade: 1;     /* o still já vem escurecido; 0 = a mesa sem satélite */
   --mesa-satelite-paralaxe: .6;     /* fração do movimento da câmera que o still acompanha (está "atrás" da folha) */
   --mesa-satelite-margem: 56px;     /* o sangramento do still além do palco (desfoque + deriva da câmera) */
   --mesa-satelite-tratamento: "scale=3840:2160:force_original_aspect_ratio=increase,crop=3840:2160,gblur=sigma=28,curves=all='0/0 0.5/0.06 1/0.20',hue=s=0.7";
+  --mesa-satelite-luma-alvo: 17.7;  /* a luma média (0–255) do quadro aprovado; a ferramenta acha o ganho que leva cada imagem até ela */
   --mesa-luz-veu-centro: color-mix(in srgb, var(--tinta) 14%, transparent);   /* a luz da mesa como véu sobre o satélite */
   --mesa-satelite-feltro: .5;       /* o satélite já é textura: o feltro fica a 50 %, só como grão */
   --texto-tratamento: "caixa"; /* texto sobre mapa ou registro vai na pílula --rotulo */

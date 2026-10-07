@@ -256,6 +256,10 @@ Acredito também que está perfeita deste modo". Logo depois: "Desconsidere o Ju
   `python ferramentas/mesa-satelite.py <imagem> out/<proj>/_media/base/mesa-<lugar>.png --fonte=… --licenca=… --url=…`.
   - Aplica o token `--mesa-satelite-tratamento`: o ffmpeg cobre o quadro de 3840×2160, desfoca (sigma 28), comprime as
     altas luzes e tira 30 % da cor.
+  - Calibra a exposição: a cadeia sozinha deixa uma cena de cidade quase preta (Los Angeles, luma média 9,6) e uma de
+    neve no visual aprovado (Juneau, 17,7). Um ganho antes do desfoque leva cada imagem à luma média do quadro que o
+    Lucas viu (`--mesa-satelite-luma-alvo`, 17,7). Em Juneau o ganho é 1, e o still sai igual ao aprovado, pixel a
+    pixel; em Los Angeles, 1,43.
   - Grava a procedência ao lado do still.
   - Recusa a imagem que deixa a faixa do crédito clara demais: piso de 6:1 no pixel mais claro, medido só no still.
 - **O movimento:** o still não anda sozinho. Acompanha a câmera a 0,6 (`--mesa-satelite-paralaxe`) e sangra 56 px além
