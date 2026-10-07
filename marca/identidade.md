@@ -230,6 +230,50 @@ que mais muda o 'chapado'. O azul fica um pouco mais acinzentado. Libera o degra
   1915 impressa e a Ladd Field, com a luz atrás da foto que está na mesa. O Lucas viu a prévia com a narração e disse:
   "Sim, ficou bom".
 
+**A mesa do vídeo 2 em diante: satélite sob a luz** (Lucas, 07/10/2026, 03:5x de Brasília). Em 05/10 ele pediu para
+"tratar do plano de fundo dos vídeos" e, em 07/10, escolheu "Me mostre propostas (Recomendado)". Viu quatro fundos sobre a
+s18 e a s09 do Juneau (`out/juneau/_tmp/fundo-v2/comparar-s18.jpg`, `comparar-s09.jpg` e `PROPOSTA.md`) e disse: "Eu
+gostei do aspecto escuro e de "imagem" da A, mas isso faria termos que renderizar mais mapas, certo? Não quero isso e
+também não quero ter de por tantos créditos. O que sugere?". A sugestão foi a A com satélite público no lugar do MapTiler
+(`out/juneau/_tmp/fundo-v2-landsat/comparar-A-sem-maptiler.jpg`). A resposta: "Gostei desta e quero seguir com ela.
+Acredito também que está perfeita deste modo". Logo depois: "Desconsidere o Juneau para isso".
+- **O que é:** a mesa continua em `--fundo`, e por baixo da câmera entra uma imagem de satélite do lugar do vídeo,
+  escurecida e desfocada (o *still* da mesa). De baixo para cima:
+  - `--fundo`;
+  - o still;
+  - a luz, agora como véu: `--mesa-luz-veu-centro` (a `--tinta` a 14 %), transparente além de `--mesa-luz-meio`;
+  - o feltro a 50 % (`--mesa-satelite-feltro`);
+  - o objeto.
+  O CSS está em `marca/tokens.css`, "A MESA DO VÍDEO 2 EM DIANTE".
+- **De onde vem a imagem:** só de domínio público, que vai sem crédito na tela (§7):
+  - o Landsat (USGS), na escala regional;
+  - a NASA (Blue Marble), na de mundo e continente.
+  - **Nunca** MapTiler, OpenStreetMap, Copernicus Sentinel nem quadro de render de mapa. Todos pedem crédito na tela, e
+    o crédito em toda cena sem mapa foi o que o Lucas recusou.
+  - Uma imagem por vídeo, ou por lugar quando o vídeo muda de região. Ela se baixa uma vez e sem custo: o Landsat vem
+    pelo Planetary Computer, sem conta, como em `out/prova-mapa/_pesquisa/base-landsat.py`. Nenhum render de mapa a mais.
+- **O tratamento é um só no canal:**
+  `python ferramentas/mesa-satelite.py <imagem> out/<proj>/_media/base/mesa-<lugar>.png --fonte=… --licenca=… --url=…`.
+  - Aplica o token `--mesa-satelite-tratamento`: o ffmpeg cobre o quadro de 3840×2160, desfoca (sigma 28), comprime as
+    altas luzes e tira 30 % da cor.
+  - Grava a procedência ao lado do still.
+  - Recusa a imagem que deixa a faixa do crédito clara demais: piso de 6:1 no pixel mais claro, medido só no still.
+- **O movimento:** o still não anda sozinho. Acompanha a câmera a 0,6 (`--mesa-satelite-paralaxe`) e sangra 56 px além
+  do palco (`--mesa-satelite-margem`).
+- **Onde:** onde valia a mesa de 30/09 (DOCUMENTO, card de pessoa, foto impressa e PRANCHA), do vídeo 2 em diante. O
+  Juneau fica com o feltro sob a luz.
+- **O que continua:**
+  - a luz é a única exceção ao "sem degradê";
+  - tudo fica por baixo do objeto e do texto;
+  - o still, o véu e o feltro são textura: não contam como elemento (§4.2) nem como registro de mundo real;
+  - o still é o lugar do vídeo, mas nada nele se lê: nenhum rótulo, ponto, divisa ou anel sobre ele.
+- **Contraste medido na escolha**, no still de Juneau (Landsat 8 e 9, 23–24/03/2024):
+  - luma média 17,7 e máxima 47, numa escala de 0 a 255;
+  - na faixa do crédito, máxima 29, o que dá ao `--sec` 9,99:1 no pior pixel, antes do véu e do feltro.
+  A medida do crédito na cena é a do portão (`portao-mapa rodape`).
+- **As cenas de referência:** `out/juneau/_tmp/fundo-v2-landsat/AL/s18.html` e `s09.html`, nos quadros que o Lucas viu. São
+  cópias de prova, fora do pipeline, e usam os nomes provisórios `--mesa-mapa-*` num `<style>` próprio.
+
 **A folha de documento** (Lucas, 27/09/2026). Ele viu três caminhos numa página de opções e escolheu o
 "Arquivo datilografado". Da versão anterior, apontou o risco de o rasgo cortar texto longo: "tenho medo da B
 recortar textos longos (aparentou que pode acontecer)". A folha foi corrigida, e ele confirmou a B corrigida.

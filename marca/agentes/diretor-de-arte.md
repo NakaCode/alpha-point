@@ -104,7 +104,10 @@ Cada modelo tem a sua base, e ela é marca (identidade.md §5, §6):
 | card de pessoa com fala | `--fundo`: retrato como foto impressa com fita e a fala num cartão de papel (Lucas, 27/09/2026; identidade.md §5) |
 
 A identidade não tem degradê (`marca/tokens.css`, `--degrade: none`), com uma exceção: a mesa das cenas sem mapa
-sobre `--fundo` é feltro sob a luz (Lucas, 30/09/2026; identidade.md §5, "A mesa: feltro sob a luz"). Na `tecnica`,
+sobre `--fundo` é feltro sob a luz (Lucas, 30/09/2026; identidade.md §5, "A mesa: feltro sob a luz"); do vídeo 2 em
+diante, é satélite sob a luz: o still de satélite público do lugar, escuro e desfocado, por baixo da mesa (Lucas,
+07/10/2026; identidade.md §5, "A mesa do vídeo 2 em diante"). No conceito, diga qual lugar o still mostra em cada
+trecho do vídeo (um por vídeo, ou um por região quando o vídeo muda de lugar). Na `tecnica`,
 diga atrás de qual objeto a luz fica. Onde o ofício ou o acervo do Top10
 chamam fundo escuro liso de defeito, **neste canal a PRANCHA sobre `--fundo` é a marca**. DECISÃO DO
 LUCAS PENDENTE: se PRANCHA e DADO ganham inset de prova real (foto do lugar dentro do cartão) e em que

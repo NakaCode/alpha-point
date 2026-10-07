@@ -107,6 +107,13 @@
   disso vai por cima** da foto, da fita, da folha, do card ou do texto: nunca um `::after` de textura sobre a cena
   (`APRENDIZADOS.md` item 53). A referência é a s09 do Juneau, depois da correção. O DADO continua em `--papel`, e o
   mapa e o registro em tela cheia continuam sem degradê nem vinheta.
+- **Do vídeo 2 em diante, a mesa é satélite sob a luz** (Lucas, 07/10/2026; identidade.md §5, "A mesa do vídeo 2 em
+  diante: satélite sob a luz"). Por baixo da câmera, o still de satélite público do lugar do vídeo, feito por
+  `ferramentas/mesa-satelite.py` em `out/<proj>/_media/base/mesa-<lugar>.png` (o Claude central o entrega; se faltar,
+  peça, não faça um). A luz vira véu (`--mesa-luz-veu-centro`) e o feltro fica a `--mesa-satelite-feltro`; o still
+  acompanha a câmera a `--mesa-satelite-paralaxe`. O modo de usar está em `marca/tokens.css`, "A MESA DO VÍDEO 2 EM
+  DIANTE". Sem crédito na tela pelo still (é domínio público) e nada sobre ele: nem rótulo, nem ponto, nem anel.
+  O Juneau fica com o feltro sob a luz.
 
 ## 3 · Tipo (identidade.md §3; tokens.css)
 

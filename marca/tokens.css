@@ -213,6 +213,28 @@
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.26 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.13 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   --mesa-feltro-tamanho: 960px 960px, 960px 960px, 480px 480px, 480px 480px;
+
+  /* ---- A MESA DO VÍDEO 2 EM DIANTE: SATÉLITE SOB A LUZ (identidade §5; Lucas, 07/10/2026) ----
+     O fundo das cenas sem mapa passa a ser uma imagem de satélite PÚBLICA do lugar do vídeo (Landsat/USGS ou NASA:
+     domínio público, sem crédito na tela, identidade §7), escurecida e desfocada, POR BAIXO da câmera. O Juneau fica
+     com a mesa de cima (feltro sob a luz). Camadas, de baixo para cima: --fundo · o still · a luz como VÉU · o feltro a
+     50 % · o objeto. Nada do still anda sozinho: ele acompanha a câmera a --mesa-satelite-paralaxe. Uso:
+       <img id="still" src="../_media/base/mesa-<lugar>.png" alt="">   (primeiro filho do palco, antes de #cam)
+       #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
+                width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
+                opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; }
+       #cam  { background: radial-gradient(ellipse var(--mesa-luz-tamanho) at <x>px <y>px,
+                 var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
+       #mesa { ... como acima ...; opacity: var(--mesa-satelite-feltro); }
+     e, por quadro: escala do still = 1 + (escala da câmera − 1) × paralaxe; translação = a da câmera × paralaxe.
+     O still se faz com `python ferramentas/mesa-satelite.py <imagem pública> out/<proj>/_media/base/mesa-<lugar>.png`,
+     que aplica --mesa-satelite-tratamento (lido daqui) e recusa a imagem que deixa a faixa do crédito clara demais. */
+  --mesa-satelite-opacidade: 1;     /* o still já vem escurecido; 0 = a mesa sem satélite */
+  --mesa-satelite-paralaxe: .6;     /* fração do movimento da câmera que o still acompanha (está "atrás" da folha) */
+  --mesa-satelite-margem: 56px;     /* o sangramento do still além do palco (desfoque + deriva da câmera) */
+  --mesa-satelite-tratamento: "scale=3840:2160:force_original_aspect_ratio=increase,crop=3840:2160,gblur=sigma=28,curves=all='0/0 0.5/0.06 1/0.20',hue=s=0.7";
+  --mesa-luz-veu-centro: color-mix(in srgb, var(--tinta) 14%, transparent);   /* a luz da mesa como véu sobre o satélite */
+  --mesa-satelite-feltro: .5;       /* o satélite já é textura: o feltro fica a 50 %, só como grão */
   --texto-tratamento: "caixa"; /* texto sobre mapa ou registro vai na pílula --rotulo */
   --texto-contorno: 0px transparent;
   --texto-sombra: none;
