@@ -5,6 +5,13 @@
 # Uso (cwd na raiz do canal):
 #   python ferramentas/mesa-satelite.py <imagem> <saida.png> --fonte="<quem>" --licenca="<licença>" --url=<origem>
 #        [--seco]      mede e diz se passa, sem gravar nada
+#        [--sangria=<px>] o still nasce com <px> a mais em cada lado (3840 + 2·px × 2160 + 2·px), para a câmera que anda pela
+#                      mesa (out/juneau/_tmp/movimento/BRIEF.md, "O still de satélite e a sangria"). A entrada tem de ter a
+#                      proporção do still com sangria (o recorte maior da mesma cena, na mesma grade). As medidas de exposição
+#                      e do crédito valem para o quadro em repouso (o miolo de 3840 × 2160), e o crédito também se mede contra
+#                      o pixel mais claro da mesa inteira, porque com a câmera andando ele pode passar sobre qualquer parte.
+#        [--ganho=<g>] o ganho de exposição fixo, sem a busca: para refazer um still aprovado com sangria, passe o ganho da
+#                      procedência dele, e o miolo sai igual.
 # Entrada: só imagem de domínio público (Landsat/USGS, NASA). Copernicus Sentinel, MapTiler, OpenStreetMap e quadro de
 # render de mapa pedem crédito na tela e NÃO servem à mesa: a ferramenta não tem como saber de onde veio a imagem, e
 # quem a chama responde por --fonte e --licenca, que vão para a procedência.
@@ -63,13 +70,14 @@ def contraste(a, b):
     la, lb = sorted((lum(a), lum(b)), reverse=True)
     return (la + 0.05) / (lb + 0.05)
 
-def medir(png):
+def medir(png, sangria=0):
     import numpy as np
     from PIL import Image
     im = Image.open(png).convert("RGB")
-    if im.size != (3840, 2160):
-        sair(2, f"o still saiu {im.size[0]}×{im.size[1]}, não 3840×2160")
-    a = np.asarray(im).astype(float)
+    if im.size != (3840 + 2 * sangria, 2160 + 2 * sangria):
+        sair(2, f"o still saiu {im.size[0]}×{im.size[1]}, não {3840 + 2 * sangria}×{2160 + 2 * sangria}")
+    inteira = np.asarray(im).astype(float)
+    a = inteira[sangria:sangria + 2160, sangria:sangria + 3840]
     y = 0.2126 * a[..., 0] + 0.7152 * a[..., 1] + 0.0722 * a[..., 2]
     x0, y0, x1, y1 = FAIXA
     fa, fy = a[y0:y1, x0:x1], y[y0:y1, x0:x1]
@@ -80,6 +88,14 @@ def medir(png):
     css = (RAIZ / "marca" / "tokens.css").read_text(encoding="utf-8")
     tinta = hex_rgb(re.search(r"--tinta:\s*(#[0-9A-Fa-f]{6})", css).group(1))
     sec = tuple(0.8 * t + 0.2 * f for t, f in zip(tinta, pior))     # --sec = --tinta a 80 % sobre o pixel de trás
+    extra = {}
+    if sangria:
+        yi = 0.2126 * inteira[..., 0] + 0.7152 * inteira[..., 1] + 0.0722 * inteira[..., 2]
+        i2, j2 = np.unravel_index(np.argmax(yi), yi.shape)
+        pior2 = tuple(float(v) for v in inteira[i2, j2])
+        sec2 = tuple(0.8 * t + 0.2 * f for t, f in zip(tinta, pior2))
+        extra = {"sangria": sangria, "mesa_inteira_luma_media": round(float(yi.mean()), 1), "mesa_inteira_luma_max": round(float(yi.max())),
+                 "contraste_credito_pior_mesa_inteira": round(float(contraste(sec2, pior2)), 2)}
     return {
         "luma_media": round(float(y.mean()), 1),
         "luma_max": round(float(y.max())),
@@ -87,6 +103,7 @@ def medir(png):
         "faixa_credito_luma_max": round(float(fy.max())),
         "contraste_credito_pior": round(float(contraste(sec, pior)), 2),
         "piso": PISO,
+        **extra,
     }
 
 def main():
@@ -101,20 +118,36 @@ def main():
         sair(2, "faltam --fonte, --licenca e --url: a procedência do still é obrigatória")
     base = cadeia()
     alvo_media = luma_alvo()
+    sangria = int(opts["sangria"]) if isinstance(opts.get("sangria"), str) else 0
+    ganho_fixo = float(opts["ganho"]) if isinstance(opts.get("ganho"), str) else None
+    corte = CORTE
+    if sangria:
+        W, H = 3840 + 2 * sangria, 2160 + 2 * sangria
+        from PIL import Image
+        with Image.open(entrada) as im0:
+            ew, eh = im0.size
+        if abs(ew / eh - W / H) > 0.001:
+            sair(2, f"a entrada tem {ew}×{eh}, e o still com sangria {sangria} pede a proporção de {W}×{H}")
+        antes = "scale=3840:2160:force_original_aspect_ratio=increase,crop=3840:2160"
+        if antes not in base:
+            sair(2, "a cadeia do token mudou: não sei pôr a sangria nela")
+        corte = f"crop={W}:{H}"
+        base = base.replace(antes, f"scale={W}:{H}:force_original_aspect_ratio=increase,{corte}", 1)
     with tempfile.TemporaryDirectory() as tmp:
         alvo = Path(tmp) / "still.png"
         def render(g):
-            vf = base if abs(g - 1) < 0.005 else base.replace(CORTE, f"{CORTE},lutrgb=r='val*{g:.4f}':g='val*{g:.4f}':b='val*{g:.4f}'", 1)
+            vf = base if abs(g - 1) < 0.005 else base.replace(corte, f"{corte},lutrgb=r='val*{g:.4f}':g='val*{g:.4f}':b='val*{g:.4f}'", 1)
             r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(entrada), "-vf", vf, "-frames:v", "1", str(alvo)],
                                capture_output=True, text=True)
             if r.returncode or not alvo.is_file():
                 sair(2, "o ffmpeg falhou: " + (r.stderr or "").strip()[-400:])
-            return vf, medir(alvo)
+            return vf, medir(alvo, sangria)
         # A exposição: a mesma cadeia escurece de jeitos diferentes uma cena de neve (Juneau) e uma de cidade (Los
         # Angeles). O visual aprovado tem luma média --mesa-satelite-luma-alvo; um ganho antes do desfoque leva cada
         # imagem até ele (busca binária), sem passar do piso do crédito. Ganho 1 = a cadeia pura, byte a byte.
-        g, (vf, m) = 1.0, render(1.0)
-        if abs(m["luma_media"] - alvo_media) > TOLERANCIA:
+        g = ganho_fixo if ganho_fixo else 1.0
+        vf, m = render(g)
+        if not ganho_fixo and abs(m["luma_media"] - alvo_media) > TOLERANCIA:
             lo, hi = (1.0, 8.0) if m["luma_media"] < alvo_media else (0.125, 1.0)
             for _ in range(12):
                 g = (lo * hi) ** 0.5
@@ -128,7 +161,7 @@ def main():
                 vf, m = render(g)
         m["ganho_exposicao"] = round(g, 4)
         m["luma_alvo"] = alvo_media
-        passa = bool(m["contraste_credito_pior"] >= PISO)
+        passa = bool(m["contraste_credito_pior"] >= PISO and m.get("contraste_credito_pior_mesa_inteira", PISO) >= PISO)
         print(json.dumps({"medidas": m, "passa": passa}, ensure_ascii=False))
         if opts.get("seco"):
             sys.exit(0 if passa else 1)
