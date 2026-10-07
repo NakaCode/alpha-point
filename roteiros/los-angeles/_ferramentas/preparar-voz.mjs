@@ -51,6 +51,10 @@ const MESES = "January|February|March|April|May|June|July|August|September|Octob
 const trocas = [];
 const REGRAS = [
   { tipo: "sigla", re: /\bTEU\b/g, f: () => "T E U", motivo: "sigla soletrada (pronuncia.md; Wiktionary: initialism)" },
+  // 07/10/2026: na 1ª narração, o alinhamento da ElevenLabs pôs o "never" entre aspas do trecho 10 uns 0,3 s depois do som
+  // (o ingest-local recusou o relógio: vão com voz de 0,32 s entre "his" e "never"). A voz não fala as aspas: elas saem só
+  // aqui, e o trecho 10 se refaz. O "never," do trecho 11 alinhou certo e fica como está.
+  { tipo: "grafia", re: /what his "never" measured/g, f: () => "what his never measured", motivo: "aspas que a voz não fala; o alinhamento as cobrava em tempo (trecho 10, 1ª narração)" },
   { tipo: "data", re: new RegExp(String.raw`\b(${MESES}) (\d{1,2}), (\d{4})\b`, "g"),
     f: (m, mes, dia, a) => { if (!ORD[+dia]) throw new Error("ordinal faltando: " + dia); return `${mes} ${ORD[+dia]}, ${ano(+a)}`; }, motivo: "dia como ordinal, ano como se fala" },
   { tipo: "data", re: new RegExp(String.raw`\b(${MESES}) (\d{1,2})\b(?!,? ?\d)`, "g"),

@@ -76,10 +76,11 @@ cards = "".join(
 
 if audio:
     player = (f'<audio id="narracao" controls preload="metadata" src="{E(audio)}"></audio>'
-              '<p class="nota">A narração inteira na voz do canal, no ElevenLabs v4, com o começo de 1906 (12 min 12 s; o vídeo '
-              'tem mais 20 s de tela final). A conferência por transcrição achou todas as palavras do texto: as poucas diferenças eram do jeito de a transcrição escrever, conferidas em recortes curtos. Dois finais de frase a '
-              'transcrição ouviu com menos certeza: o “eleven” em 2:50 e o “thirty” em 3:36. Se algum soar cortado, ou um nome '
-              'soar errado (San Pedro, Mendell), aquele parágrafo se refaz sozinho.</p>')
+              '<p class="nota">A narração inteira na voz do canal, no ElevenLabs v4, com o começo de 1906 (12 min 11 s; o vídeo '
+              'tem mais 20 s de tela final). A conferência por transcrição achou todas as palavras do texto: as poucas diferenças eram do jeito de a transcrição escrever, conferidas em recortes curtos. Dois pontos a '
+              'transcrição ouviu com menos certeza: o “eleven” no fim da frase em 2:50, e o “his” de “what his never measured” '
+              'em 3:21 (ela ouviu “has”). Se algum soar errado, ou um nome soar errado (San Pedro, Mendell), aquele parágrafo '
+              'se refaz sozinho.</p>')
 else:
     player = '<p class="nota">A narração entra aqui quando ficar pronta.</p>'
 

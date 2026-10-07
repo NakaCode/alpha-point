@@ -16,7 +16,7 @@ The first thing that was made was the water itself. In July eighteen seventy-one
 
 In between came the letter. On November eighth, eighteen eighty-six, Colonel Mendell signed it in San Francisco. Wilmington harbor, he wrote, already took ships drawing twelve to fourteen feet, meaning they sat that deep in the water. And still he wrote: "It is a small estuary and can never be made a harbor for deep-water ships." His next sentence set the ceiling: if eighteen or twenty feet at high water could be obtained, the harbor would have reached its maximum development.
 
-So that is what his "never" measured: not the bay, the estuary. In eighteen ninety-seven, the federal board that chose the harbor's site would define a deep-water harbor as one for ships drawing at least thirty feet. A ceiling of twenty feet, in a trade that was heading for thirty.
+So that is what his never measured: not the bay, the estuary. In eighteen ninety-seven, the federal board that chose the harbor's site would define a deep-water harbor as one for ships drawing at least thirty feet. A ceiling of twenty feet, in a trade that was heading for thirty.
 
 The same letter pointed next door. San Pedro Bay, Mendell wrote, was "worthy of improvement," though he questioned whether an artificial harbor there was worth it, and he asked for a survey. It came back in February eighteen eighty-eight with the first design for a breakwater, a wall out in the bay to block the swell, and Mendell endorsed it. That man, the one who wrote "never," had designed the jetty, backed the breakwater, and would sit on the first board that picked San Pedro.
 

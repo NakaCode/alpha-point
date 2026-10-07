@@ -1,0 +1,7795 @@
+{
+  "schemaVersion": 1,
+  "proj": "los-angeles",
+  "status": "aprovado",
+  "audio": {
+    "arquivo": "out/los-angeles/narracao.wav",
+    "sha256": "aff2d4a6e5925d6a97e925901537bfd00932a8a603baace921418fab670cbbab",
+    "duracaoSec": 750.95,
+    "sampleRate": 44100
+  },
+  "pedido": {
+    "motor": "faster-whisper large-v3 local (CPU int8)",
+    "faster_whisper": "1.2.1",
+    "modelo": "large-v3",
+    "modelo_revisao": "edaa852ec7e145841d8ffdb056a99866b5f0a478",
+    "device": "cpu",
+    "compute_type": "int8",
+    "cpu_threads": 16,
+    "idioma": "en",
+    "beam_size": 5,
+    "word_timestamps": true,
+    "condition_on_previous_text": false,
+    "vad_filter": false,
+    "temperature": "padrão do faster-whisper (0,0 com recaída)",
+    "taxa_hz": 16000,
+    "reamostragem": "ffmpeg version 8.1-full_build-www.gyan.dev",
+    "unidade": "um trecho do narracao.json por vez",
+    "recorte_max_s": 28.0,
+    "limiar_som_dbfs": -45.0,
+    "normalizacao": "comparar-narracao.py (tokens/verbalizar, MESMO_SOM nos dois lados)",
+    "relogio": {
+      "base": "alinhamento por caractere da ElevenLabs (só as letras) + δ medido",
+      "pausa_ancora_s": 0.15,
+      "vao_max_s": 0.15,
+      "vao_fechar_s": 0.1,
+      "vao_teto_s": 0.25,
+      "vale_min_db": 20.0,
+      "concordancia_max_s": 1.0,
+      "grafia_perto": 0.6,
+      "dur_min_palavra_s": 0.02,
+      "ouvido_janela_s": 2.0,
+      "prova_margem_s": 1.0
+    }
+  },
+  "resposta": {
+    "arquivo": "out/los-angeles/_narracao/whisper.json",
+    "requestId": null,
+    "language_code": "en",
+    "language_probability": 0.9938,
+    "audio_duration_secs": 750.95,
+    "soma_dos_recortes_s": 723.2,
+    "recortes": 41,
+    "fora_das_falas_medido_s": 27.75,
+    "sobre_a_duracao": "audio_duration_secs é o arquivo inteiro decodificado; o Whisper recebeu só as falas (soma_dos_recortes_s), e o resto foi medido por energia (portão fora_das_falas)"
+  },
+  "portoes": [
+    {
+      "nome": "palavras",
+      "ok": true,
+      "detalhe": "2060 palavras ouvidas pelo Whisper (2121 contando os algarismos como o roteiro)"
+    },
+    {
+      "nome": "duracao",
+      "ok": true,
+      "detalhe": "áudio decodificado 750.950 s × WAV 750.950 s (diferença 0.000 s; tolerância 0.5 s): o arquivo lê inteiro. Isso não prova que o Whisper ouviu tudo: ele recebeu as 32 falas (723.200 s); o resto (32 segmentos, 27.750 s) é medido no portão fora_das_falas; os segmentos do narracao.json cobrem o arquivo sem buraco (750.950 s); última palavra ouvida termina em 730.500 s"
+    },
+    {
+      "nome": "fora_das_falas",
+      "ok": true,
+      "detalhe": "32 segmentos fora das falas medidos (27.75 s): 31 pausas sem nenhum quadro acima de -45.0 dBFS; tela_final 730.95–750.95 s em silêncio digital (pico 0 LSB)"
+    },
+    {
+      "nome": "idioma",
+      "ok": true,
+      "detalhe": "detect_language deu 'en' nos 41 recortes (menor probabilidade 0.9938); a transcrição foi pedida com language='en'"
+    },
+    {
+      "nome": "cobertura",
+      "ok": true,
+      "detalhe": "32 trechos dentro de 0.9..1.1 — medirCobertura da pré-v1 (Node)"
+    },
+    {
+      "nome": "conteudo",
+      "ok": true,
+      "detalhe": "1 palavras puladas, 19 blocos trocados, 2 palavras a mais; 19 itens aceitos um a um (trechos 1, 4, 6, 8, 9, 10, 11, 12, 18, 23, 27, 28, 30; por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada)"
+    },
+    {
+      "nome": "relogio",
+      "ok": true,
+      "detalhe": "2117 palavras do texto aprovado (contarPalavras: 2117), em ordem, sem sobreposição, dentro do som de cada trecho, nenhuma invadindo as 290 pausas-âncora. Fronteiras: 290 pausas, 290 decididas (279 por consenso com pontuação; pelo ouvido, 7 conferidas, 4 desempatadas e 0 corrigidas), 0 ignoradas (de dentro de uma palavra), 0 sem decisão. Medido: 290 pausas-âncora em silêncio; maior corrida de som sem palavra 0.11 s (teto 0.15 s); 289 vãos com voz fechados na montagem (maior 0.320 s; 6 acima de 0.25 s, 6 deles num vale do som); contra o Whisper, 1659 inícios de palavra casada fora das âncoras: mediana +0.200 s, máx 0.560 s (teto 1.0 s)"
+    }
+  ],
+  "trechos": [
+    {
+      "trecho": 1,
+      "start": 0,
+      "end": 20.48,
+      "esperado": 60,
+      "obtido": 63,
+      "razao": 1.05,
+      "status": "ok",
+      "som": [
+        0.05,
+        20.28
+      ],
+      "recortes": [
+        [
+          0.0,
+          20.48
+        ]
+      ],
+      "obtido_bruto": 60,
+      "tokens_iguais": "64/64",
+      "fontes_do_ouvido": {
+        "casada": 54,
+        "repartida": 6,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 5,
+      "conteudo": [
+        {
+          "tipo": "a_mais",
+          "roteiro": "\"can",
+          "ouvido": "can",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 2,
+      "start": 20.73,
+      "end": 47.77,
+      "esperado": 85,
+      "obtido": 85,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        20.76,
+        47.55
+      ],
+      "recortes": [
+        [
+          20.73,
+          47.77
+        ]
+      ],
+      "obtido_bruto": 83,
+      "tokens_iguais": "87/87",
+      "fontes_do_ouvido": {
+        "casada": 81,
+        "repartida": 4,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 9
+    },
+    {
+      "trecho": 3,
+      "start": 48.02,
+      "end": 66.02,
+      "esperado": 52,
+      "obtido": 52,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        48.05,
+        65.87
+      ],
+      "recortes": [
+        [
+          48.02,
+          66.02
+        ]
+      ],
+      "obtido_bruto": 51,
+      "tokens_iguais": "53/53",
+      "fontes_do_ouvido": {
+        "casada": 50,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7
+    },
+    {
+      "trecho": 4,
+      "start": 66.27,
+      "end": 85.55,
+      "esperado": 54,
+      "obtido": 54,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        66.35,
+        85.35
+      ],
+      "recortes": [
+        [
+          66.27,
+          85.55
+        ]
+      ],
+      "obtido_bruto": 53,
+      "tokens_iguais": "53/56",
+      "fontes_do_ouvido": {
+        "casada": 50,
+        "repartida": 2,
+        "trocada": 2,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Mendell",
+          "ouvido": "Mendel",
+          "situacao": "aceito"
+        },
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "deep-water",
+          "ouvido": "deepwater",
+          "situacao": "sem aceite (mesmas letras)"
+        }
+      ]
+    },
+    {
+      "trecho": 5,
+      "start": 85.8,
+      "end": 99.64,
+      "esperado": 42,
+      "obtido": 42,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        85.86,
+        99.47
+      ],
+      "recortes": [
+        [
+          85.8,
+          99.64
+        ]
+      ],
+      "obtido_bruto": 41,
+      "tokens_iguais": "43/43",
+      "fontes_do_ouvido": {
+        "casada": 40,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 6
+    },
+    {
+      "trecho": 6,
+      "start": 99.89,
+      "end": 124.53,
+      "esperado": 71,
+      "obtido": 71,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        99.95,
+        124.36
+      ],
+      "recortes": [
+        [
+          99.89,
+          124.53
+        ]
+      ],
+      "obtido_bruto": 66,
+      "tokens_iguais": "73/74",
+      "fontes_do_ouvido": {
+        "casada": 61,
+        "repartida": 9,
+        "trocada": 0,
+        "interpolada": 1
+      },
+      "pausas_ancora": 7,
+      "conteudo": [
+        {
+          "tipo": "interpolada",
+          "roteiro": "thousand",
+          "ouvido": "",
+          "situacao": "aceito"
+        },
+        {
+          "tipo": "a_mais",
+          "roteiro": "hundred",
+          "ouvido": ",000",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 7,
+      "start": 124.78,
+      "end": 140.3,
+      "esperado": 50,
+      "obtido": 50,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        124.8,
+        140.13
+      ],
+      "recortes": [
+        [
+          124.78,
+          140.3
+        ]
+      ],
+      "obtido_bruto": 49,
+      "tokens_iguais": "50/50",
+      "fontes_do_ouvido": {
+        "casada": 48,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7
+    },
+    {
+      "trecho": 8,
+      "start": 140.55,
+      "end": 171.11,
+      "esperado": 88,
+      "obtido": 88,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        140.57,
+        170.95
+      ],
+      "recortes": [
+        [
+          140.55,
+          155.4
+        ],
+        [
+          155.4,
+          171.11
+        ]
+      ],
+      "obtido_bruto": 85,
+      "tokens_iguais": "90/91",
+      "fontes_do_ouvido": {
+        "casada": 81,
+        "repartida": 6,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 15,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Mendell,",
+          "ouvido": "Mendel,",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 9,
+      "start": 171.36,
+      "end": 199.76,
+      "esperado": 81,
+      "obtido": 82,
+      "razao": 1.012,
+      "status": "ok",
+      "som": [
+        171.39,
+        199.63
+      ],
+      "recortes": [
+        [
+          171.36,
+          187.09
+        ],
+        [
+          187.09,
+          199.76
+        ]
+      ],
+      "obtido_bruto": 81,
+      "tokens_iguais": "81/83",
+      "fontes_do_ouvido": {
+        "casada": 77,
+        "repartida": 2,
+        "trocada": 2,
+        "interpolada": 0
+      },
+      "pausas_ancora": 12,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "eighth,",
+          "ouvido": "8,",
+          "situacao": "aceito"
+        },
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Mendell",
+          "ouvido": "Mendel",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 10,
+      "start": 200.01,
+      "end": 216.65,
+      "esperado": 50,
+      "obtido": 51,
+      "razao": 1.02,
+      "status": "ok",
+      "som": [
+        200.05,
+        216.45
+      ],
+      "recortes": [
+        [
+          200.01,
+          216.65
+        ]
+      ],
+      "obtido_bruto": 50,
+      "tokens_iguais": "51/52",
+      "fontes_do_ouvido": {
+        "casada": 47,
+        "repartida": 2,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "his",
+          "ouvido": "has",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 11,
+      "start": 216.9,
+      "end": 245.22,
+      "esperado": 85,
+      "obtido": 85,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        216.97,
+        245.02
+      ],
+      "recortes": [
+        [
+          216.9,
+          228.38
+        ],
+        [
+          228.38,
+          245.22
+        ]
+      ],
+      "obtido_bruto": 84,
+      "tokens_iguais": "84/86",
+      "fontes_do_ouvido": {
+        "casada": 81,
+        "repartida": 2,
+        "trocada": 2,
+        "interpolada": 0
+      },
+      "pausas_ancora": 15,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Mendell",
+          "ouvido": "Mendel",
+          "situacao": "aceito"
+        },
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Mendell",
+          "ouvido": "Mendel",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 12,
+      "start": 245.47,
+      "end": 259.95,
+      "esperado": 43,
+      "obtido": 44,
+      "razao": 1.023,
+      "status": "ok",
+      "som": [
+        245.49,
+        259.73
+      ],
+      "recortes": [
+        [
+          245.47,
+          259.95
+        ]
+      ],
+      "obtido_bruto": 42,
+      "tokens_iguais": "44/45",
+      "fontes_do_ouvido": {
+        "casada": 38,
+        "repartida": 4,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 6,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Mendell",
+          "ouvido": "Mendel",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 13,
+      "start": 260.2,
+      "end": 276.68,
+      "esperado": 49,
+      "obtido": 49,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        260.22,
+        276.49
+      ],
+      "recortes": [
+        [
+          260.2,
+          276.68
+        ]
+      ],
+      "obtido_bruto": 48,
+      "tokens_iguais": "50/50",
+      "fontes_do_ouvido": {
+        "casada": 47,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 8
+    },
+    {
+      "trecho": 14,
+      "start": 276.93,
+      "end": 298.77,
+      "esperado": 66,
+      "obtido": 65,
+      "razao": 0.985,
+      "status": "ok",
+      "som": [
+        277.02,
+        298.56
+      ],
+      "recortes": [
+        [
+          276.93,
+          298.77
+        ]
+      ],
+      "obtido_bruto": 64,
+      "tokens_iguais": "68/68",
+      "fontes_do_ouvido": {
+        "casada": 62,
+        "repartida": 4,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 9
+    },
+    {
+      "trecho": 15,
+      "start": 299.02,
+      "end": 314.54,
+      "esperado": 43,
+      "obtido": 43,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        299.07,
+        314.42
+      ],
+      "recortes": [
+        [
+          299.02,
+          314.54
+        ]
+      ],
+      "obtido_bruto": 42,
+      "tokens_iguais": "44/44",
+      "fontes_do_ouvido": {
+        "casada": 41,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 5
+    },
+    {
+      "trecho": 16,
+      "start": 314.79,
+      "end": 337.27,
+      "esperado": 63,
+      "obtido": 63,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        314.85,
+        337.08
+      ],
+      "recortes": [
+        [
+          314.79,
+          337.27
+        ]
+      ],
+      "obtido_bruto": 63,
+      "tokens_iguais": "63/63",
+      "fontes_do_ouvido": {
+        "casada": 63,
+        "repartida": 0,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 8
+    },
+    {
+      "trecho": 17,
+      "start": 337.52,
+      "end": 373.28,
+      "esperado": 103,
+      "obtido": 103,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        337.58,
+        373.11
+      ],
+      "recortes": [
+        [
+          337.52,
+          358.99
+        ],
+        [
+          358.99,
+          373.28
+        ]
+      ],
+      "obtido_bruto": 100,
+      "tokens_iguais": "105/107",
+      "fontes_do_ouvido": {
+        "casada": 96,
+        "repartida": 6,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 15,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "deep-water",
+          "ouvido": "Deepwater",
+          "situacao": "sem aceite (mesmas letras)"
+        }
+      ]
+    },
+    {
+      "trecho": 18,
+      "start": 373.53,
+      "end": 409.21,
+      "esperado": 93,
+      "obtido": 93,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        373.6,
+        408.99
+      ],
+      "recortes": [
+        [
+          373.53,
+          389.68
+        ],
+        [
+          389.68,
+          409.21
+        ]
+      ],
+      "obtido_bruto": 91,
+      "tokens_iguais": "93/96",
+      "fontes_do_ouvido": {
+        "casada": 86,
+        "repartida": 4,
+        "trocada": 3,
+        "interpolada": 0
+      },
+      "pausas_ancora": 15,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "twenty-sixth,",
+          "ouvido": "26,",
+          "situacao": "aceito"
+        },
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "thousand",
+          "ouvido": ",000",
+          "situacao": "aceito"
+        },
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "thousand",
+          "ouvido": ",000",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 19,
+      "start": 409.46,
+      "end": 429.14,
+      "esperado": 58,
+      "obtido": 58,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        409.49,
+        428.97
+      ],
+      "recortes": [
+        [
+          409.46,
+          429.14
+        ]
+      ],
+      "obtido_bruto": 56,
+      "tokens_iguais": "61/61",
+      "fontes_do_ouvido": {
+        "casada": 54,
+        "repartida": 4,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 8
+    },
+    {
+      "trecho": 20,
+      "start": 429.39,
+      "end": 457.47,
+      "esperado": 80,
+      "obtido": 80,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        429.43,
+        457.33
+      ],
+      "recortes": [
+        [
+          429.39,
+          445.13
+        ],
+        [
+          445.13,
+          457.47
+        ]
+      ],
+      "obtido_bruto": 78,
+      "tokens_iguais": "82/82",
+      "fontes_do_ouvido": {
+        "casada": 76,
+        "repartida": 4,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 12
+    },
+    {
+      "trecho": 21,
+      "start": 457.72,
+      "end": 482.2,
+      "esperado": 68,
+      "obtido": 68,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        457.74,
+        482.05
+      ],
+      "recortes": [
+        [
+          457.72,
+          482.2
+        ]
+      ],
+      "obtido_bruto": 67,
+      "tokens_iguais": "69/69",
+      "fontes_do_ouvido": {
+        "casada": 66,
+        "repartida": 2,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 11
+    },
+    {
+      "trecho": 22,
+      "start": 482.45,
+      "end": 495.73,
+      "esperado": 40,
+      "obtido": 40,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        482.48,
+        495.54
+      ],
+      "recortes": [
+        [
+          482.45,
+          495.73
+        ]
+      ],
+      "obtido_bruto": 40,
+      "tokens_iguais": "40/40",
+      "fontes_do_ouvido": {
+        "casada": 40,
+        "repartida": 0,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 5
+    },
+    {
+      "trecho": 23,
+      "start": 495.98,
+      "end": 524.86,
+      "esperado": 83,
+      "obtido": 83,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        496.02,
+        524.69
+      ],
+      "recortes": [
+        [
+          495.98,
+          509.69
+        ],
+        [
+          509.69,
+          524.86
+        ]
+      ],
+      "obtido_bruto": 77,
+      "tokens_iguais": "84/86",
+      "fontes_do_ouvido": {
+        "casada": 71,
+        "repartida": 10,
+        "trocada": 2,
+        "interpolada": 0
+      },
+      "pausas_ancora": 13,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "twelfth,",
+          "ouvido": "12,",
+          "situacao": "aceito"
+        },
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "twenty-sixth,",
+          "ouvido": "26,",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 24,
+      "start": 525.11,
+      "end": 550.95,
+      "esperado": 77,
+      "obtido": 77,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        525.13,
+        550.78
+      ],
+      "recortes": [
+        [
+          525.11,
+          550.95
+        ]
+      ],
+      "obtido_bruto": 75,
+      "tokens_iguais": "78/78",
+      "fontes_do_ouvido": {
+        "casada": 73,
+        "repartida": 4,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 11
+    },
+    {
+      "trecho": 25,
+      "start": 551.2,
+      "end": 571.04,
+      "esperado": 58,
+      "obtido": 58,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        551.24,
+        570.83
+      ],
+      "recortes": [
+        [
+          551.2,
+          571.04
+        ]
+      ],
+      "obtido_bruto": 58,
+      "tokens_iguais": "58/58",
+      "fontes_do_ouvido": {
+        "casada": 58,
+        "repartida": 0,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 7
+    },
+    {
+      "trecho": 26,
+      "start": 571.29,
+      "end": 604.25,
+      "esperado": 92,
+      "obtido": 92,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        571.32,
+        604.08
+      ],
+      "recortes": [
+        [
+          571.29,
+          585.72
+        ],
+        [
+          585.72,
+          604.25
+        ]
+      ],
+      "obtido_bruto": 85,
+      "tokens_iguais": "95/96",
+      "fontes_do_ouvido": {
+        "casada": 80,
+        "repartida": 11,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 14,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "towns'",
+          "ouvido": "town's",
+          "situacao": "sem aceite (mesmas letras)"
+        }
+      ]
+    },
+    {
+      "trecho": 27,
+      "start": 604.5,
+      "end": 632.42,
+      "esperado": 78,
+      "obtido": 78,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        604.54,
+        632.21
+      ],
+      "recortes": [
+        [
+          604.5,
+          632.42
+        ]
+      ],
+      "obtido_bruto": 76,
+      "tokens_iguais": "81/82",
+      "fontes_do_ouvido": {
+        "casada": 73,
+        "repartida": 4,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 13,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "twenty-eighth,",
+          "ouvido": "28,",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 28,
+      "start": 632.67,
+      "end": 650.03,
+      "esperado": 52,
+      "obtido": 52,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        632.7,
+        649.9
+      ],
+      "recortes": [
+        [
+          632.67,
+          650.03
+        ]
+      ],
+      "obtido_bruto": 50,
+      "tokens_iguais": "51/52",
+      "fontes_do_ouvido": {
+        "casada": 47,
+        "repartida": 4,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 6,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "thousand",
+          "ouvido": ",000",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 29,
+      "start": 650.28,
+      "end": 666.12,
+      "esperado": 50,
+      "obtido": 50,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        650.32,
+        665.9
+      ],
+      "recortes": [
+        [
+          650.28,
+          666.12
+        ]
+      ],
+      "obtido_bruto": 48,
+      "tokens_iguais": "51/51",
+      "fontes_do_ouvido": {
+        "casada": 47,
+        "repartida": 3,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 6
+    },
+    {
+      "trecho": 30,
+      "start": 666.37,
+      "end": 682.05,
+      "esperado": 46,
+      "obtido": 46,
+      "razao": 1,
+      "status": "ok",
+      "som": [
+        666.42,
+        681.9
+      ],
+      "recortes": [
+        [
+          666.37,
+          682.05
+        ]
+      ],
+      "obtido_bruto": 45,
+      "tokens_iguais": "48/49",
+      "fontes_do_ouvido": {
+        "casada": 43,
+        "repartida": 2,
+        "trocada": 1,
+        "interpolada": 0
+      },
+      "pausas_ancora": 5,
+      "conteudo": [
+        {
+          "tipo": "bloco_trocado",
+          "roteiro": "Mendell",
+          "ouvido": "Mendel",
+          "situacao": "aceito"
+        }
+      ]
+    },
+    {
+      "trecho": 31,
+      "start": 682.3,
+      "end": 701.18,
+      "esperado": 59,
+      "obtido": 57,
+      "razao": 0.966,
+      "status": "ok",
+      "som": [
+        682.36,
+        701.03
+      ],
+      "recortes": [
+        [
+          682.3,
+          701.18
+        ]
+      ],
+      "obtido_bruto": 53,
+      "tokens_iguais": "63/63",
+      "fontes_do_ouvido": {
+        "casada": 44,
+        "repartida": 15,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 5
+    },
+    {
+      "trecho": 32,
+      "start": 701.43,
+      "end": 730.95,
+      "esperado": 98,
+      "obtido": 99,
+      "razao": 1.01,
+      "status": "ok",
+      "som": [
+        701.45,
+        730.74
+      ],
+      "recortes": [
+        [
+          701.43,
+          714.86
+        ],
+        [
+          714.86,
+          730.95
+        ]
+      ],
+      "obtido_bruto": 99,
+      "tokens_iguais": "99/99",
+      "fontes_do_ouvido": {
+        "casada": 98,
+        "repartida": 0,
+        "trocada": 0,
+        "interpolada": 0
+      },
+      "pausas_ancora": 11
+    }
+  ],
+  "aceitos": [],
+  "aceites": [
+    {
+      "trecho": 1,
+      "tipo": "a_mais",
+      "roteiro": "\"can",
+      "ouvido": "can",
+      "palavras": [
+        51
+      ],
+      "no_trecho": [
+        51
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 4,
+      "tipo": "bloco_trocado",
+      "roteiro": "Mendell",
+      "ouvido": "Mendel",
+      "palavras": [
+        209
+      ],
+      "no_trecho": [
+        12
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 6,
+      "tipo": "interpolada",
+      "roteiro": "thousand",
+      "ouvido": "",
+      "palavras": [
+        358
+      ],
+      "no_trecho": [
+        65
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 6,
+      "tipo": "a_mais",
+      "roteiro": "hundred",
+      "ouvido": ",000",
+      "palavras": [
+        357
+      ],
+      "no_trecho": [
+        64
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 8,
+      "tipo": "bloco_trocado",
+      "roteiro": "Mendell,",
+      "ouvido": "Mendel,",
+      "palavras": [
+        434
+      ],
+      "no_trecho": [
+        20
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 9,
+      "tipo": "bloco_trocado",
+      "roteiro": "eighth,",
+      "ouvido": "8,",
+      "palavras": [
+        509
+      ],
+      "no_trecho": [
+        7
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 9,
+      "tipo": "bloco_trocado",
+      "roteiro": "Mendell",
+      "ouvido": "Mendel",
+      "palavras": [
+        513
+      ],
+      "no_trecho": [
+        11
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 10,
+      "tipo": "bloco_trocado",
+      "roteiro": "his",
+      "ouvido": "has",
+      "palavras": [
+        587
+      ],
+      "no_trecho": [
+        4
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 11,
+      "tipo": "bloco_trocado",
+      "roteiro": "Mendell",
+      "ouvido": "Mendel",
+      "palavras": [
+        642
+      ],
+      "no_trecho": [
+        9
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 11,
+      "tipo": "bloco_trocado",
+      "roteiro": "Mendell",
+      "ouvido": "Mendel",
+      "palavras": [
+        690
+      ],
+      "no_trecho": [
+        57
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 12,
+      "tipo": "bloco_trocado",
+      "roteiro": "Mendell",
+      "ouvido": "Mendel",
+      "palavras": [
+        757
+      ],
+      "no_trecho": [
+        39
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 18,
+      "tipo": "bloco_trocado",
+      "roteiro": "twenty-sixth,",
+      "ouvido": "26,",
+      "palavras": [
+        1091
+      ],
+      "no_trecho": [
+        6
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 18,
+      "tipo": "bloco_trocado",
+      "roteiro": "thousand",
+      "ouvido": ",000",
+      "palavras": [
+        1131
+      ],
+      "no_trecho": [
+        46
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 18,
+      "tipo": "bloco_trocado",
+      "roteiro": "thousand",
+      "ouvido": ",000",
+      "palavras": [
+        1167
+      ],
+      "no_trecho": [
+        82
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 23,
+      "tipo": "bloco_trocado",
+      "roteiro": "twelfth,",
+      "ouvido": "12,",
+      "palavras": [
+        1430
+      ],
+      "no_trecho": [
+        6
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 23,
+      "tipo": "bloco_trocado",
+      "roteiro": "twenty-sixth,",
+      "ouvido": "26,",
+      "palavras": [
+        1504
+      ],
+      "no_trecho": [
+        80
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 27,
+      "tipo": "bloco_trocado",
+      "roteiro": "twenty-eighth,",
+      "ouvido": "28,",
+      "palavras": [
+        1736
+      ],
+      "no_trecho": [
+        2
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 28,
+      "tipo": "bloco_trocado",
+      "roteiro": "thousand",
+      "ouvido": ",000",
+      "palavras": [
+        1826
+      ],
+      "no_trecho": [
+        14
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    },
+    {
+      "trecho": 30,
+      "tipo": "bloco_trocado",
+      "roteiro": "Mendell",
+      "ouvido": "Mendel",
+      "palavras": [
+        1945
+      ],
+      "no_trecho": [
+        31
+      ],
+      "por": "Claude central",
+      "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+      "em": "2026-10-07T13:17:25Z",
+      "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+    }
+  ],
+  "sobre_aceitos": "aceitos: os trechos cuja cobertura fora de 0,9..1,1 foi aceita (o sentido da pré-v1, que o transcrever.mjs herda por trecho); aceites: cada item aceito um a um (cobertura ou conteúdo), com quem aceitou e como",
+  "sem_cobertura": null,
+  "avisos": [
+    "trecho 1: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (0.05–20.28 s)",
+    "trecho 2: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (20.76–47.55 s)",
+    "trecho 3: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (48.05–65.87 s)",
+    "trecho 4: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (66.35–85.35 s)",
+    "trecho 5: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (85.86–99.47 s)",
+    "trecho 6: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (99.95–124.36 s)",
+    "trecho 8: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (140.57–170.95 s)",
+    "trecho 9: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (171.39–199.63 s)",
+    "trecho 10: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (200.05–216.45 s)",
+    "trecho 12: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (245.49–259.73 s)",
+    "trecho 13: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (260.22–276.49 s)",
+    "trecho 14: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (277.02–298.56 s)",
+    "trecho 16: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (314.85–337.08 s)",
+    "trecho 17: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (337.58–373.11 s)",
+    "trecho 18: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (373.60–408.99 s)",
+    "trecho 19: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (409.49–428.97 s)",
+    "trecho 20: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (429.43–457.33 s)",
+    "trecho 21: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (457.74–482.05 s)",
+    "trecho 22: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (482.48–495.54 s)",
+    "trecho 23: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (496.02–524.69 s)",
+    "trecho 24: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (525.13–550.78 s)",
+    "trecho 25: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (551.24–570.83 s)",
+    "trecho 26: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (571.32–604.08 s)",
+    "trecho 27: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (604.54–632.21 s)",
+    "trecho 28: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (632.70–649.90 s)",
+    "trecho 29: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (650.32–665.90 s)",
+    "trecho 30: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (666.42–681.90 s)",
+    "trecho 31: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (682.36–701.03 s)",
+    "trecho 32: o alinhamento da ElevenLabs mede +0.08 s em relação ao PCM; limitado ao som do trecho (701.45–730.74 s)",
+    "t1 a_mais: roteiro \"\"can\" × ouvido \"can\" (recorte curto: \"and wrote that it, can never be made a horror film.\"; ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t4 bloco_trocado: roteiro \"Mendell\" × ouvido \"Mendel\" (recorte curto: \"Colonel Mendel of the Army Corps of Engineers.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t6 interpolada: roteiro \"thousand\" × ouvido \"\" (recorte curto: \"the first $200 ,000 into the harbor\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t6 a_mais: roteiro \"hundred\" × ouvido \",000\" (recorte curto: \"put the first $200 ,000 into the harbor.\"; ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t8 bloco_trocado: roteiro \"Mendell,\" × ouvido \"Mendel,\" (recorte curto: \"approved a plan by Mendel, then a major.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t9 bloco_trocado: roteiro \"eighth,\" × ouvido \"8,\" (recorte curto: \"On November 8, 1886,\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t9 bloco_trocado: roteiro \"Mendell\" × ouvido \"Mendel\" (recorte curto: \"Colonel Mendel signed it in San Francisco.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t10 bloco_trocado: roteiro \"his\" × ouvido \"has\" (recorte curto: \"So that is what has never measured.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t11 bloco_trocado: roteiro \"Mendell\" × ouvido \"Mendel\" (recorte curto: \"Juan Pedro Bay, Mendel wrote, was\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t11 bloco_trocado: roteiro \"Mendell\" × ouvido \"Mendel\" (recorte curto: \"swell, and Mendel endorsed it.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t12 bloco_trocado: roteiro \"Mendell\" × ouvido \"Mendel\" (recorte curto: \"Pedro, with Mendel on the board.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t18 bloco_trocado: roteiro \"twenty-sixth,\" × ouvido \"26,\" (recorte curto: \"On April 26, 1899,\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t18 bloco_trocado: roteiro \"thousand\" × ouvido \",000\" (recorte curto: \"15 ,000 and 20 ,000 people watched.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t18 bloco_trocado: roteiro \"thousand\" × ouvido \",000\" (recorte curto: \"to at least 9 ,000 feet.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t23 bloco_trocado: roteiro \"twelfth,\" × ouvido \"12,\" (recorte curto: \"Sunday, November 12, 1906.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t23 bloco_trocado: roteiro \"twenty-sixth,\" × ouvido \"26,\" (recorte curto: \"effect on December 26, 1906.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t27 bloco_trocado: roteiro \"twenty-eighth,\" × ouvido \"28,\" (recorte curto: \"On August 28, 1909,\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t28 bloco_trocado: roteiro \"thousand\" × ouvido \",000\" (recorte curto: \"about 15 ,000 feet of undeveloped water.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+    "t30 bloco_trocado: roteiro \"Mendell\" × ouvido \"Mendel\" (recorte curto: \"Mendel expected 18 or 20.\"; NÃO ouviu o roteiro) — aceito: por Claude central; como Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada"
+  ],
+  "saidas": {
+    "words": "out/los-angeles/words.json",
+    "transcript": "out/los-angeles/transcript.txt",
+    "transcript_conteudo": "o texto que o Whisper local ouviu, recorte a recorte, na ordem do áudio e na grafia dele (algarismos, as grafias do transcritor), como o texto corrido do Scribe na pré-v1; as palavras do words.json são as do texto aprovado (fonte_das_palavras)",
+    "whisper": "out/los-angeles/_narracao/whisper.json"
+  },
+  "fonte_das_palavras": "w: o texto aprovado (narracao.json › segmentos[].texto = a cópia para a voz, out/<proj>/roteiro.md), na grafia dela: números por extenso e aliases de pronúncia; algarismo e grafia de tela não estão no words.json. Tempo: o alinhamento por caractere da ElevenLabs (só as letras, + δ), com as pontas dos trechos e as pausas-âncora presas ao som; a fronteira de cada pausa pela regra e pela ElevenLabs, e pelo ouvido (Whisper em recorte curto) quando discordam ou não há pontuação. O Whisper local é o ouvido do conteúdo: cobertura, palavras puladas, trocadas e a mais. As divergências entre o que a voz disse e o texto aprovado estão em alinhamento.conteudo, não no words.json.",
+  "alinhamento": {
+    "palavras": 2117,
+    "base": {
+      "arquivo": "out/los-angeles/_narracao/elevenlabs/alinhamento-elevenlabs.json",
+      "sha256": "13b34d990aecdfa0934638bca11d02a91a044dd5ed9e690f31ddbecdebd4484b",
+      "delta_s": 0.04,
+      "delta_como": "mediana, nos 32 trechos, de (começo do som − começo da 1ª letra da ElevenLabs)",
+      "delta_por_trecho": {
+        "min": 0.02,
+        "mediana": 0.04,
+        "max": 0.09
+      }
+    },
+    "fontes_do_ouvido": {
+      "casada": 1973,
+      "repartida": 124,
+      "trocada": 19,
+      "interpolada": 1
+    },
+    "fronteiras": {
+      "pausas": 290,
+      "consenso": 279,
+      "conferidas": 7,
+      "desempatadas": 4,
+      "corrigidas": 0,
+      "nao_confirmadas": 0,
+      "ignoradas": 0,
+      "indecididas": 0,
+      "incoerentes": 0
+    },
+    "fronteiras_desempatadas": [
+      {
+        "trecho": 4,
+        "pausa": [
+          72.8,
+          72.95
+        ],
+        "regra": 18,
+        "elevenlabs": 18,
+        "fronteira": 18,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "Army Corps of Engineers,",
+          "depois": "wrote that the only",
+          "notas": {
+            "Corps | of": 0,
+            "of | Engineers": 0,
+            "Engineers | wrote": 2,
+            "wrote | that": 0,
+            "that | the": 0
+          }
+        },
+        "regra_palavras": "Engineers | wrote",
+        "elevenlabs_palavras": "Engineers | wrote",
+        "fronteira_palavras": "Engineers | wrote"
+      },
+      {
+        "trecho": 5,
+        "pausa": [
+          91.37,
+          91.53
+        ],
+        "regra": 16,
+        "elevenlabs": 16,
+        "fronteira": 16,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "the crew called it",
+          "depois": "The worst place they",
+          "notas": {
+            "crew | called": 0,
+            "called | it": 0,
+            "it | the": 2,
+            "the | worst": 0,
+            "worst | place": 0
+          }
+        },
+        "regra_palavras": "it | the",
+        "elevenlabs_palavras": "it | the",
+        "fronteira_palavras": "it | the"
+      },
+      {
+        "trecho": 6,
+        "pausa": [
+          120.69,
+          121.06
+        ],
+        "regra": 58,
+        "elevenlabs": 58,
+        "fronteira": 58,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "and in March 1871,",
+          "depois": "Congress put the first",
+          "notas": {
+            "March | eighteen": 0,
+            "eighteen | seventy-one": 0,
+            "seventy-one | Congress": 2,
+            "Congress | put": 0,
+            "put | the": 0
+          }
+        },
+        "regra_palavras": "seventy-one | Congress",
+        "elevenlabs_palavras": "seventy-one | Congress",
+        "fronteira_palavras": "seventy-one | Congress"
+      },
+      {
+        "trecho": 10,
+        "pausa": [
+          208.5,
+          208.66
+        ],
+        "regra": 22,
+        "elevenlabs": 22,
+        "fronteira": 22,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "chose the harbor's site",
+          "depois": "would define a deepwater",
+          "notas": {
+            "the | harbor's": 0,
+            "harbor's | site": 0,
+            "site | would": 2,
+            "would | define": 0,
+            "define | a": 0
+          }
+        },
+        "regra_palavras": "site | would",
+        "elevenlabs_palavras": "site | would",
+        "fronteira_palavras": "site | would"
+      },
+      {
+        "trecho": 13,
+        "pausa": [
+          272.38,
+          272.54
+        ],
+        "regra": 37,
+        "elevenlabs": 37,
+        "fronteira": 37,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "The spot was called",
+          "depois": "Port Los Angeles. Despite",
+          "notas": {
+            "spot | was": 0,
+            "was | called": 0,
+            "called | Port": 2,
+            "Port | Los": 0,
+            "Los | Angeles.": 0
+          }
+        },
+        "regra_palavras": "called | Port",
+        "elevenlabs_palavras": "called | Port",
+        "fronteira_palavras": "called | Port"
+      },
+      {
+        "trecho": 16,
+        "pausa": [
+          325.64,
+          325.81
+        ],
+        "regra": 30,
+        "elevenlabs": 29,
+        "fronteira": 29,
+        "situacao": "desempatada",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "railroad's Port Los Angeles.",
+          "depois": "a monopoly harbor, the",
+          "notas": {
+            "Port | Los": 0,
+            "Los | Angeles": 0,
+            "Angeles | a": 2,
+            "a | \"monopoly": 0,
+            "\"monopoly | harbor\";": 0,
+            "harbor\"; | the": 0
+          }
+        },
+        "regra_palavras": "a | \"monopoly",
+        "elevenlabs_palavras": "Angeles | a",
+        "fronteira_palavras": "Angeles | a"
+      },
+      {
+        "trecho": 17,
+        "pausa": [
+          364.25,
+          364.56
+        ],
+        "regra": 75,
+        "elevenlabs": 75,
+        "fronteira": 75,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "two weeks later. So,",
+          "depois": "Put the deepwater harbor",
+          "notas": {
+            "weeks | later.": 0,
+            "later. | So": 0,
+            "So | put": 2,
+            "put | the": 0,
+            "the | deep-water": 0
+          }
+        },
+        "regra_palavras": "So | put",
+        "elevenlabs_palavras": "So | put",
+        "fronteira_palavras": "So | put"
+      },
+      {
+        "trecho": 24,
+        "pausa": [
+          547.82,
+          548.02
+        ],
+        "regra": 68,
+        "elevenlabs": 69,
+        "fronteira": 69,
+        "situacao": "desempatada",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "across county land. Torrance,",
+          "depois": "Gardena, Lomita and Carson",
+          "notas": {
+            "across | county": 0,
+            "county | land:": 0,
+            "land: | Torrance,": 0,
+            "Torrance, | Gardena,": 2,
+            "Gardena, | Lomita": 0,
+            "Lomita | and": 0
+          }
+        },
+        "regra_palavras": "land: | Torrance,",
+        "elevenlabs_palavras": "Torrance, | Gardena,",
+        "fronteira_palavras": "Torrance, | Gardena,"
+      },
+      {
+        "trecho": 30,
+        "pausa": [
+          674.86,
+          675.06
+        ],
+        "regra": 28,
+        "elevenlabs": 28,
+        "fronteira": 28,
+        "situacao": "conferida",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "channel from 45 feet",
+          "depois": "to 53. Mendel expects",
+          "notas": {
+            "from | forty-five": 0,
+            "forty-five | feet": 0,
+            "feet | to": 2,
+            "to | fifty-three.": 0,
+            "fifty-three. | Mendell": 0
+          }
+        },
+        "regra_palavras": "feet | to",
+        "elevenlabs_palavras": "feet | to",
+        "fronteira_palavras": "feet | to"
+      },
+      {
+        "trecho": 31,
+        "pausa": [
+          683.5,
+          683.71
+        ],
+        "regra": 2,
+        "elevenlabs": 3,
+        "fronteira": 2,
+        "situacao": "desempatada",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "In 2024,",
+          "depois": "The Port of Los",
+          "notas": {
+            "In | twenty": 0,
+            "twenty | twenty-four,": 0,
+            "twenty-four, | the": 2,
+            "the | Port": 0,
+            "Port | of": 0,
+            "of | Los": 0
+          }
+        },
+        "regra_palavras": "twenty-four, | the",
+        "elevenlabs_palavras": "the | Port",
+        "fronteira_palavras": "twenty-four, | the"
+      },
+      {
+        "trecho": 31,
+        "pausa": [
+          687.6,
+          688.19
+        ],
+        "regra": 16,
+        "elevenlabs": 18,
+        "fronteira": 16,
+        "situacao": "desempatada",
+        "como": "ouvido",
+        "ouvido": {
+          "antes": "1 .3 million TEU.",
+          "depois": "ATEU is the space",
+          "notas": {
+            "T | E": 0,
+            "E | U.": 0,
+            "U. | A": 2,
+            "A | T": 0,
+            "E | U": 0,
+            "U | is": 1
+          }
+        },
+        "regra_palavras": "U. | A",
+        "elevenlabs_palavras": "T | E",
+        "fronteira_palavras": "U. | A"
+      }
+    ],
+    "conteudo": [
+      {
+        "trecho": 1,
+        "tipo": "a_mais",
+        "pede_aceite": true,
+        "roteiro": "\"can",
+        "ouvido": "can",
+        "palavra": 51,
+        "no_trecho": [
+          51
+        ],
+        "prova": {
+          "intervalo_s": [
+            17.64,
+            17.76
+          ],
+          "ouvido_no_recorte_curto": "and wrote that it, can never be made a horror film.",
+          "recorte_curto_ouviu_o_roteiro": true,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 4,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Mendell",
+        "ouvido": "Mendel",
+        "palavras": [
+          209
+        ],
+        "no_trecho": [
+          12
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            70.95,
+            71.35
+          ],
+          "ouvido_no_recorte_curto": "Colonel Mendel of the Army Corps of Engineers.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 4,
+        "tipo": "bloco_trocado",
+        "pede_aceite": false,
+        "roteiro": "deep-water",
+        "ouvido": "deepwater",
+        "palavras": [
+          220
+        ],
+        "no_trecho": [
+          23
+        ],
+        "por_que": "grafia do transcritor: só espaço/hífen muda",
+        "prova": {
+          "intervalo_s": [
+            73.83,
+            74.31
+          ],
+          "ouvido_no_recorte_curto": "wrote that the only deepwater harbors in California",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.833
+        },
+        "situacao": "sem aceite (mesmas letras)"
+      },
+      {
+        "trecho": 6,
+        "tipo": "interpolada",
+        "pede_aceite": true,
+        "roteiro": "thousand",
+        "ouvido": "",
+        "palavra": 358,
+        "no_trecho": [
+          65
+        ],
+        "prova": {
+          "intervalo_s": [
+            122.635,
+            123.135
+          ],
+          "ouvido_no_recorte_curto": "the first $200 ,000 into the harbor",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.95
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 6,
+        "tipo": "a_mais",
+        "pede_aceite": true,
+        "roteiro": "hundred",
+        "ouvido": ",000",
+        "palavra": 357,
+        "no_trecho": [
+          64
+        ],
+        "prova": {
+          "intervalo_s": [
+            122.35,
+            122.97
+          ],
+          "ouvido_no_recorte_curto": "put the first $200 ,000 into the harbor.",
+          "recorte_curto_ouviu_o_roteiro": true,
+          "fracao_com_som": 0.919
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 8,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Mendell,",
+        "ouvido": "Mendel,",
+        "palavras": [
+          434
+        ],
+        "no_trecho": [
+          20
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            146.99,
+            147.37
+          ],
+          "ouvido_no_recorte_curto": "approved a plan by Mendel, then a major.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 9,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "eighth,",
+        "ouvido": "8,",
+        "palavras": [
+          509
+        ],
+        "no_trecho": [
+          7
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            174.04,
+            174.36
+          ],
+          "ouvido_no_recorte_curto": "On November 8, 1886,",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.937
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 9,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Mendell",
+        "ouvido": "Mendel",
+        "palavras": [
+          513
+        ],
+        "no_trecho": [
+          11
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            176.12,
+            176.485
+          ],
+          "ouvido_no_recorte_curto": "Colonel Mendel signed it in San Francisco.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 10,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "his",
+        "ouvido": "has",
+        "palavras": [
+          587
+        ],
+        "no_trecho": [
+          4
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            201.01,
+            201.105
+          ],
+          "ouvido_no_recorte_curto": "So that is what has never measured.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 11,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Mendell",
+        "ouvido": "Mendel",
+        "palavras": [
+          642
+        ],
+        "no_trecho": [
+          9
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            220.46,
+            220.86
+          ],
+          "ouvido_no_recorte_curto": "Juan Pedro Bay, Mendel wrote, was",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 11,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Mendell",
+        "ouvido": "Mendel",
+        "palavras": [
+          690
+        ],
+        "no_trecho": [
+          57
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            235.7,
+            236.205
+          ],
+          "ouvido_no_recorte_curto": "swell, and Mendel endorsed it.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 12,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Mendell",
+        "ouvido": "Mendel",
+        "palavras": [
+          757
+        ],
+        "no_trecho": [
+          39
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            258.87,
+            259.19
+          ],
+          "ouvido_no_recorte_curto": "Pedro, with Mendel on the board.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 17,
+        "tipo": "bloco_trocado",
+        "pede_aceite": false,
+        "roteiro": "deep-water",
+        "ouvido": "Deepwater",
+        "palavras": [
+          1060
+        ],
+        "no_trecho": [
+          78
+        ],
+        "por_que": "grafia do transcritor: só espaço/hífen muda",
+        "prova": {
+          "intervalo_s": [
+            364.865,
+            365.32
+          ],
+          "ouvido_no_recorte_curto": "So, put the Deepwater Harbor on the map.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.846
+        },
+        "situacao": "sem aceite (mesmas letras)"
+      },
+      {
+        "trecho": 18,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "twenty-sixth,",
+        "ouvido": "26,",
+        "palavras": [
+          1091
+        ],
+        "no_trecho": [
+          6
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            376.05,
+            376.69
+          ],
+          "ouvido_no_recorte_curto": "On April 26, 1899,",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.953
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 18,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "thousand",
+        "ouvido": ",000",
+        "palavras": [
+          1131
+        ],
+        "no_trecho": [
+          46
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            391.465,
+            391.81
+          ],
+          "ouvido_no_recorte_curto": "15 ,000 and 20 ,000 people watched.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 18,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "thousand",
+        "ouvido": ",000",
+        "palavras": [
+          1167
+        ],
+        "no_trecho": [
+          82
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            403.725,
+            404.195
+          ],
+          "ouvido_no_recorte_curto": "to at least 9 ,000 feet.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.968
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 23,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "twelfth,",
+        "ouvido": "12,",
+        "palavras": [
+          1430
+        ],
+        "no_trecho": [
+          6
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            497.94,
+            498.26
+          ],
+          "ouvido_no_recorte_curto": "Sunday, November 12, 1906.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.969
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 23,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "twenty-sixth,",
+        "ouvido": "26,",
+        "palavras": [
+          1504
+        ],
+        "no_trecho": [
+          80
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            522.9,
+            523.51
+          ],
+          "ouvido_no_recorte_curto": "effect on December 26, 1906.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.951
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 26,
+        "tipo": "bloco_trocado",
+        "pede_aceite": false,
+        "roteiro": "towns'",
+        "ouvido": "town's",
+        "palavras": [
+          1651
+        ],
+        "no_trecho": [
+          9
+        ],
+        "por_que": "grafia do transcritor: só espaço/hífen muda",
+        "prova": {
+          "intervalo_s": [
+            573.17,
+            573.49
+          ],
+          "ouvido_no_recorte_curto": "the city to the harbor town's boundary lines.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 1.0
+        },
+        "situacao": "sem aceite (mesmas letras)"
+      },
+      {
+        "trecho": 27,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "twenty-eighth,",
+        "ouvido": "28,",
+        "palavras": [
+          1736
+        ],
+        "no_trecho": [
+          2
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            605.1,
+            605.645
+          ],
+          "ouvido_no_recorte_curto": "On August 28, 1909,",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.936
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 28,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "thousand",
+        "ouvido": ",000",
+        "palavras": [
+          1826
+        ],
+        "no_trecho": [
+          14
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            637.545,
+            638.065
+          ],
+          "ouvido_no_recorte_curto": "about 15 ,000 feet of undeveloped water.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.952
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      },
+      {
+        "trecho": 30,
+        "tipo": "bloco_trocado",
+        "pede_aceite": true,
+        "roteiro": "Mendell",
+        "ouvido": "Mendel",
+        "palavras": [
+          1945
+        ],
+        "no_trecho": [
+          31
+        ],
+        "por_que": "o ouvido escreveu outra coisa",
+        "prova": {
+          "intervalo_s": [
+            676.44,
+            676.955
+          ],
+          "ouvido_no_recorte_curto": "Mendel expected 18 or 20.",
+          "recorte_curto_ouviu_o_roteiro": false,
+          "fracao_com_som": 0.932
+        },
+        "situacao": "aceito",
+        "aceite": {
+          "por": "Claude central",
+          "como": "Whisper em recorte curto (conferir-recortes.py e os recortes do ingest): grafia do transcritor (Mendel, algarismos de ordinal e de milhar, aspas); o 'his' do trecho 10, ouvido 'has' (p 0,75), vai à escuta do Lucas; sem escuta humana nesta rodada",
+          "em": "2026-10-07T13:17:25Z",
+          "pendente_no_laudo_de": "2026-10-07T13:17:16.268Z"
+        }
+      }
+    ],
+    "cobertura_itens": [],
+    "ecos_de_costura": [],
+    "fora_das_falas": {
+      "medidos": 32,
+      "com_som": [],
+      "ouvido": []
+    },
+    "vaos_com_voz_fechados": [
+      {
+        "trecho": 1,
+        "palavras": [
+          2,
+          3
+        ],
+        "entre": "is | America's",
+        "vao_s": [
+          1.0,
+          1.2
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 1.175,
+        "db_min": -18.2,
+        "db_max": -15.0,
+        "vale": false
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          3,
+          4
+        ],
+        "entre": "America's | second-largest",
+        "vao_s": [
+          1.56,
+          1.72
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 1.615,
+        "db_min": -33.8,
+        "db_max": -13.8,
+        "vale": false
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          8,
+          9
+        ],
+        "entre": "the | port's",
+        "vao_s": [
+          3.48,
+          3.6
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.667,
+        "fechado_em": 3.525,
+        "db_min": -47.1,
+        "db_max": -13.8,
+        "vale": true
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          10,
+          11
+        ],
+        "entre": "own | count,",
+        "vao_s": [
+          4.04,
+          4.2
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 4.085,
+        "db_min": -35.2,
+        "db_max": -15.6,
+        "vale": false
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          14,
+          15
+        ],
+        "entre": "has | handled",
+        "vao_s": [
+          5.4,
+          5.56
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 5.545,
+        "db_min": -21.0,
+        "db_max": -14.8,
+        "vale": false
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          18,
+          19
+        ],
+        "entre": "traffic | than",
+        "vao_s": [
+          6.92,
+          7.04
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.917,
+        "fechado_em": 6.925,
+        "db_min": -58.1,
+        "db_max": -15.2,
+        "vale": true
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          19,
+          20
+        ],
+        "entre": "than | any",
+        "vao_s": [
+          7.16,
+          7.28
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 7.165,
+        "db_min": -21.0,
+        "db_max": -15.1,
+        "vale": false
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          23,
+          24
+        ],
+        "entre": "the | Western",
+        "vao_s": [
+          7.88,
+          8.04
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 8.035,
+        "db_min": -26.4,
+        "db_max": -13.8,
+        "vale": false
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          26,
+          27
+        ],
+        "entre": "every | year",
+        "vao_s": [
+          9.16,
+          9.32
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 9.235,
+        "db_min": -22.7,
+        "db_max": -14.8,
+        "vale": false
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          27,
+          28
+        ],
+        "entre": "year | from",
+        "vao_s": [
+          9.56,
+          9.68
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 9.605,
+        "db_min": -39.2,
+        "db_max": -18.1,
+        "vale": true
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          29,
+          30
+        ],
+        "entre": "two | thousand",
+        "vao_s": [
+          9.88,
+          10.04
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 10.005,
+        "db_min": -36.6,
+        "db_max": -13.2,
+        "vale": true
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          31,
+          32
+        ],
+        "entre": "through | twenty",
+        "vao_s": [
+          10.68,
+          10.84
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.875,
+        "fechado_em": 10.725,
+        "db_min": -49.9,
+        "db_max": -16.5,
+        "vale": true
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          39,
+          40
+        ],
+        "entre": "Army | engineer",
+        "vao_s": [
+          14.28,
+          14.44
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 14.425,
+        "db_min": -23.0,
+        "db_max": -13.8,
+        "vale": false
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          45,
+          46
+        ],
+        "entre": "estuary | there",
+        "vao_s": [
+          16.28,
+          16.48
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 16.355,
+        "db_min": -22.4,
+        "db_max": -18.7,
+        "vale": false
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          56,
+          57
+        ],
+        "entre": "harbor | for",
+        "vao_s": [
+          19.08,
+          19.2
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 19.125,
+        "db_min": -36.5,
+        "db_max": -16.8,
+        "vale": false
+      },
+      {
+        "trecho": 1,
+        "palavras": [
+          57,
+          58
+        ],
+        "entre": "for | deep-water",
+        "vao_s": [
+          19.32,
+          19.44
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 19.435,
+        "db_min": -29.2,
+        "db_max": -15.4,
+        "vale": false
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          4,
+          5
+        ],
+        "entre": "city's | outline",
+        "vao_s": [
+          21.73,
+          21.97
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 1.0,
+        "fechado_em": 21.895,
+        "db_min": -43.2,
+        "db_max": -16.3,
+        "vale": true
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          15,
+          16
+        ],
+        "entre": "ran | south",
+        "vao_s": [
+          25.89,
+          26.05
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 25.945,
+        "db_min": -30.4,
+        "db_max": -22.3,
+        "vale": false
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          19,
+          20
+        ],
+        "entre": "strip | about",
+        "vao_s": [
+          27.01,
+          27.17
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 27.015,
+        "db_min": -27.3,
+        "db_max": -14.2,
+        "vale": false
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          20,
+          21
+        ],
+        "entre": "about | half",
+        "vao_s": [
+          27.33,
+          27.45
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 27.365,
+        "db_min": -32.5,
+        "db_max": -16.6,
+        "vale": false
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          28,
+          29
+        ],
+        "entre": "miles, | across",
+        "vao_s": [
+          29.81,
+          29.97
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.562,
+        "fechado_em": 29.845,
+        "db_min": -86.1,
+        "db_max": -17.1,
+        "vale": true
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          29,
+          30
+        ],
+        "entre": "across | county",
+        "vao_s": [
+          30.29,
+          30.45
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 30.325,
+        "db_min": -35.9,
+        "db_max": -15.5,
+        "vale": true
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          32,
+          33
+        ],
+        "entre": "It | stopped",
+        "vao_s": [
+          31.73,
+          31.89
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.875,
+        "fechado_em": 31.755,
+        "db_min": -53.5,
+        "db_max": -14.4,
+        "vale": true
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          47,
+          48
+        ],
+        "entre": "oh-nine, | Los",
+        "vao_s": [
+          36.21,
+          36.53
+        ],
+        "dur_s": 0.32,
+        "fracao_som": 0.562,
+        "fechado_em": 36.435,
+        "db_min": -88.4,
+        "db_max": -15.4,
+        "vale": true
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          56,
+          57
+        ],
+        "entre": "So | why",
+        "vao_s": [
+          39.65,
+          39.89
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 0.667,
+        "fechado_em": 39.755,
+        "db_min": -91.9,
+        "db_max": -15.4,
+        "vale": true
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          65,
+          66
+        ],
+        "entre": "at | Alpha",
+        "vao_s": [
+          42.53,
+          42.65
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 42.575,
+        "db_min": -18.5,
+        "db_max": -15.5,
+        "vale": false
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          72,
+          73
+        ],
+        "entre": "the | story",
+        "vao_s": [
+          44.37,
+          44.53
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.813,
+        "fechado_em": 44.395,
+        "db_min": -66.6,
+        "db_max": -13.7,
+        "vale": true
+      },
+      {
+        "trecho": 2,
+        "palavras": [
+          83,
+          84
+        ],
+        "entre": "port | begins.",
+        "vao_s": [
+          47.01,
+          47.13
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 47.115,
+        "db_min": -28.3,
+        "db_max": -17.0,
+        "vale": false
+      },
+      {
+        "trecho": 3,
+        "palavras": [
+          21,
+          22
+        ],
+        "entre": "eighteen | fifty,",
+        "vao_s": [
+          54.78,
+          54.94
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 54.925,
+        "db_min": -32.9,
+        "db_max": -16.3,
+        "vale": false
+      },
+      {
+        "trecho": 3,
+        "palavras": [
+          23,
+          24
+        ],
+        "entre": "about | twenty-eight",
+        "vao_s": [
+          55.9,
+          56.02
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.75,
+        "fechado_em": 55.945,
+        "db_min": -51.8,
+        "db_max": -14.8,
+        "vale": true
+      },
+      {
+        "trecho": 3,
+        "palavras": [
+          35,
+          36
+        ],
+        "entre": "nearest | open",
+        "vao_s": [
+          60.14,
+          60.26
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.833,
+        "fechado_em": 60.255,
+        "db_min": -60.5,
+        "db_max": -12.1,
+        "vale": true
+      },
+      {
+        "trecho": 4,
+        "palavras": [
+          4,
+          5
+        ],
+        "entre": "faced | had",
+        "vao_s": [
+          67.51,
+          67.63
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 67.515,
+        "db_min": -29.6,
+        "db_max": -16.1,
+        "vale": false
+      },
+      {
+        "trecho": 4,
+        "palavras": [
+          25,
+          26
+        ],
+        "entre": "in | California",
+        "vao_s": [
+          74.87,
+          75.19
+        ],
+        "dur_s": 0.32,
+        "fracao_som": 1.0,
+        "fechado_em": 74.885,
+        "db_min": -40.3,
+        "db_max": -15.6,
+        "vale": true
+      },
+      {
+        "trecho": 4,
+        "palavras": [
+          35,
+          36
+        ],
+        "entre": "Bay, | in",
+        "vao_s": [
+          79.27,
+          79.47
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 0.9,
+        "fechado_em": 79.395,
+        "db_min": -59.5,
+        "db_max": -17.0,
+        "vale": true
+      },
+      {
+        "trecho": 4,
+        "palavras": [
+          39,
+          40
+        ],
+        "entre": "an | open",
+        "vao_s": [
+          80.63,
+          80.75
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 80.745,
+        "db_min": -43.5,
+        "db_max": -13.5,
+        "vale": true
+      },
+      {
+        "trecho": 4,
+        "palavras": [
+          49,
+          50
+        ],
+        "entre": "the | winter",
+        "vao_s": [
+          84.07,
+          84.19
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 84.075,
+        "db_min": -19.5,
+        "db_max": -13.6,
+        "vale": false
+      },
+      {
+        "trecho": 5,
+        "palavras": [
+          0,
+          1
+        ],
+        "entre": "In | eighteen",
+        "vao_s": [
+          86.0,
+          86.12
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 86.005,
+        "db_min": -20.6,
+        "db_max": -12.9,
+        "vale": false
+      },
+      {
+        "trecho": 5,
+        "palavras": [
+          5,
+          6
+        ],
+        "entre": "Dana's | ship",
+        "vao_s": [
+          88.4,
+          88.52
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 88.445,
+        "db_min": -32.1,
+        "db_max": -13.5,
+        "vale": false
+      },
+      {
+        "trecho": 5,
+        "palavras": [
+          21,
+          22
+        ],
+        "entre": "had | seen",
+        "vao_s": [
+          92.72,
+          92.88
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 92.755,
+        "db_min": -30.7,
+        "db_max": -15.4,
+        "vale": false
+      },
+      {
+        "trecho": 5,
+        "palavras": [
+          29,
+          30
+        ],
+        "entre": "cargo | went",
+        "vao_s": [
+          96.48,
+          96.6
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 96.585,
+        "db_min": -17.5,
+        "db_max": -14.2,
+        "vale": false
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          8,
+          9
+        ],
+        "entre": "a | tidal",
+        "vao_s": [
+          102.89,
+          103.01
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 102.895,
+        "db_min": -34.5,
+        "db_max": -16.1,
+        "vale": false
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          23,
+          24
+        ],
+        "entre": "the | Army's",
+        "vao_s": [
+          109.29,
+          109.41
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 109.405,
+        "db_min": -18.3,
+        "db_max": -16.0,
+        "vale": false
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          27,
+          28
+        ],
+        "entre": "the | sandbar",
+        "vao_s": [
+          110.73,
+          110.89
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 110.775,
+        "db_min": -28.9,
+        "db_max": -14.4,
+        "vale": false
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          34,
+          35
+        ],
+        "entre": "estuary | had",
+        "vao_s": [
+          112.49,
+          112.61
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 112.505,
+        "db_min": -21.9,
+        "db_max": -16.6,
+        "vale": false
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          38,
+          39
+        ],
+        "entre": "two | feet",
+        "vao_s": [
+          113.37,
+          113.53
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 113.445,
+        "db_min": -36.0,
+        "db_max": -15.9,
+        "vale": true
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          45,
+          46
+        ],
+        "entre": "A | railroad",
+        "vao_s": [
+          115.69,
+          115.81
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 115.715,
+        "db_min": -16.2,
+        "db_max": -14.7,
+        "vale": false
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          55,
+          56
+        ],
+        "entre": "in | March",
+        "vao_s": [
+          119.21,
+          119.37
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 119.325,
+        "db_min": -17.4,
+        "db_max": -14.5,
+        "vale": false
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          56,
+          57
+        ],
+        "entre": "March | eighteen",
+        "vao_s": [
+          119.53,
+          119.69
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.75,
+        "fechado_em": 119.585,
+        "db_min": -64.0,
+        "db_max": -15.6,
+        "vale": true
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          64,
+          65
+        ],
+        "entre": "hundred | thousand",
+        "vao_s": [
+          122.57,
+          122.73
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.688,
+        "fechado_em": 122.635,
+        "db_min": -73.3,
+        "db_max": -14.7,
+        "vale": true
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          65,
+          66
+        ],
+        "entre": "thousand | dollars",
+        "vao_s": [
+          123.05,
+          123.17
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 123.135,
+        "db_min": -18.9,
+        "db_max": -13.1,
+        "vale": false
+      },
+      {
+        "trecho": 6,
+        "palavras": [
+          69,
+          70
+        ],
+        "entre": "harbor | there.",
+        "vao_s": [
+          124.09,
+          124.21
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 124.095,
+        "db_min": -25.6,
+        "db_max": -17.6,
+        "vale": false
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          0,
+          1
+        ],
+        "entre": "So | look",
+        "vao_s": [
+          125.06,
+          125.22
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.938,
+        "fechado_em": 125.125,
+        "db_min": -46.9,
+        "db_max": -15.5,
+        "vale": true
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          9,
+          10
+        ],
+        "entre": "eighteen | fifty",
+        "vao_s": [
+          127.46,
+          127.62
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 127.605,
+        "db_min": -32.6,
+        "db_max": -15.8,
+        "vale": false
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          14,
+          15
+        ],
+        "entre": "the | water",
+        "vao_s": [
+          129.22,
+          129.34
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 129.225,
+        "db_min": -19.6,
+        "db_max": -14.5,
+        "vale": false
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          17,
+          18
+        ],
+        "entre": "used | was",
+        "vao_s": [
+          129.94,
+          130.06
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 129.945,
+        "db_min": -25.4,
+        "db_max": -15.3,
+        "vale": false
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          20,
+          21
+        ],
+        "entre": "miles | away,",
+        "vao_s": [
+          130.98,
+          131.18
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 131.045,
+        "db_min": -19.8,
+        "db_max": -13.9,
+        "vale": false
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          23,
+          24
+        ],
+        "entre": "a | bay",
+        "vao_s": [
+          131.86,
+          131.98
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 131.865,
+        "db_min": -17.2,
+        "db_max": -13.3,
+        "vale": false
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          33,
+          34
+        ],
+        "entre": "The | problem",
+        "vao_s": [
+          135.46,
+          135.62
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 135.475,
+        "db_min": -39.5,
+        "db_max": -13.5,
+        "vale": true
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          39,
+          40
+        ],
+        "entre": "It | was",
+        "vao_s": [
+          137.62,
+          137.74
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 137.725,
+        "db_min": -25.2,
+        "db_max": -14.2,
+        "vale": false
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          40,
+          41
+        ],
+        "entre": "was | water,",
+        "vao_s": [
+          137.86,
+          138.18
+        ],
+        "dur_s": 0.32,
+        "fracao_som": 1.0,
+        "fechado_em": 138.175,
+        "db_min": -36.7,
+        "db_max": -14.0,
+        "vale": true
+      },
+      {
+        "trecho": 7,
+        "palavras": [
+          43,
+          44
+        ],
+        "entre": "the | water",
+        "vao_s": [
+          138.82,
+          138.94
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 138.865,
+        "db_min": -16.5,
+        "db_max": -13.4,
+        "vale": false
+      },
+      {
+        "trecho": 8,
+        "palavras": [
+          12,
+          13
+        ],
+        "entre": "eighteen | seventy-one,",
+        "vao_s": [
+          144.59,
+          144.75
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 144.745,
+        "db_min": -31.6,
+        "db_max": -14.7,
+        "vale": false
+      },
+      {
+        "trecho": 8,
+        "palavras": [
+          15,
+          16
+        ],
+        "entre": "Army | approved",
+        "vao_s": [
+          146.03,
+          146.19
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.812,
+        "fechado_em": 146.105,
+        "db_min": -67.9,
+        "db_max": -13.5,
+        "vale": true
+      },
+      {
+        "trecho": 8,
+        "palavras": [
+          22,
+          23
+        ],
+        "entre": "a | major.",
+        "vao_s": [
+          148.03,
+          148.23
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 148.215,
+        "db_min": -28.2,
+        "db_max": -14.3,
+        "vale": false
+      },
+      {
+        "trecho": 8,
+        "palavras": [
+          30,
+          31
+        ],
+        "entre": "of | timber",
+        "vao_s": [
+          150.59,
+          150.71
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.917,
+        "fechado_em": 150.595,
+        "db_min": -48.4,
+        "db_max": -14.0,
+        "vale": true
+      },
+      {
+        "trecho": 8,
+        "palavras": [
+          45,
+          46
+        ],
+        "entre": "It | closed",
+        "vao_s": [
+          155.87,
+          156.03
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 155.915,
+        "db_min": -38.8,
+        "db_max": -12.8,
+        "vale": true
+      },
+      {
+        "trecho": 8,
+        "palavras": [
+          48,
+          49
+        ],
+        "entre": "shallows | between",
+        "vao_s": [
+          156.75,
+          156.91
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.875,
+        "fechado_em": 156.755,
+        "db_min": -66.8,
+        "db_max": -17.3,
+        "vale": true
+      },
+      {
+        "trecho": 8,
+        "palavras": [
+          67,
+          68
+        ],
+        "entre": "Squeezed | into",
+        "vao_s": [
+          163.23,
+          163.35
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 163.325,
+        "db_min": -24.8,
+        "db_max": -13.7,
+        "vale": false
+      },
+      {
+        "trecho": 8,
+        "palavras": [
+          69,
+          70
+        ],
+        "entre": "one | channel,",
+        "vao_s": [
+          163.63,
+          163.79
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 163.765,
+        "db_min": -34.5,
+        "db_max": -14.2,
+        "vale": true
+      },
+      {
+        "trecho": 8,
+        "palavras": [
+          78,
+          79
+        ],
+        "entre": "had | ten",
+        "vao_s": [
+          167.47,
+          167.59
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 167.485,
+        "db_min": -42.7,
+        "db_max": -14.1,
+        "vale": true
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          0,
+          1
+        ],
+        "entre": "In | between",
+        "vao_s": [
+          171.56,
+          171.84
+        ],
+        "dur_s": 0.28,
+        "fracao_som": 0.964,
+        "fechado_em": 171.755,
+        "db_min": -45.0,
+        "db_max": -13.5,
+        "vale": true
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          11,
+          12
+        ],
+        "entre": "Mendell | signed",
+        "vao_s": [
+          176.44,
+          176.56
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 176.485,
+        "db_min": -32.0,
+        "db_max": -13.6,
+        "vale": false
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          23,
+          24
+        ],
+        "entre": "ships | drawing",
+        "vao_s": [
+          181.32,
+          181.48
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.875,
+        "fechado_em": 181.325,
+        "db_min": -68.9,
+        "db_max": -14.1,
+        "vale": true
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          26,
+          27
+        ],
+        "entre": "to | fourteen",
+        "vao_s": [
+          182.2,
+          182.32
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 182.225,
+        "db_min": -39.1,
+        "db_max": -13.8,
+        "vale": true
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          27,
+          28
+        ],
+        "entre": "fourteen | feet,",
+        "vao_s": [
+          182.6,
+          182.76
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 182.665,
+        "db_min": -33.1,
+        "db_max": -17.3,
+        "vale": false
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          29,
+          30
+        ],
+        "entre": "meaning | they",
+        "vao_s": [
+          183.72,
+          183.84
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 183.735,
+        "db_min": -24.0,
+        "db_max": -15.6,
+        "vale": false
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          30,
+          31
+        ],
+        "entre": "they | sat",
+        "vao_s": [
+          183.96,
+          184.08
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 183.975,
+        "db_min": -35.1,
+        "db_max": -13.7,
+        "vale": true
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          35,
+          36
+        ],
+        "entre": "the | water.",
+        "vao_s": [
+          185.0,
+          185.16
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 185.155,
+        "db_min": -22.7,
+        "db_max": -16.5,
+        "vale": false
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          37,
+          38
+        ],
+        "entre": "And | still",
+        "vao_s": [
+          185.96,
+          186.12
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.875,
+        "fechado_em": 186.115,
+        "db_min": -58.3,
+        "db_max": -13.7,
+        "vale": true
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          43,
+          44
+        ],
+        "entre": "a | small",
+        "vao_s": [
+          187.72,
+          187.88
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 187.775,
+        "db_min": -40.5,
+        "db_max": -13.3,
+        "vale": true
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          46,
+          47
+        ],
+        "entre": "and | can",
+        "vao_s": [
+          188.92,
+          189.04
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 188.925,
+        "db_min": -33.6,
+        "db_max": -13.6,
+        "vale": false
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          56,
+          57
+        ],
+        "entre": "His | next",
+        "vao_s": [
+          192.04,
+          192.16
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.833,
+        "fechado_em": 192.155,
+        "db_min": -53.7,
+        "db_max": -15.3,
+        "vale": true
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          57,
+          58
+        ],
+        "entre": "next | sentence",
+        "vao_s": [
+          192.28,
+          192.48
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 192.435,
+        "db_min": -39.7,
+        "db_max": -14.2,
+        "vale": true
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          62,
+          63
+        ],
+        "entre": "if | eighteen",
+        "vao_s": [
+          194.2,
+          194.32
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 194.315,
+        "db_min": -20.3,
+        "db_max": -13.3,
+        "vale": false
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          64,
+          65
+        ],
+        "entre": "or | twenty",
+        "vao_s": [
+          194.84,
+          194.96
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.833,
+        "fechado_em": 194.895,
+        "db_min": -51.2,
+        "db_max": -15.1,
+        "vale": true
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          65,
+          66
+        ],
+        "entre": "twenty | feet",
+        "vao_s": [
+          195.08,
+          195.24
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 195.225,
+        "db_min": -32.8,
+        "db_max": -18.5,
+        "vale": false
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          67,
+          68
+        ],
+        "entre": "at | high",
+        "vao_s": [
+          195.56,
+          195.68
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 195.565,
+        "db_min": -25.7,
+        "db_max": -17.5,
+        "vale": false
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          68,
+          69
+        ],
+        "entre": "high | water",
+        "vao_s": [
+          195.8,
+          195.96
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 195.955,
+        "db_min": -23.1,
+        "db_max": -14.8,
+        "vale": false
+      },
+      {
+        "trecho": 9,
+        "palavras": [
+          77,
+          78
+        ],
+        "entre": "reached | its",
+        "vao_s": [
+          198.28,
+          198.4
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.917,
+        "fechado_em": 198.355,
+        "db_min": -48.3,
+        "db_max": -16.6,
+        "vale": true
+      },
+      {
+        "trecho": 10,
+        "palavras": [
+          4,
+          5
+        ],
+        "entre": "his | never",
+        "vao_s": [
+          201.09,
+          201.25
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 201.105,
+        "db_min": -28.2,
+        "db_max": -14.3,
+        "vale": false
+      },
+      {
+        "trecho": 10,
+        "palavras": [
+          21,
+          22
+        ],
+        "entre": "harbor's | site",
+        "vao_s": [
+          208.21,
+          208.37
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 208.245,
+        "db_min": -32.6,
+        "db_max": -13.6,
+        "vale": false
+      },
+      {
+        "trecho": 10,
+        "palavras": [
+          25,
+          26
+        ],
+        "entre": "a | deep-water",
+        "vao_s": [
+          209.33,
+          209.45
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 209.335,
+        "db_min": -21.0,
+        "db_max": -14.1,
+        "vale": false
+      },
+      {
+        "trecho": 10,
+        "palavras": [
+          33,
+          34
+        ],
+        "entre": "at | least",
+        "vao_s": [
+          211.65,
+          211.81
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 211.805,
+        "db_min": -28.8,
+        "db_max": -15.8,
+        "vale": false
+      },
+      {
+        "trecho": 10,
+        "palavras": [
+          35,
+          36
+        ],
+        "entre": "thirty | feet.",
+        "vao_s": [
+          212.21,
+          212.37
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 212.355,
+        "db_min": -36.2,
+        "db_max": -17.7,
+        "vale": false
+      },
+      {
+        "trecho": 10,
+        "palavras": [
+          46,
+          47
+        ],
+        "entre": "was | heading",
+        "vao_s": [
+          215.57,
+          215.69
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 215.665,
+        "db_min": -24.1,
+        "db_max": -14.2,
+        "vale": false
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          0,
+          1
+        ],
+        "entre": "The | same",
+        "vao_s": [
+          217.1,
+          217.22
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 217.155,
+        "db_min": -29.3,
+        "db_max": -12.7,
+        "vale": false
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          35,
+          36
+        ],
+        "entre": "in | February",
+        "vao_s": [
+          229.42,
+          229.66
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 1.0,
+        "fechado_em": 229.435,
+        "db_min": -31.3,
+        "db_max": -13.6,
+        "vale": false
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          36,
+          37
+        ],
+        "entre": "February | eighteen",
+        "vao_s": [
+          229.9,
+          230.06
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.875,
+        "fechado_em": 229.995,
+        "db_min": -50.6,
+        "db_max": -15.3,
+        "vale": true
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          37,
+          38
+        ],
+        "entre": "eighteen | eighty-eight",
+        "vao_s": [
+          230.3,
+          230.46
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 230.395,
+        "db_min": -18.7,
+        "db_max": -15.2,
+        "vale": false
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          38,
+          39
+        ],
+        "entre": "eighty-eight | with",
+        "vao_s": [
+          230.78,
+          231.02
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 0.583,
+        "fechado_em": 230.965,
+        "db_min": -84.8,
+        "db_max": -20.2,
+        "vale": true
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          40,
+          41
+        ],
+        "entre": "the | first",
+        "vao_s": [
+          231.26,
+          231.38
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 231.265,
+        "db_min": -35.9,
+        "db_max": -13.0,
+        "vale": true
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          41,
+          42
+        ],
+        "entre": "first | design",
+        "vao_s": [
+          231.5,
+          231.7
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 0.85,
+        "fechado_em": 231.515,
+        "db_min": -79.3,
+        "db_max": -14.7,
+        "vale": true
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          52,
+          53
+        ],
+        "entre": "to | block",
+        "vao_s": [
+          234.38,
+          234.5
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 234.385,
+        "db_min": -42.8,
+        "db_max": -14.7,
+        "vale": true
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          57,
+          58
+        ],
+        "entre": "Mendell | endorsed",
+        "vao_s": [
+          236.06,
+          236.26
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 236.205,
+        "db_min": -26.9,
+        "db_max": -15.0,
+        "vale": false
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          72,
+          73
+        ],
+        "entre": "the | breakwater,",
+        "vao_s": [
+          241.58,
+          241.74
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 241.595,
+        "db_min": -33.9,
+        "db_max": -13.4,
+        "vale": true
+      },
+      {
+        "trecho": 11,
+        "palavras": [
+          81,
+          82
+        ],
+        "entre": "that | picked",
+        "vao_s": [
+          244.06,
+          244.18
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 244.085,
+        "db_min": -39.8,
+        "db_max": -14.9,
+        "vale": true
+      },
+      {
+        "trecho": 12,
+        "palavras": [
+          11,
+          12
+        ],
+        "entre": "eighteen | ninety,",
+        "vao_s": [
+          249.19,
+          249.35
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 249.335,
+        "db_min": -17.3,
+        "db_max": -15.0,
+        "vale": false
+      },
+      {
+        "trecho": 12,
+        "palavras": [
+          14,
+          15
+        ],
+        "entre": "sent | three",
+        "vao_s": [
+          250.63,
+          250.75
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 250.675,
+        "db_min": -36.3,
+        "db_max": -15.3,
+        "vale": true
+      },
+      {
+        "trecho": 12,
+        "palavras": [
+          21,
+          22
+        ],
+        "entre": "best | site",
+        "vao_s": [
+          252.55,
+          252.71
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 252.585,
+        "db_min": -30.5,
+        "db_max": -13.8,
+        "vale": false
+      },
+      {
+        "trecho": 12,
+        "palavras": [
+          36,
+          37
+        ],
+        "entre": "San | Pedro,",
+        "vao_s": [
+          257.83,
+          257.99
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.875,
+        "fechado_em": 257.905,
+        "db_min": -56.8,
+        "db_max": -14.6,
+        "vale": true
+      },
+      {
+        "trecho": 13,
+        "palavras": [
+          17,
+          18
+        ],
+        "entre": "pier | there,",
+        "vao_s": [
+          266.24,
+          266.36
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 266.245,
+        "db_min": -26.9,
+        "db_max": -15.9,
+        "vale": false
+      },
+      {
+        "trecho": 13,
+        "palavras": [
+          20,
+          21
+        ],
+        "entre": "the | account",
+        "vao_s": [
+          266.96,
+          267.12
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.938,
+        "fechado_em": 267.045,
+        "db_min": -48.2,
+        "db_max": -14.4,
+        "vale": true
+      },
+      {
+        "trecho": 13,
+        "palavras": [
+          32,
+          33
+        ],
+        "entre": "Pedro's | side.",
+        "vao_s": [
+          270.56,
+          270.72
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 270.585,
+        "db_min": -29.7,
+        "db_max": -18.9,
+        "vale": false
+      },
+      {
+        "trecho": 13,
+        "palavras": [
+          42,
+          43
+        ],
+        "entre": "the | name,",
+        "vao_s": [
+          274.72,
+          274.88
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 274.855,
+        "db_min": -19.8,
+        "db_max": -16.4,
+        "vale": false
+      },
+      {
+        "trecho": 14,
+        "palavras": [
+          17,
+          18
+        ],
+        "entre": "about | thirty-three",
+        "vao_s": [
+          281.69,
+          281.85
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 281.775,
+        "db_min": -39.4,
+        "db_max": -13.3,
+        "vale": true
+      },
+      {
+        "trecho": 14,
+        "palavras": [
+          18,
+          19
+        ],
+        "entre": "thirty-three | feet",
+        "vao_s": [
+          282.25,
+          282.41
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 282.405,
+        "db_min": -35.0,
+        "db_max": -16.3,
+        "vale": false
+      },
+      {
+        "trecho": 14,
+        "palavras": [
+          31,
+          32
+        ],
+        "entre": "in | eighteen",
+        "vao_s": [
+          286.33,
+          286.45
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 286.445,
+        "db_min": -23.1,
+        "db_max": -15.8,
+        "vale": false
+      },
+      {
+        "trecho": 14,
+        "palavras": [
+          35,
+          36
+        ],
+        "entre": "railroad's | chief",
+        "vao_s": [
+          288.25,
+          288.37
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 288.325,
+        "db_min": -31.0,
+        "db_max": -15.2,
+        "vale": false
+      },
+      {
+        "trecho": 14,
+        "palavras": [
+          48,
+          49
+        ],
+        "entre": "Pedro | alone",
+        "vao_s": [
+          293.29,
+          293.53
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 1.0,
+        "fechado_em": 293.365,
+        "db_min": -19.2,
+        "db_max": -13.0,
+        "vale": false
+      },
+      {
+        "trecho": 14,
+        "palavras": [
+          50,
+          51
+        ],
+        "entre": "to | move",
+        "vao_s": [
+          293.93,
+          294.05
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 294.045,
+        "db_min": -17.9,
+        "db_max": -13.1,
+        "vale": false
+      },
+      {
+        "trecho": 15,
+        "palavras": [
+          17,
+          18
+        ],
+        "entre": "Monica, | they",
+        "vao_s": [
+          306.66,
+          306.9
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 0.792,
+        "fechado_em": 306.805,
+        "db_min": -76.8,
+        "db_max": -16.7,
+        "vale": true
+      },
+      {
+        "trecho": 15,
+        "palavras": [
+          22,
+          23
+        ],
+        "entre": "the | government",
+        "vao_s": [
+          308.1,
+          308.3
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 308.125,
+        "db_min": -27.3,
+        "db_max": -12.8,
+        "vale": false
+      },
+      {
+        "trecho": 15,
+        "palavras": [
+          26,
+          27
+        ],
+        "entre": "harbors | where",
+        "vao_s": [
+          309.94,
+          310.1
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 309.945,
+        "db_min": -41.7,
+        "db_max": -14.4,
+        "vale": true
+      },
+      {
+        "trecho": 15,
+        "palavras": [
+          29,
+          30
+        ],
+        "entre": "would | answer",
+        "vao_s": [
+          310.74,
+          310.9
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 310.895,
+        "db_min": -29.5,
+        "db_max": -17.8,
+        "vale": false
+      },
+      {
+        "trecho": 15,
+        "palavras": [
+          34,
+          35
+        ],
+        "entre": "second | board",
+        "vao_s": [
+          312.74,
+          312.86
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 312.775,
+        "db_min": -26.8,
+        "db_max": -15.8,
+        "vale": false
+      },
+      {
+        "trecho": 15,
+        "palavras": [
+          41,
+          42
+        ],
+        "entre": "the | first.",
+        "vao_s": [
+          314.02,
+          314.22
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 314.215,
+        "db_min": -35.9,
+        "db_max": -14.5,
+        "vale": true
+      },
+      {
+        "trecho": 16,
+        "palavras": [
+          0,
+          1
+        ],
+        "entre": "It's | remembered",
+        "vao_s": [
+          315.123,
+          315.257
+        ],
+        "dur_s": 0.134,
+        "fracao_som": 1.0,
+        "fechado_em": 315.235,
+        "db_min": -18.5,
+        "db_max": -14.5,
+        "vale": false
+      },
+      {
+        "trecho": 16,
+        "palavras": [
+          3,
+          4
+        ],
+        "entre": "the | Free",
+        "vao_s": [
+          315.87,
+          316.03
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 315.995,
+        "db_min": -31.4,
+        "db_max": -28.7,
+        "vale": false
+      },
+      {
+        "trecho": 16,
+        "palavras": [
+          14,
+          15
+        ],
+        "entre": "competition | between",
+        "vao_s": [
+          319.87,
+          320.03
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 320.025,
+        "db_min": -35.6,
+        "db_max": -17.5,
+        "vale": false
+      },
+      {
+        "trecho": 16,
+        "palavras": [
+          22,
+          23
+        ],
+        "entre": "Willard's | side",
+        "vao_s": [
+          323.39,
+          323.55
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 323.415,
+        "db_min": -30.9,
+        "db_max": -13.9,
+        "vale": false
+      },
+      {
+        "trecho": 16,
+        "palavras": [
+          25,
+          26
+        ],
+        "entre": "the | railroad's",
+        "vao_s": [
+          324.03,
+          324.15
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 324.045,
+        "db_min": -21.6,
+        "db_max": -12.3,
+        "vale": false
+      },
+      {
+        "trecho": 16,
+        "palavras": [
+          48,
+          49
+        ],
+        "entre": "probably | eventuate",
+        "vao_s": [
+          331.79,
+          331.99
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 331.925,
+        "db_min": -23.6,
+        "db_max": -12.7,
+        "vale": false
+      },
+      {
+        "trecho": 16,
+        "palavras": [
+          57,
+          58
+        ],
+        "entre": "settle | that.",
+        "vao_s": [
+          335.47,
+          335.59
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 335.575,
+        "db_min": -31.4,
+        "db_max": -18.6,
+        "vale": false
+      },
+      {
+        "trecho": 16,
+        "palavras": [
+          61,
+          62
+        ],
+        "entre": "didn't | either.",
+        "vao_s": [
+          336.75,
+          336.91
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 336.875,
+        "db_min": -32.2,
+        "db_max": -16.2,
+        "vale": false
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          4,
+          5
+        ],
+        "entre": "Congress | passed",
+        "vao_s": [
+          339.88,
+          340.04
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 339.895,
+        "db_min": -42.0,
+        "db_max": -14.6,
+        "vale": true
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          9,
+          10
+        ],
+        "entre": "harbors | law.",
+        "vao_s": [
+          341.32,
+          341.44
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 341.415,
+        "db_min": -23.5,
+        "db_max": -17.6,
+        "vale": false
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          11,
+          12
+        ],
+        "entre": "A | House",
+        "vao_s": [
+          342.28,
+          342.4
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 342.345,
+        "db_min": -18.1,
+        "db_max": -14.5,
+        "vale": false
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          17,
+          18
+        ],
+        "entre": "the | money",
+        "vao_s": [
+          343.32,
+          343.44
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 343.415,
+        "db_min": -19.2,
+        "db_max": -15.7,
+        "vale": false
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          32,
+          33
+        ],
+        "entre": "of | five,",
+        "vao_s": [
+          347.16,
+          347.36
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 347.185,
+        "db_min": -33.5,
+        "db_max": -13.4,
+        "vale": true
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          38,
+          39
+        ],
+        "entre": "be | final",
+        "vao_s": [
+          349.08,
+          349.28
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 349.105,
+        "db_min": -37.6,
+        "db_max": -14.1,
+        "vale": true
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          42,
+          43
+        ],
+        "entre": "the | location.",
+        "vao_s": [
+          349.88,
+          350.16
+        ],
+        "dur_s": 0.28,
+        "fracao_som": 1.0,
+        "fechado_em": 350.005,
+        "db_min": -44.2,
+        "db_max": -14.2,
+        "vale": true
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          46,
+          47
+        ],
+        "entre": "first, | eighteen",
+        "vao_s": [
+          351.88,
+          352.12
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 0.667,
+        "fechado_em": 352.015,
+        "db_min": -85.6,
+        "db_max": -15.7,
+        "vale": true
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          47,
+          48
+        ],
+        "entre": "eighteen | ninety-seven,",
+        "vao_s": [
+          352.28,
+          352.44
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 352.325,
+        "db_min": -18.4,
+        "db_max": -16.3,
+        "vale": false
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          50,
+          51
+        ],
+        "entre": "board | reported:",
+        "vao_s": [
+          353.8,
+          354.04
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 0.792,
+        "fechado_em": 353.935,
+        "db_min": -51.0,
+        "db_max": -14.7,
+        "vale": true
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          55,
+          56
+        ],
+        "entre": "in | favor",
+        "vao_s": [
+          356.04,
+          356.2
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 356.045,
+        "db_min": -33.2,
+        "db_max": -12.6,
+        "vale": true
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          62,
+          63
+        ],
+        "entre": "to | one.",
+        "vao_s": [
+          358.36,
+          358.48
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 358.475,
+        "db_min": -28.1,
+        "db_max": -16.2,
+        "vale": false
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          70,
+          71
+        ],
+        "entre": "minority | report",
+        "vao_s": [
+          361.96,
+          362.2
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 0.708,
+        "fechado_em": 362.115,
+        "db_min": -71.3,
+        "db_max": -16.2,
+        "vale": true
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          72,
+          73
+        ],
+        "entre": "two | weeks",
+        "vao_s": [
+          362.6,
+          362.72
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 362.715,
+        "db_min": -25.5,
+        "db_max": -15.7,
+        "vale": false
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          77,
+          78
+        ],
+        "entre": "the | deep-water",
+        "vao_s": [
+          364.76,
+          364.92
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 364.865,
+        "db_min": -40.3,
+        "db_max": -15.1,
+        "vale": true
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          81,
+          82
+        ],
+        "entre": "the | map:",
+        "vao_s": [
+          365.96,
+          366.12
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 366.115,
+        "db_min": -32.1,
+        "db_max": -14.8,
+        "vale": false
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          87,
+          88
+        ],
+        "entre": "And | not",
+        "vao_s": [
+          368.52,
+          368.64
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 368.635,
+        "db_min": -18.7,
+        "db_max": -14.0,
+        "vale": false
+      },
+      {
+        "trecho": 17,
+        "palavras": [
+          96,
+          97
+        ],
+        "entre": "the | strip",
+        "vao_s": [
+          371.24,
+          371.36
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.833,
+        "fechado_em": 371.275,
+        "db_min": -61.4,
+        "db_max": -13.3,
+        "vale": true
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          0,
+          1
+        ],
+        "entre": "The | breakwater",
+        "vao_s": [
+          373.73,
+          373.89
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 373.755,
+        "db_min": -32.4,
+        "db_max": -13.7,
+        "vale": false
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          7,
+          8
+        ],
+        "entre": "eighteen | ninety-nine,",
+        "vao_s": [
+          377.17,
+          377.33
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 377.195,
+        "db_min": -18.6,
+        "db_max": -15.5,
+        "vale": false
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          32,
+          33
+        ],
+        "entre": "barge | failed,",
+        "vao_s": [
+          386.77,
+          386.93
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 386.885,
+        "db_min": -36.1,
+        "db_max": -13.8,
+        "vale": true
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          34,
+          35
+        ],
+        "entre": "and | men",
+        "vao_s": [
+          387.65,
+          387.77
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 387.755,
+        "db_min": -17.4,
+        "db_max": -13.5,
+        "vale": false
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          42,
+          43
+        ],
+        "entre": "Between | fifteen",
+        "vao_s": [
+          390.29,
+          390.45
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 390.365,
+        "db_min": -37.8,
+        "db_max": -13.1,
+        "vale": true
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          45,
+          46
+        ],
+        "entre": "twenty | thousand",
+        "vao_s": [
+          391.33,
+          391.49
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 391.465,
+        "db_min": -41.1,
+        "db_max": -14.6,
+        "vale": true
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          60,
+          61
+        ],
+        "entre": "Catalina | Island.",
+        "vao_s": [
+          396.69,
+          396.85
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 396.725,
+        "db_min": -30.2,
+        "db_max": -18.2,
+        "vale": false
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          62,
+          63
+        ],
+        "entre": "In | January",
+        "vao_s": [
+          397.89,
+          398.13
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 1.0,
+        "fechado_em": 397.895,
+        "db_min": -22.0,
+        "db_max": -13.0,
+        "vale": false
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          70,
+          71
+        ],
+        "entre": "the | Army",
+        "vao_s": [
+          400.93,
+          401.05
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 400.965,
+        "db_min": -17.8,
+        "db_max": -15.9,
+        "vale": false
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          72,
+          73
+        ],
+        "entre": "got | approval",
+        "vao_s": [
+          401.33,
+          401.57
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 0.833,
+        "fechado_em": 401.435,
+        "db_min": -68.5,
+        "db_max": -13.3,
+        "vale": true
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          80,
+          81
+        ],
+        "entre": "least | nine",
+        "vao_s": [
+          403.33,
+          403.49
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 403.485,
+        "db_min": -17.9,
+        "db_max": -14.7,
+        "vale": false
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          81,
+          82
+        ],
+        "entre": "nine | thousand",
+        "vao_s": [
+          403.65,
+          403.81
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.875,
+        "fechado_em": 403.725,
+        "db_min": -55.6,
+        "db_max": -14.3,
+        "vale": true
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          82,
+          83
+        ],
+        "entre": "thousand | feet.",
+        "vao_s": [
+          404.05,
+          404.21
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 404.195,
+        "db_min": -34.4,
+        "db_max": -17.4,
+        "vale": false
+      },
+      {
+        "trecho": 18,
+        "palavras": [
+          85,
+          86
+        ],
+        "entre": "kept | coming,",
+        "vao_s": [
+          405.65,
+          405.81
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.75,
+        "fechado_em": 405.705,
+        "db_min": -54.6,
+        "db_max": -14.6,
+        "vale": true
+      },
+      {
+        "trecho": 19,
+        "palavras": [
+          6,
+          7
+        ],
+        "entre": "April | first,",
+        "vao_s": [
+          411.9,
+          412.06
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 412.035,
+        "db_min": -32.8,
+        "db_max": -13.8,
+        "vale": false
+      },
+      {
+        "trecho": 19,
+        "palavras": [
+          7,
+          8
+        ],
+        "entre": "first, | nineteen",
+        "vao_s": [
+          412.38,
+          412.58
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 0.55,
+        "fechado_em": 412.465,
+        "db_min": -87.7,
+        "db_max": -16.4,
+        "vale": true
+      },
+      {
+        "trecho": 19,
+        "palavras": [
+          25,
+          26
+        ],
+        "entre": "behind | walls",
+        "vao_s": [
+          417.74,
+          417.9
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 417.815,
+        "db_min": -21.8,
+        "db_max": -14.0,
+        "vale": false
+      },
+      {
+        "trecho": 19,
+        "palavras": [
+          45,
+          46
+        ],
+        "entre": "twenty-one | feet",
+        "vao_s": [
+          425.5,
+          425.66
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 425.625,
+        "db_min": -33.0,
+        "db_max": -15.7,
+        "vale": false
+      },
+      {
+        "trecho": 19,
+        "palavras": [
+          51,
+          52
+        ],
+        "entre": "dredge | did",
+        "vao_s": [
+          427.58,
+          427.7
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 427.585,
+        "db_min": -18.1,
+        "db_max": -12.5,
+        "vale": false
+      },
+      {
+        "trecho": 20,
+        "palavras": [
+          1,
+          2
+        ],
+        "entre": "whose | town",
+        "vao_s": [
+          430.23,
+          430.35
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 430.255,
+        "db_min": -36.7,
+        "db_max": -13.9,
+        "vale": true
+      },
+      {
+        "trecho": 20,
+        "palavras": [
+          3,
+          4
+        ],
+        "entre": "was | that?",
+        "vao_s": [
+          430.63,
+          430.75
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 430.715,
+        "db_min": -19.2,
+        "db_max": -14.5,
+        "vale": false
+      },
+      {
+        "trecho": 20,
+        "palavras": [
+          8,
+          9
+        ],
+        "entre": "a | city",
+        "vao_s": [
+          432.47,
+          432.59
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 432.515,
+        "db_min": -32.5,
+        "db_max": -14.2,
+        "vale": false
+      },
+      {
+        "trecho": 20,
+        "palavras": [
+          13,
+          14
+        ],
+        "entre": "by | eighteen",
+        "vao_s": [
+          433.43,
+          433.55
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 433.545,
+        "db_min": -33.6,
+        "db_max": -16.4,
+        "vale": false
+      },
+      {
+        "trecho": 20,
+        "palavras": [
+          19,
+          20
+        ],
+        "entre": "a | city",
+        "vao_s": [
+          436.23,
+          436.39
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 436.255,
+        "db_min": -30.9,
+        "db_max": -13.7,
+        "vale": false
+      },
+      {
+        "trecho": 20,
+        "palavras": [
+          35,
+          36
+        ],
+        "entre": "did | not",
+        "vao_s": [
+          441.99,
+          442.11
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 442.105,
+        "db_min": -20.4,
+        "db_max": -15.5,
+        "vale": false
+      },
+      {
+        "trecho": 20,
+        "palavras": [
+          36,
+          37
+        ],
+        "entre": "not | touch.",
+        "vao_s": [
+          442.23,
+          442.43
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 442.265,
+        "db_min": -39.4,
+        "db_max": -16.4,
+        "vale": true
+      },
+      {
+        "trecho": 20,
+        "palavras": [
+          48,
+          49
+        ],
+        "entre": "outline | before",
+        "vao_s": [
+          446.15,
+          446.31
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 446.305,
+        "db_min": -33.2,
+        "db_max": -14.3,
+        "vale": false
+      },
+      {
+        "trecho": 20,
+        "palavras": [
+          78,
+          79
+        ],
+        "entre": "touch | them.",
+        "vao_s": [
+          457.11,
+          457.23
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.917,
+        "fechado_em": 457.115,
+        "db_min": -45.7,
+        "db_max": -18.8,
+        "vale": true
+      },
+      {
+        "trecho": 21,
+        "palavras": [
+          1,
+          2
+        ],
+        "entre": "the | strip",
+        "vao_s": [
+          458.16,
+          458.28
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.833,
+        "fechado_em": 458.235,
+        "db_min": -60.0,
+        "db_max": -25.1,
+        "vale": true
+      },
+      {
+        "trecho": 21,
+        "palavras": [
+          22,
+          23
+        ],
+        "entre": "merge | into",
+        "vao_s": [
+          466.64,
+          466.76
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 466.755,
+        "db_min": -33.4,
+        "db_max": -15.8,
+        "vale": false
+      },
+      {
+        "trecho": 21,
+        "palavras": [
+          28,
+          29
+        ],
+        "entre": "were | contiguous:",
+        "vao_s": [
+          468.32,
+          468.44
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.917,
+        "fechado_em": 468.325,
+        "db_min": -47.5,
+        "db_max": -14.8,
+        "vale": true
+      },
+      {
+        "trecho": 21,
+        "palavras": [
+          42,
+          43
+        ],
+        "entre": "was | already",
+        "vao_s": [
+          473.92,
+          474.12
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 474.085,
+        "db_min": -20.9,
+        "db_max": -15.2,
+        "vale": false
+      },
+      {
+        "trecho": 21,
+        "palavras": [
+          46,
+          47
+        ],
+        "entre": "So | Los",
+        "vao_s": [
+          475.68,
+          475.84
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 475.745,
+        "db_min": -35.5,
+        "db_max": -14.3,
+        "vale": true
+      },
+      {
+        "trecho": 21,
+        "palavras": [
+          49,
+          50
+        ],
+        "entre": "could | not",
+        "vao_s": [
+          476.64,
+          476.76
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 476.725,
+        "db_min": -18.8,
+        "db_max": -14.9,
+        "vale": false
+      },
+      {
+        "trecho": 21,
+        "palavras": [
+          58,
+          59
+        ],
+        "entre": "only | merge",
+        "vao_s": [
+          479.68,
+          479.84
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 479.705,
+        "db_min": -15.9,
+        "db_max": -13.7,
+        "vale": false
+      },
+      {
+        "trecho": 21,
+        "palavras": [
+          60,
+          61
+        ],
+        "entre": "with | them,",
+        "vao_s": [
+          480.24,
+          480.36
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.917,
+        "fechado_em": 480.245,
+        "db_min": -46.0,
+        "db_max": -19.1,
+        "vale": true
+      },
+      {
+        "trecho": 22,
+        "palavras": [
+          9,
+          10
+        ],
+        "entre": "don't | touch",
+        "vao_s": [
+          486.09,
+          486.29
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 486.125,
+        "db_min": -38.1,
+        "db_max": -14.7,
+        "vale": true
+      },
+      {
+        "trecho": 22,
+        "palavras": [
+          19,
+          20
+        ],
+        "entre": "them | touch.",
+        "vao_s": [
+          489.29,
+          489.45
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 489.325,
+        "db_min": -37.4,
+        "db_max": -19.3,
+        "vale": false
+      },
+      {
+        "trecho": 22,
+        "palavras": [
+          32,
+          33
+        ],
+        "entre": "the | boundary",
+        "vao_s": [
+          493.29,
+          493.49
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 493.305,
+        "db_min": -27.9,
+        "db_max": -13.9,
+        "vale": false
+      },
+      {
+        "trecho": 22,
+        "palavras": [
+          33,
+          34
+        ],
+        "entre": "boundary | lines",
+        "vao_s": [
+          493.69,
+          493.85
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 493.775,
+        "db_min": -21.1,
+        "db_max": -17.4,
+        "vale": false
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          28,
+          29
+        ],
+        "entre": "tallies | come",
+        "vao_s": [
+          505.86,
+          505.98
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 505.885,
+        "db_min": -33.7,
+        "db_max": -14.4,
+        "vale": false
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          42,
+          43
+        ],
+        "entre": "city | it",
+        "vao_s": [
+          510.82,
+          510.98
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 510.895,
+        "db_min": -38.4,
+        "db_max": -15.6,
+        "vale": true
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          47,
+          48
+        ],
+        "entre": "than | seven",
+        "vao_s": [
+          512.1,
+          512.26
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 512.245,
+        "db_min": -30.0,
+        "db_max": -20.5,
+        "vale": false
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          55,
+          56
+        ],
+        "entre": "margin | was",
+        "vao_s": [
+          515.14,
+          515.26
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 515.255,
+        "db_min": -24.7,
+        "db_max": -15.4,
+        "vale": false
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          56,
+          57
+        ],
+        "entre": "was | six",
+        "vao_s": [
+          515.38,
+          515.5
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 515.495,
+        "db_min": -35.3,
+        "db_max": -13.2,
+        "vale": true
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          62,
+          63
+        ],
+        "entre": "and | ten",
+        "vao_s": [
+          517.06,
+          517.22
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.75,
+        "fechado_em": 517.125,
+        "db_min": -67.1,
+        "db_max": -17.0,
+        "vale": true
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          69,
+          70
+        ],
+        "entre": "hundred | thirteen",
+        "vao_s": [
+          519.22,
+          519.38
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.687,
+        "fechado_em": 519.305,
+        "db_min": -79.9,
+        "db_max": -13.3,
+        "vale": true
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          70,
+          71
+        ],
+        "entre": "thirteen | to",
+        "vao_s": [
+          519.78,
+          520.02
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 0.667,
+        "fechado_em": 519.975,
+        "db_min": -83.8,
+        "db_max": -17.7,
+        "vale": true
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          73,
+          74
+        ],
+        "entre": "hundred | three.",
+        "vao_s": [
+          520.5,
+          520.66
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.75,
+        "fechado_em": 520.605,
+        "db_min": -72.6,
+        "db_max": -18.6,
+        "vale": true
+      },
+      {
+        "trecho": 23,
+        "palavras": [
+          78,
+          79
+        ],
+        "entre": "on | December",
+        "vao_s": [
+          522.42,
+          522.62
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 522.555,
+        "db_min": -29.2,
+        "db_max": -15.7,
+        "vale": false
+      },
+      {
+        "trecho": 24,
+        "palavras": [
+          10,
+          11
+        ],
+        "entre": "nineteen | sixteen.",
+        "vao_s": [
+          528.35,
+          528.51
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 528.465,
+        "db_min": -31.5,
+        "db_max": -15.9,
+        "vale": false
+      },
+      {
+        "trecho": 24,
+        "palavras": [
+          12,
+          13
+        ],
+        "entre": "The | whole",
+        "vao_s": [
+          529.71,
+          529.83
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 529.725,
+        "db_min": -31.9,
+        "db_max": -12.2,
+        "vale": false
+      },
+      {
+        "trecho": 24,
+        "palavras": [
+          18,
+          19
+        ],
+        "entre": "eighteen | square",
+        "vao_s": [
+          531.71,
+          531.87
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.938,
+        "fechado_em": 531.865,
+        "db_min": -55.3,
+        "db_max": -15.7,
+        "vale": true
+      },
+      {
+        "trecho": 24,
+        "palavras": [
+          31,
+          32
+        ],
+        "entre": "the | rest",
+        "vao_s": [
+          535.71,
+          535.87
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 535.815,
+        "db_min": -18.7,
+        "db_max": -13.1,
+        "vale": false
+      },
+      {
+        "trecho": 24,
+        "palavras": [
+          55,
+          56
+        ],
+        "entre": "runs | about",
+        "vao_s": [
+          542.91,
+          543.03
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 542.915,
+        "db_min": -22.0,
+        "db_max": -12.6,
+        "vale": false
+      },
+      {
+        "trecho": 25,
+        "palavras": [
+          7,
+          8
+        ],
+        "entre": "follows | \"the",
+        "vao_s": [
+          553.96,
+          554.08
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.583,
+        "fechado_em": 553.985,
+        "db_min": -92.2,
+        "db_max": -16.1,
+        "vale": true
+      },
+      {
+        "trecho": 25,
+        "palavras": [
+          20,
+          21
+        ],
+        "entre": "It | never",
+        "vao_s": [
+          558.44,
+          558.6
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 558.445,
+        "db_min": -16.8,
+        "db_max": -13.6,
+        "vale": false
+      },
+      {
+        "trecho": 25,
+        "palavras": [
+          36,
+          37
+        ],
+        "entre": "mile | wide,",
+        "vao_s": [
+          563.72,
+          563.88
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 563.775,
+        "db_min": -20.4,
+        "db_max": -13.8,
+        "vale": false
+      },
+      {
+        "trecho": 25,
+        "palavras": [
+          48,
+          49
+        ],
+        "entre": "is | not",
+        "vao_s": [
+          567.64,
+          567.8
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 567.785,
+        "db_min": -17.0,
+        "db_max": -14.2,
+        "vale": false
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          2,
+          3
+        ],
+        "entre": "had | taken",
+        "vao_s": [
+          571.89,
+          572.01
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 571.905,
+        "db_min": -35.1,
+        "db_max": -12.4,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          4,
+          5
+        ],
+        "entre": "the | city",
+        "vao_s": [
+          572.29,
+          572.45
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 572.305,
+        "db_min": -28.4,
+        "db_max": -13.7,
+        "vale": false
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          13,
+          14
+        ],
+        "entre": "towns | still",
+        "vao_s": [
+          575.41,
+          575.57
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.75,
+        "fechado_em": 575.505,
+        "db_min": -73.5,
+        "db_max": -13.3,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          17,
+          18
+        ],
+        "entre": "say | yes.",
+        "vao_s": [
+          576.21,
+          576.37
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 576.275,
+        "db_min": -22.1,
+        "db_max": -15.7,
+        "vale": false
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          19,
+          20
+        ],
+        "entre": "In | March",
+        "vao_s": [
+          577.49,
+          577.61
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 577.565,
+        "db_min": -17.9,
+        "db_max": -13.2,
+        "vale": false
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          30,
+          31
+        ],
+        "entre": "consolidation | only",
+        "vao_s": [
+          581.89,
+          582.05
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.562,
+        "fechado_em": 581.965,
+        "db_min": -83.9,
+        "db_max": -15.0,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          38,
+          39
+        ],
+        "entre": "is | contiguous",
+        "vao_s": [
+          584.13,
+          584.29
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.875,
+        "fechado_em": 584.135,
+        "db_min": -67.4,
+        "db_max": -14.1,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          51,
+          52
+        ],
+        "entre": "and | each",
+        "vao_s": [
+          588.77,
+          588.93
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.625,
+        "fechado_em": 588.815,
+        "db_min": -83.0,
+        "db_max": -15.9,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          63,
+          64
+        ],
+        "entre": "August | fourth:",
+        "vao_s": [
+          592.45,
+          592.61
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.875,
+        "fechado_em": 592.465,
+        "db_min": -47.8,
+        "db_max": -17.0,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          66,
+          67
+        ],
+        "entre": "hundred | seven",
+        "vao_s": [
+          593.73,
+          593.89
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 593.865,
+        "db_min": -32.5,
+        "db_max": -14.0,
+        "vale": false
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          67,
+          68
+        ],
+        "entre": "seven | to",
+        "vao_s": [
+          594.05,
+          594.21
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.937,
+        "fechado_em": 594.185,
+        "db_min": -46.4,
+        "db_max": -17.3,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          68,
+          69
+        ],
+        "entre": "to | sixty-one.",
+        "vao_s": [
+          594.37,
+          594.49
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 594.475,
+        "db_min": -44.1,
+        "db_max": -15.3,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          72,
+          73
+        ],
+        "entre": "said | yes",
+        "vao_s": [
+          596.45,
+          596.61
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 596.495,
+        "db_min": -22.4,
+        "db_max": -13.0,
+        "vale": false
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          81,
+          82
+        ],
+        "entre": "Pedro, | on",
+        "vao_s": [
+          600.05,
+          600.29
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 0.667,
+        "fechado_em": 600.175,
+        "db_min": -80.5,
+        "db_max": -15.9,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          86,
+          87
+        ],
+        "entre": "hundred | twenty-six",
+        "vao_s": [
+          601.97,
+          602.13
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.938,
+        "fechado_em": 602.085,
+        "db_min": -48.0,
+        "db_max": -15.6,
+        "vale": true
+      },
+      {
+        "trecho": 26,
+        "palavras": [
+          87,
+          88
+        ],
+        "entre": "twenty-six | to",
+        "vao_s": [
+          602.69,
+          602.85
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.75,
+        "fechado_em": 602.775,
+        "db_min": -77.1,
+        "db_max": -17.7,
+        "vale": true
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          2,
+          3
+        ],
+        "entre": "twenty-eighth, | nineteen",
+        "vao_s": [
+          605.58,
+          605.78
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 0.8,
+        "fechado_em": 605.645,
+        "db_min": -60.4,
+        "db_max": -14.8,
+        "vale": true
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          23,
+          24
+        ],
+        "entre": "the | first",
+        "vao_s": [
+          613.42,
+          613.54
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 613.425,
+        "db_min": -23.1,
+        "db_max": -14.7,
+        "vale": false
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          24,
+          25
+        ],
+        "entre": "first | time.",
+        "vao_s": [
+          613.66,
+          613.86
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 1.0,
+        "fechado_em": 613.695,
+        "db_min": -37.4,
+        "db_max": -15.2,
+        "vale": true
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          32,
+          33
+        ],
+        "entre": "the | strip,",
+        "vao_s": [
+          616.46,
+          616.62
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.938,
+        "fechado_em": 616.505,
+        "db_min": -58.1,
+        "db_max": -15.8,
+        "vale": true
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          36,
+          37
+        ],
+        "entre": "this | way:",
+        "vao_s": [
+          617.5,
+          617.62
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 617.595,
+        "db_min": -27.0,
+        "db_max": -15.4,
+        "vale": false
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          38,
+          39
+        ],
+        "entre": "\"Thus | Los",
+        "vao_s": [
+          618.7,
+          618.86
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.625,
+        "fechado_em": 618.775,
+        "db_min": -77.2,
+        "db_max": -15.5,
+        "vale": true
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          47,
+          48
+        ],
+        "entre": "Two | weeks",
+        "vao_s": [
+          622.78,
+          622.9
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 622.885,
+        "db_min": -31.5,
+        "db_max": -14.4,
+        "vale": false
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          52,
+          53
+        ],
+        "entre": "the | city",
+        "vao_s": [
+          624.62,
+          624.74
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 624.635,
+        "db_min": -29.4,
+        "db_max": -14.0,
+        "vale": false
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          62,
+          63
+        ],
+        "entre": "Terminal | Island",
+        "vao_s": [
+          627.02,
+          627.18
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 627.035,
+        "db_min": -26.8,
+        "db_max": -16.3,
+        "vale": false
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          70,
+          71
+        ],
+        "entre": "oh-nine | on,",
+        "vao_s": [
+          629.74,
+          629.9
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 629.865,
+        "db_min": -17.4,
+        "db_max": -15.1,
+        "vale": false
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          72,
+          73
+        ],
+        "entre": "the | bay",
+        "vao_s": [
+          630.54,
+          630.66
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 630.545,
+        "db_min": -29.9,
+        "db_max": -13.2,
+        "vale": false
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          73,
+          74
+        ],
+        "entre": "bay | belonged",
+        "vao_s": [
+          630.78,
+          630.9
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 630.795,
+        "db_min": -25.3,
+        "db_max": -12.1,
+        "vale": false
+      },
+      {
+        "trecho": 27,
+        "palavras": [
+          76,
+          77
+        ],
+        "entre": "two | cities.",
+        "vao_s": [
+          631.66,
+          631.82
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 631.795,
+        "db_min": -33.0,
+        "db_max": -16.7,
+        "vale": false
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          1,
+          2
+        ],
+        "entre": "did | Los",
+        "vao_s": [
+          633.03,
+          633.15
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 633.105,
+        "db_min": -16.2,
+        "db_max": -14.0,
+        "vale": false
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          10,
+          11
+        ],
+        "entre": "nineteen | ten,",
+        "vao_s": [
+          635.99,
+          636.15
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 636.075,
+        "db_min": -42.8,
+        "db_max": -16.6,
+        "vale": true
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          13,
+          14
+        ],
+        "entre": "fifteen | thousand",
+        "vao_s": [
+          637.43,
+          637.59
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.75,
+        "fechado_em": 637.545,
+        "db_min": -54.6,
+        "db_max": -15.0,
+        "vale": true
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          14,
+          15
+        ],
+        "entre": "thousand | feet",
+        "vao_s": [
+          637.91,
+          638.07
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 638.065,
+        "db_min": -35.9,
+        "db_max": -15.5,
+        "vale": true
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          21,
+          22
+        ],
+        "entre": "nineteen | twelve,",
+        "vao_s": [
+          640.71,
+          640.83
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.833,
+        "fechado_em": 640.805,
+        "db_min": -51.2,
+        "db_max": -14.8,
+        "vale": true
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          26,
+          27
+        ],
+        "entre": "Engineers | called",
+        "vao_s": [
+          642.39,
+          642.51
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.917,
+        "fechado_em": 642.395,
+        "db_min": -63.1,
+        "db_max": -15.9,
+        "vale": true
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          28,
+          29
+        ],
+        "entre": "the | breakwater",
+        "vao_s": [
+          642.71,
+          642.87
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.938,
+        "fechado_em": 642.745,
+        "db_min": -46.7,
+        "db_max": -13.9,
+        "vale": true
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          29,
+          30
+        ],
+        "entre": "breakwater | finished:",
+        "vao_s": [
+          643.27,
+          643.51
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 1.0,
+        "fechado_em": 643.345,
+        "db_min": -43.9,
+        "db_max": -22.3,
+        "vale": true
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          35,
+          36
+        ],
+        "entre": "of | rock.",
+        "vao_s": [
+          645.59,
+          645.75
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 645.725,
+        "db_min": -26.4,
+        "db_max": -15.6,
+        "vale": false
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          37,
+          38
+        ],
+        "entre": "The | city",
+        "vao_s": [
+          646.63,
+          646.75
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 646.645,
+        "db_min": -27.8,
+        "db_max": -12.0,
+        "vale": false
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          44,
+          45
+        ],
+        "entre": "almost | three",
+        "vao_s": [
+          648.15,
+          648.27
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 648.155,
+        "db_min": -36.2,
+        "db_max": -17.6,
+        "vale": false
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          45,
+          46
+        ],
+        "entre": "three | years",
+        "vao_s": [
+          648.39,
+          648.55
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 648.405,
+        "db_min": -21.6,
+        "db_max": -14.4,
+        "vale": false
+      },
+      {
+        "trecho": 28,
+        "palavras": [
+          46,
+          47
+        ],
+        "entre": "years | before",
+        "vao_s": [
+          648.87,
+          648.99
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 648.985,
+        "db_min": -38.0,
+        "db_max": -18.1,
+        "vale": false
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          6,
+          7
+        ],
+        "entre": "city | covers",
+        "vao_s": [
+          652.32,
+          652.48
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 652.325,
+        "db_min": -33.9,
+        "db_max": -13.4,
+        "vale": true
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          7,
+          8
+        ],
+        "entre": "covers | about",
+        "vao_s": [
+          652.64,
+          652.8
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 652.695,
+        "db_min": -21.0,
+        "db_max": -13.0,
+        "vale": false
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          10,
+          11
+        ],
+        "entre": "hundred | sixty-nine",
+        "vao_s": [
+          653.44,
+          653.68
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 1.0,
+        "fechado_em": 653.515,
+        "db_min": -31.5,
+        "db_max": -14.6,
+        "vale": false
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          25,
+          26
+        ],
+        "entre": "On | today's",
+        "vao_s": [
+          658.88,
+          659.0
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 658.905,
+        "db_min": -26.3,
+        "db_max": -13.2,
+        "vale": false
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          28,
+          29
+        ],
+        "entre": "the | city",
+        "vao_s": [
+          660.0,
+          660.12
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 660.015,
+        "db_min": -28.9,
+        "db_max": -12.2,
+        "vale": false
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          30,
+          31
+        ],
+        "entre": "has | grown",
+        "vao_s": [
+          660.4,
+          660.52
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 660.405,
+        "db_min": -36.8,
+        "db_max": -13.6,
+        "vale": true
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          31,
+          32
+        ],
+        "entre": "grown | around",
+        "vao_s": [
+          660.64,
+          660.8
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 660.765,
+        "db_min": -18.2,
+        "db_max": -15.1,
+        "vale": false
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          32,
+          33
+        ],
+        "entre": "around | both",
+        "vao_s": [
+          660.96,
+          661.08
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 660.965,
+        "db_min": -26.2,
+        "db_max": -12.2,
+        "vale": false
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          36,
+          37
+        ],
+        "entre": "about | nine",
+        "vao_s": [
+          662.24,
+          662.36
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 662.345,
+        "db_min": -18.1,
+        "db_max": -15.1,
+        "vale": false
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          42,
+          43
+        ],
+        "entre": "run | thin,",
+        "vao_s": [
+          663.68,
+          663.84
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 663.685,
+        "db_min": -37.1,
+        "db_max": -15.6,
+        "vale": true
+      },
+      {
+        "trecho": 29,
+        "palavras": [
+          45,
+          46
+        ],
+        "entre": "other | cities",
+        "vao_s": [
+          664.72,
+          664.88
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 664.855,
+        "db_min": -30.5,
+        "db_max": -15.1,
+        "vale": false
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          6,
+          7
+        ],
+        "entre": "it | was",
+        "vao_s": [
+          667.61,
+          667.73
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 667.615,
+        "db_min": -27.3,
+        "db_max": -16.2,
+        "vale": false
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          11,
+          12
+        ],
+        "entre": "By | twenty",
+        "vao_s": [
+          669.69,
+          669.81
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 669.735,
+        "db_min": -41.3,
+        "db_max": -13.9,
+        "vale": true
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          24,
+          25
+        ],
+        "entre": "Main | Channel",
+        "vao_s": [
+          673.29,
+          673.45
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 673.425,
+        "db_min": -32.0,
+        "db_max": -16.1,
+        "vale": false
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          25,
+          26
+        ],
+        "entre": "Channel | from",
+        "vao_s": [
+          673.77,
+          673.89
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 673.795,
+        "db_min": -41.5,
+        "db_max": -17.2,
+        "vale": true
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          26,
+          27
+        ],
+        "entre": "from | forty-five",
+        "vao_s": [
+          674.01,
+          674.13
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 674.035,
+        "db_min": -36.4,
+        "db_max": -14.1,
+        "vale": true
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          27,
+          28
+        ],
+        "entre": "forty-five | feet",
+        "vao_s": [
+          674.49,
+          674.65
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 674.645,
+        "db_min": -35.3,
+        "db_max": -17.0,
+        "vale": false
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          31,
+          32
+        ],
+        "entre": "Mendell | expected",
+        "vao_s": [
+          676.81,
+          677.05
+        ],
+        "dur_s": 0.24,
+        "fracao_som": 0.792,
+        "fechado_em": 676.955,
+        "db_min": -76.4,
+        "db_max": -13.0,
+        "vale": true
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          34,
+          35
+        ],
+        "entre": "or | twenty",
+        "vao_s": [
+          678.01,
+          678.13
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.833,
+        "fechado_em": 678.055,
+        "db_min": -52.1,
+        "db_max": -15.1,
+        "vale": true
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          40,
+          41
+        ],
+        "entre": "The | port's",
+        "vao_s": [
+          680.01,
+          680.13
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 0.917,
+        "fechado_em": 680.015,
+        "db_min": -45.9,
+        "db_max": -12.6,
+        "vale": true
+      },
+      {
+        "trecho": 30,
+        "palavras": [
+          43,
+          44
+        ],
+        "entre": "Channel | is",
+        "vao_s": [
+          680.89,
+          681.05
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 0.688,
+        "fechado_em": 680.985,
+        "db_min": -76.6,
+        "db_max": -17.7,
+        "vale": true
+      },
+      {
+        "trecho": 31,
+        "palavras": [
+          6,
+          7
+        ],
+        "entre": "Los | Angeles",
+        "vao_s": [
+          684.1,
+          684.22
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 684.185,
+        "db_min": -17.7,
+        "db_max": -12.7,
+        "vale": false
+      },
+      {
+        "trecho": 31,
+        "palavras": [
+          21,
+          22
+        ],
+        "entre": "is | the",
+        "vao_s": [
+          688.9,
+          689.06
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 689.025,
+        "db_min": -20.8,
+        "db_max": -16.4,
+        "vale": false
+      },
+      {
+        "trecho": 31,
+        "palavras": [
+          33,
+          34
+        ],
+        "entre": "as | two.",
+        "vao_s": [
+          693.14,
+          693.3
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 693.175,
+        "db_min": -35.5,
+        "db_max": -12.6,
+        "vale": true
+      },
+      {
+        "trecho": 31,
+        "palavras": [
+          44,
+          45
+        ],
+        "entre": "busiest | container",
+        "vao_s": [
+          696.34,
+          696.54
+        ],
+        "dur_s": 0.2,
+        "fracao_som": 0.9,
+        "fechado_em": 696.345,
+        "db_min": -69.7,
+        "db_max": -15.1,
+        "vale": true
+      },
+      {
+        "trecho": 31,
+        "palavras": [
+          48,
+          49
+        ],
+        "entre": "the | Western",
+        "vao_s": [
+          697.3,
+          697.46
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 697.455,
+        "db_min": -25.6,
+        "db_max": -14.3,
+        "vale": false
+      },
+      {
+        "trecho": 31,
+        "palavras": [
+          52,
+          53
+        ],
+        "entre": "year | from",
+        "vao_s": [
+          698.98,
+          699.1
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 699.005,
+        "db_min": -36.2,
+        "db_max": -16.6,
+        "vale": false
+      },
+      {
+        "trecho": 31,
+        "palavras": [
+          54,
+          55
+        ],
+        "entre": "two | thousand",
+        "vao_s": [
+          699.3,
+          699.46
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 699.425,
+        "db_min": -40.3,
+        "db_max": -12.6,
+        "vale": true
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          0,
+          1
+        ],
+        "entre": "So, | why",
+        "vao_s": [
+          701.71,
+          702.03
+        ],
+        "dur_s": 0.32,
+        "fracao_som": 0.562,
+        "fechado_em": 701.915,
+        "db_min": -89.2,
+        "db_max": -14.3,
+        "vale": true
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          2,
+          3
+        ],
+        "entre": "is | Los",
+        "vao_s": [
+          702.35,
+          702.47
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 702.355,
+        "db_min": -17.2,
+        "db_max": -14.6,
+        "vale": false
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          9,
+          10
+        ],
+        "entre": "coast | never",
+        "vao_s": [
+          704.83,
+          704.99
+        ],
+        "dur_s": 0.16,
+        "fracao_som": 1.0,
+        "fechado_em": 704.845,
+        "db_min": -42.6,
+        "db_max": -13.9,
+        "vale": true
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          31,
+          32
+        ],
+        "entre": "four | votes",
+        "vao_s": [
+          712.03,
+          712.15
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 712.035,
+        "db_min": -23.7,
+        "db_max": -13.8,
+        "vale": false
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          54,
+          55
+        ],
+        "entre": "a | mile",
+        "vao_s": [
+          718.51,
+          718.63
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 718.605,
+        "db_min": -19.3,
+        "db_max": -15.2,
+        "vale": false
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          57,
+          58
+        ],
+        "entre": "to | touch",
+        "vao_s": [
+          719.23,
+          719.35
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 719.245,
+        "db_min": -41.9,
+        "db_max": -15.7,
+        "vale": true
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          62,
+          63
+        ],
+        "entre": "itself | onto",
+        "vao_s": [
+          721.07,
+          721.19
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 721.115,
+        "db_min": -20.3,
+        "db_max": -17.7,
+        "vale": false
+      },
+      {
+        "trecho": 32,
+        "palavras": [
+          80,
+          81
+        ],
+        "entre": "a | deep-water",
+        "vao_s": [
+          725.63,
+          725.75
+        ],
+        "dur_s": 0.12,
+        "fracao_som": 1.0,
+        "fechado_em": 725.635,
+        "db_min": -20.3,
+        "db_max": -14.5,
+        "vale": false
+      }
+    ],
+    "concordancia_com_o_whisper": {
+      "inicio": {
+        "n": 1659,
+        "mediana_s": 0.2,
+        "abs_mediana_s": 0.2,
+        "abs_p90_s": 0.305,
+        "abs_max_s": 0.56,
+        "acima_de_0_5_s": 5
+      },
+      "fim": {
+        "n": 1694,
+        "mediana_s": 0.14,
+        "abs_mediana_s": 0.14,
+        "abs_p90_s": 0.25,
+        "abs_max_s": 0.535,
+        "acima_de_0_5_s": 1
+      },
+      "grosseiras": [],
+      "leitura": "relógio menos Whisper, nas palavras casadas 1 a 1, fora das pontas presas a uma âncora do som. O Whisper começa as palavras cedo (viés positivo) e comprime os números (até ~0,65 s no Juneau); acima de 1.0 s é palavra no lugar de outra, e o portão relogio reprova."
+    },
+    "qualidade": {
+      "palavras_com_80pct_ou_mais_em_silencio": [],
+      "deslocadas_refeitas": 8,
+      "vaos_com_voz_fechados": 289,
+      "comecam_onde_a_voz_volta": [
+        "it 617.27"
+      ],
+      "marcos_de_chiado": {
+        "inicio_de_palavra_com_s": {
+          "n": 64,
+          "mediana_s": 0.086,
+          "abs_mediana_s": 0.1,
+          "abs_p90_s": 0.175,
+          "ate_0_1_s": 0.5
+        },
+        "fim_de_palavra_em_s_ou_x": {
+          "n": 77,
+          "mediana_s": -0.007,
+          "abs_mediana_s": 0.039,
+          "abs_p90_s": 0.199,
+          "ate_0_1_s": 0.675
+        },
+        "leitura": "relógio menos o marco acústico (positivo = o relógio vem depois do som); o marco é procurado a ±0,3 s do próprio relógio, então mede o ajuste fino, não erros de uma palavra inteira"
+      },
+      "marcos_de_chiado_so_elevenlabs": {
+        "inicio_de_palavra_com_s": {
+          "n": 64,
+          "mediana_s": 0.089,
+          "abs_mediana_s": 0.102,
+          "abs_p90_s": 0.189,
+          "ate_0_1_s": 0.484
+        },
+        "fim_de_palavra_em_s_ou_x": {
+          "n": 76,
+          "mediana_s": -0.006,
+          "abs_mediana_s": 0.035,
+          "abs_p90_s": 0.198,
+          "ate_0_1_s": 0.724
+        },
+        "leitura": "relógio menos o marco acústico (positivo = o relógio vem depois do som); o marco é procurado a ±0,3 s do próprio relógio, então mede o ajuste fino, não erros de uma palavra inteira"
+      }
+    }
+  },
+  "ferramenta": {
+    "script": "out/juneau/_pesquisa/ingest-local.py",
+    "sha256": "f899619d1133180b15e1d30832289b2b77a4e9c8a0f419d04bffd1d18f5de4d3",
+    "comparar": {
+      "arquivo": "out/juneau/_pesquisa/comparar-narracao.py",
+      "sha256": "470feb534dbe675158474db05e9f15f30de59e534de9d1f45b521de5c4285a15"
+    }
+  },
+  "gerado_em": "2026-10-07T13:17:28.524Z"
+}

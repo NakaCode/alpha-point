@@ -1,11 +1,11 @@
 # Cópia para a voz: as trocas
 
 > Gerado por `_ferramentas/preparar-voz.mjs` a partir de `roteiro-narrador.md` (sha256 do texto falado `a7a8615a572a`, gancho de 1906).
-> Cópia para a voz: `texto-para-voz.md`, sha256 `14d989c3f2b0`, 12061 caracteres, 32 parágrafos.
+> Cópia para a voz: `texto-para-voz.md`, sha256 `0b6e5e46f7f5`, 12059 caracteres, 32 parágrafos.
 > Prova: desfazendo cada troca abaixo, volta-se byte a byte ao texto revisado. Não sobrou dígito, `$`, `%` nem colchete.
 > Nenhuma palavra falada mudou; muda só a grafia. Nenhum alias de nome (política de `marca/pronuncias.md`).
 
-**58 trocas:** ano 39 · data 9 · número 8 · sigla 2
+**59 trocas:** ano 39 · data 9 · grafia 1 · número 8 · sigla 2
 
 | § | Tipo | Revisado | Para a voz | Por quê |
 |---|---|---|---|---|
@@ -25,6 +25,7 @@
 | 8 | ano | 1881 | eighteen eighty-one | ano como se fala |
 | 8 | ano | 1888 | eighteen eighty-eight | ano como se fala |
 | 9 | data | November 8, 1886 | November eighth, eighteen eighty-six | dia como ordinal, ano como se fala |
+| 10 | grafia | what his "never" measured | what his never measured | aspas que a voz não fala; o alinhamento as cobrava em tempo (trecho 10, 1ª narração) |
 | 10 | ano | 1897 | eighteen ninety-seven | ano como se fala |
 | 11 | ano | 1888 | eighteen eighty-eight | ano como se fala |
 | 12 | ano | 1890 | eighteen ninety | ano como se fala |
