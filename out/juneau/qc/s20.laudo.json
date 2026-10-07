@@ -2,13 +2,16 @@
   "cena": "s20",
   "aprovado": true,
   "gatesDuros": [],
+  "motivo": "Aprovada com a exceção do Lucas ao qc-carga (06/10/2026 22:27, \"Manter\"), no mesmo sha1 julgado (29d5b97936260985d19418232c1d8df7d9439eb2); as 14 lentes não foram rejulgadas e seguem todas >= 7. Laudo anterior (aprovado:false, carga pendente) em out/juneau/_tmp/art/laudo-antes-6a-excecao-s20.json.",
   "lentes": [
     {
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Quadros olhados: 0,5, 2,1, 2,8, 4,5, 6,1, 6,6, 7,2, 8,2 e 9,2 s, mais dois recortes em resolução cheia (o YES, 4,5 s; o NO, 8,2 s). Tudo dentro das margens de 200 px: a cédula à esquerda, o NEARLY 56% e as barras à direita, o crédito de x ~200 na faixa; canto de 400 × 400 px livre. Observação: o carimbo YES fica a ~25 px do fim de '55,253' no 4K (recorte de 4,5 s), e o NO a ~10 px de '88,783 to 31,491' (quadro de 6,6 s); não encostam (o portão de colisão passou), mas é a composição mais apertada da cena.",
-        "Portões que mediram e passaram, sem falha nem indefinido: contrato, colisão, tamanho, til-glifo, src-existe e fora-do-quadro, pelo qc-cena de 01/10/2026, 12:43 (carimbo em out/juneau/_portao.json, hash igual ao HTML atual). O que acima é do olho não contradiz nenhum portão."
+        "Base: HTML de hoje (sha1 29d5b97936260985d19418232c1d8df7d9439eb2, conferido com sha1sum no começo do julgamento), 10 quadros do shot.mjs em 4K (0,3; 1,2; 2,1; 3,0; 4,5; 6,1; 6,5; 7,3; 8,6 e 9,2 s), olhados um a um. O clipe s20.mp4 é velho (carimbo 69518ae7, o HTML anterior): não foi usado. P1 (0 a 2,2 s): a cédula sozinha à esquerda (INITIATIVE NO. 6 e BONDS), inclinada ~0,6°, tudo dentro das margens de 200 px (câmera incluída). P2 (2,4 a 6,0 s): o carimbo YES no canto direito de cima da cédula, o placar 69,414 to 55,253 sob a linha, NEARLY 56% à direita da cédula, crédito em x ~200 na faixa abaixo de y 1880. P3 (6,2 a 9,3 s): o NO e o placar dos títulos na metade de baixo, as barras à direita (x 2.400 a 3.540 em 4K, acima do canto), NO e YES dentro da ponta de cada barra. O canto inferior direito de 400 x 400 está livre; nenhum texto passa de x 1720 abaixo de y 1880.",
+        "NO (84 px, eixo/legenda) na barra laranja de 100 px de altura e YES na barra teal, ambos dentro da cor, sem tocar a borda da barra, a ~36 px da ponta; o YES cabe com folga na barra curta (404 px) em 6,5, 7,3 e 8,6 s. Sem colisão visível em nenhum quadro, o que o gate de colisão confirma (carimbo de 05/10/2026 13:02: só a carga reprova; contrato, colisão, tamanho, til, src-existe, fora do quadro e crédito-fantasma sem falha).",
+        "Observação (sem derrubar): o carimbo YES da Frank fica a ~35 px de '55,253' em 4K (quadro de 3,0 s); é o ponto mais apertado da composição, e o gate de colisão não acusou.",
+        "Exceção do Lucas: qc-carga, cena s20, sha1 29d5b97936260985d19418232c1d8df7d9439eb2, RITMO 0.97 entradas/s (teto 0.9). Pergunta no chat: \"Cena 20 (3:27 a 3:36): com o NO e o YES que você pediu nas barras, entram 9 textos em 9,3 s, e a régua do Top10 só aceita 8. [...] Como fica?\" Resposta: \"Manter (Recomendado)\", 06/10/2026 22:27 (Brasília), chat do Claude central. Registrada em out/juneau/qc/_excecoes-portao.json; vale só para este sha1. Conferido em 06/10/2026: o HTML no disco tem esse sha1, o carimbo de out/juneau/_portao.json (05/10/2026 16:02 UTC) falha só em carga, e o log out/juneau/_tmp/triagem-6a/s20-qc-carga.log mostra a mesma reprovação."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -17,16 +20,18 @@
       "lente": "factual",
       "nota": 9,
       "problemas": [
-        "Textos conferem com o textos-tela, letra a letra: INITIATIVE NO. 6, BONDS, YES, 69,414 to 55,253, NEARLY 56%, NO, 88,783 to 31,491 e Source: Alaska Division of Elections, 1978; FRANK INITIATIVE e ALMOST 3-TO-1 não entram, como o textos-tela manda. O vencedor vem primeiro, ligado por 'to' (forma AP). A factualidade dos placares é do verificador-de-fatos."
+        "Os textos conferem com o textos-tela do disco: INITIATIVE NO. 6, BONDS, YES, 69,414 to 55,253, NEARLY 56%, NO, 88,783 to 31,491, Source: Alaska Division of Elections, 1978 e, desde a 6ª vista, NO (rotulos_dado 286) e YES (287) nas barras, confirmados pelo verificador-de-fatos (roteiros/juneau/qc-roteiro/fatos-tela-2026-10-05.laudo.md). FRANK INITIATIVE e ALMOST 3-TO-1 não entram, como o nao_vai_para_tela manda.",
+        "Associação posicional: NO na barra de 1.140 px (a dos títulos, 88,783) e YES na barra de 404 px (31,491/88,783 = 35,5 %), as duas na altura da linha BONDS da cédula; a barra de NO é a maior, como o placar. O YES da barra é o 'sim aos títulos', não o da Frank, e a altura da barra ao lado de BONDS o sustenta. Sem asset, mapa nem bandeira. A grafia segue o padrão AP (vírgula de milhar, vencedor primeiro ligado por 'to')."
       ],
       "correcoes": [],
       "origem": "julgada"
     },
     {
       "lente": "wordlock",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "O YES e o placar entram em 'passed' (2,4 s; quadro de 2,1 s sem eles, o de 2,8 s com eles), o NEARLY 56% em 'nearly' (4,0 s; quadro de 4,5 s) e se apaga a partir de 6,0 s (quadro de 6,1 s, esmaecendo), e o NO com as barras entra em 'rejected' (6,2 s; o quadro de 6,1 s ainda não os tem, o de 6,6 s tem)."
+        "words.json (tempo local, master − 207,1): 'passed' em 2,39, 'nearly' em 4,01, 'rejected' em 6,18, 'the bonds' em 6,70 e 6,84, 'almost three to one' em 7,77 a 8,42. No quadro: o YES e o placar da Frank não estão em 2,1 s e estão em 3,0 s (entram em 2,4); NEARLY 56% está em 4,5 s e se apaga em 6,1 s; o NO, o placar dos títulos e as barras faltam em 6,1 s e estão em 6,5 s (entram em 6,2); o NO e o YES das barras entram com as barras (6,2 e 6,3), com a opacidade subindo em 300 ms. Nada fica depois da fala: a cena termina em 9,3 s.",
+        "Observação: o placar e as barras dos títulos entram em 'rejected' (6,2), ~0,5 s antes de 'the bonds' (6,70/6,84); a linha BONDS já está na cédula desde 0 e o carimbo NO é o verbo da frase, por isso não reprova. Nenhum elemento foi atrasado por ritmo nesta cena, então não há re-checagem de word-lock por atraso a fazer."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -35,7 +40,7 @@
       "lente": "abordagem",
       "nota": 9,
       "problemas": [
-        "DADO sobre --papel, o modelo certo para dois placares da mesma cédula (identidade §5, tabela). Não é a transcrição de uma cédula: a recriação não imita a original (a linha FRANK INITIATIVE fica fora)."
+        "DADO sobre --papel (cédula com os carimbos e os placares, mais as barras da proporção), o modelo certo para dois placares da mesma cédula; documento do Estado sem permissão clara (midia.md §7.1) é recriado no visual do canal, com a fonte citada na tela, e não imita a original (a linha FRANK INITIATIVE fica de fora). As barras agora têm o lado escrito, o que fecha a marca do Lucas na 6ª vista ('as barras aparecem vazias')."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -44,17 +49,19 @@
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "Em 2 s lê-se: uma cédula com INITIATIVE NO. 6 e BONDS, um carimbo YES e um NO, cada um com o placar. Observação: as barras (laranja e teal, 6,6 a 9,3 s) não têm legenda: a proporção 'quase 3 a 1' se vê pelo comprimento, mas a cor não diz qual é qual (o laranja é o NO e o teal, o YES dos títulos, como o conceito declara). O NO em --destaque sobre o --papel fica a ~1,7:1 (calculado dos tokens), abaixo dos 3:1 de elemento gráfico; a caixa grande e o placar em tinta escura carregam a leitura, por isso sinaliza e não reprova."
+        "Em 2 s de 7,3 s lê-se: a cédula com a iniciativa e os títulos, um YES e um NO carimbados, cada um com o placar, e duas barras de comprimentos muito diferentes, a maior escrita NO, a menor YES. A proporção 'quase 3 a 1' se vê pelo comprimento, e agora cada barra diz o que é: a ponta nomeada resolve a pergunta que o Lucas fez.",
+        "Observações (sem derrubar): (a) o YES da barra pequena é a segunda palavra YES da cena e pode ser lido como o YES da Frank; a altura da barra (a da linha BONDS) e a voz ('rejected the bonds') desfazem a dúvida; (b) a barra do NO em --destaque sobre o --papel tem pouco contraste como elemento gráfico (~1,7:1 pelos tokens), mas o texto escuro dentro dela mede 8,4:1 e o placar escuro carrega a leitura."
       ],
       "correcoes": [],
       "origem": "julgada"
     },
     {
       "lente": "poluicao",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "Pico de 4 elementos em 6,2 a 6,5 s (a cédula com os dois carimbos, o NEARLY 56% se apagando, as barras e o placar de baixo), como a regência declara; depois, 3. Nenhum bloco de texto. Dentro do alvo, abaixo do teto de 6.",
-        "qc-carga passou (qc-cena de 01/10/2026, 12:43 (carimbo em out/juneau/_portao.json, hash igual ao HTML atual)). A contagem de elementos acima é do olho nos quadros e o portão não a contradiz."
+        "Contagem do olho: 6,5 a 9,3 s = a cédula (com os dois carimbos e os dois placares, contada como uma, como na regência) + as barras (que levam NO e YES, que são da barra) = 3, e 4 na troca de 6,2 a 6,33 s (com NEARLY 56% a se apagar). Contado à parte cada carimbo, placar e rótulo de barra, seriam 5 a 6 elementos simultâneos, no teto de 6 da marca (identidade.md §4.2) e não acima. Zero bloco de texto. Cada texto tem a palavra da voz que o convoca (iniciativa/passed/nearly/rejected/bonds); nenhum órfão. NO e YES nas barras são rótulo da barra, não repetem o eixo.",
+        "O portão qc-carga REPROVA (RITMO 0,97 entradas/s, teto 0,9; densidade 8 textos @ 6,4 s, teto 9; pior janela de 1 s = 3, teto 4; amostras 94/94): a média divide as 9 entradas (o NO do carimbo e o NO da barra contam como textos diferentes) por 9,3 s. É o único portão vivo, e a triagem o classificou como limitação (out/juneau/_tmp/triagem-portoes-6a.json, item carga-s20). Fica em gatesDuros até a decisão do Lucas; ao olho a cena não está carregada: uma entrada a cada ~1 s, cada uma na palavra que a convoca.",
+        "Exceção do Lucas cobre o qc-carga (ver espaco): manter, 06/10/2026 22:27."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -63,8 +70,8 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Cada carimbo e o NEARLY 56% entram com easing (quadros de 2,8 e 4,5 s) e as barras crescem junto com o NO. Observação: de 1,0 a 2,4 s a cédula fica parada (diferença ~0,2 entre quadros vizinhos), e de 7,0 a 9,3 s só há uma deriva muito leve (~0,8); são trechos curtos, abaixo do teto de 6 s.",
-        "qc-video-avanca: sem <video> na cena, nada a medir."
+        "A cédula cai e assenta em 0,45 s (ease-out), cada carimbo bate com escala 1,55 → 0,97 → 1 em 0,38 s, os rótulos entram em 300 ms com 24 px de subida, as barras crescem em 0,5 s com ease-out, a segunda 0,1 s depois, e NO e YES se revelam com a barra (recorte da largura dela), sem aparecer fora da cor. Câmera em push-in contínuo (nada congela).",
+        "Observação (sem derrubar): de 1,0 a 2,4 s e de 7,0 a 9,3 s só a câmera se move; são trechos de ~1,4 e 2,3 s, abaixo do teto de 6 s, e a leitura dos placares pede essa pausa. Sem <video>: qc-video-avanca não se aplica."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -73,8 +80,8 @@
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "Source: Alaska Division of Elections, 1978 em 76 px na faixa, a partir de ~2,2 s (junto com o primeiro placar; ausente do quadro de 2,1 s, sem crédito-fantasma), cobrindo a cena. Nenhuma mídia de _media/ na cena.",
-        "qc-credito-fantasma passou (qc-cena de 01/10/2026, 12:43 (carimbo em out/juneau/_portao.json, hash igual ao HTML atual)). qc-rodape-contraste medido em 01/10/2026: 6.35:1 @ 3.25 s \"Source: Alaska Division of Elections, \", piso 3:1."
+        "Source: Alaska Division of Elections, 1978 em 76 px, em x ~200 abaixo de y 1880, de 2,4 s ao fim (junto com o primeiro placar; ausente do quadro de 2,1 s, sem crédito-fantasma). É a fonte dos placares (boletim de 7/11/1978 e folheto de 1978, conferida pelo verificador-de-fatos); a cédula é desenhada e não leva crédito de arquivo. Nenhuma mídia de _media/ na cena, nenhuma foto, nenhum logo.",
+        "Contraste do crédito (portao-mapa rodape v5, linha de 05/10/2026 13:02 Brasília, sha1 29d5b979…, 23 amostras, 18 com crédito): 6.35:1 @ 3.25 s, piso 3:1. O NO e o YES das barras são rótulo de dado, sem crédito próprio (a fonte dos números é a mesma, já na tela)."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -83,7 +90,8 @@
       "lente": "tema",
       "nota": 8,
       "problemas": [
-        "DADO sobre --papel: YES em tinta escura (sem lado, como o conceito explica), o NO em --destaque e o teal em --contraparte nas barras dos títulos: duas cores com dois significados. Observação: o --destaque marca aqui o NÃO aos títulos e não o protagonista do vídeo (o conceito declara a leitura)."
+        "DADO sobre --papel, sem degradê, véu nem vinheta, e sem a mesa de feltro (DADO sobre papel, como s11). Cor por papel: o YES da Frank em tinta escura (a iniciativa não é o lado da mudança), o NO e a barra do não em --destaque, a barra do sim em --contraparte; texto das barras em --tinta-escura. Dois matizes além do neutro, dentro do limite de 3.",
+        "Observação (sem derrubar): o YES aparece em tinta escura (Frank) e em teal (barra dos títulos): a cor aqui nomeia o lado dos títulos, e o carimbo da Frank fica fora do par, como a regência declara."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -92,7 +100,7 @@
       "lente": "cobertura",
       "nota": 9,
       "problemas": [
-        "O central de cada beat tem imagem: a cédula com as duas escolhas, o sim com o placar da Frank e o não com o placar dos títulos; a foto da eleição de 1978 não se achou (declarado), e o plano vira desenho."
+        "O concreto central de cada beat tem imagem: a cédula com as duas escolhas (iniciativa e títulos), o sim com o placar da Frank e o não com o placar dos títulos. Foto da eleição de 1978: não se achou e o boletim é documento sem permissão (midia.md §7.1); a regência declara o plano como desenho. Sem substantivo concreto central sem registro."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -101,15 +109,17 @@
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Três beats (2,2 / 3,7 / 3,4 s), um por objeto, com o primeiro curto de propósito (a regência declara que ele só arma as duas linhas). Nenhum passa do teto."
+        "Três beats por objeto (2,2 / 3,7 / 3,4 s), cada um na sua frase; o primeiro é curto de propósito (arma as duas linhas da cédula). Nenhum plano passa do teto, sem footage, sem clipe repetido."
       ],
       "correcoes": [],
       "origem": "julgada"
     },
     {
       "lente": "autoria",
-      "nota": 10,
-      "problemas": [],
+      "nota": 9,
+      "problemas": [
+        "A cédula é recriação no visual do canal (um cartão com duas linhas e dois carimbos), conforme midia.md §7.1; não imita a cédula real (tipografia e estrutura próprias, FRANK INITIATIVE fora) e não afirma ser o objeto original: as linhas levam o literal que o folheto de 1978 imprimia. Os carimbos são do canal (Barlow Condensed, identidade §5). Sem capa, logo, selo ou embalagem de terceiro."
+      ],
       "correcoes": [],
       "origem": "julgada"
     },
@@ -124,10 +134,33 @@
       "lente": "circulo",
       "nota": 9,
       "problemas": [
-        "A cédula com o carimbo e as barras voltam em s11, s17, s35 e s62, de propósito (a cédula de 1978 é a mesma de s17); aqui o degrau novo é a segunda escolha da mesma cédula e as barras de 3 para 1."
+        "A cédula de 1978 volta de s17 e s19, e o carimbo e as barras voltam em outras cenas, de propósito (a identidade visual do canal); aqui o degrau novo é a segunda escolha da mesma cédula (os títulos) com o placar e a proporção em barras, e o NO e o YES nas barras dizem o lado. Se a s20 sumisse, o espectador perderia o 3 a 1 visual."
       ],
       "correcoes": [],
       "origem": "julgada"
     }
-  ]
+  ],
+  "julgamento": {
+    "modo": "completo",
+    "lentes_julgadas": [
+      "espaco",
+      "factual",
+      "wordlock",
+      "abordagem",
+      "acessibilidade",
+      "poluicao",
+      "motion",
+      "fonte",
+      "tema",
+      "cobertura",
+      "cadencia",
+      "autoria",
+      "camadas",
+      "circulo"
+    ],
+    "lentes_herdadas": [],
+    "frames": 10,
+    "rodadas_incrementais": 0,
+    "porque": "6ª vista do Lucas (05/10/2026): NO e YES dentro da ponta das barras (textos-tela rotulos_dado 286 e 287); o HTML mudou de 69518ae7 para 29d5b97936260985d19418232c1d8df7d9439eb2."
+  }
 }

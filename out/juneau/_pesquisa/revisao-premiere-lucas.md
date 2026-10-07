@@ -294,3 +294,11 @@ respondeu às 22:18: "Sim, 1, 3, 7 e 11". Duas reservas (7 e 11) entraram no lug
 `ferramentas/epidemic.mjs` (duração, canais e título conferidos; a biblioteca passou pela pré-v1), e o plano `out/juneau/_trilha-plano.json`
 foi montado à mão pelos `_capitulos` (trilha.mjs --conferir: as 4 com licença válida). Os créditos para a descrição estão em
 `out/juneau/_creditos-trilha.md`. A chave do Epidemic tinha sido trocada pelo Lucas no mesmo dia, às 22:1x.
+
+A cena 20 e o portão de carga (06/10/2026, 22:27). Com o NO e o YES nas barras, o `qc-carga` reprova por média (0,97 entradas/s, teto 0,9 do Top10).
+A triagem e o cético deram limitação (`out/juneau/_tmp/triagem-portoes-6a.json`). A pergunta, com o trecho marcado: "Cena 20 (3:27 a 3:36): [...] Como
+fica?" A resposta: "Manter (Recomendado)". A exceção está em `out/juneau/qc/_excecoes-portao.json`, presa ao sha1 29d5b979.
+- Decisão do Claude central (06/10/2026, 22:3x), no fecho da 6ª vista (`wf_cb3babd2-7e8` e `wf_9856fb58-1fa`): ficam, por serem só citação, sem efeito na tela
+  nem nos tempos, duas sobras que a conferência achou: o `_conflitos.da_6a_vista_05_10[0]` da regência (de1221f1) sem a marca RESOLVIDO, embora o
+  conceito 20c5450b já alinhe as 4 cenas; e o textos-tela (17fee941) chamando de "hoje" os sha1 anteriores da s20 (69518ae7) e da s35 (5a9a84e2), com os
+  tempos e a letra iguais aos dos HTML do disco. Mexer nelas de novo mudaria o sha256 de um arquivo que os outros citam, num ciclo sem fim.
