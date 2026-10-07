@@ -26,3 +26,17 @@ Night", the Dronalist, 11 de jun. de 2022). A descrição, expandida, diz hoje (
 
 Conclusão: o "CC BY 3.0" do Commons não se sustenta na origem de hoje, e o vídeo tem Content ID. O arquivo não vai à tela por
 nenhum caminho; a abertura (s01) fica para a caça nos bancos pagos (`lista-de-caca.json`), que só roda quando o Lucas pedir.
+
+## 07/10/2026, 16:3x — as seis páginas do Los Angeles Times (s28, s38, s45), na 2ª rodada do `pesquisa-documentos`
+
+O Lucas escolheu "Outra cópia, senão recriar" (12:03). O pesquisador achou fora do Internet Archive as quatro páginas de livro
+(Commons e govinfo) e deixou para o navegador do app a pergunta das seis do Times: o jornal está no CDNC ou no Chronicling America?
+
+| Site | O que se pediu | O que respondeu | Resultado |
+|---|---|---|---|
+| cdnc.ucr.edu | a lista de títulos (`?a=cl&cl=CL1`), uma página | "Executando verificação de segurança" (verificação contra bots) | parado; o CDNC fica fora pelo resto da tarefa |
+| loc.gov (Chronicling America) | — | não aberto | às 11:1x de hoje o loc.gov já respondeu com o desafio do Cloudflare; com o CDNC também recusando, não se insistiu |
+
+Conclusão: NÃO CONFERIDO se o Times de 1899–1909 está no CDNC ou no Chronicling America. O pesquisador registra que a coleção do
+Times dessa época é da ProQuest (paga). Vale a recriação que o Lucas escolheu como segundo caminho: o trecho literal no visual do
+canal, com a linha de fonte (`pauta-documentos.json` › `rodada_2.recriacao`).

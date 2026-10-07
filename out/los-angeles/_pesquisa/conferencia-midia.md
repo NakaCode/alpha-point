@@ -1,6 +1,165 @@
-# Conferência de mídia: los-angeles, fluxo midia, 07/10/2026 11:33, 13:55 e 14:15 (Brasília)
+# Conferência de mídia: los-angeles, fluxo midia, 07/10/2026 11:33, 13:55, 14:15 e 17:02 (Brasília)
 
-**Laudo:** 26 aprovados de 49 conferidos (5 reprovados, 8 trocar, 10 pendente_lucas); 2 com algo não conferido; recebidos: 49.
+**Laudo:** 37 aprovados de 64 conferidos (17 reprovados, 10 trocar, 0 pendente_lucas); 3 com algo não conferido; recebidos: 64.
+
+## Rodada das 17:02
+
+Entraram 15 arquivos novos: 6 páginas de documento (2ª rodada do `pesquisa-documentos`) e 9 rascunhos de acervo aberto (2ª rodada
+do `pesquisa-imagens`). Também entraram a resposta do Lucas aos 10 `pendente_lucas` do Internet Archive e o espelho novo
+(`espelho.json` das 16:17, commit c458688, sobre o relógio da r3a). Sem `regencia.json`: as janelas continuam provisórias, tiradas
+dos `_planos` do espelho de hoje. Fora do julgamento, como antes: `la0007-prova-p2.jpg` (é prova), `_media/base/` e `_media/geo/`.
+`_media/` não mudou durante a conferência (sha256 antes e depois, 149 arquivos).
+
+### A resposta do Lucas aos 10 do Internet Archive
+
+- Mensagem literal, às 12:03 de Brasília: "Outra cópia, senão recriar (Recomendado)". A opção dizia: "Os pesquisadores procuram a
+  mesma página numa fonte aprovada (Commons, governo). O que não aparecer, a cena recria: o trecho literal no visual do canal, com
+  a fonte (ex.: Source: Los Angeles Times, 1899). Sem risco com os termos."
+- A resposta cobre os 10 pelo nome. Os 10 saem **reprovados**: a imagem tirada do archive.org não vai à tela. Os vereditos antigos
+  (`pendente_lucas`) foram para `substituidos`, e a resposta ficou gravada em `resposta_lucas` em cada um.
+- **Dana, Hood (2) e Willard** foram substituídos pelas cópias novas, abaixo. **As 6 páginas do Los Angeles Times vão à
+  recriação** (`pauta-documentos.json`, `rodada_2.recriacao`).
+- **Quem entregou (`pesquisa-documentos`)** move as 10 de `_media/documento/` para `_media/_caca/_retirado/documento/`. Enquanto
+  estiverem lá com `reprovado`, elas seguram o `regie advance` do `research`.
+
+### A pergunta que era só minha: a cópia do Commons de um scan do Internet Archive cumpre a decisão?
+
+**Cumpre.** Dana, Willard e o folheto do Hood estão no Commons como o PDF que o Internet Archive gerou da mesma digitalização.
+A conta Fæ subiu esses PDFs, e a ficha cita o identificador do IA. A minha leitura:
+- a opção que o Lucas escolheu nomeia o Commons como fonte aprovada e pede "a mesma página";
+- o Commons está na lista do canal, com licença arquivo a arquivo (`midia.md` §7.3). Li hoje a ficha dos três: domínio público,
+  publicados antes de 1931, sem restrição;
+- os arquivos vieram do `upload.wikimedia.org`, não do archive.org. Os termos de acesso do archive.org ("for scholarship and
+  research purposes only"), que eram o risco da pergunta, regem o uso do site deles;
+- nos EUA, a digitalização fiel de uma página em domínio público não cria direito novo;
+- é a mesma leitura que já aprovou neste vídeo cópias do Commons de acervos fora da lista (LAPL, USC/CHS). Nesta rodada, ela vale
+  também para o Met, o Getty e a NYPL.
+
+Não ficou dúvida real, e por isso o veredito não é `pendente_lucas`. Se o Lucas entender a "outra cópia" como outra
+digitalização, a recriação de Dana e de Willard já está escrita na pauta (`recriacao_se_recusado`), e na s20 a cena usa o govinfo
+de todo jeito.
+
+### Os 15 novos e os 12 que mudaram
+
+| id | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `documento/hed41-1892-p28.jpg` | s20 p1 | govinfo (Law Library of Congress) | aprovado | a abertura impressa da audiência de 08/09/1892, limpa e federal; a preferida do plano 1 |
+| `documento/hed41-1892-p58.jpg` | s20 p2 | govinfo | aprovado | "would go to the wall" na fala de Hood, p. 58; a preferida do plano 2. Na tela, a grafia desta impressão |
+| `documento/hood-1892-commons-p1.jpg` | s20 p1 | Commons (scan do IA, exemplar da LoC) | aprovado | reserva: a capa do folheto, com marcas de catálogo nas margens; a cena usa a do govinfo |
+| `documento/hood-1892-commons-p40.jpg` | s20 p2 | Commons (scan do IA) | aprovado | reserva: a mesma fala no folheto; a cena usa a do govinfo, nunca as duas |
+| `documento/dana-1895-commons-p109.jpg` | s06 p2 | Commons (scan do IA, BPL) | aprovado | "the worst place we had seen yet", agora pelo Commons, em domínio público |
+| `documento/willard-1899-commons-p1.jpg` | s22 | Commons (scan do IA, UC) | aprovado | a folha de rosto com "open to competition", pelo Commons |
+| `_caca/s04/…/los-angeles-view-over-the-plain-1876-watkins-met.jpg` | s04 | Commons (Met, CC0) | aprovado | a cidade inteira na planície, sem água, em 1876, grande; "Photo from 1876" |
+| `_caca/s04/…/the-plaza-los-angeles-stereograph-ca1880-watkins-getty.jpg` | s04 | Commons (Getty) | aprovado | a Plaza c. 1880, uma metade do estereograma; a alternativa que nomeia a Plaza (a ancoragem de s05) |
+| `_caca/s04/…/la-plaza-from-fort-moore-hill-1876-lapl.jpg` | s04 | Commons (LAPL) | trocar (era aprovado) | 800 px: entrava pela lacuna, e agora o plano tem foto grande |
+| `_caca/s04/…/la-plaza-and-plaza-church-ca1868-lapl.jpg` | s04 | Commons (LAPL) | trocar (era aprovado) | 1022 px: o mesmo motivo |
+| `_caca/s09/…/birds-eye-view-los-angeles-wilmington-inset-1877-glover-loc.jpg` | s09 p2 | Commons (LoC, mapa) | aprovado | o porto de Wilmington em 1877 no encarte da vista de Glover: mapa antigo, impresso sobre a mesa, com o gênero e o ano na tela, nunca como foto |
+| `_caca/s18/…/longest-wharf-…-nypl-lossless-from-tiff.png` | s18 p2 | Commons (NYPL) | aprovado | o Long Wharf num cartão de 1902, com o trem, na resolução inteira da origem; "Postcard from 1902" |
+| `_caca/s18/…/longest-wharf-…-nypl-commons-1920.jpg` | s18 p2 | Commons (NYPL) | reprovado | o mesmo cartão em versão menor (1920 contra 2404 px): vai o PNG |
+| `_caca/s28/…/harbor-day-celebration-san-pedro-1899-usace.jpg` | s28 p2 | Commons (USACE) | reprovado | multidão em San Pedro, 1899, mas a origem diz "Harbor Day", sem o nome do jubileu nem a data: o evento não foi conferido |
+| `_caca/s47/…/dredging-wilmington-harbor-waterfront-ca1912-chs2407.jpg` | s47 p1–p2 | Commons (USC/CHS) | aprovado | a frente de água de Wilmington c. 1912, aterro vazio e sem cais; uma foto nos dois planos, com movimento (declarado no espelho); "Photo from about 1912" |
+| `_caca/s49/…/los-angeles-harbor-deepening-dredge-1982-usace.jpg` | s49 p1 | Commons (USACE, federal) | aprovado | o aprofundamento de 1982, com a ponte Vincent Thomas atrás; só no plano 1, nunca no "By 2013" |
+| `_caca/s49/…/los-angeles-harbor-deepening-dredge-aerial-1982-usace.jpg` | s49 p1 | Commons (USACE, federal) | aprovado | a mesma obra vista do alto; só no plano 1, alternativa da de baixo. No plano 2 faria o papel do aprofundamento de 2008–2013 |
+| `documento/dana-1895-p109.jpg` | s06 | Internet Archive | reprovado (era pendente_lucas) | a resposta do Lucas; substituída pela cópia do Commons |
+| `documento/hood-1892-p40.jpg` | s20 | Internet Archive | reprovado (era pendente_lucas) | a resposta do Lucas; substituída pela p. 58 do govinfo |
+| `documento/hood-1892-p1.jpg` | s20 | Internet Archive | reprovado (era pendente_lucas) | a resposta do Lucas; substituída pela p. 28 do govinfo |
+| `documento/willard-1899-p1.jpg` | s22 | Internet Archive | reprovado (era pendente_lucas) | a resposta do Lucas; substituída pela cópia do Commons |
+| `documento/lat-1899-04-27-barcaca-p10.jpg` | s28 | Internet Archive | reprovado (era pendente_lucas) | a resposta do Lucas; vai à recriação |
+| `documento/lat-1899-04-27-publico-p10.jpg` | s28 | Internet Archive | reprovado (era pendente_lucas) | a resposta do Lucas; vai à recriação. A frase da r3a diz "turned out" |
+| `documento/lat-1906-11-13-p1.jpg` | s38 | Internet Archive | reprovado (era pendente_lucas) | a resposta do Lucas; vai à recriação |
+| `documento/lat-1906-11-20-p2.jpg` | s38 | Internet Archive | reprovado (era pendente_lucas) | a resposta do Lucas; vai à recriação |
+| `documento/lat-1906-11-21-p2.jpg` | s38 | Internet Archive | reprovado (era pendente_lucas) | a resposta do Lucas; vai à recriação |
+| `documento/lat-1909-08-13-p1.jpg` | s45 | Internet Archive | reprovado (era pendente_lucas) | a resposta do Lucas; vai à recriação |
+
+### Os aprovados anteriores contra o espelho de hoje
+
+Os textos de cena que a r3a mudou não têm mídia aprovada: s03 e s40 são mapa, e na s28 as duas páginas do Times saíram
+reprovadas pela resposta do Lucas. Nos 25 aprovados que ficaram (o .mov da s01, s09, s11 ×2, s18, s27 ×2, s33, s47 ×2, s54, o
+retrato de Dana e 13 documentos), a frase é a mesma, e o objeto do plano também. Mudou só o relógio: as bordas andaram até
+1,6 s, e as janelas, menos de 0,05 s.
+- O veredito fica, com a nota `revisao_r3a`: os `t0`, `t1` e `janela_s` de hoje, os planos, e o sha256 conferido de novo.
+- **s01, plano 1:** o objeto ganhou "presa ao lugar dela no contorno de hoje". O .mov continua servindo: é Los Angeles do ar. O
+  plano 2 virou satélite.
+- **s54:** o objeto diz agora "o farol do porto de San Pedro". O rótulo continua sem "Angels Gate".
+- **s51:** o plano virou "aéreo-real", sem caça. O clipe de banco, que já estava reprovado, perdeu também o plano.
+- **s47:** os aprovados do farol cobrem os planos 3 e 4 (641,7–648,07 s, 6,37 s), como antes.
+
+Os dois aprovados da s04 que mudaram (as fotos pequenas da LAPL) estão na tabela acima.
+
+## Para o Lucas pesar
+
+Nenhum `pendente_lucas`. Para ele saber, sem pergunta: li a cópia do Commons de um scan do Internet Archive como "a mesma
+página numa fonte aprovada" (acima). Se ele não concordar, Dana e Willard vão à recriação, já escrita.
+
+## Para reconferir no navegador do app
+
+- **s28, "Celebration of Harbor Day. San Pedro." (USACE, 1899):** falta uma fonte que ligue "Harbor Day" ao dia de San Pedro do
+  Free Harbor Jubilee (26/04/1899). Pode vir do `verificador-de-fatos`, pelo dossiê, ou de outra cópia do mesmo registro com
+  legenda e data: Calisphere/USC ou LAPL, buscas "Free Harbor Jubilee 1899" e "harbor celebration San Pedro 1899". Willard põe o
+  primeiro dia em San Pedro, "near Point Fermin", com cerca de 20.000 pessoas, o que torna o elo plausível, mas nenhuma fonte do
+  dossiê usa "Harbor Day". Com o elo provado, conferência nova.
+- Continuam da rodada das 11:33: s01, o aéreo do Dronalist (licença no YouTube), e o TIFF da s18. O TIFF fica superado pelo PNG
+  aprovado e não precisa mais de conferência.
+
+## Para trocar
+
+**pesquisa-documentos:** mover os 10 reprovados do IA para `_media/_caca/_retirado/documento/` e seguir a recriação das 6 do
+Times.
+
+**pesquisa-imagens:**
+- s04: as duas da LAPL (800 e 1022 px) saem do lugar delas como `trocar`, sem busca nova: o plano já tem a Watkins de 1876 e o
+  estereograma da Plaza.
+- s18: o JPEG de 1920 px (reprovado) e o TIFF ilegível (reprovado) ficam em `_caca`; vai o PNG. O PNG não passou pelo `baixar`
+  e não tem selo: o veredito casa pelo sha256 dele, `816aa007…`.
+- s28, plano 2: `Free Harbor Jubilee San Pedro April 26 1899 crowd photograph` (o Harbor Day, se o elo se provar).
+- s49, planos 2 e 3: `USACE Los Angeles District Port of Los Angeles Main Channel deepening 2008-2013 photo (federal, no logo)`.
+  O spl.usace.army.mil recusou robô (403): pelo navegador do app.
+- Os `trocar_por` das 11:33 continuam, menos o da s04 (resolvido) e o da s09, plano 2, que a litografia cobre.
+
+**Avisos do conjunto da cena** (para o `regente-de-imagem` e o `montador`):
+- **s49:** os planos 2 e 3 ("By 2013… from forty-five feet to fifty-three") continuam sem mídia. As fotos de 1982 cobrem só o
+  plano 1 (3,1 s).
+- **s28, plano 2:** sem foto da multidão. A página do Times virou recriação.
+- **s30 e s31:** nenhum arquivo aprovado.
+- **s33, plano 2 (Wilmington):** lacuna.
+- **s47:** os quatro planos estão cobertos (CHS-2407 nos planos 1 e 2, as fotos da NARA nos planos 3 e 4).
+- **s09, plano 2:** coberto pela litografia. Ela não conta na régua de mundo real como registro: é mapa antigo e desenho de época.
+- **s04:** um plano de 4,5 s e duas aprovadas (a Watkins de 1876 e o estereograma). Uma basta, e a escolha é do montador e do
+  regente: a de 1876 mostra a planície, e o estereograma nomeia a Plaza.
+
+## Para quem escreve a tela (redator-de-tela e verificador-de-fatos)
+
+- **s09, a litografia:** o aviso diz o gênero e o ano ("Lithograph from 1877" ou "Bird's-eye view, 1877"), nunca "Photo from". O
+  rótulo de lugar vai até "Wilmington", como a legenda do encarte.
+- **s04:** a Watkins de 1876 só pode levar o rótulo "Los Angeles", porque a origem não diz Plaza. O estereograma pode dizer "The
+  Plaza, Los Angeles", e o aviso vai como a origem dá ("about 1880").
+- **s18:** "Postcard from 1902"; o rótulo não passa de "Santa Monica".
+- **s20:** na tela, a grafia da p. 58 do govinfo ("very nearly"; sem vírgula antes de "would go to the wall").
+- **s22:** a folha diz "Contest", e a tela não atribui "Free Harbor Fight" a Willard.
+- **s47, a CHS-2407:** "Photo from about 1912"; o rótulo de lugar vai até "Wilmington" ou "Los Angeles Harbor".
+- **s49:** "Photo from 1982". A origem chama o equipamento de "spill barge", não de draga: o rótulo, se houver, não diz
+  "dredge".
+
+## Divergências e notas (rodada das 17:02)
+
+- **Entre a marca e este ofício:** nenhuma.
+- **Olhos novos:** em parte. O pedido do Claude central e os nomes de arquivo vieram antes. Os 9 rascunhos de imagem foram
+  abertos e descritos antes de eu ler o `por_que_esta` deles. Das 6 páginas de documento, li a pauta (trechos e tratamento)
+  antes de abri-las.
+- **O PNG da s18:** a igualdade de pixels com o TIFF da origem não foi medida por mim (o `ffprobe` não lê esse TIFF). A
+  resolução bate com a que o Commons declara.
+- **As fotos de 1982 da s49:** o fotógrafo não é nomeado. O Commons as marca como obra de funcionário do USACE, e a origem diz
+  "Approved for public release, distribution unlimited". Contam como federais, como as outras do acervo do Corpo de Engenheiros.
+
+---
+
+# Histórico (rodadas anteriores, como estavam)
+
+As linhas abaixo são das conferências das 11:33, 13:55 e 14:15. Onde a rodada das 17:02 mudou um veredito, vale a tabela de
+cima: os 10 do IA, que eram `pendente_lucas`, e as duas fotos da LAPL na s04, que eram aprovadas. A seção "Para o Lucas pesar"
+de lá já foi respondida.
+
+**Laudo das 14:15:** 26 aprovados de 49 conferidos (5 reprovados, 8 trocar, 10 pendente_lucas); 2 com algo não conferido; recebidos: 49.
 
 14:15: entrou o Original do mesmo item da s01 (Motion Array 2212473, `…_original_2212473.mov`, 4096x2160): aprovado. O
 reprovado do `.mp4` 3840x2026 das 13:55 continua como estava (os dois se distinguem pelo sha256). Os 48 vereditos
@@ -68,7 +227,7 @@ foi um olhar de olhos novos.
 | `_caca/s54/envato/san-pedro-harbor-lighthouse-bathed-in-the-warm-hue-….mp4` | s54 | Envato 90e9da08… | aprovado | o mesmo item da prévia: o farol na ponta do quebra-mar de San Pedro, hoje, 4K, 19 s para 4,8 s; rótulo só San Pedro/Los Angeles |
 | `_caca/s01/motionarray/Los_Angeles_Downtown_Aerial_Fly_Drone_original_2212473.mov` | s01 | Motion Array 2212473 | aprovado | o mesmo item da prévia (mesmo_item true), agora no Original 4096x2160 (ProRes 422 LT, 22 s): o centro de Los Angeles do ar, sem letreiro legível, cobre "second-largest city"; o .mp4 3840x2026 continua reprovado e fora da cena |
 
-## Para o Lucas pesar
+## Para o Lucas pesar (11:33; respondida às 12:03)
 
 Os 10 `pendente_lucas` são a mesma pergunta: dana-1895-p109, hood-1892-p40, hood-1892-p1, willard-1899-p1,
 lat-1899-04-27-barcaca-p10, lat-1899-04-27-publico-p10, lat-1906-11-13-p1, lat-1906-11-20-p2, lat-1906-11-21-p2 e
@@ -83,7 +242,7 @@ lat-1909-08-13-p1.
   trecho (literal, com a fonte)?"
 - Nas duas do Hood, a pergunta pode sumir se a mesma digitalização estiver no loc.gov, que é acervo da lista.
 
-## Para reconferir no navegador do app
+## Para reconferir no navegador do app (11:33)
 
 - s01, o aéreo do Dronalist: https://www.youtube.com/watch?v=FFRW43AVTQk. Copiar a licença que a página mostra e o nome do
   canal. No Commons, a revisão de licença do arquivo está pendente.
@@ -92,7 +251,7 @@ lat-1909-08-13-p1.
 - Os 10 documentos do IA: https://archive.org/about/terms.php, copiar o que os termos dizem sobre uso.
 - s20, Hood: procurar no loc.gov a transcrição de 1892 ("Before the honorable Board of government engineers", Craighill).
 
-## Para trocar
+## Para trocar (11:33)
 
 **pesquisa-imagens:**
 - s04: `Los Angeles Plaza 1870s view over the plain, photograph 1600 px wide or larger` (o panorama de 1869 é tira fina).
@@ -113,7 +272,7 @@ lat-1909-08-13-p1.
 - s33 plano 2 (Wilmington) e s47 planos 1–2: lacunas.
 - s28 plano 2: o espelho pede foto da multidão. A página do Times só serve se a cena mantiver o documento.
 
-## Divergências e notas para quem escreve a tela
+## Divergências e notas para quem escreve a tela (11:33)
 
 - s33 (Jackson): o aviso dá o intervalo da origem, "ca. 1891–1910", e não "the 1890s".
 - s38: o recorte de 21/11/1906 imprime "218". Ele fica só no plano 2, e o "213" vai na folha de 20/11.
