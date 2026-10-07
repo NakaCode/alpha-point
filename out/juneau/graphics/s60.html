@@ -5,47 +5,93 @@
   Voters said yes. Then it became how much. Both times a price went on the ballot, voters said no, though why is still
   debated."
   Word-lock (−615.7) · inSec 615.7 · dur 17.367 (521 quadros a 30 fps; espelho.json)
-  Modo do espelho: dados · Modelo da identidade: DADO sobre --papel, num palco só, com a câmera descendo pela folha: a
-  cédula de 1974 com o carimbo YES, a virada da folha, as duas perguntas, as duas linhas com os carimbos NO.
+  Modo do espelho: dados · Modelo da identidade: DADO sobre --papel, num palco só: UMA LINHA DO TEMPO (1974 → 1978 → 1982)
+  que a câmera percorre do primeiro ao último quadro; o carimbo YES na primeira estação, as duas perguntas, e os dois
+  carimbos NO sobre os preços das duas estações seguintes.
 
-  O que manda em cada coisa: o espelho (s60), o conceito (s60), a regência (s60: cinco beats), os textos finais do
-  redator (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s60, _creditos s60) e a
-  marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS.
+  REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026; out/_feedback-queue.jsonl, marca murv3y2v-86d340 em s60 @6,8 s, versão
+  3ee4c2b3; out/juneau/_pesquisa/revisao-premiere-lucas.md, "A linha do tempo"):
+    · A MARCA DELE (literal): "Animação um tanto parada e sem graça, não agregou muito valor [vídeo 10:22.5 · versão 3ee4c2b3]".
+    · A DECISÃO: "Linha 1974 → 1978 → 1982 (Recomendado)": os três votos numa linha do tempo, entrando com a voz, e a câmera
+      andando por ela.
+    · O QUE MUDOU nesta cena (conceito 715af3e5…, s60; regência d422dc22…, s60, cinco beats):
+      1. SAÍRAM a cédula desenhada (a caixa com as linhas em branco e os quadradinhos) e a faixa do cabeçalho que virava.
+      2. ENTROU a linha do tempo: o eixo em --eixo-cor (6 px) em y 1.150 da folha, três estações a 950 px (1974 em x 1.100,
+         1978 em 2.050, 1982 em 3.000), cada uma um tique de 60 px; o ANO abaixo do eixo (rótulo 128 px, --tinta-escura) e o
+         que a voz pôs nela ACIMA (o carimbo YES em 1974; os valores em legenda 84 px e os carimbos NO em 1978 e 1982); as
+         perguntas WHETHER TO MOVE (acima do YES) e HOW MUCH (acima do trecho entre as duas estações seguintes) na mesma
+         linha, no alto. O eixo vem de fora do quadro pela esquerda até o tique de 1974 (parte C, abaixo; era um toco de
+         160 px) e começa a se DESENHAR para a direita em "changed." (3,8) a partir do tique de 1974, em velocidade constante,
+         chega às duas estações em "Both" (11,733) e segue ~200 px além de 1982, acabando sem tique: "why is still debated".
+         Os tiques de 1978 e 1982 só aparecem com os anos, em "Both". O eixo e os tiques são estrutura do DADO, não campo em
+         branco: nenhuma moldura, linha vazia nem caixa esperando a voz.
+      3. A CÂMERA ANDA pela linha do primeiro ao último quadro: fechada na estação de 1974 (escala 1,28 → 1,30 de 0 a 3,8:
+         nunca parada), desliza com a ponta do eixo de "changed." a "Both" (escala 1,30 → 1,0 e deslocamento +343 → +141,
+         ease-in-out), e de "Both" ao corte segue numa deriva constante para a direita (282 px em 5,63 s, ≥ 50 px/s no
+         palco: a régua de "Mapa nunca fica parado" aplicada à prancha); no último quadro as três estações estão no quadro,
+         1974 com o YES à esquerda e 1978 e 1982 com os NO à direita. A deriva senoidal do RIG (6/4,8 px) soma. A câmera do RIG
+         com zoom contínuo saiu: a escala é a da viagem.
+      4. Os TEMPOS que mudaram (regência d422dc22…): o YES bate em "yes" (0,9; era "that", 0,7) e fica a cena toda, com o pulso
+         de 5 % em "yes." (8,785); o 1974 fica até o corte (era até 3,6); 1978 e 1982 vão em dois itens cada (o ano sob o
+         eixo, o valor sobre ele: textos-tela.json desta rodada, sha256 115bf1d0…e673e › rotulos_dado s60), em "Both" (11,733);
+         os NO em "no," (14,467; o de 1982 120 ms depois), LOGO ACIMA dos valores (não por cima: a identidade §6 não deixa
+         carimbo sobre texto, e o check-overlap acusaria o NO sobre o valor, como acusou o NO sobre WASILLA na s35).
+    · Nenhum tempo de palavra mudou; nenhum número antes da voz (1974 em "nineteen", os dois valores em "Both", depois de
+      ditos em s19 e s23); nenhum campo vazio esperando a voz.
+    · PARTE C (04/10/2026; editor-de-arte, a pedido do Claude central; o achado BAIXA 20 da verificação da 5ª leva B,
+      out/juneau/_tmp/art/revisao-lucas-workflow-5b.json › verif.divergencias): de 0 a 0,9 s o quadro tinha só o tique de 1974
+      e 160 px de eixo (205 px na tela, sob a câmera a 1,28): o primeiro segundo ficava quase vazio. O QUE MUDOU: o eixo passa a
+      VIR DE FORA DO QUADRO pela esquerda (x1 = −400 da folha, que a câmera nunca traz para a tela: o mais perto que chega é
+      x ≈ −253, em "Both") e a ponta dele ANDA de x 700 ao tique de 1974 (x 1.100) de 0 a 0,9 s, ease-out, chegando ao tique no
+      instante em que a voz diz "yes" e o carimbo YES bate. No primeiro quadro já há ~800 px de eixo na tela, da borda esquerda
+      até x ≈ 800, e o tique à frente dele; nada além do eixo e do tique até a voz (conceito s60 p1: "NADA impresso além do eixo
+      e do tique de 1974 até a voz"). Nenhum número antes da voz (o 1974 continua em "nineteen"); a pergunta WHETHER TO MOVE não
+      foi adiantada: a regência a convoca em "whether" (6,8), e texto antes da palavra que o convoca é o que a 1ª _regra_de_texto
+      proíbe. O desenho do eixo para a direita em "changed." (3,8), a câmera, os tempos e os textos não mudaram. DIVERGE da
+      regência s60 b1 ("a 160 px stub of axis to its left"): o toco virou o eixo inteiro vindo da esquerda, por este pedido.
+
+  O que manda em cada coisa: o espelho (s60), o conceito (s60, 03/10/2026), a regência (s60: cinco beats, 03/10/2026), os
+  textos finais do redator (out/juneau/textos-tela.json, 03/10/2026, sha256 115bf1d0…e673e › rotulos_dado s60, _creditos s60)
+  e a marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS.
 
   OS BEATS (tempo local = master − 615,7; palavras do words.json):
-    b1  0,000–3,267  "So what happened to that yes vote in nineteen seventy-four?"
-        A CÉDULA desenhada (traço de 6 px --tinta-escura: a caixa de 3.000 × 790 em (420, 330), a faixa do cabeçalho
-        com três linhas em branco a 25 % (a pergunta, sem texto), as duas opções com os quadradinhos e as linhas em
-        branco; nenhuma contagem). O YES (o carimbo de s01: Barlow 800, 360 px, caixa de 18 px, −7°, tinta gasta; aqui
-        em --contraparte, o lado da mudança sobre o papel) BATE em "that" (0,7) sobre o corpo da cédula (centro
-        1.920 × 840) e fica a cena toda. 1974 (rótulo 128 px, Inter 700, --tinta-escura, em 420/176) em "nineteen" (1,6) até 3,6.
-    b2  3,267–4,967  "The question changed."
-        A FAIXA DO CABEÇALHO VIRA em "The" (3,267), em 0,5 s: a frente (as linhas em branco) encolhe até a dobra e o
-        verso (em branco, um tom mais escuro) desdobra; nenhum texto.
-    b3  4,967–9,800  "In nineteen seventy-four, the question was whether to move. Voters said yes."
-        WHETHER TO MOVE (rótulo 128 px, --tinta-escura, sem "?") se imprime na faixa virada em "whether" (6,8); em "yes"
-        (8,785) o YES REAFIRMA: um pulso de 5 % em 0,3 s.
-    b4  9,800–11,700  "Then it became how much."
-        A CÂMERA DESCE 70 px (9,9 → 10,4) e HOW MUCH (rótulo 128 px) se imprime ABAIXO da cédula em "how" (10,4), o par
-        de WHETHER TO MOVE, na mesma folha.
-    b5  11,700–17,367 "Both times a price went on the ballot, voters said no, though why is still debated."
-        A câmera desce mais 20 px (11,6 → 12,1; 90 no total). As duas LINHAS, legenda 84 px (Inter 500, --tinta-escura), em "Both"
-        (11,733): 1978 · UP TO $966 MILLION e, 300 px abaixo, 1982 · ABOUT $2.8 BILLION; sem contagem, sem BONDS. Os
-        dois carimbos NO (o mesmo carimbo a 0,6, em --destaque, o lado de Juneau) BATEM em "no," (14,467; o segundo
-        120 ms depois) à direita de cada linha (centro 2.400); à direita deles, o ESPAÇO EM BRANCO de "why is still
-        debated": nenhum texto.
+    b1  0,000–3,267  "So what happened to that yes vote in nineteen seventy-four?"  (regência s60#1)
+        A câmera fechada na estação de 1974 (escala 1,28 → 1,30; o tique em x ≈ 1.300 da tela); só o tique de 1974 e o eixo,
+        que vem de fora do quadro pela esquerda e cuja ponta anda de x 700 ao tique de 0 a 0,9 s (ease-out; parte C, 04/10/2026;
+        era um toco parado de 160 px). Em "yes" (0,9) a ponta chega ao tique e o carimbo YES (o carimbo de s01: Barlow 800, 360 px, caixa de
+        18 px, −7°, tinta gasta; em --contraparte, o lado da mudança) BATE acima do eixo (escala 1,55 → 0,97 → 1 em 0,38 s)
+        e fica a cena toda; em "nineteen" (1,6) o ano 1974 se imprime abaixo do tique (rótulo 128 px, 300 ms) e fica.
+    b2  3,267–4,967  "The question changed."  (regência s60#2)
+        Em "changed." (3,8) o eixo começa a se desenhar para a direita (239,5 px/s na folha) e a câmera começa a deslizar com
+        a ponta dele; nenhum texto.
+    b3  4,967–9,800  "In nineteen seventy-four, the question was whether to move. Voters said yes."  (regência s60#3)
+        WHETHER TO MOVE (rótulo 128 px, --tinta-escura, sem "?") se imprime acima do YES em "whether" (6,8); em "yes." (8,785)
+        o YES reafirma: um pulso de 5 % em 0,3 s.
+    b4  9,800–11,700  "Then it became how much."  (regência s60#4)
+        HOW MUCH (rótulo 128 px, sem "?", o par de WHETHER TO MOVE) se imprime em "how" (10,4) à direita, na mesma altura,
+        acima do trecho de eixo entre as estações de 1978 e 1982, que ainda não existem (a ponta do eixo está em x ≈ 2.680).
+    b5  11,700–17,367 "Both times a price went on the ballot, voters said no, though why is still debated."  (regência s60#5)
+        Em "Both" (11,733) o eixo chega a x 3.000 e as duas estações aparecem: os tiques, os anos 1978 e 1982 abaixo do eixo
+        (rótulo 128 px) e os valores UP TO $966 MILLION e ABOUT $2.8 BILLION acima (legenda 84 px, Inter 500, --tinta-escura;
+        sem contagem, sem BONDS); o eixo segue até x 3.200 (12,57) e acaba sem tique. Em "no," (14,467; o segundo 120 ms
+        depois) os dois carimbos NO (o mesmo carimbo a 0,6×, em --destaque, o lado de Juneau) BATEM logo acima dos valores,
+        em cada estação (centro y 840, entre a pergunta e o valor; nenhuma letra coberta). A
+        câmera, em 1,0 desde "Both", deriva para a direita até o corte.
     Crédito Source: Alaska Division of Elections, 1974–1982 solto sobre o papel (--tinta-escura a 72 %), a cena toda, em duas
     linhas (Source: Alaska Division of Elections, / 1974–1982): o intervalo de anos vai num span nowrap e não parte na quebra
-    (01/10/2026; antes quebrava em "1974–" / "1982").
-    A MARGEM SOB A CÂMERA (roupa §4, 01/10/2026): escala final 1 + 0,0024 × 17,367 = 1,042 (mais a deriva de 6/4,8 px):
-    tudo dentro de x 274→3.566, y 202→1.843 em todo quadro: a caixa em y 330 (240 depois da descida de 90), o 1974 em
-    y 176 (a 1,6 s a escala é 1,004), e o NO de 1982 termina em y 1.822 (centro 1.762 − 90 + 150 de meia altura girada).
-    Conta de elementos (b5): a cédula com o YES (1) + WHETHER TO MOVE (1) + HOW MUCH (1) + a linha de 1978 com o NO
-    (1) + a linha de 1982 com o NO (1) = 5, o teto. Blocos de texto: 0. Herói: nenhum (data-qc-sem-heroi).
+    (01/10/2026). FORA de #cam: a câmera não o move.
+    A MARGEM SOB A CÂMERA (roupa §4): no último quadro (escala 1,0, deslocamento −141 e a deriva ±6/4,8) o conteúdo vai de
+    x ≈ 404 (WHETHER TO MOVE) a ≈ 3.280 (o eixo aberto) e de y ≈ 660 (as perguntas) a ≈ 1.500 (os anos); no primeiro
+    quadro (escala 1,28, deslocamento +343) o YES vai de x ≈ 830 a ≈ 1.780 e o conteúdo de y ≈ 540 a ≈ 1.630. Nada na
+    faixa do crédito nem no canto de 400 × 400.
+    Conta de elementos (os 6 da marca, conta minha, não portão): b1 a estação de 1974 com o YES e o ano (1); b3 + WHETHER TO
+    MOVE (2); b4 + HOW MUCH (3); b5 + a estação de 1978 com o NO e a de 1982 com o NO (5). O eixo e os tiques são estrutura
+    do DADO (identidade §5) e não contam. Blocos de texto: 0. Herói: nenhum (data-qc-sem-heroi).
 
-  A MÍDIA: nenhuma. O voto é contagem já mostrada (s01, s11), e a cédula é desenho (regência s60).
+  A MÍDIA: nenhuma. O voto é contagem já mostrada (s01, s11, s20, s29), e a linha do tempo é desenho (regência s60).
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). O DADO sobre --papel (identidade
   §5): sem feltro, sem luz. Margens 200/160; canto inferior direito (400×400) vazio; crédito em x = 200, y > 1880.
+  YES em --contraparte, NO em --destaque (a regra do carimbo em _diretor).
 
   O CONTRATO: window.__duracao = 17.367; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes ou transition. O RIG abaixo é a cópia inteira de
@@ -65,20 +111,19 @@
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--papel); }
   #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--papel);
     font-family: var(--fonte); color: var(--tinta-escura); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+  /* a câmera que anda pela linha: escala e deslocamento postos pelo __renderAt (origem no centro do quadro) */
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
-  #folha { position: absolute; inset: 0; width: 3840px; height: 2160px; }
+  #folha { position: absolute; inset: 0; width: 3840px; height: 2160px; overflow: visible; }
 
-  /* a cédula desenhada: traço de 6 px --tinta-escura; as linhas em branco a 25 % */
-  #cedula { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
-  #cedula rect, #cedula line { fill: none; stroke: var(--tinta-escura); stroke-width: var(--linha-espessura); stroke-linecap: round; stroke-linejoin: round; }
-  #cedula .branco { stroke: color-mix(in srgb, var(--tinta-escura) 25%, transparent); }
-  #cedula #cabFrente { fill: var(--papel); stroke: none; }
-  #cedula #cabVerso { fill: color-mix(in srgb, var(--tinta-escura) 6%, transparent); stroke: none; }
+  /* a linha do tempo: o eixo e os tiques em --eixo-cor (--tinta-escura a 60 %), 6 px */
+  #linha { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
+  #linha line { stroke: var(--eixo-cor); stroke-width: var(--linha-espessura); stroke-linecap: round; }
 
-  /* os rótulos (128 px, Inter 700) e as legendas (84 px, Inter 500), em --tinta-escura sobre o papel */
+  /* os rótulos (128 px, Inter 700) e as legendas (84 px, Inter 500), em --tinta-escura sobre o papel; os anos e os valores
+     centrados na estação (translateX(-50%) no transform base, posto pelo __renderAt) */
   .rotulo { position: absolute; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo);
     line-height: 1.1; letter-spacing: 0; color: var(--tinta-escura); opacity: 0; }
-  .linha { position: absolute; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
+  .legenda { position: absolute; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
     line-height: 1.2; letter-spacing: 0; color: var(--tinta-escura); font-variant-numeric: var(--numeros); opacity: 0; }
 
   /* O CARIMBO DE BORRACHA (identidade §5; marca/prancha-fim.html): Barlow Condensed 800, 360 px, caixa de 18 px, cantos
@@ -86,15 +131,14 @@
   .carimbo { position: absolute; transform-origin: 50% 50%; opacity: 0; border: 18px solid currentColor; border-radius: 26px; padding: 46px 90px 34px; }
   .carimbo .yes { font-family: var(--fonte-sec); font-weight: var(--peso-heroi); font-size: var(--fs-heroi); line-height: .86;
     letter-spacing: .01em; color: currentColor; white-space: nowrap; }
-  #yes { left: 1920px; top: 840px; color: var(--contraparte); }
-  #no1 { left: 2400px; top: 1462px; color: var(--destaque); }
-  #no2 { left: 2400px; top: 1762px; color: var(--destaque); }
+  #yes { color: var(--contraparte); }
+  #no1, #no2 { color: var(--destaque); }
   .gasta { -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>");
     mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>");
     -webkit-mask-size: 640px; mask-size: 640px; }
 
   /* o crédito (§4.2): 76 px, x = 200, abaixo de y = 1880, solto sobre o papel, em --tinta-escura a 72 %; em duas linhas, e o
-     intervalo de anos (1974–1982) não parte na quebra (01/10/2026) */
+     intervalo de anos (1974–1982) não parte na quebra (01/10/2026). Fora de #cam. */
   #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x)); }
   .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.1;
     color: color-mix(in srgb, var(--tinta-escura) 72%, transparent); letter-spacing: 0; opacity: 0; }
@@ -103,35 +147,31 @@
 </style>
 </head>
 <body>
-<div id="palco" data-qc-sem-heroi="DADO sobre papel: a cédula desenhada com os carimbos, as duas perguntas e as duas linhas são carimbo, rótulo e legenda; nenhum herói (ofício do editor-de-arte §6)">
+<div id="palco" data-qc-sem-heroi="DADO sobre papel: a linha do tempo com os carimbos, os anos, as duas perguntas e os dois valores são carimbo, rótulo e legenda; nenhum herói (ofício do editor-de-arte §6)">
   <div id="cam">
     <div id="folha">
-      <div class="rotulo" id="ano" data-qc-papel="rotulo" style="left:420px;top:176px"></div>
-      <svg id="cedula" viewBox="0 0 3840 2160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- a caixa da cédula e a divisão do cabeçalho -->
-        <rect x="420" y="330" width="3000" height="790" rx="8"/>
-        <line x1="420" y1="560" x2="3420" y2="560"/>
-        <!-- a faixa do cabeçalho, que vira em "The question changed": a frente com as linhas em branco, o verso em branco -->
-        <g id="cabFlip">
-          <rect id="cabFrente" x="426" y="336" width="2988" height="218"/>
-          <rect id="cabVerso" x="426" y="336" width="2988" height="218" opacity="0"/>
-          <g id="cabLinhas">
-            <line class="branco" x1="500" y1="400" x2="2400" y2="400"/>
-            <line class="branco" x1="500" y1="450" x2="2100" y2="450"/>
-            <line class="branco" x1="500" y1="500" x2="1600" y2="500"/>
-          </g>
-        </g>
-        <!-- as duas opções: quadradinho e linha em branco -->
-        <rect x="520" y="650" width="110" height="110" rx="6"/><line class="branco" x1="690" y1="705" x2="1900" y2="705"/>
-        <rect x="520" y="870" width="110" height="110" rx="6"/><line class="branco" x1="690" y1="925" x2="1700" y2="925"/>
+      <svg id="linha" viewBox="0 0 3840 2160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- o eixo: vem de fora do quadro pela esquerda (x −400 da folha fica fora da tela em toda a viagem da câmera: o tempo
+             antes de 1974) até a ponta, que anda com a voz; a ponta nasce em x 700 e chega ao tique de 1974 em "yes" (5ª leva C) -->
+        <line id="eixo" x1="-400" y1="1150" x2="700" y2="1150"/>
+        <!-- os tiques das três estações (os de 1978 e 1982 só com os anos) -->
+        <line id="tq74" x1="1100" y1="1120" x2="1100" y2="1180"/>
+        <line id="tq78" x1="2050" y1="1120" x2="2050" y2="1180" opacity="0"/>
+        <line id="tq82" x1="3000" y1="1120" x2="3000" y2="1180" opacity="0"/>
       </svg>
-      <div class="carimbo gasta" id="yes" data-qc-papel="carimbo"><div class="yes" id="yesTxt"></div></div>
-      <div class="rotulo" id="q1" data-qc-papel="rotulo" style="left:500px;top:370px"></div>
-      <div class="rotulo" id="q2" data-qc-papel="rotulo" style="left:500px;top:1200px"></div>
-      <div class="linha"  id="l78" data-qc-papel="eixo" style="left:500px;top:1420px"></div>
-      <div class="linha"  id="l82" data-qc-papel="eixo" style="left:500px;top:1720px"></div>
-      <div class="carimbo gasta" id="no1" data-qc-papel="carimbo"><div class="yes" id="no1Txt"></div></div>
-      <div class="carimbo gasta" id="no2" data-qc-papel="carimbo"><div class="yes" id="no2Txt"></div></div>
+      <!-- a estação de 1974: o ano abaixo, o YES e a pergunta acima -->
+      <div class="rotulo" id="ano74" data-qc-papel="rotulo" style="left:1100px;top:1200px"></div>
+      <div class="carimbo gasta" id="yes" data-qc-papel="carimbo" style="left:1100px;top:885px"><div class="yes" id="yesTxt"></div></div>
+      <div class="rotulo" id="q1" data-qc-papel="rotulo" style="left:1100px;top:500px"></div>
+      <!-- a 2ª pergunta, acima do trecho entre 1978 e 1982 -->
+      <div class="rotulo" id="q2" data-qc-papel="rotulo" style="left:2525px;top:500px"></div>
+      <!-- as estações de 1978 e 1982: o ano abaixo, o valor acima, o NO logo acima do valor (centro y 840: y 712→970; o valor em 1.000→1.101) -->
+      <div class="rotulo"  id="ano78" data-qc-papel="rotulo" style="left:2050px;top:1200px"></div>
+      <div class="legenda" id="v78" data-qc-papel="eixo" style="left:2050px;top:1000px"></div>
+      <div class="rotulo"  id="ano82" data-qc-papel="rotulo" style="left:3000px;top:1200px"></div>
+      <div class="legenda" id="v82" data-qc-papel="eixo" style="left:3000px;top:1000px"></div>
+      <div class="carimbo gasta" id="no1" data-qc-papel="carimbo" style="left:2050px;top:840px"><div class="yes" id="no1Txt"></div></div>
+      <div class="carimbo gasta" id="no2" data-qc-papel="carimbo" style="left:3000px;top:840px"><div class="yes" id="no2Txt"></div></div>
     </div>
   </div>
   <div id="creds">
@@ -224,39 +264,50 @@
 <script>
 (function () {
   "use strict";
-  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo, eb = R.eb, win = R.win;
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo, eb = R.eb;
   var E = function (id) { return document.getElementById(id); };
   var lerp = function (a, b, p) { return a + (b - a) * p; };
   var DUR = 17.367;
   window.__duracao = DUR;
 
-  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é a do textos-tela.json do disco) ═══════════════════════════
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é a do textos-tela.json do disco, 03/10/2026) ═══════════════════════════
   var TEXTOS = {
-    yes:  "YES",                                                 // textos-tela.json › rotulos_dado s60 (o carimbo de s01)
-    ano:  "1974",                                                // idem
-    q1:   "WHETHER TO MOVE",                                     // idem (sem "?")
-    q2:   "HOW MUCH",                                            // idem
-    l78:  "1978 · UP TO $966 MILLION",                           // idem (legenda; sem BONDS, sem contagem)
-    l82:  "1982 · ABOUT $2.8 BILLION",                           // idem (legenda)
-    no:   "NO",                                                  // idem (os dois carimbos)
+    yes:   "YES",                                                // textos-tela.json › rotulos_dado s60 (o carimbo de s01)
+    ano74: "1974",                                               // idem (o ano da 1ª estação)
+    q1:    "WHETHER TO MOVE",                                    // idem (sem "?")
+    q2:    "HOW MUCH",                                           // idem
+    ano78: "1978",                                               // idem (o ano da 2ª estação, abaixo do eixo)
+    v78:   "UP TO $966 MILLION",                                 // idem (o valor da 2ª estação, acima do eixo; legenda)
+    ano82: "1982",                                               // idem (o ano da 3ª estação)
+    v82:   "ABOUT $2.8 BILLION",                                 // idem (o valor da 3ª estação; legenda)
+    no:    "NO",                                                 // idem (os dois carimbos)
     credFonte: "Source: Alaska Division of Elections, 1974–1982" // textos-tela.json › _creditos s60
   };
   // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
-  E("yesTxt").textContent = TEXTOS.yes; E("ano").textContent = TEXTOS.ano; E("q1").textContent = TEXTOS.q1; E("q2").textContent = TEXTOS.q2;
-  E("l78").textContent = TEXTOS.l78; E("l82").textContent = TEXTOS.l82; E("no1Txt").textContent = TEXTOS.no; E("no2Txt").textContent = TEXTOS.no;
+  E("yesTxt").textContent = TEXTOS.yes; E("ano74").textContent = TEXTOS.ano74; E("q1").textContent = TEXTOS.q1; E("q2").textContent = TEXTOS.q2;
+  E("ano78").textContent = TEXTOS.ano78; E("v78").textContent = TEXTOS.v78; E("ano82").textContent = TEXTOS.ano82; E("v82").textContent = TEXTOS.v82;
+  E("no1Txt").textContent = TEXTOS.no; E("no2Txt").textContent = TEXTOS.no;
 
-  // ── os tempos (locais, −615,7), da regência s60 e do words.json ──
+  // ── os tempos (locais, −615,7), da regência s60 (03/10/2026) e do words.json ──
   var T = {
-    yes: 0.7, batida: 0.38,        // "that" (616,392): o YES bate
-    ano: 1.6, anoFim: 3.6,         // "nineteen" (617,276): 1974, até 3,6
-    vira: 3.267, viraDur: 0.5,     // "The" (618,99): a faixa do cabeçalho vira
+    yes: 0.9, batida: 0.38,        // "yes" (616,6): o YES bate (era "that", 0,7)
+    ano: 1.6,                      // "nineteen" (617,276): 1974, até o corte
+    anda: 3.8,                     // "changed." (619,47): o eixo começa a se desenhar e a câmera a deslizar
     q1: 6.8,                       // "whether" (622,48)
-    pulso: 8.785,                  // "yes" (624,485): o YES reafirma
-    desce1: 9.9, desce2: 11.6,     // a câmera desce pela folha
+    pulso: 8.785,                  // "yes." (624,485): o YES reafirma
     q2: 10.4,                      // "how" (626,08)
-    linhas: 11.733,                // "Both" (627,43)
-    no: 14.467                     // "no," (630,145): os dois carimbos NO
+    both: 11.733,                  // "Both" (627,43): as duas estações, os anos e os valores
+    no: 14.467                     // "no," (630,145): os dois carimbos NO (o 2º 120 ms depois)
   };
+  // a linha do tempo, em coordenadas da folha
+  // x0: a ponta do eixo em t = 0 (5ª leva C, 04/10/2026): o eixo já vem de fora do quadro (x1 = −400) e a ponta anda de 700 ao
+  // tique de 1974 em "yes" (0 → 0,9 s, ease-out): a linha do tempo chega ao voto no instante em que a voz o nomeia, e o primeiro
+  // quadro não é só um tique com um toco de 160 px
+  var L = { y: 1150, x0: 700, x74: 1100, x78: 2050, x82: 3000, fim: 3200 };
+  var VEL = (L.x82 - L.x74) / (T.both - T.anda);   // 239,5 px/s: a ponta do eixo chega a 1982 em "Both"
+  // a câmera: fechada em 1974 (escala 1,28 → 1,30; deslocamento +343: o tique em x ≈ 1.300 da tela), desliza até "Both"
+  // (1,0; +141) e deriva para a direita até o corte (−141: 282 px em 5,63 s, ≥ 50 px/s)
+  var CAM = { s0: 1.28, s1: 1.30, tx0: 343, tx1: 141, tx2: -141, ty: 160 };
 
   function carimbo(el, t, t0, k, extra) {
     var p = seg(t, t0, T.batida), s, op;
@@ -265,10 +316,10 @@
     el.style.opacity = op.toFixed(3);
     el.style.transform = "translate(-50%,-50%) rotate(-7deg) scale(" + (k * s * (extra || 1)).toFixed(4) + ")";
   }
-  function rotulo(el, op) {
+  function rotulo(el, op) {   // centrado na estação (left = x da estação): 300 ms, opacidade + 24 px (§4.4)
     op = clamp(op, 0, 1);
     el.style.opacity = op.toFixed(3);
-    el.style.transform = "translateY(" + ((1 - op) * 24).toFixed(1) + "px)";
+    el.style.transform = "translate(-50%," + ((1 - op) * 24).toFixed(1) + "px)";
   }
   function creditoSemPartir(el, texto) {   // o intervalo de anos (AAAA–AAAA) vai num span nowrap: a quebra de linha não o parte (01/10/2026)
     if (el.textContent === texto) return;
@@ -283,27 +334,35 @@
   function cena(t) {
     t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
     var cam = E("cam");
-    R.camera(cam, t, { base: 1.0 });
-    // a câmera desce pela folha: 70 px em "how" e mais 20 em "Both" (90 no total: a caixa fica abaixo de y 202 sob a câmera)
-    var y = 70 * eo(seg(t, T.desce1, 0.5)) + 20 * eo(seg(t, T.desce2, 0.5));
-    E("folha").style.transform = "translateY(" + (-y).toFixed(2) + "px)";
 
-    // ── b1: o YES bate na cédula; 1974 ──
+    // ── a câmera anda pela linha: nunca parada ──
+    var pFech = seg(t, 0, T.anda);                                  // 0 → 3,8: aproximação mínima em 1974
+    var pDesl = eb(seg(t, T.anda, T.both - T.anda));                // 3,8 → 11,733: desliza com a ponta do eixo
+    var pDer = seg(t, T.both, DUR - T.both);                        // 11,733 → corte: deriva constante para a direita
+    var s = lerp(lerp(CAM.s0, CAM.s1, pFech), 1.0, pDesl);
+    var tx = lerp(lerp(CAM.tx0, CAM.tx0 + (CAM.s1 - CAM.s0) * 0, pFech), CAM.tx1, pDesl) + (CAM.tx2 - CAM.tx1) * pDer;
+    var dx = 6 * Math.sin(t * 0.23), dy = 4.8 * Math.sin(t * 0.17);   // a deriva senoidal do RIG (RIG.camera), sem o zoom dele
+    cam.style.transform = "scale(" + s.toFixed(5) + ") translate(" + (tx + dx).toFixed(2) + "px," + (CAM.ty + dy).toFixed(2) + "px)";
+
+    // ── o eixo chega ao tique de 1974 em "yes" (de x 700, ease-out; 5ª leva C), se desenha de 1974 para a direita em "changed.",
+    //    chega a 1982 em "Both" e acaba em aberto ──
+    var ponta = t < T.yes ? lerp(L.x0, L.x74, eo(seg(t, 0, T.yes))) : clamp(L.x74 + VEL * (t - T.anda), L.x74, L.fim);
+    E("eixo").setAttribute("x2", ponta.toFixed(1));
+    var est = ponta >= L.x78 - 0.5 && t >= T.both - 0.001 ? 1 : 0;   // as estações de 1978 e 1982 só existem com os anos, em "Both"
+    E("tq78").setAttribute("opacity", est); E("tq82").setAttribute("opacity", est);
+
+    // ── b1: o YES bate em "yes"; 1974 em "nineteen" e fica ──
     var pulso = 1 + 0.05 * Math.sin(Math.PI * seg(t, T.pulso, 0.3));
     carimbo(E("yes"), t, T.yes, 1.0, pulso);
-    rotulo(E("ano"), eo(win(t, T.ano, 0.3, T.anoFim, 0.3)));
+    rotulo(E("ano74"), eo(seg(t, T.ano, 0.3)));
 
-    // ── b2: a faixa do cabeçalho vira (a frente encolhe até a dobra, o verso desdobra) ──
-    var pv = seg(t, T.vira, T.viraDur), sy = Math.abs(1 - 2 * pv);
-    E("cabFlip").setAttribute("transform", "translate(0 445) scale(1 " + sy.toFixed(4) + ") translate(0 -445)");
-    var frente = pv < 0.5 ? 1 : 0;
-    E("cabFrente").setAttribute("opacity", frente); E("cabLinhas").setAttribute("opacity", frente); E("cabVerso").setAttribute("opacity", 1 - frente);
-
-    // ── b3–b5: as duas perguntas, as duas linhas, os dois NO ──
+    // ── b3–b4: as duas perguntas ──
     rotulo(E("q1"), eo(seg(t, T.q1, 0.3)));
     rotulo(E("q2"), eo(seg(t, T.q2, 0.3)));
-    rotulo(E("l78"), eo(seg(t, T.linhas, 0.3)));
-    rotulo(E("l82"), eo(seg(t, T.linhas + 0.08, 0.3)));
+
+    // ── b5: as duas estações, os anos e os valores em "Both"; os dois NO em "no," ──
+    var b = eo(seg(t, T.both, 0.3));
+    rotulo(E("ano78"), b); rotulo(E("v78"), b); rotulo(E("ano82"), b); rotulo(E("v82"), b);
     carimbo(E("no1"), t, T.no, 0.6);
     carimbo(E("no2"), t, T.no + 0.12, 0.6);
 

@@ -49,12 +49,19 @@ Cor com PAPEL. Uma cor = um significado, no vídeo inteiro.
 | `--contraparte` | `#2EC4B6` | o segundo ator, quando a cena compara dois |
 | `--neutro` | `#737D8E` | do terceiro ator em diante: sem matiz nova, só rótulo |
 | `--tensao` | `#E4572E` | zona de conflito, risco, perda. **Nunca** é a cor de um lado |
+| `--contexto-2` | `#4575EE` | **azul**: território de contexto do outro lado da fronteira internacional, só no mapa, a 25 % (§6, "Os territórios do contexto") |
+| `--contexto-3` | `#BAACF6` | **lavanda**: o vizinho de contexto mais importante do mesmo país, só no mapa, a 25 % (§6) |
+| `--contexto-1` | `#694C8B` | **violeta**: o segundo vizinho de contexto do mesmo país, sempre com nome, só no mapa, a 25 % (§6) |
 
 **O `--neutro` foi escurecido em 25/09/2026** (era `#8A94A6`; mesma matiz, só mais escuro). Medido com o
 `contraste.mjs` da pré-v1 da Régie (daltonismo por Machado 2009, distância CIEDE2000, limiar 10): o antigo ficava a
 7,8 do `--contraparte` para quem tem deuteranopia (os dois viravam a mesma cor) e a 2,5:1 sobre o `--papel`,
 abaixo dos 3:1 de elemento gráfico. O novo fica a 15,8 do `--contraparte` no pior tipo de daltonismo e a
 4,32:1 sobre o `--fundo`, 3,79:1 sobre o `--painel` e 3,40:1 sobre o `--papel`. Decisão do Lucas.
+
+**As cores de contexto entraram em 04/10/2026** (Lucas: "Uma cor nova por território", e depois "Aprovo assim"; o
+registro em §6, "Os territórios do contexto"). São as únicas cores da paleta que só existem no mapa: fora dele o terceiro
+ator continua `--neutro`, porque a lavanda pura não passa 3:1 sobre o `--papel`, nem o violeta sobre o `--painel`.
 
 **Regras de cor**
 - **Vermelho contra azul como dois lados: proibido.** Para o público dos EUA é a cor de partido
@@ -102,6 +109,11 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 
 - Nome de lugar é rótulo, **nunca** herói (ofício): o teto de 160 px vale para ele.
 - Pílula do rótulo: `--rotulo`, cantos de 12 px, respiro interno de 24 px × 40 px.
+- **O nome dentro do território de contexto** (04/10/2026, com as cores de contexto) é o segundo tratamento de texto
+  sobre mapa, ao lado da pílula: caixa alta, Inter 700, 104–128 px, `--tracking-lugar`, letra em `--tinta`, contorno
+  de 14 px em `--rotulo` por fora da letra (`paint-order: stroke fill`) e a sombra suave (`--nome-territorio-*` nos
+  tokens). Medido na s42: mediana de 14,6:1 sobre o gelo no 4K e no 1080p e de 6,1:1 no celular; o pior décimo da
+  letra, sobre o gelo mais claro, fica em 2,6–3,0:1.
 - Texto de relação sobre a seta de uma PRANCHA (ex.: `claims the same waters`) é **legenda**:
   84 px, Inter 500, `--tinta` a 80 %.
 - **Card de pessoa** (Lucas, 26/09/2026): o nome é **rótulo** (pílula, 128 px, Inter 700, até 3 palavras) e
@@ -396,20 +408,90 @@ O que vale, em px do palco 3840×2160:
   - entra batido, como carimbo: grande e transparente, bate e assenta em menos de meio segundo.
   - Na abertura, o que vai dentro e em volta da caixa (a porcentagem, a contagem) é do `diretor-de-arte` e do
     `redator-de-tela`; a caixa, a letra e a tinta são estas.
-- **A linha do preço** (o motivo de s02) fica logo abaixo do carimbo:
-  - o `$` em Barlow Condensed 800, 360 px, em `--tinta`;
-  - a lacuna de 1.180 px, com o traço de 12 px em `--destaque` e o grifo (`--destaque` a 35 %) numa faixa de 72 px
-    logo acima do traço. Nenhum número.
+- ~~**A linha do preço** (o motivo de s02) fica logo abaixo do carimbo~~: **superada em 02/10/2026** (abaixo, "A linha
+  do preço vazia sai").
+- **Os preços recusados** ficam logo abaixo do carimbo, no lugar da linha do preço (Lucas, 02/10/2026):
+  - duas linhas no papel legenda, com o ano e o valor, nas grafias de s60: `1978 · UP TO $966 MILLION` e
+    `1982 · ABOUT $2.8 BILLION`;
+  - o valor de cada uma se risca com um traço em `--destaque` quando a voz diz "price". O risco começa no início do
+    valor, com folga do `·`. É um recurso novo da marca, aprovado só para este fecho;
+  - o crédito `Source: Alaska Division of Elections, 1978–1982` fica na faixa de crédito, fora do escurecer.
 - **Tudo na metade esquerda**, a partir de x = 330, e a direita livre para os botões do YouTube (os vídeos
   sugeridos e o botão de inscrição). Nada no canto reservado de 400 × 400 px nem na faixa do crédito (§4.2).
 - **A tela final** (a cena da cauda, s63) é o último quadro de s62, parado:
   - o brilho vai de 100 % a 50 % em 20 s, linear, e nunca chega ao preto (100 % coberto, acima);
-  - nenhum texto novo e nenhum movimento além do escurecer;
+  - nenhum texto novo. Desde 03/10/2026, além do escurecer, a câmera se aproxima devagar do carimbo e dos preços nos
+    20 s (Lucas, na linha do tempo: "Tela final um pouco vazia, parada"; a resposta: "Câmera lenta nos 20 s
+    (Recomendado)"); a metade direita continua livre;
   - o crédito, quando há, fica fora do escurecer, legível até o fim.
 - **A conferência visual** é `marca/prancha-fim.html` (abre no navegador, com as fontes de `marca/fontes/`): mostra a
   voz e os 20 s, os botões do YouTube por cima e as áreas reservadas. É montagem de referência, não cena do pipeline.
 - **Nos próximos vídeos**, a tela final parada e escurecendo até metade do brilho, com a composição à esquerda, é a
   proposta; o que vai nela (o carimbo, a linha do preço) depende do motivo de cada vídeo, e o Lucas decide de novo.
+
+**A linha do preço vazia sai** (Lucas, 02/10/2026, na revisão do Juneau no Premiere;
+`out/juneau/_pesquisa/revisao-premiere-lucas.md`).
+- **O que ele viu:** em s02, o grifo sobre a lacuna vazia ("aparece uma marcação que não marca texto algum"); em s23,
+  o campo antes do número ("Acredito que não precise desse campo antes, deixe o número só aparecer"); no fim, "s62 e
+  s63 ficaram apenas assim".
+- **Na página de decisão, ele escolheu:**
+  - s02: o literal termina antes do preço, e o grifo marca palavras que existem;
+  - s23: a cédula com o número impresso desde o começo, e o número-herói na palavra da voz;
+  - s62: os preços recusados, riscados.
+  Depois, para s19: "Sim, como na s23 (Recomendado)".
+- **A regra que fica:**
+  - campo em branco esperando a voz não vai à tela, nem como lacuna no meio de um literal;
+  - um documento recriado mostra o número que está impresso nele, e o número-herói entra na palavra da voz;
+  - a linha vazia só vale quando quer dizer "sem preço": no Juneau, só na s35 ("It lost without a price tag"). E mesmo
+    ali ela se lia como campo esquecido ("camo de $ vago", Lucas, 05/10/2026), e ele escolheu "Escrever no traço": a s35
+    leva NOT LISTED sobre o traço, como anotação, não como texto impresso da cédula. Com isso, nenhuma linha vazia
+    fica na tela do Juneau.
+- **A exceção:** nas duas cédulas (s19 e s23), o número do literal aparece antes de a voz dizê-lo. É exceção do
+  Lucas à regra de texto da regência ("a folha não mostra antes o número que a voz vai dizer"), só nessas duas cenas.
+- **A terceira, a s36** (Lucas, 02/10/2026, 17:5x). A verificação depois da revisão achou na lei AS 44.06.055 o
+  "twelve" em branco ("over the ______-year period") por 10 s, até a voz. A pergunta: "É o mesmo campo vazio que você
+  tirou da s23. Como fica?" A resposta: "Twelve impresso (Recomendado)". A opção dizia: "A lei aparece inteira desde o
+  começo, como as cédulas da s19 e da s23. Quando a voz diz "twelve", o grifo e a régua de 12 traços entram nele. Vira a
+  3ª exceção à regra "nenhum número antes da voz"." As exceções são s19, s23 e s36, e só elas.
+
+**As marcações do Lucas na linha do tempo** (02 e 03/10/2026, no Juneau; as marcas em `out/_feedback-queue.jsonl` e as
+respostas em `out/juneau/_pesquisa/revisao-premiere-lucas.md`, "A linha do tempo"). Valem do vídeo 2 em diante, e no
+Juneau onde a resposta dele diz:
+- **A abertura mostra o lugar de cima.** "Sempre uma imagem aérea ou abrangente (do lugar) no início" (s01). No
+  Juneau: "Vídeo aéreo ou do mapa já neste vídeo".
+- **Mapa nunca fica parado.** "mapa muito parado, utilizar mais movimento de câmera (suave)" (s50); a resposta: "Em todo
+  mapa parado (Recomendado)", que dizia "A s50 e os outros mapas do Juneau que ficam parados mais de 2 s ganham uma
+  aproximação suave e contínua. Vira regra para os próximos vídeos."
+- **Os territórios do contexto, cada um com uma cor.** "um dos territórios (talvez o principal da cena) pode sempre
+  estar "marcado" com alguma cor" (s42), e depois: "Mas na verdade todos territórios que fizerem parte do contexto do
+  vídeo, cada um com uma cor (com baixa opacidade) como no exemplo do print". O print (03/10/2026, de outro canal):
+  - o sudoeste da África sobre satélite, com Angola e a África do Sul pintadas de um roxo translúcido, o relevo
+    aparecendo por baixo;
+  - o nome de cada uma em caixa alta bem espaçada, claro, dentro do território;
+  - o país do assunto (a Namíbia) sem preenchimento, com a borda branca;
+  - a faixa que é o assunto (a costa) em vermelho cheio;
+  - uma rota tracejada no mar.
+  No Juneau, vale na s42, e a cor de cada território sai dos papéis da marca (`marca/tokens.css`), nunca de hex solto.
+  Logo depois, ele disse: "A imagem foi um exemplo, às cores devem seguir a paleta do canal". Em 04/10/2026 a paleta
+  ganhou as cores de contexto ("Uma cor nova por território"; "Aprovo assim"): um azul e dois violetas, a única faixa
+  medida que não se confunde com o laranja nem com o verde-água, também para quem é daltônico (§2 e §6). O vermelho do
+  print continua fora, e a forma vem dele.
+- **Nome de lugar com a foto.** "Nomes de lugar que tenham fotos seria interessante ter uma "miniatura" (a foto)
+  acompanhando" (s15): o ponto de lugar no mapa ganha o nome e, quando há foto do lugar que passe pelo
+  `conferente-de-midia`, uma miniatura dela junto do nome.
+  O exemplo dele (03/10/2026: "E este é um exemplo de foto sobre o mapa que citei", um print de outro canal):
+  - o Brasil sobre satélite, com um brilho de cor acompanhando a borda do território, por dentro;
+  - o nome do lugar (SALVADOR) numa etiqueta de fundo cheio e letra escura, em caixa alta, com uma ponta que
+    aponta o ponto na costa;
+  - logo abaixo da etiqueta, a foto de época numa moldura pequena, com a borda da mesma cor dela, sobre o mar, sem
+    cobrir o território;
+  - o crédito da MapTiler no canto.
+  As cores, também aqui, são as da paleta do canal: o amarelo do print não entra.
+- **Mais relevo 3D e câmera viajando.** "Usar mais desses movimentos de câmera e dos mapas com relevo 3D como esse"
+  (s44). O relevo pede os tiles de terreno da MapTiler: o gasto do vídeo 2 continua a decidir.
+- **Espaço vazio esperando a voz incomoda** (s15, s18, s31 e s35: "Mapa parado por muito tempo sem "nada"", "Muito
+  tempo sem "nada" na cena", "Muito tempo sem o "elemento principal" ou algo central", "Demora para entrar informações
+  dando a sensação de "vazio""). É a mesma regra de "A regra que fica", acima, vista por ele no vídeo.
 
 ## 6 · Base de mapa e mídia
 
@@ -482,6 +564,34 @@ texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para tod
     - A estrada que não é a protagonista continua em `--rede-cor` (= `--contraparte`), com o contorno escuro, mesmo
       dentro do território verde-água. A linha fina do sítio e a estrada se separam pela espessura e pela legenda.
     - Do vídeo 2 em diante, o território da contraparte a 35 % é a proposta, até o Lucas decidir de novo.
+  - **Os territórios do contexto** (Lucas, 04/10/2026). Ele pediu na s42 "todos territórios que fizerem parte do
+    contexto do vídeo, cada um com uma cor (com baixa opacidade)", e o --neutro a 35 % sumia sobre o gelo. A pergunta:
+    "s42: você pediu cada território com uma cor, na paleta do canal. Mas a paleta só tem duas cores de lado: laranja (o
+    protagonista, Juneau) e verde-água (o segundo). Do terceiro em diante a marca manda cinza, e o cinza some sobre o gelo:
+    Haines e a Colúmbia Britânica só aparecem pelo nome. Como fica?" A resposta: "Uma cor nova por território". As cores
+    saíram do diretor-de-arte, medidas sobre o satélite real e julgadas duas vezes por dois juízes
+    (`out/juneau/_tmp/prancha-territorios/`). A segunda pergunta, com o quadro da s42 antes e depois: "azul para o país
+    vizinho (Colúmbia Britânica), lavanda e violeta para os vizinhos do Alasca, em baixa opacidade, e Juneau mais forte.
+    [...] Mas é o tom do print da África, e a marca hoje diz que o roxo do print não entra. Aprova?" A resposta: "Aprovo
+    assim (Recomendado)". E sobre a s44: "Muda junto (Recomendado)" (a Colúmbia Britânica e o Yukon em azul também lá).
+    - **As cores**, todas a **25 %** e só no mapa (`--territorio-contexto-N-cor`): `--contexto-2` azul, o território do
+      outro lado da fronteira internacional, e todos os estrangeiros do vídeo na mesma cor; `--contexto-3` lavanda, o
+      vizinho do mesmo país mais importante do mapa (nome no quadro, área, tempo); `--contexto-1` violeta, o segundo
+      vizinho do mesmo país, sempre com nome. A cor segue o território em todos os mapas do vídeo.
+    - **A atribuição** sai da vizinhança de todos os mapas do vídeo e da visibilidade medida no chão de cada um, nunca
+      da ordem da fala. Dois vizinhos do mesmo país que se tocam sem linha levam lavanda e violeta, e a aresta comum
+      ganha a luz na borda por dentro (8 px na cor pura, só na aresta). Com mais de dois vizinhos do mesmo país num
+      mapa, a cor se repete em quem não se toca ou só os nomeados levam tinta: vai ao Lucas como limite.
+    - **Território sem nome no quadro não leva tinta**, e o contexto não ganha item de legenda: o nome identifica.
+    - **O protagonista continua o mais saliente:** com contexto pintado, ele vai a `--destaque` a **40 %**
+      (`--territorio-protagonista-com-contexto-cor`); o território aceso como herói, sem contexto, continua a 85 %.
+    - **Matizes:** laranja, azul e violeta são 3, o teto da §2. Com a `--contraparte` no mapa, só uma matiz de contexto
+      entra (o azul ou o violeta), e a lavanda nunca. O azul nunca vai a mapa de subdivisões dos EUA num vídeo de voto ou
+      partido, nem ao quadro que tem a `--tensao`.
+    - **A conta do teto de 6:** cada território pintado com o seu nome é um elemento; sem nome, o chão conta um.
+    - **O que se sabe que não resolve:** para tritanopia, a lavanda some no gelo mais claro, como o cinza que ela
+      substitui; por isso ela não vai a território que é só gelo. Os pares pela divisa (Haines × Colúmbia Britânica)
+      ficam abaixo de 10 de ΔE em protanopia e deuteranopia, e quem os separa é a divisa branca e o nome.
 
 **Bases aceitas** (licença conferida para uso comercial):
 - escala de mundo e continente: **NASA Blue Marble**, domínio público;
@@ -508,6 +618,10 @@ texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para tod
     pedidos e ainda não foi testado neste PC." O "igual" é a opção recomendada, "Sim, medindo na 1ª cena": "Anoto
     o contador antes e depois da primeira cena de mapa e te conto o custo real antes de fazer as outras."
     - Cobre as cenas de mapa do Juneau e o relevo (`terrain-rgb-v2`, câmera 3D) só em s44, o campo de gelo.
+      Em 03/10/2026 o relevo passou também à s01, a abertura com o voo sobre Juneau, por decisão do Claude central sob
+      duas falas do Lucas: "Vídeo aéreo ou do mapa já neste vídeo" (a abertura) e "Usar mais desses movimentos de câmera e
+      dos mapas com relevo 3D como esse" (a marca dele na s44). O gasto do Juneau está liberado desde 01/10, e o Lucas vê a s01
+      na linha do tempo antes do render final.
     - Antes do primeiro render de mapa, o contador da MapTiler se anota; depois dele, de novo. O custo real dessa
       cena vai ao Lucas, no chat, antes das outras. Se ele projetar um gasto muito maior que o do plano, o render
       para até a resposta dele.

@@ -2,7 +2,7 @@
 <html lang="en-US" data-render="4k-native">
 <!--
   s02 · "The answer comes down to one line that showed up on later ballots: the price."
-  Word-lock (−13.6) · inSec 13.6 · dur 4.533 (136 quadros a 30 fps; espelho.json, _quadros 408→544)
+  Word-lock (−13.6) · inSec 13.6 · dur 4.533 (136 quadros a 30 fps; espelho.json, _quadros 408→544) · revisão do Lucas 02/10/2026 (ver o comentário REVISÃO DO LUCAS abaixo)
   Modo do espelho: documento · Modelo da identidade: DOCUMENTO (a folha datilografada sobre a mesa, identidade §5;
   conferência visual: marca/prancha-documento-card.html, "A folha de papel sobre a mesa")
 
@@ -73,6 +73,28 @@
      fio (336→340 da folha) e o literal (640→): 149 px abaixo do fio e 150 acima da caixa da primeira linha (uns 170 acima da
      tinta dela). O vinco é filho da folha, como o texto: a câmera e a inclinação não mudam a distância entre eles, e ele não
      toca glifo em quadro nenhum (o critério da s19). Nada mais muda. -->
+<!-- REVISÃO DO LUCAS (02/10/2026; out/juneau/_pesquisa/revisao-premiere-lucas.md, "As decisões": o item 3 da resposta "Revisão do Juneau:
+     1 troca, 2 76 px, 3 A, 4 A, 5 B, 6 C, 7 inteira, 8 A" é a s02 em A: "O literal termina em 'spend the money necessary', e o grifo passa
+     por essas palavras em 'price'"; o pedido out/juneau/_tmp/art/revisao-lucas-pedido.md, "As cenas", s02; a maquete aprovada
+     out/juneau/_tmp/prop-s02-A.html, veredito ok do conferente em revisao-premiere/escolhidas-notas.txt). O que mudou e por quê:
+     (1) SAI A LINHA DO PREÇO: o "$" e a lacuna de 2.000 px depois dele, que o grifo sublinhava ("uma marcação que não marca texto
+         algum", na leitura do Lucas). O literal da cédula perde "(estimated to total $" e para em "…may the State of Alaska spend the
+         money necessary …": TRÊS linhas de Courier Prime 400, 86 px (46 caracteres por linha), a terceira "Alaska spend the money
+         necessary …". As reticências no fim vêm do textos-tela.json desta rodada (sha256 9a7372f3… › rotulos_dado s02, o literal: a
+         marca do literal cortado, como em s05 e s40; o Lucas viu a maquete sem elas, e o redator as pôs ao refazer a linha); não entram
+         no grifo, que é só o trecho de _grifo.
+     (2) O GRIFO VARRE PALAVRAS IMPRESSAS, não um vazio: --grifo-cor por trás de "spend the money necessary" (a técnica de s23: o fundo
+         cresce da esquerda, background-size 0 → 100 %), em "price" (4,0 s; 17,59 s do master), fechando em 4,2 s (17,80 do master,
+         ainda dentro de "price", que termina em 4,34), 10 quadros inteiro antes do corte. [RODADA DE CONSERTO 1, 02/10/2026, revisão
+         de espectador confirmada pelo cético: com 0,4 s o grifo fechava em 4,4 e ficava completo só 4 quadros (0,13 s) antes do
+         corte; grifoDur baixou para 0,2; o começo em "price" (decisão A) não muda.] O trecho fica numa caixa nowrap junto das
+         reticências, para não quebrar de linha. É o mesmo trecho que a s23 grifa de novo.
+     (3) NENHUM NÚMERO NA TELA: o preço só entra quando a voz o diz, em s23 (a exceção do Lucas vale só em s19 e s23). A folha, a
+         câmera viva do RIG, as fitas, o rasgo, a mesa e o crédito (76 px, decisão "2 76 px"; solto na mesa, x 200) ficam como estavam:
+         entre a última linha e o rasgo sobram ≈ 425 px de papel (a régua pede 240), que se lê como margem da folha (conferente).
+     As notas antigas acima ("até o cifrão", "a lacuna", "o grifo sublinha a lacuna") descrevem a cena de antes desta revisão. -->
+<!-- CONTA DA MARCA (roupa §4, conta do editor, não portão): a folha (1), com o cabeçalho, o literal e o grifo pousados nela; blocos de texto: 1.
+     Herói: nenhum (data-qc-sem-heroi). -->
 <head>
 <meta charset="utf-8">
 <title>s02 — The answer comes down to one line that showed up on later ballots: the price</title>
@@ -115,10 +137,11 @@
   .fio { height: 4px; background: color-mix(in srgb, var(--tinta-escura) 25%, transparent); }
   .corpo { font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: var(--doc-corpo); line-height: 1.5;
     letter-spacing: 0; color: var(--tinta-escura); }
-  /* a lacuna depois do cifrão: o lugar do número que a voz ainda não disse; o grifo cresce dentro dela em "price" */
-  .lacuna { display: inline-block; position: relative; width: 2000px; height: 129px; vertical-align: bottom; }
-  .lacuna .grifo { position: absolute; left: 0; bottom: 18px; width: 100%; height: 72px; background: var(--grifo-cor);
-    transform-origin: left center; transform: scaleX(0); }
+  /* o grifo de marcador por trás de palavras impressas (a técnica de s23): --grifo-cor cresce da esquerda em "price"; o trecho e as
+     reticências ficam juntos, sem quebrar de linha (revisão do Lucas, 02/10/2026: a lacuna do cifrão saiu) */
+  .junto { white-space: nowrap; }
+  .grifo-txt { background-image: linear-gradient(var(--grifo-cor), var(--grifo-cor)); background-repeat: no-repeat;
+    background-size: 0% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
   /* a fita, como na prancha: translúcida, dentes nas pontas, leve sombra; o tom vem do --papel */
   .fita { position: absolute; width: 520px; height: 150px; background: color-mix(in srgb, var(--papel) 62%, transparent);
     box-shadow: 0 4px 12px color-mix(in srgb, var(--tinta-escura) 18%, transparent);
@@ -142,14 +165,15 @@
            câmera descendo 3 s até o literal, em y 1.990 dela). O texto tem 2.420 px de largura (46 caracteres de Courier a 86 px).
            O rasgo começa em 95,5 % (1.451,6); a sombra acaba onde o rasgo começa. Na folha: o cabeçalho em y 160→292 (410→542 no
            quadro), o fio em 336→340, o literal em 640→1.156 (890→1.406 no quadro: a margem de 300 do literal engole a de 50 do
-           fio, margens adjacentes colapsam), a linha do cifrão em 1.027→1.156; de lá ao rasgo sobram 296 px em branco
-           (--doc-margem-rasgo: 240). O ponto mais baixo da folha girada fica em y ≈ 1.773 (a câmera do
+           fio, margens adjacentes colapsam), em TRÊS linhas de 129 px (86 × 1,5), sem linha do cifrão (ela saiu na revisão
+           do Lucas, 02/10/2026: o literal acaba em "spend the money necessary …", em y 1.027 da folha, 1.277 no quadro);
+           de lá ao rasgo (1.451,6) sobram ≈ 425 px em branco (--doc-margem-rasgo: 240). O ponto mais baixo da folha girada fica em y ≈ 1.773 (a câmera do
            fim o leva a ≈ 1.784, acima da faixa do crédito); o mais alto, a fita da esquerda girada, em ≈ 179 (≈ 172 sob a câmera). -->
       <div class="folha-sombra" style="left:540px;top:250px;width:2760px;height:1452px;transform:rotate(0.8deg)"></div>
       <div class="folha rasgada" id="folha" style="left:540px;top:250px;width:2760px;height:1520px;padding:160px 170px 0;transform:rotate(0.8deg)">
         <div class="cab" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"><span class="caixa-ref" id="cab"></span></div>
         <div class="fio" style="margin:44px 0 50px"></div>
-        <p class="corpo" id="corpo" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5" style="margin-top:300px"><span id="literal"></span><span class="lacuna"><i class="grifo" id="grifo"></i></span></p>
+        <p class="corpo" id="corpo" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5" style="margin-top:300px"><span id="literal"></span><span class="junto"><span class="grifo-txt" id="grifoTxt"></span><span id="trDepois"></span></span></p>
       </div>
       <div class="fita" style="left:400px;top:210px;transform:rotate(-7deg)"></div>
       <div class="fita" style="left:2920px;top:220px;transform:rotate(6deg)"></div>
@@ -254,16 +278,24 @@
   // ═══ OS TEXTOS DE TELA (um lugar só; a grafia final é do redator-de-tela) ══════════════════════════════
   var TEXTOS = {
     cabecalho: "BALLOT MEASURE NO. 8",                                                                     // textos-tela.json › rotulos_dado s02 (sem o ano)
-    literal:   "Considering the cost, revenue and population estimates set out below, may the State of Alaska spend the money necessary (estimated to total $",   // idem: o literal da cédula, até o cifrão
+    literal:   "Considering the cost, revenue and population estimates set out below, may the State of Alaska spend the money necessary …",   // idem: o literal da cédula até "necessary", com as reticências do literal cortado (revisão do Lucas, 02/10/2026)
+    grifo:     "spend the money necessary",                                                                // idem: _grifo, o que o grifo varre em "price" (o mesmo trecho que a s23 grifa de novo)
     credFonte: "Source: Alaska Division of Elections, 1982"                                               // textos-tela › _creditos s02
   };
   // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
   E("cab").textContent = TEXTOS.cabecalho;
-  E("literal").textContent = TEXTOS.literal;
+  // o literal: o que vem antes do trecho do grifo em texto corrido; o trecho e o que vem depois (as reticências) numa caixa nowrap
+  (function () {
+    var q = TEXTOS.literal, i = q.indexOf(TEXTOS.grifo);
+    if (i < 0) { E("literal").textContent = q; return; }
+    E("literal").textContent = q.slice(0, i);
+    E("grifoTxt").textContent = TEXTOS.grifo;
+    E("trDepois").textContent = q.slice(i + TEXTOS.grifo.length);
+  })();
 
   // ── os tempos (locais, −13,6), do words.json e da regência s02 ──
   var T = {
-    grifo: 4.0, grifoDur: 0.4                  // "price" (17,59 s): o grifo cresce da esquerda para a direita e fica (fecha em 4,4, antes do corte em 4,533)
+    grifo: 4.0, grifoDur: 0.2                  // "price" (17,59–17,94 s): o grifo varre "spend the money necessary" da esquerda para a direita e fica (fecha em 4,2 = 17,80 do master, ainda dentro de "price"; 10 quadros inteiro antes do corte em 4,533). Era 0,4 (fechava em 4,4, só 4 quadros antes do corte): rodada de conserto 1 da revisão do Lucas, 02/10/2026
   };                                           // a descida (3 s, 1.632 px) saiu em 01/10/2026, por decisão do Lucas: a folha fica parada
 
   function cena(t) {
@@ -274,8 +306,8 @@
     var cam = E("cam");
     cam.style.setProperty("--luz-x", "1920px");
     cam.style.setProperty("--luz-y", "1010px");
-    // o grifo, em "price"
-    E("grifo").style.transform = "scaleX(" + seg(t, T.grifo, T.grifoDur).toFixed(4) + ")";
+    // o grifo, em "price": o fundo --grifo-cor cresce por trás das palavras impressas
+    E("grifoTxt").style.backgroundSize = (100 * seg(t, T.grifo, T.grifoDur)).toFixed(2) + "% 100%";
     // o crédito, solto na mesa, a cena toda: acende no lugar dele em 0,3 s, sem pílula
     var c = E("credFonte"), opC = eo(seg(t, 0, 0.3));
     if (c.textContent !== TEXTOS.credFonte) c.textContent = TEXTOS.credFonte;

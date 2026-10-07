@@ -1,10 +1,118 @@
-# Conferência de mídia · juneau · fluxo `midia` · despachos 1 a 9 · 01/10/2026, 03:50 (BRT)
+# Conferência de mídia · juneau · fluxo `midia` · despachos 1 a 13 · 05/10/2026, 05:21 (BRT)
 
-**Laudo do arquivo: 39 aprovados de 51 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 51.** Nenhum veredito mudou no 9º despacho. Os 69 vereditos antigos estão em `substituidos`.
+**Laudo do arquivo: 40 aprovados de 52 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 52.** O 12º despacho regravou um veredito (a foto de Willow da s15, na janela definitiva) e não mudou nenhum outro. O 13º foi manutenção, sem veredito novo (abaixo). Nenhum `aprovado` continua com janela provisória. Os 71 vereditos antigos estão em `substituidos`.
 
-**Laudo deste despacho (o 9º): 39 aprovados de 39 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 39.** 38 têm beat na regência nova; 1 (a reserva da LeConte, gillfoto-35) não tem, e fica fora da cena.
+**Laudo deste despacho (o 13º): manutenção, sem veredito novo; 0 recebidos, 0 conferidos.**
+
+## O 13º despacho: manutenção, sem veredito novo (05/10/2026)
+
+- **O pedido:** o verificador achou que o veredito de Willow (s15, `candidatos[51]`) ainda chamava de "O HTML de hoje" a `s15.html` de sha1 `0ba9a857…`, com a miniatura entrando em 9,033. A de hoje é `7d428d7a…` (sha256 `df8fb726…`, 5ª leva C), com a miniatura e o crédito da foto entrando em 9,3. E conferir que toda mídia de `_media/` que s08, s42, s44 e s50 citam continua com `aprovado` que casa.
+- **O que mudou no veredito de Willow:** só o texto que descreve o HTML e o clipe (`plano`, `frase_coberta.de_onde`, `arquivos_olhados`, `o_que_viu` e quatro motivos). O texto antigo de cada campo está em `candidatos[51].manutencao[0].antes`. **Não mudaram:** o veredito (`aprovado`), o sha256 julgado (`3a03357d…7c70`), a janela (152,433–156,467 s no master; 9,033–13,067 s da cena; `janela_s` 4,034), a fonte, os resultados dos critérios, a medida, o motivo e o crédito.
+- **O HTML e o clipe de hoje:** `CENA.mini` entra 9,3 (0,27 s depois do nome) e sai 12,767–13,067; `CENA.creditos.foto` [9,3, 12,767]. A regência de hoje (`64f2a07b…`) diz o mesmo, com os mesmos t0 e t1 em b2 e b3. No clipe (`graphics/s15.mp4`, carimbo `7d428d7a…` 2160p): sem miniatura nem crédito da foto em 9,25 s; com os dois em 9,70 e 12,70 s; sem os dois em 13,10 s. A miniatura ocupa 9,3–13,067 s da cena (152,7–156,467 s no master), dentro da janela aprovada. Os quadros estão em `out/juneau/_tmp/conferencia/s15-willow-manutencao/`.
+- **As mídias de s08, s42, s44 e s50:** s42 e s44 só citam geometria (`_media/geo/`) e `_media/_vendor/`, fora do meu alcance (ofício §2). As 5 da s08 e da s50 casam com um `aprovado` de `candidatos`, pelo sha256 do arquivo (igual ao `medido.sha256` do `_PROCEDENCIA.json`) e pela URL:
+
+| cena | arquivo | casa com | janela do veredito | na tela, no HTML de hoje |
+|---|---|---|---|---|
+| s08 | foto/s09/anchorage-white-city-tent-camp-1915-07-01-pyatt.jpg (`04483ba3…`) | candidatos[11], aprovado (despacho 9), Commons | 78,1–80,833 s (b2, 2,6–5,333 da cena) | 2,6–5,633 (recolhe ao ponto de Anchorage de 5,333 a 5,633) |
+| s08 | foto/s09/ladd-field-operations-hangar-1943-07-09-nara-204947418.jpg (`a8d59ee7…`) | candidatos[12], aprovado (9), NARA | 80,833–82,9 s (b3, 5,333–7,4) | 5,333–8,0 (encolhe ao ponto de Fairbanks de 7,4 a 8,0) |
+| s08 | foto/s10/alaska-highway-1942-06-02-corduroy-charlie-lake.jpg (`65b7a4a3…`) | candidatos[0], aprovado (9), Commons | 85,167–86,933 s (b5, 9,667–11,433) | 9,667–11,433, exata |
+| s50 | foto/s51/lynn-canal-avalanche-chutes-eldred-rock-2011-05-15-lcgs-russ.jpg (`11209448…`) | candidatos[50], aprovado (9), Commons | 534,266–537,733 s (b3, 9,333–12,8) | 9,333–12,8, exata |
+| s50 | documento/s52/ca9-2011-seacc-p04.jpg (`65e2576a…`) | candidatos[31], aprovado (9), 9º Circuito | 541,266–545,1 s (b5, 16,333–20,167) | 16,333–20,5 (sobe de 20,2 a 20,5) |
+
+- **Para o Claude central pesar:** os vereditos do despacho 9 levam `cena` s09, s10, s51 e s52, as filhas que o espelho funde na s08 e na s50 (`_mergedInto`), e as janelas caem nos beats da mãe, com os mesmos t0 e t1 da regência de hoje. Três arquivos ficam na tela um pouco depois do t1 do veredito, numa saída animada que o veredito não descreve: a foto de 1915 (+0,3 s), a Ladd Field (+0,6 s, em "went up at", declarada na regência s08 b4) e a página do 9º Circuito (+0,333 s, em "The", declarada na regência s50 b6). Não é falta de casamento. No 12º despacho, a janela da miniatura da s15 contou a saída; se o Claude central quiser o mesmo aqui, é uma conferência nova de janela, que este despacho, sem veredito novo, não fez. Lido no código do HTML, não visto nos clipes.
+- **`out/juneau/_media/` não mudou:** 341 arquivos ao começar (08:15:02Z) e antes de gravar (08:21:25Z), com o mesmo sha256 da lista do fim do 12º (`27dc5df4…`). A lista do fim vai no relato. Um tropeço: a primeira lista foi gravada em `_tmp/conferencia/_media-antes.txt`, por cima da do 12º com esse nome; ela é idêntica à `_media-antes-d12.txt`, e nada se perdeu.
+- **Olhos novos, não:** o pedido e o veredito do 12º vieram antes dos quadros.
+- **Ferramenta:** a emenda do JSON e deste `.md` foi pelo python, por scripts gravados pelo Write na pasta temporária da sessão, fora do canal, com o sha256 conferido antes e as cópias de antes em `out/juneau/_tmp/conferencia/` (`conferencia-midia.antes-d13-manutencao.*`). O `.md` pelo python é a mesma divergência do contrato §5 dos despachos 9 a 12.
+
+### Para o Lucas pesar, reconferir e trocar, deste despacho
+
+Nada.
+
+## O 12º despacho: a janela definitiva da miniatura de Willow na s15 (04/10/2026)
+
+**Laudo deste despacho (o 12º): 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1.**
+
+- **O pedido:** o `aprovado` do 10º despacho (a foto de Willow, sha256 `3a03357d…7c70`) tinha `janela_provisoria: true`, de 152,433 a 160,067 s, "até a regência a dar". A verificação da 5ª leva B (`revisao-lucas-workflow-5b.json`, MÉDIA 9 (d)) apontou que a regência já dá a janela. O ofício manda revê-la (§3, "A janela provisória se revê").
+- **A janela, lida em três lugares:** a regência (s15 b2 e b3, sha256 `08569c6c…`), o HTML de então (`CENA.mini` entra 9,033 e sai 12,767, em 300 ms; `CENA.creditos.foto` igual; sha1 `0ba9a857…`) e os quadros do clipe renderizado de então (`graphics/s15.mp4`, carimbo `0ba9a857…` 2160p): sem miniatura em 8,95 s, com ela em 9,40 e 12,70 s, sem ela em 13,10 s. Com o `inSec` 143,4 do espelho: **152,433 a 156,467 s** no master (a saída começa em 156,167), `janela_s` 4,034. O HTML e o clipe de hoje (sha1 `7d428d7a…`, 5ª leva C) põem a miniatura em 9,3, dentro desta janela: 13º despacho, acima.
+- **A fala da janela:** "Willow, in the Mat-Su Valley. The site was about 70 road miles" (no `words.json`: "Willow," 152,427; "The" 155,0; "miles" 156,437).
+- **Quem conferiu:** o conferente-de-midia, como subagente do Claude central. Nenhuma rede, nenhum navegador.
+- **Olhos novos, não:** o pedido, o veredito do 10º despacho e os relatos das levas 5 e 5B vieram antes. O arquivo entregue foi aberto inteiro e reduzido a 880 px (o tamanho na cena 4K) e a 440 px (o de um quadro 1080p). Os quadros e as reduções estão em `out/juneau/_tmp/conferencia/s15-willow-janela/`.
+- **`out/juneau/_media/` não mudou:** 341 arquivos ao começar (pouco antes de 21:11:35Z) e no meio (21:11:48Z), sem diferença; a lista do fim está no JSON (`media_sem_mudanca.despacho_12`). Um tropeço meu: a primeira lista foi gravada em `_tmp/conferencia/_media-antes.txt`, por cima da lista do 1º despacho que o registro `despacho_1` cita. Aquela lista se perdeu (era só `_tmp`, fora do git); a de hoje ficou também como `_media-antes-d12.txt`.
+
+| arquivo | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| _caca/s15/acervo-livre/willow-parks-highway-denali-view-2014-01-14-terrymcdermott.jpg (o entregue: foto/s15/, o mesmo sha256) | s15 (a miniatura sob o rótulo "Willow", 152,433 a 156,467 s) | Commons, TERRYMCDERMOTT, CC BY-SA 4.0 | aprovado | Willow, Alaska (a origem o nomeia), 14/01/2014, CC BY-SA 4.0, 1728×1068 (a original), a 880×544 na cena, só reduzida: serve à miniatura presa ao rótulo 'Willow' da vila na janela definitiva, de 'Willow,' a 'road miles' (152,433–156,467 s), com o aviso 'Photo from 2014' |
+
+### Para a cena, deste despacho
+
+- **A janela que este veredito cobre:** a miniatura de 9,033 a 13,067 s da cena, presa à etiqueta da vila (no HTML de hoje, sha1 `7d428d7a…`, ela entra em 9,3 e ocupa de 9,3 a 13,067, dentro desta janela). Ficar no ar até o corte (como a janela provisória permitia), ir para o anel do sítio de 1976 ou voltar antes de "Willow," pede conferência nova.
+- **"The site was about seventy road miles"** (155,0 a 156,467 s) é dito com a miniatura ainda no ar. Passa porque ela está sob o nome da vila e o sítio é o anel a leste, separado, nos quadros. Se o lugar dela mudar para perto do anel, ela se leria como foto do sítio, que a origem não mostra.
+- **O tamanho:** 880 × 544 px no quadro 4K, 0,509 do arquivo, só reduzida. Ampliar pede conferência nova.
+- **O aviso e o crédito** ("Photo from 2014" e "TERRYMCDERMOTT / Wikimedia Commons · CC BY-SA 4.0") estão nos quadros de 9,40 e 12,70 s do clipe de então (9,70 e 12,70 s no de hoje) e entram e saem com a miniatura.
+- **s21 e s24:** não usam a foto. O qc-visual a sugeriu lá como oportunidade: pede reuso declarado ou conferência nova.
+
+### Para o Lucas pesar, reconferir e trocar, deste despacho
+
+Nada.
+
+## O 11º despacho: a janela nova do clipe aéreo da s01 (03/10/2026)
+
+**Laudo deste despacho (o 11º): 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1.**
+
+- **O pedido:** a s01 virou a abertura com o voo sobre Juneau (decisão do Lucas de 03/10/2026: "Vídeo aéreo ou do mapa já neste vídeo"; `revisao-premiere-lucas.md`, "A linha do tempo"; `identidade.md` §5, "A abertura mostra o lugar de cima"). O clipe do Envato passou a cobrir 6,567–13,6 s da cena, e o `aprovado` do 9º despacho só cobria 9,8–13,6 s. O qc-visual (lente fonte 6) e o verificador (ALTA 2) seguraram a s01 por isso.
+- **Quem conferiu:** o conferente-de-midia, como subagente do Claude central. Nenhuma rede, nenhum navegador.
+- **Olhos novos, não:** o pedido, o veredito do 9º despacho e o relato da 5ª leva vieram antes dos quadros. Os quadros do trecho novo foram abertos inteiros e em recortes 1:1 do 4K, e estão em `out/juneau/_tmp/conferencia/d11-s01/`.
+- **`out/juneau/_media/` mudou durante o despacho, fora de mim:** 335 arquivos ao começar (18:31:56Z) e no meio (18:34:54Z), sem diferença; às 15:35:41 BRT, antes de eu gravar, chegaram 6 arquivos em `_media/geo/` (`haines-borough`, `juneau-borough` e `skagway-municipality`, .js e .json: os boroughs da s42), e a lista do fim (18:37:08Z, `_media-depois-leva5b.txt`) tem 341. Nenhum arquivo existente mudou nem saiu. É geometria, fora do meu alcance, e não toca este veredito, mas foi gravada com o conferente rodando, contra a regra de um despacho por vez (ofício §1).
+
+| arquivo | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| footage/s01/juneau-aereo-gastineau.mp4 (o baixado: _caca/s01/envato/juneau-alaska-aerial-push-in-…mp4) | s01 p2 (beat s01#2, 6,567 a 13,6 s) | Envato, BlackBoxGuild, conta Top10 | aprovado | a janela nova (6,567–13,6 s, o trecho 4,300–11,333 s do clipe) é a mesma tomada sem corte: Juneau de hoje do ar, com o canal, a ponte e Douglas Island, cobre 'the capital is still in Juneau' e a pergunta; 7,033 s em push-in contínuo, a 1,0×, até o último quadro; nenhum letreiro nem navio de cruzeiro a 100 % |
+
+### Para a cena, deste despacho
+
+- **O trecho:** do quadro 129 (4,300 s) ao 339, o último (11,333 s), a 1,0×, 7,033 s para 7,033 s de cena. A regência escreve 4,323 s, o meio do quadro 129; a s01.html usa o quadro 129. Qualquer outro trecho, mais longo, laçado ou em câmera lenta, pede conferência nova.
+- **O rótulo:** "Juneau, Alaska" está dentro do `lugar_na_origem` ("Juneau Alaska aerial push in"). Sem aviso do ano (B-roll de hoje) e sem crédito na tela (Envato).
+- **O que este veredito não afirma:** que o Capitólio aparece no quadro. Há um prédio de tijolos à esquerda que não identifico; a frase nomeia a cidade, e o quadro a mostra.
+- **O reuso em s03** (o último quadro, 11,3167 s) continua o declarado no `_ancoragem` do espelho. Ele ainda diz "plano 3 de s01", o nome de antes da 5ª leva, para o `montador` atualizar quando passar por lá.
+- **Os 7,033 s passam do teto de 6 s do plano parado**, mas o plano é um push-in contínuo: é movimento com propósito (identidade §4.3).
+- **As duas fotos de `_media/foto/s01/`** saíram da cena e ficam com os vereditos que têm. Se voltarem a outra cena, pedem conferência nova.
+
+### Para o Lucas pesar, reconferir e trocar, deste despacho
+
+Nada.
+
+## O 10º despacho: a miniatura de Willow na s15 (03/10/2026)
+
+**Laudo deste despacho (o 10º): 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1.**
+
+- **O pedido:** conferir as fotos candidatas às miniaturas dos três locais da s15. É a decisão do Lucas de 03/10/2026, 01:xx, sobre a marca "Mapa parado por muito tempo sem "nada"": "1. Nomes de lugar que tenham fotos seria interessante ter uma "miniatura" (a foto) acompanhando". A fonte é `revisao-premiere-lucas.md`, "A linha do tempo", e a regra está na `identidade.md` §5, em "Nome de lugar com a foto".
+- **O que chegou:** um rascunho só, a foto de Willow. Larson Lake e Mount Yenlo não têm arquivo, porque a pauta os dá como `nao_achados`. As 8 fotos que o pesquisador comparou e recusou não vieram como arquivo.
+- **Quem conferiu:** o conferente-de-midia, como subagente do Claude central. A rede foi usada uma vez: o `WebFetch` leu a página do arquivo no Commons, e ela não recusou. Nenhum navegador foi aberto.
+- **Olhos novos, não:** o pedido trazia o relato do pesquisador. A imagem foi aberta inteira, depois nos quatro cantos, na placa ampliada, a 100 % e reduzida a 640 px. Os recortes estão em `out/juneau/_tmp/conferencia/s15-willow/`.
+- **`out/juneau/_media/` não mudou:** são 333 arquivos. Não há diferença entre a lista de 04:43:31Z, ao começar, e a de 04:47:58Z, antes de gravar. A lista do fim está em `_media-depois-s15mini.txt`.
+
+| arquivo | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| _caca/s15/acervo-livre/willow-parks-highway-denali-view-2014-01-14-terrymcdermott.jpg | s15 (o rótulo "Willow", 152,433 a 160,067 s) | Commons, TERRYMCDERMOTT, CC BY-SA 4.0 | aprovado | Willow, Alaska (a origem o nomeia: "Mt. Denali from Willow, Alaska"), 14/01/2014, 1728×1068 (a original): serve à miniatura do rótulo "Willow" da vila a partir de "the town of Willow", com o aviso "Photo from 2014". Macia a 100 %, nítida no tamanho de miniatura |
+
+### Para a cena, deste despacho
+
+- **Onde a miniatura vale:** junto do rótulo "Willow", o ponto da vila (`cidade-willow-osm`), a partir de "Willow," (152,427 s). A janela é a do rótulo na regência e é provisória, porque a regência ainda não põe a miniatura.
+  - Presa ao anel do local (5 milhas a leste), ela leria como foto do local, que a origem não mostra. Antecipada para "three sites" (b1), leria como foto de um dos três locais. Nos dois casos é outra frase, e pede conferência nova.
+- **O aviso do ano** "Photo from 2014" (`aviso_de_ano: true`, identidade §6) vai junto da miniatura. A marca ainda não tem prancha para a miniatura sobre o mapa, e o lugar do aviso nela é do `diretor-de-arte` e do `editor-de-arte`. O rótulo não passa de "Willow": a origem não nomeia o local de 1976 nem a estrada.
+- **O crédito na tela:** `TERRYMCDERMOTT / Wikimedia Commons · CC BY-SA 4.0`. Ele entra na faixa de crédito com o da MapTiler e o da Divisão de Eleições, enquanto a miniatura está no ar.
+- **O tamanho:** a miniatura nunca se amplia. A 100 % a foto mostra a compressão; reduzida (olhei a 640 px de largura, 0,37×), sai limpa.
+- **A entrega é à mão:** o `buscar-midia` não devolveu este arquivo, e por isso não há linha selada para o `entregar`. O `_PROCEDENCIA.json` de `_media/foto/s15/` leva o sha256 do rascunho (`3a03357d79de81a0046f4a4f36ab77f1808b8974b46061adce6f7a18c7f87c70`), e é por ele que a cena casa com este veredito.
+- **O rótulo Willow volta em s21 e s24 p1.** Este veredito vale só para s15. A mesma miniatura lá pede o reuso declarado ou uma conferência nova.
+- **Larson Lake e Mount Yenlo** ficam só com o nome, se a cena os nomear. A regência de hoje não os nomeia (`nao_entra`), e o nome na tela é do `redator-de-tela` e do `verificador-de-fatos`.
+
+### Para o Lucas pesar, reconferir e trocar, deste despacho
+
+Nada.
 
 ## O 9º despacho: as janelas contra a regência de 01/10 (01/10/2026)
+
+**Laudo deste despacho (o 9º): 39 aprovados de 39 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 39.** 38 têm beat na regência nova; 1 (a reserva da LeConte, gillfoto-35) não tem, e fica fora da cena.
 
 - **Quem conferiu:** o conferente-de-midia, despachado pelo Claude central no passo conducting. Sem rede e sem navegador: nada pediu a origem de novo.
 - **O que mudou na entrada:** a regência foi refeita pelo regente-de-imagem em 01/10 (`regencia.json`, sha256 2165a816…; a de antes, 085d5f8b…, em `_tmp/regencia-antes-2026-10-01.json`). O espelho ganhou as fusões s42←s43 e s50←s51,s52 (sha256 8ae02609…), e o conceito é o de 01/10 (9bbdfcbc…).
@@ -449,6 +557,7 @@ Os vereditos antigos ficam em `substituidos`, sem nenhuma outra mudança, com `s
 | fairbanks-downtown-chena-1973-08-documerica-cowals-550551.jpg | s16 p1 | reprovado (licença `falha`), do 3º despacho | às 00:10 de 28/09 | a exceção do DOCUMERICA (midia.md §7.3; Lucas, 27/09) e o "Unrestricted" do item no catálogo: a licença passou a `passa`, e o veredito, a aprovado |
 | anchorage-stealers-1982-tshirt-back-asm-97-20-1-gelotte-adn.jpg | s28 p3 | aprovado (`aviso_de_ano: true`, `Photo from 2015`), do 4º despacho | às 01:14 de 28/09 | a regra nova do Lucas sobre a peça de acervo (identidade §6): `aviso_de_ano` passou a `false`, e o veredito continua aprovado. Licença, crédito, técnica e avisos de enquadramento não mudaram; a repetição foi refeita com a entrega |
 | os 25 aprovados: 14 do lote 1, 9 do 2º despacho, o s16 p1 do 4º e a camiseta do 5º | as cenas deles | aprovado, com `janela_provisoria: true` | às 15:02 de 28/09 | a janela passou a ser a do beat da regência, e nenhum veredito mudou. A Ladd Field (o hangar e a reserva) teve o contexto refeito, porque a parte da frase mudou; nos outros, o contexto e a licença não foram refeitos, e a técnica e a repetição foram refeitas contra o beat e a regência |
+| juneau-alaska-aerial-push-in-2026-09-17-18-22-12-utc.mp4 (instalado como footage/s01/juneau-aereo-gastineau.mp4) | s01 | aprovado, do 9º despacho (janela 9,8–13,6 s, só a pergunta) | às 15:40 de 03/10 | a 5ª leva fez o clipe cobrir 6,567–13,6 s, com 'Half a century later…': a frase coberta, a janela e o trecho mudaram, e o veredito continua aprovado |
 
 ## Para o Lucas pesar
 

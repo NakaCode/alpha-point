@@ -4,6 +4,16 @@
 <meta charset="utf-8">
 <title>s24</title>
 <!--
+  REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026)
+  - A marca dele (out/_feedback-queue.jsonl, muruz434-edcf40, s50 @3,7 s, versão 30c7fe12): "mapa muito parado,
+    utilizar mais movimento de câmera (suave)".
+  - A decisão (03/10/2026, out/juneau/_pesquisa/revisao-premiere-lucas.md, "A linha do tempo"): "Em todo mapa parado
+    (Recomendado)": a s50 e todo mapa do Juneau parado por mais de 2 s ganham uma aproximação suave e contínua. A medida
+    e o piso do diretor: conceito-visual.json › _mapas_parados_2026_10_03 (esta cena: 0,25–3,75 s locais).
+  - O que mudou: a deriva da câmera ganhou a escala 1,149 e o deslocamento [−150, 150] px (CENA.deriva).
+  - Nenhum tempo de palavra, rótulo, linha, fusão de nível ou texto mudou. A cópia de antes: out/juneau/_tmp/art/s24-antes-revisao-5.html.
+-->
+<!--
   CANAL ALPHA POINT — JUNEAU, CENA s24 (245,033 → 251,433 s do master; 6,4 s; quadros 7351 → 7543 a 30 fps).
   "It was winner take all. A yes vote meant building at Willow. A no vote meant Juneau stayed the capital."
   Mapista, 01/10/2026, passo art. A cena mista é inteira do mapista: o mapa do p1 e a foto do p2.
@@ -287,7 +297,10 @@
     // ── b1: o 1º quadro, mais aberto que o da s21: a vila em (1960, 760), Anchorage em (2043, 1376); dali, o push-in de
     //    1,00 a "escala" até o corte, em velocidade constante, preso à vila (A CÂMERA ANDA, no cabeçalho)
     camera: { lng: -150.10998, lat: 61.47151, zoom: 8.6, bearing: 0, pitch: 0 },
-    deriva: { escala: 1.05 },
+    // REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026; conceito › _mapas_parados_2026_10_03, s24): o push-in 3× mais
+    // rápido (1,00 → 1,149, zoom 8,6 → 8,8 até o corte) e a vila derivando na tela (px: o quanto ela anda, em linha
+    // reta e velocidade constante, do 1º quadro ao corte; ~53 px/s), para o quadro inteiro andar
+    deriva: { escala: 1.149, px: [-150, 150] },
     sitio: { geo: "limites-sitio-willow-1976-trechos" },
     vila: { geo: "cidade-willow-osm" },
     estrada: { geo: "estrada-anchorage-willow" },
@@ -499,8 +512,9 @@
   var unmerc = function (x, y) { return [x * 360 - 180, (Math.atan(Math.exp((180 - y * 360) * Math.PI / 180)) * 360) / Math.PI - 90]; };
   function cameraAt(t) {
     var u = cl(t / CENA.corte, 0, 1), dz = Math.log(CENA.deriva.escala) / Math.LN2 * u, k = Math.pow(2, -dz);
-    var mc = merc(C.lng, C.lat), mv = merc(PW[0], PW[1]);
-    return { center: unmerc(mv[0] - (mv[0] - mc[0]) * k, mv[1] - (mv[1] - mc[1]) * k), zoom: C.zoom + dz, bearing: C.bearing, pitch: C.pitch };
+    var mc = merc(C.lng, C.lat), mv = merc(PW[0], PW[1]), ws = 512 * Math.pow(2, C.zoom + dz), D = CENA.deriva.px;
+    // a deriva: o centro anda ao contrário do deslocamento que a vila faz na tela
+    return { center: unmerc(mv[0] - (mv[0] - mc[0]) * k - D[0] * u / ws, mv[1] - (mv[1] - mc[1]) * k - D[1] * u / ws), zoom: C.zoom + dz, bearing: C.bearing, pitch: C.pitch };
   }
   try {
     map = new maplibregl.Map({

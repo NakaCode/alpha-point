@@ -42,10 +42,10 @@
 3. **Assento único: quem baixa é o Lucas, na conta dele.** As quatro licenças individuais valem para
    uma pessoa só. O Shutterstock exclui por escrito colega e *independent contractor*. Editor
    contratado não usa a conta e não baixa por ela, porque não fica coberto.
-   A caça pelo Chrome (§8) não muda isso: é na conta individual dele (na Storyblocks e no Envato, a da Top10: a
-   exceção logo abaixo), no perfil `Profile 1` do Chrome, de rótulo
-   "Lucas", que ele designou (nunca um perfil com rótulo do Top10), e cada download é aprovado por ele, item por
-   item.
+   A caça pelo navegador (§8) não muda isso: é na conta individual dele (na Storyblocks e no Envato, a da Top10: a
+   exceção logo abaixo), no navegador que ele designou (desde 02/10/2026, o Brave, perfil `Default`, rótulo
+   "Pessoal"; até o Juneau, o `Profile 1` do Chrome, rótulo "Lucas"; nunca um perfil com rótulo do Top10), e cada
+   download é aprovado por ele, item por item.
    - **A exceção da Top10: Storyblocks e Envato** (Lucas, 30/09/2026, 19:2x). Na caça 2 do Juneau, depois de três
      downloads do Envato e um da Storyblocks, o histórico de downloads da Storyblocks (aberto para o PDF de
      licença) mostrou no canto a conta da empresa Top10, com milhares de downloads de outras pessoas e a licença
@@ -55,8 +55,8 @@
      dizia: "Você afirma que a assinatura da empresa cobre o Alpha Point. Registro a mudança da regra (hoje:
      assento único, na sua conta) e sigo com a lista nela. O risco de licença fica com você."
      - Vale para a Storyblocks e o Envato. O Shutterstock e o Motion Array continuam na conta individual dele.
-     - O perfil do Chrome continua o `Profile 1` "Lucas", nunca um com rótulo do Top10: a exceção é da conta do
-       banco, não do navegador.
+     - O perfil continua o da caça (o `Profile 1` "Lucas" do Chrome em 30/09; o Brave `Default` desde 02/10/2026),
+       nunca um com rótulo do Top10: a exceção é da conta do banco, não do navegador.
      - O `marca/midia.json` › `caca.contas` grava "Top10" nesses dois bancos, como o molde da Régie fazia.
      - O que isto não resolve, e fica com o Lucas:
        - a licença que a Storyblocks mostra é a "Individual" (§3.3), que cobre só a pessoa que abriu a conta e
@@ -675,12 +675,16 @@ do Estado e de jornal, na 3ª (§7.5).
 - **O método**:
   - a skill `.claude/skills/cacar-no-chrome/SKILL.md`, cópia adaptada do canal a partir do molde da pré-v1. A
     origem e o que mudou estão no cabeçalho dela e no CLAUDE.md, "Caça nos bancos pagos";
-  - o Chrome do Lucas, pela extensão Claude in Chrome;
+  - o navegador do Lucas, pela extensão Claude in Chrome: o Brave desde 02/10/2026 (até o Juneau, o Chrome);
   - `scripts/stock/registrar-download.mjs` (marcar, recolher, instalar) e `scripts/stock/lib/teto-shutterstock.mjs`
     guardam o arquivo e a procedência;
   - `scripts/stock/_instalar-lote.mjs` leva o vídeo à cena.
-- **Só no Chrome deste PC, no perfil `Profile 1`, de rótulo "Lucas"** (§2.3), que o Lucas designou em
-  26/09/2026 e onde ele instalou a extensão.
+- **Só no Brave deste PC, no perfil `Default`, de rótulo "Pessoal"** (§2.3), que o Lucas designou em 02/10/2026
+  ("Para os próximos vídeos quero que o navegador utilizado seja o brave, o mesmo já conta com todas as contas
+  conectadas. A decisão baseia-se no consumo de memória RAM e preferência do usuário (eu)"), e onde ele instalou a
+  extensão. Até o Juneau, a caça foi no `Profile 1` do Chrome, de rótulo "Lucas", que ele designou em 26/09/2026.
+  - Trocar de navegador não é caminho para passar por banco que recusou (o Shutterstock, 403 em 29 e 30/09): ele
+    volta só numa caça nova que o Lucas peça nomeando-o. Os escudos do Brave ficam como o Lucas os deixou.
   - **Nunca num perfil com rótulo `top10company.com.br`.**
   - No começo de cada caça, a extensão conectada se prova desse perfil pelo disco (CLAUDE.md, "Caça nos bancos
     pagos"). Sem a prova, não se caça. Durante a caça, antes de cada banco e de cada download, confere-se que as
@@ -694,8 +698,8 @@ do Estado e de jornal, na 3ª (§7.5).
   - No Envato, ele liga *Licensing → Always ask* e confirma no chat (§2.8). Até ele entrar no Envato nesse perfil
     e confirmar, o Envato fica fora da caça (em 26/09/2026 ele ainda não tinha conseguido entrar). Se um download
     do Envato sair sem a janela de licença, a caça para e o Lucas vê: o item foi licenciado sem o slug do vídeo.
-- **Durante a caça, o Lucas não baixa nada em nenhum perfil do Chrome nem em outro programa que salve em
-  Downloads.** A pasta é uma só, e um arquivo dele que chegue na hora errada sairia com a procedência de um
+- **Durante a caça, o Lucas não baixa nada em nenhum navegador (Brave, Chrome ou outro) nem em outro programa que
+  salve em Downloads.** A pasta é uma só, e um arquivo dele que chegue na hora errada sairia com a procedência de um
   item de banco.
 - **Janelas que aparecem sozinhas**: no banner de cookies, recusam-se os não essenciais (*Reject all*, *Only
   necessary*); se só houver "Aceitar", a caça para e o Lucas decide. Aviso de termos atualizados, cadastro,

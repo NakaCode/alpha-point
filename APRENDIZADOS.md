@@ -714,6 +714,13 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   todo canal no Windows que baixar do Motion Array tem o 2. O motor poderia fazer a prova do perfil num verbo, e o
   registrador poderia ele mesmo recusar um `marcar` feito menos de 15 s depois de mover um arquivo da pasta
   Downloads. Vale avisar o Lucas.
+- **Depois, no Brave (02/10/2026):** o Lucas passou a caça para o Brave, por memória e preferência. A extensão
+  Claude in Chrome roda no Brave (a documentação do Claude Code cita a detecção nele), e a prova é a mesma, com
+  outro caminho: `BraveSoftware/Brave-Browser/User Data/Default/History`, que também grava com atraso (a marca
+  apareceu na segunda procura, 10 s depois). Dois cuidados que serviriam a qualquer canal que troque o navegador
+  da caça: o render e os portões da pré-v1 procuram o executável do Google Chrome (`src/lib/chrome.mjs`), então o
+  Chrome continua instalado; e trocar de navegador não pode virar caminho para voltar a um banco que recusou. O
+  motor poderia guardar o navegador e o caminho do histórico no `canal.json`, em vez de no texto da skill.
 
 ## 27/09/2026 — acervos livres e oficiais (pré-v1 em `7ab9543`)
 
@@ -1148,3 +1155,81 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** todo canal que confere cena por cena com régua escrita tem esse ponto cego.
   A conferência por regra aprova o que cumpre a regra, e o espectador julga o que vê. Vale levar ao motor como uma
   lente "espectador" do `qc-visual`, que julga sem o cabeçalho.
+
+### 62. O dono aprova as cenas antes do render, numa linha do tempo local que toca o HTML ao vivo
+
+- **Problema:** no Juneau, o Lucas só viu as cenas no Premiere, depois de 55 renders 4K (cerca de 2 h) e do XML. Os 8
+  defeitos que ele achou pediram refazer 11 cenas e renderizar de novo. A galeria do molde (`scripts/serve-galeria.mjs`)
+  já mostra uma cena por vez ao vivo, mas em laço: não toca o vídeo inteiro com a narração, e o vídeo de banco perde a
+  sincronia. A timeline do top10-estudio saiu no porte.
+- **O que resolveu:** `ferramentas/linha-do-tempo.mjs`, do canal, sem editar o molde nem o motor (CLAUDE.md, "A linha do
+  tempo pré-render"; o desenho em `ferramentas/linha-do-tempo/DESENHO.md`).
+  - O relógio é o `<audio>` da narração. A cena sem mapa toca o HTML ao vivo, pelo `__renderAt(t)`, em dois iframes
+    que se revezam, com a preparação do render e o `__PREVIEW` desligado. A cena de mapa toca a cópia leve do clipe de
+    prova; sem ele, um rascunho com tiles gerados localmente, sem falar com o provedor pago.
+  - A aprovação é o "sim" no chat, presa à versão de cada cena: o sha1 do HTML, as fotos que ele cita e o clipe de
+    origem. Mudou depois de vista, volta a "não vista". A trava `conferir --depois-do-render` sai 0 só com tudo aprovado
+    e renderizado na versão aprovada.
+  - No Juneau, as trocas de cena caíram no quadro exato, as cenas tocaram de 26 a 30 quadros por segundo e o quadro
+    parado bateu com o render.
+- **Como evitar:** o dono vê o vídeo antes do passo caro, não depois. E o "visto" não sabe quem olhou: teste do Claude
+  na página se separa antes de avisar o dono.
+- **Por que serve a qualquer canal:** todo canal da Régie faz cenas HTML que só viram vídeo no render, e todo dono só
+  vê o resultado no editor. A peça usa só o contrato de cena do motor (`__renderAt`, `__duracao`, `__prepararCaptura`) e
+  o espelho. O motor poderia trazê-la como verbo (`regie linha-do-tempo`), no lugar da galeria em laço. Vale avisar o
+  Lucas.
+
+## 03/10/2026 — a 5ª leva do Juneau, depois da linha do tempo (pré-v1 em `7ab9543`)
+
+### 63. Uma varredura com um limite que a marca não tem vira conserto em massa do que já estava aprovado
+
+- **O problema:** na s31, a 2ª linha de crédito descia até a borda. O Claude central mandou varrer as 55 cenas atrás de
+  "crédito com o pé abaixo de y ≈ 2080", um número que ele tirou de uma medida da s31, não da marca: a identidade §4.2 só
+  diz "faixa inferior, y > 1880". A varredura achou as 55 (a linha única da casa tem o pé em ~2131–2146, aprovada pelo dono
+  em todas as revisões), e o mesmo pedido mandou o editor consertar as achadas. Ele subiu o crédito de 38 cenas, o que
+  envelheceu 38 renders 4K, mudou o sha1 de 5 cenas com exceção de portão do dono e deixou os mapas noutra altura.
+- **O que resolveu:** as 37 voltaram byte a byte às cópias de antes (o sha1 conferido contra o de antes; as versões
+  desfeitas guardadas), com os laudos de antes; os portões delas se mediram de novo; só a s31 ficou com o conserto dela,
+  na posição da casa.
+- **Como evitar:** quem varre não conserta no mesmo pedido. O limite de uma varredura sai da marca, citado; sem número na
+  marca, a varredura mede e devolve a distribuição, e o que fazer com ela é decisão do Claude central ou do dono, antes de
+  qualquer conserto. Se a varredura acha o defeito em quase tudo, o limite está errado, não o vídeo.
+- **Por que serve a qualquer canal:** todo canal tem regras sem número e cenas já aprovadas. Uma régua inventada no meio
+  de uma revisão desfaz, em silêncio, o que o dono já viu.
+
+### 64. O portão abre a cena de mapa sem a chave, mede a página parada e dá verde
+
+- **O problema:** os portões do molde (`qc-cena` e os avulsos) abrem a cena pelo `playwright-core` e nunca dão à página a
+  chave da base de mapa, que o render injeta na hora. A base de mapa da pré-v1 para antes de criar o mapa, e o
+  `__renderAt` fica vazio: todo portão de cena de mapa mediu uma tela sem satélite e sem movimento, e passou. O
+  `_audit-til` e o `qc-rodape-contraste` ainda trocam o `requestAnimationFrame` por um que não roda, e sem ele o
+  MapLibre não pinta nem com a chave: o contraste do crédito da s03 saiu "✓ 12.12:1" medido sobre o fundo vazio. E o
+  achador de crédito do `qc-rodape-contraste` só olha elementos sem filhos: o crédito com o ano num `<span>` sai "sem
+  crédito de rodapé". A regra do canal ainda dizia que o portão "pede tiles à MapTiler".
+- **O que resolveu:** uma pré-carga do canal (`ferramentas/chaves-nos-portoes.mjs`, `node --import=…`) que dá a chave
+  como o render dá, conta os tiles servidos e transforma em NÃO MEDIDO (saída 2) o portão que mediu mapa que não pintou
+  (rAF trocado, tile recusado, sem rede); um portão do canal para o til e o rodapé com o rAF vivo
+  (`ferramentas/portao-mapa.mjs`); e um `conferir` que, depois da rodada, prova pelo registro que cada portão de cada
+  cena de mapa rodou com a chave. Três céticos acharam falhas abertas nas duas peças, e todas se consertaram antes
+  de valerem. Nada do molde nem do motor mudou.
+- **Como evitar:** portão que abre página com recurso de fora (chave, tile, fonte, vídeo) tem de provar que o recurso
+  chegou antes de dar veredito; sem a prova, o veredito é NÃO MEDIDO, nunca verde. E uma régua que mede "o que está
+  na tela" se confere uma vez com um defeito plantado.
+- **Por que serve a qualquer canal:** todo canal com cena de mapa da pré-v1 e os portões do molde mede hoje um mapa
+  vazio e recebe verde. O conserto de verdade é no motor (a chave nos portões, o rAF vivo em cena de mapa, o achador
+  de crédito com filhos): vale avisar o Lucas e o Mateus.
+
+### 65. Um cético sem escopo, sobre um portão, acha sempre mais um caso montado para enganá-lo
+
+- **O problema:** o achador de crédito do `portao-mapa` passou por cinco rodadas de cético. Da terceira em diante, toda reprovação vinha
+  de página montada para esconder letra do portão (sombra fechada, `iframe`, `::first-line` com corpo num pai de corpo 0, fonte com as
+  métricas zeradas por CSS, caracteres mongóis e ogâmicos). Nenhuma das 56 cenas do vídeo tinha nada disso, e a medida delas não mudou
+  de uma rodada para a outra. Foram umas 10 horas de agentes, e o portão não ficou melhor para o vídeo.
+- **O que resolveu:** o Claude central parou a caça. Instalou a versão que media igual todas as cenas reais, escreveu os casos
+  adversariais como limites, e passou a pedir ao cético que julgue o escopo do conserto: os defeitos que o conserto diz resolver, as
+  cenas reais e as provas de antes, sem abrir mecanismo novo.
+- **Como evitar:** o portão de um canal mede as cenas que o próprio canal escreve. Antes de mandar um cético atacar um portão, diga o
+  que conta como defeito: um caso que um agente do canal escreveria sem querer. O caso que só existe para enganar vira limite escrito,
+  e o portão se reabre se uma cena real chegar perto dele.
+- **Por que serve a qualquer canal:** todo canal que escreve portão e o põe à prova com revisores adversariais cai no mesmo laço: o
+  revisor sempre acha mais um jeito de enganar uma régua de pixels.

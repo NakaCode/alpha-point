@@ -16,8 +16,8 @@
         A GAVETA desenhada (traço de 6 px --neutro: a frente da gaveta, x 300→3.420, y 60→240, com o puxador em 1.760→1.960) na borda
         escura da poça, no alto. A FOLHA (3.040 × 2.000, --papel, Courier Prime) SAI DA GAVETA pela ranhura de baixo
         (y 240) a partir de 0,033, em 1,3 s, um pouco torta (2,4° → 0,8°), e se assenta com o topo em y 300. Nela: a
-        referência AS 44.06.055 em caixa de contorno, o fio, e o literal da lei impresso, com o "twelve" de "over the
-        twelve-year period" EM BRANCO (a lacuna do tamanho da palavra) até a voz. Em "still" (4,1) o carimbo STILL LAW
+        referência AS 44.06.055 em caixa de contorno, o fio, e o literal da lei impresso INTEIRO, com o "twelve" de
+        "over the twelve-year period" impresso desde o primeiro quadro (revisão 4, abaixo). Em "still" (4,1) o carimbo STILL LAW
         (--tinta-escura, sem lado; Barlow 360 a 0,6: a caixa de 18 px, −7°, tinta gasta; batida de 0,38 s) cai no alto
         da folha, à direita (centro 2.420/300 na folha), e AS OF SEPTEMBER 2026 (84 px, Inter 500, --tinta-escura a 80 %;
         VOLÁTIL: reconferir a vigência na véspera de publicar) entra à esquerda dele, na mesma linha, no mesmo quadro.
@@ -25,8 +25,8 @@
         years of costs."
         O GRIFO (--grifo-cor) varre o literal "only after a majority of those voting in a statewide election have approved
         a bond issue that includes all bondable costs" com a voz, de "only" (8,04) a "for" (9,9), nas três partes da quebra
-        de linha; em "twelve" (10,006) o "twelve" SE IMPRIME na lacuna, o grifo varre "over the twelve-year period" (0,55 s)
-        e a RÉGUA DE 12 TRAÇOS se estende sob ele (um traço a cada 40 ms). Elementos: a folha (1), a gaveta (1), STILL LAW
+        de linha; em "twelve" (10,006) o grifo varre "over the twelve-year period" (0,55 s), já impresso, e a RÉGUA DE 12
+        TRAÇOS se estende sob ele (um traço a cada 40 ms). Elementos: a folha (1), a gaveta (1), STILL LAW
         (1), AS OF SEPTEMBER 2026 (1) e a régua (1) = 5, o teto do conceito. Blocos: 1 (a folha). Herói: nenhum.
     A luz: atrás da folha, descendo com ela da ranhura ao centro (1.920/300 → 1.920/900). Crédito Source: Alaska State
     Legislature, 2026 na pílula --rotulo (a folha passa sob a faixa), a cena toda.
@@ -53,6 +53,19 @@
      frente da gaveta, 40 px de cada lado, e a luz segue o centro da folha (x 1.860). O texto da folha não muda. -->
 <!-- DECLARAÇÃO (01/10/2026, a triagem dos portões de navegador, correcao-render-5.md, seção A): data-qc-fonte-livre nos textos da
      folha de documento (Courier Prime, identidade §3 e §5), que o _audit-til lia como fora da marca. O quadro não muda. -->
+<!-- REVISÃO DE ESPECTADOR, 4 (02/10/2026; revisao-premiere-lucas.md, "A 4ª pergunta: a s36"; identidade §5, "A terceira, a s36"):
+     O QUE MUDOU: o "twelve" de "over the twelve-year period" vai IMPRESSO desde o primeiro quadro, como o resto do literal. Antes
+     ficava em branco (uma lacuna do tamanho da palavra, `.lacuna {opacity:0}`) por 10 s, até a voz dizer "twelve" (10,006), e se
+     imprimia nela em 0,2 s. Saíram a regra `.lacuna` do CSS e a linha do `cena(t)` que acendia o `#doze`; o span `#doze` fica, sem
+     estilo, porque a régua se mede no retângulo do grifo `#g2` que o contém.
+     O QUE NÃO MUDOU: em "twelve" (10,006) entram, como antes, o grifo em "over the twelve-year period" (0,55 s) e a régua de 12 traços
+     sob ele (um traço a cada 40 ms, a partir de 10,106). A gaveta, a folha, STILL LAW, AS OF SEPTEMBER 2026, o 1º grifo, a luz, a
+     câmera e o crédito não mudam; nenhum texto novo; nenhum tempo de palavra muda.
+     POR QUÊ: o Lucas decidiu "Twelve impresso" (02/10/2026, 17:5x): "A lei aparece inteira desde o começo, como as cédulas da s19 e
+     da s23. Quando a voz diz "twelve", o grifo e a régua de 12 traços entram nele." É a 3ª e última exceção à regra "nenhum número
+     antes da voz" (identidade §5: s19, s23 e s36, e só elas); a regra geral que ela acompanha é "campo em branco esperando a voz não
+     vai à tela, nem como lacuna no meio de um literal".
+     Cópia de antes: out/juneau/_tmp/art/s36-antes-revisao-4.html (sha1 9efbbb52ce570a3051ba3db098600832656fd165). -->
 <head>
 <meta charset="utf-8">
 <title>s36 — That initiative revived the 1978 idea, and its wording is still law: state money can move the capital or the legislature only after voters approve bonds for 12 years of costs</title>
@@ -90,7 +103,7 @@
     letter-spacing: 0; color: var(--tinta-escura); white-space: pre-wrap; }
   .grifo { background-image: linear-gradient(var(--grifo-cor), var(--grifo-cor)); background-repeat: no-repeat;
     background-size: 0% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-  .lacuna { opacity: 0; }   /* o "twelve" em branco até a voz: a lacuna do tamanho da palavra */
+  /* .lacuna: o "twelve" vai IMPRESSO desde o primeiro quadro (Lucas, 02/10/2026, "Twelve impresso"); o span fica só para o grifo e a régua se medirem nele */
   /* AS OF SEPTEMBER 2026, ao lado do carimbo, no alto da folha */
   #asof { position: absolute; left: 880px; top: 260px; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-texto);
     font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0; color: color-mix(in srgb, var(--tinta-escura) 80%, transparent); opacity: 0; }
@@ -321,7 +334,7 @@
     // ── b2: o grifo anda com a voz; o "twelve" se imprime; a régua de 12 traços ──
     E("g1").style.backgroundSize = (100 * seg(t, T.only, T.onlyDur)).toFixed(2) + "% 100%";
     E("g2").style.backgroundSize = (100 * eo(seg(t, T.twelve, T.grifo2Dur))).toFixed(2) + "% 100%";
-    E("doze").style.opacity = eo(seg(t, T.twelve, 0.2)).toFixed(3);
+    // o "twelve" (#doze) está impresso desde t = 0 (revisão 4): nada a acender aqui; em "twelve" só o grifo e a régua
     for (var i = 0; i < TICKS.length; i++) TICKS[i].style.opacity = eo(seg(t, T.twelve + 0.1 + i * 0.04, 0.2)).toFixed(3);
 
     // a luz: atrás da folha, da ranhura ao centro

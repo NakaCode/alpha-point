@@ -50,6 +50,15 @@
 <!-- CORREÇÃO DO RENDER (01/10/2026, roupa §4 e identidade §4.1): o aviso Photo from 1997 estava em --sec, com o respiro
      da pílula de rótulo (24×40). Agora é o aviso do ano da identidade §4.1, como s06, s14 e s23: 84 px, Inter 500, --tinta,
      na pílula --rotulo com respiro 16×28 (a pílula fica 132 px alta, y 1.600→1.733). Grafia, posição e tamanho não mudam. -->
+<!-- REVISÃO DE ESPECTADOR, 4 (02/10/2026; editor-de-arte, passo art, a pedido do Claude central; revisao-premiere-lucas.md,
+     "A 4ª pergunta: a s36", o último item; marca/identidade.md §4.2): A PÍLULA DO CRÉDITO ABRAÇA O TEXTO. Antes, no b1 (a pílula sobre o registro) o crédito "Gillfoto / Wikimedia Commons · CC BY-SA 4.0" quebrava no meio do nome ("Gillfoto / Wikimedia" / "Commons · CC BY-SA 4.0").
+     A pílula #creds é um bloco de ajuste ao conteúdo com max-width: quando o texto não cabe numa linha, o navegador o quebra
+     onde dá e a pílula fica com a largura máxima da faixa (1.520 px, de x = 200 a 1.720), com faixa escura vazia à direita da
+     linha mais longa (medido no probe do canal: 2 linhas, pílula de 1.520 px, 590 px vazios no b1; depois o crédito vai sobre o papel, sem pílula, e só ganha a quebra no nome inteiro). Agora creditoTexto() quebra a linha À MÃO no último " · " ("Gillfoto / Wikimedia Commons ·" / "CC BY-SA 4.0"),
+     com um <br> antes do último trecho e o bloco em nowrap, e só quando, medido com a fonte carregada, o último trecho desceu
+     de linha (decidido uma vez por texto, sem elemento de texto novo): a pílula passa a ter a largura da linha mais longa. O crédito continua com 76 px, em x = 200, terminando
+     antes de x = 1.720; nenhum texto novo (o textContent é o mesmo do textos-tela.json), nenhum tempo de palavra mudou e nada
+     mais na cena mudou. -->
 <head>
 <meta charset="utf-8">
 <title>s49 — That October, Juneau voters split almost evenly. Better ferries finished just 79 votes ahead of a road</title>
@@ -268,13 +277,35 @@
     bandeja.setAttribute("x", xe - BAL.prato / 2); bandeja.setAttribute("y", yb);
     return yb;
   }
+  // REVISÃO DE ESPECTADOR, 4 (02/10/2026): a pílula abraça o texto. A montagem é a de antes (o texto e o último trecho num
+  // span nowrap, para "CC BY-SA 4.0" não se partir). Se, medido com a fonte carregada e o elemento desenhado, o último
+  // trecho desceu de linha, entra um <br> antes dele e o bloco vira nowrap: a quebra passa a ser À MÃO, no último " · "
+  // (sem " · ", no último "; " ou ", "; a cena pode ditar outra), nunca no meio de um nome ("Wikimedia Commons" fica
+  // junto), e a largura da pílula vira a da linha mais longa, não a máxima da faixa. Decidido uma vez por texto, sem
+  // elemento de texto novo (o <br> não tem texto) e com o mesmo textContent do textos-tela.json.
+  function creditoTexto(el, texto, quebra) {
+    if (!el) return;
+    var novo = el.getAttribute("data-texto") !== texto;
+    if (!novo && el.getAttribute("data-quebra")) return;               // já decidido para este texto
+    el.setAttribute("data-texto", texto); el.removeAttribute("data-quebra"); el.style.whiteSpace = "";
+    var i = quebra ? texto.indexOf(quebra) : -1, n = 1;                 // a quebra dita pela cena: antes da palavra
+    if (i < 0) { i = texto.lastIndexOf(" · "); n = 3; }
+    if (i < 0) { i = texto.lastIndexOf("; "); n = 2; }
+    if (i < 0) { i = texto.lastIndexOf(", "); n = 2; }
+    el.textContent = "";
+    if (i < 0) { el.textContent = texto; el.setAttribute("data-quebra", "nao"); return; }
+    var corte = i + n;                                                   // o separador e o espaço ficam na 1ª parte
+    el.appendChild(document.createTextNode(texto.slice(0, corte)));
+    var s = document.createElement("span"); s.style.whiteSpace = "nowrap"; s.textContent = texto.slice(corte); el.appendChild(s);
+    if (el.offsetParent === null || !(document.fonts && document.fonts.status === "loaded")) return;   // mede num quadro seguinte
+    var re = el.getBoundingClientRect(), rs = s.getBoundingClientRect();
+    if (rs.top - re.top > 0.4 * rs.height) {                             // o último trecho desceu: a quebra à mão
+      el.insertBefore(document.createElement("br"), s); el.style.whiteSpace = "nowrap";
+      el.setAttribute("data-quebra", "sim");
+    } else el.setAttribute("data-quebra", "nao");
+  }
   function credito(el, texto, op) {
-    if (el.getAttribute("data-texto") !== texto) {   // o último trecho (" · CC BY…") não se parte entre linhas
-      el.setAttribute("data-texto", texto); el.textContent = "";
-      var i = texto.lastIndexOf(" · ");
-      if (i < 0) el.textContent = texto;
-      else { el.appendChild(document.createTextNode(texto.slice(0, i))); var s = document.createElement("span"); s.style.whiteSpace = "nowrap"; s.textContent = texto.slice(i); el.appendChild(s); }
-    }
+    creditoTexto(el, texto);
     el.hidden = op <= 0; el.style.opacity = clamp(op, 0, 1).toFixed(3);
   }
 

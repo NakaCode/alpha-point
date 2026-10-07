@@ -439,8 +439,8 @@ para lá.
 Uma conversa de peça em `fable` já rodou (29/09/2026, "Juneau · diretor-de-arte"): as respostas saíram como
 `claude-fable-5-1`. Ela abriu no modelo padrão do app, o Opus. O Claude central confere o modelo logo que acha a
 conversa (`get_session`); se não for o da peça, troca com `set_session_model`, que só vale da próxima volta. Com a
-volta já correndo, interrompe (`stop_session`), confere no disco que nada foi gravado e manda recomeçar. Um
-subagente com `fable` ainda não se viu subir: se não subir, avise o Lucas e não edite o `.md`. Agente novo em
+volta já correndo, interrompe (`stop_session`), confere no disco que nada foi gravado e manda recomeçar. O
+subagente em `fable` subiu em 02/10/2026 (abaixo, "A autonomia do vídeo 2 em diante"). Agente novo em
 `.claude/agents/` só carrega numa **sessão nova** do app.
 
 **A roupa** de cada um é `marca/agentes/<id>.md`, escrita para este canal. Enquanto a de um especialista não
@@ -480,7 +480,7 @@ leitura). Onde ela diverge desta lista, vale esta:
 - `<tile-source>` e `<dem-source>` vêm do perfil `maptiler` (`canal.json` › `mapa.perfil`). A chave só se lê
   por `src/lib/chaves.mjs` da pré-v1, nunca dentro do HTML. O "mapista fora da v1" da tabela não vale aqui.
   Antes da primeira cena de mapa renderizada, avise o Lucas e anote o contador da MapTiler. No Juneau, o gasto
-  está liberado, com o relevo 3D só em s44 (Lucas, 28/09/2026; `marca/identidade.md` §6, "O gasto do Juneau,
+  está liberado, com o relevo 3D em s44 (Lucas, 28/09/2026) e em s01 (o voo de abertura, 03/10/2026; `marca/identidade.md` §6, "O gasto do Juneau,
   liberado"): o contador se anota antes e depois de cada render de mapa. Em 01/10/2026 o Lucas liberou as outras
   cenas sem esperar o custo da primeira ("pode seguir o uso do maptiler, podemos fechar o custo outra hora"): a
   conta vai a ele quando o painel a mostrar.
@@ -521,8 +521,25 @@ nas cenas de mapa. Custa algumas horas a mais."
   colisão, tamanho, til, src-existe, fora do quadro e crédito-fantasma em toda cena, grava o carimbo em
   `out/<proj>/_portao.json` (que o XML do motor lê) e sai 0 só com todas passando. O `mapa-vivo` não veio do
   estúdio e fica fora do portão (ele avisa). O `qc-rodape-contraste` e o `qc-video-avanca` rodam à parte.
-- Cena de mapa nos portões abre o mapa no Chrome e pede tiles à MapTiler: conta como render no
-  `maptiler-gasto.md`.
+- **A cena de mapa nos portões, só com a pré-carga do canal** (03–04/10/2026; `APRENDIZADOS.md`, item 64). Os
+  portões do molde abrem a cena sem a chave da MapTiler: a base de mapa da pré-v1 para antes de criar o mapa, e o
+  portão mede uma página parada, sem satélite e sem pedir tile nenhum. (Até 04/10 esta linha dizia que o portão
+  pedia tiles: estava errado.) Por isso, todo portão em vídeo com cena de mapa roda com a pré-carga
+  `ferramentas/chaves-nos-portoes.mjs`, que dá a chave à cena do jeito que o render dá:
+  `REGIE_MOTOR=C:/projetos/regie-v1 node --import=file:///C:/projetos/alpha-point/ferramentas/chaves-nos-portoes.mjs scripts/qc-cena.mjs out/<proj> --conc=3 --forcar`.
+  - Com ela, a cena de mapa pede tiles: cada rodada conta como render no `maptiler-gasto.md`.
+  - O `_audit-til` e o `qc-rodape-contraste` do molde trocam o `requestAnimationFrame` por um que não roda, e o mapa
+    não pinta: em cena de mapa, a pré-carga os dá como NÃO MEDIDO. Quem mede ali o til e o contraste do crédito é
+    o `ferramentas/portao-mapa.mjs` (`til` e `rodape`, com a mesma pré-carga e `--so=<cenas>`), aceito por três
+    céticos (decisão do Claude central, 04/10/2026; `out/juneau/_pesquisa/revisao-premiere-lucas.md`).
+  - Depois de toda rodada: `node ferramentas/chaves-nos-portoes.mjs conferir out/<proj> --desde="<hora do começo>"`.
+    Ele pega a pré-carga esquecida e o verde sem prova, e sai 0 só sem nenhum problema.
+  - O topo de cada arquivo diz o uso e os limites; os relatos estão em `out/juneau/_tmp/art/` (`chaves-nos-portoes-
+    relato.md` e `portao-mapa-relato.md`).
+  - Desde 05/10/2026, o `rodape` do `portao-mapa` está na versão 5: mede todo crédito declarado (`data-qc-papel="credito"`) linha
+    a linha, inclusive o que tem o ano num `<span>`, que o `qc-rodape-contraste` do molde dá como "sem crédito". Ele roda em todas as
+    cenas (`--so=` vazio), e é a medida do contraste do crédito que o `qc-visual` lê, com e sem mapa. O `conferir` só aceita a v5 no
+    rodapé. Os limites e a decisão estão em `out/juneau/_tmp/art/portao-mapa-v5/RELATO.md` (§10).
 - Quem roda os portões é o Claude central (e o `editor-de-arte` e o `mapista` antes de entregar). O `qc-visual` lê o
   resultado e só aprova com todas as lentes ≥ 7 e nenhum portão duro reprovado.
 - **A limitação do portão vai ao Lucas, cena por cena** (01/10/2026).
@@ -633,9 +650,12 @@ robô, termos e compra. As quatro respostas:
     Telegram). O resto de "Como se despacha" continua: o artefato vence o relato, os portões e os verificadores
     independentes rodam aqui, e o defeito volta à peça por um despacho novo (ou pelo `SendMessage`, se ela ainda estiver
     viva).
-  - O `diretor-de-arte` e o `editor-de-arte` vêm em `fable`, e um subagente em `fable` ainda não se viu subir. No
-    primeiro despacho, confira no relato e no transcript do subagente que ele subiu em `fable`. Se não subir, pare,
-    avise o Lucas e não edite o `.md` nem troque o modelo.
+  - O `diretor-de-arte` e o `editor-de-arte` vêm em `fable`. **O subagente em `fable` sobe** (provado em 02/10/2026, nos
+    ajustes da revisão do Juneau, workflow `wf_01523dca-775`): os transcripts dos 3 editores, do conserto da s02 e do
+    diretor gravam `"model":"claude-fable-5-1"`. No `Workflow`, o despacho é `agent(…, {agentType: '<id>', model:
+    '<o do frontmatter>'})`; no `Agent`, `subagent_type: '<id>'` (o modelo vem do frontmatter). Confira o modelo no
+    transcript (`grep -o '"model":"[^"]*"'`) de vez em quando; se um dia não subir, pare, avise o Lucas e não edite o `.md`
+    nem troque o modelo.
   - No `#status` do Discord, uma linha a cada peça que começa e a cada uma que termina, com o que ela gravou.
 - **O roteiro.** A pergunta: "Até onde você quer aprovar o texto do vídeo?" A resposta: "Pauta e roteiro (Recomendado)".
   Ele aprova o tema e lê o roteiro uma vez, como no Juneau.
@@ -668,6 +688,70 @@ robô, termos e compra. As quatro respostas:
 - **O que faz com o achado:** um cético tenta derrubar cada um. O que sobra vai ao `editor-de-arte` ou ao `mapista`
   como defeito, ou ao Lucas, se mexer em regra da marca.
 
+## A linha do tempo pré-render (desde 02/10/2026)
+
+**O pedido.** O Lucas, no chat, em 02/10/2026: "Pensei em termos um "front-end" para vermos as cenas antes de serem
+renderizadas. Um painel para ver o HTML em "tempo real", acredito que aprovar elas antes do render tornaria mais rápido e
+eficiente", e depois "como uma "web time-line"" e "pré render".
+- **Onde ver.** A pergunta: "Onde você vai abrir a linha do tempo das cenas?" A resposta: "Neste PC (Recomendado)". A
+  opção dizia: "As cenas tocam ao vivo no navegador, o HTML de verdade, com a narração e os mapas de satélite, sem render
+  nenhum. Só abre neste PC: o servidor atende só ele, e a chave do mapa nunca sai daqui."
+- **A aprovação.** A pergunta: "A sua aprovação na linha do tempo vira etapa antes do render?" A resposta: "Sim, antes do
+  render (Recomendado)". A opção dizia: "Quando as cenas de um lote passarem nas conferências, eu te aviso com o link.
+  Você aprova ou marca o que mudar, e eu só renderizo em 4K o que você aprovou. Sua resposta passa a segurar o render."
+
+**A ferramenta** é do canal: `ferramentas/linha-do-tempo.mjs` e a pasta `ferramentas/linha-do-tempo/`. O desenho, com as
+decisões e o porquê de cada peça, está em `DESENHO.md`; o uso, em `LEIA-ME.md`.
+- O Lucas vê o vídeo inteiro de uma vez, presa à narração: a faixa com as cenas, a agulha, a fala com a palavra acesa, e
+  "C" para comentar no instante.
+- **Cena sem mapa** toca o HTML ao vivo, chamando `__renderAt(t)` pelo relógio do áudio, sem render.
+- **Cena de mapa** toca a cópia leve (1080p) do clipe 4K de prova do mapista (`linha-do-tempo.mjs proxies <proj>`).
+  Sem clipe em dia, toca em rascunho: tiles cinza escritos "RASCUNHO", gerados aqui, e o bloco listrado "sem satélite".
+  Mapa visto só em rascunho não é aprovável. **A linha do tempo não fala com a MapTiler**: nenhum código dela lê a
+  chave nem pede tile.
+- O servidor ouve só em 127.0.0.1:8790, serve uma lista fechada de arquivos (nada de `db/`, `midia/`, `_caca`,
+  `_master.mp4`), e importa os módulos da galeria do molde e do motor sem editá-los, conferindo o sha256 na partida.
+- **Quem sobe o servidor é o Claude central**, com `preview_start` `{name: "linha-do-tempo"}` (`.claude/launch.json`).
+  O Lucas abre `http://127.0.0.1:8790/` no Brave ou no painel de navegador do app. O servidor vive enquanto a sessão
+  do Claude vive.
+
+**Provado** (02/10/2026):
+- **Sem navegador:** `node ferramentas/linha-do-tempo/provar.mjs` passou 169 de 169 checagens, entre elas:
+  - as 55 janelas batem com o XML;
+  - a lista fechada e as travas do servidor;
+  - a versão de cada cena (sha1 do HTML, as fotos que ele cita e o clipe de origem);
+  - visto, comentário, aprovar e conferir numa cópia, sem tocar a fila de verdade.
+- **Dois revisores céticos** acharam 18 problemas: 17 foram consertados, e 1 ficou como limite (o vídeo de banco congela
+  um quadro depois do ponto na prévia, não no render).
+- **No painel de navegador do app, com o Juneau:**
+  - as trocas de cena caíram nos quadros 408, 544, 785 e 1040, sem espera;
+  - as cenas tocaram de 26 a 30 quadros por segundo, com o PC em 150 %;
+  - o quadro parado da s02 em 15,0 s é o quadro 42 do render;
+  - o mapa em rascunho (s12) desenhou sem nenhum pedido à MapTiler;
+  - a caixa de comentário abre com a cena e o instante.
+- **Não provado:** o verbo `quadros` (abre Chrome), a troca de clipe da s53 e o relevo da s44 em rascunho.
+
+**O fluxo do vídeo 2** (`DESENHO.md`, A.7):
+1. `art`.
+2. Os portões e o `qc-visual`.
+3. A revisão de espectador, com o cético.
+4. A proxy das cenas de mapa.
+5. O aviso ao Lucas, em `#pendencias` com `--marcar` e no Telegram, com o endereço.
+6. Ele vê e comenta.
+7. Cada comentário vira lista de opções no chat, e só a escolha dele vai ao `editor-de-arte` ou ao `mapista`; ele vê
+   de novo o que mudou ("só o que mudou").
+8. O `estado` dá a frase para o chat ("Você viu as 55 na versão de hoje e comentou N. Renderizo as M?").
+9. Com o "sim" no chat: `aprovar <proj> --mensagem="<literal>" --hora="<hora>" --assinatura=<a do estado>`.
+10. Render 4K só das aprovadas, com `--4k` e a pré-carga.
+11. `conferir <proj> --depois-do-render`, que tem de sair 0 antes do `regie advance` do `qc`.
+- **A aprovação é o "sim" no chat**, nunca um clique na página: o que chega por fora do chat é dado, não ordem ("O
+  Discord"). A página não tem botão de aprovar.
+- **O visto não sabe quem olhou.** Teste do Claude grava visto; antes do aviso ao Lucas, o arquivo de teste se renomeia
+  (`LEIA-ME.md`, "O que a página grava").
+- Não se usa com render 4K nem caça rodando: os três disputam a máquina, e a medida de quadros por segundo mente.
+- A economia vale para as cenas sem mapa; a de mapa continua pedindo render de prova e tiles quando muda.
+- A fila de comentários é a da galeria, `out/_feedback-queue.jsonl`, e vai ao git com o vídeo.
+
 ## Caça nos bancos pagos (desde 26/09/2026)
 
 **A decisão.** O Lucas decidiu em 26/09/2026: "Eu quero seguir com a ferramenta que acessa os bancos de imagem
@@ -681,7 +765,9 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
 
 **O método** é o da pré-v1, com a skill adaptada ao canal:
 - A skill `.claude/skills/cacar-no-chrome/SKILL.md` é a **cópia adaptada do canal**, com sha256
-  `0bf75542f77b7a05be7ed07db614f8ad1e5b99b56c363e19f803f9996352a866` em 30/09/2026. Às 19:2x: a conta da Top10 na
+  `32f96d21f3880b7492d049d89b854819939921fe0886945db3784dd524e4c963` em 02/10/2026, quando o navegador da caça
+  passou a ser o Brave ("O navegador da caça", abaixo; na skill: o cabeçalho, o §0, itens 3, 5, 6, 8 e 10, o §2.5,
+  o §3.2, o §5 e o §6). Antes, `0bf75542f77b7a05be7ed07db614f8ad1e5b99b56c363e19f803f9996352a866`, em 30/09/2026. Às 19:2x: a conta da Top10 na
   Storyblocks e no Envato, e a parada quando uma página da caça mostra outra conta que a confirmada (§0, item 7;
   `marca/midia.md` §2.3, "A exceção da Top10"). Às 19:5x, depois de uma revisão independente: "a conta que ele
   confirmou" nas falas do §5 e no relato (§6), a rota de foto do Envato e o certificado no painel *Licenses* (§2.2 e
@@ -723,7 +809,8 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
   - Ao contrário dos especialistas, ela é do canal e se edita aqui. Se mudar, registre o sha256 novo nesta linha.
   - **Se a skill e esta seção divergirem, pare e avise o Lucas.**
   - Skill nova ou mudada só carrega numa sessão nova do app.
-- Só o Claude central opera o Chrome do Lucas, pela extensão Claude in Chrome. As ferramentas
+- Só o Claude central opera o navegador da caça (o Brave do Lucas, desde 02/10/2026: abaixo), pela extensão
+  Claude in Chrome. As ferramentas
   `mcp__claude-in-chrome__*` se carregam num só `ToolSearch`, e só estas se usam (skill, §0, item 4):
   `list_connected_browsers`, `select_browser`, `tabs_context_mcp`, `tabs_create_mcp`, `tabs_close_mcp`,
   `navigate`, `find`, `read_page`, `get_page_text` e `computer` (clique sem tecla modificadora, rolagem, `Esc`,
@@ -731,7 +818,7 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
   ser um botão de baixar ou de aceitar; o player se pausa pelo botão dele.
   - Proibidas: `javascript_tool`, `form_input`, `read_network_requests`, `read_console_messages`,
     `shortcuts_list`, `shortcuts_execute`, `gif_creator` (a exportação baixa para Downloads), `upload_image`,
-    `file_upload`, `resize_window`, `switch_browser` (chama todo Chrome com a extensão, inclusive os do Top10) e
+    `file_upload`, `resize_window`, `switch_browser` (chama todo navegador com a extensão, inclusive os do Top10) e
     `browser_batch`; no `computer`, o `type`, os outros cliques e todo atalho com Ctrl ou Alt (Alt+clique baixa o
     link; Ctrl+S salva a página em Downloads).
   - Nenhuma leitura de cookie, token, armazenamento local ou página de conta, além do nome da conta que o topo
@@ -745,58 +832,80 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
 - Todos rodam da raiz e levam `REGIE_MOTOR` na mesma chamada, inclusive o `teto`: sem ela, sai
   `MOTOR_SEM_ARQUIVO`, com pilha e exit 1. O "próximo passo" que o `recolher` imprime vem sem ela.
 
-**O perfil da caça** (designado pelo Lucas em 26/09/2026): o **`Profile 1`** do Chrome deste PC, de rótulo
-**"Lucas"**, a conta pessoal dele. **Nunca um perfil com rótulo `top10company.com.br`.** O Claude não muda
-configuração do navegador nem da conta: quem muda é o Lucas.
+**O navegador da caça: o Brave** (desde 02/10/2026). O Lucas, no chat, às 16:0x de Brasília: "Para os próximos
+vídeos quero que o navegador utilizado seja o brave, o mesmo já conta com todas as contas conectadas. A decisão
+baseia-se no consumo de memória RAM e preferência do usuário (eu)".
+- O perfil é o **`Default`** do Brave deste PC, de rótulo **"Pessoal"**, o único que o Brave tem. Nele estão a
+  extensão Claude 1.0.98 e, pelo Lucas, as contas dos bancos. **Nunca um perfil com rótulo `top10company.com.br`**,
+  em navegador nenhum. O Claude não muda configuração do navegador nem da conta: quem muda é o Lucas.
+- **Até o Juneau**, a caça foi no Chrome, no `Profile 1`, de rótulo "Lucas", designado por ele em 26/09/2026 (as duas
+  caças do Juneau estão em `out/juneau/_pesquisa/caca-relato.md`). Desde 02/10, esse perfil fica fora da caça.
 - **Os navegadores conectados** se reconhecem pelo `deviceId`, nunca pelo nome ("Browser 1" e "Browser 2" trocam
   de ordem):
-  - `02506125-8a10-410c-8904-f6ebfc02bdbf` é o Profile 1 "Lucas": o da caça;
-  - `8059a56f-9c8d-46d6-8c54-6b42e5788adc` é um perfil do Top10 (o `Default` ou o `Profile 6`): **proibido**.
-- **A prova do perfil pelo disco**, feita pelo Claude central em 26/09/2026 e **refeita no começo de cada caça**
-  (skill, §0, item 5): `list_connected_browsers` → `select_browser` com o `deviceId` do Profile 1 → uma aba numa
-  URL única (`https://example.com/?alpha-point-perfil-<marca única>`) → a marca procurada no disco só em
-  `C:/Users/zangp/AppData/Local/Google/Chrome/User Data/Profile 1/History` → a aba fechada. Em 26/09 a marca
-  apareceu só no histórico do Profile 1.
+  - `2e106ec9-46e7-4285-aa99-c3b254897455` é o Brave `Default`: o da caça;
+  - `02506125-8a10-410c-8904-f6ebfc02bdbf` é o Chrome `Profile 1` "Lucas", o das caças do Juneau: fora da caça;
+  - `8059a56f-9c8d-46d6-8c54-6b42e5788adc` é um perfil do Top10 no Chrome (o `Default` ou o `Profile 6`):
+    **proibido**.
+- **A prova do perfil pelo disco**, **refeita no começo de cada caça** (skill, §0, item 5): `list_connected_browsers`
+  → `select_browser` com o `deviceId` do Brave → uma aba numa URL única
+  (`https://example.com/?alpha-point-perfil-<marca única>`) → a marca procurada no disco só em
+  `C:/Users/zangp/AppData/Local/BraveSoftware/Brave-Browser/User Data/Default/History` → a aba fechada. **Feita
+  em 02/10/2026, às 16:05**: o `2e106ec9…` era o único navegador conectado, com `isLocal`, e a marca apareceu no
+  histórico do Brave na segunda procura (ele grava com atraso, como o Chrome).
   - O `deviceId` sumiu da lista, ou a marca não apareceu: o Claude para e chama o Lucas.
   - **A seleção se confere durante a caça** (skill, §0, item 5): antes da primeira busca de cada banco e antes
     de cada clique que baixa (o do clipe e o do PDF da linha L), o `inUse` do `list_connected_browsers` tem de
-    estar no `deviceId` do Profile 1. Se não
-    estiver, se as ferramentas sumirem ou derem erro de conexão, se a extensão reconectar ou se aparecer um
-    pedido de conexão dela, a prova se refaz antes de qualquer outro clique, e o Lucas confirma de novo a conta
-    de cada banco. Nenhuma ferramenta do navegador, além do `list_connected_browsers`, se chama antes do
-    `select_browser`.
-  - **Pedido de conexão da extensão durante a caça, o Lucas recusa**, em qualquer janela e perfil, e avisa o
-    Claude. O Claude nunca o pede (`switch_browser` é proibido); se ele aparece, a conexão mudou. Aceito numa
-    janela do Top10, as ações seguintes iriam para aquele perfil.
+    estar no `deviceId` do Brave. Se não estiver, se as ferramentas sumirem ou derem erro de conexão, se a
+    extensão reconectar ou se aparecer um pedido de conexão dela, a prova se refaz antes de qualquer outro clique,
+    e o Lucas confirma de novo a conta de cada banco. Nenhuma ferramenta do navegador, além do
+    `list_connected_browsers`, se chama antes do `select_browser`.
+  - **Pedido de conexão da extensão durante a caça, o Lucas recusa**, em qualquer janela, perfil e navegador, e
+    avisa o Claude. O Claude nunca o pede (`switch_browser` é proibido); se ele aparece, a conexão mudou. Aceito
+    numa janela do Top10, as ações seguintes iriam para aquele perfil.
   - Se o Lucas reinstalar a extensão, o `deviceId` muda: a prova se refaz com ele vendo, e o `deviceId` novo vem
     para esta seção.
-  - A prova também mostra que o Chrome é o deste PC: o arquivo cai no Downloads daqui, o único que o registrador
-    vê.
-- **Já feito pelo Lucas, em 26/09/2026:**
-  - a extensão Claude in Chrome 1.0.94, instalada no Profile 1;
-  - "Perguntar onde salvar cada arquivo" desligado, com a pasta padrão: os downloads caem em
-    `C:\Users\zangp\Downloads` (`caca.pasta_downloads: null`);
-  - login no Shutterstock, na Storyblocks e no Motion Array, no Profile 1.
-- **O Envato fica FORA da caça** até o Lucas entrar nele no Profile 1 (em 26/09 ele não conseguiu) e confirmar
-  no chat que *Licensing → Always ask* está ligado.
-- **O que ainda depende do Lucas:**
-  - entrar no Envato, ligar o *Always ask* e confirmar no chat; e criar, no Envato, o projeto de cada vídeo
-    (`<proj>`), ou digitá-lo ele mesmo na primeira janela de licença: o Claude só o escolhe, com um clique, porque
-    não digita nada na caça;
-  - em cada caça: confirmar a conta de cada banco, aprovar a lista, responder aos avisos do Chrome e não baixar
-    nada em Downloads enquanto ela corre ("Quem faz o quê", abaixo);
+  - A prova também mostra que o navegador é o deste PC: o arquivo cai no Downloads daqui, o único que o
+    registrador vê.
+- **O Chrome continua instalado.** O render e os portões abrem um Chrome próprio, sem janela e com perfil separado
+  (`src/lib/chrome.mjs` da pré-v1 e `scripts/lib/chrome.mjs`): a janela do Chrome do Lucas pode ficar fechada, mas
+  sem o Chrome no PC o render para.
+- **O que o Brave não muda:**
+  - a skill continua `cacar-no-chrome` (trocar o nome mudaria o comando), e valem todas as regras desta seção e
+    dela;
+  - o banco que recusou volta só numa caça nova que o Lucas peça nomeando-o (skill, §2.2). O Shutterstock recusou
+    com 403 em 29 e 30/09: trocar de navegador não é caminho para passar por recusa, e o Brave não o traz de volta
+    sozinho;
+  - os escudos do Brave (Shields) ficam como o Lucas os deixou. Se um banco não tocar a prévia, não mostrar o
+    botão ou não baixar com eles, o Claude para naquele item e mostra ao Lucas: mexer nos escudos é decisão dele,
+    e nunca para passar por verificação de robô;
+  - nunca se mata navegador por nome, nem `chrome.exe` nem `brave.exe` ("Convivência", abaixo).
+- **Já feito pelo Lucas:**
+  - no Brave, a extensão Claude 1.0.98 e o login nos bancos ("já conta com todas as contas conectadas", 02/10). A
+    conta de cada banco se confirma no chat na primeira página dele, como sempre (abaixo);
+  - no Envato, o *Licensing → Always ask*, ligado em 30/09/2026 ("mudei"; `out/juneau/_pesquisa/caca-relato.md`).
+    É preferência da conta, não do navegador.
+- **Os downloads do Brave**, conferidos pelo Lucas em 02/10/2026, às 16:1x: "Conferi, está desligado e salvando em
+  Downloads". "Perguntar onde salvar cada arquivo" está desligado, e o Brave salva em `C:\Users\zangp\Downloads`
+  (`caca.pasta_downloads: null`). Se ele mudar a pasta, o caminho novo vai ao `marca/midia.json`.
+- **O que depende do Lucas em cada caça:**
+  - criar, no Envato, o projeto de cada vídeo (`<proj>`), ou digitá-lo ele mesmo na primeira janela de licença: o
+    Claude só o escolhe, com um clique, porque não digita nada na caça;
+  - confirmar a conta de cada banco, aprovar a lista, responder aos avisos do navegador e não baixar nada em
+    Downloads enquanto ela corre ("Quem faz o quê", abaixo);
   - deixar aberta, sem usar nem minimizar (fora o download que ele mesmo faz num banco que recusou, abaixo), a
-    janela do Chrome com a aba fixa da caça: o que o Lucas escolheu em 30/09/2026 ("Aba fixa da caça
+    janela do Brave com a aba fixa da caça: o que o Lucas escolheu em 30/09/2026 ("Aba fixa da caça
     (Recomendado)"), depois de pedir menos presença nessa parte; o outro caminho, julgar o arquivo baixado sem
-    prévia, mudaria a regra da caça. Deixá-la sem outra janela por cima, na Fase A, não estava na opção: vai no
-    combinado de cada caça (skill, §0, item 6). E dar o clique nessa aba quando o Claude pedir (skill, §2.0: o
-    Chrome não toca a prévia numa aba escondida);
+    prévia, mudaria a regra da caça. A aba fixa do Brave nasce na primeira caça nele. Deixá-la sem outra janela
+    por cima, na Fase A, não estava na opção: vai no combinado de cada caça (skill, §0, item 6). E dar o clique
+    nessa aba quando o Claude pedir (skill, §2.0: o navegador não toca a prévia numa aba escondida; medido no
+    Chrome, e o Brave é do mesmo motor, o Chromium);
   - se a sessão de um banco cair, entrar de novo, com a senha e o 2FA dele.
 - **A conta de cada banco.** Na primeira página de cada banco, o Claude diz o nome da conta que o topo mostra (sem
   abrir a página da conta), e o Lucas confirma no chat que é a conta individual dele.
   - **Na Storyblocks e no Envato, a conta é a assinatura da Top10** (Lucas, 30/09/2026: "A conta da Top10 vale",
     depois que o histórico de downloads da Storyblocks mostrou a conta da empresa, compartilhada; `marca/midia.md`
-    §2.3, "A exceção da Top10"). O risco de licença é dele. O perfil do Chrome continua o `Profile 1` "Lucas".
+    §2.3, "A exceção da Top10"). O risco de licença é dele. O perfil continua o da caça (desde 02/10, o Brave
+    `Default`).
   - Um cabeçalho que diz só "Lucas" não distingue a conta dele de um assento do Top10 no nome dele.
   - Sem a confirmação, nada se baixa daquele banco. Página da caça que mostre outra conta que a confirmada: parar
     antes do próximo clique que baixa e perguntar.
@@ -806,14 +915,14 @@ configuração do navegador nem da conta: quem muda é o Lucas.
 - **Nada pessoal no git.** `out/<proj>/_pesquisa/caca-relato.md`, `candidatos-caca.json` e as saídas do
   conferente (`conferencia-caca.json`, `conferencia-midia.json` e os `.md` delas) vão para o git: neles, nunca
   e-mail, nome de usuário, ID de conta ou outro dado pessoal lido nos bancos, nos PDFs de licença ou numa
-  mensagem. A conta é `lucas-rosa`, e o perfil, "Lucas". O print da página do item se tira sem o topo, onde fica
+  mensagem. A conta é `lucas-rosa`, e o perfil, "Pessoal" (o Brave; "Lucas", o Chrome das caças do Juneau). O print da página do item se tira sem o topo, onde fica
   a conta (skill, §2.4).
 
 **Quem faz o quê:**
 - **`pesquisa-imagens`**: escreve `out/<proj>/_pesquisa/lista-de-caca.json` (o §1 da skill), só com B-roll
   genérico. Não abre banco.
 - **O Claude central**: caça, uma caça por vez, só quando o Lucas a pede no chat (a lista existir não basta).
-  **Só ele opera o Chrome.** Todo pedido a subagente na caça (o `pesquisa-imagens` e o `conferente-de-midia`) diz
+  **Só ele opera o navegador da caça.** Todo pedido a subagente na caça (o `pesquisa-imagens` e o `conferente-de-midia`) diz
   que ele não usa nenhuma ferramenta `mcp__claude-in-chrome__*` nem do painel de navegador do app. Na caça, o
   conferente não se despacha como agente geral: sem ele carregado, o Claude pede ao Lucas uma sessão nova.
 - **`conferente-de-midia`** (`.claude/agents/conferente-de-midia.md`): julga, pelo disco, se cada candidato é fiel
@@ -822,10 +931,10 @@ configuração do navegador nem da conta: quem muda é o Lucas.
   não é o sim do Lucas: só decide o que vai à lista e o que pode ser instalado. Sem ele, nenhuma lista vai ao
   Lucas e nenhum arquivo de banco vai à cena.
 - **O Lucas**: faz os logins, confirma as contas e o *Always ask*, aprova a lista e responde aos avisos
-  do Chrome ("baixar vários arquivos", permissão da extensão, a janela "Salvar como"). Deixa à vista a janela da
+  do navegador ("baixar vários arquivos", permissão da extensão, a janela "Salvar como"). Deixa à vista a janela da
   aba fixa da caça e clica nessa aba quando o Claude pede (skill, §2.0). **Durante a caça, não
-  navega nos bancos nesse perfil e não baixa nada em nenhum perfil do Chrome nem em outro programa que salve em
-  Downloads**: a pasta é uma só, e um arquivo dele que chegue depois de um `marcar` pode sair com a procedência
+  navega nos bancos nesse perfil e não baixa nada em nenhum navegador (Brave, Chrome ou outro) nem em outro
+  programa que salve em Downloads**: a pasta é uma só, e um arquivo dele que chegue depois de um `marcar` pode sair com a procedência
   de um item que não é ele.
 
 **Janelas que aparecem sozinhas** (skill, §2.1), da primeira busca ao último download:
@@ -965,9 +1074,10 @@ continua. Enquanto isso, os outros bancos seguem. Nunca se troca banco pago por 
   cada item, para a cena (`marca/midia.md` §2.5).
 
 **Convivência:**
-- **Não se caça com render 4K rodando neste PC** (REND-07, `seed/regras/REND.md`). O Chrome do Lucas e o do
-  render disputam a máquina, e o render trava. A caça vai antes ou depois, nunca durante.
-- **Nunca se mata Chrome por nome**: `taskkill /IM chrome.exe` derruba o Chrome do Lucas e o render juntos.
+- **Não se caça com render 4K rodando neste PC** (REND-07, `seed/regras/REND.md`). O navegador da caça e o
+  Chrome do render disputam a máquina, e o render trava. A caça vai antes ou depois, nunca durante.
+- **Nunca se mata navegador por nome**: `taskkill /IM chrome.exe` derruba o Chrome do Lucas e o render juntos, e
+  `taskkill /IM brave.exe`, o Brave da caça.
 - **O `marcar` grava em `out/<proj>/_media/_caca/`**: a primeira caça num vídeo espera a verificação em curso
   nele terminar.
 
@@ -987,6 +1097,54 @@ continua. Enquanto isso, os outros bancos seguem. Nunca se troca banco pago por 
 
 Nenhuma técnica para disfarçar automação ou passar por detecção de robô: nada de "parecer humano", atraso
 aleatório, flag que esconde automação ou troca de cabeçalho.
+
+## A trilha: Epidemic Sound (desde 05/10/2026)
+
+**A chave.** O Lucas, no chat, em 05/10/2026: "estou com a chave do Epidemic Sund". A pergunta: "De quem é a conta do Epidemic
+Sound dessa chave?" A resposta: "Minha, canal conectado" (a conta é dele, e o Alpha Point está conectado nela). Ele pôs a chave
+no arquivo de chaves da máquina pelo Bloco de Notas, como `EPIDEMIC_SOUND_API_KEY` (a cópia de antes ficou em
+`chaves.env.antes-epidemic-2026-10-05`, na mesma pasta). Nunca se imprime nem se lê o valor.
+- **O que ela abre:** o servidor MCP oficial do Epidemic Sound (`https://www.epidemicsound.com/a/mcp-service/mcp`, com a chave
+  como `Authorization: Bearer`; a documentação é https://developers.epidemicsound.com/docs/mcp/). Testado em 05/10/2026 só com
+  `initialize` e `tools/list`, sem baixar nada: 200, 16 ferramentas (busca de música e de efeito, faixas parecidas, edição de
+  duração, download, e voz).
+- **A chave vale um ano** a partir da criação, pela documentação. A data de criação está na conta do Lucas.
+- **O que se usa:** a busca (`SearchRecordings`, `SearchSimilarToRecording`) para montar a lista de faixas, e o download
+  (`DownloadRecording`) só com o "sim" do Lucas a uma lista no chat, com a faixa, o artista, a duração e o trecho de cada linha. A edição
+  de duração (`EditRecording`) a ferramenta ainda não faz: o que ela entrega não foi medido, e ela pede verbo e prova próprios, além do
+  "sim" dele.
+- **O que não se usa:** a voz do Epidemic (`GenerateVoiceover` e as outras de voz). A voz do canal é a da ElevenLabs. Nem o download de efeito.
+- **A ferramenta do canal** (05/10/2026): `node ferramentas/epidemic.mjs` (`conferir`, `buscar`, `parecidas`, `lista`, `baixar`; o topo do
+  arquivo diz como). A prova, sem rede e sem a chave de verdade: `node ferramentas/epidemic-provar.mjs` (109 de 109 em 05/10).
+  - `lista --lista=<arquivo> --conferir` confere cada linha contra o servidor e imprime a assinatura da lista (o conteúdo das linhas, menos
+    o "aprovado"). Só a lista que sai 0 vai ao Lucas, com a assinatura.
+  - Com o "sim": o Claude central marca `"aprovado": true` só nas linhas que ele cobriu e roda `baixar --lista=<arquivo> --linhas=<as do
+    sim> --mensagem="<o sim literal>" --hora="<a hora>" --assinatura=<a da lista> --seco`, e depois sem `--seco`. Lista mudada depois do
+    chat sai 2, sem pedir nada ao Epidemic.
+  - Um download por vez, 15 s entre pedidos, no máximo 8 em 30 min (`db/epidemic-estado.json`, fora do git). No teto, sai 3. Só o Claude
+    central baixa.
+- **O robots.txt** do Epidemic veta `/a/*` (onde fica o MCP) e o `audiocdn` veta tudo. Decisão do Claude central (05/10/2026), como a da
+  NARA e a do Commons: o MCP, com a chave da conta do Lucas, é a porta que o Epidemic abre para programas, e o arquivo que o
+  `DownloadRecording` devolve é a entrega dela. As prévias nenhum programa do canal pede: o Lucas ouve na página da faixa
+  (`https://www.epidemicsound.com/music/tracks/<id>/`), no navegador dele.
+- **A licença**, lida pelo Claude central no navegador do app em 05/10/2026 (`out/juneau/_tmp/trilha/epidemic-licenca.md`, §8 e §9):
+  - o plano do Lucas é o Creator, e o Alpha Point é canal pessoal dele ("Pessoal, meu"), na *Safelist* da conta. O Creator cobre só canal
+    pessoal e um usuário;
+  - "No broadcast type content" (cita filme, programa de TV e "documentaries") e o tema político ("promotion, advertisement or endorsement"
+    de partido ou candidato): o Lucas escolheu "Seguir: é vídeo de YouTube", com o risco registrado como decisão dele;
+  - **a música nunca entra em ferramenta de IA nem de reconhecimento de música** ("in any third-party AI tool", "in any music recognition
+    systems"): nem o Whisper, nem a ElevenLabs, nem o vidIQ, nem o Claude, com a trilha ou com o vídeo mixado. A transcrição só sobre a
+    narração sem música. O termo do MCP proíbe também usar o conteúdo em análise de aprendizado de máquina e contornar o limite de uso;
+  - só cortar, repetir, fazer fade e usar stems; nada mais;
+  - o crédito na descrição: "<Artista> / <Música> / courtesy of Epidemic Sound", com o link de www.epidemicsound.com;
+  - o que se publicou durante a assinatura fica licenciado para sempre; depois dela, nada novo com a música.
+- **Onde a faixa entra:** no acervo da trilha da pré-v1 (`acervo/trilha/` e `biblioteca.json`, com a licença `assinatura`,
+  `fonte: epidemic`, o titular "conta Epidemic do Lucas Rosa" e `canal_liberado: ["alpha-point"]`), que o `trilha.mjs` confere
+  antes de escolher. O mp3 da Top10 (`catalogo-top10.json`) nunca: a assinatura dela não cobre o Alpha Point.
+- **Os trechos:** o `trilha.mjs` da pré-v1 só divide por card de título, e o canal não tem card. O plano de trilha do Juneau se monta à mão a
+  partir de `espelho.json` › `_capitulos` e se confere com `trilha.mjs <proj> --conferir`.
+- **Ainda não feito:** a regra de mood da trilha na marca e a linha do Epidemic na tabela de Content ID do `marca/midia.md` §5 (proposta em
+  `epidemic-licenca.md` §6).
 
 ## O Discord (desde 28/09/2026)
 

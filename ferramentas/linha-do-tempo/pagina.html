@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Linha do tempo pré-render (ferramentas/linha-do-tempo/DESENHO.md, A.1 e A.4–A.6). O servidor troca o token e o projeto. -->
+<meta name="lt-token" content="__TOKEN__">
+<meta name="lt-proj" content="__PROJ__">
+<title>Linha do tempo · __PROJ__</title>
+<link rel="stylesheet" href="/lt/pagina.css">
+</head>
+<body>
+<header>
+  <h1>Linha do tempo <span id="proj">__PROJ__</span></h1>
+  <p id="resumo">carregando…</p>
+  <label class="filtro"><input type="checkbox" id="soMudou"> só o que mudou</label>
+</header>
+
+<main>
+  <div id="palco" aria-label="A cena no instante da agulha">
+    <div class="slot" id="slotA"><iframe title="cena" tabindex="-1"></iframe><video muted playsinline preload="auto"></video></div>
+    <div class="slot" id="slotB"><iframe title="cena" tabindex="-1"></iframe><video muted playsinline preload="auto"></video></div>
+    <div id="selo" hidden></div>
+    <div id="aviso" hidden></div>
+  </div>
+
+  <div id="controles">
+    <button id="tocar" type="button" title="Tocar ou pausar (espaço)">▶</button>
+    <span id="relogio">0:00.0 / 0:00.0</span>
+    <span id="cenaAtual">—</span>
+    <button id="comentar" type="button" title="Pausa e abre a caixa com a cena e o instante (tecla C)">Comentar aqui (C)</button>
+  </div>
+
+  <p id="fala" aria-live="off"></p>
+
+  <div id="faixa" title="Clique para ir a qualquer ponto">
+    <div id="blocos"></div>
+    <div id="agulha"></div>
+  </div>
+  <ul id="legenda">
+    <li><i class="bloco"></i> não vista nesta versão</li>
+    <li><i class="bloco vista"></i> vista nesta versão</li>
+    <li><i class="bloco comentada"></i> com comentário aberto</li>
+    <li><i class="bloco rascunho"></i> mapa sem satélite (rascunho)</li>
+    <li><i class="bloco erro"></i> a cena não abriu</li>
+    <li><i class="ponto"></i> nova versão para ver</li>
+  </ul>
+
+  <section id="respostas">
+    <h2>Comentários e respostas do Claude</h2>
+    <ol id="lista"></ol>
+  </section>
+</main>
+
+<dialog id="caixa">
+  <form method="dialog" id="formComentario">
+    <p id="ondeComentario"></p>
+    <textarea id="texto" rows="4" maxlength="3800" placeholder="O que mudar aqui? (Enter envia, Shift+Enter quebra a linha)"></textarea>
+    <p id="estadoEnvio"></p>
+    <div class="botoes">
+      <button type="button" id="cancelar">Cancelar (Esc)</button>
+      <button type="submit" id="enviar">Enviar</button>
+    </div>
+  </form>
+</dialog>
+
+<audio id="narracao" preload="auto"></audio>
+<script src="/lt/motor.js"></script>
+<script src="/lt/pagina.js"></script>
+</body>
+</html>

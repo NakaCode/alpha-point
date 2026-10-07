@@ -5,7 +5,8 @@
   cost."
   Word-lock (−136.833) · inSec 136.833 · dur 6.567 (197 quadros a 30 fps; espelho.json, _quadros 4105→4302)
   Modo do espelho: foto · Modelo da identidade: REGISTRO em tela cheia (duas fotos do Capitólio, de outros anos, com o
-  aviso do ano, identidade §6), e as duas linhas sem palavra do motivo da linha do preço (conceito s14)
+  aviso do ano, identidade §6). As duas linhas sem palavra do motivo da linha do preço (conceito s14) SAÍRAM em 02/10/2026
+  (REVISÃO DE ESPECTADOR, 3, abaixo).
 
   O que manda em cada coisa: o espelho (s14), o conceito (s14), a regência (s14: dois beats), os textos finais do redator
   (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s14, _avisos_de_ano s14,
@@ -24,15 +25,12 @@
         corte seco para o pórtico de frente, 5/8/2008 (5436×4632, o TIFF convertido pelo entregar) em TELA CHEIA a
         0,7064×: o recorte 16:9 da largura inteira, y 900→3.958 do arquivo: tira a balaustrada de cima e parte da escada,
         e fica a cornija com o nome, as colunas e as portas (conferente). Ken Burns no mesmo ritmo (1,065 no fim).
-        As DUAS LINHAS SEM PALAVRA (o motivo da linha do preço de s02, sem o cifrão e sem número: a do lugar e a do
-        preço) descem juntas sobre as colunas em "What" (3,333), de 220 px acima, em 0,5 s (ease-out): traço de 12 px em
-        --papel com o contorno escuro por baixo (--fronteira-contorno-cor, como a divisa no mapa, identidade §6), sem
-        scrim nem véu (--degrade: none); 1.180 px de comprimento, centradas, em y 980 e 1.230. A de cima PULSA em "the"
-        de "the place" (4,367) e a de baixo em "what" de "what it would cost" (5,733): 0,4 s, a altura cresce e volta,
-        a opacidade respira. Nenhum número (nenhum número antes da voz).
+        Até 02/10/2026, DUAS LINHAS SEM PALAVRA (o motivo da linha do preço de s02, sem o cifrão e sem número) desciam
+        sobre as colunas em "What" (3,333) e pulsavam em "the place" (4,367) e em "what it would cost" (5,733). Elas
+        SAÍRAM (REVISÃO DE ESPECTADOR, 3, abaixo): o p2 é a foto do pórtico com o Ken Burns, o rótulo e o aviso do ano.
         Alaska State Capitol (rótulo) e Photo from 2008 (aviso) com a imagem. Sem crédito na tela: domínio público
         (Carol M. Highsmith / Library of Congress; a linha que a Library pede vai na descrição, identidade §7).
-        Elementos: as duas linhas (2) + o rótulo (1) = 3 [o aviso não conta]. Blocos: 0. Herói: nenhum (data-qc-sem-heroi).
+        Elementos: o rótulo (1) [o aviso não conta]. Blocos: 0. Herói: nenhum (data-qc-sem-heroi).
 
   A MÍDIA (conferencia-midia.json › candidatos, vereditos aprovados para s14, 30/09):
     ../_media/foto/s14/alaska-state-capitol-brick-facade-detail-2017-09-05-gillfoto-jul2017-28.jpg  4000×2670
@@ -54,6 +52,26 @@
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes ou transition. O RIG abaixo é a cópia inteira de
   templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
+<!-- REVISÃO DE ESPECTADOR, 3 (02/10/2026; editor-de-arte, passo art, a pedido do Claude central; revisao-premiere-lucas.md,
+     "As decisões (02/10/2026)"; marca/identidade.md §5, "A linha do preço vazia sai" e "A regra que fica"): as DUAS LINHAS
+     VAZIAS sobre a foto do pórtico (#l1 e #l2, o motivo da linha do preço de s02 sem o cifrão e sem número, que desciam em
+     "What", 3,333, e pulsavam em "the place", 4,367, e em "what it would cost", 5,733) SAÍRAM, com o CSS (.linha, #linhas) e
+     a lógica delas (T.linhas, T.linhasDur, T.pulso1, T.pulso2, T.pulsoDur, o array LINHAS e o bloco do cena(t)). Motivo: a
+     marca só aceita a linha vazia onde ela quer dizer "sem preço" (no Juneau, só na s35); aqui, num quadro de 1080p, as duas
+     pareciam defeito (out/juneau/_tmp/olhar/s14@4.png). As fotos, o recorte, o Ken Burns, o rótulo, o aviso do ano, o crédito
+     e os tempos não mudaram; nenhum texto novo, nenhum tempo de palavra mudou. O p2 (3,300→6,567) fica com o corte seco para
+     o pórtico, o rótulo e o aviso entrando em 3,300 (300 ms) e o Ken Burns até o corte: depois de 3,6 s nada novo entra por
+     ~2,97 s (câmera viva, sem elemento que acompanhe "the place" e "what it would cost"). Dito no relato, sem texto novo.
+     Elementos no p2: o rótulo (1); o data-qc-sem-heroi perdeu a menção às linhas. -->
+<!-- REVISÃO DE ESPECTADOR, 4 (02/10/2026; editor-de-arte, passo art, a pedido do Claude central; revisao-premiere-lucas.md,
+     "A 4ª pergunta: a s36", o último item; marca/identidade.md §4.2): A PÍLULA DO CRÉDITO ABRAÇA O TEXTO. Antes, o crédito "Gillfoto / Wikimedia Commons · CC BY-SA 4.0" quebrava no meio do nome ("Gillfoto / Wikimedia" / "Commons · CC BY-SA 4.0").
+     A pílula #creds é um bloco de ajuste ao conteúdo com max-width: quando o texto não cabe numa linha, o navegador o quebra
+     onde dá e a pílula fica com a largura máxima da faixa (1.520 px, de x = 200 a 1.720), com faixa escura vazia à direita da
+     linha mais longa (medido no probe do canal: 2 linhas, pílula de 1.520 px, 414 px vazios, de t = 0 ao corte (3,300)). Agora creditoTexto() quebra a linha À MÃO no último " · " ("Gillfoto / Wikimedia Commons ·" / "CC BY-SA 4.0"),
+     com um <br> antes do último trecho e o bloco em nowrap, e só quando, medido com a fonte carregada, o último trecho desceu
+     de linha (decidido uma vez por texto, sem elemento de texto novo): a pílula passa a ter a largura da linha mais longa. O crédito continua com 76 px, em x = 200, terminando
+     antes de x = 1.720; nenhum texto novo (o textContent é o mesmo do textos-tela.json), nenhum tempo de palavra mudou e nada
+     mais na cena mudou. -->
 <head>
 <meta charset="utf-8">
 <title>s14 — That 1974 vote decided the capital would leave. What remained was choosing the place, and saying what it would cost</title>
@@ -71,11 +89,6 @@
   #img1 { left: -559.9px; top: -220px; width: 4400px; height: 2937px; transform-origin: 2479.9px 1300px; }
   /* b2: 5436×4632 a 0,7064× = 3840×3272; recorte y 900 (635,8 na tela) */
   #img2 { left: 0; top: -635.8px; width: 3840px; height: 3272px; transform-origin: 1920px 1715.8px; }
-
-  /* as duas linhas sem palavra: traço de 12 px em --papel, contorno escuro por baixo (como a divisa no mapa, §6) */
-  #linhas { position: absolute; inset: 0; pointer-events: none; }
-  .linha { position: absolute; left: 1330px; width: 1180px; height: 12px; border-radius: 6px; background: var(--papel);
-    box-shadow: 0 0 0 6px var(--fronteira-contorno-cor); transform-origin: 50% 50%; opacity: 0; }
 
   /* os textos, numa camada FIXA acima de tudo */
   #textos { position: absolute; inset: 0; pointer-events: none; }
@@ -95,7 +108,7 @@
 </style>
 </head>
 <body>
-<div id="palco" data-qc-sem-heroi="registro: a cena não tem herói; o nome de lugar é rótulo, e as duas linhas são gráfico sem palavra (ofício do editor-de-arte §6)">
+<div id="palco" data-qc-sem-heroi="registro: a cena não tem herói; o nome de lugar é rótulo (ofício do editor-de-arte §6)">
   <!-- b1: a fachada de tijolo, 2017 -->
   <div class="cheia" id="reg1">
     <img id="img1" src="../_media/foto/s14/alaska-state-capitol-brick-facade-detail-2017-09-05-gillfoto-jul2017-28.jpg" alt="">
@@ -103,11 +116,6 @@
   <!-- b2: o pórtico, 2008 -->
   <div class="cheia" id="reg2">
     <img id="img2" src="../_media/foto/s14/alaska-state-capitol-portico-columns-2008-08-05-highsmith-loc-2010630417.jpg" alt="">
-  </div>
-  <!-- as duas linhas sem palavra (b2): a do lugar e a do preço -->
-  <div id="linhas">
-    <div class="linha" id="l1" style="top:980px"></div>
-    <div class="linha" id="l2" style="top:1230px"></div>
   </div>
   <div id="textos">
     <div class="pilula" id="rLugar1" data-qc-papel="rotulo" style="left:200px;top:1380px"></div>
@@ -226,11 +234,8 @@
   // ── os tempos (locais, −136,833), da regência s14 e do words.json ──
   var T = {
     corte: 99 / 30,              // 3,300: "What" (o pórtico)
-    kb: 0.12 / 6,                // Ken Burns: 1,00 → 1,12 em 6 s, linear, nos dois planos
-    linhas: 3.333, linhasDur: 0.5,   // "What" (140,15): as duas linhas descem juntas
-    pulso1: 4.367, pulso2: 5.733, pulsoDur: 0.4   // "the" de "the place" (141,2) e "what" de "what it would cost" (142,556)
-  };
-  var LINHAS = [{ id: "l1", y: 980, pulso: T.pulso1 }, { id: "l2", y: 1230, pulso: T.pulso2 }];
+    kb: 0.12 / 6                 // Ken Burns: 1,00 → 1,12 em 6 s, linear, nos dois planos
+  };                             // (as duas linhas e os pulsos delas saíram em 02/10/2026: REVISÃO DE ESPECTADOR, 3, no cabeçalho)
 
   function rotulo(el, op) {
     if (!el) return;
@@ -249,18 +254,11 @@
     rotulo(E("rLugar1"), b1 ? eo(seg(t, 0, 0.3)) : 0);
     rotulo(E("aviso1"), b1 ? eo(seg(t, 0, 0.3)) : 0);
 
-    // ── b2: o pórtico, com o Ken Burns, e as duas linhas que descem e pulsam ──
+    // ── b2: o pórtico, com o Ken Burns (as duas linhas que desciam e pulsavam saíram em 02/10/2026) ──
     E("reg2").style.visibility = b1 ? "hidden" : "visible";
     E("img2").style.transform = "scale(" + (1 + T.kb * clamp(t - T.corte, 0, DUR - T.corte)).toFixed(5) + ")";
     rotulo(E("rLugar2"), b1 ? 0 : eo(seg(t, T.corte, 0.3)));
     rotulo(E("aviso2"), b1 ? 0 : eo(seg(t, T.corte, 0.3)));
-    var d = eo(seg(t, T.linhas, T.linhasDur)), opL = b1 ? 0 : seg(t, T.linhas, 0.2);
-    LINHAS.forEach(function (L) {
-      var el = E(L.id), k = Math.sin(seg(t, L.pulso, T.pulsoDur) * Math.PI);   // o pulso: 0 → 1 → 0 em 0,4 s
-      el.style.top = (L.y - 220 * (1 - d)).toFixed(2) + "px";
-      el.style.transform = "scaleY(" + (1 + 0.8 * k).toFixed(4) + ")";
-      el.style.opacity = (opL * (1 - 0.3 * k)).toFixed(3);
-    });
 
     // ── o crédito: só no b1 (a foto do p2 é domínio público) ──
     var c = E("credFoto"), opC = b1 ? eo(seg(t, 0, 0.3)) : 0;
@@ -269,17 +267,32 @@
     E("creds").classList.toggle("vazio", opC <= 0);
     E("creds").style.opacity = opC.toFixed(3);   // a pílula acende junto com a linha
   }
-  // o crédito longo quebra em duas linhas (identidade §4.2, nunca encolhe), mas nunca no meio do último trecho:
-  // o último trecho depois de ", " ou " · " não se parte
-  function creditoTexto(el, texto) {
-    if (el.getAttribute("data-texto") === texto) return;
-    el.setAttribute("data-texto", texto); el.textContent = "";
-    var i = Math.max(texto.lastIndexOf(", "), texto.lastIndexOf(" · "));
-    if (i < 0) { el.textContent = texto; return; }
-    var corte = i + (texto.charAt(i) === "," ? 2 : 3);
+  // REVISÃO DE ESPECTADOR, 4 (02/10/2026): a pílula abraça o texto. A montagem é a de antes (o texto e o último trecho num
+  // span nowrap, para "CC BY-SA 4.0" não se partir). Se, medido com a fonte carregada e o elemento desenhado, o último
+  // trecho desceu de linha, entra um <br> antes dele e o bloco vira nowrap: a quebra passa a ser À MÃO, no último " · "
+  // (sem " · ", no último "; " ou ", "; a cena pode ditar outra), nunca no meio de um nome ("Wikimedia Commons" fica
+  // junto), e a largura da pílula vira a da linha mais longa, não a máxima da faixa. Decidido uma vez por texto, sem
+  // elemento de texto novo (o <br> não tem texto) e com o mesmo textContent do textos-tela.json.
+  function creditoTexto(el, texto, quebra) {
+    if (!el) return;
+    var novo = el.getAttribute("data-texto") !== texto;
+    if (!novo && el.getAttribute("data-quebra")) return;               // já decidido para este texto
+    el.setAttribute("data-texto", texto); el.removeAttribute("data-quebra"); el.style.whiteSpace = "";
+    var i = quebra ? texto.indexOf(quebra) : -1, n = 1;                 // a quebra dita pela cena: antes da palavra
+    if (i < 0) { i = texto.lastIndexOf(" · "); n = 3; }
+    if (i < 0) { i = texto.lastIndexOf("; "); n = 2; }
+    if (i < 0) { i = texto.lastIndexOf(", "); n = 2; }
+    el.textContent = "";
+    if (i < 0) { el.textContent = texto; el.setAttribute("data-quebra", "nao"); return; }
+    var corte = i + n;                                                   // o separador e o espaço ficam na 1ª parte
     el.appendChild(document.createTextNode(texto.slice(0, corte)));
-    var s = document.createElement("span"); s.style.whiteSpace = "nowrap"; s.textContent = texto.slice(corte);
-    el.appendChild(s);
+    var s = document.createElement("span"); s.style.whiteSpace = "nowrap"; s.textContent = texto.slice(corte); el.appendChild(s);
+    if (el.offsetParent === null || !(document.fonts && document.fonts.status === "loaded")) return;   // mede num quadro seguinte
+    var re = el.getBoundingClientRect(), rs = s.getBoundingClientRect();
+    if (rs.top - re.top > 0.4 * rs.height) {                             // o último trecho desceu: a quebra à mão
+      el.insertBefore(document.createElement("br"), s); el.style.whiteSpace = "nowrap";
+      el.setAttribute("data-quebra", "sim");
+    } else el.setAttribute("data-quebra", "nao");
   }
 
   window.__renderAt = function (t) {

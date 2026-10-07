@@ -23,7 +23,7 @@
         vazio, com um recuo curto. No mesmo quadro o CARTÃO DA FALA (--papel, textura, Inter 700, 280 px, --tinta-escura)
         entra no lugar dela, abaixo da ponta do fio, em duas partes no MESMO cartão (a regência): “This time, em "This
         (4,833) e no price tag is attached.” em "no (7,533; 1,5 s até o corte: o piso de ofício, conflito declarado). O
-        cartão nasce com o tamanho das duas linhas (a 2ª vazia até a voz) e acende em 0,3 s, enquanto a etiqueta, em
+        cartão nasce com o tamanho da 1ª parte e cresce para as duas em "no (revisão 4, abaixo) e acende em 0,3 s, enquanto a etiqueta, em
         queda rápida (12.000 px/s²), passa POR CIMA dele e some pelo pé do quadro em ~0,35 s. No instante da queda,
         3 elementos (o fio, a etiqueta a cair e o cartão), o teto; depois, 2. Blocos: 1 (o cartão).
     A luz: atrás da etiqueta pendurada (1.920/760) e, quando ela se solta, desliza em 300 ms para trás do cartão
@@ -49,6 +49,20 @@
      os de antes. (2) A nota do cético: em 5,03–5,07 as letras do herói passavam sobre "This time," da fala. A etiqueta passa a vir
      ANTES do cartão no DOM: cai por trás dele, e a fala fica por cima dela em todo quadro. A queda não muda; só a ordem das camadas
      (o fio já ficava atrás do cartão). -->
+<!-- REVISÃO DE ESPECTADOR, 4 (02/10/2026; revisao-premiere-lucas.md, "A 4ª pergunta: a s36", o que "segue a regra sem mudá-la";
+     identidade §5, "A regra que fica": campo em branco esperando a voz não vai à tela):
+     O QUE MUDOU: o cartão da fala nascia em "This (4,833) com o tamanho das DUAS linhas e a 2ª em branco até "no (7,533): 2,7 s de
+     papel vazio sob “This time, (out/juneau/_tmp/olhar/s34@6.png). Agora ele nasce com o tamanho da 1ª parte só (w1 × h1, medidos
+     com a 2ª parte fora do fluxo) e CRESCE até o tamanho das duas (w × h) em "no, em 0,3 s (ease-out), com o alto fixo em y 760,
+     centrado em x 1.920 sob a ponta do fio; a 2ª parte acende em 0,3 s a partir de 7,633 (0,1 s depois de o papel começar a
+     crescer), e `overflow: hidden` no cartão recorta o que ainda não entrou. A fala passou a `text-align: center`: com o cartão
+     alargando dos dois lados, a 1ª parte, alinhada à esquerda, deslizaria ~1.000 px para a esquerda em 0,3 s enquanto se lê; centrada,
+     não sai do lugar. A luz da mesa, que ia para 1.920/1.110 (o centro do cartão de duas linhas), passa a ir para o centro do cartão
+     no instante (760 + h/2), e desce com ele quando cresce.
+     O QUE NÃO MUDOU: a etiqueta, o fio, a queda, os tempos (“This time, em 4,833; no price tag is attached.” em 7,533, o conflito de
+     1,5 s até o corte já declarado), o crédito e a câmera; nenhum texto novo; nenhum tempo de palavra muda. O crédito desta cena é
+     solto sobre a mesa (sem pílula): a regra da pílula do crédito não se aplica.
+     Cópia de antes: out/juneau/_tmp/art/s34-antes-revisao-4.html (sha1 8025cfba74d7b2892082aa3442eab14f92958ed5). -->
 <head>
 <meta charset="utf-8">
 <title>s34 — Opponents recalled the 1982 estimate of about $2.8 billion. "This time," the statement against it said, "no price tag is attached."</title>
@@ -82,14 +96,14 @@
 
   /* o cartão da fala (identidade §5): --papel com textura, a fala em Inter 700, 280 px, em duas linhas (as duas partes) */
   .folha { position: absolute; left: 0; top: 0; background: var(--papel); color: var(--tinta-escura); transform-origin: 50% 50%; opacity: 0;
-    padding: 56px 60px;
+    padding: 56px 60px; overflow: hidden;   /* revisão 4: o cartão cresce com a 2ª parte, e o papel recorta o que ainda não entrou */
     box-shadow: 0 6px 10px color-mix(in srgb, var(--tinta-escura) 35%, transparent),
                 0 40px 110px color-mix(in srgb, var(--tinta-escura) 55%, transparent); }
   .folha::before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
     background-size: 420px;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
   .fala { position: relative; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-fala); line-height: 1.06;
-    letter-spacing: -0.005em; color: var(--tinta-escura); }
+    letter-spacing: -0.005em; color: var(--tinta-escura); text-align: center; }   /* revisão 4: centrado, para a 1ª parte não deslizar quando o cartão alarga */
   .fala span { display: block; opacity: 0; }
 
   /* o crédito (§4.2): 76 px, --sec, x = 200, abaixo de y = 1880, solto sobre a mesa */
@@ -223,16 +237,18 @@
     parte2: 7.533                       // "no (361,6): a 2ª parte no mesmo cartão (1,5 s até o corte)
   };
   var FIO = { x: 1917, furo: 600 };     // o furo da etiqueta pendurada, a 600 px do alto do quadro
-  var CARD = { cx: 1920, y: 760, w: 0, h: 0 };
-  var LUZ1 = { x: 1920, y: 760 }, LUZ2 = { x: 1920, y: 1110 };
+  var CARD = { cx: 1920, y: 760, w: 0, h: 0, w1: 0, h1: 0 };   // w/h: as duas partes; w1/h1: só a 1ª (revisão 4: o cartão nasce com w1 × h1 e cresce até w × h em "no)
+  var LUZ1 = { x: 1920, y: 760 }, LUZ2 = { x: 1920 };           // a luz atrás do cartão: o y é o centro do cartão no instante (revisão 4)
 
   var medido = false;
   function medir() {
     var l1 = E("l1"), l2 = E("l2"), card = E("falaCard");
-    card.style.width = "";                                   // solta a largura: o cartão encolhe ao texto antes da medida
+    card.style.width = ""; card.style.height = "";           // solta o tamanho: o cartão encolhe ao texto antes da medida
     if (!l1.offsetWidth) return;
-    CARD.w = Math.max(l1.offsetWidth, l2.offsetWidth) + 120;
-    CARD.h = E("falaCard").offsetHeight;
+    l2.style.display = "none";                               // só a 1ª parte: o tamanho com que o cartão nasce em "This
+    CARD.w1 = l1.offsetWidth + 120; CARD.h1 = card.offsetHeight;
+    l2.style.display = "";                                   // as duas partes: o tamanho a que ele cresce em "no
+    CARD.w = Math.max(l1.offsetWidth, l2.offsetWidth) + 120; CARD.h = card.offsetHeight;
     medido = true;
   }
   function por(el, cx, cy, w, h, rot, s, op) {
@@ -262,16 +278,22 @@
     fio.style.transform = "rotate(" + (tau > 0 ? 1.5 * Math.sin(8 * tau) * Math.exp(-2 * tau) : 0).toFixed(3) + "deg)";
 
     // ── b2: o cartão da fala no lugar da etiqueta, em duas partes no mesmo cartão ──
+    // revisão 4: o cartão NASCE com o tamanho da 1ª parte (w1 × h1) e CRESCE até o das duas (w × h) em "no (7,533), em 0,3 s,
+    // com o alto fixo em y 760 e centrado em x 1.920 (o texto é centrado: a 1ª parte não desliza); a 2ª parte acende 0,1 s
+    // depois de o papel começar a crescer, e o overflow do cartão recorta o que ainda não entrou. Nenhum papel em branco à espera.
     var p = eo(seg(t, T.solta, T.cardDur));
-    por(E("falaCard"), CARD.cx, CARD.y + CARD.h / 2, CARD.w, CARD.h, 0, 0.92 + 0.08 * p, seg(t, T.solta, 0.3));
-    E("falaCard").style.width = CARD.w ? CARD.w + "px" : "";
+    var g = eo(seg(t, T.parte2, 0.3));
+    var w = CARD.w ? lerp(CARD.w1, CARD.w, g) : 0, h = CARD.h ? lerp(CARD.h1, CARD.h, g) : 0;
+    var fc = E("falaCard");
+    por(fc, CARD.cx, CARD.y + h / 2, w, h, 0, 0.92 + 0.08 * p, seg(t, T.solta, 0.3));
+    fc.style.width = w ? w.toFixed(1) + "px" : ""; fc.style.height = h ? h.toFixed(1) + "px" : "";
     E("l1").style.opacity = eo(seg(t, T.solta, 0.3)).toFixed(3);
-    E("l2").style.opacity = eo(seg(t, T.parte2, 0.3)).toFixed(3);
+    E("l2").style.opacity = eo(seg(t, T.parte2 + 0.1, 0.3)).toFixed(3);
 
-    // a luz: atrás da etiqueta; quando ela se solta, desliza para trás do cartão
+    // a luz: atrás da etiqueta; quando ela se solta, desliza para trás do cartão, e acompanha o centro dele quando cresce
     var u = eb(seg(t, T.solta, 0.3));
     cam.style.setProperty("--luz-x", lerp(LUZ1.x, LUZ2.x, u).toFixed(1) + "px");
-    cam.style.setProperty("--luz-y", lerp(LUZ1.y, LUZ2.y, u).toFixed(1) + "px");
+    cam.style.setProperty("--luz-y", lerp(LUZ1.y, CARD.y + (h || 350) / 2, u).toFixed(1) + "px");
 
     // ── o crédito, da etiqueta ao fim ──
     var c = E("credFonte"), opC = eo(seg(t, T.etiqueta, 0.3));

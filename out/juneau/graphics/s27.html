@@ -30,7 +30,7 @@
         move the capital and build in Willow.""  (regência s27#2)
         No começo do beat (5,533) o card de Stoops, com a legenda, DESLIZA para a coluna da esquerda (x 310) em 0,4 s,
         abrindo a mesa para o cartão da fala (a legenda, em 1.100 px desde a entrada, uma parte por linha, vai com ele; o
-        cartão entra quando o deslize acaba, 5,933→6,233). O CARTÃO DA FALA
+        cartão e a fala entram JUNTOS em "make", 6,4→6,7, depois de o deslize acabar em 5,933). O CARTÃO DA FALA
         (--papel, textura, Inter 700, 280 px, --tinta-escura) à direita (x 1.440→3.336, y 236→1.816, +0,8°: a fala em 5
         linhas de até 12 caracteres, "make fun of / the whole / process and / the amount / of money"; fora do canto do
         YouTube, que sob a câmera começa em y 1.721 e pede x ≤ 3.357, fora da faixa do crédito e dentro da margem direita
@@ -67,6 +67,14 @@
      1.100 px e três linhas (2026 / · Anchorage Daily News / · David Reamer), e a largura não anima. (3) O cartão da fala
      entrava em fade enquanto a legenda ainda deslizava por baixo dele: entra quando o deslize acaba (5,933→6,233; era
      5,733→6,033); a fala continua em "make" (6,4). O corte s26→s27 continua invisível (as mesmas constantes). -->
+<!-- CORREÇÃO 3 (05/10/2026, 5ª leva, último ajuste; identidade §5, "A regra que fica"): a verificação final achou o cartão da
+     fala pousando VAZIO de ~5,97 a ~6,43 s (opaco e sem texto de ~6,2 a ~6,4 s) antes de "make" (6,379 s no words.json; quadro
+     192 = 6,4): campo em branco esperando a voz, que a regra do Lucas não deixa. O QUE MUDOU: só a opacidade do cartão, que
+     passa a seguir T.make (6,4→6,7), a mesma rampa da fala, em vez de T.b2 + desliza (5,933→6,233). O cartão e o texto chegam
+     juntos, e o cartão cresce 8 % (0,92 → 1, 6,4→6,9) enquanto pousa. NÃO MUDOU: o texto, o deslize do card (5,533→5,933), a
+     luz (5,533→5,833, para trás do cartão), as três partes da atribuição, a câmera. Entre 5,933 e 6,4 a direita da mesa fica
+     só com o feltro e a luz já no lugar do cartão (~0,57 s de luz sem objeto): é a mesa, não um campo, e fica declarado. A
+     cópia de antes: out/juneau/_tmp/art/s27-antes-revisao-5f.html (sha1 f185f012300369584a61592a6918bdb9ecf5ee12). -->
 <head>
 <meta charset="utf-8">
 <title>s27 — In 2026, he told Anchorage Daily News columnist David Reamer why: make fun of the whole process and the amount of money</title>
@@ -297,7 +305,7 @@
     var d = eb(seg(t, T.b2, T.desliza));
     E("card").style.transform = "translateX(" + (CARD.dx * d).toFixed(1) + "px)";   // a legenda vai no grupo, com a largura fixa de 1.100 px
     var g = eo(seg(t, T.make, T.cresce)), folha = E("falaCard");
-    folha.style.opacity = seg(t, T.b2 + T.desliza, 0.3).toFixed(3);   // o cartão entra DEPOIS do deslize (5,933→6,233): a legenda nunca passa por baixo dele
+    folha.style.opacity = seg(t, T.make, 0.3).toFixed(3);   // o cartão e a fala entram JUNTOS em "make" (6,4→6,7): o papel nunca pousa vazio (identidade §5, "A regra que fica"; 05/10/2026). Como 6,4 > 5,933, a legenda continua a nunca passar por baixo dele
     folha.style.transform = "rotate(0.8deg) scale(" + (0.92 + 0.08 * g).toFixed(4) + ")";
     E("fala").style.opacity = eo(seg(t, T.make, 0.3)).toFixed(3);
 

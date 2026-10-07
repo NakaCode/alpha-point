@@ -1,8 +1,67 @@
 <!doctype html>
 <html lang="en-US" data-render="4k-native">
+<!-- REVISÃO DE ESPECTADOR, 4 (02/10/2026; editor-de-arte, passo art, a pedido do Claude central; revisao-premiere-lucas.md,
+     "A 4ª pergunta: a s36", o último item; marca/identidade.md §4.2): A PÍLULA DO CRÉDITO DA FONTE ABRAÇA O TEXTO. Antes, a linha
+     "Source: Alaska Department of Labor and Workforce Development, 2013" (2.455 px numa linha) quebrava pelo navegador e a
+     pílula #creditoFonte, bloco de ajuste ao conteúdo com max-width, ficava com a largura máxima da faixa (1.520 px, de x = 200
+     a 1.720), com 107 px de faixa escura vazia à direita da linha mais longa (medido no probe do canal, com o DOM da cena). O
+     comentário do CSS já prometia "pílula de ~1.394 px"; agora é verdade: creditoFonteTexto() quebra a linha À MÃO antes de
+     "Workforce" (CENA.creditos.quebra; não há " · ", e a vírgula deixaria a 1ª linha maior que a faixa), a mesma quebra de
+     antes ("Source: Alaska Department of Labor and" / "Workforce Development, 2013"), com um <br> antes de "Workforce" e o bloco
+     em nowrap, só quando, medido com a fonte carregada, o trecho desceu de linha (decidido uma vez, sem elemento de texto novo). O crédito da MapTiler (#credito, uma
+     linha) não muda. Nenhum texto novo, nenhum tempo de palavra mudou, nada mais na cena mudou. -->
 <head>
 <meta charset="utf-8">
 <title>s08</title>
+<!--
+  REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026)
+  - A marca dele (out/_feedback-queue.jsonl, muruz434-edcf40, s50 @3,7 s, versão 30c7fe12): "mapa muito parado,
+    utilizar mais movimento de câmera (suave)".
+  - A decisão (03/10/2026, out/juneau/_pesquisa/revisao-premiere-lucas.md, "A linha do tempo"): "Em todo mapa parado
+    (Recomendado)": a s50 e todo mapa do Juneau parado por mais de 2 s ganham uma aproximação suave e contínua. A medida
+    e o piso do diretor: conceito-visual.json › _mapas_parados_2026_10_03 (esta cena: 3–5 e 13,75–22,75 s locais).
+  - O que mudou: a câmera não para (CENA.anda): a subida a V1 começa no 1º quadro, na câmera nomeada, com rampa longa;
+    de 2,6 a 11,433 ela se aproxima de Anchorage (zoom 5,80 → 5,95, Anchorage deriva [220, −60] px); o recuo a V2 parte
+    dali; de 13,767 ao fim, a aproximação a Anchorage (zoom 5,20 → 5,49, Anchorage deriva [120, 140] px, perto do mesmo
+    ponto da tela).
+  - Nenhum tempo de palavra, rótulo, linha, fusão de nível ou texto mudou. A cópia de antes: out/juneau/_tmp/art/s08-antes-revisao-5.html.
+  - PARTE B (5ª leva B, 03/10/2026). O cético (o achado mais forte da 5ª leva): a grade de 100 figuras entrava apagada em
+    "labor department" (13,767) e ficava ~3,5 s vazia até "fifteen" (17,29), campo esperando a voz (identidade §5, "A
+    regra que fica"); e no fim o 1960 entrava em "nineteen" (20,733) ao lado da grade ainda nos 15 %, que só passava da
+    metade no último meio segundo (quem lia entendia "1960 = 15 %"). O que mudou:
+      · a grade entra em "fifteen" (17,29, 0,3 s) e os 15 acendem desde esse quadro (17,29 → 17,71, "fifteen"); o
+        ROUGHLY 15% e a linha da fonte entram com ela, em "fifteen" (eram 16,967, "roughly"): o 15% não vai à tela antes
+        da voz, nem o rótulo fica sobre um lugar vazio;
+      · o enchimento começa com o 1960, em "nineteen" de "By nineteen sixty" (20,714), sobe de 15 a 50 sem parar e
+        cruza a metade em "half" (a 50ª figura inteira em 22,59); a borda além da metade se apaga de 22,59 a 22,71; a
+        linha tracejada da metade continua em "more" (22,302). O 1960 nunca fica ao lado dos 15 %;
+      · o estado cheio fica de 22,71 ao fim (23,033), o máximo que a cena deixa com a metade em "half". Levar o
+        pictograma cheio para o começo da s11 mexe no corte: decisão do Claude central (relato).
+    Nenhum tempo de palavra mudou. A cópia de antes: out/juneau/_tmp/art/s08-antes-revisao-5b.html.
+  - PARTE E (5ª leva E, 05/10/2026, mapista; a verificação da parte D, revisao-lucas-workflow-5d.json › verif, "crédito
+    fora da casa na s08"). O #creditoFonte («Source: Alaska Department of Labor and / Workforce Development, 2013», 2
+    linhas) ficava de y ≈ 1798 a 1993, acima da faixa da casa (identidade §4.2: y > 1880, só crédito, de x = 200 a antes
+    de 1720), de 2,75 s ao fim, sem exceção do Lucas. Agora as 3 linhas (a fonte e a MapTiler) fazem um bloco só,
+    encostado, como o #creds de 3 linhas da s35: a mesma letra (76 px, Inter 500, --sec, sobre --rotulo), a entrelinha de
+    1,1 (era 1,15) e o respiro de cima e de baixo menor; a fonte pousa na MapTiler (sem vão, sem os cantos de baixo, e a
+    MapTiler perde o canto de cima à esquerda enquanto a fonte está no ar). Medido no DOM da cena (sonda sem custo,
+    out/juneau/_tmp/art/rev5e/s08-cred.js): a pílula da fonte de y 1882 a 2053, a da MapTiler de 2053 a 2147, x de 200
+    a ≤ 1720; o texto (a caixa da fonte tipográfica) de y 1881 a 2144. Nenhuma letra do texto mudou (o texto é do
+    redator), nem a quebra (" Workforce"), nem os tempos dos créditos. A cópia de antes:
+    out/juneau/_tmp/art/s08-antes-revisao-5e.html.
+  - PARTE E, 2ª RODADA (5ª leva E2, 05/10/2026, mapista; a revisão de espectador e o cético, s08 1:28,4–1:29,2 do
+    vídeo, 12,9–13,7 s da cena). A malha do Canadá ("the continent's roads") nascia inteira em 12,933 (0,3 s, ease-out:
+    a frente varria a tela em ~0,1 s), no fim de "roads." (12,577–13,000 no words.json), ficava cheia só até 13,267 e
+    sumia em 13,767: ~0,8 s no ar, um clarão de linhas ciano sobre metade do quadro, abaixo do piso de beat (1,5 s,
+    identidade §4.3). Agora ela começa a se espalhar de Dawson Creek em "continent's" (12,070) e a frente anda a
+    velocidade constante até 12,933, quando a estrada chega ao encontro (CENA.malha: entra 12,07, dura 0,863, lin); a
+    estrada e a malha saem juntas com a legenda, em 13,467–13,767 (CENA.estrada.some, eram 13,267–13,767). A rede fica
+    1,70 s no ar (12,07–13,767), inteira de ~12,9 a 13,467, e não entra em "The state labor department" (13,767).
+    Medido sem tile (sonda out/juneau/_tmp/art/rev5e2/q-malha.js, quadro a quadro de 11,9 a 13,8 s, a câmera e a
+    projeção da cena): a malha acesa fica a ≥ 68 px (centro da linha) da caixa do CANADA e a ≥ 375 px da legenda; os
+    trechos dela na tela crescem sem salto de 12,1 a 12,9. A conta dos 6 elementos não muda (a estrada e a malha são um).
+    Nenhum tempo de palavra, texto, cor, câmera ou crédito mudou. A cópia de antes: out/juneau/_tmp/art/s08-antes-revisao-5e2.html.
+-->
 <!--
   CANAL ALPHA POINT — JUNEAU, CENA s08, MÃE DO RUN s08→s10 (75,500 → 98,533 s do master; 23,033 s; quadros 2265 → 2956
   a 30 fps). Um arquivo só: os planos de s09 e s10 (regencia.json › s08 › cobre) moram aqui.
@@ -43,17 +102,18 @@
         Highway, 2/6/1942 (recorte 16:9 a 1,27×, Ken Burns de 0,02/s); BRITISH COLUMBIA todo o tempo dela.
     b6  11,433–13,767 "Anchorage to the continent's roads."  — MAPA, corte seco de volta (o mapa não andou): a
         estrada (Glenn + Glennallen–Tok + Alaska Highway de Tok a Dawson Creek) se desenha em --rede-cor em 1,5 s
-        enquanto a câmera recua até Dawson Creek (V2); a malha do Canadá acende a partir do encontro em 12,933 (300 ms);
+        enquanto a câmera recua até Dawson Creek (V2); a malha do Canadá se espalha a partir do encontro de 12,070
+        ("continent's") a 12,933, quando a estrada chega a ele (5e2; era 12,933 em 300 ms);
         as duas são UMA linha e um elemento. A legenda das cores (Border, Roads) entra em 11,433 e sai em 13,467–13,767.
-        CANADA em "continent's" (12,1) até 14,1. A estrada e a malha se apagam em 13,267–13,767.
+        CANADA em "continent's" (12,1) até 14,1. A estrada e a malha se apagam em 13,467–13,767 (5e2; eram 13,267–13,767).
     b7  13,767–20,633 "The state labor department says ... roughly fifteen percent of Alaskans in nineteen forty."  —
-        MAPA + PICTOGRAMA: 100 alasquianos numa caixa --rotulo à direita (entra em 13,767); 15 se acendem com "fifteen
+        MAPA + PICTOGRAMA: 100 alasquianos numa caixa --rotulo à direita (entra em "fifteen", 17,29, desde a parte B); 15 se acendem com "fifteen
         percent" (17,29–18,11), a 1ª fileira e meia; ROUGHLY 15% em "roughly" (16,967) até 20,333, sobre o pictograma; 1940
         em "nineteen" (18,967) até 20,967, à esquerda da 1ª fileira.
         A câmera desliza devagar (V2 → V3) até o fim: nada congela.
     b8  20,633–23,033 "By nineteen sixty, they held more than half."  — 1960 em "nineteen" (20,733) até o fim, à
         esquerda da linha da metade (que se acende, tracejada, em "more"); em "more"
-        (22,302) o pictograma passa da METADE sem número: 50 acesos, e a borda da mancha segue além da linha da metade,
+        (22,302) [parte B: o enchimento corre de 20,714 a "half", 22,59] o pictograma passa da METADE sem número: 50 acesos, e a borda da mancha segue além da linha da metade,
         se apagando (MORE THAN HALF fica na voz).
         POR QUE ASSIM (para o qc; aceito pelo Claude central em 01/10/2026): a fonte diz só "more than half", sem número
         (out/juneau/_dados/s10.json: "o pictograma não pode mostrar metade exata nem inventar a fração"). As 50 figuras
@@ -207,13 +267,18 @@
   /* os CRÉDITOS (§4.1/§4.2): 76 px, --sec sobre a pílula --rotulo, de x = 200 até antes de x = 1720, empilhados a partir
      da faixa abaixo de y = 1880. A linha da fonte é o nome oficial, sem abreviar (Claude central, 01/10/2026): 2.377 px,
      que quebram em duas linhas de 76 px ("Source: Alaska Department of Labor and" / "Workforce Development, 2013",
-     pílula de ~1.394 px), e nunca encolhe (§4.2). Com a da MapTiler, a pilha vai de y ≈ 1798 a 2108, de x = 200 a
+     pílula de ~1.394 px), e nunca encolhe (§4.2). [5e: superado, abaixo.] Com a da MapTiler, a pilha ia de y ≈ 1798 a 2108, de x = 200 a
      ~1686, longe do canto do YouTube; nada da cena entra nesse retângulo enquanto ela está no ar. */
+  /* 5e (a verificação da parte D; identidade §4.2: a faixa de baixo, y > 1880, é só do crédito): a pilha de 3 linhas
+     (a fonte em 2 e a MapTiler em 1) ia de y ≈ 1798 a 2108, com a fonte acima da faixa. Agora as duas pílulas fazem um
+     bloco só, encostado, como o #creds de 3 linhas da s35: a mesma letra (76 px, Inter 500, --sec), entrelinha de 1,1, a
+     MapTiler com 4 px de respiro em cima e 6 embaixo, a fonte com 4 em cima e nenhum embaixo (ela pousa na MapTiler), e
+     o bloco a 13 px do pé do quadro: de y ≈ 1882 a 2147, de x = 200 a ~1690 (medido no DOM, relato 5em). Nenhuma letra do texto mudou. */
   .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
-    font: 500 76px/1.15 sans-serif; font-family: var(--fonte); letter-spacing: 0;
-    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); }
-  #credito { bottom: 52px; }
-  #creditoFonte { bottom: 167px; opacity: 0; }
+    font: 500 76px/1.1 sans-serif; font-family: var(--fonte); letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 4px 24px 6px; border-radius: var(--cantos); }
+  #credito { bottom: 13px; }
+  #creditoFonte { bottom: 107px; opacity: 0; padding: 4px 24px 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
   .credito[hidden] { display: none; }
   #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
     font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
@@ -401,13 +466,31 @@
     // Anchorage na tela quando a foto de 1915 sobe dele (2,6 s); até a 1ª passada do lote 1 subia de "moved" em 1,315 s; em 11,433 recua com a estrada (1,5 s); de 13,767 ao fim
     // desliza (quase a velocidade constante)
     trechos: [[1.1, 1.5, "V0", "V1", 0.5, 0.5], [11.433, 1.5, "V1", "V2", 0.35, 0.45], [13.767, 9.266, "V2", "V3", 0.2, 0.2]],
+    // A CÂMERA QUE NUNCA PARA (REVISÃO DO LUCAS NA LINHA DO TEMPO, 03/10/2026; conceito › _mapas_parados_2026_10_03, s08).
+    // Os "trechos" acima ficam como registro; quem move a câmera agora é CENA.anda:
+    //    sobe (0 → 2,6): a subida a V1 começa no 1º quadro, na câmera nomeada "Juneau–capital" (o fim de s07, que chega
+    //       nela parando), com rampa de entrada longa ("abre", fração do trecho): a câmera já se aproxima devagar antes
+    //       de "though," e a subida nasce desse movimento; chega a V1 em 2,6, como antes (a foto de 1915 sobe de Anchorage);
+    //    meio (2,6 → 11,433): sob a foto de 1915, a Ladd Field e a obra de 1942, e entre elas, a câmera se aproxima de
+    //       Anchorage sem parar (zoom 5,80 → 5,80 + dz, preso ao ponto de Anchorage, que deriva "px" na tela); nada cruza
+    //       o 6,5 nem desce ao 5,8 (a camada presa ao nível 5 não aparece);
+    //    recuo (11,433 → 13,767): o de antes, a partir de onde o meio chegou, até V2;
+    //    fim (13,767 → 23,033): a aproximação a Anchorage, preso perto do mesmo ponto da tela (deriva "px"), com o resto
+    //       do mapa a se abrir em volta, zoom 5,20 → 5,20 + dz (abaixo de 5,5), velocidade constante e rampas nas pontas
+    anda: { sobe: { ate: 2.6, abre: 0.6, fecha: 0.3 },
+            meio: { de: 2.6, ate: 11.433, dz: 0.15, px: [220, -60], abre: 0.5, fecha: 0.5 },
+            recuo: { dura: 1.5, abre: 0.35, fecha: 0.45 },
+            fim: { de: 13.767, ate: 23.033, dz: 0.29, px: [120, 140], abre: 0.5, fecha: 0.5 } },
 
     fronteira: { geo: "alasca-e-vizinhos", a: "US1", b: "CAN" },
     cidades: { geo: "cidades-ne", A: "Anchorage", F: "Fairbanks", J: "Juneau" },
     pontos: { AF: 2.3, J: 0.0 },                     // Anchorage e Fairbanks se acendem sem nome quando chegam ao quadro
     estrada: { glenn: "glenn-highway", elo: "estrada-glennallen-tok", ah: "alaska-highway", entra: 11.433, dura: 1.5,
-               some: [13.267, 0.5] },
-    malha: { geo: "rede-rodoviaria-continente", pais: "CAN", encontro: "alaska-highway-ligacao-continente", entra: 12.933, dura: 0.3 },
+               some: [13.467, 0.3] },   // 5e2: a estrada e a malha saem juntas com a legenda, 13,467–13,767 (eram 13,267–13,767)
+    // 5e2 (revisão de espectador): a malha se espalha de Dawson Creek desde "continent's" (12,070) até a chegada da estrada
+    //    ao encontro (12,933), com a frente em velocidade constante ("lin"); era 12,933 em 0,3 s (eo), inteira de uma vez
+    //    depois de "roads." e no ar só ~0,7 s
+    malha: { geo: "rede-rodoviaria-continente", pais: "CAN", encontro: "alaska-highway-ligacao-continente", entra: 12.07, dura: 0.863, lin: true },
     rotulos: [
       { id: "rotAnchorage", texto: "anchorage", ref: "A", lado: "esquerda", dx: -40, dy: 0, entra: 7.867 },
       { id: "rotFairbanks", texto: "fairbanks", ref: "F", lado: "esquerda", dx: -40, dy: 0, entra: 8.433 },
@@ -416,8 +499,8 @@
       { id: "rotCanada", texto: "canada", lnglat: [-116.25, 64.5], lado: "centro", dx: 0, dy: 0, entra: 12.1, sai: 14.1 }
     ],
     legenda: { entra: 11.433, sai: 13.467 },
-    creditos: { mapa: "© MapTiler © OpenStreetMap contributors", base: 52, vao: 8,
-                fonte: [[2.633, 5.333], [16.967, 99]] },   // a linha da fonte: enquanto 1914, ROUGHLY 15%, 1940 e 1960 estão no ar
+    creditos: { mapa: "© MapTiler © OpenStreetMap contributors", base: 13, vao: 0,   // 5e: o bloco na faixa da casa (CSS .credito)
+                fonte: [[2.633, 5.333], [17.29, 99]] , quebra: " Workforce" },   // a linha da fonte: enquanto 1914, ROUGHLY 15%, 1940 e 1960 estão no ar
 
     // ── as fotos (as medidas da s09)
     // as fitas da foto (a da foto impressa da prancha, 520 × 150, −4° e 4°): colam quando a foto acaba de subir (3,15), de
@@ -434,14 +517,14 @@
       rladd:  { texto: "ladd",      entra: 5.633, sai: 7.4,  saiDur: 0.30 },
       a1943:  { texto: "aviso1943", entra: 5.633, sai: 7.4,  saiDur: 0.30 },
       rbc:    { texto: "bc",        entra: 9.667, ate: 11.433 },
-      rRoughly: { texto: "roughly", entra: 16.967, sai: 20.333, saiDur: 0.30, centro: [2996, 520] },
+      rRoughly: { texto: "roughly", entra: 17.29, sai: 20.333, saiDur: 0.30, centro: [2996, 520] },
       r1940:  { texto: "ano1940",   entra: 18.967, sai: 20.967, saiDur: 0.30, dir: [2580, 680] },
       r1960:  { texto: "ano1960",   entra: 20.733, dir: [2580, 1062] }
     },
     // ── o pictograma: 10 × 10 alasquianos, à direita, abaixo de CANADA; 15 acesos com "fifteen percent", e com "more"
     //    passa da metade: 50 acesos e a borda da mancha além da linha da metade, apagando-se (sem número)
-    picto: { x: 2620, y: 680, cols: 10, rows: 10, cw: 68, ch: 88, pad: 36, entra: 13.767,
-             luz1940: [17.29, 18.11, 15], luz1960: [22.302, 22.75, 50], borda: [22.75, 22.91, [0.8, 0.62, 0.46, 0.32, 0.2, 0.1]] }
+    picto: { x: 2620, y: 680, cols: 10, rows: 10, cw: 68, ch: 88, pad: 36, entra: 17.29, metade: 22.302,   // 5b: a grade entra em "fifteen", já acendendo
+             luz1940: [17.29, 17.71, 15], luz1960: [20.714, 22.52, 50], borda: [22.59, 22.71, [0.8, 0.62, 0.46, 0.32, 0.2, 0.1]] }
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -473,7 +556,34 @@
   CENA.rotulos.forEach(function (r) { E(r.id).textContent = X[r.texto]; });
   Object.keys(CENA.textosFixos).forEach(function (id) { E(id).textContent = X[CENA.textosFixos[id].texto]; });
   E("legBorderTxt").textContent = X.legBorder; E("legRoadsTxt").textContent = X.legRoads;
-  E("creditoFonte").textContent = X.fonte;
+  // REVISÃO DE ESPECTADOR, 4 (02/10/2026): a pílula abraça o texto. A montagem é a de antes (o texto e o último trecho num
+  // span nowrap, para "CC BY-SA 4.0" não se partir). Se, medido com a fonte carregada e o elemento desenhado, o último
+  // trecho desceu de linha, entra um <br> antes dele e o bloco vira nowrap: a quebra passa a ser À MÃO, no último " · "
+  // (sem " · ", no último "; " ou ", "; a cena pode ditar outra), nunca no meio de um nome ("Wikimedia Commons" fica
+  // junto), e a largura da pílula vira a da linha mais longa, não a máxima da faixa. Decidido uma vez por texto, sem
+  // elemento de texto novo (o <br> não tem texto) e com o mesmo textContent do textos-tela.json.
+  function creditoFonteTexto(el, texto, quebra) {   // nome próprio: creditoTexto, abaixo, é a STRING do crédito do mapa
+    if (!el) return;
+    var novo = el.getAttribute("data-texto") !== texto;
+    if (!novo && el.getAttribute("data-quebra")) return;               // já decidido para este texto
+    el.setAttribute("data-texto", texto); el.removeAttribute("data-quebra"); el.style.whiteSpace = "";
+    var i = quebra ? texto.indexOf(quebra) : -1, n = 1;                 // a quebra dita pela cena: antes da palavra
+    if (i < 0) { i = texto.lastIndexOf(" · "); n = 3; }
+    if (i < 0) { i = texto.lastIndexOf("; "); n = 2; }
+    if (i < 0) { i = texto.lastIndexOf(", "); n = 2; }
+    el.textContent = "";
+    if (i < 0) { el.textContent = texto; el.setAttribute("data-quebra", "nao"); return; }
+    var corte = i + n;                                                   // o separador e o espaço ficam na 1ª parte
+    el.appendChild(document.createTextNode(texto.slice(0, corte)));
+    var s = document.createElement("span"); s.style.whiteSpace = "nowrap"; s.textContent = texto.slice(corte); el.appendChild(s);
+    if (el.offsetParent === null || !(document.fonts && document.fonts.status === "loaded")) return;   // mede num quadro seguinte
+    var re = el.getBoundingClientRect(), rs = s.getBoundingClientRect();
+    if (rs.top - re.top > 0.4 * rs.height) {                             // o último trecho desceu: a quebra à mão
+      el.insertBefore(document.createElement("br"), s); el.style.whiteSpace = "nowrap";
+      el.setAttribute("data-quebra", "sim");
+    } else el.setAttribute("data-quebra", "nao");
+  }
+  creditoFonteTexto(E("creditoFonte"), X.fonte, CENA.creditos.quebra);
 
   // ── o pictograma: 100 figuras (cabeça e corpo), montadas uma vez ──────────────────────────────────
   var PC = CENA.picto, NS = "http://www.w3.org/2000/svg", figuras = [];
@@ -821,9 +931,41 @@
     return { de: tr[0], dura: tr[1], f: criarCameraMapa({ viewports: [CENA.viewports[tr[2]], CENA.viewports[tr[3]]], duration: tr[1],
       width: CENA.largura, height: CENA.altura, bearingLoop: null, cameraAbre: tr[4], cameraFecha: tr[5] }) };
   });
+  // A CÂMERA QUE NUNCA PARA (CENA.anda): a câmera que põe o ponto mG (mercator) em S na tela, no zoom z
+  var AN = CENA.anda, VP = CENA.viewports;
+  var mercA = function (ll) { var s = Math.sin(ll[1] * Math.PI / 180); return [ll[0] / 360 + 0.5, 0.5 - 0.25 * Math.log((1 + s) / (1 - s)) / Math.PI]; };
+  var desmercA = function (q) { return [(q[0] - 0.5) * 360, 360 / Math.PI * Math.atan(Math.exp((0.5 - q[1]) * 2 * Math.PI)) - 90]; };
+  var progressoA = function (t, T, r1, r2) {
+    var v = 1 / (T - r1 / 2 - r2 / 2); t = cl(t, 0, T);
+    if (t < r1) return v * t * t / (2 * r1);
+    if (t <= T - r2) return v * (r1 / 2 + (t - r1));
+    var u = T - t; return 1 - v * u * u / (2 * r2);
+  };
+  var naTelaV = function (v, ll) { var ws = 512 * Math.pow(2, v.zoom), m = mercA(ll), o = mercA([v.lng, v.lat]); return [CENA.largura / 2 + (m[0] - o[0]) * ws, CENA.altura / 2 + (m[1] - o[1]) * ws]; };
+  var camPonto = function (ll, S, z) {
+    var ws = 512 * Math.pow(2, z), m = mercA(ll), c = desmercA([m[0] - (S[0] - CENA.largura / 2) / ws, m[1] - (S[1] - CENA.altura / 2) / ws]);
+    return { lng: c[0], lat: c[1], center: c, zoom: z, bearing: 0, pitch: 0 };
+  };
+  var aproxPonto = function (ll, v0, P) {
+    var S0 = naTelaV(v0, ll);
+    return function (t) { var p = progressoA(t - P.de, P.ate - P.de, P.abre, P.fecha);
+      return camPonto(ll, [S0[0] + P.px[0] * p, S0[1] + P.px[1] * p], v0.zoom + P.dz * p); };
+  };
+  var CIDA = CID.A;
+  if (!CIDA) return falhar("não achei Anchorage em " + CENA.cidades.geo + " (a câmera do meio e do fim se prende a ele).");
+  var meioAt = aproxPonto(CIDA, VP.V1, AN.meio), V1b = meioAt(AN.meio.ate);
+  var fimAt = aproxPonto(CIDA, VP.V2, AN.fim);
+  var sobeF = criarCameraMapa({ viewports: [VP.V0, VP.V1], duration: AN.sobe.ate, width: CENA.largura, height: CENA.altura,
+    bearingLoop: null, cameraAbre: AN.sobe.abre, cameraFecha: AN.sobe.fecha });
+  var recuoF = criarCameraMapa({ viewports: [{ lng: V1b.lng, lat: V1b.lat, zoom: V1b.zoom, bearing: 0, pitch: 0 }, VP.V2], duration: AN.recuo.dura,
+    width: CENA.largura, height: CENA.altura, bearingLoop: null, cameraAbre: AN.recuo.abre, cameraFecha: AN.recuo.fecha });
   var cameraAt = function (t) {
-    var k = 0; for (var i = 0; i < CAMS.length; i++) if (t >= CAMS[i].de) k = i;
-    return CAMS[k].f(cl(t - CAMS[k].de, 0, CAMS[k].dura));
+    t = t || 0;
+    if (t <= 0) return { center: [VP.V0.lng, VP.V0.lat], zoom: VP.V0.zoom, bearing: 0, pitch: 0 };   // "Juneau–capital", pelos números
+    if (t < AN.sobe.ate) return sobeF(t);
+    if (t < AN.meio.ate) return meioAt(t);
+    if (t < AN.fim.de) return recuoF(cl(t - AN.meio.ate, 0, AN.recuo.dura));
+    return fimAt(t);
   };
   var c0 = cameraAt(0);
   var map;
@@ -996,7 +1138,7 @@
     if (fe !== ultimaFracao) { var se = map.getSource("estrada"); if (se) se.setData(trechoDaEstrada(fe)); ultimaFracao = fe; }
     var some = 1 - seg(t, ES.some[0], ES.some[1]), ve = t >= ES.entra ? some : 0;
     map.setPaintProperty("estrada-contorno", "line-opacity", ve); map.setPaintProperty("estrada", "line-opacity", ve);
-    var MA = CENA.malha, Rk = +(MALHA.dmax * eo(seg(t, MA.entra, MA.dura))).toFixed(1);
+    var MA = CENA.malha, pm = seg(t, MA.entra, MA.dura), Rk = +(MALHA.dmax * (MA.lin ? cl(pm, 0, 1) : eo(pm))).toFixed(1);
     if (Rk !== ultimoRaio) { var sm = map.getSource("malha"); if (sm) sm.setData(malhaAte(Rk)); ultimoRaio = Rk; }
     var vm = t >= MA.entra ? some : 0;
     map.setPaintProperty("malha-contorno", "line-opacity", vm); map.setPaintProperty("malha", "line-opacity", vm);
@@ -1007,7 +1149,7 @@
     // ── b7–b8: o pictograma ──
     var pc = E("picto"); if (pc) pc.style.opacity = (t < PC.entra ? 0 : eo(seg(t, PC.entra, 0.3))).toFixed(3);
     var L = acesas(t); for (var i = 0; i < figuras.length; i++) figuras[i].setAttribute("opacity", L[i].toFixed(3));
-    var me = E("pictoMetade"); if (me) me.setAttribute("opacity", (0.55 * eo(seg(t, PC.luz1960[0], 0.3))).toFixed(3));
+    var me = E("pictoMetade"); if (me) me.setAttribute("opacity", (0.55 * eo(seg(t, PC.metade, 0.3))).toFixed(3));
 
     // ── os créditos: o da MapTiler enquanto o mapa aparece (some sob as fotos em tela cheia); o da fonte enquanto os
     //    textos dela estão no ar, empilhado sobre o da MapTiler ──
@@ -1015,9 +1157,12 @@
     var c1 = E("credito"), cf = E("creditoFonte");
     if (c1) c1.style.visibility = cheia ? "hidden" : "visible";
     if (c1 && cf) {
+      creditoFonteTexto(cf, X.fonte, CENA.creditos.quebra);   // revisão 4: a quebra à mão, decidida com a fonte carregada
       cf.style.bottom = (CENA.creditos.base + c1.offsetHeight + CENA.creditos.vao) + "px";
       var vf = 0; CENA.creditos.fonte.forEach(function (j) { vf = Math.max(vf, eo(seg(t, j[0], 0.3)) * (1 - seg(t, j[1], 0.3)) * (t >= j[0] ? 1 : 0)); });
       cf.style.opacity = vf.toFixed(3);
+      // 5e: com a fonte pousada nela, a MapTiler perde o canto de cima à esquerda (o bloco é um só)
+      c1.style.borderTopLeftRadius = vf > 0.001 ? "0" : "";
     }
   }
 

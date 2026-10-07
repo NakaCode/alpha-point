@@ -1,6 +1,6 @@
 ---
 name: cacar-no-chrome
-description: Caça B-roll genérico nos bancos pagos do Alpha Point (Envato Elements, Motion Array, Storyblocks e Shutterstock), nas contas que o Lucas designou (as individuais dele no Shutterstock e no Motion Array; a assinatura da Top10 na Storyblocks e no Envato), no perfil "Profile 1" do Chrome, provado pelo disco a cada caça e conferido de novo antes de cada download, com a extensão Claude in Chrome. Grava cada candidato com três prints da prévia, passa os candidatos pelo conferente-de-midia, mostra ao Lucas a lista (um preferido por item e as reservas) e só baixa o que ele aprovar no chat, um download por vez; depois confere o arquivo e o PDF de licença contra o item, e só então leva o arquivo à cena. Use na sessão deste canal só quando o Lucas pedir a caça no chat ("caça no Chrome", "baixa do Envato/Motion Array/Storyblocks/Shutterstock", "pega os clipes da lista"); a lista de caça existir não basta.
+description: Caça B-roll genérico nos bancos pagos do Alpha Point (Envato Elements, Motion Array, Storyblocks e Shutterstock), nas contas que o Lucas designou (as individuais dele no Shutterstock e no Motion Array; a assinatura da Top10 na Storyblocks e no Envato), no Brave do Lucas (perfil "Default", desde 02/10/2026; até o Juneau, o "Profile 1" do Chrome), provado pelo disco a cada caça e conferido de novo antes de cada download, com a extensão Claude in Chrome. Grava cada candidato com três prints da prévia, passa os candidatos pelo conferente-de-midia, mostra ao Lucas a lista (um preferido por item e as reservas) e só baixa o que ele aprovar no chat, um download por vez; depois confere o arquivo e o PDF de licença contra o item, e só então leva o arquivo à cena. Use na sessão deste canal só quando o Lucas pedir a caça no chat ("caça no Chrome", "baixa do Envato/Motion Array/Storyblocks/Shutterstock", "pega os clipes da lista"); a lista de caça existir não basta.
 ---
 
 # Caçar no Chrome, cópia adaptada do Alpha Point
@@ -14,7 +14,8 @@ description: Caça B-roll genérico nos bancos pagos do Alpha Point (Envato Elem
 > **O que mudou do molde:**
 > - as contas são as que o Lucas designou: as individuais dele no Shutterstock e no Motion Array, e a assinatura da
 >   Top10 na Storyblocks e no Envato, desde 30/09/2026, como o molde já fazia (`marca/midia.md` §2.3, "A exceção da
->   Top10"). O perfil é o `Profile 1` do Chrome (rótulo "Lucas"), e a extensão conectada
+>   Top10"). O navegador é o Brave do Lucas, no perfil `Default` (rótulo "Pessoal"), desde 02/10/2026; até o
+>   Juneau, foi o `Profile 1` do Chrome (rótulo "Lucas"). A extensão conectada
 >   se prova desse perfil pelo disco no começo de cada caça, com a seleção conferida de novo pelo `inUse` antes de
 >   cada banco e de cada clique que baixa (o clipe e o PDF da linha L), e a prova refeita se a extensão
 >   reconectar (§0, item 5);
@@ -37,6 +38,11 @@ description: Caça B-roll genérico nos bancos pagos do Alpha Point (Envato Elem
 >   caça para a outra (Lucas, 30/09/2026); um ritmo fixo de 30 s por banco, só com as buscas da lista; e o banco
 >   que recusou volta só numa caça nova que o Lucas peça nomeando-o (§2.0, §2.2 e §5; a primeira caça do Juneau,
 >   29/09/2026, `APRENDIZADOS.md` item 48; 30/09/2026 nesta cópia).
+> - **o navegador da caça é o Brave** (Lucas, 02/10/2026: "Para os próximos vídeos quero que o navegador utilizado
+>   seja o brave, o mesmo já conta com todas as contas conectadas. A decisão baseia-se no consumo de memória RAM e
+>   preferência do usuário (eu)"). O nome da skill fica. Onde ela diz "Chrome" para o navegador do Lucas (a janela,
+>   a aba, os avisos, a barra de downloads, a página de erro), leia "o Brave", que é do mesmo motor (o Chromium).
+>   O Chrome que continua com esse nome é o do render (§0, item 3).
 >
 > **Acima desta skill:** o CLAUDE.md ("Caça nos bancos pagos") e `marca/midia.md` (§1 a §8). Se algo aqui
 > divergir deles, pare e avise o Lucas.
@@ -61,8 +67,10 @@ ao Lucas, com prova no disco, o que achou e o que não achou.
    palavras, que ele **não usa nenhuma ferramenta
    `mcp__claude-in-chrome__*` nem do painel de navegador do app**. A documentação da extensão não diz o que
    acontece com duas sessões mexendo no mesmo Chrome.
-3. **Sem render neste PC durante a caça** (REND-07): o Chrome do Lucas e o do render disputam a máquina. **Nunca
-   mate Chrome por nome** (`taskkill /IM chrome.exe` derruba o Chrome do Lucas e o render juntos).
+3. **Sem render neste PC durante a caça** (REND-07): o Brave da caça e o Chrome do render disputam a máquina.
+   **Nunca mate navegador por nome**: `taskkill /IM brave.exe` derruba o Brave da caça, e
+   `taskkill /IM chrome.exe`, o render e o Chrome do Lucas. O render e os portões abrem um Chrome próprio, sem
+   janela: por isso o Chrome continua instalado no PC, mesmo com a caça no Brave.
 4. **As ferramentas do navegador** (extensão Claude in Chrome) se carregam num só `ToolSearch`. **Só estas:**
    - `list_connected_browsers` e `select_browser` (a prova do perfil, item 5);
    - `tabs_context_mcp`, `tabs_create_mcp` e `tabs_close_mcp` (as abas da caça);
@@ -79,7 +87,7 @@ ao Lucas, com prova no disco, o que achou e o que não achou.
    **Proibidas, sempre:** `javascript_tool`, `form_input`, `read_network_requests`, `read_console_messages`,
    `shortcuts_list`, `shortcuts_execute`, `gif_creator` (a exportação baixa um GIF para Downloads),
    `upload_image` e `file_upload` (mandariam arquivo ou print desta máquina ao banco), `resize_window` (a caça não
-   precisa), `switch_browser` (manda pedido de conexão a todo Chrome com a extensão, inclusive os do Top10) e
+   precisa), `switch_browser` (manda pedido de conexão a todo navegador com a extensão, inclusive os do Top10) e
    `browser_batch` (cada clique se decide olhando a tela do anterior). No `computer`, também: `type` (nada se
    digita), `right_click`, `double_click`, `triple_click`, `left_click_drag`, clique com `modifiers` (Alt+clique
    baixa o link no Chrome) e qualquer atalho com Ctrl ou Alt (Ctrl+S salva a página em Downloads).
@@ -91,45 +99,53 @@ ao Lucas, com prova no disco, o que achou e o que não achou.
      banco não tem". Se sumirem ou derem erro de conexão no meio da caça: item 5, "A seleção se confere de novo".
    - **Nenhuma ferramenta do navegador, além do `list_connected_browsers`, se chama antes do `select_browser`**
      do item 5.
-5. **O Chrome certo: a prova do perfil, no começo de cada caça.** A caça é no Chrome deste PC, no perfil
-   `Profile 1`, de rótulo "Lucas" (a conta pessoal dele), e em nenhum outro. **Nunca um perfil com rótulo
+5. **O navegador certo: a prova do perfil, no começo de cada caça.** A caça é no Brave deste PC, no perfil
+   `Default`, de rótulo "Pessoal" (o único que o Brave tem; Lucas, 02/10/2026), e em nenhum outro navegador nem
+   perfil. O Chrome `Profile 1` "Lucas", o das caças do Juneau, fica fora. **Nunca um perfil com rótulo
    `top10company.com.br`.**
-   1. `list_connected_browsers`. O `deviceId` do Profile 1 é o que o CLAUDE.md registra ("Caça nos bancos
-      pagos"): em 26/09/2026, `02506125-8a10-410c-8904-f6ebfc02bdbf`. O nome ("Browser 1", "Browser 2") troca de
-      ordem e não prova nada: vale o `deviceId`. O `8059a56f-9c8d-46d6-8c54-6b42e5788adc` é de um perfil do
-      Top10: nunca o selecione.
-   2. `select_browser` com o `deviceId` do Profile 1.
+   1. `list_connected_browsers`. O `deviceId` do Brave é o que o CLAUDE.md registra ("Caça nos bancos
+      pagos"): em 02/10/2026, `2e106ec9-46e7-4285-aa99-c3b254897455`. O nome ("Browser 1", "Browser 2") troca
+      de ordem e não prova nada: vale o `deviceId`. O `8059a56f-9c8d-46d6-8c54-6b42e5788adc` é de um perfil do
+      Top10 no Chrome: nunca o selecione. O `02506125-8a10-410c-8904-f6ebfc02bdbf` é o Chrome `Profile 1`: fora
+      da caça desde 02/10.
+   2. `select_browser` com o `deviceId` do Brave.
    3. Gere uma marca única no Git Bash, uma vez só (as variáveis não passam de uma chamada para a outra):
       `echo "alpha-point-perfil-$(date +%Y%m%d-%H%M%S)-$RANDOM"`. Abra uma aba (`tabs_create_mcp`) e `navigate`
       para `https://example.com/?<a marca>`.
-   4. Procure a marca no disco, só no histórico do Profile 1:
-      `grep -c -a -F "<a marca>" "C:/Users/zangp/AppData/Local/Google/Chrome/User Data/Profile 1/History"`.
-      O Chrome grava o histórico com atraso: se sair 0, espere 10 s (`wait`) e procure de novo, até três vezes.
-      Não abra o histórico de outro perfil: a marca é única, e achá-la no do Profile 1 basta.
+   4. Procure a marca no disco, só no histórico do Brave `Default`:
+      `grep -c -a -F "<a marca>" "C:/Users/zangp/AppData/Local/BraveSoftware/Brave-Browser/User Data/Default/History"`.
+      O Brave grava o histórico com atraso, como o Chrome: se sair 0, espere 10 s (`wait`) e procure de novo, até
+      três vezes (em 02/10/2026, a marca apareceu na segunda procura). Não abra o histórico de outro perfil nem
+      de outro navegador: a marca é única, e achá-la no do Brave basta.
    5. Feche a aba (`tabs_close_mcp`) e anote a hora da prova para o relato.
-   - **O `deviceId` não está na lista, ou a marca não apareceu no Profile 1: pare antes da primeira busca e chame
-     o Lucas.** Não tente outro navegador da lista.
-   - A prova também mostra que o Chrome é o deste PC: o arquivo cai no Downloads daqui, e o registrador só vê esse.
+   - **O `deviceId` não está na lista, ou a marca não apareceu no histórico do Brave: pare antes da primeira busca
+     e chame o Lucas.** Não tente outro navegador da lista.
+   - A prova também mostra que o navegador é o deste PC: o arquivo cai no Downloads daqui, e o registrador só vê
+     esse.
    - Se o Lucas reinstalar a extensão, o `deviceId` muda: a prova se refaz com ele vendo, e o `deviceId` novo vai
      para o CLAUDE.md.
    - **A seleção se confere de novo durante a caça.** Antes da primeira busca de cada banco e antes de cada
      clique que baixa (o do clipe, no §3, passo 1, e o do PDF da linha L, no §3.2), rode
-     `list_connected_browsers`: o `inUse` tem de estar no `deviceId` do Profile 1.
+     `list_connected_browsers`: o `inUse` tem de estar no `deviceId` do Brave.
      Refaça a prova inteira (passos 1 a 5) antes de qualquer outro clique quando o `inUse` estiver em outro
      navegador ou em nenhum, quando as ferramentas sumirem ou derem erro de conexão, quando a extensão
-     reconectar (Chrome reiniciado, extensão recarregada) ou quando aparecer um pedido de conexão da extensão.
+     reconectar (navegador reiniciado, extensão recarregada) ou quando aparecer um pedido de conexão da extensão.
      Refeita a prova, peça de novo ao Lucas a confirmação da conta de cada banco já aberto (item 7). Se ela não
      passar, pare e chame o Lucas. Anote no relato cada vez que ela se refez, e por quê.
 6. **O combinado com o Lucas, dito a ele antes da primeira busca, e com o ok dele no chat:**
-   - durante a caça, ele **não baixa nada em nenhum perfil do Chrome nem em outro programa que salve em
-     Downloads**. A pasta é uma só para todos os perfis, e um arquivo dele que chegue depois de um `marcar` pode
+   - durante a caça, ele **não baixa nada em nenhum navegador (Brave, Chrome ou outro) nem em outro programa que
+     salve em Downloads**. A pasta é uma só para todos os navegadores e perfis, e um arquivo dele que chegue depois de um `marcar` pode
      ser recolhido com a URL, a licença e a conta de um item que não é ele;
    - ele não navega nos bancos nesse perfil enquanto você caça;
-   - os avisos do próprio Chrome (baixar vários arquivos, permissão da extensão, a janela "Salvar como") são dele;
-   - um pedido de conexão da extensão ("Connect") que apareça numa janela do Chrome durante a caça, em qualquer
-     perfil, ele **recusa** e avisa você: você nunca o pede (o `switch_browser` é proibido), e se ele aparece, a
+   - os avisos do próprio navegador (baixar vários arquivos, permissão da extensão, a janela "Salvar como") são
+     dele;
+   - os escudos do Brave (Shields) ficam como ele os deixou. Se um banco não tocar a prévia, não mostrar o botão
+     ou não baixar com eles, pare naquele item e mostre a ele: mexer nos escudos é decisão dele, nunca sua, e
+     nunca para passar por verificação de robô (§5);
+   - um pedido de conexão da extensão ("Connect") que apareça numa janela de qualquer navegador durante a caça, em
+     qualquer perfil, ele **recusa** e avisa você: você nunca o pede (o `switch_browser` é proibido), e se ele aparece, a
      conexão mudou (item 5). Aceito numa janela do Top10, as ações seguintes iriam para aquele perfil;
-   - a janela do Chrome da caça fica aberta, e ele não a usa nem a minimiza, fora o download que o §5 lhe pede num
+   - a janela do Brave da caça fica aberta, e ele não a usa nem a minimiza, fora o download que o §5 lhe pede num
      banco que recusou: a aba da caça fica aberta nela de uma caça para a outra (a aba fixa, §2.0). Deixá-la sem
      outra janela por cima, na Fase A, é parte deste combinado, e se diz a ele a cada caça. Quando a extensão abrir a aba da caça em segundo plano, o
      clique na aba é dele, quando você pedir.
@@ -142,8 +158,10 @@ ao Lucas, com prova no disco, o que achou e o que não achou.
    Se uma página que a caça abre (o histórico de downloads do PDF, inclusive) mostrar outra conta que a
    confirmada, pare antes do próximo clique que baixa e pergunte ao Lucas. E-mail,
    nome de usuário ou ID de conta que a página mostre não se copiam para arquivo nenhum (§6).
-8. **Envato: fica fora da caça até o Lucas entrar nele no Profile 1 e confirmar no chat que a preferência
-   *Licensing → Always ask* está ligada** (em 26/09/2026 ele ainda não tinha conseguido entrar). É configuração
+8. **Envato: fica fora da caça até o Lucas entrar nele no navegador da caça e confirmar no chat que a preferência
+   *Licensing → Always ask* está ligada.** Ele entrou no Chrome `Profile 1` e ligou o *Always ask* em 30/09/2026
+   ("mudei"; `out/juneau/_pesquisa/caca-relato.md`); a preferência é da conta, e vale no Brave. No Brave, a entrada
+   se vê na confirmação da conta (item 7). É configuração
    da conta: quem liga é ele, nunca você. É ela que faz cada download pedir o projeto `<proj>` (`marca/midia.md`
    §2.8). Enquanto o Envato estiver fora, pule-o nas `plataformas` de cada item.
 9. **Leia a lista**: `out/<proj>/_pesquisa/lista-de-caca.json` (a forma está no §1). Sem lista, não invente uma:
@@ -156,7 +174,9 @@ ao Lucas, com prova no disco, o que achou e o que não achou.
     - O `teto` responde "N de 100 downloads usados hoje … restam M". Saiu 5 ("restam 0"): o Shutterstock fica fora
       hoje. O `marcar` do Shutterstock também sai 5 nesse caso, e é a mensagem **dele** que diz que o dia
       "ACABOU".
-    - A API do Shutterstock fica fora (o `api-oficial.mjs` não se roda): a caça é pelo Chrome.
+    - A API do Shutterstock fica fora (o `api-oficial.mjs` não se roda): a caça é pelo navegador.
+    - O Shutterstock recusou com 403 em 29 e 30/09/2026, no Chrome: volta só numa caça nova que o Lucas peça
+      nomeando-o (§2.2). Trocar de navegador não é caminho para passar por recusa.
     - Os outros três não têm contador. A guarda deles é a lista, com o `quantos` de cada item.
 
 **Todo comando** roda da raiz do canal e leva `REGIE_MOTOR` na mesma chamada. Sem ela, sai `MOTOR_SEM_ARQUIVO`,
@@ -444,7 +464,7 @@ O que a página não mostra vai escrito assim ("o site não mostra"), nunca esti
 - **Quem julga** é o subagente `conferente-de-midia` (`.claude/agents/conferente-de-midia.md`, do canal). Se o
   ofício não existe no disco, pare antes da lista e avise o Lucas: **nenhuma lista vai a ele sem o conferente.**
   Se existe, mas o agente não carregou nesta sessão (agente novo só carrega numa sessão nova do app), **não**
-  despache um agente geral no lugar dele: com o Chrome do Lucas conectado, o agente geral herdaria as ferramentas
+  despache um agente geral no lugar dele: com o navegador do Lucas conectado, o agente geral herdaria as ferramentas
   da extensão, e a proibição ficaria só no texto do pedido. Pare e peça ao Lucas uma sessão nova do app. Um
   despacho do conferente por vez em cada vídeo (ofício dele, §1).
 - **O que você entrega a ele:** o `<proj>`, o caminho de `candidatos-caca.json`, a pasta `previas/` e a
@@ -663,7 +683,7 @@ antigo, e o `recolher` o recusa como "criado ANTES do 'marcar'" (saída 3). O Mo
 - Só com a linha L aprovada (§2.6). **Baixa-se DEPOIS do `recolher` e do passo 4 do clipe**, nunca entre
   `marcar` e `recolher` (dois arquivos novos dão saída 3), e depois da espera de 20 s do §3.
 - **Antes do clique do PDF, o mesmo do §3, passo 1:** o topo da página de onde sai o PDF mostra o nome da conta
-  que o Lucas confirmou (§0, item 7); o `inUse` está no `deviceId` do Profile 1 (§0, item 5); e a pasta está sem
+  que o Lucas confirmou (§0, item 7); o `inUse` está no `deviceId` do Brave (§0, item 5); e a pasta está sem
   download em curso (o `ls` do começo do §3). Algo não bate: não clique, pare e chame o Lucas.
 - O registrador não a aceita (saída 8, porque PDF não é mídia). O passo é este, no Git Bash, da raiz. `DL` é a
   pasta de `caca.pasta_downloads` (com `null`, `C:/Users/zangp/Downloads`). Cada chamada do Bash começa sem
@@ -768,8 +788,8 @@ CAPTCHA.** Nem se o Chrome oferecer a senha salva: não clique.
 
 | Sinal | Causa | O que fazer |
 |---|---|---|
-| "Sign in" / "Entrar" no topo; "Sign Up to Download" no lugar do botão (Storyblocks); pedido de 2FA | sessão caída | "O <banco> saiu da conta. Pode entrar de novo, no Profile 1, com a conta que você confirmou para ele (§0, item 7)? Me avise quando entrar." Enquanto isso, siga nos outros bancos |
-| "Just a moment…", "Verification Required", "Verifique que você é humano", CAPTCHA, "unusual traffic", "acesso restrito" | verificação de robô | **Pare naquele banco pelo resto da caça.** Diga: "O <banco> pediu verificação de robô. Parei nele e não vou insistir. Se quiser, você mesmo baixa os itens desse banco que já aprovou na lista (diga os números), no Profile 1, na janela em que o banco está aberto, com a conta que você confirmou para ele, um por vez: eu rodo o `marcar` antes do seu clique e o `recolher` depois, e cada arquivo passa pela mesma conferência." Não peça que ele resolva a verificação para você seguir: o banco sinalizou automação, e seguir seria contornar (CLAUDE.md, "A marca"). Não repita a busca |
+| "Sign in" / "Entrar" no topo; "Sign Up to Download" no lugar do botão (Storyblocks); pedido de 2FA | sessão caída | "O <banco> saiu da conta. Pode entrar de novo, no Brave, com a conta que você confirmou para ele (§0, item 7)? Me avise quando entrar." Enquanto isso, siga nos outros bancos |
+| "Just a moment…", "Verification Required", "Verifique que você é humano", CAPTCHA, "unusual traffic", "acesso restrito" | verificação de robô | **Pare naquele banco pelo resto da caça.** Diga: "O <banco> pediu verificação de robô. Parei nele e não vou insistir. Se quiser, você mesmo baixa os itens desse banco que já aprovou na lista (diga os números), no Brave, na janela em que o banco está aberto, com a conta que você confirmou para ele, um por vez: eu rodo o `marcar` antes do seu clique e o `recolher` depois, e cada arquivo passa pela mesma conferência." Não peça que ele resolva a verificação para você seguir: o banco sinalizou automação, e seguir seria contornar (CLAUDE.md, "A marca"). Não repita a busca |
 | 403 do banco ou do CloudFront ("Request blocked", "The request could not be satisfied", "too much traffic") | o banco recusou a caça | **Pare naquele banco pelo resto da caça**, sem nova tentativa (§2.2). Diga: "O <banco> recusou o acesso (403). Parei nele e não vou insistir." O resto é o da linha acima: ofereça ao Lucas os itens desse banco que ele já aprovou, e não peça que ele destrave o site |
 | banner de cookies só com "Aceitar"; aviso de termos, cadastro ou oferta que não fecha sem aceitar | uma janela pede aceite | §2.1: pare e mostre ao Lucas |
 | banner "Você atingiu o limite de downloads por hoje" (Shutterstock) | o dia acabou | rode `teto --acertar=<usados hoje> --motivo="banner do site"`, com `REGIE_MOTOR`, e siga nos outros bancos |
@@ -779,7 +799,7 @@ CAPTCHA.** Nem se o Chrome oferecer a senha salva: não clique.
 **Quando o Lucas baixa ele mesmo** (depois de uma verificação de robô ou de um 403):
 - só itens da lista que ele aprovou, pelos números, um por vez, e com a espera de 20 s do §3 entre um `recolher`
   e o clique seguinte;
-- só no Profile 1, na janela em que o banco está aberto (a da aba fixa: ao terminar, ele deixa a aba da caça
+- só no Brave `Default`, na janela em que o banco está aberto (a da aba fixa: ao terminar, ele deixa a aba da caça
   ativa, §2.0), com a conta que ele confirmou (§0, item 7):
   o registrador grava essa conta seja qual for o perfil do clique;
 - cada arquivo passa pelo mesmo caminho: `marcar` antes do clique dele, `recolher` com a URL da linha aprovada,
@@ -798,8 +818,8 @@ e a hora do começo. A seção de uma caça anterior do mesmo vídeo não se apa
 **O relato, o `candidatos-caca.json` e as saídas do conferente (`conferencia-caca.json`, `conferencia-midia.json`
 e os `.md` delas) vão para o git** (`out/*/_pesquisa/` não está no `.gitignore`). Neles,
 nunca e-mail, nome de usuário, ID de conta, número de pedido ou de fatura, nem outro dado pessoal lido nos
-bancos ou no PDF de licença: a conta é `lucas-rosa` (o apelido do `marca/midia.json`) e o perfil é "Lucas"
-(`Profile 1`). Os prints (`.png`) ficam fora do git e não se copiam para outro lugar.
+bancos ou no PDF de licença: a conta é `lucas-rosa` (o apelido do `marca/midia.json`) e o perfil é "Pessoal"
+(o Brave `Default`; "Lucas", o Chrome `Profile 1`, nas caças do Juneau). Os prints (`.png`) ficam fora do git e não se copiam para outro lugar.
 
 - por item: o que baixou (banco, ID, URL do item, arquivo instalado), a mensagem de aprovação do Lucas e a hora,
   se a linha era preferida ou reserva, a conferência do arquivo (nome, resolução, duração e tamanho contra a
@@ -807,7 +827,7 @@ bancos ou no PDF de licença: a conta é `lucas-rosa` (o apelido do `marca/midia
   `conferencia-midia.json`; o que recusou e por quê (retrato, HD, editorial, pessoas, marca de terceiro, IA,
   lugar, não era a coisa); o veredito do conferente para cada candidato, com o caminho de
   `conferencia-caca.json`; e os **NÃO ACHADOS**, com as buscas tentadas;
-- o perfil ("Lucas", `Profile 1`) e a hora da prova do perfil pelo disco, e cada vez que ela se refez, com o
+- o navegador e o perfil (o Brave, "Pessoal", `Default`) e a hora da prova do perfil pelo disco, e cada vez que ela se refez, com o
   porquê (§0, item 5); por banco, a confirmação do Lucas de que a conta é a que ele designou (§0, item 7), com a mensagem e a hora;
   no Envato, a confirmação do *Always ask*;
 - as linhas **excluídas pelo Lucas**, com a mensagem dele, e o recado ao `pesquisa-imagens` sobre o item que

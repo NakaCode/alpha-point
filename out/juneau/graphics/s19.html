@@ -3,7 +3,7 @@
 <!--
   s19 · "Then came the price. In November 1978, the Frank initiative went to the voters. On the same ballot sat the money
   to build: up to $966 million in bonds for the new capital, almost a billion dollars."
-  Word-lock (−192.633) · inSec 192.633 · dur 14.467 (434 quadros a 30 fps; espelho.json, _quadros 5779→6213)
+  Word-lock (−192.633) · inSec 192.633 · dur 14.467 (434 quadros a 30 fps; espelho.json, _quadros 5779→6213) · revisão do Lucas 02/10/2026 (ver o comentário REVISÃO DO LUCAS abaixo)
   Modo do espelho: desenho · Modelo da identidade: DOCUMENTO recriado (a folha datilografada sobre a mesa, identidade §5)
   com a linha do preço (o motivo de s02) e o herói que pousa nela (DADO sobre a folha)
 
@@ -73,6 +73,32 @@
 <!-- DECLARAÇÃO (01/10/2026, a triagem dos portões de navegador, correcao-render-5.md, seção A): data-qc-fonte-livre nos textos da
      folha de documento (Courier Prime, identidade §3 e §5), e o cabeçalho da folha (84 px, o alvo de eixo/legenda, §4.1) declara
      "eixo", não "rotulo" (piso 104), para o qc-tamanho. O quadro não muda. -->
+<!-- REVISÃO DO LUCAS (02/10/2026; out/juneau/_pesquisa/revisao-premiere-lucas.md, "As decisões": a pergunta da s19 e a resposta
+     "Sim, como na s23 (Recomendado)"; o pedido out/juneau/_tmp/art/revisao-lucas-pedido.md, "As cenas", s19). O que mudou e por quê:
+     (1) SAI A LINHA DO PREÇO VAZIA (o "$" em Courier e o traço em --destaque): o Lucas a leu como campo vazio sobrando. O .preco
+         entre o título da p. 48 e a quebra tracejada saiu do DOM: sem ele, não há vão de 300 px de papel em branco à espera do número.
+     (2) O "$966,000,000" DO LITERAL VAI IMPRESSO DESDE O PRIMEIRO QUADRO, como a cédula o imprimia (textos-tela.json desta rodada,
+         sha256 9a7372f3… › rotulos_dado s19, o literal da p. 63, com a _excecao_lucas: exceção do Lucas à regra "nenhum número antes
+         da voz", só em s19 e s23). O grifo continua varrendo "not more than $966,000,000" em "up" (8,333).
+     (3) O HERÓI UP TO $966 MILLION POUSA ABAIXO DO LITERAL, logo sob o número que ele amplia (o .preco virou só o berço do herói,
+         depois da pergunta), na mesma palavra de antes ("up", 8,333; 200,96 s do master). Nada muda de hora.
+     (4) A CÂMERA DESCE COM O HERÓI, NÃO ANTES: a descida (448 px, 1,5 s, ease-in-out) começa em 8,333, no quadro do pouso, e não em
+         "On" (5,867). Antes ela descia à linha do preço vazia e ficava 2,5 s sobre papel em branco; agora desce até onde o herói
+         acabou de pousar, para enquadrá-lo no meio (o pedido: "ela agora desce até onde o herói vai pousar, ou não desce"). No b1 o
+         herói pousa dentro do quadro (a caixa CSS do herói, medida com o probe-elemento, vai de y 1.524 a 1.882 em 8,533 s e de
+         1.507 a 1.859 em 8,733 s, com a folha em 268; a caixa de Barlow Condensed 800 a 360 px tem ar abaixo da linha de base, e a
+         TINTA fica acima da faixa do crédito, 1.880, sob a câmera: estimativa pela fonte, não medida) e a câmera o leva ao centro
+         (caixa em y ≈ 1.083→1.440 com a folha em −156, já afundada 24 px). [Esta nota dizia "caixa em y 1.523→1.833"; corrigida em
+         02/10/2026, 3ª leva da revisão de espectador, só no comentário: nenhum byte fora dos comentários HTML mudou.]
+     (5) A GEOMETRIA DA FOLHA, para o novo arranjo caber: as margens do fio passam de 110/110 para 120/80, a entrelinha do corpo de 1,4 para 1,36 e a quebra
+         tracejada de 48/12 para 36/8 (o que o fio ganha, o miolo devolve: o herói não desce), e o herói ganha 20 px de
+         respiro sob o literal (o título da p. 48 fica em y 368 da folha; no b2, com a folha em −180 + 24, a caixa girada dele em ≈ 164 e a tinta em ≈ 200, e a câmera do fim (1,0347) o leva a ≥ 166: dentro da margem de 160);
+         o vinco vai de 54,1 % (cairia na 3ª linha da pergunta) para 85 % (y 1.734 da folha), no branco entre o herói (tinta até
+         ≈ 1.540, e o pouso nunca desce dele) e o rasgo (1.948). As fitas e o cabeçalho saem pelo alto no b2: a fita direita sobe 28 px na folha (top −40, era −12), e as caixas
+         giradas das duas fitas e do cabeçalho ficam em y < 0 sob a câmera em todo o b2 (medido com o probe-elemento em 10,5 e 14,467). O crédito não muda (76 px, decisão "2 76 px").
+     As notas antigas acima ("a linha do preço", "o '$' sai", "o número entra") descrevem a cena de antes desta revisão. -->
+<!-- CONTA DA MARCA (roupa §4, conta do editor, não portão): elementos simultâneos no pico (b2): a folha (1) + o cabeçalho (1) + o herói (1) = 3,
+     dos 6 da marca; blocos de texto: 1 (a folha). Herói: UP TO $966 MILLION, 4 palavras, 6,13 s no ar. -->
 <head>
 <meta charset="utf-8">
 <title>s19 — Then came the price. In November 1978, the Frank initiative went to the voters. Up to $966 million in bonds</title>
@@ -103,7 +129,7 @@
   .folha::before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
     background-size: 420px;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
-  .folha::after { content: ""; position: absolute; left: 0; right: 0; top: 54.1%; height: 3px; pointer-events: none;   /* o vinco entre o título da p. 63 e a pergunta, fora do herói */
+  .folha::after { content: ""; position: absolute; left: 0; right: 0; top: 85%; height: 3px; pointer-events: none;   /* o vinco no branco entre o herói (tinta até ≈ 1.540) e o rasgo (1.948): y 1.734 da folha; a 54,1 % cairia na 3ª linha da pergunta no arranjo da revisão de 02/10/2026 */
     background: color-mix(in srgb, var(--tinta-escura) 7%, transparent);
     box-shadow: 0 2px 0 color-mix(in srgb, var(--tinta) 50%, transparent); }
   .rasgada { clip-path: polygon(0% 0%, 100% 0%, 100% 95.5%, 100.00% 96.89%, 98.44% 96.15%, 96.88% 98.30%, 95.31% 95.81%, 93.75% 97.80%, 92.19% 97.07%, 90.62% 95.75%, 89.06% 97.68%, 87.50% 95.66%, 85.94% 97.36%, 84.38% 95.80%, 82.81% 95.89%, 81.25% 97.33%, 79.69% 99.06%, 78.12% 96.03%, 76.56% 96.46%, 75.00% 98.20%, 73.44% 99.58%, 71.88% 97.98%, 70.31% 97.21%, 68.75% 99.70%, 67.19% 95.70%, 65.62% 99.19%, 64.06% 96.75%, 62.50% 96.12%, 60.94% 96.01%, 59.38% 96.83%, 57.81% 99.01%, 56.25% 96.28%, 54.69% 98.00%, 53.12% 98.25%, 51.56% 97.10%, 50.00% 97.86%, 48.44% 95.77%, 46.88% 95.76%, 45.31% 96.39%, 43.75% 98.43%, 42.19% 97.34%, 40.62% 96.85%, 39.06% 98.02%, 37.50% 97.45%, 35.94% 96.79%, 34.38% 98.92%, 32.81% 98.51%, 31.25% 96.55%, 29.69% 97.97%, 28.12% 97.76%, 26.56% 99.26%, 25.00% 98.64%, 23.44% 96.74%, 21.88% 99.71%, 20.31% 96.01%, 18.75% 97.30%, 17.19% 98.76%, 15.62% 96.15%, 14.06% 97.60%, 12.50% 95.67%, 10.94% 98.37%, 9.38% 98.79%, 7.81% 97.96%, 6.25% 99.26%, 4.69% 96.85%, 3.12% 98.49%, 1.56% 98.06%, 0.00% 97.99%); }
@@ -112,22 +138,19 @@
   .caixa-ref { font-family: var(--fonte-doc); font-weight: var(--peso-doc-cabecalho); font-size: var(--doc-cabecalho); line-height: 1;
     letter-spacing: .02em; white-space: nowrap; padding: 18px 26px; opacity: 0;
     border: 6px solid color-mix(in srgb, var(--tinta-escura) 55%, transparent); color: color-mix(in srgb, var(--tinta-escura) 70%, transparent); }
-  .fio { height: 4px; margin: 110px 0 110px; background: color-mix(in srgb, var(--tinta-escura) 25%, transparent); }
-  .corpo { font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: var(--doc-corpo); line-height: 1.4;
+  .fio { height: 4px; margin: 120px 0 80px; background: color-mix(in srgb, var(--tinta-escura) 25%, transparent); }   /* 120/80 (era 110/110): o título da p. 48 fica 40 px mais longe do cabeçalho e das fitas, que saem pelo alto no b2 com o título ainda sob a margem de 160; o que vem abaixo recupera esses 40 px na entrelinha (1,36) e na quebra (36/8), para o herói não descer; revisão do Lucas, 02/10/2026 */
+  .corpo { font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: var(--doc-corpo); line-height: 1.36;   /* 1,36 (era 1,4): revisão do Lucas, 02/10/2026 */
     letter-spacing: 0; color: var(--tinta-escura); }
   /* o grifo de marcador: a cor --grifo-cor por trás do trecho, que o __renderAt varre (background-size 0 → 100 %),
      também quando o trecho quebra de linha (box-decoration-break: clone) */
   .grifo { background-image: linear-gradient(var(--grifo-cor), var(--grifo-cor)); background-repeat: no-repeat;
     background-size: 0% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-  .num { opacity: 0; }
   /* a quebra entre os trechos das duas páginas: um fio tracejado */
-  .quebra { height: 0; margin: 48px 0 12px; border-top: 4px dashed color-mix(in srgb, var(--tinta-escura) 30%, transparent); }
-  /* A LINHA DO PREÇO (o motivo de s02): o "$" em Courier e o traço de 12 px em --destaque, 1.180 px, sem número; o herói pousa aqui */
-  .preco { position: relative; height: 300px; display: flex; align-items: center; }
-  .preco .cifrao { font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: var(--doc-corpo); line-height: 1; color: var(--tinta-escura); margin-right: 28px; }
-  .preco .traco { width: 1180px; height: 12px; margin-top: 60px; background: var(--destaque); }
-  /* O HERÓI pousa na linha do preço: Barlow Condensed 800, 360 px, em --tinta-escura sobre o papel (ver o cabeçalho) */
-  .heroi { position: absolute; left: 0; top: 5px; white-space: nowrap; font-family: var(--fonte-sec); font-weight: var(--peso-heroi);
+  .quebra { height: 0; margin: 36px 0 8px; border-top: 4px dashed color-mix(in srgb, var(--tinta-escura) 30%, transparent); }   /* 36/8 (era 48/12): revisão do Lucas, 02/10/2026 */
+  /* O BERÇO DO HERÓI, abaixo do literal da pergunta (revisão do Lucas, 02/10/2026: a linha do preço vazia saiu) */
+  .preco { position: relative; height: 310px; margin-top: 20px; }   /* 20 px de respiro entre a última linha do literal e o herói */
+  /* O HERÓI pousa sob o número impresso que ele amplia: Barlow Condensed 800, 360 px, em --tinta-escura sobre o papel (ver o cabeçalho) */
+  .heroi { position: absolute; left: 0; top: 0; white-space: nowrap; font-family: var(--fonte-sec); font-weight: var(--peso-heroi);
     font-size: var(--fs-heroi); line-height: .86; letter-spacing: var(--tracking-heroi); color: var(--tinta-escura); opacity: 0; transform-origin: 0% 50%; }
   .fita { position: absolute; width: 520px; height: 150px; background: color-mix(in srgb, var(--papel) 62%, transparent);
     box-shadow: 0 4px 12px color-mix(in srgb, var(--tinta-escura) 18%, transparent);
@@ -153,16 +176,16 @@
         <div class="cab" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"><span class="caixa-ref" id="cab" data-qc-papel="eixo"></span></div>
         <div class="fio"></div>
         <p class="corpo" id="titulo48" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"></p>
-        <div class="preco" id="preco">
-          <span class="cifrao" id="cifrao" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"></span><span class="traco" id="traco"></span>
-          <div class="heroi" id="heroi" data-qc-papel="heroi"></div>
-        </div>
         <div class="quebra"></div>
         <p class="corpo" id="titulo63" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"></p>
         <p class="corpo" id="pergunta" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5" style="margin-top:0"></p>
+        <!-- o herói pousa aqui, abaixo do literal (revisão do Lucas, 02/10/2026): a linha do preço vazia saiu -->
+        <div class="preco" id="preco">
+          <div class="heroi" id="heroi" data-qc-papel="heroi"></div>
+        </div>
       </div>
       <div class="fita" id="fitaE" style="left:-80px;top:-16px;transform:rotate(-7deg)"></div>
-      <div class="fita" id="fitaD" style="left:2600px;top:-12px;transform:rotate(6deg)"></div>
+      <div class="fita" id="fitaD" style="left:2600px;top:-40px;transform:rotate(6deg)"></div>   <!-- −40 (era −12): a fita direita sai do quadro no b2 (revisão do Lucas, 02/10/2026) -->
     </div>
   </div>
   <div id="creds">
@@ -264,18 +287,16 @@
   // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é a do textos-tela.json do disco) ═══════════════════════════
   var TEXTOS = {
     cabecalho: "NOVEMBER 1978",                                        // textos-tela.json › rotulos_dado s19 (o cabeçalho desta folha)
-    cifrao:    "$",                                                    // textos-tela.json › rotulos_dado s19 (a linha do preço vazia)
     titulo48a: "FULL BONDABLE COSTS OF RELOCATING CAPITAL",            // textos-tela.json › rotulos_dado s19 (1ª linha do título da p. 48)
     titulo48b: "Initiative No. 6",                                     // textos-tela.json › rotulos_dado s19 (2ª linha; o grifo em "Frank")
     titulo63:  "CAPITAL CONSTRUCTION COSTS OF THE NEW ALASKA CAPITAL", // textos-tela.json › rotulos_dado s19 (o título da p. 63)
     pergunta:  "Shall the State of Alaska issue its general obligation bonds in the principal amount of not more than $966,000,000 for the purpose of paying the costs of capital improvements for the new state capital?",   // textos-tela.json › rotulos_dado s19 (o literal da p. 63)
-    perguntaGrifo: "not more than $966,000,000",                       // o trecho que o grifo varre em "up" (regência s19#1)
-    perguntaNumero: "$966,000,000",                                    // o número em branco até "up" (regência s19#1)
+    perguntaGrifo: "not more than $966,000,000",                       // o trecho que o grifo varre em "up" (textos-tela › _grifo; o número vai impresso desde o primeiro quadro: exceção do Lucas, 02/10/2026)
     heroi:     "UP TO $966 MILLION",                                   // textos-tela.json › rotulos_dado s19 (herói, 4 palavras)
     credFonte: "Source: Alaska Division of Elections, 1978"            // textos-tela.json › _creditos s19 (a folha e o herói)
   };
   // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
-  E("cab").textContent = TEXTOS.cabecalho; E("cifrao").textContent = TEXTOS.cifrao; E("heroi").textContent = TEXTOS.heroi;
+  E("cab").textContent = TEXTOS.cabecalho; E("heroi").textContent = TEXTOS.heroi;
   // o título da p. 48: a 2ª linha num span com grifo
   (function () {
     var p = E("titulo48"); p.textContent = "";
@@ -283,32 +304,25 @@
     var g = document.createElement("span"); g.className = "grifo"; g.id = "grifoIni"; g.textContent = TEXTOS.titulo48b; p.appendChild(g);
   })();
   E("titulo63").textContent = TEXTOS.titulo63;
-  // a pergunta: o trecho do grifo num span, e dentro dele o número num span em branco
+  // a pergunta: o trecho do grifo num span; o "$966,000,000" é texto impresso como o resto (revisão do Lucas, 02/10/2026)
   (function () {
     var p = E("pergunta"), q = TEXTOS.pergunta, i = q.indexOf(TEXTOS.perguntaGrifo); p.textContent = "";
     if (i < 0) { p.textContent = q; return; }
     p.appendChild(document.createTextNode(q.slice(0, i)));
-    var g = document.createElement("span"); g.className = "grifo"; g.id = "grifoNum";
-    var tr = TEXTOS.perguntaGrifo, j = tr.indexOf(TEXTOS.perguntaNumero);
-    if (j < 0) g.textContent = tr;
-    else {
-      g.appendChild(document.createTextNode(tr.slice(0, j)));
-      var n = document.createElement("span"); n.className = "num"; n.id = "num"; n.textContent = TEXTOS.perguntaNumero; g.appendChild(n);
-      g.appendChild(document.createTextNode(tr.slice(j + TEXTOS.perguntaNumero.length)));
-    }
+    var g = document.createElement("span"); g.className = "grifo"; g.id = "grifoNum"; g.textContent = TEXTOS.perguntaGrifo;
     p.appendChild(g);
-    p.appendChild(document.createTextNode(q.slice(i + tr.length)));
+    p.appendChild(document.createTextNode(q.slice(i + TEXTOS.perguntaGrifo.length)));
   })();
 
   // ── os tempos (locais, −192,633), da regência s19 e do words.json ──
   var T = {
     cab: 1.767,                       // "November" (194,38): o cabeçalho entra
     grifoIni: 3.667, grifoDur: 0.55,  // "Frank" (196,3): o grifo varre "Initiative No. 6"
-    desce: 5.867, desceDur: 1.5,      // "On" (198,5): a câmera desce a folha (o rolo sobe 360 px)
-    heroi: 8.333, pousaDur: 0.4       // "up" (200,96): o herói pousa; o "$" sai; o número entra; o grifo varre
+    heroi: 8.333, pousaDur: 0.4,      // "up" (200,96): o herói pousa abaixo do literal; o grifo varre "not more than $966,000,000"
+    desce: 8.333, desceDur: 1.5       // a câmera desce COM o herói (era "On", 5,867, à linha do preço vazia): revisão do Lucas, 02/10/2026
   };
-  var FOLHA = { topo1: 268, topo2: -206, rot: 0.8 };   // b1: as fitas a partir de y 202 e o texto até y 1.833; b2 (−206, e −182 com a folha afundada 24 px pelo herói): o cabeçalho (até y 0) e as fitas fora do quadro, o título da p. 48 de y 207 para baixo
-  var LUZ = { y1: 268 + 509, y2: -182 + 779 };   // b1: atrás do título da iniciativa (local 388→629); b2, com a folha afundada: atrás da linha do preço (local 629→929)
+  var FOLHA = { topo1: 268, topo2: -180, rot: 0.8 };   // b1: as fitas a partir de y ≈ 181 (caixa girada) e a pergunta até y ≈ 1.503; b2 (−180, e −156 com a folha afundada 24 px pelo herói): o cabeçalho e as fitas fora do quadro (caixas em y < 0 sob a câmera), o título da p. 48 de y ≈ 164 (caixa girada; a tinta ≈ 200) para baixo, o herói em y ≈ 1.083→1.440
+  var LUZ = { y1: 268 + 485, y2: -156 + 1410 };   // b1: atrás do título da iniciativa (local 368→602); b2, com a folha afundada: atrás do herói (local 1.255→1.565)
 
   function cena(t) {
     t = t + 0.0005;   // meio milissegundo: os tempos da regência são quadros arredondados a 3 casas
@@ -326,16 +340,13 @@
     E("cab").style.opacity = eo(seg(t, T.cab, 0.3)).toFixed(3);
     E("grifoIni").style.backgroundSize = (100 * eo(seg(t, T.grifoIni, T.grifoDur))).toFixed(2) + "% 100%";
 
-    // ── b2: o herói pousa na linha do preço; o "$" e o traço saem; o número entra; o grifo varre ──
+    // ── b2: o herói pousa abaixo do literal (a câmera o segue); o grifo varre o número impresso ──
     var h = E("heroi");
     h.style.opacity = seg(t, T.heroi, 0.15).toFixed(3);
     h.style.transform = "translateY(" + (-60 * (1 - p)).toFixed(1) + "px) scale(" + lerp(1.15, 1, p).toFixed(4) + ")";
-    var sai = 1 - eo(seg(t, T.heroi, 0.3));
-    E("cifrao").style.opacity = sai.toFixed(3); E("traco").style.opacity = sai.toFixed(3);
-    E("num").style.opacity = eo(seg(t, T.heroi, 0.3)).toFixed(3);
     E("grifoNum").style.backgroundSize = (100 * eo(seg(t, T.heroi, T.grifoDur))).toFixed(2) + "% 100%";
 
-    // a luz da mesa: atrás do título no b1, e desce com a câmera para trás da linha do preço
+    // a luz da mesa: atrás do título no b1, e desce com a câmera para trás do herói
     cam.style.setProperty("--luz-x", "1860px");   // o centro da folha (x 340→3.380)
     cam.style.setProperty("--luz-y", lerp(LUZ.y1, LUZ.y2, d).toFixed(1) + "px");
 

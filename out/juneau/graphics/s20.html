@@ -8,8 +8,9 @@
   identidade §5 e marca/prancha-fim.html)
 
   O que manda em cada coisa: o espelho (s20), o conceito (s20), a regência (s20: três beats), os textos finais do redator
-  (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s20, _creditos s20,
-  nao_vai_para_tela s20) e a marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS.
+  (out/juneau/textos-tela.json, fechado em 01/10/2026 e estendido em 05/10/2026, sha256 4e2d9c19… › rotulos_dado s20, inclusive
+  os índices 286 e 287, _creditos s20, nao_vai_para_tela s20) e a marca (identidade §4–§7, tokens.css). TODO TEXTO DE TELA ESTÁ
+  NUM LUGAR SÓ: o objeto TEXTOS.
 
   OS BEATS (tempo local = master − 207,1; palavras do words.json):
     b1  0,000–2,200  "The same voters made two choices."  (regência s20#1)
@@ -30,9 +31,12 @@
         títulos, o placar 88,783 to 31,491 se escreve sob ela, e as BARRAS crescem à direita da cédula (x 2.400→3.540,
         0,5 s, ease-out): a do NÃO em --destaque (1.140 px, a largura toda), a do sim aos títulos em --contraparte
         (404 px: 31.491/88.783 = 35,5 %). A proporção de quase 3 a 1 se vê nas barras: ALMOST 3-TO-1 não entra (R1).
+        Desde a 6ª vista (05/10/2026): cada barra leva o LADO escrito na ponta, dentro dela: NO na do não (com ela, 6,2) e YES
+        na do sim (com ela, 6,3), no papel eixo/legenda (84 px, Inter 500, --tinta-escura), até o corte.
         Elementos na troca (6,2 → 6,333): a cédula, o placar da Frank, NEARLY 56% a se apagar e as barras com o placar
-        dos títulos = 4 (declarado na regência); depois, 3. Blocos: 0. Herói: nenhum (data-qc-sem-heroi: os carimbos são
-        o veredito de cada linha).
+        dos títulos = 4 (declarado na regência); depois, 3. O rótulo de cada barra é da barra (nomeia o lado dela, como o
+        nome sob o círculo do ator) e não conta à parte; contado à parte, 6 na troca e 5 depois, no teto da marca e não acima.
+        Blocos: 0. Herói: nenhum (data-qc-sem-heroi: os carimbos são o veredito de cada linha).
 
   A MÍDIA: nenhuma. O boletim de 7/11/1978 é documento do Estado sem permissão clara (midia.md §7.1): a cédula é
   desenhada, com a fonte na tela; os números vêm de out/juneau/_dados/s20.json pela pauta de dados.
@@ -53,6 +57,24 @@
      100 px acima do pouso (eram 260), a 1,02× (era 1,06) e com 1° a mais de inclinação (eram 2°): pela conta, no quadro 0 o
      canto de cima à esquerda fica em x ≥ 230 e a borda de cima em y ≥ 237; no quadro 1, x ≥ 237 e y ≥ 266. O pouso (0,45 s,
      ease-out) e o quadro final não mudam. -->
+<!-- REVISÃO DO LUCAS, 6ª VISTA (05/10/2026; out/_feedback-queue.jsonl, marca muvedkvd-47b1a2 em s20 @7,3 s, versão 69518ae7;
+     out/juneau/_pesquisa/revisao-premiere-lucas.md, "A 6ª vista na linha do tempo"; textos-tela.json › rotulos_dado 286 e 287):
+       · A MARCA DELE (literal): "As barras de "gráfico" aparecem vazias, parecendo não haver sentido".
+       · A DECISÃO (05/10/2026, 12:42, no chat): "NO e YES nas barras (Recomendado)", que dizia: "A palavra NO na ponta da barra
+         maior e YES na menor. As barras continuam mostrando o quase 3 a 1."
+       · O QUE MUDOU: duas palavras, uma em cada barra, DENTRO da ponta (a ponta da barra do não fica em x 3.540, a 100 px da
+         margem, e sob a câmera do fim, 1,0223, em x ≈ 3.576: NO fora dela não cabia sem encurtar a escala; dentro, cabe sem
+         mexer em barra nenhuma). NO na barra do não, YES na barra do sim, no papel eixo/legenda da identidade §4.1 (84 px,
+         var(--fs-eixo); Inter 500, var(--peso-texto), como todo eixo e legenda do vídeo: s54, os cargos, os avisos do ano), em
+         --tinta-escura, que mede 8,4:1 sobre --destaque e 8,2:1 sobre --contraparte; caixa alta como os carimbos e as linhas
+         da cédula. Cada palavra vive num recorte (#clipNao, #clipSim) que tem, a cada quadro, a largura da própria barra, e
+         fica alinhada à direita dele a 36 px da ponta: ela monta na ponta e se revela com a barra (wipe), sem ficar nunca fora
+         da cor; a opacidade sobe em 300 ms a partir da palavra. NO entra com a barra do não, em "rejected" (6,2); YES entra com
+         a barra do sim (6,3); os dois ficam até o corte (9,3), como o redator fixou.
+       · O QUE NÃO MUDOU: as barras (x 2.400→3.540 e 2.400→2.804; y 1.150 e 1.290, na altura da linha BONDS da cédula, para o
+         YES da barra se ler como o sim aos títulos e não como o carimbo YES da Frank), a proporção 404/1.140 = 35,5 %
+         (31.491/88.783), os tempos de todas as palavras, os carimbos, os placares, NEARLY 56%, a câmera e o crédito. Nenhum
+         texto antes da voz: a voz diz "rejected" em 6,2, e NO/YES nomeiam o lado das barras que o boletim sustenta. -->
 <head>
 <meta charset="utf-8">
 <title>s20 — The same voters made two choices. They passed the Frank initiative, with nearly 56 percent. And they rejected the bonds</title>
@@ -90,6 +112,14 @@
   .barra { position: absolute; left: 2400px; height: 100px; transform-origin: 0% 50%; transform: scaleX(0); }
   #barraNao { top: 1150px; width: 1140px; background: var(--destaque); }
   #barraSim { top: 1290px; width: 404px; background: var(--contraparte); }
+  /* OS RÓTULOS DAS BARRAS (6ª vista, 05/10/2026; rotulos_dado 286 e 287): NO e YES na ponta de cada barra, DENTRO dela, no papel
+     eixo/legenda (84 px, Inter 500, --tinta-escura: 8,4:1 sobre --destaque, 8,2:1 sobre --contraparte). O recorte tem, a cada
+     quadro, a largura da barra: a palavra monta na ponta (36 px antes dela) e se revela com a barra, nunca fora da cor */
+  .barraClip { position: absolute; left: 2400px; height: 100px; width: 0; overflow: hidden; }
+  #clipNao { top: 1150px; }
+  #clipSim { top: 1290px; }
+  .barraTxt { position: absolute; right: 36px; top: 0; height: 100px; line-height: 100px; white-space: nowrap; font-family: var(--fonte);
+    font-weight: var(--peso-texto); font-size: var(--fs-eixo); letter-spacing: .02em; color: var(--tinta-escura); opacity: 0; }
 
   /* o crédito (§4.2): 76 px, x = 200, abaixo de y = 1880; sobre o --papel, em --tinta-escura a 72 % */
   #creds { position: absolute; left: var(--credito-x); bottom: 14px; width: calc(var(--credito-x-fim) - var(--credito-x)); }
@@ -112,6 +142,8 @@
     <div id="nearly" data-qc-papel="rotulo"></div>
     <div class="barra" id="barraNao"></div>
     <div class="barra" id="barraSim"></div>
+    <div class="barraClip" id="clipNao"><div class="barraTxt" id="txtNao" data-qc-papel="eixo"></div></div>
+    <div class="barraClip" id="clipSim"><div class="barraTxt" id="txtSim" data-qc-papel="eixo"></div></div>
   </div>
   <div id="creds">
     <div class="cred" id="credFonte" data-qc-papel="credito" hidden></div>
@@ -218,12 +250,15 @@
     nearly:    "NEARLY 56%",                                    // textos-tela.json › rotulos_dado s20
     carNao:    "NO",                                            // textos-tela.json › rotulos_dado s20 (o carimbo dos títulos)
     placar2:   "88,783 to 31,491",                              // textos-tela.json › rotulos_dado s20 (o placar dos títulos, o vencedor primeiro)
+    txtNao:    "NO",                                            // textos-tela.json › rotulos_dado 286 (o lado da barra maior; 6ª vista, 05/10/2026)
+    txtSim:    "YES",                                           // textos-tela.json › rotulos_dado 287 (o lado da barra menor; 6ª vista, 05/10/2026)
     credFonte: "Source: Alaska Division of Elections, 1978"     // textos-tela.json › _creditos s20 (os placares)
   };
   // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
   E("linha1").textContent = TEXTOS.linha1; E("linha2").textContent = TEXTOS.linha2;
   E("carSimTxt").textContent = TEXTOS.carSim; E("placar1").textContent = TEXTOS.placar1; E("nearly").textContent = TEXTOS.nearly;
   E("carNaoTxt").textContent = TEXTOS.carNao; E("placar2").textContent = TEXTOS.placar2;
+  E("txtNao").textContent = TEXTOS.txtNao; E("txtSim").textContent = TEXTOS.txtSim;
 
   // ── os tempos (locais, −207,1), da regência s20 e do words.json ──
   var T = {
@@ -233,6 +268,7 @@
     rejected: 6.2, barrasDur: 0.5       // "rejected" (213,3): NO, as barras e o placar dos títulos
   };
   var CED = { w: 2000, h: 1400, cx: 1270, cy: 1080, rot: -0.6 };   // x 270→2.270 (girada, 263): sob a câmera (1,0223 no fim) nada passa de x 200
+  var BAR = { nao: 1140, sim: 404 };   // as larguras das barras (CSS #barraNao/#barraSim): 404/1.140 = 35,5 % = 31.491/88.783; os recortes dos rótulos as seguem
 
   // o carimbo bate: escala 1,55 → 0,97 em 70 % da batida e → 1 no resto; opacidade 0 → 1 na primeira metade
   function carimbo(el, t, t0) {
@@ -271,9 +307,16 @@
     // ── b3: NO, o placar dos títulos e as barras em "rejected" ──
     carimbo(E("carNao"), t, T.rejected);
     rotulo(E("placar2"), eo(seg(t, T.rejected, 0.3)));
-    var b = eo(seg(t, T.rejected, T.barrasDur));
+    var b = eo(seg(t, T.rejected, T.barrasDur)), bS = eo(seg(t, T.rejected + 0.1, T.barrasDur));
     E("barraNao").style.transform = "scaleX(" + b.toFixed(4) + ")";
-    E("barraSim").style.transform = "scaleX(" + eo(seg(t, T.rejected + 0.1, T.barrasDur)).toFixed(4) + ")";
+    E("barraSim").style.transform = "scaleX(" + bS.toFixed(4) + ")";
+    // os rótulos das barras (6ª vista, 05/10/2026): o recorte de cada palavra tem a largura da barra no instante, e a palavra,
+    // presa à ponta, se revela com ela; a opacidade sobe em 300 ms a partir da palavra que traz a barra (NO em 6,2; YES em 6,3)
+    var cN = E("clipNao"), cS = E("clipSim"), tN = E("txtNao"), tS = E("txtSim");
+    if (cN) cN.style.width = (BAR.nao * b).toFixed(1) + "px";
+    if (cS) cS.style.width = (BAR.sim * bS).toFixed(1) + "px";
+    if (tN) tN.style.opacity = eo(seg(t, T.rejected, 0.3)).toFixed(3);
+    if (tS) tS.style.opacity = eo(seg(t, T.rejected + 0.1, 0.3)).toFixed(3);
 
     // ── o crédito, de "passed" ao fim ──
     var c = E("credFonte"), opC = eo(seg(t, T.passed, 0.3));

@@ -4,6 +4,16 @@
 <meta charset="utf-8">
 <title>s39</title>
 <!--
+  REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026)
+  - A marca dele (out/_feedback-queue.jsonl, muruz434-edcf40, s50 @3,7 s, versão 30c7fe12): "mapa muito parado,
+    utilizar mais movimento de câmera (suave)".
+  - A decisão (03/10/2026, out/juneau/_pesquisa/revisao-premiere-lucas.md, "A linha do tempo"): "Em todo mapa parado
+    (Recomendado)": a s50 e todo mapa do Juneau parado por mais de 2 s ganham uma aproximação suave e contínua. A medida
+    e o piso do diretor: conceito-visual.json › _mapas_parados_2026_10_03 (esta cena: 4–10,25 s locais).
+  - O que mudou: o push-in de 4 a 10,25 s ganhou a escala 1,165 e o deslocamento [−150, −110] px (CENA.pushIn).
+  - Nenhum tempo de palavra, rótulo, linha, fusão de nível ou texto mudou. A cópia de antes: out/juneau/_tmp/art/s39-antes-revisao-5.html.
+-->
+<!--
   CANAL ALPHA POINT — JUNEAU, CENA s39 (408,033 → 418,433 s do master; 10,4 s; quadros 12241 → 12553 a 30 fps).
   "Eight years later, voters rejected moving the legislative sessions to the Mat-Sue Valley, by about two to one. That
   measure would also have dropped the cost rule for moving the legislature."
@@ -29,15 +39,15 @@
         entra à direita dele; em "Mat-Sue" (3,867) o borough se preenche em --territorio-contraparte-cor (--contraparte a
         35 %) em 500 ms, com MAT-SU VALLEY na parte oeste, e recebe o carimbo pousado. ABOUT 2-TO-1 em "about" (5,233), embaixo do placar, até 7,233,
         saindo em 300 ms.
-    b2  6,967–10,400 "That measure would also have dropped the cost rule for moving the legislature."  — a câmera não
-        anda. Em "cost" (8,533) a faixa da lei (o motivo da s36 como uma linha de papel, sem texto) desliza da esquerda
-        sobre o mapa em 0,5 s (90 px, entrando em opacidade em 300 ms, sem passar da margem de 200), se apaga até 15 % em
-        meio segundo e volta (9,133–10,133).
+    b2  6,967–10,400 "That measure would also have dropped the cost rule for moving the legislature."  — nada entra:
+        a voz diz "dropped the cost rule", e o mapa fica com o borough, o carimbo, o placar e os pontos até o corte (a
+        faixa da lei saiu na revisão de espectador de 02/10/2026; abaixo). A câmera continua no push-in que começou em
+        2,4 s (REVISÃO DE ESPECTADOR, 2, abaixo), até o último quadro.
 
   A CONTA DOS 6 ELEMENTOS (a da regência, auditoria › teto_de_elementos › s39; minha, pelo ensaio a seco, não portão):
   o carimbo pousado é parte do borough; o placar conta à parte; cada ponto de cidade é um:
     0,033–1,633: o 2002 e os três pontos = 4 · 1,633–2,333: o 2002, o carimbo, o placar e os três pontos = 6 (o teto) ·
-    2,333–5,233: 5 · 5,233–7,533: com ABOUT 2-TO-1, 6 (o teto) · 7,533–8,533: 5 · de 8,533 ao corte: com a faixa, 6.
+    2,333–5,233: 5 · 5,233–7,533: com ABOUT 2-TO-1, 6 (o teto) · de 7,533 ao corte: 5.
 
   O MAPA: o perfil do canal (maptiler), sem relevo, brilho 65 % e saturação 70 % na camada, sem véu. Nenhuma linha de
   mapa na cena (o borough é só preenchimento; a fronteira não entra no quadro): sem legenda das cores.
@@ -45,7 +55,8 @@
   O CONTRATO: var DUR = 10.4 (o qc-janela lê o número escrito); __renderAt(t) determinístico e à prova de erro;
   __prepararCaptura; __ready (o mapa); __aguardarMapa; __fotosProntas. Nada de relógio, sorteio, @keyframes,
   transition ou SMIL. O RIG é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
-  CÂMERA FINAL: lng -148.13, lat 62.3, zoom 7.2, bearing 0, pitch 0 (o borough em x 760–2280, y 540–1500).
+  CÂMERA: fim da chegada (2,4 s) em lng -148.13, lat 62.3, zoom 7.2, bearing 0, pitch 0 (o borough em x 760–2280,
+  y 540–1500); no último quadro, depois do push-in, lng -148.1232, lat 62.3339, zoom 7.2704 (o carimbo parado na tela).
   A BASE ANDA LISA E A ÚLTIMA ATUALIZAÇÃO DOS TILES (correção 7 do Claude central, 01/10/2026: os dois blocos da s12 e
   da s42, da correção 6, em todas as cenas de mapa, para o vídeo inteiro pintar a base de um jeito só):
     · o MapLibre 4.7.1 desenha a base raster alinhada a pixel inteiro quando o mapa não está "em movimento"
@@ -63,6 +74,27 @@
       a 1ª pinta os tiles que acabaram de chegar, e a 2ª tira os filhos. O nivelUnico, abaixo, ainda aceita dois níveis
       vizinhos carregados, caso que agora não deve mais aparecer.
       Medido com tile, nos mesmos quadros: a base fica num nível só em todos.
+
+  REVISÃO DE ESPECTADOR (02/10/2026, mapista, passo art): a revisão de espectador e um cético acharam a faixa da lei
+  (#faixa: uma tira em --papel de 1.800 × 88 px, SEM TEXTO) deslizando em "cost" (8,533 local, 6:56,6 do vídeo) e
+  piscando (opaca até 9,133, a 15 % em ~9,63, de volta em 10,133). Um espectador a lê como barra quebrada: marca sem
+  conteúdo, o mesmo defeito que o Lucas apontou em s02 e s23 (revisao-premiere-lucas.md, "As decisões (02/10/2026)").
+  Saiu inteira: o div #faixa, o CSS dele, a entrada faixa do objeto CENA e o bloco "a faixa da lei" do aplicar. A voz
+  já carrega "dropped the cost rule"; texto novo na tela pediria o redator e o verificador, e não entra. A conta cai
+  para 5 elementos de 7,533 ao corte. Nada mais mudou (câmera, tempos, textos, créditos).
+
+  REVISÃO DE ESPECTADOR, 2 (02/10/2026, mapista, passo art): sem a faixa, a revisão de espectador e o cético acharam o
+  mapa CONGELADO por inteiro de ~7,6 s ao corte (2,8 s sem diferença entre quadros, a câmera parada desde 2,4 s), em
+  "That measure would also have dropped the cost rule…": parece vídeo pausado. Conserto, pelo gesto padrão da marca
+  para mapa sem viagem (conceito-visual.json, "DUAS DECISÕES PARA OS PRÓXIMOS VÍDEOS", e a régua do qc-visual: a câmera
+  não fica parada mais de 2,5 s com nada entrando): um push-in lento, de 1,00 a 1,05 (zoom 7,2 → 7,2704), de onde a
+  chegada para (2,4 s) até o último quadro, preso ao ponto do carimbo (CENA.carimbo.p, -147,9865, 63,0030, em (1950, 760)
+  na tela): o carimbo fica parado, e o resto se abre em volta dele. A velocidade nasce do zero, onde a chegada a deixou
+  (rampa quadrática de 1,0 s, depois constante: CENA.pushIn), sem tranco na emenda. O zoom não cruza nível de tile
+  (7,2 → 7,27). Pela conta (sem tile): no fim, o placar desce a borda esquerda de 2500 para ~2527 px, MAT-SU VALLEY vai
+  de (1150, 1150) para ~(1110, 1170) e o ponto de Anchorage de y 1560 para ~1600, longe da faixa do crédito (y ≥ 1880).
+  Sem texto novo, nada saiu; os três pontos sem nome ficam (conceito: "os pontos de s39 sem nome"). Os achados da s38
+  (a tira sem texto) e dos pontos sem nome não são desta cena ou foram decididos: não mexidos aqui.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -100,11 +132,6 @@
     mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>");
     -webkit-mask-size: 640px; mask-size: 640px; }
 
-  /* A FAIXA DA LEI (o motivo da s36, a folha AS 44.06.055, como uma linha de papel sem texto): --papel, 1.800 × 88 px,
-     com o contorno escuro por baixo (o das linhas sem palavra da s14), inclinada −1,5°; desliza da esquerda */
-  #faixa { position: absolute; left: 300px; top: 1680px; width: 1800px; height: 88px; z-index: 44; opacity: 0;
-    background: var(--papel); border-radius: 4px; box-shadow: 0 0 0 6px var(--fronteira-contorno-cor); transform-origin: 50% 50%; }
-
   .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
     font: 500 76px/1.15 sans-serif; font-family: var(--fonte); letter-spacing: 0;
     color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); }
@@ -131,7 +158,6 @@
     <div class="rotulo" id="rAbout" data-qc-papel="rotulo"></div>
     <div class="rotulo regiao" id="rMatsu" data-qc-papel="rotulo"></div>
   </div>
-  <div id="faixa" data-qc-papel="grafico"></div>
   <div id="creditoFonte" class="credito" data-qc-papel="credito"></div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
   <div id="erroCena" hidden></div>
@@ -235,12 +261,19 @@
       fonte: "Source: Alaska Division of Elections, 2002"
     },
 
-    // ── a câmera: chega devagar ao Mat-Su em 3,0 s (V0 → V1, a câmera da Régie); depois, parada
+    // ── a câmera: chega devagar ao Mat-Su em 2,4 s (V0 → V1, a câmera da Régie); depois, o push-in (pushIn)
     viewports: {
       V0: { lng: -148.6, lat: 61.8, zoom: 6.6, bearing: 0, pitch: 0 },
       V1: { lng: -148.13, lat: 62.3, zoom: 7.2, bearing: 0, pitch: 0 }
     },
     chegada: { de: 0, dura: 2.4 },
+    // ── o push-in (REVISÃO DE ESPECTADOR, 2): de onde a chegada para (2,4) até o corte, de 1,00 a "escala", preso ao
+    //    ponto do carimbo (ele fica parado na tela, o resto se abre em volta); parte do repouso e acelera em "acelera" s,
+    //    depois anda em velocidade constante até o último quadro
+    // REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026; conceito › _mapas_parados_2026_10_03, s39): o push-in 3× mais
+    // rápido (1,00 → 1,165, zoom 7,2 → 7,42) e o carimbo derivando na tela: o chão anda "px" (linha reta, na mesma
+    // progressão do push-in), para o quadro inteiro andar; o carimbo continua preso ao chão
+    pushIn: { de: 2.4, escala: 1.165, acelera: 1.0, px: [-150, -110] },
 
     pontos: { A: { geo: "cidades-ne", nome: "Anchorage" }, Wa: { geo: "cidades-ne", nome: "Wasilla" }, Wi: { geo: "cidade-willow-osm" } },
     pontosEntram: 0.033,
@@ -255,10 +288,6 @@
     ],
     // o 2002, preso à tela no canto de cima à esquerda (a data não é lugar)
     ano: { x: 200, y: 254.4, entra: 0.033, sai: 2.033 },
-    // a faixa da lei: desliza da esquerda em "cost" (8,533), 90 px, entrando em opacidade em 300 ms, e se apaga até 15 %
-    // em meio segundo, e volta. Desliza dentro da margem de 200 (aviso do Claude central, 01/10/2026: a margem vale em
-    // todo quadro); de fora do quadro, ela passaria pela margem esquerda
-    faixa: { entra: 8.533, desliza: 0.5, de: -90, aparece: 0.3, rot: -1.5, apaga: [9.133, 1.0], minimo: 0.15 },
     creditos: { base: 52, vao: 8, fonte: 1.633 }    // a fonte cobre o placar: de "rejected" ao corte
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
@@ -454,7 +483,18 @@
   var CH = CENA.chegada, VP = CENA.viewports;
   var chegadaAt = criarCameraMapa({ viewports: [VP.V0, VP.V1], duration: CH.dura, width: CENA.largura, height: CENA.altura,
     bearingLoop: null, cameraAbre: 0.5, cameraFecha: 0.5 });
-  var cameraAt = function (t) { return chegadaAt(cl(t - CH.de, 0, CH.dura)); };
+  // o push-in preso ao carimbo (CENA.pushIn): o zoom sobe com f(τ) (rampa quadrática por "acelera" s, depois linear;
+  // a velocidade nasce do zero, onde a chegada a deixou), e o centro se aproxima da âncora na mesma razão, em Mercator
+  var PI_ = CENA.pushIn, PI_L = DUR - PI_.de, PI_dz = Math.log(PI_.escala) / Math.LN2;
+  var PI_f = function (tau) { tau = cl(tau, 0, PI_L); return tau < PI_.acelera ? tau * tau / (2 * PI_.acelera) : tau - PI_.acelera / 2; };
+  var cameraAt = function (t) {
+    var c = chegadaAt(cl(t - CH.de, 0, CH.dura));
+    if (t <= PI_.de) return c;
+    var u = PI_f(t - PI_.de) / PI_f(PI_L), dz = PI_dz * u, k = Math.pow(2, -dz);
+    var mc = merc(c.center), ma = merc(CENA.carimbo.p), ws = 512 * Math.pow(2, c.zoom + dz), D = PI_.px;
+    var cc = desmerc([ma[0] - (ma[0] - mc[0]) * k - D[0] * u / ws, ma[1] - (ma[1] - mc[1]) * k - D[1] * u / ws]);
+    return { center: cc, zoom: c.zoom + dz, bearing: c.bearing || 0, pitch: c.pitch || 0 };
+  };
   var c0 = cameraAt(0);
   var map;
   try {
@@ -551,11 +591,6 @@
     // ── o 2002, preso à tela ──
     var A = CENA.ano, ea = entrada(t, A.entra);
     pilula(E("r2002"), A.x, A.y, "direita", ea * (1 - seg(t, A.sai, 0.3)), ea);
-    // ── a faixa da lei ──
-    var F = CENA.faixa, f = E("faixa"), u = eo(seg(t, F.entra, F.desliza));
-    var dip = Math.sin(Math.PI * seg(t, F.apaga[0], F.apaga[1]));
-    f.style.opacity = (t < F.entra ? 0 : seg(t, F.entra, F.aparece) * (1 - (1 - F.minimo) * dip)).toFixed(3);
-    f.style.transform = "translateX(" + (F.de * (1 - u)).toFixed(1) + "px) rotate(" + F.rot + "deg)";
     // ── os créditos: o da MapTiler a cena toda; o da fonte com o placar ──
     var c1 = E("credito"), cf = E("creditoFonte");
     if (c1 && cf) {

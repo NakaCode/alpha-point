@@ -4,6 +4,128 @@
 <meta charset="utf-8">
 <title>s42</title>
 <!--
+  REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026)
+  - A marca dele (out/_feedback-queue.jsonl, muruwkmm-ad39d0, s42 @14,8 s, versão d629894d): "um dos territórios (talvez
+    o principal da cena) pode sempre estar "marcado" com alguma cor".
+  - A decisão (03/10/2026, revisao-premiere-lucas.md): "1. Mas na verdade todos territórios que fizerem parte do contexto
+    do vídeo, cada um com uma cor (com baixa opacidade)"; cores da paleta do canal. E "Em todo mapa parado" (a marca da
+    s50): parado medido em 14,75–22,75 s locais.
+  - O que mudou: só a câmera. De 14,633 a 23,3 o recuo pousa ALÉM da câmera nomeada e uma aproximação contínua chega a
+    ela em 23,3 (CENA.aproxima). OS TERRITÓRIOS NÃO ENTRARAM: a geometria real dos boroughs de Juneau, Haines e Skagway
+    (TIGER, GEOID 02110, 02100 e 02230) não está em out/juneau/_media/geo/; pedido à pesquisa-geo no relato do mapista
+    (bloqueio, ofício §2: nada desenhado à mão). [Resolvido na parte B, abaixo.]
+  - Nenhum tempo de palavra, rótulo, linha, fusão de nível ou texto mudou. A cópia de antes: out/juneau/_tmp/art/s42-antes-revisao-5.html.
+  - PARTE B (5ª leva B, 03/10/2026). A geometria chegou (pesquisa-geo: juneau-borough, haines-borough e skagway-municipality,
+    Census Cartographic Boundary File 2025, condados 1:500.000, domínio público, sem crédito na tela; pauta-geo.json). O que
+    mudou (regência s42#1–#3, conceito s42, textos-tela rotulos_dado 190–193; identidade §5, "Os territórios do contexto,
+    cada um com uma cor"; as cores só dos tokens):
+      · o chão pintado, sem contorno próprio, por baixo da divisa e da estrada (CENA.territorios): Juneau em --destaque a
+        25 %; Haines, Skagway e a British Columbia (Natural Earth, a mesma da s44) em --neutro a 35 %. Juneau, Haines e
+        Skagway desde o 1º quadro (no b1 a regência já conta os vizinhos); a BC com a divisa e o item Border (13,333);
+        todos saem com a folha (22,9–23,2), e os últimos quadros continuam o mapa nu da câmera nomeada, o 1º da s44;
+      · os nomes JUNEAU, HAINES e BRITISH COLUMBIA em caixa alta, Inter 700, 96 px, --tracking-lugar, --legenda-cor, sem
+        pílula, presos a um ponto do chão dentro do território (CENA.nomes); cada um aparece e se apaga nos 60 px antes de
+        tocar a margem, a legenda, o anel, o rótulo Juneau, a faixa de crédito, o canto ou a folha ("o nome que não está no
+        quadro não existe"). A guarda conferirNomes falha se um nome visível sair do território ou chegar a menos de 40 px
+        da divisa ou da estrada, em qualquer quadro;
+      · SKAGWAY fica sem nome: no quadro, o território só aparece numa faixa de ~240–320 px junto da margem de cima e da
+        divisa, e o nome não cabe dentro dele (relato);
+      · a divisa é a do Natural Earth (a mesma da s03 e da s44), e os três polígonos do Census se afastam dela até 2,3 km
+        (medida do pesquisa-geo): perto da divisa, a borda do preenchimento pode passar alguns px dela; conferido nos
+        quadros do render (relato).
+    A câmera, a folha, os grifos e a emenda com a s44 não mudaram. Nenhum tempo de palavra mudou. A cópia de antes:
+    out/juneau/_tmp/art/s42-antes-revisao-5b.html.
+  - PARTE B, PORTÕES VOLTA 1 (03/10/2026, mapista; a triagem dos portões e dos quadros, medida com o mapa de verdade).
+    · O qc-tamanho reprovou JUNEAU, HAINES e BRITISH COLUMBIA a 96 px: nome de lugar é rótulo, e o piso de rótulo da
+      identidade §4.1 é 104. O .terr passa a 104 px. Os pontos de CENA.nomes não mudaram: a sonda sem custo
+      (out/juneau/_tmp/art/rev5b/diag-nomes.mjs, a câmera e a opacidade desta cena, todo quadro) dá 0 violações a 104 px,
+      com a folga mínima às linhas de 47 px (JUNEAU), 86 (HAINES) e 95 (BRITISH COLUMBIA); a guarda conferirNomes passa.
+      A ponta de baixo da faixa "84–104" do conceito vai ao diretor-de-arte pelo Claude central.
+    · HAINES se apagava na mesma rampa em que a folha de 2018 aparecia por cima, e se lia sobre o papel ao lado de "These
+      restrictions also" (14,633–14,70 s). Agora o nome que a folha vai cobrir sai ANTES dela, de 14,33 a 14,63 (nomeEstado:
+      a rampa da folha começa 0,3 s antes da queda); pela sonda, HAINES fica no ar de 9,3 a 14,6 s e some antes de a folha
+      aparecer. JUNEAU e BRITISH COLUMBIA, fora da folha, não mudam.
+    · O til-glifo: o .cab e o .corpo da folha de 2018 (Courier Prime, MarcaDoc) levam data-qc-fonte-livre, como a s02.
+    · A conta de elementos do cabeçalho (abaixo) foi refeita com os territórios e os nomes.
+    Nenhum tempo de palavra mudou. A cópia de antes: out/juneau/_tmp/art/s42-antes-revisao-5b-portoes1.html.
+  - PARTE C (5ª leva C, 04/10/2026, mapista; os achados do cético da 5b, revisao-lucas-workflow-5b.json › cetico, e do
+    espectador). As CORES dos territórios (Haines, Skagway, BC) não mudaram: estão com o Lucas.
+    · JUNEAU, em --legenda-cor só com a sombra difusa, saía a ~1,4–1,6:1 sobre o próprio território claro no campo de gelo
+      (11–12 s). Os nomes dos territórios agora usam a cor e o contorno do rótulo de mapa da marca: a letra em --tinta (a
+      do texto da pílula) com 14 px de contorno em --rotulo (o fundo da pílula), por fora da letra (paint-order), mais a
+      sombra de antes. Vale para os três nomes (JUNEAU, HAINES e BRITISH COLUMBIA), para a cena ter um estilo só de nome
+      de território. O tamanho (104 px), os pontos do chão e a guarda conferirNomes não mudaram (o contorno fica fora da
+      caixa medida: a folga de 40 px às linhas vira ≥ 33 px de tinta).
+    · O cabeçalho da folha de 2018 usava ".caixa-ref .ano { opacity: 0 }" e mostrava "PROJECT ·" pendurado com a vaga do
+      2018 (14,63–14,73 s). Agora o " · " vai com o ano: a parte impressa termina em "PROJECT", e o " · 2018" entra na voz
+      (14,733) crescendo de 0 à largura dele em 300 ms, como na s12 e na s18. A caixa tem a largura da 1ª linha (JUNEAU
+      ACCESS IMPROVEMENTS), que não muda. O texto inteiro do cabeçalho é o mesmo do textos-tela.json.
+    Nenhum tempo de palavra mudou. A cópia de antes: out/juneau/_tmp/art/s42-antes-revisao-5c.html.
+  - PARTE D (5ª leva D, 04/10/2026, mapista; as cores de contexto que o Lucas aprovou em 04/10, 20:5x: "Uma cor nova por
+    território" e "Aprovo assim (Recomendado)"; identidade §2, §4.1 e §6, "Os territórios do contexto"; tokens).
+    · A BC, do outro lado da fronteira internacional, em azul (--territorio-contexto-2-cor = --contexto-2 a 25 %); Haines,
+      o vizinho do mesmo país mais importante do mapa, em lavanda (--territorio-contexto-3-cor = --contexto-3 a 25 %);
+      Juneau, o protagonista com contexto pintado, a 40 % (--territorio-protagonista-com-contexto-cor). Era: Juneau a 25 %
+      e os três vizinhos em --neutro a 35 %, que sumia sobre o gelo.
+    · A cor e a opacidade saem do token inteiro (corDoToken lê o color-mix e reprova a cena se ele mudar de forma): nenhum
+      hex nem opacidade escritos na cena.
+    · SKAGWAY SEM TINTA: não tem nome no quadro ("território sem nome no quadro não leva tinta"); a geometria
+      skagway-municipality saiu da cena. Sem dois vizinhos do mesmo país pintados que se tocam, não há a luz na aresta.
+    · O chão de Haines sai com o nome HAINES, de 14,33 a 14,63, antes de a folha cair: depois disso ele seria chão pintado
+      sem nome (a opção que a prancha das cores deixou ao editor; o quadro da folha fica com 5 elementos, não 6).
+    · Os nomes usam os tokens do tratamento da §4.1 (--nome-territorio-contorno e --nome-territorio-sombra): os mesmos
+      valores da 5c, agora lidos da marca. Tamanho (104 px), pontos do chão e a guarda conferirNomes não mudaram.
+    · Contraste: medido na prancha (out/juneau/_tmp/prancha-territorios/, workflow-v2.json › fin) e, nesta cena, no render
+      (relato 5dm). Nenhum tempo de palavra, rótulo, linha, câmera ou texto mudou. A cópia de antes:
+      out/juneau/_tmp/art/s42-antes-revisao-5d.html.
+  - PARTE E (5ª leva E, 05/10/2026, mapista; o cético da parte D, revisao-lucas-workflow-5d.json › cetico, s42 0–9,27 s).
+    · O chão de Haines (a península de Chilkat, à esquerda do quadro de 0 a ~5 s) ficava pintado de lavanda SEM nome por
+      9,3 s, contra a identidade §6 ("Território sem nome no quadro não leva tinta"). O nome desde o 1º quadro não cabe: na
+      sonda sem custo (out/juneau/_tmp/art/rev5e/s42-haines-grade.js; 4.870 pontos do haines-borough, de 0,02° × 0,01°),
+      o melhor ponto, em −135,336 / 58,465, segura o HAINES dentro do território, na área segura e a 40 px ou mais das
+      linhas só do quadro 0 ao 140 (4,7 s); nenhum chega aos 9,27 em que o ponto de hoje assume. Agora a TINTA SEGUE O NOME (CENA.territorios › comNome: "terrHaines"): a opacidade do chão é a do token
+      vezes a do nome HAINES no mesmo quadro (nomeEstado). Sem nome, sem tinta: de 0 a 9,27 o chão de Haines não tem cor;
+      ele acende com HAINES (9,30–10,13 s, a rampa do nome, medida na sonda sem custo: o nome não cai em nenhum quadro do
+      meio) e sai com ele (14,33–14,63, antes da folha), como antes. Nada de cinza: a cor é a aprovada.
+    · A CONTA DOS 6 (abaixo) muda só no começo: Haines conta de 9,27 a 14,63, e não mais desde o 1º quadro.
+    · Nenhum tempo de palavra, rótulo, linha, câmera, cor ou texto mudou. A cópia de antes:
+      out/juneau/_tmp/art/s42-antes-revisao-5e.html.
+  - PARTE E, 3ª RODADA (5ª leva E, 05/10/2026, mapista; o regente, o diretor e o redator na parte E, b1).
+    · BRITISH COLUMBIA esmaecia perto da legenda (0,5 em 21,3; < 0,25 desde ~22,13; < 0,1 desde ~22,67) enquanto o chão
+      azul ficava inteiro até a folha sair (22,9–23,2): ~1 s de território pintado sem nome legível (§6). Duas saídas
+      medidas na sonda sem custo (out/juneau/_tmp/art/rev5e3/): a tinta seguir o nome (comNome, como Haines), que apagaria
+      o azul aos poucos de 19,7 a 23,2 com o nome; ou outro ponto do nome. A busca (0,005° em volta do ponto antigo, 463
+      pontos que passam) achou pontos em que o nome fica INTEIRO até a folha sair, e a escolha foi essa: o território e o
+      nome ficam juntos e inteiros até o fim, como a regência os pôs, e nada mais muda. O ponto passou de
+      [−133,50, 59,25] para [−133,47, 59,20] (~5,6 km ao sul): o nome aparece em ~13,87, fica inteiro de 14,27 a 22,9 e
+      sai com o chão e a folha (22,9–23,2); a guarda conferirNomes passa, com ~60 px de folga mínima às linhas (era 118)
+      e 482 px ou mais do JUNEAU. A tinta, a cor, a entrada (13,333) e a saída não mudaram.
+    · O VÃO DE JUNEAU (2,567–~2,9) NÃO MUDOU: nenhum ponto fixo do juneau-borough serve. Na sonda (grade de 0,02° × 0,01°),
+      todo ponto legível em 2,4 s sai pelo pé do quadro no voo (vão entre 6,8 e 9,5 s); o que entra mais cedo sem vão
+      depois entra em 2,8 (e cai a 0,05 no voo); o ponto de hoje (2,9) é o melhor. Fechar o vão pede mudar outra coisa
+      (a pílula Juneau mais alta e saindo depois, ou aceitar os 0,3 s): vai ao Claude central (relato 5em3).
+    · Nenhum tempo de palavra, rótulo, linha, câmera, cor ou texto mudou. A cópia de antes:
+      out/juneau/_tmp/art/s42-antes-revisao-5e3.html.
+  - PARTE E, 5ª RODADA (5ª leva E, 05/10/2026, mapista; as decisões do Claude central de 05/10, revisao-premiere-lucas.md).
+    · DUAS FOLGAS FICAM, DECLARADAS (decisão do Claude central, 05/10/2026, 06:2x):
+      - o vão de ~0,33 s (2,567–2,9 s) em que o chão de Juneau está pintado entre a pílula "Juneau" e o nome JUNEAU: fica
+        abaixo do piso de beat, na troca cidade→município logo depois de a pílula nomear Juneau; a outra saída afastaria a
+        pílula do ponto desde o 1º quadro, e nenhum ponto fixo do nome o fecha (rodadas 3 e 4, relatos 5em3 e 5em4);
+      - os ~0,4–0,6 s (13,33–13,9 s) em que o azul da British Columbia entra antes de o nome se ler: é escalonamento de
+        revelação, na pausa da voz (o cético o derrubou como defeito).
+    · O CONSERTO (decisão do Claude central, 05/10/2026: é defeito da cena). O JUNEAU caía de 9,5 a 12,4 s (0,43 de 11,5 a
+      12,0; ~1,5:1 no celular) porque a base da caixa chegava a 1854, dentro da rampa de 60 px da linha de 1880. Duas saídas
+      medidas na sonda sem custo (out/juneau/_tmp/art/rev5e5/q-ab.js, ab.json, todo quadro): A) a câmera do voo pousar 34 px
+      mais baixa de 9,5 a 12,4 s, que move o mapa inteiro 34 px e muda também o HAINES (9,3–12,2 s); B) a guarda de baixo do
+      JUNEAU medir as caixas de crédito de verdade. Foi a B, que muda menos o que se vê: CENA.nomes › fundoPeloCredito (só o
+      JUNEAU) e creditoCaixas(); o nome fica inteiro a 40 px ou mais de toda caixa de crédito (a da MapTiler e a vaga da
+      fonte, contada sempre) e acima de 1880, e só esmaece numa rampa de 60 px depois desses 40 px de um crédito, ou nos
+      20 px antes de 1880 (zero ao tocar a faixa). Na sonda: o JUNEAU muda só de 9,533 a 12,467 s e fica a 1,0 de 9,5 a
+      12,4 (base da caixa ≤ 1854; ≥ 968 px dos créditos, que terminam em x 1693); fora disso, nenhuma opacidade muda.
+    · Nenhum tempo de palavra, rótulo, linha, câmera, cor, ponto ou texto mudou; HAINES e BRITISH COLUMBIA não mudaram.
+      A cópia de antes: out/juneau/_tmp/art/s42-antes-revisao-5e5.html.
+-->
+<!--
   CANAL ALPHA POINT — JUNEAU, CENA s42, MÃE DO RUN s42←s43 (439,800 → 463,133 s do master; 23,333 s; quadros 13194 →
   13894 a 30 fps). "Then there's the road. If getting to Juneau is the complaint, why not just build one? When a federal
   project could significantly change the environment, federal law requires an environmental impact statement, a study of
@@ -52,10 +174,16 @@
         linha da fonte saem só com a opacidade em 22,9–23,2; os últimos 4 quadros (23,200–23,300) são o mapa nu na câmera
         nomeada (a estrada, o anel, a divisa e a legenda), o primeiro quadro da s44.
 
-  A CONTA DOS 6 ELEMENTOS (a da regência; minha, pelo ensaio a seco, não portão: o qc-carga sai NÃO MEDIDO sem npm).
-  Juneau com o nome é um; a estrada com o anel é um; a divisa e o crédito não contam:
-    0–2,567: Juneau, a estrada com o anel e a legenda = 3 · 2,567–14,633: a estrada com o anel e a legenda = 2 ·
-    14,630–23,2: a folha, a estrada com o anel e a legenda = 3 (e um bloco de texto, o da folha) · depois, 2.
+  A CONTA DOS 6 ELEMENTOS (a da regência, s42 b1–b3; refeita na 5d pela regra da identidade §6, "A conta do teto de 6":
+  cada território pintado com o seu nome é um elemento; sem nome, o chão conta um). O ponto de Juneau com a pílula é um;
+  a estrada com o anel é um; Juneau (o chão com JUNEAU) é um; Haines (o chão, com HAINES de 9,27 a 14,63; desde a 5e o
+  chão só tem tinta com o nome) é um; a BC com BRITISH COLUMBIA é um; a divisa e o crédito não contam:
+    0–2,567: o ponto com a pílula, a estrada com o anel, a legenda e Juneau = 4 ·
+    2,567–9,27: a estrada com o anel, a legenda e Juneau = 3 ·
+    9,27–13,333: + Haines = 4 ·
+    13,333–14,63: + a BC = 5 ·
+    14,63–23,2: a folha, a estrada com o anel, a legenda, Juneau e a BC = 5 (o chão de Haines sai com o nome, 14,33–14,63;
+    e um bloco de texto, o da folha) · 23,2 ao fim: a estrada com o anel e a legenda = 2.
 
   A FOLHA (identidade §5, "A folha de documento"; a da s12): recriação, nada de capa, figura ou página do estudo
   (midia.md §7.1); nenhuma mídia de _media/ na cena: nada a casar no conferencia-midia.json. Ela mora à esquerda do anel,
@@ -178,6 +306,9 @@
 <script src="../_media/geo/cascade-point.js"></script>
 <script src="../_media/geo/cidades-ne.js"></script>
 <script src="../_media/geo/lynn-canal-gnis.js"></script>
+<script src="../_media/geo/juneau-borough.js"></script>
+<script src="../_media/geo/haines-borough.js"></script>
+<script src="../_media/geo/british-columbia.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -189,6 +320,19 @@
   /* o ANEL (identidade §4.4): 56 px de diâmetro, traço de 10 px em --destaque; aqui parado, sem pulso */
   #anel circle { fill: none; stroke: var(--destaque); }
   #rotulos { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+  /* 5b: O NOME DE CADA TERRITÓRIO (conceito s42; regência s42#1–#3): caixa alta, Inter 700, --tracking-lugar, --legenda-cor
+     (--tinta a 80 %), 104 px (o piso de rótulo da identidade §4.1; 5b, portões: a 96 px o qc-tamanho reprovava), sem pílula, DENTRO do território e preso a um ponto do chão; a
+     sombra difusa (--fundo) só o separa do satélite claro (gelo) */
+  .terr { position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap; pointer-events: none;
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: 104px; line-height: 1.1;
+    letter-spacing: var(--tracking-lugar); color: var(--tinta);
+    -webkit-text-stroke: var(--nome-territorio-contorno); paint-order: stroke fill;
+    text-shadow: var(--nome-territorio-sombra); }
+  /* 5d: o tratamento é o "nome dentro do território de contexto" da identidade §4.1, agora token (--nome-territorio-*):
+     os mesmos 14 px de contorno em --rotulo e a mesma sombra da 5c, lidos da marca e não mais escritos aqui */
+  /* 5c: o nome na cor e no contorno do rótulo de mapa da marca: a letra em --tinta (a do texto da pílula) com um contorno
+     de 14 px em --rotulo (o fundo da pílula, #0B0F14 a 88 %) por fora da letra (paint-order). Em --legenda-cor (--tinta a
+     80 %) só com a sombra difusa, JUNEAU saía a ~1,4–1,6:1 sobre o próprio território claro no campo de gelo (11–12 s) */
   .rotulo { position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap;
     background: var(--rotulo); border-radius: var(--cantos);
     padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
@@ -214,7 +358,9 @@
     line-height: 1; letter-spacing: 0; padding: 18px 26px; white-space: pre;
     border: 6px solid color-mix(in srgb, var(--tinta-escura) 55%, transparent);
     color: color-mix(in srgb, var(--tinta-escura) 70%, transparent); }
-  .caixa-ref .ano { opacity: 0; }
+  /* 5c: o " · 2018" entra junto, com a voz, e cresce de 0 à largura dele (como a s12 e a s18): antes o .ano só tinha
+     opacity 0, e o "PROJECT ·" ficava pendurado com a vaga do 2018 (14,63–14,73 s) */
+  .caixa-ref .ano { display: inline-block; vertical-align: top; overflow: hidden; width: 0; opacity: 0; white-space: pre; }
   .fio { height: 4px; margin: 36px 0 40px; background: color-mix(in srgb, var(--tinta-escura) 25%, transparent); }
   .corpo { font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: 84px; line-height: 1.5;
     letter-spacing: 0; white-space: pre; }
@@ -261,14 +407,17 @@
   </svg>
   <div id="rotulos">
     <div class="rotulo" id="rotJuneau" data-qc-papel="rotulo"></div>
+    <div class="terr" id="terrJuneau" data-qc-papel="rotulo"></div>
+    <div class="terr" id="terrHaines" data-qc-papel="rotulo"></div>
+    <div class="terr" id="terrBC" data-qc-papel="rotulo"></div>
   </div>
   <div id="folhas">
     <!-- b3: a recriação do estudo de 2018 (Juneau Access Improvements Project, Final Supplemental EIS) -->
     <div class="grupo" id="rec18">
       <div class="sombra"><div class="folha rasgada"><div class="miolo" id="rec18m">
-        <div class="cab"><span class="caixa-ref" data-qc-papel="eixo"><span id="cab18"></span><span class="ano" id="ano2018"></span></span></div>
+        <div class="cab" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"><span class="caixa-ref" data-qc-papel="eixo"><span id="cab18"></span><span class="ano" id="ano2018"></span></span></div>
         <div class="fio"></div>
-        <div class="corpo" id="rec18corpo" data-qc-papel="eixo"></div>
+        <div class="corpo" id="rec18corpo" data-qc-papel="eixo" data-qc-fonte-livre="folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5"></div>
       </div></div></div>
       <div class="fita" id="rec18fe"></div><div class="fita" id="rec18fd"></div>
     </div>
@@ -382,7 +531,9 @@
       grifo1: "the perception held by many Alaska residents that the capital is isolated",
       grifo2: "Capital move proponents often cite this",
       creditoMapa: "© MapTiler © OpenStreetMap contributors",
-      fonte: "Source: Alaska DOT&PF and FHWA, 2018"
+      fonte: "Source: Alaska DOT&PF and FHWA, 2018",
+      // 5b (textos-tela.json de 03/10, rotulos_dado 190–193): os nomes dos territórios do contexto
+      terrJuneau: "JUNEAU", terrHaines: "HAINES", terrSkagway: "SKAGWAY", terrBC: "BRITISH COLUMBIA"
     },
 
     juneau: { geo: "cidades-ne", nome: "Juneau" },
@@ -399,6 +550,12 @@
     // ── O RECUO (b2): de onde o voo parou até a câmera nomeada "Juneau–estrada–anel" (a da s03), em 2,7 s
     recuo: { de: 11.933, dura: 2.7, abre: 0.5, fecha: 0.5,
              para: { lng: -134.9510, lat: 58.7560, zoom: 8.72, bearing: 0, pitch: 0 } },
+    // ── A APROXIMAÇÃO DO b3 (REVISÃO DO LUCAS NA LINHA DO TEMPO, 03/10/2026; conceito › _mapas_parados_2026_10_03, s42): o
+    //    recuo pousa ALÉM da câmera nomeada (o zoom 0,10 mais aberto e o centro deslocado desvioPx no zoom dela: o chão
+    //    começa 330 px à direita e 110 px abaixo), e de 14,633 ao último quadro (23,3) a câmera se aproxima, contínua, até
+    //    a câmera nomeada, que é EXATAMENTE o último quadro (a emenda com a s44 não muda); rampa de entrada "abre" e de
+    //    saída "fecha" (a câmera da Régie), velocidade constante entre elas
+    aproxima: { de: 14.633, ate: 23.3, recuoZoom: 0.10, desvioPx: [-330, -110], abre: 0.6, fecha: 1.0 },
     // ── o nível da base no voo e no recuo (O NÍVEL DA BASE NO VOO e O 9,5 DO RECUO, no cabeçalho): a camada presa ao
     //    nível "nivel" entra de 0 (zoom "de") a 1 (zoom nivel + 0,5); a do 10 começa no zoom do 1º quadro (10,7), e a
     //    do 9, no zoom do fim do voo (9,7)
@@ -431,7 +588,53 @@
     grifos: [{ texto: "grifo1", de: 17.933, ate: 19.700 },
              { texto: "grifo2", voz: [[20.367, 20.698], [20.698, 20.941], [20.941, 21.505], [22.240, 22.480], [22.480, 22.680], [22.680, 22.874]] }],
 
-    creditos: { base: 52, vao: 8, fonte: [14.630, 0.3] }   // a fonte com a folha; sai com ela (folha.sai)
+    creditos: { base: 52, vao: 8, fonte: [14.630, 0.3] },  // a fonte com a folha; sai com ela (folha.sai)
+
+    // ── 5b: OS TERRITÓRIOS DO CONTEXTO (a marca do Lucas na linha do tempo; regência s42#1–#3; identidade §5): o chão
+    //    pintado em baixa opacidade, sem contorno próprio (a única linha branca continua sendo a divisa), por baixo da
+    //    divisa e da estrada. [5b: Juneau em --destaque a 25 %; Haines, Skagway e a BC em --neutro a 35 %. Superado pela 5d,
+    //    abaixo.] Juneau e Haines são chão desde o 1º quadro (no b1 a regência já os conta); a BC entra
+    //    com a divisa e o item Border (13,333). Todos saem com a folha (22,9–23,2): os últimos quadros são o mapa nu, o
+    //    1º quadro da s44 (a emenda não muda). Geometria: Census CB 2025 (domínio público) e Natural Earth (BC).
+    // 5d (Lucas, 04/10/2026, "Uma cor nova por território" e "Aprovo assim"; identidade §2 e §6, "Os territórios do
+    //    contexto"): a cor e a opacidade de cada chão saem do TOKEN do papel (marca/tokens.css), lido inteiro pela cena
+    //    (corDoToken: color-mix(in srgb, <cor> N%, transparent) = a cor a N %): a BC, do outro lado da fronteira
+    //    internacional, em azul (--territorio-contexto-2-cor, --contexto-2 a 25 %); Haines, o vizinho do mesmo país mais
+    //    importante do mapa, em lavanda (--territorio-contexto-3-cor, --contexto-3 a 25 %); Juneau, o protagonista com o
+    //    contexto pintado, a 40 % (--territorio-protagonista-com-contexto-cor). SKAGWAY SEM TINTA: não tem nome no quadro
+    //    ("território sem nome no quadro não leva tinta"), e por isso também não há a luz na aresta Haines × Skagway
+    territorios: [
+      { id: "terr-bc", geo: "british-columbia", token: "--territorio-contexto-2-cor", entra: 13.333 },
+      // o chão de Haines sai com o nome HAINES (14,33–14,63, antes de a folha cair): sem o nome no quadro ele seria território
+      // sem nome pintado, e o quadro da folha fica com 5 elementos, não 6 (a opção da prancha das cores, workflow-v2 › fin)
+      // 5e (o cético da parte D): de 0 a 9,27 o chão de Haines ficava pintado sem nome (a península de Chilkat, à esquerda).
+      // Agora a tinta segue o nome HAINES (comNome): entra com ele, na mesma rampa, e sai com ele (14,33–14,63)
+      { id: "terr-haines", geo: "haines-borough", token: "--territorio-contexto-3-cor", entra: 0, saiAntesDaFolha: true, comNome: "terrHaines" },
+      { id: "terr-juneau", geo: "juneau-borough", token: "--territorio-protagonista-com-contexto-cor", entra: 0 }
+    ],
+    territoriosSaem: [22.9, 0.3],
+    // os NOMES, presos a um ponto do chão DENTRO de cada território (achados por busca em grade, a 40 px ou mais de toda
+    // linha, pílula, anel, legenda e folha: out/juneau/_tmp/art/rev5b/s42-nomes.py e busca2.py). "O nome que não está no
+    // quadro não existe": cada um aparece e se apaga nos 60 px antes de tocar a margem, a legenda, a faixa de crédito, o
+    // canto, o anel, o rótulo Juneau ou a folha (como o anel, naArea). A guarda da cena (conferirNomes) passa por todos os
+    // quadros e falha se um nome visível sair do território ou chegar a menos de 40 px da divisa ou da estrada.
+    // SKAGWAY não entra: no quadro, a Municipality of Skagway só aparece numa faixa de ~240–320 px junto da margem de cima
+    // e da divisa, e o nome (~520 px a 96 px) não cabe dentro dela; desde a 5d o território também não é pintado (sem nome, sem tinta).
+    nomes: [
+      // medidos pela sonda sem custo out/juneau/_tmp/art/rev5b/diag-nomes.mjs (a câmera e a opacidade desta cena, todo
+      // quadro): JUNEAU no ar de 2,9 s ao fim, sem interrupção (entra quando a pílula Juneau sai, e o ponto do chão chega
+      // à área segura; nenhum ponto do território serve do 1º quadro ao recuo, relato); HAINES de 9,27 a 14,77 (a folha
+      // cobre o resto do território); BRITISH COLUMBIA de 13,67 ao fim. Folga mínima às linhas: 59, 101 e 118 px
+      // [5e3: BRITISH COLUMBIA de ~13,8 (inteiro de ~14,3) até a folha sair, 22,9–23,2; folga mínima às linhas ~60 px]
+      // 5e5: fundoPeloCredito: a guarda de baixo do JUNEAU mede as caixas de crédito de verdade (− 40, rampa de 60, como as
+      // outras caixas) e a faixa 1880 numa rampa curta de 20 px (zero ao tocar 1880), e não a linha inteira de 1880 com 60 px
+      { id: "terrJuneau", terr: "juneau-borough", lnglat: [-134.32, 58.65], entra: 0, fundoPeloCredito: true },
+      { id: "terrHaines", terr: "haines-borough", lnglat: [-135.95, 59.30], entra: 0 },
+      // 5e3: o ponto da BC desceu 0,05° (~5,6 km) e foi 0,03° para leste: em [-133.50, 59.25] o nome subia com a câmera até
+      // a legenda e esmaecia de 19,7 a 23,2 (0,5 em 21,3) com o chão azul inteiro; aqui ele fica inteiro de ~14,3 até a
+      // folha sair (22,9), e o chão nunca fica sem nome legível (busca em out/juneau/_tmp/art/rev5e3/q-grade-bc.js)
+      { id: "terrBC", terr: "british-columbia", lnglat: [-133.47, 59.20], entra: 13.333 }
+    ]
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -463,6 +666,7 @@
   E("rotJuneau").textContent = X.juneau;
   E("legJuneauTxt").textContent = X.legJuneau; E("legBorderTxt").textContent = X.legBorder;
   E("creditoFonte").textContent = X.fonte;
+  CENA.nomes.forEach(function (n) { var el = E(n.id); if (el) el.textContent = X[n.id]; });
   // a caixa real: com as fontes carregadas, o nome não pode sair maior que a medida com que o ensaio a seco mediu as
   // folgas (CENA.caixas): maior, ele pode ficar sobre a estrada ou no canto, e a cena reprova em vez de mostrar
   function conferirCaixas() {
@@ -492,7 +696,10 @@
     var ls = quebrar(X.cab, FL.cabColunas).map(function (l) { return l.join(" "); });
     if (ls.length > 2) return falhar("o cabeçalho '" + X.cab + "' não cabe em duas linhas de " + FL.cabColunas + " colunas.");
     var impresso = ls.join("\n");
-    E("cab18").textContent = impresso.slice(0, -X.ano.length); E("ano2018").textContent = X.ano;
+    // 5c: o " · " vai com o ano (a parte impressa termina em "PROJECT", sem o ponto pendurado)
+    var fimAno = " · " + X.ano;
+    if (impresso.slice(-fimAno.length) !== fimAno) return falhar("o cabeçalho '" + X.cab + "' não termina em '" + fimAno + "'.");
+    E("cab18").textContent = impresso.slice(0, -fimAno.length); E("ano2018").textContent = fimAno;
   })();
   if (window.__erroCena) return;
 
@@ -596,6 +803,16 @@
     return g;
   }
   var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+  // 5d: o token de território é "color-mix(in srgb, <cor> N%, transparent)" (marca/tokens.css): a cor pura e a opacidade
+  // N/100, que o MapLibre aplica como fill-color + fill-opacity (o mesmo resultado do color-mix com transparente). A cor
+  // pode vir resolvida (#hex) ou como var(--papel); token fora dessa forma reprova a cena, nunca cai num hex cravado
+  function corDoToken(nome) {
+    var v = tok(nome, ""), m = /^color-mix\(\s*in srgb\s*,\s*(#[0-9a-fA-F]{3,8}|var\(\s*(--[\w-]+)\s*\))\s+([\d.]+)%\s*,\s*transparent\s*\)$/.exec(v);
+    if (!m) { falhar("o token " + nome + " não está na forma color-mix(in srgb, <cor> N%, transparent): '" + v + "'."); return null; }
+    var cor = m[2] ? tok(m[2], "") : m[1];
+    if (!/^#[0-9a-fA-F]{3,8}$/.test(cor)) { falhar("a cor do token " + nome + " não resolveu: '" + cor + "'."); return null; }
+    return { cor: cor, a: +m[3] / 100 };
+  }
   function pontoDe(r) {
     var fc = geo(r.geo); if (!fc) return null;
     var f = (fc.features || []).filter(function (x) { return x.geometry && x.geometry.type === "Point" && (!r.nome || (x.properties && x.properties.name === r.nome)); })[0];
@@ -795,12 +1012,33 @@
     return function (t) { return { center: desmerc(em(Math.min(L, vel * andado(t)))), zoom: lerp(V.zoom[0], V.zoom[1], eb(t / V.fim)), bearing: 0, pitch: 0 }; };
   })();
   if (window.__erroCena || !VOO) return;
-  var RC = CENA.recuo, fimVoo = VOO(RC.de);
-  var recuoAt = criarCameraMapa({ viewports: [{ lng: fimVoo.center[0], lat: fimVoo.center[1], zoom: fimVoo.zoom, bearing: 0, pitch: 0 }, RC.para],
+  var RC = CENA.recuo, fimVoo = VOO(RC.de), AP = CENA.aproxima;
+  // o ponto ALÉM da câmera nomeada, onde o recuo pousa (A APROXIMAÇÃO DO b3, no bloco CENA)
+  var ALEM = (function () {
+    var N = RC.para, ws = 512 * Math.pow(2, N.zoom), m = merc([N.lng, N.lat]);
+    var c = desmerc([m[0] + AP.desvioPx[0] / ws, m[1] + AP.desvioPx[1] / ws]);
+    return { lng: c[0], lat: c[1], zoom: N.zoom - AP.recuoZoom, bearing: 0, pitch: 0 };
+  })();
+  var aproximaAt = (function () {
+    var N = RC.para, T = AP.ate - AP.de, r1 = AP.abre, r2 = AP.fecha, v = 1 / (T - r1 / 2 - r2 / 2);
+    var prog = function (t) {   // rampa de entrada r1, velocidade constante, rampa de saída r2 (a área sob a velocidade = 1)
+      t = cl(t, 0, T);
+      if (t < r1) return v * t * t / (2 * r1);
+      if (t <= T - r2) return v * (r1 / 2 + (t - r1));
+      var u = T - t; return 1 - v * u * u / (2 * r2);
+    };
+    var mA = merc([ALEM.lng, ALEM.lat]), mN = merc([N.lng, N.lat]), sA = Math.pow(2, ALEM.zoom), sN = Math.pow(2, N.zoom);
+    return function (t) {
+      var p = prog(t - AP.de), s = sA * Math.pow(sN / sA, p), w = (s - sA) / (sN - sA);
+      return { center: desmerc([mA[0] + (mN[0] - mA[0]) * w, mA[1] + (mN[1] - mA[1]) * w]), zoom: Math.log2(s), bearing: 0, pitch: 0 };
+    };
+  })();
+  var recuoAt = criarCameraMapa({ viewports: [{ lng: fimVoo.center[0], lat: fimVoo.center[1], zoom: fimVoo.zoom, bearing: 0, pitch: 0 }, ALEM],
     duration: RC.dura, width: CENA.largura, height: CENA.altura, bearingLoop: null, cameraAbre: RC.abre, cameraFecha: RC.fecha });
   var cameraAt = function (t) {
     if (t < RC.de) return VOO(t);
-    if (t >= RC.de + RC.dura) return { center: [RC.para.lng, RC.para.lat], zoom: RC.para.zoom, bearing: 0, pitch: 0 };   // a câmera nomeada, pelos números
+    if (t >= AP.ate) return { center: [RC.para.lng, RC.para.lat], zoom: RC.para.zoom, bearing: 0, pitch: 0 };   // a câmera nomeada, pelos números
+    if (t >= RC.de + RC.dura) return aproximaAt(t);
     return recuoAt(t - RC.de);
   };
   // O VOO SEM QUADRO NO ZOOM INTEIRO (cabeçalho): a lombada do zoom em volta do quadro em que o voo cruza o 10
@@ -878,6 +1116,14 @@
   var mapaCarregado = false;
   map.on("load", function () {
     try {
+      // 5b: os territórios do contexto, por baixo de tudo o que a cena desenha (a divisa e a estrada passam por cima)
+      CENA.territorios.forEach(function (T) {
+        map.addSource(T.id, { type: "geojson", data: geo(T.geo) });
+        var ct = corDoToken(T.token); if (!ct) return;
+        T.cor = ct.cor; T.opacidade = ct.a;
+        map.addLayer({ id: T.id, type: "fill", source: T.id, paint: { "fill-color": ct.cor,
+          "fill-opacity": 0, "fill-antialias": true } });
+      });
       // a divisa (identidade §6): branco a 70 %, 5 px, sobre contorno escuro a 60 %, 12 px, só dos tokens; desligada
       // até o recuo (ver A DIVISA no cabeçalho)
       map.addSource("fronteira", { type: "geojson", data: FRONTEIRA });
@@ -924,7 +1170,118 @@
     var d = Math.min(x - r - 200, 3640 - x - r, y - r - 160, 1880 - y - r, Math.max(3440 - x - r, 1760 - y - r));
     return cl(d / 60, 0, 1);
   }
-  var nivelAntes = {};
+  // ── 5b: OS NOMES DOS TERRITÓRIOS: a posição e a opacidade de cada um, função pura de t (a câmera é cameraAt) ─────────
+  function projetar(cam, p) {   // o Mercator do MapLibre, bearing 0 e pitch 0 (a câmera desta cena)
+    var ws = 512 * Math.pow(2, cam.zoom), m0 = merc(cam.center), m1 = merc(p);
+    return { x: CENA.largura / 2 + (m1[0] - m0[0]) * ws, y: CENA.altura / 2 + (m1[1] - m0[1]) * ws };
+  }
+  function desprojetar(cam, x, y) {
+    var ws = 512 * Math.pow(2, cam.zoom), m0 = merc(cam.center);
+    return desmerc([m0[0] + (x - CENA.largura / 2) / ws, m0[1] + (y - CENA.altura / 2) / ws]);
+  }
+  function distCaixas(a, b) {   // a folga entre duas caixas [x0, y0, x1, y1] (negativa se se cruzam)
+    var dx = Math.max(b[0] - a[2], a[0] - b[2]), dy = Math.max(b[1] - a[3], a[1] - b[3]);
+    return dx > 0 && dy > 0 ? Math.hypot(dx, dy) : Math.max(dx, dy);
+  }
+  function legendaCaixa(t) {   // a caixa da legenda no quadro t (a mesma conta do aplicar)
+    var Lg = CENA.legenda, h = 2 * Lg.respiro + Lg.linha, lg = E("legenda"), w = (lg && lg.offsetWidth) || 780;
+    Lg.itens.forEach(function (it, i) { if (i > 0) h += (Lg.linha + Lg.vao) * entrada(t, it.entra); });
+    return [3640 - w, 160, 3640, 160 + h];
+  }
+  function creditoCaixas() {   // 5e5: as caixas dos dois créditos onde eles ficam no quadro (a mesma conta do aplicar; a da
+    // fonte conta sempre, mesmo antes de ela aparecer em 14,63: a vaga dela é fixa)
+    var c1 = E("credito"), cf = E("creditoFonte"), K = CENA.creditos, out = [];
+    if (c1 && c1.offsetHeight) out.push([c1.offsetLeft, 2160 - K.base - c1.offsetHeight, c1.offsetLeft + c1.offsetWidth, 2160 - K.base]);
+    if (c1 && cf && cf.offsetHeight) {
+      var bF = K.base + c1.offsetHeight + K.vao;
+      out.push([cf.offsetLeft, 2160 - bF - cf.offsetHeight, cf.offsetLeft + cf.offsetWidth, 2160 - bF]);
+    }
+    return out;
+  }
+  var FOLHA_CAIXA = [225, 175, 1819, 1871];   // o papel e as fitas em todo quadro (A FOLHA, no cabeçalho)
+  function nomeEstado(n, t, cam) {
+    var el = E(n.id), w = (el && el.offsetWidth) || 0, h = (el && el.offsetHeight) || 0;
+    var c = projetar(cam, n.lnglat), bx = [c.x - w / 2, c.y - h / 2, c.x + w / 2, c.y + h / 2];
+    var dArea = Math.min(bx[0] - 200, 3640 - bx[2], bx[1] - 160, Math.max(3440 - bx[2], 1760 - bx[3]));
+    if (n.fundoPeloCredito) {   // 5e5 (só o JUNEAU): inteiro a 40 px ou mais de toda caixa de crédito e acima de 1880
+      dArea = Math.min(dArea, (1880 - bx[3]) * 3);
+      creditoCaixas().forEach(function (k) { dArea = Math.min(dArea, distCaixas(bx, k) - 40); });
+    } else dArea = Math.min(dArea, 1880 - bx[3]);
+    var d = Math.min(dArea, distCaixas(bx, legendaCaixa(t)) - 40);
+    var pa = projetar(cam, ANEL); d = Math.min(d, distCaixas(bx, [pa.x - 33, pa.y - 33, pa.x + 33, pa.y + 33]) - 40);
+    if (t < CENA.rotJuneau.sai + 0.3) {   // o rótulo Juneau (a pílula da cidade), enquanto está no ar
+      var pj = projetar(cam, JUNEAU), cj = CENA.caixas.rotJuneau, x0 = pj.x + CENA.rotJuneau.dx, y0 = pj.y + CENA.rotJuneau.dy - cj[1] / 2;
+      d = Math.min(d, distCaixas(bx, [x0, y0, x0 + cj[0], y0 + cj[1]]) - 40);
+    }
+    var op = entrada(t, n.entra) * (1 - seg(t, CENA.territoriosSaem[0], CENA.territoriosSaem[1])) * cl(d / 60, 0, 1);
+    // o nome que a folha vai cobrir sai ANTES de ela aparecer (5b, portões: HAINES se apagava na mesma rampa em que a folha
+    // entrava por cima e se lia sobre o papel): de FL.cai − 0,3 a FL.cai, e não reaparece
+    var fp = seg(t, FL.cai - 0.3, 0.3);
+    if (fp > 0) op *= 1 - fp * (1 - cl((distCaixas(bx, FOLHA_CAIXA) - 40) / 60, 0, 1));
+    return { x: c.x, y: c.y, w: w, h: h, caixa: bx, op: op };
+  }
+  // a guarda: em todo quadro em que um nome aparece, a caixa dele fica DENTRO do território (pontos a cada <= 40 px) e a 40 px ou mais
+  // da divisa e da estrada. Sem tile: só a câmera, a geometria e a caixa do DOM com as fontes carregadas
+  var POLIS = {};
+  function dentroDe(fc, p) {
+    var polys = POLIS[fc.__id || (fc.__id = "f" + Object.keys(POLIS).length)];
+    if (!polys) {   // os polígonos e a caixa de cada um, uma vez
+      polys = [];
+      (fc.features || []).forEach(function (f) { var g = f.geometry; if (g.type === "Polygon") polys.push(g.coordinates); else if (g.type === "MultiPolygon") polys = polys.concat(g.coordinates); });
+      polys = polys.map(function (pl) { var bb = [1e9, 1e9, -1e9, -1e9]; pl[0].forEach(function (q) { bb[0] = Math.min(bb[0], q[0]); bb[1] = Math.min(bb[1], q[1]); bb[2] = Math.max(bb[2], q[0]); bb[3] = Math.max(bb[3], q[1]); }); pl.bb = bb; return pl; });
+      POLIS[fc.__id] = polys;
+    }
+    for (var i = 0; i < polys.length; i++) {
+      var bb = polys[i].bb; if (p[0] < bb[0] || p[0] > bb[2] || p[1] < bb[1] || p[1] > bb[3]) continue;
+      var c = 0;
+      polys[i].forEach(function (ring) {
+        for (var a = 0, b = ring.length - 1; a < ring.length; b = a++) {
+          var xa = ring[a][0], ya = ring[a][1], xb = ring[b][0], yb = ring[b][1];
+          if ((ya > p[1]) !== (yb > p[1]) && p[0] < (xb - xa) * (p[1] - ya) / (yb - ya) + xa) c++;
+        }
+      });
+      if (c % 2 === 1) return true;
+    }
+    return false;
+  }
+  function linhasNaTela(cam, linhas) {   // as linhas projetadas uma vez por quadro
+    return linhas.map(function (ln) { return ln.map(function (p) { return projetar(cam, p); }); });
+  }
+  function distLinhas(x, y, proj) {
+    var best = 1e9;
+    proj.forEach(function (ln) {
+      for (var i = 1; i < ln.length; i++) {
+        var a = ln[i - 1], b = ln[i], dx = b.x - a.x, dy = b.y - a.y, L2 = dx * dx + dy * dy || 1e-9;
+        var u = cl(((x - a.x) * dx + (y - a.y) * dy) / L2, 0, 1);
+        best = Math.min(best, Math.hypot(x - a.x - u * dx, y - a.y - u * dy));
+      }
+    });
+    return best;
+  }
+  function conferirNomes() {
+    if (window.__erroCena) return;
+    var N = Math.round(CENA.duracao * 30), linhas = FRONTEIRA.geometry.coordinates.concat([ESTRADA.geometry.coordinates]), vistos = {};
+    for (var q = 0; q <= N; q++) {
+      var t = Math.min(q / 30, DUR), cam = cameraAt(t), proj = null;
+      for (var k = 0; k < CENA.nomes.length; k++) {
+        var n = CENA.nomes[k], st = nomeEstado(n, t, cam);
+        if (!(st.op > 0.001)) continue;
+        if (!st.w) return falhar("o nome " + n.id + " não tem caixa no DOM (fonte não carregada?).");
+        vistos[n.id] = (vistos[n.id] || 0) + 1; if (!proj) proj = linhasNaTela(cam, linhas);
+        var nx = Math.max(6, Math.ceil(st.w / 40)), ny = Math.max(2, Math.ceil(st.h / 40));   // pontos a <= 40 px: linha nenhuma passa entre eles sem chegar a < 40 px de um
+        for (var ix = 0; ix <= nx; ix++) for (var iy = 0; iy <= ny; iy++) {
+          var x = st.caixa[0] + (st.caixa[2] - st.caixa[0]) * ix / nx, y = st.caixa[1] + (st.caixa[3] - st.caixa[1]) * iy / ny;
+          if (!dentroDe(geo(n.terr), desprojetar(cam, x, y)))
+            return falhar("no quadro " + q + " o nome " + n.id + " sai do território '" + n.terr + "' (ponto " + x.toFixed(0) + ", " + y.toFixed(0) + "). Refaça CENA.nomes.");
+          var dl = distLinhas(x, y, proj);
+          if (dl < 40) return falhar("no quadro " + q + " o nome " + n.id + " fica a " + dl.toFixed(0) + " px de uma linha (divisa ou estrada). Refaça CENA.nomes.");
+        }
+      }
+    }
+    window.__nomesVistos = vistos;   // quantos quadros cada nome aparece (para o relato)
+  }
+
+  var nivelAntes = {}, terrAntes = {};
   function aplicar(t) {
     if (!mapaCarregado) return;
     var camT = cameraAt(t);
@@ -941,6 +1298,21 @@
     var vf = +eo(seg(t, CENA.fronteira.entra, 0.3)).toFixed(3);
     map.setPaintProperty("fronteira-contorno", "line-opacity", vf);
     map.setPaintProperty("fronteira", "line-opacity", vf);
+
+    // ── 5b: os territórios (o chão pintado) e os nomes deles ──
+    var tsai = 1 - seg(t, CENA.territoriosSaem[0], CENA.territoriosSaem[1]);
+    var opNome = {};   // 5e: a opacidade de cada nome neste quadro (o chão com comNome só tem tinta com o nome no quadro)
+    CENA.nomes.forEach(function (n) { opNome[n.id] = nomeEstado(n, t, camT).op; });
+    CENA.territorios.forEach(function (T) {
+      var v = +(T.opacidade * entrada(t, T.entra) * tsai * (T.saiAntesDaFolha ? 1 - seg(t, FL.cai - 0.3, 0.3) : 1) * (T.comNome ? cl(opNome[T.comNome] || 0, 0, 1) : 1)).toFixed(4);
+      if (terrAntes[T.id] !== v) { map.setPaintProperty(T.id, "fill-opacity", v); terrAntes[T.id] = v; }
+    });
+    CENA.nomes.forEach(function (n) {
+      var el = E(n.id); if (!el) return;
+      var st = nomeEstado(n, t, camT);
+      el.style.opacity = st.op.toFixed(3);
+      el.style.transform = "translate(" + (st.x - st.w / 2).toFixed(2) + "px," + (st.y - st.h / 2).toFixed(2) + "px)";
+    });
 
     // ── Juneau: o ponto e o nome, desde o 1º quadro; saem juntos antes de o rótulo chegar à faixa de baixo ──
     var pj = map.project(JUNEAU), oj = 1 - seg(t, CENA.rotJuneau.sai, 0.3), dj = E("pontoJuneau"), rj = E("rotJuneau");
@@ -972,7 +1344,11 @@
     var op = t < FL.cai ? 0 : seg(t, FL.cai, 0.15) * sai;
     por(E("rec18"), FL.pe[0], FL.pe[1] - FOLHA.h / 2 + FL.caiY * (1 - p), FOLHA.w, FOLHA.h, lerp(FL.caiDe, FL.rot, p), 1, op, "50% 100%");
     fita(E("rec18fe"), t, FL.cai + FL.fitas.depois, FL.fitas.rot[0]); fita(E("rec18fd"), t, FL.cai + FL.fitas.depois + FL.fitas.vao, FL.fitas.rot[1]);
-    E("ano2018").style.opacity = eo(seg(t, FL.ano, 0.3)).toFixed(3);
+    (function (el, pa) {   // 5c: o " · 2018" cresce de 0 à largura dele (a medida de layout, sem o giro da folha), com a voz
+      if (!el) return;
+      el.style.width = "auto"; var w = el.offsetWidth;
+      el.style.width = (w * pa).toFixed(2) + "px"; el.style.opacity = pa.toFixed(3);
+    })(E("ano2018"), eo(seg(t, FL.ano, 0.3)));
     FOLHA.marks.forEach(function (m) {
       var q = m.ate > m.de ? cl((t - m.de) / (m.ate - m.de), 0, 1) : (t >= m.de ? 1 : 0);
       m.el.style.backgroundSize = (q * 100).toFixed(2) + "% 100%";
@@ -1063,7 +1439,7 @@
   };
 
   window.__fotosProntas = R.prontas().then(function () {
-    return (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () { conferirCaixas(); return true; });
+    return (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () { conferirCaixas(); conferirNomes(); return true; });
   });
 
   var capturando = false, rafId = 0;

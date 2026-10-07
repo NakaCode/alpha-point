@@ -1,46 +1,64 @@
 <!doctype html>
 <html lang="en-US" data-render="4k-native">
 <!--
-  s63 · a tela final (sem voz: o segmento "pausa" da narração, 646,05 → 666,05; os 20 s de silêncio para os elementos
-  finais do YouTube, canal.json › narracao.cauda_tela_final_s)
-  inSec 646.067 · dur 20 (600 quadros a 30 fps; espelho.json)
-  Modo do espelho: continua · Modelo da identidade: a tela final (identidade §5, "A tela final e o carimbo do Juneau";
-  conferência visual: marca/prancha-fim.html): O ÚLTIMO QUADRO DE s62, PARADO, ESCURECENDO de 100 % a 50 % de brilho em
-  20 s, linear, sem chegar ao preto, sem texto novo, sem herói novo, sem outro movimento. Feito DO ARQUIVO DE s62: o
-  mesmo DOM, o mesmo CSS, a mesma função de estado, travada em t = 4,2 (s62 está parada desde 3,0). O primeiro quadro
-  (brilho 1, sem filtro) é o último de s62, pixel a pixel: s62 não tem câmera do RIG.
+  s63 · a tela final do YouTube: o último quadro de s62, parado, escurecendo e, desde 03/10/2026, com a câmera se
+  aproximando devagar nos 20 s.
+  Word-lock: nenhum (os 20 s sem voz, canal.json › narracao.cauda_tela_final_s) · inSec 646.067 · dur 20 (600 quadros a 30 fps)
+  Modo do espelho: desenho · Modelo da identidade: PRANCHA, o fundo da tela final (identidade §5, "A tela final e o carimbo do
+  Juneau"; conferência visual: marca/prancha-fim.html).
 
-  O que manda em cada coisa: o espelho (s63), o conceito (s63), a regência (s63: um beat, regime respiro), os textos
-  finais do redator (out/juneau/textos-tela.json, fechado em 01/10/2026, sha256 98e3e7f8… › rotulos_dado s63, herdados
-  de s62#1; _creditos s63 vazio; a linha do Shutterstock NÃO entra: nenhum item do vídeo veio de lá) e a marca.
+  REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026; out/_feedback-queue.jsonl, marca murv4s6j-f970b9 em s63 @5,9 s, versão
+  24f24449; out/juneau/_pesquisa/revisao-premiere-lucas.md, "A linha do tempo"; marca/identidade.md §5, "A tela final",
+  desde 03/10/2026):
+    · A MARCA DELE (literal): "Tela final um pouco vazia, parada [vídeo 10:51.9 · versão 24f24449]".
+    · A DECISÃO: "Câmera lenta nos 20 s (Recomendado)": além do escurecer, a câmera se aproxima devagar do carimbo e dos
+      preços nos 20 s; a metade direita continua livre para os botões do YouTube.
+    · O QUE MUDOU nesta cena (conceito 715af3e5…, s63; regência d422dc22…, s63):
+      1. DOIS movimentos sobre #cam, em vez de um: filter: brightness(1 − 0,5 · t/20), como antes, e transform: scale(1 +
+         0,06 · t/20), linear, de 1,00 a 1,06 em 20 s (0,3 %/s, abaixo do Ken Burns da marca: a imagem respira), com
+         transform-origin em (1.000, 950), o centro da composição da metade esquerda (entre o carimbo, em (330, 400), e as
+         duas linhas, em y 1.090 e 1.300): tudo cresce em torno de si e nada entra na metade direita. Medido no último
+         quadro (t = 20): a borda direita das linhas vai de x ≈ 1.640 a ≈ 1.678 (< 1.920), o topo do carimbo de y 400 a
+         ≈ 367 (> 160) e a borda esquerda da composição de x 330 a ≈ 290 (> 200); o canto de 400 × 400 e o centro da faixa
+         de baixo continuam livres.
+      2. A mesa (feltro e luz) fica dentro de #cam e cresce junto. Com a origem dentro do quadro e a escala ≥ 1, a borda de
+         #cam nunca entra no quadro (em t = 20 as bordas ficam em x −60 e 4.010, y −57 e 2.233): a camada 140 px maior que o
+         conceito sugeria não é necessária, e estendê-la deslocaria a luz da mesa e quebraria o "pixel a pixel" com s62.
+      3. O primeiro quadro (t = 0: brilho 1, escala 1, sem filtro e sem transform) continua o último de s62, pixel a pixel.
+      4. O crédito Source: Alaska Division of Elections, 1978–1982 continua FORA de #cam: não escurece nem se aproxima, legível
+         até o fim (identidade §5). Nenhum texto novo, nenhum herói novo (data-qc-sem-heroi); a linha do Shutterstock não entra.
 
-  O ÚNICO MOVIMENTO: filter: brightness(1 − 0,5 · t/20) sobre o palco inteiro (a luz da mesa inclusa). Nenhum crédito
-  (nada fica fora do escurecer). A composição toda na metade esquerda, a partir de x = 330: a direita livre para os
-  vídeos sugeridos e o botão de inscrição; o canto inferior direito (400 × 400) e o centro da faixa de baixo, vazios.
-  Conta de elementos: o carimbo (1) + a linha do preço (1) = 2 (herdados). Herói: nenhum novo (data-qc-sem-heroi).
+  O que manda em cada coisa: o espelho (s63), a regência (s63), os textos herdados de s62#1 (out/juneau/textos-tela.json,
+  03/10/2026, sha256 115bf1d0…e673e › rotulos_dado s63, _creditos s63) e a marca (identidade §4–§7; tokens.css). TODO TEXTO DE
+  TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS. A função de estado é a de s62, byte a byte, travada em t = 4,2.
 
-  A MÍDIA: nenhuma. A MESA e A MARCA: como em s62.
+  A MÍDIA: nenhuma. A MESA (identidade §5): a luz é o fundo de #cam, o feltro é #mesa, só pelos tokens --mesa-*.
+  A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Tudo na metade esquerda a partir de
+  x = 330 (≥ 290 sob a aproximação); a direita livre; o canto inferior direito (400×400) e o centro da faixa de baixo vazios.
+
   O CONTRATO: window.__duracao = 20; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
   __fotosProntas = RIG.prontas(). Nada de relógio, sorteio, @keyframes ou transition. O RIG abaixo é a cópia inteira de
   templates-cena/_rig.js (pré-v1, commit 7ab9543).
 -->
 <head>
 <meta charset="utf-8">
-<title>s63 — the end screen: the last frame of s62, still, dimming to 50% over 20 s</title>
+<title>s63 — the end screen: the last frame of s62, dimming to 50% and slowly closing in over 20 s</title>
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
   #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
-  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px;
-    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 1100px) var(--luz-y, 1000px),
+  /* #cam: o escurecer (filter) e a aproximação lenta (transform) postos pelo __renderAt; a origem da escala é o centro da
+     composição da metade esquerda, (1.000, 950), para nada entrar na metade direita (5ª leva, 03/10/2026) */
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 1000px 950px;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 1000px) var(--luz-y, 1000px),
       var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
   #mesa { position: absolute; inset: 0; pointer-events: none;
     background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
 
   /* O CARIMBO DE BORRACHA de s62 (identidade §5; marca/prancha-fim.html), parado */
-  #carimbo { position: absolute; left: 330px; top: 300px; transform-origin: 50% 50%; opacity: 0;
+  #carimbo { position: absolute; left: 330px; top: 400px; transform-origin: 50% 50%; opacity: 0;
     border: 18px solid var(--tinta); border-radius: 26px; padding: 46px 90px 34px; }
   #carimbo .yes { font-family: var(--fonte-sec); font-weight: var(--peso-heroi); font-size: var(--fs-heroi); line-height: .86;
     letter-spacing: .01em; color: var(--tinta); white-space: nowrap; }
@@ -48,13 +66,18 @@
     mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='t'><feTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.55'/></filter><rect width='100%' height='100%' filter='url(%23t)'/></svg>");
     -webkit-mask-size: 640px; mask-size: 640px; }
 
-  /* a linha do preço de s62, parada */
-  #preco { position: absolute; left: 330px; top: 1080px; display: flex; align-items: flex-end; gap: 50px; }
-  #cifrao { font-family: var(--fonte-sec); font-weight: var(--peso-heroi); font-size: var(--fs-heroi); line-height: .86;
-    letter-spacing: .01em; color: var(--tinta); white-space: nowrap; opacity: 0; }
-  .lacuna { position: relative; width: 1180px; height: 300px; }
-  .lacuna .grifo { position: absolute; left: 0; right: 0; bottom: 12px; height: 72px; background: var(--grifo-cor); transform-origin: left center; transform: scaleX(0); }
-  .lacuna .traco { position: absolute; left: 0; right: 0; bottom: 0; height: 12px; background: var(--destaque); transform-origin: left center; transform: scaleX(0); }
+  /* OS PREÇOS RECUSADOS de s62 (identidade §5, Lucas, 02/10/2026), parados: Inter 500, 104 px, o valor riscado em --destaque */
+  .linha { position: absolute; left: 330px; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-texto);
+    font-size: 104px; line-height: 1.2; color: var(--tinta); letter-spacing: 0; opacity: 0; }
+  .linha .valor { position: relative; }
+  .linha .risco { position: absolute; left: 0; right: 0; top: 52%; height: 12px; margin-top: -6px; background: var(--destaque);
+    transform-origin: left center; transform: scaleX(0); }
+
+  /* o crédito (§4.2, §6): 76 px, --sec, na faixa abaixo de y = 1.880, de x 200 até antes de x 1.720; quebra em duas linhas
+     e nunca encolhe. FORA de #cam: o escurecer é só de #cam, e ele fica legível até o fim (identidade §5). */
+  #cred { position: absolute; left: var(--credito-x); top: 1940px; width: calc(var(--credito-x-fim) - var(--credito-x));
+    font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.2; color: var(--sec);
+    letter-spacing: 0; opacity: 0; }
 </style>
 </head>
 <body>
@@ -62,11 +85,10 @@
   <div id="cam">
     <div id="mesa"></div>
     <div class="gasta" id="carimbo" data-qc-papel="carimbo"><div class="yes" id="yes"></div></div>
-    <div id="preco">
-      <span id="cifrao" data-qc-papel="carimbo"></span>
-      <span class="lacuna"><i class="grifo" id="grifo"></i><i class="traco" id="traco"></i></span>
-    </div>
+    <div class="linha" id="l78" data-qc-papel="eixo" style="top:1090px"><span id="l78a"></span><span class="valor"><span id="l78t"></span><i class="risco" id="l78r"></i></span></div>
+    <div class="linha" id="l82" data-qc-papel="eixo" style="top:1300px"><span id="l82a"></span><span class="valor"><span id="l82t"></span><i class="risco" id="l82r"></i></span></div>
   </div>
+  <div id="cred" data-qc-papel="credito"></div>
 </div>
 
 <script>
@@ -159,22 +181,29 @@
   var lerp = function (a, b, p) { return a + (b - a) * p; };
   var DUR = 20;
   window.__duracao = DUR;
-  var FIM_S62 = 4.2;   // o estado final de s62 (parada desde 3,0): o quadro que a tela final segura
+  var FIM_S62 = 4.2;   // o estado final de s62 (parada desde 3,116): o quadro que a tela final segura
 
-  // ═══ OS TEXTOS DE TELA (herdados de s62#1; a grafia é a do textos-tela.json do disco) ═══════════════════════
+  // ═══ OS TEXTOS DE TELA (herdados de s62#1; a grafia é a do textos-tela.json do disco, rodada de 02/10/2026) ═══════
   var TEXTOS = {
-    carimbo: "YES",   // textos-tela.json › rotulos_dado s63 (herdado de s62#1)
-    cifrao:  "$"      // idem
+    carimbo: "YES",                                             // textos-tela.json › rotulos_dado s63 (herdado de s62#1)
+    l78: "1978 · UP TO $966 MILLION",                           // textos-tela.json › rotulos_dado s63 (herdado de s62#1)
+    l82: "1982 · ABOUT $2.8 BILLION",                           // textos-tela.json › rotulos_dado s63 (herdado de s62#1)
+    credito: "Source: Alaska Division of Elections, 1978–1982"  // textos-tela.json › _creditos s63 (herdado de s62#1; fora do escurecer)
   };
   // ═══════════════════════════════════════════════════════════════════════════════════════════════════════
-  E("yes").textContent = TEXTOS.carimbo; E("cifrao").textContent = TEXTOS.cifrao;
+  E("yes").textContent = TEXTOS.carimbo;
+  // a linha inteira é a do textos-tela; aqui só se parte em "ano · " e valor, para o risco passar só no valor (_risco)
+  [["l78", TEXTOS.l78], ["l82", TEXTOS.l82]].forEach(function (L) { var i = L[1].indexOf("· ") + 2;
+    E(L[0] + "a").textContent = L[1].slice(0, i); E(L[0] + "t").textContent = L[1].slice(i); });
+  // o intervalo de anos não se parte na quebra (textos-tela › _creditos s62: "1978–1982" não se parte)
+  var c = TEXTOS.credito, k = c.lastIndexOf(" ") + 1, sp = document.createElement("span");
+  sp.style.whiteSpace = "nowrap"; sp.textContent = c.slice(k); E("cred").textContent = c.slice(0, k); E("cred").appendChild(sp);
 
   // os tempos de s62 (locais a s62), para a função de estado ser a mesma, byte a byte
   var T = {
-    yes: 0.033, batida: 0.38,   // "That" (641,88): o carimbo bate
-    cifrao: 1.883,              // "never" (643,75): o cifrão sobe
-    traco: 2.0, tracoDur: 0.6,  // o traço risca a lacuna
-    grifo: 2.45, grifoDur: 0.55 // o grifo risca, linear
+    yes: 0.033, batida: 0.38,                 // "That" (641,88): o carimbo bate
+    l78: 1.883, l82: 2.003,                   // "never" (643,75): as duas linhas e o crédito sobem (300 ms, 24 px), 120 ms uma da outra
+    r78: 2.716, r82: 2.836, riscoDur: 0.28    // "price" (644,58): o traço risca cada valor; tudo parado desde 3,116
   };
 
   function estado(t) {
@@ -183,22 +212,27 @@
     var p = seg(t, T.yes, T.batida), s, op;
     if (p < 0.7) { var q = eo(p / 0.7); s = lerp(1.55, 0.97, q); op = clamp(p / 0.35, 0, 1); }
     else { s = lerp(0.97, 1, (p - 0.7) / 0.3); op = 1; }
-    var c = E("carimbo");
-    c.style.opacity = op.toFixed(3);
-    c.style.transform = "rotate(-7deg) scale(" + s.toFixed(4) + ")";
-    // a linha do preço: o cifrão sobe em "never"; o traço e o grifo riscam a lacuna
-    var pc = eo(seg(t, T.cifrao, 0.3)), ci = E("cifrao");
-    ci.style.opacity = pc.toFixed(3);
-    ci.style.transform = "translateY(" + ((1 - pc) * 24).toFixed(1) + "px)";
-    E("traco").style.transform = "scaleX(" + eo(seg(t, T.traco, T.tracoDur)).toFixed(4) + ")";
-    E("grifo").style.transform = "scaleX(" + seg(t, T.grifo, T.grifoDur).toFixed(4) + ")";
+    var ca = E("carimbo");
+    if (ca) { ca.style.opacity = op.toFixed(3); ca.style.transform = "rotate(-7deg) scale(" + s.toFixed(4) + ")"; }
+    // as duas linhas sobem em "never"; o traço risca o valor de cada uma em "price"
+    [["l78", T.l78, T.r78], ["l82", T.l82, T.r82]].forEach(function (L) {
+      var q = eo(seg(t, L[1], 0.3)), el = E(L[0]), r = E(L[0] + "r");
+      if (el) { el.style.opacity = q.toFixed(3); el.style.transform = "translateY(" + ((1 - q) * 24).toFixed(1) + "px)"; }
+      if (r) r.style.transform = "scaleX(" + eo(seg(t, L[2], T.riscoDur)).toFixed(4) + ")";
+    });
+    var cr = E("cred"); if (cr) cr.style.opacity = eo(seg(t, T.l78, 0.3)).toFixed(3);
   }
 
   function cena(t) {
     estado(FIM_S62);   // o quadro final de s62, travado
-    // o único movimento: o brilho de 100 % a 50 % em 20 s, linear, sobre o palco inteiro; sem filtro no primeiro quadro
-    var b = 1 - 0.5 * clamp(t / DUR, 0, 1);
-    E("palco").style.filter = b >= 0.99999 ? "" : "brightness(" + b.toFixed(4) + ")";
+    // dois movimentos sobre #cam (Lucas, 03/10/2026: "Câmera lenta nos 20 s"): o brilho de 100 % a 50 % em 20 s, linear, e a
+    // aproximação lenta, escala 1,00 → 1,06 em 20 s, linear, em torno de (1.000, 950); sem filtro e sem transform no primeiro
+    // quadro (o último de s62, pixel a pixel); o crédito fica fora de #cam e não escurece nem se aproxima (identidade §5)
+    var p = clamp(t / DUR, 0, 1), b = 1 - 0.5 * p, sc = 1 + 0.06 * p, cam = E("cam");
+    if (cam) {
+      cam.style.filter = b >= 0.99999 ? "" : "brightness(" + b.toFixed(4) + ")";
+      cam.style.transform = sc <= 1.000001 ? "" : "scale(" + sc.toFixed(5) + ")";
+    }
   }
 
   window.__renderAt = function (t) {

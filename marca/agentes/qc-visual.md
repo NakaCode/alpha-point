@@ -90,6 +90,12 @@
   `qc-janela`, o `qc-src-existe` e o `qc-hex` seguem como antes.
 - O `mapa-vivo` não veio do estúdio: o `qc-cena` avisa que ele fica fora. Ele não é NÃO MEDIDO de cena; não
   vai ao laudo como problema.
+- **Cena de mapa** (CLAUDE.md, "Os portões medem", 04/10/2026). Os portões só medem o mapa de verdade com a pré-carga
+  `ferramentas/chaves-nos-portoes.mjs`; sem ela, mediram uma página parada, e o verde deles não vale. O til e o
+  contraste do crédito de cena de mapa são os do `ferramentas/portao-mapa.mjs` (`out/<proj>/_tmp/portao-mapa.jsonl`),
+  não os do `_audit-til` e do `qc-rodape-contraste` do molde, que a pré-carga dá como NÃO MEDIDO ali. O `til-glifo`
+  indefinido do carimbo de cena de mapa, com o `portao-mapa til` passando na mesma marca e no mesmo HTML, não vai
+  a `gatesDuros`. E o `conferir` da pré-carga tem de ter saído 0 para a rodada que você lê: o Claude central diz.
 - **O `aprovado`** segue o ofício: todas as lentes ≥ 7 **e** `gatesDuros` vazio, com os portões rodados. Portão
   que mediu e reprovou vai a `gatesDuros`. Portão que não rodou numa cena (exit 2 com o alvo certo) segue NÃO
   MEDIDO, pelo nome, e a cena fica `aprovado: false` até ele rodar.

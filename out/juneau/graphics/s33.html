@@ -4,6 +4,17 @@
 <meta charset="utf-8">
 <title>s33</title>
 <!--
+  REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026)
+  - A marca dele (out/_feedback-queue.jsonl, muruz434-edcf40, s50 @3,7 s, versão 30c7fe12): "mapa muito parado,
+    utilizar mais movimento de câmera (suave)".
+  - A decisão (03/10/2026, out/juneau/_pesquisa/revisao-premiere-lucas.md, "A linha do tempo"): "Em todo mapa parado
+    (Recomendado)": a s50 e todo mapa do Juneau parado por mais de 2 s ganham uma aproximação suave e contínua. A medida
+    e o piso do diretor: conceito-visual.json › _mapas_parados_2026_10_03 (esta cena: 4,75–8,25 e 9,75–13 s locais).
+  - O que mudou: depois do deslizar, a câmera segue se aproximando de Wasilla (CENA.aproxima1, 4,8–8,4); o recuo pousa
+    ALÉM da câmera final e a aproximação contínua chega a ela no último quadro (CENA.aproxima2, 9,9–13,233).
+  - Nenhum tempo de palavra, rótulo, linha, fusão de nível ou texto mudou. A cópia de antes: out/juneau/_tmp/art/s33-antes-revisao-5.html.
+-->
+<!--
   CANAL ALPHA POINT — JUNEAU, CENA s33 (340,800 → 354,067 s do master; 13,267 s; quadros 10224 → 10622 a 30 fps).
   "The move came back in nineteen ninety-four. The new site was Wasilla, another Mat-Sue Valley town, and the ballot
   carried no price. In the official election pamphlet, supporters said Wasilla was on the road system."
@@ -369,6 +380,14 @@
     descida: { de: 0, dura: 2.5, zoom0: 7.3, zoom1: 10 },
     deslizar: { de: 2.8, dura: 2.0, dx: -600 },     // o ponto anda 600 px para a esquerda na tela
     recuo: { de: 8.4, dura: 1.5, para: { lng: -141.22966, lat: 60.14827, zoom: 6.3, bearing: 0, pitch: 0 } },
+    // A CÂMERA QUE NUNCA PARA (REVISÃO DO LUCAS NA LINHA DO TEMPO, 03/10/2026; conceito › _mapas_parados_2026_10_03, s33):
+    //    aproxima1 (4,8–8,4): depois do deslizar, a câmera segue se aproximando de Wasilla (zoom 10 → 10,2, sem cruzar
+    //    10,5), e o ponto deriva na tela "px" (linha reta), rampas de "rampa" s nas duas pontas;
+    //    o recuo (8,4–9,9) parte de onde ela chegou e pousa ALÉM da câmera final (o zoom "dz" mais aberto e o centro
+    //    deslocado "desvioPx" no zoom dela); aproxima2 (9,9 ao último quadro): a aproximação contínua até a câmera final,
+    //    que é EXATAMENTE o último quadro (13,233), com rampa de entrada "abre" e de saída "fecha"
+    aproxima1: { de: 4.8, ate: 8.4, dz: 0.2, px: [-140, 60], rampa: 0.5 },
+    aproxima2: { de: 9.9, ate: 13.233, dz: 0.12, desvioPx: [-220, -120], abre: 0.5, fecha: 0.8 },
 
     wasilla: { geo: "cidades-ne", nome: "Wasilla" },
     juneau: { geo: "cidades-ne", nome: "Juneau" },
@@ -681,10 +700,39 @@
   }
   var D = CENA.descida, S = CENA.deslizar, RC = CENA.recuo, W0 = CENA.wasillaTela;
   var V2 = camWasilla(W0[0] + S.dx, W0[1], D.zoom1);
-  var recuoAt = criarCameraMapa({ viewports: [{ lng: V2.center[0], lat: V2.center[1], zoom: V2.zoom, bearing: 0, pitch: 0 }, RC.para],
+  // a progressão com rampa de entrada r1 e de saída r2 e velocidade constante entre elas (0 → 1 em T)
+  function progresso(t, T, r1, r2) {
+    var v = 1 / (T - r1 / 2 - r2 / 2); t = cl(t, 0, T);
+    if (t < r1) return v * t * t / (2 * r1);
+    if (t <= T - r2) return v * (r1 / 2 + (t - r1));
+    var u = T - t; return 1 - v * u * u / (2 * r2);
+  }
+  var A1 = CENA.aproxima1, A2 = CENA.aproxima2;
+  function camAprox1(t) {
+    var p = progresso(t - A1.de, A1.ate - A1.de, A1.rampa, A1.rampa);
+    return camWasilla(W0[0] + S.dx + A1.px[0] * p, W0[1] + A1.px[1] * p, D.zoom1 + A1.dz * p);
+  }
+  var V3 = camAprox1(A1.ate);
+  // o ponto ALÉM da câmera final, onde o recuo pousa
+  var FIM = RC.para, ALEM = (function () {
+    var ws = 512 * Math.pow(2, FIM.zoom), m = merc([FIM.lng, FIM.lat]);
+    var c = desmerc([m[0] + A2.desvioPx[0] / ws, m[1] + A2.desvioPx[1] / ws]);
+    return { lng: c[0], lat: c[1], zoom: FIM.zoom - A2.dz, bearing: 0, pitch: 0 };
+  })();
+  var recuoAt = criarCameraMapa({ viewports: [{ lng: V3.center[0], lat: V3.center[1], zoom: V3.zoom, bearing: 0, pitch: 0 }, ALEM],
     duration: RC.dura, width: CENA.largura, height: CENA.altura, bearingLoop: null, cameraAbre: 0.5, cameraFecha: 0.5 });
+  var aprox2At = (function () {
+    var mA = merc([ALEM.lng, ALEM.lat]), mF = merc([FIM.lng, FIM.lat]), sA = Math.pow(2, ALEM.zoom), sF = Math.pow(2, FIM.zoom);
+    return function (t) {
+      var p = progresso(t - A2.de, A2.ate - A2.de, A2.abre, A2.fecha), sc = sA * Math.pow(sF / sA, p), w = (sc - sA) / (sF - sA);
+      return { center: desmerc([mA[0] + (mF[0] - mA[0]) * w, mA[1] + (mF[1] - mA[1]) * w]), zoom: Math.log2(sc), bearing: 0, pitch: 0 };
+    };
+  })();
   function cameraAt(t) {
+    if (t >= A2.ate) return { center: [FIM.lng, FIM.lat], zoom: FIM.zoom, bearing: 0, pitch: 0 };   // a câmera final, pelos números
+    if (t >= A2.de) return aprox2At(t);
     if (t >= RC.de) return recuoAt(cl(t - RC.de, 0, RC.dura));
+    if (t >= A1.de) return camAprox1(t);
     var z = lerp(D.zoom0, D.zoom1, eb(seg(t, D.de, D.dura)));
     return camWasilla(W0[0] + S.dx * eb(seg(t, S.de, S.dura)), W0[1], z);
   }

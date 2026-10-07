@@ -4,6 +4,16 @@
 <meta charset="utf-8">
 <title>s48</title>
 <!--
+  REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026)
+  - A marca dele (out/_feedback-queue.jsonl, muruz434-edcf40, s50 @3,7 s, versão 30c7fe12): "mapa muito parado,
+    utilizar mais movimento de câmera (suave)".
+  - A decisão (03/10/2026, out/juneau/_pesquisa/revisao-premiere-lucas.md, "A linha do tempo"): "Em todo mapa parado
+    (Recomendado)": a s50 e todo mapa do Juneau parado por mais de 2 s ganham uma aproximação suave e contínua. A medida
+    e o piso do diretor: conceito-visual.json › _mapas_parados_2026_10_03 (esta cena: 0–12,25 s locais).
+  - O que mudou: a deriva da câmera ganhou a escala 1,157, presa à âncora (CENA.deriva).
+  - Nenhum tempo de palavra, rótulo, linha, fusão de nível ou texto mudou. A cópia de antes: out/juneau/_tmp/art/s48-antes-revisao-5.html.
+-->
+<!--
   CANAL ALPHA POINT — JUNEAU, CENA s48 (505,567 → 518,100 s do master; 12,533 s; quadros 15167 → 15543 a 30 fps).
   "In January two thousand, Governor Tony Knowles picked the state's preferred option: a road up the east side of Lynn
   Canal. Because of its high cost, he said, he wouldn't actively pursue it while he was in office."
@@ -325,7 +335,10 @@
     camera: { lng: -135.4900, lat: 58.7600, zoom: 9.25, bearing: 0, pitch: 0 },
     // ── o push-in (A CÂMERA ANDA, no cabeçalho): de 1,00 a "escala" do 1º ao último quadro, em velocidade constante,
     //    com "ancora" ([lng, lat]) parada na tela
-    deriva: { escala: 1.05, ancora: [-133.50375, 59.30664] },
+    // REVISÃO DO LUCAS NA LINHA DO TEMPO (03/10/2026; conceito › _mapas_parados_2026_10_03, s48): o push-in 3× mais
+    // rápido (1,00 → 1,157, zoom 9,25 → 9,46, sem cruzar 9,5) e a deriva: o chão anda "px" na tela (linha reta,
+    // velocidade constante, do 1º ao último quadro), para o quadro inteiro andar
+    deriva: { escala: 1.157, ancora: [-133.50375, 59.30664], px: [0, 0] },
 
     estrada: { geo: "estrada-juneau-cascade" },
     anel: { geo: "cascade-point" },
@@ -574,8 +587,8 @@
   var unmerc = function (x, y) { return [x * 360 - 180, (Math.atan(Math.exp((180 - y * 360) * Math.PI / 180)) * 360) / Math.PI - 90]; };
   var cameraAt = function (t) {
     var u = cl((+t || 0) / DUR, 0, 1), dz = Math.log(CENA.deriva.escala) / Math.LN2 * u, k = Math.pow(2, -dz);
-    var mc = merc(CAM.lng, CAM.lat), ma = merc(CENA.deriva.ancora[0], CENA.deriva.ancora[1]);
-    return { center: unmerc(ma[0] - (ma[0] - mc[0]) * k, ma[1] - (ma[1] - mc[1]) * k), zoom: CAM.zoom + dz, bearing: CAM.bearing, pitch: CAM.pitch };
+    var mc = merc(CAM.lng, CAM.lat), ma = merc(CENA.deriva.ancora[0], CENA.deriva.ancora[1]), ws = 512 * Math.pow(2, CAM.zoom + dz), D = CENA.deriva.px;
+    return { center: unmerc(ma[0] - (ma[0] - mc[0]) * k - D[0] * u / ws, ma[1] - (ma[1] - mc[1]) * k - D[1] * u / ws), zoom: CAM.zoom + dz, bearing: CAM.bearing, pitch: CAM.pitch };
   };
   window.__cameraAt = cameraAt;   // para o ensaio a seco (só leitura)
   var map;
