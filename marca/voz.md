@@ -29,6 +29,12 @@ mostra uma contradição, não porque grita.
 - **150–160 palavras por minuto**;
 - frase de até **18 palavras** em média, uma ideia por frase;
 - nos primeiros **15 s**, uma contradição concreta e a pergunta que ela abre;
+- do vídeo 2 em diante, o gancho segue o molde de cinco tempos do `marca/embalagem.md` §1 ("Geography By Geoff"): a
+  escala com uma comparação, o "But", o contraste, a segunda virada que vira a pergunta, e a **assinatura do canal**.
+  A assinatura fecha o gancho, logo antes do capítulo 1, com o tema do vídeo: `You're at Alpha Point, and this is where
+  the story of <tema> begins.` (Lucas, 07/10/2026: "Algo como 'você está no alpha point e é aqui onde tudo começa'"; à
+  pergunta sobre a versão, "Com o tema do vídeo (Recomendado)", cuja opção dizia: "Como a do Jeff: a frase muda a cada
+  vídeo e já diz do que ele trata."). O `<tema>` é curto e concreto, e não repete o título palavra por palavra;
 - toda abstração pousa num **lugar do mapa** em até duas frases;
 - todo termo técnico é definido na **primeira vez** que aparece, numa oração só;
 - toda afirmação contestável tem a **fonte dita na voz**;
