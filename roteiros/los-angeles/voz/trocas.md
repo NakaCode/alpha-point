@@ -1,6 +1,6 @@
 # Cópia para a voz: as trocas
 
-> Gerado por `_ferramentas/preparar-voz.mjs` a partir de `roteiro-narrador.md` (sha256 do texto falado `feac8036dabd`, gancho de 1906).
+> Gerado por `_ferramentas/preparar-voz.mjs` a partir de `roteiro-narrador.md` (sha256 do texto falado `feac8036dabd`, gancho o do roteiro-narrador.md: desde a r3a, o de hoje).
 > Cópia para a voz: `texto-para-voz.md`, sha256 `8aa32793bcc1`, 12101 caracteres, 32 parágrafos.
 > Prova: desfazendo cada troca abaixo, volta-se byte a byte ao texto revisado. Não sobrou dígito, `$`, `%` nem colchete.
 > Nenhuma palavra falada mudou; muda só a grafia. Nenhum alias de nome (política de `marca/pronuncias.md`).

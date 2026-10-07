@@ -64,4 +64,9 @@ recibos (`characterCost` de cada `out/los-angeles/_narracao/<chave>.json`).
     por áudio); o alinhamento da ElevenLabs dos trechos novos foi lido do histórico (só GET, saldo igual).
   - **A escuta do Lucas:** `out/los-angeles/_tmp/escuta/escuta-r3a.mp3` (1:44: os trechos 2, 18 e 24, o "eleven" do fim do
     trecho 8 e o "his" do trecho 10), mandado a ele no chat. O master espera essa escuta.
+  - **Um rótulo velho que fica:** o cabeçalho de `out/los-angeles/roteiro.md` diz "gancho de 1906". É só o rótulo: o
+    `preparar-voz.mjs` o escrevia assim sempre que rodava sem `--gancho=hoje`, e desde a r3a o gancho de hoje está no próprio
+    `roteiro-narrador.md`. O texto falado é o da r3a. O arquivo fica como está porque a `narracao.json` › `fonte.sha256` sela o
+    arquivo inteiro, cabeçalho incluído. A ferramenta e o `voz/trocas.md` foram corrigidos (07/10, 16:1x); a próxima rodada do
+    `preparar-voz.mjs` já escreve "o do roteiro-narrador.md".
 

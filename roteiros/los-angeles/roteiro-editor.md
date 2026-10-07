@@ -2,20 +2,29 @@
 
 > Escrito à mão em 07/10/2026 pelo roteirista (Fable 5.1), sobre `roteiros/los-angeles/_trabalho/plano-final.json` (o
 > plano do juiz) e `pautas/los-angeles/fundamento.md` + `fundamento.json` (o dossiê, que vence a pauta). O texto falado
-> está em `roteiros/los-angeles/roteiro-narrador.md`; a variante do gancho no contorno de hoje, em
-> `roteiros/los-angeles/variantes/gancho-hoje.md`; o que mudou em relação ao plano, em `_trabalho/escrita-notas.md`.
+> está em `roteiros/los-angeles/roteiro-narrador.md`, com o gancho no **contorno de hoje** (título 5, "Why Is Los Angeles
+> Shaped Like This?", escolhido pelo Lucas em 07/10/2026, 11:2x; o gancho nasceu em `variantes/gancho-hoje.md`); o gancho de
+> 1906 fica em `_trabalho/roteiro-r2.md` e no git. O que mudou em relação ao plano está em `_trabalho/escrita-notas.md`.
 >
-> **Revisão (o portão), com a lista da rodada 1 aplicada em 07/10/2026:** sha256
-> `4902fe99688bd24675424efecb0fceecf730ca4d3a0e600f42dafbdfa62efc96` · 2.063 palavras · ≈11:13 de fala a 184 palavras/min
+> **Revisão r3a (o portão), 07/10/2026, 15:0x:** sha256 do texto falado
+> `feac8036dabd9b0c39bb161190b816c91907757a21d705886e9029776043f1e6` · 2.063 palavras · ≈11:13 de fala a 184 palavras/min
 > (+20 s de cauda ≈ 11:33) · 32 parágrafos · 153 frases (152 reais: o "10.3" parte uma) · média 13,5 palavras por frase ·
 > maior 33 · gancho com 140 palavras até a assinatura (≈46 s), "But" na palavra 32. `gate.mjs`: **PASSA**, com os mesmos
-> 3 alertas aceitos (TEU ×2: definido numa oração, uma vez; "monopoly" ×1: entre aspas e com dono). A variante de hoje,
-> medida em cópia com o corpo novo: PASSA, os mesmos números (sha da cópia `019c5f92…`).
-> **A revisão anterior**, a que a bancada 1 julgou (sha `822cb8e3…`, 2.139 palavras, 33 parágrafos, 157 frases, média
-> 13,6), está guardada em `_trabalho/roteiro-r1.md`; sobre ela se aplicaram os 35 itens da lista fechada
-> (`_trabalho/lista-r1.json`, `lista-r1.md`), cada `de` casando uma vez, com a prova por diff frase a frase em
-> `_trabalho/aplicado-r1.md`. **Passou pela bancada 1** (crítico de roteiro, clareza, locução, fatos; os laudos em
-> `qc-roteiro/`); **a rodada 2 confere só as frases trocadas**. Ainda não passou pelo Lucas.
+> 3 alertas aceitos (TEU ×2: definido numa oração, uma vez; "monopoly" ×1: entre aspas e com dono). Este dossiê foi
+> sincronizado com a r3a em 07/10/2026 (o relato em `out/los-angeles/_tmp/roteiro-editor-r3a.md`).
+> **O que a r3 mudou** sobre o aprovado anterior (`a7a8615a…`, 2.053 palavras, 152 frases; o gancho de 1906): três pedidos à
+> voz, e nada mais (`qc-roteiro/*-r3*.laudo.md`, prova por diff): o 2º parágrafo do gancho (o contorno de hoje: "Now look at
+> the city's outline." / "… runs south through a strip about half a mile wide, for about nine miles, between its neighbors." /
+> "In 1906, it stopped …"), o 1º de p4 ("watched" ⇒ "turned out") e o 4º de p5 ("before the city grew around both ends, the
+> strip ran about fifteen miles …" e "The towns that line it today weren't cities yet.", os quatro nomes fora da voz). A
+> **r3a** é a r3 com a lista fechada `_trabalho/lista-r3.md` aplicada: 1 item (R3A-01, "it runs" ⇒ "the strip ran", +1).
+> **As revisões anteriores:** a r1, que a bancada 1 julgou (sha `822cb8e3…`, 2.139 palavras, 33 parágrafos, 157 frases), em
+> `_trabalho/roteiro-r1.md`; sobre ela se aplicaram os 35 itens da lista fechada (`_trabalho/lista-r1.json`, `lista-r1.md`),
+> com a prova por diff frase a frase em `_trabalho/aplicado-r1.md`, e saiu a r2 (sha `4902fe99…`, 2.063 palavras), em
+> `_trabalho/roteiro-r2.md`; a rodada 2 (os laudos `*-final` e `fatos-r2`) conferiu só as frases trocadas e levou ao aprovado
+> `a7a8615a…`. **Bancada da r3** (roteiro RESSALVA, clareza RESSALVA 8,5, locução RESSALVA, fatos PASS 9,7); **a r3a** foi
+> conferida pelos fatos (`fatos-r3-final`, 13 de 13, 9,7) e pela clareza (`clareza-r3-final`, PASS 9,0). Ainda não passou pelo
+> Lucas (ele escolheu o título e o gancho; a leitura do roteiro inteiro e a escuta dos três trechos refeitos: abaixo).
 
 ## A espinha
 
@@ -32,12 +41,12 @@
   consolidações de 1909 lhe deram costa). O "never" de 1886 era um teto para o estuário, não uma profecia, escrito pelo
   homem que fez o molhe.
 - **Promessa (na fala):** "So why is Los Angeles shaped like this?" Em português: explicar, sobre o mapa, por que o contorno
-  tem uma faixa de meia milha descendo para o sul: o que ela alcançava, por que é tão fina, onde parava e como a água no
-  fim dela ficou funda.
+  de hoje tem uma faixa de meia milha descendo para o sul por umas nove milhas, entre os vizinhos: o que ela alcançava, por
+  que é tão fina, onde parava em 1906 e como a água no fim dela ficou funda.
 - **Payoff (na fala, p7):** "The coast never gave Los Angeles a harbor. Engineers made the water deep. A board of five put
-  the harbor in San Pedro, four votes to one, and not at the railroad's pier. And a city nineteen miles from that harbor
-  drew a strip half a mile wide to touch the two towns around it, then voted itself onto the coast. The strip was never a
-  road to the sea. It was the way to a deep-water harbor that didn't exist yet."
+  the harbor in San Pedro, four votes to one, and not at the railroad's pier. And a city nineteen miles from the harbor
+  towns drew a strip half a mile wide to touch them, then voted itself onto the coast. The strip was never a road to the
+  sea. It was the way to a deep-water harbor that didn't exist yet."
 - **O que o vídeo não diz** (fundamento, "O que a tese não diz"): por que o porto é o MAIS movimentado hoje (o número entra
   como escala, sem causa); que o Congresso escolheu San Pedro (foi a junta da lei de 1896, T10); que a faixa chegou ao mar
   (parava nas divisas, T25); que a verba de Santa Monica foi tirada (foi item de projeto, T11); e nunca "the same estuary"
@@ -50,13 +59,13 @@
 | S1 "America's second-largest city" | Não é dívida: escala, paga na própria frase (estimativa Vintage 2025, doc-24). Volátil: reconferir na véspera. |
 | S2 "more container traffic than any other in the Western Hemisphere every year from 2000 through 2024" | p7, 3º parágrafo: "about 10.3 million TEU" (2024), o que é TEU, e "by the port's own count, … the busiest container port in the Western Hemisphere every year from 2000 through 2024". O mapa separa Los Angeles de Long Beach (a voz não cita Long Beach em p7: ver escrita-notas). |
 | S3 o "never" de 1886 | p2 lê a carta inteira: o estuário, os navios de 12 a 14 pés, o teto de 18 ou 20, os 30 pés do "deep-water" da junta de 1897, "worthy of improvement", o quebra-mar de 1888, o mesmo homem na junta de 1891. p7 paga: "Mendell expected eighteen or twenty feet for the estuary. The port's Main Channel is fifty-three." O medidor sobre o mapa é a conta visível: <2 → 10 → 11 → (~14, 1892) → 21 → 53. |
-| S4–S5 o contorno de 1906 e "a strip about half a mile wide, for about fifteen miles, across county land" | p5, 4º parágrafo: medido no polígono oficial (18,6 mi² ao todo, menos da metade é o fio; meia milha; quinze milhas no contorno de 1906; os quatro vizinhos que ainda não eram cidades). p7, 1º parágrafo: continua lá, nove milhas finas no contorno de hoje. |
-| S6 "stopped at the edge of two other cities, short of the water" | p4, 3º parágrafo (de quem era a cidade: San Pedro por 1890, Wilmington em 1905) e p5, 5º parágrafo (a descrição legal segue as divisas; "It never reached the tide line"). |
+| S4–S5 o contorno de hoje (V1) e "a strip about half a mile wide, for about nine miles, between its neighbors" (V2: nove milhas, hoje) | p5, 4º parágrafo: medido no polígono oficial (18,6 mi² ao todo, menos da metade é o fio; meia milha; "On the outline of 1906, before the city grew around both ends, the strip ran about fifteen miles": quinze em 1906, antes de a cidade crescer nas duas pontas; "The towns that line it today weren't cities yet.": os quatro nomes e os anos só na tela). p7, 1º parágrafo: "the city has grown around both ends, and about nine miles of it still run thin": nove hoje. A ponte 9/15 fecha em três pontos: gancho (≈0:21, nove, hoje) → p5 (≈8:14, quinze, 1906) → p7 (≈10:01, nove, hoje); os dois números nunca no mesmo quadro. |
+| S6 "In 1906, it stopped at the edge of two other cities, short of the water" (V3: a ponta de 1906) | p4, 3º parágrafo (de quem era a cidade: San Pedro por 1890, Wilmington em 1905) e p5, 5º parágrafo (a descrição legal segue as divisas; "It never reached the tide line"). |
 | S7 "Until 1909, Los Angeles had no coastline of its own" | p6: os votos de agosto, a vigência de 28/08/1909, "a coastline of its own for the first time", o Times ("a seaport city"), os 15.000 pés de frente de água. |
 | S8 "So why is Los Angeles shaped like this?" | p5, último parágrafo (o aperto de mão legal, sem o anúncio "this is the answer": L25), p6, último (a costa própria quase três anos antes do quebra-mar pronto; as camadas 1850/1906/1909 só na tela: L31) e p7, último (a resposta em três decisões, de volta ao contorno). |
 | S9 "the strip that took Los Angeles to its port" | p5 e p6: a faixa encosta nas duas cidades e a consolidação põe o porto dentro da cidade; p7: "the way to a deep-water harbor that didn't exist yet" (L35). |
 | a pergunta longa (a água) | p2 (molhe e maré: <2 → 10 → 11), p3 (em que baía, e por quem), p4 (pedra e draga: 21), p7 (45 → 53 em 2013). |
-| as réguas de p1 (14 milhas à praia, 19 a Wilmington) | p4 ("Los Angeles, nineteen miles away") e p7 ("a city nineteen miles from that harbor"). Em p3 a voz diz "in San Pedro Bay, more than twenty miles from the Plaza" (L16, fatos A1): o porto de águas profundas das juntas fica sob Point Fermin, a 24,4 milhas, não em Wilmington; a régua de 19 nunca nessa cena. |
+| as réguas de p1 (14 milhas à praia, 19 a Wilmington) | p1 ("the water it used was nineteen miles away", L25), p4 ("Los Angeles, nineteen miles away", L57) e p7 ("a city nineteen miles from the harbor towns", L87). Em p3 a voz já não dá distância: "So put the deep-water harbor on the map: in San Pedro Bay. And not in Los Angeles." (L49). O porto de águas profundas das juntas fica sob Point Fermin, a 24,4 milhas da Plaza, não em Wilmington: a régua de 19 nunca vai à cena de p3. |
 
 ## As partes
 
@@ -64,31 +73,34 @@ Tempos estimados a 184 palavras/min, pela contagem do portão (sem a cauda). O r
 
 | Parte | Função | Orçamento do plano | Palavras | Tempo | O que o espectador entende ao fim |
 |---|---|---|---|---|---|
-| gancho | os cinco tempos | 140 | 140 | 0:00–0:46 | A 2ª cidade do país tem o porto de contêineres nº 1 do hemisfério (pela conta do porto), num lugar que um engenheiro do Exército disse em 1886 que "nunca" seria porto de águas profundas; a cidade chega lá por uma faixa de meia milha por quinze (no contorno de 1906), que parava antes da água; até 1909 não tinha costa. A pergunta é a do contorno. |
+| gancho | os cinco tempos | 140 | 140 | 0:00–0:46 | A 2ª cidade do país tem o porto de contêineres nº 1 do hemisfério (pela conta do porto), num lugar que um engenheiro do Exército disse em 1886 que "nunca" seria porto de águas profundas; no contorno de hoje, a cidade chega lá por uma faixa de meia milha por umas nove milhas, entre os vizinhos; em 1906, essa faixa parava na divisa de duas outras cidades, antes da água; até 1909 não tinha costa. A pergunta é a do contorno que está na tela. |
 | p1 · A city fourteen miles from the beach | estabelecer (1835–1871) | 240 | 262 | 0:46–2:11 | Los Angeles nasceu a 14 milhas da praia e 19 de Wilmington, diante de uma baía aberta (só San Francisco e San Diego tinham porto, pelo Mendell de 1886; a baía exposta ao sudeste e ao sul) e de um estuário raso, com menos de 2 pés na barra; Dana descarregou couros ao largo em 1835, e a carga ia em barcaça por décadas. O problema era água, e ela teria de ser feita. |
-| p2 · The jetty, the tide, and the word "never" | demonstrar (1871–1888) | 280 | 299 | 2:11–3:49 | Um molhe de 1871, de Mendell, fez a vazante cavar a barra (10 pés em 1881, 11 em 1888). O "never" de 1886 era um teto de 18 ou 20 pés para o estuário, num tempo em que "deep-water" ia querer dizer 30 (junta de 1897). A mesma carta apontou a baía ao lado (com a dúvida dele sobre um porto artificial ali), pediu o levantamento que desenhou o primeiro quebra-mar (1888), e o mesmo homem sentou na junta que escolheu San Pedro. A parte termina nessa frase (a recapitulação das "duas águas" saiu: L11). |
-| p3 · Two bays, three boards, four votes to one | complicar (1890–1897) | 320 | 366 | 3:49–5:48 | O lugar foi uma decisão: a junta de 1891 e a de 1892 (unânime) disseram San Pedro; a ferrovia foi a Santa Monica, com um píer de três quartos de milha até água funda num lugar chamado Port Los Angeles (que a voz separa do porto de hoje) e um engenheiro-chefe que chamou a escolha de negócio ("go to the wall", glosado como falir); cada lado acusou o outro de porto de monopólio, e o vídeo não arbitra; a lei de 1896 entregou a escolha a uma junta de cinco, que votou 4 a 1 em 1897. O porto fica em San Pedro Bay, a mais de 20 milhas da Plaza, fora de Los Angeles: é esse vão que a faixa de 1906 vai cruzar. |
-| p4 · A wall in the open sea, in somebody else's town | demonstrar e complicar (1899–1906) | 250 | 225 | 5:48–7:01 | O quebra-mar começou em 26/04/1899 (McKinley, a barcaça que falhou, 15 a 20 mil pessoas pelo Los Angeles Times) e cresceu por treze anos (o "pronto em 1912, pouco mais de duas milhas" foi para p6: L22/L30); a draga federal de 1905 fez o que a maré não podia (21 pés em 1906). San Pedro era cidade por 1890, Wilmington desde 1905: Los Angeles ganhou um porto em que não encostava. Para se fundir com elas, tinha de tocá-las. |
-| p5 · The law that drew the strip | virar (1883–1906) | 330 | 314 | 7:01–8:44 | A lei só deixava consolidar cidades contíguas e não deixava anexar cidade: a faixa é uma ponte fina para tocar San Pedro e Wilmington. Votada em 12/11/1906, por dez votos no território (213 a 203; na cidade, mais de sete a um; os números pelo Times, que fazia campanha), em vigor em 26/12/1906. Medida no polígono oficial: mais de 18 mi² ao todo, o fio com meia milha de largura e quinze milhas (contorno de 1906), por terra do condado. A descrição legal para nas divisas, não na maré. Um aperto de mão legal; a fusão levou quase três anos mais. |
-| p6 · 1909: the handshake becomes a coast | pagar a segunda virada (1909–1912) | 260 | 211 | 8:44–9:53 | A lei de 1909 repete a regra ("contiguous to the other"); três votos em agosto (Wilmington 107–61; Los Angeles "by a landslide", o 13.661–221 só na tela; San Pedro 726–227); em 28/08/1909 a cidade tem 76 mi² e costa própria ("in reality a seaport city", Times); Long Beach pega parte de Terminal Island duas semanas antes: a baía é de duas cidades. 15.000 pés de frente de água (relatório federal de 1910); o quebra-mar (pouco mais de duas milhas, pelo Corpo) só fica pronto em 1912, quase três anos depois da costa. A parte termina aí; as camadas 1850/1906/1909 ficam só na tela (L31). |
-| p7 · The seam on today's map, fifty-three feet down | pagar a escala e o "never"; responder (1985–2024) | 240 | 246 | 9:53–11:13 | Hoje: 469 mi², a faixa ainda com meia milha, nove milhas finas entre os vizinhos; o Main Channel aprofundado por dragas, de 45 a 53 pés até 2013 (o porto e o Corpo); Mendell esperava 18 ou 20. Cerca de 10,3 milhões de TEU em 2024 (TEU definido pela unidade: um contêiner de 40 pés conta dois), nº 1 em contêineres do hemisfério de 2000 a 2024 pela conta do porto. A resposta em três decisões; a faixa nunca foi estrada para o mar: era o caminho para um porto de águas profundas que ainda não existia. Coda: "The strip is still on the map. So is the water." |
+| p2 · The jetty, the tide, and the word "never" | demonstrar (1871–1888) | 280 | 298 | 2:11–3:48 | Um molhe de 1871, de Mendell, fez a vazante cavar a barra (10 pés em 1881, 11 em 1888). O "never" de 1886 era um teto de 18 ou 20 pés para o estuário, num tempo em que "deep-water" ia querer dizer 30 (junta de 1897). A mesma carta apontou a baía ao lado (com a dúvida dele sobre um porto artificial ali), pediu o levantamento que desenhou o primeiro quebra-mar (1888), e o mesmo homem sentou na junta que escolheu San Pedro. A parte termina nessa frase (a recapitulação das "duas águas" saiu: L11). |
+| p3 · Two bays, three boards, four votes to one | complicar (1890–1897) | 320 | 359 | 3:48–5:45 | O lugar foi uma decisão: a junta de 1891 e a de 1892 (unânime) disseram San Pedro; a ferrovia foi a Santa Monica, com um píer de três quartos de milha até água funda num lugar chamado Port Los Angeles (que a voz separa do porto de hoje) e um engenheiro-chefe que chamou a escolha de negócio ("go to the wall", glosado como falir); cada lado acusou o outro de porto de monopólio, e o vídeo não arbitra; a lei de 1896 entregou a escolha a uma junta de cinco, que votou 4 a 1 em 1897. O porto fica em San Pedro Bay, a mais de 20 milhas da Plaza, fora de Los Angeles: é esse vão que a faixa de 1906 vai cruzar. |
+| p4 · A wall in the open sea, in somebody else's town | demonstrar e complicar (1899–1906) | 250 | 226 | 5:45–6:59 | O quebra-mar começou em 26/04/1899 (McKinley, a barcaça que falhou, 15 a 20 mil pessoas no Jubileu pela conta do Los Angeles Times: "turned out", não "watched") e cresceu por treze anos (o "pronto em 1912, pouco mais de duas milhas" foi para p6: L22/L30); a draga federal de 1905 fez o que a maré não podia (21 pés em 1906). San Pedro era cidade por 1890, Wilmington desde 1905: Los Angeles ganhou um porto em que não encostava. Para se fundir com elas, tinha de tocá-las. |
+| p5 · The law that drew the strip | virar (1883–1906) | 330 | 326 | 6:59–8:45 | A lei só deixava consolidar cidades contíguas e não deixava anexar cidade: a faixa é uma ponte fina para tocar San Pedro e Wilmington. Votada em 12/11/1906, por dez votos no território (213 a 203; na cidade, mais de sete a um; os números pelo Times, que fazia campanha), em vigor em 26/12/1906. Medida no polígono oficial: mais de 18 mi² ao todo, o fio com meia milha de largura e, no contorno de 1906, antes de a cidade crescer nas duas pontas, quinze milhas por terra do condado (hoje são nove: o gancho e p7); os vizinhos de hoje ainda não eram cidades, e os nomes e os anos ficam só na tela. A descrição legal para nas divisas, não na maré. Um aperto de mão legal; a fusão levou quase três anos mais. |
+| p6 · 1909: the handshake becomes a coast | pagar a segunda virada (1909–1912) | 260 | 211 | 8:45–9:54 | A lei de 1909 repete a regra ("contiguous to the other"); três votos em agosto (Wilmington 107–61; Los Angeles "by a landslide", o 13.661–221 só na tela; San Pedro 726–227); em 28/08/1909 a cidade tem 76 mi² e costa própria ("in reality a seaport city", Times); Long Beach pega parte de Terminal Island duas semanas antes: a baía é de duas cidades. 15.000 pés de frente de água (relatório federal de 1910); o quebra-mar (pouco mais de duas milhas, pelo Corpo) só fica pronto em 1912, quase três anos depois da costa. A parte termina aí; as camadas 1850/1906/1909 ficam só na tela (L31). |
+| p7 · The seam on today's map, fifty-three feet down | pagar a escala e o "never"; responder (1985–2024) | 240 | 241 | 9:54–11:13 | Hoje: 469 mi², a faixa ainda com meia milha, nove milhas finas entre os vizinhos; o Main Channel aprofundado por dragas, de 45 a 53 pés até 2013 (o porto e o Corpo); Mendell esperava 18 ou 20. Cerca de 10,3 milhões de TEU em 2024 (TEU definido pela unidade: um contêiner de 40 pés conta dois), nº 1 em contêineres do hemisfério de 2000 a 2024 pela conta do porto. A resposta em três decisões; a faixa nunca foi estrada para o mar: era o caminho para um porto de águas profundas que ainda não existia. Coda: "The strip is still on the map. So is the water." |
 
 Os orçamentos do plano somavam 2.060; a revisão que a bancada 1 julgou fechou em 2.139 (p1 +29, p2 +41, p3 +33, p4 −1, p5 −4,
-p6 −28, p7 +9; ver `escrita-notas.md`, item 1). Com a lista da rodada 1 aplicada, o texto tem 2.063 (−76): sobre o plano, p1
-+22, p2 +19, p3 +46, p4 −25, p5 −16, p6 −49, p7 +6. p3 passa da folga de ±30 porque ganhou as glosas de Port Los Angeles e de
-Hood (+15, pedidas por três lentes) e a dúvida de Mendell ficou em p2; p6 fica abaixo porque perdeu o placar de Los Angeles e as
-três frases do fecho. O total fica dentro da faixa do portão (1.950 a 2.150). Os 32 pedidos à voz ficam entre 40 e 107 palavras
-(a regra é 40 a 110, `escrita-notas.md`, item 8); dois itens só mexeram na fronteira de pedido, sem palavra nova (L12 parte o
-parágrafo do píer; L16 junta o fecho de p3 ao parágrafo da lei de 1896).
+p6 −28, p7 +9; ver `escrita-notas.md`, item 1). Com a lista da rodada 1 aplicada, a r2 tinha 2.063; a rodada 2 levou a 2.053, e a
+r3a volta a **2.063** (p4 +1, p5 +9, o gancho ±0): sobre o plano, gancho ±0, p1 +22, p2 +18, p3 +39, p4 −24, p5 −4, p6 −49, p7 +1
+(as contagens desta tabela são da r3a, por parte, pela régua do `gate.mjs`). p3 passa da folga de ±30 porque ganhou as glosas de
+Port Los Angeles e de Hood (+15, pedidas por três lentes) e a dúvida de Mendell ficou em p2; p6 fica abaixo porque perdeu o placar
+de Los Angeles e as três frases do fecho. O total fica dentro da faixa do portão (1.950 a 2.150). Os 32 pedidos à voz ficam entre
+40 e 100 palavras (a regra é 40 a 110, `escrita-notas.md`, item 8; o maior é o da lei de 1896, em p3; o da medida em p5 passou de
+75 a 84 com a r3a); dois itens só mexeram na fronteira de pedido, sem palavra nova (L12 parte o parágrafo do píer; L16 junta o
+fecho de p3 ao parágrafo da lei de 1896).
 
 ## As chamadas (CTA), pela regra de `marca/cta.md`
 
 - **Inscrição (35 a 60 %, nunca no 1º minuto):** a frase curta prevista pelo plano está no fim do 1º parágrafo de p4:
-  "Stone kept coming, barge after barge, for thirteen years." Pela contagem (rodada 1 aplicada): palavra ≈1.158, ≈6:18 de
-  fala, ≈55 % de 11:33 (fala + cauda). Depois dela, parágrafo novo (a pausa do narrar). A cama é a foto parada da construção do quebra-mar
+  "Stone kept coming, barge after barge, for thirteen years." Pela contagem da r3a: palavra ≈1.151, ≈6:15 de fala, ≈54 % de
+  11:33 (fala + cauda); a r3 trocou uma palavra no mesmo pedido ("turned out"), não na frase da chamada. Depois dela, parágrafo
+  novo (a pausa do narrar). A cama é a foto parada da construção do quebra-mar
   (c. 1908, domínio público). Sem "here", sem "this line", sem número-herói na tela (o 13 não vai à tela).
 - **Reserva:** o fim do 3º parágrafo de p3, "The second board had said the same as the first.", logo DEPOIS da citação
-  "two harbors where one would answer the purpose" (nunca sobre ela): palavra ≈897, ≈4:52, ≈42 %. Mapa parado nas duas baías.
+  "two harbors where one would answer the purpose" (nunca sobre ela): palavra ≈896, ≈4:52, ≈42 %. Mapa parado nas duas baías.
 - **Comentário (perto do fim):** as duas últimas frases de p7, "The strip is still on the map. So is the water." (sem
   número, sem "here"), sobre o contorno de hoje parado com o fio e o canal. **Rodada 2** (crítico de roteiro, A3): a peça (no mínimo 5 s,
   `cta.md` §7, e o fim 1 s antes da cauda, §6) não cabe nelas, que são ≈3,6 s de fala. O regente procura no `words.json` um
@@ -100,7 +112,7 @@ parágrafo do píer; L16 junta o fecho de p3 ao parágrafo da lei de 1896).
 
 ## Decisões de escrita
 
-O que o texto faz diferente do plano, com o porquê, está em `roteiros/los-angeles/_trabalho/escrita-notas.md`. As quatro
+O que o texto faz diferente do plano, com o porquê, está em `roteiros/los-angeles/_trabalho/escrita-notas.md`. As cinco
 que mais importam a quem monta a cena:
 1. **A voz não diz "Long Beach" em p7** (corte de orçamento): o mapa TEM de separar o Porto de Los Angeles do Porto de Long
    Beach e rotular o segundo, ou o espectador soma (plano, p7 › mapa › "os dois portos"). O número de Long Beach fica fora.
@@ -114,6 +126,13 @@ que mais importam a quem monta a cena:
    p2 (10 FT 1881 · 11 FT 1888) e em p4 (21 FT 1906, "dredge"; o ~14 FT de 1891–92 pode entrar aqui, com o ano, nunca ao lado
    do "never"), e fecha em p7 (53 FT 2013). "18 OR 20 FT" rotulado como teto previsto por Mendell; "30 FT" como a definição da
    junta de 1897.
+5. **A ponte 9/15 é da tela tanto quanto da voz** (r3, a pedido do Lucas; `qc-roteiro/roteiro-r3.laudo.md`, achados 1 a 3):
+   o gancho mede a faixa no contorno de hoje ("about nine miles", presente), p5 a mede no de 1906 ("the strip ran about fifteen
+   miles", passado, "before the city grew around both ends") e p7 volta a hoje ("has grown around both ends … about nine miles").
+   Presente é hoje, passado é 1906, e cada número só aparece com o contorno dele: "ABOUT 9 MILES (TODAY)" nunca no quadro de
+   1906, "ABOUT 15 MILES (1906)" nunca no de hoje nem no gancho. O contorno de hoje, com a faixa acesa, está na tela desde
+   0:00 (V1): é a imagem que paga o título nos primeiros 19 s, antes de a voz dizer "outline". Os quatro vizinhos (Torrance,
+   Gardena, Lomita, Carson) saíram da voz e vivem só como rótulo, com o ano de incorporação, em p5 e p7.
 
 ## De onde vem cada frase
 
@@ -122,12 +141,14 @@ fontes (`mec-`, `doc-`, `esc-`, `exp-`, `evt-`, `sin-`). "Atribuído" quer dizer
 a voz diz de quem é. "Mapa" diz o que a frase pede à tela quando a fala é espacial; o que não é espacial (voto, lei, fala
 citada) vai a folha de documento, página de jornal ou prancha, nunca a mapa forçado (`marca/identidade.md` §5).
 
-### Gancho (contorno de 1906; a variante de hoje em `variantes/gancho-hoje.md`)
+### Gancho (contorno de hoje; título 5, Lucas, 07/10/2026; o gancho de 1906 em `_trabalho/roteiro-r2.md`)
 
 - "Los Angeles is America's second-largest city."
   - `doc.afi-40`, `esc.afi-05`, `doc.num-43`, `esc.num-08`, `esc.num-09` (Vintage 2025: 3.869.089 em 01/07/2025, atrás de
     Nova York; estimativa, por população; a cidade encolheu um pouco: nunca "growing", T22). Volátil.
-  - Mapa: a cidade sobre o satélite; sem número na tela.
+  - Mapa (V1, desde 0:00): o contorno de hoje sobre o satélite, com a faixa acesa desde o primeiro quadro; sem número na tela.
+    É a imagem que paga o título ("shaped like this") nos primeiros 19 s, antes de a voz dizer "outline"
+    (`roteiro-r3.laudo.md`, achado 3; `marca/embalagem.md` §2, o espírito, não a letra). Volátil (o contorno de hoje).
 - "And by the port's own count, its harbor has handled more container traffic than any other in the Western Hemisphere every year from 2000 through 2024."
   - `doc.afi-36`, `doc.num-35`, `evt.num-09`, `evt.num-10`, `evt.dat-50`, `esc.afi-18`, `evt.afi-38`, `evt.div-12`,
     `doc.div-08`, `esc.div-07` (a conta do porto; 2000–2024 pelo cartão de 2024 e pelo comunicado de 23/01/2025; a página
@@ -140,22 +161,37 @@ citada) vai a folha de documento, página de jornal ou prancha, nunca a mapa for
     (`doc.afi-02`, T06).
   - Tela: a folha do relatório com a frase, "Col. G. H. Mendell, Corps of Engineers", NOV. 8, 1886. Mapa: o anel no estuário
     de Wilmington.
-- "Now look at the city's outline in 1906."
-  - `esc-01` (camada 21 do condado), `evt.afi-26` (o contorno de 26/12/1906), `esc.num-17` (61,9 mi²). Mapa: o contorno de
-    1906 sobre o satélite (licença do condado pendente; caminho em domínio público pela pesquisa-geo).
-- "To reach that water, Los Angeles ran south through a strip about half a mile wide, for about fifteen miles, across county land."
-  - `esc.afi-09`, `esc.num-24` (14,88 mi norte–sul no contorno de 1906), `esc.afi-11`, `esc.num-27` (mediana 0,54 mi),
-    `sin.afi-04`, `sin.num-04` (nenhum vizinho era cidade em 1906: T13), `doc.afi-26`. "About fifteen miles" só com o
-    contorno de 1906 na tela (ajuste 4 da pauta).
-  - Mapa: a faixa acesa, a régua "ABOUT 15 MILES (1906)" e "ABOUT HALF A MILE".
-- "It stopped at the edge of two other cities, short of the water."
-  - `doc.afi-26`, `evt.afi-25`, `esc.afi-16` (a ponta toca a linha de San Pedro e fica a 0,14 mi do polígono de Wilmington;
-    nunca a distância à água de hoje, T25). As duas cidades são nomeadas em p4.
-  - Mapa: zoom na ponta.
+- "Now look at the city's outline." (V1)
+  - `esc-02` (City Boundaries, camada 19 do condado, lida em 07/10/2026) e o TIGER 2025 do Census (`la-hoje-tiger`, o caminho em
+    domínio público; fatos R3-01: direção de tela, sem afirmação), `esc.afi-08` (a área de hoje fica para p7). **Rodada 3**
+    (título 5, Lucas, 07/10/2026): era "Now look at the city's outline in 1906."; o gancho passou ao contorno de hoje, e o
+    "in 1906" foi para a frase da ponta (abaixo). Volátil (o contorno de hoje).
+  - Mapa: o mesmo contorno de hoje que está na tela desde 0:00, agora o assunto; a faixa acesa. Nenhum "1906" neste quadro.
+- "To reach that water, Los Angeles runs south through a strip about half a mile wide, for about nine miles, between its neighbors." (V2)
+  - `esc.afi-10`, `esc.num-29` (8,66 mi de norte a sul no contorno de hoje, de 33,7976 a 33,9232 N; TIGER 2025 e camada 19),
+    `esc.afi-11`, `esc.num-31` (largura inscrita mediana de 0,54 mi hoje), `esc.div-02`, `sin.afi-04`, `sin.num-05` (os
+    vizinhos de hoje: a oeste Torrance, Gardena e Lomita, a leste Carson, mais as CDPs West Athens, West Carson e West Rancho
+    Dominguez e terra do condado; Long Beach não encosta: 2,08 mi), `doc.afi-26`. Fatos R3-02a a R3-02d, CONFIRMADAS. "About
+    nine miles" e "between its neighbors" só com o contorno de hoje na tela (ajuste 4 da pauta; T13): nunca "fifteen" nem
+    "across county land" aqui. Presente ("runs") porque é hoje. Volátil (TIGER 2025, limites de 01/01/2025; camada 19 de
+    07/10/2026; muda com anexação ou desanexação junto da faixa).
+  - Mapa: a faixa acesa, a régua "ABOUT 9 MILES (TODAY)" e "ABOUT HALF A MILE"; o "15 MILES" nunca neste quadro. Se a cena
+    rotular os vizinhos, só os que encostam hoje, e sem dizer que tudo ao longo da faixa é cidade (a borda leste é em boa parte
+    CDP e terra do condado).
+- "In 1906, it stopped at the edge of two other cities, short of the water." (V3)
+  - `doc.afi-26`, `evt.afi-25`, `evt.afi-26` (o contorno de 26/12/1906), `esc-01` (camada 21 do condado), `esc.afi-16` (a ponta
+    toca a linha de San Pedro e fica a 0,14 mi do polígono de Wilmington; nunca a distância à água de hoje, T25). Fatos R3-03a
+    e R3-03b, CONFIRMADAS (a ponta sul de 1906 em terra, a uns 0,56–0,64 km da água das folhas USGS de 1896, pela folha de
+    Hamlin corrigida; a frase não dá a distância). **Rodada 3:** o "In 1906" abre a frase, e é a virada do gancho: presente
+    para hoje, passado para 1906 (`roteiro-r3.laudo.md`, NÃO TOCAR). As duas cidades são nomeadas em p4.
+  - Mapa: a tela passa do contorno de hoje ao de 1906 e dá zoom na ponta (≈0:21 a ≈0:28); o "9 MILES" não pode estar no quadro
+    da ponta de 1906, e o "15 MILES" é de p5, não daqui. A geometria de 1906: a camada 21 do condado (licença pendente) ou a
+    folha de Hamlin corrigida, em domínio público (`out/los-angeles/_media/geo/faixa-1906-hamlin.json`).
 - "Until 1909, Los Angeles had no coastline of its own."
   - `doc.afi-29`, `evt.afi-29`, `evt.dat-44`, `esc.afi-07` (28/08/1909). Mapa: a costa fora do contorno de 1906.
 - "So why is Los Angeles shaped like this?"
-  - A pergunta do contorno (plano). Mapa: o contorno inteiro, parado.
+  - A pergunta do contorno (plano), e o título em letra. Mapa: o contorno de hoje inteiro, parado (o mesmo quadro de V1: a
+    pergunta é sobre o que está na tela).
 - "You're at Alpha Point, and this is where the story of the strip that took Los Angeles to its port begins."
   - `doc.afi-26`, `evt.afi-25` (a faixa até as divisas), `doc.afi-18`, `doc.afi-15` (o porto posto em San Pedro pela junta
     da lei de 1896). "To its port", nunca "to the sea" (ajuste 3 da pauta). Forma exata do `gate.mjs`, apóstrofo reto.
@@ -409,10 +445,14 @@ citada) vai a folha de documento, página de jornal ou prancha, nunca a mapa for
 - "The automatic barge failed, and men pushed the stone off by hand."
   - `exp.A30`, `exp-07` (LA Times de 27/04/1899, "Dumping the Rock. Automatic Barge Fails…"), `exp.N25` (~600 t na barcaça:
     fora da voz). Tela: a página do Times como folha (licença pela midia.md §7.5).
-- "Between fifteen and twenty thousand people watched, according to the Los Angeles Times."
+- "Between fifteen and twenty thousand people turned out, according to the Los Angeles Times."
   - `exp.N23`, `exp.A30`, `exp.V09`, `evt.num-36` (Willard dá ~20.000). Atribuído ao Times (T16). **Rodada 1, L18** (crítico
     15, locução A9): primeira menção do jornal com o nome inteiro ("the Times" sozinho é o New York Times para o americano) e
-    sem o "Times's" sibilante.
+    sem o "Times's" sibilante. **Rodada 3** (as quatro lentes LIMPAS; fatos R3-04, CONFIRMADA): "watched" ⇒ "turned out". O
+    Times (27/04/1899, p. 10; `exp-07`; a imagem em `out/los-angeles/_media/documento/lat-1899-04-27-publico-p10.jpg`) estima
+    "the crowd at noon … between 15,000 and 20,000"; o sinal de McKinley foi às 11 h, e "Only a few thousands were there in
+    time for the finish". "Watched" punha a multidão olhando a pedra cair; "turned out" conta o que o número conta: quem foi ao
+    Jubileu. Nunca de volta a "watched", nem "watched the rock", nem o número sem o Times.
 - "The rock came from Santa Catalina Island."
   - `mec.afi-24` (pedra de Catalina, despejada de barcaças); `mec.num-22` (18 milhas: fora). Mapa: Catalina e a baía.
 - "In January 1905, with money to spare, the Army got approval to extend the wall to at least nine thousand feet."
@@ -521,10 +561,32 @@ citada) vai a folha de documento, página de jornal ou prancha, nunca a mapa for
   - `esc.afi-11`, `esc.num-27` (mediana 0,54 mi), `esc.num-28`, `esc.div-04`. Mapa: a régua "ABOUT HALF A MILE" entre a S
     Vermont Avenue e a S Figueroa Street (`esc.afi-13`; as ruas ficaram fora da voz); o degrau perto de Gardena
     (`esc.afi-12`, `esc.num-32`: nunca "nó") só na tela.
-- "On the outline of 1906, it runs about fifteen miles from north to south, all of it across county land: Torrance, Gardena, Lomita and Carson weren't cities yet."
-  - `esc.afi-09`, `esc.num-24` (14,88 mi), `esc.num-25` (linha de centro: fora da tela), `esc.div-01`, `evt.div-10` (o "16
-    miles" só atribuído a Guinn: fora), `sin.afi-04`, `sin.num-04` (Torrance 1921, Gardena 1930, Lomita 1964, Carson 1968;
-    T13). Mapa: "ABOUT 15 MILES (1906)"; os quatro vizinhos com o ano de incorporação; nenhum número de hoje neste quadro.
+- "On the outline of 1906, before the city grew around both ends, the strip ran about fifteen miles from north to south, all of it across county land."
+  - `esc.afi-09`, `esc.num-24` (14,88 mi no contorno oficial; 14,81 pela folha de Hamlin corrigida), `esc.num-25` (linha de
+    centro: fora da tela), `esc.div-01`, `evt.div-10` (o "16 miles" só atribuído a Guinn: fora), `sin.afi-04`, `sin.num-04`
+    (T13). A oração da ponte: fatos-r2 R2-06a (as pontas hoje: a do norte passou de 0,55 a 2,0–3,6 mi de largura; a do sul, de
+    0,58–0,71 a 3,4–4,9 mi) e fatos-r3 R3-05a (o trecho fino ia de 33,7451 a 33,9600 N em 1906 e vai de 33,7976 a 33,9232 N
+    hoje), R3-05b e R3-05c, CONFIRMADAS. **Rodada 3** (clareza C7 e achado 2 da rodada final, a pedido do Lucas): era "On the
+    outline of 1906, it runs about fifteen miles from north to south, all of it across county land: Torrance, Gardena, Lomita
+    and Carson weren't cities yet."; "before the city grew around both ends" concilia o "nine" do gancho (hoje) com o "fifteen"
+    daqui (1906), e os quatro nomes saíram da voz (eram nomes demais e o risco de pronúncia de "Gardena"). **R3A-01**
+    (`_trabalho/lista-r3.md`; roteiro 1, clareza C-r3-1, locução A1, os três MÉDIO): "it runs" ⇒ "the strip ran". O "it", depois
+    de "before the city grew…", agarrava "the city" ("a cidade corre quinze milhas"), e o par 15/9 deixava de ser da mesma coisa;
+    "the strip" é o nome que o ouvinte guardou do gancho. "Ran", no passado, porque o gancho codifica presente = hoje e passado =
+    1906, as quinze milhas não continuam verdade, e "all of it across county land" no presente seria falso hoje (lista-r3,
+    conflito 1, cinco razões). "About fifteen miles" só aqui, sobre o contorno de 1906 (ajuste 4).
+  - Mapa: o contorno de 1906 com "ABOUT 15 MILES (1906)"; nenhum número de hoje neste quadro: o "grew around both ends" não traz o
+    "9 MILES" ao quadro de 1906 (o par só se vê inteiro em p7, sobre o contorno de hoje).
+- "The towns that line it today weren't cities yet."
+  - `sin.afi-04`, `sin.num-04` (Torrance 12/05/1921, Gardena 11/09/1930, Lomita 30/06/1964, Carson 20/02/1968; camada 21 do
+    condado, 07/10/2026; Long Beach, cidade desde 1897, não encosta), `sin.num-05`. Fatos R3-06, CONFIRMADA (medido pelo
+    perímetro inteiro do TIGER: as cidades que encostam no trecho fino hoje são só essas quatro; nota leve: "towns" cobre também
+    comunidade sem município), R3-02d. "Towns", não "cities": "the cities … weren't cities yet" (lista-r3, conflito 2; a locução
+    A2 e os fatos R3-06 propuseram "cities", e ficou "towns"). **Condição de tela:** os nomes Torrance, Gardena, Lomita e Carson
+    ficam na tela, com o ano em que cada um virou cidade (TORRANCE 1921 · GARDENA 1930 · LOMITA 1964 · CARSON 1968), sobre o
+    contorno de 1906, no quadro do "ABOUT 15 MILES (1906)": a voz não os nomeia mais, nem aqui nem em p7. Cuidado do
+    redator-de-tela (R3-06): a borda leste é em boa parte CDP (West Carson, West Rancho Dominguez) e terra do condado; o
+    rótulo não deve dizer que tudo ao longo da faixa virou cidade.
 - "Look at the tip."
   - Mapa: zoom na ponta sul.
 - "The legal description follows "the boundary line of said City of San Pedro," and then Wilmington's."
@@ -590,7 +652,9 @@ citada) vai a folha de documento, página de jornal ou prancha, nunca a mapa for
     "completed in 1912" pelo Corpo), `exp.N43`, `sin.afi-08`, `sin.num-03` (2,11 mi = 9.250 + 1.887 pés), `mec.div-06`,
     `mec.div-07`, `evt.div-14`. "Just over two miles", nunca "nearly two" (T07). **Rodada 1, L30** (fatos A4, clareza C10,
     crítico 25): o "just over two miles of rock" e a atribuição ao Corpo vieram de p4 (L22); o 1912 é dito uma vez, aqui,
-    onde trabalha contra 1909. Tela: "2.11 MILES" como o número do porto (1921); anel em Angels Gate.
+    onde trabalha contra 1909. Tela: "2.11 MILES" como o número do porto (1921); anel no farol do fim do quebra-mar,
+    com o nome das fotos aprovadas da NARA, "Los Angeles Harbor Light", nunca "Angels Gate" (`marca/midia.md` §2.7; espelho,
+    s47 e s48, 07/10/2026). A luz é de 1913: no quadro do muro de 1912, o farol não aparece.
 - "The city had owned a coast for almost three years before the wall was done."
   - `doc.afi-29` + `evt.afi-23` (28/08/1909 → ano fiscal 1911–12, que termina em 30/06/1912: no máximo 2 anos e 10 meses).
     **Rodada 1, L30:** "almost three" (fatos A4); "its wall" → "the wall" (crítico 25: o quebra-mar era federal, não da
@@ -615,9 +679,12 @@ citada) vai a folha de documento, página de jornal ou prancha, nunca a mapa for
   - `esc.afi-10`, `esc.num-29` (8,66 mi), `esc.num-30` (linha de centro: fora), `esc.div-02`, `sin.num-05`, `sin.afi-04` (8 de
     14 pontos em cidades, 6 em terra do condado). "About nine miles" só com o contorno de hoje; "between other cities and county
     land" só hoje (T13). **Rodada 2, R2-06** (clareza C2/C7): "the city has grown around both ends" diz para onde foram as seis
-    milhas entre o contorno de 1906 (14,84–14,88 mi) e o de hoje (8,66 mi); os vizinhos já foram nomeados em p5, e "Long Beach
-    doesn't touch it" saiu (respondia a uma pergunta que ninguém fez; o mapa mostra). Mapa: "ABOUT 9 MILES (TODAY)"; os
-    vizinhos rotulados com os anos; o "15 MILES" de p5 nunca neste quadro.
+    milhas entre o contorno de 1906 (14,84–14,88 mi) e o de hoje (8,66 mi); "Long Beach doesn't touch it" saiu (respondia a uma
+    pergunta que ninguém fez; o mapa mostra). **Desde a r3**, a voz não nomeia os vizinhos em lugar nenhum (p5 diz "The towns
+    that line it today"): eles são só rótulo de tela, em p5 e aqui. Esta frase fecha a ponte 9/15 aberta no gancho ("runs …
+    about nine miles", hoje) e paga em p5 ("ran about fifteen miles", 1906, "before the city grew around both ends"); é o
+    pagamento da ponte, e nenhuma das duas metades sai (`roteiro-r3.laudo.md`, NÃO TOCAR). Mapa: "ABOUT 9 MILES (TODAY)"; os
+    vizinhos rotulados com os anos (Torrance 1921, Gardena 1930, Lomita 1964, Carson 1968); o "15 MILES" de p5 nunca neste quadro.
 - "The harbor at the end of it was deepened by dredges."
   - Transição; `doc.afi-39` (o aprofundamento); `mec.afi-31` (o Pier 400, 2000, ~600 acres de terra feita: opcional só na
     tela, `mec.num-76`). **Rodada 1, L33** (crítico 24): "finished by machine" era vago (porto não fica pronto; a máquina
@@ -672,21 +739,33 @@ citada) vai a folha de documento, página de jornal ou prancha, nunca a mapa for
 
 ## O que ainda depende de alguém
 
-- **Do Lucas:** o contorno do gancho e, com ele, o título (1906 com o "15-Mile Strip"; hoje sem o número); a licença da
-  geometria do condado, se a pesquisa-geo não achar o caminho em domínio público; a leitura do roteiro (ele aprova pauta e
-  roteiro).
-- **Da bancada, rodada 2:** só as frases trocadas pela lista da rodada 1 (o diff frase a frase em
-  `_trabalho/aplicado-r1.md`); o que é fato novo na voz está no fim de `_trabalho/lista-r1.md` (a dúvida de Mendell,
-  "spending at San Pedro", "more than twenty miles", "more than seven to one", "more than eighteen square miles", "repeated
-  the rule", "by a landslide", "almost three" ×2, "deepened by dredges", a definição de TEU, "deep-water harbor"). A rodada 1
-  (crítico de roteiro, clareza, locução, fatos) está em `qc-roteiro/`; este dossiê não substitui a checagem.
-- **Da folha de pronúncia** (`roteiros/los-angeles/pronuncia.md`): a amostra cita trechos que a rodada 1 trocou ("about six
-  hundred miles apart", "wide open to the southeast", "then a major: a jetty", "the one dissenter on the last board", "by the
-  Times's count", a definição de TEU); refaz-se sobre o sha `4902fe99…`, e "Times's" sai dela.
-- **Dos voláteis, na véspera da gravação:** TEU de 2024, o hemisfério (2000–2024), os 53 pés, a população, o contorno de hoje e
-  os vizinhos, os termos do condado (lista em `fundamento.md`, "Voláteis").
-- **Da cópia para a voz** (`roteiros/los-angeles/voz/trocas.md`, a fazer): números por extenso (213, 203, 107, 61, 726, 227,
-  469, 10.3 million, 2013; o 6,612–914, o 13,661–221 e o "out of 416" saíram da voz na rodada 1 e vão à tela, L23 e L29);
-  "TEU" soletrado; os nomes próprios
-  (Mendell, Dana, Newmark não entra, Willard, Hood, Craighill, Morgan, McKinley, Catalina, Fermin, Gardena, Lomita,
-  Carson, Torrance) na folha de pronúncias do vídeo, a partir de `marca/pronuncias.md`.
+- **Do Lucas:** o contorno do gancho e o título estão decididos (07/10/2026, 11:2x: título 5, contorno de hoje). Ficam: a
+  licença da geometria do condado, se a pesquisa-geo não achar o caminho em domínio público (a folha de Hamlin corrigida é o
+  caminho que os fatos usaram para 1906); a leitura do roteiro inteiro (ele aprova pauta e roteiro); a escuta dos três trechos
+  refeitos na r3a (`out/los-angeles/_tmp/escuta/escuta-r3a.mp3`, 1:44); e a letra do §2 da `marca/embalagem.md` (o título nas 3
+  primeiras frases): com o título 5 e este gancho, o núcleo entra pela forma em V1 (≈0:19) e pela pergunta literal em S8
+  (≈0:36), não em S1–S3; se a resposta dele não estiver registrada, vai ao relato do título como exceção dele para este vídeo
+  (`roteiro-r3.laudo.md`, achado 3).
+- **Da bancada:** a rodada 2 conferiu as frases trocadas pela lista da rodada 1 (o diff frase a frase em
+  `_trabalho/aplicado-r1.md`; os laudos `*-final` e `fatos-r2`), e a rodada 3 julgou as três mudanças da r3 (`*-r3`). Sobre a
+  r3a, uma palavra mudou contra a r3 ("the strip ran", R3A-01): os fatos (`fatos-r3-final`, 13 de 13) e a clareza
+  (`clareza-r3-final`, PASS) voltaram; roteiro e locução não, e a lista-r3 registra que a troca foi decidida entre as três lentes
+  de texto. O que é fato novo na voz desde a rodada 1 está no fim de `_trabalho/lista-r1.md`; o da r3, na tabela de
+  `fatos-r3.laudo.md` (R3-01 a R3-06). Este dossiê não substitui a checagem.
+- **Da folha de pronúncia** (`roteiros/los-angeles/pronuncia.md`, ainda sobre o sha `822cb8e3…`): a amostra cita trechos que a
+  rodada 1 trocou ("about six hundred miles apart", "wide open to the southeast", "then a major: a jetty", "the one dissenter on
+  the last board", "by the Times's count", a definição de TEU), e a r3 tirou da voz Gardena, Torrance, Lomita e Carson (constam
+  como falados "2 (p5, p7)"; agora são 0: só rótulo de tela) e a frase de teste 6 (o p5 antigo). Refaz-se sobre o sha
+  `feac8036…`: "Times's" sai, os quatro nomes saem dos falados e da amostra, a frase 6 passa à frase nova de p5, e vale pôr na
+  amostra o 2º parágrafo do gancho inteiro, num pedido só (locução-r3).
+- **Dos voláteis, na véspera da gravação:** TEU de 2024, o hemisfério (2000–2024), os 53 pés, a população, o contorno de hoje
+  (V1–V2: as nove milhas, a meia milha e os vizinhos de hoje, TIGER 2025 e camada 19), os termos do condado (lista em
+  `fundamento.md`, "Voláteis").
+- **Da cópia para a voz** (`roteiros/los-angeles/voz/trocas.md` e `texto-para-voz.md`, refeitas pelo `preparar-voz.mjs` sobre o
+  sha `feac8036…` em 07/10/2026; `out/los-angeles/roteiro.md`): números por extenso (213, 203, 107, 61, 726, 227, 469, 10.3
+  million, 2013; o 6,612–914, o 13,661–221 e o "out of 416" saíram da voz na rodada 1 e vão à tela, L23 e L29); "TEU"
+  soletrado; os nomes próprios (Mendell, Dana, Newmark não entra, Willard, Hood, Craighill, Morgan, McKinley, Catalina,
+  Fermin) na folha de pronúncias do vídeo, a partir de `marca/pronuncias.md`; Gardena, Lomita, Carson e Torrance não são mais
+  falados. A narração v4 dos três pedidos que a r3a mudou (o 2, o 18 e o 24) foi refeita em 07/10/2026, 15:0x, e conferida
+  (`out/los-angeles/_pesquisa/narracao-conferencia.md`); a costura de ouvido nas fronteiras 1→2, 17→18→19 e 23→24→25 é a
+  escuta do Lucas, acima.

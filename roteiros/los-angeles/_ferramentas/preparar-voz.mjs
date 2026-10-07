@@ -97,7 +97,7 @@ fs.writeFileSync("roteiros/los-angeles/voz/texto-para-voz.md", textoVoz + "\n");
 const porTipo = {}; for (const x of trocas) porTipo[x.tipo] = (porTipo[x.tipo] || 0) + 1;
 fs.writeFileSync("roteiros/los-angeles/voz/trocas.md", [
   "# Cópia para a voz: as trocas", "",
-  `> Gerado por \`_ferramentas/preparar-voz.mjs\` a partir de \`roteiro-narrador.md\` (sha256 do texto falado \`${sha(narr).slice(0, 12)}\`, gancho ${GANCHO_HOJE ? "de hoje (variante)" : "de 1906"}).`,
+  `> Gerado por \`_ferramentas/preparar-voz.mjs\` a partir de \`roteiro-narrador.md\` (sha256 do texto falado \`${sha(narr).slice(0, 12)}\`, gancho ${GANCHO_HOJE ? "de hoje (variante)" : "o do roteiro-narrador.md"}).`,
   `> Cópia para a voz: \`texto-para-voz.md\`, sha256 \`${sha(textoVoz).slice(0, 12)}\`, ${textoVoz.length} caracteres, ${voz.length} parágrafos.`,
   "> Prova: desfazendo cada troca abaixo, volta-se byte a byte ao texto revisado. Não sobrou dígito, `$`, `%` nem colchete.",
   "> Nenhuma palavra falada mudou; muda só a grafia. Nenhum alias de nome (política de `marca/pronuncias.md`).", "",
@@ -109,7 +109,7 @@ fs.mkdirSync("out/los-angeles", { recursive: true });
 fs.writeFileSync("out/los-angeles/roteiro.md", [
   "---", "projeto: los-angeles",
   `o_que: a narração do vídeo 2 (${voz.length} parágrafos), pela API, eleven_v4, voz "Alpha Point - Narrator (conversational, calm)" (829pig94w9GefZ9jJQYl), um pedido por parágrafo`,
-  `texto: idêntico a roteiros/los-angeles/voz/texto-para-voz.md (sha256 ${sha(textoVoz).slice(0, 16)}); gancho ${GANCHO_HOJE ? "de hoje (variante)" : "de 1906"}`,
+  `texto: idêntico a roteiros/los-angeles/voz/texto-para-voz.md (sha256 ${sha(textoVoz).slice(0, 16)}); gancho ${GANCHO_HOJE ? "de hoje (variante)" : "o do roteiro-narrador.md"}`,
   `revisao_do_roteiro: ${sha(narr).slice(0, 12)}`,
   "---", textoVoz, "",
 ].join("\n"));
