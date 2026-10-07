@@ -131,6 +131,21 @@ def main():
     with open(os.path.join(destino, "manifesto.json"), "w", encoding="utf-8") as f:
         json.dump(manifesto, f, ensure_ascii=False, indent=1)
     destino_win = destino.replace("/", "\\")
+    # a trilha: as faixas que o XML usa de out/<proj>/_media/trilha/, na ordem em que entram
+    musicas = []
+    for u in RE_URL.findall(xml):
+        p = caminho_de(u).replace("\\", "/")
+        if "/_media/trilha/" in p and os.path.basename(p) not in musicas:
+            musicas.append(os.path.basename(p))
+    if musicas:
+        linha_trilha = (f"- A2 e A3: a musica, {len(musicas)} faixa(s) em sequencia, baixa sob a narracao:\n"
+                        + "".join(f"    {i}. {m}\n" for i, m in enumerate(musicas, 1))
+                        + "  A A2 leva o canal esquerdo da musica e a A3 o direito, mas o XML nao diz ao Premiere\n"
+                        + "  para que lado vai cada uma (nunca foi testado). Se a musica soar no centro, igual nos\n"
+                        + "  dois lados do fone, ponha o pan da A2 todo a esquerda (-100) e o da A3 todo a direita (+100).\n"
+                        + "  Se o volume ficar alto ou baixo demais, ajuste no Premiere.")
+    else:
+        linha_trilha = "- A2 e A3: vazias. A musica ainda nao entrou."
     leia = f"""{nome}: o projeto do Premiere
 {"=" * (len(nome) + 23)}
 
@@ -146,13 +161,20 @@ Como abrir no outro computador (Windows)
    "Localizar", aponte o primeiro arquivo que ele pedir dentro de midia\\, e deixe marcado
    "Reconectar os outros automaticamente": ele acha o resto sozinho.
 
+Se ja houver um pacote anterior deste video no outro computador
+- Renomeie ou apague a pasta antiga ANTES de copiar esta. Os arquivos tem os mesmos nomes
+  (s01.mp4, s02.mp4...), e uma copia por cima, que pule ou misture arquivos, deixa cena velha
+  no lugar sem aviso. O manifesto.json tem o sha256 de cada arquivo para conferir.
+- Importe o XML num projeto NOVO do Premiere. No projeto antigo, o Premiere pode reaproveitar
+  as cenas que ja importou, com o mesmo nome e o mesmo caminho, e mostrar a versao velha.
+
 O que esperar
 - Uma sequencia 3840x2160 a 30 fps.
 - V1: o master (tela preta com a narracao).
 - V2: as cenas, uma depois da outra, sem vao.
 - V3, V4 e V5: vazias.
 - A1: a narracao.
-- A2 e A3: vazias. A musica ainda nao entrou.
+{linha_trilha}
 - A narracao entra como faixa mono: confira se ela toca nos dois lados do fone.
 """
     with open(os.path.join(destino, "LEIA-ME.txt"), "w", encoding="utf-8", newline="\r\n") as f:
