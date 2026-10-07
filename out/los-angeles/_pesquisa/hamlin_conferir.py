@@ -9,7 +9,12 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 mf = ha.mf
 EXCLUIR = {'alameda-slauson'}
 
-def transformador(ordem=2):
+def transformador(ordem=2, sudeste=True):
+    # desde 07/10/2026 (2ª rodada): o ajuste de 2ª ordem + a correção local do sudeste com pontos de 1923 (hamlin_sudeste.py).
+    # sudeste=False devolve o ajuste da 1ª rodada, para comparar.
+    if sudeste and ordem == 2:
+        import hamlin_sudeste
+        return hamlin_sudeste.transformador()
     G = [g for g in ha.carregar() if g['id'] not in EXCLUIR]
     c = ha.ajustar(G, ordem)
     def f(P):

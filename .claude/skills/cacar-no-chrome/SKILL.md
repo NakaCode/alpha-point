@@ -130,8 +130,13 @@ ao Lucas, com prova no disco, o que achou e o que não achou.
      Refaça a prova inteira (passos 1 a 5) antes de qualquer outro clique quando o `inUse` estiver em outro
      navegador ou em nenhum, quando as ferramentas sumirem ou derem erro de conexão, quando a extensão
      reconectar (navegador reiniciado, extensão recarregada) ou quando aparecer um pedido de conexão da extensão.
-     Refeita a prova, peça de novo ao Lucas a confirmação da conta de cada banco já aberto (item 7). Se ela não
-     passar, pare e chame o Lucas. Anote no relato cada vez que ela se refez, e por quê.
+     A reconexão também acontece sem erro nenhum: compare a cada conferência o horário de conexão (`connectedAt`)
+     do `list_connected_browsers` com o da última prova; mudou, a extensão reconectou (`APRENDIZADOS.md`, item 68).
+     Refeita a prova, a caça segue **sem pedir de novo ao Lucas a confirmação das contas** (Lucas, 07/10/2026:
+     "Não quero ter que ficar te confirmando toda hora"): a prova mostra que é o mesmo perfil, com as contas que
+     ele já confirmou nesta caça. A confirmação volta só quando uma página da caça mostrar outra conta que a
+     confirmada (item 7). Se a prova não passar, pare e chame o Lucas. Anote no relato cada vez que ela se refez,
+     e por quê.
 6. **O combinado com o Lucas, dito a ele antes da primeira busca, e com o ok dele no chat:**
    - durante a caça, ele **não baixa nada em nenhum navegador (Brave, Chrome ou outro) nem em outro programa que
      salve em Downloads**. A pasta é uma só para todos os navegadores e perfis, e um arquivo dele que chegue depois de um `marcar` pode
@@ -590,8 +595,11 @@ antigo, e o `recolher` o recusa como "criado ANTES do 'marcar'" (saída 3). O Mo
      licenciado sem o `<proj>`, e a preferência *Always ask* pode ter desligado. O que fazer com o arquivo é
      decisão dele.
    - **Motion Array**: o botão grande "Download" do clipe principal, não os da grade "Related". Na escolha de
-     formato, **4K** (ou UHD). Nunca "Original" (arquivo gigante), nunca "Preview" (marca d'água), nunca o
-     convite para baixar o app "Motion Array Hub".
+     formato, **4K** (ou UHD). Nunca "Preview" (marca d'água), nunca o convite para baixar o app "Motion Array
+     Hub". O "Original" (arquivo gigante) só numa linha que o Lucas aprove para ele: o "4K" do Motion Array reduz o
+     original pela largura, e de um original mais largo que 16:9 (4096×2160) chega abaixo de 2160 de altura
+     (3840×2026 no vídeo 2; `APRENDIZADOS.md`, item 71). Nesse caso, a linha do Original diz o formato, a resolução
+     e o tamanho que a página mostra (Lucas, 07/10/2026: "Baixar o Original (Recomendado)").
    - **Storyblocks**: o formato **4K MP4 (h264)** na lista do clipe, e o "Download" do MESMO painel. Nunca o
      "Download Watermarked", nem os botões dos clipes semelhantes ou das músicas mais abaixo. Sem 4K MP4: pule.
    - **Shutterstock**: a resolução em **4K / 3840×2160**, e o botão do painel de licenciamento

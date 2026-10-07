@@ -172,10 +172,18 @@ for _i in range(len(gcp)):
     _ci = hc.ha.ajustar(gcp[:_i] + gcp[_i + 1:], 2); _, _, _x, _y = hc.ha.aplicar(_ci, _P[_i:_i + 1, 0], _P[_i:_i + 1, 1], 2)
     loo2.append(float(np.hypot(_x[0] - _X[_i], _y[0] - _Y[_i])))
 loo2 = np.array(loo2)
-INC_HAMLIN = ('georreferência da folha por polinômio de 2ª ordem sobre %d pontos de controle (8 cruzamentos de rua do TIGER 2025, 6 cantos de township/seção do PLSS do BLM e o farol do quebra-mar lido na folha USGS de 1923): '
-              'resíduo RMS %.0f m (máx. %.0f m); validação cruzada (deixa um de fora) RMS %.0f m, máx. %.0f m, que é o farol, o único ponto ao sul de 33,86 N. A divisa é o traço impresso, lido lado a lado (hamlin_tracar.py). '
-              'Conferências independentes: o quadrado de 1850 fica a 45 m (mediana; máx. 150 m) do polígono do condado; a faixa de 1906 fica a 46 m (mediana) do limite do TIGER de hoje entre 33,870 e 33,920 N e a 18 m (mediana; p90 51 m) entre 33,800 e 33,855 N; a ponta sul de 1906 cai a ~67 m da latitude do condado. '
-              'Escala da folha ~1:85.000: o traço tem uns 25 m de largura no terreno. Leitura: ±50 m ao norte de 33,86 N; ±100 m ao sul, onde só o farol segura o ajuste.') % (len(gcp), float(np.sqrt((res2 ** 2).mean())), float(res2.max()), float(np.sqrt((loo2 ** 2).mean())), float(loo2.max()))
+_sud = json.load(open(os.path.join(PROJ, '_tmp', 'pesquisa-geo', 'hamlin-sudeste-conferencia.json'), encoding='utf-8'))
+_d = _sud['depois']
+INC_HAMLIN = ('georreferência da folha em duas partes. (1) Polinômio de 2ª ordem sobre %d pontos de controle (8 cruzamentos de rua do TIGER 2025, 6 cantos de township/seção do PLSS do BLM e o farol do quebra-mar lido na folha USGS de 1923): '
+              'resíduo RMS %.0f m (máx. %.0f m); validação cruzada (deixa um de fora) RMS %.0f m, máx. %.0f m (o farol). (2) Desde 07/10/2026 (2ª rodada), correção local do sudeste (hamlin_sudeste.py): thin-plate spline sobre 4 pontos novos '
+              '(2 cantos do PLSS no degrau de T4S/T5S, Deadman’s Island e a ponta de Point Fermin, os dois últimos na folha USGS Wilmington 1923), nula nos 15 pontos de antes e atenuada a zero ao norte de ~33,92 N; o norte não muda. '
+              'Deixa-um-fora dos pontos novos: %s m. Testes fora do ajuste: o trilho x divisa norte de Wilmington (USGS Compton 1924) cai a %d m; a divisa de San Pedro em Terminal Island fica a %s m da divisa LA-Long Beach de 1923; o lado leste de Wilmington fica a %d m (mediana; máx. %d m) do limite de LA de hoje (TIGER). '
+              'A divisa é o traço impresso, lido lado a lado (hamlin_tracar.py); o traço tem uns 25 m de largura no terreno (escala ~1:85.000). '
+              'Leitura: ±50 m ao norte de 33,86 N (a faixa de 1906 fica a 18–46 m do TIGER de hoje); ao sul de 33,86 N, ±150 a ±200 m (a precisão da correção do sudeste: deixa-um-fora de 57 a 363 m, testes independentes de 1 a 169 m). '
+              'Antes da correção, o sudeste errava ~0,5 km (Wilmington leste e Terminal Island): versões antigas em _tmp/pesquisa-geo/*-antes-gcp1923.json.') % (
+              len(gcp), float(np.sqrt((res2 ** 2).mean())), float(res2.max()), float(np.sqrt((loo2 ** 2).mean())), float(loo2.max()),
+              ', '.join('%s %d' % kv for kv in _d['deixa_um_fora_pontos_novos_m'].items()), _d['erro_nos_pontos_de_1923_m']['trilho-weston-1924'],
+              ' e '.join(str(x) for x in _d['terminal_island_a_1923_m']), _d['wilmington_leste_ao_limite_de_LA_hoje_m']['mediana'], _d['wilmington_leste_ao_limite_de_LA_hoje_m']['max'])
 ref = json.load(open(os.path.join(PROJ, '_tmp', 'hamlin-vertices-refinados.json'), encoding='utf-8'))
 O_HAMLIN = {'licenca': LIC_HAMLIN, 'url': URL_HAMLIN, 'pagina': PAG_HAMLIN, 'sha256_fonte': sha(os.path.join(FONTES, 'hamlin1916', 'hamlin-1916-LOC-2006627663.jpg')),
             'datum': 'WGS84 pelo ajuste (os pontos de controle são NAD83/WGS84)', 'simplificacao': 'contorno da união no raster da folha, Douglas-Peucker 0,75 px (~5 m)', 'incerteza': INC_HAMLIN}

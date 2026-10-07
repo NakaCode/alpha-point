@@ -1262,3 +1262,80 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   quanto o da busca. Se a leitura sai cortada ou falha, o servidor fica fora até ser lido.
 - **Por que serve a qualquer canal:** todo acervo com API costuma servir o arquivo de outro host (CDN, servidor de imagens). Quem lê
   a regra só da API está lendo a regra errada.
+
+## 07/10/2026 — a caça do vídeo 2 no Brave (pré-v1 em `7ab9543`)
+
+### 68. A extensão do navegador reconecta sem erro, e só o horário de conexão denuncia
+
+- **O problema:** na caça do vídeo 2, o `list_connected_browsers` continuou mostrando o mesmo `deviceId`, com `inUse`, mas o
+  horário de conexão (`connectedAt`) tinha mudado: a extensão reconectou às 12:55 sem nenhum erro nas ferramentas. A skill pede a
+  prova do perfil refeita a cada reconexão, e a caça seguiu 13 minutos sem ela, porque só o `deviceId` e o `inUse` eram conferidos.
+  Duas outras quedas, no mesmo dia, deram erro "not connected" e não mudaram o horário.
+- **O que resolveu:** a prova se refez quando o horário novo apareceu, e o relato da caça registra a janela sem prova.
+- **Como evitar:** todo `list_connected_browsers` compara o `connectedAt` com o da última prova. Mudou, a prova se refaz antes do
+  próximo clique, mesmo sem erro nenhum. A skill `cacar-no-chrome` (§0, item 5) ainda não diz isso: vale propor a linha.
+- **Por que serve a qualquer canal:** todo canal que caça pela extensão do navegador depende de saber que a sessão é a mesma, e a
+  reconexão silenciosa não aparece em nenhuma outra ferramenta.
+
+### 69. A vista aérea de cidade e de porto, de perto, quase sempre tem marca legível
+
+- **O problema:** na primeira rodada da caça do vídeo 2, 4 dos 7 candidatos caíram no conferente por marca de terceiro legível: o
+  letreiro de um hotel num telhado, os logotipos de um banco e de uma companhia aérea no alto das torres, e o nome de armador no
+  casco de navios. A skill já recusava isso na Fase A (§2.3, item 4), e mesmo assim eu os gravei: olhei o quadro inteiro, não o alto
+  das torres nem o casco.
+- **O que resolveu:** buscar de longe. O centro de Los Angeles visto de um parque, ao fim da tarde, passou; no porto, o navio
+  atracado quase sempre mostrava o nome.
+- **Como evitar:** antes de gravar um candidato de cidade ou de porto, ampliar (`zoom`) o alto das torres, as fachadas e os cascos
+  nas prévias. Se algo se lê, ou se lê em parte, não vira candidato. Para porto, preferir o plano alto, o navio de proa ou de popa, ou
+  o pátio sem navio, e dizer na lista o que falta.
+- **Por que serve a qualquer canal:** todo canal que usa B-roll de cidade ou de porto em banco pago esbarra nas mesmas marcas, e o
+  banco não garante a autorização de propriedade.
+
+### 70. A busca de vídeo do Shutterstock não tem o filtro de IA que a marca pede
+
+- **O problema:** `marca/midia.md` §2.6 manda ligar "Exclua imagens geradas por IA" na busca do Shutterstock. Na busca de vídeo, o
+  painel de filtros não tem essa opção (lido inteiro em 07/10/2026): tem "Uso → Não editorial", tipo, resolução, duração, pessoas e
+  outros, e nada de IA. O filtro é das imagens. Pela skill, sem o filtro nenhum vídeo do Shutterstock viraria candidato.
+- **O que resolveu:** o Shutterstock parou, e a pergunta foi ao Lucas. A resposta: "1. Quero o shutter". O banco entra com a marca
+  de IA conferida na página de cada item.
+- **Como evitar:** a marca e a skill passam a dizer que, no vídeo do Shutterstock, a IA se confere na página do item, porque o
+  filtro não existe. Até lá, a decisão do Lucas vale para o vídeo 2.
+- **Por que serve a qualquer canal:** todo canal que caça vídeo no Shutterstock com a regra escrita para imagem.
+
+### 71. O "4K" do Motion Array, de um original DCI, chega abaixo de 3840×2160
+
+- **O problema:** a página do item do Motion Array mostra, no cabeçalho, a medida do arquivo "Original" (no vídeo 2, 4096×2160
+  ProRes 422, 984 MB). A skill manda baixar o formato "4K", nunca o "Original", e o "4K" é outra codificação: 3840 de largura com a
+  mesma proporção do original. De um original 4096×2160 (o 4K de cinema), chegou 3840×2026, abaixo da régua de 3840×2160 do banco
+  pago. A página não mostra a resolução do formato "4K", só o tamanho, no balão do botão (107,81 MB). O nome do arquivo também mudou:
+  nesta conta, o Motion Array entrega `<Título>_uhd_<id>.mp4`, com o ID, e não `download`, como a skill diz.
+- **O que resolveu:** o passo 4 da skill (a medida contra a página) pegou a diferença, e o conferente reprovou o arquivo só na
+  técnica. O Lucas escolheu "Baixar o Original (Recomendado)": o mesmo item em 4096×2160 (ProRes 422 LT, 984 MB), que enche a tela
+  sem ampliar. A skill passou a aceitar o "Original" numa linha aprovada para ele, quando o "4K" vier abaixo de 2160 (§3, passo 2).
+- **Como evitar:** na Fase A, item do Motion Array com cabeçalho 4096 de largura (ou outra proporção que não 16:9) vai à lista
+  dizendo que o "4K" sai abaixo de 2160 de altura, e o que o "Original" pesa. Escolher entre os dois é do dono, antes do "sim".
+- **Por que serve a qualquer canal:** todo canal com régua de 3840×2160 que baixa do Motion Array.
+
+### 72. No Envato novo, o *workspace* não é o nome de licença
+
+- **O problema:** para a caça do vídeo 2, o Lucas criou `los-angeles` no Envato, e ele apareceu em *Workspaces*. No clique de
+  baixar, a janela de licença (o *Always ask*) lista só os nomes de licença da conta, e `los-angeles` não estava lá: o *workspace* é
+  uma pasta de itens, não um nome de licença. A skill fala em criar o projeto "em *Projects*", menu que o Envato novo não mostra.
+- **O que resolveu:** como no Juneau, o Lucas digitou `los-angeles` na própria janela de licença e confirmou, o que já baixou o item
+  aprovado. O certificado saiu citando o ID, o título e `los-angeles`.
+- **Como evitar:** antes da caça, dizer ao dono que o nome de licença do vídeo se cria digitando-o na primeira janela de licença (o
+  Claude não digita na caça), e que o *workspace* não o substitui. Vale corrigir a skill (§3, passo 2).
+- **Por que serve a qualquer canal:** todo canal que licencia por projeto no Envato.
+
+### 73. O título do banco diz um porto, e o letreiro do guindaste, no 4K, diz outro
+
+- **O problema:** o clipe do Motion Array "Cargo Shipping Operations At Port Of Los Angeles" passou na Fase A (prévias de ~1.100 px)
+  e no conferente da caça. No arquivo 4K, os pórticos mostram "LBCT", o Long Beach Container Terminal, no porto vizinho, que o roteiro
+  separa de propósito. E o logotipo do fabricante (ZPMC) se lê em quase todo guindaste de porto.
+- **O que resolveu:** o conferente olhou o arquivo baixado no tamanho real, antes de instalar (skill, §3, passo 5), e um cético
+  confirmou. O clipe ficou no rascunho.
+- **Como evitar:** em porto, o título do banco não prova o terminal. Na Fase A, ampliar o alto dos pórticos e procurar o nome da
+  operadora; na dúvida, preferir o plano alto, sem guindaste legível, ou cobrir o porto com mapa ou foto de acervo. E todo arquivo de
+  banco se olha no tamanho real antes de ir à cena.
+- **Por que serve a qualquer canal:** todo canal que usa B-roll de porto, aeroporto ou fábrica, onde o nome da operadora está pintado
+  no equipamento.

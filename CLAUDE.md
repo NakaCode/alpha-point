@@ -770,7 +770,12 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
 
 **O método** é o da pré-v1, com a skill adaptada ao canal:
 - A skill `.claude/skills/cacar-no-chrome/SKILL.md` é a **cópia adaptada do canal**, com sha256
-  `32f96d21f3880b7492d049d89b854819939921fe0886945db3784dd524e4c963` em 02/10/2026, quando o navegador da caça
+  `ed2af70320eee34c3b64d1a9dfae12fac3cfc6127c22fa3d9c479d24482e2391` em 07/10/2026, às 14:1x, quando o "Original" do Motion Array passou a entrar numa
+  linha que o Lucas aprove para ele, se o "4K" vier abaixo de 2160 de altura (Lucas, 07/10/2026: "Baixar o Original
+  (Recomendado)"; na skill, o §3, passo 2). Antes, `285327ea39b8b564106b3cbb19705a3518c19a65fed6e0a2734a95621f7b097c`,
+  às 13:3x, quando a reconexão da extensão deixou de pedir de novo a confirmação das contas (Lucas, 07/10/2026, 13:3x: "Não quero ter que ficar te confirmando
+  toda hora"; na skill, o §0, item 5, que agora manda conferir também o `connectedAt`). Antes,
+  `32f96d21f3880b7492d049d89b854819939921fe0886945db3784dd524e4c963`, em 02/10/2026, quando o navegador da caça
   passou a ser o Brave ("O navegador da caça", abaixo; na skill: o cabeçalho, o §0, itens 3, 5, 6, 8 e 10, o §2.5,
   o §3.2, o §5 e o §6). Antes, `0bf75542f77b7a05be7ed07db614f8ad1e5b99b56c363e19f803f9996352a866`, em 30/09/2026. Às 19:2x: a conta da Top10 na
   Storyblocks e no Envato, e a parada quando uma página da caça mostra outra conta que a confirmada (§0, item 7;
@@ -861,8 +866,10 @@ baseia-se no consumo de memória RAM e preferência do usuário (eu)".
   - **A seleção se confere durante a caça** (skill, §0, item 5): antes da primeira busca de cada banco e antes
     de cada clique que baixa (o do clipe e o do PDF da linha L), o `inUse` do `list_connected_browsers` tem de
     estar no `deviceId` do Brave. Se não estiver, se as ferramentas sumirem ou derem erro de conexão, se a
-    extensão reconectar ou se aparecer um pedido de conexão dela, a prova se refaz antes de qualquer outro clique,
-    e o Lucas confirma de novo a conta de cada banco. Nenhuma ferramenta do navegador, além do
+    extensão reconectar (o `connectedAt` mudou, mesmo sem erro) ou se aparecer um pedido de conexão dela, a prova
+    se refaz antes de qualquer outro clique. Com a prova feita, a caça segue sem pedir de novo ao Lucas a
+    confirmação das contas (Lucas, 07/10/2026: "Não quero ter que ficar te confirmando toda hora"); ela volta só
+    quando uma página da caça mostrar outra conta que a confirmada. Nenhuma ferramenta do navegador, além do
     `list_connected_browsers`, se chama antes do `select_browser`.
   - **Pedido de conexão da extensão durante a caça, o Lucas recusa**, em qualquer janela, perfil e navegador, e
     avisa o Claude. O Claude nunca o pede (`switch_browser` é proibido); se ele aparece, a conexão mudou. Aceito

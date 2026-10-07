@@ -58,7 +58,9 @@ condado (a que o dossiê mediu) entrou aqui **só como conferência**: nenhum ar
   - a faixa de 1906 fica a 46 m (mediana) do limite do TIGER de hoje entre 33,870 e 33,920 N, e a 18 m (mediana; p90 de
     51 m) entre 33,800 e 33,855 N;
   - a ponta sul de 1906 cai a ~67 m da latitude do condado;
-- **em resumo: ±50 m ao norte de 33,86 N e ~±100 m ao sul, onde só o farol segura o ajuste.**
+- **em resumo: ±50 m ao norte de 33,86 N e ~±100 m ao sul, onde só o farol segura o ajuste.** *Corrigido em 07/10/2026: o ~±100 m não valia
+  no sudeste (Wilmington leste e Terminal Island), onde o erro chegava a ~0,5 km. Depois da correção do sudeste, ±150 a ±200 m ao sul de
+  33,86 N; ver "Correção do sudeste de Hamlin", no fim.*
 
 **O crédito na tela:** nenhuma camada pede. Para a descrição, se o canal quiser citar:
 - "Source: U.S. Census Bureau, TIGER/Line Shapefiles 2025";
@@ -73,17 +75,17 @@ O Census pede a citação, mas não a exige.
 |---|---|---|---|
 | Área de 1850 | 27,75 mi² | 28,01 (17.924 ac) | 28,01 |
 | Área antes da faixa (1899–1906) | 42,79 | 43,26 | 43,26 |
-| Área de 1906 | 61,66 | 61,90 | 61,90 |
-| Shoestring Addition | 18,84 | 18,64 (11.931 ac) | 18,64 (18,59 medida) |
-| Wilmington, 1909 | 10,57 | 9,93 (6.358 ac) | 9,93 |
-| 1909 sem San Pedro | 72,21 | 71,83 (76,44 com San Pedro) | 76,44 |
+| Área de 1906 | 61,25 (61,66 antes da correção do sudeste) | 61,90 | 61,90 |
+| Shoestring Addition | 18,43 (18,84 antes) | 18,64 (11.931 ac) | 18,64 (18,59 medida) |
+| Wilmington, 1909 | 9,76 (10,57 antes) | 9,93 (6.358 ac) | 9,93 |
+| 1909 sem San Pedro | 70,99 (72,21 antes) | 71,83 (76,44 com San Pedro) | 76,44 |
 | Hoje | 470,52 de terra + 31,49 de água (TIGER) | — | 468,85 (OF_AREA_SM) |
-| Trecho fino de 1906, de norte a sul | **14,84 mi** (33,7447 a 33,9600 N) | — | 14,88 (33,7441 a 33,9600) |
+| Trecho fino de 1906, de norte a sul | **14,81 mi** (33,7451 a 33,9600 N; 14,84 antes) | — | 14,88 (33,7441 a 33,9600) |
 | Polígono de 1906, de norte a sul | 18,34 mi | — | 18,38 |
 | Trecho fino de hoje, de norte a sul | **8,66 mi** (33,7976 a 33,9232 N, TIGER) | — | 8,66 (mesmas latitudes) |
-| Largura inscrita de 1906 (mediana) | 0,55 mi | — | 0,54 |
+| Largura inscrita de 1906 (mediana) | 0,54 mi (0,55 antes) | — | 0,54 |
 | Largura inscrita de hoje (mediana; mínima e máxima) | 0,54 (0,44 e 0,63) | — | 0,54 (0,45 e 0,64) |
-| Degrau perto de Gardena, deslocamento para leste | 1,03 (1906) e 1,04 (hoje) | — | 1,01 a 1,04 |
+| Degrau perto de Gardena, deslocamento para leste | 1,01 (1906; 1,03 antes) e 1,04 (hoje) | — | 1,01 a 1,04 |
 | Quebra-mar, da costa ao farol | 2,09 mi | — | 2,11 (livro do porto, 1921) |
 | Long Wharf | 0,74 mi | — | "more than three quarters of a mile" (1897) |
 
@@ -113,7 +115,8 @@ Timms Point. A sobreposição da faixa de 1906 (Hamlin) sobre essas folhas está
 e é a prova a olhar.
 - A borda leste da faixa corta o Bixby Slough. Entre ~33,750 e ~33,757 N, ela passa pela margem oeste do baixio da
   Wilmington Lagoon, na hachura azul.
-- A ponta sul (33,7447 N) fica em terra, a **~0,9 km (~0,57 mi)** do azul mais próximo da folha de 1896.
+- A ponta sul fica em terra. Antes da correção do sudeste, a ~0,8–0,9 km do azul mais próximo da folha de 1896; **depois dela, a 0,56 km
+  (San Pedro 1896) e 0,64 km (Redondo 1896)**, ~0,35–0,40 mi.
 - A medida da distância vem de uma classificação de cor (`agua_1896.py`). É indicativa (±150 m) e mistura linha d'água com
   baixio de maré.
 
@@ -186,3 +189,173 @@ Depois, da raiz do canal, `node out/los-angeles/_pesquisa/geo_la_gravar.mjs` gra
 
 As fontes baixadas estão em `out/los-angeles/_tmp/geo-fontes/`, e as licenças lidas, em `_tmp/licencas/`. O sha256 de cada
 uma está na pauta, em `sha256_fonte`.
+
+---
+
+# 2ª rodada: as camadas que o espelho pedia (passo `research`, 07/10/2026)
+
+O espelho de 07/10 (`espelho.json` › `_despacho_research.pesquisa_geo`) pedia 9 camadas que o disco não tinha. Saíram 7
+arquivos, todos em domínio público (Census, USGS, USACE). **Nenhuma camada vem do OpenStreetMap nem da camada do condado**, e
+nenhuma pede crédito na tela. Os scripts são `_pesquisa/geo_la_rodada2.py` (monta em `_tmp/geo-final-2/`, sem rede) e
+`_pesquisa/geo_la_gravar2.mjs` (grava pela pré-v1). As conferências estão em `_tmp/geo-final-2/_conferencia.json`, e as prévias,
+em `_tmp/pesquisa-geo/previa2-*.png`.
+
+| Pedido do espelho | Arquivo (`_media/geo/`) | O que é | Fonte | Cenas |
+|---|---|---|---|---|
+| `a-pedir-california` | `california-cb500k` | a Califórnia (1 MultiPolygon, 12 partes) | Census CB 2025, estados 1:500.000, GEOID 06 | s05 |
+| `a-pedir-catalina` | `catalina-tiger` | Santa Catalina Island (1 polígono) | TIGER 2025 Coastline, o anel fechado da ilha | s29 |
+| `a-pedir-sf`, `a-pedir-sd`, `a-pedir-point-fermin` | `lugares-costa-gnis` | San Francisco, San Diego, Point Fermin, Playa del Rey e Main Channel (5 pontos; usar `_feature`) | USGS GNIS 277593, 1661377, 1664805, 247603 e 245395 | s05, s14, s17, s26, s29, s50 |
+| `a-pedir-playa-del-rey` | `praia-aberta-mais-proxima-tiger` | o ponto da costa aberta mais próximo da Plaza (1 ponto) | TIGER 2025 Coastline, pelo método do esc-09 | s05 |
+| `a-pedir-main-channel` | `main-channel-usace-ncf` | o Main Channel, 53 pés (1 polígono, o pé do talude) | USACE National Channel Framework, CESPL_LA_02_LAC_3 | s50, s55 |
+| `a-pedir-port-long-beach` | `portos-la-long-beach-tiger` | a água do porto de cada cidade (2 MultiPolygon) e a divisa LA–Long Beach (1 MultiLineString) | TIGER 2025 Area Water + Places | s53 |
+| `a-pedir-long-beach-terminal-island-1909` | `divisa-la-lb-terminal-island-usgs1923` | **só a divisa** LA–Long Beach através de Terminal Island, em 1923 (1 linha) | USGS Wilmington 1923, o traço "City Boundary" | s46 |
+
+## As medidas
+
+- **A praia aberta mais próxima da Plaza**, pelo TIGER: **14,02 mi** da Plaza do NRHP (14,08 do El Pueblo e 14,12 da Plaza
+  Substation), no ponto 33,9570 N, −118,4525. O esc-09, na camada do condado, deu 13,99 a 14,09 mi, a 221 m deste ponto. O
+  "about fourteen miles" do roteiro se sustenta em domínio público. O ponto fica ao sul da boca do Ballona, na praia de Playa del
+  Rey (Dockweiler), a 1,1 km do ponto nominal do GNIS para Playa del Rey (que é o bairro, não a praia).
+- **Point Fermin** (GNIS 1664805): o mesmo ponto que o dossiê usou para "MORE THAN 20 MILES" (24,43 a 24,48 mi da Plaza).
+- **Catalina:** 196,2 km² (75,75 mi²) pela costa do TIGER; contém o ponto do GNIS da ilha e o de Avalon.
+- **O Main Channel:** 1,233 km² medidos contra 1,234 km² do campo `projectedarea` do USACE; o eixo maior tem 2,58 mi, contra
+  2,6 mi do `reportedlength`. Contém o ponto "Main Channel" do GNIS. 53 pés mantidos e autorizados, como o roteiro diz.
+- **Os portos:** 39,98 km² de água do lado de Long Beach e 11,40 km² do lado de Los Angeles. Cada corpo d'água do TIGER cai numa
+  cidade só (fora até 3 % de vértices sobre a divisa). Ficaram de fora 5 lagos e tanques de terra firme (Harbor Lake, a Rainbow
+  Lagoon e três pequenos).
+
+## Os limites de cada uma
+
+- `california-cb500k`: generalizada e simplificada a 120 m; serve só à câmera larga. Perto de LA vale a `costa-hoje-tiger`.
+- `catalina-tiger`: a ilha, sem a pedreira. O dossiê não dá o lugar de onde saía a pedra, e nada foi posto no lugar dele.
+- `portos-la-long-beach-tiger`: é **a água do porto dentro de cada cidade**, não o limite legal de cada Harbor District. O limite
+  do Porto de Long Beach não se leu: o `thehelm.polb.com` recusou o robô (decisão T02). O lado de Long Beach inclui a baía até
+  Alamitos e as marinas do centro, que não são do porto. Para separar os dois portos e rotular cada um, como a s53 pede, basta;
+  para desenhar "o Porto de Long Beach" como área legal, não.
+- `main-channel-usace-ncf`: o pé do talude do trecho de projeto, não a margem do cais.
+
+## O pedaço de Terminal Island que Long Beach anexou em 1909: só a divisa
+
+**O polígono da anexação de 13/08/1909 continua sem fonte.** Procurei de novo:
+- a folha de Hamlin (1916) desenha a divisa de San Pedro em Terminal Island, mas não o limite de Long Beach;
+- a folha do USGS de 1896 (San Pedro) é anterior à anexação;
+- a do USGS de **1923 (Wilmington, 1:24.000)** desenha a divisa entre as duas cidades, o traço "City Boundary", que cruza Terminal
+  Island da margem sul do Cerritos Channel até a praia. Ela não desenha o resto do limite da anexação (a água, o lado leste);
+- uma busca na web achou só mapas de arquivo sem cópia digital aberta (USC, Long Beach Harbor Dept.), nenhum em domínio público.
+
+**O que existe, então, é a divisa de 1923** (`divisa-la-lb-terminal-island-usgs1923`, 723 m, ±10 m de leitura):
+- fica a 13–32 m da divisa LA–Long Beach do TIGER de hoje: a linha não mudou de 1923 até hoje;
+- não prova a linha de 1909, mas é a fonte de época mais próxima que se achou;
+- a cena s46 pode mostrar **onde a ilha se divide entre as duas cidades** (com "1923" se a tela disser o ano da linha), não o
+  polígono de 1909. Fechar o polígono pela costa pediria inventar o lado do mar, e isso não se faz. O 0,97 mi² fica só como
+  número, do dossiê.
+
+## Achado que toca a 1ª rodada: o sudeste da folha de Hamlin está deslocado
+
+A divisa de 1923 deu uma régua independente para conferir os contornos de Hamlin no sudeste, onde o ajuste só tinha o farol:
+- o trecho da divisa de San Pedro em Terminal Island (`san-pedro-1909-divisa-hamlin`) tem **a mesma forma** da divisa de 1923
+  e da de hoje (a diagonal até a praia, o dente para oeste, a reta para o sul), mas fica **460 a 500 m a nordeste** dela;
+- o lado leste de Wilmington (`wilmington-1909-hamlin`) fica a 44 m da divisa de hoje no Cerritos Channel e a **570 a 880 m** dela
+  ao norte. A folha de 1923 põe o "City Boundary" onde o TIGER põe a divisa de hoje;
+- isso bate com o excesso de área de Wilmington na tabela (10,57 mi² contra 9,93 no quadro de Hamlin, +6 %): uma tira de ~3 km
+  com ~0,55 km de largura dá os 0,64 mi² a mais.
+
+**A leitura mais provável é erro da georreferência de Hamlin no sudeste**, fora dos pontos de controle, e não divisa que mudou
+entre 1916 e 1923; a prova não está fechada. A incerteza de "~±100 m ao sul de 33,86 N" que a 1ª rodada declarou **não vale**
+para o sudeste da folha (Wilmington leste e Terminal Island): ali o erro chega a ~0,5–0,9 km. Afeta `wilmington-1909-hamlin`,
+`la-1909-hamlin` e o trecho de Terminal Island de `san-pedro-1909-divisa-hamlin`; não afeta a faixa nem 1850, que têm conferência
+própria. **Resolvido no mesmo dia** (decisão do Claude central): ver "Correção do sudeste de Hamlin", abaixo. Os pontos novos não usam a divisa,
+que ficou como teste.
+
+## Como refazer a 2ª rodada
+
+De dentro de `out/los-angeles/_pesquisa/`: `python geo_la_rodada2.py`. Depois, da raiz do canal:
+`REGIE_MOTOR=C:/projetos/regie-v1 node out/los-angeles/_pesquisa/geo_la_gravar2.mjs`. As fontes novas são
+`_tmp/geo-fontes/cb_2025_us_state_500k.zip` e `_tmp/pesquisa-geo/ncf-lac3.geojson` (com `ncf-servico.json`, `ncf-busca.json` e
+`ncf-licenca.txt`, o `licenseInfo` do item do USACE).
+
+---
+
+# Correção do sudeste de Hamlin (07/10/2026, decisão do Claude central)
+
+**O método** (`_pesquisa/hamlin_sudeste.py`):
+- A posição de cada pixel da folha passa a ser **o ajuste de 2ª ordem da 1ª rodada, mais uma correção local**: uma thin-plate spline
+  sobre os resíduos, em metros.
+- A correção vale zero nos 15 pontos de antes e é atenuada a zero ao norte de ~33,92 N (plena ao sul de ~33,86 N).
+- Um polinômio global com os pontos novos foi tentado e recusado: o resíduo RMS subia de 23 para 84 m, porque a folha não é deformada
+  por igual.
+- O `hamlin_conferir.transformador()` usa a correção por padrão; com `sudeste=False`, devolve o ajuste antigo.
+
+**Os 4 pontos novos.** Nenhum é a divisa LA–Long Beach.
+
+| Ponto | Erro do ajuste antigo | Deixa-um-fora depois |
+|---|---|---|
+| canto T4S R13W/R14W (BLM) | 20 m | 63 m |
+| canto T5S R13W/R14W, o degrau da linha de range (BLM) | 106 m | 57 m |
+| Deadman's Island (USGS Wilmington 1923) | 182 m | 205 m |
+| ponta de Point Fermin (USGS Wilmington 1923) | 441 m | 363 m |
+
+Os 15 pontos de antes não mudam: resíduo RMS de 23 m, máximo de 53 m.
+
+**Os testes fora do ajuste**, antes → depois:
+- **o trilho do Pacific Electric na divisa norte de Wilmington** (USGS Compton 1924): 383 → **14 m**. Ficou fora do ajuste porque cai
+  sobre a "Long Beach City Bdy" de 1924;
+- **a divisa de San Pedro em Terminal Island contra a divisa LA–Long Beach de 1923**: 503 e 458 → **169 e 12 m**;
+- **o lado leste de Wilmington contra o limite de LA de hoje (TIGER)**: mediana de 135 → **77 m**, máximo de 574 → **169 m**. As
+  esquinas: NE 408 → 55 m, E 574 → 80 m e a do canal 44 → 169 m;
+- **a faixa contra o TIGER de hoje**:
+  - entre 33,800 e 33,855 N, mediana de 18 → **50 m** (p90 de 38 → 80 m). **Piorou** ali, porque a correção dos cantos do PLSS chega
+    à ponta sul da faixa;
+  - entre 33,870 e 33,920 N, de 46 → 35 m.
+
+**As áreas**, antes → depois, contra o quadro de Hamlin:
+
+| Camada | Antes | Depois | Quadro |
+|---|---|---|---|
+| Wilmington | 10,57 (+6,4 %) | **9,76 (−1,7 %)** | 9,93 |
+| 1909 sem San Pedro | 72,21 | 70,99 (−1,2 %) | 71,83 |
+| 1906 | 61,66 | 61,25 (−1,0 %) | 61,90 |
+| a faixa (Shoestring) | 18,84 | 18,43 (−1,1 %) | 18,64 |
+| 1850 | 27,75 | **27,75 (não mudou)** | 28,01 |
+| antes da faixa (1899) | 42,79 | **42,79 (não mudou)** | 43,26 |
+
+**A faixa de 1906:**
+- o trecho fino mede 14,84 → **14,81 mi** de norte a sul, com a ponta sul em 33,7447 → 33,7451 N;
+- a largura mediana vai de 0,55 → **0,54 mi**, a mesma do condado e do TIGER;
+- o degrau perto de Gardena vai de 1,03 → 1,01 mi;
+- os vértices se movem 49 m na mediana e 158 m no máximo, sempre no sul.
+
+O 1850 não se move (0 m).
+
+**As camadas regravadas:** `la-1906-hamlin`, `faixa-1906-hamlin`, `wilmington-1909-hamlin`, `san-pedro-1909-divisa-hamlin` e
+`la-1909-hamlin`. `la-1850-hamlin` e `la-1899-antes-da-faixa-hamlin` não mudaram (só o texto de incerteza na pauta). As versões de
+antes ficaram em `_tmp/pesquisa-geo/*-antes-gcp1923.json` (e `.js`), com a pauta, o `pauta-geo.md`, o `hamlin_conferir.py`, o
+`geo-final` e o `geo-hist` de antes.
+
+**A precisão declarada** agora:
+- ±50 m ao norte de 33,86 N;
+- ±150 a ±200 m ao sul (o deixa-um-fora vai de 57 a 363 m, e os testes independentes, de 1 a 169 m). Inclui a ponta sul da faixa, que
+  piorou de ~20 para ~50 m contra o TIGER.
+
+**Os números do roteiro e do dossiê** continuam de pé:
+- "seventy-six square miles" (1909) vem do dossiê: o atributo TOTAL_AREA 76,44 do condado (esc.num-19, evt.num-43) e o quadro de
+  Hamlin (71,83 + 4,61). Não vem da geometria, que nunca fechou San Pedro;
+- "more than eighteen square miles" vem do quadro (18,64); a medida passou a 18,43, ainda acima de 18;
+- "about fifteen miles": 14,81 mi aqui, 14,88 no condado;
+- "about half a mile wide": 0,54 mi;
+- "forty-three" e "twenty-eight" vêm do quadro, e esses contornos não mudaram;
+- "less than half of that" vem do dossiê (8,63 contra 9,96 mi², no condado);
+- "about nine miles" vem do TIGER de hoje e não depende de Hamlin;
+- "It never reached the tide line": a ponta continua em terra. A distância ao azul da folha de 1896 caiu de ~0,8–0,9 km para
+  ~0,56–0,64 km. O roteiro não diz a distância.
+
+Achado de passagem, sem conserto: **Deadman's Island em `pontos-historicos-usgs`** (lida na folha de 1896, 1:62.500) fica a ~240 m de
+onde a folha de 1923 (1:24.000) a desenha. A de 1923 é a mais precisa das duas.
+
+**Como refazer**, de dentro de `_pesquisa/`:
+1. `python hamlin_sudeste_conferir.py`, que grava `_tmp/pesquisa-geo/hamlin-sudeste-conferencia.json`, que o construir lê;
+2. `python hamlin_epocas.py`;
+3. `python geo_la_construir.py`;
+4. da raiz do canal, `REGIE_MOTOR=C:/projetos/regie-v1 node out/los-angeles/_pesquisa/geo_la_gravar_gcp1923.mjs`.
+
+A sobreposição de antes e de depois sobre a folha de 1923 está em `_tmp/pesquisa-geo/ti-sobreposicao-{antes,depois}-gcp1923.jpg`.
