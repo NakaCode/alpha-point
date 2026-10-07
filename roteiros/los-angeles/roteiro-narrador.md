@@ -1,15 +1,16 @@
-# Why Los Angeles Grew a 15-Mile Strip in 1906 (It Had No Coast)
+# Why Is Los Angeles Shaped Like This?
 
-> Título provisório: o Lucas escolhe entre este (contorno de 1906 no gancho) e "Why Is Los Angeles Shaped Like This?"
-> (contorno de hoje; a variante do gancho está em `roteiros/los-angeles/variantes/gancho-hoje.md`).
+> Título escolhido pelo Lucas em 07/10/2026, 11:2x ("Título 5"), com o gancho no contorno de hoje
+> (`roteiros/los-angeles/variantes/gancho-hoje.md`). O gancho de 1906 fica em `_trabalho/roteiro-r2.md` e no git.
 > Narração pura, en-US. Escrita em 07/10/2026 sobre `_trabalho/plano-final.json`. As marcas `<!-- pN -->` separam as
 > partes e não são lidas; os parágrafos separados por linha em branco são os pedidos à voz.
+> Revisão r3a (07/10/2026): a r3 com a lista fechada `_trabalho/lista-r3.md` aplicada (1 item, em p5). Nada mais mudou.
 
-<!-- gancho · contorno de 1906 (dois parágrafos; a variante de hoje troca os dois) -->
+<!-- gancho · contorno de hoje (dois parágrafos; título 5, "Why Is Los Angeles Shaped Like This?", Lucas, 07/10/2026) -->
 
 Los Angeles is America's second-largest city. And by the port's own count, its harbor has handled more container traffic than any other in the Western Hemisphere every year from 2000 through 2024. But in 1886, an Army engineer looked at the shallow estuary there and wrote that it "can never be made a harbor for deep-water ships."
 
-Now look at the city's outline in 1906. To reach that water, Los Angeles ran south through a strip about half a mile wide, for about fifteen miles, across county land. It stopped at the edge of two other cities, short of the water. Until 1909, Los Angeles had no coastline of its own. So why is Los Angeles shaped like this? You're at Alpha Point, and this is where the story of the strip that took Los Angeles to its port begins.
+Now look at the city's outline. To reach that water, Los Angeles runs south through a strip about half a mile wide, for about nine miles, between its neighbors. In 1906, it stopped at the edge of two other cities, short of the water. Until 1909, Los Angeles had no coastline of its own. So why is Los Angeles shaped like this? You're at Alpha Point, and this is where the story of the strip that took Los Angeles to its port begins.
 
 <!-- p1 · A city fourteen miles from the beach -->
 
@@ -49,7 +50,7 @@ In June 1896, Congress passed a rivers and harbors law. A House bill would have 
 
 <!-- p4 · A wall in the open sea, in somebody else's town -->
 
-The breakwater came first. On April 26, 1899, San Pedro held a Free Harbor Jubilee. From Washington, President McKinley pressed a button to dump the first barge of rock. The automatic barge failed, and men pushed the stone off by hand. Between fifteen and twenty thousand people watched, according to the Los Angeles Times. The rock came from Santa Catalina Island. In January 1905, with money to spare, the Army got approval to extend the wall to at least nine thousand feet. Stone kept coming, barge after barge, for thirteen years.
+The breakwater came first. On April 26, 1899, San Pedro held a Free Harbor Jubilee. From Washington, President McKinley pressed a button to dump the first barge of rock. The automatic barge failed, and men pushed the stone off by hand. Between fifteen and twenty thousand people turned out, according to the Los Angeles Times. The rock came from Santa Catalina Island. In January 1905, with money to spare, the Army got approval to extend the wall to at least nine thousand feet. Stone kept coming, barge after barge, for thirteen years.
 
 Then the second tool arrived. On April 1, 1905, a federal dredge went to work in the inner harbor. What it dug up went behind walls on Terminal Island, the old Rattlesnake Island: made land. By the middle of 1906, the bar had twenty-one feet at low tide. The dredge did what the tide could not.
 
@@ -63,7 +64,7 @@ On the map, that is geometry. Two shapes that don't touch can't merge; a thin br
 
 The vote came on Monday, November 12, 1906, in the city and in the territory to be annexed, since the law required a majority in both. The tallies come from the Los Angeles Times, which had campaigned for annexation. Inside the city it was easy, more than seven to one. In the territory, the margin was six votes on election night, and ten in the official count: 213 to 203. It took effect on December 26, 1906.
 
-Now measure it on the city's own annexation map, from 1916. The whole annexation was more than eighteen square miles. But the thin part is less than half of that; the rest is a wide block up north. The thin part is about half a mile wide. On the outline of 1906, it runs about fifteen miles from north to south, all of it across county land: Torrance, Gardena, Lomita and Carson weren't cities yet.
+Now measure it on the city's own annexation map, from 1916. The whole annexation was more than eighteen square miles. But the thin part is less than half of that; the rest is a wide block up north. The thin part is about half a mile wide. On the outline of 1906, before the city grew around both ends, the strip ran about fifteen miles from north to south, all of it across county land. The towns that line it today weren't cities yet.
 
 Look at the tip. The legal description follows "the boundary line of said City of San Pedro," and then Wilmington's. It never reached the tide line. So the strip is a legal handshake, drawn half a mile wide, so that one city could touch two others. A handshake is not a merger. That took almost three more years.
 

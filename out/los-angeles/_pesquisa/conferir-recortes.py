@@ -12,6 +12,13 @@ proj = sys.argv[1]
 so = next((set(int(x) for x in a.split("=", 1)[1].split(",")) for a in sys.argv[2:] if a.startswith("--trechos=")), None)
 pasta = Path("out") / proj / "_narracao"
 conf = json.loads((pasta / "conferencia-paragrafos.json").read_text(encoding="utf-8"))
+# Vale, de cada trecho, a geração que a narracao.json atual usa (pelo requestId): o cache guarda ao lado a refeita e a
+# de um texto que mudou, e escolher pelo nº do trecho deixava o último arquivo lido vencer (los-angeles, r3a, 07/10/2026).
+atual = {}
+_narr = Path("out") / proj / "narracao.json"
+if _narr.exists():
+    for _s in json.loads(_narr.read_text(encoding="utf-8")).get("segmentos", []):
+        if _s.get("tipo") == "fala" and _s.get("requestId"): atual[_s["trecho"]] = _s["requestId"]
 recibos = {}
 for j in pasta.glob("*.json"):
     try:
@@ -19,7 +26,10 @@ for j in pasta.glob("*.json"):
     except Exception:
         continue
     if isinstance(r, dict) and isinstance(r.get("trecho"), int) and (pasta / (j.stem + ".pcm")).exists():
-        recibos[r["trecho"]] = pasta / (j.stem + ".pcm")
+        n = r["trecho"]
+        if n in atual:   # vale a geração que a narracao.json atual usa (o cache guarda as antigas ao lado)
+            if r.get("requestId") == atual[n]: recibos[n] = pasta / (j.stem + ".pcm")
+        elif n not in recibos: recibos[n] = pasta / (j.stem + ".pcm")
 
 from faster_whisper import WhisperModel
 modelo = WhisperModel("large-v3", device="cpu", compute_type="int8", cpu_threads=os.cpu_count() or 4, local_files_only=True)

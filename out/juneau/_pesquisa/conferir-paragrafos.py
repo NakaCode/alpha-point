@@ -26,11 +26,25 @@ base = os.path.join("out", proj)
 roteiro = open(os.path.join(base, "roteiro.md"), encoding="utf-8").read()
 roteiro = re.sub(r"\A---\n.*?\n---\n", "", roteiro, flags=re.S)
 paragrafos = [re.sub(r"\s+", " ", p).strip() for p in re.split(r"\n\s*\n", roteiro) if p.strip()]
+# O cache guarda TODAS as gerações de um trecho (a refeita e a de um texto que mudou ficam ao lado da antiga). Vale a
+# que a narracao.json atual usa, pelo requestId do segmento: escolher pelo nº do trecho deixava o último arquivo lido
+# vencer, e a conferência de 07/10/2026 (los-angeles, r3a) ouviu o áudio antigo dos trechos 2 e 24.
+atual = {}
+narr = os.path.join(base, "narracao.json")
+if os.path.exists(narr):
+    for s in json.load(open(narr, encoding="utf-8")).get("segmentos", []):
+        if s.get("tipo") == "fala" and s.get("requestId"): atual[s["trecho"]] = s["requestId"]
 recibos = {}
 for arq in glob.glob(os.path.join(base, "_narracao", "*.json")):
     if arq.endswith((".pedido.json", "conferencia-paragrafos.json")): continue
     r = json.load(open(arq, encoding="utf-8"))
-    if "trecho" in r: recibos[r["trecho"]] = (arq[:-5] + ".pcm", r)
+    if "trecho" not in r: continue
+    n = r["trecho"]
+    if n in atual:
+        if r.get("requestId") == atual[n]: recibos[n] = (arq[:-5] + ".pcm", r)
+    elif n not in recibos: recibos[n] = (arq[:-5] + ".pcm", r)
+faltam = sorted(n for n in atual if n not in recibos)
+if faltam: sys.exit(f"o cache não tem o áudio que a narracao.json usa nos trechos {faltam}")
 TAXA = 44100
 LIMIAR = 32768 * 10 ** (-40 / 20)
 

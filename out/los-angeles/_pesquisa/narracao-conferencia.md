@@ -22,7 +22,9 @@ O registro do que se gastou na ElevenLabs e de como cada rodada da narração fo
 O v4 cobrou cerca de 0,1 crédito por caractere nesta conta (1.200 por 11.999), como no teste (~0,13). A conta da ElevenLabs é
 compartilhada com outros canais: entre as 09:37 e as 10:15 o saldo caiu 390 sem rodada deste vídeo. A conta do vídeo segue pelos
 recibos (`characterCost` de cada `out/los-angeles/_narracao/<chave>.json`).
-**Soma do vídeo 2 até aqui:** 261 (teste) + 1.200 (narração) + 37 (trecho 10) = **1.498 créditos**.
+| 07/10, 15:01–15:02 | a revisão r3a do roteiro (título 5, gancho de hoje, "turned out", "the strip ran"; `narrar-3.log`): os trechos 2, 18 e 24, 1.488 caracteres pagos; os outros 29 do cache | 4.706.833 | 4.706.636 | **197** | 60 + 76 + 61 (`5943ddab…`, `c5c7ac37…`, `852dcd1b…`) |
+
+**Soma do vídeo 2 até aqui:** 261 (teste) + 1.200 (narração) + 37 (trecho 10) + 197 (r3a) = **1.695 créditos**.
 
 ## A conferência
 
@@ -44,3 +46,22 @@ recibos (`characterCost` de cada `out/los-angeles/_narracao/<chave>.json`).
   2.117 palavras em 32 trechos. O "thirty" do fim do trecho 10 agora tem confiança alta. O "his" do mesmo trecho a transcrição
   ouviu "has" (p 0,75): vai à escuta do Lucas (3:21), com o "eleven" de 2:50. Os itens de grafia do transcritor (Mendel, algarismos)
   foram aceitos com `--aceitar`, registrados no `transcricao.json`.
+
+- **Rodada 3, a revisão r3a** (07/10, 15:0x). O roteiro oficial passou a ser o `_trabalho/roteiro-r3a.md` (gate PASSA, 2.063
+  palavras, sha `feac8036…`), e o `preparar-voz.mjs` refez a cópia para a voz (32 parágrafos, 12.101 caracteres). Mudaram três
+  trechos: o 2 (o gancho de hoje), o 18 ("turned out") e o 24 ("the strip ran"; "The towns that line it today"). Só eles se pediram.
+  - **Um defeito dos conferidores, achado e consertado:** o `conferir-paragrafos.py`, o `conferir-fins.py` e o
+    `conferir-recortes.py` escolhiam o áudio de cada trecho pelo número do trecho no recibo, e o cache guarda ao lado a geração
+    antiga de um texto que mudou (e a refeita). A primeira conferência desta rodada ouviu o áudio ANTIGO dos trechos 2 e 24 (o
+    gancho de 1906). Os três agora usam a geração que a `narracao.json` atual aponta (pelo `requestId`). Refeita: os trechos 2 e
+    24 com 100 % das palavras, o 18 com o "turned out" certo e só a grafia do transcritor ("15,000", "26").
+  - **O item novo do trecho 18** ("fifteen" ouvido "15,000"): no recorte isolado de 16,40 a 17,50 s do trecho, o Whisper ouve "15
+    and 20", sem "thousand" no meio; a energia e o alinhamento da ElevenLabs ("fifteen" 16,56–16,96 s, "and" 17,04 s) não deixam
+    lugar para uma palavra a mais. É expectativa do transcritor.
+  - **Os fins:** "begins." 0,98, "years." 1,0, "yet." 0,99.
+  - **O tratamento:** 732,55 → 752,55 s, sha `eff497ce28fa` → `7c7d971a27e9`.
+  - **O relógio:** `words.json` APROVADO, 2.127 palavras, com os 20 itens de grafia do transcritor aceitos de novo (o aceite vale
+    por áudio); o alinhamento da ElevenLabs dos trechos novos foi lido do histórico (só GET, saldo igual).
+  - **A escuta do Lucas:** `out/los-angeles/_tmp/escuta/escuta-r3a.mp3` (1:44: os trechos 2, 18 e 24, o "eleven" do fim do
+    trecho 8 e o "his" do trecho 10), mandado a ele no chat. O master espera essa escuta.
+

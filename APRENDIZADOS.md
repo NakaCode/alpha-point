@@ -1339,3 +1339,16 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   banco se olha no tamanho real antes de ir à cena.
 - **Por que serve a qualquer canal:** todo canal que usa B-roll de porto, aeroporto ou fábrica, onde o nome da operadora está pintado
   no equipamento.
+
+### 74. O cache da narração guarda as gerações antigas, e o conferidor ouviu a errada
+
+- **O problema:** o `narrar.mjs` guarda cada pedido pelo hash do texto, e o áudio de um parágrafo que mudou (ou que se refez)
+  fica no cache ao lado do novo, com o mesmo número de trecho no recibo. Os conferidores do canal (`conferir-paragrafos.py`,
+  `conferir-fins.py`, `conferir-recortes.py`) escolhiam o áudio pelo número do trecho, e o último arquivo lido vencia. Na
+  revisão r3a do vídeo 2, a conferência ouviu o gancho ANTIGO nos trechos 2 e 24 e acusou "palavras trocadas" que a voz nova
+  não tinha; num caso pior, teria aprovado um áudio que não está na narração.
+- **O que resolveu:** os três passaram a usar só a geração que a `narracao.json` atual aponta, pelo `requestId` do segmento, e
+  param se ela faltar no cache.
+- **Como evitar:** todo leitor de cache por trecho escolhe pelo identificador que o manifesto atual registra, nunca pelo número
+  de posição. Desconfie de "trocou o texto inteiro" num trecho que acabou de ser refeito.
+- **Por que serve a qualquer canal:** todo canal que narra pela API, um pedido por parágrafo, e refaz parágrafos.
