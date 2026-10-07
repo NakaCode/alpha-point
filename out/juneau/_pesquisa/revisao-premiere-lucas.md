@@ -285,3 +285,12 @@ s35 foram mandados antes):
   quadro é idêntico ao de antes, pelo mapista), o piscar da estrada da s59 em ~4,0 s e o canto de créditos da s35 de 2,5 a 5,5 s. Decisão do
   Claude central: ficam, pela regra das 06:2x (depois de um conserto, confere-se o conserto e a janela dele); a s12 sem nomes vai ao Lucas
   como nota, e volta se ele marcar.
+
+## A trilha (06/10/2026)
+
+O Lucas escolheu as músicas da lista `out/juneau/_tmp/trilha/lista-trilha-juneau.md` (assinatura `1dc658a211e9`), às 22:1x: "às músicas...
+Trecho 1 = música 1, trecho 2 = música 7, trecho 3 = música 3, trecho 4 = música 11". Pedido o "sim" escrito, que a ferramenta exige, ele
+respondeu às 22:18: "Sim, 1, 3, 7 e 11". Duas reservas (7 e 11) entraram no lugar das preferidas 2 e 4. As quatro baixaram pelo
+`ferramentas/epidemic.mjs` (duração, canais e título conferidos; a biblioteca passou pela pré-v1), e o plano `out/juneau/_trilha-plano.json`
+foi montado à mão pelos `_capitulos` (trilha.mjs --conferir: as 4 com licença válida). Os créditos para a descrição estão em
+`out/juneau/_creditos-trilha.md`. A chave do Epidemic tinha sido trocada pelo Lucas no mesmo dia, às 22:1x.

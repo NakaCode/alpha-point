@@ -1109,6 +1109,9 @@ no arquivo de chaves da máquina pelo Bloco de Notas, como `EPIDEMIC_SOUND_API_K
   `initialize` e `tools/list`, sem baixar nada: 200, 16 ferramentas (busca de música e de efeito, faixas parecidas, edição de
   duração, download, e voz).
 - **A chave vale um ano** a partir da criação, pela documentação. A data de criação está na conta do Lucas.
+- **A chave foi trocada em 06/10/2026** (o Lucas, no chat: "nossa key do epidemic mudou"). Ele colou a nova no Bloco de Notas;
+  a cópia de antes ficou em `chaves.env.antes-troca-epidemic-2026-10-06`. Testada no mesmo dia sem baixar nada: `conferir` ok, 16
+  ferramentas, e a lista do Juneau conferida de novo contra o servidor, com a mesma assinatura (`1dc658a211e9`).
 - **O que se usa:** a busca (`SearchRecordings`, `SearchSimilarToRecording`) para montar a lista de faixas, e o download
   (`DownloadRecording`) só com o "sim" do Lucas a uma lista no chat, com a faixa, o artista, a duração e o trecho de cada linha. A edição
   de duração (`EditRecording`) a ferramenta ainda não faz: o que ela entrega não foi medido, e ela pede verbo e prova próprios, além do
