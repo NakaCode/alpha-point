@@ -90,5 +90,5 @@ recibos (`characterCost` de cada `out/los-angeles/_narracao/<chave>.json`).
   (pico verdadeiro −3,6 dBTP, LRA 2,2), contra −14,1 LUFS (pico −1,4) da do Juneau. O eleven_v4 entrega uns 5,5 dB abaixo do v3, e o
   `tratar-narracao.py` não normaliza (o motor também não). O YouTube abaixa o que passa de −14, mas não sobe o que fica abaixo: sem
   ajuste, o vídeo 2 tocaria uns 5,5 dB mais baixo que o Juneau. A `narracao.wav` não muda (o sha amarra o master, o relógio e os
-  aceites do laudo, que valem por áudio): o ganho entra na mixagem (o XML ou a exportação do Premiere), e a escolha vai ao Lucas junto
+  aceites do laudo, que valem por áudio): o ganho entra na mixagem, no Premiere (o XML da pré-v1 só regula a música: o `--db-narracao` é o nível da trilha sob a voz, e a voz entra sem ajuste; `xml-premiere.mjs:2067` e `:2693-2741`), e a escolha vai ao Lucas junto
   com a da trilha ("transições e trilha com mix").
