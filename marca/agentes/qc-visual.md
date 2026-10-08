@@ -140,7 +140,7 @@
     §4.1, "Crédito a 56 px"; no Juneau, 76 e 88). O teto reprova como o piso;
   - card de pessoa (Lucas, 26/09/2026; identidade.md §5): o nome é rótulo (128 e 160 px, Inter 700, até 3
     palavras) e o cargo é legenda (84 e 104 px, Inter 500, sem teto de palavras). Valem os números acima: o
-    nome com mais de 3 palavras reprova como rótulo. O cargo que passa por baixo do cartão da fala reprova
+    nome com mais de 3 palavras reprova como rótulo, menos o nome próprio de 4 (identidade.md §4.1, "Nome próprio de 4 palavras"). O cargo que passa por baixo do cartão da fala reprova
     (composição de 27/09/2026);
   - folha de documento (Lucas, 27/09/2026; identidade.md §5): **palavra cortada reprova**, pelo rasgo, pela
     fita, pela moldura ou pela borda do quadro. Também reprovam o branco menor que 240 px entre a última linha e o
@@ -206,7 +206,8 @@
     palavras) e o cargo numa linha menor logo abaixo, no papel "eixo / legenda" (84 px, Inter 500;
     `--fs-eixo` e `--peso-texto` em `marca/tokens.css`). Exemplo aprovado: `MARIA GLADZISZEWSKI` em cima e
     `Assembly member, City and Borough of Juneau (2017)` embaixo (identidade.md §5; Lucas, 28/09/2026). Card sem o cargo, ou com nome e cargo juntos no rótulo,
-    reprova; o nome com mais de 3 palavras reprova na lente **espaco**. A composição de 27/09/2026:
+    reprova; o nome com mais de 3 palavras reprova na lente **espaco**, menos o nome
+    próprio de 4 (identidade.md §4.1, "Nome próprio de 4 palavras"). A composição de 27/09/2026:
     - o retrato vem como foto impressa com fita, com o nome e o cargo embaixo;
     - a fala vai num cartão de papel;
     - a foto não se altera; recorte que muda o sentido, ou filtro no rosto, reprova.

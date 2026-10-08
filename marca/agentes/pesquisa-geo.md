@@ -130,7 +130,7 @@
 
 - Nome em **inglês dos EUA, pela forma do AP Stylebook**. País e região em **CAIXA ALTA**, Inter 700,
   tracking +0.04em; cidade, rio e estreito em caixa normal, Inter 700. Nome de lugar é rótulo: 128 px,
-  teto 160, até 3 palavras; nunca herói.
+  teto 160, até 3 palavras, ou 4 se for nome próprio (identidade.md §4.1, "Nome próprio de 4 palavras"); nunca herói.
 - O rótulo da tela vem do `redator-de-tela`, não do `name_pt`. As geometrias já gravadas no canal têm
   `name_pt` em português (medido: `out/juneau/_media/geo/eua.json` diz "Estados Unidos", e `canada.json`,
   "Canadá"). Em geometria nova, passe `--pt=` com o nome em inglês (o valor é texto de tela; a chave é da

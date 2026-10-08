@@ -249,8 +249,8 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
   dentro de um dos cinco e diga qual, ou devolva ao montador a troca proposta.
 - Pessoa real nomeada = registro real, identificada por nome e cargo (identidade.md §5; o contrato exige o
   cargo, `contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`). **O card de pessoa** (Lucas,
-  26/09/2026; identidade.md §5): o nome na pílula `--rotulo`, 128 px, Inter 700, até 3 palavras
-  (`--fs-rotulo`, `--peso-rotulo`), e o cargo numa linha menor logo abaixo, no papel "eixo / legenda", 84 px,
+  26/09/2026; identidade.md §5): o nome na pílula `--rotulo`, 128 px, Inter 700, até 3 palavras,
+  ou 4 se for nome próprio (identidade.md §4.1, "Nome próprio de 4 palavras") (`--fs-rotulo`, `--peso-rotulo`), e o cargo numa linha menor logo abaixo, no papel "eixo / legenda", 84 px,
   Inter 500 (`--fs-eixo`, `--peso-texto` em `marca/tokens.css`). Exemplo aprovado: `MARIA GLADZISZEWSKI` em
   cima e `Assembly member, City and Borough of Juneau (2017)` embaixo (identidade.md §5; Lucas, 28/09/2026). O rosto, quando há, segue midia.md §7.2; sem foto em
   fonte autorizada, o card sai só com nome e cargo. **A composição** (Lucas, 27/09/2026; identidade.md §5):

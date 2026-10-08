@@ -154,8 +154,18 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
   letra, sobre o gelo mais claro, fica em 2,6–3,0:1.
 - Texto de relação sobre a seta de uma PRANCHA (ex.: `claims the same waters`) é **legenda**:
   84 px, Inter 500, `--tinta` a 80 %.
-- **Card de pessoa** (Lucas, 26/09/2026): o nome é **rótulo** (pílula, 128 px, Inter 700, até 3 palavras) e
-  o cargo é **legenda**, numa linha menor logo abaixo (84 px, Inter 500). A regra inteira está em §5.
+- **Card de pessoa** (Lucas, 26/09/2026): o nome é **rótulo** (pílula, 128 px, Inter 700, até 3 palavras, ou 4 se
+  for nome próprio: abaixo) e o cargo é **legenda**, numa linha menor logo abaixo (84 px, Inter 500). A regra inteira
+  está em §5.
+- **Nome próprio de 4 palavras** (Lucas, 07/10/2026, do vídeo 2 em diante; o Juneau não tinha nenhum). A pergunta: "A marca
+  limita o nome numa etiqueta a 3 palavras. No vídeo 2, sete nomes próprios têm 4: "Port of Los Angeles" (4 cenas), "Port of
+  Long Beach", "Los Angeles Harbor Light" e "Richard Henry Dana Jr.". Como ficam?" A resposta: "Inteiros (Recomendado)". A
+  opção dizia: "Nome próprio vai inteiro, até 4 palavras, como exceção à regra das 3. A etiqueta fica um pouco mais larga,
+  sem encurtar nome oficial. A regra vira: até 3 palavras, ou 4 se for nome próprio."
+  - Vale para o rótulo de pessoa, de lugar e de instituição (a pílula `--rotulo`), no tamanho de sempre. O nome próprio
+    de 4 palavras continua rótulo, não bloco (o teto de blocos, abaixo).
+  - Nome próprio de 5 palavras ou mais, e rótulo que não é nome próprio com 4, seguem a regra das 3: vão ao report do
+    `redator-de-tela`, e a forma curta é decisão do Lucas.
 - **Aviso do ano da foto** (Lucas, 27/09/2026): é **legenda** (84 px, Inter 500, `--tinta`). Sobre a foto, vai
   numa pílula `--rotulo`, com cantos de 12 px e respiro interno de 16 px × 28 px. Na margem da foto impressa do
   card, vai sem pílula, em `--tinta-escura` a 72 %. A regra inteira está em §6.

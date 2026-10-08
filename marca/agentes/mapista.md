@@ -147,7 +147,8 @@ necessidade.
 ## 4 · Rótulos (identidade.md §3, §4.1 e §7)
 
 - **Pílula** `--rotulo`, cantos de 12 px, respiro de 24 × 40 px, texto `--tinta` em Inter 700, 128 px (teto de
-  160 px: nome de lugar é rótulo, nunca herói). No máximo 3 palavras. Troque o chip do molde por ela.
+  160 px: nome de lugar é rótulo, nunca herói). No máximo 3 palavras, ou 4 se for
+  nome próprio (identidade.md §4.1, "Nome próprio de 4 palavras"). Troque o chip do molde por ela.
 - País e região em CAIXA ALTA, `+0.04em`. Cidade, rio e estreito em caixa normal, tracking 0.
 - Grafia do AP Stylebook: `British Columbia`, `Yukon`, `Lynn Canal`, `Taku River`. Número e distância no
   formato da identidade.md §7: imperial primeiro (`about 43 miles`), métrico só entre parênteses quando a fonte

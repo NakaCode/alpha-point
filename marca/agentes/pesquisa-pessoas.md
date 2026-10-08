@@ -92,7 +92,7 @@
   Juneau, os políticos vão pelo cargo, sem rótulo partidário, `roteiros/juneau/roteiro-editor.md`). O
   cargo é o que a fonte diz.
 - Rótulo na pílula `--rotulo` (`#0B0F14` a 88 %), texto em `--tinta`, Inter 700, **128 px** (teto 160,
-  até 3 palavras), cantos de 12 px, respiro de 24 × 40 px.
+  até 3 palavras, ou 4 se for nome próprio: identidade.md §4.1, "Nome próprio de 4 palavras"), cantos de 12 px, respiro de 24 × 40 px.
 - **O card de pessoa** (Lucas, 26/09/2026; identidade.md §5): o nome no rótulo (a pílula acima, até 3
   palavras) e o cargo numa linha menor logo abaixo, no papel "eixo / legenda", 84 px, Inter 500. Exemplo
   aprovado: `MARIA GLADZISZEWSKI` em cima e `Assembly member, City and Borough of Juneau (2017)` embaixo (identidade.md §5; Lucas, 28/09/2026). O contrato continua

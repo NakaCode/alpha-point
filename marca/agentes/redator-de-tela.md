@@ -123,7 +123,8 @@ recusou e o que ficou sem conferir, e a sessão central confere no navegador do 
   abaixo, como legenda (84 px, Inter 500). Exemplo aprovado: `MARIA GLADZISZEWSKI` em cima e
   `Assembly member, City and Borough of Juneau (2017)` embaixo (identidade.md §5; Lucas, 28/09/2026). O contrato continua pedindo o cargo
   (`contratos/textos-tela.schema.json` › `cards_pessoa` › `o_que_e`): preencha `nome` e `o_que_e` pelo
-  contrato. Nome que passe de 3 palavras não se encurta por conta própria: vai ao report.
+  contrato. Nome próprio de 4 palavras vai inteiro (Lucas, 07/10/2026; identidade.md §4.1, "Nome próprio de 4 palavras"); nome que passe disso, ou rótulo que não é
+  nome próprio com mais de 3, não se encurta por conta própria: vai ao report.
 - **Fronteira disputada:** rótulo `DISPUTED`, e nunca a reivindicação de um lado (identidade.md §6).
 - **Toda instituição** (jornal, órgão do Alasca, o Estado, órgão federal como a FHWA, os tribunais federais e
   o Federal Register, empresa, liga) aparece pelo nome escrito, na pílula `--rotulo`: logo e selo não vão à
@@ -226,7 +227,7 @@ grep -n "<variante>" out/<proj>/words.json          # toda variante_ouvida exist
 
 - toda URL que recusou robô e o que ficou sem conferir por isso;
 - as peças de documento estadual ou de imprensa sem permissão clara, que a cena recria (§5), e os nomes de
-  card de pessoa com mais de 3 palavras (§4);
+  card de pessoa com mais de 4 palavras, ou com 4 sem ser nome próprio (§4);
 - as divergências entre a voz e o texto que tocam a tela, com o parágrafo. Elas **não** aparecem no
   `words.json` (ele tem o texto da cópia para a voz, por construção): estão em
   `out/<proj>/transcricao.json` › `alinhamento.conteudo` (cada bloco trocado, palavra pulada ou a mais, com
