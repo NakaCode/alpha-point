@@ -92,3 +92,5 @@ recibos (`characterCost` de cada `out/los-angeles/_narracao/<chave>.json`).
   ajuste, o vídeo 2 tocaria uns 5,5 dB mais baixo que o Juneau. A `narracao.wav` não muda (o sha amarra o master, o relógio e os
   aceites do laudo, que valem por áudio): o ganho entra na mixagem, no Premiere (o XML da pré-v1 só regula a música: o `--db-narracao` é o nível da trilha sob a voz, e a voz entra sem ajuste; `xml-premiere.mjs:2067` e `:2693-2741`), e a escolha vai ao Lucas junto
   com a da trilha ("transições e trilha com mix").
+- **A decisão do volume, 08/10/2026, 13:2x:** "Subir a voz no Premiere" (a música a −35 dB no XML, como no Juneau; a A1 sobe ~5,5 dB no
+  Premiere, com limitador, porque o pico de −3,6 dBTP passaria de 0). O registro e o que vai ao LEIA-ME: `out/los-angeles/_creditos-trilha.md`.

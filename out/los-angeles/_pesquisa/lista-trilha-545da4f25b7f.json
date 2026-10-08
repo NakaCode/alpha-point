@@ -1,0 +1,586 @@
+{
+  "proj": "los-angeles",
+  "_leia": [
+    "A lista de faixas da trilha do vídeo 2 (Los Angeles, 'Why Is Los Angeles Shaped Like This?'), para o Lucas aprovar no chat. Nada foi baixado.",
+    "Feita em 08/10/2026, das 12:2x às 12:4x de Brasília, só com a busca do Epidemic (ferramentas/epidemic.mjs buscar e parecidas): 10 SearchRecordings e 7 SearchSimilarToRecording, um pedido por vez, sem laço de páginas. Depois, a lista --conferir (1 SearchRecordings pelos ids).",
+    "As linhas seguem o formato do `epidemic.mjs lista/baixar`: todas com \"aprovado\": false. O \"sim\" do Lucas marca \"aprovado\": true só nas linhas que ele cobrir; a assinatura sai do `lista`.",
+    "O \"sim\" cobre as 4 preferidas (linhas 1 a 4). Reserva (5 a 12) só com o número dela na resposta.",
+    "O que o \"sim\" cobre, dito ao Lucas no .md com todas as letras: o download das músicas que ele nomear e o lugar delas nos trechos da tabela. Não cobre o volume, que vai ao Lucas como pergunta à parte, no chat, com as opções (cetico/texto.json, problemas 1 e 2), nem as transições do vídeo (espelho.json › _decisoes_pendentes, 'transições e trilha com mix'), que esta lista não traz.",
+    "duracao_s está arredondada ao segundo, como na lista do Juneau; `lista --conferir` confere contra o servidor, com tolerância de 1,5 s. moods, generos e uso são as marcas do próprio Epidemic, como a busca as devolveu (os moods em minúsculas); a biblioteca da pré-v1 grava os moods do servidor (as linhas não trazem \"mood\").",
+    "Ninguém ouviu as faixas, e nenhuma prévia foi pedida nem medida: o robots.txt de audiocdn.epidemicsound.com (onde fica a prévia) é 'Disallow: /', e a ferramenta do canal nunca a pede. A música nunca entra em ferramenta de IA nem de reconhecimento de música (licença do Epidemic; CLAUDE.md, 'A trilha'). A escolha é pelas marcas do Epidemic (clima, gênero, andamento, stems, sem voz, nenhuma marca de uso suspense, horror, crime scene, supernatural, build ou drama nas 12 linhas), pela popularidade e pelas escolhas do Lucas no Juneau (as linhas 1, 3, 7 e 11 da lista 1dc658a211e9), lidas como preferência pelo misterioso e pelo tranquilo. Essa leitura é palpite: ele respondeu 'Trecho 1 = música 1, trecho 2 = música 7, trecho 3 = música 3, trecho 4 = música 11' sem dizer o motivo (out/juneau/_pesquisa/revisao-premiere-lucas.md, 'A trilha'), e o .md pede que ele diga se foi pelo som. O \"porque\" de cada linha diz o que vem das marcas e o que é intenção; o que o .md diz de como uma música soa vem das marcas, com a fonte. Na página, o Lucas ouve se a melodia chama atenção; como ela fica sob a voz, só no Premiere (a página toca a música sozinha).",
+    "As 12 páginas das faixas foram abertas pelo cético dos fatos às 12:52–12:53 de 08/10/2026 (um GET cada, depois do robots.txt de www.epidemicsound.com, que não veta /music/tracks/): HTTP 200, título e canonical certos, nenhum desafio de robô (cetico/fatos.json › paginas). O endereço não vem do Epidemic: a busca devolve só o id, e a ferramenta do canal monta a página (PAGINA(rec.id) em ferramentas/epidemic.mjs).",
+    "precisa_cobrir_s, em cada trecho, é o tamanho dele mais 0,2 s: a pré-v1 não pede de um arquivo mais que a duração dele menos 0,2 s (MARGEM_ARQUIVO_S).",
+    "Nenhuma das 12 é faixa da lista do Juneau (nem as 4 baixadas, nem as 8 que ficaram de reserva). Não repetir foi escolha de quem fez a lista, não regra do canal (nenhuma regra da marca, do CLAUDE.md ou do APRENDIZADOS.md fala de repetir trilha; cetico/texto.json): o .md diz isso ao Lucas e deixa a porta aberta para ele pedir uma repetição. Dois artistas se repetem com faixa nova: Shuta Yasukochi (linha 4; no Juneau, 'fading into blue') e By Lotus (linhas 3 e 8; no Juneau, 'H-thirteen', que não se baixou). O .md diz o artista nas duas direções: a 4 é do artista da escolhida do fecho, e a 3 e a 8 são do artista da preferida que ele trocou.",
+    "Conserto dos céticos, 08/10/2026, das 13:0x às 13:06 (Brasília): o texto do .md e os campos fora das linhas foram corrigidos pelos achados de cetico/fatos.json e cetico/texto.json (o volume, o alcance do \"sim\", as descrições de som com a fonte, a fala até 732,34 s, as trocas logo depois da pausa, a sobra de 44 s, a citação da voz.md, a licença e o Content ID). Nas linhas, só o \"porque\" das linhas 1, 7 e 8 mudou; título, artista, id, duração, número, cena, formato, stem, voz e aprovado ficaram como estavam. A assinatura mudou por isso (abaixo, assinatura_conferida)."
+  ],
+  "duracao_video_s": 752.55,
+  "fala_ate_s": 732.34,
+  "tela_final_s": [
+    732.55,
+    752.55
+  ],
+  "fonte_dos_trechos": "out/los-angeles/espelho.json › _capitulos (em_s): o gancho e as partes p1 a p7 do roteiro (roteiros/los-angeles/roteiro-narrador.md, marcas <!-- pN -->). A duração e a cauda vêm de out/los-angeles/narracao.json (audio.duracaoSec 752,55; tratamento_canal.cauda_tela_final de 732,55 a 752,55). A fala acaba em 732,34 s (a última palavra, 'water.', em out/los-angeles/words.json; espelho.json › _relogio.fim_da_fala_s): o 732,55 é o começo da cauda, não o fim da fala. O plano é feito à mão, como o do Juneau (o trilha.mjs da pré-v1 só entende card de título). O gancho e os 7 capítulos viram 4 trechos: gancho+p1+p2, p3+p4, p5+p6, p7 com a tela final. Cada troca cai num começo de capítulo onde o assunto muda: 245,7 s ('Now the map has a choice on it: two bays'), 457,733 s ('Now the strip itself') e 651,92 s ('Look at the outline today'). As três caem logo depois da pausa normal entre parágrafos, no começo da primeira palavra do capítulo (words.json: 'Pedro.' acaba em 245,26 e 'Now' começa em 245,73; 'them.' em 457,33 e 'Now' em 457,74; 'done.' em 651,50 e 'Look' em 651,92; pausas de 0,47, 0,41 e 0,42 s). Com as rampas de 1 s do XML, a música que sai desce sobre o fim da frase anterior e a pausa, e a que entra sobe sob a primeira frase do capítulo.",
+  "voz_do_canal": "marca/voz.md §1: energia calma e firme, a provocação está no fato e não no volume; §2: sem trilha de suspense por cima de morte ou sofrimento ('Morte ou sofrimento como espetáculo'); aqui, estendido à trilha inteira, pela energia calma do §1. A extensão é desta lista: a regra de mood da trilha ainda não existe na marca (pendencias_antes_do_baixar). Por isso ficam fora os moods Dark, Suspense, Scary, Epic, Euphoric, Busy & Frantic e Chasing, as marcas de uso suspense, horror, crime scene, supernatural, build e drama, a música de meditação e o piano solo. Tudo instrumental (marca 'no vocals' do Epidemic).",
+  "trechos": [
+    {
+      "trecho": 1,
+      "partes": [
+        "gancho",
+        "p1",
+        "p2"
+      ],
+      "inicio_s": 0,
+      "fim_s": 245.7,
+      "cenas": "s01 a s16",
+      "assunto": "O contorno de hoje e a pergunta; a cidade que nasceu numa planície, longe da água; a costa sem porto; o molhe de 1871 e o 'never' de Mendell (1886)",
+      "mood_pre_v1": [
+        "Mysterious",
+        "Peaceful"
+      ],
+      "mood_nota": "o tom-base do canal, contemplativo e misterioso, como a abertura do Juneau (que o Lucas aprovou com 'Drone of Thoughts', ambient e drone, misteriosa, 73 BPM); com o Peaceful no lugar do Dreamy: a abertura pergunta e explica, não corre.",
+      "linhas": {
+        "preferida": 1,
+        "reservas": [
+          5,
+          6
+        ]
+      },
+      "precisa_cobrir_s": 245.9
+    },
+    {
+      "trecho": 2,
+      "partes": [
+        "p3",
+        "p4"
+      ],
+      "inicio_s": 245.7,
+      "fim_s": 457.733,
+      "cenas": "s17 a s34",
+      "assunto": "A escolha do porto e a obra: duas baías, três juntas, o píer da ferrovia, os quatro votos a um de 1897; o quebra-mar, a draga e a pergunta 'de quem era a cidade?'",
+      "mood_pre_v1": [
+        "Mysterious",
+        "Elegant"
+      ],
+      "mood_nota": "no Juneau, o trecho dos votos e das contas ia com uma inquieta (H-thirteen, Restless), e o Lucas escolheu a reserva misteriosa (Lightless Current, floating e mysterious, 104 BPM). Aqui a preferida segue essa escolha, lida como preferência pelo misterioso (palpite: ele não disse o motivo): Mysterious com andamento constante; a inquieta fica como reserva (linha 8).",
+      "linhas": {
+        "preferida": 2,
+        "reservas": [
+          7,
+          8
+        ]
+      },
+      "precisa_cobrir_s": 212.233
+    },
+    {
+      "trecho": 3,
+      "partes": [
+        "p5",
+        "p6"
+      ],
+      "inicio_s": 457.733,
+      "fim_s": 651.92,
+      "cenas": "s35 a s47, e o começo da s48",
+      "assunto": "A faixa: a lei que exigia tocar, a geometria, o voto de 1906 (213 a 203), a medida no mapa, o aperto de mão; 1909: os três votos e a primeira costa de Los Angeles",
+      "mood_pre_v1": [
+        "Floating",
+        "Dreamy"
+      ],
+      "mood_nota": "o ar de mapa do canal, como o trecho da estrada do Juneau (Wilderness, floating e mysterious); aqui com o Dreamy no lugar do Mysterious, porque o capítulo resolve o enigma em vez de abrir outro (intenção; se soa mais leve, só ouvindo). A reserva 9 fica com o Mysterious.",
+      "linhas": {
+        "preferida": 3,
+        "reservas": [
+          9,
+          10
+        ]
+      },
+      "precisa_cobrir_s": 194.387
+    },
+    {
+      "trecho": 4,
+      "partes": [
+        "p7",
+        "tela final"
+      ],
+      "inicio_s": 651.92,
+      "fim_s": 752.55,
+      "cenas": "o resto da s48 até a s56 (a s56 é a tela final, 20 s sem voz)",
+      "assunto": "O contorno de hoje: a faixa ainda no mapa, o canal de 53 pés, os 10,3 milhões de TEU e a resposta; depois, os 20 s da tela final",
+      "mood_pre_v1": [
+        "Hopeful",
+        "Peaceful"
+      ],
+      "mood_nota": "o fecho de entendimento, não de vitória, como o do Juneau (o Lucas escolheu 'fading into blue', hopeful e peaceful, 66 BPM); fora o Epic e o Euphoric.",
+      "linhas": {
+        "preferida": 4,
+        "reservas": [
+          11,
+          12
+        ]
+      },
+      "precisa_cobrir_s": 100.83
+    }
+  ],
+  "opcao_com_menos_troca": "Três faixas em vez de quatro: juntar os trechos 3 e 4 (de 457,733 s ao fim, 294,817 s; precisa cobrir 295,017 s) numa faixa só. A linha 3 (Turn Again, 5:39) cobre esse trecho inteiro, com 44 s de sobra (338,512 − 294,817 = 43,695 s); nenhuma outra linha cobre. O fecho fica no clima da faixa (dreamy e floating), sem a música esperançosa. As linhas não mudam: só o plano.",
+  "plano_proposto": {
+    "_leia": "O _trilha-plano.json que o Claude central monta à mão depois do download, no formato da pré-v1 ({ato, faixa, relogio, inSec, outSec, entrada, notaMix}), como o do Juneau (out/juneau/_trilha-plano.json). Entre capítulos, a pré-v1 emenda sem sobrepor (um trecho acaba onde o outro começa, cada um com 1 s de subida e 1 s de descida no XML). A 'entrada' \"fade 0.5s\" é o texto que o motor escreve; o XML só olha se ela tem 'fade' e faz a subida em 1 s. Todos os trechos vão no mesmo par de faixas A2/A3, com in=0: cada música toca do começo dela. 'faixa' é null até o arquivo existir: a linha diz qual. O relógio é LIMPO (o vídeo 2 não tem _cortes.json). Entre trechos não há cruzamento: a que sai desce de −35 a −96 dB no último 1 s do trecho dela (foStart = t1 − 1,0), e a que entra sobe de −96 a −35 no 1º s (fadeIn = min(1, L)), em pontosDeVolume (C:/projetos/regie-v1/src/finalize/xml-premiere.mjs:2164-2194); a música cai por um instante sob a fala. A música vai no par A2 (canal 1, esquerdo) + A3 (canal 2, direito), e o XML não diz o pan: se no Juneau ela tocar no centro, o acerto do LEIA-ME do pacote do Juneau (A2 todo à esquerda, A3 todo à direita) vale aqui. O VOLUME, conferido no código da pré-v1 (só leitura): o XML só regula o volume da música. O nível é DB_NARR = +arg('--db-narracao', MARCA.db_cama) (xml-premiere.mjs:2067), e ele entra só nos clipes de trilha (clipeTrilha, o filtro audiolevels, :2717-2741, e os pontos de pontosDeVolume); o nome '--db-narracao' engana: é o nível da música por baixo da narração, não o da narração. A A1 (a voz, do _master.mp4) sai sem filtro de volume nenhum (pedacoA1, :2693-2699): o XML não tem como subir a voz, e isso só se faz no Premiere. O finalizar.mjs só repassa a flag ao gerador (PASSA_VALOR, src/ferramentas/finalizar.mjs:68). Sem marca/finalizacao.json (não existe no canal), o padrão é o db_cama −35 de src/finalize/finalizacao-padrao.json (:47), o mesmo do Juneau. Mas a narração do vídeo 2 tem −19,6 LUFS contra −14,1 do Juneau (out/los-angeles/_pesquisa/narracao-conferencia.md; medido de novo pelo cético do texto): no mesmo −35, a música fica uns 5,5 dB mais perto da voz que no Juneau, e o vídeo toca uns 5,5 dB mais baixo no YouTube (que abaixa o que passa de −14 LUFS, mas não sobe o que fica abaixo). Por isso o −35 das notaMix é PROVISÓRIO: o volume vai ao Lucas como pergunta à parte, no chat, com as opções, e o \"sim\" das músicas não o decide. Se a resposta mexer no nível da música, o caminho é finalizar.mjs los-angeles --db-narracao <N> (sem criar marca/finalizacao.json, que valeria para o canal inteiro); se mexer na voz, é no Premiere. Em qualquer caso, o pico final só a exportação mede (o _master.mp4 de LA tem pico de −6,7 dBTP, pelo cético do texto).",
+    "trechos": [
+      {
+        "ato": "trecho 1 · gancho + p1 + p2",
+        "linha": 1,
+        "faixa": null,
+        "relogio": "LIMPO",
+        "inSec": 0,
+        "outSec": 245.7,
+        "entrada": "fade 0.5s",
+        "notaMix": "cama amena (−35dB sob narração); mood=Mysterious; \"Ultra\" 70bpm"
+      },
+      {
+        "ato": "trecho 2 · p3 + p4",
+        "linha": 2,
+        "faixa": null,
+        "relogio": "LIMPO",
+        "inSec": 245.7,
+        "outSec": 457.733,
+        "entrada": "fade 0.5s",
+        "notaMix": "cama amena (−35dB sob narração); mood=Mysterious; \"Sunshine Rain\" 104bpm"
+      },
+      {
+        "ato": "trecho 3 · p5 + p6",
+        "linha": 3,
+        "faixa": null,
+        "relogio": "LIMPO",
+        "inSec": 457.733,
+        "outSec": 651.92,
+        "entrada": "fade 0.5s",
+        "notaMix": "cama amena (−35dB sob narração); mood=Floating; \"Turn Again\" 82bpm"
+      },
+      {
+        "ato": "trecho 4 · p7 + tela final",
+        "linha": 4,
+        "faixa": null,
+        "relogio": "LIMPO",
+        "inSec": 651.92,
+        "outSec": 752.55,
+        "entrada": "fade 0.5s",
+        "notaMix": "cama amena (−35dB sob narração); mood=Hopeful; \"Happiness\" 68bpm"
+      }
+    ]
+  },
+  "edicao_de_duracao": "Nenhuma preferida precisa dela: todas cobrem o trecho. A do fecho (linha 4, 3:48) é cortada no fim do vídeo, com a descida de 1 s do XML, e não termina no acorde final dela. Para terminar no acorde, seria a edição de duração do Epidemic (EditRecording), que é outro \"sim\" do Lucas e que a ferramenta do canal ainda não faz.",
+  "pendencias_antes_do_baixar": [
+    "A regra de mood da trilha na marca e a linha do Epidemic na tabela de Content ID do marca/midia.md §5 ainda não existem (CLAUDE.md, 'A trilha: Epidemic Sound', 'Ainda não feito'; a proposta está em out/juneau/_tmp/trilha/epidemic-licenca.md §6). Não seguram o download: a licença foi lida em 05/10/2026, e o Juneau já baixou pela mesma porta (out/juneau/_tmp/trilha/baixar-2026-10-06.log).",
+    "O XML do Juneau com a trilha espera a revisão do Lucas no Premiere: se ele ajustar as trocas lá, o plano deste vídeo segue o ajuste; se ajustar o volume, o ajuste só vale aqui depois de a voz ficar no nível da do Juneau (a voz do vídeo 2 está uns 5,5 dB mais baixa; plano_proposto._leia).",
+    "O volume vai ao Lucas como pergunta à parte, no chat, com as opções (cetico/texto.json, problema 1). Não segura o download das músicas; segura o XML com trilha (o nível da música e o que se faz com a voz no Premiere).",
+    "Os lembretes de licença, ditos ao Lucas no .md ('Bom saber'): o vídeo vai ao ar com a assinatura ativa e o canal conectado (out/juneau/_tmp/trilha/epidemic-licenca.md §2: vale a data da publicação, não a do download); e a leitura de 'documentário' e tema político feita no Juneau (§9, 'Seguir: é vídeo de YouTube') se estende a este vídeo, que também conta votações (1897, 1906, 1909): contar votações não é apoiar partido nem candidato. Se ele disser que não vale, para."
+  ],
+  "buscas": [
+    "1. buscar \"documentary underscore\" --mood=mysterious,dreamy --instrumental --dur-min=250 --dur-max=480 --n=20 (nenhuma linha: no topo, marcas de suspense, drama, crime ou meditação)",
+    "2. buscar --mood=mysterious,dreamy --genero=ambient --instrumental --dur-min=250 --dur-max=420 --bpm=60-100 --ordem=popularidade --n=20",
+    "3. buscar --mood=restless --genero=ambient --instrumental --dur-min=215 --dur-max=400 --ordem=popularidade --n=20",
+    "4. buscar --mood=restless,mysterious --genero=downtempo --instrumental --dur-min=215 --dur-max=400 --bpm=75-110 --ordem=popularidade --n=20 (descartada: lounge, house e trip hop)",
+    "5. buscar --mood=floating --genero=ambient --instrumental --dur-min=200 --dur-max=360 --bpm=60-110 --ordem=popularidade --n=20",
+    "6. buscar --mood=hopeful --genero=ambient --instrumental --dur-min=105 --dur-max=240 --ordem=popularidade --n=25",
+    "7. buscar --mood=mysterious --genero=ambient --instrumental --dur-min=250 --dur-max=360 --ordem=popularidade --n=25",
+    "8. parecidas e41e8c40-a826-4cbb-bed0-932d8374f12f (Ultra) --instrumental --dur-min=247 --n=25 (nenhuma melhor)",
+    "9. parecidas 6db6a98f-1748-4f33-91ce-fccb4039acb5 (My Old Trawler) --instrumental --dur-min=213 --n=25 (nenhuma melhor)",
+    "10. buscar \"documentary\" --mood=restless --instrumental --dur-min=213 --dur-max=400 --bpm=80-115 --n=25 (descartada: pop, folk, funk e synthwave)",
+    "11. parecidas e3a4c2d7-8452-4169-87e1-fb58bbb3da1a (Just Before It Breaks) --instrumental --dur-min=195 --n=25 (as 5 que passaram são marcadas dark: ela saiu de preferida para reserva)",
+    "12. parecidas 9126e406-ef8c-4ee5-8822-7a4fe89dc352 (Solarflares, candidata do trecho 3) --instrumental --dur-min=195 --n=25 (várias com suspense: Solarflares saiu)",
+    "13. buscar \"maps exploration\" --mood=floating,dreamy --genero=ambient --instrumental --dur-min=200 --dur-max=360 --bpm=70-105 --n=25",
+    "14. parecidas e22e4be7-8543-4eeb-bb62-8e80d0df2a2a (Turn Again) --instrumental --dur-min=195 --n=25 (nenhuma melhor)",
+    "15. parecidas 6c30fdde-482f-4c40-abae-e3324c8c0762 (Soul Temple) --instrumental --dur-min=101 --n=25 (vizinhança calma, 8 de 23 de meditação: Soul Temple ficou de reserva)",
+    "16. buscar --mood=mysterious --genero=ambient --instrumental --dur-min=213 --dur-max=400 --bpm=85-115 --ordem=popularidade --n=25",
+    "17. parecidas 1c7b4766-2bb5-3e63-8c62-7f635e180be2 (Sunshine Rain) --instrumental --dur-min=213 --n=25 (vizinhança mista, 3 de 7 marcadas dark: menos pesada que a da busca 11)"
+  ],
+  "linhas": [
+    {
+      "n": 1,
+      "id": "e41e8c40-a826-4cbb-bed0-932d8374f12f",
+      "titulo": "Ultra",
+      "artista": "Elin Piel",
+      "duracao_s": 287,
+      "bpm": 70,
+      "moods": [
+        "mysterious",
+        "peaceful"
+      ],
+      "generos": [
+        "ambient",
+        "drone"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "BASS",
+        "MELODY",
+        "INSTRUMENTS"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/e41e8c40-a826-4cbb-bed0-932d8374f12f/",
+      "cena": "trecho 1 (s01–s16)",
+      "trecho": 1,
+      "papel": "preferida",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Pelas marcas do Epidemic: ambient e drone, mysterious e peaceful, 70 BPM, sem stem de bateria e sem marca de uso. A ideia é a curiosidade calma da abertura: o contorno, a pergunta e a costa que não tinha porto. Tem marcas parecidas com as da música que você escolheu para abrir o Juneau (Drone of Thoughts: ambient e drone, misteriosa, 73 BPM; os outros moods diferem, dreamy e relaxing lá, peaceful aqui), noutra faixa e de outro artista; se soa parecida, só ouvindo. Tem stem de melodia: na página, ouça se ela chama atenção; como fica sob a voz, só no Premiere. Cobre o trecho (4:06) com 41 s de sobra.",
+      "achada_em": "buscas 2 e 7",
+      "aprovado": true
+    },
+    {
+      "n": 2,
+      "id": "1c7b4766-2bb5-3e63-8c62-7f635e180be2",
+      "titulo": "Sunshine Rain",
+      "artista": "Brendon Moeller",
+      "duracao_s": 243,
+      "bpm": 104,
+      "moods": [
+        "elegant",
+        "mysterious"
+      ],
+      "generos": [
+        "ambient"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "MELODY",
+        "BASS",
+        "INSTRUMENTS"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/1c7b4766-2bb5-3e63-8c62-7f635e180be2/",
+      "cena": "trecho 2 (s17–s34)",
+      "trecho": 2,
+      "papel": "preferida",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Pelas marcas do Epidemic: ambient, elegant e mysterious, 104 BPM, sem stem de bateria e sem marca de uso. A ideia é um andamento constante, sem drama, para as duas baías, as juntas, os votos e a obra do quebra-mar. No Juneau, você trocou a música inquieta deste lugar pela misteriosa de 104 BPM (Lightless Current): esta tem o mesmo andamento e também é misteriosa, sem bateria. Na busca 16 (mysterious, ambient, sem voz, 85 a 115 BPM, 3:33 a 6:40, por popularidade) é a 1ª, tirando a do Juneau e uma de meditação. Cobre o trecho (3:32) com 31 s de sobra.",
+      "achada_em": "busca 16 (e parecidas, busca 17)",
+      "aprovado": true
+    },
+    {
+      "n": 3,
+      "id": "e22e4be7-8543-4eeb-bb62-8e80d0df2a2a",
+      "titulo": "Turn Again",
+      "artista": "By Lotus",
+      "duracao_s": 339,
+      "bpm": 82,
+      "moods": [
+        "dreamy",
+        "floating"
+      ],
+      "generos": [
+        "ambient"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "MELODY",
+        "INSTRUMENTS",
+        "BASS"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/e22e4be7-8543-4eeb-bb62-8e80d0df2a2a/",
+      "cena": "trecho 3 (s35–s48)",
+      "trecho": 3,
+      "papel": "preferida",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Pelas marcas do Epidemic: ambient, dreamy e floating, 82 BPM, sem stem de bateria e sem marca de uso. A ideia é o ar de mapa para a faixa sendo desenhada: a lei, a geometria, o voto de 1906 e a costa de 1909. Na busca 5 (floating, ambient, sem voz, 60 a 110 BPM, 3:20 a 6:00, por popularidade) é a 4ª; aparece também na busca 2. Cobre o trecho (3:14) com 2:24 de sobra, e sozinha cobre também o fecho, se você quiser 3 músicas (a opção no fim da lista).",
+      "achada_em": "buscas 2 e 5 (e parecidas, busca 14)",
+      "aprovado": false
+    },
+    {
+      "n": 4,
+      "id": "cc524224-ea17-4b27-a237-abb9c9df386a",
+      "titulo": "Happiness",
+      "artista": "Shuta Yasukochi",
+      "duracao_s": 228,
+      "bpm": 68,
+      "moods": [
+        "dreamy",
+        "hopeful",
+        "laid back",
+        "peaceful",
+        "relaxing"
+      ],
+      "generos": [
+        "ambient",
+        "drone"
+      ],
+      "uso": [
+        "beautiful"
+      ],
+      "voz": "sem voz",
+      "stems": [
+        "MELODY",
+        "BASS",
+        "INSTRUMENTS"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/cc524224-ea17-4b27-a237-abb9c9df386a/",
+      "cena": "trecho 4 (s48–s56)",
+      "trecho": 4,
+      "papel": "preferida",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Pelas marcas do Epidemic: ambient e drone, dreamy, hopeful, laid back, peaceful e relaxing, 68 BPM, sem stem de bateria; a marca de uso é 'beautiful'. A ideia é a calma com um pouco de luz para o contorno de hoje e o fecho. É do mesmo artista de 'fading into blue', a que você escolheu para fechar o Juneau, mas é outra música. Na busca 6 (hopeful, ambient, sem voz, 1:45 a 4:00, por popularidade) é a 1ª. Cobre o trecho (1:41) com sobra: toca só o começo dela, cortada no fim do vídeo com a descida de 1 s.",
+      "achada_em": "busca 6",
+      "aprovado": true
+    },
+    {
+      "n": 5,
+      "id": "e1fc7e7a-127e-4027-a1ed-df6af883db59",
+      "titulo": "Ostara",
+      "artista": "Broad Sky",
+      "duracao_s": 292,
+      "bpm": 33,
+      "moods": [
+        "floating",
+        "mysterious"
+      ],
+      "generos": [
+        "ambient"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "INSTRUMENTS",
+        "MELODY",
+        "BASS"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/e1fc7e7a-127e-4027-a1ed-df6af883db59/",
+      "cena": "trecho 1 (s01–s16)",
+      "trecho": 1,
+      "papel": "reserva",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Reserva da abertura, mais parada que a preferida: ambient, floating e mysterious, 33 BPM, sem stem de bateria. Cobre com 46 s de sobra.",
+      "achada_em": "busca 7",
+      "aprovado": false
+    },
+    {
+      "n": 6,
+      "id": "0b95dae3-11be-3a76-9017-3d7c200741b2",
+      "titulo": "Pillars",
+      "artista": "Hushed",
+      "duracao_s": 266,
+      "bpm": 90,
+      "moods": [
+        "mysterious",
+        "peaceful"
+      ],
+      "generos": [
+        "ambient",
+        "post-rock"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "BASS",
+        "INSTRUMENTS",
+        "MELODY",
+        "DRUMS"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/0b95dae3-11be-3a76-9017-3d7c200741b2/",
+      "cena": "trecho 1 (s01–s16)",
+      "trecho": 1,
+      "papel": "reserva",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Reserva da abertura, com mais pulso: mysterious e peaceful como a preferida, 90 BPM, com stem de bateria. O Epidemic a põe também em post-rock, gênero que costuma crescer: ouvir se ela não sobe demais. Cobre com 20 s de sobra.",
+      "achada_em": "busca 16",
+      "aprovado": false
+    },
+    {
+      "n": 7,
+      "id": "e3a4c2d7-8452-4169-87e1-fb58bbb3da1a",
+      "titulo": "Just Before It Breaks",
+      "artista": "Luba Hilman",
+      "duracao_s": 224,
+      "bpm": 90,
+      "moods": [
+        "floating",
+        "mysterious"
+      ],
+      "generos": [
+        "ambient"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "BASS",
+        "INSTRUMENTS",
+        "DRUMS",
+        "MELODY"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/e3a4c2d7-8452-4169-87e1-fb58bbb3da1a/",
+      "cena": "trecho 2 (s17–s34)",
+      "trecho": 2,
+      "papel": "reserva",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Reserva das juntas e da obra: floating e mysterious (as marcas da Lightless Current do Juneau), 90 BPM, com stem de bateria. As 5 parecidas que o Epidemic deu para ela e que passaram no filtro (busca 11: sem voz, 3:15 ou mais) são todas marcadas dark; 3 delas também suspense, e uma horror; por isso ela não é a preferida: ouvir se ela não pesa. Cobre com 11 s de sobra.",
+      "achada_em": "buscas 5, 13 e 16 (e parecidas, busca 11)",
+      "aprovado": false
+    },
+    {
+      "n": 8,
+      "id": "6db6a98f-1748-4f33-91ce-fccb4039acb5",
+      "titulo": "My Old Trawler",
+      "artista": "By Lotus",
+      "duracao_s": 279,
+      "bpm": 90,
+      "moods": [
+        "floating",
+        "restless"
+      ],
+      "generos": [
+        "ambient"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "MELODY",
+        "INSTRUMENTS",
+        "DRUMS",
+        "BASS"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/6db6a98f-1748-4f33-91ce-fccb4039acb5/",
+      "cena": "trecho 2 (s17–s34)",
+      "trecho": 2,
+      "papel": "reserva",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Reserva das juntas e da obra, a inquieta: floating e restless, 90 BPM, com stem de bateria, sem marca de uso. Tem os moods da H-thirteen (floating e restless), a preferida do Juneau que você trocou, e é do mesmo artista (By Lotus), mas com stem de bateria e 90 BPM contra 100 (a H-thirteen é ambient e drone, sem stem de bateria). Cobre com 1:07 de sobra.",
+      "achada_em": "busca 3 (e parecidas, busca 9)",
+      "aprovado": false
+    },
+    {
+      "n": 9,
+      "id": "4128106e-5bdc-4c72-be92-7d3d4c7c3370",
+      "titulo": "Starry Dwelling",
+      "artista": "Jobii",
+      "duracao_s": 232,
+      "bpm": 94,
+      "moods": [
+        "floating",
+        "mysterious"
+      ],
+      "generos": [
+        "ambient"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "MELODY",
+        "DRUMS",
+        "INSTRUMENTS",
+        "BASS"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/4128106e-5bdc-4c72-be92-7d3d4c7c3370/",
+      "cena": "trecho 3 (s35–s48)",
+      "trecho": 3,
+      "papel": "reserva",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Reserva da faixa, com mais mistério: floating e mysterious, as marcas da Wilderness, a música do mapa do Juneau, 94 BPM, com stem de bateria. Cobre com 37 s de sobra.",
+      "achada_em": "busca 16",
+      "aprovado": false
+    },
+    {
+      "n": 10,
+      "id": "0636a463-8985-48a0-8b35-a09a49743c0d",
+      "titulo": "Sand Mandala",
+      "artista": "Joseph Beg",
+      "duracao_s": 241,
+      "bpm": 90,
+      "moods": [
+        "dreamy",
+        "floating"
+      ],
+      "generos": [
+        "ambient"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "INSTRUMENTS",
+        "MELODY",
+        "DRUMS",
+        "BASS"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/0636a463-8985-48a0-8b35-a09a49743c0d/",
+      "cena": "trecho 3 (s35–s48)",
+      "trecho": 3,
+      "papel": "reserva",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Reserva da faixa, dreamy e floating como a preferida, com mais pulso: 90 BPM e stem de bateria. Cobre com 47 s de sobra.",
+      "achada_em": "buscas 5 e 13",
+      "aprovado": true
+    },
+    {
+      "n": 11,
+      "id": "6c30fdde-482f-4c40-abae-e3324c8c0762",
+      "titulo": "Soul Temple",
+      "artista": "Christoffer Moe Ditlevsen",
+      "duracao_s": 223,
+      "bpm": 70,
+      "moods": [
+        "dreamy",
+        "hopeful"
+      ],
+      "generos": [
+        "ambient",
+        "drone"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "BASS",
+        "INSTRUMENTS",
+        "DRUMS",
+        "MELODY"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/6c30fdde-482f-4c40-abae-e3324c8c0762/",
+      "cena": "trecho 4 (s48–s56)",
+      "trecho": 4,
+      "papel": "reserva",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Reserva do fecho: ambient e drone, dreamy e hopeful, 70 BPM, com stem de bateria. Das 23 parecidas que o Epidemic deu para ela (busca 15), 8 são marcadas como música de meditação e as outras são calmas (peaceful, relaxing, dreamy): ouvir se ela não soa como música de relaxamento. Cobre com sobra.",
+      "achada_em": "busca 6 (e parecidas, busca 15)",
+      "aprovado": false
+    },
+    {
+      "n": 12,
+      "id": "d887a660-e2d8-3846-be44-5f169b820a40",
+      "titulo": "The Last Hello",
+      "artista": "Frank Jonsson",
+      "duracao_s": 177,
+      "bpm": 121,
+      "moods": [
+        "hopeful",
+        "laid back"
+      ],
+      "generos": [
+        "ambient"
+      ],
+      "uso": [],
+      "voz": "sem voz",
+      "stems": [
+        "BASS",
+        "DRUMS",
+        "MELODY",
+        "INSTRUMENTS"
+      ],
+      "url": "https://www.epidemicsound.com/music/tracks/d887a660-e2d8-3846-be44-5f169b820a40/",
+      "cena": "trecho 4 (s48–s56)",
+      "trecho": 4,
+      "papel": "reserva",
+      "formato": "MP3",
+      "stem": "FULL",
+      "porque": "Reserva do fecho, com mais movimento: hopeful e laid back, 121 BPM, com stem de bateria, sem marca de uso. Cobre com sobra.",
+      "achada_em": "busca 6",
+      "aprovado": false
+    }
+  ],
+  "assinatura_conferida": "545da4f25b7f: lista --conferir às 13:06 de 08/10/2026 (Brasília), saída 0 (título, artista, duração, voz e stem das 12 linhas batem com o servidor), depois do conserto dos céticos. É a assinatura que vai ao Lucas. A anterior, 6a2d163cdaad (lista --conferir às 12:45), não vale mais: o \"porque\" das linhas 1, 7 e 8 mudou, e só ele (com os três textos antigos no lugar, a conta da assinatura volta a dar 6a2d163cdaad)."
+}
