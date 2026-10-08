@@ -519,6 +519,8 @@ leitura). Onde ela diverge desta lista, vale esta:
   liberado"): o contador se anota antes e depois de cada render de mapa. Em 01/10/2026 o Lucas liberou as outras
   cenas sem esperar o custo da primeira ("pode seguir o uso do maptiler, podemos fechar o custo outra hora"): a
   conta vai a ele quando o painel a mostrar.
+  **No vídeo 2 (Los Angeles), o gasto também está liberado, sem relevo 3D** (Lucas, 07/10/2026: "Sim, como no Juneau
+  (Recomendado)"; identidade §6): as 24 cenas de mapa, com o contador em `out/los-angeles/_pesquisa/maptiler-gasto.md`.
 
 **Os scripts do canal** rodam de dentro do canal, sempre com o alvo que o ofício do agente dá. Sem alvo,
 alguns varrem todos os projetos de `out/`. Na maioria, o alvo é o `<proj>` (`node scripts/<portão>.mjs <proj>`);

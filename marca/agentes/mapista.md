@@ -66,7 +66,11 @@ do **primeiro** quadro, render ou sonda de mapa do vídeo, pare e devolva ao Cla
 do painel da MapTiler antes e depois dessa primeira cena, e o custo real vai ao Lucas antes das outras. Se o
 custo projetado for muito maior que o do plano, o render para até a resposta dele.
 
-Nos próximos vídeos, o gasto e o relevo pedem um ok próprio (DECISÃO DO LUCAS PENDENTE). Até ele, antes do
+**No vídeo 2 (Los Angeles), o gasto está liberado, sem relevo** (Lucas, 07/10/2026; identidade.md §6, "O gasto
+do vídeo 2 (Los Angeles), liberado"): as 24 cenas de mapa, sem esperar o custo da primeira; o contador se anota a cada render
+em `out/los-angeles/_pesquisa/maptiler-gasto.md`, e relevo 3D pede um ok novo.
+
+Do vídeo 3 em diante, o gasto e o relevo pedem um ok próprio (DECISÃO DO LUCAS PENDENTE). Até ele, antes do
 primeiro quadro, render ou sonda, pare e devolva ao Claude central, que pergunta ao Lucas:
 - que cenas;
 - quantos segundos;

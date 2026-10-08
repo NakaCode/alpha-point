@@ -833,6 +833,18 @@ texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para tod
       do Juneau se renderizam sem esperar o custo da primeira. O contador continua anotado a cada render
       (`out/juneau/_pesquisa/maptiler-gasto.md`), e a conta vai a ele quando o painel a mostrar.
     - Os próximos vídeos pedem um ok próprio.
+  - **O gasto do vídeo 2 (Los Angeles), liberado** (Lucas, 07/10/2026, 21:0x de Brasília). A pergunta: "O vídeo 2 tem 24
+    cenas de mapa, uns 7 min e 40 s de mapa, todas planas (sem relevo 3D). Cada render e cada conferência de cena de mapa
+    pede pedaços de satélite à MapTiler, e o custo exato por cena nunca foi fechado no painel (no Juneau ficou para
+    depois). Posso seguir com esse gasto?" A resposta: "Sim, como no Juneau (Recomendado)". A opção dizia: "Sigo com as
+    24 cenas sem esperar. Anoto o contador antes e depois de cada render, e a conta vai a você quando o painel mostrar.
+    Sem relevo 3D."
+    - Cobre as 24 cenas de mapa do vídeo 2 (s01, s03, s05, s07, s10, s12, s14, s17, s19, s21, s23, s26, s29, s31, s33,
+      s37, s40, s42, s44, s46, s48, s49, s53 e s55), os renders, as provas e os portões delas. **Sem relevo**
+      (`terrain-rgb-v2`, câmera 3D): relevo neste vídeo pede um ok novo.
+    - O contador se anota a cada render e a cada rodada de portão com a pré-carga, em
+      `out/los-angeles/_pesquisa/maptiler-gasto.md`, e a conta vai ao Lucas quando o painel a mostrar.
+    - O vídeo 3 em diante pede um ok próprio.
 
 Qualquer outra base (Mapbox, Esri) só entra **depois** de a licença ser lida e registrada aqui.
 
