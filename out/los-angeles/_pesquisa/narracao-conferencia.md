@@ -80,3 +80,15 @@ recibos (`characterCost` de cada `out/los-angeles/_narracao/<chave>.json`).
   - **Quem decide é o ouvido** (a repetição é o que o Whisper erra; CLAUDE.md, ingest, "Limites do script"):
     `out/los-angeles/_tmp/escuta/escuta-trecho1-can.mp3` (7,2 s, de 13,5 a 20,7 s da `narracao.wav` `7c7d971a27e9`), mandado ao Lucas
     junto da `escuta-r3a.mp3`. Se ele ouvir "can can", o trecho 1 se refaz (uns 49 créditos), e o relógio e o espelho andam com ele.
+
+- **A escuta do Lucas, 08/10/2026, 12:3x** (as duas, mandadas de novo no chat às 12:3x): "As escutas estão corretas, apenas 1 "can"".
+  A `escuta-r3a.mp3` passou, e o trecho 1 diz "can" uma vez só: nada se refaz, e o relógio (`words.json` `90f3e24a…`) fica. O master
+  sai desta `narracao.wav` (`7c7d971a27e9`).
+- **O master, 08/10/2026, 12:42:** `out/juneau/_pesquisa/gerar-master.mjs los-angeles` (saída 0): `out/los-angeles/_media/_master.mp4`, preto
+  3840×2160 a 30 fps, 752,55 s, carimbo `_master.mp4.de-narracao` com a narração `7c7d971a27e9`.
+- **O volume, achado no master (para a mixagem, não para a narração):** a `narracao.wav` do vídeo 2 tem −19,6 LUFS integrados
+  (pico verdadeiro −3,6 dBTP, LRA 2,2), contra −14,1 LUFS (pico −1,4) da do Juneau. O eleven_v4 entrega uns 5,5 dB abaixo do v3, e o
+  `tratar-narracao.py` não normaliza (o motor também não). O YouTube abaixa o que passa de −14, mas não sobe o que fica abaixo: sem
+  ajuste, o vídeo 2 tocaria uns 5,5 dB mais baixo que o Juneau. A `narracao.wav` não muda (o sha amarra o master, o relógio e os
+  aceites do laudo, que valem por áudio): o ganho entra na mixagem (o XML ou a exportação do Premiere), e a escolha vai ao Lucas junto
+  com a da trilha ("transições e trilha com mix").
