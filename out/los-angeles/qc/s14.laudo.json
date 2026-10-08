@@ -5,20 +5,21 @@
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "Sinaliza: de 5,1 s a ~9 s o ponto da guia de 'Wilmington estuary' encosta no algarismo '40' do medidor (medido no quadro de 6,5 s em 4K: ponto a ~10 px do '4'); a guia termina como se apontasse a marca de 40 pés. Os portões medem caixa de texto e passaram, e a pílula do estuário não é mais convocada pela fala depois de 'estuary' (3,62 s).",
-        "Sinaliza: o cartão da fala citada está em 260 px, exatamente o piso (--piso-fala; alvo 280, teto 340, identidade §4.1), com 1990 px de largura e folga à direita; o gate não reprova, mas o alvo da marca é 280. Margens (cartão até x=3630), faixa de crédito e canto livres."
+        "Defeitos da rodada anterior resolvidos (decisões Q9, itens 2 e 3): (1) a pílula 'Wilmington estuary' (rotEst, dx +60) tem a borda esquerda (texto − 40 px) em 236–237 px em 5,0, 7,0 e 9,0 s (era 176–178): ≥ 200 em todo 3,62–9,00 s, por pixel nos quadros 4K; (2) o cartão 'worthy of improvement' (left 1612) tem a borda direita em x 3630 em 22,13–22,20 s (o assentamento), 3628 em 22,27 s, 3617 em 22,33 s e 3601 em repouso (era 3658): ≤ 3640 também na entrada, medido por pixel do cartão. Medidor de margens ✓ (q9-margens-s14-2).",
+        "O medidor (dx 500, dy 28): o '40' fica ~200 px à direita do ponto da guia de 'Wilmington estuary' (sem encostar) e o topo da escala ('60') fica a y ≈ 200 (limite 160), em 5,5–16,5 s. Resto: cotas e legendas em x ≤ 3640, nada abaixo de 1880 fora o crédito (só a linha da MapTiler), canto inferior direito livre; o quadro da legenda 'definition of the 1897 federal board' e a cota 'DEEP-WATER: AT LEAST 30 FT' ficam a ~16 px uma da outra (12,5–16,5 s), sem colisão.",
+        "Sinaliza (a mesma da rodada anterior): o cartão da fala segue em 260 px, no piso (alvo 280; identidade §4.1)."
       ],
       "correcoes": [
-        "Tirar a pílula 'Wilmington estuary' quando o medidor chega (por volta de 4,8 s, antes de 5,1 s; a voz já disse 'estuary' em 3,62 s), ou deslocar o medidor (dx) para longe do ponto da guia (≥ 80 px de folga). Subir a fala do cartão de 260 para o alvo de 280 px (--fs-fala), re-checando que o cartão continua dentro de x ≤ 3640."
+        "Opcional: cartão da fala a 280 px (alvo da marca), com a largura do cartão sem passar de x 3640."
       ]
     },
     {
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "Medidor, marcas de 18/20 e 30 pés e hachura de 20–30 são o traço de engenheiro sobre o satélite, sem afirmar feição; a linha de sondagem é gesto declarado (não traçado). O cartão cita 'worthy of improvement' com 'Mendell, 1886' (literal da p. 2123, textos-tela)."
+        "Medidor, marcas de 18/20 e 30 pés e hachura de 20–30 são o traço de engenheiro sobre o satélite, sem afirmar feição; a base do medidor é o ponto da barra corrigido (−118,27164; 33,72447, o mesmo deslocamento das folhas USGS de s07 e s12, decisões Q9). A linha de sondagem é gesto declarado (não traçado). O cartão cita 'worthy of improvement' com 'Mendell, 1886' (literal da p. 2123, textos-tela)."
       ],
       "correcoes": []
     },
@@ -128,7 +129,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 36,
-    "porque": "Portões lidos em out/los-angeles/_tmp/qc-cena-mapa.txt (24 cenas de mapa, com a pré-carga das chaves; contrato, carga, colisão, tamanho, src-existe, fora-do-quadro e crédito-fantasma medidos com tiles 2xx); til-glifo pelo portao-mapa til (24 candidatos, 0 defeituosos) e contraste do crédito pelo portao-mapa rodape v5 (passou); conferir saiu 0; não os reexecutei (tiles pagos). qc-janela: o 'null' em cena de mapa é a regex lendo CENA.duracao (nota do Claude central); conferi à parte em _tmp/qc-janela-mapas-conferido.txt (a cena bate com a janela do espelho) e o clipe tem dur × 30 quadros. mapa-vivo fora do portão. Clipe 4K de prova (carimbo = sha1 do HTML 08804dc1…, 2160p). Quadros a cada 1 s em 1080p (0–28 s), crop 4K de 6,5 s (guia × medidor), bbox do cartão medida em 30 quadros/s (21,3–22,7 s) e a fala do words.json."
+    "frames": 66,
+    "porque": "Rodada FINAL (Q10), julgamento completo sobre os frames desta geração do HTML (sha1 f7ff647a…). O que mudou: pílula 'Wilmington estuary' com dx +60 (margem), cartão da citação 28 px à esquerda (borda direita ≤ 3640 no assentamento), medidor com dy 28 (topo da escala acima de 160 depois da barra corrigida) e a barra no ponto corrigido. Resolvidos os dois defeitos de margem da rodada anterior. Portões lidos, não reexecutados (tiles pagos): out/los-angeles/_tmp/qc-cena-final.txt e _tmp/art/lote-m1/portoes/q9-* (qc-cena com a pré-carga das chaves, o til-glifo coberto pelo portao-mapa til, o contraste do crédito pelo portao-mapa rodape v5 a 12,0:1, o medidor de margens do Claude central e o conferir da pré-carga saindo 0). Clipe 4K de prova com o carimbo .mp4.de-html = sha1 do HTML de hoje e 2160p; quadros em 1080p a cada 0,5 s (select por número de quadro: o filtro fps do ffmpeg desloca ~0,3 s e foi descartado), quadros finos nos instantes dos defeitos anteriores e margens medidas no próprio clipe 4K, sob a câmera, no pior instante. Rodada FINAL (Q10) das cenas que mudaram depois de aprovadas."
   }
 }

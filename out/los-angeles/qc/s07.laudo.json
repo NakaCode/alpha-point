@@ -1,13 +1,14 @@
 {
   "cena": "s07",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Margens, canto de baixo à direita e faixa de crédito livres; medidor (60 ft) com números a 84 px e a cota 'LESS THAN 2 FT (BEFORE 1871)' sem colidir com 'at low tide' nem com 'sandbar'. A pílula 'Rattlesnake Island' e a legenda 'Terminal Island today' ficam empilhadas com ~32 px de folga (9–13,6 s): legível."
+        "Defeito da rodada anterior resolvido (identidade §4.2, margem de 200 px; roupa §4, sem tolerância, medida na tela, sob a câmera, no pior instante): a pílula 'Wilmington estuary' (rotEst, dx +60) tem a borda esquerda (texto − 40 px de respiro) em 267 px em 9,0 s, 250 em 10,7 s, 246 em 11,5 s e 238 em 12,0 s (era 178): ≥ 200 em todo 7,10–12,00 s, medido por pixel nos quadros 4K. Medidor de margens do Claude central ✓ (q9-margens-s07-2).",
+        "Resto no clipe de hoje: nenhuma outra pílula, cota ou legenda a menos de 200 px das laterais ou de 160 px do topo; faixa abaixo de 1880 só com o crédito (só a linha da MapTiler: a cena não leva 'Source'); canto inferior direito livre; 'Approximate route' (1,28–5,50 s) sem colisão com '2 OR 3 MILES EACH WAY'; 'Rattlesnake Island' e 'Terminal Island today' empilhadas com ~32 px de folga (9,2–13,6 s), legíveis; o medidor, a cota 'LESS THAN 2 FT (BEFORE 1871)' e 'at low tide' sem colisão."
       ],
       "correcoes": []
     },
@@ -15,7 +16,8 @@
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "A linha das barcaças é tracejada e sai do texto da fonte (2 ou 3 milhas), não de figura; 'Wilmington estuary' e 'Rattlesnake Island' só apontam (pílula + guia/ponto da folha do USGS de 1896), sem contorno desenhado; a barra é hachura curta que aponta, o medidor é esquema sobre o satélite, e 'LESS THAN 2 FT (BEFORE 1871)' bate com a voz. O contorno esquemático do estuário e a legenda '1890s outline (schematic)' do textos-tela não foram desenhados (declarado no cabeçalho, devolvido ao Claude central): sem afirmação sem base."
+        "Camadas corrigidas das folhas USGS (decisões Q9, 'as camadas corrigidas'): 'Rattlesnake Island' vem de pontos-historicos-usgs-corrigidos (±50 m; a folha de 1896 errava ~272 m, medidos pela pesquisa-geo em _pesquisa/geo-folhas-usgs-relato.md) e a posição esquemática da barra andou o mesmo deslocamento (+0,00216° lng, +0,001667° lat). Não remedi a correção (é da pesquisa-geo); no clipe, a pílula 'Rattlesnake Island' + 'Terminal Island today' cai junto de Terminal Island e a hachura de 'sandbar' na boca do canal, rente à costa, coerentes com o satélite.",
+        "A linha das barcaças é tracejada e sai do texto da fonte (2 ou 3 milhas), não de figura; 'Wilmington estuary' e 'Rattlesnake Island' só apontam (pílula + guia/ponto), sem contorno desenhado; a barra é hachura curta que aponta, o medidor é esquema sobre o satélite, e 'LESS THAN 2 FT (BEFORE 1871)' bate com a voz. O contorno esquemático do estuário e a legenda '1890s outline (schematic)' do textos-tela não foram desenhados (declarado no cabeçalho): sem afirmação sem base."
       ],
       "correcoes": []
     },
@@ -38,9 +40,9 @@
     },
     {
       "lente": "acessibilidade",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "Sinaliza: lido só o texto, o aviso 'Approximate route' só aparece a partir de 3,65 s (ver fonte), e 'Rattlesnake Island' + 'Terminal Island today' pedem a fala para serem lidos como o mesmo lugar; 'sandbar' + medidor se explicam em 2 s."
+        "Defeito da rodada 1 resolvido: o aviso 'Approximate route' agora entra com a linha (1,28 s), e lido só o texto fica claro que a linha é esquema. 'Rattlesnake Island' + 'Terminal Island today' continuam pedindo a fala para serem lidos como o mesmo lugar; 'sandbar' + medidor se explicam em 2 s."
       ],
       "correcoes": []
     },
@@ -60,14 +62,12 @@
     },
     {
       "lente": "fonte",
-      "nota": 5,
+      "nota": 8,
       "problemas": [
-        "Reprova: 'Approximate route' (identidade §6, 'Rota que nunca foi construída': o aviso 'fica na tela todo o tempo da linha'; roupa §5) entra em 3,65 s (legAprox.entra = 3.65), mas a linha tracejada das barcaças começa a se desenhar em 1,28 s (barcas.desenha [1.28, 2.40]) e já está inteira em 2,4 s: ela fica ~2,4 s no ar (1,28–3,65 s) sem o aviso, mais da metade da vida dela (até ~5,8 s). Medido nos quadros a cada 0,25 s de 1,75 a 6 s. O cabeçalho da cena diz 'todo o tempo da linha'; o que está na tela não diz.",
+        "Defeito da rodada 1 resolvido (identidade §6, 'Rota que nunca foi construída'): 'Approximate route' entra em 1,28 s, junto do início da linha das barcaças (barcas.desenha [1,28; 2,40]); quadros finos: 1,20 s sem nada; 1,30 s o aviso a ~15 % e a linha ainda invisível; 1,40 s o aviso quase inteiro; 1,60 s a linha começa a aparecer. Sai em 5,50 s (fade até 5,80 s) junto da linha, que se apaga de 5,30 a 5,80 s; aos 5,60 s o aviso ainda está inteiro com a linha quase sumida: ≤ 0,2 s, sem consequência.",
         "MapTiler/OSM em todos os quadros; sem crédito de mídia (nenhuma mídia). Sem 'Source' em 'LESS THAN 2 FT': a voz já atribui ('by the Army's own measure')."
       ],
-      "correcoes": [
-        "Entrar o 'Approximate route' junto do início da linha (1,28 s, onde 'cargo went in and out' já a desenha) e mantê-lo até a linha sumir (~5,8 s), preso à própria linha (por exemplo a meio do traço, já que a ponta da ancoragem só chega a 2,4 s). Re-checar a colisão dele com '2 OR 3 MILES EACH WAY' (entra em 3,33 s)."
-      ]
+      "correcoes": []
     },
     {
       "lente": "tema",
@@ -137,7 +137,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 70,
-    "porque": "Portões lidos em out/los-angeles/_tmp/qc-cena-mapa.txt (24 cenas de mapa, com a pré-carga das chaves; contrato, carga, colisão, tamanho, src-existe, fora-do-quadro e crédito-fantasma medidos com tiles 2xx); til-glifo pelo portao-mapa til (24 candidatos, 0 defeituosos) e contraste do crédito pelo portao-mapa rodape v5 (passou); conferir saiu 0; não os reexecutei (tiles pagos). qc-janela: o 'null' em cena de mapa é a regex lendo CENA.duracao (nota do Claude central); conferi à parte em _tmp/qc-janela-mapas-conferido.txt (a cena bate com a janela do espelho) e o clipe tem dur × 30 quadros. mapa-vivo fora do portão. Clipe 4K de prova (carimbo = sha1 do HTML 26a752e5…, 2160p). Quadros a cada 1 s em 1080p (0–20 s), a cada 0,25 s de 1,75 a 6,25 s para a linha e o aviso, e a fala do words.json; regência s07/s08 e textos-tela lidos."
+    "frames": 42,
+    "porque": "Rodada FINAL (Q10), julgamento completo sobre os frames desta geração do HTML (sha1 8b82f0e4…). O que mudou: pílula 'Wilmington estuary' com dx +60 (margem), Rattlesnake Island e a barra nas camadas corrigidas das folhas USGS, leitura do MapLibre por getSource. Resolvido o único defeito da rodada anterior (a pílula a 178 px da borda). Observações de cobertura e camadas (a foto das barcaças, FALTA declarada pela regência) seguem como nas rodadas anteriores. Portões lidos, não reexecutados (tiles pagos): out/los-angeles/_tmp/qc-cena-final.txt e _tmp/art/lote-m1/portoes/q9-* (qc-cena com a pré-carga das chaves, o til-glifo coberto pelo portao-mapa til, o contraste do crédito pelo portao-mapa rodape v5 a 12,0:1, o medidor de margens do Claude central e o conferir da pré-carga saindo 0). Clipe 4K de prova com o carimbo .mp4.de-html = sha1 do HTML de hoje e 2160p; quadros em 1080p a cada 0,5 s (select por número de quadro: o filtro fps do ffmpeg desloca ~0,3 s e foi descartado), quadros finos nos instantes dos defeitos anteriores e margens medidas no próprio clipe 4K, sob a câmera, no pior instante. Rodada FINAL (Q10) das cenas que mudaram depois de aprovadas."
   }
 }

@@ -155,3 +155,36 @@ O medidor mede todo texto, pílula e caixa visível, na tela, sob a câmera, a c
    - sem mapa: s38 (a última linha da folha C e o grifo do "203" na faixa do crédito), s11 ("JULY 1871" 1 px além da margem
      direita) e s47 ("ABOUT 15,000 FT" 3 px dentro da esquerda, "1912" 2 px além da direita).
    Vão aos mapistas e aos editores.
+
+## 08/10/2026, 04:0x — o lote Q10 (a rodada final de s05, s07, s10, s11, s12, s14 e s19)
+
+As sete passaram no qc-visual (`qc/<cena>.laudo.json`, 02:53). O que ele deixou para o Claude central:
+1. **s10, a pílula "1850" em 0,30 s; a voz diz "eighteen fifty" em 2,35 s.** É a regra da s12 (Q3, item 3) e da s38 e s39
+   (Q7, item 2): o número entra na palavra. O `t0` 0 do `textos-tela` não passa por cima dela. Vai ao mapista: `1850` entra em
+   2,35 s, com o bloco ≥ 2,0 s no ar pela conta de Q9.
+2. **s12, "11 FT (1888)" em 20,40 s; a voz diz "eleven" em 21,48 s.** A mesma regra. Pelo critério do complemento: o "(1888)"
+   pode entrar antes, e o "11 FT" entra em 21,48 s no mesmo bloco. Vai ao mapista.
+3. **s05, a emenda do satélite (32,4–33,3 s, perto de San Clemente)** e **s10, "ABOUT 19 MILES" a ~40 % de opacidade até
+   15,07 s**: esperam a revisão de espectador e o cético. O que sobrar vai junto com os itens 1 e 2, num render só por cena.
+
+## 08/10/2026, 12:3x — a retomada nesta conversa
+
+O Lucas, à pergunta "Quer que eu continue o vídeo 2 (Los Angeles) por aqui?": "Continuar aqui (Recomendado)". A outra conversa
+(parada pelo limite às 04:08) fica parada: nunca as duas ao mesmo tempo. O estado da parada está em
+`out/los-angeles/_tmp/retomada-2026-10-08.md`, com a crítica de completude em `_tmp/retomada/retomada-wf_0cb6f7cd-535.output`.
+1. **A ordem.** A revisão de espectador termina primeiro, sobre o HTML de hoje: as folhas dela são das 02:48–02:51, depois do
+   `a0fac66` (02:39). Os consertos que sobrarem vão num lote só, um render de prova por cena de mapa. O `qc-visual` final julga
+   depois o Q11, o Q12 e toda cena mudada (s10 e s12 inclusive), para não julgar duas vezes. É um desvio do A.7 (qc antes do
+   espectador) só nas 14 cenas do Q11 e do Q12: as outras 35 têm laudo do HTML de hoje.
+2. **Os céticos, um por cena,** com um veredito por achado (a chave é a posição do achado, não o rótulo). Cada um recebe também os
+   pontos que o central deixou para a revisão de espectador (Q4 itens 6 e 7, Q5 itens 1 e 5, Q10 item 3), marcados como do central:
+   o revisor é cego por desenho e não os lê. Os 3 vereditos prontos (s53 câmera, s53 sete elementos, s55 caixa tabular) não se
+   repetem.
+3. **Achado de "Source:" faltando** se julga pelo `credito_na_tela` do `conferencia-midia.json`: "nenhum" quer dizer que a marca não
+   pede crédito ali (obra federal em domínio público, identidade §7).
+4. **Conserto que muda texto de tela** passa pelo `redator-de-tela` (`textos-tela.json`) e pelo `verificador-de-fatos` antes do
+   editor ou do mapista.
+5. **As escutas** (`escuta-r3a.mp3` e `escuta-trecho1-can.mp3`) foram mandadas de novo ao Lucas às 12:3x, antes de qualquer render de
+   prova: um "can can" refaz o trecho 1 e muda o relógio.
+6. **O crédito da voz no vídeo 2** não tem o teto de 15.000: o Lucas, 07/10 04:2x, "Você pode usar mais que 15 mil". O gasto continua
+   registrado antes e depois de cada rodada e avisado no `#status`.

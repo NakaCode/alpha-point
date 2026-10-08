@@ -7,10 +7,11 @@
       "lente": "espaco",
       "nota": 7,
       "problemas": [
-        "A borda negativa vaza na página 2: barras claras de ~55–60 px nos dois lados (238–247 contra 180–200 do conteúdo) e uma linha escura na base nos primeiros ~2 s, até o Ken Burns empurrá-la para fora (~4.9–5.1 s). No plano 1 há ~20 px de borda escura à direita por ~0.5 s. Identidade §6: a borda do cartão ou da página escaneada sai do enquadramento. Sinaliza porque não corta palavra."
+        "Defeito de margem consertado (decisões Q9, a medida das margens): 'JULY 1871' com right 220 px tem a borda direita em x 3620 em repouso (probe-elemento: x 2959 + w 661) e 3637 em 3,35 s; no primeiro quadro visível (3,333 s, ~20 % de opacidade, escala 1,03) a caixa chega a ~3641, 1 px de arredondamento da bbox, sem consequência. Antes: 1 px além da margem em 3,5 s. Medidor de margens ✓ (qc-cena-final.txt, medir-margens: s11 ✓).",
+        "Sinaliza (a mesma da rodada anterior, não mudou): a borda negativa do arquivo da 2ª foto (o molhe de c. 1903) aparece nas laterais no começo do plano 2: barras claras de ~55–60 px à esquerda e ~60 px à direita em 3,5 s (luma 235–247 contra 205–209 do conteúdo), ~25 px à esquerda em 5,0 s, e o Ken Burns as empurra para fora até 8,35 s (medido nos quadros do quadro.mjs). Identidade §6: a borda da página escaneada sai do enquadramento. Sinaliza porque não corta palavra. Margens do resto: 'Deadman's Island' a x 200 e y 160, legenda 'plan by Maj. George H. Mendell…' até x 3640."
       ],
       "correcoes": [
-        "Recortar 70+ px a mais em cada lado, ou começar o Ken Burns em 1.03."
+        "Recortar ~70 px a mais em cada lado da foto 2, ou começar o Ken Burns dela em 1,03 (sem mudar o tempo nem a direção)."
       ]
     },
     {
@@ -23,7 +24,7 @@
       "lente": "wordlock",
       "nota": 9,
       "problemas": [
-        "Legenda 'plan by Maj. George H. Mendell…' em 6.40 por 2.0 s, no mínimo da identidade §4.3."
+        "'JULY 1871' entra em 'July' (3,31 s); o '1871' é dito em 'eighteen' (3,79 s), ~0,5 s depois: observação, a data entra inteira na palavra do mês. A legenda 'plan by Maj. George H. Mendell…' em 6,40 s ('Mendell,' 6,43) fica 2,0 s no ar até o corte (identidade §4.3, no limite)."
       ],
       "correcoes": []
     },
@@ -119,6 +120,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 10
+    "frames": 22,
+    "porque": "Rodada FINAL (Q10), julgamento completo sobre os quadros desta geração do HTML (sha1 8adb79df…, cena sem mapa; quadro.mjs com a pré-carga do canal, 3840×2160, 22 quadros de 0 a 8,35 s mais probe-elemento nos instantes da entrada de 'JULY 1871'). O que mudou: 'JULY 1871' recuado 20 px (right 220). Portões lidos: qc-cena (s11 ✓) e o medidor de margens (s11 ✓) em qc-cena-final.txt; sem crédito de rodapé (cena sem crédito: fotos em domínio público). Resolvido o defeito de margem; a sinalização da borda negativa da 2ª foto segue como na rodada anterior."
   }
 }

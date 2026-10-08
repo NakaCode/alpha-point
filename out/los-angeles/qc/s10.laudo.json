@@ -7,7 +7,8 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Margens, canto de baixo à direita e faixa de crédito livres; pílulas a 128 px, 'ABOUT 19 MILES' em pílula de 128 px dentro das margens; a guia da pílula 'Wilmington estuary' termina no ponto sem tocar a régua."
+        "Defeito da rodada anterior resolvido (decisões Q9 item 2 e a medida das margens): a pílula 'Wilmington estuary' (rotEst, dx +60) tem a borda esquerda (texto − 40 px) em 367 px em 11,0 s, 319 em 13,0 s e 249 em 15,5 s (era 179), medido por pixel nos quadros 4K; ≥ 200 em todo 9,39–15,77 s. Medidor de margens ✓ (q9-margens-s10).",
+        "Resto: 'San Pedro Bay' e 'ABOUT 19 MILES' dentro das margens (borda direita ≤ 3330, base ≤ 1810); canto de baixo à direita e faixa de crédito livres (só a linha da MapTiler); a guia da pílula 'Wilmington estuary' termina no ponto sem tocar a régua. O erro do MapLibre fora da ordem da render (leitura da fonte c1850 antes do load) saiu: o render do clipe terminou com exit 0 e os quadros de 0,0 a 2,5 s mostram o contorno e o preenchimento de 1850 como o cabeçalho pede."
       ],
       "correcoes": []
     },
@@ -21,11 +22,14 @@
     },
     {
       "lente": "wordlock",
-      "nota": 8,
+      "nota": 7,
       "problemas": [
-        "'ABOUT 19 MILES' em 'nineteen' (5,5 s); 'San Pedro Bay' ~0,25 s antes de 'bay' (7,07); 'Wilmington estuary' em 8,9 s ('shallow' 9,07); régua esmaece em 'distance' (11,8 s); água acesa em 'water' (13,4 s). Observação: a pílula '1850' fica no ar de 0 a 2,3 s antes de a voz dizer 'eighteen fifty' (2,35 s); é o t0 0 prescrito no textos-tela e serve de orientação do quadrado reaparecido."
+        "'ABOUT 19 MILES' em 'nineteen' (5,47 s); 'San Pedro Bay' ~0,25 s antes de 'bay' (7,07); 'Wilmington estuary' em 9,39 s ('shallow' 9,07, 'estuary' 9,39); a régua e a cota esmaecem em 'distance' (11,79 s); a água do porto acende em 'water' (13,38 s).",
+        "Sinaliza (para o Claude central decidir): a pílula '1850' entra em 0,30 s (rot1850.entra) e a voz diz 'eighteen fifty' em 2,35 s: o número fica ~2,0 s antes da voz (quadros de 0,5 a 2,0 s com '1850' e o quadrado só em contorno). É o mesmo caso da s12 'MORE THAN A MILE' (decisões Q3 item 3: o t0 0 do textos-tela não passa por cima de 'o número entra na palavra', identidade §4.4). Não reprovo: é a orientação do quadrado de 1850 que reaparece (callback; o textos-tela prescreve t0 0), a lente a registrou como observação nas rodadas anteriores sem o central a pôr na lista, e a correção custa render de mapa novo."
       ],
-      "correcoes": []
+      "correcoes": [
+        "Se o central aplicar a regra: rot1850.entra 0,30 → 2,35 s (em 'eighteen', junto do preenchimento c1850.preenche 2,347); com rot1850.sai 4,20 s o bloco fica 2,15 s no ar pela conta de Q9 (do começo da entrada até cair abaixo de 5 %), sem outra mudança de tempo."
+      ]
     },
     {
       "lente": "abordagem",
@@ -43,9 +47,12 @@
       "lente": "poluicao",
       "nota": 8,
       "problemas": [
-        "Até 5 elementos (quadrado, régua+cota, 2 pílulas com a guia), sem texto órfão. O contorno esquemático do estuário e a legenda '1890s outline (schematic)' não foram desenhados (declarado, devolvido ao Claude central): a pílula aponta sem afirmar forma."
+        "Até 5 elementos (quadrado, régua+cota, 2 pílulas com a guia), sem texto órfão. O contorno esquemático do estuário e a legenda '1890s outline (schematic)' não foram desenhados (declarado, devolvido ao Claude central): a pílula aponta sem afirmar forma.",
+        "Sinaliza (baixa prioridade, sem mudança desta rodada): de 12,3 a 15,07 s 'ABOUT 19 MILES' e a régua ficam a ~40 % de opacidade como memória da distância (op = 1 − 0,6·eio, por desenho do cabeçalho): sem áudio, é um rótulo apagado por ~2,8 s. Não reprova (lastro: 'distance', 11,79 s)."
       ],
-      "correcoes": []
+      "correcoes": [
+        "Se o Lucas estranhar na linha do tempo: rot19.sai e regua.sai de 15,067 para ~12,3 s (a cota some junto da régua em vez de ficar a 40 %)."
+      ]
     },
     {
       "lente": "motion",
@@ -123,7 +130,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 16,
-    "porque": "Portões lidos em out/los-angeles/_tmp/qc-cena-mapa.txt (24 cenas de mapa, com a pré-carga das chaves; contrato, carga, colisão, tamanho, src-existe, fora-do-quadro e crédito-fantasma medidos com tiles 2xx); til-glifo pelo portao-mapa til (24 candidatos, 0 defeituosos) e contraste do crédito pelo portao-mapa rodape v5 (passou); conferir saiu 0; não os reexecutei (tiles pagos). qc-janela: o 'null' em cena de mapa é a regex lendo CENA.duracao (nota do Claude central); conferi à parte em _tmp/qc-janela-mapas-conferido.txt (a cena bate com a janela do espelho) e o clipe tem dur × 30 quadros. mapa-vivo fora do portão. Clipe 4K de prova (carimbo = sha1 do HTML 84821336…, 2160p). Quadros a cada 1 s em 1080p (0–15 s) e a fala do words.json ao lado."
+    "frames": 32,
+    "porque": "Rodada FINAL (Q10), julgamento completo sobre os frames desta geração do HTML (sha1 d959fad8…). O que mudou: pílula 'Wilmington estuary' com dx +60 (margem), a leitura do MapLibre por getSource (o erro da fonte c1850) e DUR literal. Resolvido o defeito de margem da rodada anterior. A cena não tem reprovação de portão (qc-cena 5 de 5 fora o til, sem exceção). Portões lidos, não reexecutados (tiles pagos): out/los-angeles/_tmp/qc-cena-final.txt e _tmp/art/lote-m1/portoes/q9-* (qc-cena com a pré-carga das chaves, o til-glifo coberto pelo portao-mapa til, o contraste do crédito pelo portao-mapa rodape v5 a 12,0:1, o medidor de margens do Claude central e o conferir da pré-carga saindo 0). Clipe 4K de prova com o carimbo .mp4.de-html = sha1 do HTML de hoje e 2160p; quadros em 1080p a cada 0,5 s (select por número de quadro: o filtro fps do ffmpeg desloca ~0,3 s e foi descartado), quadros finos nos instantes dos defeitos anteriores e margens medidas no próprio clipe 4K, sob a câmera, no pior instante. Rodada FINAL (Q10) das cenas que mudaram depois de aprovadas."
   }
 }
