@@ -719,6 +719,7 @@ D01 a D81 e C1 a C6 não mudaram; os textos novos entraram no fim.
 | s16 e s25 | sem retrato (decisão da sessão central: o de Mendell não tem data na origem; o de Morgan passa de 1,4× de ampliação) | o texto dos cards não mudou |
 | s17 e s26 | Los Angeles só como a pílula no ponto da Plaza, sem contorno: o `la-1899-antes-da-faixa-hamlin` só vale de 12/06/1899 a 26/12/1906. Camada 21 do condado, lida pela sessão central em 07/10/2026 (consulta só de atributos): LA0001 04/04/1850 (28,01), LA0002 29/08/1859 (1,2), LA0003 18/10/1895, LA0004A/B 02/04/1896, LA0005 e LA0006 12/06/1899, LA0007 26/12/1906 | nenhum texto novo; as pílulas T114 e T172 ficam |
 | nomes de 4 palavras | decididos pelo Lucas (07/10/2026: "Inteiros (Recomendado)"); `marca/identidade.md` §4.1, "Nome próprio de 4 palavras" | nenhum texto mudou |
+| T359 (rodada 4, 22:5x) | a pergunta do comentário passou a `Which bay would you pick?`: a antiga não cabia na posição da esquerda (o gravador da chamada a recusou em 3 linhas). Arquivo `db65751718a5` | SEM AFIRMAÇÃO, como a antiga: só pressupõe as duas baías que o vídeo mostra (G30 San Pedro Bay e G34 Santa Monica Bay, CONFIRMADAS) |
 
 Com os achados aplicados, o que este laudo deixava em RESSALVA está resolvido. Sobra o DIVERGE de X01 só como desenho declarado,
 que o `qc-visual` confere na cena.

@@ -61,6 +61,15 @@
   3627; com a subida de 24 px, 1747): 12 px de folga até a margem de 200 px (x 3640) e até o canto do YouTube (x ≥ 3440
   e y ≥ 1760), e longe da faixa do crédito (y ≥ 1880). A placa cresce para cima.
   ?lugar=cima: a placa com o topo em y = 200, e a peça clara embaixo dela.
+  ?lugar=esquerda (07/10/2026, no passo art do vídeo 2; marca/cta.md §6, "Quando não há trecho antes da cauda"): a MESMA
+  peça, nos mesmos tamanhos e na mesma altura de "baixo" (a peça clara com a base em y = 1718, a placa em cima dela),
+  presa na METADE ESQUERDA do quadro: a ponta de baixo da placa em x = 212 (12 px de folga da margem de 200, como a
+  direita tem da margem de 3640) e a borda direita das duas peças até x = 1903 (com o contorno da clara, 1908: 12 px
+  antes de x = 1920, onde começa a metade direita, que na tela final é dos elementos do YouTube). É a posição da
+  chamada de comentário na cauda do vídeo 2 (Lucas, 07/10/2026: "Na tela final, à esquerda (Recomendado)"). A pergunta
+  que não couber entre x 212 e 1903 (a linha mais larga passa de uns 1.300 px a 176 px) a página recusa, como nas outras
+  posições, dizendo a posição na mensagem. As posições "baixo" e "cima" não mudaram: a conta delas é a mesma, linha por
+  linha (confira com _perguntas.mjs --determinismo).
   O movimento (§4.4, com a saída espelhada): a placa entra (24 px de subida em ease-out, opacidade em curva suave de
   360 ms, que começa e termina perto de 0); as linhas, 80 ms uma depois da outra; a peça clara aos 0,40 s, que se
   enche de 1,00 a 1,50 s; a agulha assenta no norte num giro amortecido curto. Na saída, a peça clara primeiro, e
@@ -90,7 +99,7 @@ svg{display:block}
   const SVG_W = 508, SVG_H = 1008, AG_ALT = 900;      // viewBox -254 -614 508 1008; a agulha: 400 × 900, centro (0, -110)
 
   const P = new URLSearchParams(location.search);
-  const LUGAR = P.get("lugar") === "cima" ? "cima" : "baixo";
+  const LUGAR = P.get("lugar") === "cima" ? "cima" : P.get("lugar") === "esquerda" ? "esquerda" : "baixo";
   const GIRA = P.get("gira") !== "0";
   const bruta = (P.get("q") || "").replace(/\s+/g, " ").trim();
   const ORIGINAL = bruta.replace(/\|/g, "").trim() ? bruta : PADRAO;
@@ -109,6 +118,10 @@ svg{display:block}
   // ---- a geometria (px do palco) ----
   const R = 3622;                     // borda direita das duas peças; o contorno da clara fecha em 3627 (folga de 12 px)
   const XMIN = 1340;                  // a placa nunca passa daqui para a esquerda
+  // ?lugar=esquerda: a ponta de baixo da placa em x = 212 e a borda direita das duas peças até 1903 (o contorno da clara
+  // fecha em 1908, 12 px antes da metade direita, x = 1920). A ÚNICA coisa que muda nessa posição é onde a placa se prende
+  const L0 = 212, XMAX_E = 1903;
+  const ESQ = LUGAR === "esquerda";
   const BASE = 1718, TOPO = 200;      // baixo: a base da peça clara (com a subida e o contorno, 1747); cima: o topo da placa
   const TAN = Math.tan(12 * Math.PI / 180);
   const VAO = 18;
@@ -273,24 +286,33 @@ svg{display:block}
         if ((n === 1 && iq > 0) || (n === 3 && iq < CORPOS.length - 1)) continue;
         const ws = c.linhas.map((l) => cv.measureText(l).width), lmax = Math.max(...ws);
         const h = Math.max(H_MIN, 2 * rp.v + cap + (n - 1) * LH), pv = (h - cap - (n - 1) * LH) / 2;
-        let ag = agulha(h), xLb = R - rp.r - lmax - rp.n - celulaDe(ag) - (h - pv) * TAN;   // a ponta de baixo à esquerda
-        if (xLb < XMIN && ag > AG_MIN) { ag = AG_MIN; xLb = R - rp.r - lmax - rp.n - celulaDe(ag) - (h - pv) * TAN; }
-        if (xLb < XMIN) continue;
+        let ag = agulha(h), xLb, Rp;
+        if (ESQ) {
+          // à esquerda, a ponta de baixo é fixa (L0) e a borda direita das peças sai da largura da placa; passou de XMAX_E, não cabe
+          xLb = L0; Rp = L0 + rp.r + lmax + rp.n + celulaDe(ag) + (h - pv) * TAN;
+          if (Rp > XMAX_E && ag > AG_MIN) { ag = AG_MIN; Rp = L0 + rp.r + lmax + rp.n + celulaDe(ag) + (h - pv) * TAN; }
+          if (Rp > XMAX_E) continue;
+        } else {
+          Rp = R; xLb = R - rp.r - lmax - rp.n - celulaDe(ag) - (h - pv) * TAN;   // a ponta de baixo à esquerda
+          if (xLb < XMIN && ag > AG_MIN) { ag = AG_MIN; xLb = R - rp.r - lmax - rp.n - celulaDe(ag) - (h - pv) * TAN; }
+          if (xLb < XMIN) continue;
+        }
         const k = custo(c, ws, iq);
         if (!isFinite(k)) { presa = true; continue; }
         if (!melhor || c.fracas < melhor.fracas || (c.fracas === melhor.fracas && k < melhor.k))
-          melhor = { k, fracas: c.fracas, q, cap, LH, rp, linhas: c.linhas, quebras: c.quebras, ws, h, pv, xLb: Math.min(xLb, larguraMin), lmax, ag };
+          melhor = { k, fracas: c.fracas, q, cap, LH, rp, linhas: c.linhas, quebras: c.quebras, ws, h, pv, xLb: Math.min(xLb, larguraMin), lmax, ag, R: Rp };
       }
     }
     if (melhor) return melhor;
     const q = CORPOS[CORPOS.length - 1];
     cv.font = `800 ${q}px "MarcaSec"`;
     const rp = respiro(q), cap = cv.measureText("H").actualBoundingBoxAscent;
-    const lim = R - rp.r - rp.n - celulaDe(AG_MIN) - (H_MIN - (H_MIN - cap) / 2) * TAN - XMIN;
+    const lim = (ESQ ? XMAX_E - L0 : R - XMIN) - rp.r - rp.n - celulaDe(AG_MIN) - (H_MIN - (H_MIN - cap) / 2) * TAN;
+    const onde = ESQ ? ` (na posição "esquerda", a placa vai de x ${L0} a ${XMAX_E}: a metade esquerda do quadro)` : "";
     const larga = PALAVRAS.find((w) => cv.measureText(w).width > lim);
-    if (larga) falhar(`a palavra "${larga}" é mais larga que a linha (${Math.round(lim)} px a ${q} px): encurte a pergunta`);
-    if (presa) falhar(`a pergunta só cabe em ${MAX_LINHAS} linhas partindo a oração no meio (${PERGUNTA.replace(/\|/g, " ").length} caracteres): encurte a pergunta, ou force a quebra com "|"`);
-    falhar(`a pergunta não cabe em ${MAX_LINHAS} linhas a ${q} px (${PERGUNTA.replace(/\|/g, " ").length} caracteres): encurte a pergunta`);
+    if (larga) falhar(`a palavra "${larga}" é mais larga que a linha (${Math.round(lim)} px a ${q} px)${onde}: encurte a pergunta`);
+    if (presa) falhar(`a pergunta só cabe em ${MAX_LINHAS} linhas partindo a oração no meio (${PERGUNTA.replace(/\|/g, " ").length} caracteres)${onde}: encurte a pergunta, ou force a quebra com "|"`);
+    falhar(`a pergunta não cabe em ${MAX_LINHAS} linhas a ${q} px (${PERGUNTA.replace(/\|/g, " ").length} caracteres)${onde}: encurte a pergunta`);
   }
 
   let L = null, N = {}, imgPronta = null, T = null, DUR = 0, DUR_MIN = 0;
@@ -298,20 +320,28 @@ svg{display:block}
     const cv = document.createElement("canvas").getContext("2d");
     // a peça clara primeiro: a placa nunca fica mais estreita que ela
     cv.font = `700 ${ACAO_PX}px "Marca"`; const acaoW = cv.measureText(ACAO).width, capA = cv.measureText("H").actualBoundingBoxAscent;
-    const SLT = HT * TAN, aMid = R - PAD_A - acaoW - PAD_A, aBot = aMid - SLT / 2, aTop = aMid + SLT / 2;
-    const D = diagramar(cv, aTop - 40);
+    const SLT = HT * TAN;
+    let aMid = R - PAD_A - acaoW - PAD_A, aBot = aMid - SLT / 2, aTop = aMid + SLT / 2;
+    // à esquerda, a borda direita (D.R) só se sabe depois de diagramar: a clara se calcula a partir dela, e a placa nunca
+    // fica mais estreita que a clara (a borda direita cresce até cobri-la, nunca a ponta de baixo, que é fixa)
+    const D = diagramar(cv, ESQ ? Infinity : aTop - 40);
+    if (ESQ) {
+      D.R = Math.max(D.R, D.xLb + 40 + PAD_A + acaoW + PAD_A - SLT / 2);
+      aMid = D.R - PAD_A - acaoW - PAD_A; aBot = aMid - SLT / 2; aTop = aMid + SLT / 2;
+    }
+    const RR = D.R;   // a borda direita das duas peças: R nas posições baixo e cima; a calculada, à esquerda
     const n = D.linhas.length, h = D.h;
     // onde: baixo, a peça clara na base e a placa em cima dela; cima, a placa no topo e a peça clara embaixo
     let yT, yB, tTop, B;
     if (LUGAR === "cima") { yT = TOPO; yB = yT + h; tTop = yB + VAO; B = tTop + HT; }
     else { B = BASE; tTop = B - HT; yB = tTop - VAO; yT = yB - h; }
     const xLb = D.xLb, xLt = xLb + h * TAN, CEL = celulaDe(D.ag), AG_H = D.ag;
-    const placa = [[xLt, yT], [R, yT], [R, yB], [xLb, yB]];
+    const placa = [[xLt, yT], [RR, yT], [RR, yB], [xLb, yB]];
     const cel = [[xLt, yT], [xLt + CEL, yT], [xLb + CEL, yB], [xLb, yB]];
     const agCy = (yT + yB) / 2, agCx = xLb + (yB - agCy) * TAN + CEL / 2;
     const xt = xLb + (h - D.pv) * TAN + CEL + D.rp.n;
     const base0 = yT + D.pv + D.cap;
-    const clara = [[aTop, tTop], [R, tTop], [R, B], [aBot, B]];
+    const clara = [[aTop, tTop], [RR, tTop], [RR, B], [aBot, B]];
 
     // o tempo, agora que o número de linhas é conhecido
     const tInteira = T0.linha0 + (n - 1) * T0.linhaPasso + ENT;
@@ -353,7 +383,7 @@ svg{display:block}
     el("polygon", { points: pts(clara), fill: COR.tinta }, gCheio);
     el("text", { x: xA.toFixed(2), y: yA.toFixed(2), class: "acao", "font-size": ACAO_PX, fill: COR.escura }, gCheio).textContent = ACAO;
 
-    L = { agCx, agCy, aBot, tTop, B, SLT };
+    L = { agCx, agCy, aBot, tTop, B, SLT, R: RR };
     const fraca = D.quebras.filter((q) => q.custo >= FRACA).map((q) => `"${q.antes} / ${q.depois}"`);
     const avisos = [DUR < DUR_MIN ? `duração abaixo do tempo de leitura (${DUR_MIN} s)` : null,
       fraca.length ? `a quebra parte um sintagma (${fraca.join(", ")}), porque nenhuma outra cabe: confira no quadro, ou force outra com "|"` : null].filter(Boolean);
@@ -363,8 +393,9 @@ svg{display:block}
       acao_px: ACAO_PX, acao_w: +acaoW.toFixed(1),
       duracao: DUR, duracao_minima: DUR_MIN, leitura_s: LEITURA,
       pergunta_inteira_s: [+T.tInteira.toFixed(2), +T.saiPlaca.toFixed(2)], lugar: LUGAR, gira: GIRA,
-      placa: { x0: Math.round(xLb), y0: Math.round(yT), x1: R, y1: Math.round(yB), altura: Math.round(h) },
-      clara: { x0: Math.round(aBot), y0: Math.round(tTop), x1: R, y1: Math.round(B), contorno_ate: R + CONTORNO },
+      placa: { x0: Math.round(xLb), y0: Math.round(yT), x1: Math.round(RR), y1: Math.round(yB), altura: Math.round(h) },
+      clara: { x0: Math.round(aBot), y0: Math.round(tTop), x1: Math.round(RR), y1: Math.round(B), contorno_ate: Math.round(RR) + CONTORNO },
+      limites_x: ESQ ? { ponta_da_placa: L0, borda_direita_maxima: XMAX_E } : { ponta_minima_da_placa: XMIN, borda_direita: R },
       aviso: avisos.length ? avisos.join("; ") : null });
   }
 
@@ -388,7 +419,7 @@ svg{display:block}
     if (GIRA) { const p = fase(t, T.giro, T.giroDur); ang = -12 * Math.exp(-3.5 * p) * Math.cos(2.3 * Math.PI * p) * (1 - Math.pow(p, 4)); }
     N.gAg.setAttribute("transform", `rotate(${ang.toFixed(3)} ${L.agCx.toFixed(2)} ${L.agCy.toFixed(2)})`);
     const e = easeInOut(fase(t, T.enche, T.encheDur));
-    const x0 = L.aBot - L.SLT - 8, xb = L.aBot - 8 + e * (R + 8 - (L.aBot - 8) + L.SLT);
+    const x0 = L.aBot - L.SLT - 8, xb = L.aBot - 8 + e * (L.R + 8 - (L.aBot - 8) + L.SLT);
     N.encheP.setAttribute("points", pts([[x0, L.tTop - 10], [xb + L.SLT, L.tTop - 10], [xb, L.B + 10], [x0, L.B + 10]]));
   };
 
