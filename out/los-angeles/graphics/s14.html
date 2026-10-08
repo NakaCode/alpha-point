@@ -190,7 +190,8 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s14 (200,267 → 228,9 s do m
     giro: [-1.5, 1.5],
     barra: [-118.2738, 33.7228],
     guiaEst: { entra: 3.623, sai: 9.00, alvo: [-118.262, 33.766] },
-    medidor: { k: 16, max: 60, cadaNumero: 10, largura: 110, dx: 300, dy: 0, entra: 5.12, sai: 16.63, nivel: null,
+    medidor: { k: 16, max: 60, cadaNumero: 10, largura: 110, dx: 500, dy: 0,   // 500 (era 300): o "40" encostava no ponto da guia do estuário (qc-visual Q3)
+               entra: 5.12, sai: 16.63, nivel: null,
                marcas: [{ ft: 18, tipo: "tracejada", entra: 5.12, sai: 16.63 }, { ft: 20, tipo: "tracejada", entra: 5.12, sai: 16.63 },
                         { ft: 30, tipo: "cheia", entra: 9.308, sai: 16.63 }] },
     vao: { entra: 15.638, sai: 16.63 },
@@ -211,7 +212,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s14 (200,267 → 228,9 s do m
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 28.633;   // a dur do espelho, literal (roupa §8)
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -393,7 +394,8 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s14 (200,267 → 228,9 s do m
       q += " M " + B.x.toFixed(2) + " " + yy.toFixed(2) + " L " + (B.x + len).toFixed(2) + " " + yy.toFixed(2);
     }
     M._quadro.setAttribute("d", q); M._quadroSob.setAttribute("d", q);
-    var hs = "M " + barra.x.toFixed(2) + " " + barra.y.toFixed(2) + " L " + B.x.toFixed(2) + " " + B.y.toFixed(2);
+    var hx = M.hasteDireita ? B.x + W : B.x;   // a haste chega ao canto da base do lado da barra (opção do s19)
+    var hs = "M " + barra.x.toFixed(2) + " " + barra.y.toFixed(2) + " L " + hx.toFixed(2) + " " + B.y.toFixed(2);
     M._haste.setAttribute("d", hs); M._hasteSob.setAttribute("d", hs);
     M._ponto.setAttribute("cx", barra.x.toFixed(2)); M._ponto.setAttribute("cy", barra.y.toFixed(2));
     M._nums.forEach(function (n) { n.el.setAttribute("x", (B.x - 26).toFixed(2)); n.el.setAttribute("y", (B.y - n.ft * k + 30).toFixed(2)); });

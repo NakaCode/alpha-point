@@ -40,3 +40,18 @@
    `qc-visual` deu 7 sem derrubar; na s14 a voz atribui ("the federal board").
 6. **s07, a foto das barcaças.** Continua FALTA declarada pela regência; a cena se sustenta no mapa. Voltar à pesquisa (os
    termos do `qc-visual` estão no laudo da s07) fica para depois da revisão do Lucas, se ele pedir.
+
+## 08/10/2026, 00:4x — o lote Q6 (a segunda rodada das 13 cenas sem mapa consertadas)
+
+1. **A fita acima da margem do topo, sob a câmera** (s15, s20, s22, s27, s35 e s39, de 2 a 28 px). Sem tolerância: a fita conta
+   para a margem (Q2, item 2), medida na tela, sob a câmera, no pior instante. Vai aos editores, como foi a s28 e a s38.
+2. **s13, o crédito numa linha só, até x 1792.** O erro foi do Claude central: a identidade §4.2 manda o crédito terminar antes
+   de x = 1720 e quebrar em duas linhas de 56 px quando é longo. O pedido de 08/10 (uma linha) se desfaz: duas linhas, com a
+   quebra num ponto que não deixe o ano sozinho ("…Chief of Engineers," / "U.S. Army, 1888").
+3. **s52, "= 2 TEU".** Continua DECISÃO DO LUCAS PENDENTE (Q2, item 1).
+4. **s24, o pan de 13,9 a 15,4 s leva "MARCH 1, 1897" enquanto a voz lê a data.** O texto fica parado na leitura (identidade §4.4,
+   movimento A). Vai ao editor.
+5. **s20, o grifo de "would" acende em 7,5 s, 2,3 s antes da voz.** O grifo passa com a voz (identidade §5, "A folha de
+   documento"). Vai ao editor.
+6. **s35, a fita translúcida sobre o cabeçalho corrido.** Fica: é cabeçalho, não corpo, e continua legível, como na s43.
+7. **s15, a cota "3,300 FT · GAP 1,000 FT · 2,500 FT" até x 3699.** Defeito de margem (limite 3640). Vai ao editor.

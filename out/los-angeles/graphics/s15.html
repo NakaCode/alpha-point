@@ -33,6 +33,11 @@
               da folha) fica fora da área do texto, com 18 px de respiro (identidade §5; roupa §4; conserto do qc-visual de
               08/10/2026, lente espaco: a fita lavava as duas primeiras linhas). A folha fica 1.736 × 884, com a base onde
               estava (y 1148) e o centro em 706; a p. 2126 continua cobrindo só a margem em branco do pé da p. 2124.
+              RODADA 2 (08/10/2026, Q6): a fita conta para a margem MEDIDA NA TELA, sob a câmera, no pior instante — a fita do
+              alto chegava a y 129 em 7,5 s. As duas páginas desceram 40 px (p. 2124: centro 746, y 304→1188; p. 2126: centro
+              1370, y 1134→1606). E a cota "3,300 FT · GAP 1,000 FT · 2,500 FT" ia até x 3699 na tela (limite 3640): vai em
+              DUAS LINHAS ("3,300 FT · GAP 1,000 FT" / "2,500 FT"), em y 930, e as legendas descem (esboço 1150, muro 1380)
+              para não colidir com ela. Prova: _tmp/medir-fitas.mjs e probe-elemento (cota) em 6,2 e 8,3 s.
         0,00  o crédito "Source: Annual Report of the Chief of Engineers, U.S. Army, 1888" (56 px, --sec, faixa de baixo).
         0,95  "February" (229,675 s): o RÓTULO "FEBRUARY 1888" (pílula --rotulo, 128 px) na coluna da direita, 150 ms depois do
               assentamento (a voz convoca a data no mesmo instante), e 1,07 a LEGENDA "survey of San Pedro Bay" (84 px, Inter 500,
@@ -76,8 +81,9 @@
         8,35–8,60  REPOUSO: nada se move além da deriva do RIG.
     A CÂMERA: escala ≤ 1,03; centros (1900, 1090) e (1920, 1120). A margem sob a câmera (roupa §4), no pior caso: x 230→3570,
     y 227→1897 (com o centro em 1120: visível de 72 a 2168; a faixa do crédito fica fora da câmera). Tudo está montado dentro
-    disso (a p. 2124 girada em x 322→2058, y 372→1148, fitas a partir de x 262; a p. 2126 girada em x 392→2128, y 1094→1566,
-    fita até x 2188; o esboço em x 2200→3310, y 260→912; a cota e as legendas acabam antes de x 3500 e abaixo de y 1550 nada).
+    disso (a p. 2124 girada em x 322→2058, y 304→1188, fitas a partir de x 262; a p. 2126 girada em x 392→2128, y 1134→1606,
+    fita até x 2188; o esboço em x 2200→3310, y 260→912; a cota, em duas linhas, e as legendas acabam antes de x 3640 na TELA
+    sob a câmera (medido pelo probe-elemento), e abaixo de y 1610 nada).
     PRODUTO MÁXIMO DAS ESCALAS: páginas 0,80 × 1,03 (assentamento) × 1,03 (câmera) = 0,849 (≤ 1,4); o esboço 1,03 × 1,03 = 1,061.
     Ken Burns: não há foto em tela cheia.
 
@@ -281,9 +287,9 @@
     <!-- os textos (grafia de textos-tela.json s15), dentro da câmera -->
     <div class="pilula"  id="data"    data-qc-papel="rotulo" style="left:2300px;top:300px"></div>
     <div class="legenda" id="survey"  data-qc-papel="eixo"   style="left:2300px;top:520px;white-space:nowrap"></div>
-    <div class="cota"    id="cota"    data-qc-papel="eixo"   style="left:2240px;top:960px;letter-spacing:0"></div>
-    <div class="legenda" id="esboco"  data-qc-papel="eixo"   style="left:2240px;top:1090px;width:1250px"></div>
-    <div class="legenda" id="muro"    data-qc-papel="eixo"   style="left:2240px;top:1340px;width:1250px"></div>
+    <div class="cota"    id="cota"    data-qc-papel="eixo"   style="left:2240px;top:930px;letter-spacing:0;white-space:normal;width:1300px"></div>
+    <div class="legenda" id="esboco"  data-qc-papel="eixo"   style="left:2240px;top:1150px;width:1250px"></div>
+    <div class="legenda" id="muro"    data-qc-papel="eixo"   style="left:2240px;top:1380px;width:1250px"></div>
   </div>
   <div id="cred" data-qc-papel="credito"></div>
 </div>
@@ -467,6 +473,9 @@
   // marca-texto os varre.
   // ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
   ["data", "survey", "cota", "esboco", "muro", "cred"].forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+  // a COTA em DUAS LINHAS (rodada 2 do qc-visual, Q6 item 7: numa linha ela ia até x 3699 na tela, e a margem lateral acaba em
+  // 3640). A grafia é a de textos-tela; só a quebra é layout: o separador do meio vira a quebra de linha.
+  (function () { var c = E("cota"); if (c) c.innerHTML = TEXTOS.cota.replace(" · 2,500 FT", "<br>2,500 FT"); })();
 
   // ── os tempos (locais, −228,9), do words.json e da regência s15 ──
   var T = {
@@ -479,8 +488,8 @@
     cred: 0.00, repouso: DUR - 0.25
   };
   var K = 0.8;
-  var P1 = { w: 1736, h: 884, cx: 1190, cy: 706, rot: -0.8, x0: 0, y0: 2440 };   // p. 2124: faixa de margem 108 px + recorte x 0→2170, y 2440→3410 (a base fica onde estava: y 1148); o #grifos1 vive no .corpo
-  var P2 = { w: 1736, h: 472, cx: 1260, cy: 1330, rot: 1.1, x0: 0, y0: 1060 };   // p. 2126, recorte x 0→2170, y 1060→1650
+  var P1 = { w: 1736, h: 884, cx: 1190, cy: 746, rot: -0.8, x0: 0, y0: 2440 };   // p. 2124: faixa de margem 108 px + recorte x 0→2170, y 2440→3410 (base em y 1188; rodada 2: +40 px, para a fita ficar ≥ 160 na TELA sob a câmera); o #grifos1 vive no .corpo
+  var P2 = { w: 1736, h: 472, cx: 1260, cy: 1370, rot: 1.1, x0: 0, y0: 1060 };   // rodada 2: +40 px junto com a p. 2124 (continua só sobre a margem em branco do pé dela)   // p. 2126, recorte x 0→2170, y 1060→1650
   var ESB = { cx: 2752, cy: 574 };                                                // o esboço (centro para o pouso, a sombra e a luz)
   var CAM = [
     { t0: 0.00, s: 1.000, cx: 1920, cy: 1080 },

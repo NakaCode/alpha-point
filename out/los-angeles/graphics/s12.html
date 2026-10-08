@@ -16,7 +16,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
   −1,5° a +1,5°, aproximação no molhe, um recuo curto para caber a boca e a volta à barra):
     · p1 (0–6,73): em 'jetty' o molhe (molhe-1871-usgs1896, o molhe como a folha do USGS de 1896 o mostra, não o projeto de
       1871) se desenha de Rattlesnake Island a Deadman's Island em --rede-cor (= --contraparte: linha que não é a
-      protagonista), 18 px sobre 36 px de --rotulo; 'MORE THAN A MILE' quando o traço passa do meio; o item da legenda das
+      protagonista), 18 px sobre 36 px de --rotulo; 'MORE THAN A MILE' na voz ('more', 2,67 s; até 4,40); o item da legenda das
       cores 'jetty, 1871' entra com a linha. Em 'from' a pílula 'Rattlesnake Island' e logo depois 'Deadman's Island', com
       uma guia curta até o ponto da folha de 1896, e a MINIATURA da foto de c. 1910 (de s11; veredito aprovado para s12,
       janela 153,2–155,933 do master) com 'Photo from about 1910'; saem antes de 6,733 s.
@@ -209,7 +209,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
                nivel: function (t) { return 1.5 + 8.5 * eio(seg(t, 18.525, 0.6)) + 1 * eio(seg(t, 21.48, 0.4)); }, marcas: [] },
     guiaDead: { entra: 4.45, sai: 6.43 },
     rotulos: [
-      { id: "cotaMilha", ref: "meioMolhe", lado: "direita", dx: 90, dy: 0, entra: 1.45, sai: 3.95 },
+      { id: "cotaMilha", ref: "meioMolhe", lado: "direita", dx: 90, dy: 0, entra: 2.67, sai: 4.40 },   // na voz: 'more' 2,67 (identidade §4.4; qc-visual Q3)
       { id: "rotRattle", ref: "rattle",    lado: "direita", dx: 70, dy: 0, entra: 4.01, sai: 6.43 },
       { id: "rotDead",   lnglat: [-118.312, 33.757], lado: "esquerda", dx: 0, dy: 0, entra: 4.45, sai: 6.43 },
       { id: "legMare", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x + M.largura / 2, M._base.y + 56]; },
@@ -226,7 +226,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 22.4;   // a dur do espelho, literal (roupa §8)
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -408,7 +408,8 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
       q += " M " + B.x.toFixed(2) + " " + yy.toFixed(2) + " L " + (B.x + len).toFixed(2) + " " + yy.toFixed(2);
     }
     M._quadro.setAttribute("d", q); M._quadroSob.setAttribute("d", q);
-    var hs = "M " + barra.x.toFixed(2) + " " + barra.y.toFixed(2) + " L " + B.x.toFixed(2) + " " + B.y.toFixed(2);
+    var hx = M.hasteDireita ? B.x + W : B.x;   // a haste chega ao canto da base do lado da barra (opção do s19)
+    var hs = "M " + barra.x.toFixed(2) + " " + barra.y.toFixed(2) + " L " + hx.toFixed(2) + " " + B.y.toFixed(2);
     M._haste.setAttribute("d", hs); M._hasteSob.setAttribute("d", hs);
     M._ponto.setAttribute("cx", barra.x.toFixed(2)); M._ponto.setAttribute("cy", barra.y.toFixed(2));
     M._nums.forEach(function (n) { n.el.setAttribute("x", (B.x - 26).toFixed(2)); n.el.setAttribute("y", (B.y - n.ft * k + 30).toFixed(2)); });

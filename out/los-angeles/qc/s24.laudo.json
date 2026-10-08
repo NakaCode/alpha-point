@@ -1,17 +1,18 @@
 {
   "cena": "s24",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 6,
+      "nota": 8,
       "problemas": [
-        "Palavra cortada pela fita no cabeçalho da p. 213 ('FIFTY-FOURTH CONGRESS … CH. 314 1896') e em '24' e na primeira linha da p. 24. A última linha da p. 213 ('made, nor shall any contract … breakwater be') está meio cortada, e a p. 24 deixa aparecer uma fatia de 'Respectfully submitted' sob '…rendered.'. Identidade §5 e roupa §4.",
-        "Dois créditos empilhados, ambos a 56 px reprovados pelo qc-tamanho (56<72): exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em _excecoes-portao.json); não derruba."
+        "Conserto conferido (crops 4K de 16,2 s): a fita da p. 213 fica a ≥80 px do cabeçalho 'FIFTY-FOURTH CONGRESS. SESS. I. CH. 314. 1896. 213' e a da p. 24 não toca o '24'; a primeira linha da p. 24 ('Angeles were to be selected.') sai inteira e a fatia de 'Respectfully submitted' sumiu; a p. 213 ampliada a 1,22× (produto máximo 1,382 ≤ 1,4). Margens em regime: x 322–3454, y≥296; o rótulo '$2.9 MILLION CEILING' acaba em ~3245.",
+        "Observação: as últimas linhas de cada página ficam rentes ao corte de baixo (a cauda do 'y' de 'Railway' na última linha da p. 24 encosta na borda; crop 4K de 16,2 s). Palavra legível, não cortada.",
+        "Dois créditos de 56 px empilhados (probe 16 s: cred2 y 2012, cred1 y 2079, h=67 cada → 55,8 px). exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em qc/_excecoes-portao.json)."
       ],
       "correcoes": [
-        "Recortar a página em linhas inteiras (margem em branco ou meia linha de respiro acima e abaixo do trecho), e pôr a fita só na margem ou na borda externa da folha, fora de qualquer linha de texto (identidade §5, 'a fita fica fora da área do texto'; roupa do editor §4, 'palavra cortada reprova')."
+        "Opcional: +20 px de branco ao pé do recorte da p. 24 e da p. 213."
       ]
     },
     {
@@ -58,12 +59,11 @@
       "lente": "motion",
       "nota": 7,
       "problemas": [
-        "Pan de 13.90 a 15.40 carrega o rótulo 'MARCH 1, 1897' (entra em 14.52) enquanto a voz lê a data (14.45–15.5): desvio 25 px de 15.0 a 15.4, para em 15.4.",
-        "Algo se move entre 19.9 e 20.0 (1047 px na diferença a 960×540; 0 px entre 20.0 e 20.05), dentro dos últimos 250 ms da cena (dur 20.067); a marca manda nada se mexer ali."
+        "Defeito anterior dos últimos 250 ms RESOLVIDO: nos 6 quadros de cauda (−0,50…−0,03 s) a diferença cai a 0,0 nos últimos 0,2 s (deriva congelada); não há mais o salto de 19,9–20,0 s.",
+        "Persiste, como na rodada 1 (sinaliza, 7): o pan 13,90–15,40 s ainda carrega o rótulo 'MARCH 1, 1897', que entra em 14,52 s e se desloca ~24 px (1920) / ~48 px (4K) entre 14,9 e 15,4 s (texto 'MARCH' x 949→925) enquanto a voz lê 'eighteen ninety-seven' (14,75–15,52 s). Numa leitura estrita da identidade §4.4 ('texto já na tela fica parado enquanto se lê') isso reprovaria; mantido em 7 pela consistência com a rodada 1 e porque o movimento é o fim do easing."
       ],
       "correcoes": [
-        "Parar o pan antes da leitura da data.",
-        "Zerar a deriva final (luz ou câmera) antes de 19.8 s."
+        "Parar o pan até 14,4 s (antes da entrada do rótulo, 14,52 s) ou prender o rótulo fora de #cam; a chegada da p. 24 pode ficar."
       ]
     },
     {
@@ -128,6 +128,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 18
+    "frames": 28,
+    "porque": "RODADA 2 (08/10/2026, lote Q6). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160), crops 4K, DOM medido pelo probe-elemento, e 6 quadros de cauda (−0,50 a −0,03 s do corte) para a regra dos 250 ms. Portões lidos em out/los-angeles/_tmp/qc-cena-consertos.txt (13 cenas auditadas; as reprovações do crédito a 56 px têm exceção com o sha1 de hoje; rodapé v5 passou nas 13). Quadros olhados: 0,2…20,0 (1 s), 14,6, 14,9, 15,2, 15,4, 15,5, 15,6, 19,8, 19,9; crops 4K (16,2 s) dos topos, do cabeçalho e dos pés das duas páginas. Defeitos anteriores (fita sobre o cabeçalho, última linha partida, salto nos 250 ms finais): resolvidos."
   }
 }

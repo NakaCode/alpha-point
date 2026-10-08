@@ -1,20 +1,17 @@
 {
   "cena": "s02",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 6,
+      "nota": 8,
       "problemas": [
-        "Palavra cortada pela fita na folha de 1892: a fita lava 'be stated.', 'than San', 'of this' e 'San' (quadros 1.5, 3.5, 6.0, 9.0). Identidade §5: 'a fita fica fora da área do texto'; roupa do editor §4: 'palavra cortada reprova (rasgo, fita, moldura, borda)'.",
-        "A primeira linha do recorte aparece partida ao meio no topo e a última ('While this harbor can never be made to accommodate large ships, yet') também, e disputa com o grifo. O cabeçalho do HTML diz 'corte no branco': o frame mostra que não é.",
-        "Crédito a 56 px reprovado pelo qc-tamanho (56<72): exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em _excecoes-portao.json); não derruba."
+        "Conserto conferido nos quadros 0,1 / 1,5 / 7,5 / 8,4 e nos crops 4K: o recorte agora é em linhas inteiras (a primeira, 'San Pedro has now, however…', e a última, 'Wilmington.', saem inteiras) e as duas fitas ficam só na faixa de margem acima do texto, a ~18 px da primeira linha (crop 4K de 7,5 s); fita em x≥640 e y≥574, dentro das margens de 200/160. Nenhuma palavra cortada ou lavada.",
+        "Observação: sobram pontinhos de descendente da linha cortada acima (um '~' sobre 'has' e um acento sobre 'however'): são pixels do scan, não palavra cortada.",
+        "Crédito medido pelo probe-elemento (3 s): 2 linhas, h=134 → 55,8 px por linha, x=200, y 2012–2146, var(--fs-credito) sem px fixo; o '1888' cai sozinho na segunda linha (observação). exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em qc/_excecoes-portao.json)."
       ],
-      "correcoes": [
-        "Recortar a página em linhas inteiras (margem em branco ou meia linha de respiro acima e abaixo do trecho), e pôr a fita só na margem ou na borda externa da folha, fora de qualquer linha de texto (identidade §5, 'a fita fica fora da área do texto'; roupa do editor §4, 'palavra cortada reprova').",
-        "Recortar o topo e a base da página 2 linhas mais para dentro, de modo que a primeira e a última linha apareçam inteiras ou não apareçam, e a última linha não dispute com o grifo."
-      ]
+      "correcoes": []
     },
     {
       "lente": "factual",
@@ -26,10 +23,10 @@
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "A primeira caixa do grifo começa em 'nd' de 'and', que a voz não diz (sinaliza, nitpick). O grifo cobre 'ships.' (medido em 7.9 e 8.4), ao contrário do que o relato do editor declara: o desvio declarado não existe."
+        "Persiste o desvio sinalizado na rodada 1 (o relato do editor ainda o declara como inexistente): a primeira caixa do grifo acende 'nd' de 'and' em 5,5 s, quando a voz diz 'can' (5,33 s), e as caixas da linha 1 ficam ~½ palavra à esquerda das palavras ditas (crop 4K de 8,4 s: 'nd | can | ne…'); a linha 2 ('water ships.') cai certa. Nitpick: não derruba."
       ],
       "correcoes": [
-        "Começar a primeira caixa do grifo em 'deep-water', na palavra que a voz convoca."
+        "Opcional: começar a primeira caixa em 'can' (x do 'c'), re-medindo as caixas da linha 1 na grade do scan."
       ]
     },
     {
@@ -54,19 +51,17 @@
       "lente": "motion",
       "nota": 9,
       "problemas": [
-        "A câmera para em 5.0 e o que se mexe até ~5.15 é a luz 120 ms atrás, como a marca prevê. Repouso 8.2 a 8.4: 3 px. Sem defeito."
+        "Câmera para em 5,0 s e o deslocamento do recorte da folha entre 5,0 e 5,5 e entre 8,0 e 8,4 s é só a deriva (diferença média 0,45, constante); nos 6 quadros de cauda (−0,50…−0,03 s) a diferença não muda. Sem defeito."
       ],
       "correcoes": []
     },
     {
       "lente": "fonte",
-      "nota": 7,
+      "nota": 9,
       "problemas": [
-        "'Source:' sobre página de documento federal de domínio público. O conceito diz sem crédito e o textos-tela o põe; funciona como atribuição de citação porque o recorte não mostra o título do documento. Roupa do editor §5 lida ao pé da letra diz que crédito de PD federal é supérfluo. Sinaliza; decisão da sessão central."
+        "'Source:' sobre a página real de documento federal fica (decisão do Claude central, _decisoes-central.md, Q1 item 2): atribui as palavras da página, como num gráfico de dados; a lente não desconta."
       ],
-      "correcoes": [
-        "Sessão central decide: manter 'Source:' como atribuição do recorte ou tirar. Não derruba."
-      ]
+      "correcoes": []
     },
     {
       "lente": "tema",
@@ -124,6 +119,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 17
+    "frames": 18,
+    "porque": "RODADA 2 (08/10/2026, lote Q6). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160), crops 4K, DOM medido pelo probe-elemento, e 6 quadros de cauda (−0,50 a −0,03 s do corte) para a regra dos 250 ms. Portões lidos em out/los-angeles/_tmp/qc-cena-consertos.txt (13 cenas auditadas; as reprovações do crédito a 56 px têm exceção com o sha1 de hoje; rodapé v5 passou nas 13). Quadros olhados: 0,1, 0,5, 1,0, 1,5, 2,5, 4,0, 5,0, 5,15, 5,3, 5,5, 6,0, 6,5, 7,0, 7,5, 8,0, 8,2, 8,35, 8,4; crops 4K das fitas (7,5 s) e do grifo (8,4 s). Defeito anterior (fita sobre a letra e linha partida): resolvido."
   }
 }

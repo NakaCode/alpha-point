@@ -1,6 +1,6 @@
 {
   "cena": "s52",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
@@ -13,11 +13,14 @@
     },
     {
       "lente": "factual",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "Contêiner de 20 pés em traço, cota '20 FT' presa à aresta; as duas caixas iguais viram uma de 40 pés ('40 FT', '= 2 TEU'): coerente com a definição de TEU."
+        "Contêiner de 20 pés em traço, cotas presas à aresta; as duas caixas iguais viram uma de 40 pés ('40 FT', '= 2 TEU'), coerente com a definição de TEU. Contato medido no DOM (window.__s52peca): vão 164 px (3,6 s) → 118 (4,1) → 57,6 (4,2) → 22,4 (4,3) → 5,6 (4,4) → 0,38 (4,5) → 0,008 (4,55) → 0 de 4,57 s em diante, nunca negativo; a junção some em 4,6–4,8 s.",
+        "Observação: a projeção oblíqua do aramado deixa as duas caixas parecerem sobrepostas na tela entre 3,7 e 4,5 s (a aresta da caixa de trás cruza a face de topo da da frente, crops 4K de 3,7 e 4,2 s), embora o DOM mostre vão positivo; como é aramado transparente, não há oclusão que desfaça a dúvida. Não derruba."
       ],
-      "correcoes": []
+      "correcoes": [
+        "Opcional: oclusão da face de frente (preenchimento na cor da mesa) ou deslocar o par em y para a sobreposição de projeção sumir."
+      ]
     },
     {
       "lente": "wordlock",
@@ -82,14 +85,13 @@
     },
     {
       "lente": "cadencia",
-      "nota": 6,
+      "nota": 7,
       "problemas": [
-        "Texto no ar abaixo de 2,0 s (identidade §4.3, 'bloco de texto no ar ≥ 2,0 s'; o Claude central já decidiu em _decisoes-central.md, item 1, que isso é defeito e não sinalização, e que a janela não muda): '40 FT' fica 1,33 s (4,57–5,90 s) e '= 2 TEU' 1,09 s (4,81–5,90 s). O cabeçalho declara o conflito com 'o número entra na palavra' (identidade §4.4; lição da revisão do Juneau), mas ele só vale para o '2': a voz diz 'forty-foot' em 3,77 s, então a cota '40 FT' pode entrar na palavra e ficar ≥2,0 s sem infringir nada.",
-        "O '= 2 TEU' é o conflito real: entrar em 'two' (5,01 s) dá 0,9 s; entrar em 'counts' (4,57 s) dá 1,33 s e põe o 2 antes de 'two'; não há arranjo que cumpra as duas leis dentro de 5,9 s. Este ponto não reprovo: escalo ao Claude central/Lucas (abaixo) e aceito a decisão dele ao re-julgar."
+        "'40 FT' agora entra em 'forty-foot' (3,77 s) e fica 2,13 s no ar (≥2,0 s da identidade §4.3): defeito da rodada 1 resolvido.",
+        "'= 2 TEU' continua com 1,09 s no ar (4,81–5,90 s): DECISÃO DO LUCAS PENDENTE (_decisoes-central.md, Q2 item 1); fica como pendente e não derruba a cena nesta rodada."
       ],
       "correcoes": [
-        "Editor: antecipar a cota '40 FT' para 'forty-foot' (≈3,8 s), como cota-alvo (linha de dimensão do comprimento final de 40 pés, sob a vaga onde as duas caixas vão se encontrar), ficando ≥2,0 s no ar; o contato continua em 'counts' (4,57 s).",
-        "Claude central/Lucas, sobre '= 2 TEU': (A) registrar em marca/identidade §4.3 a exceção para o último rótulo de uma definição (precedente: legenda do último item, identidade §6), ou (B) fazer a janela da s52 terminar ≥1 s depois de 'two' (montador, se a s53 tiver respiro). Com A ou B decidida e '40 FT' corrigido, a cena volta ao QC só para a lente cadência."
+        "Claude central/Lucas: decidir entre (A) registrar em identidade §4.3 a exceção do último rótulo de uma definição, ou (B) estender a janela da s52 ≥1 s depois de 'two' (montador, se a s53 tiver respiro)."
       ]
     },
     {
@@ -130,7 +132,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 14,
-    "porque": "Quadros olhados: 0.3, 0.8, 1.8, 2.6, 3.6, 3.7, 4.1, 4.3, 4.45, 4.57, 4.7, 5.0, 5.4, 5.85; gancho __s52peca lido em 14 instantes. Portões lidos (out/los-angeles/_tmp/qc-cena-sem-mapa.txt, 25 cenas auditadas): todos verdes nesta cena (contrato, carga, colisão, tamanho, til-glifo, src-existe, fora-do-quadro, crédito-fantasma). mapa-vivo fora do portão. Julgamento sobre quadros do quadro.mjs com a pré-carga do canal."
+    "frames": 12,
+    "porque": "RODADA 2 (08/10/2026, lote Q6). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160), crops 4K, DOM medido pelo probe-elemento, e 6 quadros de cauda (−0,50 a −0,03 s do corte) para a regra dos 250 ms. Portões lidos em out/los-angeles/_tmp/qc-cena-consertos.txt (13 cenas auditadas; as reprovações do crédito a 56 px têm exceção com o sha1 de hoje; rodapé v5 passou nas 13). Quadros olhados: 0,2…5,8 (0,5 s), crops 4K de 3,7 e 4,2 s; DOM do contato medido (15 instantes, 3,6–5,9 s). Defeito anterior ('40 FT' com 1,33 s): resolvido; '= 2 TEU' (1,09 s): pendente do Lucas."
   }
 }

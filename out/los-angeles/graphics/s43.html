@@ -316,8 +316,10 @@
   function cena(t) {
     t = t + 0.0005;
     var cam = E("cam"), st = E("still");
-    // a câmera: 1,00 → 1,06 (eb) entre 1,30 e 5,50, com o centro 10 px abaixo, e PARA; a deriva do RIG segue
-    var u = eb(seg(t, T.camT0, T.camT1 - T.camT0)), s = lerp(1.0, 1.06, u), cy = lerp(1080, 1090, u);
+    // a câmera: 1,00 → 1,06 (eb) entre 1,30 e 5,50, com o centro parado em 1080, e PARA; a deriva do RIG segue.
+    // (era com o centro 10 px abaixo, 1080 → 1090: a fita esquerda da página chegava a y 155 na tela, 5 px acima da margem de 160,
+    // em 5,25 s; conserto do qc-visual, Q6, 08/10/2026. A fita conta para a margem, medida na tela, sob a câmera, no pior instante)
+    var u = eb(seg(t, T.camT0, T.camT1 - T.camT0)), s = lerp(1.0, 1.06, u), cy = 1080;
     var dx = 6 * Math.sin(t * 0.23), dy = 4.8 * Math.sin(t * 0.17) + (1080 - cy);
     if (cam) cam.style.transform = "scale(" + s.toFixed(5) + ") translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
     if (st) { var PAR = 0.6, ss = 1 + (s - 1) * PAR; st.style.transform = "scale(" + ss.toFixed(5) + ") translate(" + (dx * PAR).toFixed(2) + "px," + (dy * PAR).toFixed(2) + "px)"; }

@@ -45,9 +45,13 @@
         6,723 "two" (122,49 s): o RÓTULO "$200,000" (pílula, 128 px) abaixo de "MARCH 1871" (300 ms, 1,04 → 1,00), enquanto a voz
               diz "two hundred thousand dollars" (6,72–7,92). Nenhum número antes da palavra da voz.
         9,016–9,266  REPOUSO: o push-in do RIG para em 9,016; nada se move além da deriva.
+    RODADA 2 DO QC-VISUAL (08/10/2026, Q6 item 1): a fita conta para a margem, medida na TELA, sob a câmera, no pior instante.
+    A fita do alto da litografia chegava a y 137 em 9,25 s: a litografia desceu 33 px (centro 712 → 745) e os quatro textos
+    abaixo dela ("Wilmington", "Lithograph from 1877", "MARCH 1871", "$200,000") desceram 30 px (y 1250/1460 → 1280/1490).
+    Prova: _tmp/medir-fitas.mjs (topo ≥ 160, esquerda ≥ 200, direita ≤ 3640 em todo instante).
     A CÂMERA: o push-in do RIG (0,0024/s, base 1,0), escala máxima 1,0216 em 9,016: a margem sob a câmera (roupa §4) vale para
     x 236→3604 e y 179→1863, e tudo está montado dentro disso (a foto girada em x 400→1560, y 251→1189, fitas a partir de x 340;
-    a litografia em x 1681→3519, y 230→1194, fita até x 3579; "$200,000" acaba em y 1650, fora do canto reservado).
+    a litografia em x 1681→3519, y 263→1227, fita até x 3579; "$200,000" acaba em y 1650, fora do canto reservado).
     PRODUTO MÁXIMO DAS ESCALAS: foto 1,34 × 1,03 (assentamento, em 0,33 s, com a câmera a 1,0008) = 1,381, e 1,34 × 1,0216
     (câmera no fim) = 1,369; a litografia 0,70 × 1,03 × 1,0216 = 0,737. Ambos ≤ 1,4. Por isso a foto pequena vai a 1,34× e não
     ao teto de 1,4× do conferente: a identidade §4.4 manda contar o 1,03 do assentamento no produto da foto impressa, e o push-in
@@ -167,7 +171,7 @@
       <div class="fita" id="fFd" style="left:780px;top:-50px"></div>
     </div>
 
-    <!-- p2: a sombra solta e a litografia de 1877 impressa (o encarte de Wilmington, x 40→2540, y 1990→3240, a 0,70× = 1750 × 875; grupo 1838 × 963; centro 2600 × 712; +1,0°) -->
+    <!-- p2: a sombra solta e a litografia de 1877 impressa (o encarte de Wilmington, x 40→2540, y 1990→3240, a 0,70× = 1750 × 875; grupo 1838 × 963; centro 2600 × 745; +1,0°) -->
     <div class="sombra-solta" id="lSombra" style="width:1838px;height:963px"></div>
     <div class="grupo impressa" id="l" style="width:1838px;height:963px">
       <div class="moldura"></div>
@@ -181,10 +185,10 @@
     <!-- os textos sobre a mesa, fora das peças (grafia de textos-tela.json s09) -->
     <div class="pilula-aviso" id="avisoF" data-qc-papel="eixo" data-qc-aviso-ano="1870" style="left:400px;top:1250px"></div>
     <div class="pilula"       id="lugarF" data-qc-papel="rotulo" style="left:400px;top:1410px"></div>
-    <div class="pilula"       id="lugarL" data-qc-papel="rotulo" style="left:1681px;top:1250px"></div>
-    <div class="pilula-aviso" id="avisoL" data-qc-papel="eixo" data-qc-aviso-ano="1877" style="left:1681px;top:1460px"></div>
-    <div class="pilula"       id="marco"  data-qc-papel="rotulo" style="right:304px;top:1250px"></div>
-    <div class="pilula"       id="verba"  data-qc-papel="rotulo" style="right:304px;top:1460px"></div>
+    <div class="pilula"       id="lugarL" data-qc-papel="rotulo" style="left:1681px;top:1280px"></div>
+    <div class="pilula-aviso" id="avisoL" data-qc-papel="eixo" data-qc-aviso-ano="1877" style="left:1681px;top:1490px"></div>
+    <div class="pilula"       id="marco"  data-qc-papel="rotulo" style="right:304px;top:1280px"></div>
+    <div class="pilula"       id="verba"  data-qc-papel="rotulo" style="right:304px;top:1490px"></div>
   </div>
 </div>
 
@@ -375,7 +379,7 @@
     camPara: DUR - 0.25
   };
   var F = { w: 1160, h: 938, cx: 980, cy: 720, rot: -1.5 };    // a foto de 1870, girada: x 400→1560, y 251→1189
-  var L = { w: 1838, h: 963, cx: 2600, cy: 712, rot: 1.0 };    // a litografia, girada: x 1681→3519, y 230→1194
+  var L = { w: 1838, h: 963, cx: 2600, cy: 745, rot: 1.0 };    // a litografia, girada: x 1681→3519, y 263→1227 (rodada 2 do qc-visual, 08/10/2026: +33 px, para a fita do alto ficar ≥ 160 na TELA sob o push-in do RIG em 9,25 s — antes chegava a y 137; medidor _tmp/medir-fitas.mjs)
 
   function alvoLuz(t) {
     var u = eb(seg(t, T.pousaL, 0.6));

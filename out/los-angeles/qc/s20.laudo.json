@@ -1,18 +1,18 @@
 {
   "cena": "s20",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 6,
+      "nota": 7,
       "problemas": [
-        "A página 58 cai por cima da última linha da p. 28 ('liminary, that the meeting has been called … board of engin-'), meio coberta, com faixa de sombra escura. O cabeçalho do HTML diz 'sem cobri-la'.",
-        "A primeira linha da p. 58 está cortada no topo; a fita lava 'heavy blow is', 'lay out a', 'and main-', 'to Santa'. Identidade §5 e roupa §4.",
-        "Crédito a 56 px reprovado pelo qc-tamanho (56<72): exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em _excecoes-portao.json); não derruba."
+        "Conserto conferido (crops 4K de 12,2 s): a p. 58 pousa abaixo da p. 28 sem cobri-la, a primeira linha da p. 58 ('I need hardly mention…') sai inteira e as fitas ficam na faixa de margem; nenhuma palavra cortada ou lavada.",
+        "Observação: o HTML diz que a fita da p. 58 fica '≥ 60 px' da última linha da p. 28; no quadro de 12,2 s a fita está a ~16 px dela, e a última linha da p. 28 ('eers, and has been called in the rooms…') fica a ~4 px do corte de baixo da folha (inteira, não cortada). Aperta, mas respira.",
+        "SINALIZA: no fim da retomada de câmera (1,045; quadro de 13,2 s) a fita do alto da p. 28 chega a y≈148, 12 px acima da margem de 160 (a fita conta; _decisoes-central.md, Q2 item 2). Margens laterais ≥218. Crédito a 56 px (55,8 px por linha). exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em qc/_excecoes-portao.json)."
       ],
       "correcoes": [
-        "Descer a p. 58 ≥1 linha (≥60 px em 4K) e recortá-la de novo; Recortar a página em linhas inteiras (margem em branco ou meia linha de respiro acima e abaixo do trecho), e pôr a fita só na margem ou na borda externa da folha, fora de qualquer linha de texto (identidade §5, 'a fita fica fora da área do texto'; roupa do editor §4, 'palavra cortada reprova')."
+        "Opcional: descer a p. 28 ~20 px para a fita ficar ≥160 sob a câmera; dar +30 px de branco ao pé do recorte da p. 28."
       ]
     },
     {
@@ -25,10 +25,10 @@
       "lente": "wordlock",
       "nota": 7,
       "problemas": [
-        "A caixa do grifo de 'Pedro' acende também 'would' (~7.3 s), 2.7 s antes da voz (10.0); a ordem não é monótona. A caixa de 'San' começa em 'an'. Sinaliza."
+        "O conserto declarado no cabeçalho (grifo na ordem da voz) não está nos quadros: o 'would' impresso depois de 'San Pedro' acende junto com 'Pedro' já em 7,5–7,75 s (crops 4K), ~2,3 s antes de a voz dizer 'would' (10,0 s); a caixa de 'Pedro' tem a largura de 'Pedro would'. O resto do grifo segue a voz (any company 6,13; relied 6,5; for 8,2; their/con- 9,2–10,2). Sinaliza, não derruba."
       ],
       "correcoes": [
-        "Reordenar o grifo para seguir a voz e começar 'San' em 'San'."
+        "Limitar a caixa de 'Pedro' a 'Pedro' (7,28–7,67 s) e acender 'would' só em 10,0 s."
       ]
     },
     {
@@ -55,14 +55,16 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Retomada de câmera para 0.267 s antes do corte; repouso 79 px (ok)."
+        "Retomada de câmera (1,03→1,045) termina 0,267 s antes do corte; nos 6 quadros de cauda a diferença só cai com o easing e fica na deriva (0,62–0,70) nos últimos 250 ms. A câmera da p. 58 chega 0,3 s antes do grifo (6,13 s)."
       ],
       "correcoes": []
     },
     {
       "lente": "fonte",
-      "nota": 8,
-      "problemas": [],
+      "nota": 9,
+      "problemas": [
+        "'Source:' sobre a página de documento federal (H. Ex. Doc. 41) fica (Q1 item 2)."
+      ],
       "correcoes": []
     },
     {
@@ -121,6 +123,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 11
+    "frames": 18,
+    "porque": "RODADA 2 (08/10/2026, lote Q6). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160), crops 4K, DOM medido pelo probe-elemento, e 6 quadros de cauda (−0,50 a −0,03 s do corte) para a regra dos 250 ms. Portões lidos em out/los-angeles/_tmp/qc-cena-consertos.txt (13 cenas auditadas; as reprovações do crédito a 56 px têm exceção com o sha1 de hoje; rodapé v5 passou nas 13). Quadros olhados: 0,2…13,2 (1 s), 7,5, 7,75, 8,0, 9,5; crops 4K (12,2 s) das duas folhas e do grifo (7,5–10,2 s). Defeito anterior (p. 58 sobre a última linha da p. 28 e fita lavando a primeira linha): resolvido."
   }
 }

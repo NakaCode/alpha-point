@@ -56,3 +56,11 @@ Portões da s03 até aqui: 3.241 pedidos. O painel não foi lido.
 |---|---|---|
 | 23:32–23:46 | `qc-cena` (conc=3, `--forcar`, as 11 reprovações remedidas sozinhas), `portao-mapa til` e `rodape` nas 24, e o `qc-video-avanca` da s01, todos com a pré-carga | 17.962 (`qc-carga` 2.949, `qc-fora-do-quadro` 2.559, `qc-tamanho` 2.294, `check-overlap` 1.567, `qc-contrato` 1.204, `qc-credito-fantasma` 848, `portao-mapa` 6.409, `qc-video-avanca` 132; do `_tmp/maptiler-portoes.jsonl`) |
 | 23:47–23:53 | render 4K de prova da s03 de novo (`--forcar`): o `perfil-mapa.js` foi regravado às 22:04 pelo `preparar-cena` do lote M2, depois do render das 21:55, e a linha do tempo dava o clipe como atrasado. O HTML é o mesmo (sha1 `27a3fd46…`, 2160p) | não contados (o render não passa pela pré-carga das chaves) |
+
+## Os consertos do lote Q3 (mapista M1: s05, s07, s12, s14), 08/10/2026
+
+| quando (Brasília) | o que | pedidos |
+|---|---|---|
+| 00:03:31–00:03:42 | 6 quadros de prova | não contados |
+| 00:03:54–00:06:37 | `qc-cena --forcar`, `portao-mapa til` e `rodape` nas quatro, com a pré-carga | 2.893 (`portao-mapa` 1.082; do `_tmp/maptiler-portoes.jsonl`) |
+| 00:06:42–00:30:30 | 4 renders 4K de prova, um de cada vez | não contados |

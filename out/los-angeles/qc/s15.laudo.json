@@ -7,11 +7,12 @@
       "lente": "espaco",
       "nota": 6,
       "problemas": [
-        "Palavra cortada pela fita na p. 2124: lava as duas primeiras linhas ('island. Vessels … prevalence of', 'southerly gales … under the lea'). A p. 2126 está bem e só cobre margem. Identidade §5 e roupa do editor §4.",
-        "Crédito a 56 px reprovado pelo qc-tamanho (56<72): exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em _excecoes-portao.json); não derruba."
+        "REPROVA: margem lateral (identidade §4.2 e roupa §4: 200 px nas laterais, texto até x=3640). A cota '3,300 FT · GAP 1,000 FT · 2,500 FT' (84 px, Inter 500) termina em x=3699, 59 px além do limite. Medido pelo probe-elemento a 8,3 s (câmera 1,03): cota x 2255→3699, y 920→1007; nos quadros, o mesmo extremo em 6,2, 7,2, 8,2 e 8,55 s (x 3678–3698). O cabeçalho do HTML declara 'a cota e as legendas acabam antes de x 3500': não é o que está na tela. Ficou a 141 px da borda do quadro. O gate de fora-do-quadro não pega: o texto cabe no quadro.",
+        "Conserto da rodada 1 conferido: a p. 2124 agora começa em linha inteira ('island. Vessels are frequently…') e a fita fica só na margem de cima (crop 4K de 3,2 s); a p. 2126 cobre só margem em branco do pé da p. 2124 (crop 4K de 8,55 s).",
+        "SINALIZA: com a câmera final, a fita do alto da p. 2124 chega a y≈134 (quadros 7,2–8,55 s), 26 px acima da margem de 160; a fita conta como elemento (roupa §4; _decisoes-central.md, Q2 item 2). Crédito a 56 px (h=134, 2 linhas). exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em qc/_excecoes-portao.json)."
       ],
       "correcoes": [
-        "Recortar a página em linhas inteiras (margem em branco ou meia linha de respiro acima e abaixo do trecho), e pôr a fita só na margem ou na borda externa da folha, fora de qualquer linha de texto (identidade §5, 'a fita fica fora da área do texto'; roupa do editor §4, 'palavra cortada reprova')."
+        "Recuar a cota ≥60 px para dentro (termina em x ≤3640): quebrá-la em duas linhas ('3,300 FT · GAP 1,000 FT' / '2,500 FT'), ou apertar o espaçamento tabular, sem encostar na p. 2124 (que acaba em x≈2058). Conferir no quadro de 6,2 e no de 8,55 s (câmera 1,03) com o probe-elemento. Opcional: baixar a p. 2124 ~30 px para a fita ficar ≥160 sob a câmera."
       ]
     },
     {
@@ -128,6 +129,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 10
+    "frames": 11,
+    "porque": "RODADA 2 (08/10/2026, lote Q6). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160), crops 4K, DOM medido pelo probe-elemento, e 6 quadros de cauda (−0,50 a −0,03 s do corte) para a regra dos 250 ms. Portões lidos em out/los-angeles/_tmp/qc-cena-consertos.txt (13 cenas auditadas; as reprovações do crédito a 56 px têm exceção com o sha1 de hoje; rodapé v5 passou nas 13). Quadros olhados: 0,2, 1,2…8,2 (1 s), 8,55; crops 4K de 3,2 s (topo da p. 2124) e 8,55 s (p. 2126 sobre o pé); DOM medido a 8,3 s. Defeito anterior (fita sobre as duas primeiras linhas): resolvido. Defeito NOVO que o relato não declarava: a cota fora da margem direita (existe desde a rodada 1 e não foi medida na época)."
   }
 }

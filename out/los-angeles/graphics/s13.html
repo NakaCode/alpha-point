@@ -244,14 +244,14 @@
   .cota { position: absolute; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
     line-height: 1; letter-spacing: .02em; font-variant-numeric: var(--numeros); color: var(--tinta); opacity: 0; }
 
-  /* o crédito (§4.2, §4.1 "Crédito a 56 px"): --fs-credito, --sec, x = 200, abaixo de y = 1880, até x = 3000, numa linha só,
+  /* o crédito (§4.2, §4.1 "Crédito a 56 px"): --fs-credito, --sec, x = 200, abaixo de y = 1880, até x = 1720, duas linhas,
      nunca encolhe; SOLTO na mesa (identidade §5), fora da câmera */
   #cred { position: absolute; left: var(--credito-x); bottom: 14px; width: calc(var(--credito-x-fim) - var(--credito-x));
     font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.2; color: var(--sec);
     letter-spacing: 0; opacity: 0; }
-  /* 08/10 (pedido do Claude central): o crédito desta cena cabe numa linha só a 56 px — a caixa vai até x 3000 (dentro da
-     margem lateral de 200), em vez do --credito-x-fim de 1720, que o quebrava com o "1888" sozinho na segunda linha */
-  #cred { width: 2800px; }
+  /* 08/10 (pedido do Claude central): a quebra das duas linhas num ponto fixo ("…Engineers," / "U.S. Army, 1888"), para o ano
+     não ficar sozinho na segunda linha; a caixa continua a do --credito-x-fim (até x 1720, identidade §4.2) */
+  #cred { white-space: pre-line; }
 </style>
 </head>
 <body>
@@ -450,7 +450,7 @@
     calado:   "draft: how deep a ship sits in the water",                       // _textos_por_cena s13 › legenda
     cotaTeto: "18 OR 20 FT\nAT HIGH WATER",                                    // _textos_por_cena s13 › cota (rotulos_dado: doc.num-02; a série s14/s50): "18 OR 20 FT AT HIGH WATER", empilhada em duas linhas (numa só passaria da margem direita sob a câmera; empilha, nunca encolhe)
     tetoLeg:  "the ceiling Mendell expected",                                   // _textos_por_cena s13 › legenda
-    cred:     "Source: Annual Report of the Chief of Engineers, U.S. Army, 1888"// _textos_por_cena s13 › credito (t0 0)
+    cred:     "Source: Annual Report of the Chief of Engineers,\nU.S. Army, 1888"   // _textos_por_cena s13 › credito (t0 0); o \n é só a quebra de linha (pre-line), a grafia é a dos textos de tela
   };
   // os grifo_na_pagina s13 ("San Francisco, Cal., November 8, 1886." · "It is a small estuary and can never be made a harbor
   // for deep-water ships." · "If 18 or 20 feet at high water can be obtained, the harbor will have received its maximum

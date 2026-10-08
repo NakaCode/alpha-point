@@ -57,7 +57,10 @@
     saem da folha só para cima, −50 px: no topo, sob a câmera no pior instante (4,93 em diante), a fita fica em y = 1080 + (213 −
     1120) × 1,07 = 109 → fora da margem de 160. Por isso as fitas desta folha ficam DENTRO da borda de cima da folha (top −10):
     y 303 → sob a câmera 206 ✓). O rótulo e as legendas em x 340→~1700, y 420→~760: tudo dentro.
-    PRODUTO MÁXIMO DAS ESCALAS: folha 0,72 × 1,03 (assentamento) × 1,07 (câmera) = 0,794 (≤ 1,4). Ken Burns: não há foto.
+    CORREÇÃO (qc-visual, Q6, 08/10/2026): a conta acima não valia para a fita girada (rotate 4°/−5°): medida na tela, a fita chegava
+    a y 136–140 com a câmera a 1,07 e o centro em 1120. A câmera passou a 1,00 → 1,06 com o centro 1080 → 1095: a fita fica em
+    y ≥ 160 em todo instante (probe-elemento a cada 0,5 s). A folha não mudou de lugar (ela reaparece na s40).
+    PRODUTO MÁXIMO DAS ESCALAS: folha 0,72 × 1,03 (assentamento) × 1,06 (câmera) = 0,786 (≤ 1,4). Ken Burns: não há foto.
 
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): a folha (1) + o rótulo (1) + a legenda (1) =
     3 (alvo 4–5, teto 6). Blocos de texto de leitura: a folha (1) ≤ 3 (as legendas têm 3 e 5 palavras: rótulo, não frase de
@@ -324,8 +327,9 @@
   function cena(t) {
     t = t + 0.0005;
     var cam = E("cam"), st = E("still");
-    // a câmera: 1,00 → 1,07 (eb) entre 3,87 e 4,93, descendo o centro de 1080 a 1120 (o fio), e PARA; a deriva do RIG segue
-    var u = eb(seg(t, T.camT0, T.camT1 - T.camT0)), s = lerp(1.0, 1.07, u), cy = lerp(1080, 1120, u);
+    // a câmera: 1,00 → 1,06 (eb) entre 3,87 e 4,93, descendo o centro de 1080 a 1095 (o fio), e PARA; a deriva do RIG segue.
+    // (era 1,07 e 1080→1120: a fita da folha chegava a y 136–140 na tela, acima da margem de 160; conserto do qc-visual, Q6, 08/10/2026)
+    var u = eb(seg(t, T.camT0, T.camT1 - T.camT0)), s = lerp(1.0, 1.06, u), cy = lerp(1080, 1095, u);
     var dx = 6 * Math.sin(t * 0.23), dy = 4.8 * Math.sin(t * 0.17) + (1080 - cy);
     if (cam) cam.style.transform = "scale(" + s.toFixed(5) + ") translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
     if (st) { var PAR = 0.6, ss = 1 + (s - 1) * PAR; st.style.transform = "scale(" + ss.toFixed(5) + ") translate(" + (dx * PAR).toFixed(2) + "px," + (dy * PAR).toFixed(2) + "px)"; }

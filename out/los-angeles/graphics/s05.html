@@ -34,7 +34,8 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
       só esta câmera larga), com a divisa no estilo da fronteira e o nome 'CALIFORNIA' dentro (o tratamento do nome sobre o
       mapa, §4.1); o quadrado de 1850 vira um ponto laranja; em 'San Francisco' e 'San Diego' o anel em cada porto (GNIS)
       com a pílula, e o item da legenda 'deep-water harbors, per Mendell, 1886' (o anel como amostra).
-    · p6 (26,4–33,3): a câmera volta a San Pedro Bay (a cidade de 1850 no alto, terra adentro); 'San Pedro Bay' e, em
+    · p6 (26,4–33,3): a câmera volta a San Pedro Bay (a cidade de 1850 no alto, terra adentro); 'San Pedro Bay' (que já entra
+      na voz, em 'San' 25,74, ainda na Califórnia inteira, presa ao lugar acima e à direita, e desce com a câmera) e, em
       'southeast' e 'south', duas setas em --tensao (risco, nunca a cor de um lado) entram do mar para a baía, com o item
       'winter storms' na legenda das cores.
   INCERTEZA DE HAMLIN: só o quadrado de 1850 é de Hamlin, e ele fica todo ao norte de 33,86 N (±50 m). Traço mais fino de
@@ -130,6 +131,8 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
   .guia-sob { fill: none; stroke: var(--rotulo); stroke-width: 10; stroke-linecap: round; }
   .guia { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; }
   .guia-ponto { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6; }
+  .med-num { font-family: var(--fonte); font-weight: 700; font-size: var(--fs-eixo); font-variant-numeric: var(--numeros);
+    fill: var(--tinta); stroke: var(--rotulo); stroke-width: 14px; paint-order: stroke fill; stroke-linejoin: round; }
 
   #mini1 .aviso { color: var(--tinta); }
   #nomeCA { font-size: 104px; }
@@ -232,7 +235,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
       { id: "nomeCA",   lnglat: [-117.55, 35.15], lado: "centro", dx: 0, dy: 0, entra: 17.00, sai: 26.10 },
       { id: "rotSF",    ref: "sf",        lado: "esquerda", dx: -70,  dy: 0,   entra: 23.35, sai: 26.40 },
       { id: "rotSD",    ref: "sd",        lado: "esquerda", dx: -70,  dy: 0,   entra: 24.39, sai: 26.40 },
-      { id: "rotBaia",  lnglat: [-118.17, 33.735], lado: "direita", dx: 0, dy: 0, entra: 28.50, sai: null }
+      { id: "rotBaia",  lnglat: [-118.17, 33.735], lado: "direita", vert: "cima", dx: 0, dy: -8, entra: 25.74, sai: null }   // na voz ('San' 25,740; qc-visual Q3)
     ],
     // a miniatura: logo abaixo de 'The Plaza', borda direita alinhada; a foto só encolhe (recorte em px do arquivo)
     minis: [{ id: "mini1", sob: "rotPlaza", natural: [5217, 2678], recorte: [320, 115, 2270, 2275], foto: [900, 902],
@@ -243,7 +246,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 33.3;   // a dur do espelho, literal (roupa §8)
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -377,6 +380,83 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
       if (dmax > tol && imax > 0) { manter[imax] = true; pilha.push([par[0], imax], [imax, par[1]]); }
     }
     return pts.filter(function (p, i) { return manter[i]; });
+  }
+
+  // ── O MEDIDOR DE PROFUNDIDADE (conceito-visual › _medidor; o traço de engenheiro, identidade §5): régua vertical
+  //    monocromática, só linha (--tinta 6 px, sem preenchimento, com o contorno escuro por baixo para ler sobre o
+  //    satélite), tiques a cada 5 pés, números em Inter 84 tabular; o zero é o fundo (a barra), e a água sobe da base.
+  //    A linha d'água é um traço de 8 px; abaixo dela, hachura fina (linha, não tinta chapada). As marcas de referência
+  //    em --neutro: tracejada = o teto de Mendell (18–20), cheia = os 30 pés da junta de 1897. Preso ao lugar por uma
+  //    haste fina que sai do ponto da barra. ─────────────────────────────────────────────────────────────────────
+  function criarMedidor(id, M) {
+    var ov = E("ov"), g = svgEl("g", { id: id, opacity: "0" }, ov);
+    var defs = svgEl("defs", {}, g), cp = svgEl("clipPath", { id: id + "Clip" }, defs);
+    M._clip = svgEl("rect", { x: 0, y: 0, width: 0, height: 0 }, cp);
+    M._hasteSob = svgEl("path", { "class": "med-sob", "stroke-width": 12 }, g);
+    M._haste = svgEl("path", { "class": "med-sobre", "stroke-width": 4 }, g);
+    M._ponto = svgEl("circle", { "class": "guia-ponto", r: 12 }, g);
+    M._hach = svgEl("path", { "class": "med-agua", "clip-path": "url(#" + id + "Clip)" }, g);
+    M._quadroSob = svgEl("path", { "class": "med-sob", "stroke-width": 18 }, g);
+    M._quadro = svgEl("path", { "class": "med-sobre", "stroke-width": 6 }, g);
+    M._marcas = (M.marcas || []).map(function (mk) {
+      var mg = svgEl("g", { opacity: "0" }, g);
+      svgEl("path", { "class": "med-sob", "stroke-width": 18, "data-sob": 1 }, mg);
+      var ln = svgEl("path", { "class": "med-neutro", "stroke-width": 8 }, mg);
+      if (mk.tipo === "tracejada") ln.setAttribute("stroke-dasharray", "26 18");
+      return mg;
+    });
+    M._aguaSob = svgEl("path", { "class": "med-sob", "stroke-width": 20, opacity: "0" }, g);
+    M._agua = svgEl("path", { "class": "med-sobre", "stroke-width": 8, opacity: "0" }, g);
+    M._nums = [];
+    for (var f = M.cadaNumero; f <= M.max; f += M.cadaNumero) {   // sem o "0": a haste chega ao canto da base
+      var tx = svgEl("text", { "class": "med-num", "text-anchor": "end", "data-qc-papel": "eixo" }, g);
+      tx.textContent = String(f); M._nums.push({ ft: f, el: tx });
+    }
+    return g;
+  }
+  // desenha o medidor com a base (o zero) em base{x,y} (px do palco) e a haste até o ponto da barra
+  function desenharMedidor(id, M, barra, t) {
+    var g = E(id); if (!g) return null;
+    var v = eo(seg(t, M.entra, 0.4)) * (M.sai != null ? 1 - eio(seg(t, M.sai, 0.3)) : 1);
+    g.setAttribute("opacity", v.toFixed(3));
+    var B = { x: barra.x + M.dx, y: barra.y + M.dy }, W = M.largura, k = M.k, H = M.max * k;
+    M._base = B;
+    var q = "M " + B.x.toFixed(2) + " " + B.y.toFixed(2) + " L " + B.x.toFixed(2) + " " + (B.y - H).toFixed(2) + " L " + (B.x + W).toFixed(2) + " " +
+      (B.y - H).toFixed(2) + " L " + (B.x + W).toFixed(2) + " " + B.y.toFixed(2) + " Z";
+    for (var f = 5; f < M.max; f += 5) {
+      var yy = B.y - f * k, len = f % 10 === 0 ? 44 : 24;
+      q += " M " + B.x.toFixed(2) + " " + yy.toFixed(2) + " L " + (B.x + len).toFixed(2) + " " + yy.toFixed(2);
+    }
+    M._quadro.setAttribute("d", q); M._quadroSob.setAttribute("d", q);
+    var hx = M.hasteDireita ? B.x + W : B.x;   // a haste chega ao canto da base do lado da barra (opção do s19)
+    var hs = "M " + barra.x.toFixed(2) + " " + barra.y.toFixed(2) + " L " + hx.toFixed(2) + " " + B.y.toFixed(2);
+    M._haste.setAttribute("d", hs); M._hasteSob.setAttribute("d", hs);
+    M._ponto.setAttribute("cx", barra.x.toFixed(2)); M._ponto.setAttribute("cy", barra.y.toFixed(2));
+    M._nums.forEach(function (n) { n.el.setAttribute("x", (B.x - 26).toFixed(2)); n.el.setAttribute("y", (B.y - n.ft * k + 30).toFixed(2)); });
+    // as marcas de referência
+    (M.marcas || []).forEach(function (mk, i) {
+      var mg = M._marcas[i], y = B.y - mk.ft * k, d = "M " + (B.x - 40).toFixed(2) + " " + y.toFixed(2) + " L " + (B.x + W + 40).toFixed(2) + " " + y.toFixed(2);
+      for (var c = 0; c < mg.childNodes.length; c++) mg.childNodes[c].setAttribute("d", d);
+      var vm = eo(seg(t, mk.entra, 0.3)) * (mk.sai != null ? 1 - eio(seg(t, mk.sai, 0.3)) : 1);
+      mg.setAttribute("opacity", vm.toFixed(3));
+      mk._y = y;
+    });
+    // a água: a linha e a hachura até o nível de agora
+    var L = M.nivel ? M.nivel(t) : null;
+    if (L == null || L <= 0) { M._agua.setAttribute("opacity", "0"); M._aguaSob.setAttribute("opacity", "0"); M._hach.setAttribute("d", ""); M._nivelY = null; }
+    else {
+      var yl = B.y - L * k;
+      var dl = "M " + (B.x - 18).toFixed(2) + " " + yl.toFixed(2) + " L " + (B.x + W + 18).toFixed(2) + " " + yl.toFixed(2);
+      M._agua.setAttribute("d", dl); M._aguaSob.setAttribute("d", dl);
+      M._agua.setAttribute("opacity", "1"); M._aguaSob.setAttribute("opacity", "1");
+      M._clip.setAttribute("x", B.x.toFixed(2)); M._clip.setAttribute("y", yl.toFixed(2));
+      M._clip.setAttribute("width", W.toFixed(2)); M._clip.setAttribute("height", Math.max(0, B.y - yl).toFixed(2));
+      var h = "", passo = 26;
+      for (var o = -H; o < W + H; o += passo) h += "M " + (B.x + o).toFixed(1) + " " + B.y.toFixed(1) + " L " + (B.x + o + H).toFixed(1) + " " + (B.y - H).toFixed(1) + " ";
+      M._hach.setAttribute("d", h);
+      M._nivelY = yl;
+    }
+    return B;
   }
 
   // ═══ O DESENHO DA CENA ═══════════════════════════════════════════════════════════════════════════
@@ -637,9 +717,10 @@ var C1850 = feicao("la-1850-hamlin"), CA = feicao("california-cb500k");
       var el = E(r.id); if (!el) return;
       var vin = eo(seg(t, r.entra, 0.3)), vout = r.sai != null ? 1 - eio(seg(t, r.sai, 0.3)) : 1;
       var v = vin * vout * (r.op ? r.op(t) : 1);
-      var ll = r.tela ? null : (typeof r.p === "function" ? r.p(t) : r.p);
+      var ll = (r.tela || r.telaFn) ? null : (typeof r.p === "function" ? r.p(t) : r.p);
       var x, y;
-      if (r.tela) { x = r.tela[0]; y = r.tela[1]; } else { if (!ll) return; var p = map.project(ll); x = p.x; y = p.y; }
+      if (r.telaFn) { var tf = r.telaFn(t); if (!tf) return; x = tf[0]; y = tf[1]; }
+      else if (r.tela) { x = r.tela[0]; y = r.tela[1]; } else { if (!ll) return; var p = map.project(ll); x = p.x; y = p.y; }
       var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
       var ty = r.vert === "cima" ? "-100%" : r.vert === "baixo" ? "0%" : "-50%";
       el.style.opacity = v.toFixed(3);
