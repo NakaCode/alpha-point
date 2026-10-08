@@ -31,3 +31,12 @@ Portões da s03 até aqui: 3.241 pedidos. O painel não foi lido.
 | 22:15–22:38 | quadros de prova com o `quadro.mjs` | não contados |
 | 22:31:12–22:43 | portões com a pré-carga: 3 rodadas do `qc-cena`, `portao-mapa til` e `rodape` | 8.235 (`_tmp/maptiler-portoes.jsonl`) |
 | 22:43:56–23:19:29 | 7 renders 4K de prova (s42, s44, s46, s48, s49, s53, s55), um de cada vez | não contados |
+
+## Lote M1 (s01, s05, s07, s10, s12, s14, s17, s19), 07/10/2026
+
+| quando (Brasília) | o que | pedidos |
+|---|---|---|
+| ~22:0x | `preparar-cena` das 8 | não contados |
+| 22:15–22:36 | quadros de prova com o `quadro.mjs` | não contados |
+| 22:36:48–22:44:19 | portões com a pré-carga (`qc-cena`, `portao-mapa til` e `rodape`, `qc-video-avanca` na s01, e a s01 de novo) | por cena no `til` e no `rodape`: s01 195, s05 378, s07 65, s10 117, s12 45, s14 53, s17 49, s19 208/201, e a s01 refeita 195/195; o `qc-cena` em `out/los-angeles/_tmp/art/lote-m1/portoes/conferir-final.log` e no `_tmp/maptiler-portoes.jsonl` |
+| 22:44:30–23:23:50 | 8 renders 4K de prova, um de cada vez | não contados |
