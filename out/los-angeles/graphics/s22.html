@@ -20,6 +20,7 @@
           0,82). O recorte do scan (bordas retas): x 150→2520, y 480→2130 do arquivo de 2664 × 4348 (do "THE" ao fim do
           subtítulo, "COMPETITION"; o corte cai no branco entre blocos), a 0,78× (1.849 × 1.287). O crédito "Source: Charles
           Willard, The Free Harbor Contest at Los Angeles, 1899" acende em 0 (300 ms), solto na mesa, 56 px.
+          A DERIVA do RIG (6 px × sen 0,23 t) congela nos últimos 250 ms (helper aplicarCamera): repouso de verdade (identidade §4.4).
     0,90–2,70  a CÂMERA "lê até o subtítulo": escala 1,00 → 1,14, o centro vai a (1750, 1120), eb, e PARA 0,42 s antes do primeiro
           pedaço do grifo (3,123): só a deriva do RIG daí até o fim.
     3,123 "harbor": o GRIFO --grifo-cor (= --destaque a 35 %, multiply) varre o subtítulo impresso, literal (textos-tela ›
@@ -30,10 +31,11 @@
             C "OPEN TO" (fim da 3ª linha)        ← "open to"      (4,083–4,483)
             D "COMPETITION" (4ª linha)           ← "competition"  (4,483–5,198)
           Cada pedaço cresce da esquerda para a direita e fica.
-    6,323 "not": a ETIQUETA de papel pousa à direita da folha (pouso de foto, 0,55 s, +2°): "not free of charge" (legenda 84 px,
-          Inter 500, --tinta-escura sobre --papel, em duas linhas). O conceito a punha em "free of charge" (6,883: ficaria 1,28 s
-          no ar); antecipada à negação "not", fica 1,84 s, ainda abaixo dos 2,0 s da marca (§4.3) por 0,16 s: DECLARADO NO RELATO
-          (o corte da cena manda; a frase da voz acaba em 7,623).
+    5,44  "railroads,": a ETIQUETA de papel pousa à direita da folha (pouso de foto, 0,55 s, +2°): "not free of charge" (legenda
+          84 px, Inter 500, --tinta-escura sobre --papel, em duas linhas). Fica 2,73 s no ar (≥ 2,0 s, identidade §4.3). O conceito a
+          punha em "free of charge" (6,883: 1,28 s) e a primeira versão em "not" (6,323: 1,84 s); o qc-visual reprovou os 1,84 s e o
+          Claude central mandou entrar em "railroads," (qc/_decisoes-central.md, 07/10/2026, item 1): a etiqueta antecipa em 0,9 s a
+          negação que a frase está construindo ("…between railroads, not one free of charge").
     7,916–8,166  REPOUSO: nada se move além da deriva do RIG.
     A CÂMERA: escala máxima 1,14, centro (1750, 1120): a margem sob a câmera (roupa §4) vale para x 241→3259 e y 313→1822, e tudo está
     montado dentro disso (a folha girada em x 636→2485, y 342→1658, com as fitas a partir de x 576; a etiqueta em x 2640→3200,
@@ -307,11 +309,11 @@
     el.style.opacity = (p * (1 - q)).toFixed(3);
     el.style.transform = "translateY(" + ((1 - p) * 24 + q * 24).toFixed(1) + "px)" + (escala ? " scale(" + lerp(1.04, 1.0, p).toFixed(4) + ")" : "");
   }
-  function fita(el, t, t0, lado) {
+  function fita(el, t, t0, lado, diag) {
     if (!el) return;
     var p = eo(seg(t, t0, 0.3));
     el.style.opacity = p.toFixed(3);
-    var rot = lado === "e" ? -5 : 4;
+    var rot = (lado === "e" ? -5 : 4) + (diag ? (lado === "e" ? -45 : 45) : 0);   // diag: a fita cruza o canto a 45°
     el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + rot + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
   }
   // a CÂMERA: estados {t0, t1, s, cx, cy} com movimentos curtos (eb) que terminam ≥ 0,3 s antes do grifo que enquadram
@@ -326,7 +328,8 @@
   }
   function aplicarCamera(c, t, luz) {
     var camEl = E("cam"), st = E("still");
-    var dx = 6 * Math.sin(t * 0.23) + (1920 - c.cx), dy = 4.8 * Math.sin(t * 0.17) + (1080 - c.cy);
+    var td = Math.min(t, (window.__duracao || 1e9) - 0.25);   // a deriva congela nos últimos 250 ms: repouso de verdade (identidade §4.4)
+    var dx = 6 * Math.sin(td * 0.23) + (1920 - c.cx), dy = 4.8 * Math.sin(td * 0.17) + (1080 - c.cy);
     if (camEl) camEl.style.transform = "scale(" + c.s.toFixed(5) + ") translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
     // o still acompanha a câmera a --mesa-satelite-paralaxe (0,6)
     if (st) { var PAR = 0.6, ss = 1 + (c.s - 1) * PAR; st.style.transform = "scale(" + ss.toFixed(5) + ") translate(" + (dx * PAR).toFixed(2) + "px," + (dy * PAR).toFixed(2) + "px)"; }
@@ -426,7 +429,7 @@
   E("cred1").textContent = TEXTOS.cred;
 
   // ── os tempos (locais, −315,067), do words.json e da regência s22 ──
-  var T = { pousa: 0.00, pousaDur: 0.80, fita: 0.70, slip: 6.323, slipDur: 0.55, cred: 0.00, repouso: DUR - 0.25 };
+  var T = { pousa: 0.00, pousaDur: 0.80, fita: 0.70, slip: 5.44, slipDur: 0.55, cred: 0.00, repouso: DUR - 0.25 };   // slip: "railroads," (320,507 s)
   var CAM = [
     { t0: 0.00, s: 1.000, cx: 1920, cy: 1080 },
     { t0: 0.90, t1: 2.70, s: 1.140, cx: 1750, cy: 1120 }    // "lê até o subtítulo"; para 0,42 s antes de "harbor" (3,123)

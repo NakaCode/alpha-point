@@ -242,6 +242,9 @@ necessidade.
 ## 8 · O molde e o exemplar
 
 - Parta do molde que o `preparar-cena` copia e edite só o bloco `CENA` e o CSS de marca.
+- A duração vai como número literal, não pelo objeto: `var DUR = 12.3;` (a `dur` do espelho), e não
+  `var DUR = CENA.duracao`. O `qc-janela` lê o HTML com uma regex que só reconhece o número, e reprovou 23 mapas do vídeo 2
+  com "`__duracao null`" por isso (`APRENDIZADOS.md`, item 76).
 - O que o canal muda nele já está feito em `out/prova-mapa/graphics/landsat-juneau.html`; leia-o inteiro antes:
   - `lang="en-US"`;
   - o link do `marca/tokens.css`;

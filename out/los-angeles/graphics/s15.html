@@ -26,7 +26,13 @@
               0,56–0,80 s; sombra solta; a luz 120 ms atrás; as fitas colam em 0,70 e 0,82). O recorte do scan (bordas retas):
               x 0→2170, y 2440→3410 do arquivo de 2170 × 3410 (de "southerly gales to leave their anchorage…" até o pé da página,
               com a frase "it is proposed to construct a breakwater, the position of which is indicated on the map." no meio e as
-              medidas do projeto, "3,300 feet… A gap of 1,000 feet… 2,500 feet long", nas últimas linhas), a 0,80× (1.736 × 776).
+              medidas do projeto, "3,300 feet… A gap of 1,000 feet… 2,500 feet long", nas últimas linhas), a 0,80× (1.736 × 776). O
+              recorte começa num vão entre linhas (2438→2440, pela projeção de tinta): a primeira linha, "island. Vessels are
+              frequently compelled…", é inteira. Acima do trecho, a FAIXA DE MARGEM da própria página (108 px: o pé do scan,
+              y 3246→3381, só papel, mesmo tom — 189 contra 189 de cinza médio), onde as fitas colam: a fita (90 px para dentro
+              da folha) fica fora da área do texto, com 18 px de respiro (identidade §5; roupa §4; conserto do qc-visual de
+              08/10/2026, lente espaco: a fita lavava as duas primeiras linhas). A folha fica 1.736 × 884, com a base onde
+              estava (y 1148) e o centro em 706; a p. 2126 continua cobrindo só a margem em branco do pé da p. 2124.
         0,00  o crédito "Source: Annual Report of the Chief of Engineers, U.S. Army, 1888" (56 px, --sec, faixa de baixo).
         0,95  "February" (229,675 s): o RÓTULO "FEBRUARY 1888" (pílula --rotulo, 128 px) na coluna da direita, 150 ms depois do
               assentamento (a voz convoca a data no mesmo instante), e 1,07 a LEGENDA "survey of San Pedro Bay" (84 px, Inter 500,
@@ -172,6 +178,13 @@
     clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 86%, 97% 100%, 0 100%, 4% 88%, 0 72%, 4% 56%, 0 40%, 4% 24%);
     transform-origin: 50% 50%; opacity: 0; }
 
+  /* A FAIXA DE MARGEM DA PRÓPRIA PÁGINA (identidade §5, "a fita fica fora da área do texto"; roupa §4, "palavra cortada
+     reprova"): acima do trecho, a margem em branco do MESMO scan (o pé da página), para a fita colar no papel e não sobre as
+     palavras; o trecho vem no .corpo, em linhas inteiras, logo abaixo. Nenhum redesenho: é a mesma imagem, duas janelas. */
+  .pagina .banda, .pagina .corpo { position: absolute; left: 0; right: 0; overflow: hidden; }
+  .pagina .corpo { bottom: 0; }
+  .pagina .banda img, .pagina .corpo img { position: absolute; display: block; }
+
   /* O DESENHO: um SVG do tamanho do palco; os grupos são postos por transform no __renderAt.
      TRAÇO DE ENGENHEIRO (identidade §5): linha --tinta de 6 px, sem preenchimento; aresta escondida tracejada; a sombra é o
      traço grosso escuro atrás das linhas (desfoque fixo; só transform e opacity animam) */
@@ -212,12 +225,16 @@
   <div id="cam">
     <div id="mesa"></div>
 
-    <!-- p1: a sombra solta e a p. 2124 (recorte 2170 × 970 do scan a 0,80× = 1736 × 776; centro 1190 × 760; −0,8°) -->
-    <div class="sombra-solta" id="p1Sombra" style="width:1736px;height:776px"></div>
-    <div class="grupo pagina" id="p1" style="width:1736px;height:776px">
+    <!-- p1: a sombra solta e a p. 2124: a FAIXA DE MARGEM da própria página (108 px: o pé do scan, y 3246→3381, em branco, onde a
+         fita cola) e o TRECHO (recorte 2170 × 970 do scan, y 2440→3410, a 0,80× = 1736 × 776); folha 1736 × 884; centro 1190 × 706; −0,8° -->
+    <div class="sombra-solta" id="p1Sombra" style="width:1736px;height:884px"></div>
+    <div class="grupo pagina" id="p1" style="width:1736px;height:884px">
       <div class="papel">
-        <img src="../_media/documento/arce1888-p2124.jpg" alt="" style="width:1736px;height:2728px;top:-1952px">
-        <div id="grifos1"></div>
+        <div class="banda" style="top:0;height:108px"><img src="../_media/documento/arce1888-p2124.jpg" alt="" style="width:1736px;height:2728px;top:-2596.8px"></div>
+        <div class="corpo" style="top:108px">
+          <img src="../_media/documento/arce1888-p2124.jpg" alt="" style="width:1736px;height:2728px;top:-1952px">
+          <div id="grifos1"></div>
+        </div>
       </div>
       <div class="fita" id="p1Fe" style="left:-60px;top:-50px"></div>
       <div class="fita" id="p1Fd" style="left:1356px;top:-50px"></div>
@@ -462,7 +479,7 @@
     cred: 0.00, repouso: DUR - 0.25
   };
   var K = 0.8;
-  var P1 = { w: 1736, h: 776, cx: 1190, cy: 760, rot: -0.8, x0: 0, y0: 2440 };   // p. 2124, recorte x 0→2170, y 2440→3410
+  var P1 = { w: 1736, h: 884, cx: 1190, cy: 706, rot: -0.8, x0: 0, y0: 2440 };   // p. 2124: faixa de margem 108 px + recorte x 0→2170, y 2440→3410 (a base fica onde estava: y 1148); o #grifos1 vive no .corpo
   var P2 = { w: 1736, h: 472, cx: 1260, cy: 1330, rot: 1.1, x0: 0, y0: 1060 };   // p. 2126, recorte x 0→2170, y 1060→1650
   var ESB = { cx: 2752, cy: 574 };                                                // o esboço (centro para o pouso, a sombra e a luz)
   var CAM = [

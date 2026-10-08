@@ -1370,3 +1370,19 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   `elementFromPoint`) e pelos quadros do MP4. Medida de contato vem de fora do código que a produz.
 - **Por que serve a qualquer canal:** todo canal com objeto animado que carrega texto (etiqueta, placa, papel, cartão), e todo
   canal que aceita uma medida escrita pela mesma peça que desenha.
+
+### 76. O `qc-janela` reprova a cena que escreve a duração por variável
+
+- **O problema:** no vídeo 2 (Los Angeles), o `qc-janela` saiu FAIL em 23 das 24 cenas de mapa, com "`__duracao null` <
+  janela" e "não consegui ler window.__duracao". O portão não abre a cena: ele lê o HTML com uma regex
+  (`scripts/qc-janela.mjs:239`), que só reconhece `window.__duracao = <número>` ou `= X` com `const X = <número>`. As cenas de
+  mapa escrevem `var DUR = CENA.duracao` e `window.__duracao = DUR`, e a regex não segue o objeto. A única que passou, a s03,
+  escreve `var DUR = 27.534`. A pré-carga das chaves não muda nada: não é página, é texto.
+- **O que resolveu:** uma conferência à parte do mesmo fato: uma atribuição só, `DUR = CENA.duracao`, e o literal de
+  `CENA.duracao` contra a janela que o próprio portão leu do espelho; e os clipes 4K com dur × 30 quadros. As 23 bateram
+  (`out/los-angeles/_tmp/qc-janela-mapas-conferido.txt`). O FAIL foi lido como limite de leitura, não como defeito.
+- **Como evitar:** escreva a duração como número literal (`var DUR = 12.3;`), ou ponha o literal direto em
+  `window.__duracao`. O portão do molde não se edita; quem muda é a cena, na próxima vez que nascer.
+- **Por que serve a qualquer canal:** todo canal que usa o `qc-janela` do molde e monta a cena a partir de um objeto de
+  configuração. Um FAIL em massa, todo com o mesmo "null", é sinal de leitura, não de 23 cenas erradas, e se prova à parte antes
+  de mandar consertar.

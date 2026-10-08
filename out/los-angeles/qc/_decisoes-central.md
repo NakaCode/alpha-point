@@ -26,3 +26,17 @@
    teto de palavras"), desenhada com a linha de cota fina (identidade §5, "a cota (a medida) em Inter 84 px, com a linha de
    cota fina"), e segue a voz ("just over two miles of rock"). A lente não desconta por isso nas próximas rodadas.
 4. **s28, a foto da multidão e da barcaça em FALTA.** Declarada pela regência; segue como está.
+
+## 08/10/2026, 00:1x — o lote Q3 (mapas s01–s17)
+
+1. **s05, a pílula "San Pedro Bay".** A voz manda (identidade §4.4; regência e `textos-tela` em 25,733 s): a pílula está na
+   tela quando a voz diz o nome (25,74–26,84 s), e a câmera chega lá a tempo. Vai ao mapista.
+2. **s07, o aviso "Approximate route".** Fica todo o tempo da linha (identidade §6), desde 1,28 s. Vai ao mapista.
+3. **s12, "MORE THAN A MILE" em 0 s.** A voz diz "more than a mile" em 2,67–3,39 s: o número entra na palavra (identidade §4.4;
+   a revisão do Juneau reprovou número antes da voz). O `t0` 0 do `textos-tela` não passa por cima da regra. Vai ao mapista.
+4. **s14, o ponto da guia de "Wilmington estuary" encostado no "40" do medidor (5,1–9 s).** Colisão visível por 4 s; vai ao
+   mapista, junto com a s12.
+5. **"Source:" nos números de s12 e s14.** Fica como o redator deixou (a lista fechada do `textos-tela` não traz). O
+   `qc-visual` deu 7 sem derrubar; na s14 a voz atribui ("the federal board").
+6. **s07, a foto das barcaças.** Continua FALTA declarada pela regência; a cena se sustenta no mapa. Voltar à pesquisa (os
+   termos do `qc-visual` estão no laudo da s07) fica para depois da revisão do Lucas, se ele pedir.

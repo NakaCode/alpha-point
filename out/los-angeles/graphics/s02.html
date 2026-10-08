@@ -15,7 +15,7 @@
   a marca (identidade §2–§7, tokens.css). TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS. Onde o conceito e os textos
   divergem (o conceito punha o nome "Col. G. H. Mendell, Corps of Engineers" na pílula; os textos de tela o mandam para
   nao_vai_para_tela: "no gancho a voz diz 'an Army engineer', sem nome; a tela não dá o nome antes da voz"), valem os textos
-  (roupa §0): só "NOV. 8, 1886" e a linha de fonte. A assinatura impressa fica FORA do recorte (o recorte termina em y 2000 do
+  (roupa §0): só "NOV. 8, 1886" e a linha de fonte. A assinatura impressa fica FORA do recorte (o recorte termina em y 1965 do
   arquivo; a assinatura está em y ~2960).
 
   O BEAT (tempo local = master − 12,3; palavras do words.json):
@@ -23,10 +23,14 @@
                   be made a harbor for deep-water ships.""
         0,00  A PÁGINA 2123 pousa no centro (a folha: 0,80 s, desce 420 px em eo, gira de −1,5° a +1,2°, ASSENTA 1,03 → 1,00 em
               0,56–0,80 s; sombra solta: no ar +64 px / 1,05 / 0,35, assentada +12 px / 1,00 / 0,80; a luz 120 ms atrás; as fitas
-              colam em 0,70 e 0,82). O recorte do scan (bordas retas): x 60→2170 (sem a faixa da lombada, à esquerda), y 1180→2000
-              do arquivo de 2170 × 3410 (de "San Pedro has now, however, a much larger foreign trade…" até "…in the little harbor
-              of Wilmington.", com o corte no branco entre parágrafos), a 1,10× (2.321 × 902; a página real entra como folha até
-              1,4×, identidade §5). A frase do "never" fica no terço de cima.
+              colam em 0,70 e 0,82). O recorte do scan (bordas retas): x 60→2170 (sem a faixa da lombada, à esquerda), y 1210→1965
+              do arquivo de 2170 × 3410, EM LINHAS INTEIRAS (os cortes caem nos vãos entre linhas, medidos pela projeção de tinta
+              do scan: 1204→1216 e 1953→1967): da linha "San Pedro has now, however, a much larger foreign trade than San" até
+              "Wilmington.", a 1,10× (2.321 × 831). Acima do trecho, a FAIXA DE MARGEM da própria página (108 px: o pé do scan,
+              y 3150→3248, só papel, mesmo tom — 186 contra 186,5 de cinza médio), onde as fitas colam: a fita (90 px para dentro
+              da folha) fica fora da área do texto, com 18 px de respiro (identidade §5; roupa §4; conserto do qc-visual de
+              08/10/2026, lente espaco). A folha fica 2.321 × 939 (a página real entra como folha até 1,4×, identidade §5); a
+              pílula da data sobe para y 330, para não encostar na fita. A frase do "never" fica no terço de cima.
         0,00  o crédito "Source: Annual Report of the Chief of Engineers, U.S. Army, 1888" (56 px, --sec, faixa de baixo).
         0,95  "eighty-six" (12,92–13,59 s): o RÓTULO "NOV. 8, 1886" (pílula --rotulo, 128 px) acima da folha, à esquerda, 150 ms
               depois do assentamento (identidade §4.4). Lastro: a voz diz "in eighteen eighty-six"; o dia e o mês são a data da
@@ -113,6 +117,13 @@
     clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 86%, 97% 100%, 0 100%, 4% 88%, 0 72%, 4% 56%, 0 40%, 4% 24%);
     transform-origin: 50% 50%; opacity: 0; }
 
+  /* A FAIXA DE MARGEM DA PRÓPRIA PÁGINA (identidade §5, "a fita fica fora da área do texto"; roupa §4, "palavra cortada
+     reprova"): acima do trecho, a margem em branco do MESMO scan (o pé da página), para a fita colar no papel e não sobre as
+     palavras; o trecho vem no .corpo, em linhas inteiras, logo abaixo. Nenhum redesenho: é a mesma imagem, duas janelas. */
+  .pagina .banda, .pagina .corpo { position: absolute; left: 0; right: 0; overflow: hidden; }
+  .pagina .corpo { bottom: 0; }
+  .pagina .banda img, .pagina .corpo img { position: absolute; display: block; }
+
   /* a pílula do rótulo (§4.1: --rotulo, cantos 12, respiro 24 × 40; 128 px Inter 700) */
   .pilula { position: absolute; white-space: nowrap; background: var(--rotulo); color: var(--tinta); border-radius: var(--cantos);
     padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-family: var(--fonte); font-weight: var(--peso-rotulo);
@@ -142,18 +153,23 @@
   <img id="still" src="../_media/base/mesa-los-angeles.png" alt="" data-qc-reuso="a mesa do vídeo 2: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; conceito › _mesa_still)">
   <div id="cam">
     <div id="mesa"></div>
-    <!-- a sombra solta e a p. 2123 (recorte 2110 × 820 do scan, x 60→2170, a 1,10× = 2321 × 902; centro 1920 × 1090; +1,2°) -->
-    <div class="sombra-solta" id="p1Sombra" style="width:2321px;height:902px"></div>
-    <div class="grupo pagina" id="p1" style="width:2321px;height:902px">
+    <!-- a sombra solta e a p. 2123: a FAIXA DE MARGEM da própria página (108 px: o pé do scan, y 3150→3248, em branco, onde a fita
+         cola) e o TRECHO em linhas inteiras (recorte 2110 × 755 do scan, x 60→2170, y 1210→1965, a 1,10× = 2321 × 831);
+         folha 2321 × 939; centro 1920 × 1090; +1,2° -->
+    <div class="sombra-solta" id="p1Sombra" style="width:2321px;height:939px"></div>
+    <div class="grupo pagina" id="p1" style="width:2321px;height:939px">
       <div class="papel">
-        <img src="../_media/documento/arce1888-p2123.jpg" alt="" style="width:2387px;height:3751px;left:-66px;top:-1298px">
-        <div id="grifos1"></div>
+        <div class="banda" style="top:0;height:108px"><img src="../_media/documento/arce1888-p2123.jpg" alt="" style="width:2387px;height:3751px;left:-66px;top:-3465px"></div>
+        <div class="corpo" style="top:108px">
+          <img src="../_media/documento/arce1888-p2123.jpg" alt="" style="width:2387px;height:3751px;left:-66px;top:-1331px">
+          <div id="grifos1"></div>
+        </div>
       </div>
       <div class="fita" id="p1Fe" style="left:-60px;top:-50px"></div>
       <div class="fita" id="p1Fd" style="left:1941px;top:-50px"></div>
     </div>
     <!-- o rótulo da data, fora da folha (grafia de textos-tela.json s02) -->
-    <div class="pilula" id="data" data-qc-papel="rotulo" style="left:759px;top:390px"></div>
+    <div class="pilula" id="data" data-qc-papel="rotulo" style="left:759px;top:330px"></div>
   </div>
   <div id="cred" data-qc-papel="credito"></div>
 </div>
@@ -336,7 +352,7 @@
   // ── os tempos (locais, −12,3), do words.json e da regência s02 ──
   var T = { pousa: 0.00, pousaDur: 0.80, fita: 0.70, data: 0.95, cred: 0.00, repouso: DUR - 0.25 };
   var K = 1.10;
-  var P1 = { w: 2321, h: 902, cx: 1920, cy: 1090, rot: 1.2, x0: 60, y0: 1180 };   // p. 2123, recorte x 60→2170 (sem a lombada), y 1180→2000
+  var P1 = { w: 2321, h: 939, cx: 1920, cy: 1090, rot: 1.2, x0: 60, y0: 1210 };   // p. 2123: faixa de margem 108 px + recorte x 60→2170 (sem a lombada), y 1210→1965 (linhas inteiras); o #grifos1 vive no .corpo, por isso y0 basta
   // a CÂMERA: lê até a frase (eb) e PARA 0,33 s antes de "can" (5,33)
   var CAM = [
     { t0: 0.00, s: 1.000, cx: 1920, cy: 1080 },

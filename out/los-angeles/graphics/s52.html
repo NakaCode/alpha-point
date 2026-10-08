@@ -17,7 +17,8 @@
   SÓ: o objeto TEXTOS.
   DECLARADO: o t0 dos textos de tela é o do BEAT (0 e 3,533); dentro do beat, cada número entra NA PALAVRA que o diz (identidade
   §4.4, "o número que a voz diz entra na palavra"; a revisão do Juneau reprovou número antes da voz): "1 TEU" em "single" (1,57),
-  "20 FT" em "twenty-foot" (2,17), "40 FT" no contato, em "counts" (4,57), "= 2 TEU" em "as" (4,81; "as two" = 4,81–5,26).
+  "20 FT" em "twenty-foot" (2,17), "40 FT" em "forty-foot" (3,77; a cota-alvo, no vão em que o par vai encostar: fica 2,13 s),
+  "= 2 TEU" em "as" (4,81; "as two" = 4,81–5,26).
   DECLARADO: o papel "cota" do redator vai ao portão como data-qc-papel="eixo" (a cota é o papel eixo/legenda da identidade §4.1:
   piso 72, teto 104). As cotas de medida ("20 FT", "40 FT") em Inter 500 a 84 px (--fs-eixo); os rótulos da unidade ("1 TEU",
   "= 2 TEU") em Inter 700 a 104 px, o teto do papel: são o resultado da definição, e ficam maiores que a medida sem virar herói.
@@ -36,13 +37,14 @@
         4,10  as duas assentadas; a da direita DESLIZA até a da esquerda em 0,47 s (eo), ao longo do eixo do comprimento.
         4,57  CONTATO, em "counts" (4,57–4,73): a face de trás da da esquerda e a de frente da da direita coincidem (a posição
               é a soma exata L20 no eixo; velocidade zero no contato: a derivada do eo é 3(1−p)² = 0 em p = 1; sem rebote, sem
-              atravessar); as arestas da junção se apagam em 0,3 s e vira UMA caixa de 40 pés; a cota "40 FT" embaixo dela
-              (300 ms). Fica 1,33 s (cota curta, não bloco de leitura). A luz veio para o centro do par em 3,55–4,15 (eb).
+              atravessar); as arestas da junção se apagam em 0,3 s e vira UMA caixa de 40 pés (a cota "40 FT" já está embaixo dela desde 3,77: a cota-alvo que o par fecha)
+              A cota fica 2,13 s no ar (3,77–5,90). A luz veio para o centro do par em 3,55–4,15 (eb).
         4,81  "as" (de "counts as two"): o rótulo "= 2 TEU" acima da caixa de 40 (300 ms, como o "1 TEU"); inteiro em 5,11,
               enquanto a voz diz "two" (5,01–5,26). Fica 1,09 s.
         5,65–5,90  REPOUSO: nada se move além da deriva do RIG (o push-in para em 5,65; a última entrada acabou em 5,11).
     DECLARADO (para o qc-visual; o redator e a regência não têm mais o que fazer aqui): "= 2 TEU" fica 1,09 s no ar, abaixo dos
-    2,0 s da identidade §4.3, porque a voz só diz "two" em 5,01 e o corte é em 5,90; "40 FT", 1,33 s. Antecipar o 2 para "counts"
+    2,0 s da identidade §4.3, porque a voz só diz "two" em 5,01 e o corte é em 5,90 (DECISÃO DO LUCAS PENDENTE: qc/_decisoes-central.md,
+    Q2 item 1; não mexer). Antecipar o 2 para "counts"
     (4,57) daria 1,33 s e poria o "2" antes de "two"; a regência dá os dois ao mesmo beat e o roteiro não tem mais tempo. É o
     melhor que a janela permite; fica declarado, não escondido.
 
@@ -271,7 +273,7 @@
     cota20: 2.17,          // "twenty-foot": a cota 20 FT
     par: 3.55,             // "a" (de "a forty-foot box"): as duas caixas pousam à direita
     deslizaDur: 0.47,      // o deslize (eo), de 4,10 ao contato em "counts"
-    cota40: 4.57,          // = o contato (par + pouso + deslize), em "counts" (4,57–4,73)
+    cota40: 3.77,          // "forty-foot": a cota-alvo dos 40 pés, no vão onde o par vai encostar (conserto do qc-visual, cadência, 08/10/2026: no contato ficava 1,33 s)
     teu2: 4.81,            // "as" (de "counts as two"): o rótulo = 2 TEU, inteiro em 5,11 enquanto a voz diz "two" (5,01–5,26)
     entrada: 0.3,          // rótulo e número: 300 ms (identidade §4.4)
     repouso: DUR - 0.25    // 5,65: daqui ao corte só a deriva
@@ -429,7 +431,7 @@
     C20.g.style.opacity = eo(seg(t, T.cota20, T.entrada)).toFixed(3);
 
     // p2: as duas caixas pousam em "a forty-foot box"; a de trás desliza até encostar (contato em "counts"); a junção se apaga;
-    // "40 FT" no contato; "= 2 TEU" em "as" (inteiro em "two")
+    // "40 FT" em "forty-foot" (cota-alvo, antes do contato); "= 2 TEU" em "as" (inteiro em "two")
     var off = offsetFt(t);
     porCaixa(PA, t, T.par, 0);
     porCaixa(PB, t, T.par, off);

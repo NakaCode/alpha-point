@@ -37,9 +37,11 @@
         9,69  "button": nada novo; a câmera segue (conceito).
         11,95–12,20  REPOUSO: nada se move além da deriva do RIG.
     A CÂMERA: o push-in do RIG (0,0024/s, base 1,0) PARA em 11,95; a deriva senoidal segue. Escala máxima 1,0287: a margem sob a câmera
-    vale para x 248→3592 e y 186→1858, e tudo está dentro (o cartaz girado em x 410→1590, y 221→1819 … o canto de baixo girado chega a
-    y ≈ 1.832, abaixo da faixa? não: 1.807 + 12 = 1.819 < 1.858; as fitas a partir de x 350; a coluna em x 1720→2564; o cartão girado em
-    x 2390→3410, y 245→1435; a pílula do nome em x 2390→3554; o cargo em y 1645→1847).
+    vale para x 248→3592 e y 186→1858, e tudo está dentro (o cartaz girado em x 410→1590, y 221→1819; as fitas a partir de x 350;
+    a coluna em x 1720→2564; o cartão girado em x 2250→3270, y 245→1435; a pílula do nome em x 2250→3559 no palco, 3606 na tela em
+    12,1 s (≤ 3640); o cargo em y 1645→1847). CONSERTO de 08/10/2026 (qc-visual, lente espaço): o conjunto do card (retrato, aviso,
+    nome e cargo) recuou 140 px para a esquerda; a pílula "WILLIAM MCKINLEY" acabava em x ≈ 3746 na tela (o texto tem 1.229 px, não
+    os 1.084 que eu estimara). Nada encolheu.
     PRODUTO MÁXIMO DAS ESCALAS: o cartaz 0,29 × 1,03 × 1,0287 = 0,307; o retrato 0,5178 × 1,03 × 1,0287 = 0,549 (≤ 1,4). Ken Burns: não
     há foto em tela cheia (o cartaz parado 12 s vive pela câmera do RIG, como o retrato da s06).
 
@@ -189,8 +191,8 @@
     <!-- os textos (grafia de textos-tela.json s27) -->
     <div class="pilula"  id="april"   data-qc-papel="rotulo" style="left:1720px;top:420px"></div>
     <div class="legenda" id="jubilee" data-qc-papel="eixo"   style="left:1720px;top:640px;width:1200px"></div>
-    <div class="pilula"  id="nome"    data-qc-papel="rotulo" style="left:2390px;top:1440px"></div>
-    <div class="legenda" id="cargo"   data-qc-papel="eixo"   style="left:2390px;top:1645px;width:1020px"></div>
+    <div class="pilula"  id="nome"    data-qc-papel="rotulo" style="left:2250px;top:1440px"></div>
+    <div class="legenda" id="cargo"   data-qc-papel="eixo"   style="left:2250px;top:1645px;width:1020px"></div>
   </div>
 </div>
 
@@ -327,11 +329,11 @@
     el.style.opacity = (p * (1 - q)).toFixed(3);
     el.style.transform = "translateY(" + ((1 - p) * 24 + q * 24).toFixed(1) + "px)" + (escala ? " scale(" + lerp(1.04, 1.0, p).toFixed(4) + ")" : "");
   }
-  function fita(el, t, t0, lado) {
+  function fita(el, t, t0, lado, diag) {
     if (!el) return;
     var p = eo(seg(t, t0, 0.3));
     el.style.opacity = p.toFixed(3);
-    var rot = lado === "e" ? -5 : 4;
+    var rot = (lado === "e" ? -5 : 4) + (diag ? (lado === "e" ? -45 : 45) : 0);   // diag: a fita cruza o canto a 45°
     el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + rot + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
   }
   // a CÂMERA: estados {t0, t1, s, cx, cy} com movimentos curtos (eb) que terminam ≥ 0,3 s antes do grifo que enquadram
@@ -346,7 +348,8 @@
   }
   function aplicarCamera(c, t, luz) {
     var camEl = E("cam"), st = E("still");
-    var dx = 6 * Math.sin(t * 0.23) + (1920 - c.cx), dy = 4.8 * Math.sin(t * 0.17) + (1080 - c.cy);
+    var td = Math.min(t, (window.__duracao || 1e9) - 0.25);   // a deriva congela nos últimos 250 ms: repouso de verdade (identidade §4.4)
+    var dx = 6 * Math.sin(td * 0.23) + (1920 - c.cx), dy = 4.8 * Math.sin(td * 0.17) + (1080 - c.cy);
     if (camEl) camEl.style.transform = "scale(" + c.s.toFixed(5) + ") translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
     // o still acompanha a câmera a --mesa-satelite-paralaxe (0,6)
     if (st) { var PAR = 0.6, ss = 1 + (c.s - 1) * PAR; st.style.transform = "scale(" + ss.toFixed(5) + ") translate(" + (dx * PAR).toFixed(2) + "px," + (dy * PAR).toFixed(2) + "px)"; }
@@ -457,7 +460,7 @@
     camPara: DUR - 0.25
   };
   var POS = { w: 1180, h: 1573, cx: 1000, cy: 1020, rot: -1.2 };
-  var RET = { w: 1020, h: 1166, cx: 2900, cy: 840, rot: 1.2 };
+  var RET = { w: 1020, h: 1166, cx: 2760, cy: 840, rot: 1.2 };   // 2900 → 2760 em 08/10/2026: a pílula do nome acabava em x 3746 na tela (margem 3640)
   function alvoLuz(t) { var u = eb(seg(t, T.pousaRet, 0.6)); return { x: lerp(POS.cx, RET.cx, u), y: lerp(POS.cy, RET.cy, u) }; }
 
   function cena(t) {
