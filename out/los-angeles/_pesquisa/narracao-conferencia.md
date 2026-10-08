@@ -94,3 +94,9 @@ recibos (`characterCost` de cada `out/los-angeles/_narracao/<chave>.json`).
   com a da trilha ("transições e trilha com mix").
 - **A decisão do volume, 08/10/2026, 13:2x:** "Subir a voz no Premiere" (a música a −35 dB no XML, como no Juneau; a A1 sobe ~5,5 dB no
   Premiere, com limitador, porque o pico de −3,6 dBTP passaria de 0). O registro e o que vai ao LEIA-ME: `out/los-angeles/_creditos-trilha.md`.
+- **A escuta das datas, 08/10/2026, 17:xx** (`_tmp/escuta/escuta-datas-ordinais.mp3`, 9 recortes; a 1ª versão saiu muda por erro de corte
+  e foi refeita): o Lucas confirmou "Monday" (o recorte curto do Whisper ouvia "Sunday") e não apontou nada nos recortes 2–4 e 6–9. No 1
+  ("On November eighth, eighteen eighty-six", 174,28 s, trecho 9), mandado de novo em frase inteira (`escuta-november-eighth.mp3`), ele
+  disse: "Eu tenho a impresso de escutar "Eit"". A medida: depois da oclusão do "t" (174,46 s) vêm ~0,12 s de energia contínua em
+  3–8 kHz, o que combina com um "th" suave; o Whisper escreve "8th" (0,74) no recorte curto e "8" (0,99) na frase. A data não está na tela.
+  À pergunta "O "November eighth" aos 2:54: como seguimos?", a resposta: "Manter (Recomendado)". Nada se refaz.
