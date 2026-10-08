@@ -23,3 +23,11 @@ Portões da s03 até aqui: 2.128 pedidos (`out/los-angeles/_tmp/maptiler-portoes
 | 07/10, 21:49:39–21:55:37 | s03: render 3, o que vale (carimbo `27a3fd469f95` / 2160p) | não contados |
 
 Portões da s03 até aqui: 3.241 pedidos. O painel não foi lido.
+
+## Lote M3 (s42, s44, s46, s48, s49, s53, s55), 07/10/2026
+
+| quando (Brasília) | o que | pedidos |
+|---|---|---|
+| 22:15–22:38 | quadros de prova com o `quadro.mjs` | não contados |
+| 22:31:12–22:43 | portões com a pré-carga: 3 rodadas do `qc-cena`, `portao-mapa til` e `rodape` | 8.235 (`_tmp/maptiler-portoes.jsonl`) |
+| 22:43:56–23:19:29 | 7 renders 4K de prova (s42, s44, s46, s48, s49, s53, s55), um de cada vez | não contados |
