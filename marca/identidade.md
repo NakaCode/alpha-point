@@ -702,6 +702,20 @@ Juneau onde a resposta dele diz:
 `--tinta`, 6 px. Demais fronteiras em branco a 70 %, 5 px, sobre um contorno escuro de `#0B0F14` a 60 %,
 12 px. Preenchimento do protagonista: `--destaque` a 85 %, para o relevo transparecer.
 
+**A água escura nos mapas do porto** (Lucas, 08/10/2026, do vídeo 2 em diante). A foto de satélite da MapTiler é um mosaico, e
+na água do porto as emendas aparecem como cunhas claras de borda reta (no vídeo 2, em uns 15 mapas: s01, s05, s07, s12, s14, s19,
+s21, s23, s26, s29, s31, s46, s49, s53 e s55). A pergunta: "Sabendo disso, escurecemos a água do mar e do porto nesta rodada dos
+mapas?" A resposta: "Sim, tom escuro, todos os mapas do porto (Recomendado)". A opção dizia: "Quase-preto esverdeado, igual à água
+escura da foto; somem navios, esteiras e barcos. Primeiro uma prova numa cena (s29 ou s31)."
+- A camada: o contorno da água do OpenStreetMap (water polygons de osmdata.openstreetmap.de, ODbL; o crédito "© OpenStreetMap
+  contributors" já está na linha da MapTiler), recortado ao lugar do vídeo, com o quebra-mar e os píeres como terra (o San Pedro
+  Breakwater, `way/1312790328`, vem dentro da água no OSM e se tira). Opaca, logo acima do satélite e abaixo de tudo o que a cena
+  desenha (águas de contexto, linhas, rótulos).
+- O tom: `--agua-base` (`#061416`), o da água escura do satélite medida depois do tratamento 65/70. As águas de contexto que a cena
+  acende (`_agua_do_porto` do conceito) vão por cima dela.
+- O que se perde, e é aceito: navios, esteiras e barcos somem; nas praias vistas de perto, o tom avança uns 20 m sobre a areia molhada.
+- Vale para os mapas do porto do vídeo 2 depois da prova aprovada pelo Lucas, e para os próximos vídeos onde a emenda aparecer na água.
+
 O contorno escuro entrou em 25/09/2026, por decisão do Lucas. Sem ele, a divisa sumia sobre neve e gelo: no
 teste de Juneau, o contraste sobre o campo de gelo era de 1,5:1.
 
