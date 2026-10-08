@@ -452,6 +452,20 @@ outro modelo no despacho:
 no claude.ai: o navegador gasta do mesmo limite da assinatura Max (`C:/projetos/regie-v1/docs/CONTAS.md`, "Uma cota
 para tudo") e não tem as fontes locais nem a bancada do canal.
 
+**O levantamento dos modelos** (08/10/2026; `out/_modelos/relatorio.md`, com o cético em `cetico.md`). O vídeo 2 gastou uns 125
+pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo trabalho, e o Sonnet ~¾ do Opus. As respostas do Lucas
+(08/10, 17:5x):
+- consertos do `editor-de-arte` em Opus em vez de Fable? **"Não, manter Fable"**: o editor continua todo em Fable;
+- testar a revisão de espectador em Sonnet, lado a lado com a de Opus, num lote pequeno da próxima revisão? **"Sim, testar
+  (Recomendado)"**: se o Sonnet achar o mesmo, a revisão passa a ele;
+- do vídeo 3 em diante, as partes mecânicas do roteiro (cópia para a voz, trocas de pronúncia, conferências) fora do Fable?
+  **"Sim, só a escrita em Fable (Recomendado)"**: a escrita, o gancho e a voz em Fable; o resto em Opus ou Sonnet.
+- **O que o Claude central decide sozinho** (os agentes dele, não os especialistas): leitores, montagem de lista e as conferências
+  mecânicas da linha (ingest, cut_detect, mirror) em `model: 'sonnet'`; céticos, verificadores, conferências e leitores com `effort:
+  'high'` (não herdar o `xhigh` da sessão); conferência que julga licença, procedência ou texto de tela fica em Opus; revisão de
+  espectador em lotes de até ~40 imagens por revisor, e todo agente grava o resultado no disco ao terminar. Haiku em nada que pede
+  julgamento; o `qc-visual` continua em Sonnet.
+
 **Mais mapa** (Lucas, 27/09/2026: "nos próximos devemos usar mais mapas (mas claro que somente se o contexto
 permitir"): do vídeo 2 em diante, a pauta e o roteiro preferem o ângulo espacial quando o assunto o tem, e fala de
 lugar, rota, distância ou território vai a mapa antes de B-roll genérico. Nunca mapa forçado. O Juneau fica como
