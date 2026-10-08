@@ -129,7 +129,9 @@ produz o master. O deste canal nasce assim:
      gasto: `narrar.mjs --vozes` lista as duas vozes do canal. **Em 30/09/2026 o Lucas mandou pelo chat uma chave nova da ElevenLabs**: trocada no arquivo (a anterior ficou em `chaves.env.antes-da-troca-elevenlabs-2026-09-30`, na mesma pasta) e testada sem gasto (`--vozes` lista as três vozes do canal). Nunca imprima nem leia os valores; para saber de
      onde vem uma chave, use `onde()` de `src/lib/chaves.mjs` da pré-v1.
    - **Do vídeo 2 em diante, até 15.000 créditos por vídeo sem pedir ok** (Lucas, 02/10/2026; "A autonomia do vídeo 2
-     em diante"), com o gasto registrado e avisado depois. Acima disso, e no Juneau, vale o que segue.
+     em diante"), com o gasto registrado e avisado depois. Acima disso, e no Juneau, vale o que segue. **No vídeo 2 (Los
+     Angeles), sem teto:** o Lucas, 07/10/2026, 04:2x: "Você pode usar mais que 15 mil." O gasto continua registrado antes e
+     depois de cada rodada e avisado no `#status`.
    - Gastar crédito pede o ok do Lucas. Gasto em 24/09, conferido no saldo: 2.433 nas amostras e na escolha
      da voz; 15.564 na narração do texto aprovado (o bloco 1 com quebras de linha, o teste sem quebras e os 3
      blocos em "Criativo"); 709 no teste do v2; 1.498 na prova do tom de conversa (teste com a voz anterior e o
@@ -705,6 +707,8 @@ robô, termos e compra. As quatro respostas:
     `narracao-conferencia.md`) e se avisa no `#status` depois. A conta é por vídeo: a soma de testes, narração e
     parágrafos refeitos. O que passar de 15.000 no vídeo pede o ok antes da rodada que passaria.
   - O teste às cegas da voz do vídeo 2 (item 4 da narração, acima) entra nos 15.000.
+  - No vídeo 2 (Los Angeles), o teto caiu: o Lucas, 07/10/2026, 04:2x, "Você pode usar mais que 15 mil." O registro e o aviso
+    continuam. Do vídeo 3 em diante, volta o teto de 15.000, até ele dizer outra coisa.
 - **Os bancos pagos.** A pergunta: "A caça nos bancos pagos é a parte que mais pede você: a janela à vista, os cliques na
   aba e a lista. Como fica no vídeo 2?" A resposta: "Como hoje". A opção dizia: "Caça sempre que a lista de mídia pedir."
   "Caça nos bancos pagos", abaixo, não muda.
