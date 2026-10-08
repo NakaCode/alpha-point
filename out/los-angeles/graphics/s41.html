@@ -139,7 +139,7 @@
     <!-- a sombra solta e a folha (2400 × 1200; centro 1920 × 1000; +0,8°) -->
     <div class="sombra-solta" id="folSombra" style="width:2760px;height:1100px"></div>
     <div class="grupo" id="fol" style="width:2760px;height:1100px">
-      <div class="folha">
+      <div class="folha" data-qc-fonte-livre="folha de documento recriada: Courier Prime (--fonte-doc), identidade §3 e §5">
         <div class="grifos" id="grifos"></div>
         <div class="cab">
           <div class="titulo" id="cabTitulo"></div>
@@ -260,7 +260,8 @@
   };
   // ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
   // o cabeçalho: UM elemento de texto, as duas linhas separadas por <br> (um bloco para o leitor e para o portão de carga)
-  (function () { var e = E("cabTitulo"); if (!e) return; e.textContent = ""; TEXTOS.cabTitulo.forEach(function (l, i) { if (i) e.appendChild(document.createElement("br")); e.appendChild(document.createTextNode(l)); }); })();
+  // (cada linha, menos a última, termina em espaço antes do <br>: o espaço some na tela em nowrap, mas o texto lido do DOM não cola as palavras)
+  (function () { var e = E("cabTitulo"); if (!e) return; e.textContent = ""; TEXTOS.cabTitulo.forEach(function (l, i) { if (i) e.appendChild(document.createElement("br")); e.appendChild(document.createTextNode(i + 1 < TEXTOS.cabTitulo.length ? l + " " : l)); }); })();
   E("cabRef").textContent = TEXTOS.cabRef;
   E("cred").textContent = TEXTOS.cred;
   // monta um bloco de linhas: UM elemento de texto (as linhas separadas por <br>); cada [gN palavra] fica texto corrido e vira um
@@ -276,7 +277,7 @@
         if (m) { grifos.push({ g: m[1] || "1", node: node, a: texto.length, b: texto.length + m[2].length }); texto += m[2]; }
         else if (tk) texto += tk;
       });
-      node.data = texto; el.appendChild(node);
+      node.data = i + 1 < linhas.length ? texto + " " : texto; el.appendChild(node);   // o espaço antes do <br> some na tela (nowrap) e separa as palavras no texto lido do DOM
     });
   }
   var GRIFOS = [];

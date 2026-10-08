@@ -130,7 +130,7 @@
     <!-- a sombra solta e a folha (2760 × 1420; centro 1920 × 1020; −0,6°) -->
     <div class="sombra-solta" id="folSombra" style="width:2760px;height:1420px"></div>
     <div class="grupo" id="fol" style="width:2760px;height:1420px">
-      <div class="folha">
+      <div class="folha" data-qc-fonte-livre="folha de documento recriada: Courier Prime (--fonte-doc), identidade §3 e §5">
         <div class="grifos" id="grifos"></div>
         <div class="cab" id="cab" data-qc-papel="eixo"></div>
         <div class="fio"></div>
@@ -269,7 +269,7 @@
         if (m) { grifos.push({ g: m[1] || "1", node: node, a: texto.length, b: texto.length + m[2].length }); texto += m[2]; }
         else if (tk) texto += tk;
       });
-      node.data = texto; el.appendChild(node);
+      node.data = i + 1 < linhas.length ? texto + " " : texto; el.appendChild(node);   // o espaço antes do <br> some na tela (nowrap) e separa as palavras no texto lido do DOM
     });
   }
   montarLinhas(E("cab"), TEXTOS.cab, []);
