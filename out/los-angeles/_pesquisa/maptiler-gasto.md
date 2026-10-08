@@ -64,3 +64,42 @@ Portões da s03 até aqui: 3.241 pedidos. O painel não foi lido.
 | 00:03:31–00:03:42 | 6 quadros de prova | não contados |
 | 00:03:54–00:06:37 | `qc-cena --forcar`, `portao-mapa til` e `rodape` nas quatro, com a pré-carga | 2.893 (`portao-mapa` 1.082; do `_tmp/maptiler-portoes.jsonl`) |
 | 00:06:42–00:30:30 | 4 renders 4K de prova, um de cada vez | não contados |
+
+## Os consertos dos lotes Q4 e Q5 (mapistas M2 e M3: s21, s23, s29, s48), 08/10/2026
+
+| quando (Brasília) | o que | pedidos |
+|---|---|---|
+| 01:19–01:26 | quadros de medida pelo `quadro.mjs` (M2) | não contados |
+| 01:23:44–01:24:44 | portões de s21 e s23, com a pré-carga | 904 |
+| 01:24:54–01:31:37 | renders 4K de prova de s21 e s23 | não contados |
+| 01:31:09–01:31 | portões da s48, com a pré-carga | 1.176 (`qc-cena` 720, `portao-mapa` 456) |
+| 01:32:03–01:36:38 | render 4K de prova da s48 | não contado |
+| 01:32:50–01:33:18 | portões da s29, com a pré-carga | 887 |
+| 01:33:26–01:36:35 | render 4K de prova da s29 | não contado |
+
+## As trocas das camadas corrigidas e as margens (mapista M3: s44, s46, s48, s55), 08/10/2026
+
+| quando (Brasília) | o que | pedidos |
+|---|---|---|
+| 01:39–01:47 | portões (`qc-cena`, `portao-mapa`), `medir-margens.mjs` e o medidor do lote, com a pré-carga | 4.125 (`qc-cena` 1.856, `portao-mapa` 1.040, `medir-margens` 983, `margens.mjs` 246) |
+| 01:44:52–02:07:16 | 4 renders 4K de prova | não contados |
+
+E a varredura das margens do Claude central nos 14 mapas estáveis (01:5x–02:1x) e no teste das s01 e s03: contada no `_tmp/maptiler-portoes.jsonl`, processo `medir-margens.mjs`.
+
+## A janela 01:15–02:30 de 08/10/2026, inteira (os três mapistas e a varredura das margens)
+
+26.435 pedidos contados no `_tmp/maptiler-portoes.jsonl` (portões, `probe-elemento`, `medir-margens` e o medidor do M3), somados
+por cena: s05 2.980, s29 2.928, s48 2.653, s23 2.079, s31 1.895, s19 1.718, s55 1.434, s07 1.365, s26 1.364, s33 1.358, s14 1.135,
+s37 1.132, s44 883, s10 776, s03 520, s01 486, s12 450, s21 424, s46 331, s53 204, s42 120, s49 77, s40 74, s17 49. Os 4.125 do
+M3 acima estão dentro desta soma. Os renders 4K da janela (s05, s07, s10, s12, s14, s19, s44, s46, s48, s55) não contados. O
+M2 (s23, s31 e as margens de s26, s29, s33 e s37) ainda roda: o resto dele entra na próxima linha.
+
+## O fim do M2 e a passada final do Claude central, 08/10/2026
+
+| quando (Brasília) | o que | pedidos |
+|---|---|---|
+| 02:30:27–02:30:56 | portões da s23 refeita (`qc-cena`, `portao-mapa til` e `rodape`) e `medir-margens.mjs`, com a pré-carga | 616 (`portao-mapa` 154, `medir-margens` 77, e 77 em cada um de `qc-carga`, `qc-contrato`, `qc-tamanho`, `qc-fora-do-quadro` e `check-overlap`; do `_tmp/maptiler-portoes.jsonl`) |
+| depois de 02:30 | renders 4K de prova do M2 (s23, s26, s29, s31, s33, s37) | não contados |
+
+Depois de 02:31, nenhum pedido no `_tmp/maptiler-portoes.jsonl` até 02:39: a revisão final do `qc-visual` (lotes Q10 a Q12) julga
+os mapas pelos clipes 4K, sem abrir cena de mapa.

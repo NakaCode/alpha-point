@@ -15,6 +15,10 @@
   marca/identidade.md §4–§7 e marca/tokens.css.
 
   O que a cena faz:
+    · MARGENS (08/10/2026, pedido do Claude central, achado do medir-margens): 'Los Angeles', o placar de LA e '76 SQ MI'
+      dividem a âncora (o oeste de 1906 em 34,06 N) e ficam PRESOS À ÁREA SEGURA (prender: "la"): quando a câmera desce a
+      Wilmington e a San Pedro, a âncora iria acima do quadro; a pilha inteira desliza o mínimo para caber em 200..3640 ×
+      160..1880, sem se desfazer, e volta ao ponto quando ele torna ao quadro.
     · BASE: perfil do canal (maptiler), SEM relevo. Tratamento 65/70 na pintura, sem véu.
     · ABRE no quadro de s42 p3 (a cidade de 1906 inteira e as duas cidades do porto). O quadro é agosto de 1909: Wilmington
       vai SEM a legenda de ano (textos-tela, regra de série A1: "em s44 o quadro já é agosto de 1909").
@@ -286,14 +290,14 @@
     spCorre: [21.913, 22.713],                         // a divisa de San Pedro corre até a água, 800 ms
     aneis: [ { id: "anelCosta", ref: "costa", entra: 26.073, pulsos: [26.073, 27.273], sai: null } ],
     rotulos: [
-      { id: "rotLA",         ref: "laOeste",   lado: "esquerda", dx: -60,  dy: 0,   entra: 0.933,  sai: null,   pulsos: [1.233] },
+      { id: "rotLA",         ref: "laOeste", prender: "la",   lado: "esquerda", dx: -60,  dy: 0,   entra: 0.933,  sai: null,   pulsos: [1.233] },
       { id: "rotWilmington", ref: "wilmLeste", lado: "direita",  dx: 60,   dy: 0,   entra: 1.053,  sai: 22.60,  pulsos: [1.353] },
       { id: "rotSanPedro",   ref: "sanPedro",  lado: "esquerda", dx: -150, dy: 0,   entra: 1.173,  sai: 22.60,  pulsos: [1.473] },
       { id: "plWilm",        ref: "wilmLeste", lado: "direita",  dx: 60,   dy: 190, entra: 7.253,  sai: 19.033 },
-      { id: "plLA",          ref: "laOeste",   lado: "esquerda", dx: -60,  dy: 190, entra: 12.063, sai: 19.033 },
+      { id: "plLA",          ref: "laOeste", prender: "la",   lado: "esquerda", dx: -60,  dy: 190, entra: 12.063, sai: 19.033 },
       { id: "plSP",          ref: "sanPedro",  lado: "esquerda", dx: -150, dy: 190, entra: 15.443, sai: 19.033 },
       { id: "rotData",       tela: [3640, 260], lado: "esquerda", dx: 0,    dy: 0,   entra: 19.033, sai: 23.90 },
-      { id: "rotArea",       ref: "laOeste",   lado: "esquerda", dx: -60,  dy: 190, entra: 24.153, sai: null },
+      { id: "rotArea",       ref: "laOeste", prender: "la",   lado: "esquerda", dx: -60,  dy: 190, entra: 24.153, sai: null },
       { id: "legCosta",      ref: "costa",     lado: "esquerda", dx: -70,  dy: 110, entra: 26.073, sai: null }
     ],
     fontes: [ { id: "fonteLAT", entra: 7.253, sai: 19.033 }, { id: "fonteCondado", entra: 24.153, sai: null } ],
@@ -335,7 +339,7 @@
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 28.633;
   window.__duracao = DUR;
 
   var P = window.__REGIE_MAPA;
@@ -605,12 +609,36 @@
     });
     return s;
   }
+  // PRENDER À ÁREA SEGURA (08/10/2026, pedido do Claude central na s44): os rótulos de um mesmo grupo (r.prender = nome)
+  // dividem a âncora; quando a câmera a leva para perto da borda, a âncora inteira se desloca o mínimo para que TODOS os do
+  // grupo no ar (da entrada ao fim do esmaecimento) caibam em 200..3640 × 160..1880 (com os 24 px da subida de entrada).
+  // Assim a pilha não se desfaz e o texto nunca sai cortado. Medido pela caixa do elemento (offsetWidth/Height), sem a câmera.
+  var _grupoCache = {};
+  function deslocGrupo(nome, pt, t) {
+    var k = nome + "@" + t; if (_grupoCache[k]) return _grupoCache[k];
+    var pa = map.project(pt), loX = -1e9, hiX = 1e9, loY = -1e9, hiY = 1e9;
+    (CENA.rotulos || []).forEach(function (q) {
+      if (q.prender !== nome) return;
+      if (t < q.entra || (q.sai != null && t > q.sai + 0.3)) return;
+      var el = E(q.id); if (!el) return;
+      var w = el.offsetWidth, h = el.offsetHeight;
+      var fx = q.lado === "direita" ? 0 : q.lado === "esquerda" ? -w : -w / 2;
+      var fy = q.vert === "cima" ? -h : q.vert === "baixo" ? 0 : -h / 2;
+      var l0 = (q.dx || 0) + fx, t0 = (q.dy || 0) + fy;          // caixa relativa à âncora
+      loX = Math.max(loX, 200 - l0); hiX = Math.min(hiX, 3640 - (l0 + w));
+      loY = Math.max(loY, 160 - t0); hiY = Math.min(hiY, 1880 - 24 - (t0 + h));
+    });
+    var ax = Math.min(Math.max(pa.x, loX), hiX), ay = Math.min(Math.max(pa.y, loY), hiY);
+    _grupoCache = {}; _grupoCache[k] = [ax - pa.x, ay - pa.y];
+    return _grupoCache[k];
+  }
   function placeRotulo(r, t) {
     var el = E(r.id); if (!el) return;
     var entrada = eo(seg(t, r.entra, 0.3)) * (r.sai != null ? 1 - eio(seg(t, r.sai, 0.3)) : 1);
     var x, y;
     if (r.tela) { x = r.tela[0]; y = r.tela[1]; }
     else { var p = map.project(r.p); x = p.x; y = p.y; }
+    if (r.prender) { var dz = deslocGrupo(r.prender, r.p, t); x += dz[0]; y += dz[1]; }
     var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
     var ty = r.vert === "cima" ? "-100%" : r.vert === "baixo" ? "0%" : "-50%";
     el.style.opacity = entrada.toFixed(3);

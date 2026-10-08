@@ -174,13 +174,13 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s10 (125,033 → 140,8 s do m
       { id: "rot19",   ref: "meioR",     lado: "direita",  dx: 90,  dy: 0, entra: 5.467, sai: 15.067,
         op: function (t) { return 1 - 0.6 * eio(seg(t, 11.787, 0.5)); } },   // a cota esmaece com a régua
       { id: "rotBaia", lnglat: [-118.16, 33.705], lado: "direita", dx: 0, dy: 0, entra: 7.072, sai: null },
-      { id: "rotEst",  lnglat: [-118.345, 33.792], lado: "esquerda", dx: 0, dy: 0, entra: 9.387, sai: null }
+      { id: "rotEst",  lnglat: [-118.345, 33.792], lado: "esquerda", dx: 60, dy: 0,   /* +60: margem de 200 (Q9) */ entra: 9.387, sai: null }
     ],
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0, extra: [] }
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 15.767;   // a dur do espelho, literal (roupa §8)
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -824,8 +824,10 @@ var C1850 = feicao("la-1850-hamlin");
       var pronto = function () {
         try {
           if (!map.areTilesLoaded() || map.isMoving()) return false;
-          for (var i = 0; i < CENA.fontes.length; i++) if (!map.isSourceLoaded(CENA.fontes[i])) return false;
-          if (!map.isSourceLoaded("base")) return false;
+          // getSource antes de isSourceLoaded: este, numa fonte que ainda não existe (antes do load), dispara o evento de erro do
+          // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
+          for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
+          if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

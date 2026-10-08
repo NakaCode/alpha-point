@@ -31,9 +31,11 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
       (20,4 s), para ficar 2,0 s no ar antes do corte, e a água sobe a 11 em 'eleven'.
     A vazante, os rasos e a barra são esquema (seta e hachura apontam; não afirmam traçado: ofício §6c). Ninguém filmou a
     barra de 1880.
-  INCERTEZA: o molhe e os dois pontos vêm da folha do USGS de 1896 (1:62.500), que põe Deadman's Island ~240 m longe da de
-  1923 (pauta-geo.md). O traço mais fino de 1896 na tela é o molhe: 18 px sobre 36 px = 36 px. Zoom ≤ 13,20 (6,9 m/px em
-  33,73 N: 240 m = 35 px ≤ 36 px). Zoom máximo desta cena: 13,20. Nada de Hamlin.
+  INCERTEZA: o molhe e os dois pontos são as camadas CORRIGIDAS (molhe-1871-usgs1896-corrigido e
+  pontos-historicos-usgs-corrigidos, ±50 m; a folha de 1896 errava ~272 m: _pesquisa/geo-folhas-usgs-relato.md). Os desenhos
+  esquemáticos presos a eles (os rasos, as três vazantes e a barra) andaram o mesmo deslocamento (+0,00216° lng, +0,001667°
+  lat). O traço mais fino é o molhe, 36 px no total: ±50 m cabem até ~1,39 m/px (zoom ~15,5). Zoom máximo desta cena: 13,20
+  (6,9 m/px: 50 m = 7 px). Nada de Hamlin.
   ELEMENTOS: p1 até 5 (molhe, legenda, 2 pílulas, miniatura; a cota sai antes das pílulas); p2/p3 até 5; p4 5 (molhe,
   barra, medidor, 2 cotas: a legenda das cores, os rasos e a vazante saem antes do medidor).
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (data-qc-credito="mapa" só nele). O conceito pede
@@ -46,8 +48,8 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
 <script src="../_media/_vendor/camera-mapa.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
-<script src="../_media/geo/molhe-1871-usgs1896.js"></script>
-<script src="../_media/geo/pontos-historicos-usgs.js"></script>
+<script src="../_media/geo/molhe-1871-usgs1896-corrigido.js"></script>
+<script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -199,12 +201,12 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
     molhe: { desenha: [0.43, 2.40] },
     rasos: { fecha: 6.955, sai: 16.40,
              // a área esquemática dos rasos, entre as ilhas, a leste do molhe (desenho declarado; a legenda diz 'schematic')
-             area: [[-118.2768, 33.7330], [-118.2712, 33.7392], [-118.2652, 33.7352], [-118.2668, 33.7268], [-118.2712, 33.7238]] },
+             area: [[-118.27248, 33.73634], [-118.26688, 33.74254], [-118.26088, 33.73854], [-118.26248, 33.73014], [-118.26688, 33.72714]] },
     vazante: { entra: 9.23, dura: 1.2, canal: 12.59, aperta: 13.80, sai: 16.40,
-      a: [[-118.2615, 33.7625], [-118.2700, 33.7520], [-118.2772, 33.7395], [-118.2782, 33.7300], [-118.2752, 33.7180], [-118.2730, 33.7075]],
-      b: [[-118.2600, 33.7615], [-118.2640, 33.7480], [-118.2690, 33.7385], [-118.2738, 33.7290]],
-      c: [[-118.2585, 33.7605], [-118.2600, 33.7440], [-118.2650, 33.7320], [-118.2712, 33.7255]] },
-    barra: { ponto: [-118.2738, 33.7228], entra: 13.80, parte: 15.71 },
+      a: [[-118.25934, 33.76417], [-118.26784, 33.75367], [-118.27504, 33.74117], [-118.27604, 33.73167], [-118.27304, 33.71967], [-118.27084, 33.70917]],
+      b: [[-118.25784, 33.76317], [-118.26184, 33.74967], [-118.26684, 33.74017], [-118.27164, 33.73067]],
+      c: [[-118.25634, 33.76217], [-118.25784, 33.74567], [-118.26284, 33.73367], [-118.26904, 33.72717]] },
+    barra: { ponto: [-118.27164, 33.72447], entra: 13.80, parte: 15.71 },
     medidor: { k: 16, max: 60, cadaNumero: 10, largura: 110, dx: 300, dy: 0, entra: 16.65, sai: null,
                nivel: function (t) { return 1.5 + 8.5 * eio(seg(t, 18.525, 0.6)) + 1 * eio(seg(t, 21.48, 0.4)); }, marcas: [] },
     guiaDead: { entra: 4.45, sai: 6.43 },
@@ -440,9 +442,9 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
   }
 
   // ═══ O DESENHO DA CENA ═══════════════════════════════════════════════════════════════════════════
-var MOLHE = feicao("molhe-1871-usgs1896");
-  var RATTLE = pontoNome("pontos-historicos-usgs", "Rattlesnake Island (Terminal Island today)");
-  var DEAD = pontoNome("pontos-historicos-usgs", "Deadman's Island (removed 1928–1930)");
+var MOLHE = feicao("molhe-1871-usgs1896-corrigido");
+  var RATTLE = pontoNome("pontos-historicos-usgs-corrigidos", "Rattlesnake Island (Terminal Island today)");
+  var DEAD = pontoNome("pontos-historicos-usgs-corrigidos", "Deadman's Island (removed 1928–1930)");
   if (window.__erroCena) return;
   // o molhe vai de Rattlesnake Island (a ponta norte, primeiro vértice) a Deadman's Island (o último)
   var MC = MOLHE.geometry.coordinates, mm = MC[Math.floor(MC.length / 2)];
@@ -875,8 +877,10 @@ var MOLHE = feicao("molhe-1871-usgs1896");
       var pronto = function () {
         try {
           if (!map.areTilesLoaded() || map.isMoving()) return false;
-          for (var i = 0; i < CENA.fontes.length; i++) if (!map.isSourceLoaded(CENA.fontes[i])) return false;
-          if (!map.isSourceLoaded("base")) return false;
+          // getSource antes de isSourceLoaded: este, numa fonte que ainda não existe (antes do load), dispara o evento de erro do
+          // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
+          for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
+          if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

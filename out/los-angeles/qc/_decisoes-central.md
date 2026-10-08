@@ -103,3 +103,55 @@
 7. **Pontos de entendimento** (s31, o medidor sem número nos tiques; s33, a divisa de San Pedro fina e sem data; s26, "1891 ·
    1892 · 1897" pelo callback; s37, a legenda que ecoa a fala). Vão à revisão de espectador.
 8. **Fotos em falta** (a barcaça da s29, a draga da s31, Wilmington na s33). FALTA declarada pela regência; seguem.
+
+## 08/10/2026, 02:0x — as camadas das folhas USGS antigas
+
+A pesquisa-geo mediu o erro das folhas contra o que não mudou: a folha "Wilmington" de 1923 erra 53–59 m no porto (o muro do
+quebra-mar e o farol de Angels Gate); a "Calabasas" de 1903 erra 219–263 m (o relevo da falésia e dos cânions, contra o 3DEP).
+A incerteza declarada nas camadas (±5–11 m) não valia para a posição.
+1. **s29 e s48:** o quebra-mar passa a ser a `quebra-mar-osm` (o muro de hoje, a mesma obra). Mapistas M2 e M3.
+2. **s19:** o píer se corrige pelo deslocamento medido no relevo, com a incerteza da correção declarada. Não se declara ±250 m:
+   uma raiz de píer 200 m dentro do mar é falsa na tela.
+3. **As outras camadas das folhas** (`divisa-la-lb-terminal-island-usgs1923` na s46, `molhe-1871-usgs1896`,
+   `pontos-historicos-usgs` em s07, s12, s19, s23, s31, s48 e s55): a pesquisa-geo mede o erro de cada folha num ponto fixo
+   perto de cada uma e grava a camada corrigida onde o erro passar da incerteza. Os mapistas trocam nas cenas, com render novo.
+
+## 08/10/2026, 02:1x — o lote Q9 (os 4 mapas refeitos do Q3)
+
+1. **Como se conta o "no ar" (identidade §4.3, bloco ≥ 2,0 s).** Do começo da entrada até o texto cair abaixo de 5 % da
+   opacidade máxima: as rampas de entrada e de saída contam, porque o texto se lê nelas. É a conta que o lote Q4 usou ("limiar de
+   5 % do máximo"). Por ela, "MORE THAN A MILE" (s12, 2,03 s), "ABOUT 19 MILES" (s05, 2,05 s) e "Deadman's Island" (s12) passam.
+2. **s07 e s14, a pílula "Wilmington estuary" a 176–178 px da borda** (a margem é 200). Defeito; vai ao mapista.
+3. **s05, a base da moldura da foto da Plaza em y 1887 na subida (3,97 s; repousa em 1879)** e **s14, o cartão "worthy of
+   improvement" em x 3658 no assentamento (22,13–22,30 s; repousa em 3629).** A margem vale no pior instante, também no
+   movimento de entrada (Q6, item 1). Vão ao mapista, com a s07 e a s14.
+
+## 08/10/2026, 02:3x — as camadas corrigidas das folhas USGS (`_pesquisa/geo-folhas-usgs-relato.md`)
+
+1. **Trocas nas cenas:** s19 → `long-wharf-usgs1903-corrigido` (±50 m); s12 → `molhe-1871-usgs1896-corrigido` (±50 m); s07, s12, s19,
+   s23, s31, s48 e s55 → `pontos-historicos-usgs-corrigidos` (o farol na posição de hoje, ±5 m, crédito do OSM já na linha da
+   MapTiler). Os mapistas trocam e renderizam de novo.
+2. **s46, a divisa de Terminal Island de 1923.** Sem ponto fixo na ilha (aterrada e redesenhada), o erro local não se mede; a
+   incerteza real é de pelo menos ±60 m. Vale o critério que o Lucas aprovou para Hamlin na s03 ("Não, só a câmera limitada
+   (Recomendado)"): o zoom é o maior em que ±60 m, em px do 4K, não passam da espessura total do traço da divisa no quadro, sem
+   "Approximate". Vai ao mapista.
+3. **Hamlin:** as camadas usaram dois pontos da folha de 1923 (erro de ~40–60 m ali), dentro da incerteza declarada de ±150–200 m
+   no sul. Ficam.
+
+## 08/10/2026, 03:0x — a medida das margens de todo elemento (`_tmp/medir-margens.mjs`), nas 49 cenas
+
+O medidor mede todo texto, pílula e caixa visível, na tela, sob a câmera, a cada 0,25 s (`_tmp/medir-margens-mapas.txt` e
+`_tmp/medir-margens-sem-mapa.txt`; quadros em `_tmp/margens-quadros/`). O que conta e o que não conta:
+1. **Conta:** texto e pílula fora da área segura (200 nas laterais, 160 no topo, nada abaixo de y 1880 fora o crédito), a qualquer
+   instante em que estejam no ar, inclusive em movimento; e texto CORTADO pela borda do quadro, sempre. O rótulo preso a um ponto
+   que a câmera leva para fora sai (esmaece) antes de cruzar a margem.
+2. **Não conta:** a folha, a foto ou o cartão que entra de fora do quadro ou sai para fora dele (está de passagem pela borda,
+   no movimento A); a sombra; a borda de papel sem texto que desce um pouco na faixa do crédito (como a s35, Q7 item 5); a caixa
+   que só agrupa os créditos.
+3. **Defeitos achados:**
+   - mapas: s26 (pílula acima do topo), s29 (texto cortado embaixo e legenda na faixa do crédito), s33 (texto cortado em cima,
+     pílula e foto na faixa, rótulo além da margem direita), s37 (pílula na faixa), s44 (texto cortado em cima), s10 (a pílula do
+     estuário a 179 px, como s07 e s14) e, na s10, um erro do MapLibre fora da ordem da render;
+   - sem mapa: s38 (a última linha da folha C e o grifo do "203" na faixa do crédito), s11 ("JULY 1871" 1 px além da margem
+     direita) e s47 ("ABOUT 15,000 FT" 3 px dentro da esquerda, "1912" 2 px além da direita).
+   Vão aos mapistas e aos editores.

@@ -20,11 +20,14 @@
       sai da ponta da ilha mais perto de Point Fermin até Point Fermin (GNIS), em 1,5 s, com "Approximate route" em legenda
       enquanto ela está no quadro: a pedreira não tem ponto, e a linha sai do texto da fonte (identidade §6, rota esquemática).
     · p2: em "In January" a câmera viaja 2 s (van Wijk) até Point Fermin e o quebra-mar; "JANUARY 1905" em "January"; a
-      rota e a legenda saem em "spare" (a ilha já saiu do quadro). Em "extend" a linha do quebra-mar (quebra-mar-usgs1923, a
-      folha de 1923: o muro completo) cresce da costa para leste e chega à marca dos 9.000 pés em "nine": um tique e "AT LEAST
-      9,000 FT" (cota), por 2,0 s, na metade de baixo. 9.000 pés = 2.743 m da ponta da costa, medidos ao longo do traço.
-    · p3 (a cama calma da chamada de inscrição, s30): a linha segue crescendo, em velocidade constante, até o fim da folha
-      de 1923 (2,09 mi), e o contador "1899 → <ano>" anda de 1899 a 1912 junto da ponta, na metade de baixo, e para em
+      rota e a legenda saem em "spare" (a ilha já saiu do quadro). Em "extend" a linha do quebra-mar (quebra-mar-osm: o San Pedro
+      Breakwater de hoje, a mesma obra de 1899–1912, da terra de hoje ao farol de Angels Gate; ±10 m no mar, ±20 m na raiz
+      enterrada; troca de 08/10/2026, decisão Q4 item 3: a linha da folha de 1923 corria 53–59 m ao norte do muro) cresce da
+      costa para leste e chega à marca dos 9.000 pés em "nine": um tique e "AT LEAST 9,000 FT" (cota), por 2,0 s, na metade de
+      baixo. 9.000 pés = 2.743 m do começo da linha (onde o aterro de hoje encontra a terra), medidos ao longo dela; o número da
+      tela é o da fonte, não o da medida (a linha inteira mede 10.235 pés).
+    · p3 (a cama calma da chamada de inscrição, s30): a linha segue crescendo, em velocidade constante, até o farol (o fim da
+      linha), e o contador "1899 → <ano>" anda de 1899 a 1912 junto da ponta, na metade de baixo, e para em
       "1899 → 1912" (a grafia do textos-tela). A câmera só aproxima devagar da ponta, com o giro contínuo. Nada entra no alto.
     · A CHAMADA (marca/cta.md; regencia.json › _chamadas[0]): a peça "inscricao?lugar=cima" entra por cima no Premiere de
       404,28 a 408,78 s (9,247 a 13,747 s aqui), na caixa x 2029–3626, y 195–484. Nessa janela, nenhum texto, rótulo, anel
@@ -39,7 +42,7 @@
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
 <script src="../_media/geo/catalina-tiger.js"></script>
-<script src="../_media/geo/quebra-mar-usgs1923.js"></script>
+<script src="../_media/geo/quebra-mar-osm.js"></script>
 <script src="../_media/geo/lugares-costa-gnis.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -168,7 +171,7 @@
       A.REFS.ROTAM = [(perto[0] + pf[0]) / 2, (perto[1] + pf[1]) / 2];
       A.REFS.PF = pf;
       A.CAT = cat;
-      var q = A.feicao("quebra-mar-usgs1923").geometry.coordinates.slice();
+      var q = A.feicao("quebra-mar-osm").geometry.coordinates.slice();
       if (q[0][0] > q[q.length - 1][0]) q.reverse();   // da costa (oeste) para o mar (leste)
       A.MURO = q;
       var tot = A.ateFracao(q, 1).total;
@@ -191,7 +194,7 @@
         A.E("rotaSob").setAttribute("d", d); A.E("rotaSobre").setAttribute("d", d);
         g.setAttribute("opacity", (1 - A.eio(A.seg(t, R.sai, 0.3))).toFixed(3));
       }
-      // o quebra-mar que cresce: até a marca dos 9.000 pés em 'nine'; depois, constante até o fim da folha de 1923
+      // o quebra-mar que cresce: até a marca dos 9.000 pés em 'nine'; depois, constante até o farol
       var M = CENA.muro, u = 0;
       if (t >= M.fim[0]) u = A.UMARCA + (1 - A.UMARCA) * A.seg(t, M.fim[0], M.fim[1] - M.fim[0]);
       else u = A.UMARCA * A.eio(A.seg(t, M.cresce[0], M.cresce[1] - M.cresce[0]));
@@ -217,7 +220,7 @@
     }
   };
   // ═══ O MOTOR DA CENA (o mesmo nas oito cenas do lote M2; os blocos vêm da s03, a referência do vídeo 2) ══════════
-  var DUR = CENA.duracao;
+  var DUR = 14.434;   // número literal, a dur do espelho (roupa §8: o qc-janela só lê o número)
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -572,7 +575,7 @@
       var u = t - o.pouso, a = eo(u / 0.55);
       vis = cl(u / 0.2, 0, 1);
       esc = u < 0.33 ? 0.72 + 0.31 * eo(u / 0.33) : 1.03 - 0.03 * eo((u - 0.33) / 0.22);
-      dy = -240 * (1 - a); r = -2 + (rot + 2) * a;
+      dy = -(o.queda == null ? 240 : o.queda) * (1 - a);   // a queda: 240 px (identidade §4.4); menos, onde a margem não deixa r = -2 + (rot + 2) * a;
       sTy = 64 - 52 * a; sEsc = 1.05 - 0.05 * a; sOp = 0.35 + 0.45 * a;
       if (o.levanta != null && t >= o.levanta) {
         var w = cl((t - o.levanta) / 0.35, 0, 1), k = w * w * w;
@@ -602,12 +605,25 @@
     var el = E(r.id); if (!el) return;
     var p = r.tela ? { x: r.tela[0], y: r.tela[1] } : map.project(r.p);
     if (r.mover) { var m = r.mover(t, p); p = m || p; }
-    var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
-    var ty = r.vert === "cima" ? "-100%" : r.vert === "baixo" ? "0%" : "-50%";
+    var fx = r.lado === "direita" ? 0 : r.lado === "esquerda" ? -1 : -0.5;
+    var fy = r.vert === "cima" ? -1 : r.vert === "baixo" ? 0 : -0.5;
+    var w = el.offsetWidth, h = el.offsetHeight;
+    var x0 = p.x + (r.dx || 0) + fx * w, yb = p.y + (r.dy || 0) + fy * h;
+    var y0 = yb + (1 - Math.min(entrada, r._sub == null ? entrada : r._sub)) * 24;
+    // o rótulo preso a um ponto do mapa que a câmera leva para fora ESMAECE em 60 px de passagem da margem (e fica preso a
+    // ela enquanto esmaece); o de tela e o que a cena move ficam presos à margem
+    if (r.p && !r.tela && !r.mover) {
+      var fora = Math.max(0, AREA.esq - x0, x0 + w - AREA.dir, AREA.topo - yb, yb + h - AREA.base);
+      entrada *= 1 - cl(fora / 60, 0, 1);
+    }
+    // A ÁREA SEGURA (identidade §4.2; decisão do Claude central, 08/10/2026): o rótulo que a câmera leva para fora fica
+    // preso à margem (200 nas laterais, 160 no topo, 1880 embaixo, onde começa a faixa do crédito); nunca sai cortado.
+    x0 = cl(x0, AREA.esq, Math.max(AREA.esq, AREA.dir - w));
+    y0 = cl(y0, AREA.topo, Math.max(AREA.topo, AREA.base - h));
     el.style.opacity = entrada.toFixed(3);
-    el.style.transform = "translate(" + (p.x + (r.dx || 0)).toFixed(3) + "px," + (p.y + (r.dy || 0)).toFixed(3) + "px) translate(" + tx +
-      "," + ty + ") translateY(" + ((1 - Math.min(entrada, r._sub == null ? entrada : r._sub)) * 24).toFixed(2) + "px)";
+    el.style.transform = "translate(" + x0.toFixed(3) + "px," + y0.toFixed(3) + "px)";
   }
+  var AREA = { esq: 202, dir: 3638, topo: 162, base: 1878 };   // 2 px de folga: a largura do DOM é inteira, a do texto não
   API.project = function (ll) { return map.project(ll); };
   // ── O TEXTO LISO (s03): o texto dos rótulos de classe liso, pintado em #tintaRotulos na posição exata do DOM ──
   var TL = { x4: document.createElement("canvas"), x2: document.createElement("canvas") };

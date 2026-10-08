@@ -465,7 +465,8 @@
       "incerteza": "±10 m de leitura (o traço tem ~4 px, ~8 m); é a divisa de 1923, não o polígono de 1909: a folha não mostra o resto do limite da anexação de Long Beach",
       "licenca_lida_em": "2026-10-07",
       "na_tela": "domínio público: sem crédito obrigatório; nada vem do OSM nem da camada do condado",
-      "rodada": 2
+      "rodada": 2,
+      "conferencia_2026_10_08": "NÃO MEDIDO no lugar: não há em Terminal Island ponto fixo que exista na folha de 1923 e hoje (a ilha foi aterrada e redesenhada; ruas, trilhos e margens de 1923 sumiram). A folha Wilmington 1923 erra 38 m na grade de San Pedro (-20 E, +32 N, ~2,5 km a oeste) e ~58 m no quebra-mar (N); as outras janelas de ruas não fecharam. A camada fica; a incerteza honesta é de pelo menos ±60 m, não ±10 m. Relato: geo-folhas-usgs-relato.md."
     },
     {
       "tipo": "geo",
@@ -596,7 +597,117 @@
       "licenca_lida_em": "2026-10-07",
       "na_tela": "domínio público: sem crédito obrigatório; nada vem do OSM nem da camada do condado",
       "corrigido": "2026-10-07: georreferência do sudeste corrigida com pontos de 1923 (hamlin_sudeste.py); a versão de antes está em _tmp/pesquisa-geo/la-1909-hamlin-antes-gcp1923.json"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "OpenStreetMap via Overpass API (08/10/2026): eixo do San Pedro Breakwater derivado pela pesquisa-geo — no mar, a média das duas margens do polígono way/1312790328 (man_made=breakwater), da ponta do aterro de Cabrillo Beach ao farol Los Angeles Light / Angels Gate (way/1312710274); na raiz, o meio entre as margens do aterro (coastline way/41645427 ao norte e way/448064329 ao sul), até onde ele encontra a terra",
+      "arquivo": "_media/geo/quebra-mar-osm.json",
+      "licenca": "ODbL 1.0 — exige atribuição © OpenStreetMap contributors (https://www.openstreetmap.org/copyright: \"You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors\", lido em 2026-10-08)",
+      "url": "https://www.openstreetmap.org/way/1312790328",
+      "exige_credito": true,
+      "cena": "s29",
+      "features": 1,
+      "bbox": [
+        -118.2824,
+        33.70374,
+        -118.25162,
+        33.70959
+      ],
+      "sha256": "5cf12d73ffc5f65f2be81df3d2e602f89d1a7a1b92f4ad16925019294354f9e9",
+      "derivado_por": "out/los-angeles/_pesquisa/geo_quebra_mar_osm.py + geo_quebra_mar_osm_gravar.mjs (08/10/2026)",
+      "registrado": "2026-10-08",
+      "sha256_fonte": "42e621a35c908b7f5a8f5ee4a705b9aa8d5419c6bcb70a2ab2304c82bc36d638",
+      "datum": "WGS84 (OSM)",
+      "simplificacao": "Douglas-Peucker a 1 m sobre o eixo de 406 pontos: 34 vértices",
+      "incerteza": "eixo de polígono traçado no OSM sobre imagem (versão 1 dos ways, 02/09/2024); conferido contra fonte independente: a margem da água do TIGER 2025 (agua-porto-hoje-tiger) fica a 1–13 m do eixo no trecho leste (meia largura do muro, ~17 m), e o farol do OSM cai a 2 m da coordenada da Wikipedia (33.70857, -118.25160). Incerteza declarada: ±10 m no trecho no mar; ±20 m na raiz sobre o aterro (o eixo ali é o meio do aterro de hoje, sobre o muro enterrado)",
+      "comprimento": "3120 m = 10235 ft da terra de hoje ao farol (2610 m = 8563 ft no mar, da ponta do aterro ao farol)",
+      "deslocamento_vs_usgs1923": "a linha de 1923 corre ao norte da de hoje: 53–59 m (mediana 58) no trecho reto leste; 9–47 m na curva e na raiz (mediana 29); no farol, o fim da linha de 1923 fica a 81 m do farol de hoje, e o ponto do farol de 1923 (pontos-historicos-usgs) a 48 m",
+      "licenca_lida_em": "2026-10-08",
+      "na_tela": "© OpenStreetMap contributors na tela da cena (o crédito da MapTiler já o leva); openstreetmap.org/copyright na descrição"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "USGS 1:62.500, folha \"Calabasas, Calif.\" de 1903 (item 465394): o píer de Port Los Angeles (long-wharf-usgs1903) deslocado 180 m para leste e 130 m para norte, o deslocamento da folha medido no relevo",
+      "arquivo": "_media/geo/long-wharf-usgs1903-corrigido.json",
+      "licenca": "Domínio público (USGS: \"USGS-authored or produced data and information are considered to be in the U.S. Public Domain\" — https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits, lido em 2026-10-07); a referência da medida (USGS 3DEP) também é domínio público; sem crédito obrigatório",
+      "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/CA/CA_Calabasas_465394_1903_62500_geo.tif",
+      "exige_credito": false,
+      "cena": "s19",
+      "features": 1,
+      "bbox": [
+        -118.53719,
+        34.02405,
+        -118.52774,
+        34.03105
+      ],
+      "sha256": "b3da33ee6db85be20608d2d311980a2753deead6b7ef99b234fae0b22b5a3433",
+      "derivado_por": "out/los-angeles/_pesquisa/geo_folha_deslocamento.py + geo_folhas_corrigir.py + geo_folhas_corrigir_gravar.mjs (08/10/2026)",
+      "registrado": "2026-10-08",
+      "sha256_fonte": "b9f7442a20469768fcb6adc76d837723a5b40218b9a970f2c51fae4347204bda; dem.tif 54fd971d73746b130a7d5753de268897f8e6920f415cd19ff45f319e35e9353e",
+      "datum": "NAD27 da folha convertido a WGS84, depois deslocado pela medida",
+      "simplificacao": "nenhuma (os vértices da camada de origem, deslocados)",
+      "metodo": "curvas de 50 ft da folha contra as de hoje (USGS 3DEP (elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage, 08/10/2026)), correlação numa grade de ±350 m a cada 10 m (geo_folha_deslocamento.py relevo)",
+      "ponto_fixo": "o relevo: a falésia de Pacific Palisades e os cânions de Santa Monica, Rustic e Temescal",
+      "medida": "a folha desenha o lugar 180 m a oeste e 130 m ao sul (222 m). 4 janelas em volta do píer: (-180,-130), (-170,-140), (-180,-130), (-230,-130); a janela oeste (-118.56 a -118.535) não fechou (pico na borda da busca) e ficou fora",
+      "incerteza": "±50 m: a dispersão entre janelas é de 60 m em leste e 10 m em norte, e o 2º pico da correlação fica a ~40 m do 1º com nota só 5–6 % menor (comparação fraca: a folha generaliza o relevo). Conferência independente: a raiz corrigida cai a 3 m da costa de hoje do OSM (antes, 202 m); mais ±11 m de leitura do traço",
+      "licenca_lida_em": "2026-10-08",
+      "na_tela": "domínio público: sem crédito obrigatório"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "USGS 1:62.500, folha \"San Pedro, Calif.\" de 1896 (item 298928): o molhe de Rattlesnake Island a Deadman's Island (molhe-1871-usgs1896) deslocado 200 m para leste e 185 m para norte, o deslocamento da folha medido no relevo",
+      "arquivo": "_media/geo/molhe-1871-usgs1896-corrigido.json",
+      "licenca": "Domínio público (USGS: \"USGS-authored or produced data and information are considered to be in the U.S. Public Domain\" — https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits, lido em 2026-10-07); a referência da medida (USGS 3DEP) também é domínio público; sem crédito obrigatório",
+      "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/CA/CA_San%20Pedro_298928_1896_62500_geo.tif",
+      "exige_credito": false,
+      "cena": "s12",
+      "features": 1,
+      "bbox": [
+        -118.27556,
+        33.72577,
+        -118.26986,
+        33.73341
+      ],
+      "sha256": "49040c178ff2cd17998e9da1db86abab6fd539cd2862d64787f7f066418fe580",
+      "derivado_por": "out/los-angeles/_pesquisa/geo_folha_deslocamento.py + geo_folhas_corrigir.py + geo_folhas_corrigir_gravar.mjs (08/10/2026)",
+      "registrado": "2026-10-08",
+      "sha256_fonte": "8ab2f51ffb2beebf1fa078048d9ae9c78ba8e4412f60a9002d72de4371b79500; dem-sp.tif 1c5fdee7226dc051355b84ca6eaaac4dcbe03b5e352bbf5f10d46f17a10e5595",
+      "datum": "NAD27 da folha convertido a WGS84, depois deslocado pela medida",
+      "simplificacao": "nenhuma (os vértices da camada de origem, deslocados)",
+      "metodo": "curvas de 50 ft da folha contra as de hoje (USGS 3DEP (elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage, 08/10/2026)), correlação numa grade de ±300 m a cada 10 m (geo_folha_deslocamento.py relevo)",
+      "ponto_fixo": "o relevo dos morros de San Pedro e de Palos Verdes",
+      "medida": "a folha desenha o lugar 200 m a oeste e 185 m ao sul (272 m). 4 janelas de -118.35 a -118.28: (-200,-190), (-200,-190), (-170,-170), (-210,-180); mediana (-200,-185)",
+      "incerteza": "±50 m: dispersão de 40 m em leste e 20 m em norte entre as janelas; 2º pico a ~40 m. Conferência independente: Deadman's Island corrigida fica a 51–85 m da que a folha de 1923 desenha (antes, 247 m); mais ±11 m de leitura",
+      "licenca_lida_em": "2026-10-08",
+      "na_tela": "domínio público: sem crédito obrigatório"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "USGS HistoricalTopo, os 4 pontos de pontos-historicos-usgs, cada um corrigido pelo deslocamento medido da sua folha: Deadman's Island e Rattlesnake Island (San Pedro 1896: +200 m E, +185 m N), Port Los Angeles (Calabasas 1903: +180 m E, +130 m N); o farol (Wilmington 1923) trocado pela posição de hoje do mesmo farol (OSM way/1312710274)",
+      "arquivo": "_media/geo/pontos-historicos-usgs-corrigidos.json",
+      "licenca": "Três pontos do USGS (domínio público); o farol é do OpenStreetMap: ODbL 1.0, exige atribuição © OpenStreetMap contributors (lido em 2026-10-08)",
+      "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/CA/CA_San%20Pedro_298928_1896_62500_geo.tif ; https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/HistoricalTopo/GeoTIFF/CA/CA_Calabasas_465394_1903_62500_geo.tif ; https://www.openstreetmap.org/way/1312710274",
+      "exige_credito": true,
+      "features": 4,
+      "bbox": [
+        -118.53719,
+        33.70855,
+        -118.25162,
+        34.02405
+      ],
+      "sha256": "f356004ab9709da9530460d8d805c454c579ca74ad9851203b8e9053963a459a",
+      "derivado_por": "out/los-angeles/_pesquisa/geo_folha_deslocamento.py + geo_folhas_corrigir.py + geo_folhas_corrigir_gravar.mjs (08/10/2026)",
+      "registrado": "2026-10-08",
+      "sha256_fonte": "8ab2f51f…9500; b9f7442a…4bda; dem.tif 54fd971d…353e; dem-sp.tif 1c5fdee7…5595; Overpass dump3.json 42e621a3…d638",
+      "datum": "NAD27 da folha convertido a WGS84, depois deslocado pela medida",
+      "simplificacao": "nenhuma (os vértices da camada de origem, deslocados)",
+      "metodo": "as medidas das camadas -corrigido(a) acima, ponto por ponto pela folha de origem; o farol de 1913 existe hoje, e a posição de hoje substitui a leitura",
+      "ponto_fixo": "relevo (3DEP) para as folhas de 1896 e 1903; o próprio farol, para 1923",
+      "medida": "Deadman's Island: 272 m (folha de 1896); Rattlesnake Island: 272 m (folha de 1896, a ~2 km a leste das janelas de relevo); Port Los Angeles: 222 m (folha de 1903); farol: 48 m (folha de 1923 contra o farol de hoje)",
+      "incerteza": "Deadman's ±50 m; Rattlesnake ±60 m (fora das janelas medidas, mas as 4 janelas concordam em ±20 m ao longo de 7 km); Port Los Angeles ±50 m; farol ±5 m (o OSM cai a 2 m da coordenada da Wikipedia)",
+      "licenca_lida_em": "2026-10-08",
+      "na_tela": "o farol vem do OSM: © OpenStreetMap contributors na tela da cena que o mostrar (a linha da MapTiler já o leva); os outros pontos, domínio público"
     }
   ],
-  "nota": "Vídeo 2 (los-angeles). 1ª rodada: adiantamento da pesquisa-geo (07/10/2026), 17 itens. 2ª rodada: passo research (07/10/2026), 7 itens, as camadas que o espelho pedia (_despacho_research.pesquisa_geo). Nenhum item vem da camada do condado de Los Angeles (sem licença aberta confirmada) nem do OpenStreetMap. Resumo e comparações: pauta-geo.md. Correção do sudeste de Hamlin (07/10/2026): la-1906, faixa-1906, wilmington-1909, san-pedro-1909-divisa e la-1909 regravadas; la-1850 e la-1899 não mudaram."
+  "nota": "Vídeo 2 (los-angeles). 1ª rodada: adiantamento da pesquisa-geo (07/10/2026), 17 itens. 2ª rodada: passo research (07/10/2026), 7 itens, as camadas que o espelho pedia (_despacho_research.pesquisa_geo). Nenhum item vem da camada do condado de Los Angeles (sem licença aberta confirmada); do OpenStreetMap, só o quebra-mar-osm (3ª rodada) e o farol de pontos-historicos-usgs-corrigidos (4ª rodada), ODbL, com crédito. Resumo e comparações: pauta-geo.md. Correção do sudeste de Hamlin (07/10/2026): la-1906, faixa-1906, wilmington-1909, san-pedro-1909-divisa e la-1909 regravadas; la-1850 e la-1899 não mudaram. 3ª rodada (08/10/2026, pedido do qc na s29): quebra-mar-osm, o San Pedro Breakwater de hoje pelo OSM; a camada quebra-mar-usgs1923 fica como está. Relato: geo-quebra-mar-relato.md. 4ª rodada (08/10/2026, conferência das folhas antigas do USGS): long-wharf-usgs1903-corrigido, molhe-1871-usgs1896-corrigido e pontos-historicos-usgs-corrigidos; as camadas de origem ficam como estão; a divisa de Terminal Island (1923) não foi medida no lugar e não ganhou corrigida. Relato: geo-folhas-usgs-relato.md."
 }

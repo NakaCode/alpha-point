@@ -21,7 +21,8 @@
     · A BASE DO RESUMO: o contorno de hoje (la-hoje-tiger) a 40 % (--territorio-protagonista-com-contexto-cor), só o
       preenchimento (sem a linha: ela passaria por baixo dos rótulos do resumo), a cena inteira; cai a 25 % em 'still'.
     · AS CAMADAS, na ordem da voz (uma por sintagma): o anel em San Pedro (o ponto do GNIS) com '4–1 · 1897'; o Long Wharf de
-      Port Los Angeles (long-wharf-usgs1903, a folha de 1903) em --neutro com 'Port Los Angeles'; a cidade de 1850
+      Port Los Angeles (long-wharf-usgs1903-corrigido, a folha de 1903 corrigida, ±50 m; trocada em 08/10/2026 junto com o ponto
+      corrigido da cabeça do píer, que sem ela ficaria 220 m fora da ponta da linha) em --neutro com 'Port Los Angeles'; a cidade de 1850
       (la-1850-hamlin) e a régua Plaza → Wilmington (os pontos do NRHP e do GNIS) com 'ABOUT 19 MILES'; a cidade de 1899
       (la-1899-antes-da-faixa-hamlin) e a faixa de 1906 (faixa-1906-hamlin, o polígono do arquivo, recortado por latitude
       enquanto desce de norte a sul em 1,2 s) até as linhas das cidades do porto (Wilmington de 1909 em --contraparte 35 % com
@@ -62,10 +63,10 @@
 <script src="../_media/geo/faixa-1906-hamlin.js"></script>
 <script src="../_media/geo/wilmington-1909-hamlin.js"></script>
 <script src="../_media/geo/san-pedro-1909-divisa-hamlin.js"></script>
-<script src="../_media/geo/long-wharf-usgs1903.js"></script>
+<script src="../_media/geo/long-wharf-usgs1903-corrigido.js"></script>
 <script src="../_media/geo/main-channel-usace-ncf.js"></script>
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
-<script src="../_media/geo/pontos-historicos-usgs.js"></script>
+<script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -313,14 +314,14 @@
     aneis: [ { id: "anelSP", ref: "sanPedro", entra: 1.663, pulsos: [1.663, 2.863], sai: 5.90 },
              { id: "anelCosta", ref: "costa", entra: 12.303, pulsos: [12.303, 13.503], sai: 14.90 } ],
     rotulos: [
-      { id: "rotVoto",     ref: "sanPedro",  lado: "esquerda", dx: -120, dy: 0,   entra: 2.603,  sai: 5.90 },
+      { id: "rotVoto",     ref: "sanPedro",  lado: "esquerda", dx: -120, dy: -120, entra: 2.603,  sai: 5.90 },
       { id: "rotPier",     ref: "pier",      lado: "esquerda", dx: -120, dy: -150,  entra: 4.143,  sai: 6.55 },
       { id: "rotMilhas",   ref: "reguaMeio", lado: "direita",  dx: 90,   dy: 0,   entra: 6.543,  sai: 8.70 },
       { id: "ano1850",     ref: "oeste1850", lado: "esquerda", dx: -60,  dy: 0,   entra: 6.543,  sai: 13.20 },
       { id: "ano1906",     ref: "oeste1906", lado: "esquerda", dx: -60,  dy: 0,   entra: 8.703,  sai: 13.20 },
       { id: "cotaLargura", ref: "tiqueLeste", lado: "direita", dx: 60,   dy: 0,   entra: 9.023,  sai: 12.90 },
       { id: "ano1909",     ref: "wilmLeste", lado: "direita",  dx: 60,   dy: 0,   entra: 11.183, sai: 13.20 },
-      { id: "cota53",      ref: "canalLeste", lado: "direita", dx: 70,   dy: 0,   entra: 16.468, sai: 19.663 }
+      { id: "cota53",      ref: "canalLeste", lado: "direita", dx: 70,   dy: -40, entra: 16.468, sai: 19.663 }
     ],
     legenda: { entra: 8.383, sai: 10.567 },            // sai inteira até 10,867 s ('then'), quando Wilmington vira a cidade
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors" },
@@ -330,7 +331,7 @@
   function cenaGeo() {
     HOJE = feicao("la-hoje-tiger"); C1850 = feicao("la-1850-hamlin"); C1899 = feicao("la-1899-antes-da-faixa-hamlin");
     FAIXA = feicao("faixa-1906-hamlin"); WILM = feicao("wilmington-1909-hamlin"); CANAL = feicao("main-channel-usace-ncf");
-    var lw = feicao("long-wharf-usgs1903");
+    var lw = feicao("long-wharf-usgs1903-corrigido");
     if (!HOJE || !C1850 || !C1899 || !FAIXA || !WILM || !CANAL || !lw) return;
     PIER = lw.geometry.coordinates;
     var sp = trechosSP(["oeste_e_norte_com_a_faixa", "com_wilmington"]); if (!sp) return;
@@ -351,7 +352,7 @@
     if (x50.length < 2 || x06.length < 2) return falhar("as âncoras dos anos não cruzaram os contornos.");
     var wl = rw.reduce(function (m, p) { return p[0] > m[0] ? p : m; });
     var cl0 = aneis(CANAL.geometry)[0].reduce(function (m, p) { return p[0] > m[0] ? p : m; });
-    REFS = { sanPedro: pontoNome("lugares-gnis-nrhp", "San Pedro"), pier: pontoNome("pontos-historicos-usgs", "Port Los Angeles (Long Wharf head)"),
+    REFS = { sanPedro: pontoNome("lugares-gnis-nrhp", "San Pedro"), pier: pontoNome("pontos-historicos-usgs-corrigidos", "Port Los Angeles (Long Wharf head)"),
              plaza: plaza, wilmington: wil, reguaMeio: [(plaza[0] + wil[0]) / 2, (plaza[1] + wil[1]) / 2],
              oeste1850: [x50[0], 34.05], oeste1906: [x06[0], 33.93], tiqueLeste: TIQUE[1], wilmLeste: wl,
              costa: SP0[SP0.length - 1], canalLeste: cl0 };
@@ -413,7 +414,7 @@
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 41.8;
   window.__duracao = DUR;
 
   var P = window.__REGIE_MAPA;

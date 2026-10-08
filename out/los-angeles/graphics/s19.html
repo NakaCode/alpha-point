@@ -28,12 +28,11 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s19 (271,7 → 285,933 s do m
       píer, à esquerda e abaixo dela, sobre o mar (a haste chega ao canto direito da base; os rótulos à esquerda dos números,
       porque à direita da ponta está a costa), com a marca cheia de 30 pés em --neutro e 'deep-water: 30 FT'; em 'thirty-three' a linha d'água sobe a 33 e entra
       'ABOUT 33 FT'; em 'deep water' a câmera aproxima da ponta.
-  INCERTEZA: a pauta-geo declara ±11 m DE LEITURA para o Long Wharf (USGS Calabasas 1903), mas a raiz do píer cai a 212 m da
-  costa de hoje (costa-hoje-tiger), no mar: a georreferência da folha erra pelo menos isso (a praia de hoje foi alargada por
-  aterro depois de 1903, o que só aumentaria a distância se a folha estivesse certa). Como no s12 (o molhe da folha de 1896,
-  ~240 m), o zoom fica limitado a que esse erro caiba na espessura total da linha: 212 + 11 m em 36 px pedem ≤ 6,6 m/px,
-  zoom ≤ 13,00 em 34,02 N. Zoom máximo da cena: 13,00 (a aproximação final do beat 'camera closes on the pier's tip' é de
-  12,85 a 13,00). A cabeça do píer (a pílula do p1) é o último vértice da mesma folha, com o mesmo erro.
+  INCERTEZA: o píer é a camada CORRIGIDA long-wharf-usgs1903-corrigido (±50 m; a folha de Calabasas 1903 errava ~222 m, medidos
+  pela pesquisa-geo contra o relevo de hoje: _pesquisa/geo-folhas-usgs-relato.md; a raiz cai a 3 m da costa de hoje), e a
+  cabeça do píer (a pílula do p1) é o ponto 'Port Los Angeles' de pontos-historicos-usgs-corrigidos. A conta de Hamlin: ±50 m
+  não passam da espessura total do traço, 36 px (18 sobre 36): ≤ 1,39 m/px, e em 34,02 N (53.940 m/px no zoom 0 do palco 4K)
+  isso é zoom ≤ 15,25. Zoom máximo da cena: 15,00 (1,65 m/px: 50 m = 30 px), na aproximação final à ponta.
   ELEMENTOS: p1 2 (pílula, miniatura); p2 2 (pílula, legenda; a água é o fundo do lugar); p3 até 4 (píer, legenda das cores,
   cota; a cota e a legenda das cores saem quando o medidor entra); p4 4 (píer, medidor, 'deep-water: 30 FT', 'ABOUT 33 FT').
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (data-qc-credito="mapa" só nele); 'Source: Senate
@@ -46,8 +45,8 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s19 (271,7 → 285,933 s do m
 <script src="../_media/_vendor/camera-mapa.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
-<script src="../_media/geo/pontos-historicos-usgs.js"></script>
-<script src="../_media/geo/long-wharf-usgs1903.js"></script>
+<script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
+<script src="../_media/geo/long-wharf-usgs1903-corrigido.js"></script>
 <script src="../_media/geo/portos-la-long-beach-tiger.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -180,9 +179,9 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s19 (271,7 → 285,933 s do m
       A1: { lng: -118.505, lat: 33.990, zoom: 12.45 },
       B0: { lng: -118.262, lat: 33.738, zoom: 12.55 },   // San Pedro Bay, o porto de hoje
       B1: { lng: -118.258, lat: 33.735, zoom: 12.68 },
-      C0: { lng: -118.531, lat: 34.021, zoom: 12.75 },   // o píer inteiro (teto 13,00: cabeçalho)
-      C1: { lng: -118.532, lat: 34.0205, zoom: 12.85 },
-      D0: { lng: -118.5345, lat: 34.0185, zoom: 13.00 }  // a ponta do píer e o medidor
+      C0: { lng: -118.5345, lat: 34.0255, zoom: 14.40 },  // o píer inteiro (teto 15,25: cabeçalho)
+      C1: { lng: -118.5355, lat: 34.0248, zoom: 14.55 },
+      D0: { lng: -118.5395, lat: 34.0230, zoom: 15.00 }   // a ponta do píer e o medidor
     },
     pernas: [
       { t0: 0,     t1: 2.73,   de: "A0", para: "A1", tipo: "h" },
@@ -215,7 +214,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s19 (271,7 → 285,933 s do m
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 14.233;   // a dur do espelho, literal (roupa §8)
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -429,8 +428,8 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s19 (271,7 → 285,933 s do m
   }
 
   // ═══ O DESENHO DA CENA ═══════════════════════════════════════════════════════════════════════════
-var CABECA = pontoNome("pontos-historicos-usgs", "Port Los Angeles (Long Wharf head)");
-  var PIER = feicao("long-wharf-usgs1903"), PORTO_LA = feicao("portos-la-long-beach-tiger", "Port of Los Angeles");
+var CABECA = pontoNome("pontos-historicos-usgs-corrigidos", "Port Los Angeles (Long Wharf head)");
+  var PIER = feicao("long-wharf-usgs1903-corrigido"), PORTO_LA = feicao("portos-la-long-beach-tiger", "Port of Los Angeles");
   if (window.__erroCena) return;
   // o píer vai da praia (primeiro vértice) à cabeça (o último, o mesmo ponto de pontos-historicos-usgs)
   var PC = PIER.geometry.coordinates;
@@ -832,8 +831,10 @@ var CABECA = pontoNome("pontos-historicos-usgs", "Port Los Angeles (Long Wharf h
       var pronto = function () {
         try {
           if (!map.areTilesLoaded() || map.isMoving()) return false;
-          for (var i = 0; i < CENA.fontes.length; i++) if (!map.isSourceLoaded(CENA.fontes[i])) return false;
-          if (!map.isSourceLoaded("base")) return false;
+          // getSource antes de isSourceLoaded: este, numa fonte que ainda não existe (antes do load), dispara o evento de erro do
+          // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
+          for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
+          if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

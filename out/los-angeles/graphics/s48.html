@@ -16,8 +16,9 @@
   O que a cena faz:
     · BASE: perfil do canal (maptiler), SEM relevo. Tratamento 65/70 na pintura, sem véu.
     · p1 (0–4,4 s): a cidade de 1909 na costa (la-1909-hamlin, --destaque 85 %, e a divisa de San Pedro até a água em
-      --destaque 6 px, como no fim da s44). Em 'coast' o quebra-mar (quebra-mar-usgs1923: a folha do USGS de 1923, o muro
-      concluído em 1912) se desenha da costa ao farol em --rede-cor (10 px sobre o escuro de 18). Em 'almost' a MINIATURA da
+      --destaque 6 px, como no fim da s44). Em 'coast' o quebra-mar (quebra-mar-osm: o San Pedro Breakwater de HOJE pelo
+      OpenStreetMap, a mesma obra concluída em 1912; ±10 m no mar, ±20 m no trecho enterrado. Trocou em 08/10/2026 a
+      quebra-mar-usgs1923, que corria 53–59 m ao norte do muro: _decisoes-central.md, Q4/Q8, item 3) se desenha da costa ao farol em --rede-cor (10 px sobre o escuro de 18). Em 'almost' a MINIATURA da
       foto NARA de 1914 (a mesma da s47; veredito do conferente para s48 beat 0, sha256 do rascunho 0af9e4db…) pousa ao lado
       do farol, na ponta da linha, com o aviso 'Photo from 1914' na margem de baixo da moldura (identidade §6; o ponto do
       farol NÃO entra: a luz é de 1913). A miniatura mostra só a foto de dentro da prancha (sem a moldura de papel da NARA,
@@ -47,8 +48,8 @@
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
 <script src="../_media/geo/la-1909-hamlin.js"></script>
 <script src="../_media/geo/san-pedro-1909-divisa-hamlin.js"></script>
-<script src="../_media/geo/quebra-mar-usgs1923.js"></script>
-<script src="../_media/geo/pontos-historicos-usgs.js"></script>
+<script src="../_media/geo/quebra-mar-osm.js"></script>
+<script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
 <script src="../_media/geo/la-hoje-tiger.js"></script>
 <script src="../_media/geo/vizinhos-faixa-tiger.js"></script>
 <style>
@@ -330,7 +331,7 @@
     return [sx / n, sy / n];
   }
   function cenaGeo() {
-    C1909 = feicao("la-1909-hamlin", 0); HOJE = feicao("la-hoje-tiger"); var q = feicao("quebra-mar-usgs1923");
+    C1909 = feicao("la-1909-hamlin", 0); HOJE = feicao("la-hoje-tiger"); var q = feicao("quebra-mar-osm");
     if (!C1909 || !HOJE || !q) return;
     var sp = trechosSP(["oeste_e_norte_com_a_faixa"]); if (!sp) return; SP0 = sp[0];
     QM = q.geometry.coordinates;                       // da costa ao farol (a ordem do arquivo)
@@ -393,7 +394,7 @@
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 19.933;
   window.__duracao = DUR;
 
   var P = window.__REGIE_MAPA;

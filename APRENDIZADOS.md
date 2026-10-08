@@ -1386,3 +1386,39 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** todo canal que usa o `qc-janela` do molde e monta a cena a partir de um objeto de
   configuração. Um FAIL em massa, todo com o mesmo "null", é sinal de leitura, não de 23 cenas erradas, e se prova à parte antes
   de mandar consertar.
+
+### 77. A folha topográfica antiga do USGS pode errar 50 a 250 m, mesmo com a georreferência do próprio USGS
+
+- **O problema:** no vídeo 2 (Los Angeles), as linhas históricas foram digitalizadas das folhas HistoricalTopo do USGS
+  (GeoTIFF com a georreferência do próprio USGS), com incerteza declarada de ±5 a ±11 m (a georreferência mais a leitura do
+  traço). Sobre o satélite, o `qc-visual` viu o quebra-mar de 1923 correr paralelo ao muro de verdade, 55–70 m ao norte. A
+  pesquisa-geo mediu: a folha "Wilmington" de 1923 erra 53–59 m no porto, e a "Calabasas" de 1903 erra 219–263 m (o píer de
+  1903 aparecia 200 m dentro do mar, e a primeira explicação foi "a praia cresceu").
+- **O que resolveu:** medir cada folha contra o que não mudou desde ela: a mesma obra que existe hoje (o muro, o farol, pela
+  geometria do OSM), o relevo (as curvas de nível da folha contra o modelo de terreno 3DEP de hoje) ou a grade de ruas antiga.
+  Onde a obra existe hoje, a geometria de hoje substitui a da folha; onde não existe, a folha se corrige pelo deslocamento
+  medido perto, com a incerteza da correção declarada.
+- **Como evitar:** a incerteza da georreferência de uma folha antiga não é a do arquivo: confira a folha num ponto fixo antes de
+  pôr a linha dela sobre o satélite, e desconfie de toda linha que corre paralela ao que se vê no satélite. "A paisagem mudou"
+  é hipótese, não explicação, até a medida num ponto fixo.
+- **Por que serve a qualquer canal:** todo canal que põe mapa histórico, cadastro antigo ou folha digitalizada sobre base de
+  satélite. O erro é sistemático (uma translação) e por isso parece um traço limpo e convincente.
+
+### 78. Nem os portões nem o olho pegam o texto que a câmera leva para fora da área segura
+
+- **O problema:** no vídeo 2 (Los Angeles), as 49 cenas passaram nos portões (`qc-cena` com a pré-carga, `portao-mapa`, o
+  `conferir`), e o `qc-visual` aprovou a maior parte delas olhando quadros a cada 0,5 s. Depois, uma varredura de todo
+  texto, pílula e caixa visível, na tela, sob a câmera, a cada 0,25 s, achou 17 casos reais: rótulo de mapa CORTADO pela borda
+  do quadro enquanto a câmera voa (s29, s33, s44), pílula na faixa do crédito (s29, s33, s37), pílula acima da margem do topo
+  (s26), a última linha de uma folha descendo abaixo de y 1880 (s38) e pílulas a 1–24 px dentro da margem lateral. O
+  `qc-fora-do-quadro` do molde mede alguns instantes, e o olho do qc lê o conteúdo, não a borda.
+- **O que resolveu:** um medidor que abre a cena (com a pré-carga das chaves, em mapa), anda de 0,25 em 0,25 s chamando
+  `__renderAt` e mede a caixa de todo texto (pelo `Range`) e de toda pílula e cartão (pelo `getBoundingClientRect`, que já
+  inclui a câmera e a rotação), contra 160 no topo, 200 nas laterais e 1880 embaixo (fora o crédito). Testado com um texto
+  plantado fora da margem antes de valer. A saída tem ruído conhecido (a folha que entra de fora do quadro, a sombra, a caixa
+  que agrupa os créditos), que se olha no quadro antes de mandar consertar
+  (`out/los-angeles/_tmp/medir-margens.mjs` e `medir-fitas.mjs`, a promover a `ferramentas/` no fim do vídeo).
+- **Como evitar:** rode a varredura das margens em toda cena antes do `qc-visual`, e dê ao qc e ao editor o mesmo medidor como
+  prova. Rótulo preso a um ponto do mapa esmaece antes de cruzar a margem, ou fica preso a ela.
+- **Por que serve a qualquer canal:** todo canal com câmera que anda sobre a cena (mapa, mesa, push-in), e com área segura para
+  a legenda e a barra do player.

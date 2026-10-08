@@ -236,7 +236,7 @@
     }
   };
   // ═══ O MOTOR DA CENA (o mesmo nas oito cenas do lote M2; os blocos vêm da s03, a referência do vídeo 2) ══════════
-  var DUR = CENA.duracao;
+  var DUR = 22.866;   // número literal, a dur do espelho (roupa §8: o qc-janela só lê o número)
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -591,7 +591,7 @@
       var u = t - o.pouso, a = eo(u / 0.55);
       vis = cl(u / 0.2, 0, 1);
       esc = u < 0.33 ? 0.72 + 0.31 * eo(u / 0.33) : 1.03 - 0.03 * eo((u - 0.33) / 0.22);
-      dy = -240 * (1 - a); r = -2 + (rot + 2) * a;
+      dy = -(o.queda == null ? 240 : o.queda) * (1 - a);   // a queda: 240 px (identidade §4.4); menos, onde a margem não deixa r = -2 + (rot + 2) * a;
       sTy = 64 - 52 * a; sEsc = 1.05 - 0.05 * a; sOp = 0.35 + 0.45 * a;
       if (o.levanta != null && t >= o.levanta) {
         var w = cl((t - o.levanta) / 0.35, 0, 1), k = w * w * w;
@@ -621,12 +621,25 @@
     var el = E(r.id); if (!el) return;
     var p = r.tela ? { x: r.tela[0], y: r.tela[1] } : map.project(r.p);
     if (r.mover) { var m = r.mover(t, p); p = m || p; }
-    var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
-    var ty = r.vert === "cima" ? "-100%" : r.vert === "baixo" ? "0%" : "-50%";
+    var fx = r.lado === "direita" ? 0 : r.lado === "esquerda" ? -1 : -0.5;
+    var fy = r.vert === "cima" ? -1 : r.vert === "baixo" ? 0 : -0.5;
+    var w = el.offsetWidth, h = el.offsetHeight;
+    var x0 = p.x + (r.dx || 0) + fx * w, yb = p.y + (r.dy || 0) + fy * h;
+    var y0 = yb + (1 - Math.min(entrada, r._sub == null ? entrada : r._sub)) * 24;
+    // o rótulo preso a um ponto do mapa que a câmera leva para fora ESMAECE em 60 px de passagem da margem (e fica preso a
+    // ela enquanto esmaece); o de tela e o que a cena move ficam presos à margem
+    if (r.p && !r.tela && !r.mover) {
+      var fora = Math.max(0, AREA.esq - x0, x0 + w - AREA.dir, AREA.topo - yb, yb + h - AREA.base);
+      entrada *= 1 - cl(fora / 60, 0, 1);
+    }
+    // A ÁREA SEGURA (identidade §4.2; decisão do Claude central, 08/10/2026): o rótulo que a câmera leva para fora fica
+    // preso à margem (200 nas laterais, 160 no topo, 1880 embaixo, onde começa a faixa do crédito); nunca sai cortado.
+    x0 = cl(x0, AREA.esq, Math.max(AREA.esq, AREA.dir - w));
+    y0 = cl(y0, AREA.topo, Math.max(AREA.topo, AREA.base - h));
     el.style.opacity = entrada.toFixed(3);
-    el.style.transform = "translate(" + (p.x + (r.dx || 0)).toFixed(3) + "px," + (p.y + (r.dy || 0)).toFixed(3) + "px) translate(" + tx +
-      "," + ty + ") translateY(" + ((1 - Math.min(entrada, r._sub == null ? entrada : r._sub)) * 24).toFixed(2) + "px)";
+    el.style.transform = "translate(" + x0.toFixed(3) + "px," + y0.toFixed(3) + "px)";
   }
+  var AREA = { esq: 202, dir: 3638, topo: 162, base: 1878 };   // 2 px de folga: a largura do DOM é inteira, a do texto não
   API.project = function (ll) { return map.project(ll); };
   // ── O TEXTO LISO (s03): o texto dos rótulos de classe liso, pintado em #tintaRotulos na posição exata do DOM ──
   var TL = { x4: document.createElement("canvas"), x2: document.createElement("canvas") };

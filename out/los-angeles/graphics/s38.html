@@ -225,7 +225,7 @@ narrow margin of six votes.</div>
       <div class="fita" id="folAFe" style="left:-60px;top:-50px"></div>
       <div class="fita" id="folAFd" style="left:2220px;top:-50px"></div>
     </div>
-    <!-- p4: a folha C (2100 × 1886; centro 1400 × 1168; −0,6°) -->
+    <!-- p4: a folha C (2100 × 1886; centro 1400 × 1138; −0,6°) -->
     <div class="sombra-solta" id="folCSombra" style="width:2100px;height:1801px"></div>
     <div class="grupoFolha" id="folCGrupo" style="width:2100px;height:1886px">
       <div class="folha rasgada" id="folC" style="width:2100px;height:1886px;padding:100px 150px 0" data-qc-fonte-livre="folha de documento recriada: Courier Prime (--fonte-doc), identidade §3 e §5">
@@ -531,7 +531,7 @@ annexation and 203 are against.</div>
   ];
   var GB = { w: 2100, h: 1342, cx: 1400, cy: 971, rot: -0.9 };
   var GA = { w: 2600, h: 1776, cx: 1660, cy: 1128, rot: 0.7 };
-  var GC = { w: 2100, h: 1886, cx: 1400, cy: 1168, rot: -0.6 };
+  var GC = { w: 2100, h: 1886, cx: 1400, cy: 1138, rot: -0.6, k: 0.94 };   // k: a folha C a 0,94 sobre o centro (a faixa do crédito, abaixo de y 1880, só recebe crédito; a borda de papel em branco pode descer nela)
   // os GRIFOS: as palavras impressas de cada folha, medidas por Range no texto (textos-tela › folha_texto, notas)
   var GRB = grifosFolha("folB", [{ frase: "6612 votes for annexation;", t: [6.912, 7.167] }, { frase: "914 votes against annexation;", t: [7.167, 7.657] }]);
   var GRA = grifosFolha("folA", [{ frase: "Six Votes", t: [10.162, 10.367] }, { frase: "in the Country Carry the Project.", t: [10.367, 11.20] }]);
@@ -544,8 +544,9 @@ annexation and 203 are against.</div>
   function folhaPor(idG, idS, g, s, rot) {
     s.dy *= 0.45;   // as folhas altas (topo em 170–300) descem 190 px e não 420: o cabeçalho ficaria fora do quadro (qc-fora-do-quadro)
     var sg = { w: g.w, h: Math.round(g.h * 0.955), cx: g.cx, cy: g.cy - g.h * 0.0225 };
-    sombra(E(idS), sg, s, rot);
-    por(E(idG), g.cx, g.cy - s.dy, g.w, g.h, rot, s.k, s.op);
+    var s2 = { p: s.p, dy: s.dy, k: s.k * (g.k || 1), op: s.op };   // g.k: a escala fixa da folha (a C, 0,94), composta com o assentamento 1,03 → 1,00
+    sombra(E(idS), sg, s2, rot);
+    por(E(idG), g.cx, g.cy - s2.dy, g.w, g.h, rot, s2.k, s2.op);
   }
 
   function cena(t) {

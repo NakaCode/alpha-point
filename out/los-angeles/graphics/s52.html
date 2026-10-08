@@ -39,10 +39,12 @@
               é a soma exata L20 no eixo; velocidade zero no contato: a derivada do eo é 3(1−p)² = 0 em p = 1; sem rebote, sem
               atravessar); as arestas da junção se apagam em 0,3 s e vira UMA caixa de 40 pés (a cota "40 FT" já está embaixo dela desde 3,77: a cota-alvo que o par fecha)
               A cota fica 2,13 s no ar (3,77–5,90). A luz veio para o centro do par em 3,55–4,15 (eb).
-        4,81  "as" (de "counts as two"): o rótulo "= 2 TEU" acima da caixa de 40 (300 ms, como o "1 TEU"); inteiro em 5,11,
+        4,81  "as" (de "counts as two"): o "= 2 TEU" entra EMENDADO À DIREITA do "40 FT", na mesma linha, pela linha de base, sem
+              deslocar a cota (300 ms, opacidade + 24 px, 1,04 → 1,00): é complemento do bloco "40 FT = 2 TEU", que está no ar desde
+              3,77 (2,13 s até o corte; decisão do Claude central, Q8 item 2, 08/10/2026); inteiro em 5,11,
               enquanto a voz diz "two" (5,01–5,26). Fica 1,09 s.
         5,65–5,90  REPOUSO: nada se move além da deriva do RIG (o push-in para em 5,65; a última entrada acabou em 5,11).
-    DECLARADO (para o qc-visual; o redator e a regência não têm mais o que fazer aqui): "= 2 TEU" fica 1,09 s no ar, abaixo dos
+    DECLARADO (histórico; resolvido pela Q8 item 2, o "= 2 TEU" como complemento do bloco "40 FT = 2 TEU", no ar 2,13 s): antes ele era elemento próprio, 1,09 s no ar, abaixo dos
     2,0 s da identidade §4.3, porque a voz só diz "two" em 5,01 e o corte é em 5,90 (DECISÃO DO LUCAS PENDENTE: qc/_decisoes-central.md,
     Q2 item 1; não mexer). Antecipar o 2 para "counts"
     (4,57) daria 1,33 s e poria o "2" antes de "two"; a regência dá os dois ao mesmo beat e o roteiro não tem mais tempo. É o
@@ -50,7 +52,8 @@
 
   A CONTA DOS ELEMENTOS DA MARCA (identidade §4.2; conta minha nos quadros, não portão): a caixa com a sua cota conta como UM
   (a cota é a linha de dimensão presa à aresta, parte do desenho do objeto; roupa §4). p1: caixa+cota (1) + "1 TEU" (1) = 2.
-  Pouso e deslize do par: + 2 caixas = 4. Depois do contato: caixa de 40 + cota (1) + "= 2 TEU" (1) = 4. Pico 4 (alvo 4–5, teto 6).
+  Pouso e deslize do par: + 2 caixas = 4. Depois do contato: caixa de 40 + cota (1) + o bloco "40 FT = 2 TEU" (1) = 4 (antes do
+  contato, com as duas caixas: 5). Pico 5 (alvo 4–5, teto 6).
   Blocos de texto de leitura: nenhum em frase (os quatro são cotas e rótulos curtos). Herói: nenhum (data-qc-sem-heroi).
   Crédito: nenhum (definição desenhada; a mesa é domínio público).
 
@@ -155,8 +158,13 @@
     <svg id="desenho" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg"></svg>
     <div class="txt rotulo" id="teu1" data-qc-papel="eixo"></div>
     <div class="txt cota"   id="cota20" data-qc-papel="eixo"></div>
-    <div class="txt cota"   id="cota40" data-qc-papel="eixo"></div>
-    <div class="txt rotulo" id="teu2" data-qc-papel="eixo"></div>
+    <!-- o bloco "40 FT = 2 TEU": a cota e o resultado na MESMA linha, alinhados pela linha de base (flex, baseline); a cota fica onde
+         estava (centrada sob a linha de cota) e o "= 2 TEU" vem emendado à direita, entrando em "as two" (decisão do Claude central,
+         qc/_decisoes-central.md Q8 item 2, 08/10/2026: complemento do "40 FT", não elemento novo) -->
+    <div class="txt" id="bloco40" style="display:flex;align-items:baseline;gap:30px;opacity:1">
+      <div class="cota"   id="cota40" data-qc-papel="eixo" style="opacity:0"></div>
+      <div class="rotulo" id="teu2"   data-qc-papel="eixo" style="opacity:0;transform-origin:0 100%"></div>
+    </div>
   </div>
 </div>
 
@@ -444,8 +452,14 @@
     var u = 1 - jun, v = u >= 1 ? 0 : (1 - u) / (1 - ALFA_FACE * u);
     PA.faces.style.opacity = v.toFixed(3); PB.faces.style.opacity = v.toFixed(3); FUS.style.opacity = u.toFixed(3);
     C40.g.style.opacity = eo(seg(t, T.cota40, T.entrada)).toFixed(3);
-    porTexto("cota40", t, T.cota40, C40.mx, C40.my + 92, false);
-    porTexto("teu2", t, T.teu2, PAR_B.cx, PAR_B.y0 - 150, true);
+    // o bloco "40 FT = 2 TEU": o contêiner fica onde a cota ficava (a cota centrada em C40.mx, C40.my + 92); cada parte entra na sua palavra
+    var bl = E("bloco40"), c40 = E("cota40"), t2 = E("teu2");
+    if (bl && c40 && t2) {
+      bl.style.transform = "translate(" + (C40.mx - c40.offsetWidth / 2).toFixed(2) + "px," + (C40.my + 92 - c40.offsetHeight / 2).toFixed(2) + "px)";
+      var p40 = eo(seg(t, T.cota40, T.entrada)), p2 = eo(seg(t, T.teu2, T.entrada));
+      c40.style.opacity = p40.toFixed(3); c40.style.transform = "translateY(" + (24 * (1 - p40)).toFixed(2) + "px)";
+      t2.style.opacity = p2.toFixed(3);  t2.style.transform = "translateY(" + (24 * (1 - p2)).toFixed(2) + "px) scale(" + lerp(1.04, 1.00, p2).toFixed(4) + ")";
+    }
   }
 
   window.__renderAt = function (t) {

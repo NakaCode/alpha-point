@@ -227,7 +227,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
     setaSE: { entra: 29.91, dura: 0.6 }, setaS: { entra: 30.71, dura: 0.6 },
     rotulos: [
       { id: "cota1850", ref: "oeste1850", lado: "esquerda", dx: -70,  dy: 0,   entra: 3.385, sai: 5.83 },
-      { id: "rotPlaza", ref: "etqPlaza",  lado: "direita",  dx: 0,    dy: 0,   entra: 3.82,  sai: 5.83 },
+      { id: "rotPlaza", ref: "etqPlaza",  lado: "direita",  dx: 0,    dy: -60,   /* -60: a base da moldura fica acima de 1880 também na subida (qc-visual Q9) */   entra: 3.82,  sai: 5.83 },
       { id: "legPraia", ref: "praia",     lado: "esquerda", dx: -60,  dy: 0,   entra: 8.20,  sai: 10.55 },
       { id: "rot14",    ref: "meioR1",    lado: "centro",   dx: 150,  dy: 190, entra: 8.54,  sai: 10.55 },
       { id: "rotWilm",  ref: "wilm",      lado: "direita",  dx: 70,   dy: 0,   entra: 10.30, sai: 14.45 },
@@ -911,8 +911,10 @@ var C1850 = feicao("la-1850-hamlin"), CA = feicao("california-cb500k");
       var pronto = function () {
         try {
           if (!map.areTilesLoaded() || map.isMoving()) return false;
-          for (var i = 0; i < CENA.fontes.length; i++) if (!map.isSourceLoaded(CENA.fontes[i])) return false;
-          if (!map.isSourceLoaded("base")) return false;
+          // getSource antes de isSourceLoaded: este, numa fonte que ainda não existe (antes do load), dispara o evento de erro do
+          // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
+          for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
+          if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

@@ -110,7 +110,9 @@
   #erroCena[hidden] { display: none; }
   #fotoBox { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: hidden; z-index: 35;
     background: var(--fundo); box-shadow: 0 0 0 0 transparent; }
-  #fotoBox img { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  #fotoBox img, #fotoCheia img { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  #fotoCheia { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: hidden; z-index: 37;
+    background: var(--fundo); }
   #fotoMoldura { position: absolute; left: 0; top: 0; z-index: 36; pointer-events: none; opacity: 0;
     border: 14px solid var(--tinta); border-radius: 4px; }
   #fotoSombra { position: absolute; left: 0; top: 0; z-index: 34; opacity: 0; background: rgba(5, 8, 13, 0.85); filter: blur(28px); }
@@ -123,6 +125,7 @@
 <div id="palco">
   <div id="map"></div>
   <div id="fotoSombra"></div>
+  <div id="fotoCheia"><img id="fotoImgCheia" src="../_media/foto/s33/san-pedro-harbor-town-ca1891-1910-jackson.jpg" alt=""></div>
   <div id="fotoBox"><img id="fotoImg" src="../_media/foto/s33/san-pedro-harbor-town-ca1891-1910-jackson.jpg" alt=""></div>
   <div id="fotoMoldura"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
@@ -166,7 +169,7 @@
       W0: { lng: -118.2550, lat: 33.9250, zoom: 11.30 },  // o contorno de 1899 no alto, o porto embaixo
       W1: { lng: -118.2560, lat: 33.9230, zoom: 11.36 },
       W2: { lng: -118.2560, lat: 33.9380, zoom: 11.48 },  // "well to the north": aproxima um pouco do contorno
-      W3: { lng: -118.2570, lat: 33.9200, zoom: 11.38 },
+      W3: { lng: -118.2570, lat: 33.9050, zoom: 11.30 },   // desce e abre um pouco: San Pedro entra no quadro em "San Pedro" (margens, 08/10/2026)
       G0: { lng: -118.2700, lat: 33.8620, zoom: 11.60 },  // o vão: a borda sul de 1899 no alto, as linhas embaixo
       G1: { lng: -118.2700, lat: 33.8630, zoom: 11.66 }
     },
@@ -198,7 +201,7 @@
       { id: "rot19",    ref: "MEIO", lado: "direita", dx: 90, dy: 0,   entra: 10.51, sai: 15.07 },
       { id: "rot43",    ref: "LA",   lado: "centro", dx: 0, dy: 0,     entra: 18.03, sai: 21.11 },
       { id: "legCity",  ref: "LA",   lado: "centro", vert: "baixo", dx: 0, dy: 100, entra: 18.03, sai: 21.11 },
-      { id: "rotSP2",   ref: "SP",   lado: "direita", dx: 60, dy: 0,   entra: 22.35, sai: null },
+      { id: "rotSP2",   ref: "SP",   lado: "esquerda", vert: "cima", dx: -40, dy: -30, entra: 22.35, sai: null },
       { id: "rotWilm2", ref: "WILM", lado: "direita", dx: 60, dy: 0,   entra: 23.15, sai: null }
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
@@ -227,12 +230,14 @@
         var mx = 999; A.aneis(f.geometry).forEach(function (rr) { rr.forEach(function (p) { if (p[0] < mx) mx = p[0]; }); }); return mx < -118.235;
       }) };
       // a foto: o contrato quer a Promise das imagens
-      var img = A.E("fotoImg");
-      window.__fotosProntas = new Promise(function (res) {
-        if (!img) return res(true);
-        var ok = function () { (img.decode ? img.decode() : Promise.resolve()).then(function () { res(true); }, function () { res(true); }); };
-        if (img.complete && img.naturalWidth) ok(); else { img.onload = ok; img.onerror = function () { A.falhar("a foto da s33 não carregou."); res(true); }; }
-      });
+      window.__fotosProntas = Promise.all(["fotoImg", "fotoImgCheia"].map(function (id) {
+        var img = A.E(id);
+        return new Promise(function (res) {
+          if (!img) return res(true);
+          var ok = function () { (img.decode ? img.decode() : Promise.resolve()).then(function () { res(true); }, function () { res(true); }); };
+          if (img.complete && img.naturalWidth) ok(); else { img.onload = ok; img.onerror = function () { A.falhar("a foto da s33 não carregou."); res(true); }; }
+        });
+      })).then(function () { return true; });
     },
     camadas: function (map, A) {
       A.territorio("agua", A.AGUA_LA, { fill: "--tinta", fracao: 0.35, linha: "--tinta", w: 0.01, sob: 0.01 });
@@ -275,36 +280,56 @@
     return " M " + f(a.x - dx * tam + px * tam * 0.6, a.y - dy * tam + py * tam * 0.6) + " L " + f(a.x, a.y) +
       " L " + f(a.x - dx * tam - px * tam * 0.6, a.y - dy * tam - py * tam * 0.6);
   }
-  // a foto: tela cheia com o Ken Burns, depois encolhe à miniatura presa ao ponto de San Pedro, e levanta
+  // a foto: tela cheia com o Ken Burns; em "Wilmington" a tela cheia esmaece (0,5 s) e a miniatura impressa POUSA no ponto de
+  // San Pedro (a mão que arruma, identidade §4.4: desce 240 px, 0,72 → 1,03 → 1,00), e levanta em 9,00. Era um encolher
+  // contínuo da tela cheia à miniatura; no meio dele a caixa passava da margem de baixo (medir-margens, 08/10/2026: y 1961
+  // em 6,0 s), e nenhum caminho contínuo de 3840×2160 a 1020×680 fica dentro da área segura.
   var FW = 4000, FH = 3255;
-  function foto(t, A) {
-    var F = CENA.foto, box = A.E("fotoBox"), img = A.E("fotoImg"), mol = A.E("fotoMoldura"), sb = A.E("fotoSombra");
-    if (!box || !img) return;
-    var sp = A.project(A.REFS.SP);
-    var mini = { x: sp.x + F.mini.dx, y: sp.y + F.mini.dy, w: F.mini.w, h: F.mini.h };
-    var u = A.eio(A.seg(t, F.encolhe[0], F.encolhe[1]));
-    var bx = mini.x * u, by = mini.y * u, bw = 3840 + (mini.w - 3840) * u, bh = 2160 + (mini.h - 2160) * u;
-    // o Ken Burns: só na tela cheia, e congela no começo do encolher
-    var tk = Math.min(t, F.encolhe[0]), kb = 1 + F.kb.esc * tk / F.kb.dur, vx = F.kb.vet[0] * tk / F.kb.dur, vy = F.kb.vet[1] * tk / F.kb.dur;
-    // a imagem cobre a caixa (cover), com o recorte vertical em recorteY
+  function cobrir(img, bw, bh, kb, vx, vy) {
     var s = Math.max(bw / FW, bh / FH) * kb, iw = FW * s, ih = FH * s;
-    var ox = (bw - iw) / 2 + vx * (1 - u), oy = (bh - ih) * F.recorteY + vy * (1 - u);
-    // levantar (350 ms): escala 1 → 1,04 (ease-in cúbico), opacidade a zero nos últimos 200 ms
-    var w = A.seg(t, F.levanta, 0.35), k = w * w * w, esc = 1 + 0.04 * k, vis = 1 - A.seg(t, F.levanta + 0.15, 0.2);
-    box.style.left = bx.toFixed(2) + "px"; box.style.top = by.toFixed(2) + "px";
-    box.style.width = bw.toFixed(2) + "px"; box.style.height = bh.toFixed(2) + "px";
-    box.style.transform = "scale(" + esc.toFixed(4) + ")"; box.style.opacity = vis.toFixed(3);
+    var ox = (bw - iw) / 2 + vx, oy = (bh - ih) * CENA.foto.recorteY + vy;
     img.style.width = iw.toFixed(2) + "px"; img.style.height = ih.toFixed(2) + "px";
     img.style.transform = "translate(" + ox.toFixed(2) + "px," + oy.toFixed(2) + "px)";
+  }
+  function foto(t, A) {
+    var F = CENA.foto, box = A.E("fotoBox"), img = A.E("fotoImg"), mol = A.E("fotoMoldura"), sb = A.E("fotoSombra");
+    var ch = A.E("fotoCheia"), imc = A.E("fotoImgCheia");
+    if (!box || !img || !ch || !imc) return;
+    var sp = A.project(A.REFS.SP);
+    var mini = { x: sp.x + F.mini.dx, y: sp.y + F.mini.dy, w: F.mini.w, h: F.mini.h };
+    var t0 = F.encolhe[0], u = A.eio(A.seg(t, t0, 0.8));     // u: os rótulos vão da tela cheia ao ponto
+    // a tela cheia, com o Ken Burns até sumir
+    var tk = Math.min(t, t0 + 0.5), kb = 1 + F.kb.esc * tk / F.kb.dur;
+    cobrir(imc, 3840, 2160, kb, F.kb.vet[0] * tk / F.kb.dur, F.kb.vet[1] * tk / F.kb.dur);
+    ch.style.opacity = (1 - A.eio(A.seg(t, t0, 0.5))).toFixed(3);
+    // a miniatura: o recorte da tela cheia congelado no começo da troca
+    var k0 = 1 + F.kb.esc * t0 / F.kb.dur;
+    cobrir(img, mini.w, mini.h, k0, 0, 0);
+    var vis = 0, esc = 1, dy = 0, sTy = 12, sOp = 0.8;
+    if (t >= t0) {
+      var uu = t - t0, a = A.eo(uu / 0.55);
+      vis = A.cl(uu / 0.2, 0, 1);
+      esc = uu < 0.33 ? 0.72 + 0.31 * A.eo(uu / 0.33) : 1.03 - 0.03 * A.eo((uu - 0.33) / 0.22);
+      dy = -240 * (1 - a); sTy = 64 - 52 * a; sOp = 0.35 + 0.45 * a;
+      if (t >= F.levanta) {
+        var w = A.seg(t, F.levanta, 0.35), k = w * w * w;
+        esc = 1 + 0.04 * k; sTy = 12 + 52 * k; sOp = 0.8 - 0.45 * k;
+        vis = 1 - A.seg(t, F.levanta + 0.15, 0.2);
+      }
+    }
+    var tr = "translateY(" + dy.toFixed(2) + "px) scale(" + esc.toFixed(4) + ")";
+    box.style.left = mini.x.toFixed(2) + "px"; box.style.top = mini.y.toFixed(2) + "px";
+    box.style.width = mini.w + "px"; box.style.height = mini.h + "px";
+    box.style.transform = tr; box.style.opacity = vis.toFixed(3);
     if (mol) {
-      mol.style.left = (bx - 14).toFixed(2) + "px"; mol.style.top = (by - 14).toFixed(2) + "px";
-      mol.style.width = (bw + 28).toFixed(2) + "px"; mol.style.height = (bh + 28).toFixed(2) + "px";
-      mol.style.transform = "scale(" + esc.toFixed(4) + ")"; mol.style.opacity = (u * vis).toFixed(3);
+      mol.style.left = (mini.x - 14).toFixed(2) + "px"; mol.style.top = (mini.y - 14).toFixed(2) + "px";
+      mol.style.width = (mini.w + 28) + "px"; mol.style.height = (mini.h + 28) + "px";
+      mol.style.transform = tr; mol.style.opacity = vis.toFixed(3);
     }
     if (sb) {
-      sb.style.left = bx.toFixed(2) + "px"; sb.style.top = (by + 12 + 52 * k).toFixed(2) + "px";
-      sb.style.width = bw.toFixed(2) + "px"; sb.style.height = bh.toFixed(2) + "px";
-      sb.style.opacity = (u * vis * (0.8 - 0.45 * k)).toFixed(3);
+      sb.style.left = mini.x.toFixed(2) + "px"; sb.style.top = (mini.y + sTy).toFixed(2) + "px";
+      sb.style.width = mini.w + "px"; sb.style.height = mini.h + "px";
+      sb.style.transform = tr; sb.style.opacity = (vis * sOp).toFixed(3);
     }
     // o rótulo e o aviso: na tela cheia, no canto de baixo à esquerda (REGISTRO); no encolher, vão para o ponto e para
     // baixo da miniatura
@@ -317,7 +342,7 @@
     rCi.tela = [cheiaSP.x + A.E("rotSP").offsetWidth + 50, cheiaSP.y]; rCi.dx = 0; rCi.dy = 0;
   }
   // ═══ O MOTOR DA CENA (o mesmo nas oito cenas do lote M2; os blocos vêm da s03, a referência do vídeo 2) ══════════
-  var DUR = CENA.duracao;
+  var DUR = 28.333;   // número literal, a dur do espelho (roupa §8: o qc-janela só lê o número)
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -672,7 +697,7 @@
       var u = t - o.pouso, a = eo(u / 0.55);
       vis = cl(u / 0.2, 0, 1);
       esc = u < 0.33 ? 0.72 + 0.31 * eo(u / 0.33) : 1.03 - 0.03 * eo((u - 0.33) / 0.22);
-      dy = -240 * (1 - a); r = -2 + (rot + 2) * a;
+      dy = -(o.queda == null ? 240 : o.queda) * (1 - a);   // a queda: 240 px (identidade §4.4); menos, onde a margem não deixa r = -2 + (rot + 2) * a;
       sTy = 64 - 52 * a; sEsc = 1.05 - 0.05 * a; sOp = 0.35 + 0.45 * a;
       if (o.levanta != null && t >= o.levanta) {
         var w = cl((t - o.levanta) / 0.35, 0, 1), k = w * w * w;
@@ -702,12 +727,25 @@
     var el = E(r.id); if (!el) return;
     var p = r.tela ? { x: r.tela[0], y: r.tela[1] } : map.project(r.p);
     if (r.mover) { var m = r.mover(t, p); p = m || p; }
-    var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
-    var ty = r.vert === "cima" ? "-100%" : r.vert === "baixo" ? "0%" : "-50%";
+    var fx = r.lado === "direita" ? 0 : r.lado === "esquerda" ? -1 : -0.5;
+    var fy = r.vert === "cima" ? -1 : r.vert === "baixo" ? 0 : -0.5;
+    var w = el.offsetWidth, h = el.offsetHeight;
+    var x0 = p.x + (r.dx || 0) + fx * w, yb = p.y + (r.dy || 0) + fy * h;
+    var y0 = yb + (1 - Math.min(entrada, r._sub == null ? entrada : r._sub)) * 24;
+    // o rótulo preso a um ponto do mapa que a câmera leva para fora ESMAECE em 60 px de passagem da margem (e fica preso a
+    // ela enquanto esmaece); o de tela e o que a cena move ficam presos à margem
+    if (r.p && !r.tela && !r.mover) {
+      var fora = Math.max(0, AREA.esq - x0, x0 + w - AREA.dir, AREA.topo - yb, yb + h - AREA.base);
+      entrada *= 1 - cl(fora / 60, 0, 1);
+    }
+    // A ÁREA SEGURA (identidade §4.2; decisão do Claude central, 08/10/2026): o rótulo que a câmera leva para fora fica
+    // preso à margem (200 nas laterais, 160 no topo, 1880 embaixo, onde começa a faixa do crédito); nunca sai cortado.
+    x0 = cl(x0, AREA.esq, Math.max(AREA.esq, AREA.dir - w));
+    y0 = cl(y0, AREA.topo, Math.max(AREA.topo, AREA.base - h));
     el.style.opacity = entrada.toFixed(3);
-    el.style.transform = "translate(" + (p.x + (r.dx || 0)).toFixed(3) + "px," + (p.y + (r.dy || 0)).toFixed(3) + "px) translate(" + tx +
-      "," + ty + ") translateY(" + ((1 - Math.min(entrada, r._sub == null ? entrada : r._sub)) * 24).toFixed(2) + "px)";
+    el.style.transform = "translate(" + x0.toFixed(3) + "px," + y0.toFixed(3) + "px)";
   }
+  var AREA = { esq: 202, dir: 3638, topo: 162, base: 1878 };   // 2 px de folga: a largura do DOM é inteira, a do texto não
   API.project = function (ll) { return map.project(ll); };
   // ── O TEXTO LISO (s03): o texto dos rótulos de classe liso, pintado em #tintaRotulos na posição exata do DOM ──
   var TL = { x4: document.createElement("canvas"), x2: document.createElement("canvas") };

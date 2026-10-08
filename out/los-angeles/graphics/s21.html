@@ -145,7 +145,7 @@
       { id: "anelSP", ref: "SP", entra: -1, pulsos: [5.20, 6.40] },
       { id: "anelSM", ref: "SM", entra: 6.96, pulsos: [6.96, 8.16] }
     ],
-    cartao: { x: 200, y: 340, pouso: 7.96, levanta: 15.40, rot: -1.2 },
+    cartao: { x: 262, y: 340, pouso: 7.96, levanta: 15.40, rot: -1.2 },
     rotulos: [
       { id: "legJunta", ref: "SP", lado: "esquerda", vert: "cima", dx: 560, dy: -120, entra: 2.16, sai: 7.50 },
       { id: "rotUnan",  ref: "SP", lado: "centro", vert: "baixo", dx: 0, dy: 110,  entra: 5.20, sai: 13.06 },
@@ -173,7 +173,7 @@
     }
   };
   // ═══ O MOTOR DA CENA (o mesmo nas oito cenas do lote M2; os blocos vêm da s03, a referência do vídeo 2) ══════════
-  var DUR = CENA.duracao;
+  var DUR = 15.767;   // número literal, a dur do espelho (roupa §8: o qc-janela só lê o número)
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -528,7 +528,7 @@
       var u = t - o.pouso, a = eo(u / 0.55);
       vis = cl(u / 0.2, 0, 1);
       esc = u < 0.33 ? 0.72 + 0.31 * eo(u / 0.33) : 1.03 - 0.03 * eo((u - 0.33) / 0.22);
-      dy = -240 * (1 - a); r = -2 + (rot + 2) * a;
+      dy = -(o.queda == null ? 240 : o.queda) * (1 - a);   // a queda: 240 px (identidade §4.4); menos, onde a margem não deixa r = -2 + (rot + 2) * a;
       sTy = 64 - 52 * a; sEsc = 1.05 - 0.05 * a; sOp = 0.35 + 0.45 * a;
       if (o.levanta != null && t >= o.levanta) {
         var w = cl((t - o.levanta) / 0.35, 0, 1), k = w * w * w;

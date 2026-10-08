@@ -16,8 +16,14 @@
     · BASE: perfil do canal (maptiler), SEM relevo. Tratamento 65/70 na pintura, sem véu.
     · SEM CONTORNO DE HAMLIN (desvio declarado do conceito, que punha la-1909-hamlin no lado oeste da ilha): com um contorno
       de Hamlin no quadro o zoom fica ≤ 11,90, e nele a divisa de 1923 (723 m) teria uns 42 px — a linha que é o assunto da
-      frase não se leria. Sem Hamlin, a câmera chega a 13,40 (5,9 m/px): a divisa tem uns 120 px, e a incerteza dela (±10 m
-      de leitura, 13–32 m da de hoje) fica em 2–5 px. Los Angeles aparece pela água do porto e pela pílula. O trecho de
+      frase não se leria. Sem Hamlin, a câmera chega a 13,40 (5,9 m/px): a divisa tem uns 120 px.
+      A INCERTEZA DA DIVISA (08/10/2026, _decisoes-central.md, "as camadas corrigidas das folhas USGS"): a ilha foi aterrada e
+      não sobrou ponto fixo de 1923; a incerteza real é de pelo menos ±60 m. O critério da s03: ±60 m em px do 4K não passam
+      da espessura total do traço. m/px = 65.083 × cos(33,752°)/cos(33,75°) ÷ 2^z ≈ 65.082 ÷ 2^z; no zoom 13,40, 5,95 m/px, e
+      60 m = 10,1 px. O traço da marca tem 12 px no total (5 + o contorno de 12): 10,1 ≤ 12 já passava, mas a divisa de ~120 px
+      lia pequena (o qc: ~115 px). Por isso o traço desta divisa ENGROSSA em vez de a câmera chegar mais perto: a linha branca
+      de 9 px sobre o contorno escuro da marca de 20 px (a mesma cor e opacidade dos tokens; só a largura muda, nesta cena).
+      Com 20 px, o zoom máximo pelo critério seria 60 m ≤ 20 px → 3,0 m/px → 14,40; a cena fica em 13,40 (60 m = 10,1 px ≤ 20). Los Angeles aparece pela água do porto e pela pílula. O trecho de
       Terminal Island da divisa de San Pedro (Hamlin) também fica fora: a única divisa que cruza a ilha é a do USGS de 1923.
     · LONG BEACH: nome no ponto do GNIS, com o anel; SEM território pintado (o polígono de 1909 de Long Beach não foi achado;
       pauta-geo.md). A data 'AUG. 13, 1909' com a legenda 'Long Beach annexation takes effect'.
@@ -284,6 +290,8 @@
     poly("aguaLA", PLA, { cor: "--tinta", corFb: "#F4F1EA", fracao: 0.25, linha: "--tinta", linhaW: 0.01, sobW: 0.01 });
     poly("aguaLB", PLB, { cor: "--contexto-3", corFb: "#BAACF6", fracao: 0.25, linha: "--contexto-3", linhaW: 0.01, sobW: 0.01 });
     linhaFronteira("divisa", fcLinhas([[DIV[0], DIV[0]]]));
+    // ±60 m (incerteza da ilha aterrada) cabem na espessura total: o traço engrossa nesta cena (cabeçalho)
+    map.setPaintProperty("divisa-linha", "line-width", 9); map.setPaintProperty("divisa-sob", "line-width", 20);
   }
   function cenaAplicar(t) {
     var a = eio(seg(t, CENA.aguas.entra[0], CENA.aguas.entra[1] - CENA.aguas.entra[0]));
@@ -295,7 +303,7 @@
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 10.133;
   window.__duracao = DUR;
 
   var P = window.__REGIE_MAPA;

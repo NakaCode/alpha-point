@@ -129,7 +129,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s14 (200,267 → 228,9 s do m
   .sond-sob { fill: none; stroke: var(--rotulo); stroke-width: 22; stroke-linecap: round; stroke-linejoin: round; }
   .sond { fill: none; stroke: var(--rede-cor); stroke-width: 10; stroke-linecap: butt; stroke-linejoin: round; stroke-dasharray: 30 20; }
   /* o cartão da fala citada (identidade §5, card de pessoa; a folha em --papel), pousado sobre o mar */
-  #cartao { position: absolute; left: 1640px; top: 380px; z-index: 44; opacity: 0; visibility: hidden; transform-origin: 50% 50%;
+  #cartao { position: absolute; left: 1612px; top: 380px; z-index: 44; opacity: 0; visibility: hidden; transform-origin: 50% 50%;
     background: var(--papel); border-radius: 6px; padding: 64px 84px 56px 84px; width: 1990px; }
   #cartao .fala { font-family: var(--fonte); font-weight: 700; font-size: 260px; line-height: 1.06; letter-spacing: 0; color: var(--tinta-escura); }
   #cartao .atrib { margin-top: 36px; font-family: var(--fonte); font-weight: 500; font-size: var(--fs-eixo); line-height: 1; color: color-mix(in srgb, var(--tinta-escura) 72%, transparent); }
@@ -188,9 +188,9 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s14 (200,267 → 228,9 s do m
       { t0: 19.00, t1: 28.633, de: "B0", para: "B1", tipo: "h" }
     ],
     giro: [-1.5, 1.5],
-    barra: [-118.2738, 33.7228],
+    barra: [-118.27164, 33.72447],
     guiaEst: { entra: 3.623, sai: 9.00, alvo: [-118.262, 33.766] },
-    medidor: { k: 16, max: 60, cadaNumero: 10, largura: 110, dx: 500, dy: 0,   // 500 (era 300): o "40" encostava no ponto da guia do estuário (qc-visual Q3)
+    medidor: { k: 16, max: 60, cadaNumero: 10, largura: 110, dx: 500, dy: 28,  // dx 500 (era 300): o "40" encostava no ponto da guia (Q3); dy 28: o topo acima de 160 depois da barra corrigida (Q9)
                entra: 5.12, sai: 16.63, nivel: null,
                marcas: [{ ft: 18, tipo: "tracejada", entra: 5.12, sai: 16.63 }, { ft: 20, tipo: "tracejada", entra: 5.12, sai: 16.63 },
                         { ft: 30, tipo: "cheia", entra: 9.308, sai: 16.63 }] },
@@ -199,7 +199,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s14 (200,267 → 228,9 s do m
     sondagem: { pontos: [[-118.300, 33.675], [-118.240, 33.688], [-118.295, 33.662], [-118.235, 33.672]], desenha: [26.433, 27.90] },
     rotulos: [
       { id: "rotBaia", lnglat: [-118.255, 33.700], lado: "esquerda", dx: 0, dy: 0, entra: 2.743, sai: null },
-      { id: "rotEst",  lnglat: [-118.31, 33.775],  lado: "esquerda", dx: 0, dy: 0, entra: 3.623, sai: 9.00 },
+      { id: "rotEst",  lnglat: [-118.31, 33.775],  lado: "esquerda", dx: 60, dy: 0,   /* +60: margem de 200 (qc-visual Q9) */ entra: 3.623, sai: 9.00 },
       { id: "cota1820", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x + M.largura + 64, M._base.y - 18 * M.k + 16]; },
         lado: "direita", vert: "baixo", entra: 5.40, sai: 16.63 },
       { id: "cota30", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x + M.largura + 64, M._base.y - 30 * M.k - 16]; },
@@ -840,8 +840,10 @@ CENA.rotulos.forEach(function (r) { if (r.telaFn) return; r.p = r.lnglat || null
       var pronto = function () {
         try {
           if (!map.areTilesLoaded() || map.isMoving()) return false;
-          for (var i = 0; i < CENA.fontes.length; i++) if (!map.isSourceLoaded(CENA.fontes[i])) return false;
-          if (!map.isSourceLoaded("base")) return false;
+          // getSource antes de isSourceLoaded: este, numa fonte que ainda não existe (antes do load), dispara o evento de erro do
+          // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
+          for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
+          if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

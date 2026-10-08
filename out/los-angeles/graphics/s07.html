@@ -39,9 +39,9 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
   do textos-tela. Não há geometria do estuário de época em _media/geo/ (pauta-geo.md: a Wilmington Lagoon da folha de 1896
   não virou camada; a carta de 1888 não foi obtida), e contorno à mão sobre o satélite é afirmação sobre a base (ofício §2 e
   §6c). A pílula aponta o lugar com uma guia, sem afirmar forma.
-  INCERTEZA: nada de Hamlin. O ponto de Rattlesnake Island e a posição esquemática da barra vêm da folha do USGS de 1896,
-  que põe Deadman's Island ~240 m longe da de 1923 (pauta-geo.md): o palco da boca do estuário (s07, s12, s14) fica com
-  zoom ≤ 13,20 (6,9 m/px: 240 m = 35 px, dentro do traço de 36 px do molhe de s12). Zoom máximo desta cena: 13,20.
+  INCERTEZA: nada de Hamlin. O ponto de Rattlesnake Island é o de pontos-historicos-usgs-corrigidos (±50 m; a folha de 1896
+  errava ~272 m, medidos pela pesquisa-geo: _pesquisa/geo-folhas-usgs-relato.md), e a posição esquemática da barra andou o
+  mesmo deslocamento (+0,00216° lng, +0,001667° lat). Zoom máximo desta cena: 13,20 (6,9 m/px: 50 m = 7 px).
   ELEMENTOS: p1 3; p2/p3 até 4; p4 até 5 (água, barra+legenda, medidor, cota; 'at low tide' é legenda do medidor).
   CRÉDITO: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (data-qc-credito="mapa" só nele).
 -->
@@ -53,7 +53,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
 <script src="../_media/geo/agua-porto-hoje-tiger.js"></script>
-<script src="../_media/geo/pontos-historicos-usgs.js"></script>
+<script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -196,14 +196,14 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
     barcas: { ancoragem: [-118.265, 33.700], desenha: [1.28, 2.40], vai: [2.567, 5.067], voltas: 2, apaga: [5.30, 5.80] },
     agua: { acende: [6.42, 6.92] },
     guiaEst: { entra: 7.10, sai: 12.00, alvo: [-118.262, 33.766] },
-    barra: { ponto: [-118.2738, 33.7228], entra: 15.98 },
+    barra: { ponto: [-118.27164, 33.72447], entra: 15.98 },
     // o medidor: 16 px por pé, 0–60, números a cada 10; a base 300 px a leste da barra, na altura dela
     medidor: { k: 16, max: 60, cadaNumero: 10, largura: 110, dx: 300, dy: 0, entra: 16.66, sai: null,
                nivel: function (t) { return 1.5 * eio(seg(t, 18.017, 0.6)); }, marcas: [] },
     rotulos: [
       { id: "leg23",      ref: "meioBarcas", lado: "direita", dx: 110, dy: 0,   entra: 3.327,  sai: 5.45 },
       { id: "legAprox",   ref: "ancoragem",  lado: "centro",  dx: 0,   dy: 120, entra: 1.28,   sai: 5.50 },   // com a linha, do traço ao apagar (identidade §6; qc-visual Q3)
-      { id: "rotEst",     lnglat: [-118.31, 33.775], lado: "esquerda", dx: 0, dy: 0, entra: 7.10, sai: 12.00 },
+      { id: "rotEst",     lnglat: [-118.31, 33.775], lado: "esquerda", dx: 60, dy: 0,   /* +60: margem de 200 (qc-visual Q9) */ entra: 7.10, sai: 12.00 },
       { id: "rotRattle",  ref: "rattle",     lado: "direita", dx: 70,  dy: 0,   entra: 9.217,  sai: 13.60 },
       { id: "legTerminal", ref: "rattle",    lado: "direita", dx: 70,  dy: 150, entra: 10.737, sai: 13.60 },
       { id: "legBarra",   ref: "barra",      lado: "esquerda", dx: -120, dy: 0, entra: 15.98,  sai: null },
@@ -430,7 +430,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
   }
 
   // ═══ O DESENHO DA CENA ═══════════════════════════════════════════════════════════════════════════
-var SANPEDRO = pontoNome("lugares-gnis-nrhp", "San Pedro"), RATTLE = pontoNome("pontos-historicos-usgs", "Rattlesnake Island (Terminal Island today)");
+var SANPEDRO = pontoNome("lugares-gnis-nrhp", "San Pedro"), RATTLE = pontoNome("pontos-historicos-usgs-corrigidos", "Rattlesnake Island (Terminal Island today)");
   var AGUA = geo("agua-porto-hoje-tiger");
   if (window.__erroCena) return;
   var AGUA_PORTO = { type: "FeatureCollection", features: AGUA.features.filter(function (f) {
@@ -861,8 +861,10 @@ var SANPEDRO = pontoNome("lugares-gnis-nrhp", "San Pedro"), RATTLE = pontoNome("
       var pronto = function () {
         try {
           if (!map.areTilesLoaded() || map.isMoving()) return false;
-          for (var i = 0; i < CENA.fontes.length; i++) if (!map.isSourceLoaded(CENA.fontes[i])) return false;
-          if (!map.isSourceLoaded("base")) return false;
+          // getSource antes de isSourceLoaded: este, numa fonte que ainda não existe (antes do load), dispara o evento de erro do
+          // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
+          for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
+          if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };
