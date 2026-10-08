@@ -1,18 +1,17 @@
 {
   "cena": "s15",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 6,
+      "nota": 8,
       "problemas": [
-        "REPROVA: margem lateral (identidade §4.2 e roupa §4: 200 px nas laterais, texto até x=3640). A cota '3,300 FT · GAP 1,000 FT · 2,500 FT' (84 px, Inter 500) termina em x=3699, 59 px além do limite. Medido pelo probe-elemento a 8,3 s (câmera 1,03): cota x 2255→3699, y 920→1007; nos quadros, o mesmo extremo em 6,2, 7,2, 8,2 e 8,55 s (x 3678–3698). O cabeçalho do HTML declara 'a cota e as legendas acabam antes de x 3500': não é o que está na tela. Ficou a 141 px da borda do quadro. O gate de fora-do-quadro não pega: o texto cabe no quadro.",
-        "Conserto da rodada 1 conferido: a p. 2124 agora começa em linha inteira ('island. Vessels are frequently…') e a fita fica só na margem de cima (crop 4K de 3,2 s); a p. 2126 cobre só margem em branco do pé da p. 2124 (crop 4K de 8,55 s).",
-        "SINALIZA: com a câmera final, a fita do alto da p. 2124 chega a y≈134 (quadros 7,2–8,55 s), 26 px acima da margem de 160; a fita conta como elemento (roupa §4; _decisoes-central.md, Q2 item 2). Crédito a 56 px (h=134, 2 linhas). exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em qc/_excecoes-portao.json)."
+        "Defeito da rodada 2 resolvido: a cota está em duas linhas ('3,300 FT · GAP 1,000 FT' / '2,500 FT') e acaba em x 3282 (antes 3699, 59 px além do limite); a legenda do esboço acaba em 3515 (limite 3640). Fita da p. 2124: topo ≥170 (p1Fd a 7,5 s; antes ≈134), esquerda ≥206 (p1Fe a 8,5 s). Medido a cada 0,25 s sob a câmera. A p. 2126 pousa sobre o pé da p. 2124 (margem em branco), sem cobrir a última linha impressa (quadro 8,5 s).",
+        "SINALIZA: o crédito quebra deixando o ano sozinho na 2ª linha ('…, U.S. Army,' / '1888'; quadros 2,2 e 8,5 s), enquanto a s13 já saiu com a quebra em 'Chief of Engineers,' / 'U.S. Army, 1888' (Q6 item 2). Crédito a 56 px (2 linhas de 67,2 px): exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido por mim em qc/_excecoes-portao.json)."
       ],
       "correcoes": [
-        "Recuar a cota ≥60 px para dentro (termina em x ≤3640): quebrá-la em duas linhas ('3,300 FT · GAP 1,000 FT' / '2,500 FT'), ou apertar o espaçamento tabular, sem encostar na p. 2124 (que acaba em x≈2058). Conferir no quadro de 6,2 e no de 8,55 s (câmera 1,03) com o probe-elemento. Opcional: baixar a p. 2124 ~30 px para a fita ficar ≥160 sob a câmera."
+        "Opcional: quebrar o crédito como na s13, 'Source: Annual Report of the Chief of Engineers,' / 'U.S. Army, 1888' (--credito-x-fim fica em x 1720)."
       ]
     },
     {
@@ -129,7 +128,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 11,
-    "porque": "RODADA 2 (08/10/2026, lote Q6). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160), crops 4K, DOM medido pelo probe-elemento, e 6 quadros de cauda (−0,50 a −0,03 s do corte) para a regra dos 250 ms. Portões lidos em out/los-angeles/_tmp/qc-cena-consertos.txt (13 cenas auditadas; as reprovações do crédito a 56 px têm exceção com o sha1 de hoje; rodapé v5 passou nas 13). Quadros olhados: 0,2, 1,2…8,2 (1 s), 8,55; crops 4K de 3,2 s (topo da p. 2124) e 8,55 s (p. 2126 sobre o pé); DOM medido a 8,3 s. Defeito anterior (fita sobre as duas primeiras linhas): resolvido. Defeito NOVO que o relato não declarava: a cota fora da margem direita (existe desde a rodada 1 e não foi medida na época)."
+    "frames": 10,
+    "porque": "RODADA 3 (08/10/2026, lote Q7). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160) em out/los-angeles/_tmp/qc/r3/; margem de TODO elemento visível medida sob a câmera a cada 0,25 s (_tmp/qc/medir-tudo.mjs: topo ≥160, laterais x 200–3640, abaixo de y 1880 só crédito até x 1720; os primeiros 0,9 s de cada objeto, o pouso, ficam fora da conta) e movimento a cada 0,05 s (_tmp/qc/medir-mov.mjs). Portões lidos em out/los-angeles/_tmp/qc-cena-r2.txt (13 cenas auditadas, 8 portões cada): as reprovações são só o crédito a 56 px, com a exceção e o sha1 de hoje conferidos contra o HTML; rodapé v5 passou; o medidor de fitas passou nas 18 cenas. O `conferir` da pré-carga não foi lido por mim: o Claude central o confere. Quadros olhados: s15@0,2, 1,2, 2,2, 3,2, 4,2, 5,2, 6,2, 7,2, 8,2, 8,5 s (10 quadros). Cota e fita do alto: resolvidas; esboço, grifo e p. 2126 como na rodada 2."
   }
 }

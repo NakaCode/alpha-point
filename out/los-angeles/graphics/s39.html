@@ -40,10 +40,13 @@
         1,075 a LEGENDA "annexation takes effect" (84 px, Inter 500, --sec), 120 ms depois do rótulo, abaixo dele; SAI em
               3,20–3,50 (300 ms, para baixo): 2,13 s no ar (≥ 2,0 s).
     p2  3,500–7,967  "Now measure it on the city's own annexation map, from nineteen sixteen."  (regência s39#2)
-        3,50  "Now" (525,13 s): a LEGENDA "the city's annexation map, 1916" entra no lugar da primeira (300 ms, opacidade + 24 px)
-              e fica até o fim (4,47 s). O "1916" da legenda está impresso na própria folha desde o pouso (o título "1916" do
-              mapa fica fora do recorte, mas a legenda é a identificação do documento que a voz nomeia: "the city's own
-              annexation map, from 1916"); a voz diz "nineteen sixteen" em 6,51–7,46 (declarado no relato).
+        3,50  "Now" (525,13 s): a LEGENDA "the city's annexation map" entra no lugar da primeira (300 ms, opacidade + 24 px)
+              e fica até o fim (4,47 s). A legenda é a identificação do documento que a voz nomeia ("the city's own
+              annexation map, from 1916").
+        6,51  "nineteen" (528,11 s): o ", 1916" da mesma legenda entra emendado à direita (300 ms, opacidade + 24 px), o número
+              na palavra que o diz (identidade §4.4; conserto do qc-visual, Q7 item 2, 08/10/2026: antes o ano entrava em "Now",
+              3 s antes da voz). Fica 1,46 s no ar: é o complemento de uma legenda já lida, não bloco novo; a voz termina
+              "sixteen" em 7,46 e o corte é em 7,97.
         3,87–4,93  "measure": a CÂMERA desce pela folha até o fio: 1,00 → 1,07 (eb), com o centro indo de (1920, 1080) a
               (1920, 1120), e PARA 0,3 s antes de "annexation" (5,23): daí até o fim, só a deriva do RIG.
         5,23  "annexation map" (526,83–527,66 s): o GRIFO 2 TRAÇA O FIO na folha, de norte a sul, em 0,8 s (5,23–6,03): um traço
@@ -160,6 +163,9 @@
   <div class="pilula"  id="data" data-qc-papel="rotulo" style="left:340px;top:420px"></div>
   <div class="legenda" id="leg1" data-qc-papel="eixo"   style="left:340px;top:650px"></div>
   <div class="legenda" id="leg2" data-qc-papel="eixo"   style="left:340px;top:650px"></div>
+  <!-- o ", 1916" da legenda é elemento irmão, emendado à direita de #leg2 (left = 340 + largura de #leg2 + 2): entra em "nineteen"
+       (6,51 s), o número na palavra que o diz (identidade §4.4; conserto do qc-visual, Q7 item 2, 08/10/2026) -->
+  <div class="legenda" id="leg2ano" data-qc-papel="eixo" style="left:340px;top:650px"></div>
 </div>
 
 <script>
@@ -257,17 +263,19 @@
   var TEXTOS = {
     data: "DEC. 26, 1906",                      // _textos_por_cena s39 › rotulo (rotulos_dado: evt.afi-26, doc.dat-20)
     leg1: "annexation takes effect",            // _textos_por_cena s39 › legenda (t0 0)
-    leg2: "the city's annexation map, 1916"     // _textos_por_cena s39 › legenda (t0 3,5)
+    leg2: "the city's annexation map",          // _textos_por_cena s39 › legenda (t0 3,5), sem o ano: ele entra na palavra da voz
+    leg2ano: ", 1916"                            // o resto da mesma legenda, em "nineteen" (6,51 s); na tela lê-se "the city's annexation map, 1916"
   };
   // ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
-  ["data", "leg1", "leg2"].forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+  ["data", "leg1", "leg2", "leg2ano"].forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
 
   // ── os tempos (locais, −521,6), do words.json e da regência s39 ──
   var T = {
     pousa: 0.00, pousaDur: 0.80, fita: 0.70,
     data: 0.955,                           // "December": 150 ms depois do assentamento, na palavra da voz
     leg1: 1.075, saiLeg1: 3.20,            // 120 ms depois do rótulo; sai 300 ms antes de "Now"
-    leg2: 3.50,                            // "Now" (regência beat 2)
+    leg2: 3.50,                            // "Now" (regência beat 2): "the city's annexation map"
+    leg2ano: 6.51,                         // "nineteen" (528,11 s): o ", 1916" entra na palavra que o diz (identidade §4.4)
     camT0: 3.87, camT1: 4.93,              // "measure" → para 0,3 s antes de "annexation" (5,23)
     fio0: 5.23, fioDur: 0.80,              // o fio traçado de norte a sul
     repouso: DUR - 0.25
@@ -343,6 +351,8 @@
     texto(E("data"), t, T.data);
     texto(E("leg1"), t, T.leg1, T.saiLeg1);
     texto(E("leg2"), t, T.leg2);
+    var l2 = E("leg2"), l2a = E("leg2ano");
+    if (l2 && l2a) { l2a.style.left = (340 + l2.offsetWidth + 2) + "px"; texto(l2a, t, T.leg2ano); }
     GR.forEach(function (g) { g.el.style.transform = "scaleX(" + seg(t, g.t0, Math.max(0.04, g.t1 - g.t0)).toFixed(4) + ")"; });
     var f = E("fio"); if (f) f.setAttribute("stroke-dashoffset", (FIO_LEN * (1 - eo(seg(t, T.fio0, T.fioDur)))).toFixed(2));
   }

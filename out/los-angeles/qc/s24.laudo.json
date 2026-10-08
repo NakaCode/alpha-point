@@ -7,9 +7,9 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Conserto conferido (crops 4K de 16,2 s): a fita da p. 213 fica a ≥80 px do cabeçalho 'FIFTY-FOURTH CONGRESS. SESS. I. CH. 314. 1896. 213' e a da p. 24 não toca o '24'; a primeira linha da p. 24 ('Angeles were to be selected.') sai inteira e a fatia de 'Respectfully submitted' sumiu; a p. 213 ampliada a 1,22× (produto máximo 1,382 ≤ 1,4). Margens em regime: x 322–3454, y≥296; o rótulo '$2.9 MILLION CEILING' acaba em ~3245.",
-        "Observação: as últimas linhas de cada página ficam rentes ao corte de baixo (a cauda do 'y' de 'Railway' na última linha da p. 24 encosta na borda; crop 4K de 16,2 s). Palavra legível, não cortada.",
-        "Dois créditos de 56 px empilhados (probe 16 s: cred2 y 2012, cred1 y 2079, h=67 cada → 55,8 px). exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em qc/_excecoes-portao.json)."
+        "Margens medidas na tela, sob a câmera: topo ≥292 (p24Fe a 20 s; o pouso da p. 24 passa por y 148 só em 13,75 s, em voo), esquerda ≥200 (créditos), direita ≤3586 (o rótulo '$2.9 MILLION CEILING' a 10,5 s), 'MARCH 1, 1897' até y 1845; as duas páginas a 1,22× (produto máximo 1,382 ≤1,4). Créditos: 'Senate Document 18, 1897' sobre 'U.S. Statutes at Large, vol. 29, 1896', até x 1273 (<1720), ambos de 14,0 s ao fim.",
+        "Observação: as últimas linhas de cada página ficam rentes ao corte de baixo (a cauda do 'y' de 'Railway' na p. 24 encosta na borda; quadro 19,9 s). Palavra legível, não cortada.",
+        "Dois créditos de 56 px empilhados (55,8 px por linha): exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido por mim em qc/_excecoes-portao.json)."
       ],
       "correcoes": [
         "Opcional: +20 px de branco ao pé do recorte da p. 24 e da p. 213."
@@ -57,14 +57,11 @@
     },
     {
       "lente": "motion",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "Defeito anterior dos últimos 250 ms RESOLVIDO: nos 6 quadros de cauda (−0,50…−0,03 s) a diferença cai a 0,0 nos últimos 0,2 s (deriva congelada); não há mais o salto de 19,9–20,0 s.",
-        "Persiste, como na rodada 1 (sinaliza, 7): o pan 13,90–15,40 s ainda carrega o rótulo 'MARCH 1, 1897', que entra em 14,52 s e se desloca ~24 px (1920) / ~48 px (4K) entre 14,9 e 15,4 s (texto 'MARCH' x 949→925) enquanto a voz lê 'eighteen ninety-seven' (14,75–15,52 s). Numa leitura estrita da identidade §4.4 ('texto já na tela fica parado enquanto se lê') isso reprovaria; mantido em 7 pela consistência com a rodada 1 e porque o movimento é o fim do easing."
+        "Defeito da rodada 2 resolvido: o pan da p. 24 termina em 14,40 s (p. 24 em y 363,6 → 363,5), 0,12 s antes de 'MARCH 1, 1897' começar a entrar (14,52 s). Da entrada (a subida de 24 px, 14,5–14,8 s) até o fim da fala do ano (15,5 s), o rótulo anda só a deriva do RIG: ~0,7 px em x e ~0,3 px em y por segundo (medido a cada 0,1 s). Últimos 250 ms: ≤0,1 px (medido a cada 0,05 s)."
       ],
-      "correcoes": [
-        "Parar o pan até 14,4 s (antes da entrada do rótulo, 14,52 s) ou prender o rótulo fora de #cam; a chegada da p. 24 pode ficar."
-      ]
+      "correcoes": []
     },
     {
       "lente": "fonte",
@@ -128,7 +125,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 28,
-    "porque": "RODADA 2 (08/10/2026, lote Q6). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160), crops 4K, DOM medido pelo probe-elemento, e 6 quadros de cauda (−0,50 a −0,03 s do corte) para a regra dos 250 ms. Portões lidos em out/los-angeles/_tmp/qc-cena-consertos.txt (13 cenas auditadas; as reprovações do crédito a 56 px têm exceção com o sha1 de hoje; rodapé v5 passou nas 13). Quadros olhados: 0,2…20,0 (1 s), 14,6, 14,9, 15,2, 15,4, 15,5, 15,6, 19,8, 19,9; crops 4K (16,2 s) dos topos, do cabeçalho e dos pés das duas páginas. Defeitos anteriores (fita sobre o cabeçalho, última linha partida, salto nos 250 ms finais): resolvidos."
+    "frames": 18,
+    "porque": "RODADA 3 (08/10/2026, lote Q7). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160) em out/los-angeles/_tmp/qc/r3/; margem de TODO elemento visível medida sob a câmera a cada 0,25 s (_tmp/qc/medir-tudo.mjs: topo ≥160, laterais x 200–3640, abaixo de y 1880 só crédito até x 1720; os primeiros 0,9 s de cada objeto, o pouso, ficam fora da conta) e movimento a cada 0,05 s (_tmp/qc/medir-mov.mjs). Portões lidos em out/los-angeles/_tmp/qc-cena-r2.txt (13 cenas auditadas, 8 portões cada): as reprovações são só o crédito a 56 px, com a exceção e o sha1 de hoje conferidos contra o HTML; rodapé v5 passou; o medidor de fitas passou nas 18 cenas. O `conferir` da pré-carga não foi lido por mim: o Claude central o confere. Quadros olhados: s24@0,2, 2,2, 4,2, 6,2, 8,2, 10,2, 12,2, 13,2, 14,4, 14,6, 14,9, 15,2, 15,5, 16,2, 17,2, 18,2, 19,2, 19,9 s (18 quadros) e a posição de #march, #p24, #p213 e #cam de 13,5 a 16,0 s (0,1 s) e de 19,5 a 20,05 s (0,05 s)."
   }
 }

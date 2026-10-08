@@ -19,7 +19,8 @@
           sombra solta: no ar +64 px / 1,05 / 0,35, assentada +12 px / 1,00 / 0,80; a luz 120 ms atrás; as fitas colam em 0,70 e
           0,82). O recorte do scan (bordas retas): x 150→2520, y 480→2130 do arquivo de 2664 × 4348 (do "THE" ao fim do
           subtítulo, "COMPETITION"; o corte cai no branco entre blocos), a 0,78× (1.849 × 1.287). O crédito "Source: Charles
-          Willard, The Free Harbor Contest at Los Angeles, 1899" acende em 0 (300 ms), solto na mesa, 56 px.
+          Willard, The Free Harbor Contest at Los Angeles, 1899" acende em 0 (300 ms), solto na mesa, 56 px, em DUAS LINHAS: a quebra
+          antes de "at Los Angeles, 1899" (pre-line, como na s13; Q7 item 3): não parte o nome nem deixa o ano sozinho; a caixa até x 1720.
           A DERIVA do RIG (6 px × sen 0,23 t) congela nos últimos 250 ms (helper aplicarCamera): repouso de verdade (identidade §4.4).
     0,90–2,70  a CÂMERA "lê até o subtítulo": escala 1,00 → 1,14, o centro vai a (1750, 1120), eb, e PARA 0,42 s antes do primeiro
           pedaço do grifo (3,123): só a deriva do RIG daí até o fim.
@@ -153,6 +154,7 @@
 <style>
   .slipTxt { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); text-align: center; white-space: pre-line;
     font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0; color: var(--tinta-escura); }
+  #cred1 { white-space: pre-line; }   /* o crédito em duas linhas: a quebra fica no texto (antes de "at Los Angeles, 1899"), como na s13 */
 </style>
 </head>
 <body>
@@ -427,7 +429,7 @@
   // o marca-texto o varre (GRIFO, abaixo).
   // ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
   E("slipTxt").textContent = TEXTOS.slip.replace(" of ", "\nof ");   // "not free" / "of charge": empilha, nunca encolhe
-  E("cred1").textContent = TEXTOS.cred;
+  E("cred1").textContent = TEXTOS.cred.replace(" at Los", "\nat Los");   // duas linhas: "…Free Harbor Contest" / "at Los Angeles, 1899" (o \n é só a quebra, pre-line)
 
   // ── os tempos (locais, −315,067), do words.json e da regência s22 ──
   var T = { pousa: 0.00, pousaDur: 0.80, fita: 0.70, slip: 5.44, slipDur: 0.55, cred: 0.00, repouso: DUR - 0.25 };   // slip: "railroads," (320,507 s)

@@ -55,3 +55,30 @@
    documento"). Vai ao editor.
 6. **s35, a fita translúcida sobre o cabeçalho corrido.** Fica: é cabeçalho, não corpo, e continua legível, como na s43.
 7. **s15, a cota "3,300 FT · GAP 1,000 FT · 2,500 FT" até x 3699.** Defeito de margem (limite 3640). Vai ao editor.
+
+## 08/10/2026, 01:0x — o lote Q7 (a terceira rodada das 13 cenas sem mapa)
+
+1. **s35, o crédito de 1883 sai com a p. 97, e a p. 98 (do mesmo volume) fica 4,2 s sob o crédito de 1889.** Defeito (identidade
+   §4.2: "a linha do antigo só sai quando o asset dele sai"). O pedido da rodada 1 (tirar o crédito com a p. 97) estava errado:
+   o crédito de 1883 fica até a p. 98 sair, empilhado com o de 1889. Vai ao editor.
+2. **O número antes da voz, na legenda e no rótulo:** s39 ("…map, 1916" em 3,53 s; a voz diz "nineteen sixteen" perto de
+   6,9 s) e s38 (o "203" de "10 VOTES (213–203)" 1,3 s antes da voz). A mesma regra da s12 (Q3, item 3): o número entra na palavra
+   que o diz (identidade §4.4). Vão aos editores.
+3. **Crédito que quebra mal** (s15: "1888" sozinho na segunda linha; s22: "Los / Angeles" partido). A quebra fica num ponto que
+   não deixa o ano sozinho nem parte um nome, como na s13. Vão aos editores, com o crédito até x 1720.
+4. **s20, a caixa do grifo de "Pedro" entra 12 px na haste do "w".** Vai ao editor (aparar a caixa).
+5. **s35, o pé da p. 97 passa de y 1880.** Fica: é impressão da página, e a faixa do crédito está livre.
+
+## 08/10/2026, 01:1x — o lote Q5 (mapas s40–s55; as 8 aprovadas)
+
+1. **s55, a faixa de 1906 sob a placa do pedido de comentário (43 % dela por 6 s).** Fica: a placa entra na tela final, depois da
+   última frase, onde o mapa é fundo (o Lucas escolheu a placa à esquerda, "Na tela final, à esquerda (Recomendado)"), e o
+   cabeçalho da cena declara. A revisão de espectador olha de novo.
+2. **s55, as datas e distâncias da recapitulação sem "Source:".** Ficam: repetem fatos que o vídeo já mostrou com fonte; o
+   `textos-tela` da s55 não traz crédito de fonte.
+3. **s40 e s48, a legenda "year each became a city" 0,9–1,2 s antes da primeira pílula.** Fica: a legenda anuncia as pílulas
+   que vêm, e não é número da voz.
+4. **s49, a pílula "Main Channel" 3,5 s antes da voz.** Fica: nome de lugar para orientar a chegada ao mapa, não número.
+5. **s46, a divisa de 1923 fina (~10 px); s46, s49 e s53, a água do porto em --tinta; s48, o ciano do quebra-mar; s44, 3,6 s sem
+   elemento novo.** Ficam para a revisão de espectador (A.7 do `DESENHO.md` da linha do tempo), que julga como o Lucas veria; o
+   que ela achar e o cético não derrubar vai ao mapista.

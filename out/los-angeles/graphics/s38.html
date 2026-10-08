@@ -19,8 +19,8 @@
   A (13/11, "Six Votes", em "In the territory") e p4 a folha C (20/11, "Ten Ahead", em "and"). Uma folha de cada vez na mesa ("a mesa
   se arruma", §4.4), porque os literais são longos e duas lado a lado cobririam a parte que importa uma da outra. O conceito previa
   duas folhas ao mesmo tempo, com a A em "Times": DECLARADO NO RELATO. O rótulo "10 VOTES (213–203)" entra em "thirteen" como mandam
-  os textos de tela e o conceito: o "203" chega 1,3 s antes de a voz dizer "two hundred three" (15,272): DECLARADO NO RELATO como
-  dúvida (o literal da folha C já imprime o 203 desde 11,6, pela regra do documento recriado).
+  os textos de tela e o conceito, MENOS a parte "203)": ela entra em "two" (14,887), a primeira palavra do número (identidade §4.4;
+  Q7 item 2, a regra da s12), num <span> próprio dentro da pílula, só opacidade (nada se move: a pílula já tem a largura final).
 
   AS FOLHAS (o miolo em Courier Prime a 86 px, 52 px por caractere, entrelinha 104; o cabeçalho em duas linhas, Courier 700 a 84 px na
   caixa de contorno; o rasgo, 4,5 % da folha, cai no branco ≥ 240 px abaixo da última linha):
@@ -58,7 +58,8 @@
               11,792–12,127, com a folha ainda pousando: o grifo "TEN AHEAD FOR ANNEXATION." só começa com a folha assentada e a câmera
               parada, em 12,40, e corre até 13,00 ("in the official count"): DECLARADO (a regência pedia "Ten Ahead" em "ten").
         13,972 "thirteen": o GRIFO varre "213" (13,972–14,642); 15,272 "three": "203" (15,272–15,637). E o RÓTULO "10 VOTES / (213–203)"
-              (pílula --rotulo, 128 px, duas linhas: "10 VOTES (213–203)" empilhado, nunca encolhe; 300 ms, 1,04 → 1,00) na coluna à
+              (pílula --rotulo, 128 px, duas linhas: "10 VOTES (213–203)" empilhado, nunca encolhe; 300 ms, 1,04 → 1,00; o "203)" só
+              acende em 14,887, "two", 300 ms de opacidade, sem mover nada; o GRIFO do 203 na folha continua em 15,272) na coluna à
               direita, fora das folhas, em 13,972; 14,09: a LEGENDA "official count, / per the Los Angeles Times, / Nov. 20, 1906" (84 px,
               três linhas) abaixo. Ficam 2,3 e 2,2 s.
         16,017–16,267  REPOUSO: nada se move além da deriva do RIG.
@@ -249,7 +250,7 @@ annexation and 203 are against.</div>
     </div>
     <!-- a coluna à direita (grafia de textos-tela.json s38) -->
     <div class="legenda" id="campanha" data-qc-papel="eixo"   style="left:2480px;top:700px;width:1100px"></div>
-    <div class="pilula"  id="votos"    data-qc-papel="rotulo" style="left:2480px;top:600px;white-space:pre-line"></div>
+    <div class="pilula"  id="votos"    data-qc-papel="rotulo" style="left:2480px;top:600px;white-space:pre-line"><span id="votosA"></span><span id="votos203" style="opacity:0"></span></div>
     <div class="legenda" id="oficial"  data-qc-papel="eixo"   style="left:2480px;top:1000px;width:1100px"></div>
   </div>
   <div id="creds" class="pilula-cred"><div class="cred" id="cred1" data-qc-papel="credito"></div></div>
@@ -506,7 +507,9 @@ annexation and 203 are against.</div>
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
   E("campanha").textContent = TEXTOS.campanha.replace(" for ", "\nfor ");
-  E("votos").textContent = TEXTOS.votos.replace(" (", "\n(");
+  var iv = TEXTOS.votos.indexOf("203");   // a parte "203)" acende à parte, em "three" (15,272): a grafia continua a dos textos de tela
+  E("votosA").textContent = TEXTOS.votos.slice(0, iv).replace(" (", "\n(");
+  E("votos203").textContent = TEXTOS.votos.slice(iv);
   E("oficial").textContent = TEXTOS.oficial.replace(", per", ",\nper").replace("Times, Nov.", "Times,\nNov.");
   E("cred1").textContent = TEXTOS.cred;
 
@@ -517,6 +520,7 @@ annexation and 203 are against.</div>
     pousaA: 8.277, fitaA: 8.98, levantaA: 11.20,   // some em 11,55, antes de a folha C pousar (11,6) // "In" (513,61 s)
     pousaC: 11.60, fitaC: 12.30,                 // "and" (516,93 s)
     votos: 13.972, oficial: 14.09,               // "thirteen" (519,305 s); a legenda 120 ms depois
+    votos203: 14.887,                            // "two" (520,22 s), a primeira palavra do número: a parte "203)" do rótulo acende quando a voz começa a dizê-lo (identidade §4.4; Q7; decisão do Claude central, 08/10): 1,38 s no ar
     repouso: DUR - 0.25
   };
   var CAM = [
@@ -564,6 +568,7 @@ annexation and 203 are against.</div>
     fita(E("folCFe"), t, T.fitaC, "e"); fita(E("folCFd"), t, T.fitaC + 0.12, "d");
     grifarFolha(GRC, t);
     texto(E("votos"), t, T.votos, undefined, true);
+    var v2 = E("votos203"); if (v2) v2.style.opacity = eo(seg(t, T.votos203, 0.3)).toFixed(3);
     texto(E("oficial"), t, T.oficial);
     var cr = E("creds"), c1 = E("cred1");
     if (cr) cr.style.opacity = eo(seg(t, 0, 0.3)).toFixed(3); if (c1) c1.style.opacity = 1;
