@@ -82,3 +82,24 @@
 5. **s46, a divisa de 1923 fina (~10 px); s46, s49 e s53, a água do porto em --tinta; s48, o ciano do quebra-mar; s44, 3,6 s sem
    elemento novo.** Ficam para a revisão de espectador (A.7 do `DESENHO.md` da linha do tempo), que julga como o Lucas veria; o
    que ela achar e o cético não derrubar vai ao mapista.
+
+## 08/10/2026, 01:3x — o lote Q4 (mapas s19–s37) e o lote Q8 (a quarta rodada das sem mapa; as 6 aprovadas)
+
+1. **O complemento.** Parte nova de um elemento que já está no ar, emendada nele sem deslocá-lo, passa quando o bloco inteiro
+   fica ≥ 2,0 s (identidade §4.3, "bloco de texto no ar"), mesmo que a parte nova fique menos: s38 ("203)") e s39 (", 1916").
+2. **s52, "= 2 TEU".** Sai da lista do Lucas: vira complemento do "40 FT", emendado na mesma linha ("40 FT = 2 TEU"), com o
+   bloco no ar desde "forty-foot" (3,77 s até o corte, 2,13 s). O "= 2 TEU" continua entrando na palavra da voz. Vai ao editor.
+3. **s29 e s48, o quebra-mar de 1923 (`quebra-mar-usgs1923`).** A linha corre 55–70 m ao norte do muro do satélite (medido pelo
+   qc na s29), e o farol da mesma folha cai a ~50 m do Angels Gate de hoje (pauta-geo): a georreferência da folha "Wilmington"
+   de 1923 erra uns 50 m ali, mais que a incerteza declarada. O muro de hoje é a mesma obra (o San Pedro Breakwater, da costa
+   ao farol de 1913). A linha passa a vir da geometria de hoje (OSM, com o crédito que o mapa já leva), pela pesquisa-geo, e
+   os mapistas a trocam nas duas cenas, com render novo.
+4. **s19, a raiz do píer de 1903 a 212 m da costa de hoje.** A pesquisa-geo confere se é a praia que cresceu ou a
+   georreferência da folha "Calabasas" de 1903, por um ponto fixo da mesma folha.
+5. **Margem nos mapas** (s21: a borda do cartão 14 px dentro da margem de 200; s23: o cartão de Morgan 3–9 px dentro da margem e
+   14 px abaixo de y 1880). Sem tolerância, como nas folhas: vai ao mapista.
+6. **A emenda do satélite na água do porto** (s29 3,5–14,3 s; s31 0–8 s e 14–19,9 s; s26 0–6 s). Defeito da base MapTiler. Vai
+   à revisão de espectador e ao Lucas na linha do tempo, que mostra o mapa com satélite.
+7. **Pontos de entendimento** (s31, o medidor sem número nos tiques; s33, a divisa de San Pedro fina e sem data; s26, "1891 ·
+   1892 · 1897" pelo callback; s37, a legenda que ecoa a fala). Vão à revisão de espectador.
+8. **Fotos em falta** (a barcaça da s29, a draga da s31, Wilmington na s33). FALTA declarada pela regência; seguem.
