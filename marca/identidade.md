@@ -715,6 +715,11 @@ escura da foto; somem navios, esteiras e barcos. Primeiro uma prova numa cena (s
   acende (`_agua_do_porto` do conceito) vão por cima dela.
 - O que se perde, e é aceito: navios, esteiras e barcos somem; nas praias vistas de perto, o tom avança uns 20 m sobre a areia molhada.
 - Vale para os mapas do porto do vídeo 2 depois da prova aprovada pelo Lucas, e para os próximos vídeos onde a emenda aparecer na água.
+- A prova (08/10/2026, 18:xx): o quadro real de s31 e s53 com a camada `agua-osm-la` por cima (`out/los-angeles/_tmp/agua/agua-antes-depois.jpg`;
+  encaixe medido em `_tmp/agua/encaixe/`). A pergunta: "A água escura ficou assim (imagem acima). Posso levá-la a todos os mapas do porto na
+  rodada dos consertos?" A resposta: "Aprovo, pode levar a todos (Recomendado)". A camada inclui a Shoreline Marina, a Rainbow Harbor e a foz
+  do LA River (a costa do OSM fecha a boca delas); Marina del Rey, Ballona, Dominguez, San Gabriel, Alamitos, Bolsa Chica e Santa Ana
+  ficam no satélite.
 
 O contorno escuro entrou em 25/09/2026, por decisão do Lucas. Sem ele, a divisa sumia sobre neve e gelo: no
 teste de Juneau, o contraste sobre o campo de gelo era de 1,5:1.

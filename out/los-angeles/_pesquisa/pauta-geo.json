@@ -707,7 +707,45 @@
       "incerteza": "Deadman's ±50 m; Rattlesnake ±60 m (fora das janelas medidas, mas as 4 janelas concordam em ±20 m ao longo de 7 km); Port Los Angeles ±50 m; farol ±5 m (o OSM cai a 2 m da coordenada da Wikipedia)",
       "licenca_lida_em": "2026-10-08",
       "na_tela": "o farol vem do OSM: © OpenStreetMap contributors na tela da cena que o mostrar (a linha da MapTiler já o leva); os outros pontos, domínio público"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "OpenStreetMap water polygons (osmdata.openstreetmap.de, water-polygons-split-4326.zip, Last-Modified 2026-10-08 03:47:23 UTC): o mar fechado pela costa natural=coastline, recortado à caixa das câmeras do vídeo 2 (-120.40, 32.80, -116.30, 34.95); somadas as águas do porto de Long Beach que a costa fecha (Shoreline Marina way/428829750, Rainbow Harbor way/428829751, a foz do LA River com Queensway Bay way/30824975, natural=water, Overpass 2026-10-08 20:54Z); tirados o San Pedro Breakwater (o eixo quebra-mar-osm com folga de 15 m) e 147 estruturas em área do OSM (man_made=breakwater/pier/groyne/lighthouse, Overpass 2026-10-08 20:46Z)",
+      "arquivo": "_media/geo/agua-osm-la.json",
+      "licenca": "ODbL 1.0 — exige atribuição © OpenStreetMap contributors (https://osmdata.openstreetmap.de/info/license.html: dados \"Copyright OpenStreetMap contributors\" sob a ODbL; https://www.openstreetmap.org/copyright: \"You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors\"; lido em 2026-10-08)",
+      "url": "https://osmdata.openstreetmap.de/data/water-polygons.html",
+      "exige_credito": true,
+      "cena": "s01 s05 s07 s12 s14 s19 s21 s23 s26 s29 s31 s46 s49 s53 s55",
+      "features": 1,
+      "bbox": [
+        -120.4,
+        32.8,
+        -117.22118,
+        34.47354
+      ],
+      "sha256": "b237d7817524e1d4cedc128bb37fd9c5a9d6134f984f380fb898b6e6e88aeddd",
+      "derivado_por": "out/los-angeles/_pesquisa/agua_osm_extrair.py + agua_osm_construir.py + agua_osm_gravar.mjs (08/10/2026)",
+      "registrado": "2026-10-08",
+      "arquivo_geojson": "_media/geo/agua-osm-la.geojson",
+      "bytes": 841033,
+      "vertices": 35318,
+      "poligonos": 45,
+      "buracos": 388,
+      "sha256_fonte": "0b52c5995c461c7f3f3bd400155b7f19f6482dd6352f8dbd7587afdddc4d8c93",
+      "arquivo_fonte": "water-polygons-split-4326.zip (906106868 bytes), Last-Modified Thu, 08 Oct 2026 03:47:23 GMT, em _media/geo/_osm-agua/ (fora do git)",
+      "data_do_arquivo": "2026-10-08 03:47:23 UTC (osmdata); Overpass 2026-10-08 20:46:34Z (estruturas) e 20:54:50Z (águas internas)",
+      "datum": "WGS84 (EPSG:4326, a variante 4326 do osmdata)",
+      "recorte": "caixa -120.40, 32.80, -116.30, 34.95 (lon, lat): a união de todos os quadros das 24 cenas de mapa a 30 fps, com o giro, e os da s05 com zoom >= 9,5; folga mínima de 10,4 km da borda (s05, t = 27,9 s); nas outras 23 cenas, de 46 a 98 km",
+      "folga": "San Pedro Breakwater: o eixo quebra-mar-osm com 15 m para cada lado (30 m). A crista clara da foto mede 6,6 a 18 m de largura (mediana por cena) e corre 1 a 4 m ao lado do eixo do OSM; o polígono do OSM (way/1312790328) tem 42 m de largura mediana, e deixaria 13 a 18 m de água crua de cada lado. Com 15 m, 93 a 98 % dos perfis têm o muro inteiro fora do tom (agua_encaixe_muros.py)",
+      "quebra_mares": "Middle Breakwater (way/4883616) e Long Beach Breakwater (way/4883682) já vêm como terra (natural=coastline): 0 m² na água; o San Pedro Breakwater (way/1312790328, só man_made=breakwater) vinha inteiro na água e saiu pelo eixo com a folga",
+      "estruturas_tiradas": "147 áreas man_made=breakwater/pier/groyne/lighthouse que caíam na água (253042 m²), lista em out/los-angeles/_tmp/agua/work/resumo.json; 665 píeres em linha (sem largura no OSM: vagas de marina, píeres flutuantes) ficam na água",
+      "aguas_do_porto_somadas": "Long Beach Shoreline Marina (way/428829750), Rainbow Harbor (way/428829751) e a foz do LA River com Queensway Bay (way/30824975): a costa do OSM as fecha na boca, e sem elas o tom terminaria numa reta na água aberta do porto de Long Beach",
+      "simplificacao": "Douglas-Peucker com topologia a 1,2 m (metros locais): 46205 → 35318 vértices; deslocamento máximo medido da costa 1.871 m, p99,9 1.196 m",
+      "incerteza": "encaixe medido contra o satélite dos clipes 4K (s29 6,0 s; s31 0 s; s53 0 s), sem tile: cais e aterros com mediana de +0,5 px (1 a 4 m); quebra-mares com o centro a 0,1 a 1,3 px (0,3 a 4,3 m); praias e costões com o tom 20 a 40 m sobre a espuma e a areia molhada (o OSM traça a maré alta); detalhe em out/los-angeles/_tmp/agua/encaixe/medidas.json e medidas-muros.json",
+      "s05": "a camada cobre a s05 só com zoom >= 9,5 (de 0 a ~16,0 s e de ~27,9 s ao fim); abaixo disso o mapista a apaga pelo zoom (fill-opacity de 0 em 9,5 a 1 em 10), e o mar do satélite em zoom 6,6 já está quase preto (L 1,4)",
+      "licenca_lida_em": "2026-10-08",
+      "na_tela": "© OpenStreetMap contributors já está na linha © MapTiler © OpenStreetMap contributors de todo mapa; openstreetmap.org/copyright na descrição (as duas pela linha da MapTiler); nada novo na tela"
     }
   ],
-  "nota": "Vídeo 2 (los-angeles). 1ª rodada: adiantamento da pesquisa-geo (07/10/2026), 17 itens. 2ª rodada: passo research (07/10/2026), 7 itens, as camadas que o espelho pedia (_despacho_research.pesquisa_geo). Nenhum item vem da camada do condado de Los Angeles (sem licença aberta confirmada); do OpenStreetMap, só o quebra-mar-osm (3ª rodada) e o farol de pontos-historicos-usgs-corrigidos (4ª rodada), ODbL, com crédito. Resumo e comparações: pauta-geo.md. Correção do sudeste de Hamlin (07/10/2026): la-1906, faixa-1906, wilmington-1909, san-pedro-1909-divisa e la-1909 regravadas; la-1850 e la-1899 não mudaram. 3ª rodada (08/10/2026, pedido do qc na s29): quebra-mar-osm, o San Pedro Breakwater de hoje pelo OSM; a camada quebra-mar-usgs1923 fica como está. Relato: geo-quebra-mar-relato.md. 4ª rodada (08/10/2026, conferência das folhas antigas do USGS): long-wharf-usgs1903-corrigido, molhe-1871-usgs1896-corrigido e pontos-historicos-usgs-corrigidos; as camadas de origem ficam como estão; a divisa de Terminal Island (1923) não foi medida no lugar e não ganhou corrigida. Relato: geo-folhas-usgs-relato.md."
+  "nota": "Vídeo 2 (los-angeles). 1ª rodada: adiantamento da pesquisa-geo (07/10/2026), 17 itens. 2ª rodada: passo research (07/10/2026), 7 itens, as camadas que o espelho pedia (_despacho_research.pesquisa_geo). Nenhum item vem da camada do condado de Los Angeles (sem licença aberta confirmada); do OpenStreetMap, só o quebra-mar-osm (3ª rodada) e o farol de pontos-historicos-usgs-corrigidos (4ª rodada), ODbL, com crédito. Resumo e comparações: pauta-geo.md. Correção do sudeste de Hamlin (07/10/2026): la-1906, faixa-1906, wilmington-1909, san-pedro-1909-divisa e la-1909 regravadas; la-1850 e la-1899 não mudaram. 3ª rodada (08/10/2026, pedido do qc na s29): quebra-mar-osm, o San Pedro Breakwater de hoje pelo OSM; a camada quebra-mar-usgs1923 fica como está. Relato: geo-quebra-mar-relato.md. 4ª rodada (08/10/2026, conferência das folhas antigas do USGS): long-wharf-usgs1903-corrigido, molhe-1871-usgs1896-corrigido e pontos-historicos-usgs-corrigidos; as camadas de origem ficam como estão; a divisa de Terminal Island (1923) não foi medida no lugar e não ganhou corrigida. Relato: geo-folhas-usgs-relato.md. 4ª rodada (08/10/2026, a água escura nos mapas do porto, identidade §6): agua-osm-la, o mar e o porto dos water polygons do OSM, com o San Pedro Breakwater e as estruturas em área fora da água."
 }
