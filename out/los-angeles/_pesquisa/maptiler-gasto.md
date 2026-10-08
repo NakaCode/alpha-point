@@ -49,3 +49,9 @@ Portões da s03 até aqui: 3.241 pedidos. O painel não foi lido.
 | 22:12–22:36 | quadros de prova com o `quadro.mjs` | não contados |
 | 22:36–22:45 | portões com a pré-carga (duas rodadas do `qc-cena`, `portao-mapa til` e `rodape`, dois `check-overlap` avulsos) | 9.593 (`portao-mapa til` 1.002 e `rodape` 952; o resto no `_tmp/maptiler-portoes.jsonl`) |
 | 22:45–23:20 | 8 renders 4K de prova, um de cada vez | não contados |
+
+## A passada oficial do Claude central nas 24 cenas de mapa, 07/10/2026
+
+| quando (Brasília) | o que | pedidos |
+|---|---|---|
+| 23:32–23:46 | `qc-cena` (conc=3, `--forcar`, as 11 reprovações remedidas sozinhas), `portao-mapa til` e `rodape` nas 24, e o `qc-video-avanca` da s01, todos com a pré-carga | 17.962 (`qc-carga` 2.949, `qc-fora-do-quadro` 2.559, `qc-tamanho` 2.294, `check-overlap` 1.567, `qc-contrato` 1.204, `qc-credito-fantasma` 848, `portao-mapa` 6.409, `qc-video-avanca` 132; do `_tmp/maptiler-portoes.jsonl`) |

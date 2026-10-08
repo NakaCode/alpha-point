@@ -1,6 +1,62 @@
-# Conferência de mídia: los-angeles, fluxo midia, 07/10/2026 11:33, 13:55, 14:15, 17:02 e 19:40 (Brasília)
+# Conferência de mídia: los-angeles, fluxo midia, 07/10/2026 11:33, 13:55, 14:15, 17:02, 19:40 e 23:40 (Brasília)
 
-**Laudo (o arquivo inteiro):** 43 aprovados de 72 conferidos (17 reprovados, 12 trocar, 0 pendente_lucas); 3 com algo não conferido; recebidos: 72.
+**Laudo (o arquivo inteiro):** 44 aprovados de 73 conferidos (17 reprovados, 12 trocar, 0 pendente_lucas); 3 com algo não conferido; recebidos: 73.
+
+## Despacho das 23:40 (passo `art`): a folha de Hamlin na s40
+
+**Laudo do despacho:** 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido;
+recebidos: 1.
+
+O pedido: um veredito próprio da s40 para `documento/hamlin-1916-p1.jpg` (sha256 `320f3628…60d6`), que tinha `aprovado` só para
+a s39. A s40 abre com a mesma folha georreferenciada sobre o satélite a 70 %, e em "eighteen" ela esmaece a zero em 1,2 s. O
+veredito da s39 ficou como estava. O novo entrou logo depois dele no JSON, com `cena: "s40"` e `uso_de` apontando a s39.
+
+| id | cena (beats) | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `documento/hamlin-1916-p1.jpg` | **s40** (0), reaparição | Commons (LoC) | aprovado | a folha de 1916 georreferenciada na abertura (529,567–532,51 s): ela mesma dá os 18,64 mi² da Shoestring; reaparição declarada, continuidade da s39 |
+
+- **A frase:** "The whole annexation was more than eighteen square miles." (roteiro, linha 67; a voz diz o mesmo), de 529,59 a
+  532,65 s no `words.json`. A janela é a do beat 0 da regência, 529,567–533,167 s (3,6 s), o único que pede a folha. Ela fica na
+  tela de 529,567 a 532,51 s: a 70 % até "eighteen" (531,31 s) e depois esmaece por 1,2 s.
+- **Contexto:** a própria folha traz o número da frase. O bloco diz "SHOESTRING ADDITION, Ord. 13447 (N.S.) Dec. 26, 1906, 11931
+  Acres", e a tabela HISTORY diz "Dec. 26, 1906 · Shoestring · Annexation · 11931 · 18.64". O bloco e o fio acesos dominam o
+  quadro em "annexation" e "eighteen". O ano da folha está impresso no título, que fica no quadro, e a voz acabou de dizê-lo na
+  s39. É documento: sem aviso do ano.
+- **Licença:** li a página do Commons de novo hoje. Domínio público nos EUA ("published … before January 1, 1931"), com a PDM 1.0;
+  cópia da Library of Congress. Sem crédito na tela; o da coleção vai na descrição. No quadro só aparece o crédito da MapTiler.
+- **Técnica:** 3532x5120 (o original tem 7599x11015, ou 83,7 MP, reduzido ao teto de 40 MP). Na janela da folha, cada pixel do
+  arquivo ocupa ~0,8 pixel da tela (zoom 11,70 a ~11,76; a folha tem 2.743 px de largura na tela). Nada é ampliado acima do
+  arquivo.
+- **Repetição, e o porquê de `passa`:** é a mesma folha em duas cenas seguidas, com corte seco e 0 s entre elas. A volta está
+  declarada em três lugares: no espelho (motivo de s39, "ANCORAGEM… a folha afunda no satélite e vira o mapa de s40, na mesma
+  posição"), no conceito-visual (fluxo, s39/s40) e na regência (s40, beat 0). **Ela é continuidade que serve ao espectador, não
+  repetição que pesa:**
+  - a s39 termina em "Now measure it on the city's own annexation map", e a s40 mede sobre esse mapa;
+  - a folha deitada no lugar dela sobre o satélite mostra que o contorno aceso é o que o engenheiro desenhou, e some em 2,9 s;
+  - não é o mesmo quadro duas vezes: na s39 a folha está sobre a mesa, e na s40 está no terreno, com outro enquadramento;
+  - ela não volta depois: só a s39 e a s40 citam o arquivo.
+- **Olhei:** a folha inteira e três recortes do arquivo (o bloco da Shoestring e a tabela HISTORY), e cinco quadros do `s40.mp4`
+  (0,05, 1,6, 2,2, 2,6 e 3,0 s). O carimbo do clipe (sha1 `94578a22…`, 2160p) é o do HTML de hoje. Tudo está em
+  `out/los-angeles/_tmp/conferencia/s40-hamlin/`. Não foi de olhos novos: li o veredito da s39, a regência e o cabeçalho da cena
+  antes de abrir a folha. Não há render da s39 (`s39.mp4` não existe), então o corte entre as duas cenas eu não vi. Julguei a
+  continuidade pelo plano: a s39 termina com a câmera descendo a folha até o fio, e a s40 abre na mesma folha, com o fio aceso.
+- **`_media/` não mudou** durante a conferência: os sha256 dos 185 arquivos, antes e depois.
+
+**Para a arte (`mapista`), sem reprovar:**
+- A cena retifica a folha num canvas de 2600 px de largura, menos que os 3532 px do arquivo, e o mostra a ~1,05–1,10×. É
+  construção, dentro do teto de 1,4× do documento, mas é o passo que perde resolução. Um canvas de 3532 px manteria a folha
+  inteira.
+- Na abertura, o preenchimento a 85 % cobre o rótulo da própria folha ("Shoestring Addition… Dec. 26, 1906") no bloco. A tabela
+  HISTORY, que traz o 18.64, fica pequena e inclinada à esquerda, e não se lê em 1080p. Isso não muda o veredito: o "18.64 SQ MI"
+  da tela é que leva o número.
+
+**Para o Claude central:** o `regencia.json` de hoje (sha256 `1085732d…`) não é o que o veredito da s39 cita (`a5b3ad1d…`). Na s39,
+os dois beats e a mídia deles estão iguais (0–3,5 e 3,5–7,967 s, a mesma folha), e por isso o veredito da s39 continua valendo como
+está. O beat 0 da s40 nomeia a folha no `exige`, mas não a lista em `midia`, ao contrário dos beats da s39.
+
+**Divergências entre a marca e este ofício:** nenhuma.
+
+---
 
 ## Rodada das 19:40: a regência nasceu (passo `conducting`)
 
