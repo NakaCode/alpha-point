@@ -698,7 +698,15 @@ Juneau onde a resposta dele diz:
 
 ## 6 · Base de mapa e mídia
 
-**Tratamento da base de satélite**: brilho a 65 %, saturação a 70 %. Contorno do protagonista em
+**Tratamento da base de satélite**: brilho máximo a 92 %, cor natural (saturação 0) e contraste +25 % (no MapLibre:
+`"raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25`), do vídeo 2 em diante (Lucas, 09/10/2026).
+Ele achou "os mapas todos muito "cinzas"" e pediu mais contraste ("a depender do custo isso fica como regra para os próximos
+vídeos"). A pergunta, com as três versões da s44 aos 23,5 s lado a lado (`out/los-angeles/prova-contraste/contraste-s44-abc.jpg`):
+"Qual contraste do satélite fica valendo nos mapas?" A resposta: **"C, vivo"**. A opção dizia: "Brilho 92 %, cor natural,
+contraste +25 %. É a mais colorida, mas o laranja da faixa se destaca um pouco menos sobre a terra." E "Se mudar o contraste,
+quando ele entra?": **"Já no vídeo 2 (Recomendado)"**. Com o contraste, o mar aberto do satélite fica quase preto (medido na s44:
+mediana `#000009`), e o `--agua-base` foi medido de novo (abaixo). O que o qc-visual confere a mais: o laranja do protagonista
+e as pílulas sobre a terra mais clara. O Juneau fica com o tratamento antigo: brilho a 65 %, saturação a 70 %. Contorno do protagonista em
 `--tinta`, 6 px. Demais fronteiras em branco a 70 %, 5 px, sobre um contorno escuro de `#0B0F14` a 60 %,
 12 px. Preenchimento do protagonista: `--destaque` a 85 %, para o relevo transparecer.
 
@@ -711,7 +719,7 @@ escura da foto; somem navios, esteiras e barcos. Primeiro uma prova numa cena (s
   contributors" já está na linha da MapTiler), recortado ao lugar do vídeo, com o quebra-mar e os píeres como terra (o San Pedro
   Breakwater, `way/1312790328`, vem dentro da água no OSM e se tira). Opaca, logo acima do satélite e abaixo de tudo o que a cena
   desenha (águas de contexto, linhas, rótulos).
-- O tom: `--agua-base` (`#061416`), o da água escura do satélite medida depois do tratamento 65/70. As águas de contexto que a cena
+- O tom: `--agua-base` (`#00050c`), o da água escura do satélite medida depois do tratamento C (09/10/2026; antes, `#061416`, medido no tratamento 65/70). As águas de contexto que a cena
   acende (`_agua_do_porto` do conceito) vão por cima dela.
 - O que se perde, e é aceito: navios, esteiras e barcos somem; nas praias vistas de perto, o tom avança uns 20 m sobre a areia molhada.
 - Vale para os mapas do porto do vídeo 2 depois da prova aprovada pelo Lucas, e para os próximos vídeos onde a emenda aparecer na água.

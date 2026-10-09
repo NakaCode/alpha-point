@@ -204,3 +204,15 @@ consertos resolvidos; 54 achados de espectador de pé; 62 defeitos em 29 cenas (
    inventa") fica. Sem render a mais por isso: o reforço entra no mesmo render dos outros consertos da cena.
 3. "Passo a revisão de espectador ao Sonnet?" → **"Sim, Sonnet revisa (Recomendado)"**: do próximo uso em diante, o revisor de
    espectador roda em Sonnet; o cético continua em Opus (o teste: Sonnet 11 de 14 achados de pé, Opus 9; `consolidado.md`).
+4. A voz da s47 (V1 do laudo-delta de 08/10: "in 1912, the Corps of Engineers called the breakwater finished"; a tela já está na
+   medida da fonte, "breakwater completed, per the Corps of Engineers"). A pergunta, no chat (08/10, 22:1x): manter ou regravar. A
+   resposta (09/10, 08:3x): **"cena 47, manter"**. A narração não muda.
+5. A linha do tempo (09/10, 08:2x): o Lucas comentou s12, s03, s23, s44 (sobre s40, s42 e s44) e s55 (`out/_feedback-queue.jsonl`, linhas
+   43 a 47) e disse: "ignore meu comentário da cena 23". O da s23 não vai à arte.
+6. Comentários da linha do tempo (09/10, 08:4x): s12 o medidor "Deixar como está"; s03 "Aproximar no porto (Recomendado)"; s40/s42/s44
+   "Ângulos diferentes, sem relevo (Recomendado)"; s55 as manchas no mar "Deixar como está". Contraste do satélite: "C, vivo" e "Já no vídeo
+   2 (Recomendado)" (identidade §6; `--agua-base` medido de novo, `#00050c`).
+7. Decisões do Claude central para a r4b (economia de limite): água escura também na s03 e na s48 ("pode levar a todos"); os desvios do
+   conceito e da regência que o qc-visual aceitou (s07 e s29 com a água do porto recortada, s33 sem contorno, s48 sem a miniatura de 1914,
+   o pouso da p. 2126 na s15, a p. 98 na s35) ficam aceitos aqui, e o diretor e o regente os alinham no próximo toque, sem segurar; os 35
+   defeitos de gravidade baixa ficam fora da r4b.

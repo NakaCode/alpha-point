@@ -52,7 +52,9 @@ const DO_MOLDE = ["galeria/caminho.mjs", "galeria/fila.mjs", "galeria/projeto.mj
   "serve-galeria.mjs", "lib/espelho-path.mjs", "lib/words-do-espelho.mjs"];
 
 // As pastas de _media que as cenas citam (conferido com grep nos 56 HTML do Juneau). _caca e _master.mp4 ficam fora.
-export const PASTAS_MIDIA = new Set(["_vendor", "geo", "foto", "footage", "documento", "pessoa"]);
+// "base" desde 09/10/2026: o still da mesa do vídeo 2 (_media/base/mesa-los-angeles.png, Landsat, domínio público), que toda
+// cena de mesa cita; sem ela as 20 cenas sem mapa do vídeo 2 não abriam ("img não carregou").
+export const PASTAS_MIDIA = new Set(["_vendor", "geo", "foto", "footage", "documento", "pessoa", "base"]);
 
 /** Erro que vira saída 2 ("não rodou"): uso errado, projeto que não existe, motor mudado. */
 export class NaoRodou extends Error {}
