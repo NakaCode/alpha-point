@@ -131,6 +131,17 @@ Fonte: `roteiros/juneau/miniatura/miniatura-lupa.html`. Palco de 2560×1440; ent
 - **Mosaico de foto aérea antiga raramente serve à miniatura.** O AHAP do sítio veio com emendas e cores de
   anos diferentes. Veja a prévia antes de pedir o arquivo grande.
 
+**O que a rodada 2 de Los Angeles ensinou** (09/10/2026, depois de 0,9 % de cliques nas primeiras 236 impressões;
+`roteiros/los-angeles/miniatura/banca-r2.md`). São leituras de banca simulada, que o teste do YouTube pode desmentir:
+- **O detalhe que o título promete tem de aparecer em 168 px.** A faixa de LA tinha 1 px na lateral. O que resolve é
+  apertar o quadro no detalhe (de 19 para 34 px/km). Um halo claro por baixo ajuda, desde que fique em uns 10 px de cada
+  lado no palco: mais que isso, o detalhe vira "estrada".
+- **O resto do contexto fica na cor do protagonista, só mais clara** (`--destaque` a ~40 % com `--tinta`). Em cinza, ele
+  passou por "outra cidade"; em `--destaque` a 38 % sobre a base, por marrom ou oliva.
+- **Terra lisa cinza leu como "mapa morto"** para os três leitores que a viram ao lado do relevo. O relevo venceu.
+- **Texto de intenção sem objeto não prende.** "ON PURPOSE" saiu vago para os três ("on purpose what?"). Um dado concreto
+  que o vídeo paga ("HALF A MILE WIDE") prendeu mais, mesmo com 4 palavras (exceção de teste ao "1 a 3 palavras").
+
 **Conferência antes de mostrar ao dono:**
 1. Renderizar em 1280×720, 320×180 e 168×94 e olhar os três tamanhos.
 2. Uma banca com quatro lentes: tamanho pequeno, geografia e fatos, marca, e leitura a frio com o título embaixo.
