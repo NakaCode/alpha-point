@@ -7,31 +7,27 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Quadros 1080p a cada 0,5 s (0–28 s), 4K do clipe em 4,0 s. R5.3: a pílula 'San Pedro' passou para o lado leste da divisa (a ~90 px dela em 4K), sobre a cidade e o porto, e W3 a mantém acima de y 1880 (pílula em y<=1790 em 4K, borda direita em x~2620 < 3640). R5.5: de 7,31 a ~9,0 s são 4 elementos (polígono, 'Wilmington', 'DECEMBER 1905', legenda das cores), a data centrada sobre 'Wilmington' e em opacidade plena. Sem texto sobre texto. SINALIZA: 'A CITY BY 1890' ao lado da pílula 'San Pedro' (~16 px em 4K de separação, 3,2–5,5 s): lê-se (tem halo escuro), mas encosta.",
-        "Crédito de mapa e linha 'Source:' em duas pílulas separadas, a 56 px (var(--fs-credito)), na faixa, de x 200 a antes de 1720; a marca de mapa só em #crMapa. Exceção do Lucas: qc-tamanho, crédito a 56 px, 'Quero reduzir para 56px', 07/10/2026 11:3x (sha1 do HTML 45cd249c449a2bb1f4dfeb46d43596eb86b453f6 conferido em qc/_excecoes-portao.json; a reprovação do log qc-cena-1 é a mesma, [tamanho] [credito] 'Source: Los Angeles County annexation record' 56<72, e é só ela). portao-mapa rodape 4,96:1 em 21,25 s (112 tiles)."
+        "r4b, clipe 4K válido (carimbo = sha1 71140569…, 2160p). Quadros 2,0, 4,2, 7,5, 14,5, 20,9, 22,8, 23,6 e 27,5 s olhados. \"43 SQ MI\" e \"the city before the strip\" ficaram inteiros à direita do polígono, fora da borda branca e abaixo da legenda de Wilmington sem encostar (20,9 s; item s33-43-sobre-contorno resolvido). \"San Pedro\" e \"Wilmington\" empilhadas a ~30 px (1080p) uma da outra, com a pílula de San Pedro acima de y 1880 em 4K (23,6 e 27,5 s). \"A CITY BY 1890\" a ~45 px (4K) de \"San Pedro\" em 4,2 s: não encosta mais; sem texto sobre texto.",
+        "Crédito de mapa e linha \"Source:\" em duas pílulas, a 56 px (var(--fs-credito)), na faixa, de x 200 a antes de 1720 (20,9 s). Exceção do Lucas: qc-tamanho, crédito a 56 px, \"Quero reduzir para 56px\", 07/10/2026 11:3x (sha1 do HTML 71140569bf8452762edb0bffd35cdb4d517aa935 = o de qc/_excecoes-portao.json e o do clipe; a reprovação do qc-cena de hoje é só [credito] \"Source: Los Angeles County annexation record\" 56<72). portao-mapa rodape 4,61:1 em 21,25 s (112 tiles); til passou (112 tiles)."
       ],
-      "correcoes": [
-        "Se mexerem na s33 de novo: abrir ~10 px entre 'San Pedro' e 'A CITY BY 1890' (dx do cota), sem mudar o tempo."
-      ]
+      "correcoes": []
     },
     {
       "lente": "factual",
       "nota": 7,
       "problemas": [
-        "Textos conferem com textos-tela: 'San Pedro', 'Photo from about 1891–1910' (origem: 'between circa 1891 and circa 1910'), 'A CITY BY 1890', 'Wilmington', 'DECEMBER 1905', 'Wilmington’s limits of 1909' (A1: geometria de outro ano declarada o tempo todo do polígono), 'Los Angeles', 'ABOUT 19 MILES' (Plaza → Wilmington), '43 SQ MI' com 'Source: Los Angeles County annexation records' só enquanto está no ar, 'the city before the strip'. Foto: sha256 4dec253f… = o arquivo conferido para a s33 no conferencia-midia.json, domínio público (Commons, Jackson), aviso do ano certo, rótulo 'San Pedro' = lugar_na_origem.",
-        "R5.3: a pílula deixou de ficar sobre a península (fora da cidade) e fica do lado de dentro da divisa; a divisa engrossa 5→10→5 px em 500 ms em 'San Pedro' (22,35 s); a espessura em repouso é a da marca (identidade §6). R5.4: o pulso do zero ao zero saiu: a água acende em 500 ms em 'Winning' (13,75 s) e sai em 'having' (15,07 s), volta em 'harbor' (21,23 s) e fica; o filtro pela longitude máxima tira o 'San Pedro Bay' e o corpo até Long Beach (nos quadros de 14,0–15,0 s a mancha é só do porto das duas cidades).",
-        "SINALIZA (geometria de outro ano): a divisa de San Pedro é a de 22/10/1906 e aparece de 21,3 s ao fim sem linha que a date; o quadro é a véspera da anexação de novembro de 1906 (decisão do central; o cético derrubou a data em C-s33-1).",
-        "DESVIO declarado (água das duas cidades SEM o contorno de 6 px): ACEITÁVEL. O porquê do contorno no conceito (_agua_do_porto, regra 1) é separar o destaque das emendas do mosaico da MapTiler; com a água escura as emendas não existem mais, e em z 11,3–12 o contorno vira um novelo em ~200 px (a pílula não cabe fora dele). SINALIZO que o conceito (s34 p3) ainda diz 'com contorno de 6 px': o central/diretor devem registrar esta exceção da s33 no conceito, para a regra e a cena não divergirem."
+        "r4b, DESVIO declarado (a 2ª janela da água sai em \"Wilmington\", 23,15 s, em 300 ms, e não fica até o corte): ACEITO. Serve ao teto de 6 elementos (identidade.md §4.2); a água fica acesa durante toda a frase sobre o porto dentro das duas cidades, até o nome do segundo bairro, e a pílula \"San Pedro\" deixa de cobrir água acesa (23,6 e 27,5 s). Custo conferido em 22,8 s: de 22,35 a 23,15 s a pílula ainda cobre parte da mancha, por 0,8 s. O desvio contraria o conceito s34 p3 (\"a água fica até o corte\"); o diretor registra a exceção (o relato já a declara).",
+        "Mantidos do r4: textos conferem com o textos-tela; DESVIO da água sem o contorno de 6 px, aceito; SINALIZA geometria de outro ano (divisa de 22/10/1906 num quadro de 1905)."
       ],
       "correcoes": [
-        "Registrar no conceito-visual (s33, _agua_do_porto) que a água das duas cidades vai a 35 % sem contorno nesta escala."
+        "Registrar no conceito-visual (s33, _agua_do_porto) as duas exceções: sem contorno de 6 px e água que sai em \"Wilmington\"."
       ]
     },
     {
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "Medido: 'A CITY BY 1890' em ~3,2 s (voz 'city' 3,12); 'Wilmington' e polígono por volta de 6,0 s (voz 5,34; câmera); 'DECEMBER 1905' em 7,31 ('December' 7,31); 'Los Angeles' e régua em ~10,4 s (voz 'Los Angeles' 9,19; 'miles' 10,51: a câmera sobe até 10,4); 'ABOUT 19 MILES' em 10,51 ('miles'); régua e cota saem em 12,71 ('not'); água em 13,75 ('Winning'); '43 SQ MI' em 18,03 ('forty-three' 18,03) com o 'Source:'; 'San Pedro' em 22,35 (voz 22,35); 'Wilmington' em 23,15 (voz 23,15). Tudo na palavra, salvo o que a câmera adia (OBSERVAÇÃO: 'Los Angeles' ~1,2 s depois da voz; 'Wilmington' do início ~0,6 s).",
+        "[r4, nota mantida: a r4b não mexeu nisto] Medido: 'A CITY BY 1890' em ~3,2 s (voz 'city' 3,12); 'Wilmington' e polígono por volta de 6,0 s (voz 5,34; câmera); 'DECEMBER 1905' em 7,31 ('December' 7,31); 'Los Angeles' e régua em ~10,4 s (voz 'Los Angeles' 9,19; 'miles' 10,51: a câmera sobe até 10,4); 'ABOUT 19 MILES' em 10,51 ('miles'); régua e cota saem em 12,71 ('not'); água em 13,75 ('Winning'); '43 SQ MI' em 18,03 ('forty-three' 18,03) com o 'Source:'; 'San Pedro' em 22,35 (voz 22,35); 'Wilmington' em 23,15 (voz 23,15). Tudo na palavra, salvo o que a câmera adia (OBSERVAÇÃO: 'Los Angeles' ~1,2 s depois da voz; 'Wilmington' do início ~0,6 s).",
         "Re-checagem de atrasos por ritmo (R5.5: a miniatura levanta em 'city' 6,855 e 'San Pedro'/aviso saem em 6,555): 'DECEMBER 1905' continua na palavra 'December'; nenhum elemento atrasado além do que a câmera impõe."
       ],
       "correcoes": []
@@ -40,7 +36,7 @@
       "lente": "abordagem",
       "nota": 9,
       "problemas": [
-        "REGISTRO → MAPA numa viagem só: foto real de domínio público (Commons) para 'whose town was that?' e satélite com polígonos reais (Hamlin) para as duas cidades; o registro de Wilmington é FALTA declarada pela regência, coberta por polígono + rótulo."
+        "[r4, nota mantida: a r4b não mexeu nisto] REGISTRO → MAPA numa viagem só: foto real de domínio público (Commons) para 'whose town was that?' e satélite com polígonos reais (Hamlin) para as duas cidades; o registro de Wilmington é FALTA declarada pela regência, coberta por polígono + rótulo."
       ],
       "correcoes": []
     },
@@ -48,17 +44,17 @@
       "lente": "acessibilidade",
       "nota": 7,
       "problemas": [
-        "SINALIZA: em 21–28 s a ideia 'o porto fica dentro das duas cidades' (voz 21,1–24,0) depende da divisa fina de San Pedro (traço branco de ~10 px, que engrossa só por 500 ms) e de uma mancha cinza de água sem contorno, em parte sob a pílula 'San Pedro'. Wilmington (polígono teal cheio) lê bem; San Pedro lê pouco. Melhor que antes (pílula do lado de dentro, água acesa), ainda discreto. Em 2 s, o resto da cena se entende: foto da cidade, mapa, duas cidades, Los Angeles longe, régua de 19 milhas."
+        "r4b: [r4, nota mantida] em 21–28 s a ideia \"o porto fica dentro das duas cidades\" ainda depende de uma divisa fina de San Pedro (cinza claro de ~6 px, que engrossa por 500 ms em 22,35 s) e, depois de 23,15 s, a água já não está acesa: Wilmington (polígono cheio) lê bem; San Pedro continua discreto (22,8 e 27,5 s). SINALIZA, não derruba: a pílula \"San Pedro\" e a fala sustentam."
       ],
       "correcoes": [
-        "Se o Lucas achar fraco na linha do tempo: o conceito já prevê o realce a 50 % por 500 ms em 'inside'; deixá-lo mais tempo ou mais visível."
+        "Se o Lucas achar fraco na linha do tempo: segurar o realce da divisa de San Pedro por mais tempo (o conceito já prevê o realce a 50 % por 500 ms em \"inside\")."
       ]
     },
     {
       "lente": "poluicao",
       "nota": 7,
       "problemas": [
-        "Pico de 4 elementos em 7,3–9,0 s (R5.5 resolvido; era 7). Em 18–21 s: '43 SQ MI' + legenda + polígono + 'Source:' + legenda das cores, 5–6, perto do teto: SINALIZA. Em 0–5,3 s: pílula, aviso do ano e 'A CITY BY 1890' sobre a foto (3). Teste de lastro: todo texto cai numa palavra da fala ou é legenda declarada. Sem texto malformado."
+        "r4b: o pico de 7 elementos de 23,15 a 28,3 s (r4) caiu para 5: com a água fora ficam as duas pílulas, o polígono de Wilmington, a divisa de San Pedro e o canto de cores (27,5 s). Teto de 6 respeitado, sem emenda de mosaico na água (7,5 e 27,5 s). 18–21 s segue com 5–6 (43 SQ MI + legenda + polígono + Source + legenda das cores): SINALIZA, perto do teto, como no r4."
       ],
       "correcoes": []
     },
@@ -66,7 +62,7 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Foto com Ken Burns de 1,00→1,12 em ~5,3 s, encolhimento da foto à miniatura em 1,5 s e levantar em 'city' (6,855 s), câmera que sobe por van Wijk e deriva contínua no resto. A água acende em 500 ms e fica; o pulso 'do zero ao zero' (flash) saiu. A divisa engrossa e volta em 500 ms. Nada congela; sem corte seco."
+        "[r4, nota mantida: a r4b não mexeu nisto] Foto com Ken Burns de 1,00→1,12 em ~5,3 s, encolhimento da foto à miniatura em 1,5 s e levantar em 'city' (6,855 s), câmera que sobe por van Wijk e deriva contínua no resto. A água acende em 500 ms e fica; o pulso 'do zero ao zero' (flash) saiu. A divisa engrossa e volta em 500 ms. Nada congela; sem corte seco."
       ],
       "correcoes": []
     },
@@ -74,7 +70,7 @@
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "Foto de Commons (William Henry Jackson), domínio público, sem crédito na tela (o conferente diz 'nenhum'), com aviso do ano. 'Source: Los Angeles County annexation records' só com '43 SQ MI' (a 56 px). MapTiler/OSM do 1º quadro de mapa (5,3 s) até o fim; a água escura (OSM) coberta por ele. Exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML igual ao do arquivo de exceções)."
+        "[r4, nota mantida: a r4b não mexeu nisto] Foto de Commons (William Henry Jackson), domínio público, sem crédito na tela (o conferente diz 'nenhum'), com aviso do ano. 'Source: Los Angeles County annexation records' só com '43 SQ MI' (a 56 px). MapTiler/OSM do 1º quadro de mapa (5,3 s) até o fim; a água escura (OSM) coberta por ele. Exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML igual ao do arquivo de exceções)."
       ],
       "correcoes": []
     },
@@ -82,7 +78,7 @@
       "lente": "tema",
       "nota": 8,
       "problemas": [
-        "Teal (--contraparte) só em Wilmington e na sua legenda; laranja (--destaque) só em Los Angeles (1899); água em --tinta; legenda das cores no canto; sem filtro sobre a foto."
+        "r4b: Contraste C (identidade.md §6, \"C, vivo\"): o laranja de 1899 (85 %) com contorno branco e o teal de Wilmington leem sobre a terra mais clara em 14,5, 20,9 e 27,5 s; a água escura não faz borda com o mar da foto (7,5 e 27,5 s); a foto em P&B sem filtro. Teal só em Wilmington e laranja só em Los Angeles, como no r4."
       ],
       "correcoes": []
     },
@@ -90,7 +86,7 @@
       "lente": "cobertura",
       "nota": 8,
       "problemas": [
-        "San Pedro tem registro real (a foto); Wilmington não tem foto (FALTA da regência, 5,333 s), mas polígono + rótulo cobrem o lugar. SINALIZA."
+        "[r4, nota mantida: a r4b não mexeu nisto] San Pedro tem registro real (a foto); Wilmington não tem foto (FALTA da regência, 5,333 s), mas polígono + rótulo cobrem o lugar. SINALIZA."
       ],
       "correcoes": []
     },
@@ -98,7 +94,7 @@
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Foto parada 5,3 s com Ken Burns (teto 6 s), depois mapa em movimento contínuo, 28 s com 5 momentos; nenhum plano parado."
+        "[r4, nota mantida: a r4b não mexeu nisto] Foto parada 5,3 s com Ken Burns (teto 6 s), depois mapa em movimento contínuo, 28 s com 5 momentos; nenhum plano parado."
       ],
       "correcoes": []
     },
@@ -118,7 +114,7 @@
       "lente": "circulo",
       "nota": 8,
       "problemas": [
-        "Termina no quadro que a s37 reabre (o vão entre o contorno de 1899 e as duas cidades): reaparição declarada. A baía das s26/s29 volta só como palco; o degrau é a dupla San Pedro/Wilmington."
+        "[r4, nota mantida: a r4b não mexeu nisto] Termina no quadro que a s37 reabre (o vão entre o contorno de 1899 e as duas cidades): reaparição declarada. A baía das s26/s29 volta só como palco; o degrau é a dupla San Pedro/Wilmington."
       ],
       "correcoes": []
     }

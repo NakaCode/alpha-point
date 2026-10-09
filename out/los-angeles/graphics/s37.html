@@ -52,6 +52,7 @@
 <script src="../_media/geo/faixa-1906-hamlin.js"></script>
 <script src="../_media/geo/wilmington-1909-hamlin.js"></script>
 <script src="../_media/geo/san-pedro-1909-divisa-hamlin.js"></script>
+<script src="../_media/geo/agua-osm-la.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -408,9 +409,15 @@
   // ── a base, SEM relevo (s03) ─────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // A ÁGUA ESCURA (identidade §6; Lucas, 08/10/2026, "Aprovo, pode levar a todos"; posta pelo Claude central em 09/10, r4b, porque o
+    // qc-visual achou as emendas do mosaico na baía em 3,0, 8,0, 12,6 e 22,5 s): a camada agua-osm-la (arquivo local, sem tile) em
+    // --agua-base, opaca, como 2ª camada do estilo, acima do satélite e abaixo de tudo o que a cena desenha (o mesmo código da s33).
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+      agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "agua",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────

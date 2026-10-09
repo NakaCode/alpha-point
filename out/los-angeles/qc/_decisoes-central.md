@@ -221,3 +221,10 @@ consertos resolvidos; 54 achados de espectador de pé; 62 defeitos em 29 cenas (
    `aprovar` da linha do tempo grava todas as aprováveis da versão (41, `qc/_aprovacao-lucas.jsonl`); o "sim" cobre o render só das 17.
    As outras 24 mudam na r4b (os mapas com o contraste C e as 6 de mesa consertadas) e perdem a aprovação com a versão nova: voltam
    ao Lucas na próxima vista.
+9. Depois do qc-visual da r4b (09/10, 12:xx): 28 de 29 aprovadas na 1ª passada. (a) O "fio claro de 1 px" no mar que o qc-visual apontou
+   em s01, s03, s07 e s10 é o próprio quebra-mar (San Pedro, Middle e Long Beach), que a camada da água deixa à vista de propósito
+   (identidade §6) e que o contraste C clareou: a prova está em `out/los-angeles/prova-contraste/fio-s03-*` (a camada de baixo sem
+   suavização não muda nada). Não é defeito, e nada se renderiza por ele. (b) A s37 não tinha a água escura (o plano não a pedia) e as
+   emendas apareciam na baía: o Claude central pôs a camada com o mesmo código da s33 (mudança mecânica, só a camada e o script; cópia de
+   antes em `_tmp/art-r4b/central/s37.antes-agua.html`), para não gastar um despacho de mapista com o semanal a 91 %; portões com a
+   pré-carga limpos, render 4K (12:42–12:47, carimbo 333092d4…), `conferir` 0, e o qc-visual a aprovou (tema 6 → 8).

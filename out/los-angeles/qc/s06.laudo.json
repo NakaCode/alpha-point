@@ -1,20 +1,15 @@
 {
   "cena": "s06",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 6,
+      "nota": 8,
       "problemas": [
-        "DEFEITO NOVO da r4 (R1.10, recorte justo): as duas fitas da página (pagFe e pagFd) caem SOBRE a primeira linha do recorte e lavam palavras: \"Having\" (fita esquerda, desde 3,4 s) e \"o take the\" de \"to take the\" (fita direita, medido nos quadros de 7,0 s e 8,9 s, crop 4K: letras a ~40 % de contraste sob a fita translúcida). A crop de 3,4 s mostra o mesmo em \"Having\". Roupa §4 (espaco), folha de documento: \"palavra cortada reprova, pelo rasgo, pela fita, pela moldura…\"; mesmo critério que a r3 usou para mover as fitas da s02 para uma faixa de margem. As palavras são legíveis e fora do grifo (por isso 6 e não menos): é o ÚNICO bloqueio de espaço.",
-        "Crédito medido (probe-elemento, 7 s): 2 linhas, h=134 → 55,8 px/linha, x=200, y 2012–2146, até x 1720, var(--fs-credito), data-qc-papel presente. qc-tamanho reprova só 56<72. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em qc/_excecoes-portao.json).",
-        "Sinaliza: a página, antes inteira, agora vai cortada em linha inteira acima e abaixo (cortes no branco entre linhas; a última linha \"…bad for southeasters.\" sai inteira, descendentes ok). Cargo \"Sailor on the brig Pilgrim (1835)\" quebra em duas linhas com \"(1835)\" sozinho: observação.",
-        "Margens: medir-margens só acusa o pouso (retSombra/moldura @0,1 s; div.papel/#pagSombra @2,6–2,8 s, folha descendo de fora do quadro): excluído pela regra do central (08/10, 03:0x). Fitas e pílula dentro da margem em todo instante."
+        "r4b resolveu s06-fitas-sobre-texto: as fitas agora são LATERAIS, fora do texto. Crop 4K de 7,0 s: entre a borda da fita esquerda e o 'the' da 1ª coluna ficam ~20 px 4K (10 em 1080p), e do lado direito ~50 px até o 'sup-'; nenhuma palavra lavada em 3,0, 7,0 e 8,9 s. Sinaliza: folga esquerda justa, sem tocar o texto. ## Crédito medido (probe-elemento, 7 s): caixa de 134 px em 2 linhas = 55,8 px/linha, x 200, y 2012–2146, até x 1720, var(--fs-credito), data-qc-papel presente; qc-tamanho reprova só 56<72. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (qc/_excecoes-portao.json, sha1 do HTML conferido contra o arquivo)."
       ],
-      "correcoes": [
-        "Mover as fitas da página para fora do texto: (a) subir pagFe/pagFd uns 40–60 px e prender só a borda superior (o branco entre y 1509–1522 do scan tem ~13 px, não basta), ou (b) pôr as fitas nas margens laterais do recorte (x 150→202 do arquivo, ~60 px na tela), diagonais sobre os cantos, ou (c) abrir o recorte numa faixa de papel acima da 1ª linha. Depois, medir no quadro de 7,0 s que \"Having\" e \"to take the\" têm o mesmo contraste das outras linhas e repetir o medir-margens (fita no topo ≥160 sob a câmera)."
-      ]
+      "correcoes": []
     },
     {
       "lente": "factual",
@@ -26,7 +21,7 @@
       "lente": "wordlock",
       "nota": 9,
       "problemas": [
-        "R1.9 executado: a página pousa em 2,567 s, em \"ship\" (voz 2,59 s); o grifo continua em \"the\" (5,67 s, voz 5,67) e fecha em \"hides\" (7,82). Conferido em 7,0 s (grifo em \"we had se[en]\", voz 6,9 \"seen\")."
+        "[mantida da r4, não mudou na r4b] [mantida da r4, não mudou na r4b] [mantida da r4, não mudou na r4b] R1.9 executado: a página pousa em 2,567 s, em \"ship\" (voz 2,59 s); o grifo continua em \"the\" (5,67 s, voz 5,67) e fecha em \"hides\" (7,82). Conferido em 7,0 s (grifo em \"we had se[en]\", voz 6,9 \"seen\")."
       ],
       "correcoes": []
     },
@@ -38,9 +33,13 @@
     },
     {
       "lente": "acessibilidade",
-      "nota": 9,
-      "problemas": [],
-      "correcoes": []
+      "nota": 8,
+      "problemas": [
+        "Sinaliza (item de gravidade baixa s06-pagina-sem-guia, fora da r4b pelo plano): de ~3,4 s (página assentada) a 5,67 s (1º grifo) a página mostra 12 linhas que a voz ainda não lê, sem marca de onde olhar. Não derruba: retrato, nome e cargo já dizem quem fala."
+      ],
+      "correcoes": [
+        "Se sobrar limite: partir o 1º pedaço do grifo ('We all agreed', t0 ≈ 4,80) e parar o push-in em ≤ 4,50 s, como o consolidado r4 propôs."
+      ]
     },
     {
       "lente": "poluicao",
@@ -52,19 +51,17 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Push-in do RIG para em 5,37 s (0,30 s antes de \"the\"), como o laudo da r3 pedia: resolvido. Aterrissagem da página 2,567–3,4 s com assentamento único; nada se move nos 250 ms finais (8,65 vs 8,93 s: diferença média 0,48, deriva)."
+        "[mantida da r4, não mudou na r4b] [mantida da r4, não mudou na r4b] [mantida da r4, não mudou na r4b] Push-in do RIG para em 5,37 s (0,30 s antes de \"the\"), como o laudo da r3 pedia: resolvido. Aterrissagem da página 2,567–3,4 s com assentamento único; nada se move nos 250 ms finais (8,65 vs 8,93 s: diferença média 0,48, deriva)."
       ],
       "correcoes": []
     },
     {
       "lente": "fonte",
-      "nota": 6,
+      "nota": 8,
       "problemas": [
-        "DEFEITO (identidade.md §4.2, \"O crédito … entra em 300 ms no primeiro quadro em que o asset aparece\"): a página p. 109 aparece em 2,567 s e a linha \"Source: Richard Henry Dana Jr., Two Years Before the Mast (1895 edition)\" só entra em 4,667 s (T.cred = t0 do textos-tela, anterior ao beat novo da regência r4). A página fica 2,1 s no ar sem a atribuição que o redator escolheu para ela. O relato do editor declara o desvio e o aponta como pedido do central. Desvio declarado: DEFEITO, não aceitável. A linha é escolha do redator (conferencia-midia: \"não exigência\" de licença), por isso 6 e não menos."
+        "r4b resolveu s06-credito-atrasado: T.cred = 2,567 = pouso da página (T.pousaPag); o 'Source: Richard Henry Dana Jr., Two Years Before the Mast (1895 edition)' está no ar no quadro de 3,0 s junto com a página, e o t0 do textos-tela (T040) já é 2,567. Contraste 12,27:1 (portao-mapa rodape v5). exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (qc/_excecoes-portao.json, sha1 do HTML conferido contra o arquivo)."
       ],
-      "correcoes": [
-        "Em s06.html, T.cred = T.pousaPag (2,567; o editor já ofereceu a troca). Pedir ao redator-de-tela/Claude central que o t0 do crédito de s06 no textos-tela passe de 4,667 a 2,567 (a linha é do redator, a hora é do §4.2), para o HTML e o plano não divergirem."
-      ]
+      "correcoes": []
     },
     {
       "lente": "tema",
@@ -76,7 +73,7 @@
       "lente": "cobertura",
       "nota": 8,
       "problemas": [
-        "O brigue Pilgrim continua sem imagem (FALTA declarada pela regência; gravura de edição posterior não é registro do navio). Concreto secundário: sinaliza."
+        "[mantida da r4, não mudou na r4b] [mantida da r4, não mudou na r4b] [mantida da r4, não mudou na r4b] O brigue Pilgrim continua sem imagem (FALTA declarada pela regência; gravura de edição posterior não é registro do navio). Concreto secundário: sinaliza."
       ],
       "correcoes": []
     },
@@ -84,7 +81,7 @@
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Retrato parado 8,4 s, mas a camada nova (a página) entra em 2,57 s e o grifo corre de 5,67 a 7,82 s: troca de camada, regime normal. Sinaliza, sem derrubar."
+        "[mantida da r4, não mudou na r4b] [mantida da r4, não mudou na r4b] [mantida da r4, não mudou na r4b] Retrato parado 8,4 s, mas a camada nova (a página) entra em 2,57 s e o grifo corre de 5,67 a 7,82 s: troca de camada, regime normal. Sinaliza, sem derrubar."
       ],
       "correcoes": []
     },
@@ -108,16 +105,18 @@
     }
   ],
   "julgamento": {
-    "modo": "completo",
+    "modo": "incremental",
     "lentes_julgadas": [
       "espaco",
+      "acessibilidade",
+      "fonte"
+    ],
+    "lentes_herdadas": [
       "factual",
       "wordlock",
       "abordagem",
-      "acessibilidade",
       "poluicao",
       "motion",
-      "fonte",
       "tema",
       "cobertura",
       "cadencia",
@@ -125,8 +124,7 @@
       "camadas",
       "circulo"
     ],
-    "lentes_herdadas": [],
     "frames": 10,
-    "porque": "Portões lidos em out/los-angeles/_tmp/art-r4/central/ (qc-cena-1.txt, 33 cenas auditadas; rodape-1.txt v5; til sem mapa coberto pelo qc-cena; conferir-2 sai 0; qc-janela-2 não lista a cena) e em art-r4/e1/ (medir-margens, qc-carga). Desvios declarados: (1) crédito mantido em 4,667 s = DEFEITO (identidade §4.2, acima); (2) beat 2 da regência r4 já em 2,567: sem desvio; (3) \"three miles\" sem grifo (não está na p. 109): aceitável. O recorte justo a 1,15× resolveu a letra miúda (R1.10): altura de x do trecho ~17 px em 1080p contra ~15 do crédito, e a caixa de \"place\" agora cobre o \"e\". Mas as fitas passaram a cobrir texto da página. Quadros olhados (4K→1080p): 0,5 · 2,0 · 2,7 · 3,4 · 4,8 · 5,6 · 7,0 · 8,9; crops 4K 3,4 (topo) e 7,0 (direita); par de cauda 8,65/8,93. Reprovada por espaco (6) e fonte (6): conserto pequeno (fitas + hora do crédito)."
+    "porque": "Portões lidos em out/los-angeles/_tmp/art-r4b/central/ (qc-cena.txt 48 cenas, rodape.txt v5, til.txt, qc-janela PASS, conferir.txt) e em art-r4b/ea|eb/: s06 sha1 134c1c59… (igual ao da exceção); qc-cena ✗ só [tamanho] crédito 56<72 (exceção do Lucas); rodapé 12,27:1; qc-carga --estreias exit 0; qc-janela PASS. Quadros olhados (quadro.mjs 4K com a pré-carga do canal, out/los-angeles/_tmp/qc-r4b/): 3,0 · 7,0 · 8,9 e crops 4K das duas fitas em 7,0 (gerados também 0,5 · 2,0 · 4,0 · 5,6, não abertos). Julguei o que a r4b mudou (fitas, hora do crédito); o resto herda a r4. Desvio declarado: página 68 px à esquerda (centro 2588→2520) para a fita direita caber na margem: ACEITÁVEL (fora-do-quadro verde, nada cortado)."
   }
 }
