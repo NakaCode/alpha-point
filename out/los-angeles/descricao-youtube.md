@@ -13,6 +13,36 @@ Escrita pelo Claude central no fechamento do vídeo. O que entra e de onde veio:
 - **os mapas** e **a música** são os blocos obrigatórios de `_creditos-mapa.md` (licença da MapTiler e da OSM) e `_creditos-trilha.md`
   (licença do Epidemic Sound).
 
+**A versão SEM LINKS, a que vai agora** (09/10/2026: "o problema é que ainda não posso inserir links"; o canal ainda não tem
+liberado o link na descrição). 959 caracteres. Os créditos ficam em texto (e já estão na tela). **Pendente:** quando o
+YouTube liberar os links, editar a descrição e pôr os três da versão curta abaixo (Library of Congress, MapTiler e OSM, Epidemic
+Sound), que é a forma completa que as licenças pedem.
+
+```text
+Why does Los Angeles run a strip half a mile wide all the way to its harbor? A fight over a port, a wall in the sea, and a 1909 vote.
+
+Which bay would you pick? Answer in the comments.
+
+0:00 Why is Los Angeles shaped like this?
+0:48 A city fourteen miles from the beach
+2:20 The jetty, the tide, and the word "never"
+4:05 Two bays, three boards, four votes to one
+6:13 A wall in the open sea, in somebody else's town
+7:37 The law that drew the strip
+9:32 1909: the handshake becomes a coast
+10:51 The seam on today's map, fifty-three feet down
+
+Sources are shown on screen.
+1916 annexation map: Homer Hamlin, Library of Congress (item 2006627663)
+Maps: © MapTiler © OpenStreetMap contributors (data under the Open Database License)
+
+Music:
+Elin Piel / Ultra / courtesy of Epidemic Sound
+Brendon Moeller / Sunshine Rain / courtesy of Epidemic Sound
+Joseph Beg / Sand Mandala / courtesy of Epidemic Sound
+Shuta Yasukochi / Happiness / courtesy of Epidemic Sound
+```
+
 A versão curta, com 992 caracteres (09/10/2026: o Lucas disse "Mesmo a enxuta ultrapassou os caracteres"; a enxuta tem 1.285 e a
 completa 2.414, e o limite da descrição de vídeo do YouTube é 5.000, então o campo onde ele colou tinha um limite menor, de uns 1.000).
 Os mesmos créditos obrigatórios, no mesmo formato do Epidemic; a abertura numa frase só.
