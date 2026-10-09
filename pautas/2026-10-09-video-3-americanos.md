@@ -4,6 +4,11 @@
 Algum lugar que tenha MUITOS americanos ou poucos americanos, mas que consigamos explicar o porquê... Talvez um lugar no
 exterior com bastante americanos como por exemplo okinawa".
 
+**A escolha do Lucas** (09/10/2026, à noite). A pergunta: "Qual lugar vira o vídeo 3?" A resposta: "Zona do Canal
+(Recomendado)". A opção dizia: "‘The U.S. Ran a Town Inside Panama for 75 Years.’ Melhor fonte, procura alta, mapa que explica.
+Risco médio: o canal está na política americana; fica no fato e o presente numa linha só." Kaiserslautern, Okinawa (1978) e
+Niʻihau ficam como reserva.
+
 **O método** (três etapas, em `out/_pautas/video-3b/`, fora do git):
 1. Três geradores em Sonnet: muitos americanos fora dos EUA, poucos americanos, e Okinawa a fundo. Foram 16 candidatos, e só
    conta como fato o que eles abriram na fonte.
@@ -68,3 +73,28 @@ do Norte e Point Roberts (`curador.md`).
 A **Zona do Canal**, contada como a cidade americana dentro do Panamá. É a de melhor fonte, com procura alta e um mapa que explica.
 Antes do roteiro, falta o número de cidadãos americanos na Zona, em primária. A 2ª opção é **Kaiserslautern**, se o 3º ato fechar em
 primária. O ângulo de **Okinawa** que se sustenta é o de 1978, mas com procura baixa.
+
+## O número dos americanos na Zona (09/10/2026, depois da escolha)
+
+Dois pesquisadores em Opus buscaram por caminhos diferentes, um no Census e outro nos relatórios anuais do governo da Zona, e um
+conferente reabriu as tabelas na imagem (`out/_pautas/video-3b/zona-cidadaos-*.md`; os PDFs ficam em `_fontes/`, fora do git).
+- **Nenhuma fonte conta "cidadãos americanos moradores".** O Census só perguntou cidadania a quem nasceu fora. O número que se
+  sustenta é **"born in the United States"**.
+- **Para a tela:** "In 1970, the last U.S. census of the Canal Zone counted 44,198 residents. 23,559 of them had been born in the
+  United States." A fonte: U.S. Census Bureau, 1970 Census of Population, Vol. I, Part 57 (Canal Zone), Table 7.
+- **O maior número entre os censos lidos:** 29.835 nascidos nos EUA continentais em 51.827 moradores, em 1940 (Census 1950,
+  Vol. II, Part 54, Table 28). De 1940 a 1970, entre 39 % e 58 % dos moradores tinham nascido nos EUA.
+- **O contraste do mapa, em 1960** (Table 28): Balboa tinha 1.580 nascidos nos EUA em 3.139 moradores. Paraíso tinha 7 em 3.113,
+  e Rainbow City, 3 em 3.688. Era a cidade americana e, ao lado, as cidades dos trabalhadores do "silver roll".
+- **O que se emprega não é o que se mora:** em 30/06/1968, a força de trabalho da Company e do Government tinha 4.047 cidadãos
+  americanos (26 %) e 11.324 não americanos (Annual Report de 1968).
+- **O que não se diz:**
+  - "44,198 Americans";
+  - "white" ou "native" como se fosse "American";
+  - "born in the Zone, so American" (8 U.S.C. § 1403 pede pai ou mãe americano);
+  - "23,559 citizens";
+  - emprego como se fosse moradia;
+  - "the peak was 1940", sem dizer "among the censuses";
+  - "as if it were sovereign", e "76 years".
+- **Ideia de gancho, a conferir:** John McCain nasceu na Zona do Canal, em 1936, e a elegibilidade dele foi discutida em 2008. Não
+  foi lido em fonte nenhuma, e qualquer gancho com candidato pede cuidado com o risco partidário.
