@@ -1422,3 +1422,17 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   prova. Rótulo preso a um ponto do mapa esmaece antes de cruzar a margem, ou fica preso a ela.
 - **Por que serve a qualquer canal:** todo canal com câmera que anda sobre a cena (mapa, mesa, push-in), e com área segura para
   a legenda e a barra do player.
+
+### 79. O `trilha.mjs --conferir` apaga o `_creditos-trilha.md` escrito à mão quando a trilha não é CC BY
+
+- **O problema:** no fechamento do vídeo 2 (09/10/2026), o `trilha.mjs los-angeles --conferir` da pré-v1 saiu 0 e, sem avisar,
+  apagou `out/los-angeles/_creditos-trilha.md`, o arquivo do canal com os créditos do Epidemic Sound para a descrição. O motor
+  usa o mesmo nome para o crédito que ELE grava, e só o grava para faixa CC BY; sem nenhuma CC BY no plano, ele apaga o arquivo
+  para "o crédito de uma escolha anterior não ficar mentindo" (`src/trilha/biblioteca.mjs`, `conferirTrilhaDoPlano` com
+  `gravarCreditos: true`). A faixa de assinatura (Epidemic) não entra nessa conta. Só o `git status` mostrou o `D`.
+- **O que resolveu:** restaurar do git (`git checkout HEAD -- out/<proj>/_creditos-trilha.md`), que tinha a versão de 08/10.
+- **Como evitar:** depois de todo `trilha.mjs --conferir`, rode `git status out/<proj>/` e restaure o arquivo se ele sumiu. O
+  conserto de raiz é no motor (gravar também o crédito das faixas de assinatura que pedem crédito, como o Epidemic, ou não apagar
+  arquivo que ele não escreveu); até lá, o crédito escrito à mão precisa estar no git antes do primeiro `--conferir`.
+- **Por que serve a qualquer canal:** todo canal que usa música de assinatura que pede crédito na descrição (Epidemic, Artlist)
+  e escreve esse crédito à mão com o nome que o motor administra.

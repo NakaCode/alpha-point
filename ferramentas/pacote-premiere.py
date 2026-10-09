@@ -2,6 +2,7 @@
 o projeto em OUTRO computador.
 
     python ferramentas/pacote-premiere.py <proj> --destino C:/Juneau-Premiere [--nome Juneau]
+        [--anexo <arquivo> ...] [--nota <arquivo.txt>]
 
 Lê out/<proj>/<proj>-POS.xml (o XML aprovado pelo finalizar.mjs da pré-v1), copia cada arquivo citado
 nas <pathurl> para <destino>/midia/, reescreve as <pathurl> para lá e grava <destino>/<nome>.xml, o
@@ -12,6 +13,13 @@ o Premiere pede o primeiro arquivo, e os outros ele acha sozinho, porque estão 
 Confere no fim, sem perdoar: o XML novo é bem-formado, tem o mesmo número de referências do original,
 cada referência existe no destino com o mesmo tamanho e o mesmo sha256 do original, e nada mais mudou
 no XML além das <pathurl>. Falha = exit 1. Uso errado = exit 2.
+
+Desde 09/10/2026 (vídeo 2), duas opções para o que o XML não carrega:
+- --anexo <arquivo> (repetível): copia o arquivo para <destino>/anexos/, com tamanho e sha256 no manifesto
+  ("anexos") e o nome no LEIA-ME. É o caso das chamadas (out/<proj>/cta/*.mov), que entram à mão no Premiere
+  (marca/cta.md §8) e por isso não estão no XML;
+- --nota <arquivo.txt>: acrescenta o texto desse arquivo ao fim do LEIA-ME, na seção "Neste video" (o que só
+  este vídeo pede: o volume da voz, onde entra cada chamada).
 
 Não toca no out/<proj>/: só lê. Copia (não move nem cria link), para o pacote não mudar se um render
 reescrever um clipe depois.
@@ -58,7 +66,13 @@ def main():
     ap.add_argument("proj")
     ap.add_argument("--destino", required=True)
     ap.add_argument("--nome", default=None)
+    ap.add_argument("--anexo", action="append", default=[])
+    ap.add_argument("--nota", default=None)
     a = ap.parse_args()
+    for x in a.anexo + ([a.nota] if a.nota else []):
+        if not os.path.isfile(x):
+            print(f"nao achei {x}", file=sys.stderr)
+            sys.exit(2)
 
     raiz = os.getcwd()
     origem_xml = os.path.join(raiz, "out", a.proj, f"{a.proj}-POS.xml")
@@ -128,6 +142,26 @@ def main():
         f.write(novo)
     manifesto["xml"] = saida_xml.replace("\\", "/")
     manifesto["total_bytes"] = total
+    # os anexos: o que o XML não cita e o Premiere recebe à mão (as chamadas), em anexos/, com o sha256 conferido
+    manifesto["anexos"] = []
+    if a.anexo:
+        pasta_anexos = os.path.join(destino, "anexos")
+        os.makedirs(pasta_anexos, exist_ok=True)
+        for x in a.anexo:
+            b = os.path.basename(x)
+            if b in nomes:
+                print(f"o anexo {b} tem o nome de um arquivo do XML", file=sys.stderr)
+                sys.exit(1)
+            alvo = os.path.join(pasta_anexos, b)
+            tam = os.path.getsize(x)
+            if not (os.path.isfile(alvo) and os.path.getsize(alvo) == tam):
+                shutil.copy2(x, alvo)
+            h_or = sha256(x)
+            if h_or != sha256(alvo):
+                print(f"a copia do anexo {b} nao confere com o original (sha256)", file=sys.stderr)
+                sys.exit(1)
+            manifesto["anexos"].append({"nome": b, "origem": os.path.abspath(x).replace("\\", "/"), "bytes": tam, "sha256": h_or})
+            print(f"  [anexo] {b} ({tam / 1e6:.1f} MB) ok")
     with open(os.path.join(destino, "manifesto.json"), "w", encoding="utf-8") as f:
         json.dump(manifesto, f, ensure_ascii=False, indent=1)
     destino_win = destino.replace("/", "\\")
@@ -146,13 +180,20 @@ def main():
                         + "  Se o volume ficar alto ou baixo demais, ajuste no Premiere.")
     else:
         linha_trilha = "- A2 e A3: vazias. A musica ainda nao entrou."
+    linha_anexos = ""
+    if manifesto["anexos"]:
+        linha_anexos = ("- anexos\\: o que o XML nao traz e entra a mao (veja \"Neste video\"):\n"
+                        + "".join(f"    {x['nome']}\n" for x in manifesto["anexos"]))
+    nota = ""
+    if a.nota:
+        nota = "\nNeste video\n" + open(a.nota, encoding="utf-8").read().strip("\n") + "\n"
     leia = f"""{nome}: o projeto do Premiere
 {"=" * (len(nome) + 23)}
 
 O que tem aqui
 - {nome}.xml: a montagem (o XML do Premiere).
 - midia\\: os {len(nomes)} arquivos que a montagem usa ({total / 1e9:.2f} GB).
-- manifesto.json: o tamanho e a impressao digital (sha256) de cada arquivo, para conferir a copia.
+{linha_anexos}- manifesto.json: o tamanho e a impressao digital (sha256) de cada arquivo, para conferir a copia.
 
 Como abrir no outro computador (Windows)
 1. Copie esta pasta inteira para {destino_win}, com esse nome e nesse lugar.
@@ -176,7 +217,7 @@ O que esperar
 - A1: a narracao.
 {linha_trilha}
 - A narracao entra como faixa mono: confira se ela toca nos dois lados do fone.
-"""
+{nota}"""
     with open(os.path.join(destino, "LEIA-ME.txt"), "w", encoding="utf-8", newline="\r\n") as f:
         f.write(leia)
     print(f"\nok {saida_xml} | {len(nomes)} arquivos, {total / 1e9:.2f} GB, todos com o mesmo sha256 do original")

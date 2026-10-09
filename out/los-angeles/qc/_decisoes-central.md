@@ -228,3 +228,15 @@ consertos resolvidos; 54 achados de espectador de pé; 62 defeitos em 29 cenas (
    emendas apareciam na baía: o Claude central pôs a camada com o mesmo código da s33 (mudança mecânica, só a camada e o script; cópia de
    antes em `_tmp/art-r4b/central/s37.antes-agua.html`), para não gastar um despacho de mapista com o semanal a 91 %; portões com a
    pré-carga limpos, render 4K (12:42–12:47, carimbo 333092d4…), `conferir` 0, e o qc-visual a aprovou (tema 6 → 8).
+10. A aprovação da linha do tempo (09/10, 13:29). Depois de ver "só o que mudou" (os 23 mapas e s02, s04, s06, s09, s13, s15, s18 e
+    s24), o Lucas escreveu no chat: **"a linha do tempo está de acordo, pode prosseguir"**. O `estado` dava 48 de 48 vistas na versão
+    de hoje, nenhum comentário aberto; `aprovar los-angeles --assinatura=609612282314` gravou as 31 aprováveis (17 já estavam) em
+    `qc/_aprovacao-lucas.jsonl`. O render 4K das 8 sem mapa que faltavam corre a partir das 13:30 (`_tmp/render-r4c/`).
+11. O comentário na tela final (09/10, 13:37). Sobreposto ao clipe final da s55, o `comentario-esquerda.mov` (733,567–739,567 s) cobre o
+    meio da faixa laranja de Los Angeles por 6 s (`_tmp/cta-final/s55-comentario-3.png`). A pergunta: "o pedido de comentário na tela
+    final cobre o meio da faixa laranja por 6 s; 'manter' ou 'mudar'?" A resposta: **"Manter"**. Fica como a regência grava
+    (`_chamadas`, a decisão dele de 07/10, "Na tela final, à esquerda"). A inscrição (404,28 s, em cima à direita) cai sobre o terminal
+    de contêineres da s29, sem texto nem protagonista por baixo (`_tmp/cta-final/s29-com-inscricao.png`).
+12. A s52 sem laudo da versão de hoje (09/10, 13:3x). O HTML mudou em `a0fac66` (08/10 02:39, o bloco "40 FT = 2 TEU", item Q8.2) depois
+    do laudo do qc-visual (08/10 00:32); o Lucas a viu e aprovou na linha do tempo e ela está renderizada (f2c17e77, 17 de 09/10). O
+    qc-visual (sonnet) a julga de novo sobre o clipe; o laudo antigo fica em `_tmp/render-r4c/s52.laudo.antes-r4c.json`.
