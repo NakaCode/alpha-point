@@ -26,8 +26,14 @@
     · "strip": "the strip" junto do fio; "southern edge": um tique na junção do bloco com a borda sul de 1899 (o lado norte da
       faixa, os dois primeiros vértices dela); "San Pedro" e "Wilmington" nas palavras.
     · "vote": a câmera abre (2 s) para caber a cidade e a faixa inteiras; "NOV. 12, 1906" em "Monday"; "THE CITY" no contorno de
-      1899 em "city"; "TERRITORY" junto do fio em "territory"; "a majority needed in both" em "law required"; os dois territórios
-      (a cidade e a faixa) pulsam uma vez em "majority" (a pílula de texto liso não escala).
+      1899 em "city"; "TERRITORY" no lado leste do bloco largo, junto da junção com o fio, em "territory" (nomeia a faixa
+      inteira); "a majority needed in both" em "law required"; em "majority" só as duas PÍLULAS pulsam (o aro --tinta da s42,
+      que cresce em volta da caixa e some em 0,6 s, sem mexer no texto), "THE CITY" e, 120 ms depois, "TERRITORY".
+    · RODADA r4 (08/10/2026, mapista, lote M4; revisão de espectador s37 R6.2, R6.4, R6.10 e R6.11; conceito r4):
+      enquanto a faixa se desenha (5,623 s, 1,8 s) o preenchimento da cidade de 1899 CAI de 85 % para 40 % (o contorno --tinta
+      de 6 px fica) e a faixa fica a 85 %: a cidade e a ponte nunca têm a mesma intensidade; o preenchimento não pulsa mais.
+      "San Pedro" fica do lado de DENTRO da divisa (a leste do ponto GNIS, sobre a cidade de 1909 e o porto), sai em 14,0 s, e
+      a divisa de San Pedro engrossa de novo por 500 ms no toque (6,858 s) e em "San" (11,703 s).
     · CÂMERA: aproximação lenta no vão, descida curta pelo fio, a abertura, e o giro contínuo de −2° a +2°.
   INCERTEZA DE HAMLIN (a regra da s03): zoom ≤ 11,66 em toda a cena; o traço mais fino de Hamlin é a divisa de San Pedro (12 px).
   Ao sul de 33,86 N: 65.083 ÷ 2^11,66 = 20,1 m/px → 200 m = 10,0 px ≤ 12 px; ao norte (±50 m), 2,5 px.
@@ -153,16 +159,17 @@
     faixa: { desenha: [5.623, 1.8] },
     contato: { entra: 6.858 },
     tique: { entra: 10.023, sai: 13.71 },
-    pulso: 21.073,
+    cidadeCai: [5.623, 1.8],   // a cidade de 1899: 85 % → 40 % enquanto a ponte se desenha (R6.2)
+    spRealce: [1.383, 6.858, 11.703],   // a divisa de San Pedro engrossa em 'geometry', 'touch' e 'San' (R6.4)
     legenda: { janelas: [[-1, null]] },
     rotulos: [
       { id: "legShapes", tela: [2060, 1000], lado: "direita", entra: 2.823, sai: 6.858 },
       { id: "rotStrip",  ref: "FIO",   lado: "direita", dx: 80, dy: 0,  entra: 8.663,  sai: 13.71 },
-      { id: "rotSP",     ref: "SP",    lado: "esquerda", dx: -60, dy: 0, entra: 11.703, sai: 14.60 },
+      { id: "rotSP",     ref: "SP",    lado: "direita", dx: 50, dy: 40, entra: 11.703, sai: 14.00 },   // dentro da divisa (R6.4)
       { id: "rotWilm",   ref: "WILM",  lado: "direita", dx: 60, dy: 0,  entra: 12.583, sai: 14.60 },
       { id: "rotNov",    tela: [200, 260], lado: "direita", vert: "baixo", entra: 14.353, sai: 19.97 },
-      { id: "rotCity",   ref: "CITY",  lado: "centro", dx: 0, dy: 0,    entra: 17.553, sai: null },
-      { id: "rotTerr",   ref: "FIO2",  lado: "direita", dx: 80, dy: 0,  entra: 18.353, sai: null },
+      { id: "rotCity",   ref: "CITY",  lado: "centro", dx: 0, dy: 0,    entra: 17.553, sai: null, pulsos: [21.073] },
+      { id: "rotTerr",   ref: "BLOCO", lado: "direita", dx: 40, dy: 0,  entra: 18.353, sai: null, pulsos: [21.193] },   // no bloco, junto da junção (R6.2)
       { id: "legMaj",    tela: [200, 260], lado: "direita", vert: "baixo", entra: 20.273, sai: null }
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
@@ -183,6 +190,10 @@
       if (fx.length < 2 || fx2.length < 2) A.falhar("a faixa de 1906 não cruza 33,86 / 33,90 N.");
       A.REFS.FIO = [fx[fx.length - 1], 33.86];
       A.REFS.FIO2 = [fx2[fx2.length - 1], 33.90];
+      // "TERRITORY": o lado leste do bloco largo, a 33,968 N (entre a junção com o fio, 33,960, e o degrau de 33,990)
+      var xb = A.cruzamentos(A.FAIXA.geometry, 33.968, [-118.40, -118.20]);
+      if (xb.length < 2) A.falhar("a faixa de 1906 não cruza 33,968 N.");
+      A.REFS.BLOCO = [xb[xb.length - 1], 33.968];
       var anel = A.aneis(A.FAIXA.geometry)[0];
       A.NORTE = [anel[0], anel[1]];   // o lado norte da faixa: a junção com a borda sul de 1899
       var latN = Math.max.apply(null, anel.map(function (p) { return p[1]; })), latS = Math.min.apply(null, anel.map(function (p) { return p[1]; }));
@@ -208,7 +219,9 @@
       A.lin("spdiv", 1);
       A.opac("c1899-linha", "line-width", 6 + 4 * eng); A.opac("c1899-sob", "line-width", 14 + 6 * eng);
       A.opac("wilm-linha", "line-width", 5 + 4 * eng); A.opac("wilm-sob", "line-width", 14 + 6 * eng);
-      A.opac("spdiv-linha", "line-width", 5 + 4 * eng); A.opac("spdiv-sob", "line-width", 12 + 6 * eng);
+      var engSP = 0;
+      CENA.spRealce.forEach(function (t0) { var u = (t - t0) / CENA.engrossa[1]; if (u >= 0 && u < 2) engSP = Math.max(engSP, u < 1 ? A.eo(u) : 1 - A.eio(u - 1)); });
+      A.opac("spdiv-linha", "line-width", 5 + 4 * engSP); A.opac("spdiv-sob", "line-width", 12 + 6 * engSP);
       var f = function (p) { return p.x.toFixed(2) + " " + p.y.toFixed(2); };
       // a faixa: o caminho projetado e a frente que avança de norte a sul
       var anel = A.aneis(A.FAIXA.geometry)[0];
@@ -228,11 +241,10 @@
       var dt = "M " + f({ x: a.x - (b.x - a.x) * 0.12, y: a.y - (b.y - a.y) * 0.12 }) + " L " + f({ x: b.x + (b.x - a.x) * 0.12, y: b.y + (b.y - a.y) * 0.12 });
       A.E("tqSob").setAttribute("d", dt); A.E("tqSobre").setAttribute("d", dt);
       A.E("tique").setAttribute("opacity", A.janela(t, CENA.tique.entra, CENA.tique.sai).toFixed(3));
-      // o pulso das duas pílulas em 'majority'
-      // (o pulso vai nos dois territórios, a cidade e a faixa: o texto liso das pílulas não escala)
-      var up = (t - CENA.pulso) / 0.6, ps = up >= 0 && up < 1 ? Math.sin(up * Math.PI) : 0;
-      A.terr("c1899", 1, 0.85 - 0.45 * ps);
-      var ff = A.E("faixaFill"); if (ff) ff.style.fillOpacity = (0.85 - 0.45 * ps).toFixed(3);
+      // a cidade de 1899 cai a 40 % enquanto a ponte se desenha; a faixa fica a 85 %; nenhum preenchimento pulsa (R6.2, R6.11)
+      var cai = A.eo(A.seg(t, CENA.cidadeCai[0], CENA.cidadeCai[1]));
+      A.terr("c1899", 1, 0.85 - 0.45 * cai);
+      var ff = A.E("faixaFill"); if (ff) ff.style.fillOpacity = "0.850";
     }
   };
   // ═══ O MOTOR DA CENA (o mesmo nas oito cenas do lote M2; os blocos vêm da s03, a referência do vídeo 2) ══════════
@@ -617,8 +629,18 @@
   });
 
   // ── rótulos ancorados por projeção, em screen-space (s03) ─────────────────────────────────────────
+  // o pulso da pílula: um aro --tinta que cresce e some em 0,6 s em volta da caixa, sem mexer no texto (o da s42)
+  function aro(t, pulsos) {
+    var s = "";
+    (pulsos || []).forEach(function (t0) {
+      var u = (t - t0) / 0.6;
+      if (u >= 0 && u < 1) s = "0 0 0 " + (6 + 22 * eo(u)).toFixed(1) + "px color-mix(in srgb, var(--tinta) " + Math.round((1 - u) * 85) + "%, transparent)";
+    });
+    return s;
+  }
   function placeRotulo(r, entrada, t) {
     var el = E(r.id); if (!el) return;
+    if (r.pulsos) el.style.boxShadow = aro(t, r.pulsos);
     var p = r.tela ? { x: r.tela[0], y: r.tela[1] } : map.project(r.p);
     if (r.mover) { var m = r.mover(t, p); p = m || p; }
     var fx = r.lado === "direita" ? 0 : r.lado === "esquerda" ? -1 : -0.5;

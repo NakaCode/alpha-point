@@ -30,6 +30,15 @@
       do próprio contorno.
     · "boundary lines": a divisa de San Pedro e o contorno de Wilmington acendem 500 ms (a divisa ganha um traço --tinta por
       cima; Wilmington sobe de 35 % para 70 %) e voltam.
+    · RODADA r4 (08/10/2026, mapista, lote M4; revisão de espectador s42 R6.3, e a s37 R6.4 na pílula de San Pedro; conceito e
+      regência r4): "the tide line" fica PRESA por guia curta com ponto (a da 'Wilmington estuary' da s14) à borda da água de
+      hoje mais perto da ponta da faixa, calculada aqui do agua-porto-hoje-tiger (os corpos do porto, sem o Harbor Lake e as
+      lagoas de menos de 50.000 m²), do lado de San Pedro da divisa San Pedro–Wilmington (ao sul de 33,752 N): a margem oeste
+      do Main Channel, ~1,5 km a leste da ponta. A mais perto de todas (~1,1 km, a cabeceira do Northwest Slip) fica embaixo da
+      própria divisa San Pedro–Wilmington (3 px), e o ponto ali se leria como vértice da divisa. A câmera desce da ponta até a
+      água (~260 px no 4K, contra ~50 de antes) e volta, no zoom máximo 11,90; e o trecho da divisa de San Pedro AO SUL da ponta
+      (do vértice -118,2967 / 33,7452 até a costa) cai a 35 % de 1,05 a 3,40 s e volta a 100 % em 3,70 s, antes do anel. A pílula
+      "San Pedro" passa para o lado de DENTRO da divisa (a leste do ponto GNIS), como a s37 e a s44.
     · ZOOM SOBRE HAMLIN: o maior é 11,90 (a régua da s03: ao sul de 33,86 N, ±200 m = 11,8 px ≤ os 12 px da divisa de San
       Pedro, o traço mais fino de Hamlin no quadro). A câmera nunca passa dele (CENA.zoomMax).
     · CÂMERA: pernas presas às palavras (viagens van Wijk do camera-mapa.js, deriva linear entre elas) e um giro contínuo
@@ -46,6 +55,7 @@
 <script src="../_media/geo/san-pedro-1909-divisa-hamlin.js"></script>
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
 <script src="../_media/geo/lugares-costa-gnis.js"></script>
+<script src="../_media/geo/agua-porto-hoje-tiger.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -82,6 +92,10 @@
   .legcores .amostra-wilm { fill: var(--territorio-contraparte-cor); stroke: var(--contraparte); stroke-width: 5px; }
   .legcores .amostra-fronteira-sob { stroke: var(--fronteira-contorno-cor); stroke-width: 12px; fill: none; stroke-linecap: round; }
   .legcores .amostra-fronteira { stroke: var(--fronteira-cor); stroke-width: 5px; fill: none; stroke-linecap: round; }
+  /* a guia curta com ponto (a da s14): a legenda presa ao lugar */
+  .guia-sob { fill: none; stroke: var(--rotulo); stroke-width: 10; stroke-linecap: round; }
+  .guia { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; }
+  .guia-ponto { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6; }
   .anel circle { fill: none; stroke: var(--destaque); }
   .anel .halo { stroke: var(--rotulo); }
   .medida { fill: none; stroke-linecap: round; stroke-linejoin: round; }
@@ -110,6 +124,7 @@
   <div id="map"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
     <g id="tique" opacity="0"><path class="medida sobre" id="tiqueSobre" d=""/></g>
+    <g id="guiaMare" opacity="0"><path class="guia-sob" id="guiaMareSob" d=""/><path class="guia" id="guiaMareSobre" d=""/><circle class="guia-ponto" id="guiaMarePonto" r="12" cx="0" cy="0"/></g>
   </svg>
   <div id="rotulos">
     <div class="rotulo legenda liso" id="legMare" data-qc-papel="legenda">the tide line</div>
@@ -253,7 +268,7 @@
     pontos: {
       A0: { lng: -118.284, lat: 33.790, zoom: 11.84 },  // a ponta de 1906, as duas cidades e a água
       A1: { lng: -118.283, lat: 33.789, zoom: 11.86 },
-      AG: { lng: -118.268, lat: 33.776, zoom: 11.90 },  // rumo à água de hoje (o Main Channel)
+      AG: { lng: -118.280, lat: 33.750, zoom: 11.90 },  // desce até a água de hoje (a margem do Main Channel, R6.3)
       A2: { lng: -118.285, lat: 33.788, zoom: 11.88 },  // de volta à ponta
       B:  { lng: -118.287, lat: 33.790, zoom: 11.90 },
       C:  { lng: -118.262, lat: 33.872, zoom: 11.00 },  // a cidade de 1906 inteira e as duas cidades
@@ -272,12 +287,14 @@
     giro: [-2.5, 2.5],
     wilm:  { luz: [15.303, 15.553, 15.803] },          // 'boundary': 35 % → 70 % → 35 %
     spLuz: [15.303, 15.553, 15.803],
+    spSulCai: { entra: 1.053, sai: 3.40, ate: 0.35 },   // o trecho da divisa ao sul da ponta a 35 % durante a frase (R6.3)
+    guiaMare: { dx: 90, dy: 70 },
     tique: { lat: 33.762, janela: [-118.32, -118.27], entra: 4.973, dura: 0.30, sai: 8.40 },
     aneis: [ { id: "anelToque", ref: "toque", entra: 3.773, pulsos: [3.773, 4.973], sai: 7.00 } ],
     rotulos: [
-      { id: "legMare",       ref: "mainChannel", lado: "direita",  dx: 50,   dy: 0,   entra: 1.053,  sai: 3.40 },
+      { id: "legMare",       ref: "agua",        lado: "direita",  dx: 90,   dy: 70,  entra: 1.053,  sai: 3.40 },   // presa pela guia (R6.3)
       { id: "cotaLargura",   ref: "tiqueOeste",  lado: "esquerda", dx: -60,  dy: 0,   entra: 4.973,  sai: 8.40 },
-      { id: "rotSanPedro",   ref: "sanPedro",    lado: "esquerda", dx: -150, dy: 120, entra: 7.213,  sai: null, pulsos: [7.55, 18.008] },
+      { id: "rotSanPedro",   ref: "sanPedro",    lado: "direita",  dx: 50,   dy: 50,  entra: 7.213,  sai: null, pulsos: [7.55, 18.008] },   // dentro da divisa (s37 R6.4)
       { id: "rotWilmington", ref: "wilmLeste",   lado: "direita",  dx: 60,   dy: 0,   entra: 7.453,  sai: null, pulsos: [7.80, 18.128] },
       { id: "cotaAnos",      ref: "anos",        lado: "direita",  dx: 0,    dy: 0,   entra: 11.133, sai: 16.40 }
     ],
@@ -285,11 +302,38 @@
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors" },
     creditoMapa: [0, 19.066]
   };
-  var REFS = {}, C1906, WILM, SP, TIQUE;
+  var REFS = {}, C1906, WILM, SP, SPN, SPS, TIQUE;
+  // a distância em metros (equirretangular local) e o ponto mais perto de p num segmento
+  function metros(a, b) { var la = (a[1] + b[1]) / 2 * Math.PI / 180; return Math.hypot((b[0] - a[0]) * 111320 * Math.cos(la), (b[1] - a[1]) * 110574); }
+  function pertoNoSeg(p, a, b) {
+    var k = 111320 * Math.cos(p[1] * Math.PI / 180), ax = (a[0] - p[0]) * k, ay = (a[1] - p[1]) * 110574, bx = (b[0] - p[0]) * k, by = (b[1] - p[1]) * 110574;
+    var dx = bx - ax, dy = by - ay, L = dx * dx + dy * dy, u = L ? cl(-(ax * dx + ay * dy) / L, 0, 1) : 0;
+    return { d: Math.hypot(ax + u * dx, ay + u * dy), q: [a[0] + u * (b[0] - a[0]), a[1] + u * (b[1] - a[1])] };
+  }
+  // a borda da água de hoje mais perto de p, do lado de San Pedro da divisa (lat < 33,752): os corpos do porto do
+  // agua-porto-hoje-tiger, sem o Harbor Lake e as lagoas de menos de 50.000 m²
+  function aguaMaisPerto(p) {
+    var fc = geo("agua-porto-hoje-tiger"), best = { d: 1e12, q: null };
+    if (!fc) return null;
+    fc.features.forEach(function (f) {
+      var pr = f.properties || {};
+      if (pr.name === "Harbor Lk" || !(pr.AWATER_m2 >= 50000)) return;
+      aneis(f.geometry).forEach(function (r) {
+        for (var i = 1; i < r.length; i++) { var c = pertoNoSeg(p, r[i - 1], r[i]); if (c.q[1] < 33.752 && c.d < best.d) best = c; }
+      });
+    });
+    if (!best.q) { falhar("não achei a borda da água do porto ao sul da divisa."); return null; }
+    window.__aguaMare = { lnglat: best.q, m_da_ponta: Math.round(best.d) };
+    return best.q;
+  }
   function cenaGeo() {
     C1906 = feicao("la-1906-hamlin"); WILM = feicao("wilmington-1909-hamlin");
     var sp = trechosSP(["oeste_e_norte_com_a_faixa", "com_wilmington"]); if (!sp || !C1906 || !WILM) return;
     SP = fcLinhas(sp);
+    // o trecho oeste partido no vértice sul da ponta (-118,2967 / 33,7452): o norte fica, o sul cai a 35 % em 'tide line'
+    var k0 = sp[0].findIndex(function (q) { return Math.abs(q[0] + 118.296697) < 1e-6 && Math.abs(q[1] - 33.745217) < 1e-6; });
+    if (k0 < 1) return falhar("não achei o vértice sul da ponta no trecho oeste da divisa de San Pedro.");
+    SPN = fcLinhas([sp[0].slice(0, k0 + 1), sp[1]]); SPS = fcLinhas([sp[0].slice(k0)]);
     var xt = cruzamentos(C1906.geometry, CENA.tique.lat, CENA.tique.janela);
     if (xt.length !== 2) return falhar("a latitude do tique (" + CENA.tique.lat + ") não cruza a faixa de 1906 em 2 pontos (" + xt.length + ").");
     TIQUE = [[xt[0], CENA.tique.lat], [xt[1], CENA.tique.lat]];
@@ -297,12 +341,14 @@
     var eixo = cruzamentos(C1906.geometry, 33.89, [-118.34, -118.25]);
     if (eixo.length < 2) return falhar("a faixa de 1906 não cruza 33,89 N.");
     REFS = { toque: sp[1][0], tiqueOeste: TIQUE[0], sanPedro: pontoNome("lugares-gnis-nrhp", "San Pedro"), wilmLeste: wl,
-             mainChannel: pontoNome("lugares-costa-gnis", "Main Channel"), anos: [eixo[eixo.length - 1] + 0.012, 33.89] };
+             mainChannel: pontoNome("lugares-costa-gnis", "Main Channel"), anos: [eixo[eixo.length - 1] + 0.012, 33.89],
+             agua: aguaMaisPerto([sp[0][k0 - 1][0] / 2 + sp[0][k0][0] / 2, sp[0][k0][1]]) };   // do meio da borda sul da ponta
   }
   function cenaCarregar() {
     poly("wilm", WILM, { cor: "--contraparte", corFb: "#2EC4B6", fracao: 0.35, linha: "--contraparte", linhaFb: "#2EC4B6", linhaW: 5 });
     poly("c1906", C1906, { fracao: 0.85 });
-    linhaFronteira("sp", SP);
+    linhaFronteira("sp", SPN);
+    linhaFronteira("spSul", SPS);
     linhaCor("spluz", SP, "--tinta", "#F4F1EA", 6, 1, undefined);
   }
   function cenaAplicar(t) {
@@ -310,6 +356,18 @@
     var L = CENA.wilm.luz, luz = t < L[1] ? eio(seg(t, L[0], L[1] - L[0])) : 1 - eio(seg(t, L[1], L[2] - L[1]));
     setPoly("wilm", 1 + luz, 1);                         // fill 35 % → 70 % no 'boundary'
     setLinha("sp", 1);
+    var Q = CENA.spSulCai, vq = 1 - (1 - Q.ate) * eio(seg(t, Q.entra, 0.3)) * (1 - eio(seg(t, Q.sai, 0.3)));
+    setLinha("spSul", vq);
+    // a guia de "the tide line" até a borda da água (a da s14), com a legenda
+    var gm = E("guiaMare"), lm = E("legMare");
+    if (gm && lm && REFS.agua) {
+      var pa = map.project(REFS.agua), G = CENA.guiaMare, alvo = { x: pa.x + G.dx - 10, y: pa.y + G.dy };
+      var vx = alvo.x - pa.x, vy = alvo.y - pa.y, nn = Math.hypot(vx, vy) || 1;
+      var dg = "M " + (pa.x + vx / nn * 18).toFixed(2) + " " + (pa.y + vy / nn * 18).toFixed(2) + " L " + alvo.x.toFixed(2) + " " + alvo.y.toFixed(2);
+      E("guiaMareSob").setAttribute("d", dg); E("guiaMareSobre").setAttribute("d", dg);
+      E("guiaMarePonto").setAttribute("cx", pa.x.toFixed(2)); E("guiaMarePonto").setAttribute("cy", pa.y.toFixed(2));
+      gm.setAttribute("opacity", (eo(seg(t, 1.053, 0.3)) * (1 - eio(seg(t, 3.40, 0.3)))).toFixed(3));
+    }
     var S = CENA.spLuz, sl = t < S[1] ? eio(seg(t, S[0], S[1] - S[0])) : 1 - eio(seg(t, S[1], S[2] - S[1]));
     opac("spluz-linha", "line-opacity", sl); opac("spluz-sob", "line-opacity", 0);
     var T = CENA.tique, g = E("tique");
@@ -321,7 +379,7 @@
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 19.066;   // número literal, a dur do espelho (roupa §8: o qc-janela só lê o número)
   window.__duracao = DUR;
 
   var P = window.__REGIE_MAPA;

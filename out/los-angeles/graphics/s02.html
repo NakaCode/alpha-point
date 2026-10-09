@@ -40,7 +40,11 @@
         5,33  ""can" (17,63 s): o GRIFO --grifo-cor (= --destaque a 35 %, multiply) varre a frase impressa palavra a palavra com
               a voz: can 5,33 · never 5,66 · be 5,98 · made 6,14 · a 6,30 · harbor 6,46 · for 6,825 · deep- 7,135 · water 7,32
               (a palavra "deep-water" da voz divide o tempo entre o fim da linha e o começo da seguinte) · ships." 7,58–7,98, e
-              fica. As caixas de cada palavra foram medidas na grade do scan (out/los-angeles/_tmp/art/lote-e1/olhar/).
+              fica. As caixas de cada palavra foram medidas na grade do scan (out/los-angeles/_tmp/art/lote-e1/olhar/) e, na
+              r4 (08/10/2026, revisão de espectador R1.12), REMEDIDAS pela projeção de tinta do scan: as 8 caixas da linha 1
+              estavam ~100 px do arquivo à esquerda (o grifo de "can" acendia o "nd" de "and"); agora cada caixa começa na
+              tinta da própria palavra (G1). A linha 2 ("water", "ships.") já estava certa e não mudou.
+    (r4: textos-tela.json sha256 19f98912…; nada mudou nos textos da s02.)
         8,183–8,433  REPOUSO: nada se move além da deriva do RIG.
     A CÂMERA: escala máxima 1,06, centro (1920, 1020) no fim do movimento: a margem sob a câmera (roupa §4) vale para x 298→3542 e
     y 152→1835, e tudo está montado dentro disso (a folha girada em x 759→3081, y 639→1541, fitas a partir de x 699; a pílula em
@@ -368,15 +372,19 @@
     return { s: s, cx: cx, cy: cy };
   }
   // o GRIFO: as caixas de cada palavra impressa, em px do ARQUIVO (medidas na grade: olhar/z-p2123-L1.jpg), e o tempo da voz
+  // r4 (08/10/2026, revisão de espectador R1.12): as 8 caixas da linha 1 estavam 86–116 px do arquivo à esquerda das
+  // palavras (a de "can" cobria o "nd" de "and"). Remedidas pela projeção de tinta do scan (limiar 130, linhas 1483–1531):
+  // and 974–1061 · can 1091–1172 · never 1202–1336 · be 1366–1420 · made 1448–1575 · a 1605–1630 · harbor 1655–1815 ·
+  // for 1836–1902 · deep- 1923–2047; cada caixa = a tinta com ~3 px de folga (o criarGrifos soma 4 px à largura).
   var G1 = [
-    { x0: 1005, x1: 1085, y0: 1483, y1: 1531, t0: 5.33,   t1: 5.66 },    // "can"
-    { x0: 1110, x1: 1250, y0: 1483, y1: 1531, t0: 5.66,   t1: 5.98 },    // "never"
-    { x0: 1280, x1: 1330, y0: 1483, y1: 1531, t0: 5.98,   t1: 6.14 },    // "be"
-    { x0: 1358, x1: 1470, y0: 1483, y1: 1531, t0: 6.14,   t1: 6.30 },    // "made"
-    { x0: 1497, x1: 1520, y0: 1483, y1: 1531, t0: 6.30,   t1: 6.46 },    // "a"
-    { x0: 1540, x1: 1700, y0: 1483, y1: 1531, t0: 6.46,   t1: 6.825 },   // "harbor"
-    { x0: 1730, x1: 1790, y0: 1483, y1: 1531, t0: 6.825,  t1: 7.135 },   // "for"
-    { x0: 1820, x1: 2047, y0: 1483, y1: 1531, t0: 7.135,  t1: 7.3175 },  // "deep-"   ← "deep-water" (1ª metade)
+    { x0: 1088, x1: 1176, y0: 1483, y1: 1531, t0: 5.33,   t1: 5.66 },    // "can"
+    { x0: 1199, x1: 1340, y0: 1483, y1: 1531, t0: 5.66,   t1: 5.98 },    // "never"
+    { x0: 1363, x1: 1424, y0: 1483, y1: 1531, t0: 5.98,   t1: 6.14 },    // "be"
+    { x0: 1445, x1: 1579, y0: 1483, y1: 1531, t0: 6.14,   t1: 6.30 },    // "made"
+    { x0: 1602, x1: 1634, y0: 1483, y1: 1531, t0: 6.30,   t1: 6.46 },    // "a"
+    { x0: 1652, x1: 1819, y0: 1483, y1: 1531, t0: 6.46,   t1: 6.825 },   // "harbor"
+    { x0: 1833, x1: 1906, y0: 1483, y1: 1531, t0: 6.825,  t1: 7.135 },   // "for"
+    { x0: 1920, x1: 2050, y0: 1483, y1: 1531, t0: 7.135,  t1: 7.3175 },  // "deep-"   ← "deep-water" (1ª metade)
     { x0: 309,  x1: 441,  y0: 1538, y1: 1586, t0: 7.3175, t1: 7.58 },    // "water"   ← "deep-water" (2ª metade)
     { x0: 464,  x1: 597,  y0: 1538, y1: 1586, t0: 7.58,   t1: 7.98 }     // "ships."
   ];

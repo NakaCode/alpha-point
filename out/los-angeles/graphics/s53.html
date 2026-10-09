@@ -28,6 +28,20 @@
     · VOLÁTIL: a contagem do porto (2000–2024) e a água de hoje.
     · ZOOM: nenhum contorno de Hamlin; o maior é 13,02.
     · CÂMERA: deriva lenta e giro contínuo de −2° a +2°.
+  RODADA r4 (mapista, lote M5, 08/10/2026; relato em out/los-angeles/_tmp/art-r4/m5/relato.md):
+    · A ÁGUA ESCURA dos mapas do porto (identidade §6; Lucas, 08/10/2026): a camada agua-osm-la, opaca em --agua-base, é a
+      2ª camada do estilo(), logo acima do satélite e abaixo de tudo o que a cena desenha. Arquivo local: não pede tile. O
+      crédito não muda. Ela tira as emendas do satélite debaixo das duas águas (8.10).
+    · 8.6 e _agua_do_porto (conceito r4): a água de Los Angeles acende a 35 % COM contorno de 6 px (--tinta sobre --rotulo
+      de 14) e, em 'busiest' (1,953 s), SOBE a 50 % em 500 ms e fica: com o vizinho pintado, o protagonista é o mais saliente,
+      e a luz liga o título ao porto certo. A de Long Beach fica em lavanda a 25 %, sem contorno.
+    · 8.2: a legenda das cores 'city boundary' sai em 3,9 s (300 ms), antes de o subtítulo entrar (4,273 s): de 4,27 a
+      7,38 s o quadro tem 6 elementos, não 7 (identidade §6: ela sai antes do elemento que faria o quadro passar de 6).
+    · 8.1: a abertura POUSA antes de 'this?' (9,483 s): a viagem até o contorno inteiro dura 2,0 s (7,383 → 9,40 s), com a
+      entrada e a saída cúbicas da câmera (sem o 'fecha: 0' de antes), e depois uma deriva lenta (o zoom abre mais 0,02 até o
+      corte) com o giro: o mapa não para, e a cidade inteira fica no quadro de 9,4 s ao corte. "A abertura não pousa" (acima)
+      ficou para trás.
+    · 8.3: .rotulo.liso com algarismos proporcionais (a caixa de '… · 2000–2024' fica simétrica).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -35,6 +49,7 @@
 <script src="../_media/_vendor/camera-mapa.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/agua-osm-la.js"></script>
 <script src="../_media/geo/portos-la-long-beach-tiger.js"></script>
 <script src="../_media/geo/la-hoje-tiger.js"></script>
 <style>
@@ -55,6 +70,8 @@
   /* LEGENDA sobre o mapa (papel legenda, §4.1): 84 px, Inter 500, --tinta, numa pílula --rotulo de 16 × 28 */
   .rotulo.legenda { padding: 16px 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); }
   .rotulo.liso { -webkit-text-fill-color: transparent; }
+  /* 8.3 (r4): o canvas do texto liso pinta algarismos proporcionais; a caixa é medida com os mesmos */
+  .rotulo.liso { font-variant-numeric: normal; }
   #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
   /* COTA (a medida; textos-tela: "cota (Inter 84 px), não pílula de rótulo"; identidade §5, o traço de engenheiro):
      solta sobre o mapa, em --tinta, com o tratamento do nome sobre o mapa (§4.1: contorno de 14 px em --rotulo por fora
@@ -244,14 +261,17 @@
     pontos: {
       A0: { lng: -118.222, lat: 33.752, zoom: 12.96 },  // as duas águas de cima
       A1: { lng: -118.226, lat: 33.751, zoom: 13.02 },
-      B:  { lng: -118.405, lat: 34.030, zoom: 10.62 }   // o contorno de hoje inteiro
+      B:  { lng: -118.405, lat: 34.030, zoom: 10.62 },  // o contorno de hoje inteiro
+      B2: { lng: -118.406, lat: 34.031, zoom: 10.60 }   // 8.1 (r4): a deriva lenta depois de pousar
     },
     pernas: [
       { t0: 0,     t1: 7.383, de: "A0", para: "A1", tipo: "h" },
-      { t0: 7.383, t1: 10.3,  de: "A1", para: "B",  tipo: "v", fecha: 0 }   // 'So, why': abre até o corte
+      { t0: 7.383, t1: 9.40,  de: "A1", para: "B",  tipo: "v" },          // 'So, why': abre em 2,0 s e POUSA antes de 'this?'
+      { t0: 9.40,  t1: 10.3,  de: "B",  para: "B2", tipo: "h" }           // deriva lenta até o corte (8.1, r4)
     ],
     giro: [-2, 2],
     aguas: [0.273, 0.773],
+    laSobe: [1.953, 2.453],                            // 8.6 (r4): em 'busiest' a água de LA sobe de 35 a 50 % e fica
     saiTudo: 7.383,
     hoje: [7.60, 8.10],
     rotulos: [
@@ -261,7 +281,7 @@
       { id: "legHemi1",   tela: [200, 520], lado: "direita", dx: 0, dy: 0,      entra: 4.273, sai: 7.383 },
       { id: "legHemi2",   tela: [200, 636], lado: "direita", dx: 0, dy: 0,      entra: 4.273, sai: 7.383 }
     ],
-    legenda: { entra: 0.15, sai: null },
+    legenda: { entra: 0.15, sai: 3.9 },                // 8.2 (r4): sai antes do subtítulo (4,273)
     fontes: [ { id: "fontePorto", entra: 1.953, sai: 7.383 } ],
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors" },
     creditoMapa: [0, 10.3]
@@ -280,20 +300,24 @@
   }
   function cenaCarregar() {
     poly("hoje", HOJE, { fracao: 0.85 });
-    poly("aguaLA", PLA, { cor: "--tinta", corFb: "#F4F1EA", fracao: 0.35, linhaW: 0.01, sobW: 0.01 });
+    poly("aguaLA", PLA, { cor: "--tinta", corFb: "#F4F1EA", fracao: 0.35, linha: "--tinta", linhaW: 6, sobW: 14 });   // r4: com contorno
     poly("aguaLB", PLB, { cor: "--contexto-3", corFb: "#BAACF6", fracao: 0.25, linhaW: 0.01, sobW: 0.01 });
     linhaFronteira("divisa", DIV);
   }
   function cenaAplicar(t) {
     var a = eio(seg(t, CENA.aguas[0], CENA.aguas[1] - CENA.aguas[0])) * (1 - eio(seg(t, CENA.saiTudo, 0.5)));
-    setPoly("aguaLA", a, 0); setPoly("aguaLB", a, 0);
+    // 8.6 (r4): a água de LA, com o contorno, sobe de 35 % a 50 % em 'busiest' (FR guarda 0,35; o ganho vai a 0,50/0,35)
+    var ganho = 1 + (0.50 / 0.35 - 1) * eio(seg(t, CENA.laSobe[0], CENA.laSobe[1] - CENA.laSobe[0]));
+    opac("aguaLA-fill", "fill-opacity", Math.min(1, a * FR.aguaLA * ganho));
+    opac("aguaLA-sob", "line-opacity", a); opac("aguaLA-linha", "line-opacity", a);
+    setPoly("aguaLB", a, 0);
     setLinha("divisa", eio(seg(t, 0, 0.5)));
     setPoly("hoje", eio(seg(t, CENA.hoje[0], CENA.hoje[1] - CENA.hoje[0])));
     janelaEl("legenda", t, CENA.legenda.entra, CENA.legenda.sai);
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 10.3;
   window.__duracao = DUR;
 
   var P = window.__REGIE_MAPA;
@@ -347,9 +371,14 @@
   // ── a base, SEM relevo ─────────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // r4: a água escura dos mapas do porto (identidade §6; Lucas, 08/10/2026): a 2ª camada do estilo, opaca em --agua-base,
+    // logo acima do satélite e abaixo de tudo o que a cena desenha (agua-osm-la, arquivo local: não pede tile)
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -742,6 +771,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           for (var i = 0; i < FONTES.length; i++) if (!map.isSourceLoaded(FONTES[i])) return false;
           if (!map.isSourceLoaded("base")) return false;
+          if (!map.isSourceLoaded("aguaBase")) return false;   // r4: a água escura (local) também
           return nivelUnico();
         } catch (e) { return false; }
       };

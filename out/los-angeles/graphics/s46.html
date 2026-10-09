@@ -30,11 +30,26 @@
     · 'Terminal': a divisa divisa-la-lb-terminal-island-usgs1923 se traça através da ilha (do Cerritos Channel à praia, a
       ordem do arquivo) no estilo da fronteira — a ÚNICA linha branca do mapa —, com a legenda das cores 'city boundary, USGS
       map of 1923' (nunca '1909': a linha é a da folha de 1923, a 13–32 m da de hoje).
-    · 'two cities': as duas águas do porto (portos-la-long-beach-tiger, a água DE HOJE dentro de cada cidade; declarado no
-      relato) acendem: a de Los Angeles em --tinta a 25 % e a de Long Beach em --contexto-3 (lavanda) a 25 %; a pílula
-      'Los Angeles' entra e a de Long Beach pulsa.
+    · 'From nineteen oh-nine': as duas águas do porto (portos-la-long-beach-tiger, a água DE HOJE dentro de cada cidade;
+      declarado no relato) acendem: a de Los Angeles em --tinta a 50 % com contorno, e a de Long Beach em --contexto-3
+      (lavanda) a 25 % (r4, abaixo); a pílula 'Los Angeles' entra e, em 'two', a de Long Beach pulsa.
     · ZOOM: nenhum contorno de Hamlin no quadro; o maior zoom é 13,40 (sobre o TIGER e a folha do USGS de 1923).
     · CÂMERA: corre para leste em 'Long Beach' (2 s, van Wijk) e recua devagar até o corte; giro contínuo de −2° a +2°.
+  RODADA r4 (mapista, lote M5, 08/10/2026; relato em out/los-angeles/_tmp/art-r4/m5/relato.md):
+    · A ÁGUA ESCURA dos mapas do porto (identidade §6; Lucas, 08/10/2026): a camada agua-osm-la, opaca em --agua-base, é a
+      2ª camada do estilo(), logo acima do satélite e abaixo de tudo o que a cena desenha. Arquivo local: não pede tile. O
+      crédito não muda (a linha da MapTiler já diz OpenStreetMap).
+    · _agua_do_porto (conceito r4; revisão de espectador 7.1 e C-s46-2): com o vizinho pintado, a água de Los Angeles sobe a
+      50 % de --tinta COM contorno de 6 px (--tinta sobre --rotulo de 14), e a de Long Beach fica em --contexto-3 a 25 %, sem
+      contorno. As duas acendem em 500 ms em 'From' e FICAM.
+    · 7.1: a pílula 'Los Angeles' saiu de cima da lavanda. A âncora nova (−118,2700 / 33,7175) fica no anteporto de Los
+      Angeles, a oeste da aresta comum das duas águas, e a pílula é centrada nela. Medido de 6,3 s ao corte, de 0,25 em 0,25 s
+      (a câmera desta cena, sem tile): a pílula, com 24 px de folga, não toca a água de Long Beach nem a divisa e fica dentro
+      das margens. INTEIRA SOBRE A ÁGUA não cabe neste zoom: o anteporto ao sul do Pier 400 tem ~340 × 360 px no 4K, e a pílula
+      tem 810 × 172. Ela fica sobre o lado de Los Angeles (a água dele e San Pedro), nunca sobre a lavanda; ~45 % dela sobre a
+      água acesa de LA. Entre as 3.400 âncoras testadas, só 20 passam, todas nesse canto.
+    · 8.3 (o veredito da s55, que vale para todo rótulo com número): .rotulo.liso com algarismos proporcionais, os mesmos
+      que o canvas do texto liso pinta; a caixa de 'AUG. 13, 1909' fica simétrica.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -42,6 +57,7 @@
 <script src="../_media/_vendor/camera-mapa.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/agua-osm-la.js"></script>
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
 <script src="../_media/geo/divisa-la-lb-terminal-island-usgs1923.js"></script>
 <script src="../_media/geo/portos-la-long-beach-tiger.js"></script>
@@ -63,6 +79,8 @@
   /* LEGENDA sobre o mapa (papel legenda, §4.1): 84 px, Inter 500, --tinta, numa pílula --rotulo de 16 × 28 */
   .rotulo.legenda { padding: 16px 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); }
   .rotulo.liso { -webkit-text-fill-color: transparent; }
+  /* 8.3 (r4): o canvas do texto liso pinta algarismos proporcionais; a caixa é medida com os mesmos */
+  .rotulo.liso { font-variant-numeric: normal; }
   #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
   /* COTA (a medida; textos-tela: "cota (Inter 84 px), não pílula de rótulo"; identidade §5, o traço de engenheiro):
      solta sobre o mapa, em --tinta, com o tratamento do nome sobre o mapa (§4.1: contorno de 14 px em --rotulo por fora
@@ -268,7 +286,7 @@
       { id: "rotLB",    ref: "longBeach", lado: "direita",  dx: 70,  dy: 0,   entra: 1.293, sai: null, pulsos: [9.013] },
       { id: "rotData",  ref: "longBeach", lado: "direita",  dx: 70,  dy: 190, entra: 1.533, sai: 6.00 },
       { id: "legAnexa", ref: "longBeach", lado: "direita",  dx: 70,  dy: 340, entra: 1.773, sai: 6.00 },
-      { id: "rotLA",    ref: "laPorto",   lado: "direita",  dx: 70,  dy: 0,   entra: 6.313, sai: null }
+      { id: "rotLA",    ref: "laPorto",   lado: "centro",   dx: 0,   dy: 0,   entra: 6.313, sai: null }   // 7.1 (r4)
     ],
     legenda: { entra: 4.133, sai: null },
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors" },
@@ -281,13 +299,13 @@
     if (!DIV) return falhar("a divisa de 1923 não é LineString.");
     PLA = feicaoNome("portos-la-long-beach-tiger", "Port of Los Angeles"); PLB = feicaoNome("portos-la-long-beach-tiger", "Port of Long Beach");
     if (!PLA || !PLB) return;
-    // a âncora da pílula 'Los Angeles': a margem oeste da água do porto de LA em 33,745 N (dentro do quadro, sobre a água)
-    var xa = cruzamentos(PLA.geometry, 33.745, [-118.30, -118.24]);
-    if (!xa.length) return falhar("a água do porto de Los Angeles não cruza 33,745 N.");
-    REFS = { longBeach: pontoNome("lugares-gnis-nrhp", "Long Beach"), laPorto: [xa[0], 33.745] };
+    // a âncora da pílula 'Los Angeles' (7.1, r4): o anteporto de LA, a oeste da aresta comum das duas águas; a pílula é
+    // centrada nela e nunca toca a água de Long Beach nem a divisa de 6,3 s ao corte (medido; cabeçalho)
+    REFS = { longBeach: pontoNome("lugares-gnis-nrhp", "Long Beach"), laPorto: [-118.2700, 33.7175] };
   }
   function cenaCarregar() {
-    poly("aguaLA", PLA, { cor: "--tinta", corFb: "#F4F1EA", fracao: 0.25, linha: "--tinta", linhaW: 0.01, sobW: 0.01 });
+    // _agua_do_porto (r4): LA a 50 % com contorno de 6 px (com o vizinho pintado, o protagonista é o mais saliente)
+    poly("aguaLA", PLA, { cor: "--tinta", corFb: "#F4F1EA", fracao: 0.50, linha: "--tinta", linhaW: 6, sobW: 14 });
     poly("aguaLB", PLB, { cor: "--contexto-3", corFb: "#BAACF6", fracao: 0.25, linha: "--contexto-3", linhaW: 0.01, sobW: 0.01 });
     linhaFronteira("divisa", fcLinhas([[DIV[0], DIV[0]]]));
     // ±60 m (incerteza da ilha aterrada) cabem na espessura total: o traço engrossa nesta cena (cabeçalho)
@@ -295,7 +313,7 @@
   }
   function cenaAplicar(t) {
     var a = eio(seg(t, CENA.aguas.entra[0], CENA.aguas.entra[1] - CENA.aguas.entra[0]));
-    setPoly("aguaLA", a, 0); setPoly("aguaLB", a, 0);
+    setPoly("aguaLA", a, a); setPoly("aguaLB", a, 0);
     var u = eio(seg(t, CENA.divisa.entra, CENA.divisa.dura));
     setDado("divisa", u.toFixed(3), fcLinhas([linhaAte(DIV, u)]));
     setLinha("divisa", t < CENA.divisa.entra ? 0 : 1);
@@ -357,9 +375,14 @@
   // ── a base, SEM relevo ─────────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // r4: a água escura dos mapas do porto (identidade §6; Lucas, 08/10/2026): a 2ª camada do estilo, opaca em --agua-base,
+    // logo acima do satélite e abaixo de tudo o que a cena desenha (agua-osm-la, arquivo local: não pede tile)
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -752,6 +775,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           for (var i = 0; i < FONTES.length; i++) if (!map.isSourceLoaded(FONTES[i])) return false;
           if (!map.isSourceLoaded("base")) return false;
+          if (!map.isSourceLoaded("aguaBase")) return false;   // r4: a água escura (local) também
           return nivelUnico();
         } catch (e) { return false; }
       };

@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <title>s26</title>
 <!--
-  CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s26 (364,133 → 373,800 s do master; 9,667 s). Mapista, lote M2, 07/10/2026.
+  CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s26 (364,133 → 373,800 s do master; 9,667 s). Mapista, lote M2, 07/10/2026;
+  r4 (lote M3, 08/10/2026): a água escura e a régua sem número (R4.2).
   "So put the deep-water harbor on the map: in San Pedro Bay. And not in Los Angeles. That gap is what the strip of nineteen
-  oh-six would cross."  PICO do 3º degrau; fecha o palco B.
+  oh-six would cross."  Sustentação do 3º degrau (r4: o showpiece saiu, diretor r4 §5); fecha o palco B.
 
   Nasceu de `preparar-cena.mjs los-angeles --molde=s26`; o corpo é o motor da s03, montado por
   out/los-angeles/_tmp/art/lote-m2/gerar.py a partir de src/s26.html, src/head.html e src/core.js.
@@ -21,8 +22,8 @@
       Long Beach, a 5,8 km de Point Fermin.
     · p2: em "And not" a câmera SOBE (1,5 s, van Wijk) até caber a Plaza no alto e a baía embaixo; "Los Angeles" entra como
       pílula no ponto da Plaza (NRHP), SEM contorno (regencia.json › _ajuste_central: o contorno de 1899 não vale em 1897);
-      a régua Plaza → Point Fermin se desenha (escura, 6 px, com setas, como a s03) e "MORE THAN 20 MILES" entra quando ela
-      passa do meio, por 2,0 s.
+      a régua Plaza → Point Fermin se desenha (escura, 6 px, com setas, como a s03), SEM número (r4, R4.2: T173 "MORE THAN
+      20 MILES" retirado, N32; nunca "ABOUT 19 MILES" nela), e sai em 7,30 s.
     · p3: em "gap" o FANTASMA da faixa de 1906 (faixa-1906-hamlin, o contorno tracejado em --destaque, sem preenchimento)
       aparece entre a cidade e a baía; "the strip of 1906" (a linha de ano da geometria de outro ano, regra de série A1)
       entra em "strip"; em "cross" o tracejado pulsa uma vez.
@@ -32,6 +33,8 @@
   26,2 m/px → 200 m = 7,6 px ≤ 14 px. Ao norte (±50 m), 1,9 px.
   Fora, de propósito: a legenda das cores "Strip (1906, not yet)" e o crédito "Source: U.S. Census Bureau, TIGER 2025" do
   conceito (não estão no textos-tela.json da s26).
+  A BASE (r4): o satélite da MapTiler com a ÁGUA ESCURA por cima (agua-osm-la, --agua-base, opaca, 2ª camada do estilo, abaixo
+  de tudo o que a cena desenha; identidade §6; Lucas, 08/10/2026): some a emenda do mosaico na água da baía (R4.8, C-s26-1).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -39,6 +42,7 @@
 <script src="../_media/_vendor/camera-mapa.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/agua-osm-la.js"></script>
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
 <script src="../_media/geo/lugares-costa-gnis.js"></script>
 <script src="../_media/geo/agua-porto-hoje-tiger.js"></script>
@@ -106,7 +110,6 @@
     <div class="rotulo liso" id="rotSPB" data-qc-papel="rotulo">San Pedro Bay</div>
     <div class="rotulo liso" id="rotAnos" data-qc-papel="rotulo">1891 · 1892 · 1897</div>
     <div class="rotulo liso" id="rotLA" data-qc-papel="rotulo">Los Angeles</div>
-    <div class="cota" id="cotaDist" data-qc-papel="legenda">MORE THAN 20 MILES</div>
     <div class="rotulo legenda liso" id="legFaixa" data-qc-papel="legenda">the strip of 1906</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
@@ -142,7 +145,6 @@
       { id: "rotSPB",   ref: "SPB",  lado: "direita", dx: 64, dy: 0,    entra: -1,    sai: null },
       { id: "rotAnos",  ref: "SPB",  lado: "direita", dx: 64, dy: -196, entra: 3.027, sai: 6.30 },
       { id: "rotLA",    ref: "PLAZA", lado: "direita", dx: 110, dy: 0,   entra: 5.027, sai: null },
-      { id: "cotaDist", ref: "MEIO", lado: "direita", dx: 90, dy: 0,    entra: 5.30,  sai: 7.30 },
       { id: "legFaixa", ref: "FAIXA", lado: "esquerda", dx: -70, dy: 0, entra: 7.382, sai: null }
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
@@ -345,6 +347,61 @@
   var API = { E: E, cl: cl, eo: eo, eio: eio, seg: seg, janela: janela, geo: geo, feicao: feicao, pontoNome: pontoNome,
     aneis: aneis, divisaSanPedro: divisaSanPedro, cruzamentos: cruzamentos, metros: metros, ateFracao: ateFracao,
     tok: tok, falhar: falhar, REFS: {} };
+  // ── A ÁGUA DO PORTO (r4; conceito › _agua_do_porto): a água de hoje do lado das duas cidades, acesa em --tinta a 35 %
+  //    com o contorno de 6 px SÓ onde a água toca terra. O TIGER corta a água do porto em pedaços por linhas retas (divisa
+  //    e bloco censitário): esses cortes não viram linha. Cada segmento dos anéis do TIGER fica no contorno só se um dos
+  //    lados, a dm metros do meio dele, é terra no mar do OSM (agua-osm-la, a mesma camada da água escura). ─────────
+  API.aguaDasDuasCidades = function (fs) {
+    return fs.filter(function (f) {
+      var x1 = -999, y0 = 999; aneis(f.geometry).forEach(function (r) { r.forEach(function (p) { if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; }); });
+      return x1 < -118.23 && y0 < 33.78 && (f.properties.AWATER_m2 || 0) >= 50000;
+    });
+  };
+  API.bordaQueTocaTerra = function (feicoes, osm, dm) {
+    var R = [];
+    ((osm && osm.features) || []).forEach(function (f) { aneis(f.geometry).forEach(function (r) {
+      var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+      r.forEach(function (p) { if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; });
+      R.push({ r: r, x0: x0, x1: x1, y0: y0, y1: y1 });
+    }); });
+    function agua(x, y) {
+      var dentro = false;
+      for (var k = 0; k < R.length; k++) {
+        var q = R[k]; if (y < q.y0 || y > q.y1 || x > q.x1) continue;
+        var r = q.r;
+        for (var i = 0, j = r.length - 1; i < r.length; j = i++) {
+          if ((r[i][1] > y) !== (r[j][1] > y) && x < (r[j][0] - r[i][0]) * (y - r[i][1]) / (r[j][1] - r[i][1]) + r[i][0]) dentro = !dentro;
+        }
+      }
+      return dentro;
+    }
+    var linhas = [];
+    feicoes.forEach(function (f) { aneis(f.geometry).forEach(function (r) {
+      var cur = null;
+      for (var i = 1; i < r.length; i++) {
+        var a = r[i - 1], b = r[i], la = (a[1] + b[1]) / 2 * Math.PI / 180, kx = 111320 * Math.cos(la), ky = 110574;
+        var ex = (b[0] - a[0]) * kx, ey = (b[1] - a[1]) * ky, n = Math.hypot(ex, ey), fica = false;
+        if (n > 0) {
+          var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, ox = -ey / n * dm / kx, oy = ex / n * dm / ky;
+          fica = !agua(mx + ox, my + oy) || !agua(mx - ox, my - oy);
+        }
+        if (fica) { if (!cur) { cur = [a]; linhas.push(cur); } cur.push(b); } else cur = null;
+      }
+    }); });
+    if (!linhas.length) falhar("a borda da água do porto saiu vazia (a água do OSM cobre tudo?).");
+    return { type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: linhas } };
+  };
+  // as camadas: o preenchimento (sem antialias: os pedaços vizinhos do TIGER não deixam fio na junta) e o contorno
+  API.aguaAcesa = function (id, pol, borda) {
+    map.addSource(id, { type: "geojson", data: pol }); FONTES.push(id);
+    map.addLayer({ id: id + "-fill", type: "fill", source: id,
+      paint: { "fill-color": tok("--tinta", "#F4F1EA"), "fill-opacity": 0, "fill-antialias": false, "fill-opacity-transition": { duration: 0, delay: 0 } } });
+    if (borda) API.linha(id + "B", borda, { cor: "--tinta", w: 6, sob: 12 });
+  };
+  API.aguaQuadro = function (id, v, fill) {
+    API.opac(id + "-fill", "fill-opacity", fill == null ? 0.35 * v : fill);
+    API.lin(id + "B", v);
+  };
   try { SCENE.preparar(API); } catch (e) { return falhar("a preparação da cena quebrou: " + e.message); }
   if (window.__erroCena) return;
   (CENA.rotulos || []).forEach(function (r) {
@@ -356,10 +413,16 @@
 
   // ── a base, SEM relevo (s03) ─────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  // A ÁGUA ESCURA (identidade §6, "A água escura nos mapas do porto"; Lucas, 08/10/2026): o mar e o porto do OSM
+  // (agua-osm-la, arquivo local, sem tile) em --agua-base, opaco, como 2ª camada do estilo: acima do satélite e abaixo de
+  // tudo o que a cena desenha. Tira as emendas do mosaico na água; o quebra-mar e os píeres ficam no satélite.
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+      agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "agua",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────
@@ -750,6 +813,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           for (var i = 0; i < FONTES.length; i++) if (!map.isSourceLoaded(FONTES[i])) return false;
           if (!map.isSourceLoaded("base")) return false;
+          if (!map.isSourceLoaded("agua")) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

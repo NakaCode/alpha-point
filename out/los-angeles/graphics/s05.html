@@ -46,6 +46,22 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (data-qc-credito="mapa" só nele); a linha de
   fonte a 56 px, empilhada acima, sem a marca de mapa (a exceção do crédito a 56 px é do Claude central, identidade §4.1).
   A foto é domínio público (identidade §7): sem crédito na tela.
+  RODADA r4 (mapista, lote M1, 08/10/2026), da revisão de espectador e do conceito r4 (_anel):
+    · R1.1: o quadro da Califórnia nunca fica parado: a deriva D0→D1 vira aproximação visível (6,55 → 6,82, ~21 %), e em
+      'wrote that the only deep-water harbors in California' (20,39–22,95 s) a costa do estado (o anel do continente no
+      california-cb500k, do canto do Oregon ao do México) acende de norte a sul, a mesma linha da divisa por cima dela, mais
+      grossa, sem cor nova; apaga quando o anel de San Francisco entra (23,35 s).
+    · R1.7: os anéis e as pílulas de SF e SD e a legenda dos portos ficam até o fim de 'between,' (27,49 s) e saem em 27,55;
+      a viagem à baía passa a 27,55–29,15 s (1,6 s) e chega em 'exposed'. Os três nomes ficam juntos de 25,74 a 27,55 s. A
+      divisa da Califórnia e o CALIFORNIA saem em 25,44 s, quando a baía entra: a pílula dela, à direita do ponto, cairia
+      sobre a divisa leste do estado, e a guia sobre a costa (nenhum rótulo sobre linha, identidade §6); e o teto de 6.
+    · R1.6: a pílula 'San Pedro Bay' à direita do ponto dela na água (−118,17 / 33,735, dentro do quebra-mar), presa por
+      uma guia com o ponto (--tinta 4 px sobre --rotulo 10 px), a ≥ 100 px do quadrado de 1850 em todo o caminho.
+    · R1.16/C-s05-1: nenhuma perna "h" cruza um zoom x,5 (B1 11,48; E1 10,48): o trecho final fica todo no nível z10.
+    · R1.17: a amostra da seta na legenda aponta para cima e para a esquerda, como a seta de sudeste.
+    · A água escura dos mapas do porto (identidade §6; agua-osm-la, 2ª camada do estilo, em --agua-base), com a rampa pelo
+      zoom: opacidade 0 em zoom 9,5 e 1 em zoom 10 (a camada só cobre o quadro da s05 com zoom ≥ 9,5; pauta-geo).
+    · A linha do condado já saía antes das distâncias (3,385–5,83 s; o 14 entra em 8,54): sem mudança (T034, D06, D07).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -58,6 +74,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
 <script src="../_media/geo/praia-aberta-mais-proxima-tiger.js"></script>
 <script src="../_media/geo/california-cb500k.js"></script>
 <script src="../_media/geo/lugares-costa-gnis.js"></script>
+<script src="../_media/geo/agua-osm-la.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -131,6 +148,9 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
   .guia-sob { fill: none; stroke: var(--rotulo); stroke-width: 10; stroke-linecap: round; }
   .guia { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; }
   .guia-ponto { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6; }
+  /* r4, R1.1: a costa acesa é a MESMA linha da divisa (tokens --fronteira-*), mais grossa, por cima dela: sem cor nova */
+  .costa-sob { fill: none; stroke: var(--fronteira-contorno-cor); stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; }
+  .costa { fill: none; stroke: var(--fronteira-cor); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
   .med-num { font-family: var(--fonte); font-weight: 700; font-size: var(--fs-eixo); font-variant-numeric: var(--numeros);
     fill: var(--tinta); stroke: var(--rotulo); stroke-width: 14px; paint-order: stroke fill; stroke-linejoin: round; }
 
@@ -147,7 +167,9 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
   <div id="map"></div>
 
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+    <g id="costaCA" opacity="0"><path class="costa-sob" id="costaSob" d=""/><path class="costa" id="costaSobre" d=""/></g>
     <g id="guiaPlaza" opacity="0"><path class="guia-sob" id="guiaPlazaSob" d=""/><path class="guia" id="guiaPlazaSobre" d=""/></g>
+    <g id="guiaBaia" opacity="0"><path class="guia-sob" id="guiaBaiaSob" d=""/><path class="guia" id="guiaBaiaSobre" d=""/><circle class="guia-ponto" id="guiaBaiaPonto" r="12" cx="0" cy="0"/></g>
     <g id="regua1" opacity="0"><path class="regua-sob" id="r1Sob" d=""/><path class="regua" id="r1" d=""/></g>
     <g id="regua2" opacity="0"><path class="regua-sob" id="r2Sob" d=""/><path class="regua" id="r2" d=""/></g>
     <g id="setaSE" opacity="0"><path class="tempestade-sob" id="sseSob" d=""/><path class="tempestade" id="sse" d=""/></g>
@@ -175,7 +197,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
   </div>
   <div id="legenda" data-qc-papel="legenda">
     <div class="item" id="legPortos"><svg viewBox="0 0 120 101" aria-hidden="true"><circle cx="60" cy="50" r="26" fill="none" stroke="var(--rotulo)" stroke-width="26"/><circle cx="60" cy="50" r="26" fill="none" stroke="var(--destaque)" stroke-width="9"/></svg><span>deep-water harbors, per Mendell, 1886</span></div>
-    <div class="item" id="legTempestade"><svg viewBox="0 0 120 101" aria-hidden="true"><path d="M 14 78 L 100 26 M 70 24 L 100 26 L 88 54" fill="none" stroke="var(--tensao)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg><span>winter storms</span></div>
+    <div class="item" id="legTempestade"><svg viewBox="0 0 120 101" aria-hidden="true"><path d="M 106 78 L 20 26 M 50 24 L 20 26 L 32 54" fill="none" stroke="var(--tensao)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg><span>winter storms</span></div>
   </div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
   <div id="credFonte" class="credito extra" data-qc-papel="credito">Source: Los Angeles County annexation records</div>
@@ -194,17 +216,17 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
   var CENA = {
     duracao: 33.3,                                   // espelho.json › s05 › dur
     perfil: "maptiler",
-    fontes: ["c1850", "ca"],
+    fontes: ["c1850", "ca", "aguaBase"],
     pontos: {
       A0: { lng: -118.236, lat: 34.054, zoom: 12.30 },   // o quadrado de 1850 (zoom máx. 12,50: cabeçalho)
       A1: { lng: -118.244, lat: 34.050, zoom: 12.45 },
       B0: { lng: -118.330, lat: 33.925, zoom: 11.40 },   // a Plaza, a praia e Wilmington
-      B1: { lng: -118.322, lat: 33.918, zoom: 11.50 },
+      B1: { lng: -118.322, lat: 33.918, zoom: 11.48 },   // r4: abaixo de 11,5 (nenhuma perna "h" cruza um zoom x,5: R1.16)
       C:  { lng: -118.60,  lat: 34.05,  zoom: 8.90 },    // a costa do sul da Califórnia
-      D0: { lng: -119.30,  lat: 36.62,  zoom: 6.62 },    // a Califórnia inteira (1:500.000: só esta câmera larga)
-      D1: { lng: -119.20,  lat: 36.55,  zoom: 6.70 },
+      D0: { lng: -119.30,  lat: 36.62,  zoom: 6.55 },    // a Califórnia inteira (1:500.000: só esta câmera larga)
+      D1: { lng: -119.05,  lat: 36.30,  zoom: 6.82 },    // r4, R1.1: a câmera APROXIMA de verdade (~21 % em 8,35 s), sem cruzar 6,5
       E0: { lng: -118.255, lat: 33.775, zoom: 10.35 },   // San Pedro Bay, a cidade de 1850 no alto
-      E1: { lng: -118.245, lat: 33.765, zoom: 10.55 }
+      E1: { lng: -118.245, lat: 33.765, zoom: 10.48 }    // r4, R1.16/C-s05-1: abaixo de 10,5, o trecho final todo no nível z10 de tiles
     },
     pernas: [
       { t0: 0,     t1: 6.16,  de: "A0", para: "A1", tipo: "h" },
@@ -212,18 +234,21 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
       { t0: 8.00,  t1: 14.75, de: "B0", para: "B1", tipo: "h" },
       { t0: 14.75, t1: 16.70, de: "B1", para: "C",  tipo: "v", fecha: 0.2 },
       { t0: 16.70, t1: 19.20, de: "C",  para: "D0", tipo: "v", abre: 0.2 },
-      { t0: 19.20, t1: 26.40, de: "D0", para: "D1", tipo: "h" },
-      { t0: 26.40, t1: 28.70, de: "D1", para: "E0", tipo: "v" },
-      { t0: 28.70, t1: 33.30, de: "E0", para: "E1", tipo: "h" }
+      { t0: 19.20, t1: 27.55, de: "D0", para: "D1", tipo: "h" },   // r4, R1.7: a Califórnia fica até o fim de 'between,' (27,49)
+      { t0: 27.55, t1: 29.15, de: "D1", para: "E0", tipo: "v" },   // 1,6 s; chega em 'exposed' (29,12), antes de 'southeast'
+      { t0: 29.15, t1: 33.30, de: "E0", para: "E1", tipo: "h" }
     ],
     giro: [-2, 2],
     c1850: { contorno: 0.0, preenche: 1.90 },
-    ca:    { entra: [16.70, 17.30], sai: [26.40, 26.90] },
+    ca:    { entra: [16.70, 17.30], sai: [25.44, 25.94] },   // r4: sai quando a baía entra: a pílula dela à direita cairia sobre a divisa leste e a guia sobre a costa
+    // r4, R1.1: a costa da Califórnia acende de norte a sul em 'wrote that the only deep-water harbors in California'
+    // (a mesma linha da divisa, mais forte, sem cor nova) e apaga quando o anel de San Francisco entra
+    costa: { desenha: [20.39, 22.95], sai: 23.35 },
     anelPlaza: { entra: 3.82, sai: 5.83 },
     guiaPlaza: { entra: 3.82, sai: 5.83 },
     regua1: { desenha: [7.26, 8.20], sai: 10.55 },
     regua2: { desenha: [10.30, 12.00], sai: 14.45 },
-    anelSF: { entra: 23.35, sai: 26.40 }, anelSD: { entra: 24.39, sai: 26.40 },
+    anelSF: { entra: 23.35, sai: 27.55 }, anelSD: { entra: 24.39, sai: 27.55 },   // r4, R1.7: juntos com a baía em 'in between'
     setaSE: { entra: 29.91, dura: 0.6 }, setaS: { entra: 30.71, dura: 0.6 },
     rotulos: [
       { id: "cota1850", ref: "oeste1850", lado: "esquerda", dx: -70,  dy: 0,   entra: 3.385, sai: 5.83 },
@@ -232,15 +257,17 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s05 (52,8 → 86,1 s do maste
       { id: "rot14",    ref: "meioR1",    lado: "centro",   dx: 150,  dy: 190, entra: 8.54,  sai: 10.55 },
       { id: "rotWilm",  ref: "wilm",      lado: "direita",  dx: 70,   dy: 0,   entra: 10.30, sai: 14.45 },
       { id: "rot19",    ref: "meioR2",    lado: "direita",  dx: 90,   dy: 0,   entra: 12.70, sai: 14.45 },
-      { id: "nomeCA",   lnglat: [-117.55, 35.15], lado: "centro", dx: 0, dy: 0, entra: 17.00, sai: 26.10 },
-      { id: "rotSF",    ref: "sf",        lado: "esquerda", dx: -70,  dy: 0,   entra: 23.35, sai: 26.40 },
-      { id: "rotSD",    ref: "sd",        lado: "esquerda", dx: -70,  dy: 0,   entra: 24.39, sai: 26.40 },
-      { id: "rotBaia",  lnglat: [-118.17, 33.735], lado: "direita", vert: "cima", dx: 0, dy: -8, entra: 25.74, sai: null }   // na voz ('San' 25,740; qc-visual Q3)
+      { id: "nomeCA",   lnglat: [-117.55, 35.15], lado: "centro", dx: 0, dy: 0, entra: 17.00, sai: 25.44 },   // r4: sai com a divisa (teto de 6 com a baía)
+      { id: "rotSF",    ref: "sf",        lado: "esquerda", dx: -70,  dy: 0,   entra: 23.35, sai: 27.55 },
+      { id: "rotSD",    ref: "sd",        lado: "esquerda", dx: -70,  dy: 0,   entra: 24.39, sai: 27.55 },
+      // r4, R1.6: a pílula à DIREITA do ponto da baía (na água, dentro do quebra-mar), presa a ele por guia com o ponto,
+      // a >= 100 px do quadrado de 1850 em todo o caminho; na voz ('San' 25,740; qc-visual Q3)
+      { id: "rotBaia",  ref: "baia",      lado: "direita",  dx: 140,  dy: 0,   entra: 25.74, sai: null }
     ],
     // a miniatura: logo abaixo de 'The Plaza', borda direita alinhada; a foto só encolhe (recorte em px do arquivo)
     minis: [{ id: "mini1", sob: "rotPlaza", natural: [5217, 2678], recorte: [320, 115, 2270, 2275], foto: [900, 902],
               borda: 14, margemBaixo: 112, vao: 24, entra: 3.82, sai: 5.83 }],
-    legenda: { itens: [{ id: "legPortos", entra: 23.85, sai: 26.40 }, { id: "legTempestade", entra: 29.91 }] },
+    legenda: { itens: [{ id: "legPortos", entra: 23.85, sai: 27.55 }, { id: "legTempestade", entra: 29.91 }] },
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0,
                 extra: [{ id: "credFonte", entra: 3.385, sai: 5.83 }] }
   };
@@ -470,7 +497,22 @@ var C1850 = feicao("la-1850-hamlin"), CA = feicao("california-cb500k");
   aneis(C1850.geometry).forEach(function (r) { r.forEach(function (p) { if (p[0] < oeste) oeste = p[0]; }); });
   var meio = function (a, b) { return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]; };
   var REFS = { oeste1850: [oeste, PLAZA[1]], etqPlaza: [-118.148, 34.090], praia: PRAIA, meioR1: meio(PLAZA, PRAIA),
-               wilm: WILM, meioR2: meio(PLAZA, WILM), sf: SF, sd: SD };
+               wilm: WILM, meioR2: meio(PLAZA, WILM), sf: SF, sd: SD, baia: [-118.17, 33.735] };
+  // r4, R1.1: a costa da Califórnia, tirada do anel do continente no california-cb500k (nada à mão): do canto do Oregon
+  // na costa (-124,21 / 42,00) ao da fronteira com o México na costa (-117,12 / 32,53), de norte a sul
+  var COSTA = (function () {
+    var polys = CA.geometry.type === "MultiPolygon" ? CA.geometry.coordinates : [CA.geometry.coordinates];
+    var anel = polys.map(function (p) { return p[0]; }).reduce(function (m, r) { return r.length > m.length ? r : m; });
+    function perto(pt) { var b = -1, bd = 1e9; anel.forEach(function (q, i) { var d = Math.hypot(q[0] - pt[0], q[1] - pt[1]); if (d < bd) { bd = d; b = i; } }); return bd < 0.02 ? b : -1; }
+    var iN = perto([-124.2116, 41.9985]), iS = perto([-117.1237, 32.5344]);
+    if (iN < 0 || iS < 0) { falhar("não achei as pontas da costa no anel da Califórnia."); return null; }
+    var ab = anel[0][0] === anel[anel.length - 1][0] && anel[0][1] === anel[anel.length - 1][1];
+    var fim = ab ? anel.length - 1 : anel.length, pts = [];
+    if (iN < iS) pts = anel.slice(iN, iS + 1);
+    else pts = anel.slice(iN, fim).concat(anel.slice(0, iS + 1));
+    return rdp(pts, 0.004);
+  })();
+  if (window.__erroCena) return;
   CENA.rotulos.forEach(function (r) { r.p = r.lnglat || REFS[r.ref] || null; if (!r.p) falhar("o rótulo " + r.id + " não tem âncora."); });
   if (window.__erroCena) return;
   criarAnel("anelPlaza", true); criarAnel("anelSF", true); criarAnel("anelSD", true);
@@ -542,15 +584,42 @@ var C1850 = feicao("la-1850-hamlin"), CA = feicao("california-cb500k");
     // as tempestades de inverno: de sudeste e de sul, pelo mar, para a baía (direção declarada; Senate Doc. 18 e mec-afi-03)
     tempestade(["sseSob", "sse"], "setaSE", [-118.06, 33.585], [-118.21, 33.69], t, CENA.setaSE.entra, CENA.setaSE.dura);
     tempestade(["ssSob", "ss"], "setaS", [-118.24, 33.55], [-118.245, 33.685], t, CENA.setaS.entra, CENA.setaS.dura);
+    // r4, R1.1: a costa acende de norte a sul, fica e apaga quando o anel de San Francisco entra
+    var gc = E("costaCA"), K = CENA.costa;
+    if (gc && COSTA) {
+      var vk = t < K.desenha[0] ? 0 : 1 - eio(seg(t, K.sai, 0.3));
+      if (vk > 0) {
+        var uk = eio(seg(t, K.desenha[0], K.desenha[1] - K.desenha[0]));
+        var dk = caminho(parcial(COSTA.map(function (q) { return map.project(q); }), uk));
+        E("costaSob").setAttribute("d", dk); E("costaSobre").setAttribute("d", dk);
+      }
+      gc.setAttribute("opacity", vk.toFixed(3));
+    }
+    // r4, R1.6: a guia da pílula 'San Pedro Bay' ao ponto dela na água (o ponto e a linha, como a da Plaza)
+    var gb = E("guiaBaia"), rb = rotuloPorId("rotBaia");
+    if (gb && rb) {
+      var pb = map.project(REFS.baia), xb = pb.x + rb.dx - 16;
+      var db = "M " + (pb.x + 14).toFixed(2) + " " + pb.y.toFixed(2) + " L " + xb.toFixed(2) + " " + pb.y.toFixed(2);
+      E("guiaBaiaSob").setAttribute("d", db); E("guiaBaiaSobre").setAttribute("d", db);
+      E("guiaBaiaPonto").setAttribute("cx", pb.x.toFixed(2)); E("guiaBaiaPonto").setAttribute("cy", pb.y.toFixed(2));
+      gb.setAttribute("opacity", (eo(seg(t, rb.entra, 0.3))).toFixed(3));
+    }
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
   // ── a base, SEM relevo ─────────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // r4: a água escura dos mapas do porto (identidade §6; Lucas, 08/10/2026): a 2ª camada do estilo, opaca em --agua-base,
+    // logo acima do satélite e abaixo de tudo o que a cena desenha (agua-osm-la, arquivo local: não pede tile). Na s05 ela só
+    // cobre o quadro com zoom >= 9,5 (pauta-geo, nota da s05): a rampa pelo zoom a apaga em 9,5 e a acende inteira em 10
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": ["interpolate", ["linear"], ["zoom"], 9.5, 0, 10, 1],
+                 "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────

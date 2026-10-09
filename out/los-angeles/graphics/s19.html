@@ -38,6 +38,18 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s19 (271,7 → 285,933 s do m
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (data-qc-credito="mapa" só nele); 'Source: Senate
   Document 18, 1897' a 56 px de 5,533 ao fim, empilhado acima, sem a marca de mapa (a exceção do crédito a 56 px é do Claude
   central). O cartão-postal é domínio público (identidade §7): sem crédito.
+  RODADA r4 (mapista, lote M2, 08/10/2026; relato em out/los-angeles/_tmp/art-r4/m2/relato.md). O que mudou do texto acima:
+    · A ÁGUA ESCURA (identidade §6; Lucas, 08/10/2026): agua-osm-la, opaca, em --agua-base, 2ª camada do estilo(), acima do
+      satélite e abaixo de tudo o que a cena desenha (a água acesa do porto vai por cima). Ela cobre o remendo claro em volta do
+      píer de Santa Monica de hoje (R3.14). O crédito não muda.
+    · A água do porto (conceito › _agua_do_porto): 35 % com contorno de 6 px em --tinta; acende em 500 ms (3,98–4,48) e FICA
+      (não apaga mais em 5,80): a viagem de volta a leva para fora do quadro.
+    · R3.9: a ida a San Pedro em 1,5 s (2,48–3,98), na pausa depois de 'Angeles.'; a pílula e a miniatura saem em 2,25 (no ar
+      até 2,48), 'Port of Los Angeles' entra em 3,85 e 'today' em 4,00. A volta (1,5 s) não muda.
+    · O medidor (conceito › _medidor; T387; R3.8): a MESMA escala de 0 a 60 pés, com os números 10–60, a 20 px por pé (o 33 e o
+      30 a 60 px um do outro); 'ABOUT 33 FT' 8 px acima da linha do 33, entre ela e o 40, e 'deep-water: 30 FT' 8 px abaixo da
+      do 30. Ele chega lido: a marca cheia de 30 pés com a legenda desde o 1º quadro.
+    · T129: o item da legenda das cores passa a 'Southern Pacific pier' (sem a data).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -48,6 +60,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s19 (271,7 → 285,933 s do m
 <script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
 <script src="../_media/geo/long-wharf-usgs1903-corrigido.js"></script>
 <script src="../_media/geo/portos-la-long-beach-tiger.js"></script>
+<script src="../_media/geo/agua-osm-la.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -154,7 +167,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s19 (271,7 → 285,933 s do m
     <div class="aviso" data-qc-papel="eixo" data-qc-aviso-ano="1902">Postcard from 1902</div>
   </div>
   <div id="legenda" data-qc-papel="legenda">
-    <div class="item" id="legPier"><svg viewBox="0 0 120 101" aria-hidden="true"><path d="M 12 50 L 108 50" stroke="var(--rotulo)" stroke-width="30" stroke-linecap="round"/><path d="M 12 50 L 108 50" stroke="var(--rede-cor)" stroke-width="15" stroke-linecap="round"/></svg><span>Southern Pacific pier, finished by 1894</span></div>
+    <div class="item" id="legPier"><svg viewBox="0 0 120 101" aria-hidden="true"><path d="M 12 50 L 108 50" stroke="var(--rotulo)" stroke-width="30" stroke-linecap="round"/><path d="M 12 50 L 108 50" stroke="var(--rede-cor)" stroke-width="15" stroke-linecap="round"/></svg><span>Southern Pacific pier</span></div>
   </div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
   <div id="credFonte" class="credito extra" data-qc-papel="credito">Source: Senate Document 18, 1897</div>
@@ -183,32 +196,34 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s19 (271,7 → 285,933 s do m
       C1: { lng: -118.5355, lat: 34.0248, zoom: 14.55 },
       D0: { lng: -118.5395, lat: 34.0230, zoom: 15.00 }   // a ponta do píer e o medidor
     },
-    pernas: [
-      { t0: 0,     t1: 2.73,   de: "A0", para: "A1", tipo: "h" },
-      { t0: 2.73,  t1: 3.93,   de: "A1", para: "B0", tipo: "v" },
-      { t0: 3.93,  t1: 5.80,   de: "B0", para: "B1", tipo: "h" },
+    pernas: [   // r4, R3.9: a ida a San Pedro em 1,5 s (nunca menos), começando na pausa depois de 'Angeles.'
+      { t0: 0,     t1: 2.48,   de: "A0", para: "A1", tipo: "h" },
+      { t0: 2.48,  t1: 3.98,   de: "A1", para: "B0", tipo: "v" },
+      { t0: 3.98,  t1: 5.80,   de: "B0", para: "B1", tipo: "h" },
       { t0: 5.80,  t1: 7.30,   de: "B1", para: "C0", tipo: "v" },
       { t0: 7.30,  t1: 9.66,   de: "C0", para: "C1", tipo: "h" },
       { t0: 9.66,  t1: 14.233, de: "C1", para: "D0", tipo: "h" }
     ],
     giro: [-1.5, 1.5],
-    agua: { acende: [3.93, 4.43], apaga: 5.80, opacidade: 0.25 },
+    agua: { acende: [3.98, 4.48], apaga: null, opacidade: 0.35 },   // r4: _agua_do_porto (35 %, contorno de 6 px, acende e fica)
     pier: { desenha: [7.39, 8.90] },
-    medidor: { k: 12, max: 40, cadaNumero: 10, largura: 96, dx: -420, dy: 450, hasteDireita: true, entra: 9.66, sai: null,
+    // r4: a MESMA escala de 0 a 60 pés (conceito › _medidor; T387), 20 px por pé (R3.8: o 33 e o 30 a 60 px um do outro)
+    medidor: { k: 20, max: 60, cadaNumero: 10, largura: 96, dx: -420, dy: 450, hasteDireita: true, entra: 9.66, sai: null,
                nivel: function (t) { return 33 * eio(seg(t, 10.315, 0.6)); },
                marcas: [{ ft: 30, tipo: "cheia", entra: 9.66, sai: null }] },
     rotulos: [
-      { id: "rotPLA",   ref: "cabeca", lado: "direita", dx: 60, dy: 0, entra: 0.46, sai: 2.73 },
-      { id: "rotPorto", lnglat: [-118.268, 33.722], lado: "esquerda", dx: -60, dy: 0, entra: 3.80, sai: 5.80 },
-      { id: "legHoje",  lnglat: [-118.268, 33.722], lado: "esquerda", dx: -60, dy: 150, entra: 3.98, sai: 5.80 },
+      { id: "rotPLA",   ref: "cabeca", lado: "direita", dx: 60, dy: 0, entra: 0.46, sai: 2.25 },   // r4: sai antes da viagem
+      { id: "rotPorto", lnglat: [-118.268, 33.722], lado: "esquerda", dx: -60, dy: 0, entra: 3.85, sai: 5.80 },
+      { id: "legHoje",  lnglat: [-118.268, 33.722], lado: "esquerda", dx: -60, dy: 150, entra: 4.00, sai: 5.80 },
       { id: "cotaPier", telaFn: function () { return CENA._cotaPier || null; }, lado: "direita", vert: "baixo", entra: 7.67, sai: 10.00 },
-      { id: "leg30", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x - 170, M._base.y - 30 * M.k + 18]; },
+      // r4, R3.8: 'ABOUT 33 FT' entre o 40 e o 33, 'deep-water: 30 FT' logo abaixo do 30 (a cota nunca sobre a linha)
+      { id: "leg30", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x - 170, M._base.y - 30 * M.k + 8]; },
         lado: "esquerda", vert: "baixo", entra: 9.66, sai: null },
-      { id: "cota33", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x - 170, M._base.y - 33 * M.k - 18]; },
+      { id: "cota33", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x - 170, M._base.y - 33 * M.k - 8]; },
         lado: "esquerda", vert: "cima", entra: 10.315, sai: null }
     ],
     minis: [{ id: "mini1", sob: "rotPLA", natural: [2404, 1515], recorte: [206, 187, 1648, 978], foto: [880, 522],
-              borda: 14, margemBaixo: 112, vao: 24, entra: 0.46, sai: 2.40 }],
+              borda: 14, margemBaixo: 112, vao: 24, entra: 0.46, sai: 2.25 }],   // r4: sai com a pílula, antes da viagem
     legenda: { itens: [{ id: "legPier", entra: 7.39 }], sai: 9.66 },
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0, extra: [{ id: "credFonte", entra: 5.533, sai: null }] }
   };
@@ -442,11 +457,17 @@ var CABECA = pontoNome("pontos-historicos-usgs-corrigidos", "Port Los Angeles (L
     map.addSource("portos", { type: "geojson", data: { type: "FeatureCollection", features: [PORTO_LA] } });
     map.addLayer({ id: "porto-fill", type: "fill", source: "portos",
       paint: { "fill-color": tok("--tinta", "#F4F1EA"), "fill-opacity": 0, "fill-opacity-transition": semTransicao } });
+    // r4 (conceito › _agua_do_porto): o contorno de 6 px em --tinta, com a água
+    map.addLayer({ id: "porto-linha", type: "line", source: "portos", layout: linhaContorno,
+      paint: { "line-color": tok("--tinta", "#F4F1EA"), "line-width": 6, "line-opacity": 0, "line-opacity-transition": semTransicao } });
   }
 
   function aplicarCena(t) {
     var A = CENA.agua;
-    opac("porto-fill", "fill-opacity", A.opacidade * eio(seg(t, A.acende[0], A.acende[1] - A.acende[0])) * (1 - eio(seg(t, A.apaga, 0.3))));
+    // r4 (_agua_do_porto): acende em 500 ms e FICA (nunca pulsa do zero ao zero); a câmera a leva para fora do quadro na volta
+    var ua = eio(seg(t, A.acende[0], A.acende[1] - A.acende[0])) * (A.apaga != null ? 1 - eio(seg(t, A.apaga, 0.3)) : 1);
+    opac("porto-fill", "fill-opacity", A.opacidade * ua);
+    opac("porto-linha", "line-opacity", ua);
     // o píer, da praia para o mar
     var up = eio(seg(t, CENA.pier.desenha[0], CENA.pier.desenha[1] - CENA.pier.desenha[0]));
     var pp = PC.map(function (c) { return map.project(c); }), dp = caminho(parcial(pp, up));
@@ -467,10 +488,15 @@ var CABECA = pontoNome("pontos-historicos-usgs-corrigidos", "Port Los Angeles (L
 
   // ── a base, SEM relevo ─────────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  // r4, A ÁGUA ESCURA (identidade §6; out/los-angeles/_tmp/agua/tecnica.md §2): a 2ª camada do estilo, opaca, logo acima do
+  // satélite e abaixo de tudo o que a cena desenha; a geometria é local (agua-osm-la): nenhum pedido de tile
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "agua",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -835,6 +861,7 @@ var CABECA = pontoNome("pontos-historicos-usgs-corrigidos", "Port Los Angeles (L
           // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
           for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
           if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+          if (!map.getSource("agua") || !map.isSourceLoaded("agua")) return false;   // r4: a água escura
           return nivelUnico();
         } catch (e) { return false; }
       };

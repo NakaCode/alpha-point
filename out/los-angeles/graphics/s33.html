@@ -5,7 +5,8 @@
 <title>s33</title>
 <!--
   CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s33 + s34 fundidas (429,400 → 457,733 s do master; 28,333 s).
-  Mapista, lote M2, 07/10/2026. Arquivo misto: REGISTRO → MAPA numa viagem só.
+  Mapista, lote M2, 07/10/2026; r4, lote M3, 08/10/2026 (a água escura, R5.3, R5.4, R5.5, C-s33-1). Arquivo misto:
+  REGISTRO → MAPA numa viagem só.
   "Now, whose town was that? San Pedro was a city of its own by eighteen ninety. Wilmington incorporated as a city in December
   nineteen oh-five. Los Angeles, nineteen miles away, had won a harbor it did not touch. Winning the bay was not having it.
   Look at the outline before the strip: forty-three square miles, well to the north. The harbor sits inside San Pedro and
@@ -31,14 +32,19 @@
       Em "incorporated" o polígono de Wilmington (wilmington-1909-hamlin) preenche --contraparte a 35 % (500 ms), com
       "Wilmington", "Wilmington's limits of 1909" na legenda das cores (a regra de série A1: a geometria é a de 1909, usada como
       a cidade de 1905) e "DECEMBER 1905" em "December". SEM a divisa de San Pedro aqui: ela é a de 22/10/1906.
-    · em "Los Angeles" (9,19) a miniatura levanta (350 ms), os rótulos de 1905 saem, e a câmera SOBE 2 s até caber o contorno de
+    · r4 (R5.5): a miniatura LEVANTA em "city" (6,855), antes de "December"; "San Pedro" e o aviso do ano saem 300 ms antes
+      (6,555); "DECEMBER 1905" entra com 4 elementos no quadro, centrada sobre a pílula "Wilmington", inteira na área segura.
+    · em "Los Angeles" (9,19) os rótulos de 1905 saem, e a câmera SOBE 2 s até caber o contorno de
       1899 (la-1899-antes-da-faixa-hamlin, --destaque a 85 %; vale de 1899 a 1906) no alto e o porto embaixo; "Los Angeles" na
       Plaza; a régua Plaza → Wilmington (GNIS) se desenha em "nineteen" e "ABOUT 19 MILES" entra no meio dela em "miles"; em
-      "did not touch" a régua apaga para --neutro a 40 %; em "Winning" a água do porto do lado de Los Angeles pulsa uma vez
-      (--tinta 35 %); a régua sai em "having it".
+      "did not touch" a régua e a cota SAEM (300 ms; r4: nunca a cinza); em "Winning" a água do porto das duas cidades
+      (agua-porto-hoje-tiger, os corpos d'água a oeste de −118,23, sem os lagos: nunca a baía até Long Beach) ACENDE em
+      --tinta a 35 % (500 ms; sem o contorno de 6 px nesta escala: o porquê está no código) e fica até "having it" (sai em 300 ms); r4, R5.4: nunca um pulso do zero ao zero.
     · "Look at the outline": o contorno pulsa (500 ms); em "forty-three" "43 SQ MI", "the city before the strip" e o crédito
       "Source: Los Angeles County annexation records"; a câmera aproxima um pouco.
-    · "The harbor sits inside San Pedro and Wilmington": Wilmington acende a 50 % por 500 ms e volta a 35 %; a DIVISA DE SAN
+    · "The harbor sits inside San Pedro and Wilmington": a água do porto volta em "harbor" (500 ms) e FICA até o corte;
+      Wilmington acende a 50 % por 500 ms e volta a 35 %; em "San Pedro" a divisa engrossa 5 → 10 → 5 px em 500 ms (R5.3); a
+      pílula "San Pedro" fica do lado de DENTRO (a leste) da divisa (R5.3, C-s33-1); a DIVISA DE SAN
       PEDRO (de 22/10/1906, aberta, no estilo da fronteira; os trechos "oeste_e_norte_com_a_faixa" e "com_wilmington", sem o de
       Terminal Island, que é de 1909) se traça; "San Pedro" e "Wilmington" nas palavras. Este é o quadro da véspera da
       anexação de 1906 (a s35–s37 o pagam); a divisa entra aqui e não em dezembro de 1905 (DÚVIDA declarada no relato).
@@ -50,6 +56,8 @@
   (Wilmington, sem a divisa de San Pedro nesse trecho); 65.083 ÷ 2^11,85 = 17,6 m/px → 200 m = 11,4 px ≤ 12 px.
   Fora, de propósito: o crédito "Denver Public Library" e o "Source: U.S. Census Bureau, TIGER 2025" do conceito (não estão no
   textos-tela.json; o conferente dá a foto como domínio público, sem crédito).
+  A BASE (r4): o satélite da MapTiler com a ÁGUA ESCURA por cima (agua-osm-la, --agua-base, opaca, 2ª camada do estilo, abaixo
+  de tudo o que a cena desenha; identidade §6; Lucas, 08/10/2026).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -57,6 +65,7 @@
 <script src="../_media/_vendor/camera-mapa.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/agua-osm-la.js"></script>
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
 <script src="../_media/geo/wilmington-1909-hamlin.js"></script>
 <script src="../_media/geo/san-pedro-1909-divisa-hamlin.js"></script>
@@ -169,7 +178,7 @@
       W0: { lng: -118.2550, lat: 33.9250, zoom: 11.30 },  // o contorno de 1899 no alto, o porto embaixo
       W1: { lng: -118.2560, lat: 33.9230, zoom: 11.36 },
       W2: { lng: -118.2560, lat: 33.9380, zoom: 11.48 },  // "well to the north": aproxima um pouco do contorno
-      W3: { lng: -118.2570, lat: 33.9050, zoom: 11.30 },   // desce e abre um pouco: San Pedro entra no quadro em "San Pedro" (margens, 08/10/2026)
+      W3: { lng: -118.2620, lat: 33.8600, zoom: 11.30 },   // desce: San Pedro e a pílula dela, do lado de dentro da divisa, acima de y 1880 (r4, R5.3)
       G0: { lng: -118.2700, lat: 33.8620, zoom: 11.60 },  // o vão: a borda sul de 1899 no alto, as linhas embaixo
       G1: { lng: -118.2700, lat: 33.8630, zoom: 11.66 }
     },
@@ -183,26 +192,27 @@
       { t0: 26.21, t1: 28.333, de: "G0", para: "G1", tipo: "h" }
     ],
     giro: [-2, 2],
-    foto: { encolhe: [5.34, 1.5], levanta: 9.00, mini: { dx: -1260, dy: -360, w: 1020, h: 680 },
+    foto: { encolhe: [5.34, 1.5], levanta: 6.855, mini: { dx: -1260, dy: -360, w: 1020, h: 680 },
             kb: { esc: 0.12, dur: 6, vet: [-69, 40] }, recorteY: 0.30 },
     wilm: { entra: [5.95, 0.5], realce: [21.11, 0.5] },
     c1899: { entra: [9.19, 0.5], pulso: 16.43 },
-    regua: { desenha: [10.19, 0.6], apaga: [12.705, 0.5], sai: 15.07 },
-    agua: { pulso: [13.75, 0.7] },
+    regua: { desenha: [10.19, 0.6], sai: 12.705 },
+    agua: { janelas: [[13.75, 15.07], [21.23, null]], dIn: 0.5, dOut: 0.3 },
+    divisa2: { realce: 22.35 },
     divisa: { entra: [21.11, 0.6] },
     legenda: { janelas: [[5.95, null]] },
     rotulos: [
-      { id: "rotSP",    ref: "SP",   lado: "direita", dx: 60, dy: 0,   entra: -1,    sai: 9.00 },
-      { id: "avisoAno", ref: "SP",   lado: "direita", dx: 60, dy: 150, entra: -1,    sai: 9.00 },
+      { id: "rotSP",    ref: "SP",   lado: "direita", dx: 60, dy: 0,   entra: -1,    sai: 6.555 },
+      { id: "avisoAno", ref: "SP",   lado: "direita", dx: 60, dy: 150, entra: -1,    sai: 6.555 },
       { id: "cotaCity", ref: "SP",   lado: "direita", dx: 60, dy: 0,   entra: 3.115, sai: 5.34 },
       { id: "rotWilm",  ref: "WILM", lado: "direita", dx: 60, dy: 0,   entra: 5.95,  sai: 9.19 },
-      { id: "rotDec",   ref: "WILM", lado: "direita", dx: 60, dy: -230, entra: 7.31,  sai: 9.35 },
+      { id: "rotDec",   ref: "WILM", lado: "direita", dx: -146, dy: -260, entra: 7.31, sai: 9.35 },   // centrada sobre "Wilmington" (R5.5)
       { id: "rotLA",    ref: "LAW",  lado: "esquerda", dx: -50, dy: 0,  entra: 9.47,  sai: 13.70 },
-      { id: "rot19",    ref: "MEIO", lado: "direita", dx: 90, dy: 0,   entra: 10.51, sai: 15.07 },
+      { id: "rot19",    ref: "MEIO", lado: "direita", dx: 90, dy: 0,   entra: 10.51, sai: 12.705 },
       { id: "rot43",    ref: "LA",   lado: "centro", dx: 0, dy: 0,     entra: 18.03, sai: 21.11 },
       { id: "legCity",  ref: "LA",   lado: "centro", vert: "baixo", dx: 0, dy: 100, entra: 18.03, sai: 21.11 },
-      { id: "rotSP2",   ref: "SP",   lado: "esquerda", vert: "cima", dx: -40, dy: -30, entra: 22.35, sai: null },
-      { id: "rotWilm2", ref: "WILM", lado: "direita", dx: 60, dy: 0,   entra: 23.15, sai: null }
+      { id: "rotSP2",   ref: "SP",   lado: "direita", dx: 120, dy: 0, entra: 22.35, sai: null },   // a leste da divisa, sobre a cidade e o porto (R5.3)
+      { id: "rotWilm2", ref: "WILM", lado: "direita", dx: 60, dy: -20, entra: 23.15, sai: null }
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
     creditos: [
@@ -225,10 +235,9 @@
       A.REFS.LAW = r.reduce(function (m, p) { return p[0] < m[0] ? p : m; });
       var a = A.REFS.PLAZA, b = A.REFS.WILMP;
       A.REFS.MEIO = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
-      var W = A.geo("agua-porto-hoje-tiger").features;
-      A.AGUA_LA = { type: "FeatureCollection", features: W.filter(function (f) {
-        var mx = 999; A.aneis(f.geometry).forEach(function (rr) { rr.forEach(function (p) { if (p[0] < mx) mx = p[0]; }); }); return mx < -118.235;
-      }) };
+      // a água do porto das duas cidades (r4, R5.4): os corpos d'água do TIGER a oeste de −118,23 pela longitude MÁXIMA (sai o
+      // "San Pedro Bay" do TIGER e o corpo que vai até Long Beach), sem os lagos e tanques de terra
+      A.AGUA_LA = { type: "FeatureCollection", features: A.aguaDasDuasCidades(A.geo("agua-porto-hoje-tiger").features) };
       // a foto: o contrato quer a Promise das imagens
       window.__fotosProntas = Promise.all(["fotoImg", "fotoImgCheia"].map(function (id) {
         var img = A.E(id);
@@ -240,7 +249,10 @@
       })).then(function () { return true; });
     },
     camadas: function (map, A) {
-      A.territorio("agua", A.AGUA_LA, { fill: "--tinta", fracao: 0.35, linha: "--tinta", w: 0.01, sob: 0.01 });
+      // SEM o contorno de 6 px aqui (r4, decisão do mapista, no relato): nesta escala (zoom 11,3–12) o contorno do porto vira
+      // um novelo de linhas em ~200 px, e nenhuma posição da pílula "San Pedro" do lado de dentro da divisa fica fora dele;
+      // sobre a água escura o preenchimento a 35 % já se separa do mar sem emenda nenhuma
+      A.aguaAcesa("aguaLA", A.AGUA_LA, null);
       A.territorio("c1899", A.C1899, { fill: "--destaque", fracao: 0.85, linha: "--tinta", w: 6, sob: 14 });
       A.territorio("wilm", A.WILM, { fill: "--contraparte", fracao: 0.35, linha: "--contraparte", w: 5, sob: 14 });
       A.linha("spdiv", A.SPDIV, {});
@@ -256,9 +268,13 @@
       var up = (t - C.pulso) / 0.5, pul = up >= 0 && up < 1 ? Math.sin(up * Math.PI) : 0;
       A.terr("c1899", vc, vc * (0.85 - 0.35 * pul));
       A.opac("c1899-linha", "line-width", 6 + 6 * pul);
-      var ua = (t - CENA.agua.pulso[0]) / CENA.agua.pulso[1], va = ua >= 0 && ua < 1 ? Math.sin(ua * Math.PI) : 0;
-      A.terr("agua", 0, 0.35 * va);
+      var va = 0;
+      CENA.agua.janelas.forEach(function (j) { va = Math.max(va, A.janela(t, j[0], j[1], CENA.agua.dIn, CENA.agua.dOut)); });
+      A.aguaQuadro("aguaLA", va);
       A.lin("spdiv", A.janela(t, CENA.divisa.entra[0], null, CENA.divisa.entra[1]));
+      var ud = (t - CENA.divisa2.realce) / 0.5, rd = ud >= 0 && ud < 1 ? Math.sin(ud * Math.PI) : 0;
+      A.opac("spdiv-linha", "line-width", 5 + 5 * rd);
+      A.opac("spdiv-sob", "line-width", 12 + 5 * rd);
       // ── a régua Plaza → Wilmington ──
       var R = CENA.regua, g = A.E("regua"), u2 = A.eio(A.seg(t, R.desenha[0], R.desenha[1]));
       if (g) {
@@ -269,8 +285,7 @@
           if (u2 >= 1) d += seta(b, a, 40);
         }
         A.E("reguaSob").setAttribute("d", d); A.E("reguaSobre").setAttribute("d", d);
-        var apaga = A.eio(A.seg(t, R.apaga[0], R.apaga[1]));
-        g.setAttribute("opacity", (t < R.desenha[0] ? 0 : (1 - 0.6 * apaga) * (1 - A.eio(A.seg(t, R.sai, 0.3)))).toFixed(3));
+        g.setAttribute("opacity", (t < R.desenha[0] ? 0 : 1 - A.eio(A.seg(t, R.sai, 0.3))).toFixed(3));
       }
     }
   };
@@ -486,6 +501,61 @@
   var API = { E: E, cl: cl, eo: eo, eio: eio, seg: seg, janela: janela, geo: geo, feicao: feicao, pontoNome: pontoNome,
     aneis: aneis, divisaSanPedro: divisaSanPedro, cruzamentos: cruzamentos, metros: metros, ateFracao: ateFracao,
     tok: tok, falhar: falhar, REFS: {} };
+  // ── A ÁGUA DO PORTO (r4; conceito › _agua_do_porto): a água de hoje do lado das duas cidades, acesa em --tinta a 35 %
+  //    com o contorno de 6 px SÓ onde a água toca terra. O TIGER corta a água do porto em pedaços por linhas retas (divisa
+  //    e bloco censitário): esses cortes não viram linha. Cada segmento dos anéis do TIGER fica no contorno só se um dos
+  //    lados, a dm metros do meio dele, é terra no mar do OSM (agua-osm-la, a mesma camada da água escura). ─────────
+  API.aguaDasDuasCidades = function (fs) {
+    return fs.filter(function (f) {
+      var x1 = -999, y0 = 999; aneis(f.geometry).forEach(function (r) { r.forEach(function (p) { if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; }); });
+      return x1 < -118.23 && y0 < 33.78 && (f.properties.AWATER_m2 || 0) >= 50000;
+    });
+  };
+  API.bordaQueTocaTerra = function (feicoes, osm, dm) {
+    var R = [];
+    ((osm && osm.features) || []).forEach(function (f) { aneis(f.geometry).forEach(function (r) {
+      var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+      r.forEach(function (p) { if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; });
+      R.push({ r: r, x0: x0, x1: x1, y0: y0, y1: y1 });
+    }); });
+    function agua(x, y) {
+      var dentro = false;
+      for (var k = 0; k < R.length; k++) {
+        var q = R[k]; if (y < q.y0 || y > q.y1 || x > q.x1) continue;
+        var r = q.r;
+        for (var i = 0, j = r.length - 1; i < r.length; j = i++) {
+          if ((r[i][1] > y) !== (r[j][1] > y) && x < (r[j][0] - r[i][0]) * (y - r[i][1]) / (r[j][1] - r[i][1]) + r[i][0]) dentro = !dentro;
+        }
+      }
+      return dentro;
+    }
+    var linhas = [];
+    feicoes.forEach(function (f) { aneis(f.geometry).forEach(function (r) {
+      var cur = null;
+      for (var i = 1; i < r.length; i++) {
+        var a = r[i - 1], b = r[i], la = (a[1] + b[1]) / 2 * Math.PI / 180, kx = 111320 * Math.cos(la), ky = 110574;
+        var ex = (b[0] - a[0]) * kx, ey = (b[1] - a[1]) * ky, n = Math.hypot(ex, ey), fica = false;
+        if (n > 0) {
+          var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, ox = -ey / n * dm / kx, oy = ex / n * dm / ky;
+          fica = !agua(mx + ox, my + oy) || !agua(mx - ox, my - oy);
+        }
+        if (fica) { if (!cur) { cur = [a]; linhas.push(cur); } cur.push(b); } else cur = null;
+      }
+    }); });
+    if (!linhas.length) falhar("a borda da água do porto saiu vazia (a água do OSM cobre tudo?).");
+    return { type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: linhas } };
+  };
+  // as camadas: o preenchimento (sem antialias: os pedaços vizinhos do TIGER não deixam fio na junta) e o contorno
+  API.aguaAcesa = function (id, pol, borda) {
+    map.addSource(id, { type: "geojson", data: pol }); FONTES.push(id);
+    map.addLayer({ id: id + "-fill", type: "fill", source: id,
+      paint: { "fill-color": tok("--tinta", "#F4F1EA"), "fill-opacity": 0, "fill-antialias": false, "fill-opacity-transition": { duration: 0, delay: 0 } } });
+    if (borda) API.linha(id + "B", borda, { cor: "--tinta", w: 6, sob: 12 });
+  };
+  API.aguaQuadro = function (id, v, fill) {
+    API.opac(id + "-fill", "fill-opacity", fill == null ? 0.35 * v : fill);
+    API.lin(id + "B", v);
+  };
   try { SCENE.preparar(API); } catch (e) { return falhar("a preparação da cena quebrou: " + e.message); }
   if (window.__erroCena) return;
   (CENA.rotulos || []).forEach(function (r) {
@@ -497,10 +567,16 @@
 
   // ── a base, SEM relevo (s03) ─────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  // A ÁGUA ESCURA (identidade §6, "A água escura nos mapas do porto"; Lucas, 08/10/2026): o mar e o porto do OSM
+  // (agua-osm-la, arquivo local, sem tile) em --agua-base, opaco, como 2ª camada do estilo: acima do satélite e abaixo de
+  // tudo o que a cena desenha. Tira as emendas do mosaico na água; o quebra-mar e os píeres ficam no satélite.
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+      agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "agua",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────
@@ -891,6 +967,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           for (var i = 0; i < FONTES.length; i++) if (!map.isSourceLoaded(FONTES[i])) return false;
           if (!map.isSourceLoaded("base")) return false;
+          if (!map.isSourceLoaded("agua")) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

@@ -103,3 +103,12 @@ M2 (s23, s31 e as margens de s26, s29, s33 e s37) ainda roda: o resto dele entra
 
 Depois de 02:31, nenhum pedido no `_tmp/maptiler-portoes.jsonl` até 02:39: a revisão final do `qc-visual` (lotes Q10 a Q12) julga
 os mapas pelos clipes 4K, sem abrir cena de mapa.
+
+## A rodada de arte r4, 08–09/10/2026 (22:0x–00:46), com a água escura
+
+| quando (Brasília) | o que | pedidos |
+|---|---|---|
+| 22:00–00:46 | portões dos mapistas e da passada do Claude central (`qc-cena`, `portao-mapa til` e `rodape`, `medir-margens`, `qc-video-avanca`), com a pré-carga, nas 23 cenas de mapa | 48.351 contados no `_tmp/maptiler-portoes.jsonl` (`portao-mapa` 14.527, `qc-carga` 10.970, `qc-fora-do-quadro` 6.430, `qc-tamanho` 5.521, `check-overlap` 3.850, `qc-contrato` 2.720, `medir-margens` 2.067, `qc-credito-fantasma` 2.002, `qc-video-avanca` 264); por cena: s01 5.735, s05 5.639, s03 4.200, s29 3.882, s07 2.830, s55 2.573, s48 2.538, s19 2.323, s10 1.987, s33 1.755, s44 1.613, s26 1.537, s37 1.469, s53 1.460, s42 1.443, s40 1.349, s49 1.250, s23 1.203, s14 1.000, s21 837, s12 765, s46 620, s17 343 |
+| 22:16–00:39 | renders 4K de prova dos mapistas: M2 s12, s14 (duas vezes), s19, s21, s23 (22:16–22:42); M3 s26, s29 (o run fundido s29–s32, 34,4 s) e s33 (a 1ª da s33 caiu antes do fim); M1 s01, s03, s05, s07 e s10 (com provas antes, às 22:42 e 22:56); M4 s37, s40, s42 e s44 (23:24–23:44); M5 s46, s53, s48, s49 e s55 (duas vezes) (00:06–00:39). Horários de cada um nos relatos (`_tmp/art-r4/m*/relato.md`) | não contados (o render não imprime os pedidos) |
+
+O painel da MapTiler continua sem leitura desde 30/09: é ele que diz o total do mês.

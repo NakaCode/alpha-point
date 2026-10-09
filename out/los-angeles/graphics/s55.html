@@ -50,6 +50,31 @@
       A metade direita e o canto de 400 × 400 ficam livres para os elementos do YouTube.
     · ZOOM SOBRE HAMLIN: o maior é 11,70 (≤ 11,90).
     · CÂMERA: pernas presas às palavras e giro contínuo de −2° a +2° nos 41,8 s.
+  RODADA r4 (mapista, lote M5, 08/10/2026; relato em out/los-angeles/_tmp/art-r4/m5/relato.md) — o que segue SUBSTITUI o
+  que diz o contrário acima:
+    · A ÁGUA ESCURA dos mapas do porto (identidade §6; Lucas, 08/10/2026): a camada agua-osm-la, opaca em --agua-base, é a
+      2ª camada do estilo(), logo acima do satélite e abaixo de tudo o que a cena desenha. Arquivo local: não pede tile. O
+      crédito não muda.
+    · 8.4 (o píer): a linha do Long Wharf sai do --neutro (cinza não é linha de mapa, identidade §6) para --rede-cor, grossa:
+      20 px sobre o escuro de 30 (neste zoom o píer tem ~30 px de comprimento no 4K). A pílula 'Port Los Angeles' fica PRESA à
+      cabeça do píer por uma guia curta (o ponto --tinta na cabeça e a linha de 4 px sobre o escuro de 10, o estilo da s12 e
+      da s42), em cima e à esquerda dela, do lado oposto ao do píer, que corre para nordeste. A pílula e o píer saem juntos
+      em 6,143 s (300/500 ms), antes de '1850' e 'ABOUT 19 MILES' (6,543 s): a pílula fica 2,3 s no ar.
+    · 'coast' (conceito r4 e regência, beat 10,867; s44 7.3): a costa acende como LINHA, a BEIRA D'ÁGUA das duas cidades, a
+      mesma da s44 p6 e pelo mesmo código: a borda dos corpos do porto do agua-porto-hoje-tiger que cai dentro de Wilmington de
+      1909 e, em San Pedro, a margem oeste do Main Channel (sem o Harbor Lake, sem as lagoas de menos de 50.000 m², sem as
+      arestas que um corpo d'água divide com outro; nunca a costa do TIGER sobre o quebra-mar). Ela corre de sudoeste para
+      nordeste em 1,2 s em 'coast', em --tinta 6 px sobre o escuro de 14 (a 10 sobre 24, a s44 de perto; neste zoom de 11,0–11,4
+      a de 10 px virava um borrão), e sai em 15,90 s (500 ms), antes de o canal acender em 'deep-water' (16,468 s): a margem
+      oeste do canal faz parte dela, e as duas juntas tapavam o canal. O ANEL que pulsava ali
+      saiu (conceito › _anel: o anel nunca faz as vezes de uma linha que devia acender). DECLARADO: é a beira d'água de hoje.
+    · 8.5 (a água): em 'water' (21,263 s) o preenchimento do canal sobe de 60 a 90 % em 500 ms e FICA, e a linha dele engrossa
+      de 6 para 12 px (o escuro de 14 para 22); o pulso de 'water' saiu (o de 'didn't' fica). O '53 FT' fica no ar durante 'So
+      is the water' e sai em 21,50 s (300 ms, fora em 21,80, antes da tela final), e sobe 50 px (dy −90) para a base dele
+      ficar acima de y 1880 em toda a viagem S2 → F.
+    · 8.3: .rotulo.liso com algarismos proporcionais (as caixas de '4–1 · 1897', '1850', '1906', '1909' e 'ABOUT 19 MILES'
+      ficam simétricas).
+    · A metade esquerda continua livre para a chamada de comentário (a peça entra por cima no Premiere, depois de 21,8 s).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -57,6 +82,7 @@
 <script src="../_media/_vendor/camera-mapa.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/agua-osm-la.js"></script>
 <script src="../_media/geo/la-hoje-tiger.js"></script>
 <script src="../_media/geo/la-1850-hamlin.js"></script>
 <script src="../_media/geo/la-1899-antes-da-faixa-hamlin.js"></script>
@@ -65,6 +91,7 @@
 <script src="../_media/geo/san-pedro-1909-divisa-hamlin.js"></script>
 <script src="../_media/geo/long-wharf-usgs1903-corrigido.js"></script>
 <script src="../_media/geo/main-channel-usace-ncf.js"></script>
+<script src="../_media/geo/agua-porto-hoje-tiger.js"></script>
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
 <script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
 <style>
@@ -85,6 +112,8 @@
   /* LEGENDA sobre o mapa (papel legenda, §4.1): 84 px, Inter 500, --tinta, numa pílula --rotulo de 16 × 28 */
   .rotulo.legenda { padding: 16px 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); }
   .rotulo.liso { -webkit-text-fill-color: transparent; }
+  /* 8.3 (r4): o canvas do texto liso pinta algarismos proporcionais; a caixa é medida com os mesmos */
+  .rotulo.liso { font-variant-numeric: normal; }
   #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
   /* COTA (a medida; textos-tela: "cota (Inter 84 px), não pílula de rótulo"; identidade §5, o traço de engenheiro):
      solta sobre o mapa, em --tinta, com o tratamento do nome sobre o mapa (§4.1: contorno de 14 px em --rotulo por fora
@@ -123,7 +152,10 @@
   #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
     font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
   #erroCena[hidden] { display: none; }
-
+  /* 8.4 (r4): a guia curta que prende a pílula 'Port Los Angeles' à cabeça do píer (o estilo da s12 e da s42) */
+  .guia-sob { fill: none; stroke: var(--rotulo); stroke-width: 10; stroke-linecap: round; }
+  .guia { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; }
+  .guia-ponto { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6; }
 </style>
 </head>
 <body>
@@ -132,6 +164,7 @@
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
     <g id="tique" opacity="0"><path class="medida sobre" id="tiqueSobre" d=""/></g>
     <g id="regua" opacity="0"><path class="medida sobre" id="reguaSobre" d=""/></g>
+    <g id="guiaPier" opacity="0"><path class="guia-sob" id="guiaPierSob" d=""/><path class="guia" id="guiaPierLinha" d=""/><circle class="guia-ponto" id="guiaPierPonto" r="12" cx="0" cy="0"/></g>
   </svg>
   <div id="rotulos">
     <div class="rotulo caixa liso" id="rotVoto" data-qc-papel="rotulo">4–1 · 1897</div>
@@ -299,7 +332,8 @@
     giro: [-2, 2],
     cauda: 21.80,
     hojeCai: [19.663, 20.163],
-    pier: { entra: 4.143, dura: 0.6, sai: 8.383 },
+    pier: { entra: 4.143, dura: 0.6, sai: 6.143 },     // 8.4 (r4): sai com a pílula, antes de '1850'
+    costa: { corre: [12.303, 1.2], sai: 15.90 },       // r4: em 'coast' a beira d'água corre de sudoeste a nordeste; sai antes do canal
     c1850: [6.543, 7.043],
     c1899: [8.383, 8.883],
     faixa: { entra: 8.383, dura: 1.2, norte: 34.012, sul: 33.744 },
@@ -308,20 +342,19 @@
     vira: [10.893, 11.393],                            // 'then voted': Wilmington passa à cor da cidade
     spCorre: [11.183, 11.983],
     some: [19.663, 20.163],                            // 'still'
-    canal: { entra: 16.468, pulsos: [17.663, 21.263] },
+    canal: { entra: 16.468, pulsos: [17.663], acende: [21.263, 21.763] },   // 8.5 (r4): em 'water' sobe a 90 % e fica
     regua: { entra: 6.543, dura: 0.6, sai: 8.70 },
     tique: { lat: 33.87, janela: [-118.33, -118.27], entra: 9.023, dura: 0.30, sai: 12.90 },
-    aneis: [ { id: "anelSP", ref: "sanPedro", entra: 1.663, pulsos: [1.663, 2.863], sai: 5.90 },
-             { id: "anelCosta", ref: "costa", entra: 12.303, pulsos: [12.303, 13.503], sai: 14.90 } ],
+    aneis: [ { id: "anelSP", ref: "sanPedro", entra: 1.663, pulsos: [1.663, 2.863], sai: 5.90 } ],   // r4: o anelCosta saiu (a costa é linha)
     rotulos: [
       { id: "rotVoto",     ref: "sanPedro",  lado: "esquerda", dx: -120, dy: -120, entra: 2.603,  sai: 5.90 },
-      { id: "rotPier",     ref: "pier",      lado: "esquerda", dx: -120, dy: -150,  entra: 4.143,  sai: 6.55 },
+      { id: "rotPier",     ref: "pier",      lado: "esquerda", dx: -60,  dy: -150, entra: 4.143,  sai: 6.143 },   // 8.4 (r4): presa por guia
       { id: "rotMilhas",   ref: "reguaMeio", lado: "direita",  dx: 90,   dy: 0,   entra: 6.543,  sai: 8.70 },
       { id: "ano1850",     ref: "oeste1850", lado: "esquerda", dx: -60,  dy: 0,   entra: 6.543,  sai: 13.20 },
       { id: "ano1906",     ref: "oeste1906", lado: "esquerda", dx: -60,  dy: 0,   entra: 8.703,  sai: 13.20 },
       { id: "cotaLargura", ref: "tiqueLeste", lado: "direita", dx: 60,   dy: 0,   entra: 9.023,  sai: 12.90 },
       { id: "ano1909",     ref: "wilmLeste", lado: "direita",  dx: 60,   dy: 0,   entra: 11.183, sai: 13.20 },
-      { id: "cota53",      ref: "canalLeste", lado: "direita", dx: 70,   dy: -40, entra: 16.468, sai: 19.663 }
+      { id: "cota53",      ref: "canalLeste", lado: "direita", dx: 70,   dy: -90, entra: 16.468, sai: 21.50 }    // 8.5 (r4)
     ],
     legenda: { entra: 8.383, sai: 10.567 },            // sai inteira até 10,867 s ('then'), quando Wilmington vira a cidade
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors" },
@@ -352,14 +385,87 @@
     if (x50.length < 2 || x06.length < 2) return falhar("as âncoras dos anos não cruzaram os contornos.");
     var wl = rw.reduce(function (m, p) { return p[0] > m[0] ? p : m; });
     var cl0 = aneis(CANAL.geometry)[0].reduce(function (m, p) { return p[0] > m[0] ? p : m; });
+    COSTA = beiraDagua(); if (!COSTA) return;
     REFS = { sanPedro: pontoNome("lugares-gnis-nrhp", "San Pedro"), pier: pontoNome("pontos-historicos-usgs-corrigidos", "Port Los Angeles (Long Wharf head)"),
              plaza: plaza, wilmington: wil, reguaMeio: [(plaza[0] + wil[0]) / 2, (plaza[1] + wil[1]) / 2],
              oeste1850: [x50[0], 34.05], oeste1906: [x06[0], 33.93], tiqueLeste: TIQUE[1], wilmLeste: wl,
              costa: SP0[SP0.length - 1], canalLeste: cl0 };
   }
+  // A BEIRA D'ÁGUA das duas cidades (r4; o mesmo código da s44, lote M4): a borda dos corpos do porto do
+  // agua-porto-hoje-tiger, por regra (cabeçalho)
+  var COSTA = null;
+  function noAnel(p, r) {
+    var c = false;
+    for (var i = 0, j = r.length - 1; i < r.length; j = i++)
+      if ((r[i][1] > p[1]) !== (r[j][1] > p[1]) && p[0] < (r[j][0] - r[i][0]) * (p[1] - r[i][1]) / (r[j][1] - r[i][1]) + r[i][0]) c = !c;
+    return c;
+  }
+  function distSeg(p, a, b) {
+    var k = 111320 * Math.cos(p[1] * Math.PI / 180), ax = (a[0] - p[0]) * k, ay = (a[1] - p[1]) * 110574, bx = (b[0] - p[0]) * k, by = (b[1] - p[1]) * 110574;
+    var dx = bx - ax, dy = by - ay, L = dx * dx + dy * dy, u = L ? cl(-(ax * dx + ay * dy) / L, 0, 1) : 0;
+    return Math.hypot(ax + u * dx, ay + u * dy);
+  }
+  function beiraDagua() {
+    var fc = geo("agua-porto-hoje-tiger"); if (!fc) return null;
+    var anW = aneis(WILM.geometry)[0];
+    function oesteSP(lat) {   // a longitude da divisa oeste de San Pedro nessa latitude
+      for (var i = 1; i < SP0.length; i++) { var a = SP0[i - 1], b = SP0[i];
+        if ((a[1] - lat) * (b[1] - lat) <= 0 && a[1] !== b[1]) return a[0] + (lat - a[1]) * (b[0] - a[0]) / (b[1] - a[1]); }
+      return null;
+    }
+    function dentro(p) {
+      if (noAnel(p, anW)) return true;
+      if (p[1] > 33.712 && p[1] < 33.7555 && p[0] < -118.275) { var w = oesteSP(p[1]); return w != null && p[0] > w; }
+      return false;
+    }
+    var aneisAgua = [];
+    fc.features.forEach(function (f, i) {
+      var pr = f.properties || {};
+      if (pr.name === "Harbor Lk" || !(pr.AWATER_m2 >= 50000)) return;
+      aneis(f.geometry).forEach(function (r) { aneisAgua.push({ i: i, r: r }); });
+    });
+    function dividida(i, p) {   // a aresta que um corpo d'água divide com outro é água com água, não beira
+      for (var k = 0; k < aneisAgua.length; k++) { var o = aneisAgua[k]; if (o.i === i) continue;
+        for (var j = 1; j < o.r.length; j++) if (distSeg(p, o.r[j - 1], o.r[j]) < 8) return true; }
+      return false;
+    }
+    var pecas = [];
+    aneisAgua.forEach(function (o) {
+      var cur = [];
+      for (var j = 1; j < o.r.length; j++) {
+        var a = o.r[j - 1], b = o.r[j], m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+        if (dentro(a) && dentro(b) && !dividida(o.i, m)) { if (!cur.length) cur = [a]; cur.push(b); }
+        else { if (cur.length >= 2) pecas.push(cur); cur = []; }
+      }
+      if (cur.length >= 2) pecas.push(cur);
+    });
+    if (!pecas.length) { falhar("a beira d'água das duas cidades saiu vazia."); return null; }
+    var w = 180, e = -180, s = 90, n = -90;
+    pecas.forEach(function (l) { l.forEach(function (q) { w = Math.min(w, q[0]); e = Math.max(e, q[0]); s = Math.min(s, q[1]); n = Math.max(n, q[1]); }); });
+    var k = 111320 * Math.cos((s + n) / 2 * Math.PI / 180), vx = (e - w) * k, vy = (n - s) * 110574, vn = Math.hypot(vx, vy);
+    var par = function (q) { return (((q[0] - w) * k) * vx + ((q[1] - s) * 110574) * vy) / (vn * vn); };
+    window.__beiraDagua = { pecas: pecas.length, caixa: [w, s, e, n].map(function (x) { return +x.toFixed(5); }) };
+    return { pecas: pecas, par: par };
+  }
+  function costaAte(u) {
+    var out = [];
+    COSTA.pecas.forEach(function (l) {
+      var cur = [];
+      for (var j = 0; j < l.length; j++) {
+        var q = l[j], pq = COSTA.par(q);
+        if (pq <= u) { cur.push(q); continue; }
+        if (cur.length) { var a = l[j - 1], pa = COSTA.par(a), f = (u - pa) / ((pq - pa) || 1); cur.push([a[0] + (q[0] - a[0]) * f, a[1] + (q[1] - a[1]) * f]); }
+        if (cur.length >= 2) out.push(cur);
+        cur = [];
+      }
+      if (cur.length >= 2) out.push(cur);
+    });
+    return out;
+  }
   function cenaCarregar() {
     poly("hoje", HOJE, { fracao: 0.40 });
-    linhaCor("pier", fcLinhas([[PIER[0], PIER[0]]]), "--neutro", "#737D8E", 10, 18);
+    // 8.4 (r4): o píer em --rede-cor, grosso (20 px sobre o escuro de 30), nunca em --neutro
+    linhaCor("pier", fcLinhas([[PIER[0], PIER[0]]]), "--rede-cor", "#2EC4B6", 20, 30);
     poly("c1850", C1850, { fracao: 0.85 });
     poly("c1899", C1899, { fracao: 0.85 });
     poly("wilm", WILM, { cor: "--contraparte", corFb: "#2EC4B6", fracao: 0.35, linha: "--contraparte", linhaFb: "#2EC4B6", linhaW: 5 });
@@ -370,6 +476,7 @@
     linhaCor("spCidade", fcLinhas([[SP0[0], SP0[0]]]), "--destaque", "#F5A524", 6, 14);
     linhaCor("contato", fcLinhas([CONT_SP, CONT_W]), "--tinta", "#F4F1EA", 12, 1);
     poly("canal", CANAL, { cor: "--tinta", corFb: "#F4F1EA", fracao: 0.60, linha: "--tinta", linhaW: 6, sobW: 14 });
+    linhaCor("costa", fcLinhas([]), "--tinta", "#F4F1EA", 6, 14);    // r4: a beira d'água, por cima das cidades (6 sobre 14 neste zoom)
   }
   function pulso(t, lista, d) { var v = 0; lista.forEach(function (t0) { var u = (t - t0) / d; if (u >= 0 && u < 1) v = Math.max(v, Math.sin(Math.PI * u)); }); return v; }
   function cenaAplicar(t) {
@@ -379,6 +486,17 @@
     var P = CENA.pier, up = eio(seg(t, P.entra, P.dura));
     setDado("pier", up.toFixed(3), fcLinhas([linhaAte(PIER, up)]));
     setLinha("pier", t < P.entra ? 0 : 1 - eio(seg(t, P.sai, 0.5)));
+    // 8.4 (r4): a guia da pílula à cabeça do píer, com a opacidade da pílula (a mesma conta do placeRotulo)
+    var gp = E("guiaPier");
+    if (gp) {
+      var rp = null; CENA.rotulos.forEach(function (r) { if (r.id === "rotPier") rp = r; });
+      var hp = map.project(REFS.pier), vg = eo(seg(t, rp.entra, 0.3)) * (1 - eio(seg(t, rp.sai, 0.3)));
+      var cx = hp.x + rp.dx - 6, cy = hp.y + rp.dy + 80;   // o canto de baixo à direita da pílula (meia altura ≈ 86)
+      var dg = "M " + hp.x.toFixed(2) + " " + hp.y.toFixed(2) + " L " + cx.toFixed(2) + " " + cy.toFixed(2);
+      E("guiaPierSob").setAttribute("d", dg); E("guiaPierLinha").setAttribute("d", dg);
+      E("guiaPierPonto").setAttribute("cx", hp.x.toFixed(2)); E("guiaPierPonto").setAttribute("cy", hp.y.toFixed(2));
+      gp.setAttribute("opacity", vg.toFixed(3));
+    }
     setPoly("c1850", eio(seg(t, CENA.c1850[0], 0.5)) * so);
     setPoly("c1899", eio(seg(t, CENA.c1899[0], 0.5)) * so);
     var F = CENA.faixa, uf = eio(seg(t, F.entra, F.dura));
@@ -395,7 +513,14 @@
     var C = CENA.contato, vc = t < C[1] ? eio(seg(t, C[0], C[1] - C[0])) : 1 - eio(seg(t, C[1], C[2] - C[1]));
     opac("contato-linha", "line-opacity", vc); opac("contato-sob", "line-opacity", 0);
     var vca = eio(seg(t, CENA.canal.entra, 0.5)), pc = pulso(t, CENA.canal.pulsos, 0.6);
-    setPoly("canal", vca * (1 + 0.5 * pc), vca);
+    // 8.5 (r4): em 'water' o preenchimento sobe de 60 a 90 % (× 1,5) e FICA, e a linha engrossa de 6 a 12 px
+    var ac = eio(seg(t, CENA.canal.acende[0], CENA.canal.acende[1] - CENA.canal.acende[0]));
+    setPoly("canal", vca * (1 + 0.5 * Math.max(pc, ac)), vca);
+    pintura("canal-linha", "line-width", +(6 + 6 * ac).toFixed(2)); pintura("canal-sob", "line-width", +(14 + 8 * ac).toFixed(2));
+    // r4: a beira d'água corre em 1,2 s (eio) de sudoeste a nordeste em 'coast' e sai em 15,90 s, antes do canal
+    var K = CENA.costa.corre, ucs = eio(seg(t, K[0], K[1]));
+    setDado("costa", t < K[0] ? "vazio" : ucs.toFixed(3), fcLinhas(t < K[0] ? [] : costaAte(ucs >= 1 ? 2 : ucs)));
+    setLinha("costa", t < K[0] ? 0 : 1 - eio(seg(t, CENA.costa.sai, 0.5)));
     var T = CENA.tique, g = E("tique");
     if (g) {
       E("tiqueSobre").setAttribute("d", tiqueD(TIQUE[0], TIQUE[1], eo(seg(t, T.entra, T.dura))));
@@ -468,9 +593,14 @@
   // ── a base, SEM relevo ─────────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // r4: a água escura dos mapas do porto (identidade §6; Lucas, 08/10/2026): a 2ª camada do estilo, opaca em --agua-base,
+    // logo acima do satélite e abaixo de tudo o que a cena desenha (agua-osm-la, arquivo local: não pede tile)
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -863,6 +993,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           for (var i = 0; i < FONTES.length; i++) if (!map.isSourceLoaded(FONTES[i])) return false;
           if (!map.isSourceLoaded("base")) return false;
+          if (!map.isSourceLoaded("aguaBase")) return false;   // r4: a água escura (local) também
           return nivelUnico();
         } catch (e) { return false; }
       };

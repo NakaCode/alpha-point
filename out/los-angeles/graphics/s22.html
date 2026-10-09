@@ -31,7 +31,9 @@
             B "LOCATED AT A POINT" (3ª linha)   ← "meant one"    (3,523–4,083)
             C "OPEN TO" (fim da 3ª linha)        ← "open to"      (4,083–4,483)
             D "COMPETITION" (4ª linha)           ← "competition"  (4,483–5,198)
-          Cada pedaço cresce da esquerda para a direita e fica.
+          Cada pedaço cresce da esquerda para a direita e fica. RODADA 4 (lote E3, R4.13 do cetico-s22, 08/10/2026): as quatro
+          caixas desceram para a TINTA medida no scan (antes ficavam 23–37 px acima das letras, e a de "A HARBOR" encostava em
+          "BY THE PEOPLE" no celular): y 1822→1882, 1919→1979 (×2) e 2016→2076 em px do arquivo, 60 px de altura, ~7 px de folga.
     5,44  "railroads,": a ETIQUETA de papel pousa à direita da folha (pouso de foto, 0,55 s, +2°): "not free of charge" (legenda
           84 px, Inter 500, --tinta-escura sobre --papel, em duas linhas). Fica 2,73 s no ar (≥ 2,0 s, identidade §4.3). O conceito a
           punha em "free of charge" (6,883: 1,28 s) e a primeira versão em "not" (6,323: 1,84 s); o qc-visual reprovou os 1,84 s e o
@@ -441,11 +443,15 @@
   var FOL = { w: 1849, h: 1287, cx: 1560, cy: 1045, rot: -0.9, K: 0.78, x0: 150, y0: 480 };   // o recorte x 150→2520, y 480→2130; cy 1000 → 1045 em 08/10 (a fita ficava em y 128–136 na tela sob a câmera a 1,14)
   var SLIP = { w: 560, h: 300, cx: 2920, cy: 1185, rot: 2.0 };
   // o GRIFO: retângulos em px do ARQUIVO (2664 × 4348), medidos pelas colunas de tinta do scan (PIL, limiar 128; a grade z-willard.jpg foi só a primeira leitura)
+  // RODADA 4, lote E3 (R4.13, cetico-s22): as quatro faixas estavam 23–37 px ACIMA da tinta (a de "A HARBOR" ficava a 7 px de
+  // "BY THE PEOPLE" e cobria só a metade de cima das letras). Re-medidas pelas linhas de tinta do scan (PIL, limiar 128): linha 2
+  // "…A HARBOR" y 1828→1875 ("A" x 1755→1797, "HARBOR" 1829→2078); linha 3 "LOCATED AT A POINT OPEN TO" y 1926→1973 ("LOCATED"
+  // começa em x 793); linha 4 "COMPETITION" y 2023→2070 (x 1073→1497). Cada faixa: 60 px de altura, ~7 px de folga em cima e embaixo.
   var GR = criarGrifos("folGrifos", [
-    { r: [1750, 2085, 1792, 1852], t: [3.123, 3.523] },   // "A HARBOR"            ← harbor
-    { r: [815, 1478, 1895, 1955],  t: [3.523, 4.083] },   // "LOCATED AT A POINT"  ← meant one
-    { r: [1490, 1790, 1895, 1955], t: [4.083, 4.483] },   // "OPEN TO"             ← open to
-    { r: [1056, 1502, 2000, 2060], t: [4.483, 5.198] }    // "COMPETITION"         ← competition
+    { r: [1750, 2085, 1822, 1882], t: [3.123, 3.523] },   // "A HARBOR"            ← harbor
+    { r: [786, 1478, 1919, 1979],  t: [3.523, 4.083] },   // "LOCATED AT A POINT"  ← meant one  (o "L" inteiro: a tinta começa em 793)
+    { r: [1490, 1790, 1919, 1979], t: [4.083, 4.483] },   // "OPEN TO"             ← open to
+    { r: [1056, 1502, 2016, 2076], t: [4.483, 5.198] }    // "COMPETITION"         ← competition
   ], FOL.K, FOL.x0, FOL.y0);
 
   function cena(t) {

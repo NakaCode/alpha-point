@@ -20,9 +20,14 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s10 (125,033 → 140,8 s do m
       em 'bay' a pílula 'San Pedro Bay' sobre o mar aberto; em 'estuary' a pílula 'Wilmington estuary' com uma guia curta
       até onde as folhas do USGS de 1896 põem o estuário (hoje a West Basin e a East Basin do porto: pauta-geo.md, "A água
       de 1886–1888").
-    · p3 (10,5–15,77): em 'distance' a régua e a cota esmaecem para --neutro a 40 % (a distância perde peso); em 'water' a
-      água do porto de hoje (agua-porto-hoje-tiger, sem os lagos de terra firme) acende em --tinta a 35 %, com um pulso de
-      500 ms, e o quadrado da cidade apaga; em 'made' a régua some. Só a água fica acesa até o corte.
+    · p3 (10,5–15,77), RODADA r4: em 'distance' (11,787) a régua, 'ABOUT 19 MILES' e o quadrado da cidade SAEM (a distância
+      perde peso saindo, nunca esmaecendo a --neutro: revisão de espectador R2.8/C-s10-1; conceito r4); em 'water' (13,382) a
+      água do porto de hoje do lado de Los Angeles (agua-porto-hoje-tiger, sem os lagos de terra firme) acende em --tinta a
+      35 % com contorno de 6 px (só a borda de fora) em 500 ms e FICA (_agua_do_porto). Só a água fica acesa até o corte.
+    · r4, Q10 item 1: a pílula '1850' entra em 'eighteen' (2,35 s), não antes da voz; o bloco fica 2,08 s no ar.
+    · r4, margem: a pílula do estuário 50 px mais à direita (medir-margens deu 179 px em 15,75 s); o ponto da guia passa para
+      dentro do East Basin (−118,2540 / 33,7635, ~240 m da margem; o antigo caía a 15 m dela).
+    · r4, a água escura (identidade §6; agua-osm-la, 2ª camada do estilo, em --agua-base), fora da lista do pedido: ver estilo().
   ⚠ NÃO DESENHADO, devolvido ao Claude central: o "1890s outline (schematic)" do textos-tela. Não há geometria do estuário
   de época em _media/geo/ (pauta-geo.md: a carta de 1888 não foi obtida; a Wilmington Lagoon da folha de 1896 não virou
   camada), e contorno à mão sobre o satélite é afirmação sobre a base (ofício §2 e §6c). Sem o contorno, a legenda que o
@@ -42,6 +47,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s10 (125,033 → 140,8 s do m
 <script src="../_media/geo/la-1850-hamlin.js"></script>
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
 <script src="../_media/geo/agua-porto-hoje-tiger.js"></script>
+<script src="../_media/geo/agua-osm-la.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -120,7 +126,6 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s10 (125,033 → 140,8 s do m
 
   .regua-sob { fill: none; stroke: var(--tinta); stroke-width: 22; stroke-linecap: round; stroke-linejoin: round; opacity: .5; }
   .regua { fill: none; stroke: var(--rotulo); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
-  #rot19.neutro { color: var(--neutro); }
 </style>
 </head>
 <body>
@@ -154,7 +159,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s10 (125,033 → 140,8 s do m
   var CENA = {
     duracao: 15.767,                                 // espelho.json › s10 › dur
     perfil: "maptiler",
-    fontes: ["c1850", "agua"],
+    fontes: ["c1850", "agua", "aguaBorda", "aguaBase"],
     pontos: {
       A0: { lng: -118.266, lat: 33.888, zoom: 11.08 },
       A1: { lng: -118.258, lat: 33.874, zoom: 11.22 },
@@ -165,16 +170,19 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s10 (125,033 → 140,8 s do m
       { t0: 6.80, t1: 15.767, de: "A1", para: "A2", tipo: "h" }
     ],
     giro: [-1.5, 1.5],
-    c1850: { contorno: 0.0, preenche: 2.347, apaga: 13.382 },
-    regua: { desenha: [4.25, 5.85], neutro: 11.787, sai: 15.067 },
-    agua: { acende: 13.382 },
-    guiaEst: { entra: 9.387, alvo: [-118.262, 33.766] },
+    // r4 (R2.8/C-s10-1; conceito r4): em 'distance' (11,787) a régua e 'ABOUT 19 MILES' SAEM (300 ms), sem esmaecer a
+    // --neutro; a cidade de 1850 apaga junto com a régua dela, à vista (a opção do cético)
+    c1850: { contorno: 0.0, preenche: 2.347, apaga: 11.787 },
+    regua: { desenha: [4.25, 5.85], sai: 11.787 },
+    // r4, conceito › _agua_do_porto: em 'water' (13,382) a água do porto de hoje acende a 35 % com contorno de 6 px em
+    // 500 ms e FICA (nunca pulso); só ela fica acesa até o corte
+    agua: { acende: 13.382, op: 0.35 },
+    guiaEst: { entra: 9.387, alvo: [-118.2540, 33.7635] },   // r4: dentro do East Basin, a ~240 m da margem (o antigo caía a 15 m dela), como na s07
     rotulos: [
-      { id: "rot1850", ref: "oeste1850", lado: "esquerda", dx: -70, dy: 0, entra: 0.30,  sai: 4.20 },
-      { id: "rot19",   ref: "meioR",     lado: "direita",  dx: 90,  dy: 0, entra: 5.467, sai: 15.067,
-        op: function (t) { return 1 - 0.6 * eio(seg(t, 11.787, 0.5)); } },   // a cota esmaece com a régua
+      { id: "rot1850", ref: "oeste1850", lado: "esquerda", dx: -70, dy: 0, entra: 2.35,  sai: 4.20 },   // r4, Q10 item 1: na voz ('eighteen' 2,347); 2,08 s no ar pela conta do Q9
+      { id: "rot19",   ref: "meioR",     lado: "direita",  dx: 90,  dy: 0, entra: 5.467, sai: 11.787 },   // r4, R2.8: sai com a régua
       { id: "rotBaia", lnglat: [-118.16, 33.705], lado: "direita", dx: 0, dy: 0, entra: 7.072, sai: null },
-      { id: "rotEst",  lnglat: [-118.345, 33.792], lado: "esquerda", dx: 60, dy: 0,   /* +60: margem de 200 (Q9) */ entra: 9.387, sai: null }
+      { id: "rotEst",  lnglat: [-118.345, 33.792], lado: "esquerda", dx: 110, dy: 0,   /* +110: margem de 200 no pior instante (15,75 s; medir-margens deu 179 com +60) */ entra: 9.387, sai: null }
     ],
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0, extra: [] }
   };
@@ -398,11 +406,29 @@ var C1850 = feicao("la-1850-hamlin");
   var PLAZA = pontoNome("lugares-gnis-nrhp", "Los Angeles Plaza"), WILM = pontoNome("lugares-gnis-nrhp", "Wilmington");
   var AGUA = geo("agua-porto-hoje-tiger");
   if (window.__erroCena) return;
-  // a água do porto, sem os lagos de terra firme (o Harbor Lake e os pequenos ao norte de 33,78 N)
+  // r4: a água do porto de hoje do lado de Los Angeles (o polígono principal, o West Basin, o Main Channel, o Northwest Slip e o
+  // East Basin), sem os lagos de terra firme ao norte de 33,78 N: a mesma água da s01 e da s07 (_agua_do_porto). A de Long
+  // Beach fica de fora: o pedaço "San Pedro Bay" do TIGER tem lados retos de 1 a 2,5 km no mar aberto (cortes de bloco, não
+  // costa), e com o contorno de 6 px eles virariam linhas desenhadas no mar (ofício §6c)
   var AGUA_PORTO = { type: "FeatureCollection", features: AGUA.features.filter(function (f) {
-    var mx = -Infinity; aneis(f.geometry).forEach(function (r) { r.forEach(function (p) { if (p[1] > mx) mx = p[1]; }); });
-    return mx < 33.78 || f.properties.name === "East Basin";
+    var mx = -Infinity, mxx = -Infinity, mny = Infinity;
+    aneis(f.geometry).forEach(function (r) { r.forEach(function (p) { if (p[1] > mx) mx = p[1]; if (p[0] > mxx) mxx = p[0]; if (p[1] < mny) mny = p[1]; }); });
+    return mx < 33.78 && mxx < -118.23 && mny < 33.77;   // sem as duas lagoas de terra firme ao norte (33,774–33,779)
   }) };
+  // o contorno: só as arestas que nenhum outro pedaço divide (os cortes internos do TIGER entre dois pedaços não viram linha)
+  var AGUA_BORDA = (function () {
+    var conta = {}, lista = [];
+    var chave = function (p) { return p[0].toFixed(6) + "," + p[1].toFixed(6); };
+    AGUA_PORTO.features.forEach(function (f) { aneis(f.geometry).forEach(function (r) {
+      for (var i = 1; i < r.length; i++) { var a = chave(r[i - 1]), b = chave(r[i]); if (a === b) continue;
+        var k = a < b ? a + "|" + b : b + "|" + a; conta[k] = (conta[k] || 0) + 1; lista.push([r[i - 1], r[i], k]); } }); });
+    var linhas = [], atual = null;
+    lista.forEach(function (e) {
+      if (conta[e[2]] > 1) { atual = null; return; }
+      if (atual && atual[atual.length - 1] === e[0]) atual.push(e[1]); else { atual = [e[0], e[1]]; linhas.push(atual); }
+    });
+    return { type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: linhas } };
+  })();
   var oeste = Infinity;
   aneis(C1850.geometry).forEach(function (r) { r.forEach(function (p) { if (p[0] < oeste) oeste = p[0]; }); });
   var REFS = { oeste1850: [oeste, PLAZA[1]], meioR: [(PLAZA[0] + WILM[0]) / 2, (PLAZA[1] + WILM[1]) / 2] };
@@ -413,6 +439,9 @@ var C1850 = feicao("la-1850-hamlin");
     map.addSource("agua", { type: "geojson", data: AGUA_PORTO });
     map.addLayer({ id: "agua-fill", type: "fill", source: "agua",
       paint: { "fill-color": tok("--tinta", "#F4F1EA"), "fill-opacity": 0, "fill-opacity-transition": semTransicao } });
+    map.addSource("aguaBorda", { type: "geojson", data: AGUA_BORDA });
+    map.addLayer({ id: "agua-linha", type: "line", source: "aguaBorda", layout: linhaContorno,
+      paint: { "line-color": tok("--tinta", "#F4F1EA"), "line-width": 6, "line-opacity": 0, "line-opacity-transition": semTransicao } });
     map.addSource("c1850", { type: "geojson", data: C1850 });
     map.addLayer({ id: "c1850-fill", type: "fill", source: "c1850",
       paint: { "fill-color": tok("--destaque", "#F5A524"), "fill-opacity": 0, "fill-opacity-transition": semTransicao } });
@@ -426,10 +455,10 @@ var C1850 = feicao("la-1850-hamlin");
     var C = CENA.c1850, vc = eo(seg(t, C.contorno, 0.3)) * (1 - eio(seg(t, C.apaga, 0.5))), vf = eio(seg(t, C.preenche, 0.5)) * (1 - eio(seg(t, C.apaga, 0.5)));
     opac("c1850-fill", "fill-opacity", 0.85 * vf);
     opac("c1850-sob", "line-opacity", vc); opac("c1850-linha", "line-opacity", vc);
-    // a água acende a 35 % com um pulso único de 500 ms (até 55 %, de volta a 35 %)
-    var A = CENA.agua.acende, ua = seg(t, A, 0.5), va = t < A ? 0 : 0.35 + 0.20 * Math.sin(Math.PI * ua) * (ua < 1 ? 1 : 0);
-    opac("agua-fill", "fill-opacity", va * eo(seg(t, A, 0.15)));
-    // a régua: cresce, esmaece para --neutro a 40 % em 'distance', some em 'made'
+    // a água acende a 35 % com o contorno em 500 ms e fica (r4: sem o pulso)
+    var ua = eio(seg(t, CENA.agua.acende, 0.5));
+    opac("agua-fill", "fill-opacity", CENA.agua.op * ua); opac("agua-linha", "line-opacity", ua);
+    // a régua: cresce e sai em 'distance' (r4: nunca esmaece a --neutro)
     var R = CENA.regua, g = E("regua");
     if (g) {
       var pa = map.project(PLAZA), pb = map.project(WILM), u = eio(seg(t, R.desenha[0], R.desenha[1] - R.desenha[0]));
@@ -439,10 +468,7 @@ var C1850 = feicao("la-1850-hamlin");
       if (u > 0) d += " M " + (pa.x + px).toFixed(2) + " " + (pa.y + py).toFixed(2) + " L " + (pa.x - px).toFixed(2) + " " + (pa.y - py).toFixed(2);
       if (u >= 1) d += " M " + (pb.x + px).toFixed(2) + " " + (pb.y + py).toFixed(2) + " L " + (pb.x - px).toFixed(2) + " " + (pb.y - py).toFixed(2);
       E("rSob").setAttribute("d", d); E("r").setAttribute("d", d);
-      var un = eio(seg(t, R.neutro, 0.5));
-      E("r").style.stroke = un > 0.5 ? tok("--neutro", "#737D8E") : "";
-      g.setAttribute("opacity", (t < R.desenha[0] ? 0 : (1 - 0.6 * un) * (1 - eio(seg(t, R.sai, 0.3)))).toFixed(3));
-      var c19 = E("rot19"); if (c19) c19.classList.toggle("neutro", un > 0.5);
+      g.setAttribute("opacity", (t < R.desenha[0] ? 0 : 1 - eio(seg(t, R.sai, 0.3))).toFixed(3));
     }
     // a guia curta da pílula do estuário até o lugar (sem afirmar forma)
     var G = CENA.guiaEst, gg = E("guiaEst"), rr = rotuloPorId("rotEst");
@@ -461,9 +487,16 @@ var C1850 = feicao("la-1850-hamlin");
   // ── a base, SEM relevo ─────────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // r4: a água escura dos mapas do porto (identidade §6; Lucas, 08/10/2026: "todos os mapas do porto"): a 2ª camada do
+    // estilo, opaca em --agua-base, logo acima do satélite e abaixo de tudo o que a cena desenha (agua-osm-la, arquivo local:
+    // não pede tile). FORA da lista do pedido (s01, s05, s07): sem ela, com a água acesa só do lado de Los Angeles, as
+    // emendas do mosaico na água de Long Beach (placas cinza de borda reta) ficavam ao lado da água acesa e se liam como ela
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────

@@ -32,6 +32,13 @@
     · sem o contorno de 1899 (anacrônico nos anos 1890: regencia.json › _ajuste_central) e sem a pílula "San Pedro", que
       não está no textos-tela.json da s23 (lista fechada): San Pedro é o fim da guia do 2º cartão, com um ponto de 8 px.
   Nenhuma geometria de Hamlin na cena.
+  RODADA r4 (mapista, lote M2, 08/10/2026; relato em out/los-angeles/_tmp/art-r4/m2/relato.md). O que mudou do texto acima:
+    · R4.3 (cetico-s23): a pílula 'San Pedro' (T375, que entrou na lista fechada) no fim da guia 2, logo acima do ponto, em
+      'San' (7,117), com o cartão de Morgan, até o corte: cartão → guia → ponto → nome, dos dois lados. A legenda de Morgan
+      sobe para logo abaixo do ponto (sob a pílula), fora do canto reservado de 400 × 400.
+    · A ÁGUA ESCURA (identidade §6; Lucas, 08/10/2026): agua-osm-la, opaca, em --agua-base, 2ª camada do estilo(), acima do
+      satélite e abaixo de tudo o que a cena desenha. Ela cobre o quadrado claro de Santa Barbara Island (R4.6) e as faixas
+      do mar; por isso a câmera não mudou de zoom (o conserto sugerido era descer a 10,38–10,48). O crédito não muda.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -41,6 +48,7 @@
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
 <script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
+<script src="../_media/geo/agua-osm-la.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -120,6 +128,7 @@
   <div class="cartao" id="cartao2" data-qc-papel="fala">“would probably eventuate in a serious monopoly”</div>
   <div id="rotulos">
     <div class="rotulo liso" id="rotPortLA" data-qc-papel="rotulo">Port Los Angeles</div>
+    <div class="rotulo liso" id="rotSP" data-qc-papel="rotulo">San Pedro</div>
     <div class="rotulo legenda liso" id="legWillard" data-qc-papel="legenda">Willard, 1899</div>
     <div class="rotulo legenda" id="legMorgan" data-qc-papel="legenda">Richard Morgan, minority report, 1897</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
@@ -150,7 +159,12 @@
     rotulos: [
       { id: "rotPortLA",  ref: "PLA", lado: "direita", dx: 44, dy: 0, entra: -1, sai: null },
       { id: "legWillard", tela: [1840, 620], lado: "direita", vert: "baixo", entra: 3.52, sai: null },
-      { id: "legMorgan",  tela: [2800, 1520], lado: "direita", vert: "baixo", entra: 7.82, sai: null }
+      // r4: sobe para 1260 (logo abaixo do ponto de San Pedro, sob a pílula): em 1520 o fundo dela entrava no canto reservado
+      // de 400 × 400 (x ≥ 3440, y ≥ 1760; identidade §4.2; cetico-s23 R4.3, observação)
+      { id: "legMorgan",  tela: [2800, 1260], lado: "direita", vert: "baixo", entra: 7.82, sai: null },
+      // r4, R4.3 (T375): a pílula 'San Pedro' no fim da guia 2, em 'San', com o cartão de Morgan, até o corte; logo acima do
+      // ponto (à direita dele ela passaria da margem de 3640 no zoom final)
+      { id: "rotSP",      ref: "SP", lado: "direita", vert: "cima", dx: -30, dy: -36, entra: 7.117, sai: null }
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
     creditos: [
@@ -335,10 +349,15 @@
 
   // ── a base, SEM relevo (s03) ─────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  // r4, A ÁGUA ESCURA (identidade §6; out/los-angeles/_tmp/agua/tecnica.md §2): a 2ª camada do estilo, opaca, logo acima do
+  // satélite e abaixo de tudo o que a cena desenha; a geometria é local (agua-osm-la): nenhum pedido de tile
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "agua",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────
@@ -729,6 +748,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           for (var i = 0; i < FONTES.length; i++) if (!map.isSourceLoaded(FONTES[i])) return false;
           if (!map.isSourceLoaded("base")) return false;
+          if (!map.getSource("agua") || !map.isSourceLoaded("agua")) return false;   // r4: a água escura
           return nivelUnico();
         } catch (e) { return false; }
       };

@@ -31,6 +31,13 @@
     · o píer de Port Los Angeles (long-wharf-usgs1903): em outubro de 1892 ele ainda não existia (o Long Wharf é de 1893–94);
     · as pílulas "Santa Monica" e "San Pedro" do conceito: não estão no textos-tela.json da s21 (lista fechada).
   Nenhuma geometria de Hamlin na cena: sem teto de zoom de incerteza.
+  RODADA r4 (mapista, lote M2, 08/10/2026; relato em out/los-angeles/_tmp/art-r4/m2/relato.md). O que mudou do texto acima:
+    · R4.5 (cetico-s21) e o conceito › _anel (o anel marca o PONTO da história, e só ele): o 2º anel, em Santa Monica, saiu;
+      no lugar dele, a pílula 'Santa Monica' (T374, que entrou na lista fechada) com um ponto de 12 px no ponto GNIS, em
+      'Santa' (6,96), até o corte. O anel fica só em San Pedro, a escolha.
+    · A ÁGUA ESCURA (identidade §6; Lucas, 08/10/2026): agua-osm-la, opaca, em --agua-base, 2ª camada do estilo(), acima do
+      satélite e abaixo de tudo o que a cena desenha; ela cobre o quadrado claro de Santa Barbara Island e as faixas do mar
+      (R4.7). O crédito não muda.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -39,6 +46,7 @@
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
+<script src="../_media/geo/agua-osm-la.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -73,6 +81,8 @@
   #legenda rect { fill: var(--territorio-contraparte-cor); stroke: var(--contraparte); stroke-width: 5px; }
   .anel circle { fill: none; stroke: var(--destaque); }
   .anel .halo { stroke: var(--rotulo); }
+  /* r4: o ponto de Santa Monica sob a pílula (o ponto da Plaza da s17): sem anel, que é só de San Pedro (conceito › _anel) */
+  .ponto-lugar { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6px; }
   .medida { fill: none; stroke-linecap: round; stroke-linejoin: round; }
   /* a linha de cota é ESCURA (--rotulo), 6 px, sem halo (s03): a fronteira é a única linha branca do mapa */
   .medida.sobre { stroke: var(--rotulo); stroke-width: 6px; }
@@ -103,12 +113,13 @@
   <div id="map"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
     <g id="anelSP" class="anel" opacity="0"><g id="anelSPP1" opacity="0"><circle class="halo" cx="0" cy="0" r="28" stroke-width="30"/><circle cx="0" cy="0" r="28" stroke-width="10"/></g><g id="anelSPP2" opacity="0"><circle class="halo" cx="0" cy="0" r="28" stroke-width="30"/><circle cx="0" cy="0" r="28" stroke-width="10"/></g><circle class="halo" cx="0" cy="0" r="28" stroke-width="30"/><circle cx="0" cy="0" r="28" stroke-width="10"/></g>
-    <g id="anelSM" class="anel" opacity="0"><g id="anelSMP1" opacity="0"><circle class="halo" cx="0" cy="0" r="28" stroke-width="30"/><circle cx="0" cy="0" r="28" stroke-width="10"/></g><g id="anelSMP2" opacity="0"><circle class="halo" cx="0" cy="0" r="28" stroke-width="30"/><circle cx="0" cy="0" r="28" stroke-width="10"/></g><circle class="halo" cx="0" cy="0" r="28" stroke-width="30"/><circle cx="0" cy="0" r="28" stroke-width="10"/></g>
+    <circle class="ponto-lugar" id="pontoSM" cx="0" cy="0" r="12" opacity="0"/>
   </svg>
   <div class="cartao-sombra" id="cartaoSombra"></div>
   <div class="cartao" id="cartao" data-qc-papel="fala">“two harbors where one would answer the purpose”</div>
   <div id="rotulos">
     <div class="rotulo caixa liso" id="rotUnan" data-qc-papel="rotulo">UNANIMOUS</div>
+    <div class="rotulo liso" id="rotSM" data-qc-papel="rotulo">Santa Monica</div>
     <div class="rotulo legenda liso" id="legJunta" data-qc-papel="legenda">five Army engineers, October 1892</div>
     <div class="rotulo legenda liso" id="legBoard" data-qc-papel="legenda">Board of Engineers, 1892</div>
     <div class="cota" id="cotaAnos" data-qc-papel="legenda">San Pedro · 1891 · 1892</div>
@@ -142,15 +153,17 @@
     ],
     giro: [-2, 2],
     aneis: [
-      { id: "anelSP", ref: "SP", entra: -1, pulsos: [5.20, 6.40] },
-      { id: "anelSM", ref: "SM", entra: 6.96, pulsos: [6.96, 8.16] }
+      { id: "anelSP", ref: "SP", entra: -1, pulsos: [5.20, 6.40] }   // r4, R4.5: o anel só em San Pedro (conceito › _anel)
     ],
     cartao: { x: 262, y: 340, pouso: 7.96, levanta: 15.40, rot: -1.2 },
     rotulos: [
       { id: "legJunta", ref: "SP", lado: "esquerda", vert: "cima", dx: 560, dy: -120, entra: 2.16, sai: 7.50 },
       { id: "rotUnan",  ref: "SP", lado: "centro", vert: "baixo", dx: 0, dy: 110,  entra: 5.20, sai: 13.06 },
       { id: "cotaAnos", ref: "SP", lado: "centro", vert: "baixo", dx: 0, dy: 120,  entra: 13.36, sai: null },
-      { id: "legBoard", tela: [0, 0], lado: "direita", vert: "baixo", entra: 8.66, sai: 15.10 }
+      { id: "legBoard", tela: [0, 0], lado: "direita", vert: "baixo", entra: 8.66, sai: 15.10 },
+      // r4, R4.5 (T374): a pílula de Santa Monica no ponto GNIS, em 'Santa', até o corte; à direita do ponto e um pouco abaixo
+      // dele, para o topo ficar abaixo de 160 quando a câmera o leva para cima
+      { id: "rotSM", ref: "SM", lado: "direita", vert: "centro", dx: 44, dy: 30, entra: 6.96, sai: null }
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
     creditos: [
@@ -170,6 +183,10 @@
       // a atribuição fica sob o cartão, alinhada à esquerda dele (o cartão não anda depois de assentar)
       var r = CENA.rotulos[3];
       r.tela = [c.x + 24, 190];   // acima do cartão: embaixo dele começa a faixa do crédito
+      // r4: o ponto de Santa Monica entra e fica com a pílula
+      var ps = A.E("pontoSM");
+      if (ps && A.REFS.SM) { var q = A.project(A.REFS.SM); ps.setAttribute("cx", q.x.toFixed(2)); ps.setAttribute("cy", q.y.toFixed(2));
+        ps.setAttribute("opacity", A.janela(t, 6.96, null).toFixed(3)); }
     }
   };
   // ═══ O MOTOR DA CENA (o mesmo nas oito cenas do lote M2; os blocos vêm da s03, a referência do vídeo 2) ══════════
@@ -328,10 +345,15 @@
 
   // ── a base, SEM relevo (s03) ─────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  // r4, A ÁGUA ESCURA (identidade §6; out/los-angeles/_tmp/agua/tecnica.md §2): a 2ª camada do estilo, opaca, logo acima do
+  // satélite e abaixo de tudo o que a cena desenha; a geometria é local (agua-osm-la): nenhum pedido de tile
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "agua",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────
@@ -709,6 +731,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           for (var i = 0; i < FONTES.length; i++) if (!map.isSourceLoaded(FONTES[i])) return false;
           if (!map.isSourceLoaded("base")) return false;
+          if (!map.getSource("agua") || !map.isSourceLoaded("agua")) return false;   // r4: a água escura
           return nivelUnico();
         } catch (e) { return false; }
       };

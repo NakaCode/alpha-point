@@ -14,7 +14,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
   conceito-visual.json (s07 e s08); a marca.
 
   ⚠ A FOTO DAS BARCAÇAS É FALTA: o pedido falava em cena mista com foto, mas o conferencia-midia.json não tem nenhum arquivo
-  aprovado para s07/s08, e _media/foto/ não tem pasta s07 (regência, beat 0: "falta", fallback_tipo "mapa"; textos-tela:
+  aprovado para s07/s08, e a pasta das fotos não tem s07 (regência, beat 0: "falta", fallback_tipo "mapa"; textos-tela:
   "o beat 0 é mapa enquanto a foto das barcaças for FALTA"). A cena é toda mapa. Se a foto chegar, ela nasce do fim da linha
   da ancoragem, dentro deste arquivo (conceito s07).
 
@@ -44,6 +44,22 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
   mesmo deslocamento (+0,00216° lng, +0,001667° lat). Zoom máximo desta cena: 13,20 (6,9 m/px: 50 m = 7 px).
   ELEMENTOS: p1 3; p2/p3 até 4; p4 até 5 (água, barra+legenda, medidor, cota; 'at low tide' é legenda do medidor).
   CRÉDITO: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (data-qc-credito="mapa" só nele).
+  RODADA r4 (mapista, lote M1, 08/10/2026), da revisão de espectador e do conceito r4:
+    · R2.1: a linha das barcaças parte da BEIRA D'ÁGUA de San Pedro (o vértice da costa do OSM na margem oeste do Main
+      Channel, junto ao centro, −118,27840 / 33,73890), não do ponto GNIS, e vai a 4,70 km no rumo 154° (−118,25615 /
+      33,70070), em mar aberto ao sul do quebra-mar de hoje: inteira sobre a água (medida contra agua-osm-la de 5 em 5 m;
+      só cruza os ~24 m do quebra-mar de San Pedro, que não existia).
+    · R2.2: 'Rattlesnake Island' e 'Terminal Island today' ficam até 15,70 s (terminam de sair quando 'sandbar' entra).
+    · R2.3: a cota 'LESS THAN 2 FT (BEFORE 1871)' fica centrada na linha d'água (topo em nível − 96), e a linha d'água se
+      estica 40 px até ela; 'at low tide' desce 44 px.
+    · R2.4 e _agua_do_porto: a água do porto de hoje do lado de Los Angeles INTEIRA (sem o filtro que derrubava o polígono
+      principal) a 35 % com contorno de 6 px (só a borda de fora), acende e fica; a pílula 'Wilmington estuary' vai ACIMA do
+      alvo (agora dentro do East Basin), sobre Wilmington, presa por uma guia vertical de 250 px. 'Rattlesnake Island' e
+      'Terminal Island today' sobem para cima e à direita do ponto, e o medidor vai 600 px a leste da barra: nenhum texto
+      sobre o contorno da água acesa.
+    · T383: 'Source: Annual Report of the Chief of Engineers, U.S. Army, 1888' enquanto '2 OR 3 MILES EACH WAY' está no ar,
+      em duas linhas acima do crédito do mapa. T047: 'sandbar (schematic)'.
+    · A água escura dos mapas do porto (identidade §6; agua-osm-la, 2ª camada do estilo, em --agua-base).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -54,6 +70,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
 <script src="../_media/geo/agua-porto-hoje-tiger.js"></script>
 <script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
+<script src="../_media/geo/agua-osm-la.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -116,6 +133,9 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
     color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: nowrap; }
   #credito { bottom: 52px; }
   .credito.extra { bottom: 148px; opacity: 0; }
+  /* r4, T383: a fonte em duas linhas (white-space: pre-line, a quebra em "Engineers,"), toda dentro da faixa abaixo de
+     y = 1880: 2 × 60,5 + 16 = 137 px, da base em 2020 ao topo em 1883, a 4 px do crédito do mapa */
+  .credito.extra.duas { white-space: pre-line; line-height: 1.08; padding: 8px 24px; bottom: 140px; }
   .credito[hidden] { display: none; }
   #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
     font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
@@ -154,13 +174,15 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
     <div class="rotulo liso" id="rotEst" data-qc-papel="rotulo">Wilmington estuary</div>
     <div class="rotulo liso" id="rotRattle" data-qc-papel="rotulo">Rattlesnake Island</div>
     <div class="rotulo legenda liso" id="legTerminal" data-qc-papel="legenda">Terminal Island today</div>
-    <div class="rotulo legenda liso" id="legBarra" data-qc-papel="legenda">sandbar</div>
+    <div class="rotulo legenda liso" id="legBarra" data-qc-papel="legenda">sandbar (schematic)</div>
     <div class="cota quebra" id="cotaMenos2" data-qc-papel="legenda">LESS THAN 2 FT (BEFORE 1871)</div>
     <div class="rotulo legenda liso" id="legMare" data-qc-papel="legenda">at low tide</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
 
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
+  <div id="credFonte" class="credito extra duas" data-qc-papel="credito">Source: Annual Report of the Chief of Engineers,
+U.S. Army, 1888</div>
 
   <div id="erroCena" hidden></div>
 </div>
@@ -177,7 +199,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
   var CENA = {
     duracao: 20.734,                                 // espelho.json › s07 › dur (a janela do run s07+s08)
     perfil: "maptiler",
-    fontes: ["agua"],
+    fontes: ["agua", "aguaBase"],
     pontos: {
       A0: { lng: -118.278, lat: 33.718, zoom: 12.72 },   // a baía e a linha das barcaças
       A1: { lng: -118.275, lat: 33.716, zoom: 12.82 },
@@ -192,27 +214,39 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
       { t0: 12.60, t1: 20.734, de: "B1", para: "B2", tipo: "h" }
     ],
     giro: [-1.5, 1.5],
-    // a linha das barcaças: do ponto de San Pedro (GNIS) a uns 3 milhas ao largo (−118,265 / 33,700: 4,7 km = 2,9 mi)
-    barcas: { ancoragem: [-118.265, 33.700], desenha: [1.28, 2.40], vai: [2.567, 5.067], voltas: 2, apaga: [5.30, 5.80] },
-    agua: { acende: [6.42, 6.92] },
-    guiaEst: { entra: 7.10, sai: 12.00, alvo: [-118.262, 33.766] },
+    // a linha das barcaças (r4, R2.1): da BEIRA D'ÁGUA de San Pedro, não do ponto GNIS (o centro do bairro, que punha metade
+    // da linha sobre quarteirões): o vértice da costa do OSM (agua-osm-la) na margem oeste do Main Channel, junto ao centro de
+    // San Pedro (−118,27840 / 33,73890), e a ancoragem a 4,70 km (2,9 mi) no rumo 154°, em mar aberto ao sul do quebra-mar
+    // de hoje (−118,25615 / 33,70070). Medido contra agua-osm-la, de 5 em 5 m: a linha inteira cai na água; só cruza os
+    // ~24 m do quebra-mar de San Pedro, que não existia (_tmp/art-r4/m1/barcas4.cjs)
+    barcas: { inicio: [-118.27840, 33.73890], ancoragem: [-118.25615, 33.70070], desenha: [1.28, 2.40], vai: [2.567, 5.067], voltas: 2, apaga: [5.30, 5.80] },
+    // r4, conceito › _agua_do_porto: a água do porto de hoje do lado de Los Angeles INTEIRA (o West Basin, o Main Channel e o
+    // East Basin; sem o filtro que derrubava o polígono principal, R2.4), a 35 % com contorno de 6 px, acende e fica
+    agua: { acende: [6.42, 6.92], op: 0.35 },
+    // r4, R2.4: a pílula acima do alvo, sobre Wilmington, presa por uma guia curta e vertical (250 px)
+    guiaEst: { entra: 7.10, sai: 12.00, alvo: [-118.2540, 33.7635], subida: 250 },   // o ponto DENTRO do East Basin, a ~240 m da margem (o antigo, −118,262 / 33,766, caía a 15 m dela)
     barra: { ponto: [-118.27164, 33.72447], entra: 15.98 },
-    // o medidor: 16 px por pé, 0–60, números a cada 10; a base 300 px a leste da barra, na altura dela
-    medidor: { k: 16, max: 60, cadaNumero: 10, largura: 110, dx: 300, dy: 0, entra: 16.66, sai: null,
+    // o medidor: 16 px por pé, 0–60, números a cada 10; a base a leste da barra, na altura dela
+    // r4: o medidor 600 px a leste da barra (era 300), fora do contorno da água acesa: os números não ficam sobre a linha dele
+    medidor: { k: 16, max: 60, cadaNumero: 10, largura: 110, dx: 600, dy: 0, entra: 16.66, sai: null, aguaAlem: 40,
                nivel: function (t) { return 1.5 * eio(seg(t, 18.017, 0.6)); }, marcas: [] },
     rotulos: [
       { id: "leg23",      ref: "meioBarcas", lado: "direita", dx: 110, dy: 0,   entra: 3.327,  sai: 5.45 },
       { id: "legAprox",   ref: "ancoragem",  lado: "centro",  dx: 0,   dy: 120, entra: 1.28,   sai: 5.50 },   // com a linha, do traço ao apagar (identidade §6; qc-visual Q3)
-      { id: "rotEst",     lnglat: [-118.31, 33.775], lado: "esquerda", dx: 60, dy: 0,   /* +60: margem de 200 (qc-visual Q9) */ entra: 7.10, sai: 12.00 },
-      { id: "rotRattle",  ref: "rattle",     lado: "direita", dx: 70,  dy: 0,   entra: 9.217,  sai: 13.60 },
-      { id: "legTerminal", ref: "rattle",    lado: "direita", dx: 70,  dy: 150, entra: 10.737, sai: 13.60 },
-      { id: "legBarra",   ref: "barra",      lado: "esquerda", dx: -120, dy: 0, entra: 15.98,  sai: null },
-      { id: "cotaMenos2", telaFn: function () { return CENA.medidor._base && [CENA.medidor._base.x + CENA.medidor.largura + 44, (CENA.medidor._nivelY || CENA.medidor._base.y) - 40]; },
-        lado: "direita", vert: "cima", entra: 18.017, sai: null },
-      { id: "legMare",    telaFn: function () { return CENA.medidor._base && [CENA.medidor._base.x + CENA.medidor.largura / 2, CENA.medidor._base.y + 56]; },
-        lado: "centro", vert: "baixo", entra: 16.86, sai: null }
+      { id: "rotEst",     ref: "alvoEst",    lado: "centro",  vert: "cima", dx: 0, dy: -250, entra: 7.10, sai: 12.00 },   // r4, R2.4: a base da pílula ~60 px acima da ponta do braço norte do East Basin
+      { id: "rotRattle",  ref: "rattle",     lado: "direita", dx: 330, dy: -130, entra: 9.217, sai: 15.70 },   // r4, R2.2: até "sandbar" (15,98); acima e à direita, fora do contorno da água acesa
+      { id: "legTerminal", ref: "rattle",    lado: "direita", dx: 330, dy: 20,  entra: 10.737, sai: 15.70 },   // r4: com a pílula, fora do contorno da água acesa (o canal e o recorte do terminal)
+      { id: "legBarra",   ref: "barra",      lado: "esquerda", dx: -150, dy: 0, entra: 15.98,  sai: null },   // r4: o texto ficou mais longo ('sandbar (schematic)', T047); mais folga do contorno da água
+      // r4, R2.3: o bloco de duas linhas CENTRADO na linha d'água (topo em nível − 96), com a linha d'água esticada até ele
+      { id: "cotaMenos2", telaFn: function () { return CENA.medidor._base && [CENA.medidor._base.x + CENA.medidor.largura + 44, (CENA.medidor._nivelY || CENA.medidor._base.y) - 96]; },
+        lado: "direita", vert: "baixo", entra: 18.017, sai: null },
+      // r4: alinhada à esquerda da régua (não centrada), para a ponta esquerda não sentar no contorno da água acesa
+      { id: "legMare",    telaFn: function () { return CENA.medidor._base && [CENA.medidor._base.x + 40, CENA.medidor._base.y + 100]; },
+        lado: "direita", vert: "baixo", entra: 16.86, sai: null }
     ],
-    creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0, extra: [] }
+    // r4, T383: a fonte do '2 OR 3 MILES EACH WAY' enquanto ele está no ar, logo acima do crédito do mapa (duas linhas,
+    // quebradas em "Engineers," como na s13 e na s15)
+    creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0, extra: [{ id: "credFonte", entra: 3.327, sai: 5.45 }] }
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -416,7 +450,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
     if (L == null || L <= 0) { M._agua.setAttribute("opacity", "0"); M._aguaSob.setAttribute("opacity", "0"); M._hach.setAttribute("d", ""); M._nivelY = null; }
     else {
       var yl = B.y - L * k;
-      var dl = "M " + (B.x - 18).toFixed(2) + " " + yl.toFixed(2) + " L " + (B.x + W + 18).toFixed(2) + " " + yl.toFixed(2);
+      var dl = "M " + (B.x - 18).toFixed(2) + " " + yl.toFixed(2) + " L " + (B.x + W + (M.aguaAlem || 18)).toFixed(2) + " " + yl.toFixed(2);
       M._agua.setAttribute("d", dl); M._aguaSob.setAttribute("d", dl);
       M._agua.setAttribute("opacity", "1"); M._aguaSob.setAttribute("opacity", "1");
       M._clip.setAttribute("x", B.x.toFixed(2)); M._clip.setAttribute("y", yl.toFixed(2));
@@ -433,14 +467,30 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s07, MÃE DO RUN s07 → s08 
 var SANPEDRO = pontoNome("lugares-gnis-nrhp", "San Pedro"), RATTLE = pontoNome("pontos-historicos-usgs-corrigidos", "Rattlesnake Island (Terminal Island today)");
   var AGUA = geo("agua-porto-hoje-tiger");
   if (window.__erroCena) return;
+  // r4, R2.4: a água do lado de Los Angeles INTEIRA: todo pedaço do TIGER a oeste de −118,23 e ao sul de 33,78 (o polígono
+  // principal, de −118,2885 a −118,2317, o Northwest Slip, o East Basin e o canal pequeno); o de Long Beach fica de fora
   var AGUA_PORTO = { type: "FeatureCollection", features: AGUA.features.filter(function (f) {
-    var mx = -Infinity; aneis(f.geometry).forEach(function (r) { r.forEach(function (p) { if (p[1] > mx) mx = p[1]; }); });
-    var mxx = -Infinity; aneis(f.geometry).forEach(function (r) { r.forEach(function (p) { if (p[0] > mxx) mxx = p[0]; }); });
-    return (mx < 33.78 || f.properties.name === "East Basin") && mxx < -118.235;   // só a água do lado de Los Angeles
+    var mx = -Infinity, mxx = -Infinity, mny = Infinity;
+    aneis(f.geometry).forEach(function (r) { r.forEach(function (p) { if (p[1] > mx) mx = p[1]; if (p[0] > mxx) mxx = p[0]; if (p[1] < mny) mny = p[1]; }); });
+    return mx < 33.78 && mxx < -118.23 && mny < 33.77;   // sem as duas lagoas de terra firme ao norte (33,774–33,779)
   }) };
+  // o contorno: só as arestas que nenhum outro pedaço divide (os cortes internos do TIGER entre dois pedaços não viram linha)
+  var AGUA_BORDA = (function () {
+    var conta = {}, lista = [];
+    var chave = function (p) { return p[0].toFixed(6) + "," + p[1].toFixed(6); };
+    AGUA_PORTO.features.forEach(function (f) { aneis(f.geometry).forEach(function (r) {
+      for (var i = 1; i < r.length; i++) { var a = chave(r[i - 1]), b = chave(r[i]); if (a === b) continue;
+        var k = a < b ? a + "|" + b : b + "|" + a; conta[k] = (conta[k] || 0) + 1; lista.push([r[i - 1], r[i], k]); } }); });
+    var linhas = [], atual = null;
+    lista.forEach(function (e) {
+      if (conta[e[2]] > 1) { atual = null; return; }
+      if (atual && atual[atual.length - 1] === e[0]) atual.push(e[1]); else { atual = [e[0], e[1]]; linhas.push(atual); }
+    });
+    return { type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: linhas } };
+  })();
   var B = CENA.barcas;
-  var REFS = { meioBarcas: [(SANPEDRO[0] + B.ancoragem[0]) / 2, (SANPEDRO[1] + B.ancoragem[1]) / 2], ancoragem: B.ancoragem,
-               rattle: RATTLE, barra: CENA.barra.ponto };
+  var REFS = { meioBarcas: [(B.inicio[0] + B.ancoragem[0]) / 2, (B.inicio[1] + B.ancoragem[1]) / 2], ancoragem: B.ancoragem,
+               rattle: RATTLE, barra: CENA.barra.ponto, alvoEst: CENA.guiaEst.alvo };
   CENA.rotulos.forEach(function (r) { if (r.telaFn) return; r.p = r.lnglat || REFS[r.ref] || null; if (!r.p) falhar("o rótulo " + r.id + " não tem âncora."); });
   if (window.__erroCena) return;
   criarMedidor("medidor", CENA.medidor);
@@ -450,14 +500,18 @@ var SANPEDRO = pontoNome("lugares-gnis-nrhp", "San Pedro"), RATTLE = pontoNome("
     map.addSource("agua", { type: "geojson", data: AGUA_PORTO });
     map.addLayer({ id: "agua-fill", type: "fill", source: "agua",
       paint: { "fill-color": tok("--tinta", "#F4F1EA"), "fill-opacity": 0, "fill-opacity-transition": semTransicao } });
+    map.addSource("aguaBorda", { type: "geojson", data: AGUA_BORDA });
+    map.addLayer({ id: "agua-linha", type: "line", source: "aguaBorda", layout: { "line-join": "round", "line-cap": "round" },
+      paint: { "line-color": tok("--tinta", "#F4F1EA"), "line-width": 6, "line-opacity": 0, "line-opacity-transition": semTransicao } });
   }
 
   function aplicarCena(t) {
-    opac("agua-fill", "fill-opacity", 0.25 * eio(seg(t, CENA.agua.acende[0], CENA.agua.acende[1] - CENA.agua.acende[0])));
+    var ua = eio(seg(t, CENA.agua.acende[0], CENA.agua.acende[1] - CENA.agua.acende[0]));
+    opac("agua-fill", "fill-opacity", CENA.agua.op * ua); opac("agua-linha", "line-opacity", ua);
     // a linha das barcaças (tracejada, cresce) e o traço que vai e volta, duas vezes
     var g = E("barcas");
     if (g) {
-      var pa = map.project(SANPEDRO), pb = map.project(B.ancoragem), u = eio(seg(t, B.desenha[0], B.desenha[1] - B.desenha[0]));
+      var pa = map.project(B.inicio), pb = map.project(B.ancoragem), u = eio(seg(t, B.desenha[0], B.desenha[1] - B.desenha[0]));
       var pc = { x: pa.x + (pb.x - pa.x) * u, y: pa.y + (pb.y - pa.y) * u };
       var d = u > 0 ? "M " + fmt(pa) + " L " + fmt(pc) : "";
       E("barcasSob").setAttribute("d", d); E("barcasLinha").setAttribute("d", d);
@@ -473,10 +527,9 @@ var SANPEDRO = pontoNome("lugares-gnis-nrhp", "San Pedro"), RATTLE = pontoNome("
     // a guia curta da pílula do estuário até o lugar
     var G = CENA.guiaEst, gg = E("guiaEst"), rr = rotuloPorId("rotEst");
     if (gg && rr) {
-      var pt = map.project(G.alvo), an = map.project(rr.p);
-      var dx = pt.x - an.x, dy = pt.y - an.y, n = Math.hypot(dx, dy) || 1;
-      var a2 = { x: an.x + dx / n * 30, y: an.y + dy / n * 30 }, b2 = { x: pt.x - dx / n * 18, y: pt.y - dy / n * 18 };
-      var d2 = "M " + fmt(a2) + " L " + fmt(b2);
+      // r4, R2.4: a guia sobe reta do ponto (na água) até a base da pílula, que fica acima dele
+      var pt = map.project(G.alvo);
+      var d2 = "M " + pt.x.toFixed(2) + " " + (pt.y - 18).toFixed(2) + " L " + pt.x.toFixed(2) + " " + (pt.y - G.subida + 6).toFixed(2);
       E("guiaEstSob").setAttribute("d", d2); E("guiaEstSobre").setAttribute("d", d2);
       E("guiaEstPonto").setAttribute("cx", pt.x.toFixed(2)); E("guiaEstPonto").setAttribute("cy", pt.y.toFixed(2));
       gg.setAttribute("opacity", (eo(seg(t, G.entra, 0.3)) * (1 - eio(seg(t, G.sai, 0.3)))).toFixed(3));
@@ -498,9 +551,14 @@ var SANPEDRO = pontoNome("lugares-gnis-nrhp", "San Pedro"), RATTLE = pontoNome("
   // ── a base, SEM relevo ─────────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // r4: a água escura dos mapas do porto (identidade §6; Lucas, 08/10/2026): a 2ª camada do estilo, opaca em --agua-base,
+    // logo acima do satélite e abaixo de tudo o que a cena desenha (agua-osm-la, arquivo local: não pede tile)
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────

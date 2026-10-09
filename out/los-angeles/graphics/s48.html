@@ -39,6 +39,19 @@
     · ZOOM SOBRE HAMLIN: só no p1 (o contorno de 1909), no maior 11,88 (≤ 11,90, a régua da s03). Depois da troca, só TIGER
       (o maior zoom é 12,56).
     · CÂMERA: pernas presas às palavras (van Wijk e deriva) e giro contínuo de −2° a +2°.
+  RODADA r4 (mapista, lote M5, 08/10/2026; relato em out/los-angeles/_tmp/art-r4/m5/relato.md):
+    · 7.8: a linha do quebra-mar volta à medida do conceito e da s29: --rede-cor 14 px sobre o escuro de 26. E ganha o seu
+      item na LEGENDA DAS CORES (identidade §6), 'breakwater, 1912' (textos-tela T381, na forma de 'jetty, 1871' da s12),
+      com a amostra da linha: entra com a linha, em 'coast' (0,883 s), e sai com ela, na troca (4,40 s). O que o cabeçalho
+      dizia acima ("não ganha caixa de legenda") ficou para trás.
+    · 7.9: as quatro pílulas entram SEM a legenda 'year each became a city' (o conceito: "proposta: entra sem a legenda";
+      a regência conta o teto de 6 com fio/contorno, 9 MILES e 4 pílulas). De ~17,9 s ao corte o quadro tem 6: o contorno
+      de hoje, 'ABOUT 9 MILES (TODAY)' com a sua linha e as quatro pílulas. A linha do condado ('Source: Los Angeles County
+      annexation records') fica até o corte junto do 9 MILES (redator r4; o verificador confirmou, X07) e entra em 'still'
+      (16,653 s), 0,9 s antes da 1ª pílula, pelo ritmo do qc-carga. A legenda continua no textos-tela: a saída dela é
+      pedido do lote, anotado no relato.
+    · 8.3 (o veredito da s55, que vale para todo rótulo com número): .rotulo.liso com algarismos proporcionais, os mesmos
+      que o canvas do texto liso pinta; as caixas das pílulas com ano ficam simétricas.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -70,6 +83,8 @@
   /* LEGENDA sobre o mapa (papel legenda, §4.1): 84 px, Inter 500, --tinta, numa pílula --rotulo de 16 × 28 */
   .rotulo.legenda { padding: 16px 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); }
   .rotulo.liso { -webkit-text-fill-color: transparent; }
+  /* 8.3 (r4): o canvas do texto liso pinta algarismos proporcionais; a caixa é medida com os mesmos */
+  .rotulo.liso { font-variant-numeric: normal; }
   #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
   /* COTA (a medida; textos-tela: "cota (Inter 84 px), não pílula de rótulo"; identidade §5, o traço de engenheiro):
      solta sobre o mapa, em --tinta, com o tratamento do nome sobre o mapa (§4.1: contorno de 14 px em --rotulo por fora
@@ -118,7 +133,7 @@
   #mini .aviso { height: 130px; display: flex; align-items: center; justify-content: flex-start; padding-left: 6px;
     font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1;
     color: color-mix(in srgb, var(--tinta-escura) 72%, transparent); opacity: 0; }
-  #legAnos { top: 160px; }
+  #legQM { top: 160px; }
   /* a área cabe no vale só em duas linhas (o mesmo texto, quebrado entre as palavras): numa linha, cruzaria a divisa */
   #cotaArea { white-space: normal; width: 560px; text-align: center; line-height: 1.1; }
 </style>
@@ -143,7 +158,8 @@
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
   <div id="mini"><div class="janela"><img id="miniFoto" src="../_media/foto/s47/los-angeles-harbor-light-breakwater-1914.jpg" alt=""></div><div class="aviso" id="miniAviso" data-qc-aviso-ano data-qc-papel="legenda">Photo from 1914</div></div>
-  <div id="legAnos" class="legcores" data-qc-papel="legenda"><span>year each became a city</span></div>
+  <!-- 7.8 (r4): o item do quebra-mar na legenda das cores, com a amostra da linha (--rede-cor sobre o escuro, como a s12) -->
+  <div id="legQM" class="legcores" data-qc-papel="legenda"><svg viewBox="0 0 120 101" aria-hidden="true"><path d="M 12 50 L 108 50" stroke="var(--rotulo)" stroke-width="30" stroke-linecap="round"/><path d="M 12 50 L 108 50" stroke="var(--rede-cor)" stroke-width="15" stroke-linecap="round"/></svg><span>breakwater, 1912</span></div>
   <div id="fonteArea" class="credito fonte" data-qc-papel="credito">Source: Los Angeles County, 2026</div>
   <div id="fonteAnos" class="credito fonte" data-qc-papel="credito">Source: Los Angeles County annexation records</div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
@@ -314,7 +330,7 @@
       { id: "rotCarson",       ref: "carson",      lado: "direita",  dx: 0,   dy: 0,   entra: 17.893, sai: null }
     ],
     fontes: [ { id: "fonteArea", entra: 6.573, sai: 9.00 }, { id: "fonteAnos", entra: 16.653, sai: null } ],
-    legAnos: { entra: 16.653, sai: null },
+    legQM: { entra: 0.883, sai: 4.40 },                // 7.8 (r4): entra com a linha e sai com ela
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors" },
     creditoMapa: [0, 19.933]
   };
@@ -350,7 +366,7 @@
     poly("hoje", HOJE, { fracao: 0.85 });
     poly("c1909", C1909, { fracao: 0.85 });
     linhaCor("spCidade", fcLinhas([SP0]), "--destaque", "#F5A524", 6, 14);
-    linhaCor("qm", fcLinhas([[QM[0], QM[0]]]), "--rede-cor", "#2EC4B6", 10, 18);
+    linhaCor("qm", fcLinhas([[QM[0], QM[0]]]), "--rede-cor", "#2EC4B6", 14, 26);   // 7.8 (r4): a medida do conceito e da s29
   }
   function cenaAplicar(t) {
     var u = eio(seg(t, CENA.troca[0], CENA.troca[1] - CENA.troca[0]));
@@ -390,7 +406,7 @@
       E("compSobre").setAttribute("d", medidaD(EIXO, eio(seg(t, C.entra, C.dura))));
       gc.setAttribute("opacity", (t < C.entra ? 0 : 1).toFixed(3));
     }
-    janelaEl("legAnos", t, CENA.legAnos.entra, CENA.legAnos.sai);
+    janelaEl("legQM", t, CENA.legQM.entra, CENA.legQM.sai);
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 

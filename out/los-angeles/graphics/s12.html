@@ -41,6 +41,17 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (data-qc-credito="mapa" só nele). O conceito pede
   'Source: Chief of Engineers, 1881–1888' com os números, mas a linha não está no textos-tela (lista fechada): não vai. A
   foto é domínio público (identidade §7): sem crédito.
+  RODADA r4 (mapista, lote M2, 08/10/2026; relato em out/los-angeles/_tmp/art-r4/m2/relato.md):
+    · A ÁGUA ESCURA (identidade §6, "A água escura nos mapas do porto"; Lucas, 08/10/2026): a camada agua-osm-la, opaca, em
+      --agua-base, 2ª camada do estilo(), logo acima do satélite e abaixo de tudo o que a cena desenha. O crédito não muda (o
+      OpenStreetMap já está na linha da MapTiler).
+    · R2.13 (cetico-s12): a barra ganha o seu item na legenda das cores, 'sandbar (schematic)' (T366), com a amostra da
+      hachura VERTICAL sobre a elipse escura, entrando com ela em 'Squeezed' (13,80).
+    · O medidor chega LIDO (conceito › _medidor; T367, T368, T385): desde o 1º quadro dele, a marca cinza (--neutro) em 2 pés
+      com 'LESS THAN 2 FT (BEFORE 1871)' em --neutro, e 'at low tide'; a água só aparece em 'ten', saindo da marca de 2 e
+      subindo a 10 (antes ela ficava em 1,5, colada à marca). Os números 10–60 já estavam.
+    · Q10 item 2 (decisões do central): '11 FT (1888)' é um bloco só; o '(1888)' entra em 'eighteen' (20,43) e o '11 FT' em
+      'eleven' (21,48), emendado na frente sem deslocar nada (o complemento, Q4 item 1).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -50,6 +61,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
 <script src="../_media/geo/molhe-1871-usgs1896-corrigido.js"></script>
 <script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
+<script src="../_media/geo/agua-osm-la.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -133,6 +145,9 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
   .vaz { fill: none; stroke: var(--tinta); stroke-linecap: round; stroke-linejoin: round; }
   .barra-hach { fill: none; stroke: var(--tinta); stroke-width: 5; }
   .barra-sob { fill: color-mix(in srgb, var(--rotulo) 45%, transparent); stroke: none; }
+  /* r4: a leitura anterior do medidor, em cinza (conceito › _medidor: o medidor chega lido), em duas linhas como na s07 */
+  .cota.cinza { color: var(--neutro); }
+  .cota.quebra { white-space: normal; width: 760px; line-height: 1.15; }
 </style>
 </head>
 <body>
@@ -152,9 +167,10 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
     <div class="cota" id="cotaMilha" data-qc-papel="legenda">MORE THAN A MILE</div>
     <div class="rotulo liso" id="rotRattle" data-qc-papel="rotulo">Rattlesnake Island</div>
     <div class="rotulo liso" id="rotDead" data-qc-papel="rotulo">Deadman's Island</div>
+    <div class="cota cinza quebra" id="cotaMenos2" data-qc-papel="legenda">LESS THAN 2 FT (BEFORE 1871)</div>
     <div class="rotulo legenda liso" id="legMare" data-qc-papel="legenda">at low tide</div>
     <div class="cota" id="cota10" data-qc-papel="legenda">10 FT (1881)</div>
-    <div class="cota" id="cota11" data-qc-papel="legenda">11 FT (1888)</div>
+    <div class="cota" id="cota11" data-qc-papel="legenda"><span id="cota11n">11 FT </span>(1888)</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
 
@@ -168,6 +184,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
     <div class="item" id="legMolhe"><svg viewBox="0 0 120 101" aria-hidden="true"><path d="M 12 50 L 108 50" stroke="var(--rotulo)" stroke-width="30" stroke-linecap="round"/><path d="M 12 50 L 108 50" stroke="var(--rede-cor)" stroke-width="15" stroke-linecap="round"/></svg><span>jetty, 1871</span></div>
     <div class="item" id="legRasos"><svg viewBox="0 0 120 101" aria-hidden="true"><path d="M 10 80 L 50 20 M 34 80 L 74 20 M 58 80 L 98 20 M 82 80 L 110 38" stroke="var(--tinta)" stroke-width="5" opacity=".7" fill="none"/></svg><span>shallows closed (schematic)</span></div>
     <div class="item" id="legVazante"><svg viewBox="0 0 120 101" aria-hidden="true"><path d="M 14 30 C 50 30 70 70 100 70 M 82 56 L 102 70 L 82 84" stroke="var(--tinta)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>ebb tide (schematic)</span></div>
+    <div class="item" id="legBarra"><svg viewBox="0 0 120 101" aria-hidden="true"><ellipse cx="60" cy="50" rx="54" ry="38" fill="var(--rotulo)" opacity=".45"/><path d="M 28 24 L 28 76 M 44 17 L 44 83 M 60 14 L 60 86 M 76 17 L 76 83 M 92 24 L 92 76" stroke="var(--tinta)" stroke-width="5" opacity=".9" fill="none"/></svg><span>sandbar (schematic)</span></div>
   </div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
 
@@ -207,23 +224,29 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
       b: [[-118.25784, 33.76317], [-118.26184, 33.74967], [-118.26684, 33.74017], [-118.27164, 33.73067]],
       c: [[-118.25634, 33.76217], [-118.25784, 33.74567], [-118.26284, 33.73367], [-118.26904, 33.72717]] },
     barra: { ponto: [-118.27164, 33.72447], entra: 13.80, parte: 15.71 },
+    // r4: chega LIDO (a marca cinza de 2 pés, com o rótulo, desde o 1º quadro); a água aparece em 'ten', na marca de 2, e sobe
     medidor: { k: 16, max: 60, cadaNumero: 10, largura: 110, dx: 300, dy: 0, entra: 16.65, sai: null,
-               nivel: function (t) { return 1.5 + 8.5 * eio(seg(t, 18.525, 0.6)) + 1 * eio(seg(t, 21.48, 0.4)); }, marcas: [] },
+               nivel: function (t) { return t < 18.525 ? null : 2 + 8 * eio(seg(t, 18.525, 0.6)) + 1 * eio(seg(t, 21.48, 0.4)); },
+               marcas: [{ ft: 2, tipo: "cheia", entra: 16.65, sai: null }] },
     guiaDead: { entra: 4.45, sai: 6.43 },
     rotulos: [
       { id: "cotaMilha", ref: "meioMolhe", lado: "direita", dx: 90, dy: 0, entra: 2.67, sai: 4.40 },   // na voz: 'more' 2,67 (identidade §4.4; qc-visual Q3)
       { id: "rotRattle", ref: "rattle",    lado: "direita", dx: 70, dy: 0, entra: 4.01, sai: 6.43 },
       { id: "rotDead",   lnglat: [-118.312, 33.757], lado: "esquerda", dx: 0, dy: 0, entra: 4.45, sai: 6.43 },
-      { id: "legMare", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x + M.largura / 2, M._base.y + 56]; },
-        lado: "centro", vert: "baixo", entra: 16.85, sai: null },
+      // r4: 'at low tide' entra com a régua (T368), embaixo e à esquerda da borda direita dela; a leitura cinza fica à direita
+      { id: "legMare", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x + M.largura, M._base.y + 70]; },
+        lado: "esquerda", vert: "baixo", entra: 16.65, sai: null },
+      { id: "cotaMenos2", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x + M.largura + 44, M._base.y - 2 * M.k]; },
+        lado: "direita", vert: "baixo", entra: 16.65, sai: null },
       { id: "cota10", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x + M.largura + 44, M._base.y - 10 * M.k + 14]; },
         lado: "direita", vert: "baixo", entra: 18.525, sai: null },
       { id: "cota11", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x + M.largura + 44, M._base.y - 11 * M.k - 14]; },
-        lado: "direita", vert: "cima", entra: 20.40, sai: null }
+        lado: "direita", vert: "cima", entra: 20.43, sai: null }   // r4: o '(1888)' em 'eighteen'; o '11 FT' em 'eleven' (cota11n)
     ],
     minis: [{ id: "mini1", sob: "rotDead", natural: [5911, 4767], recorte: [130, 89, 5660, 4241], foto: [900, 674],
               borda: 14, margemBaixo: 112, vao: 24, entra: 4.45, sai: 6.43 }],
-    legenda: { itens: [{ id: "legMolhe", entra: 0.43 }, { id: "legRasos", entra: 6.955 }, { id: "legVazante", entra: 9.23 }], sai: 16.40 },
+    legenda: { itens: [{ id: "legMolhe", entra: 0.43 }, { id: "legRasos", entra: 6.955 }, { id: "legVazante", entra: 9.23 },
+                       { id: "legBarra", entra: 13.80 }], sai: 16.40 },   // r4: R2.13, a barra com o seu item
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0, extra: [] }
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
@@ -508,15 +531,22 @@ var MOLHE = feicao("molhe-1871-usgs1896-corrigido");
       gb.setAttribute("opacity", eo(seg(t, CENA.barra.entra, 0.4)).toFixed(3));
     }
     desenharMedidor("medidor", CENA.medidor, pbar, t);
+    // r4: o '11 FT' de '11 FT (1888)' entra em 'eleven' (Q10 item 2), na frente do '(1888)', sem deslocá-lo
+    var c11 = E("cota11n"); if (c11) c11.style.opacity = eo(seg(t, 21.48, 0.3)).toFixed(3);
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
   // ── a base, SEM relevo ─────────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  // r4, A ÁGUA ESCURA (identidade §6; out/los-angeles/_tmp/agua/tecnica.md §2): a 2ª camada do estilo, opaca, logo acima do
+  // satélite e abaixo de tudo o que a cena desenha; a geometria é local (agua-osm-la): nenhum pedido de tile
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "agua",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -881,6 +911,7 @@ var MOLHE = feicao("molhe-1871-usgs1896-corrigido");
           // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
           for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
           if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+          if (!map.getSource("agua") || !map.isSourceLoaded("agua")) return false;   // r4: a água escura
           return nivelUnico();
         } catch (e) { return false; }
       };

@@ -4,36 +4,49 @@
 <meta charset="utf-8">
 <title>s29</title>
 <!--
-  CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s29 + s30 fundidas (395,033 → 409,467 s do master; 14,434 s).
-  Mapista, lote M2, 07/10/2026.
+  CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s29 = o run s29 + s30 + s31 + s32 fundido (395,033 → 429,400 s do master;
+  34,367 s). Mapista, lote M2 (07/10/2026); a FUSÃO e a rodada r4, lote M3 (08/10/2026: conceito r4 › fluxo, o run
+  [s29,s30,s31,s32] fundir:true; o relato do diretor r4, §1). O s31.html deixou de existir (aposentado por rename).
   "The rock came from Santa Catalina Island. In January nineteen oh-five, with money to spare, the Army got approval to extend
-  the wall to at least nine thousand feet. Stone kept coming, barge after barge, for thirteen years."
+  the wall to at least nine thousand feet. Stone kept coming, barge after barge, for thirteen years. Then the second tool
+  arrived. On April first, nineteen oh-five, a federal dredge went to work in the inner harbor. What it dug up went behind
+  walls on Terminal Island, the old Rattlesnake Island: made land. By the middle of nineteen oh-six, the bar had twenty-one
+  feet at low tide. The dredge did what the tide could not."
 
-  Nasceu de `preparar-cena.mjs los-angeles --molde=s29`; o corpo é o motor da s03, montado por
-  out/los-angeles/_tmp/art/lote-m2/gerar.py a partir de src/s29.html, src/head.html e src/core.js.
-  O que manda: textos-tela.json (s29, com a s30; sha1 d9ef161097b1), regencia.json (s29 e _chamadas[0]), conceito-visual.json
-  (s29 e s30), a marca e marca/cta.md.
+  O corpo é o motor da s03 (o mesmo das cenas do lote M2). O que manda: textos-tela.json r4 (s29: T187–T203, T377, T378,
+  T388; T204 retirado), regencia.json r4 (s29, com o run e _chamadas[0]), conceito-visual.json r4 (s29–s32, _agua_do_porto,
+  _medidor, _anel, _estilo_desenho_proposto), a marca (identidade §6, "A água escura nos mapas do porto") e marca/cta.md.
 
-  O que a cena faz (UMA viagem sobre a baía):
-    · p1: Santa Catalina Island (catalina-tiger) já acesa no 1º quadro, em --contexto-1 a 25 % (o conceito), com a pílula
-      "Santa Catalina Island" (a grafia do textos-tela: caixa normal, ilha); em "Catalina" uma ROTA TRACEJADA em --rede-cor
-      sai da ponta da ilha mais perto de Point Fermin até Point Fermin (GNIS), em 1,5 s, com "Approximate route" em legenda
-      enquanto ela está no quadro: a pedreira não tem ponto, e a linha sai do texto da fonte (identidade §6, rota esquemática).
-    · p2: em "In January" a câmera viaja 2 s (van Wijk) até Point Fermin e o quebra-mar; "JANUARY 1905" em "January"; a
-      rota e a legenda saem em "spare" (a ilha já saiu do quadro). Em "extend" a linha do quebra-mar (quebra-mar-osm: o San Pedro
-      Breakwater de hoje, a mesma obra de 1899–1912, da terra de hoje ao farol de Angels Gate; ±10 m no mar, ±20 m na raiz
-      enterrada; troca de 08/10/2026, decisão Q4 item 3: a linha da folha de 1923 corria 53–59 m ao norte do muro) cresce da
-      costa para leste e chega à marca dos 9.000 pés em "nine": um tique e "AT LEAST 9,000 FT" (cota), por 2,0 s, na metade de
-      baixo. 9.000 pés = 2.743 m do começo da linha (onde o aterro de hoje encontra a terra), medidos ao longo dela; o número da
-      tela é o da fonte, não o da medida (a linha inteira mede 10.235 pés).
-    · p3 (a cama calma da chamada de inscrição, s30): a linha segue crescendo, em velocidade constante, até o farol (o fim da
-      linha), e o contador "1899 → <ano>" anda de 1899 a 1912 junto da ponta, na metade de baixo, e para em
-      "1899 → 1912" (a grafia do textos-tela). A câmera só aproxima devagar da ponta, com o giro contínuo. Nada entra no alto.
-    · A CHAMADA (marca/cta.md; regencia.json › _chamadas[0]): a peça "inscricao?lugar=cima" entra por cima no Premiere de
-      404,28 a 408,78 s (9,247 a 13,747 s aqui), na caixa x 2029–3626, y 195–484. Nessa janela, nenhum texto, rótulo, anel
-      ou peça desta cena passa por essa caixa: embaixo dela fica só o satélite (o mar e o morro de San Pedro).
-  Fora, de propósito: a legenda das cores "Breakwater" e o crédito "Source: Chief of Engineers, 1905" do conceito (não estão
-  no textos-tela.json da s29). Nenhuma geometria de Hamlin na cena.
+  A BASE: o satélite da MapTiler com a ÁGUA ESCURA por cima (agua-osm-la, --agua-base, opaca, 2ª camada do estilo, abaixo de
+  tudo o que a cena desenha; Lucas, 08/10/2026). O San Pedro Breakwater e os píeres ficam no satélite (a camada os tira).
+
+  UMA viagem só:
+    · 0–14,43 (s29+s30): Santa Catalina Island (catalina-tiger) acesa no 1º quadro, --contexto-1 a 25 %, com a pílula; a rota
+      tracejada esquemática (--rede-cor) da ponta da ilha a Point Fermin, com "Approximate route"; a câmera viaja 2 s a Point
+      Fermin; "JANUARY 1905"; em "extend" a linha do quebra-mar (quebra-mar-osm: o muro de hoje, a mesma obra de 1899–1912)
+      cresce da costa para leste até a marca dos 9.000 pés (2.743 m ao longo da linha), com o tique e "AT LEAST 9,000 FT" do
+      LADO DO MAR, à direita e abaixo do tique (r4, R5.11: nunca sobre a linha); depois cresce constante até o farol, e o
+      contador "1899 → 1912" anda junto da ponta, na metade de baixo. A CHAMADA de inscrição (regencia › _chamadas[0]) entra
+      por cima no Premiere de 404,28 a 408,78 s (9,247 a 13,747 s aqui): nada da cena no alto nessa janela.
+    · 14,43–16,43, "Then the second tool arrived": o contador sai 300 ms ANTES; a câmera VIAJA 2 s (van Wijk, cúbica) da ponta
+      do muro ao porto interno; nada entra. A linha do muro não sai do quadro sozinha (no porto interno o muro fica a ~700 px
+      abaixo do centro, na faixa de baixo), então ela esmaece na 2ª metade da viagem: sai COM a viagem.
+    · 16,43–34,37 (s31+s32, os tempos da s31 + 14,434 s): na chegada, em "On", a água do porto de hoje do lado de Los Angeles
+      (agua-porto-hoje-tiger, os corpos d'água das duas cidades, sem os lagos) acende em --tinta a 35 % com o contorno de 6 px
+      SÓ onde a água toca terra (o corte do TIGER no meio da água não vira linha: o lado de cada segmento é conferido contra
+      a água do OSM) e FICA até o corte (_agua_do_porto). "APRIL 1, 1905"; a DRAGA como esquema declarado (losango + "federal
+      dredge (schematic)") sobe o eixo do Main Channel e deixa o rastro ("dredged channel (schematic)"); as setas para
+      Terminal Island; em "walls" a borda da ilha de hoje (a mesma borda da água, dentro do recorte) se acende mais grossa;
+      "Terminal Island" + "the old Rattlesnake Island" e, em "made land", a hachura com "MADE LAND" + "(schematic)": as
+      pílulas FORA de toda linha (R5.7). Em "By the middle" o anel na barra; o MEDIDOR (o instrumento do vídeo, o mesmo de
+      s12: 0–60 pés, tiques a cada 5, os números 10–60 a cada 10, o zero no fundo e a água subindo) entra quando a câmera
+      assenta na barra (29,27 s: depois de as pílulas saírem, R5.7, e já LIDO, R5.8): a linha d'água em 11, as marcas cinza de
+      10 e 11, "11 FT (1888)" em --neutro e "at low tide"; em "twenty-one" a água sobe a 21 (600 ms) e "21 FT (1906)" entra
+      com o tique GROSSO; em "The dredge" a leitura cinza sai e entram "tide" (nas marcas finas) e "dredge" (no grosso). O 2º
+      pulso do anel cai em "bar" (R5.8).
+    · CÂMERA: pernas presas às palavras, com o giro contínuo de −2,5° a +2,5° do 1º ao último quadro.
+  Fora, de propósito: a cota opcional "ABOUT 14 FT (1892)" (o quadro já tem 6 elementos no medidor); a legenda das cores e
+  os créditos "Source: Chief of Engineers, 1905/1906" do conceito (fora do textos-tela.json). Nenhuma geometria de Hamlin.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -41,9 +54,13 @@
 <script src="../_media/_vendor/camera-mapa.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/los-angeles/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/agua-osm-la.js"></script>
 <script src="../_media/geo/catalina-tiger.js"></script>
 <script src="../_media/geo/quebra-mar-osm.js"></script>
 <script src="../_media/geo/lugares-costa-gnis.js"></script>
+<script src="../_media/geo/agua-porto-hoje-tiger.js"></script>
+<script src="../_media/geo/main-channel-usace-ncf.js"></script>
+<script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -69,6 +86,8 @@
     letter-spacing: var(--tracking-lugar); color: var(--tinta);
     -webkit-text-stroke: var(--nome-territorio-contorno); paint-order: stroke fill;
     text-shadow: var(--nome-territorio-sombra); }
+  /* a leitura anterior do medidor, em cinza (conceito › _medidor: "a leitura anterior rotulada em --neutro") */
+  .cota.cinza { color: var(--neutro); }
   /* A LEGENDA DAS CORES (identidade §6; s03): caixa --rotulo no canto de cima à direita, dentro das margens */
   #legenda { position: absolute; top: 160px; right: 200px; z-index: 45; pointer-events: none; opacity: 0;
     padding: 16px 28px; background: var(--rotulo); border-radius: var(--cantos);
@@ -90,6 +109,7 @@
   #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
     font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
   #erroCena[hidden] { display: none; }
+  /* o muro, a rota e o tique (s29) */
   .muro { fill: none; stroke-linecap: round; stroke-linejoin: round; }
   .muro.sob { stroke: var(--fronteira-contorno-cor); stroke-width: 26px; }
   .muro.sobre { stroke: var(--rede-cor); stroke-width: 14px; }
@@ -100,15 +120,49 @@
   .tique.sob { stroke: var(--rotulo); stroke-width: 22px; }
   .tique.sobre { stroke: var(--tinta); stroke-width: 8px; }
   #contador { font-variant-numeric: tabular-nums; }
+  /* a draga, o rastro, as setas e a hachura (s31) */
+  #hachura { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 29; }
+  .rastro { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .rastro.sobre { stroke: color-mix(in srgb, var(--tinta) 60%, transparent); stroke-width: 24px; }
+  .seta { fill: none; stroke: color-mix(in srgb, var(--tinta) 40%, transparent); stroke-width: 5px; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 18 14; }
+  #draga rect { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 8px; }
+  /* O MEDIDOR (conceito › _medidor; o mesmo instrumento de s12: régua de 0 a 60 pés, k = 16 px/pé, 110 px de largura,
+     tiques a cada 5 pés, os números a cada 10 em Inter 700 84 tabular; o zero é o fundo e a água sobe da base) */
+  .med-sob { fill: none; stroke: var(--rotulo); stroke-linecap: round; stroke-linejoin: round; }
+  .med-sobre { fill: none; stroke: var(--tinta); stroke-linecap: round; stroke-linejoin: round; }
+  .med-neutro { fill: none; stroke: var(--neutro); stroke-linecap: butt; }
+  .med-agua { fill: none; stroke: var(--tinta); stroke-width: 3; opacity: .45; }
+  .med-grosso { fill: none; stroke: var(--tinta); stroke-width: 16px; stroke-linecap: butt; }
+  .med-num { font-family: var(--fonte); font-weight: 700; font-size: var(--fs-eixo); font-variant-numeric: var(--numeros);
+    fill: var(--tinta); stroke: var(--rotulo); stroke-width: 14px; paint-order: stroke fill; stroke-linejoin: round; }
 </style>
 </head>
 <body>
 <div id="palco">
   <div id="map"></div>
+  <canvas id="hachura" width="3840" height="2160"></canvas>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="medClip"><rect id="medClipR" x="0" y="0" width="0" height="0"/></clipPath></defs>
     <g id="rota" opacity="0"><path class="rota sob" id="rotaSob" d=""/><path class="rota sobre" id="rotaSobre" d=""/></g>
     <g id="muro"><path class="muro sob" id="muroSob" d=""/><path class="muro sobre" id="muroSobre" d=""/></g>
     <g id="tique" opacity="0"><path class="tique sob" id="tiqueSob" d=""/><path class="tique sobre" id="tiqueSobre" d=""/></g>
+    <g id="rastro" opacity="0"><path class="rastro sobre" id="rastroL" d=""/></g>
+    <g id="setas" opacity="0"><path class="seta" id="setasL" d=""/></g>
+    <g id="draga" opacity="0"><rect x="-32" y="-32" width="64" height="64" transform="rotate(45)"/></g>
+    <g id="medidor" opacity="0">
+      <path class="med-sob" id="medHasteSob" stroke-width="12" d=""/>
+      <path class="med-sobre" id="medHaste" stroke-width="4" d=""/>
+      <path class="med-agua" id="medHach" clip-path="url(#medClip)" d=""/>
+      <path class="med-sob" id="medQuadroSob" stroke-width="18" d=""/>
+      <path class="med-sobre" id="medQuadro" stroke-width="6" d=""/>
+      <path class="med-sob" id="medRefSob" stroke-width="16" d=""/>
+      <path class="med-neutro" id="medRef" stroke-width="6" d=""/>
+      <path class="med-sob" id="medAguaSob" stroke-width="20" d=""/>
+      <path class="med-sobre" id="medAgua" stroke-width="8" d=""/>
+      <g id="medGrosso" opacity="0"><path class="med-sob" id="medGrossoSob" stroke-width="28" stroke-linecap="butt" d=""/><path class="med-grosso" id="medGrossoL" d=""/></g>
+      <g id="medNums"></g>
+    </g>
+    <g id="anelBarra" class="anel" opacity="0"><g id="anelBarraP1" opacity="0"><circle class="halo" cx="0" cy="0" r="28" stroke-width="30"/><circle cx="0" cy="0" r="28" stroke-width="10"/></g><g id="anelBarraP2" opacity="0"><circle class="halo" cx="0" cy="0" r="28" stroke-width="30"/><circle cx="0" cy="0" r="28" stroke-width="10"/></g><circle class="halo" cx="0" cy="0" r="28" stroke-width="30"/><circle cx="0" cy="0" r="28" stroke-width="10"/></g>
   </svg>
   <div id="rotulos">
     <div class="rotulo liso" id="rotCat" data-qc-papel="rotulo">Santa Catalina Island</div>
@@ -116,6 +170,18 @@
     <div class="rotulo caixa liso" id="rotJan" data-qc-papel="rotulo">JANUARY 1905</div>
     <div class="cota" id="cota9000" data-qc-papel="legenda">AT LEAST 9,000 FT</div>
     <div class="rotulo liso" id="contador" data-qc-papel="rotulo">1899 → 1899</div>
+    <div class="rotulo caixa liso" id="rotAbril" data-qc-papel="rotulo">APRIL 1, 1905</div>
+    <div class="rotulo legenda liso" id="legDraga" data-qc-papel="legenda">federal dredge (schematic)</div>
+    <div class="rotulo legenda liso" id="legCanal" data-qc-papel="legenda">dredged channel (schematic)</div>
+    <div class="rotulo liso" id="rotTI" data-qc-papel="rotulo">Terminal Island</div>
+    <div class="rotulo legenda liso" id="legRattle" data-qc-papel="legenda">the old Rattlesnake Island</div>
+    <div class="rotulo caixa liso" id="rotMade" data-qc-papel="rotulo">MADE LAND</div>
+    <div class="rotulo legenda liso" id="legEsq" data-qc-papel="legenda">(schematic)</div>
+    <div class="cota cinza" id="cota11" data-qc-papel="legenda">11 FT (1888)</div>
+    <div class="rotulo legenda liso" id="legMare" data-qc-papel="legenda">at low tide</div>
+    <div class="cota" id="cota21" data-qc-papel="legenda">21 FT (1906)</div>
+    <div class="rotulo legenda liso" id="legTide" data-qc-papel="legenda">tide</div>
+    <div class="rotulo legenda liso" id="legDredge" data-qc-papel="legenda">dredge</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
   <div id="crMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
@@ -127,9 +193,13 @@
   // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
   // Tempos (0 = 395,033 s), do words.json: 'Santa' 0,857 · 'Catalina' 1,177 · 'Island.' 1,612–2,047 · 'In' 2,697 ·
   // 'January' 2,862 · 'spare,' 5,017–5,407 · 'extend' 6,937 · 'nine' 8,142 · 'thousand' 8,522 · 'feet.' 9,002–9,247 ·
-  // 'Stone' 9,827 · 'thirteen' 13,017 · 'years.' 13,577–13,977. A chamada de inscrição: 9,247 → 13,747.
+  // 'Stone' 9,827 · 'thirteen' 13,017 · 'years.' 13,577–13,977 · 'Then' 14,457 · 'arrived.' 15,507 · 'On' 16,477 ·
+  // 'April' 16,627 · 'federal' 18,827 · 'dredge' 19,187 · 'harbor.' 20,547 · 'What' 21,517 · 'dug' 21,827 · 'walls' 22,782 ·
+  // 'Terminal' 23,427 · 'the' 24,487 · 'Rattlesnake' 24,867 · 'made' 26,277 · 'land.' 26,707 · 'By' 27,777 · 'the' 29,427 ·
+  // 'bar' 29,587 · 'twenty-one' 30,067 · 'at' 30,867 · 'low' 31,027 · 'tide.' 31,187 · 'The' 32,027 · 'dredge' 32,147 ·
+  // 'not.' 33,667. A chamada de inscrição: 9,247 → 13,747 (em cima).
   var CENA = {
-    duracao: 14.434,
+    duracao: 34.367,
     largura: 3840, altura: 2160,
     perfil: "maptiler",
     pontos: {
@@ -137,30 +207,69 @@
       K1: { lng: -118.424, lat: 33.518, zoom: 11.24 },
       Q0: { lng: -118.2705, lat: 33.7088, zoom: 14.82 },  // Point Fermin à esquerda, o quebra-mar no meio
       Q1: { lng: -118.2680, lat: 33.7086, zoom: 14.90 },
-      Q2: { lng: -118.2625, lat: 33.7083, zoom: 15.00 }   // a cama calma: aproxima devagar da ponta
+      Q2: { lng: -118.2625, lat: 33.7083, zoom: 15.00 },  // a cama calma: aproxima devagar da ponta
+      H1: { lng: -118.264, lat: 33.731, zoom: 14.18 },    // o porto interno: o Main Channel de sul a norte
+      H2: { lng: -118.263, lat: 33.734, zoom: 14.26 },
+      T0: { lng: -118.2585, lat: 33.7500, zoom: 15.05 },  // Terminal Island, a ponta oeste (r4: mais perto, para as pílulas
+      T1: { lng: -118.2580, lat: 33.7503, zoom: 15.13 },  //   caberem fora de toda linha, R5.7)
+      B0: { lng: -118.2572, lat: 33.7260, zoom: 14.30 },  // a barra: o anel à esquerda, o medidor à direita
+      B1: { lng: -118.2570, lat: 33.7262, zoom: 14.40 }
     },
     pernas: [
-      { t0: 0,     t1: 2.70,   de: "K0", para: "K1", tipo: "h" },
-      { t0: 2.70,  t1: 4.70,   de: "K1", para: "Q0", tipo: "v" },
-      { t0: 4.70,  t1: 9.25,   de: "Q0", para: "Q1", tipo: "h" },
-      { t0: 9.25,  t1: 14.434, de: "Q1", para: "Q2", tipo: "h" }
+      { t0: 0,      t1: 2.70,   de: "K0", para: "K1", tipo: "h" },
+      { t0: 2.70,   t1: 4.70,   de: "K1", para: "Q0", tipo: "v" },
+      { t0: 4.70,   t1: 9.25,   de: "Q0", para: "Q1", tipo: "h" },
+      { t0: 9.25,   t1: 14.434, de: "Q1", para: "Q2", tipo: "h" },
+      { t0: 14.434, t1: 16.434, de: "Q2", para: "H1", tipo: "v" },   // "Then the second tool arrived": a viagem de 2 s
+      { t0: 16.434, t1: 23.40,  de: "H1", para: "H2", tipo: "h" },
+      { t0: 23.40,  t1: 24.90,  de: "H2", para: "T0", tipo: "v" },   // depois de "dredged channel (schematic)" sair (R5.7: nada sob linha)
+      { t0: 24.90,  t1: 27.774, de: "T0", para: "T1", tipo: "h" },
+      { t0: 27.774, t1: 29.274, de: "T1", para: "B0", tipo: "v" },
+      { t0: 29.274, t1: 34.367, de: "B0", para: "B1", tipo: "h" }
     ],
-    giro: [-2, 2],
+    giro: [-2.5, 2.5],
     catalina: { fracao: 0.25 },
     rota: { desenha: [1.177, 1.5], sai: 5.017 },
-    muro: { cresce: [6.937, 8.142], marca: 9000 * 0.3048, fim: [9.247, 13.85] },
+    muro: { cresce: [6.937, 8.142], marca: 9000 * 0.3048, fim: [9.247, 13.85], sai: [15.434, 0.8] },
+    contador: { entra: 9.827, sai: 14.134 },
+    agua: { entra: [16.477, 0.5] },
+    draga: { entra: 18.827, anda: [19.187, 21.517], sai: 21.517 },
+    rastro: { sai: 24.434 },
+    setas: { entra: 21.827, sai: 25.85 },
+    borda: { entra: 22.782, sai: 25.85 },   // sai antes de "MADE LAND" (R5.7); a hachura, recortada pela água, dá a forma
+    bordaVolta: 28.60,                       // o contorno da água dentro do recorte volta depois das pílulas
+    hachura: { entra: 26.277, sai: 28.294 },
+    // o recorte da ilha (lng/lat): oeste e noroeste pelo Main Channel, sul pela água do porto externo; leste e norte, esquema
+    recorte: [[-118.2730, 33.7480], [-118.2592, 33.7578], [-118.2490, 33.7640], [-118.2450, 33.7640], [-118.2450, 33.7370],
+              [-118.2660, 33.7370], [-118.2730, 33.7400]],
+    medidor: { k: 16, max: 60, cada: 10, largura: 110, dx: 1240, dy: 120, entra: 29.274, salto: 30.067, de: 11, para: 21 },
+    aneis: [ { id: "anelBarra", ref: "BARRA", entra: 27.777, pulsos: [27.777, 29.587] } ],
     rotulos: [
-      { id: "rotCat",   ref: "CAT",   lado: "direita", dx: 480, dy: 60,  entra: -1,    sai: 3.40 },
-      { id: "legRota",  ref: "ROTAM", lado: "direita", dx: 70, dy: 0, entra: 1.177, sai: 5.017 },
-      { id: "rotJan",   ref: "PF",    lado: "centro", vert: "baixo", dx: 0, dy: 140, entra: 2.862, sai: 9.00 },
-      { id: "cota9000", ref: "MARCA", lado: "centro", vert: "baixo", dx: 0, dy: 80,  entra: 8.142, sai: 10.142 },
-      { id: "contador", ref: "PONTA", lado: "direita", vert: "baixo", dx: 50, dy: 300, entra: 9.827, sai: null }
+      { id: "rotCat",    ref: "CAT",   lado: "direita", dx: 480, dy: 60,  entra: -1,    sai: 3.40 },
+      { id: "legRota",   ref: "ROTAM", lado: "direita", dx: 70, dy: 0,    entra: 1.177, sai: 5.017 },
+      { id: "rotJan",    ref: "PF",    lado: "centro", vert: "baixo", dx: 0, dy: 140, entra: 2.862, sai: 9.00 },
+      { id: "cota9000",  ref: "MARCA", lado: "direita", vert: "baixo", dx: 60, dy: 60, entra: 8.142, sai: 10.142 },
+      { id: "contador",  ref: "PONTA", lado: "direita", vert: "baixo", dx: 50, dy: 300, entra: 9.827, sai: 14.134 },
+      { id: "rotAbril",  ref: "MCS",   lado: "esquerda", dx: -440, dy: -60, entra: 16.627, sai: 21.517 },   // fora do contorno da água e do rastro
+      { id: "legDraga",  ref: "MCM",   lado: "direita", dx: 340, dy: -60, entra: 18.827, sai: 21.517 },
+      { id: "legCanal",  ref: "MCM",   lado: "esquerda", dx: -200, dy: 60, entra: 21.517, sai: 23.30 },
+      { id: "rotTI",     ref: "TI",    lado: "centro", dx: 560, dy: -210, entra: 24.487, sai: 28.294 },   // fora de toda linha (R5.7)
+      { id: "legRattle", ref: "TI",    lado: "centro", vert: "baixo", dx: 560, dy: -116, entra: 24.487, sai: 28.294 },
+      { id: "rotMade",   ref: "MADE",  lado: "centro", dx: -160, dy: 0, entra: 26.277, sai: 28.294 },
+      { id: "legEsq",    ref: "MADE",  lado: "centro", vert: "baixo", dx: -160, dy: 100, entra: 26.277, sai: 28.294 },
+      { id: "cota11",    tela: [0, 0], lado: "direita", vert: "cima",  entra: 29.274, sai: 31.75 },
+      { id: "legMare",   tela: [0, 0], lado: "centro",  vert: "baixo", entra: 29.274, sai: 31.75 },
+      { id: "cota21",    tela: [0, 0], lado: "direita", vert: "cima",  entra: 30.067, sai: null },
+      { id: "legTide",   tela: [0, 0], lado: "direita", vert: "baixo", entra: 32.027, sai: null },
+      { id: "legDredge", tela: [0, 0], lado: "direita", vert: "baixo", entra: 32.147, sai: null }
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
     creditos: [ { id: "crMapa", mapa: true, entra: 0 } ]
   };
+  var ROT = {}; CENA.rotulos.forEach(function (r) { ROT[r.id] = r; });
   var SCENE = {
     preparar: function (A) {
+      // ── s29: Catalina, a rota, o muro ──
       var cat = A.feicao("catalina-tiger"), pf = A.pontoNome("lugares-costa-gnis", "Point Fermin");
       var anel = A.aneis(cat.geometry)[0], sx = 0, sy = 0;
       anel.forEach(function (p) { sx += p[0]; sy += p[1]; });
@@ -179,12 +288,55 @@
       if (!(A.UMARCA > 0 && A.UMARCA < 1)) A.falhar("a marca dos 9.000 pés não cai dentro do quebra-mar (" + tot.toFixed(0) + " m).");
       A.REFS.MARCA = A.ateFracao(q, A.UMARCA).pts.slice(-1)[0];
       A.REFS.PONTA = q[q.length - 1];
+      // ── s31/s32: o eixo do Main Channel (USACE): o meio entre a margem mais a oeste e a mais a leste, de sul a norte ──
+      var mc = A.feicao("main-channel-usace-ncf"), ys = [];
+      A.aneis(mc.geometry)[0].forEach(function (p) { ys.push(p[1]); });
+      var s = Math.min.apply(null, ys) + 0.0006, n = Math.max.apply(null, ys) - 0.0006, eixo = [];
+      for (var k = 0; k <= 40; k++) {
+        var la = s + (n - s) * k / 40, xs = A.cruzamentos(mc.geometry, la, [-118.30, -118.24]);
+        if (xs.length >= 2) eixo.push([(xs[0] + xs[xs.length - 1]) / 2, la]);
+      }
+      if (eixo.length < 20) A.falhar("o eixo do Main Channel saiu com " + eixo.length + " pontos.");
+      A.EIXO = eixo;
+      A.REFS.MCS = eixo[0];
+      A.REFS.MCM = eixo[Math.floor(eixo.length * 0.45)];
+      A.REFS.BARRA = A.pontoNome("pontos-historicos-usgs-corrigidos", "Deadman's Island");
+      A.REFS.TI = [-118.2600, 33.7520];
+      A.REFS.MADE = [-118.2560, 33.7445];
+      // a água do porto de hoje do lado das duas cidades (_agua_do_porto): os corpos d'água do TIGER a oeste de −118,23,
+      // sem os lagos e tanques de terra (Harbor Lake e os de menos de 50.000 m²)
+      A.AGUA = A.geo("agua-porto-hoje-tiger").features;
+      A.AGUA_LA = { type: "FeatureCollection", features: A.aguaDasDuasCidades(A.AGUA) };
+      // o contorno dela só onde a água toca terra (o lado de cada segmento conferido contra a água do OSM, a 12 m)
+      A.AGUA_BORDA = A.bordaQueTocaTerra(A.AGUA_LA.features, A.geo("agua-osm-la"), 12);
+      // o contorno partido em dois: o de dentro do recorte da ilha (a borda de "walls", que sai antes de "MADE LAND") e o resto
+      var rc = CENA.recorte, noRecorte = function (x, y) {
+        var d = false; for (var i = 0, j = rc.length - 1; i < rc.length; j = i++)
+          if ((rc[i][1] > y) !== (rc[j][1] > y) && x < (rc[j][0] - rc[i][0]) * (y - rc[i][1]) / (rc[j][1] - rc[i][1]) + rc[i][0]) d = !d;
+        return d;
+      };
+      var fora = [], dentro = [];
+      A.AGUA_BORDA.geometry.coordinates.forEach(function (l) {
+        var cur = null, alvoAnt = null;
+        for (var i = 1; i < l.length; i++) {
+          var a = l[i - 1], b = l[i], alvo = noRecorte((a[0] + b[0]) / 2, (a[1] + b[1]) / 2) ? dentro : fora;
+          if (alvo !== alvoAnt) { cur = [a]; alvo.push(cur); alvoAnt = alvo; }
+          cur.push(b);
+        }
+      });
+      var ml = function (ls) { return { type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: ls } }; };
+      A.BORDA_FORA = ml(fora); A.BORDA_DENTRO = ml(dentro);
     },
     camadas: function (map, A) {
       A.territorio("catalina", A.CAT, { fill: "--contexto-1", fracao: CENA.catalina.fracao, linha: "--contexto-1", w: 0.01, sob: 0.01 });
+      A.aguaAcesa("aguaLA", A.AGUA_LA, A.BORDA_FORA);
+      A.linha("aguaLAd", A.BORDA_DENTRO, { cor: "--tinta", w: 6, sob: 12 });
     },
     quadro: function (t, A) {
       A.terr("catalina", 1, CENA.catalina.fracao);
+      var va = A.janela(t, CENA.agua.entra[0], null, CENA.agua.entra[1]);
+      A.aguaQuadro("aguaLA", va);
+      A.lin("aguaLAd", va * (1 - A.janela(t, CENA.borda.sai, CENA.bordaVolta, 0.4, 0.4)));
       var f = function (p) { return p.x.toFixed(2) + " " + p.y.toFixed(2); };
       // a rota tracejada
       var R = CENA.rota, ur = A.eio(A.seg(t, R.desenha[0], R.desenha[1])), g = A.E("rota");
@@ -194,33 +346,145 @@
         A.E("rotaSob").setAttribute("d", d); A.E("rotaSobre").setAttribute("d", d);
         g.setAttribute("opacity", (1 - A.eio(A.seg(t, R.sai, 0.3))).toFixed(3));
       }
-      // o quebra-mar que cresce: até a marca dos 9.000 pés em 'nine'; depois, constante até o farol
+      // o quebra-mar que cresce: até a marca dos 9.000 pés em 'nine'; depois, constante até o farol; esmaece com a viagem
       var M = CENA.muro, u = 0;
       if (t >= M.fim[0]) u = A.UMARCA + (1 - A.UMARCA) * A.seg(t, M.fim[0], M.fim[1] - M.fim[0]);
       else u = A.UMARCA * A.eio(A.seg(t, M.cresce[0], M.cresce[1] - M.cresce[0]));
-      var dm = "";
-      if (u > 0) dm = "M " + A.ateFracao(A.MURO, u).pts.map(function (p) { return f(A.project(p)); }).join(" L ");
+      var vm = 1 - A.eio(A.seg(t, M.sai[0], M.sai[1])), dm = "";
+      if (u > 0 && vm > 0) dm = "M " + A.ateFracao(A.MURO, u).pts.map(function (p) { return f(A.project(p)); }).join(" L ");
       A.E("muroSob").setAttribute("d", dm); A.E("muroSobre").setAttribute("d", dm);
+      A.E("muro").setAttribute("opacity", vm.toFixed(3));
       // o tique na marca: perpendicular à linha
       var tq = A.E("tique");
       if (tq) {
         var pm = A.project(A.REFS.MARCA), pp = A.project(A.ateFracao(A.MURO, A.UMARCA * 0.98).pts.slice(-1)[0]);
-        var dx = pm.x - pp.x, dy = pm.y - pp.y, n = Math.hypot(dx, dy) || 1, nx = -dy / n * 44, ny = dx / n * 44;
+        var dx = pm.x - pp.x, dy = pm.y - pp.y, nn = Math.hypot(dx, dy) || 1, nx = -dy / nn * 44, ny = dx / nn * 44;
         var dt = "M " + (pm.x + nx).toFixed(2) + " " + (pm.y + ny).toFixed(2) + " L " + (pm.x - nx).toFixed(2) + " " + (pm.y - ny).toFixed(2);
         A.E("tiqueSob").setAttribute("d", dt); A.E("tiqueSobre").setAttribute("d", dt);
         tq.setAttribute("opacity", A.janela(t, M.cresce[1], 10.142).toFixed(3));
       }
-      // o contador de anos: 1899 → 1912, um ano a cada 0,30 s desde 'Stone', e para
+      // o contador de anos: 1899 → 1912, um ano a cada 0,30 s desde 'Stone', e para; sai 300 ms antes da viagem
       var cn = A.E("contador");
       if (cn) {
-        var ano = 1899 + Math.min(13, Math.max(0, Math.floor((t - 9.827) / 0.30)));
+        var ano = 1899 + Math.min(13, Math.max(0, Math.floor((t - CENA.contador.entra) / 0.30)));
         var txt = "1899 → " + ano;
         if (cn.textContent !== txt) cn.textContent = txt;
       }
+      // a draga e o rastro pelo eixo
+      var D = CENA.draga, ud = A.eio(A.seg(t, D.anda[0], D.anda[1] - D.anda[0]));
+      var tr = A.ateFracao(A.EIXO, Math.max(ud, 0.0001)), ponta = tr.pts[tr.pts.length - 1], pd = A.project(ponta);
+      var gd = A.E("draga");
+      if (gd) { gd.setAttribute("transform", "translate(" + f(pd) + ")"); gd.setAttribute("opacity", A.janela(t, D.entra, D.sai).toFixed(3)); }
+      var rl = A.E("rastro");
+      if (rl) {
+        A.E("rastroL").setAttribute("d", ud > 0 && t < CENA.rastro.sai + 0.5 ? "M " + tr.pts.map(function (p) { return f(A.project(p)); }).join(" L ") : "");
+        rl.setAttribute("opacity", (t < D.anda[0] ? 0 : 1 - A.eio(A.seg(t, CENA.rastro.sai, 0.4))).toFixed(3));
+      }
+      // as setas do canal para a ilha
+      var st = A.E("setas");
+      if (st) {
+        var vS = A.janela(t, CENA.setas.entra, CENA.setas.sai, 0.5, 0.4), dS = "";
+        if (vS > 0) {
+          var alvo = A.project(A.REFS.MADE);
+          [0.55, 0.70, 0.85].forEach(function (qq) {
+            var a = A.project(A.ateFracao(A.EIXO, qq).pts.slice(-1)[0]);
+            var b = { x: a.x + (alvo.x - a.x) * 0.55, y: a.y + (alvo.y - a.y) * 0.55 };
+            var ex = b.x - a.x, ey = b.y - a.y, n2 = Math.hypot(ex, ey) || 1; ex /= n2; ey /= n2;
+            dS += "M " + f({ x: a.x + ex * 40, y: a.y + ey * 40 }) + " L " + f(b) +
+              " M " + f({ x: b.x - ex * 34 - ey * 22, y: b.y - ey * 34 + ex * 22 }) + " L " + f(b) + " L " + f({ x: b.x - ex * 34 + ey * 22, y: b.y - ey * 34 - ex * 22 });
+          });
+        }
+        A.E("setasL").setAttribute("d", dS);
+        st.setAttribute("opacity", vS.toFixed(3));
+      }
+      hachuraEBorda(t, A);
+      medidor(t, A);
     }
   };
+  // a borda da ilha de hoje (a borda da água que toca terra, dentro do recorte: mais grossa que o contorno da água) e a
+  // hachura da terra (a terra de hoje no recorte, menos a água do TIGER): desenhadas num canvas por quadro, sob o SVG
+  var PADRAO = null;
+  function hachuraEBorda(t, A) {
+    var cv = A.E("hachura"); if (!cv) return;
+    var g = cv.getContext("2d");
+    g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height);
+    var vb = A.janela(t, CENA.borda.entra, CENA.borda.sai, 0.5, 0.4), vh = A.janela(t, CENA.hachura.entra, CENA.hachura.sai, 0.5, 0.4);
+    if (vb <= 0 && vh <= 0) return;
+    var caminho = function (anel) { anel.forEach(function (p, i) { var q = A.project(p); if (i) g.lineTo(q.x, q.y); else g.moveTo(q.x, q.y); }); g.closePath(); };
+    var trilha = function (l) { l.forEach(function (p, i) { var q = A.project(p); if (i) g.lineTo(q.x, q.y); else g.moveTo(q.x, q.y); }); };
+    g.save();
+    g.beginPath(); caminho(CENA.recorte); g.clip();
+    if (vh > 0) {
+      if (!PADRAO) {
+        var pc = document.createElement("canvas"); pc.width = 48; pc.height = 48;
+        var pg = pc.getContext("2d"); pg.strokeStyle = A.tok("--neutro", "#737D8E"); pg.lineWidth = 7;
+        pg.beginPath(); pg.moveTo(-12, 60); pg.lineTo(60, -12); pg.moveTo(-36, 36); pg.lineTo(36, -36); pg.moveTo(12, 84); pg.lineTo(84, 12); pg.stroke();
+        PADRAO = g.createPattern(pc, "repeat");
+      }
+      g.globalAlpha = 0.85 * vh; g.fillStyle = PADRAO; g.fillRect(0, 0, cv.width, cv.height);
+      g.globalAlpha = 1; g.globalCompositeOperation = "destination-out"; g.fillStyle = "#000";
+      g.beginPath(); A.AGUA.forEach(function (fe) { A.aneis(fe.geometry).forEach(caminho); }); g.fill("evenodd");
+      g.globalCompositeOperation = "source-over";
+    }
+    if (vb > 0) {
+      g.lineJoin = "round"; g.lineCap = "round";
+      g.beginPath(); A.BORDA_DENTRO.geometry.coordinates.forEach(trilha);
+      g.globalAlpha = vb; g.strokeStyle = A.tok("--rotulo", "rgba(11,15,20,0.88)"); g.lineWidth = 20; g.stroke();
+      g.strokeStyle = A.tok("--tinta", "#F4F1EA"); g.lineWidth = 10; g.stroke();
+    }
+    g.restore();
+  }
+  // O MEDIDOR (conceito › _medidor; o instrumento de s12, no traço de engenheiro): o zero na base, a régua de 0 a 60 pés, a
+  // água subindo da base; preso ao ponto da barra por uma haste fina. Chega LIDO: a água em 11 e as marcas cinza de 10 e 11
+  // desde o 1º quadro; em "twenty-one" a água sobe a 21 e o tique grosso entra.
+  var NUMS = null;
+  function medidor(t, A) {
+    var M = CENA.medidor, gm = A.E("medidor"); if (!gm) return;
+    var v = A.janela(t, M.entra, null, 0.4);
+    gm.setAttribute("opacity", v.toFixed(3));
+    var barra = A.project(A.REFS.BARRA), k = M.k, W = M.largura, H = M.max * k;
+    var B = { x: barra.x + M.dx, y: barra.y + M.dy }, Y = function (pe) { return B.y - pe * k; }, fx = function (n) { return n.toFixed(2); };
+    if (!NUMS) {
+      NUMS = []; var gn = A.E("medNums");
+      for (var pe = M.cada; pe <= M.max; pe += M.cada) {   // sem o "0": a haste chega ao canto da base
+        var tx = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        tx.setAttribute("class", "med-num"); tx.setAttribute("text-anchor", "end"); tx.setAttribute("data-qc-papel", "eixo");
+        tx.textContent = String(pe); gn.appendChild(tx); NUMS.push({ ft: pe, el: tx });
+      }
+    }
+    NUMS.forEach(function (nn) { nn.el.setAttribute("x", fx(B.x - 26)); nn.el.setAttribute("y", fx(Y(nn.ft) + 30)); });
+    var q = "M " + fx(B.x) + " " + fx(B.y) + " L " + fx(B.x) + " " + fx(B.y - H) + " L " + fx(B.x + W) + " " + fx(B.y - H) +
+      " L " + fx(B.x + W) + " " + fx(B.y) + " Z";
+    for (var f5 = 5; f5 < M.max; f5 += 5) q += " M " + fx(B.x) + " " + fx(Y(f5)) + " L " + fx(B.x + (f5 % 10 === 0 ? 44 : 24)) + " " + fx(Y(f5));
+    A.E("medQuadro").setAttribute("d", q); A.E("medQuadroSob").setAttribute("d", q);
+    var hs = "M " + fx(barra.x) + " " + fx(barra.y) + " L " + fx(B.x) + " " + fx(B.y);
+    A.E("medHaste").setAttribute("d", hs); A.E("medHasteSob").setAttribute("d", hs);
+    // as marcas de referência em --neutro: 10 e 11 pés (a maré: o que a natureza dava)
+    var dRef = "";
+    [10, 11].forEach(function (pe) { dRef += " M " + fx(B.x - 40) + " " + fx(Y(pe)) + " L " + fx(B.x + W + 40) + " " + fx(Y(pe)); });
+    A.E("medRef").setAttribute("d", dRef); A.E("medRefSob").setAttribute("d", dRef);
+    // a água: a linha e a hachura até o nível de agora
+    var L = M.de + (M.para - M.de) * A.eo(A.seg(t, M.salto, 0.6)), yl = Y(L);
+    var dl = "M " + fx(B.x - 18) + " " + fx(yl) + " L " + fx(B.x + W + 18) + " " + fx(yl);
+    A.E("medAgua").setAttribute("d", dl); A.E("medAguaSob").setAttribute("d", dl);
+    var cr = A.E("medClipR");
+    cr.setAttribute("x", fx(B.x)); cr.setAttribute("y", fx(yl)); cr.setAttribute("width", fx(W)); cr.setAttribute("height", fx(Math.max(0, B.y - yl)));
+    var hh = "";
+    for (var o = -H; o < W + H; o += 26) hh += "M " + (B.x + o).toFixed(1) + " " + B.y.toFixed(1) + " L " + (B.x + o + H).toFixed(1) + " " + (B.y - H).toFixed(1) + " ";
+    A.E("medHach").setAttribute("d", hh);
+    // o tique GROSSO dos 21 pés (a draga), da borda da régua para fora, até a cota
+    var dg = "M " + fx(B.x + W) + " " + fx(Y(21)) + " L " + fx(B.x + W + 90) + " " + fx(Y(21));
+    A.E("medGrossoL").setAttribute("d", dg); A.E("medGrossoSob").setAttribute("d", dg);
+    A.E("medGrosso").setAttribute("opacity", A.janela(t, M.salto + 0.3, null).toFixed(3));
+    // os textos do medidor, presos a ele
+    ROT.cota11.tela = [B.x + W + 64, Y(11) - 14];
+    ROT.legMare.tela = [B.x + W / 2, B.y + 56];
+    ROT.cota21.tela = [B.x + W + 120, Y(21) - 14];
+    ROT.legTide.tela = [B.x + W + 64, Y(10) + 14];
+    ROT.legDredge.tela = [B.x + W + 120, Y(21) + 14];
+  }
   // ═══ O MOTOR DA CENA (o mesmo nas oito cenas do lote M2; os blocos vêm da s03, a referência do vídeo 2) ══════════
-  var DUR = 14.434;   // número literal, a dur do espelho (roupa §8: o qc-janela só lê o número)
+  var DUR = 34.367;   // número literal, a dur do espelho (roupa §8: o qc-janela só lê o número)
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -364,6 +628,61 @@
   var API = { E: E, cl: cl, eo: eo, eio: eio, seg: seg, janela: janela, geo: geo, feicao: feicao, pontoNome: pontoNome,
     aneis: aneis, divisaSanPedro: divisaSanPedro, cruzamentos: cruzamentos, metros: metros, ateFracao: ateFracao,
     tok: tok, falhar: falhar, REFS: {} };
+  // ── A ÁGUA DO PORTO (r4; conceito › _agua_do_porto): a água de hoje do lado das duas cidades, acesa em --tinta a 35 %
+  //    com o contorno de 6 px SÓ onde a água toca terra. O TIGER corta a água do porto em pedaços por linhas retas (divisa
+  //    e bloco censitário): esses cortes não viram linha. Cada segmento dos anéis do TIGER fica no contorno só se um dos
+  //    lados, a dm metros do meio dele, é terra no mar do OSM (agua-osm-la, a mesma camada da água escura). ─────────
+  API.aguaDasDuasCidades = function (fs) {
+    return fs.filter(function (f) {
+      var x1 = -999, y0 = 999; aneis(f.geometry).forEach(function (r) { r.forEach(function (p) { if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; }); });
+      return x1 < -118.23 && y0 < 33.78 && (f.properties.AWATER_m2 || 0) >= 50000;
+    });
+  };
+  API.bordaQueTocaTerra = function (feicoes, osm, dm) {
+    var R = [];
+    ((osm && osm.features) || []).forEach(function (f) { aneis(f.geometry).forEach(function (r) {
+      var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+      r.forEach(function (p) { if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; });
+      R.push({ r: r, x0: x0, x1: x1, y0: y0, y1: y1 });
+    }); });
+    function agua(x, y) {
+      var dentro = false;
+      for (var k = 0; k < R.length; k++) {
+        var q = R[k]; if (y < q.y0 || y > q.y1 || x > q.x1) continue;
+        var r = q.r;
+        for (var i = 0, j = r.length - 1; i < r.length; j = i++) {
+          if ((r[i][1] > y) !== (r[j][1] > y) && x < (r[j][0] - r[i][0]) * (y - r[i][1]) / (r[j][1] - r[i][1]) + r[i][0]) dentro = !dentro;
+        }
+      }
+      return dentro;
+    }
+    var linhas = [];
+    feicoes.forEach(function (f) { aneis(f.geometry).forEach(function (r) {
+      var cur = null;
+      for (var i = 1; i < r.length; i++) {
+        var a = r[i - 1], b = r[i], la = (a[1] + b[1]) / 2 * Math.PI / 180, kx = 111320 * Math.cos(la), ky = 110574;
+        var ex = (b[0] - a[0]) * kx, ey = (b[1] - a[1]) * ky, n = Math.hypot(ex, ey), fica = false;
+        if (n > 0) {
+          var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, ox = -ey / n * dm / kx, oy = ex / n * dm / ky;
+          fica = !agua(mx + ox, my + oy) || !agua(mx - ox, my - oy);
+        }
+        if (fica) { if (!cur) { cur = [a]; linhas.push(cur); } cur.push(b); } else cur = null;
+      }
+    }); });
+    if (!linhas.length) falhar("a borda da água do porto saiu vazia (a água do OSM cobre tudo?).");
+    return { type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: linhas } };
+  };
+  // as camadas: o preenchimento (sem antialias: os pedaços vizinhos do TIGER não deixam fio na junta) e o contorno
+  API.aguaAcesa = function (id, pol, borda) {
+    map.addSource(id, { type: "geojson", data: pol }); FONTES.push(id);
+    map.addLayer({ id: id + "-fill", type: "fill", source: id,
+      paint: { "fill-color": tok("--tinta", "#F4F1EA"), "fill-opacity": 0, "fill-antialias": false, "fill-opacity-transition": { duration: 0, delay: 0 } } });
+    if (borda) API.linha(id + "B", borda, { cor: "--tinta", w: 6, sob: 12 });
+  };
+  API.aguaQuadro = function (id, v, fill) {
+    API.opac(id + "-fill", "fill-opacity", fill == null ? 0.35 * v : fill);
+    API.lin(id + "B", v);
+  };
   try { SCENE.preparar(API); } catch (e) { return falhar("a preparação da cena quebrou: " + e.message); }
   if (window.__erroCena) return;
   (CENA.rotulos || []).forEach(function (r) {
@@ -375,10 +694,16 @@
 
   // ── a base, SEM relevo (s03) ─────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  // A ÁGUA ESCURA (identidade §6, "A água escura nos mapas do porto"; Lucas, 08/10/2026): o mar e o porto do OSM
+  // (agua-osm-la, arquivo local, sem tile) em --agua-base, opaco, como 2ª camada do estilo: acima do satélite e abaixo de
+  // tudo o que a cena desenha. Tira as emendas do mosaico na água; o quebra-mar e os píeres ficam no satélite.
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+      agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "agua",
+        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────
@@ -769,6 +1094,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           for (var i = 0; i < FONTES.length; i++) if (!map.isSourceLoaded(FONTES[i])) return false;
           if (!map.isSourceLoaded("base")) return false;
+          if (!map.isSourceLoaded("agua")) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };
