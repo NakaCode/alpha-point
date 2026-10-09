@@ -7,57 +7,70 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "exceção do Lucas: qc-tamanho, crédito a 56 px (07/10/2026, 'Quero reduzir para 56px'), sha1 do HTML conferido contra qc/_excecoes-portao.json: bate. Crédito medido no HTML: var(--fs-credito) = 56 px, sem px fixo; marca de mapa só na linha da MapTiler (data-qc-credito='mapa') e a linha 'Source' com data-qc-papel='credito'; as duas linhas ficam abaixo de y=1880, de x=200.",
-        "Observação: no fim (≥ 9,8 s) o bloco '2000–2024' e a legenda de 3 linhas ficam empilhados no canto de cima à direita, com ~36 px de folga entre eles e a borda direita exatamente na margem de 200 px; legível, mas apertado. Margens de 200/160 px e o canto 400×400 de baixo à direita livres em todos os quadros."
+        "exceção do Lucas: qc-tamanho, crédito a 56 px (07/10/2026, 'Quero reduzir para 56px'), registrada em qc/_excecoes-portao.json com o sha1 do HTML de hoje (5c220f8d…), conferido igual ao carimbo do clipe e ao sha1sum; reconferida em 09/10 00:2x (qc-cena-1.txt: a mesma reprovação, 'Source: Port of Los Angeles, 2024' 56<72, a única da cena). Crédito = var(--fs-credito) 56 px, sem px fixo; marca de mapa (data-qc-credito='mapa') só na linha da MapTiler; a linha 'Source' leva data-qc-papel='credito'.",
+        "Observação: de 9,84 s ao fim, '2000–2024' fica empilhado sobre a legenda de 3 linhas no canto de cima à direita com ~36 px de folga, e a borda direita da legenda está exatamente na margem (x = 3640). Legível, mas apertado; margens de 200/160 px, a faixa de crédito (só os dois créditos, Source acima do MapTiler, x ≤ 1070) e o canto de baixo à direita livres em todos os quadros."
       ],
       "correcoes": []
     },
     {
       "lente": "factual",
       "nota": 8,
-      "problemas": [],
+      "problemas": [
+        "Água acesa do lado certo (a feição 'Los Angeles' do TIGER: bacias do Porto de Los Angeles; Long Beach fica escura e sem tinta), vista no recorte 4K de 11,0 s: o preenchimento cobre só água, e os terminais (contêineres) ficam sem tinta. A pílula 'Port of Los Angeles' e '2000–2024' batem com o textos-tela; a legenda preserva o hedge 'by the port's own count'; o 'Source:' atribui a conta ao porto."
+      ],
       "correcoes": []
     },
     {
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "Observação: a legenda 'most container traffic in the Western Hemisphere, by the port's own count' (entra em 'every', 8,9 s) repete quase literalmente o que a voz disse de 3,9 a 8,3 s; é a legenda da conta prescrita no textos-tela e preserva o hedge da voz (voz.md §1), então não reprova, mas é o trecho mais perto de eco da cena.",
-        "Observação: o crédito da MapTiler entra em 3,1 s com o footage ainda quase em tela cheia (2 a 3 quadros de crédito de mapa sem mapa); o mapa aparece nas bordas em ~3,3 s. Sem consequência visível."
+        "R1.14 conferido: a legenda da conta e o 'Source:' entram em 7,20 s, junto de 'any' (7,17 s). Quadro de 7,0 s sem legenda e o de 8,0 s com ela; '2000–2024' em 9,84 s ('two'). O conserto adiantou elementos, não atrasou nenhum: nada a re-checar por ritmo. Footage de 0 a 3,1 s com a pílula 'Los Angeles' desde o 1º quadro; o contorno entra em 'And' (3,12 s).",
+        "Observação: a pílula 'Port of Los Angeles' entra em 6,90 s, quando a câmera assenta (a regência manda assentar), uns 2 s depois de 'harbor' (4,92 s). Não é número nem nome antes da voz; fica como está.",
+        "Pendência técnica, não segura a cena: o qc-janela reprova s01 só porque o HTML escreve 'window.__duracao = CENA.duracao' e o portão lê só número literal ('não consegui ler window.__duracao'). O valor é 12,3 = dur do espelho (CENA.duracao: 12.3, conferido no HTML).",
+        "Pendência de registro (do Claude central; o especialista não edita o plano): textos-tela.json T005/T006 ainda dizem t0 8,9; o HTML entra em 7,20 s (R1.14). Desvio aceito: é só tempo, e a regra é a voz."
       ],
-      "correcoes": []
+      "correcoes": [
+        "Escrever 'window.__duracao = 12.3' como número literal (como a s03 faz: var DUR = 27.534) para o qc-janela ler; o valor não muda.",
+        "Registrar no textos-tela.json o t0 7,20 de T005 (legenda) e T006 (Source)."
+      ]
     },
     {
       "lente": "abordagem",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "Registro real (footage) para a cidade nomeada, mapa para o porto: o modo certo para cada frase; a cena vira por dentro em 'And'."
+      ],
       "correcoes": []
     },
     {
       "lente": "acessibilidade",
       "nota": 8,
-      "problemas": [],
+      "problemas": [
+        "Em 2 s o leigo entende: cidade vista de cima, depois o contorno aceso descendo ao porto, o nome e a conta atribuída ao porto."
+      ],
       "correcoes": []
     },
     {
       "lente": "poluicao",
       "nota": 8,
       "problemas": [
-        "Cena no pico em ~10 s: contorno, água acesa, pílula 'Port of Los Angeles', '2000–2024' e a legenda = 5 elementos (alvo 4–5, teto 6) e 1 bloco de texto (teto 3). Dentro."
+        "Pico de 5 elementos a partir de 9,84 s (contorno, água acesa, pílula do porto, '2000–2024', legenda), 1 bloco de texto; teto 6 e 3 blocos respeitados. A legenda quase repete a fala (a conta com dono, prescrita; registrada em wordlock); sem texto órfão."
       ],
       "correcoes": []
     },
     {
       "lente": "motion",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "Footage encolhe ao ponto do centro em 1,5 s (cúbico), revela o satélite e a câmera desce 2,5 s ao longo do fio; mapa em deriva e giro até o fim; nada congelado e nada além da deriva nos últimos 250 ms. O preenchimento laranja da cidade baixa a 0 durante a descida (declarado no cabeçalho, para o satélite do porto ler)."
+      ],
       "correcoes": []
     },
     {
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "Footage da Motion Array (item 2212473, Original 4096×2160; veredito aprovado do conferente, mesmo_item true; URL do _PROCEDENCIA.json = URL do item): sem crédito na tela, como midia §3.2 manda. 'Source: Port of Los Angeles, 2024' atribui a conta '2000–2024' (textos-tela s01) enquanto o rótulo está no ar; MapTiler/OSM em todos os quadros de mapa."
+        "Footage Motion Array (item 2212473, 'Original' 4096×2160): o veredito aprovado do conferente casa pelo sha256 do baixado (2e13a16a…, igual ao sha256_do_baixado do _PROCEDENCIA.json; o .mp4 3840×2026 reprovado fica em _caca e não vai à cena); sem crédito na tela, como midia §3.2 manda. 'Source: Port of Los Angeles, 2024' atribui '2000–2024'; '© MapTiler © OpenStreetMap contributors' de 3,1 s ao fim (contraste 12,03:1). A camada de água escura é do OSM e já está coberta pela linha da MapTiler (identidade §6)."
       ],
       "correcoes": []
     },
@@ -65,7 +78,7 @@
       "lente": "tema",
       "nota": 8,
       "problemas": [
-        "Observação: o satélite do porto mostra, a leste do porto de LA, retalhos escuros e claros na água (emendas de tile da base MapTiler); não é defeito nosso, mas aparece no último quadro."
+        "Laranja só no protagonista, branco nas fronteiras, água acesa em --tinta a 35 % com contorno de 6 px; a água escura e lisa do porto é decisão do Lucas (08/10/2026) e não é achado. Mesma família de cor das irmãs."
       ],
       "correcoes": []
     },
@@ -73,14 +86,16 @@
       "lente": "cobertura",
       "nota": 8,
       "problemas": [
-        "Observação: 'container traffic' é provado só pelo satélite do porto (guindastes e pilhas de contêineres legíveis em 4K); não há registro real de navio ou terminal em solo. Aceitável numa abertura de mapa; se a pesquisa trouxer footage do porto, é na cena do porto que entra."
+        "Observação: 'container traffic' é provado só pelo satélite do porto (guindastes e pilhas de contêineres legíveis em 4K); não há footage de navio ou terminal em solo na pasta. Aceitável numa abertura; sem material baixado que tenha ficado de fora."
       ],
       "correcoes": []
     },
     {
       "lente": "cadencia",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "Footage de 3,1 s (teto 6 s), sem repetição de clipe; o resto é mapa em viagem contínua. qc-video-avanca da s01: ✓ 0/1 parado."
+      ],
       "correcoes": []
     },
     {
@@ -91,14 +106,16 @@
     },
     {
       "lente": "camadas",
-      "nota": 9,
+      "nota": 10,
       "problemas": [],
       "correcoes": []
     },
     {
       "lente": "circulo",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "A cena abre o vídeo; o contorno aparece pela primeira vez aqui e a s03 o retoma para medi-lo (callback com degrau novo)."
+      ],
       "correcoes": []
     }
   ],
@@ -121,7 +138,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 40,
-    "porque": "Portões lidos em out/los-angeles/_tmp/qc-cena-mapa.txt (24 cenas de mapa, com a pré-carga das chaves; contrato, carga, colisão, tamanho, src-existe, fora-do-quadro e crédito-fantasma medidos com tiles 2xx); til-glifo pelo portao-mapa til (24 candidatos, 0 defeituosos) e contraste do crédito pelo portao-mapa rodape v5 (passou); conferir saiu 0; não os reexecutei (tiles pagos). qc-janela: o 'null' em cena de mapa é a regex lendo CENA.duracao (nota do Claude central); conferi à parte em _tmp/qc-janela-mapas-conferido.txt (a cena bate com a janela do espelho) e o clipe tem dur × 30 quadros. mapa-vivo fora do portão. Quadros: clipe 4K de prova (carimbo = sha1 do HTML de hoje, 2160p), a cada 1 s em 1080p (0–12 s), a cada 0,5 s na virada 2,9–5,9 s, o crop do crédito (2,5–3,4 s) e o último quadro; fala do words.json ao lado. qc-video-avanca da s01 lido (✓ 0/1 parado)."
+    "frames": 31,
+    "porque": "Rodada art r4, lote M1, julgamento completo sobre os quadros 1080p de hoje do clipe 4K (out/los-angeles/_tmp/linha-do-tempo/quadros/<cena>, a cada 0,5 s; contact sheets de 1 s e recortes 4K do clipe com o ffmpeg; nenhuma cena de mapa aberta no Chrome, nenhum tile pedido). Carimbo .mp4.de-html = sha1 do HTML de hoje, 2160p. Portões lidos em out/los-angeles/_tmp/art-r4/central/ (não reexecutados): qc-cena-1.txt (33 cenas, com a pré-carga das chaves; as reprovações remedidas sozinhas e confirmadas), til-1.txt (portao-mapa til, 17 candidatos, 0 defeituosos), rodape-1.txt (portao-mapa rodape v5, contraste de 10,4:1 a 12,0:1), conferir-2.txt (saída 0), qc-janela-2.txt. mapa-vivo fora do portão; o til-glifo NÃO MEDIDO no qc-cena de cena de mapa é medido pelo portao-mapa til (passou no mesmo sha1). Não editei nada além do laudo. s01: sha1 5c220f8da3238bf74753ba39e0f2f2789e53c02a. Desvios declarados no relato julgados: (1) __aguardarMapa com getSource antes de isSourceLoaded: aceitável, é robustez do medidor e não muda nenhum quadro; (2) R1.14 só de tempo: aceitável e conforme (a regra do canal é a voz); (3) água do porto de LA de 30 % sem contorno a 35 % com contorno de 6 px, acende e fica: aceitável, é o conceito r4 (_agua_do_porto). O que é do Lucas e não julguei como achado: crédito a 56 px, água escura e lisa, base MapTiler."
   }
 }

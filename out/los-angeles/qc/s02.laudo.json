@@ -7,9 +7,8 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Conserto conferido nos quadros 0,1 / 1,5 / 7,5 / 8,4 e nos crops 4K: o recorte agora é em linhas inteiras (a primeira, 'San Pedro has now, however…', e a última, 'Wilmington.', saem inteiras) e as duas fitas ficam só na faixa de margem acima do texto, a ~18 px da primeira linha (crop 4K de 7,5 s); fita em x≥640 e y≥574, dentro das margens de 200/160. Nenhuma palavra cortada ou lavada.",
-        "Observação: sobram pontinhos de descendente da linha cortada acima (um '~' sobre 'has' e um acento sobre 'however'): são pixels do scan, não palavra cortada.",
-        "Crédito medido pelo probe-elemento (3 s): 2 linhas, h=134 → 55,8 px por linha, x=200, y 2012–2146, var(--fs-credito) sem px fixo; o '1888' cai sozinho na segunda linha (observação). exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em qc/_excecoes-portao.json)."
+        "Crédito medido pelo probe-elemento (7 s): 2 linhas, h=134 → 55,8 px por linha, x=200, y 2012–2146, termina em x 1720, var(--fs-credito) sem px fixo, data-qc-papel=\"credito\" presente; o qc-tamanho reprova 56<72 e a reprova é SÓ o crédito. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em qc/_excecoes-portao.json). O \"1888\" cai sozinho na 2ª linha (observação, não derruba).",
+        "Margens: medir-margens só acusa o pouso (div.papel topo 156 @0 s, folha ainda descendo de fora do quadro), que a regra do central de 08/10 03:0x exclui; fita e pílula dentro de 160/200 em todo instante."
       ],
       "correcoes": []
     },
@@ -21,13 +20,11 @@
     },
     {
       "lente": "wordlock",
-      "nota": 8,
+      "nota": 9,
       "problemas": [
-        "Persiste o desvio sinalizado na rodada 1 (o relato do editor ainda o declara como inexistente): a primeira caixa do grifo acende 'nd' de 'and' em 5,5 s, quando a voz diz 'can' (5,33 s), e as caixas da linha 1 ficam ~½ palavra à esquerda das palavras ditas (crop 4K de 8,4 s: 'nd | can | ne…'); a linha 2 ('water ships.') cai certa. Nitpick: não derruba."
+        "R1.12 consertado e conferido: em 5,5 s só \"ca[n]\" está aceso e o \"and\" fica limpo (a caixa de \"can\" agora começa no \"c\"); em 8,4 s o grifo vai de \"can\" a \"deep-\" sem vão no meio de palavra e \"water ships.\" na linha 2 como antes. Tempos (can 5,33 · never 5,66 …) inalterados e batem com words.json."
       ],
-      "correcoes": [
-        "Opcional: começar a primeira caixa em 'can' (x do 'c'), re-medindo as caixas da linha 1 na grade do scan."
-      ]
+      "correcoes": []
     },
     {
       "lente": "abordagem",
@@ -38,7 +35,9 @@
     {
       "lente": "acessibilidade",
       "nota": 8,
-      "problemas": [],
+      "problemas": [
+        "Letra da linha grifada com ~15 px de altura de x em 1080p, igual à do crédito a 56 px (R1.11, cético fica:false). Contraste do scan ~3,3:1 é o do documento real, que a marca manda não filtrar (identidade §5). Observação, sem correção."
+      ],
       "correcoes": []
     },
     {
@@ -51,7 +50,7 @@
       "lente": "motion",
       "nota": 9,
       "problemas": [
-        "Câmera para em 5,0 s e o deslocamento do recorte da folha entre 5,0 e 5,5 e entre 8,0 e 8,4 s é só a deriva (diferença média 0,45, constante); nos 6 quadros de cauda (−0,50…−0,03 s) a diferença não muda. Sem defeito."
+        "Câmera para em 5,0 s, só deriva do RIG no grifo; nos quadros de cauda (8,15 vs 8,43 s) diferença média 0,38 (deriva), nada se move nos 250 ms finais."
       ],
       "correcoes": []
     },
@@ -59,7 +58,7 @@
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "'Source:' sobre a página real de documento federal fica (decisão do Claude central, _decisoes-central.md, Q1 item 2): atribui as palavras da página, como num gráfico de dados; a lente não desconta."
+        "'Source:' sobre a página real de documento federal fica (decisão do Claude central, _decisoes-central.md, Q1 item 2). Rodapé v5: 12,27:1."
       ],
       "correcoes": []
     },
@@ -119,7 +118,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 18,
-    "porque": "RODADA 2 (08/10/2026, lote Q6). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160), crops 4K, DOM medido pelo probe-elemento, e 6 quadros de cauda (−0,50 a −0,03 s do corte) para a regra dos 250 ms. Portões lidos em out/los-angeles/_tmp/qc-cena-consertos.txt (13 cenas auditadas; as reprovações do crédito a 56 px têm exceção com o sha1 de hoje; rodapé v5 passou nas 13). Quadros olhados: 0,1, 0,5, 1,0, 1,5, 2,5, 4,0, 5,0, 5,15, 5,3, 5,5, 6,0, 6,5, 7,0, 7,5, 8,0, 8,2, 8,35, 8,4; crops 4K das fitas (7,5 s) e do grifo (8,4 s). Defeito anterior (fita sobre a letra e linha partida): resolvido."
+    "frames": 8,
+    "porque": "Portões lidos em out/los-angeles/_tmp/art-r4/central/ (qc-cena-1.txt, 33 cenas auditadas; rodape-1.txt v5; til sem mapa coberto pelo qc-cena; conferir-2 sai 0; qc-janela-2 não lista a cena) e em art-r4/e1/ (medir-margens, qc-carga). Desvio declarado: R1.11 (página a K 1,25) NÃO feito, porque o cético o deu como fica:false (a letra já tem 100 % da altura do crédito) e reabriria a montagem aprovada na r2: ACEITÁVEL, sem achado. Quadros olhados (palco 4K, quadro.mjs com pré-carga, reduzidos a 1080p): 0,1 · 1,0 · 3,0 · 5,5 · 6,5 · 8,4 + par de cauda 8,15/8,43; mais os crops do editor (e1/crop-s02@5,5/8,4). Defeito R1.12 (grifo da linha 1 ~100 px à esquerda das palavras): resolvido."
   }
 }

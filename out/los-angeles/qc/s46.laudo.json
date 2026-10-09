@@ -7,7 +7,9 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Clipe 4K válido (sha1 968f0223…, 2160p); quadros de 0 a 10 s a cada 0,5 s e em 5,0/5,6/6,0 s olhados. Sem exceção de portão: o crédito de mapa passa a 56 px (rodapé v5 12,03:1 em 5,57 s). 'Long Beach' e 'Los Angeles' dentro das margens; a legenda 'city boundary, USGS map of 1923' no canto superior direito dentro dos 200 px; faixa y>1880 e canto 400×400 livres."
+        "Clipe 4K válido (carimbo b97ed10e…, 2160p, igual ao sha1 do HTML); quadros 0–10 s a cada 0,5 s olhados, mais recortes 4K. Nenhum portão duro reprovou a cena. Portões lidos (central, com a pré-carga das chaves; _tmp/art-r4/central): qc-cena-2 (5 de 5 cenas do lote medidas: contrato, carga, colisão, tamanho, src-existe, fora-do-quadro, crédito-fantasma; til-glifo NÃO MEDIDO por ser mapa, coberto pelo portao-mapa til: 0 de 5 candidatos com defeito, exit 0), portao-mapa rodape v5 (5 de 5, contraste ~12,0:1), conferir-2 exit 0 (nada sem prova), qc-janela-2 sem reprovação das cinco (só s01 e s17 reprovam, fora deste lote).",
+        "Crédito de mapa a 56 px (var(--fs-credito), data-qc-credito=\"mapa\", sem override), na faixa y>1880 e x<1720; canto 400×400 livre; legenda 'city boundary, USGS map of 1923' dentro de x 3640.",
+        "DESVIO DECLARADO pelo mapista, julgado: a pílula 'Los Angeles' não fica INTEIRA sobre a água de LA (o conceito e a regência r4 pedem 'wholly'). ACEITO: o anteporto de LA ao sul do Pier 400 mede ~340×360 px no 4K e a pílula 810×172 (piso de rótulo 128 px, que não se encolhe). Nos quadros de 6,5 a 10 s a pílula fica ancorada na água de LA e em San Pedro, a oeste da aresta comum, nunca toca a lavanda de Long Beach nem a divisa, e fica dentro das margens (x 470–1270, y 1570–1740 no 4K). Também aceito a pílula cruzar o contorno de 6 px da água: é a borda do território aceso, não divisa, rota nem estrada. Isso resolve o achado 7.1 do espectador (o véu lilás sob o nome de LA)."
       ],
       "correcoes": []
     },
@@ -15,14 +17,16 @@
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "A divisa traçada vem do arquivo USGS 1923 e a legenda diz '1923' (nunca 1909), como manda o textos-tela. As águas acesas ('Los Angeles' em --tinta, Long Beach em lavanda) são a água de hoje de cada cidade, declarado no cabeçalho; na tela nada diz isso e o espectador as lê como o porto legal de 1909. Observação, não reprova: a fala é 'the bay belonged to two cities' e as duas águas mostram isso."
+        "A divisa traçada é a da folha USGS de 1923 e a legenda diz '1923' (nunca 1909), como manda o textos-tela. A água de LA (--tinta, agora 50 % com contorno de 6 px) e a de Long Beach (lavanda, 25 %) são a água de hoje de cada cidade, declarado no cabeçalho; na tela nada diz isso e o espectador as lê como o porto de 1909. Observação, não reprova: a fala é 'the bay belonged to two cities' e as duas águas mostram isso."
       ],
       "correcoes": []
     },
     {
       "lente": "wordlock",
-      "nota": 9,
-      "problemas": [],
+      "nota": 8,
+      "problemas": [
+        "'Long Beach' entra em 1,5 s (voz 1,09–1,49); a divisa e a legenda em 3,17 s (a legenda da frase 'had taken in part of Terminal Island', voz 'Terminal' em 4,13 s); a pílula 'Los Angeles' e as duas águas acendem em 6,31 s ('From'), 2,7 s antes de 'two cities' (9,01 s). É a ancoragem que a regência r4 manda (beat 6,3–10,133: 'both ports' water lit and staying lit'). Observação, sem reprova."
+      ],
       "correcoes": []
     },
     {
@@ -35,23 +39,25 @@
       "lente": "acessibilidade",
       "nota": 7,
       "problemas": [
-        "A divisa, que é o assunto de 'part of Terminal Island', mede ~115 px de comprimento a 4K (3 % da largura) e ~10 px de espessura (recorte do quadro de 5,0 s); em 1080p ou no celular é um risco. Entre 4,1 e 6,3 s a leitura depende de achar esse risco, sem anel nem destaque, e 'Terminal Island' não aparece escrito. Entende-se pela fala e pelas duas águas de 6,3 s em diante: nota 7."
+        "A divisa de 1923 (o assunto de 'part of Terminal Island') segue com ~115 px de comprimento e ~10 px de espessura no 4K (3 % da largura; os frames de 4,5 a 5,5 s mostram um traço branco mínimo) e 'Terminal Island' não aparece escrito: entre 4,1 e 6,3 s a leitura depende de achar esse risco. O r4 não mexeu nisso (o zoom é o limite que o Lucas decidiu, 'só a câmera limitada'). Entende-se pela fala, pela legenda e pelas duas águas de 6,3 s em diante: nota 7, observação."
       ],
       "correcoes": [
-        "Dar à divisa de 1923 um halo --tinta de 24 px (ou um pulso de anel nas duas pontas, 500 ms) em 4,13–5,0 s, e escrever 'Terminal Island' como legenda de 84 px junto da ilha, na palavra 'Terminal' (4,13 s). Não aumentar o zoom (já está em 13,40)."
+        "Se o Lucas quiser reforçar sem mudar o zoom: halo --tinta de 24 px ou um pulso de anel de 500 ms nas duas pontas da divisa em 4,13–5,0 s (só o mapista, sem texto novo)."
       ]
     },
     {
       "lente": "poluicao",
-      "nota": 8,
-      "problemas": [],
+      "nota": 7,
+      "problemas": [
+        "De 6,3 a 10,1 s convivem 2 águas pintadas, 2 pílulas, a divisa e a chave 'city boundary': 6 elementos, no teto da marca (identidade §4.2); qc-carga passou (pior janela de 1 s: 3 entradas; menor texto no ar 3,8 s). Sem texto órfão: 'Long Beach' (voz 1,09 s), data e legenda (frase inteira), 'Los Angeles' (a cidade de que a voz fala em 'two cities'). Sinalizo o teto; não reprova."
+      ],
       "correcoes": []
     },
     {
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Câmera contínua: recuo de ~1,1 %/s com giro de ~0,4°/s medidos em 3–7 s; corrida a leste de ~2 s em 'Long Beach'. Nenhum quadro parado."
+        "Câmera contínua: deslize para leste em 2 s (cúbico) e recuo lento até o corte; águas acendem em 500 ms e ficam; nenhum quadro parado. Nada move nos últimos 250 ms além da deriva."
       ],
       "correcoes": []
     },
@@ -59,7 +65,7 @@
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "'AUG. 13, 1909' e 'Long Beach annexation takes effect' não têm 'Source:' na tela (o textos-tela da s46 só lista o crédito de mapa); a divisa tem o USGS 1923 na legenda. Sigo o textos-tela (lista fechada, conferida pelo verificador-de-fatos); observação para a decisão do Claude central."
+        "Só o crédito de mapa (© MapTiler © OpenStreetMap contributors), a 56 px; o USGS 1923 vai na legenda da divisa. 'AUG. 13, 1909' e 'Long Beach annexation takes effect' sem 'Source:': sigo o textos-tela (lista fechada, conferida pelo verificador-de-fatos). Observação para o Claude central, herdada do laudo anterior."
       ],
       "correcoes": []
     },
@@ -67,7 +73,7 @@
       "lente": "tema",
       "nota": 8,
       "problemas": [
-        "Observação: nas cenas de porto (s46, s49, s53) a água de Los Angeles vai em --tinta (branco) e a de Long Beach em lavanda, mas Los Angeles é laranja em s40–s44, s48 e s55. A marca autoriza (a água é contexto, não protagonista); sinalizo para o Claude central."
+        "Água de LA em --tinta (branco) e de Long Beach em lavanda, enquanto LA é laranja em s40–s44, s48 e s55: a regra é do conceito (_agua_do_porto: a água do porto de hoje é sempre --tinta) e a marca autoriza (a água é contexto). A emenda do satélite sumiu com a água escura opaca por baixo (nenhuma cunha clara nos quadros de 5,0, 7,0 e 9,0 s). Sem deriva de cor dentro da cena."
       ],
       "correcoes": []
     },
@@ -98,7 +104,9 @@
     {
       "lente": "circulo",
       "nota": 8,
-      "problemas": [],
+      "problemas": [
+        "Eco de forma com a s53 (as duas águas, LA e LB, de novo): a s46 diz 'duas donas' (1909), a s53 diz 'o porto mais movimentado' com número e dono; há degrau novo. Observação."
+      ],
       "correcoes": []
     }
   ]

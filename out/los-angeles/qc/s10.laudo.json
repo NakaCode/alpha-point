@@ -7,8 +7,8 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Defeito da rodada anterior resolvido (decisões Q9 item 2 e a medida das margens): a pílula 'Wilmington estuary' (rotEst, dx +60) tem a borda esquerda (texto − 40 px) em 367 px em 11,0 s, 319 em 13,0 s e 249 em 15,5 s (era 179), medido por pixel nos quadros 4K; ≥ 200 em todo 9,39–15,77 s. Medidor de margens ✓ (q9-margens-s10).",
-        "Resto: 'San Pedro Bay' e 'ABOUT 19 MILES' dentro das margens (borda direita ≤ 3330, base ≤ 1810); canto de baixo à direita e faixa de crédito livres (só a linha da MapTiler); a guia da pílula 'Wilmington estuary' termina no ponto sem tocar a régua. O erro do MapLibre fora da ordem da render (leitura da fonte c1850 antes do load) saiu: o render do clipe terminou com exit 0 e os quadros de 0,0 a 2,5 s mostram o contorno e o preenchimento de 1850 como o cabeçalho pede."
+        "Sem reprovação de portão: o qc-cena-1.txt mostra só o til-glifo NÃO MEDIDO (medido pelo portao-mapa til: 36 instantes, 0 defeituosos); a cena só leva o crédito de mapa (56 px = var(--fs-credito), contraste 12,03:1), então nenhuma exceção de crédito se aplica.",
+        "Margem (a medida de 03:0x, 179 px, está resolvida): a pílula 'Wilmington estuary' (dx 110) fica a ≥ 350 px da lateral esquerda nos quadros de 10,0 a 15,0 s; 'San Pedro Bay' e 'ABOUT 19 MILES' dentro das margens (borda direita ≤ 3330); a guia do estuário termina no ponto sem tocar a régua; canto de baixo à direita e faixa de crédito livres."
       ],
       "correcoes": []
     },
@@ -16,49 +16,51 @@
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "A régua Plaza → Wilmington e o polígono de 1850 são os de s05 (reaparição declarada); 'ABOUT 19 MILES' é sempre Plaza → Wilmington (regra de série). Observação: a pílula 'San Pedro Bay' (6,8 s em diante) fica na linha da costa, parte sobre a terra de Long Beach, e não sobre a água da baía (o cabeçalho diz 'sobre o mar aberto'); a baía não tem polígono, então a pílula só aponta; pode ser descida para a água."
+        "A régua Plaza → Wilmington e o quadrado de 1850 são os da s05 (reaparição declarada; 'ABOUT 19 MILES' é sempre Plaza → Wilmington). A água acesa em 'water' (13,38 s) é só a do lado de Los Angeles, e a razão declarada confere: com o contorno de 6 px o pedaço de Long Beach do TIGER desenharia lados retos de 1–2,5 km, que são corte de bloco e não costa (no quadro de 14,0 s o polígono tem costa natural nas duas pontas).",
+        "Observação: a pílula 'San Pedro Bay' (6,8 s em diante) fica na linha da costa, em parte sobre a terra de Long Beach, porque a baía não tem polígono; ela só aponta. Sem guia, ao contrário da s05; pode descer para a água se o central quiser uniformizar."
       ],
       "correcoes": []
     },
     {
       "lente": "wordlock",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "'ABOUT 19 MILES' em 'nineteen' (5,47 s); 'San Pedro Bay' ~0,25 s antes de 'bay' (7,07); 'Wilmington estuary' em 9,39 s ('shallow' 9,07, 'estuary' 9,39); a régua e a cota esmaecem em 'distance' (11,79 s); a água do porto acende em 'water' (13,38 s).",
-        "Sinaliza (para o Claude central decidir): a pílula '1850' entra em 0,30 s (rot1850.entra) e a voz diz 'eighteen fifty' em 2,35 s: o número fica ~2,0 s antes da voz (quadros de 0,5 a 2,0 s com '1850' e o quadrado só em contorno). É o mesmo caso da s12 'MORE THAN A MILE' (decisões Q3 item 3: o t0 0 do textos-tela não passa por cima de 'o número entra na palavra', identidade §4.4). Não reprovo: é a orientação do quadrado de 1850 que reaparece (callback; o textos-tela prescreve t0 0), a lente a registrou como observação nas rodadas anteriores sem o central a pôr na lista, e a correção custa render de mapa novo."
+        "Q10 item 1 conferido: '1850' entra em 2,35 s ('eighteen'): quadro de 2,0 s só com o contorno do quadrado e o de 3,0 s com a pílula e o laranja; o bloco fica ~2,08 s no ar. R2.8: a régua e 'ABOUT 19 MILES' saem juntos em 'distance' (11,79 s): o quadro de 12,0 s tem só um resto em fade e o de 12,5 s está limpo (sem o texto fantasma a 40 % de antes). A água acende em 'water' (13,38 s: quadro de 13,0 s sem ela, 14,0 s com ela). 'ABOUT 19 MILES' em 'nineteen' (5,47 s), 'San Pedro Bay' em 'bay' (6,83–7,07), 'Wilmington estuary' em 9,39. Nada entra antes da voz.",
+        "Pendência de registro (do Claude central): textos-tela.json T057 ('1850') ainda diz t0 0; o HTML entra em 2,35 s. Desvio aceito: o número entra na palavra."
       ],
       "correcoes": [
-        "Se o central aplicar a regra: rot1850.entra 0,30 → 2,35 s (em 'eighteen', junto do preenchimento c1850.preenche 2,347); com rot1850.sai 4,20 s o bloco fica 2,15 s no ar pela conta de Q9 (do começo da entrada até cair abaixo de 5 %), sem outra mudança de tempo."
+        "Registrar no textos-tela.json o t0 2,35 de '1850' (T057)."
       ]
     },
     {
       "lente": "abordagem",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "Mapa de novo para 'look at the map again': o callback com o mesmo palco da s05 é o que a frase pede."
+      ],
       "correcoes": []
     },
     {
       "lente": "acessibilidade",
       "nota": 8,
-      "problemas": [],
+      "problemas": [
+        "Em 2 s: o quadrado de 1850 no interior, a régua de 19 milhas até o porto, a baía e o estuário nomeados e, no fim, a água que acende. O quadro de 14–15 s é amplo e a água acesa é pequena, mas é o único elemento novo e se lê."
+      ],
       "correcoes": []
     },
     {
       "lente": "poluicao",
-      "nota": 8,
+      "nota": 9,
       "problemas": [
-        "Até 5 elementos (quadrado, régua+cota, 2 pílulas com a guia), sem texto órfão. O contorno esquemático do estuário e a legenda '1890s outline (schematic)' não foram desenhados (declarado, devolvido ao Claude central): a pílula aponta sem afirmar forma.",
-        "Sinaliza (baixa prioridade, sem mudança desta rodada): de 12,3 a 15,07 s 'ABOUT 19 MILES' e a régua ficam a ~40 % de opacidade como memória da distância (op = 1 − 0,6·eio, por desenho do cabeçalho): sem áudio, é um rótulo apagado por ~2,8 s. Não reprova (lastro: 'distance', 11,79 s)."
+        "Até 4 elementos por vez (quadrado + régua + cota; depois 2 pílulas com a guia; no fim a água). Sem texto órfão; sem texto fantasma depois de R2.8."
       ],
-      "correcoes": [
-        "Se o Lucas estranhar na linha do tempo: rot19.sai e regua.sai de 15,067 para ~12,3 s (a cota some junto da régua em vez de ficar a 40 %)."
-      ]
+      "correcoes": []
     },
     {
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Aproximação lenta e contínua mais giro nos 15,8 s; a água do porto acende com pulso em 'water' e o quadrado apaga; só a água fica até o corte. Nada além da deriva nos últimos 250 ms."
+        "Aproximação lenta e giro nos 15,8 s; o quadrado e a régua saem em 'distance' e a água fica sozinha até o corte; nada além da deriva nos últimos 250 ms."
       ],
       "correcoes": []
     },
@@ -66,14 +68,16 @@
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "Observação: o quadrado de 1850 e as milhas não levam 'Source' nesta cena (o textos-tela não pede; o cabeçalho registra que o conceito pedia 'Source: U.S. Census Bureau, TIGER 2025', geometria em domínio público, identidade §7). Em s05 a mesma medida já está atribuída; sem consequência."
+        "Só o crédito de mapa (12,03:1). O quadrado de 1850 e as milhas não levam 'Source' nesta cena (o textos-tela não pede; a medida é do canal sobre geometria pública, e na s05 a mesma medida já está atribuída). A água escura vem do OSM e está coberta pela linha da MapTiler."
       ],
       "correcoes": []
     },
     {
       "lente": "tema",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "Laranja só no protagonista, água acesa em --tinta a 35 % com contorno de 6 px, o resto do mar liso. Quadro final de 15,5 s: mar e porto lisos, só a água de LA acesa."
+      ],
       "correcoes": []
     },
     {
@@ -87,7 +91,9 @@
     {
       "lente": "cadencia",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "15,8 s de mapa em movimento contínuo; os trechos de menos informação (0–1 s e 11,8–13,4 s) têm câmera andando e menos de 2 s."
+      ],
       "correcoes": []
     },
     {
@@ -98,7 +104,7 @@
     },
     {
       "lente": "camadas",
-      "nota": 8,
+      "nota": 10,
       "problemas": [],
       "correcoes": []
     },
@@ -106,7 +112,7 @@
       "lente": "circulo",
       "nota": 8,
       "problemas": [
-        "Reaparição declarada da câmera de s05; avança com a baía, o estuário e a água acesa que s05 não tinha; callback pago ('So look at the map again')."
+        "Reaparição declarada do palco da s05 ('So look at the map again'); avança com a baía, o estuário e a água acesa que a s05 não tinha (callback pago)."
       ],
       "correcoes": []
     }
@@ -130,7 +136,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 32,
-    "porque": "Rodada FINAL (Q10), julgamento completo sobre os frames desta geração do HTML (sha1 d959fad8…). O que mudou: pílula 'Wilmington estuary' com dx +60 (margem), a leitura do MapLibre por getSource (o erro da fonte c1850) e DUR literal. Resolvido o defeito de margem da rodada anterior. A cena não tem reprovação de portão (qc-cena 5 de 5 fora o til, sem exceção). Portões lidos, não reexecutados (tiles pagos): out/los-angeles/_tmp/qc-cena-final.txt e _tmp/art/lote-m1/portoes/q9-* (qc-cena com a pré-carga das chaves, o til-glifo coberto pelo portao-mapa til, o contraste do crédito pelo portao-mapa rodape v5 a 12,0:1, o medidor de margens do Claude central e o conferir da pré-carga saindo 0). Clipe 4K de prova com o carimbo .mp4.de-html = sha1 do HTML de hoje e 2160p; quadros em 1080p a cada 0,5 s (select por número de quadro: o filtro fps do ffmpeg desloca ~0,3 s e foi descartado), quadros finos nos instantes dos defeitos anteriores e margens medidas no próprio clipe 4K, sob a câmera, no pior instante. Rodada FINAL (Q10) das cenas que mudaram depois de aprovadas."
+    "frames": 22,
+    "porque": "Rodada art r4, lote M1, julgamento completo sobre os quadros 1080p de hoje do clipe 4K (out/los-angeles/_tmp/linha-do-tempo/quadros/<cena>, a cada 0,5 s; contact sheets de 1 s e recortes 4K do clipe com o ffmpeg; nenhuma cena de mapa aberta no Chrome, nenhum tile pedido). Carimbo .mp4.de-html = sha1 do HTML de hoje, 2160p. Portões lidos em out/los-angeles/_tmp/art-r4/central/ (não reexecutados): qc-cena-1.txt (33 cenas, com a pré-carga das chaves; as reprovações remedidas sozinhas e confirmadas), til-1.txt (portao-mapa til, 17 candidatos, 0 defeituosos), rodape-1.txt (portao-mapa rodape v5, contraste de 10,4:1 a 12,0:1), conferir-2.txt (saída 0), qc-janela-2.txt. mapa-vivo fora do portão; o til-glifo NÃO MEDIDO no qc-cena de cena de mapa é medido pelo portao-mapa til (passou no mesmo sha1). Não editei nada além do laudo. s10: sha1 9576109270eb4b070d342bdbcdc00941a36f42c2. Desvios declarados julgados: (1) a s10 leva a água escura, fora da lista do pedido: aceitável, é mapa do porto e o Lucas respondeu 'Aprovo, pode levar a todos' (identidade §6); sem ela, as placas claras do mosaico ficavam ao lado da água acesa e se liam como ela; (2) a água acesa só do lado de Los Angeles: aceitável pelos lados retos do TIGER de Long Beach (visto no quadro de 14,0 s); (3) a pílula do estuário 50 px à direita e o ponto da guia dentro do East Basin: aceitável, resolve a margem de 179 px; (4) o quadrado de 1850 apaga junto em 'distance': aceitável, é a opção do cético e fecha C-s10-1. O '1890s outline (schematic)' (T061) segue fora da tela, sem geometria de época. O que é do Lucas e não julguei como achado: água escura e lisa, base MapTiler."
   }
 }

@@ -1,19 +1,19 @@
 {
   "cena": "s06",
-  "aprovado": true,
+  "aprovado": false,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 7,
+      "nota": 6,
       "problemas": [
-        "Fita medida na tela, sob a câmera, a cada 0,25 s: topo ≥175 (retFd e retFe a 5,5 s; pagFe 179 a 6,5 s), esquerda ≥200 (o crédito, em x=200; fita retFe 228), direita ≤3619 (pagFd a 6,75 s), cargo até y 1852 (<1880), crédito até x 1661 (<1720). Nada fora da margem.",
-        "A última linha da página (p. 109, edição de 1895) fica rente ao corte de baixo e perde os descendentes ('though', 'southeasters'; crop 4K de 8,7 s): palavra legível, não cortada. Sinaliza.",
-        "A metade direita da tela fica vazia de 0 a 4,67 s (sinaliza).",
-        "Crédito a 56 px (2 linhas de 67,2 px) reprovado pelo qc-tamanho (56<72): exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido por mim em qc/_excecoes-portao.json); não derruba."
+        "DEFEITO NOVO da r4 (R1.10, recorte justo): as duas fitas da página (pagFe e pagFd) caem SOBRE a primeira linha do recorte e lavam palavras: \"Having\" (fita esquerda, desde 3,4 s) e \"o take the\" de \"to take the\" (fita direita, medido nos quadros de 7,0 s e 8,9 s, crop 4K: letras a ~40 % de contraste sob a fita translúcida). A crop de 3,4 s mostra o mesmo em \"Having\". Roupa §4 (espaco), folha de documento: \"palavra cortada reprova, pelo rasgo, pela fita, pela moldura…\"; mesmo critério que a r3 usou para mover as fitas da s02 para uma faixa de margem. As palavras são legíveis e fora do grifo (por isso 6 e não menos): é o ÚNICO bloqueio de espaço.",
+        "Crédito medido (probe-elemento, 7 s): 2 linhas, h=134 → 55,8 px/linha, x=200, y 2012–2146, até x 1720, var(--fs-credito), data-qc-papel presente. qc-tamanho reprova só 56<72. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em qc/_excecoes-portao.json).",
+        "Sinaliza: a página, antes inteira, agora vai cortada em linha inteira acima e abaixo (cortes no branco entre linhas; a última linha \"…bad for southeasters.\" sai inteira, descendentes ok). Cargo \"Sailor on the brig Pilgrim (1835)\" quebra em duas linhas com \"(1835)\" sozinho: observação.",
+        "Margens: medir-margens só acusa o pouso (retSombra/moldura @0,1 s; div.papel/#pagSombra @2,6–2,8 s, folha descendo de fora do quadro): excluído pela regra do central (08/10, 03:0x). Fitas e pílula dentro da margem em todo instante."
       ],
       "correcoes": [
-        "Opcional: subir a base do recorte meia linha para a linha final ficar inteira."
+        "Mover as fitas da página para fora do texto: (a) subir pagFe/pagFd uns 40–60 px e prender só a borda superior (o branco entre y 1509–1522 do scan tem ~13 px, não basta), ou (b) pôr as fitas nas margens laterais do recorte (x 150→202 do arquivo, ~60 px na tela), diagonais sobre os cantos, ou (c) abrir o recorte numa faixa de papel acima da 1ª linha. Depois, medir no quadro de 7,0 s que \"Having\" e \"to take the\" têm o mesmo contraste das outras linhas e repetir o medir-margens (fita no topo ≥160 sob a câmera)."
       ]
     },
     {
@@ -25,7 +25,9 @@
     {
       "lente": "wordlock",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "R1.9 executado: a página pousa em 2,567 s, em \"ship\" (voz 2,59 s); o grifo continua em \"the\" (5,67 s, voz 5,67) e fecha em \"hides\" (7,82). Conferido em 7,0 s (grifo em \"we had se[en]\", voz 6,9 \"seen\")."
+      ],
       "correcoes": []
     },
     {
@@ -50,17 +52,19 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "O push-in do RIG para em 5,40 s (medido), 0,27 s antes da primeira palavra do grifo (5,67 s): 30 ms a menos que os 0,3 s da roupa. O push-in é de 0,0024/s, imperceptível (<1 px na janela); sinaliza. Fita e folha andaram só no pouso (4,65–5,45 s, antes do grifo)."
+        "Push-in do RIG para em 5,37 s (0,30 s antes de \"the\"), como o laudo da r3 pedia: resolvido. Aterrissagem da página 2,567–3,4 s com assentamento único; nada se move nos 250 ms finais (8,65 vs 8,93 s: diferença média 0,48, deriva)."
       ],
-      "correcoes": [
-        "Opcional: parar o push-in em ≤5,37 s na próxima revisão do arquivo; não precisa refazer a cena."
-      ]
+      "correcoes": []
     },
     {
       "lente": "fonte",
-      "nota": 8,
-      "problemas": [],
-      "correcoes": []
+      "nota": 6,
+      "problemas": [
+        "DEFEITO (identidade.md §4.2, \"O crédito … entra em 300 ms no primeiro quadro em que o asset aparece\"): a página p. 109 aparece em 2,567 s e a linha \"Source: Richard Henry Dana Jr., Two Years Before the Mast (1895 edition)\" só entra em 4,667 s (T.cred = t0 do textos-tela, anterior ao beat novo da regência r4). A página fica 2,1 s no ar sem a atribuição que o redator escolheu para ela. O relato do editor declara o desvio e o aponta como pedido do central. Desvio declarado: DEFEITO, não aceitável. A linha é escolha do redator (conferencia-midia: \"não exigência\" de licença), por isso 6 e não menos."
+      ],
+      "correcoes": [
+        "Em s06.html, T.cred = T.pousaPag (2,567; o editor já ofereceu a troca). Pedir ao redator-de-tela/Claude central que o t0 do crédito de s06 no textos-tela passe de 4,667 a 2,567 (a linha é do redator, a hora é do §4.2), para o HTML e o plano não divergirem."
+      ]
     },
     {
       "lente": "tema",
@@ -72,16 +76,16 @@
       "lente": "cobertura",
       "nota": 8,
       "problemas": [
-        "O brigue Pilgrim não tem imagem (uma gravura seria opcional e não está em disco). Concreto secundário: sinaliza."
+        "O brigue Pilgrim continua sem imagem (FALTA declarada pela regência; gravura de edição posterior não é registro do navio). Concreto secundário: sinaliza."
       ],
-      "correcoes": [
-        "Se a pesquisa achar uma gravura do Pilgrim no Commons, o conferente a julga antes de entrar."
-      ]
+      "correcoes": []
     },
     {
       "lente": "cadencia",
-      "nota": 9,
-      "problemas": [],
+      "nota": 8,
+      "problemas": [
+        "Retrato parado 8,4 s, mas a camada nova (a página) entra em 2,57 s e o grifo corre de 5,67 a 7,82 s: troca de camada, regime normal. Sinaliza, sem derrubar."
+      ],
       "correcoes": []
     },
     {
@@ -122,7 +126,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 11,
-    "porque": "RODADA 3 (08/10/2026, lote Q7). Quadros do quadro.mjs com a pré-carga do canal (palco 3840×2160) em out/los-angeles/_tmp/qc/r3/; margem de TODO elemento visível medida sob a câmera a cada 0,25 s (_tmp/qc/medir-tudo.mjs: topo ≥160, laterais x 200–3640, abaixo de y 1880 só crédito até x 1720; os primeiros 0,9 s de cada objeto, o pouso, ficam fora da conta) e movimento a cada 0,05 s (_tmp/qc/medir-mov.mjs). Portões lidos em out/los-angeles/_tmp/qc-cena-r2.txt (13 cenas auditadas, 8 portões cada): as reprovações são só o crédito a 56 px, com a exceção e o sha1 de hoje conferidos contra o HTML; rodapé v5 passou; o medidor de fitas passou nas 18 cenas. O `conferir` da pré-carga não foi lido por mim: o Claude central o confere. Quadros olhados: s06@0,2, 1,2, 2,2, 3,2, 4,2, 5,2, 5,7, 6,2, 7,2, 8,2, 8,7 s (11 quadros) e o crop 4K do pé da página (8,7 s). Defeito de fita da rodada 2: resolvido."
+    "frames": 10,
+    "porque": "Portões lidos em out/los-angeles/_tmp/art-r4/central/ (qc-cena-1.txt, 33 cenas auditadas; rodape-1.txt v5; til sem mapa coberto pelo qc-cena; conferir-2 sai 0; qc-janela-2 não lista a cena) e em art-r4/e1/ (medir-margens, qc-carga). Desvios declarados: (1) crédito mantido em 4,667 s = DEFEITO (identidade §4.2, acima); (2) beat 2 da regência r4 já em 2,567: sem desvio; (3) \"three miles\" sem grifo (não está na p. 109): aceitável. O recorte justo a 1,15× resolveu a letra miúda (R1.10): altura de x do trecho ~17 px em 1080p contra ~15 do crédito, e a caixa de \"place\" agora cobre o \"e\". Mas as fitas passaram a cobrir texto da página. Quadros olhados (4K→1080p): 0,5 · 2,0 · 2,7 · 3,4 · 4,8 · 5,6 · 7,0 · 8,9; crops 4K 3,4 (topo) e 7,0 (direita); par de cauda 8,65/8,93. Reprovada por espaco (6) e fonte (6): conserto pequeno (fitas + hora do crédito)."
   }
 }

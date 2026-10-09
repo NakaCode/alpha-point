@@ -188,3 +188,19 @@ O Lucas, à pergunta "Quer que eu continue o vídeo 2 (Los Angeles) por aqui?": 
    prova: um "can can" refaz o trecho 1 e muda o relógio.
 6. **O crédito da voz no vídeo 2** não tem o teto de 15.000: o Lucas, 07/10 04:2x, "Você pode usar mais que 15 mil". O gasto continua
    registrado antes e depois de cada rodada e avisado no `#status`.
+
+## 09/10/2026, 08:1x — depois da conferência da arte r4 (as respostas do Lucas)
+
+A conferência da arte r4 (`_tmp/qc-r4/consolidado.md`): qc-visual 35 de 38 aprovadas (s06, s15 e s44 reprovadas); 216 de 237
+consertos resolvidos; 54 achados de espectador de pé; 62 defeitos em 29 cenas (1 alta, 27 média, 34 baixa). A rodada gastou uns
+26 pontos do limite semanal (62 % → 88 %), e o limite só volta em 14/10, 23h. As três perguntas, no chat:
+1. "O limite semanal do Claude está em 88 % e só volta em 14/10. Como seguimos com o vídeo 2?" → **"Vejo a linha do tempo agora
+   (Recomendado)"**. A opção dizia: "Você vê o vídeo como está: 35 das 38 cenas consertadas passaram na revisão. Seus comentários e
+   os 28 consertos de gravidade alta e média vão numa rodada só, enxuta, sem outra revisão de espectador. Os 34 de gravidade baixa
+   ficam para o fim, se sobrar limite." A linha do tempo está no ar (127.0.0.1:8790, `preview_start linha-do-tempo-la`), com as 23
+   proxies de mapa; o aviso foi a #pendencias (marcado) e ao Telegram às 03:4x.
+2. "San Pedro em 1909 … O que fazemos nas cenas 37, 44 e 55?" → **"Manter a linha, com reforço (Recomendado)"**: a divisa realçada
+   por mais tempo e a pílula "San Pedro" no ar até a cena seguir; a regra da identidade §6 ("o que a folha não fecha não se
+   inventa") fica. Sem render a mais por isso: o reforço entra no mesmo render dos outros consertos da cena.
+3. "Passo a revisão de espectador ao Sonnet?" → **"Sim, Sonnet revisa (Recomendado)"**: do próximo uso em diante, o revisor de
+   espectador roda em Sonnet; o cético continua em Opus (o teste: Sonnet 11 de 14 achados de pé, Opus 9; `consolidado.md`).

@@ -7,8 +7,8 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Clipe 4K válido (carimbo = sha1 94578a22…, 2160p). Quadros de 0 a 24,5 s a cada 0,5 s olhados. Pílulas e legendas dentro das margens; faixa y>1880 só com crédito; canto 400×400 livre. Crédito de fonte a 56 px: exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (sha1 do HTML conferido em _excecoes-portao.json); o crédito de mapa passa a 56 sem exceção (HTML: font-size var(--fs-credito) = 56 px, sem override).",
-        "Hamlin: as duas observações do conferente não pesam na tela. A folha retificada a 2600 px (arquivo 3532 px) é só textura nos primeiros 2,2 s a 70 % de opacidade (nada dela é lido), e o rótulo impresso 'Shoestring Addition' fica sob o preenchimento a 85 % sem prejuízo: a voz não o lê e o dado '18.64 SQ MI' vem da tabela impressa da própria folha."
+        "Clipe 4K válido (carimbo = sha1 399cc1de…, 2160p); olhei de 0 a 24,0 s (a cada 1 s) e 23,4/23,95/24,45 s. Pílulas, legenda 'year each became a city' (canto 200/160) e a cota dentro das margens; faixa y>1880 só com crédito, até x < 1720 (a linha Source termina em ~x 1420 no palco); canto 400×400 livre. Crédito de fonte 'Source: Los Angeles County annexation records' a 56 px por var(--fs-credito) (data-qc-papel=\"credito\"); o crédito de mapa a 56 px passa sem exceção (rodapé v5 8,36:1 em 0 s).",
+        "exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (\"Quero reduzir para 56px\"; sha1 do HTML conferido em _excecoes-portao.json e reconferido em out/los-angeles/_tmp/art-r4/central/qc-cena-1.txt). É a única reprovação do portão na cena (qc-cena: [tamanho] [credito] 56<72), a mesma de antes, com o sha1 novo (399cc1de…) registrado em _excecoes-portao.json. gatesDuros vazio por isso."
       ],
       "correcoes": []
     },
@@ -16,7 +16,8 @@
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "Folha de Hamlin = hamlin-1916-p1.jpg, sha256 320f36288f64… (confere com o veredito aprovado da s40 em conferencia-midia.json, reuso declarado da s39). Pílulas Torrance 1921, Gardena 1930, Lomita 1964 e Carson 1968 conferem com o textos-tela e caem dentro dos polígonos do TIGER (a cena falha se não caírem). Zoom máximo 11,90 com contorno de Hamlin (régua da incerteza respeitada). 'Wilmington's limits of 1909' entra na legenda das cores com o contorno de 1909, em 'Look at the tip' (regra A1); o último item fica ~1,2 s, permitido (identidade §6)."
+        "Folha de Hamlin = hamlin-1916-p1.jpg (veredito aprovado, reuso declarado da s39), esmaece em 'eighteen'. As quatro pílulas (Torrance 1921, Gardena 1930, Lomita 1964, Carson 1968) seguem o textos-tela, no lugar de hoje ao longo da faixa. R6.16: o anel entra em 23,753 s ('tip'), na âncora do toque da s42 (1º ponto da divisa 'com_wilmington'), um pulso só, até o corte (quadros de 23,95 e 24,45 s: anel na ponta, Wilmington verde-água, legenda 'Wilmington's limits of 1909' com o contorno de 1909 no quadro).",
+        "Desvio declarado (as pílulas saem em 23,45 s e não 'até o corte'): ACEITO. Com elas e o anel, Wilmington e a legenda juntos o quadro passaria de 6 elementos (identidade §4.2 e §6, regra da legenda das cores)."
       ],
       "correcoes": []
     },
@@ -24,10 +25,12 @@
       "lente": "wordlock",
       "nota": 7,
       "problemas": [
-        "Observação: a legenda 'year each became a city' entra em 20,10 s, 0,5 s antes de 'towns' (20,72) e 1,2 s antes da primeira pílula (21,26): de 20,1 a 21,26 s a chave está na tela sem pílula que ela explique (quadro de 21,0 s). Vem do conserto de ritmo do qc-carga, o conflito que o ofício descreve (atrasar/antecipar por ritmo desloca o word-lock)."
+        "Medido: pílulas em 'towns' (Torrance 20,718, Gardena 20,838, Lomita 20,958, Carson 21,078 s; voz 'towns' 20,72) ✓ em ordem de ano; a cota 'ABOUT 15 MILES (1906)', a linha de medida e 'county land, 1906' saem em 20,35 s, antes de 'towns' ✓ (R6.1 a, b); anel em 'tip' 23,753 ✓.",
+        "Desvio declarado (a linha 'Source: Los Angeles County annexation records' entra em 21,82 s e não em 20,567 do textos-tela): ACEITO. O qc-carga conta a linha como estreia de texto e o teto é 4 por janela de 1 s; com ela junto da 1ª pílula seriam 5. É gate medido, e o texto não mudou.",
+        "SINALIZA: de ~21,08 a 21,82 s os quatro anos estão na tela sem a legenda que os explica e sem o crédito (a legenda 'year each became a city' chega 0,7–1,1 s depois das pílulas; a voz diz 'weren't cities yet' só em 22,0 s). Consequência do mesmo teto de estreias; a leitura se completa em 21,8 s. A legenda 'Wilmington's limits of 1909' ficou ~0,8 s no ar como último item da legenda das cores (aviso do qc-carga, permitido por identidade §6)."
       ],
       "correcoes": [
-        "Entrar a legenda 'year each became a city' junto da 1ª pílula (21,26 s) e espaçar as 4 pílulas por 'line it today… weren't cities yet' (21,26 → 22,7 s, a ~0,45 s uma da outra) em vez de 80 ms: 3 entradas por segundo respeitam o teto de 4 do qc-carga sem antecipar a legenda."
+        "Opcional, só se o central quiser fechar a janela: estrear 'year each became a city' em ~21,3 s e adiar a linha Source para depois de 22,0 s; precisa re-medir o qc-carga --estreias."
       ]
     },
     {
@@ -40,21 +43,23 @@
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "Observação: de 11,2 a 16,3 s a fala descreve o contorno de 1906 ('On the outline of nineteen oh-six…') e a tela só tem câmera recuando e voltando; o '(1906)' só chega com a cota de 15 milhas, em 'fifteen' (16,3 s)."
+        "Os quatro anos entram na palavra 'towns', em ordem de ano, e o anel marca a ponta em 'tip'. R6.1 resolvido: a legenda deixou de parecer subtítulo de uma pílula só (agora é caixa do canto de cima à esquerda, longe do Carson). Observação anterior (11,2–16,3 s: câmera recuando sem '(1906)') não mudou."
       ],
       "correcoes": []
     },
     {
       "lente": "poluicao",
-      "nota": 8,
-      "problemas": [],
+      "nota": 7,
+      "problemas": [
+        "Entre 21,8 e 23,45 s convivem a faixa, quatro pílulas e a legenda: 6 elementos, o teto (identidade §4.2); o crédito não conta. SINALIZA como pior extremo; nada entra ali (o anel só chega em 23,753 s, com as pílulas já abaixo de 5 %). qc-carga passou (pior janela 4 estreias, teto 4)."
+      ],
       "correcoes": []
     },
     {
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Câmera contínua em todos os quadros: giro de ~0,19°/s entre quadros de 1 s, aproximação de 0,5 %/s em 13,5–16,5 s e viagens de ~1,5–2 s em 7–10 s e 11–13,5 s. De 3 a 7 s a escala não varia (0,0 %/s; ~2,6 px/s a 1080p, só o giro): sinalizo, não reprovo, porque nesse trecho entram elementos (legenda em 4,6 s, bloco cai a 40 % em 4 s, realce de 500 ms em 6,4 s)."
+        "Câmera contínua; descida à ponta em 23,27–24,533 s (F1→P0) e o anel entra com um pulso só (o 2º cairia depois do corte). Pílulas entram em 300 ms, 120 ms uma da outra; saem juntas em 23,45 s. Sem degrau."
       ],
       "correcoes": []
     },
@@ -62,7 +67,7 @@
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "Mapa antigo em domínio público (Hamlin/LoC) sem crédito de mídia: correto (identidade §7). 'Source: Los Angeles County annexation records' entra com as pílulas (20,57 s) e atribui os anos; segue a decisão do Claude central sobre 'Source:' em dado (qc/_decisoes-central.md). O 18.64 SQ MI (1,7–6,1 s) tem a própria folha impressa na tela como fonte."
+        "Mapa antigo em domínio público sem crédito de mídia: correto (identidade §7). '18.64 SQ MI' tem a própria folha impressa na tela; os anos têm a linha 'Source: Los Angeles County annexation records' (decisão do central sobre 'Source:' em dado). Crédito de mapa em todos os quadros. Exceção do crédito a 56 px citada em espaco."
       ],
       "correcoes": []
     },
@@ -82,7 +87,7 @@
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Nenhum plano de footage. A cena de 24,5 s troca de enquadramento 5 vezes (folha→satélite em 2,2 s, bloco→fio 4–8 s, aproximação 8–10 s, recuo 11–13,5 s, descida à ponta em 23,3 s)."
+        "24,5 s sem plano de footage; cinco trocas de enquadramento (folha→satélite, bloco→fio, aproximação, recuo, descida à ponta)."
       ],
       "correcoes": []
     },

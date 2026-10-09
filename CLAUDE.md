@@ -457,7 +457,9 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
 (08/10, 17:5x):
 - consertos do `editor-de-arte` em Opus em vez de Fable? **"Não, manter Fable"**: o editor continua todo em Fable;
 - testar a revisão de espectador em Sonnet, lado a lado com a de Opus, num lote pequeno da próxima revisão? **"Sim, testar
-  (Recomendado)"**: se o Sonnet achar o mesmo, a revisão passa a ele;
+  (Recomendado)"**. O teste rodou na conferência da arte r4 (09/10, dois lotes): o Sonnet achou 11 dos 14 achados que o cético
+  manteve, e o Opus 9. A pergunta "Passo a revisão de espectador ao Sonnet?" teve a resposta **"Sim, Sonnet revisa
+  (Recomendado)"**: o revisor de espectador roda em Sonnet; o cético continua em Opus;
 - do vídeo 3 em diante, as partes mecânicas do roteiro (cópia para a voz, trocas de pronúncia, conferências) fora do Fable?
   **"Sim, só a escrita em Fable (Recomendado)"**: a escrita, o gancho e a voz em Fable; o resto em Opus ou Sonnet.
 - **O que o Claude central decide sozinho** (os agentes dele, não os especialistas): leitores, montagem de lista e as conferências
