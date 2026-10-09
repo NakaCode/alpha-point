@@ -294,5 +294,11 @@ recusar: tag, emoji, outra escrita, palavra larga demais, pergunta longa demais 
 - A voz (§1), quando o Lucas decidir.
 - Medir a faixa com a legenda automática do YouTube ligada (pede um envio, decisão do Lucas) e abrir o `.mov` no
   Premiere pela primeira vez (no vídeo 2).
-- Conferir como o XML do motor recebe as chamadas (§8).
+- **As chamadas dentro do XML, do vídeo 3 em diante** (Lucas, 09/10/2026: "Neste eu farei manual, mas nos próximos quero que já
+  venham no XML"). No vídeo 2 elas vão à mão, pelo LEIA-ME do pacote. Para o próximo: uma ferramenta do canal põe os dois `.mov`
+  de `out/<proj>/cta/` numa faixa acima das cenas (V3) do `<proj>-POS.xml`, no `inSec` de `regencia.json` › `_chamadas`, sem
+  criar `marca/finalizacao.json` (valeria para o canal inteiro e ligaria o plano de CTA do motor, que espera a peça de outro
+  canal); o `pacote-premiere.py` leva os `.mov` em `midia/` como qualquer referência. Antes do primeiro uso, a prova: o XML
+  bem-formado, as duas peças no quadro certo, e o alfa conferido no Premiere pelo Lucas (o que o vídeo 2 mostrar à mão vale
+  como prova do `.mov`).
 - Um portão que meça o momento (§5) sozinho: hoje a comparação das caixas é à mão, pelo `qc-visual`.
