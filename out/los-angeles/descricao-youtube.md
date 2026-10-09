@@ -13,7 +13,40 @@ Escrita pelo Claude central no fechamento do vídeo. O que entra e de onde veio:
 - **os mapas** e **a música** são os blocos obrigatórios de `_creditos-mapa.md` (licença da MapTiler e da OSM) e `_creditos-trilha.md`
   (licença do Epidemic Sound).
 
-Para colar (o título do vídeo: "Why Is Los Angeles Shaped Like This?"):
+Para colar, a versão enxuta (padrão desde 09/10/2026: o Lucas achou os créditos demais, "Eles meio que já estão no vídeo"). Fica
+só o que a licença exige na descrição: os mapas (MapTiler e OSM), a música (Epidemic Sound) e o link da Library of Congress do
+mapa de Hamlin, que o `conferente-de-midia` pôs como condição (s39 e s40). As fontes já estão na tela, nas linhas "Source:".
+
+```text
+Look at Los Angeles on a map and one piece doesn't fit: a strip about half a mile wide that runs for miles just to reach the harbor. It isn't an accident. It's the story of a city fourteen miles from the beach, a fight over which bay would get the port, a wall built in the open sea, and the vote that finally put Los Angeles on the coast.
+
+Which bay would you pick? Answer in the comments.
+
+Chapters:
+0:00 Why is Los Angeles shaped like this?
+0:48 A city fourteen miles from the beach
+2:20 The jetty, the tide, and the word "never"
+4:05 Two bays, three boards, four votes to one
+6:13 A wall in the open sea, in somebody else's town
+7:37 The law that drew the strip
+9:32 1909: the handshake becomes a coast
+10:51 The seam on today's map, fifty-three feet down
+
+Sources are shown on screen.
+1916 annexation map: Homer Hamlin, City Engineer, Library of Congress (https://www.loc.gov/item/2006627663/)
+Maps: © MapTiler (https://www.maptiler.com/copyright/) · © OpenStreetMap contributors (https://www.openstreetmap.org/copyright)
+
+Music:
+Elin Piel / Ultra / courtesy of Epidemic Sound
+Brendon Moeller / Sunshine Rain / courtesy of Epidemic Sound
+Joseph Beg / Sand Mandala / courtesy of Epidemic Sound
+Shuta Yasukochi / Happiness / courtesy of Epidemic Sound
+https://www.epidemicsound.com
+```
+
+A versão completa, com a lista de fontes e as coleções das fotos (opcional), fica abaixo.
+
+A versão completa (o título do vídeo: "Why Is Los Angeles Shaped Like This?"):
 
 ```text
 Look at Los Angeles on a map and one piece doesn't fit: a strip about half a mile wide that runs for miles just to reach the harbor. It isn't an accident. It's the story of a city fourteen miles from the beach, a fight over which bay would get the port, a wall built in the open sea, and the vote that finally put Los Angeles on the coast.
