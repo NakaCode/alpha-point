@@ -180,6 +180,15 @@ def main():
                         + "  Se o volume ficar alto ou baixo demais, ajuste no Premiere.")
     else:
         linha_trilha = "- A2 e A3: vazias. A musica ainda nao entrou."
+    # a V3 e a V4: as chamadas e a marca d'água que o ferramentas/xml-chamadas.py põe no XML (do vídeo 3 em diante)
+    n_cham = len(re.findall(r'<clipitem id="chamada-\d+"', xml))
+    tem_marca = '<clipitem id="chamada-marca"' in xml
+    if n_cham or tem_marca:
+        linhas_v3v4 = ((f"- V3: as chamadas ({n_cham}), ja no lugar e no tempo certos. Nao corte nem estique as pecas.\n" if n_cham else "- V3: vazia.\n")
+                       + ("- V4: a marca d'agua (a agulha no canto de cima a direita, 30 %), o video inteiro.\n" if tem_marca else "- V4: vazia.\n")
+                       + "- V5: vazia.\n")
+    else:
+        linhas_v3v4 = "- V3, V4 e V5: vazias.\n"
     linha_anexos = ""
     if manifesto["anexos"]:
         linha_anexos = ("- anexos\\: o que o XML nao traz e entra a mao (veja \"Neste video\"):\n"
@@ -213,8 +222,7 @@ O que esperar
 - Uma sequencia 3840x2160 a 30 fps.
 - V1: o master (tela preta com a narracao).
 - V2: as cenas, uma depois da outra, sem vao.
-- V3, V4 e V5: vazias.
-- A1: a narracao.
+{linhas_v3v4}- A1: a narracao.
 {linha_trilha}
 - A narracao entra como faixa mono: confira se ela toca nos dois lados do fone.
 {nota}"""
