@@ -13,6 +13,35 @@ Escrita pelo Claude central no fechamento do vídeo. O que entra e de onde veio:
 - **os mapas** e **a música** são os blocos obrigatórios de `_creditos-mapa.md` (licença da MapTiler e da OSM) e `_creditos-trilha.md`
   (licença do Epidemic Sound).
 
+A versão curta, com 992 caracteres (09/10/2026: o Lucas disse "Mesmo a enxuta ultrapassou os caracteres"; a enxuta tem 1.285 e a
+completa 2.414, e o limite da descrição de vídeo do YouTube é 5.000, então o campo onde ele colou tinha um limite menor, de uns 1.000).
+Os mesmos créditos obrigatórios, no mesmo formato do Epidemic; a abertura numa frase só.
+
+```text
+Why does Los Angeles run a strip half a mile wide all the way to its harbor? A fight over a port, a wall in the sea, and a 1909 vote.
+
+Which bay would you pick? Answer in the comments.
+
+0:00 Why is Los Angeles shaped like this?
+0:48 A city fourteen miles from the beach
+2:20 The jetty, the tide, and the word "never"
+4:05 Two bays, three boards, four votes to one
+6:13 A wall in the open sea, in somebody else's town
+7:37 The law that drew the strip
+9:32 1909: the handshake becomes a coast
+10:51 The seam on today's map, fifty-three feet down
+
+1916 map: Library of Congress, https://www.loc.gov/item/2006627663/
+Maps: © MapTiler https://www.maptiler.com/copyright/ © OpenStreetMap contributors https://www.openstreetmap.org/copyright
+
+Music:
+Elin Piel / Ultra / courtesy of Epidemic Sound
+Brendon Moeller / Sunshine Rain / courtesy of Epidemic Sound
+Joseph Beg / Sand Mandala / courtesy of Epidemic Sound
+Shuta Yasukochi / Happiness / courtesy of Epidemic Sound
+https://www.epidemicsound.com
+```
+
 Para colar, a versão enxuta (padrão desde 09/10/2026: o Lucas achou os créditos demais, "Eles meio que já estão no vídeo"). Fica
 só o que a licença exige na descrição: os mapas (MapTiler e OSM), a música (Epidemic Sound) e o link da Library of Congress do
 mapa de Hamlin, que o `conferente-de-midia` pôs como condição (s39 e s40). As fontes já estão na tela, nas linhas "Source:".
