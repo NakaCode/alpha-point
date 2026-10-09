@@ -1,6 +1,39 @@
-# Conferência de mídia: los-angeles, fluxo midia, 07/10/2026 11:33, 13:55, 14:15, 17:02, 19:40 e 23:40 (Brasília)
+# Conferência de mídia: los-angeles, fluxo midia, 07/10/2026 11:33, 13:55, 14:15, 17:02, 19:40 e 23:40, e 08/10/2026 21:56 (Brasília)
 
 **Laudo (o arquivo inteiro):** 44 aprovados de 73 conferidos (17 reprovados, 12 trocar, 0 pendente_lucas); 3 com algo não conferido; recebidos: 73.
+
+## Despacho de 08/10, 21:56 (passo `conducting`): a janela nova da p. 109 na s06
+
+**Laudo do despacho:** 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido;
+recebidos: 1.
+
+A regência r4 (sha256 `2b8b0267…`) dividiu o beat da s06: a p. 109 (`documento/dana-1895-commons-p109.jpg`, sha256
+`baf202c8…e0`) pousa em "ship" (88,667 s) à direita do retrato, e o grifo entra em 90,767 s. O veredito de 07/10 cobria de
+90,767 a 95,033 s; o novo cobre 88,667–95,033 s (6,366 s; palavras 257 a 276 do `words.json`, de "ship" a "hides."). O
+veredito antigo foi para `substituidos`; o novo ocupa o lugar dele em `candidatos`.
+
+| id | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `_media/documento/dana-1895-commons-p109.jpg` | s06 | Commons (domínio público) | aprovado | a p. 109 de Dana continua servindo na janela nova: em "ship" ela é o registro do brigue longe da praia ("so far off that we could hardly see her"), e depois a passagem do "worst place" |
+
+- **Contexto:** o brigue de 1835 é anterior à fotografia; a página é o relato do próprio Dana sobre aquele navio naquela
+  ancoragem, sob o título "SAN PEDRO.": "the brig, which was so far off that we could hardly see her" e "our lying off at so
+  great a distance". Nada nela contradiz a fala. O "worst place we had seen yet" continua literal para o beat 2.
+- **Licença:** domínio público relido hoje na página do arquivo no Commons (publicado antes de 1931 nos EUA; Public Domain
+  Mark 1.0). Nada muda com a janela.
+- **Técnica:** 2133x3590 pelo `ffprobe`, a página real até 1,4x. Imagem parada sem duração a medir; o grifo em 90,767 s
+  muda o plano, e nenhum trecho parado passa de 6 s.
+- **Repetição:** só na s06, em dois beats seguidos (o mesmo plano que continua).
+- Olhos novos: não. O veredito anterior, o relato do regente e a regência foram lidos antes de reabrir o arquivo.
+
+**Para a regência, o redator e a arte (não reprovam):**
+- "three miles" não está na p. 109: no cap. XIV, "three or three and a half miles from shore" vem numa página anterior.
+  Nesta página não vai grifo de número. Se o beat 1 marcar algo, só "the brig, which was so far off that we could hardly see
+  her" ou "our lying off at so great a distance". O "3 MILES" que for à tela é do redator, fora da página.
+- O `textos-tela.json` põe a linha "Source: … (1895 edition)" em t0 4,667, e a página agora chega em 2,567. Domínio
+  público não exige crédito (identidade §7): a hora da linha fica com o redator.
+
+Para o Lucas pesar: nada. Para reconferir: nada. Para trocar: nada. Entre a marca e este ofício: nenhuma divergência.
 
 ## Despacho das 23:40 (passo `art`): a folha de Hamlin na s40
 
