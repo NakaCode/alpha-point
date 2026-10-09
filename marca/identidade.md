@@ -1118,6 +1118,13 @@ Das 5 propostas da 2ª rodada, escolheu **"A agulha"**.
   `--tinta-escura` sobre `--papel`.
   - A **marca d'água** do vídeo vai sem laranja: a agulha toda em `--tinta`, num disco `--fundo` a 65 %. O laranja na tela
     é do protagonista do vídeo (§2).
+  - **Gravada no vídeo, pelo XML, do vídeo 3 em diante** (Lucas, 09/10/2026: "o vídeo vem sem marca d'água também. Isso eu
+    quero nos próximos"; à pergunta "Como você quer a marca d'água nos vídeos?", "Gravada no vídeo, pelo XML", e não pelo
+    YouTube Studio). A mesma peça (`marca/logo/agulha/marca-dagua.svg`, sem laranja), numa faixa de vídeo acima das cenas,
+    do começo ao fim, junto com as chamadas (`marca/cta.md`, "O que falta"). O padrão, até o Lucas pedir outro: no canto de
+    cima à direita, DENTRO da margem que as cenas não usam (o disco com uns 140 px no palco 4K, a uns 60 px do topo e da
+    direita), fora da área segura (§4.1), da faixa de crédito e da caixa da inscrição (x 2029–3626, y 195–484, `cta.md` §4).
+    O vídeo 2 sai sem ela.
 - **O nome no banner:** ALPHA POINT em Barlow Condensed 800, com a frase "Geography and geopolitics, on the map." em Inter
   500. A frase veio com a proposta; quando o Lucas pediu para escolher, ele respondeu sem preferência.
 - **O fundo do banner** (Lucas, 09/10/2026: "a logo eu gostei da nossa, mas o banner quero mudar um pouco"): curvas de nível

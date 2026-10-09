@@ -301,4 +301,5 @@ recusar: tag, emoji, outra escrita, palavra larga demais, pergunta longa demais 
   canal); o `pacote-premiere.py` leva os `.mov` em `midia/` como qualquer referência. Antes do primeiro uso, a prova: o XML
   bem-formado, as duas peças no quadro certo, e o alfa conferido no Premiere pelo Lucas (o que o vídeo 2 mostrar à mão vale
   como prova do `.mov`).
+  A mesma ferramenta põe a marca d'água gravada (identidade §8, a decisão do Lucas de 09/10/2026) numa faixa própria.
 - Um portão que meça o momento (§5) sozinho: hoje a comparação das caixas é à mão, pelo `qc-visual`.
