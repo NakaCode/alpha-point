@@ -42,6 +42,9 @@
       corte) com o giro: o mapa não para, e a cidade inteira fica no quadro de 9,4 s ao corte. "A abertura não pousa" (acima)
       ficou para trás.
     · 8.3: .rotulo.liso com algarismos proporcionais (a caixa de '… · 2000–2024' fica simétrica).
+  RODADA r4b (mapista, lote ME, 09/10/2026; relato em out/los-angeles/_tmp/art-r4b/me/relato.md):
+    · o contraste C do satélite (identidade §6, "Tratamento da base de satélite"): brilho máx. 0,92, saturação 0, contraste 0,25;
+      o fallback de --agua-base passa a #00050c. Nada mais muda.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -376,9 +379,9 @@
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
                    aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // r4b: o contraste C (identidade §6; Lucas, 09/10/2026)
       { id: "agua-base", type: "fill", source: "aguaBase",
-        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────

@@ -67,6 +67,11 @@
     · A técnica p2 (o conceito r4): o corte seco para o satélite em 3,1 s (671,1 s, antes de 'By'); a foto de 1982 sai
       inteira e não fica como miniatura. Já era assim; conferido no quadro.
     · 8.3: .rotulo.liso com algarismos proporcionais (as caixas de '… · 2024' e '…, 1886' ficam simétricas).
+  RODADA r4b (mapista, lote ME, 09/10/2026; relato em out/los-angeles/_tmp/art-r4b/me/relato.md):
+    · o contraste C do satélite (identidade §6, "Tratamento da base de satélite"): brilho máx. 0,92, saturação 0, contraste 0,25;
+      o fallback de --agua-base passa a #00050c.
+    · s49-21-vira-18: '21 FT (1906)' e a marca cinza de 21 saem em 8,81 s (eram 10,50): 2,0 s no ar desde 6,81 (identidade
+      §4.3), e 2,16 s vazios antes de '18 OR 20 FT AT HIGH WATER' (10,97). Os outros tempos ficam.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -350,13 +355,13 @@ U.S. Army Corps of Engineers, 2013</div>
     foto: { w: 6573, h: 4483, escala: 0.620, foco: [0.475, 0.55], kb: 0.12, kbDur: 6, vetor: 80, borda: [103, 82, 103, 66] },
     canal: { entra: 3.10, sai: [15.48, 15.98] },
     agua: { entra: [15.48, 15.98] },                   // C-s49-1 (r4): quando o canal sai, antes de a câmera subir
-    medidor: { entra: 6.81, agua45: 7.635, agua53: 8.85, lido: 21, lidoSai: 10.50, mendell: 10.04, pulso: 14.89, sai: 15.48,
+    medidor: { entra: 6.81, agua45: 7.635, agua53: 8.85, lido: 21, lidoSai: 8.81, mendell: 10.04, pulso: 14.89, sai: 15.48,
                topo: 60, pxPe: 15, largura: 120, folga: 250 },
     rotulos: [
       { id: "rotCanal",    ref: "canalLeste", lado: "direita",  dx: 90,  dy: -60, entra: 3.335,  sai: 10.04 },
       { id: "legUsace1",   ref: "canalLeste", lado: "direita",  dx: 90,  dy: 112, entra: 5.210,  sai: 7.70 },
       { id: "legUsace2",   ref: "canalLeste", lado: "direita",  dx: 90,  dy: 232, entra: 5.210,  sai: 7.70 },
-      { id: "cota21",      ref: "medidor",    lado: "esquerda", dx: -50, dy: 0,   entra: 6.810,  sai: 10.50, gauge: 21 },   // r4: chega lido
+      { id: "cota21",      ref: "medidor",    lado: "esquerda", dx: -50, dy: 0,   entra: 6.810,  sai: 8.81,  gauge: 21 },   // r4: chega lido; r4b: sai em 8,81 (2,0 s no ar), antes do 18 OR 20
       { id: "cota45",      ref: "medidor",    lado: "esquerda", dx: -50, dy: 0,   entra: 7.635,  sai: 10.04, gauge: 45 },
       { id: "cota53",      ref: "medidor",    lado: "esquerda", dx: -50, dy: 0,   entra: 8.850,  sai: 13.18, gauge: 53 },
       { id: "cotaMendell", ref: "medidor",    lado: "esquerda", dx: -50, dy: 0,   entra: 10.970, sai: 15.48, gauge: 19 },
@@ -517,9 +522,9 @@ U.S. Army Corps of Engineers, 2013</div>
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
                    aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // r4b: o contraste C (identidade §6; Lucas, 09/10/2026)
       { id: "agua-base", type: "fill", source: "aguaBase",
-        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────

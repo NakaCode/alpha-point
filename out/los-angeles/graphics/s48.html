@@ -52,6 +52,12 @@
       pedido do lote, anotado no relato.
     · 8.3 (o veredito da s55, que vale para todo rótulo com número): .rotulo.liso com algarismos proporcionais, os mesmos
       que o canvas do texto liso pinta; as caixas das pílulas com ano ficam simétricas.
+  RODADA r4b (mapista, lote ME, 09/10/2026; relato em out/los-angeles/_tmp/art-r4b/me/relato.md):
+    · o contraste C do satélite (identidade §6, "Tratamento da base de satélite"): brilho máx. 0,92, saturação 0, contraste 0,25.
+    · a água escura (agua-osm-la em --agua-base) entra também aqui (decisão do central, 09/10/2026).
+    · s48-anos-soltos: as pílulas só com o nome (textos-tela T319–T322); a legenda T323 e a linha do condado T324 saíram.
+    · a miniatura da foto de 1914 e o aviso 'Photo from 1914' saíram (desvio aceito pelo central, _decisoes-central item 7).
+      O que o cabeçalho diz acima sobre a miniatura e a linha do condado ficou para trás.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -65,6 +71,7 @@
 <script src="../_media/geo/pontos-historicos-usgs-corrigidos.js"></script>
 <script src="../_media/geo/la-hoje-tiger.js"></script>
 <script src="../_media/geo/vizinhos-faixa-tiger.js"></script>
+<script src="../_media/geo/agua-osm-la.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -151,17 +158,15 @@
     <div class="cota" id="cotaArea" data-qc-papel="legenda">ABOUT 469 SQ MI</div>
     <div class="cota" id="cotaLargura" data-qc-papel="legenda">ABOUT HALF A MILE</div>
     <div class="cota" id="cotaComprimento" data-qc-papel="legenda">ABOUT 9 MILES (TODAY)</div>
-    <div class="rotulo liso" id="rotTorrance" data-qc-papel="rotulo">Torrance · 1921</div>
-    <div class="rotulo liso" id="rotGardena" data-qc-papel="rotulo">Gardena · 1930</div>
-    <div class="rotulo liso" id="rotLomita" data-qc-papel="rotulo">Lomita · 1964</div>
-    <div class="rotulo liso" id="rotCarson" data-qc-papel="rotulo">Carson · 1968</div>
+    <div class="rotulo liso" id="rotTorrance" data-qc-papel="rotulo">Torrance</div>
+    <div class="rotulo liso" id="rotGardena" data-qc-papel="rotulo">Gardena</div>
+    <div class="rotulo liso" id="rotLomita" data-qc-papel="rotulo">Lomita</div>
+    <div class="rotulo liso" id="rotCarson" data-qc-papel="rotulo">Carson</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
-  <div id="mini"><div class="janela"><img id="miniFoto" src="../_media/foto/s47/los-angeles-harbor-light-breakwater-1914.jpg" alt=""></div><div class="aviso" id="miniAviso" data-qc-aviso-ano data-qc-papel="legenda">Photo from 1914</div></div>
   <!-- 7.8 (r4): o item do quebra-mar na legenda das cores, com a amostra da linha (--rede-cor sobre o escuro, como a s12) -->
   <div id="legQM" class="legcores" data-qc-papel="legenda"><svg viewBox="0 0 120 101" aria-hidden="true"><path d="M 12 50 L 108 50" stroke="var(--rotulo)" stroke-width="30" stroke-linecap="round"/><path d="M 12 50 L 108 50" stroke="var(--rede-cor)" stroke-width="15" stroke-linecap="round"/></svg><span>breakwater, 1912</span></div>
   <div id="fonteArea" class="credito fonte" data-qc-papel="credito">Source: Los Angeles County, 2026</div>
-  <div id="fonteAnos" class="credito fonte" data-qc-papel="credito">Source: Los Angeles County annexation records</div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
   <div id="erroCena" hidden></div>
 </div>
@@ -329,7 +334,7 @@
       { id: "rotLomita",       ref: "lomita",      lado: "esquerda", dx: 0,   dy: 0,   entra: 17.773, sai: null },
       { id: "rotCarson",       ref: "carson",      lado: "direita",  dx: 0,   dy: 0,   entra: 17.893, sai: null }
     ],
-    fontes: [ { id: "fonteArea", entra: 6.573, sai: 9.00 }, { id: "fonteAnos", entra: 16.653, sai: null } ],
+    fontes: [ { id: "fonteArea", entra: 6.573, sai: 9.00 } ],   // r4b: a linha do condado saiu com os anos (textos-tela T324)
     legQM: { entra: 0.883, sai: 4.40 },                // 7.8 (r4): entra com a linha e sai com ela
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors" },
     creditoMapa: [0, 19.933]
@@ -464,9 +469,15 @@
   // ── a base, SEM relevo ─────────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // r4b: o contraste C (identidade §6, "Tratamento da base de satélite"; Lucas, 09/10/2026) e a água escura dos mapas do
+    // porto (identidade §6; Lucas, 08/10/2026; o central a leva à s48): a 2ª camada do estilo, opaca em --agua-base, logo
+    // acima do satélite e abaixo de tudo o que a cena desenha (agua-osm-la, arquivo local: não pede tile)
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -859,6 +870,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           for (var i = 0; i < FONTES.length; i++) if (!map.isSourceLoaded(FONTES[i])) return false;
           if (!map.isSourceLoaded("base")) return false;
+          if (!map.isSourceLoaded("aguaBase")) return false;   // r4b: a água escura (local) também
           return nivelUnico();
         } catch (e) { return false; }
       };

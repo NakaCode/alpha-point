@@ -34,8 +34,8 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
   INCERTEZA: o molhe e os dois pontos são as camadas CORRIGIDAS (molhe-1871-usgs1896-corrigido e
   pontos-historicos-usgs-corrigidos, ±50 m; a folha de 1896 errava ~272 m: _pesquisa/geo-folhas-usgs-relato.md). Os desenhos
   esquemáticos presos a eles (os rasos, as três vazantes e a barra) andaram o mesmo deslocamento (+0,00216° lng, +0,001667°
-  lat). O traço mais fino é o molhe, 36 px no total: ±50 m cabem até ~1,39 m/px (zoom ~15,5). Zoom máximo desta cena: 13,20
-  (6,9 m/px: 50 m = 7 px). Nada de Hamlin.
+  lat). O traço mais fino é o molhe, 36 px no total: ±50 m cabem até ~1,39 m/px (zoom ~15,5). Zoom máximo desta cena: 14,06 (r4b, 3,9 m/px: 50 m = 13 px; antes 13,20
+  com 6,9 m/px). Nada de Hamlin.
   ELEMENTOS: p1 até 5 (molhe, legenda, 2 pílulas, miniatura; a cota sai antes das pílulas); p2/p3 até 5; p4 5 (molhe,
   barra, medidor, 2 cotas: a legenda das cores, os rasos e a vazante saem antes do medidor).
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (data-qc-credito="mapa" só nele). O conceito pede
@@ -207,12 +207,21 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s12 (149,2 → 171,6 s do mas
       A0: { lng: -118.268, lat: 33.738, zoom: 12.92 },   // o palco da boca do estuário (teto 13,20: cabeçalho)
       A1: { lng: -118.270, lat: 33.736, zoom: 13.15 },
       A2: { lng: -118.269, lat: 33.738, zoom: 12.98 },
-      A3: { lng: -118.271, lat: 33.735, zoom: 13.20 }
+      A3: { lng: -118.271, lat: 33.735, zoom: 13.20 },
+      // r4b (s12-no-minusculo): a aproximação no nó (molhe, rasos, barra, vazante) entre 'left.' e 'Squeezed', até z 14,0
+      // (3,96 m/px: ±50 m = 13 px, ±150 m = 38 px contra o traço de 36 px do molhe; o teto que a incerteza sustenta), e a
+      // volta, com o medidor, ao ponto em que a perna antiga A2→A3 estaria em 16,90 (daí em diante a câmera é a de antes)
+      AZ:  { lng: -118.269,   lat: 33.727,   zoom: 14.00 },
+      AZ2: { lng: -118.2696,  lat: 33.7266,  zoom: 14.06 },
+      A3m: { lng: -118.26972, lat: 33.73692, zoom: 13.0593 }
     },
     pernas: [
-      { t0: 0,     t1: 6.73,  de: "A0", para: "A1", tipo: "h" },
-      { t0: 6.73,  t1: 13.80, de: "A1", para: "A2", tipo: "h" },
-      { t0: 13.80, t1: 22.40, de: "A2", para: "A3", tipo: "h" }
+      { t0: 0,     t1: 6.73,  de: "A0",  para: "A1",  tipo: "h" },
+      { t0: 6.73,  t1: 12.91, de: "A1",  para: "A2",  tipo: "h" },
+      { t0: 12.91, t1: 13.80, de: "A2",  para: "AZ",  tipo: "e" },   // 'left.' → 'Squeezed' (r4b)
+      { t0: 13.80, t1: 15.95, de: "AZ",  para: "AZ2", tipo: "h" },   // o nó de perto: 'Squeezed' … 'dug' (a barra se parte)
+      { t0: 15.95, t1: 16.90, de: "AZ2", para: "A3m", tipo: "e" },   // a volta, com o medidor entrando em 16,65
+      { t0: 16.90, t1: 22.40, de: "A3m", para: "A3",  tipo: "h" }    // = a perna A2→A3 da r4, do seu ponto de 16,90 em diante
     ],
     giro: [-1.5, 1.5],
     molhe: { desenha: [0.43, 2.40] },
@@ -544,9 +553,10 @@ var MOLHE = feicao("molhe-1871-usgs1896-corrigido");
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
                    agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      // r4b: o tratamento C do satélite (identidade §6, "Tratamento da base de satélite"; Lucas, 09/10/2026: "C, vivo")
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
       { id: "agua-base", type: "fill", source: "agua",
-        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -641,6 +651,7 @@ var MOLHE = feicao("molhe-1871-usgs1896-corrigido");
     if (L.tipo === "v") c = L.cam(cl(t - L.t0, 0, L.t1 - L.t0));
     else {
       var u = cl((t - L.t0) / (L.t1 - L.t0), 0, 1), a = PT[L.de], b = PT[L.para];
+      if (L.tipo === "e") u = eio(u);   // r4b: perna com easing cúbico de entrada e saída (roupa §6)
       var ma = merc(a.lng, a.lat), mb = merc(b.lng, b.lat);
       c = { center: [a.lng + (b.lng - a.lng) * u, unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u };
     }

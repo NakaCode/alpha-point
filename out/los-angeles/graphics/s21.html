@@ -15,7 +15,8 @@
   regencia.json (s21); a direção, conceito-visual.json (s21); a marca, marca/identidade.md e marca/tokens.css.
 
   O que a cena faz (palco B, "as duas baías", reaparição declarada; outubro de 1892):
-    · BASE MapTiler, sem relevo; tratamento 65/70 na pintura da camada, sem véu (s03).
+    · BASE MapTiler, sem relevo; tratamento C na pintura da camada desde a r4b (brilho máx. 0,92, saturação 0, contraste 0,25;
+      identidade §6, Lucas 09/10/2026), sem véu (s03).
     · O ANEL em San Pedro (GNIS) já está no 1º quadro (a reaparição do palco B); pulsa em "unanimously" e a pílula
       UNANIMOUS entra; a legenda "five Army engineers, October 1892" entra em "second board".
     · Um 2º anel em Santa Monica (GNIS), em "Santa Monica": a frase é sobre as duas baías, e nenhuma das duas tem nome
@@ -157,9 +158,13 @@
     ],
     cartao: { x: 262, y: 340, pouso: 7.96, levanta: 15.40, rot: -1.2 },
     rotulos: [
-      { id: "legJunta", ref: "SP", lado: "esquerda", vert: "cima", dx: 560, dy: -120, entra: 2.16, sai: 7.50 },
-      { id: "rotUnan",  ref: "SP", lado: "centro", vert: "baixo", dx: 0, dy: 110,  entra: 5.20, sai: 13.06 },
-      { id: "cotaAnos", ref: "SP", lado: "centro", vert: "baixo", dx: 0, dy: 120,  entra: 13.36, sai: null },
+      // r4b (s21-san-pedro-sem-nome, o conserto do cético): a cota 'San Pedro · 1891 · 1892' entra em 'San' (4,56), colada sob o
+      // anel, e fica até o corte (o lugar escolhido ganha nome); UNANIMOUS entra junto dela, não no lugar dela: ACIMA do anel
+      // (à direita, o sugerido, ela sai do quadro depois do recuo das 8 s: 87 a 143 px além da borda, medido no
+      // qc-fora-do-quadro); a legenda dos engenheiros vai para o canto livre de cima à esquerda (o "se apertar" do cético)
+      { id: "legJunta", tela: [200, 200], lado: "direita", vert: "baixo", entra: 2.16, sai: 7.50 },
+      { id: "rotUnan",  ref: "SP", lado: "centro", vert: "cima", dx: 0, dy: -100,  entra: 5.20, sai: 13.06 },
+      { id: "cotaAnos", ref: "SP", lado: "centro", vert: "baixo", dx: 0, dy: 80,  entra: 4.56, sai: null },
       { id: "legBoard", tela: [0, 0], lado: "direita", vert: "baixo", entra: 8.66, sai: 15.10 },
       // r4, R4.5 (T374): a pílula de Santa Monica no ponto GNIS, em 'Santa', até o corte; à direita do ponto e um pouco abaixo
       // dele, para o topo ficar abaixo de 160 quando a câmera o leva para cima
@@ -351,9 +356,10 @@
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
                    agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      // r4b: o tratamento C do satélite (identidade §6, "Tratamento da base de satélite"; Lucas, 09/10/2026: "C, vivo")
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
       { id: "agua-base", type: "fill", source: "agua",
-        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────

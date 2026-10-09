@@ -305,23 +305,27 @@
       { t0: 15.00,  t1: 16.40,  de: "P0", para: "P1", tipo: "h" },
       { t0: 16.40,  t1: 18.40,  de: "P1", para: "T0", tipo: "v" },   // recua para as três
       { t0: 18.40,  t1: 26.073, de: "T0", para: "T1", tipo: "h" },
-      { t0: 26.073, t1: 28.633, de: "T1", para: "T1", tipo: "z", anc: "costaC", zoom: 11.80 }   // 'coastline': fecha em volta da costa (7.3)
+      { t0: 26.073, t1: 28.633, de: "T1", para: "T1", tipo: "z", anc: "costa", zoom: 11.55 }   // 'coastline': fecha em volta da foz da divisa (r4b)
     ],
-    giro: [-2, 2],
+    giro: [-38, -30],     // r4b (Lucas, 09/10: ângulos diferentes, sem relevo): de sudeste para noroeste, do mar para a cidade
+    pitch: 38,            // inclinada (a s42 é 45° de norte para o porto; a s40, de cima), sem terrain
+    spRealce: { entra: 13.283, w: 9, sobW: 18 },   // r4b, San Pedro "com reforço" (Lucas, 09/10): a divisa 9 sobre 18 de "San" até o fim
     troca: [21.913, 22.413],                           // 'took effect': 1906 + Wilmington → 1909, 500 ms
     spCorre: [21.913, 22.713],                         // a divisa de San Pedro corre até a água, 800 ms
-    aneis: [],                                          // o anel saiu: a costa é linha, não ponto (7.3; conceito › _anel)
+    // r4b (s44-costa-rabisco, ALTA; o conserto sugerido, 2º caminho): a beira d'água recortada lia como rabisco; o fecho passa a ser a
+    // divisa laranja de San Pedro até a água, com o ANEL na foz (onde a cidade toca o mar) e a legenda presa a ele
+    aneis: [ { id: "anelFoz", ref: "costa", entra: 26.073, pulsos: [26.073, 27.273], sai: null } ],
     costa: { corre: [26.073, 1.2] },                    // a beira d'água acende de sudoeste a nordeste e fica
     rotulos: [
       { id: "rotLA",         ref: "laOeste", prender: "la",   lado: "esquerda", dx: -60,  dy: 0,   entra: 0.933,  sai: null,   pulsos: [1.233] },
-      { id: "rotWilmington", ref: "wilmLeste", lado: "direita",  dx: 60,   dy: -190, entra: 1.053,  sai: 22.60,  pulsos: [1.353] },
-      { id: "rotSanPedro",   ref: "sanPedro", prender: "sp", lado: "direita", dx: 50, dy: 60, entra: 1.173, sai: 23.90, pulsos: [1.473] },   // dentro da divisa (7.2)
-      { id: "plWilm",        ref: "wilmLeste", lado: "direita",  dx: 60,   dy: 0,   entra: 7.253,  sai: 19.033 },
+      { id: "rotWilmington", ref: "wilmLeste", lado: "direita",  dx: 60,   dy: -330, entra: 1.053,  sai: 22.60,  pulsos: [1.353] },
+      { id: "rotSanPedro",   ref: "sanPedro", prender: "sp", lado: "direita", dx: 50, dy: 110, entra: 1.173, sai: null, pulsos: [1.473] },   // dentro da divisa (7.2)
+      { id: "plWilm",        ref: "wilmLeste", lado: "direita",  dx: 60,   dy: -144,   entra: 7.253,  sai: 19.033 },
       { id: "plLA",          ref: "laOeste", prender: "la",   lado: "esquerda", dx: -60,  dy: 190, entra: 12.063, sai: 19.033 },
-      { id: "plSP",          ref: "sanPedro", prender: "sp", lado: "direita", dx: 50, dy: 246, entra: 15.443, sai: 19.033 },
+      { id: "plSP",          ref: "sanPedro", prender: "sp", lado: "direita", dx: 50, dy: 296, entra: 15.443, sai: 19.033 },
       { id: "rotData",       tela: [3640, 260], lado: "esquerda", dx: 0,    dy: 0,   entra: 19.033, sai: 23.90 },
       { id: "rotArea",       ref: "laOeste", prender: "la",   lado: "esquerda", dx: -60,  dy: 190, entra: 24.153, sai: null },
-      { id: "legCosta",      ref: "costaC",    lado: "direita",  dx: 0,    dy: 240, entra: 26.073, sai: null }   // presa ao centro da linha, abaixo dela
+      { id: "legCosta",      ref: "costa",     lado: "esquerda", dx: -70,  dy: 0,   entra: 26.073, sai: null }   // presa ao anel da foz (r4b)
     ],
     fontes: [ { id: "fonteLAT", entra: 7.253, sai: 19.033 }, { id: "fonteCondado", entra: 24.153, sai: null } ],
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors" },
@@ -420,7 +424,7 @@
     poly("c1909", C1909, { fracao: 0.85 });
     linhaFronteira("sp0", fcLinhas([SP0]));
     linhaFronteira("sp1", fcLinhas([SP1]));
-    linhaCor("spCidade", fcLinhas([[SP0[0], SP0[0]]]), "--destaque", "#F5A524", 6, 14);
+    linhaCor("spCidade", fcLinhas([[SP0[0], SP0[0]]]), "--destaque", "#F5A524", CENA.spRealce.w, CENA.spRealce.sobW);   // r4b: 9 sobre 18
     linhaCor("costa", fcLinhas([]), "--tinta", "#F4F1EA", 10, 24);
   }
   function cenaAplicar(t) {
@@ -437,7 +441,11 @@
     // a beira d'água: corre em 1,2 s (eio) de sudoeste a nordeste em 'coastline' e fica
     var K = CENA.costa.corre, ucs = eio(seg(t, K[0], K[1]));
     setDado("costa", t < K[0] ? "vazio" : ucs.toFixed(3), fcLinhas(t < K[0] ? [] : costaAte(ucs >= 1 ? 2 : ucs)));
-    setLinha("costa", t < K[0] ? 0 : 1);
+    setLinha("costa", 0);   // r4b: a beira d'água não se desenha mais (rabisco); o fecho é o anel na foz
+    var R = CENA.spRealce, rr = eio(seg(t, R.entra, 0.3));
+    ["sp0", "sp1"].forEach(function (id) {
+      opac(id + "-linha", "line-width", +(5 + (R.w - 5) * rr).toFixed(2)); opac(id + "-sob", "line-width", +(12 + (R.sobW - 12) * rr).toFixed(2));
+    });
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -497,7 +505,7 @@
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -601,7 +609,7 @@
       c = { center: [a.lng + (b.lng - a.lng) * u, unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u };
     }
     if (c.zoom > CENA.zoomMax + 1e-9) { window.__zoomAcimaDoTeto = Math.max(window.__zoomAcimaDoTeto || 0, c.zoom); }
-    return { center: c.center, zoom: c.zoom, bearing: CENA.giro[0] + (CENA.giro[1] - CENA.giro[0]) * t / DUR, pitch: 0 };
+    return { center: c.center, zoom: c.zoom, bearing: CENA.giro[0] + (CENA.giro[1] - CENA.giro[0]) * t / DUR, pitch: CENA.pitch };
   }
 
   var c0 = cameraAt(0);

@@ -169,7 +169,7 @@
     <div class="rotulo legenda liso" id="legRota" data-qc-papel="legenda">Approximate route</div>
     <div class="rotulo caixa liso" id="rotJan" data-qc-papel="rotulo">JANUARY 1905</div>
     <div class="cota" id="cota9000" data-qc-papel="legenda">AT LEAST 9,000 FT</div>
-    <div class="rotulo liso" id="contador" data-qc-papel="rotulo">1899 → 1899</div>
+    <div class="rotulo liso" id="contador" data-qc-papel="rotulo">1899 → 1905</div>
     <div class="rotulo caixa liso" id="rotAbril" data-qc-papel="rotulo">APRIL 1, 1905</div>
     <div class="rotulo legenda liso" id="legDraga" data-qc-papel="legenda">federal dredge (schematic)</div>
     <div class="rotulo legenda liso" id="legCanal" data-qc-papel="legenda">dredged channel (schematic)</div>
@@ -233,6 +233,9 @@
     muro: { cresce: [6.937, 8.142], marca: 9000 * 0.3048, fim: [9.247, 13.85], sai: [15.434, 0.8] },
     contador: { entra: 9.827, sai: 14.134 },
     agua: { entra: [16.477, 0.5] },
+    // r4b: o recorte da placa ao porto interno (s29-placa-cinza): ao norte de lat e a noroeste da reta da entrada (da ponta do
+    // píer oeste, na boca do Main Channel, à quina sudoeste de Terminal Island); a barra (Deadman's Island) fica do lado de dentro
+    interno: { lat: 33.7252, reta: [[-118.27211, 33.72143], [-118.26498, 33.73146]] },
     draga: { entra: 18.827, anda: [19.187, 21.517], sai: 21.517 },
     rastro: { sai: 24.434 },
     setas: { entra: 21.827, sai: 25.85 },
@@ -258,7 +261,7 @@
       { id: "rotMade",   ref: "MADE",  lado: "centro", dx: -160, dy: 0, entra: 26.277, sai: 28.294 },
       { id: "legEsq",    ref: "MADE",  lado: "centro", vert: "baixo", dx: -160, dy: 100, entra: 26.277, sai: 28.294 },
       { id: "cota11",    tela: [0, 0], lado: "direita", vert: "cima",  entra: 29.274, sai: 31.75 },
-      { id: "legMare",   tela: [0, 0], lado: "centro",  vert: "baixo", entra: 29.274, sai: 31.75 },
+      { id: "legMare",   tela: [0, 0], lado: "esquerda", vert: "baixo", entra: 29.274, sai: 31.75 },   // r4b: à esquerda da base, fora do Middle Breakwater
       { id: "cota21",    tela: [0, 0], lado: "direita", vert: "cima",  entra: 30.067, sai: null },
       { id: "legTide",   tela: [0, 0], lado: "direita", vert: "baixo", entra: 32.027, sai: null },
       { id: "legDredge", tela: [0, 0], lado: "direita", vert: "baixo", entra: 32.147, sai: null }
@@ -307,8 +310,24 @@
       // sem os lagos e tanques de terra (Harbor Lake e os de menos de 50.000 m²)
       A.AGUA = A.geo("agua-porto-hoje-tiger").features;
       A.AGUA_LA = { type: "FeatureCollection", features: A.aguaDasDuasCidades(A.AGUA) };
+      // r4b (s29-placa-cinza; desvio aceito pelo central, _decisoes-central.md item 7): a placa só no PORTO INTERNO (Main
+      // Channel, West Basin, East Basin), o que a voz diz. O corpo do TIGER que desce até o quebra-mar se recorta ao norte da
+      // entrada (lat ≥ CENA.interno.lat) e a oeste de CENA.interno.lng (sai o porto externo a leste de Terminal Island). O
+      // corte cai na água: a borda só se desenha onde a água toca terra, então ele não vira linha.
+      A.AGUA_LA.features = A.AGUA_LA.features.map(function (f) { return recortarInterno(f, CENA.interno); }).filter(Boolean);
       // o contorno dela só onde a água toca terra (o lado de cada segmento conferido contra a água do OSM, a 12 m)
       A.AGUA_BORDA = A.bordaQueTocaTerra(A.AGUA_LA.features, A.geo("agua-osm-la"), 12);
+      // r4b: o trecho sobre a reta do recorte (entre dois pontos do corte) não é margem: sai da borda
+      var semCorte = [];
+      A.AGUA_BORDA.geometry.coordinates.forEach(function (l) {
+        var cur = null;
+        for (var i = 1; i < l.length; i++) {
+          if (l[i - 1].corte && l[i].corte) { cur = null; continue; }
+          if (!cur) { cur = [l[i - 1]]; semCorte.push(cur); }
+          cur.push(l[i]);
+        }
+      });
+      A.AGUA_BORDA.geometry.coordinates = semCorte;
       // o contorno partido em dois: o de dentro do recorte da ilha (a borda de "walls", que sai antes de "MADE LAND") e o resto
       var rc = CENA.recorte, noRecorte = function (x, y) {
         var d = false; for (var i = 0, j = rc.length - 1; i < rc.length; j = i++)
@@ -363,10 +382,11 @@
         A.E("tiqueSob").setAttribute("d", dt); A.E("tiqueSobre").setAttribute("d", dt);
         tq.setAttribute("opacity", A.janela(t, M.cresce[1], 10.142).toFixed(3));
       }
-      // o contador de anos: 1899 → 1912, um ano a cada 0,30 s desde 'Stone', e para; sai 300 ms antes da viagem
+      // o contador de anos (r4b, s29-contador-1899): nasce em "1899 → 1905" (o ano de "JANUARY 1905") e sobe só de 1905 a
+      // 1912, um ano a cada 0,45 s desde 'Stone' (1912 em 12,977 s, 1,16 s antes de sair); sai 300 ms antes da viagem
       var cn = A.E("contador");
       if (cn) {
-        var ano = 1899 + Math.min(13, Math.max(0, Math.floor((t - CENA.contador.entra) / 0.30)));
+        var ano = 1905 + Math.min(7, Math.max(0, Math.floor((t - CENA.contador.entra) / 0.45)));
         var txt = "1899 → " + ano;
         if (cn.textContent !== txt) cn.textContent = txt;
       }
@@ -403,6 +423,39 @@
   };
   // a borda da ilha de hoje (a borda da água que toca terra, dentro do recorte: mais grossa que o contorno da água) e a
   // hachura da terra (a terra de hoje no recorte, menos a água do TIGER): desenhadas num canvas por quadro, sob o SVG
+  // o recorte de um polígono do TIGER ao porto interno (Sutherland–Hodgman em dois semiplanos: lat ≥ R.lat e o lado noroeste da
+  // reta da entrada); só os corpos que descem abaixo de R.reta se cortam (o resto passa inteiro). Os pontos do corte levam
+  // .corte = true: o trecho entre dois deles fica sobre a reta (a ponte que o S–H faz entre pedaços) e não vira borda.
+  function recortarInterno(f, R) {
+    var g = f.geometry, polys = g.type === "Polygon" ? [g.coordinates] : g.coordinates, desce = false;
+    var P1 = R.reta[0], P2 = R.reta[1], lado = function (p) { return (P2[0] - P1[0]) * (p[1] - P1[1]) - (P2[1] - P1[1]) * (p[0] - P1[0]); };
+    polys.forEach(function (pl) { pl.forEach(function (r) { r.forEach(function (p) { if (p[1] < R.lat || lado(p) < 0) desce = true; }); }); });
+    if (!desce) return f;
+    function corta(r, dentro, cruza) {
+      var o = [];
+      for (var i = 0; i < r.length; i++) {
+        var a = r[(i + r.length - 1) % r.length], b = r[i], da = dentro(a), db = dentro(b);
+        if (db) { if (!da) o.push(cruza(a, b)); o.push(b); } else if (da) o.push(cruza(a, b));
+      }
+      return o;
+    }
+    var marca = function (p) { p.corte = true; return p; };
+    var noLat = function (p) { return p[1] >= R.lat; }, xLat = function (a, b) { var u = (R.lat - a[1]) / (b[1] - a[1]); return marca([a[0] + (b[0] - a[0]) * u, R.lat]); };
+    var noLng = function (p) { return lado(p) >= 0; }, xLng = function (a, b) { var la = lado(a), u = la / (la - lado(b)); return marca([a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u]); };
+    var novos = [];
+    polys.forEach(function (pl) {
+      var rs = [], some = false;
+      pl.forEach(function (r, k) {
+        if (some) return;
+        var q = r.slice(0, r.length - 1);
+        q = corta(q, noLat, xLat); q = corta(q, noLng, xLng);
+        if (q.length >= 3) { var f0 = q[0].slice(); if (q[0].corte) f0.corte = true; q.push(f0); rs.push(q); } else if (k === 0) some = true;
+      });
+      if (!some && rs.length) novos.push(rs);
+    });
+    if (!novos.length) return null;
+    return { type: "Feature", properties: f.properties, geometry: { type: "MultiPolygon", coordinates: novos } };
+  }
   var PADRAO = null;
   function hachuraEBorda(t, A) {
     var cv = A.E("hachura"); if (!cv) return;
@@ -478,7 +531,7 @@
     A.E("medGrosso").setAttribute("opacity", A.janela(t, M.salto + 0.3, null).toFixed(3));
     // os textos do medidor, presos a ele
     ROT.cota11.tela = [B.x + W + 64, Y(11) - 14];
-    ROT.legMare.tela = [B.x + W / 2, B.y + 56];
+    ROT.legMare.tela = [B.x - 120, B.y + 56];   // r4b (s29-linha-sob-low-tide): à esquerda da base da régua, longe do Middle Breakwater
     ROT.cota21.tela = [B.x + W + 120, Y(21) - 14];
     ROT.legTide.tela = [B.x + W + 64, Y(10) + 14];
     ROT.legDredge.tela = [B.x + W + 120, Y(21) + 14];
@@ -701,9 +754,9 @@
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
       agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
       { id: "agua-base", type: "fill", source: "agua",
-        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────

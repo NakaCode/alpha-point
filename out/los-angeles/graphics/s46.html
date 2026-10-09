@@ -132,6 +132,7 @@
     <div class="rotulo liso" id="rotLB" data-qc-papel="rotulo">Long Beach</div>
     <div class="rotulo caixa liso" id="rotData" data-qc-papel="rotulo">AUG. 13, 1909</div>
     <div class="rotulo legenda liso" id="legAnexa" data-qc-papel="legenda">Long Beach annexation takes effect</div>
+    <div class="rotulo liso" id="rotTI" data-qc-papel="rotulo">Terminal Island</div>
     <div class="rotulo liso" id="rotLA" data-qc-papel="rotulo">Los Angeles</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
@@ -279,16 +280,17 @@
       { t0: 6.313, t1: 10.133, de: "B1", para: "C",  tipo: "v", fecha: 0 }
     ],
     giro: [-2, 2],
-    divisa: { entra: 4.133, dura: 0.80 },               // 'Terminal': a linha se traça através da ilha
+    divisa: { entra: 4.133, dura: 0.80, pulso: [4.933, 0.6] },   // r4b: um pulso na divisa quando ela termina de se traçar               // 'Terminal': a linha se traça através da ilha
     aguas: { entra: [6.313, 6.813] },                   // 'From nineteen oh-nine': as duas águas acendem
     aneis: [ { id: "anelLB", ref: "longBeach", entra: 1.093, pulsos: [1.093, 2.293], sai: null } ],
     rotulos: [
       { id: "rotLB",    ref: "longBeach", lado: "direita",  dx: 70,  dy: 0,   entra: 1.293, sai: null, pulsos: [9.013] },
-      { id: "rotData",  ref: "longBeach", lado: "direita",  dx: 70,  dy: 190, entra: 1.533, sai: 6.00 },
-      { id: "legAnexa", ref: "longBeach", lado: "direita",  dx: 70,  dy: 340, entra: 1.773, sai: 6.00 },
+      { id: "rotData",  ref: "longBeach", lado: "direita",  dx: 70,  dy: -205, entra: 1.533, sai: 6.00 },
+      { id: "legAnexa", ref: "longBeach", lado: "direita",  dx: 70,  dy: -380, entra: 1.773, sai: 6.00 },
+      { id: "rotTI",    ref: "tiMeio",    lado: "direita",  dx: 100, dy: 120,   entra: 4.133, sai: null },   // r4b, T392 (em "Terminal"), ao lado da divisa sem cobri-la
       { id: "rotLA",    ref: "laPorto",   lado: "centro",   dx: 0,   dy: 0,   entra: 6.313, sai: null }   // 7.1 (r4)
     ],
-    legenda: { entra: 4.133, sai: null },
+    legenda: { entra: 4.933, sai: null },   // r4b: depois de a linha existir
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors" },
     creditoMapa: [0, 10.133]
   };
@@ -301,7 +303,8 @@
     if (!PLA || !PLB) return;
     // a âncora da pílula 'Los Angeles' (7.1, r4): o anteporto de LA, a oeste da aresta comum das duas águas; a pílula é
     // centrada nela e nunca toca a água de Long Beach nem a divisa de 6,3 s ao corte (medido; cabeçalho)
-    REFS = { longBeach: pontoNome("lugares-gnis-nrhp", "Long Beach"), laPorto: [-118.2700, 33.7175] };
+    REFS = { longBeach: pontoNome("lugares-gnis-nrhp", "Long Beach"), laPorto: [-118.2700, 33.7175],
+             tiMeio: [(DIV[0][0] + DIV[DIV.length - 1][0]) / 2, (DIV[0][1] + DIV[DIV.length - 1][1]) / 2] };
   }
   function cenaCarregar() {
     // _agua_do_porto (r4): LA a 50 % com contorno de 6 px (com o vizinho pintado, o protagonista é o mais saliente)
@@ -317,6 +320,8 @@
     var u = eio(seg(t, CENA.divisa.entra, CENA.divisa.dura));
     setDado("divisa", u.toFixed(3), fcLinhas([linhaAte(DIV, u)]));
     setLinha("divisa", t < CENA.divisa.entra ? 0 : 1);
+    var Pz = CENA.divisa.pulso, up = (t - Pz[0]) / Pz[1], pz = up >= 0 && up < 1 ? Math.sin(Math.PI * up) : 0;
+    opac("divisa-linha", "line-width", 9 + 6 * pz); opac("divisa-sob", "line-width", 20 + 10 * pz);
     janelaEl("legenda", t, CENA.legenda.entra, CENA.legenda.sai);
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
@@ -380,9 +385,9 @@
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
                    aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
       { id: "agua-base", type: "fill", source: "aguaBase",
-        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────

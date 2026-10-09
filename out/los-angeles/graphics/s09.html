@@ -34,6 +34,12 @@
               dele, o AVISO "Photo from 1870" (pílula menor, 84 px), sobre a mesa, abaixo da foto, presos à borda esquerda dela,
               150 ms depois do assentamento (§4.4; o aviso logo abaixo do rótulo de lugar, §6). Lastro: "the Wilmington landing"
               (0,96–1,84).
+        0,60  r4b (s09-trem-ilegivel, espectador lote 2 + qc-visual E1): a SETA da PRANCHA (6 px, cabeça de 48 px, --destaque:
+              o ponto que a voz nomeia, como o anel) sobre a MESA, da direita (2980 × 1040) até a borda da moldura (2548 × 775),
+              na linha do trem no cais (a locomotiva em ~2250 × 760): a foto de 800 px não pode crescer (teto 1,4×), e o trem é
+              uma faixa de ~25 px no 1080p; a seta diz onde olhar e ocupa a metade direita da mesa, que ficava vazia. Entra em
+              0,60 (300 ms, deslizando 24 px no eixo dela; a foto já assentou em 0,55) e sai em 2,56 com o rótulo (300 ms),
+              antes de a foto levantar. Nada sobre a foto. Lastro: "A railroad reached the Wilmington landing" (0,19–1,84).
         2,56  o rótulo "Wilmington" SAI (300 ms, opacidade + 24 px para baixo), 300 ms antes de a foto levantar (identidade §4.4,
               "o rótulo preso a ele sai 300 ms antes"). No ar 0,70 → 2,75 (5 % do máximo, a conta de Q9): 2,05 s ≥ 2,0 (§4.3).
         2,86  A FOTO LEVANTA ("a mesa se arruma", identidade §4.4 e §5: "se a nova cobriria a parte que importa, a antiga levanta
@@ -71,12 +77,13 @@
     do conferente: a identidade §4.4 manda contar o 1,03 do assentamento e o 1,04 do levantar no produto da foto impressa.
     Ken Burns: não há foto em tela cheia.
 
-  A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): p1: a foto com o rótulo e o aviso (1). p2: a
+  A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): p1: a foto com o rótulo e o aviso (1) + a seta
+    (1, r4b) = 2. p2: a
     litografia com o rótulo e o aviso (1) + "MARCH 1871" (1) + "$200,000" (1) = 3 (alvo 4–5; antes eram 4, com a foto que ficava).
     Blocos de texto de leitura: 0 (rótulos curtos, números e avisos). Herói: nenhum (data-qc-sem-heroi: "$200,000" é rótulo de
     dado, 128 px, não herói). Anos na tela ao mesmo tempo: no p2, só 1877 (preso à litografia) e 1871 (o que a voz diz); o 1870
     sai com a foto (R2.6).
-    (r4: textos-tela.json sha256 19f98912…; nada mudou nos textos da s09.)
+    (r4b: textos-tela.json sha256 4fe715fb…; nada mudou nos textos da s09; a seta não tem texto.)
 
   A MÍDIA (out/los-angeles/_pesquisa/conferencia-midia.json › candidatos, vereditos "aprovado" para a cena s09, casados pelo
   medido.sha256 do rascunho julgado = sha256 do arquivo entregue):
@@ -99,7 +106,8 @@
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Pílula --rotulo 12 px, 24×40 (o aviso 16×28);
   rótulo 128 px Inter 700; aviso 84 px Inter 500. Sem crédito (domínio público). Margens 200/160 sob a câmera; faixa abaixo de
-  y 1880 vazia; canto inferior direito (400×400) vazio. Sem --destaque (nenhum ator).
+  y 1880 vazia; canto inferior direito (400×400) vazio. --destaque só na seta (r4b), que marca o ponto que a voz nomeia (identidade
+  §2: o anel sai em --destaque mesmo fora do protagonista); nenhum ator.
 
   O CONTRATO: window.__duracao = 9.266; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
   __fotosProntas = RIG.prontas() (espera o still, as duas peças e as faces da marca). Nada de relógio, sorteio, @keyframes,
@@ -164,6 +172,11 @@
   /* o rótulo solto do traço de engenheiro (128 px, Inter 700, sem pílula: identidade §5, "Animação para explicar") */
   .rotulo-solto { position: absolute; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo);
     line-height: 1.1; letter-spacing: .01em; color: var(--tinta); opacity: 0; transform-origin: 0 50%; }
+  /* r4b (s09-trem-ilegivel): a SETA da PRANCHA (identidade §5: linha de 6 px, cabeça de 48 px como em marca/prancha.html), em
+     --destaque (o ponto que a voz nomeia, como o anel), sobre a MESA, fora da foto, apontando a faixa do trem no cais */
+  .seta { position: absolute; height: 6px; background: var(--destaque); transform-origin: 0 50%; opacity: 0; }
+  .seta::after { content: ""; position: absolute; right: -4px; top: 50%; width: 48px; height: 48px; border-top: 6px solid var(--destaque);
+    border-right: 6px solid var(--destaque); transform: translateY(-50%) rotate(45deg); }
   /* o crédito (§4.2, §4.1 "Crédito a 56 px"): --fs-credito, --sec, x = 200, abaixo de y = 1880, até x = 1720, duas linhas,
      nunca encolhe; fora da câmera */
   #cred { position: absolute; left: var(--credito-x); bottom: 14px; width: calc(var(--credito-x-fim) - var(--credito-x));
@@ -188,6 +201,9 @@
       <div class="fita" id="fFe" style="left:-60px;top:-50px"></div>
       <div class="fita" id="fFd" style="left:712px;top:-50px"></div>
     </div>
+    <!-- r4b (s09-trem-ilegivel): a seta sobre a mesa, da direita (2980, 1040) à borda da moldura (2548, 775), na linha do trem
+         (a locomotiva em ~2250 × 760 na tela, a faixa do cais de 1640 a 2300); 506 px a -148,5 graus. Nada sobre a foto. -->
+    <div class="seta" id="seta" style="left:2980px;top:1037px;width:506px"></div>
 
     <!-- p2: a sombra solta e a litografia de 1877 impressa (o encarte de Wilmington, x 40→2540, y 1990→3240 do arquivo; r4: a 0,80× =
          2000 × 1000, grupo 2088 × 1088, centro 2500 × 850, à direita do meio; +1,0°). A imagem inteira mede 4096 × 2758,4 e desloca
@@ -399,6 +415,7 @@
   // a mesa fica vazia ~160 ms, e não os 300 do BRIEF, para o rótulo ter os 2,0 s de §4.3 sem adiantar o pouso da voz).
   var T = {
     pousaF: 0.00, pousaDur: 0.55, fitaF: 0.45, textosF: 0.70,   // a foto: 0,55 s; os textos 150 ms depois do assentamento
+    seta: 0.60, saiSeta: 2.56,                                  // r4b: a seta que aponta o trem (depois do assentamento, 0,55; sai com o rótulo)
     saiLugarF: 2.56,                                            // o rótulo "Wilmington" sai 300 ms antes de a foto levantar
                                                                 // (no ar 0,70 → 2,75 pela conta de Q9, 5 % do máximo: 2,05 s ≥ 2,0)
     levanta: 2.86, levantaDur: 0.35,                            // o LEVANTAR (identidade §4.4): 1,00 → 1,04 em ease-in cúbico, a sombra
@@ -444,6 +461,13 @@
     fita(E("fFe"), t, T.fitaF); fita(E("fFd"), t, T.fitaF + 0.12);
     texto(E("lugarF"), t, T.textosF, T.saiLugarF);
     texto(E("avisoF"), t, T.textosF, T.saiAvisoF);
+    // r4b: a seta aponta o trem no cais de 0,60 (a foto assentada) a 2,56 (sai com o rótulo, 300 ms); entra deslizando 24 px no eixo dela
+    var se = E("seta");
+    if (se) {
+      var ps = eo(seg(t, T.seta, 0.3)), qs = eo(seg(t, T.saiSeta, 0.3));
+      se.style.opacity = (ps * (1 - qs)).toFixed(3);
+      se.style.transform = "rotate(-148.5deg) translateX(" + (-(1 - ps) * 24 - qs * 24).toFixed(1) + "px)";
+    }
 
     // p2: a litografia pousa à direita; a luz escolhe a nova
     var b = pousoFoto(t, T.pousaL, T.pousaDur), rotL = lerp(-2, L.rot, b.p);

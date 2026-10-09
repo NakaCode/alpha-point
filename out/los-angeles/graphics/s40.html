@@ -161,6 +161,9 @@
     largura: 3840, altura: 2160,
     perfil: "maptiler",
     pontos: {
+      // r4b (s40-corte-pula): o quadro de entrada casa com o último da s39 (a faixa da folha na mesa, ~670 px a leste e ~150 px
+      // acima do O0, no 4K); a câmera desliza dele ao O0 em 0–1,6 s
+      OP: { lng: -118.4373, lat: 33.8418, zoom: 11.64 },
       O0: { lng: -118.2900, lat: 33.8780, zoom: 11.70 },  // a anexação inteira (o bloco e o fio), a folha por baixo
       O1: { lng: -118.2930, lat: 33.8840, zoom: 11.86 },
       L0: { lng: -118.2960, lat: 33.9050, zoom: 11.90 },  // o tique da largura (33,905 N)
@@ -169,7 +172,8 @@
       P0: { lng: -118.2860, lat: 33.7700, zoom: 11.90 }   // a ponta, nas linhas de San Pedro e de Wilmington
     },
     pernas: [
-      { t0: 0,      t1: 8.40,   de: "O0", para: "O1", tipo: "h" },
+      { t0: 0,      t1: 1.60,   de: "OP", para: "O0", tipo: "v", abre: 0.15 },   // r4b: do quadro da s39 ao O0
+      { t0: 1.60,   t1: 8.40,   de: "O0", para: "O1", tipo: "h" },
       { t0: 8.40,   t1: 10.20,  de: "O1", para: "L0", tipo: "v" },
       { t0: 10.20,  t1: 11.42,  de: "L0", para: "L0", tipo: "h" },
       { t0: 11.42,  t1: 13.42,  de: "L0", para: "F0", tipo: "v" },
@@ -179,6 +183,7 @@
     giro: [-2, 2],
     folha: { opacidade: 0.70, esmaece: [1.743, 1.2] },
     bloco: { cai: [3.903, 0.5], realce: [6.358, 0.5] },
+    sobe: [1.743, 1.2],   // r4b: bloco e fio de 35 % (a cor do grifo da s39) a 85 %, junto do esmaecimento da folha
     tique: { lat: 33.905, entra: 9.40, sai: 11.70 },
     comp: { desenha: [15.98, 0.6], sai: 20.35, passos: 48 },   // sai com a cota (R6.1)
     fim: { entra: [23.753, 0.5] },
@@ -278,7 +283,8 @@
       if (map0 && map0.getLayer("folha")) A.opac("folha", "raster-opacity", F.opacidade * (1 - A.eio(A.seg(t, F.esmaece[0], F.esmaece[1]))));
       var B = CENA.bloco, cai = A.eio(A.seg(t, B.cai[0], B.cai[1]));
       var ur = (t - B.realce[0]) / B.realce[1], realce = ur >= 0 && ur < 2 ? (ur < 1 ? A.eo(ur) : 1 - A.eio(ur - 1)) : 0;
-      A.terr("bloco", 1, 0.85 - 0.45 * cai); A.terr("fio", 1); A.terr("c1906", 1, 0);
+      var sb = 0.35 + 0.50 * A.eio(A.seg(t, CENA.sobe[0], CENA.sobe[1]));
+      A.terr("bloco", 1, sb - 0.45 * cai); A.terr("fio", 1, sb); A.terr("c1906", 1, 0);
       A.opac("bloco-linha", "line-width", 6 + 6 * realce); A.opac("bloco-sob", "line-width", 14 + 8 * realce);
       var vf = A.janela(t, CENA.fim.entra[0], null, CENA.fim.entra[1]);
       A.terr("wilm", vf); A.lin("spdiv", vf);
@@ -514,7 +520,7 @@
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────

@@ -265,15 +265,16 @@
     duracao: 19.066,                                   // espelho.json › s42 › dur
     perfil: "maptiler",
     zoomMax: 11.90,                                    // teto de Hamlin (cabeçalho)
-    pontos: {
-      A0: { lng: -118.284, lat: 33.790, zoom: 11.84 },  // a ponta de 1906, as duas cidades e a água
-      A1: { lng: -118.283, lat: 33.789, zoom: 11.86 },
-      AG: { lng: -118.280, lat: 33.750, zoom: 11.90 },  // desce até a água de hoje (a margem do Main Channel, R6.3)
-      A2: { lng: -118.285, lat: 33.788, zoom: 11.88 },  // de volta à ponta
-      B:  { lng: -118.287, lat: 33.790, zoom: 11.90 },
-      C:  { lng: -118.262, lat: 33.872, zoom: 11.00 },  // a cidade de 1906 inteira e as duas cidades
-      C1: { lng: -118.264, lat: 33.866, zoom: 11.04 },
-      D:  { lng: -118.279, lat: 33.790, zoom: 11.82 }   // de volta, perto das duas cidades
+    pontos: {   // r4b: com a câmera inclinada (pitch 45, de norte para o porto), o centro fica na ponta e no porto; a faixa do norte
+                // (±50 m de Hamlin) vem pela frente, embaixo; o que fica ao sul de 33,86 N (±200 m) fica no centro ou acima dele
+      A0: { lng: -118.287, lat: 33.768, zoom: 11.84 },  // a ponta de 1906, as duas cidades e a água
+      A1: { lng: -118.286, lat: 33.767, zoom: 11.86 },
+      AG: { lng: -118.281, lat: 33.752, zoom: 11.90 },  // desce até a água de hoje (a margem do Main Channel, R6.3)
+      A2: { lng: -118.287, lat: 33.766, zoom: 11.88 },  // de volta à ponta
+      B:  { lng: -118.288, lat: 33.767, zoom: 11.90 },
+      C:  { lng: -118.272, lat: 33.850, zoom: 11.10 },  // a cidade de 1906 inteira, a faixa e o porto ao fundo
+      C1: { lng: -118.274, lat: 33.845, zoom: 11.15 },
+      D:  { lng: -118.283, lat: 33.768, zoom: 11.82 }   // de volta, perto das duas cidades
     },
     pernas: [
       { t0: 0,      t1: 1.053,  de: "A0", para: "A1", tipo: "h" },
@@ -284,7 +285,8 @@
       { t0: 11.933, t1: 16.663, de: "C",  para: "C1", tipo: "h" },
       { t0: 16.663, t1: 19.066, de: "C1", para: "D",  tipo: "v", fecha: 0 }   // 'towns': aproxima até o corte
     ],
-    giro: [-2.5, 2.5],
+    giro: [176, 181],     // r4b (Lucas, 09/10: ângulos diferentes, sem relevo): a câmera olha a faixa DE NORTE PARA O PORTO
+    pitch: 45,            // inclinada, sem terrain
     wilm:  { luz: [15.303, 15.553, 15.803] },          // 'boundary': 35 % → 70 % → 35 %
     spLuz: [15.303, 15.553, 15.803],
     spSulCai: { entra: 1.053, sai: 3.40, ate: 0.35 },   // o trecho da divisa ao sul da ponta a 35 % durante a frase (R6.3)
@@ -293,10 +295,10 @@
     aneis: [ { id: "anelToque", ref: "toque", entra: 3.773, pulsos: [3.773, 4.973], sai: 7.00 } ],
     rotulos: [
       { id: "legMare",       ref: "agua",        lado: "direita",  dx: 90,   dy: 70,  entra: 1.053,  sai: 3.40 },   // presa pela guia (R6.3)
-      { id: "cotaLargura",   ref: "tiqueOeste",  lado: "esquerda", dx: -60,  dy: 0,   entra: 4.973,  sai: 8.40 },
-      { id: "rotSanPedro",   ref: "sanPedro",    lado: "direita",  dx: 50,   dy: 50,  entra: 7.213,  sai: null, pulsos: [7.55, 18.008] },   // dentro da divisa (s37 R6.4)
-      { id: "rotWilmington", ref: "wilmLeste",   lado: "direita",  dx: 60,   dy: 0,   entra: 7.453,  sai: null, pulsos: [7.80, 18.128] },
-      { id: "cotaAnos",      ref: "anos",        lado: "direita",  dx: 0,    dy: 0,   entra: 11.133, sai: 16.40 }
+      { id: "cotaLargura",   ref: "tiqueOeste",  lado: "direita",  dx: 60,   dy: 0,   entra: 4.973,  sai: 8.40 },
+      { id: "rotSanPedro",   ref: "sanPedro",    lado: "centro", vert: "cima", dx: 0, dy: -110,  entra: 7.213,  sai: null, pulsos: [7.55, 18.008] },   // dentro da divisa (s37 R6.4)
+      { id: "rotWilmington", ref: "wilmLeste",   lado: "esquerda", dx: -60,   dy: 0,   entra: 7.453,  sai: null, pulsos: [7.80, 18.128] },
+      { id: "cotaAnos",      ref: "anos",        lado: "esquerda",  dx: 0,    dy: 0,   entra: 11.133, sai: 16.40 }
     ],
     legenda: { entra: 0, sai: null },
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors" },
@@ -435,7 +437,7 @@
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -533,7 +535,7 @@
       c = { center: [a.lng + (b.lng - a.lng) * u, unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u };
     }
     if (c.zoom > CENA.zoomMax + 1e-9) { window.__zoomAcimaDoTeto = Math.max(window.__zoomAcimaDoTeto || 0, c.zoom); }
-    return { center: c.center, zoom: c.zoom, bearing: CENA.giro[0] + (CENA.giro[1] - CENA.giro[0]) * t / DUR, pitch: 0 };
+    return { center: c.center, zoom: c.zoom, bearing: CENA.giro[0] + (CENA.giro[1] - CENA.giro[0]) * t / DUR, pitch: CENA.pitch };
   }
 
   var c0 = cameraAt(0);

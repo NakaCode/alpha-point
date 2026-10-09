@@ -28,7 +28,8 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s14 (200,267 → 228,9 s do m
       com 'Mendell, 1886' na margem) pousa sobre o mar, com o assentamento e a sombra solta da "mão que arruma"
       (identidade §4.4) e fica parado enquanto se lê; a câmera continua a aproximar por baixo dele; em 'it,' a linha de
       sondagem tracejada (--rede-cor) cruza a baía duas vezes, com 'the survey he asked for'.
-  ⚠ NÃO DESENHADO, devolvido ao Claude central: o contorno esquemático do estuário e a legenda "1890s outline (schematic)"
+  ⚠ NÃO DESENHADO: o contorno esquemático do estuário. A legenda "1890s outline (schematic)" saiu do textos-tela na r4b (o redator a
+  retirou: sem geometria) e não vai à tela
   (o mesmo bloqueio de s07 e s10: não há a geometria do estuário de época em _media/geo/). O conceito pinta o estuário em
   --contraparte a 35 %: sem a geometria, a pílula com a guia aponta o lugar sem afirmar forma.
   A linha de sondagem é gesto declarado sobre o mar (o levantamento pedido), não traçado de feição.
@@ -201,7 +202,9 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s14 (200,267 → 228,9 s do m
     ],
     giro: [-1.5, 1.5],
     barra: [-118.27164, 33.72447],
-    guiaEst: { entra: 3.623, sai: 9.00, alvo: [-118.262, 33.766] },
+    guiaEst: { entra: 3.623, sai: 9.00, alvo: [-118.262, 33.766], volta: [16.943, 19.213] },   // r4b (s14-next-door): volta em 'The', sai em 'San'
+    // r4b (s14-next-door): o ANEL (identidade §4.4) em 'San', ao lado da pílula 'San Pedro Bay' (à direita da âncora dela)
+    anelBaia: { entra: 19.213, sai: null, dx: 96, dy: 0 },
     // r4: chega LIDO (conceito › _medidor; T370): a marca cinza de 11 pés com '11 FT (1888)' em --neutro desde o 1º quadro dele;
     // a marca e o rótulo cinzas saem (300 ms) antes de '18 OR 20 FT' entrar no mesmo lugar, em 'twenty' (com a marca no ar, a
     // 2ª linha de '18 OR 20 FT AT HIGH WATER' caía na altura dela e lia-se como o rótulo dela)
@@ -215,7 +218,11 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s14 (200,267 → 228,9 s do m
     sondagem: { pontos: [[-118.300, 33.675], [-118.240, 33.688], [-118.295, 33.662], [-118.235, 33.672]], desenha: [26.433, 27.90] },
     rotulos: [
       { id: "rotBaia", lnglat: [-118.255, 33.700], lado: "esquerda", dx: 0, dy: 0, entra: 2.743, sai: null },
-      { id: "rotEst",  lnglat: [-118.31, 33.775],  lado: "esquerda", dx: 60, dy: 0,   /* +60: margem de 200 (qc-visual Q9) */ entra: 3.623, sai: 9.00 },
+      { id: "rotEst",  lnglat: [-118.31, 33.775],  lado: "esquerda", dx: 60, dy: 0,   /* +60: margem de 200 (qc-visual Q9) */ entra: 3.623, sai: 9.00,
+        volta: [16.943, 19.213], voltaAncora: { lnglat: [-118.262, 33.766], lado: "direita", vert: "baixo", dx: 56, dy: 56 } },
+        // r4b (s14-next-door): o ponto de partida marcado na viagem para a baía ao lado. Na 2ª janela a pílula se prende ao
+        // PONTO do estuário (o alvo da guia), abaixo e à direita dele: presa à âncora da 1ª janela, a câmera a levava para fora
+        // do quadro pela esquerda e por cima (medido no qc-fora-do-quadro e no probe-elemento, 18,2–19,4 s)
       { id: "cota1820", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x + M.largura + 64, M._base.y - 18 * M.k + 16]; },
         lado: "direita", vert: "baixo", entra: 13.863, sai: 16.63 },   // r4, R3.3: o número na palavra, 'twenty'
       { id: "cota30", telaFn: function () { var M = CENA.medidor; return M._base && [M._base.x + M.largura + 64, M._base.y - 30 * M.k - 16]; },
@@ -447,17 +454,36 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s14 (200,267 → 228,9 s do m
 CENA.rotulos.forEach(function (r) { if (r.telaFn) return; r.p = r.lnglat || null; if (!r.p) falhar("o rótulo " + r.id + " não tem âncora."); });
   if (window.__erroCena) return;
   criarMedidor("medidor", CENA.medidor);
+  criarAnel("anelBaia", true);   // r4b (s14-next-door)
   function montarCena(map) {}
 
   function aplicarCena(t) {
     // a guia da pílula do estuário até o lugar
     var G = CENA.guiaEst, gg = E("guiaEst"), rr = rotuloPorId("rotEst");
     if (gg && rr) {
-      var pt = map.project(G.alvo), an = map.project(rr.p), dx = pt.x - an.x, dy = pt.y - an.y, n = Math.hypot(dx, dy) || 1;
+      var pt = map.project(G.alvo), an = map.project(rr.p);
+      if (rr.voltaAncora && rr.volta && t >= rr.volta[0] - 0.001) an = { x: pt.x + rr.voltaAncora.dx, y: pt.y + rr.voltaAncora.dy };   // r4b: do canto da pílula ao ponto
+      var dx = pt.x - an.x, dy = pt.y - an.y, n = Math.hypot(dx, dy) || 1;
       var d2 = "M " + fmt({ x: an.x + dx / n * 30, y: an.y + dy / n * 30 }) + " L " + fmt({ x: pt.x - dx / n * 18, y: pt.y - dy / n * 18 });
       E("guiaEstSob").setAttribute("d", d2); E("guiaEstSobre").setAttribute("d", d2);
       E("guiaEstPonto").setAttribute("cx", pt.x.toFixed(2)); E("guiaEstPonto").setAttribute("cy", pt.y.toFixed(2));
-      gg.setAttribute("opacity", (eo(seg(t, G.entra, 0.3)) * (1 - eio(seg(t, G.sai, 0.3)))).toFixed(3));
+      var gop = eo(seg(t, G.entra, 0.3)) * (1 - eio(seg(t, G.sai, 0.3)));
+      if (G.volta && t >= G.volta[0] - 0.001) gop = eo(seg(t, G.volta[0], 0.3)) * (1 - eio(seg(t, G.volta[1], 0.3)));   // r4b: a 2ª janela
+      gg.setAttribute("opacity", gop.toFixed(3));
+    }
+    // r4b: o anel da baía, preso à âncora da pílula 'San Pedro Bay' (deslocado para a direita dela)
+    var AB = CENA.anelBaia, rb = rotuloPorId("rotBaia"), ga = E("anelBaia");
+    if (AB && rb && ga) {
+      var pb = map.project(rb.p), xa = pb.x + AB.dx, ya = pb.y + AB.dy;
+      var va = eo(seg(t, AB.entra, 0.3)) * (AB.sai != null ? 1 - eio(seg(t, AB.sai, 0.3)) : 1);
+      ga.setAttribute("transform", "translate(" + xa.toFixed(2) + " " + ya.toFixed(2) + ")");
+      ga.setAttribute("opacity", va.toFixed(3));
+      [AB.entra, AB.entra + 1.4].forEach(function (t0, k) {
+        var u = (t - t0) / 1.2, c = E("anelBaiaPulso" + (k + 1)); if (!c) return;
+        var vivo = u >= 0 && u < 1;
+        c.setAttribute("transform", "scale(" + (1 + 0.8 * (vivo ? u : 0)).toFixed(4) + ")");
+        c.setAttribute("opacity", vivo ? (1 - u).toFixed(3) : "0");
+      });
     }
     // o medidor e o vão hachurado entre 20 e 30
     var M = CENA.medidor, B = desenharMedidor("medidor", M, map.project(CENA.barra), t), gv = E("vaoG");
@@ -500,9 +526,10 @@ CENA.rotulos.forEach(function (r) { if (r.telaFn) return; r.p = r.lnglat || null
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
                    agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      // r4b: o tratamento C do satélite (identidade §6, "Tratamento da base de satélite"; Lucas, 09/10/2026: "C, vivo")
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
       { id: "agua-base", type: "fill", source: "agua",
-        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -668,18 +695,22 @@ CENA.rotulos.forEach(function (r) { if (r.telaFn) return; r.p = r.lnglat || null
     (CENA.rotulos || []).forEach(function (r) {
       var el = E(r.id); if (!el) return;
       var vin = eo(seg(t, r.entra, 0.3)), vout = r.sai != null ? 1 - eio(seg(t, r.sai, 0.3)) : 1;
+      if (r.volta && t >= r.volta[0] - 0.001) { vin = eo(seg(t, r.volta[0], 0.3)); vout = 1 - eio(seg(t, r.volta[1], 0.3)); }   // r4b: a 2ª janela
       var v = vin * vout * (r.op ? r.op(t) : 1);
       var ll = (r.tela || r.telaFn) ? null : (typeof r.p === "function" ? r.p(t) : r.p);
+      var VA = (r.volta && r.voltaAncora && t >= r.volta[0] - 0.001) ? r.voltaAncora : null;   // r4b: a âncora da 2ª janela
+      var rl = VA ? VA.lado : r.lado, rv = VA ? VA.vert : r.vert, rdx = VA ? VA.dx : (r.dx || 0), rdy = VA ? VA.dy : (r.dy || 0);
+      if (VA) ll = VA.lnglat;
       var x, y;
       if (r.telaFn) { var tf = r.telaFn(t); if (!tf) return; x = tf[0]; y = tf[1]; }
       else if (r.tela) { x = r.tela[0]; y = r.tela[1]; } else { if (!ll) return; var p = map.project(ll); x = p.x; y = p.y; }
-      var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
-      var ty = r.vert === "cima" ? "-100%" : r.vert === "baixo" ? "0%" : "-50%";
+      var tx = rl === "direita" ? "0%" : rl === "esquerda" ? "-100%" : "-50%";
+      var ty = rv === "cima" ? "-100%" : rv === "baixo" ? "0%" : "-50%";
       el.style.opacity = v.toFixed(3);
       el.style.visibility = v > 0 ? "visible" : "hidden";
-      el.style.transform = "translate(" + (x + (r.dx || 0)).toFixed(3) + "px," + (y + (r.dy || 0)).toFixed(3) + "px) translate(" + tx +
+      el.style.transform = "translate(" + (x + rdx).toFixed(3) + "px," + (y + rdy).toFixed(3) + "px) translate(" + tx +
         "," + ty + ") translateY(" + ((1 - vin) * 24).toFixed(2) + "px)";
-      r._x = x + (r.dx || 0); r._y = y + (r.dy || 0); r._v = v;
+      r._x = x + rdx; r._y = y + rdy; r._v = v;
     });
   }
   function rotuloPorId(id) { return (CENA.rotulos || []).filter(function (r) { return r.id === id; })[0]; }

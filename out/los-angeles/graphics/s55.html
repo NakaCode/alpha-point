@@ -75,6 +75,17 @@
     · 8.3: .rotulo.liso com algarismos proporcionais (as caixas de '4–1 · 1897', '1850', '1906', '1909' e 'ABOUT 19 MILES'
       ficam simétricas).
     · A metade esquerda continua livre para a chamada de comentário (a peça entra por cima no Premiere, depois de 21,8 s).
+  RODADA r4b (mapista, lote ME, 09/10/2026; relato em out/los-angeles/_tmp/art-r4b/me/relato.md) — substitui o que diz o
+  contrário acima:
+    · o contraste C do satélite (identidade §6, "Tratamento da base de satélite"): brilho máx. 0,92, saturação 0, contraste 0,25;
+      o fallback de --agua-base passa a #00050c.
+    · s55-costa-rabisco: a beira d'água guarda só as cadeias contínuas de 1,5 km ou mais (a frente de Wilmington, West Basin e
+      Northwest Slip numa cadeia só, e a margem oeste do Main Channel em San Pedro, dois trechos); os fragmentos dos canais
+      internos e o East Basin saem (medido em out/los-angeles/_tmp/art-r4b/me/costa-pecas.mjs). Ela sai em 'sea' (14,783 s).
+    · San Pedro em 1909, o reforço (Lucas, 09/10/2026, "Manter a linha, com reforço"): a divisa de San Pedro (branca, e depois
+      em --destaque) fica a 9 px sobre 18 da entrada (8,383 s) até 'still'. A cena não tem pílula "San Pedro" no textos-tela e a
+      tela final não leva texto depois de 19,96 s: a parte da pílula não se aplica aqui (relato).
+    · As manchas do limite de hoje sobre o mar ficam (Lucas: "Deixar como está").
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -333,7 +344,7 @@
     cauda: 21.80,
     hojeCai: [19.663, 20.163],
     pier: { entra: 4.143, dura: 0.6, sai: 6.143 },     // 8.4 (r4): sai com a pílula, antes de '1850'
-    costa: { corre: [12.303, 1.2], sai: 15.90 },       // r4: em 'coast' a beira d'água corre de sudoeste a nordeste; sai antes do canal
+    costa: { corre: [12.303, 1.2], sai: 14.783 },     // r4b: sai em 'sea' (14,783 s, 500 ms)       // r4: em 'coast' a beira d'água corre de sudoeste a nordeste; sai antes do canal
     c1850: [6.543, 7.043],
     c1899: [8.383, 8.883],
     faixa: { entra: 8.383, dura: 1.2, norte: 34.012, sul: 33.744 },
@@ -430,14 +441,21 @@
       return false;
     }
     var pecas = [];
+    function compM(l) { var m = 0; for (var j = 1; j < l.length; j++) { var k0 = 111320 * Math.cos(l[j][1] * Math.PI / 180);
+      m += Math.hypot((l[j][0] - l[j - 1][0]) * k0, (l[j][1] - l[j - 1][1]) * 110574); } return m; }
     aneisAgua.forEach(function (o) {
-      var cur = [];
+      var cur = [], antes = pecas.length;
       for (var j = 1; j < o.r.length; j++) {
         var a = o.r[j - 1], b = o.r[j], m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
         if (dentro(a) && dentro(b) && !dividida(o.i, m)) { if (!cur.length) cur = [a]; cur.push(b); }
         else { if (cur.length >= 2) pecas.push(cur); cur = []; }
       }
       if (cur.length >= 2) pecas.push(cur);
+      // r4b (s55-costa-rabisco): só as cadeias contínuas e longas (≥ 1,5 km) ficam; os fragmentos dos canais internos e o
+      // East Basin (as duas margens de um canal estreito, que liam como rabisco) saem. Ficam a frente de Wilmington (o West
+      // Basin e o Northwest Slip, uma cadeia só) e a margem oeste do Main Channel em San Pedro (dois trechos longos).
+      var nome = (fc.features[o.i].properties || {}).name;
+      for (var q = pecas.length - 1; q >= antes; q--) if (nome === "East Basin" || compM(pecas[q]) < 1500) pecas.splice(q, 1);
     });
     if (!pecas.length) { falhar("a beira d'água das duas cidades saiu vazia."); return null; }
     var w = 180, e = -180, s = 90, n = -90;
@@ -473,7 +491,11 @@
     poly("faixa", { type: "Feature", properties: {}, geometry: { type: "MultiPolygon", coordinates: [] } }, { fracao: 0.85 });
     linhaFronteira("sp0", fcLinhas([SP0]));
     linhaFronteira("sp1", fcLinhas([SP1]));
-    linhaCor("spCidade", fcLinhas([[SP0[0], SP0[0]]]), "--destaque", "#F5A524", 6, 14);
+    // r4b (Lucas, 09/10/2026, San Pedro 1909: "Manter a linha, com reforço"): a divisa de San Pedro realçada, 9 px sobre 18,
+    // da entrada dela (8,383 s, com a faixa) até 'still' (19,663 s), quando ela sai com o resto
+    pintura("sp0-linha", "line-width", 9); pintura("sp0-sob", "line-width", 18);
+    pintura("sp1-linha", "line-width", 9); pintura("sp1-sob", "line-width", 18);
+    linhaCor("spCidade", fcLinhas([[SP0[0], SP0[0]]]), "--destaque", "#F5A524", 9, 18);
     linhaCor("contato", fcLinhas([CONT_SP, CONT_W]), "--tinta", "#F4F1EA", 12, 1);
     poly("canal", CANAL, { cor: "--tinta", corFb: "#F4F1EA", fracao: 0.60, linha: "--tinta", linhaW: 6, sobW: 14 });
     linhaCor("costa", fcLinhas([]), "--tinta", "#F4F1EA", 6, 14);    // r4: a beira d'água, por cima das cidades (6 sobre 14 neste zoom)
@@ -598,9 +620,9 @@
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
                    aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // r4b: o contraste C (identidade §6; Lucas, 09/10/2026)
       { id: "agua-base", type: "fill", source: "aguaBase",
-        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────

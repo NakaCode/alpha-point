@@ -190,7 +190,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s01 (0 → 12,3 s do master; 
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
-  var DUR = CENA.duracao;
+  var DUR = 12.3;   // a dur do espelho, literal (roupa §8; o qc-janela só lê o número). r4b.
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
   var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
@@ -214,6 +214,7 @@ CANAL ALPHA POINT — LOS ANGELES (vídeo 2), CENA s01 (0 → 12,3 s do master; 
     try { console.error("[cena de mapa] " + msg); } catch (e) {}
     rejeitarPronto(new Error(msg));
   }
+  if (DUR !== CENA.duracao) falhar("a duração escrita (" + DUR + " s) não é a do bloco CENA (" + CENA.duracao + " s).");
 
   var P = window.__REGIE_MAPA;
   if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
@@ -473,9 +474,9 @@ var HOJE = feicao("la-hoje-tiger"), PORTO_LA = feicao("portos-la-long-beach-tige
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
                    aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
       { id: "agua-base", type: "fill", source: "aguaBase",
-        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────

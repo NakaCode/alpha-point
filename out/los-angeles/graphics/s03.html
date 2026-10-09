@@ -21,8 +21,8 @@
     · a direção: out/los-angeles/conceito-visual.json (s03); a marca: marca/identidade.md §4–§7 e marca/tokens.css.
 
   O que a cena faz:
-    · BASE: perfil do canal (maptiler), SEM relevo (vídeo 2 liberado sem relevo, identidade §6). Tratamento 65/70 na
-      pintura da camada, sem véu.
+    · BASE: perfil do canal (maptiler), SEM relevo (vídeo 2 liberado sem relevo, identidade §6). Tratamento C na pintura
+      da camada (r4b: brilho máx. 0,92, saturação 0, contraste 0,25; Lucas, 09/10/2026), sem véu.
     · CÂMERA em pernas presas às palavras (não o camera-mapa uniforme: a regência pede seis quadros em sequência):
       viagens de 1,1 a 2,6 s pela curva de van Wijk (a do camera-mapa.js, com rampa suave nas pontas da perna) e, entre
       elas, deriva linear lenta (aproximação e passo de lado). Por cima de tudo, um giro contínuo de −3° a +3° do
@@ -57,6 +57,14 @@
       cidade e os cais (antes caía sobre Palos Verdes e o mar).
     · _anel: o anel no porto continua sem pílula; quem o nomeia é a frase 'to its port' (26,277 s), com o anel no ar.
       Nenhuma palavra 'Approximate' na tela.
+  RODADA r4b (mapista, lote MA, 09/10/2026):
+    · o contraste C do satélite e a água escura (agua-osm-la, --agua-base #00050c), que a s03 não tinha;
+    · o comentário do Lucas na linha do tempo (09/10: "Aproximar no porto"): a câmera desce pela faixa e
+      aproxima no porto (de 21,75 s, logo depois da pergunta, ao corte: zoom 10,74 → 13,00, só sobe), no lugar da viagem
+      van Wijk lenta até 12,45. A volta à cidade inteira em "So why is Los Angeles shaped like this?" fica (regência);
+    · s03-san-pedro-sem-area, pelo reforço de San Pedro (Lucas, 09/10: "Manter a linha, com reforço"): a divisa a 9 px sobre
+      18 px de 11,557 s até a pílula sair; a pílula no ar até a câmera seguir (14,45 s), no mar ao sul da costa de San Pedro,
+      presa por guia curta com ponto a um lugar dentro da divisa (a terra de San Pedro tem ~70 px e não cabe a pílula).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -70,6 +78,7 @@
 <script src="../_media/geo/san-pedro-1909-divisa-hamlin.js"></script>
 <script src="../_media/geo/lugares-gnis-nrhp.js"></script>
 <script src="../_media/geo/lugares-costa-gnis.js"></script>
+<script src="../_media/geo/agua-osm-la.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -114,6 +123,10 @@
   /* r4, R1.2: a linha do comprimento a 12 px (setas de 64), para ler no celular; ainda escura e dentro da faixa */
   #compSobre { stroke-width: 12px; }
   #anel .halo { stroke: var(--rotulo); }
+  /* r4b: a guia curta com ponto (a da s14 e da s42): a pílula 'San Pedro' presa ao lugar */
+  .guia-sob { fill: none; stroke: var(--rotulo); stroke-width: 10; stroke-linecap: round; }
+  .guia { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; }
+  .guia-ponto { fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6; }
   /* CRÉDITO DE MAPA (identidade §4.1/§4.2/§6): 56 px (--fs-credito), Inter 500, --sec sobre a pílula --rotulo, de
      x = 200 até antes de x = 1720, na faixa abaixo de y = 1880; inteiro desde o primeiro quadro (o mapa está na tela
      a cena toda). A marca de mapa está no próprio elemento da linha. */
@@ -135,6 +148,8 @@
     <g id="tique" opacity="0"><path class="medida sob" id="tiqueSob" d=""/><path class="medida sobre" id="tiqueSobre" d=""/></g>
     <!-- o comprimento: a linha de medida sobre o eixo da faixa de hoje, com setas nas pontas -->
     <g id="comprimento" opacity="0"><path class="medida sob" id="compSob" d=""/><path class="medida sobre" id="compSobre" d=""/></g>
+    <!-- r4b: a guia curta com ponto da pílula 'San Pedro' (a da s14/s42: --tinta 4 px sobre --rotulo 10 px, ponto de 12) -->
+    <g id="guiaSP" opacity="0"><path class="guia-sob" id="guiaSPSob" d=""/><path class="guia" id="guiaSPSobre" d=""/><circle class="guia-ponto" id="guiaSPPonto" r="12" cx="0" cy="0"/></g>
     <!-- o ANEL (identidade §4.4) no porto -->
     <g id="anel" opacity="0">
       <!-- o porto fica DENTRO do contorno aceso: o anel laranja sobre o laranja só se lê com o halo escuro (--rotulo) de
@@ -187,7 +202,8 @@
       D0: { lng: -118.260, lat: 33.752, zoom: 11.90 },   // da ponta à água de hoje
       D1: { lng: -118.255, lat: 33.746, zoom: 11.90 },
       E0: { lng: -118.400, lat: 34.024, zoom: 10.72 },   // de volta à cidade de hoje inteira
-      F:  { lng: -118.268, lat: 33.765, zoom: 12.45 }    // aproximando do anel no porto (TIGER: sem o teto de Hamlin)
+      E1: { lng: -118.397, lat: 34.020, zoom: 10.74 },   // r4b: um passo para dentro, rumo à faixa, com o anel no quadro
+      G:  { lng: -118.278, lat: 33.748, zoom: 13.00 }    // r4b: perto do porto, o anel logo abaixo do centro e a ponta da faixa no alto (TIGER: sem o teto de Hamlin)
     },
     pernas: [
       { t0: 0,      t1: 2.033,  de: "A0", para: "A1", tipo: "h" },
@@ -198,14 +214,22 @@
       { t0: 14.45,  t1: 16.60,  de: "C1", para: "D0", tipo: "v" },
       { t0: 16.60,  t1: 18.90,  de: "D0", para: "D1", tipo: "h" },
       { t0: 18.90,  t1: 21.40,  de: "D1", para: "E0", tipo: "v" },
-      { t0: 21.40,  t1: 27.534, de: "E0", para: "F",  tipo: "v", fecha: 0 }   // não pousa: anda até o corte
+      { t0: 21.40,  t1: 21.75,  de: "E0", para: "E1", tipo: "h" },
+      // r4b (Lucas, linha do tempo, 09/10/2026: "não precisava afastar … mas sim aproximar ainda mais"; "Aproximar no porto"):
+      // em "this is where the story of the strip that took Los Angeles to its port begins" a câmera DESCE pela faixa e
+      // aproxima no porto, sem abrir: tipo "z", o zoom só sobe e o ponto de chegada vem ao centro em linha reta na tela.
+      // Não pousa: anda até o corte (a curva termina com 15 % de velocidade linear)
+      { t0: 21.75,  t1: 27.534, de: "E1", para: "G",  tipo: "z" }
     ],
     giro: [-3, 3],
     // os contornos: hoje (TIGER) e 1906 (Hamlin); a troca em 500 ms (identidade §4.4)
     hoje:  { geo: "la-hoje-tiger",  saidas: [[10.25, 10.75]], volta: [19.182, 19.682] },   // r4: a troca quando o zoom já está ≤ 12,1 (Hamlin)
     c1906: { geo: "la-1906-hamlin", entra: [10.25, 10.75], sai: [19.182, 19.682] },
     wilm:  { geo: "wilmington-1909-hamlin", entra: [11.357, 11.857], sai: [14.157, 14.457] },
-    sanPedro: { geo: "san-pedro-1909-divisa-hamlin", trechos: ["oeste_e_norte_com_a_faixa", "com_wilmington"] },   // entra e sai com Wilmington
+    // r4b, o reforço de San Pedro (Lucas, 09/10/2026: "Manter a linha, com reforço"): a divisa realçada (9 px sobre 18 px)
+    // entra com a pílula e fica até ela sair, quando a câmera segue (14,45 s)
+    sanPedro: { geo: "san-pedro-1909-divisa-hamlin", trechos: ["oeste_e_norte_com_a_faixa", "com_wilmington"],
+                entra: [11.557, 11.857], sai: [14.45, 14.75], linha: 9, sob: 18 },
     // a largura (tique) e o comprimento (linha de medida) da faixa de hoje, tirados do contorno do TIGER
     faixa: { janela: [-118.315, -118.275], latTique: 33.905, norte: 33.9232, sul: 33.7976, passos: 64 },
     tique: { entra: 5.40, dura: 0.30, sai: [9.25, 9.55] },
@@ -217,7 +241,10 @@
       { id: "cotaLargura",     ref: "tiqueOeste",          lado: "esquerda", dx: -60, dy: 0,   entra: 5.557,  sai: 9.25 },
       { id: "cotaComprimento", ref: "compMeio",            lado: "direita",  dx: 100, dy: 0,   entra: 7.457,  sai: 9.25 },   // r4, R1.2: junto da faixa, a ~56 px da margem leste, como o HALF A MILE do tique (2,02 s no ar pela conta do Q9)
       { id: "rot1906",         ref: "oeste1906",           lado: "esquerda", dx: -70, dy: 0,   entra: 10.40,  sai: 18.882 },   // em 'oh-six' (10,037–10,557), com o contorno de 1906 já entrando
-      { id: "rotSanPedro",     ref: "sanPedro",            lado: "direita",  dx: 60,  dy: 120, entra: 11.557, sai: 14.157 },   // r4, R1.3: do lado de DENTRO da divisa, sobre a cidade e os cais
+      // r4b (s03-san-pedro-sem-area): a terra de San Pedro entre a divisa e o Main Channel tem ~70 px no palco e não cabe a
+      // pílula. Ela vai ao mar aberto logo ao sul da costa de San Pedro (nem no porto, nem sobre Palos Verdes), presa por
+      // guia curta com ponto a um lugar DENTRO da divisa (ancoraSP); no ar até a câmera seguir (14,45 s)
+      { id: "rotSanPedro",     ref: "ancoraSP",            lado: "direita",  dx: -40, dy: 360, gx: 140, entra: 11.557, sai: 14.45 },
       { id: "rotWilmington",   ref: "wilmLeste",           lado: "direita",  dx: 60,  dy: 0,   entra: 11.957, sai: 14.157 },
       { id: "rotAte1909",      lnglat: [-118.232, 33.716], lado: "centro",   dx: 0,   dy: 0,   entra: 14.797, sai: 18.882 },
       { id: "legCosta",        lnglat: [-118.232, 33.716], lado: "centro",   dx: 0,   dy: 168, entra: 16.837, sai: 18.882 }
@@ -327,7 +354,9 @@
   // Wilmington: o vértice mais a leste do polígono
   var wl = aneis(WILM.geometry)[0].reduce(function (m, p) { return p[0] > m[0] ? p : m; });
   var REFS = { tiqueOeste: TIQUE[0], compMeio: meioComp, oeste1906: [x06[0], 33.815],
-               sanPedro: pontoNome("lugares-gnis-nrhp", "San Pedro"), wilmLeste: wl };
+               sanPedro: pontoNome("lugares-gnis-nrhp", "San Pedro"), wilmLeste: wl,
+               // r4b: um ponto na terra de San Pedro, entre a divisa (−118,294 em 33,737 N) e a margem oeste do Main Channel
+               ancoraSP: [-118.2850, 33.7372] };
   var PONTO_ANEL = pontoNome(CENA.anel.geo, CENA.anel.nome);
   if (window.__erroCena) return;
   CENA.rotulos.forEach(function (r) { r.p = r.lnglat || REFS[r.ref] || null; if (!r.p) falhar("o rótulo " + r.id + " não tem âncora."); });
@@ -365,9 +394,14 @@
   // ── a base, SEM relevo ─────────────────────────────────────────────────────────────────────────
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // r4b: a água escura dos mapas do porto (identidade §6; Lucas, 08/10/2026; o central a leva também à s03): a 2ª camada do
+    // estilo, opaca em --agua-base, logo acima do satélite e abaixo de tudo o que a cena desenha (agua-osm-la, arquivo local)
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   aguaBase: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -459,6 +493,14 @@
     for (var i = 0; i < CENA.pernas.length; i++) if (t < CENA.pernas[i].t1) { L = CENA.pernas[i]; break; }
     var c;
     if (L.tipo === "v") c = L.cam(cl(t - L.t0, 0, L.t1 - L.t0));
+    else if (L.tipo === "z") {
+      // r4b: aproximação ao ponto de chegada sem abrir. f = 85 % cúbica + 15 % linear (começa e termina andando);
+      // centro = alvo + (início − alvo)·(1 − f)·2^(z0 − z): o alvo vem ao centro em linha reta na tela
+      var uz = cl((t - L.t0) / (L.t1 - L.t0), 0, 1), fz = 0.85 * eio(uz) + 0.15 * uz, az = PT[L.de], bz = PT[L.para];
+      var z = az.zoom + (bz.zoom - az.zoom) * fz, kz = (1 - fz) * Math.pow(2, az.zoom - z);
+      var mA = merc(az.lng, az.lat), mB = merc(bz.lng, bz.lat);
+      c = { center: [bz.lng + (az.lng - bz.lng) * kz, unmercLat(mB[1] + (mA[1] - mB[1]) * kz)], zoom: z };
+    }
     else {
       var u = cl((t - L.t0) / (L.t1 - L.t0), 0, 1), a = PT[L.de], b = PT[L.para];
       var ma = merc(a.lng, a.lat), mb = merc(b.lng, b.lat);
@@ -542,10 +584,10 @@
       // a divisa de San Pedro (outubro de 1906), aberta, no estilo da fronteira (identidade §6; tokens --fronteira-*)
       map.addSource("sanpedro", { type: "geojson", data: SANPEDRO });
       map.addLayer({ id: "sp-sob", type: "line", source: "sanpedro", layout: linhaContorno,
-        paint: { "line-color": tok("--fronteira-contorno-cor", "rgba(11,15,20,0.60)"), "line-width": parseFloat(tok("--fronteira-contorno-espessura", "12")),
+        paint: { "line-color": tok("--fronteira-contorno-cor", "rgba(11,15,20,0.60)"), "line-width": CENA.sanPedro.sob,
                  "line-opacity": 0, "line-opacity-transition": semTransicao } });
       map.addLayer({ id: "sp-linha", type: "line", source: "sanpedro", layout: linhaContorno,
-        paint: { "line-color": tok("--fronteira-cor", "rgba(255,255,255,0.70)"), "line-width": parseFloat(tok("--fronteira-espessura", "5")),
+        paint: { "line-color": tok("--fronteira-cor", "rgba(255,255,255,0.70)"), "line-width": CENA.sanPedro.linha,
                  "line-opacity": 0, "line-opacity-transition": semTransicao } });
     } catch (e) { return falhar("não consegui desenhar os contornos: " + e.message); }
     mapaCarregado = true;
@@ -643,8 +685,20 @@
     camadas("hoje", opHoje(t));
     camadas("c1906", opJanela(t, CENA.c1906.entra, CENA.c1906.sai));
     camadas("wilm", opJanela(t, CENA.wilm.entra, CENA.wilm.sai));
-    var vsp = opJanela(t, CENA.wilm.entra, CENA.wilm.sai);
+    var vsp = opJanela(t, CENA.sanPedro.entra, CENA.sanPedro.sai);
     opac("sp-sob", "line-opacity", vsp); opac("sp-linha", "line-opacity", vsp);
+    // r4b: a guia curta com ponto, da pílula 'San Pedro' (no mar) ao lugar dentro da divisa; entra e sai com a pílula
+    var gs = E("guiaSP"), rSP = CENA.rotulos.filter(function (r) { return r.id === "rotSanPedro"; })[0];
+    if (gs && rSP) {
+      var vg = eo(seg(t, rSP.entra, 0.3)) * (1 - eio(seg(t, rSP.sai, 0.3)));
+      var pp = map.project(rSP.p), yTopo = pp.y + rSP.dy - 88 + (1 - vg) * 24;   // o topo da pílula (176 px de altura)
+      // a guia desce em diagonal para leste, para longe da divisa (que chega à costa logo a oeste do ponto)
+      var dG = "M " + pp.x.toFixed(2) + " " + pp.y.toFixed(2) + " L " + (pp.x + rSP.gx).toFixed(2) + " " + yTopo.toFixed(2);
+      var a1 = E("guiaSPSob"), a2 = E("guiaSPSobre"), a3 = E("guiaSPPonto");
+      if (a1) a1.setAttribute("d", dG); if (a2) a2.setAttribute("d", dG);
+      if (a3) { a3.setAttribute("cx", pp.x.toFixed(2)); a3.setAttribute("cy", pp.y.toFixed(2)); }
+      gs.setAttribute("opacity", vg.toFixed(3));
+    }
 
     // o tique: cresce do meio para as margens, com os batentes
     var T = CENA.tique, ut = eo(seg(t, T.entra, T.dura)), gT = E("tique");
@@ -752,7 +806,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           // r4: getSource antes de isSourceLoaded (como a s05, a s07 e a s10): este, numa fonte que ainda não existe (antes do
           // load), dispara o evento de erro do MapLibre e a cena se dá por quebrada (medir-margens, chamado fora da ordem)
-          var fts = ["hoje", "c1906", "wilm", "sanpedro", "base"];
+          var fts = ["hoje", "c1906", "wilm", "sanpedro", "base", "aguaBase"];
           for (var i = 0; i < fts.length; i++) if (!map.getSource(fts[i]) || !map.isSourceLoaded(fts[i])) return false;
           return nivelUnico();
         } catch (e) { return false; }

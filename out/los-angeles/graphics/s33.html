@@ -197,7 +197,7 @@
     wilm: { entra: [5.95, 0.5], realce: [21.11, 0.5] },
     c1899: { entra: [9.19, 0.5], pulso: 16.43 },
     regua: { desenha: [10.19, 0.6], sai: 12.705 },
-    agua: { janelas: [[13.75, 15.07], [21.23, null]], dIn: 0.5, dOut: 0.3 },
+    agua: { janelas: [[13.75, 15.07], [21.23, 23.15]], dIn: 0.5, dOut: 0.3 },   // r4b (s33-sete-elementos): a 2ª janela sai em "Wilmington" (300 ms): teto de 6 e a pílula "San Pedro" fora da água
     divisa2: { realce: 22.35 },
     divisa: { entra: [21.11, 0.6] },
     legenda: { janelas: [[5.95, null]] },
@@ -209,8 +209,8 @@
       { id: "rotDec",   ref: "WILM", lado: "direita", dx: -146, dy: -260, entra: 7.31, sai: 9.35 },   // centrada sobre "Wilmington" (R5.5)
       { id: "rotLA",    ref: "LAW",  lado: "esquerda", dx: -50, dy: 0,  entra: 9.47,  sai: 13.70 },
       { id: "rot19",    ref: "MEIO", lado: "direita", dx: 90, dy: 0,   entra: 10.51, sai: 12.705 },
-      { id: "rot43",    ref: "LA",   lado: "centro", dx: 0, dy: 0,     entra: 18.03, sai: 21.11 },
-      { id: "legCity",  ref: "LA",   lado: "centro", vert: "baixo", dx: 0, dy: 100, entra: 18.03, sai: 21.11 },
+      { id: "rot43",    ref: "LA",   lado: "direita", dx: 260, dy: 280, entra: 18.03, sai: 21.11 },   // r4b (s33-43-sobre-contorno): à direita do corpo da forma, fora da borda
+      { id: "legCity",  ref: "LA",   lado: "direita", vert: "baixo", dx: 260, dy: 380, entra: 18.03, sai: 21.11 },
       { id: "rotSP2",   ref: "SP",   lado: "direita", dx: 120, dy: 0, entra: 22.35, sai: null },   // a leste da divisa, sobre a cidade e o porto (R5.3)
       { id: "rotWilm2", ref: "WILM", lado: "direita", dx: 60, dy: -20, entra: 23.15, sai: null }
     ],
@@ -574,9 +574,9 @@
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
       agua: { type: "geojson", data: geo("agua-osm-la") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } },
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
       { id: "agua-base", type: "fill", source: "agua",
-        paint: { "fill-color": tok("--agua-base", "#061416"), "fill-opacity": 1, "fill-antialias": true } }] };
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────

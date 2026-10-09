@@ -32,8 +32,10 @@
     · RODADA r4 (08/10/2026, mapista, lote M4; revisão de espectador s37 R6.2, R6.4, R6.10 e R6.11; conceito r4):
       enquanto a faixa se desenha (5,623 s, 1,8 s) o preenchimento da cidade de 1899 CAI de 85 % para 40 % (o contorno --tinta
       de 6 px fica) e a faixa fica a 85 %: a cidade e a ponte nunca têm a mesma intensidade; o preenchimento não pulsa mais.
-      "San Pedro" fica do lado de DENTRO da divisa (a leste do ponto GNIS, sobre a cidade de 1909 e o porto), sai em 14,0 s, e
-      a divisa de San Pedro engrossa de novo por 500 ms no toque (6,858 s) e em "San" (11,703 s).
+      "San Pedro" fica do lado de DENTRO da divisa (a leste do ponto GNIS, sobre a cidade de 1909 e o porto) e, r4b (Lucas,
+      09/10/2026, "Manter a linha, com reforço"), FICA até o fim; a divisa de San Pedro engrossa por 500 ms no toque (6,858 s) e,
+      de "San" (11,703 s) até o fim, fica realçada (9 px sobre 18); a abertura final (V0/V1) desceu e abriu um pouco para a
+      pílula caber acima de y 1880.
     · CÂMERA: aproximação lenta no vão, descida curta pelo fio, a abertura, e o giro contínuo de −2° a +2°.
   INCERTEZA DE HAMLIN (a regra da s03): zoom ≤ 11,66 em toda a cena; o traço mais fino de Hamlin é a divisa de San Pedro (12 px).
   Ao sul de 33,86 N: 65.083 ÷ 2^11,66 = 20,1 m/px → 200 m = 10,0 px ≤ 12 px; ao norte (±50 m), 2,5 px.
@@ -145,8 +147,8 @@
       G0: { lng: -118.2700, lat: 33.8630, zoom: 11.58 },  // o vão (o fim da s33/s34)
       G1: { lng: -118.2700, lat: 33.8600, zoom: 11.64 },
       G2: { lng: -118.2720, lat: 33.8460, zoom: 11.66 },  // desce um pouco pelo fio
-      V0: { lng: -118.2600, lat: 33.9290, zoom: 11.36 },  // a cidade e a faixa inteiras
-      V1: { lng: -118.2610, lat: 33.9280, zoom: 11.42 }
+      V0: { lng: -118.2600, lat: 33.9000, zoom: 11.10 },  // a cidade e a faixa inteiras; r4b: um pouco mais aberto e ao sul, para
+      V1: { lng: -118.2610, lat: 33.8990, zoom: 11.16 }   //   a pílula "San Pedro" (no ar até o fim) caber acima de y 1880
     },
     pernas: [
       { t0: 0,      t1: 9.40,   de: "G0", para: "G1", tipo: "h" },
@@ -160,12 +162,13 @@
     contato: { entra: 6.858 },
     tique: { entra: 10.023, sai: 13.71 },
     cidadeCai: [5.623, 1.8],   // a cidade de 1899: 85 % → 40 % enquanto a ponte se desenha (R6.2)
-    spRealce: [1.383, 6.858, 11.703],   // a divisa de San Pedro engrossa em 'geometry', 'touch' e 'San' (R6.4)
+    spRealce: [1.383, 6.858],   // a divisa de San Pedro engrossa em 'geometry' e 'touch' (R6.4)
+    spSegura: 11.703,           // r4b (Lucas, 09/10/2026, "Manter a linha, com reforço"): de 'San' até a pílula sair (o fim), 9 px sobre 18
     legenda: { janelas: [[-1, null]] },
     rotulos: [
       { id: "legShapes", tela: [2060, 1000], lado: "direita", entra: 2.823, sai: 6.858 },
       { id: "rotStrip",  ref: "FIO",   lado: "direita", dx: 80, dy: 0,  entra: 8.663,  sai: 13.71 },
-      { id: "rotSP",     ref: "SP",    lado: "direita", dx: 50, dy: 40, entra: 11.703, sai: 14.00 },   // dentro da divisa (R6.4)
+      { id: "rotSP",     ref: "SP",    lado: "direita", dx: 50, dy: 40, entra: 11.703, sai: null },   // dentro da divisa (R6.4); r4b: no ar até a cena seguir (Lucas, 09/10)
       { id: "rotWilm",   ref: "WILM",  lado: "direita", dx: 60, dy: 0,  entra: 12.583, sai: 14.60 },
       { id: "rotNov",    tela: [200, 260], lado: "direita", vert: "baixo", entra: 14.353, sai: 19.97 },
       { id: "rotCity",   ref: "CITY",  lado: "centro", dx: 0, dy: 0,    entra: 17.553, sai: null, pulsos: [21.073] },
@@ -221,6 +224,7 @@
       A.opac("wilm-linha", "line-width", 5 + 4 * eng); A.opac("wilm-sob", "line-width", 14 + 6 * eng);
       var engSP = 0;
       CENA.spRealce.forEach(function (t0) { var u = (t - t0) / CENA.engrossa[1]; if (u >= 0 && u < 2) engSP = Math.max(engSP, u < 1 ? A.eo(u) : 1 - A.eio(u - 1)); });
+      if (t >= CENA.spSegura) engSP = Math.max(engSP, A.eo((t - CENA.spSegura) / CENA.engrossa[1]));
       A.opac("spdiv-linha", "line-width", 5 + 4 * engSP); A.opac("spdiv-sob", "line-width", 12 + 6 * engSP);
       var f = function (p) { return p.x.toFixed(2) + " " + p.y.toFixed(2); };
       // a faixa: o caminho projetado e a frente que avança de norte a sul
@@ -406,7 +410,7 @@
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.65, "raster-saturation": -0.3, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────
