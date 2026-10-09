@@ -1,5 +1,10 @@
 # Vídeo 3: o Havaí · 09/10/2026
 
+> **Reserva desde 09/10/2026, à noite.** O Lucas trocou de tema: "Hm, na verdade vamos tentar outro tema... Algum lugar que
+> tenha MUITOS americanos ou poucos americanos, mas que consigamos explicar o porquê... Talvez um lugar no exterior com
+> bastante americanos como por exemplo okinawa". O levantamento novo está em `out/_pautas/video-3b/`. Esta pauta fica como
+> está, com o cético, para um vídeo futuro.
+
 **A escolha do Lucas.** Ele pediu um ângulo econômico ("Para o novo vídeo eu queria algo com ângulo econômico, 'Porque
 viver aqui é tão caro?', por exemplo"). Da lista que o Claude central mandou no chat, ele escolheu a 2, o Havaí, e
 liberou o vidIQ: "2, pode usar o vidiq". A lista de cinco pautas de antes (`pautas/2026-10-09-video-3.md`) fica como
