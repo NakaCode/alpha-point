@@ -216,3 +216,8 @@ consertos resolvidos; 54 achados de espectador de pé; 62 defeitos em 29 cenas (
    conceito e da regência que o qc-visual aceitou (s07 e s29 com a água do porto recortada, s33 sem contorno, s48 sem a miniatura de 1914,
    o pouso da p. 2126 na s15, a p. 98 na s35) ficam aceitos aqui, e o diretor e o regente os alinham no próximo toque, sem segurar; os 35
    defeitos de gravidade baixa ficam fora da r4b.
+8. O render das cenas sem mapa que não mudam na r4b (09/10, 08:53). A pergunta: "Renderizo em 4K agora as 17 que não mudam nesta rodada:
+   11, 16, 20, 22, 25, 27, 28, 35, 36, 38, 39, 41, 43, 45, 47, 52 e 54?" A resposta: **"Sim, renderizar as 17 (Recomendado)"**. O
+   `aprovar` da linha do tempo grava todas as aprováveis da versão (41, `qc/_aprovacao-lucas.jsonl`); o "sim" cobre o render só das 17.
+   As outras 24 mudam na r4b (os mapas com o contraste C e as 6 de mesa consertadas) e perdem a aprovação com a versão nova: voltam
+   ao Lucas na próxima vista.
