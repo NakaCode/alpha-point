@@ -303,4 +303,7 @@ recusar: tag, emoji, outra escrita, palavra larga demais, pergunta longa demais 
   como prova do `.mov`). **Conferido:** no vídeo 2, montado à mão, o Lucas disse "Saiu sim transparente" (09/10/2026): o
   ProRes 4444 com alfa reto abre certo no Premiere.
   A mesma ferramenta põe a marca d'água gravada (identidade §8, a decisão do Lucas de 09/10/2026) numa faixa própria.
+  **Feita em 09/10/2026:** `python ferramentas/xml-chamadas.py <proj>`, depois do `finalizar.mjs` e antes do pacote (`--seco` mostra o
+  plano; `--sem-marca` tira a marca d'água). Testada numa cópia do XML de LA (`out/los-angeles/_tmp/teste-xml-chamadas/`); a
+  primeira abertura no Premiere é a do vídeo 3.
 - Um portão que meça o momento (§5) sozinho: hoje a comparação das caixas é à mão, pelo `qc-visual`.
