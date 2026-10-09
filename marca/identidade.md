@@ -1120,5 +1120,9 @@ Das 5 propostas da 2ª rodada, escolheu **"A agulha"**.
     é do protagonista do vídeo (§2).
 - **O nome no banner:** ALPHA POINT em Barlow Condensed 800, com a frase "Geography and geopolitics, on the map." em Inter
   500. A frase veio com a proposta; quando o Lucas pediu para escolher, ele respondeu sem preferência.
+- **O fundo do banner** (Lucas, 09/10/2026: "a logo eu gostei da nossa, mas o banner quero mudar um pouco"): curvas de nível
+  finas sobre marinho, mais densas nas pontas, com o miolo livre para a agulha e o nome. Ele gerou o fundo numa IA de imagem e
+  o mandou no chat; a agulha e as letras vão por cima, desenhadas, nunca pela IA. O laranja fica só na agulha. Arquivos e
+  medidas em `marca/logo/agulha/README.md`.
 - **As propostas** das duas rodadas ficam em `marca/logo/propostas/` e `marca/logo/propostas-2/`, fora do git: as
   checagens têm quadros do vídeo com satélite da MapTiler e footage de banco.
