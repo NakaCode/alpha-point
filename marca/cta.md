@@ -300,6 +300,7 @@ recusar: tag, emoji, outra escrita, palavra larga demais, pergunta longa demais 
   criar `marca/finalizacao.json` (valeria para o canal inteiro e ligaria o plano de CTA do motor, que espera a peça de outro
   canal); o `pacote-premiere.py` leva os `.mov` em `midia/` como qualquer referência. Antes do primeiro uso, a prova: o XML
   bem-formado, as duas peças no quadro certo, e o alfa conferido no Premiere pelo Lucas (o que o vídeo 2 mostrar à mão vale
-  como prova do `.mov`).
+  como prova do `.mov`). **Conferido:** no vídeo 2, montado à mão, o Lucas disse "Saiu sim transparente" (09/10/2026): o
+  ProRes 4444 com alfa reto abre certo no Premiere.
   A mesma ferramenta põe a marca d'água gravada (identidade §8, a decisão do Lucas de 09/10/2026) numa faixa própria.
 - Um portão que meça o momento (§5) sozinho: hoje a comparação das caixas é à mão, pelo `qc-visual`.
