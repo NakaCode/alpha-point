@@ -15,9 +15,10 @@ acontecendo". Depois: "Eu quero uma solução aqui, mas que não dependa de mim 
 do projeto e conversar tanto com elas quanto com você diretamente (embora eu vá delegar sempre para você repassar as
 correções e etc para essas 'etapas/agentes')".
 
-A proposta foi uma conversa fixa por setor, aberta por ele uma vez só, mais um painel das etapas, que fica para depois de
-14/10, quando o limite semanal vira. A resposta: "Quais as conversas que preciso abrir? e sim, pode arquivar as antigas".
-Ele abriu as cinco ("Criei todas às conversas"). A Sala de controle as pôs nos grupos, em Opus e no modo sem perguntas, com os
+A proposta foi uma conversa fixa por setor, aberta por ele uma vez só, mais um painel das etapas para depois de 14/10. A
+resposta: "Quais as conversas que preciso abrir? e sim, pode arquivar as antigas".
+Ele abriu as cinco ("Criei todas às conversas"). O painel caiu no mesmo dia: "Não vamos fazer o painel, não há
+necessidade". A Sala de controle as pôs nos grupos, em Opus e no modo sem perguntas, com os
 cartões aprovados por ele. O esforço foi posto em `high`, mas, com o ultracode do Lucas ligado, o app as roda em `xhigh`.
 
 ## A mensagem de abertura: a raiz da autorização

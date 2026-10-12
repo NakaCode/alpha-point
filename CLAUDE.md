@@ -756,7 +756,7 @@ Quero poder ver cada etapa do projeto e conversar tanto com elas quanto com voc�
 para você repassar as correções e etc para essas 'etapas/agentes')". A proposta: uma conversa fixa por setor, aberta por
 ele uma vez só, mais um painel das etapas depois que o limite semanal virar. A resposta: "Quais as conversas que preciso
 abrir? e sim, pode arquivar as antigas". Depois: "Criei todas às conversas". As quatro conversas do Juneau foram
-arquivadas.
+arquivadas. O painel caiu no mesmo dia: "Não vamos fazer o painel, não há necessidade".
 
 **As cinco conversas**, cada uma no grupo dela da barra lateral, em `C:\projetos\alpha-point`, no modo sem perguntas
 (cartões aprovados pelo Lucas em 12/10/2026):
