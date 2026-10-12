@@ -494,7 +494,8 @@ pergunta: "Uso o ilustrador no vídeo 2?" A resposta: "Sim, com a física (Recom
   - A mão v003 continua experimental: nunca como padrão aprovado.
   - O pacote continua a chamá-los de experimentais, e a cópia em `ilustracao/` não se edita. A decisão mora na roupa do
     `editor-de-arte` (§5).
-  - O vídeo da revisão está em `out/los-angeles/_tmp/rever-ilustrador/ilustrador-5-cenas.mp4`, fora do git.
+  - O vídeo da revisão está em `out/los-angeles/_tmp/rever-ilustrador/ilustrador-5-cenas.mp4`, fora do git. Depois de
+    vê-lo, o Lucas confirmou: "Gostei bastante das ilustrações".
 
 Uma conversa de peça em `fable` já rodou (29/09/2026, "Juneau · diretor-de-arte"): as respostas saíram como
 `claude-fable-5-1`. Ela abriu no modelo padrão do app, o Opus. O Claude central confere o modelo logo que acha a
