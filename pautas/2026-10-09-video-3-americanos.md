@@ -98,3 +98,33 @@ conferente reabriu as tabelas na imagem (`out/_pautas/video-3b/zona-cidadaos-*.m
   - "as if it were sovereign", e "76 years".
 - **Ideia de gancho, a conferir:** John McCain nasceu na Zona do Canal, em 1936, e a elegibilidade dele foi discutida em 2008. Não
   foi lido em fonte nenhuma, e qualquer gancho com candidato pede cuidado com o risco partidário.
+
+## Os títulos (12/10/2026)
+
+O Lucas perguntou: "Sobre nosso próximo vídeo, quais nossas sugestões de título?".
+- **O método:** dois redatores em Opus escreveram 12 títulos, um refutador os conferiu contra os fatos desta pauta e a §2 de
+  embalagem.md (3 caíram), e três leitores americanos a frio, em Sonnet, julgaram só o texto. O bruto está em
+  `out/_pautas/video-3b/titulos/`.
+- **O vidIQ** (`score_title`, 20 créditos; o vídeo 3 soma 90) deu notas de 91 a 97, sem separar muito.
+
+| Título | Leitores (3/2/1) | Clicariam (de 3) | vidIQ |
+|---|---|---|---|
+| The U.S. Ran Its Own Towns Inside Panama. Until 1979. | 6 | 3 | 91 |
+| Why the U.S. Ran Its Own Towns Inside Panama Until 1979 | 6 | 2 | 93 |
+| Why a Town Inside Panama Was AMERICAN Until 1979 | 3 | 2 | — |
+| Born in the Panama Canal Zone? That Didn't Make You American | 2 | 3 | **97** |
+| *(o do cético)* The U.S. Ran a Town Inside Panama for 75 Years. Then It Gave It Back. | — | — | 94 |
+
+**Os que caíram:**
+- "Why Thousands of Americans Lived Inside Panama Until 1979": a presença americana seguiu até 1999, "Americans" não tem o número, e
+  a frase colide na busca com os expatriados de hoje;
+- "It Wasn't Sovereign": sem fonte que o diga, e no centro da briga política;
+- "the U.S. Town … Ended": falso, porque a cidade não acabou, e puxa para a causa política de 1977.
+
+**O que os leitores rejeitaram:** os títulos com porcentagens de censo ("reads like a spreadsheet") e a caixa alta ("clickbait
+shouting at me").
+
+**A recomendação:** o núcleo "the U.S. ran its own towns inside Panama" ganhou com os três leitores. A virada da cidadania ("Born in
+the Panama Canal Zone? That Didn't Make You American") teve a maior nota do vidIQ e todos clicariam; serve de 2ª opção, ou de virada
+no gancho. Os dois se pagam nas três primeiras frases de um roteiro que abra pela cidade americana. O título final sai com o
+roteiro.
