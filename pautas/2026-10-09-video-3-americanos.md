@@ -132,3 +132,12 @@ roteiro.
 **O vídeo 3 continua a Zona do Canal** (12/10/2026). Depois de abrir o tema ao mundo ("o conteúdo não precisa necessariamente ser
 sobre eles, apenas atrai-los"; `marca/embalagem.md` §1), a pergunta foi: "Com o tema aberto ao mundo, o vídeo 3 continua a Zona do
 Canal?" A resposta: "Manter a Zona do Canal (Recomendado)". A régua nova vale do vídeo 4 em diante.
+
+**O título preferido do Lucas** (12/10/2026). Os cinco títulos foram traduzidos para ele, e a resposta foi: "Eu gostei do 3". É o
+"Why a Town Inside Panama Was AMERICAN Until 1979" (48 caracteres), o consertado pelo refutador, que antes dizia "Existed": Balboa
+existe até hoje, e o que acabou em 01/10/1979 foi a Zona. O que ele pede ao roteiro:
+- **o gancho paga o título nas 3 primeiras frases:** uma cidade de verdade (Balboa, a sede, com 1.580 nascidos nos EUA entre 3.139
+  moradores em 1960), o que a fazia americana (o tratado de 1903; polícia, tribunal e escola americanos) e o fim em 1979;
+- **"a Town":** a Zona tinha várias cidades. O vídeo abre por uma e mostra as outras no mapa;
+- **a caixa alta:** um dos três leitores leu as palavras em caixa alta como "clickbait shouting at me". "American" em caixa normal
+  fica como variante para o teste A/B depois da publicação.
