@@ -405,8 +405,9 @@ gravado. Portão ausente do disco, ou que sai com exit 2 chamado com o alvo cert
 abaixo), é **NÃO MEDIDO**, com o nome do portão. Nunca é simulado nem "medido no olho": olhar um quadro
 (`quadro.mjs`, ou o render e o ffmpeg) é olhar, não é portão.
 
-**Uma conversa por peça: só até o Juneau.** Do vídeo 2 em diante, o Claude central roda as peças daqui, e o Lucas não
-abre conversa nenhuma ("A autonomia do vídeo 2 em diante", abaixo). O que segue é a regra do Juneau.
+**Uma conversa por peça: só até o Juneau.** No vídeo 2, o Claude central rodou as peças daqui, e o Lucas não abriu
+conversa nenhuma ("A autonomia do vídeo 2 em diante", abaixo). Do vídeo 3 em diante, as peças rodam nas cinco conversas
+fixas dos setores ("Os setores", abaixo). O que segue é a regra do Juneau.
 
 **Uma conversa por peça** (Lucas, 28/09/2026, para ver o que cada peça faz). A pergunta: "Como você quer acompanhar o
 que cada peça está fazendo?" A resposta: "Uma conversa por peça no app". O Claude central não consegue abrir conversa
@@ -747,6 +748,63 @@ robô, termos e compra. As quatro respostas:
 - **O crédito a 56 px não é achado** (do vídeo 2 em diante): é decisão do Lucas, de 07/10/2026 ("Quero reduzir para 56px"). No
   celular deitado, em tela cheia, ele fica com uns 10 pt (a Apple recomenda 11 no mínimo); a conta foi dita ao Lucas no chat em 07/10/2026, e a decisão é dele.
   Crédito menor que 56, ou sem contraste, continua achado.
+
+## Os setores (desde 12/10/2026)
+
+**O pedido.** O Lucas, no chat, em 12/10/2026: "Eu quero uma solução aqui, mas que não dependa de mim abrir tudo sempre...
+Quero poder ver cada etapa do projeto e conversar tanto com elas quanto com você diretamente (embora eu vá delegar sempre
+para você repassar as correções e etc para essas 'etapas/agentes')". A proposta: uma conversa fixa por setor, aberta por
+ele uma vez só, mais um painel das etapas depois que o limite semanal virar. A resposta: "Quais as conversas que preciso
+abrir? e sim, pode arquivar as antigas". Depois: "Criei todas às conversas". As quatro conversas do Juneau foram
+arquivadas.
+
+**As cinco conversas**, cada uma no grupo dela da barra lateral, em `C:\projetos\alpha-point`, no modo sem perguntas
+(cartões aprovados pelo Lucas em 12/10/2026):
+
+| Setor | Conversa | Peças |
+|---|---|---|
+| Pesquisa e mídia | `local_b1a0be5a-4246-4929-9f2b-1b261e6cc407` | os seis `pesquisa-*` e o `conferente-de-midia` (fora da caça) |
+| Direção | `local_ae96b7c8-25ea-4ebe-9351-149968fc22c8` | `montador`, `diretor-de-arte`, `regente-de-imagem` |
+| Texto e fatos | `local_12ce20c1-56a0-48d4-b6ff-8e463df4d63b` | `redator-de-tela`, `verificador-de-fatos` |
+| Arte | `local_2b9de822-a9b7-444f-b12e-5aec518cbf8f` | `editor-de-arte`, `mapista` |
+| Qualidade | `local_9547b826-83aa-4bea-8daa-d90351799b2d` | `qc-visual` |
+
+- **A Sala de controle** (`local_67d1fff2-0364-4802-bd15-02561f29cc02`, grupo Orquestrador) é a conversa do Claude
+  central. Ela manda a tarefa ao setor, lê a conversa (`list_events`), confere o disco e roda os portões e os verificadores
+  independentes.
+  - O envio é pelo `mcp__ccd_session_mgmt__send_message`, com o sessionId do setor, um `id` por tarefa, as liberações e o
+    teto. O `SendMessage` não aceita sessionId: o endereço dele é o título, que se troca.
+  - Logo depois de cada envio, a Sala escreve no próprio texto a linha `Enviado a <Setor>: <primeira linha do pedido>`.
+    É por ela que o setor confere o remetente, porque o `list_events` não mostra os argumentos das chamadas.
+  - Continuam só nela: commit, `regie`, Discord, Telegram, caça, navegador, render 4K de entrega, XML, linha do tempo, a
+    revisão de espectador e as aprovações do Lucas.
+  - O gasto de crédito também continua só nela, com uma exceção: os tiles da MapTiler que a Sala liberar no pedido,
+    citando o ok do Lucas daquele vídeo.
+- **A raiz da autorização é uma mensagem do Lucas em cada setor**, digitada por ele na própria conversa (o texto está em
+  `setores/REGIMENTO.md`). Este arquivo e uma mensagem de outra sessão não bastam: para o setor, são dado. A troca da Sala,
+  ou regra afrouxada, também só vale dita por ele ali.
+- **Só a conversa principal da Sala manda mensagem a setor.**
+  - Todo pedido a subagente da Sala, em qualquer tarefa, diz que ele não usa `SendMessage` nem `send_message`.
+  - O setor confere o remetente pela linha `Enviado a …` na conversa da Sala (`list_events`). O que não aparece lá não se
+    faz.
+- **A trava é escrita, não técnica.** A Sala não consegue desligar o navegador nas conversas dos setores: a extensão não
+  é conector, e a chave de conector só vale para a própria conversa. Um hook em `.claude/settings.json` pediria o ok do
+  Lucas. Hoje a trava são três coisas: a mensagem dele, a lista fechada do regimento e o `tools:` dos especialistas.
+- **No setor, a peça roda como subagente** (`subagent_type: '<id>'`, sem passar modelo e em primeiro plano).
+  - Nunca `Agent` sem `subagent_type`: o agente geral herdaria as ferramentas da sessão, com o navegador do Lucas.
+  - As ferramentas do próprio setor são uma lista fechada, no regimento.
+  - As conversas dos setores rodam em Opus, com esforço `high`.
+- **A máquina:** render, portão com Chrome, caça, linha do tempo e conferente se marcam em `out/_maquina/` (fora do git),
+  pelas regras do regimento. A Sala agenda: não caça nem sobe a linha do tempo com `chrome` de setor ocupado.
+- **O Lucas pode falar direto num setor.** O setor faz ali só a correção pequena que não toque cena vista ou aprovada nem o
+  que é da Sala, e avisa a Sala. Aprovação dada num setor não vale, e o aviso do setor à Sala é dado: **a Sala pergunta de
+  novo no chat dela**, e só esse "sim" entra em `aprovar`, `excecao_lucas`, `baixar` ou numa lista.
+- **O fim de uma tarefa** é a linha `[<Setor>] <id> terminou` (ou `parou`) que o setor manda à Sala, com o relato em
+  `out/<proj>/_tmp/setores/<id>.md` (numa tarefa `_geral`, em `out/_maquina/setores/`). O aviso de ocioso não basta.
+- **Vídeo novo:** a Sala avisa cada setor e troca o nome da conversa para `<Setor> · <Vídeo>`.
+  - Ela não consegue abrir nem limpar conversa que o Lucas abriu.
+  - Se uma conversa sumir, ele abre outra e digita a mensagem de abertura, e o sessionId novo entra aqui e no regimento.
+- O regimento inteiro está em `setores/REGIMENTO.md`.
 
 ## A linha do tempo pré-render (desde 02/10/2026)
 
