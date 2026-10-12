@@ -219,8 +219,11 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
     (acima), e o objeto pode quase não se mover (no piloto, o balanço caiu de ±3° para 0,43°). Nunca balanço que não
     amortece (amplitude sem fonte de energia), nunca peça que finge estar presa;
   - **no cabeçalho da cena**, escreva o que aplicou (arquivo:linha certo) e o que fica fora da prova do pacote: pêndulo e
-    rotação são "exercício futuro" no `estudo-dinamica-objetos/ESTUDO.md` (linha 53), e a mão v003 e os módulos de
-    movimento e física são experimentais (a mão v003 não tem aceite artístico: nunca como padrão aprovado);
+    rotação são "exercício futuro" no `estudo-dinamica-objetos/ESTUDO.md` (linha 53), e a mão v003 continua experimental
+    (sem aceite artístico: nunca como padrão aprovado). **Os módulos de movimento e física deixaram de ser experimentais
+    no canal** (Lucas, 12/10/2026, depois das 5 cenas de Los Angeles: "com exceção da mão, acredito que as outras partes
+    podem deixar de ser experimentais"): usam-se como método aceito, e o cabeçalho não os chama mais de experimentais. O
+    pacote continua a chamá-los assim, e a cópia em `ilustracao/` não se edita;
   - **a medida que prova o contato vem do DOM ou dos quadros** (`getBoundingClientRect`, `elementFromPoint`, o render),
     nunca da fórmula do próprio código: no piloto, o "20,00 px em todos os quadros" do gancho repetia `fioFim = furoY +
     FURO.r` e não provava nada; quem provou foi o DOM e o MP4;

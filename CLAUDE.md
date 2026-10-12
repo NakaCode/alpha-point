@@ -487,8 +487,14 @@ pergunta: "Uso o ilustrador no vídeo 2?" A resposta: "Sim, com a física (Recom
   contra o `MANIFESTO.json` dela. Ficaram no pacote a vitrine, as bancadas HTML e o agente opcional `ilustrador-tecnico`, que não
   está ligado no canal.
 - Conferido em 07/10/2026: os testes dos validadores na cópia (47 de 47), as auditorias dos estudos (exit 0) e o
-  `verificar-pacote.py --com-node` do pacote (22 de 22). Isso é integridade técnica, não aceite artístico: a mão v003 e os
-  módulos de movimento e física continuam experimentais.
+  `verificar-pacote.py --com-node` do pacote (22 de 22). Isso é integridade técnica, não aceite artístico.
+- **O aceite artístico do Lucas** veio em 12/10/2026, depois das 5 cenas de Los Angeles (s13, s15, s16, s36 e s52): "com
+  exceção da mão, acredito que as outras partes podem deixar de ser experimentais".
+  - Os módulos de movimento e física são método aceito no canal.
+  - A mão v003 continua experimental: nunca como padrão aprovado.
+  - O pacote continua a chamá-los de experimentais, e a cópia em `ilustracao/` não se edita. A decisão mora na roupa do
+    `editor-de-arte` (§5).
+  - O vídeo da revisão está em `out/los-angeles/_tmp/rever-ilustrador/ilustrador-5-cenas.mp4`, fora do git.
 
 Uma conversa de peça em `fable` já rodou (29/09/2026, "Juneau · diretor-de-arte"): as respostas saíram como
 `claude-fable-5-1`. Ela abriu no modelo padrão do app, o Opus. O Claude central confere o modelo logo que acha a
