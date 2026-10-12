@@ -128,3 +128,7 @@ shouting at me").
 the Panama Canal Zone? That Didn't Make You American") teve a maior nota do vidIQ e todos clicariam; serve de 2ª opção, ou de virada
 no gancho. Os dois se pagam nas três primeiras frases de um roteiro que abra pela cidade americana. O título final sai com o
 roteiro.
+
+**O vídeo 3 continua a Zona do Canal** (12/10/2026). Depois de abrir o tema ao mundo ("o conteúdo não precisa necessariamente ser
+sobre eles, apenas atrai-los"; `marca/embalagem.md` §1), a pergunta foi: "Com o tema aberto ao mundo, o vídeo 3 continua a Zona do
+Canal?" A resposta: "Manter a Zona do Canal (Recomendado)". A régua nova vale do vídeo 4 em diante.
