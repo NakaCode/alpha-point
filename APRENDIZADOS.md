@@ -1436,3 +1436,27 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   arquivo que ele não escreveu); até lá, o crédito escrito à mão precisa estar no git antes do primeiro `--conferir`.
 - **Por que serve a qualquer canal:** todo canal que usa música de assinatura que pede crédito na descrição (Epidemic, Artlist)
   e escreve esse crédito à mão com o nome que o motor administra.
+
+### 80. Entre duas conversas do app, o `list_events` não prova quem mandou: use desafio e resposta
+
+- **O problema:** em 12/10/2026, a Sala de controle passou a mandar tarefas a cinco conversas fixas de setor
+  (`setores/REGIMENTO.md`). Cada setor precisava provar que o pedido vinha da conversa principal da Sala, e não de um
+  subagente dela, que envia com o mesmo código de origem. Três tentativas falharam, medidas nos testes:
+  - o nome do remetente ("Sala de controle") é só o título, e um título se troca;
+  - o `SendMessage` endereça pelo título, não pelo sessionId; o `send_message` de `ccd_session_mgmt` aceita o sessionId;
+  - o `list_events` não mostra os argumentos das chamadas;
+  - o texto que a conversa escreve logo antes de uma chamada às vezes nem é gravado: no arquivo `.jsonl`, a mensagem
+    ficou só com o raciocínio e as chamadas. Uma linha "Enviado a …" escrita como prova sumiu no 1º e no 3º teste.
+- **O que resolveu:** duas provas.
+  - A origem: o `from` da `<cross-session-message>` traz o sessionId, gravado pelo app.
+  - Um desafio: o setor manda um código aleatório, repetindo o que recebeu, e só a conversa principal responde com o
+    mesmo código, porque a mensagem que chega à Sala não passa pelos subagentes.
+
+  Os cinco setores passaram no 4º teste. Dois achados vieram dos próprios setores:
+  - repetir o conteúdo do pedido no desafio (Pesquisa e mídia);
+  - `run_in_background: false` no `Agent`, porque nessas conversas ele roda em segundo plano por padrão (Arte).
+- **O que sobra:** um subagente com `Bash` poderia ler o desafio no `.jsonl` da conversa principal. Contra isso:
+  - os pedidos a subagente proíbem o envio entre sessões;
+  - a Sala responde "não mandei: pare" a `id` que não mandou.
+- **Por que serve a qualquer canal:** todo canal que quiser várias conversas trabalhando sob uma central, no app, esbarra na
+  mesma pergunta (quem mandou isto?), e as três primeiras respostas parecem certas e falham.

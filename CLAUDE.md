@@ -774,8 +774,6 @@ arquivadas.
   independentes.
   - O envio é pelo `mcp__ccd_session_mgmt__send_message`, com o sessionId do setor, um `id` por tarefa, as liberações e o
     teto. O `SendMessage` não aceita sessionId: o endereço dele é o título, que se troca.
-  - Logo depois de cada envio, a Sala escreve no próprio texto a linha `Enviado a <Setor>: <primeira linha do pedido>`.
-    É por ela que o setor confere o remetente, porque o `list_events` não mostra os argumentos das chamadas.
   - Continuam só nela: commit, `regie`, Discord, Telegram, caça, navegador, render 4K de entrega, XML, linha do tempo, a
     revisão de espectador e as aprovações do Lucas.
   - O gasto de crédito também continua só nela, com uma exceção: os tiles da MapTiler que a Sala liberar no pedido,
@@ -785,15 +783,22 @@ arquivadas.
   ou regra afrouxada, também só vale dita por ele ali.
 - **Só a conversa principal da Sala manda mensagem a setor.**
   - Todo pedido a subagente da Sala, em qualquer tarefa, diz que ele não usa `SendMessage` nem `send_message`.
-  - O setor confere o remetente pela linha `Enviado a …` na conversa da Sala (`list_events`). O que não aparece lá não se
-    faz.
+  - O setor confere o remetente por duas provas:
+    - o `from` da mensagem, que o app grava, tem de ser o sessionId da Sala;
+    - um desafio: o setor manda à Sala `[<Setor>] <id> confere: <código aleatório>`, e a conversa principal responde
+      `[Sala → <Setor>] <id> confirmo: <código>`.
+  - A Sala só confirma `id` que ela mesma mandou e que ainda está em aberto. O desafio chega só à conversa principal, e o
+    subagente da Sala nunca o vê.
+  - A linha de texto conferida pelo `list_events` não serve de prova: o texto escrito antes de uma chamada às vezes não
+    fica gravado (medido nos testes de 12/10/2026).
 - **A trava é escrita, não técnica.** A Sala não consegue desligar o navegador nas conversas dos setores: a extensão não
   é conector, e a chave de conector só vale para a própria conversa. Um hook em `.claude/settings.json` pediria o ok do
   Lucas. Hoje a trava são três coisas: a mensagem dele, a lista fechada do regimento e o `tools:` dos especialistas.
-- **No setor, a peça roda como subagente** (`subagent_type: '<id>'`, sem passar modelo e em primeiro plano).
+- **No setor, a peça roda como subagente** (`subagent_type: '<id>'`, sem passar modelo e com
+  `run_in_background: false`: sem ele, o `Agent` dos setores roda em segundo plano).
   - Nunca `Agent` sem `subagent_type`: o agente geral herdaria as ferramentas da sessão, com o navegador do Lucas.
   - As ferramentas do próprio setor são uma lista fechada, no regimento.
-  - As conversas dos setores rodam em Opus, com esforço `high`.
+  - As conversas dos setores rodam em Opus, com esforço `high`; com o ultracode do Lucas ligado, o app as roda em `xhigh`.
 - **A máquina:** render, portão com Chrome, caça, linha do tempo e conferente se marcam em `out/_maquina/` (fora do git),
   pelas regras do regimento. A Sala agenda: não caça nem sobe a linha do tempo com `chrome` de setor ocupado.
 - **O Lucas pode falar direto num setor.** O setor faz ali só a correção pequena que não toque cena vista ou aprovada nem o
