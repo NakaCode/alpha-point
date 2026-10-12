@@ -63,6 +63,13 @@ city in the North" (3,1 mi).
 - de 35 a 65 caracteres;
 - a família "no road / no bridge" rende nos três canais.
 
+**O assunto não precisa ser americano** (Lucas, 12/10/2026: "Embora o canal seja inglês e para o pública americano, o conteúdo
+não precisa necessariamente ser sobre eles, apenas atrai-los"). O público continua o americano, e a língua continua o inglês dos EUA.
+O tema pode ser de qualquer lugar do mundo, como nas referências (a costa oeste da Austrália, a Holanda, a Argentina, a Sicília). O
+que se pede do tema é que um americano curioso clique: um lugar que ele conhece ou um paradoxo que se entende em 2 segundos. Ele não
+precisa ter americanos nem os EUA na história. Os vídeos 1 e 2 (Alasca e Los Angeles) e as pautas de 07 a 09/10 partiram do
+contrário.
+
 ## 2 · Regras de título (aprendidas no Juneau)
 
 - **O título é contrato: o núcleo se paga nas 3 primeiras frases da narração.** Um molde que rende nas
