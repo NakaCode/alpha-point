@@ -463,6 +463,10 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
   (Recomendado)"**: o revisor de espectador roda em Sonnet; o cético continua em Opus;
 - do vídeo 3 em diante, as partes mecânicas do roteiro (cópia para a voz, trocas de pronúncia, conferências) fora do Fable?
   **"Sim, só a escrita em Fable (Recomendado)"**: a escrita, o gancho e a voz em Fable; o resto em Opus ou Sonnet.
+  - No vídeo 3, a Sala pôs também os três planos e o juiz em Fable, repetindo o vídeo 2; a barra semanal do Fable foi de 0 a 24 %
+    numa manhã, com 7 agentes. O Lucas, 14/10/2026: "eu acredito que somente a etapa de ESCRITA deva estar em Fable, as outras
+    em Opus, não?". Do vídeo 4 em diante: os planos e o juiz em Opus; o Fable só na escrita do texto (com o gancho) e nas
+    reescritas que a bancada pede.
 - **O que o Claude central decide sozinho** (os agentes dele, não os especialistas): leitores, montagem de lista e as conferências
   mecânicas da linha (ingest, cut_detect, mirror) em `model: 'sonnet'`; céticos, verificadores, conferências e leitores com `effort:
   'high'` (não herdar o `xhigh` da sessão); conferência que julga licença, procedência ou texto de tela fica em Opus; revisão de
