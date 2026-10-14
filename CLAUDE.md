@@ -487,6 +487,12 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
   espectador em lotes de até 20 folhas e 25 imagens por revisor (desde 14/10/2026, em teste no vídeo 3: "A revisão de espectador,
   antes do Lucas"), e todo agente grava o resultado no disco ao terminar. Haiku em nada que pede julgamento; o `qc-visual`
   continua em Sonnet.
+- **O ultracode continua ligado** (Lucas, 14/10/2026, 14:1x: "Manter ligado", às opções de desligá-lo com cético só no que
+  importa ou de vez). Ele é a chave do Claude Code que faz a Sala montar equipe de agentes, com conferência, em quase toda
+  tarefa (code.claude.com/docs/en/workflows). O dia que embasou a resposta, de 13/10, 23h, a 14/10, 14h, a preço de tabela: uns
+  US$ 600, dos quais US$ 95 em céticos e verificadores e US$ 74 em versões alternativas; e o que a conferência pegou nesse dia
+  (os 9 consertos do cético da M11, os 7 detalhes que o verificador do relatório de economia derrubou, a versão da vinheta
+  descartada). A medida: `ferramentas/medir-espectador.py <pasta do workflow> --rotulo= --json`.
 
 **Mais mapa** (Lucas, 27/09/2026: "nos próximos devemos usar mais mapas (mas claro que somente se o contexto
 permitir"): do vídeo 2 em diante, a pauta e o roteiro preferem o ângulo espacial quando o assunto o tem, e fala de
