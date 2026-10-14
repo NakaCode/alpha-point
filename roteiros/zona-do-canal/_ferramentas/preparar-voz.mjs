@@ -74,6 +74,8 @@ const REGRAS = [
     motivo: "valor em dólar por extenso" },
   { tipo: "ordinal", re: /\b(\d{1,2})(?:st|nd|rd|th)\b/g, f: (m, n) => ordinal(+n), motivo: "ordinal por extenso" },
   { tipo: "número", re: /\b(\d+)\.(\d+) (million|billion)\b/g, f: (m, i, d, mag) => `${milhares(i)} point ${[...d].map((x) => U[+x]).join(" ")} ${mag}`, motivo: "número por extenso" },
+  { tipo: "década", re: /\b(1[6-9]\d0|20\d0)s\b/g,
+    f: (m, a) => { const w = ano(+a); return w.endsWith("y") ? w.slice(0, -1) + "ies" : w + "s"; }, motivo: "década como se fala" },
   { tipo: "ano", re: /\b(1[6-9]\d\d|20\d\d)\b(?!,\d)/g, f: (m, a) => ano(+a), motivo: "ano como se fala" },
   { tipo: "número", re: /\b(\d{1,3}(?:,\d{3})+)\b/g, f: (m, n) => milhares(n), motivo: "número por extenso" },
   { tipo: "número", re: /\b(\d+)\.(\d+)\b/g, f: (m, i, d) => `${milhares(i)} point ${[...d].map((x) => U[+x]).join(" ")}`, motivo: "decimal por extenso" },

@@ -1,6 +1,6 @@
 # Dossiê do roteiro · zona-do-canal (vídeo 3)
 
-Revisão do roteiro: `4c93f1712cf2`
+Revisão do roteiro: `58db12762030`
 
 > Escrito à mão em 14/10/2026 pelo roteirista (Fable 5.1), sobre `roteiros/zona-do-canal/_trabalho/plano-final.json` (o plano
 > do juiz: o ângulo "quem era americano", com os enxertos de "a cidade" e de "a linha") e `pautas/zona-do-canal/fundamento.md` +
@@ -8,17 +8,29 @@ Revisão do roteiro: `4c93f1712cf2`
 > duas). O texto falado está em `roteiros/zona-do-canal/roteiro-narrador.md`. O que mudou em relação ao plano está em
 > `_trabalho/escrita-notas.md`.
 >
-> **A medida do portão** (14/10/2026, a revisão `4c93f1712cf2` da linha acima, depois dos dois pedidos da bancada ao escritor,
-> `_trabalho/pedidos-r1.json`, aplicados à mão sobre `d49183e2342d`, a revisão da lista fechada; o relato em
-> `_trabalho/pedidos-r1-feito.md`): sha256 do texto falado `4c93f1712cf2740389d980922c5223386cd739bf33077af169835204a5dd5b3d` ·
-> 2.148 palavras · ≈11:40 de fala a 184 palavras/min (+20 s de cauda ≈ 12:00) · 28 parágrafos · 152 frases pelo portão (as de
-> verdade são menos: "U.S.", "U.S.-rate", "$158.46" e "$76.00" partem a frase na régua sem proteção) · média 14,2 palavras por
-> frase · maior 33 · gancho com 166 palavras até a assinatura (≈54 s), "But" na palavra 49. `gate.mjs`: **PASSA**, com 21 alertas,
-> cada um aceito na frase dele, abaixo, ou em `escrita-notas.md` (item 6): `citizens` ×12 (o 12º é "the citizen parent" de p4, a
-> palavra do manual), `citizenship` ×2, `white` ×2, `sovereign` ×4, `segregat` ×1. Taxas todas abaixo do teto; autoplágio vazio
-> contra Juneau e Los Angeles. A revisão `6917e62a2155` passou pelas cinco lentes da rodada 1 (`qc-roteiro/*-r1.laudo.md`); a
-> `d49183e2342d` (a lista fechada, `_trabalho/aplicado-r1.md`) e esta ainda não passaram por lente, cético nem Lucas. Nenhum
-> pedido ao escritor fica aberto.
+> **A medida do portão, rodada 3** (14/10/2026, a revisão `58db12762030` da linha acima: as três trocas de `_trabalho/lista-r3.json`,
+> aplicadas por `ferramentas/aplicar-lista.mjs`, `_trabalho/aplicado-r3.saida.txt`; R3-01, o "on "U.S." rates" da lente de locução;
+> R3-02, o C01 da clareza, duas frases de p4 em uma; R3-03, o "So" cortado do fim de p1, o R1 do crítico de roteiro): sha256 do texto
+> falado `58db12762030ccaf4d5c63ad4a6d81a5449d5dbf3a2daae1795fd7c5bcd50c36` · 2.129 palavras (21 abaixo do teto) · ≈11:34 de fala
+> a 184 palavras/min (+20 s de cauda ≈ 11:54) · 28 parágrafos · 153 frases pelo portão · média 14 · maior 32 · gancho 166, "But" na
+> 49 · `gate.mjs`: **PASSA**, com 20 alertas (saíram o `citizens` de "they were citizens if a parent…" e o `citizenship` de "left
+> citizenship to the parents", as duas frases que a R3-02 trocou); taxas abaixo do teto (abre_so 6); autoplágio vazio. Conferida no
+> delta (`qc-roteiro/r3-delta.laudo.md`) e no laudo de fatos posto em dia (`qc-roteiro/fatos.laudo.md`); os laudos das lentes que
+> julgaram `d98d50f9c55c` estão em `qc-roteiro/*-r3-antigo.laudo.md`.
+>
+> **A medida do portão** (14/10/2026, a revisão `d98d50f9c55c`, a de antes da rodada 3, depois do pedido P01 da rodada 2,
+> `_trabalho/pedidos-r2.json`, reescrito à mão pelo escritor sobre `69bb7fb13954` (a lista-r2 aplicada, `_trabalho/aplicado-r2.md`);
+> o relato em `_trabalho/pedidos-r2-feito.md`): sha256 do texto falado `d98d50f9c55c95fb2e2522baf3b29564beaa8759a701e37357559d20e5193871` ·
+> 2.150 palavras (o teto do portão) · ≈11:41 de fala a 184 palavras/min (+20 s de cauda ≈ 12:01) · 28 parágrafos · 154 frases pelo
+> portão (as de verdade são menos: "U.S.", "$158.46" e "$76.00" partem a frase na régua sem proteção) · média 14,0 palavras por
+> frase · maior 32 · gancho com 166 palavras até a assinatura (≈54 s), "But" na palavra 49. `gate.mjs`: **PASSA**, com 22 alertas,
+> os mesmos de `69bb7fb13954`, cada um aceito na frase dele, abaixo, ou em `escrita-notas.md` (item 6): `citizens` ×12 (um é "the
+> citizen parent" de p4, a palavra do manual), `citizenship` ×3 (o 3º entrou na lista-r2, L09: "left citizenship to the parents", a
+> lei de cidadania, não o grupo), `white` ×2, `sovereign` ×4, `segregat` ×1. Taxas todas abaixo do teto; autoplágio vazio contra
+> Juneau e Los Angeles. A revisão `6917e62a2155` passou pelas cinco lentes da rodada 1 (`qc-roteiro/*-r1.laudo.md`); a
+> `4c93f1712cf2`, pela bancada final (`qc-roteiro/*-r2-antigo.laudo.md`), de onde saíram a lista-r2 e o P01; `69bb7fb13954` e esta
+> ainda não passaram por lente, cético nem Lucas. Nenhum pedido ao escritor fica aberto. O total está no teto: a próxima troca que
+> acrescente palavra pede corte no mesmo parágrafo.
 
 ## A espinha
 
@@ -59,7 +71,7 @@ Revisão do roteiro: `4c93f1712cf2`
 - **Payoff (na fala, p7):** "A treaty, which granted the United States "all the rights, power and authority" within a band ten
   miles wide. A law, which gave the Zone a governor and seated its juries with citizens of the United States. A second treaty,
   which let only those who worked or served there, and their families, live inside the line. And a payroll, which sorted the people who worked for the canal: first into
-  "gold" and "silver," then into "U.S." rates and "local" rates. The rule about being born there never changed." Depois, as palavras dos dois tratados lado a lado (1903, "if it were the sovereign"; 1977, "territorial
+  "gold" and "silver," then into "U.S." rates and "local" rates. Being born there, by itself, was never enough." Depois, as palavras dos dois tratados lado a lado (1903, "if it were the sovereign"; 1977, "territorial
   sovereign"), sem o narrador arbitrar (I01, R07), e a coda: "The town stayed where it was, below the hillside. The Zone that
   made it American did not."
 
@@ -69,10 +81,10 @@ Revisão do roteiro: `4c93f1712cf2`
 |---|---|
 | S1 "This is Balboa, the town below Balboa Heights, the hillside the Panama Canal Zone was run from." | p1, 3º parágrafo: "In 1914 the administration moved into a new building up on Balboa Heights. The town you saw first is Balboa, the town at the foot of Balboa Heights, the hillside the Canal Zone was run from." (a forma inteira da Sala, T06/I03). p7, coda: "The town stayed where it was, below the hillside." |
 | S2 "about half of its 3,139 residents had been born in the United States" (1960) | p3, 4º parágrafo (a decomposição: "More than a thousand of its 3,139 residents in 1960 had been born in the Zone itself"; o 1.580 e o 517 só na tela) e p5, último parágrafo (o mapa de 1960: "Balboa, at the Pacific end: about half of 3,139 born in the United States"). O porquê da metade é a soma de p1 (quem governava), p2 (a folha e a casa), p3 (a regra de residência e a casa antes da família). |
-| S2 "under a 1903 treaty its police, courts and schools answered to Washington" | p1, 2º parágrafo: o Art. III lido; "On that band, American law then set up a government of its own": o governador "appointed by the president", o tribunal federal com jurados cidadãos (lei de 1912), a polícia, as escolas e o correio sob o governo da Zona (ordem de 1914). O gancho diz quem mandava; p1 separa o tratado (os poderes) da lei (as instituições), sem "because" (I05). p6: a Balboa High School. |
-| S3 "Until October 1, 1979." | p7, 1º e 2º parágrafos: os tratados de 1977, a aprovação do Senado, a vigência em 01/10/1979, "took back full jurisdiction over the former Zone", os 30 meses (na voz desde a r1: polícia e tribunais americanos para os empregados americanos do canal, os militares e as famílias, em certas áreas; as escolas ao Departamento de Defesa), a Commission até o fim de 1999, "ceased to exist" (FAM, T1). |
-| S4 "But being born in Balboa didn't, by itself, make you an American." | p4 inteira: a lei de 1937 ("at the time of your birth"), a regra geral de antes, com a residência prévia do pai ou da mãe cidadão que a lei de 1937 dispensou (FAM, atribuído; desde o pedido P01), o FAM ("never considered part of the United States", "for citizenship law"), os "thousand or so" de Balboa; p7, fecho: "The rule about being born there never changed." |
-| S5 "one town in the Zone, a band ten miles wide that the United States ran across Panama, from the Caribbean to the Pacific" | p1, 1º parágrafo: o Art. II ("in perpetuity", com a finalidade, R01) e as duas cidades de fora; o mapa da faixa. p7: a faixa como "a band ten miles wide" no fecho. |
+| S2 "under a 1903 treaty, its police, courts and schools answered to Washington" (as vírgulas desde a lista-r2, L12) | p1, 2º parágrafo: o Art. III lido; "On that band, American law then set up a government of its own": o governador "appointed by the president", o tribunal federal com jurados cidadãos (lei de 1912), a polícia, as escolas e o correio sob o governo da Zona (ordem de 1914). O gancho diz quem mandava; p1 separa o tratado (os poderes) da lei (as instituições), sem "because" (I05). p6: a Balboa High School. |
+| S3 "Until October 1, 1979." | p7, 1º e 2º parágrafos: os tratados de 1977, a aprovação do Senado, a vigência em 01/10/1979, o Art. I(1) do tratado novo, que "terminates and supersedes" o de 1903, o da faixa "in perpetuity" (pedido P01 da r2), "took back full jurisdiction over the former Zone", os 30 meses (na voz desde a r1: polícia e tribunais americanos para os empregados americanos do canal, os militares e as famílias, em certas áreas; as escolas ao Departamento de Defesa), a Commission até o fim de 1999, "ceased to exist" (FAM, T1). |
+| S4 "But being born in Balboa didn't, by itself, make you an American." | p4 inteira: a lei de 1937 ("at the time of your birth"), a regra geral de antes, com a residência prévia do pai ou da mãe cidadão que a lei de 1937 dispensou (FAM, atribuído; desde o pedido P01), o FAM ("never considered part of the United States", "for citizenship law"), os "thousand or so" de Balboa; p7, fecho: "Being born there, by itself, was never enough." (lista-r2, L01) |
+| S5 "one town in the Zone, a band ten miles wide that the United States ran across Panama, from the Caribbean to the Pacific" | p1, 1º parágrafo: o Art. II ("in perpetuity", com a finalidade, R01) e as duas cidades de fora; o mapa da faixa. p7, 1º parágrafo: o "in perpetuity" volta, com a finalidade, na frase em que o Art. I(1) de 1977 o encerra (pedido P01 da r2). p7: a faixa como "a band ten miles wide" no fecho. |
 | S6–S7 "Paraíso had seven … Rainbow City had three" | p2 (as duas folhas; o clube "silver" de Paraíso em 1920; La Boca como "silver settlement") e p5, último parágrafo (o censo de 1960 no mapa, com "In the 1950 census, it was called Silver City"). O porquê é o mecanismo de p2: clube, escola e casa por folha; mais de 60 % dos "silver" fora da linha. |
 | S8–S9 "no census of the Zone published how many of its residents were citizens. It counted where they were born." | p3, 3º parágrafo (o cartão de 1970: "counted birthplaces, not citizens"; "the count took in the bases along with the towns") e, na r1, o fim do mesmo parágrafo (a 3ª volta saiu). |
 | S10 "So what made Balboa American, if being born there didn't?" | p7, 3º parágrafo, literalmente: um tratado, uma lei, um segundo tratado, uma folha; e a regra do nascimento que não mudou. Cada parte entrega uma resposta parcial: p1 a lei; p2 a folha; p3 a residência; p4 o nascimento; p5 a cidadania como régua; p6 a bandeira; p7 o fim. |
@@ -85,38 +97,40 @@ Tempos estimados a 184 palavras/min, pela contagem do portão (sem a cauda). O r
 | Parte | Função | Orçamento do plano | Palavras | Tempo | O que o espectador entende ao fim |
 |---|---|---|---|---|---|
 | gancho | os cinco tempos | 165 | 166 | 0:00–0:54 | Balboa, a cidade abaixo de Balboa Heights, de onde a Zona era governada; metade dos 3.139 nascida nos EUA em 1960; polícia, tribunais e escolas respondendo a Washington por um tratado de 1903; até 01/10/1979. Nascer ali não fazia ninguém americano. A faixa de 10 milhas, Paraíso (7) e Rainbow City (3) no mapa; nenhum censo contou cidadãos. A pergunta. |
-| p1 · A ten-mile band, two cities cut out | estabelecer (1903–1914) | 280 | 317 | 0:54–2:38 | O tratado de 1903 (Washington, 15 dias depois da independência; a faixa "in perpetuity" para construir, operar e proteger o canal; Panamá e Colón de fora; o Art. III lido na página). A lei de 1912 (o nome, o governador nomeado pelo presidente, o tribunal federal com jurados cidadãos) e a ordem de 1914 (polícia, escolas, correio). A terra tomada (quase 4.000 casas até 1915). Balboa como "permanent gold site" e La Boca como "permanent silver settlement" (1914); a administração em Balboa Heights; a forma da Sala. A linha de 1914. A primeira resposta: a lei. |
-| p2 · Two payrolls, one town | demonstrar (1912–1940) | 270 | 255 | 2:38–4:01 | As duas folhas, com a explicação do próprio governo (1940); quem estava em cada uma, com o ano (1920 e 1930: antilhanos; 1940: "with a few exceptions, citizens of the United States" × "a considerable number" de panamenhos); clubes e escolas de 1920 (US$ 158,46 × US$ 76,00); em 1930, mais de 60 % dos "silver" fora da linha; Balboa e La Boca coladas na entrada do Pacífico. A segunda resposta: a folha. |
-| p3 · Who was allowed to live inside the line | complicar (1936–1970) | 270 | 276 | 4:01–5:31 | A lista de 1939 (serviço, não cidadania); a casa antes da família (1950); os Knapp e o "commy"; os soldados (1940: quase metade em área militar); o cartão de 1970 (lugar de nascimento, não cidadãos; as bases junto com as cidades); Balboa decomposta (mais de mil nascidos na própria Zona). A terceira resposta: a residência; e a pergunta da lei. |
-| p4 · Born in the Zone | virar (1904–1952) | 230 | 226 | 5:31–6:44 | A lei de 1937, com "at the time of your birth", retroativa a 26/02/1904; antes, a regra geral do nascido no exterior, que exigia do pai ou da mãe cidadão a residência prévia nos EUA, condição que a lei de 1937 dispensou desde 1904 (FAM, atribuído); "for citizenship law", a Zona "was never considered part of the United States" (FAM), ao lado do "if it were the sovereign" do tratado; os "thousand or so" de Balboa. O "But" do gancho está pago; a régua de verdade era a folha. |
-| p5 · The names came off the signs | complicar e virar (1946–1965) | 270 | 297 | 6:44–8:21 | 1946: "racial discrimination" (Departamento de Estado), "any segregation" (o governador), "long custom" (o relatório de 1940), cada um com dono; 1948: os nomes saem das tabelas e das placas; 1950: "U.S." e "local"; 1955/1958: o mesmo salário-base; a loja (1939 e 1956, com a causa atribuída); as escolas, 1920 × anos 1960; o censo de 1960 no mapa. A quarta resposta: nos relatórios dos anos 1960, as escolas se listavam como "U.S. citizen" e "Latin American" (cada par com o ano, I06). |
-| p6 · A flag at Balboa High School | virar (1960–1964) | 250 | 282 | 8:21–9:53 | As duas bandeiras em lugares escolhidos (1960–62), o acordo de 10/01/1963 entre os dois governos (as duas onde a autoridade civil da Zona hasteasse a americana; CIJ) e a ordem de 30/12/1963; 07/01/1964 na Balboa High School (Bulletin); 09/01, a marcha do National Institute, a sequência pela comissão de juristas (pedida pela Ordem dos Advogados do Panamá), a bandeira rasgada sem agente, a saída pela Fourth of July Avenue, quatro dias de confronto; a contagem na forma da Sala; 10/01, o rompimento; a pergunta foi da folha ao mastro; o preâmbulo de 1977 cita a Declaração de 03/04/1964. |
-| p7 · October 1, 1979 | pagar (1977–1999, e hoje numa linha) | 290 | 329 | 9:53–11:40 | 07/09/1977; o Senado em abril de 1978 (68 a 32); 01/10/1979: jurisdição plena, 30 meses (polícia e tribunais americanos para os americanos do canal, os militares e as famílias, em certas áreas; as escolas ao Departamento de Defesa), a Commission até o fim de 1999, "ceased to exist"; Mondale ("a proud day"), Vance ("is not abandoning them"). A resposta em cadência (tratado, lei, segundo tratado, folha; a regra do nascimento que não mudou). Os dois tratados nas próprias palavras. A ACP em Balboa hoje; a cidade ficou, a Zona não. |
+| p1 · A ten-mile band, two cities cut out | estabelecer (1903–1914) | 280 | 315 | 0:54–2:37 | O tratado de 1903 (Washington, 15 dias depois da independência; a faixa "in perpetuity" para construir, operar e proteger o canal; Panamá e Colón de fora; o Art. III lido na página). A lei de 1912 (o nome, o governador nomeado pelo presidente, o tribunal federal com jurados cidadãos) e a ordem de 1914 (polícia, escolas, correio). A terra tomada (quase 4.000 casas até 1915). Balboa como "permanent gold site" e La Boca como "permanent silver settlement" (1914); a administração em Balboa Heights; a forma da Sala. A linha de 1914. A primeira resposta: a lei. |
+| p2 · Two payrolls, one town | demonstrar (1912–1940) | 270 | 258 | 2:37–4:01 | As duas folhas, com a explicação do próprio governo (1940); quem estava em cada uma, com o ano (1920 e 1930: antilhanos; 1940: "with a few exceptions, citizens of the United States" × "a considerable number" de panamenhos); clubes e escolas de 1920 (US$ 158,46 × US$ 76,00); em 1930, mais de 60 % dos "silver" fora da linha; Balboa e La Boca coladas na entrada do Pacífico. A segunda resposta: a folha. |
+| p3 · Who was allowed to live inside the line | complicar (1936–1970) | 270 | 262 | 4:01–5:26 | A lista de 1939 (serviço, não cidadania); a casa antes da família (1950); os Knapp e o "commy"; os soldados (1940: quase metade em área militar, só na tela desde a lista-r2, L17); o cartão de 1970 (lugar de nascimento, não cidadãos; as bases junto com as cidades); Balboa decomposta (mais de mil nascidos na própria Zona). A terceira resposta: a residência; e a pergunta da lei. |
+| p4 · Born in the Zone | virar (1904–1952) | 230 | 205 | 5:26–6:33 | A lei de 1937, com "at the time of your birth", retroativa a 26/02/1904; antes, a regra geral do nascido no exterior, que exigia do pai ou da mãe cidadão a residência prévia nos EUA, condição que a lei de 1937 dispensou desde 1904 (FAM, atribuído); "for citizenship law", a Zona "was never considered part of the United States" (FAM), ao lado do "if it were the sovereign" do tratado; os "thousand or so" de Balboa. O "But" do gancho está pago; a régua de verdade era a folha. |
+| p5 · The names came off the signs | complicar e virar (1946–1965) | 270 | 297 | 6:33–8:10 | 1946: "racial discrimination" (Departamento de Estado), "any segregation" (o governador), "long custom" (o relatório de 1940), cada um com dono; 1948: os nomes saem das tabelas e das placas; 1950: "U.S." e "local"; 1955/1958: o mesmo salário-base; a loja (1939 e 1956, com a causa atribuída); as escolas, 1920 × anos 1960; o censo de 1960 no mapa. A quarta resposta: nos relatórios dos anos 1960, as escolas se listavam como "U.S. citizen" e "Latin American" (cada par com o ano, I06). |
+| p6 · A flag at Balboa High School | virar (1960–1964) | 250 | 282 | 8:10–9:42 | As duas bandeiras em lugares escolhidos (1960–62), o acordo de 10/01/1963 entre os dois governos (as duas onde a autoridade civil da Zona hasteasse a americana; CIJ) e a ordem de 30/12/1963; 07/01/1964 na Balboa High School (Bulletin); 09/01, a marcha do National Institute, a sequência pela comissão de juristas (pedida pela Ordem dos Advogados do Panamá), a bandeira rasgada sem agente, a saída pela Fourth of July Avenue, quatro dias de confronto; a contagem na forma da Sala; 10/01, o rompimento; a pergunta foi da folha ao mastro; o preâmbulo de 1977 cita a Declaração de 03/04/1964. |
+| p7 · October 1, 1979 | pagar (1977–1999, e hoje numa linha) | 290 | 344 | 9:42–11:34 | 07/09/1977; o Senado em abril de 1978 (68 a 32); 01/10/1979: o Art. I(1) do tratado novo "terminates and supersedes" o de 1903, o da faixa "in perpetuity" para construir, operar e proteger o canal (pedido P01 da r2; 1936 e 1955 só na tela); jurisdição plena, 30 meses (polícia e tribunais americanos para os americanos do canal, os militares e as famílias, em certas áreas; as escolas ao Departamento de Defesa), a Commission até o fim de 1999, "ceased to exist"; Mondale ("a proud day"), Vance ("is not abandoning them"). A resposta em cadência (tratado, lei, segundo tratado, folha; nascer ali, sozinho, nunca bastou, desde a lista-r2, L01). Os dois tratados nas próprias palavras. A ACP em Balboa em 2026 (lista-r2, L03); a cidade ficou, a Zona não. |
 
 Os orçamentos do plano somavam 2.025 (gancho 165 + partes 1.860); o texto fechou em 2.097 na escrita, foi a 2.106 depois da lista
-da rodada 1 (gancho +1, p1 +37, p2 −15, p3 +6, p4 −23, p5 +27, p6 +9, p7 +39) e está em **2.148** depois dos dois pedidos da
-bancada (p4 +19, a residência prévia que a lei de 1937 dispensou; p6 +23, o acordo de 10/01/1963). p1 passa da folga de ±30 porque
+da rodada 1 (gancho +1, p1 +37, p2 −15, p3 +6, p4 −23, p5 +27, p6 +9, p7 +39), foi a **2.148** depois dos dois pedidos da
+bancada (p4 +19, a residência prévia que a lei de 1937 dispensou; p6 +23, o acordo de 10/01/1963); depois da lista-r2, foi a
+2.136 (p1 −1, p2 +3, p3 −13, p4 −2, p7 +1; o gancho, p5 e p6 iguais), a 14 palavras do teto; e, com o pedido P01 da r2 (+14 no
+1º parágrafo de p7: o "in perpetuity" de 1903 encerrado pelo Art. I(1) de 1977), foi a **2.150**, o teto do portão; a rodada 3 (p1 −1, p3 −1, p4 −19; `_trabalho/lista-r3.json`) o trouxe a **2.129**. p1 passa da folga de ±30 porque
 carrega seis beats e três enxertos (a forma inteira da Sala, a linha de 1914, o Art. III na página), e o primeiro rascunho tinha 487
 ali; p7 passa dela desde a r1, porque a L26 diz ao ouvido o que continuou depois de 01/10/1979 (os 30 meses de polícia e tribunais
-americanos, as escolas ao Departamento de Defesa), em vez de mexer no gancho; p6 passa dela desde os pedidos (+32 sobre 250), pela
+americanos, as escolas ao Departamento de Defesa), em vez de mexer no gancho, e mais desde o P01 da r2 (+54 sobre 290); p6 passa dela desde os pedidos (+32 sobre 250), pela
 oração do acordo que a lente de clareza pediu; p2 fica abaixo (a r1 tirou os dez nomes dos clubes da voz), e p4 volta à folga com o
-pedido P01. O "still on the books" saiu na r1 (L29). O total fica na faixa do portão (1.950 a 2.150), a 2 palavras do teto: a
-próxima troca que acrescente palavra pede corte no mesmo parágrafo. Os 28 pedidos à voz ficam entre 45 e 106 palavras (a regra é
-40 a 110: `escrita-notas.md`, item 5; pelo `contar` do portão); o maior é o dos soldados e do cartão de 1970 em p3 (que absorveu
-"Now go back to Balboa.", L14), e o menor, o das folhas de 1920–1940 em p2; os dois refeitos pelos pedidos têm 89 (p4) e 90 (p6).
+pedido P01 da r1. O "still on the books" saiu na r1 (L29). O total ficou a 21 palavras do teto do portão (2.129 de 2.150) depois da rodada 3: a troca que acrescente mais que isso
+pede corte no mesmo parágrafo. Os 28 pedidos à voz ficam entre 45 e 105 palavras (a regra é
+40 a 110: `escrita-notas.md`, item 5; pelo `contar` do portão); o maior era o dos soldados e do cartão de 1970 em p3 (que absorveu
+"Now go back to Balboa.", L14), com 106; desde a lista-r2 (L17, −12), ele tem 94, e o maior é o 2º parágrafo do gancho (105); o menor, o das folhas de 1920–1940 em p2; os dois refeitos pelos pedidos da r1 têm 89 (p4) e 90 (p6), e o refeito pelo P01 da r2 (o 1º de p7) tem 80 (era 66).
 
 ## As chamadas (CTA), pela regra de `marca/cta.md`
 
 - **Inscrição (35 a 60 %, nunca no 1º minuto):** a frase curta prevista pelo plano está no fim do 2º parágrafo de p3: "The job
-  came first. Then the house. Then the family." Pela contagem do portão: termina na palavra ≈908, ≈4:56 de fala, ≈41 % de 12:00
-  (fala + cauda). Depois dela, parágrafo novo (a pausa do narrar). A cama é a mesa com o relatório de 1950 (a regra da casa
+  came first. Then the house. Then the family." Pela contagem do portão: termina na palavra ≈909, ≈4:56 de fala, ≈41 % de 12:01
+  (fala + cauda; contas refeitas sobre `d98d50f9c55c`: o texto antes dela não mudou no P01 da r2; na rodada 3, R3-03 e R3-01 tiraram 2 palavras antes dela: ≈907, ≈4:56, ≈41 % de 11:54). Depois dela, parágrafo novo (a pausa do narrar). A cama é a mesa com o relatório de 1950 (a regra da casa
   antes da família) ou uma foto parada de casa da Company em Balboa, se vier selada, com o aviso do ano (identidade §6). Sem
   "here", sem "this line", sem número na tela.
-- **Reserva:** o fim do 1º parágrafo de p3, "Nobody lived in the Zone just because they wanted to." (palavra ≈824, ≈4:29, ≈37 %),
+- **Reserva:** o fim do 1º parágrafo de p3, "Nobody lived in the Zone just because they wanted to." (palavra ≈825 desde a r3, ≈4:29, ≈38 % de 11:54),
   seguida de parágrafo novo, sobre o mapa calmo das cidades depois de a folha do tratado de 1936 ter saído.
-- **Comentário (perto do fim):** as três últimas frases de p7, "Today, the Panama Canal Authority gives its address as the
+- **Comentário (perto do fim):** as três últimas frases de p7, "The Panama Canal Authority, in 2026, gives its address as the
   Administration Building, in Balboa. The town stayed where it was, below the hillside. The Zone that made it American did
-  not." (≈31 palavras ≈ 10 s, de ≈11:30 a ≈11:40), sem número e sem "here", sobre Balboa parada no mapa dentro do Panamá, no
+  not." (≈32 palavras ≈ 10 s, de ≈11:24 a ≈11:34 desde a r3 (eram ≈11:31 a ≈11:41); desde a lista-r2, L03, a 1ª abre com a ACP e leva o ano), sem número e sem "here", sobre Balboa parada no mapa dentro do Panamá, no
   enquadramento de p1 sem o contorno da Zona, ou a bandeira panamenha diante do prédio (Review de 01/10/1980, exp-12). A peça
   (6 a 6,5 s) cabe e termina mais de 1 s antes da cauda de 20 s. A pergunta é do redator-de-tela (o plano propõe "Would you have
   moved to the Canal Zone in 1960?" e, como alternativa, "Where else has one country run a town inside another?"), rodada no
@@ -139,7 +153,7 @@ unidade e no escopo do número (R14), ou se corta. Datas e durações não conta
 **Narradas sem pesar na memória:** "a band ten miles wide" (gancho, p1, p7; `doc.num-01`); "almost four thousand privately
 owned houses" (p1; 3.988 só na tela, `doc.num-13`); "more than a thousand" nascidos na própria Zona (p3, p4; 1.041 só na tela,
 `esc.num-35`); "more than half" dos moradores da Zona em 1970 (p3; o 23.559 de 44.198 só na tela, com o 8.569, `esc.num-27`,
-`esc.num-17`); "nearly half" em área militar em 1940 (p3; 45,6 % na tela, `evt.N17`); "68 to 32" (p7; `evt.N25`, só abril);
+`esc.num-17`); o "nearly half" em área militar em 1940 saiu da voz na lista-r2 (L17; 45,6 % só na tela, com o ano, `evt.N17`); "68 to 32" (p7; `evt.N25`, só abril);
 "thirty months", "seventy-five years", "the end of 1999" (p7; `doc.num-20`, `evt.N32`, `doc.afi-38`); "more than 23,000
 employees" saiu da voz (ver `escrita-notas.md`).
 
@@ -168,7 +182,7 @@ O que o texto faz diferente do plano, com o porquê, está em `roteiros/zona-do-
 mais importam a quem monta a cena:
 1. **A voz não diz os nomes das bases nem os números de 1940** (p3): o mapa das bases (Fort Clayton, Fort Amador, Albrook Field,
    Fort Davis e o acampamento de Gatún, pelo mapa "Districts and towns" do Census de 1940) leva os rótulos e "1940 · 45.6% OF THE
-   ZONE'S RESIDENTS LIVED IN MILITARY AREAS" sozinho; a voz diz só "nearly half".
+   ZONE'S RESIDENTS LIVED IN MILITARY AREAS" sozinho; desde a lista-r2 (L17), a voz não diz nem o "nearly half".
 2. **A linha que vazava saiu da voz** (p2, a 4ª cifra de corte do plano): as setas para fora do mapa de 1930 (ordem pública até
    1939, saneamento até 1955) só entram na tela com as DUAS datas, nunca uma só (plano, p2 › mapa); sem as duas, só as setas para
    dentro (os "silver" que moravam em Panamá e Colón).
@@ -199,7 +213,7 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
     contada à parte); a forma da Sala para T06, com o ajuste I03 (a encosta, não um morro). Nunca "the seat", "the capital".
   - Mapa: Balboa ao pé da encosta, com o Administration Building marcado em Balboa Heights e Ancón Hill atrás; o mesmo
     enquadramento volta na coda de p7.
-- "In 1960, about half of its 3,139 residents had been born in the United States, and under a 1903 treaty its police, courts and schools answered to Washington."
+- "In 1960, about half of its 3,139 residents had been born in the United States, and, under a 1903 treaty, its police, courts and schools answered to Washington."
   - `esc.num-35`, `exp.num-09`, `esc.afi-06` (1.580 de 3.139, 50,3 %: "about half", voz §1; a tela é exata); `esc-12`. A cidade,
     não o distrito (15.543) nem Balboa Heights (118). `doc-01`, `doc.afi-06`, `mec.afi-02` (o tratado); `doc-03`, `doc.afi-16`,
     `doc.afi-17`, `mec.afi-07` (o governador nomeado pelo presidente; o tribunal federal); `doc-04`, `doc.afi-19`, `doc.afi-20`
@@ -276,7 +290,7 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
     of the Secretary of War"). "A 1914 executive order" (nomes). A ordem só existe no disco como transcrição (T2): card de
     citação com a data, não página. O selo da polícia no braço (`exp.A13`, Review de 01/10/1979, p. 25) saiu da voz e fica como
     imagem da cena, se a página vier.
-- "The 1912 act also let the president declare every acre of the Zone necessary to the canal, and by June 1915 almost four thousand privately owned houses had been destroyed or removed."
+- "The 1912 act also let the president declare every acre of the Zone necessary to the canal." / "By June 1915, almost four thousand privately owned houses had been destroyed or removed." (lista-r2, L13, locucao:10)
   - `doc.afi-13` (seção 3 da lei), `doc.afi-14` (a ordem de 05/12/1912, pela descrição oficial: o texto não foi lido),
     `doc.afi-15`, `doc.num-13` (3.988, relatório de 1915, p. 432: "privately owned houses were destroyed by the police or removed
     by the owners on request"). Casas, não pessoas; "almost four thousand" é o arredondamento da voz §1. Em frase separada da
@@ -303,7 +317,7 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
     "© OpenStreetMap contributors" na tela.
 - "From now on, that is the line."
   - Cadeia referencial: "the line" = a divisa da Zona com a Cidade do Panamá (e com Colón); nunca "the border" (plano).
-- "So when Balboa was planned as a permanent town, the plan already had two words in it: "gold" and "silver.""
+- "When Balboa was planned as a permanent town, the plan already had two words in it: "gold" and "silver.""
   - A ponte de saída do plano (`evt.A09`), refeita na r1 (lista-r1): Balboa já tinha 1.146 moradores em 1912 (`mec-08`), e o que o relatório de 1914 sustenta é o plano da cidade permanente (1913–1914). Molde: a dobradiça p1 → p2.
 
 ### p2 · Two payrolls, one town
@@ -314,7 +328,7 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
   - `mec.afi-16`, `esc.afi-09`, `mec-11` (as duas folhas, nas palavras do governo da Zona). "Payroll" antes do nome ("roll" soa
     como "role", voz sintética); "gold roll" e "silver roll" sempre entre aspas e como nome do próprio governo (nomes). Tela:
     "1920 · 4,608 ON THE "GOLD ROLL" · 17,023 ON THE "SILVER ROLL"" (`mec.num-11`, `esc.num-51`).
-- "Its own 1940 report explains the names: during construction, common laborers had been paid in silver coin, and skilled craftsmen, recruited largely from the United States, in gold."
+- "Its own 1940 report explains the names: during construction, common laborers had been paid in silver coin, and skilled craftsmen, recruited largely from the United States, had been paid in gold."
   - `mec.afi-16`, `esc.afi-09` (Annual Report 1940, pp. 62–63). R12: atribuído ao relatório de 1940. "Employed in the Tropics" e
     "natives of the Tropics" não entram, nem em citação (riscos).
   - Tela: a folha das pp. 62–63.
@@ -381,10 +395,10 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
     empresa nova). Enxerto de "a cidade": a reserva da chamada de inscrição (parágrafo novo depois).
 - "The house came from the canal."
   - `mec.afi-13`, `exp.A10` (casa alugada da Company). Transição.
-- "The Zone's 1950 report says its "U.S.-rate" employees had to be assigned family quarters before their families got permission to come to the Zone at all." (r1: a regra está na seção "For U.S.-rate employees", p. 43, `mec-12`)
+- "The Zone's 1950 report says its employees on "U.S." rates had to be assigned family quarters before their families got permission to come at all." (lista-r2, L14: "U.S.-rate employees" soava "americanos", clareza:3; a forma é a do mesmo relatório, "employees paid at U.S. rates", `mec-12`; r1: a regra está na seção "For U.S.-rate employees", p. 43, `mec-12`; r3, R3-01, achado 1 da locução: "paid at" virou "on", porque o ouvido fechava "its employees paid at U.S. rates" como oração inteira; o grupo é o mesmo)
   - `mec.afi-13`, `mec-12` (p. 43: "employees are required to have an assignment to family quarters before permission is granted
     for their families to come to the Canal Zone"). Atribuído ao relatório, com o ano. Tela: a folha.
-- "Mary and Herbert Knapp taught in the Zone's schools." / "In the Panama Canal Review, the Zone's own magazine, in its issue dated the day the Zone ended, they wrote that everyone "lived in rented quarters" and shopped at the "commy," the commissary."
+- "Mary and Herbert Knapp taught in the Zone's schools." / "They wrote in the Panama Canal Review, the Zone's own magazine, in its issue dated the day the Zone ended: everyone "lived in rented quarters" and shopped at the "commy," the commissary." (lista-r2, L10: o sujeito na frente, locucao:7)
   - `exp.A10`, `exp-10` ("everyone lived in rented quarters and did most of his shopping at the "commy."", pp. 60–61). Relato
     nostálgico de moradores: só vocabulário, atribuído, citação de até 20 palavras; nunca para julgar a vida na Zona (riscos). A
     Review definida na 1ª menção ("the Zone's own magazine"; publicação oficial, `exp-09`). "Zonian" não entra na voz.
@@ -394,7 +408,7 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
     (contam na taxa, abaixo do teto).
 - "Many of the others inside the line were soldiers."
   - `esc.afi-18`, `esc.div-11` (quem eram os "militares" de cada tabela: uma medida por quadro). Transição.
-- "In 1940, nearly half of the Zone's residents lived in military areas."
+- Saiu da voz na lista-r2 (L17, clareza:5; colada à de 1970, a metade de 1940 ia para 1970): "In 1940, nearly half of the Zone's residents lived in military areas." O número fica só na tela, com o ano.
   - `esc.num-14`, `evt.N17`, `esc.afi-18` (Census 1940, Table 1: 23.638 de 51.827, 45,6 %). Uma medida só, com o ano (esc.div-11:
     nunca somar nem encadear). Nunca "the peak of Americans was 1940" (T10).
   - Mapa: Fort Clayton, Fort Amador e Albrook Field no Pacífico, Fort Davis e o acampamento de Gatún no Atlântico, "1940 · 45.6%
@@ -440,11 +454,11 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
   - `doc.afi-28`, `doc.afi-29` ("this Act was retroactive to February 26, 1904", 8 FAM 302.4-2 d), `doc-01`, `evt-02`,
     `mec.div-01` (26/02/1904: troca das ratificações e proclamação). Os nascidos no Panamá de pai ou mãe cidadão a serviço dos
     EUA ou da Panama Railroad (a 2ª parte da lei) só na tela, se couber.
-- "Until then, the State Department's manual says, a child born in the Zone fell under the general rule for births abroad." (pedido P01, r1: "there was no special law at all:" saiu da frase; o que ele dizia, a frase seguinte diz com a condição)
+- "Until 1937, the State Department's manual says, a child born in the Zone fell under the general rule for births abroad." (lista-r2, L04: "Until then" se prendia a 1904, locucao:1; pedido P01, r1: "there was no special law at all:" saiu da frase; o que ele dizia, a frase seguinte diz com a condição)
   - `doc.afi-29`, `doc-09` (8 FAM 302.4-2 c: "Until August 4, 1937, there was no special law relating to U.S. citizens born in
     Panama. Acquisition of U.S. citizenship was governed by Section 1993, Revised Statutes"). N11: atribuído ao manual, nunca como
     documento lido. "The general rule for births abroad" é a Section 1993 dos Revised Statutes, que a voz não nomeia.
-- "That rule, the manual adds, required the citizen parent to have lived in the United States first, a condition the 1937 law dropped, from 1904 on." (pedido P01, r1: a oração que a lente de clareza pediu, clareza:4)
+- "That rule, the manual adds, required the citizen parent to have lived in the United States first, a condition the 1937 law dropped, back to 1904." (lista-r2, L05, escuta:E06; pedido P01, r1: a oração que a lente de clareza pediu, clareza:4)
   - `doc.afi-29`, `doc-09` (8 FAM 302.4-2 c(1) e c(2): "the rights of citizenship shall not descend to children whose fathers never
     resided in the United States prior to the birth of such child", antes de 24/05/1934, e "whose fathers or mothers never resided in
     the United States previous to the birth of such child", de 24/05/1934 a 04/08/1937; 302.4-2 i(4): "There were no residence
@@ -468,12 +482,12 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
   - `doc.afi-06`, `doc.div-01`, `esc.div-12` (o par que é a virada do ângulo, R13 e I01: as duas frases do próprio governo
     americano, lado a lado, sem o narrador arbitrar). O portão alerta `sovereign`: citação do tratado, aceita.
   - Tela: o cartão do Art. III de novo, ao lado da folha do FAM (duas citações, dois cartões).
-- "For the thousand or so residents of Balboa born in the Zone, the rule was the same: they were citizens if a parent had been one at the time of the birth."
+- "So for the thousand or so residents of Balboa born in the Zone, the answer came from their parents, not from where they were born." (r3, C01 da clareza: a regra não se repete)
   - `esc.num-35` (1.041), `doc.afi-28`, `esc.afi-17`. I13: a regra, com a condição; nunca "the child was Panamanian" nem a opinião
-    de 1927 como lida (`doc.afi-27`). O portão alerta `citizens`: a palavra da lei, aceita. Tela: a linha da Table 28 de novo.
+    de 1927 como lida (`doc.afi-27`). Desde a r3, a frase não diz "citizens" (o alerta saiu); o "not from where they were born" é o 8 FAM 302.4-2 a. (`doc-09`: a Zona "was never considered part of the United States" para a regra do nascimento no território). Tela: a linha da Table 28 de novo.
   - (r1, lista-r1: "The census never asked." saiu da voz, 4ª volta da ressalva do censo.)
-- "So the law that ran the ground left the child to the parents' papers." / "The sorting was done elsewhere: on the payroll." / "And in 1946, Washington asked about it."
-  - A ponte de saída do plano, refeita pelo juiz ("the law that ran the ground", não "run as American": I01). "Washington asked
+- "The sorting was done elsewhere: on the payroll." / "And in 1946, Washington asked about it."
+  - A ponte de saída do plano, refeita pelo juiz ("the law that ran the ground", não "run as American": I01; a frase saiu na r3, R3-02, e "elsewhere" passou a contrastar com "their parents" e "where they were born"); na lista-r2 (L09, locucao:6) saiu só "the child to the parents' papers", que dito não se entendia. "Washington asked
     about it" = a instrução do Departamento de Estado de 21/02/1946 (`mec.afi-22`), nomeada na 1ª frase de p5.
 
 ### p5 · The names came off the signs
@@ -503,21 +517,22 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
   - `exp.A06`, `exp-03` (Annual Report 1950, p. 55: ""U. S." rates … "local" rates"), `mec.afi-23`. As palavras do relatório
     entre aspas (cadeia referencial); "U.S." só como citação, poucas vezes (o ponto parte a frase no portão). Escala de pagamento
     não é cidadania (T15).
-- "In 1955, a new treaty promised, and a 1958 law set, the same base pay for the same job, whether the employee was a citizen of the United States or of Panama."
+- "In 1955, a new treaty promised the same base pay for the same job, whether the employee was a citizen of the United States or of Panama." / "A 1958 law set it." (lista-r2, L11, locucao:8)
   - `mec.afi-25`, `doc.afi-32`, `doc-11`, `mec-05` (Memorandum of Understandings de 25/01/1955, item 1(a); PL 85-550, seção
     1(b): "The basic wage for any given grade level will be the same … without regard to whether he is a citizen of the United
     States or of the Republic of Panama"). "A 1955 treaty" (nomes). O adicional só para americanos (item 1(b)) e o "U.S. wage
     base" × "Canal Zone wage base" (`mec.afi-26`) ficaram fora da voz. O portão alerta `citizen`: a palavra da lei, aceita.
   - Tela: o Bulletin de 07/02/1955, p. 241.
-- "The store followed the same line."
+- "The store sorted its customers, too." (lista-r2, L15: "line" volta a ser só a divisa, clareza:4)
   - `mec.afi-30`. Transição (enxerto de "a linha": a loja como regra firme).
-- "From 1939, the Zone's commissaries sold only to its own employees and soldiers, with their families."
+- "From 1939, the Zone's commissaries sold only to its employees and soldiers, their families, and certain residents."
   - `mec.afi-30`, `mec-04` (Art. III(1) do tratado de 1936: a venda limitada às classes (a) e (b) do Art. III(2): empregados e
-    militares, com as famílias). "From 1939" (T23).
+    militares, com as famílias; e às classes (c), (d) e (e) e às famílias delas só quando moravam na Zona, "certain residents";
+    lista-r2, L02, fatos:A1). "From 1939" (T23).
 - "From the end of 1956, employees who lived in Panama and were not citizens of the United States could no longer shop there."
   - `mec.afi-30`, `mec-20` (Art. XII do tratado de 1955: a partir de 31/12/1956), cronologia 1956-12-31. O portão alerta
     `citizens`: a palavra da regra, aceita. A queda de 22 % nas vendas em 1958 (`mec.num-31`) fica fora da voz.
-- "Panama had insisted on that, a State Department memo says, calling the old access unfair competition with its economy."
+- "A State Department memo says Panama had insisted on that, calling the old access unfair competition with its economy." (lista-r2, L07: a fonte na frente, para o "calling" seguir o Panamá, locucao:4)
   - `mec.afi-30`, `mec-20` (FRUS 1955–57, VII, doc. 161: "agreed to … at the insistence of the Government of Panama which argued
     that the privilege … constituted an unjust and unfair competition with the economy of Panama"). A causa atribuída ao
     memorando, como o plano exige.
@@ -548,8 +563,9 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
   - Mapa: Balboa, Paraíso e Rainbow City cada uma no lugar dela, com o número; Gamboa 569 de 3.489 só no mapa (`exp.num-12`);
     por dentro, só na tela: 3,4 · 5,1 · 5,8 pessoas por domicílio e 12,6 · 8,2 · 7,1 anos de estudo (`mec.num-42`, `exp.num-13`,
     `exp.num-14`); Panama City e Colón fora da linha, sem número ou com o do censo panamenho de 1960 (`esc.num-44`).
-- "The payroll had lost its names." / "The line had not." / "And the next fight over the line was about a flag."
-  - A ponte de saída do plano (`mec.afi-23`; `mec.afi-30`; `exp.A14`). "The line had not" é frase curta (conta na taxa).
+- "The payroll had lost its old names." / "The division was still there." / "And the next fight was about a flag."
+  - A ponte de saída do plano (`mec.afi-23`; `mec.afi-30`; `exp.A14`), refeita na lista-r2 (L16, clareza:4: "The line had not" fazia a divisa
+    virar a divisão; "line" volta a ser só a divisa).
 
 ### p6 · A flag at Balboa High School
 
@@ -633,16 +649,34 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
   - `evt.N25` (18/04/1978, duas origens: NARA e Office of the Historian), `doc.num-21`, `evt-31`. N01: o placar de 16/03 só tem
     o Office of the Historian e fica na tela ("68–32 · MARCH 16 & APRIL 18, 1978"). "Approved", nunca "ratified". O plebiscito de
     23/10/1977 (`evt-32`, `esc-08`) e a cerimônia de 16/06/1978 (`evt-36`, `doc.div-07`) ficaram fora da voz.
-- "It took effect on October 1, 1979, and ended the treaties of 1903, 1936 and 1955."
-  - `doc.afi-35`, `mec.dat-26`, `esc.dat-17` (vigência em 01/10/1979; T12: nunca 1978), `doc.afi-34`, `evt.A13`, `mec.afi-39`
-    (Art. I(1): "terminates and supersedes" os de 1903, 1936 e 1955; R15).
+- "It took effect on October 1, 1979." (pedido P01, r2, escuta:E02: a frase foi partida; a oração "and ended the treaties of 1903, 1936 and 1955" saiu da voz, e a tela a leva)
+  - `doc.afi-35`, `mec.dat-26`, `esc.dat-17` (vigência em 01/10/1979; T12: nunca 1978). "It" é "the canal treaty" da frase anterior.
+    A frase ficou literal, como o pedido manda (`nao_tocar`); só perdeu a oração da lista.
+- "Its first article "terminates and supersedes" the 1903 treaty, which had granted the band "in perpetuity" to build, run and protect the canal." (pedido P01, r2, escuta:E02: o "in perpetuity" de p1 volta e acaba aqui, por um tratado novo que revogou o antigo)
+  - `doc.afi-34`, `evt.A13`, `mec.afi-39`, `doc-14` (Art. I(1), p. 4: "Upon its entry into force, this Treaty terminates and supersedes:
+    (a) The Isthmian Canal Convention … signed at Washington, November 18, 1903"; R15). "Its first article" é o Art. I ("Abrogation of
+    Prior Treaties and Establishment of a New Relationship") do Panama Canal Treaty, o tratado que "It" e "Its" nomeiam desde "the
+    canal treaty". A citação é o verbo do documento, no presente, como "The 1977 treaty opens…" em p6; vai entre aspas porque é a
+    palavra do tratado.
+  - `doc.afi-03`, `doc.num-01`, `mec.afi-01`, `doc-01` (Art. II de 1903: a faixa "in perpetuity" para "the construction, maintenance,
+    operation, sanitation and protection of said Canal"). R01: "in perpetuity" sempre com a finalidade, na forma de p1 ("to build, run
+    and protect"); "the band" é a cadeia referencial do gancho, de p1 e do fecho. A oração relativa só repete o que p1 disse do Art. II;
+    a identidade entre "the 1903 treaty" e a Convenção de 18/11/1903 que o Art. I(1)(a) nomeia está no próprio texto do tratado
+    (nenhuma inferência). Os tratados de 1936 e 1955 (`doc.afi-34`, Art. I(1)(b)) saíram da voz neste pedido, por orçamento: p3 e p5
+    já os apresentaram, e o que importa ao ouvido aqui é o de 1903.
+  - O porquê do fim (I16) não coube na voz: o orçamento do P01 era +14 palavras, e a volta do "in perpetuity" com a finalidade os
+    levou todos. O elo documental fica no fim de p6 (o preâmbulo de 1977 e a Declaração de 03/04/1964, `nao_tocar`); a forma atribuída
+    aos historiadores do Departamento de Estado (`doc-17`, T2, T14) está pronta em `_trabalho/pedidos-r2-feito.md`, se uma rodada
+    futura a quiser e tiver orçamento. Nenhuma palavra de soberania na voz do narrador (I01); nada de "the riots forced" (I16).
+  - Tela: a folha do Art. I(1) (UNTS 1280, p. 4) com "TERMINATES AND SUPERSEDES" grifado e "1903 · 1936 · 1955" ao lado (só a tela
+    lista os três); e o cartão do Art. II de 1903 com "IN PERPETUITY" só com a finalidade dentro (R01), ou sem citação.
 - "That day, seventy-five years after the United States took possession of the canal works, Panama took back full jurisdiction over the former Zone."
   - `evt.N32`, `mec.div-01`, `evt-10`, `mec-10` (04/05/1904: 75 anos e 4 meses; nunca 76, o portão reprova), `doc.afi-35`,
     `evt.A14`, `doc-14` (Art. XI(1): "reassume plenary jurisdiction over the former Canal Zone"). R08: a forma "took back full
     jurisdiction", sempre com a transição (a frase seguinte). Tela: "OCT. 1, 1979"; "1904–1979 · 75 YEARS".
   - Mapa: a faixa inteira, a linha se apagando como jurisdição plena do Panamá; os 30 meses ditos na voz e na tela, para a cena
     não dizer "overnight" (T24).
-- "For thirty months more, American police and courts still covered the canal's American employees, the military and their families, in certain areas." / "The Zone's schools passed to the Department of Defense, and an American agency, the Panama Canal Commission, ran the canal until the end of 1999." (r1: `doc.afi-36`, o grupo e o fato juntos; as escolas, `exp-13`: "the transfer of organizations to the Department of Defense; e.g., schools, hospitals")
+- (lista-r2, L06: este par de frases passou para o fim do 2º parágrafo de p7, depois da carta de Vance; o parágrafo abre com "The Canal Zone and its government ceased to exist.") "For thirty months more, American police and courts still covered the canal's American employees, the military and their families, in certain areas." / "The Zone's schools passed to the Department of Defense, and an American agency, the Panama Canal Commission, ran the canal until the end of 1999." (r1: `doc.afi-36`, o grupo e o fato juntos; as escolas, `exp-13`: "the transfer of organizations to the Department of Defense; e.g., schools, hospitals")
   - `doc.num-20`, `mec.num-45`, `evt.N26`, `doc.afi-36` (Art. XI: 30 meses; leis, polícia e tribunais americanos em certas áreas
     para os empregados americanos da Commission, os militares e os dependentes), `mec-24` (o tribunal distrital extinto em
     31/03/1982: só na tela), `doc.afi-38`, `evt.A14`, `exp.A24` (a Commission até o meio-dia de 31/12/1999; administrador
@@ -674,7 +708,7 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
     Forças Armadas, contratistas e as outras). Tela: o cartão do 53 Stat. 1811.
 - "And a payroll, which sorted the people who worked for the canal: first into "gold" and "silver," then into "U.S." rates and "local" rates."
   - `mec.afi-16`, `mec.afi-23`, `exp.A06` (p2 e p5). Tela: o cartão das duas folhas, com os anos (1920; 1950).
-- "The rule about being born there never changed." (r1: "and it is still on the books" saiu; o 8 FAM 302.4-2 d(1) diz que a regra "is not in effect because the Panama Canal Zone no longer exists", `doc-09`)
+- "Being born there, by itself, was never enough." (lista-r2, L01: "The rule about being born there never changed." contradizia o p4, fatos:A2; r1: "and it is still on the books" saiu; o 8 FAM 302.4-2 d(1) diz que a regra "is not in effect because the Panama Canal Zone no longer exists", `doc-09`)
   - `doc.afi-28`, `doc-08` (8 U.S.C. § 1403, United States Code, 2024 Edition), `esc-18`, `mec-07` (p4). A condição ("at the
     time of the birth") foi dita inteira em p4; a tela a repete: "8 U.S.C. § 1403 · AT THE TIME OF THE BIRTH". Tela: a folha da
     edição 2024.
@@ -687,7 +721,7 @@ de "Nomes e regras de pauta" (`regras_de_pauta`).
   - `doc.afi-33`, `evt.A12`, `mec.afi-39`, `doc-14` (Art. I(2): "the Republic of Panama, as territorial sovereign, grants to the
     United States…"). R07: nunca costurado com o preâmbulo ("Acknowledging … sovereignty") numa frase só; uma citação por cartão.
     O portão alerta `sovereign`: citação datada, aceita. Tela: o cartão "TERRITORIAL SOVEREIGN" · ART. I(2) · 1977 · UNTS 1280.
-- "Today, the Panama Canal Authority gives its address as the Administration Building, in Balboa."
+- "The Panama Canal Authority, in 2026, gives its address as the Administration Building, in Balboa." (lista-r2, L03: "Today," saiu; a data é a da leitura, roteiro:2)
   - `evt.A20`, `evt-33`, `evt-32` (o rodapé da ACP: "Panama Canal Authority. Administration Building. Balboa, Ancon. Republic of
     Panama", lido em 14/10/2026). N14: sem "the same building" (não foi lido); volátil, reconferir na véspera da gravação
     (fundamento, "Voláteis"). "Panama Canal Authority" na voz; a sigla ACP só na tela (nomes). Balboa como setor do corregimiento

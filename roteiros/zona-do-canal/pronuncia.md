@@ -1,6 +1,6 @@
 # Folha de pronúncia
 
-Revisão do roteiro: `4c93f1712cf2`
+Revisão do roteiro: `58db12762030`
 
 > Para o passo de voz do vídeo 3 (a Zona do Canal). Feita em 14/10/2026 sobre o texto falado de
 > `roteiros/zona-do-canal/roteiro-narrador.md` (sha256 do texto falado pelo `gate.mjs`: `6917e62a2155…`, 29 parágrafos,
@@ -11,6 +11,25 @@ Revisão do roteiro: `4c93f1712cf2`
 > (`_trabalho/pedidos-r1-feito.md`: P01 no 15º parágrafo, p4; P02 no 21º, p6): nenhum nome próprio novo, nenhuma sigla nova, e os
 > parágrafos não mudaram de número, então as contagens e as posições abaixo continuam valendo. As palavras novas são comuns
 > ("manual", "citizen parent", "condition", "agreement", "governments", "civilian authorities").
+> Carimbada de novo, ainda em 14/10/2026, sobre `69bb7fb13954…` (28 parágrafos, 2.136 palavras, PASSA), depois da lista da
+> rodada 2 (`_trabalho/lista-r2.json`, `_trabalho/aplicado-r2.md`): nenhum nome próprio novo e nenhuma sigla nova; os
+> parágrafos não mudaram de número. Saiu da voz o composto "U.S.-rate" (L14), que virou employees paid at "U.S." rates, a
+> forma do mesmo relatório (a linha dele, abaixo, foi refeita); entrou o ano 2026 (L03, "The Panama Canal Authority, in
+> 2026, …"), que foi para os anos da cópia; o pedido 4 da amostra foi refeito com as frases novas (L10 e L14). As outras
+> palavras novas são comuns ("customers", "enough", "parents", "too").
+> Carimbada de novo, ainda em 14/10/2026, sobre `d98d50f9c55c…` (28 parágrafos, 2.150 palavras, PASSA), depois do pedido P01 da
+> rodada 2 (`_trabalho/pedidos-r2.json`, `_trabalho/pedidos-r2-feito.md`): só o 25º parágrafo (p7, o 1º) mudou, e os parágrafos não
+> mudaram de número (Torrijos continua no 25º). Nenhum nome próprio novo e nenhuma sigla nova. Saiu da voz a lista "the treaties of
+> 1903, 1936 and 1955" (a linha dos pares de anos, abaixo, foi refeita; 1936 e 1955 continuam ditos em p3 e p5); entraram "the 1903
+> treaty" (lido como ano) e a citação "terminates and supersedes", as duas únicas palavras inéditas (comuns; na lista dos lidos sem
+> folha), e "in perpetuity" passa a ser dito duas vezes (p1 e p7; a linha dele, abaixo, foi refeita). O resto do parágrafo novo já
+> estava na narração ("first", "article", "granted", "band", "build, run and protect").
+> Carimbada de novo, ainda em 14/10/2026, sobre `58db12762030…` (28 parágrafos, 2.129 palavras, PASSA), depois da lista da
+> rodada 3 (`_trabalho/lista-r3.json`, `_trabalho/aplicado-r3.saida.txt`): só o 6º, o 12º e o 16º parágrafos mudaram, e os parágrafos
+> não mudaram de número. Nenhum nome próprio entrou nem saiu, nenhuma sigla nova e nenhum ano novo. O "U.S." rates continua dito
+> duas vezes, agora como employees on "U.S." rates (R3-01; a linha dele e o pedido 4 da amostra, abaixo, foram refeitos com a
+> frase nova). Saíram "rule", "same", "ground" e "citizenship" da frase de p4 (R3-02); nenhuma palavra é inédita
+> ("answer" e "where they were born" já estavam na narração, em p4 e no gancho).
 > Os termos saem da tabela `nomes` de `pautas/zona-do-canal/fundamento.json` (79 nomes; as
 > pronúncias de lá eram todas hipótese) cruzada com o que a narração de agora diz de fato. Começa de `marca/pronuncias.md`:
 > de lá não vem nenhum nome (a folha permanente só tem o Alasca).
@@ -39,7 +58,7 @@ Revisão do roteiro: `4c93f1712cf2`
 | Gatún | 1 (p2, 9º parágrafo) | gah-TOON | /ɡɑˈtun/ | Confirmado | Dictionary.com, *Gatun*: "[gah-toon] / gɑˈtun /", "a town in the N Canal Zone of Panama". | **Médio.** "GAT-un". | reserva: **Gah-TOON** |
 | commy (na citação dos Knapp: shopped at the "commy") | 1 (p3, 12º parágrafo) | KAH-mee, o começo de "commissary" | /ˈkɑmi/ | **Hipótese** | Sem entrada (o Dictionary.com não tem). Por analogia com *commissary*, "[kom-uh-ser-ee] / ˈkɒm əˌsɛr i /". | Médio. "KOH-mee". Palavra de citação: não muda. | reserva: **KAH-mee** (só se a amostra errar; nunca "commie", que muda o sentido no texto conferido pelo Whisper) |
 | Knapp ("Mary and Herbert Knapp") | 1 (p3, 12º parágrafo) | NAP, o "k" mudo | /næp/ | **Hipótese** | Sem entrada para o sobrenome. Por analogia: Dictionary.com, *knap*, "[nap] / næp /". Há famílias que dizem "kuh-NAP"; como os Knapp diziam não foi ouvido. | Baixo. | — |
-| "U.S.-rate" (na citação do relatório de 1950: its "U.S.-rate" employees) | 1 (p3, 12º parágrafo; entrou na r1, L11) | YOO-ESS-rayt: as duas letras e "rate", sem pausa | /ˌjuˈɛsˌreɪt/ | **Hipótese** (nenhuma fonte lida para o composto; a sigla "U.S." a voz lê) | Sem entrada (o termo é do relatório da Zona de 1950, p. 43, `mec-12`). Nesta refeitura não se leu dicionário: a tarefa foi sem rede. | Médio. O ponto e o hífen juntos podem dar pausa depois de "U.S." (como fim de frase) ou "us-rate". Palavra de citação: não muda. | reserva: **U.S. rate** (sem o hífen, só se a amostra errar) |
+| "U.S." rates (employees on "U.S." rates, desde a r3, R3-01; antes, employees paid at "U.S." rates, a forma do relatório de 1950; e into "U.S." rates and "local" rates) | 2 (p3, 12º parágrafo, desde a lista-r2, L14, no lugar de "U.S.-rate"; p7, 27º parágrafo) | YOO-ESS rayts: as duas letras e "rates", sem pausa | /ˌjuˈɛs reɪts/ | **Hipótese** (nenhuma fonte lida para a expressão; a sigla "U.S." a voz lê) | Sem entrada (a forma é a do relatório da Zona de 1950, "employees paid at U.S. rates", `mec-12`). Nesta refeitura não se leu dicionário: a tarefa foi sem rede. | Médio. O ponto e as aspas juntos podem dar pausa de fim de frase depois de "U.S.". Palavra de citação: não muda. | reserva: **U.S. rates** (sem as aspas, só se a amostra errar) |
 | Shaler (Shaler Triangle) | 1 (p6, 21º parágrafo) | SHAY-ler | /ˈʃeɪlər/ | **Hipótese** (o dossiê também) | Sem entrada no Dictionary.com. | Baixo a médio. "SHAL-er". | reserva: **Shay-ler** |
 | Albrook (Albrook Air Force Base) | 1 (p7, 26º parágrafo) | AWL-bruuk | /ˈɔlˌbrʊk/ | **Hipótese** | Sem fonte de pronúncia. O padrão inglês de "al-" antes de consoante e de "brook". | Baixo. | — |
 
@@ -55,18 +74,19 @@ Revisão do roteiro: `4c93f1712cf2`
 | Hay (John Hay) | 1 (p1) | HAY | /heɪ/ | Confirmado | Dictionary.com, *Hay* (2): "[hay] / heɪ /", "John Milton, 1838–1905, U.S. statesman and author". | — |
 | Mondale (Vice President Mondale) | 1 (p7) | MON-dayl | /ˈmɑnˌdeɪl/ | Confirmado | Dictionary.com, *Mondale*: "[mon-dayl] / ˈmɒnˌdeɪl /", Walter Mondale, "vice president 1977–81". | — |
 | commissary | 2 (p2, p3) | KOM-uh-ser-ee | /ˈkɑməˌsɛri/ | Confirmado | Dictionary.com, *commissary*: "[kom-uh-ser-ee] / ˈkɒm əˌsɛr i /". | — |
-| perpetuity ("in perpetuity", na citação do tratado) | 1 (p1) | pur-pih-TOO-ih-tee | /ˌpɜrpɪˈtuɪti/ | Confirmado | Dictionary.com, *perpetuity*: "[pur-pi-too-i-tee, -tyoo-] / ˌpɜr pɪˈtu ɪ ti, -ˈtju- /". | — |
+| perpetuity ("in perpetuity", na citação do tratado) | 2 (p1, 3º parágrafo; p7, 25º, desde o P01 da r2: conferir que sai igual nas duas) | pur-pih-TOO-ih-tee | /ˌpɜrpɪˈtuɪti/ | Confirmado | Dictionary.com, *perpetuity*: "[pur-pi-too-i-tee, -tyoo-] / ˌpɜr pɪˈtu ɪ ti, -ˈtju- /". | — |
 | jurisdiction | 1 (p7) | joor-is-DIK-shuhn | /ˌdʒʊrɪsˈdɪkʃən/ | Confirmado | Dictionary.com, *jurisdiction*: "[joor-is-dik-shuhn] / ˌdʒʊər ɪsˈdɪk ʃən /". | — |
 
 **Lidos sem folha** (nomes e palavras comuns, risco nenhum): Alpha Point, Panama Canal Zone, Canal Zone, Balboa Heights e
 Balboa High School (fora o "Balboa"), Rainbow City, Silver City, West Indian, Washington, Congress, Senate, State
 Department, Department of Defense (entrou na r1, p7, 26º parágrafo), Secretary of State, President Carter, Panama Canal Review, Panama Canal Commission, Panama Canal Authority,
 Administration Building(s), National Institute, Fourth of July Avenue, Joint Declaration, U.S. National Archives, Air
-Force, Atlantic, Pacific, Mary, Herbert, Omar, jurists, sovereign, convention, executive order, segregation, defiance.
+Force, Atlantic, Pacific, Mary, Herbert, Omar, jurists, sovereign, convention, executive order, segregation, defiance, "terminates and
+supersedes" (a citação do Art. I(1) de 1977, p7, 25º parágrafo, desde o P01 da r2; soo-per-SEEDZ, palavra comum).
 
 ## Da tabela do dossiê, fora do texto de agora (reserva, se o roteiro mudar)
 
-O pedido da folha citou estes, e o dossiê os tem; a narração de `4c93f1712cf2` não os diz. Ancón e Pedro Miguel estavam na
+O pedido da folha citou estes, e o dossiê os tem; a narração de `d98d50f9c55c` não os diz. Ancón e Pedro Miguel estavam na
 narração de `6917e62a2155` (a lista dos clubes de 1920, p2) e saíram da voz na r1 (L07): os nomes vão aos rótulos do mapa.
 
 | Termo | Como se fala | IPA | Estado | Fonte |
@@ -86,24 +106,24 @@ folha se refaz com o sha novo.
 
 Antes da narração inteira, uma amostra no v4, com a voz e os ajustes do `canal.json` › `narracao` e **um pedido por linha
 abaixo** (como na produção, um pedido por parágrafo), **sem nenhum alias e com os acentos do roteiro**, para o Lucas ouvir.
-São frases do roteiro de `4c93f1712cf2`, com os números já por extenso (as oito frases não mudaram nos pedidos da bancada). Colón vai em dois pedidos (1 e 3) e Paraíso em
-dois (5 e 8), para ver se a voz os diz igual; Gatún e Cristóbal, uma vez só desde a r1 (2); "U.S.-rate" no 4.
+São frases do roteiro de `58db12762030`, com os números já por extenso (na r3, o pedido 4 trocou "paid at" por "on", a R3-01; as oito frases não mudaram nos pedidos da bancada; na lista-r2, o pedido 4 foi refeito com as frases novas de L14 e L10, e os outros sete continuam iguais; o P01 da r2 mudou o 25º parágrafo, mas a frase dele no pedido 7 é a primeira, que ficou literal). Colón vai em dois pedidos (1 e 3) e Paraíso em
+dois (5 e 8), para ver se a voz os diz igual; Gatún e Cristóbal, uma vez só desde a r1 (2); "U.S." rates no 4.
 
 1. On November eighteenth, nineteen oh-three, John Hay signed a treaty for the United States, and Philippe Bunau-Varilla signed it acting for Panama. Panama City, the capital, and Colón sat inside those limits, and the same article left them out.
 2. The Zone's nineteen twenty report lists "gold" clubhouses at Balboa and four other towns, and "silver" clubhouses at La Boca and four others. Gatún and Cristóbal had both.
 3. In nineteen thirty, more than sixty percent of the Zone's "silver" employees lived outside it, in Panama City and Colón.
-4. The Zone's nineteen fifty report says its "U.S.-rate" employees had to be assigned family quarters before their families got permission to come to the Zone at all. Mary and Herbert Knapp taught in the Zone's schools. In the Panama Canal Review, the Zone's own magazine, in its issue dated the day the Zone ended, they wrote that everyone "lived in rented quarters" and shopped at the "commy," the commissary.
+4. The Zone's nineteen fifty report says its employees on "U.S." rates had to be assigned family quarters before their families got permission to come at all. Mary and Herbert Knapp taught in the Zone's schools. They wrote in the Panama Canal Review, the Zone's own magazine, in its issue dated the day the Zone ended: everyone "lived in rented quarters" and shopped at the "commy," the commissary.
 5. Up the canal, Paraíso had seven residents born in the United States, out of three thousand one hundred thirteen.
 6. It flew first at Shaler Triangle, a plaza of Zone ground in Panama City, then on the bridge over the canal and on the Administration Buildings.
 7. On September seventh, nineteen seventy-seven, in Washington, President Carter and Panama's Omar Torrijos signed two treaties. At Albrook Air Force Base, Vice President Mondale called it "a proud day" for both peoples.
 8. Paraíso, up the canal: seven of three thousand one hundred thirteen.
 
-São 1.482 caracteres; ao preço medido no teste do v4 de 07/10 (~0,13 crédito por caractere), uns 190 créditos, dentro do
+São 1.469 caracteres (1.474 antes da r3; 1.482 antes da lista-r2); ao preço medido no teste do v4 de 07/10 (~0,13 crédito por caractere), uns 190 créditos, dentro do
 teto do vídeo 3. Se Torrijos, Bunau-Varilla ou Colón saírem errados, vale gerar o mesmo pedido com o alias de
 reserva, para o Lucas comparar os dois. O gasto e a rodada são da Sala de controle.
 
 **O que o Lucas responde depois de ouvir:** Torrijos (o "j" como "h"?), Bunau-Varilla,
-Colón (tônica no fim, e igual nos pedidos 1 e 3?), Paraíso (igual nos pedidos 5 e 8?), Cristóbal, Gatún, "U.S.-rate" e
+Colón (tônica no fim, e igual nos pedidos 1 e 3?), Paraíso (igual nos pedidos 5 e 8?), Cristóbal, Gatún, "U.S." rates e
 "commy". Cada erro que ele ouvir, com o nome confirmado de ouvido, põe o alias de reserva na cópia; cada acerto deixa a
 grafia normal.
 
@@ -123,9 +143,11 @@ Não é pronúncia de nome, mas é onde a voz costuma errar (`marca/pronuncias.m
   third, nineteen sixty-four; September 7, 1977 → September seventh, nineteen seventy-seven.
 - **Anos**: 1903, 1904 → nineteen oh-three, nineteen oh-four; 1912, 1914, 1915, 1920, 1930, 1936, 1937, 1939, 1940, 1946,
   1948, 1950, 1955, 1956, 1958, 1960, 1963, 1964, 1970, 1977, 1978, 1979, 1999 → nineteen twelve … nineteen ninety-nine;
+  2026 (p7, desde a lista-r2, L03) → twenty twenty-six;
   the 1960s → the nineteen sixties. ("The early 1950s" saiu na r1: agora é "In the 1950 census".)
 - **Pares e listas de anos**, a conferir de ouvido: "In 1920 and 1930" (p2), "from 1920 to 1970" (gancho), "a 1903
-  treaty" e "a 1912 act" (lidos como ano, não como quantidade), e "the treaties of 1903, 1936 and 1955" (p7).
+  treaty" e "a 1912 act" (lidos como ano, não como quantidade), e, desde o P01 da r2, "the 1903 treaty" (p7, 25º parágrafo; a lista
+  "the treaties of 1903, 1936 and 1955" saiu da voz).
 - **Contagens**: 3,139 → three thousand one hundred thirty-nine (gancho e p3, p5); 3,113 → three thousand one hundred
   thirteen; 3,688 → three thousand six hundred eighty-eight; "7 of 3,113" → seven of three thousand one hundred thirteen;
   "3 of 3,688" → three of three thousand six hundred eighty-eight (o "of" não pode virar fração nem placar); "24
@@ -140,4 +162,4 @@ Não é pronúncia de nome, mas é onde a voz costuma errar (`marca/pronuncias.m
 Depois da escuta, os nomes do Panamá e do canal que tendem a voltar em outros vídeos: Panama, Colón, Balboa, Cristóbal,
 Gatún, Miraflores, Colombia, Caribbean, e os de gente que a história americana repete (Hay, Goethals, Mondale, Torrijos,
 Bunau-Varilla). Quem sobe é o Claude central, com a fonte e o que o Lucas ouviu. Paraíso, La Boca,
-Shaler, Albrook, Knapp, "commy" e "U.S.-rate" ficam só nesta folha (Ancón e Pedro Miguel, na reserva, também).
+Shaler, Albrook, Knapp, "commy" e "U.S." rates ficam só nesta folha (Ancón e Pedro Miguel, na reserva, também).
