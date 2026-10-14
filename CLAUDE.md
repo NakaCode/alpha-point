@@ -457,7 +457,10 @@ outro modelo no despacho, fora a exceção da animação desenhada (abaixo):
   - Em teste no vídeo 3: as 5 ilustrações de Los Angeles que o Lucas aprovou foram feitas em Fable, e nenhuma em Opus ainda.
     Se ele achar as de Opus piores na linha do tempo, elas voltam ao Fable, e ele decide de novo.
   - Antes do vídeo 3, o teste: a s52 de Los Angeles (o TEU) refeita em Opus com o mesmo pedido, ao lado da de Fable (Lucas,
-    14/10/2026: "Sim, refazer a s52 (Recomendado)"), em `out/prova-opus/`, fora do git.
+    14/10/2026: "Sim, refazer a s52 (Recomendado)"), em `out/prova-opus/`, fora do git. **Feito no mesmo dia**: o editor em Opus
+    (conferido no transcript) fez a cena às cegas, com as entradas da 1ª versão (commit `9f8aaef`), e o `qc-cena` saiu 0 na primeira
+    entrega. Vistas às cegas (A = a 1ª versão em Fable, B = a de Opus, sorteadas), a resposta do Lucas: "Ambas servem muito bem,
+    apenas mudou o ângulo do elemento".
 
 **O roteiro** dos próximos vídeos é escrito aqui, em **Fable 5.1** (Lucas, 26/09: "pode ser por aqui sim"), e não
 no claude.ai: o navegador gasta do mesmo limite da assinatura Max (`C:/projetos/regie-v1/docs/CONTAS.md`, "Uma cota
