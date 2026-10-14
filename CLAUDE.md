@@ -466,8 +466,9 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
 - **O que o Claude central decide sozinho** (os agentes dele, não os especialistas): leitores, montagem de lista e as conferências
   mecânicas da linha (ingest, cut_detect, mirror) em `model: 'sonnet'`; céticos, verificadores, conferências e leitores com `effort:
   'high'` (não herdar o `xhigh` da sessão); conferência que julga licença, procedência ou texto de tela fica em Opus; revisão de
-  espectador em lotes de até ~40 imagens por revisor, e todo agente grava o resultado no disco ao terminar. Haiku em nada que pede
-  julgamento; o `qc-visual` continua em Sonnet.
+  espectador em lotes de até 20 folhas e 25 imagens por revisor (desde 14/10/2026, em teste no vídeo 3: "A revisão de espectador,
+  antes do Lucas"), e todo agente grava o resultado no disco ao terminar. Haiku em nada que pede julgamento; o `qc-visual`
+  continua em Sonnet.
 
 **Mais mapa** (Lucas, 27/09/2026: "nos próximos devemos usar mais mapas (mas claro que somente se o contexto
 permitir"): do vídeo 2 em diante, a pauta e o roteiro preferem o ângulo espacial quando o assunto o tem, e fala de
@@ -750,6 +751,34 @@ robô, termos e compra. As quatro respostas:
   - há marca, campo ou moldura sem conteúdo?
   - há mais de 2 s sem nada que acompanhe a fala?
   - algum texto ou foto pequeno demais para o celular?
+- **Em lotes curtos, em teste no vídeo 3** (Lucas, 14/10/2026, sobre a M10 da auditoria de tokens, `auditoria-tokens.html`:
+  "Vamos seguir apenas com a opção 1, ela é reversível certo? Testaremos ela no vídeo 3 e caso não funcione bem, pensaremos
+  novamente na solução").
+  - **Por quê:** quando as imagens de uma conversa passam de uns 25 MB, o Claude Code tira as mais antigas, e a conversa
+    inteira se regrava (code.claude.com/docs/en/prompt-caching, "Accumulating many images", que não dá o número; os 25 MB,
+    ou 24 MiB, são o medido nas transcrições do vídeo 2, umas 40 folhas). O revisor reabre o que sumiu, e o laço recomeça. No
+    vídeo 2, com lotes de 21 a 56 folhas, 80 % das imagens abertas foram reabertas, e as regravações custaram US$ 751 dos cerca
+    de US$ 1.280 da revisão, a preço de tabela. O revisor que ficou abaixo dos 25 MB custou de US$ 1 a 3.
+  - **As folhas:** com os quadros do verbo `quadros` da linha do tempo (rodou nas duas revisões do vídeo 2, em 08 e 09/10),
+    `python -X utf8 -B ferramentas/folhas-espectador.py <proj> [--cenas=…]` faz as folhas no formato da r4 do vídeo 2 (quatro
+    quadros por folha, reduzidos a 960×540, um a cada 0,5 s, com a fala embaixo) e os lotes de até 20 folhas, na ordem do
+    vídeo, numa pasta nova a cada rodada (`out/<proj>/_tmp/espectador-r<N>/lotes.json`), cada lote com a fala só das cenas
+    dele e, do 2º lote em diante, a folha de passagem (a última do lote anterior, para ver a troca de cena na fronteira). Ela
+    recusa quadro mais velho que a cena: rode antes o `quadros` das cenas da rodada.
+  - **Um revisor por lote,** em Sonnet, com o rótulo `espectador:L<n>` e o pedido de `ferramentas/espectador-pedido.md` (o da
+    r4, com o lote, a passagem e o orçamento). Ele abre a passagem e cada folha do lote uma vez e, para olhar de perto, o quadro
+    1080p, sem nunca passar de 25 imagens no total, contando as reabertas. Grava o achado, entrega e termina. O cético continua
+    em Opus.
+  - **A régua de qualidade** (teste de 14/10/2026, nas folhas da r4 do vídeo 2, sem ver o resultado antigo; o detalhe na ficha
+    da M10): os revisores curtos acharam 20 dos 22 achados médios e altos que o cético tinha mantido em 09/10 (um 21º em parte),
+    mais 6 médios novos que o cético manteve, sem nenhuma regravação e a US$ 19 contra US$ 389. A falta foi um salto entre
+    cenas de lotes diferentes; com a folha de passagem, os dois revisores do teste viram a troca (um a apontou como leve).
+  - **Como se mede, a cada rodada:** `python -X utf8 -B ferramentas/medir-espectador.py <a pasta do workflow>
+    --lotes=<o lotes.json da rodada>` tem de sair 0: nenhuma regravação, até 5 % de imagens reabertas, ninguém acima de 25
+    imagens, ninguém cortado e toda folha do lote aberta. O custo que ele imprime vai à ficha da M10, contra o previsto.
+  - **Se não funcionar** (o medidor fora de 0 depois de um ajuste, ou o Lucas achando na linha do tempo o que a revisão deixou
+    passar), o Claude central avisa o Lucas, volta o método de antes (esta seção e a linha dos lotes em "O levantamento dos
+    modelos" como estavam no commit `632c844`) e o Lucas decide de novo.
 - **O que faz com o achado:** um cético tenta derrubar cada um. O que sobra vai ao `editor-de-arte` ou ao `mapista`
   como defeito, ou ao Lucas, se mexer em regra da marca.
 - **O crédito a 56 px não é achado** (do vídeo 2 em diante): é decisão do Lucas, de 07/10/2026 ("Quero reduzir para 56px"). No
