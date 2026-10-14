@@ -12,6 +12,9 @@ O que faz, sem tocar no motor:
   round(inSec × 30), com o comprimento do próprio .mov (a peça não se corta nem se estica, cta.md §8);
 - põe na V4 a marca d'água (marca/logo/agulha/marca-dagua-4k.png: o quadro 3840 × 2160 transparente com o disco de 100 px a 30 %,
   no canto de cima à direita), do quadro 0 ao fim da sequência. --sem-marca a deixa de fora;
+- a vinheta de apresentação (Lucas, 14/10/2026; marca/vinheta/vinheta.html, identidade §8) é uma chamada como as outras, com
+  "peca": "vinheta" e "lugar": "centro" (out/<proj>/cta/vinheta-centro.mov). Com ela, a marca d'água começa no último quadro da
+  vinheta, que é o mesmo desenho, e não no quadro 0;
 - confere: o .mov em 3840 × 2160 a 30 fps, com os quadros que a regência diz (dur × 30, ±1); a peça dentro da sequência; as chamadas
   sem se sobrepor; a V3 e a V4 vazias no XML do motor; o XML de saída bem-formado; e nada mudou fora da V3 e da V4.
 --seco mostra o plano e não grava. Saída: 0 ok; 1 conferência falhou; 2 uso errado ou arquivo faltando.
@@ -106,13 +109,21 @@ def main():
         v3.append((ini, clipitem(f"{ID}{i}", f"file-{ID}{i}", os.path.basename(mov)[:-4], mov, ini, fim, n)))
         plano.append(f"  V3  {os.path.basename(mov)}  quadros {ini}–{fim}  ({ini / FPS:.2f}–{fim / FPS:.2f} s)")
     v3 = "".join(x for _, x in sorted(v3))
+    # a vinheta de apresentacao (marca/vinheta/vinheta.html; identidade §8) termina VIRANDO a marca d'agua: a V4 comeca no
+    # ultimo quadro dela. Sem vinheta na regencia, a marca d'agua vai do quadro 0, como antes.
+    vinhetas = [(ini, fim) for (ini, fim), c in zip(ocupado, chamadas) if c["peca"] == "vinheta"]
+    if len(vinhetas) > 1:
+        print("mais de uma vinheta em _chamadas", file=sys.stderr)
+        sys.exit(1)
+    ini_marca = vinhetas[0][1] - 1 if vinhetas else 0
     v4 = ""
     if not a.sem_marca:
         if not os.path.isfile(MARCA):
             print(f"falta {MARCA}", file=sys.stderr)
             sys.exit(2)
-        v4 = clipitem(f"{ID}marca", f"file-{ID}marca", "marca-dagua", MARCA, 0, dur_seq, dur_seq)
-        plano.append(f"  V4  marca-dagua-4k.png  quadros 0–{dur_seq} (o video inteiro)")
+        v4 = clipitem(f"{ID}marca", f"file-{ID}marca", "marca-dagua", MARCA, ini_marca, dur_seq, dur_seq)
+        plano.append(f"  V4  marca-dagua-4k.png  quadros {ini_marca}–{dur_seq}"
+                     + (" (do ultimo quadro da vinheta ao fim)" if vinhetas else " (o video inteiro)"))
     print(f"{a.proj}: {len(chamadas)} chamada(s) na V3" + ("" if a.sem_marca else " e a marca d'agua na V4"))
     print("\n".join(plano))
 

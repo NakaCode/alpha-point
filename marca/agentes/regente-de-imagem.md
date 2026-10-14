@@ -53,6 +53,11 @@
     por baixo; a inscrição, como 1 elemento;
   - a pergunta do comentário é do `redator-de-tela` e chega depois: até ela, reserve os 6 s da padrão, e confira o
     trecho de novo com a duração dela.
+- **A vinheta de apresentação, do vídeo 3 em diante** (Lucas, 14/10/2026; identidade.md §8, "A vinheta de apresentação").
+  Na assinatura do gancho ("You're at Alpha Point…"), grave em `_chamadas` a linha `{"peca": "vinheta", "lugar":
+  "centro", "inSec": <o "You're">, "dur": <de "You're" ao fim de "begins." + ~0,25 s>}`, e marque no beat da cena por baixo
+  que ela deixa livre o centro e o caminho da agulha até o canto (a área está no topo de `marca/vinheta/vinheta.html`):
+  nada de rótulo, pino, anel ou texto ali enquanto a vinheta corre. A marca d'água só começa no fim dela.
 - **Mapa = MapTiler** (`canal.json › mapa.perfil`, Lucas, 26/09/2026), com `© MapTiler © OpenStreetMap
   contributors` na tela durante todo o mapa (identidade.md §6). O Landsat foi só teste (CLAUDE.md).
 - **Nunca** rode `narrar.mjs` nem `transcrever.mjs`: gastam crédito e refazem o relógio (CLAUDE.md).

@@ -1148,11 +1148,30 @@ Das 5 propostas da 2ª rodada, escolheu **"A agulha"**.
   - **Gravada no vídeo, pelo XML, do vídeo 3 em diante** (Lucas, 09/10/2026: "o vídeo vem sem marca d'água também. Isso eu
     quero nos próximos"; à pergunta "Como você quer a marca d'água nos vídeos?", "Gravada no vídeo, pelo XML", e não pelo
     YouTube Studio). A mesma peça (`marca/logo/agulha/marca-dagua.svg`, sem laranja), numa faixa de vídeo acima das cenas,
-    do começo ao fim, junto com as chamadas (`marca/cta.md`, "O que falta"): no canto de cima à direita, DENTRO da margem que
+    do fim da vinheta de apresentação ao fim do vídeo (abaixo; até 14/10/2026, do começo ao fim), junto com as chamadas (`marca/cta.md`, "O que falta"): no canto de cima à direita, DENTRO da margem que
     as cenas não usam, a 60 px do topo e da direita, fora da área segura (§4.1), da faixa de crédito e da caixa da inscrição
     (x 2029–3626, y 195–484, `cta.md` §4). **O disco com 100 px no palco 4K e a peça inteira a 30 % de opacidade** (Lucas,
     09/10/2026: "140px talvez seja muito e quero a transparência em uns 30%"; vistas as duas leituras sobre a s29 e a s11,
     `out/los-angeles/_tmp/miniatura/marca-dagua-opacidade.png`, a resposta foi "A: opacidade 30 %"). O vídeo 2 sai sem ela.
+- **A vinheta de apresentação** (Lucas, 14/10/2026, do vídeo 3 em diante). Sobre a assinatura que fecha o gancho ("You're at
+  Alpha Point, and this is where the story of <tema> begins."; `voz.md` §1), por cima da cena. Ele pediu "a introdução do canal
+  apenas"; do primeiro esboço (a agulha e o nome só entravam e saíam), disse "Achei muito 'parado' e sem graça"; das três
+  versões com movimento, escolheu a que vira marca d'água: "Gostei da marca d'água, mas acho que ela poderia estar centralizada
+  e talvez maior"; e da versão centralizada, "Aprovo, com os 2 ajustes (Recomendado)". As provas estão em `out/prova-vinheta/`
+  (fora do git).
+  - **A peça** é `marca/vinheta/vinheta.html`, no contrato das chamadas (`cta.md`): a agulha (só `--tinta`, 800 px) cai no
+    centro e as duas peças se encaixam no corte de 12°; ALPHA e POINT (Barlow Condensed 800, 280 px) se abrem por máscara em
+    "Alpha" e "Point,"; a agulha balança de leve até apontar o norte, com o texto parado; o nome se dobra para dentro da agulha,
+    e ela viaja ao canto e termina exatamente como a marca d'água (acima), que continua dali. Sem anel, sem laranja, sem placa.
+  - **A sombra sob as letras** é a sombra solta da §4.4, que a marca dá ao objeto da mesa: aqui ela vai também sob o nome,
+    porque é ela que segura o branco sobre fundo claro (a exceção estava na prova que o Lucas aprovou).
+  - **A cena por baixo deixa livre** o centro (x 1316–2556, y 640–1552 no palco 4K) de "You're" até a saída, o corredor da queda
+    acima da agulha e, na saída, a diagonal até o canto; a área exata está no topo do HTML e em `__info().area_livre`. Quem
+    marca o tempo é a regência, e quem constrói a cena, o `editor-de-arte` ou o `mapista`: nada de rótulo, pino, anel ou texto
+    ali enquanto a vinheta corre.
+  - **Como se grava** em cada vídeo: o comando e a linha de `regencia.json` › `_chamadas` estão no topo do HTML; o
+    `ferramentas/xml-chamadas.py` a põe no XML e começa a marca d'água no último quadro dela. A duração vai de "You're" ao fim
+    de "begins." mais ~0,25 s, de 4 a 8 s; com 4 s, a saída fica curta e o nome fica os 2,0 s da §4.3.
 - **O nome no banner:** ALPHA POINT em Barlow Condensed 800, com a frase "Geography and geopolitics, on the map." em Inter
   500. A frase veio com a proposta; quando o Lucas pediu para escolher, ele respondeu sem preferência.
 - **O fundo do banner** (Lucas, 09/10/2026: "a logo eu gostei da nossa, mas o banner quero mudar um pouco"): curvas de nível

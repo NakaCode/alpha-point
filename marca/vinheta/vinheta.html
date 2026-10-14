@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>Alpha Point · a vinheta de apresentação ("You're at Alpha Point…")</title>
+<!--
+  A VINHETA DE APRESENTAÇÃO DO CANAL. Fecha o gancho de todo vídeo, sobre a frase "You're at Alpha Point, and this is where
+  the story of <tema> begins.", POR CIMA da cena que está por baixo (no vídeo 2, o mapa de satélite de LA). A agulha cai no
+  centro, o nome se abre ao lado, e no fim a agulha viaja ao canto e VIRA a marca d'água (identidade §8): o último quadro é,
+  pixel a pixel, marca/logo/agulha/marca-dagua-4k.png, e a faixa da marca d'água do XML continua dali sem salto.
+
+  A DECISÃO DO LUCAS (14/10/2026). Das três letras da prova (out/prova-vinheta/pecas/), sobre a A: "Achei muito 'parado' e sem
+  graça"; sobre a C: "Gostei da marca d'água, mas acho que ela poderia estar centralizada e talvez maior" (daí a C2); e sobre
+  a C2, com os dois ajustes leves do julgamento (out/prova-vinheta/julgar/julgamento-c2-r1.md, LEVES 3 e 4): "Aprovo, com os
+  2 ajustes (Recomendado)". Esta peça é a C2 com os dois ajustes, e nada mais mudou:
+    1. o balanço "acha o norte" passou de 0,30–1,20 s (escondido sob o desdobrar do nome) para 0,95–1,85 s, depois de o nome
+       assentar, com pico de 3,9° (≤ 4°), amortecendo até 0° exato. Só a agulha gira; o texto não se move enquanto se lê;
+    2. ALPHA e POINT se revelam por MÁSCARA a partir da dobradiça (clipPath que anda), sem deformar as letras; a saída dobra
+       de volta pelo mesmo caminho (POINT sobe para a dobradiça de cima, ALPHA entra na agulha), por máscara, não por escala.
+    E o LEVE 6: com ?dur=4 a saída comprime até 1,06 s (não mais 1,25) e o nome fica 2,00 s no ar, o piso da §4.3.
+
+  COMO SE GRAVA EM CADA VÍDEO (t = 0 é o "You're" do words.json):
+    node marca/cta/_capturar.mjs marca/vinheta/vinheta.html <dur> out/<proj>/cta --nome=vinheta-centro --sem-trava
+    e, em out/<proj>/regencia.json › _chamadas, a linha {"peca": "vinheta", "lugar": "centro", "inSec": <o "You're">, "dur": <dur>}:
+    o ferramentas/xml-chamadas.py a põe na V3 e começa a marca d'água (V4) no último quadro dela.
+    <dur> = (fim de "begins." − "You're") + ~0,25 s, de modo que a chegada ao canto (E − 0,50) caia dentro de "begins." (no
+    vídeo 2: 47,86 − 42,49 = 5,37 → 5,6 s). Vale de 4 a 8 s; a saída se ancora no fim e comprime quando a duração é curta.
+    O --sem-trava é só pelo conceito: a peça termina no canto da marca d'água (fora da zona permitida do gravador), o último
+    quadro tem conteúdo e fica a 30 %. Qualquer outro motivo na medida é defeito.
+    A PÁGINA AVISA (__info().aviso, que o gravador imprime) quando o nome fica menos de 2,0 s no ar (duração < 4 s).
+
+  A ÁREA QUE A CENA POR BAIXO DEIXA LIVRE (px do palco 4K, com a sombra solta e 20 px de folga; exato em __info().area_livre):
+    - em repouso (0,94 → E − saída): x 1316–2556, y 640–1552 (agulha x ~1357–1712, y 680–1480; nome x ~1808–2483, y 851–1309;
+      o balanço move o ombro da agulha até ~18 px);
+    - na entrada (0 a 0,36 s): o corredor da queda acima da agulha, x 1316–1753, y 200–680, e a sombra "no ar" até y ~1604;
+    - na saída: a diagonal de (1535, 1080) a (3730, 110), a peça encolhendo de ~356 a ~100 px de largura, e o canto da marca
+      d'água, x 3680–3780, y 60–160 (§8). Nada de rótulo, pino, anel ou texto nessas áreas enquanto a vinheta corre.
+
+  O DESENHO (identidade §8; só --tinta; sem anel, sem degradê, sem placa, sem laranja): a agulha de marca/logo/agulha/
+  simbolo-tinta.svg a 800 px, as duas peças recortadas na linha do meio do corte de 12° (passa por (-200, 42.5) a -12° na
+  geometria do símbolo; se a caixa mudar, __pronto rejeita); ALPHA / POINT em Barlow Condensed 800 a 280 px, empilhados à
+  direita com 96 px de vão; o conjunto centrado em x = 1920 pela medida da fonte; a sombra solta da §4.4 (cópia em
+  --tinta-escura, desfoque fixo de 20 px; anima só transform e opacity: no ar +64 px / 1,05 / 0,35, assentada +12 / 1,00 / 0,80).
+
+  O MOVIMENTO (tudo é função de t; sem @keyframes nem transition; o mesmo t dá o mesmo quadro):
+    0,00–0,28  a peça SUL cai 340 px com peso e materializa em 0,26 s; a sombra nasce "no ar" junto com ela;
+    0,04–0,32  a peça NORTE (o A) cai 460 px, um pouco atrás, e encaixa na sul no corte de 12°;
+    0,14–0,36  o assentamento 1,03 → 1,00 (--mov-assentamento), uma vez;  0,24–0,46  a sombra assenta (eo);
+    0,36       "Alpha": ALPHA se revela da dobradiça esquerda (máscara, in-out cúbico, 0,28 s);
+    0,68       "Point,": POINT se revela da dobradiça de cima (máscara, 0,26 s);  0,94: o nome inteiro, parado;
+    0,95–1,85  a agulha ACHA O NORTE: ang = −7,5°·sin(2,3πp)·e^(−3,5p)·(1−p⁴): parte de 0°, −3,9° em 1,09 s, +0,8° em
+               1,47 s, 0° exato em 1,85 s. Pivô no centro da agulha; a sombra gira junto; o texto não.
+    A SAÍDA dura S = 2,40 s e é ancorada no fim (E = dur); comprime até 1,06 s quando a duração é curta (os tempos abaixo
+    são os de S = 2,40; os de S = 1,06 estão em SAIDA_CURTA, e entre os dois a peça interpola):
+    E−2,40  POINT se dobra para cima (0,22 s);  E−2,22  ALPHA se dobra para dentro da agulha (0,24 s);
+    E−1,90  a viagem (1,40 s, in-out cúbico) de (1535, 1080) a (3730, 110), de 800 a 70,5 px, a 100 %; a sombra some no começo;
+    E−0,80  o disco (--fundo a 65 %) nasce por trás, já no canto (0,30 s);  E−0,50  CHEGOU a 100 %, esmaece a 30 % em 0,35 s;
+    E−0,15 → E  parada: a marca d'água da §8.  Na gravação de 5,6 s: dobra 3,20; viagem 3,70 → 5,10; 30 % em 5,45.
+
+  A página expõe window.render(t), window.__pronto e window.__info(). Parâmetros: ?dur=<s> (padrão 5,6), ?t=<s>.
+  Fontes de marca/fontes/ (SIL OFL 1.1). Caminhos relativos a marca/vinheta/.
+-->
+<style>
+@font-face{font-family:"MarcaSec";src:url("../fontes/barlowcondensed/BarlowCondensed-ExtraBold.ttf") format("truetype");font-weight:800;font-style:normal;font-display:block}
+html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:transparent}
+svg{display:block}
+.nome{font-family:"MarcaSec";font-weight:800;letter-spacing:0}
+</style>
+</head>
+<body>
+<svg id="palco" xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160"></svg>
+<script>
+(() => {
+  // ---- a marca (identidade §2, §3, §4.4, §8; tokens.css) ----
+  const COR = { fundo: "#0E1726", tinta: "#F4F1EA", escura: "#14181F" };
+  const SIMBOLO = "../logo/agulha/simbolo-tinta.svg";
+  // a caixa do símbolo: viewBox -254 -614 508 1008; a agulha ocupa 400 × 900, centro em (0, -110)
+  const SVG_W = 508, SVG_H = 1008, AG_ALT = 900, AG_LARG = 400;
+  // o corte de 12°: a linha do meio da faixa entre as duas peças passa por (-200, 42.5), a -12° (desc do simbolo.svg)
+  const CORTE = { x: -200, y: 42.5, ang: -12 };
+  // a marca d'água (identidade §8; marca-dagua.svg: disco r 123 na caixa de 300, agulha a 0.235067; a caixa vale 100 px no 4K)
+  const MD = { cx: 3730, cy: 110, caixa: 100, discoR: 123 / 0.235067, escala: 0.235067 / 3, discoOp: 0.65, op: 0.30 };
+
+  const P = new URLSearchParams(location.search);
+  const DUR = Number(P.get("dur")) > 0 ? Number(P.get("dur")) : 5.6;
+
+  // ---- a geometria em repouso (px do palco) ----
+  const CY = 1080, AG_H = 800, S0 = AG_H / AG_ALT, AG_W = AG_LARG * S0;   // 800 × 355,6
+  const NOME_PX = 280, VAO = 96, ENTRELINHA = 64;                          // o nome à direita da agulha, duas linhas
+  const ASSENT = 0.22;                                                      // --mov-assentamento
+  const SOMBRA = { ar: { dy: 64, s: 1.05, op: 0.35 }, chao: { dy: 12, s: 1.00, op: 0.80 }, blur: 20 };   // tokens "A mão que arruma"
+  const GIRO = { t0: 0.95, dur: 0.90, amp: 7.5 };                           // acha o norte, depois de o nome assentar: pico ~3,9°, para em 0°
+  const PAD = 6;                                                            // a folga da máscara em volta da caixa real das letras
+
+  // ---- o tempo (s) ----
+  const T = { sul: 0.00, sulDur: 0.28, norte: 0.04, norteDur: 0.28, fade: 0.26, assenta: 0.14, sombra: 0.24, sombraDur: 0.22,
+              alpha: 0.36, alphaDur: 0.28, point: 0.68, pointDur: 0.26 };
+  const QUEDA = { sul: 340, norte: 460 };
+  const NOME_INTEIRO = T.point + T.pointDur;                               // 0,94
+  const NOME_MIN = 2.0;                                                     // identidade §4.3
+  // a saída, em dois conjuntos (os tempos são relativos ao começo dela, E − S); entre eles a peça interpola por S
+  const SAIDA_CHEIA = { S: 2.40, point0: 0.00, pointDur: 0.22, alpha0: 0.18, alphaDur: 0.24, viagem0: 0.50, viagemDur: 1.40, sombraDur: 0.45, discoDur: 0.30, fadeDur: 0.35 };
+  const SAIDA_CURTA = { S: 1.06, point0: 0.00, pointDur: 0.14, alpha0: 0.10, alphaDur: 0.16, viagem0: 0.22, viagemDur: 0.60, sombraDur: 0.20, discoDur: 0.18, fadeDur: 0.18 };
+  const S = Math.max(SAIDA_CURTA.S, Math.min(SAIDA_CHEIA.S, DUR - NOME_INTEIRO - NOME_MIN));
+  const U = (S - SAIDA_CURTA.S) / (SAIDA_CHEIA.S - SAIDA_CURTA.S);          // 0 = curta, 1 = cheia
+  const mix = (k) => SAIDA_CURTA[k] + (SAIDA_CHEIA[k] - SAIDA_CURTA[k]) * U;
+  const E = DUR, S0t = E - S;
+  const X = { point: S0t + mix("point0"), pointDur: mix("pointDur"), alpha: S0t + mix("alpha0"), alphaDur: mix("alphaDur"),
+              viagem: S0t + mix("viagem0"), viagemDur: mix("viagemDur"), sombraDur: mix("sombraDur"), discoDur: mix("discoDur"), fadeDur: mix("fadeDur") };
+  X.chegada = X.viagem + X.viagemDur; X.disco = X.chegada - X.discoDur; X.fade = X.chegada; X.fim = X.fade + X.fadeDur;
+  const NOME_NO_AR = X.point - NOME_INTEIRO;
+
+  const NS = "http://www.w3.org/2000/svg", svg = document.getElementById("palco");
+  const el = (tag, at, pai) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); (pai || svg).appendChild(e); return e; };
+  const clamp = (v) => Math.max(0, Math.min(1, v));
+  const fase = (t, t0, d) => clamp((t - t0) / d);
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                 // ease-out cúbico (o eo do RIG)
+  const eb = (p) => p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;   // in-out cúbico (o eb do RIG)
+  const peso = (p) => p * p;                                 // a queda: acelera
+  const suave = (p) => p * p * (3 - 2 * p);
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
+
+  function falhar(msg) { window.__erro = msg; document.title = "ERRO: " + msg; throw new Error(msg); }
+  function conferirFonte() {
+    const faces = [...document.fonts].filter((f) => f.family.replace(/["']/g, "") === "MarcaSec");
+    if (!faces.length || faces.some((f) => f.status !== "loaded") || !document.fonts.check(`800 ${NOME_PX}px "MarcaSec"`, "ALPHA POINT"))
+      falhar("a fonte MarcaSec não carregou: os caminhos são relativos (../fontes/), a página saiu de marca/vinheta/?");
+  }
+  function carregarSimbolo() {
+    return new Promise((ok, erro) => {
+      const im = new Image();
+      im.onload = () => (im.naturalWidth === SVG_W && im.naturalHeight === SVG_H) ? ok()
+        : erro(new Error(`o símbolo mudou de caixa (${im.naturalWidth} × ${im.naturalHeight}; esperado ${SVG_W} × ${SVG_H}): confira marca/logo/agulha/simbolo-tinta.svg e o corte`));
+      im.onerror = () => erro(new Error(`o símbolo não carregou (${SIMBOLO}): a página saiu de marca/vinheta/?`));
+      im.src = SIMBOLO;
+    });
+  }
+
+  let G = null, ARV = null, SOM = null, MASC = null, imgsProntas = null, medidas = null;
+  // a mesma árvore duas vezes: a peça (com o disco) e a sombra solta (sem disco, recolorida e desfocada pelo filtro).
+  // As máscaras das palavras (cAlpha, cPoint) são compartilhadas: userSpaceOnUse no espaço local de cada árvore, que é o mesmo.
+  function arvore(pai, comDisco, imgs) {
+    const N = {};
+    N.gAg = el("g", {}, pai);
+    if (comDisco) N.disco = el("circle", { cx: 0, cy: 0, r: 0, fill: COR.fundo, "fill-opacity": MD.discoOp }, N.gAg);
+    const gIn = el("g", { transform: "translate(0 110)" }, N.gAg);
+    for (const [k, clip] of [["gSul", "cSul"], ["gNorte", "cNorte"]]) {
+      N[k] = el("g", {}, gIn);
+      imgs.push(el("image", { href: SIMBOLO, x: -SVG_W / 2, y: -614, width: SVG_W, height: SVG_H, "clip-path": `url(#${clip})` }, N[k]));
+    }
+    N.alphaG = el("g", { "clip-path": "url(#cAlpha)" }, pai);
+    N.alpha = el("text", { x: G.nomeX, y: (G.capAlpha + G.cap).toFixed(2), class: "nome", "font-size": NOME_PX, fill: comDisco ? COR.tinta : COR.escura }, N.alphaG);
+    N.alpha.textContent = "ALPHA";
+    N.pointG = el("g", { "clip-path": "url(#cPoint)" }, pai);
+    N.point = el("text", { x: G.nomeX, y: (G.capPoint + G.cap).toFixed(2), class: "nome", "font-size": NOME_PX, fill: comDisco ? COR.tinta : COR.escura }, N.pointG);
+    N.point.textContent = "POINT";
+    return N;
+  }
+
+  function montar() {
+    const cv = document.createElement("canvas").getContext("2d");
+    cv.font = `800 ${NOME_PX}px "MarcaSec"`;
+    const mA = cv.measureText("ALPHA"), mP = cv.measureText("POINT");
+    const wA = mA.width, wP = mP.width, cap = cv.measureText("H").actualBoundingBoxAscent;
+    const wN = Math.max(wA, wP), largura = AG_W + VAO + wN, esq = 1920 - largura / 2;
+    G = { cx: +(esq + AG_W / 2).toFixed(2), cy: CY, nomeX: +(esq + AG_W + VAO).toFixed(2), cap, wA, wP,
+          capAlpha: +(CY - ENTRELINHA / 2 - cap).toFixed(2), capPoint: +(CY + ENTRELINHA / 2).toFixed(2) };
+    // a caixa real de cada palavra (com a sobra do O acima e abaixo da caixa-alta), para a máscara não cortar letra
+    const caixa = (m, topoCap) => ({ x0: G.nomeX - m.actualBoundingBoxLeft - PAD, w: m.actualBoundingBoxLeft + m.actualBoundingBoxRight + 2 * PAD,
+                                     y0: topoCap + cap - m.actualBoundingBoxAscent - PAD, h: m.actualBoundingBoxAscent + m.actualBoundingBoxDescent + 2 * PAD });
+    MASC = { alpha: caixa(mA, G.capAlpha), point: caixa(mP, G.capPoint) };
+
+    const defs = el("defs", {});
+    // os dois recortes da agulha, na linha do meio do corte (no espaço da imagem, que é o viewBox do símbolo)
+    for (const [id, y] of [["cNorte", -3000], ["cSul", 0]]) {
+      const cp = el("clipPath", { id, clipPathUnits: "userSpaceOnUse" }, defs);
+      el("rect", { x: -3000, y, width: 6000, height: 3000, transform: `translate(${CORTE.x} ${CORTE.y}) rotate(${CORTE.ang})` }, cp);
+    }
+    // as máscaras das palavras: um retângulo que anda a partir da dobradiça (ALPHA: da esquerda; POINT: de cima)
+    MASC.rAlpha = el("rect", { x: MASC.alpha.x0.toFixed(2), y: MASC.alpha.y0.toFixed(2), width: 0, height: MASC.alpha.h.toFixed(2) }, el("clipPath", { id: "cAlpha", clipPathUnits: "userSpaceOnUse" }, defs));
+    MASC.rPoint = el("rect", { x: MASC.point.x0.toFixed(2), y: MASC.point.y0.toFixed(2), width: MASC.point.w.toFixed(2), height: 0 }, el("clipPath", { id: "cPoint", clipPathUnits: "userSpaceOnUse" }, defs));
+    // a sombra solta: tudo em --tinta-escura (feColorMatrix) com desfoque FIXO (feGaussianBlur); só transform e opacity animam
+    const [r, g, b] = hex(COR.escura);
+    const f = el("filter", { id: "fSombra", filterUnits: "userSpaceOnUse", x: -400, y: -400, width: 4640, height: 2960, "color-interpolation-filters": "sRGB" }, defs);
+    el("feColorMatrix", { type: "matrix", values: `0 0 0 0 ${r.toFixed(4)}  0 0 0 0 ${g.toFixed(4)}  0 0 0 0 ${b.toFixed(4)}  0 0 0 1 0` }, f);
+    el("feGaussianBlur", { stdDeviation: SOMBRA.blur }, f);
+
+    const imgs = [];
+    const gSombra = el("g", { filter: "url(#fSombra)", opacity: 0 });
+    const gSombraT = el("g", {}, gSombra);
+    SOM = { g: gSombra, gT: gSombraT, N: arvore(gSombraT, false, imgs) };
+    ARV = arvore(svg, true, imgs);
+    imgsProntas = Promise.all(imgs.map((im) => new Promise((ok, erro) => { im.addEventListener("load", ok); im.addEventListener("error", () => erro(new Error(`o símbolo não entrou no palco (${SIMBOLO})`))); })));
+
+    const agX0 = G.cx - AG_W / 2, agX1 = G.cx + AG_W / 2, agY0 = CY - AG_ALT * S0 / 2, agY1 = CY + AG_ALT * S0 / 2;
+    const nX1 = G.nomeX + wN;
+    medidas = { agulha: [+agX0.toFixed(1), +agY0.toFixed(1), +agX1.toFixed(1), +agY1.toFixed(1)],
+      nome: [G.nomeX, G.capAlpha, +nX1.toFixed(1), +(G.capPoint + cap).toFixed(1)],
+      repouso: [+agX0.toFixed(1), +agY0.toFixed(1), +nX1.toFixed(1), +agY1.toFixed(1)] };
+    const folga = 20, somb = SOMBRA.chao.dy + 2 * SOMBRA.blur;
+    window.__info = () => ({ peca: "vinheta", conceito: "Vira a marca d'água, centralizada e maior (a C2 com os 2 ajustes do Lucas, 14/10/2026)",
+      regra: "identidade §4.3 (texto ≥ 2,0 s), §4.4 (movimento, a sombra solta, o texto parado enquanto se lê), §8 (o logo e a marca d'água)",
+      duracao: DUR, saida_s: +S.toFixed(3), saida_mistura: +U.toFixed(4), chegada_s: +X.chegada.toFixed(3), fim_da_saida_s: +X.fim.toFixed(3),
+      saida: { point: [+X.point.toFixed(3), +X.pointDur.toFixed(3)], alpha: [+X.alpha.toFixed(3), +X.alphaDur.toFixed(3)], viagem: [+X.viagem.toFixed(3), +X.viagemDur.toFixed(3)],
+               disco: [+X.disco.toFixed(3), +X.discoDur.toFixed(3)], fade: [+X.fade.toFixed(3), +X.fadeDur.toFixed(3)] },
+      nome_legivel_s: [+NOME_INTEIRO.toFixed(2), +X.point.toFixed(3)], nome_no_ar_s: +NOME_NO_AR.toFixed(3),
+      giro: { de_s: GIRO.t0, ate_s: +(GIRO.t0 + GIRO.dur).toFixed(2), pico_graus: 3.9, amp: GIRO.amp },
+      agulha_px: AG_H, agulha_larg_px: +AG_W.toFixed(1), nome_px: NOME_PX, cap_px: +cap.toFixed(1), centro: [G.cx, G.cy], nome_x: G.nomeX, caixa: medidas,
+      mascaras: { alpha: [+MASC.alpha.x0.toFixed(1), +MASC.alpha.y0.toFixed(1), +MASC.alpha.w.toFixed(1), +MASC.alpha.h.toFixed(1)],
+                  point: [+MASC.point.x0.toFixed(1), +MASC.point.y0.toFixed(1), +MASC.point.w.toFixed(1), +MASC.point.h.toFixed(1)] },
+      area_livre: {
+        repouso: [Math.floor(agX0 - folga - 20), Math.floor(agY0 - folga - 20), Math.ceil(nX1 + folga + somb), Math.ceil(agY1 + folga + somb)],
+        queda: [Math.floor(agX0 - folga - 20), Math.floor(agY0 - QUEDA.norte - folga), Math.ceil(agX1 + folga + 20), Math.ceil(agY0)],
+        sombra_no_ar_ate_y: Math.ceil(agY1 + SOMBRA.ar.dy + 2 * SOMBRA.blur + folga),
+        viagem: `diagonal de (${G.cx},${CY}) a (${MD.cx},${MD.cy}), a peça encolhendo de ~${Math.round(AG_W)} px a ~100 px de largura`,
+        marca_dagua: [MD.cx - 50, MD.cy - 50, MD.cx + 50, MD.cy + 50] },
+      marca_dagua: MD, sombra: SOMBRA,
+      aviso: NOME_NO_AR < NOME_MIN - 1e-6 ? `duração curta: o nome fica ${NOME_NO_AR.toFixed(2)} s no ar (a marca pede ${NOME_MIN.toFixed(1)}); a saída já está no mínimo de ${SAIDA_CURTA.S} s` : null });
+  }
+
+  window.render = function (t) {
+    if (window.__erro) throw new Error(window.__erro);
+    if (!medidas) throw new Error("a peça ainda não carregou: espere window.__pronto");
+    if (!Number.isFinite(t)) throw new Error(`render(t): t precisa ser um número de segundos (veio ${t})`);
+
+    // ---- a agulha: queda, encaixe, assentamento; acha o norte; depois a viagem, o disco e a chegada ----
+    const pS = fase(t, T.sul, T.sulDur), pN = fase(t, T.norte, T.norteDur);
+    const opS = suave(fase(t, T.sul, T.fade)), opN = suave(fase(t, T.norte, T.fade));
+    const dyS = -QUEDA.sul * (1 - peso(pS)), dyN = -QUEDA.norte * (1 - peso(pN));   // px do palco, acima do lugar
+    const assenta = 1 + 0.03 * (1 - eo(fase(t, T.assenta, ASSENT)));                 // 1,03 → 1,00, uma vez
+    const pg = fase(t, GIRO.t0, GIRO.dur);
+    const ang = -GIRO.amp * Math.sin(2.3 * Math.PI * pg) * Math.exp(-3.5 * pg) * (1 - Math.pow(pg, 4));   // 0° → −3,9° → +0,8° → 0° exato
+
+    const pV = eb(fase(t, X.viagem, X.viagemDur));
+    const esc = (S0 * assenta) * (1 - pV) + MD.escala * pV;
+    const x = G.cx + (MD.cx - G.cx) * pV, y = G.cy + (MD.cy - G.cy) * pV;
+    const opAg = 1 - (1 - MD.op) * suave(fase(t, X.fade, X.fadeDur));              // chegou a 100 %, e só então esmaece a 30 %
+    const rDisco = MD.discoR * eo(fase(t, X.disco, X.discoDur));
+
+    // ---- o nome, por máscara: ALPHA se revela da dobradiça esquerda, POINT de cima; a saída dobra na ordem inversa ----
+    const inA = eb(fase(t, T.alpha, T.alphaDur)), outA = eb(fase(t, X.alpha, X.alphaDur));
+    const wA = MASC.alpha.w * inA * (1 - outA);
+    const opA = suave(fase(t, T.alpha, 0.14)) * (1 - suave(fase(t, X.alpha + 0.6 * X.alphaDur, 0.4 * X.alphaDur)));   // a dobra fica opaca até os últimos 40 %
+    const inP = eb(fase(t, T.point, T.pointDur)), outP = eb(fase(t, X.point, X.pointDur));
+    const hP = MASC.point.h * inP * (1 - outP);
+    const opP = suave(fase(t, T.point, 0.14)) * (1 - suave(fase(t, X.point + 0.6 * X.pointDur, 0.4 * X.pointDur)));
+    MASC.rAlpha.setAttribute("width", Math.max(0, wA).toFixed(3));
+    MASC.rPoint.setAttribute("height", Math.max(0, hP).toFixed(3));
+
+    const aplicar = (N) => {
+      N.gAg.setAttribute("transform", `translate(${x.toFixed(3)} ${y.toFixed(3)}) rotate(${ang.toFixed(4)}) scale(${esc.toFixed(6)})`);
+      N.gSul.setAttribute("transform", `translate(0 ${(dyS / esc).toFixed(3)})`); N.gSul.setAttribute("opacity", opS.toFixed(4));
+      N.gNorte.setAttribute("transform", `translate(0 ${(dyN / esc).toFixed(3)})`); N.gNorte.setAttribute("opacity", opN.toFixed(4));
+      N.alphaG.setAttribute("opacity", opA.toFixed(4));
+      N.pointG.setAttribute("opacity", opP.toFixed(4));
+    };
+    aplicar(ARV);
+    ARV.gAg.setAttribute("opacity", opAg.toFixed(4));
+    ARV.disco.setAttribute("r", rDisco.toFixed(2));
+
+    // ---- a sombra solta: no ar → assentada (eo), e some no começo da viagem; a árvore é a mesma, deslocada e escalada ----
+    aplicar(SOM.N);
+    const ps = eo(fase(t, T.sombra, T.sombraDur)), pSome = suave(fase(t, X.viagem, X.sombraDur));
+    // a sombra materializa junto com a primeira peça (× opS): sem isso, o 1º quadro visível soma agulha + sombra e passa de 5 %
+    const sdy = lerp(SOMBRA.ar.dy, SOMBRA.chao.dy, ps), ss = lerp(SOMBRA.ar.s, SOMBRA.chao.s, ps), sop = lerp(SOMBRA.ar.op, SOMBRA.chao.op, ps) * opS * (1 - pSome);
+    SOM.gT.setAttribute("transform", `translate(${G.cx.toFixed(2)} ${(CY + sdy).toFixed(3)}) scale(${ss.toFixed(5)}) translate(${(-G.cx).toFixed(2)} ${-CY})`);
+    SOM.g.setAttribute("opacity", sop.toFixed(4));
+  };
+
+  window.__pronto = (async () => {
+    try { await document.fonts.load(`800 ${NOME_PX}px "MarcaSec"`, "ALPHA POINT"); } catch (e) { /* dito abaixo */ }
+    try {
+      conferirFonte();
+      await carregarSimbolo();
+      montar();
+      await imgsProntas;
+      window.render(Number(P.get("t")) >= 0 && P.get("t") !== null ? Number(P.get("t")) : 2.0);
+    } catch (e) { if (!window.__erro) { window.__erro = e.message; document.title = "ERRO: " + e.message; } throw e; }
+  })();
+})();
+</script>
+</body>
+</html>

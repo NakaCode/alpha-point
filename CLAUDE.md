@@ -1441,7 +1441,9 @@ final do Juneau (Lucas, 28/09/2026; identidade §5, "A tela final e o carimbo do
 `marca/embalagem.md` é como o canal faz título e miniatura: os moldes das referências, as regras e a receita da miniatura.
 `marca/cta.md` é a chamada do canal (a inscrição no meio e o pedido de comentário no fim, "a faixa mínima", aprovada
 pelo Lucas em 01/10/2026), do vídeo 2 em diante: as peças em `marca/cta/pecas/`, o momento, quantas vezes, a pergunta e
-os comandos. O logo é "A agulha" (`marca/identidade.md` §8, `marca/logo/agulha/`).
+os comandos. O logo é "A agulha" (`marca/identidade.md` §8, `marca/logo/agulha/`). `marca/vinheta/vinheta.html` é a vinheta de
+apresentação, do vídeo 3 em diante (Lucas, 14/10/2026: "Aprovo, com os 2 ajustes (Recomendado)"; identidade §8): ela entra na
+assinatura do gancho, termina virando a marca d'água, e o `ferramentas/xml-chamadas.py` a põe no XML como uma chamada.
 `marca/acervos/` é o levantamento de acervos livres e oficiais de 27/09/2026, com a licença de cada fonte lida na
 origem. É levantamento, não regra. No mesmo dia o Lucas aprovou os quatro grupos da página e as fontes de dados e
 fronteiras (`midia.md` §7.3, "A 4ª rodada", e `identidade.md` §6), e a foto da Alaska State Library citando a
