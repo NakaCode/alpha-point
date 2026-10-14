@@ -65,9 +65,14 @@
   pré-v1", item 7), use o clipe renderizado, desde que ele valha (abaixo):
   `ffmpeg -ss <t> -i out/<proj>/graphics/<cena>.mp4 -frames:v 1 out/<proj>/_tmp/qc-<cena>@<t>.png`.
 - **O clipe vale** só se o `<cena>.mp4.de-html` tem as duas linhas certas: a primeira igual ao `sha1sum` do HTML
-  (o clipe é deste HTML) e a segunda `2160p` (o render foi `--4k`). Com `1080p`, os quadros saem em meia
-  escala, e as medidas da §4 (rótulo de 128 px, crédito de 56 px, ou 76 no Juneau, margem de 200 px) não se julgam neles:
-  clipe velho (CLAUDE.md, "Os especialistas", tropeços).
+  (o clipe é deste HTML) e a segunda `2160p` (o render foi `--4k`). Com `1080p` no carimbo, é clipe velho, renderizado
+  sem `--4k` (CLAUDE.md, "Os especialistas", tropeços): ele não vale, e o que vale para a cena sem clipe vale para ele.
+- **O quadro reduzido não é o clipe de 1080p.** O quadro em 1080p de um clipe que vale, ou de um HTML 4K (o do verbo
+  `quadros` da linha do tempo, o do ffmpeg com `scale`, a folha de contato), serve a todas as lentes, menos às medidas
+  em px: o rótulo de 128 px, o crédito de 56 px (76 no Juneau), a margem de 200 px e a distância da chamada vêm do
+  portão e do `probe-elemento` (§3 e §5), não do olho num quadro reduzido. Um quadro 4K lido inteiro também chega a
+  você reduzido (com no máximo 2.000 px de lado, medido nas transcrições do vídeo 2): para ver um crédito ou uma borda
+  de perto, só o recorte do quadro 4K mostra o detalhe (§2.1, a folga).
 - **Cena de mapa**: a prova é o clipe, não o `quadro.mjs` (por quê: CLAUDE.md, "Peças da pré-v1", item 7). O
   `maprender.mjs` do ofício não existe aqui.
   - Se o clipe vale, tire os quadros dele com o ffmpeg. Não custa nada.
@@ -78,6 +83,68 @@
 - Os quadros saem do `quadro.mjs` ou, na cena de satélite, do MP4 renderizado, com o ffmpeg: o `quadro.mjs`
   não fotografa satélite nesta máquina (acima). A medida sai do `ffprobe`. Os quadros ficam em
   `out/<proj>/_tmp/`, fora do git.
+
+## 2.1 · O orçamento de imagens (M11, em teste no vídeo 3)
+
+> A decisão: o Lucas, 14/10/2026, sobre a M11 da auditoria de tokens (`auditoria-tokens.html`), depois da explicação da
+> "mesa que só cabe um tanto de fotos": "Sim", para ver o texto final; e, ao texto final (com a pergunta de quantas cenas
+> sem mapa por rodada), "Aplicar, até 4 (Recomendado)", às 12:2x de Brasília. Em teste no vídeo 3; se não funcionar, volta como estava antes (CLAUDE.md, "Os portões medem").
+
+- **Por quê.** Quando as imagens de uma conversa passam de uns 25 MB, o Claude Code tira as mais antigas, e a conversa
+  inteira se regrava. A peça reabre o que sumiu, e o laço recomeça (CLAUDE.md, "A revisão de espectador, antes do
+  Lucas"). No vídeo 2, 5 execuções do qc-visual caíram nele (Q4, Q5, Q9, Q11 e Q12, em 08/10, lotes de 4 a 8 cenas, 4 a
+  8 delas de mapa, com quadros a cada 0,5 s): 1.297 das 1.687 imagens lidas foram releitura, e as 5 custaram US$ 116 dos US$ 189 do
+  qc-visual. A Q11 foi cortada pelo limite da sessão sem deixar laudo. Os 15 lotes de 3 a 6 cenas da r4 e da r4b
+  (09/10) não tiveram nenhuma regravação.
+
+1. **O teto: 25 imagens por execução.**
+   - Conta toda imagem que volta a você: cada `Read` de PNG ou JPG, inclusive a releitura do mesmo arquivo, o recorte,
+     o zoom e a folha de contato. A folha conta como 1, por maior que seja.
+   - Umas 20 vão para as cenas do lote, e 5 ficam de folga para o recorte: o crédito, a borda, os 250 ms antes do corte
+     (§4, "A mão que arruma").
+   - Você conta imagens, não MB: você não vê o peso do que chega a você. Os 17,6 MB são a régua do medidor, depois (no
+     pior caso medido, 25 imagens dão 17,1 MB).
+   - Planeje antes de abrir. Para cada cena, escolha os instantes (início, cada beat, fim e um a cada ~4 s para a
+     cadência; ofício, contrato §4), e prefira a folha de contato para composição e movimento; o quadro cheio e o recorte
+     ficam para o que a folha não mostra. Anote o que viu na primeira vez: reabrir para conferir o que já anotou gasta o
+     teto.
+   - Cada quadro e cada recorte com nome próprio (a cena, o instante e o que é, como `qc-<cena>@<t>-credito.png`): o
+     medidor conta como releitura o mesmo caminho aberto de novo, mesmo com outro conteúdo. No vídeo 2, a Q6 e a Q10
+     regravaram `c_s15_tl.png` e `mos-02.jpg` por cima.
+   - No report, diga quantas imagens leu, cena por cena e no total.
+2. **O lote é pelo tipo**, e quem despacha o monta:
+   - até 2 cenas de mapa por execução; só 1, se ela passa de 30 s ou é rejulgamento com passo de 0,5 s;
+   - ou até 4 cenas sem mapa: no vídeo 2, a cena sem mapa pediu de 4,6 a 5,8 imagens, e 4 dão de 18 a 23, perto das ~20.
+     A ficha dizia 6, que só cabiam com uma folha de contato por cena; o Lucas escolheu 4 (acima). Se uma cena pedir mais,
+     a última volta como no item 3;
+   - um tipo só por lote. Lote maior que isso você não parte sozinho: julga na ordem do pedido, até o teto, e devolve o
+     resto como no item 3.
+3. **No teto, pare.** Chegou a 25 imagens com cena por julgar, ou o que sobra não cobre os instantes que a próxima cena
+   pede:
+   - a cena fica **não julgada**, nunca aprovada. É um bloqueio a mais, do canal, além dos três do ofício (contrato §6,
+     "Reportar bloqueio é entrega válida"): aprovar cena que você não olhou é o que o ofício recusa (§7). Nada de nota
+     chutada nem de lente julgada sem quadro;
+   - não grave laudo dela. O laudo de uma rodada anterior, se existe, fica como está (o ofício não deixa apagar laudo,
+     contrato §2.1), mas não vale para esta versão: no report, diga que ele existe, se diz `aprovado: true` ou `false`, e
+     que a cena só sai do bloqueio com laudo novo;
+   - no report, uma linha por cena não julgada: "não julgada: orçamento de imagens", com o que faltou olhar (os
+     instantes e as lentes) e quantas imagens ela pediria;
+   - quem despachou redespacha só ela. Você não abre outra execução nem passa do teto para terminar.
+4. **As emendas.** Os lotes rodam em paralelo, e a cena vizinha de outro lote ainda não tem laudo. Por isso, depois dos
+   lotes, quem despacha manda um passo curto só nas trocas de cena entre lotes, até 25 imagens por execução. Nele:
+   - para cada troca da lista, olhe o último segundo da cena que sai e o primeiro da que entra: o corte seco entre dois
+     mapas (§4, `motion`), a chamada que atravessa o corte (§5) e a entrada da tela final (§6);
+   - o defeito vai ao laudo da cena em que está, na lente dele (o corte seco entre mapas, na cena que sai; a chamada, na
+     cena por baixo, §5; a tela final, na cena de fundo, §6), e o `aprovado` dela segue o §3. Só essa lente muda;
+   - troca sem defeito não muda laudo nenhum. O report lista as trocas olhadas;
+   - defeito numa cena sem laudo desta rodada (a não julgada do item 3): não grave nada nela; vai ao report, para o
+     redespacho dela;
+   - o que não coube no teto fica não julgado, como no item 3.
+5. **O quadro feito por ferramenta vale como quadro.** O ofício manda: "Gere os frames você mesmo… não aceite frame
+   que outro agente disse estar bom" (§6, "Método"). O quadro que uma ferramenta determinística da Sala de controle
+   gerou (o verbo `quadros` da linha do tempo; a r4 do vídeo 2 já foi assim) não é o "outro agente" do ofício: ninguém
+   disse que ele está bom. É a leitura do canal sobre o ofício, que não se edita. Ele vale se não for mais velho que o HTML da cena (compare as datas); o juízo continua seu, e
+   o quadro, olhado por você. Faltou um instante que o lote não trouxe: gere-o você mesmo (§2), dentro do teto.
 
 ## 3 · Os portões: o que rodou, o que não rodou, e o `aprovado`
 

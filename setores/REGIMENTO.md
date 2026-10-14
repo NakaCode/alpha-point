@@ -108,7 +108,9 @@ código ou que confirma um `id` diferente. O setor responde ao Lucas no próprio
   - `chrome liberado`, para todo script que abre o Chrome: render de prova, portões, `quadro.mjs`, `shot.mjs`,
     `probe-elemento`;
   - `conferente liberado`;
-- **o teto**: quantos agentes, e quantos quadros ou imagens as peças podem ler.
+- **o teto**: quantos agentes, e quantos quadros ou imagens as peças podem ler. No `qc-visual`, sem outro número no
+  pedido, vale o padrão da roupa dele (`marca/agentes/qc-visual.md` §2.1): 25 imagens por execução e os lotes pelo tipo
+  ("O `qc-visual`", abaixo). A Sala pode apertar esse teto no pedido; afrouxá-lo pede o ok do Lucas.
 
 **Antes de trabalhar, o setor confere:**
 - que roda na pasta do canal, e não numa cópia separada: `git rev-parse --show-toplevel` tem de dar `C:/projetos/alpha-point`,
@@ -168,6 +170,29 @@ O setor usa só:
   Com 80 % ou mais do semanal, ele para e avisa a Sala, a menos que o pedido traga o ok do Lucas para seguir.
 - **O defeito volta à peça** pelo `SendMessage` ao subagente, se ele ainda estiver vivo, ou por um despacho novo com a lista
   do defeito.
+
+### O `qc-visual`: o orçamento de imagens (M11, em teste no vídeo 3)
+
+O Lucas, 14/10/2026, sobre a M11 da auditoria de tokens: "Sim", para ver o texto final; e, ao texto final, "Aplicar, até 4 (Recomendado)", às 12:2x de Brasília. Em teste no vídeo 3; se não funcionar, volta como estava antes (`CLAUDE.md`, "Os portões
+medem"). É regra que aperta: vale quando a Sala manda o setor reler este arquivo ("Mudança deste arquivo", acima).
+
+No setor Qualidade:
+- **Um `Agent` por lote**, com a `description` `qc-visual:L<n>` (o `n` é o número do lote no pedido) e, no passo das
+  emendas, `qc-visual:E<n>`. É por esse rótulo que a Sala mede a rodada.
+- **O lote** é o do pedido, pelo tipo: até 2 cenas de mapa (só 1 se ela passa de 30 s ou é rejulgamento com passo de
+  0,5 s), ou até 4 sem mapa; um tipo só por lote (a roupa, §2.1, item 2). Pedido com lote maior que isso, o setor o parte
+  assim e diz no relato.
+- **O teto da peça** é o da roupa: 25 imagens por execução, contando releituras e recortes. O pedido à peça o repete.
+- **As emendas:** com mais de um lote, depois dos lotes, um passo curto só nas trocas de cena entre lotes que a Sala
+  lista no pedido (o último segundo de uma cena e o primeiro da seguinte), até 25 imagens por execução. Pedido de mais de
+  um lote sem essa lista: o setor a pede à Sala antes de dar a tarefa por terminada.
+- **A cena "não julgada"** por orçamento (a roupa, §2.1, item 3) não é aprovada nem fica para a próxima tarefa: o setor a
+  devolve à Sala no relato, com o que faltou olhar, e a Sala redespacha só ela. O setor não a redespacha sozinho. O laudo
+  de uma rodada anterior dela, se existe, não vale para esta versão, nem com `aprovado: true`.
+- **O setor não abre imagem** para conferir a peça: confere no disco os laudos e as linhas "não julgada" do report. A
+  medida é da Sala: `python -X utf8 -B ferramentas/medir-espectador.py <a pasta subagents/ desta conversa>
+  --rotulo=qc-visual:L --teto=25` (e `--rotulo=qc-visual:E` nas emendas) tem de sair 0. Não testado ainda: o medidor achar
+  as transcrições de um despacho do setor; o primeiro despacho do vídeo 3 é a prova.
 
 ## A máquina e os arquivos únicos
 

@@ -610,6 +610,12 @@ nas cenas de mapa. Custa algumas horas a mais."
     rodapé. Os limites e a decisão estão em `out/juneau/_tmp/art/portao-mapa-v5/RELATO.md` (§10).
 - Quem roda os portões é o Claude central (e o `editor-de-arte` e o `mapista` antes de entregar). O `qc-visual` lê o
   resultado e só aprova com todas as lentes ≥ 7 e nenhum portão duro reprovado.
+- **O orçamento de imagens do `qc-visual`** (M11, `auditoria-tokens.html`; Lucas, 14/10/2026: "Sim", para ver o texto final;
+  e, ao texto final, "Aplicar, até 4 (Recomendado)", às 12:2x de Brasília): até 25 imagens por execução, os lotes pelo tipo (até 2 de mapa ou 4 sem mapa) e um passo curto
+  nas emendas. O como está na roupa (`marca/agentes/qc-visual.md` §2.1) e no `setores/REGIMENTO.md` ("O `qc-visual`"); a
+  medida, `ferramentas/medir-espectador.py <pasta> --rotulo=qc-visual:L --teto=25`. Em teste no vídeo 3. Se não funcionar
+  (o medidor fora de 0 depois de um ajuste), o Claude central avisa o Lucas e volta a roupa, o regimento e este item como
+  estavam antes do commit da M11; o conserto do medidor fica, porque serve também à M10.
 - **A limitação do portão vai ao Lucas, cena por cena** (01/10/2026).
   - **A pergunta:** em 7 cenas do Juneau, o portão reprova com uma régua do Top10 que a marca não tem, e não há
     declaração honesta que ele aceite. O código dele vem do motor e não se edita. "Como seguimos?"
@@ -778,8 +784,9 @@ robô, termos e compra. As quatro respostas:
     mais 6 médios novos que o cético manteve, sem nenhuma regravação e a US$ 19 contra US$ 389. A falta foi um salto entre
     cenas de lotes diferentes; com a folha de passagem, os dois revisores do teste viram a troca (um a apontou como leve).
   - **Como se mede, a cada rodada:** `python -X utf8 -B ferramentas/medir-espectador.py <a pasta do workflow>
-    --lotes=<o lotes.json da rodada>` tem de sair 0: nenhuma regravação, até 5 % de imagens reabertas, ninguém acima de 25
-    imagens, ninguém cortado e toda folha do lote aberta. O custo que ele imprime vai à ficha da M10, contra o previsto.
+    --lotes=<o lotes.json da rodada>` tem de sair 0: nenhuma regravação nem compactação, até 5 % de imagens reabertas,
+    ninguém acima de 25 imagens, ninguém cortado e toda folha do lote aberta. O custo que ele imprime vai à ficha da M10,
+    contra o previsto.
   - **Se não funcionar** (o medidor fora de 0 depois de um ajuste, ou o Lucas achando na linha do tempo o que a revisão deixou
     passar), o Claude central avisa o Lucas, volta o método de antes (esta seção e a linha dos lotes em "O levantamento dos
     modelos" como estavam no commit `632c844`) e o Lucas decide de novo.

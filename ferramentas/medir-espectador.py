@@ -5,16 +5,23 @@
 #   A pasta do workflow é a que o Workflow devolve como "Transcript dir" (…/subagents/workflows/wf_…). Entram só os agentes
 #   cujo rótulo (o `label` do agent(), gravado como `description` no .meta.json) começa com --rotulo. Com --lotes, o revisor
 #   `espectador:L<n>` tem de ter aberto todas as folhas do lote n do lotes.json do folhas-espectador.py.
+#   O qc-visual se mede igual (M11, o teste do vídeo 3): --rotulo=qc-visual:L --teto=25 nos lotes, e --rotulo=qc-visual:E
+#   no passo das emendas, sem --lotes (o --lotes é das folhas do espectador).
 # O que mede, por revisor:
 #   - as imagens que voltaram a ele (todo resultado de ferramenta com imagem; na prática, o Read) e quantas repetem um
 #     arquivo que ele já tinha aberto;
 #   - as regravações da conversa: o anexo `thinking_drop` por mudança de prefixo, separado em "imagens tiradas" (o
 #     Claude Code tirou imagens antigas: o laço do vídeo 2, em que o revisor reabria o que sumiu) e "outra mudança"
 #     (prompt de sistema ou ferramentas); e a queda do cache sem anexo (a conversa regravada sem pausa, sem compactação);
-#   - o volume de imagem (MB de base64) até a primeira regravação; se foi cortado (mensagem `<synthetic>`, ex.: limite);
+#   - à parte, a compactação automática (`compact_boundary`: o contexto encheu, e a conversa virou um resumo). O
+#     `thinking_drop` que vem logo depois dela, antes da chamada seguinte, é da compactação, não de imagens tiradas: até
+#     14/10/2026 ele contava como "imagens tiradas" (a Q1 e a Q2 do qc-visual do vídeo 2, com o contexto em ~565 mil
+#     tokens e 14 a 15 MB de imagem);
+#   - o volume de imagem (MB de base64) até a primeira regravação ou compactação; se foi cortado (mensagem `<synthetic>`, ex.: limite);
 #   - o custo a preço de tabela: entrada, saída, escrita de cache de 5 min e leitura (a régua do auditoria-tokens.html).
-# O esperado: nenhuma regravação, até 5 % de repetidas, ninguém acima de --teto imagens nem de --mb, ninguém cortado e,
-#   com --lotes, toda folha do lote aberta. O custo não decide a saída: vai no relatório, para comparar com o previsto.
+# O esperado: nenhuma regravação, nenhuma compactação, até 5 % de repetidas, ninguém acima de --teto imagens nem de --mb,
+#   ninguém cortado e, com --lotes, toda folha do lote aberta. O custo não decide a saída: vai no relatório, para
+#   comparar com o previsto.
 # Só lê as transcrições e o lotes.json: não lê chave, não abre imagem, nada sai da máquina.
 # Saída: 0 = medido, dentro do esperado · 1 = medido, fora do esperado · 2 = não mediu (sem revisor com esse rótulo,
 #        argumento errado).
@@ -64,8 +71,8 @@ def ts(s):
 
 def medir(arq):
     r = {'arquivo': os.path.basename(arq), 'modelo': None, 'chamadas': 0, 'imagens': 0, 'repetidas': 0,
-         'imagens_tiradas': 0, 'outra_mudanca': 0, 'queda_sem_anexo': 0, 'mb_ate_1a_regravacao': 0.0, 'cortado': False,
-         'usd': 0.0, 'abertas': []}
+         'imagens_tiradas': 0, 'outra_mudanca': 0, 'queda_sem_anexo': 0, 'compactacao': 0, 'mb_ate_1a_regravacao': 0.0,
+         'cortado': False, 'usd': 0.0, 'abertas': []}
     uso, ordem, caminho_de, vistos_tu, caminhos = {}, [], {}, set(), set()
     b64, regravou, anexo_pendente, compactou = 0, False, False, False
     prev = None  # (instante, contexto) da chamada anterior
@@ -76,10 +83,14 @@ def medir(arq):
             continue
         if 'compact_boundary' in (str(j.get('subtype')), str(j.get('type'))):
             compactou = True
+            r['compactacao'] += 1
+            regravou = True  # o MB para aqui também: a compactação tirou as imagens do contexto, com ou sem thinking_drop
         anexo = j.get('attachment') or {}
         if anexo.get('type') == 'thinking_drop' and (anexo.get('newlyDropped') or {}).get('reason') == 'prefix_mismatch':
             kinds = str((anexo.get('clientChange') or {}).get('kinds', ''))
-            if 'systemPromptChanged' in kinds or 'toolSchemasChanged' in kinds:
+            if compactou:  # logo depois da compactação, antes da chamada seguinte: é dela, já contada em 'compactacao'
+                pass
+            elif 'systemPromptChanged' in kinds or 'toolSchemasChanged' in kinds:
                 r['outra_mudanca'] += 1
             else:
                 r['imagens_tiradas'] += 1
@@ -176,7 +187,8 @@ def main():
         print(f"✗ nenhum agente com rótulo começando em '{a['rotulo']}' em", ', '.join(a['pastas']))
         return 2
     soma = lambda k: sum(r[k] for r in revisores)  # noqa: E731
-    tot = {k: soma(k) for k in ('chamadas', 'imagens', 'repetidas', 'imagens_tiradas', 'outra_mudanca', 'queda_sem_anexo')}
+    tot = {k: soma(k) for k in ('chamadas', 'imagens', 'repetidas', 'imagens_tiradas', 'outra_mudanca', 'queda_sem_anexo',
+                                'compactacao')}
     tot['usd'] = round(soma('usd'), 2)
     regravacoes = tot['imagens_tiradas'] + tot['outra_mudanca'] + tot['queda_sem_anexo']
     pct = 100 * tot['repetidas'] / max(tot['imagens'], 1)
@@ -184,23 +196,26 @@ def main():
     cortados = sorted({r['rotulo'] for r in revisores if r['cortado']})
     incompletos = sorted({r['rotulo'] for r in revisores if r.get('faltaram')})
     folhas = sum(r.get('folhas_do_lote', 0) for r in revisores)
-    ok = regravacoes == 0 and pct <= 5 and not acima and not cortados and not incompletos
+    compactados = sorted({r['rotulo'] for r in revisores if r['compactacao']})
+    ok = regravacoes == 0 and not compactados and pct <= 5 and not acima and not cortados and not incompletos
     if a['json']:
         print(json.dumps({'revisores': revisores, 'total': tot, 'regravacoes': regravacoes, 'repetidas_pct': round(pct, 1),
-                          'acima_do_teto': acima, 'cortados': cortados, 'incompletos': incompletos,
+                          'compactados': compactados, 'acima_do_teto': acima, 'cortados': cortados, 'incompletos': incompletos,
                           'usd_por_folha': round(tot['usd'] / folhas, 3) if folhas else None,
                           'dentro_do_esperado': ok}, ensure_ascii=False, indent=1))
     else:
         for r in sorted(revisores, key=lambda r: (r['rotulo'], r['arquivo'])):
             falta = f"  faltaram {len(r['faltaram'])}" if r.get('faltaram') else ''
+            comp = f"  COMPACTOU {r['compactacao']}" if r['compactacao'] else ''
             print(f"{r['rotulo']:<22} {r['arquivo'][:16]:<16} {str(r['modelo'])[7:]:<10} imagens {r['imagens']:>4}  "
                   f"repetidas {r['repetidas']:>4}  regravações {r['imagens_tiradas'] + r['outra_mudanca'] + r['queda_sem_anexo']:>3}  "
-                  f"MB {r['mb_ate_1a_regravacao']:>6}  US$ {r['usd']:>7.2f}{'  CORTADO' if r['cortado'] else ''}{falta}")
+                  f"MB {r['mb_ate_1a_regravacao']:>6}  US$ {r['usd']:>7.2f}{'  CORTADO' if r['cortado'] else ''}{comp}{falta}")
         print(f"\n{len(revisores)} revisores · {tot['imagens']} imagens, {tot['repetidas']} repetidas ({pct:.1f} %) · "
               f"{regravacoes} regravações ({tot['imagens_tiradas']} por imagens tiradas, {tot['outra_mudanca']} por outra mudança, "
-              f"{tot['queda_sem_anexo']} sem anexo) · US$ {tot['usd']:.2f} a preço de tabela"
+              f"{tot['queda_sem_anexo']} sem anexo) · {tot['compactacao']} compactações · US$ {tot['usd']:.2f} a preço de tabela"
               + (f" · US$ {tot['usd'] / folhas:.3f} por folha" if folhas else ''))
         print(f"acima de {a['teto']} imagens ou {a['mb']} MB: {', '.join(acima) or 'nenhum'} · cortados: {', '.join(cortados) or 'nenhum'}"
+              f" · compactados: {', '.join(compactados) or 'nenhum'}"
               + (f" · com folha do lote não aberta: {', '.join(incompletos) or 'nenhum'}" if lotes is not None else ''))
         print('✓ dentro do esperado' if ok else '✗ fora do esperado')
     return 0 if ok else 1
