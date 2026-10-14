@@ -235,6 +235,27 @@ necessidade.
 
 - Margem de 200 px nas laterais e 160 px no topo. O canto inferior direito, 400 × 400 px, fica vazio (marca-d'água
   do YouTube). Nenhuma logo do canal.
+- Abaixo de y 1880, só crédito, de x 200 até x 1720. Vale em todo quadro, sob a câmera, também no movimento: a pílula
+  presa a um ponto que a câmera leva para fora da margem esmaece antes de cruzá-la.
+- **Meça antes de entregar, com o `ferramentas/portao-margens.mjs`** (M6 da auditoria de tokens, "Medir antes de
+  entregar"; o Lucas, 14/10/2026: "M6 pode ser aplicada"). No vídeo 2, 10 das 23 cenas de mapa voltaram por margem.
+  - O comando, da raiz: `node ferramentas/portao-margens.mjs out/<proj>/graphics/<id>.html` (várias:
+    `node ferramentas/portao-margens.mjs out/<proj> --so=<id>,<id>`).
+  - **Não pede tile e não gasta MapTiler**: ele dá à cena uma chave falsa, responde no próprio PC os pedidos de tile com
+    um ladrilho cinza, corta o resto e sobe o Chrome com o DNS desligado. A câmera, o `map.project()` e tudo o que a cena
+    posiciona por eles são os do render (provado contra o clipe 4K de cinco cenas do vídeo 2, a ±1 px). Não leva a
+    pré-carga das chaves (com ela, ele se recusa), não entra no `maptiler-gasto.md` e pode rodar quantas vezes precisar,
+    antes do render de prova.
+  - O que ele mede, a cada 0,1 s, do primeiro ao último quadro, sem tolerância: a margem, a faixa do crédito, o fim do
+    crédito em x 1720 e o canto, para toda pílula, rótulo, cartão, foto e legenda que é DOM. Não mede o que é camada do
+    MapLibre (o canvas: território, linha, rota, o quadrado de uma área): isso continua nos quadros do render.
+  - Saiu 1: conserte o que ele lista (o lado, a medida, o limite, o instante, a regra) e rode de novo, até sair 0. Saiu 2
+    (NÃO MEDIDO, por exemplo o mapa que não assentou): diga no relato, com o motivo.
+  - **Cena com relevo 3D** (pede tile de terreno): ele sai sempre 2, por desenho. O relevo dele é plano, e o
+    `map.project()` com relevo depende da altitude: na s44 do Juneau, a pílula numa montanha ficou 15 a 19 px mais alta
+    no clipe que nele. Os `itens_indicativos` dizem onde olhar, mas a margem dessa cena se confere no clipe de prova, como
+    antes, e o relato diz isso.
+  - Reprovação que você acha que a marca não pede vai no relato, com a medida; não se conserta "para passar".
 - **Teto de 6 elementos simultâneos; alvo de 4 a 5.** Contam texto e gráfico (rótulo, anel, território aceso,
   seta, rota). A base de satélite e o crédito não contam.
 - Texto no ar ≥ 2,0 s (identidade.md §4.3). O ofício pede ~1,8 s; a marca sobe.
@@ -268,6 +289,9 @@ necessidade.
   que o `qc-cena` cita): o que eles mediriam, você olha nos quadros e diz "olhado, portão não veio".
 - Também rodam: `node scripts/qc-hex.mjs out/<proj>/graphics/<id>.html` e
   `node scripts/qc-src-existe.mjs out/<proj>/graphics/<id>.html`.
+- **A margem** (M6; o Lucas, 14/10/2026: "M6 pode ser aplicada"): `node ferramentas/portao-margens.mjs
+  out/<proj>/graphics/<id>.html` em toda cena que você entrega, até sair 0 (§7). Rode ANTES do render de prova: ele não
+  pede tile, e o render pede. O relato diz a saída de cada cena.
 
 ## 10 · Rede, geometria e a regra anti-robô
 

@@ -70,7 +70,7 @@
 - **O quadro reduzido não é o clipe de 1080p.** O quadro em 1080p de um clipe que vale, ou de um HTML 4K (o do verbo
   `quadros` da linha do tempo, o do ffmpeg com `scale`, a folha de contato), serve a todas as lentes, menos às medidas
   em px: o rótulo de 128 px, o crédito de 56 px (76 no Juneau), a margem de 200 px e a distância da chamada vêm do
-  portão e do `probe-elemento` (§3 e §5), não do olho num quadro reduzido. Um quadro 4K lido inteiro também chega a
+  portão (a margem, do `portao-margens`, §3) e do `probe-elemento` (§3 e §5), não do olho num quadro reduzido. Um quadro 4K lido inteiro também chega a
   você reduzido (com no máximo 2.000 px de lado, medido nas transcrições do vídeo 2): para ver um crédito ou uma borda
   de perto, só o recorte do quadro 4K mostra o detalhe (§2.1, a folga).
 - **Cena de mapa**: a prova é o clipe, não o `quadro.mjs` (por quê: CLAUDE.md, "Peças da pré-v1", item 7). O
@@ -163,6 +163,33 @@
   não os do `_audit-til` e do `qc-rodape-contraste` do molde, que a pré-carga dá como NÃO MEDIDO ali. O `til-glifo`
   indefinido do carimbo de cena de mapa, com o `portao-mapa til` passando na mesma marca e no mesmo HTML, não vai
   a `gatesDuros`. E o `conferir` da pré-carga tem de ter saído 0 para a rodada que você lê: o Claude central diz.
+- **A margem é do `ferramentas/portao-margens.mjs`** (M6 da auditoria de tokens, "Medir antes de entregar"; o Lucas,
+  14/10/2026: "M6 pode ser aplicada"). Ele mede, na tela, sob a câmera, a cada 0,1 s, do primeiro ao último quadro, a
+  margem (200 nas laterais, 160 no topo), a faixa do crédito (abaixo de y 1880, só crédito), o crédito de x 200 até x 1720
+  e o canto de 400 × 400, para todo texto, pílula, cartão, foto, borda de papel e fita, também na cena de mapa (sem tile).
+  O editor e o mapista o rodam antes de entregar, e o Claude central na rodada de portões. Você lê a saída, como lê os
+  portões:
+  - a linha da cena em `out/<proj>/_tmp/portao-margens.jsonl` é a última com o `sha1` do HTML de hoje e o `marca` igual
+    ao sha1 do `marca/tokens.css` de hoje (`sha1sum`); a de outro sha1 é de outra versão, ou de outra marca, e não vale;
+  - `veredito` 0 passa. `veredito` 1 vai a `gatesDuros`, item por item: `portao-margens: <lado> <medida> (limite
+    <limite>) <elemento> @<t>s`. `veredito` 2, ou nenhuma linha com o sha1 de hoje, é NÃO MEDIDO pelo nome
+    (`portao-margens`), e a cena fica `aprovado: false` até ele rodar;
+  - **menos a cena com relevo 3D**: ela sai sempre `veredito` 2, com o `motivo` "a cena usa relevo 3D" (o relevo do
+    portão é plano, e a pílula presa ao mapa muda de lugar: até 19 px na s44 do Juneau). Ela fica fora do alcance dele,
+    como o `mapa-vivo` (acima): esse 2 não é NÃO MEDIDO de cena e não segura o `aprovado`. A margem dela é sua, como antes
+    da M6, no recorte do quadro 4K do clipe, dentro do orçamento (§2.1), e o laudo diz "margem: relevo 3D, olhada no
+    clipe". Os `itens_indicativos` da linha dizem onde olhar;
+  - **não remeça no olho o que ele mede**: margem, faixa do crédito, fim do crédito, canto e fita. Não abra quadro nem
+    recorte para isso. Se um quadro que você já abriu mostrar, claro, algo fora da margem e a linha dele diz 0, é o
+    portão que está em xeque: escreva no laudo, com o instante e o quadro, e deixe a cena `aprovado: false` com o motivo
+    "portao-margens contestado"; o Claude central confere e decide;
+  - os `avisos` (o crédito com uma palavra sozinha na última linha, ou com 3 linhas) vão à lente `espaco` como
+    sinalização, sem reprovar;
+  - continua com você o que ele não mede: a palavra da página escaneada lavada pela fita ou cortada pelo recorte, o
+    texto que entra antes da voz, o tempo no ar, o que é camada do mapa (território, linha, o quadrado de uma área), a
+    geometria e o satélite;
+  - a reprovação dele que a triagem dá como limitação vai ao Lucas pelo caminho de qualquer portão (abaixo, "A exceção
+    do Lucas").
 - **O `aprovado`** segue o ofício: todas as lentes ≥ 7 **e** `gatesDuros` vazio, com os portões rodados. Portão
   que mediu e reprovou vai a `gatesDuros`. Portão que não rodou numa cena (exit 2 com o alvo certo) segue NÃO
   MEDIDO, pelo nome, e a cena fica `aprovado: false` até ele rodar.
@@ -217,6 +244,7 @@
   - margem de 200 px nas laterais e 160 px no topo;
   - abaixo de y = 1880, só crédito, de x = 200 até antes de x = 1720;
   - o canto inferior direito, 400 × 400 px, vazio; nenhuma logo;
+  - esses três números vêm do `portao-margens` (§3), não do olho; a logo no canto, você olha;
   - um herói por cena, ou nenhum. Nome de lugar como herói reprova.
 - **poluicao** (identidade.md §4.2): teto de 6 elementos simultâneos, alvo de 4 a 5.
   - Contam texto e gráfico. Não contam a base de tela cheia, o crédito e a textura. O ator com bandeira e nome

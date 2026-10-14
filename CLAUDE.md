@@ -637,6 +637,18 @@ nas cenas de mapa. Custa algumas horas a mais."
   colisão, tamanho, til, src-existe, fora do quadro e crédito-fantasma em toda cena, grava o carimbo em
   `out/<proj>/_portao.json` (que o XML do motor lê) e sai 0 só com todas passando. O `mapa-vivo` não veio do
   estúdio e fica fora do portão (ele avisa). O `qc-rodape-contraste` e o `qc-video-avanca` rodam à parte.
+- **A margem, medida antes de entregar** (M6 da auditoria de tokens, "Medir antes de entregar"; o Lucas, 14/10/2026: "M6
+  pode ser aplicada"). `node ferramentas/portao-margens.mjs out/<proj> [--so=<cenas>]` mede, na tela, sob a câmera, a cada
+  0,1 s, a área segura da marca (identidade §4.2: a margem, a faixa do crédito, o crédito até x 1720 e o canto de 400 × 400)
+  para todo texto, pílula, cartão, foto, borda de papel e fita, e grava uma linha por cena em
+  `out/<proj>/_tmp/portao-margens.jsonl`. O `editor-de-arte` e o `mapista` rodam antes de entregar, até sair 0; o Claude
+  central roda na rodada de portões; o `qc-visual` lê a saída e não remede no olho. Não está no `qc-cena` nem no
+  `_portao.json` (o molde não se edita). Cena de mapa sem tile e sem a pré-carga (com ela, ele se recusa): chave falsa,
+  pedidos de tile respondidos no próprio PC com um ladrilho cinza, o resto cortado, o DNS do Chrome desligado; não entra
+  no `maptiler-gasto.md`. A prova: `node ferramentas/portao-margens-provar.mjs`. Não mede camada do mapa (canvas) nem a
+  palavra da página escaneada sob a fita: isso fica nos quadros. A cena com relevo 3D sai NÃO MEDIDO por desenho (o relevo
+  dele é plano, e a pílula presa a uma montanha muda até 19 px de lugar, medido na s44 do Juneau): a margem dela continua
+  no clipe de prova, e esse 2 não segura o `aprovado` do `qc-visual`.
 - **A cena de mapa nos portões, só com a pré-carga do canal** (03–04/10/2026; `APRENDIZADOS.md`, item 64). Os
   portões do molde abrem a cena sem a chave da MapTiler: a base de mapa da pré-v1 para antes de criar o mapa, e o
   portão mede uma página parada, sem satélite e sem pedir tile nenhum. (Até 04/10 esta linha dizia que o portão

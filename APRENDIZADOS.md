@@ -1418,6 +1418,10 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   plantado fora da margem antes de valer. A saída tem ruído conhecido (a folha que entra de fora do quadro, a sombra, a caixa
   que agrupa os créditos), que se olha no quadro antes de mandar consertar
   (`out/los-angeles/_tmp/medir-margens.mjs` e `medir-fitas.mjs`, a promover a `ferramentas/` no fim do vídeo).
+  **Promovido em 14/10/2026** (M6 da auditoria de tokens; Lucas: "M6 pode ser aplicada", e "Aplicar (Recomendado)" ao texto
+  final): `ferramentas/portao-margens.mjs` mede sem pré-carga e sem tile (o mapa sai cinza, com os pedidos respondidos no
+  próprio PC), a cada 0,1 s, e a prova é `ferramentas/portao-margens-provar.mjs`. O mapa com relevo 3D sai NÃO MEDIDO: o
+  terreno de quem mede sem tile é plano, e a pílula presa a uma montanha muda até 19 px de lugar (s44 do Juneau).
 - **Como evitar:** rode a varredura das margens em toda cena antes do `qc-visual`, e dê ao qc e ao editor o mesmo medidor como
   prova. Rótulo preso a um ponto do mapa esmaece antes de cruzar a margem, ou fica preso a ela.
 - **Por que serve a qualquer canal:** todo canal com câmera que anda sobre a cena (mapa, mesa, push-in), e com área segura para

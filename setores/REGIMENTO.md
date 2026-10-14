@@ -203,8 +203,8 @@ O render, os portões que abrem o Chrome, a caça, a linha do tempo e o conferen
 cada sessão só vê o que é dela. Por isso há um aviso de ocupado em disco, em `out/_maquina/`, que fica fora do git.
 
 **Os avisos:**
-- `chrome.json`: todo script que abre o Chrome, como render 4K ou de prova, `qc-cena`, `portao-mapa`, `quadro.mjs`,
-  `shot.mjs` e `probe-elemento`;
+- `chrome.json`: todo script que abre o Chrome, como render 4K ou de prova, `qc-cena`, `portao-mapa`, `portao-margens`,
+  `quadro.mjs`, `shot.mjs` e `probe-elemento`;
 - `caca.json`: a caça nos bancos pagos, só da Sala;
 - `linha-do-tempo.json`: o Lucas vendo a linha do tempo. A Sala o marca quando o avisa e o libera quando ele responde ou
   passa o dia. O servidor ligado, sozinho, não ocupa;
@@ -241,6 +241,12 @@ não cada peça.
   - Os portões rodam com `REGIE_MOTOR` na mesma chamada e, em vídeo com cena de mapa, com a pré-carga
     `ferramentas/chaves-nos-portoes.mjs`.
   - O til e o contraste do crédito se medem pelo `ferramentas/portao-mapa.mjs` (`til`, e `rodape` na v5).
+  - A margem, a faixa do crédito, o fim do crédito e o canto se medem pelo `ferramentas/portao-margens.mjs` (M6 da
+    auditoria de tokens; o Lucas, 14/10/2026: "M6 pode ser aplicada"), em toda cena entregue, até sair 0:
+    `node ferramentas/portao-margens.mjs out/<proj> --so=<as cenas>`. Ele roda SEM a pré-carga das chaves e não pede
+    tile, nem na cena de mapa: não precisa de `MapTiler liberado` e não entra no `maptiler-gasto.md`. Abre o Chrome, então
+    marca o `chrome.json`. Exit 2 é NÃO MEDIDO, como o dos portões, menos na cena com relevo 3D, que ele não alcança (o
+    relevo dele é plano): nela, a margem se confere no clipe de prova, como antes.
   - Depois de toda rodada, `node ferramentas/chaves-nos-portoes.mjs conferir out/<proj> --desde="<hora do começo>"` tem
     de sair 0.
   - É NÃO MEDIDO, com o nome do portão:

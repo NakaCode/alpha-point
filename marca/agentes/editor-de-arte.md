@@ -164,6 +164,26 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
   cima `1080 − (1080 − 160) / s` e o da faixa de baixo `1080 + (1880 − 1080) / s` (com a origem da câmera no centro;
   com outra origem, a conta muda). A borda de papel, a fita e a moldura contam como o elemento. Confira no último
   quadro do render, não só no primeiro.
+- **Meça antes de entregar, com o `ferramentas/portao-margens.mjs`** (M6 da auditoria de tokens, "Medir antes de
+  entregar"; o Lucas, 14/10/2026: "M6 pode ser aplicada"). A conta acima é como se monta; a medida é o que prova.
+  - O comando, da raiz: `node ferramentas/portao-margens.mjs out/<proj>/graphics/<id>.html` (várias cenas:
+    `node ferramentas/portao-margens.mjs out/<proj> --so=<id>,<id>`). Não precisa de `REGIE_MOTOR` à mão nem da pré-carga
+    das chaves, e não pede tile: a cena de mapa se mede com o mapa sem satélite, com os pedidos respondidos no próprio PC
+    (a cena com relevo 3D sai NÃO MEDIDO por desenho: a margem dela se confere no clipe de prova; `mapista.md` §7).
+  - O que ele mede, na tela, sob a câmera, a cada 0,1 s, do primeiro ao último quadro, sem tolerância: a margem (200 nas
+    laterais, 160 no topo), a faixa do crédito (abaixo de y 1880, só crédito), o crédito de x 200 até x 1720, e o canto de
+    400 × 400, para todo texto, pílula, cartão, foto, borda de papel e fita. Não contam: a sombra, a folha, a foto ou a fita
+    de passagem (entrando ou saindo, a mais de 60 px/s), a borda de papel sem texto que desce na faixa, a caixa que só
+    agrupa os créditos. O topo do arquivo diz cada regra. Folha, sombra ou objeto com outro nome de classe que não o do
+    vídeo 2 (`papel`, `pagina`, `folha`, `sombra`) se declara com `data-qc-margem="papel|sombra|objeto"`.
+  - Saiu 1: ele lista cada item com o lado, a medida, o limite, o instante e a regra. Conserte e rode de novo, até sair 0.
+  - Saiu 2 (NÃO MEDIDO): diga no relato, com o motivo que ele imprime. Não entregue dizendo que mediu.
+  - Uma reprovação que você acha que a marca não pede vai no relato, com a medida, e não se conserta "para passar": quem
+    decide é o Claude central, e a exceção, o Lucas ("Os portões medem", no `CLAUDE.md`).
+  - O "aviso" (o crédito com uma palavra sozinha na última linha, ou com 3 linhas) não reprova: quebre o crédito noutro
+    ponto ou diga no relato por que fica.
+  - Ele não mede o que fica nos quadros: a palavra da página escaneada sob a fita ou cortada pelo recorte (é pixel da
+    imagem), o texto que entra antes da voz, o tempo no ar.
 - Uma linha de crédito que entra ou sai não faz a outra saltar: a pílula muda de altura junto com o fade, ou as
   duas linhas já ocupam o lugar delas desde o começo. Um salto de 83 px num quadro só, com `hidden`, é defeito.
 - Canto inferior direito, 400 × 400 px: vazio (marca-d'água do YouTube). Nenhuma logo do canal na cena.
@@ -418,6 +438,9 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
 - **Itens 2, 2c, 3, 4 e 7** do contrato: são portões de navegador e rodam desde 01/10/2026 (o `qc-cena` roda a
   maior parte; a lista está no CLAUDE.md, "Os portões medem"). Os portões medem o HTML em instantes que eles
   escolhem: continue olhando nos quadros do clipe o que ficou entre esses instantes (a câmera, as entradas).
+- **A margem** (M6; o Lucas, 14/10/2026: "M6 pode ser aplicada"): `node ferramentas/portao-margens.mjs
+  out/<proj>/graphics/<id>.html` em toda cena que você entrega, junto com os portões, até sair 0 (§4). O relato diz a saída
+  de cada cena: 0, ou o item que ficou e por quê.
 - **Item 5**: `node scripts/qc-src-existe.mjs out/<proj>/graphics/<id>.html`.
 - **Item 6**: `node scripts/qc-hex.mjs out/<proj>/graphics/<id>.html`, no lugar do `perl` do ofício.
 - **Item 9** (lastro): `node scripts/mapa-limpo.mjs <proj> --tc <início>-<fim>`, em timecode `hh:mm:ss:ff`.
