@@ -88,7 +88,7 @@ levou 403 do Legislativo e contornou por `curl`).
 
 ## 3 · O público e o prazo de validade
 
-- Para quem: um norte-americano de 25 a 60 anos que **não** acompanha geopolítica (voz.md §1). O que ele
+- Para quem: quem fala inglês, de 25 a 60 anos, em qualquer país, e que **não** acompanha geopolítica (voz.md §1). O que ele
   não sabe, ele não corrige: o erro passa.
 - **O vídeo precisa valer daqui a dois anos** (voz.md §2): data absoluta, nunca `this week`, `recently`,
   `just happened`. Frase no presente sobre coisa que muda é volátil e vai para a tabela com a data-base.

@@ -16,8 +16,12 @@ Os dois textos que a fizeram, a descrição da voz e o comando do Remix, ficam e
 da escolha. Se um dia a voz precisar ser refeita, parte-se deles. Ela foi remixada porque a anterior, uma
 "news anchor", soava lida. O narrador **conversa**: conta e apresenta, não lê.
 
-**Para quem**: um norte-americano de 25 a 60 anos que não acompanha geopolítica e não precisa
-acompanhar. Tem tempo e curiosidade, mas não tem o vocabulário.
+**Para quem**: quem fala inglês, de 25 a 60 anos, em qualquer país (os EUA, o Reino Unido, o Canadá, a Austrália, a
+Índia…), que não acompanha geopolítica e não precisa acompanhar. Tem tempo e curiosidade, mas não tem o vocabulário. A voz é
+americana, mas o texto não pressupõe que quem ouve é americano: nada de "our country" ou "back home", e a comparação de tamanho
+com um lugar dos EUA vem com o número. O Lucas, 14/10/2026: "nosso canal é de conhecimento geral em inglês, mas distribuído como
+americano. Criar vídeos somente para o público americano reduz nossa chance de sermos vistos por outras regiões que falam
+inglês". As distâncias continuam só em milhas ("Só milhas, como hoje", no mesmo dia).
 
 **Distância**: segunda pessoa (`you`). O `we` quer dizer narrador e espectador juntos (`let's zoom in`),
 nunca "nós, os americanos".

@@ -60,7 +60,7 @@ Nada disto se aplica hoje. É o ponto de partida para reescrever esta roupa com 
   ⚠️ Os exemplos do ofício e do molde estão em português ou no formato brasileiro e não se copiam:
   - a capitalização de frase do português;
   - os kickers "você está em", "a seguir" e "NESTE COMPILADO".
-- **Público**: norte-americano de 25 a 60 anos, que não acompanha geopolítica (identidade.md §0; voz.md §1).
+- **Público**: quem fala inglês, de 25 a 60 anos, em qualquer país, que não acompanha geopolítica (identidade.md §0; voz.md §1).
   O "35+" do ofício não é deste canal.
 - **Tipo**: Inter e Barlow Condensed, pelos tokens (identidade.md §3).
 - **Cor**: pelos papéis da identidade.md §2. O `--destaque` é de uma entidade só, e o anel é a única exceção:

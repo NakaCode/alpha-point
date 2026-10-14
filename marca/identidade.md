@@ -8,7 +8,9 @@
 
 ## 0 · O canal em uma linha
 
-Geografia e geopolítica para quem **não** acompanha geopolítica: público norte-americano, 25–60 anos.
+Geografia e geopolítica para quem **não** acompanha geopolítica: quem fala inglês, em qualquer país, 25–60 anos. O canal se
+distribui como americano (inglês dos EUA na voz e na grafia, números no formato americano, dinheiro em US$, distâncias em
+milhas), mas não é feito só para o americano (Lucas, 14/10/2026; voz.md §1).
 **Faceless**: ninguém aparece falando para a câmera. A tela é sempre mapa, registro real, prancha ou dado.
 Não é partidário, não é sensacionalista, não é notícia do dia, não usa fonte que não se possa verificar.
 
