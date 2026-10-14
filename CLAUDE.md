@@ -494,6 +494,27 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
   (os 9 consertos do cético da M11, os 7 detalhes que o verificador do relatório de economia derrubou, a versão da vinheta
   descartada). A medida: `ferramentas/medir-espectador.py <pasta do workflow> --rotulo= --json`.
 
+**O balanço depois do vídeo 3** (Lucas, 14/10/2026, 14:2x: "após a finalização do vídeo 3 veremos se essas mudanças de hoje
+continuam ou retrocedem ao que eram antes"). Com o vídeo 3 entregue, o Claude central leva ao Lucas, uma por uma, as mudanças de
+14/10 abaixo, cada uma com o que se mediu no vídeo e o que seria voltar. Ele decide se cada uma fica ou volta; até lá, todas
+valem. Voltar é refazer o texto como estava antes do commit dela, num commit novo (nunca reescrever o histórico):
+- **M10**, a revisão de espectador em lotes de até 20 folhas (`5fc4d58`): o `medir-espectador.py --lotes=` de cada rodada e o
+  que o Lucas achou na linha do tempo que a revisão deixou passar. Voltar: o texto do commit `632c844`.
+- **M11**, o orçamento de imagens do `qc-visual` (`d484140`): o `medir-espectador.py --rotulo=qc-visual:L --teto=25` de cada
+  rodada. Voltar: a roupa, o regimento e o item de "Os portões medem" de antes de `d484140` (o conserto do medidor fica).
+- **Mais ilustração** (`92cfe4c`): quantas cenas `desenho` o vídeo 3 teve, a régua de mundo real (≥ 60 %) e o olhar do Lucas na
+  linha do tempo. Voltar: a identidade §5 e as roupas do montador, do diretor-de-arte e do regente de antes de `92cfe4c`.
+- **A animação desenhada em Opus** (`92cfe4c` e `aa6e92e`): o olhar do Lucas sobre as cenas feitas em Opus. Voltar: o
+  `editor-de-arte` todo em Fable ("Os modelos", acima).
+- **A vinheta de apresentação** (`43f7098`): como ela ficou no vídeo montado. Voltar: sem vinheta, e a marca d'água do começo
+  ao fim (identidade §8, roupa do regente e `xml-chamadas.py` de antes de `43f7098`).
+- **O ultracode ligado** (`f158d2f`): o custo dos céticos e verificadores no vídeo 3 contra o que eles pegaram. "Voltar", aqui,
+  é desligá-lo, a escolha que ele não fez em 14/10.
+- **M6**, a medida de margens e fitas antes de entregar, se for aplicada: a "Como validar" da ficha (rodadas de `qc` por cena ≤
+  metade das do vídeo 2). Voltar: tirar a linha das roupas.
+- Ficam fora do balanço, por não se medirem no vídeo 3: os planos e o juiz do roteiro em Opus (`066f63d`, do vídeo 4 em diante) e
+  o público que fala inglês em qualquer país (`795970b`, decisão de marca, não teste).
+
 **Mais mapa** (Lucas, 27/09/2026: "nos próximos devemos usar mais mapas (mas claro que somente se o contexto
 permitir"): do vídeo 2 em diante, a pauta e o roteiro preferem o ângulo espacial quando o assunto o tem, e fala de
 lugar, rota, distância ou território vai a mapa antes de B-roll genérico. Nunca mapa forçado. O Juneau fica como
