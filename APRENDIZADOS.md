@@ -1460,3 +1460,30 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   - a Sala responde "não mandei: pare" a `id` que não mandou.
 - **Por que serve a qualquer canal:** todo canal que quiser várias conversas trabalhando sob uma central, no app, esbarra na
   mesma pergunta (quem mandou isto?), e as três primeiras respostas parecem certas e falham.
+
+### 81. Revisor que lê muitas imagens cai num laço: o Claude Code tira as antigas, e ele as relê
+
+- **O problema:** no vídeo 2 (06–12/10/2026), a revisão de espectador custou uns US$ 1.280 a preço de tabela, mais que qualquer
+  outra etapa, e 80 % das leituras de imagem dos revisores eram de folhas que o mesmo revisor já tinha aberto. A causa está na
+  documentação do Claude Code (code.claude.com/docs/en/prompt-caching, "Accumulating many images"), sem o número.
+  - Quando as imagens de uma conversa passam de um teto, o Claude Code tira as mais antigas.
+  - A conversa inteira se regrava, a preço de escrita.
+  - O revisor, sem ver mais o que viu, reabre as mesmas folhas, e o teto volta a estourar.
+  - Nas transcrições, o teto separa sem exceção os 43 revisores: são 24 MiB de imagem em base64, umas 40 folhas de
+    1920×1208. O contexto em tokens NÃO separa: houve revisor a 303 mil tokens sem regravação.
+  - O sinal na transcrição é o anexo `thinking_drop` com `reason: prefix_mismatch`, junto da queda do `cache_read` ao tamanho
+    do prompt de sistema.
+  - As regravações custaram US$ 751. O `qc-visual` cai no mesmo laço (cerca de US$ 55).
+- **O que resolveu:** cada agente que lê imagem fica abaixo do teto com folga, e termina (M10 da auditoria de tokens; CLAUDE.md,
+  "A revisão de espectador, antes do Lucas").
+  - Lotes de até 20 folhas e no máximo 25 imagens por revisor, contando as reabertas, e um revisor por lote.
+  - A folha de passagem: a última do lote anterior, para não perder a troca de cena na fronteira.
+  - `ferramentas/folhas-espectador.py` faz as folhas e os lotes, e `ferramentas/medir-espectador.py` mede cada rodada nas
+    transcrições: regravações, imagens reabertas, cobertura do lote e custo.
+  - No teste sobre as mesmas folhas do vídeo 2, os revisores curtos acharam 20 dos 22 achados importantes que o cético tinha
+    mantido, e mais 6 novos, com 0 regravação e US$ 19 contra US$ 389.
+- **Como evitar:** antes de dar muitas imagens a um agente, some os MB delas, não os tokens: ~0,62 MB de base64 por folha, teto
+  de ~25 MB. Fique em ~70 % disso. Partir o trabalho em agentes curtos sai muito mais barato do que um agente longo relendo
+  tudo. Não adianta mandar o agente "não reabrir": quem tira a imagem é o Claude Code, e ele precisa dela de novo.
+- **Por que serve a qualquer canal:** todo canal que revisa quadros, folhas de contato, prints ou PDFs com um agente esbarra no
+  mesmo teto; o laço não dá erro nenhum e só aparece na conta.
