@@ -444,10 +444,20 @@ Dá mais trabalho para você a cada passo."
 
 **Os modelos** estão no frontmatter, e **cada especialista roda no modelo com que vem do motor** (decisão do
 Lucas, 26/09/2026: "os que vierem com fable devem continuar como fable, os que vierem opus como opus"). Não passe
-outro modelo no despacho:
+outro modelo no despacho, fora a exceção da animação desenhada (abaixo):
 - `diretor-de-arte` e `editor-de-arte` usam `fable` (o plano do Lucas é o Max);
 - `qc-visual` usa `sonnet`;
 - os outros usam `opus`.
+- **A exceção: a animação desenhada em Opus** (Lucas, 14/10/2026, ao pedir mais ilustração: "Mas as ilustrações podem
+  serem feitas no Opus"). Do vídeo 3 em diante, a cena `desenho` com `ANIMAÇÃO` no `porque` da regência (identidade §5,
+  "Animação para explicar" e "Mais ilustração") o `editor-de-arte` constrói e conserta em Opus: no `Agent`, `subagent_type:
+  'editor-de-arte'` com `model: 'opus'`; no `Workflow`, `agentType: 'editor-de-arte', model: 'opus'`. As outras cenas dele
+  (a prancha, o documento e o mapa, mesmo com uma peça feita pelo método do ilustrador) continuam em `fable`, e o
+  `diretor-de-arte` também. Confira no transcript que subiu `claude-opus-5-5`.
+  - Em teste no vídeo 3: as 5 ilustrações de Los Angeles que o Lucas aprovou foram feitas em Fable, e nenhuma em Opus ainda.
+    Se ele achar as de Opus piores na linha do tempo, elas voltam ao Fable, e ele decide de novo.
+  - Antes do vídeo 3, o teste: a s52 de Los Angeles (o TEU) refeita em Opus com o mesmo pedido, ao lado da de Fable (Lucas,
+    14/10/2026: "Sim, refazer a s52 (Recomendado)"), em `out/prova-opus/`, fora do git.
 
 **O roteiro** dos próximos vídeos é escrito aqui, em **Fable 5.1** (Lucas, 26/09: "pode ser por aqui sim"), e não
 no claude.ai: o navegador gasta do mesmo limite da assinatura Max (`C:/projetos/regie-v1/docs/CONTAS.md`, "Uma cota
@@ -456,7 +466,8 @@ para tudo") e não tem as fontes locais nem a bancada do canal.
 **O levantamento dos modelos** (08/10/2026; `out/_modelos/relatorio.md`, com o cético em `cetico.md`). O vídeo 2 gastou uns 125
 pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo trabalho, e o Sonnet ~¾ do Opus. As respostas do Lucas
 (08/10, 17:5x):
-- consertos do `editor-de-arte` em Opus em vez de Fable? **"Não, manter Fable"**: o editor continua todo em Fable;
+- consertos do `editor-de-arte` em Opus em vez de Fable? **"Não, manter Fable"**: o editor continua todo em Fable (menos a
+  animação desenhada, desde 14/10/2026: "Os modelos", acima);
 - testar a revisão de espectador em Sonnet, lado a lado com a de Opus, num lote pequeno da próxima revisão? **"Sim, testar
   (Recomendado)"**. O teste rodou na conferência da arte r4 (09/10, dois lotes): o Sonnet achou 11 dos 14 achados que o cético
   manteve, e o Opus 9. A pergunta "Passo a revisão de espectador ao Sonnet?" teve a resposta **"Sim, Sonnet revisa
@@ -479,6 +490,13 @@ permitir"): do vídeo 2 em diante, a pauta e o roteiro preferem o ângulo espaci
 lugar, rota, distância ou território vai a mapa antes de B-roll genérico. Nunca mapa forçado. O Juneau fica como
 está. A regra mora em `marca/identidade.md` §5, e as roupas do montador, do diretor-de-arte e do regente apontam
 para lá.
+
+**Mais ilustração** (Lucas, 14/10/2026: "Quero aumentar a quantidade de ilustrações/animações por vídeo"): do vídeo 3 em
+diante, sem número fixo, a animação desenhada entra também no lugar do B-roll genérico quando explica melhor ("B-roll nem
+sempre, mas quando a ilustração parecer uma melhor alternativa"), na comparação de tamanho, quantidade ou proporção, e nas
+etapas e linhas do tempo. O mapa e o registro real não se trocam por desenho, e a régua de mundo real fica em ≥ 60 %. A
+regra mora em `marca/identidade.md` §5 ("Mais ilustração"), e as roupas do montador, do diretor-de-arte e do regente
+apontam para lá. Quem constrói é o `editor-de-arte`, em Opus ("Os modelos", acima).
 
 **O ilustrador, com a física** (desde 07/10/2026, do vídeo 2 em diante). O pacote `ilustracao-narrativa` v1.4.0 (em
 `v1.4.0-ilustracao-narrativa/`, fora do git, nesta máquina) foi testado numa cópia da s34 do Juneau (`out/prova-ilustracao/`,

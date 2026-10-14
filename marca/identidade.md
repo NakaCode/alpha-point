@@ -526,6 +526,31 @@ animações para ilustrar coisas específicas"). Vale a partir do vídeo 2.
   - a física do ilustrador para tudo que age (§4.4, "O ilustrador, com a física");
   - a referência é `out/prova-estilo/graphics/s52-a.html` (nesta máquina). A PRANCHA continua como era.
 
+**Mais ilustração, quando explica melhor** (Lucas, 14/10/2026: "Quero aumentar a quantidade de ilustrações/animações por
+vídeo"). Vale do vídeo 3 em diante. O Juneau e Los Angeles ficam como estão (no vídeo 2, 5 das 56 cenas tiveram desenho).
+- **Sem número fixo.** A pergunta: "Quantas ilustrações/animações por vídeo? (no vídeo 2 foram 5 de 56 cenas)". A resposta:
+  "3. Mas as ilustrações podem serem feitas no Opus"; e, ao texto final, "Sim, sem número fixo (Recomendado)" (o "3" era a
+  terceira opção). A opção dizia: "Sem meta: entra sempre que a fala descrever algo que se explica
+  melhor desenhado. O diretor de arte decide cena a cena, com a orientação de usar mais."
+- **Onde entra** (a pergunta: "Onde as ilustrações novas podem entrar?"; a resposta: "No lugar do B-roll genérico, Números e
+  escala, Sequências e linhas do tempo"), sempre no estilo da animação acima (o traço de engenheiro) e com a física do
+  ilustrador (§4.4):
+  - **no lugar do B-roll genérico**, quando o desenho for a alternativa melhor, e não sempre (Lucas, no mesmo dia: "B-roll
+    nem sempre, mas quando a ilustração parecer uma melhor alternativa"). O B-roll fica quando mostra a coisa como ela é e
+    o desenho só a repetiria;
+  - **números e escala**: a comparação de tamanho, de quantidade ou de proporção vira desenho animado, em vez de só o
+    número na tela. A série no tempo e o gráfico de barras continuam DADO;
+  - **sequências e linhas do tempo**: o que acontece em etapas (um tratado, depois a lei, depois a ordem) se monta passo a
+    passo, uma etapa por vez, com a voz.
+- **O que não muda:**
+  - o MAPA continua a primeira escolha para a fala de lugar, rota, distância e território ("Mais mapa", abaixo);
+  - a coisa concreta que a fala nomeia, o evento nomeado e a pessoa continuam em registro real. O que tem foto, vídeo,
+    documento ou mapa de verdade não se troca por desenho: essa opção ("Também o que tem imagem real") ficou de fora;
+  - a régua de mundo real continua em ≥ 60 % (§4.3), e a animação não conta nela. Quem a confere, com as ilustrações a
+    mais, é o `montador`, no report dele.
+- **Quem faz:** o `montador` escolhe o modo `desenho` no espelho, com a semente do que animar; o `diretor-de-arte` o põe no
+  arco, e o `regente-de-imagem` no tipo; quem constrói é o `editor-de-arte`, em Opus (CLAUDE.md, "Os modelos").
+
 **Mais mapa, quando a fala pede** (Lucas, 27/09/2026: "Eu acredito que nos próximos devemos usar mais mapas
 (mas claro que somente se o contexto permitir"). Vale a partir do vídeo 2, e o Juneau fica como está: perguntado
 se valia também para ele, o Lucas respondeu "Só a partir do próximo".

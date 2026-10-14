@@ -90,7 +90,8 @@ Os cinco modelos são os de identidade.md §5.
 | argumenta altura, profundidade, inclinação | `mapa_relevo` | MAPA com relevo — só com o ok do Lucas (§4) |
 | afirma que algo aconteceu, existe, é assim; nomeia coisa que se move | `footage_real` · `foto_real` | REGISTRO |
 | cita lei, cédula, tratado, folheto, manchete | `documento_real` | DOCUMENTO: a folha de papel sobre `--fundo` (identidade.md §5, "A folha de documento"). Texto longo pede tempo: a câmera desce pela folha com a voz, ou o trecho da voz aparece ampliado |
-| dá número, série, comparação | `grafico` | DADO, em `--papel` |
+| dá número, série no tempo | `grafico` | DADO, em `--papel` |
+| compara tamanho, quantidade ou proporção; conta o que acontece em etapas ou numa linha do tempo; explica mecanismo ou processo | `desenho`, com `ANIMAÇÃO` no `porque` | animação desenhada no traço de engenheiro, montada com a voz (Lucas, 27/09 e 14/10/2026; identidade.md §5, "Animação para explicar" e "Mais ilustração"). Do vídeo 3 em diante também no lugar do B-roll genérico, quando o desenho explica melhor |
 | relaciona atores, causa → efeito | `desenho`, com `PRANCHA` no `porque` | PRANCHA, em `--fundo` |
 | a ideia continua e a tela já a serve | `continua` | — |
 

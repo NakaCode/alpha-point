@@ -72,6 +72,11 @@ por dentro desse mapa**: do mundo ao estreito, do estreito à foto do porto, do 
 - **Mais mapa, quando a fala pede** (Lucas, 27/09/2026, do vídeo 2 em diante; identidade.md §5): ao
   escolher o arco, a fala de lugar, rota, distância, território ou posição relativa vai ao mapa antes do
   B-roll genérico e da prancha. Sem forçar mapa em fala que não é sobre espaço.
+- **Mais ilustração, quando explica melhor** (Lucas, 14/10/2026, do vídeo 3 em diante; identidade.md §5): sem número
+  fixo, com a orientação de usar mais. A animação desenhada (o traço de engenheiro) entra no lugar do B-roll genérico
+  quando ele explica menos que o desenho, na comparação de tamanho, quantidade ou proporção, e nas etapas e linhas do
+  tempo. No arco, as cenas desenhadas se espalham pelo vídeo, sem amontoar, e o mapa e o registro real continuam onde a
+  fala os pede.
 - A `tecnica` fala nas medidas da casa (identidade.md §4.4): viagem de mapa de **1,5–3 s**, easing cúbico
   de entrada e saída; foto parada com Ken Burns de **1,00 → 1,12 em 6 s**, linear (do vídeo 2 em diante, na foto que
   enche a tela a mais de 1,25 vez, ele termina em 1,4 ÷ a escala de encher, e o produto fica ≤ 1,4: identidade.md

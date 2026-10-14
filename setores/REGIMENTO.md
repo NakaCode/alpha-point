@@ -149,6 +149,9 @@ O setor usa só:
   pela Arte, 12/10/2026), e o setor encerraria a volta com a peça ainda rodando.
   - O modelo e o esforço vêm do frontmatter: Fable no `diretor-de-arte` e no `editor-de-arte`, Sonnet no `qc-visual`, Opus
     nos outros.
+  - **A exceção, na Arte:** a cena `desenho` com `ANIMAÇÃO` no `porque` da regência vai ao `editor-de-arte` com `model:
+    'opus'` (Lucas, 14/10/2026; `CLAUDE.md`, "Os modelos"), na construção e no conserto. O pedido da Sala diz quais cenas
+    são essas; sem a lista, o setor a pede à Sala. As outras cenas do editor continuam sem `model`.
   - O setor não faz o trabalho da peça ele mesmo.
 - **Nunca `Agent` sem `subagent_type`**, nem um agente geral no lugar de peça que falhou ao carregar. O agente geral
   herdaria as ferramentas da sessão, com o navegador. Se a peça falhar ao carregar, o setor para e avisa a Sala.

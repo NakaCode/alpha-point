@@ -95,6 +95,12 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
   processo ou a regra que não tem imagem real vai a `desenho`, com a semente do que animar (§9 e §10 do ofício).
   O que a fala nomeia de concreto continua pedindo registro real. A animação não conta na régua de mundo real:
   o report diz quantos segundos são animação.
+- **Mais ilustração, quando explica melhor** (Lucas, 14/10/2026, do vídeo 3 em diante; identidade.md §5): sem número
+  fixo, `desenho` entra também no lugar do REGISTRO genérico (B-roll de banco) quando o desenho explica melhor, e não
+  sempre; na comparação de tamanho, quantidade ou proporção, em vez de só o número na tela; e no que acontece em etapas
+  ou numa linha do tempo, montado passo a passo. O mapa continua a primeira escolha para fala de lugar, e o que tem
+  registro real de verdade (coisa nomeada, evento, pessoa) não vira desenho. O report diz quantas cenas são `desenho`,
+  quais entraram no lugar de B-roll, e a régua de mundo real (≥ 60 %) com elas.
 - **Nunca** `titulo-topico`, `navegacao`, `apresentador*` nem `anima:false` (que aqui é tela preta).
 - **Mapa seguido de mapa é UMA viagem de câmera** (`fundir`), nunca corte; corte seco só na troca de
   regime, mapa → registro, registro → prancha (identidade.md §4.4).
