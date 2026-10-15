@@ -47,3 +47,34 @@ Os termos de cada leque estão em `lacunas`, no JSON.
 s01, s19 e s67 (a s68 congela o último quadro da s67). A Storyblocks fica fora, porque o vídeo trata de soberania e
 política (midia §3.3). O B-roll de hoje de Miraflores, reserva da s64, não está na lista: ele espera o ok do Lucas
 (pendência 7).
+
+## 3ª rodada (pesquisa-2), 15/10/2026: as 4 buscas novas
+
+O JSON é a verdade. O que a 3ª rodada pôs no rascunho (os vereditos e a entrega estão na 4ª rodada, abaixo):
+
+| Cena | Arquivo no rascunho | O que é | Medida |
+|---|---|---|---|
+| s03 | `s03-magistrate-court-old-police-station-balboa-1936-nara-100997672.jpg` | o tribunal de magistrado de Balboa em julho de 1936 (NARA 100997672) | 5520x3680 |
+| s22 | `s22-cristobal-silver-clubhouse-exterior-1948-nara-202799387.jpg` | o exterior do Cristobal Silver Clubhouse, 15/09/1948 | 5120x3998 |
+| s23 | `s23-barbados-laborers-arrive-ss-ancon-deck-cristobal-1909-84e-nara-100996838.jpg` | 1.500 trabalhadores de Barbados chegando a Cristóbal, 02/09/1909 (lacuna, pequena, mesa) | 1228x1488 |
+| s23 | `s23-barbados-laborers-arrive-ss-ancon-deck-cristobal-1909-84d-nara-100996836.jpg` | o mesmo convés, outro ângulo (lacuna, mesma mesa) | 1200x1460 |
+
+Sem mídia: **s22, plano 2** (os artífices recrutados nos EUA). NÃO ACHADO; leque na lacuna do JSON.
+
+## 4ª rodada (pesquisa-2, entrega), 15/10/2026: os vereditos do lote 5
+
+Lidos em `conferencia-midia.json` (lote 5) e casados pelo sha256 do rascunho.
+
+| Cena | Veredito | Onde está | sha256 | Aviso do ano |
+|---|---|---|---|---|
+| s22 | aprovado | `_media/foto/s22/cristobal-silver-clubhouse-exterior-1948-nara-202799387.jpg` | `ba518869…` | `Photo from 1948` (corrigido: a 3ª rodada propunha nenhum) |
+| s23 | aprovado (lacuna, mesa até 1,4×; se couber só uma, esta) | `_media/foto/s23/barbados-laborers-arrive-ss-ancon-deck-cristobal-1909-84d-nara-100996836.jpg` | `e06b0140…` | `Photo from 1909` |
+| s23 | aprovado (lacuna, mesma mesa) | `_media/foto/s23/barbados-laborers-arrive-ss-ancon-deck-cristobal-1909-84e-nara-100996838.jpg` | `00b1531d…` | `Photo from 1909` |
+| s03 | trocar | no rascunho: `_media/_caca/s03/acervo-livre/s03-magistrate-court-old-police-station-balboa-1936-nara-100997672.jpg` | `e8139be8…` | (não vai à tela) |
+
+- O s03 de 1936: o tribunal sob uma cortina de trepadeiras, com meia tela de rua; não se lê como "courts". Sem busca nova
+  nesta tarefa. Sem foto, a mesa da s03 fica com a delegacia de 1943 e a escola de 1954 (o `_se_a_busca_voltar_vazia` do espelho).
+- Crédito na tela: nenhum nos três (domínio público federal, NARA RG 185).
+- O plano 5 da s22 tem 1,633 s: o clube 'gold' de 1915 e o 'silver' de 1948 entram juntos (nota do conferente; é do regente e
+  do montador).
+

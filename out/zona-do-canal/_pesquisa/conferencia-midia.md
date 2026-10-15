@@ -1,7 +1,54 @@
-# Conferência de mídia — zona-do-canal · fluxo `midia` · tarefa `zona-do-canal-pesquisa-1` · lotes 1 a 4 de 4
+# Conferência de mídia — zona-do-canal · fluxo `midia` · tarefas `zona-do-canal-pesquisa-1` (lotes 1 a 4) e `zona-do-canal-pesquisa-2` (lote 5)
 
-**Laudo do arquivo:** 46 aprovados de 68 conferidos (3 reprovados, 19 trocar, 0 pendente_lucas); 0 com algo não
-conferido; recebidos: 64 arquivos (lote 1: 14; lote 2: 22; lote 3: 16; lote 4: 12).
+**Laudo do arquivo:** 49 aprovados de 72 conferidos (3 reprovados, 20 trocar, 0 pendente_lucas); 0 com algo não
+conferido; recebidos: 68 arquivos (lote 1: 14; lote 2: 22; lote 3: 16; lote 4: 12; lote 5: 4).
+
+# Lote 5 · 15/10/2026, 04:58 · a 3ª rodada do `pesquisa-imagens` (s03, s22, s23), rascunho do acervo aberto
+
+**Laudo do lote 5:** 3 aprovados de 4 conferidos (0 reprovados, 1 trocar, 0 pendente_lucas); 0 com algo não
+conferido; recebidos: 4 fotos. Imagens abertas: 9 de 25 (2 cópias reduzidas a 1920 px, as 2 fotos de s23 inteiras,
+4 recortes a 100 % e, para comparar, a cópia reduzida da de 1951 do lote 2). `_media/` igual antes e depois (183
+arquivos, sha256 a sha256). As fotos foram olhadas antes de ler o `por_que_esta`; onde discordei (s03), vale o que vi.
+Nenhuma leva crédito na tela.
+
+| id | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| s03-magistrate-court-old-police-station-balboa-1936-nara-100997672.jpg | s03 | NARA (RG 185) | trocar | o tribunal de 1936 está sob uma cortina de trepadeiras, com meia tela de rua: não se lê como "courts" |
+| s22-cristobal-silver-clubhouse-exterior-1948-nara-202799387.jpg | s22 | NARA (RG 185) | aprovado | o Cristobal Silver Clubhouse por fora, 1948, inteiro e dominante; obra federal, 5120 px; vai com "Photo from 1948" |
+| s23-barbados-laborers-arrive-ss-ancon-deck-cristobal-1909-84e-nara-100996838.jpg | s23 | NARA (RG 185) | aprovado | trabalhadores de Barbados chegando a Cristóbal no SS Ancon, 1909: a força antilhana da frase; lacuna, mesa até 1,4×; "Photo from 1909" |
+| s23-barbados-laborers-arrive-ss-ancon-deck-cristobal-1909-84d-nara-100996836.jpg | s23 | NARA (RG 185) | aprovado | o convés do SS Ancon cheio de trabalhadores de Barbados, Cristóbal, 1909; lacuna, mesa até 1,4×, ao lado da 84-E; "Photo from 1909" |
+
+## Para o Lucas pesar
+
+Nada.
+
+## Para reconferir no navegador do app
+
+Nada.
+
+## Para trocar (a quem entregou: `pesquisa-imagens`)
+
+- **s03, o tribunal** (p1, parte "courts"): `Canal Zone magistrate court or district court courtroom interior, judge on
+  the bench, archival photograph` (NARA RG 185: "courtroom", "court in session", "Cristobal magistrate court"). O relato
+  da 3ª rodada diz que o acervo aberto só tem este prédio; sem outra foto, vale o `_se_a_busca_voltar_vazia` do espelho
+  (a mesa fica com a delegacia de 1943 e a escola de 1954; o tribunal tem registro em s14). O `trocar_por` do lote 2
+  apontou a 100997672 sem tê-la visto: olhada agora, não serve.
+
+## Para o redator, o verificador e quem monta (recados; não condicionam o veredito)
+
+- **s22, p5:** a pauta propôs `aviso_de_ano` nulo; vai "Photo from 1948" (a frase é de 1940). O rótulo pode dizer
+  "Silver Clubhouse, Cristobal", da origem. **Conjunto da cena:** o p5 tem 1,633 s; com o clube "gold" de 1915 e o
+  "silver" de 1948, os dois entram juntos na mesa (um depois do outro daria 0,82 s cada, abaixo do piso de 1,5 s,
+  identidade §4.3): é do regente e do montador.
+- **s23:** as duas fotos são pequenas e verticais (lacuna, identidade §5): impressas sobre a mesa, até 1,4×, nunca em
+  tela cheia, cada uma com "Photo from 1909". O rótulo de grupo sai do relatório, com o ano (T21); o de lugar não passa
+  de "Cristobal". As legendas manuscritas das fotos não têm termo depreciativo; se ficam ou se recortam é de quem
+  monta. Se a mesa levar uma só, a 84-D é a que mais mostra a força de trabalho. **Conjunto da cena:** o plano de 7,167 s
+  passa do teto de 6 s da foto parada; as duas juntas, com a luz passando de uma à outra, cobrem.
+
+## Divergências entre a marca e este ofício
+
+Nenhuma.
 
 # Lote 4 · 15/10/2026, 03:52 · o rascunho do acervo aberto do `pesquisa-imagens` (s52, s54, s57, s64)
 

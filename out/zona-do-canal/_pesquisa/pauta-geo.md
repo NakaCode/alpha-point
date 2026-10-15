@@ -11,9 +11,9 @@ incerteza medida, que a identidade §6 pede para mapa antigo). Tudo em WGS84, lo
 | `panama-ne.json` | o Panamá inteiro, 15 partes | Natural Earth 1:10m admin-0 (fronteira de hoje) | domínio público, sem crédito | 1 | a costa do NE é generalizada: Cerro Sosa e La Boca (OSM) caem 238 m e 47 m na água dela |
 | `colombia-ne.json` | a Colômbia, contexto | Natural Earth 1:10m admin-0 | domínio público, sem crédito | 1 | a divisa Panamá–Colômbia é a de hoje (tratado de 1924); a de 1903 não foi levantada |
 | `eixo-do-canal.json` | o canal de mar a mar (eclusas de 1914; sem as pistas de 2016) | OSM relation/2389520, Overpass, 15/10/2026 | ODbL: `© OpenStreetMap contributors` na tela | 1 | traçado de hoje; 76,05 km (47,25 mi) de 9,400 N a 8,943 N: o OSM para em Balboa, antes da boia do Pacífico (as "51 milhas" do dossiê vão de águas fundas a águas fundas) |
-| `zona-do-canal-1947.json` | o contorno da Zona: terra dentro da divisa + lagos Gatún e Madden | AMS, *Canal Zone and Vicinity*, 1:100.000, 1947 (LOC 83694755, via Commons) | domínio público, sem crédito na tela; a coleção vai na descrição | 1 (MultiPolygon, 2 partes) | ver "A folha de 1947" |
+| `zona-do-canal-1947.json` | o contorno da Zona: terra dentro da divisa + lagos Gatún e Madden; **2ª rodada: + a ponta de Cristóbal** | AMS, *Canal Zone and Vicinity*, 1:100.000, 1947 (LOC 83694755, via Commons) | domínio público, sem crédito na tela; a coleção vai na descrição | 1 (MultiPolygon, 2 partes) | ver "A folha de 1947" e "2ª rodada" |
 | `divisa-zona-1947.json` | as linhas da divisa como a folha as desenha (8 trechos) | a mesma folha | idem | 8 | idem |
-| `linha-1914-panama.json` | "the line": a divisa entre a Cidade do Panamá e a Zona | *Road Map of Ancon, Balboa and Panama*, 1:8.000, out/1936 (NARA 192812325, via Commons) | domínio público, sem crédito na tela | 1 | ver "A folha de 1936" |
+| `linha-1914-panama.json` | "the line": a divisa entre a Cidade do Panamá e a Zona; **refeita na 2ª rodada** (a avenida e o rio pelo OSM) | folha de 1936 (NARA 192812325) + OSM (Av. de los Mártires e Río Curundú, 15/10/2026) | **ODbL nos trechos do OSM: `© OpenStreetMap contributors` na tela** | 1 | ver "2ª rodada"; a versão da 1ª rodada está em `_tmp/pesquisa-geo/rodada1/` |
 | `fourth-of-july-avenue-1936.json` | o trecho da 4th of July Avenue (hoje Avenida de los Mártires) que a folha marca como divisa | a mesma folha de 1936 | idem | 1 | idem |
 | `faixa-art2-5mi.json` | ESQUEMA: o princípio do Art. II, 5 milhas de cada lado do eixo | derivado do eixo do OSM | ODbL (deriva do OSM) | 1 | não é a divisa; é a regra do tratado aplicada ao eixo de hoje |
 | `pontos-osm-hoje.json` | 17 pontos de hoje (morros, prédios, eclusas, a ponte, bairros) | OSM, centros do Overpass, 15/10/2026 (id em `osm`) | ODbL: crédito na tela | 17 | o centro do OSM; prédio e terreno = centro do contorno |
@@ -82,3 +82,100 @@ incerteza medida, que a identidade §6 pede para mapa antigo). Tudo em WGS84, lo
   (já está na linha da MapTiler). Mapa antigo em domínio público e Natural Earth: sem crédito na tela.
 - Na descrição: `openstreetmap.org/copyright`; "U.S. Army Map Service, Canal Zone and Vicinity (1947), Library of
   Congress"; "Road Map of Ancon, Balboa and Panama (1936), U.S. National Archives".
+
+
+## 2ª rodada (pesquisa-2, 15/10/2026, 04:10–04:45 de Brasília)
+
+As camadas de antes estão guardadas em `out/zona-do-canal/_tmp/pesquisa-geo/rodada1/` (`media-geo/`, a pauta e os insumos).
+
+### Camadas novas e refeitas
+
+| arquivo (`_media/geo/`) | o que é | fonte e data | licença / tela | features | incerteza medida |
+|---|---|---|---|---|---|
+| `linha-1914-panama.json` (**refeita**) | "the line" | folha de 1936 na ponta do mar e no trecho norte; OSM na avenida e no rio | ODbL nos trechos do OSM: `© OpenStreetMap contributors` na tela | 1 | ver "A linha refeita" |
+| `zona-do-canal-1947.json` (**refeita**) | o contorno de 1947 + a ponta de Cristóbal | AMS 1947 | domínio público | 1 (2 partes) | ver "A ponta de Cristóbal" |
+| `avenida-de-los-martires-osm.json` | a Avenida de los Mártires de hoje (a 4th of July Avenue de 1964), da cabeceira da ponte ao fim norte, 2.765 m | OSM, 22 vias (ids na propriedade `osm`), 15/10/2026 | ODbL, crédito na tela | 1 | pista dupla: a linha segue uma das pistas, ~10–20 m do eixo |
+| `rio-curundu-osm.json` | o Río Curundú de hoje, com os trechos canalizados marcados (`canalizado`) | OSM, 10 vias, 15/10/2026 | ODbL, crédito na tela | 10 | o curso de hoje (canalizado em parte) |
+| `puente-de-las-americas-osm.json` | a ponte (a Thatcher Ferry Bridge de 1962) como linha, 1.676 m | OSM, ways 147612377 + 863696429 | ODbL, crédito na tela | 1 | a ponta leste cai no fim sul da Av. de los Mártires (mesmo nó) |
+| `pontos-osm-atlantico.json` | Cristóbal (bairro), o Edificio de Administración de Cristóbal, o Puerto de Cristóbal, Colón (cidade), Mount Hope (Monte Esperanza), Coco Solo | OSM, 15/10/2026 | ODbL, crédito na tela | 6 | centro do OSM; o nó "Colón" fica no sudeste da ilha, longe do centro antigo |
+| `corregimento-ancon-osm.json` | o corregimento de Ancón (limite administrativo de HOJE, 191,5 km²) | OSM, relation/11382233 | ODbL, crédito na tela | 1 | não é o limite da Zona: cobre a antiga Zona do lado do Pacífico e mais |
+| `cidades-obra-1912.json` | Gorgona, Empire e Culebra | ICC, *Property map of the Canal Zone*, 1:40.000, "Ancon … January 26, 1912" (LOC 82690127, via Commons, sha256 `4efc4c8d…`) | domínio público, sem crédito na tela; a coleção na descrição | 3 | **±700 m** (ver "A folha da ICC de 1912") |
+| `lugares-1936.json` | Balboa Commissary, Balboa Clubhouse, La Boca (centro e contorno da grade de ruas) e La Boca School, em 1936 | folha de 1936 | domínio público | 5 | ±40–90 m (georreferência) + ~10–15 m (leitura) |
+| `opcao-b-cidade-do-panama-osm.json` | **OPÇÃO (b), AGUARDA O LUCAS**: San Felipe + Santa Ana + El Chorrillo + Calidonia (união, 3,74 km²) e cada um; Curundú e Bella Vista à parte, fora da união | OSM, 15/10/2026 | ODbL | 7 | limites de hoje; o lado oeste da união coincide com a linha de 1936/OSM |
+| `opcao-b-colon-osm.json` | **OPÇÃO (b), AGUARDA O LUCAS**: Barrio Norte + Barrio Sur (união, 3,10 km²) e cada um | OSM, 15/10/2026 | ODbL | 3 | limites de hoje, com o aterro a leste da ilha |
+| `opcao-c-cidade-do-panama-1947.json` | **OPÇÃO (c), AGUARDA O LUCAS**: o amarelo (área construída) da folha de 1947 fora da Zona, 3,76 km² | AMS 1947 | domínio público | 1 | herda o deslocamento da folha na cidade: a borda oeste passa 200–500 m para dentro da Zona |
+| `opcao-c-colon-1947.json` | **OPÇÃO (c), AGUARDA O LUCAS**: o amarelo da ilha ao norte da linha de Colón desenhada, 1,94 km² | AMS 1947 | domínio público | 1 | inclui New Cristóbal (Zona), que a folha não separa; ~100–200 m |
+
+Nenhuma cena cita as quatro camadas `opcao-*`: elas existem só para o Lucas escolher entre (a), (b) e (c).
+
+### A linha refeita (`linha-1914-panama`)
+
+- **Método:** os vértices 1–7 da linha de 1936 (a 4th of July Ave, que já caíam a 0–13 m da avenida de hoje) foram trocados
+  pela Av. de los Mártires do OSM entre as projeções do 1º e do 7º; os vértices 8–11 (o fim da avenida de 1936 rumo à Av.
+  Central e o trecho que sobe à Av. Nacional) ficam da folha, porque a avenida de hoje vira para o norte e se afasta 73–256 m
+  do traço de 1936; os vértices 11–27 (o rio) foram trocados pelo Río Curundú do OSM entre as projeções do 11º e do 27º; a
+  ponta do mar (vértice 0) fica da folha. A folha só diz o caminho; a geometria do trecho é a do OSM.
+- **A incerteza nova:** na avenida, a do OSM (pista dupla, ~10–20 m do eixo); na ponta do mar e no trecho norte, ±40–90 m
+  (a folha de 1936); **no rio, o curso de hoje, que fica a 1–124 m (mediana ~45 m) do rio desenhado em 1936**: o Curundú
+  foi canalizado depois, e a divisa de 1914 seguia o rio de então. Distância máxima de um vértice de 1936 à linha nova:
+  124 m. 4.391 m (antes, 4.549 m).
+- **Os vértices 1–7 não são conferência independente da avenida:** a translação da folha de 1936 (1ª rodada) foi medida
+  com a própria avenida do OSM; por isso eles caíam a 0–13 m dela.
+- **O crédito muda:** a linha passa a levar `© OpenStreetMap contributors` na tela (já vai na linha da MapTiler das cenas de
+  mapa) e `openstreetmap.org/copyright` na descrição.
+- A `fourth-of-july-avenue-1936` continua a da folha (o trecho de 1936); a avenida de hoje é a `avenida-de-los-martires-osm`.
+
+### A ponta de Cristóbal (`zona-do-canal-1947`)
+
+- **Por que faltava:** na folha, a ilha de Manzanillo (Colón + Cristóbal + New Cristóbal) é uma mancha amarela; os rótulos
+  COLON e CRISTOBAL ficam sobre a baía de Limón. O filtro de terra do Natural Earth (que separa terra de mar na folha) põe a
+  costa de Colón fora da ilha e contava a ilha inteira como mar.
+- **O que entrou:** o amarelo da folha, numa caixa da ilha, ao SUL da linha de Colón desenhada (os traços "— —" do trecho
+  `H-colon`): 0,39 km² (`geo_zona_r2_cristobal.py`). Um fechamento morfológico de 5×5 px na máscara inteira acrescentou
+  ~1.100 px (~0,08 km²) espalhados nas bordas; nada saiu.
+- **Conferência (OSM):** o Edificio de Administración de Cristóbal fica a 54 m da peça (sobre a linha desenhada) e o Puerto
+  de Cristóbal a 91 m (as docas, em hachura preta, não são amarelas e não entram); Barrio Norte (Colón) fica fora, a 606 m.
+- **O que continua fora:** New Cristóbal (a folha não desenha a linha que a separa de Colón); as docas.
+- **O vale do Chagres até Madden não fechou, e não fecha por corredor:** a folha traz, junto ao lago Madden, a nota
+  "CANAL ZONE BOUNDARY — Where the Boundary Line is omitted it follows the 260' contour around Madden Lake". Entre o fim do
+  traço-ponto do norte (px 6141, 3252) e o começo do traço-ponto do leste (px 6296, 3252), a divisa é a cota de 260 pés, que
+  a folha não desenha (os traços pretos longos do vale são outra coisa, sem legenda lida: trilhas ou outra cota). Não há
+  tinta a escolher. O caminho real seria a cota de 79,2 m de um modelo de relevo (o Copernicus DEM, fonte aceita), com dois
+  cuidados: é superfície (a copa das árvores desloca a cota em terreno suave) e o datum da cota de 1935 não é o do modelo.
+  Fica como pergunta (relato).
+
+### A folha da ICC de 1912 (`cidades-obra-1912`)
+
+- **Licença:** obra federal (Isthmian Canal Commission); Commons: "Public domain", fonte LOC 82690127. A página da LOC não
+  foi lida (a LOC recusa robô). Arquivo: 24.021×11.202 px, sha1 do Commons `25133ce1…` conferido, sha256
+  `4efc4c8d248fdc3b36ff3a86afd642336116235a9f59f92767739c72d302adcc`, em `_tmp/pesquisa-geo/baixado/property1912/` (fora do git).
+- **Georreferência:** a folha não tem gratícula e é girada. Pontos de controle independentes: 29 pontos lidos sobre a faixa
+  do canal desenhada, recentrados pelo perfil de escuridão; ajuste de similaridade (escala, rotação, translação) que
+  minimiza a distância perpendicular ao eixo do canal do OSM. 4 pontos com resíduo > 300 m no 1º ajuste saíram (3 no lago
+  Gatún, onde a faixa desenhada e o eixo de hoje divergem, e 1 que caiu na linha do trem). Com 25: **resíduo perpendicular
+  mediano 38 m (p90 119 m, máx. 255 m), deixa-um-de-fora mediano 45 m**; escala 3,47 m/px (1:40.000 a ~290 dpi), rotação
+  −43,2°. Conferência visual do eixo do OSM projetado sobre a faixa: `_tmp/pesquisa-geo/r2/v1912-conferencia.jpg`.
+- **A incerteza que manda:** os pontos são os centros dos rótulos GORGONA, EMPIRE e CULEBRA (não há símbolo de cidade
+  separado; Empire e Culebra ficam numa faixa amarela de sítio urbano). Contra a folha de 1947, os rótulos e as manchas de
+  Paraíso e Pedro Miguel caem a 430–710 m. **Incerteza declarada: ±700 m.** Serve a um mapa da Zona inteira (s16); não
+  serve a câmera de cidade. Gorgona ficou sob o lago Gatún.
+- O ajuste perpendicular prende mal a posição ao longo dos trechos retos; um par de eclusas lido na folha a prenderia.
+
+### A folha de 1936: as leituras novas (`lugares-1936`)
+
+- Balboa Commissary: o prédio ao lado do rótulo (o bloco sul dos dois a oeste do círculo do Prado); o bloco norte, a ~95 m,
+  pode ser do mesmo conjunto: leitura duvidosa.
+- Balboa Clubhouse: o prédio junto ao rótulo, na ponta oeste do Prado (107 m do Teatro Balboa de hoje).
+- La Boca de 1936: o centro e o contorno da grade de ruas (Martinique, Barbados, Jamaica, Thomas, Trinidad, Domingo St.),
+  com os vértices nos cruzamentos das ruas externas desenhadas; 235 m do nó "La Boca" de hoje. La Boca School à parte.
+- Conferência independente: a arquibancada ("Grandstand") da folha cai a 132 m do centro do Estádio de Balboa do OSM (a
+  arquibancada fica num lado do campo).
+- **Shaler Triangle: a folha não rotula.** Junto à Plaza 5 de Mayo há uma ilha triangular sem nome no cruzamento da Av.
+  Central com a 4th of July Ave (px ~4065, 2150 da folha); sem nome, não se atribui.
+
+### Créditos (2ª rodada)
+
+- Na tela, `© OpenStreetMap contributors` também nas cenas que carregarem `linha-1914-panama` (agora com trechos do OSM),
+  `avenida-de-los-martires-osm`, `rio-curundu-osm`, `puente-de-las-americas-osm`, `pontos-osm-atlantico`,
+  `corregimento-ancon-osm` e as `opcao-b-*`.
+- Na descrição, além das de antes: "Isthmian Canal Commission, Property map of the Canal Zone (1912), Library of Congress".

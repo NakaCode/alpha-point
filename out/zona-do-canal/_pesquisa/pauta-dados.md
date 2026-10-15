@@ -1,7 +1,7 @@
 # Pauta de dados — zona-do-canal (research, pesquisa-dados, 15/10/2026)
 
 Entrada: `out/zona-do-canal/espelho.json` (sha256 d760e53f…), 56 cenas com `needs.dados`. Contrato `pauta-pesquisa`: válido (exit 0).
-Os `_dados/<cena>.json` estão em `out/zona-do-canal/_tmp/pesquisa-dados/_dados/` (o pedido limitou a escrita); mover para `out/zona-do-canal/_dados/` é decisão da Sala.
+Os `_dados/<cena>.json` estão em `out/zona-do-canal/_dados/` (2ª rodada, 15/10/2026, pela resposta da Sala); a cópia da 1ª rodada fica em `out/zona-do-canal/_tmp/pesquisa-dados/_dados/`, com o mesmo sha256.
 
 Legenda de status: **primário** = valor relido nesta tarefa na fonte que produz o dado (cópia local baixada pelo dossiê em 09–14/10, ou imagem da página); **atribuído** = a fonte diz isso, e a tela cita de quem é; **dossiê** = não reaberto aqui; **NÃO CONFERIDO** = a fonte primária não foi alcançada.
 
