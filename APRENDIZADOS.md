@@ -1523,3 +1523,20 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   o sha256 novo no CLAUDE.md.
 - **Por que serve a qualquer canal:** todo canal que caça pelo navegador com a extensão perde o tempo de várias voltas até achar
   isso, e a prévia parada não dá erro nenhum.
+
+### 84. Um download lento do Epidemic venceu a sessão do MCP, e o pedido seguinte voltou 404
+
+- **O problema:** em 15/10/2026, no download da trilha do vídeo 3, a primeira faixa ("Zero:Null", 10,2 MB) levou uns 6 minutos
+  para chegar da CDN do Epidemic (em Los Angeles, cada uma levou segundos). O pedido seguinte de `DownloadRecording`, na mesma
+  execução do `ferramentas/epidemic.mjs baixar`, voltou "HTTP 404 a tools/call", e a ferramenta parou como "RECUSADO PELO
+  EPIDEMIC". Aconteceu duas vezes, sempre logo depois de um download lento; o `conferir` de logo depois entrou normalmente.
+  A ferramenta abre uma sessão do MCP (o `Mcp-Session-Id`) no começo e a reusa em todos os pedidos; pelo protocolo do MCP
+  (Streamable HTTP), o servidor responde 404 à sessão que ele já encerrou, e o cliente tem de abrir outra.
+- **O que resolveu:** rodar o mesmo `baixar` de novo, com a mesma lista, as mesmas linhas e a mesma mensagem do "sim": a faixa
+  que já está na biblioteca se pula sozinha, e a execução nova abre sessão nova. Os 4 arquivos chegaram com a duração que o
+  Epidemic declara. O ritmo (15 s entre pedidos, 8 em 30 min) se conta no disco e valeu entre as execuções.
+- **Como evitar:** o conserto de raiz é na ferramenta: no 404 de um pedido que levou `Mcp-Session-Id`, abrir sessão nova uma vez
+  e repetir o pedido, contando o download no ritmo, com a prova no `epidemic-provar.mjs`. Até lá, o 404 depois de um download
+  lento se resolve rodando o `baixar` de novo; o 404 sem download lento antes não é este caso, e vai ao Lucas.
+- **Por que serve a qualquer canal:** todo cliente de servidor MCP por HTTP que reusa a sessão entre pedidos longos (download,
+  render, geração) tropeça nisso, e o 404 parece "o item não existe".
