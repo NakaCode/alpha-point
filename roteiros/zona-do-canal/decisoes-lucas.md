@@ -17,3 +17,14 @@ Cada decisão com a pergunta, a resposta literal e a hora (Brasília).
   Town on the Panama Canal Was AMERICAN Until 1979" e uma miniatura com o canal à vista. Antes de fechar, passo o título
   por três leitores de fora e por um conferente de fatos, e te mostro a miniatura. A narração e o roteiro continuam como
   estão, sem custo."
+
+- **O título, depois dos leitores** (15/10/2026, 01:2x). O refutador deixou de pé os dois títulos testados
+  (`out/zona-do-canal/_pesquisa/embalagem/refutador-A1.md` e `refutador-V1.md`). Dos três leitores a frio, dois clicaram
+  primeiro em "Inside Panama" ("on the Panama Canal" soa como uma cidade na beira do canal), e dois acharam "AMERICAN" em
+  maiúsculas com cara de isca de clique (`leitor-1.md` a `leitor-3.md`). A pergunta: "Com o teste dos leitores, qual título
+  fica para o vídeo 3?" A resposta: "Inside Panama, sem maiúsculas (Recomendado)". A opção dizia: "'Why a Town Inside Panama
+  Was American Until 1979'. Foi o primeiro clique de 2 dos 3 leitores, e sem o AMERICAN gritado. 'Panama Canal Zone' vai na
+  primeira linha da descrição, nos capítulos e nas tags, para a busca." **O título do vídeo 3: "Why a Town Inside Panama Was
+  American Until 1979".** Fica para a descrição, conferida pelo verificador-de-fatos antes de publicar: uma linha sobre 1979,
+  os 30 meses, Balboa como moradia de empregados americanos depois de 1979 (o acordo de 1977, Anexo A, §2(k)) e o canal com a
+  agência americana até 1999.
