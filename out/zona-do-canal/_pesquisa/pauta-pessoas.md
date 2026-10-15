@@ -23,3 +23,6 @@ Antes de qualquer cena: os dois arquivos passam pelo `conferente-de-midia` (flux
 - Hay: `aprovado`, com `Photo from 1902`. Fica.
 - Bunau-Varilla (World's Work, 1904): `trocar` (escrevendo à mesa na palavra "signed it"; sem ano da foto na origem). Movido, não apagado, de `_media/pessoa/s10/` para `_media/_caca/_retirado/pessoa/bunau-varilla-philippe-1904-worldswork-commons.jpg` (sha256 `f3625a3d…aebe`, igual antes e depois). Registrado em `retirados` no `pauta-pessoas.json` e no `_PROCEDENCIA.json` da s10.
 - Substituto: nenhum entregue. Candidato frontal da Bain (LoC cph.3f06238, LCCN 2001696911; 2809×4096 por ffprobe), só em `_tmp/pesquisa-pessoas/candidato/`. O Commons copia `date=1924` do registro da LoC, mas o ano impresso na cópia está ilegível e o rosto parece mais novo que 64 anos: a data se lê em https://www.loc.gov/pictures/item/2001696911/ (só pelo navegador; por script a LoC dá 403). Até lá, o card do plano 2 sai só com nome e cargo.
+
+## 3ª rodada (pesquisa-4)
+- s61, Walter Mondale: o retrato oficial de vice-presidente, 1977, do Senate Historical Office via Commons. Domínio público (PD-USGov-Congress), com o aviso `Photo from 1977`. Arquivo: `_media/pessoa/s61/mondale-walter-1977-vp-senate-commons.jpg`, sha256 `011fbea7…5617`. Espera o conferente.

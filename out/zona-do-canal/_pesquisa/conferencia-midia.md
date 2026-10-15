@@ -1,7 +1,144 @@
-# Conferência de mídia — zona-do-canal · fluxo `midia` · tarefas `zona-do-canal-pesquisa-1` (lotes 1 a 4) e `zona-do-canal-pesquisa-2` (lote 5)
+# Conferência de mídia — zona-do-canal · fluxo `midia` · tarefas `zona-do-canal-pesquisa-1` (lotes 1 a 4), `zona-do-canal-pesquisa-2` (lote 5) e `zona-do-canal-pesquisa-4` (as janelas da regência)
 
-**Laudo do arquivo:** 49 aprovados de 72 conferidos (3 reprovados, 20 trocar, 0 pendente_lucas); 0 com algo não
-conferido; recebidos: 68 arquivos (lote 1: 14; lote 2: 22; lote 3: 16; lote 4: 12; lote 5: 4).
+**Laudo do arquivo:** 53 aprovados de 76 conferidos (3 reprovados, 20 trocar, 0 pendente_lucas); 0 com algo não
+conferido; recebidos: 69 arquivos (lote 1: 14; lote 2: 22; lote 3: 16; lote 4: 12; lote 5: 4; pesquisa-4: 1).
+
+# Despacho zona-do-canal-pesquisa-4 · 15/10/2026, 05:50 · passo `conducting`: as janelas da regência e o retrato de Mondale
+
+**Laudo do despacho:** 51 aprovados de 51 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido;
+recebidos: 1 arquivo novo (o retrato de Mondale) e os 50 usos de mídia da `regencia.json` (sha256 `40e03b56…`). São 4
+vereditos novos (s04 ×2, s50 e s61) e 47 refeitos com a janela definitiva (os 46 usos de "confirmar janela" e de
+"permanência", e o carro pagador da s22, que ganha a volta em "on pay"); os 47 antigos estão em `substituidos`.
+Imagens abertas: 2 de 25 (o retrato de Mondale, novo, e a fachada da Balboa High School, porque a s50 pede dela o
+hasteamento de 1964). As outras não foram reabertas: a janela da regência não muda o que elas precisam mostrar, e vale
+o olhar do lote de cada uma (mesmo sha256). `_media/` igual antes e depois (192 arquivos, sha256 a sha256).
+`WebFetch`: só a página do arquivo de Mondale no Commons (licença, data e autor). O JSON e este `.md` foram emendados
+por `python`, com a cópia de antes em `out/zona-do-canal/_tmp/conferencia/pesquisa-4/`.
+
+**Usos da regência sem `aprovado`: nenhum.** Os 50 usos casam com um `aprovado` da cena deles (do espelho), pelo sha256 do
+arquivo ou do rascunho julgado. O retrato de Mondale ainda não é uso da regência: o beat 4 da s60 (cena_espelho s61)
+o marca como "falta_de"; a Direção o põe no beat.
+
+## A tabela, uso a uso (a janela no relógio do master)
+
+| cena | arquivo | janela da regência | veredito | motivo curto |
+|---|---|---|---|---|
+| s03 | `foto/s03/balboa-central-police-station-1943-nara-202800161.jpg` | 12,533–18,533 (6 s; objeto 6 s) | aprovado | 6,0 s, igual à provisória; a deriva do RIG e a luz andando |
+| s04 | `foto/s03/balboa-central-police-station-1943-nara-202800161.jpg` | 18,533–21,6 (3,067 s; objeto 0 s) | aprovado | **conferência nova:** a delegacia central de Balboa fica na mesa enquanto a data pousa; reuso declarado |
+| s03 | `foto/s03/balboa-elementary-school-1954-nara-202800569.jpg` | 12,533–18,533 (6 s; objeto 6 s) | aprovado | 6,0 s, igual à provisória; a deriva do RIG e a luz andando |
+| s04 | `foto/s03/balboa-elementary-school-1954-nara-202800569.jpg` | 18,533–21,6 (3,067 s; objeto 0 s) | aprovado | **conferência nova:** a escola de Balboa fica na mesa enquanto a data pousa; reuso declarado |
+| s07 | `documento/census1960-p57-33.jpg` | 46,567–55,333 (8,766 s; objeto 8,766 s) | aprovado | 8,767 s (2 beats; o 2º com o grifo na linha "Born in the United States"), igual à provisória |
+| s10 | `pessoa/s10/hay-john-1902-purdy-loc-commons.jpg` | 70,133–78,6 (8,467 s; objeto 5,067 s) | aprovado | PERMANÊNCIA: objeto 5,067 s e fica 3,4 s ao lado do card de Bunau-Varilla (só nome e cargo), com a luz no card novo; o rosto continua com JOHN HAY na pílula e nenhum rosto vai ao lugar de Bunau-Varilla: aguenta (retrato, sem duração a medir) |
+| s12 | `documento/tratado1903-stat33-p2235.jpg` | 95,2–105,867 (10,667 s; objeto 10,667 s) | aprovado | 10,667 s, igual; dois grifos e a tira literal |
+| s13 | `documento/lei1912-stat37-p560.jpg` | 105,867–115,967 (10,1 s; objeto 7,233 s) | aprovado | PERMANÊNCIA: objeto 7,233 s e fica 2,867 s ao lado da p. 561, com a luz na nova: aguenta (grifo e pouso novo) |
+| s13 | `documento/lei1912-stat37-p561.jpg` | 113,1–115,967 (2,867 s; objeto 2,867 s) | aprovado | 2,867 s (a provisória era 3,067 s): acima do piso; o grifo da Sec. 4 cabe |
+| s14 | `foto/s14/district-court-building-1958-nara-202800691.jpg` | 115,967–121,733 (5,766 s; objeto 1,833 s) | aprovado | 5,766 s na tela (1,833 s objeto e 3,933 s ao lado da p. 565), igual à provisória, que já contava os dois planos |
+| s14 | `documento/lei1912-stat37-p565.jpg` | 117,8–121,733 (3,933 s; objeto 3,933 s) | aprovado | 3,933 s, igual |
+| s15 | `foto/s15/empire-police-station-1904-commons.jpg` | 121,733–127,9 (6,167 s; objeto 6,167 s) | aprovado | 6,167 s, igual; as três juntas, a luz andando |
+| s15 | `foto/s15/free-public-school-san-pablo-1904-nara-100995360.jpg` | 121,733–127,9 (6,167 s; objeto 6,167 s) | aprovado | 6,167 s, igual; as três juntas, a luz andando |
+| s15 | `foto/s15/post-office-la-boca-1904-nara-100995348.jpg` | 121,733–127,9 (6,167 s; objeto 6,167 s) | aprovado | 6,167 s, igual; as três juntas, a luz andando |
+| s18 | `foto/s18/admin-building-1957-nara-202800733.jpg` | 149,5–154,5 (5 s; objeto 5 s) | aprovado | 5,0 s, igual; tela cheia sem ampliar, Ken Burns |
+| s22 | `foto/s22/crowd-waiting-pay-car-culebra-1908-nara-100998772.jpg` | 186,967–203,667 (16,7 s; objeto 11,5 s) | aprovado | **conferência nova:** fica no beat dos artífices e volta como objeto em "on pay" |
+| s22 | `foto/s22/four-family-gold-quarters-nara-202800899.jpg` | 203,667–207,2 (3,533 s; objeto 3,533 s) | aprovado | 3,533 s, as duas juntas na mesa (a provisória dava 1,767 s a cada uma); a luz a escolhe em "housing" |
+| s22 | `foto/s22/curundu-silver-commissary-1947-nara-202799485.jpg` | 203,667–207,2 (3,533 s; objeto 3,533 s) | aprovado | 3,533 s, as duas juntas na mesa (a provisória dava 1,767 s a cada uma); a luz a escolhe em "commissary" |
+| s22 | `foto/s22/clubhouse-gold-employees-balboa-1915-nara-100995304.jpg` | 207,2–208,833 (1,633 s; objeto 1,633 s) | aprovado | 1,633 s, igual; as duas juntas, no piso de 1,5 s |
+| s22 | `foto/s22/cristobal-silver-clubhouse-exterior-1948-nara-202799387.jpg` | 207,2–208,833 (1,633 s; objeto 1,633 s) | aprovado | 1,633 s, igual; as duas juntas, no piso de 1,5 s |
+| s23 | `foto/s23/barbados-laborers-arrive-ss-ancon-deck-cristobal-1909-84d-nara-100996836.jpg` | 208,833–216 (7,167 s; objeto 7,167 s) | aprovado | 7,167 s, igual; impressas na mesa, Ken Burns da mesa |
+| s23 | `foto/s23/barbados-laborers-arrive-ss-ancon-deck-cristobal-1909-84e-nara-100996838.jpg` | 208,833–216 (7,167 s; objeto 7,167 s) | aprovado | 7,167 s, igual; impressas na mesa, Ken Burns da mesa |
+| s29 | `documento/tratado1936-stat53-p1807.jpg` | 281,567–291,467 (9,9 s; objeto 5,867 s) | aprovado | PERMANÊNCIA: objeto 5,867 s e fica 4,033 s ao lado da p. 1811, com a luz na nova; sai no beat 2: aguenta |
+| s29 | `documento/tratado1936-stat53-p1811.jpg` | 287,434–308,733 (21,299 s; objeto 21,299 s) | aprovado | 21,3 s, igual; a câmera desce pelas classes, grifo a grifo |
+| s31 | `foto/s31/four-family-quarters-las-cruces-balboa-1951-nara-202800907.jpg` | 314,5–325,3 (10,8 s; objeto 2 s) | aprovado | PERMANÊNCIA: objeto 2,0 s e fica 8,8 s ao lado da p. 43 recriada do relatório de 1950, que fala de "family quarters": a foto é de "four-family quarters" em Balboa, então continua dizendo a verdade; a luz na folha, Ken Burns da mesa: aguenta 10,8 s. A frase coberta passa a ser as duas |
+| s32 | `foto/s32/balboa-commissary-shirt-sale-1954-nara-202799537.jpg` | 334,467–339,7 (5,233 s; objeto 5,233 s) | aprovado | 5,233 s, igual |
+| s33 | `foto/s33/postal-employees-families-balboa-1938-nara-100996124.jpg` | 339,7–348,533 (8,833 s; objeto 8,833 s) | aprovado | 8,833 s, igual; Ken Burns lento da mesa (respiro) |
+| s33 | `foto/s33/33rd-infantry-fort-clayton-1928-nara-329582950.jpg` | 339,7–348,533 (8,833 s; objeto 8,833 s) | aprovado | 8,833 s, igual; Ken Burns lento da mesa (respiro) |
+| s33 | `documento/census1970-p57-16.jpg` | 348,533–352,233 (3,7 s; objeto 3,7 s) | aprovado | 3,7 s, igual |
+| s35 | `documento/lei1937-stat50-p558.jpg` | 375,233–391,633 (16,4 s; objeto 16,4 s) | aprovado | 16,4 s, igual; dois grifos e a tira |
+| s38 | `documento/tratado1903-stat33-p2235.jpg` | 428,7–434,567 (5,867 s; objeto 5,867 s) | aprovado | 5,867 s, igual |
+| s39 | `foto/s39/registration-day-balboa-elementary-1954-nara-202803255.jpg` | 434,567–442 (7,433 s; objeto 7,433 s) | aprovado | 7,433 s, igual; Ken Burns da mesa |
+| s44 | `documento/lei1958-stat72-p405.jpg` | 491,067–502,3 (11,233 s; objeto 11,233 s) | aprovado | 11,233 s, igual |
+| s45 | `foto/s45/balboa-commissary-new-entrance-1955-nara-202799541.jpg` | 502,3–506,2 (3,9 s; objeto 3,9 s) | aprovado | 3,9 s (a provisória era 9,7 s, a frase inteira): a parte "The store sorted its customers, too. From 1939, the" é a entrada com fregueses e carrinhos; tela cheia a 0,77×, Ken Burns |
+| s45 | `foto/s45/balboa-commissary-aerial-1956-nara-202799553.jpg` | 506,2–512 (5,8 s; objeto 5,8 s) | aprovado | 5,8 s, abaixo do teto de 6 s: a parte "…sold only to its employees and soldiers, their families, and certain residents" é o prédio inteiro da comissaria; corte seco |
+| s47 | `foto/s47/public-school-ancon-flag-raising-1918-nara-100997644.jpg` | 526,933–533,9 (6,967 s; objeto 6,967 s) | aprovado | 6,967 s, igual; o par junto |
+| s47 | `foto/s47/school-colored-children-la-boca-1921-nara-100997756.jpg` | 526,933–533,9 (6,967 s; objeto 6,967 s) | aprovado | 6,967 s, igual; o par junto |
+| s47 | `foto/s47/balboa-high-school-junior-college-1953-nara-202800567.jpg` | 533,9–540,5 (6,6 s; objeto 6,6 s) | aprovado | 6,6 s, igual; o par junto |
+| s47 | `foto/s47/paraiso-elementary-junior-high-1953-nara-202800663.jpg` | 533,9–540,5 (6,6 s; objeto 6,6 s) | aprovado | 6,6 s, igual; o par junto |
+| s50 | `foto/s47/balboa-high-school-junior-college-1953-nara-202800567.jpg` | 605,267–616,433 (11,166 s; objeto 6,6 s) | aprovado | **conferência nova:** o fallback da foto do dia, que espera o Lucas (pergunta 9) |
+| s52 | `foto/s52/confusion-at-flagpole-1964-nara-218517740.jpg` | 630,8–635,567 (4,767 s; objeto 4,767 s) | aprovado | 4,767 s (a provisória era 7,2 s, a frase inteira): a parte "The police let a delegation of five walk the flag toward the pole, there was shoving," é a confusão no mastro; tela cheia a 1,32× |
+| s52 | `foto/s52/flag-bearers-rip-large-tear-1964-nara-218517742.jpg` | 635,567–638 (2,433 s; objeto 2,433 s) | aprovado | 2,433 s: a parte "and the Panamanian flag tore." é a bandeira rasgada; corte seco na palavra, acima do piso |
+| s54 | `foto/s54/demonstrators-kennedy-avenue-tivoli-1964-nara-218517734.jpg` | 645,4–659,667 (14,267 s; objeto 2,3 s) | aprovado | 14,267 s, igual (2,3 s objeto e 11,967 s ao lado do cartão da contagem) |
+| s56 | `documento/tratado1977-cr123-p28306.jpg` | 663,9–676,433 (12,533 s; objeto 12,533 s) | aprovado | 12,533 s (a provisória era 9,967 s): o recuo da câmera à página inteira em "That treaty is where the Zone ends." é a mesma frase do veredito; nada novo a mostrar |
+| s57 | `foto/s57/carter-torrijos-handshake-1977-nara-176083.jpg` | 676,433–680 (3,567 s; objeto 3,567 s) | aprovado | 3,567 s em "On September 7, 1977, in Washington,": o aperto de mão depois da assinatura; tela cheia a 1,28× |
+| s57 | `foto/s57/carter-torrijos-sign-with-orfila-1977-nara-176082.jpg` | 680–684,433 (4,433 s; objeto 4,433 s) | aprovado | 4,433 s em "President Carter and Panama's Omar Torrijos signed two treaties.": a assinatura na tela em "signed"; tela cheia a 1,28× |
+| s59 | `documento/tratado1977-cr123-p28306.jpg` | 693,4–703,633 (10,233 s; objeto 4,666 s) | aprovado | 10,233 s na tela (4,667 s objeto e 5,567 s ao lado da p. 2234, com a luz voltando a ela), igual à provisória |
+| s59 | `documento/tratado1903-stat33-p2234.jpg` | 698,066–703,633 (5,567 s; objeto 5,567 s) | aprovado | 5,567 s (a provisória era 10,233 s, a frase inteira): a parte "which had granted the band 'in perpetuity'…" é o Art. II |
+| s64 | `foto/s64/usns-comfort-departing-miraflores-1988-dod-nara-6433742.jpg` | 741,6–747,8 (6,2 s; objeto 6,2 s) | aprovado | 6,2 s, igual; Ken Burns da mesa |
+| s66 | `documento/tratado1903-stat33-p2235.jpg` | 782,8–795,867 (13,067 s; objeto 8,067 s) | aprovado | PERMANÊNCIA: objeto 8,067 s (pousa em "The treaties said the rest in their own words"; a folha de 1903 é um deles) e fica 5,0 s ao lado do cartão recriado de 1977, com a luz abrindo sobre as duas: a comparação da frase; aguenta 13,067 s |
+| s61 | `pessoa/s61/mondale-walter-1977-vp-senate-commons.jpg` | 716,933–721,4 (4,467 s; card, imagem parada) | aprovado | **arquivo novo.** o retrato oficial de vice-presidente de Mondale (1977, Senado, domínio público) no card da citação dele, com "Photo from 1977"; enche o quadro do card sem ampliar |
+
+## O que mudou de janela (e nenhum veredito mudou por isso)
+
+- **As quatro conferências novas**, todas `aprovado`:
+  - **s04**, a delegacia (1943) e a escola (1954) de Balboa ficam na mesa enquanto "OCT. 1, 1979" pousa. É a mesma frase
+    continuada e o reuso está declarado no espelho; os avisos "Photo from 1943" e "Photo from 1954" ficam até a foto sair.
+  - **s22**, o carro pagador de 1908: fica ao lado do cartão dos artífices (a luz no cartão) e volta como objeto em "on
+    pay". **Muda o aviso:** em "By then everyone was paid in dollars" a fala passa a 1940, e a foto de 1908 vira foto de
+    outro ano. "Photo from 1908" entra com a foto e fica até ela sair, no mínimo de 199,1 s a 203,667 s. O beat 0 da
+    regência dizia "no year notice".
+  - **s50**, a fachada da Balboa High School (1953) na frase do hasteamento de 1964: é o prédio que a fala nomeia, sem
+    mastro, bandeira nem multidão, com "Photo from 1953" (identidade §6: foto de outro ano de evento nomeado mostra o
+    lugar). O reuso está declarado no conceito-visual. "JAN. 7, 1964" pousa fora da foto e separado do aviso.
+- **A permanência na mesa** (s10, s13, s29, s31 e s66): todas aguentam. Em cada uma, um objeto novo pousa ao lado e a luz
+  o escolhe. A s31 passa a cobrir as duas frases: a foto de "four-family quarters" fica ao lado da frase do relatório de
+  1950 sobre "family quarters", e a frase coberta do veredito cresce com ela.
+- **A janela encurtou** onde a provisória era a frase inteira e a regência dá a cada foto a sua parte: s45 (3,9 s e
+  5,8 s), s52 (4,767 s e 2,433 s), s57 (3,567 s e 4,433 s) e s59, p. 2234 (5,567 s). Também a s13, p. 561 (de 3,067 a
+  2,867 s). Cada parte cabe na foto que a cobre, e nenhuma janela fica abaixo do piso de 1,5 s.
+- **A janela cresceu** na s22 (a casa e a comissaria, juntas por 3,533 s) e na s56 (12,533 s, com o recuo da câmera em
+  "That treaty is where the Zone ends.", a mesma frase do veredito).
+- Os outros usos ficam com a mesma janela, agora definitiva (`janela_provisoria: false`).
+- Dois `aprovado` ficam sem uso na regência, de propósito: as comissarias de 1947 de La Boca e a `silver-commissary`
+  (202799599), reservas da s22. A janela delas continua provisória.
+
+## O retrato de Mondale (s61)
+
+O retrato oficial de vice-presidente, de 1977: Senate Historical Office, cópia no Commons, sha256 `011fbea7…`, 2230×2795.
+- **Licença:** `{{PD-USGov-Congress}}`, lida hoje na página do Commons.
+- **Tamanho:** de frente, nítido, sem texto. O recorte de 1600×1600 enche o quadro de 932 px do card sem ampliar.
+- **Aviso:** "Photo from 1977", porque o fato é de 01/10/1979 e o cargo é o mesmo.
+- **Crédito:** nenhum na tela (`midia.md` §7.2).
+- **A data:** vem do campo Date do Commons. A página do Senado deu 403 ao `pesquisa-pessoas` e não foi tentada aqui.
+  Confirmá-la no navegador do app é opcional e não condiciona o veredito.
+
+## Para o Lucas pesar
+
+Nada.
+
+## Para reconferir no navegador do app
+
+Nada obrigatório. É opcional confirmar a data do retrato de Mondale em
+https://www.senate.gov/artandhistory/history/common/image/MN_Mondale_Walter_1984.htm.
+
+## Para trocar
+
+Nada.
+
+## Para a Direção, o redator e quem monta (recados; não condicionam o veredito)
+
+- **s22:** "Photo from 1908" passa a ser obrigatório, pelo menos na volta em "on pay" (199,1–203,667 s). O mais simples é
+  pô-lo com a foto, do começo ao fim. O rótulo continua a não dizer "silver roll" sobre a foto.
+- **s04:** os avisos de 1943 e 1954 continuam na mesa durante a s04. A data pousa fora das fotos.
+- **s50:** "Photo from 1953" e o rótulo "Balboa High School". Nada do evento vai escrito sobre a foto, e a legenda
+  datilografada fica fora do quadro. Se o Lucas liberar as fotos do Departamento de Estado (pergunta 9), a do dia vem
+  antes desta, com conferência própria.
+- **s61:** pôr o arquivo de Mondale no beat 4 da s60. "Photo from 1977" vai na margem de baixo da foto do card, e o cargo
+  leva "(1979)".
+- **A régua de mundo real:** pela conta do relato do regente (`zona-do-canal-direcao-4.md`), a aprovação da s50 ou da
+  s22 a devolve a 60 % ou mais. Aqui a conta não foi refeita.
+
+## Divergências entre a marca e este ofício
+
+Nenhuma. O contrato §5 prevê a emenda por `python` para o JSON grande. Aqui ela foi usada também neste `.md`, que guarda
+as seções dos cinco lotes anteriores logo abaixo e passaria de 36 KB se fosse regravado inteiro pelo `Write`.
 
 # Lote 5 · 15/10/2026, 04:58 · a 3ª rodada do `pesquisa-imagens` (s03, s22, s23), rascunho do acervo aberto
 

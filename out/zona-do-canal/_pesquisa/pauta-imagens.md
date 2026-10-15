@@ -98,3 +98,16 @@ parte B, A8 e A9). Os vereditos foram lidos em `conferencia-midia.json` e casado
   `editor-de-arte`.
 - A tabela do topo continua como estava: ela não grava lugar de origem nesses itens, e a linha da s54 ("perto da Tivoli") cabe
   na origem.
+
+## 6ª rodada (pesquisa-4): o A8 também na 176081
+
+Só um acerto na pauta, do mesmo jeito do A8 da rodada passada, sem busca nova, sem entrega e sem reescrita. O veredito foi
+lido em `conferencia-midia.json` e casado pelo sha256 do rascunho.
+
+| Cena | Arquivo | `lugar_na_origem` de antes | `lugar_na_origem` de agora (o do veredito) |
+|---|---|---|---|
+| s57 | NARA 176081 (`7cdcac74…`, veredito `trocar`, no rascunho) | sede da OEA, Washington, D.C. | null (a origem não nomeia lugar) |
+
+- O item ganhou o mesmo `rotulo_de_tela_lugar` dos outros: o rótulo de lugar é do `redator-de-tela`, a partir do veredito, e a
+  pauta não propõe rótulo. A foto continua fora da tela (veredito `trocar`); o acerto só tira da pauta um lugar que a origem
+  não nomeia.

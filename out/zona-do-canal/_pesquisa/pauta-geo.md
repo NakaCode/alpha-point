@@ -288,3 +288,58 @@ o ponto `silver-city-1947`, ±150–250 m. **É pino (ponto), não área.**
 - O ladrilho: `Copernicus_DSM_COG_10_N09_00_W080_00_DEM.tif`, 25.029.275 bytes, md5 igual ao ETag da AWS (`84b7beb8…`),
   sha256 `3f680f7b6fdf15f10182c5d869024e74a2eeb3bb4981f50a792f59f884283215`, em `_tmp/pesquisa-geo/baixado/copdem/` (fora
   do git).
+
+## 4ª rodada (pesquisa-4, 15/10/2026, 05:25–05:50 de Brasília)
+
+Tarefa `zona-do-canal-pesquisa-4`: a geometria que a regência pede (`regencia.json` › `_geo.falta`). Dois pedidos ao Overpass
+(`overpass-api.de`, User-Agent do canal, ≥ 10 s entre pedidos; o primeiro deu 502 e passou na única repetição, depois de 2 min),
+dumps em `_tmp/pesquisa-geo/dumps/r4-osm-*.json`. A folha de 1936 relida no disco (3 recortes em `_tmp/pesquisa-geo/r4/`).
+Camadas gravadas sem o cache da máquina (`r4/gravar-r4.sh`); a versão anterior de `lugares-1936` em `_tmp/pesquisa-geo/rodada3/`.
+
+### `balboa-high-school` (nova; s48/s49, s51, s53)
+
+- O contorno do OSM way/609527463, "Centro de Capacitación Ascanio Arosemena", e o centro de área dele (-79.5572541, 8.9585783).
+- A identidade: a La Prensa ("Muros con memoria, centinelas del Canal": a ACP usa as instalações da antiga Balboa High School
+  como sede do Centro de Capacitación Ascanio Arosemena) e a Wikipedia (coordenada 8.9589861, -79.5573528; o HABS: "Northeast
+  end of El Prado, Balboa"). O centro do OSM fica a **46 m** da coordenada da Wikipedia e a 172 m do Goethals Memorial (a cabeceira
+  do Prado). Lado da Zona, a 1,2 km da linha de 1936.
+- Precisão: poucos metros (OSM). O prédio de hoje inclui os acréscimos de 1963 e 1969: em janeiro de 1964 o contorno pode diferir
+  nas alas. Não serve à folha de 1936 (o prédio é de 1942).
+- Crédito: ODbL, `© OpenStreetMap contributors` na tela.
+
+### `lugares-1936` (refeita: 5 → 8 pontos)
+
+| slug | o que é | precisão | conferência |
+|---|---|---|---|
+| `tivoli-hotel-1936` | o prédio rotulado "Tivoli Hotel" | ±40 m típica (até 90 m) + ~15 m de leitura | a 43 m do "Tivoli BLDG" do STRI no OSM (way/1112176494), no sítio do hotel; a 105 m da linha, do lado da Zona |
+| `ancon-clubhouse-1936` | o prédio apontado pela seta de "Ancon Clubhouse" (Frangipani St.) | ±40–90 m + ~10 m | do lado da Zona (243 m da linha). Se é o prédio do clube "gold" de 1920, a folha não diz |
+| `ancon-1936` | o centro do rótulo grande "ANCON" da cidade, entre o Gorgas Hospital e o Ancon Boulevard | ±40–90 m; como "centro da cidade", ~300 m | a 466 m do pico do Cerro Ancón; o `place=quarter` "Ancón" do OSM de hoje fica a 1,17 km (é outro uso do nome, junto a Balboa) e não serve a 1920 |
+
+Conferência de georreferência na mesma região: o Parque de Lesseps da folha a 96 m do Palacio Justo Arosemena do OSM (que
+ocupa parte do antigo parque). As 5 leituras da 2ª rodada não mudaram.
+
+### O Shaler Triangle: não achado como ponto
+
+- O que se leu: "El espacio situado frente al Hotel Tívoli terminó adquiriendo una característica forma triangular", do lado da
+  Zona, no limite com o parque panamenho; mais tarde Plaza Ascanio Arosemena; o terreno da "explanada de las banderas" ocupado
+  em 2010 por um prédio de escritórios do complexo legislativo (La Prensa, "Del Parque de Lesseps a la Asamblea", 13/09/2026).
+  O FRUS 1958–60 (PM-58) diz só "Shaler's Triangle in the Canal Zone".
+- Por que não há ponto: a forma triangular é de depois de 1942, e a folha de 1936 não a mostra; nenhuma fonte lida diz qual
+  prédio de hoje do complexo legislativo é o de 2010, e o OSM não tem "Shaler" nem "Plaza Ascanio Arosemena".
+- O que há de mais próximo, real: `lugares-1936` › `tivoli-hotel-1936` e a `linha-1914-panama` entre o hotel e o Parque de
+  Lesseps. O rótulo "approximate location" junto à linha, entre os dois, do lado da Zona, continua sendo o caminho da regência.
+
+### Confirmados no disco, sem mudança
+
+- Administration Building de Cristóbal e Cristóbal: `pontos-osm-atlantico` › `administration-building-cristobal`
+  (-79.904567, 9.353282) e `cristobal-hoje` (-79.904559, 9.353002).
+- A comissaria de Balboa: `lugares-1936` › `balboa-commissary-1936` (-79.558954, 8.9552; leitura duvidosa entre dois prédios a
+  ~95 m, como na 2ª rodada).
+- Os clubes de 1920 (s25): Balboa (`balboa-clubhouse-1936`), Ancón (`ancon-clubhouse-1936`, novo), Pedro Miguel, Red Tank,
+  Paraíso e Gatún (`lugares-1947`), La Boca (`la-boca-1936`), Cristóbal (`pontos-osm-atlantico` › `cristobal-hoje`). A lista dos
+  clubes do relatório de 1920 continua não lida por esta peça: os pontos são os das cidades que a regência nomeia.
+
+### Créditos (4ª rodada)
+
+- `balboa-high-school`: `© OpenStreetMap contributors` na tela (ODbL).
+- `lugares-1936`: domínio público, sem crédito (NARA 192812325).
