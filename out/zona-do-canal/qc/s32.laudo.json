@@ -1,0 +1,139 @@
+{
+  "cena": "s32",
+  "aprovado": false,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 5,
+      "problemas": [
+        "REPROVA: no cartão de papel da fala, a aspa de fechamento (”) de 'the ‘commy.’”' fica metade fora do cartão, escura sobre a mesa escura, e a perna do 'y' encosta na borda de baixo. Visto no recorte 4K de 13,6 s (qc-s32@13.6-recorte-aspas.png) e em todos os quadros de 10,2 a 14,3 s. Medido: o cartão termina em x ≈ 3314 no recorte e o glifo vai até ≈ 3368, uns 50 px de glifo fora do papel; sem folga de padding. Roupa §4 (espaço) e §1: texto fora do bloco que o guarda é texto cortado; identidade §4.1, a fala citada é bloco de leitura que tem de ficar inteiro. Nenhum portão pega isso (colisão e fora-do-quadro olham texto contra texto e contra o quadro).",
+        "Portões lidos: qc-cena só reprova o crédito 'Source: Mary and Herbert Knapp, The Panama C…' 56<72; portao-margens 0 (sha1 d88eb887…, 23 itens, 145 amostras); til 0 (8 textos); rodapé 12,15:1 @5,04 s. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026; o sha1 (d88eb887…) bate com _excecoes-portao.json e a reprovação é só o crédito (var(--fs-credito) = 56 px, caixa de 134 px para 2 linhas, data-qc-papel='credito').",
+        "SINALIZA: a fala está em 260 px, o piso; o alvo da marca é 280 (teto 340). Subir ao alvo pede cartão mais largo, e o canto reservado (x ≥ 3440, y ≥ 1760) limita: o cartão termina em y 1838.",
+        "SINALIZA: a foto (x até 1664) fica a 65 px do cartão (x 1729); as pílulas ficam a ~156 px. Folga curta, sem tocar."
+      ],
+      "correcoes": [
+        "Alargar o cartão da fala (hoje 1560×1570; a coluna tem folga até x 3640) em pelo menos 100 px e pôr padding direito ≥ 80 px e de baixo ≥ 60 px para a aspa e a descendente ficarem dentro do papel; manter o texto a 260 px ou mais e fora do canto de 400 × 400 (o cartão não pode passar de y 1760 em x ≥ 3440). Rodar o portao-margens de novo e olhar o recorte da aspa a 4K."
+      ],
+      "origem": "julgada"
+    },
+    {
+      "lente": "factual",
+      "nota": 9,
+      "problemas": [
+        "Nome, cargo '(1979)', capa 'THE PANAMA CANAL REVIEW' e 'OCT. 1, 1979', rótulo 'Balboa Commissary', 'Photo from 1954' e a citação '“everyone lived in rented quarters … shopping at the ‘commy.’”' idênticos ao textos-tela; a elipse preserva o literal (9 palavras, ≤12). Foto NARA 202799537 casa com o veredito aprovado da s32 (sha256 3bbc63d4…); nenhum rótulo de pessoa. Nome com 4 palavras (dois nomes próprios) é a exceção da identidade §4.1."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "wordlock",
+      "nota": 9,
+      "problemas": [
+        "Nome em 'Mary' (0 s), capa em 'They' (328,34 s), foto em 'everyone' (334,48 s), cartão em '\"lived' (335,09 s), luz de volta à foto em 'commy'. A capa levanta quando 'ended:' termina; o aviso e o rótulo entram 150 ms depois do assentamento (9,87 s)."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "abordagem",
+      "nota": 8,
+      "problemas": [
+        "Card sem retrato (FALTA declarada, o pesquisa-pessoas não achou retrato autorizado) + capa recriada + registro da comissaria: a escolha é a certa para três objetos em sequência. A capa real depende da pergunta 12 ao Lucas."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "Quem são, onde escreveram e onde compravam lê-se na ordem da fala. A citação a 260 px é legível de longe."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "poluicao",
+      "nota": 7,
+      "problemas": [
+        "SINALIZA: de 3,03 a 9,17 s a 'capa' é uma folha de 1160×1200 com só o nome da revista e a data; ~70 % dela é papel em branco por 6 s. Lê-se como moldura sem conteúdo (o tipo de achado que a revisão de espectador dá). A aspa fora do cartão está na lente espaco e não é contada de novo aqui.",
+        "Elementos: b1 1, b2 2, b3 2 (alvo 4–5, folga); blocos de leitura ≤3."
+      ],
+      "correcoes": [
+        "Cortar a folha da capa na altura do conteúdo (masthead + data + uma linha de respiro) ou, se a Sala quiser mantê-la inteira, pôr nela algo que a voz diga. Só texto da lista fechada."
+      ],
+      "origem": "julgada"
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "Assentamento medido por probe: a foto vai de 1121 a 1425 px de largura (pico 1,029× do tamanho final, a 9,5 s) e assenta em 1385 sem voltar; o cartão da fala entra em 9,8 s e fica parado; de 14,15 s ao fim a diferença de pixels é 0 (repouso). SINALIZA: de 0 a 3 s só há o card com nome e cargo sobre a mesa e o push-in de 1 %."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "Capa recriada e citação levam 'Source: Mary and Herbert Knapp, The Panama Canal Review, Oct. 1, 1979' (certo; fica até o fim porque sustenta a citação; 0,6 s entre 9,17 e 9,79 s sem o objeto dele na tela, tolerável). Foto NARA de domínio público sem crédito, certo; aviso do ano certo."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [
+        "Mesa do vídeo, sem cor nova."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "A comissaria tem registro real; os Knapp não têm retrato (declarado); a revista é recriada. Cobertura cumprida onde há material."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "cadencia",
+      "nota": 8,
+      "problemas": [
+        "Planos de 3,0, 6,1 e 5,2 s, cada um com objeto novo."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "autoria",
+      "nota": 8,
+      "problemas": [
+        "A capa recriada é folha de documento com título e data em Courier Prime, sem logotipo nem layout de capa: é a 'tipografia declarada' que o ofício aceita, e não finge ser a edição. A saída melhor (a capa real) espera a pergunta 12 ao Lucas."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": [],
+      "origem": "julgada"
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "SINALIZA: terceira mesa seguida (s31–s33) com a mesma receita; conteúdo novo em cada uma."
+      ],
+      "correcoes": [],
+      "origem": "julgada"
+    }
+  ]
+}

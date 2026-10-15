@@ -1,0 +1,158 @@
+{
+  "cena": "s28",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "Portão-margens (sha1 8737f15e…, marca c647bf6c…, 284 amostras, 26 itens medidos, pedidos de tile respondidos): veredito 0, sem itens e sem avisos. Não remedido no olho.",
+        "exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (\"Quero reduzir para 56px\"); o sha1 do HTML (8737f15e6cc3…) bate com o de out/zona-do-canal/qc/_excecoes-portao.json e a reprovação é só o crédito de fonte (\"Source: Annual Report of the Governor of the\" 56<72); o crédito sai de var(--fs-credito) = 56 px, com data-qc-papel=\"credito\" e sem data-qc-credito=\"mapa\" (a marca de mapa só na linha da MapTiler).",
+        "SINALIZA: de 1,6 s a 7,5 s o cartão de 1930 (128 px, 7 linhas) fica a ~83 px acima da pílula 'Panama City' (base do cartão y≈1315, topo da pílula y≈1400 no 4K, estimado no quadro de 3,0 s) e, de 9,3 a 12,5 s, o cartão de 1940 a ~63 px (quadro de 10,5 s). Não se tocam, nenhum portão mede essa folga, e não reprova.",
+        "SINALIZA: as etiquetas '\"gold site\"' e '\"silver settlement\"' estão a 104 px, o piso do rótulo (alvo 128): leem-se bem como subordinadas a Balboa e La Boca, mas o gate só garante o chão.",
+        "Sem herói e sem nome de lugar como herói (os dois cartões são cota/dado); canto 400×400 livre; nenhuma logo; lang en-US e data-render 4k-native presentes."
+      ],
+      "correcoes": [
+        "Se a Arte mexer na cena por outro motivo, afastar os cartões de 1930 e de 1940 da pílula 'Panama City' (≥ ~120 px). Sem isso, segue assim."
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "O texto de tela confere com o textos-tela.json (sha ee9c74a0…) nas 13 linhas da cena: legenda 'Canal Zone (1947 map)', 'Panama City', 'Colón', o cartão '1930 · MORE THAN 60% OF \"SILVER\" EMPLOYEES LIVED IN PANAMA CITY AND COLÓN' (o pictograma acende 6 de 10 e o 'more than' do cartão preserva o hedge da voz), o de 1940 ('FREE SCHOOL FOR CHILDREN OF \"SILVER\" EMPLOYEES · ONLY IF THEY LIVED IN THE ZONE'), as linhas 'Source: Annual Report of the Governor of the Panama Canal, 1930' e '…, 1940', Balboa, '\"gold site\"', La Boca, '\"silver settlement\"' e o segundo 'Panama City'. No laudo de fatos da tela (fatos-tela-2026-10-15): TA171 herdada, TA173 e TA266 confirmadas (o grupo 'silver' voltou ao cartão de 1940).",
+        "Geometria: a Zona é o polígono inteiro da folha de 1947, com a legenda de data desde o 1º quadro, e sai na viagem (12,55 s). Panama City e Colón ficam do lado de fora, sem polígono (caminho padrão (a) da pergunta 15, que ainda espera o Lucas; ver report). A linha-1914 (folha de 1936 + OSM, ±40–90 m, declarada no cabeçalho) acompanha, nos quadros de 16,5, 21,0 e 27,5 s, a borda entre o morro arborizado de Balboa/Ancón e a malha densa da cidade, de ponta a ponta, sem abrir no meio: nenhuma divergência visível. O traço termina no meio da cidade ao norte (extremo do trecho da folha de 1936) e na costa ao sul: SINALIZA, a voz não afirma o percurso inteiro.",
+        "Balboa e La Boca sobre pontos de hoje (OSM e a aproximação a 235 m da La Boca de 1936, TA177): no quadro os dois pontos aparecem colados na margem leste da entrada do Pacífico, como a voz diz ('pressed together'). Sem bandeira, logo nem selo."
+      ],
+      "correcoes": [
+        "Nenhuma correção."
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 7,
+      "problemas": [
+        "OK: o cartão de 1930 entra em 1,633 s ('sixty' 1,66), as setas em 4,62 s ('outside' 4,62), o glifo da escola e o cartão de 1940 em 9,3 s ('free' 9,34), 'Balboa' em 13,3 s (voz 13,08), 'La Boca' em 15,1 s (voz 15,10), o segundo 'Panama City' em 19,533 s (voz 19,53–19,74) e o pulso da linha em 26,7 s ('inside' 26,70). Tudo sai com o beat. A cena acaba com a frase (28,3 s) e abre coberta pelo 1º quadro.",
+        "SINALIZA (autorizado pelo textos-tela t0; a Sala decide): 'Panama City' e 'Colón' estão na tela desde 0,0 s e a voz os diz em 5,58 s e 6,54 s, 5,6 e 6,5 s depois. Funcionam como orientação mínima do mapa (exceção (a) do lastro) e sustentam a seta de 4,62 s, por isso não reprovo.",
+        "SINALIZA: '\"gold site\"' entra em 13,3 s e a voz diz '\"gold' em 14,05 s (0,75 s depois); '\"silver settlement\"' entra em 15,1 s e a voz diz '\"silver' em 15,98 s (0,88 s depois). A etiqueta chega antes da palavra que a convoca. O próprio textos-tela se contradiz: t0 13,3 e 15,1, com a nota 'em \"gold\"' (14,05).",
+        "SINALIZA: o pulso da linha dura 1,2 s; a 2ª passada (27,7 s) é cortada pelo fim do clipe (28,3 s). Medido nos quadros do clipe a cada 0,1 s, os pixels de linha sobem em 27,0 s e em 28,0 s e ainda descem no último quadro (638 contra 770 de pico aos 28,2 s, base grossa em ~555). Nenhum elemento foi atrasado por ritmo nesta cena (nada a re-checar contra a fala)."
+      ],
+      "correcoes": [
+        "Redator-de-tela e Arte: acertar os t0 das etiquetas para 14,05 s ('gold') e 15,98 s ('silver'), ou alinhar a nota do textos-tela ao t0 vigente; hoje o arquivo diz as duas coisas.",
+        "Arte (opcional): começar o pulso em ~26,5 s, ou encurtá-lo, para a 2ª passada fechar antes de 28,3 s."
+      ]
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "Mapa é o modo certo: lugares reais (Zona, Panama City, Colón, Balboa, La Boca) e uma linha que divide o espaço; o dado de 1930 e a regra de 1940 entram como cartão sobre o mapa. Satélite real (MapTiler) na viagem, contorno real da folha de 1947 no quadro largo. A escola é glifo (símbolo da regra, sem lugar); as escolas reais estão em s03, s15 e s47 (regência)."
+      ],
+      "correcoes": [
+        "Nenhuma correção."
+      ]
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "Em ~2 s lê-se 'MORE THAN 60% … LIVED IN PANAMA CITY AND COLÓN' com o pictograma de 10 figuras (6 acesas) e as setas para dentro da Zona: a premissa (a maior parte dos empregados 'silver' morava fora e entrava) fica clara com a voz. 'Silver' já foi definido pela voz e por cenas anteriores.",
+        "SINALIZA: o cartão de 1940 tem 7 linhas em caixa alta; lê-se, mas é o trecho mais denso."
+      ],
+      "correcoes": [
+        "Nenhuma correção."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 8,
+      "problemas": [
+        "Teste de lastro: Panama City e Colón (voz 5,58/6,54; orientação mínima), cartão de 1930 ('sixty'), setas ('outside'), glifo e cartão de 1940 ('free schools'), Balboa/'gold site' e La Boca/'silver settlement' (voz), segundo Panama City (voz): nenhum texto órfão. Entidade HTML literal, tofu ou glifo quebrado: nenhum nos quadros olhados; portao-mapa til = 0 em 13 textos.",
+        "SINALIZA: no pico do b1 (4,6–7,5 s) há 5 a 6 elementos simultâneos (Zona, Colón, Panama City, cartão com pictograma, as duas setas como par): encosta no teto de 6 da identidade §4.2; 1 bloco de leitura por vez. De 15 s em diante, 4 a 5."
+      ],
+      "correcoes": [
+        "Nenhuma correção; se a Arte reabrir o b1, não somar nada ali."
+      ]
+    },
+    {
+      "lente": "motion",
+      "nota": 7,
+      "problemas": [
+        "A câmera nunca para (giro −1,5° → +1,5° e aproximação lenta do 1º ao último quadro) e a viagem Zona → Balboa dura 2,5 s (12,55–15,05 s), dentro da faixa de 1,5 a 3 s; entradas em 300 ms; sem zoom em degraus.",
+        "SINALIZA (o ponto mais fraco da cena; medido, não a olho): no quadro largo (0–12 s) os extremos do preenchimento da Zona andam 36 a 60 px no 4K (bbox em 960 px: x 210→195, y 78→69; área +1,6 %), e no quadro de perto (15,5–27,5 s) a correlação de fase na borda esquerda dá ~110–170 px no 4K em 12 s (o centro quase não anda: Balboa e La Boca ficam no mesmo lugar do 1º ao último quadro). Início, meio e fim de cada trecho são reconhecíveis como o mesmo ponto de vista. A cena cumpre a letra de 'mapa nunca fica parado' (identidade §4.4: aproximação suave e contínua; a LA s05, aprovada, usa o mesmo corpo), mas o zoom do quadro largo vai de 10,92 a 10,97 (0,05) contra 0,15 da LA s05. De 19,5 a 26,7 s (7,2 s) nada novo entra e só a deriva anda.",
+        "Não reprovo: há órbita contínua, a regência declara o b5 como 'continua' e velocidade maior enjoaria. A vizinhança s27 (desenho) e s29 (documento) não é mapa: sem corte seco entre mapas."
+      ],
+      "correcoes": [
+        "Arte (se a Sala quiser mais vida, sem acelerar): alargar a aproximação A0→A1 do quadro largo e B0→B1 do quadro de perto (ex.: ~0,12–0,15 de zoom), mantendo o giro lento; nunca em degraus.",
+        "Pergunta ao Lucas (levada pela Sala): a aproximação lenta basta, ou ele quer mais movimento de câmera nos mapas? (ver report)"
+      ]
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "'© MapTiler © OpenStreetMap contributors' a 56 px, na faixa abaixo de y 1880, do 1º ao último quadro de mapa (quadros de 0,2, 3,0, 14,0 e 27,5 s), com data-qc-credito=\"mapa\" só nele; cumpre o OSM da linha-1914-panama e dos pontos-osm. portao-mapa rodape v5: 11,83:1 @ 9,5 s (piso 3:1), 61 amostras, 162 créditos medidos.",
+        "As duas linhas de fonte (relatórios anuais de 1930 e de 1940) entram e saem com o cartão que sustentam (1,633–7,533 s e 9,3–12,55 s), em 2 linhas a 56 px acima do crédito de mapa, sem a marca de mapa. Sem mídia com licença nem crédito-fantasma; as folhas de 1912/1936/1947 e o Copernicus DEM vão na descrição (textos-tela, regras da série).",
+        "exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (\"Quero reduzir para 56px\"); o sha1 do HTML (8737f15e6cc3…) bate com o de out/zona-do-canal/qc/_excecoes-portao.json e a reprovação é só o crédito de fonte (\"Source: Annual Report of the Governor of the\" 56<72); o crédito sai de var(--fs-credito) = 56 px, com data-qc-papel=\"credito\" e sem data-qc-credito=\"mapa\" (a marca de mapa só na linha da MapTiler)."
+      ],
+      "correcoes": [
+        "Nenhuma correção."
+      ]
+    },
+    {
+      "lente": "tema",
+      "nota": 8,
+      "problemas": [
+        "Uma cor, um significado: --destaque na Zona (protagonista) e depois na linha (o objeto da frase final); --tinta no contorno e no texto; --neutro só nos pictogramas apagados. 3 matizes fora a base; sem véu, scrim nem vinheta; sem bandeira.",
+        "SINALIZA: nos quadros de 14–28 s a base de satélite mostra, no mar do canto inferior direito, degraus de tile (borda em escada entre o escuro e o verde-claro, x≈1010–1060 e y≈860–1100 no quadro de 2000 px) herdados da imagem da MapTiler. É defeito do asset base (como o 'patchwork' que o ofício cita), não camada da cena, e fica longe dos rótulos."
+      ],
+      "correcoes": [
+        "Nenhuma correção da Arte; se o mapista tiver outra data de imagem para o trecho, vale a troca."
+      ]
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "As coisas nomeadas e centrais aparecem: a Zona (contorno real), Panama City, Colón, Balboa e La Boca (satélite real). A escola ('free schools') é glifo, e a regência declara as escolas reais em s03, s15 e s47: a cobertura se cumpre na sequência. Concreto secundário sem imagem: 'payroll'."
+      ],
+      "correcoes": [
+        "Nenhuma correção."
+      ]
+    },
+    {
+      "lente": "cadencia",
+      "nota": 7,
+      "problemas": [
+        "Cena de mapa de 28,3 s com dois planos (a Zona, 0–12,5 s; o par Balboa/La Boca com a linha, 15–28,3 s) e uma viagem de 2,5 s. Os objetos da fala (cidades de fora, escola, par colado, capital do outro lado, a linha) são seis, e a tela troca de camada em cada um (cartão, glifo, rótulos, linha).",
+        "SINALIZA: o plano de perto fica 13,3 s no mesmo enquadramento, com eventos em 15,1, 19,5 e 26,7 s e só deriva entre eles (a maior janela: 19,5–26,7 s, 7,2 s). A regência marca o b5 como 'continua, livre' e a linha pulsa no fim: não reprovo. Sem footage e sem clipe repetido na cena."
+      ],
+      "correcoes": [
+        "Se a Arte alargar a aproximação (motion), a cadência melhora junto."
+      ]
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "SINALIZA (eco de forma, não reprova): o quadro largo do b1 repete o da s25 (Zona de 1947 com legenda) e o quadro do par com a linha e 'Panama City' repete o final da s20 (mesmo enquadramento e rótulos). Há degrau novo em cada um: 1930, as setas, a escola, La Boca com a etiqueta e o pulso da linha em 'inside'; sem esta cena o espectador perderia essa informação visual. É o refrão do arco, não círculo."
+      ],
+      "correcoes": [
+        "Nenhuma correção; se a Sala quiser variar a forma, o b3–b6 pode abrir um passo mais perto da linha em vez de repetir o quadro da s20."
+      ]
+    }
+  ]
+}

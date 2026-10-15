@@ -1,0 +1,127 @@
+{
+  "cena": "s11",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (\"Quero reduzir para 56px\"): a reprovação medida é só '[tamanho] [credito] \"Source: Isthmian Canal Convention, 1903, Art\" 56<72', e o sha1 do HTML (3250d26e…) bate com o de out/zona-do-canal/qc/_excecoes-portao.json. O crédito do mapa e o da fonte leem var(--fs-credito), sem px fixo, e o papel está declarado",
+        "portao-margens lido (não remedido): veredito 0 com o sha1 de hoje e o marca c647bf6c… igual ao tokens.css de hoje, 18 itens medidos em 167 amostras, sem itens nem avisos; portao-mapa rodape e til: veredito 0 (270 tiles 2xx); qc-cena: 5 de 5 portões com linha da pré-carga, só 'tamanho' vermelho (a exceção), til-glifo indefinido coberto pelo portao-mapa. Nenhum NÃO MEDIDO",
+        "desvios do mapista aceitos nesta lente: 'Panama City' em duas linhas a 128 px (continua rótulo de até 3 palavras, dentro do quadro e sem tocar a borda da faixa, no recorte de 11,4 s); 'Colón' acima da cidade, a ~100 px do eixo e da borda; '5 MILES' a 128 px, a ~140 px da borda, sem encostar na linha de cota (quadro de 7,0 s)"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 7,
+      "problemas": [
+        "a legenda fixa 'Boundary as mapped in 1947' (de 13,6 s ao fim) aponta para uma linha que quase não se vê: o trecho H-colon da divisa de 1947 tem 6 vértices e ~1,7 km, e no quadro 4K de 14,5 s é um traço cinza-claro de ~10 px junto aos cais, em torno de x 1600–1740, y 930–1000, que se lê como cais. As duas linhas brancas dominantes no quadro (x ≈ 930 e x ≈ 2200, mais a tampa do mar acima) são as bordas do esquema do Art. II, o que o espectador já viu com a legenda 'Art. II, 1903 treaty (schematic)'. Com as duas legendas empilhadas no canto e linhas de mesmo estilo, o leigo pode ler as bordas de 5 milhas como 'a divisa de 1947', que tem outra forma (a da s06). O risco é de leitura, não de dado: a fonte e o desenho estão certos. Sinalizo (nota 7), não reprovo: a legenda está condicionada a 'a divisa aparecer' (textos-tela), e ela aparece",
+        "observação: 'Panama City' fica numa pílula sobre a água, a leste da linha de 1914, sem anel (caminho (a) da pergunta 15, que espera o Lucas); a linha laranja passa pelo bairro de Ancón e a península está dentro da borda leste da faixa, como a fala diz ('sat inside those limits'). Textos conferidos contra o textos-tela: '\"in perpetuity\" · to build, run and protect the canal', 'Art. II, 1903 treaty (schematic)', '5 MILES' (sem km), 'Panama City' (sem 'the capital'), 'Colón', 'Boundary as mapped in 1947', 'Source: Isthmian Canal Convention, 1903, Art. II'; nada de '(8 km)', '10 MILES WIDE' nem '1914' na linha"
+      ],
+      "correcoes": [
+        "dar ao traço da divisa de 1947 junto a Colón a mesma linguagem de 'a linha' de Panama City (--destaque, 10 sobre 22 px, a regra da série, identidade §6 e a s20), ou pôr uma pílula ou seta curta nele, para a legenda 'Boundary as mapped in 1947' ter um referente visível; e/ou rebaixar as bordas do esquema (menos opacidade) durante o b4. Decisão da Arte; não mexe em fato nem em texto"
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 7,
+      "problemas": [
+        "conferido contra words.json (cena = master − 78,6 s): '\"in' 2,42 → legenda em 2,42; 'ten' 4,26 → bordas em 4,233; 'five' 5,60 → cotas em 5,6; 'Panama' 10,55 → pílula e linha em 10,533; 'Colón' 12,50 → pílula em 13,6 e linha de 1947 em 13,4: 1,1 s depois da palavra",
+        "o atraso do 'Colón' é o desvio já declarado no cabeçalho (Panama City precisa de 2,0 s no ar, 10,533 → 12,55; a câmera só sai depois, e em 12,5 Colón está a ~60 km, fora do quadro): o atraso por ritmo foi re-checado pelo mapista contra a fala. Mesmo assim o espectador ouve 'Colón' em 12,5 e vê a cidade e o nome só em 13,6, e a pílula nasce com a câmera ainda freando (medido: 100–130 px por 0,5 s a 720p aos 13,5–14,0 s). 'the same article left them out' (15,26 → 16,6 s) não tem beat novo: o quadro de 14,5 s e o de 16,3 s são o mesmo",
+        "a viagem de 8,9–10,5 s começa dentro de 'to build, run and protect it' (7,95–9,77), com as cotas saindo em 8,9 depois de 3,3 s no ar: desvio declarado, aceito"
+      ],
+      "correcoes": [
+        "se a Arte mexer na cena: deixar a pílula 'Colón' entrar assim que a cidade cai no quadro (~13,1 s, antes dos 13,6 s), ainda ancorada ao lugar, e acender a linha de 1947 em 'left' (15,58 s) para 'left them out' ter o seu gesto; só se couber nos 300 ms de entrada do rótulo e sem passar de 6 elementos"
+      ]
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "observação: showpiece de MAPA sobre satélite com geometria sobreposta (eixo, faixa, linha, divisa) é o modelo certo para um artigo de tratado que é uma faixa de terra; o esquema se declara na tela ('schematic') e não se passa por contorno real"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 7,
+      "problemas": [
+        "o b2 e o b4 se entendem em ~2 s ('5 MILES' de cada lado do canal; Colón dentro da faixa), mas o b4 mistura dois sentidos de 'linha branca' e duas legendas de data e esquema empilhadas no canto (ver 'factual'); a leitura só do texto ('Art. II, 1903 treaty (schematic)' + 'Boundary as mapped in 1947' + 'Colón') levanta a pergunta 'qual linha é qual?' em vez de responder",
+        "observação: '\"in perpetuity\" · to build, run and protect the canal' está inteira, com a finalidade (R01), a 84 px, em duas linhas legíveis"
+      ],
+      "correcoes": [
+        "a mesma correção da lente factual (um referente visível para a legenda de 1947) resolve esta leitura"
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 7,
+      "problemas": [
+        "o b2 (de 5,6 a 8,9 s) fica no teto de 6 elementos: eixo, faixa, legenda de 'in perpetuity' (bloco de leitura), as duas cotas '5 MILES' e o aviso '(schematic)' (as linhas de cota contam como parte das cotas). Encosta no teto, no pior extremo da faixa de 4 a 5: sinalizo. Os blocos de texto de leitura são 1 (a legenda de 'in perpetuity'), longe do limite de 3",
+        "no recorte de 14,5 s há linhas retas finas e escuras no mar, em torno do eixo e do 'Colón' (a costura do polígono de água do OSM, 'agua-osm-zona'); no quadro cheio de 1080p quase não aparecem, e não atrapalham a leitura: nota de acabamento"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "medido no clipe 4K (casamento de pontos a cada 0,5 s, legenda e cartão mascarados): o mapa nunca para; aproximação de ~+0,7 %/s e giro de ~0,18°/s do primeiro ao último quadro, e nas pernas de pouso ~+1,4 %/s. As viagens duram 1,6 s (8,9–10,5) e 1,75 s (12,25–14,0), ease cúbico, sem degrau (os passos de 0,5 s sobem a 527 e 610 px no pico e caem a ~1 px no pouso). A faixa abre em 1,5 s (4,233 → 5,7) e o preenchimento entra em 500 ms, o que a identidade §4.4 pede para território; o eixo se desenha de 0,2 a 1,8 s",
+        "observação: a pílula 'Colón' e a linha de 1947 nascem em 13,4–13,6 s com o mapa ainda freando da viagem; os 300 ms de entrada do rótulo caem na cauda do ease. Não é reprova"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 8,
+      "problemas": [
+        "'© MapTiler © OpenStreetMap contributors' a 56 px em todo quadro olhado (0,3 a 16,3 s), e cobre o OSM do eixo, da faixa (feita sobre o eixo do OSM), de 'linha-1914-panama' e dos pontos; 'Source: Isthmian Canal Convention, 1903, Art. II' de 2,4 a 10,533 s, com a legenda e a faixa na tela, e fora do quadro de 11,4 s (sem crédito-fantasma); 'Boundary as mapped in 1947' (AMS, domínio público) traz a data e nenhum crédito"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 7,
+      "problemas": [
+        "'uma cor = um significado' tem uma quebra leve: o branco das bordas do esquema do Art. II (b2 a b4) é o mesmo branco da divisa de 1947 junto a Colón (b4), duas coisas diferentes no mesmo quadro; a legenda de cada uma está no canto, mas a cor não as separa. O laranja, em compensação, é consistente: a faixa (a Zona) e 'the line' de Panama City em --destaque, como na s20. Água escura da §6 e satélite em tratamento C sem véu"
+      ],
+      "correcoes": [
+        "ver a correção de 'factual': a divisa de 1947 na linguagem de 'a linha' (laranja), com as bordas do esquema em branco"
+      ]
+    },
+    {
+      "lente": "cobertura",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 8,
+      "problemas": [
+        "observação: não há footage. Cinco pernas de câmera, a mais longa com 4,4 s (14,0–16,6 s, sobre Colón), movimento contínuo com propósito (aproximação), com Colón, a linha e a legenda dentro dela; abaixo do teto de 6 s"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    }
+  ]
+}

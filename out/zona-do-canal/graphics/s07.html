@@ -24,10 +24,14 @@
         0,00  "And": A PÁGINA 57-33 pousa no centro (a folha: 0,80 s, desce 420 px em eo, gira de −1,5° a +1,0°, ASSENTA 1,03 → 1,00 em
               0,56–0,80 s; sombra solta: no ar +64 px / 1,05 / 0,35, assentada +12 px / 1,00 / 0,80; a luz 120 ms atrás; as fitas
               colam em 0,70 e 0,82, no alto, sobre a margem branca da página, acima do cabeçalho corrido). O recorte do scan (bordas
-              retas): x 40→2560, y 40→760 do arquivo de 2586 × 3329: a margem de cima, o cabeçalho "General Population Characteristics
+              retas): x 40→2560, y 40→751,67 do arquivo de 2586 × 3329: a margem de cima, o cabeçalho "General Population Characteristics
               57-33", o título da Table 28, a nota, o cabeçalho das colunas e o 1º bloco de cada metade (COUNTRY OF BIRTH à esquerda,
-              inteiro, até "Born in other country"; MARITAL STATUS à direita, até "Divorced"), a 1,2× (3.024 × 864). O corte de baixo
-              cai no branco entre "Born in other country" (y 748) e "SCHOOL ENROLLMENT" (y 790), medido pela projeção de tinta.
+              inteiro, até "Born in other country"; MARITAL STATUS à direita, até "Separated"), a 1,2× (3.024 × 854). O corte de baixo
+              cai no branco EM TODA A LARGURA: medido pixel a pixel nas duas metades (zona-do-canal-arte-5, 15/10/2026, laudo s07 ›
+              espaco), "Born in other country" ocupa y 730–748 e "Separated" y 728–747 (o rabo do antialias), e "Widowed" começa em
+              y 753; as linhas 750–752 só têm as réguas verticais da tabela. O corte anterior (y 760) passava pelo meio de "Widowed"
+              na metade direita; a outra faixa branca inteira (y 808–826) deixaria o título "SCHOOL ENROLLMENT" órfão no pé da folha
+              e empurraria a folha 67 px contra a pílula e a tira, por isso o corte subiu, e nada mais da cena se moveu.
         0,00  o CRÉDITO "Source: U.S. Census Bureau, censuses of 1920–1970" (56 px, --sec, faixa de baixo), com a página (300 ms):
               textos-tela t0 0 ("todo o tempo da página: a frase fala dos seis censos", laudo lote A, achado 3).
         0,95  o RÓTULO "U.S. CENSUS, 1960" (pílula --rotulo, 128 px) acima da folha, à esquerda, 150 ms depois do assentamento.
@@ -44,7 +48,7 @@
               (o fim de "born.", 54,53 s), e fica; e o mesmo grifo corre o literal da tira, palavra a palavra, no mesmo tempo.
         8,516–8,766  REPOUSO: nada se move além da deriva do RIG, que congela nos últimos 250 ms.
     A CÂMERA: escala máxima 1,0155 (6,46 s), centro (1840, 1000): a margem sob a câmera (roupa §4) vale, no pior instante, para
-    x ~300→3540 e y ~190→1800 na tela; a folha girada (x 408→3432, y 468→1332 no mundo) sai em x ≤ ~3540 e y ≥ ~ 540; a pílula em
+    x ~300→3540 e y ~190→1800 na tela; a folha girada (x 408→3432, y 473→1327 no mundo) sai em x ≤ ~3540 e y ≥ ~ 540; a pílula em
     y ≥ ~300; a tira em y ≤ ~1690. A medida na tela está no relato (portao-margens).
     PRODUTO MÁXIMO DAS ESCALAS: página 1,2 × 1,03 (assentamento) × 1,0155 (câmera) = 1,255 (≤ 1,4: a página real entra como folha
     até 1,4 vez). Ken Burns: não há foto em tela cheia.
@@ -169,10 +173,11 @@
   <div id="cam">
     <div id="mesa"></div>
 
-    <!-- a página 57-33: o recorte do scan x 40→2560, y 40→760 (2520 × 720) a 1,2× = 3024 × 864; centro 1920 × 900; +1,0°.
-         A imagem inteira mede 3103,2 × 3994,8 e desloca (−48, −48) para a janela começar em (40, 40) do arquivo. -->
-    <div class="sombra-solta" id="pagSombra" style="width:3024px;height:864px"></div>
-    <div class="grupo pagina" id="pag" style="width:3024px;height:864px">
+    <!-- a página 57-33: o recorte do scan x 40→2560, y 40→751,67 (2520 × 711,67) a 1,2× = 3024 × 854; centro 1920 × 900; +1,0°.
+         A imagem inteira mede 3103,2 × 3994,8 e desloca (−48, −48) para a janela começar em (40, 40) do arquivo.
+         (zona-do-canal-arte-5: a altura era 864 = corte em y 760, pelo meio de "Widowed"; agora 854, no branco antes dela) -->
+    <div class="sombra-solta" id="pagSombra" style="width:3024px;height:854px"></div>
+    <div class="grupo pagina" id="pag" style="width:3024px;height:854px">
       <div class="papel">
         <img src="../_media/documento/census1960-p57-33.jpg" alt="" style="width:3103.2px;height:3994.8px;left:-48px;top:-48px">
         <div id="grifos"></div>
@@ -364,7 +369,7 @@
     repouso: DUR - 0.25
   };
   var K_PAG = 1.2, PAG_X0 = 40, PAG_Y0 = 40;                             // o recorte: 1,2×, origem (40, 40) do arquivo
-  var PAG  = { w: 3024, h: 864, cx: 1920, cy: 900, rot: 1.0 };          // a folha: x 408→3432, y 468→1332 (sem o giro)
+  var PAG  = { w: 3024, h: 854, cx: 1920, cy: 900, rot: 1.0 };          // a folha: x 408→3432, y 473→1327 (sem o giro); h 854 = corte em y 751,67 (arte-5)
   var TIRA = { w: 1400, h: 176, cx: 480 + 700, cy: 1430 + 88, rot: -0.6 }; // a tira: x 480→1880, y 1430→1606, sob o bloco COUNTRY OF BIRTH
   // a LINHA "Born in the United States" no arquivo (projeção de tinta: y 702→721; o rótulo em x 109→~440, os números até x 1215)
   var LINHA = [105, 1218, 696, 728];

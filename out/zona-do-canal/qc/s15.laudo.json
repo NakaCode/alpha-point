@@ -1,0 +1,135 @@
+{
+  "cena": "s15",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 7,
+      "problemas": [
+        "portões lidos, não remedidos: portao-margens veredito 0 com o sha1 de hoje (ed7dd5b5…) e o marca c647bf6c… igual ao sha1sum de marca/tokens.css, 29 itens medidos em 63 amostras (passo 0,1 s), sem itens e sem avisos; portao-mapa til: veredito 0 (7 textos) e rodape: veredito 0 (sem crédito de rodapé, correto: tudo domínio público); _portao.json: ok:true, falhas vazias, hash do HTML de hoje (qc-cena sem a pré-carga, cena sem mapa; o log por portão com contagem de itens não está gravado para as cenas sem mapa, só o carimbo). Nenhum NÃO MEDIDO. Sem exceção do crédito (a cena não tem crédito)",
+        "hierarquia: o dado central da cena é a ordem executiva de 1914 (legenda de 84 px, no alto), e os maiores textos do quadro são os três rótulos de lugar a 128 px ('Empire', 'San Pablo', 'La Boca'), que a voz não diz. O olho vai para os nomes e não para a ordem. São 7 textos sobre 3 fotos (3 rótulos de 128, 3 avisos de 84, a ordem); gate de colisão e de margem verdes",
+        "recorte 4K de 4,0 s: a escola de San Pablo cobre ~20 % da delegacia (a casa vizinha, não a delegacia) e o correio cobre a lateral direita da escola; as placas 'CANAL ZONE FREE PUBLIC SCHOOLS' e 'POLICE STATION EMPIRE' ficam legíveis; sobreposição dentro do teto de 25 % da identidade §5"
+      ],
+      "correcoes": [
+        "pedir ao redator-de-tela (textos-tela.json › s15) que o rótulo diga o serviço que a voz diz, dentro do lugar_na_origem do conferente e de até 3 palavras: 'Empire Police Station' (lugar_na_origem 'Empire Police Station - Dec 1904'), 'San Pablo School' ('Canal Zone Free Public School San Pablo, 1904') e 'La Boca Post Office' ('Canal Zone Post Office - La Boca, 1904'); a Arte só troca o texto e reconfere a largura da pílula a 128 px (não encolher)"
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 9,
+      "problemas": [
+        "conferido contra textos-tela.json › s15: 'EXECUTIVE ORDER 1885 · JAN. 27, 1914' (entra em 'nineteen', 0,167 s), 'Empire', 'San Pablo', 'La Boca' (nenhum mais específico que o lugar_na_origem), 'Photo from 1904' nas três fotos (aviso_de_ano true; 1904 na origem das três); nenhum nome de órgão na tela (A203); asset correto: as três fotos são as aprovadas para a s15 (delegacia de Empire, escola de San Pablo, correio de La Boca), e o recorte tira só a faixa preta da legenda de época",
+        "observação: as fotos são de 1904 e a ordem é de 1914; o aviso do ano está nas três, todo o tempo"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 8,
+      "problemas": [
+        "words.json: 'A' 121,74 s = pouso da delegacia em 0,00; 'nineteen' 121,91 s (0,18 local) = rótulo da ordem em 0,167; 'police,' 123,91 s (2,18), 'schools' 124,63 s (2,90), 'post' 125,59 s (3,86), 'government' 127,14 s (5,41)",
+        "as três fotos já estão na mesa em 1,89 s, antes de 'police' (2,18 s), 'schools' e 'post'; é a escolha da regência (o mirror-cetico: uma por palavra daria batidas abaixo de 1,5 s), e a cascata em 0 / 0,67 / 1,34 s (desvio declarado: 0,55 s por pouso e 120 ms entre eles, identidade §5) não chega depois de nenhuma das palavras que a convocam. Re-checagem do atraso por ritmo (a regência dizia 0,8 s para os três pousos): feita, nenhuma foto entra depois da palavra dela",
+        "a deixa 'a luz anda polícia → escola → correio' (regência, em 2,17 / 2,87 / 3,83 / 5,40 s) não se enxerga nos quadros: a luz é um véu a 14 % por baixo das fotos e as fotos não mudam (identidade §5, 'a antiga não muda'); entre 2,0 e 6,1 s o quadro está igual. O espectador liga foto e palavra só pela ordem esquerda → direita (que bate com a voz)"
+      ],
+      "correcoes": [
+        "opcional (Sala/regente): a deixa que se enxerga é o rótulo, não a luz; com o serviço no rótulo (ver espaco), 'Empire Police Station' lê-se contra 'police'; se quiser deixa no tempo, o rótulo da foto convocada pode subir de peso (opacidade) no tempo da palavra, sem mexer na foto"
+      ]
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "REGISTRO em foto de época (três imagens impressas sobre a mesa, ≤ 1,4×, nenhuma em tela cheia): a fala nomeia três serviços que existiram e foram fotografados, e a ordem de 1914 só existe como transcrição, então entra como rótulo com a data (regência s15); modo certo"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 7,
+      "problemas": [
+        "em 2 s o leigo vê três fotos antigas de edifícios, a ordem de 1914 no alto e o aviso 1904; mas os rótulos de lugar são nomes de povoados ('Empire', 'San Pablo', 'La Boca') que a voz não diz e que não dizem o serviço: para ligar foto e palavra ele depende da ordem dos objetos ou de ler as placas dentro das fotos (que a 1080p mal se leem). Resolve com o texto do serviço no rótulo (ver espaco)",
+        "o 'Photo from 1904' se repete três vezes na mesma mesa; é a regra da marca (um por foto), e ainda assim é leitura repetida"
+      ],
+      "correcoes": [
+        "ver a correção da lente espaco (rótulos com o serviço)"
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 7,
+      "problemas": [
+        "teste de lastro: 'Empire', 'San Pablo' e 'La Boca' não têm palavra da narração que os convoque e caem fora das 3 exceções do ofício; a identidade §5 manda rótulo de lugar no REGISTRO (a lei da casa vence), então sinaliza e não reprova",
+        "contagem: 3 fotos + 3 rótulos + 3 avisos + a ordem = 10 itens, ou 4 conjuntos (foto + rótulo + aviso é um cartão, como a Arte conta); o gate de carga está verde, mas o quadro de 4,0 s fica perto do teto de 6 elementos se os rótulos contarem separados (identidade §4.2): cena no pior extremo da densidade"
+      ],
+      "correcoes": [
+        "a mesma correção: rótulo com o serviço no lugar do nome do povoado tira o órfão; manter o aviso em cada foto"
+      ]
+    },
+    {
+      "lente": "motion",
+      "nota": 7,
+      "problemas": [
+        "pouso em cascata (0,00 / 0,67 / 1,34 s) com assentamento único e a antiga ficando; rótulos 150 ms depois do assentamento de cada foto; push-in do RIG para em 5,917 s; nada se move nos 250 ms finais",
+        "de 1,9 a 6,17 s (4,3 s) o quadro está praticamente parado: o push-in do RIG chega a 1,014 e a luz que 'anda' é imperceptível (acima). 'Nada congela' vale (há push-in e deriva), 4,3 s está abaixo do teto de 6 s da identidade §4.3, e é regime normal, mas é o trecho mais parado do lote"
+      ],
+      "correcoes": [
+        "opcional: dar peso ao movimento do rótulo ou do aviso (não da foto) no tempo de cada palavra, ou um Ken Burns leve em cada foto dentro dos limites da identidade §4.4 (≤ 1,4× o arquivo, sem mover texto na leitura); decisão da Arte"
+      ]
+    },
+    {
+      "lente": "fonte",
+      "nota": 10,
+      "problemas": [
+        "delegacia: Wikimedia Commons / DPLA (Panama Canal Company), domínio público; escola e correio: NARA (RG 185, obra federal); os três com 'aprovado' do conferente para a s15 (pelo sha256 do rascunho julgado) e crédito na tela 'nenhum'; a cena não tem crédito, certo; crédito-fantasma: nenhum; sem mídia de banco pago"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [
+        "fotos em preto e branco sobre a mesa Landsat, a mesma das irmãs; nenhum --destaque (sem grifo nem ator); uma cor, um significado: não há cor a confundir"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 10,
+      "problemas": [
+        "os três concretos nomeados (polícia, escola, correio) têm foto real cada um, e as placas dentro das fotos (POLICE STATION EMPIRE, FREE PUBLIC SCHOOLS, CANAL ZONE POST OFFICE) provam o serviço; a ordem executiva, que só existe como texto, vai como rótulo com a data"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 8,
+      "problemas": [
+        "um plano de 6,17 s, convocado por 'A nineteen fourteen executive order put the police, the schools and the post office…': três objetos distintos cobertos pelas três fotos juntas, planejado pela regência e pelo mirror-cetico (uma foto por palavra daria batidas abaixo de 1,5 s); 4,3 s sem troca depois da cascata, abaixo do teto de 6 s; sem clipe repetido entre planos; arquivos diferentes dos da s03"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [
+        "três fotos reais, reduzidas a 0,66× (nunca ampliadas), sem filtro e sem a faixa preta da legenda de época; os rótulos são tipografia declarada, sem logo de instituição"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [
+        "polícia, escola e correio voltam do gancho da s03 ('police, courts and schools answered to Washington'), mas com arquivos diferentes (1904, e o correio, que a s03 não mostra), e o degrau novo é o ato (a ordem de 1914): callback pago, não círculo"
+      ],
+      "correcoes": []
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "cena": "s54",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 7,
+      "problemas": [
+        "portao-margens v2 veredito 0 (sha1 14dd3a5c… e marca c647bf6c… iguais aos de hoje; 144 amostras, 19 medidos, 0 itens, 0 avisos); til sem achados (9 textos); rodape 8,69:1 (piso 3:1). Não remedido.",
+        "Exceção do Lucas: qc-tamanho, crédito a 56 px, 'Quero reduzir para 56px', 07/10/2026 11:3x (qc/_excecoes-portao.json, sha1 14dd3a5c… = o de hoje, reconferida pela Sala em 15/10 11:5x com a mesma reprovação: só '#cred1 Source: U.S. National Archives, 2014' e '#cred2 Source: U.S. Department of State, Office of…' a 56<72, os dois com data-qc-papel=\"credito\"). Os dois créditos leem var(--fs-credito) = 56 px sem override; pelo probe-elemento a caixa de uma linha do #cred1 tem 67 px (56 × 1,2). Sem crédito de mapa na cena.",
+        "Sinalização: a pílula 'President Kennedy Avenue' e o cartão da contagem quase se tocam. Pelo probe-elemento, a ponta direita da pílula fica em x 2025–2030 e a caixa do cartão começa em x 2034–2039, uma diferença de ~9 px a 4K (~4 px a 1080p), igual em 2,75, 7,0 e 14,0 s; o canto de baixo à esquerda do cartão (inclinado +0,8°) encosta na ponta da pílula na faixa y 1616–1755, e a sombra solta do cartão passa sob ela. Não há sobreposição (check-overlap passa) e a marca não fixa distância mínima entre pílula e cartão, então sinaliza; a ligação visual do rótulo da foto com o cartão pode confundir.",
+        "Canto 400 × 400 e faixa do crédito livres; cartão em x 2034–3438 (margem direita 200 → 3640 com folga)."
+      ],
+      "correcoes": [
+        "Dê ≥ 60 px de folga entre a pílula do lugar e o cartão: ou desloque o cartão para a direita (a caixa termina em x 3438, há ~200 px até a margem de 3640) ou encurte a ponta da pílula; refaça o portao-margens depois."
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 9,
+      "problemas": [
+        "Conferido contra o textos-tela s54 e o laudo de fatos (TB149–TB157): 'President Kennedy Avenue' = lugar_na_origem 'President Kennedy Avenue Near Tivoli Guest House' (sha256 6c14c300…, veredito aprovado da s54), não mais específico; 'JANUARY 1964' = a data da série (aviso_de_ano false, sem aviso, certo); '4 U.S. SOLDIERS', '24 PANAMANIANS KILLED' com o dono ('ACCORDING TO THE U.S. NATIONAL ARCHIVES') e o hedge ('OTHER COUNTS DIFFER') na tela, sem soma e sem 'officially'; 'JAN. 10, 1964 · PANAMA BREAKS OFF RELATIONS WITH THE UNITED STATES'. Nenhum título de série ('Rioters…', 'Demonstrators…') na tela. Grafia em inglês dos EUA, 'JAN.' pelo AP."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 7,
+      "problemas": [
+        "Entradas conferidas contra words.json (tempo local): '4 U.S. SOLDIERS' em 2,933 s ('soldiers' 2,95) ok; 'ACCORDING TO THE U.S. NATIONAL ARCHIVES' em 6,767 ('National' 6,79) ok. As outras entram depois da palavra do número: '24 PANAMANIANS KILLED' em 4,3 s, mas 'twenty-four' é dito em 3,75 s (0,55 s depois); 'OTHER COUNTS DIFFER' em 8,767, com 'Other' em 8,21 (0,56 s depois).",
+        "Sinalização: a linha 'JAN. 10, 1964 · PANAMA BREAKS OFF RELATIONS WITH THE UNITED STATES' (84 px, 3 linhas) entra em 10,0 s, mas a voz diz 'January tenth' em 10,23 e 'Panama broke off relations' só em 11,29 ('United States' 12,95): o conteúdo do fato fica ~1,3 s na tela antes de ser dito, e a linha ecoa a frase quase palavra por palavra. Todos os tempos e o texto são os do textos-tela e da regência (precedência da casa), então não reprova; vai como observação.",
+        "Este laudo não atrasou nenhum elemento por ritmo; os tempos acima são os da regência."
+      ],
+      "correcoes": [
+        "Observação para a regência e o redator-de-tela (não é defeito de cena): a linha do rompimento pode entrar em 10,23 s ('January'), alinhada à palavra, em vez de 10,0 s. Se mudar o t0 no textos-tela e na regência, a Arte ajusta; o leitor ainda tem 4 s de leitura."
+      ]
+    },
+    {
+      "lente": "abordagem",
+      "nota": 8,
+      "problemas": [
+        "Modo certo: foto impressa sobre a mesa (a foto de 2.853 px, a 0,55×, nunca ampliada: identidade §5, 'a foto média também vai impressa') e o cartão da contagem (a mesma folha de papel da fala citada), com o movimento A. Dado com dono vira cartão, não gráfico. A foto mostra uma marcha com bandeiras na President Kennedy Avenue, não o combate; o 'fighting' não tem imagem de luta (decisão da regência: 'sem morto nem ferido em close'), mas a foto é do evento e da série."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "Em 2 s se entende: uma multidão com bandeiras e um cartão que conta os mortos com o dono embaixo. Teste de dado ilegível, só o texto: '4 U.S. SOLDIERS / 24 PANAMANIANS KILLED / ACCORDING TO THE U.S. NATIONAL ARCHIVES / OTHER COUNTS DIFFER' lê-se bem; só a 1ª linha fica ~1,4 s (2,93 a 4,3 s) sem o verbo, porque 'KILLED' só aparece na 2ª. A voz e a 2ª linha resolvem; observação."
+      ],
+      "correcoes": [
+        "Observação para o redator-de-tela (a grafia é do textos-tela): 'KILLED' na 2ª linha vale para as duas; se ele preferir, '4 U.S. SOLDIERS KILLED' na 1ª. A Arte não muda sem o textos-tela."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 7,
+      "problemas": [
+        "Sinalização, a do relato da Arte: o cartão pousa vazio. Ele começa a descer em ~1,88 s e a escala assenta 1,03 → 1,00 em 2,44–2,68 s (nos quadros: 359 px de largura no cartão em 2,3 s e 349 px em 2,75 s, a razão de 1,03), e a 1ª linha só entra em 2,933 s (300 ms de entrada). São ~1,05 s com a moldura sem conteúdo, 0,6 s deles com o cartão quase parado (de 2,3 a 2,933 s). A regra de 02/10 (identidade §5, 'A linha do preço vazia sai': campo em branco esperando a voz não vai à tela) nasceu de o Lucas ver um campo vazio por segundos (s15, s23, s40); aqui a moldura é o objeto chegando à mesa, dura ~1 s e o cabeçalho declara o porquê (o cartão assenta 0,25 s antes da 1ª linha, para o texto não andar enquanto se lê, §4.4). Aprovo com a sinalização; se o Lucas achar que conta como campo vazio, é conserto de ~0,5 s no pouso (relato, 'perguntas do Lucas').",
+        "Redundância (autorizada pelo textos-tela): o crédito 'Source: U.S. National Archives, 2014' (2,93–9,7 s) e a legenda 'ACCORDING TO THE U.S. NATIONAL ARCHIVES' dizem o dono duas vezes, e a voz o diz uma terceira.",
+        "Lastro: 'President Kennedy Avenue' e 'JANUARY 1964' não são convocados por palavra da janela até 'January tenth' (10,23 s); caem como rótulo de lugar e data da foto de registro (identidade §5; lugar_na_origem), autorizados pelo textos-tela. Observação.",
+        "Contagem: foto com rótulo (1) + data (1) + cartão (1) = 3 elementos, 1 bloco de texto; teto 6/3 respeitado. Sem tofu nem entidade."
+      ],
+      "correcoes": [
+        "Se o Lucas mandar tirar o cartão vazio: pouse o cartão ~0,3 s mais tarde (descida de 2,18 a 2,98 s, com a 1ª linha entrando em 2,933 s sobre o assentamento) ou entre o cartão já com a 1ª linha em 'Four' (2,31 s); qualquer das duas mexe no §4.4 'texto parado enquanto se lê' e pede portao-margens e nova exceção do crédito (sha1 novo)."
+      ]
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "Movimento A conferido: a foto já está assentada no 1º quadro (estado herdado); a câmera sobe à foto 0,5–2,1 s (centro de y 1080 a 1030, eb: 50 px) e para 0,83 s antes da 1ª linha; o cartão assenta uma vez (razão 1,03 → 1,00 vista nos quadros 2,3 e 2,75 s, sem oscilação); a luz vai ao cartão. Repouso de 250 ms medido pelo probe-elemento: câmera 1,0336 em 14,0 s → 1,03364 em 14,267 s, cartão em (2034, 392) nos dois instantes (nada se move antes do corte).",
+        "Bordas medidas nos 12 quadros 4K (o still de 56 px e o feltro, que passam do palco): nenhum salto de luma nas 200 px das 4 bordas, fora o crédito. Entradas de 300 ms."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 8,
+      "problemas": [
+        "Foto: obra do governo federal (NARA RG 185, 218517734, sha256 6c14c300… casado com o veredito aprovado da s54), sem crédito de mídia, certo. Os dois créditos da cena são de dado, com papel declarado e na faixa: 'Source: U.S. National Archives, 2014' (a contagem) e 'Source: U.S. Department of State, Office of the Historian' (o rompimento), ambos legíveis (8,7:1 de contraste, duas linhas o 2º, sem palavra sozinha).",
+        "Observação: o 2º crédito não leva ano ('Source: <instituição>, <ano>', identidade §7); a grafia é a do textos-tela (TB157, HERDADA), então não reprova, e vai ao redator-de-tela. O crédito da NARA sai em 9,7 s enquanto os números continuam no cartão até o fim; a atribuição fica na legenda 'ACCORDING TO THE U.S. NATIONAL ARCHIVES', e o textos-tela manda assim ('só durante a contagem')."
+      ],
+      "correcoes": [
+        "Observação para o redator-de-tela: dar o ano ao 'Source: U.S. Department of State, Office of the Historian' (formato da identidade §7) se a fonte tiver ano; a Arte só muda com o textos-tela."
+      ]
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [
+        "Foto P&B, cartão em --papel, pílulas --rotulo, still do istmo escurecido sob a luz como véu e o feltro a 50 %: 3 matizes no máximo, nenhum destaque, nenhuma cor de lado; o still não carrega rótulo nem anel; textura e luz por baixo da foto, do cartão e do texto (não vi filtro sobre a foto)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "Concretos: luta (evento), soldados e panamenhos mortos, Arquivos Nacionais, relações rompidas. A foto cobre a multidão e o lugar; o 'fighting' e os mortos ficam como dado (cartão), por decisão da regência (sem imagem de morto). Sinalização: a única foto da cena é uma marcha, não a luta; a série NARA 535455 pode ter outras (só uma foi baixada para a s54)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 7,
+      "problemas": [
+        "Uma foto só ocupa 14,27 s. O teto de 6 s é de imagem parada sem movimento com propósito, e aqui há propósito: o cartão traz informação nova a cada 1,4–2,0 s (2,93, 4,3, 6,77, 8,77 e 10,0 s) e há push-in contínuo; o regime da regência é 'normal'. Passa raspando na leitura da lente: a pasta _media/foto/s54 tem um registro só, então a correção não é cortar, é pedir variação nova ou intercalar a camada gráfica."
+      ],
+      "correcoes": [
+        "Se a pesquisa quiser dar um 2º plano: 'Panama Canal Zone January 1964 riots photograph crowd Canal Zone Government NARA series 535455' (acervo federal, domínio público); depende do conferente-de-midia e não segura a cena."
+      ]
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [
+        "Nada com dono desenhado: foto real, cartão tipográfico declarado (a folha de papel da marca), sem logo, selo nem brasão do Arquivo ou do Departamento de Estado; instituições só escritas."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "Avança sobre a s52 (a multidão e a contagem depois do mastro). Sinalização de eco de forma, sem reprovar: a s50 (foto à esquerda e folha à direita) e a s54 (foto à esquerda e cartão à direita) têm a mesma composição, com três cenas no meio e conteúdo novo."
+      ],
+      "correcoes": []
+    }
+  ]
+}

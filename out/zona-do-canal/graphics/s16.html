@@ -43,6 +43,11 @@
       1,73 s no ar, abaixo dos 2,0 s da identidade §4.3). Os dois pontos sem cor de lado: 'gold' e 'silver' são palavras.
     · CÂMERA: aproximação lenta na Zona inteira, a descida, aproximação lenta na entrada do Pacífico, e um giro contínuo
       de −1,2° a +1,2° do primeiro ao último quadro (identidade §5, "Mapa nunca fica parado").
+    · RODADA zona-do-canal-arte-5 (mapista, lote M-a, 15/10/2026): a água escura (agua-osm-zona, ODbL, identidade §6, "A água
+      escura") entra como 2ª camada do estilo, em --agua-base, logo acima do satélite, como na s06 e na s11: na descida
+      (12,2–13,3 s) o mar da Baía do Panamá mostrava as emendas do mosaico em blocos de borda reta (laudo s16, espaco 6). Ela
+      escurece também o canal de acesso, que o OSM conta como mar (fica, como na s06). O © OpenStreetMap contributors já está
+      no crédito da MapTiler. Nada mais mudou (o cartão de prata, ratificado pela Sala, Decisão 5, fica).
   Créditos: '© MapTiler © OpenStreetMap contributors' a 56 px do primeiro ao último quadro (cobre o OSM de
   pontos-osm-hoje e eixo-do-canal); a fonte de 1915 com o número; a de 1914 com o 1º cartão.
   Fora da tela, de propósito: a miniatura de foto de cidade da obra (nenhum arquivo aprovado no conferencia-midia.json;
@@ -58,6 +63,7 @@
 <script src="../_media/geo/eixo-do-canal.js"></script>
 <script src="../_media/geo/cidades-obra-1912.js"></script>
 <script src="../_media/geo/pontos-osm-hoje.js"></script>
+<script src="../_media/geo/agua-osm-zona.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -171,6 +177,7 @@
     duracao: 21.6,
     largura: 3840, altura: 2160,
     perfil: "maptiler",
+    agua: "agua-osm-zona",                           // a água escura (identidade §6), zona-do-canal-arte-5
     pontos: {
       // A: a Zona inteira à direita do palco, a coluna da esquerda livre para as legendas e o número (medido contra o
       //    contorno de 1947: nenhuma pílula toca a linha em 6,0, 8,2 e 10,6 s)
@@ -486,8 +493,16 @@
   // aqui não há geometria de água registrada; o mar do Pacífico fica no satélite (relato M2).
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
-    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };
+    var camadas = [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }];
+    // zona-do-canal-arte-5: a água escura (identidade §6, "A água escura"), como na s06 e na s11: a 2ª camada do estilo, opaca
+    // em --agua-base, logo acima do satélite e abaixo de tudo o que a cena desenha (arquivo local, não pede tile)
+    if (CENA.agua) {
+      fontes.aguaBase = { type: "geojson", data: geo(CENA.agua) };
+      camadas.push({ id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } });
+    }
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança; s03) ──────
@@ -881,6 +896,7 @@
           if (!map.areTilesLoaded() || map.isMoving()) return false;
           for (var i = 0; i < FONTES.length; i++) if (!map.isSourceLoaded(FONTES[i])) return false;
           if (!map.isSourceLoaded("base")) return false;
+          if (CENA.agua && (!map.getSource("aguaBase") || !map.isSourceLoaded("aguaBase"))) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

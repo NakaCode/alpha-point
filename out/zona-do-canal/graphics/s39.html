@@ -52,7 +52,8 @@
     7,95  "elsewhere:" (442,91 s): o ROLO DE OURO pousa à esquerda (o pouso do desenho, 0,55 s: desce 120 px em eo, escala 0,88 → 1,03 até 0,33 s
           e assenta 1,03 → 1,00 até 0,55 s; a sombra solta do traço); 8,07: o ROLO DE PRATA pousa à direita, 120 ms depois (identidade §5:
           "várias na mesma mesa pousam uma de cada vez"). Assentados em 8,50 e 8,62. A luz vai ao meio das duas folhas.
-    8,65 / 8,77  '"GOLD ROLL"' e '"SILVER ROLL"' (rótulos, 128 px, Inter 700) acima de cada folha, 150 ms depois do assentamento dela.
+    8,65 / 8,77  '"GOLD ROLL"' e '"SILVER ROLL"' (rótulos SOLTOS, 128 px, Inter 700, --tinta, sem pílula: a classe .rot de s21, no mesmo
+          lugar, centrados acima de cada folha em top 220) acima de cada folha, 150 ms depois do assentamento dela.
     9,233 "on" (443,81 s): OS DOIS SE DESENROLAM (a física abaixo): o de ouro deita 344,3 px de papel em 0,416 s (em repouso em 9,649), o de
           prata 1.272 px em 0,800 s (em repouso em 10,033; a regência: "unroll in 0.8 s"). Cada linha do livro aparece quando o papel a deita.
     10,283–10,533  REPOUSO: nada se move além da deriva do RIG, que congela nos últimos 250 ms (as folhas paradas desde 10,033, "still to the cut").
@@ -119,6 +120,12 @@
   registrada do canal (identidade §4.1, "Crédito a 56 px"). --destaque só no grifo (a 35 %). Courier Prime só na folha e na tira
   (data-qc-fonte-livre). Margens 200/160 sob a câmera; canto inferior direito (400×400) vazio. A paleta do vídeo (pergunta 2 ao Lucas)
   entra só por token: nenhuma cor de lado nesta cena.
+
+  O CONSERTO DE zona-do-canal-arte-5 (15/10/2026; Decisão 13 do plano da Sala, laudo qc/s39 lente circulo): '"GOLD ROLL"' e '"SILVER ROLL"'
+    saíram da pílula (--rotulo, respiro 24 × 40) e viraram RÓTULO SOLTO no traço de engenheiro (identidade §5, "Animação para explicar":
+    "rótulos soltos"), com a classe .rot copiada de out/zona-do-canal/graphics/s21.html (128 px, Inter 700, line-height 1, --tinta) e a
+    mesma posição de s21 (centrados no cx de cada folha, top 220). Os tempos ficam (8,65 / 8,77, ratificados pela Sala na Decisão 5), o
+    texto fica, a foto (b0) e o desenho não mudaram. Feito em Opus (lista _animacao_em_opus).
 
   O CONTRATO: window.__duracao = dur; __renderAt(t) determinístico e à prova de erro; __prepararCaptura; __fotosProntas = RIG.prontas() e as
   duas faces da Courier Prime (MarcaDoc 400 e 700). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia inteira
@@ -209,6 +216,10 @@
   #desenho .fina { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-linecap: round; opacity: .42; }
   #desenho .meia { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-linecap: round; opacity: .8; }
   #desenho .sombra-linha { fill: none; stroke: var(--tinta-escura); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+  /* os cabeçalhos das folhas: RÓTULO SOLTO no traço de engenheiro (identidade §5: sem pílula), a classe .rot de s21, igual
+     (128 px, Inter 700, line-height 1, --tinta); zona-do-canal-arte-5, Decisão 13 da Sala */
+  .rot { position: absolute; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo);
+    line-height: 1; letter-spacing: 0; font-variant-numeric: var(--numeros); color: var(--tinta); opacity: 0; }
 </style>
 </head>
 <body>
@@ -244,8 +255,8 @@
       <g id="folhaG"><g id="folhaGpapel"></g><g id="folhaGrolo"></g></g>
       <g id="folhaS"><g id="folhaSpapel"></g><g id="folhaSrolo"></g></g>
     </svg>
-    <div class="pilula" id="cabG" data-qc-papel="rotulo"></div>
-    <div class="pilula" id="cabS" data-qc-papel="rotulo"></div>
+    <div class="rot" id="cabG" data-qc-papel="rotulo"></div>
+    <div class="rot" id="cabS" data-qc-papel="rotulo"></div>
 
   </div>
   <div id="creds"><div class="cred" id="cred1" data-qc-papel="credito"></div><div class="cred" id="cred2" data-qc-papel="credito"></div></div>

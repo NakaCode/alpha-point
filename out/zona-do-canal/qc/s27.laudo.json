@@ -1,0 +1,133 @@
+{
+  "cena": "s27",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "Exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 11:3x (Brasília), mensagem literal 'Quero reduzir para 56px' (identidade.md §4.1, 'Crédito a 56 px'); registro em out/zona-do-canal/qc/_excecoes-portao.json, cena s27, sha1 382ffbad91e072df31757b9ad1a10625d330e5bd, igual ao sha1sum do HTML de hoje e ao do _portao.json. A reprovação é só a do crédito ('[tamanho] [credito] \"Source: Annual Report of the Governor of the\" 56<72', com data-qc-papel=\"credito\"; o qc-tamanho que rodei de novo no HTML de hoje deu só essa reprovação). Essa reprovação, e só ela, sai de gatesDuros. Crédito medido pelo probe-elemento: caixa de 2 linhas com 134 px de altura = 2 x 67,2 (line-height 1,2 x 56), tamanho vindo de var(--fs-credito), sem px fixo; x 200, y 2012 a 2146 (abaixo de y 1880, antes de x 1720); contraste do portao-mapa rodape v5: 8,62:1 (piso 3:1; 18 amostras; pior 8,71:1 em 6,1 s).",
+        "Portões lidos, nenhum remedido: portao-margens veredito 0 (sha1 382ffbad, marca c647bf6c; 5 itens medidos, 68 amostras, avisos vazios); check-overlap sem colisão (5 textos); qc-carga dentro dos tetos (0,6 entradas/s, pior 1 s = 2); portao-mapa til 0. Os 5 itens medidos são os 5 textos da cena: não é verde vazio.",
+        "Hierarquia: rótulos a 128 px (var(--fs-rotulo), teto 160), cotas a 100 px (px fixo no papel 'cota', dentro do teto de 104 do eixo, identidade.md §4.1; observação de higiene: o token não é lido) e crédito a 56; um dado por coluna, nenhum herói (data-qc-sem-heroi motivado)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 9,
+      "problemas": [
+        "Razão das colunas conferida nos quadros de 5,6 s: face da 1ª de ~1.008 px e da 2ª de ~480 px na tela 4K (47,6 %, contra 76,00/158,46 = 47,96 %); régua de 15 e de 7 traços na mesma escala. Valores e rótulos batem com o textos-tela ('\"WHITE\" SCHOOLS', '\"COLORED\" SCHOOLS', '$158.46 A MONTH', '$76.00 A MONTH'): 'white' e 'colored' entre aspas como palavras do relatório, nunca cor. Associação posicional certa (valor sobre a coluna, rótulo sob a base). Peça construída: no recorte 4K dos pés das colunas (1,5 s e 5,6 s) a aresta frontal da coluna assenta na borda do soquete, as arestas escondidas ficam tracejadas e o soquete oclui o pé; sem vão nem giro fora do contato (roupa §5). A medida é visual no quadro 4K, não a fórmula do código."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 9,
+      "problemas": [
+        "Conferido contra o words.json (janela 246,633 s): a 1ª coluna sobe em 0,017 ('in', 0,02) e para em 1,117; '$158.46 A MONTH' em 2,6 ('forty-six', 2,61); a 2ª coluna sobe em 4,087 ('in', 4,09); '$76.00 A MONTH' em 4,967 ('seventy-six', 4,99). O primeiro segundo está coberto (base, rótulo e a coluna subindo)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "Sinalização (não reprova): a cena mostra '\"WHITE\" SCHOOLS · $158.46 A MONTH' e '\"COLORED\" SCHOOLS · $76.00 A MONTH', mas nenhum texto diz 'teachers'. Em 2 s a comparação de alturas é imediata, e a fala é contínua com a s26 ('prints what it paid their teachers on average: in the first, ...'), que já trouxe a palavra; mas quem vê a s27 isolada lê mensalidade no lugar de salário. O texto é do textos-tela (rótulo e cota fixados), então não é defeito da Arte: vai à Sala como pedido a montante para o redator-de-tela."
+      ],
+      "correcoes": [
+        "Para a Sala, ao redator-de-tela (pedido a montante, opcional): acrescentar 'TEACHERS' a um rótulo ou à cota (por exemplo, uma linha 'TEACHERS' em 84 px sob o cabeçalho de cada coluna), mantendo as aspas de 'white' e 'colored'. A lógica da cena não muda; só o textos-tela."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 9,
+      "problemas": [
+        "Física da coluna: sobem com o mesmo empurrão e perdem velocidade à mesma desaceleração até parar no curso, sem balanço no topo (nada empurra de lado); curva dirigida e declarada no cabeçalho. Câmera só em push-in e deriva; #cam estável de 6,4 a 6,63 s (a deriva congela nos 250 ms finais). Nada congela antes disso."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "Crédito 'Source: ...1920' entra com o 1º valor (2,6 s, textos-tela t0 2,6) e fica até o corte, com data-qc-papel=\"credito\" e 56 px. As colunas existem desde 0 s sem crédito, mas o dado só aparece com o valor: aceito pela precedência do textos-tela. É crédito de dado com origem citável, não supérfluo."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 8,
+      "problemas": [
+        "Sinalização: '$76.00 A MONTH' fica 1,667 s no ar (de 4,967 ao corte em 6,634), acima do piso de ofício de 1,5 s e abaixo dos 2,0 s da marca (identidade.md §4.3). O número entra na palavra ('seventy-six') e a frase acaba no corte: não há como alongar sem antecipar o número. O qc-carga mede 2,6 s como menor texto no ar (os rótulos); a cota não conta como bloco."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [
+        "Desenho técnico original (traço de engenheiro, identidade.md §5); nenhum objeto, capa, logo ou selo de terceiro."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    }
+  ],
+  "julgamento": {
+    "modo": "completo",
+    "lentes_julgadas": [
+      "espaco",
+      "factual",
+      "wordlock",
+      "abordagem",
+      "acessibilidade",
+      "poluicao",
+      "motion",
+      "fonte",
+      "tema",
+      "cobertura",
+      "cadencia",
+      "autoria",
+      "camadas",
+      "circulo"
+    ],
+    "lentes_herdadas": [],
+    "frames": 7,
+    "porque": "Quadros do HTML de hoje (sha1 382ffbad, 15/10 11:31) pelo quadro.mjs 4K com a pré-carga: 0,6 / 1,5 / 3,2 / 4,5 / 5,6 / 6,55 s numa folha de contato (qc-s27@folha-...jpg) e um recorte 4K dos pés das colunas em 1,5 s e 5,6 s (qc-s27@1.5-5.6-recorte-pes-das-colunas.jpg): 2 imagens lidas. Portões lidos: portao-margens 0, portao-mapa til 0 e rodape v5 0, qc-tamanho/check-overlap/qc-carga rodados por mim; qc-cena só com o crédito a 56 px (exceção do Lucas, sha1 igual). Sem MapTiler, sem render."
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "cena": "s45",
+  "aprovado": false,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 6,
+      "problemas": [
+        "REPROVA (identidade §6: 'a borda do cartão ou da página que a origem escaneou junto sai no enquadramento'; §5, REGISTRO em tela cheia, sem moldura). A borda branca do cartão do scan fica à mostra: no quadro 4K, por coluna de pixel, faixa 255 constante de 40 px à esquerda e 43 à direita em t=0,05 s (visível em qc-s45@0.05-1080p.png), 5/0 em 1,5 s, 0/0 em 3,0; no corte, 39 à esquerda e 46 à direita em t=3,95 s, 0/12 em 5,0 s e 0 de 5,3 s em diante. O cabeçalho da cena diz 'sem a borda branca', mas a janela cobre x 94→4912 (foto 1) e 94→4903 (foto 2) do arquivo e o miolo é x 146→4855 e 146→4844: sobram ~52 px de borda de cada lado. A faixa branca aparece no 1º quadro da cena e no 1º do corte.",
+        "Exceção do Lucas: qc-tamanho, crédito a 56 px, 'Quero reduzir para 56px', 07/10/2026 11:3x (qc/_excecoes-portao.json, sha1 do HTML 6310cd3e = o de hoje; a reprovação é só 'Source: U.S.–Panama treaty of 1936' 56<72 (crédito na pílula --rotulo; caixa de 99 px = 67 de uma linha + 32 de respiro), com data-qc-papel=credito). Medido por probe-elemento: caixa de duas linhas de 134 px ÷ line-height 1,2 = 56 px, var(--fs-credito), sem data-qc-credito, x 200, abaixo de y 1880, até x<1720.",
+        "portao-margens v2, sha1 6310cd3e, marca c647bf6c = tokens de hoje: veredito 0 (98 amostras, 10 medidos, 0 itens, 0 avisos). A faixa branca não é medida por ele. Pílulas em x 200 / y 160 / y 365 e 'FROM 1939' até x 3640."
+      ],
+      "correcoes": [
+        "Reenquadrar as duas fotos com o miolo do arquivo, sem upscale: foto 1 x 146→4855 a ~0,83× (3.909 px de largura; left ≈ −121 px, top ≈ −396 px), foto 2 x 146→4844 a ~0,83× (3.899 px; left ≈ −121 px, top ≈ −198 px). Com 0,83× nenhum lado do miolo fica menor que o palco (3.840) e o Ken Burns (80 px, 1,00→1,12) só empurra a borda para fora. Conferir de novo a janela das placas (a mais alta, em y 2.988 do arquivo, continua fora: a janela a 0,83× vai de y 238 a ~2.840) e provar por coluna que a faixa clara não volta em t=0, 1,5, 3,95 e 5,0 s. Valores indicativos; o resto da cena não muda."
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 9,
+      "problemas": [
+        "Rótulo 'Balboa Commissary' nunca mais específico que o lugar_na_origem ('New Entrance, Balboa Commissary' e 'Aerial view, Balboa Commissary', sem 'aerial' na tela); 'FROM 1939' no tempo da fala; avisos 'Photo from 1955' e 'Photo from 1956' com os anos do data_na_origem (aviso_de_ano true). Mídia: as duas fotos têm veredito 'aprovado' da s45 casado pelo sha256 (989ec683…, b25d3532…). Placas dos carros do 1º plano fora do quadro."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 9,
+      "problemas": [
+        "Medido contra o words.json: 'FROM 1939' em 2,6 ('nineteen' 2,60); crédito junto; corte seco em 3,9 ('Zone's' 3,92), na pausa depois de 'the'; 'Photo from 1956' em 4,05. Rótulo de lugar em 0,15 ('store' 0,22). Primeiro segundo coberto pela foto."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "REGISTRO certo (a loja e as comissarias são coisas reais nomeadas, foto de acervo oficial, NARA), em dois planos para não passar do teto de 6 s. Sem upscale (0,797×)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 9,
+      "problemas": [
+        "Entende-se em 1 s: loja com fregueses e carrinhos na porta, depois o prédio inteiro. 'FROM 1939' ao lado de 'Photo from 1955' pode confundir por uns 1,3 s (o ano do fato e o ano da foto juntos), mas o prefixo 'Photo from' resolve."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "poluicao",
+      "nota": 9,
+      "problemas": [
+        "Rótulo de lugar + 'FROM 1939' = 2 elementos, mais aviso e crédito; nenhum bloco. 'FROM 1939' fica 7,1 s (2,6 ao fim) atravessando o corte: decisão do textos-tela."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "Ken Burns com direção nos dois planos (1,00→1,12 em 6 s linear; foto 1 rumo à porta, foto 2 rumo à marquise), produto de escalas ≤ 0,89. Sem câmera do RIG (tela cheia, sem mesa); a foto segue em movimento até o corte, que é o Ken Burns e não conta nos 250 ms de repouso da mesa."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 8,
+      "problemas": [
+        "Exceção do Lucas: qc-tamanho, crédito a 56 px, 'Quero reduzir para 56px', 07/10/2026 11:3x (qc/_excecoes-portao.json, sha1 do HTML 6310cd3e = o de hoje; a reprovação é só 'Source: U.S.–Panama treaty of 1936' 56<72, com data-qc-papel=credito). Medido por probe-elemento: caixa de duas linhas de 134 px ÷ line-height 1,2 = 56 px, var(--fs-credito), sem data-qc-credito, x 200, abaixo de y 1880, até x<1720.",
+        "Crédito do dado 'FROM 1939' (tratado de 1936, Art. III(1)) a partir de 2,6 s, na grafia do textos-tela, na pílula --rotulo sobre o registro; fotos NARA sem crédito (domínio público federal).",
+        "Sinalização: 'Photo from 1955' sai em 3,6–3,9 s (300 ms antes do corte, declarado como o rótulo preso ao objeto), então a foto 1 fica 0,3 s sem aviso; a regra pede o aviso 'todo o tempo dela'. Sem efeito visível, o corte vem logo depois; a foto de tela cheia não 'assenta', e a Arte pode manter o aviso até 3,9 s."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [
+        "Preto e branco do acervo com as pílulas escuras da marca; nenhuma cor extra. Sem degradê, véu nem vinheta sobre a foto."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 9,
+      "problemas": [
+        "'store' e 'commissaries' têm registro real (entrada e prédio). Empregados, soldados e famílias: só os fregueses da foto 1; secundário, sem pedido."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 9,
+      "problemas": [
+        "Dois planos de 3,9 s e 5,8 s (≤ 6 s), um por objeto da fala (a porta; o prédio), com Ken Burns."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [
+        "Fotos reais de acervo (NARA RG 185) com procedência; nada desenhado para parecer objeto de terceiro."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [
+        "Foto da loja em dois ângulos novos; nada repete s03/s15. Vem depois de documento e antes de mapa: troca de regime."
+      ],
+      "correcoes": []
+    }
+  ]
+}

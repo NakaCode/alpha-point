@@ -1,0 +1,139 @@
+{
+  "cena": "s24",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "Exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 11:3x (Brasília), mensagem literal 'Quero reduzir para 56px' (identidade.md §4.1, 'Crédito a 56 px'); registro em out/zona-do-canal/qc/_excecoes-portao.json, cena s24, sha1 ad8e1c9a1484c13583fc7fd78be988bdc520be4c, igual ao sha1sum do HTML de hoje e ao do _portao.json. A reprovação é só a do crédito ('[tamanho] [credito] \"Source: Annual Report of the Governor of the\" 56<72', com data-qc-papel=\"credito\"; o qc-tamanho que rodei de novo no HTML de hoje deu só essa reprovação). Essa reprovação, e só ela, sai de gatesDuros. Crédito medido pelo probe-elemento: caixa de 2 linhas com 134 px de altura = 2 x 67,2 (line-height 1,2 x 56), tamanho vindo de var(--fs-credito), sem px fixo; x 200, y 2012 a 2146 (abaixo de y 1880, antes de x 1720); contraste do portao-mapa rodape v5: 8,69:1 (piso 3:1; 28 amostras; pior 8,71:1 em 4,09 s).",
+        "Portões lidos, nenhum remedido: portao-margens veredito 0 (sha1 ad8e1c9a, marca c647bf6c = tokens.css de hoje; 44 itens medidos, 118 amostras, avisos vazios); check-overlap sem colisão (5 textos, passo 0,2 s); qc-carga dentro dos tetos (0,26 entradas/s, pior 1 s = 1); portao-mapa til 0. Nenhuma contagem é zero.",
+        "Sinalização (não reprova): a cena está no teto de 3 blocos de texto de leitura (a folha e as duas tiras, que repetem a letra grifada da folha); são 3 elementos, abaixo do alvo de 4 a 5. A conta é a do cabeçalho e bate com os quadros."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "Os dois trechos citados batem letra a letra com o textos-tela (folha_texto e trecho_ampliado, p. 63 de 1940): 'with a few exceptions, citizens of the United States' e 'a considerable number of whom are Panamanians'; a linha 'Source: Annual Report of the Governor of the Panama Canal, 1940' está desde o 1º quadro; nenhum selo, timbre ou brasão na folha (midia.md §7.1; identidade.md §5, 'Recriação, nunca fac-símile').",
+        "DECISÃO PENDENTE (sinalização, não reprova): a folha recriada traz '[…]' no lugar de 'and comprise those employees who are engaged in the skilled trades ... are required.' (a frase do meio, não grifada). O corte está marcado, nenhuma palavra citada mudou e o cabeçalho do HTML o declara; mas o textos-tela folha_texto escreve o parágrafo inteiro, e a regra da recriação é 'texto citado fiel' (midia.md §7.1). O arte-1 (item 5 do relato) listou este desvio entre os que pedem decisão, e não há resposta da Sala nem do Lucas no disco. Julguei como observação porque o recorte está sinalizado e não inverte o sentido da frase."
+      ],
+      "correcoes": [
+        "Pedir decisão à Sala/Lucas sobre o '[…]' da folha (midia.md §7.1): manter o corte sinalizado, ou escrever o parágrafo inteiro como no textos-tela (a 86 px não cabe com as tiras dentro das margens, segundo o cabeçalho; a alternativa é mostrar a folha sem as tiras e usar só o grifo). Nenhuma mudança bloqueia o render."
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 8,
+      "problemas": [
+        "Conferido contra o words.json (janela 216,0 s, 11,7 s): o grifo 1 corre de 4,11 ('with') a 6,90 ('States,') palavra a palavra; o grifo 2 parte de 9,11 ('a') e acompanha 'considerable' (9,23) e 'number' (9,95 a 10,345); no quadro de 10,2 s o marcador está no meio de 'number', que a voz diz de 9,95 a 10,34. A folha já está assentada e a legenda acesa em 0,95 s, então o primeiro segundo da fala ('In nineteen forty') está coberto.",
+        "Sinalização: a tira 1 entra em 3,39 ('words,') e o textos-tela pede o trecho_ampliado em t0 4,1; a tira aparece 0,71 s antes da fala que a convoca. O cabeçalho declara o motivo (a tira já parada quando o grifo corre) mas não cita tarefa da Sala. A letra da tira já está na folha desde 0 s, então nada é adiantado ao espectador além do que já se lê; fica como observação.",
+        "Nenhum elemento foi atrasado por ritmo nesta rodada; não há re-checagem de word-lock pendente."
+      ],
+      "correcoes": [
+        "Opcional: pousar a tira 1 perto de 4,0 a 4,3 ('with', 4,11) se a Sala quiser seguir o t0 4,1 do textos-tela; hoje ela já entra por uma palavra do trecho anterior."
+      ]
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "poluicao",
+      "nota": 8,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "Assentamento da folha medido no DOM (probe-elemento, #folPapel, 0,5 a 0,9 s): a largura da caixa vai 2323, 2294, 2260, 2255, 2255, sem retorno nem bounce; a câmera só se move de 0,90 a 1,90 e de 7,10 a 8,70 (para 2,2 s antes do grifo 1 e 0,41 s antes do grifo 2); nos últimos 250 ms a câmera não anda (caixa de #cam idêntica de 11,4 a 11,69 s).",
+        "Sinalização (não reprova): a tira 2 entra de 8,67 a 8,97 e o 1º texto dela que a voz lê é 'a' (9,11): 0,14 s depois de assentar, abaixo dos 0,25 s da roupa §4 ('A mão que arruma'). Não reprovei porque a entrada é na palavra que a convoca ('held', 8,67) e a roupa isenta 'o cartão da fala, na palavra'; a tira é a segunda saída da folha, e o texto dela só é grifado depois."
+      ],
+      "correcoes": [
+        "Nenhuma correção exigida. Se a Sala quiser 0,25 s de folga entre o fim da entrada da tira 2 e 'a' (9,11), a entrada tem de terminar em 8,86: começar em 8,56, antes de 'held' (8,67), o que adianta o texto; decisão dela."
+      ]
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "Crédito 'Source: ...1940' presente todo o tempo da folha (textos-tela); nenhuma mídia de registro na cena; a mesa não leva crédito (Landsat 9, USGS, domínio público; identidade.md §5 e §7). Nada supérfluo e nada faltando."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 8,
+      "problemas": [
+        "A folha é recriada, não fac-símile: Courier Prime, papel do canal, sem timbre, selo nem diagramação do original, com o cabeçalho 'ANNUAL REPORT OF THE GOVERNOR OF THE PANAMA CANAL · 1940 · P. 63' e a linha 'Source:'. É a saída 'tipografia declarada' do ofício (lente 12) e a regra da casa (identidade.md §5). A página real existe no Internet Archive e fica de prova até o Lucas responder a pergunta 13 (regencia._espera_o_lucas): se ele autorizar a real, a folha troca por ela."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "Sinalização (eco de forma, não reprova): a s22 (uns 30 s antes) usa a mesma folha recriada de 1940 (p. 63) com outro trecho; a s24 acrescenta as duas citações novas e as tiras, que é o degrau novo. O textos-tela diz 'a mesma folha recriada do cartão da s22': é callback declarado."
+      ],
+      "correcoes": []
+    }
+  ],
+  "julgamento": {
+    "modo": "completo",
+    "lentes_julgadas": [
+      "espaco",
+      "factual",
+      "wordlock",
+      "abordagem",
+      "acessibilidade",
+      "poluicao",
+      "motion",
+      "fonte",
+      "tema",
+      "cobertura",
+      "cadencia",
+      "autoria",
+      "camadas",
+      "circulo"
+    ],
+    "lentes_herdadas": [],
+    "frames": 6,
+    "porque": "Quadros do HTML de hoje (sha1 ad8e1c9a, 15/10 11:35) pelo quadro.mjs 4K com a pré-carga cdp-sem-compressao: 0,95 / 3,7 / 5,6 / 8,9 / 10,2 / 11,65 s, lidos numa folha de contato (qc-s24@folha-...jpg), e o recorte 4K da folha e das tiras em 10,2 s (qc-s24@10.2-recorte-folha-tiras.jpg): 2 imagens lidas. Portões lidos: portao-margens 0, portao-mapa til 0 e rodape v5 0, qc-tamanho/check-overlap/qc-carga rodados por mim no HTML de hoje; qc-cena só com o crédito a 56 px (exceção do Lucas, sha1 igual). Entradas: espelho, regência, textos-tela, words.json, conferencia-midia (a cena não cita arquivo de _media/ além do still da mesa, que é base). Sem MapTiler, sem render."
+  }
+}

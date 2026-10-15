@@ -60,6 +60,12 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s11 (78,6 → 95,2 s do mas
   12,55–12,65 (cerca de 50 × 28 km, ainda quadro largo, sem close de Colón). (6) As cotas a 128 px afastam-se 140 px da borda (eram
   44) e 40 px no sentido dela, para a pílula não encostar na linha; o istmo abre 0,08 de zoom mais largo, para caber a faixa mais
   longa.
+  RODADA zona-do-canal-arte-5 (mapista, lote M-c, 15/10/2026; Decisão 11 da Sala, laudo s11): (1) o traço da divisa de 1947
+  junto a Colón (divisa-zona-1947 › H-colon) passa à linguagem de "the line": --destaque, 10 sobre 22 px, como a linha de
+  Panama City; antes era branco 8 sobre 20, colado aos cais, e se lia como cais. A legenda 'Boundary as mapped in 1947' não
+  muda (palavra e lugar). (2) A pílula 'Colón' entra em 13,4 s (era 13,6): o laudo pedia ~13,1, mas a viagem (12,25–14,0) ainda traz a cidade
+  de cima da margem do topo (em 13,3 a pílula está a −27 px; portao-margens, arte-5); em 13,4 ela já está dentro, presa ao
+  lugar. O resto (a linha de 1947 em 13,4, a legenda em 13,6, os desvios do arte-3) fica.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -220,7 +226,7 @@ City</div>
       { id: "cotaO",    ref: "cotaO", lado: "esquerda", dx: -140, dy: 40, entra: 5.6, sai: 8.9 },
       { id: "cotaL",    ref: "cotaL", lado: "direita",  dx: 140, dy: -40, entra: 5.6, sai: 8.9 },
       { id: "rotPan",   lnglat: [-79.54264, 8.95110], lado: "direita", vert: "baixo", entra: 10.533, sai: 12.25 },   // arte-3: a leste da linha, dentro da faixa, em duas linhas
-      { id: "rotColon", lnglat: [-79.88332, 9.36366], vert: "cima", entra: 13.6, sai: null },   // arte-3: acima de Colón, entre o eixo e a borda nova da faixa
+      { id: "rotColon", lnglat: [-79.88332, 9.36366], vert: "cima", entra: 13.4, sai: null },   // arte-3: acima de Colón, entre o eixo e a borda nova da faixa; arte-5: 13,6 → 13,4 (em 13,3 a câmera ainda a traz acima da margem do topo: −27 px, medido pelo portao-margens)
       { id: "rot1947",  tela: [3640, 300],  lado: "esquerda", vert: "baixo", entra: 13.6, sai: null }
     ],
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0,
@@ -519,12 +525,12 @@ var EIXO = feicao("eixo-do-canal"), FAIXA = feicao("faixa-art2-5mi-mar3mn"), LPA
       }
     }
     // as divisas: a linha junto a Panama City e a de 1947 junto a Colón (o tratamento de fronteira da marca)
-    [[LP, CENA.linhaPan, true], [LC, CENA.linhaColon, false]].forEach(function (par) {
+    [[LP, CENA.linhaPan, true], [LC, CENA.linhaColon, true]].forEach(function (par) {
       var u = eio(seg(t, par[1].desenha, par[1].dur)); if (u <= 0) return;
       var pl = parcial(proj(par[0]), u); if (pl.length < 2) return;
       g.beginPath(); trilha(g, pl);
       g.globalAlpha = 1;
-      if (par[2]) {   // arte-3, a série dos mapas: "the line" (linha-1914-panama) em --destaque, 10 sobre 22 px, como na s20
+      if (par[2]) {   // arte-5: também a divisa de 1947 junto a Colón (a legenda "Boundary as mapped in 1947" ganha referente). arte-3, a série dos mapas: "the line" (linha-1914-panama) em --destaque, 10 sobre 22 px, como na s20
         g.strokeStyle = COR.fronteiraSob; g.lineWidth = 22; g.stroke();
         g.strokeStyle = COR.destaque; g.lineWidth = 10; g.stroke(); return;
       }

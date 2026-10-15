@@ -20,8 +20,8 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s48 + s49 fundidas (540,5 �
   O que manda: o QUE vai à tela e a grafia, textos-tela.json (s48, com as filhas (s49) e o _pedidos_a_montante: a ponte
   como 'Bridge of the Americas' + 'also called Thatcher Ferry Bridge · Oct. 12, 1962'; os prédios como 'Balboa Heights' /
   'Cristóbal' + 'Administration Building · October 1962'; '17 SITES' sem '(ICJ)'); o TEMPO e o exige, regencia.json (s48,
-  12 beats); a direção, conceito-visual.json (s48, s49; onde ele ficou para trás, vale a regência); a marca. Sem bandeira
-  desenhada sobre o mapa (pergunta 16, caminho padrão). Panama City e Colón sem polígono (pergunta 15, caminho (a)).
+  12 beats); a direção, conceito-visual.json (s48, s49; onde ele ficou para trás, vale a regência); a marca. As bandeiras
+  só como alfinetes da s49 (pergunta 16, "Exceção só aqui"; arte-5, abaixo). Panama City e Colón sem polígono (pergunta 15, caminho (a)).
 
   O que a cena faz (um mapa só, UMA viagem de câmera; o mapa nunca para: giro contínuo de −3° a +3° do 1º ao último
   quadro, deriva/aproximação lenta entre as viagens):
@@ -79,6 +79,31 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s48 + s49 fundidas (540,5 �
   ZONA-DO-CANAL-ARTE-3 (Mb, mapista): a água escura ligada (agua-osm-zona, ODbL, coberta pelo '© OpenStreetMap contributors'
     da linha da MapTiler), opaca, em --agua-base, logo acima do satélite; o canal abaixo das eclusas também escurece (o OSM o
     conta como mar). Nada mais mudou.
+  ZONA-DO-CANAL-ARTE-5 (M-b, mapista; laudo qc/s48 e as Decisões 3 e 9 da Sala):
+    · A PERNA PARADA (motion 6): a perna X0→X1 (43,25–61,5 s), desenhada para ~3,8 s e esticada a 18,25 s na fusão, andava
+      0,0044 zoom/s. Agora X0 abre a 11,08 (o centro 0,028° mais ao norte, para Cristóbal e o alfinete dele ficarem dentro
+      da margem de cima) e X1 chega a 11,40: 0,0175 zoom/s; e um giro a mais de 0 → +9° só nessa perna (~0,5°/s, rampa de
+      1,8 s nas duas pontas, a velocidade sem salto), que fica até o fim (o fim é corte seco para a s50). Os anéis andam
+      de ~300 a ~330 px em 18 s (Cristóbal ~290 px para a esquerda; a ponte e a Balboa Heights ~250 px para a direita),
+      a medida está no relato. Nenhum tempo mudou.
+    · A TIRA DO CENSO fica a 104 px (Decisão 9 da Sala: o piso do ofício, lida bem, sem herói disputando).
+    · AS BANDEIRAS (s49): A BANDEIRA EM MAPA É A EXCEÇÃO DO LUCAS SÓ NESTA CENA ("Exceção só aqui", chat da Sala, 15/10/2026,
+      12:3x; a opção: "As duas bandeiras entram sobre o mapa só nesta cena, porque a história é sobre elas"). A regra da
+      identidade §6 (país no mapa: o nome escrito, sem bandeira) continua valendo em todas as outras cenas e vídeos. É a
+      alternativa escrita no conceito (s49): as bandeiras oficiais como ALFINETES nos lugares escolhidos, nunca como cor
+      de território. Arquivos: assets/flags/pa.png (320×213, medido pelo ffprobe) a 144×96 e assets/flags/us.png
+      (320×168) a 183×96, abaixo do tamanho nativo, sem upscale; fora do conferente (Decisão 3). Nenhum SVG do Commons:
+      nenhum tem veredito no conferencia-midia.json.
+      O mastro nasce no topo do anel; a bandeira do Panamá no topo, voando para a esquerda (as etiquetas ficam à direita);
+      a dos EUA logo abaixo, no mesmo mastro, em 'both' (49,72). No Shaler, só a do Panamá, sobre o topo do círculo da
+      dúvida (o círculo continua a dizer 'approximate location'), de 38,26 a 41,65. Na ponte (42,62), na Balboa Heights e
+      em Cristóbal (44,92) a do Panamá entra com o anel; os três saem com os anéis (61,5). A ponte e a Balboa Heights ficam
+      a ~60 px uma da outra: o mastro da Balboa Heights sobe 460 px, e as bandeiras dela ficam acima das da ponte (290).
+      Os alfinetes contam junto com o anel (o lugar marcado), não como elemento a mais.
+    · As pílulas contra o novo enquadramento (laudo, motion e espaço): a da ponte de dx 120 a 170 (o contorno de 1947 a ~6 px
+      da borda dela passa a ~56, pela conta sobre a geometria) e a da Balboa Heights de dx 110 a 140 (~24 → ~54). As de
+      Cristóbal ficam onde estavam: elas já cruzavam o contorno com o X0 antigo (a mesma conta dá contato também a 11,30), e
+      nenhum lugar do quadro dá folga a uma pilha de 618 × 506 px nessa janela; vai no relato.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -177,6 +202,14 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s48 + s49 fundidas (540,5 �
   .glifo { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
   .glifo.mastro { stroke: var(--destaque); }
   #credCIJ { white-space: pre; }
+  /* zona-do-canal-arte-5: AS BANDEIRAS (s49), os arquivos de assets/flags/ abaixo do tamanho nativo (pa 320×213 → 144×96;
+     us 320×168 → 183×96), com o halo escuro da casa (5 px de --rotulo) para se ler sobre o satélite */
+  .bandeira { position: absolute; left: 0; top: 0; height: 96px; opacity: 0; visibility: hidden;
+    box-shadow: 0 0 0 5px var(--rotulo); }
+  .bandeira.pa { width: 144px; }
+  .bandeira.us { width: 183px; }
+  .mastro-sob { fill: none; stroke: var(--rotulo); stroke-width: 14; stroke-linecap: round; }
+  .mastro { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; }
 </style>
 </head>
 <body>
@@ -216,6 +249,13 @@ October 1962</div>
     <div class="rotulo data liso" id="rot17" data-qc-papel="rotulo">17 SITES</div>
     <div class="rotulo liso" id="rotBHS" data-qc-papel="rotulo">Balboa High School</div>
     <div class="rotulo legenda liso" id="legBHS" data-qc-papel="legenda">At schools: indoors only</div>
+    <img class="bandeira pa" id="alShalerPA" src="../../../assets/flags/pa.png" alt="">
+    <img class="bandeira pa" id="alPontePA" src="../../../assets/flags/pa.png" alt="">
+    <img class="bandeira us" id="alPonteUS" src="../../../assets/flags/us.png" alt="">
+    <img class="bandeira pa" id="alBHPA" src="../../../assets/flags/pa.png" alt="">
+    <img class="bandeira us" id="alBHUS" src="../../../assets/flags/us.png" alt="">
+    <img class="bandeira pa" id="alCrisPA" src="../../../assets/flags/pa.png" alt="">
+    <img class="bandeira us" id="alCrisUS" src="../../../assets/flags/us.png" alt="">
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
   <div class="cartao2" id="cartao63"><div class="cab" data-qc-papel="rotulo">JAN. 10, 1963</div><div class="leg" data-qc-papel="legenda">Agreement between
@@ -257,8 +297,8 @@ of Jurists, 1964</div>
       C1: { lng: -79.58218, lat: 8.96416, zoom: 13.10 },
       S0: { lng: -79.54913, lat: 8.96257, zoom: 15.50 },   // o Shaler: o círculo em (2300, 1060)
       S1: { lng: -79.54843, lat: 8.96260, zoom: 15.65 },
-      X0: { lng: -79.69245, lat: 9.12483, zoom: 11.30 },   // escala da Zona: a ponte, Balboa Heights e Cristóbal
-      X1: { lng: -79.69471, lat: 9.12610, zoom: 11.38 },
+      X0: { lng: -79.69245, lat: 9.15280, zoom: 11.08 },   // escala da Zona: a ponte, Balboa Heights e Cristóbal (arte-5: aberto)
+      X1: { lng: -79.69471, lat: 9.15010, zoom: 11.40 },   // arte-5: a perna de 18,25 s anda 0,0175 zoom/s
       H0: { lng: -79.55986, lat: 8.96404, zoom: 14.40 },   // a Balboa High School em (2000, 1250)
       H1: { lng: -79.55931, lat: 8.96350, zoom: 14.55 }
     },
@@ -282,6 +322,16 @@ of Jurists, 1964</div>
       { t0: 63.0,   t1: 64.767, de: "H0", para: "H1", tipo: "h" }
     ],
     giro: [-3, 3],
+    // zona-do-canal-arte-5: o giro a mais da perna X0→X1 (0 → +9°, ~0,5°/s, com rampa de 1,8 s nas duas pontas), e fica
+    giroExtra: { t0: 43.25, t1: 61.5, graus: 9, rampa: 0.1 },
+    // zona-do-canal-arte-5: AS BANDEIRAS (s49; exceção do Lucas só nesta cena): alfinetes nos lugares escolhidos. O mastro
+    // nasce no topo do anel (no Shaler, no topo do círculo da dúvida); a do Panamá em cima, a dos EUA logo abaixo, em 'both'
+    alfinetes: [
+      { id: "alShaler", ponto: "shaler", circulo: true, topo: 290, entra: 38.26, sai: 41.65, us: null },
+      { id: "alPonte",  ponto: "ponte", topo: 290, entra: 42.62, sai: 61.5, us: 49.72 },
+      { id: "alBH",     ponto: "bh",    topo: 460, entra: 44.92, sai: 61.5, us: 49.72 },
+      { id: "alCris",   ponto: "cris",  topo: 290, entra: 44.92, sai: 61.5, us: 49.72 }
+    ],
     // a tira (coordenadas do palco; as linhas crescem de baixo para cima)
     faixa: {
       x: 200, direita: 1840, base: 1640, entra: 3.767, sai: 29.78,
@@ -322,10 +372,10 @@ of Jurists, 1964</div>
       { id: "rotShaler",     ref: "shaler", lado: "esquerda", vert: "baixo", dx: -260, dy: -250, entra: 38.26, sai: 41.65 },
       { id: "rotShalerData", ref: "shaler", lado: "esquerda", vert: "baixo", dx: -260, dy: -62,  entra: 38.26, sai: 41.65 },
       { id: "legShaler",     ref: "shaler", lado: "esquerda", vert: "baixo", dx: -260, dy: 126,  entra: 38.26, sai: 41.65 },
-      { id: "rotPonte",  ref: "ponte", lado: "direita",  vert: "baixo", dx: 120,  dy: -720, entra: 42.62, sai: 44.62 },
-      { id: "legPonte",  ref: "ponte", lado: "direita",  vert: "baixo", dx: 120,  dy: -363, entra: 42.62, sai: 44.62 },
-      { id: "rotBH",     ref: "bh",    lado: "direita",  vert: "baixo", dx: 110,  dy: -420, entra: 44.92, sai: 46.92 },
-      { id: "legBH",     ref: "bh",    lado: "direita",  vert: "baixo", dx: 110,  dy: -232, entra: 44.92, sai: 46.92 },
+      { id: "rotPonte",  ref: "ponte", lado: "direita",  vert: "baixo", dx: 170,  dy: -720, entra: 42.62, sai: 44.62 },
+      { id: "legPonte",  ref: "ponte", lado: "direita",  vert: "baixo", dx: 170,  dy: -363, entra: 42.62, sai: 44.62 },
+      { id: "rotBH",     ref: "bh",    lado: "direita",  vert: "baixo", dx: 140,  dy: -420, entra: 44.92, sai: 46.92 },
+      { id: "legBH",     ref: "bh",    lado: "direita",  vert: "baixo", dx: 140,  dy: -232, entra: 44.92, sai: 46.92 },
       { id: "rotCris",   ref: "cris",  lado: "direita",  vert: "baixo", dx: 110, dy: 440,  entra: 44.92, sai: 46.92 },
       { id: "legCris",   ref: "cris",  lado: "direita",  vert: "baixo", dx: 110, dy: 628,  entra: 44.92, sai: 46.92 },
       { id: "rotDec",    tela: [3640, 160], lado: "esquerda", vert: "baixo", entra: 54.767, sai: 61.5 },
@@ -360,7 +410,10 @@ of Jurists, 1964</div>
   window.__renderAt = function () {};
   window.__prepararCaptura = function () {};
   window.__aguardarMapa = function () { return Promise.resolve(true); };
-  window.__fotosProntas = true;
+  // arte-5: as bandeiras são <img>: o quadro espera as duas decodificarem
+  window.__fotosProntas = Promise.all(Array.prototype.map.call(document.querySelectorAll("img.bandeira"), function (im) {
+    return (im.decode ? im.decode() : Promise.resolve()).then(null, function () { return true; });
+  })).then(function () { return true; });
   var resolverPronto, rejeitarPronto;
   window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
   window.__ready.catch(function () {});
@@ -540,6 +593,11 @@ of Jurists, 1964</div>
     G.g = svgEl("g", { opacity: "0" }, ov);
     G.sob = svgEl("path", { "class": "guia-sob" }, G.g); G.sobre = svgEl("path", { "class": "guia" }, G.g);
   });
+  // arte-5: os mastros dos alfinetes (um traço de --tinta sobre o halo --rotulo), no SVG por cima do mapa
+  CENA.alfinetes.forEach(function (A) {
+    A.g = svgEl("g", { opacity: "0" }, ov);
+    A.sob = svgEl("path", { "class": "mastro-sob" }, A.g); A.sobre = svgEl("path", { "class": "mastro" }, A.g);
+  });
   // o círculo da dúvida do Shaler (tracejado: área aproximada, não ponto)
   var CIRC = (function () { var g = svgEl("g", { opacity: "0" }, ov);
     return { g: g, sob: svgEl("circle", { "class": "circ-sob", r: 40 }, g), sobre: svgEl("circle", { "class": "circ", r: 40 }, g) }; })();
@@ -706,6 +764,24 @@ of Jurists, 1964</div>
       Lh.sob.setAttribute("d", dd); Lh.sobre.setAttribute("d", dd); Lh.g.setAttribute("opacity", vg.toFixed(3));
     });
 
+    // arte-5: os alfinetes. O pé do mastro no topo do anel (34 px) ou do círculo; a bandeira do Panamá no topo do mastro,
+    // voando para a esquerda (à direita ficam as etiquetas); a dos EUA logo abaixo, a 10 px, em 'both' (49,72)
+    CENA.alfinetes.forEach(function (A) {
+      var pp = map.project(PTS[A.ponto]);
+      var pe = A.circulo ? CENA.shaler.raio_m / mpp(z, PTS.shaler[1]) + 4 : 34;
+      var vin = eo(seg(t, A.entra, 0.3)), vo = 1 - eio(seg(t, A.sai, 0.3)), v = vin * vo, sobe = (1 - vin) * 24;
+      var d = "M " + pp.x.toFixed(2) + " " + (pp.y - pe + sobe).toFixed(2) + " L " + pp.x.toFixed(2) + " " + (pp.y - A.topo + sobe).toFixed(2);
+      A.sob.setAttribute("d", d); A.sobre.setAttribute("d", d); A.g.setAttribute("opacity", v.toFixed(3));
+      var bp = E(A.id + "PA");
+      if (bp) { vis(bp, v); bp.style.transform = "translate(" + (pp.x - 6 - 144).toFixed(2) + "px," + (pp.y - A.topo + sobe).toFixed(2) + "px)"; }
+      var bu = E(A.id + "US");
+      if (bu && A.us != null) {
+        var vu = eo(seg(t, A.us, 0.3)), su = (1 - vu) * 24;
+        vis(bu, vu * vo);
+        bu.style.transform = "translate(" + (pp.x - 6 - 183).toFixed(2) + "px," + (pp.y - A.topo + 96 + 10 + sobe + su).toFixed(2) + "px)";
+      }
+    });
+
     // o círculo da dúvida do Shaler (raio de 55 m na escala do quadro)
     var S = CENA.shaler, ps = map.project(PTS.shaler), rp = S.raio_m / mpp(z, PTS.shaler[1]);
     [CIRC.sob, CIRC.sobre].forEach(function (c) { c.setAttribute("cx", ps.x.toFixed(2)); c.setAttribute("cy", ps.y.toFixed(2)); c.setAttribute("r", rp.toFixed(2)); });
@@ -824,6 +900,13 @@ of Jurists, 1964</div>
   });
   var merc = function (lng, lat) { var s = Math.sin(lat * Math.PI / 180); return [lng, 0.5 * Math.log((1 + s) / (1 - s))]; };
   var unmercLat = function (y) { return (2 * Math.atan(Math.exp(y)) - Math.PI / 2) * 180 / Math.PI; };
+  // arte-5: rampa de aceleração constante nas duas pontas (a velocidade do giro não salta), linear no meio
+  function giroExtra(t) {
+    var G = CENA.giroExtra; if (!G) return 0;
+    var u = cl((t - G.t0) / (G.t1 - G.t0), 0, 1), a = G.rampa, f;
+    if (u < a) f = u * u / (2 * a); else if (u > 1 - a) f = (1 - a) - (1 - u) * (1 - u) / (2 * a); else f = u - a / 2;
+    return G.graus * f / (1 - a);
+  }
   function cameraAt(t) {
     var L = CENA.pernas[CENA.pernas.length - 1];
     for (var i = 0; i < CENA.pernas.length; i++) if (t < CENA.pernas[i].t1) { L = CENA.pernas[i]; break; }
@@ -834,7 +917,7 @@ of Jurists, 1964</div>
       var ma = merc(a.lng, a.lat), mb = merc(b.lng, b.lat);
       c = { center: [a.lng + (b.lng - a.lng) * u, unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u };
     }
-    return { center: c.center, zoom: c.zoom, bearing: CENA.giro[0] + (CENA.giro[1] - CENA.giro[0]) * t / DUR, pitch: 0 };
+    return { center: c.center, zoom: c.zoom, bearing: CENA.giro[0] + (CENA.giro[1] - CENA.giro[0]) * t / DUR + giroExtra(t), pitch: 0 };
   }
   window.__cameraAt = cameraAt;
 

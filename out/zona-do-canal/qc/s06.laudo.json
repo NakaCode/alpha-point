@@ -1,0 +1,122 @@
+{
+  "cena": "s06",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (\"Quero reduzir para 56px\"): a reprovação medida é só '[tamanho] [credito] \"Source: U.S. Census Bureau, 1960\" 56<72', e o sha1 do HTML (e0f51477…) bate com o de out/zona-do-canal/qc/_excecoes-portao.json. O crédito do mapa e o da fonte leem var(--fs-credito) (56 px), sem px fixo, e o papel está declarado (data-qc-papel=\"credito\"; data-qc-credito=\"mapa\" só na linha da MapTiler)",
+        "portao-margens lido (não remedido): veredito 0 com o sha1 de hoje e o marca c647bf6c… igual ao sha1sum de marca/tokens.css, 24 itens medidos em 209 amostras (passo 0,1 s), sem itens e sem avisos; portao-mapa rodape e til: veredito 0 (146 tiles 2xx, com a pré-carga); qc-cena: 5 de 5 portões com linha da pré-carga, só 'tamanho' vermelho (a exceção acima), til-glifo indefinido coberto pelo portao-mapa til (0). Portões lidos com contagem; nenhum NÃO MEDIDO",
+        "observação: no recorte 4K de 12,5 s o cartão '7 OF 3,113' tem 128 px (número) e 84 px (legenda), dentro do alvo e do teto; a hierarquia é número > legenda > campo, com a pílula do lugar (Paraíso ou Rainbow City) do lado esquerdo do mesmo quadro"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "conferido nos quadros: '7 OF 3,113' (Paraíso) e '3 OF 3,688' (Rainbow City) batem com a fala ('seven… three thousand one hundred thirteen', 'three… three thousand six hundred eighty-eight') e com o textos-tela.json; no recorte 4K de 12,5 s contei 7 figuras acesas e no quadro de 19,0 s, 3; a legenda 'born in the U.S., 1960', o crédito 'Source: U.S. Census Bureau, 1960' e 'Canal Zone (1947 map)' são iguais ao textos-tela; sem '10 MILES WIDE' nem km (nao_vai_para_tela); 'Paraíso' com acento, como o roteiro",
+        "observação (não é reprova): não conferi a olho que o campo tem 3.113 e 3.688 figuras (só as acesas se contam num quadro); a contagem exata vem do código do cartão. A posição de Paraíso (centróide de 1947), de Rainbow City (ponto de 'Silver City', laudo de fatos lote B, resposta 4) e de Balboa (Estadio de Balboa) vem das fontes geo declaradas, e não as medi contra outra base"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 8,
+      "problemas": [
+        "tempos conferidos contra words.json (cena = master − 25,8 s): 'Balboa' 0,00 → pílula e anel em 0,0; 'a band' 2,37 → contorno e legenda em 2,37 e 2,4; 'Caribbean' 6,57 → pílula em 6,55; 'Pacific' 7,30 → 7,25; 'Paraíso' 9,49 → 9,49; 'seven' 10,33 → cartão em 10,3; 'Rainbow' 16,57 → 16,57; 'three,' 17,54 → cartão em 17,533. Nenhum elemento atrasado por ritmo além do declarado no cabeçalho",
+        "observação: a viagem até Rainbow City ficou em 1,6 s (a regência pedia 2,5 s; desvio declarado no cabeçalho, para a pílula não entrar fora da margem), e a pílula entra em 16,57 com a câmera ainda nos últimos ~0,3 s da viagem (medido: o enquadramento só assenta em ~17,4 s); a pílula 'Pacific Ocean' fica até 9,25 s, 0,7 s dentro da viagem de 'Up the canal' (ela precisa de 2,0 s no ar, identidade §4.3)"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "observação: MAPA sobre satélite com geometria real é o modelo certo (lugar, território e números do lugar); um cartão de pictograma sobre o mapa serve ao dado sem trocar de modelo"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "observação: o cartão diz '7 OF 3,113 / born in the U.S., 1960' e não nomeia 'residents'; quem completa a frase é a pílula 'Paraíso' (no ar até 15,3 s) e a fala. A leitura só do texto do quadro de 10,6 s é 'Paraíso: 7 de 3.113 nascidos nos EUA', e responde em vez de perguntar. As 3 figuras acesas de 19,0 s viram pontos de 1 a 2 px em 1080p; o que carrega a mensagem é o número, que é o que a marca pede (identidade §5, o pictograma)"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "poluicao",
+      "nota": 7,
+      "problemas": [
+        "o quadro de 10,6 s (b3) fica no teto de 6 elementos simultâneos da identidade §4.2: contorno da Zona, eixo, anel de Balboa, anel e pílula de Paraíso e o cartão com o campo (a legenda do contorno e o crédito não contam). Encosta no teto, o pior extremo da faixa de 4 a 5: sinalizo, não reprovo. Os textos de leitura vivos são no máximo 2 (cartão e legenda de data)",
+        "o cartão é translúcido (--rotulo a 88 %) e a base do mapa aparece de leve através do campo de figuras (um fantasma do contorno em 19,0 s, no meio do campo): não atrapalha a leitura"
+      ],
+      "correcoes": [
+        "se a Arte mexer na cena por outro motivo: tirar o anel de Balboa de 10,4 s em diante (a pílula já saiu em 8,567) leva o b3 a 5 elementos; não é pedido de reprova"
+      ]
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "medido no clipe 4K (casamento de pontos entre quadros a cada 0,5 s, com as áreas do cartão e do crédito mascaradas): o mapa nunca para. Perna 1 (0–8,6 s): aproximação de ~+1 %/s (≈ +9 % de escala) e giro de ~0,16°/s; perna 3 (10,4–15,3 s): ~+1,7 %/s; viagens de 1,8 s (8,6–10,4) e 1,6 s (15,3–16,9), ease cúbico, sem degrau (os passos de 0,5 s vão de 34 a 214 px e voltam a ~2 px); perna 5: ~+1 %/s. Não há zoom em degraus nem salto; o giro é de ~3° em 20 s, e a roupa não reprova a falta de órbita quando o território e o cartão carregam o quadro (a decisão do Lucas sobre norte/órbita segue pendente)",
+        "observação: dos 3,0 s aos 6,5 s o quadro só tem a aproximação lenta (o contorno já está cheio e o próximo elemento é 'Caribbean Sea' em 6,55): não chega a 'dois beats com o resto congelado', porque a câmera anda o tempo todo"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 8,
+      "problemas": [
+        "o crédito do mapa '© MapTiler © OpenStreetMap contributors' está em todo quadro olhado (0,3 a 19,0 s), a 56 px, na faixa de crédito, e cobre o OSM do eixo e dos pontos; 'Source: U.S. Census Bureau, 1960' entra com o dado (10,3 s) e sem a marca de mapa; o contorno de 1947 (AMS, domínio público) leva a data na legenda e nenhum crédito, como a regra manda",
+        "observação: o 'Source: U.S. Census Bureau, 1960' continua no ar de 15,3 a 17,5 s sem nenhum cartão na tela (o de Paraíso saiu e o de Rainbow City ainda não entrou); o textos-tela manda 'até o fim', então fica, e não é crédito-fantasma de mídia"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 8,
+      "problemas": [
+        "observação: laranja = a Zona (preenchimento e anéis) e o dado que é dela (as figuras acesas); o resto é --tinta e --rotulo; água escura da identidade §6, satélite em tratamento C sem véu, no máximo 3 matizes fora a base"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 8,
+      "problemas": [
+        "observação: não há footage. Plano de mapa em 5 pernas, nenhuma passa de 8,6 s sem troca de leitura; a perna 3 (4,9 s) tem o cartão e a aproximação de ~+1,7 %/s, abaixo do teto de 6 s do §4.3"
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [
+        "observação para a Sala (não é achado desta cena): a s06 abre com o anel e a pílula de Balboa, como o fecho da s01, mas com a Zona inteira no quadro (degrau novo); a regência descreve a s08 (ainda sem laudo) como 'o mesmo quadro da s02, só o anel': a repetição, se houver, é da s08"
+      ],
+      "correcoes": []
+    }
+  ]
+}
