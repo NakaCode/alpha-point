@@ -1,19 +1,17 @@
 {
   "cena": "s18",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 5,
+      "nota": 8,
       "problemas": [
-        "A foto (NARA 202800733, 5000×4249) vai com a borda branca do scan à mostra. No arquivo há 275 px de faixa clara à esquerda e 237 à direita; a cena a põe a 0,768× com left 0, e o quadro mostra uma faixa branca de 209 px à esquerda e 180 px à direita em t=0,05 s (5,4 % e 4,7 % da largura), 184/154 em 0,8 s, 125/95 em 2,5 s e ainda 43/12 em 4,9 s (medido por coluna de pixel nos quadros 4K qc-s18@0.05-abre, @0.8-q, @2.5-q e @4.9-q; visto na folha qc-s18@folha-A.png). O REGISTRO em tela cheia não enche a tela por mais da metade da cena, e o espectador lê a borda do scan como moldura branca torta. Lei: identidade §6 ('a borda do cartão ou da página que a origem escaneou junto sai no enquadramento') e §5 (REGISTRO: a foto em tela cheia, sem moldura).",
-        "Margens, faixa do crédito e canto de 400×400: portao-margens veredito 0 (sha1 1376223c…, 51 amostras, 6 medidos) e sem crédito na cena; não remedido.",
-        "Observação (sem reprova): o rótulo de lugar e o '1914' (128 px) na linha de topo, com o aviso abaixo, ocupam bem a faixa de cima; nada colide."
+        "CONSERTADO (1ª rodada: espaco 5, borda branca do scan à mostra). Medido por coluna de pixel nos quadros 4K de 0,05, 1,7, 3,3 e 4,9 s (linhas y 400–1700): nenhuma coluna a partir de cada borda passa de 200 de luminância; as colunas da borda valem 50–63 (foto escura), contra as faixas de 209/180 px (0,05 s) e 43/12 px (4,9 s) da rodada anterior. Folha de quadros `out/zona-do-canal/_tmp/q2-L26/folha-s18.png`: o miolo do scan enche o quadro do primeiro ao último instante, sem moldura branca. Diff do HTML contra o commit anterior: a foto passou a 0,86× (4300 × 3654), left −246,4 / top −929,8 e o Ken Burns foi recalculado; nada mais mudou. Lei cumprida: identidade §6 (a borda escaneada sai do enquadramento).",
+        "Margens, faixa do crédito e canto de 400×400: portao-margens veredito 0 (sha1 95e3dc93… e marca c647bf6c… de hoje; 51 amostras, 6 medidos); a cena não tem crédito (foto NARA, domínio público). Não remedi. qc-cena ok:true no _portao.json, sem falhas.",
+        "Observação: o rótulo de lugar (4 palavras, nome próprio) e o '1914' (128 px) ocupam a linha de topo, com o aviso abaixo; nada colide e nada invade o canto de baixo à direita."
       ],
-      "correcoes": [
-        "Reenquadrar a foto SEM a borda do scan: usar só o miolo do arquivo (x 275→4763, 4488 px; fora dos 342 px de cima e dos 253 de baixo), escala 3840 ÷ 4488 = 0,856× (continua sem upscale), com a janela de 2160 px dentro do miolo e o prédio no meio do quadro, como hoje. Recalcular o Ken Burns rumo ao prédio (produto máximo 0,856 × 1,12 = 0,96 ≤ 1,4; deslocamento até 80 px) e provar, por coluna de pixel em t=0, 2,5 e 5,0 s, que nenhuma faixa clara de scan aparece nas bordas. Não mexer em rótulos, tempos nem aviso: estão certos."
-      ]
+      "correcoes": []
     },
     {
       "lente": "factual",
@@ -59,7 +57,7 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Ken Burns com direção (rumo ao prédio, subindo a escadaria) de 1,00 a 1,10 em 5,0 s, linear, até 80 px; rótulos em 300 ms (opacidade + 24 px) e o '1914' com escala 1,04 → 1,00 na palavra. Nada congela. Sem mesa nem pouso: a regra da mão que arruma não tem objeto aqui."
+        "Ken Burns com direção (rumo ao prédio, subindo a escadaria), recalculado na 0,86× (produto escala de encher × Ken Burns = 0,96 ≤ 1,4); na folha de quadros, o prédio cresce do quadro de 0,05 s para o de 4,9 s sem descobrir a borda do arquivo. Rótulos em 300 ms, '1914' na palavra. Nada congela. Sem mesa nem pouso: a regra da mão que arruma não tem objeto aqui."
       ],
       "correcoes": []
     },

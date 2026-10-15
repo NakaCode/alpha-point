@@ -1,20 +1,18 @@
 {
   "cena": "s07",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 6,
+      "nota": 8,
       "problemas": [
-        "REPROVA, palavra cortada pela borda da folha (roupa §4, 'folha de documento: palavra cortada reprova, pelo rasgo, pela fita, pela moldura ou pela borda do quadro'; identidade §5, 'Nenhuma palavra cortada'). Quadro t=8,6 s e recorte 4K `out/zona-do-canal/_tmp/qc-L1/qc-s07@8.6-recorte-baixo-folha.png` (original x 1900–3520, y 1300–1500): a borda de baixo do recorte da página 57-33 passa pelo meio da linha 'Widowed' do bloco MARITAL STATUS (metade direita da tabela) e deixa a metade de cima das letras e dos números (120, 52…) como farpas escuras junto à borda. O cabeçalho da cena diz que o corte cai no branco entre 'Born in other country' e 'SCHOOL ENROLLMENT'; isso vale para a metade esquerda (a linha 'Born in other country' está inteira, com branco embaixo), não para a direita. O recorte é fixo (a folha não muda de recorte), então o defeito está em todos os quadros. Nenhum portão mede isso (roupa §3: o portao-margens não lê a palavra da página escaneada).",
-        "Crédito: conferido pelo probe-elemento em t=8,0 s (#cred: caixa de 67 px de altura ÷ line-height 1,2 = 55,8 px; x 200 → 1720; y 2079, abaixo de 1880; uma linha), tamanho vindo de var(--fs-credito) (56 px), data-qc-papel=\"credito\" e sem data-qc-credito. Exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 ('Quero reduzir para 56px'), em out/zona-do-canal/qc/_excecoes-portao.json com o sha1 79e93f6f… igual ao do HTML de hoje; essa reprovação (a única do qc-tamanho na cena, _portao.json falhas ['tamanho']) sai de gatesDuros. Contraste do crédito 8,71:1 (portao-mapa rodape v5, piso 3:1).",
-        "Portão lido, sem remedir: portao-margens v2 veredito 0 (89 amostras, 14 elementos, sha1 79e93f6f… e marca c647bf6c… de hoje), avisos vazios. A folga do still de 15 px (conta da Arte, no pior quadro) é conhecida e passa; não remedi.",
-        "Sinalização: o recorte é uma tira larga (3.024 × 864 antes da câmera) e o terço de baixo do quadro fica sem nada até a tira ampliada entrar em 6,76 s (6,7 s)."
+        "CONSERTADO (1ª rodada: espaco 6, palavra cortada). Quadro 4K de 8,6 s e recorte 4K `out/zona-do-canal/_tmp/q2-L26/q2-s07@8.6-recorte-borda-baixo.png` (x 1900–3520, y 1280–1520): a borda de baixo da página 57-33 agora cai no branco logo depois de 'Separated' (metade direita: Single, Married, Percent married, Separated e os seis números, inteiros) e depois de 'Born in other country' (metade esquerda, visto na folha de quadros de 0,3 a 8,6 s); 'Widowed' não aparece nem como farpa. Diff do HTML contra o commit anterior (1f3e500): só a altura da página (864 → 854 px) e o comentário; nada mais se moveu. Roupa §4 (folha de documento: palavra cortada reprova) e identidade §5 cumpridas. O recorte é fixo, por isso vale para todos os quadros.",
+        "Crédito: probe-elemento em t=8,0 s (#cred: x 200→1720, y 2079, caixa de 67 px ÷ line-height 1,2 = 55,8 px, uma linha, abaixo de y 1880), tamanho de var(--fs-credito), data-qc-papel=\"credito\", sem data-qc-credito. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 ('Quero reduzir para 56px'); _excecoes-portao.json com sha1 1625c8c7… igual ao do HTML de hoje; é a única reprovação do portão (_portao.json falhas ['tamanho']), por isso sai de gatesDuros. Contraste do crédito 8,71:1 (portao-mapa rodape v5, piso 3:1).",
+        "Portões lidos, sem remedir: portao-margens v2 veredito 0 (sha1 1625c8c7… e marca c647bf6c… = tokens.css de hoje; 89 amostras, 14 medidos), avisos vazios; portao-mapa til 0 (3 textos).",
+        "Sinalização: a folha é uma tira larga (3.024 × 854) e o terço de baixo do quadro fica sem nada por 6,7 s, até a tira ampliada entrar em 6,763 s (folha de quadros de 0,3 a 7,5 s)."
       ],
-      "correcoes": [
-        "Editor-de-arte (Fable): refazer o corte de baixo da página 57-33 para ele cair no branco em toda a largura. Duas saídas: subir a borda para logo acima de 'Widowed' (entre 'Separated' e 'Widowed'; confira pela projeção de tinta nas duas metades, e a linha 'Born in other country' da esquerda tem de ficar inteira), ou descê-la até depois de 'Divorced' (que o cabeçalho prevê) e antes do cabeçalho 'SCHOOL ENROLLMENT' (a ~y 786 do arquivo, a medir). Tirar o quadro 4K do recorte e olhar a borda inteira antes de entregar. Como o HTML muda, a Sala regrava o sha1 da exceção do crédito (identidade §4.1) depois de conferir que a reprovação do qc-tamanho continua só o crédito, e roda de novo o qc-cena e o portao-margens."
-      ]
+      "correcoes": []
     },
     {
       "lente": "factual",
@@ -28,12 +26,10 @@
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "Conferido contra o words.json (tempo local = master − 46,567): 'And' 46,58 s (0,01 s; a página pousa), grifo em 'where' 53,73 (7,16 s; entra em 7,133), tira ampliada em 'counted' 53,33 (6,763 s). A câmera para em 6,46 s (medido: a página fica em 464/517 de 6,5 a 8,74 s), 0,7 s antes do grifo, e o repouso final de 8,45 a 8,74 s é idêntico (página, rótulo, tira).",
-        "Sinalização: a tira entra em 6,763 s e não em 7,133 s, que é o t0 do textos-tela. O cabeçalho declara o desvio pela regra de 2,0 s de bloco de texto (identidade §4.3), mas não cita tarefa da Sala, e a precedência diz que no texto vale o textos-tela. Não reprovo: entra no verbo 'counted', antes do grifo, e o ganho é real (2,0 s no ar em vez de 1,63 s)."
+        "Conferido contra o words.json (tempo local = master − 46,567): 'And' 0,01 s (a página pousa), tira ampliada em 'counted' 6,76 s, grifo em 'where' 7,13 s. A câmera para em 6,46 s, 0,7 s antes do grifo; entre 8,5 e 8,76 s a diferença de pixels é 0,04 de média (só a deriva).",
+        "A tira em 6,763 s e não em 7,133 s do textos-tela é desvio declarado no cabeçalho e RATIFICADO pela Sala (sala-plano-pos-qc.md, decisão 5: 's07: a tira em 6,763'); nada a pedir à Arte."
       ],
-      "correcoes": [
-        "Sala: ratificar o desvio (e mudar o t0 da tira no textos-tela para 6,763) ou mandar a Arte voltar a 7,133. Não é conserto da Arte até a Sala decidir."
-      ]
+      "correcoes": []
     },
     {
       "lente": "abordagem",

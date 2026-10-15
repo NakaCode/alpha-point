@@ -1,33 +1,35 @@
 {
   "cena": "s50",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "portao-margens v2 veredito 0 (sha1 7b7aa695… e marca c647bf6c… iguais aos de hoje; 113 amostras, 33 medidos, 8 objetos em passagem, 0 itens, 0 avisos), já com a câmera andando; til sem achados (7 textos); rodape 8,81:1. Não remedido.",
-        "Exceção do Lucas: qc-tamanho, crédito a 56 px, 'Quero reduzir para 56px', 07/10/2026 11:3x (qc/_excecoes-portao.json, sha1 7b7aa695… = o de hoje, reconferida pela Sala em 15/10 11:5x: só '#cred1 Source: U.S. Department of State, Department…' a 56<72, com data-qc-papel=\"credito\"). O crédito lê var(--fs-credito) = 56 px sem override (HTML, .cred). Outro portão da cena: nenhum reprovando (qc-cena: só 'tamanho').",
-        "Hierarquia e contagem: data (1), foto com o rótulo e o aviso (1), folha (1) e tira (1) = 4 elementos; folha e tira = 2 blocos de leitura (teto 6 e 3). Folha: Courier Prime 86 px, nenhuma palavra cortada, o rasgo a ≥ 240 px da última linha (quadros 6,0 a 11,1 s). O aviso 'Photo from 1953' (84 px, pílula, data-qc-aviso-ano) e o rótulo 'Balboa High School' (128 px) lado a lado, a tira à direita, sem encostar."
+        "Exceção do Lucas: qc-tamanho, crédito a 56 px, 'Quero reduzir para 56px', 07/10/2026 11:3x (qc/_excecoes-portao.json, sha1 do HTML 64e270f0b530 = o de hoje; a reprovação é só 'Source: U.S. Department of State, Department…' 56<72, com data-qc-papel=credito). Medido por probe-elemento: caixa de duas linhas de 134 px ÷ 1,2 = 56 px, x 200, y 2012–2146, var(--fs-credito), sem data-qc-credito.",
+        "portao-margens v2 (sha1 64e270f0, marca c647bf6c = tokens de hoje): veredito 0, 113 amostras, 33 medidos, 8 objetos em passagem, 0 itens, 0 avisos; não remedi no olho.",
+        "Sem o still de sangria nem a viagem, o defeito do feltro/still com borda dura da 1ª rodada acabou: nos 15 quadros 4K (0,1–11,1 s) o maior salto de luma entre colunas ou linhas vizinhas nas 200 px de cada borda é 0,8–2,0 (sem degrau), e a luma da borda esquerda fica em 30–34 em todos os instantes (era 23 → 37 em 4,35 s). Composição: foto à esquerda, folha à direita, tira embaixo; sem colisão entre rótulo, aviso, folha e tira."
       ],
       "correcoes": []
     },
     {
       "lente": "factual",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "Conferido contra o textos-tela s50 e o laudo de fatos (TB123–TB130): 'Balboa High School' = lugar_na_origem 'Balboa High School and Canal Zone Junior College, Balboa, Canal Zone.' (sha256 2ca4b62c…, veredito aprovado da s50 por reuso declarado da s47), não mais específico; 'Photo from 1953' = data_na_origem 'October 5, 1953', aviso_de_ano true, presente do 1º ao último quadro da foto assentada; 'JAN. 7, 1964' na mesa, fora da foto e longe do aviso (regra de série), nunca sobre a foto de 1953.",
-        "A folha recriada leva o texto literal do Bulletin (TB127): 'On January 7, 1964, students at Balboa High School hoisted a flag on their own in defiance of the Governor's orders. […]' com o cabeçalho 'DEPARTMENT OF STATE BULLETIN · FEB. 3, 1964 · P. 152' e o grifo em 'in defiance of the Governor's orders'; o '[…]' no lugar da 2ª frase está declarado. Sem brasão, selo nem timbre (midia.md §7.1 e §7.6)."
+        "Rótulo 'Balboa High School' e 'JAN. 7, 1964' (na mesa, fora da foto, separado do aviso) conferem com textos-tela e com a origem (lugar_na_origem 'Balboa High School and Canal Zone Junior College'); 'Photo from 1953' = October 5, 1953 (aviso_de_ano true). Foto aprovada para a s50 (sha256 2ca4b62c… = o do veredito). Cabeçalho 'DEPARTMENT OF STATE BULLETIN · FEB. 3, 1964 · P. 152' e o grifo 'in defiance of the Governor's orders' batem com textos-tela.",
+        "SINALIZAÇÃO (não reprova): a folha recriada termina em 'orders. […]', e o textos-tela (folha_texto, B053) traz também a 2ª frase ('Two days later Panamanian students attempted to display their flag, and disorders ensued.'). A elisão com '[…]' não muda o sentido e vem declarada no cabeçalho, mas cita só a prática de Los Angeles (s24 e s38), não uma decisão da Sala (a ratificação dos '[…]' no plano da Sala cobre s37 e s38, não a s50)."
       ],
-      "correcoes": []
+      "correcoes": [
+        "A Sala ratifica a elisão '[…]' da s50 (como fez com s37 e s38) ou o redator-de-tela passa o folha_texto a terminar em 'orders. […]'. Sem mudança na cena."
+      ]
     },
     {
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "Conferido contra words.json: 'JAN. 7, 1964' em 0,3 s ('January' 0,2); a folha pousa em 5,5 s ('flag' 5,3), assentada 0,3 s antes de 'in' (6,6), como o cabeçalho declara; o grifo corre palavra a palavra com a voz (quadros 6,8 s: 'in'; 7,6 s: 'in defiance of the'; 8,7 s: tudo); o crédito entra com a folha. O rótulo e o aviso do ano entram em 0,7 s (convenção da marca: 150 ms depois do assentamento), 2,6 s antes de a voz dizer 'Balboa' (3,3 s); não reprova.",
-        "Observação: a câmera continua andando depois de 'Balboa' (ver motion): é o elemento errado no tempo certo, e a correção de motion também a conserta. Nenhum elemento foi atrasado por ritmo neste laudo."
+        "Medido (probe-elemento e words.json −605,267): 'JAN. 7, 1964' em 0,3 ('January' 0,20); rótulo e aviso em 0,7; o grifo corre palavra a palavra com a voz: nos quadros 7,0 s ('in' aceso, 'defiance' a meio; 'defiance' 6,90), 7,4 ('in defiance' aceso, 'of' 7,42 ainda não) e 8,7 (tudo aceso até 'orders', 8,10–8,53). A tira entra em 6,603 ('in').",
+        "Desvio declarado e mantido (já visto na 1ª rodada, wordlock 8): a folha e o crédito pousam em 5,5 ('flag' 5,30), 1,1 s antes de 'in' (6,60; textos-tela e regência: 6,6), para estarem assentados 0,3 s antes do grifo (identidade §4.4, 'o texto já na tela fica parado enquanto se lê'). Medi: a folha termina de assentar em ~6,3 s (y 245 → 279 → 275, só com a deriva) e o grifo começa em 6,603. O texto da folha aparece ~0,5–1,1 s antes de a voz chegar à citação; é o preço de cumprir a regra do repouso."
       ],
       "correcoes": []
     },
@@ -35,7 +37,7 @@
       "lente": "abordagem",
       "nota": 8,
       "problemas": [
-        "Modo certo: foto impressa sobre a mesa (5.000 px a 0,30×, nunca ampliada) mais a folha do Bulletin recriada, que é o que prova a desobediência ('o que prova é a frase impressa, não a imagem', conceito). A foto do dia (os estudantes e a bandeira) falta: as duas do Departamento de Estado (NARA série 1254407) esperam o Lucas (pergunta 9), e o fallback aprovado é a fachada de 1953 com o aviso."
+        "Foto impressa na mesa + documento recriado ao lado, com o grifo: é o modelo certo para 'evento nomeado + frase do governo'. A foto do dia (estudantes e bandeira) não vem de fonte livre: decisão do Lucas de 15/10 ('Não, fica a fachada de 1953')."
       ],
       "correcoes": []
     },
@@ -43,7 +45,7 @@
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "Em 2 s se entende: a escola (com o nome e o aviso de 1953), a data do fato na mesa e, quando a voz chega à frase do governo, a página com o trecho grifado e a tira ampliada. A folha em Courier 86 px e a tira de 2 linhas se leem sem som."
+        "Em 2 s: uma escola, a data do fato, 'Photo from 1953' (avisa que não é a foto do dia). Depois, a folha com a citação grifada e a tira ampliada. A tira repete o trecho grifado da folha (identidade §5, trecho ampliado) e ajuda a leitura."
       ],
       "correcoes": []
     },
@@ -51,42 +53,34 @@
       "lente": "poluicao",
       "nota": 8,
       "problemas": [
-        "Redundância autorizada pelo textos-tela (trecho_ampliado): a tira repete 'in defiance of the Governor's orders', que já está grifado na folha; é a saída que a identidade §5 prevê para folha que não cabe inteira, aqui os dois juntos. Três pequenos textos em volta da foto (data, lugar e aviso do ano) podem se confundir na primeira leitura, mas a regra de série os separa (a data na mesa, o aviso ao lado do lugar). Observação.",
-        "Lastro: 'JAN. 7, 1964' é convocado por 'January seventh'; 'Balboa High School' por 'Balboa High School' (3,3–4,3 s); a folha e a tira, pela frase do governo; 'Photo from 1953' é aviso obrigatório (§6). Nada órfão. Sem tofu nem entidade (til: 0)."
+        "Elementos: foto (1) + 'JAN. 7, 1964' (1) + folha (1) + tira (1) = 4 (alvo 4–5, teto 6); 2 blocos de leitura (<= 3). Lastro: 'Balboa High School' ← 3,30–4,2; 'JAN. 7, 1964' ← 'January seventh'; folha e tira ← 'in defiance of the Governor's orders' e 'State Department bulletin'; aviso e crédito são exceções de marca. Sem entidade HTML nem tofu."
       ],
       "correcoes": []
     },
     {
       "lente": "motion",
-      "nota": 5,
+      "nota": 7,
       "problemas": [
-        "REPROVA, ofício lente 7 (motion), com a identidade §4.4 e a roupa §4 em três pontos, todos do mesmo gesto de câmera:",
-        "(1) Still com sangria: o HTML usa mesa-zona-do-canal-sangria1400.png (6640×4960) com '#still { --mesa-satelite-margem: 1400px }' (linhas 128 e 192). A identidade §4.4 ('A mão que arruma') diz que B e C 'não entraram: nada de deslize pela borda, antecipação de câmera, viagem de câmera pela mesa, mergulho na foto ou na folha, nem still de satélite com sangria', e que sem viagem de câmera 'o still com 56 px de sangria basta'; a roupa §4 (motion) lista 'viagem de câmera pela mesa … still com sangria' como linguagens B e C que reprovam. O resto do vídeo usa o still de 56 px (só a s50 e a s59 ficaram na sangria); o próprio relato da Arte (arte-4) diz que a s50 ficou assim porque a câmera mostraria a borda.",
-        "(2) Viagem de câmera pela mesa: o centro da câmera vai de 1920/1080 a 1700/1010 entre 0,9 e 4,6 s e volta em 4,65–5,35 s. Medido pelo probe-elemento: translação de 1,2 px em 0,9 s, 187 px em 3,3 s, 222 px em 3,95 s, 227 px em 4,35 s e 116 px em 5,0 s, 6 px em 5,35 s. A mesa inteira desliza ~227 px (5,9 % da largura) e volta em 0,7 s; a marca só dá à foto na mesa 'push-in e deriva' do RIG (§4.4); os 80 px são o teto do Ken Burns da foto em tela cheia, e a s54 usa 50 px na mesa (centro de 1080 a 1030).",
-        "(3) Texto andando enquanto a voz o lê: o rótulo 'Balboa High School' (e o aviso 'Photo from 1953') está na tela desde 0,7 s, a voz o diz em 3,3–4,3 s e a câmera só para em ~4,35 s: o rótulo vai de x 505 (3,3 s) a x 541 (4,35 s), 36 px dentro da leitura (probe-elemento). A roupa §4 (motion) e a identidade §4.4 mandam o movimento que leva texto já na tela terminar 0,25 s antes da primeira palavra que o lê (aqui, antes de 3,05 s).",
-        "Consequência visível, medida: a 4,35 s o feltro (#mesa, 160 px além do #cam) não acompanha a translação de 227 px e deixa uma faixa de 44 px à esquerda do quadro sem textura, com borda dura (salto de luma de 23 para 37 na coluna x = 44; recorte 4K @4,35 s). Dura de ~3,2 s a ~4,85 s (translação acima de 160 px; estimado entre os instantes medidos). A Arte mediu só o still, que a sangria de 1400 px cobre, e não o feltro; com o still de 56 px a mesma câmera descobre também o still (faltam 67,3 px em 4,35 s, conta do relato da Arte). Nenhum portão mede isso.",
-        "A pergunta da Sala: a câmera TEM de mudar. Só mudar o still para 56 px reprova pelo item (2) e (3) e mostra a borda; só manter a sangria reprova pelo item (1)."
+        "A viagem de câmera de 220 px e o still de 1400 px SAÍRAM (decisão 10 da Sala; opção (a) do laudo anterior). Medido por probe-elemento em 12 instantes (0,5–11,16 s): o #cam é só o push-in do RIG (1,0012 → 1,0262) com deriva de até 6 px; 'Balboa High School' (a voz diz de 3,30 a ~4,2) fica em x 322 → 319 px durante a leitura (3 px em 1 s, só deriva): o 'texto parado enquanto se lê' está cumprido. Pouso da foto (0–0,55 s) e da folha (5,5–6,3 s) com assentamento uma vez, grifo e luz com atraso, repouso nos últimos 250 ms (câmera idêntica em 11,0 e 11,16 s).",
+        "O que a Sala pediu que eu julgasse, a opção (a): SEGURA. O pior trecho é 0,9–5,5 s (4,6 s): só push-in (~1,5 %) e deriva; nada novo entra. Está abaixo do teto de 6 s da marca (identidade §4.3) e a foto é o conteúdo que a voz descreve ('students at Balboa High School hoisted the American flag'), não um campo vazio. É sinalização: 'Nada congela' fica cumprido no piso (movimento do RIG). Se o Lucas achar na linha do tempo que a mesa parada incomoda (o 'espaço esperando a voz' que ele marcou em s15, s18, s31 e s35), a saída é antecipar a folha, e isso muda textos-tela e regência."
       ],
       "correcoes": [
-        "Tire a viagem de câmera: o centro fica em 1920/1080 o tempo todo e a cena anda só com o push-in e a deriva do RIG (o resto da coreografia, a data, a foto, a folha e o grifo, não muda). É o que pede menos mexida, e some junto o pan de volta de 4,65 a 5,35 s.",
-        "Se a Arte quiser manter o gesto 'rumo à entrada': no máximo ~50 px (como a s54, de 1080 a 1030 em y, que já está no vídeo), terminando antes de 3,05 s ('Balboa' em 3,3 s), e sem passar de 80 px (o teto do Ken Burns, usado como referência).",
-        "Nos dois casos: volte ao still de 56 px (mesa-zona-do-canal.png), sem o override '--mesa-satelite-margem: 1400px' e sem a sangria1400. Com pan ≤ 80 px a folga do still fica em ~25 px (a conta da Arte: folga = ss × (meio + 56 − 0,6 × |translação|) − meio) e o feltro de 160 px cobre a borda.",
-        "Depois da mudança: portao-margens e qc-cena de novo, e a Sala regrava a exceção do crédito a 56 px com o sha1 novo (a reprovação continua sendo só o crédito)."
+        "Opcional, da Sala: se o Lucas apontar os 4,6 s, antecipar o pouso da folha (~3,3 s) com o grifo mantido em 6,603. Muda regência e textos-tela, não é conserto da Arte sozinha."
       ]
     },
     {
       "lente": "fonte",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "Foto: obra do governo federal (NARA RG 185, 202800567, sha256 2ca4b62c…, veredito aprovado da s50, reuso declarado da s47), sem crédito de mídia, certo. A folha recriada leva 'Source: U.S. Department of State, Department of State Bulletin, Feb. 3, 1964' (duas linhas, 56 px, na faixa, com data-qc-papel), do 5,5 s ao fim, entrando com a folha: sem crédito-fantasma, sem crédito supérfluo. A página real (dsb1964-prova-p152.jpg) é prova e não vai à tela (pergunta 13); não achei nenhum '-prova' na cena."
+        "Foto da NARA, domínio público federal, sem crédito de mídia (certo). O crédito 'Source: U.S. Department of State, Department of State Bulletin, Feb. 3, 1964' é o da folha RECRIADA, entra com ela (5,5 s) e fica até o fim, em 2 linhas de 56 px, contraste 8,69:1 (portao-mapa rodape v5, 27 amostras). Folha sem brasão, selo ou timbre (midia §7.1 e §7.6). Exceção do crédito a 56 px acima."
       ],
       "correcoes": []
     },
     {
       "lente": "tema",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "Papéis de cor corretos (foto P&B, folha em --papel, pílulas --rotulo, grifo em --destaque a 35 % como o DOCUMENTO pede; 3 matizes no máximo, sem cor de lado). Sinalização: a faixa de 44 px sem feltro à esquerda a 4,35 s (ver motion) é mesa lisa parcial, que a §5 reprova ('Reprove a mesa lisa, sem o feltro e a luz'): some junto com o conserto da câmera."
+        "Mesa de satélite escura (still Landsat de 56 px, domínio público, sem crédito) com a luz como véu; a única cor é o grifo em --destaque a 35 %, uma cor = um significado. Família da s47 e da s54. evidencia.paleta não foi fornecida nesta rodada (cor dentro da cena não medida); julgado só por coerência interna e pelas irmãs."
       ],
       "correcoes": []
     },
@@ -94,7 +88,7 @@
       "lente": "cobertura",
       "nota": 7,
       "problemas": [
-        "O concreto central da frase é o hasteamento da bandeira americana pelos estudantes da Balboa High School; a escola tem registro real (a foto de 1953, com o aviso), a folha prova a frase do governo, mas os estudantes e a bandeira no mastro não aparecem na cena. A bandeira americana no mastro da escola aparece na cena irmã s52 (alto à esquerda da P-11), e a foto do dia espera o Lucas (pergunta 9, a regência dá 'FALTA' e o fallback aprovado). Sinaliza; não reprova, porque a bandeira não é desconhecida do público e o lugar nomeado tem foto."
+        "SINALIZAÇÃO (não reprova): o concreto central da frase, os estudantes e a bandeira sendo içada, não tem registro real nesta cena; o que aparece é a fachada da escola em 1953 (o lugar). A foto do dia (NARA série 1254407, duas do Departamento de Estado) foi recusada pelo Lucas em 15/10 ('Não, fica a fachada de 1953'). A bandeira no mastro da escola aparece na irmã s52 (foto de 9/1/1964), então a cobertura se cumpre na sequência."
       ],
       "correcoes": []
     },
@@ -102,26 +96,23 @@
       "lente": "cadencia",
       "nota": 7,
       "problemas": [
-        "Dois objetos (a escola e a frase do governo) = dois momentos, e a foto fica na mesa os 11,17 s com movimento com propósito (regime 'normal'). Entradas: data 0,3 s; lugar e aviso 0,7 s; folha 5,5 s; tira e grifo 6,6 s. De 0,7 a 5,5 s (4,8 s) nada novo entra e a metade direita da mesa está vazia: só a câmera anda, e é a viagem que a lente motion reprova. Está abaixo do teto de 6 s, mas sinaliza. Só existe um registro (o da s47).",
-        "Dependência do conserto de motion: sem a viagem, esses 4,8 s ficam só com push-in e deriva, e a lente passa a perguntar se a mesa meio vazia por ~5 s é o 'espaço vazio esperando a voz' do Lucas (identidade §5, marcações de 02–03/10: s15, s18, s31, s35). A resposta cabe à Sala e ao Lucas, não à Arte."
+        "Um registro só (a fachada de 1953) fica 11,17 s na mesa; o que muda é a camada: a folha pousa em 5,5 e a tira em 6,6. De 0,9 a 5,5 s é a mesma foto parada com push-in (abaixo do teto de 6 s). A fala atravessa dois objetos (o evento; a citação) e a cena tem dois (a foto; a folha), com a troca de camada em 'flag' (5,5), antes de 'in' (6,60). Sinalização: só existe esse registro (a saída é intercalar camada gráfica, não cortar)."
       ],
-      "correcoes": [
-        "Sem pedido de mudança além da câmera. Se a Sala quiser ocupar os 4,8 s: (a) aceitar a mesa só com push-in e deriva (4,8 s < teto de 6 s); (b) pousar a folha antes, perto de 'Balboa High School' (~3,3 s), o que muda o t0 da folha no textos-tela e na regência e a regra 'a folha assentada 0,3 s antes do grifo'; ou (c) o gesto de ≤ 50 px da s54, que não ocupa o vazio, só dá vida."
-      ]
+      "correcoes": []
     },
     {
       "lente": "autoria",
-      "nota": 9,
+      "nota": 10,
       "problemas": [
-        "A página do Bulletin é recriada, não fac-símile: Courier Prime da marca, sem brasão, selo, timbre nem assinatura, com o texto fiel e a fonte citada (identidade §5, 'Recriação, nunca fac-símile'; midia.md §7.1 e §7.6). O nome da instituição aparece só como texto no cabeçalho da folha."
+        "A folha do Bulletin é RECRIADA no visual do canal (Courier Prime, papel, fita), com o texto fiel e 'Source:'; sem brasão, selo, timbre, logo ou assinatura. A foto é real (NARA). Nada de capa desenhada."
       ],
       "correcoes": []
     },
     {
       "lente": "camadas",
-      "nota": 9,
+      "nota": 10,
       "problemas": [
-        "Lente de oportunidade (nota ≥ 7): material fora da cena: (a) a página real, dsb1964-prova-p152.jpg, em _media/documento/, está baixada e ficou fora por regra (prova, nunca na tela; pergunta 13 do Lucas); (b) as duas fotos do Departamento de Estado (NARA série 1254407) que dariam a foto do dia estão na pergunta 9 do Lucas e não foram baixadas. Já é decisão aberta da Sala; nada a fazer na cena."
+        "Sem material nomeado a empilhar: as duas fotos do Departamento de Estado (NARA série 1254407) o Lucas recusou em 15/10."
       ],
       "correcoes": []
     },
@@ -129,7 +120,7 @@
       "lente": "circulo",
       "nota": 8,
       "problemas": [
-        "Mesma foto da s47 (sha256 2ca4b62c…), reuso declarado e com veredito próprio para a s50; o degrau novo é a folha do Bulletin com o grifo. Eco de forma: a s50 (foto à esquerda e folha à direita) e a s54 (foto à esquerda e cartão à direita) têm a mesma composição, com três cenas no meio. Sinaliza; não reprova."
+        "A foto de 1953 é a mesma da s47 (reuso declarado, conferência própria da s50), mas aqui a cena avança com a folha do Bulletin e a citação grifada, que a s47 não traz. Se a cena sumisse, o espectador perderia a citação 'in defiance of the Governor's orders'. Eco de forma com a s54 (foto + papel ao lado): varia-se o modelo se pedir."
       ],
       "correcoes": []
     }

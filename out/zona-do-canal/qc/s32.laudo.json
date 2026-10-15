@@ -1,20 +1,17 @@
 {
   "cena": "s32",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 5,
+      "nota": 8,
       "problemas": [
-        "REPROVA: no cartão de papel da fala, a aspa de fechamento (”) de 'the ‘commy.’”' fica metade fora do cartão, escura sobre a mesa escura, e a perna do 'y' encosta na borda de baixo. Visto no recorte 4K de 13,6 s (qc-s32@13.6-recorte-aspas.png) e em todos os quadros de 10,2 a 14,3 s. Medido: o cartão termina em x ≈ 3314 no recorte e o glifo vai até ≈ 3368, uns 50 px de glifo fora do papel; sem folga de padding. Roupa §4 (espaço) e §1: texto fora do bloco que o guarda é texto cortado; identidade §4.1, a fala citada é bloco de leitura que tem de ficar inteiro. Nenhum portão pega isso (colisão e fora-do-quadro olham texto contra texto e contra o quadro).",
-        "Portões lidos: qc-cena só reprova o crédito 'Source: Mary and Herbert Knapp, The Panama C…' 56<72; portao-margens 0 (sha1 d88eb887…, 23 itens, 145 amostras); til 0 (8 textos); rodapé 12,15:1 @5,04 s. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026; o sha1 (d88eb887…) bate com _excecoes-portao.json e a reprovação é só o crédito (var(--fs-credito) = 56 px, caixa de 134 px para 2 linhas, data-qc-papel='credito').",
-        "SINALIZA: a fala está em 260 px, o piso; o alvo da marca é 280 (teto 340). Subir ao alvo pede cartão mais largo, e o canto reservado (x ≥ 3440, y ≥ 1760) limita: o cartão termina em y 1838.",
-        "SINALIZA: a foto (x até 1664) fica a 65 px do cartão (x 1729); as pílulas ficam a ~156 px. Folga curta, sem tocar."
+        "CONSERTADO (1ª rodada: espaco 5, aspa de fechamento fora do papel). Recorte 4K de 13,6 s `out/zona-do-canal/_tmp/q2-L26/q2-s32@13.6-recorte-aspa.png` (x 2900–3600, y 1450–1950): as aspas de fechamento ficam inteiras dentro do cartão, com ~45 px de papel à direita, e a perna do 'y' tem ~40 px de papel embaixo. Diff do HTML contra o commit anterior: cartão de 1560×1570 para 1660×1599, padding 16px 40px 54px; nada mais mudou. Cartão visto também em 10,6 s (folha `folha-s32.png`): inteiro, sem tocar a foto nem o canto de 400×400.",
+        "Portões lidos: qc-cena só reprova o crédito 'Source: Mary and Herbert Knapp, The Panama C…' 56<72 (_portao.json falhas ['tamanho']); portao-margens 0 (sha1 a48f8ef0…, marca c647bf6c…, 23 itens, 145 amostras); til 0 (8 textos); rodapé 12,15:1. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026; _excecoes-portao.json com sha1 a48f8ef0… igual ao do HTML de hoje, e a reprovação é só o crédito (probe-elemento em 8,0 s: caixa de 134 px em 2 linhas = 55,8 px, var(--fs-credito), data-qc-papel='credito').",
+        "SINALIZA: a fala continua a 260 px, o piso; o alvo da marca é 280 (teto 340). Foto e cartão a ~65 px um do outro, sem tocar."
       ],
-      "correcoes": [
-        "Alargar o cartão da fala (hoje 1560×1570; a coluna tem folga até x 3640) em pelo menos 100 px e pôr padding direito ≥ 80 px e de baixo ≥ 60 px para a aspa e a descendente ficarem dentro do papel; manter o texto a 260 px ou mais e fora do canto de 400 × 400 (o cartão não pode passar de y 1760 em x ≥ 3440). Rodar o portao-margens de novo e olhar o recorte da aspa a 4K."
-      ],
+      "correcoes": [],
       "origem": "julgada"
     },
     {
@@ -57,7 +54,7 @@
       "lente": "poluicao",
       "nota": 7,
       "problemas": [
-        "SINALIZA: de 3,03 a 9,17 s a 'capa' é uma folha de 1160×1200 com só o nome da revista e a data; ~70 % dela é papel em branco por 6 s. Lê-se como moldura sem conteúdo (o tipo de achado que a revisão de espectador dá). A aspa fora do cartão está na lente espaco e não é contada de novo aqui.",
+        "SINALIZA: de 3,03 a 9,17 s a 'capa' é uma folha de 1160×1200 com só o nome da revista e a data; ~70 % dela é papel em branco por 6 s. Lê-se como moldura sem conteúdo (o tipo de achado que a revisão de espectador dá). A aspa, consertada, está na lente espaco.",
         "Elementos: b1 1, b2 2, b3 2 (alvo 4–5, folga); blocos de leitura ≤3."
       ],
       "correcoes": [
@@ -69,7 +66,7 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Assentamento medido por probe: a foto vai de 1121 a 1425 px de largura (pico 1,029× do tamanho final, a 9,5 s) e assenta em 1385 sem voltar; o cartão da fala entra em 9,8 s e fica parado; de 14,15 s ao fim a diferença de pixels é 0 (repouso). SINALIZA: de 0 a 3 s só há o card com nome e cargo sobre a mesa e o push-in de 1 %."
+        "Assentamento da foto sem retorno (1121 → 1425, pico 1,029× a 9,5 s, → 1385, medido na 1ª rodada; o conserto só tocou o cartão), o cartão da fala entra em 9,8 s e fica parado; entre 14,15 e 14,39 s a diferença de pixels é 0 (repouso, medido de novo depois do conserto). SINALIZA: de 0 a 3 s só há o card com nome e cargo sobre a mesa e o push-in de 1 %."
       ],
       "correcoes": [],
       "origem": "julgada"

@@ -1,114 +1,93 @@
 {
   "cena": "s66",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
       "nota": 7,
       "problemas": [
-        "exceção do Lucas: qc-tamanho, crédito a 56 px, \"Quero reduzir para 56px\", 07/10/2026 11:3x (identidade §4.1; _excecoes-portao.json, sha1 do HTML igual ao de hoje). probe-elemento (t=10 s): #cred1 em 1 linha, caixa de 64 px, line-height 1,15 = 56 px, x 200, y 1896; var(--fs-credito); data-qc-papel=\"credito\". Contraste (portao-mapa rodape v5, sha1 de hoje): 8,63:1 (piso 3:1).",
-        "portao-margens (sha1 5c6b7374): veredito 0, 132 amostras, 35 elementos medidos, sem avisos.",
-        "Sinalização (quadros 8,5 e 12,95 s): as duas peças não têm o \"mesmo tamanho\" que a regência pede: página real 962 x 1089 px (~25 % da largura) e cartão de 1977 2081 x 1165 px (~54 %). O cartão a 86 px é legível e a página a 1,3x fica com microletra ilegível até a tira de 6,4 s: a comparação \"sem o narrador arbitrar\" (I01) pende para o 1977. O cabeçalho declara o porquê (1,4x é o teto da página e o texto fiel de 1977 não cabe sem \"[...]\"), mas não cita tarefa da Sala, então o desvio não está autorizado: vai ao report.",
-        "Sinalização: de 0 a 8,07 s só o quarto esquerdo da tela tem objeto (a página e a legenda) e o resto é mesa vazia por 8 s, o \"espaço vazio esperando a voz\" que o Lucas marcou na linha do tempo do Juneau (identidade §5); a direita está reservada para o cartão, e a regra do movimento A proíbe deslocar a página.",
-        "Sinalização: a legenda de 2 linhas (1903) fica a ~34 px do crédito \"Source: Panama Canal Treaty, 1977\" (recorte qc-s66@12.95-recorte-legenda-credito.png): os dois se leem em pilha, 1903 sobre 1977."
+        "portao-margens (sha1 d8e5ec24, marca c647bf6c): veredito 0, 132 amostras, 35 medidos, 0 itens, 0 avisos. qc-cena: única falha `tamanho` = crédito 'Source: Panama Canal Treaty, 1977' a 56 px < 72. Medi o crédito pelo probe-elemento (cred1, caixa de 64 px / line-height 1,15 = 56 px, x 200, y 1896, var(--fs-credito), data-qc-papel=credito).",
+        "exceção do Lucas: qc-tamanho, crédito a 56 px, 'Quero reduzir para 56px', 07/10/2026, em out/zona-do-canal/qc/_excecoes-portao.json com o sha1 do HTML de hoje (d8e5ec24…). Por isso gatesDuros fica vazio.",
+        "Sinalização mantida da 1ª rodada (desvio ratificado pela Sala, decisão 5, 's66: o tamanho'): a página real tem ~25 % da largura e o cartão de 1977 ~54 %; de 0 a 8,07 s só o quarto esquerdo da tela tem objeto (direita vazia por 8 s); a legenda de 2 linhas da página de 1903 fica a ~34 px do crédito de 1977, lidos em pilha."
       ],
       "correcoes": [
-        "a Sala decide o desvio do \"mesmo tamanho\": aceitar a diferença declarada, ou trazer a impressão federal de 1977 que a regência prevê (Department of State Bulletin, Oct. 1977, ou TIAS 10030), que talvez case com a largura da página. Legenda em uma linha (\"ART. III · 33 STAT. 2235\") para afastar do crédito."
+        "Opcional (Arte/Sala): legenda da página de 1903 em 1 linha, para afastá-la do crédito; e, se a pesquisa trouxer a impressão federal de 1977 (Department of State Bulletin, Oct. 1977, ou TIAS 10030), o cartão recriado sairia."
       ]
     },
     {
       "lente": "factual",
       "nota": 9,
-      "problemas": [
-        "Asset correto: a página é a 33 Stat. 2235 (Isthmian Canal Convention, Art. III) do veredito aprovado para a s66 (sha256 26040389, igual); o grifo cai no fim do Art. III, \"if it were the sovereign\" (quadro 6,9 s). O cartão de 1977 = Art. I(2), texto de B041, com reticências só no fim, sem costurar \"territorial sovereign\" ao preâmbulo; grifo em \"as territorial sovereign\". Legenda \"ART. III · NOV. 18, 1903 · 33 STAT. 2235\" bate com o textos-tela. Sem brasão, selo, timbre ou assinatura."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "Página pousa em \"The\" (782,83 s); grifo 1 em '\"if' (6,40 s = 789,20, certo); cartão pousa em \"In\" (8,067 s = 790,87, certo) junto com o crédito; tira 2 em 11,03 s (fim de \"Panama\", 793,83) e grifo de \"as\", \"territorial\" e \"sovereign\" em 11,11, 11,225 e 12,07 (voz 793,91, 794,02, 794,87).",
-        "Sinalização: a tira 2 entra 170 ms antes do t0 11,2 do textos-tela para ter 2,04 s no ar; o cabeçalho declara a regra (identidade §4.3) mas não cita tarefa da Sala (como o laudo da s07 já anotou). Re-checado contra a fala: a tira entra com a frase que acabou de ser dita, não antes dela."
+        "A tira 2 entra em 11,03 s, 170 ms antes do t0 11,2 do textos-tela (declarado, para ter 2,04 s no ar). A saída da tira 1 em 10,6 s (conserto da 1ª rodada) é uma saída, não um atraso: nenhuma entrada foi atrasada por ritmo, então não há re-checagem de fala pendente (a tira 1 já tinha ficado ~3 s além de 'sovereign', dito em 7,03 a 7,53 s)."
       ],
       "correcoes": []
     },
     {
       "lente": "abordagem",
       "nota": 9,
-      "problemas": [
-        "DOCUMENTO: a página real (obra federal, GPO, sem crédito) e o cartão recriado no visual do canal, uma citação por cartão (R07), é o modelo da identidade §5 e a saída que o conferente deu quando a página do Record de 1977 saiu \"trocar\" (3ª aparição)."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "acessibilidade",
       "nota": 8,
-      "problemas": [
-        "O leigo precisa de ~6,4 s para chegar ao que a voz diz de 1903 (a tira só entra no grifo, e a página é microletra); depois, de 8,07 s, o cartão grande e as duas tiras explicam a comparação \"if it were the sovereign\" contra \"as territorial sovereign\". Sinalização apenas."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "poluicao",
-      "nota": 6,
+      "nota": 7,
       "problemas": [
-        "REPROVA, identidade §4.2 (\"Até 3 blocos de texto vivos ao mesmo tempo ... a folha de documento (uma folha é um bloco)\") e roupa §4, poluicao: de 11,03 s (tira 2) a 13,067 s (~2,0 s) há 4 blocos de leitura no quadro: a página real (entra \"como a folha\", identidade §5), a tira 1 (acesa desde 6,4 s), o cartão de 1977 e a tira 2 (quadros de 11,3, 12,5 e 12,95 s). O cabeçalho conta 3 porque a página \"não é bloco de leitura: é imagem com o grifo\", mas a identidade §5 diz que o scan \"entra como a folha\", e os laudos de s13, s29 e s38 desta produção contaram a página real como bloco (s13: \"duas folhas e uma tira\" = 3, no teto). O qc-carga (5 textos @11,1 s, teto 9) não mede bloco de leitura, por isso está verde. Elementos: 5 (página, legenda, tira 1, cartão, tira 2; teto 6), ok.",
-        "Teste de lastro: a legenda, as tiras e os grifos têm a fala; nenhum órfão. Sem entidade HTML ou tofu (portao-mapa til v5: 6 textos, 31 amostras, 0 achados)."
+        "CONFERIDO: o conserto pedido na 1ª rodada foi feito. A tira 1 sai em 10,60 a 10,90 s, antes de a tira 2 entrar (11,03). s66@10,4: página + tira 1 + cartão (3 blocos); @10,75: tira 1 em fade (página + cartão, a tira quase apagada); @11,3 e @12,95: página + cartão + tira 2 (3 blocos). Nunca 4 (identidade §4.2, teto de 3). A página real conta como bloco, como a Sala decidiu (decisão 8).",
+        "Nota 7 e não mais: ficam 3 de 3 blocos de leitura de 11,03 até o corte, e a tela é das mais cheias de texto do vídeo (cartão de 1977 de 2081 x 1165 + página + tira). Sinalização, não reprova."
       ],
-      "correcoes": [
-        "a tira 1 sai (300 ms, opacidade + 24 px, \"o que sai sai antes do que entra\") antes de a tira 2 entrar: por exemplo em 10,6 s, o que deixa a tira 1 no ar 4,2 s (>= 2,0 s) e a cena com página + cartão + tira 2 = 3 blocos até o corte; o grifo da página fica aceso. Se a Sala ler o scan como imagem (e não como folha), esta lente sobe a 7 como sinalização; a leitura da identidade §4.2 é dela."
-      ]
+      "correcoes": []
     },
     {
       "lente": "motion",
       "nota": 8,
-      "problemas": [
-        "Assentamento: o cartão (#c, caixa girada): 2183 (8,0 s, antes de entrar), 2173 (8,2), 2165, 2161 (8,6), 2099 (8,8 s) e 2097 até 13,0 s: pousa e assenta uma vez, sem retorno. Câmera a 1,004 e parada desde 1,90 s (4,5 s antes do grifo 1). Quadros de 12,817 s e 13,05 s: diferença 0 (deriva congelada): repouso de 250 ms ok. A página não muda quando o cartão pousa e a luz se alarga até as duas peças (\"a antiga fica, a luz escolhe\").",
-        "Sinalização: de 1,9 s a 6,4 s a cena só tem a deriva (4,5 s com a página parada à esquerda), a regra do texto parado enquanto se lê; a voz diz a frase de 1903 sobre uma página ilegível a essa distância."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "A página real é obra federal (GPO): sem crédito, certo. O cartão recriado leva \"Source: Panama Canal Treaty, 1977\" a partir de 8,067 s (recriação sem fonte reprova, roupa §5): presente. Sem crédito-fantasma.",
-        "Sinalização: o crédito fica sob a legenda de 1903 (34 px) e a fonte dita 1977; leitura em pilha, não reprova."
+        "O crédito 'Source: Panama Canal Treaty, 1977' é o da recriação (o cartão), como pede a roupa §5. Fica sob a legenda da página de 1903 (que não leva crédito: obra federal, domínio público) e pode ser lido como crédito dela; a mesma sinalização da 1ª rodada, sem mudança."
       ],
       "correcoes": []
     },
     {
       "lente": "tema",
       "nota": 9,
-      "problemas": [
-        "Papel real e papel recriado sobre a mesa do vídeo (still, véu e feltro); grifos --destaque a 35 %, o único uso de cor; nenhum lado vira cor. evidencia.paleta não veio: não medida."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "cobertura",
       "nota": 9,
-      "problemas": [
-        "Os dois concretos centrais (a página do tratado de 1903 e o texto do de 1977) estão na tela: o de 1903 como registro real, o de 1977 como recriação com fonte."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Dois planos (a página, depois a página e o cartão), com troca de objeto em 8,067 s, em \"In nineteen seventy-seven\"; a página fica simultânea ao cartão (composição, janelas sobrepostas, não repetição sucessiva). O mesmo arquivo da página aparece pela 3ª vez no vídeo (s12, s38, s66): reuso declarado e aprovado pelo conferente para esta frase."
+        "A página de 1903 fica 6,4 s antes do primeiro grifo, mas é o objeto da frase inteira e a deriva/câmera anda; não é foto ou footage parado sem propósito. Só sinalização."
       ],
       "correcoes": []
     },
     {
       "lente": "autoria",
       "nota": 9,
-      "problemas": [
-        "O cartão de 1977 é recriado em Courier Prime no visual do canal, com texto fiel e fonte citada; não imita capa, selo nem timbre do tratado nem finge ser a página do Record."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
@@ -120,10 +99,30 @@
     {
       "lente": "circulo",
       "nota": 8,
-      "problemas": [
-        "A página de 1903 e o grifo de \"if it were the sovereign\" voltam (s12, s38): callback pago com informação nova (o par com \"territorial sovereign\", 1977); o degrau é o cartão. Sinalização: a s59 já mostrou o tratado de 1977 (a folha do Art. I(1)); aqui é o Art. I(2)."
-      ],
+      "problemas": [],
       "correcoes": []
     }
-  ]
+  ],
+  "julgamento": {
+    "modo": "completo",
+    "lentes_julgadas": [
+      "espaco",
+      "factual",
+      "wordlock",
+      "abordagem",
+      "acessibilidade",
+      "poluicao",
+      "motion",
+      "fonte",
+      "tema",
+      "cobertura",
+      "cadencia",
+      "autoria",
+      "camadas",
+      "circulo"
+    ],
+    "lentes_herdadas": [],
+    "frames": 8,
+    "porque": "2 imagens (folhas de contato): 8 instantes de contato (0,5/1,5/6,9/8,5 · 10,4/10,75/11,3/12,95 s) de quadros 4K gerados hoje do HTML de hoje (sha1 d8e5ec24), mais o repouso final medido por diferença numérica (12,82 x 13,05 s = 0) e o crédito medido por probe-elemento. A 1ª rodada reprovou só em poluicao (4 blocos de 11,03 a 13,07 s): conferido e corrigido (a tira 1 sai antes da tira 2); as outras 13 lentes foram julgadas de novo e nada mudou fora do pedido."
+  }
 }

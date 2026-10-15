@@ -1,167 +1,128 @@
 {
- "cena": "s20",
- "aprovado": false,
- "gatesDuros": [],
- "lentes": [
-  {
-   "lente": "espaco",
-   "nota": 6,
-   "problemas": [
-    "REPROVA (identidade.md §6, 'A divisa mais grossa': 'Nenhum rótulo sobre a divisa. A linha não passa por baixo nem encosta em pílula… o que vale para a divisa vale para as outras linhas do mapa (a malha, a estrada, a rota): a pílula não fica sobre elas'). A pílula 'BOUNDARY CONVENTION · SEPT. 2, 1914' (x 200 a ~2023, y 200 a ~523, 128 px, 2 linhas) cobre a linha de 1914 no canto de baixo à direita dela: a linha entra por baixo da pílula e reaparece do outro lado, com ~45 a 55 px de traçado escondidos (recorte 4K de 9,4 s, linha fina, e de 11,5 s, linha grossa de 16 px). Dura do instante em que a linha chega ao canto (~8,6 s; ela se desenha até 8,92 s) até a pílula sair em 12,28 s: ~3,7 s, incluindo 'From now on, that is the line', a frase em que a linha é o assunto. O defeito é novo: nasceu da passada de série da Arte (arte-2, S1), que subiu a pílula de 84 px/1 linha para 128 px/2 linhas (relato arte-2, 'Cenas mudadas', s20). Nenhum portão mede linha de mapa contra pílula: o check-overlap mede texto contra texto, e o portao-margens, a área segura.",
-    "Sinalização (não derruba): o ponto de Balboa e o de La Boca são círculos --neutro de 24 px (r 12) a 44 px da pílula; sobre o satélite quase não se veem (recorte 4K de 16,2 s: o de Balboa cai sobre o gramado do estádio, o de La Boca sobre os tanques), e a leitura é da pílula. A própria Arte registrou a fraqueza (M2.md, 'Fraqueza visível').",
-    "Sinalização: a pílula da convenção quebra 'BOUNDARY CONVENTION ·' / 'SEPT. 2, 1914' e deixa o '·' pendurado no fim da 1ª linha. O texto confere com o textos-tela (a quebra é só de linha).",
-    "Medido por portão, não remedido: portao-margens veredito 0 (sha1 68a0847b, marca c647bf6c = tokens.css de hoje; 16 itens, 190 amostras, sem tile); qc-cena de 10:35 sem falha de tamanho, colisão, carga nem fora do quadro (54 itens em cada); crédito de mapa legível e inteiro em todos os quadros olhados."
-   ],
-   "correcoes": [
-    "Tirar a pílula do caminho da linha de ~8,5 s a 12,28 s, sem mexer na linha (a geometria não se move). Caminho mais curto, uma edição na configuração da cena: quebrar o dado em 3 linhas em vez de 2 ('BOUNDARY' / 'CONVENTION ·' / 'SEPT. 2, 1914', ou a quebra que o redator preferir), o que estreita a pílula para ~900 px (200 a ~1100) e a afasta do canto onde a linha passa (x ~1990 a 2030, y ~490 a 525 em 11,5 s); descer a legenda 'Line as mapped in 1936' de y 560 para depois do fundo da pílula nova. Alternativa: deslocar o par de câmera C0/C1 uns 150 px para a direita e para baixo (centro um pouco mais a oeste e ao norte) até a linha passar a ≥ 100 px da pílula, conferindo que o pé da linha (hoje ~y 1760) e 'Panama City' continuam dentro das margens.",
-    "Depois do conserto: portao-margens, qc-cena (com a pré-carga), render de prova e um recorte 4K de 9,4 s e de 11,5 s mostrando a linha inteira, sem pílula por cima; laudo novo.",
-    "Se a quebra mudar a forma do dado (por exemplo tirar o '·' pendurado), a grafia é do redator-de-tela: pedir o registro no textos-tela antes."
-   ],
-   "origem": "julgada"
-  },
-  {
-   "lente": "factual",
-   "nota": 9,
-   "problemas": [
-    "A linha acompanha a feição: recorte 4K de 8,0 s, do pé (o estádio, no mar) até a dobra ao norte, ela corre colada à borda entre a encosta de Ancón e a malha urbana, onde o satélite mostra a avenida; não abre e volta a se encontrar com a borda. O traçado vem de dado (linha-1914-panama: folha de 1936 + OSM na Avenida de los Mártires e no Río Curundú, incerteza de ±40 a 90 m declarada), não de desenho a olho. 'Line as mapped in 1936' em 7,61 s entra com a linha e cobre o que o laudo de fatos deixou aberto (A6 e B116: não se provou que a linha de 1936 é a de 1914).",
-    "Textos conferem com o textos-tela, letra a letra: BOUNDARY CONVENTION · SEPT. 2, 1914 · Panama City · Line as mapped in 1936 · Balboa · La Boca · \"gold\" · \"silver\" · crédito. Balboa sobre o Estadio de Balboa (a cidade, não o distrito) e La Boca sobre o bairro de hoje (ressalva B125 do laudo de fatos, registrada). 'Panama City' fora da linha, sem polígono (pergunta 15, caminho padrão a). Aspas retas em \"gold\" e \"silver\", como o textos-tela. A fidelidade de fato é do verificador-de-fatos; as asserções desta cena estão no laudo de fatos (A049, A052, B114, B116, B125)."
-   ],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "wordlock",
-   "nota": 8,
-   "problemas": [
-    "Conferido contra o words.json (janela 161,367 s, 18,866 s): o dado entra em 0,32 ('September', 0,32) e 'Panama City' junto (textos-tela t0 0,3), e cobrem o primeiro segundo; a linha começa em 4,24 ('boundary', 4,24; 'line', 4,64) e termina em 8,92 ('monument.', 8,48 a 8,92); 'Line as mapped in 1936' em 7,61 ('monument'); o traço engrossa em 10,41 ('that'); a viagem parte em 12,28 ('When'); Balboa e La Boca em 14,0, depois da viagem (textos-tela t0 14,0, 1,5 s depois da voz dizer 'Balboa', em 12,48).",
-    "Desvio declarado no cabeçalho: a linha começa em 4,24 e não em 7,6 ('monument', regência), e sem os tiques de marco. Aprovo: começar na palavra 'boundary line' ancora melhor do que esperar 3,4 s, e o cabeçalho justifica a omissão dos tiques (as posições dos marcos não estão no disco; um tique seria lido como marco no lugar certo, ofício §6c). A Sala ainda precisa registrar (a Arte o levou como pergunta, arte-1 §5.5).",
-    "Desvio declarado no cabeçalho: '\"gold\"' entra em 15,84 e '\"silver\"' em 16,00 ('two words'), e a voz os diz em 16,96 e 17,92: 1,1 s e 1,9 s antes da palavra. O motivo é a identidade §4.3 (texto no ar ≥ 2,0 s: nos tempos do textos-tela ficariam 1,9 s e 0,97 s até o corte de 18,87). Sinaliza, não reprova: as duas palavras chegam juntas em 'two words' e a voz as lê em seguida, sem eco da fala, e o outro caminho viola o piso de texto no ar. Vai à Sala e ao redator para registrar o tempo (o textos-tela e a regência dizem 16,933 e 17,9). Nenhum elemento foi atrasado por ritmo nesta passada; a S1 só mudou tamanho e posição, e o tempo de entrada da pílula da convenção (0,32) ficou."
-   ],
-   "correcoes": [
-    "Registrar no textos-tela e na regência os tempos de 15,84 e 16,00 para '\"gold\"' e '\"silver\"' (e a linha desde 4,24), ou a Sala mandar voltar a 16,933 e 17,9, aceitando o texto no ar abaixo de 2,0 s."
-   ],
-   "origem": "julgada"
-  },
-  {
-   "lente": "abordagem",
-   "nota": 9,
-   "problemas": [
-    "MAPA sobre satélite de geometria real com a linha do tratado: o modo certo para 'a linha que fixou a divisa entre a cidade e a Zona' (identidade.md §5, 'Mais mapa'). Não há registro real de uma divisa que se possa fotografar, e a miniatura do marco não tem arquivo aprovado (conferencia-midia.json sem veredito para s20). Vetor sobre fundo liso: não. Footage genérico: não."
-   ],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "acessibilidade",
-   "nota": 8,
-   "problemas": [
-    "Em 2 s o leigo lê: uma cidade vista de cima, 'BOUNDARY CONVENTION · SEPT. 2, 1914' e 'Panama City' do lado direito; quando a linha entra (4,24 s) ele a associa ao que a voz acabou de dizer ('boundary line'), e 'From now on, that is the line' engrossa a mesma linha. O lado esquerdo, a Zona, não tem nome na cena (só 'Panama City' fora da linha, pelo textos-tela): quem não viu s06 e s11 deduz pela voz ('between the City of Panama and the Canal Zone'). Observação, não reprova."
-   ],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "poluicao",
-   "nota": 8,
-   "problemas": [
-    "Pico de 5 elementos em 16,0 a 18,87 s (Balboa, La Boca, \"gold\", \"silver\" e a linha; os dois pontos são parte da pílula) e 4 em 7,61 a 12,28 s (dado, legenda da linha, 'Panama City', linha): abaixo do teto de 6 (identidade §4.2), sem bloco de leitura. Teste de lastro: a data é convocada por 'September' (0,32), 'Panama City' por 'City of Panama' (5,39 a 5,76), 'Line as mapped in 1936' por 'line' e 'monument' (exceção b, dado atribuível), Balboa por 'Balboa' (12,48), \"gold\" e \"silver\" pelas palavras entre aspas. Nenhum texto órfão, nenhuma entidade HTML nem tofu nos quadros olhados."
-   ],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "motion",
-   "nota": 8,
-   "problemas": [
-    "O mapa anda do 1º ao último quadro: aproximação lenta de 0 a 12,28 s (zoom 14,90 a 15,02, ~8,7 %), viagem de 2,0 s ao par Balboa/La Boca (dentro de 1,5 a 3 s, identidade §4.4) e nova aproximação lenta, com giro contínuo de −1° a +1°. Início, meio e fim são três enquadramentos diferentes (a linha inteira, a viagem, o par): há órbita contínua e nenhum degrau de zoom. A linha se desenha de 4,24 a 8,92 s e engrossa em 10,41 s (de 10 para 16 px, 500 ms), o que carrega o quadro até a viagem. Entre 0 e 4,24 s só a câmera e as duas pílulas se movem: sinaliza (identidade §5, 'Espaço vazio esperando a voz incomoda'), mas a deriva é contínua e o dado e 'Panama City' já estão em cena.",
-    "Medido no clipe em 12 quadros de folha (0,4 a 17,2 s), mais 4 recortes 4K. O easing e o tempo de entrada das pílulas (300 ms) não foram medidos quadro a quadro: o quadro de 0,4 s as mostra em subida, sem estalo."
-   ],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "fonte",
-   "nota": 8,
-   "problemas": [
-    "Crédito de mapa '© MapTiler © OpenStreetMap contributors' presente e inteiro em todos os quadros olhados (0,4 a 17,2 s), no pé à esquerda, dentro de x 200 a 1720 e da faixa y > 1880; cumpre também o OSM da linha e dos pontos (textos-tela, s20). Tamanho: o CSS lê var(--fs-credito) (tokens.css, 56 px), sem px fixo no tamanho final; o probe-elemento sem a pré-carga das chaves não monta o crédito de mapa (a cena falha fechada), então o px não foi remedido por mim, e vale o portao-mapa rodape v5 (veredito 0, 12,40:1 em 14,15 s, sha1 68a0847b). A folha de 1936 (NARA) é domínio público: sem crédito na tela, e não há. Nenhum crédito supérfluo nem crédito-fantasma.",
-    "Observação para a Sala: o laudo de fatos traz a linha A052, 'crédito Boundary Convention, 1914', para a s20; o textos-tela (que vale na tela) não tem linha 'Source:' nela, e o dado '… · SEPT. 2, 1914' faz o papel de atribuição, com a voz citando a convenção. Não reprovo; se o redator quiser a linha, vai ao textos-tela."
-   ],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "tema",
-   "nota": 9,
-   "problemas": [
-    "Cor por papel: a linha em --destaque (a assinatura do traço que volta em s28, s46, s51, s53 e s65), pílulas --rotulo, pontos --neutro, \"gold\" e \"silver\" só como palavras, nunca como cor (regência), nenhum vermelho, nenhum véu sobre o satélite. 2 matizes fora a base. Família de cor igual à das irmãs (s16 e s28 olhadas na folha de comparação). A medida automática de paleta (evidencia.paleta) não veio nesta entrada: julgado a olho, sem afirmar deriva."
-   ],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "cobertura",
-   "nota": 8,
-   "problemas": [
-    "O central, a linha da divisa, aparece em satélite real com a geometria; Panama City e Balboa também. Sinaliza: 'monument' (monument by monument) não tem imagem em parte alguma da cena, nem tique nem foto, e a falta é declarada (a regência pede a miniatura opcional 'falta_de'; a pesquisa não trouxe arquivo e o conferente não aprovou nenhum para s20). Não é o concreto central e é algo que o público imagina; sem arquivo nomeado a apontar, fica como observação."
-   ],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "cadencia",
-   "nota": 9,
-   "problemas": [
-    "Cena de mapa, sem footage parado: a câmera anda o tempo todo e cada objeto da fala (a linha, o traço grosso, o par Balboa/La Boca) tem o seu enquadramento. Beats ≥ 1,5 s; regime normal."
-   ],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "autoria",
-   "nota": 10,
-   "problemas": [],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "camadas",
-   "nota": 10,
-   "problemas": [],
-   "correcoes": [],
-   "origem": "julgada"
-  },
-  {
-   "lente": "circulo",
-   "nota": 8,
-   "problemas": [
-    "Eco de forma, sem reprovar: o par Balboa/La Boca de 12,3 a 18,9 s repete o enquadramento e o desenho das pílulas da s16 (~20 s, mesmo D0; folha de comparação qc-s20@17.2-vs-s16-s28) e volta na s28 ('as in s17/s20', regência). O degrau novo aqui é a linha da convenção (4,2 a 12,3 s) e as palavras \"gold\" e \"silver\", que a s16 ainda não tinha. Callback declarado pela regência, e, sem a cena, o espectador ficaria sem a linha: não é círculo vazio."
-   ],
-   "correcoes": [
-    "Se a Sala quiser variar a forma (a s16, a s20 e a s28 têm o mesmo par), é na s28 que se muda o modelo, não aqui."
-   ],
-   "origem": "julgada"
-  }
- ],
- "julgamento": {
-  "modo": "completo",
-  "lentes_julgadas": [
-   "espaco",
-   "factual",
-   "wordlock",
-   "abordagem",
-   "acessibilidade",
-   "poluicao",
-   "motion",
-   "fonte",
-   "tema",
-   "cobertura",
-   "cadencia",
-   "autoria",
-   "camadas",
-   "circulo"
-  ],
-  "lentes_herdadas": [],
-  "frames": 16,
-  "porque": "Clipe 4K de prova de s20 (carimbo .mp4.de-html = 68a0847bc76104b62f1bc19c2de7474ec9e66d2e, igual ao sha1sum do HTML de hoje, 2ª linha 2160p: o clipe vale). 8 imagens lidas: 3 folhas de 4 quadros (0,4/2,0/5,0/7,0; 8,5/10,0/11,5/12,8; 13,6/14,6/16,2/17,2), recortes 4K de 11,5 s (linha x pílula), 16,2 s (Balboa e La Boca), 8,0 s (a linha na avenida) e 9,4 s (linha x pílula), e a folha de comparação com s16 e s28. Portões lidos: portao-margens 0 (16 itens, 190 amostras), portao-mapa til 0 e rodape v5 0 (12,40:1), qc-cena sem falha (_portao.json: falhas vazio; indefinido: til-glifo, coberto pelo portao-mapa til; fora do portão: mapa-vivo), tokens.css de hoje c647bf6c. Sem MapTiler, sem render, sem a pré-carga das chaves."
- }
+  "cena": "s20",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "CONSERTO DA 1ª RODADA CONFERIDO: a pílula 'BOUNDARY CONVENTION · SEPT. 2, 1914' (x 200 a ~2023, y 200 a ~523, 128 px, 2 linhas) deixou de cobrir a linha de 1914. No quadro 4K de 12,2 s (o pior caso: câmera no ponto mais avançado do giro e linha grossa de 16 px sobre 30 px), a linha inteira, do mar ao rio Curundú, está fora da pílula; o ponto da linha mais próximo do canto inferior direito dela (~(2023, 523)) é a dobra em ~(2085, 730), a mais de 200 px. A folha de 8,0, 9,4 e 11,0 s mostra a linha clara da pílula e da legenda 'Line as mapped in 1936' em todo o trajeto. Identidade §6 ('A divisa mais grossa', nenhum rótulo sobre a divisa) cumprida. O conserto foi pela câmera (par C0/C1, ~280 px à direita), sem mudar palavra, quebra nem tempo.",
+        "Portões lidos (não remedidos): portao-margens veredito 0 (16 itens, 190 amostras, sha1 0a54ec3a = o HTML de hoje, marca c647bf6c = tokens.css de hoje); qc-cena sem falhas (contrato, carga, colisão e fora do quadro com saída 0, 1 cena cada); _portao.json 's20.html' ok:false só pelo 'til-glifo' indefinido, coberto pelo portao-mapa til = 0 (8 textos, 42 instantes, 58 tiles 2xx), que a roupa §3 manda não pôr em gatesDuros. Crédito de mapa a 56 px vem de var(--fs-credito) (tokens.css), sem px fixo; o px não foi medido por mim (o probe-elemento sem a pré-carga das chaves não monta o crédito).",
+        "Sinalização, não derruba: a legenda 'Line as mapped in 1936' (y ~560) fica ~50 px abaixo da pílula da convenção (fundo em ~523), separação apertada entre duas pílulas empilhadas; e o '·' fica pendurado no fim da 1ª linha da pílula (a quebra é do redator-de-tela)."
+      ],
+      "correcoes": [
+        "Nenhuma correção obrigatória. Se a Arte mexer na pílula, descer a legenda para y >= 600 ou fundi-la à pílula, sem mudar palavra."
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 9,
+      "problemas": [
+        "A linha de 1914 acompanha as avenidas e o rio no comprimento inteiro (linha-1914-panama: folha de 1936 + OSM; incerteza ~40–90 m declarada e a legenda 'Line as mapped in 1936' a assume); não abre no meio nem diverge da avenida nos quadros de 8,0 a 12,2 s. Panama City sem polígono, nome do lado de fora da linha (decisão do Lucas, pergunta 15, 12:3x). Balboa e La Boca em pontos reais do OSM, Balboa a nordeste de La Boca como na geografia. 'SEPT. 2, 1914' no formato AP da regra de série. Sinal: o laudo de fatos A052 cita 'FRUS 1915, doc. 1732'; o textos-tela não tem linha Source: na s20 (ver fonte)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 8,
+      "problemas": [
+        "Desvios do cabeçalho conferidos contra a fala (words.json, relógio da cena = t do master − 161,367): a linha se desenha desde 4,24 s ('boundary' 4,24; a regência pedia 7,6, 'monument' 7,61) e termina em 8,92 ('monument.' 8,48–8,92): ratificada pela Sala (sala-plano-pos-qc.md, Decisão 5, 'a linha mais cedo'). '\"gold\"' entra em 15,84 ('two') e '\"silver\"' em 16,00 ('words'), contra a voz em 16,96 e 17,92 (1,1 s e 1,9 s antes): ratificados pela Sala (mesma Decisão 5), pela regra do texto no ar >= 2,0 s (identidade §4.3). Não derrubam; dois elementos aparecem antes de a voz dizer a palavra.",
+        "O engrosso da linha em 10,41 ('that') e o par Balboa/La Boca em 14,0 (depois da viagem de 12,28, 'When') seguem a fala. 'Panama City' está no ar desde 0,32 s, 5,1 s antes de 'City of Panama' (5,39): é o t0 do textos-tela (decidido), sinalizo como adiantado. Nenhum elemento ficou depois do fim da frase."
+      ],
+      "correcoes": [
+        "Nada a mudar: os tempos de gold/silver e a linha estão ratificados. Se o Lucas quiser a palavra na voz, os tempos certos são 16,96 e 17,92 e o texto no ar cairia para 1,9 e 0,97 s."
+      ]
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "Mapa de satélite real com geometria real e linha animada para uma fronteira entre dois lugares reais: o modelo MAPA certo (identidade §5, Mais mapa). O 'monument by monument' fica sem imagem, falta declarada e sem arquivo a apontar."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "Em ~2 s se entende que há uma convenção de 1914 e uma cidade a leste; a linha laranja que atravessa a cidade e vira 'the line' funciona sem vocabulário. Sinal: o ponto neutro de 24 px de Balboa e de La Boca quase não se vê sobre o satélite; a leitura vem da pílula (já registrado na 1ª rodada)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "poluicao",
+      "nota": 8,
+      "problemas": [
+        "Pico de 4 pílulas mais 2 pontos e crédito a partir de 16,0 s (Balboa, La Boca, '\"gold\"', '\"silver\"'): perto do teto de 6 elementos, sem passar (qc-carga saída 0, 54 itens na 1ª rodada, 1 cena na de hoje). Teste de lastro: 'BOUNDARY CONVENTION · SEPT. 2, 1914' = 'September' (0,32) + 'boundary convention' (2,16); 'Panama City' = 'City of Panama' (5,39); 'Line as mapped in 1936' = a linha que se desenha ('monument', 7,61); Balboa/La Boca/gold/silver = 12,48 e 16,96. Sem órfão, sem entidade HTML, tofu ou glifo quebrado (portao-mapa til 0)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 7,
+      "problemas": [
+        "Cadência de câmera igual à da 1ª rodada (a mesma série de 'aproximação lenta', o giro de -1° a +1° e a viagem de 2 s de 12,28 a 14,28): contínua e sem degraus. Medido nos quadros 4K: a base se desloca só ~20 a 25 px em 4 s nas pernas lentas (≈6 px/s no 4K), e entre 0,4 e 4,5 s o único movimento visível é a entrada da pílula; de 8,92 a 10,41 e de 11,0 a 12,28 só a deriva. É o limite do mapa 'quase parado', mas a linha (4,24–8,92), o engrosso (10,41) e a viagem carregam o quadro, e a Sala já decidiu não levar ao Lucas a pergunta do mapa de aproximação lenta (Decisão 14). Observação com nota 7, não reprova."
+      ],
+      "correcoes": [
+        "Não aumentar velocidade. Se a Arte quiser, ampliar a faixa do zoom/giro da perna lenta (hoje 14,90→15,02 e -1°→+1° em 18,9 s), sem perder o que o conserto de câmera protegeu: a linha tem de continuar a >= 140 px da pílula."
+      ]
+    },
+    {
+      "lente": "fonte",
+      "nota": 8,
+      "problemas": [
+        "Crédito '© MapTiler © OpenStreetMap contributors' do primeiro ao último quadro, data-qc-credito='mapa', 56 px (var(--fs-credito)), faixa abaixo de y 1880, contraste 12,27:1 (portao-mapa rodape v5, sha1 de hoje): cobre também o OSM da linha, dos pontos e da água escura (agua-osm-zona, ODbL). Nenhum crédito supérfluo, nenhuma mídia de terceiro, sem crédito-fantasma. Sinal: o laudo de fatos traz A052 'FRUS 1915, doc. 1732' e o textos-tela não pede linha Source: na s20 (o dado '· SEPT. 2, 1914' faz o papel); a decisão é do redator-de-tela."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [
+        "Uma cor = um significado: o laranja (--destaque) só na linha da divisa. A água escura (--agua-base) tira o ruído do mar e deixa a linha ler; o canal entra como água (o OSM o conta como mar, declarado no cabeçalho e igual à s06). O evidencia.paleta não veio nesta entrada: não afirmo deriva de cor, cor julgada a olho."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "Os concretos centrais (Panama City, a linha da Zona, Balboa, La Boca) estão no satélite real. 'monument' não tem registro: a pesquisa não trouxe foto (nenhum veredito da s20 no conferencia-midia.json), então não há arquivo a apontar; falta declarada no cabeçalho."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 9,
+      "problemas": [
+        "Um único plano de mapa com trajetória própria: linha desenhando (4,24–8,92), engrosso, viagem de 2 s e deriva, com 3 objetos no mesmo mapa; regime 'normal' (regencia). Sem footage e sem variação baixada sem uso."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [
+        "Nada de terceiro desenhado: sem logo, capa, selo, bandeira ou peça montada para parecer objeto real."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "O par Balboa/La Boca com '\"gold\"'/'\"silver\"' repete o enquadramento da s16 (aos ~19 s) e da s28 (~17 s). Degrau novo: aqui a linha de 1914 está no quadro e as palavras são as do plano da cidade (callback declarado pela regência); a s16 traz o cartão do relatório de 1914 e a s28 o par mais afastado (zoom ~13,6). Sinalizo só o eco de forma."
+      ],
+      "correcoes": [
+        "Nenhuma. Se a Arte variar a série, o enquadramento da s20 (zoom ~15,3) é o que menos repete."
+      ]
+    }
+  ]
 }
