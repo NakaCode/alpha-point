@@ -92,11 +92,12 @@
       vai em PLACE OF BIRTH (nota_montagem: o título da tabela é "Ethnic Characteristics").
   Nenhum upscale além de 1,4, nenhum filtro, nenhum recorte que mude o sentido.
 
-  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still de satélite do istmo (out/zona-do-canal/_media/base/mesa-<lugar>.png)
-  NÃO EXISTE no disco nesta tarefa (quem o entrega é a Sala, roupa §2: "se faltar, peça, não faça um"). FALLBACK DECLARADO: a mesa
-  "feltro sob a luz" (identidade §5), sem still (data-mesa="feltro"). O código já está pronto para o still: basta inserir, como
-  primeiro filho de #palco, <img id="still" src="../_media/base/mesa-<lugar>.png" alt=""> e a cena passa sozinha ao modo "satélite
-  sob a luz" (classe com-still no #palco).
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (15/10/2026). O still do istmo
+  do Panamá, Landsat 9 de 05/03/2024 (USGS, domínio público, SEM crédito na tela; a procedência em
+  ../_media/base/mesa-zona-do-canal-sangria1400.png.json), na versão com 1400 px de sangria (6640×4960), porque a câmera anda
+  (push-in e a deriva do RIG): <img id="still"> como primeiro filho de #palco, a classe "com-still" no #palco (estática, e o
+  script a repete) e --mesa-satelite-margem: 1400px no próprio #still (data-mesa="satelite"). A cena passa ao modo "satélite
+  sob a luz": a luz vira véu, o feltro cai a 50 %, o still acompanha a câmera a 0,6. Nada sobre o still: nem rótulo, nem ponto.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Pílula --rotulo 12 px, 24×40 (o aviso 16×28);
   rótulo 128 px Inter 700; aviso 84 px Inter 500; a cota 84 px Inter 700 (identidade §5, "a cota em Inter 84 px, rótulos soltos");
@@ -121,7 +122,8 @@
 
   /* A MESA (tokens.css, "A MESA" e "A MESA DO VÍDEO 2 EM DIANTE"): sem o still, a luz é o degradê radial no fundo de #cam e o
      feltro fica a 100 % (feltro sob a luz); com o still (#palco.com-still), a luz vira véu e o feltro cai a 50 % */
-  #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
+  #still { --mesa-satelite-margem: 1400px; /* a versão sangria1400 (zona-do-canal-arte-3) */
+    position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
@@ -193,8 +195,8 @@
 </style>
 </head>
 <body>
-<div id="palco" data-mesa="feltro" data-qc-sem-heroi="duas fotos impressas sobre a mesa desde o primeiro quadro e, no fim, a página real do censo de 1970: a cena não tem herói (é a cama da chamada de inscrição); os lugares e o rótulo do censo são rótulos de 128 px, os avisos são legenda, a cota é Inter 84 px e a linha grifada é impressão da página (ofício do editor-de-arte §6; identidade §4.2)">
-  <!-- o still da mesa entra aqui quando chegar: <img id="still" src="../_media/base/mesa-<lugar>.png" alt=""> (ver o cabeçalho) -->
+<div id="palco" class="com-still" data-mesa="satelite" data-qc-sem-heroi="duas fotos impressas sobre a mesa desde o primeiro quadro e, no fim, a página real do censo de 1970: a cena não tem herói (é a cama da chamada de inscrição); os lugares e o rótulo do censo são rótulos de 128 px, os avisos são legenda, a cota é Inter 84 px e a linha grifada é impressão da página (ofício do editor-de-arte §6; identidade §4.2)">
+  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; conceito: Um still só sob todas as mesas)">
   <div id="cam">
     <div id="mesa"></div>
 

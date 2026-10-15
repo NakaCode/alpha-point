@@ -53,8 +53,14 @@
 
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha): as duas folhas (2), depois o mastro (1). Blocos: nenhum. Herói: nenhum
     (data-qc-sem-heroi). Crédito: nenhum.
-  A MESA — CAMINHO DE RESERVA, DECLARADO: o still do Panamá não existe (_media/base/ vazio, 15/10/2026); vale o feltro sob a luz
-    (tokens.css, "A MESA"), com a luz 120 ms atrás do objeto principal. A troca, quando o still chegar, é a da s36 (cabeçalho dela).
+  A MESA — O STILL LIGADO EM zona-do-canal-arte-3 (15/10/2026): a mesa do vídeo 2 em diante (identidade §5, "satélite sob a
+    luz"; tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"). #still = ../_media/base/mesa-zona-do-canal-sangria1400.png (Landsat 9/USGS,
+    05/03/2024, domínio público, SEM crédito na tela; procedência no .png.json ao lado), 1º filho do #palco, por baixo da câmera, com
+    1400 px de sangria em cada lado (6640×4960; o miolo 3840×2160 cai exato no palco): a câmera anda (push-in + deriva), e a borda
+    do still nunca aparece. Ele acompanha a câmera a 0,6 (--mesa-satelite-paralaxe): escala 1 + (s − 1)·0,6, translação ×0,6, como
+    a s52 de Los Angeles. A luz (#luz) virou véu (--mesa-luz-veu-centro, transparente além de --mesa-luz-meio), ainda 120 ms atrás
+    do objeto principal; o feltro (#mesa) fica a --mesa-satelite-feltro (50 %). Nada sobre o still: nem rótulo, nem ponto, nem anel.
+    Só a mesa mudou (desenho, tempos, textos e física como no lote O2, que entregou a cena no caminho de reserva do feltro sob a luz).
   O CONTRATO: window.__duracao = 4.233; __renderAt(t) determinístico e à prova de erro; __prepararCaptura; __fotosProntas =
     RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia inteira de templates-cena/_rig.js.
 -->
@@ -69,14 +75,16 @@
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
   /* a câmera (push-in do RIG + deriva; o push-in para 250 ms antes do corte) */
   #cam { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
-  /* A MESA, CAMINHO DE RESERVA (o still do Panamá não existe: out/zona-do-canal/_media/base/ está vazio; roupa §2: "se
-     faltar, peça, não faça um"). Vale a mesa de 30/09 (tokens.css, "A MESA": feltro sob a luz), com a luz 120 ms atrás do
-     objeto principal. A luz e o feltro ficam 140 px além do quadro (a deriva nunca descobre a borda) e POR BAIXO de tudo. */
+  /* A MESA DO VÍDEO 2 EM DIANTE (tokens.css; o still ligado em zona-do-canal-arte-3): o still por baixo da câmera, com 1400 px de
+     sangria em cada lado (a câmera anda pela mesa), a 0,6 da câmera; a luz é o véu, 120 ms atrás do objeto principal; o feltro a
+     50 %. A luz e o feltro ficam 140 px além do quadro (a deriva nunca descobre a borda) e POR BAIXO de tudo. */
+  #still { position: absolute; left: -1400px; top: -1400px; width: 6640px; height: 4960px; pointer-events: none;
+    opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; }
   #luz { position: absolute; left: -140px; top: -140px; width: 4120px; height: 2440px; pointer-events: none;
     background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 2060px) var(--luz-y, 1220px),
-      var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+      var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
   #mesa { position: absolute; left: -140px; top: -140px; width: 4120px; height: 2440px; pointer-events: none;
-    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); }
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); opacity: var(--mesa-satelite-feltro); }
   /* o desenho: um SVG do tamanho do palco, no TRAÇO DE ENGENHEIRO (identidade §5, Lucas 07/10/2026, "A"):
      só linha --tinta de 6 px, sem preenchimento; arestas escondidas tracejadas; a sombra é a do próprio traço */
   #desenho { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
@@ -101,6 +109,7 @@
 </head>
 <body>
 <div id="palco" data-qc-sem-heroi="síntese desenhada sem texto (textos-tela.json não dá texto a s55): duas folhas viram o mastro; nenhum herói (identidade §4.2)">
+  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; zona-do-canal-arte-3)">
   <div id="cam">
     <div id="luz"></div>
     <div id="mesa"></div>
@@ -250,6 +259,9 @@
   function camera(t, DUR, K) {
     var c = E("cam"); var s = 1 + K * Math.min(t, DUR - 0.25), dx = 6 * Math.sin(t * 0.23), dy = 4.8 * Math.sin(t * 0.17);
     if (c) c.style.transform = "scale(" + s.toFixed(5) + ") translate(" + f2(dx) + "px," + f2(dy) + "px)";
+    // o still acompanha a câmera a --mesa-satelite-paralaxe (0,6): escala 1 + (s − 1)·0,6, translação ×0,6 (como a s52 de LA)
+    var st = E("still");
+    if (st) { var PAR = 0.6; st.style.transform = "scale(" + (1 + (s - 1) * PAR).toFixed(5) + ") translate(" + f2(dx * PAR) + "px," + f2(dy * PAR) + "px)"; }
     return s;
   }
   // a LUZ da mesa: o centro da poça atrás do objeto principal, 120 ms atrás dele (--mov-luz-atraso); a camada é 140 px maior

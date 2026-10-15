@@ -90,10 +90,12 @@
   O crédito "Source: …" é o da folha RECRIADA (regra de série: "Folha RECRIADA … sempre 'Source: <instituição>, <ano>'"); a foto, domínio
   público, não leva crédito de mídia. Nenhum upscale, filtro ou recorte que mude o sentido.
 
-  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still de satélite do istmo (out/zona-do-canal/_media/base/mesa-<lugar>.png)
-  NÃO EXISTE no disco nesta tarefa, e a roupa §2 manda pedir, não fazer. FALLBACK DECLARADO: a mesa "feltro sob a luz" (tokens.css, "A
-  MESA"; "--mesa-satelite-opacidade: 0 = a mesa sem satélite"). A cena JÁ ESTÁ PREPARADA para o still: descomentar o <img id="still">
-  (1º filho de #palco); o script troca sozinho a classe de #palco para "com-still".
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (lote E7, 15/10/2026): o Landsat 9 do
+  istmo de 05/03/2024 (zona-do-canal-pesquisa-5; domínio público, USGS: SEM crédito na tela), na versão COM SANGRIA de 1400 px
+  (../_media/base/mesa-zona-do-canal-sangria1400.png, 6640×4960, o mesmo recorte no centro), porque a câmera anda pela mesa:
+  a inclinação à escola (cx 1700, cy 1010: 220 px × 0,6 + 56 = 188 px de sangria necessária; os 56 px deixariam ~76 px de --fundo na borda) e a deriva.
+  O #still sobrescreve --mesa-satelite-margem para 1400px; a classe de #palco vira "com-still" pelo script (a luz vira véu, o feltro a
+  50 %, a paralaxe 0,6). O fallback "feltro sob a luz" fica no CSS para o caso de o still faltar.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Pílula --rotulo 12 px, 24×40 (o aviso 16×28);
   rótulo 128 px Inter 700; aviso 84 px Inter 500; Courier Prime só na folha e na tira (data-qc-fonte-livre). Sem --destaque fora do
@@ -123,6 +125,7 @@
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
+  #still { --mesa-satelite-margem: 1400px; }   /* a versão sangria1400 do still (6640×4960, o mesmo recorte no centro): a câmera anda pela mesa (zona-do-canal-arte-3) */
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
   /* SEM o still: a luz da mesa "feltro sob a luz", a poça atrás do objeto principal (o tamanho é variável: a poça se alarga) */
   #palco.sem-still #cam { background: radial-gradient(ellipse var(--luz-w, 1700px) var(--luz-h, 1250px) at var(--luz-x, 50%) var(--luz-y, 50%),
@@ -184,11 +187,9 @@
 </head>
 <body>
 <div id="palco" class="sem-still" data-mesa="feltro" data-qc-sem-heroi="a foto impressa da escola e a folha recriada do Bulletin sobre a mesa: a cena não tem herói; o nome de lugar e a data são rótulos (128 px), o aviso do ano é legenda (84 px) e o que se lê é a letra da folha e a tira literal (ofício do editor-de-arte §6; identidade §4.2)">
-  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"): quando a Sala entregar out/zona-do-canal/_media/base/mesa-<lugar>.png,
-       descomente a linha abaixo com o nome certo. Nada mais muda: o script troca a classe de #palco para "com-still", e o CSS e o JS
-       do véu, do feltro a 50 % e da paralaxe (0,6) já estão aqui.
-  <img id="still" src="../_media/base/mesa-panama.png" alt="">
-  -->
+  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"), ligado em zona-do-canal-arte-3: a versão sangria1400 (a câmera anda
+       pela mesa). O script troca a classe de #palco para "com-still"; o CSS e o JS do véu, do feltro a 50 % e da paralaxe (0,6) já estavam aqui. -->
+  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; conceito: Um still só sob todas as mesas)">
   <div id="cam">
     <div id="mesa"></div>
     <!-- a foto impressa da Balboa High School (1953): recorte 1380 × 882 em grupo 1468 × 970 -->

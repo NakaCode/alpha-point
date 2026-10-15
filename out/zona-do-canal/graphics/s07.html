@@ -63,13 +63,14 @@
   Nenhum filtro; o recorte é a parte de cima da página, em blocos inteiros, sem mudar o sentido.
   O CRÉDITO A 56 PX: o qc-tamanho vai reprovar SÓ o crédito (56 < 72 do ofício); é a exceção registrada do canal (identidade §4.1).
 
-  A MESA (identidade §5): a regra do vídeo 2 em diante é "satélite sob a luz", com UM still público do lugar do vídeo (aqui, o istmo
-  do Panamá, Landsat) em out/zona-do-canal/_media/base/mesa-<lugar>.png. ESSE STILL NÃO EXISTE NO DISCO (15/10/2026; a pasta
-  _media/base/ não existe) e a roupa manda "se faltar, peça, não faça um" (§2) e "você não vai à rede" (§0). Por isso a cena abre com
-  data-mesa="feltro": a mesa de 30/09 (feltro sob a luz, tokens "A MESA"), sem still, e com a troca pronta: pôr o
-  a imagem do still (id "still", o arquivo ../_media/base/mesa-panama.png no atributo de origem) como 1º filho do #palco e trocar
-  data-mesa para "satelite" (o CSS e o
-  script já tratam o still com paralaxe 0,6). PEDIDO À SALA no relato (out/zona-do-canal/_tmp/setores/arte-1/F1.md).
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): satélite sob a luz, com o still ligado em zona-do-canal-arte-3 (15/10/2026):
+    ../_media/base/mesa-zona-do-canal-sangria1400.png  6640×4960  sha256 e6f0d853… · Landsat 9 (USGS), 05/03/2024, via Planetary
+    Computer, domínio público, SEM crédito na tela (a procedência ao lado, .png.json). Base da mesa: fora da regra da conferência.
+  A versão com sangria de 1400 px (o miolo de 3840×2160 é o mesmo still, na mesma escala) porque a câmera ANDA pela mesa: o centro vai 80 px à esquerda e 80 para cima em
+  1,60–6,46 (a 0,6, o still anda 51,6/50,9 px); com 56 px a borda ficaria a ~15 px do quadro no alto.
+  O #still é o 1º filho do #palco, a 1400 px além do quadro (a regra #still da cena sobrescreve --mesa-satelite-margem), e acompanha
+  a câmera a 0,6 (--mesa-satelite-paralaxe); data-mesa="satelite": a luz é o véu (--mesa-luz-veu-centro), 120 ms atrás do objeto, e o feltro
+  (#mesa) fica a 50 %. Tudo por baixo do objeto, da fita e do texto. Nada sobre o still.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Pílula --rotulo 12 px, 24×40; rótulo 128 px
   Inter 700; a tira na letra da folha (--fonte-doc, Courier Prime 400, 86 px; o papel "eixo" para o portão, piso 84); crédito 56 px
@@ -93,12 +94,15 @@
 
   /* A MESA. Dois modos, pelo data-mesa do #palco (identidade §5):
      "satelite" = a mesa do vídeo 2 em diante (o still público por baixo da câmera, a luz como véu, o feltro a 50 %);
-     "feltro"   = a mesa de 30/09 (feltro sob a luz), o que vale ENQUANTO o still do istmo não existir em _media/base/.
+     "feltro"   = a mesa de 30/09 (feltro sob a luz), o fallback que valeu enquanto o still não existia (ligado em zona-do-canal-arte-3).
      Para ligar o satélite: pôr a imagem do still (id "still", o arquivo _media/base/mesa-<lugar>.png no atributo de origem, alt vazio) como
      1º filho do #palco e trocar data-mesa para "satelite". O script já move o #still com a câmera (a 0,6) se ele existir. */
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
+  /* o still com sangria de 1400 px (pedido zona-do-canal-arte-3: a câmera anda pela mesa): a imagem é 6640×4960 e o miolo
+     de 3840×2160 é o mesmo still, na mesma escala; a regra abaixo sobrescreve --mesa-satelite-margem só nesta cena */
+  #still { left: -1400px; top: -1400px; width: 6640px; height: 4960px; }
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
   #palco[data-mesa="satelite"] #cam { background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
       var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
@@ -158,7 +162,8 @@
 </style>
 </head>
 <body>
-<div id="palco" data-mesa="feltro" data-qc-sem-heroi="uma página federal real sobre a mesa: a cena não tem herói; o rótulo da folha é rótulo, a tira ampliada é o literal da página na letra da folha e a linha grifada é impressão da página (ofício do editor-de-arte §6; identidade §4.2)">
+<div id="palco" data-mesa="satelite" data-qc-sem-heroi="uma página federal real sobre a mesa: a cena não tem herói; o rótulo da folha é rótulo, a tira ampliada é o literal da página na letra da folha e a linha grifada é impressão da página (ofício do editor-de-arte §6; identidade §4.2)">
+  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" data-qc-reuso="a mesa do vídeo 2: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; ligado em zona-do-canal-arte-3)">
   <div id="cam">
     <div id="mesa"></div>
 

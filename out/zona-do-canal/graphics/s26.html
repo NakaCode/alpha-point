@@ -5,7 +5,7 @@
   Word-lock (−241.133) · inSec 241.133 · dur 5.5 (165 quadros a 30 fps; espelho.json de zona-do-canal, _quadros 7234→7399, palavras
   661–676). Modo do espelho: documento · Modelo da identidade: DOCUMENTO RECRIADO (a tabela da p. 247 do relatório anual de 1920,
   midia.md §7.1; regência › _espera_o_lucas 13, caminho padrão: recriar com o texto fiel e "Source:") sobre a MESA DO VÍDEO 2 (§5; o
-  still ainda não existe: abaixo), com o movimento A (§4.4). Lote F4.
+  still ligado em zona-do-canal-arte-3: abaixo), com o movimento A (§4.4). Lote F4.
 
   O que manda em cada coisa: a regência (s26: um beat, 0–5,5, regime normal; entra: grifo "white" 0,5 e "colored" 1,733; 250 ms de
   repouso antes do corte), os textos de tela (textos-tela.json › _textos_por_cena s26: o cabeçalho, a tabela com os valores impressos
@@ -38,8 +38,12 @@
   A MÍDIA: nenhuma de registro (midia_ancora "construída": a página real do Internet Archive é só prova). O literal é o de
   textos-tela.json s26 (folha_texto: B048, B049 do laudo de fatos).
 
-  A MESA: como na s24 (a luz como véu atrás da folha, o feltro a 50 %; o still ../_media/base/mesa-<lugar>.png NÃO EXISTE e fica
-  comentado no #palco até o Claude central entregá-lo).
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (15/10/2026, lote E3):
+  ../_media/base/mesa-zona-do-canal-sangria1400.png (Landsat 9 de 05/03/2024, USGS, domínio público, SEM crédito na tela; a
+  procedência em mesa-zona-do-canal-sangria1400.png.json), primeiro filho de #palco. A versão com SANGRIA de 1400 px porque a
+  câmera anda pela mesa (o push-in e a deriva do RIG): o <img> leva --mesa-satelite-margem: 1400px inline, e o miolo de
+  3840 × 2160 fica 1:1 com o palco (o quadro em repouso é o da versão sem sangria). O JS põe a classe com-still no #palco: a luz
+  vira véu, o feltro cai a 50 %, o still acompanha a câmera a 0,6. Como na s24: a luz como véu atrás da folha, o feltro a 50 %.
 
   A MARCA: ../../../marca/tokens.css (só var(--…)). Crédito 56 px --sec com data-qc-papel="credito" (o qc-tamanho reprova SÓ o
   crédito: a exceção registrada do canal, identidade §4.1). Margens 200/160 sob a câmera; canto inferior direito vazio. Courier Prime só
@@ -58,11 +62,8 @@
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
   #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
-  /* A MESA DO VÍDEO 2 (tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"): o still por baixo da câmera, 56 px além do palco.
-     O still deste vídeo (../_media/base/mesa-<lugar>.png) AINDA NÃO EXISTE (roupa §2: quem o entrega é o Claude central;
-     "se faltar, peça, não faça um"): a cena nasce sem o <img id="still">, no estado "a mesa sem satélite" do token
-     --mesa-satelite-opacidade (0 = sem still), e o recebe por UMA linha (ver o comentário no #palco). O CSS e o JS do
-     #still já estão aqui, guardados por if. */
+  /* A MESA DO VÍDEO 2 (tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"): o still por baixo da câmera, --mesa-satelite-margem além do
+     palco (56 px no token; 1400 px neste <img>, inline, porque é a versão com sangria: ver o cabeçalho, "A MESA"). */
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
@@ -119,10 +120,7 @@
 </head>
 <body>
 <div id="palco" data-qc-sem-heroi="a tabela recriada da p. 247 do relatório de 1920 sobre a mesa: a cena não tem herói; os cabeçalhos entre aspas são grifados e os valores ficam impressos, sem luz (ofício do editor-de-arte §6; identidade §4.2)">
-  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"): quando o Claude central entregar out/zona-do-canal/_media/base/mesa-<lugar>.png,
-       descomente a linha abaixo com o nome certo (e nada mais muda: o CSS e o JS do #still já estão aqui).
-  <img id="still" src="../_media/base/mesa-panama.png" alt="">
-  -->
+  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" style="--mesa-satelite-margem:1400px" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; ligado em zona-do-canal-arte-3)">
   <div id="cam">
     <div id="mesa"></div>
     <!-- a tabela recriada da p. 247 (3110 × 1160; miolo de 56 colunas, 5 linhas; centro 1920 × 1085; +0,8°) -->

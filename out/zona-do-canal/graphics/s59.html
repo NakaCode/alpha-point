@@ -104,9 +104,13 @@
   solta, um nó de texto só, marca-textos por Range, data-qc-fonte-livre), como em s44 (F8) e s56; o literal de cada tira é o
   trecho_ampliado do redator, sem aspas.
 
-  A MESA (identidade §5): o still de satélite NÃO EXISTE no disco (a pasta _media/base/ não existe); a roupa §2 manda pedir, não fazer.
-  FALLBACK DECLARADO: "feltro sob a luz" (tokens.css "A MESA"; --mesa-satelite-opacidade: 0), preparada para o still por uma linha (o
-  <img id="still"> comentado): o script troca sozinho a classe de #palco para "com-still".
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (15/10/2026, lote E8). O still do istmo
+  do Panamá (conceito: "Um still só sob todas as mesas"), Landsat 9 de 05/03/2024 (USGS, domínio público, SEM crédito na tela; a
+  procedência em ../_media/base/mesa-zona-do-canal-sangria1400.png.json), na versão com 1400 px de sangria (6640×4960: o mesmo centro e
+  a mesma escala do still de 3840×2160), porque a câmera anda pela mesa (o reenquadre no objeto, o push-in e a deriva, a 0,6 de
+  paralaxe; com 56 px a borda apareceria a partir de ~93 px de pan, com 1400 só acima de ~2.330 px, que a cena nunca tem): <img id="still">
+  como primeiro filho de #palco, a classe "com-still" no #palco e --mesa-satelite-margem: 1400px no próprio #still. O CSS passa a luz a
+  véu (--mesa-luz-veu-centro) e o feltro a 50 % (--mesa-satelite-feltro); o script acompanha o still a 0,6 da câmera. Nada sobre o still.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Cor: --grifo-cor nos grifos (o único --destaque,
   a 35 %); o herói em --tinta. Pílula --rotulo 12 px, 16×28 no papel legenda; legenda 84 px Inter 500; as tiras em --fonte-doc 400,
@@ -126,12 +130,12 @@
   #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
 
-  /* A MESA DO VÍDEO 2 (tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"): o still por baixo da câmera, 56 px além do palco.
-     O still deste vídeo (../_media/base/mesa-<lugar>.png) AINDA NÃO EXISTE (roupa §2: quem o entrega é a Sala; "se faltar,
-     peça, não faça um"): a cena nasce no FALLBACK "feltro sob a luz" (tokens.css "A MESA"; o 0 do token
-     --mesa-satelite-opacidade = "a mesa sem satélite") e o recebe por UMA linha (o <img id="still"> comentado no #palco):
-     o script troca sozinho a classe de #palco para "com-still" quando o elemento existir. */
-  #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
+  /* A MESA DO VÍDEO 2 (tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"): o still por baixo da câmera. Ligado em zona-do-canal-arte-3 (E8):
+     a versão sangria1400 (6640×4960) porque a câmera anda pela mesa; a margem do token (56 px) sobe para 1400 px SÓ no #still, e
+     o left/top/width/height abaixo seguem o token, como o tokens.css manda. A luz vira véu e o feltro cai a 50 % pela classe
+     "com-still" do #palco (o script também a liga quando o elemento existe). */
+  #still { --mesa-satelite-margem: 1400px; /* a versão sangria1400 (zona-do-canal-arte-3) */
+    position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
@@ -189,12 +193,9 @@
 </style>
 </head>
 <body>
-<div id="palco" class="sem-still" data-mesa="feltro">
-  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"): quando a Sala entregar out/zona-do-canal/_media/base/mesa-<lugar>.png,
-       descomente a linha abaixo com o nome certo. Nada mais muda: o script troca a classe de #palco para "com-still", e o CSS e o JS
-       do véu, do feltro a 50 % e da paralaxe (0,6) já estão aqui.
-  <img id="still" src="../_media/base/mesa-panama.png" alt="">
-  -->
+<div id="palco" class="com-still">
+  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"): ligado em zona-do-canal-arte-3 (E8); a versão sangria1400 porque a câmera anda. -->
+  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; conceito: Um still só sob todas as mesas)">
   <div id="cam">
     <div id="mesa"></div>
 

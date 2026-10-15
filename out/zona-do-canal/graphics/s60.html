@@ -63,6 +63,9 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s60 + s61 fundida (703,633 
     linha-1914-panama); 'Sources: Isthmian Canal Commission, 1905; Panama Canal Treaty, 1977' (0,8–11,767) e 'Source: U.S.
     Department of State, Department of State Bulletin, November 1979' (15,033 ao fim), a 56 px, em duas linhas, acima dela.
     O retrato: sem crédito na tela. A folha de 1947 e o Natural Earth vão na descrição (o NE é domínio público).
+  ZONA-DO-CANAL-ARTE-3 (Mb, mapista): a água escura ligada (agua-osm-zona, ODbL, coberta pelo '© OpenStreetMap contributors'
+    da linha da MapTiler), opaca, em --agua-base, logo acima do satélite; o canal abaixo das eclusas também escurece (o OSM o
+    conta como mar). Nada mais mudou.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -70,6 +73,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s60 + s61 fundida (703,633 
 <script src="../_media/_vendor/camera-mapa.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/zona-do-canal/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/agua-osm-zona.js"></script>
 <script src="../_media/geo/zona-do-canal-1947.js"></script>
 <script src="../_media/geo/linha-1914-panama.js"></script>
 <script src="../_media/geo/panama-ne.js"></script>
@@ -536,9 +540,14 @@ Department of State Bulletin, November 1979</div>
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
     // o tratamento C do satélite (identidade §6; Lucas, 09/10/2026): brilho 92 %, cor natural, contraste +25 %
-    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    // zona-do-canal-arte-3 (Mb): A ÁGUA ESCURA (identidade §6; Lucas, 08/10/2026): agua-osm-zona, opaca, em --agua-base, 2ª camada
+    // do estilo, logo acima do satélite e abaixo de tudo o que a cena desenha; geometria local, nenhum pedido de tile
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+                   agua: { type: "geojson", data: geo("agua-osm-zona") } };
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
+      { id: "agua-base", type: "fill", source: "agua",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } }] };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -903,6 +912,7 @@ Department of State Bulletin, November 1979</div>
           // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
           for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
           if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+          if (!map.getSource("agua") || !map.isSourceLoaded("agua")) return false;   // arte-3: a água escura
           return nivelUnico();
         } catch (e) { return false; }
       };

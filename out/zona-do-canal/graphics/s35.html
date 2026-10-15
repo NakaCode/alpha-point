@@ -82,11 +82,12 @@
   palavra. Por quê, e não o scan ampliado: a 1,4× (teto sem upscale) a altura de x do impresso daria ~5 px no 1080p, ilegível no celular.
   Um nó de texto só (white-space: pre), os marca-textos por Range (medidos depois de a Courier Prime carregar), e data-qc-fonte-livre.
 
-  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still de satélite do istmo (out/zona-do-canal/_media/base/mesa-<lugar>.png)
-  NÃO EXISTE no disco nesta tarefa (a pasta _media/base/ não existe), e a roupa §2 manda pedir, não fazer. FALLBACK DECLARADO: a mesa
-  "feltro sob a luz" (tokens.css, "A MESA"; identidade §5, a variante E aprovada em 30/09/2026; "--mesa-satelite-opacidade: 0 = a mesa
-  sem satélite"): --fundo + a luz (radial atrás do objeto principal, 120 ms atrás) + o feltro a 100 %, por baixo de tudo. A cena JÁ ESTÁ
-  PREPARADA para o still: descomentar o <img id="still"> (1º filho de #palco); o script troca sozinho a classe de #palco para "com-still".
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (15/10/2026): ../_media/base/mesa-zona-do-canal.png
+  (Landsat 9, USGS, 05/03/2024, domínio público, SEM crédito na tela; a procedência no .png.json ao lado), 1º filho de #palco; o script troca
+  a classe de #palco para "com-still": --fundo + o still + a luz como véu (--mesa-luz-veu-centro, radial atrás do objeto, 120 ms atrás) + o
+  feltro a 50 % (--mesa-satelite-feltro) + o objeto. A versão SEM sangria (margem 56 px), porque a câmera não viaja (movimento A): no pior
+  quadro (3,40 s em diante: s 1,07, centro 1800/1100, + a deriva de 6/4,8 px) o still, a paralaxe 0,6 (ss 1,042, deslocado ~79 px), ainda
+  passa ≥ 60 px além do quadro; a 1,00 (o pouso), ≥ 52 px (56 − a deriva × 0,6). Nenhuma borda do still em nenhum quadro.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Cor: --grifo-cor no grifo (o único --destaque da
   cena, a 35 %: a página não é ator; a paleta do vídeo espera o Lucas e entra por token). Pílula --rotulo 12 px, 16×28 no papel legenda;
@@ -107,10 +108,10 @@
   #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
   /* A MESA DO VÍDEO 2 (tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"): o still por baixo da câmera, 56 px além do palco.
-     O still deste vídeo (../_media/base/mesa-<lugar>.png) AINDA NÃO EXISTE (roupa §2: quem o entrega é a Sala; "se faltar,
-     peça, não faça um"): a cena nasce no FALLBACK "feltro sob a luz" (tokens.css "A MESA"; o 0 do token
-     --mesa-satelite-opacidade = "a mesa sem satélite") e o recebe por UMA linha (o <img id="still"> comentado no #palco):
-     o script troca sozinho a classe de #palco para "com-still" quando o elemento existir. */
+     O still deste vídeo, ../_media/base/mesa-zona-do-canal.png (sem sangria), está LIGADO desde zona-do-canal-arte-3: o <img id="still">
+     é o 1º filho de #palco, e o script troca a classe de #palco para "com-still" (a luz vira véu, o feltro baixa a --mesa-satelite-feltro).
+     Sem o elemento a cena cairia no FALLBACK "feltro sob a luz" (tokens.css "A MESA"; o 0 de --mesa-satelite-opacidade); com o src
+     quebrado, quem reprova é o gate de mídia (qc-src-existe). */
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
@@ -183,11 +184,11 @@
 </head>
 <body>
 <div id="palco" class="sem-still" data-mesa="feltro" data-qc-sem-heroi="a página real da lei de 1937 sobre a mesa: a cena não tem herói; a referência da peça é legenda, as frases são impressão da página e a tira literal é o trecho ampliado (ofício do editor-de-arte §6; identidade §4.2 e §5)">
-  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"): quando a Sala entregar out/zona-do-canal/_media/base/mesa-<lugar>.png,
-       descomente a linha abaixo com o nome certo. Nada mais muda: o script troca a classe de #palco para "com-still", e o CSS e o JS
-       do véu, do feltro a 50 % e da paralaxe (0,6) já estão aqui.
-  <img id="still" src="../_media/base/mesa-panama.png" alt="">
-  -->
+  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (15/10/2026). Landsat 9 (USGS)
+       de 05/03/2024, domínio público, SEM crédito na tela (a procedência em ../_media/base/mesa-zona-do-canal.png.json). A versão SEM
+       sangria (56 px de margem): a câmera não viaja (movimento A), e no pior quadro o still ainda passa do quadro (o cálculo em A MESA, acima).
+       O script troca a classe de #palco para "com-still"; o véu, o feltro a 50 % e a paralaxe (0,6) já estavam aqui. -->
+  <img id="still" src="../_media/base/mesa-zona-do-canal.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; pedido-comum de zona-do-canal-arte-3)">
   <div id="cam">
     <div id="mesa"></div>
 

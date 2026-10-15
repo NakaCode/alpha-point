@@ -108,9 +108,11 @@
     data_na_origem "September 9, 1954"; aviso_de_ano: true). Nenhum upscale, filtro ou recorte que mude o sentido. O crédito na faixa é o do
     DADO do censo ("Source: U.S. Census Bureau, 1960", textos de tela; _dados/s39.json: Table 28, p. 57-33), não da foto.
 
-  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still de satélite do istmo (../_media/base/mesa-<lugar>.png) NÃO EXISTE nesta
-  máquina: a roupa §2 manda pedir à Sala e não fazer um. FALLBACK DECLARADO: a mesa "feltro sob a luz" (tokens.css "A MESA"; o 0 do token
-  --mesa-satelite-opacidade). A cena está pronta para o still (o <img id="still"> comentado no #palco; o script liga o modo satélite sozinho).
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (15/10/2026): ../_media/base/mesa-zona-do-canal.png
+  (Landsat 9, USGS, 05/03/2024, domínio público, SEM crédito na tela; a procedência no .png.json ao lado), 1º filho de #palco; o script liga o
+  modo satélite (a luz como véu, o feltro a 50 %). A versão SEM sangria (margem 56 px): a câmera não viaja (Ken Burns até 1,028 + o push-in
+  do RIG = 1,045, centro 1870/1090, + a deriva de 6/4,8 px); a paralaxe 0,6 (ss ≤ 1,027, deslocado ~35 px) deixa o still ≥ 52 px além do
+  quadro em todo instante (o mínimo é a 1,000, nas folhas: 56 − a deriva × 0,6). Nenhuma borda do still.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Crédito 56 px --sec (Lucas, 07/10/2026) em x = 200,
   abaixo de y = 1880, nunca encolhe, com data-qc-papel="credito": o qc-tamanho vai reprovar SÓ o crédito (56 < 72 do ofício), a exceção
@@ -132,10 +134,10 @@
   #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
   /* A MESA DO VÍDEO 2 (tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"): o still por baixo da câmera, 56 px além do palco.
-     O still deste vídeo (../_media/base/mesa-<lugar>.png) AINDA NÃO EXISTE (roupa §2: quem o entrega é a Sala; "se faltar,
-     peça, não faça um"): a cena nasce no FALLBACK "feltro sob a luz" (tokens.css "A MESA"; o 0 do token
-     --mesa-satelite-opacidade = "a mesa sem satélite") e o recebe por UMA linha (o <img id="still"> comentado no #palco):
-     o script troca sozinho a classe de #palco para "com-still" quando o elemento existir. */
+     O still deste vídeo, ../_media/base/mesa-zona-do-canal.png (sem sangria), está LIGADO desde zona-do-canal-arte-3: o <img id="still">
+     é o 1º filho de #palco, e o script troca a classe de #palco para "com-still" (a luz vira véu, o feltro baixa a --mesa-satelite-feltro).
+     Sem o elemento a cena cairia no FALLBACK "feltro sob a luz" (tokens.css "A MESA"; o 0 de --mesa-satelite-opacidade); com o src
+     quebrado, quem reprova é o gate de mídia (qc-src-existe). */
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
@@ -211,11 +213,11 @@
 </head>
 <body>
 <div id="palco" class="sem-still" data-mesa="feltro" data-qc-sem-heroi="a foto impressa de 1954 sobre a mesa com o dado do censo de 1960 ao lado, e depois as duas folhas de pagamento desenhadas: a cena não tem herói; o lugar é rótulo, o ano é aviso, o número é cota (textos de tela) e os cabeçalhos das folhas são rótulos (ofício do editor-de-arte §6; identidade §4.2)">
-  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"): quando a Sala entregar out/zona-do-canal/_media/base/mesa-<lugar>.png,
-       descomente a linha abaixo com o nome certo. Nada mais muda: o script troca a classe de #palco para "com-still", e o CSS e o JS
-       do véu, do feltro a 50 % e da paralaxe (0,6) já estão aqui.
-  <img id="still" src="../_media/base/mesa-panama.png" alt="">
-  -->
+  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (15/10/2026). Landsat 9 (USGS)
+       de 05/03/2024, domínio público, SEM crédito na tela (a procedência em ../_media/base/mesa-zona-do-canal.png.json). A versão SEM
+       sangria (56 px de margem): a câmera não viaja (movimento A), e no pior quadro o still ainda passa do quadro (o cálculo em A MESA, acima).
+       O script troca a classe de #palco para "com-still"; o véu, o feltro a 50 % e a paralaxe (0,6) já estavam aqui. -->
+  <img id="still" src="../_media/base/mesa-zona-do-canal.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; pedido-comum de zona-do-canal-arte-3)">
   <div id="cam">
     <div id="mesa"></div>
 

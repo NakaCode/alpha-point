@@ -94,9 +94,18 @@
     o sentido: a foto a 0,30× (o recorte tira só o cartão e a legenda do acervo), a folha a 1,3× (× 1,03 = 1,372 ≤ 1,4),
     recortes de linhas inteiras.
 
-  A MESA: o still de satélite (out/zona-do-canal/_media/base/mesa-<lugar>.png) NÃO EXISTE no disco nesta tarefa; FALLBACK
-  DECLARADO: "feltro sob a luz" (tokens.css, "A MESA"), já preparada para o still (ver o cabeçalho da s12: inserir o
-  <img id="still"> como primeiro filho de #palco e trocar a classe "sem-still" por "com-still").
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still LIGADO em zona-do-canal-arte-3 (lote E2, 15/10/2026):
+    ../_media/base/mesa-zona-do-canal.png  3840×2160  sha256 ac80447bcaade146052bfc70b3fb65b5f9346b7eba2481a0b1041967cdc1b9ea
+      · Landsat 9 (USGS), 05/03/2024, via Planetary Computer; domínio público, SEM crédito na tela (identidade §7); a procedência
+      ao lado (mesa-zona-do-canal.png.json). Base da mesa: fora da regra da conferência (não é mídia de cena).
+  #still é o primeiro filho de #palco, 56 px além do quadro (--mesa-satelite-margem), e acompanha a câmera a 0,6
+  (--mesa-satelite-paralaxe); a luz é o véu no fundo de #cam (--mesa-luz-veu-centro) e o feltro #mesa fica a 50 %
+  (--mesa-satelite-feltro). Tudo por baixo da folha, da foto, da fita e do texto; nada sobre o still.
+  A VERSÃO SEM SANGRIA, e não a sangria1400: a identidade §4.4 ("sem viagem de câmera: o still de satélite com 56 px de sangria
+  basta"; o still com sangria é da linguagem B, que não entrou), como em todas as cenas de mesa de Los Angeles. A conta da borda:
+  o elemento tem 3952 × 2272 e recebe scale(ss) translate(0,6·dx, 0,6·dy); a borda esquerda só entraria no quadro se
+  ss · (1976 − 0,6·dx) < 1920. Nesta cena dx ≤ 56 (cx 1870 em 1,50 s, + 6 de deriva) e ss = 1,014 (s = 1,0236): 1,014 × (1976 − 33,6) = 1969,7 ≥ 1920, sobram ~50 px; na vertical dy ≤ 4,8, sobram
+  ~53 px. Conferido no quadro de maior avanço da câmera (t = 1,5 s).
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). --grifo-cor no grifo (o único
   --destaque, a 35 %). Pílula --rotulo 12 px, 24×40 (o aviso e o rótulo da folha 16×28); rótulo 128 px Inter 700; aviso
@@ -118,7 +127,7 @@
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
 
   /* A MESA DO VÍDEO 2 (tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"): o still por baixo da câmera, 56 px além do palco.
-     O elemento #still ainda não existe nesta entrega (ver o cabeçalho): o CSS fica pronto para ele. */
+     O still está ligado (zona-do-canal-arte-3; ver o cabeçalho): #still é o primeiro filho de #palco. */
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
@@ -178,7 +187,8 @@
 </style>
 </head>
 <body>
-<div id="palco" class="sem-still" data-qc-sem-heroi="a foto impressa do tribunal e a página real da lei sobre a mesa: a cena não tem herói; o lugar é rótulo, o ano é aviso, a referência da peça é legenda e a frase é impressão da página com a tira literal (ofício do editor-de-arte §6; identidade §4.2 e §5)">
+<div id="palco" class="com-still" data-qc-sem-heroi="a foto impressa do tribunal e a página real da lei sobre a mesa: a cena não tem herói; o lugar é rótulo, o ano é aviso, a referência da peça é legenda e a frase é impressão da página com a tira literal (ofício do editor-de-arte §6; identidade §4.2 e §5)">
+  <img id="still" src="../_media/base/mesa-zona-do-canal.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; ligado em zona-do-canal-arte-3)">
   <div id="cam">
     <div id="mesa"></div>
 

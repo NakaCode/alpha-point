@@ -70,13 +70,13 @@
     O tribunal (NARA 202800699 de 1951 e 100997672 de 1936): vereditos 'trocar', NÃO citados (o caminho vazio do espelho).
   Sem crédito na tela (domínio público federal; crédito supérfluo reprova). Sem --destaque (nenhum protagonista nesta mesa).
 
-  A MESA (identidade §5): a regra do vídeo 2 em diante é "satélite sob a luz", com UM still público do lugar do vídeo (aqui, o istmo
-  do Panamá, Landsat) em out/zona-do-canal/_media/base/mesa-<lugar>.png. ESSE STILL NÃO EXISTE NO DISCO (15/10/2026; a pasta
-  _media/base/ não existe) e a roupa manda "se faltar, peça, não faça um" (§2) e "você não vai à rede" (§0). Por isso a cena abre com
-  data-mesa="feltro": a mesa de 30/09 (feltro sob a luz, tokens "A MESA"), sem still, e com a troca pronta: pôr o
-  a imagem do still (id "still", o arquivo ../_media/base/mesa-panama.png no atributo de origem) como 1º filho do #palco e trocar
-  data-mesa para "satelite" (o CSS e o
-  script já tratam o still com paralaxe 0,6). PEDIDO À SALA no relato (out/zona-do-canal/_tmp/setores/arte-1/F1.md).
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): satélite sob a luz, com o still ligado em zona-do-canal-arte-3 (15/10/2026):
+    ../_media/base/mesa-zona-do-canal.png  3840×2160  sha256 ac80447b… · Landsat 9 (USGS), 05/03/2024, via Planetary Computer,
+    domínio público, SEM crédito na tela (a procedência ao lado, .png.json). Base da mesa: fora da regra da conferência.
+  #still é o 1º filho do #palco, 56 px além do quadro (--mesa-satelite-margem): o centro da câmera é fixo (1920/1080); só o push-in do RIG (que AUMENTA a folga) e a deriva
+  de 6/4,8 px, que movem o still 3,6/2,9 px a 0,6: a borda fica a ≥ 52 px fora do quadro em todo t.
+  O still acompanha a câmera a 0,6 (--mesa-satelite-paralaxe); data-mesa="satelite": a luz é o véu (--mesa-luz-veu-centro), 120 ms
+  atrás do objeto, e o feltro (#mesa) fica a 50 %. Tudo por baixo do objeto, da fita e do texto. Nada sobre o still.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Pílula --rotulo 12 px, 24×40 (o aviso 16×28);
   rótulo 128 px Inter 700 (os dois rótulos de lugar a 112, acima); aviso 84 px Inter 500. Margens 200/160 sob a câmera; faixa abaixo
@@ -98,7 +98,7 @@
 
   /* A MESA. Dois modos, pelo data-mesa do #palco (identidade §5):
      "satelite" = a mesa do vídeo 2 em diante (o still público por baixo da câmera, a luz como véu, o feltro a 50 %);
-     "feltro"   = a mesa de 30/09 (feltro sob a luz), o que vale ENQUANTO o still do istmo não existir em _media/base/.
+     "feltro"   = a mesa de 30/09 (feltro sob a luz), o fallback que valeu enquanto o still não existia (ligado em zona-do-canal-arte-3).
      Para ligar o satélite: pôr a imagem do still (id "still", o arquivo _media/base/mesa-<lugar>.png no atributo de origem, alt vazio) como
      1º filho do #palco e trocar data-mesa para "satelite". O script já move o #still com a câmera (a 0,6) se ele existir. */
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
@@ -151,7 +151,8 @@
 </style>
 </head>
 <body>
-<div id="palco" data-mesa="feltro" data-qc-sem-heroi="duas fotos impressas sobre a mesa: a cena não tem herói; os nomes de lugar e as datas são rótulos (128/112 px) e os avisos são legenda (ofício do editor-de-arte §6; identidade §4.2)">
+<div id="palco" data-mesa="satelite" data-qc-sem-heroi="duas fotos impressas sobre a mesa: a cena não tem herói; os nomes de lugar e as datas são rótulos (128/112 px) e os avisos são legenda (ofício do editor-de-arte §6; identidade §4.2)">
+  <img id="still" src="../_media/base/mesa-zona-do-canal.png" alt="" data-qc-reuso="a mesa do vídeo 2: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; ligado em zona-do-canal-arte-3)">
   <div id="cam">
     <div id="mesa"></div>
 

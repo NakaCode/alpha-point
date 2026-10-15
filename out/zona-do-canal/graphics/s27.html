@@ -76,9 +76,12 @@
     com data-qc-papel="credito"; entra com o 1º valor e fica até o fim. O qc-tamanho vai reprovar SÓ o crédito (56 < 72 do
     ofício): a exceção registrada do canal (identidade §4.1, "Crédito a 56 px").
 
-  A MESA (identidade §5): o still do istmo do Panamá AINDA NÃO EXISTE (roupa §2: "se faltar, peça, não faça um"). Até ele chegar, a
-    mesa de 30/09 (feltro sob a luz), pronta para a troca: <img id="still" src="../_media/base/mesa-<lugar>.png" alt=""> como
-    primeiro filho de #palco e a classe "com-still" no #palco.
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (15/10/2026). O still do istmo
+    do Panamá (o conceito: "Um still só sob todas as mesas"), Landsat 9 de 05/03/2024 (USGS, domínio público, SEM crédito na
+    tela; a procedência em ../_media/base/mesa-zona-do-canal-sangria1400.png.json), na versão com 1400 px de sangria (6640×4960),
+    porque a câmera anda (push-in e deriva): <img id="still"> como primeiro filho de #palco, a classe "com-still" no #palco e
+    --mesa-satelite-margem: 1400px no próprio #still. O script acompanha o #still a 0,6 da câmera (--mesa-satelite-paralaxe);
+    o CSS passa a luz a véu e o feltro a 50 % (--mesa-satelite-feltro). Nada sobre o still: nem rótulo, nem ponto.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Rótulos 128 px Inter 700, soltos (sem pílula);
   os valores no papel cota (eixo) a 100 px, Inter 700, algarismos tabulares (o papel cota vai até o teto do eixo, 104; acima dos
@@ -100,7 +103,8 @@
 
   /* A MESA. Com o still (identidade §5, vídeo 2 em diante): #still por baixo da câmera; a luz vira véu e o feltro fica a 50 %.
      Sem ele (hoje: o still do istmo ainda não chegou), a mesa de 30/09: feltro sob a luz. */
-  #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
+  #still { --mesa-satelite-margem: 1400px; /* a versão sangria1400 (zona-do-canal-arte-3) */
+    position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
@@ -130,7 +134,8 @@
 </style>
 </head>
 <body>
-<div id="palco" data-qc-sem-heroi="desenho de comparação sobre a mesa (identidade §5, números e escala): os valores são cotas no topo das colunas, como os textos de tela mandam; nenhum herói (identidade §4.2)">
+<div id="palco" class="com-still" data-qc-sem-heroi="desenho de comparação sobre a mesa (identidade §5, números e escala): os valores são cotas no topo das colunas, como os textos de tela mandam; nenhum herói (identidade §4.2)">
+  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; conceito: Um still só sob todas as mesas)">
   <div id="cam">
     <div id="luz"></div>
     <div id="mesa"></div>

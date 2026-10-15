@@ -18,7 +18,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s11 (78,6 → 95,2 s do mas
     · b1 (0–3,7): o istmo inteiro; o eixo do canal (eixo-do-canal, OSM) se desenha do Caribe ao Pacífico (0,2–1,8 s), como
       linha d'água escura de borda clara; em '"in' (2,42) a legenda '"in perpetuity" · to build, run and protect the
       canal' (sempre com a finalidade, R01) e a linha de fonte 'Source: Isthmian Canal Convention, 1903, Art. II' (até 10,533).
-    · b2 (3,7–10,533): em 'ten' (4,233) as duas bordas do esquema (faixa-art2-5mi: o buffer de 8.046,72 m do eixo do OSM)
+    · b2 (3,7–10,533): em 'ten' (4,233) as duas bordas do esquema (faixa-art2-5mi-mar3mn desde a arte-3: o buffer de 8.046,72 m do eixo do OSM, até 3 mn no mar)
       se afastam do eixo em 1,5 s: cada vértice da borda anda do seu ponto mais próximo no eixo até a posição real, o que
       desenha a faixa de 0 a 5 milhas sem forma inventada; a legenda 'Art. II, 1903 treaty (schematic)' na mesma palavra
       (o esquema se declara); em 'five' (5,6) as duas cotas '5 MILES', com a linha de cota do eixo até cada borda, num
@@ -45,6 +45,21 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s11 (78,6 → 95,2 s do mas
   eixo, da faixa, da linha-1914-panama e dos pontos-osm-atlantico); 'Source: Isthmian Canal Convention, 1903, Art. II' de
   2,4 a 10,533, sem a marca de mapa (o qc-tamanho cobra 72 dele: exceção de crédito, identidade §4.1).
   NÃO VAI: '(8 km)', '(16 km)', '10 MILES WIDE', 'THE CAPITAL', '1914' na linha.
+  RODADA arte-3 (mapista, lote Ma, 15/10/2026): (1) a faixa passa a faixa-art2-5mi-mar3mn (o Art. II até 3 milhas náuticas
+  mar adentro nas duas pontas, pauta-geo, r5): a península de Panama City (Casco Viejo, El Chorrillo) fica DENTRO dos limites,
+  como a fala diz ("sat inside those limits"); na abertura, os vértices do trecho no mar saem da ponta do eixo do OSM; (2) a
+  água escura (agua-osm-zona, identidade §6), 2ª camada do estilo em --agua-base; ela escurece também o canal abaixo das
+  eclusas, que o OSM conta como mar (fica: é a costa real do OSM, e recortá-la seria geometria inventada); (3) a série dos
+  mapas: as cotas '5 MILES' passam de 84 px (cota) a pílula de rótulo de 128 px, e "the line" (linha-1914-panama) vai em
+  --destaque, 10 sobre 22 px, como na s20. (4) Consequência da faixa nova: a borda leste passa agora a leste da península, e a
+  pílula 'Panama City' de uma linha (830 px) caía sobre ela; a pílula vai em duas linhas ('Panama' / 'City'), presa a um ponto
+  no mar a leste da linha e dentro da faixa, e o pouso do Pacífico fica mais perto (zoom 12,6 → 13,15–13,22) para caber entre a
+  linha e a borda; a viagem até lá passa a 8,9–10,5 s (era 9,95–11,6), para a pílula entrar em 'Panama' com a câmera parada, e as
+  cotas '5 MILES' saem em 8,9 (eram 9,95; ficam 3,3 s no ar). (5) A borda leste da faixa nova passa também sob a pílula 'Colón':
+  ela vai para cima da cidade, no mar, entre o eixo e a borda (a ~100 px de cada), e o pouso do Atlântico fecha de 12,3–12,4 a
+  12,55–12,65 (cerca de 50 × 28 km, ainda quadro largo, sem close de Colón). (6) As cotas a 128 px afastam-se 140 px da borda (eram
+  44) e 40 px no sentido dela, para a pílula não encostar na linha; o istmo abre 0,08 de zoom mais largo, para caber a faixa mais
+  longa.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -53,10 +68,11 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s11 (78,6 → 95,2 s do mas
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/zona-do-canal/_pesquisa/pauta-geo.json): -->
 <script src="../_media/geo/eixo-do-canal.js"></script>
-<script src="../_media/geo/faixa-art2-5mi.js"></script>
+<script src="../_media/geo/faixa-art2-5mi-mar3mn.js"></script>
 <script src="../_media/geo/linha-1914-panama.js"></script>
 <script src="../_media/geo/divisa-zona-1947.js"></script>
 <script src="../_media/geo/pontos-osm-atlantico.js"></script>
+<script src="../_media/geo/agua-osm-zona.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -136,6 +152,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s11 (78,6 → 95,2 s do mas
   #terr { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 20; }
   .rotulo.legenda.larga { white-space: normal; width: 1480px; line-height: 1.2; }
   .cotaLinhaSob { fill: none; stroke: var(--rotulo); stroke-width: 12; stroke-linecap: butt; }
+  .rotulo.duas { white-space: pre; line-height: 1.08; }   /* arte-3: Panama City em duas linhas, como o dado da s20 */
   .cotaLinha { fill: none; stroke: var(--tinta); stroke-width: 5; stroke-linecap: butt; }
 </style>
 </head>
@@ -149,9 +166,10 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s11 (78,6 → 95,2 s do mas
 
     <div class="rotulo legenda larga" id="rotPerp" data-qc-papel="legenda">"in perpetuity" · to build, run and protect the canal</div>
     <div class="rotulo legenda liso" id="rotEsq" data-qc-papel="legenda">Art. II, 1903 treaty (schematic)</div>
-    <div class="cota" id="cotaO" data-qc-papel="eixo">5 MILES</div>
-    <div class="cota" id="cotaL" data-qc-papel="eixo">5 MILES</div>
-    <div class="rotulo liso" id="rotPan" data-qc-papel="rotulo">Panama City</div>
+    <div class="rotulo caixa liso" id="cotaO" data-qc-papel="rotulo">5 MILES</div>
+    <div class="rotulo caixa liso" id="cotaL" data-qc-papel="rotulo">5 MILES</div>
+    <div class="rotulo duas" id="rotPan" data-qc-papel="rotulo">Panama
+City</div>
     <div class="rotulo liso" id="rotColon" data-qc-papel="rotulo">Colón</div>
     <div class="rotulo legenda liso" id="rot1947" data-qc-papel="legenda">Boundary as mapped in 1947</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
@@ -173,35 +191,36 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s11 (78,6 → 95,2 s do mas
   var CENA = {
     duracao: 16.6,                                   // espelho.json › s11 › dur
     perfil: "maptiler",
-    fontes: [],
+    agua: "agua-osm-zona",                           // a água escura (identidade §6), arte-3
+    fontes: ["aguaBase"],
     pontos: {
-      Q0a: { lng: -79.500, lat: 9.150, zoom: 11.05 },   // o istmo, a faixa à esquerda, as legendas à direita
-      Q0b: { lng: -79.510, lat: 9.145, zoom: 11.15 },
-      Q1a: { lng: -79.520, lat: 8.965, zoom: 12.60 },   // a ponta do Pacífico: a linha e Panama City
-      Q1b: { lng: -79.522, lat: 8.966, zoom: 12.68 },
-      Q2a: { lng: -79.880, lat: 9.340, zoom: 12.30 },   // a ponta do Atlântico, quadro largo
-      Q2b: { lng: -79.882, lat: 9.341, zoom: 12.40 }
+      Q0a: { lng: -79.500, lat: 9.150, zoom: 10.97 },   // arte-3: −0,08, a faixa nova é 11 km mais longa   // o istmo, a faixa à esquerda, as legendas à direita
+      Q0b: { lng: -79.510, lat: 9.145, zoom: 11.07 },
+      Q1a: { lng: -79.545, lat: 8.945, zoom: 13.15 },   // a ponta do Pacífico: a linha e Panama City (arte-3: mais perto, para a pílula caber entre a linha e a borda da faixa)
+      Q1b: { lng: -79.546, lat: 8.946, zoom: 13.22 },
+      Q2a: { lng: -79.880, lat: 9.340, zoom: 12.55 },   // a ponta do Atlântico, quadro largo (arte-3: 12,3 → 12,55, para a pílula caber entre o eixo e a borda nova)
+      Q2b: { lng: -79.882, lat: 9.341, zoom: 12.65 }
     },
     pernas: [
-      { t0: 0,      t1: 9.95,  de: "Q0a", para: "Q0b", tipo: "h" },
-      { t0: 9.95,   t1: 11.60, de: "Q0b", para: "Q1a", tipo: "v" },
-      { t0: 11.60,  t1: 12.25, de: "Q1a", para: "Q1b", tipo: "h" },
+      { t0: 0,      t1: 8.90,  de: "Q0a", para: "Q0b", tipo: "h" },
+      { t0: 8.90,   t1: 10.50, de: "Q0b", para: "Q1a", tipo: "v" },   // arte-3: a viagem chega antes de 'Panama' (a pílula entra parada)
+      { t0: 10.50,  t1: 12.25, de: "Q1a", para: "Q1b", tipo: "h" },
       { t0: 12.25,  t1: 14.00, de: "Q1b", para: "Q2a", tipo: "v" },
       { t0: 14.00,  t1: 16.6,  de: "Q2a", para: "Q2b", tipo: "h" }
     ],
     giro: [-1.5, 1.5],
     eixo: { desenha: [0.2, 1.8] },
     faixa: { abre: 4.233, abreDur: 1.5, enche: 5.6, encheDur: 0.5, recua: 10.533, recuaDur: 0.5, recuaPara: 0 },
-    cotas: { indice: 80, entra: 5.6, sai: 9.95 },
+    cotas: { indice: 80, entra: 5.6, sai: 8.9 },
     linhaPan: { desenha: 10.533, dur: 0.6 },
     linhaColon: { desenha: 13.4, dur: 0.6 },
     rotulos: [
       { id: "rotPerp",  tela: [3640, 760],  lado: "esquerda", vert: "baixo", entra: 2.42,  sai: 10.533 },
       { id: "rotEsq",   tela: [3640, 160],  lado: "esquerda", vert: "baixo", entra: 4.233, sai: null },
-      { id: "cotaO",    ref: "cotaO", lado: "esquerda", dx: -44, entra: 5.6, sai: 9.95 },
-      { id: "cotaL",    ref: "cotaL", lado: "direita",  dx: 44,  entra: 5.6, sai: 9.95 },
-      { id: "rotPan",   ref: "pan",   lado: "direita", dx: 72, entra: 10.533, sai: 12.25 },
-      { id: "rotColon", ref: "colon", lado: "direita", dx: 72, entra: 13.6,   sai: null },
+      { id: "cotaO",    ref: "cotaO", lado: "esquerda", dx: -140, dy: 40, entra: 5.6, sai: 8.9 },
+      { id: "cotaL",    ref: "cotaL", lado: "direita",  dx: 140, dy: -40, entra: 5.6, sai: 8.9 },
+      { id: "rotPan",   lnglat: [-79.54264, 8.95110], lado: "direita", vert: "baixo", entra: 10.533, sai: 12.25 },   // arte-3: a leste da linha, dentro da faixa, em duas linhas
+      { id: "rotColon", lnglat: [-79.88332, 9.36366], vert: "cima", entra: 13.6, sai: null },   // arte-3: acima de Colón, entre o eixo e a borda nova da faixa
       { id: "rot1947",  tela: [3640, 300],  lado: "esquerda", vert: "baixo", entra: 13.6, sai: null }
     ],
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0,
@@ -423,7 +442,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s11 (78,6 → 95,2 s do mas
   }
 
   // ═══ O DESENHO DA CENA ═══════════════════════════════════════════════════════════════════════════
-var EIXO = feicao("eixo-do-canal"), FAIXA = feicao("faixa-art2-5mi"), LPAN = feicao("linha-1914-panama");
+var EIXO = feicao("eixo-do-canal"), FAIXA = feicao("faixa-art2-5mi-mar3mn"), LPAN = feicao("linha-1914-panama");
   var HCOLON = (geo("divisa-zona-1947") || { features: [] }).features.filter(function (f) { return f.properties && f.properties.trecho === "H-colon"; })[0];
   var COLON = pontoNome("pontos-osm-atlantico", "Colón");
   if (!HCOLON) falhar("não achei o trecho H-colon em divisa-zona-1947.");
@@ -466,7 +485,6 @@ var EIXO = feicao("eixo-do-canal"), FAIXA = feicao("faixa-art2-5mi"), LPAN = fei
     r.p = r.lnglat || REFS[r.ref] || null; if (!r.p) falhar("o rótulo " + r.id + " não tem âncora.");
   });
   // a pílula de Panama City do lado de fora (leste) da linha: o ponto mais a leste da metade norte da linha
-  (function () { var m = LP[0]; LP.forEach(function (p) { if (p[0] > m[0]) m = p; }); var r = rotuloPorIdLocal("rotPan"); if (r) r.p = m; })();
   function rotuloPorIdLocal(id) { return CENA.rotulos.filter(function (r) { return r.id === id; })[0]; }
   if (window.__erroCena) return;
 
@@ -501,11 +519,16 @@ var EIXO = feicao("eixo-do-canal"), FAIXA = feicao("faixa-art2-5mi"), LPAN = fei
       }
     }
     // as divisas: a linha junto a Panama City e a de 1947 junto a Colón (o tratamento de fronteira da marca)
-    [[LP, CENA.linhaPan], [LC, CENA.linhaColon]].forEach(function (par) {
+    [[LP, CENA.linhaPan, true], [LC, CENA.linhaColon, false]].forEach(function (par) {
       var u = eio(seg(t, par[1].desenha, par[1].dur)); if (u <= 0) return;
       var pl = parcial(proj(par[0]), u); if (pl.length < 2) return;
       g.beginPath(); trilha(g, pl);
-      g.globalAlpha = 1; g.strokeStyle = COR.fronteiraSob; g.lineWidth = FRS_W + 8; g.stroke();
+      g.globalAlpha = 1;
+      if (par[2]) {   // arte-3, a série dos mapas: "the line" (linha-1914-panama) em --destaque, 10 sobre 22 px, como na s20
+        g.strokeStyle = COR.fronteiraSob; g.lineWidth = 22; g.stroke();
+        g.strokeStyle = COR.destaque; g.lineWidth = 10; g.stroke(); return;
+      }
+      g.strokeStyle = COR.fronteiraSob; g.lineWidth = FRS_W + 8; g.stroke();
       g.strokeStyle = COR.fronteira; g.lineWidth = FR_W + 3; g.stroke();   // a linha é o assunto do beat: 8 sobre 20 px (a divisa de fundo fica em 5 sobre 12)
     });
     g.globalAlpha = 1;
@@ -531,8 +554,16 @@ var EIXO = feicao("eixo-do-canal"), FAIXA = feicao("faixa-art2-5mi"), LPAN = fei
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
-    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };   // identidade §6: o tratamento C (Lucas, 09/10/2026)
+    var camadas = [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }];   // identidade §6: o tratamento C (Lucas, 09/10/2026)
+    // arte-3: a água escura (identidade §6, "A água escura"): a 2ª camada do estilo, opaca em --agua-base, logo acima do
+    // satélite e abaixo de tudo o que a cena desenha (CENA.agua = o slug do OSM; arquivo local, não pede tile)
+    if (CENA.agua) {
+      fontes.aguaBase = { type: "geojson", data: geo(CENA.agua) };
+      camadas.push({ id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } });
+    }
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────

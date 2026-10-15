@@ -37,6 +37,10 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s06 (25,8 → 46,567 s do m
   mapa (o qc-tamanho cobra 72 dele: exceção de crédito, identidade §4.1).
   NÃO VAI: '10 MILES WIDE (16 km)' (textos-tela › nao_vai_para_tela: o contorno de 1947 não é a faixa); nenhum km.
   'Paraíso' com acento na tela (a origem escreve 'Paraiso'; a grafia é do referente).
+  RODADA arte-3 (mapista, lote Ma, 15/10/2026): a água escura (agua-osm-zona, identidade §6), 2ª camada do estilo em
+  --agua-base, logo acima do satélite; ela escurece também o canal abaixo das eclusas, que o OSM conta como mar (fica: é a
+  costa real do OSM, e recortá-la seria geometria inventada). A série dos mapas: o dado do cartão ('7 OF 3,113', '3 OF 3,688')
+  já estava a 128 px (--fs-rotulo, papel rotulo) desde o M1; a classe .cota do corpo comum não tem elemento nesta cena.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -48,6 +52,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s06 (25,8 → 46,567 s do m
 <script src="../_media/geo/eixo-do-canal.js"></script>
 <script src="../_media/geo/pontos-osm-hoje.js"></script>
 <script src="../_media/geo/lugares-1947.js"></script>
+<script src="../_media/geo/agua-osm-zona.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -177,7 +182,8 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s06 (25,8 → 46,567 s do m
   var CENA = {
     duracao: 20.767,                                 // espelho.json › s06 › dur
     perfil: "maptiler",
-    fontes: [],
+    agua: "agua-osm-zona",                           // a água escura (identidade §6), arte-3
+    fontes: ["aguaBase"],
     pontos: {
       P0a: { lng: -79.750, lat: 9.130, zoom: 10.90 },   // a Zona inteira
       P0b: { lng: -79.735, lat: 9.125, zoom: 11.02 },
@@ -546,8 +552,16 @@ var ZONA = feicao("zona-do-canal-1947"), EIXO = feicao("eixo-do-canal");
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
-    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };   // identidade §6: o tratamento C (Lucas, 09/10/2026)
+    var camadas = [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }];   // identidade §6: o tratamento C (Lucas, 09/10/2026)
+    // arte-3: a água escura (identidade §6, "A água escura"): a 2ª camada do estilo, opaca em --agua-base, logo acima do
+    // satélite e abaixo de tudo o que a cena desenha (CENA.agua = o slug do OSM; arquivo local, não pede tile)
+    if (CENA.agua) {
+      fontes.aguaBase = { type: "geojson", data: geo(CENA.agua) };
+      camadas.push({ id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } });
+    }
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────

@@ -6,7 +6,7 @@
   Word-lock (−216.0) · inSec 216.0 · dur 11.7 (351 quadros a 30 fps; espelho.json de zona-do-canal, _quadros 6480→6831, palavras
   597–626). Modo do espelho: documento · Modelo da identidade: DOCUMENTO RECRIADO (a p. 63 do relatório anual de 1940, midia.md §7.1:
   a página real está só no Internet Archive, como prova; regência › _espera_o_lucas 13, caminho padrão: recriar com o texto fiel e
-  "Source:") sobre a MESA DO VÍDEO 2 (satélite sob a luz, §5; o still ainda não existe: abaixo), com o movimento A (§4.4). Lote F4.
+  "Source:") sobre a MESA DO VÍDEO 2 (satélite sob a luz, §5; o still ligado em zona-do-canal-arte-3: abaixo), com o movimento A (§4.4). Lote F4.
 
   O que manda em cada coisa: a regência (s24: um beat, 0–11,7, regime respiro; entra: grifo 1 em "with" 4,1 e grifo 2 em "a 9,1), os
   textos de tela (textos-tela.json › _textos_por_cena s24: o cabeçalho, o texto da folha, o crédito, os dois grifo_na_pagina e os dois
@@ -53,11 +53,13 @@
   A MÍDIA: nenhuma de registro (midia_ancora "construída": a página real do Internet Archive é só prova e não vai à tela até o Lucas
   responder a pergunta 13). O literal é o de textos-tela.json s24 (folha_texto, "texto fiel, p. 63"; o laudo fatos-tela conferiu).
 
-  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): a luz é o véu no fundo de #cam (--mesa-luz-veu-centro), atrás da folha,
-  120 ms atrás (--mov-luz-atraso); o feltro é #mesa, primeiro filho de #cam, a 50 %. O STILL DE SATÉLITE DO ISTMO (../_media/base/
-  mesa-<lugar>.png) NÃO EXISTE nesta máquina: a roupa §2 manda pedir ao Claude central e não fazer um. A cena está pronta para
-  recebê-lo (o <img id="still"> comentado no #palco; o CSS e o JS já tratam dele). Até lá, a mesa é "sem satélite" (o 0 do token
-  --mesa-satelite-opacidade): --fundo + o véu + o feltro a 50 %.
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (15/10/2026, lote E3):
+  ../_media/base/mesa-zona-do-canal-sangria1400.png (Landsat 9 de 05/03/2024, USGS, domínio público, SEM crédito na tela; a
+  procedência em mesa-zona-do-canal-sangria1400.png.json), primeiro filho de #palco. A versão com SANGRIA de 1400 px porque a
+  câmera anda pela mesa (o push-in e a deriva do RIG): o <img> leva --mesa-satelite-margem: 1400px inline, e o miolo de
+  3840 × 2160 fica 1:1 com o palco (o quadro em repouso é o da versão sem sangria). O JS põe a classe com-still no #palco: a luz
+  vira véu, o feltro cai a 50 %, o still acompanha a câmera a 0,6. A luz é o véu no fundo de #cam (--mesa-luz-veu-centro), atrás da folha, 120 ms atrás
+  (--mov-luz-atraso); o feltro é #mesa, primeiro filho de #cam.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Crédito 56 px --sec (Lucas, 07/10/2026) em x = 200,
   abaixo de y = 1880, nunca encolhe, com data-qc-papel="credito": o qc-tamanho vai reprovar SÓ o crédito (56 < 72 do ofício), a
@@ -78,11 +80,8 @@
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
   #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
-  /* A MESA DO VÍDEO 2 (tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"): o still por baixo da câmera, 56 px além do palco.
-     O still deste vídeo (../_media/base/mesa-<lugar>.png) AINDA NÃO EXISTE (roupa §2: quem o entrega é o Claude central;
-     "se faltar, peça, não faça um"): a cena nasce sem o <img id="still">, no estado "a mesa sem satélite" do token
-     --mesa-satelite-opacidade (0 = sem still), e o recebe por UMA linha (ver o comentário no #palco). O CSS e o JS do
-     #still já estão aqui, guardados por if. */
+  /* A MESA DO VÍDEO 2 (tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"): o still por baixo da câmera, --mesa-satelite-margem além do
+     palco (56 px no token; 1400 px neste <img>, inline, porque é a versão com sangria: ver o cabeçalho, "A MESA"). */
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
@@ -139,10 +138,7 @@
 </head>
 <body>
 <div id="palco" data-qc-sem-heroi="uma folha recriada do relatório de 1940 sobre a mesa, com dois grifos e as duas tiras literais ao lado: a cena não tem herói; o que se lê é a letra da folha e o trecho ampliado (ofício do editor-de-arte §6; identidade §4.2)">
-  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"): quando o Claude central entregar out/zona-do-canal/_media/base/mesa-<lugar>.png,
-       descomente a linha abaixo com o nome certo (e nada mais muda: o CSS e o JS do #still já estão aqui).
-  <img id="still" src="../_media/base/mesa-panama.png" alt="">
-  -->
+  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" style="--mesa-satelite-margem:1400px" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; ligado em zona-do-canal-arte-3)">
   <div id="cam">
     <div id="mesa"></div>
     <!-- a folha recriada da p. 63 (2232 × 1470; miolo de 39 caracteres, 8 linhas; centro 1416 × 1055; −0,9°) -->
