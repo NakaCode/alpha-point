@@ -57,8 +57,10 @@ paleta proposta (2); a tela escurecendo, sem texto, com a tela final e o coment�
 a foto de época abaixo de 4K entra (4: recusar custa até 14 s de mundo real); só as fotos federais de 1964 (5 e 11); recriar a
 capa da Review e as páginas do Internet Archive com o texto fiel e "Source:" (12 e 13); só a linha da Zona, com o nome da cidade
 do lado de fora (15); sem bandeira sobre o mapa (16). E uma nova:
-19. **A régua de mundo real** está em 60,9 % (uns 60,3 % com o plano 2 da s22 sem foto). Se cair abaixo de 60 %, aceita, ou
-    busca uma das saídas (a UF na s23, uma placa "Gold"/"Silver" na s42, o retrato datado do Bunau-Varilla)?
+19. **A régua de mundo real** fechou em 60,26 % na conta do montador (2,07 s acima do piso; 62,55 % na do regente, que conta a
+    foto ao lado do cartão). Se a resposta ao item 4 recusar a foto de época abaixo de 4K (s57, s64), ela cai para uns 58,5 %:
+    aceita, ou busca uma saída (uma placa "Gold"/"Silver" na s42, o retrato datado do Bunau-Varilla)? A s23 já tem foto (Barbados,
+    1909), e a pergunta 10 (a UF) deixou de ser necessária.
 
 ## Depois
 - A miniatura (com o canal à vista), pela banca da embalagem (§3).
