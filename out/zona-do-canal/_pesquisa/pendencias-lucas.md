@@ -51,6 +51,15 @@ eclusas de Miraflores de 1988 (a cena viraria foto, com "Photo from 1988"), e o 
     das notas de 1936. Fica, ou regrava com "almost no one but those who worked or served there"?
     (A s54, a imprensa panamenha com 21 ou 22 mortos, está no item 11.)
 
+## Da direção de arte (`zona-do-canal-direcao-3`, 15/10, 04:5x)
+O conceito escreveu o caminho padrão de cada pergunta já listada, para a produção seguir sem esperar: relevo plano (1); a
+paleta proposta (2); a tela escurecendo, sem texto, com a tela final e o comentário à esquerda como alternativa (3, 6 e 8);
+a foto de época abaixo de 4K entra (4: recusar custa até 14 s de mundo real); só as fotos federais de 1964 (5 e 11); recriar a
+capa da Review e as páginas do Internet Archive com o texto fiel e "Source:" (12 e 13); só a linha da Zona, com o nome da cidade
+do lado de fora (15); sem bandeira sobre o mapa (16). E uma nova:
+19. **A régua de mundo real** está em 60,9 % (uns 60,3 % com o plano 2 da s22 sem foto). Se cair abaixo de 60 %, aceita, ou
+    busca uma das saídas (a UF na s23, uma placa "Gold"/"Silver" na s42, o retrato datado do Bunau-Varilla)?
+
 ## Depois
 - A miniatura (com o canal à vista), pela banca da embalagem (§3).
 - A linha do tempo das cenas, antes do render 4K.
