@@ -1,0 +1,49 @@
+# Pauta de imagens: Zona do Canal (rodada 1, 15/10/2026)
+
+O que está em `pauta-imagens.json`, em português. Tudo está no **rascunho**
+(`out/zona-do-canal/_media/_caca/<cena>/acervo-livre/`), sem `entregar`: o `conferente-de-midia` julga primeiro, e só o
+`aprovado` se entrega num despacho novo (roupa §10). Os 50 arquivos são fotos. Nenhum é vídeo, nenhum veio de banco
+pago, e nenhum leva crédito na tela: são domínio público federal (NARA, DoD, Carter White House) ou domínio público
+nos EUA (livro de 1916).
+
+Cada arquivo foi olhado numa folha de conferência (`out/zona-do-canal/_tmp/pesquisa-imagens/grade-*.png`) e medido
+com o ffprobe. O sha256 de cada um bate com o `manifest.jsonl` do `baixar`.
+
+## Por cena
+
+| Cena | Preferida(s) | Reservas | Data na origem | Observação |
+|---|---|---|---|---|
+| s03 | a delegacia central de Balboa (1943); o antigo tribunal de magistrado de Balboa (1951); a escola primária de Balboa (1954) | nenhuma | 1943, 1951, 1954 | três fotos da mesa, com aviso do ano; o tribunal não é o de Ancón da s14 |
+| s14 | o District Court Building, Ancón (1960) | o mesmo prédio visto do alto (1958) | 1960, 1958 | aviso do ano |
+| s15 | a polícia montada da Zona diante do hospital de Ancón (c. 1916); a escola pública de San Pablo (1904); o correio de La Boca (1904) | a delegacia de Empire (1904) | c. 1916, 1904 | fotos médias (1.488–2.052 px): impressas sobre a mesa |
+| s18 | o Administration Building, Balboa Heights (1957) | vista aérea do mesmo prédio (1959) | 1957, 1959 | de 1914–1930, não achado: aviso do ano |
+| s22 | o carro pagador em Culebra (1908); a escavadeira a vapor em Culebra (1911); 'Gold Quarters', Balboa (1944); a Silver Commissary de Curundu (1947); o clubhouse dos 'gold employees' em Balboa (1915) | as Silver Commissaries de La Boca e de Gamboa (1947); o interior do Cristobal Silver Clubhouse (1948) | 1908–1948 | o plano 3 (a placa 'gold'/'silver' legível) não foi achado |
+| s23 | nenhuma (alternativa: a rua das casas 'silver' de La Boca, abril de 1920) | nenhuma | 1920 | os trabalhadores antilhanos não foram achados; o regente decide se a alternativa serve |
+| s31 | casas de quatro famílias, rua Las Cruces, Balboa (1951) | casa de duas famílias, Balboa (1939) | 1951, 1939 | |
+| s32 | uma cliente comprando camisas na comissaria de Balboa (1954) | o açougueiro e a cliente (1951); três interiores vazios (1956–1957) | 1951–1957 | |
+| s33 | empregados do correio e famílias diante do correio novo de Balboa (1938, alternativa); soldados do 33º de Infantaria em Fort Clayton (1928) | nenhuma | 1938, 1928 | a família diante da casa da Company não foi achada |
+| s39 | dia de matrícula na escola primária de Balboa: pais e crianças (1954) | nenhuma | 1954 | |
+| s45 | a entrada nova da comissaria de Balboa (1955) | outro ângulo da mesma entrada (1955); o prédio inteiro (1956) | 1955–1956 | diferente dos arquivos de s22 e s32 |
+| s47 | a escola pública de Ancón (1918) e a escola de La Boca (1921); a Balboa High School (1953) e a escola de Paraiso (1953) | a BHS vista do alto (1948) | 1918, 1921, 1953 | dos anos 1960, não achado: aviso do ano; as de 1918 e 1921 são pequenas (1.476 px) e preenchem a lacuna |
+| s52 | os estudantes com a bandeira rasgada (Exhibit P-12, janeiro de 1964) | a confusão no mastro (P-11); a delegação a caminho do mastro (P-5); o policial e o estudante (granulada) | 1964 | série 535455 da NARA, Panama Canal Company |
+| s54 | a multidão na President Kennedy Avenue, perto da Tivoli (1964) | manifestantes rasgando uma bandeira americana (granulada) | 1964 | mesma série |
+| s57 | Carter e Torrijos assinando, Orfila entre eles (NARA 176082) | Carter, Orfila e Torrijos à mesa (176081); o aperto de mão (176083) | 07/09/1977 | Carter White House Photographs; TIFF de 3.000 px |
+| s64 | nenhuma (fotos da Commission em 1985 e 1988, PENDENTES DO LUCAS) | nenhuma | 1985, 1988 | footage de época não achado |
+
+## Sem mídia nesta rodada
+
+- **s04**: a bandeira em 01/10/1979.
+- **s61**: Mondale em Albrook.
+- **s50**: os estudantes americanos com a bandeira. Há dois itens do Departamento de Estado, sem autoria declarada, que
+  ficam como pergunta.
+- **s42**: a placa 'gold'/'silver'. O fallback é a folha do FRUS, do `pesquisa-documentos`.
+- **s16, s20 e s49**: miniaturas opcionais.
+
+Os termos de cada leque estão em `lacunas`, no JSON.
+
+## Banco pago
+
+`lista-de-caca.json` tem um item, o `s01-a`: o aéreo de hoje de Balboa com o Administration Building, 2 clipes, para
+s01, s19 e s67 (a s68 congela o último quadro da s67). A Storyblocks fica fora, porque o vídeo trata de soberania e
+política (midia §3.3). O B-roll de hoje de Miraflores, reserva da s64, não está na lista: ele espera o ok do Lucas
+(pendência 7).

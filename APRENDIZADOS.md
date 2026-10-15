@@ -1491,3 +1491,17 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   tudo. Não adianta mandar o agente "não reabrir": quem tira a imagem é o Claude Code, e ele precisa dela de novo.
 - **Por que serve a qualquer canal:** todo canal que revisa quadros, folhas de contato, prints ou PDFs com um agente esbarra no
   mesmo teto; o laço não dá erro nenhum e só aparece na conta.
+
+### 82. O `_commons-baixar` pode gravar o PNG de prévia com a extensão `.svg`, sem avisar
+
+- **O problema:** no vídeo 3 (15/10/2026), a `pesquisa-logos` pediu ao `stock/_commons-baixar` da pré-v1 duas bandeiras em SVG do
+  Wikimedia Commons. O original falhou, por um motivo que o script não imprime. Ele caiu na prévia PNG de 3840 px que o Commons
+  gera e gravou o arquivo como `flag-panama.svg` e `flag-united-states.svg`. A extensão mentia, e nada no terminal dizia isso.
+  - Um consumidor que confia na extensão (um `<img>`, uma conversão SVG → PNG, a conferência de vetor) recebe um bitmap.
+  - O sha256 grava o arquivo errado como se fosse o certo.
+- **O que resolveu:** a peça conferiu o tipo pelo conteúdo, renomeou o arquivo para `.png` e baixou o SVG original de novo, com um
+  pedido por arquivo, o User-Agent do canal e 2 s de pausa. O sha1 bateu com o que a API do Commons dá ao arquivo.
+- **Como evitar:** depois de todo download do Commons, confira o tipo pelos primeiros bytes (`\x89PNG`, `<svg` ou `<?xml`), não pela
+  extensão, e confira o sha1 contra o da API (`prop=imageinfo&iiprop=sha1`).
+- **Por que serve a qualquer canal:** todo canal que baixa logo, bandeira ou mapa vetorial do Commons pelo script do motor cai no
+  mesmo silêncio. O conserto é do motor (o `_commons-baixar` avisar e recusar quando cai na prévia): vale avisar o Lucas e o Mateus.
