@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s32 · "Mary and Herbert Knapp taught in the Zone's schools. They wrote in the Panama Canal Review, the Zone's own magazine, in its
+  issue dated the day the Zone ended: everyone "lived in rented quarters" and shopped at the "commy," the commissary."
+  Word-lock (−325.3) · inSec 325.3 · dur 14.4 (432 quadros a 30 fps; espelho.json de zona-do-canal, _quadros 9759→10191, palavras
+  893–933). cleanDur = dur (faceless: o relógio é um só, out/zona-do-canal/words.json).
+  Modo do espelho: documento · Modelos da identidade: CARD DE PESSOA SÓ COM NOME E CARGO (§5: sem retrato autorizado, "o card sai só
+  com nome e cargo"), a CAPA RECRIADA da Panama Canal Review como FOLHA DE DOCUMENTO (§5; midia.md §7.1: a capa real só está no
+  Internet Archive, prova; pergunta 12 ao Lucas, caminho padrão: recriar), a FOTO IMPRESSA da comissaria sobre a MESA (§5) e o
+  CARTÃO DE PAPEL da fala citada (§4.1 e §5: --papel, Inter 700, piso 260, até 12 palavras), com o movimento A (§4.4): "a mesa se
+  arruma" (o card e a capa levantam; a foto e o cartão pousam). LOTE F5 do passo art (15/10/2026, tarefa zona-do-canal-arte-1).
+
+  O que manda em cada coisa: a regência (s32: três beats, 0–3,033 · 3,033–9,167 · 9,167–14,4), os textos de tela (textos-tela.json ›
+  _textos_por_cena s32 e cards_pessoa s32: a grafia e os t0), o conceito (s32: "a vida alugada") e o espelho (s32 › _planos). TODO
+  TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS (o nome da revista e a data estão escritos na capa recriada).
+  A METÁFORA (conceito): dois professores entram como um card sem rosto; ao lado pousa a revista da própria Zona, datada do dia em
+  que a Zona acabou; depois o card levanta e no lugar dele pousa a comissaria, uma cliente escolhendo camisas em 1954. As três coisas
+  em sequência dizem a frase inteira: quem eram, onde escreveram, onde compravam.
+  DESVIOS DECLARADOS: (1) em 9,167 LEVANTAM o card E a capa (a regência diz "the card lifts"; o conceito, "no lugar dele pousa a
+  comissaria", com o cartão da fala "ao lado"): a foto da comissaria toma o lugar do card e o cartão da fala (6 linhas a 260 px, a
+  mesa inteira à direita) tomaria a capa pela parte que importa; "a mesa se arruma" (identidade §4.4 e §5). O crédito da Review fica
+  até o fim (textos-tela: "até o fim da cena (A098)"), porque ele sustenta a citação. (2) O rótulo "Balboa Commissary" (textos-tela t0
+  9,167) e o aviso "Photo from 1954" (t0 9,32) entram em 9,867: 150 ms depois do assentamento da foto (identidade §4.4; a voz não os
+  convoca antes). (3) O card sem retrato não tem objeto que pouse: o nome entra em "Mary" (0,0; 300 ms, opacidade + 24 px) e o cargo
+  120 ms depois, como o 2º card da s10 (identidade §4.4: "no card de pessoa, o nome entra 150 ms depois do assentamento, o cargo 120
+  ms depois do nome"); e saem como texto (300 ms, para baixo) no instante do levantar.
+
+  OS BEATS (tempo local = master − 325,3; palavras do words.json):
+    b1  0,000–3,033  "Mary and Herbert Knapp taught in the Zone's schools."
+        0,00  "Mary" (325,31 s): o NOME "MARY AND HERBERT KNAPP" na pílula --rotulo (128 px, Inter 700; nome próprio de 4 palavras:
+              inteiro, identidade §4.1, vai ao report do redator) à ESQUERDA da mesa (x 330, y 760); 0,12: o CARGO "Teachers in the
+              Canal Zone schools (1979)" (legenda 84 px, Inter 500, --sec) logo abaixo, quebrando em 1.700 px. Sem retrato (regência:
+              FALTA declarada; cards_pessoa s32). A luz no card.
+        0,90→2,40  a CÂMERA: 1,000 → 1,010, centro 1920 × 1080 → 1920 × 1060 (eb), o push-in da mesa rumo ao card.
+    b2  3,033–9,167  "They wrote in the Panama Canal Review, the Zone's own magazine, in its issue dated the day the Zone ended:"
+        3,033 "They" (328,34 s): A CAPA RECRIADA (identidade §5, "A folha de documento": --papel com textura, borda de baixo rasgada,
+              fita nos cantos de cima, sombra solta, +0,8°; 1160 × 1200) pousa à DIREITA (0,80 s: desce 250 px, e não 420, para o
+              cabeçalho não sair pelo topo do quadro no pouso; assenta 1,03 → 1,00 em
+              0,56–0,80 s; fitas em 3,70 e 3,82): o nome da revista "THE PANAMA CANAL REVIEW" em Courier Prime 700, 84 px, na caixa de
+              contorno (folha_cabecalho), o fio, e "OCT. 1, 1979" em Courier Prime 700, 128 px (rotulo, textos-tela: "na capa
+              recriada"; rotulos_dado s32), impressos desde o pouso; sem logo, sem fac-símile, e o resto da capa em branco. A LUZ vai
+              para a capa (eb 0,6 s, 120 ms atrás); o card fica.
+        3,033 o CRÉDITO "Source: Mary and Herbert Knapp, The Panama Canal Review, Oct. 1, 1979" (56 px, duas linhas, na pílula
+              --rotulo, fora da câmera), até o fim.
+        3,60→5,60  a CÂMERA: 1,010 → 1,015, centro de volta a 1920 × 1080 (eb); termina 1,0 s antes de "dated" (7,26).
+        8,517 o nome e o cargo SAEM (300 ms, para baixo), 300 ms antes do levantar.
+        8,817 A CAPA LEVANTA (350 ms, escala 1,00 → 1,04 em ease-in cúbico, a sombra solta cresce, opacidade 1 → 0 em 8,967–9,167);
+              a luz volta ao centro da mesa (0,6 s, eb).
+    b3  9,167–14,400  "everyone "lived in rented quarters" and shopped at the "commy," the commissary."
+        9,167 "everyone" (334,48 s): A FOTO (Sale of Panama-made shirts, Balboa Commissary, 19/08/1954; 4950 × 4123, recorte sem a
+              borda branca e sem a legenda datilografada: x 166→4810, y 137→3842, a 0,27× = 1254 × 1000; grupo 1342 × 1088) pousa à
+              ESQUERDA (0,55 s; −2° → −1,2°; fitas em 9,617 e 9,737). Centro 985 × 830. A luz vai para ela.
+        9,785 ""lived" (335,08 s): O CARTÃO DE PAPEL DA FALA (identidade §5: --papel, Inter 700, 260 px = o piso da fala; citacao
+              s32: "“everyone lived in rented quarters … shopping at the ‘commy.’”", 9 palavras e a reticência, 6 linhas) pousa à
+              DIREITA (0,55 s: desce 60 px, escala 0,88 → 1,03 → 1,00; +0,6°; 1560 × 1570, centro 2520 × 1030); a luz vai ao cartão.
+              O texto entra com a voz e fica parado enquanto se lê.
+        9,867 o RÓTULO "Balboa Commissary" (pílula --rotulo, 128 px; lugar_na_origem "Sale of Panama-made shirts, Balboa Commissary,
+              Canal Zone."; nenhum rótulo de pessoa nem de folha sobre a foto) e, abaixo, o AVISO "Photo from 1954" (84 px; aviso_de_ano
+              true, data_na_origem "August 19, 1954"), sob a foto, sobre a mesa, 150 ms depois do assentamento. Ficam até o fim.
+        12,26 ""commy,"" (337,56 s): a LUZ volta à foto da comissaria (0,6 s): a "commy" é a loja.
+        14,15–14,40  REPOUSO: a câmera e a deriva param; nada se move.
+    A CÂMERA: 1,000 → 1,015 e a deriva do RIG (6 / 4,8 px), que congela nos últimos 250 ms. A margem sob a câmera (roupa §4) no pior
+    instante (1,015, centro 1920 × 1080): x 225→3615 e y 174→1868. Tudo montado dentro disso: o nome em x 330→~2130, y 760→949; o cargo
+    em y 970→~1180; a capa girada em x ~2300→3470 (fita desde y 200), y 250→1450; a foto em x ~314→1656, y ~286→1374 (fita desde y 236);
+    as pílulas em x 314→~1670, y 1410→1753; o cartão em x 1740→3300, y 245→1815.
+    PRODUTO MÁXIMO DAS ESCALAS (identidade §4.4): a foto 0,27 × 1,03 × 1,015 = 0,282 (≤ 1,4). Ken Burns: não há foto em tela cheia.
+
+  A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): b1: o card (nome + cargo = 1); b2: o card (1) + a
+    capa (1) = 2; b3: a foto com o rótulo e o aviso (1) + o cartão da fala (1) = 2 (alvo 4–5). Blocos de texto de leitura: b1 1 (o card
+    com o cargo); b2 2 (o card, a capa); b3 1 (o cartão). Herói: nenhum (data-qc-sem-heroi). Texto no ar: o nome e o cargo 8,5 s; a
+    capa 5,8 s; o cartão 4,6 s; o rótulo e o aviso 4,5 s.
+
+  A MÍDIA (out/zona-do-canal/_pesquisa/conferencia-midia.json › candidatos, veredito "aprovado" para a cena s32, lote 6, casado pelo
+  sha256 do arquivo entregue = sha256 do rascunho julgado; NARA RG 185, obra do governo federal, domínio público, credito_na_tela
+  "nenhum"):
+    ../_media/foto/s32/balboa-commissary-shirt-sale-1954-nara-202799537.jpg  4950×4123 · sha256
+      3bbc63d4bb1716f32431d8dd43c1ca1f49a456e707bf7b76e73f5a7b7e7fb692 · 202799537 · lugar_na_origem "Sale of Panama-made shirts,
+      Balboa Commissary, Canal Zone." · data_na_origem "August 19, 1954" · aviso_de_ano true · janela definitiva 334,467–339,7 s
+      (objeto no beat 2). Nenhum upscale (0,27×), nenhum filtro; o recorte tira só a borda branca e a legenda datilografada, sem
+      mudar o sentido (o balcão, o vendedor e a cliente inteiros). O vendedor e a cliente não têm nome na origem: nenhum rótulo de
+      pessoa.
+  Sem retrato dos Knapp (pesquisa-pessoas: nenhum autorizado): o card sai só com nome e cargo (cards_pessoa s32). A capa da Review é
+  RECRIADA (review1979-capa-prova.jpg é só prova e nunca vai à tela; o ensaio das pp. 60–61 é protegido: só a citação curta, com o
+  crédito); 'Zonian' não entra.
+
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still de satélite do istmo (out/zona-do-canal/_media/base/mesa-<lugar>.png)
+  NÃO EXISTE no disco nesta tarefa (quem o entrega é a Sala, roupa §2: "se faltar, peça, não faça um"). FALLBACK DECLARADO: a mesa
+  "feltro sob a luz" (identidade §5), sem still (data-mesa="feltro"). O código já está pronto para o still: basta inserir, como
+  primeiro filho de #palco, <img id="still" src="../_media/base/mesa-<lugar>.png" alt=""> e a cena passa sozinha ao modo "satélite
+  sob a luz" (classe com-still no #palco).
+
+  A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Pílula --rotulo 12 px, 24×40 (o aviso 16×28);
+  rótulo 128 px Inter 700; cargo e aviso 84 px Inter 500; a fala 260 px Inter 700 em --papel / --tinta-escura; a capa em --fonte-doc
+  (Courier Prime 700, 84 e 128 px); crédito 56 px (Lucas, 07/10/2026) com data-qc-papel="credito", na faixa abaixo de y 1880, x 200 →
+  < 1720, duas linhas, fora da câmera, na pílula --rotulo (o qc-tamanho reprova 56 < 72: a exceção registrada do canal, identidade
+  §4.1). Margens 200/160 sob a câmera; canto inferior direito (400×400) vazio (o cartão da fala termina em x ~3308 e y ~1815, à esquerda do canto; a capa,
+  em y 1450). Sem --destaque: a paleta do Lucas (pergunta 2) não muda esta cena.
+
+  O CONTRATO: window.__duracao = 14.4; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
+  __fotosProntas = RIG.prontas() (espera a foto e as faces da marca; o render espera document.fonts.ready a cada quadro). Nada de
+  relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+-->
+<head>
+<meta charset="utf-8">
+<title>s32 — Mary and Herbert Knapp, the Panama Canal Review of Oct. 1, 1979: rented quarters and the commy</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+
+  /* A MESA (tokens.css, "A MESA" e "A MESA DO VÍDEO 2 EM DIANTE"): sem o still, a luz é o degradê radial no fundo de #cam e o
+     feltro fica a 100 % (feltro sob a luz); com o still (#palco.com-still), a luz vira véu e o feltro cai a 50 % */
+  #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
+    width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
+    opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
+      var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+  #palco.com-still #cam { background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
+      var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
+  #mesa { position: absolute; left: -160px; top: -160px; width: 4160px; height: 2480px; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); opacity: 1; }
+  #palco.com-still #mesa { opacity: var(--mesa-satelite-feltro); }
+
+  /* todo objeto da mesa é um GRUPO posto pelo __renderAt por translate/rotate/scale (origem no centro) */
+  .grupo, .grupoFolha { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; opacity: 0; }
+  /* A SOMBRA SOLTA (identidade §4.4): irmão com a silhueta do objeto, desfoque FIXO; só transform e opacity animam */
+  .sombra-solta { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; opacity: 0; background: var(--tinta-escura);
+    filter: blur(28px); }
+  /* A FOTO IMPRESSA (identidade §5): moldura --tinta de 44 px; a foto dentro, sem filtro, sem recorte que mude o sentido */
+  .impressa .moldura { position: absolute; inset: 0; background: var(--tinta); }
+  .impressa .recorte { position: absolute; left: 44px; top: 44px; overflow: hidden; background: var(--painel); }
+  .impressa .recorte img { position: absolute; display: block; }
+  /* a fita, como na prancha: translúcida, dentes nas pontas, leve sombra; o tom vem do --papel */
+  .fita { position: absolute; width: 440px; height: 140px; background: color-mix(in srgb, var(--papel) 62%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--tinta-escura) 18%, transparent);
+    clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 86%, 97% 100%, 0 100%, 4% 88%, 0 72%, 4% 56%, 0 40%, 4% 24%);
+    transform-origin: 50% 50%; opacity: 0; }
+  /* A FOLHA RECRIADA (identidade §5, "A folha de documento"; midia.md §7.1): --papel com textura, borda de baixo rasgada,
+     Courier Prime no cabeçalho (700, caixa de contorno) e no corpo (400, 86 px, entrelinha de 100 px: datilografado) */
+  .folha { position: absolute; left: 0; top: 0; background: var(--papel); color: var(--tinta-escura); overflow: hidden; }
+  .folha::before { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
+    background-size: 420px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .rasgada { clip-path: polygon(0% 0%, 100% 0%, 100% 95.5%, 100.00% 96.89%, 98.44% 96.15%, 96.88% 98.30%, 95.31% 95.81%, 93.75% 97.80%, 92.19% 97.07%, 90.62% 95.75%, 89.06% 97.68%, 87.50% 95.66%, 85.94% 97.36%, 84.38% 95.80%, 82.81% 95.89%, 81.25% 97.33%, 79.69% 99.06%, 78.12% 96.03%, 76.56% 96.46%, 75.00% 98.20%, 73.44% 99.58%, 71.88% 97.98%, 70.31% 97.21%, 68.75% 99.70%, 67.19% 95.70%, 65.62% 99.19%, 64.06% 96.75%, 62.50% 96.12%, 60.94% 96.01%, 59.38% 96.83%, 57.81% 99.01%, 56.25% 96.28%, 54.69% 98.00%, 53.12% 98.25%, 51.56% 97.10%, 50.00% 97.86%, 48.44% 95.77%, 46.88% 95.76%, 45.31% 96.39%, 43.75% 98.43%, 42.19% 97.34%, 40.62% 96.85%, 39.06% 98.02%, 37.50% 97.45%, 35.94% 96.79%, 34.38% 98.92%, 32.81% 98.51%, 31.25% 96.55%, 29.69% 97.97%, 28.12% 97.76%, 26.56% 99.26%, 25.00% 98.64%, 23.44% 96.74%, 21.88% 99.71%, 20.31% 96.01%, 18.75% 97.30%, 17.19% 98.76%, 15.62% 96.15%, 14.06% 97.60%, 12.50% 95.67%, 10.94% 98.37%, 9.38% 98.79%, 7.81% 97.96%, 6.25% 99.26%, 4.69% 96.85%, 3.12% 98.49%, 1.56% 98.06%, 0.00% 97.99%); }
+  .folha .cab { display: flex; }
+  .folha .caixa-ref { font-family: var(--fonte-doc); font-weight: var(--peso-doc-cabecalho); font-size: var(--doc-cabecalho); line-height: 1.1;
+    letter-spacing: .02em; white-space: pre-line; padding: 18px 26px;
+    border: 6px solid color-mix(in srgb, var(--tinta-escura) 55%, transparent); color: color-mix(in srgb, var(--tinta-escura) 70%, transparent); }
+  .folha .fio { height: 4px; margin: 28px 0 36px; background: color-mix(in srgb, var(--tinta-escura) 25%, transparent); }
+  .folha .corpo { font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: var(--doc-corpo); line-height: 100px;
+    letter-spacing: 0; color: var(--tinta-escura); white-space: pre; position: relative; }
+  .folha .grifos { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+  .grifo { position: absolute; background: var(--grifo-cor); mix-blend-mode: multiply; transform-origin: 0 50%; }
+
+  /* a pílula do rótulo (§4.1: --rotulo, cantos 12, respiro 24 × 40; 128 px Inter 700) */
+  .pilula { position: absolute; white-space: nowrap; background: var(--rotulo); color: var(--tinta); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-family: var(--fonte); font-weight: var(--peso-rotulo);
+    font-size: var(--fs-rotulo); line-height: 1.1; letter-spacing: 0; opacity: 0; transform-origin: 0 50%; }
+  /* o aviso do ano, na pílula menor (§4.1: respiro 16 × 28; 84 px Inter 500) */
+  .pilula-aviso { position: absolute; white-space: nowrap; background: var(--rotulo); color: var(--tinta); border-radius: var(--cantos);
+    padding: 16px 28px; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2;
+    letter-spacing: 0; opacity: 0; transform-origin: 0 50%; }
+  /* a legenda solta sobre a mesa (84 px, Inter 500, --sec): o cargo do card, quebrando na largura dada */
+  .legenda { position: absolute; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2;
+    color: var(--sec); letter-spacing: 0; opacity: 0; transform-origin: 0 50%; }
+  /* o crédito (§4.2, §4.1 "Crédito a 56 px"): --fs-credito, --sec, x = 200, abaixo de y = 1880, até x = 1720, duas linhas,
+     nunca encolhe; fora da câmera; na pílula --rotulo */
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; max-width: calc(var(--credito-x-fim) - var(--credito-x));
+    background: var(--rotulo); border-radius: var(--cantos); padding: 6px 24px 8px; opacity: 0; }
+  .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.2; color: var(--sec);
+    letter-spacing: 0; white-space: pre-line; }
+
+  /* O CARTÃO DE PAPEL DA FALA CITADA (identidade §4.1 e §5: --papel, Inter 700, piso 260 px, até 12 palavras): pousa como o
+     objeto da mesa e fica parado enquanto se lê; a sombra solta é o irmão de baixo, desfoque fixo */
+  .cartao { position: absolute; left: 0; top: 0; opacity: 0; transform-origin: 50% 50%; background: var(--papel); color: var(--tinta-escura);
+    border-radius: 6px; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: 260px; line-height: 1.0;
+    letter-spacing: 0; padding: 30px 40px; white-space: pre; }
+</style>
+</head>
+<body>
+<div id="palco" data-mesa="feltro" data-qc-sem-heroi="um card de pessoa sem retrato, a capa recriada da revista, a foto impressa da comissaria e o cartão da fala sobre a mesa: a cena não tem herói; o nome e o lugar são rótulo de 128 px, o cargo e o aviso são legenda, a data é o rótulo impresso na capa e a fala citada é o cartão de papel (papel fala, piso 260) (ofício do editor-de-arte §6; identidade §4.2)">
+  <!-- o still da mesa entra aqui quando chegar: <img id="still" src="../_media/base/mesa-<lugar>.png" alt=""> (ver o cabeçalho) -->
+  <div id="cam">
+    <div id="mesa"></div>
+
+    <!-- b1: o card de Mary e Herbert Knapp, SEM retrato: o nome na pílula e o cargo embaixo (cards_pessoa s32) -->
+    <div class="pilula"  id="nome"  data-qc-papel="rotulo" style="left:330px;top:760px"></div>
+    <div class="legenda" id="cargo" data-qc-papel="eixo"   style="left:330px;top:980px;width:1700px"></div>
+
+    <!-- b2: a capa recriada da Panama Canal Review de 01/10/1979 (1160 × 1200; centro 2880 × 850; +0,8°); a sombra solta acaba onde o
+         rasgo começa. folha_cabecalho e o rótulo da data de textos-tela.json s32 -->
+    <div class="sombra-solta" id="capaGrupoSombra" style="width:1160px;height:1146px"></div>
+    <div class="grupoFolha" id="capaGrupo" style="width:1160px;height:1200px">
+      <div class="folha rasgada" id="capa" style="width:1160px;height:1200px;padding:40px 50px 0" data-qc-fonte-livre="capa de revista recriada como folha de documento: Courier Prime (--fonte-doc), identidade §3 e §5">
+        <div class="cab"><span class="caixa-ref">THE PANAMA
+CANAL REVIEW</span></div>
+        <div class="fio"></div>
+        <div class="corpo" id="capaData" data-qc-papel="rotulo" style="font-weight:var(--peso-doc-cabecalho);font-size:var(--fs-rotulo);line-height:1.1;letter-spacing:.02em"></div>
+      </div>
+      <div class="fita" id="capaFe" style="left:-30px;top:-50px"></div>
+      <div class="fita" id="capaFd" style="left:780px;top:-50px"></div>
+    </div>
+
+    <!-- b3: a foto da comissaria de Balboa, 1954 (recorte 1253.9 × 1000.4 = o arquivo a 0,27× sem a borda e a legenda; grupo 1342 × 1088; centro 985 × 830; −1,2°) -->
+    <div class="sombra-solta" id="fSombra" style="width:1342px;height:1088px"></div>
+    <div class="grupo impressa" id="f" style="width:1342px;height:1088px">
+      <div class="moldura"></div>
+      <div class="recorte" style="width:1253.9px;height:1000.4px">
+        <img src="../_media/foto/s32/balboa-commissary-shirt-sale-1954-nara-202799537.jpg" alt="" style="width:1336.5px;height:1113.2px;left:-44.8px;top:-37.0px">
+      </div>
+      <div class="fita" id="fFe" style="left:-60px;top:-50px"></div>
+      <div class="fita" id="fFd" style="left:962px;top:-50px"></div>
+    </div>
+
+    <!-- o cartão de papel da fala citada (textos-tela s32 › citacao): 1560 × 1570, centro 2520 × 1030, +0,6°; em "lived -->
+    <div class="sombra-solta" id="falaSombra" style="width:1560px;height:1570px"></div>
+    <div class="cartao" id="fala" data-qc-papel="fala" style="width:1560px;height:1570px;padding:20px 40px;line-height:.98"></div>
+
+    <!-- os textos sobre a mesa, fora das peças (grafia de textos-tela.json s32) -->
+    <div class="pilula"       id="lugarF" data-qc-papel="rotulo" style="left:314px;top:1410px"></div>
+    <div class="pilula-aviso" id="avisoF" data-qc-papel="eixo" data-qc-aviso-ano="1954" style="left:314px;top:1620px"></div>
+  </div>
+  <div id="creds"><div class="cred" id="cred1" data-qc-papel="credito"></div></div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+
+</script>
+<script>
+(function () {
+  "use strict";
+
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo, eb = R.eb;
+  var E = function (id) { return document.getElementById(id); };
+  var lerp = function (a, b, p) { return a + (b - a) * p; };
+  var ein = function (p) { return p * p * p; };   // o ease-in cúbico do LEVANTAR (identidade §4.4): a única curva fora de eo/eb
+
+  function por(el, cx, cy, w, h, rot, s, op) {
+    if (!el) return;
+    el.style.transform = "translate(" + (cx - w / 2).toFixed(2) + "px," + (cy - h / 2).toFixed(2) + "px) rotate(" +
+      rot.toFixed(3) + "deg) scale(" + s.toFixed(5) + ")";
+    if (op !== undefined) el.style.opacity = clamp(op, 0, 1).toFixed(3);
+  }
+  // o pouso da FOTO (identidade §4.4): desce 240 px em eo; escala 0,72 → 1,03 até 0,33 s e assenta 1,03 → 1,00 até 0,55 s
+  function pousoFoto(t, t0, dur) {
+    var p = eo(seg(t, t0, dur)), q1 = eo(seg(t, t0, 0.33)), q2 = eo(seg(t, t0 + 0.33, dur - 0.33));
+    return { op: t >= t0 ? 1 : 0, dy: 240 * (1 - p), k: q2 > 0 ? lerp(1.03, 1.00, q2) : lerp(0.72, 1.03, q1), p: p };
+  }
+  // o pouso da FOLHA (identidade §4.4): desce 420 px em 0,80 s, girando de −1,5° ao repouso, e assenta 1,03 → 1,00 em 0,56–0,80 s
+  // (desce: a folha alta desce menos que 420 px para o cabeçalho não sair pelo topo do quadro no pouso, como a s24 deste vídeo)
+  function pousoFolha(t, t0, dur, desce) {
+    var p = eo(seg(t, t0, dur)), q2 = eo(seg(t, t0 + 0.56, dur - 0.56));
+    return { op: t >= t0 ? 1 : 0, dy: (desce || 420) * (1 - p), k: lerp(1.03, 1.00, q2), p: p };
+  }
+  // o pouso do CARTÃO da fala (como a s23): desce 120 px; escala 0,88 → 1,03 até 0,33 s e assenta 1,03 → 1,00 até 0,55 s
+  function pousoDes(t, t0, dur, desce) {
+    var p = eo(seg(t, t0, dur)), q1 = eo(seg(t, t0, 0.33)), q2 = eo(seg(t, t0 + 0.33, dur - 0.33));
+    return { op: t >= t0 ? 1 : 0, dy: (desce || 120) * (1 - p), k: q2 > 0 ? lerp(1.03, 1.00, q2) : lerp(0.88, 1.03, q1), p: p };
+  }
+  // já ASSENTADO desde o primeiro quadro (s33: "from the first frame"): sem pouso
+  function assentado(t, t0, dur) { return { op: 1, dy: 0, k: 1, p: 1 }; }
+  // o LEVANTAR (identidade §4.4; tokens --mov-levantar 0,35 s): devolve {k, op, sy, sk, so} do objeto e da sombra solta
+  function levantar(t, t0, dur) {
+    var p = ein(seg(t, t0, dur)), op = 1 - seg(t, t0 + dur - 0.20, 0.20);
+    return { k: 1 + 0.04 * p, op: op, sy: lerp(12, 64, p), sk: lerp(1.00, 1.05, p), so: lerp(0.80, 0.35, p) * op };
+  }
+  // a sombra solta: no ar +64 px / 1,05 / 0,35; assentada +12 px / 1,00 / 0,80 (tokens "A mão que arruma")
+  function sombra(el, g, s, rot) {
+    if (!el) return;
+    var sy = lerp(64, 12, s.p), sk = lerp(1.05, 1.00, s.p), so = lerp(0.35, 0.80, s.p) * s.op;
+    por(el, g.cx, g.cy - s.dy + sy, g.w, g.h, rot, sk, so);
+  }
+  // um objeto da mesa: pousa (foto, folha ou cartão), fica e, se tLev vier, levanta
+  function objeto(id, g, t, t0, dur, pouso, tLev, hSombra, desce) {
+    var a = pouso(t, t0, dur, desce), rot = lerp(g.rot - (pouso === pousoFolha ? 0.6 : 0.5), g.rot, a.p);
+    var gs = hSombra ? { cx: g.cx, cy: g.cy - (g.h - hSombra) / 2, w: g.w, h: hSombra } : g;
+    if (tLev === undefined || t < tLev) {
+      sombra(E(id + "Sombra"), gs, a, rot);
+      por(E(id), g.cx, g.cy - a.dy, g.w, g.h, rot, a.k, a.op);
+    } else {
+      var lv = levantar(t, tLev, 0.35);
+      por(E(id + "Sombra"), gs.cx, gs.cy + lv.sy, gs.w, gs.h, rot, lv.sk, lv.so);
+      por(E(id), g.cx, g.cy, g.w, g.h, rot, lv.k, lv.op);
+    }
+  }
+  // o texto: entra em 300 ms (opacidade + 24 px de subida); sai em 300 ms (opacidade + 24 px para baixo); o número que a voz
+  // diz também 1,04 → 1,00 na entrada
+  function texto(el, t, t0, tSai, escala) {
+    if (!el) return;
+    var p = eo(seg(t, t0, 0.3)), q = tSai !== undefined ? eo(seg(t, tSai, 0.3)) : 0;
+    el.style.opacity = (p * (1 - q)).toFixed(3);
+    el.style.transform = "translateY(" + ((1 - p) * 24 + q * 24).toFixed(1) + "px)" + (escala ? " scale(" + lerp(1.04, 1.0, p).toFixed(4) + ")" : "");
+  }
+  function fita(el, t, t0) {
+    if (!el) return;
+    var p = eo(seg(t, t0, 0.3));
+    el.style.opacity = p.toFixed(3);
+    var rot = /Fe$/.test(el.id) ? -5 : 4;
+    el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + rot + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
+  }
+  // a CÂMERA: estados {t0, t1, s, cx, cy} com movimentos curtos (eb) que terminam ≥ 0,25 s antes do texto que enquadram
+  function camEstado(CAM, t) {
+    var a = CAM[0], s = a.s, cx = a.cx, cy = a.cy;
+    for (var i = 1; i < CAM.length; i++) {
+      var m = CAM[i]; if (t < m.t0) break;
+      var p = eb(seg(t, m.t0, m.t1 - m.t0));
+      s = lerp(s, m.s, p); cx = lerp(cx, m.cx, p); cy = lerp(cy, m.cy, p);
+    }
+    return { s: s, cx: cx, cy: cy };
+  }
+  function aplicarCamera(c, t, luz) {
+    var camEl = E("cam"), st = E("still");
+    var td = Math.min(t, (window.__duracao || 1e9) - 0.25);   // a deriva congela nos últimos 250 ms: repouso de verdade (identidade §4.4)
+    var dx = 6 * Math.sin(td * 0.23) + (1920 - c.cx), dy = 4.8 * Math.sin(td * 0.17) + (1080 - c.cy);
+    if (camEl) camEl.style.transform = "scale(" + c.s.toFixed(5) + ") translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
+    // o still, quando houver, acompanha a câmera a --mesa-satelite-paralaxe (0,6)
+    if (st) { var PAR = 0.6, ss = 1 + (c.s - 1) * PAR; st.style.transform = "scale(" + ss.toFixed(5) + ") translate(" + (dx * PAR).toFixed(2) + "px," + (dy * PAR).toFixed(2) + "px)"; }
+    if (camEl && luz) { camEl.style.setProperty("--luz-x", luz.x.toFixed(1) + "px"); camEl.style.setProperty("--luz-y", luz.y.toFixed(1) + "px"); }
+  }
+  // o GRIFO sobre a FOLHA RECRIADA (corpo = um nó de texto): cada palavra da frase ganha um retângulo medido por Range depois
+  // de a Courier Prime carregar, em coordenadas locais da folha (as transformações do grupo e da câmera zeradas na medida).
+  // lista: [{ frase, t: [t0, t1] }] (o tempo distribuído pelas palavras, proporcional ao comprimento) ou [{ frase, tempos: [[a,b],…] }]
+  var __medir = [], __medidoTudo = false;
+  function grifosFolha(idFolha, lista) {
+    var out = [];
+    lista.forEach(function (it) {
+      var ws = it.frase.split(/\s+/), tempos = it.tempos;
+      if (!tempos) {
+        var total = 0, acum = 0; ws.forEach(function (w) { total += w.length + 1; });
+        tempos = ws.map(function (w) { var n = w.length + 1, a = lerp(it.t[0], it.t[1], acum / total), b = lerp(it.t[0], it.t[1], (acum + n) / total); acum += n; return [a, b]; });
+      }
+      ws.forEach(function (w, i) { out.push({ frase: it.frase, iw: i, t0: tempos[i][0], t1: tempos[i][1], els: [] }); });
+    });
+    __medir.push({ idFolha: idFolha, itens: out, feito: false });
+    return out;
+  }
+  function medirGrifos() {
+    if (!document.fonts || !document.fonts.check('400 86px "MarcaDoc"')) return false;
+    var cam = E("cam"), tc = cam ? cam.style.transform : "";
+    if (cam) cam.style.transform = "none";
+    __medir.forEach(function (m) {
+      if (m.feito) return;
+      var folha = E(m.idFolha), corpo = E(m.idFolha + "Corpo"), g = E(m.idFolha + "Grifos"); if (!folha || !corpo || !g) return;
+      var grupo = folha.closest(".grupoFolha") || folha, tg = grupo.style.transform, og = grupo.style.opacity;
+      grupo.style.transform = "none"; grupo.style.opacity = "1";
+      var node = corpo.firstChild, texto = node ? node.data.replace(/\n/g, " ") : "", fr = folha.getBoundingClientRect();
+      m.itens.forEach(function (it) {
+        var k = texto.indexOf(it.frase); if (k < 0) { window.__erroCena = "grifo não achado na folha " + m.idFolha + ": " + it.frase; return; }
+        var ws = it.frase.split(/\s+/), off = 0; for (var i = 0; i < it.iw; i++) off += ws[i].length + 1;
+        var r = document.createRange(); r.setStart(node, k + off); r.setEnd(node, k + off + ws[it.iw].length);
+        var rects = r.getClientRects();
+        for (var j = 0; j < rects.length; j++) {
+          var rc = rects[j]; if (rc.width < 1) continue;
+          var d = document.createElement("div"); d.className = "grifo";
+          d.style.left = (rc.left - fr.left - 2).toFixed(1) + "px"; d.style.top = (rc.top - fr.top + 6).toFixed(1) + "px";
+          d.style.width = (rc.width + 4).toFixed(1) + "px"; d.style.height = Math.max(40, rc.height - 12).toFixed(1) + "px";
+          d.style.transform = "scaleX(0)"; g.appendChild(d); it.els.push(d);
+        }
+      });
+      grupo.style.transform = tg; grupo.style.opacity = og; m.feito = true;
+    });
+    if (cam) cam.style.transform = tc;
+    __medidoTudo = __medir.every(function (m) { return m.feito; });
+    return __medidoTudo;
+  }
+  function grifarFolha(lista, t) {
+    if (!__medidoTudo) medirGrifos();
+    lista.forEach(function (g) { var sx = seg(t, g.t0, Math.max(0.04, g.t1 - g.t0)).toFixed(4); g.els.forEach(function (d) { d.style.transform = "scaleX(" + sx + ")"; }); });
+  }
+
+  var DUR = 14.4;
+  window.__duracao = DUR;
+  if (E("still")) E("palco").classList.add("com-still");
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia final é do redator-de-tela: textos-tela.json s32) ═══════════════
+  var TEXTOS = {
+    nome:   "MARY AND HERBERT KNAPP",                                               // card_nome, t0 0 (cards_pessoa s32 › _na_tela.nome)
+    cargo:  "Teachers in the Canal Zone schools (1979)",                            // card_cargo, t0 0 (+120 ms)
+    data:   "OCT. 1, 1979",                                                         // rotulo, t0 3,033, na capa recriada (rotulos_dado s32)
+    cred:   "Source: Mary and Herbert Knapp, The Panama Canal Review, Oct. 1, 1979", // credito, t0 3,033, até o fim (A098)
+    lugarF: "Balboa Commissary",                                                    // rotulo, t0 9,167 → 9,867 (150 ms depois do assentamento)
+    avisoF: "Photo from 1954",                                                      // aviso_ano, t0 9,32 → 9,867
+    fala:   "“everyone lived in rented quarters … shopping at the ‘commy.’”"       // citacao, t0 9,785 (em "lived")
+    // folha_cabecalho "THE PANAMA CANAL REVIEW" está escrito na capa
+  };
+  // ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+  ["nome", "cargo", "lugarF", "avisoF"].forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+  E("capaData").textContent = TEXTOS.data;
+  E("cred1").textContent = TEXTOS.cred.replace(" The Panama", "\nThe Panama");
+  // o cartão da fala em 6 linhas (a quebra é só \n, white-space: pre)
+  E("fala").textContent = TEXTOS.fala.replace(" lived", "\nlived").replace(" rented", "\nrented").replace(" quarters", "\nquarters").replace(" shopping", "\nshopping").replace(" the ‘", "\nthe ‘");
+
+  // ── os tempos (locais, −325,3), do words.json, da regência e dos textos de tela s32 ──
+  var T = {
+    nome: 0.00, cargo: 0.12,                                // "Mary" (325,31 s); o cargo 120 ms depois
+    saiCard: 8.517,                                         // o nome e o cargo saem 300 ms antes do levantar
+    pousaCapa: 3.033, capaDur: 0.80, fitaCapa: 3.70,       // "They" (328,34 s): a capa pousa
+    cred: 3.033,                                            // o crédito com a capa, até o fim
+    luzCapa: 3.033,
+    levanta: 8.817, luzMesa: 8.817,                         // a capa levanta (350 ms); a luz volta ao centro da mesa
+    pousaF: 9.167, fotoDur: 0.55, fitaF: 9.617,            // "everyone" (334,48 s): a foto pousa
+    luzF: 9.167,
+    fala: 9.785, falaDur: 0.55, luzFala: 9.785,             // ""lived" (335,08 s): o cartão da fala pousa; a luz vai a ele
+    textosF: 9.867,                                         // 150 ms depois do assentamento da foto
+    luzVoltaF: 12.26,                                       // ""commy,"" (337,56 s): a luz volta à loja
+    camPara: DUR - 0.25
+  };
+  var CAM = [
+    { t0: 0.00, s: 1.000, cx: 1920, cy: 1080 },
+    { t0: 0.90, t1: 2.40, s: 1.010, cx: 1920, cy: 1060 },      // b1: o push-in da mesa rumo ao card
+    { t0: 3.60, t1: 5.60, s: 1.015, cx: 1920, cy: 1080 }       // b2: termina 1,0 s antes de "dated" (7,26)
+  ];
+  // ── a geometria ──
+  var CARD = { cx: 1230, cy: 930 };                                        // o centro do card (nome + cargo), para a luz
+  var CAPA = { w: 1160, h: 1200, cx: 2880, cy: 850, rot: 0.8 };           // a capa, à direita: x ~2300→3460, y 250→1450
+  var F    = { w: 1342, h: 1088, cx: 985, cy: 830, rot: -1.2 };               // a foto de 1954, à esquerda: x ~314→1656, y ~286→1374
+  var FALA = { w: 1560, h: 1570, cx: 2520, cy: 1030, rot: 0.6 };          // o cartão da fala: x 1740→3300, y 245→1815 (fora do canto reservado, sob a câmera a 1,015 e com a deriva)
+  var MESA = { x: 1920, y: 1080 };
+
+  // a luz: o card → a capa (3,033) → o centro da mesa (8,817) → a foto (9,167) → o cartão (9,785) → a foto (12,26); 0,6 s (eb), 120 ms atrás
+  function alvoLuz(t) {
+    var passos = [[T.luzCapa, CAPA.cx, CAPA.cy - 200], [T.luzMesa, MESA.x, MESA.y], [T.luzF, F.cx, F.cy], [T.luzFala, FALA.cx, FALA.cy], [T.luzVoltaF, F.cx, F.cy]];
+    var x = CARD.cx, y = CARD.cy;
+    passos.forEach(function (p) { var u = eb(seg(t, p[0], 0.6)); x = lerp(x, p[1], u); y = lerp(y, p[2], u); });
+    return { x: x, y: y };
+  }
+  function cena(t) {
+    t = t + 0.0005;
+    var c = camEstado(CAM, Math.min(t, T.camPara));
+    aplicarCamera(c, t, alvoLuz(t - 0.12));
+
+    // b1: o card sem retrato: nome e cargo
+    texto(E("nome"), t, T.nome, T.saiCard, true);
+    texto(E("cargo"), t, T.cargo, T.saiCard);
+
+    // b2: a capa pousa, fica, e levanta em 8,817
+    objeto("capaGrupo", CAPA, t, T.pousaCapa, T.capaDur, pousoFolha, T.levanta, 1146, 250);   // desce 250 px, não 420 (o cabeçalho não sai pelo topo do quadro no pouso)
+    fita(E("capaFe"), t, T.fitaCapa); fita(E("capaFd"), t, T.fitaCapa + 0.12);
+    var cr = E("creds"); if (cr) cr.style.opacity = eo(seg(t, T.cred, 0.3)).toFixed(3);
+
+    // b3: a foto pousa; o cartão da fala pousa na palavra; o rótulo e o aviso 150 ms depois do assentamento
+    objeto("f", F, t, T.pousaF, T.fotoDur, pousoFoto);
+    fita(E("fFe"), t, T.fitaF); fita(E("fFd"), t, T.fitaF + 0.12);
+    objeto("fala", FALA, t, T.fala, T.falaDur, pousoDes, undefined, undefined, 60);   // desce 60 px: o alto do cartão fica dentro da margem de 160 no pouso
+    texto(E("lugarF"), t, T.textosF);
+    texto(E("avisoF"), t, T.textosF);
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); };
+  window.__fotosProntas = R.prontas();
+  window.__renderAt(0);
+
+})();
+</script>
+</body>
+</html>
