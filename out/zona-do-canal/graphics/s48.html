@@ -104,6 +104,27 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s48 + s49 fundidas (540,5 �
       da borda dela passa a ~56, pela conta sobre a geometria) e a da Balboa Heights de dx 110 a 140 (~24 → ~54). As de
       Cristóbal ficam onde estavam: elas já cruzavam o contorno com o X0 antigo (a mesma conta dá contato também a 11,30), e
       nenhum lugar do quadro dá folga a uma pilha de 618 × 506 px nessa janela; vai no relato.
+  ZONA-DO-CANAL-ARTE-6 (M-s48, mapista; textos-tela.json sha256 d4d1e864…2810, texto-4; o que segue SUBSTITUI, nas
+  bandeiras, o bloco "AS BANDEIRAS" da arte-5 acima, que fica como histórico):
+    · AS DUAS BANDEIRAS EM CADA LUGAR, JUNTAS, COM O ANEL (a nota do textos-tela; verificador do texto-4: nos lugares
+      escolhidos as duas voaram juntas desde o primeiro dia da do Panamá): Shaler 38,26 (sem anel, sobre o círculo da
+      dúvida), ponte 42,62, Balboa Heights e Cristóbal 44,92. Em DOIS MASTROS LADO A LADO, DA MESMA ALTURA, nunca as duas
+      no mesmo mastro (4 U.S.C. §7(g); CIJ: 'the flagpoles' em Cristóbal). Em 'both' (49,72) nada entra (quem marca o
+      acordo é o cartão JAN. 10, 1963). A exceção do Lucas ("Exceção só aqui") continua a mesma, só nesta cena.
+    · O desenho: o haste sai do topo do anel (ou do círculo), sobe até uma travessa e dela sobem os dois mastros, iguais,
+      a 219 px um do outro. A bandeira voa À DIREITA do mastro, com o cantão junto do mastro (o anverso; a arte-5 a punha
+      à esquerda sem espelhar, o que mostrava o cantão longe do mastro). A dos EUA no mastro da esquerda e a do Panamá no
+      da direita, em todos os lugares (a esquerda de quem olha é a posição de honra do Flag Code; a ordem é uma troca de
+      dois ids). No Shaler e em Cristóbal os mastros ficam à direita do ponto (no Shaler, à esquerda está a pílula e,
+      acima, "the line"); na ponte e na Balboa Heights, à esquerda (a haste da Balboa Heights sobe a ~28 px da ponte, e
+      as pílulas da Balboa Heights ficam à direita). Os tamanhos não mudam: pa.png 320×213 → 144×96 e us.png 320×168 →
+      183×96, abaixo do nativo, sem upscale.
+    · 'SEPT. 7, 1960' passa a 'DECIDED SEPT. 7, 1960' (textos-tela).
+    · Os tempos, pelo textos-tela: a pílula 'Cristóbal', a legenda dela e a guia entram em 44,5 (antes 44,92) e saem em
+      46,92 como antes; os anéis e as bandeiras da Balboa Heights e de Cristóbal em 44,92 (a nota); a ponte em 42,62; o
+      Shaler em 38,26. A pílula 'Balboa Heights' e a legenda dela FICAM em 44,92, contra o 44,5 do textos-tela: em 44,5 elas
+      colidem com as da ponte (o check-overlap mediu 3 pares em 44,6 s), que ficam no ar os 2,0 s da marca (42,62–44,62, e
+      saem até 44,92); vai à Sala no relato. Nada mais mudou.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -231,7 +252,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s48 + s49 fundidas (540,5 �
     <div class="rotulo data liso" id="rotFrom" data-qc-papel="rotulo">FROM 1960</div>
     <div class="rotulo legenda liso" id="legFrom" data-qc-papel="legenda">Panama's flag at chosen sites</div>
     <div class="rotulo liso" id="rotShaler" data-qc-papel="rotulo">Shaler Triangle</div>
-    <div class="rotulo data liso" id="rotShalerData" data-qc-papel="rotulo">SEPT. 7, 1960</div>
+    <div class="rotulo data liso" id="rotShalerData" data-qc-papel="rotulo">DECIDED SEPT. 7, 1960</div>
     <div class="rotulo legenda liso" id="legShaler" data-qc-papel="legenda">approximate location</div>
     <div class="rotulo multi" id="rotPonte" data-qc-papel="rotulo">Bridge of
 the Americas</div>
@@ -250,6 +271,7 @@ October 1962</div>
     <div class="rotulo liso" id="rotBHS" data-qc-papel="rotulo">Balboa High School</div>
     <div class="rotulo legenda liso" id="legBHS" data-qc-papel="legenda">At schools: indoors only</div>
     <img class="bandeira pa" id="alShalerPA" src="../../../assets/flags/pa.png" alt="">
+    <img class="bandeira us" id="alShalerUS" src="../../../assets/flags/us.png" alt="">
     <img class="bandeira pa" id="alPontePA" src="../../../assets/flags/pa.png" alt="">
     <img class="bandeira us" id="alPonteUS" src="../../../assets/flags/us.png" alt="">
     <img class="bandeira pa" id="alBHPA" src="../../../assets/flags/pa.png" alt="">
@@ -324,13 +346,13 @@ of Jurists, 1964</div>
     giro: [-3, 3],
     // zona-do-canal-arte-5: o giro a mais da perna X0→X1 (0 → +9°, ~0,5°/s, com rampa de 1,8 s nas duas pontas), e fica
     giroExtra: { t0: 43.25, t1: 61.5, graus: 9, rampa: 0.1 },
-    // zona-do-canal-arte-5: AS BANDEIRAS (s49; exceção do Lucas só nesta cena): alfinetes nos lugares escolhidos. O mastro
-    // nasce no topo do anel (no Shaler, no topo do círculo da dúvida); a do Panamá em cima, a dos EUA logo abaixo, em 'both'
+    // zona-do-canal-arte-5/arte-6: AS BANDEIRAS (s49; exceção do Lucas só nesta cena): alfinetes nos lugares escolhidos.
     alfinetes: [
-      { id: "alShaler", ponto: "shaler", circulo: true, topo: 290, entra: 38.26, sai: 41.65, us: null },
-      { id: "alPonte",  ponto: "ponte", topo: 290, entra: 42.62, sai: 61.5, us: 49.72 },
-      { id: "alBH",     ponto: "bh",    topo: 460, entra: 44.92, sai: 61.5, us: 49.72 },
-      { id: "alCris",   ponto: "cris",  topo: 290, entra: 44.92, sai: 61.5, us: 49.72 }
+      // arte-6: as duas juntas, em dois mastros iguais; x0 = o mastro da esquerda (o dos EUA) em relação ao ponto
+      { id: "alShaler", ponto: "shaler", circulo: true, topo: 290, x0: 0,    entra: 38.26, sai: 41.65 },
+      { id: "alPonte",  ponto: "ponte", topo: 290, x0: -389, entra: 42.62, sai: 61.5 },
+      { id: "alBH",     ponto: "bh",    topo: 460, x0: -389, entra: 44.92, sai: 61.5 },
+      { id: "alCris",   ponto: "cris",  topo: 290, x0: 0,    entra: 44.92, sai: 61.5 }
     ],
     // a tira (coordenadas do palco; as linhas crescem de baixo para cima)
     faixa: {
@@ -376,8 +398,8 @@ of Jurists, 1964</div>
       { id: "legPonte",  ref: "ponte", lado: "direita",  vert: "baixo", dx: 170,  dy: -363, entra: 42.62, sai: 44.62 },
       { id: "rotBH",     ref: "bh",    lado: "direita",  vert: "baixo", dx: 140,  dy: -420, entra: 44.92, sai: 46.92 },
       { id: "legBH",     ref: "bh",    lado: "direita",  vert: "baixo", dx: 140,  dy: -232, entra: 44.92, sai: 46.92 },
-      { id: "rotCris",   ref: "cris",  lado: "direita",  vert: "baixo", dx: 110, dy: 440,  entra: 44.92, sai: 46.92 },
-      { id: "legCris",   ref: "cris",  lado: "direita",  vert: "baixo", dx: 110, dy: 628,  entra: 44.92, sai: 46.92 },
+      { id: "rotCris",   ref: "cris",  lado: "direita",  vert: "baixo", dx: 110, dy: 440,  entra: 44.5, sai: 46.92 },
+      { id: "legCris",   ref: "cris",  lado: "direita",  vert: "baixo", dx: 110, dy: 628,  entra: 44.5, sai: 46.92 },
       { id: "rotDec",    tela: [3640, 160], lado: "esquerda", vert: "baixo", entra: 54.767, sai: 61.5 },
       { id: "rot17",     tela: [3640, 348], lado: "esquerda", vert: "baixo", entra: 56.0,   sai: 61.5 },
       { id: "rotBHS",    ref: "bhs", lado: "direita", vert: "baixo", dx: 230, dy: -300, entra: 62.14, sai: null },
@@ -385,7 +407,7 @@ of Jurists, 1964</div>
     ],
     // guias curtas dos rótulos que não encostam no ponto (da borda da caixa mais perto do ponto até perto dele)
     guiasRot: [ { rot: ["rotShaler", "rotShalerData", "legShaler"], ponto: "shaler", raio: true, entra: 38.26, sai: 41.65 },
-                { rot: ["rotCris", "legCris"], ponto: "cris", entra: 44.92, sai: 46.92 } ],
+                { rot: ["rotCris", "legCris"], ponto: "cris", entra: 44.5, sai: 46.92 } ],
     minis: [],
     legenda: null,
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0, extra: [] },
@@ -764,22 +786,24 @@ of Jurists, 1964</div>
       Lh.sob.setAttribute("d", dd); Lh.sobre.setAttribute("d", dd); Lh.g.setAttribute("opacity", vg.toFixed(3));
     });
 
-    // arte-5: os alfinetes. O pé do mastro no topo do anel (34 px) ou do círculo; a bandeira do Panamá no topo do mastro,
-    // voando para a esquerda (à direita ficam as etiquetas); a dos EUA logo abaixo, a 10 px, em 'both' (49,72)
+    // arte-6: os alfinetes. A haste sai do topo do anel (34 px) ou do círculo e sobe até a travessa (40 px abaixo das
+    // bandeiras); da travessa sobem os dois mastros, da mesma altura, a 219 px um do outro: o da esquerda (pp.x + x0) com a
+    // dos EUA, o da direita com a do Panamá. Cada bandeira voa à direita do seu mastro, com o cantão junto dele.
     CENA.alfinetes.forEach(function (A) {
       var pp = map.project(PTS[A.ponto]);
       var pe = A.circulo ? CENA.shaler.raio_m / mpp(z, PTS.shaler[1]) + 4 : 34;
       var vin = eo(seg(t, A.entra, 0.3)), vo = 1 - eio(seg(t, A.sai, 0.3)), v = vin * vo, sobe = (1 - vin) * 24;
-      var d = "M " + pp.x.toFixed(2) + " " + (pp.y - pe + sobe).toFixed(2) + " L " + pp.x.toFixed(2) + " " + (pp.y - A.topo + sobe).toFixed(2);
+      var yTopo = pp.y - A.topo + sobe, yTrav = yTopo + 96 + 40, yPe = Math.max(pp.y - pe + sobe, yTrav);
+      var xE = pp.x + A.x0, xD = xE + 219, f = function (n) { return n.toFixed(2); };
+      var d = "M " + f(pp.x) + " " + f(yPe) + " L " + f(pp.x) + " " + f(yTrav) +
+              " M " + f(Math.min(xE, pp.x)) + " " + f(yTrav) + " L " + f(Math.max(xD, pp.x)) + " " + f(yTrav) +
+              " M " + f(xE) + " " + f(yTrav) + " L " + f(xE) + " " + f(yTopo) +
+              " M " + f(xD) + " " + f(yTrav) + " L " + f(xD) + " " + f(yTopo);
       A.sob.setAttribute("d", d); A.sobre.setAttribute("d", d); A.g.setAttribute("opacity", v.toFixed(3));
-      var bp = E(A.id + "PA");
-      if (bp) { vis(bp, v); bp.style.transform = "translate(" + (pp.x - 6 - 144).toFixed(2) + "px," + (pp.y - A.topo + sobe).toFixed(2) + "px)"; }
       var bu = E(A.id + "US");
-      if (bu && A.us != null) {
-        var vu = eo(seg(t, A.us, 0.3)), su = (1 - vu) * 24;
-        vis(bu, vu * vo);
-        bu.style.transform = "translate(" + (pp.x - 6 - 183).toFixed(2) + "px," + (pp.y - A.topo + 96 + 10 + sobe + su).toFixed(2) + "px)";
-      }
+      if (bu) { vis(bu, v); bu.style.transform = "translate(" + f(xE + 6) + "px," + f(yTopo) + "px)"; }
+      var bp = E(A.id + "PA");
+      if (bp) { vis(bp, v); bp.style.transform = "translate(" + f(xD + 6) + "px," + f(yTopo) + "px)"; }
     });
 
     // o círculo da dúvida do Shaler (raio de 55 m na escala do quadro)
