@@ -600,6 +600,10 @@ leitura). Onde ela diverge desta lista, vale esta:
   conta vai a ele quando o painel a mostrar.
   **No vídeo 2 (Los Angeles), o gasto também está liberado, sem relevo 3D** (Lucas, 07/10/2026: "Sim, como no Juneau
   (Recomendado)"; identidade §6): as 24 cenas de mapa, com o contador em `out/los-angeles/_pesquisa/maptiler-gasto.md`.
+  **No vídeo 3 (Zona do Canal), liberado** (Lucas, 15/10/2026, 01:4x, no chat da Sala: "Pode usar o Maptiler"): as cenas de
+  mapa, com o contador em `out/zona-do-canal/_pesquisa/maptiler-gasto.md`, anotado antes e depois de cada render de mapa. O
+  relevo 3D não foi perguntado e não está liberado: cena com relevo pede o ok dele antes. É esta mensagem que a Sala cita no
+  `MapTiler liberado` aos setores.
 
 **Os scripts do canal** rodam de dentro do canal, sempre com o alvo que o ofício do agente dá. Sem alvo,
 alguns varrem todos os projetos de `out/`. Na maioria, o alvo é o `<proj>` (`node scripts/<portão>.mjs <proj>`);

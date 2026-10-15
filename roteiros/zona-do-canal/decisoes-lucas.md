@@ -28,3 +28,7 @@ Cada decisão com a pergunta, a resposta literal e a hora (Brasília).
   American Until 1979".** Fica para a descrição, conferida pelo verificador-de-fatos antes de publicar: uma linha sobre 1979,
   os 30 meses, Balboa como moradia de empregados americanos depois de 1979 (o acordo de 1977, Anexo A, §2(k)) e o canal com a
   agência americana até 1999.
+
+- **A MapTiler** (15/10/2026, 01:41). No chat da Sala, sem pergunta aberta: "Pode usar o Maptiler". Vale para as cenas de
+  mapa do vídeo 3, com o contador em `out/zona-do-canal/_pesquisa/maptiler-gasto.md`. O relevo 3D não foi perguntado e não
+  está liberado.
