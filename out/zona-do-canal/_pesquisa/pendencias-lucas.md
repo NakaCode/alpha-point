@@ -42,6 +42,15 @@ eclusas de Miraflores de 1988 (a cena viraria foto, com "Photo from 1988"), e o 
 16. **s49:** as bandeiras do Panamá e dos EUA sobre o mapa, como objeto da frase? A identidade §6 proíbe bandeira em mapa, e
     este caso não foi perguntado.
 
+## Da checagem de fatos (`zona-do-canal-texto-1`, 15/10, 04:4x; `roteiros/zona-do-canal/qc-roteiro/fatos-pesquisa-2026-10-15.laudo.md`)
+408 de 424 afirmações com veredito, nenhuma refutada; os 16 sem veredito pedem leitura de imagem e nenhum vai à tela sem ela.
+17. **s16, a voz:** "almost four thousand privately owned houses". A fonte põe "privately owned" só nas 1.136 casas do ano de
+    1915; o total é "3,988 houses". A frase generaliza o qualificador, sem contradizer a fonte: a checagem recomenda não regravar
+    (regravar gasta crédito e mexe no relógio). A tela diz `3,988 HOUSES DESTROYED OR REMOVED (BY JUNE 30, 1915)`.
+18. **s65, a voz (leve):** "let only those who worked or served there… live inside the line" omite os lavradores e hortelões
+    das notas de 1936. Fica, ou regrava com "almost no one but those who worked or served there"?
+    (A s54, a imprensa panamenha com 21 ou 22 mortos, está no item 11.)
+
 ## Depois
 - A miniatura (com o canal à vista), pela banca da embalagem (§3).
 - A linha do tempo das cenas, antes do render 4K.
