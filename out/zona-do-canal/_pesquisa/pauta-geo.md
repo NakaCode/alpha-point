@@ -343,3 +343,71 @@ ocupa parte do antigo parque). As 5 leituras da 2ª rodada não mudaram.
 
 - `balboa-high-school`: `© OpenStreetMap contributors` na tela (ODbL).
 - `lugares-1936`: domínio público, sem crédito (NARA 192812325).
+
+
+## 5ª rodada (pesquisa-5, 15/10/2026, 10:30–10:50 de Brasília)
+
+A pauta da 4ª rodada está guardada em `out/zona-do-canal/_tmp/pesquisa-geo/rodada4/`. Scripts e conferências em
+`out/zona-do-canal/_tmp/pesquisa-geo/r5/` (`caixa.py`, `agua_extrair.py`, `scripts/r5_construir.py`, `scripts/r5_origens.py`,
+`scripts/r5_ver.py`); gravação sem o cache da máquina (`r3/scripts/gravar-r3.mjs`).
+
+### Camadas novas
+
+| arquivo (`_media/geo/`) | o que é | fonte e data | licença / tela | features | conferência |
+|---|---|---|---|---|---|
+| `faixa-art2-5mi-mar3mn.json` | ESQUEMA: a faixa do Art. II (5 mi de cada lado do eixo) com as 3 milhas náuticas mar adentro nas duas pontas | eixo do OSM + canais de acesso do OSM (Overpass 15/10/2026) + costa do OSM (osmdata, 08/10/2026) | ODbL: `© OpenStreetMap contributors` | 1 | 1.437,4 km² (555,0 mi²); contém 100 % da `faixa-art2-5mi`; a borda de fora a 5.556 m da terra nas duas pontas; Casco Viejo, Calidonia e Flamenco dentro (na antiga, fora) |
+| `agua-osm-zona.json` | o mar do OSM para a água escura (identidade §6), na caixa das câmeras de s06, s11, s48 e s60 | water polygons do osmdata (Last-Modified 2026-10-08) − 275 estruturas do OSM (Overpass 15/10/2026) | ODbL: `© OpenStreetMap contributors` (já na linha da MapTiler) | 1 (47 polígonos) | caixa -81.15, 7.95, -78.05, 10.35; 1,1 MB; 46.458 vértices |
+
+A `faixa-art2-5mi` fica como estava (sha256 `b6d00661…`, conferido).
+
+### A faixa com o mar: a fonte e a conta
+
+- **Fonte:** o Art. II do tratado de 18/11/1903 (Hay-Bunau-Varilla), lido em https://avalon.law.yale.edu/20th_century/pan001.asp
+  (15/10/2026, 10:30, HTTP 200; sha256 da página `c7fdb92b…`). Literal: "The Republic of Panama grants to the United States in
+  perpetuity the use, occupation and control of a zone of land and land under water for the construction maintenance, operation,
+  sanitation and protection of said Canal of the width of ten miles extending to the distance of five miles on each side of the
+  center line of the route of the Canal to be constructed; the said zone beginning in the Caribbean Sea three marine miles from mean
+  low water mark and extending to and across the Isthmus of Panama into the Pacific ocean to a distance of three marine miles from
+  mean low water mark with the proviso that the cities of Panama and Colon and the harbors adjacent to said cities, which are
+  included within the boundaries of the zone above described, shall not be included within this grant."
+- **A conta:** 5 milhas = 5 × 1.609,344 m = 8.046,72 m de cada lado; 3 milhas náuticas = 3 × 1.852 m = 5.556 m. (1.852 m é a
+  milha náutica internacional, de 1929; em 1903 os EUA usavam 1.853,248 m: 3,7 m a mais em 3 milhas, menos de um pixel em qualquer
+  quadro do vídeo.)
+- **O método** (projeção local equirretangular a 9,1°N, a mesma da `faixa-art2-5mi`):
+  1. o eixo estendido: o eixo do OSM (relation/2389520, de 9,400 N a 8,943 N) + os vértices dos canais de acesso do OSM além das
+     pontas (Pacífico: `recommended_track` way/830303040 até -79.5216, 8.8885; Atlântico: way/1445268878 até -79.9188, 9.4035) +
+     20 km no rumo do último trecho, só para passar das 3 milhas (o limite corta antes);
+  2. a faixa: buffer de 8.046,72 m desse eixo, pontas planas;
+  3. o limite do mar: buffer de 5.556 m da terra do istmo (o maior pedaço de terra da caixa; hoje inclui Naos, Perico e Flamenco,
+     pela calçada de Amador, que é de 1913). As ilhas soltas não estendem o limite: o Art. II as trata à parte ("all islands within
+     the limits of the zone"). Com elas (Taboguilla, 1,5 km², e as ilhotas de Limón Bay), a faixa iria a 1.545,8 km²; essa variante
+     não foi entregue;
+  4. a camada = faixa ∩ limite (lagos e rios contam como terra); fica só o pedaço ligado ao canal.
+- **A linha de costa usada:** a do OSM (`natural=coastline`, pelos water polygons do osmdata), que pela convenção do OSM é a linha
+  de preia-mar. O tratado mede da linha de baixa-mar média: onde a costa é praia ou lodaçal (o Pacífico tem maré grande), a linha de
+  baixa-mar fica mar adentro, e o limite real iria além deste. **Não medido.** É esquema, como a `faixa-art2-5mi`.
+- **O proviso:** as cidades do Panamá e de Colón ficam DENTRO dos limites e fora da concessão, pelo mesmo artigo: a península da
+  Cidade do Panamá dentro desta faixa é o que a fala da s11 diz ("sat inside those limits").
+- **Conferência** (olhar, não portão): `r5/v-r5-pacifico.jpg` e `r5/v-r5-atlantico.jpg`.
+
+### A água do OSM
+
+- **Fonte:** o `water-polygons-split-4326.zip` do osmdata (906.106.868 bytes, Last-Modified 2026-10-08 03:47:23 UTC, sha256
+  `0b52c599…` conferido hoje), o mesmo do vídeo 2, lido sem extrair e sem baixar de novo (só leitura em
+  `out/los-angeles/_media/geo/_osm-agua/`); 22 polígonos na caixa.
+- **A caixa:** a união dos quadros 3840×2160 de todas as paradas de câmera de s06, s11, s48 e s60 (lidas do HTML), com o giro
+  (círculo da meia-diagonal): -81.055, 8.059, -78.153, 10.261; com ~10 km de folga, -81.15, 7.95, -78.05, 10.35.
+- **As estruturas tiradas** (Overpass, base 2026-10-15T13:29:50Z): 275, 242.108 m² — píer em área (50) e em linha com ±3 m (202),
+  quebra-mar em área (7), em linha com ±8 m (15) e em multipolígono (1). Os quebra-mares da Cinta Costera ficam a 6–12 m (mediana)
+  da costa do OSM: a faixa entre eles é enrocamento. `quay` em linha não se tira (é a borda do cais). Lista em `r5/resumo.json`.
+- **Simplificação** por faixa de zoom (Douglas-Peucker com topologia): 1,2 m nos quadros de s48 com zoom ≥ 14,4
+  (-79.645, 8.880, -79.475, 9.048; Hausdorff medido 1,41 m); 3 m nos quadros com zoom ≥ 12 (-80.16, 8.61, -79.08, 9.73; 3,71 m);
+  10 m no resto, que só aparece com a Zona inteira (zoom ≤ 11,4, ~29 m por pixel 4K; 16,2 m). 111.304 → 46.458 vértices.
+- **O que fica escuro também:** o mar do OSM sobe os canais de acesso até as eclusas (Miraflores e Gatún); os lagos Gatún e
+  Miraflores não estão na camada e ficam no satélite.
+- Conferência (olhar): `r5/v-r5-agua-cinta.jpg`.
+
+### Créditos (5ª rodada)
+
+- As duas camadas: `© OpenStreetMap contributors` na tela (já na linha `© MapTiler © OpenStreetMap contributors`) e
+  `openstreetmap.org/copyright` na descrição.

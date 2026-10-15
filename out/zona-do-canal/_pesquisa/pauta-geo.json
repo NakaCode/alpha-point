@@ -476,6 +476,206 @@
       },
       "dump_overpass": "out/zona-do-canal/_tmp/pesquisa-geo/dumps/r4-osm-geom-bhs-shaler.json",
       "aviso": "contorno de hoje; o prédio de 1964 pode diferir pelos acréscimos de 1963 e 1969"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "Esquema: a faixa do Art. II do tratado de 1903 (5 milhas de cada lado do eixo) estendida mar adentro até 3 milhas náuticas da costa nas duas pontas — eixo do OSM (relation/2389520) prolongado pelos canais de acesso do OSM (recommended_track way/830303040 no Pacífico e way/1445268878 no Atlântico), limite a 3 × 1.852 m da costa do OSM (water polygons do osmdata); não é a divisa",
+      "arquivo": "_media/geo/faixa-art2-5mi-mar3mn.json",
+      "licenca": "ODbL 1.0 — exige atribuição © OpenStreetMap contributors",
+      "url": "https://avalon.law.yale.edu/20th_century/pan001.asp",
+      "exige_credito": true,
+      "features": 1,
+      "bbox": [
+        -79.99942,
+        8.83769,
+        -79.46766,
+        9.45514
+      ],
+      "sha256": "9c36a27a764a7417f3f173a065d1cbcf418857343dbaa0950a98c629f1450728",
+      "derivado_por": "out/zona-do-canal/_tmp/pesquisa-geo/r5/scripts/r5_construir.py (shapely, projeção local equirretangular a 9,1°N)",
+      "registrado": "2026-10-15",
+      "fonte_do_texto": {
+        "tratado": "Convention for the Construction of a Ship Canal (Hay-Bunau-Varilla Treaty), November 18, 1903, Article II",
+        "url": "https://avalon.law.yale.edu/20th_century/pan001.asp",
+        "lido_em": "15/10/2026 10:30 (Brasília), HTTP 200",
+        "sha256_pagina": "c7fdb92b86d470f8e3a1c7f2706ca51bf0b6092be3f0209aece00d2a1219d897",
+        "citacao_literal": "The Republic of Panama grants to the United States in perpetuity the use, occupation and control of a zone of land and land under water for the construction maintenance, operation, sanitation and protection of said Canal of the width of ten miles extending to the distance of five miles on each side of the center line of the route of the Canal to be constructed; the said zone beginning in the Caribbean Sea three marine miles from mean low water mark and extending to and across the Isthmus of Panama into the Pacific ocean to a distance of three marine miles from mean low water mark with the proviso that the cities of Panama and Colon and the harbors adjacent to said cities, which are included within the boundaries of the zone above described, shall not be included within this grant."
+      },
+      "conta": {
+        "milha_terrestre_m": 1609.344,
+        "meia_largura_m": 8046.72,
+        "milha_nautica_m": 1852,
+        "tres_milhas_nauticas_m": 5556,
+        "nota_milha_nautica": "1.852 m é a milha náutica internacional (1929); em 1903 os EUA usavam 1.853,248 m: 3,7 m a mais em 3 milhas, abaixo de um pixel em qualquer quadro do vídeo"
+      },
+      "metodo": [
+        "eixo estendido = o eixo do OSM (de 9,400 N a 8,943 N) + os vértices dos canais de acesso do OSM além das pontas + 20 km no rumo do último trecho (só para passar das 3 milhas; o limite corta antes)",
+        "faixa = buffer de 8.046,72 m do eixo estendido (pontas planas)",
+        "limite do mar = buffer de 5.556 m da terra do istmo (o maior pedaço de terra da caixa, com Naos, Perico e Flamenco ligados pela calçada de Amador, como o OSM de hoje); as ilhas soltas (Taboguilla, 1,5 km²; ilhotas de Limón Bay) não estendem o limite: o Art. II trata as ilhas à parte ('all islands within the limits of the zone')",
+        "camada = faixa ∩ limite do mar (lagos e rios contam como terra); fica só o pedaço ligado ao canal"
+      ],
+      "costa_usada": "a costa do OpenStreetMap (natural=coastline, via water polygons do osmdata, Last-Modified 2026-10-08), que por convenção do OSM é a linha de preia-mar. O tratado mede da linha de baixa-mar média: onde a costa é praia ou lodaçal, a linha de baixa-mar fica mar adentro e o limite real iria além deste. Não medido",
+      "medidas": {
+        "km2": 1437.42,
+        "mi2": 555,
+        "faixa_antiga_km2": 1207.37,
+        "contem_a_faixa_antiga_pct": 100,
+        "variante_com_as_ilhas_km2_nao_entregue": 1545.75,
+        "borda_de_fora_m_da_terra": {
+          "pacifico": 5556,
+          "atlantico": 5556,
+          "alvo": 5556
+        },
+        "eixo_estendido": {
+          "atlantico_de_fora_para_dentro": [
+            [
+              -79.917949,
+              9.584372
+            ],
+            [
+              -79.918817,
+              9.4035
+            ]
+          ],
+          "pacifico_de_dentro_para_fora": [
+            [
+              -79.521583,
+              8.888533
+            ],
+            [
+              -79.409018,
+              8.746427
+            ]
+          ],
+          "como": "o eixo do OSM + os vertices do recommended_track de cada entrada alem do fim do eixo + 20 km no rumo do ultimo trecho"
+        },
+        "dentro": {
+          "Casco Viejo (Panama City)": {
+            "nova": true,
+            "antiga": false
+          },
+          "Colon, centro": {
+            "nova": true,
+            "antiga": true
+          },
+          "Flamenco": {
+            "nova": true,
+            "antiga": false
+          },
+          "Balboa (Estadio)": {
+            "nova": true,
+            "antiga": true
+          },
+          "Calidonia": {
+            "nova": true,
+            "antiga": false
+          }
+        }
+      },
+      "proviso": "o mesmo Art. II exclui da concessão as cidades do Panamá e de Colón e os portos junto a elas, 'which are included within the boundaries of the zone above described': a península da Cidade do Panamá fica DENTRO desta faixa, como diz a fala da s11",
+      "aviso": "esquema; a faixa-art2-5mi (sem o mar) continua como estava, para não quebrar as cenas",
+      "dump_overpass": {
+        "arquivo": "out/zona-do-canal/_tmp/pesquisa-geo/dumps/r5-osm-entradas.json",
+        "sha256": "82ee478f86fc28c2959149c5a37e0017f974a69a3f4ebcde07ced86de4cd6a54",
+        "overpass_base": "2026-10-15T13:29:50Z",
+        "endpoint": "https://overpass-api.de/api/interpreter",
+        "pedido": "15/10/2026 10:32 (Brasília), 200, 316 elementos"
+      },
+      "costa_arquivo_fonte": {
+        "arquivo": "out/los-angeles/_media/geo/_osm-agua/water-polygons-split-4326.zip (o mesmo do vídeo 2, só leitura; baixado em 08/10/2026 com o sim do Lucas)",
+        "url": "https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip",
+        "last_modified": "Thu, 08 Oct 2026 03:47:23 GMT",
+        "bytes": 906106868,
+        "sha256": "0b52c5995c461c7f3f3bd400155b7f19f6482dd6352f8dbd7587afdddc4d8c93 (conferido em 15/10/2026)"
+      },
+      "conferencia_visual": [
+        "out/zona-do-canal/_tmp/pesquisa-geo/r5/v-r5-pacifico.jpg",
+        "out/zona-do-canal/_tmp/pesquisa-geo/r5/v-r5-atlantico.jpg"
+      ]
+    },
+    {
+      "tipo": "geo",
+      "fonte": "OpenStreetMap water polygons (osmdata.openstreetmap.de, water-polygons-split-4326.zip, Last-Modified 2026-10-08 03:47:23 UTC): o mar fechado pela costa natural=coastline, recortado à caixa das câmeras de s06, s11, s48 e s60 (-81.15, 7.95, -78.05, 10.35); tiradas 275 estruturas do OSM na água (man_made=pier/breakwater/groyne/quay em área; quebra-mar em linha com ±8 m, píer em linha com ±3 m; Overpass 2026-10-15T13:29:50Z)",
+      "arquivo": "_media/geo/agua-osm-zona.json",
+      "licenca": "ODbL 1.0 — exige atribuição © OpenStreetMap contributors (https://osmdata.openstreetmap.de/info/license.html; https://www.openstreetmap.org/copyright)",
+      "url": "https://osmdata.openstreetmap.de/data/water-polygons.html",
+      "exige_credito": true,
+      "features": 1,
+      "bbox": [
+        -81.15,
+        7.95,
+        -78.05,
+        10.35
+      ],
+      "sha256": "93730cee5d8ac92934b49c94d21b099016980434ef52598d03ce99de1761e19e",
+      "derivado_por": "out/zona-do-canal/_tmp/pesquisa-geo/r5/agua_extrair.py (cópia do agua_osm_extrair.py de LA, saída trocada) + r5/scripts/r5_construir.py",
+      "registrado": "2026-10-15",
+      "papel": "a água da base (tom --agua-base, opaca, logo acima do satélite e abaixo de tudo o que a cena desenha; identidade §6, 'A água escura')",
+      "cenas_pedidas": [
+        "s06",
+        "s11",
+        "s48",
+        "s60"
+      ],
+      "recorte": {
+        "caixa_lonlat": [
+          -81.15,
+          7.95,
+          -78.05,
+          10.35
+        ],
+        "porque": "a união dos quadros 3840×2160 de todas as paradas de câmera das quatro cenas (lidas do HTML), com o giro (círculo da meia-diagonal): -81.055, 8.059, -78.153, 10.261; + ~10 km (r5/caixa.py)"
+      },
+      "simplificacao": {
+        "tolerancias_m": {
+          "A": 1.2,
+          "B": 3,
+          "fora": 10
+        },
+        "caixa_A": [
+          -79.645,
+          8.88,
+          -79.475,
+          9.048
+        ],
+        "caixa_B": [
+          -80.16,
+          8.61,
+          -79.08,
+          9.73
+        ],
+        "vertices_antes": 111304,
+        "vertices_depois": 46458,
+        "hausdorff_m": {
+          "A": 1.41,
+          "B": 3.71,
+          "fora": 16.15
+        }
+      },
+      "estruturas": {
+        "tiradas": 275,
+        "m2": 242108,
+        "lista": "out/zona-do-canal/_tmp/pesquisa-geo/r5/resumo.json › estruturas_tiradas",
+        "larguras": "quebra-mar em linha ±8 m (os da Cinta Costera ficam a 6–12 m, mediana, da costa do OSM: a faixa entre eles é enrocamento); píer em linha ±3 m; quay em linha não se tira (é a borda do cais)"
+      },
+      "o_que_fica_escuro_tambem": "o mar do OSM sobe os canais de acesso até as eclusas (Miraflores no Pacífico, Gatún no Atlântico): o canal abaixo das eclusas fica no tom da água; os lagos (Gatún, Miraflores) não estão na camada e ficam no satélite",
+      "poligonos": 47,
+      "km2": 58866,
+      "dump_overpass": {
+        "arquivo": "out/zona-do-canal/_tmp/pesquisa-geo/dumps/r5-osm-entradas.json",
+        "sha256": "82ee478f86fc28c2959149c5a37e0017f974a69a3f4ebcde07ced86de4cd6a54",
+        "overpass_base": "2026-10-15T13:29:50Z",
+        "endpoint": "https://overpass-api.de/api/interpreter",
+        "pedido": "15/10/2026 10:32 (Brasília), 200, 316 elementos"
+      },
+      "arquivo_fonte": {
+        "arquivo": "out/los-angeles/_media/geo/_osm-agua/water-polygons-split-4326.zip (o mesmo do vídeo 2, só leitura; baixado em 08/10/2026 com o sim do Lucas)",
+        "url": "https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip",
+        "last_modified": "Thu, 08 Oct 2026 03:47:23 GMT",
+        "bytes": 906106868,
+        "sha256": "0b52c5995c461c7f3f3bd400155b7f19f6482dd6352f8dbd7587afdddc4d8c93 (conferido em 15/10/2026)"
+      },
+      "conferencia_visual": "out/zona-do-canal/_tmp/pesquisa-geo/r5/v-r5-agua-cinta.jpg"
     }
   ]
 }
