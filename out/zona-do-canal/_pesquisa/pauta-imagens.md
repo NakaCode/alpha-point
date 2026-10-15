@@ -78,3 +78,23 @@ Lidos em `conferencia-midia.json` (lote 5) e casados pelo sha256 do rascunho.
 - O plano 5 da s22 tem 1,633 s: o clube 'gold' de 1915 e o 'silver' de 1948 entram juntos (nota do conferente; é do regente e
   do montador).
 
+
+## 5ª rodada (pesquisa-3): os acertos A8 e A9 do laudo de fatos
+
+Só dois acertos na pauta, sem busca nova, sem entrega e sem reescrita (laudo `roteiros/zona-do-canal/qc-roteiro/fatos-pesquisa-2026-10-15.laudo.md`,
+parte B, A8 e A9). Os vereditos foram lidos em `conferencia-midia.json` e casados pelo sha256 do rascunho.
+
+| Cena | Arquivo | `lugar_na_origem` de antes | `lugar_na_origem` de agora (o do veredito) |
+|---|---|---|---|
+| s52 | NARA 218517742 (`d870626a…`) | área do mastro da Balboa High School, Canal Zone | nenhum lugar no item; a série: Canal Zone, Panama |
+| s54 | NARA 218517734 (`6c14c300…`) | President Kennedy Avenue, perto da Tivoli Guest House (a linha), Canal Zone | President Kennedy Avenue Near Tivoli Guest House |
+| s57 | NARA 176082 (`75fe226d…`) | sede da OEA, Washington, D.C. | null (a origem não nomeia lugar) |
+| s57 | NARA 176083 (`6f606983…`) | sede da OEA, Washington, D.C. | null (a origem não nomeia lugar) |
+
+- Nos quatro, o campo novo `rotulo_de_tela_lugar` diz que o rótulo de lugar na tela é do `redator-de-tela`, a partir do
+  `lugar_na_origem` do veredito, nunca mais específico que ele. A pauta não propõe rótulo. Na s57, nenhum lugar sobre as fotos.
+- **s64**, a foto do Comfort em Miraflores, de 1988 (NARA 6433742, `3d6ceac6…`): `aviso_de_ano_proposto` passou de `null` a
+  `Photo from 1988`, como o veredito pede (`aviso_de_ano: true`). A grafia final é do `redator-de-tela`, e o aviso na tela, do
+  `editor-de-arte`.
+- A tabela do topo continua como estava: ela não grava lugar de origem nesses itens, e a linha da s54 ("perto da Tivoli") cabe
+  na origem.

@@ -33,7 +33,7 @@ Não servem para alfinete grande nem para o círculo de 640 px da PRANCHA: 320 p
 
 ## Só o nome escrito (midia.md §7.6; roupa §4)
 
-Panama Canal Commission (s64) · Panama Canal Authority (s67) · Canal Zone Government · Panama Canal Company ·
+Panama Canal Commission (s64) · Panama Canal Authority (s67) · Canal Zone Government (01/07/1951 a 30/09/1979; s03, Balboa, 1960, pode manter o nome; em cena de 1914, s15 e s18, o nome do órgão é THE PANAMA CANAL, como nos relatórios; laudo de fatos A203) · Panama Canal Company ·
 International Commission of Jurists (s49, s51) · U.S. Department of State · U.S. National Archives (s54) ·
 Department of Defense (s63) · National Institute (s51, s53) · Balboa High School (s50, s52). Grafias de tela: as do
 espelho (`_grafias`). Nenhum selo, brasão nem logo foi buscado.

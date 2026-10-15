@@ -179,3 +179,112 @@ Nenhuma cena cita as quatro camadas `opcao-*`: elas existem só para o Lucas esc
   `avenida-de-los-martires-osm`, `rio-curundu-osm`, `puente-de-las-americas-osm`, `pontos-osm-atlantico`,
   `corregimento-ancon-osm` e as `opcao-b-*`.
 - Na descrição, além das de antes: "Isthmian Canal Commission, Property map of the Canal Zone (1912), Library of Congress".
+
+
+## 3ª rodada (pesquisa-3, 15/10/2026, 04:55–05:25 de Brasília)
+
+As versões da 2ª rodada de `zona-do-canal-1947`, `cidades-obra-1912` e da pauta estão guardadas em
+`out/zona-do-canal/_tmp/pesquisa-geo/rodada2/`. Scripts e conferências desta rodada: `_tmp/pesquisa-geo/r3/` (scripts em
+`r3/scripts/`). As camadas foram gravadas por `r3/scripts/gravar-r3.mjs`, que usa o `validarFC`, o `involucroJs` e o formato
+de item do `gravarGeo` da pré-v1, mas **não grava o cache da máquina** (`~/.regie/geo`): a regra do setor nesta tarefa só
+deixava escrever em `_media/geo/`, na pauta e em `_tmp/`. O cache ficou com as versões da 2ª rodada desses dois slugs.
+
+### O vale do Chagres até Madden (`zona-do-canal-1947`, refeita)
+
+- **O que a divisa é ali, pela fonte primária:** a Executive Order 5704 (Hoover, 02/09/1931; texto lido em
+  https://www.presidency.ucsb.edu/node/361387) descreve a área acrescentada em Madden (~26 sq mi): começa no marco 37 da
+  **cota de 100 pés** na margem direita do Chagres (foz da Quebrada Madroñal), sobe a quebrada, vai em reta (768 ft) ao marco
+  164½ da **cota de 260 pés**, segue "the continuous 260-foot contour" em volta do Chagres, do Pequení e do Boquerón até o
+  marco 19½ (Río Azote Caballo), volta em reta (3.560 ft) ao Chilibrillo, desce o Chilibrillo, acompanha a estrada de Madden,
+  vai à Quebrada Moja Polla, desce até a cota de 100 pés (marco 33) e volta por ela (34, 35) ao Chagres. **A cota de 260 pés
+  é só a volta do lago; o vale abaixo da represa é cota de 100 pés.** As pontas dos traço-pontos C-norte e E-leste da folha
+  ficam a 36 m e 30 m no DEM (o fundo do vale), não na cota de 260.
+- **Por isso a cota de 260 pés sozinha não serve ao vale:** no DEM, a região ≤ 79,25 m ligada ao lago escorre pela represa
+  (o pixel de 30 m não vê a crista) e se espalha pelas planícies do Gatuncillo e de Chilibre, fora da Zona: 37,8 mi² novos,
+  tocando a borda da janela (`r3/v-r3-79.jpg`). Não se usou.
+- **O lago e a cota de 260 pés (L):** componente de 65 m ≤ DEM ≤ 79,25 m (260 pés) que contém o lago. O piso de 65 m separa o
+  lago do vale a jusante sem traço à mão: de 65 a 70 m a área não muda (45,7 km²) e nada passa ao sul de 9,20° N a oeste de
+  −79,62°; com piso de 60 m ela escorre. As ilhas acima da cota (59, 0,89 km²) foram preenchidas. L = 17,77 mi². A camada é
+  L unida ao lago que a folha de 1947 pinta (o lago da 2ª rodada tinha um corte reto em −79,5847°, que perdia o braço oeste).
+- **O vale abaixo da represa (V):** componente de DEM ≤ 30,48 m (100 pés) que contém o Chagres logo a jusante da represa
+  (24,8 m em −79,6447, 9,2042), cortada pelos traço-pontos e pelo segmento entre as pontas deles. Não toca a borda; encosta
+  na parte principal. V = 1,01 mi².
+- **A ligação na represa não fechou:** entre V e L ficam ~200 m (as retas e os riachos da EO 5704 em volta da represa:
+  Madroñal, Azote Caballo, Chilibrillo, Moja Polla). A folha os desenha em traço grosso, mas a tinta não se separou por
+  detecção automática (texto, rios e estrada entram junto; `r3/v-r3-m79c.jpg`). Fica aberta, declarada na propriedade
+  `aviso_rodada3` da camada.
+- **Superfície, medida:** o Copernicus DEM é modelo de superfície (DSM). Como o DSM fica sempre acima do terreno, L e V são
+  **mínimos**: o que está dentro deles está abaixo da cota também no terreno, e a cota de verdade fica para fora.
+  - Na margem do lago, o anel de 1 a 3 pixels fora do lago pintado fica 24 m acima da água do DEM (mediana; água a 72,5 m =
+    238 pés): a copa sobe logo na margem, e a cota de 260 pés do DSM gruda na beira da água.
+  - A borda do lago pintado em 1947 fica 64 % fora de L, a 184 m (mediana), 836 m (p90) e 2,3 km (máx., nos braços
+    estreitos) dele; por isso a camada é L ∪ lago pintado.
+  - Se a cota subisse para compensar a copa: a 84,25 m, L dá 23,05 mi² (+30 %); a 89,25 m a região já cerca morros
+    (11,8 km² de "ilhas") e a 94,25 m escapa do vale. Não há limiar honesto acima de 79,25 m.
+  - No vale: os 14 traços grossos que a folha desenha no corredor (a cota de 100 pés da EO) ficam a 36,4 m no DEM (mediana do
+    mínimo 3×3) e a **1,2 km (mediana; de 21 m a 2,5 km)** da borda de V. Uns 6 m de superfície num vale chato movem a cota
+    de 100 pés em ~1 km: **V é só a fita do rio; o corredor real é bem mais largo.** Serve de ligação visual à escala da Zona
+    inteira, nunca de câmera no vale.
+  - Datum: o DEM é EGM2008; as cotas de 1931 são do nível médio do mar do Canal (Precise Level Datum). A diferença não foi
+    medida; é pequena perto da copa.
+- **Conferência pela área:** 547,55 mi² (parte principal 526,60 + Madden 20,95) contra 552,95 do relatório de 1940:
+  **−1,0 %** (a 2ª rodada, medida do mesmo jeito: 536,83 mi², −2,9 %). A EO 5704 dá ~26 sq mi à área de Madden; a peça de
+  Madden mais V somam ~22 mi² (−15 %), coerente com o mínimo.
+- **O que continua igual:** a parte principal (incerteza da 1ª e da 2ª rodadas), a ponta de Cristóbal, a falta do mar de 3
+  milhas e das ilhas do Pacífico. A faixa de 200 pés da estrada de Madden (EO 5880, 1932) não entra (61 m de largura).
+- Prévia sobre a folha: `r3/v-r3-zona-nova.jpg`.
+
+### Gorgona, Empire e Culebra (`cidades-obra-1912`, refeita)
+
+- **O ajuste preso ao longo do canal:** aos 25 pontos da faixa (distância perpendicular ao eixo do OSM) entraram três pares
+  de eclusas: o centro da estrutura desenhada na folha × o centro da relação do OSM (Gatún 12228856, Pedro Miguel 11382235,
+  Miraflores 11382234), lidos nos recortes `r3/v1912-eclusas.jpg` e `r3/v1912-eclusas-zoom.jpg`. Com o ajuste da 2ª rodada,
+  as eclusas caíam a 412, 156 e 146 m; com o novo, a 271, 117 e 106 m (a faixa fica em 34 m de mediana, p90 163 m). Deixando
+  uma eclusa de fora: 536 m (Gatún, na ponta do ajuste), 188 m e 225 m. A distância Pedro Miguel–Miraflores sai 6,6 % maior
+  na folha que no OSM: o centro "da estrutura" projetada em 1912 e o da relação de hoje não são o mesmo ponto, e isso limita
+  o ajuste a ~100–200 m.
+- **Os pontos relidos (`r3/v1912-cidades-zoom.jpg`):**
+  - Empire = a estação (o rótulo STA. no cruzamento da ferrovia com os caminhos, no sítio urbano amarelo Empire–Culebra):
+    (−79,666503, 9,055421), **±200 m**;
+  - Culebra = o centro do rótulo CULEBRA, no lóbulo leste do sítio urbano (W. Culebra, Culebra, New Culebra; a folha não tem
+    símbolo de cidade): (−79,657831, 9,046729), **±350 m**;
+  - Gorgona = o grupo de casas (pontos) junto à ferrovia, a oeste do rótulo GORGONA: (−79,721931, 9,115157), **±350 m**. Cai
+    na margem do lago Gatún de hoje (DEM 25–45 m), a 273 m do eixo do canal, como a cidade inundada pelo lago.
+- **Correção da 2ª rodada:** o ponto de Gorgona da 2ª rodada estava no pixel errado (y 5909, ~220 px abaixo do rótulo, sobre
+  o reservatório de Carabali): o ponto novo fica a **1.261 m** dele, mais que os ±700 m declarados. Empire mudou 332 m, e
+  Culebra, 133 m. A camada guarda a coordenada da 2ª rodada em `rodada2_coord`.
+- O sítio urbano amarelo Empire–Culebra da folha seria uma área real de 1912; não foi pedida e não foi gravada.
+
+### Rainbow City (`lugares-1947`, sem mudar a geometria)
+
+O verificador-de-fatos respondeu que o Census de 1960 trata Silver City e Rainbow City como a mesma cidade; a data da troca
+do nome e a área não se acharam. Na pauta, o item `lugares-1947` ganhou `nota_rainbow_city`: para `rainbow-city` (s06, s48),
+o ponto `silver-city-1947`, ±150–250 m. **É pino (ponto), não área.**
+
+### A origem dos mapas
+
+- **NARA 192812325** (a folha de 1936), lida pela API v2 oficial
+  (`catalog.archives.gov/api/v2/records/search?naId=192812325`, com a chave e o User-Agent do canal; 1 pedido, HTTP 200;
+  resposta em `r3/nara/192812325.json`, sha256 `24731f89…`): "Road Map of Ancon Balboa and Panama", out/1936, item;
+  criador **War Department, Office of the Chief of Engineers**; série "Fortifications Map File Plans of Military Forts"
+  (naId 305749), RG 77; `useRestriction: Unrestricted` e `accessRestriction: Unrestricted`; guarda: National Archives at
+  College Park – Cartographic. A API não traz a frase "public domain": obra de órgão federal sem restrição de uso, domínio
+  público (17 U.S.C. §105). Registrado na pauta (`licenca_na_origem_nara`) nos itens `linha-1914-panama`,
+  `fourth-of-july-avenue-1936` e `lugares-1936`.
+- **LOC 82690127** (a folha da ICC de 1912): a licença continua a **lida no Commons** ("Public domain", fonte LOC 82690127),
+  declarada como tal na pauta (`licenca_lida_em`). A loc.gov pediu verificação de robô e não foi acessada por nenhum cliente.
+
+### Créditos (3ª rodada)
+
+- Na tela: nada novo. As duas camadas refeitas são domínio público + Copernicus DEM (`exige_credito: false`).
+- Na descrição, além das de antes:
+  - "Produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under
+    COPERNICUS by the European Union and ESA; all rights reserved. The organisations in charge of the Copernicus programme by
+    law or by delegation do not incur any liability for any use of the Copernicus WorldDEM-30." (o texto da licença para
+    dado modificado, `marca/acervos/5-dados-e-fronteiras.md` §3.1; também em `extras` do item `zona-do-canal-1947`);
+  - o registro da AWS sugere citar: "Copernicus Digital Elevation Model (DEM) was accessed on 2026-10-15 from
+    https://registry.opendata.aws/copernicus-dem." (https://registry.opendata.aws/copernicus-dem/, lido em 15/10/2026:
+    "GLO-30 Public and GLO-90 are available on a free basis for the general public").
+- O ladrilho: `Copernicus_DSM_COG_10_N09_00_W080_00_DEM.tif`, 25.029.275 bytes, md5 igual ao ETag da AWS (`84b7beb8…`),
+  sha256 `3f680f7b6fdf15f10182c5d869024e74a2eeb3bb4981f50a792f59f884283215`, em `_tmp/pesquisa-geo/baixado/copdem/` (fora
+  do git).
