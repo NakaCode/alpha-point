@@ -56,6 +56,8 @@
     letter-spacing: 0; color: var(--tinta); }
   .rotulo.caixa { letter-spacing: var(--tracking-lugar); }
   /* LEGENDA sobre o mapa (papel legenda, §4.1): 84 px, Inter 500, --tinta, numa pílula --rotulo de 16 × 28 */
+  /* o dado da convenção (série dos mapas, arte-2 S1): rótulo a 128 px, em duas linhas */
+  .rotulo.conv { white-space: pre; line-height: 1.08; }
   .rotulo.legenda { padding: 16px 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; }
   .rotulo.liso { -webkit-text-fill-color: transparent; }
   #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
@@ -83,7 +85,8 @@
     <circle class="ponto-lugar" id="pLab" cx="0" cy="0" r="12" opacity="0"/>
   </svg>
   <div id="rotulos">
-    <div class="rotulo legenda caixa" id="legConv" data-qc-papel="legenda">BOUNDARY CONVENTION · SEPT. 2, 1914</div>
+    <div class="rotulo caixa conv" id="legConv" data-qc-papel="rotulo">BOUNDARY CONVENTION ·
+SEPT. 2, 1914</div>
     <div class="rotulo legenda" id="legLinha" data-qc-papel="legenda">Line as mapped in 1936</div>
     <div class="rotulo liso" id="rotPC" data-qc-papel="rotulo">Panama City</div>
     <div class="rotulo liso" id="rotBal" data-qc-papel="rotulo">Balboa</div>
@@ -124,7 +127,7 @@
     rotulos: [
       { id: "legConv",  tela: [200, 200], lado: "direita", vert: "baixo", entra: 0.32, sai: 12.28 },
       { id: "rotPC",    ref: "PC", lado: "direita", vert: "centro", dx: 170, dy: 0, entra: 0.32, sai: 12.28 },
-      { id: "legLinha", tela: [200, 362], lado: "direita", vert: "baixo", entra: 7.61, sai: 12.28 },
+      { id: "legLinha", tela: [200, 560], lado: "direita", vert: "baixo", entra: 7.61, sai: 12.28 },
       { id: "rotBal",   ref: "BAL", lado: "esquerda", vert: "centro", dx: -44, dy: 0,   entra: 14.0, sai: null },
       { id: "rotLab",   ref: "LAB", lado: "esquerda", vert: "centro", dx: -44, dy: 0,   entra: 14.0, sai: null },
       // as duas palavras entram em 'two words' (15,84 e 16,00): em '"gold"' (16,96) e '"silver."' (17,92) ficariam 1,9 e

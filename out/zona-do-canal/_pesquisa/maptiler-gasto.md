@@ -16,3 +16,4 @@ contar o dia pelo UTC.
 | 15/10, 08:39–09:15 | Arte, lote de mapa 2: 7 renders 4K de prova (s34 e s46 pelo M4, três, um descartado; s48 e s51 pelo M5; s53 e s60 pelo M6) e 6 quadros do `quadro.mjs` (M6, 08:40) | não contados (o render e o `quadro.mjs` não imprimem) | |
 | 09:17 | Arte, `zona-do-canal-arte-1`: soma das duas rodadas de mapa pelos portões, 4.168 + 9.577 | 13.745 | |
 | 15/10, 10:28 | Arte, `zona-do-canal-arte-2` (a série dos mapas: s16, s20, s25, s28, s34, s46, s51, s53), **antes**: `_tmp/maptiler-portoes.jsonl` com 153 linhas, 13745 pedidos no total do vídeo | — | |
+| 15/10, 10:33–10:50 | Arte, `zona-do-canal-arte-2`, **depois**: portões com a pré-carga, somados do `_tmp/maptiler-portoes.jsonl` desde 10:28: s20 378, s28 1.023, s34 1.556 (duas rodadas), s46 558; mais 5 renders 4K de prova (s20, s28, s46, e s34 duas vezes, a 1ª superada), não contados | 3.515 | |

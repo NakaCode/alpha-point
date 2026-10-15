@@ -10,7 +10,7 @@
 
   O que manda em cada coisa: o texto e os pontos da tela, os textos de tela (textos-tela.json › _textos_por_cena s21: '"GOLD
   ROLL"' t0 4,267 e '"SILVER ROLL"' t0 5,4, rótulos; "4,608" e "17,023", cotas, "JUNE 1920", rótulo, a legenda "canal and Panama
-  Railroad workforce" e o crédito, todos t0 5,867; rotulos_dado s21); a mídia e os beats, a regência (s21: um beat só, 0–6,734,
+  Railroad workforce" e o crédito, todos t0 5,867, MUDADOS pela Sala (o desvio, nos beats); rotulos_dado s21); a mídia e os beats, a regência (s21: um beat só, 0–6,734,
   com os três "entra"); a direção, o conceito (s21: "duas pilhas desiguais"; as DUAS FOLHAS são o personagem recorrente do vídeo,
   que volta em s39, s43 e s55); o espelho; o words.json; a marca. TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS.
 
@@ -26,13 +26,16 @@
         0,137  o ROLO DE PRATA pousa à direita, 120 ms depois ("two words": os dois). Assentados em 0,687.
         1,367  "payrolls": OS DOIS SE DESENROLAM (a física abaixo): o de ouro deita 344 px de papel em 0,624 s (em repouso em
                1,991), o de prata 1.272 px em 1,200 s (em repouso em 2,567). Cada linha do livro aparece quando o papel a deita.
-        2,567–4,267  nada novo: "The Zone's government called them" com as duas folhas paradas, a proporção já na tela (1,7 s).
-        4,267  '"GOLD ROLL"' (rótulo, 128 px, Inter 700) acima da folha de ouro, na palavra (textos de tela, t0 4,267)
-        5,400  '"SILVER ROLL"' acima da folha de prata (t0 5,4)
-        5,867  "roll."": "4,608" e "17,023" no pé de cada folha, "JUNE 1920" com a legenda à direita, e o crédito (t0 5,867 de
-               todos, como os textos de tela e a regência mandam). ⚠ NO AR SÓ 0,867 s ATÉ O CORTE, abaixo dos 2,0 s de texto no ar
-               (identidade §4.3) e a menos de 1 s do corte (ofício §5): vai ao relato do lote como pedido a montante, com a troca
-               pronta numa linha (T.numeros, abaixo).
+        2,567–2,627  as duas folhas paradas, a proporção já na tela.
+        2,627  "The": "JUNE 1920" (rótulo) à direita, a legenda 0,12 s depois (2,747) e o crédito do dado. No ar 4,107 s.
+        4,267  '"GOLD ROLL"' (rótulo, 128 px, Inter 700) acima da folha de ouro, na palavra, e "4,608" no pé dela, junto. No ar 2,467 s.
+        5,400  '"SILVER ROLL"' acima da folha de prata, e "17,023" no pé dela, junto. No ar 1,334 s (abaixo dos 2,0 s da identidade
+               §4.3: a palavra "silver" está em 5,412 e a cena acaba em 6,734; a Sala decidiu assim, abaixo).
+        DESVIO DOS TEXTOS DE TELA E DA REGÊNCIA (zona-do-canal-arte-2, decisão da Sala; proposto no relato do lote O1, pedido 1):
+               os textos de tela e a regência davam t0 5,867 ('roll."') a "4,608", "17,023", "JUNE 1920", a legenda e o crédito: 5
+               estreias em 1 s (o qc-carga reprovava RITMO, teto 4) e 0,867 s no ar. Agora "JUNE 1920", a legenda e o crédito entram
+               em "The" (2,627) e cada número com o seu cabeçalho (4,267 e 5,4). O texto não mudou, só a hora de entrar; nada mais
+               da cena mudou (a física, o desenho, a câmera, as posições).
         6,484–6,734  REPOUSO: nada se move além da deriva do RIG (o push-in também para).
     A CÂMERA: o push-in do RIG (base 1,0, 0,0024/s) até 6,484, e a deriva (6 / 4,8 px). Escala máxima 1,01556. A margem sob a câmera
     (roupa §4): x 226→3614, y 174→1868; o mais perto, "17,023" (y até 1845 no palco). Medido pelo portao-margens (o relato).
@@ -85,7 +88,7 @@
   A MÍDIA: nenhuma (construída; midia_ancora "construída"). O CRÉDITO do dado: "Source: Annual Report of the Governor of the Panama
     Canal, 1920" (textos de tela; a regência e o conceito diziam "Panama Canal annual report", e valem os textos), 56 px --sec
     (Lucas, 07/10/2026), em duas linhas (a 56 px a linha inteira mede 1.633 px, e a faixa vai de x 200 a 1720: quebra, nunca
-    encolhe), com data-qc-papel="credito"; entra com os números (5,867) e fica até o fim. O qc-tamanho vai reprovar SÓ o crédito
+    encolhe), com data-qc-papel="credito"; entra com "JUNE 1920" (2,627; desvio da Sala) e fica até o fim. O qc-tamanho vai reprovar SÓ o crédito
     (56 < 72 do ofício): a exceção registrada do canal (identidade §4.1, "Crédito a 56 px").
 
   A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still do istmo do Panamá AINDA NÃO EXISTE (out/zona-do-canal/_media/base/
@@ -266,11 +269,11 @@
   var TEXTOS = {
     cabG: "\"GOLD ROLL\"",                       // rotulo, t0 4,267: cabeçalho da 1ª folha
     cabS: "\"SILVER ROLL\"",                     // rotulo, t0 5,4: cabeçalho da 2ª folha
-    numG: "4,608",                               // cota, t0 5,867: no pé da folha 'gold'
-    numS: "17,023",                              // cota, t0 5,867: no pé da folha 'silver'
-    data: "JUNE 1920",                           // rotulo, t0 5,867
-    leg: "canal and Panama\nRailroad workforce", // legenda, t0 5,867 (os números somam o canal e a ferrovia)
-    credDado: "Source: Annual Report of the Governor\nof the Panama Canal, 1920"   // credito, t0 5,867 (quebra em 2 linhas a 56 px)
+    numG: "4,608",                               // cota, t0 5,867 nos textos de tela; aqui 4,267 (com o cabeçalho; desvio da Sala)
+    numS: "17,023",                              // cota, t0 5,867 nos textos de tela; aqui 5,4 (com o cabeçalho; desvio da Sala)
+    data: "JUNE 1920",                           // rotulo, t0 5,867 nos textos de tela; aqui 2,627 (desvio da Sala)
+    leg: "canal and Panama\nRailroad workforce", // legenda, t0 5,867 nos textos de tela; aqui 2,747 (os números somam o canal e a ferrovia)
+    credDado: "Source: Annual Report of the Governor\nof the Panama Canal, 1920"   // credito, t0 5,867 nos textos de tela; aqui 2,627 (quebra em 2 linhas a 56 px)
   };
   // ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
   Object.keys(TEXTOS).forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
@@ -281,7 +284,8 @@
     desenrola: 1.367,                               // "payrolls": os dois rolos recebem o empurrão
     durS: 1.200,                                    // a folha de prata (a técnica: 1,2 s); a de ouro sai da física, abaixo
     cabG: 4.267, cabS: 5.400,                       // '"gold' (4,282) e '"silver' (5,412): t0 dos textos de tela
-    numeros: 5.867,                                 // 'roll."' (5,867): t0 dos textos de tela (⚠ 0,867 s no ar; o relato)
+    data: 2.627,                                    // 'The' (2,627): "JUNE 1920", a legenda (+0,12) e o crédito. DESVIO da Sala
+                                                    // (zona-do-canal-arte-2): os textos de tela davam 5,867 a todos
     entrada: 0.30,
     camPara: DUR - 0.25                             // 6,484: o repouso
   };
@@ -415,11 +419,11 @@
 
     texto(E("cabG"), t, T.cabG, false);
     texto(E("cabS"), t, T.cabS, false);
-    texto(E("numG"), t, T.numeros, true);
-    texto(E("numS"), t, T.numeros, true);
-    texto(E("data"), t, T.numeros, false);
-    texto(E("leg"), t, T.numeros + 0.12, false);
-    var cr = E("credDado"); if (cr) cr.style.opacity = eo(seg(t, T.numeros, T.entrada)).toFixed(3);
+    texto(E("numG"), t, T.cabG, true);              // cada número entra com o seu cabeçalho (desvio da Sala, zona-do-canal-arte-2)
+    texto(E("numS"), t, T.cabS, true);
+    texto(E("data"), t, T.data, false);
+    texto(E("leg"), t, T.data + 0.12, false);
+    var cr = E("credDado"); if (cr) cr.style.opacity = eo(seg(t, T.data, T.entrada)).toFixed(3);
   }
 
   window.__renderAt = function (t) {

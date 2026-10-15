@@ -111,12 +111,13 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s28 (253,267 → 281,567 s 
     font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
   #erroCena[hidden] { display: none; }
 
-  /* O CARTÃO DE NÚMERO (textos-tela: papel 'cota'; no canal, Inter 700 a 84 px, caixa alta, como a cota do vídeo 2): uma
+  /* O CARTÃO DE NÚMERO (textos-tela: papel 'cota'; série dos mapas, arte-2 S1: o dado sobre o mapa é RÓTULO, Inter 700 a
+     128 px, como s06/s53/s60; numa coluna estreita, para o cartão ficar fora do contorno e acima de 'Panama City'): uma
      pílula --rotulo no canto de cima à direita, fora da câmera, menor que o palco; o texto num nó só, em linhas */
   .numero { position: absolute; top: 160px; right: 200px; z-index: 44; opacity: 0; visibility: hidden;
     background: var(--rotulo); border-radius: var(--cantos); padding: 32px 40px; }
-  .numero .txt { white-space: pre; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-eixo);
-    line-height: 1.16; letter-spacing: 0.02em; color: var(--tinta); font-variant-numeric: var(--numeros); }
+  .numero .txt { white-space: pre; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo);
+    line-height: 1.08; letter-spacing: 0.02em; color: var(--tinta); font-variant-numeric: var(--numeros); }
   .numero svg { display: block; margin-bottom: 20px; overflow: visible; }
   .pessoa { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
   .pessoa.apagada { opacity: .3; }
@@ -144,15 +145,21 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s28 (253,267 → 281,567 s 
     <div class="rotulo liso" id="rotPanamaB" data-qc-papel="rotulo">Panama City</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
-  <div class="numero" id="num1930"><svg id="picto" width="826" height="104" viewBox="0 0 826 104"></svg><div class="txt" data-qc-papel="legenda">1930 · MORE THAN 60%
-OF "SILVER" EMPLOYEES
-LIVED IN PANAMA CITY
+  <div class="numero" id="num1930"><svg id="picto" width="826" height="104" viewBox="0 0 826 104"></svg><div class="txt" data-qc-papel="rotulo">1930 ·
+MORE THAN 60%
+OF "SILVER"
+EMPLOYEES
+LIVED IN
+PANAMA CITY
 AND COLÓN</div></div>
-  <div class="numero" id="num1940"><div class="txt" data-qc-papel="legenda">1940 · FREE SCHOOL
-FOR CHILDREN OF
-"SILVER" EMPLOYEES ·
-ONLY IF THEY LIVED
-IN THE ZONE</div></div>
+  <div class="numero" id="num1940"><div class="txt" data-qc-papel="rotulo">1940 · FREE
+SCHOOL FOR
+CHILDREN OF
+"SILVER"
+EMPLOYEES ·
+ONLY IF THEY
+LIVED IN
+THE ZONE</div></div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
   <div id="cred1930" class="credito extra" data-qc-papel="credito">Source: Annual Report of the Governor
 of the Panama Canal, 1930</div>
@@ -413,12 +420,12 @@ of the Panama Canal, 1940</div>
       paint: { "line-color": tok("--rotulo", "rgba(11,15,20,0.88)"), "line-width": 14, "line-opacity": 1, "line-opacity-transition": semTransicao } });
     map.addLayer({ id: "zona-linha", type: "line", source: "zona", layout: linhaContorno,
       paint: { "line-color": tok("--tinta", "#F4F1EA"), "line-width": 6, "line-opacity": 1, "line-opacity-transition": semTransicao } });
-    // a linha (linha-1914-panama): a divisa da Zona com a cidade, no traço do contorno do protagonista (--tinta sobre --rotulo)
+    // a linha (linha-1914-panama): a divisa da Zona com a cidade, em --destaque sobre --rotulo (série dos mapas, arte-2 S1)
     map.addSource("linha", { type: "geojson", data: LINHA });
     map.addLayer({ id: "linha-sob", type: "line", source: "linha", layout: linhaContorno,
       paint: { "line-color": tok("--rotulo", "rgba(11,15,20,0.88)"), "line-width": 14, "line-opacity": 1, "line-opacity-transition": semTransicao } });
     map.addLayer({ id: "linha-sobre", type: "line", source: "linha", layout: linhaContorno,
-      paint: { "line-color": tok("--tinta", "#F4F1EA"), "line-width": 6, "line-opacity": 1, "line-opacity-transition": semTransicao } });
+      paint: { "line-color": tok("--destaque", "#F5A524"), "line-width": 6, "line-opacity": 1, "line-opacity-transition": semTransicao } });
   }
 
   var largAntes = {};
