@@ -1505,3 +1505,21 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   extensão, e confira o sha1 contra o da API (`prop=imageinfo&iiprop=sha1`).
 - **Por que serve a qualquer canal:** todo canal que baixa logo, bandeira ou mapa vetorial do Commons pelo script do motor cai no
   mesmo silêncio. O conserto é do motor (o `_commons-baixar` avisar e recusar quando cai na prévia): vale avisar o Lucas e o Mateus.
+
+### 83. Na caça pelo Brave, a prévia do banco só tocou depois do play dado pela pessoa
+
+- **O problema:** na caça do vídeo 3 (15/10/2026), a extensão abriu a aba da caça numa janela nova do Brave. As prévias do
+  Shutterstock e do Motion Array ficaram paradas em 0:00, com o círculo de carregamento, em todas estas situações:
+  - com a janela fora de vista;
+  - depois do clique do Lucas na aba;
+  - com as janelas lado a lado;
+  - com o play, o clique na barra e uma recarga pela extensão.
+  Só depois que o Lucas deu o play com o próprio mouse ("Agora sim") as prévias andaram, e seguiram andando nas páginas de item
+  seguintes, inclusive nas que o Claude abriu depois. Em Los Angeles (07/10), o clique dele na aba tinha bastado.
+- **O que resolveu:** perguntar ao Lucas, como diagnóstico, se o play pelo clique dele tocava, sem mexer nos escudos.
+- **Como evitar:** antes da primeira prévia de cada caça, peça na mesma mensagem as duas coisas: o clique na aba da caça e um play
+  dado por ele numa prévia qualquer do banco. A causa provável é a regra de reprodução automática do navegador, que espera um
+  gesto da pessoa na página, mas isso não foi medido. A skill (§2.0) ainda pede só o clique na aba: mudá-la pede o ok do Lucas e
+  o sha256 novo no CLAUDE.md.
+- **Por que serve a qualquer canal:** todo canal que caça pelo navegador com a extensão perde o tempo de várias voltas até achar
+  isso, e a prévia parada não dá erro nenhum.
