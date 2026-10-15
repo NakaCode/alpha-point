@@ -82,12 +82,15 @@
   Nenhum upscale, filtro ou recorte que mude o sentido: 1,3× (× 1,05 no pico = 1,365), abaixo de 1,4×; o recorte é o Art.
   III inteiro com o cabeçalho da página, de linhas inteiras.
 
-  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): satélite sob a luz, com o still ligado em zona-do-canal-arte-3 (15/10/2026):
-    ../_media/base/mesa-zona-do-canal-sangria1400.png  6640×4960  sha256 e6f0d853… · Landsat 9 (USGS), 05/03/2024, via Planetary
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): satélite sob a luz, com o still ligado em zona-do-canal-arte-3 (15/10/2026) e
+  o still de 56 px em zona-do-canal-arte-4 (a Sala corrigiu o arte-3; identidade §4.4: "sem viagem de câmera: o still de satélite com 56 px
+  de sangria basta"; a versão sangria1400 do arte-3 ficou no disco, sem uso):
+    ../_media/base/mesa-zona-do-canal.png  3840×2160  sha256 ac80447b… · Landsat 9 (USGS), 05/03/2024, via Planetary
     Computer, domínio público, SEM crédito na tela (a procedência ao lado, .png.json). Base da mesa: fora da regra da conferência.
-  A versão com sangria de 1400 px (o miolo de 3840×2160 é o mesmo still, na mesma escala) porque a câmera ANDA pela mesa: o centro vai a 1900/1120 com escala 1,05 em 1,60–2,90
-  (a 0,6, o still anda 15,6/26,9 px e cresce a 1,03; com 56 px a folga seria de ~62 px): a sangria tira a borda de qualquer conta.
-  O #still é o 1º filho do #palco, a 1400 px além do quadro (a regra #still da cena sobrescreve --mesa-satelite-margem), e acompanha
+  A conta da borda com os 56 px do token e a paralaxe 0,6: o centro vai a 1900/1120 com escala 1,05 em 1,60–2,90 (o still anda 12/−24 px e
+  cresce a 1,03, o que ABRE a folga); o pior quadro é antes do movimento, só com a deriva (t = 1,67 s, s = 1): folga de 54,7 px à esquerda
+  (a conta em _tmp/arte-4/F1/conta-borda.mjs; a medida no DOM, quadro a quadro, em medir-still.mjs).
+  O #still é o 1º filho do #palco, 56 px além do quadro (--mesa-satelite-margem do tokens.css, sem override na cena), e acompanha
   a câmera a 0,6 (--mesa-satelite-paralaxe); a classe com-still: a luz é o véu (--mesa-luz-veu-centro), 120 ms atrás do objeto, e o feltro
   (#mesa) fica a 50 %. Tudo por baixo do objeto, da fita e do texto. Nada sobre o still.
 
@@ -115,9 +118,8 @@
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
-  /* o still com sangria de 1400 px (pedido zona-do-canal-arte-3: a câmera anda pela mesa): a imagem é 6640×4960 e o miolo
-     de 3840×2160 é o mesmo still, na mesma escala; a regra abaixo sobrescreve --mesa-satelite-margem só nesta cena */
-  #still { left: -1400px; top: -1400px; width: 6640px; height: 4960px; }
+  /* o still de 56 px (zona-do-canal-arte-4; a Sala corrigiu o arte-3, identidade §4.4): o #still fica com --mesa-satelite-margem do
+     tokens.css, sem override nesta cena (a conta da borda está no cabeçalho, "A MESA") */
   /* a câmera (os movimentos curtos entre beats + a deriva do RIG) */
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
   /* FALLBACK (sem o still): a luz da mesa "feltro sob a luz" (tokens.css, "A MESA"), a poça atrás do objeto principal */
@@ -167,7 +169,7 @@
 </head>
 <body>
 <div id="palco" class="com-still" data-qc-sem-heroi="a página real do tratado sobre a mesa: a cena não tem herói; a referência da peça é legenda, as frases são impressão da página e a tira literal é o trecho ampliado (ofício do editor-de-arte §6; identidade §4.2 e §5)">
-  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" data-qc-reuso="a mesa do vídeo 2: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; ligado em zona-do-canal-arte-3)">
+  <img id="still" src="../_media/base/mesa-zona-do-canal.png" alt="" data-qc-reuso="a mesa do vídeo 2: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; ligado em zona-do-canal-arte-3; o still de 56 px em zona-do-canal-arte-4)">
   <div id="cam">
     <div id="mesa"></div>
 

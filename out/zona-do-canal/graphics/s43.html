@@ -61,10 +61,11 @@
   O CRÉDITO: "Source: Annual Report of the Governor of the Panama Canal, 1950", de 0,167 ao fim, em duas linhas, 56 px, --sec,
     data-qc-papel="credito" (a reprovação do qc-tamanho que é só ele é a exceção registrada do canal, identidade §4.1).
   A MESA — O STILL LIGADO EM zona-do-canal-arte-3 (15/10/2026): a mesa do vídeo 2 em diante (identidade §5, "satélite sob a
-    luz"; tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"). #still = ../_media/base/mesa-zona-do-canal-sangria1400.png (Landsat 9/USGS,
+    luz"; tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"). #still = ../_media/base/mesa-zona-do-canal.png (Landsat 9/USGS,
     05/03/2024, domínio público, SEM crédito na tela; procedência no .png.json ao lado), 1º filho do #palco, por baixo da câmera, com
-    1400 px de sangria em cada lado (6640×4960; o miolo 3840×2160 cai exato no palco): a câmera anda (push-in + deriva), e a borda
-    do still nunca aparece. Ele acompanha a câmera a 0,6 (--mesa-satelite-paralaxe): escala 1 + (s − 1)·0,6, translação ×0,6, como
+    56 px de sangria (--mesa-satelite-margem; o still de 56 px em zona-do-canal-arte-4: a Sala corrigiu o arte-3; identidade §4.4,
+    "Sem viagem de câmera"): a câmera não viaja (push-in + deriva 6/4,8 px, ×0,6 no still), e a borda do still nunca aparece
+    (a escala cresce mais que a deriva: a folga mínima é a do 1º quadro, 56 px; conta em out/zona-do-canal/_tmp/arte-4/O2/). Ele acompanha a câmera a 0,6 (--mesa-satelite-paralaxe): escala 1 + (s − 1)·0,6, translação ×0,6, como
     a s52 de Los Angeles. A luz (#luz) virou véu (--mesa-luz-veu-centro, transparente além de --mesa-luz-meio), ainda 120 ms atrás
     do objeto principal; o feltro (#mesa) fica a --mesa-satelite-feltro (50 %). Nada sobre o still: nem rótulo, nem ponto, nem anel.
     Só a mesa mudou (desenho, tempos, textos e física como no lote O2, que entregou a cena no caminho de reserva do feltro sob a luz).
@@ -82,10 +83,11 @@
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
   /* a câmera (push-in do RIG + deriva; o push-in para 250 ms antes do corte) */
   #cam { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
-  /* A MESA DO VÍDEO 2 EM DIANTE (tokens.css; o still ligado em zona-do-canal-arte-3): o still por baixo da câmera, com 1400 px de
-     sangria em cada lado (a câmera anda pela mesa), a 0,6 da câmera; a luz é o véu, 120 ms atrás do objeto principal; o feltro a
+  /* A MESA DO VÍDEO 2 EM DIANTE (tokens.css; o still ligado em zona-do-canal-arte-3): o still por baixo da câmera, com 56 px de
+     sangria (o still de 56 px em zona-do-canal-arte-4; a câmera não viaja), a 0,6 da câmera; a luz é o véu, 120 ms atrás do objeto principal; o feltro a
      50 %. A luz e o feltro ficam 140 px além do quadro (a deriva nunca descobre a borda) e POR BAIXO de tudo. */
-  #still { position: absolute; left: -1400px; top: -1400px; width: 6640px; height: 4960px; pointer-events: none;
+  #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
+    width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem)); pointer-events: none;
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; }
   #luz { position: absolute; left: -140px; top: -140px; width: 4120px; height: 2440px; pointer-events: none;
     background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 2060px) var(--luz-y, 1220px),
@@ -116,7 +118,7 @@
 </head>
 <body>
 <div id="palco" data-qc-sem-heroi="folhas desenhadas (identidade §5, animação para explicar): rótulos de tabela e o ano; nenhum herói (identidade §4.2)">
-  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; zona-do-canal-arte-3)">
+  <img id="still" src="../_media/base/mesa-zona-do-canal.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; zona-do-canal-arte-3)">
   <div id="cam">
     <div id="luz"></div>
     <div id="mesa"></div>

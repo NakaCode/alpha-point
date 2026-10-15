@@ -80,12 +80,16 @@
   ilegível (a instrução do redator: "obrigatória (a coluna tem ~420 px)"). Um nó de texto só (white-space: pre), os marca-textos por
   Range (medidos depois de a Courier Prime carregar), e data-qc-fonte-livre.
 
-  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (lote E7, 15/10/2026): o Landsat 9 do
-  istmo de 05/03/2024 (zona-do-canal-pesquisa-5; domínio público, USGS: SEM crédito na tela), na versão COM SANGRIA de 1400 px
-  (../_media/base/mesa-zona-do-canal-sangria1400.png, 6640×4960, o mesmo recorte no centro), porque a câmera anda pela mesa:
-  o push-in 1,08 com a inclinação (cx 1700, cy 1150: 220 e 70 px) e o recuo de 0,6 s à página inteira, mais a deriva.
-  O #still sobrescreve --mesa-satelite-margem para 1400px; a classe de #palco vira "com-still" pelo script (a luz vira véu, o feltro a
-  50 %, a paralaxe 0,6). O fallback "feltro sob a luz" fica no CSS para o caso de o still faltar.
+  A MESA (identidade §5, "A mesa do vídeo 2 em diante"): o still ligado em zona-do-canal-arte-3 (15/10/2026, lote E7), e desde
+  zona-do-canal-arte-4 (lote F3) o still de 56 px (a Sala corrigiu o arte-3; identidade §4.4: "sem viagem de câmera: o still de satélite
+  com 56 px de sangria basta"; roupa do editor §5: "nem still com sangria"). O still do istmo do Panamá (conceito: "Um still só sob todas
+  as mesas"), Landsat 9 de 05/03/2024 (USGS, domínio público, SEM crédito na tela; a procedência em ../_media/base/mesa-zona-do-canal.png.json),
+  ../_media/base/mesa-zona-do-canal.png, 56 px além do palco: a margem é a do token (--mesa-satelite-margem, sem override na cena).
+  A CONTA DA BORDA com 56 px (folga = ss × (meio + 56 − |translação do still|) − meio, por eixo; PAR 0,6; varrida a cada 10 ms): o push-in 1,08 com o centro em (1700, 1150): 226 px de pan mais a deriva, × 0,6 = 135,6 px
+  para a esquerda, com o still a 1,048 (que cobre 87,9 px): folga 8,7 px à esquerda no pior instante (t 6,83 s, o pico da deriva), 69 px
+  em cima. Apertado, mas o still não descobre a borda (conferido no quadro ampliado de t 6,83).
+  <img id="still"> como primeiro filho de #palco e a classe "com-still" no #palco. O CSS passa a luz a véu (--mesa-luz-veu-centro) e o
+  feltro a 50 % (--mesa-satelite-feltro); o script acompanha o still a 0,6 da câmera. Nada sobre o still.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Cor: --grifo-cor no grifo (o único --destaque da
   cena, a 35 %: a página não é ator; a paleta do vídeo espera o Lucas e entra por token). Pílula --rotulo 12 px, 16×28 no papel legenda;
@@ -114,7 +118,6 @@
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
     opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
-  #still { --mesa-satelite-margem: 1400px; }   /* a versão sangria1400 do still (6640×4960, o mesmo recorte no centro): a câmera anda pela mesa (zona-do-canal-arte-3) */
   #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
   /* SEM o still: a luz da mesa "feltro sob a luz", a poça atrás do objeto principal (o tamanho dela é variável: a poça se
      alarga sobre o par, como a s38 e a s44 fizeram) */
@@ -171,9 +174,9 @@
 </head>
 <body>
 <div id="palco" class="sem-still" data-mesa="feltro" data-qc-sem-heroi="a página real do Record sobre a mesa: a cena não tem herói; o rótulo e a legenda são legenda (84 px), as frases são impressão da página e a tira literal é o trecho ampliado (ofício do editor-de-arte §6; identidade §4.2 e §5)">
-  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"), ligado em zona-do-canal-arte-3: a versão sangria1400 (a câmera anda
-       pela mesa). O script troca a classe de #palco para "com-still"; o CSS e o JS do véu, do feltro a 50 % e da paralaxe (0,6) já estavam aqui. -->
-  <img id="still" src="../_media/base/mesa-zona-do-canal-sangria1400.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; conceito: Um still só sob todas as mesas)">
+  <!-- O STILL DA MESA (identidade §5, "A mesa do vídeo 2 em diante"), ligado em zona-do-canal-arte-3, e desde zona-do-canal-arte-4
+       o still de 56 px (a Sala corrigiu o arte-3; identidade §4.4: sem still com sangria). O script troca a classe de #palco para "com-still"; o CSS e o JS do véu, do feltro a 50 % e da paralaxe (0,6) já estavam aqui. -->
+  <img id="still" src="../_media/base/mesa-zona-do-canal.png" alt="" data-qc-reuso="a mesa do vídeo 3: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; conceito: Um still só sob todas as mesas)">
   <div id="cam">
     <div id="mesa"></div>
 
