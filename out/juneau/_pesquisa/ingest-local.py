@@ -1,6 +1,7 @@
 # INGEST do canal: a narração vira o relógio de palavras do vídeo (out/<proj>/words.json), sem gasto de crédito.
 #
-#   python out/<proj>/_pesquisa/ingest-local.py <proj> [--aceitar=3,7 [--aceite-por=...] [--aceite-como=...]]
+#   python out/<proj>/_pesquisa/ingest-local.py <proj> [--aceitar=3,7] [--aceitar-vaos=24.84,138.72]
+#          [--aceite-por=...] [--aceite-como=...] [--aceite-evidencia=...]
 #          [--sem-cobertura] [--refazer] [--saida=<pasta>] [--pre-v1=<clone>]
 #   (cwd = raiz do canal)
 #
@@ -14,9 +15,21 @@
 #                   áudio: um item novo no mesmo trecho (outra transcrição, outra máquina, --refazer que ouviu
 #                   diferente) fica pendente. A pré-v1 aceita por trecho porque o número de cobertura dela não muda com
 #                   o mesmo áudio; aqui o ouvido pode mudar, então o aceite é do item.
-#   --aceite-por=   quem aceitou (vai para o laudo; padrão "não informado").
+#   --aceitar-vaos=24.84,138.72
+#                   aceita, DEPOIS DE CONFERIR NO SOM, os vãos com voz acima de VAO_TETO_S SEM vale no som (portão
+#                   relogio), cada um pelo INÍCIO do vão em segundos, com 2 casas (o número que a linha do portão e o
+#                   laudo mostram em vaos_com_voz_fechados[].vao_s). A mesma disciplina do --aceitar: só aceita o vão
+#                   que o laudo ANTERIOR deste áudio (mesmo sha256) mostrava PENDENTE e que esta rodada reproduz
+#                   IDÊNTICO (o mesmo trecho, o mesmo par de palavras, o mesmo vão e o mesmo fechamento); um vão que
+#                   nasce ou muda nesta rodada fica pendente (aceite_recusado). O aceite vai para o laudo, vão a vão
+#                   (aceites_vaos: o vão, o fechamento, quem, como, a evidência e o laudo em que estava pendente), e é
+#                   herdado, sem a opção, pelo vão idêntico do mesmo áudio. Pede --aceite-por e --aceite-como. O vão
+#                   aceito sai "aceito" no portão, com o motivo, nunca "medido": a prova dele é a conferência de quem
+#                   aceitou, por fora deste script.
+#   --aceite-por=   quem aceitou (vai para o laudo; padrão "não informado"; obrigatório com --aceitar-vaos).
 #   --aceite-como=  como foi conferido: "ouvido pelo Lucas", "Whisper em recorte curto + energia; sem escuta humana"...
-#                   (vai para o laudo; padrão "não informado").
+#                   (vai para o laudo; padrão "não informado"; obrigatório com --aceitar-vaos).
+#   --aceite-evidencia=  onde está a conferência (um relato, um laudo de cético); só para --aceitar-vaos, opcional.
 #   --sem-cobertura aceita, ciente, um áudio cuja cobertura não dá para medir (registrado no laudo). Aqui ela só não dá
 #                   para medir quando falta o narracao.json deste áudio, e então também não há texto aprovado nem
 #                   trechos para montar o relógio: o laudo sai "nao_medido" e o aviso diz isso.
@@ -55,7 +68,16 @@
 #   5. dentro de cada corrida de fala entre âncoras, três consertos medidos no som: a palavra que a base punha do
 #      outro lado da âncora ("deslocada": a ElevenLabs costuma pôr a primeira palavra da frase inteira dentro da
 #      pausa) divide, pelas letras, o intervalo com a vizinha; um vão de mais de VAO_FECHAR_S com voz entre duas
-#      palavras fecha no quadro mais quieto (cada vão fechado vai para o laudo, medido ANTES do fechamento); uma
+#      palavras fecha no quadro mais quieto (cada vão fechado vai para o laudo, medido ANTES do fechamento), MENOS o
+#      vão acima de VAO_TETO_S sem vale no som: ali o mais quieto costuma ser uma consoante de dentro de uma das
+#      palavras (o /k/ de "American"), e o OUVIDO ESCOLHE a borda (julgar_vao_pelo_ouvido: o Whisper diz de qual
+#      palavra é a voz do vão, e o vão fecha na borda do outro lado; se ele não escolhe, fecha no mais quieto, como
+#      antes). O ouvido escolhe, mas NÃO PROVA: nos 22 vãos com vale do vídeo 3 ele deu o mesmo lado ("segunda") em
+#      todos, esteja o vale onde estiver (o Whisper ouve cedo, e a v4 põe a 2ª palavra tarde: os dois vieses somam).
+#      Por isso esse vão reprova o portão relogio até o aceite de quem conferiu no som (--aceitar-vaos).
+#      A ElevenLabs v4 dá o tempo por palavra em passos de 0,04 s e espalha as letras por igual;
+#      onde uma palavra emenda na outra sem corte no som ("an American", "or removed"), ela dá à 1ª um ou dois
+#      passos e põe o resto no ESPAÇO, e a 2ª começa 0,28–0,40 s tarde (vídeo 3, 15/10/2026: 9 vãos, todos assim); uma
 #      palavra quase toda em silêncio começa onde a voz volta (a base a punha sobre o fechamento da consoante final
 #      da anterior: "backed the", "organized the");
 #   6. o Whisper local, trecho a trecho, continua sendo o OUVIDO do conteúdo: cobertura com as palavras ouvidas,
@@ -100,8 +122,15 @@
 #             montagem: cada pausa-âncora em silêncio (nenhum quadro com som); nenhuma corrida de mais de VAO_MAX_S de
 #             som que nenhuma palavra cobre; cada vão com voz que a montagem fechou e passava de VAO_TETO_S cai num
 #             vale do som (um quadro em silêncio, ou VALE_MIN_DB abaixo do mais alto do vão); e nenhuma palavra casada
-#             a mais de CONCORDANCIA_MAX_S de onde o Whisper a ouviu (o Whisper erra até ~0,65 s nos números; mais
-#             que isso é palavra no lugar de outra).
+#             a mais de CONCORDANCIA_MAX_S de onde o Whisper a ouviu (o Whisper erra até ~0,65 s nos números; mais que
+#             isso é palavra no lugar de outra).
+#             NÃO MEDIDO, ACEITO: o vão acima de VAO_TETO_S SEM vale no som. Nenhuma regra automática o aprova: nem o
+#             quadro mais quieto, nem o ouvido. O ouvido só escolhe a borda em que ele fecha (lado_do_vao, nas duas
+#             audições: o Whisper do recorte longo, com as duas palavras casadas 1 para 1, e o de um recorte curto de
+#             OUVIDO_JANELA_S de cada lado do vão; as duas são o MESMO modelo, com o mesmo viés para cedo, e não provam
+#             nada uma da outra). Esse vão reprova até o aceite vão a vão (--aceitar-vaos), de quem conferiu a borda no
+#             som por fora do script (energia, marco acústico, escuta); aceito, sai "aceito" na linha do portão, com
+#             quem e como, separado do que foi medido.
 #
 # A transcrição é o passo caro (uns 11 min no processador para 11 min de áudio). O cache, out/<proj>/_narracao/
 # whisper.json (fora do git), é chaveado pelo que realmente importa: o sha256 das AMOSTRAS de 16 kHz que o Whisper
@@ -150,9 +179,18 @@ PAUSA_ANCORA_S = 0.15        # silêncio interno que vira âncora do relógio
 DUR_MIN_PALAVRA_S = 0.02     # piso de duração de uma palavra no relógio
 DUR_CURTA_S = 0.05           # palavra que a âncora deixou mais curta que isso (e com menos da metade da duração da base) foi deslocada
 VAO_MAX_S = 0.15             # portão: nenhuma corrida de som maior que isso sem palavra que a cubra
-VAO_FECHAR_S = 0.10          # vão com voz maior que isso é fechado no quadro mais quieto
-VAO_TETO_S = 0.25            # portão: vão com voz fechado acima disso só passa se o fechamento cair num vale do som
+VAO_FECHAR_S = 0.10          # vão com voz maior que isso se fecha: no quadro mais quieto, ou na borda que o ouvido escolhe (abaixo)
+VAO_TETO_S = 0.25            # portão: vão com voz fechado acima disso só passa se o fechamento cair num vale do som, ou com aceite (--aceitar-vaos)
 VALE_MIN_DB = 20.0           # ... vale = um quadro em silêncio, ou o mais quieto VALE_MIN_DB abaixo do mais alto do vão
+VAO_OUVIDO_FOLGA_S = 0.05    # vão acima do teto SEM vale: o ouvido ESCOLHE a borda (não prova: o portão pede o aceite) se,
+                             # nas DUAS audições, a fronteira entre as duas palavras cai até isto para dentro do vão, a
+                             # partir da borda dele. É só a granularidade (um passo do Whisper, 0,02 s, mais um da v4,
+                             # 0,04 s); o viés do Whisper para cedo (0,20 s na mediana do vídeo 3) não entra aqui: ele
+                             # empurra a fronteira ouvida para FORA do vão, e quem a limita desse lado é o ALCANCE
+VAO_OUVIDO_ALCANCE_S = 0.35  # ... e a fronteira ouvida fica no máximo isto FORA do vão, do lado de dentro da palavra que
+                             # fica com as letras da ElevenLabs (o p90 do adiantamento do Whisper no vídeo 3: 0,35 s nos
+                             # inícios de palavra casada). Mais longe que isso, o ouvido pôs a palavra noutro lugar e
+                             # não escolhe (o vão fecha no quadro mais quieto, e o portão pede o aceite do mesmo jeito)
 CONCORDANCIA_MAX_S = 1.0     # portão: palavra casada a mais disso de onde o Whisper a ouviu é palavra no lugar de outra
 SOBRE_ACEITOS = ("aceitos: os trechos cuja cobertura fora de 0,9..1,1 foi aceita (o sentido da pré-v1, que o transcrever.mjs "
                  "herda por trecho); aceites: cada item aceito um a um (cobertura ou conteúdo), com quem aceitou e como")
@@ -549,11 +587,56 @@ def julgar_pelo_ouvido(tp, propostas, antes, depois, n, alt_ult=None, alt_pri=No
     return None, (f"indecidido: {motivo} (ouviu \"{ua or ''}\" antes e \"{pd or ''}\" depois"
                   + (f"; ele aponta para outra fronteira: {' / '.join(outra)}" if outra else "") + ")"), nota
 
+# ── o vão com voz sem vale: o ouvido diz de quem é a voz ────────────────────────────────────────────────────────────
+def lado_do_vao(ouv, vao):
+    """De qual palavra é a voz do vão [v0, v1], por UMA audição ouv = {inicio_1, fim_1, inicio_2, fim_2} (onde o Whisper
+    ouviu as duas palavras). Escolhe a borda; NÃO prova (o portão relogio pede o aceite do vão de qualquer jeito).
+    "segunda": a fronteira ouvida (o fim da 1ª e o começo da 2ª) fica entre VAO_OUVIDO_ALCANCE_S antes de v0 (o limite
+    do lado de dentro da 1ª palavra) e VAO_OUVIDO_FOLGA_S depois de v0, e a 2ª ainda soa depois disso. "primeira": o
+    espelho em v1 (a fronteira entre v1 − FOLGA e v1 + ALCANCE, e a 1ª já soava antes). None: o ouvido põe a fronteira
+    no miolo do vão, longe dele (a 2ª ouvida dentro da 1ª, ou a 1ª dentro da 2ª), ou não ouviu as duas."""
+    if not ouv: return None
+    v0, v1, F, A = vao[0], vao[1], VAO_OUVIDO_FOLGA_S, VAO_OUVIDO_ALCANCE_S
+    e = 1e-9
+    perto = lambda x, borda, de, ate: borda - de - e <= x <= borda + ate + e
+    seg = (perto(ouv["inicio_2"], v0, A, F) and perto(ouv["fim_1"], v0, A, F) and ouv["fim_2"] > v0 + F)
+    pri = (perto(ouv["fim_1"], v1, F, A) and perto(ouv["inicio_2"], v1, F, A) and ouv["inicio_1"] < v1 - F)
+    return "segunda" if seg and not pri else ("primeira" if pri and not seg else None)
+
+def julgar_vao_pelo_ouvido(tp, res, j, vao, curto):
+    """O vão com voz entre as palavras j e j+1, acima do teto e sem vale no som. Duas audições: o Whisper do recorte
+    longo (res: só se as duas palavras casaram 1 para 1) e o do recorte curto em volta do vão (curto: as palavras dele em
+    tempo absoluto; o par j | j+1 tem de aparecer UMA vez, colado). As duas têm de dar o mesmo lado (lado_do_vao), e o
+    vão fecha na borda do outro lado: "segunda" → v0 (a 1ª fica com as letras que a ElevenLabs lhe deu), "primeira" → v1.
+    É ESCOLHA da borda, não prova: as duas audições são o mesmo modelo, e o portão pede o aceite do vão.
+    Devolve (onde fechar ou None, lado, prova)."""
+    prova = {"folga_s": VAO_OUVIDO_FOLGA_S, "alcance_s": VAO_OUVIDO_ALCANCE_S, "longo": None, "curto": None,
+             "papel": "escolhe a borda; não prova (o portão relogio pede o aceite do vão, --aceitar-vaos)"}
+    a, b = tp[j], tp[j + 1]
+    if res[j]["fonte"] == "casada" and res[j + 1]["fonte"] == "casada":
+        prova["longo"] = {"inicio_1": r3(res[j]["start"]), "fim_1": r3(res[j]["end"]),
+                          "inicio_2": r3(res[j + 1]["start"]), "fim_2": r3(res[j + 1]["end"])}
+    us = unidades_whisper(curto)
+    pares = [u for u in range(len(us) - 1) if a and b and us[u]["tokens"] and us[u + 1]["tokens"]
+             and us[u]["tokens"][-1] == a[-1] and us[u + 1]["tokens"][0] == b[0]]
+    if len(pares) == 1:
+        u = pares[0]
+        prova["curto"] = {"inicio_1": r3(us[u]["start"]), "fim_1": r3(us[u]["end"]),
+                          "inicio_2": r3(us[u + 1]["start"]), "fim_2": r3(us[u + 1]["end"])}
+    prova["ouviu_curto"] = " ".join(w["w"] for w in curto)
+    lados = {k: lado_do_vao(prova[k], vao) for k in ("longo", "curto")}
+    prova["lados"] = lados
+    if lados["longo"] is not None and lados["longo"] == lados["curto"]:
+        lado = lados["longo"]
+        return (vao[0] if lado == "segunda" else vao[1]), lado, prova
+    return None, None, prova
+
 # ── o relógio híbrido de um trecho ───────────────────────────────────────────────────────────────────────────────────
-def montar_relogio(palavras, el, ancoras, lo, hi, som):
+def montar_relogio(palavras, el, ancoras, lo, hi, som, ouvir_vao=None):
     """palavras: as do trecho. el: [(s, e)] da ElevenLabs (letras, já com δ, tempo absoluto). ancoras: [(b, p0, p1)] em
-    ordem: a palavra b termina em p0 e a b+1 começa em p1. [lo, hi]: o som do trecho. Devolve [[start, end]], as
-    marcas de cada palavra (ancora, deslocada, vao_fechado) e os vãos com voz fechados, medidos ANTES do fechamento."""
+    ordem: a palavra b termina em p0 e a b+1 começa em p1. [lo, hi]: o som do trecho. ouvir_vao(j, vao): o ouvido para
+    um vão com voz acima de VAO_TETO_S sem vale (julgar_vao_pelo_ouvido); só é chamado nesse caso. Devolve [[start, end]],
+    as marcas de cada palavra (ancora, deslocada, vao_fechado) e os vãos com voz fechados, medidos ANTES do fechamento."""
     n = len(palavras)
     out = [None] * n
     marcas = [dict() for _ in range(n)]
@@ -613,10 +696,19 @@ def montar_relogio(palavras, el, ancoras, lo, hi, som):
             if v1 - v0 > VAO_FECHAR_S and fr > VOZ_NO_VAO:
                 t = som.mais_quieto(v0, v1)
                 db_min, db_max = som.faixa_db(v0, v1)
-                vaos.append({"palavras": [k + q, k + q + 1], "entre": f"{palavras[k + q]} | {palavras[k + q + 1]}",
-                             "vao_s": [r3(v0), r3(v1)], "dur_s": r3(v1 - v0), "fracao_som": r3(fr), "fechado_em": r3(t),
-                             "db_min": round(db_min, 1), "db_max": round(db_max, 1),
-                             "vale": bool(db_min <= LIMIAR_SOM_DBFS or db_max - db_min >= VALE_MIN_DB)})
+                v = {"palavras": [k + q, k + q + 1], "entre": f"{palavras[k + q]} | {palavras[k + q + 1]}",
+                     "vao_s": [r3(v0), r3(v1)], "dur_s": r3(v1 - v0), "fracao_som": r3(fr), "fechado_em": r3(t),
+                     "db_min": round(db_min, 1), "db_max": round(db_max, 1),
+                     "vale": bool(db_min <= LIMIAR_SOM_DBFS or db_max - db_min >= VALE_MIN_DB)}
+                # sem vale, o quadro mais quieto costuma ser uma consoante de DENTRO de uma das palavras (o /k/ de
+                # "American"): o ouvido escolhe a borda (sem escolha, fica o mais quieto); escolhida ou não, o portão
+                # relogio pede o aceite de quem conferiu no som (--aceitar-vaos)
+                if ouvir_vao is not None and v["dur_s"] > VAO_TETO_S and not v["vale"]:
+                    borda, lado, prova = ouvir_vao(k + q, v["vao_s"])
+                    v["ouvido"] = {"decidiu": borda is not None, "lado": lado, "mais_quieto_em": r3(t), **prova}
+                    if borda is not None:
+                        t = borda; v["fechado_em"] = r3(t)
+                vaos.append(v)
                 iv[q][1] = iv[q + 1][0] = t
                 marcas[k + q]["vao_fechado"] = marcas[k + q + 1]["vao_fechado"] = True
         # palavra que começa no meio de um silêncio: a base a pôs sobre o fechamento da consoante final da anterior
@@ -717,6 +809,56 @@ def resolver_aceites(itens, herdados, aceitar, por, como, agora, pendentes_antes
                         "palavras": indices_item(x), **({"no_trecho": x["no_trecho"]} if x.get("no_trecho") is not None else {}),
                         **{k: v for k, v in x["aceite"].items() if k != "herdado"}})
     return aceites, [h for c, h in por_chave.items() if c not in usados]
+
+# ── o aceite vão a vão: o vão com voz acima do teto, sem vale no som (portão relogio) ─────────────────────────────────
+def vao_pede_aceite(v):
+    """O vão que nenhuma medida aprova: fechado acima de VAO_TETO_S e sem vale no som."""
+    return v["dur_s"] > VAO_TETO_S and not v["vale"]
+
+def inicio_vao(v):
+    """O número pelo qual a pessoa aponta o vão em --aceitar-vaos: o início, com 2 casas."""
+    return f"{v['vao_s'][0]:.2f}"
+
+def chave_vao(v):
+    """O que identifica um vão: o aceite vale só para o vão IDÊNTICO do mesmo áudio (o mesmo trecho, o mesmo par de
+    palavras, nos índices de dentro do trecho, o mesmo vão e o mesmo fechamento)."""
+    return json.dumps([v["trecho"], v["entre"], v["palavras"], [round(x, 3) for x in v["vao_s"]], round(v["fechado_em"], 3)],
+                      ensure_ascii=False)
+
+def resolver_aceites_vaos(vaos, herdados, aceitar, por, como, evidencia, agora, pendentes_antes=frozenset(), visto_em=None):
+    """A disciplina do --aceitar (resolver_aceites), vão a vão. Para cada vão que pede aceite (vao_pede_aceite), marca
+    v["situacao"]: "aceito" se é idêntico a um aceite herdado (o laudo anterior do MESMO áudio), ou se o início dele
+    veio em --aceitar-vaos E o laudo anterior deste áudio já o mostrava, idêntico, PENDENTE (é o que a pessoa leu e
+    conferiu no som); "pendente" nos outros, com aceite_recusado quando o início estava na lista. Os vãos que não pedem
+    aceite ficam "vale do som" (acima do teto, com vale) ou "abaixo do teto". aceitar: os inícios com 2 casas.
+    Devolve (aceites gravados nesta rodada, herdados sem vão, inícios de --aceitar-vaos sem vão nenhum)."""
+    por_chave = {h["chave"]: h for h in herdados if h.get("chave")}
+    usados, aceites = set(), []
+    for v in vaos:
+        if not vao_pede_aceite(v):
+            v["situacao"] = "vale do som" if v["dur_s"] > VAO_TETO_S else "abaixo do teto"; continue
+        c = chave_vao(v)
+        if c in por_chave:
+            h = por_chave[c]; usados.add(c)
+            v["situacao"], v["aceite"] = "aceito", {k: h.get(k) for k in ("por", "como", "evidencia", "em", "pendente_no_laudo_de")} | {"herdado": True}
+        elif inicio_vao(v) in aceitar and c in pendentes_antes:
+            v["situacao"], v["aceite"] = "aceito", {"por": por, "como": como, "evidencia": evidencia, "em": agora,
+                                                    "pendente_no_laudo_de": visto_em}
+        else:
+            v["situacao"] = "pendente"
+            if inicio_vao(v) in aceitar:
+                v["aceite_recusado"] = ("o vão nasceu ou mudou nesta rodada: o laudo anterior deste áudio não o mostrava pendente, "
+                                        "idêntico (o mesmo par, o mesmo vão, o mesmo fechamento), então ninguém o conferiu. "
+                                        f"Confira no som e rode de novo com --aceitar-vaos={inicio_vao(v)}")
+            continue
+        aceites.append({"chave": c, "trecho": v["trecho"], "entre": v["entre"], "palavras": v["palavras"], "vao_s": v["vao_s"],
+                        "fechado_em": v["fechado_em"],
+                        "como_fechou": ("borda escolhida pelo ouvido (" + str((v.get("ouvido") or {}).get("lado")) + ")")
+                                       if (v.get("ouvido") or {}).get("decidiu") else "quadro mais quieto (o ouvido não escolheu)",
+                        "medido_no_som": {"db_min": v["db_min"], "db_max": v["db_max"], "fracao_som": v["fracao_som"]},
+                        **{k: x for k, x in v["aceite"].items() if k != "herdado"}})
+    inicios = {inicio_vao(v) for v in vaos}
+    return aceites, [h for c, h in por_chave.items() if c not in usados], sorted(set(aceitar) - inicios)
 
 def portao_conteudo(itens):
     """itens: [{trecho, tipo, pede_aceite, situacao, ...}] (situacao posta por resolver_aceites). Reprova se algum item
@@ -822,14 +964,29 @@ def portao_relogio(words, trechos_rel, segmentos, esperadas, fronteiras, som=Non
     for f in discord:
         prob.append(f"pausa {f['pausa'][0]:.2f}–{f['pausa'][1]:.2f} (trecho {f['trecho']}): fronteira {f['situacao']} "
                     f"(regra: {f.get('regra_palavras', f.get('regra'))}; ElevenLabs: {f.get('elevenlabs_palavras', f.get('elevenlabs'))}; {f.get('como', '')})")
+    vaos_pendentes, vaos_aceitos = [], []
     if vaos is not None:
-        sem_vale = [v for v in vaos if v["dur_s"] > VAO_TETO_S and not v["vale"]]
-        for v in sem_vale:
-            prob.append(f"vão com voz de {v['dur_s']:.2f} s entre \"{v['entre']}\" ({v['vao_s'][0]}–{v['vao_s'][1]}), fechado em "
-                        f"{v['fechado_em']} sem vale no som (mais quieto {v['db_min']} dBFS, mais alto {v['db_max']} dBFS)")
+        # o vão acima do teto sem vale NUNCA passa por regra automática (nem o quadro mais quieto, nem o ouvido, que só
+        # escolhe a borda): passa só com o aceite vão a vão (resolver_aceites_vaos), e sai como ACEITO, não como medido
+        for v in vaos:
+            if not vao_pede_aceite(v): continue
+            ac = v.get("aceite") or {}
+            if v.get("situacao") == "aceito" and ac.get("por") and ac.get("como"): vaos_aceitos.append(v)
+            else: vaos_pendentes.append(v)
+        for v in vaos_pendentes:
+            o = v.get("ouvido") or {}
+            como_fechou = (f"borda escolhida pelo ouvido (lado {o.get('lado')}), que não prova" if o.get("decidiu")
+                           else "quadro mais quieto" + (f" (o ouvido não escolheu: recorte longo {o['lados']['longo']}, curto "
+                                                        f"{o['lados']['curto']})" if o.get("lados") else ""))
+            prob.append(f"vão com voz de {v['dur_s']:.2f} s entre \"{v['entre']}\" ({v['vao_s'][0]}–{v['vao_s'][1]}), sem vale no som "
+                        f"(mais quieto {v['db_min']} dBFS, mais alto {v['db_max']} dBFS), fechado em {v['fechado_em']} "
+                        f"({como_fechou}): PENDENTE de aceite ({inicio_vao(v)})")
         acima = [v for v in vaos if v["dur_s"] > VAO_TETO_S]
+        n_vale = sum(1 for v in acima if v["vale"])
         medidas.append(f"{len(vaos)} vãos com voz fechados na montagem (maior {max((v['dur_s'] for v in vaos), default=0):.3f} s; "
-                       f"{len(acima)} acima de {VAO_TETO_S} s, {len(acima) - len(sem_vale)} deles num vale do som)")
+                       f"{len(acima)} acima de {VAO_TETO_S} s, {n_vale} deles num vale do som"
+                       + (f"; os outros {len(acima) - n_vale}, sem vale, não são medida: vão aceito ou pendente" if len(acima) > n_vale else "")
+                       + ")")
     if concordancia is not None:
         for g in concordancia["grosseiras"]:
             prob.append(f"\"{g['w']}\" ({g['ponta']} em {g['relogio']}) a {g['dif_s']:+.2f} s de onde o Whisper a ouviu ({g['whisper']})")
@@ -842,13 +999,23 @@ def portao_relogio(words, trechos_rel, segmentos, esperadas, fronteiras, som=Non
     ok = not prob
     conta = lambda s: sum(1 for f in fronteiras if f["situacao"] == s)
     n_dec = sum(conta(s) for s in decididas)
+    quem_vaos = sorted({f"por {v['aceite'].get('por')}; como {v['aceite'].get('como')}"
+                        + (f"; evidência {v['aceite'].get('evidencia')}" if v['aceite'].get('evidencia') else "") for v in vaos_aceitos})
+    txt_aceitos = (f" ACEITO, não medido: {len(vaos_aceitos)} vãos com voz acima de {VAO_TETO_S} s sem vale no som, um a um "
+                   f"({', '.join(inicio_vao(v) + ' ' + v['entre'] + (' (herdado)' if v['aceite'].get('herdado') else '') for v in vaos_aceitos)}), "
+                   f"porque {' / '.join(quem_vaos)}."
+                   if vaos_aceitos else "")
+    txt_como_aceitar = (f" — confira cada vão no som (a borda em que ele fechou); se estiver certa: --aceitar-vaos="
+                        f"{','.join(inicio_vao(v) for v in vaos_pendentes)} --aceite-por=\"<quem>\" --aceite-como=\"<como conferiu>\" "
+                        f"[--aceite-evidencia=\"<onde está a conferência>\"]"
+                        if vaos_pendentes else "")
     det = (f"{len(words)} palavras do texto aprovado (contarPalavras: {esperadas}), em ordem, sem sobreposição, dentro do som "
            f"de cada trecho, nenhuma invadindo as {sum(len(t['ancoras']) for t in trechos_rel)} pausas-âncora. Fronteiras: "
            f"{len(fronteiras)} pausas, {n_dec} decididas ({conta('consenso')} por consenso com pontuação; pelo ouvido, "
            f"{conta('conferida')} conferidas, {conta('desempatada')} desempatadas e {conta('corrigida')} corrigidas), "
            f"{conta('ignorada')} ignoradas (de dentro de uma palavra), 0 sem decisão. Medido: "
-           + ("; ".join(medidas) if medidas else "nada (sem o som)")
-           if ok else "; ".join(prob[:10]) + (f" … (+{len(prob) - 10})" if len(prob) > 10 else ""))
+           + ("; ".join(medidas) if medidas else "nada (sem o som)") + (("." + txt_aceitos) if txt_aceitos else "")
+           if ok else "; ".join(prob[:10]) + (f" … (+{len(prob) - 10})" if len(prob) > 10 else "") + txt_como_aceitar + txt_aceitos)
     return {"nome": "relogio", "ok": ok, "detalhe": det}, prob
 
 # ── marcos de chiado: uma medida independente do relógio, a cada rodada ────────────────────────────────────────────
@@ -915,17 +1082,28 @@ def main(argv):
     T0 = time.time()
     args = [a for a in argv if not a.startswith("--")]
     opcoes = dict(a[2:].split("=", 1) if "=" in a else (a[2:], "1") for a in argv if a.startswith("--"))
-    uso = ("uso: python out/<proj>/_pesquisa/ingest-local.py <proj> [--aceitar=3,7 [--aceite-por=...] [--aceite-como=...]] "
+    uso = ("uso: python out/<proj>/_pesquisa/ingest-local.py <proj> [--aceitar=3,7] [--aceitar-vaos=24.84,138.72] "
+           "[--aceite-por=...] [--aceite-como=...] [--aceite-evidencia=...] "
            "[--sem-cobertura] [--refazer] [--saida=<pasta>] [--pre-v1=<clone>]   (cwd = raiz do canal)")
-    if len(args) != 1 or set(opcoes) - {"saida", "pre-v1", "refazer", "aceitar", "sem-cobertura", "aceite-por", "aceite-como"} \
+    if len(args) != 1 or set(opcoes) - {"saida", "pre-v1", "refazer", "aceitar", "aceitar-vaos", "sem-cobertura", "aceite-por",
+                                        "aceite-como", "aceite-evidencia"} \
             or not re.fullmatch(r"[\w.-]+", args[0]):
         print(uso, file=sys.stderr); return 2
     try:
         aceitar = sorted({int(x) for x in opcoes.get("aceitar", "").split(",") if x.strip()}) if "aceitar" in opcoes else []
     except ValueError:
         print("--aceitar=N[,M...]: números de trecho", file=sys.stderr); return 2
+    brutos_vaos = [x.strip() for x in opcoes.get("aceitar-vaos", "").split(",") if x.strip()]
+    if any(not re.fullmatch(r"\d+\.\d{1,2}", x) for x in brutos_vaos):
+        print("--aceitar-vaos=S[,S...]: o início de cada vão em segundos, com 1 ou 2 casas (ex.: 24.84; 775.5 = 775.50), como a linha do portão "
+              "relogio o mostra", file=sys.stderr); return 2
+    aceitar_vaos = sorted({f"{float(x):.2f}" for x in brutos_vaos})
     ACEITE_POR = (opcoes.get("aceite-por") or "").strip() or "não informado"
     ACEITE_COMO = (opcoes.get("aceite-como") or "").strip() or "não informado"
+    ACEITE_EVIDENCIA = (opcoes.get("aceite-evidencia") or "").strip() or None
+    if aceitar_vaos and "não informado" in (ACEITE_POR, ACEITE_COMO):
+        print("--aceitar-vaos pede --aceite-por=<quem conferiu> e --aceite-como=<como conferiu a borda no som>: o aceite é a "
+              "única prova do vão sem vale", file=sys.stderr); return 2
     AGORA = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     REFAZER, SEM_COBERTURA = "refazer" in opcoes, "sem-cobertura" in opcoes
     proj = args[0]
@@ -970,6 +1148,14 @@ def main(argv):
         for it in (al.get("conteudo") or []) + (al.get("cobertura_itens") or []):
             if it.get("pede_aceite") and it.get("situacao") == "pendente": pendentes_antes.add(chave_item(it))
         visto_em = laudo_anterior.get("gerado_em")
+    # o mesmo para os vãos sem vale do portão relogio (--aceitar-vaos): herança e pendentes do laudo anterior deste áudio
+    herdados_vaos = list(laudo_anterior.get("aceites_vaos") or []) if mesmo_audio else []
+    pendentes_vaos_antes = set()
+    if mesmo_audio:
+        for v in (laudo_anterior.get("alinhamento") or {}).get("vaos_com_voz_fechados") or []:
+            if v.get("situacao") == "pendente":
+                try: pendentes_vaos_antes.add(chave_vao(v))
+                except (KeyError, TypeError): pass
     avisos_heranca = []
     if mesmo_audio and laudo_anterior.get("aceitos") and "aceites" not in laudo_anterior:
         avisos_heranca.append(f"o laudo anterior aceitava por trecho ({laudo_anterior.get('aceitos')}), formato que não vale mais: "
@@ -984,6 +1170,7 @@ def main(argv):
         laudo = {"schemaVersion": 1, "proj": proj, "status": status, "audio": audio_laudo, "pedido": None, "resposta": None,
                  "portoes": portoes, "trechos": None,
                  "aceitos": sorted({h["trecho"] for h in herdados if h.get("tipo") == "cobertura"}), "aceites": herdados,
+                 "aceites_vaos": herdados_vaos,
                  "sobre_aceitos": SOBRE_ACEITOS,
                  "sem_cobertura": None, "avisos": avisos_heranca + avisos, "saidas": {"words": None, "transcript": None},
                  **(extra or {}),
@@ -1263,8 +1450,14 @@ def main(argv):
 
     # ── 8. o relógio híbrido ──────────────────────────────────────────────────────────────────────────────────────────
     words_out, trechos_rel, trecho_de, vaos_fechados = [], [], [], []
+    def ouvido_de_vao(t):
+        """O ouvido para os vãos com voz sem vale do trecho t: o recorte longo (t["res"]) e um recorte curto em volta."""
+        def ouvir_vao(j, vao):
+            curto = ouvir(max(0.0, vao[0] - OUVIDO_JANELA_S), vao[1] + OUVIDO_JANELA_S, "vão com voz sem vale")
+            return julgar_vao_pelo_ouvido(t["tp"], t["res"], j, vao, curto)
+        return ouvir_vao
     for t in T:
-        iv, marcas, vaos = montar_relogio(t["palavras"], t["base"], t["ancoras"], t["lo"], t["hi"], som)
+        iv, marcas, vaos = montar_relogio(t["palavras"], t["base"], t["ancoras"], t["lo"], t["hi"], som, ouvido_de_vao(t))
         t["iv"], t["marcas"] = iv, marcas
         for v in vaos: vaos_fechados.append({"trecho": t["f"]["trecho"], **v})
         for w, (s, e) in zip(t["palavras"], iv):
@@ -1429,6 +1622,27 @@ def main(argv):
                                 + (f" (aceitos após escuta: {', '.join(map(str, aceitos_cob_l))})" if aceitos_cob_l else "")) + f" — {conta}"})
     portoes.append(portao_conteudo(itens))
     esperadas = sum(contar_palavras(f["texto"]) for f in falas)
+    aceites_vaos, herdados_vaos_sem_vao, vaos_sem_vao = resolver_aceites_vaos(
+        vaos_fechados, herdados_vaos, set(aceitar_vaos), ACEITE_POR, ACEITE_COMO, ACEITE_EVIDENCIA, AGORA,
+        pendentes_antes=pendentes_vaos_antes, visto_em=visto_em)
+    for v in vaos_fechados:
+        if v.get("aceite_recusado"):
+            avisos.append(f"--aceitar-vaos={inicio_vao(v)} NÃO aceitou o vão \"{v['entre']}\" ({v['vao_s'][0]}–{v['vao_s'][1]}, "
+                          f"fechado em {v['fechado_em']}): {v['aceite_recusado']}")
+    for h in herdados_vaos_sem_vao:
+        avisos.append(f"aceite de vão anterior sem vão igual nesta rodada (o relógio mudou?), descartado: \"{h.get('entre')}\" "
+                      f"{h.get('vao_s')} fechado em {h.get('fechado_em')}")
+    if vaos_sem_vao:
+        avisos.append(f"--aceitar-vaos={','.join(vaos_sem_vao)}: nenhum vão começa aí (o início vem com 2 casas, da linha do portão).")
+    for v in vaos_fechados:
+        if not vao_pede_aceite(v): continue
+        ac, o = v.get("aceite") or {}, v.get("ouvido") or {}
+        avisos.append(f"vão sem vale t{v['trecho']} \"{v['entre']}\" {v['vao_s'][0]}–{v['vao_s'][1]} ({v['dur_s']:.2f} s), fechado em "
+                      f"{v['fechado_em']} ({'borda escolhida pelo ouvido, lado ' + str(o.get('lado')) if o.get('decidiu') else 'quadro mais quieto'}"
+                      f"; o mais quieto do vão em {o.get('mais_quieto_em', v['fechado_em'])}) — "
+                      + (f"aceito{' (herdado do laudo anterior, vão idêntico)' if ac.get('herdado') else ''}: por {ac.get('por')}; "
+                         f"como {ac.get('como')}" if v.get("situacao") == "aceito"
+                         else f"PENDENTE: confira a borda no som; se certa, --aceitar-vaos={inicio_vao(v)}"))
     p_rel, _ = portao_relogio(words_out, trechos_rel, segmentos, esperadas, fronteiras, som=som, vaos=vaos_fechados,
                               concordancia=concordancia)
     portoes.append(p_rel)
@@ -1501,7 +1715,8 @@ def main(argv):
                    "relogio": {"base": "alinhamento por caractere da ElevenLabs (só as letras) + δ medido", "pausa_ancora_s": PAUSA_ANCORA_S,
                                "vao_max_s": VAO_MAX_S, "vao_fechar_s": VAO_FECHAR_S, "vao_teto_s": VAO_TETO_S, "vale_min_db": VALE_MIN_DB,
                                "concordancia_max_s": CONCORDANCIA_MAX_S, "grafia_perto": GRAFIA_PERTO,
-                               "dur_min_palavra_s": DUR_MIN_PALAVRA_S, "ouvido_janela_s": OUVIDO_JANELA_S, "prova_margem_s": PROVA_MARGEM_S}},
+                               "dur_min_palavra_s": DUR_MIN_PALAVRA_S, "ouvido_janela_s": OUVIDO_JANELA_S, "prova_margem_s": PROVA_MARGEM_S,
+                               "vao_ouvido_folga_s": VAO_OUVIDO_FOLGA_S, "vao_ouvido_alcance_s": VAO_OUVIDO_ALCANCE_S}},
         "resposta": {"arquivo": rel(ARQ_CACHE), "requestId": None, "language_code": idioma,
                      "language_probability": round(min(p for _, _, p in idiomas), 4), "audio_duration_secs": round(DUR_DECODIFICADA, 3),
                      "soma_dos_recortes_s": round(soma_recortes / 100, 3), "recortes": len(idiomas),
@@ -1512,7 +1727,11 @@ def main(argv):
         "trechos": cobertura["trechos"],
         "aceitos": aceitos,
         "aceites": aceites,
+        "aceites_vaos": aceites_vaos,
         "sobre_aceitos": SOBRE_ACEITOS,
+        "sobre_aceites_vaos": ("cada vão com voz acima de vao_teto_s SEM vale no som que alguém conferiu no som, por fora deste "
+                               "script, e aceitou com --aceitar-vaos (a chave: trecho, par, vão e fechamento); herdado só pelo "
+                               "vão idêntico do mesmo áudio. O ouvido (vaos_com_voz_fechados[].ouvido) só escolhe a borda: não é prova."),
         "sem_cobertura": None,
         "avisos": avisos,
         "saidas": {"words": rel(arq_words) if status == "aprovado" else None, "transcript": rel(arq_texto),

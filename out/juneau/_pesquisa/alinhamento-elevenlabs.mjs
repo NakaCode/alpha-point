@@ -95,8 +95,13 @@ for (const s of narr.segmentos) for (const t of [s.start, s.end]) if (Math.abs(t
 let textoAprovado = { fonte: `${BASE}/narracao.json › segmentos[].texto` };
 if (existsSync(ARQ_TEXTO)) {
   const md = readFileSync(ARQ_TEXTO, "utf8");
-  const paragrafos = md.split(/\r?\n\s*\r?\n/).map((x) => x.trim()).filter(Boolean);
+  let paragrafos = md.split(/\r?\n\s*\r?\n/).map((x) => x.trim()).filter(Boolean);
+  // O preparar-voz do vídeo 3 em diante abre o arquivo com o carimbo da revisão do roteiro ("> Revisão do roteiro: `<sha12>`"),
+  // que o gate.mjs --derivados confere. Ele não é fala: sai da conta, e só ele (uma linha só, de citação, no topo).
+  let carimbo = null;
+  if (paragrafos.length && /^> Revisão do roteiro: `[0-9a-f]{12}`$/.test(paragrafos[0])) carimbo = paragrafos.shift();
   textoAprovado = { ...textoAprovado, conferido_com: ARQ_TEXTO, sha256: sha(Buffer.from(md, "utf8")), paragrafos: paragrafos.length,
+    ...(carimbo ? { carimbo_ignorado: carimbo } : {}),
     igual_aos_textos_dos_segmentos: paragrafos.length === falas.length && falas.every((s, k) => paragrafos[k] === s.texto) };
   if (!textoAprovado.igual_aos_textos_dos_segmentos) problemas.push(`${ARQ_TEXTO} não bate, parágrafo a parágrafo, com os "texto" do narracao.json`);
 }
