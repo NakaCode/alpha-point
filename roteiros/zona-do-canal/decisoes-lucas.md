@@ -37,3 +37,27 @@ Cada decisão com a pergunta, a resposta literal e a hora (Brasília).
   e conectado". A pergunta, com o combinado da caça (nada baixado por ele, nada navegado nos bancos, a janela do Brave à
   vista e o PC sem dormir, pedido de conexão recusado), foi se a Fase A podia rodar à noite. A resposta: "Deixa para de
   manhã". A caça do vídeo 3 começa com ele acordado, depois que a pesquisa montar a `lista-de-caca.json`.
+
+## 15/10/2026, 12:3x (Brasília): as perguntas da manhã, no chat da Sala
+
+Três blocos de perguntas de opção (`out/zona-do-canal/_pesquisa/pendencias-lucas.md`). As respostas, literais:
+- Relevo 3D na s02, s08 e s65: **"Plano, sem relevo (Recomendado)"**.
+- A paleta (a Zona e Balboa em âmbar, o Panamá em turquesa): **"Sim, assim (Recomendado)"**.
+- O pedido de comentário ("Where would you draw the line?") no fim: **"Na tela final, à esquerda (Recomendado)"**, como em
+  Los Angeles.
+- As fotos de época abaixo de 4K (s57, 3.000 px em tela cheia; s64, 2.772 px impressa): **"Entram (Recomendado)"**.
+- 1964 pelo lado panamenho (s52, s54): **"Só as fontes federais (Recomendado)"** ("OTHER COUNTS DIFFER" na tela).
+- A capa da Panama Canal Review de 1979 e as páginas do Internet Archive: **"Recriadas, com "Source:" (Recomendado)"**.
+- s50, as fotos do Departamento de Estado: **"Não, fica a fachada de 1953 (Recomendado)"**.
+- s64, o vídeo de hoje de Miraflores: **"Não, fica a foto de 1988 (Recomendado)"**.
+- A Cidade do Panamá e Colón sem polígono: **"Só a linha da Zona, nome fora (Recomendado)"**.
+- s49, as bandeiras do Panamá e dos EUA sobre o mapa: **"Exceção só aqui"**. A opção dizia: "As duas bandeiras entram sobre o
+  mapa só nesta cena, porque a história é sobre elas." A regra da identidade §6 (nada de bandeira em mapa) continua valendo
+  em todas as outras cenas e vídeos.
+- O mapa de 1936 alinhado com 346 m medidos contra o OSM: **"Conta, declarado (Recomendado)"**.
+- A voz da s16 ("privately owned houses") e da s65 ("only those who worked or served there"): **"Ficam as duas
+  (Recomendado)"**. Sem regravar.
+- **A caça do aéreo de Balboa** (15/10/2026, 12:4x): à pergunta com o combinado de sempre (nada baixado por ele, nada navegado
+  nos bancos no Brave, a janela do Brave com a aba da caça à vista, o clique na aba quando pedido, os avisos do navegador, o
+  pedido de conexão da extensão recusado; a lista antes de qualquer download), a resposta: **"Sim, combinado (Recomendado)"**.
+  Começa quando a revisão de qualidade liberar a máquina (o `chrome.json`).
