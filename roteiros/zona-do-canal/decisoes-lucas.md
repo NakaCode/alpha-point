@@ -32,3 +32,8 @@ Cada decisão com a pergunta, a resposta literal e a hora (Brasília).
 - **A MapTiler** (15/10/2026, 01:41). No chat da Sala, sem pergunta aberta: "Pode usar o Maptiler". Vale para as cenas de
   mapa do vídeo 3, com o contador em `out/zona-do-canal/_pesquisa/maptiler-gasto.md`. O relevo 3D não foi perguntado e não
   está liberado.
+
+- **A caça nos bancos pagos** (15/10/2026, 01:4x). O Lucas: "Pode seguir com os bancos pagos também, o navegador está aberto
+  e conectado". A pergunta, com o combinado da caça (nada baixado por ele, nada navegado nos bancos, a janela do Brave à
+  vista e o PC sem dormir, pedido de conexão recusado), foi se a Fase A podia rodar à noite. A resposta: "Deixa para de
+  manhã". A caça do vídeo 3 começa com ele acordado, depois que a pesquisa montar a `lista-de-caca.json`.
