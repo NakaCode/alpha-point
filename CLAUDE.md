@@ -22,6 +22,17 @@ está fazendo. Não devolva comando para ela digitar — rode e conte o que acon
   — o problema, o que resolveu, por que serviria a outros — e diga à pessoa que vale
   avisar o Lucas. A régua: "se eu montasse um canal de culinária amanhã, isso
   continuaria verdadeiro?"
+- **A `main` do GitHub sempre em dia** (Lucas, 16/10/2026: "preciso que você SEMPRE deixe a Main do repositório atualizada.
+  Isso significa que você pode e deve usar todas as ferramentas do Git em relaçao aos commits, merges, e todo o resto, pra
+  manter a MAIN sempre atualizada").
+  - O repositório é `top10-company/alpha-point`, privado. O `gh` 2.92 está instalado, com o login do Lucas.
+  - Depois de cada commit, `git push origin main`.
+  - Se a `main` de lá andou: `git fetch` e merge na `main` daqui, resolvendo o conflito, e depois o push. Nunca force push,
+    nem reescrever o histórico que já subiu.
+  - O `segredos.mjs --staged` continua antes de cada commit, e nada pessoal vai ao git ("Caça nos bancos pagos").
+  - Só a Sala commita e dá push. Os setores e os subagentes, não.
+  - Em 16/10, a `main` estava 44 commits à frente do GitHub e subiu inteira, depois de conferida (nenhuma chave, nenhum
+    endereço do Tailscale).
 
 ## Como rodar o motor
 
@@ -309,7 +320,7 @@ As próximas, na ordem do Juneau, com o que falta a cada uma:
    Windows.
 9. Do vídeo 2 em diante, **narração pela API** com `narrar.mjs` (mesma voz, modelo, estabilidade e blocos).
 
-Fora, por ora: `regie atualizar` (até sair a tag); rotinas agendadas; git autônomo e o CI `canal.yml`;
+Fora, por ora: `regie atualizar` (até sair a tag); rotinas agendadas; o CI `canal.yml` (o push da `main` entrou em 16/10: "O que você pode");
 `gerar-imagem`; `marca gerar` (o `marca.json` da pré-v1 não comporta a paleta por papéis do canal). A caça nos
 bancos pagos saiu desta lista em 26/09/2026, por decisão do Lucas ("Caça nos bancos pagos", abaixo). O
 levantamento inteiro, com arquivo e linha de cada coisa, está em `midia/_motor/pre-v1-levantamento-2026-09-25.json`,
