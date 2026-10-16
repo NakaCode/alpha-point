@@ -79,3 +79,10 @@ Três blocos de perguntas de opção (`out/zona-do-canal/_pesquisa/pendencias-lu
   Minha estimativa é terminar entre 79 e 83 %, conforme o número de comentários. Posso passar de 80 % para terminar?", a resposta:
   **"Pode passar até 85 % (Recomendado)"**. A opção dizia: "Eu termino o vídeo 3 e, se chegar a 85 % antes do fim, paro e te
   pergunto de novo. O limite zera em 22/10."
+- **A linha do tempo e o render** (16/10/2026, 19:1x).
+  - Os 6 comentários dele (s33, s34, s37, s39, s48, s66) pediam, em cada um, "considerar para o próximo vídeo" ou "manter neste
+    vídeo". Foram fechados como `preservada`, com a frase dele como motivo, e nenhuma cena mudou.
+  - À pergunta "Você viu 61 das 61 na versão de hoje. Renderizo as 43?", a resposta foi **"Sim, renderizar (Recomendado)"**
+    (`qc/_aprovacao-lucas.jsonl`, assinatura 9583c35cfadc).
+- **O ângulo do canal e a miniatura do vídeo 3** (16/10/2026, 19:3x): "Por hora tema e miniatura, quero manter nossa identidade
+  dentro do vídeo", e "Sim, já no vídeo 3 (Recomendado)" (`marca/embalagem.md` §1.1).

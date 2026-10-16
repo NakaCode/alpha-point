@@ -72,6 +72,35 @@ entende em 2 segundos. Ele não
 precisa ter americanos nem os EUA na história. Os vídeos 1 e 2 (Alasca e Los Angeles) e as pautas de 07 a 09/10 partiram do
 contrário.
 
+## 1.1 · O ângulo do canal (desde 16/10/2026)
+
+O Lucas, no chat, durante o render do vídeo 3, mandou 10 miniaturas de canais de geografia e escreveu: "O cenário que imagino
+para o canal seria de conteúdos com esse ângulo".
+- **As 10 referências:**
+  - "Por que a Gâmbia não faz sentido?" (ISTO É UM PAÍS);
+  - "A Indonésia não é o que você pensa" (REAL/FALSO/ERRADO);
+  - "Como é a vida no interior da Austrália?" (WHO LIVES HERE?, 2,3 mi);
+  - "O mar mais estranho do mundo não tem litoral" (ATLANTIC VOID, Geography by Geoff);
+  - "Por que a Rússia se unificou como país, mas a Europa nunca o fez?" (WHY?);
+  - "Por que a Indonésia é o país com o pior design do mundo" (BROKEN BY DESIGN, OBF, 573 mil: o território pintado com a bandeira);
+  - "Por que metade deste país vive em uma ilha minúscula?" (Maldivas, o círculo vermelho ampliando Malé, 3,4 mi);
+  - "Why Australia is 95% Empty" (14 mi);
+  - "Por que Singapura está mudando tudo" (BIG RESET, 1 mi);
+  - "A geografia da Nova Zelândia é INSANA…".
+- **A pergunta:** "O que esse ângulo muda no canal?" **A resposta:** "Por hora tema e miniatura, quero manter nossa identidade
+  dentro do vídeo".
+- **O tema:** um lugar inteiro que todo mundo conhece (país, região, ilha, mar) e uma pergunta ou afirmação que contraria o que
+  se pensa ("não faz sentido", "não é o que você pensa", "por que X sim e Y não", "95 % vazia"). A pauta do vídeo 4 em diante
+  parte daqui, com a régua do público de hoje (§1).
+- **A miniatura:** o mapa é o protagonista.
+  - O fundo é satélite ou relevo, e o território vai pintado de cor forte, com contorno claro.
+  - O texto tem 2 a 4 palavras numa caixa escura, com uma palavra colorida.
+  - Setas curvas brancas, e às vezes um ícone ou um círculo que amplia o ponto.
+  - A paleta e as regras do §3 continuam (`--destaque` no protagonista).
+- **O vídeo:** a identidade de hoje (`identidade.md`) não muda.
+- **A miniatura do vídeo 3:** à pergunta "A miniatura do vídeo 3 ainda não foi feita. Ela já sai nesse estilo?", a resposta foi
+  "Sim, já no vídeo 3 (Recomendado)".
+
 ## 2 · Regras de título (aprendidas no Juneau)
 
 - **O título é contrato: o núcleo se paga nas 3 primeiras frases da narração.** Um molde que rende nas
