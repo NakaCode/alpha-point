@@ -24,8 +24,10 @@ https://www.epidemicsound.com
 | 3 · p5–p6 | 7:28 a 11:16 | DEX 1200, "Austafjord" (4:28), linha 10 | `es_0829eba1_austafjord.mp3` |
 | 4 · p7 + tela final | 11:16 a 13:47 | Trevor Kowalski, "The Sunken Library" (4:11), linha 11 | `es_8e555eba_the-sunken-library.mp3` |
 
-**O volume:** pergunta à parte, ainda sem resposta. A narração mede −19,7 LUFS (pico −3,6 dBTP), como a de Los Angeles; lá o
-Lucas respondeu "Subir a voz no Premiere", com a cama a −35 dB no XML, como no Juneau.
+**O volume** (Lucas, 15/10/2026, 21:3x, à pergunta "A voz do vídeo 3 mede −19,7 LUFS, quase igual à do Los Angeles (−19,6) e uns 5,6 dB
+abaixo da do Juneau. O XML só ajusta o volume da música. Como fica o volume?"): "Subir a voz no Premiere (Recomendado)". A opção dizia:
+"Como no Los Angeles: a música fica a −35 dB no XML, e o LEIA-ME do pacote diz para subir a faixa da voz em 5,5 dB no Premiere, com um
+limitador na saída (os picos passariam de 0 dB)." A voz tem pico de −3,6 dBTP.
 
 A música nunca entra em ferramenta de IA nem de reconhecimento de música (licença Creator): nem o Whisper, nem a ElevenLabs,
 nem o vidIQ, nem o Claude, com a trilha ou com o vídeo mixado.

@@ -61,3 +61,12 @@ Três blocos de perguntas de opção (`out/zona-do-canal/_pesquisa/pendencias-lu
   nos bancos no Brave, a janela do Brave com a aba da caça à vista, o clique na aba quando pedido, os avisos do navegador, o
   pedido de conexão da extensão recusado; a lista antes de qualquer download), a resposta: **"Sim, combinado (Recomendado)"**.
   Começa quando a revisão de qualidade liberar a máquina (o `chrome.json`).
+
+- **A trilha** (15/10/2026, 17:1x). À lista do Epidemic (`out/zona-do-canal/_pesquisa/lista-trilha-5a1357b550f9.md`), a resposta: "1 e 2,
+  preferidas. trecho 3 reserva 10 e treco 4 reserva 11". O `baixar` só aceita mensagem com "sim" ou "aprovo"; à confirmação, a resposta:
+  **"Sim, baixar 1, 2, 10 e 11"**. Baixadas: Zero:Null, Zatelitez, Austafjord e The Sunken Library (`_creditos-trilha.md`).
+- **A descrição e o volume** (15/10/2026, 21:3x). À pergunta "A descrição do vídeo 3 sem links tem 1.818 caracteres […] Como
+  seguimos?", a resposta: **"Tentar a de 1.818 (Recomendado)"**: ele cola a versão inteira; se o campo recusar, diz quantos caracteres
+  ele aceita e onde está colando, e a Sala corta só o que não é obrigatório (crédito de licença nunca sai). À pergunta "A voz do vídeo 3
+  mede −19,7 LUFS […] Como fica o volume?", a resposta: **"Subir a voz no Premiere (Recomendado)"**: a música a −35 dB no XML, e o
+  LEIA-ME do pacote diz para subir a voz em 5,5 dB, com limitador na saída.
