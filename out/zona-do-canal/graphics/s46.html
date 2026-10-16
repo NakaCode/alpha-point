@@ -20,7 +20,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s46 (512,0 → 526,933 s do
       fora, 'Panama City' SEM polígono (pergunta 15, caminho padrão (a)) com um pequeno grupo de figuras (o pictograma de
       pessoas da série, 12 figuras simbólicas: não é contagem nem endereço) num ponto declarado de Calidonia
       (−79,534; 8,968), dentro do contorno OSM do corregimento (opcao-b-cidade-do-panama-osm, usado SÓ para conferir que o
-      ponto cai em terra, na cidade; o polígono não vai à tela), a ~1 km a leste da linha. 'FROM DEC. 31, 1956' em 'nineteen' (0,6), com
+      ponto cai em terra, na cidade; o polígono não vai à tela), a ~1 km a leste da linha. 'FROM DEC. 31, 1956' em 'fifty-six' (1,02; arte-9), com
       'Source: U.S.–Panama treaty of 1955'. Uma trilha PONTILHADA (símbolo, não rota: curva suave entre as figuras e a
       comissaria, sem afirmar caminho no chão; ofício §6c) cresce das pessoas até a loja de 'Panama' (2,95) a 5,6; em
       'shop' (6,433) o trecho do lado de dentro apaga e um corte curto em --tensao (perda; nunca a cor de um lado) marca o
@@ -41,6 +41,18 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s46 (512,0 → 526,933 s do
   marca só admite 2 (identidade §4.2) na faixa abaixo de y 1880. A fonte do tratado sai com a data que ela sustenta, e o
   cartão leva 'Source: U.S. Department of State, Foreign Relations of the United States, 1955–1957' (2 linhas). Pedido ao
   redator no relato. 'John Foster Dulles' não vai (nao_vai_para_tela).
+  RODADA zona-do-canal-arte-7 (mapista, lote M3, 15/10/2026): as etiquetas (decisão da Sala, identidade §4.1): 'FROM DEC. 31, 1956' (4 palavras,
+    128 px, papel 'cota') vai ao tamanho de legenda, var(--fs-eixo), 84 px, com data-qc-papel="legenda", na mesma pílula, no
+    mesmo lugar e nos mesmos tempos. A citação (papel fala, até 12 palavras) e os nomes de 2 palavras ficam.
+  RODADA zona-do-canal-arte-8 (mapista, lote MB, 15/10/2026): (1) o dado partido (textos-tela, texto-7 e texto-8; decisão 2 da
+    Sala): 'DEC. 31, 1956' (rótulo, 128 px, data-qc-papel="rotulo") e 'FROM' (legenda, 84 px, antes dele na leitura), lado a
+    lado no alto à esquerda, centrados em y 248, no mesmo t0 (0,6 na arte-8; 1,02, 'fifty-six', desde a arte-9) e na mesma saída (12,133). (2) a água escura
+    (agua-osm-zona, ODbL, identidade §6) entra como 2ª camada do estilo, em --agua-base, como na s16, na s20 e na s28; o
+    © OpenStreetMap contributors já está no crédito da MapTiler. Câmera, tempos, desenho e créditos ficam.
+  RODADA zona-do-canal-arte-9 (mapista, lote M-s46, 15/10/2026): a data, a legenda e a fonte do tratado em 'fifty-six' (1,02),
+    pela triagem do RITMO (qc-carga; _tmp/triagem-portoes-arte8.json; textos-tela texto-9): rotFrom, rotData e credTrat passam de
+    entra 0,6 ('nineteen') a 1,02, o início de 'fifty-six' no words.json, sem arredondar (com 1,0 ou menos a estreia cai na
+    amostra 1,0 e o RITMO reprova). As saídas (12,133) e o resto da cena ficam.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -50,6 +62,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s46 (512,0 → 526,933 s do
 <!-- UMA linha por geometria usada na cena (slugs de out/zona-do-canal/_pesquisa/pauta-geo.json): -->
 <script src="../_media/geo/linha-1914-panama.js"></script>
 <script src="../_media/geo/lugares-1936.js"></script>
+<script src="../_media/geo/agua-osm-zona.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -65,6 +78,8 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s46 (512,0 → 526,933 s do
     font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1;
     letter-spacing: 0; color: var(--tinta); }
   .rotulo.caixa { letter-spacing: var(--tracking-lugar); }
+  /* zona-do-canal-arte-8: o dado partido (textos-tela, texto-7/8): 'DEC. 31, 1956' volta ao rótulo, 128 px (--fs-rotulo, a
+     classe .rotulo), e 'FROM' vai em legenda, 84 px (.rotulo.legenda), à esquerda dele, no mesmo t0 e centrados na mesma linha */
   /* LEGENDA sobre o mapa (papel legenda, §4.1): 84 px, Inter 500, --tinta, numa pílula --rotulo de 16 × 28 */
   .rotulo.legenda { padding: 16px 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); }
   .rotulo.legenda.quebra { white-space: normal; line-height: 1.2; }
@@ -147,7 +162,8 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s46 (512,0 → 526,933 s do
 
     <div class="rotulo liso" id="rotComm" data-qc-papel="rotulo">Balboa Commissary</div>
     <div class="rotulo liso" id="rotPan" data-qc-papel="rotulo">Panama City</div>
-    <div class="rotulo caixa liso" id="rotData" data-qc-papel="rotulo">FROM DEC. 31, 1956</div>
+    <div class="rotulo legenda caixa liso" id="rotFrom" data-qc-papel="legenda">FROM</div>
+    <div class="rotulo caixa liso" id="rotData" data-qc-papel="rotulo">DEC. 31, 1956</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
 
@@ -175,6 +191,7 @@ of the United States, 1955–1957</div>
   var CENA = {
     duracao: 14.933,                                 // espelho.json › s46 › dur
     perfil: "maptiler",
+    agua: "agua-osm-zona",                           // a água escura (identidade §6), zona-do-canal-arte-8
     fontes: [],
     pontos: {
       C0: { lng: -79.551, lat: 8.957,  zoom: 13.65 },   // a linha no meio, a loja à esquerda, a cidade à direita
@@ -196,10 +213,14 @@ of the United States, 1955–1957</div>
     rotulos: [
       { id: "rotComm", ref: "comm",   lado: "esquerda", dx: -64, dy: 0, entra: 0.0, sai: null },
       { id: "rotPan",  ref: "pessoas", lado: "direita", dx: 120, dy: 0, entra: 0.0, sai: null },
-      { id: "rotData", tela: [200, 160], lado: "direita", vert: "baixo", entra: 0.6, sai: 12.133 }
+      // zona-do-canal-arte-8: 'FROM' (legenda, 84) em x 200 e 'DEC. 31, 1956' (rótulo, 128) logo à direita, 24 px depois da pílula
+      // dele; os dois centrados em y 248 (o centro da pílula de 176 px que nascia em y 160), no mesmo t0 e na mesma saída
+      { id: "rotFrom", tela: [200, 248], lado: "direita", entra: 1.02, sai: 12.133 },
+      { id: "rotData", telaFn: function () { var f = E("rotFrom"); return f ? [200 + f.offsetWidth + 24, 248] : null; },
+        lado: "direita", entra: 1.02, sai: 12.133 }
     ],
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0,
-      extra: [{ id: "credTrat", entra: 0.6, sai: 12.133 }, { id: "credFrus", entra: 12.433, sai: null }] }
+      extra: [{ id: "credTrat", entra: 1.02, sai: 12.133 }, { id: "credFrus", entra: 12.433, sai: null }] }
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -422,7 +443,7 @@ var LPAN = feicao("linha-1914-panama");
   if (window.__erroCena) return;
   var PESSOAS = CENA.pessoas.em;
   CENA.rotulos.forEach(function (r) {
-    if (r.tela) return;
+    if (r.tela || r.telaFn) return;
     r.p = r.ref === "comm" ? COMM : r.ref === "pessoas" ? PESSOAS : null; if (!r.p) falhar("o rótulo " + r.id + " não tem âncora.");
   });
   if (window.__erroCena) return;
@@ -522,8 +543,16 @@ var LPAN = feicao("linha-1914-panama");
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
-    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };   // identidade §6: o tratamento C (Lucas, 09/10/2026)
+    var camadas = [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }];   // identidade §6: o tratamento C (Lucas, 09/10/2026)
+    // zona-do-canal-arte-8: a água escura (identidade §6, "A água escura"), como na s16, na s20 e na s28: a 2ª camada do estilo,
+    // opaca em --agua-base, logo acima do satélite e abaixo de tudo o que a cena desenha (arquivo local, não pede tile)
+    if (CENA.agua) {
+      fontes.aguaBase = { type: "geojson", data: geo(CENA.agua) };
+      camadas.push({ id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } });
+    }
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -888,6 +917,7 @@ var LPAN = feicao("linha-1914-panama");
           // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
           for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
           if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+          if (CENA.agua && (!map.getSource("aguaBase") || !map.isSourceLoaded("aguaBase"))) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

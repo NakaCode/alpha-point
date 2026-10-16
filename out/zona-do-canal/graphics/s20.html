@@ -38,6 +38,13 @@
       turva da Baía do Panamá termina num corte vertical reto (emenda do mosaico): a água escura (agua-osm-zona, ODbL,
       identidade §6) entra como 2ª camada do estilo, em --agua-base, como na s06 e na s11; ela escurece também o canal, que o
       OSM conta como mar (como na s06). O © OpenStreetMap contributors já está no crédito da MapTiler.
+    · RODADA zona-do-canal-arte-7 (mapista, lote M1, 15/10/2026): (1) a emenda s19 → s20 deixa de ser corte seco (laudo
+      s19, motion 7; identidade §4.4, "Mapa seguido de mapa é UMA viagem"): a s20 abre no último quadro da s19 (ponto S:
+      centro, zoom 16,619, giro −0,5049°, pitch 0) e viaja em 2,0 s, eio (cúbico de entrada e saída), até a câmera de hoje em
+      t = 2,0 (Ct, no par C0→C1); dali o centro e o zoom são os de antes. O giro passa a ir de −0,5049° a +1,0° (antes −1 → +1),
+      no mesmo sentido do da s19 (a diferença para o de antes é de ≤ 0,5°, e some no fim). A pílula da convenção e Panama City
+      entram em 2,0 (antes 0,32, 'September'): esperam a viagem, depois da palavra. (2) a pílula da convenção (5 palavras) vai
+      ao tamanho de legenda (--fs-eixo, 84 px; data-qc-papel legenda, como no textos-tela), sem mudar palavra nem quebra.
   Crédito: '© MapTiler © OpenStreetMap contributors' a 56 px do primeiro ao último quadro (cobre o OSM da linha e dos
   pontos). Fora da tela: a miniatura do marco (nenhum arquivo aprovado no conferencia-midia.json; "Sem foto, a linha basta").
 -->
@@ -95,7 +102,7 @@
     <circle class="ponto-lugar" id="pLab" cx="0" cy="0" r="12" opacity="0"/>
   </svg>
   <div id="rotulos">
-    <div class="rotulo caixa conv" id="legConv" data-qc-papel="rotulo">BOUNDARY CONVENTION ·
+    <div class="rotulo legenda caixa conv" id="legConv" data-qc-papel="legenda">BOUNDARY CONVENTION ·
 SEPT. 2, 1914</div>
     <div class="rotulo legenda" id="legLinha" data-qc-papel="legenda">Line as mapped in 1936</div>
     <div class="rotulo liso" id="rotPC" data-qc-papel="rotulo">Panama City</div>
@@ -126,20 +133,30 @@ SEPT. 2, 1914</div>
       // para a ponta norte da linha sair de baixo da pílula da convenção (antes cobria ~45–55 px de 8,6 a 12,28 s)
       C0: { lng: -79.5518, lat: 8.9610, zoom: 14.90 },
       C1: { lng: -79.5515, lat: 8.9612, zoom: 15.02 },
+      // zona-do-canal-arte-7: S = o ÚLTIMO QUADRO da s19 (t = 205/30 = 6,8333 s do render de 30 fps; A0→A2 da s19 a u = 0,99510,
+      // giro −1,5 + 6,8333/6,867 = −0,504903°, pitch 0); Ct = a câmera de hoje em t = 2,0 (o par C0→C1 a u = 2,0/12,28): de Ct
+      // em diante, centro e zoom são exatamente os de antes
+      S:  { lng: -79.5537515, lat: 8.9577985, zoom: 16.61941 },
+      Ct: { lng: -79.551751140, lat: 8.961032573, zoom: 14.919543974 },
       // D: o par Balboa / La Boca à esquerda (Balboa em 1500, 800 do palco), a linha à direita
       D0: { lng: -79.55157, lat: 8.95244, zoom: 15.30 },
       D1: { lng: -79.55231, lat: 8.95298, zoom: 15.42 }
     },
     pernas: [
-      { t0: 0,     t1: 12.28, de: "C0", para: "C1", tipo: "h" },
+      // zona-do-canal-arte-7: a viagem de câmera s19 → s20 (identidade §4.4: mapa seguido de mapa é UMA viagem), 2,0 s,
+      // easing cúbico de entrada e saída, da Balboa da s19 ao enquadramento de hoje
+      { t0: 0,     t1: 2.0,   de: "S",  para: "Ct", tipo: "v", ease: "cubico" },
+      { t0: 2.0,   t1: 12.28, de: "Ct", para: "C1", tipo: "h" },
       { t0: 12.28, t1: 14.28, de: "C1", para: "D0", tipo: "v" },   // 'When Balboa was planned': 2 s
       { t0: 14.28, t1: 18.866, de: "D0", para: "D1", tipo: "h" }
     ],
-    giro: [-1.0, 1.0],
+    giro: [-0.504903, 1.0],   // zona-do-canal-arte-7: começa no giro do último quadro da s19 (antes −1,0), o mesmo sentido
     aneis: [],
     rotulos: [
-      { id: "legConv",  tela: [200, 200], lado: "direita", vert: "baixo", entra: 0.32, sai: 12.28 },
-      { id: "rotPC",    ref: "PC", lado: "direita", vert: "centro", dx: 170, dy: 0, entra: 0.32, sai: 12.28 },
+      // zona-do-canal-arte-7: a convenção e Panama City esperam a viagem acabar (2,0; antes 'September', 0,32): depois da
+      // palavra, nunca antes
+      { id: "legConv",  tela: [200, 200], lado: "direita", vert: "baixo", entra: 2.0, sai: 12.28 },
+      { id: "rotPC",    ref: "PC", lado: "direita", vert: "centro", dx: 170, dy: 0, entra: 2.0, sai: 12.28 },
       { id: "legLinha", tela: [200, 560], lado: "direita", vert: "baixo", entra: 7.61, sai: 12.28 },
       { id: "rotBal",   ref: "BAL", lado: "esquerda", vert: "centro", dx: -44, dy: 0,   entra: 14.0, sai: null },
       { id: "rotLab",   ref: "LAB", lado: "esquerda", vert: "centro", dx: -44, dy: 0,   entra: 14.0, sai: null },
@@ -416,8 +433,10 @@ SEPT. 2, 1914</div>
   var PT = CENA.pontos;
   var vp = function (n) { var p = PT[n]; return { lng: p.lng, lat: p.lat, zoom: p.zoom, bearing: 0, pitch: 0 }; };
   CENA.pernas.forEach(function (L) {
+    // ease "cubico" (zona-do-canal-arte-7): progresso linear da câmera van Wijk (abre/fecha 0), com o tempo passado pelo eio
     if (L.tipo === "v") L.cam = criarCameraMapa({ viewports: [vp(L.de), vp(L.para)], duration: L.t1 - L.t0,
-      width: CENA.largura, height: CENA.altura, bearingLoop: null, cameraAbre: L.abre != null ? L.abre : 0.5, cameraFecha: L.fecha != null ? L.fecha : 0.5 });
+      width: CENA.largura, height: CENA.altura, bearingLoop: null,
+      cameraAbre: L.ease === "cubico" ? 0 : (L.abre != null ? L.abre : 0.5), cameraFecha: L.ease === "cubico" ? 0 : (L.fecha != null ? L.fecha : 0.5) });
   });
   var merc = function (lng, lat) { var s = Math.sin(lat * Math.PI / 180); return [lng, 0.5 * Math.log((1 + s) / (1 - s))]; };
   var unmercLat = function (y) { return (2 * Math.atan(Math.exp(y)) - Math.PI / 2) * 180 / Math.PI; };
@@ -425,7 +444,7 @@ SEPT. 2, 1914</div>
     var L = CENA.pernas[CENA.pernas.length - 1];
     for (var i = 0; i < CENA.pernas.length; i++) if (t < CENA.pernas[i].t1) { L = CENA.pernas[i]; break; }
     var c;
-    if (L.tipo === "v") c = L.cam(cl(t - L.t0, 0, L.t1 - L.t0));
+    if (L.tipo === "v") c = L.cam(L.ease === "cubico" ? eio((t - L.t0) / (L.t1 - L.t0)) * (L.t1 - L.t0) : cl(t - L.t0, 0, L.t1 - L.t0));
     else {
       var u = cl((t - L.t0) / (L.t1 - L.t0), 0, 1), a = PT[L.de], b = PT[L.para];
       var ma = merc(a.lng, a.lat), mb = merc(b.lng, b.lat);

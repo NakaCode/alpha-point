@@ -127,6 +127,17 @@
     mesma posição de s21 (centrados no cx de cada folha, top 220). Os tempos ficam (8,65 / 8,77, ratificados pela Sala na Decisão 5), o
     texto fica, a foto (b0) e o desenho não mudaram. Feito em Opus (lista _animacao_em_opus).
 
+  O CONSERTO DE zona-do-canal-arte-8 (15/10/2026; decisões da Sala "Depois da arte-7", 2; textos-tela.json 0907235d…fc2b, texto-7 e
+    texto-8; feito em Opus): O DADO PARTIDO. A cota "1,041 BORN IN / THE CANAL ZONE" (100 px, duas linhas, eixo) virou DUAS peças no mesmo
+    t0 0,733 (o do textos-tela.json; antes 0,743): em cima "1,041" a 128 px (--fs-rotulo, Inter 700, data-qc-papel="rotulo", com a escala
+    1,04 → 1,00 de antes) e, logo abaixo (top 836), "BORN IN THE CANAL ZONE" a 84 px (.legenda, Inter 500, --legenda-cor, eixo), uma linha.
+    A legenda da cidadania desceu de top 960 a 990 (o respiro entre as duas legendas); o texto e o tempo dela ficam.
+    O CRÉDITO "Source: U.S. Census Bureau, 1960" passou a entrar com "BALBOA, 1960" em 2,023 ("Balboa"), não em 0,733: com a legenda nova,
+    a janela de 0,70–0,80 teria 5 estreias (o rótulo, o aviso, a cota, a legenda e o crédito) e o qc-carga reprova acima de 4 (o ofício §4:
+    "informação nova entra devagar"). O crédito do censo junto do "BALBOA, 1960" (o ano do censo) fica no ar 5,4 s, até a foto levantar.
+    Os beats de 0,743 e a conta acima descrevem a cota de antes: vale este bloco. "GOLD ROLL" e "SILVER ROLL" (aspas retas), a foto, o
+    desenho e os outros tempos não mudaram.
+
   O CONTRATO: window.__duracao = dur; __renderAt(t) determinístico e à prova de erro; __prepararCaptura; __fotosProntas = RIG.prontas() e as
   duas faces da Courier Prime (MarcaDoc 400 e 700). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia inteira
   de templates-cena/_rig.js. Word-lock em tempo LIMPO (faceless: cleanDur = dur). Lote F7 do passo art (tarefa zona-do-canal-arte-1, 15/10/2026).
@@ -194,7 +205,7 @@
     font-size: var(--fs-rotulo); line-height: 1.1; letter-spacing: 0; opacity: 0; transform-origin: 0 50%; }
   .pilula.lugar { letter-spacing: var(--tracking-lugar); }   /* nome de lugar em CAIXA ALTA: Inter 700, +0.04em (identidade §3) */
   /* a cota (Inter 700, --tinta: o dado, solto sobre a mesa) e a legenda (84 px, Inter 500, --legenda-cor) */
-  .cota { position: absolute; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: 100px;
+  .cota { position: absolute; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo);
     line-height: 1.1; letter-spacing: 0; color: var(--tinta); opacity: 0; white-space: pre-line; font-variant-numeric: var(--numeros); }
   .legenda { position: absolute; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
     line-height: 1.2; letter-spacing: 0; color: var(--legenda-cor); opacity: 0; white-space: pre-line; }
@@ -246,8 +257,11 @@
     <div class="pilula"     id="lugar"  data-qc-papel="rotulo" style="left:380px;top:1620px"></div>
     <div class="pilula-leg" id="aviso"  data-qc-papel="eixo" data-qc-aviso-ano="1954" style="left:2140px;top:1632px"></div>
     <div class="pilula lugar" id="balboa" data-qc-papel="rotulo" style="left:2120px;top:430px"></div>
-    <div class="cota"       id="cota"   data-qc-papel="eixo" style="left:2120px;top:680px"></div>
-    <div class="legenda"    id="leg"    data-qc-papel="eixo" style="left:2120px;top:960px"></div>
+    <!-- zona-do-canal-arte-8: o dado partido (textos-tela.json, texto-7/texto-8): a cota "1,041" a 128 px (rotulo) e, logo abaixo, no mesmo
+         t0, a legenda "BORN IN THE CANAL ZONE" a 84 px (eixo); a legenda da cidadania desce 30 px para dar respiro entre as duas legendas -->
+    <div class="cota"       id="cota"   data-qc-papel="rotulo" style="left:2120px;top:680px"></div>
+    <div class="legenda"    id="nasc"   data-qc-papel="eixo" style="left:2120px;top:836px"></div>
+    <div class="legenda"    id="leg"    data-qc-papel="eixo" style="left:2120px;top:990px"></div>
     <!-- b1: as duas folhas de pagamento de s21 (traço de engenheiro, SVG em coordenadas do palco) -->
     <svg id="desenho" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
       <path id="sombraG" class="sombra-linha" d="" />
@@ -495,9 +509,10 @@
     lugar:  "Balboa Elementary School",                                               // rotulo, t0 0 (lugar_na_origem "Registration Day, Balboa Elementary School, Canal Zone.")
     aviso:  "Photo from 1954",                                                        // aviso_ano, t0 0,7 (_avisos_do_ano s39)
     balboa: "BALBOA, 1960",                                                           // rotulo, t0 0,733 → entra em "Balboa" 2,023 (cabeçalho, item 1)
-    cota:   "1,041 BORN IN\nTHE CANAL ZONE",                                         // cota, t0 0,733 ("thousand"); rotulos_dado s39: "1,041 BORN IN THE CANAL ZONE"
+    cota:   "1,041",                                                                  // cota (128 px, rotulo), t0 0,733 ("thousand"); zona-do-canal-arte-8
+    nasc:   "BORN IN THE CANAL ZONE",                                                 // legenda (84 px), t0 0,733, sob "1,041", com ele; zona-do-canal-arte-8
     leg:    "Place of birth only;\nthe census did not\ntabulate their citizenship.",  // legenda, t0 0,733 → entra em "the answer" 3,823 (cabeçalho, item 1)
-    cred1:  "Source: U.S. Census Bureau, 1960",                                       // credito, t0 0,733, até a foto sair (7,433)
+    cred1:  "Source: U.S. Census Bureau, 1960",                                       // credito, t0 0,733 → entra com "BALBOA, 1960" em 2,023 (arte-8: o ritmo), até a foto sair (7,433)
     cabG:   "\"GOLD ROLL\"",                                                        // rotulo, t0 9,233 → 150 ms depois do assentamento da folha (8,65; cabeçalho, item 2)
     cabS:   "\"SILVER ROLL\""                                                       // rotulo, t0 9,233 → 8,77
   };
@@ -505,7 +520,7 @@
   // ── os tempos (locais, −434,567), do words.json e da regência s39 ──
   var T = {
     pousaF: 0.00, pousaFDur: 0.55, fitaF: 0.45, textosF: 0.70,   // "So": a foto; o rótulo e o aviso 150 ms depois do assentamento
-    cota: 0.743, balboa: 2.023, leg: 3.823,                       // "thousand" · "Balboa" · "the answer"
+    cota: 0.733, balboa: 2.023, leg: 3.823,                       // o t0 do textos-tela.json ("thousand" 0,743) · "Balboa" · "the answer"
     saem: 7.133,                                                  // 300 ms antes do levantar
     virada: 7.433,                                                // "The sorting": a foto levanta (350 ms), o crédito sai
     pousoG: 7.95, pousoS: 8.07, pousoDur: 0.55,                   // "elsewhere:": os dois rolos, 120 ms entre eles
@@ -625,8 +640,9 @@
     texto(E("aviso"), t, T.textosF, T.saem);
     texto(E("balboa"), t, T.balboa, T.saem);
     textoC(E("cota"), t, T.cota, T.saem, true);
+    texto(E("nasc"), t, T.cota, T.saem);
     texto(E("leg"), t, T.leg, T.saem);
-    var c1 = E("cred1"); if (c1) c1.style.opacity = (eo(seg(t, T.cota, 0.3)) * (1 - eo(seg(t, T.virada, 0.3)))).toFixed(3);
+    var c1 = E("cred1"); if (c1) c1.style.opacity = (eo(seg(t, T.balboa, 0.3)) * (1 - eo(seg(t, T.virada, 0.3)))).toFixed(3);
     // b1: as duas folhas pousam enroladas, e se desenrolam em "on"
     ["G", "S"].forEach(function (k) {
       var Fo = FOLHAS[k], D = desenhaFolha(k, t), Pz = pousoDes(t, Fo.pouso, T.pousoDur);

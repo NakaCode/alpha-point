@@ -41,6 +41,15 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s01, mãe do run s01 → s0
   OSM dos pontos-osm-hoje e da agua-osm-zona); 'Source: U.S. Census Bureau, 1960' a 56 px sem a marca de mapa (o qc-tamanho
   cobra 72 dele: a exceção de crédito da Sala, identidade §4.1). Nenhuma linha do Shutterstock (não há footage).
   A VINHETA não entra aqui: a regência a põe na s08 (_chamadas[0]); nada nesta cena reserva espaço para ela.
+  RODADA zona-do-canal-arte-7 (mapista, lote M4, 15/10/2026; a regra das etiquetas da Sala): '1,580 BORN IN THE U.S.' tem
+  mais de 3 palavras a 128 px; passa ao tamanho de legenda (--fs-eixo, 84 px) e a data-qc-papel="legenda", e a chave da pilha
+  acesa encolhe na mesma razão (60 × 100 → 40 × 66). As palavras, o lugar no cartão e o tempo (11,02 s) ficam. '3,139
+  RESIDENTS' (2 palavras) e 'BALBOA, 1960' (2) ficam a 128.
+  RODADA zona-do-canal-arte-8 (mapista, lote MA, 15/10/2026; o dado partido, decisão 2 da Sala; textos-tela texto-7/8): os dois
+  dados do cartão saem partidos e em paralelo, na mesma forma e no mesmo tamanho: '3,139' (cota, 128 px, data-qc-papel="rotulo")
+  com 'RESIDENTS' ao lado (legenda, 84 px, Inter 500), em 8,52; e a chave acesa + '1,580' (cota, 128 px) com 'BORN IN THE U.S.'
+  ao lado (legenda, 84 px), em 11,02. As duas metades na mesma linha de base, cada par no mesmo t0. A chave volta a 60 × 100
+  (a altura da caixa-alta de 128). O parágrafo da arte-7 acima é histórico. Nada mais muda (câmera, tempos, água, créditos).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -143,6 +152,10 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s01, mãe do run s01 → s0
     font-size: var(--fs-rotulo); line-height: 1; letter-spacing: var(--tracking-lugar); color: var(--tinta);
     font-variant-numeric: var(--numeros); white-space: nowrap; }
   #cartaoB .lab canvas { flex: none; margin-right: 28px; }
+  /* arte-8: o dado partido (decisão 2 da Sala): o número a 128 px (a cota da série) e o resto em legenda a 84 px, Inter 500,
+     ao lado, na mesma linha de base; os dois pares (3,139 e 1,580) na mesma forma e no mesmo tamanho */
+  #cartaoB .lab .par { display: inline-flex; align-items: baseline; }
+  #cartaoB .lab .leg { margin-left: 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); letter-spacing: 0.02em; }
 </style>
 </head>
 <body>
@@ -160,8 +173,8 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s01, mãe do run s01 → s0
   <div class="cartao" id="cartaoB">
     <div class="hd" data-qc-papel="rotulo">BALBOA, 1960</div>
     <div class="abre" id="abreCampo"><div><canvas class="bar" id="bar1"></canvas><canvas class="bar" id="bar2"></canvas></div></div>
-    <div class="abre" id="abreLab0"><div><div class="lab" data-qc-papel="rotulo">3,139 RESIDENTS</div></div></div>
-    <div class="abre" id="abreLab1"><div><div class="lab" data-qc-papel="rotulo"><canvas id="chave1" width="60" height="100"></canvas><span>1,580 BORN IN THE U.S.</span></div></div></div>
+    <div class="abre" id="abreLab0"><div><div class="lab"><span class="par"><span class="num" data-qc-papel="rotulo">3,139</span><span class="leg" data-qc-papel="legenda">RESIDENTS</span></span></div></div></div>
+    <div class="abre" id="abreLab1"><div><div class="lab"><canvas id="chave1" width="60" height="100"></canvas><span class="par"><span class="num" data-qc-papel="rotulo">1,580</span><span class="leg" data-qc-papel="legenda">BORN IN THE U.S.</span></span></div></div></div>
   </div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
   <div id="cred60" class="credito extra" data-qc-papel="credito">Source: U.S. Census Bureau, 1960</div>
@@ -473,7 +486,7 @@ var BALBOA = pontoNome("pontos-osm-hoje", "Estadio de Balboa");
   }
   // a chave da pilha acesa, à frente de '1,580 BORN IN THE U.S.': uma figura em --destaque na altura da caixa-alta
   (function () { var cv = E("chave1"); if (!cv) return; var g = cv.getContext("2d"); g.clearRect(0, 0, 60, 100);
-    g.fillStyle = COR.destaque; figura(g, 30, 52, 6.6); })();
+    g.fillStyle = COR.destaque; figura(g, 30, 52, 6.6); })();   // arte-8: a chave volta a 60 × 100, ao lado do '1,580' a 128
   var ABRE = { abreCampo: "campo", abreLab0: "lab0", abreLab1: "lab1" };
   function aplicarCartao(t) {
     var C = CENA.cartao, el = E("cartaoB"); if (!el) return;

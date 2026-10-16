@@ -43,6 +43,12 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s28 (253,267 → 281,567 s 
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (data-qc-credito="mapa" só nele; cumpre o OSM da
     linha-1914-panama, de pontos-osm-hoje e de pontos-osm-atlantico); as linhas de fonte de 1930 (1,633–7,533) e de 1940
     (9,3 até a viagem) a 56 px, em duas linhas, empilhadas acima, sem a marca de mapa.
+  RODADA zona-do-canal-arte-7 (mapista, lote M3, 15/10/2026): (1) a água: no clipe anterior, de ~14 a 17 s, a pluma turva da Baía do Panamá
+    terminava num corte vertical reto (emenda do mosaico; qualidade-2, L22): a água escura (agua-osm-zona, ODbL, identidade §6)
+    entra como 2ª camada do estilo, em --agua-base, como na s16 e na s20; ela escurece também o canal, que o OSM conta como mar.
+    O © OpenStreetMap contributors já está no crédito da MapTiler. (2) as etiquetas (decisão da Sala, identidade §4.1): os dois
+    cartões de número (14 e 17 palavras, a 128 px, papel 'cota' no textos-tela) vão ao tamanho de legenda, var(--fs-eixo),
+    84 px, com data-qc-papel="legenda"; as palavras, as quebras, os tempos e o lugar ficam.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -54,6 +60,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s28 (253,267 → 281,567 s 
 <script src="../_media/geo/linha-1914-panama.js"></script>
 <script src="../_media/geo/pontos-osm-hoje.js"></script>
 <script src="../_media/geo/pontos-osm-atlantico.js"></script>
+<script src="../_media/geo/agua-osm-zona.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -116,7 +123,8 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s28 (253,267 → 281,567 s 
      pílula --rotulo no canto de cima à direita, fora da câmera, menor que o palco; o texto num nó só, em linhas */
   .numero { position: absolute; top: 160px; right: 200px; z-index: 44; opacity: 0; visibility: hidden;
     background: var(--rotulo); border-radius: var(--cantos); padding: 32px 40px; }
-  .numero .txt { white-space: pre; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo);
+  /* zona-do-canal-arte-7: os cartões têm 14 e 17 palavras: tamanho de legenda (identidade §4.1, teto 104), var(--fs-eixo) */
+  .numero .txt { white-space: pre; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-eixo);
     line-height: 1.08; letter-spacing: 0.02em; color: var(--tinta); font-variant-numeric: var(--numeros); }
   .numero svg { display: block; margin-bottom: 20px; overflow: visible; }
   .pessoa { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
@@ -145,14 +153,14 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s28 (253,267 → 281,567 s 
     <div class="rotulo liso" id="rotPanamaB" data-qc-papel="rotulo">Panama City</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
-  <div class="numero" id="num1930"><svg id="picto" width="826" height="104" viewBox="0 0 826 104"></svg><div class="txt" data-qc-papel="rotulo">1930 ·
+  <div class="numero" id="num1930"><svg id="picto" width="826" height="104" viewBox="0 0 826 104"></svg><div class="txt" data-qc-papel="legenda">1930 ·
 MORE THAN 60%
 OF "SILVER"
 EMPLOYEES
 LIVED IN
 PANAMA CITY
 AND COLÓN</div></div>
-  <div class="numero" id="num1940"><div class="txt" data-qc-papel="rotulo">1940 · FREE
+  <div class="numero" id="num1940"><div class="txt" data-qc-papel="legenda">1940 · FREE
 SCHOOL FOR
 CHILDREN OF
 "SILVER"
@@ -180,6 +188,7 @@ of the Panama Canal, 1940</div>
   var CENA = {
     duracao: 28.3,                                   // espelho.json › s28 › dur
     perfil: "maptiler",
+    agua: "agua-osm-zona",                           // a água escura (identidade §6), zona-do-canal-arte-7
     fontes: ["zona", "linha"],
     pontos: {
       A0: { lng: -79.690, lat: 9.128, zoom: 10.92 },   // a Zona inteira, dos dois mares (o quadro da s25)
@@ -488,8 +497,16 @@ of the Panama Canal, 1940</div>
   function estilo() {
     // o tratamento C do satélite (identidade §6; Lucas, 09/10/2026): brilho 92 %, cor natural, contraste +25 %
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
-    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };
+    var camadas = [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }];
+    // zona-do-canal-arte-7: a água escura (identidade §6, "A água escura"), como na s16 e na s20: a 2ª camada do estilo, opaca
+    // em --agua-base, logo acima do satélite e abaixo de tudo o que a cena desenha (arquivo local, não pede tile)
+    if (CENA.agua) {
+      fontes.aguaBase = { type: "geojson", data: geo(CENA.agua) };
+      camadas.push({ id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } });
+    }
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -854,6 +871,7 @@ of the Panama Canal, 1940</div>
           // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
           for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
           if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+          if (CENA.agua && (!map.getSource("aguaBase") || !map.isSourceLoaded("aguaBase"))) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

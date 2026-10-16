@@ -44,6 +44,15 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s08 (+s09) (55,333 → 70,1
   MUDOU (mapista, lote M-s08, tarefa zona-do-canal-arte-6, 15/10/2026): a linha de fonte passa ao texto novo do textos-tela
   (texto-4), 'Sources: U.S. Department of State, 1903;' / 'Isthmian Canal Convention, 1903', em 2 LINHAS (identidade §4.2);
   o parágrafo acima, sobre as 3 linhas, é histórico. Nada mais mudou (desenho, tempos, câmera, textos).
+  RODADA zona-do-canal-arte-7 (mapista, lote M4, 15/10/2026; a regra das etiquetas da Sala): o cartão 'NOV. 3 → NOV. 18,
+  1903 · 15 DAYS' tem mais de 3 palavras a 128 px; passa ao tamanho de legenda (--fs-eixo, 84 px) e a data-qc-papel="legenda".
+  As palavras, a quebra, o lugar (alto à esquerda) e o tempo (11,7 s) ficam; a pílula encolhe com o texto. Nada mais muda
+  (o crédito em 2 linhas da arte-6 fica como está).
+  RODADA zona-do-canal-arte-8 (mapista, lote MA, 15/10/2026; o dado partido, decisão 2 da Sala; textos-tela texto-7/8): o cartão
+  se parte em duas peças na mesma pílula e no mesmo t0 (11,7): em cima, 'NOV. 3 → NOV. 18, 1903' em legenda (84 px, Inter 500,
+  data-qc-papel="legenda"; "antes dele na leitura", textos-tela); embaixo, '15 DAYS' em cota (128 px, Inter 700,
+  data-qc-papel="rotulo"), o que a voz diz. O '·' sai com a partição. O parágrafo da arte-7 acima é histórico. Nada mais muda
+  (lugar, tempo, câmera, água escura, o crédito em 2 linhas).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -137,8 +146,12 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s08 (+s09) (55,333 → 70,1
      esquerda, sobre o Caribe, fora da câmera; o texto num nó só, em duas linhas */
   .numero { position: absolute; top: 160px; left: 200px; z-index: 44; opacity: 0; visibility: hidden;
     background: var(--rotulo); border-radius: var(--cantos); padding: 32px 40px; }
-  .numero .txt { white-space: pre; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo);
+  /* arte-7: o texto tem mais de 3 palavras, então vai ao tamanho de legenda (--fs-eixo, 84 px; decisão da Sala: etiquetas) */
+  .numero .txt { white-space: pre; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-eixo);
     line-height: 1.08; letter-spacing: 0.02em; color: var(--tinta); font-variant-numeric: var(--numeros); }
+  /* arte-8: o dado partido (decisão 2 da Sala): a legenda (84 px, Inter 500) em cima, a cota '15 DAYS' (128 px, Inter 700) embaixo */
+  .numero .txt.leg { font-weight: var(--peso-texto); }
+  .numero .txt.num { font-size: var(--fs-rotulo); line-height: 1; letter-spacing: 0.02em; margin-top: 20px; }
   /* OS CRÉDITOS NUMA PÍLULA SÓ: a linha de fonte (3 linhas) entra por cima da do mapa, que não se move */
   #credBox { position: absolute; left: var(--credito-x); bottom: 16px; max-width: 1520px; z-index: 50; }
   #credBox .lin { font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.08;
@@ -162,8 +175,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s08 (+s09) (55,333 → 70,1
     <div class="rotulo legenda liso" id="legBorda" data-qc-papel="legenda">Present-day border</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
-  <div class="numero" id="cota15"><div class="txt" data-qc-papel="rotulo">NOV. 3 → NOV. 18, 1903 ·
-15 DAYS</div></div>
+  <div class="numero" id="cota15"><div class="txt leg" data-qc-papel="legenda">NOV. 3 → NOV. 18, 1903</div><div class="txt num" data-qc-papel="rotulo">15 DAYS</div></div>
   <div id="credBox">
     <div id="credFonte" class="lin" data-qc-papel="credito">Sources: U.S. Department of State, 1903;
 Isthmian Canal Convention, 1903</div>

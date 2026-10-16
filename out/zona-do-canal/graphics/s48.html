@@ -74,7 +74,8 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s48 + s49 fundidas (540,5 �
     de pontos-osm-hoje, pontos-osm-atlantico, linha-1914-panama e balboa-high-school); 'Source: U.S. Census Bureau, 1960'
     de 1,39 a 23,0 e de 25,0 a 29,78 (a tira com os números de 1960 fica até 29,78: a linha sai com o que ela sustenta);
     'Source: U.S. Census Bureau, 1950 and 1960' de 23,0 a 25,0 (com Silver City); 'Source: International Commission of
-    Jurists, 1964' de 37,3 ao fim, em duas linhas. Todas a 56 px, sem a marca de mapa (o qc-tamanho cobra 72 delas:
+    Jurists, 1964' de 30,9 ao fim (desde a arte-9; antes, de 37,3), em duas linhas: entra com 'FROM 1960' e 'Panama's flag
+    at chosen sites', o primeiro dado da comissão (identidade §4.2). Todas a 56 px, sem a marca de mapa (o qc-tamanho cobra 72 delas:
     exceção de crédito, identidade §4.1).
   ZONA-DO-CANAL-ARTE-3 (Mb, mapista): a água escura ligada (agua-osm-zona, ODbL, coberta pelo '© OpenStreetMap contributors'
     da linha da MapTiler), opaca, em --agua-base, logo acima do satélite; o canal abaixo das eclusas também escurece (o OSM o
@@ -125,6 +126,21 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s48 + s49 fundidas (540,5 �
       Shaler em 38,26. A pílula 'Balboa Heights' e a legenda dela FICAM em 44,92, contra o 44,5 do textos-tela: em 44,5 elas
       colidem com as da ponte (o check-overlap mediu 3 pares em 44,6 s), que ficam no ar os 2,0 s da marca (42,62–44,62, e
       saem até 44,92); vai à Sala no relato. Nada mais mudou.
+  RODADA zona-do-canal-arte-7 (mapista, lote M3, 15/10/2026): só a regra das etiquetas (decisão da Sala, identidade §4.1): 'DECIDED SEPT. 7,
+    1960' (4 palavras, 128 px, papel rótulo) vai ao tamanho de legenda, var(--fs-eixo), 84 px, com data-qc-papel="legenda"; a
+    pílula fica 44 px mais baixa, e a legenda 'approximate location' sobe 44 px (dy 126 → 82) para manter o vão de 12 px da
+    pilha. 'Bridge of the Americas' (nome próprio de 4, identidade §4.1) e a tira do censo (104 px) ficam. Nada mais muda.
+  RODADA zona-do-canal-arte-8 (mapista, lote MC, 15/10/2026): o dado partido (textos-tela.json 0907235d…, texto-7/texto-8 e a
+    decisão 2 da Sala). 'DECIDED SEPT. 7, 1960' vira duas peças no mesmo t0 (38,26): 'SEPT. 7, 1960' (rotulo, 128 px, de volta
+    ao tamanho da série, no lugar da pílula da data) e 'DECIDED' (legenda, 84 px, var(--fs-eixo)) AO LADO dela, à esquerda,
+    centrada na altura da pílula da data: a nota do textos-tela diz 'antes dele na leitura', e a decisão da Sala aceita a de
+    baixo "logo abaixo da de cima ou ao lado dela". O x da 'DECIDED' sai da largura medida da pílula da data (offsetWidth, 12 px
+    de vão), sem número cravado. A 'approximate location' volta ao lugar de antes da arte-7 (dy 82 → 126), o vão de 12 px sob a
+    pílula de 176 px. O resto (as bandeiras, a tira do censo a 104 px, a perna, a água escura, câmera e tempos) não muda.
+  RODADA zona-do-canal-arte-9 (mapista, lote M-s48, 15/10/2026): a triagem do RITMO da Sala (_tmp/triagem-portoes-arte8.json,
+    defeito) e o textos-tela.json f9a58c7d…26aa (texto-9): o crédito da CIJ (credCIJ) passa a janelas [[30.9, 99]], com
+    30,9 exato, o t0 do rotFrom e do legFrom (identidade §4.2: o crédito entra com o primeiro dado da fonte). O censo de
+    1960 sai em 29,78, então a faixa do crédito não tem dois no ar. Texto, 56 px, lugar e saída não mudam. Nada mais muda.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -252,7 +268,8 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s48 + s49 fundidas (540,5 �
     <div class="rotulo data liso" id="rotFrom" data-qc-papel="rotulo">FROM 1960</div>
     <div class="rotulo legenda liso" id="legFrom" data-qc-papel="legenda">Panama's flag at chosen sites</div>
     <div class="rotulo liso" id="rotShaler" data-qc-papel="rotulo">Shaler Triangle</div>
-    <div class="rotulo data liso" id="rotShalerData" data-qc-papel="rotulo">DECIDED SEPT. 7, 1960</div>
+    <div class="rotulo legenda data liso" id="rotShalerDec" data-qc-papel="legenda">DECIDED</div>
+    <div class="rotulo data liso" id="rotShalerData" data-qc-papel="rotulo">SEPT. 7, 1960</div>
     <div class="rotulo legenda liso" id="legShaler" data-qc-papel="legenda">approximate location</div>
     <div class="rotulo multi" id="rotPonte" data-qc-papel="rotulo">Bridge of
 the Americas</div>
@@ -393,7 +410,9 @@ of Jurists, 1964</div>
       { id: "legFrom",   tela: [200, 348], lado: "direita", vert: "baixo", entra: 30.9, sai: 41.65 },
       { id: "rotShaler",     ref: "shaler", lado: "esquerda", vert: "baixo", dx: -260, dy: -250, entra: 38.26, sai: 41.65 },
       { id: "rotShalerData", ref: "shaler", lado: "esquerda", vert: "baixo", dx: -260, dy: -62,  entra: 38.26, sai: 41.65 },
-      { id: "legShaler",     ref: "shaler", lado: "esquerda", vert: "baixo", dx: -260, dy: 126,  entra: 38.26, sai: 41.65 },
+      // arte-8: 'DECIDED' colada à esquerda da pílula da data (12 px), centrada na altura dela
+      { id: "rotShalerDec",  ref: "shaler", lado: "esquerda", vert: "baixo", colarEsq: "rotShalerData", vao: 12, entra: 38.26, sai: 41.65 },
+      { id: "legShaler",     ref: "shaler", lado: "esquerda", vert: "baixo", dx: -260, dy: 126,  entra: 38.26, sai: 41.65 },   // arte-8: 82 → 126 (o de antes da arte-7)
       { id: "rotPonte",  ref: "ponte", lado: "direita",  vert: "baixo", dx: 170,  dy: -720, entra: 42.62, sai: 44.62 },
       { id: "legPonte",  ref: "ponte", lado: "direita",  vert: "baixo", dx: 170,  dy: -363, entra: 42.62, sai: 44.62 },
       { id: "rotBH",     ref: "bh",    lado: "direita",  vert: "baixo", dx: 140,  dy: -420, entra: 44.92, sai: 46.92 },
@@ -406,7 +425,7 @@ of Jurists, 1964</div>
       { id: "legBHS",    ref: "bhs", lado: "direita", vert: "baixo", dx: 230, dy: -112, entra: 62.14, sai: null }
     ],
     // guias curtas dos rótulos que não encostam no ponto (da borda da caixa mais perto do ponto até perto dele)
-    guiasRot: [ { rot: ["rotShaler", "rotShalerData", "legShaler"], ponto: "shaler", raio: true, entra: 38.26, sai: 41.65 },
+    guiasRot: [ { rot: ["rotShaler", "rotShalerDec", "rotShalerData", "legShaler"], ponto: "shaler", raio: true, entra: 38.26, sai: 41.65 },
                 { rot: ["rotCris", "legCris"], ponto: "cris", entra: 44.5, sai: 46.92 } ],
     minis: [],
     legenda: null,
@@ -414,7 +433,7 @@ of Jurists, 1964</div>
     fontesTexto: [
       { id: "credCenso60",   janelas: [[1.39, 23.0], [25.0, 29.78]] },
       { id: "credCenso5060", janelas: [[23.0, 25.0]] },
-      { id: "credCIJ",       janelas: [[37.3, 99]] }
+      { id: "credCIJ",       janelas: [[30.9, 99]] }   // arte-9: entra com FROM 1960 (o 1º dado da CIJ)
     ]
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
@@ -1014,6 +1033,8 @@ of Jurists, 1964</div>
       var x, y;
       if (r.telaFn) { var tf = r.telaFn(t); if (!tf) return; x = tf[0]; y = tf[1]; }
       else if (r.tela) { x = r.tela[0]; y = r.tela[1]; } else { if (!ll) return; var p = map.project(ll); x = p.x; y = p.y; }
+      if (r.colarEsq) { var rc = rotuloPorId(r.colarEsq), ec = E(r.colarEsq);
+        if (rc && ec) { r.dx = (rc.dx || 0) - ec.offsetWidth - (r.vao || 0); r.dy = (rc.dy || 0) + (ec.offsetHeight - el.offsetHeight) / 2; } }
       var tx = r.lado === "direita" ? "0%" : r.lado === "esquerda" ? "-100%" : "-50%";
       var ty = r.vert === "cima" ? "-100%" : r.vert === "baixo" ? "0%" : "-50%";
       el.style.opacity = v.toFixed(3);

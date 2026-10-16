@@ -33,6 +33,10 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s51 (616,433 → 630,8 s do
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (data-qc-credito="mapa" só nele; cumpre o OSM
     de pontos-osm-hoje, balboa-high-school e linha-1914-panama); 'Source: International Commission of Jurists, 1964' de
     5,067 ao fim, em duas linhas, a 56 px, sem a marca de mapa (exceção de crédito, identidade §4.1).
+  RODADA zona-do-canal-arte-8 (mapista, lote MD, 15/10/2026; decisão 4 da Sala): a água escura (agua-osm-zona, ODbL, identidade §6)
+    entra como 2ª camada do estilo, em --agua-base, como na s16, na s20 e na s28, pela coerência da série: o clipe anterior
+    mostrava a Baía do Panamá na pluma turquesa do satélite. Ela escurece também o canal, que o OSM conta como mar. O ©
+    OpenStreetMap contributors já está no crédito da MapTiler. Nada mais mudou (câmera, tempos, textos, desenho, créditos).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -43,6 +47,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s51 (616,433 → 630,8 s do
 <script src="../_media/geo/linha-1914-panama.js"></script>
 <script src="../_media/geo/pontos-osm-hoje.js"></script>
 <script src="../_media/geo/balboa-high-school.js"></script>
+<script src="../_media/geo/agua-osm-zona.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -145,6 +150,7 @@ of Jurists, 1964</div>
   var CENA = {
     duracao: 14.367,                                 // espelho.json › s51 › dur
     perfil: "maptiler",
+    agua: "agua-osm-zona",                           // a água escura (identidade §6), zona-do-canal-arte-8
     fontes: ["linha"],
     pontos: {
       A0: { lng: -79.54973, lat: 8.96325, zoom: 14.85 },   // o Instituto e a escola, a linha entre eles
@@ -362,8 +368,16 @@ of Jurists, 1964</div>
   function estilo() {
     // o tratamento C do satélite (identidade §6; Lucas, 09/10/2026): brilho 92 %, cor natural, contraste +25 %
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
-    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };
+    var camadas = [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }];
+    // zona-do-canal-arte-8: a água escura (identidade §6, "A água escura"), como na s16, na s20 e na s28: a 2ª camada do estilo,
+    // opaca em --agua-base, logo acima do satélite e abaixo de tudo o que a cena desenha (arquivo local, não pede tile)
+    if (CENA.agua) {
+      fontes.aguaBase = { type: "geojson", data: geo(CENA.agua) };
+      camadas.push({ id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } });
+    }
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -728,6 +742,7 @@ of Jurists, 1964</div>
           // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
           for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
           if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+          if (CENA.agua && (!map.getSource("aguaBase") || !map.isSourceLoaded("aguaBase"))) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };

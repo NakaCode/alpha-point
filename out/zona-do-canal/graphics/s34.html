@@ -45,6 +45,17 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s34 (352,233 → 375,233 s 
   SÉRIE (arte-2, lote S2, 15/10/2026): os números do pictograma ('1,580 BORN IN THE U.S.', '1,041 BORN IN THE CANAL ZONE') passam
   de 84 a 112 px (rótulo: a 128 o cartão encostava no anel de Balboa, a 24–30 px; 112 é o tamanho do cartão de 1970, que a 128
   encostaria em 'Fort Clayton'; o piso do rótulo é 104).
+  RODADA zona-do-canal-arte-7 (mapista, lote M3, 15/10/2026): as etiquetas (decisão da Sala, identidade §4.1): o cartão de 1970 (17 palavras) e
+    as duas linhas do cartão de Balboa ('1,580 BORN IN THE U.S.', 5; '1,041 BORN IN THE CANAL ZONE', 6), a 112 px, papel 'cota'
+    no textos-tela, vão ao tamanho de legenda, var(--fs-eixo), 84 px, com data-qc-papel="legenda". 'BALBOA, 1960' (2 palavras,
+    128) e 'Albrook Air Force Base' (nome próprio de 4, identidade §4.1, "Nome próprio de 4 palavras") ficam. As palavras, as
+    quebras, os tempos e o lugar ficam.
+  RODADA zona-do-canal-arte-8 (mapista, lote MB, 15/10/2026): (1) o dado partido (textos-tela, texto-7 e texto-8; decisão 2 da
+    Sala): no cartão de Balboa, '1,580' e '1,041' a 128 px (data-qc-papel="rotulo") e, logo abaixo de cada um, 'BORN IN THE
+    U.S.' e 'BORN IN THE CANAL ZONE' em legenda a 84 px, no mesmo t0 (12,4 e 17,067), os dois irmãos na mesma forma; o
+    cartão sobe de y 440 a 160 para caber. O cartão de 1970 fica em legenda a 84 (decisão 1). (2) a água escura
+    (agua-osm-zona, ODbL, identidade §6) entra como 2ª camada do estilo, em --agua-base, como na s16, na s20 e na s28; o
+    © OpenStreetMap contributors já está no crédito da MapTiler. Câmera, tempos, desenho e créditos ficam.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -55,6 +66,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s34 (352,233 → 375,233 s 
 <script src="../_media/geo/zona-do-canal-1947.js"></script>
 <script src="../_media/geo/pontos-osm-hoje.js"></script>
 <script src="../_media/geo/lugares-1947.js"></script>
+<script src="../_media/geo/agua-osm-zona.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -139,16 +151,23 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s34 (352,233 → 375,233 s 
   .cartao { position: absolute; z-index: 42; opacity: 0; visibility: hidden;
     background: var(--rotulo); border-radius: var(--cantos); padding: 36px 44px 40px; }
   #cartao70 { right: 200px; top: 200px; }
-  .cartao .num { font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: 112px; line-height: 1.1;
+  /* zona-do-canal-arte-7: 17 palavras: tamanho de legenda (identidade §4.1, teto 104), var(--fs-eixo) */
+  .cartao .num { font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-eixo); line-height: 1.1;
     color: var(--tinta); font-variant-numeric: var(--numeros); letter-spacing: var(--tracking-lugar); white-space: pre-line; }
   .cartao .leg { margin-top: 28px; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
     line-height: 1.2; color: var(--legenda-cor); white-space: pre-line; }
   /* O CARTÃO DO PICTOGRAMA (Balboa, 1960) */
-  #cartaoB { right: 200px; top: 440px; padding: 40px 44px 40px; }
+  /* zona-do-canal-arte-8: o cartão sobe de y 440 a 160 (a margem de cima) para caber o número a 128 sobre a legenda */
+  #cartaoB { right: 200px; top: 160px; padding: 40px 44px 40px; }
   #cartaoB .hd { font-family: var(--fonte); font-weight: var(--peso-caixa-alta); font-size: var(--fs-rotulo); line-height: 1;
     letter-spacing: var(--tracking-lugar); color: var(--tinta); white-space: nowrap; }
-  #cartaoB .lab { margin-top: 36px; font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: 112px;
+  /* zona-do-canal-arte-8: o dado partido (textos-tela, texto-7/8; decisão 2 da Sala): o número em cima, rótulo a 128 px
+     (--fs-rotulo), e a legenda logo abaixo, 84 px (--fs-eixo), Inter 500; os dois irmãos na mesma forma */
+  #cartaoB .lab { margin-top: 36px; }
+  #cartaoB .lab .n { font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo);
     line-height: 1; letter-spacing: var(--tracking-lugar); color: var(--tinta); font-variant-numeric: var(--numeros); white-space: nowrap; }
+  #cartaoB .lab .l { margin-top: 12px; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
+    line-height: 1; letter-spacing: var(--tracking-lugar); color: var(--tinta); white-space: nowrap; }
   #cartaoB canvas { display: block; margin-top: 16px; }
 </style>
 </head>
@@ -169,7 +188,7 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s34 (352,233 → 375,233 s 
   </div>
 
   <div class="cartao" id="cartao70">
-    <div class="num" data-qc-papel="rotulo">CANAL ZONE, 1970
+    <div class="num" data-qc-papel="legenda">CANAL ZONE, 1970
 23,559 OF 44,198
 BORN IN THE U.S.
 8,569 IN THE
@@ -179,9 +198,9 @@ ARMED FORCES</div>
   </div>
   <div class="cartao" id="cartaoB">
     <div class="hd" data-qc-papel="rotulo">BALBOA, 1960</div>
-    <div class="lab" id="lab1" data-qc-papel="rotulo">1,580 BORN IN THE U.S.</div>
+    <div class="lab" id="lab1"><div class="n" data-qc-papel="rotulo">1,580</div><div class="l" data-qc-papel="legenda">BORN IN THE U.S.</div></div>
     <canvas id="bar1"></canvas>
-    <div class="lab" id="lab2" data-qc-papel="rotulo">1,041 BORN IN THE CANAL ZONE</div>
+    <div class="lab" id="lab2"><div class="n" data-qc-papel="rotulo">1,041</div><div class="l" data-qc-papel="legenda">BORN IN THE CANAL ZONE</div></div>
     <canvas id="bar2"></canvas>
   </div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
@@ -201,6 +220,7 @@ ARMED FORCES</div>
   var CENA = {
     duracao: 23.0,                                   // espelho.json › s34 › dur
     perfil: "maptiler",
+    agua: "agua-osm-zona",                           // a água escura (identidade §6), zona-do-canal-arte-8
     fontes: [],
     pontos: {
       A0: { lng: -79.467, lat: 9.111, zoom: 10.65 },   // a Zona inteira à esquerda; o cartão e as bases do Pacífico à direita
@@ -555,8 +575,16 @@ var ZONA = feicao("zona-do-canal-1947");
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   function estilo() {
     var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
-    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: [{ id: "base", type: "raster", source: "base",
-      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }] };   // identidade §6: o tratamento C (Lucas, 09/10/2026)
+    var camadas = [{ id: "base", type: "raster", source: "base",
+      paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }];   // identidade §6: o tratamento C (Lucas, 09/10/2026)
+    // zona-do-canal-arte-8: a água escura (identidade §6, "A água escura"), como na s16, na s20 e na s28: a 2ª camada do estilo,
+    // opaca em --agua-base, logo acima do satélite e abaixo de tudo o que a cena desenha (arquivo local, não pede tile)
+    if (CENA.agua) {
+      fontes.aguaBase = { type: "geojson", data: geo(CENA.agua) };
+      camadas.push({ id: "agua-base", type: "fill", source: "aguaBase",
+        paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 1, "fill-antialias": true } });
+    }
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
 
   // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
@@ -921,6 +949,7 @@ var ZONA = feicao("zona-do-canal-1947");
           // MapLibre ("There is no source with ID"), que a cena trata como erro (o medir-margens o achou na s05, 08/10)
           for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
           if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+          if (CENA.agua && (!map.getSource("aguaBase") || !map.isSourceLoaded("aguaBase"))) return false;
           return nivelUnico();
         } catch (e) { return false; }
       };
