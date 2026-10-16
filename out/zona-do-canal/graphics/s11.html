@@ -72,6 +72,19 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s11 (78,6 → 95,2 s do mas
   A água do OSM do projeto (agua-osm-zona) não cobre o lago (é o polígono de mar do osmdata; conferido ponto a ponto), e
   geometria nova é da pesquisa-geo. Colón, a linha de 1947, as bordas da faixa e o eixo saindo ao mar ficam no quadro; as
   eclusas de Gatún saem pela margem de baixo. 'Colón' continua em 13,4 s (Decisão da Sala, arte-5). Textos: nenhum muda.
+  RODADA zona-do-canal-arte-10 (mapista, lote MA, 15/10/2026; espectador r1, achado da s11 em t 14: "a exclusão das cidades
+  ('left them out') não se lê"): de 14,6 s ('and the same article', depois de 'inside those limits') ao fim, uma aproximação
+  lenta (van Wijk, 2,0 s, rampa de 0,45 na entrada e 0,35 na saída) do quadro largo do Atlântico até a divisa de 1947 junto a
+  Colón (divisa-zona-1947 › H-colon), em zoom 14,05: o traço chega a ~400 px no palco 4K (~200 px no 1080p, como a linha de
+  Panama City em 10,5–12,5 s), com a pílula 'Colón' do lado de fora dele (a nordeste, sobre a cidade), sem mudar o ponto
+  dela. 'left them out' (15,58–16,6) cai com a câmera chegando. De 14,0 a 14,6 a deriva lenta do quadro largo continua (Q2a → Q2c, o mesmo caminho da Q2b de antes).
+  O centro final (−79,858; 9,357): o traço fica a x ~500–860 e a pílula a x ~1090–1530 (palco 4K), e a borda leste da faixa
+  fica em x ~2200, À ESQUERDA dos avisos do canto de cima ('(schematic)' e 'as mapped in 1947', x ≥ 2470), do começo ao fim da
+  aproximação (conta da câmera a cada 0,1 s, _tmp/arte-10/MA/simcam.cjs, conferida contra o render). Os dois primeiros
+  centros tentados atravessavam os avisos: em −79,900 a borda pousava atrás deles; em −79,9274 passava por trás deles de
+  15,5 a 16,1 s. A borda oeste sai pela esquerda; a do norte, por cima.
+  Sem geometria nova, sem polígono, sem palavra nova, sem t0 de texto mudado; a emenda do Gatún (arte-7) continua fora do
+  quadro (a borda de baixo só sobe na aproximação). O giro contínuo de −1,5° a +1,5° continua até o último quadro.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -211,14 +224,16 @@ City</div>
       Q1a: { lng: -79.545, lat: 8.945, zoom: 13.15 },   // a ponta do Pacífico: a linha e Panama City (arte-3: mais perto, para a pílula caber entre a linha e a borda da faixa)
       Q1b: { lng: -79.546, lat: 8.946, zoom: 13.22 },
       Q2a: { lng: -79.880, lat: 9.400, zoom: 12.55 },   // a ponta do Atlântico, quadro largo (arte-3: 12,3 → 12,55, para a pílula caber entre o eixo e a borda nova; arte-7: lat 9,340 → 9,400, a emenda do mosaico no lago Gatún sai por baixo)
-      Q2b: { lng: -79.882, lat: 9.401, zoom: 12.65 }
+      Q2c: { lng: -79.8805, lat: 9.40023, zoom: 12.573 },   // arte-10: a deriva de antes (Q2a → Q2b) até 14,6 s
+      Q3:  { lng: -79.858, lat: 9.357, zoom: 14.05 }        // arte-10: a divisa de 1947 junto a Colón a ~400 px, a pílula a nordeste; a borda leste da faixa fica à esquerda dos avisos do canto do começo ao fim da aproximação
     },
     pernas: [
       { t0: 0,      t1: 8.90,  de: "Q0a", para: "Q0b", tipo: "h" },
       { t0: 8.90,   t1: 10.50, de: "Q0b", para: "Q1a", tipo: "v" },   // arte-3: a viagem chega antes de 'Panama' (a pílula entra parada)
       { t0: 10.50,  t1: 12.25, de: "Q1a", para: "Q1b", tipo: "h" },
       { t0: 12.25,  t1: 14.00, de: "Q1b", para: "Q2a", tipo: "v" },
-      { t0: 14.00,  t1: 16.6,  de: "Q2a", para: "Q2b", tipo: "h" }
+      { t0: 14.00,  t1: 14.60, de: "Q2a", para: "Q2c", tipo: "h" },   // arte-10: o quadro largo até 'and the same article'
+      { t0: 14.60,  t1: 16.6,  de: "Q2c", para: "Q3", tipo: "v", abre: 0.45, fecha: 0.35 }   // arte-10: a aproximação até Colón
     ],
     giro: [-1.5, 1.5],
     eixo: { desenha: [0.2, 1.8] },

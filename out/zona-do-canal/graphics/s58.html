@@ -8,12 +8,16 @@
   60 %"; aqui a série é uma contagem de assentos, sem lado: o preenchimento em --tinta-escura, como a regência pede), com as COTAS DE
   ENGENHEIRO da animação do canal (§5, "o traço de engenheiro": a cota em Inter 84 px com a linha de cota fina). Regime da regência:
   normal ("um dado só, o placar"). Lote F10 do passo art (tarefa zona-do-canal-arte-1, 15/10/2026), editor-de-arte (Fable).
+  CONSERTO zona-do-canal-arte-10 (16/10/2026, editor-de-arte, lote EC; textos-tela.json sha256 96c8fa07…aa31, texto-10, pela revisão de
+  espectador r1): a LEGENDA "U.S. SENATE · APRIL 18, 1978" e o CRÉDITO "Source: Congressional Record, April 18, 1978" entram em 0,167
+  ("April", 684,60 s), e não mais em 2,233 ("approved"): nos 2,2 s iniciais a tela só tinha a régua, "TWO-THIRDS · 67" e a fila de
+  cadeiras, sem dizer de quê, enquanto a voz já dava a data e o Senado. Mais nada mudou.
 
   O que manda em cada coisa: a regência (s58: "DATA on --papel: 100 chair glyphs in line, the two-thirds rule marked at 67 ('TWO-THIRDS
   · 67'); 'SENATE · APRIL 18, 1978' at 'approved'; at 'sixty-eight' 68 chairs fill (300 ms, no counting) and '68' enters, '32' at
   'thirty-two'; slow approach to chair 68; 'approved', never 'ratified'"; entra: 2,233 / 3,667 / 4,567), os textos de tela, que vencem
   a regência no texto (textos-tela.json › _textos_por_cena s58: a cota "TWO-THIRDS · 67" t0 0 "desde o 1º quadro"; a legenda "U.S.
-  SENATE · APRIL 18, 1978" t0 2,233 em 'approved'; o crédito "Source: Congressional Record, April 18, 1978" t0 2,233; a cota "68" t0
+  SENATE · APRIL 18, 1978" t0 0,167 em 'April' (era 2,233; texto-10); o crédito "Source: Congressional Record, April 18, 1978" t0 0,167; a cota "68" t0
   3,667 em 'sixty-eight'; a cota "32" t0 4,567 em 'thirty-two.'; rotulos_dado s58: 68 e 32 do CR de 18/04/1978, p. 10541, "yeas 68, nays
   32" (A176); TWO-THIRDS · 67 = "o mínimo inteiro" de 2/3 de 100 votantes, valor_exato 66,7, "a régua desenhada; a conta é nossa"), o
   conceito (s58: "dois terços por pouco"), o espelho (s58) e a marca. TODO TEXTO DE TELA ESTÁ NUM LUGAR SÓ: o objeto TEXTOS. O placar
@@ -35,7 +39,7 @@
           (textos-tela t0 0: "desde o 1º quadro"); as 100 CADEIRAS (traço --eixo-cor de 4 px, sem preenchimento: encosto, assento, duas
           pernas) se riscam da esquerda para a direita em 0,75 s (cada uma 150 ms, opacidade + 24 px de subida, 6 ms entre vizinhas),
           enquanto a voz diz "In April nineteen seventy-eight" (0,01–1,52).
-    2,233 "approved" (686,68 s; regência e textos-tela t0 2,233): a LEGENDA "U.S. SENATE · APRIL 18, 1978" (Inter 500, 100 px: o papel
+    0,167 "April" (684,60 s; textos-tela t0 0,167, texto-10; a regência dizia 'approved', 2,233; zona-do-canal-arte-10): a LEGENDA "U.S. SENATE · APRIL 18, 1978" (Inter 500, 100 px: o papel
           legenda acima do alvo e dentro do teto de 104; --tinta-escura a 80 %) no alto à esquerda (300 ms), e o CRÉDITO "Source:
           Congressional Record, April 18, 1978" (56 px, --tinta-escura, na faixa, fora da câmera). Os dois ficam até o corte.
     3,667 "sixty-eight" (688,13 s; regência e textos-tela t0 3,667): as 68 PRIMEIRAS CADEIRAS SE PREENCHEM DE UMA VEZ em --tinta-escura
@@ -55,7 +59,7 @@
     PRODUTO MÁXIMO DAS ESCALAS: não há foto nem página (desenho nativo). Ken Burns: não há.
 
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): a fila das 100 cadeiras (1, a série) + a régua com a
-    cota dos dois terços (1) + a legenda (1, de 2,233) + a cota 68 com a linha (1, de 3,667) + a cota 32 com a linha (1, de 4,567) = 2 →
+    cota dos dois terços (1) + a legenda (1, de 0,167; era 2,233) + a cota 68 com a linha (1, de 3,667) + a cota 32 com a linha (1, de 4,567) = 2 →
     5 (alvo 4–5, teto 6). Blocos de texto de leitura: 0. Herói: nenhum (data-qc-sem-heroi: 68 e 32 são cotas, no papel rótulo, como
     o redator os classificou; "OCT. 1, 1979" da s59 é o herói daquela cena). O crédito não conta.
 
@@ -224,7 +228,7 @@
     <div class="cota" id="n68" data-qc-papel="rotulo" style="left:1348px;top:840px"></div>
     <div class="cota" id="n32" data-qc-papel="rotulo" style="left:2848px;top:840px"></div>
   </div>
-  <!-- o crédito, fora da câmera, na faixa dele (textos-tela s58 › credito, t0 2,233) -->
+  <!-- o crédito, fora da câmera, na faixa dele (textos-tela s58 › credito, t0 0,167; era 2,233) -->
   <div id="creds"><div class="cred" id="cred" data-qc-papel="credito"></div></div>
 </div>
 <script>
@@ -343,16 +347,16 @@
   window.__duracao = DUR;
   // ═══ OS TEXTOS DE TELA (um lugar só; a grafia final é do redator-de-tela: textos-tela.json s58) ═══════════════
   var TEXTOS = {
-    leg:  "U.S. SENATE \u00b7 APRIL 18, 1978",            // legenda, t0 2,233 (em "approved"; nunca 'ratified')
+    leg:  "U.S. SENATE \u00b7 APRIL 18, 1978",            // legenda, t0 0,167 (em "April"; era 2,233 em "approved": texto-10; nunca 'ratified')
     dois: "TWO-THIRDS \u00b7 67",                          // cota, t0 0 (desde o 1º quadro)
     n68:  "68",                                             // cota, t0 3,667 (em "sixty-eight")
     n32:  "32",                                             // cota, t0 4,567 (em "thirty-two.")
-    cred: "Source: Congressional Record, April 18, 1978"    // credito, t0 2,233
+    cred: "Source: Congressional Record, April 18, 1978"    // credito, t0 0,167 (com a data que sustenta; era 2,233: texto-10)
   };
   // ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
   ["leg", "dois", "n68", "n32", "cred"].forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
   // os tempos (locais, −684,433), do words.json, da regência e dos textos de tela s58
-  var T = { fila: 0.00, leg: 2.233, cred: 2.233, n68: 3.667, n32: 4.567, aprox0: 3.60, aprox1: 5.35 };
+  var T = { fila: 0.00, leg: 0.167, cred: 0.167, n68: 3.667, n32: 4.567, aprox0: 3.60, aprox1: 5.35 };   // leg e cred em "April" (684,60 s; texto-10, zona-do-canal-arte-10)
   var CAM = [
     { t0: 0.00, s: 1.000, cx: 1920, cy: 1080 },
     { t0: T.aprox0, t1: T.aprox1, s: 1.060, cx: 2000, cy: 1090 }   // "slow approach to chair 68": para 250 ms antes do corte

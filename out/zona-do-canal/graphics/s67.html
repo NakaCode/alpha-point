@@ -21,9 +21,9 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s67, mãe do run s67 → s6
   giro −1,5°) e, sem corte, faz uma aproximação lenta e calma até o prédio (E: centro -79,55077 / 8,95662, zoom 16,6), que
   leva o Administration Building (pontos-osm-hoje › Edificio de la Administración del Canal de Panamá), o Prado e a cidade
   (pontos-osm-hoje › Estadio de Balboa) à METADE ESQUERDA, no alto. Giro contínuo de −1,5° a +1,5° nos 31,6 s.
-    · b0 (0–11,633): 'Panama Canal Authority' (pílula, 128 px) e, sob ela, 'Administration Building, Balboa · 2026' (legenda,
-      84 px) entram em 'Administration' (3,933), presas ao ponto do prédio pela guia, e saem em 6,467 ('The town stayed'):
-      2,5 s no ar. 'Source: Panama Canal Authority, 2026' entra e sai com elas. Nenhum texto em 'The Zone that made it
+    · b0 (0–11,633): 'Panama Canal Authority' (pílula, 128 px), com o ponto do prédio e a guia, entra em 'Authority' (0,843);
+      sob ela, 'Administration Building, Balboa · 2026' (legenda, 84 px) entra em 'Administration' (3,933); os três saem em
+      6,467 ('The town stayed'). 'Source: Panama Canal Authority, 2026' entra e sai com elas. Nenhum texto em 'The Zone that made it
       American did not.'
     · b1 (11,633–31,6; a janela de s68, a TELA FINAL): o último quadro continua, com a aproximação lenta (zoom 16,6 → 16,72) e
       o giro; o brilho do mapa, das camadas e dos rótulos vai de 100 % a 50 % em 19,967 s, linear (nunca preto); o crédito do
@@ -36,6 +36,10 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s67, mãe do run s67 → s6
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px do 1º ao último quadro, inclusive na cauda (data-qc-credito="mapa";
   cumpre o OSM dos pontos-osm-hoje e da agua-osm-zona); 'Source: Panama Canal Authority, 2026' a 56 px sem a marca de mapa (o
   qc-tamanho cobra 72 dele: a exceção de crédito da Sala, identidade §4.1). Nenhuma linha do Shutterstock (não há footage).
+  zona-do-canal-arte-10 (mapista, lote MC2, 16/10/2026), pela revisão de espectador r1 (s67, t 0) e pelo texto-10: a pílula
+  'Panama Canal Authority', o ponto e a guia passam de 3,933 a 0,843 ('Authority'); a ponta da guia fica na base da pílula até a
+  legenda entrar (3,933) e então desce até a base da legenda. A legenda e o 'Source' continuam em 3,933, e os três saem em 6,467.
+  A câmera, a tela final (s68) e o resto não mudaram; a peça do comentário (.mov) não foi tocada.
   VOLÁTIL: o endereço da ACP em 2026 (reconferir na véspera da publicação; textos-tela › rotulos_dado).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
@@ -168,9 +172,9 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s67, mãe do run s67 → s6
       { t0: 11.633, t1: 31.6,   de: "E",  para: "E2", tipo: "h" }
     ],
     giro: [-1.5, 1.5],
-    marcas: { acp: { entra: 3.933, sai: 6.467 } },
+    marcas: { acp: { entra: 0.843, sai: 6.467 } },   // arte-10: o ponto e a guia em "Authority" (0,843), com a pílula
     rotulos: [
-      { id: "rotACP",    ref: "admin", lado: "direita", vert: "cima", dx: 150, dy: -290, entra: 3.933, sai: 6.467 },
+      { id: "rotACP",    ref: "admin", lado: "direita", vert: "cima", dx: 150, dy: -290, entra: 0.843, sai: 6.467 },
       { id: "rotACPleg", ref: "admin", lado: "direita", vert: "cima", dx: 150, dy: -150, entra: 3.933, sai: 6.467 }
     ],
     creditos: { mapa: "© MapTiler © OpenStreetMap contributors", mapaDesde: 0,
@@ -402,11 +406,14 @@ var ADMIN = pontoNome("pontos-osm-hoje", "Edificio de la Administración del Can
   MK.sobre = svgEl("path", { "class": "guia" }, MK.g);
   MK.c = svgEl("circle", { "class": "gp", r: 14 }, MK.g);
   function aplicarMarca(t) {
-    var M = CENA.marcas.acp, r = CENA.rotulos[1], p = map.project(ADMIN);
+    var M = CENA.marcas.acp, r0 = CENA.rotulos[0], r = CENA.rotulos[1], p = map.project(ADMIN);
     var v = eo(seg(t, M.entra, 0.3)) * (1 - eio(seg(t, M.sai, 0.3)));
     MK.g.setAttribute("opacity", v.toFixed(3));
     if (v <= 0) return;
-    var fim = { x: p.x + r.dx + 28, y: p.y + r.dy };
+    // arte-10: de 0,843 a 3,933 só a pílula está no ar, e a guia termina na base dela; quando a legenda entra (300 ms), a ponta
+    // da guia desce junto até a base da legenda (o trecho entre as duas fica sob a legenda, que é opaca)
+    var uLeg = eo(seg(t, r.entra, 0.3)), dyFim = r0.dy + (r.dy - r0.dy) * uLeg;
+    var fim = { x: p.x + r.dx + 28, y: p.y + dyFim };
     var d = "M " + fmt(p) + " L " + fmt(fim);
     MK.sob.setAttribute("d", d); MK.sobre.setAttribute("d", d);
     MK.c.setAttribute("cx", p.x.toFixed(2)); MK.c.setAttribute("cy", p.y.toFixed(2));

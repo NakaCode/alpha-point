@@ -46,13 +46,20 @@
         2,00  o CRÉDITO "Source: Annual Report of the Governor of the Panama Canal, 1950" (56 px, duas linhas, na pílula --rotulo,
               fora da câmera, x 200, y > 1880), até o fim (a folha fica).
         3,00→5,80  a CÂMERA: 1,020 → 1,030, centro de volta a 1920 × 1080 (eb): termina 0,87 s antes de "assigned" (6,667) e PARA.
-        6,667 "assigned" (321,19 s) → 10,12 (fim de "all.", 324,62 s): o GRIFO, palavra a palavra, com a voz, sobre "employees are
-              required to have an assignment to family quarters before permission is granted for their families to come to the
-              Canal Zone" (grifo_na_pagina), em --grifo-cor, medido por Range depois de a Courier Prime carregar.
-        6,667 a TIRA LITERAL (trecho_ampliado, 12 palavras: "an assignment to / family quarters before / permission is granted / for
-              their families", Courier Prime 400, 86 px, 4 linhas de 92 px, --papel, sombra solta; 1190 × 412) entra sob a foto
-              (300 ms, opacidade + 24 px), e o MESMO grifo corre nela, palavra a palavra, nos tempos das palavras correspondentes
-              da folha (as palavras 6 a 17 da frase grifada).
+        6,667 "assigned" (321,19 s): a TIRA LITERAL (trecho_ampliado, 12 palavras: "an assignment to / family quarters before /
+              permission is granted / for their families", Courier Prime 400, 86 px, 4 linhas de 92 px, --papel, sombra solta;
+              1190 × 412) entra sob a foto (300 ms, opacidade + 24 px). No mesmo instante a FOLHA RECUA E ESCURECE (identidade §5,
+              a 2ª saída: 1,00 → 0,98 e 16 px para baixo em eb 0,6 s, com a sombra; um véu --tinta-escura a 22 % sobre ela) e a LUZ
+              vai da folha para a tira (eb 0,6 s, 120 ms atrás). O GRIFO corre SÓ NA TIRA, palavra a palavra, preso à palavra que a
+              voz diz (words.json): an+assignment 6,667→7,17 ("assigned" 6,69) · to 7,10→7,17 · family 7,17→7,57 · quarters 7,57→7,98
+              · before 7,98→8,37 · for+their 8,37→8,53 ("their") · families 8,53→8,93 · permission 9,09→9,49 · is 9,49→9,65 ·
+              granted 9,65→9,89 ("to come": a voz diz "got permission to come"; a tira diz "permission is granted"). A ordem na
+              tira segue a VOZ, não a linha: a 4ª linha ("for their families") acende antes da 3ª ("permission is granted").
+              [zona-do-canal-arte-10: antes o grifo corria nas duas (folha e tira) ao mesmo tempo, com os tempos distribuídos pelo
+              comprimento das palavras de 6,667 a 10,12, e ficava atrás da voz; a folha não recuava. Achado de espectador r1
+              s31@6,667, conserto do cético. O grifo_na_pagina do textos-tela (a frase inteira na folha) deixa de ser desenhado:
+              a identidade §5 dá a 2ª saída como "a folha recua e escurece, e o trecho ampliado ao lado"; se o redator quiser o
+              grifo também na folha, volta à Sala.]
         10,55–10,80  REPOUSO: a câmera e a deriva param; nada se move.
     A CÂMERA: 1,000 → 1,030 e a deriva do RIG (6 / 4,8 px), que congela nos últimos 250 ms. A margem sob a câmera (roupa §4) no
     pior instante (1,03, centro 1920 × 1080): x 250→3590 e y 187→1857. Tudo montado dentro disso: a folha girada em x ~320→1965
@@ -93,6 +100,11 @@
   --rotulo (o qc-tamanho reprova 56 < 72: a exceção registrada do canal, identidade §4.1). Margens 200/160 sob a câmera; canto
   inferior direito (400×400) vazio (a tira termina em x 3200 e a foto em y ~1197). Sem --destaque fora do grifo (--grifo-cor =
   --destaque a 35 %): a paleta do Lucas (pergunta 2) não muda esta cena.
+
+  CONSERTO zona-do-canal-arte-10 (16/10/2026, editor-de-arte, lote EF2): só o beat 6,667→fim mudou: a folha recua e escurece, a luz
+  vai à tira, o grifo da folha sai e o grifo da tira segue a voz palavra a palavra (ver o beat). Textos, tempos de entrada, foto,
+  folha (tamanho e lugar), câmera e crédito ficam como estavam. A folha a 0,98 × a câmera a 1,03 = 1,009: a letra na tela fica em
+  86,8 / 84,8 px (acima dos pisos 84).
 
   O CONTRATO: window.__duracao = 10.8; __renderAt(t) determinístico e à prova de erro; __prepararCaptura;
   __fotosProntas = RIG.prontas() (espera a foto e as faces da marca; o grifo mede a Courier Prime quando ela carrega e o render
@@ -153,6 +165,8 @@
   .folha .corpo { font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: var(--doc-corpo); line-height: 100px;
     letter-spacing: 0; color: var(--tinta-escura); white-space: pre; position: relative; }
   .folha .grifos { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+  /* o VÉU da folha que recua (identidade §5, a 2ª saída: "a folha recua e escurece"); só a opacidade anima */
+  .veu-folha { position: absolute; inset: 0; background: var(--tinta-escura); opacity: 0; pointer-events: none; }
   .grifo { position: absolute; background: var(--grifo-cor); mix-blend-mode: multiply; transform-origin: 0 50%; }
 
   /* a pílula do rótulo (§4.1: --rotulo, cantos 12, respiro 24 × 40; 128 px Inter 700) */
@@ -203,7 +217,6 @@
     <div class="sombra-solta" id="folGrupoSombra" style="width:1620px;height:1463px"></div>
     <div class="grupoFolha" id="folGrupo" style="width:1620px;height:1532px">
       <div class="folha rasgada" id="fol" style="width:1620px;height:1532px;padding:30px 50px 0" data-qc-fonte-livre="folha de documento recriada: Courier Prime (--fonte-doc), identidade §3 e §5">
-        <div class="grifos" id="folGrifos"></div>
         <div class="cab"><span class="caixa-ref">ANNUAL REPORT OF THE
 GOVERNOR OF THE PANAMA CANAL
 1950 · P. 43</span></div>
@@ -216,6 +229,7 @@ quarters before permission
 is granted for their
 families to come to the
 Canal Zone.</div>
+        <div class="veu-folha" id="folVeu"></div>
       </div>
       <div class="fita" id="folFe" style="left:-30px;top:-50px"></div>
       <div class="fita" id="folFd" style="left:1240px;top:-50px"></div>
@@ -360,18 +374,20 @@ for their families</div>
     return { k: 1 + 0.04 * p, op: op, sy: lerp(12, 64, p), sk: lerp(1.00, 1.05, p), so: lerp(0.80, 0.35, p) * op };
   }
   // a sombra solta: no ar +64 px / 1,05 / 0,35; assentada +12 px / 1,00 / 0,80 (tokens "A mão que arruma")
-  function sombra(el, g, s, rot) {
+  function sombra(el, g, s, rot, kx) {
     if (!el) return;
-    var sy = lerp(64, 12, s.p), sk = lerp(1.05, 1.00, s.p), so = lerp(0.35, 0.80, s.p) * s.op;
+    var sy = lerp(64, 12, s.p), sk = lerp(1.05, 1.00, s.p) * (kx || 1), so = lerp(0.35, 0.80, s.p) * s.op;
     por(el, g.cx, g.cy - s.dy + sy, g.w, g.h, rot, sk, so);
   }
   // um objeto da mesa: pousa (foto, folha ou cartão), fica e, se tLev vier, levanta
-  function objeto(id, g, t, t0, dur, pouso, tLev, hSombra, desce) {
+  // recuo (opcional, zona-do-canal-arte-10): {k, dy} — a folha recua (escala × k, dy px para baixo) quando a tira toma a luz
+  function objeto(id, g, t, t0, dur, pouso, tLev, hSombra, desce, recuo) {
     var a = pouso(t, t0, dur, desce), rot = lerp(g.rot - (pouso === pousoFolha ? 0.6 : 0.5), g.rot, a.p);
-    var gs = hSombra ? { cx: g.cx, cy: g.cy - (g.h - hSombra) / 2, w: g.w, h: hSombra } : g;
+    var rk = recuo ? recuo.k : 1, rdy = recuo ? recuo.dy : 0;
+    var gs = hSombra ? { cx: g.cx, cy: g.cy - (g.h - hSombra) / 2 + rdy, w: g.w, h: hSombra } : { cx: g.cx, cy: g.cy + rdy, w: g.w, h: g.h };
     if (tLev === undefined || t < tLev) {
-      sombra(E(id + "Sombra"), gs, a, rot);
-      por(E(id), g.cx, g.cy - a.dy, g.w, g.h, rot, a.k, a.op);
+      sombra(E(id + "Sombra"), gs, a, rot, rk);
+      por(E(id), g.cx, g.cy - a.dy + rdy, g.w, g.h, rot, a.k * rk, a.op);
     } else {
       var lv = levantar(t, tLev, 0.35);
       por(E(id + "Sombra"), gs.cx, gs.cy + lv.sy, gs.w, gs.h, rot, lv.sk, lv.so);
@@ -485,8 +501,8 @@ for their families</div>
     textosF: 0.70,                                         // "Balboa" e "Photo from 1951", 150 ms depois do assentamento; ficam
     pousaFol: 2.00, folDur: 0.80, fitaFol: 2.67,           // "The" (316,50 s): a folha pousa
     cred: 2.00,                                            // o crédito com a folha, até o fim
-    grifo: [6.667, 10.12],                                 // "assigned" (321,19 s) → fim de "all." (324,62 s)
-    tira: 6.667,                                           // a tira entra na palavra
+    tira: 6.667,                                           // "assigned" (321,19 s): a tira entra na palavra; a folha recua e escurece; a luz vai à tira
+    recuoDur: 0.6,
     luzFol: 2.00,                                          // a luz escolhe a folha
     camPara: DUR - 0.25
   };
@@ -500,15 +516,19 @@ for their families</div>
   var FOL  = { w: 1620, h: 1532, cx: 1130, cy: 1040, rot: -0.9 };  // a folha de 1950, à esquerda: x ~320→1940, y 274→1806 (texto até ~1497)
   var TIRA = { cx: 2010 + 1190 / 2, cy: 1425 + 412 / 2, w: 1190, h: 412, rot: 0.0 };   // a tira, sob a foto: x 2010→3200, y 1425→1837
 
-  // os GRIFOS: a frase impressa na folha, medida por Range (textos-tela › grifo_na_pagina); o mesmo grifo na tira, nas palavras 5..16
-  var G1 = grifosFolha("fol", [{ frase: "employees are required to have an assignment to family quarters before permission is granted for their families to come to the Canal Zone", t: T.grifo }]);
-  var tempos = G1.map(function (g) { return [g.t0, g.t1]; }).slice(5, 17);
-  var G2 = grifosFolha("tira", [{ frase: "an assignment to family quarters before permission is granted for their families", tempos: tempos }]);
+  // o GRIFO corre SÓ NA TIRA (zona-do-canal-arte-10; identidade §5, a 2ª saída), palavra a palavra, preso à palavra da VOZ
+  // (words.json −314,5): assigned 6,69 · family 7,17 · quarters 7,57 · before 7,98 · their 8,37 · families 8,53 · permission 9,09 ·
+  // to come 9,49/9,65. As palavras que a voz não diz ("an", "to", "for", "is", "granted") acendem coladas à vizinha.
+  var VOZ = [[6.667, 6.69], [6.69, 7.17], [7.10, 7.17], [7.17, 7.57], [7.57, 7.98], [7.98, 8.37],   // an · assignment · to · family · quarters · before
+             [9.09, 9.49], [9.49, 9.65], [9.65, 9.89],                                             // permission · is · granted
+             [8.37, 8.45], [8.37, 8.53], [8.53, 8.93]];                                            // for · their · families
+  var G2 = grifosFolha("tira", [{ frase: "an assignment to family quarters before permission is granted for their families", tempos: VOZ }]);
 
-  // a luz: a foto → a folha (2,0), e fica (a casa na sombra da luz que escolheu o papel); 0,6 s (eb), 120 ms atrás
+  // a luz: a foto → a folha (2,0) → a tira (6,667: a folha recua, a tira toma a luz); 0,6 s (eb), 120 ms atrás
   function alvoLuz(t) {
-    var u = eb(seg(t, T.luzFol, 0.6));
-    return { x: lerp(F.cx, FOL.cx, u), y: lerp(F.cy, FOL.cy - 260, u) };
+    var u = eb(seg(t, T.luzFol, 0.6)), v = eb(seg(t, T.tira, 0.6));
+    var x = lerp(F.cx, FOL.cx, u), y = lerp(F.cy, FOL.cy - 260, u);
+    return { x: lerp(x, TIRA.cx, v), y: lerp(y, TIRA.cy, v) };
   }
   function cena(t) {
     t = t + 0.0005;
@@ -522,13 +542,15 @@ for their families</div>
     texto(E("avisoF"), t, T.textosF);
 
     // b1: a folha pousa, o grifo corre com a voz, a tira entra na palavra e o grifo corre nela também
-    objeto("folGrupo", FOL, t, T.pousaFol, T.folDur, pousoFolha, undefined, 1463, 240);   // desce 240 px, não 420: o cabeçalho (topo em ~304) não sai pelo topo do quadro (qc-fora-do-quadro), como a s24
+    var rec = eb(seg(t, T.tira, T.recuoDur));                                               // o recuo da folha (zona-do-canal-arte-10): 1,00 → 0,98, 16 px para baixo, véu a 22 %
+    objeto("folGrupo", FOL, t, T.pousaFol, T.folDur, pousoFolha, undefined, 1463, 240, { k: lerp(1, 0.98, rec), dy: 16 * rec });   // desce 240 px, não 420: o cabeçalho (topo em ~304) não sai pelo topo do quadro (qc-fora-do-quadro), como a s24
+    var fv = E("folVeu"); if (fv) fv.style.opacity = (0.22 * rec).toFixed(3);
     fita(E("folFe"), t, T.fitaFol); fita(E("folFd"), t, T.fitaFol + 0.12);
     var cr = E("creds"); if (cr) cr.style.opacity = eo(seg(t, T.cred, 0.3)).toFixed(3);
     var pt = eo(seg(t, T.tira, 0.3));
     por(E("tira"), TIRA.cx, TIRA.cy + (1 - pt) * 24, TIRA.w, TIRA.h, TIRA.rot, 1, pt);
     por(E("tiraSombra"), TIRA.cx, TIRA.cy + 12 + (1 - pt) * 24, TIRA.w, TIRA.h, TIRA.rot, 1, 0.8 * pt);
-    grifarFolha(G1, t); grifarFolha(G2, t);
+    grifarFolha(G2, t);
   }
 
   window.__renderAt = function (t) {

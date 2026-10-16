@@ -48,6 +48,14 @@
       (12,2–13,3 s) o mar da Baía do Panamá mostrava as emendas do mosaico em blocos de borda reta (laudo s16, espaco 6). Ela
       escurece também o canal de acesso, que o OSM conta como mar (fica, como na s06). O © OpenStreetMap contributors já está
       no crédito da MapTiler. Nada mais mudou (o cartão de prata, ratificado pela Sala, Decisão 5, fica).
+    · RODADA zona-do-canal-arte-10 (mapista, lote MA, 15/10/2026; espectador r1, achado da s16 em t 0: "2,7 s de satélite sem
+      nada"): o CONTORNO da Zona (zona-do-canal-1947, só o traço --tinta 6 px sobre 14 px --rotulo, sem preenchimento) se
+      desenha em 'nineteen' (0,18 s) em 0,6 s (todos os anéis das duas partes crescem juntos, por setData da fonte
+      'zonaTraco', com o mesmo estilo do contorno do território, que deixa de ser o traço da cena). O preenchimento a 85 %
+      continua em 'every' (2,74 s), e o contorno sai com ele na descida (12,15 s, 0,5 s), como antes. A legenda 'Canal Zone
+      as mapped in 1947 (larger than in 1912)' e 'NECESSARY TO THE CANAL · 1912 ACT' FICAM em 2,74 s: mudar t0 de texto não
+      é desta tarefa (o cético: "Se o redator preferir manter a legenda no tempo atual, basta o traço em 0,2 s"). Nada mais
+      mudou (câmera, textos, casas, cartões).
   Créditos: '© MapTiler © OpenStreetMap contributors' a 56 px do primeiro ao último quadro (cobre o OSM de
   pontos-osm-hoje e eixo-do-canal); a fonte de 1915 com o número; a de 1914 com o 1º cartão.
   Fora da tela, de propósito: a miniatura de foto de cidade da obra (nenhum arquivo aprovado no conferencia-midia.json;
@@ -258,6 +266,25 @@
       if (!Z || !EIXO) return;
       if (Z.geometry.type !== "MultiPolygon" || Z.geometry.coordinates.length !== 2) return A.falhar("o contorno de 1947 mudou de forma (esperava 2 partes: a principal e a do lago Madden).");
       A.ZONA = Z;
+      // zona-do-canal-arte-10: os anéis do contorno (as duas partes), com o comprimento acumulado, para o traço crescer
+      var kx = Math.cos(9.15 * Math.PI / 180);
+      A.ANEIS = [];
+      Z.geometry.coordinates.forEach(function (poli) { poli.forEach(function (r) {
+        var L = [0]; for (var i = 1; i < r.length; i++) L.push(L[i - 1] + Math.hypot((r[i][0] - r[i - 1][0]) * kx, r[i][1] - r[i - 1][1]));
+        A.ANEIS.push({ r: r, L: L });
+      }); });
+      A.tracoAte = function (f) {   // os anéis até a fração f do comprimento de cada um (todos juntos)
+        return { type: "FeatureCollection", features: A.ANEIS.map(function (a) {
+          var tot = a.L[a.L.length - 1], alvo = tot * f, out = [a.r[0]];
+          for (var j = 1; j < a.r.length; j++) {
+            if (a.L[j] <= alvo) { out.push(a.r[j]); continue; }
+            var u = (alvo - a.L[j - 1]) / ((a.L[j] - a.L[j - 1]) || 1);
+            out.push([a.r[j - 1][0] + (a.r[j][0] - a.r[j - 1][0]) * u, a.r[j - 1][1] + (a.r[j][1] - a.r[j - 1][1]) * u]); break;
+          }
+          if (out.length < 2) out.push(out[0]);
+          return { type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: out } };
+        }) };
+      };
       var principal = Z.geometry.coordinates[0], borda = principal[0], eixo = EIXO.geometry.coordinates;
       // o comprimento acumulado do eixo, do Atlântico (1º vértice) ao Pacífico: a varredura vai nesse sentido
       var acc = [0]; for (var i = 1; i < eixo.length; i++) acc.push(acc[i - 1] + A.metros(eixo[i - 1], eixo[i]));
@@ -277,6 +304,8 @@
     },
     camadas: function (map, A) {
       A.territorio("zona", { type: "FeatureCollection", features: [A.ZONA] }, { fracao: 0.85, sob: 14, w: 6 });
+      // zona-do-canal-arte-10: o traço do contorno, que se desenha em 'nineteen' (o mesmo estilo do contorno do território)
+      A.linha("zonaTraco", { type: "FeatureCollection", features: [] }, { cor: "--tinta", sobCor: "--rotulo", sob: 14, w: 6 });
       // as casas que cairiam sob uma pílula, uma guia ou um ponto de cidade saem (medido no quadro de 8,2 s)
       var cam = A.cameraAt(8.2), ws = 512 * Math.pow(2, cam.zoom);
       var wx = function (l) { return (l + 180) / 360; };
@@ -310,8 +339,13 @@
     },
     quadro: function (t, A) {
       // o território: preenche em 'every' (500 ms) e sai na descida (o laranja não cobre a tela na entrada do Pacífico)
-      var vF = A.janela(t, 2.74, 11.95, 0.5, 0.6), vL = A.janela(t, 2.74, 12.15, 0.5, 0.5);
-      A.terr("zona", vL, vF * 0.85);
+      var vF = A.janela(t, 2.74, 11.95, 0.5, 0.6), vL = A.janela(t, 0.18, 12.15, 0.05, 0.5);
+      // zona-do-canal-arte-10: o contorno do território fica apagado; o traço (zonaTraco) se desenha em 'nineteen' (0,18 s,
+      // 0,6 s) e sai na descida, como o contorno saía
+      A.terr("zona", 0, vF * 0.85);
+      var fT = A.eio(A.seg(t, 0.18, 0.6)), kT = fT >= 1 ? "1" : fT.toFixed(3);
+      if (fT > 0) A.setDado("zonaTraco", kT, A.tracoAte(fT));
+      A.lin("zonaTraco", fT > 0 ? vL : 0);
       // as casas: pousam em 'June' do Atlântico ao Pacífico (0,45 s de cascata) e se apagam em 'removed.' na mesma ordem
       CASAS.forEach(function (h) {
         if (!h.el) return;

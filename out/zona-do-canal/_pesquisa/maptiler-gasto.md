@@ -33,3 +33,13 @@ contar o dia pelo UTC.
 | 15/10, 18:03–18:2x | Arte, `zona-do-canal-arte-8`, **depois**: portões com a pré-carga, somados do `_tmp/maptiler-portoes.jsonl` (linhas 467–536): s01 1.199, s08 821, s25 373, s34 794, s46 801, s48 3.567, s51 392, s53 315; mais 6 renders 4K de prova (s01, s08, s25, s34, s51, s53), não contados. A s46 e a s48 ficaram sem render (RITMO, à Sala) | 8.262 | |
 | 15/10, 21:41 | Arte, `zona-do-canal-arte-9` (s46, s48: os tempos da triagem do RITMO), **antes**: `_tmp/maptiler-portoes.jsonl` com 536 linhas | | |
 | 15/10, 21:42–22:0x | Arte, `zona-do-canal-arte-9`, **depois**: portões com a pré-carga, somados do `_tmp/maptiler-portoes.jsonl` (linhas 537–556): s46 720, s48 3.003; mais 2 renders 4K de prova (s46, s48) e o qc-carga --estreias avulso da s48, não contados | 3.723 | |
+| 15/10, 23:14 | Sala, render 4K de prova da s06 e da s60 com `--forcar` (o clipe era mais velho que o `_media/_vendor/perfil-mapa.js` de 14:41, e a linha do tempo não o aceita), **antes** | | |
+| 15/10, 23:22 | Sala, render 4K de prova da s06 e da s60, **depois**: 2 renders 4K com a pré-carga cdp-sem-compressao, não contados (o render não registra os pedidos de tile) | | |
+| 15/10, 23:37 | Arte, `zona-do-canal-arte-10` (s11, s16, s46, s48: a revisão de espectador), **antes**: `_tmp/maptiler-portoes.jsonl` com 556 linhas | | |
+| 15/10 23:38 – 16/10 00:0x | Arte, `zona-do-canal-arte-10`, **depois**: portões com a pré-carga, somados do `_tmp/maptiler-portoes.jsonl` (linhas 557–599): s11 2.345, s16 711, s46 639, s48 2.599; mais 6 renders 4K de prova (s11 ×3, s16, s46, s48), não contados | 6.294 | |
+| 16/10, 00:06 | Arte, `zona-do-canal-arte-10` (complemento: s28, s34, s67), **antes**: `_tmp/maptiler-portoes.jsonl` com 599 linhas | | |
+| 16/10, 00:07–00:2x | Arte, `zona-do-canal-arte-10` (complemento), **depois**: portões com a pré-carga (linhas 600–625): s28 1.006, s34 905, s67 701; mais 3 renders 4K de prova, não contados | 2.612 | |
+| 16/10, 00:25 | Arte, `zona-do-canal-arte-11` (s34: o 1,041 em three thousand), **antes**: `_tmp/maptiler-portoes.jsonl` com 625 linhas | | |
+| 16/10, 00:26–00:3x | Arte, `zona-do-canal-arte-11`, **depois**: portões da s34 com a pré-carga (linhas 626–635): 965; mais o render 4K de prova e dois portões avulsos, não contados | 965 | |
+| 16/10, 00:38 | Arte, `zona-do-canal-arte-12` (s34: o cartão de 1960 em More), **antes**: `_tmp/maptiler-portoes.jsonl` com 635 linhas | | |
+| 16/10, 00:39–00:47 | Arte, `zona-do-canal-arte-12`, **depois**: portões da s34 com a pré-carga (linhas 636–645): 965; mais o qc-carga, o qc-tamanho avulso e o render 4K, não contados | 965 | |

@@ -34,7 +34,12 @@
                120 px, assentam 1,03 → 1,00).
         1,970  os dois DESLIZAM sobre a linha até a ponta direita em 1,93 s (eo) e PARAM nela em 3,90 (o distintivo encosta no tique
                de 31/03/1982 com velocidade zero; o martelo vem atrás, a 40 px). Cada mês por que eles passam acende.
-        3,90–8,00  nada novo: a linha, a cota, as datas e os dois glifos no fim (a voz diz a quem e onde; a legenda saiu).
+        3,90–8,00  [zona-do-canal-arte-10] o GRUPO de três pequenos glifos em traço (o desenho do distintivo e do martelo) pousa logo
+               abaixo da ponta direita da régua, à direita de "30 MONTHS", um por palavra, com o pouso do ilustrador (0,55 s, desce 120 px,
+               assenta 1,03 → 1,00): o TRABALHADOR de capacete em 4,0 ("American employees"), o MILITAR de quepe em 5,4 ("military") e a
+               FAMÍLIA (dois adultos e a criança) em 6,5 ("families"). Sem texto (a legenda saiu: repetia a voz). Ele LEVANTA com o
+               distintivo e o martelo em 8,15 (350 ms), antes do b2. Antes do arte-10 este trecho era "nada novo" (achado de espectador r1,
+               resultado-final.json › mantidos › s63, o conserto do cético).
         8,000  as datas e "30 MONTHS" saem (300 ms); 8,150 os glifos LEVANTAM (350 ms); 8,200–8,550 a linha e a cota se apagam; o
                crédito 1 sai até 8,6. O que sai sai antes do que entra (ofício §5).
     b2  8,600–11,400  "The Zone's schools passed to the Department of Defense,"
@@ -68,7 +73,8 @@
     · FORA DA PROVA DO PACOTE: atrito, rotação e pilhas não entram (ESTUDO.md:88); a mão v003 não entra (nenhuma mão desenhada).
 
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha): b1: a linha com a cota "30 MONTHS" (1) + "OCT. 1, 1979" (1) + "MARCH 31,
-    1982" (1) + o distintivo (1) + o martelo (1) = 5 (alvo 4–5). b2: as duas colunas com os nomes (2) + a escola (1) = 3. Blocos de
+    1982" (1) + o distintivo (1) + o martelo (1) = 5 (alvo 4–5); de 4,0 a 8,5, + o grupo dos três glifos (1, como o cético o conta) = 6,
+    no teto (zona-do-canal-arte-10). b2: as duas colunas com os nomes (2) + a escola (1) = 3. Blocos de
     leitura: nenhum (a legenda longa saiu). Herói: nenhum (data-qc-sem-heroi). As cotas do redator vão como data-qc-papel="eixo".
   OS CRÉDITOS: 56 px, --sec, data-qc-papel="credito" (a reprovação do qc-tamanho que é só eles é a exceção registrada do canal,
     identidade §4.1). O 1 sai em 8,6 e o 2 entra em 9,6, no mesmo lugar: nunca os dois juntos.
@@ -81,6 +87,8 @@
     a s52 de Los Angeles. A luz (#luz) virou véu (--mesa-luz-veu-centro, transparente além de --mesa-luz-meio), ainda 120 ms atrás
     do objeto principal; o feltro (#mesa) fica a --mesa-satelite-feltro (50 %). Nada sobre o still: nem rótulo, nem ponto, nem anel.
     Só a mesa mudou (desenho, tempos, textos e física como no lote O2, que entregou a cena no caminho de reserva do feltro sob a luz).
+  O QUE MUDOU EM zona-do-canal-arte-10 (o conserto do cético para o achado de espectador r1 da s63, gravidade baixa): só o grupo dos três
+    glifos em b1 (GRUPO, trabalhador/militar/familia). Desenho, tempos, textos, créditos, câmera e luz como estavam.
   O CONTRATO: window.__duracao = 11.4; __renderAt(t) determinístico e à prova de erro; __prepararCaptura; __fotosProntas =
     RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia inteira de templates-cena/_rig.js.
 -->
@@ -367,6 +375,49 @@
   var gBadge = distintivo(gB1, "ar"), sBadge = distintivo(gSom, "sombra-linha");
   var gMart = martelo(gB1, "ar"), sMart = martelo(gSom, "sombra-linha");
   var FOLGA = 40;
+  // ── zona-do-canal-arte-10 (achado de espectador r1, s63, t 3,9–8,0: "nada na tela acompanha" a enumeração da voz): UM grupo de três
+  // pequenos glifos em traço, no mesmo desenho do distintivo e do martelo — o TRABALHADOR de capacete, o MILITAR de quepe, a FAMÍLIA —,
+  // logo abaixo da ponta direita da régua, à direita de "30 MONTHS". Sem texto (o redator tirou a legenda por repetir a voz). Bustos
+  // desenhados em torno da origem, com o pé em y = 0 (como o distintivo e o martelo)
+  function busto(g, c, sk, ox) {      // a cabeça (só o arco abaixo da aba, se houver chapéu) e os ombros fechados no pé
+    sk = sk || 1; ox = ox || 0;
+    var X = function (v) { return f2(ox + v * sk); }, Y = function (v) { return f2(v * sk); };
+    el("path", c, { d: "M" + X(-80) + "," + Y(0) + " L" + X(-80) + "," + Y(-58) + " Q" + X(-80) + "," + Y(-112) + " " + X(-28) + "," + Y(-118) +
+      " L" + X(28) + "," + Y(-118) + " Q" + X(80) + "," + Y(-112) + " " + X(80) + "," + Y(-58) + " L" + X(80) + "," + Y(0) + " Z" }, g);
+    return { X: X, Y: Y };
+  }
+  function cabeca(g, c, q, aba) {     // aba = y da aba do chapéu (o arco da cabeça só abaixo dela); sem aba, o círculo inteiro
+    var cy = -166, r = 34;
+    if (aba == null) { el("circle", c, { cx: q.X(0), cy: q.Y(cy), r: f2(r * (+q.Y(1))) }, g); return; }
+    var dx = Math.sqrt(r * r - (aba - cy) * (aba - cy));
+    el("path", c, { d: "M" + q.X(-dx) + "," + q.Y(aba) + " A" + f2(r * (+q.Y(1))) + "," + f2(r * (+q.Y(1))) + " 0 1 0 " + q.X(dx) + "," + q.Y(aba) }, g);
+  }
+  function trabalhador(pai, c) {
+    var g = el("g", "", {}, pai), q = busto(g, c);
+    cabeca(g, c, q, -180);
+    el("path", c, { d: "M-42,-180 Q-42,-236 0,-238 Q42,-236 42,-180 M-62,-180 L62,-180" }, g);   // o capacete: a cúpula e a aba
+    if (c === "ar") el("path", "ar-fina", { d: "M0,-238 L0,-200 M-80,-40 L80,-40" }, g).style.opacity = .8;   // a crista e a faixa do colete
+    return g;
+  }
+  function militar(pai, c) {
+    var g = el("g", "", {}, pai), q = busto(g, c);
+    cabeca(g, c, q, -184);
+    el("path", c, { d: "M-38,-186 L-56,-220 Q0,-236 56,-220 L38,-186 Z M-40,-184 Q12,-170 66,-178" }, g);   // o quepe: a copa e a pala
+    if (c === "ar") el("path", "ar-fina", { d: "M-78,-96 L-40,-112 M78,-96 L40,-112" }, g).style.opacity = .8;   // as dragonas
+    return g;
+  }
+  function familia(pai, c) {
+    var g = el("g", "", {}, pai);
+    [[-120, 0.8], [120, 0.8], [0, 0.56]].forEach(function (a) { var q = busto(g, c, a[1], a[0]); cabeca(g, c, q); });   // dois adultos e a criança
+    return g;
+  }
+  var GRUPO = [ // o x do pé de cada um (a ponta direita da régua é X1 = 3040), o pé em y = PEY, e a palavra que o pousa
+    { f: trabalhador, x: 2700, t: 4.0 },   // "American employees" (4,01–5,07)
+    { f: militar, x: 2940, t: 5.4 },       // "military" (5,45–6,01)
+    { f: familia, x: 3284, t: 6.5 }        // "families" (6,49–6,97); 80 px de vão entre os três, como entre os dois primeiros
+  ];
+  var PEY = 1640;
+  GRUPO.forEach(function (o) { o.g = o.f(gB1, "ar"); o.s = o.f(gSom, "sombra-linha"); });
   // o par: o distintivo na frente (à direita), o martelo atrás; posições dos centros na linha, de um executor só
   var BX0 = X0 + 20 + GM.w + FOLGA + GB.w / 2, BX1 = X1 - 8 - GB.w / 2;               // o centro do distintivo: começo e fim do curso
   function badgeX(t) { return clamp(lerp(BX0, BX1, eo(seg(t, T.desliza, T.deslizaDur))), BX0, BX1); }
@@ -432,6 +483,13 @@
     poe(gBadge, pb, LY - 6 + dy, 0, 0, k * G); gBadge.style.opacity = op.toFixed(3);
     poe(gMart, mx, LY - 6 + dy, 0, 0, k * G); gMart.style.opacity = op.toFixed(3);
     sombra(sBadge, pb, LY - 6 + dy, 0, 0, ar, op * ap, G); sombra(sMart, mx, LY - 6 + dy, 0, 0, ar, op * ap, G);
+    // zona-do-canal-arte-10: o grupo pousa um a um, na palavra (o pouso do ilustrador: 0,55 s, desce 120 px, 1,03 → 1,00), e levanta
+    // junto com o distintivo e o martelo em 8,15 (350 ms), antes do b2
+    GRUPO.forEach(function (o) {
+      var pp = pouso(t, o.t, 120), kk = lev ? lv.k : pp.k, oo = lev ? lv.op * (t >= o.t ? 1 : 0) : pp.op, aa = lev ? lv.ar : pp.ar, yy = lev ? -40 * lv.ar : pp.dy;
+      poe(o.g, o.x, PEY + yy, 0, 0, kk); o.g.style.opacity = oo.toFixed(3);
+      sombra(o.s, o.x, PEY + yy, 0, 0, aa, oo * ap);
+    });
     credito("cred1", t, T.cred1, T.saiCred1);
 
     // b2 — as colunas se desenham, os nomes entram, a escola pousa, levanta, voa e assenta

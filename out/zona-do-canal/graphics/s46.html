@@ -53,6 +53,12 @@ CANAL ALPHA POINT — ZONA DO CANAL (vídeo 3), CENA s46 (512,0 → 526,933 s do
     pela triagem do RITMO (qc-carga; _tmp/triagem-portoes-arte8.json; textos-tela texto-9): rotFrom, rotData e credTrat passam de
     entra 0,6 ('nineteen') a 1,02, o início de 'fifty-six' no words.json, sem arredondar (com 1,0 ou menos a estreia cai na
     amostra 1,0 e o RITMO reprova). As saídas (12,133) e o resto da cena ficam.
+  RODADA zona-do-canal-arte-10 (mapista, lote MB, 15/10/2026; o achado de espectador r1 da s46, resultado-final.json): a marca
+    do corte em 'shop' (6,433) deixa de ser um traço de 112 px deitado sobre a divisa (16 sobre 30 px, a mesma receita da linha)
+    e vira uma BARREIRA: um X de dois traços centrado no cruzamento, cada braço a 45° da trilha (atravessa a divisa), 240 px de
+    ponta a ponta, 28 px de --tensao sobre 44 px escuros, com um pulso de escala 1,0 → 1,15 → 1,0 em 0,3 s depois de crescer em
+    0,2 s. O pontilhado de fora fica até tocá-lo, o de dentro apaga como antes; fica até o fim e desce com a câmera em b2.
+    Textos, tempos, câmera e o resto do desenho não mudaram.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -503,13 +509,19 @@ var LPAN = feicao("linha-1914-panama");
       var vd = 1 - eio(seg(t, T.corta, 0.5));
       if (uc <= nf) pontilhado(g, parte, 1);
       else { pontilhado(g, proj(FORA), 1); pontilhado(g, parcial(proj(DENTRO), (uc - nf) / (1 - nf)), vd); }
-      var vcorte = eo(seg(t, T.corta, 0.3));
+      // zona-do-canal-arte-10: a barreira. Um X de dois traços centrado no cruzamento, cada braço a 45° da TRILHA (e, assim,
+      // atravessando a divisa, nunca deitado sobre ela), 240 px de ponta a ponta, 28 px de --tensao sobre 44 px escuros; cresce
+      // em 0,2 s e dá um pulso de escala 1,0 → 1,15 → 1,0 em 0,3 s. Fica até o fim e é projetado a cada quadro (desce com a câmera).
+      var vcorte = eo(seg(t, T.corta, 0.2)), pulso = 1 + 0.15 * Math.sin(Math.PI * seg(t, T.corta + 0.2, 0.3));
       if (vcorte > 0) {
         var X = map.project(XP), A = map.project(TR[Math.max(0, XI - 2)]), B = map.project(TR[Math.min(TR.length - 1, XI + 3)]);
-        var dx = B.x - A.x, dy = B.y - A.y, n = Math.hypot(dx, dy) || 1, px = -dy / n * 56 * vcorte, py = dx / n * 56 * vcorte;
-        g.beginPath(); g.moveTo(X.x + px, X.y + py); g.lineTo(X.x - px, X.y - py);
-        g.globalAlpha = 1; g.strokeStyle = COR.rotulo; g.lineWidth = 30; g.stroke();
-        g.strokeStyle = COR.tensao; g.lineWidth = 16; g.stroke();
+        var dx = B.x - A.x, dy = B.y - A.y, n = Math.hypot(dx, dy) || 1, ux = dx / n, uy = dy / n, r2 = Math.SQRT1_2;
+        var h = 120 * vcorte * pulso, d1 = [(ux - uy) * r2, (uy + ux) * r2], d2 = [(ux + uy) * r2, (uy - ux) * r2];
+        g.beginPath();
+        g.moveTo(X.x + d1[0] * h, X.y + d1[1] * h); g.lineTo(X.x - d1[0] * h, X.y - d1[1] * h);
+        g.moveTo(X.x + d2[0] * h, X.y + d2[1] * h); g.lineTo(X.x - d2[0] * h, X.y - d2[1] * h);
+        g.globalAlpha = 1; g.lineCap = "round"; g.strokeStyle = COR.rotulo; g.lineWidth = 44; g.stroke();
+        g.strokeStyle = COR.tensao; g.lineWidth = 28; g.stroke();
       }
     }
     // as pessoas do lado de fora (12 figuras simbólicas, 6 × 2)
