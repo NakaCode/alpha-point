@@ -7,9 +7,11 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "exceção do Lucas: qc-tamanho, crédito a 56 px, \"Quero reduzir para 56px\", 07/10/2026 11:3x (identidade §4.1; _excecoes-portao.json, sha1 do HTML igual ao de hoje). probe-elemento (t=5 s): #cred1 em 1 linha, caixa de 64 px, line-height 1,15 = 56 px, x 200, y 1896; var(--fs-credito); data-qc-papel=\"credito\". Contraste (portao-mapa rodape v5, sha1 de hoje): 6,59:1 no pior instante (4 s, opacidade 0,829; piso 3:1).",
-        "portao-margens (sha1 9324a1ba): veredito 0, 63 amostras, 13 elementos medidos, sem avisos (a câmera anda 80 px e o portão mede sob a câmera). Não remedi.",
-        "Hierarquia: foto à esquerda (x 276-2264, ~52 % da largura) e coluna de rótulos à direita; sem herói declarado. Nada na faixa de crédito além do crédito, nem no canto de 400 x 400."
+        "exceção do Lucas: qc-tamanho, crédito a 56 px, \"Quero reduzir para 56px\", 07/10/2026 11:3x (identidade §4.1; _excecoes-portao.json, entrada qc-tamanho da s64, sha1 d5f7d15e igual ao do HTML de hoje). probe-elemento (t=5,5 s): #cred1 em 1 linha, caixa de 64 px, line-height 1,15 = 56 px, x 200, y 1896; var(--fs-credito) = 56px no tokens.css; data-qc-papel=\"credito\".",
+        "exceção do Lucas: qc-carga, RITMO 0,97 entradas/s (teto 0,9 do Top10), \"Manter (Recomendado)\", 15/10/2026 22:3x, chat da Sala (_excecoes-portao.json, entrada qc-carga da s64, sha1 d5f7d15e igual ao do HTML de hoje; triagem: limitação). A pior janela de 1 s é 3 (teto 4) e a menor vida de um texto é 1,5 s. _portao.json (hash d5f7d15edf13): falhas só carga e tamanho, as duas cobertas por exceção; indefinidos e fora_do_portao vazios.",
+        "portao-margens (sha1 d5f7d15e, marca c647bf6c = sha1sum de hoje do tokens.css): veredito 0, 63 amostras, 14 elementos medidos, sem itens nem avisos. Não remedi.",
+        "Hierarquia dos dados partidos: \"UNTIL\" (84 px, --sec) logo acima de \"DEC. 31, 1999\" (128 px, --tinta, sem pílula) na mesma coluna x 2340 das duas pílulas de 128 px; lê-se de cima para baixo (lugar, aviso, Commission, UNTIL, data) e a foto à esquerda segura o peso. Nenhum herói declarado (data-qc-sem-heroi); nada na faixa de crédito além do crédito; canto de 400 x 400 livre.",
+        "Sinalização: a coluna da direita acaba em x ~3330 e abaixo da data a mesa fica vazia até o corte (4,69 a 6,2 s); é mesa sob satélite, não campo em branco, e a margem de 200 px está cumprida (portão)."
       ],
       "correcoes": []
     },
@@ -17,16 +19,17 @@
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "Asset correto: a foto é a do veredito aprovado (sha256 3d6ceac6, igual ao de _media/foto/s64/ e ao do rascunho da caça), NARA 6433742, DoD, USNS Comfort saindo de Miraflores Locks em 03/06/1988. O rótulo \"Miraflores Locks\" não é mais específico que o lugar_na_origem; \"Photo from 1988\" bate com data_na_origem e aviso_de_ano: true; a cota \"UNTIL DEC. 31, 1999\" está na mesa, fora da foto, como a nota do conferente pede. Grafia do textos-tela.",
-        "Sinalização (associação posicional): o rótulo \"Panama Canal Commission\" fica ao lado de uma foto cujo navio é um navio-hospital da Marinha, não um bem da Commission; é a foto aprovada para esta frase (as dos rebocadores da Commission saíram \"trocar\") e o rótulo está numa coluna, sem ponta nem seta no navio, então a leitura é \"o canal no tempo da Commission\". Não reprova."
+        "Asset correto: a foto é o arquivo do veredito aprovado (sha256 3d6ceac6, citado no cabeçalho), NARA 6433742, DoD, USNS Comfort saindo de Miraflores Locks em 03/06/1988. \"Miraflores Locks\" não é mais específico que o lugar_na_origem; \"Photo from 1988\" bate com o data_na_origem e com _avisos_do_ano (aviso_de_ano: true). Grafia de todos os textos igual ao textos-tela.json (f9a58c7d): Miraflores Locks, Photo from 1988, Panama Canal Commission, UNTIL, DEC. 31, 1999, Source: Panama Canal Treaty, 1977. O dado \"DEC. 31, 1999\" tem fonte no textos-tela (Tratado de 1977, Art. II(2), A190), e a data não está sobre a foto de 1988, como a regra de série manda.",
+        "Sinalização (associação posicional, já anotada nas rodadas anteriores): o rótulo \"Panama Canal Commission\" fica ao lado de uma foto cujo navio é um navio-hospital da Marinha, não um bem da Commission; é a foto aprovada para a frase, o rótulo está numa coluna sem seta nem ponta no navio e a leitura é \"o canal no tempo da Commission\". Não reprova."
       ],
       "correcoes": []
     },
     {
       "lente": "wordlock",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "Foto pousa em \"and\" (741,61 s); rótulo Miraflores em 0,70 s (150 ms após o assentamento, movimento A); aviso em 0,82 s; \"Panama Canal Commission\" em 1,567 s, igual a \"Panama\" (743,17); cota e crédito em 3,867 s, igual a \"until\" (745,49). Nenhuma entrada antes da deixa; fala e cena terminam juntas (747,8)."
+        "Tempos medidos contra words.json (master menos 741,6): a foto pousa em \"and\" (741,61); rótulo de lugar em 0,70 s, 150 ms depois do assentamento (movimento A); aviso do ano em 0,82 s; \"Panama Canal Commission\" em 1,567 s, igual a \"Panama\" (743,17); UNTIL, DEC. 31, 1999 e o crédito, juntos, em 4,69 s, igual a \"nineteen\" (746,29), a palavra que diz o número. Quadro de 4,6 s sem nenhum dos três; quadro de 5,0 s com os três. Nenhuma entrada antes da deixa; a cena e a fala terminam juntas (747,8).",
+        "Sinalização (não reprova): \"until\" é dito em 3,89 s e \"UNTIL\" aparece em 4,69 s, 0,8 s depois da palavra, porque a legenda entra com o dado que ela qualifica (decisão da Sala, texto-7/8: a legenda entra junto com o rótulo e nunca antes), e a data não entra antes da voz que a diz. Entre 3,89 e 4,69 s a tela mostra só os três primeiros textos. A única mudança de tempo desta rodada é o crédito (3,867 para 4,69 s), que passou a coincidir com o dado, a palavra que o convoca."
       ],
       "correcoes": []
     },
@@ -34,7 +37,8 @@
       "lente": "abordagem",
       "nota": 8,
       "problemas": [
-        "REGISTRO real de época sobre a mesa (foto impressa, <= 1,4x; produto das escalas 0,716) é o modelo da identidade §5 para a foto média de outro ano, e a regência pede a foto na mesa. Em tela cheia a foto seria 1,385x (cabe), mas o Ken Burns ficaria em 1,01x; a mesa é coerente. Sinalização: o assunto da frase (uma agência, a Commission) é abstrato; a foto mostra o canal no tempo dela, não a agência."
+        "REGISTRO real de época (foto impressa na mesa, produto das escalas 0,716, abaixo de 1,4) é o modelo da identidade §5 para a foto média de outro ano; o Lucas decidiu em 15/10 12:3x \"Entram (Recomendado)\" (foto abaixo de 4K) e \"Não, fica a foto de 1988 (Recomendado)\" (sem o B-roll de hoje). Sem retoque, recorte ou upscale (arquivo inteiro reduzido a 0,6854x).",
+        "Sinalização: o assunto da frase (uma agência) é abstrato; a foto mostra o canal no tempo dela, não a agência. Caminho padrão e decidido pelo Lucas."
       ],
       "correcoes": []
     },
@@ -42,7 +46,7 @@
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "Em 2 s: um navio na eclusa, \"Miraflores Locks\", \"Photo from 1988\", \"Panama Canal Commission\" e, aos 3,9 s, \"UNTIL DEC. 31, 1999\": o leigo lê \"uma agência americana opera o canal até 1999\". O aviso do ano evita ler a foto como de 1999."
+        "Em ~2 s o leigo lê: foto de um navio numa eclusa em 1988, \"Miraflores Locks\", \"Panama Canal Commission\"; aos 4,7 s, \"UNTIL DEC. 31, 1999\". A leitura \"uma agência (a Commission) operou o canal até 31/12/1999\" fecha com a fala. O aviso do ano evita ler a foto como de 1999. Sinalização: \"Commission\" não é explicada na tela; é a fala que a explica (\"an American agency\")."
       ],
       "correcoes": []
     },
@@ -50,8 +54,8 @@
       "lente": "poluicao",
       "nota": 8,
       "problemas": [
-        "4 elementos (foto e 3 textos; alvo 4-5, teto 6), nenhum bloco de leitura; o aviso e o crédito não contam. Sem entidade HTML ou tofu (portao-mapa til v5: 5 textos, 17 amostras, 0 achados).",
-        "Sinalização (lastro): \"Miraflores Locks\" não é dito pela voz; é o rótulo de lugar do REGISTRO (identidade §5, tabela: \"com rótulo de lugar e crédito\") e vem do textos-tela com lugar_na_origem; fica como obrigação da marca, não como órfão."
+        "5 elementos no fim (foto, Miraflores Locks, Panama Canal Commission, UNTIL, DEC. 31, 1999; o aviso do ano e o crédito não contam: identidade §4.2), dentro do alvo de 4 a 5 e do teto de 6; nenhum bloco de texto de leitura (teto 3). Sinalização: contando o aviso do ano, são 6, no teto; a cena está no pior extremo do alvo, e a exceção do qc-carga (RITMO 0,97/s) é a mesma limitação do portão.",
+        "Teste do lastro: Panama Canal Commission, UNTIL e DEC. 31, 1999 têm a palavra da voz (\"Panama Canal Commission\", \"until\", \"nineteen ninety-nine\"); \"Miraflores Locks\" e \"Photo from 1988\" são obrigação da marca no REGISTRO (rótulo de lugar e aviso do ano, identidade §5 e §6), não órfãos. Leitura só do texto, sem áudio, se entende. Texto sem entidade HTML nem tofu nos 8 quadros olhados."
       ],
       "correcoes": []
     },
@@ -59,8 +63,8 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Assentamento da foto (#f, largura da caixa): 2044 (0,2 s), 2079 (0,33 s, pico de 1,03), 2037 (0,4), 2019 (0,5 s) e 2019-2023 depois: sobe a 1,03 e assenta uma vez, sem oscilar. Câmera: push-in 1,0143 e centro andando 80 px rumo ao navio em 5,95 s (probe: translação de 73,6 px em 5 s). Repouso: diferença entre 5,95 s e 6,18 s = 0 (deriva congelada): nada se move nos 250 ms antes do corte.",
-        "Sinalização para a Sala (o próprio cabeçalho manda decidir): o vetor de 80 px da identidade §4.4 vale para a foto em tela cheia; aqui ele leva a mesa inteira (rótulos incluídos) a ~13 px/s enquanto se lê. A roupa do qc admite o Ken Burns \"de mesa ou de REGISTRO\" até 80 px com a direção no cabeçalho (\"rumo ao navio\"), e não há grifo, folha nem fala citada em leitura; não reprova."
+        "Assentamento da foto, entrada do rótulo (0,70 s, 300 ms), do aviso e da Commission pelo mesmo gesto (+24 px, 300 ms); a data e a legenda entram juntas com escala 1,04 para 1,00 e fade, na mesma forma das outras peças. Câmera: push-in 1,0 para 1,0143 e deriva de ~87 px rumo ao navio (probe: matrix 1,01416 em 5,9 s e 1,01428 de 5,95 a 6,19 s, translação 87,076 e 6,339 idênticas nos três últimos instantes): nada se move nos 250 ms antes do corte (diferença média entre os quadros de 5,95 e 6,15 s = 0,45 em 255, ruído do codec; contra 9,3 entre 5,0 e 5,9 s).",
+        "Sinalização, vetor de 80 px (ratificado pela Sala, plano pos-qc, \"Ratificados\", item 5: s64, o vetor de 80 px): leva a mesa inteira, texto incluso, a ~13 px/s durante a leitura; a roupa admite o Ken Burns de mesa com direção no cabeçalho e não há grifo, folha nem fala citada. Não reprova."
       ],
       "correcoes": []
     },
@@ -68,8 +72,8 @@
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "Foto NARA/DoD, obra federal (17 U.S.C. §105): sem crédito na tela, certo (identidade §7; o veredito diz credito_na_tela nenhum). O crédito \"Source: Panama Canal Treaty, 1977\" fica para o dado \"UNTIL DEC. 31, 1999\" (dado atribuível) e aparece em 3,867 s com a cota. Sem crédito-fantasma.",
-        "Sinalização: sozinho na faixa, sob uma foto, o \"Source: Panama Canal Treaty, 1977\" pode ser lido como crédito da foto; a cota que ele sustenta está no alto da coluna, longe dele. Não reprova (é o que o textos-tela manda)."
+        "Foto NARA/DoD, obra federal (17 U.S.C. §105): sem crédito na tela, certo (identidade §7; veredito: credito_na_tela nenhum). \"Source: Panama Canal Treaty, 1977\" credita o dado \"DEC. 31, 1999\" (dado atribuível) e agora entra no mesmo quadro do dado (4,69 s), como a identidade §4.2 pede (o crédito entra no primeiro quadro em que aparece o que ele credita). Sem crédito-fantasma. Crédito a 56 px, --sec, contraste 8,69:1 (portao-mapa rodape v5, sha1 de hoje, pior instante 5,7 s; piso 3:1), com a exceção do Lucas de 07/10/2026 citada em espaco.",
+        "Sinalização: sozinho na faixa sob uma foto, o \"Source: Panama Canal Treaty, 1977\" pode ser lido como crédito da foto; é o que o textos-tela manda e a foto federal não leva crédito."
       ],
       "correcoes": []
     },
@@ -77,7 +81,7 @@
       "lente": "tema",
       "nota": 9,
       "problemas": [
-        "Foto de cor natural sobre a mesa escura com o still do istmo; pílulas --rotulo e a cota em --tinta; nenhuma cor de lado, nenhum --destaque (sem protagonista). evidencia.paleta não veio: não medida."
+        "Foto de cor natural sobre a mesa escura com o still Landsat do istmo e feltro; pílulas --rotulo, UNTIL em --sec e a data em --tinta; nenhuma cor de lado, nenhum --destaque (sem protagonista); sem degradê sobre foto (a luz da mesa é véu sobre o still, permitido nas cenas de mesa). A água escura da série não se aplica (não é cena de mapa). evidencia.paleta não veio no pedido: paleta dentro da cena não medida; o laudo não afirma deriva."
       ],
       "correcoes": []
     },
@@ -85,7 +89,7 @@
       "lente": "cobertura",
       "nota": 8,
       "problemas": [
-        "O canal (o concreto que a imagem pode mostrar) tem registro real: a eclusa de Miraflores em 1988. A Commission é instituição, sem imagem própria; as fotos dos rebocadores da Commission saíram \"trocar\" no conferente e o B-roll de hoje das eclusas (s64-a) não foi usado por decisão pendente do Lucas (perguntas 4 e 7 da regência): não há arquivo dele na pasta, só as 3 fotos de _caca/s64."
+        "O canal tem registro real (a eclusa de Miraflores em 1988). A Commission é instituição sem imagem própria. O B-roll de hoje de Miraflores (s64-a) não entrou por decisão do Lucas (\"Não, fica a foto de 1988\"). Sinalização, nada a reprovar."
       ],
       "correcoes": []
     },
@@ -93,7 +97,7 @@
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Um plano de 6,2 s, regime \"respiro\" declarado (\"uma foto que fica e anda\"); os 0,2 s acima do teto de 6 s de foto parada não contam porque a mesa se move com propósito o tempo todo (push-in e 80 px) e o beat 2 traz a cota nova em 3,867 s. Só há uma foto aprovada para a frase (as outras duas saíram \"trocar\"): a correção seria pedir variação nova, que a pesquisa já tentou."
+        "Um plano de 6,2 s, regime respiro declarado (\"uma foto que fica e anda\"); 0,2 s acima do teto de 6 s de foto, mas a mesa anda até 5,95 s e há beats novos em 0,70, 0,82, 1,567 e 4,69 s. A fala tem um só objeto (a Commission operando o canal até 1999), então não há troca de plano a pedir. Só há uma foto aprovada para a frase (as outras duas saíram \"trocar\")."
       ],
       "correcoes": []
     },
@@ -113,7 +117,7 @@
       "lente": "circulo",
       "nota": 9,
       "problemas": [
-        "Foto de época sobre a mesa com coluna de rótulos é a forma de outras cenas do vídeo; aqui o conteúdo é novo (a Commission e 1999). A s63 anterior (desenho) e a s65 seguinte (mapa) são outros modelos."
+        "Foto de época sobre a mesa com coluna de rótulos é a forma de outras cenas; aqui o conteúdo é novo (a Commission e 1999). A s63 anterior (desenho) e a s65 seguinte (mapa) são outros modelos."
       ],
       "correcoes": []
     }

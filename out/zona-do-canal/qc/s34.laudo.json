@@ -7,149 +7,134 @@
       "lente": "espaco",
       "nota": 7,
       "problemas": [
-        "Portão-margens (sha1 6d080e02…, marca c647bf6c…, 231 amostras, 27 itens medidos, 3 objetos em passagem): veredito 0, sem itens e sem avisos. Não remedido no olho.",
-        "exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (\"Quero reduzir para 56px\"); o sha1 do HTML (6d080e024a7e…) bate com o de out/zona-do-canal/qc/_excecoes-portao.json e a reprovação é só o crédito de fonte (\"Source: U.S. Census Bureau, 1970\" 56<72 · \"Source: U.S. Census Bureau, 1960\" 56<72); o crédito sai de var(--fs-credito) = 56 px, com data-qc-papel=\"credito\" e sem data-qc-credito=\"mapa\" (a marca de mapa só na linha da MapTiler).",
-        "DESVIO DECLARADO E AUTORIZADO (não reprova): os números do pictograma ('1,580 BORN IN THE U.S.', '1,041 BORN IN THE CANAL ZONE') e o cartão de 1970 estão a 112 px, abaixo do alvo de 128 e acima do piso de 104 (identidade §4.1). O cabeçalho cita a tarefa zona-do-canal-arte-2 (lote S2): a 128 px o cartão encostava no anel de Balboa a 24–30 px.",
-        "SINALIZA: de 4,3 a 9,6 s a base do cartão de 1970 fica a ~42 px acima da pílula 'Fort Clayton' (quadro de 5,0 s: base y≈1120, topo da pílula y≈1160 no 4K; estimado, nenhum portão mede a folga entre blocos). Não se tocam, mas as três pílulas de bases empilhadas (Clayton, Albrook, Amador, a ~20 px umas das outras) e o cartão leem-se como um bloco só à direita.",
-        "SINALIZA: a partir de 12,4 s o cartão do pictograma ocupa ~52 % da largura e ~58 % da altura do quadro (quadros de 13,0 e 18,5 s) e cobre a cidade e o mar; o número (112 px) fica pequeno diante do bloco de figuras. Sem herói; margens e canto 400×400 livres pelo portão."
+        "exceção do Lucas: qc-tamanho, crédito a 56 px (os dois 'Source:' de 1970 e 1960, 56<72), 'Quero reduzir para 56px', 07/10/2026 11:3x; sha1 do HTML 9933322a… igual ao de _excecoes-portao.json (o portão de hoje, 18:06, reprovou só isso)",
+        "Portões lidos, não remedidos: portao-margens v2 veredito 0 (231 amostras, 29 medidos, sem itens nem avisos, sha1 de hoje); qc-contrato, qc-carga, check-overlap e qc-fora-do-quadro saída 0 no sha1 de hoje (hash 9933322a4b88). Crédito: var(--fs-credito)=56 px, data-qc-papel='credito' nas linhas de fonte, data-qc-credito='mapa' só na linha da MapTiler (conferido no HTML).",
+        "HIERARQUIA (sinal, não reprova; decisão da Sala nº 1, 'texto de leitura em legenda a 84 px'): de 4,3 a 9,6 s o número que a frase pede (23,559 de 44,198 nascidos nos EUA) vive num cartão a 84 px, e as quatro pílulas de base a 128 px (Fort Clayton, Albrook Air Force Base, Fort Amador, Fort Davis) pesam mais que o dado. Lê-se o cartão porque ele é o bloco grande da metade de cima à direita, e a distância até as pílulas é boa (~200 px, melhor que na 1ª rodada, quando era ~42 px).",
+        "DADO PARTIDO (cartão de Balboa, 12,4 e 17,07 s, quadro e recorte 4K): '1,580' e '1,041' a 128 px, 'BORN IN THE U.S.' e 'BORN IN THE CANAL ZONE' a 84 px logo abaixo, no mesmo t0, irmãos na mesma forma. A leitura é limpa e a hierarquia funciona dentro do cartão. Único reparo: 'BALBOA, 1960' (128, bold) e os números (128, bold) têm o mesmo peso, e a pílula 'Balboa' do mapa também está a 128. Três coisas a 128 px na mesma tela, sem herói (identidade §4.1: 'um herói por cena, ou nenhum'): não reprova.",
+        "As três pílulas de bases a ~20 px entre si (4,3 a 9,6 s) continuam apertadas, como na 1ª rodada. Margem, faixa do crédito e canto são do portão (0), não remedidos."
       ],
       "correcoes": [
-        "Arte (se mexer na cena): descer a coluna das pílulas de bases em ~40 px para abrir folga com o cartão de 1970 (há espaço abaixo de Fort Amador).",
-        "Arte (opcional): encolher a largura do cartão do pictograma para devolver o lugar de Balboa ao quadro."
+        "Opcional, para a Sala levar ao Lucas só se ele estranhar na linha do tempo: no cartão de 1970, pôr '23,559 OF 44,198' num peso acima do resto (o dado partido: o número em 128 e o resto em 84) em vez de 5 linhas de caixa-alta no mesmo corpo. É mudança de regra de série (decisão 1 da Sala), por isso é sinalização.",
+        "Se a cena for reaberta, abrir ~20 px entre as pílulas Clayton/Albrook/Amador (há folga abaixo de Fort Amador)."
       ]
     },
     {
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "O texto de tela confere com o textos-tela.json (sha ee9c74a0…) nas 14 linhas da cena: legenda 'Canal Zone (1947 map)', o cartão 'CANAL ZONE, 1970 · 23,559 OF 44,198 BORN IN THE U.S. · 8,569 IN THE ARMED FORCES' com a legenda 'Armed forces: service members 16 and over, not their families' (nunca 'Americans' nem 'citizens'), Fort Clayton, Fort Amador, Albrook Air Force Base e Fort Davis (Fort Sherman e o acampamento de Gatún fora, como o textos-tela pede), Balboa, 'BALBOA, 1960', '1,580 BORN IN THE U.S.', '1,041 BORN IN THE CANAL ZONE' e as linhas 'Source: U.S. Census Bureau, 1970' e '…, 1960'. O '517 BORN IN OTHER COUNTRY' não está na tela (nao_vai_para_tela, A106 não checado).",
-        "Aritmética do pictograma conferida nos quadros: a razão de largura entre o bloco laranja (1.580) e o branco (1.041) é 1,52, igual a 1.580/1.041; o cinza apagado (518) fecha os 3.139 com os dois outros (1.580 + 1.041 + 518). O 1.041 (> mil) sustenta o 'more than a thousand' da voz.",
-        "Bases: pontos de lugares-1947 (centróides da folha, ±150–250 m; TA224 a TA227 confirmadas, a 556–876 m dos pontos da Wikipédia, declarado). A Zona é o polígono inteiro de 1947, com a legenda de data. Sem bandeira, logo nem selo."
+        "Texto de tela × textos-tela.json f9a58c7d…: 14 linhas na mesma grafia (inclui os dados partidos '1,580'/'BORN IN THE U.S.' e '1,041'/'BORN IN THE CANAL ZONE'); o '517' e Fort Sherman/Gatún seguem fora, como o arquivo pede. Números 23,559 de 44,198, 8,569, 1,580, 1,041 e 3,139 batem com o roteiro e com a 1ª rodada; o pictograma tem uma figura por residente (1.580 laranja + 1.041 branco + 518 apagadas).",
+        "Geometria: a Zona é o polígono da folha de 1947, com legenda de data; os pontos das bases são os centróides declarados (±150–250 m). Sem bandeira, sem logo, sem rótulo de país. Nunca 'Americans' nem 'citizens' (conferido no cartão).",
+        "Água escura (identidade §6): conferida a 4K no recorte de 13,2 s e nos quadros de 0,3 a 21,5 s: o mar e a baía de Panamá são um plano só, sem emenda de mosaico nem degrau de tile; a calçada de Amador e as ilhotas aparecem sobre o escuro."
       ],
-      "correcoes": [
-        "Nenhuma correção."
-      ]
+      "correcoes": []
     },
     {
       "lente": "wordlock",
       "nota": 7,
       "problemas": [
-        "OK: cartão de 1970 em 1,867 s ('born' 1,88), bases em 4,267 s ('bases' 4,27), pictograma e 'BALBOA, 1960' em 12,4 s ('thousand' 12,41), '1,041 BORN IN THE CANAL ZONE' em 17,067 s ('born' 17,07). O que sai antes de 'Balboa' sai de 9,633 a 9,933 s (o cartão, os pontos, as pílulas e a fonte), depois de 'seems.' (8,97). A pergunta final (18,78–23 s) não traz texto novo. O 1º quadro (0–1,87 s) é só o mapa com a Zona entrando em 500 ms e a legenda, sob 'More than half of its residents…'.",
-        "SINALIZA (autorizado pelo textos-tela t0 9,933): a pílula e o anel 'Balboa' aparecem em 9,933 s e a voz diz 'Balboa.' em 10,73 s, 0,8 s depois ('Now go back to' ainda soa). O anel marca o lugar para onde a câmera viaja; não reprovo."
+        "Entradas × words.json (cena começando em 352,233): cartão de 1970 em 1,867 ('born' 1,88); bases em 4,267 ('bases' 4,27); '1,580' + 'BORN IN THE U.S.' em 12,4 ('thousand' 12,41); '1,041' + 'BORN IN THE CANAL ZONE' em 17,067 ('born' 17,07). Os dados partidos entram no MESMO t0 (a legenda não vem depois do número), conferido no HTML (lab1 e lab2 dentro do #cartaoB, cartão em 12,4; picto.lab2 em 17,067). Tudo dentro de ±0,02 s.",
+        "Sinal conhecido e autorizado (textos-tela, t0 9,933): a pílula e o anel 'Balboa' entram ~0,8 s antes de a voz dizer 'Balboa.' (10,73 s), durante a viagem de volta.",
+        "Pequeno: o código tira o cartão de 1970 e a fonte de 1970 em 9,633 (o textos-tela diz 'até 9,933'), para não somar com 'Balboa': 0,3 s de ar a menos, sem efeito de leitura."
       ],
-      "correcoes": [
-        "Nenhuma correção obrigatória. Se a Sala quiser exatidão, 'Balboa' pode entrar em ~10,5 s (a viagem já está a meio caminho)."
-      ]
+      "correcoes": []
     },
     {
       "lente": "abordagem",
       "nota": 9,
       "problemas": [
-        "Mapa com cartão por cima é o modo certo para um dado sobre um lugar (as bases são lugares reais; o pictograma é sobre Balboa). A volta a Balboa reproduz o quadro da s02 (refrão do arco) e paga com informação nova: a pilha de 1.559 se parte em 1.041 nascidos na Zona e o resto."
+        "MAPA é o modelo certo para o dado que é sobre o lugar (a Zona e as bases) e para a volta a Balboa com o pictograma. O número que engana é mostrado sobre o território que o gerou."
       ],
-      "correcoes": [
-        "Nenhuma correção."
-      ]
+      "correcoes": []
     },
     {
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "Cartão de 1970: três dados de peso igual em 4 linhas + a legenda dos militares; com a voz ('more than half… and the count took in the bases') lê-se em ~3 s, e a legenda impede ler os 8.569 como 'nascidos nos EUA'.",
-        "SINALIZA: de 12,4 a 17,0 s o bloco cinza (os outros 1.559 residentes) fica sem rótulo; a voz diz 'of its three thousand one hundred thirty-nine residents'. Pelo teste do texto sem áudio surge a pergunta 'e o resto?'. É consequência deliberada de deixar o '517' de fora (A106); o '1,041' em 17,07 s a resolve."
+        "Em 2 s um leigo entende o 1º cartão (a Zona, 23,559 de 44,198 nascidos nos EUA) e o 2º (Balboa: 1,580 vs 1,041 na Zona). Os dados partidos melhoram a leitura: o número vem alto e a explicação em legenda.",
+        "Sinal da 1ª rodada que continua: de 12,4 a 17,07 s o bloco cinza (1.559 residentes) não tem rótulo; é consequência de deixar o '517' fora (A106 não checado). O leigo lê o cinza como 'o resto'."
       ],
       "correcoes": [
-        "Se o verificador-de-fatos ler a Table 28 (A106), a Sala pode reabrir o '517 BORN IN OTHER COUNTRY' e dar rótulo ao cinza."
+        "Se o verificador-de-fatos fechar A106, rotular o cinza em vez de deixá-lo sem nome."
       ]
     },
     {
       "lente": "poluicao",
       "nota": 7,
       "problemas": [
-        "Teste de lastro: o cartão e a legenda ('born'), as bases (voz 'bases', 4,27 s), Balboa e o cartão (voz 'Now go back to Balboa'; 'thousand'; 'born in the Zone itself'): nenhum texto órfão. Sem entidade HTML, tofu ou glifo quebrado; portao-mapa til = 0 em 14 textos.",
-        "SINALIZA (pior extremo): em 4,3–9,6 s há 6 elementos simultâneos (a Zona, o cartão e as 4 bases), no teto de 6 da identidade §4.2; o cartão com a legenda é 1 bloco de leitura. O qc-carga mediu 10 textos na troca simultânea e a Arte a escalonou (9,633–9,933 s). De 12,4 s, 3 a 4 elementos, com 3.139 figuras minúsculas que se leem como textura de bloco, não como pessoas, no celular."
+        "Teste de lastro: 'born' → cartão de 1970; 'bases' → as quatro pílulas; 'Balboa' → pílula e anel; 'thousand' / 'born' → o cartão do pictograma. 'Canal Zone (1947 map)' é aviso de data da série (orientação mínima, exceção a). Nenhum texto órfão.",
+        "Em 4,3–9,6 s a cena está no teto de 6 elementos (Zona, cartão, 4 bases) e perto do teto de 3 blocos de texto: qc-carga saída 0, sem reprova, mas é o pior extremo, como na 1ª rodada. O dado partido NÃO piorou a conta: '1,580'/'BORN…' contam como um bloco.",
+        "Sem entidade HTML, tofu nem glifo quebrado (portao-mapa til 0, 16 textos, sha1 de hoje)."
       ],
-      "correcoes": [
-        "Nenhuma correção; não somar nada ao b1."
-      ]
+      "correcoes": []
     },
     {
       "lente": "motion",
       "nota": 7,
       "problemas": [
-        "Câmera contínua (giro −1,5° → +1,5° e aproximação lenta) e viagem de 2,3 s (9,95–12,25 s) para Balboa, dentro de 1,5–3 s (a regência pede 3 s e o cabeçalho declara 2,3 s, van Wijk). Entradas em 300 ms; o preenchimento da Zona entra em 500 ms e desce a 40 % em 4,267 s para os pontos lerem.",
-        "SINALIZA (o ponto mais fraco da cena; medido): no quadro da Zona (0,5–9,5 s) a deriva na borda esquerda é de ~20–28 px no 4K em 4–5 s; em Balboa (12,5–22,5 s), ~70 px no 4K em 10 s (menos no centro). De 18,8 a 23 s (4,2 s) é só deriva sob a pergunta, e a regência a declara 'continua'. É o mesmo ritmo do corpo da LA s05; não reprovo.",
-        "As vizinhas s33 (foto) e s35 (documento) não são mapa: sem corte seco entre mapas."
+        "Câmera NÃO mudou nesta rodada (as mudanças são texto e água): giro contínuo −1,5°→+1,5° com aproximação lenta, e a viagem van Wijk de 2,3 s (9,95–12,25) de volta a Balboa, cúbica, sem degrau nem corte seco. Deriva medida nos quadros do clipe (correlação de fase): ~5 px/s no 4K em 13,2→21,5 s (8 px em x e 20–24 em y por 4–5 s), no piso, como na 1ª rodada. Nada congela: o pictograma divide-se em 17,07 e o anel pulsa.",
+        "O corte de 9,633–9,933 (saída do cartão e das bases antes de Balboa) é limpo."
       ],
       "correcoes": [
-        "Arte (se a Sala quiser mais vida, sem acelerar): alargar a aproximação em cada palco (a Zona; Balboa) para ~0,12–0,15 de zoom.",
-        "Pergunta ao Lucas (levada pela Sala): a aproximação lenta basta? (ver report)"
+        "Nada novo a pedir. Se o Lucas achar 'mapa parado' na linha do tempo, o conserto é o da 1ª rodada: alargar a aproximação (z), nunca a velocidade."
       ]
     },
     {
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "'© MapTiler © OpenStreetMap contributors' a 56 px, na faixa abaixo de y 1880, em todos os quadros olhados (0,2, 2,5, 5,0, 13,0 e 18,5 s), com data-qc-credito=\"mapa\" só nele; cumpre o OSM dos pontos-osm-hoje. portao-mapa rodape v5: 10,63:1 @ 2 s (piso 3:1), 51 amostras, 144 créditos medidos.",
-        "'Source: U.S. Census Bureau, 1970' (1,867–9,933 s) e '…, 1960' (12,4 s até o fim) entram com o dado que sustentam, a 56 px, sem a marca de mapa. Sem crédito-fantasma e sem crédito supérfluo: são dados de cartão, não folha federal real (textos-tela, regras da série).",
-        "exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (\"Quero reduzir para 56px\"); o sha1 do HTML (6d080e024a7e…) bate com o de out/zona-do-canal/qc/_excecoes-portao.json e a reprovação é só o crédito de fonte (\"Source: U.S. Census Bureau, 1970\" 56<72 · \"Source: U.S. Census Bureau, 1960\" 56<72); o crédito sai de var(--fs-credito) = 56 px, com data-qc-papel=\"credito\" e sem data-qc-credito=\"mapa\" (a marca de mapa só na linha da MapTiler)."
+        "exceção do Lucas: qc-tamanho, crédito a 56 px (os dois 'Source:' de 1970 e 1960, 56<72), 'Quero reduzir para 56px', 07/10/2026 11:3x; sha1 do HTML 9933322a… igual ao de _excecoes-portao.json (o portão de hoje, 18:06, reprovou só isso)",
+        "Crédito de mapa '© MapTiler © OpenStreetMap contributors' na tela do 1º ao último quadro (cumpre também o OSM dos pontos-osm-hoje); 'Source: U.S. Census Bureau, 1970' de 1,867 a 9,633 e '…1960' de 12,4 ao fim, cada um com o dado que sustenta. portao-mapa rodape v5: 10,63:1 @ 2 s (51 amostras, 144 créditos), sha1 de hoje. Sem mídia de _media/ na cena: nenhum crédito-fantasma."
       ],
-      "correcoes": [
-        "Nenhuma correção."
-      ]
+      "correcoes": []
     },
     {
       "lente": "tema",
       "nota": 8,
       "problemas": [
-        "Matizes: --destaque (Zona no b1, anel de Balboa e a pilha dos nascidos nos EUA), --tinta (os nascidos na Zona), --neutro (bases e o resto apagado). 3 matizes fora a base; sem véu, scrim nem vinheta; sem bandeira.",
-        "SINALIZA: no b4 o --destaque tem dois significados na mesma cena: o anel (o lugar, o protagonista do arco) e o bloco de 1.580 nascidos nos EUA. É a série da s02/s34, que a Sala aprovou; se ela quiser 'uma cor = um significado' à risca, o bloco pode ir a --tinta e os nascidos na Zona a outro valor. Degraus de tile no mar escuro (o mesmo defeito do asset da s28) nos quadros de 13,0 e 18,5 s."
+        "Uma cor = um significado: --destaque (laranja) no território, no anel e nos nascidos nos EUA do pictograma; --tinta nos nascidos na Zona; --neutro nas bases e no resto. A água escura (agua-osm-zona, identidade §6) unificou o mar e a baía: a pluma turquesa da 1ª rodada sumiu e a cena casa com as irmãs escuras (s28, s46).",
+        "Sinal já conhecido: em 12,4–23 s o --destaque serve ao anel (o lugar) e ao bloco de 1.580 nascidos nos EUA; é a série aprovada."
       ],
-      "correcoes": [
-        "Nenhuma correção obrigatória."
-      ]
+      "correcoes": []
     },
     {
       "lente": "cobertura",
       "nota": 9,
       "problemas": [
-        "As coisas nomeadas aparecem como lugar real: a Zona, as quatro bases (pontos de 1947) e Balboa no satélite. Nenhum concreto central desenhado no lugar do registro."
+        "O concreto central é o número e o lugar (a Zona, as bases, Balboa): têm mapa e pictograma. As bases sem foto são secundárias e nomeadas por pílula; sem reprova."
       ],
-      "correcoes": [
-        "Nenhuma correção."
-      ]
+      "correcoes": []
     },
     {
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Dois palcos (a Zona, 0–9,9 s; Balboa, 11,8–23 s) e uma viagem de 2,3 s; a cada beat entra uma camada (cartão, bases, pictograma, divisão). De 18,8 a 23 s (4,2 s) o quadro é o mesmo com deriva, como a regência prescreve para a pergunta final, abaixo do teto de 6 s. Sem footage e sem clipe repetido."
+        "Cena de mapa com regime 'normal': 5 tempos (cartão em 1,867, bases em 4,267, viagem em 9,95, pictograma em 12,4, divisão em 17,07); o plano não passa de ~6 s sem troca de camada ou de câmera. O b5 final (18,77–23,0, sem texto novo durante a pergunta) é 'continua' declarado na regência."
       ],
-      "correcoes": [
-        "Nenhuma correção."
-      ]
+      "correcoes": []
     },
     {
       "lente": "autoria",
       "nota": 10,
-      "problemas": [],
+      "problemas": [
+        "Nenhuma capa, logo, selo ou embalagem de terceiro na cena; o pictograma e os cartões são desenho do canal."
+      ],
       "correcoes": []
     },
     {
       "lente": "camadas",
       "nota": 10,
-      "problemas": [],
+      "problemas": [
+        "Sem material nomeável que ficou de fora: a cena não tem arquivo de _media/ nem dado pesquisado sem uso. A lente cala."
+      ],
       "correcoes": []
     },
     {
       "lente": "circulo",
       "nota": 8,
       "problemas": [
-        "SINALIZA (eco de forma, não reprova): o b1 repete o quadro da Zona com legenda das s25/s28. O b3–b5 é o callback da s02 (o mesmo Balboa com o mesmo pictograma) e paga com informação nova (a divisão de 1.041 contra o resto); sem esta cena o espectador perderia o dado de 1970 e a divisão visual."
+        "Sinal conhecido, aceito pela Sala: o quadro de Balboa (a partir de 11,77 s) é o mesmo da s01 (beat 3), da s08 e da s65: eco de forma e refrão declarado (regência: 'a câmera VOLTA a Balboa'). Tem degrau novo: o pictograma que se parte em 1.580 / 1.041 / resto, e o cartão de 1970 (a Zona e as bases) é informação nova. Nota 8, passa."
       ],
-      "correcoes": [
-        "Nenhuma correção."
-      ]
+      "correcoes": []
     }
   ]
 }
