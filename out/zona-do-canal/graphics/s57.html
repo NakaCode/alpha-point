@@ -52,16 +52,19 @@
               1,057 e 44 px. As canetas e a mão de Torrijos estão na tela desde o corte: em "signed" (682,55 s = 6,12) já estão lá.
         4,00  "Carter" (680,44 s; textos-tela t0 4,0): o CARD "JIMMY CARTER" (pílula --rotulo, 128 px, Inter 700) no canto de cima à
               esquerda (sobre o alto da bandeira e a cortina), 300 ms; 4,12 o CARGO "President of the United States (1977)" (pílula
-              legenda, 84 px, Inter 500), 120 ms depois do nome (§4.4).
+              legenda, Inter 500, a 72 px = var(--piso-eixo), o piso do ofício para eixo/legenda; zona-do-canal-arte-13: x 200→1418,
+              y 370→488), 120 ms depois do nome (§4.4).
         4,25  zona-do-canal-arte-10: o FIO do card de Carter (traço --tinta 6 px sobre --tinta-escura 14 px a 45 %, ponta em círculo de
-              r 12) nasce no pé do cargo (x 300, y 519, fixo na tela) e se desenha em 400 ms até 44 px acima do cabelo de Carter, SENTADO
+              r 12) nasce no pé do cargo (x 300, y 504 desde a arte-13; era 519) e se desenha em 400 ms até 44 px acima do cabelo de Carter, SENTADO
               embaixo à esquerda (âncora no plano sem transformação: x 358, y 1235; projetada pelo Ken Burns a cada t: em 6,5 s a ponta
               cai em x ~270, y ~1156; em 8,0 s em x ~225, y ~1138). O fio desce sobre a bandeira; o rosto do homem que se inclina em pé
               (x 800–1120, y 580–1090 na tela de 6,5 s) fica à direita dele.
         5,50  "Torrijos" (681,96 s; textos-tela t0 5,5): o CARD "OMAR TORRIJOS" no canto de cima à direita (termina em x 3560, fora do
               rosto do assessor na borda), 300 ms; 5,62 o CARGO "Head of Government of the / Republic of Panama (1977)" (duas linhas,
-              alinhadas à direita). Os dois cards ficam até o corte (Torrijos 2,5 s no ar).
-        5,75  zona-do-canal-arte-10: o FIO do card de Torrijos nasce no pé do cargo (x 3520, y 620) e se desenha em 400 ms até 44 px
+              alinhadas à direita, a 72 px = var(--piso-eixo), igual ao de Carter; zona-do-canal-arte-14: x 2637→3560, y 370→575).
+              Os dois cards ficam até o corte (Torrijos 2,5 s no ar).
+        5,75  zona-do-canal-arte-10: o FIO do card de Torrijos nasce em x 3520, y 620 (o pé do cargo a 84 px era 603,6; a 72 px é
+              574,8, e a origem ficou em 620 por pedido da arte-14: "o fio fica como está") e se desenha em 400 ms até 44 px
               acima do cabelo de Torrijos, SENTADO embaixo à direita com a caneta (âncora x 3230, y 1379 no plano sem transformação, na
               parte direita da cabeça dele: em 6,5 s a ponta cai em x ~3250, y ~1306; em 8,0 s em x ~3261, y ~1291). O fio passa ≥ 60 px
               à direita da orelha do homem de óculos escuros em pé (rosto x 2920–3300, y 600–1000 na tela de 6,5 s) e não toca rosto
@@ -85,6 +88,30 @@
     #fios, as classes .fio/.fio-sob/.fio-ponta, as funções projKb2 e fio, as âncoras ANC e os tempos T.fio1/T.fio2). Nada mais mudou:
     as fotos, o Ken Burns, os textos, os tempos de entrada (4,0 / 5,5) e a posição dos cards são os da arte-1.
 
+  MUDOU EM zona-do-canal-arte-13 (16/10/2026, lote E-s57; qc-4, L46 item 2: o cargo de Carter cobria a têmpora e o olho esquerdo do
+    homem de cabelo branco em pé atrás dele, de 4,12 s ao corte): SÓ o CARGO DE CARTER (#cargo1) e a origem do fio dele.
+    - O cargo vai a var(--piso-eixo) = 72 px (o piso do ofício para eixo/legenda, declarado em marca/tokens.css); a pílula passa de
+      x 200→1612 × y 370→503 para x 200→1418 × y 370→488. Medido no DOM e nos quadros 4K (antes@7.95 / antes@4.2): o rosto do homem
+      de cabelo branco começa em x ~1480 (7,95 s) e ~1545 (4,2 s); o cabelo do homem de cabelo escuro (centro) começa em y ~506 (7,95)
+      e ~564 (4,2). Folga nova: ≥ 62 px para a têmpora, 18 px para o cabelo escuro (antes: 3 px).
+    - POR QUE NÃO "60 px para cima ou para o lado": o nome está na margem de 160 e as pílulas na margem de 200; a pílula de duas linhas
+      ("President of the / United States (1977)": x 200→1004, y 370→604) e a de três (x 200→844, y 370→704) cobrem o alto da cabeça do
+      homem de cabelo escuro (cabelo em y 506–594 entre x 775 e 1000 aos 7,95 s); a 76 px a pílula já encosta no rosto (x 1483).
+    - O fio nasce 16 px abaixo do pé novo (x 300, y 504; era 519). A âncora, a projeção, os tempos (4,25→4,65) e o traço não mudaram.
+    - O cargo de Torrijos continuou a 84 px nesta rodada (o pedido mandava não tocar no outro card); a arte-14 o igualou (abaixo).
+      A conta dos 6 elementos e dos blocos não muda.
+
+  MUDOU EM zona-do-canal-arte-14 (16/10/2026, lote E-s57): SÓ o CARGO DE TORRIJOS (#cargo2), que vai a var(--piso-eixo) = 72 px, igual
+    ao de Carter: os dois cards são irmãos, tamanho, peso e forma iguais (identidade §4.1). A pílula passa de x 2492→3560 × y 370→604
+    (1067,6 × 233,6) para x 2637→3560 × y 370→575 (923,1 × 204,8), medido no DOM a 5,95 / 6,5 / 7,95 s (a 5,7 s, em fade, y 379→584).
+    Posição (right 280, top 370), duas linhas alinhadas à direita, o fio (origem x 3520, y 620; âncora, projeção, tempos 5,75→6,15 e
+    traço) e o Ken Burns NÃO mudaram, por pedido. A origem do fio fica 45 px abaixo do pé novo (o de Carter fica 16 px): se a Sala
+    quiser os dois iguais, é um número só (fio2: y 620 → 591). Medido nos quadros 4K de 5,95 / 6,5 / 7,95 s: a pílula termina acima do
+    cabelo do homem de óculos escuros em pé (a de 84 px pousava sobre o alto do cabelo dele aos 7,95 s); a testa dele começa em y ~632
+    aos 7,95 s e ~665 aos 5,95 s; o assessor na borda direita continua fora da pílula (x ≥ 3700). A conta dos 6 elementos e dos blocos
+    não muda.
+  MUDOU EM zona-do-canal-arte-14b (16/10/2026, lote E-s57b): SÓ a ORIGEM do fio de Torrijos (fio2), de y 620 para y 591 = 16 px abaixo do pé novo da pílula (574,8), como a do Carter (16 px abaixo do pé dele): os dois cards são irmãos. A ponta, a âncora, o x 3520, os tempos (T.fio2), o Ken Burns, a pílula e todo o resto não mudaram (o beat 5,75 acima descreve o 620 da arte-14; vale este bloco).
+
   A MÍDIA (out/zona-do-canal/_pesquisa/conferencia-midia.json › candidatos, vereditos "aprovado" para a cena s57, lote 6, pesquisa-4,
   casados pelo sha256 do RASCUNHO julgado (os TIFF do Commons; os JPG entregues são a conversão declarada do buscar-midia,
   _media/foto/s57/_PROCEDENCIA.json › medido.medido_no_download.sha256), como a roupa §10 manda para o acervo aberto):
@@ -103,7 +130,8 @@
   recorte é a janela de 16:9 dentro de cada foto, sem a borda do scan nem as placas da mesa, sem mudar o sentido.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Pílula --rotulo 12 px, 24×40 (o cargo 16×28);
-  rótulo e nome 128 px Inter 700; cargo 84 px Inter 500. Margens 200/160 (as pílulas em x 200 / até x 3640, y 160; o card de Torrijos
+  rótulo e nome 128 px Inter 700; os dois cargos a 72 px = var(--piso-eixo), Inter 500 (Carter na arte-13, Torrijos na arte-14; o alvo
+  da marca é 84, e a cena usa o piso porque a 84 as pílulas cobriam rosto). Margens 200/160 (as pílulas em x 200 / até x 3640, y 160; o card de Torrijos
   termina em x 3560); nenhum texto abaixo de y 1880; canto inferior direito (400×400) vazio. REGISTRO em tela cheia: sem moldura, sem
   degradê, sem vinheta (§5). Sem bandeira ao lado do nome (roupa §6). Nenhum --destaque.
 
@@ -159,9 +187,15 @@
   <!-- o rótulo da data (sobre a 1ª foto) e os dois cards de pessoa (sobre a 2ª), nas pílulas (grafia de textos-tela.json s57) -->
   <div class="pilula direita" id="data" data-qc-papel="rotulo" style="right:200px;top:160px"></div>
   <div class="pilula" id="nome1" data-qc-papel="rotulo" style="left:200px;top:160px"></div>
-  <div class="pilula-leg" id="cargo1" data-qc-papel="eixo" style="left:200px;top:370px"></div>
+  <!-- zona-do-canal-arte-13: o cargo de Carter no PISO de eixo/legenda (var(--piso-eixo), 72 px): numa linha a 84 px a pílula ia a
+       x 1612 e cobria a têmpora e o olho do homem de cabelo branco em pé (rosto a partir de x ~1480 aos 7,95 s); a 72 px termina
+       em x 1418. Não há outro lugar: subir é a margem de 160 (o nome está nela), o lado é a margem de 200, e qualquer pílula de
+       duas ou três linhas (pé em y 604 / 704) cobre o alto da cabeça do homem de cabelo escuro (cabelo a partir de y ~506). -->
+  <div class="pilula-leg" id="cargo1" data-qc-papel="eixo" style="left:200px;top:370px;font-size:var(--piso-eixo)"></div>
   <div class="pilula direita" id="nome2" data-qc-papel="rotulo" style="right:280px;top:160px"></div>
-  <div class="pilula-leg direita" id="cargo2" data-qc-papel="eixo" style="right:280px;top:370px"></div>
+  <!-- zona-do-canal-arte-14: o cargo de Torrijos no MESMO piso que o de Carter (var(--piso-eixo), 72 px): os dois cards são
+       irmãos, tamanho, peso e forma iguais (identidade §4.1). Duas linhas, alinhadas à direita, pé em x 3560; a posição não mudou. -->
+  <div class="pilula-leg direita" id="cargo2" data-qc-papel="eixo" style="right:280px;top:370px;font-size:var(--piso-eixo)"></div>
   <!-- zona-do-canal-arte-10: os FIOS de cada card até a cabeça da pessoa nomeada (sobre a 2ª foto). A ponta segue o Ken Burns
        (a âncora é a posição da cabeça no plano sem transformação, projetada por t no __renderAt); o traço é --tinta de 6 px sobre
        um traço --tinta-escura de 14 px a 45 % (a "sombra fake" sem filter: o fio do Carter cruza as listras da bandeira). -->
@@ -343,8 +377,8 @@
     texto(E("cargo2"), t, T.cargo2);
     // os fios (arte-10): do pé do cargo de cada card até a cabeça da pessoa; só no plano 2
     var tt = Math.max(0, t - T.corte);
-    fio("fio1", t, T.fio1, 300, 519, ANC.carter, tt);
-    fio("fio2", t, T.fio2, 3520, 620, ANC.torrijos, tt);
+    fio("fio1", t, T.fio1, 300, 504, ANC.carter, tt);   // arte-13: o pé do cargo subiu de 502,8 para 488,4 (72 px); a origem segue 16 px abaixo dele
+    fio("fio2", t, T.fio2, 3520, 591, ANC.torrijos, tt);   // arte-14b: o pé do cargo desceu a 574,8 (72 px, arte-14); a origem segue 16 px abaixo dele (era 620)
   }
 
   window.__renderAt = function (t) {
