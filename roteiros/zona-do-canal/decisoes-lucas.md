@@ -70,3 +70,7 @@ Três blocos de perguntas de opção (`out/zona-do-canal/_pesquisa/pendencias-lu
   ele aceita e onde está colando, e a Sala corta só o que não é obrigatório (crédito de licença nunca sai). À pergunta "A voz do vídeo 3
   mede −19,7 LUFS […] Como fica o volume?", a resposta: **"Subir a voz no Premiere (Recomendado)"**: a música a −35 dB no XML, e o
   LEIA-ME do pacote diz para subir a voz em 5,5 dB, com limitador na saída.
+- **A cena 64 e o RITMO** (15/10/2026, 22:3x). Com o trecho da cena em 1080p, com a narração
+  (`out/zona-do-canal/_tmp/s64-lucas/s64-trecho-1080p.mp4`), à pergunta "Cena 64 (12:21 a 12:28): com o UNTIL separado da data […]
+  entram 6 textos em 6,2 s, e a régua do Top10 no portão só aceita 5 […] Como fica?", a resposta: **"Manter (Recomendado)"**. A
+  exceção do `qc-carga` está em `out/zona-do-canal/qc/_excecoes-portao.json`, no sha1 `d5f7d15e…`.
