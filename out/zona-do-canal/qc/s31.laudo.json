@@ -7,132 +7,118 @@
       "lente": "espaco",
       "nota": 7,
       "problemas": [
-        "Portões lidos: qc-cena (rodada de 11:38, 5 cenas) só reprova o crédito 'Source: Annual Report of the Governor of the…' 56<72; portao-margens 0 (sha1 a0f30bd5…, 55 itens, 109 amostras); til 0 (6 textos); rodapé 12,15:1 @3,78 s. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 ('Quero reduzir para 56px'); o sha1 do HTML (a0f30bd5…) bate com o de _excecoes-portao.json, a reprovação é só o crédito, que sai de var(--fs-credito) com data-qc-papel='credito' e sem data-qc-credito='mapa'. Medido no probe: caixa do crédito 134 px para 2 linhas = 56 px.",
-        "SINALIZA (medido no probe-elemento a 9 s e visto no recorte 4K): a pílula 'Balboa' (y 1234–1428) fica a 12 px da tira literal (topo y 1440) e a 13 px da base da foto (y 1221). Nada se sobrepõe (check-overlap verde), mas a pílula cola nos dois e a tira lê-se como legenda dela. A coluna tem 643 px entre a foto e o limite sob a câmera (y ~1868) para pílulas de 194 + tira de 424, e não sobra folga.",
-        "SINALIZA: de 0 a 2,0 s a foto (1157 px de largura, 30 % do palco) fica no alto à direita, com dois terços da mesa vazios. A regência pedia a foto 'printed large'; o desvio (2) está declarado no cabeçalho (a coluna divide o espaço com a folha e a tira)."
+        "Portões lidos (sha1 1a6f6600, igual ao do HTML de hoje): portao-margens veredito 0 (109 amostras, 32 medidos, itens e avisos vazios); qc-cena só falha 'tamanho' = o crédito 'Source: Annual Report of the Governor of the…' 56<72 (rodei o qc-tamanho: única reprovação); portao-mapa til 0 e rodape 0 (12,15:1); check-overlap 0 (6 textos); qc-carga 0,56 entradas/s, pior 1 s = 3; qc-fora-do-quadro 0. Crédito medido pelo probe-elemento: caixa de 2 linhas de 134 px = 56 px, via var(--fs-credito), sem override. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 ('Quero reduzir para 56px'), em _excecoes-portao.json com sha1 1a6f6600… igual ao do HTML.",
+        "SINALIZA (probe-elemento a 8,0 s, 4K): a pílula 'Balboa' (y 1234-1428) fica a 12 px do topo da tira (y 1440) e a 13 px da base da foto (y 1221). Nada se sobrepõe (check-overlap verde), mas a pílula fica espremida entre os dois e a tira se lê como legenda dela. Igual à rodada anterior; não reprova.",
+        "SINALIZA: de 0 a 2,0 s a foto (1157 px de largura) fica no alto à direita, com dois terços da mesa vazios; desvio declarado no cabeçalho."
       ],
       "correcoes": [
-        "Dar ao menos ~60 px entre foto, pílulas e tira. O caminho mais curto é cortar a tira (ver poluicao), que devolve ~424 px à coluna; senão, encolher a folha ou subir a foto. Rodar de novo o portao-margens e o check-overlap."
-      ],
-      "origem": "julgada"
+        "Se mexer na cena de novo, abrir ~40 px entre a pílula 'Balboa' e a tira (descer a tira ou subir a foto/pílula), dentro da margem e da faixa do crédito."
+      ]
     },
     {
       "lente": "factual",
       "nota": 9,
       "problemas": [
-        "Grafia e cabeçalho idênticos ao textos-tela (ANNUAL REPORT OF THE GOVERNOR OF THE PANAMA CANAL · 1950 · P. 43; 'Source: Annual Report of the Governor of the Panama Canal, 1950', e não 'Panama Canal Company', que é de 1951). Texto da folha fiel (folha_texto). Foto NARA 202800907 casa com o veredito aprovado da s31 (sha256 aa99a430…); 'Balboa' não é mais específico que o lugar_na_origem; 'Photo from 1951' = data_na_origem, entra 0,7 s (150 ms depois do assentamento). A folha não tem brasão, timbre nem assinatura."
+        "Cabeçalho 'ANNUAL REPORT OF THE GOVERNOR OF THE PANAMA CANAL · 1950 · P. 43' e crédito 'Source: Annual Report of the Governor of the Panama Canal, 1950' iguais ao textos-tela (não 'Panama Canal Company', que é de 1951). Tira = trecho_ampliado literal (12 palavras): 'an assignment to / family quarters before / permission is granted / for their families'. Foto NARA 202800907 (sha256 aa99a430…) casa com o veredito aprovado da cena; rótulo 'Balboa' não é mais específico que o lugar_na_origem ('Four-family quarters on Las Cruces Street, Balboa, Canal Zone'); aviso 'Photo from 1951' = data_na_origem (7/nov/1951), entra em 0,70 s (150 ms depois do assentamento)."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "wordlock",
       "nota": 9,
       "problemas": [
-        "Foto em 'The house' (0 s), folha e crédito em 'The Zone's' (316,50 s = 2,0 s local), tira e grifo em 'assigned' (321,19 s = 6,67 s). O grifo corre com a voz até 'all' (10,1 s) e o mapeamento folha→fala é aproximado (a frase grifada tem 23 palavras e a voz 11), dentro do aceitável."
+        "Contra o words.json (offset 314,5): foto em 0; folha e crédito em 2,0 ('The'); tira em 6,667 ('assigned' 6,69). O grifo da tira segue a voz palavra a palavra: 'assignment' 6,67-7,17 (voz 'assigned' 6,69), 'family quarters' 7,17-7,98 (voz 7,17 e 7,57), 'before' 7,98 (voz 7,98), 'for their families' 8,37-8,93 (voz 8,37 e 8,53), 'permission is granted' 9,09-9,89 (voz 'permission' 9,09). Quadros 6,9 / 8,0 / 9,0 s (q4-s31-sheetB): aos 8,0 s o grifo termina em 'quarters' e a voz acaba de dizer 'before'; aos 9,0 s 'for their families' está aceso e 'permission' ainda não: nada adiantado nem atrasado. A ordem na tira segue a VOZ ('for their families' acende antes de 'permission is granted'), declarado no cabeçalho."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "abordagem",
       "nota": 8,
       "problemas": [
-        "Registro (a casa) + documento recriado: certo para a frase. A página real só existe como prova (pergunta 13 ao Lucas): recriar é o caminho padrão e está declarado. SINALIZA: a foto, coisa nomeada da primeira frase, fica pequena (0,245× do arquivo)."
+        "Registro (a casa, 'The house' = coisa nomeada) + documento recriado (a página real só existe como prova; pergunta 13 ao Lucas: recriar, com Source:): certo. SINALIZA: a foto, coisa nomeada da 1ª frase, fica pequena (0,245× do arquivo)."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "Foto da casa, depois a regra grifada: entende-se. A folha a 86 px (Courier Prime) lê-se."
+        "Foto da casa, depois a regra: em 2 s se entende 'a casa veio do canal / a regra do relatório'. Folha a 86 px e tira a 86 px (Courier Prime) se leem."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "poluicao",
       "nota": 7,
       "problemas": [
-        "SINALIZA: a tira 'ampliada' tem a mesma letra da folha (Courier Prime 400, 86 px) e as mesmas palavras, então não amplia nada: repete o grifo que corre na folha. O texto tem lastro na fala, mas é redundante com a folha. A regência pede 'literal strip', por isso não reprova.",
-        "Contagem: foto com pílulas (1), folha (1), tira (1) = 3 elementos (alvo 4–5), 2 blocos de leitura (≤3)."
+        "O achado de espectador (a frase do relatório 'aparece duas vezes ao mesmo tempo, com dois grifos em paralelo') SAIU em parte que importa: a folha recua (1,00 → 0,98) e escurece (véu de 22 %) quando a tira entra, o grifo da folha saiu e só a tira tem marca-texto (quadros 6,9 / 8,0 / 9,0 / 10,7 s, q4-s31-sheetB). SINALIZA: o TEXTO continua duplicado, a tira repete as palavras da folha na mesma letra (Courier Prime 400, 86 px) e não amplia nada; a identidade §5 só prevê a tira para texto que não cabe legível. A tira está na regência ('literal strip') e no textos-tela (trecho_ampliado), então não reprova.",
+        "Contagem de 6,7 s ao fim: foto com pílulas (1) + folha (1) + tira (1) = 3 elementos (alvo 4-5), 2 blocos de leitura (teto 3). Teste de lastro: 'Balboa' não é dito na fala (orientação de lugar do REGISTRO, exigida pela identidade §5 e conferida contra o lugar_na_origem), 'Photo from 1951' = aviso do ano, folha e tira convocadas por 'report' e 'assigned'. Sem órfão.",
+        "O véu da folha e a sombra do recuo são a 2ª saída da identidade §5 ('a folha recua e escurece'), não filtro sobre foto: não reprova."
       ],
-      "correcoes": [
-        "Se a Sala aceitar, cortar a tira (a folha a 86 px já se lê) e dar o espaço à foto; é a mesma correção do problema de espaço."
-      ],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Assentamento da folha e da foto sem retorno; câmera para antes do grifo; de 10,55 s ao fim, diferença de pixels 0 entre 10,55, 10,68 e 10,79 s (repouso medido). Grifo na palavra."
+        "Assentamento da folha e da foto sem retorno; câmera para em 5,8 s, antes do grifo; de 10,5 a 10,8 s as caixas de folha, tira, foto e pílula não se movem (probe-elemento, mesmas x/y) = repouso.",
+        "SINALIZA: o recuo da folha (1,00 → 0,98, 16 px, 0,6 s) corre de 6,667 a 7,27 s junto da entrada da tira; a folha não está sendo lida nesse momento (o texto lido é o da tira, que entra na palavra), por isso não reprova a regra 'texto parado enquanto se lê'."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "Folha recriada leva 'Source:' (certo); foto NARA de domínio público sem crédito na tela (certo). Arquivo da foto tem veredito aprovado da própria cena. Nenhum arquivo -prova na tela."
+        "Folha recriada leva 'Source:' (certo); foto NARA de domínio público sem crédito na tela (certo). Nenhum arquivo -prova na tela; sem crédito-fantasma (qc-credito-fantasma 0)."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "tema",
       "nota": 9,
       "problemas": [
-        "Mesa do vídeo (still do istmo, feltro a 50 %), sem cor nova; grifo na cor da marca."
+        "Mesa do vídeo (still do istmo, feltro), sem cor nova; marca-texto na cor da marca; o escurecimento da folha só muda luminância."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "cobertura",
       "nota": 9,
       "problemas": [
-        "A coisa nomeada ('the house') tem registro real, no 1º plano."
+        "A coisa nomeada ('the house') tem registro real no 1º plano."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Plano 1 de 2,0 s e plano 2 de 8,8 s com grifo correndo o tempo todo: movimento com propósito, dentro do teto."
+        "Plano 1 de 2,0 s e plano 2 de 8,8 s com o grifo correndo de 6,67 a 9,89 s e repouso de 0,9 s no fim: movimento com propósito, dentro do teto de 6 s de imagem parada. Cada src aparece uma vez."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "autoria",
       "nota": 9,
       "problemas": [
-        "Folha recriada no visual do canal (tipografia declarada, texto fiel, sem timbre): é a saída aceita; nenhuma peça de terceiro desenhada."
+        "Folha recriada no visual do canal (tipografia declarada, texto fiel, sem timbre nem logo): é a saída aceita pelo ofício; nenhuma peça de terceiro desenhada."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "camadas",
       "nota": 10,
       "problemas": [],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     },
     {
       "lente": "circulo",
       "nota": 8,
       "problemas": [
-        "SINALIZA (eco de forma): s31, s32 e s33 são três mesas seguidas com o mesmo still e a mesma receita (foto impressa + folha/cartão). O conteúdo avança em cada uma; varia-se o modelo se der (a s33 já difere por ter duas fotos sem folha)."
+        "SINALIZA (eco de forma): s31, s32 e s33 são três mesas seguidas com o mesmo still e a mesma receita (foto impressa + folha/cartão). O conteúdo avança em cada uma; varia-se o modelo se der."
       ],
-      "correcoes": [],
-      "origem": "julgada"
+      "correcoes": []
     }
   ]
 }

@@ -7,18 +7,19 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "CONSERTADO (1ª rodada: espaco 6, palavra cortada). Quadro 4K de 8,6 s e recorte 4K `out/zona-do-canal/_tmp/q2-L26/q2-s07@8.6-recorte-borda-baixo.png` (x 1900–3520, y 1280–1520): a borda de baixo da página 57-33 agora cai no branco logo depois de 'Separated' (metade direita: Single, Married, Percent married, Separated e os seis números, inteiros) e depois de 'Born in other country' (metade esquerda, visto na folha de quadros de 0,3 a 8,6 s); 'Widowed' não aparece nem como farpa. Diff do HTML contra o commit anterior (1f3e500): só a altura da página (864 → 854 px) e o comentário; nada mais se moveu. Roupa §4 (folha de documento: palavra cortada reprova) e identidade §5 cumpridas. O recorte é fixo, por isso vale para todos os quadros.",
-        "Crédito: probe-elemento em t=8,0 s (#cred: x 200→1720, y 2079, caixa de 67 px ÷ line-height 1,2 = 55,8 px, uma linha, abaixo de y 1880), tamanho de var(--fs-credito), data-qc-papel=\"credito\", sem data-qc-credito. exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 ('Quero reduzir para 56px'); _excecoes-portao.json com sha1 1625c8c7… igual ao do HTML de hoje; é a única reprovação do portão (_portao.json falhas ['tamanho']), por isso sai de gatesDuros. Contraste do crédito 8,71:1 (portao-mapa rodape v5, piso 3:1).",
-        "Portões lidos, sem remedir: portao-margens v2 veredito 0 (sha1 1625c8c7… e marca c647bf6c… = tokens.css de hoje; 89 amostras, 14 medidos), avisos vazios; portao-mapa til 0 (3 textos).",
-        "Sinalização: a folha é uma tira larga (3.024 × 854) e o terço de baixo do quadro fica sem nada por 6,7 s, até a tira ampliada entrar em 6,763 s (folha de quadros de 0,3 a 7,5 s)."
+        "ACHADO DA r1 (de 1,0 a 6,7 s a página é uma tira no terço de cima, com a metade de baixo vazia até a tira entrar em 6,763 s): EM PARTE. Resolvido o lugar: nos quadros 4K de 0,5 / 1,5 / 3,5 / 5,5 / 6,9 / 8,0 / 8,5 s a folha pousa centrada na vertical (centro em ~0,47 da altura) e ocupa ~84 % da largura, sem o buraco embaixo; a tira entra em 6,763 s sob ela. NÃO resolvido o tamanho da tabela: o push-in foi a 1,07, não aos ~1,16 do achado, porque a 1,11 a fita da direita sai da margem (cabeçalho e relato EF1: 'o teto é 1,07'); a tabela continua em letra miúda no celular (a legibilidade vai à acessibilidade). A Sala já tinha essa trava como ratificada no pedido ('na s07, o push-in para em 1,07').",
+        "Portões lidos, sem remedir: portao-margens v2 veredito 0 (sha1 9a9d344f… e marca c647bf6c… de hoje; 89 amostras, 14 medidos, sem itens nem avisos); portao-mapa til 0 (sha1 de hoje). qc-rodape-contraste, rodado por mim na cena solta (sem mapa, sem MapTiler): 8,72:1 @ 4,82 s (piso 3:1).",
+        "Crédito: #cred de 1 linha, var(--fs-credito) sem px fixo (conferido no CSS), data-qc-papel='credito', sem data-qc-credito; mesmo CSS da rodada anterior (55,8 px/linha). Exceção do Lucas: qc-tamanho, crédito a 56 px (56<72), 07/10/2026 ('Quero reduzir para 56px'); _excecoes-portao.json tem a linha da s07 com sha1 9a9d344f… igual ao do HTML de hoje, e é a única reprovação do qc-cena (_portao.json: falhas ['tamanho'])."
       ],
-      "correcoes": []
+      "correcoes": [
+        "Se a Sala quiser mais tabela legível, o caminho é recuar as fitas para dentro da folha (ou a exceção da fita fora da margem) e só então subir o push-in; não é defeito que segure o render."
+      ]
     },
     {
       "lente": "factual",
       "nota": 9,
       "problemas": [
-        "O grifo está na linha certa (recorte): 'Born in the United States', a 3ª linha do bloco COUNTRY OF BIRTH, com os seis números (15,543 · 4,034 · 1,580 · 569 · 7 · 3), e é linha, não coluna. O rótulo 'U.S. CENSUS, 1960' bate com a página ('Table 28 … 1960'). O crédito 'Source: U.S. Census Bureau, censuses of 1920–1970' cobre os seis censos de que a frase fala (textos-tela, laudo lote A, achado 3). 'TABLE 28' e os demais itens do nao_vai_para_tela não aparecem como texto da cena (só o que a página imprime)."
+        "Inalterado e conferido: o grifo (8,0 e 8,5 s) está na linha 'Born in the United States' do bloco COUNTRY OF BIRTH, com os seis números; rótulo 'U.S. CENSUS, 1960' bate com a página (Table 28, 1960); crédito 'Source: U.S. Census Bureau, censuses of 1920–1970' cobre os seis censos da frase (textos-tela). Texto na tela confere com textos-tela.json › s07."
       ],
       "correcoes": []
     },
@@ -26,8 +27,7 @@
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "Conferido contra o words.json (tempo local = master − 46,567): 'And' 0,01 s (a página pousa), tira ampliada em 'counted' 6,76 s, grifo em 'where' 7,13 s. A câmera para em 6,46 s, 0,7 s antes do grifo; entre 8,5 e 8,76 s a diferença de pixels é 0,04 de média (só a deriva).",
-        "A tira em 6,763 s e não em 7,133 s do textos-tela é desvio declarado no cabeçalho e RATIFICADO pela Sala (sala-plano-pos-qc.md, decisão 5: 's07: a tira em 6,763'); nada a pedir à Arte."
+        "words.json (tempo local = master − 46,567): 'And' 0,01 (página pousa), 'counted' 6,76 (tira em 6,763), 'where' 7,16 (grifo em 7,133). O conserto não mexeu nos tempos. A folha para antes do grifo: a caixa clara da folha é idêntica de 5,5 a 8,75 s (x 301→3550, y 300), isto é, a câmera já estava parada ≥1,6 s antes de 7,133 s. A tira em 6,763 e não em 7,133 do textos-tela é desvio declarado e ratificado pela Sala (decisão 5). Nenhum elemento foi atrasado por ritmo."
       ],
       "correcoes": []
     },
@@ -41,17 +41,15 @@
       "lente": "acessibilidade",
       "nota": 7,
       "problemas": [
-        "Sinalização: nos primeiros 6,5 s a tabela é ilegível para o leigo (a ~12 px no 1080p); ele lê 'U.S. CENSUS, 1960' e uma página de números, e só a resposta ('Born in the United States', tira e grifo) chega em 6,8–7,2 s. A tira ampliada é a segunda saída da folha prevista na identidade §5, então não reprova; a ideia fica clara com a voz."
+        "Sinalização: de 0,5 a 6,7 s a tabela continua ilegível para o leigo (corpo da tabela a ~12 px no 1080p, mesmo com o push-in a 1,07); ele lê 'U.S. CENSUS, 1960' e uma página de números, e a resposta ('Born in the United States', tira e grifo) chega em 6,76–7,13 s. A tira é a 2ª saída da folha (identidade §5), então não reprova; a ideia fica clara com a voz."
       ],
-      "correcoes": [
-        "Opcional: se o portao-margens permitir (produto das escalas ≤ 1,4; hoje 1,255 no máximo), ampliar um pouco a folha (de 1,2× para ~1,3×) para o título 'Table 28 …' e o cabeçalho lerem melhor; sem mexer na tira."
-      ]
+      "correcoes": []
     },
     {
       "lente": "poluicao",
       "nota": 8,
       "problemas": [
-        "3 elementos no pico (folha, rótulo, tira) e 2 blocos de texto (folha e tira), abaixo do teto. Observação: o rótulo 'U.S. CENSUS, 1960' e o crédito 'Source: U.S. Census Bureau…' nomeiam o mesmo órgão; o crédito é a fonte da afirmação dos seis censos e o rótulo identifica a folha, então ficam. Til-glifo sem achados (3 textos)."
+        "3 elementos no pico (folha, rótulo, tira) e 2 blocos de texto, abaixo do teto. O rótulo 'U.S. CENSUS, 1960' e o crédito nomeiam o mesmo órgão, mas um identifica a folha e o outro é a fonte da afirmação dos seis censos. Sem entidade HTML nem tofu."
       ],
       "correcoes": []
     },
@@ -59,8 +57,8 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Medido por probe-elemento: a folha pousa (largura 3128 a 0,4 s, 3132 a 0,5, 3095 a 0,6, 3050 a 0,7, 3044 a 0,8, 3045 a 0,9): um assentamento só, sem retorno. A câmera lê de 1,6 a 6,46 s e para (465→464 entre 6,3 e 6,5 s, idêntico até o fim), antes da tira (6,763) e do grifo (7,133). A tira sobe 24 px na entrada (1538 → 1514). Sem balanço, sem texto girando.",
-        "Sinalização: de 0,95 s a 6,46 s (5,5 s) só a câmera lê a folha, antes da tira e do grifo; movimento com propósito (câmera descendo ao bloco), dentro do que a regência pede."
+        "Push-in de 1,0038 a ~1,07 até antes de 5,5 s e folha parada daí até o fim (caixa clara idêntica de 5,5 a 8,75 s): câmera parada ≥1,6 s antes do grifo, como manda a identidade §4.4 ('a câmera para durante o grifo, chegando 0,3 s antes'). Últimos 250 ms: diferença média de 0,11 (0,005 % dos pixels acima de 40) entre 8,47 e 8,75 s, só deriva. A tira entra; a folha não se move sob ela.",
+        "Sinalização: o push-in de ~6 % em ~5 s é quase imperceptível, e a folha fica ~5,8 s sem camada nova (0,95–6,76 s); abaixo do teto de 6 s de imagem parada e com movimento com propósito (rumo ao bloco). Não reprova."
       ],
       "correcoes": []
     },
@@ -68,7 +66,7 @@
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "Página real do Census de 1960 (obra federal, 17 U.S.C. §105, domínio público; sha256 79f5a5b4… casa com o veredito aprovado da s07): sem crédito de mídia, correto. O 'Source: U.S. Census Bureau, censuses of 1920–1970' é a fonte do dado (a frase afirma algo sobre seis censos, e a tela mostra uma página), justificado no textos-tela; sem ele a afirmação ficaria sem fonte. Sem crédito-fantasma (a página está na tela todo o tempo do crédito). O still da mesa é Landsat, sem crédito."
+        "Página real do Census de 1960 (obra federal, domínio público; sha256 79f5a5b4… casa com o veredito aprovado): sem crédito de mídia, correto. O 'Source: U.S. Census Bureau, censuses of 1920–1970' é a fonte do dado, justificado no textos-tela. Sem crédito-fantasma. Exceção do crédito a 56 px citada em espaco."
       ],
       "correcoes": []
     },
@@ -76,7 +74,7 @@
       "lente": "tema",
       "nota": 9,
       "problemas": [
-        "Papel da folha sobre a mesa de satélite escurecido; --destaque só no grifo (a 35 %), como manda a identidade; a tira em --papel e Courier Prime, como a folha. Nenhuma textura por cima da página."
+        "Papel da folha sobre a mesa de satélite escurecido; --destaque só no grifo (35 %); tira em --papel e Courier Prime, como a folha. Nenhuma textura por cima da página."
       ],
       "correcoes": []
     },
@@ -84,7 +82,7 @@
       "lente": "cobertura",
       "nota": 9,
       "problemas": [
-        "A coisa nomeada (o censo e o que ele imprime) aparece como a página real. Nada a apontar."
+        "A coisa nomeada (o censo e o que ele imprime) aparece como a página real."
       ],
       "correcoes": []
     },
@@ -92,23 +90,21 @@
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Um objeto (a página) por 8,77 s, com camadas novas em 0,95 (rótulo), 6,76 (tira) e 7,13 s (grifo) e a câmera lendo até 6,46 s: a fala é uma ideia só ('não publicou… contou onde nasceram'). O trecho mais longo sem camada nova é de 0,95 a 6,46 s (5,5 s), abaixo do teto de 6 s e com movimento com propósito. Sem repetição de arquivo entre planos."
+        "Um objeto (a página) por 8,77 s, com camadas novas em 0,95 (rótulo), 6,76 (tira) e 7,13 s (grifo); a fala é uma ideia só. Trecho mais longo sem camada nova: 0,95–6,76 s (~5,8 s), abaixo do teto de 6 s, com push-in com propósito. Sem repetição de arquivo."
       ],
       "correcoes": []
     },
     {
       "lente": "autoria",
       "nota": 10,
-      "problemas": [
-        "A página é um arquivo real escaneado, com procedência registrada; não há timbre, selo ou logo desenhado."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "camadas",
       "nota": 9,
       "problemas": [
-        "Observação (oportunidade, não reprova): a frase fala de seis censos, de 1920 a 1970, e a tela mostra uma página (1960). A página do censo de 1970 (_media/documento/census1970-p57-16.jpg) está baixada, mas é paga depois (cadeia 'ABRE S8–S9, pago em s33–s34' do espelho), e o conceito escolheu não adiantá-la."
+        "Observação (oportunidade, não reprova): a frase fala de seis censos, de 1920 a 1970, e a tela mostra uma página (1960). A página do censo de 1970 (_media/documento/census1970-p57-16.jpg) está baixada, mas é paga depois (cadeia 'ABRE S8–S9, pago em s33–s34'), e o conceito escolheu não adiantá-la."
       ],
       "correcoes": []
     },
@@ -116,7 +112,7 @@
       "lente": "circulo",
       "nota": 9,
       "problemas": [
-        "Contra as irmãs: s03/s04 foram fotos de época, a s05 o desenho, a s06 o mapa; esta é a primeira folha e traz um dado que nenhuma mostrou. A s12 e a s13 são outras páginas (tratado, lei de 1912)."
+        "Contra as irmãs: s03/s04 foram fotos de época, a s05 o desenho, a s06 o mapa; esta é a primeira folha e traz um dado que nenhuma mostrou. s12 e s13 são outras páginas."
       ],
       "correcoes": []
     }
