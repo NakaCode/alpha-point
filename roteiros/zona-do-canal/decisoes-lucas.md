@@ -74,3 +74,8 @@ Três blocos de perguntas de opção (`out/zona-do-canal/_pesquisa/pendencias-lu
   (`out/zona-do-canal/_tmp/s64-lucas/s64-trecho-1080p.mp4`), à pergunta "Cena 64 (12:21 a 12:28): com o UNTIL separado da data […]
   entram 6 textos em 6,2 s, e a régua do Top10 no portão só aceita 5 […] Como fica?", a resposta: **"Manter (Recomendado)"**. A
   exceção do `qc-carga` está em `out/zona-do-canal/qc/_excecoes-portao.json`, no sha1 `d5f7d15e…`.
+- **O uso semanal acima de 80 %** (16/10/2026, 10:3x). À pergunta "O uso semanal está em 77 %. Para terminar o vídeo 3 faltam: a sua
+  revisão na linha do tempo e os consertos que vierem dela, o render 4K (rodado por mim, gasta pouco do limite), o XML e o pacote.
+  Minha estimativa é terminar entre 79 e 83 %, conforme o número de comentários. Posso passar de 80 % para terminar?", a resposta:
+  **"Pode passar até 85 % (Recomendado)"**. A opção dizia: "Eu termino o vídeo 3 e, se chegar a 85 % antes do fim, paro e te
+  pergunto de novo. O limite zera em 22/10."
