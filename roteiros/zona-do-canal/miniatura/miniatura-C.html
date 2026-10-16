@@ -1,0 +1,52 @@
+<!doctype html><html lang="en-US"><head><meta charset="utf-8"><title>Alpha Point · miniatura do vídeo 3 · versão C</title>
+<!--
+  Versão C (16/10/2026), no estilo "Maldivas" das referências do Lucas (marca/embalagem.md §1.1: o círculo que amplia um ponto)
+  com o "WHO LIVES HERE?" levado ao passado do vídeo. Receita com lupa (§3.1), texto na caixa escura da D de Los Angeles.
+  Título: "Why a Town Inside Panama Was American Until 1979".
+  - Base: base-relevo-C.py (ao lado) grava out/zona-do-canal/_tmp/miniatura/C/C-mapa.png: o relevo do istmo (Terrain Tiles da
+    AWS Open Data, SRTM, domínio público) e a Zona do Canal pelo polígono da divisa da folha do Army Map Service de 1947
+    (zona-do-canal-1947.json, domínio público), em --destaque com contorno --tinta.
+  - Anel: em Balboa, no ponto do Balboa Clubhouse do mapa de 1936 (NARA 192812325), a cidade do título e do gancho.
+  - Lupa: a foto "Four-Family Type, Gold Quarters, Balboa, C. Z. September 1944" (NARA 202800899, obra federal), com o veredito
+    "aprovado" do conferente (conferencia-midia.json, s22, sha256 6eebf16a…), só recortada (C-lupa.png).
+  - Cone: as tangentes externas do anel e da lupa, calculadas pelo script (C-pontos.json), não a olho.
+  - Texto: "WHO LIVED HERE?", pago pelo roteiro: "The next rule decided who could live inside the line at all." e "Nobody lived
+    in the Zone just because they wanted to." (p2 e p3), e pelo gancho ("about half of its 3,139 residents had been born in the
+    United States"). Nada diz que os EUA largaram o canal em 1979.
+  Render: node marca/logo/_render.mjs roteiros/zona-do-canal/miniatura/miniatura-C.html 2560 1440 <saida.png>
+-->
+<style>
+@font-face{font-family:"MarcaSec";src:url("../../../marca/fontes/barlowcondensed/BarlowCondensed-ExtraBold.ttf") format("truetype");font-weight:800;font-display:block}
+@font-face{font-family:"MarcaPri";src:url("../../../marca/fontes/inter/Inter-VF.ttf") format("truetype");font-weight:100 900;font-display:block}
+:root{--fundo:#0E1726;--tinta:#F4F1EA;--destaque:#F5A524;--rotulo:rgba(11,15,20,.88)}
+html,body{margin:0;width:2560px;height:1440px;overflow:hidden;background:var(--fundo)}
+#palco{position:relative;width:2560px;height:1440px;background:url("../../../out/zona-do-canal/_tmp/miniatura/C/C-mapa.png") 0 0/2560px 1440px no-repeat}
+svg{position:absolute;left:0;top:0}
+.txt{position:absolute;font-family:"MarcaSec";font-weight:800;text-transform:uppercase;line-height:.84;letter-spacing:.005em}
+#t{right:96px;top:96px;text-align:right;background:var(--fundo);padding:30px 56px 44px;box-shadow:0 14px 36px rgba(4,8,16,.55)}
+#t .l1{display:block;font-size:226px;color:var(--tinta)}#t .l2{display:block;font-size:360px;color:var(--destaque)}
+#selo{position:absolute;left:560px;top:1262px;transform:translateX(-50%);font-family:"MarcaPri";font-weight:700;font-size:52px;letter-spacing:.06em;color:var(--tinta);background:var(--rotulo);padding:8px 26px 10px;border-radius:14px;text-transform:uppercase}
+</style></head><body><div id="palco">
+<svg width="2560" height="1440" viewBox="0 0 2560 1440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="sombra" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="5" dy="9" stdDeviation="10" flood-color="#04080F" flood-opacity=".75"/></filter>
+    <clipPath id="vidro"><circle cx="560" cy="1030" r="320"/></clipPath>
+  </defs>
+  <!-- o cone: tangentes externas do anel (1562,1097.9; r 112) e da lupa (560,1030; r 340), de C-pontos.json -->
+  <g filter="url(#sombra)">
+    <polygon points="1594.8,990.8 659.4,704.9 614.6,1365.6 1580.0,1208.4" fill="#F4F1EA" fill-opacity=".06"/>
+    <path d="M 1594.8 990.8 L 659.4 704.9 M 1580.0 1208.4 L 614.6 1365.6" stroke="#F4F1EA" stroke-width="10" stroke-linecap="round" fill="none"/>
+  </g>
+  <!-- o anel em Balboa: 224 px, traço de 38, contorno escuro de 5 por dentro e por fora -->
+  <g filter="url(#sombra)">
+    <circle cx="1562" cy="1097.9" r="93" fill="none" stroke="#0B0F14" stroke-width="48"/>
+    <circle cx="1562" cy="1097.9" r="93" fill="none" stroke="#F5A524" stroke-width="38"/>
+  </g>
+  <!-- a lupa: a foto de Balboa (1944) no vidro, borda de 20 px em --destaque -->
+  <g filter="url(#sombra)"><circle cx="560" cy="1030" r="345" fill="#0B0F14"/></g>
+  <image href="../../../out/zona-do-canal/_tmp/miniatura/C/C-lupa.png" x="240" y="710" width="640" height="640" clip-path="url(#vidro)" preserveAspectRatio="xMidYMid slice"/>
+  <circle cx="560" cy="1030" r="330" fill="none" stroke="#F5A524" stroke-width="20"/>
+</svg>
+<div id="selo">Balboa</div>
+<div id="t" class="txt"><span class="l1">Who lived</span><span class="l2">here?</span></div>
+</div></body></html>
