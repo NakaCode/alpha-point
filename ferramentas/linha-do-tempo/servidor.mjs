@@ -16,6 +16,14 @@
 // X-Frame-Options e frame-ancestors: um site de fora não põe a página num iframe para induzir cliques (vistos e
 // comentários). A cena sai como está no disco: nada se injeta no HTML. A única resposta trocada é o
 // _media/_vendor/perfil-mapa.js (o rascunho).
+//
+// O aparelho remoto, pelo Tailscale Serve (opção `remoto`; Lucas, 16/10/2026, "Só o meu aparelho (Recomendado)", e o
+// aparelho "lucasrosa-casa"). O servidor continua ouvindo só em 127.0.0.1: quem atende a rede é o tailscaled
+// (`tailscale serve --bg --http=<porta> http://127.0.0.1:<porta>`), que repassa daqui de 127.0.0.1, com o Host do nome
+// do PC no tailnet. Medido em 16/10 (eco na 8799): o Serve TROCA o Tailscale-User-Login e o X-Forwarded-For que o cliente
+// mandar pelos verdadeiros, e pedido pelo IP ou com outro Host dá 404 nele, sem chegar aqui. Pedido remoto (Host do
+// tailnet, ou qualquer cabeçalho que só o Serve põe) só passa com o IP do aparelho E o login do dono dele; sem `remoto`,
+// tudo isso dá 421, como antes.
 import { createServer } from "node:http";
 import { createReadStream, readFileSync, statSync } from "node:fs";
 import { extname, join, relative, sep } from "node:path";
@@ -126,9 +134,16 @@ function paraPagina(est, { proj }) {
 
 /**
  * Cria o servidor (não chama listen). Exportado para a prova (provar.mjs), que o sobe no próprio processo.
- * @param {{m:object, raiz:string, proj:string, forcarRascunho?:Set<string>, log?:Function}} op
+ * `remoto`: {hosts: ["<nome no tailnet>:<porta>"], ip: "<IP do aparelho no tailnet>", login: "<login do dono>"}, ou null.
+ * @param {{m:object, raiz:string, proj:string, forcarRascunho?:Set<string>, log?:Function, remoto?:object|null}} op
  */
-export function criarServidor({ m, raiz, proj, forcarRascunho = new Set(), log = () => {} }) {
+export function criarServidor({ m, raiz, proj, forcarRascunho = new Set(), log = () => {}, remoto = null }) {
+  const R = remoto ? {
+    hosts: remoto.hosts.map((h) => String(h).toLowerCase()),
+    ips: [].concat(remoto.ip).map((x) => String(x).trim().toLowerCase()).filter(Boolean),   // o IPv4 e o IPv6 do aparelho
+    login: String(remoto.login).trim().toLowerCase(),
+  } : null;
+  if (R && (!R.hosts.length || !R.ips.length || !R.login)) throw new Error("remoto sem hosts, ip ou login");
   const token = randomBytes(24).toString("hex");
   const paginaHtml = () => readFileSync(join(PASTA_PAGINA, "pagina.html"), "utf8")
     .replaceAll("__TOKEN__", token).replaceAll("__PROJ__", proj.replace(/[^A-Za-z0-9._-]/g, ""));
@@ -152,8 +167,18 @@ export function criarServidor({ m, raiz, proj, forcarRascunho = new Set(), log =
     res.setHeader("Content-Security-Policy", "frame-ancestors 'self'");
     // DNS rebinding: só o endereço que nós imprimimos (serve-galeria.mjs:168-171).
     const porta = servidor.address()?.port;
-    const hostsOk = [`127.0.0.1:${porta}`, `localhost:${porta}`];
-    if (!hostsOk.includes(String(req.headers.host || "").toLowerCase())) return responder(res, 421, "host não atendido");
+    const hostPedido = String(req.headers.host || "").toLowerCase();
+    let hostsOk = [`127.0.0.1:${porta}`, `localhost:${porta}`];
+    // Remoto: o Host do tailnet, ou um cabeçalho que só o Tailscale Serve põe (o navegador deste PC não manda nenhum).
+    const peloServe = ["tailscale-user-login", "tailscale-headers-info", "x-forwarded-for", "x-forwarded-host"].some((h) => h in req.headers);
+    if (peloServe || (R && R.hosts.includes(hostPedido))) {
+      if (!R || !R.hosts.includes(hostPedido)) return responder(res, 421, "host não atendido");
+      const daqui = ["127.0.0.1", "::1", "::ffff:127.0.0.1"].includes(req.socket.remoteAddress);
+      const ip = String(req.headers["x-forwarded-for"] || "").trim().toLowerCase();
+      const login = String(req.headers["tailscale-user-login"] || "").trim().toLowerCase();
+      if (!daqui || !R.ips.includes(ip) || login !== R.login) return responder(res, 403, "aparelho não atendido");
+      hostsOk = R.hosts;
+    } else if (!hostsOk.includes(hostPedido)) return responder(res, 421, "host não atendido");
 
     const cru = String(req.url || "/").split("#")[0];
     const iq = cru.indexOf("?");

@@ -122,6 +122,31 @@ comentário até 4.000 caracteres. Serve só a lista fechada: as cenas da linha,
 a narração, o `words.json`, os proxies, `marca/tokens.css` e `marca/fontes/`. O resto, inclusive `db/`, `midia/`,
 `_media/_caca` e o `_master.mp4`, dá 404. A cena sai byte a byte como está no disco.
 
+### O aparelho remoto, pelo Tailscale (desde 16/10/2026)
+
+O Lucas perguntou: "Considerando ter tailscale eu não consigo abrir a linha do tempo direto no meu PC remoto?". Às perguntas
+"Como você quer abrir a linha do tempo de outro PC?" e "De qual aparelho você vai abrir?", as respostas foram "Só o meu aparelho
+(Recomendado)" e "lucasrosa-casa". A opção dizia: "O servidor atende, além deste PC, só o aparelho que você indicar pelo Tailscale;
+os do Mateus e o resto da rede, não."
+
+- **Como se liga:** `preview_start {name: "linha-do-tempo-zona-casa"}` (o `servir … --tailscale=lucasrosa-casa`) e
+  `tailscale serve --bg --http=8790 http://127.0.0.1:8790`. **Como se desliga, ao fim da revisão:**
+  `"C:/Program Files/Tailscale/tailscale.exe" serve --http=8790 off`. O `--bg` fica gravado no Tailscale e sobrevive a reinício.
+- **O que o Lucas abre:** `http://<nome deste PC no tailnet>:8790/?p=<proj>`. O servidor imprime o endereço. Pelo IP, o Serve dá 404.
+- **O servidor continua só em `127.0.0.1`.** Quem atende a rede é o tailscaled. O firewall do Windows não muda: a rede do Tailscale é
+  "Privada", e o Node não tem regra nela.
+- **A trava.** Pedido com o Host do tailnet, ou com qualquer cabeçalho que só o Serve põe, só passa com:
+  - o `X-Forwarded-For` igual a um IP do aparelho (o IPv4 ou o IPv6);
+  - o `Tailscale-User-Login` do dono dele;
+  - o pedido vindo de 127.0.0.1.
+
+  Fora isso: 403 (ou 421 sem `--tailscale`). Medido em 16/10, com um eco na 8799: o Serve troca o `Tailscale-User-Login` e o
+  `X-Forwarded-For` forjados pelos verdadeiros.
+- **A conferência na partida.** O `--tailscale` recusa aparelho de outro dono, aparelho com tag e porta 0. Também recusa o Serve da
+  porta em modo TCP cru: com repasse TCP, todo o tailnet chegaria como "este PC".
+- **A prova:** 17 checagens `[remoto]` no `provar.mjs`. Dois céticos (`wf_70b6a8bc-629`) tentaram furar a trava. Os 6 achados
+  deles foram consertados antes de ligar (o TCP cru, o IPv6, o caminho fixo do `tailscale.exe` e os erros da opção).
+
 ## O que está provado, e o que não está
 
 **Provado pelo `provar.mjs` (sem navegador, 02/10/2026, 169 de 169, com as checagens dos achados da revisão marcadas

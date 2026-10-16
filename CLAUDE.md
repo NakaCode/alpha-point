@@ -948,6 +948,12 @@ decisões e o porquê de cada peça, está em `DESENHO.md`; o uso, em `LEIA-ME.m
 - **Quem sobe o servidor é o Claude central**, com `preview_start` `{name: "linha-do-tempo"}` (`.claude/launch.json`).
   O Lucas abre `http://127.0.0.1:8790/` no Brave ou no painel de navegador do app. O servidor vive enquanto a sessão
   do Claude vive.
+- **O PC de casa, pelo Tailscale** (Lucas, 16/10/2026: "Só o meu aparelho (Recomendado)", aparelho "lucasrosa-casa").
+  - Liga-se com `preview_start {name: "linha-do-tempo-zona-casa"}` e `tailscale serve --bg --http=8790 http://127.0.0.1:8790`.
+  - O servidor continua só em 127.0.0.1. Ele aceita, além deste PC, só os pedidos que o Tailscale Serve entrega com o IP e o
+    login daquele aparelho; nunca os do Mateus nem o resto do tailnet.
+  - **Ao fim da revisão, desligue o Serve:** `tailscale serve --http=8790 off`.
+  - Como funciona, a prova e os céticos: `ferramentas/linha-do-tempo/LEIA-ME.md`, "O aparelho remoto, pelo Tailscale".
 
 **Provado** (02/10/2026):
 - **Sem navegador:** `node ferramentas/linha-do-tempo/provar.mjs` passou 169 de 169 checagens, entre elas:

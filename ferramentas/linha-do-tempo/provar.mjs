@@ -172,6 +172,40 @@ async function principal() {
   r = await pedir(P, "/out/juneau/graphics/s02.html");
   checar("[8] …e as cenas também", r.h["x-frame-options"] === "SAMEORIGIN" && r.h["content-security-policy"] === "frame-ancestors 'self'");
   r = await pedir(P, "/", { host: `localhost:${P}` }); checar("Host localhost:<porta>: 200", r.status === 200, `${r.status}`);
+
+  // O aparelho remoto pelo Tailscale Serve (16/10/2026). Sem `remoto`, o Host do tailnet e os cabeçalhos do Serve dão 421.
+  const HR = "pc-exemplo.tailnet-exemplo.ts.net:8790", IPR = "100.64.0.9", LOGR = "dono@exemplo.com";
+  const serve = (ip = IPR, login = LOGR) => ({ "x-forwarded-for": ip, "x-forwarded-host": HR, "tailscale-user-login": login, "tailscale-headers-info": "x" });
+  r = await pedir(P, "/", { host: HR, headers: serve() }); checar("[remoto] sem a opção: Host do tailnet dá 421", r.status === 421, `${r.status}`);
+  r = await pedir(P, "/", { headers: serve() }); checar("[remoto] sem a opção: cabeçalho do Serve com Host local dá 421", r.status === 421, `${r.status}`);
+  const IP6R = "fd7a:115c:a1e0::9";
+  const SR = await subir(m, RAIZ_CANAL, { remoto: { hosts: [HR], ip: [IPR, IP6R], login: LOGR } });
+  const PR = SR.porta;
+  r = await pedir(PR, "/?p=juneau", { host: HR, headers: serve() });
+  checar("[remoto] o aparelho, com o IP e o login dele: 200 com a página", r.status === 200 && r.corpo.toString().includes(`content="${SR.token}"`), `${r.status}`);
+  r = await pedir(PR, "/api/linha", { host: HR, headers: serve(IPR, "DONO@EXEMPLO.COM") }); checar("[remoto] o login em maiúsculas também passa", r.status === 200, `${r.status}`);
+  r = await pedir(PR, "/", { host: HR, headers: serve(IP6R.toUpperCase()) }); checar("[remoto] o aparelho pelo IPv6 dele: 200", r.status === 200, `${r.status}`);
+  r = await pedir(PR, "/", { host: HR, headers: serve("100.64.0.10") }); checar("[remoto] outro aparelho (IP): 403", r.status === 403, `${r.status}`);
+  r = await pedir(PR, "/", { host: HR, headers: serve(IPR, "outro@exemplo.com") }); checar("[remoto] outro login: 403", r.status === 403, `${r.status}`);
+  r = await pedir(PR, "/", { host: HR, headers: serve(`${IPR}, 1.2.3.4`) }); checar("[remoto] X-Forwarded-For com dois IPs: 403", r.status === 403, `${r.status}`);
+  r = await pedir(PR, "/", { host: HR }); checar("[remoto] Host do tailnet sem os cabeçalhos do Serve: 403", r.status === 403, `${r.status}`);
+  r = await pedir(PR, "/", { headers: serve() }); checar("[remoto] cabeçalho do Serve com Host local: 421", r.status === 421, `${r.status}`);
+  r = await pedir(PR, "/", { host: "evil.example:80", headers: serve() }); checar("[remoto] cabeçalho do Serve com Host de fora: 421", r.status === 421, `${r.status}`);
+  r = await pedir(PR, "/"); checar("[remoto] este PC continua: Host local sem cabeçalho dá 200", r.status === 200, `${r.status}`);
+  r = await pedir(PR, "/db/canal.db", { host: HR, headers: serve() }); checar("[remoto] a lista fechada vale para o aparelho: 404 em /db/canal.db", r.status === 404, `${r.status}`);
+  const postR = (origem, token) => pedir(PR, "/api/comentar", { method: "POST", host: HR, corpo: "{}",
+    headers: { ...serve(), "content-type": "application/json", origin: origem, ...(token ? { "x-lt-token": token } : {}) } });
+  r = await postR(`http://127.0.0.1:${PR}`, SR.token);
+  checar("[remoto] POST do aparelho com Origin local: 403 pela origem", r.status === 403 && /origem/.test(r.corpo.toString()), `${r.status} ${r.corpo}`);
+  r = await postR(`http://${HR}`, "0".repeat(48));
+  checar("[remoto] POST do aparelho com a Origin dele passa da origem e para no token errado", r.status === 403 && /token/.test(r.corpo.toString()), `${r.status} ${r.corpo}`);
+  r = await pedir(PR, "/api/comentar", { method: "POST", host: `127.0.0.1:${PR}`, corpo: "{}",
+    headers: { "content-type": "application/json", origin: `http://${HR}`, "x-lt-token": SR.token } });
+  checar("[remoto] POST deste PC com a Origin do tailnet: 403 pela origem", r.status === 403 && /origem/.test(r.corpo.toString()), `${r.status} ${r.corpo}`);
+  await descer(SR);
+  let erroRemoto = null;
+  try { criarServidor({ m, raiz: RAIZ_CANAL, proj: PROJ, remoto: { hosts: [HR], ip: "", login: LOGR } }); } catch (e) { erroRemoto = e.message; }
+  checar("[remoto] sem IP, o servidor não sobe", !!erroRemoto, erroRemoto || "subiu");
   r = await pedir(P, "/", { method: "OPTIONS" }); checar("OPTIONS: 405", r.status === 405, `${r.status}`);
   r = await pedir(P, "/api/linha", { method: "PUT" }); checar("PUT: 405", r.status === 405, `${r.status}`);
   r = await pedir(P, "/out/juneau/narracao.wav", { headers: { range: "bytes=0-99" } });

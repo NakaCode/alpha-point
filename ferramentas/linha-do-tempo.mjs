@@ -8,14 +8,17 @@
 // como usar: ferramentas/linha-do-tempo/LEIA-ME.md.
 //
 // Uso (cwd na raiz do canal; --raiz=<pasta> troca a raiz, para provas numa cópia):
-//   node ferramentas/linha-do-tempo.mjs servir <proj> [--porta=8790] [--forcar-rascunho=s05,s44]
+//   node ferramentas/linha-do-tempo.mjs servir <proj> [--porta=8790] [--forcar-rascunho=s05,s44] [--tailscale=lucasrosa-casa]
+//     --tailscale: atende também UM aparelho do tailnet, do mesmo dono deste PC, pelo Tailscale Serve (Lucas, 16/10/2026:
+//     "Só o meu aparelho (Recomendado)"). O servidor continua só em 127.0.0.1; o Serve se liga à parte, com
+//     `tailscale serve --bg --http=<porta> http://127.0.0.1:<porta>`, e se desliga com `tailscale serve --http=<porta> off`.
 //   node ferramentas/linha-do-tempo.mjs estado <proj> [--json]
 //   node ferramentas/linha-do-tempo.mjs proxies <proj> [--cena=s05,s07]
 //   node ferramentas/linha-do-tempo.mjs quadros <proj> [--cena=s02,s23] [--fps=2]      (abre Chrome: nunca com render rodando)
 //   node ferramentas/linha-do-tempo.mjs aprovar <proj> --mensagem="<literal do Lucas>" --hora="<hora dele>" --assinatura=<a do estado>
 //   node ferramentas/linha-do-tempo.mjs conferir <proj> [--depois-do-render]
 // Saída: 0 = feito (no conferir: tudo aprovado) · 1 = falta algo (a lista diz o quê) · 2 = não rodou (uso, projeto, motor).
-import { spawn } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import { mkdirSync, realpathSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -24,7 +27,7 @@ import {
 } from "./linha-do-tempo/linha.mjs";
 
 const USO = `uso:
-  node ferramentas/linha-do-tempo.mjs servir <proj> [--porta=8790] [--forcar-rascunho=<id>[,<id>]]
+  node ferramentas/linha-do-tempo.mjs servir <proj> [--porta=8790] [--forcar-rascunho=<id>[,<id>]] [--tailscale=<aparelho>]
   node ferramentas/linha-do-tempo.mjs estado <proj> [--json]
   node ferramentas/linha-do-tempo.mjs proxies <proj> [--cena=<id>[,<id>]]
   node ferramentas/linha-do-tempo.mjs quadros <proj> [--cena=<id>[,<id>]] [--fps=2]
@@ -34,7 +37,7 @@ const USO = `uso:
 
 const VERBOS = ["servir", "estado", "proxies", "quadros", "aprovar", "conferir"];
 const OPCOES = {
-  servir: ["porta", "forcar-rascunho", "raiz"], estado: ["json", "raiz"], proxies: ["cena", "raiz", "json"],
+  servir: ["porta", "forcar-rascunho", "raiz", "tailscale"], estado: ["json", "raiz"], proxies: ["cena", "raiz", "json"],
   quadros: ["cena", "fps", "raiz", "json"], aprovar: ["mensagem", "hora", "assinatura", "raiz", "json"],
   conferir: ["depois-do-render", "raiz", "json"],
 };
@@ -221,7 +224,12 @@ async function cmdServir(m, raiz, proj, op) {
   const linha = lerLinha(m, raiz, proj, { forcarRascunho: forcar });   // projeto quebrado para aqui, com a mensagem
   const fora = [...forcar].filter((id) => !linha.cenas.some((c) => c.id === id && c.tipo === "mapa"));
   if (fora.length) { console.error(`✗ --forcar-rascunho só vale para cena de mapa da linha: ${fora.join(", ")}`); return 2; }
-  const { servidor } = criarServidor({ m, raiz, proj, forcarRascunho: forcar, log: (s) => console.log("  " + s) });
+  let remoto = null;
+  if (op.tailscale !== undefined) {
+    remoto = aparelhoTailscale(String(op.tailscale), porta);
+    if (remoto.erro) { console.error(`✗ --tailscale: ${remoto.erro}`); return 2; }
+  }
+  const { servidor } = criarServidor({ m, raiz, proj, forcarRascunho: forcar, log: (s) => console.log("  " + s), remoto });
   return await new Promise((fim) => {
     servidor.on("error", (e) => {
       if (e.code === "EADDRINUSE") {
@@ -234,8 +242,48 @@ async function cmdServir(m, raiz, proj, op) {
       const p = servidor.address().port;
       console.log(`✓ linha do tempo de ${proj} em http://${HOST}:${p}/?p=${encodeURIComponent(proj)}`);
       console.log(`  ${linha.cenas.length} cenas · ${linha.cenas.filter((c) => c.modoMapa === "rascunho").length} mapa(s) em rascunho · só este PC (127.0.0.1) · Ctrl+C fecha`);
+      if (remoto) {
+        console.log(`  e o aparelho ${remoto.aparelho} (${remoto.ip.join(", ")}), pelo Tailscale Serve: http://${remoto.hosts[0]}/?p=${encodeURIComponent(proj)}`);
+        console.log(`  o Serve ${remoto.serveLigado ? "já está ligado (proxy HTTP conferido)" : "ainda NÃO está ligado"} · liga: tailscale serve --bg --http=${p} http://127.0.0.1:${p} · desliga, ao fim: tailscale serve --http=${p} off`);
+      }
     });
   });
+}
+
+/**
+ * O aparelho do tailnet que pode ver a linha do tempo: o rótulo do nome dele (o 1º pedaço do DNSName), do MESMO dono
+ * deste PC, com o IP e o login lidos do `tailscale status --json`. O login não se imprime (dado pessoal).
+ */
+const TAILSCALE_EXE = "C:/Program Files/Tailscale/tailscale.exe";   // só o caminho fixo: nada pelo PATH nem pela pasta atual
+function tailscaleJson(args) {
+  try { return JSON.parse(execFileSync(TAILSCALE_EXE, args, { encoding: "utf8", timeout: 15000, windowsHide: true })); }
+  catch { return null; }
+}
+function aparelhoTailscale(rotulo, porta) {
+  if (rotulo === "true" || !/^[a-z0-9-]{1,63}$/i.test(rotulo)) return { erro: `diga o aparelho (--tailscale=<nome>): "${rotulo}" não serve` };
+  if (!porta) return { erro: "com --tailscale, a porta não pode ser 0 (o nome no tailnet leva a porta)" };
+  const st = tailscaleJson(["status", "--json"]);
+  if (!st?.Self) return { erro: `o ${TAILSCALE_EXE} status --json não respondeu (o Tailscale está instalado e ligado?)` };
+  if (st.BackendState !== "Running") return { erro: `o Tailscale não está ligado neste PC (estado: ${st.BackendState})` };
+  const nome = (p) => String(p?.DNSName || "").split(".")[0].toLowerCase();
+  const achados = Object.values(st.Peer || {}).filter((p) => nome(p) === rotulo.toLowerCase());
+  if (achados.length !== 1) return { erro: `${achados.length ? "mais de um" : "nenhum"} aparelho "${rotulo}" no tailnet` };
+  const p = achados[0];
+  if (p.UserID !== st.Self.UserID) return { erro: `o aparelho "${rotulo}" não é do mesmo dono deste PC` };
+  if (p.Tags?.length) return { erro: `o aparelho "${rotulo}" tem tag: o Serve não manda a identidade dele` };
+  const ips = (p.TailscaleIPs || []).filter((x) => /^100\.\d+\.\d+\.\d+$|^fd7a:115c:a1e0:/i.test(x));
+  const login = st.User?.[String(p.UserID)]?.LoginName;
+  const dns = String(st.Self.DNSName || "").replace(/\.$/, "").toLowerCase();
+  if (!ips.length || !login || !dns) return { erro: "o tailscale status --json não trouxe o IP, o login ou o nome deste PC" };
+  // O filtro do servidor só vale com o Serve em HTTP (que põe a identidade). Repasse TCP cru para a porta faria todo o
+  // tailnet chegar como "este PC": se a porta já tiver Serve, ele tem de ser o proxy HTTP para http://127.0.0.1:<porta>.
+  const sv = tailscaleJson(["serve", "status", "--json"]) || {};
+  const tcp = sv.TCP?.[String(porta)];
+  if (tcp && (tcp.TCPForward || tcp.TerminateTLS || !tcp.HTTP)) return { erro: `o Serve da porta ${porta} não está em HTTP (repasse TCP): desligue com "tailscale serve reset" e ligue com --http` };
+  const web = sv.Web?.[`${dns}:${porta}`];
+  if (tcp && JSON.stringify(web?.Handlers || {}) !== JSON.stringify({ "/": { Proxy: `http://127.0.0.1:${porta}` } }))
+    return { erro: `o Serve da porta ${porta} não é só o proxy para http://127.0.0.1:${porta}` };
+  return { aparelho: rotulo, ip: ips, login, hosts: [`${dns}:${porta}`], serveLigado: !!tcp };
 }
 
 // ─── principal ───────────────────────────────────────────────────────────────────────────────────
