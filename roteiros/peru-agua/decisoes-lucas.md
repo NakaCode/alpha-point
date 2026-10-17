@@ -17,3 +17,9 @@ O slug do vídeo é `peru-agua` (decisão da Sala, 16/10/2026). O título de tra
   Peru Lives on the Side With 2% of the Water" (recomendada), "Nearly Two-Thirds…" e "Why Peru Lives on the Dry Side of the Andes", a
   resposta: **"Why Peru Lives on the Dry Side"**. A opção dizia: "\"Why Peru Lives on the Dry Side of the Andes\" (43 caracteres). Sem
   número no título; os números ficam no gancho." O título final ainda passa pelo teste de leitores, como no vídeo 3.
+
+**O fecho** (17/10/2026). O crítico de roteiro notou que o fecho do Peru é o 4º do canal com o mesmo molde ("So" + a pergunta do
+gancho repetida + a resposta em lista + uma frase curta). À pergunta "Como fica o fecho dos próximos vídeos?", a resposta: **"Manter
+no Peru, variar do 5 (Recomendado)"**. A opção dizia: "O Peru fica como está. Do vídeo 5 em diante, o fecho não repete a pergunta do
+gancho nem responde em lista: pode terminar numa cena, num lugar do mapa ou numa pessoa, conforme a história." A regra mora em
+`marca/voz.md` §1, "Como ele fecha".

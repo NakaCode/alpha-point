@@ -1540,3 +1540,16 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   lento se resolve rodando o `baixar` de novo; o 404 sem download lento antes não é este caso, e vai ao Lucas.
 - **Por que serve a qualquer canal:** todo cliente de servidor MCP por HTTP que reusa a sessão entre pedidos longos (download,
   render, geração) tropeça nisso, e o 404 parece "o item não existe".
+
+### 85. O fecho que dá certo vira molde da casa, e o portão não pega paráfrase
+
+- **O problema:** em 17/10/2026, no roteiro do vídeo 4 (o Peru), o crítico de roteiro notou que o fecho era o 4º do canal com o
+  mesmo esqueleto: "So" + a pergunta do gancho repetida + a resposta em lista + uma frase curta de imagem. Cada fecho foi elogiado
+  no seu vídeo, e o roteirista (e o plano, e o juiz) copiou a forma que tinha passado. O autoplágio do portão compara trechos
+  literais e não vê a mesma forma com outras palavras.
+- **O que resolveu:** a pergunta ao Lucas, com os quatro fechos lado a lado; ele decidiu manter o do Peru e variar do vídeo 5 em
+  diante (`marca/voz.md` §1, "Como ele fecha").
+- **Como evitar:** o pedido do plano e o do crítico de roteiro levam os fechos dos vídeos anteriores, e o crítico julga se o fecho
+  novo repete a forma. O mesmo vale para o gancho de cinco tempos, que é molde de propósito: ali a repetição é decisão, não deriva.
+- **Por que serve a qualquer canal:** todo canal com roteiro feito por agentes que leem os roteiros aprovados como exemplo tende a
+  copiar a forma que passou; a variedade tem de ser regra escrita e conferida, porque nenhuma lente de um vídeo só a vê.

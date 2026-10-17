@@ -62,6 +62,16 @@ Os nomes próprios e as siglas se dizem como está em `marca/pronuncias.md`, a f
 - **Futuro em condicional, com a condição dita**: `If the strait closed, prices could double — and
   here's why.`
 
+**Como ele fecha** (do vídeo 5 em diante; Lucas, 17/10/2026). Os quatro primeiros vídeos fecharam com o mesmo molde: "So" e a
+pergunta do gancho repetida quase palavra por palavra, a resposta em lista ("A treaty… A law… A second treaty…"; "First, the
+valleys… Then the port… Then the people…") e uma frase curta de imagem. Quem vê um vídeo só não percebe; quem segue o canal
+começa a prever o fim. À pergunta "Como fica o fecho dos próximos vídeos?", a resposta: "Manter no Peru, variar do 5
+(Recomendado)". A opção dizia: "O Peru fica como está. Do vídeo 5 em diante, o fecho não repete a pergunta do gancho nem
+responde em lista: pode terminar numa cena, num lugar do mapa ou numa pessoa, conforme a história."
+- o fecho paga o título e a pergunta do gancho, mas **sem repetir a pergunta** e **sem a resposta em lista**;
+- a forma sai da história de cada vídeo: uma cena, um lugar do mapa, uma pessoa, um documento, o presente datado;
+- o crítico de roteiro confere o fecho contra os dos vídeos anteriores (`roteiros/*/roteiro-narrador.md`).
+
 ## 2 · O que ele NUNCA diz
 
 > Esta seção vale mais que a de cima. Cresce conforme o dono corrigir.
