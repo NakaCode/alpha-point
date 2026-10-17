@@ -1,0 +1,53 @@
+<!doctype html><html lang="en-US"><head><meta charset="utf-8"><title>Alpha Point · miniatura do vídeo 3 · versão B3 sem bandeira</title>
+<!--
+  Vídeo 3, "Why a Town Inside Panama Was American Until 1979". Versão B3 sem bandeira (16/10/2026): a mesma página da
+  miniatura-B3.html, com a outra base: a Zona em --destaque, sem bandeira nenhuma. Fora a base, as duas são iguais.
+
+  O PEDIDO DO LUCAS (16/10/2026, no chat):
+  - sobre a B, a que ele gostou: "Juntar o pedaço solto (Recomendado)" (a parte do lago Madden, que na B aparece como uma ilha a
+    nordeste do corpo) e "Texto maior, em 2 linhas";
+  - sobre a B2, que fez isso com o título em 2 linhas, a Zona em --destaque e uma bandeira cravada num mastro: "Não gostei do título
+    em duas linhas, tão pouco da bandeira".
+  Esta variante tira a bandeira de vez (nem no território, nem em mastro), para ele comparar com a B3 com a bandeira.
+
+  DE ONDE VEM CADA COISA:
+  - a base: base-B3.py (ao lado), em out/zona-do-canal/_tmp/miniatura/B3/B3sem-mapa.png. O quadro, o relevo dos Terrain Tiles da
+    AWS (domínio público, só do cache, 0 pedidos de rede), as cores do relevo e do mar, o contorno --tinta e a sombra são os da B,
+    sem mudança. A Zona é o polígono de 1947 (zona-do-canal-1947.json, a divisa da folha do Army Map Service, LOC 83694755),
+    recortado pela costa do relevo, num pedaço só (o mesmo da B3 com bandeira), pintado como a B2 pinta: --destaque (#F5A524) com
+    o relevo por baixo e o contorno --tinta direto, sem o filete --fundo que a B põe entre a bandeira e o contorno. Nada desenhado
+    à mão nem por IA;
+  - a Zona num pedaço só, por algoritmo (o detalhe e os números no cabeçalho da base-B3.py e em B3-pontos.json): o vão de ~164 m
+    na represa de Madden se fecha com o menor fechamento que junta as duas peças (raio de ~129 m; só fica o pedaço que encosta nas
+    duas, ~0,07 km²), e a generalização da B deixa de cortar o vale do Chagres abaixo da represa (~6,7 km² voltam). As pontas
+    soltas que a abertura deixava como pontos (~9,6 km² ao todo) saem;
+  - o texto: "IN PERPETUITY", entre aspas, porque é citação do Art. II do tratado de 1903 (roteiro p1 e p7), numa linha só,
+    PERPETUITY em --destaque, como na B.
+
+  O QUE MUDOU DA B, NA PÁGINA (o mesmo da B3 com bandeira):
+  - o título passou de 340 a 373 px, o maior que cabe numa linha com a caixa da B (o mesmo --fundo, os mesmos 56 px de respiro dos
+    lados, a mesma sombra) e 49 px de margem de cada lado do palco: a caixa tem 2461 px de largura (a da B, 2253);
+  - para a caixa maior não encostar na ponta da Zona (o contorno começa em y 444), o respiro de cima passou de 30 a 10 px e a caixa
+    subiu de y 44 para 36: o fundo dela fica em y ~401, como na B.
+
+  REGRAS DA MARCA: esta variante não quebra nenhuma das que a B quebra (sem vermelho contra azul, sem território com as cores da
+  bandeira, sem bandeira no mapa, e o --destaque volta ao protagonista, a Zona, com o contorno --tinta: embalagem §1.1 e §3,
+  identidade §2). As matizes são o laranja, fora a base de relevo e mar (identidade §2: "fora a base de satélite").
+  Uma tensão, que não é quebra: a identidade §2 pede --destaque em texto só no rótulo do próprio protagonista, e PERPETUITY não é
+  rótulo da Zona. A embalagem abre a exceção para a miniatura: a "palavra colorida" da caixa (§1.1) e a virada em --destaque da
+  receita (§3.1, decisão do dono). Por isso o mesmo laranja aparece duas vezes, na palavra e na Zona; a regra da marca é
+  --destaque no protagonista, e a cor da Zona não muda.
+
+  Render: node marca/logo/_render.mjs roteiros/zona-do-canal/miniatura/miniatura-B3-sem.html 2560 1440 <saida.png>
+-->
+<style>
+@font-face{font-family:"MarcaSec";src:url("../../../marca/fontes/barlowcondensed/BarlowCondensed-ExtraBold.ttf") format("truetype");font-weight:800;font-display:block}
+:root{--fundo:#0E1726;--tinta:#F4F1EA;--destaque:#F5A524}
+html,body{margin:0;width:2560px;height:1440px;overflow:hidden;background:var(--fundo)}
+#palco{position:relative;width:2560px;height:1440px;background:url("../../../out/zona-do-canal/_tmp/miniatura/B3/B3sem-mapa.png") 0 0/2560px 1440px no-repeat}
+.txt{position:absolute;font-family:"MarcaSec";font-weight:800;text-transform:uppercase;line-height:.84;letter-spacing:.005em;white-space:nowrap}
+#t{right:49px;top:36px;background:var(--fundo);padding:10px 56px 42px;box-shadow:0 14px 36px rgba(4,8,16,.55);font-size:373px;color:var(--tinta)}
+#t .d{color:var(--destaque)}
+</style></head><body><div id="palco">
+<div id="t" class="txt">&ldquo;In <span class="d">perpetuity</span>&rdquo;</div>
+</div></body></html>

@@ -1,0 +1,62 @@
+<!doctype html><html lang="en-US"><head><meta charset="utf-8"><title>Alpha Point · miniatura do vídeo 3 · versão B2 (bandeira cravada)</title>
+<!--
+  Vídeo 3, "Why a Town Inside Panama Was American Until 1979". Versão B2 (16/10/2026), o ajuste da B.
+
+  O PEDIDO DO LUCAS (16/10/2026, no chat, sobre a versão B):
+  - "Juntar o pedaço solto (Recomendado)": a peça do lago Madden, que a abertura morfológica da B tinha separado da faixa;
+  - "Texto maior, em 2 linhas";
+  - "Talvez no lugar de todo território estar com a bandeira, ter uma bandeira "cravada" como em uma das referências que mandei"
+    (a referência é "Por que a Gâmbia não faz sentido?": o território pintado e uma bandeira num mastro fincado nele;
+    marca/embalagem.md §1.1).
+
+  O QUE MUDOU DA B:
+  - a Zona não leva mais a bandeira: vai pintada de --destaque com contorno --tinta e sombra, como a A (base-B2.py, ao lado, em
+    out/zona-do-canal/_tmp/miniatura/B2/B2-mapa.png). O polígono é o mesmo (zona-do-canal-1947.json, a divisa da folha AMS de
+    1947, recortada pela costa do relevo). Saiu a abertura morfológica da B; entrou um fechamento de ~0,4 km, que fecha o vão de
+    ~165 m na represa de Madden que o próprio traçado registra como não fechado. O Madden volta a ser parte da Zona;
+  - a bandeira dos EUA vira objeto: num mastro claro, fincado em Balboa (o ponto do Balboa Clubhouse, lugares-1936.json), em
+    vetor nas proporções da Executive Order 10834 (13 listras, 50 estrelas), tremulando de leve na forma, sem 3D. O roteiro paga
+    a bandeira em Balboa: o p6, "A flag at Balboa High School";
+  - o texto em 2 linhas, maior: "“IN" a 260 px e "PERPETUITY”" a 380 px (a B tinha a frase inteira a 340 px numa linha), numa
+    caixa --fundo em degrau, em cima à direita, que não cobre a Zona. O quadro do mapa encolheu (1500 px por grau; a B tinha
+    1700), e a Zona foi para a esquerda: a ponta do Caribe (Colón e Cristóbal) sobe ao lado da caixa, com o mar à vista acima
+    dela, e a ponta do Pacífico toca a baía embaixo. O canto inferior direito (a duração) fica livre;
+  - o texto continua entre aspas: é citação do Art. II do tratado de 1903 ("granted the United States, 'in perpetuity,' a band
+    ten miles wide", roteiro p1; e no p7, quando o tratado de 1977 o "terminates and supersedes").
+
+  REGRAS DA MARCA QUE ESTA VERSÃO AINDA QUEBRA:
+  - identidade, "País no mapa: o nome escrito, sem bandeira" (Lucas, 27/09/2026: "vale para todo mapa e para toda bandeira, a
+    dos EUA também"): a bandeira no mapa é EXCEÇÃO PEDIDA PELO LUCAS SÓ NESTA MINIATURA (16/10/2026, a "bandeira cravada"). Não
+    vale para o vídeo nem para outra miniatura;
+  - embalagem §3: "nada de vermelho contra azul" (o vermelho e o azul da bandeira lado a lado; identidade §2), menor que na B:
+    agora é um objeto de ~700 × 370 px, não o território inteiro;
+  - identidade §2: no máximo 3 matizes (o verde do relevo, o azul do mar, o laranja da Zona e o vermelho e o azul da bandeira).
+  O que a B quebrava e a B2 não quebra mais: o território pintado com as cores da bandeira, e o --destaque fora do protagonista
+  (ele volta à Zona e à palavra da caixa).
+
+  O QUE A BANDEIRA AINDA AFIRMA: a banca da B disse que a bandeira no território "afirma mais do que o roteiro" (os EUA tinham os
+  poderes "if it were the sovereign"; a Zona "was never considered part of the United States"). Fincada em Balboa, ela é menos
+  que o território inteiro pintado, e o roteiro tem a bandeira americana hasteada lá (Balboa High School, 1964). Mas a pergunta
+  ao Lucas continua tendo de dizer esse risco.
+
+  CONFERIDO (16/10/2026, em 1280, 320 e 168): o texto, a bandeira e a Zona leem em 168. A Zona, com o contorno, é uma peça só em
+  168 px (B2-pontos.json); só o laranja, sem o contorno, deixa o Madden como uma mancha de ~50 px ligada pelo filete claro. A
+  bandeira cobre 2,7 % da Zona (a ponta leste do Madden). O que ficou fraco: o Madden fica espremido atrás do mastro, com os
+  braços do lago virando uma franja clara em 1280; os braços do Gatún no sudoeste fazem a mesma franja; a Zona encosta na borda
+  esquerda (~6 px em 168); e a metade direita é só relevo.
+
+  Render: node marca/logo/_render.mjs roteiros/zona-do-canal/miniatura/miniatura-B2.html 2560 1440 <saida.png>
+-->
+<style>
+@font-face{font-family:"MarcaSec";src:url("../../../marca/fontes/barlowcondensed/BarlowCondensed-ExtraBold.ttf") format("truetype");font-weight:800;font-display:block}
+:root{--fundo:#0E1726;--tinta:#F4F1EA;--destaque:#F5A524}
+html,body{margin:0;width:2560px;height:1440px;overflow:hidden;background:var(--fundo)}
+#palco{position:relative;width:2560px;height:1440px;background:url("../../../out/zona-do-canal/_tmp/miniatura/B2/B2-mapa.png") 0 0/2560px 1440px no-repeat}
+#t{position:absolute;right:84px;top:34px;filter:drop-shadow(0 14px 18px rgba(4,8,16,.55))}
+#t span.l{display:block;width:fit-content;background:var(--fundo);font-family:"MarcaSec";font-weight:800;text-transform:uppercase;line-height:.84;letter-spacing:.005em;white-space:nowrap;color:var(--tinta)}
+#t .l1{font-size:260px;padding:28px 50px 4px 46px}
+#t .l2{font-size:380px;padding:0 54px 36px 46px}
+#t .d{color:var(--destaque)}
+</style></head><body><div id="palco">
+<div id="t"><span class="l l1">&ldquo;In</span><span class="l l2"><span class="d">perpetuity</span>&rdquo;</span></div>
+</div></body></html>

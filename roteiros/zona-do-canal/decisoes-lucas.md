@@ -86,3 +86,13 @@ Três blocos de perguntas de opção (`out/zona-do-canal/_pesquisa/pendencias-lu
     (`qc/_aprovacao-lucas.jsonl`, assinatura 9583c35cfadc).
 - **O ângulo do canal e a miniatura do vídeo 3** (16/10/2026, 19:3x): "Por hora tema e miniatura, quero manter nossa identidade
   dentro do vídeo", e "Sim, já no vídeo 3 (Recomendado)" (`marca/embalagem.md` §1.1).
+- **A miniatura do vídeo 3** (16/10/2026, 19:5x a 21:0x). Das três versões (A, B e C), a resposta: "Eu gostei da B, mas talvez um ajuste
+  seria bom"; os ajustes: **"Juntar o pedaço solto (Recomendado), Texto maior, em 2 linhas"**, e "Talvez no lugar de todo território estar
+  com a bandeira, ter uma bandeira "cravada" como em uma das referências que mandei". À B2 (o título em 2 linhas e a bandeira num mastro
+  em Balboa), a resposta: **"Não gostei do título em duas linhas, tão pouco da bandeira"**. A B3 voltou à B: o título numa linha, 373 px
+  (o máximo com 48 px de margem; na B, 340), e o Madden ligado ao corpo da Zona pelo vale do Chagres (fechamento de 129 m; os números em
+  `base-B3.py`), em duas variantes. À pergunta "Qual B3 fica como miniatura do vídeo 3? […] A versão com bandeira mostra de cara que a Zona
+  era americana, mas quebra a regra da marca contra bandeira no mapa", a resposta: **"B3 com bandeira"**. A opção dizia: "A bandeira
+  dentro da Zona vale como exceção só nesta miniatura, e eu registro isso." Vale só aqui: a regra da marca (País no mapa: o nome escrito,
+  sem bandeira; Lucas, 27/09/2026) continua para o resto. Os arquivos: `roteiros/zona-do-canal/miniatura/miniatura-B3.html` e
+  `base-B3.py`; a final em `miniatura-1280.jpg` e `miniatura-2560.jpg`.
