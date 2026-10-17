@@ -37,3 +37,8 @@ lugar"** e **"Sobreposição de escala"**. Ficaram de fora o ritmo de ~5 s e os 
   medida; o tamanho verdadeiro se conserva (no Mercator, mover uma forma em latitude a deforma: a peça reprojeta), e a comparação vai à
   tela com o número e passa pelo verificador de fatos.
 Vale para o Peru; depois dele, o Lucas diz se fica para os próximos.
+
+**O roteiro aprovado** (17/10/2026). Depois de receber o roteiro (texto falado `40905ef8ecdc`, 2.057 palavras) e o resumo da bancada
+(sem GRAVE; fatos 263 de 263; as ressalvas do delta aplicadas na r2c), o Lucas, no chat: **"Se os críticos aprovaram o roteiro, pode
+seguir"**. Os críticos o aprovaram: a bancada final ficou em PASS (fatos) e RESSALVA sem GRAVE (roteiro, clareza, locução, escuta fria),
+as listas r2 e r2c aplicaram o que duas ou mais lentes pediram, e o laudo de fatos e o do delta julgaram o resultado.
