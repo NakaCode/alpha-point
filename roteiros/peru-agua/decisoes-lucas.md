@@ -23,3 +23,17 @@ gancho repetida + a resposta em lista + uma frase curta). À pergunta "Como fica
 no Peru, variar do 5 (Recomendado)"**. A opção dizia: "O Peru fica como está. Do vídeo 5 em diante, o fecho não repete a pergunta do
 gancho nem responde em lista: pode terminar numa cena, num lugar do mapa ou numa pessoa, conforme a história." A regra mora em
 `marca/voz.md` §1, "Como ele fecha".
+
+**O estilo do Capital Financeiro** (17/10/2026). O Lucas: "Eu tenho gostado bastante desse estilo de edição e narração, faça uma
+análise https://youtu.be/mjUFAyx9-0o" ("Por que nenhum outro país é como o Chile"; a análise em `out/_analises/referencia-chile/analise.md`,
+só nesta máquina). À pergunta "O que trazemos desse estilo para o vídeo do Peru?" (várias escolhas: ritmo de ~5 s, aéreo 4K do lugar,
+efeitos sonoros, sobreposição de escala), a resposta: **"Ilustrações e animações sobre o mapa assim como no vídeo"**, **"Aéreo 4K do
+lugar"** e **"Sobreposição de escala"**. Ficaram de fora o ritmo de ~5 s e os efeitos sonoros (o canal continua sem baixar efeito).
+- **Ilustração sobre o mapa**: recortes ilustrados e animados pousados sobre o satélite (no vídeo: o galeão, o conquistador, as nuvens
+  de papel batendo nos Andes, os ícones, as silhuetas de gente), além da cena `desenho` de tela inteira.
+- **Aéreo 4K do lugar**: imagens aéreas do Peru (o deserto da costa, Lima, os Andes, o lado amazônico) entre os mapas, da caça nos bancos,
+  com o lugar nomeado na descrição (`marca/midia.md` §2.7) e a lista de aprovação de sempre.
+- **Sobreposição de escala**: o território (ou uma medida) se descola e pousa sobre um mapa que o público conhece, onde a voz já dá a
+  medida; o tamanho verdadeiro se conserva (no Mercator, mover uma forma em latitude a deforma: a peça reprojeta), e a comparação vai à
+  tela com o número e passa pelo verificador de fatos.
+Vale para o Peru; depois dele, o Lucas diz se fica para os próximos.
