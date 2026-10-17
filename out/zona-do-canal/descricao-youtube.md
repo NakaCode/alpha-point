@@ -49,7 +49,10 @@ de 1979. Se o campo recusar, ele diz quantos caracteres o campo aceita e onde es
 crédito de licença nunca sai. As opções abaixo ficam como registro.
 
 **Pendente (antes de publicar):**
-- **A versão SEM LINKS só sai depois de uma resposta do Lucas, no chat da Sala.** Com a linha de 1979 (a decisão dele) e os créditos que
+- **O endereço da ACP na s67, reconferido pela Sala em 16/10/2026, 21:3x** (navegador do app, https://pancanal.com/en/history-of-the-panama-canal/):
+  o rodapé continua "Panama Canal Authority. Administration Building. Balboa, Ancon. Republic of Panama." e "© 2026. Panama Canal Authority.",
+  como na cópia de 14/10. Se a publicação passar de alguns dias, reconferir na véspera.
+- ~~**A versão SEM LINKS só sai depois de uma resposta do Lucas, no chat da Sala.**~~ Respondido em 15/10 (acima): a de 1.818. Com a linha de 1979 (a decisão dele) e os créditos que
   as licenças pedem (os mapas antigos e a isenção do Copernicus), ela passa muito do teto de uns 1.000 caracteres do campo onde ele colou
   a de Los Angeles. Caber em ~1.000 com todas as obrigações de licença não dá: só os créditos (mapas, Copernicus, música) já somam perto
   disso. As opções a levar a ele:
