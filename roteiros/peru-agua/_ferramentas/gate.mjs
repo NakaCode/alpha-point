@@ -3,8 +3,8 @@
 // marca/embalagem.md §1, CLAUDE.md "no mínimo 10 minutos"). Não julga qualidade: isso é da bancada.
 // Deriva do do vídeo 3 (roteiros/zona-do-canal/_ferramentas/gate.mjs, 16/10/2026): saem a regra do título do vídeo 3 e o
 // "O que não se diz" da Zona; entram a do título de trabalho do vídeo 4 ("Two-Thirds of Peru Lives on the Side With 2% of
-// the Water": "Peru", "two in three"/"two-thirds" e "2 percent" nas 3 primeiras frases; o alerta se o túnel não estiver
-// no gancho) e o "O que não se diz" da pauta (out/_pautas/video-4/peru-confirmacao.md, "Título" e §1 a §3). O roteiro do
+// the Water"; em 17/10/2026, o Lucas o trocou por "Why Peru Lives on the Dry Side of the Andes": "Peru" e "Andes" nas 3
+// primeiras frases, o "2 percent" e o lado seco como alerta; o alerta se o túnel não estiver no gancho) e o "O que não se diz" da pauta (out/_pautas/video-4/peru-confirmacao.md, "Título" e §1 a §3). O roteiro do
 // vídeo 3 entra no autoplágio. Os tetos das taxas continuam os de Juneau e Los Angeles: o do vídeo 3, medido pelo portão
 // dele em 16/10/2026, fica abaixo de todos (abre_and 2.37, abre_so 2.84, perguntas 1.42, frases_curtas 2.37, o resto 0).
 //
@@ -110,7 +110,9 @@ const PROIBIDAS = [
     '"most Peruvians live in a desert" não é métrica (a Costa do INEI não é o deserto do MINAM)'],
   [/second[- ](largest|biggest)[^.?!]{0,25}\bdesert\b|\bdesert\b[^.?!]{0,25}second[- ](largest|biggest)/i,
     '"Lima, a 2ª maior cidade num deserto" só tem revista e blog'],
-  [/65\.98|sixty-five point nine/i, 'nada de "65.98 %" (a base é c. 2007): "about two in three"'],
+  [/65\.98|sixty-five point nine/i, 'nada de "65.98 %" (sem ano): "more than three in five" (62,53 %, PNRH 2012)'],
+  [/\b(two in three|two-thirds|two thirds)\b[^.?!]{0,50}\b(Peruvians|of Peru|people|the country)\b|\b(Peruvians|people)\b[^.?!]{0,20}\b(two in three|two-thirds)\b/i,
+    'a gente do lado seco com ano é 62,53 % (PNRH, 2012): "more than three in five", não "two in three" (fundamento › correcoes_pos_sintese)'],
 ];
 const MESES = "January|February|March|April|May|June|July|August|September|October|November|December";
 const COMECA_DATA = new RegExp(`^(In|On|By|Until|Since|From|Through|Between|Early|Late|Starting)\\b[^.?!]{0,30}?(\\b(${MESES})\\b|\\b1[6-9]\\d\\d\\b|\\b20\\d\\d\\b)`);
@@ -173,11 +175,13 @@ for (const re of VETADAS) for (const f of frases) if (re.test(f)) problemas.push
 for (const re of ALERTA) for (const f of frases) if (re.test(f)) alertas.push(`conferir ${re}: "${f.slice(0, 100)}"`);
 if (/\[[^\]]*\]/.test(texto)) problemas.push("marcador entre colchetes no texto falado (a voz leria)");
 for (const [re, porque] of PROIBIDAS) for (const f of frases) if (re.test(f)) problemas.push(`não se diz (${porque}): "${f.slice(0, 110)}"`);
-// o título de trabalho ("Two-Thirds of Peru Lives on the Side With 2% of the Water") se paga nas 3 primeiras frases
+// o título de trabalho (Lucas, 17/10/2026: "Why Peru Lives on the Dry Side of the Andes") se paga nas 3 primeiras frases:
+// o país e a cordilheira reprovam; o "about 2 percent" da água e o lado seco ficam como alerta
 const tres = frases.slice(0, 3).join(" ");
 if (!/\bPeru\b/.test(tres)) problemas.push('"Peru" não aparece nas 3 primeiras frases (o título se paga ali)');
-if (!/two in three|two-thirds|two thirds/i.test(tres)) problemas.push('"two in three" (ou "two-thirds") não aparece nas 3 primeiras frases (o título se paga ali)');
-if (!/\b(2|two) percent\b|\b2 ?%/i.test(tres)) problemas.push('"2 percent" não aparece nas 3 primeiras frases (o título se paga ali)');
+if (!/\bAndes\b/.test(tres)) problemas.push('"Andes" não aparece nas 3 primeiras frases (o título se paga ali)');
+if (!/\b(2|two) percent\b|\b2 ?%/i.test(tres)) alertas.push('"2 percent" (a água do lado seco) não aparece nas 3 primeiras frases');
+if (!/\b(dry|desert|arid)\b/i.test(tres)) alertas.push('o lado seco ("dry", "desert") não aparece nas 3 primeiras frases');
 // o "60 %" da água de Lima só com a estiagem na mesma frase (peru-confirmacao.md §2)
 for (const f of frases) if (/\b(60|sixty)( percent|%)/i.test(f) && /\b(Lima|tunnel|water)\b/i.test(f) && !/dry season|dry months|dry-season/i.test(f))
   problemas.push(`não se diz ("60 percent" da água de Lima só com "in the dry season", e só com o informe da Defensoría lido): "${f.slice(0, 110)}"`);

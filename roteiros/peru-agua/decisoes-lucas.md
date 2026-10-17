@@ -11,3 +11,9 @@ O slug do vídeo é `peru-agua` (decisão da Sala, 16/10/2026). O título de tra
   panama antes de decidir". Depois de publicar o vídeo 3: **"Postei, pode seguir com o Roteiro do vídeo do Peru"**. A opção "Começar
   o roteiro agora" dizia: "Eu passaria de 85 %, e o limite pode acabar no meio do roteiro." Se o limite acabar, o trabalho retoma
   quando ele zerar (22/10), do ponto em que parou.
+- **O título de trabalho** (17/10/2026, 00:xx). O dossiê (`pautas/peru-agua/fundamento.json` › `pendentes_claude_central` 1) mostrou
+  que "Two-Thirds" não se paga com número datado: a população do lado do Pacífico com ano é 62,53 % (PNRH da ANA, projeção de 2012),
+  e os 65 % e 65,98 % da pauta vêm de tabela sem ano. À pergunta "Qual título de trabalho o roteiro segue?", com as opções "Most of
+  Peru Lives on the Side With 2% of the Water" (recomendada), "Nearly Two-Thirds…" e "Why Peru Lives on the Dry Side of the Andes", a
+  resposta: **"Why Peru Lives on the Dry Side"**. A opção dizia: "\"Why Peru Lives on the Dry Side of the Andes\" (43 caracteres). Sem
+  número no título; os números ficam no gancho." O título final ainda passa pelo teste de leitores, como no vídeo 3.
