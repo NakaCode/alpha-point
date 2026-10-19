@@ -42,3 +42,13 @@ Vale para o Peru; depois dele, o Lucas diz se fica para os próximos.
 (sem GRAVE; fatos 263 de 263; as ressalvas do delta aplicadas na r2c), o Lucas, no chat: **"Se os críticos aprovaram o roteiro, pode
 seguir"**. Os críticos o aprovaram: a bancada final ficou em PASS (fatos) e RESSALVA sem GRAVE (roteiro, clareza, locução, escuta fria),
 as listas r2 e r2c aplicaram o que duas ou mais lentes pediram, e o laudo de fatos e o do delta julgaram o resultado.
+
+**O título final** (19/10/2026). Com a montagem para depois de 22/10, o Lucas escolheu "Só o teste do título agora". A medida
+(`out/peru-agua/_pesquisa/embalagem/`: a procura pelo vidIQ, 55 créditos, `demanda.md`; 12 candidatos, `titulos.md`; o cético,
+`cetico.md`; o refutador dos finalistas, `refutador-A.md` e `refutador-B.md`; três leitores a frio, da Índia, do Reino Unido e dos EUA,
+`leitor-1.md` a `leitor-3.md`). Os finalistas: A, "Why Most Peruvians Live on the Dry Side of the Andes" (de pé; 1º clique do leitor
+britânico, 3º dos outros dois); B, "Most of Peru Lives on the Side of the Andes With 2% of Its Water" (de pé com ressalva; 2º clique de
+dois leitores, e os três acharam a frase confusa). O título da concorrência que mais atraiu foi "Lima Gets Almost No Rain. How Do 10
+Million People Get Water?" (1º clique de dois leitores). À pergunta "Qual título fica para o vídeo do Peru?" (A, recomendado; B; o de
+trabalho), a resposta: **"O de trabalho"**. **O título do vídeo 4: "Why Peru Lives on the Dry Side of the Andes"** (43 caracteres),
+o mesmo do `regie open`.
