@@ -71,3 +71,6 @@ versão 1 como base (o satélite plano visto de cima, a costa e a Amazônia no m
 só faixa recortada em papel, com sombra, ao longo da crista, no lugar dos 6 picos. Mostra onde a montanha barra as nuvens, mas é mais
 um elemento na tela."). A versão 3 da prova: a v1 (`graphics/_v1/`), com a crista como uma forma única de papel, sem a faixa branca na
 encosta, e o acabamento de papel nas nuvens e na chuva; depois de 22/10.
+Correção do Lucas, logo depois: **"A faixa branca representa o que? Não precisa remover, só melhorar/deixar mais claro"**. A faixa marca
+a encosta leste (entra em "On the eastern slopes"). Fica, mais clara: com o rótulo "EASTERN SLOPES" na palavra, feita do mesmo papel da
+crista e colada ao lado leste dela, e escurecendo (o tom molhado) quando a chuva cai.
