@@ -42,3 +42,21 @@ e o contador do saldo anda com atraso: a conta do vídeo segue pelos recibos.
   (3:49), Caral (3:45), Chan Chan (4:10), Callao (0:30 e 4:5x), puquios (4:25), Jauja (4:35), Huinco (8:27), Cárhuaz (8:44). Nome que ele
   ouvir errado ganha o alias de reserva da `roteiros/peru-agua/pronuncia.md` na cópia para a voz, e só aquele trecho se refaz
   (`narrar.mjs peru-agua --refazer=N`, depois `tratar-narracao.py` de novo).
+- **O ok do Lucas** (18/10/2026), depois de receber a narração e os nomes: **"A narração está ok"**. Nenhum trecho refeito.
+
+## O relógio de palavras (ingest)
+
+- **1ª rodada** (`ingest-1.log`): sem o alinhamento da ElevenLabs; `alinhamento-elevenlabs.mjs peru-agua` (só GET, sem gasto) o baixou.
+- **2ª rodada** (`ingest-2.log`): REPROVADO em dois portões. `conteudo`: 31 itens em 17 trechos, todos do transcritor (acentos,
+  algarismos, grafias; os mesmos da conferência acima). `relogio`: a pausa 149,79–149,96 s (trecho 6, "It stays as fog, low cloud and
+  drizzle.") ficou indecidida: a regra e a ElevenLabs põem a fronteira em "cloud | and", e o ouvido (o Whisper em recorte curto) não
+  confirmou, porque engoliu o "and" ("low cloud," / "drizzle. You can see").
+- **A medida da Sala na pausa** (energia em quadros de 20 ms, 149,30–150,50 s): voz até 149,76 s (−29 dBFS), silêncio de 149,80 a 149,94
+  s (−67 a −88 dBFS), uma sílaba curta de 149,96 a 150,08 s (−27 a −16 dBFS), um vale em 150,10–150,12 s (−26) e a palavra longa de
+  150,14 a 150,40 s. A ElevenLabs dá "and" em 149,97–150,05 e "drizzle." em 150,13–150,69. O "and" vem DEPOIS da pausa: a fronteira é
+  "cloud | and", a proposta comum.
+- **O que faltava no script:** fronteira que o ouvido não decide não tinha aceite. A Sala acrescentou ao `ingest-local.py` o
+  `--aceitar-fronteiras=<início>` (cópia de antes em `ingest-local.py.antes-fronteiras-2026-10-18`), com a disciplina do
+  `--aceitar-vaos`: só a proposta comum da regra e da ElevenLabs, só a fronteira que o laudo anterior do mesmo áudio mostrava
+  indecidida, idêntica, com quem e como no laudo (`aceites_fronteiras`), e a situação "aceita", nunca "conferida". Prova negativa
+  (`_tmp/ingest-teste/`, sem laudo anterior): o aceite foi recusado ("a fronteira nasceu ou mudou nesta rodada").

@@ -1553,3 +1553,18 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   novo repete a forma. O mesmo vale para o gancho de cinco tempos, que é molde de propósito: ali a repetição é decisão, não deriva.
 - **Por que serve a qualquer canal:** todo canal com roteiro feito por agentes que leem os roteiros aprovados como exemplo tende a
   copiar a forma que passou; a variedade tem de ser regra escrita e conferida, porque nenhuma lente de um vídeo só a vê.
+
+### 86. O Whisper engole a palavra curta depois da pausa, e o relógio de palavras fica sem decidir a fronteira
+
+- **O problema:** em 18/10/2026, no ingest do vídeo 4 (o Peru), a pausa 149,79–149,96 s de "It stays as fog, low cloud and drizzle."
+  ficou indecidida: a regra e a ElevenLabs punham a fronteira em "cloud | and", e o ouvido (o Whisper em recorte curto) ouviu "low
+  cloud," antes e "drizzle." depois, sem o "and". A voz v4 reduz o "and" a uma sílaba de ~0,1 s, e o Whisper a junta à palavra
+  seguinte. O portão relogio reprova a fronteira que o ouvido não decide, e o `ingest-local.py` não tinha aceite para ela.
+- **O que resolveu:** a medida da energia do som em quadros de 20 ms mostrou a sílaba curta depois da pausa, separada de "drizzle" por
+  um vale; o `ingest-local.py` ganhou o `--aceitar-fronteiras=<início>`, com a disciplina do `--aceitar-vaos` (só a proposta comum da
+  regra e da ElevenLabs, só a fronteira que o laudo anterior do mesmo áudio mostrava indecidida, com quem e como no laudo). A prova
+  negativa recusou o aceite sem o laudo anterior, e os relógios da Zona do Canal e de Los Angeles saíram idênticos byte a byte.
+- **Como evitar:** nada a evitar na voz; o caso vai voltar com outras palavras curtas ("and", "a", "the") depois de pausa. A medida
+  de energia é a prova; o aceite registra quem a fez.
+- **Por que serve a qualquer canal:** todo canal que alinha narração sintética com um transcritor como juiz esbarra nisso: o
+  transcritor tem viés de juntar a função reduzida à palavra de conteúdo, e um portão que exige o acordo dele trava sem defeito real.

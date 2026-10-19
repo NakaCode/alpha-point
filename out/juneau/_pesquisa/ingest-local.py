@@ -26,7 +26,18 @@
 #                   herdado, sem a opção, pelo vão idêntico do mesmo áudio. Pede --aceite-por e --aceite-como. O vão
 #                   aceito sai "aceito" no portão, com o motivo, nunca "medido": a prova dele é a conferência de quem
 #                   aceitou, por fora deste script.
-#   --aceite-por=   quem aceitou (vai para o laudo; padrão "não informado"; obrigatório com --aceitar-vaos).
+#   --aceitar-fronteiras=149.79
+#                   aceita, DEPOIS DE CONFERIR NO SOM, a fronteira de uma pausa que ficou INDECIDIDA (portão relogio) porque
+#                   o ouvido não confirmou o consenso da regra e da ElevenLabs, pelo INÍCIO da pausa em segundos, com 2 casas
+#                   (o número da linha do portão). Só vale quando a regra e a ElevenLabs CONCORDAM, e a fronteira aceita é a
+#                   delas: o aceite não escolhe outra. A mesma disciplina do --aceitar-vaos: só aceita a fronteira que o
+#                   laudo ANTERIOR deste áudio (mesmo sha256) mostrava indecidida, IDÊNTICA (o mesmo trecho, a mesma pausa,
+#                   a mesma proposta nas mesmas palavras); a que nasce ou muda nesta rodada fica indecidida (aceite_recusado).
+#                   O aceite vai para o laudo (aceites_fronteiras) e é herdado pela fronteira idêntica do mesmo áudio. Pede
+#                   --aceite-por e --aceite-como. A fronteira aceita sai "aceita" no portão, nunca "conferida": a prova dela
+#                   é a conferência de quem aceitou (no vídeo 4, 18/10/2026: a energia do som em quadros de 20 ms e a escuta
+#                   do Lucas), por fora deste script.
+#   --aceite-por=   quem aceitou (vai para o laudo; padrão "não informado"; obrigatório com --aceitar-vaos e --aceitar-fronteiras).
 #   --aceite-como=  como foi conferido: "ouvido pelo Lucas", "Whisper em recorte curto + energia; sem escuta humana"...
 #                   (vai para o laudo; padrão "não informado"; obrigatório com --aceitar-vaos).
 #   --aceite-evidencia=  onde está a conferência (um relato, um laudo de cético); só para --aceitar-vaos, opcional.
@@ -825,6 +836,12 @@ def chave_vao(v):
     return json.dumps([v["trecho"], v["entre"], v["palavras"], [round(x, 3) for x in v["vao_s"]], round(v["fechado_em"], 3)],
                       ensure_ascii=False)
 
+def chave_fronteira(r):
+    """O que identifica uma fronteira indecidida: o aceite vale só para a IDÊNTICA do mesmo áudio (o mesmo trecho, a mesma
+    pausa, as mesmas propostas da regra e da ElevenLabs, nas mesmas palavras)."""
+    return json.dumps([r["trecho"], [round(x, 2) for x in r["pausa"]], r["regra"], r["elevenlabs"], r.get("regra_palavras")],
+                      ensure_ascii=False)
+
 def resolver_aceites_vaos(vaos, herdados, aceitar, por, como, evidencia, agora, pendentes_antes=frozenset(), visto_em=None):
     """A disciplina do --aceitar (resolver_aceites), vão a vão. Para cada vão que pede aceite (vao_pede_aceite), marca
     v["situacao"]: "aceito" se é idêntico a um aceite herdado (o laudo anterior do MESMO áudio), ou se o início dele
@@ -959,11 +976,15 @@ def portao_relogio(words, trechos_rel, segmentos, esperadas, fronteiras, som=Non
     # decidida = consenso com pontuação, ou o ouvido decidiu (conferida, desempatada, corrigida); ignorada = nenhuma
     # fronteira de palavra perto (pausa de dentro de uma palavra). Qualquer outra situação reprova, inclusive uma que
     # esta versão não produz mais ("nao_confirmada", de laudos antigos): o que não está na lista não passa.
-    decididas = ("consenso", "conferida", "desempatada", "corrigida")
+    decididas = ("consenso", "conferida", "desempatada", "corrigida", "aceita")
     discord = [f for f in fronteiras if f["situacao"] not in decididas + ("ignorada",)]
     for f in discord:
         prob.append(f"pausa {f['pausa'][0]:.2f}–{f['pausa'][1]:.2f} (trecho {f['trecho']}): fronteira {f['situacao']} "
-                    f"(regra: {f.get('regra_palavras', f.get('regra'))}; ElevenLabs: {f.get('elevenlabs_palavras', f.get('elevenlabs'))}; {f.get('como', '')})")
+                    f"(regra: {f.get('regra_palavras', f.get('regra'))}; ElevenLabs: {f.get('elevenlabs_palavras', f.get('elevenlabs'))}; {f.get('como', '')})"
+                    + (f" — se o som confirma a proposta comum: --aceitar-fronteiras={f['pausa'][0]:.2f} --aceite-por=\"<quem>\" "
+                       f"--aceite-como=\"<como conferiu>\"" if f["situacao"] == "indecidido" and f.get("regra") is not None
+                       and f.get("regra") == f.get("elevenlabs") else "")
+                    + (f" (aceite recusado: {f['aceite_recusado']})" if f.get("aceite_recusado") else ""))
     vaos_pendentes, vaos_aceitos = [], []
     if vaos is not None:
         # o vão acima do teto sem vale NUNCA passa por regra automática (nem o quadro mais quieto, nem o ouvido, que só
@@ -1012,7 +1033,9 @@ def portao_relogio(words, trechos_rel, segmentos, esperadas, fronteiras, som=Non
     det = (f"{len(words)} palavras do texto aprovado (contarPalavras: {esperadas}), em ordem, sem sobreposição, dentro do som "
            f"de cada trecho, nenhuma invadindo as {sum(len(t['ancoras']) for t in trechos_rel)} pausas-âncora. Fronteiras: "
            f"{len(fronteiras)} pausas, {n_dec} decididas ({conta('consenso')} por consenso com pontuação; pelo ouvido, "
-           f"{conta('conferida')} conferidas, {conta('desempatada')} desempatadas e {conta('corrigida')} corrigidas), "
+           f"{conta('conferida')} conferidas, {conta('desempatada')} desempatadas e {conta('corrigida')} corrigidas"
+           + (f"; {conta('aceita')} ACEITAS, não medidas: a proposta comum da regra e da ElevenLabs, por quem conferiu no som"
+              if conta('aceita') else "") + "), "
            f"{conta('ignorada')} ignoradas (de dentro de uma palavra), 0 sem decisão. Medido: "
            + ("; ".join(medidas) if medidas else "nada (sem o som)") + (("." + txt_aceitos) if txt_aceitos else "")
            if ok else "; ".join(prob[:10]) + (f" … (+{len(prob) - 10})" if len(prob) > 10 else "") + txt_como_aceitar + txt_aceitos)
@@ -1083,9 +1106,9 @@ def main(argv):
     args = [a for a in argv if not a.startswith("--")]
     opcoes = dict(a[2:].split("=", 1) if "=" in a else (a[2:], "1") for a in argv if a.startswith("--"))
     uso = ("uso: python out/<proj>/_pesquisa/ingest-local.py <proj> [--aceitar=3,7] [--aceitar-vaos=24.84,138.72] "
-           "[--aceite-por=...] [--aceite-como=...] [--aceite-evidencia=...] "
+           "[--aceitar-fronteiras=149.79] [--aceite-por=...] [--aceite-como=...] [--aceite-evidencia=...] "
            "[--sem-cobertura] [--refazer] [--saida=<pasta>] [--pre-v1=<clone>]   (cwd = raiz do canal)")
-    if len(args) != 1 or set(opcoes) - {"saida", "pre-v1", "refazer", "aceitar", "aceitar-vaos", "sem-cobertura", "aceite-por",
+    if len(args) != 1 or set(opcoes) - {"saida", "pre-v1", "refazer", "aceitar", "aceitar-vaos", "aceitar-fronteiras", "sem-cobertura", "aceite-por",
                                         "aceite-como", "aceite-evidencia"} \
             or not re.fullmatch(r"[\w.-]+", args[0]):
         print(uso, file=sys.stderr); return 2
@@ -1098,12 +1121,20 @@ def main(argv):
         print("--aceitar-vaos=S[,S...]: o início de cada vão em segundos, com 1 ou 2 casas (ex.: 24.84; 775.5 = 775.50), como a linha do portão "
               "relogio o mostra", file=sys.stderr); return 2
     aceitar_vaos = sorted({f"{float(x):.2f}" for x in brutos_vaos})
+    brutos_fr = [x.strip() for x in opcoes.get("aceitar-fronteiras", "").split(",") if x.strip()]
+    if any(not re.fullmatch(r"\d+\.\d{1,2}", x) for x in brutos_fr):
+        print("--aceitar-fronteiras=S[,S...]: o início de cada pausa em segundos, com 1 ou 2 casas (ex.: 149.79), como a linha do "
+              "portão relogio a mostra", file=sys.stderr); return 2
+    aceitar_fronteiras = sorted({f"{float(x):.2f}" for x in brutos_fr})
     ACEITE_POR = (opcoes.get("aceite-por") or "").strip() or "não informado"
     ACEITE_COMO = (opcoes.get("aceite-como") or "").strip() or "não informado"
     ACEITE_EVIDENCIA = (opcoes.get("aceite-evidencia") or "").strip() or None
     if aceitar_vaos and "não informado" in (ACEITE_POR, ACEITE_COMO):
         print("--aceitar-vaos pede --aceite-por=<quem conferiu> e --aceite-como=<como conferiu a borda no som>: o aceite é a "
               "única prova do vão sem vale", file=sys.stderr); return 2
+    if aceitar_fronteiras and "não informado" in (ACEITE_POR, ACEITE_COMO):
+        print("--aceitar-fronteiras pede --aceite-por=<quem conferiu> e --aceite-como=<como conferiu a fronteira no som>: o aceite é "
+              "a única prova da fronteira que o ouvido não decidiu", file=sys.stderr); return 2
     AGORA = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     REFAZER, SEM_COBERTURA = "refazer" in opcoes, "sem-cobertura" in opcoes
     proj = args[0]
@@ -1156,6 +1187,14 @@ def main(argv):
             if v.get("situacao") == "pendente":
                 try: pendentes_vaos_antes.add(chave_vao(v))
                 except (KeyError, TypeError): pass
+    # e para as fronteiras indecididas (--aceitar-fronteiras)
+    herdados_fronteiras = list(laudo_anterior.get("aceites_fronteiras") or []) if mesmo_audio else []
+    pendentes_fronteiras_antes = set()
+    if mesmo_audio:
+        for r in (laudo_anterior.get("alinhamento") or {}).get("fronteiras_desempatadas") or []:
+            if r.get("situacao") == "indecidido":
+                try: pendentes_fronteiras_antes.add(chave_fronteira(r))
+                except (KeyError, TypeError): pass
     avisos_heranca = []
     if mesmo_audio and laudo_anterior.get("aceitos") and "aceites" not in laudo_anterior:
         avisos_heranca.append(f"o laudo anterior aceitava por trecho ({laudo_anterior.get('aceitos')}), formato que não vale mais: "
@@ -1171,6 +1210,7 @@ def main(argv):
                  "portoes": portoes, "trechos": None,
                  "aceitos": sorted({h["trecho"] for h in herdados if h.get("tipo") == "cobertura"}), "aceites": herdados,
                  "aceites_vaos": herdados_vaos,
+                 "aceites_fronteiras": herdados_fronteiras,
                  "sobre_aceitos": SOBRE_ACEITOS,
                  "sem_cobertura": None, "avisos": avisos_heranca + avisos, "saidas": {"words": None, "transcript": None},
                  **(extra or {}),
@@ -1416,13 +1456,37 @@ def main(argv):
                 b, como, nota = julgar_pelo_ouvido(tp, propostas, ta, td, n, alt_ult, alt_pri)
                 # só o ouvido decide aqui: confirmou a proposta comum (ou a única), escolheu uma de duas, ou achou
                 # outra; o que ele não decide fica indecidido (reprova o portão relogio)
-                if b is None: situacao = "indecidido"
+                aceite_fr = None
+                if b is None:
+                    situacao = "indecidido"
+                    # o aceite de quem conferiu no som (--aceitar-fronteiras): só a proposta COMUM da regra e da ElevenLabs
+                    ini = f"{p[0]:.2f}"
+                    if len(propostas) == 2 and len(set(propostas)) == 1:
+                        c = chave_fronteira({**reg, "regra_palavras": f"{palavras[i_r]} | {palavras[i_r + 1]}"})
+                        h = next((h for h in herdados_fronteiras if h.get("chave") == c), None)
+                        if h:
+                            b, situacao = propostas[0], "aceita"
+                            aceite_fr = {k: h.get(k) for k in ("por", "como", "evidencia", "em", "pendente_no_laudo_de")} | {"herdado": True}
+                        elif ini in aceitar_fronteiras and c in pendentes_fronteiras_antes:
+                            b, situacao = propostas[0], "aceita"
+                            aceite_fr = {"por": ACEITE_POR, "como": ACEITE_COMO, "evidencia": ACEITE_EVIDENCIA, "em": AGORA,
+                                         "pendente_no_laudo_de": visto_em}
+                        elif ini in aceitar_fronteiras:
+                            reg["aceite_recusado"] = ("a fronteira nasceu ou mudou nesta rodada: o laudo anterior deste áudio não a "
+                                                      "mostrava indecidida, idêntica (o mesmo trecho, a mesma pausa, a mesma proposta), "
+                                                      f"então ninguém a conferiu. Confira no som e rode de novo com --aceitar-fronteiras={ini}")
+                    elif ini in aceitar_fronteiras:
+                        reg["aceite_recusado"] = ("a regra e a ElevenLabs não concordam nesta pausa: o aceite só confirma a proposta comum "
+                                                  "das duas, não escolhe fronteira")
                 elif b not in propostas: situacao = "corrigida"
                 elif len(set(propostas)) == 1: situacao = "conferida"
                 else: situacao = "desempatada"
-                reg.update(fronteira=b, situacao=situacao, como=como,
+                reg.update(fronteira=b, situacao=situacao,
+                           como=como + ("; ACEITA, não medida: a proposta comum da regra e da ElevenLabs, por quem conferiu no "
+                                        "som (--aceitar-fronteiras)" if aceite_fr else ""),
                            ouvido={"antes": " ".join(w["w"] for w in antes[-4:]), "depois": " ".join(w["w"] for w in depois[:4]),
                                    "notas": {palavras[k] + " | " + palavras[k + 1]: v for k, v in sorted(nota.items())}})
+                if aceite_fr: reg["aceite"] = aceite_fr
             for k in ("regra", "elevenlabs", "fronteira"):
                 if reg.get(k) is not None: reg[k + "_palavras"] = f"{palavras[reg[k]]} | {palavras[reg[k] + 1]}"
             fronteiras.append(reg)
@@ -1447,6 +1511,10 @@ def main(argv):
                 anc.append((b, p0, p1))
         t["ancoras"] = anc
     for r in fronteiras: r.pop("_p", None)
+    aceites_fronteiras = [{"chave": chave_fronteira(r), "trecho": r["trecho"], "pausa": r["pausa"],
+                           "fronteira_palavras": r.get("fronteira_palavras"),
+                           **{k: x for k, x in r["aceite"].items() if k != "herdado"}}
+                          for r in fronteiras if r.get("situacao") == "aceita" and r.get("aceite")]
 
     # ── 8. o relógio híbrido ──────────────────────────────────────────────────────────────────────────────────────────
     words_out, trechos_rel, trecho_de, vaos_fechados = [], [], [], []
@@ -1728,6 +1796,7 @@ def main(argv):
         "aceitos": aceitos,
         "aceites": aceites,
         "aceites_vaos": aceites_vaos,
+        "aceites_fronteiras": aceites_fronteiras,
         "sobre_aceitos": SOBRE_ACEITOS,
         "sobre_aceites_vaos": ("cada vão com voz acima de vao_teto_s SEM vale no som que alguém conferiu no som, por fora deste "
                                "script, e aceitou com --aceitar-vaos (a chave: trecho, par, vão e fechamento); herdado só pelo "
@@ -1755,7 +1824,8 @@ def main(argv):
             "fronteiras": {"pausas": len(fronteiras), "consenso": conta_fr("consenso"), "conferidas": conta_fr("conferida"),
                            "desempatadas": conta_fr("desempatada"), "corrigidas": conta_fr("corrigida"),
                            "nao_confirmadas": conta_fr("nao_confirmada"), "ignoradas": conta_fr("ignorada"),
-                           "indecididas": conta_fr("indecidido"), "incoerentes": conta_fr("incoerente")},
+                           "indecididas": conta_fr("indecidido"), "incoerentes": conta_fr("incoerente"),
+                           "aceitas": conta_fr("aceita")},
             "fronteiras_desempatadas": [r for r in fronteiras if r["situacao"] not in ("consenso",)],
             "conteudo": itens,
             "cobertura_itens": itens_cob,
