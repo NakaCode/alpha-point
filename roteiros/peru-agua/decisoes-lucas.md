@@ -52,3 +52,22 @@ dois leitores, e os três acharam a frase confusa). O título da concorrência q
 Million People Get Water?" (1º clique de dois leitores). À pergunta "Qual título fica para o vídeo do Peru?" (A, recomendado; B; o de
 trabalho), a resposta: **"O de trabalho"**. **O título do vídeo 4: "Why Peru Lives on the Dry Side of the Andes"** (43 caracteres),
 o mesmo do `regie open`.
+
+**A prova da ilustração sobre o mapa** (19/10/2026). Com o resto da cota da semana, o Lucas pediu um exemplo ("Eu queria aproveitar o
+restante da cota para testarmos a ilustração sobre o mapa"), sobre o MapTiler ("MapTiler (Recomendado)"). A prova (`out/prova-mapa-ilustrado/`,
+fora do git: a frase "The mountains help…", 15 s; nuvens de papel saindo da Amazônia e parando nos Andes, a chuva na encosta leste, a
+névoa na costa) foi ao Lucas. A resposta dele: "Eu não gostei muito de serem vários ícones de montanha, talvez usar o relevo seja melhor,
+ou então uma representação mais "unificada", desse modo aparenta termos muitos elementos em um espaço pequeno dando a sensação de
+"poluição visual". A marcação em branco na encosta dos Andes não ficou muito legal também". Para a produção: nada de ícone de montanha
+repetido; a cordilheira vem do próprio relevo (o satélite, ou o relevo 3D, que pede o ok dele) ou de uma forma única; poucos elementos
+por quadro; sem a faixa branca na encosta.
+À pergunta "Como a cordilheira aparece na próxima versão da prova?", a resposta: **"Relevo 3D (Recomendado)"** (a opção dizia que pede
+tiles de relevo e o ok dele, "que esta resposta dá para a prova"); a "Quando refaço a prova?", **"Agora"**, com o semanal em 97 %.
+A versão 2 roda em `wf_50de21c2-6d1` (relevo 3D só para a prova; na produção do vídeo, o relevo continua pedindo o ok dele por cena).
+Depois da versão 2 (o relevo 3D, `s-nuvens-relevo-1080p.mp4`), o Lucas: **"A versão anterior estava definitivamente melhor"**. Fica a
+versão 1 como base (o satélite plano visto de cima, a costa e a Amazônia no mesmo quadro), com os consertos que ele pediu nela: sem os
+ícones de montanha repetidos e sem a faixa branca na encosta. O relevo 3D não vai a esta cena.
+À pergunta "Na versão 1, o que entra no lugar dos ícones de montanha?", a resposta: **"Uma forma única de papel"** (a opção dizia: "Uma
+só faixa recortada em papel, com sombra, ao longo da crista, no lugar dos 6 picos. Mostra onde a montanha barra as nuvens, mas é mais
+um elemento na tela."). A versão 3 da prova: a v1 (`graphics/_v1/`), com a crista como uma forma única de papel, sem a faixa branca na
+encosta, e o acabamento de papel nas nuvens e na chuva; depois de 22/10.
