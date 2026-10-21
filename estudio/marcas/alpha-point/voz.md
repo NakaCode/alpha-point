@@ -1,7 +1,8 @@
 # MARCA ALPHA POINT — voz
 
 > Índice destilado de `marca/voz.md` (§1 e §2) e `marca/embalagem.md` §1. A voz técnica (provedor, modelo,
-> configurações, loudness) mora em `vozes/narrador-v1.json`, não aqui: o `marca/voz.md` §1 ainda cita o eleven_v3 e a
+> configurações, pausa, cauda) mora em `estudio/canal-motor.json` › `narracao`, e o loudness em › `master`, que é de
+> onde o motor lê; a fonte e a medida de cada valor estão em `estudio/LEIA.md`. Aqui não: o `marca/voz.md` §1 ainda cita o eleven_v3 e a
 > voz `iAc9oLyb1zcwD4O3ZTBv`, que estão superados pelo `canal.json` (ver `LEIA.md`).
 
 ## Persona e público
@@ -16,7 +17,7 @@
 
 ## Registro (os números da fala, voz §1)
 
-- 150–160 palavras/min é o alvo escrito; a voz v4 medida fala mais rápido (ver `vozes/narrador-v1.json`).
+- 150–160 palavras/min é o alvo escrito; a voz v4 medida fala mais rápido, de 158 a 184 palavras/min (`estudio/LEIA.md`).
 - Frase de até 18 palavras em média, uma ideia por frase.
 - Toda abstração pousa num lugar do mapa em até duas frases; termo técnico definido na primeira vez, numa oração.
 - Afirmação contestável tem a fonte dita na voz; número sempre com dono (instituição e ano).

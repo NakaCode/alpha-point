@@ -14,7 +14,7 @@ commit. Quando a fonte mudar, esta pasta se refaz a partir dela; onde as duas di
 | `superficies.md` | `marca/identidade.md` §5 e §8, `marca/cta.md`, `marca/embalagem.md`, `marca/descricao-canal.md`, `canal.json`, `out/*/linha.md`, `out/zona-do-canal/_creditos-trilha.md`, `roteiros/*/decisoes-lucas.md` |
 | `agentes/*.md` (15) | `marca/agentes/<mesmo nome>.md`, conferidas contra `marca/identidade.md` (a mais nova vence) |
 | `agentes/executor-de-molde.md` | `marca/identidade.md` §4.1, §4.4 e §5, `marca/prancha-documento-card.html`, `marca/tokens.css`; formato: o ofício `.claude/agents/executor-de-molde.md` e a roupa do Top10 no monorepo (não há roupa dele em `marca/agentes/`) |
-| `vozes/narrador-v1.json` | `canal.json`, `CLAUDE.md`, `out/zona-do-canal/narracao.json`, as três `narracao-conferencia.md`, `teste-voz-v4.md`, `_creditos-trilha.md`; o alvo −14 LUFS do `PLANO.md` da frente K (fora deste repositório) |
+| (o perfil técnico da voz) | não é arquivo à parte: mora em `estudio/canal-motor.json` › `narracao` e › `master` (decisão da frente K, 21/out/2026). As fontes (`canal.json`, `CLAUDE.md`, `out/zona-do-canal/narracao.json`, as três `narracao-conferencia.md`, `teste-voz-v4.md`, `_creditos-trilha.md`) estão na tabela de `estudio/LEIA.md` |
 | `publicacao-youtube.json` | `out/los-angeles/descricao-youtube.md`, `out/zona-do-canal/descricao-youtube.md`, `_creditos-mapa.md`, `_creditos-trilha.md`, `marca/cta.md` §7, `roteiros/*/decisoes-lucas.md` |
 
 sha256 das fontes lidas (20/10/2026, ramo `estudio/pacote-do-canal`, HEAD `1703b34`):
@@ -82,7 +82,7 @@ e2ccf4cfa8e06a41b87909560a4c6a83074b498480afff420740a6d8e630930f  (monorepo, ori
    (eleven_v4, `829pig94w9GefZ9jJQYl`, 07/10). O `CLAUDE.md` do canal também abre a seção da narração com «eleven_v3».
 3. **Não existe `marca/finalizacao.json`.** As chamadas e a marca d'água entram pelo `ferramentas/xml-chamadas.py`, e a
    trilha e o volume, à mão no Premiere. O master automático do motor precisa dessas regras de algum lugar: hoje elas
-   estão em `superficies.md` e em `vozes/narrador-v1.json`, não num arquivo de máquina.
+   estão em `superficies.md` e em `estudio/canal-motor.json` › `master`.
 4. **MapTiler:** o plano Flex do Lucas cobre vídeo só para canal com até 100 mil inscritos, com o crédito na tela em todo
    quadro de mapa. Antes de chegar lá, licença custom.
 5. **Roupas de `marca/agentes/` atrás da identidade:** o tratamento do satélite 65 % / 70 % (diretor-de-arte, mapista,

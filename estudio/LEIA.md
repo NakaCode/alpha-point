@@ -11,7 +11,7 @@ e os 5 setores viram uma conversa só), o pacote pode subir para a raiz.
 |---|---|
 | `canal.json` | o contrato do app (`estudio-canal/1`): marca, motores, saída no YouTube, bucket R2 e membros |
 | `canal-motor.json` | o que o motor precisa e o app não cobre (`estudio-canal-motor/1`): idioma, rosto, narração, master, portões, contas |
-| `marcas/alpha-point/` | a roupa destilada de `marca/` (identidade, voz, superfícies, 16 roupas de agente, perfil de voz, perfil de publicação); o `LEIA.md` dela traz a fonte e o sha256 de cada valor |
+| `marcas/alpha-point/` | a roupa destilada de `marca/` (identidade, voz, superfícies, 16 roupas de agente, perfil de publicação); o `LEIA.md` dela traz a fonte e o sha256 de cada valor. O perfil técnico da voz não é arquivo à parte: mora no `canal-motor.json` (decisão da frente K, 21/out/2026) |
 | `PASSOS-DO-LUCAO.md` | o que só o Lucão faz, uma vez |
 
 ## Como o motor lê e como conferir
@@ -21,7 +21,7 @@ TOP10_CANAL_DIR=<clone do alpha-point>/estudio
 node scripts/lib/canal.mjs --canal=<clone do alpha-point>/estudio conferir     # (no top10-estudio)
 ```
 
-Conferido em 21/out/2026 contra o `origin/main` `694d8c91b`: contrato do app e do motor válidos, travas de sócio
+Conferido em 21/out/2026 contra o `origin/main` `9828329a1`: contrato do app e do motor válidos, travas de sócio
 satisfeitas (bucket próprio, pool `canal`, sem caça de stock assinado, faixa 0/0/0, cobertura 100 %, sem M28/M32/M33), e
 o perfil de publicação válido no contrato estrito. **Único achado: a voz é `$pendente`** (abaixo).
 
@@ -41,11 +41,20 @@ o perfil de publicação válido no contrato estrito. **Único achado: a voz é 
 | `limites.caracteres_max_por_obra` | 30.000 | o teto do Lucas é 15.000 créditos de voz por vídeo (02/10/2026); o v4 mediu ~0,48 crédito por caractere (Zona e Peru), e 15.000 ÷ 0,48 ≈ 31.000 |
 | `midia.caca_stock_assinado` | false | trava do motor para sócio; o Storyblocks e o Envato da Top10 saem (PLANO §8 A) |
 | `master` | automático, −14 LUFS, −1 dBTP, 3840×2160 a 30 fps | o Premiere sai; hoje a voz sai a −19,7 LUFS e o Lucão sobe 5,5 dB na mão (≈ −14,2) |
-| `master.trilha` | −35 dB, sem ducking | a música vai a −35 dB constante no XML de hoje (`out/zona-do-canal/_creditos-trilha.md`) |
+| `master.trilha` | −40,5 dB sob o narrador, −40 dB sem voz | hoje a música vai a −35 dB constante no XML, do 0:00 ao fim (cauda incluída), e o Lucas sobe a voz 5,5 dB no Premiere (`out/zona-do-canal/_creditos-trilha.md`; «Subir a voz no Premiere», 15/10/2026): a música fica 40,5 dB abaixo da voz. No master novo o ganho é antes do loudnorm e a voz vai a 0 dB, então −40,5 mantém a mesma relação que ele aprovou. Sem voz, −40 é o mínimo do schema (0,5 dB acima). Sem trecho sem trilha no começo |
 | `master.logo` | `../marca/logo/agulha/marca-dagua.png`, canto superior direito, 60 px, 100 px, 30 % | Lucas, 09/10/2026 (`marca/identidade.md` §8): 60 px do topo e da direita, disco de 100 px, opacidade 30 % |
 | `master.cta` | vazio | as duas chamadas mudam por vídeo (a do comentário leva a pergunta do vídeo; a da inscrição cai entre 35 % e 60 % da duração): o formato fixo do motor ainda não as cobre. Pedido registrado à frente K |
 | `portoes` | pauta, roteiro, título e capa, publicar | o que fica com o Lucão (PLANO §3) |
 | `contas_claude` | pool do canal, `claude.env`, 1 porta | a conta Max do próprio Lucão; quantas portas é decisão de dinheiro do dono com ele, depois de medir os 3 primeiros vídeos |
+
+## As medidas da voz de hoje (para a voz nova ter com que se comparar)
+
+| Medida | Valor | Fonte |
+|---|---|---|
+| Palavras por minuto no v4 | 184 no teste de Los Angeles (171 a 203 por parágrafo); 158 na Zona do Canal; 175 no Peru | `out/los-angeles/_pesquisa/teste-voz-v4.md`; `out/zona-do-canal/_pesquisa/narracao-conferencia.md`; `out/peru-agua/_pesquisa/narracao-conferencia.md` |
+| Loudness da voz crua | −19,6 LUFS (Los Angeles, pico −3,6 dBTP, LRA 2,2); −19,7 LUFS (Zona); o v3 do Juneau media −14,1 | as mesmas conferências; `out/zona-do-canal/_creditos-trilha.md`; `CLAUDE.md` |
+| Arquivo | PCM 16 bits, 44,1 kHz, mono; fade de 5 ms na entrada e 15 ms na saída de cada parágrafo | `out/zona-do-canal/narracao.json` › `audio` e › `tratamento_canal` |
+| Alvo escrito | 150 a 160 palavras/min, ~2.000 palavras por roteiro | `marca/voz.md` §1; `out/los-angeles/_pesquisa/teste-voz-v4.md` (o Lucas aceitou o ritmo do v4: «ritmo ok», 07/10/2026) |
 
 ## O PC de produção
 

@@ -7,7 +7,7 @@
 
 - Faceless: o master é a narração sintética sobre tela preta 3840×2160; cota de apresentador **0 %**; não existe
   veredito `manter`; 100 % do tempo coberto por cena, inclusive os **20 s** finais sem voz (um segmento próprio).
-- Não há vão de card na narração: a pausa entre parágrafos é curta (`vozes/narrador-v1.json`), e nenhum silêncio vira
+- Não há vão de card na narração: a pausa entre parágrafos é curta (0,25 s, `estudio/canal-motor.json` › `narracao`), e nenhum silêncio vira
   fronteira de tópico.
 - Sem card de capítulo, título ou progresso. As viradas de parte vão no `motivo` da primeira cena de cada parte, com o
   tempo: é daí que saem os capítulos da **descrição**.
