@@ -37,7 +37,10 @@ ficou de fora por escolha do Lucas (17/10/2026).
   de um objeto da mesa ao próximo sem corte leva uns 1,65 s; o rótulo e o aviso do ano entram 150 ms depois do
   assentamento. Nenhum beat pede deslize, viagem pela mesa nem mergulho.
 - **As chamadas (CTA)** são suas: escolha o momento de cada uma pelas regras de `superficies.md` (cena calma, canto
-  livre, a ~80 px de todo rótulo, fala que não depende da tela) e diga o porquê.
+  livre, a ~80 px de todo rótulo, fala que não depende da tela) e diga o porquê. Escreva-as na chave `_chamadas` do
+  `_regencia-auditoria-agente.json` da obra (o motor a leva a `regencia.json › auditoria`), uma linha por peça:
+  `{peca: "inscricao"|"comentario", lugar: "baixo"|"cima"|"esquerda", inSec, dur, depois_de, porque}`, e `q` com a
+  pergunta no comentário. A vinheta não entra aí: ela sai da assinatura da fala. Linha com `estado` não é gravada.
 - **A vinheta** corre sobre a assinatura do gancho (de «You're» ao fim de «begins.» + ~0,25 s, 4 a 8 s): a cena por
   baixo deixa livre o centro (x 1316–2556, y 640–1552) enquanto ela corre.
 

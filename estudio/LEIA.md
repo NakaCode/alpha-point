@@ -50,24 +50,31 @@ o perfil de publicação válido no contrato estrito. **Único achado: a voz é 
 ## A ferramenta das peças (`pecas/pecas-da-obra.mjs`)
 
 O motor roda `node pecas/pecas-da-obra.mjs <slug> --obra=<obra>` antes do plano do master e de novo quando a narração
-muda. Ela grava, pelo gravador do próprio canal (`marca/cta/_capturar.mjs`, ProRes 4444 com alfa, 3840×2160):
+muda. Ela grava, pelo gravador do próprio canal (`marca/cta/_capturar.mjs`, ProRes 4444 com alfa, 3840×2160, a
+30000/1001, a régua do motor: o master compõe as peças pelo tempo e não converte a taxa delas):
 - a **vinheta** (`marca/vinheta/vinheta.html`) sobre a assinatura do gancho, achada no `words-final.json`: de «You're»
   ao fim de «begins.» + 0,25 s, de 4 a 8 s. Com menos de 4 s grava 4 e avisa; com mais de 8 s, PARA (saída 2);
-- as **chamadas** que o regente marcou em `regencia.json › _chamadas` (inscrição; comentário com a pergunta do vídeo, do
-  `q` da linha ou de `textos-tela.json › pergunta_cta`). Linha com `estado` (pendente com o Lucas) não entra;
+- as **chamadas** que o regente marcou: no motor ele as declara em `_regencia-auditoria-agente.json` e elas chegam a
+  `regencia.json › auditoria._chamadas` (o topo, `regencia.json › _chamadas`, é o jeito da Régie e fica de reserva).
+  Inscrição; comentário com a pergunta do vídeo, do `q` da linha ou de `textos-tela.json › pergunta_cta`. Linha com
+  `estado` (pendente com o Lucas) não entra;
 - `_master/sobreposicoes.json`, `_master/logo.json` (`desde_s` = fim da vinheta) e um recibo com os sha256.
 
 Provado em 21/out/2026 no Mac (Chrome do Mac por `CHROME_PATH`) com a obra do vídeo 3 (as palavras, a regência e os
 textos de tela da Zona do Canal): a vinheta saiu em 59,50 s com 5,12 s, o mesmo número que o regente calculou à mão
 naquele vídeo (palavras 163 a 181); a inscrição entrou em 342,96 s; o comentário, pendente com o Lucas, ficou de fora.
-154 + 135 quadros em 85 s. A emenda vinheta → marca d'água: na área do canto (140 × 140 px), a maior diferença entre o
+154 + 135 quadros em 85 s. Refeito em 21/out a 30000/1001 e com as chamadas em `auditoria._chamadas`, como o motor as entrega:
+153 + 135 quadros (`r_frame_rate=30000/1001`), e a duração declarada de cada peça é a do arquivo (quadros ÷ taxa), então
+a marca d'água começa no instante exato em que a vinheta acaba (64,6051 s; vão zero). A emenda vinheta → marca d'água: na área do canto (140 × 140 px), a maior diferença entre o
 último quadro e o PNG é de 10 a 11/255, em 275 a 343 pixels (acima de 8, de 1 a 9), sobre fundos escuro, médio e claro;
 é o arredondamento do ProRes 12 bits. Testes: `node --test estudio/pecas/pecas-da-obra.test.mjs` (5 casos, com os
 controles: sem assinatura e assinatura longa param).
 
-**O que a máquina precisa:** `npm ci` na raiz do repositório do canal (o gravador usa `playwright-core` e `sharp`), o
-`ffmpeg` no PATH e o `CHROME_PATH` (o gravador cai no Chrome do Windows quando a variável falta, como sempre foi no PC
-do Lucas). Sem `node_modules`, a ferramenta PARA dizendo o que rodar.
+**O que a máquina precisa:** o repositório do canal chega ao WSL pelo `montar-pacote.sh` (no Mac) e pelo
+`instalar-pacote.sh` (no WSL, como root), da frente K (`cf626135d`), que confere arquivo a arquivo e roda o
+`npm ci --omit=dev --ignore-scripts` (o `playwright-core` e o `sharp` do gravador). O `ffmpeg` e o `CHROME_PATH` vêm do
+ambiente do motor. Sem `node_modules`, a ferramenta PARA dizendo o que falta. No PC do Lucas, sem `CHROME_PATH`, o
+gravador usa o Chrome do Windows, como sempre.
 
 ## A trilha automática (ainda desligada)
 

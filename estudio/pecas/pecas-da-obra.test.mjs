@@ -59,3 +59,11 @@ test("chamadas: entra a do regente; fica de fora a pendente, a sem pergunta e a 
   const comPergunta = chamadasDoRegente(reg, "Where would you draw the line?");
   assert.deepEqual(comPergunta.entram.map((c) => [c.peca, c.q]), [["inscricao", null], ["comentario", "Where would you draw the line?"]]);
 });
+
+test("no motor comum, as chamadas vêm de regencia.json › auditoria._chamadas, e o topo fica de reserva", () => {
+  const linha = { peca: "inscricao", lugar: "cima", inSec: 400, dur: 4.5 };
+  const doMotor = chamadasDoRegente({ auditoria: { _chamadas: [linha] }, _chamadas: [{ ...linha, inSec: 1 }] }, null);
+  assert.deepEqual(doMotor.entram.map((c) => [c.lugar, c.ini]), [["cima", 400]]);
+  const daRegie = chamadasDoRegente({ auditoria: {}, _chamadas: [linha] }, null);
+  assert.deepEqual(daRegie.entram.map((c) => c.ini), [400]);
+});
