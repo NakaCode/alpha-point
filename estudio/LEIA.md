@@ -51,5 +51,5 @@ o perfil de publicação válido no contrato estrito. **Único achado: a voz é 
 
 Os scripts do PC (inventário do disco, preparo do usuário `alpha-prod` e de `C:\estudio\`, cofre das credenciais do
 Lucão, backup no R2 do canal) são comuns aos três canais da Quint e moram num lugar só: `scripts/socio/maquina/` no
-`top10-estudio` (commit `d0179afcc`, com o README da convenção). No PC, a Top10 os copia para `C:\estudio\maquina\`.
+`top10-estudio` (commits `d0179afcc` e `a1ec2d20e`, com o README da convenção). No PC, a Top10 os copia para `C:\estudio\maquina\`.
 O que o Lucão roda está em `PASSOS-DO-LUCAO.md`.

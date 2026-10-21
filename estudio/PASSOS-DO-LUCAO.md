@@ -72,6 +72,20 @@ dentro do mesmo workspace. Por isso a voz do canal nasce de novo, na sua conta, 
 
    Mande à Top10 a linha verde e o **ID da voz escolhida** (o voice ID não é segredo; a chave é).
 
+## 3b · As outras chaves do canal (MapTiler, Epidemic e acervos)
+
+A MapTiler (plano Flex) e a Epidemic Sound (plano Creator) já são contas suas: copie a chave de cada painel. As chaves
+dos acervos abertos (Pexels, Pixabay, DVIDS, NARA, Europeana e Smithsonian) estão hoje no seu arquivo de chaves, e o
+canal não registrou quem as criou: se foi você, use as mesmas; se vieram de outra pessoa, crie as suas no cadastro de
+cada site. Para cada uma, no PowerShell como administrador, troque o último nome pelo serviço:
+
+```
+powershell -NoProfile -ExecutionPolicy Bypass -File C:\estudio\maquina\guardar-segredo-no-cofre.ps1 -Canal alpha-point -Segredo maptiler
+```
+
+Os nomes são `maptiler`, `epidemic`, `pexels`, `pixabay`, `dvids`, `nara`, `europeana` e `smithsonian`. Cada um imprime
+a sua linha verde.
+
 ## 4 · Claude (a sua conta Max)
 
 1. No PowerShell **normal**: `claude setup-token`. Ele abre o navegador: entre com a sua conta Claude Max e autorize. No
