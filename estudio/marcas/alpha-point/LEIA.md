@@ -15,7 +15,7 @@ commit. Quando a fonte mudar, esta pasta se refaz a partir dela; onde as duas di
 | `agentes/*.md` (15) | `marca/agentes/<mesmo nome>.md`, conferidas contra `marca/identidade.md` (a mais nova vence) |
 | `agentes/executor-de-molde.md` | `marca/identidade.md` §4.1, §4.4 e §5, `marca/prancha-documento-card.html`, `marca/tokens.css`; formato: o ofício `.claude/agents/executor-de-molde.md` e a roupa do Top10 no monorepo (não há roupa dele em `marca/agentes/`) |
 | (o perfil técnico da voz) | não é arquivo à parte: mora em `estudio/canal-motor.json` › `narracao` e › `master` (decisão da frente K, 21/out/2026). As fontes (`canal.json`, `CLAUDE.md`, `out/zona-do-canal/narracao.json`, as três `narracao-conferencia.md`, `teste-voz-v4.md`, `_creditos-trilha.md`) estão na tabela de `estudio/LEIA.md` |
-| `publicacao-youtube.json` | `out/los-angeles/descricao-youtube.md`, `out/zona-do-canal/descricao-youtube.md`, `_creditos-mapa.md`, `_creditos-trilha.md`, `marca/cta.md` §7, `roteiros/*/decisoes-lucas.md` |
+| `publicacao-youtube.json` | perfil de sócio `estudio-perfil-youtube-socio/1` (o formato do motor, `scripts/sem-rosto/publicar.mjs`; o de antes, no formato do Top10, está no histórico do git): os metadados públicos dos 2 vídeos publicados, lidos em 21/out/2026 (categoria 22, idioma en, idade 0), e as descrições publicadas (o rodapé é o crédito do MapTiler/OSM); o `_fonte` e as `_pendencias` estão no próprio arquivo |
 
 sha256 das fontes lidas (20/10/2026, ramo `estudio/pacote-do-canal`, HEAD `1703b34`):
 
@@ -107,7 +107,7 @@ de imagens do qc-visual (M11). Tudo continua em `marca/agentes/`, `CLAUDE.md` e 
 ## Perguntas ao Lucão
 
 1. Crédito: mantém 56 px com exceção permanente no motor, ou sobe para 72 px?
-2. YouTube: qual categoria usa (o perfil só aceita Education)? Qual o e-mail de contato profissional? Há playlist geral,
+2. YouTube: os vídeos saem em People & Blogs (22, medido em 21/out); fica, ou vai para Education (27)? Qual o e-mail de contato profissional? Há playlist geral,
    e qual o id? O que marca em «conteúdo alterado ou sintético» (o perfil está em «sim»)? O canal está monetizado?
 3. ElevenLabs: com a conta própria, a voz `829pig94w9GefZ9jJQYl` passa para ela (compartilhada ou recriada pelas fichas
    de `marca/vozes.html`)?

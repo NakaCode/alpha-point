@@ -116,8 +116,9 @@ Confira também que o canal está numa conta Google e num AdSense **seus**, sem 
 3. **Contas Claude**: quantas você tem, e de qual plano (Max 5x ou 20x)?
 4. **Crédito de tela**: você decidiu 56 px (07/10). O motor tem piso de 72 px, porque abaixo disso não se lê numa TV.
    Sobe para 72 px, ou fica 56 px com exceção permanente no motor?
-5. **YouTube**: qual categoria o canal usa; o e-mail de contato profissional para a descrição (ou nenhum); se o canal
-   já está no programa de parcerias; e o que você marca em «conteúdo alterado ou sintético».
+5. **YouTube**: os dois vídeos saíram na categoria Pessoas e blogs, que é o padrão do YouTube: fica assim ou passa
+   para Educação? Há e-mail de contato profissional para a descrição (ou nenhum)? O canal já está no programa de
+   parcerias? E o que você marca em «conteúdo alterado ou sintético» (o motor marca «sim», por ser voz de IA, até você dizer)?
 6. **Imagens genéricas**: sem o Storyblocks e o Envato da Top10, e sem caça por robô nos bancos (os termos deles
    proíbem), o canal vive de acervo aberto, fonte oficial, mapa e ilustração. Está bem assim?
 7. **A trilha automática**: a regra do canal diz que a trilha nunca passa por ferramenta de IA nem de reconhecimento de
