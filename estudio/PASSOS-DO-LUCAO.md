@@ -109,7 +109,7 @@ envio de vídeos. O vídeo sobe sempre **privado**: quem publica é você, no St
 
 Confira também que o canal está numa conta Google e num AdSense **seus**, sem ligação com o Top10.
 
-## 6 · Seis respostas (pode ser pelo chat, numeradas)
+## 6 · Sete respostas (pode ser pelo chat, numeradas)
 
 1. **Juneau**: o vídeo 1 tem XML pronto desde 07/10 e não foi publicado. Publica, arquiva ou descarta?
 2. **Este PC** pode ficar ligado 24 h? (decide o `-Ligado24h` do passo 1)
@@ -120,3 +120,10 @@ Confira também que o canal está numa conta Google e num AdSense **seus**, sem 
    já está no programa de parcerias; e o que você marca em «conteúdo alterado ou sintético».
 6. **Imagens genéricas**: sem o Storyblocks e o Envato da Top10, e sem caça por robô nos bancos (os termos deles
    proíbem), o canal vive de acervo aberto, fonte oficial, mapa e ilustração. Está bem assim?
+7. **A trilha automática**: a regra do canal diz que a trilha nunca passa por ferramenta de IA nem de reconhecimento de
+   música. No motor novo, um agente lê o ROTEIRO e escreve o clima de cada trecho em texto (por exemplo «misterioso,
+   ambiente, calmo»); a faixa sai de um ranking dos dados da própria Epidemic contra esse texto, e a prévia é medida pelo
+   volume. Nenhum modelo escuta a música. Isso está dentro da sua regra? Se não estiver, o canal usa um clima fixo,
+   sem agente nenhum: os climas das 12 faixas que você aprovou nos vídeos 1 a 3 (misterioso, tranquilo, sonhador; ambiente
+   e drone; de 66 a 104 BPM, todas sem voz), que estão em `estudio/musica/paleta.json`. E há algum clima que o canal
+   nunca deve usar?

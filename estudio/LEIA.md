@@ -69,6 +69,17 @@ controles: sem assinatura e assinatura longa param).
 `ffmpeg` no PATH e o `CHROME_PATH` (o gravador cai no Chrome do Windows quando a variável falta, como sempre foi no PC
 do Lucas). Sem `node_modules`, a ferramenta PARA dizendo o que rodar.
 
+## A trilha automática (ainda desligada)
+
+O motor escolhe a trilha sozinho quando o `canal-motor.json` declara `musica` (frente K, `d4ec988d8`): um agente lê o
+roteiro e escreve o clima de cada trecho em texto, e o ranking dos metadados da Epidemic do canal escolhe a faixa
+(nenhum modelo escuta o áudio). O pacote **ainda não declara** `musica`: a regra do canal (a trilha nunca passa por
+ferramenta de IA nem de reconhecimento de música) pede a palavra do Lucas antes (pergunta 7 de `PASSOS-DO-LUCAO.md`).
+Enquanto isso, o motor espera `_trilha/escolha.json`. A paleta proposta, medida nas 12 faixas que ele aprovou nos vídeos 1
+a 3, está em `musica/paleta.json`; com o sim dele, a linha é
+`"musica": {"fonte": "epidemic", "credencial": "EPIDEMIC_SOUND_API_KEY", "paleta": "musica/paleta.json", "blocos_max": 4}`
+(4 trechos, como hoje).
+
 ## As medidas da voz de hoje (para a voz nova ter com que se comparar)
 
 | Medida | Valor | Fonte |
