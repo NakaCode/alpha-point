@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "profileId": "alpha-point-narrador-v1",
+  "_doc": "O perfil da narração sintética do Alpha Point, para o narrador do motor comum. Cada valor foi lido de uma fonte do repositório do canal (caminhos relativos à raiz dele), citada no _fonte ao lado; nenhum foi escolhido aqui. A fonte vigente da voz é o canal.json › narracao: o marca/voz.md §1 (eleven_v3, iAc9oLyb1zcwD4O3ZTBv) está superado e não se usa. Lido em 20/out/2026.",
+  "destination": {
+    "locale": "en-US",
+    "channelSlug": "alpha-point",
+    "channelId": "UCyZfR56N2xDgrmapdkcckaw",
+    "_fonte": "canal.json › slug e idiomas.origem; channelId medido em 20/out/2026 pela página pública e pelo feed RSS do canal (dado do pedido da frente A)"
+  },
+  "voiceRoute": {
+    "provider": "elevenlabs",
+    "voice_id": "829pig94w9GefZ9jJQYl",
+    "voice_name": "Alpha Point - Narrator (conversational, calm)",
+    "model_id": "eleven_v4",
+    "language_code": "en",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75
+    },
+    "output_format": "pcm_44100",
+    "speed": null,
+    "credentialEnv": "ELEVENLABS_API_KEY",
+    "_fonte": "canal.json › narracao (voice_id, model_id, language_code, voice_settings; decidido em 07/10/2026, narracao_v4_decidido); voice_name: CLAUDE.md, «A voz» (Lucas, 26/09/2026: «a B é a melhor»); output_format: out/zona-do-canal/narracao.json › voz.output_format; speed null porque o v4 ignora velocidade nesta voz (out/los-angeles/_pesquisa/teste-voz-v4.md: com 0,9 o parágrafo durou o mesmo)",
+    "_conta": "A voz mora numa conta ElevenLabs compartilhada com outros canais (CLAUDE.md do canal, chaves). O plano da Quint pede conta própria do sócio: se a conta mudar, o voice_id muda ou a voz é recriada a partir de marca/vozes.html. Pendência no LEIA.md."
+  },
+  "requests": {
+    "unit": "paragraph",
+    "one_request_per_paragraph": true,
+    "paragraph_separator": "linha em branco em out/<proj>/roteiro.md",
+    "pause_between_paragraphs_s": 0.25,
+    "effective_silence_between_paragraphs_s": 0.47,
+    "_fonte": "canal.json › narracao.pausa_paragrafo_s e narracao_v4_decidido (um pedido por parágrafo porque o timbre variou menos assim: centróide 34 Hz entre parágrafos, contra 71 num pedido só; 0,25 s + as pontas do v4, ~0,22 s, dá ~0,47 s); separador: CLAUDE.md, «Como se gera»"
+  },
+  "pace": {
+    "written_target_wpm": [150, 160],
+    "measured_wpm": [
+      { "video": "los-angeles", "wpm": 184, "_fonte": "out/los-angeles/_pesquisa/teste-voz-v4.md (média do teste; 171 a 203 por parágrafo)" },
+      { "video": "zona-do-canal", "wpm": 158, "words": 2129, "speech_s": 807.5, "_fonte": "out/zona-do-canal/_pesquisa/narracao-conferencia.md" },
+      { "video": "peru-agua", "wpm": 175, "words": 2057, "speech_s": 703.8, "_fonte": "out/peru-agua/_pesquisa/narracao-conferencia.md" }
+    ],
+    "script_target_words": 2000,
+    "_fonte": "alvo escrito: marca/voz.md §1; o Lucas aceitou o ritmo do v4 (07/10/2026: «ritmo ok»; CLAUDE.md); alvo do roteiro: out/los-angeles/_pesquisa/teste-voz-v4.md («O alvo é 2.000 palavras»)"
+  },
+  "output": {
+    "file": "out/<proj>/narracao.wav",
+    "codec": "pcm_s16le",
+    "sampleRate": 44100,
+    "channels": 1,
+    "_fonte": "out/zona-do-canal/narracao.json › audio"
+  },
+  "channelTreatment": {
+    "fade_in_s": 0.005,
+    "fade_out_s": 0.015,
+    "limiter": null,
+    "end_tail_silence_s": 20,
+    "_end_tail": "20 s sem voz depois da última frase, para a tela final do YouTube não cobrir a narração (Lucas, 26/09/2026)",
+    "_fonte": "out/zona-do-canal/narracao.json › tratamento_canal (esmaecimento, limitador, cauda_tela_final); canal.json › narracao.cauda_tela_final_s e cauda_tela_final_decidido"
+  },
+  "loudness": {
+    "measured_voice": [
+      { "video": "los-angeles", "integrated_lufs": -19.6, "true_peak_dbtp": -3.6, "lra": 2.2, "_fonte": "out/los-angeles/_pesquisa/narracao-conferencia.md" },
+      { "video": "zona-do-canal", "integrated_lufs": -19.7, "true_peak_dbtp": -3.6, "_fonte": "out/zona-do-canal/_creditos-trilha.md («O volume»)" }
+    ],
+    "current_manual_fix": {
+      "voice_gain_db_in_premiere": 5.5,
+      "music_bed_db_in_xml": -35,
+      "output_limiter": true,
+      "_fonte": "Lucas, 08/10/2026 (vídeo 2) e 15/10/2026 (vídeo 3): «Subir a voz no Premiere (Recomendado)»; out/los-angeles/_creditos-trilha.md e out/zona-do-canal/_creditos-trilha.md; roteiros/zona-do-canal/decisoes-lucas.md («A descrição e o volume»)"
+    },
+    "reference_v3_juneau_lufs": -14.1,
+    "_reference": "a narração v3 do Juneau media −14,1 LUFS (CLAUDE.md); o eleven_v4 entrega ~5,5 dB abaixo (out/los-angeles/_pesquisa/narracao-conferencia.md)",
+    "engine_master_target": {
+      "integrated_lufs": -14,
+      "tolerance_lu": 0.5,
+      "true_peak_ceiling_dbtp": -1,
+      "_fonte": "plano da frente K (Motor sem rosto), item 5, «master automático no lugar do Premiere (… −14 LUFS)»: out/_holding/plano-diretor-v2.1-claude/departamentos/canais-quint-20261020/PLANO.md §5 e §8 (A · Alpha Point), no Mac do dono, fora do Git; a cadeia (−14 LUFS ±0,5 e limitador a −1 dBTP) é a do estudio-faceless citada no dossiê motores-video-novo-e-compilados.md da mesma pasta. É o alvo planejado, ainda não implementado nem medido."
+    }
+  },
+  "pronunciation": {
+    "permanent_sheet": "marca/pronuncias.md",
+    "per_video_sheet": "roteiros/<proj>/pronuncia.md",
+    "alias_policy": "o alias vai só na cópia para a voz, quando o nome foi confirmado de ouvido e a grafia normal faz a voz errar; nunca na tela",
+    "_fonte": "marca/pronuncias.md (cabeçalho)"
+  },
+  "musicPolicy": {
+    "provider": "Epidemic Sound (plano Creator, canal pessoal do Lucas)",
+    "never_through_ai": true,
+    "_fonte": "out/zona-do-canal/_creditos-trilha.md: a música nunca entra em ferramenta de IA nem de reconhecimento de música"
+  }
+}
