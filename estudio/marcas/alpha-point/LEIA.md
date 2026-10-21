@@ -66,7 +66,7 @@ a2bb5424ce5755fac071514864b6671b512d36ab36eb83da36f0127a86b160eb  roteiros/zona-
 5b96241fb392c3e937abddbbd912bf33188fe2d6d76572cba1f84c8feff5fd6a  out/peru-agua/_pesquisa/narracao-conferencia.md
 3281e4a42b5443ed94300137d11ab81005c378db2e0356c62fcb549cad4d91db  out/los-angeles/linha.md
 0d65b47cbd258ee5cff54640edff0a6f304d55dd82c9db521715c3da3bf496a6  out/zona-do-canal/linha.md
-10b55f7876c1eff585c920e9412991588414ef68eeb8984c918d167f3f9821a0  (Mac do dono) out/_holding/…/canais-quint-20261020/PLANO.md
+10b55f7876c1eff585c920e9412991588414ef68eeb8984c918d167f3f9821a0  (Mac do dono) out/_holding/…/canais-qint-20261020/PLANO.md
 459190303462683b36c4a32569ee0baa42a0c043f1ce774709dd2a3586eb45e9  marca/prancha-documento-card.html
 a7038a1e904c96ad8498c3f25177c809aee4bbefaa3148bd478ca2c9860ff7bd  (monorepo) .claude/agents/executor-de-molde.md
 e2ccf4cfa8e06a41b87909560a4c6a83074b498480afff420740a6d8e630930f  (monorepo, origin/main) marcas/top10/agentes/executor-de-molde.md
@@ -89,7 +89,7 @@ e2ccf4cfa8e06a41b87909560a4c6a83074b498480afff420740a6d8e630930f  (monorepo, ori
    qc-visual, pesquisa-geo; e `marca/embalagem.md` §3) foi superado pelo tratamento C de 09/10; a pausa de ~0,14 s do
    montador, pelos 0,25 s do v4; o «espectador norte-americano» do qc-visual, pelo público de 14/10. Aqui vale o mais novo.
 6. **Banco pago:** a Storyblocks e o Envato são a assinatura da Top10 (`marca/midia.md` §2.3, 30/09), e a caça é pelo
-   navegador do Lucas. O plano da Quint tira os dois e a caça do motor novo. As roupas registram a ordem atual da marca;
+   navegador do Lucas. O plano da Qint tira os dois e a caça do motor novo. As roupas registram a ordem atual da marca;
    o substituto do B-roll genérico é decisão aberta.
 7. **Ritmo:** a marca escreve 150–160 palavras/min; o v4 mediu 158 a 184. O Lucas aceitou («ritmo ok», 07/10).
 8. **Volume:** a voz sai a −19,7 LUFS e o Lucas sobe 5,5 dB no Premiere (≈ −14,2); o alvo do master automático
