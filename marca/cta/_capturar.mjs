@@ -66,7 +66,8 @@ for (const k of ["q", "lugar", "gira", "corpo"]) if (typeof opt[k] === "string")
 if (durArg !== "auto") url.searchParams.set("dur", String(Number(durArg)));
 
 let dur, info = null, contratoNovo = false;
-const browser = await chromium.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true, args: ["--disable-gpu-rasterization"] });
+// CHROME_PATH: o Chrome de outra máquina (o WSL do motor comum usa /opt/google/chrome/chrome); sem ela, o desta máquina.
+const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true, args: ["--disable-gpu-rasterization"] });
 try {
   const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
   await page.goto(url.href, { waitUntil: "load" });

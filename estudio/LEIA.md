@@ -36,16 +36,38 @@ o perfil de publicação válido no contrato estrito. **Único achado: a voz é 
 | `model_id`, `voice_settings`, `output_format`, `language_code` | eleven_v4, 0,5/0,75, pcm_44100, en | `canal.json` da raiz › `narracao` (07/10/2026); `out/zona-do-canal/narracao.json` |
 | `pausa_entre_trechos_s` | 0,25 | um pedido por parágrafo, pausa 0,25 s (`canal.json` › `narracao_v4_decidido`) |
 | `cauda_s` | 20 | 20 s sem voz para a tela final (Lucas, 26/09/2026) |
-| `vao_card_s` | 3 | não se aplica: o canal não tem card de título na tela (Lucas, 26/09/2026); o campo é obrigatório no schema |
+| `cards` | nenhum | o canal não tem card de título nem capítulo na tela, só na descrição (Lucas, 26/09/2026). O `##` do roteiro aprovado vira marca invisível, sem vão e sem tela, com o instante no `narracao.json` (serve aos capítulos da descrição); a pausa de 0,25 s atravessa a marca (frente K, `a438ed41a`). O espelho aceitar zero cortes depende do PEDIDO-QINT-MOTOR-SEM-CARDS-01 ao WP15: até ele integrar, a obra para no espelho |
 | `relogio` | tts+ouvido, faster-whisper large-v3 na CPU, Scribe de reserva | o caminho grátis do canal (`out/juneau/_pesquisa/ingest-local.py`, `APRENDIZADOS.md` item 37); CPU porque a placa não roda o faster-whisper («falta a cuBLAS 12») |
 | `limites.caracteres_max_por_obra` | 30.000 | o teto do Lucas é 15.000 créditos de voz por vídeo (02/10/2026); o v4 mediu ~0,48 crédito por caractere (Zona e Peru), e 15.000 ÷ 0,48 ≈ 31.000 |
 | `midia.caca_stock_assinado` | false | trava do motor para sócio; o Storyblocks e o Envato da Top10 saem (PLANO §8 A) |
 | `master` | automático, −14 LUFS, −1 dBTP, 3840×2160 a 30 fps | o Premiere sai; hoje a voz sai a −19,7 LUFS e o Lucão sobe 5,5 dB na mão (≈ −14,2) |
 | `master.trilha` | −40,5 dB sob o narrador, −40 dB sem voz | hoje a música vai a −35 dB constante no XML, do 0:00 ao fim (cauda incluída), e o Lucas sobe a voz 5,5 dB no Premiere (`out/zona-do-canal/_creditos-trilha.md`; «Subir a voz no Premiere», 15/10/2026). No master, o nível da trilha é ganho na faixa da música, e depois um loudnorm linear leva a MISTURA a −14 LUFS, subindo voz e música juntas (~5,7 dB com a voz a −19,7). Para a música ficar onde o Premiere a deixa, o ganho é −35 − 5,5 = −40,5 (frente K, 21/out/2026, que confirma com a medida quando o master fechar). Sem voz, −40 é o mínimo do schema (0,5 dB acima). Sem trecho sem trilha no começo. A frente A mede no PC do Lucas o loudness das 4 faixas do vídeo 3 quando o SSH abrir |
-| `master.logo` | `../marca/logo/agulha/marca-dagua.png`, canto superior direito, 60 px, 100 px, 30 % | Lucas, 09/10/2026 (`marca/identidade.md` §8): 60 px do topo e da direita, disco de 100 px, opacidade 30 % |
-| `master.cta` | vazio | as duas chamadas mudam por vídeo (a do comentário leva a pergunta do vídeo; a da inscrição cai entre 35 % e 60 % da duração): o formato fixo do motor ainda não as cobre. Pedido registrado à frente K |
+| `master.logo` | `../marca/logo/agulha/marca-dagua-4k.png` em quadro inteiro, opacidade 1, desde o fim da vinheta | a peça 3840×2160 já traz a marca no canto (x 3687–3773, y 67–153) com os 30 % embutidos (alfa máximo 76/255) e é o último quadro da vinheta (Lucas, 09 e 14/10/2026; `marca/identidade.md` §8). O começo vem de `_master/logo.json`, que a ferramenta das peças grava |
+| `master.cta` e `master.pecas_da_obra` | `cta` vazio; `pecas_da_obra` = `pecas/pecas-da-obra.mjs` | as chamadas e a vinheta mudam por vídeo, então quem as grava é a ferramenta do canal (abaixo), que o motor roda antes do plano do master |
 | `portoes` | pauta, roteiro, título e capa, publicar | o que fica com o Lucão (PLANO §3) |
 | `contas_claude` | pool do canal, `claude.env`, 1 porta | a conta Max do próprio Lucão; quantas portas é decisão de dinheiro do dono com ele, depois de medir os 3 primeiros vídeos |
+
+## A ferramenta das peças (`pecas/pecas-da-obra.mjs`)
+
+O motor roda `node pecas/pecas-da-obra.mjs <slug> --obra=<obra>` antes do plano do master e de novo quando a narração
+muda. Ela grava, pelo gravador do próprio canal (`marca/cta/_capturar.mjs`, ProRes 4444 com alfa, 3840×2160):
+- a **vinheta** (`marca/vinheta/vinheta.html`) sobre a assinatura do gancho, achada no `words-final.json`: de «You're»
+  ao fim de «begins.» + 0,25 s, de 4 a 8 s. Com menos de 4 s grava 4 e avisa; com mais de 8 s, PARA (saída 2);
+- as **chamadas** que o regente marcou em `regencia.json › _chamadas` (inscrição; comentário com a pergunta do vídeo, do
+  `q` da linha ou de `textos-tela.json › pergunta_cta`). Linha com `estado` (pendente com o Lucas) não entra;
+- `_master/sobreposicoes.json`, `_master/logo.json` (`desde_s` = fim da vinheta) e um recibo com os sha256.
+
+Provado em 21/out/2026 no Mac (Chrome do Mac por `CHROME_PATH`) com a obra do vídeo 3 (as palavras, a regência e os
+textos de tela da Zona do Canal): a vinheta saiu em 59,50 s com 5,12 s, o mesmo número que o regente calculou à mão
+naquele vídeo (palavras 163 a 181); a inscrição entrou em 342,96 s; o comentário, pendente com o Lucas, ficou de fora.
+154 + 135 quadros em 85 s. A emenda vinheta → marca d'água: na área do canto (140 × 140 px), a maior diferença entre o
+último quadro e o PNG é de 10 a 11/255, em 275 a 343 pixels (acima de 8, de 1 a 9), sobre fundos escuro, médio e claro;
+é o arredondamento do ProRes 12 bits. Testes: `node --test estudio/pecas/pecas-da-obra.test.mjs` (5 casos, com os
+controles: sem assinatura e assinatura longa param).
+
+**O que a máquina precisa:** `npm ci` na raiz do repositório do canal (o gravador usa `playwright-core` e `sharp`), o
+`ffmpeg` no PATH e o `CHROME_PATH` (o gravador cai no Chrome do Windows quando a variável falta, como sempre foi no PC
+do Lucas). Sem `node_modules`, a ferramenta PARA dizendo o que rodar.
 
 ## As medidas da voz de hoje (para a voz nova ter com que se comparar)
 
