@@ -56,9 +56,10 @@ A voz de hoje foi criada numa conta da ElevenLabs que outros canais também usam
 continuar ali. Ela também não pode ser levada para outra conta: a ElevenLabs só compartilha voz criada por Voice Design
 dentro do mesmo workspace. Por isso a voz do canal nasce de novo, na sua conta, e **quem aprova é o seu ouvido**.
 
-1. Crie a sua conta em elevenlabs.io e escolha o plano. Um vídeo gastou cerca de 6 mil créditos (6.427 no da Zona do
-   Canal, 5.678 no do Peru). Confira na página de preços quantos créditos cada plano dá por mês. Os preços de 09/out/2026:
-   Creator US$ 22 por mês e Pro US$ 99.
+1. Crie a sua conta em elevenlabs.io no **plano Pro ou maior**. O canal grava a voz em PCM a 44,1 kHz, e a ElevenLabs só
+   entrega esse formato do Pro para cima (documentação da API, lida em 21/out/2026). Um vídeo gastou cerca de 6 mil
+   créditos (6.427 no da Zona do Canal, 5.678 no do Peru): confira na página de preços quantos créditos o plano dá por
+   mês. O Pro custava US$ 99 por mês em 09/out/2026.
 2. Recrie a voz pelo mesmo caminho da de hoje (as fichas estão em `marca/vozes.html`): **Voice Design** com a descrição
    do âncora de uns 35 anos, depois o **Remix** «conversational» e o «calm». Ouça as opções e escolha. Se preferir, a Top10
    prepara as opções e manda os áudios para você escolher.
