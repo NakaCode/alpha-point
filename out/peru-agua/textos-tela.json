@@ -1,0 +1,5981 @@
+{
+ "projeto": "peru-agua",
+ "_quem": "redator-de-tela (claude-opus-5-5), passo screen_text, tarefa peru-agua-texto-1 (setor Texto e fatos, a mando da Sala de controle), 22/10/2026; gerado por out/peru-agua/_tmp/redator/gerar.py (textos.py, base.py, contar.py)",
+ "_entradas_sha256": {
+  "regencia.json": "cf44376806ea5ee6850f02a49c8a0a996f02835206cd4500fd30746a08493c1d",
+  "espelho.json": "65aae2309279c1156e5892f919287739be83a235f9cc23d2112ffaa75fc52745",
+  "conceito-visual.json": "bd6592c2049cf2ae023b2141b6ff25c1e4ade8a51cc34a6ad489635e3bdf4b5e",
+  "words.json": "7ac9ddba18e59289918f48c5dcf4deffebec1bfa7110e7fc945ee1922d5b2841",
+  "transcricao.json": "a0f54968e2023278f56057da4822ec234b8dc6d3cca5a66531e02eec8ea22dba",
+  "_pesquisa/conferencia-midia.json": "0b544ca0de4a5c13e3ac3354f6252ae7b11f70b18084a7082b4e3bd2d9279d91",
+  "_pesquisa/pauta-documentos.json": "fb29e0e6b7ae1d4ded2b23fc9f4e786dcb53e214d4fa175982db7ceb3081112e",
+  "_dados/*.json (43; sha256 da concatenação \"<nome>\\n<sha256>\\n\" em ordem de nome)": "6d20bf980f6a311179e5d82af982464302dfbfa14603279b72aa6df2e8bb48e0",
+  "roteiros/peru-agua/roteiro-narrador.md": "b1b594d5a8f6ad04594b0af06330ce5ef858ce111a051fe3c58aa7e3fd8dbbb8",
+  "roteiros/peru-agua/qc-roteiro/fatos.laudo.md": "93fcbeeebaff0e2aa395dc7021f8ff21d0837444272699d3a6a0fa7303469f12",
+  "roteiros/peru-agua/qc-roteiro/fatos-pesquisa-2026-10-22.laudo.md": "2dc6582cf63e585590a6b9489cee8c0ef7fe5767d40fceb0fd950a336975f97e",
+  "roteiros/peru-agua/decisoes-lucas.md": "d49b74b4ab93c8d7f28e46c13b5038b91cf7433f7a188b8a113476e89249fba8",
+  "roteiros/peru-agua/qc-roteiro/fatos-tela.laudo.md (consertos 1)": "3ee6c8c41e5da0b33b385ba5fdde7d889cf23eb8fb81fefaf001e0b532dd4013",
+  "_tmp/verificar-espelho/para-passos-seguintes.json": "aa13e89eaf9d8c00eb470a1f5924b2f46f0f0097e7ecc28ec070250fcf334050",
+  "_tmp/verificar-research/consolidado.json": "5afd38825665b6fd5a89dfcd35470bb2a3daafdbe975f2a6253e1e45066d743b"
+ },
+ "_como_ler": "glossario, cards_pessoa, rotulos_dado e nao_vai_para_tela são o contrato. \"_textos_por_cena\" é a lista FECHADA de tudo que a tela escreve, cena a cena: t0 e t1 relativos à cena-mãe da regência, na grade de 30 fps (as filhas fundidas vão na mãe, com \"(sNN)\" na nota); t0 é o quadro da 1ª palavra que o convoca no words.json. O editor-de-arte e o mapista desenham isto e nada além. Papéis: rotulo, legenda, cota (número de dado), heroi, citacao (aspas curvas, literal), traducao (a tradução de um grifo, sem aspas), aviso_ano, card_nome, card_cargo, credito (a faixa, 56 px), eixo, folha_cabecalho e folha_texto (a folha RECRIADA, Courier Prime, texto fiel), grifo_na_pagina (texto impresso no documento, real ou recriado, listado para conferência: não é texto nosso), nada (o trecho declarado sem texto). \"_caminho\": \"caca\" só com o clipe da caça aprovado; \"sem_caca\" é o fallback da regência; sem a chave, vale nos dois. \"_espera_a_caca\" marca o rótulo de lugar que espera o veredito do item; \"_condicao\", o texto que só entra se a condição valer. Vocabulário de máquina em português; o texto de tela em inglês dos EUA (AP).",
+ "_escolhas_entre_lotes": [
+  {
+   "tema": "a marca de tradução",
+   "lote_A": "\"(translated from Spanish)\" junto da atribuição (PA014, PA024)",
+   "lote_B": "\"(channel's translation)\" ou \"TRANSLATED FROM SPANISH\" junto do crédito (PB008, PB036, PB051)",
+   "escolha": "\"Translated from Spanish\", uma legenda própria logo abaixo do inglês, em todas as cenas da série (_regras_de_serie, 1ª regra)",
+   "por_que": "é a forma que diz as duas coisas (que é tradução e de que língua) e a que os dois lotes aceitam; \"(channel's translation)\" diz quem traduziu, mas não do quê. A s32, que já usava \"(channel's translation)\" no conceito e nos _dados, passa à mesma forma"
+  },
+  {
+   "tema": "o armazenamento (s04, s39)",
+   "lote_A": "\"STORAGE CAPACITY FOR LIMA (2007)\" (PA044)",
+   "lote_B": "pode \"STORAGE FOR LIMA (2007)\" (Para o redator, s39)",
+   "escolha": "\"STORAGE CAPACITY FOR LIMA (2007)\" nas duas",
+   "por_que": "a mais estrita: o que se mede é a capacidade (pedido da Sala)"
+  },
+  {
+   "tema": "os volumes de armazenamento (s39)",
+   "lote_A": "—",
+   "lote_B": "pode 282 / 157 / 125 milhões de m³ ou 74.5 / 41.5 / 33.0 bilhões de galões",
+   "escolha": "nenhum volume; só \"MORE THAN HALF · AMAZON SIDE\"",
+   "por_que": "a pergunta 11 da pesquisa-1, como a Sala a passou: volume e vazão só com a razão que a voz diz"
+  },
+  {
+   "tema": "o card de Nicolas Reyes (s47)",
+   "lote_A": "—",
+   "lote_B": "card opcional \"NICOLAS REYES · SEDAPAL\"",
+   "escolha": "fora",
+   "por_que": "a voz não diz o nome (ofício §2)"
+  },
+  {
+   "tema": "Lima e Pizarro",
+   "lote_A": "\"Spanish conquistador\" (ou \"Governor of New Castile\")",
+   "lote_B": "—",
+   "escolha": "\"Spanish conquistador\"",
+   "por_que": "o que explica a quem não conhece, confirmado (PA038); \"Governor of New Castile\" é de janeiro de 1535, e o card é de 1534"
+  },
+  {
+   "tema": "a s36, o lugar da foto",
+   "lote_A": "—",
+   "lote_B": "\"LIMA\" ou \"SOUTHERN LIMA\"",
+   "escolha": "\"Lima\"",
+   "por_que": "a regência e a forma menos específica; \"southern Lima\" na s36 faria o espectador ligar a foto a San Juan de Miraflores (s45, \"in southern Lima\")"
+  },
+  {
+   "tema": "o crédito do INEI na s34",
+   "lote_A": "—",
+   "lote_B": "\"INEI, censuses 1940 and 2025; INEI, 2022 GDP estimate\" (PB014)",
+   "escolha": "em duas linhas, uma por beat: \"Source: INEI (Peru), censuses 1940 and 2025\" e \"Source: INEI (Peru), 2022 GDP estimate\"",
+   "por_que": "cada linha fica com o número que sustenta"
+  },
+  {
+   "tema": "a data da SEDAPAL na s42",
+   "lote_A": "—",
+   "lote_B": "\"SEDAPAL (VIA PROACTIVO), FEB. 2021\"",
+   "escolha": "\"Source: SEDAPAL (via ProActivo), February 2021\" e o cabeçalho \"SEDAPAL · FEBRUARY 2021\" (o conceito dizia \"FEB. 17, 2021\")",
+   "por_que": "AP (mês sem dia, por extenso); o \"miércoles 17 de febrero\" da nota pode ser a data da audiência, não a do comunicado"
+  }
+ ],
+ "_regras_de_serie": [
+  "A MARCA DE TRADUÇÃO, uma só no vídeo: a legenda \"Translated from Spanish\" (84 px, papel legenda), logo abaixo de todo texto em inglês que traduz uma fonte em espanhol, aspado ou como tradução de grifo; entra com ele e sai com ele (numa página com vários grifos, fica do 1º ao fim). Membros: s12, s13, s17, s27, s28 (a citação no mapa e a página), s32, s41, s42, s49 (s50). Fora dela: a citação da AFP na s46 (o texto citado é o inglês da própria AFP), os rótulos de dado em inglês sobre tabela em espanhol (s10) e os termos em itálico (*barriadas*, *puquios*)",
+  "CITAÇÃO: aspas curvas, o literal da fonte em caixa de frase, até 12 palavras; a UNESCO com a grafia dela (\"centre\", s22); a atribuição vai na faixa (\"Source: …\"), não dentro do cartão. Nas folhas recriadas, o trecho em espanhol letra a letra; corte no começo ou no fim com \"…\", e no meio com \"[…]\"",
+  "UNIDADES, a forma da casa (vídeos 2 e 3): MILES por extenso, SQ MI, FT, INCHES e GALLONS por extenso; o métrico entre parênteses em símbolo SI minúsculo (km, km², mm, m, m³). Nunca \"≈\" nem \"~\": a palavra da voz (\"ABOUT\", \"NEARLY\", \"MORE THAN\", \"LESS THAN\", \"UP TO\")",
+  "VOLUME E VAZÃO: só a razão que a voz diz (s04 e s39 \"MORE THAN HALF\", s11 \"ABOUT 100×\", s38 \"ABOUT A QUARTER\", s40 \"NEARLY 2×\"); nenhum m³, galão ou cu ft/s na tela, fora o \"ABOUT 260 GALLONS (1 m³)\" da s47, que é a conversão da própria AFP",
+  "DATAS (AP): mês abreviado só com o dia (\"NOV. 30\", \"Aug. 30, 2026\"); sem dia, por extenso (\"NOVEMBER 1534\", \"JANUARY 1535\", \"FEBRUARY 2021\", \"September 2024\", \"January 2024\", \"March 2026\", \"late August 2026\"); March, April, May, June e July nunca abreviam. Intervalo de meses: \"DECEMBER–APRIL\", \"MAY–NOVEMBER\", \"March–August 1997\". Antes de Cristo: \"B.C.\"",
+  "AS VERTENTES: \"PACIFIC SIDE\", \"AMAZON SIDE\", \"LAKE TITICACA BASIN\" em todo o vídeo (s01, s10, s11, s04/s39); nunca \"DRY SIDE\" nem \"ATLANTIC SIDE\" como rótulo. A divisória: \"CONTINENTAL DIVIDE\" (só na s06, onde a voz a nomeia)",
+  "AS REGIÕES DO CENSO: \"COAST\", \"HIGHLANDS\", \"RAINFOREST\" (s30/s31), sempre com a legenda que diz que a costa é a do censo (\"As Peru's census draws it: only part of the dry side\") quando ela aparece no mapa; nenhuma área desenhada",
+  "O ARMAZENAMENTO: \"STORAGE CAPACITY FOR LIMA (2007)\" + \"MORE THAN HALF · AMAZON SIDE\", a mesma dupla na s04 e na s39, sempre com CAPACITY; \"Source: SEDAPAL, 2007\"",
+  "A SOMA DE LIMA: \"LIMA 9.6 M + CALLAO 1.0 M = 10.6 M\", a mesma forma na s03 e na s34, com \"Source: INEI (Peru), 2025 census\" (s03) ou \"… censuses 1940 and 2025\" (s34, que cobre também o 1940)",
+  "A CHUVA DE LIMA: \"0.3 INCHES (8 mm)\", a mesma forma na s03, na s17 e na barra da s19; \"Source: SENAMHI (Peru), 1981–2010 average\"",
+  "CRÉDITO DE FONTE: \"Source: <instituição> (Peru), <ano ou período>\" para as peruanas (ANA, SENAMHI, INEI, MINAM, Defensoría del Pueblo); SEDAPAL e Sunass sem \"(Peru)\"; o que chegou por um veículo leva \"(via <veículo>)\" ou \"reported by <veículo>\". Duas fontes: \"Sources: …; …\". A 56 px, na faixa; longo, quebra em duas linhas",
+  "CRÉDITO DE MAPA: \"© MapTiler © OpenStreetMap contributors\" a 56 px em todo quadro de mapa, do 1º ao último (lista em _textos_por_cena, papel credito); a mesma linha cumpre o OSM das camadas (rios, túnel, polígonos de Lima, pontos-osm); o HydroBASINS sem crédito na tela (o Exhibit B na descrição)",
+  "CRÉDITO DE FOTO: o credito_na_tela do veredito, sem mudar uma letra (s06, s18, s22, s23/s25, s36, s39/s40, s51, s52); domínio público sem crédito (NASA, NOAA, Landsat/USGS, Cobo, Pizarro). Banco pago sem crédito, fora o Shutterstock (a linha da última cena, só se houver clipe dele)",
+  "RÓTULO DE LUGAR SOBRE MÍDIA REAL: nunca mais específico que o lugar_na_origem (midia §2.7). Nas fotos, conferido aqui; nos clipes da caça, o rótulo é o \"(lugar_na_origem do <item>)\" e espera os vereditos (_espera_a_caca): o texto final volta ao redator",
+  "AVISO DE ANO: s26 \"Painting, 1835\", s36 \"Photo from 1997\", s51 \"Photo from 2022\" (o reuso da Pirámide Mayor; dado novo da Sala). As outras fotos aprovadas têm aviso_de_ano false (s06, s13, s18, s22, s25, s40, s52) e não levam aviso",
+  "CARD DE PESSOA: nome em caixa alta na pílula (a idade com vírgula quando a voz a diz: \"CATALINA NAUPA, 59\", \"VIRGINIA MARTÍNEZ MORALES, 30\"), o cargo na linha de baixo, com o ano entre parênteses: \"Spanish conquistador\" (s26, sem ano: o retrato é de 1835 e o aviso já data a imagem), \"Watershed management analyst, SEDAPAL (2024)\" (s42), e \"Resident, <lugar> (<ano>)\" para as três moradoras (s46, s48, s49)",
+  "ESQUEMA DECLARADO: a legenda \"Schematic\" junto de toda linha de geografia desenhada que não é geometria medida: s13 (as setas da corrente de Humboldt) e s18 (a forma da cordilheira e a faixa da encosta leste); rota sem traçado lido: \"Approximate route\" (s23 o canal de Chan Chan, s26 a seta de Jauja); ponto aproximado: \"Approximate location\" (s35 Pamplona)",
+  "IMAGEM DE SATÉLITE REAL sobre o mapa: \"Satellite image · <mês por extenso> <ano>\" (s13 June 2018, s15 June 2015 no fallback, s16 June 1998); sem crédito (domínio público), sem aviso de ano",
+  "TEXTOS VIVOS: no máximo 4 ao mesmo tempo em toda cena, nos dois caminhos (com a caça e no fallback), contados fora o crédito, a folha impressa, o grifo e o eixo do gráfico (contar.py)",
+  "CRÉDITO DA UNESCO, uma forma só: \"Source: UNESCO (World Heritage List, <ano da inscrição do sítio>)\", o ano lido na cópia local da página do sítio (o texto da página não é datado). Membros: s22 Caral 2009 (2 créditos, um duplo), s23 Chan Chan 1986 (2), s29 Lima 1988, s51 Caral 2009 (laudo fatos-tela, TA151, TA155, TA167, TA172)"
+ ],
+ "_avisos_do_ano": [
+  {
+   "cena": "s26",
+   "arquivo": "_media/pessoa/s26/francisco-pizarro-coutan-1835-commons.jpg",
+   "sha256": "33663e709f06c0e08c3f687b7242aa301ed7ff9e4c89086b5d4b57c237c97d75",
+   "texto": "Painting, 1835",
+   "data_na_origem": "1835",
+   "por_que": "decisão do Lucas (21/10, 23:4x, e 22/10, 02:2x): pintura, não foto"
+  },
+  {
+   "cena": "s36",
+   "arquivo": "_media/foto/s36/s36-lima-pueblo-joven-1997-commons.jpg",
+   "sha256": "98b393c6e3893cf7b449cf22ac717606d331a019cc52eb5305c23f0de6dec6d2",
+   "texto": "Photo from 1997",
+   "data_na_origem": "April 1997"
+  },
+  {
+   "cena": "s51",
+   "arquivo": "_media/foto/s22/s22-caral-piramide-mayor-frontal-2022-commons.jpg (o reuso da s22 como miniatura)",
+   "sha256": "040d35aa4b65027f34ba69523df87e09ad3d958bb70b477973e0d0e83fdc32da",
+   "texto": "Photo from 2022",
+   "data_na_origem": "27 November 2022, 14:17:55",
+   "por_que": "o veredito do reuso na s51 tem aviso_de_ano true (dado novo da Sala; a regência não o traz); na s22 a mesma foto não leva aviso (aviso_de_ano false, frase no presente)"
+  }
+ ],
+ "_pergunta_cta": {
+  "texto": "Which side of the Andes would you live on?",
+  "cena": "s52 (s53), 704,8–710,8 s abs., metade esquerda (a peça comentario.html ?lugar=esquerda)",
+  "reserva_mais_curta": "Which side would you live on?",
+  "por_que": "42 caracteres; a escolha que o vídeo inteiro arma (os dois lados da linha), respondível por quem acabou de assistir; não pede like, não toma lado, sem data relativa, não afirma fato (nada ao verificador)",
+  "_perguntas_mjs": "NÃO MEDIDO: o _perguntas.mjs abre o Chrome (playwright-core), e esta tarefa não tem Chrome. A Sala roda node marca/cta/pecas/_perguntas.mjs --q=\"Which side of the Andes would you live on?\" e lê corpo, linhas, duração e aviso; uma de 42 caracteres pode descer a 160 px (cta.md §7). Se o corpo ou as linhas não servirem, a reserva de 29 caracteres",
+  "vai_tambem": "na descrição do YouTube e no comentário fixado"
+ },
+ "_espera_o_lucas": [],
+ "_espera_a_sala": [
+  {
+   "o_que": "a pergunta do comentário (s52/s53)",
+   "por_que": "_perguntas.mjs NÃO MEDIDO (Chrome)",
+   "caminho_padrao": "\"Which side of the Andes would you live on?\"; reserva \"Which side would you live on?\""
+  },
+  {
+   "o_que": "os rótulos de lugar dos 30 clipes da caça (_espera_a_caca)",
+   "por_que": "a caça é de manhã, com o Lucas (decisões, 22/10, 03:0x); sem os vereditos não há lugar_na_origem",
+   "caminho_padrao": "sem clipe aprovado, vale o fallback (_caminho \"sem_caca\"), já escrito; com clipe, o texto volta ao redator numa tarefa nova"
+  },
+  {
+   "o_que": "os voláteis (s44 \"March 2026\", s49/s50 \"late August 2026\", s42 \"19 lakes · 3 large reservoirs\")",
+   "por_que": "lote B, \"Voláteis na tela\"",
+   "caminho_padrao": "a Sala relê na véspera de publicar (a ProInversión e o gob.pe, pelo navegador do app)"
+  }
+ ],
+ "_fechados": [
+  {
+   "o_que": "a barra de Vilca (s19), antes em _espera_a_sala[0], _nao_conferido[0] e no _condicao do texto e do rótulo",
+   "fechado_em": "22/10/2026, conserto 1",
+   "prova": "SENAMHI 2016, tabela de estações: \"VILCA -12.12 -75.83\" (midia/peru-agua/fontes/agua-de-lima/senamhi-2016-vulnerabilidad-chirilu-mantaro.txt, l. 8505–8507); o ponto cai na vertente do Pacífico, a 9,6 km da divisória (teste de ponto do verificador; laudo fatos-tela, TA127, TA128, TA216, TA262, O3)",
+   "resultado": "a barra fica, com Lima e Matucana; o crédito \"(Lima, Vilca)\" fica",
+   "ids": "TA127, TA128, TA216, TA262"
+  }
+ ],
+ "_consertos": [
+  {
+   "rodada": 1,
+   "laudo": "roteiros/peru-agua/qc-roteiro/fatos-tela.laudo.md",
+   "trocas": [
+    {
+     "ids": "TA129, TA217",
+     "cena": "s19",
+     "t0": 4.1,
+     "antes": "MOSTLY DECEMBER–MARCH",
+     "depois": "HIGH UP: MOSTLY DECEMBER–MARCH"
+    },
+    {
+     "ids": "TA127, TA216",
+     "cena": "s19",
+     "t0": 2.634,
+     "antes": "_condicao (a barra podia sair)",
+     "depois": "sem _condicao: a barra fica"
+    },
+    {
+     "ids": "TA127, TA128, TA216, TA262",
+     "cena": "s19",
+     "t0": null,
+     "antes": "_espera_a_sala[0] e _nao_conferido[0] (Vilca)",
+     "depois": "fechados (_fechados)"
+    },
+    {
+     "ids": "TA096, TA210",
+     "cena": "s16",
+     "t0": 3.767,
+     "antes": "Sea temperature anomalies, March–August 1997",
+     "depois": "Sea surface temperature anomalies, March–August 1997"
+    },
+    {
+     "ids": "TA151",
+     "cena": "s22",
+     "t0": 0.633,
+     "antes": "Sources: UNESCO; distance measured by Alpha Point (straight line)",
+     "depois": "Sources: UNESCO (World Heritage List, 2009); distance measured by Alpha Point (straight line)"
+    },
+    {
+     "ids": "TA155",
+     "cena": "s22",
+     "t0": 7.533,
+     "antes": "Source: UNESCO",
+     "depois": "Source: UNESCO (World Heritage List, 2009)"
+    },
+    {
+     "ids": "TA167, TA172",
+     "cena": "s23",
+     "t0": 15.333,
+     "antes": "Source: UNESCO",
+     "depois": "Source: UNESCO (World Heritage List, 1986)"
+    },
+    {
+     "ids": "TA167, TA172",
+     "cena": "s23",
+     "t0": 20.8,
+     "antes": "Source: UNESCO",
+     "depois": "Source: UNESCO (World Heritage List, 1986)"
+    },
+    {
+     "ids": "forma única da UNESCO",
+     "cena": "s29",
+     "t0": 5.566,
+     "antes": "Source: UNESCO",
+     "depois": "Source: UNESCO (World Heritage List, 1988)"
+    },
+    {
+     "ids": "forma única da UNESCO",
+     "cena": "s51",
+     "t0": 7.867,
+     "antes": "Source: UNESCO",
+     "depois": "Source: UNESCO (World Heritage List, 2009)"
+    },
+    {
+     "ids": "TA032",
+     "cena": "s04",
+     "t0": 8.866,
+     "antes": "Source: SENAMHI (Peru), 2016",
+     "depois": "Sources: SENAMHI (Peru), 2016; Defensoría del Pueblo (Peru), 2025"
+    },
+    {
+     "ids": "TB064",
+     "cena": "s34",
+     "t0": 10.0,
+     "antes": "a figura: 3 silhuetas cheias",
+     "depois": "3 cheias e a 4ª em 1/4 (3,25 de 10); o rótulo fica"
+    },
+    {
+     "ids": "TB135",
+     "cena": "s41",
+     "t0": 11.033,
+     "antes": "además de afianzar el caudal de río Rímac",
+     "depois": "además de afianzar el caudal de río Rímac aguas abajo"
+    },
+    {
+     "ids": "TB143",
+     "cena": "s42",
+     "t0": 1.633,
+     "antes": "el único medio de trasvase del agua almacenada",
+     "depois": "el único medio de trasvase"
+    },
+    {
+     "ids": "TB220",
+     "cena": "s51",
+     "t0": 3.733,
+     "antes": "(sem crédito)",
+     "depois": "Source: ANA (Peru), National Water Resources Plan, 2012 data"
+    }
+   ]
+  }
+ ],
+ "_instrucoes_para_a_arte": [
+  "s01 (s02) · a bacia do Titicaca em --neutro, SEM nome (a voz não a diz; o nome entra na s06); nenhuma legenda de cor além das pílulas AMAZON SIDE e PACIFIC SIDE; \"97.9% OF THE WATER\" sai em \"But\" (15,033 s), para o lado seco ficar com \"1.8% OF THE WATER\" e \"62.5% OF THE PEOPLE (2012)\"",
+  "s04 · nenhum rótulo de bacia (nem \"upper\", nem \"Mantaro basin\"); nenhum nome de lagoa; de 48,1 s abs. ao corte, nada na área da vinheta",
+  "s10 · a folha recriada traz as TRÊS linhas e o TOTAL do Cuadro 2.3 desde o 1º quadro; o Titicaca pode vir esmaecido, mas fica",
+  "s17 · a citação do SENAMHI entra em \"one\" (6,666 s), não em \"desert\": daria 0,8 s no ar",
+  "s18 · a altura \"UP TO ABOUT 16,000 FT (5,000 m)\" presa às nuvens paradas contra a forma (o ar), nunca à crista; sai em \"eastern\" (6,033 s). \"ANDES\" e \"EASTERN SLOPES\" saem em \"East of the Andes\" (10,2 s), antes de Satipo; \"Schematic\" fica até o fim",
+  "s19 · Lima e Matucana acesos no mapa só com o nome; os números vão às 3 barras do gráfico no canto, que entra em \"high\" (2,634 s); quando ele entra, os nomes do mapa saem e os pontos ficam. A legenda \"HIGH UP: MOSTLY DECEMBER–MARCH\" fica ao lado das barras de Matucana e de Vilca (à direita delas, ou sobre as duas), nunca sob a barra de Lima: o pico de Lima é de julho a setembro (SENAMHI 2021; laudo fatos-tela, TA129, TA217)",
+  "s22 · \"ABOUT 90 MILES NORTH OF LIMA\" entra em \"ninety\" (5,6 s) sobre o aéreo (decisão do redator, que a regência deixou); a citação da UNESCO com \"centre\"",
+  "s30 (s31) · COAST e HIGHLANDS ficam durante a caminhada das silhuetas (beat 4) até o corte seco para o gráfico (22,0 s); \"65.0% (1940)\" sai quando a costa entra (15,5 s)",
+  "s34 · cada número entra na palavra da voz: \"ABOUT 650,000 (1940)\" em \"about six hundred fifty thousand\" (1,166 s); a soma de 2025 em \"more\" (8,266 s), não em \"twenty\" (6,733 s)",
+  "s35 · o polígono de Villa El Salvador SEM nome no beat 2; o nome só em \"Villa\" (19,5 s)",
+  "s37 · \"MAY–NOVEMBER\" entra em \"runs low\" (3,267 s), não em \"seven\" (daria 1,27 s)",
+  "s41 · as duas traduções do SENAMHI ficam juntas até a folha sair (R09); os rótulos da linha do tempo ficam sob a folha",
+  "s42 · a folha da SEDAPAL corta antes de \"y representa el 62%…\" (\"[…]\"); Yuracmayo aceso do lado do Pacífico, e nenhum texto diz que as três represas são do lado amazônico",
+  "s47 · \"FREE\" entra em \"deliveries\" (15,6 s), não em \"free.\" (0,83 s no ar); nenhum card de Nicolas Reyes",
+  "s49 (s50) · a folha da Defensoría começa em \"…dependiendo\" (o \"más del 60%\" fica fora); o grifo do risco em --tensao; a linha do tempo termina aberta em \"NO CONSTRUCTION DATE AS OF LATE AUGUST 2026\"",
+  "s51 · \"Photo from 2022\" junto da miniatura reusada da Pirámide Mayor, com o crédito dela na faixa; sem o aviso, a miniatura não vai",
+  "s52 (s53) · na cauda, nenhum texto além da pergunta do comentário (a peça, à esquerda); o crédito de mapa legível até 723,767 s abs.",
+  "Faixa de crédito com três linhas ao mesmo tempo (s18: foto, dado e mapa; s22 b0: fontes e, no fallback, a foto): se não couber em y > 1880, foto e dado vão numa linha só, separados por \" · \"; nunca encolhe",
+  "s34 · a figura de \"ABOUT 1 IN 3 PERUVIANS\": 3 silhuetas cheias e a 4ª preenchida em 1/4 (3,25 de 10), nunca só 3 cheias; a de 1940 fica com 1 de 10 (laudo fatos-tela, TB064)"
+ ],
+ "_nao_conferido": [
+  {
+   "o_que": "1981 · ABOUT 1 IN 4 na fonte primária",
+   "por_que": "PB017: só a tabela da CVR; a tela atribui \"INEI (Peru), 1996, cited by the CVR\"",
+   "url": "https://www.inei.gob.pe/biblioineipub/bancopub/Est/Lib0002/cap0101.htm (418)"
+  },
+  {
+   "o_que": "\"the only means of transfer\" na nota da SEDAPAL",
+   "por_que": "PB038: só a ProActivo; a tela atribui \"(via ProActivo)\"",
+   "url": "www.gob.pe (418)"
+  },
+  {
+   "o_que": "o card de Cárhuaz na entrevista primária",
+   "por_que": "PB041: só a Infobae; a tela atribui \"reported by Infobae\"",
+   "url": "gob.pe (418)"
+  },
+  {
+   "o_que": "os 700,000 e o \"6×\" no estudo da Sunass",
+   "por_que": "PB043: só a Gestión; a tela atribui \"(via Gestión)\"",
+   "url": "https://www.sunass.gob.pe/ (→ gob.pe, 418)"
+  },
+  {
+   "o_que": "o plano da SEDAPAL de 2019 citado pela Defensoría",
+   "por_que": "PB054: a tela diz \"citing SEDAPAL (2019)\"",
+   "url": "https://www.gob.pe/institucion/sunass/informes-publicaciones/5878970-pmo-sedapal-2020 (418)"
+  }
+ ],
+ "_pedidos_a_montante": [
+  "espelho › s04 › _grafias \"STORAGE FOR LIMA (2007)\" e s39 › _grafias \"STORAGE FOR LIMA (2007)\" · passar a \"STORAGE CAPACITY FOR LIMA (2007)\" (PA044); a tela já usa a forma certa",
+  "espelho › s04 › needs.geo bacia-alto-mantaro \"upper Mantaro basin\" · tirar da s04 (a voz não diz Mantaro; PA043); s39 › needs.geo bacia-alto-mantaro · o rótulo só no norte, sobre as lagoas, e a bacia inteira, se entrar, só em contorno, sem rótulo (PB026)",
+  "espelho › s50 › _grafias \"SECOND TUNNEL · STUDIED SINCE 1996\" e \"NO CONSTRUCTION DATE (2026)\" · \"DEFINITIVE STUDY, 1996\" e \"NO CONSTRUCTION DATE AS OF LATE AUGUST 2026\" (PB055); o conceito › s50 também diz \"STUDIED SINCE 1996\" e \"AUG. 2026 · NO CONSTRUCTION DATE\"",
+  "espelho › s32 › _grafias · as duas expressões aspadas sem a marca de tradução (PB008); os _dados/s32 dizem \"Source: INEI, 2018\" e \"(channel's translation)\": a tela usa \"Source: INEI (Peru), 2017 census profile\" e \"Translated from Spanish\" (PB009)",
+  "espelho › s31 › _grafias \"THE COAST, AS PERU'S CENSUS DRAWS IT\" (6 palavras num rótulo, que não é nome próprio) · a tela usa a pílula \"COAST\" e a legenda \"As Peru's census draws it: only part of the dry side\"; o conceito diz o mesmo",
+  "regência › s17 › beats[1] · a citação do SENAMHI em \"one\" (6,666 s), não em \"desert\" (9,333 s: 0,8 s no ar)",
+  "regência › s34 › beats[0] · a soma de 2025 em \"more\" (8,266 s), não em \"twenty\" (6,733 s), e o \"ABOUT 650,000 (1940)\" em \"about\" (1,166 s): nenhum número antes da voz",
+  "regência › s37 · \"MAY–NOVEMBER\" em \"runs\" (3,267 s), não em \"seven\" (4,1 s: 1,27 s no ar); s47 › beats[3] · \"FREE\" em \"deliveries\" (15,6 s), não em \"free.\" (0,83 s)",
+  "regência › s35 › beats[2] · o polígono de Villa El Salvador sem nome até \"Villa\" (19,5 s)",
+  "regência › s01 › beats[1] · a bacia do Titicaca sem nome na s01 (a voz não a diz; o quadro passaria de 4 textos); s28 › beats[0] · San Lorenzo Island sem rótulo",
+  "regência › s19 › beats[0] · os pontos de Lima e Matucana só com o nome; os três números nas barras do gráfico (Lima, Matucana, Vilca), que entra em \"high\"",
+  "regência › s22 › beats[0] · \"CARAL · c. 3000–1800 BC\" passa a \"3000–1800 B.C.\" (AP; sem \"c.\"), com \"Caral\" na pílula; s51 › beats[1] · \"c. 3000 BC\" passa a \"ABOUT 3000 B.C.\"",
+  "regência › s51 › beats[1] · acrescentar \"Photo from 2022\" junto da miniatura (o veredito do reuso, aviso_de_ano true; dado novo da Sala)",
+  "regência › s47 › beats[2] · nenhum card de Nicolas Reyes (\"the official's name only on a card if the redator wants it\": não quer, a voz não diz o nome)",
+  "regência › s18 › beats[2] e espelho › s18 › _grafias \"79 in (2,013 mm)\" · a tela leva \"MORE THAN 6 FT (2,013 mm)\", a palavra da voz; \"≈16,000 FT\" passa a \"UP TO ABOUT 16,000 FT (5,000 m)\"",
+  "conceito › s41 \"HUINCO PLANT, 1964\" · \"HUINCO POWER PLANT · 1964\" (a voz: \"the power plant\"); conceito › s42 \"SEDAPAL · FEB. 17, 2021\" e \"MAY 1 – NOV 30\" · \"SEDAPAL · FEBRUARY 2021\" e \"MAY 1 – NOV. 30\" (AP); conceito › s48 \"42 FAMILIES\" · fora, como a regência já decidiu",
+  "pauta-dados › _dados/s39 \"ANTACOTO DAM ~14,600 FT (4,445 m)\" e _dados/s19 \"3,832 m\" · não vão à tela (PB025, PA029); o arquivo de dados não foi mexido"
+ ],
+ "_textos_vivos_max": {
+  "regra": "no máximo 4 ao mesmo tempo (fora crédito, folha, grifo e eixo), por caminho",
+  "medido": {
+   "s01 (caca)": 4,
+   "s01 (sem_caca)": 4,
+   "s03 (caca)": 3,
+   "s03 (sem_caca)": 3,
+   "s04 (caca)": 3,
+   "s04 (sem_caca)": 3,
+   "s06 (caca)": 3,
+   "s06 (sem_caca)": 3,
+   "s08 (caca)": 2,
+   "s08 (sem_caca)": 2,
+   "s09 (caca)": 3,
+   "s09 (sem_caca)": 3,
+   "s10 (caca)": 1,
+   "s10 (sem_caca)": 1,
+   "s11 (caca)": 4,
+   "s11 (sem_caca)": 4,
+   "s12 (caca)": 2,
+   "s12 (sem_caca)": 2,
+   "s13 (caca)": 3,
+   "s13 (sem_caca)": 3,
+   "s14 (caca)": 2,
+   "s14 (sem_caca)": 2,
+   "s15 (caca)": 1,
+   "s15 (sem_caca)": 2,
+   "s16 (caca)": 3,
+   "s16 (sem_caca)": 3,
+   "s17 (caca)": 4,
+   "s17 (sem_caca)": 4,
+   "s18 (caca)": 4,
+   "s18 (sem_caca)": 4,
+   "s19 (caca)": 4,
+   "s19 (sem_caca)": 4,
+   "s20 (caca)": 3,
+   "s20 (sem_caca)": 3,
+   "s21 (caca)": 4,
+   "s21 (sem_caca)": 4,
+   "s22 (caca)": 3,
+   "s22 (sem_caca)": 3,
+   "s23 (caca)": 4,
+   "s23 (sem_caca)": 4,
+   "s26 (caca)": 4,
+   "s26 (sem_caca)": 4,
+   "s27 (caca)": 3,
+   "s27 (sem_caca)": 3,
+   "s28 (caca)": 4,
+   "s28 (sem_caca)": 4,
+   "s29 (caca)": 3,
+   "s29 (sem_caca)": 3,
+   "s30 (caca)": 4,
+   "s30 (sem_caca)": 4,
+   "s32 (caca)": 3,
+   "s32 (sem_caca)": 3,
+   "s33 (caca)": 2,
+   "s33 (sem_caca)": 2,
+   "s34 (caca)": 3,
+   "s34 (sem_caca)": 3,
+   "s35 (caca)": 3,
+   "s35 (sem_caca)": 3,
+   "s36 (caca)": 3,
+   "s36 (sem_caca)": 3,
+   "s37 (caca)": 2,
+   "s37 (sem_caca)": 2,
+   "s38 (caca)": 4,
+   "s38 (sem_caca)": 4,
+   "s39 (caca)": 3,
+   "s39 (sem_caca)": 3,
+   "s41 (caca)": 3,
+   "s41 (sem_caca)": 3,
+   "s42 (caca)": 4,
+   "s42 (sem_caca)": 4,
+   "s44 (caca)": 3,
+   "s44 (sem_caca)": 3,
+   "s45 (caca)": 1,
+   "s45 (sem_caca)": 1,
+   "s46 (caca)": 3,
+   "s46 (sem_caca)": 3,
+   "s47 (caca)": 2,
+   "s47 (sem_caca)": 2,
+   "s48 (caca)": 2,
+   "s48 (sem_caca)": 2,
+   "s49 (caca)": 4,
+   "s49 (sem_caca)": 4,
+   "s51 (caca)": 3,
+   "s51 (sem_caca)": 3,
+   "s52 (caca)": 3,
+   "s52 (sem_caca)": 3
+  },
+  "maior": 4
+ },
+ "glossario": [
+  {
+   "referente": "Francisco Pizarro",
+   "tipo": "pessoa",
+   "grafia": "Francisco Pizarro",
+   "fonte": "UNESCO, Historic Centre of Lima: \"founded by Spanish conqueror Francisco Pizarro in January 1535\" (midia/peru-agua/fontes/gente/unesco-500-lima.txt, l. 235); Cobo, 1882: \"Gobernador Francisco Pizarro\" (PA038); roteiro-narrador.md",
+   "conferido": true,
+   "_na_tela": [
+    "s26"
+   ]
+  },
+  {
+   "referente": "Rómulo Cárhuaz",
+   "tipo": "pessoa",
+   "grafia": "Rómulo Cárhuaz",
+   "fonte": "Infobae, 05/09/2024: \"El ingeniero Rómulo Cárhuaz, analista de Manejo de Cuencas en Sedapal\" (midia/peru-agua/fontes/gente/infobae-2024-09-05-tunel-trasandino.txt, l. 49); roteiro-narrador.md",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Romulo Carjuas\" (transcricao.json › alinhamento.conteudo, trecho 21, aceito); o words.json tem a grafia certa",
+   "_na_tela": [
+    "s42"
+   ]
+  },
+  {
+   "referente": "Catalina Naupa",
+   "tipo": "pessoa",
+   "grafia": "Catalina Naupa",
+   "fonte": "AFP, 20/03/2025, pela eNCA: \"said Catalina Naupa, a 59-year-old resident of San Juan de Miraflores\" (midia/peru-agua/fontes/gente/enca-afp-lima-running-water-dream.txt, l. 41)",
+   "conferido": true,
+   "_na_tela": [
+    "s46"
+   ]
+  },
+  {
+   "referente": "Virginia Martínez Morales",
+   "tipo": "pessoa",
+   "grafia": "Virginia Martínez Morales",
+   "fonte": "Kulturaustausch (ifa), 26/01/2024: \"Virginia Martínez Morales is 30 years old and has lived in the area with her three children\" (midia/peru-agua/fontes/gente/kulturaustausch-2024-thirsty-metropolis-lima.txt, l. 61)",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Martinez\" (trecho 24, aceito)",
+   "_na_tela": [
+    "s48"
+   ]
+  },
+  {
+   "referente": "Tula Tinoco Espinoza",
+   "tipo": "pessoa",
+   "grafia": "Tula Tinoco Espinoza",
+   "fonte": "Kulturaustausch (ifa), 26/01/2024: \"Tula Tinoco Espinoza, who now has to carry several buckets\" (mesma cópia, l. 72)",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Espinosa\" (trecho 24, aceito); a tela escreve com z, como a revista",
+   "_na_tela": [
+    "s49"
+   ]
+  },
+  {
+   "referente": "Bernabé Cobo",
+   "tipo": "pessoa",
+   "grafia": "Bernabé Cobo",
+   "fonte": "Historia de la fundación de Lima, ed. 1882: \"Padre Bernabé Cobo de la Compañia de Jesús. año de 1639\" (midia/peru-agua/fontes/gente/cobo-1639-historia-fundacion-lima_djvu.txt; PB001)",
+   "conferido": true,
+   "_na_tela": [
+    "s26",
+    "s27",
+    "s28"
+   ]
+  },
+  {
+   "referente": "R. Lasaponara e N. Masini",
+   "tipo": "pessoa",
+   "grafia": "Lasaponara & Masini",
+   "fonte": "o capítulo de 2012: \"R. Lasaponara … N. Masini … Springer Science+Business Media B.V. 2012\" (midia/peru-agua/fontes/gente/lasaponara-masini-puquios-cap12.txt, l. 31–38; PA036)",
+   "conferido": true,
+   "_na_tela": [
+    "s23"
+   ]
+  },
+  {
+   "referente": "Medina García",
+   "tipo": "pessoa",
+   "grafia": "Medina García",
+   "fonte": "Debates en Sociología, núm. 7 (1982), PUCP (https://revistas.pucp.edu.pe/index.php/debatesensociologia/article/view/6875; PB015, lido pelo verificador)",
+   "conferido": true,
+   "_na_tela": [
+    "s35"
+   ]
+  },
+  {
+   "referente": "Diego Delso (foto)",
+   "tipo": "pessoa",
+   "grafia": "Diego Delso, delso.photo",
+   "fonte": "conferencia-midia.json › credito_na_tela (s06 e s25)",
+   "conferido": true,
+   "_na_tela": [
+    "s06",
+    "s23"
+   ]
+  },
+  {
+   "referente": "Mr AndrewHolmes (foto)",
+   "tipo": "pessoa",
+   "grafia": "Mr AndrewHolmes",
+   "fonte": "conferencia-midia.json › credito_na_tela (s18)",
+   "conferido": true,
+   "_na_tela": [
+    "s18"
+   ]
+  },
+  {
+   "referente": "JOSE MORALES CIENCIA POLITICA UNMSM (foto)",
+   "tipo": "pessoa",
+   "grafia": "JOSE MORALES CIENCIA POLITICA UNMSM",
+   "fonte": "conferencia-midia.json › credito_na_tela (s22 e o reuso da s51): o nome de autor como o Commons o escreve",
+   "conferido": true,
+   "_na_tela": [
+    "s22",
+    "s51"
+   ]
+  },
+  {
+   "referente": "Soto Caldaa Cesar (foto de reserva)",
+   "tipo": "pessoa",
+   "grafia": "Soto Caldaa Cesar",
+   "fonte": "conferencia-midia.json › credito_na_tela (s22, a foto de reserva; só no fallback)",
+   "conferido": true,
+   "_na_tela": [
+    "s22"
+   ]
+  },
+  {
+   "referente": "Håkan Svensson (foto)",
+   "tipo": "pessoa",
+   "grafia": "Håkan Svensson",
+   "fonte": "Commons, File:Lima_PuebloJov_4.jpg: Author \"Håkan Svensson [Xauxa]\" (PB021)",
+   "conferido": true,
+   "_na_tela": [
+    "s36"
+   ]
+  },
+  {
+   "referente": "Johnattan Rupire (foto)",
+   "tipo": "pessoa",
+   "grafia": "Johnattan Rupire",
+   "fonte": "Commons, File:Río_Santa_Eulalia.jpg (PB033)",
+   "conferido": true,
+   "_na_tela": [
+    "s39"
+   ]
+  },
+  {
+   "referente": "Sichuancay (foto)",
+   "tipo": "pessoa",
+   "grafia": "Sichuancay",
+   "fonte": "Commons, File:Laguna_Marcapomacocha.jpg (PB060)",
+   "conferido": true,
+   "_na_tela": [
+    "s52"
+   ]
+  },
+  {
+   "referente": "Autoridad Nacional del Agua",
+   "tipo": "instituicao",
+   "grafia": "ANA (Peru)",
+   "fonte": "capa da Política de 2009: \"Autoridad Nacional del Agua\" (midia/peru-agua/fontes/documento/ana-2009-politica-estrategia-1073.txt, PDF p. 1); a voz: \"Peru's water authority\"",
+   "conferido": true,
+   "_forma_curta": "ANA (Peru)",
+   "_por_que": "a sigla com o país, a mesma em todo crédito; a voz nunca diz a sigla",
+   "_na_tela": [
+    "s01",
+    "s08",
+    "s10",
+    "s11",
+    "s12",
+    "s20",
+    "s51"
+   ]
+  },
+  {
+   "referente": "Servicio Nacional de Meteorología e Hidrología del Perú",
+   "tipo": "instituicao",
+   "grafia": "SENAMHI (Peru)",
+   "fonte": "PB069; a voz: \"Peru's weather service\"",
+   "conferido": true,
+   "_forma_curta": "SENAMHI (Peru)",
+   "_na_tela": [
+    "s03",
+    "s04",
+    "s13",
+    "s14",
+    "s17",
+    "s18",
+    "s19",
+    "s41",
+    "s49"
+   ]
+  },
+  {
+   "referente": "Instituto Nacional de Estadística e Informática",
+   "tipo": "instituicao",
+   "grafia": "INEI (Peru)",
+   "fonte": "PB067; a voz: \"Peru's statistics institute\"",
+   "conferido": true,
+   "_forma_curta": "INEI (Peru)",
+   "_na_tela": [
+    "s03",
+    "s09",
+    "s30",
+    "s32",
+    "s33",
+    "s34",
+    "s36"
+   ]
+  },
+  {
+   "referente": "Ministerio del Ambiente",
+   "tipo": "instituicao",
+   "grafia": "MINAM (Peru)",
+   "fonte": "Mapa Nacional de Ecosistemas del Perú, 1ª ed., nov. 2019 (midia/peru-agua/fontes/documento/minam-2019-mapa-nacional-ecosistemas.txt; PA031, PB066)",
+   "conferido": true,
+   "_forma_curta": "MINAM (Peru)",
+   "_na_tela": [
+    "s21"
+   ]
+  },
+  {
+   "referente": "Servicio de Agua Potable y Alcantarillado de Lima",
+   "tipo": "empresa",
+   "grafia": "SEDAPAL",
+   "fonte": "\"SERVICIO DE AGUA POTABLE Y ALCANTARILLADO DE LIMA - SEDAPAL\" (Defensoría 239, bibliografia; PB068); a voz: \"Lima's water utility\", \"the utility\"",
+   "conferido": true,
+   "_na_tela": [
+    "s04",
+    "s38",
+    "s39",
+    "s42",
+    "s47",
+    "s49",
+    "s52"
+   ]
+  },
+  {
+   "referente": "Superintendencia Nacional de Servicios de Saneamiento",
+   "tipo": "instituicao",
+   "grafia": "Sunass",
+   "fonte": "Gestión, 25/03/2026: \"Superintendencia Nacional de Servicios de Saneamiento (Sunass)\" (PB046); a voz: \"Peru's water regulator\"; em linha de caixa alta, SUNASS (a mesma grafia)",
+   "conferido": true,
+   "_na_tela": [
+    "s44"
+   ]
+  },
+  {
+   "referente": "Defensoría del Pueblo",
+   "tipo": "instituicao",
+   "grafia": "Defensoría del Pueblo (Peru)",
+   "fonte": "Informe Defensorial n.° 239 (2025), cópia local; PB070; a voz: \"Peru's ombudsman\"",
+   "conferido": true,
+   "_na_tela": [
+    "s04",
+    "s37",
+    "s38",
+    "s39",
+    "s41",
+    "s49"
+   ]
+  },
+  {
+   "referente": "Comisión de la Verdad y Reconciliación",
+   "tipo": "instituicao",
+   "grafia": "Peru's Truth and Reconciliation Commission (CVR)",
+   "fonte": "PB071; a voz diz o nome em inglês",
+   "conferido": true,
+   "_na_tela": [
+    "s33"
+   ]
+  },
+  {
+   "referente": "UNESCO",
+   "tipo": "instituicao",
+   "grafia": "UNESCO",
+   "fonte": "PB072; a voz diz \"UNESCO\"",
+   "conferido": true,
+   "_na_tela": [
+    "s22",
+    "s23",
+    "s29",
+    "s51"
+   ]
+  },
+  {
+   "referente": "Growth Lab, Harvard",
+   "tipo": "instituicao",
+   "grafia": "Harvard Growth Lab",
+   "fonte": "HKS Growth Lab, abril de 2023 (PA010); a voz: \"Harvard's Growth Lab\"",
+   "conferido": true,
+   "_na_tela": [
+    "s09"
+   ]
+  },
+  {
+   "referente": "Japan International Cooperation Agency",
+   "tipo": "instituicao",
+   "grafia": "JICA",
+   "fonte": "PB073 (o catálogo do relatório de 2002)",
+   "conferido": true,
+   "_na_tela": [
+    "s39"
+   ]
+  },
+  {
+   "referente": "World Meteorological Organization",
+   "tipo": "instituicao",
+   "grafia": "WMO",
+   "fonte": "as normais 1991–2020 por estação (midia/peru-agua/fontes/mecanismo/wmo-normals-9120/; PA025, PA027)",
+   "conferido": true,
+   "_na_tela": [
+    "s18",
+    "s19"
+   ]
+  },
+  {
+   "referente": "Pontificia Universidad Católica del Perú",
+   "tipo": "instituicao",
+   "grafia": "PUCP",
+   "fonte": "Pontificia Universidad Católica del Perú, revista Debates en Sociología (PB015)",
+   "conferido": true,
+   "_na_tela": [
+    "s35"
+   ]
+  },
+  {
+   "referente": "Agence France-Presse",
+   "tipo": "veiculo",
+   "grafia": "AFP",
+   "fonte": "PB074; a voz diz \"AFP\"",
+   "conferido": true,
+   "_na_tela": [
+    "s46",
+    "s47"
+   ]
+  },
+  {
+   "referente": "Kulturaustausch (revista do ifa)",
+   "tipo": "veiculo",
+   "grafia": "Kulturaustausch (ifa)",
+   "fonte": "\"Published by ifa – Institute for Foreign Cultural Relations\" (PB049); a voz: \"a German magazine\"; o \"ifa\" em minúsculas, como o instituto escreve",
+   "conferido": true,
+   "_na_tela": [
+    "s48",
+    "s49"
+   ]
+  },
+  {
+   "referente": "Infobae",
+   "tipo": "veiculo",
+   "grafia": "Infobae",
+   "fonte": "Infobae, 05/09/2024: \"…megaobra - Infobae\" (cópia local, l. 1; PB075)",
+   "conferido": true,
+   "_na_tela": [
+    "s42",
+    "s52"
+   ]
+  },
+  {
+   "referente": "Gestión",
+   "tipo": "veiculo",
+   "grafia": "Gestión",
+   "fonte": "Gestión: \"… | PERU | GESTIÓN\" (cópia local gestion-sunass, l. 1; PB076)",
+   "conferido": true,
+   "_na_tela": [
+    "s44",
+    "s49"
+   ]
+  },
+  {
+   "referente": "ProActivo",
+   "tipo": "veiculo",
+   "grafia": "ProActivo",
+   "fonte": "proactivo.com.pe, 17/02/2021 (PB037)",
+   "conferido": true,
+   "_na_tela": [
+    "s42"
+   ]
+  },
+  {
+   "referente": "MapTiler / OpenStreetMap",
+   "tipo": "outro",
+   "grafia": "© MapTiler © OpenStreetMap contributors",
+   "fonte": "identidade §6; a 56 px (identidade §4.1)",
+   "conferido": true,
+   "_na_tela": [
+    "s01",
+    "s03",
+    "s04",
+    "s06",
+    "s08",
+    "s09",
+    "s13",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s23",
+    "s26",
+    "s28",
+    "s29",
+    "s30",
+    "s33",
+    "s34",
+    "s35",
+    "s36",
+    "s37",
+    "s38",
+    "s39",
+    "s42",
+    "s44",
+    "s45",
+    "s47",
+    "s48",
+    "s49",
+    "s51",
+    "s52"
+   ]
+  },
+  {
+   "referente": "Wikimedia Commons",
+   "tipo": "outro",
+   "grafia": "Wikimedia Commons",
+   "fonte": "o acervo dos créditos de foto (credito_na_tela dos vereditos)",
+   "conferido": true,
+   "_na_tela": [
+    "s06",
+    "s18",
+    "s22",
+    "s23",
+    "s36",
+    "s39",
+    "s51",
+    "s52"
+   ]
+  },
+  {
+   "referente": "Peru",
+   "tipo": "lugar",
+   "grafia": "PERU",
+   "fonte": "AP Stylebook: Peru (sem acento); país em caixa alta (identidade §3)",
+   "conferido": true,
+   "_na_tela": [
+    "s01",
+    "s03",
+    "s34"
+   ]
+  },
+  {
+   "referente": "Andes",
+   "tipo": "lugar",
+   "grafia": "ANDES",
+   "fonte": "roteiro-narrador.md; cordilheira tratada como região (caixa alta)",
+   "conferido": true,
+   "_na_tela": [
+    "s18"
+   ]
+  },
+  {
+   "referente": "a vertente do Pacífico",
+   "tipo": "lugar",
+   "grafia": "PACIFIC SIDE",
+   "fonte": "ANA, PNRH, Cuadro 2.1 e 2.3 (\"Pacífico\"); a camada vertente-pacifico; a mesma grafia em todo o vídeo (nunca DRY SIDE como rótulo)",
+   "conferido": true,
+   "_na_tela": [
+    "s01",
+    "s10",
+    "s11",
+    "s20"
+   ]
+  },
+  {
+   "referente": "a vertente do Atlântico (Amazonas)",
+   "tipo": "lugar",
+   "grafia": "AMAZON SIDE",
+   "fonte": "ANA, PNRH (\"Amazonas\"); a camada vertente-atlantico (nunca ATLANTIC SIDE como rótulo)",
+   "conferido": true,
+   "_na_tela": [
+    "s01",
+    "s04",
+    "s11",
+    "s39"
+   ]
+  },
+  {
+   "referente": "a vertente do Titicaca",
+   "tipo": "lugar",
+   "grafia": "LAKE TITICACA BASIN",
+   "fonte": "ANA, PNRH (\"Titicaca\"); a camada vertente-titicaca",
+   "conferido": true,
+   "_na_tela": [
+    "s06"
+   ]
+  },
+  {
+   "referente": "Lago Titicaca (a miniatura de Puno)",
+   "tipo": "lugar",
+   "grafia": "Lake Titicaca (Puno)",
+   "fonte": "lugar_na_origem do veredito s06: \"View of Puno and the Titicaca lake, Peru\" (PA005)",
+   "conferido": true,
+   "_na_tela": [
+    "s06"
+   ]
+  },
+  {
+   "referente": "o Pacífico",
+   "tipo": "lugar",
+   "grafia": "PACIFIC",
+   "fonte": "roteiro-narrador.md",
+   "conferido": true,
+   "_na_tela": [
+    "s06"
+   ]
+  },
+  {
+   "referente": "o Atlântico",
+   "tipo": "lugar",
+   "grafia": "ATLANTIC",
+   "fonte": "roteiro-narrador.md",
+   "conferido": true,
+   "_na_tela": [
+    "s06"
+   ]
+  },
+  {
+   "referente": "o rio Amazonas",
+   "tipo": "lugar",
+   "grafia": "Amazon",
+   "fonte": "roteiro-narrador.md; rio em caixa normal (identidade §3)",
+   "conferido": true,
+   "_na_tela": [
+    "s06"
+   ]
+  },
+  {
+   "referente": "a divisória continental",
+   "tipo": "outro",
+   "grafia": "CONTINENTAL DIVIDE",
+   "fonte": "roteiro-narrador.md; a camada divisoria-continental-peru (HydroBASINS v1), a mesma linha em todo o vídeo (PB061)",
+   "conferido": true,
+   "_na_tela": [
+    "s06"
+   ]
+  },
+  {
+   "referente": "Lima",
+   "tipo": "lugar",
+   "grafia": "Lima",
+   "fonte": "roteiro-narrador.md; AP",
+   "conferido": true,
+   "_na_tela": [
+    "s03",
+    "s04",
+    "s06",
+    "s15",
+    "s17",
+    "s19",
+    "s22",
+    "s29",
+    "s30",
+    "s34",
+    "s36",
+    "s38",
+    "s39",
+    "s41",
+    "s42",
+    "s51"
+   ]
+  },
+  {
+   "referente": "Callao",
+   "tipo": "lugar",
+   "grafia": "Callao",
+   "fonte": "roteiro-narrador.md",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Calao\" (trecho 13, aceito)",
+   "_na_tela": [
+    "s03",
+    "s28",
+    "s29",
+    "s34",
+    "s51"
+   ]
+  },
+  {
+   "referente": "o departamento de Lima",
+   "tipo": "lugar",
+   "grafia": "LIMA REGION",
+   "fonte": "roteiro-narrador.md (\"the Lima region\"); a camada departamento-lima (PA007)",
+   "conferido": true,
+   "_na_tela": [
+    "s06",
+    "s34"
+   ]
+  },
+  {
+   "referente": "Lima Metropolitana (províncias de Lima e do Callao)",
+   "tipo": "lugar",
+   "grafia": "Lima and Callao",
+   "fonte": "roteiro-narrador.md; INEI: \"Comprende la Provincia de Lima y la Provincia del Callao\" (PB018)",
+   "conferido": true,
+   "_na_tela": [
+    "s34",
+    "s36",
+    "s44"
+   ]
+  },
+  {
+   "referente": "rio Rímac",
+   "tipo": "lugar",
+   "grafia": "Rímac",
+   "fonte": "roteiro-narrador.md; ANA 2014",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Rimac\" (trechos 4, 13, 18, 19, 27, aceitos); a tela leva o acento em todo lugar, inclusive em caixa alta (RÍMAC)",
+   "_na_tela": [
+    "s06",
+    "s08",
+    "s29",
+    "s37",
+    "s38",
+    "s39",
+    "s41",
+    "s42",
+    "s52"
+   ]
+  },
+  {
+   "referente": "Loreto",
+   "tipo": "lugar",
+   "grafia": "LORETO",
+   "fonte": "roteiro-narrador.md; departamento (região) em caixa alta",
+   "conferido": true,
+   "_na_tela": [
+    "s09"
+   ]
+  },
+  {
+   "referente": "Iquitos",
+   "tipo": "lugar",
+   "grafia": "Iquitos",
+   "fonte": "roteiro-narrador.md",
+   "conferido": true,
+   "_na_tela": [
+    "s09"
+   ]
+  },
+  {
+   "referente": "Satipo",
+   "tipo": "lugar",
+   "grafia": "Satipo",
+   "fonte": "roteiro-narrador.md; lugar_na_origem do veredito s18 (\"Satipo, Junín, Peru\")",
+   "conferido": true,
+   "_na_tela": [
+    "s18"
+   ]
+  },
+  {
+   "referente": "Matucana",
+   "tipo": "lugar",
+   "grafia": "Matucana",
+   "fonte": "WMO, estação 74402 Matucana (PA027)",
+   "conferido": true,
+   "_na_tela": [
+    "s19"
+   ]
+  },
+  {
+   "referente": "Vilca (a estação do SENAMHI)",
+   "tipo": "lugar",
+   "grafia": "VILCA",
+   "fonte": "SENAMHI 2021: \"la estación meteorológica de Vilca\" (PA028); nunca \"Vilca District\" (PA030); a estação, do lado do Pacífico: SENAMHI 2016, tabela de estações: \"VILCA -12.12 -75.83\" (midia/peru-agua/fontes/agua-de-lima/senamhi-2016-vulnerabilidad-chirilu-mantaro.txt, l. 8505–8507); o ponto cai na vertente do Pacífico, a 9,6 km da divisória (teste de ponto do verificador; laudo fatos-tela, TA127, TA128, TA216, TA262, O3)",
+   "conferido": true,
+   "_na_tela": [
+    "s19"
+   ]
+  },
+  {
+   "referente": "Piura",
+   "tipo": "lugar",
+   "grafia": "Piura",
+   "fonte": "roteiro-narrador.md",
+   "conferido": true,
+   "_na_tela": [
+    "s16",
+    "s21"
+   ]
+  },
+  {
+   "referente": "Tacna",
+   "tipo": "lugar",
+   "grafia": "Tacna",
+   "fonte": "roteiro-narrador.md",
+   "conferido": true,
+   "_na_tela": [
+    "s21"
+   ]
+  },
+  {
+   "referente": "Chile",
+   "tipo": "lugar",
+   "grafia": "CHILE",
+   "fonte": "roteiro-narrador.md",
+   "conferido": true,
+   "_na_tela": [
+    "s21"
+   ]
+  },
+  {
+   "referente": "o deserto costeiro",
+   "tipo": "lugar",
+   "grafia": "COASTAL DESERT",
+   "fonte": "roteiro-narrador.md; MINAM 2019 (\"DESIERTO COSTERO\")",
+   "conferido": true,
+   "_na_tela": [
+    "s21"
+   ]
+  },
+  {
+   "referente": "Caral",
+   "tipo": "lugar",
+   "grafia": "Caral",
+   "fonte": "roteiro-narrador.md; UNESCO 1269",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Karal\" (trecho 10, aceito)",
+   "_na_tela": [
+    "s22",
+    "s51"
+   ]
+  },
+  {
+   "referente": "Pirámide Mayor de Caral",
+   "tipo": "lugar",
+   "grafia": "Pirámide Mayor, Caral",
+   "fonte": "lugar_na_origem do veredito s22: \"Vista frontal de la imponente Pirámide Mayor de la Ciudad Sagrada de Caral\" (PA034)",
+   "conferido": true,
+   "_na_tela": [
+    "s22"
+   ]
+  },
+  {
+   "referente": "rio Supe",
+   "tipo": "lugar",
+   "grafia": "Supe River",
+   "fonte": "roteiro-narrador.md (\"the Supe River\")",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Sup\" (trecho 10, aceito)",
+   "_na_tela": [
+    "s23"
+   ]
+  },
+  {
+   "referente": "vale do Moche",
+   "tipo": "lugar",
+   "grafia": "Moche Valley",
+   "fonte": "roteiro-narrador.md; UNESCO 366 (PA035)",
+   "conferido": true,
+   "_na_tela": [
+    "s23"
+   ]
+  },
+  {
+   "referente": "vale do Chicama",
+   "tipo": "lugar",
+   "grafia": "Chicama Valley",
+   "fonte": "UNESCO 366: \"The Moche and Chicama rivers\" (PA035)",
+   "conferido": true,
+   "_na_tela": [
+    "s23"
+   ]
+  },
+  {
+   "referente": "Chan Chan",
+   "tipo": "lugar",
+   "grafia": "Chan Chan",
+   "fonte": "roteiro-narrador.md; UNESCO 366",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Chanchan\" (trecho 11, aceito)",
+   "_na_tela": [
+    "s23"
+   ]
+  },
+  {
+   "referente": "Nazca",
+   "tipo": "lugar",
+   "grafia": "Nazca",
+   "fonte": "roteiro-narrador.md (o NE e o capítulo de 2012 escrevem \"Nasca\"; a tela segue o texto aprovado, uma grafia só)",
+   "conferido": true,
+   "_na_tela": [
+    "s23"
+   ]
+  },
+  {
+   "referente": "Cantalloc",
+   "tipo": "lugar",
+   "grafia": "Cantalloc, Nazca",
+   "fonte": "lugar_na_origem dos vereditos s25: \"Cantalloc subterranean aqueducts, Nazca, Peru\" (PA036); sozinho, \"Cantalloc\"",
+   "conferido": true,
+   "_na_tela": [
+    "s23"
+   ]
+  },
+  {
+   "referente": "Jauja",
+   "tipo": "lugar",
+   "grafia": "Jauja",
+   "fonte": "roteiro-narrador.md; Cobo, 1882",
+   "conferido": true,
+   "_na_tela": [
+    "s26",
+    "s27"
+   ]
+  },
+  {
+   "referente": "Laguna Marcapomacocha",
+   "tipo": "lugar",
+   "grafia": "Laguna Marcapomacocha",
+   "fonte": "lugar_na_origem do veredito s52: \"Laguna Marcapomacocha en el departamento de Junín, Perú\" (PB059)",
+   "conferido": true,
+   "_na_tela": [
+    "s38",
+    "s52"
+   ]
+  },
+  {
+   "referente": "a parte alta da bacia do Mantaro",
+   "tipo": "lugar",
+   "grafia": "upper Mantaro basin",
+   "fonte": "roteiro-narrador.md (\"the upper Mantaro basin\"); \"PARTE ALTA DEL MANTARO\" (F177); só no norte, sobre as lagoas (PB026)",
+   "conferido": true,
+   "_na_tela": [
+    "s39"
+   ]
+  },
+  {
+   "referente": "rio Santa Eulalia",
+   "tipo": "lugar",
+   "grafia": "Santa Eulalia River",
+   "fonte": "roteiro-narrador.md; lugar_na_origem do veredito s40 (\"Río Santa Eulalia\")",
+   "conferido": true,
+   "_na_tela": [
+    "s39"
+   ]
+  },
+  {
+   "referente": "La Atarjea",
+   "tipo": "lugar",
+   "grafia": "La Atarjea",
+   "fonte": "Defensoría 239: \"Planta La Atarjea N° 1 y N° 2 70%\" (PB030)",
+   "conferido": true,
+   "_na_tela": [
+    "s39"
+   ]
+  },
+  {
+   "referente": "Huinco",
+   "tipo": "lugar",
+   "grafia": "Huinco",
+   "fonte": "roteiro-narrador.md; SENAMHI 2016, Tabla 3-2 (PB035)",
+   "conferido": true,
+   "_na_tela": [
+    "s41"
+   ]
+  },
+  {
+   "referente": "represa Antacoto",
+   "tipo": "lugar",
+   "grafia": "Antacoto",
+   "fonte": "Infobae, 2024: \"tres grandes represas: Antacoto, Huascacocha y Yuracmayo\" (PB040)",
+   "conferido": true,
+   "_na_tela": [
+    "s42"
+   ]
+  },
+  {
+   "referente": "represa Huascacocha",
+   "tipo": "lugar",
+   "grafia": "Huascacocha",
+   "fonte": "idem (PB040)",
+   "conferido": true,
+   "_na_tela": [
+    "s42"
+   ]
+  },
+  {
+   "referente": "represa Yuracmayo",
+   "tipo": "lugar",
+   "grafia": "Yuracmayo",
+   "fonte": "idem (PB040; do lado do Pacífico)",
+   "conferido": true,
+   "_na_tela": [
+    "s42"
+   ]
+  },
+  {
+   "referente": "rio Chillón",
+   "tipo": "lugar",
+   "grafia": "Chillón",
+   "fonte": "roteiro-narrador.md",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Chillon\" (trecho 21, aceito)",
+   "_na_tela": [
+    "s41",
+    "s42"
+   ]
+  },
+  {
+   "referente": "rio Lurín",
+   "tipo": "lugar",
+   "grafia": "Lurín",
+   "fonte": "roteiro-narrador.md",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Lurin\" (trecho 21, aceito)",
+   "_na_tela": [
+    "s41",
+    "s42"
+   ]
+  },
+  {
+   "referente": "Pamplona (1971)",
+   "tipo": "lugar",
+   "grafia": "Pamplona",
+   "fonte": "Medina García 1982: \"en la zona denominada Pamplona\" (PB016); nunca \"Pamplona Alta\"",
+   "conferido": true,
+   "_na_tela": [
+    "s35"
+   ]
+  },
+  {
+   "referente": "Villa El Salvador",
+   "tipo": "lugar",
+   "grafia": "Villa El Salvador",
+   "fonte": "roteiro-narrador.md",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Vila\" (trecho 17, aceito)",
+   "_na_tela": [
+    "s35"
+   ]
+  },
+  {
+   "referente": "San Juan de Miraflores",
+   "tipo": "lugar",
+   "grafia": "San Juan de Miraflores",
+   "fonte": "roteiro-narrador.md; AFP (nome próprio de 4 palavras: vai inteiro)",
+   "conferido": true,
+   "_na_tela": [
+    "s45",
+    "s46"
+   ]
+  },
+  {
+   "referente": "Puente Piedra",
+   "tipo": "lugar",
+   "grafia": "Puente Piedra",
+   "fonte": "roteiro-narrador.md; Kulturaustausch: \"the Puente Piedra district north of Lima\"",
+   "conferido": true,
+   "_na_tela": [
+    "s48",
+    "s49"
+   ]
+  },
+  {
+   "referente": "a Sierra (região do censo)",
+   "tipo": "lugar",
+   "grafia": "HIGHLANDS",
+   "fonte": "INEI, regiões naturais do censo (Sierra); roteiro: \"the highlands\"",
+   "conferido": true,
+   "_na_tela": [
+    "s30"
+   ]
+  },
+  {
+   "referente": "a Costa (região do censo)",
+   "tipo": "lugar",
+   "grafia": "COAST",
+   "fonte": "INEI (Costa); roteiro: \"the region the census calls the coast\"; sempre com a legenda que diz que é a do censo",
+   "conferido": true,
+   "_na_tela": [
+    "s30"
+   ]
+  },
+  {
+   "referente": "a Selva (região do censo)",
+   "tipo": "lugar",
+   "grafia": "RAINFOREST",
+   "fonte": "INEI (Selva); roteiro: \"the rainforest\"",
+   "conferido": true,
+   "_na_tela": [
+    "s30"
+   ]
+  },
+  {
+   "referente": "as regiões andinas",
+   "tipo": "lugar",
+   "grafia": "ANDEAN REGIONS",
+   "fonte": "roteiro-narrador.md; Kulturaustausch: \"from the Andean regions\"",
+   "conferido": true,
+   "_na_tela": [
+    "s49"
+   ]
+  },
+  {
+   "referente": "a serra do Peru (fallback da s33)",
+   "tipo": "lugar",
+   "grafia": "PERUVIAN HIGHLANDS",
+   "fonte": "regência › s33 › beats[0] › fallback (\"sem rótulo de lugar mais preciso que 'Peruvian highlands'\")",
+   "conferido": true,
+   "_na_tela": [
+    "s33"
+   ]
+  },
+  {
+   "referente": "o anticiclone do Pacífico Sul",
+   "tipo": "outro",
+   "grafia": "SOUTH PACIFIC HIGH",
+   "fonte": "SENAMHI 2021, o anticiclone do Pacífico Sul (PA015)",
+   "conferido": true,
+   "_na_tela": [
+    "s13"
+   ]
+  },
+  {
+   "referente": "a corrente de Humboldt",
+   "tipo": "outro",
+   "grafia": "HUMBOLDT CURRENT",
+   "fonte": "SENAMHI 2021, \"la corriente de Humboldt\" (PA015)",
+   "conferido": true,
+   "_na_tela": [
+    "s13"
+   ]
+  },
+  {
+   "referente": "El Niño",
+   "tipo": "outro",
+   "grafia": "EL NIÑO",
+   "fonte": "roteiro-narrador.md; NOAA PMEL (\"El Niño events … 1997-1998\"; PA023)",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Nino\" (trecho 7, aceito); a tela leva o til",
+   "_na_tela": [
+    "s16"
+   ]
+  },
+  {
+   "referente": "a cultura Chimú",
+   "tipo": "outro",
+   "grafia": "Chimú",
+   "fonte": "roteiro-narrador.md; UNESCO 366 (\"Chimú capital\")",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"Chimu\" (trecho 11, aceito)",
+   "_na_tela": [
+    "s23"
+   ]
+  },
+  {
+   "referente": "puquios",
+   "tipo": "outro",
+   "grafia": "*puquios*",
+   "fonte": "roteiro-narrador.md; Lasaponara & Masini 2012 (\"puquios\"); em itálico na tela",
+   "conferido": true,
+   "_ouvido_pelo_whisper": "\"pukios\" (trecho 11, aceito)",
+   "_na_tela": [
+    "s23"
+   ]
+  },
+  {
+   "referente": "barriadas",
+   "tipo": "outro",
+   "grafia": "*barriadas*",
+   "fonte": "roteiro-narrador.md; em itálico na tela",
+   "conferido": true,
+   "_na_tela": [
+    "s36"
+   ]
+  },
+  {
+   "referente": "o canal (Alpha Point)",
+   "tipo": "outro",
+   "grafia": "Alpha Point",
+   "fonte": "canal.json › titulo",
+   "conferido": true,
+   "_na_tela": [
+    "s06",
+    "s22"
+   ]
+  },
+  {
+   "referente": "milha",
+   "tipo": "unidade",
+   "grafia": "MILES",
+   "fonte": "a casa (vídeos 2 e 3: \"ABOUT 14 MILES\", \"5 MILES\"); por extenso em caixa alta",
+   "conferido": true,
+   "_na_tela": [
+    "s06",
+    "s08",
+    "s22",
+    "s23",
+    "s39"
+   ]
+  },
+  {
+   "referente": "milha quadrada",
+   "tipo": "unidade",
+   "grafia": "SQ MI",
+   "fonte": "a casa (vídeo 2: \"43 SQ MI\")",
+   "conferido": true,
+   "_na_tela": [
+    "s09",
+    "s21"
+   ]
+  },
+  {
+   "referente": "pé",
+   "tipo": "unidade",
+   "grafia": "FT",
+   "fonte": "a casa (vídeo 2: \"ABOUT 15,000 FT\")",
+   "conferido": true,
+   "_na_tela": [
+    "s18",
+    "s39"
+   ]
+  },
+  {
+   "referente": "polegada",
+   "tipo": "unidade",
+   "grafia": "INCHES",
+   "fonte": "por extenso: \"IN\" em caixa alta se lê como a palavra \"in\"",
+   "conferido": true,
+   "_na_tela": [
+    "s03",
+    "s17",
+    "s19"
+   ]
+  },
+  {
+   "referente": "galão americano",
+   "tipo": "unidade",
+   "grafia": "GALLONS",
+   "fonte": "por extenso (AP não abrevia); \"a cubic meter (260 gallons)\" (AFP)",
+   "conferido": true,
+   "_na_tela": [
+    "s47"
+   ]
+  },
+  {
+   "referente": "unidades métricas entre parênteses",
+   "tipo": "unidade",
+   "grafia": "km · km² · mm · m · m³",
+   "fonte": "identidade §7: o métrico só entre parênteses, quando a fonte é métrica, em símbolo SI (minúsculo)",
+   "conferido": true
+  },
+  {
+   "referente": "antes de Cristo",
+   "tipo": "outro",
+   "grafia": "B.C.",
+   "fonte": "AP Stylebook (com pontos), como a UNESCO escreve (\"3000 to 1800 B.C.\")",
+   "conferido": true,
+   "_na_tela": [
+    "s22",
+    "s51"
+   ]
+  }
+ ],
+ "cards_pessoa": [
+  {
+   "cena": "s26",
+   "nome": "FRANCISCO PIZARRO",
+   "o_que_e": "Spanish conquistador",
+   "vinculo": "a Coroa espanhola: \"Gobernador Francisco Pizarro\" (Cobo, nov. 1534) e \"Gobernador en estas provincias de la Nueva Castilla\" (jan. 1535)",
+   "data_do_cargo": "1534-11",
+   "fonte": "UNESCO, Historic Centre of Lima: \"founded by Spanish conqueror Francisco Pizarro in January 1535\" (midia/peru-agua/fontes/gente/unesco-500-lima.txt, l. 235); Cobo 1882, l. 2397 e 2601–2602 (PA038, CONFIRMADA); sem ano de nascimento (PA039)",
+   "_na_tela": {
+    "nome": "FRANCISCO PIZARRO",
+    "cargo": "Spanish conquistador",
+    "aviso": "Painting, 1835"
+   },
+   "_retrato": "_media/pessoa/s26/francisco-pizarro-coutan-1835-commons.jpg (sha256 33663e70…, aprovado; sem crédito, domínio público)"
+  },
+  {
+   "cena": "s42",
+   "nome": "RÓMULO CÁRHUAZ",
+   "o_que_e": "Watershed management analyst, SEDAPAL (2024)",
+   "vinculo": "SEDAPAL",
+   "data_do_cargo": "2024-09",
+   "fonte": "Infobae, 05/09/2024: \"El ingeniero Rómulo Cárhuaz, analista de Manejo de Cuencas en Sedapal … durante una entrevista realizada por el área de Comunicaciones de Sedapal\" (midia/peru-agua/fontes/gente/infobae-2024-09-05-tunel-trasandino.txt, l. 49); a entrevista primária (gob.pe) não foi aberta (PB041)",
+   "_na_tela": {
+    "nome": "RÓMULO CÁRHUAZ",
+    "cargo": "Watershed management analyst, SEDAPAL (2024)"
+   },
+   "_sem_retrato": "card sem foto (regência)"
+  },
+  {
+   "cena": "s46",
+   "nome": "CATALINA NAUPA, 59",
+   "o_que_e": "Resident, San Juan de Miraflores (2025)",
+   "vinculo": "nenhum (pessoa comum: o card diz o que a voz diz)",
+   "data_do_cargo": "2025-03",
+   "fonte": "AFP, 20/03/2025, pela eNCA: \"said Catalina Naupa, a 59-year-old resident of San Juan de Miraflores\" (midia/peru-agua/fontes/gente/enca-afp-lima-running-water-dream.txt, l. 41)",
+   "_na_tela": {
+    "nome": "CATALINA NAUPA, 59",
+    "cargo": "Resident, San Juan de Miraflores (2025)"
+   },
+   "_sem_retrato": "card sem foto (regência)"
+  },
+  {
+   "cena": "s48",
+   "nome": "VIRGINIA MARTÍNEZ MORALES, 30",
+   "o_que_e": "Resident, Puente Piedra (2024)",
+   "vinculo": "nenhum (pessoa comum); a cooperativa Siempre Unidos de Villa Verde não vai à tela",
+   "data_do_cargo": "2024-01",
+   "fonte": "Kulturaustausch (ifa), 26/01/2024: \"the hills of the Puente Piedra district north of Lima\" e \"Virginia Martínez Morales is 30 years old and has lived in the area with her three children for six years\" (midia/peru-agua/fontes/gente/kulturaustausch-2024-thirsty-metropolis-lima.txt, l. 56 e 61)",
+   "_na_tela": {
+    "nome": "VIRGINIA MARTÍNEZ MORALES, 30",
+    "cargo": "Resident, Puente Piedra (2024)"
+   },
+   "_sem_retrato": "card sem foto (regência)"
+  },
+  {
+   "cena": "s49",
+   "nome": "TULA TINOCO ESPINOZA",
+   "o_que_e": "Resident, Puente Piedra (2024)",
+   "vinculo": "nenhum (pessoa comum); Los Condes não vai à tela",
+   "data_do_cargo": "2024-01",
+   "fonte": "Kulturaustausch (ifa), 26/01/2024: \"on the slopes of Puente Piedra … This is where the Los Condes housing co-operative is located\" e \"Tula Tinoco Espinoza, who now has to carry several buckets\" (mesma cópia, l. 66–67 e 72; PB050)",
+   "_na_tela": {
+    "nome": "TULA TINOCO ESPINOZA",
+    "cargo": "Resident, Puente Piedra (2024)"
+   },
+   "_sem_retrato": "card sem foto (regência); nunca \"neighbor\""
+  }
+ ],
+ "rotulos_dado": [
+  {
+   "cena": "s01 (s02)",
+   "na_tela": "74.5% OF THE LAND",
+   "fonte": "ANA (Peru), Plan Nacional de Recursos Hídricos, Cuadro 2.3, p. 38 (ana-pnrh-1416.txt; PA001, PA011)",
+   "valor_exato": "74,53 %",
+   "por_que_diverge": "a voz diz \"about three-quarters\"; a constante publicada pode ir à tela, arredondada a uma casa",
+   "unidade": "% da área do país",
+   "data": "2012 (ano-base do diagnóstico)"
+  },
+  {
+   "cena": "s01 (s02)",
+   "na_tela": "97.9% OF THE WATER",
+   "fonte": "ANA (Peru), Plan Nacional de Recursos Hídricos, Cuadro 2.3, p. 38 (ana-pnrh-1416.txt; PA001, PA011)",
+   "valor_exato": "97,91 %",
+   "por_que_diverge": "a voz diz \"more than 97 percent\"; 97,9 é a constante publicada",
+   "unidade": "% dos recursos hídricos naturais",
+   "data": "2012"
+  },
+  {
+   "cena": "s01 (s02), s51",
+   "na_tela": "1.8% OF THE WATER",
+   "fonte": "ANA (Peru), Plan Nacional de Recursos Hídricos, Cuadro 2.3, p. 38 (ana-pnrh-1416.txt; PA001, PA011)",
+   "valor_exato": "1,76 %",
+   "por_que_diverge": "a voz diz \"about 2 percent\"; 1,8 é a constante publicada arredondada, e \"about 2\" a voz; não se contradizem",
+   "unidade": "%",
+   "data": "2012"
+  },
+  {
+   "cena": "s01 (s02)",
+   "na_tela": "62.5% OF THE PEOPLE (2012)",
+   "fonte": "ANA (Peru), Plan Nacional de Recursos Hídricos, Cuadro 2.3, p. 38 (ana-pnrh-1416.txt; PA001, PA011) (a população é a projeção do INEI para 2012)",
+   "valor_exato": "62,53 %",
+   "por_que_diverge": "a voz diz \"more than three in five\"; as silhuetas: 5 acesas de 8 (62,5 %, exato)",
+   "unidade": "% da população",
+   "data": "2012"
+  },
+  {
+   "cena": "s03, s17",
+   "na_tela": "0.3 INCHES (8 mm)",
+   "fonte": "SENAMHI, Climas del Perú (2021), normal 1981–2010, estação Campo de Marte (senamhi-2021-climas-del-peru.txt; mec.num-01)",
+   "valor_exato": "8 mm = 0,315 in",
+   "por_que_diverge": "a voz diz \"about a third of an inch\"; 8 mm é a constante, 0.3 a conversão; nunca os 10 mm da SEDAPAL nem 0,4 mm",
+   "unidade": "inches (mm)",
+   "data": "1981–2010"
+  },
+  {
+   "cena": "s03, s34",
+   "na_tela": "LIMA 9.6 M + CALLAO 1.0 M = 10.6 M",
+   "fonte": "INEI, Censo 2025, Presentación de resultados, p. 14 (9.600.724 + 1.042.857 = 10.643.581; doc.num-33)",
+   "valor_exato": "10.643.581",
+   "por_que_diverge": "a voz diz \"more than ten million\" (s03) e \"more than ten and a half million\" (s34); a soma é conta nossa de duas constantes publicadas; nunca \"10.1 million\"",
+   "unidade": "people",
+   "data": "2025"
+  },
+  {
+   "cena": "s04, s39",
+   "na_tela": "MORE THAN HALF · AMAZON SIDE",
+   "fonte": "SEDAPAL, lâmina \"Cuencas de Almacenamiento de Agua para Lima y Callao\", fev. 2007 (jica-sedapal-2007-lamina.txt; PA044, PB023)",
+   "valor_exato": "157 de 282 hm³ = 55,7 %",
+   "por_que_diverge": "só a razão que a voz diz (pesquisa-1, pergunta 11); os volumes vivem no desenho (s39, os dois volumes em escala real); nunca 60 nem 62 %",
+   "unidade": "share of storage capacity",
+   "data": "2007",
+   "_titulo": "STORAGE CAPACITY FOR LIMA (2007)"
+  },
+  {
+   "cena": "s04",
+   "na_tela": "A SINGLE TUNNEL · EARLY 1960s",
+   "fonte": "SENAMHI 2016 (1ª etapa 1958–1962; lim.afi-05); Defensoría 239, 2025: \"dependiendo de un solo túnel trasandino\" (l. 4542; F023)",
+   "valor_exato": "1958–1962",
+   "por_que_diverge": "a voz diz \"built in the early 1960s\"",
+   "data": "1958–1962"
+  },
+  {
+   "cena": "s06 (s07)",
+   "na_tela": "LESS THAN 70 MILES",
+   "fonte": "medida do canal na geometria da divisória (HydroBASINS v1): 95,77 km = 59,51 mi de Campo de Marte (PA006); a voz",
+   "valor_exato": "59,5 mi",
+   "por_que_diverge": "a voz diz \"less than seventy miles\"; 59,5 é medida do canal, não número de fonte (PA006): a tela leva a palavra da voz",
+   "unidade": "miles (straight line)"
+  },
+  {
+   "cena": "s08",
+   "na_tela": "ABOUT 90 MILES LONG (145 km)",
+   "fonte": "ANA, Informe Técnico 074-2014: \"Longitud de Río principal 145 km. aproximadamente\" (PA008)",
+   "valor_exato": "145 km = 90,1 mi",
+   "unidade": "miles (km)",
+   "data": "2014"
+  },
+  {
+   "cena": "s09",
+   "na_tela": "ABOUT 6 PEOPLE PER SQ MI",
+   "fonte": "INEI, Perfil Sociodemográfico 2017: \"Loreto (2,4 hab./km2)\" (PA010)",
+   "valor_exato": "2,4 hab./km² = 6,2/sq mi",
+   "por_que_diverge": "conversão nossa de uma constante; \"about\" carrega o arredondamento",
+   "unidade": "people per sq mi (2.4 per km²)",
+   "data": "2017"
+  },
+  {
+   "cena": "s10",
+   "na_tela": "PACIFIC SIDE · 21.7% OF THE LAND",
+   "fonte": "ANA (Peru), Plan Nacional de Recursos Hídricos, Cuadro 2.3, p. 38 (ana-pnrh-1416.txt; PA001, PA011)",
+   "valor_exato": "21,67 %",
+   "por_que_diverge": "a voz diz \"less than a quarter of the country\"",
+   "unidade": "% da área",
+   "data": "2012"
+  },
+  {
+   "cena": "s11",
+   "na_tela": "ABOUT 100×",
+   "fonte": "ANA (Peru), Plan Nacional de Recursos Hídricos, Cuadro 2.3, p. 38 (ana-pnrh-1416.txt; PA001, PA011), coluna m³/hab/ano",
+   "valor_exato": "189.167,18 ÷ 1.815,61 = 104,2×",
+   "por_que_diverge": "conta nossa: a voz manda no rótulo (\"about a hundred times\"); a exatidão vive na escala dos recipientes; nenhum volume na tela",
+   "unidade": "times (water per person)",
+   "data": "2012"
+  },
+  {
+   "cena": "s16",
+   "na_tela": "EL NIÑO 1997–98",
+   "fonte": "NOAA PMEL; SENAMHI 2021 (PA023)",
+   "data": "1997–1998"
+  },
+  {
+   "cena": "s16",
+   "na_tela": "Sea surface temperature anomalies, March–August 1997",
+   "fonte": "NOAA, a imagem do Commons (PA018)",
+   "data": "March–August 1997"
+  },
+  {
+   "cena": "s13, s15, s16",
+   "na_tela": "Satellite image · June 2018 / June 2015 / June 1998",
+   "fonte": "NASA MODIS (6/20/2018; 6/7/2015) e Landsat 5 (03/06/1998) (PA016, PA017, PA019)",
+   "data": "2018-06-20 · 2015-06-07 · 1998-06-03"
+  },
+  {
+   "cena": "s18",
+   "na_tela": "UP TO ABOUT 16,000 FT (5,000 m)",
+   "fonte": "SENAMHI 2021, §1.3.3.1: \"hasta los 5 000 m s. n. m. aproximadamente\" (mec.num-29)",
+   "valor_exato": "5.000 m = 16.404 ft",
+   "por_que_diverge": "a voz diz \"up to about sixteen thousand feet\"; é a altura até onde o ar é barrado, presa às nuvens, nunca a crista",
+   "unidade": "ft (m)"
+  },
+  {
+   "cena": "s18",
+   "na_tela": "MORE THAN 6 FT (2,013 mm)",
+   "fonte": "WMO, normais 1991–2020, Satipo 81201: \"Sum 2013\" (PA025)",
+   "valor_exato": "2.013 mm = 79,25 in = 6,6 ft",
+   "por_que_diverge": "a voz diz \"more than six feet\"; a tela leva a palavra da voz e a constante métrica entre parênteses (o \"79 in\" do espelho faria ouvir \"six feet\" e ler \"79 inches\")",
+   "unidade": "ft (mm) of rain a year",
+   "data": "1991–2020"
+  },
+  {
+   "cena": "s19",
+   "na_tela": "LIMA · 0.3 INCHES (8 mm)",
+   "fonte": "SENAMHI 2021 (normal 1981–2010)",
+   "valor_exato": "8 mm",
+   "unidade": "inches (mm) a year",
+   "data": "1981–2010"
+  },
+  {
+   "cena": "s19",
+   "na_tela": "MATUCANA · 12 INCHES (312 mm)",
+   "fonte": "WMO, normais 1991–2020, Matucana 74402: \"Sum 311.6\" (PA027)",
+   "valor_exato": "311,6 mm = 12,3 in",
+   "unidade": "inches (mm) a year",
+   "data": "1991–2020"
+  },
+  {
+   "cena": "s19",
+   "na_tela": "VILCA · 38 INCHES (963 mm)",
+   "fonte": "SENAMHI 2021: \"las lluvias anuales bordean los 963 mm\" (PA028)",
+   "valor_exato": "963 mm = 37,9 in",
+   "unidade": "inches (mm) a year",
+   "data": "1981–2010",
+   "_lado": "SENAMHI 2016, tabela de estações: \"VILCA -12.12 -75.83\" (midia/peru-agua/fontes/agua-de-lima/senamhi-2016-vulnerabilidad-chirilu-mantaro.txt, l. 8505–8507); o ponto cai na vertente do Pacífico, a 9,6 km da divisória (teste de ponto do verificador; laudo fatos-tela, TA127, TA128, TA216, TA262, O3)"
+  },
+  {
+   "cena": "s19",
+   "na_tela": "HIGH UP: MOSTLY DECEMBER–MARCH",
+   "fonte": "WMO, Matucana: dez.–mar. = 261,3 de 311,6 mm (83,9 %) (PA027); mec.afi-12; Vilca: \"máximos acumulados en el verano con un pico de 178 mm en enero\" (SENAMHI 2021); Lima, o contrário: \"un máximo de 1 a 2 mm entre julio y setiembre\" (l. 3278–3280)",
+   "por_que_diverge": "a voz diz \"mostly high up, and most of it from December to March\"; o \"HIGH UP\" prende a legenda às estações altas (TA129, TA217)",
+   "data": "1991–2020"
+  },
+  {
+   "cena": "s20",
+   "na_tela": "ABOUT HALF",
+   "fonte": "ANA 2009, Política y Estrategia, p. 33: \"desperdiciándose alrededor del 50% (17 542 MMC) que retornan directamente al mar\" (F081, F082)",
+   "valor_exato": "alrededor del 50 %",
+   "unidade": "share of the flood water",
+   "data": "2009"
+  },
+  {
+   "cena": "s21",
+   "na_tela": "ABOUT 27,000 SQ MI (71,000 km²)",
+   "fonte": "MINAM, Mapa Nacional de Ecosistemas del Perú, 2019: \"DESIERTO COSTERO 7,107,338.20\" ha (PA031, PB066)",
+   "valor_exato": "71.073 km² = 27.442 sq mi",
+   "por_que_diverge": "\"about\" arredonda 1,6 % para baixo, como a voz",
+   "unidade": "sq mi (km²)",
+   "data": "2019"
+  },
+  {
+   "cena": "s22",
+   "na_tela": "3000–1800 B.C.",
+   "fonte": "UNESCO 1269: \"between the years 3000 to 1800 B.C.\" (PA032)",
+   "data": "3000–1800 B.C."
+  },
+  {
+   "cena": "s22",
+   "na_tela": "ABOUT 90 MILES NORTH OF LIMA",
+   "fonte": "medida do canal: 87,65 mi, rumo 338° (PA033); a voz",
+   "valor_exato": "87,65 mi",
+   "por_que_diverge": "a voz diz \"about ninety miles north of Lima\"",
+   "unidade": "miles (straight line)"
+  },
+  {
+   "cena": "s23 (s24)",
+   "na_tela": "CANAL · ABOUT 50 MILES (80 km)",
+   "fonte": "UNESCO 366: \"an approximately 80 kilometre long canal\" (PA035)",
+   "valor_exato": "80 km = 49,7 mi",
+   "unidade": "miles (km)"
+  },
+  {
+   "cena": "s26",
+   "na_tela": "LATE 1534",
+   "fonte": "o auto do cabildo de Jauja, 28/11/1534, em Cobo (1639; ed. 1882), com a correção do editor (nota 3) (PA040)",
+   "valor_exato": "November 28, 1534",
+   "por_que_diverge": "a voz diz \"late 1534\"; o dia não vai, e o 1539 do manuscrito nunca",
+   "data": "1534-11"
+  },
+  {
+   "cena": "s28",
+   "na_tela": "JANUARY 1535",
+   "fonte": "a ordem de Pizarro, \"fecho en Pachacamac á 6 de Enero de 1535\" (Cobo, p. 15; PB004)",
+   "valor_exato": "January 6, 1535",
+   "por_que_diverge": "sem o dia (R52)",
+   "data": "1535-01"
+  },
+  {
+   "cena": "s30 (s31)",
+   "na_tela": "65.0% (1940)",
+   "fonte": "INEI, Censo 2025, Presentación de resultados, p. 12 (a série de 1940 a 2025; PB005)",
+   "unidade": "% (Sierra)",
+   "data": "1940"
+  },
+  {
+   "cena": "s30 (s31)",
+   "na_tela": "28.3% (1940)",
+   "fonte": "idem (PB005)",
+   "por_que_diverge": "a voz diz \"fewer than three in ten\"",
+   "unidade": "% (Costa do censo)",
+   "data": "1940"
+  },
+  {
+   "cena": "s30 (s31)",
+   "na_tela": "52.4% (1993)",
+   "fonte": "idem (PB005)",
+   "por_que_diverge": "a voz diz \"more than half\"",
+   "unidade": "%",
+   "data": "1993"
+  },
+  {
+   "cena": "s30 (s31)",
+   "na_tela": "58.7% (2025)",
+   "fonte": "idem (PB005)",
+   "por_que_diverge": "a voz diz \"nearly six in ten\"",
+   "unidade": "%",
+   "data": "2025"
+  },
+  {
+   "cena": "s30 (s31)",
+   "na_tela": "6.7% → 14.6%",
+   "fonte": "idem (PB006)",
+   "valor_exato": "2,18×",
+   "por_que_diverge": "a voz diz \"more than doubled\"",
+   "unidade": "% (Selva)",
+   "data": "1940 → 2025"
+  },
+  {
+   "cena": "s33",
+   "na_tela": "ABOUT 500,000 DISPLACED",
+   "fonte": "CVR, Informe Final, t. VI, p. 627: \"alrededor de medio millón de personas abandonaron sus localidades\" (PB011, PB012)",
+   "valor_exato": "alrededor de medio millón",
+   "por_que_diverge": "a voz diz \"about half a million\"; a mesma grandeza, em algarismos",
+   "unidade": "people",
+   "data": "1980–2000 (estimate)"
+  },
+  {
+   "cena": "s34",
+   "na_tela": "ABOUT 650,000 (1940)",
+   "fonte": "INEI 1995, Cuadro 3.7: \"LIMA METROPOLITANA 645,172\" (censo de 1940; PB014)",
+   "valor_exato": "645.172",
+   "unidade": "people",
+   "data": "1940"
+  },
+  {
+   "cena": "s34",
+   "na_tela": "ABOUT 1 IN 10 PERUVIANS",
+   "fonte": "INEI 1995: 645.172 ÷ 6.207.967 = 10,4 %",
+   "valor_exato": "10,4 %",
+   "data": "1940"
+  },
+  {
+   "cena": "s34",
+   "na_tela": "ABOUT 1 IN 3 PERUVIANS",
+   "fonte": "INEI 2026: 10.643.581 ÷ 32.706.028 = 32,5 %",
+   "valor_exato": "32,5 %",
+   "por_que_diverge": "a voz diz \"about a third\"; a figura: 3 silhuetas cheias e a 4ª em 1/4 (3,25 de 10) (TB064)",
+   "data": "2025"
+  },
+  {
+   "cena": "s34",
+   "na_tela": "41.9% OF PERU'S GDP",
+   "fonte": "INEI, PIB por departamentos: \"Lima con 41,9%\"; \"Lima incluye la Provincia Constitucional del Callao\" (PB013)",
+   "valor_exato": "41,9 %",
+   "por_que_diverge": "a voz diz \"more than 40 percent\"; 41,9 é a constante publicada",
+   "unidade": "% of GDP",
+   "data": "2022 (estimate)",
+   "_legenda": "2022 ESTIMATE",
+   "_rotulo": "LIMA REGION + CALLAO"
+  },
+  {
+   "cena": "s35",
+   "na_tela": "1971 · 180 FAMILIES",
+   "fonte": "Medina García, PUCP, 1982: \"la invasión de 180 familias\" (PB015)",
+   "unidade": "families",
+   "data": "1971"
+  },
+  {
+   "cena": "s35",
+   "na_tela": "ABOUT 7,000 FAMILIES TO RESETTLE",
+   "fonte": "Medina García 1982: \"alrededor de 7,000 familias\"",
+   "unidade": "families",
+   "data": "1971"
+  },
+  {
+   "cena": "s36",
+   "na_tela": "1981 · ABOUT 1 IN 4",
+   "fonte": "INEI (1996) pela tabela da CVR, t. IV, 1.5: \"1981 4'608,010 1'171,800 25.5\" (PB017; a primária não foi aberta)",
+   "valor_exato": "25,5 %",
+   "por_que_diverge": "a voz diz \"about one in four\"",
+   "data": "1981"
+  },
+  {
+   "cena": "s37",
+   "na_tela": "MAY–NOVEMBER",
+   "fonte": "Defensoría 239: \"en períodos de estiaje (de mayo a noviembre)\"",
+   "por_que_diverge": "a voz diz \"seven months\"",
+   "data": "2025"
+  },
+  {
+   "cena": "s38",
+   "na_tela": "ABOUT A QUARTER",
+   "fonte": "Defensoría 239, PDF p. 76: \"30 m3/s en promedio … solo los 7.8 m3/s\" (PB022)",
+   "valor_exato": "7,8 ÷ 30 = 0,26",
+   "por_que_diverge": "só a razão que a voz diz; nenhuma vazão na tela",
+   "unidade": "share of the December–April flow",
+   "data": "2025"
+  },
+  {
+   "cena": "s39",
+   "na_tela": "NEARLY 15,000 FT",
+   "fonte": "SEDAPAL 2007: \"REPRESA ANTACOTO 4,445 msnm\" (14.583 ft); Defensoría: o Marca I \"sobre los 4,500 m.s.n.m.\"",
+   "valor_exato": "4.445 m = 14.583 ft",
+   "por_que_diverge": "a voz diz \"nearly fifteen thousand feet\"; sem o métrico, porque as fontes divergem (PB025)",
+   "unidade": "ft",
+   "data": "2007"
+  },
+  {
+   "cena": "s39 (s40)",
+   "na_tela": "ABOUT 14 MILES",
+   "fonte": "JICA 2002: \"the 11.9 km long … canal and the 10.1 km long Cuevas-Milloc tunnel\" (PB028)",
+   "valor_exato": "22,0 km = 13,7 mi",
+   "unidade": "miles",
+   "data": "2002",
+   "_legenda": "CANAL 7.4 MILES + TUNNEL 6.3 MILES"
+  },
+  {
+   "cena": "s39 (s40)",
+   "na_tela": "70% OF SEDAPAL'S WATER PRODUCTION (2023)",
+   "fonte": "Defensoría 239: \"La producción anual referida al año 2023 … Planta La Atarjea N° 1 y N° 2 70%\" (PB030)",
+   "valor_exato": "70 %",
+   "unidade": "%",
+   "data": "2023"
+  },
+  {
+   "cena": "s39 (s40)",
+   "na_tela": "NEARLY 2×",
+   "fonte": "JICA 2002 (\"14 m3/sec\") e Defensoría 2025 (7,8 m³/s) (PB029)",
+   "valor_exato": "14 ÷ 7,8 = 1,79",
+   "por_que_diverge": "conta nossa: a voz manda (\"nearly twice\"); a exatidão vive nos dois canos em escala; nenhuma vazão",
+   "unidade": "times",
+   "data": "c. 2000 (capacidade); 2025 (vazão)"
+  },
+  {
+   "cena": "s41",
+   "na_tela": "BUILT 1958–1962 (SENAMHI)",
+   "fonte": "SENAMHI 2016: \"la primera fue ejecutada entre los años 1958 y 1962\"",
+   "data": "1958–1962"
+  },
+  {
+   "cena": "s41",
+   "na_tela": "IN SERVICE SINCE 1963 (DEFENSORÍA)",
+   "fonte": "Defensoría 239: \"Marca I entró en operación en el año 1963\"",
+   "data": "1963"
+  },
+  {
+   "cena": "s41",
+   "na_tela": "HUINCO POWER PLANT · 1964",
+   "fonte": "SENAMHI 2016, Tabla 3-2 (PB035)",
+   "data": "1964"
+  },
+  {
+   "cena": "s42",
+   "na_tela": "MAY 1 – NOV. 30",
+   "fonte": "Cárhuaz à SEDAPAL, pela Infobae: \"Del 1 de mayo al 30 de noviembre es el período de descarga\"",
+   "data": "2024-09"
+  },
+  {
+   "cena": "s42",
+   "na_tela": "19 LAKES · 3 LARGE RESERVOIRS",
+   "fonte": "idem: \"19 lagunas reguladas y tres grandes represas: Antacoto, Huascacocha y Yuracmayo\" (PB040)",
+   "data": "2024-09 (volátil)"
+  },
+  {
+   "cena": "s44",
+   "na_tela": "MORE THAN 700,000 PEOPLE",
+   "fonte": "Sunass, pela Gestión de 25/03/2026: \"más de 700 mil personas\" sem conexão em Lima e Callao (PB043, atribuído)",
+   "unidade": "people",
+   "data": "March 2026 (volátil)"
+  },
+  {
+   "cena": "s44",
+   "na_tela": "ABOUT 6× THE PRICE",
+   "fonte": "Sunass, estudo de 2025, pela Gestión: \"seis veces más\" (PB044)",
+   "valor_exato": "S/ 22,11 ÷ S/ 3,20 = 6,9",
+   "por_que_diverge": "a fonte publica \"seis veces\" e o 3,20 vem com \"alrededor de\"; os dois preços não vão à tela, e o rótulo fica no \"about 6×\" da voz",
+   "unidade": "times",
+   "data": "2025"
+  },
+  {
+   "cena": "s46",
+   "na_tela": "CATALINA NAUPA, 59",
+   "fonte": "AFP, 20/03/2025",
+   "unidade": "years old",
+   "data": "2025-03"
+  },
+  {
+   "cena": "s47",
+   "na_tela": "ABOUT 260 GALLONS (1 m³)",
+   "fonte": "SEDAPAL (Nicolas Reyes) à AFP: \"a cubic meter (260 gallons) of water per family per week\" (PB048)",
+   "valor_exato": "1 m³ = 264,17 gal",
+   "por_que_diverge": "a conversão é a da própria AFP; a voz diz \"about 260 gallons\"",
+   "unidade": "gallons (m³) a week per family",
+   "data": "2025-03"
+  },
+  {
+   "cena": "s48",
+   "na_tela": "VIRGINIA MARTÍNEZ MORALES, 30",
+   "fonte": "Kulturaustausch, 26/01/2024",
+   "unidade": "years old",
+   "data": "2024-01"
+  },
+  {
+   "cena": "s49 (s50)",
+   "na_tela": "DEFINITIVE STUDY, 1996",
+   "fonte": "SENAMHI 2016: \"el estudio defintivo … fue ejecutado en 1996\" (PB055)",
+   "por_que_diverge": "nunca \"STUDIED SINCE 1996\"",
+   "data": "1996"
+  },
+  {
+   "cena": "s49 (s50)",
+   "na_tela": "NO CONSTRUCTION DATE AS OF LATE AUGUST 2026",
+   "fonte": "Gestión, 30/08/2026 (PB057; a busca de 22/10/2026 não achou data posterior)",
+   "por_que_diverge": "a voz diz \"As of late August 2026\"",
+   "data": "2026-08-30 (volátil: reler na véspera de publicar)"
+  },
+  {
+   "cena": "s51",
+   "na_tela": "ABOUT 3000 B.C.",
+   "fonte": "UNESCO 1269 (PB058)",
+   "por_que_diverge": "a voz diz \"about five thousand years ago\"; a tela dá a data da mesma régua da s22",
+   "data": "3000 B.C."
+  },
+  {
+   "cena": "s51",
+   "na_tela": "1535",
+   "fonte": "UNESCO 500; Cobo",
+   "data": "1535"
+  },
+  {
+   "cena": "s51",
+   "na_tela": "20TH CENTURY",
+   "fonte": "INEI (a série de 1940 a 2025)",
+   "data": "20th century"
+  },
+  {
+   "cena": "s52",
+   "na_tela": "EVERY MAY 1",
+   "fonte": "Cárhuaz à SEDAPAL, pela Infobae (a mesma fala da s42)",
+   "por_que_diverge": "generaliza a fala de 2024 de um analista; atribuída na faixa",
+   "data": "2024-09"
+  }
+ ],
+ "nao_vai_para_tela": [
+  {
+   "o_que": "Nicolas Reyes (o card opcional \"NICOLAS REYES · SEDAPAL\")",
+   "onde": "s47",
+   "motivo": "a voz diz \"An official at the utility\" e não o nome; escrever o nome é afirmar o que a voz não afirmou (ofício §2). O lote B o deixava como opcional; fica fora"
+  },
+  {
+   "o_que": "Jeff Schmaltz (MODIS Land Rapid Response Team, NASA GSFC)",
+   "onde": "s13, s15",
+   "motivo": "domínio público federal: sem crédito na tela (identidade §7)"
+  },
+  {
+   "o_que": "Amable-Paul Coutan (o pintor do retrato de 1835)",
+   "onde": "s26",
+   "motivo": "domínio público, sem crédito; na tela vai só \"Painting, 1835\" (decisão do Lucas)"
+  },
+  {
+   "o_que": "Manuel González de la Rosa (o editor de 1882)",
+   "onde": "s27, s28",
+   "motivo": "a voz não o nomeia; a edição vai como \"1882 ed.\""
+  },
+  {
+   "o_que": "o ano de nascimento de Pizarro (\"1475\")",
+   "onde": "s26",
+   "motivo": "NÃO ACHEI uma fonte independente (PA039): a POP dá o ano no título de uma obra de 1835; a Britannica recusou robô (403)",
+   "_errata": "PA039"
+  },
+  {
+   "o_que": "\"Piura flooded\" e qualquer ligação de Piura com a água da imagem",
+   "onde": "s16",
+   "motivo": "REFUTADA como legenda desta imagem (PA021): o conferente não viu água num raio de 5 km da cidade. Piura entra só como o ponto",
+   "_errata": "PA021"
+  },
+  {
+   "o_que": "o tamanho ou o nome da lagoa de 1998 (145 km, 978 km², \"La Niña\")",
+   "onde": "s16",
+   "motivo": "NÃO ACHEI (PA022): só a Wikipedia, que cita a National Geographic de 1999, só existente por cópia arquivada",
+   "_errata": "PA022"
+  },
+  {
+   "o_que": "\"FLOODWATER\" sobre a água e o rótulo \"Sechura\"",
+   "onde": "s16",
+   "motivo": "a cena não prova que toda a água é enchente, e nenhuma camada com procedência nomeia o lugar (lote A, \"Para o redator\")"
+  },
+  {
+   "o_que": "\"upper Mantaro basin\" e \"Mantaro basin\" na s04",
+   "onde": "s04",
+   "motivo": "a voz da s04 não diz Mantaro; o \"upper\" sobre o polígono inteiro DIVERGE (PA043). O rótulo só na s39, só no norte",
+   "_errata": "PA043"
+  },
+  {
+   "o_que": "\"STORAGE FOR LIMA (2007)\" sem \"CAPACITY\"",
+   "onde": "s04, s39",
+   "motivo": "DIVERGE (PA044): o que se mede é a capacidade; a tela escreve sempre \"STORAGE CAPACITY FOR LIMA (2007)\"",
+   "_errata": "PA044"
+  },
+  {
+   "o_que": "os volumes de armazenamento: 282 / 157 / 125 (77 + 48) milhões de m³; 74.5 / 41.5 / 33.0 bilhões de galões",
+   "onde": "s04, s39",
+   "motivo": "a pesquisa-1 (pergunta 11) e a Sala: volume e vazão só com a razão que a voz diz (\"more than half\"); os volumes vivem no desenho, sem número"
+  },
+  {
+   "o_que": "a água por pessoa: 1,816 / 189,167 m³ por ano; ≈ 480,000 / ≈ 50 million gallons",
+   "onde": "s11",
+   "motivo": "idem: só \"ABOUT 100×\""
+  },
+  {
+   "o_que": "a vazão do Rímac: ~30 e 7.8 m³/s; ~1,060 e ~275 cu ft/s",
+   "onde": "s38",
+   "motivo": "idem: só \"ABOUT A QUARTER\""
+  },
+  {
+   "o_que": "a capacidade do túnel contra a vazão: 14 e 7.8 m³/s; 494 e 275 cu ft/s",
+   "onde": "s39 (s40)",
+   "motivo": "idem: só \"NEARLY 2×\""
+  },
+  {
+   "o_que": "\"60%\" e \"62%\" das reservas de Lima",
+   "onde": "s42, s49 (s50)",
+   "motivo": "incluem o Huascacocha, parado (R25, lote A \"Nunca 60 nem 62 %\"); as folhas recriadas da SEDAPAL (s42) e da Defensoría (s50) os deixam fora por \"[…]\" e por reticência"
+  },
+  {
+   "o_que": "\"65%\" da população e \"80.4%\" do PIB (ANA 2009)",
+   "onde": "s12",
+   "motivo": "achado 5 do lote A (PA013): o 65 % de 2009 brigaria com os 62,5 % de 2012 da s01; a folha mostra o trecho com reticências"
+  },
+  {
+   "o_que": "a altitude da represa Antacoto (4,445 m; \"~14,600 FT\")",
+   "onde": "s39",
+   "motivo": "DIVERGE entre fontes (PB025: 4.445 m SEDAPAL 2007, 4.600 m MVCS 2024); a tela fica em \"NEARLY 15,000 FT\"",
+   "_errata": "PB025"
+  },
+  {
+   "o_que": "\"59.5 MILES\"",
+   "onde": "s06 (s07)",
+   "motivo": "é medida do canal sobre o HydroBASINS, não número de fonte (PA006); a tela leva \"LESS THAN 70 MILES\""
+  },
+  {
+   "o_que": "a altitude de Vilca (3,832 m; \"~12,570 ft\") e \"Vilca District\"",
+   "onde": "s19",
+   "motivo": "NÃO ACHEI na origem aberta (PA029: só no resumo de busca de um boletim no gob.pe); o distrito com esse nome fica em Huancavelica (PA030)",
+   "_errata": "PA029"
+  },
+  {
+   "o_que": "a altitude da estação de Satipo (1,893 ft / 577 m)",
+   "onde": "s18",
+   "motivo": "a voz não a diz, e o quadro já tem 4 textos"
+  },
+  {
+   "o_que": "\"SECOND TUNNEL · STUDIED SINCE 1996\"",
+   "onde": "s49 (s50)",
+   "motivo": "DIVERGE (PB055): é o estudo definitivo de 1996; a tela escreve \"DEFINITIVE STUDY, 1996\"",
+   "_errata": "PB055"
+  },
+  {
+   "o_que": "os preços S/ 22.11 e S/ 3.20, e \"7×\"",
+   "onde": "s44",
+   "motivo": "a conta dá 6,9 e a fonte publica \"seis veces\" (PB044); a tela fica em \"ABOUT 6× THE PRICE\", sem moeda",
+   "_errata": "PB044"
+  },
+  {
+   "o_que": "\"94.7%\" dos lares sem conexão que compram de caminhão",
+   "onde": "s44",
+   "motivo": "a voz diz \"almost all\"; o quadro do caminhão-pipa fica limpo (decisão do redator; o número está confirmado pela Gestión, F204)"
+  },
+  {
+   "o_que": "os 16 distritos estudados pela Sunass, e qualquer distrito na s44 e na s36",
+   "onde": "s36, s44",
+   "motivo": "a lista não foi lida (gob.pe); a origem da foto de 1997 diz só \"southern part of Lima\" (PB019, PB047)"
+  },
+  {
+   "o_que": "\"42 FAMILIES\", Los Condes e Siempre Unidos de Villa Verde",
+   "onde": "s48",
+   "motivo": "decisão da regência: os 42 ficam na voz; as cooperativas não têm lugar lido (nenhum ponto)"
+  },
+  {
+   "o_que": "a área de Puente Piedra (km² ou sq mi)",
+   "onde": "s48",
+   "motivo": "o limite do OSM é 30 % menor que o do INEI (verificação do research)"
+  },
+  {
+   "o_que": "\"Pamplona Alta\"",
+   "onde": "s35",
+   "motivo": "a fonte diz \"la zona denominada Pamplona\"; o ponto é aproximado (PB016)"
+  },
+  {
+   "o_que": "o nome \"Villa El Salvador\" antes de a voz dizê-lo",
+   "onde": "s35",
+   "motivo": "o polígono fica sem nome no beat 2 (11,0 s); o nome entra em \"Villa\" (19,5 s), quando a voz o revela"
+  },
+  {
+   "o_que": "\"Cuevas–Milloc tunnel\", \"Milloc\" e \"Chosica\" no mapa",
+   "onde": "s39 (s40)",
+   "motivo": "a voz não os nomeia, e o orçamento de ≤ 4 textos vivos"
+  },
+  {
+   "o_que": "\"San Lorenzo Island\"",
+   "onde": "s28",
+   "motivo": "a voz não a nomeia; com ela o quadro passaria de 4 textos (a ilha fica só no desenho do abrigo)"
+  },
+  {
+   "o_que": "as três vertentes em número na s06 (\"PACIFIC 21.7% · AMAZON 74.5% · TITICACA 3.8%\" e as sq mi)",
+   "onde": "s06",
+   "motivo": "a voz da s06 não dá número; as porcentagens já estão na s01 (s02) e na s10"
+  },
+  {
+   "o_que": "\"33.3%\" (a gente do lado amazônico) e o nome da bacia do Titicaca na s01 (s02)",
+   "onde": "s01 (s02)",
+   "motivo": "a voz não os diz, e o quadro do gancho fica com ≤ 4 textos; a bacia aparece em --neutro, sem nome, e é nomeada na s06"
+  },
+  {
+   "o_que": "o dia do auto de Jauja (\"NOV. 28, 1534\") e o \"1539\" do manuscrito",
+   "onde": "s26, s27",
+   "motivo": "o 1534 é a correção do editor; o dia só como está impresso na página real (lote A); o rótulo diz \"November 1534\""
+  },
+  {
+   "o_que": "o dia da ordem de Pizarro (6 de janeiro) e o 18 de janeiro da fundação de Lima",
+   "onde": "s28, s29",
+   "motivo": "R52; e a data está na p. 15, não na p. 14 da tela (PB004)"
+  },
+  {
+   "o_que": "os 247.3 MW de Huinco",
+   "onde": "s41",
+   "motivo": "R57; a folha recriada os troca por \"[…]\""
+  },
+  {
+   "o_que": "a frase do Growth Lab entre aspas (\"can only be reached by air or river\")",
+   "onde": "s09",
+   "motivo": "fica na voz, atribuída na faixa; o quadro do aéreo de Iquitos sem cartão"
+  },
+  {
+   "o_que": "\"2018\" como ano do Perfil Sociodemográfico do INEI",
+   "onde": "s32",
+   "motivo": "NÃO ACHEI (PB009): a tela escreve \"2017 census profile\", sem o ano da publicação",
+   "_errata": "PB009"
+  },
+  {
+   "o_que": "a 2ª rota do túnel (\"PLANNED\", Pomacocha e Huallacocha ao rio Blanco)",
+   "onde": "s49 (s50)",
+   "motivo": "a regência não a desenha (o beat 5 é a linha do tempo); sem traço, sem rótulo"
+  },
+  {
+   "o_que": "Elizabeth Salazar Vega, Carlos Mandujano, Lena Cloarec, Ernesto Benavides, Marco Garro",
+   "onde": "s46–s49",
+   "motivo": "autores e fotógrafos das reportagens: a voz e a faixa atribuem ao veículo (AFP, Kulturaustausch)"
+  },
+  {
+   "o_que": "Jessica e Carla Ortiz Paz (Kulturaustausch)",
+   "onde": "s48–s49",
+   "motivo": "a voz não as cita"
+  },
+  {
+   "o_que": "\"Peru's water divide\" (a grafia do espelho na s05)",
+   "onde": "s04 (s05)",
+   "motivo": "o beat da vinheta não tem texto nosso (regência e conceito)"
+  },
+  {
+   "o_que": "17,542 MMC (o volume que volta ao mar)",
+   "onde": "s20",
+   "motivo": "tela sem volume (para-passos-seguintes, s20)"
+  },
+  {
+   "o_que": "o \"casi un tercio\" da prosa da CVR para 1981",
+   "onde": "s36",
+   "motivo": "a voz e a tela seguem a tabela atribuída ao censo (25,5 %); o aviso fica no laudo (lote B, \"Para a Sala\")"
+  },
+  {
+   "o_que": "a foto do Pizarro com crédito da RMN",
+   "onde": "s26",
+   "motivo": "sem crédito (domínio público nos EUA); a ressalva da RMN já foi ao Lucas (22/10, 02:2x)"
+  },
+  {
+   "o_que": "a linha \"Image(s) and/or video used under license from Shutterstock.com\"",
+   "onde": "s52",
+   "motivo": "só se algum clipe da caça vier do Shutterstock; aí ela vai na faixa da última cena (identidade §7), e o redator a confirma com os vereditos da caça"
+  }
+ ],
+ "_textos_por_cena": [
+  {
+   "cena": "s01",
+   "t0": 0.3,
+   "t1": 1.867,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s01-a)",
+   "nota": "pílula de lugar sobre o aéreo da crista, 300 ms depois do 1º quadro; sai quando o quadro encolhe. o lugar_na_origem do veredito aprovado do item s01-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s01-a"
+  },
+  {
+   "cena": "s01",
+   "t0": 1.867,
+   "t1": 22.467,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "do 1º quadro de satélite (o quadro encolhe em \"divides\") ao fim (s01+s02)",
+   "_caminho": "caca"
+  },
+  {
+   "cena": "s01",
+   "t0": 0.0,
+   "t1": 22.467,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "sem o clipe s01-a, o run inteiro é mapa: o crédito do 1º ao último quadro",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s01",
+   "t0": 2.267,
+   "t1": 4.333,
+   "papel": "rotulo",
+   "texto": "PERU",
+   "nota": "em \"Peru.\" (2,267 s); sai quando o lado amazônico acende"
+  },
+  {
+   "cena": "s01",
+   "t0": 4.333,
+   "t1": 22.467,
+   "papel": "rotulo",
+   "texto": "AMAZON SIDE",
+   "nota": "(s02) em \"three-quarters\"; é também a legenda da cor (nenhuma legenda de cor com outras palavras)"
+  },
+  {
+   "cena": "s01",
+   "t0": 4.333,
+   "t1": 10.467,
+   "papel": "cota",
+   "texto": "74.5% OF THE LAND",
+   "nota": "(s02) em \"three-quarters\"; a voz diz \"about three-quarters\" (74,53 %, constante publicada)"
+  },
+  {
+   "cena": "s01",
+   "t0": 4.333,
+   "t1": 22.467,
+   "papel": "credito",
+   "texto": "Source: ANA (Peru), National Water Resources Plan, 2012 data",
+   "nota": "(s02) entra com o 1º número e fica até o fim"
+  },
+  {
+   "cena": "s01",
+   "t0": 7.867,
+   "t1": 15.033,
+   "papel": "cota",
+   "texto": "97.9% OF THE WATER",
+   "nota": "(s02) em \"ninety-seven\"; a voz diz \"more than 97 percent\"; sai em \"But\", para o lado seco ficar sozinho com a gente"
+  },
+  {
+   "cena": "s01",
+   "t0": 10.467,
+   "t1": 22.467,
+   "papel": "rotulo",
+   "texto": "PACIFIC SIDE",
+   "nota": "(s02) em \"West\", quando o lado seco acende"
+  },
+  {
+   "cena": "s01",
+   "t0": 13.6,
+   "t1": 22.467,
+   "papel": "cota",
+   "texto": "1.8% OF THE WATER",
+   "nota": "(s02) em \"about two percent\" (13,600 s); a voz arredonda 1,76 % para \"about 2\""
+  },
+  {
+   "cena": "s01",
+   "t0": 17.633,
+   "t1": 22.467,
+   "papel": "cota",
+   "texto": "62.5% OF THE PEOPLE (2012)",
+   "nota": "(s02) em \"twenty twelve\"; as 8 silhuetas com 5 acesas (5 de 8 = 62,5 %, a proporção exata do rótulo); a voz diz \"more than three in five\""
+  },
+  {
+   "cena": "s03",
+   "t0": 0.3,
+   "t1": 2.6,
+   "papel": "rotulo",
+   "texto": "PERU",
+   "nota": "a costa desértica; sem cidade no quadro. o lugar_na_origem do veredito aprovado do item s03-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s03-a"
+  },
+  {
+   "cena": "s03",
+   "t0": 0.3,
+   "t1": 2.6,
+   "papel": "rotulo",
+   "texto": "PERU",
+   "nota": "fallback (satélite da costa ao sul de Lima): nada mais específico que o país",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s03",
+   "t0": 3.833,
+   "t1": 7.2,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "em \"Lima,\" (3,833 s); \"Lima\" só se a origem do clipe nomear Lima. o lugar_na_origem do veredito aprovado do item s03-b, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s03-b"
+  },
+  {
+   "cena": "s03",
+   "t0": 3.833,
+   "t1": 7.2,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "fallback: o ponto de Lima no satélite",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s03",
+   "t0": 5.266,
+   "t1": 7.2,
+   "papel": "cota",
+   "texto": "0.3 INCHES (8 mm)",
+   "nota": "em \"third\" (5,266 s); a mesma forma da s17 e da s19"
+  },
+  {
+   "cena": "s03",
+   "t0": 5.266,
+   "t1": 7.2,
+   "papel": "legenda",
+   "texto": "OF RAIN A YEAR",
+   "nota": "sob a cota, com ela"
+  },
+  {
+   "cena": "s03",
+   "t0": 5.266,
+   "t1": 7.2,
+   "papel": "credito",
+   "texto": "Source: SENAMHI (Peru), 1981–2010 average",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s03",
+   "t0": 8.066,
+   "t1": 11.6,
+   "papel": "rotulo",
+   "texto": "Callao",
+   "nota": "em \"Callao,\" (8,066 s); \"Callao\" só se a origem do clipe nomear o Callao. o lugar_na_origem do veredito aprovado do item s03-c, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s03-c"
+  },
+  {
+   "cena": "s03",
+   "t0": 8.066,
+   "t1": 11.6,
+   "papel": "rotulo",
+   "texto": "Callao",
+   "nota": "fallback: a baía do Callao no satélite",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s03",
+   "t0": 10.0,
+   "t1": 11.6,
+   "papel": "cota",
+   "texto": "LIMA 9.6 M + CALLAO 1.0 M = 10.6 M",
+   "nota": "em \"ten million\" (10,000 s); a voz diz \"more than ten million\"; a mesma forma da s34"
+  },
+  {
+   "cena": "s03",
+   "t0": 10.0,
+   "t1": 11.6,
+   "papel": "credito",
+   "texto": "Source: INEI (Peru), 2025 census",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s03",
+   "t0": 0.0,
+   "t1": 11.6,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "só no fallback (satélite nos três planos)",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s04",
+   "t0": 0.0,
+   "t1": 5.7,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "o mapa dos beats 0 a 2"
+  },
+  {
+   "cena": "s04",
+   "t0": 5.7,
+   "t1": 14.066,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "continua (mesma linha; partida só por causa da troca de fonte em 5,7 s)"
+  },
+  {
+   "cena": "s04",
+   "t0": 14.066,
+   "t1": 19.0,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback do s05-a: o mapa recuando sob a vinheta; o crédito fora da área livre",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s04",
+   "t0": 0.0,
+   "t1": 3.666,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "o ponto de onde a câmera sobe; sai quando as lagoas acendem"
+  },
+  {
+   "cena": "s04",
+   "t0": 0.566,
+   "t1": 5.7,
+   "papel": "legenda",
+   "texto": "STORAGE CAPACITY FOR LIMA (2007)",
+   "nota": "em \"half\" (0,566 s); sempre com CAPACITY (PA044); a mesma forma da s39"
+  },
+  {
+   "cena": "s04",
+   "t0": 0.566,
+   "t1": 5.7,
+   "papel": "heroi",
+   "texto": "MORE THAN HALF · AMAZON SIDE",
+   "nota": "em \"half\"; só a razão que a voz diz (157 de 282 hm³ = 55,7 %), nenhum volume (pesquisa-1, pergunta 11); a mesma forma da s39"
+  },
+  {
+   "cena": "s04",
+   "t0": 0.566,
+   "t1": 5.7,
+   "papel": "credito",
+   "texto": "Source: SEDAPAL, 2007",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s04",
+   "t0": 8.866,
+   "t1": 10.533,
+   "papel": "heroi",
+   "texto": "A SINGLE TUNNEL · EARLY 1960s",
+   "nota": "em \"early\" (8,866 s); nunca \"under\" nem \"bored\"; sai antes do recuo (os rótulos saem até 48,1 s abs.)"
+  },
+  {
+   "cena": "s04",
+   "t0": 8.866,
+   "t1": 10.533,
+   "papel": "credito",
+   "texto": "Sources: SENAMHI (Peru), 2016; Defensoría del Pueblo (Peru), 2025",
+   "nota": "com a data (1ª etapa 1958–1962; a voz diz \"early 1960s\") · conserto 1 (TA032): era \"Source: SENAMHI (Peru), 2016\"; o \"single\" é presente: \"dependiendo de un solo túnel trasandino\" (Defensoría 239, 2025, l. 4542); a mesma linha da s41"
+  },
+  {
+   "cena": "s04",
+   "t0": 14.066,
+   "t1": 19.0,
+   "papel": "nada",
+   "texto": "(nenhum texto)",
+   "nota": "beat 3, a vinheta: nenhum rótulo, nenhum crédito de banco sobre o aéreo s05-a; no fallback, só o crédito de mapa, fora da área livre"
+  },
+  {
+   "cena": "s06",
+   "t0": 0.0,
+   "t1": 29.1,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "s06 e s07 inteiras"
+  },
+  {
+   "cena": "s06",
+   "t0": 0.9,
+   "t1": 6.1,
+   "papel": "rotulo",
+   "texto": "CONTINENTAL DIVIDE",
+   "nota": "em \"continental\" (0,9 s); a linha do HydroBASINS, a MESMA no vídeo inteiro"
+  },
+  {
+   "cena": "s06",
+   "t0": 5.066,
+   "t1": 11.066,
+   "papel": "rotulo",
+   "texto": "PACIFIC",
+   "nota": "em \"Pacific.\" (5,066 s), quando a gota chega ao mar"
+  },
+  {
+   "cena": "s06",
+   "t0": 8.833,
+   "t1": 11.066,
+   "papel": "rotulo",
+   "texto": "Amazon",
+   "nota": "em \"Amazon,\" (8,833 s); é o RIO (caixa normal), sobre o traço amazonas-ate-o-atlantico"
+  },
+  {
+   "cena": "s06",
+   "t0": 10.033,
+   "t1": 11.066,
+   "papel": "rotulo",
+   "texto": "ATLANTIC",
+   "nota": "em \"Atlantic.\" (10,033 s)"
+  },
+  {
+   "cena": "s06",
+   "t0": 12.833,
+   "t1": 14.8,
+   "papel": "rotulo",
+   "texto": "LAKE TITICACA BASIN",
+   "nota": "em \"Lake\" (12,833 s), com a bacia acesa em --neutro"
+  },
+  {
+   "cena": "s06",
+   "t0": 12.833,
+   "t1": 14.8,
+   "papel": "rotulo",
+   "texto": "Lake Titicaca (Puno)",
+   "nota": "rótulo da miniatura (Delso, 2015); lugar_na_origem \"View of Puno and the Titicaca lake, Peru\": nada mais específico; sem aviso de ano (PA005)"
+  },
+  {
+   "cena": "s06",
+   "t0": 12.833,
+   "t1": 14.8,
+   "papel": "credito",
+   "texto": "Diego Delso, delso.photo / Wikimedia Commons · CC BY-SA 4.0",
+   "nota": "com a miniatura (credito_na_tela do veredito)"
+  },
+  {
+   "cena": "s06",
+   "t0": 18.733,
+   "t1": 20.433,
+   "papel": "rotulo",
+   "texto": "LIMA REGION",
+   "nota": "(s07) em \"Lima region\" (18,733 s): o departamento; sai em \"From downtown Lima\""
+  },
+  {
+   "cena": "s06",
+   "t0": 20.433,
+   "t1": 29.1,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "(s07) o ponto do centro (pontos-fontes › campo-de-marte), onde a régua começa"
+  },
+  {
+   "cena": "s06",
+   "t0": 22.3,
+   "t1": 29.1,
+   "papel": "cota",
+   "texto": "LESS THAN 70 MILES",
+   "nota": "(s07) em \"seventy\" (22,3 s), ao lado da régua de Lima à linha; nunca \"59.5\" (PA006)"
+  },
+  {
+   "cena": "s06",
+   "t0": 22.3,
+   "t1": 29.1,
+   "papel": "credito",
+   "texto": "Straight line, measured by Alpha Point",
+   "nota": "(s07) com a régua; a divisória do HydroBASINS (o crédito longo vai na descrição)"
+  },
+  {
+   "cena": "s06",
+   "t0": 25.0,
+   "t1": 29.1,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "(s07) em \"dozens\" (25,0 s), no Rímac mais grosso"
+  },
+  {
+   "cena": "s08",
+   "t0": 0.0,
+   "t1": 3.1,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "\"Rímac\" só se a origem do clipe nomear o rio. o lugar_na_origem do veredito aprovado do item s08-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s08-a"
+  },
+  {
+   "cena": "s08",
+   "t0": 0.0,
+   "t1": 3.1,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "fallback: o Rímac aceso no satélite do vale",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s08",
+   "t0": 1.3,
+   "t1": 3.1,
+   "papel": "cota",
+   "texto": "ABOUT 90 MILES LONG (145 km)",
+   "nota": "em \"Rímac,\" (1,3 s); a voz não diz o número (decisão do redator: entra porque a cena é a apresentação do rio; PA008)"
+  },
+  {
+   "cena": "s08",
+   "t0": 1.3,
+   "t1": 3.1,
+   "papel": "credito",
+   "texto": "Source: ANA (Peru), 2014",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s08",
+   "t0": 0.0,
+   "t1": 3.1,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "só no fallback",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s09",
+   "t0": 0.0,
+   "t1": 9.866,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beats 0 e 1 (mapa)"
+  },
+  {
+   "cena": "s09",
+   "t0": 9.866,
+   "t1": 16.033,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback do s09-a: o mapa fica em Iquitos",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s09",
+   "t0": 4.866,
+   "t1": 9.866,
+   "papel": "rotulo",
+   "texto": "LORETO",
+   "nota": "em \"Loreto,\" (4,866 s), dentro do polígono"
+  },
+  {
+   "cena": "s09",
+   "t0": 8.4,
+   "t1": 9.866,
+   "papel": "cota",
+   "texto": "ABOUT 6 PEOPLE PER SQ MI",
+   "nota": "em \"thinly\" (8,4 s); 2,4 hab./km² × 2,58999 = 6,2"
+  },
+  {
+   "cena": "s09",
+   "t0": 8.4,
+   "t1": 9.866,
+   "papel": "legenda",
+   "texto": "2.4 per km² · 2017",
+   "nota": "sob a cota"
+  },
+  {
+   "cena": "s09",
+   "t0": 8.4,
+   "t1": 9.866,
+   "papel": "credito",
+   "texto": "Source: INEI (Peru), 2017 census",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s09",
+   "t0": 10.666,
+   "t1": 16.033,
+   "papel": "rotulo",
+   "texto": "Iquitos",
+   "nota": "em \"Iquitos,\" (10,666 s); \"Iquitos\" só se a origem nomear a cidade. o lugar_na_origem do veredito aprovado do item s09-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s09-a"
+  },
+  {
+   "cena": "s09",
+   "t0": 10.666,
+   "t1": 16.033,
+   "papel": "rotulo",
+   "texto": "Iquitos",
+   "nota": "fallback: o ponto de Iquitos",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s09",
+   "t0": 14.333,
+   "t1": 16.033,
+   "papel": "credito",
+   "texto": "Source: Harvard Growth Lab, 2023",
+   "nota": "em \"Harvard's\" (14,333 s): a frase \"can only be reached by air or river\" fica na voz, atribuída; nunca logo"
+  },
+  {
+   "cena": "s10",
+   "t0": 0.0,
+   "t1": 7.2,
+   "papel": "folha_cabecalho",
+   "texto": "ANA (PERU) · PLAN NACIONAL DE RECURSOS HÍDRICOS · MEMORIA FINAL · P. 38",
+   "nota": "a folha RECRIADA (Courier Prime, caixa no topo; sem brasão nem logo). O título da obra é o da página de rosto (\"PLAN NACIONAL DE RECURSOS HÍDRICOS\") e do cabeçalho corrido (\"Plan Nacional de Recursos Hídricos – Memoria Final\"); \"ANA (PERU)\" identifica o autor"
+  },
+  {
+   "cena": "s10",
+   "t0": 0.0,
+   "t1": 7.2,
+   "papel": "folha_texto",
+   "texto": "CUADRO 2.3. Distribución de los recursos hídricos en el territorio peruano\nREGIÓN HIDROGRÁFICA | SUPERFICIE (10³ KM²) | (%) | POBLACIÓN (HAB) | (%) | RECURSOS HÍDRICOS (HM³/AÑO) | (%) | RATIOS (HM³/AÑO/KM²) | (M³/HAB/AÑO)\nPacífico | 278,48 | 21,67 | 18 801 417 | 62,53 | 34 136 | 1,76 | 0,12 | 1 815,61\nAmazonas | 957,82 | 74,53 | 10 018 789 | 33,32 | 1 895 226 | 97,91 | 1,98 | 189 167,18\nTiticaca | 48,91 | 3,81 | 1 246 975 | 4,15 | 6 259 | 0,32 | 0,13 | 5 019,35\nTOTAL | 1 285,21 | 100,00 | 30 067 181 | 100 | 1 935 621 | 100 | 1,51 | 64 376,54\nFuente: Elaboración propia a partir de datos propios (2013) y de la ANA (2009).",
+   "nota": "as TRÊS linhas e o TOTAL, impressos desde o 1º quadro (PA011: nunca duas linhas, nunca um \"two sides\" que some menos de 100 %); o Titicaca pode ficar esmaecido, mas fica. Texto e números letra a letra da cópia local (ana-pnrh-1416.txt, l. 1993–2040) e da pauta-documentos (os cabeçalhos das colunas, lidos na prova p38)"
+  },
+  {
+   "cena": "s10",
+   "t0": 5.167,
+   "t1": 7.2,
+   "papel": "grifo_na_pagina",
+   "texto": "21,67",
+   "nota": "texto impresso, linha \"Pacífico\"; em \"less\" (5,167 s); o Amazonas pode vir aceso, sem grifo"
+  },
+  {
+   "cena": "s10",
+   "t0": 5.167,
+   "t1": 7.2,
+   "papel": "legenda",
+   "texto": "PACIFIC SIDE · 21.7% OF THE LAND",
+   "nota": "ao lado do grifo, com ele; é rótulo de dado do canal, não tradução de citação (sem a marca de tradução)"
+  },
+  {
+   "cena": "s10",
+   "t0": 0.0,
+   "t1": 7.2,
+   "papel": "credito",
+   "texto": "Source: ANA (Peru), National Water Resources Plan, 2012 data",
+   "nota": "a folha inteira"
+  },
+  {
+   "cena": "s11",
+   "t0": 0.0,
+   "t1": 4.567,
+   "papel": "legenda",
+   "texto": "WATER PER PERSON",
+   "nota": "o título do desenho, do 1º quadro"
+  },
+  {
+   "cena": "s11",
+   "t0": 0.0,
+   "t1": 4.567,
+   "papel": "rotulo",
+   "texto": "PACIFIC SIDE",
+   "nota": "sob o recipiente da esquerda"
+  },
+  {
+   "cena": "s11",
+   "t0": 0.0,
+   "t1": 4.567,
+   "papel": "rotulo",
+   "texto": "AMAZON SIDE",
+   "nota": "sob o recipiente da direita"
+  },
+  {
+   "cena": "s11",
+   "t0": 2.5,
+   "t1": 4.567,
+   "papel": "heroi",
+   "texto": "ABOUT 100×",
+   "nota": "em \"hundred\" (2,5 s); a conta dá 104,2× (189.167,18 ÷ 1.815,61); a exatidão vive na escala dos recipientes; nenhum volume (pesquisa-1, pergunta 11)"
+  },
+  {
+   "cena": "s11",
+   "t0": 2.5,
+   "t1": 4.567,
+   "papel": "credito",
+   "texto": "Source: ANA (Peru), National Water Resources Plan, 2012 data",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s12",
+   "t0": 0.0,
+   "t1": 4.0,
+   "papel": "folha_cabecalho",
+   "texto": "ANA (PERU) · POLÍTICA Y ESTRATEGIA NACIONAL DE RECURSOS HÍDRICOS DEL PERÚ · 2009",
+   "nota": "a folha RECRIADA (o título é o da capa, ana-2009-politica-estrategia-1073.txt, PDF p. 1–2); sem brasão"
+  },
+  {
+   "cena": "s12",
+   "t0": 0.0,
+   "t1": 4.0,
+   "papel": "folha_texto",
+   "texto": "…el 1.8% restante se encuentra en la vertiente del Pacífico, en donde paradójicamente se concentra…",
+   "nota": "o trecho com reticências, sem o 65 % nem o 80,4 % (PA013, achado 5 do lote A: o 65 % de 2009 brigaria com os 62,5 % de 2012 da s01); letra a letra da cópia local, l. 918–921"
+  },
+  {
+   "cena": "s12",
+   "t0": 2.666,
+   "t1": 4.0,
+   "papel": "grifo_na_pagina",
+   "texto": "paradójicamente",
+   "nota": "texto impresso; em \"paradox.\" (2,666 s)"
+  },
+  {
+   "cena": "s12",
+   "t0": 2.666,
+   "t1": 4.0,
+   "papel": "rotulo",
+   "texto": "“PARADÓJICAMENTE” (PARADOXICALLY)",
+   "nota": "ao lado do grifo; as aspas levam o original, e o inglês vai entre parênteses"
+  },
+  {
+   "cena": "s12",
+   "t0": 2.666,
+   "t1": 4.0,
+   "papel": "legenda",
+   "texto": "Translated from Spanish",
+   "nota": "a marca de tradução, sob o rótulo (série: toda tradução de fonte em espanhol)"
+  },
+  {
+   "cena": "s12",
+   "t0": 0.0,
+   "t1": 4.0,
+   "papel": "credito",
+   "texto": "Source: ANA (Peru), 2009",
+   "nota": "a folha inteira"
+  },
+  {
+   "cena": "s13",
+   "t0": 0.0,
+   "t1": 18.866,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "o mapa até a imagem MODIS cobrir o mar; volta a valer se o mapa aparecer em volta dela"
+  },
+  {
+   "cena": "s13",
+   "t0": 1.5,
+   "t1": 5.166,
+   "papel": "citacao",
+   "texto": "“the main cause of the aridity of the Peruvian coast”",
+   "nota": "em \"main\" (1,5 s), cartão pequeno; tradução fiel de \"es el causante principal de la aridez de la Costa peruana\" (SENAMHI 2021, l. 826–832; PA014)"
+  },
+  {
+   "cena": "s13",
+   "t0": 1.5,
+   "t1": 5.166,
+   "papel": "legenda",
+   "texto": "Translated from Spanish",
+   "nota": "sob a citação, com ela"
+  },
+  {
+   "cena": "s13",
+   "t0": 1.5,
+   "t1": 5.166,
+   "papel": "credito",
+   "texto": "Source: SENAMHI (Peru), 2021",
+   "nota": "com a citação"
+  },
+  {
+   "cena": "s13",
+   "t0": 7.1,
+   "t1": 10.866,
+   "papel": "rotulo",
+   "texto": "SOUTH PACIFIC HIGH",
+   "nota": "em \"high-pressure\" (7,1 s), junto do H; sai quando a câmera fecha na costa"
+  },
+  {
+   "cena": "s13",
+   "t0": 15.966,
+   "t1": 20.966,
+   "papel": "rotulo",
+   "texto": "HUMBOLDT CURRENT",
+   "nota": "em \"Humboldt\" (15,966 s), junto das setas da corrente"
+  },
+  {
+   "cena": "s13",
+   "t0": 15.966,
+   "t1": 20.966,
+   "papel": "legenda",
+   "texto": "Schematic",
+   "nota": "as setas da corrente são esquema declarado, sem geometria (PA015); fica enquanto elas estão na tela"
+  },
+  {
+   "cena": "s13",
+   "t0": 19.1,
+   "t1": 20.966,
+   "papel": "legenda",
+   "texto": "Satellite image · June 2018",
+   "nota": "em \"blanket\" (19,1 s), com a imagem MODIS; \"Date Acquired: 6/20/2018\" (nunca \"June 24\", PA016); sem crédito (domínio público federal) e sem aviso de ano (aviso_de_ano false); nenhum lugar mais específico que a costa do Peru"
+  },
+  {
+   "cena": "s14",
+   "t0": 0.134,
+   "t1": 9.734,
+   "papel": "rotulo",
+   "texto": "COLD SEA",
+   "nota": "em \"cold\" (0,134 s), embaixo do corte"
+  },
+  {
+   "cena": "s14",
+   "t0": 4.3,
+   "t1": 9.734,
+   "papel": "rotulo",
+   "texto": "WARM LID",
+   "nota": "em \"lid\" (4,3 s), quando a tampa assenta; a voz: \"a lid of warmer air\"; nenhuma altitude (R14)"
+  },
+  {
+   "cena": "s14",
+   "t0": 0.0,
+   "t1": 9.734,
+   "papel": "credito",
+   "texto": "Source: SENAMHI (Peru), 2021",
+   "nota": "o mecanismo desenhado; a cena inteira"
+  },
+  {
+   "cena": "s15",
+   "t0": 0.3,
+   "t1": 3.2,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s15-a)",
+   "nota": "a neblina na Costa Verde. o lugar_na_origem do veredito aprovado do item s15-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s15-a"
+  },
+  {
+   "cena": "s15",
+   "t0": 3.5,
+   "t1": 6.333,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s15-b)",
+   "nota": "o céu cinza de Lima. o lugar_na_origem do veredito aprovado do item s15-b, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s15-b"
+  },
+  {
+   "cena": "s15",
+   "t0": 0.3,
+   "t1": 6.333,
+   "papel": "legenda",
+   "texto": "Satellite image · June 2015",
+   "nota": "fallback 1 (a MODIS de 2015, se o conferente a aprovar para esta frase): \"Date Acquired: 6/7/2015\" (nunca \"June 18\", PA017); sem crédito; sem aviso de ano",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s15",
+   "t0": 0.3,
+   "t1": 6.333,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "fallback 2 (MODIS negada): o satélite da Costa Verde, a pílula \"Lima\" e nada que afirme a neblina",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s15",
+   "t0": 0.0,
+   "t1": 6.333,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "só no fallback 2 (satélite da MapTiler)",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s16",
+   "t0": 0.0,
+   "t1": 11.767,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "o mapa por baixo das duas imagens"
+  },
+  {
+   "cena": "s16",
+   "t0": 0.167,
+   "t1": 3.5,
+   "papel": "rotulo",
+   "texto": "EL NIÑO",
+   "nota": "em \"El\" (0,167 s), com o H que encolhe"
+  },
+  {
+   "cena": "s16",
+   "t0": 3.767,
+   "t1": 11.767,
+   "papel": "rotulo",
+   "texto": "EL NIÑO 1997–98",
+   "nota": "em \"the cold water\" (3,767 s), quando a anomalia da NOAA pousa: o nome do evento (PA023); substitui o \"EL NIÑO\" genérico"
+  },
+  {
+   "cena": "s16",
+   "t0": 3.767,
+   "t1": 7.767,
+   "papel": "legenda",
+   "texto": "Sea surface temperature anomalies, March–August 1997",
+   "nota": "com a imagem da NOAA (Mar.–Aug. 1997; PA018); AP: mês por extenso sem dia; sem crédito (domínio público federal), sem logo · conserto 1 (TA096, TA210): era \"Sea temperature anomalies, March–August 1997\"; o título da própria fonte: \"Sea surface temperature anomalies from March to August 1997…\" (PA018)"
+  },
+  {
+   "cena": "s16",
+   "t0": 7.767,
+   "t1": 11.767,
+   "papel": "legenda",
+   "texto": "Satellite image · June 1998",
+   "nota": "em \"the desert coast\" (7,767 s), com o Landsat 5 de 03/06/1998 (PA019); sem crédito na tela (Landsat/USGS)"
+  },
+  {
+   "cena": "s16",
+   "t0": 7.767,
+   "t1": 11.767,
+   "papel": "rotulo",
+   "texto": "Piura",
+   "nota": "só como o ponto da cidade (cidades-peru-ne), nunca ligado à água (PA020, PA021)"
+  },
+  {
+   "cena": "s17",
+   "t0": 0.0,
+   "t1": 4.966,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "o título do pluviômetro, do 1º quadro"
+  },
+  {
+   "cena": "s17",
+   "t0": 1.9,
+   "t1": 4.966,
+   "papel": "cota",
+   "texto": "0.3 INCHES (8 mm)",
+   "nota": "em \"third\" (1,9 s); a mesma forma da s03"
+  },
+  {
+   "cena": "s17",
+   "t0": 1.9,
+   "t1": 4.966,
+   "papel": "legenda",
+   "texto": "OF RAIN A YEAR",
+   "nota": "sob a cota"
+  },
+  {
+   "cena": "s17",
+   "t0": 3.166,
+   "t1": 4.966,
+   "papel": "legenda",
+   "texto": "ALMOST ALL OF IT DRIZZLE",
+   "nota": "em \"almost\" (3,166 s); \"solo precipita 8 mm en forma de lloviznas\" (SENAMHI 2021)"
+  },
+  {
+   "cena": "s17",
+   "t0": 1.9,
+   "t1": 4.966,
+   "papel": "credito",
+   "texto": "Source: SENAMHI (Peru), 1981–2010 average",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s17",
+   "t0": 5.266,
+   "t1": 10.133,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "\"Lima\" só se a origem nomear a cidade. o lugar_na_origem do veredito aprovado do item s17-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s17-a"
+  },
+  {
+   "cena": "s17",
+   "t0": 5.266,
+   "t1": 10.133,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "fallback: o satélite sobre Lima e os morros de areia do leste",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s17",
+   "t0": 6.666,
+   "t1": 10.133,
+   "papel": "citacao",
+   "texto": "“one of the largest cities in the world located in a desert”",
+   "nota": "em \"one\" (6,666 s), cartão; a regência a punha em \"desert\" (9,333 s), o que daria 0,8 s no ar antes do corte: entra quando a fala chega às palavras citadas. Tradução fiel de \"una de las ciudades más grandes del mundo ubicada en un desierto\" (SENAMHI 2021, l. 3276–3279; PA024); 11 palavras"
+  },
+  {
+   "cena": "s17",
+   "t0": 6.666,
+   "t1": 10.133,
+   "papel": "legenda",
+   "texto": "Translated from Spanish",
+   "nota": "sob a citação, com ela"
+  },
+  {
+   "cena": "s17",
+   "t0": 6.666,
+   "t1": 10.133,
+   "papel": "credito",
+   "texto": "Source: SENAMHI (Peru), 2021",
+   "nota": "com a citação"
+  },
+  {
+   "cena": "s17",
+   "t0": 4.966,
+   "t1": 10.133,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "só no fallback",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s18",
+   "t0": 0.0,
+   "t1": 14.833,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "a cena inteira (plana, sem relevo: Lucas, 19/10)"
+  },
+  {
+   "cena": "s18",
+   "t0": 1.5,
+   "t1": 10.2,
+   "papel": "rotulo",
+   "texto": "ANDES",
+   "nota": "em \"block\" (1,5 s), solto, junto da forma única da cordilheira leste"
+  },
+  {
+   "cena": "s18",
+   "t0": 1.5,
+   "t1": 14.833,
+   "papel": "legenda",
+   "texto": "Schematic",
+   "nota": "a forma da crista e a faixa da encosta leste são esquema declarado (geo_falta: não estão no disco); fica enquanto a forma está na tela"
+  },
+  {
+   "cena": "s18",
+   "t0": 3.933,
+   "t1": 6.033,
+   "papel": "cota",
+   "texto": "UP TO ABOUT 16,000 FT (5,000 m)",
+   "nota": "em \"sixteen\" (3,933 s), preso às NUVENS paradas contra a forma: é a altura até onde o ar é barrado, nunca a altitude da crista (Sala, decisão 8). \"hasta los 5 000 m s. n. m. aproximadamente\" (SENAMHI 2021); 5.000 m = 16.404 ft; sai antes da faixa da encosta, para o quadro ficar com ≤ 4 textos"
+  },
+  {
+   "cena": "s18",
+   "t0": 3.933,
+   "t1": 6.033,
+   "papel": "credito",
+   "texto": "Source: SENAMHI (Peru), 2021",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s18",
+   "t0": 6.033,
+   "t1": 10.2,
+   "papel": "rotulo",
+   "texto": "EASTERN SLOPES",
+   "nota": "em \"eastern\" (6,033 s), na faixa colada ao lado leste da forma"
+  },
+  {
+   "cena": "s18",
+   "t0": 11.9,
+   "t1": 14.833,
+   "papel": "rotulo",
+   "texto": "Satipo",
+   "nota": "em \"Satipo\" (11,9 s): a pílula do ponto e o rótulo da miniatura (lugar_na_origem \"Satipo, Junín, Peru\"); sem aviso de ano (PA026)"
+  },
+  {
+   "cena": "s18",
+   "t0": 11.9,
+   "t1": 14.833,
+   "papel": "credito",
+   "texto": "Mr AndrewHolmes / Wikimedia Commons · CC BY-SA 4.0",
+   "nota": "com a miniatura"
+  },
+  {
+   "cena": "s18",
+   "t0": 13.067,
+   "t1": 14.833,
+   "papel": "cota",
+   "texto": "MORE THAN 6 FT (2,013 mm)",
+   "nota": "em \"six\" (13,067 s). 2.013 mm é a constante publicada (normal da OMM 1991–2020, estação 81201); \"MORE THAN 6 FT\" é a palavra da voz (2.013 mm = 6,6 ft), para o espectador não ouvir \"six feet\" e ler \"79 inches\""
+  },
+  {
+   "cena": "s18",
+   "t0": 13.067,
+   "t1": 14.833,
+   "papel": "legenda",
+   "texto": "OF RAIN A YEAR",
+   "nota": "sob a cota"
+  },
+  {
+   "cena": "s18",
+   "t0": 13.067,
+   "t1": 14.833,
+   "papel": "credito",
+   "texto": "Source: WMO / SENAMHI (Peru), 1991–2020 average",
+   "nota": "com o número; se a faixa não couber com o crédito da foto, os dois vão numa linha só, separados por \" · \""
+  },
+  {
+   "cena": "s19",
+   "t0": 0.0,
+   "t1": 5.434,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "o mapa inclinado do beat 0"
+  },
+  {
+   "cena": "s19",
+   "t0": 5.434,
+   "t1": 11.3,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "só nos fallbacks dos beats 1 e 2 (o mapa continua)",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s19",
+   "t0": 0.967,
+   "t1": 2.634,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "em \"real\" (0,967 s), o ponto (pontos-fontes › campo-de-marte), sem anel; sai quando o gráfico entra (os números vão para ele)"
+  },
+  {
+   "cena": "s19",
+   "t0": 0.967,
+   "t1": 2.634,
+   "papel": "rotulo",
+   "texto": "Matucana",
+   "nota": "em \"real\", o ponto (estacao-matucana); sai quando o gráfico entra"
+  },
+  {
+   "cena": "s19",
+   "t0": 2.634,
+   "t1": 5.434,
+   "papel": "cota",
+   "texto": "LIMA · 0.3 INCHES (8 mm)",
+   "nota": "em \"high\" (2,634 s), 1ª barra do gráfico pequeno de 3 barras, no canto"
+  },
+  {
+   "cena": "s19",
+   "t0": 2.634,
+   "t1": 5.434,
+   "papel": "cota",
+   "texto": "MATUCANA · 12 INCHES (312 mm)",
+   "nota": "2ª barra; 311,6 mm (OMM) = 12,3 in"
+  },
+  {
+   "cena": "s19",
+   "t0": 2.634,
+   "t1": 5.434,
+   "papel": "cota",
+   "texto": "VILCA · 38 INCHES (963 mm)",
+   "nota": "3ª barra; \"bordean los 963 mm\" (SENAMHI 2021) = 37,9 in. Vilca só no gráfico, nunca no mapa, nunca \"Vilca District\", nunca 3,832 m (PA029, PA030) · o lado está provado: SENAMHI 2016, tabela de estações: \"VILCA -12.12 -75.83\" (midia/peru-agua/fontes/agua-de-lima/senamhi-2016-vulnerabilidad-chirilu-mantaro.txt, l. 8505–8507); o ponto cai na vertente do Pacífico, a 9,6 km da divisória (teste de ponto do verificador; laudo fatos-tela, TA127, TA128, TA216, TA262, O3). A barra fica (conserto 1)"
+  },
+  {
+   "cena": "s19",
+   "t0": 2.634,
+   "t1": 5.434,
+   "papel": "credito",
+   "texto": "Sources: SENAMHI (Peru), 1981–2010 average (Lima, Vilca); WMO, 1991–2020 average (Matucana)",
+   "nota": "com o gráfico; cada barra com o seu dono e período"
+  },
+  {
+   "cena": "s19",
+   "t0": 4.1,
+   "t1": 5.434,
+   "papel": "legenda",
+   "texto": "HIGH UP: MOSTLY DECEMBER–MARCH",
+   "nota": "em \"December\" (4,1 s); de dez. a mar., 83,9 % da chuva de Matucana (PA027); AP: mês por extenso sem dia · conserto 1 (TA129, TA217): era \"MOSTLY DECEMBER–MARCH\"; a palavra da voz (\"mostly high up, and most of it from December to March\"); presa às barras de Matucana e de Vilca, nunca sob a de Lima, cujo máximo é de julho a setembro (SENAMHI 2021, senamhi-2021-climas-del-peru.txt l. 3278–3280)"
+  },
+  {
+   "cena": "s19",
+   "t0": 5.734,
+   "t1": 8.6,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s19-a)",
+   "nota": "o rio andino cheio. o lugar_na_origem do veredito aprovado do item s19-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s19-a"
+  },
+  {
+   "cena": "s19",
+   "t0": 8.9,
+   "t1": 11.3,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s19-b)",
+   "nota": "o leito seco. o lugar_na_origem do veredito aprovado do item s19-b, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s19-b"
+  },
+  {
+   "cena": "s20",
+   "t0": 0.3,
+   "t1": 4.5,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s20-a)",
+   "nota": "a foz de um rio da costa. o lugar_na_origem do veredito aprovado do item s20-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s20-a"
+  },
+  {
+   "cena": "s20",
+   "t0": 0.0,
+   "t1": 4.5,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback: a foz do Rímac no satélite",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s20",
+   "t0": 0.0,
+   "t1": 10.7,
+   "papel": "credito",
+   "texto": "Source: ANA (Peru), 2009",
+   "nota": "a frase atribuída, da 1ª palavra ao fim"
+  },
+  {
+   "cena": "s20",
+   "t0": 4.867,
+   "t1": 10.7,
+   "papel": "heroi",
+   "texto": "ABOUT HALF",
+   "nota": "em \"half\" (4,867 s); \"alrededor del 50%\" (ANA 2009, F081)"
+  },
+  {
+   "cena": "s20",
+   "t0": 4.867,
+   "t1": 10.7,
+   "papel": "legenda",
+   "texto": "OF THE FLOOD WATER FROM THE WETTER PART OF THE PACIFIC SIDE",
+   "nota": "sob o herói; a régua é a da fonte (\"la cuenca húmeda de la vertiente del Pacífico\", \"período de avenidas\"); nenhum volume"
+  },
+  {
+   "cena": "s20",
+   "t0": 7.767,
+   "t1": 10.7,
+   "papel": "legenda",
+   "texto": "RUNS BACK TO THE SEA UNUSED",
+   "nota": "em \"runs\" (7,767 s), quando a metade sai do quadro"
+  },
+  {
+   "cena": "s21",
+   "t0": 0.0,
+   "t1": 12.667,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "a cena inteira"
+  },
+  {
+   "cena": "s21",
+   "t0": 1.2,
+   "t1": 8.467,
+   "papel": "rotulo",
+   "texto": "COASTAL DESERT",
+   "nota": "em \"coastal\" (1,2 s), pílula solta na costa; nenhum contorno, nenhuma área acesa"
+  },
+  {
+   "cena": "s21",
+   "t0": 2.4,
+   "t1": 4.667,
+   "papel": "cota",
+   "texto": "ABOUT 27,000 SQ MI (71,000 km²)",
+   "nota": "em \"twenty-seven\" (2,4 s); 7.107.338,20 ha = 71.073 km² = 27.442 sq mi (PA031)"
+  },
+  {
+   "cena": "s21",
+   "t0": 2.4,
+   "t1": 4.667,
+   "papel": "legenda",
+   "texto": "Mapped natural desert; farms, cities and mines not counted",
+   "nota": "\"no se consideran los espacios ya transformados, como las zonas agrícolas, urbanas, mineras\" (MINAM 2019)"
+  },
+  {
+   "cena": "s21",
+   "t0": 2.4,
+   "t1": 4.667,
+   "papel": "credito",
+   "texto": "Source: MINAM (Peru), 2019",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s21",
+   "t0": 4.867,
+   "t1": 8.467,
+   "papel": "rotulo",
+   "texto": "Piura",
+   "nota": "em \"Piura\" (4,867 s)"
+  },
+  {
+   "cena": "s21",
+   "t0": 6.167,
+   "t1": 8.467,
+   "papel": "rotulo",
+   "texto": "Tacna",
+   "nota": "em \"Tacna,\" (6,167 s)"
+  },
+  {
+   "cena": "s21",
+   "t0": 7.534,
+   "t1": 8.467,
+   "papel": "rotulo",
+   "texto": "CHILE",
+   "nota": "em \"Chile.\" (7,534 s), dentro do país, em --contexto-2"
+  },
+  {
+   "cena": "s21",
+   "t0": 8.467,
+   "t1": 12.667,
+   "papel": "nada",
+   "texto": "(nenhum texto)",
+   "nota": "beat 2: os rótulos saem antes da viagem; o \"90 MILES\" fica para a s22"
+  },
+  {
+   "cena": "s22",
+   "t0": 0.633,
+   "t1": 7.533,
+   "papel": "rotulo",
+   "texto": "Caral",
+   "nota": "em \"Caral,\" (0,633 s); \"Caral\" só se a origem do clipe nomear Caral. o lugar_na_origem do veredito aprovado do item s22-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s22-a"
+  },
+  {
+   "cena": "s22",
+   "t0": 0.633,
+   "t1": 7.533,
+   "papel": "rotulo",
+   "texto": "Caral",
+   "nota": "fallback 1 (a foto de reserva s22-caral-piramide-mayor-2022, com conferência nova para esta janela) ou fallback 2 (o satélite sobre Caral)",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s22",
+   "t0": 0.633,
+   "t1": 7.533,
+   "papel": "cota",
+   "texto": "3000–1800 B.C.",
+   "nota": "em \"Caral,\"; \"between the years 3000 to 1800 B.C.\" (UNESCO 1269; PA032). AP: B.C. com pontos; sem \"c.\""
+  },
+  {
+   "cena": "s22",
+   "t0": 5.6,
+   "t1": 7.533,
+   "papel": "legenda",
+   "texto": "ABOUT 90 MILES NORTH OF LIMA",
+   "nota": "em \"ninety\" (5,6 s); a medida do canal dá 87,65 mi, rumo 338° (PA033); a voz diz \"about ninety miles north\""
+  },
+  {
+   "cena": "s22",
+   "t0": 0.633,
+   "t1": 7.533,
+   "papel": "credito",
+   "texto": "Sources: UNESCO (World Heritage List, 2009); distance measured by Alpha Point (straight line)",
+   "nota": "com as datas e a distância · conserto 1 (TA151): era \"Sources: UNESCO; distance measured by Alpha Point (straight line)\"; unesco-1269-caral.txt, l. 244: \"Date of Inscription: 2009\""
+  },
+  {
+   "cena": "s22",
+   "t0": 0.633,
+   "t1": 7.533,
+   "papel": "credito",
+   "texto": "Soto Caldaa Cesar / Wikimedia Commons · CC BY-SA 4.0",
+   "nota": "só no fallback 1 (a foto de reserva), e só com o veredito novo para esta janela",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s22",
+   "t0": 7.533,
+   "t1": 11.767,
+   "papel": "rotulo",
+   "texto": "Pirámide Mayor, Caral",
+   "nota": "rótulo de lugar da foto frontal (lugar_na_origem: \"Vista frontal de la imponente Pirámide Mayor de la Ciudad Sagrada de Caral\"); sem aviso de ano (PA034)"
+  },
+  {
+   "cena": "s22",
+   "t0": 7.533,
+   "t1": 11.767,
+   "papel": "citacao",
+   "texto": "“the oldest centre of civilization in the Americas”",
+   "nota": "em \"UNESCO\" (7,533 s); literal do texto da UNESCO (unesco-1269-caral.txt, l. 198), com a grafia \"centre\" da fonte (a voz diz \"center\": aspas são literais)"
+  },
+  {
+   "cena": "s22",
+   "t0": 7.533,
+   "t1": 11.767,
+   "papel": "credito",
+   "texto": "Source: UNESCO (World Heritage List, 2009)",
+   "nota": "com a citação · conserto 1 (TA155): era \"Source: UNESCO\"; unesco-1269-caral.txt, l. 244: \"Date of Inscription: 2009\""
+  },
+  {
+   "cena": "s22",
+   "t0": 7.533,
+   "t1": 11.767,
+   "papel": "credito",
+   "texto": "JOSE MORALES CIENCIA POLITICA UNMSM / Wikimedia Commons · CC BY-SA 4.0",
+   "nota": "com a foto (credito_na_tela do veredito)"
+  },
+  {
+   "cena": "s23",
+   "t0": 0.0,
+   "t1": 12.233,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beats 0 e 1 (mapa)"
+  },
+  {
+   "cena": "s23",
+   "t0": 19.966,
+   "t1": 27.5,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beats 3 e 4 (mapa), até a 1ª foto cobrir a tela"
+  },
+  {
+   "cena": "s23",
+   "t0": 12.233,
+   "t1": 19.966,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback do s24-a: o mapa sobre Chan Chan",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s23",
+   "t0": 31.633,
+   "t1": 34.4,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback do s25-b: o mapa sobre Cantalloc",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s23",
+   "t0": 0.766,
+   "t1": 6.633,
+   "papel": "rotulo",
+   "texto": "Supe River",
+   "nota": "em \"Supe\" (0,766 s); os outros vales sem nome"
+  },
+  {
+   "cena": "s23",
+   "t0": 6.933,
+   "t1": 12.233,
+   "papel": "rotulo",
+   "texto": "Moche Valley",
+   "nota": "(s24) em \"Moche\" (6,933 s)"
+  },
+  {
+   "cena": "s23",
+   "t0": 12.933,
+   "t1": 19.966,
+   "papel": "rotulo",
+   "texto": "Chan Chan",
+   "nota": "(s24) em \"Chan\" (12,933 s); \"Chan Chan\" só se a origem do clipe o nomear. o lugar_na_origem do veredito aprovado do item s24-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s24-a"
+  },
+  {
+   "cena": "s23",
+   "t0": 12.933,
+   "t1": 19.966,
+   "papel": "rotulo",
+   "texto": "Chan Chan",
+   "nota": "(s24) fallback: o ponto de Chan Chan",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s23",
+   "t0": 13.9,
+   "t1": 19.966,
+   "papel": "legenda",
+   "texto": "Chimú capital",
+   "nota": "(s24) em \"Chimú\" (13,9 s), sob o nome; \"Its capital Chan Chan\" (UNESCO 366)"
+  },
+  {
+   "cena": "s23",
+   "t0": 15.333,
+   "t1": 19.966,
+   "papel": "citacao",
+   "texto": "“the largest earthen city of pre-Columbian America”",
+   "nota": "(s24) em \"UNESCO\" (15,333 s); literal (unesco-366-chanchan.txt, l. 240, critério (i)); a voz parafraseia (\"describes as\")"
+  },
+  {
+   "cena": "s23",
+   "t0": 15.333,
+   "t1": 19.966,
+   "papel": "credito",
+   "texto": "Source: UNESCO (World Heritage List, 1986)",
+   "nota": "(s24) com a citação · conserto 1 (TA167, TA172): era \"Source: UNESCO\"; unesco-366-chanchan.txt, l. 275: \"Date of Inscription: 1986\""
+  },
+  {
+   "cena": "s23",
+   "t0": 19.966,
+   "t1": 23.933,
+   "papel": "rotulo",
+   "texto": "Chicama Valley",
+   "nota": "(s24) de onde o traço do canal sai (PA035)"
+  },
+  {
+   "cena": "s23",
+   "t0": 19.966,
+   "t1": 23.933,
+   "papel": "rotulo",
+   "texto": "Chan Chan",
+   "nota": "(s24) o ponto onde o canal chega"
+  },
+  {
+   "cena": "s23",
+   "t0": 19.966,
+   "t1": 23.933,
+   "papel": "legenda",
+   "texto": "Approximate route",
+   "nota": "(s24) enquanto o traço do canal existe"
+  },
+  {
+   "cena": "s23",
+   "t0": 20.8,
+   "t1": 23.933,
+   "papel": "cota",
+   "texto": "CANAL · ABOUT 50 MILES (80 km)",
+   "nota": "(s24) em \"fifty\" (20,8 s); \"an approximately 80 kilometre long canal\" (UNESCO 366); nunca 50 milhas saindo do Moche"
+  },
+  {
+   "cena": "s23",
+   "t0": 20.8,
+   "t1": 23.933,
+   "papel": "credito",
+   "texto": "Source: UNESCO (World Heritage List, 1986)",
+   "nota": "(s24) com o número · conserto 1 (TA167, TA172): era \"Source: UNESCO\"; unesco-366-chanchan.txt, l. 275: \"Date of Inscription: 1986\""
+  },
+  {
+   "cena": "s23",
+   "t0": 24.933,
+   "t1": 27.5,
+   "papel": "rotulo",
+   "texto": "Nazca",
+   "nota": "(s25) em \"Nazca,\" (24,933 s); grafia do roteiro (o NE escreve \"Nasca\")"
+  },
+  {
+   "cena": "s23",
+   "t0": 25.9,
+   "t1": 31.633,
+   "papel": "credito",
+   "texto": "Source: Lasaponara & Masini, 2012",
+   "nota": "(s25) em \"twenty twelve\" (25,9 s) até o fim das fotos: o capítulo de R. Lasaponara e N. Masini (Springer, 2012)"
+  },
+  {
+   "cena": "s23",
+   "t0": 27.5,
+   "t1": 31.633,
+   "papel": "rotulo",
+   "texto": "Cantalloc, Nazca",
+   "nota": "(s25) rótulo de lugar das duas fotos de Delso (lugar_na_origem \"Cantalloc subterranean aqueducts, Nazca, Peru\"); sem aviso de ano"
+  },
+  {
+   "cena": "s23",
+   "t0": 28.8,
+   "t1": 31.633,
+   "papel": "legenda",
+   "texto": "*puquios*",
+   "nota": "(s25) em \"puquios\" (28,8 s), em itálico (a 1ª vez)"
+  },
+  {
+   "cena": "s23",
+   "t0": 27.5,
+   "t1": 31.633,
+   "papel": "credito",
+   "texto": "Diego Delso, delso.photo / Wikimedia Commons · CC BY-SA 4.0",
+   "nota": "(s25) as duas fotos"
+  },
+  {
+   "cena": "s23",
+   "t0": 31.933,
+   "t1": 34.4,
+   "papel": "rotulo",
+   "texto": "Cantalloc",
+   "nota": "(s25) os puquios de cima; \"Cantalloc\" só se a origem o nomear. o lugar_na_origem do veredito aprovado do item s25-b, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s25-b"
+  },
+  {
+   "cena": "s23",
+   "t0": 31.933,
+   "t1": 34.4,
+   "papel": "rotulo",
+   "texto": "Cantalloc",
+   "nota": "(s25) fallback: o ponto de Cantalloc (pontos-osm)",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s26",
+   "t0": 0.7,
+   "t1": 4.0,
+   "papel": "aviso_ano",
+   "texto": "Painting, 1835",
+   "nota": "na margem de baixo da foto impressa, 150 ms depois de ela assentar; data_na_origem \"1835\", aviso_de_ano true; decisão do Lucas (21 e 22/10)"
+  },
+  {
+   "cena": "s26",
+   "t0": 0.833,
+   "t1": 4.0,
+   "papel": "cota",
+   "texto": "LATE 1534",
+   "nota": "em \"thirty-four,\" (0,833 s); o 1534 é a correção do editor de 1882 (nota 3; PA040); nunca 1539, nunca o dia"
+  },
+  {
+   "cena": "s26",
+   "t0": 1.766,
+   "t1": 4.0,
+   "papel": "card_nome",
+   "texto": "FRANCISCO PIZARRO",
+   "nota": "em \"Francisco\" (1,766 s), na pílula"
+  },
+  {
+   "cena": "s26",
+   "t0": 1.899,
+   "t1": 4.0,
+   "papel": "card_cargo",
+   "texto": "Spanish conquistador",
+   "nota": "logo abaixo do nome, 120 ms depois; sem ano de nascimento (PA039)"
+  },
+  {
+   "cena": "s26",
+   "t0": 0.833,
+   "t1": 4.0,
+   "papel": "credito",
+   "texto": "Source: Jauja town council, November 1534, in Bernabé Cobo (1639; 1882 ed.)",
+   "nota": "com a data; a mesma linha da s27"
+  },
+  {
+   "cena": "s26",
+   "t0": 4.0,
+   "t1": 8.166,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "o mapa com relevo"
+  },
+  {
+   "cena": "s26",
+   "t0": 4.133,
+   "t1": 8.166,
+   "papel": "rotulo",
+   "texto": "Jauja",
+   "nota": "em \"Jauja,\" (4,133 s)"
+  },
+  {
+   "cena": "s26",
+   "t0": 6.566,
+   "t1": 8.166,
+   "papel": "legenda",
+   "texto": "Approximate route",
+   "nota": "em \"move\" (6,566 s), com a seta esquemática, enquanto ela existe"
+  },
+  {
+   "cena": "s27",
+   "t0": 0.0,
+   "t1": 10.867,
+   "papel": "legenda",
+   "texto": "JAUJA TOWN COUNCIL, NOVEMBER 1534 · IN BERNABÉ COBO (1639; 1882 ED.)",
+   "nota": "o rótulo da página real (p. 10 da edição de 1882), todo o tempo dela (identidade §5, \"Documento de outra data que atesta o fato, com rótulo\"); sem crédito (domínio público). AP: \"November 1534\" (mês sem dia vai por extenso)"
+  },
+  {
+   "cena": "s27",
+   "t0": 1.634,
+   "t1": 3.267,
+   "papel": "grifo_na_pagina",
+   "texto": "fria y de muchas nieves",
+   "nota": "texto impresso, p. 10, l. 16–18; 281,48–282,82 s abs."
+  },
+  {
+   "cena": "s27",
+   "t0": 1.634,
+   "t1": 3.267,
+   "papel": "traducao",
+   "texto": "cold, with much snow",
+   "nota": "a tradução do grifo, ao lado da página"
+  },
+  {
+   "cena": "s27",
+   "t0": 3.267,
+   "t1": 6.234,
+   "papel": "grifo_na_pagina",
+   "texto": "cuarenta leguas de la mar y el camino muy despoblado",
+   "nota": "texto impresso, l. 18–20; 283,13–284,61 s abs."
+  },
+  {
+   "cena": "s27",
+   "t0": 3.267,
+   "t1": 6.234,
+   "papel": "traducao",
+   "texto": "forty leagues from the sea, and the road very deserted",
+   "nota": "a tradução do grifo"
+  },
+  {
+   "cena": "s27",
+   "t0": 6.234,
+   "t1": 10.867,
+   "papel": "grifo_na_pagina",
+   "texto": "por cargarlos han sido muchos de ellos muertos",
+   "nota": "texto impresso, l. 22–26; 286,08–289,92 s abs."
+  },
+  {
+   "cena": "s27",
+   "t0": 6.234,
+   "t1": 10.867,
+   "papel": "traducao",
+   "texto": "from being loaded with burdens, many of them have died",
+   "nota": "a tradução do grifo; o \"forced\" da voz é leitura fiel do auto (\"traerlos cargados\", \"en perjuicio … de la libertad\")"
+  },
+  {
+   "cena": "s27",
+   "t0": 1.634,
+   "t1": 10.867,
+   "papel": "legenda",
+   "texto": "Translated from Spanish",
+   "nota": "sob o lugar das traduções, do 1º grifo ao fim"
+  },
+  {
+   "cena": "s28",
+   "t0": 0.0,
+   "t1": 6.133,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "o mapa da baía"
+  },
+  {
+   "cena": "s28",
+   "t0": 0.0,
+   "t1": 6.133,
+   "papel": "rotulo",
+   "texto": "Callao",
+   "nota": "a pílula do Callao, desde o 1º quadro; Lima ainda apagada"
+  },
+  {
+   "cena": "s28",
+   "t0": 0.167,
+   "t1": 6.133,
+   "papel": "cota",
+   "texto": "JANUARY 1535",
+   "nota": "em \"January\" (0,167 s), o rótulo da ordem; sem o dia (R52)"
+  },
+  {
+   "cena": "s28",
+   "t0": 4.233,
+   "t1": 6.133,
+   "papel": "rotulo",
+   "texto": "“MUY BUEN PUERTO” (A VERY GOOD PORT)",
+   "nota": "em \"very\" (4,233 s); as aspas levam o original da ordem (Cobo, p. 14), e o inglês vai entre parênteses"
+  },
+  {
+   "cena": "s28",
+   "t0": 4.233,
+   "t1": 6.133,
+   "papel": "legenda",
+   "texto": "Translated from Spanish",
+   "nota": "sob o rótulo"
+  },
+  {
+   "cena": "s28",
+   "t0": 4.233,
+   "t1": 6.133,
+   "papel": "credito",
+   "texto": "Source: Bernabé Cobo, 1639 (1882 ed.)",
+   "nota": "com a citação"
+  },
+  {
+   "cena": "s28",
+   "t0": 6.133,
+   "t1": 12.167,
+   "papel": "legenda",
+   "texto": "PIZARRO'S ORDER, JANUARY 1535 · IN BERNABÉ COBO (1639; 1882 ED.)",
+   "nota": "o rótulo da página real (p. 14), todo o tempo dela; a data está impressa na p. 15, e o rótulo não diz que é a página da data (PB004)"
+  },
+  {
+   "cena": "s28",
+   "t0": 7.033,
+   "t1": 10.333,
+   "papel": "grifo_na_pagina",
+   "texto": "comedio de tierra",
+   "nota": "texto impresso, p. 14"
+  },
+  {
+   "cena": "s28",
+   "t0": 7.033,
+   "t1": 10.333,
+   "papel": "traducao",
+   "texto": "in the middle of the land",
+   "nota": "a tradução do grifo"
+  },
+  {
+   "cena": "s28",
+   "t0": 10.333,
+   "t1": 12.167,
+   "papel": "grifo_na_pagina",
+   "texto": "puedan servir con poco trabajo",
+   "nota": "texto impresso, p. 14; até 302,86 s abs."
+  },
+  {
+   "cena": "s28",
+   "t0": 10.333,
+   "t1": 12.167,
+   "papel": "traducao",
+   "texto": "could serve with little work",
+   "nota": "a tradução do grifo (1,83 s no ar: a frase acaba no corte)"
+  },
+  {
+   "cena": "s28",
+   "t0": 7.033,
+   "t1": 12.167,
+   "papel": "legenda",
+   "texto": "Translated from Spanish",
+   "nota": "sob o lugar das traduções"
+  },
+  {
+   "cena": "s29",
+   "t0": 0.0,
+   "t1": 5.566,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "o mapa lento sob a inscrição"
+  },
+  {
+   "cena": "s29",
+   "t0": 5.566,
+   "t1": 13.333,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "só no fallback do s29-a (o mapa sobre o centro de Lima)",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s29",
+   "t0": 0.0,
+   "t1": 5.566,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "JÁ posta no 1º quadro; nada acende durante a inscrição (302,867–307,367 s abs.); fora da faixa de baixo à direita"
+  },
+  {
+   "cena": "s29",
+   "t0": 0.0,
+   "t1": 5.566,
+   "papel": "rotulo",
+   "texto": "Callao",
+   "nota": "JÁ posta no 1º quadro"
+  },
+  {
+   "cena": "s29",
+   "t0": 0.0,
+   "t1": 5.566,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "JÁ posto no 1º quadro, no rio fino"
+  },
+  {
+   "cena": "s29",
+   "t0": 5.566,
+   "t1": 13.333,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "o centro histórico de cima; \"Lima\" só se a origem nomear a cidade. o lugar_na_origem do veredito aprovado do item s29-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s29-a"
+  },
+  {
+   "cena": "s29",
+   "t0": 5.566,
+   "t1": 13.333,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "fallback: a pílula continua",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s29",
+   "t0": 5.566,
+   "t1": 13.333,
+   "papel": "legenda",
+   "texto": "UNTIL THE MID-1700s",
+   "nota": "em \"Until\" (5,566 s); \"until the middle of the 18th century\" (UNESCO 500)"
+  },
+  {
+   "cena": "s29",
+   "t0": 9.6,
+   "t1": 13.333,
+   "papel": "citacao",
+   "texto": "“most important city of the Spanish dominions in South America”",
+   "nota": "em \"most\" (9,6 s); literal e contíguo da mesma frase da UNESCO (unesco-500-lima.txt, l. 198), 10 palavras; nunca \"colonial\""
+  },
+  {
+   "cena": "s29",
+   "t0": 5.566,
+   "t1": 13.333,
+   "papel": "credito",
+   "texto": "Source: UNESCO (World Heritage List, 1988)",
+   "nota": "com a data e a citação · conserto 1 (forma única da UNESCO): era \"Source: UNESCO\"; unesco-500-lima.txt, l. 274: \"Date of Inscription: 1988\" (limites modificados em 1991, l. 275)"
+  },
+  {
+   "cena": "s30",
+   "t0": 0.0,
+   "t1": 22.0,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beats 0 a 4 (mapa)"
+  },
+  {
+   "cena": "s30",
+   "t0": 37.167,
+   "t1": 42.733,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beat 6 (volta ao mapa)"
+  },
+  {
+   "cena": "s30",
+   "t0": 0.0,
+   "t1": 3.067,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "o ponto, sem anel"
+  },
+  {
+   "cena": "s30",
+   "t0": 9.233,
+   "t1": 22.0,
+   "papel": "rotulo",
+   "texto": "HIGHLANDS",
+   "nota": "(s31) em \"highlands,\" (9,233 s): a região do censo (Sierra), sem área (bloqueio da Sala)"
+  },
+  {
+   "cena": "s30",
+   "t0": 9.233,
+   "t1": 12.2,
+   "papel": "cota",
+   "texto": "65.0% (1940)",
+   "nota": "(s31) em \"highlands,\"; sai quando a costa do censo entra, para o quadro ficar com ≤ 4 textos"
+  },
+  {
+   "cena": "s30",
+   "t0": 9.233,
+   "t1": 22.0,
+   "papel": "credito",
+   "texto": "Source: INEI (Peru), censuses 1940–2025",
+   "nota": "(s31) do 1º número ao fim do gráfico"
+  },
+  {
+   "cena": "s30",
+   "t0": 15.5,
+   "t1": 22.0,
+   "papel": "rotulo",
+   "texto": "COAST",
+   "nota": "(s31) em \"coast,\" (15,5 s): a região do censo (Costa), pílula própria em --contexto-1, nunca --destaque"
+  },
+  {
+   "cena": "s30",
+   "t0": 15.5,
+   "t1": 22.0,
+   "papel": "legenda",
+   "texto": "As Peru's census draws it: only part of the dry side",
+   "nota": "(s31) sob a pílula; a voz: \"the region the census calls the coast, which covers only part of the dry side\""
+  },
+  {
+   "cena": "s30",
+   "t0": 15.5,
+   "t1": 22.0,
+   "papel": "cota",
+   "texto": "28.3% (1940)",
+   "nota": "(s31) em \"coast,\"; as silhuetas nunca em 3 de 10 para \"fewer than three in ten\" (só a porcentagem, ou 2 cheias e a 3ª parcial)"
+  },
+  {
+   "cena": "s30",
+   "t0": 22.0,
+   "t1": 37.167,
+   "papel": "rotulo",
+   "texto": "COAST",
+   "nota": "(s31) o rótulo da série da costa do censo no gráfico (a mesma grafia da pílula)"
+  },
+  {
+   "cena": "s30",
+   "t0": 22.0,
+   "t1": 37.167,
+   "papel": "rotulo",
+   "texto": "HIGHLANDS",
+   "nota": "(s31) o rótulo da série da Sierra no gráfico"
+  },
+  {
+   "cena": "s30",
+   "t0": 22.0,
+   "t1": 37.167,
+   "papel": "eixo",
+   "texto": "1940 · 1961 · 1972 · 1981 · 1993 · 2007 · 2017 · 2025",
+   "nota": "(s31) os 8 censos no eixo"
+  },
+  {
+   "cena": "s30",
+   "t0": 28.833,
+   "t1": 37.167,
+   "papel": "cota",
+   "texto": "52.4% (1993)",
+   "nota": "(s31) em \"nineteen ninety-three\" (28,833 s); a voz: \"more than half\""
+  },
+  {
+   "cena": "s30",
+   "t0": 33.1,
+   "t1": 37.167,
+   "papel": "cota",
+   "texto": "58.7% (2025)",
+   "nota": "(s31) em \"twenty twenty-five\" (33,1 s); a voz: \"nearly six in ten\""
+  },
+  {
+   "cena": "s30",
+   "t0": 39.1,
+   "t1": 42.733,
+   "papel": "rotulo",
+   "texto": "RAINFOREST",
+   "nota": "(s31) em \"rainforest,\" (39,1 s): a região do censo (Selva)"
+  },
+  {
+   "cena": "s30",
+   "t0": 41.333,
+   "t1": 42.733,
+   "papel": "cota",
+   "texto": "6.7% → 14.6%",
+   "nota": "(s31) em \"more than doubled\" (41,333 s); 2,18×"
+  },
+  {
+   "cena": "s30",
+   "t0": 41.333,
+   "t1": 42.733,
+   "papel": "legenda",
+   "texto": "1940 → 2025",
+   "nota": "(s31) sob a cota"
+  },
+  {
+   "cena": "s30",
+   "t0": 37.167,
+   "t1": 42.733,
+   "papel": "credito",
+   "texto": "Source: INEI (Peru), censuses 1940–2025",
+   "nota": "(s31) com a cota"
+  },
+  {
+   "cena": "s32",
+   "t0": 0.0,
+   "t1": 8.067,
+   "papel": "folha_cabecalho",
+   "texto": "INEI (PERU) · PERÚ: PERFIL SOCIODEMOGRÁFICO · CENSOS NACIONALES 2017 · CAPÍTULO I",
+   "nota": "a folha RECRIADA, sem brasão; \"Capítulo I: Características de la Población\" (cópia local, p. 13); sem o ano de publicação (PB009)"
+  },
+  {
+   "cena": "s32",
+   "t0": 0.0,
+   "t1": 8.067,
+   "papel": "folha_texto",
+   "texto": "…es decir, la población de ser predominantemente andina ha pasado a ser mayoritariamente costeña.",
+   "nota": "letra a letra (p. 18 impressa; PB008); a primeira metade da frase (os 65,0 % e 28,1 % da Sierra) fica fora, por reticência"
+  },
+  {
+   "cena": "s32",
+   "t0": 4.367,
+   "t1": 8.067,
+   "papel": "grifo_na_pagina",
+   "texto": "predominantemente andina",
+   "nota": "texto impresso; 363,32–364,68 s abs."
+  },
+  {
+   "cena": "s32",
+   "t0": 6.334,
+   "t1": 8.067,
+   "papel": "grifo_na_pagina",
+   "texto": "mayoritariamente costeña",
+   "nota": "texto impresso; 365,29–366,38 s abs."
+  },
+  {
+   "cena": "s32",
+   "t0": 4.367,
+   "t1": 8.067,
+   "papel": "citacao",
+   "texto": "“predominantly Andean”",
+   "nota": "em \"predominantly\" (4,367 s), ao lado da página"
+  },
+  {
+   "cena": "s32",
+   "t0": 6.334,
+   "t1": 8.067,
+   "papel": "citacao",
+   "texto": "“mostly coastal”",
+   "nota": "em \"mostly\" (6,334 s), depois de uma seta desenhada a partir da 1ª"
+  },
+  {
+   "cena": "s32",
+   "t0": 4.367,
+   "t1": 8.067,
+   "papel": "legenda",
+   "texto": "Translated from Spanish",
+   "nota": "sob as duas citações"
+  },
+  {
+   "cena": "s32",
+   "t0": 0.0,
+   "t1": 8.067,
+   "papel": "credito",
+   "texto": "Source: INEI (Peru), 2017 census profile",
+   "nota": "a folha inteira; sem \"2018\" (PB009)"
+  },
+  {
+   "cena": "s33",
+   "t0": 0.3,
+   "t1": 9.2,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s33-a)",
+   "nota": "as parcelas na serra. o lugar_na_origem do veredito aprovado do item s33-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s33-a"
+  },
+  {
+   "cena": "s33",
+   "t0": 0.3,
+   "t1": 9.2,
+   "papel": "rotulo",
+   "texto": "PERUVIAN HIGHLANDS",
+   "nota": "fallback: o satélite das encostas cultivadas do vale do Mantaro, nada mais específico",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s33",
+   "t0": 0.0,
+   "t1": 9.2,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "só no fallback",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s33",
+   "t0": 1.1,
+   "t1": 9.2,
+   "papel": "credito",
+   "texto": "Source: INEI (Peru), 1995 study",
+   "nota": "em \"study,\" (1,1 s): a atribuição da frase"
+  },
+  {
+   "cena": "s33",
+   "t0": 9.2,
+   "t1": 20.367,
+   "papel": "folha_cabecalho",
+   "texto": "COMISIÓN DE LA VERDAD Y RECONCILIACIÓN · INFORME FINAL · TOMO VI · P. 627",
+   "nota": "a folha RECRIADA, sem brasão"
+  },
+  {
+   "cena": "s33",
+   "t0": 9.2,
+   "t1": 20.367,
+   "papel": "folha_texto",
+   "texto": "No existen estimados absolutamente fiables, pero la mejor aproximación permite suponer que alrededor de medio millón de personas abandonaron sus localidades y emprendieron la búsqueda de refugio por temor a ser víctimas directas de la violencia.",
+   "nota": "letra a letra (cvr-tomo6-1.9-desplazamiento.txt, l. 14–15; PB011, PB012)"
+  },
+  {
+   "cena": "s33",
+   "t0": 16.3,
+   "t1": 20.367,
+   "papel": "grifo_na_pagina",
+   "texto": "alrededor de medio millón de personas abandonaron sus localidades",
+   "nota": "texto impresso; em \"about\" (16,3 s)"
+  },
+  {
+   "cena": "s33",
+   "t0": 16.3,
+   "t1": 20.367,
+   "papel": "heroi",
+   "texto": "ABOUT 500,000 DISPLACED",
+   "nota": "em \"about\" (16,3 s), com o bloco de silhuetas sem contagem; a voz: \"about half a million … were displaced\"; nunca \"fled\""
+  },
+  {
+   "cena": "s33",
+   "t0": 16.3,
+   "t1": 20.367,
+   "papel": "legenda",
+   "texto": "1980–2000 · ESTIMATE",
+   "nota": "sob o herói; \"durante el período 1980-2000\" e \"No existen estimados absolutamente fiables\" (CVR)"
+  },
+  {
+   "cena": "s33",
+   "t0": 9.2,
+   "t1": 20.367,
+   "papel": "credito",
+   "texto": "Source: Peru's Truth and Reconciliation Commission (CVR), 2003",
+   "nota": "a folha inteira"
+  },
+  {
+   "cena": "s34",
+   "t0": 0.0,
+   "t1": 20.066,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "a cena inteira"
+  },
+  {
+   "cena": "s34",
+   "t0": 0.0,
+   "t1": 11.3,
+   "papel": "rotulo",
+   "texto": "Lima and Callao",
+   "nota": "o nome dentro do polígono administrativo (lima-callao-metropolitana)"
+  },
+  {
+   "cena": "s34",
+   "t0": 1.166,
+   "t1": 6.533,
+   "papel": "cota",
+   "texto": "ABOUT 650,000 (1940)",
+   "nota": "em \"about six hundred fifty thousand\" (1,166 s), não antes da voz; 645.172 (INEI 1995, censo de 1940)"
+  },
+  {
+   "cena": "s34",
+   "t0": 4.733,
+   "t1": 6.533,
+   "papel": "legenda",
+   "texto": "ABOUT 1 IN 10 PERUVIANS",
+   "nota": "em \"one in ten\" (4,733 s), quando 1 das 10 silhuetas acende (10,4 %)"
+  },
+  {
+   "cena": "s34",
+   "t0": 8.266,
+   "t1": 11.3,
+   "papel": "cota",
+   "texto": "LIMA 9.6 M + CALLAO 1.0 M = 10.6 M",
+   "nota": "em \"more than ten and a half million\" (8,266 s), não em \"twenty\" (a regência a punha 1,5 s antes da voz dizer o número); a mesma forma da s03"
+  },
+  {
+   "cena": "s34",
+   "t0": 10.0,
+   "t1": 11.3,
+   "papel": "legenda",
+   "texto": "ABOUT 1 IN 3 PERUVIANS",
+   "nota": "em \"about a third\" (10,0 s); 32,5 % (10.643.581 ÷ 32.706.028). A figura: 3 silhuetas cheias e a 4ª preenchida em 1/4 (3,25 de 10); três cheias mostrariam \"3 em 10\", não \"1 em 3\" (conserto 1, TB064)"
+  },
+  {
+   "cena": "s34",
+   "t0": 0.0,
+   "t1": 11.3,
+   "papel": "credito",
+   "texto": "Source: INEI (Peru), censuses 1940 and 2025",
+   "nota": "cobre os dois anos (PB014)"
+  },
+  {
+   "cena": "s34",
+   "t0": 12.733,
+   "t1": 20.066,
+   "papel": "rotulo",
+   "texto": "LIMA REGION + CALLAO",
+   "nota": "em \"Lima region\" (12,733 s): o departamento de Lima (contorno) e o Callao à parte, a régua do INEI (\"Lima incluye la Provincia Constitucional del Callao\")"
+  },
+  {
+   "cena": "s34",
+   "t0": 15.366,
+   "t1": 20.066,
+   "papel": "cota",
+   "texto": "41.9% OF PERU'S GDP",
+   "nota": "em \"forty\" (15,367 s); constante publicada (\"Lima con 41,9%\"); a voz: \"more than 40 percent\""
+  },
+  {
+   "cena": "s34",
+   "t0": 15.366,
+   "t1": 20.066,
+   "papel": "legenda",
+   "texto": "2022 ESTIMATE",
+   "nota": "sob a cota; valores estimados, a preços correntes"
+  },
+  {
+   "cena": "s34",
+   "t0": 11.3,
+   "t1": 20.066,
+   "papel": "credito",
+   "texto": "Source: INEI (Peru), 2022 GDP estimate",
+   "nota": "beat 1"
+  },
+  {
+   "cena": "s35",
+   "t0": 0.3,
+   "t1": 4.734,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s35-a)",
+   "nota": "as casas subindo os morros de areia. o lugar_na_origem do veredito aprovado do item s35-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s35-a"
+  },
+  {
+   "cena": "s35",
+   "t0": 4.734,
+   "t1": 18.467,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beats 1 e 2 (mapa plano)"
+  },
+  {
+   "cena": "s35",
+   "t0": 0.0,
+   "t1": 4.734,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback do s35-a",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s35",
+   "t0": 18.467,
+   "t1": 21.234,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback do s35-b",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s35",
+   "t0": 4.734,
+   "t1": 11.034,
+   "papel": "rotulo",
+   "texto": "Pamplona",
+   "nota": "o ponto aproximado (pontos-osm › Pamplona); nunca \"Pamplona Alta\""
+  },
+  {
+   "cena": "s35",
+   "t0": 4.734,
+   "t1": 11.034,
+   "papel": "legenda",
+   "texto": "Approximate location",
+   "nota": "enquanto o ponto existe"
+  },
+  {
+   "cena": "s35",
+   "t0": 4.934,
+   "t1": 11.034,
+   "papel": "cota",
+   "texto": "1971 · 180 FAMILIES",
+   "nota": "em \"nineteen seventy-one\" (4,934 s); \"la invasión de 180 familias\" (Medina García 1982)"
+  },
+  {
+   "cena": "s35",
+   "t0": 13.234,
+   "t1": 18.467,
+   "papel": "cota",
+   "texto": "ABOUT 7,000 FAMILIES TO RESETTLE",
+   "nota": "em \"seven\" (13,234 s); \"alrededor de 7,000 familias\"; o polígono SEM nome até a voz dizer \"Villa El Salvador\""
+  },
+  {
+   "cena": "s35",
+   "t0": 4.934,
+   "t1": 18.467,
+   "papel": "credito",
+   "texto": "Source: Medina García, PUCP, 1982",
+   "nota": "beats 1 e 2"
+  },
+  {
+   "cena": "s35",
+   "t0": 19.5,
+   "t1": 21.234,
+   "papel": "rotulo",
+   "texto": "Villa El Salvador",
+   "nota": "em \"Villa\" (19,5 s); só se a origem do clipe nomear o distrito. o lugar_na_origem do veredito aprovado do item s35-b, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s35-b"
+  },
+  {
+   "cena": "s35",
+   "t0": 19.5,
+   "t1": 21.234,
+   "papel": "rotulo",
+   "texto": "Villa El Salvador",
+   "nota": "fallback: o nome dentro do polígono, em \"Villa\"",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s36",
+   "t0": 0.0,
+   "t1": 7.633,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "o mapa do beat 0"
+  },
+  {
+   "cena": "s36",
+   "t0": 0.0,
+   "t1": 7.633,
+   "papel": "rotulo",
+   "texto": "Lima and Callao",
+   "nota": "o nome dentro do polígono (Lima Metropolitana = províncias de Lima e do Callao; PB018); nenhum distrito"
+  },
+  {
+   "cena": "s36",
+   "t0": 3.166,
+   "t1": 7.633,
+   "papel": "cota",
+   "texto": "1981 · ABOUT 1 IN 4",
+   "nota": "em \"one in four\" (3,166 s), com as 4 casas, 1 acesa; 25,5 % na tabela (PB017)"
+  },
+  {
+   "cena": "s36",
+   "t0": 3.166,
+   "t1": 7.633,
+   "papel": "legenda",
+   "texto": "OF LIMA'S PEOPLE IN INFORMAL SETTLEMENTS",
+   "nota": "sob a cota"
+  },
+  {
+   "cena": "s36",
+   "t0": 3.166,
+   "t1": 7.633,
+   "papel": "credito",
+   "texto": "Source: INEI (Peru), 1996, cited by the CVR",
+   "nota": "com o número; a primária não foi aberta (gob.pe), e a voz já atribui"
+  },
+  {
+   "cena": "s36",
+   "t0": 8.333,
+   "t1": 10.166,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "rótulo de lugar da foto impressa, sobre a mesa, fora da foto; nunca um distrito (lugar_na_origem \"southern part of Lima\"; PB019)"
+  },
+  {
+   "cena": "s36",
+   "t0": 8.333,
+   "t1": 10.166,
+   "papel": "aviso_ano",
+   "texto": "Photo from 1997",
+   "nota": "na margem, 150 ms depois de a foto assentar; data_na_origem \"April 1997\", aviso_de_ano true"
+  },
+  {
+   "cena": "s36",
+   "t0": 8.9,
+   "t1": 10.166,
+   "papel": "legenda",
+   "texto": "*barriadas*",
+   "nota": "em \"barriadas.\" (8,9 s), em itálico; é o termo, não citação (sem a marca de tradução)"
+  },
+  {
+   "cena": "s36",
+   "t0": 7.633,
+   "t1": 10.166,
+   "papel": "credito",
+   "texto": "Håkan Svensson / Wikimedia Commons · CC BY 2.5",
+   "nota": "com a foto (PB021)"
+  },
+  {
+   "cena": "s37",
+   "t0": 0.3,
+   "t1": 5.367,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "o Rímac baixo em Lima; \"Rímac\" só se a origem nomear o rio. o lugar_na_origem do veredito aprovado do item s37-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s37-a"
+  },
+  {
+   "cena": "s37",
+   "t0": 0.3,
+   "t1": 5.367,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "fallback: o Rímac aceso sobre Lima; nada diz que ele está baixo na imagem",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s37",
+   "t0": 0.0,
+   "t1": 5.367,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "só no fallback",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s37",
+   "t0": 3.267,
+   "t1": 5.367,
+   "papel": "legenda",
+   "texto": "MAY–NOVEMBER",
+   "nota": "em \"runs low\" (3,267 s), não em \"seven\" (4,1 s): seriam 1,27 s no ar; \"en períodos de estiaje (de mayo a noviembre)\""
+  },
+  {
+   "cena": "s37",
+   "t0": 3.267,
+   "t1": 5.367,
+   "papel": "credito",
+   "texto": "Source: Defensoría del Pueblo (Peru), 2025",
+   "nota": "com a legenda"
+  },
+  {
+   "cena": "s38",
+   "t0": 0.3,
+   "t1": 3.267,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "o Rímac cheio; \"Rímac\" só se a origem nomear o rio. o lugar_na_origem do veredito aprovado do item s38-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s38-a"
+  },
+  {
+   "cena": "s38",
+   "t0": 0.3,
+   "t1": 3.267,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "fallback: o Rímac aceso grosso",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s38",
+   "t0": 0.0,
+   "t1": 3.267,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "só no fallback",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s38",
+   "t0": 0.233,
+   "t1": 3.267,
+   "papel": "legenda",
+   "texto": "DECEMBER–APRIL",
+   "nota": "em \"December\" (0,233 s); nada na imagem afirma a cheia"
+  },
+  {
+   "cena": "s38",
+   "t0": 3.267,
+   "t1": 9.4,
+   "papel": "legenda",
+   "texto": "RÍMAC NATURAL FLOW",
+   "nota": "o título do desenho da coluna"
+  },
+  {
+   "cena": "s38",
+   "t0": 3.267,
+   "t1": 9.4,
+   "papel": "rotulo",
+   "texto": "DECEMBER–APRIL",
+   "nota": "a coluna alta"
+  },
+  {
+   "cena": "s38",
+   "t0": 3.533,
+   "t1": 9.4,
+   "papel": "rotulo",
+   "texto": "MAY–NOVEMBER",
+   "nota": "em \"May\" (3,533 s), a coluna que cai"
+  },
+  {
+   "cena": "s38",
+   "t0": 7.9,
+   "t1": 9.4,
+   "papel": "heroi",
+   "texto": "ABOUT A QUARTER",
+   "nota": "em \"about a quarter\" (7,9 s), quando a coluna assenta; 7,8 ÷ 30 = 0,26; nenhuma vazão (pesquisa-1, pergunta 11)"
+  },
+  {
+   "cena": "s38",
+   "t0": 3.267,
+   "t1": 9.4,
+   "papel": "credito",
+   "texto": "Source: Defensoría del Pueblo (Peru), 2025",
+   "nota": "o desenho"
+  },
+  {
+   "cena": "s38",
+   "t0": 9.7,
+   "t1": 17.1,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s38-b)",
+   "nota": "a lagoa nomeada do sistema; nunca \"one of the 19\". o lugar_na_origem do veredito aprovado do item s38-b, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s38-b"
+  },
+  {
+   "cena": "s38",
+   "t0": 9.7,
+   "t1": 17.1,
+   "papel": "rotulo",
+   "texto": "Laguna Marcapomacocha",
+   "nota": "fallback: o satélite das lagoas de Marcapomacocha, nunca outra",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s38",
+   "t0": 10.5,
+   "t1": 17.1,
+   "papel": "legenda",
+   "texto": "SEDAPAL · Lima's water utility",
+   "nota": "em \"utility\" (10,5 s): a 1ª vez que a voz diz \"Lima's water utility\"; o nome não vai mais longe que a faixa"
+  },
+  {
+   "cena": "s38",
+   "t0": 9.4,
+   "t1": 17.1,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "só no fallback",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s39",
+   "t0": 0.0,
+   "t1": 30.867,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "s39 e s40 inteiras (o mapa escurece a 50 % sob o desenho do beat 4, mas fica)"
+  },
+  {
+   "cena": "s39",
+   "t0": 2.033,
+   "t1": 7.0,
+   "papel": "legenda",
+   "texto": "STORAGE CAPACITY FOR LIMA (2007)",
+   "nota": "em \"more than half\" (2,033 s); a mesma forma da s04 (PA044, PB026 do dossiê R30)"
+  },
+  {
+   "cena": "s39",
+   "t0": 2.033,
+   "t1": 7.0,
+   "papel": "heroi",
+   "texto": "MORE THAN HALF · AMAZON SIDE",
+   "nota": "a mesma forma da s04; os dois volumes em escala real (157 contra 125), sem número"
+  },
+  {
+   "cena": "s39",
+   "t0": 2.033,
+   "t1": 7.0,
+   "papel": "credito",
+   "texto": "Source: SEDAPAL, 2007",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s39",
+   "t0": 8.767,
+   "t1": 14.133,
+   "papel": "cota",
+   "texto": "NEARLY 15,000 FT",
+   "nota": "em \"fifteen\" (8,767 s), marca de altitude nas lagoas; sem o métrico e sem a represa (as fontes divergem: 4.445 m SEDAPAL 2007, 4.600 m MVCS; PB025)"
+  },
+  {
+   "cena": "s39",
+   "t0": 8.767,
+   "t1": 14.133,
+   "papel": "credito",
+   "texto": "Source: SEDAPAL, 2007",
+   "nota": "com o número (4.445 msnm, a lâmina de 2007)"
+  },
+  {
+   "cena": "s39",
+   "t0": 10.667,
+   "t1": 14.133,
+   "papel": "rotulo",
+   "texto": "upper Mantaro basin",
+   "nota": "em \"upper\" (10,667 s), SÓ no norte, sobre as lagoas; a bacia inteira, se entrar, só em contorno fino e sem rótulo (PB026)"
+  },
+  {
+   "cena": "s39",
+   "t0": 15.233,
+   "t1": 18.733,
+   "papel": "cota",
+   "texto": "ABOUT 14 MILES",
+   "nota": "(s40) em \"fourteen\" (15,233 s), quando a linha chegou; 11,9 + 10,1 km = 22,0 km = 13,7 mi"
+  },
+  {
+   "cena": "s39",
+   "t0": 15.233,
+   "t1": 18.733,
+   "papel": "legenda",
+   "texto": "CANAL 7.4 MILES + TUNNEL 6.3 MILES",
+   "nota": "(s40) sob a cota (PB028)"
+  },
+  {
+   "cena": "s39",
+   "t0": 15.233,
+   "t1": 18.733,
+   "papel": "credito",
+   "texto": "Source: JICA, 2002",
+   "nota": "(s40) com o número"
+  },
+  {
+   "cena": "s39",
+   "t0": 21.233,
+   "t1": 23.5,
+   "papel": "rotulo",
+   "texto": "Santa Eulalia River",
+   "nota": "(s40) em \"Santa\" (21,233 s): o rio no mapa e o rótulo da miniatura (lugar_na_origem \"Río Santa Eulalia\"); sem aviso de ano (PB032)"
+  },
+  {
+   "cena": "s39",
+   "t0": 21.233,
+   "t1": 23.5,
+   "papel": "credito",
+   "texto": "Johnattan Rupire / Wikimedia Commons · CC BY-SA 4.0",
+   "nota": "(s40) com a miniatura"
+  },
+  {
+   "cena": "s39",
+   "t0": 22.667,
+   "t1": 25.8,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "(s40) em \"Rímac,\" (22,667 s)"
+  },
+  {
+   "cena": "s39",
+   "t0": 23.5,
+   "t1": 25.8,
+   "papel": "rotulo",
+   "texto": "La Atarjea",
+   "nota": "(s40) em \"reaches\" (23,5 s), contorno e ponto"
+  },
+  {
+   "cena": "s39",
+   "t0": 23.5,
+   "t1": 25.8,
+   "papel": "legenda",
+   "texto": "70% OF SEDAPAL'S WATER PRODUCTION (2023)",
+   "nota": "(s40) sob o nome: o \"main\" da voz (\"La Atarjea N° 1 y N° 2 70%\"; PB030)"
+  },
+  {
+   "cena": "s39",
+   "t0": 23.5,
+   "t1": 25.8,
+   "papel": "credito",
+   "texto": "Source: Defensoría del Pueblo (Peru), 2025",
+   "nota": "(s40) com o número"
+  },
+  {
+   "cena": "s39",
+   "t0": 25.8,
+   "t1": 30.867,
+   "papel": "rotulo",
+   "texto": "TUNNEL CAPACITY",
+   "nota": "(s40) sob o cano da esquerda (14 m³/s, sem número)"
+  },
+  {
+   "cena": "s39",
+   "t0": 25.8,
+   "t1": 30.867,
+   "papel": "rotulo",
+   "texto": "RÍMAC, DRY SEASON",
+   "nota": "(s40) sob o cano da direita (7,8 m³/s, a vazão natural, sem número)"
+  },
+  {
+   "cena": "s39",
+   "t0": 27.567,
+   "t1": 30.867,
+   "papel": "heroi",
+   "texto": "NEARLY 2×",
+   "nota": "(s40) em \"twice\" (27,567 s); 14 ÷ 7,8 = 1,79; nenhuma vazão (pesquisa-1, pergunta 11)"
+  },
+  {
+   "cena": "s39",
+   "t0": 27.567,
+   "t1": 30.867,
+   "papel": "credito",
+   "texto": "Sources: JICA, 2002; Defensoría del Pueblo (Peru), 2025",
+   "nota": "(s40) com a razão"
+  },
+  {
+   "cena": "s41",
+   "t0": 1.333,
+   "t1": 6.9,
+   "papel": "rotulo",
+   "texto": "BUILT 1958–1962 (SENAMHI)",
+   "nota": "em \"fifty-eight\" (1,333 s), na linha do tempo; nunca 1966"
+  },
+  {
+   "cena": "s41",
+   "t0": 5.3,
+   "t1": 6.9,
+   "papel": "rotulo",
+   "texto": "IN SERVICE SINCE 1963 (DEFENSORÍA)",
+   "nota": "em \"nineteen sixty-three\" (5,3 s)"
+  },
+  {
+   "cena": "s41",
+   "t0": 1.333,
+   "t1": 6.9,
+   "papel": "credito",
+   "texto": "Sources: SENAMHI (Peru), 2016; Defensoría del Pueblo (Peru), 2025",
+   "nota": "a linha do tempo"
+  },
+  {
+   "cena": "s41",
+   "t0": 6.9,
+   "t1": 14.5,
+   "papel": "folha_cabecalho",
+   "texto": "SENAMHI · VULNERABILIDAD CLIMÁTICA DE LOS RECURSOS HÍDRICOS EN LAS CUENCAS DE LOS RÍOS CHILLÓN-RÍMAC-LURÍN Y PARTE ALTA DEL MANTARO · 2016",
+   "nota": "a folha RECRIADA, sem brasão; o título é o cabeçalho corrido do estudo (cópia local, l. 342)"
+  },
+  {
+   "cena": "s41",
+   "t0": 6.9,
+   "t1": 14.5,
+   "papel": "folha_texto",
+   "texto": "La finalidad del proyecto fue cubrir la demanda del servicio eléctrico en la ciudad de Lima, […] además de afianzar el caudal de río Rímac aguas abajo.",
+   "nota": "letra a letra (l. 3875–3878; PB034), com \"[…]\" no lugar dos 247,3 MW, que não vão à tela (R57)"
+  },
+  {
+   "cena": "s41",
+   "t0": 9.266,
+   "t1": 14.5,
+   "papel": "grifo_na_pagina",
+   "texto": "cubrir la demanda del servicio eléctrico en la ciudad de Lima",
+   "nota": "texto impresso; em \"power\" (9,266 s)"
+  },
+  {
+   "cena": "s41",
+   "t0": 9.266,
+   "t1": 14.5,
+   "papel": "traducao",
+   "texto": "to meet the demand for electricity in the city of Lima",
+   "nota": "a tradução do 1º grifo"
+  },
+  {
+   "cena": "s41",
+   "t0": 11.033,
+   "t1": 14.5,
+   "papel": "grifo_na_pagina",
+   "texto": "además de afianzar el caudal de río Rímac aguas abajo",
+   "nota": "texto impresso; em \"and also\" (11,033 s) · conserto 1 (TB135): era \"además de afianzar el caudal de río Rímac\"; o trecho que o \"downstream\" da tradução traduz; contíguo na folha (senamhi-2016, l. 3878)"
+  },
+  {
+   "cena": "s41",
+   "t0": 11.033,
+   "t1": 14.5,
+   "papel": "traducao",
+   "texto": "and also to steady the flow of the Rímac River downstream",
+   "nota": "a tradução do 2º grifo; as duas traduções ficam JUNTAS até a folha sair (R09)"
+  },
+  {
+   "cena": "s41",
+   "t0": 9.266,
+   "t1": 14.5,
+   "papel": "legenda",
+   "texto": "Translated from Spanish",
+   "nota": "sob as traduções"
+  },
+  {
+   "cena": "s41",
+   "t0": 6.9,
+   "t1": 14.5,
+   "papel": "credito",
+   "texto": "Source: SENAMHI (Peru), 2016",
+   "nota": "a folha"
+  },
+  {
+   "cena": "s41",
+   "t0": 15.533,
+   "t1": 18.333,
+   "papel": "rotulo",
+   "texto": "HUINCO POWER PLANT · 1964",
+   "nota": "em \"Huinco,\" (15,533 s), a marca na linha do tempo; a voz: \"the power plant\"; sem MW"
+  },
+  {
+   "cena": "s41",
+   "t0": 15.533,
+   "t1": 18.333,
+   "papel": "credito",
+   "texto": "Source: SENAMHI (Peru), 2016",
+   "nota": "com a marca (Tabla 3-2)"
+  },
+  {
+   "cena": "s42",
+   "t0": 0.0,
+   "t1": 4.633,
+   "papel": "folha_cabecalho",
+   "texto": "SEDAPAL · FEBRUARY 2021",
+   "nota": "a folha RECRIADA do comunicado, sem logo; o texto chegou pela ProActivo (17/02/2021), e o dia não vai porque \"el miércoles 17 de febrero\" pode ser a data da audiência, não a do comunicado"
+  },
+  {
+   "cena": "s42",
+   "t0": 0.0,
+   "t1": 4.633,
+   "papel": "folha_texto",
+   "texto": "El túnel transandino es el único medio de trasvase del agua almacenada en el sistema de lagunas de la cuenca del Atlántico hacia la cuenca del Pacífico […]",
+   "nota": "letra a letra, com \"transandino\" como a fonte escreve (PB039); \"[…]\" no lugar de \"y representa el 62% del volumen total…\": o 62 % não vai à tela (R25, PA044)"
+  },
+  {
+   "cena": "s42",
+   "t0": 1.633,
+   "t1": 4.633,
+   "papel": "grifo_na_pagina",
+   "texto": "el único medio de trasvase",
+   "nota": "texto impresso; em \"only\" (1,633 s) · conserto 1 (TB143): era \"el único medio de trasvase del agua almacenada\"; casa com a citação \"the only means of transfer\""
+  },
+  {
+   "cena": "s42",
+   "t0": 1.633,
+   "t1": 4.633,
+   "papel": "citacao",
+   "texto": "“the only means of transfer”",
+   "nota": "em \"only\", ao lado da folha; tradução fiel de \"el único medio de trasvase\" (PB036)"
+  },
+  {
+   "cena": "s42",
+   "t0": 1.633,
+   "t1": 4.633,
+   "papel": "legenda",
+   "texto": "Translated from Spanish",
+   "nota": "sob a citação"
+  },
+  {
+   "cena": "s42",
+   "t0": 0.0,
+   "t1": 4.633,
+   "papel": "credito",
+   "texto": "Source: SEDAPAL (via ProActivo), February 2021",
+   "nota": "a folha; a primária no gob.pe não foi aberta (PB038)"
+  },
+  {
+   "cena": "s42",
+   "t0": 4.633,
+   "t1": 10.167,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beat 1 (mapa plano)"
+  },
+  {
+   "cena": "s42",
+   "t0": 7.167,
+   "t1": 10.167,
+   "papel": "rotulo",
+   "texto": "Chillón",
+   "nota": "em \"Chillón\" (7,167 s)"
+  },
+  {
+   "cena": "s42",
+   "t0": 8.067,
+   "t1": 10.167,
+   "papel": "rotulo",
+   "texto": "Lurín",
+   "nota": "em \"Lurín,\" (8,067 s)"
+  },
+  {
+   "cena": "s42",
+   "t0": 4.633,
+   "t1": 10.167,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "o rio fino entre os dois, do 1º quadro do mapa"
+  },
+  {
+   "cena": "s42",
+   "t0": 9.167,
+   "t1": 10.167,
+   "papel": "legenda",
+   "texto": "AND WELLS",
+   "nota": "em \"wells.\" (9,167 s), solto; nenhum ponto (o lugar dos poços não foi lido)"
+  },
+  {
+   "cena": "s42",
+   "t0": 10.167,
+   "t1": 13.9,
+   "papel": "legenda",
+   "texto": "DRY-SEASON RELEASES",
+   "nota": "o título do calendário"
+  },
+  {
+   "cena": "s42",
+   "t0": 11.9,
+   "t1": 13.9,
+   "papel": "cota",
+   "texto": "MAY 1 – NOV. 30",
+   "nota": "em \"May\" (11,9 s); AP: May sem abreviar, Nov. abreviado com o dia"
+  },
+  {
+   "cena": "s42",
+   "t0": 13.9,
+   "t1": 20.967,
+   "papel": "card_nome",
+   "texto": "RÓMULO CÁRHUAZ",
+   "nota": "em \"Rómulo\" (13,9 s), card sem foto, na pílula"
+  },
+  {
+   "cena": "s42",
+   "t0": 14.033,
+   "t1": 20.967,
+   "papel": "card_cargo",
+   "texto": "Watershed management analyst, SEDAPAL (2024)",
+   "nota": "abaixo do nome; \"analista de Manejo de Cuencas en Sedapal\" (Infobae)"
+  },
+  {
+   "cena": "s42",
+   "t0": 11.9,
+   "t1": 25.833,
+   "papel": "credito",
+   "texto": "Source: SEDAPAL interview, reported by Infobae, September 2024",
+   "nota": "do calendário ao fim das represas (a mesma fala)"
+  },
+  {
+   "cena": "s42",
+   "t0": 20.967,
+   "t1": 28.067,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beats 4 e 5 (mapa)"
+  },
+  {
+   "cena": "s42",
+   "t0": 28.067,
+   "t1": 32.233,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "(s43) fallback do s43-a",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s42",
+   "t0": 21.267,
+   "t1": 25.833,
+   "papel": "rotulo",
+   "texto": "Antacoto",
+   "nota": "a represa acesa, com o nome (lado amazônico)"
+  },
+  {
+   "cena": "s42",
+   "t0": 21.267,
+   "t1": 25.833,
+   "papel": "rotulo",
+   "texto": "Huascacocha",
+   "nota": "a represa acesa (lado amazônico)"
+  },
+  {
+   "cena": "s42",
+   "t0": 21.267,
+   "t1": 25.833,
+   "papel": "rotulo",
+   "texto": "Yuracmayo",
+   "nota": "a represa acesa (lado do Pacífico: PB040); nada diz que as três são do lado amazônico"
+  },
+  {
+   "cena": "s42",
+   "t0": 22.133,
+   "t1": 25.833,
+   "papel": "cota",
+   "texto": "19 LAKES · 3 LARGE RESERVOIRS",
+   "nota": "em \"nineteen\" (22,133 s); nenhuma das 19 lagoas nomeada além das do mapa"
+  },
+  {
+   "cena": "s42",
+   "t0": 28.067,
+   "t1": 32.233,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "(s43) os morros da borda de Lima; \"Lima\" só se a origem nomear a cidade; nunca Pamplona Alta nem San Juan de Miraflores. o lugar_na_origem do veredito aprovado do item s43-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s43-a"
+  },
+  {
+   "cena": "s42",
+   "t0": 28.067,
+   "t1": 32.233,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "(s43) fallback: o mapa sobre os morros do leste",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s44",
+   "t0": 0.0,
+   "t1": 10.234,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beat 0 (mapa plano)"
+  },
+  {
+   "cena": "s44",
+   "t0": 10.234,
+   "t1": 15.7,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback do s44-a",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s44",
+   "t0": 0.0,
+   "t1": 10.234,
+   "papel": "rotulo",
+   "texto": "Lima and Callao",
+   "nota": "o nome dentro do polígono; nenhuma borda acesa, nenhum distrito (PB047)"
+  },
+  {
+   "cena": "s44",
+   "t0": 4.967,
+   "t1": 10.234,
+   "papel": "heroi",
+   "texto": "MORE THAN 700,000 PEOPLE",
+   "nota": "em \"seven\" (4,967 s), com o bloco de silhuetas ao lado do polígono"
+  },
+  {
+   "cena": "s44",
+   "t0": 4.967,
+   "t1": 10.234,
+   "papel": "legenda",
+   "texto": "WITHOUT A CONNECTION TO THE WATER NETWORK",
+   "nota": "sob o herói"
+  },
+  {
+   "cena": "s44",
+   "t0": 0.0,
+   "t1": 10.234,
+   "papel": "credito",
+   "texto": "Source: Sunass, Peru's water and sanitation regulator (via Gestión), March 2026",
+   "nota": "do 1º quadro: atribui a frase e data o número (volátil: a Sala relê na semana da montagem); a linha da Sunass confirmada (PB046)"
+  },
+  {
+   "cena": "s44",
+   "t0": 10.534,
+   "t1": 15.7,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s44-a)",
+   "nota": "os caminhões-pipa nos morros. o lugar_na_origem do veredito aprovado do item s44-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s44-a"
+  },
+  {
+   "cena": "s44",
+   "t0": 15.7,
+   "t1": 18.567,
+   "papel": "rotulo",
+   "texto": "PIPED WATER",
+   "nota": "sob o cubo da rede"
+  },
+  {
+   "cena": "s44",
+   "t0": 15.7,
+   "t1": 18.567,
+   "papel": "rotulo",
+   "texto": "TRUCKED WATER",
+   "nota": "sob o cubo do caminhão"
+  },
+  {
+   "cena": "s44",
+   "t0": 16.2,
+   "t1": 18.567,
+   "papel": "heroi",
+   "texto": "ABOUT 6× THE PRICE",
+   "nota": "em \"six\" (16,2 s), quando as 6 marcas empilham; sem moeda, sem S/ 22,11 nem S/ 3,20 (a conta dá 6,9: PB044)"
+  },
+  {
+   "cena": "s44",
+   "t0": 15.7,
+   "t1": 18.567,
+   "papel": "credito",
+   "texto": "Source: Sunass, 2025 study (via Gestión, March 2026)",
+   "nota": "o desenho"
+  },
+  {
+   "cena": "s45",
+   "t0": 0.0,
+   "t1": 2.833,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "a cena inteira"
+  },
+  {
+   "cena": "s45",
+   "t0": 0.233,
+   "t1": 2.833,
+   "papel": "rotulo",
+   "texto": "San Juan de Miraflores",
+   "nota": "em \"San\" (0,233 s), o nome dentro do polígono (nome próprio de 4 palavras: vai inteiro)"
+  },
+  {
+   "cena": "s46",
+   "t0": 0.0,
+   "t1": 11.1,
+   "papel": "card_nome",
+   "texto": "CATALINA NAUPA, 59",
+   "nota": "card sem foto, na pílula, do 1º quadro (a voz diz o nome em 0,0 s)"
+  },
+  {
+   "cena": "s46",
+   "t0": 0.133,
+   "t1": 11.1,
+   "papel": "card_cargo",
+   "texto": "Resident, San Juan de Miraflores (2025)",
+   "nota": "abaixo do nome; \"a 59-year-old resident of San Juan de Miraflores\" (AFP)"
+  },
+  {
+   "cena": "s46",
+   "t0": 0.0,
+   "t1": 11.1,
+   "papel": "credito",
+   "texto": "Source: AFP, March 2025",
+   "nota": "a cena inteira"
+  },
+  {
+   "cena": "s46",
+   "t0": 7.9,
+   "t1": 11.1,
+   "papel": "citacao",
+   "texto": "“There are worms in the bottom of the tank.”",
+   "nota": "em \"There\" (7,9 s), cartão de papel; literal do despacho da AFP em inglês (9 palavras), 3,2 s no ar; sem a marca de tradução: o texto citado é o da AFP, não tradução do canal"
+  },
+  {
+   "cena": "s47",
+   "t0": 0.3,
+   "t1": 5.1,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s47-a)",
+   "nota": "só objetos (tanque, bacia, varal). o lugar_na_origem do veredito aprovado do item s47-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s47-a"
+  },
+  {
+   "cena": "s47",
+   "t0": 0.0,
+   "t1": 17.234,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback: o satélite dos morros de San Juan de Miraflores a cena inteira; sem rótulo novo e nada que diga que a casa é a dela",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s47",
+   "t0": 8.467,
+   "t1": 14.134,
+   "papel": "cota",
+   "texto": "ABOUT 260 GALLONS (1 m³)",
+   "nota": "em \"two hundred sixty\" (8,467 s); \"a cubic meter (260 gallons)\" (AFP)"
+  },
+  {
+   "cena": "s47",
+   "t0": 8.467,
+   "t1": 14.134,
+   "papel": "legenda",
+   "texto": "A WEEK PER FAMILY",
+   "nota": "sob a cota"
+  },
+  {
+   "cena": "s47",
+   "t0": 8.467,
+   "t1": 14.134,
+   "papel": "credito",
+   "texto": "Source: SEDAPAL, to AFP, March 2025",
+   "nota": "com o número"
+  },
+  {
+   "cena": "s47",
+   "t0": 15.6,
+   "t1": 17.234,
+   "papel": "heroi",
+   "texto": "FREE",
+   "nota": "em \"deliveries\" (15,6 s), não em \"free.\" (16,4 s): seriam 0,83 s no ar antes do corte"
+  },
+  {
+   "cena": "s47",
+   "t0": 14.134,
+   "t1": 17.234,
+   "papel": "credito",
+   "texto": "Source: AFP, March 2025",
+   "nota": "a frase atribuída"
+  },
+  {
+   "cena": "s48",
+   "t0": 0.0,
+   "t1": 7.7,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beat 0 (mapa plano)"
+  },
+  {
+   "cena": "s48",
+   "t0": 14.933,
+   "t1": 19.566,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback do s48-a",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s48",
+   "t0": 1.566,
+   "t1": 7.7,
+   "papel": "rotulo",
+   "texto": "Puente Piedra",
+   "nota": "em \"Puente\" (1,566 s), o nome dentro do polígono; nenhuma área (o OSM é 30 % menor que o INEI)"
+  },
+  {
+   "cena": "s48",
+   "t0": 2.833,
+   "t1": 19.566,
+   "papel": "credito",
+   "texto": "Source: Kulturaustausch (ifa), January 2024",
+   "nota": "em \"German magazine\" (2,833 s) até o fim: atribui as duas cooperativas e o card"
+  },
+  {
+   "cena": "s48",
+   "t0": 7.7,
+   "t1": 14.933,
+   "papel": "card_nome",
+   "texto": "VIRGINIA MARTÍNEZ MORALES, 30",
+   "nota": "card sem foto, quando ele pousa (7,7 s); a voz diz o nome em 10,333 s"
+  },
+  {
+   "cena": "s48",
+   "t0": 7.833,
+   "t1": 14.933,
+   "papel": "card_cargo",
+   "texto": "Resident, Puente Piedra (2024)",
+   "nota": "abaixo do nome; \"Virginia Martínez Morales is 30 years old\" (Kulturaustausch, 26/01/2024)"
+  },
+  {
+   "cena": "s48",
+   "t0": 15.233,
+   "t1": 19.566,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s48-a)",
+   "nota": "a encosta sem serviços; nenhum número, nenhuma figura. o lugar_na_origem do veredito aprovado do item s48-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s48-a"
+  },
+  {
+   "cena": "s48",
+   "t0": 15.233,
+   "t1": 19.566,
+   "papel": "rotulo",
+   "texto": "Puente Piedra",
+   "nota": "fallback: o polígono de Puente Piedra",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s49",
+   "t0": 0.3,
+   "t1": 6.767,
+   "papel": "rotulo",
+   "texto": "(lugar_na_origem do s49-a)",
+   "nota": "a rua de areia íngreme; nenhum caminhão, nenhuma casa destruída. o lugar_na_origem do veredito aprovado do item s49-a, nunca mais específico que ele (midia §2.7); sem clipe aprovado, nada. O texto final volta ao redator com os vereditos da caça",
+   "_caminho": "caca",
+   "_espera_a_caca": "s49-a"
+  },
+  {
+   "cena": "s49",
+   "t0": 0.0,
+   "t1": 6.767,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "fallback do s49-a",
+   "_caminho": "sem_caca"
+  },
+  {
+   "cena": "s49",
+   "t0": 0.0,
+   "t1": 11.067,
+   "papel": "credito",
+   "texto": "Source: Kulturaustausch (ifa), January 2024",
+   "nota": "beats 0 e 1"
+  },
+  {
+   "cena": "s49",
+   "t0": 7.634,
+   "t1": 11.067,
+   "papel": "card_nome",
+   "texto": "TULA TINOCO ESPINOZA",
+   "nota": "em \"Tula\" (7,634 s), card sem foto"
+  },
+  {
+   "cena": "s49",
+   "t0": 7.767,
+   "t1": 11.067,
+   "papel": "card_cargo",
+   "texto": "Resident, Puente Piedra (2024)",
+   "nota": "abaixo do nome; nunca \"neighbor\""
+  },
+  {
+   "cena": "s49",
+   "t0": 11.067,
+   "t1": 21.934,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "beats 2 e 3 (mapa)"
+  },
+  {
+   "cena": "s49",
+   "t0": 11.067,
+   "t1": 17.134,
+   "papel": "rotulo",
+   "texto": "Puente Piedra",
+   "nota": "(s49) o polígono, do 1º quadro do mapa"
+  },
+  {
+   "cena": "s49",
+   "t0": 14.7,
+   "t1": 17.134,
+   "papel": "rotulo",
+   "texto": "ANDEAN REGIONS",
+   "nota": "em \"Andean\" (14,7 s), solto sobre a serra; nenhum departamento nomeado"
+  },
+  {
+   "cena": "s49",
+   "t0": 11.067,
+   "t1": 17.134,
+   "papel": "credito",
+   "texto": "Source: Kulturaustausch (ifa), January 2024",
+   "nota": "beat 2 (a frase da revista)"
+  },
+  {
+   "cena": "s49",
+   "t0": 21.934,
+   "t1": 31.334,
+   "papel": "folha_cabecalho",
+   "texto": "DEFENSORÍA DEL PUEBLO · INFORME DEFENSORIAL N.° 239 · 2025 · P. 74",
+   "nota": "(s50) a folha RECRIADA, sem brasão"
+  },
+  {
+   "cena": "s49",
+   "t0": 21.934,
+   "t1": 31.334,
+   "papel": "folha_texto",
+   "texto": "…dependiendo de un solo túnel trasandino con un potencial riesgo de colapso ante sismos de alta intensidad, situación que pone en riesgo la provisión de agua (SEDAPAL 2019: 9).",
+   "nota": "(s50) letra a letra (l. 4541–4544; PB053), com \"trasandino\" como a fonte escreve; o começo da frase (o \"más del 60%\") fica fora, por reticência"
+  },
+  {
+   "cena": "s49",
+   "t0": 27.3,
+   "t1": 31.334,
+   "papel": "grifo_na_pagina",
+   "texto": "dependiendo de un solo túnel trasandino",
+   "nota": "(s50) texto impresso; em \"depending\" (27,3 s)"
+  },
+  {
+   "cena": "s49",
+   "t0": 27.3,
+   "t1": 31.334,
+   "papel": "citacao",
+   "texto": "“depending on a single trans-Andean tunnel”",
+   "nota": "(s50) tradução fiel do gerúndio (PB051)"
+  },
+  {
+   "cena": "s49",
+   "t0": 28.867,
+   "t1": 31.334,
+   "papel": "grifo_na_pagina",
+   "texto": "potencial riesgo de colapso ante sismos de alta intensidad",
+   "nota": "(s50) texto impresso, em --tensao; em \"is a risk\" (28,867 s)"
+  },
+  {
+   "cena": "s49",
+   "t0": 28.867,
+   "t1": 31.334,
+   "papel": "citacao",
+   "texto": "“potential risk of collapse in high-intensity earthquakes”",
+   "nota": "(s50) tradução fiel (PB052); risco, nunca previsão"
+  },
+  {
+   "cena": "s49",
+   "t0": 27.3,
+   "t1": 31.334,
+   "papel": "legenda",
+   "texto": "Translated from Spanish",
+   "nota": "(s50) sob as duas citações"
+  },
+  {
+   "cena": "s49",
+   "t0": 21.934,
+   "t1": 31.334,
+   "papel": "credito",
+   "texto": "Source: Defensoría del Pueblo (Peru), 2025, citing SEDAPAL (2019)",
+   "nota": "(s50) a folha; o plano de 2019 não foi aberto (PB054)"
+  },
+  {
+   "cena": "s49",
+   "t0": 31.334,
+   "t1": 39.767,
+   "papel": "legenda",
+   "texto": "SECOND TUNNEL",
+   "nota": "(s50) o título da linha do tempo, em \"Lima has been planning a second tunnel\""
+  },
+  {
+   "cena": "s49",
+   "t0": 33.534,
+   "t1": 39.767,
+   "papel": "rotulo",
+   "texto": "1990s",
+   "nota": "(s50) em \"nineteen nineties\" (33,534 s), o começo da linha"
+  },
+  {
+   "cena": "s49",
+   "t0": 33.534,
+   "t1": 39.767,
+   "papel": "rotulo",
+   "texto": "DEFINITIVE STUDY, 1996",
+   "nota": "(s50) a marca na linha; nunca \"STUDIED SINCE 1996\" (PB055)"
+  },
+  {
+   "cena": "s49",
+   "t0": 35.434,
+   "t1": 39.767,
+   "papel": "rotulo",
+   "texto": "NO CONSTRUCTION DATE AS OF LATE AUGUST 2026",
+   "nota": "(s50) em \"August\" (35,434 s), na ponta aberta (tracejada); volátil: a Sala relê na véspera de publicar; nunca 2027 nem custo"
+  },
+  {
+   "cena": "s49",
+   "t0": 31.334,
+   "t1": 39.767,
+   "papel": "credito",
+   "texto": "Sources: SENAMHI (Peru), 2016; Gestión, Aug. 30, 2026",
+   "nota": "(s50) a linha do tempo"
+  },
+  {
+   "cena": "s51",
+   "t0": 0.0,
+   "t1": 38.133,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "a cena inteira"
+  },
+  {
+   "cena": "s51",
+   "t0": 3.733,
+   "t1": 5.733,
+   "papel": "cota",
+   "texto": "1.8% OF THE WATER",
+   "nota": "em \"Not\" (3,733 s), entra e sai em 2 s sobre o lado seco; a mesma forma da s01"
+  },
+  {
+   "cena": "s51",
+   "t0": 3.733,
+   "t1": 5.733,
+   "papel": "credito",
+   "texto": "Source: ANA (Peru), National Water Resources Plan, 2012 data",
+   "nota": "com a cota \"1.8% OF THE WATER\"; a mesma forma do crédito da ANA de 2012 da s01 e da s10 (conserto 1, TB220)"
+  },
+  {
+   "cena": "s51",
+   "t0": 6.9,
+   "t1": 11.8,
+   "papel": "rotulo",
+   "texto": "Caral",
+   "nota": "em \"valleys:\" (6,9 s), a pílula ao lado da miniatura reusada (a Pirámide Mayor); \"Caral\" é menos específico que o lugar_na_origem"
+  },
+  {
+   "cena": "s51",
+   "t0": 7.6,
+   "t1": 11.8,
+   "papel": "aviso_ano",
+   "texto": "Photo from 2022",
+   "nota": "junto da miniatura, 150 ms depois de ela assentar; o veredito do reuso na s51 (sha256 040d35aa…) tem aviso_de_ano true e data_na_origem \"27 November 2022\" (dado novo da Sala; a regência não o traz). Sem ele, a miniatura não vai à cena"
+  },
+  {
+   "cena": "s51",
+   "t0": 7.867,
+   "t1": 11.8,
+   "papel": "cota",
+   "texto": "ABOUT 3000 B.C.",
+   "nota": "em \"about five thousand years ago\" (7,867 s); a mesma régua da s22 (UNESCO)"
+  },
+  {
+   "cena": "s51",
+   "t0": 6.9,
+   "t1": 11.8,
+   "papel": "credito",
+   "texto": "JOSE MORALES CIENCIA POLITICA UNMSM / Wikimedia Commons · CC BY-SA 4.0",
+   "nota": "com a miniatura reusada"
+  },
+  {
+   "cena": "s51",
+   "t0": 7.867,
+   "t1": 11.8,
+   "papel": "credito",
+   "texto": "Source: UNESCO (World Heritage List, 2009)",
+   "nota": "com a data · conserto 1 (forma única da UNESCO): era \"Source: UNESCO\"; unesco-1269-caral.txt, l. 244: \"Date of Inscription: 2009\" (a data é a de Caral, a mesma régua da s22)"
+  },
+  {
+   "cena": "s51",
+   "t0": 12.4,
+   "t1": 17.6,
+   "papel": "rotulo",
+   "texto": "Callao",
+   "nota": "em \"port:\" (12,4 s); a miniatura do porto só se o s03-c for aprovado para esta frase (sem ela, só a pílula)"
+  },
+  {
+   "cena": "s51",
+   "t0": 13.433,
+   "t1": 17.6,
+   "papel": "cota",
+   "texto": "1535",
+   "nota": "em \"fifteen thirty-five\" (13,433 s)"
+  },
+  {
+   "cena": "s51",
+   "t0": 15.533,
+   "t1": 17.6,
+   "papel": "rotulo",
+   "texto": "Lima",
+   "nota": "em \"capital\" (15,533 s)"
+  },
+  {
+   "cena": "s51",
+   "t0": 19.433,
+   "t1": 28.5,
+   "papel": "cota",
+   "texto": "20TH CENTURY",
+   "nota": "em \"twentieth\" (19,433 s), enquanto as silhuetas descem"
+  },
+  {
+   "cena": "s51",
+   "t0": 37.333,
+   "t1": 38.133,
+   "papel": "nada",
+   "texto": "(nenhum texto novo)",
+   "nota": "beat 4: os três traços (canal, anel, caminhão) sem texto; a miniatura do caminhão só se aprovada para esta frase"
+  },
+  {
+   "cena": "s52",
+   "t0": 0.0,
+   "t1": 7.567,
+   "papel": "rotulo",
+   "texto": "Laguna Marcapomacocha",
+   "nota": "a pílula da foto (lugar_na_origem \"Laguna Marcapomacocha en el departamento de Junín\"); fica com a miniatura até o recuo; nunca \"one of the 19\""
+  },
+  {
+   "cena": "s52",
+   "t0": 0.0,
+   "t1": 5.234,
+   "papel": "credito",
+   "texto": "Sichuancay / Wikimedia Commons · CC BY-SA 4.0",
+   "nota": "a foto em tela cheia"
+  },
+  {
+   "cena": "s52",
+   "t0": 5.234,
+   "t1": 7.567,
+   "papel": "credito",
+   "texto": "Sichuancay / Wikimedia Commons · CC BY-SA 4.0",
+   "nota": "a miniatura (continua a mesma linha)"
+  },
+  {
+   "cena": "s52",
+   "t0": 0.367,
+   "t1": 7.567,
+   "papel": "legenda",
+   "texto": "EVERY MAY 1",
+   "nota": "em \"May first\" (0,367 s); a fala de 2024 de um analista da SEDAPAL, atribuída na faixa"
+  },
+  {
+   "cena": "s52",
+   "t0": 0.367,
+   "t1": 7.567,
+   "papel": "credito",
+   "texto": "Source: SEDAPAL interview, reported by Infobae, September 2024",
+   "nota": "com a legenda (a mesma atribuição da s42)"
+  },
+  {
+   "cena": "s52",
+   "t0": 5.234,
+   "t1": 33.834,
+   "papel": "credito",
+   "texto": "© MapTiler © OpenStreetMap contributors",
+   "nota": "do 1º quadro de satélite ao último quadro do master (723,767 s abs.), legível sobre o escurecimento"
+  },
+  {
+   "cena": "s52",
+   "t0": 6.267,
+   "t1": 7.567,
+   "papel": "rotulo",
+   "texto": "Rímac",
+   "nota": "em \"toward the Rímac\" (6,267 s)"
+  },
+  {
+   "cena": "s52",
+   "t0": 7.567,
+   "t1": 33.834,
+   "papel": "nada",
+   "texto": "(nenhum texto novo)",
+   "nota": "beat 2 e a cauda: nenhum número, nenhum rótulo; só o pedido de comentário (a peça, metade esquerda, 704,8 s abs.)"
+  }
+ ]
+}
