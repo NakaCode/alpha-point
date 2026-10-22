@@ -47,6 +47,19 @@
   crédito na tela.
   ELEMENTOS (teto 6): b0 = linha, lados, divisa, cota (4); b1 = linha, ponto, pílula, miniatura, aviso, cota (6); b2 = linha, 2 pontos,
   Callao, 1535, Lima (6); b3 = linha, ponto de Lima, silhuetas, 20TH CENTURY (4); b4 = linha, Lima, Chicama, túnel + anel (4–5).
+  CONSERTO peru-agua-arte-9 (lote M-s34s51, 22/10/2026), pelo texto-9 (textos-tela befa3f95…) e pela revisão de espectador r1, item 11;
+  só o b4 (28,5–38,133) mudou:
+    · o Chicama em --contraparte a 13 px sobre o contorno escuro (--rotulo) de 20 px, como a divisória (era 6 sobre 14);
+    · o anel do túnel com r 56 (diâmetro 112 px a 4K, no eixo do traço; era r 28, 56 px), o mesmo traço de 10 em --destaque sobre o halo
+      de 18; o pulso de 32,633 vai de 1 a 2,6× (era 1 a 1,8×), com o traço do pulso fixo em 10 px (vector-effect), em 1,2 s;
+    · a pílula 'Lima' (rotLima4) no ponto branco de "city's" (36,333) ao fim, a mesma classe, grafia e caixa da de 15,533, à ESQUERDA
+      do ponto (44 px), sobre o mar: à direita ela pousaria no túnel e no anel. A linha "nada" do b4 passa a 28,5–36,333;
+    · o push-in lento de 33,5 ao fim (perna N1 → N2, zoom 7,28 → 7,75, meio linear e meio cúbico), rumo a Lima e ao anel: Lima vai de
+      (2063, 1574) a (2100, 1380), o anel de ~(2225, 1440) a ~(2325, 1195); o Chicama fica no alto do quadro até o fim;
+    · O LUGAR RESERVADO à miniatura do caminhão (caça, 37,333): ACIMA da pílula 'Lima', borda direita alinhada à da pílula, vão de 18 px,
+      932 × 592 (a moldura da miniatura de Caral, 900 × 560 + borda de 16): no fim, x ~1124–2056, y ~682–1274. Embaixo não cabe
+      (passaria de y 1880), e à direita estão o túnel e o anel. Nada da cena passa por lá de 36,3 ao fim.
+    · ELEMENTOS no b4 (máx.): linha, Chicama, túnel + anel, ponto e pílula Lima (5), com a miniatura futura 6.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -113,7 +126,7 @@
     <circle class="ponto" id="pCallao" cx="0" cy="0" r="18" opacity="0"/>
     <circle class="ponto" id="pLima" cx="0" cy="0" r="18" opacity="0"/>
     <g id="sils"></g>
-    <g id="anTun" opacity="0"><circle class="anel-sob" r="28"/><circle class="anel" r="28"/><circle class="anel" id="anTunP1" r="28" opacity="0"/></g>
+    <g id="anTun" opacity="0"><circle class="anel-sob" r="56"/><circle class="anel" r="56"/><circle class="anel" id="anTunP1" r="56" opacity="0" vector-effect="non-scaling-stroke"/></g>
   </svg>
   <div id="rotulos">
     <div class="rotulo liso" id="cota18" data-qc-papel="rotulo">1.8% OF THE WATER</div>
@@ -126,6 +139,7 @@
     <div class="rotulo liso" id="cota1535" data-qc-papel="rotulo">1535</div>
     <div class="rotulo liso" id="rotLima" data-qc-papel="rotulo">Lima</div>
     <div class="rotulo liso" id="cota20" data-qc-papel="rotulo">20TH CENTURY</div>
+    <div class="rotulo liso" id="rotLima4" data-qc-papel="rotulo">Lima</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
   <div id="crMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
@@ -155,7 +169,8 @@
       S0: { lng: -76.20000, lat: -11.79718, zoom: 8.300 },    // a serra central: Lima a oeste, a linha, a serra a leste
       S1: { lng: -76.20000, lat: -11.80938, zoom: 8.420 },
       N0: { lng: -77.70000, lat: -9.85000, zoom: 7.250 },    // o norte e o centro: o Chicama, Lima e o túnel
-      N1: { lng: -77.70000, lat: -9.85000, zoom: 7.330 }
+      N1: { lng: -77.70000, lat: -9.85000, zoom: 7.280 },    // arte-9: o ponto de 33,5 da deriva antiga (7,25 → 7,33), de onde sai o push-in
+      N2: { lng: -77.63993, lat: -11.08610, zoom: 7.750 }     // arte-9: o push-in rumo a Lima e ao anel; Lima em (2100, 1380), o anel em ~(2325, 1195)
     },
     pernas: [
       { t0: 0,      t1: 6.1,    de: "P0", para: "P1", tipo: "h" },
@@ -166,10 +181,11 @@
       { t0: 17.6,   t1: 19.6,   de: "L1", para: "S0", tipo: "v", ease: "cubico" },   // 'Then the people': recuo de 2 s
       { t0: 19.6,   t1: 28.5,   de: "S0", para: "S1", tipo: "h" },
       { t0: 28.5,   t1: 30.5,   de: "S1", para: "N0", tipo: "v", ease: "cubico" },   // 'The water had to be brought': recuo de 2 s
-      { t0: 30.5,   t1: 38.133, de: "N0", para: "N1", tipo: "h" }
+      { t0: 30.5,   t1: 33.5,   de: "N0", para: "N1", tipo: "h" },
+      { t0: 33.5,   t1: 38.133, de: "N1", para: "N2", tipo: "h", ease: "meio" }   // arte-9: push-in lento (meio linear, meio cúbico: sai andando, sem tranco)
     ],
     giro: [-1.0, 1.0],
-    aneis: [ { id: "anTun", ref: "TUNEL", entra: 32.633, sai: null, pulsos: [32.633] } ],
+    aneis: [ { id: "anTun", ref: "TUNEL", entra: 32.633, sai: null, pulsos: [32.633], amp: 1.6 } ],   // arte-9: r 56 (era 28), pulso 1 → 2,6 (era 1 → 1,8)
     rotulos: [
       { id: "cota18",   lnglat: [-79.6, -11.6], lado: "esquerda", vert: "centro", dx: 75, entra: 3.733, sai: 5.433 },
       { id: "rotCaral", ref: "CARAL", lado: "esquerda", vert: "centro", dx: -44, entra: 6.9, sai: 11.5 },
@@ -177,7 +193,8 @@
       { id: "rotCallao", ref: "CALLAO", lado: "esquerda", vert: "centro", dx: -44, entra: 12.4, sai: 17.3 },
       { id: "cota1535", ref: "CALLAO", lado: "esquerda", vert: "cima", dx: -44, dy: -112, entra: 13.433, sai: 17.3 },
       { id: "rotLima",  ref: "LIMA", lado: "direita", vert: "centro", dx: 44, entra: 15.533, sai: 17.3 },
-      { id: "cota20",   tela: [2600, 620], lado: "centro", vert: "cima", entra: 19.433, sai: 28.2 }
+      { id: "cota20",   tela: [2600, 620], lado: "centro", vert: "cima", entra: 19.433, sai: 28.2 },
+      { id: "rotLima4", ref: "LIMA", lado: "esquerda", vert: "centro", dx: -44, entra: 36.333, sai: null }   // arte-9: 'Lima' em "city's", sobre o mar, até o fim
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
     creditos: [
@@ -228,7 +245,7 @@
       A.territorio("umido", A.geo("vertente-atlantico"), { fill: "--contraparte", fracao: 0.35, linha: "--tinta", w: 0.01, sob: 0.01 });
       A.linha("peru", A.geo("peru-ne"), { cor: "--fronteira-cor", w: 5, sob: 12 });
       A.linha("div", A.geo("divisoria-continental-peru"), { cor: "--tinta", w: 6, sob: 12, sobCor: "--rotulo" });
-      A.linhaCor("chic", { type: "FeatureCollection", features: [] }, { cor: "--contraparte", w: 6, sob: 14 });
+      A.linhaCor("chic", { type: "FeatureCollection", features: [] }, { cor: "--contraparte", w: 13, sob: 20 });   // arte-9: 13 sobre 20 (era 6 sobre 14)
       A.linha("tun", A.geo("tunel-transandino"), { cor: "--contraparte", w: 6, sob: 14, sobCor: "--rotulo" });
       // o Chicama da serra ao mar (o vértice mais a leste primeiro)
       var ch = A.feicao("rio-chicama", "Chicama"), cc = ch ? ch.geometry.coordinates.slice() : [];
@@ -561,6 +578,7 @@
     if (L.tipo === "v") c = L.cam(L.ease === "cubico" ? eio((t - L.t0) / (L.t1 - L.t0)) * (L.t1 - L.t0) : cl(t - L.t0, 0, L.t1 - L.t0));
     else {
       var u = cl((t - L.t0) / (L.t1 - L.t0), 0, 1), a = PT[L.de], b = PT[L.para];
+      if (L.ease === "meio") u = 0.5 * u + 0.5 * eio(u);   // arte-9
       var ma = merc(a.lng, a.lat), mb = merc(b.lng, b.lat);
       c = { center: [a.lng + (b.lng - a.lng) * u, unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u };
     }
@@ -796,7 +814,7 @@
         var u = (t - t0) / 1.2, c = E(a.id + "P" + (k + 1));
         if (!c) return;
         var vivo = u >= 0 && u < 1;
-        c.setAttribute("transform", "scale(" + (1 + 0.8 * (vivo ? u : 0)).toFixed(4) + ")");
+        c.setAttribute("transform", "scale(" + (1 + (a.amp || 0.8) * (vivo ? u : 0)).toFixed(4) + ")");
         c.setAttribute("opacity", vivo ? (1 - u).toFixed(3) : "0");
       });
     });

@@ -64,6 +64,15 @@
   - AS CORES, só por token: a pílula COAST em --rotulo; no gráfico a Costa do censo em --neutro (linha, ponto e o cruzamento), o
     texto COAST em --tinta-escura 700, a Sierra em --tinta-escura. Nenhuma cor de contexto na cena.
   - O GRÁFICO ANDA: push-in linear de 1,5 % do corte (22,0) ao fim (37,167), do centro; nunca parado (L52, 33,9–37,2).
+
+  CONSERTO peru-agua-arte-9 (lote M-s30, mapista, 22/10/2026), pela revisão de espectador r1 (itens 7 e 8) e pelo textos-tela do
+  texto-9 (befa3f95…). VALE SOBRE O QUE O TEXTO ACIMA DIZ:
+  - 'COAST' (12,2–22,0) e '28.3% (1940)' (12,2–18,567) entram em "Fewer" (12,2), quando o '65.0% (1940)' termina de sair; as 2⅚
+    figuras da costa vêm junto, em 12,2. A legenda 'As Peru's census draws it: only part of the dry side' fica em "coast," (15,5), e a
+    figura ⅔ da selva (--neutro, sem rótulo) também, onde estava. Elementos: 12,2–15,5 = linha, HIGHLANDS, figuras, COAST, 28.3% (5);
+    15,5–18,567 = os mesmos e a legenda (6).
+  - '52.4% (1993)' preso ao ponto cinza de 1993 da Costa, como o '58.7% (2025)': a ponta direita em GX(1993), a base 29 px acima do
+    ponto (GY(52.4) − 45); de 28,833 a 33,1 o ponto de 1993 da Costa acende com o mesmo anel do cruzamento de 1970 (.cruz).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -153,6 +162,7 @@ only part of the dry side</div>
       <polyline class="serie costa" id="lCosta" points=""/>
       <g id="ptos"></g>
       <circle class="cruz" id="cruz" cx="0" cy="0" r="30" opacity="0"/>
+      <circle class="cruz" id="anel93" cx="0" cy="0" r="30" opacity="0"/>
     </svg>
     <div class="dtexto forte caixa" id="dHigh" data-qc-papel="rotulo">HIGHLANDS</div>
     <div class="dtexto forte caixa costa" id="dCoast" data-qc-papel="rotulo">COAST</div>
@@ -202,9 +212,9 @@ only part of the dry side</div>
       { id: "rotHigh",  lnglat: [-74.56403, -13.16878], lado: "direita", vert: "baixo", entra: 9.233, sai: GRAF0 - 0.02, dOut: 0.01 },
       { id: "cota65",   lnglat: [-74.56403, -13.16878],  lado: "direita", vert: "baixo", entra: 9.233, sai: 11.9,   // arte-4: t1 12,2 da lista do textos-tela (aviso da Sala; as _instrucoes dizem 15,5)
         mover: function (t, p) { return { x: p.x, y: p.y - SIL_ALTO - 40 - 176 }; } },   // arte-4: preso ao HIGHLANDS, acima das figuras
-      { id: "rotCoast", lnglat: [-77.44816, -11.68943], lado: "esquerda", vert: "baixo", entra: 15.5, sai: GRAF0 - 0.02, dOut: 0.01 },
+      { id: "rotCoast", lnglat: [-77.44816, -11.68943], lado: "esquerda", vert: "baixo", entra: 12.2, sai: GRAF0 - 0.02, dOut: 0.01 },
       { id: "legCoast", lnglat: [-77.44816, -12.2594], lado: "esquerda", vert: "baixo", entra: 15.5, sai: GRAF0 - 0.02, dOut: 0.01 },
-      { id: "cota28",   lnglat: [-77.44816, -12.99852],  lado: "esquerda", vert: "baixo", entra: 15.5, sai: 18.367, dOut: 0.2 },   // arte-4: fora em 18,567
+      { id: "cota28",   lnglat: [-77.44816, -12.99852],  lado: "esquerda", vert: "baixo", entra: 12.2, sai: 18.367, dOut: 0.2 },   // arte-4: fora em 18,567; arte-9: entra em "Fewer" (12,2)
       { id: "leg1940",  lnglat: [-77.44816, -12.99852],  lado: "esquerda", vert: "baixo", entra: 18.567, sai: GRAF0 - 0.02, dOut: 0.01 },
       { id: "rotRain",  lnglat: [-73.6, -10.6], lado: "centro", vert: "baixo", dy: 0,   entra: 39.1,   sai: null },
       { id: "cotaRain", lnglat: [-73.6, -10.6], lado: "centro", vert: "baixo", dy: 210, entra: 40.367, sai: null },
@@ -238,9 +248,9 @@ only part of the dry side</div>
     { de: ["serra", 4], para: ["serra", 1], f0: 1,     f1: 1,     vem: 9.233, anda: [20.3, 1.0] },
     { de: ["serra", 5], para: ["serra", 2], f0: 1,     f1: 2 / 3, vem: 9.233, anda: [20.3, 1.0], muda: [21.0, 0.5] },
     { de: ["serra", 6], para: ["selva", 1], f0: 0.5,   f1: 0.455, vem: 9.233, anda: [19.9, 1.8], muda: [21.3, 0.4], neutro: "chega" },
-    { de: ["costa", 0], para: ["costa", 0], f0: 1,     f1: 1,     vem: 15.5 },
-    { de: ["costa", 1], para: ["costa", 1], f0: 1,     f1: 1,     vem: 15.5 },
-    { de: ["costa", 2], para: ["costa", 2], f0: 5 / 6, f1: 1,     vem: 15.5, muda: [19.0, 0.5] },
+    { de: ["costa", 0], para: ["costa", 0], f0: 1,     f1: 1,     vem: 12.2 },
+    { de: ["costa", 1], para: ["costa", 1], f0: 1,     f1: 1,     vem: 12.2 },
+    { de: ["costa", 2], para: ["costa", 2], f0: 5 / 6, f1: 1,     vem: 12.2, muda: [19.0, 0.5] },   // arte-9: a costa em 12,2
     { de: ["selva", 0], para: ["selva", 0], f0: 2 / 3, f1: 1,     vem: 15.5, muda: [19.0, 0.5], neutro: true }
   ];
   // ── o dado (_dados/s31.json, INEI, Censo 2025, Presentación de resultados, p. 12) ─────────────────────────
@@ -386,12 +396,19 @@ only part of the dry side</div>
       cz.setAttribute("cx", GX(CRUZ.ano).toFixed(1)); cz.setAttribute("cy", GY(CRUZ.pct).toFixed(1));
       cz.setAttribute("r", (30 * (0.6 + 0.4 * u)).toFixed(2)); cz.setAttribute("opacity", u.toFixed(3));
     }
+    // arte-9 (espectador r1, item 8): o ponto de 1993 da Costa aceso com o mesmo anel do cruzamento, 28,833–33,1
+    var a93 = A.E("anel93");
+    if (a93) {
+      var u93 = A.eo(A.seg(t, 28.833, 0.3)), v93 = u93 * (1 - A.eio(A.seg(t, 33.1 - 0.25, 0.25)));
+      a93.setAttribute("cx", GX(1993).toFixed(1)); a93.setAttribute("cy", GY(52.4).toFixed(1));
+      a93.setAttribute("r", (30 * (0.6 + 0.4 * u93)).toFixed(2)); a93.setAttribute("opacity", v93.toFixed(3));
+    }
     // os textos do dado: os rótulos das séries com o corte; as cotas na palavra (300 ms, opacidade + 24 px)
     var T = [
       ["dHigh", GX(1940), GY(65.0) - 48, "esq-baixo", GRAF0],
       ["dCoast", GX(1940), GY(28.3) + 52, "esq-cima", GRAF0],
       ["dShare", GX(1940) - 40, 200, "esq-cima", GRAF0],
-      ["d52", GX(1993) - 40, GY(52.4) - 70, "dir-baixo", 28.833, 33.1],
+      ["d52", GX(1993), GY(52.4) - 45, "dir-baixo", 28.833, 33.1],   // arte-9: preso ao ponto de 1993 da Costa (a ponta direita em GX(1993), a base 29 px acima do ponto)
       ["d58", GX(2025) + 140, GY(58.7) - 70, "dir-baixo", 33.1]
     ];
     T.forEach(function (x) {
