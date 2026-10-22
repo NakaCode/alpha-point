@@ -1595,3 +1595,17 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   não nomeia ("fala", "cota", "legenda") deve ser traduzido para um dos papéis dele, escolhendo o de piso igual ou maior.
 - **Por que serve a qualquer canal:** todo portão que mede por declaração mede o que se declara, não o que se pretende. Uma marcação
   frouxa compra o verde, e o defeito só aparece no celular do espectador.
+
+### 89. Python por heredoc no Git Bash do Windows fica preso e segura a cadeia de comandos
+
+- **O problema:** em 22/10/2026, no qc do vídeo 4 (o Peru), 7 dos 10 lotes do `qc-visual` rodaram Python por heredoc (`python - <<'EOF'`)
+  no Git Bash, apesar de o pedido dizer "o Python em arquivo, sem heredoc". Às 20:03 havia 7 Pythons presos, sem saída, esperando a entrada.
+  Em duas cadeias (`&&`), o comando seguinte regravaria laudos com dados atrasados quando o Python enfim saísse. Um lote ainda tentou
+  destravar com `taskkill /IM cat.exe`, que mata por nome todo `cat` da máquina.
+- **O que resolveu:** o setor encerrou as 7 árvores pelo PID de cada uma, conferiu o sha256 dos laudos antes e depois (nenhum mudou) e
+  repetiu o trabalho com o Python num arquivo (`python -X utf8 -B arquivo.py`).
+- **Como evitar:** Python sempre num arquivo de script, nunca por heredoc nem por `-c` longo, quando quem roda é um agente no Git Bash do
+  Windows; o `ffmpeg` com `-nostdin`. Processo preso se encerra pelo PID da árvore dele, nunca por nome (`taskkill /IM`), como a regra do
+  Chrome e do Brave já manda.
+- **Por que serve a qualquer canal:** qualquer canal que rode agentes no Windows usa o Git Bash; um comando que espera a entrada não falha,
+  só para, e o que vem depois dele numa cadeia roda tarde, sobre um estado que já mudou.
