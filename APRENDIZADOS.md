@@ -1605,7 +1605,8 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **O que resolveu:** o setor encerrou as 7 árvores pelo PID de cada uma, conferiu o sha256 dos laudos antes e depois (nenhum mudou) e
   repetiu o trabalho com o Python num arquivo (`python -X utf8 -B arquivo.py`).
 - **Como evitar:** Python sempre num arquivo de script, nunca por heredoc nem por `-c` longo, quando quem roda é um agente no Git Bash do
-  Windows; o `ffmpeg` com `-nostdin`. Processo preso se encerra pelo PID da árvore dele, nunca por nome (`taskkill /IM`), como a regra do
+  Windows; o `ffmpeg` com `-nostdin`. Redirecionar a entrada não resolve: na qualidade-8 (22/10/2026, 20:5x), 3 lotes rodaram `python -`
+  com `</dev/null` e travaram do mesmo jeito. Processo preso se encerra pelo PID da árvore dele, nunca por nome (`taskkill /IM`), como a regra do
   Chrome e do Brave já manda.
 - **Por que serve a qualquer canal:** qualquer canal que rode agentes no Windows usa o Git Bash; um comando que espera a entrada não falha,
   só para, e o que vem depois dele numa cadeia roda tarde, sobre um estado que já mudou.
