@@ -51,7 +51,7 @@ régua de motion de lá. Onde um número de lá diverge da identidade, vale a id
   pago.
 - Bandeira ao lado de nome de país (fora as exceções pontuais dadas pelo Lucas); bandeira do Canadá na prancha.
 - Rota não construída sem `Approximate route`.
-- Plano de Shutterstock ou de Motion Array (fora do canal desde 22/out/2026); banco pago só Envato e Storyblocks.
+- Shutterstock usado sem a linha de licença na última cena.
 
 ## 4 · As chamadas (CTA)
 

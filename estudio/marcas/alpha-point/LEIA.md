@@ -88,10 +88,11 @@ e2ccf4cfa8e06a41b87909560a4c6a83074b498480afff420740a6d8e630930f  (monorepo, ori
 5. **Roupas de `marca/agentes/` atrás da identidade:** o tratamento do satélite 65 % / 70 % (diretor-de-arte, mapista,
    qc-visual, pesquisa-geo; e `marca/embalagem.md` §3) foi superado pelo tratamento C de 09/10; a pausa de ~0,14 s do
    montador, pelos 0,25 s do v4; o «espectador norte-americano» do qc-visual, pelo público de 14/10. Aqui vale o mais novo.
-6. **Banco pago:** a Storyblocks e o Envato são a assinatura da Top10 (`marca/midia.md` §2.3, 30/09) e continuam no
-   canal, só pelo navegador, nunca por script ou robô (decisão do Mateus, 22/out/2026: «Vou usar Storyblocks e Envato aceitando o risco»). O Motion Array e o Shutterstock saíram, e a
-   `marca/midia.md` §1 do Lucas ainda os lista: aqui vale o mais novo. O motor não baixa de banco
-   (`midia.caca_stock_assinado: false`): o agente escreve a busca e o item fica pendente para quem baixa pelo navegador.
+6. **Banco pago:** os quatro bancos da marca (Envato, Motion Array, Storyblocks e Shutterstock, `marca/midia.md` §1 e
+   §2.3) são assinaturas da Top10 e continuam no canal, só pelo navegador, nunca por script ou robô (decisões do Mateus
+   de 22/out/2026: «Vou usar Storyblocks e Envato aceitando o risco» e, às ~08:30Z, Shutterstock e Motion Array também).
+   O motor não baixa de banco (`midia.caca_stock_assinado: false`): o agente escreve a busca e o item fica pendente para
+   quem baixa pelo navegador.
 7. **Ritmo:** a marca escreve 150–160 palavras/min; o v4 mediu 158 a 184. O Lucas aceitou («ritmo ok», 07/10).
 8. **Volume:** a voz sai a −19,7 LUFS e o Lucas sobe 5,5 dB no Premiere (≈ −14,2); o alvo do master automático
    (−14 LUFS) bate com o que ele faz à mão.
