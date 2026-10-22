@@ -9,14 +9,32 @@
   "In January fifteen thirty-five, Pizarro chose a site partly because it had a very good port nearby. His order adds that the place
   lay in the middle of the land, where the Indigenous people could serve the Spanish with little work."
 
+  CONSERTO peru-agua-arte-3 (lote M-s28, 22/10/2026), pedido pelo qc-visual (L51, acessibilidade 7): SAIU o halo da água abrigada
+  (o <radialGradient id="gHalo">, a <ellipse id="halo">, o ponto HALO e as 6 linhas dele no SCENE.quadro). A 25 % e sem borda ele
+  virava uma mancha marrom sobre a pluma de sedimento do Rímac. Subir a ~40 % o faria ler como ÁREA, e área sem contorno publicado
+  é afirmação sobre a base (ofício §6c) que a regência chama de "declared scheme" e o textos-tela não declara ("Schematic" não
+  existe para a s28). O "porque" do beat é "a baía e a ilha no satélite provam o abrigo": a prova é o satélite, não o brilho.
+  Nada mais mudou (tempos, textos, câmera, mesa, créditos iguais). sha1 de antes 0aeee74b6604df3ba3c15fb71494a5eb95efa1f0.
+
+  CONSERTO peru-agua-arte-3, rodada 2 (22/10/2026), pelo textos-tela novo (a Sala: a citação com o papel citacao):
+    · SAIU a pílula de rótulo '“MUY BUEN PUERTO” (A VERY GOOD PORT)' (#rotPuerto);
+    · ENTROU, em "had" (4,033), o CARTÃO DA FALA CITADA '“muy buen puerto”' (#citPuerto; --papel, Inter 700 a --fs-fala = 280 px,
+      --tinta-escura; a .fala com data-qc-papel="heroi", identidade §4.1 e APRENDIZADOS 88), em caixa baixa como na fonte (Cobo,
+      1882, p. 14), no alto à esquerda (200, 160), sobre o mar e a cidade, acima do porto;
+    · ENTROU a legenda 'A very good port' (#legPuerto, 84 px) logo abaixo do cartão, em 4,033; 'Translated from Spanish' e o crédito
+      do Cobo passam de 4,233 a 4,033 e cobrem as duas;
+    · 'JANUARY 1535' some até 4,033 (sai 3,783, 0,25 s): o quadro fica em 4 textos (Callao, a fala, as duas legendas);
+    · a mesa: 'in the middle of the land' sai até 9,933 (sai 9,633, 0,3 s); 'could serve with little work' e o grifo de 'puedan servir
+      con poco trabajo' começam em 9,933 ("people"; o fim do grifo continua em 11,80). O grifo 1 continua na página.
+    Nada mais mudou. sha1 de antes f064d5ccccf751cf60befa0a88419240168c6dd8.
+
   O que manda: textos-tela.json (s28: a lista fechada de textos), regencia.json (s28, 2 beats), conceito-visual.json (s28), a marca.
 
   BEAT 0 (0–6,133) · MAPA PLANO, de cima, sobre a MapTiler (tratamento C da identidade §6), sem relevo:
     · a ilha de San Lorenzo (ilha-san-lorenzo, OSM relation/3285474) em contorno --tinta de 6 px sobre 14 px escuros, SEM rótulo,
       entra em 0–0,5 s;
-    · a água abrigada: um HALO (gradiente radial sem borda) em --destaque a 25 % no centro, sobre a baía do Callao, entre a ilha e
-      La Punta (0,5–1,0 s). É halo, não área: sem polígono publicado do abrigo, um contorno desenhado seria traçado no olho (ofício
-      §6c), e o textos-tela não traz "Schematic" para a s28; o halo aponta sem afirmar borda;
+    · a água abrigada: SEM marca desenhada (conserto peru-agua-arte-3, abaixo). O abrigo é a própria baía real no satélite, entre a
+      ilha contornada e La Punta;
     · 'Callao' (pílula, o ponto do Natural Earth, cidades-peru-ne) desde o 1º quadro; Lima apagada;
     · 'JANUARY 1535' (cota) em "January" (0,167); '“MUY BUEN PUERTO” (A VERY GOOD PORT)' + 'Translated from Spanish' + o crédito
       'Source: Bernabé Cobo, 1639 (1882 ed.)' em "very" (4,233); tudo fixo no alto à esquerda, longe da ilha;
@@ -36,7 +54,7 @@
       de 11,917 ao fim (250 ms) nada se move.
     · sem crédito na mesa (domínio público; o rótulo da página é a atribuição). O mapa fica parado por baixo (tempo do mapa preso
       em 6,133: nenhum tile novo).
-  ELEMENTOS: beat 0 = ilha, halo, Callao, JANUARY 1535, a citação, a legenda = 6 (o teto); beat 1 = página, rótulo, tradução,
+  ELEMENTOS: beat 0 = ilha, Callao, JANUARY 1535 (até 4,033), depois o cartão da fala e as 2 legendas = 5; beat 1 = página, rótulo, tradução,
   legenda = 4. TEXTOS VIVOS ≤ 4 nos dois.
 
   A MÍDIA: cobo-1882-p14.jpg 3414×5804, sha256 ad9f8a4c52caae3efff791cc5ab507ac2c197ee2619ce93d18b08558e3606435, aprovado para a
@@ -67,6 +85,12 @@
   .rotulo.legenda { padding: 16px 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; }
   .rotulo.duas { white-space: pre; }
   .rotulo.liso { -webkit-text-fill-color: transparent; }
+  /* O CARTÃO DA FALA CITADA (peru-agua-arte-3, rodada 2; o da s13): a folha --papel, a fala em Inter 700 a --fs-fala, --tinta-escura */
+  .cartao-fala { position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap;
+    background: var(--papel); border-radius: var(--cantos); padding: 56px 72px 52px;
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--fundo) 55%, transparent); }
+  .cartao-fala .fala { font-family: var(--fonte); font-weight: 700; font-size: var(--fs-fala); line-height: 1.12;
+    color: var(--tinta-escura); letter-spacing: 0; white-space: nowrap; }
   #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
   .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
     font: 500 56px/1.15 sans-serif; font-family: var(--fonte); font-size: var(--fs-credito); letter-spacing: 0;
@@ -108,18 +132,11 @@
 <div id="palco">
   <div id="map"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="gHalo">
-        <stop offset="0" style="stop-color: var(--destaque); stop-opacity: 0.25"/>
-        <stop offset="0.55" style="stop-color: var(--destaque); stop-opacity: 0.16"/>
-        <stop offset="1" style="stop-color: var(--destaque); stop-opacity: 0"/>
-      </radialGradient>
-    </defs>
-    <ellipse id="halo" cx="0" cy="0" rx="380" ry="290" fill="url(#gHalo)" opacity="0"/>
   </svg>
   <div id="rotulos">
     <div class="rotulo caixa" id="cotaJan" data-qc-papel="rotulo">JANUARY 1535</div>
-    <div class="rotulo" id="rotPuerto" data-qc-papel="rotulo">“MUY BUEN PUERTO” (A VERY GOOD PORT)</div>
+    <div class="cartao-fala" id="citPuerto"><div class="fala" data-qc-papel="heroi">“muy buen puerto”</div></div>
+    <div class="rotulo legenda" id="legPuerto" data-qc-papel="legenda">A very good port</div>
     <div class="rotulo legenda" id="legTrad" data-qc-papel="legenda">Translated from Spanish</div>
     <div class="rotulo liso" id="rotCallao" data-qc-papel="rotulo">Callao</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
@@ -173,26 +190,26 @@
     aneis: [],
     rotulos: [
       { id: "rotCallao", ref: "CALLAO", lado: "direita", vert: "centro", dx: 40, dy: 0, entra: 0, sai: CORTE - 0.03, dOut: 0.02 },
-      { id: "cotaJan",   tela: [200, 200], lado: "direita", vert: "baixo", entra: 0.167, sai: CORTE - 0.03, dOut: 0.02 },
-      { id: "rotPuerto", tela: [200, 410], lado: "direita", vert: "baixo", entra: 4.233, sai: CORTE - 0.03, dOut: 0.02 },
-      { id: "legTrad",   tela: [200, 620], lado: "direita", vert: "baixo", entra: 4.233, sai: CORTE - 0.03, dOut: 0.02 }
+      { id: "cotaJan",   tela: [200, 200], lado: "direita", vert: "baixo", entra: 0.167, sai: 3.783, dOut: 0.25 },   // some até 4,033 ("had")
+      { id: "citPuerto", tela: [200, 160], lado: "direita", vert: "baixo", entra: 4.033, sai: CORTE - 0.03, dOut: 0.02 },
+      { id: "legPuerto", tela: [200, 606], lado: "direita", vert: "baixo", entra: 4.033, sai: CORTE - 0.03, dOut: 0.02 },
+      { id: "legTrad",   tela: [200, 755], lado: "direita", vert: "baixo", entra: 4.033, sai: CORTE - 0.03, dOut: 0.02 }
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
     creditos: [
       { id: "crMapa", mapa: true, entra: 0, sai: CORTE },
-      { id: "crCobo", janelas: [[4.233, CORTE]] }   // entra inteiro, como o de mapa (o portao-mapa rodape mede na palavra)
+      { id: "crCobo", janelas: [[4.033, CORTE]] }   // entra inteiro, como o de mapa (o portao-mapa rodape mede na palavra)
     ]
   };
-  var HALO = [-77.1665, -12.0575];   // o centro do halo: a água da baía, a nordeste da ilha e ao norte de La Punta
   var MESA = {
     W: 3116.4, H: 631.76, cx: 1920, cy: 1000,
     pouso: CORTE, rot0: -1.2, rot1: 0.6,
     camChega: 6.76, camEscala: 1.012, repouso: 11.917,
-    grifos: [ { id: "g1a", t0: 7.033, t1: 8.247 }, { id: "g1b", t0: 8.247, t1: 8.86 }, { id: "g2", t0: 10.333, t1: 11.80 } ],
+    grifos: [ { id: "g1a", t0: 7.033, t1: 8.247 }, { id: "g1b", t0: 8.247, t1: 8.86 }, { id: "g2", t0: 9.933, t1: 11.80 } ],
     textos: [
       { id: "rotPag",   y: 400,  entra: 7.083, sai: null },
-      { id: "trad1",    y: 1410, entra: 7.033, sai: 10.033 },
-      { id: "trad2",    y: 1410, entra: 10.333, sai: null },
+      { id: "trad1",    y: 1410, entra: 7.033, sai: 9.633 },
+      { id: "trad2",    y: 1410, entra: 9.933, sai: null },
       { id: "legTrad2", y: 1620, entra: 7.033, sai: null }
     ]
   };
@@ -215,12 +232,6 @@
     quadro: function (t, A) {
       var v = t < CORTE ? A.eo(A.seg(t, 0, 0.5)) : 0;
       A.terr("ilha", v, 0);
-      var h = A.E("halo");
-      if (h) {
-        var p = A.project(HALO);
-        h.setAttribute("cx", p.x.toFixed(2)); h.setAttribute("cy", p.y.toFixed(2));
-        h.setAttribute("opacity", (t < CORTE ? A.eo(A.seg(t, 0.5, 0.5)) : 0).toFixed(3));
-      }
     },
     depois: function (t, A) { mesaQuadro(t, A); }
   };
