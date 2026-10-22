@@ -1395,6 +1395,136 @@ COBERTURA: 4 de 4 (esta reconferência: todo texto e toda instrução que o diff
 NOTA: 10/10
 VEREDITO: RESSALVA. No texto de tela do lote B não há DIVERGE nem REFUTADA. Seguram a RESSALVA os 17 NÃO FOI CHECADO e a cena construída da s16 (R4-2), que é trabalho da Arte.
 
+## Reconferência 6 (texto-4, sobre da7c651d…)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `da7c651db345f93135393e1b57fbf01805287300c86660933a76fcec8dd0b3e8`.
+- **Comparado com:** a cópia de antes, `out/peru-agua/_tmp/redator/antes-consertos-5/textos-tela.json.a0b58f31`, que confere com o sha256 `a0b58f31…`.
+- **O diff, item a item na mesma posição:**
+  - 33 itens de `_textos_por_cena` mudaram: 31 textos, a pílula da caça da s01 e a linha "nada" da s52;
+  - em todos mudaram só `t0` ou `t1` e a `nota`. O `texto` e o `papel` estão iguais byte a byte nos 33;
+  - mudaram também `_instrucoes_para_a_arte` (6 linhas novas) e `_pedidos_a_montante` (2 linhas novas);
+  - há duas seções novas, `_conflitos_para_a_sala` e `_ficou_como_estava_texto4`;
+  - `_consertos` e `_entradas_sha256` são de máquina.
+- **Os tempos:** a voz vem de `out/peru-agua/words.json` (`w`, `start`). O tempo relativo é `start − inSec` do `espelho.json` › `segmentos`: s04 34,067; s06 53,067; s18 176,0; s19 190,833; s36 428,667; s52 689,933; as outras pelo mesmo cálculo.
+- **A antecipação** é o tempo entre o `t0` e o começo da palavra da voz que diz o que o texto diz.
+- **Os fatos citados** foram conferidos contra `out/peru-agua/regencia.json` e, como texto, contra `out/peru-agua/graphics/s36.html` e `s06.html`.
+- **Limites:** 0 imagens, nenhum navegador, nenhuma busca; nada foi gravado no canal.
+- **A fonte dos números e rótulos não se reabriu, porque o texto não mudou:** cita-se o id em que ela foi confirmada (TB… deste lote; PA… e F… para o lote A).
+
+**Os 33 itens mudados**
+
+| id | cena | texto (igual) · papel | antes → agora | a voz na janela nova | antecipação | fonte já confirmada | veredito |
+|---|---|---|---|---|---|---|---|
+| RB91 | s01 | (lugar_na_origem do s01-a) · rotulo [caca] | 0,3–1,867 → 0,3–3,2 | "A line runs along the Andes and divides Peru." Sai antes de "East" (3,23), no fim do aéreo (o regime aereo-real vai de 0 a 3,2 s, no `espelho.json`) | — (o texto espera a caça) | — | o tempo: CONFIRMADA; o texto: NÃO FOI CHECADO (espera a caça), como antes |
+| RB92 | s03 | 0.3 INCHES (8 mm) · cota | 5,266 → 4,866 | "about a third of an inch of rain a year" (about 4,873) | 0,01 s | lote A (o 8 mm do SENAMHI; F069) | CONFIRMADA |
+| RB93 | s03 | OF RAIN A YEAR · legenda | 5,266 → 4,866 | idem | 0,01 s ("about") | idem | CONFIRMADA |
+| RB94 | s03 | Source: SENAMHI (Peru), 1981–2010 average · credito | 5,266 → 4,866 | idem | cobre a cota todo o tempo | idem | CONFIRMADA |
+| RB95 | s03 | LIMA 9.6 M + CALLAO 1.0 M = 10.6 M · cota | 10,0 → 9,6 | "home to more than ten million people" (more 9,633) | 0,03 s | F145 (= TB063) | CONFIRMADA |
+| RB96 | s03 | Source: INEI (Peru), 2025 census · credito | 10,0 → 9,6 | idem | cobre a cota todo o tempo | F145 | CONFIRMADA |
+| RB97 | s04 | A SINGLE TUNNEL · EARLY 1960s · heroi | t1 10,533 → 10,867 | "built in the early nineteen sixties" (early 8,873); depois, "So why…" (10,553), que não contradiz | 0,01 s | F247 (lote A) | CONFIRMADA. O recuo vai de 10,533 a 14,067, e a regência (s04 › beats[2]) diz "the labels leave before the pull-back ends (300 ms); by 48.1 s nothing in the vignette area". Sair em 10,867, com o fade até 11,167, fica antes do fim do recuo e antes de 48,1 s absolutos (14,03 relativo) |
+| RB98 | s04 | Sources: SENAMHI (Peru), 2016; Defensoría del Pueblo (Peru), 2025 · credito | t1 → 10,867 | idem | cobre o herói todo o tempo | F247 e Defensoría (TA032) | CONFIRMADA |
+| RB99 | s06 | ATLANTIC · rotulo | t1 11,066 → 12,266 | "A small part of the south drains…" (11,073–12,283): é rótulo do oceano, e a voz já passou ao Titicaca, sem contradizer | — (o nome entrou em "Atlantic.", 10,048) | lote A (PA003) | CONFIRMADA. A instrução prende o rótulo ao mapa e o tira se o oceano sair do quadro |
+| RB100 | s06 | LAKE TITICACA BASIN · rotulo | 12,833 → 12,8 | "drains into Lake Titicaca" (Lake 12,843) | 0,04 s | PA003 | CONFIRMADA |
+| RB101 | s06 | Lake Titicaca (Puno) · rotulo | 12,833 → 12,8 | idem | 0,04 s | PA005 | CONFIRMADA |
+| RB102 | s06 | Diego Delso, delso.photo / Wikimedia Commons · CC BY-SA 4.0 · credito | 12,833 → 12,8 | — | cobre a miniatura | PA005 | CONFIRMADA |
+| RB103 | s06 | LIMA REGION · rotulo | 18,733 → 18,433 | "through the Lima region itself" (through 18,463; Lima 18,763) | 0,33 s até "Lima" | PA007 | CONFIRMADA |
+| RB104 | s08 | ABOUT 90 MILES LONG (145 km) · cota | 1,3 → 1,1 | "Lima's own river, the Rímac, is one of them." **A voz não diz o número**; conferido: nenhuma palavra de comprimento de 0 a 3,1 s. A entrada fica em "the Rímac" (1,138) | a voz não diz | PA008 | CONFIRMADA |
+| RB105 | s08 | Source: ANA (Peru), 2014 · credito | 1,3 → 1,1 | idem | cobre a cota | PA008 | CONFIRMADA |
+| RB106 | s09 | ABOUT 6 PEOPLE PER SQ MI · cota | 8,4 → 7,866 | "is also one of its most thinly populated". **A voz não diz o número**; o que ela diz em palavras é "thinly" (8,413) | a voz não diz o número; 0,55 s até "thinly" | PA010 | CONFIRMADA |
+| RB107 | s09 | 2.4 per km² · 2017 · legenda | 8,4 → 7,866 | idem | idem | PA010 | CONFIRMADA |
+| RB108 | s09 | Source: INEI (Peru), 2017 census · credito | 8,4 → 7,866 | idem | cobre a cota | PA010 | CONFIRMADA |
+| RB109 | s09 | Source: Harvard Growth Lab, 2023 · credito | 14,333 → 14,0 | "as Harvard's Growth Lab puts it" (as 14,013; Harvard's 14,333) | 0,33 s até "Harvard's" | PA010 | CONFIRMADA |
+| RB110 | s17 | ALMOST ALL OF IT DRIZZLE · legenda | 3,166 → 2,966 | "rain, almost all of it drizzle" (almost 3,183) | 0,22 s | lote A (SENAMHI 2021: "en forma de lloviznas", F069) | CONFIRMADA |
+| RB111 | s19 | Lima · rotulo | 0,967 → 0,634 | "The dry side gets real rain too". **A voz não diz "Lima"**; conferido: só "dry side", "real rain" de 0 a 2,8 s. São os pontos das estações que a frase introduz (real 0,967) | a voz não diz; 0,33 s até "real" | PA027 e PA028 | CONFIRMADA |
+| RB112 | s19 | Matucana · rotulo | 0,967 → 0,634 | idem; **a voz não diz "Matucana"** | idem | PA027 | CONFIRMADA |
+| RB113 | s19 | HIGH UP: MOSTLY DECEMBER–MARCH · legenda | 4,1 → 3,434 | "mostly high up, and most of it from December to March" (most 3,447; December 4,112). "high up" já foi dito em 2,647 | 0,01 s até "most"; 0,68 s até "December" | PA027 (83,9 % dez.–mar.) | CONFIRMADA |
+| RB114 | s22 | ABOUT 90 MILES NORTH OF LIMA · legenda | 5,6 → 5,2 | "about ninety miles north of Lima" (about 5,22) | 0,02 s | PA033 | CONFIRMADA |
+| RB115 | s35 | Villa El Salvador · rotulo [caca] | 19,5 → 19,234 | "That ground became Villa El Salvador" (Villa 19,502) | 0,27 s | — (espera a caça, TB079) | o tempo: CONFIRMADA; o texto: NÃO FOI CHECADO, como antes |
+| RB116 | s35 | Villa El Salvador · rotulo [sem_caca] | 19,5 → 19,234 | idem | 0,27 s | F160 (TB080) | CONFIRMADA |
+| RB117 | s36 | Photo from 1997 · aviso_ano | 8,333 → 8,166 | "Peruvians call them barriadas." A voz não fala do ano: o aviso é da foto | — (preso à foto, não à voz) | PB020 (TB087) | CONFIRMADA no texto. Ver RB133 sobre o `s36.html` |
+| RB118 | s36 | \*barriadas\* · legenda | 8,9 → 8,666 | "call them barriadas" (barriadas 8,903) | 0,24 s | F164 (TB088) | CONFIRMADA |
+| RB119 | s38 | ABOUT A QUARTER · heroi | 7,9 → 7,4 | "falls to about a quarter of that" (falls 7,46; about 7,925) | 0,53 s | PB022 (TB102) | CONFIRMADA. Nada na janela contradiz, e a coluna cai na mesma frase; a forma vai em conflito à Sala (RB124) |
+| RB120 | s42 | AND WELLS · legenda | 9,167 → 8,167 | "the Chillón and the Lurín, and on wells" (Lurín 8,07; and 8,69; wells 9,19) | 1,02 s até "wells" | F191 (TB151) | CONFIRMADA. Não contradiz: entra no fim de "Lurín", na mesma frase. A antecipação de 1 s é o conflito que vai à Sala (RB125) |
+| RB121 | s47 | FREE · heroi | 15,6 → 15,234 | "AFP reported that those deliveries were free." (that 15,277; deliveries 15,602; free 16,412) | 1,18 s até "free"; 0,37 s até "deliveries" | F214 (TB187) | CONFIRMADA. Não contradiz, e o crédito da AFP (14,134–17,234) atribui. A antecipação vai em conflito à Sala (RB126) |
+| RB122 | s52 | Rímac · rotulo | t1 7,567 → 8,034 | "toward the Rímac." (6,617); fica 0,43 s em "Peru lives…" (Peru 7,597; lives 8,057), sem contradizer | — (o nome entrou em 6,267, 0,35 s antes de "Rímac") | F251 (TB237) | CONFIRMADA |
+| RB123 | s52 | (nenhum texto novo) · nada | 7,567 → 8,034 | começa em "lives" (8,057) | — | TB238 | NADA A CHECAR (fora da conta) |
+
+**`_conflitos_para_a_sala`**
+
+| id | cena | o que se conferiu | veredito |
+|---|---|---|---|
+| RB124 | s38, ABOUT A QUARTER | "about" está em 7,925: o número de hoje entra 0,525 ≈ 0,53 s antes. A opção 2 ("about" + 2,0) dá 9,925 ≈ 9,93. A opção 3 (7,9–9,4) dá 1,5 s. O corte para o footage em 9,4 é o beat da regência (s38 › beats[1], 3,267–9,4) | os números conferem; as três opções são fiéis ao texto, e a escolha é da Sala |
+| RB125 | s42, AND WELLS | "wells" está em 9,19 (9,167 na grade): 1,02 s de antecipação. A opção 2 dá 9,167 + 2,0 = 11,167 ≈ 11,17. A opção 3 dá 1,0 s. A razão da opção 4 ("nenhum lugar de poço foi lido") é o que a própria regência diz: "the wells only as words … (no well location was read, so no point)" (s42 › beats[1]); a Defensoría dá só "442 pozos (4,84 m3/s)", sem lugar (F191) | os números e a razão conferem |
+| RB126 | s47, FREE | "free" está em 16,412: 1,18 s de antecipação. A opção 2 ("deliveries", 15,6): 17,234 − 15,6 = 1,634 ≈ 1,63 s, que é a escolha da regência ("'FREE' at 'deliveries' (15.6 s)", s47 › beats[3]). A razão da opção 3 ("a voz fecha a frase sozinha, com o crédito da AFP") é verdade: a voz diz "AFP reported that those deliveries were free.", e o crédito "Source: AFP, March 2025" fica de 14,134 a 17,234 | os números e a razão conferem |
+
+**`_ficou_como_estava_texto4`, contra o arquivo**
+
+| id | cena | o que a seção diz | o arquivo | veredito |
+|---|---|---|---|---|
+| RB127 | s18 | MORE THAN 6 FT (2,013 mm), cota, 1,77 s | 13,067–14,833 = 1,766 s, cota | CONFIRMADA |
+| RB128 | s18 | OF RAIN A YEAR, legenda, 1,77 s | 13,067–14,833 = 1,766 s, legenda | CONFIRMADA |
+| RB129 | s18 | ANDES, Schematic, UP TO ABOUT 16,000 FT, EASTERN SLOPES, Satipo, de 2,1 a 13,3 s | 8,7 · 13,333 · 2,1 · 4,167 · 2,933 s; os papéis batem | CONFIRMADA |
+| RB130 | s36 | Lima, rotulo, 1,83 s, "150 ms depois do assentamento" | 8,333–10,166 = 1,833 s; o assentamento é 7,633 + 0,55 = 8,183 (s36.html, `pouso: CORTE`, `eo(u / 0.55)`), e 8,183 + 0,15 = 8,333 | CONFIRMADA |
+| RB131 | s36 | Lima and Callao, a cota e a legenda de 1981, de 4,5 a 7,6 s | 7,633 · 4,467 · 4,467 s; os papéis batem | CONFIRMADA |
+| RB132 | s52 | Laguna Marcapomacocha e EVERY MAY 1, de 7,2 a 7,6 s | 7,567 · 7,2 s; rotulo e legenda | CONFIRMADA |
+
+**As afirmações novas nas instruções à Arte e nos pedidos a montante**
+
+| id | o quê | o que se conferiu | veredito |
+|---|---|---|---|
+| RB133 | s36: "Photo from 1997" em 8,166, com o fade começando enquanto a foto assenta (8,183); "Lima" em 8,333; "\*barriadas\*" em 8,666. A nota diz que a foto pousa no corte (7,633) e assenta em 0,55 s, com queda de −240 px, escala de 0,72 a 1,03 e −2° a −1,5° | `s36.html`: `var CORTE = 7.633`; `pouso: CORTE, rot: -1.5`; `quedaEm…: -240 * (1 - A.eo(u / 0.55))`; "escala 0,72 → 1,03 até 0,33 s e assenta em 1,00 até 0,55 s"; `r = -2 + (rot + 2) * a`. Os fatos citados conferem. **Mas a cena construída ainda está nos tempos de antes:** `aviso … A.seg(t, 8.333, 0.3)` (l. 279) e `legBarr … entra: 8.9` (l. 185). Achado R6-1 | CONFIRMADA no texto; a cena construída está pendente |
+| RB134 | s06: a miniatura de Puno pousa em ~12,1 e assenta até ~12,65, para o rótulo entrar em 12,8 | 12,1 + 0,55 = 12,65, e 12,65 + 0,15 = 12,8: a conta fecha. **Duas ressalvas, achado R6-2:** (1) na `s06.html`, a miniatura não tem pouso: `aplicarMini` só a mostra com a opacidade da pílula `rotPuno` (`entra: 12.833`), e o pouso é trabalho novo da Arte; (2) a câmera volta ao sul de 11,07 a 13,07 (`s06.html` l. 38), e a miniatura pousaria com a câmera ainda andando | CONFIRMADA (a conta); a Arte e o `qc` olham o pouso |
+| RB135 | s06: ATLANTIC até 12,266, "durante a volta da câmera para o sul" | a volta vai de 11,07 a 13,07 (`s06.html` l. 38) | CONFIRMADA |
+| RB136 | s04: o rótulo e o crédito de "early" (8,866) a 10,867, "0,33 s dentro do recuo, como a regência deixa" | a regência: "the labels leave before the pull-back ends (300 ms)", e o recuo acaba em 14,067; 10,867 − 10,533 = 0,334 | CONFIRMADA |
+| RB137 | s19: os pontos de Lima e Matucana acendem em 0,634, com os nomes (a regência tinha "real", 0,967); "HIGH UP" em "most" (3,434), 0,8 s depois do gráfico (2,634) | a regência, s19 › beats[0]: "at 'real rain too' the points of Lima and Matucana … light"; "real" está em 0,967; 3,434 − 2,634 = 0,8 | CONFIRMADA |
+| RB138 | s52: a pílula do Rímac até "lives" (8,034), 0,47 s no beat do fecho | "lives" está em 8,057; 8,034 − 7,567 = 0,467 | CONFIRMADA |
+| RB139 | pedido, s06 › beats[3]: "a miniatura de Puno pousa em ~12,1 … (era 'Lake', 12,833)" | a regência, s06 › beats[3] (11,067–14,8), **não nomeia "Lake"**: diz só "the real lake thumbnail … lands next to the label". O 12,833 em "Lake" está no `s06.html` (l. 38, `rotPuno entra: 12.833`) e no texto de antes. O pedido atribui à regência um tempo que é da cena (R6-2) | CONFIRMADA (a conta); o "era" aponta a fonte errada |
+| RB140 | pedido, s19 › beats[0]: os pontos em 0,634 (era "real", 0,967) | idem RB137 | CONFIRMADA |
+
+**Os achados:**
+1. **[LEVE] R6-1 · s36, a cena construída está atrás do texto.** O `s36.html` põe o aviso em 8,333 (l. 279) e "barriadas" em 8,9 (l. 185); o texto pede 8,166 e 8,666. É trabalho da Arte, como o R4-2 da s16.
+2. **[LEVE] R6-2 · s06, o pouso da miniatura.**
+   - O pedido diz "era 'Lake', 12,833" como se fosse a regência, e o tempo é da cena e do texto de antes.
+   - A miniatura da `s06.html` não tem pouso nenhum: aparece com a pílula. O pouso em ~12,1–12,65 é trabalho novo, com a câmera ainda voltando ao sul (até 13,07).
+   - A conta dos 150 ms fecha.
+3. **Antecipações acima de 0,5 s, sem contradição de fato:**
+   - s09: 0,55 s até "thinly" (a voz não diz o número);
+   - s38: 0,53 s;
+   - s42: 1,02 s;
+   - s47: 1,18 s.
+   - As três últimas estão em `_conflitos_para_a_sala`, e a decisão é da Sala.
+
+**Não reconferido aqui:** o R4-2 (`s16.html`, `legLandsat entra: 7.767`). Esta tarefa não o trouxe.
+
+**Continuam NÃO FOI CHECADO:** os 12 rótulos da caça (os textos de RB91 e RB115 entre eles) e as 5 primárias do gob.pe.
+
+COBERTURA: 49 de 49 (esta reconferência: os 33 itens mudados, menos o "nada" da s52, que é NADA A CHECAR, mais 3 conflitos, 6 entradas de `_ficou_como_estava_texto4`, 6 instruções e 2 pedidos)
+NOTA: 9/10
+VEREDITO: RESSALVA. No texto de tela não há DIVERGE nem REFUTADA. Os textos, os números e as fontes ficam como estavam, e nada do que a voz diz nas janelas novas contradiz a tela. Seguram a RESSALVA os 17 NÃO FOI CHECADO e as duas cenas construídas atrás do texto (R6-1, s36; R4-2, s16).
+
+**Corrigido na Reconferência 6, a pedido do setor** (o texto acima fica como estava, para registro):
+- **O que o setor apontou:** a regência nomeia "Lake" na s06. Conferi a linha em `out/peru-agua/regencia.json`, l. 403–409, s06 › beats[3] (11,067–14,8), no campo `entra`: `{"t": 12.833, "palavra": "Lake", "o_que": "the lake thumbnail lands"}`.
+- **De onde veio o meu engano:** li só o `exige` do beat, e não o `entra`.
+- **RB139, o veredito corrigido:** **CONFIRMADA.** O "era 'Lake', 12,833" do pedido aponta a fonte certa, a regência › s06 › beats[3] › `entra`. Fica sem efeito a frase "a regência … não nomeia 'Lake' … o 'era' aponta a fonte errada".
+- **R6-2, 1º ponto, corrigido:** fica sem efeito. O pedido não atribui à regência um tempo que seria da cena. O resto do R6-2 continua valendo:
+  - a miniatura da `s06.html` não tem pouso (aparece com a pílula `rotPuno`, `entra: 12.833`);
+  - pousar em ~12,1–12,65 é trabalho novo da Arte, com a câmera voltando ao sul até 13,07.
+  - O pedido muda o `entra` da regência de "Lake" (12,833) para ~12,1. A conta dos 150 ms fecha.
+- **Os itens que se apoiam na regência, reconferidos agora também pelo `entra`:**
+  - **RB134:** não se apoiou no engano. Ele cita o `s06.html` (sem pouso, a câmera até 13,07) e a conta 12,1 + 0,55 + 0,15 = 12,8. Fica CONFIRMADA (a conta).
+  - **RB97 e RB136 (s04):** o `entra` dá `{"t": 8.867, "palavra": "early", "o_que": "A SINGLE TUNNEL · EARLY 1960s"}`, de acordo com o que se conferiu.
+  - **RB111, RB112, RB137 e RB140 (s19):** o `entra` dá `"real"` 0,967 para os pontos e `"December"` 4,1 para "HIGH UP", de acordo com o "era" dos pedidos.
+  - **RB124 (s38):** o `entra` dá `"about"` 7,9, de acordo.
+  - **RB125 (s42):** o `entra` dá `"wells."` 9,167, a base dos ~11,17, de acordo.
+  - **RB126 (s47):** o `entra` dá `"deliveries"` 15,6, de acordo.
+  - **RB122 (s52):** o `entra` dá `"toward"` 6,267, de acordo.
+  - Nenhum outro item se apoiou no engano.
+
+COBERTURA: 49 de 49 (sem mudança)
+NOTA: 9/10
+VEREDITO: RESSALVA. Sem mudança: o R6-2 fica LEVE, só pelo pouso que falta na `s06.html`; o R6-1, os 17 NÃO FOI CHECADO e o R4-2 continuam.
+
 ---
 
 ## Fecho do setor
@@ -1408,6 +1538,16 @@ Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do la
 - RB47 em diante: as mudanças sobre `0c588d53…`, com 39 de 39 e RESSALVA.
 
 **A reconferência 5** está sobre `a0b58f31…` (a s30 e a s27), com 4 de 4. Com ela, o lote B ficou com o sha256 `95dc2469…`.
+
+**A reconferência 6 (texto-4, sobre `da7c651d…`)** está no fim do lote B (RB91–RB140), com 49 de 49. Ela cobre os tempos de 31 textos e da linha "nada" da s52, que vão a ≥ 2,0 s nas cenas da caça e na s06, e a ≥ 1,5 s nas prontas. Cobre também as notas, as instruções à Arte, os pedidos a montante, os conflitos e o que ficou como estava.
+- Nenhum texto mudou de letra ou de papel, e nada que a voz diz nas janelas novas contradiz a tela.
+- O verificador do lote B também conferiu os itens das cenas do lote A (s01–s27) que a tarefa mudou.
+- O setor achou e mandou corrigir um engano: o RB139 dizia que a regência não nomeia "Lake" na s06, e ela nomeia, no `entra`. A correção está em nota no fim, sem apagar o texto antigo.
+- **Os achados, todos para fora do texto:**
+  - R6-1, LEVE: o `s36.html` ainda está nos tempos antigos;
+  - R6-2, LEVE: o pouso da miniatura de Puno, que falta no `s06.html`;
+  - as antecipações acima de 0,5 s (s09, s38, s42 e s47), que são escolha da Sala.
+- Com ela, o lote B ficou com o sha256 `da44c05e…61460`.
 
 O texto de tela não tem DIVERGE nem REFUTADA. A RESSALVA é só pelos NÃO FOI CHECADO: os rótulos da caça e as primárias do gob.pe.
 
