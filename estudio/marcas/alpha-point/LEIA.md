@@ -109,9 +109,7 @@ de imagens do qc-visual (M11). Tudo continua em `marca/agentes/`, `CLAUDE.md` e 
 1. Crédito: mantém 56 px com exceção permanente no motor, ou sobe para 72 px?
 2. YouTube: os vídeos saem em People & Blogs (22, medido em 21/out); fica, ou vai para Education (27)? Qual o e-mail de contato profissional? Há playlist geral,
    e qual o id? O que marca em «conteúdo alterado ou sintético» (o perfil está em «sim»)? O canal está monetizado?
-3. ElevenLabs: com a conta própria, a voz `829pig94w9GefZ9jJQYl` passa para ela (compartilhada ou recriada pelas fichas
-   de `marca/vozes.html`)?
-4. B-roll genérico sem a assinatura da Top10: de onde vem?
-5. Pendências antigas da marca, se quiser fechar: norte para cima ou órbita no mapa; bandeira do Canadá na prancha; vídeo
+3. B-roll genérico sem a assinatura da Top10: de onde vem?
+4. Pendências antigas da marca, se quiser fechar: norte para cima ou órbita no mapa; bandeira do Canadá na prancha; vídeo
    de época abaixo de 4K; a palavra de foto de arquivo (`FILE`); grifo fixo; papel da manchete; nota de tradução; a
    ilustração sobre o mapa depois do Peru; a voz da chamada; o arranjo da tela final no Studio.

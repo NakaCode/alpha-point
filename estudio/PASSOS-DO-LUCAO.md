@@ -7,7 +7,7 @@ de hoje continua até você aprovar o vídeo piloto (o vídeo 5); o Peru você t
 O que fica com você, sempre: escolher a pauta entre opções, aprovar o roteiro, escolher título e capa, ver o vídeo pronto
 e publicar. O resto roda sozinho.
 
-Para isso, cada serviço precisa ser **seu**: conta Claude, ElevenLabs, Cloudflare (onde ficam os arquivos do canal) e a
+Para isso, cada serviço precisa ser **seu**: conta Claude, Cloudflare (onde ficam os arquivos do canal) e a
 autorização do YouTube. Nenhuma credencial passa por chat, e-mail ou mensagem. Você digita no próprio PC, num script que
 não mostra o que você digita, e manda para a Top10 só a **linha verde** que ele imprime no fim.
 
@@ -50,28 +50,11 @@ Ele pede uma senha para o usuário `alpha-prod`: crie uma forte e guarde com voc
    Ele pergunta o Account ID e o nome do bucket (Enter = `alpha-point`) e depois as duas chaves, sem mostrar na tela.
    Mande à Top10 a linha verde `GUARDADO …`.
 
-## 3 · ElevenLabs própria (a voz do canal)
+## 3 · ElevenLabs: nada a fazer
 
-A voz de hoje foi criada numa conta da ElevenLabs que outros canais também usam, e a licença dela não deixa o seu canal
-continuar ali. Ela também não pode ser levada para outra conta: a ElevenLabs só compartilha voz criada por Voice Design
-dentro do mesmo workspace. Por isso a voz do canal nasce de novo, na sua conta, e **quem aprova é o seu ouvido**.
-
-1. Crie a sua conta em elevenlabs.io no **plano Pro ou maior**. O canal grava a voz em PCM a 44,1 kHz, e a ElevenLabs só
-   entrega esse formato do Pro para cima (documentação da API, lida em 21/out/2026). Um vídeo gastou cerca de 6 mil
-   créditos (6.427 no da Zona do Canal, 5.678 no do Peru): confira na página de preços quantos créditos o plano dá por
-   mês. O Pro custava US$ 99 por mês em 09/out/2026.
-2. Recrie a voz pelo mesmo caminho da de hoje (as fichas estão em `marca/vozes.html`): **Voice Design** com a descrição
-   do âncora de uns 35 anos, depois o **Remix** «conversational» e o «calm». Ouça as opções e escolha. Se preferir, a Top10
-   prepara as opções e manda os áudios para você escolher.
-3. Crie a chave de API (Profile → API Keys) com acesso a **Text to Speech**, **Voices** (leitura) e **History**
-   (leitura). O History é o que deixa o relógio de palavras sair de graça.
-4. No PowerShell como administrador:
-
-   ```
-   powershell -NoProfile -ExecutionPolicy Bypass -File C:\estudio\maquina\guardar-segredo-no-cofre.ps1 -Canal alpha-point -Segredo elevenlabs
-   ```
-
-   Mande à Top10 a linha verde e o **ID da voz escolhida** (o voice ID não é segredo; a chave é).
+O canal continua na conta da ElevenLabs da Top10, com uma chave só do Alpha Point (decisão do Mateus, 22/out/2026), e a
+voz de hoje fica a mesma (`Alpha Point - Narrator`, `829pig94w9GefZ9jJQYl`). A Top10 cria a chave e a põe no cofre do PC;
+você não cria conta nem escolhe voz nova. Se um dia quiser trocar a voz, a mesma chave permite desenhar uma.
 
 ## 3b · As outras chaves do canal (MapTiler, Epidemic e acervos)
 

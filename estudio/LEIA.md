@@ -23,7 +23,7 @@ node scripts/lib/canal.mjs --canal=<clone do alpha-point>/estudio conferir     #
 
 Conferido em 21/out/2026 contra o `origin/main` `9828329a1`: contrato do app e do motor válidos, travas de sócio
 satisfeitas (bucket próprio, pool `canal`, sem caça de stock assinado, faixa 0/0/0, cobertura 100 %, sem M28/M32/M33), e
-o perfil de publicação válido no contrato estrito. **Único achado: a voz é `$pendente`** (abaixo).
+o perfil de publicação válido. Sem achados desde 22/out/2026, quando a voz deixou de ser `$pendente` (abaixo).
 
 ## De onde vem cada valor do `canal-motor.json`
 
@@ -32,7 +32,7 @@ o perfil de publicação válido no contrato estrito. **Único achado: a voz é 
 | `idioma` | en-US | `canal.json` da raiz › `idiomas.origem` |
 | `roteiro.fonte` | obra | narração sintética: o texto aprovado congelado na obra é o que vira voz (exigência do motor) |
 | `rosto` | sem apresentador, 0/0/0, 100 %, sem M28/M32/M33 | faceless (`marca/identidade.md` §0 e §5) |
-| `narracao.voice_id` | `$pendente` | a voz de hoje (`829pig94w9GefZ9jJQYl`) foi feita por Voice Design na conta da ElevenLabs compartilhada com outros canais. Voz desse tipo só se compartilha dentro do mesmo workspace, nunca com outra conta (ElevenLabs, «How do I share a voice?», lido em 20/out/2026). Na conta própria do Lucão nasce uma voz nova, que ele aprova ouvindo |
+| `narracao.voice_id` | `829pig94w9GefZ9jJQYl` | a voz de hoje (`Alpha Point - Narrator`, `canal.json` da raiz). O canal fica na conta da ElevenLabs da Top10 com uma chave de conta de serviço só dele (`qint-alpha-point`), por decisão do Mateus (22/out/2026 ~01:15Z, repassada pela frente 15); a chave vai ao cofre do PC como `ELEVENLABS_API_KEY`. De 20 a 22/out o campo esteve `$pendente`, porque o plano era a conta própria do Lucas, para onde a voz de Voice Design não se leva |
 | `model_id`, `voice_settings`, `output_format`, `language_code` | eleven_v4, 0,5/0,75, pcm_44100, en | `canal.json` da raiz › `narracao` (07/10/2026); `out/zona-do-canal/narracao.json` |
 | `pausa_entre_trechos_s` | 0,25 | um pedido por parágrafo, pausa 0,25 s (`canal.json` › `narracao_v4_decidido`) |
 | `cauda_s` | 20 | 20 s sem voz para a tela final (Lucas, 26/09/2026) |
