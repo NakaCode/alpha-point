@@ -1,8 +1,10 @@
 # O que só o Lucão faz, uma vez
 
-O motor novo produz o Alpha Point no PC do escritório (`lucasrosa-escritorio`), num usuário só dele (`alpha-prod`), sem
-conversa aberta e sem mexer no seu usuário (`zangp`), na pasta `C:\projetos\alpha-point` nem nas sessões do app. O jeito
-de hoje continua até você aprovar o vídeo piloto (o vídeo 5); o Peru você termina no jeito atual, depois de 22/10.
+O motor novo produz o Alpha Point no PC do escritório (`lucasrosa-escritorio`), no seu mesmo usuário do Windows, para
+você ver tudo o que ele faz, sem conversa aberta. Ele trabalha na pasta `C:\estudio\` e numa distro do WSL só dele
+(`estudio-alpha-point`), sem mexer na pasta `C:\projetos\alpha-point`, nas suas sessões do app nem nas distros que você
+já usa. O jeito de hoje continua até você aprovar o vídeo piloto (o vídeo 5); o Peru você termina no jeito atual, depois
+de 22/10.
 
 O que fica com você, sempre: escolher a pauta entre opções, aprovar o roteiro, escolher título e capa, ver o vídeo pronto
 e publicar. O resto roda sozinho.
@@ -21,16 +23,16 @@ nesse PC, sentado nele ou pelo acesso remoto.
 - **Normal** (só o `claude setup-token` do passo 4): menu Iniciar → `PowerShell` → Enter. O prompt mostra
   `PS C:\Users\zangp>`.
 
-## 1 · O usuário da produção (se a Top10 ainda não fez com você)
+## 1 · As pastas da produção (se a Top10 ainda não fez com você)
 
-No PowerShell como administrador:
+Entre no Windows com o seu usuário de sempre. No PowerShell como administrador:
 
 ```
 powershell -NoProfile -ExecutionPolicy Bypass -File C:\estudio\maquina\preparar-maquina-producao.ps1 -Canal alpha-point -Ligado24h
 ```
 
-Ele pede uma senha para o usuário `alpha-prod`: crie uma forte e guarde com você (as rotinas não precisam dela). Tire o
-`-Ligado24h` se este PC não puder ficar ligado o tempo todo. Mande à Top10 a linha verde `PRONTO …`.
+Ele não cria usuário nem pede senha: anota que a produção é do seu usuário e cria `C:\estudio\`. Tire o `-Ligado24h` se
+este PC não puder ficar ligado o tempo todo. Mande à Top10 a linha verde `PRONTO …` (ela deve dizer `modo=mesmo-usuario`).
 
 ## 2 · Cloudflare (onde ficam os vídeos e o backup do canal)
 
