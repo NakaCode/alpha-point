@@ -98,7 +98,7 @@ a 3, está em `musica/paleta.json`; com o sim dele, a linha é
 
 ## O PC de produção
 
-Os scripts do PC (inventário do disco, preparo do usuário `alpha-prod` e de `C:\estudio\`, cofre das credenciais do
+Os scripts do PC (inventário do disco, preparo de `C:\estudio\` no usuário do próprio Lucas, cofre das credenciais do
 Lucão, backup no R2 do canal) são comuns aos três canais da Qint e moram num lugar só: `scripts/socio/maquina/` no
-`top10-estudio` (commits `d0179afcc` e `a1ec2d20e`, com o README da convenção). No PC, a Top10 os copia para `C:\estudio\maquina\`.
+`top10-estudio` (desde `d0179afcc`; a produção no usuário do sócio e a distro só do motor, `estudio-alpha-point`, desde `5864d9993`, pela decisão do Mateus de 22/out/2026; o README tem a convenção). No PC, a Top10 os copia para `C:\estudio\maquina\`.
 O que o Lucão roda está em `PASSOS-DO-LUCAO.md`.
