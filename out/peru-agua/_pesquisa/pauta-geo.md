@@ -1,6 +1,6 @@
 # Peru (peru-agua) — a geometria (pesquisa-geo, 22/10/2026)
 
-Registro de cada camada de `out/peru-agua/_media/geo/`. O contrato é o `pauta-geo.json` ao lado (34 itens e 5 bloqueios).
+Registro de cada camada de `out/peru-agua/_media/geo/`. O contrato é o `pauta-geo.json` ao lado (35 itens e 5 bloqueios).
 Este arquivo dá a fonte, a data, a fidelidade medida e o crédito de cada uma. Tudo em WGS84, lon/lat em graus decimais. Cada
 `.json` tem o seu `.js` (o que a cena carrega). O relato da tarefa está em `out/peru-agua/_tmp/pesquisa-geo/relato.md`.
 
@@ -95,11 +95,46 @@ deserto de outra fonte.
 | `rio-chillon` · `rio-lurin` · `rio-santa-eulalia` · `rio-supe` | idem | OSM relations 11643078 · 5149111 · 11750952 · 12024858 | ODbL | 1 cada | 135,1 · 90,5 · 43,3 · 96,9 km; o Santa Eulalia não inclui o trecho Milloc → Pillica |
 | `rio-moche` | vale-moche, canal-chan-chan | OSM relation/4637091 | ODbL | 1 | 83,2 km; passa a 7,1 km de Chan Chan |
 | `rio-chicama` | vale-chicama, canal-chan-chan | OSM relation/4637088 | ODbL | 1 | 166,6 km; o ponto mais perto de Chan Chan é a foz, a 29,6 km |
+| `agua-landsat5-1998-06-03` | (sem need: pedido da Sala, s16 plano 2) | Landsat 5 TM `LT05_L2SP_011064_19980603_02_T1`, 03/06/1998 (USGS), máscara MNDWI/NDWI | domínio público, sem crédito na tela | 1 (24 polígonos, 49 buracos) | a água na imagem de 03/06/1998, grade de ~182 m, mínimo 30 px (≈ 0,99 km²), DP 0,75 px (~137 m); cortada na borda leste da cena; só sobre o PNG de `_media/base/s16/` (sha256 `8fde207d…`). Abaixo |
 
 **As cenas que carregam OSM**, e por isso levam `© OpenStreetMap contributors` na tela (o crédito da base MapTiler já o
 traz) e `openstreetmap.org/copyright` na descrição: s04, s07, s08, s18, s19, s22, s23, s24, s25, s26, s28, s29, s34,
 s35, s36, s39, s40, s41, s42, s43, s44, s45, s48, s49, s50, s51 e s52 (a lista por camada está no campo `cena` do json). A s43
 e a s44 entram pelo túnel (s43) e pela `lima-callao-metropolitana` (s44), não pela periferia, que ficou bloqueada.
+
+## A água na imagem Landsat 5 de 03/06/1998 (`agua-landsat5-1998-06-03`, s16)
+
+Pedido da Sala (tarefa `peru-agua-pesquisa-4`), pelo veredito do conferente da s16, plano 2 ("realce da água só de camada
+medida") e pelo laudo L49 do qc-visual (a água verde-oliva lê como várzea). É a máscara da pesquisa-2 virada vetor, sem
+nenhum pedido à rede.
+
+- **O que é:** a água que o índice vê na **mesma imagem** da base da s16, a Landsat 5 TM `LT05_L2SP_011064_19980603_02_T1`, de
+  03/06/1998 (USGS, Collection 2 Level-2; domínio público, sem crédito na tela; a linha da descrição é a da base). Nome, `rotulo` e
+  `uso` dizem "água na imagem de 03/06/1998" e nada além.
+- **O que ela NÃO diz, e a tela não pode dizer:** que toda essa água é enchente (parte pode ser lagoa permanente, e a faixa atrás
+  da praia do sul entra na conta); o nome da lagoa nem "Sechura" como rótulo; o tamanho ou a área; "Piura alagada" (a camada fica a
+  ~25 km do ponto de Piura); "floodwater" (PA021, PA022).
+- **O método:** MNDWI > 0,1 e NDWI > 0, em reflectância de superfície (TM_B2, TM_B4, TM_B5), fora da nuvem (as 3 bandas da prévia de
+  cor > 170), só dentro do `peru-ne` erodido 1 km; grade de 700 × 1175 px sobre o bbox EPSG:3857 da base (182,88 × 182,84 m
+  Mercator por px, ~182 m no chão). A máscara refeita do `.npy` é idêntica, pixel a pixel, à da pesquisa-2 (34.228 px).
+- **A simplificação:** saem os componentes (4-vizinhança) com menos de **30 px (≈ 0,99 km²)**; fecham-se os buracos com menos de 30 px
+  (1.281 px fechados). Contorno exato pelas bordas dos pixels, depois Douglas-Peucker de **0,75 px (≈ 137 m Mercator, ~136 m no
+  chão)**, com a topologia preservada; Hausdorff medido contra a escada 0,78 px (~143 m), IoU 0,975. Nenhum contorno inventado.
+- **A borda da cena:** a simplificação foi cortada pela faixa com dado (3,2 px de área passavam dela). A água que a cena corta na
+  borda leste (290 px da camada, em 104 linhas) termina na borda; nada se fecha além dela.
+- **Onde o contorno não é a margem:** onde a água encosta no `peru-ne` erodido 1 km (o estuário e a costa sul, que sai como linha
+  reta paralela à praia), o limite é a régua da terra; e nos 507 px de borda vizinhos de nuvem, o limite é a nuvem.
+- **O alinhamento com a base** (`_media/base/s16/landsat5-1998-06-03-piura-sechura.png`, sha256 `8fde207df1f3904e…`): o mesmo bbox
+  EPSG:3857 da mesma cena, com o mesmo canto noroeste (razão 4,057 entre as grades; o pé difere 4,8 m). Medido: a base reduzida à
+  grade de 700 contra a prévia de cor de 700 tem correlação 0,997 e deslocamento de fase de 0,01 px (~2 m); a borda da faixa da
+  cena casa com o mínimo de desacordo em (0, 0); a camada desenhada na grade de 2840 da base casa com a máscara com IoU 0,962 e
+  deslocamento de fase de 0,02 × 0,04 px da base (~1–2 m), mínimo em (0, 0). 354 px da base (0,06 % da camada) caem no alfa 0 da
+  base, na borda serrilhada. Dentro da camada a base é mais escura e mais verde que o deserto em volta (RGB médio 110/123/96 contra
+  152/149/127). Use a camada só sobre ESTA imagem: sobre o satélite de hoje da MapTiler ela não casa.
+- **Medida técnica (NÃO VAI À TELA):** 1.142,6 km² na camada (1.131,8 na máscara, antes do mínimo e dos furos; a pesquisa-2
+  registrou 1.133,1 com o cos de 5,8° fixo). Nem área, nem tamanho, nem comparação vão à tela.
+- **Cache:** não gravada em `~/.regie/geo`: a camada é só deste vídeo, presa a esta imagem.
+- **Scripts:** `out/peru-agua/_tmp/pesquisa-geo/rodada4/scripts/` (`camada_agua.py`, `conferir_alinhamento.py`, `gravar_camada.py`).
 
 ## Onde a geometria simplificada desloca algo
 

@@ -1073,6 +1073,93 @@
       "data_do_dado": "Natural Earth v5.1 (2022)",
       "fidelidade": "todos em terra no peru-ne; Jauja a 2,7 km e Satipo a 5,8 km do ponto do OSM (o NE arredonda): para câmera fechada, use o do OSM",
       "credito_tela": "nenhum (domínio público)"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "USGS Landsat 5 TM, Collection 2 Level-2 (LT05_L2SP_011064_19980603_02_T1, 03/06/1998 15:11 UTC), servido pelo Microsoft Planetary Computer; máscara MNDWI/NDWI da pesquisa-geo",
+      "arquivo": "_media/geo/agua-landsat5-1998-06-03.json",
+      "licenca": "Domínio público (USGS: \"may be used, transferred, or reproduced without copyright restriction\") — sem crédito na tela",
+      "url": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2/items/LT05_L2SP_011064_19980603_02_T1",
+      "exige_credito": false,
+      "features": 1,
+      "poligonos": 24,
+      "buracos": 49,
+      "vertices": 2435,
+      "bbox": [
+        -81.143,
+        -6.408979,
+        -80.507214,
+        -5.032916
+      ],
+      "centro": [
+        -80.6832,
+        -6.073
+      ],
+      "sha256": "84633198bf4575935361782da3ee98642481e9f688c5e81fca9510836b459f22",
+      "sha256_js": "93d7cd20e026a19abcac7b92438b829e766ce69033dbac8def354e1a70891ade",
+      "derivado_por": "out/peru-agua/_tmp/pesquisa-geo/rodada4/scripts/camada_agua.py + gravar_camada.py (da máscara de rodada2/scripts/medir_enchente.py)",
+      "registrado": "2026-10-22",
+      "needs_ids": [],
+      "needs_nota": "sem need no espelho: camada pedida pela Sala (tarefa peru-agua-pesquisa-4), pelo veredito do conferente da s16 (realce só de camada medida)",
+      "cena": [
+        "s16"
+      ],
+      "data_do_dado": "1998-06-03 (Landsat 5 TM, 15:11 UTC)",
+      "credito_tela": "nenhum (domínio público)",
+      "credito_descricao": "Satellite imagery: LT05_L2SP_011064_19980603_02_T1, Landsat Collection 2 Level-2. Landsat imagery courtesy of the U.S. Geological Survey.",
+      "rotulo": "Water in the June 3, 1998 image",
+      "rotulo_pt": "água na imagem de 03/06/1998",
+      "uso": "realce da água na imagem Landsat 5 de 03/06/1998 da s16 (plano 2), só sobre o PNG _media/base/s16/landsat5-1998-06-03-piura-sechura.png (sha256 8fde207d…), com que casa pixel a pixel",
+      "nao_pode_dizer": [
+        "que toda essa água é enchente (parte pode ser lagoa permanente; a faixa atrás da praia do sul entra na conta)",
+        "o nome da lagoa ('La Niña') nem 'Sechura' como rótulo",
+        "o tamanho ou a área da água ou da lagoa",
+        "'Piura alagada' (nenhuma água a 5 km da cidade; a camada fica a ~25 km)",
+        "'floodwater' (marca, PA021 e PA022)"
+      ],
+      "metodo": {
+        "indice": "MNDWI = (green − swir16)/(green + swir16) e NDWI = (green − nir08)/(green + nir08), em reflectância de superfície (Landsat C2 L2, TM_B2, TM_B4, TM_B5; escala 0,0000275 e offset −0,2 aplicados antes da razão)",
+        "limiar": "água = MNDWI > 0,1 E NDWI > 0, fora da nuvem (as 3 bandas da prévia de cor > 170 de 255)",
+        "terra": "só dentro do peru-ne (Natural Earth 1:10m) erodido 1 km (6 px): a costa do NE é generalizada; onde a água encosta nessa régua (estuário e costa), o contorno é a régua, não a margem",
+        "grade": "700 × 1175 px sobre o bbox EPSG:3857 [-9055840.6, -753150.8, -8927823.2, -538311.1] (lon −81,35 a −80,20, lat −6,75 a −4,83), 182,88 × 182,84 m Mercator por px (~182 m no chão a 5,8° S); reamostragem bilinear do tiler",
+        "minimo": "componente (4-vizinhança) com menos de 30 px da grade (≈ 0.99 km²) sai; buraco (8-vizinhança) com menos de 30 px se fecha",
+        "vetor": "contorno exato pelas bordas dos pixels (união das corridas de cada linha, shapely 2.2), depois Douglas-Peucker com preserve_topology",
+        "tolerancia": "0.75 px da grade = 137.2 m Mercator (≈ 136.5 m no chão); Hausdorff medido contra a escada 0.784 px (≈ 143 m); IoU 0.9753",
+        "borda_da_cena": "a simplificação foi cortada pela faixa com dado da cena (a escada exata do 'válido' do índice; 3.17 px de área passavam dela antes do corte). A água que a cena corta na borda leste (290 px da camada a até 3 px da borda, em 104 linhas) termina na borda: nada se fecha além dela",
+        "georreferencia": "pixel (col, lin) → x = X0 + col·182,882; y = Y1 − lin·182,842 (borda de pixel, canto noroeste); lon/lat pelo Mercator esférico (R = 6378137), 6 casas decimais; WGS84",
+        "mascara_refeita": "a máscara refeita do .npy com a regra acima é idêntica, pixel a pixel, à mascara-agua-700.png da pesquisa-2 (34.228 px)",
+        "scripts": [
+          "out/peru-agua/_tmp/pesquisa-geo/rodada2/scripts/medir_enchente.py (a máscara)",
+          "out/peru-agua/_tmp/pesquisa-geo/rodada4/scripts/camada_agua.py (o vetor)",
+          "out/peru-agua/_tmp/pesquisa-geo/rodada4/scripts/conferir_alinhamento.py (o alinhamento)",
+          "out/peru-agua/_tmp/pesquisa-geo/rodada4/scripts/gravar_camada.py (a gravação)"
+        ]
+      },
+      "alinhamento": {
+        "base": "_media/base/s16/landsat5-1998-06-03-piura-sechura.png",
+        "base_sha256": "8fde207df1f3904ed6a634394d47a85a4e2bb849f43d06f1a728f263f62a3826",
+        "mesma_janela": "a base (2840 × 4766, 45,077 m Mercator por px) e a grade da máscara (700 × 1175) são o mesmo bbox EPSG:3857 da mesma cena, com o mesmo canto noroeste; razão 4,0571 em x e 4,0563 em y; o pé da base fica 4,8 m (0,1 px da base) acima do da grade",
+        "cor": "a base reduzida à grade de 700 (média de área) contra a prévia de cor de 700: correlação 0.9967, deslocamento por correlação de fase [0.01, -0.002] px ([1.9, -0.4] m)",
+        "faixa": "o alfa da base reduzido contra o 'válido' do índice: 488 de 571272 px discordam (0.085 %, só na borda serrilhada); a busca de deslocamento inteiro de −3 a 3 px tem o mínimo em (0, 0)",
+        "camada": "a camada (lon/lat) desenhada na grade de 2840 da base contra a máscara final levada à mesma grade: IoU 0.9619, deslocamento de fase [0.02, 0.041] px da base, busca inteira com mínimo em (0, 0); 354 px da base (0.0613 %) da camada caem no alfa 0 da base, na borda serrilhada da cena",
+        "cor_dentro_fora": "RGB médio da base dentro da camada [110.3, 123.0, 96.4] contra [152.0, 149.3, 127.2] num anel de 20 px fora: mais escuro e mais verde que o deserto em volta (a água verde-oliva)"
+      },
+      "base_alinhada": {
+        "arquivo": "_media/base/s16/landsat5-1998-06-03-piura-sechura.png",
+        "sha256": "8fde207df1f3904ed6a634394d47a85a4e2bb849f43d06f1a728f263f62a3826"
+      },
+      "medida_tecnica": {
+        "nao_vai_a_tela": true,
+        "area_camada_km2": 1142.6,
+        "area_mascara_km2": 1131.8,
+        "nota": "área no chão (pixel Mercator × cos² da latitude da linha). A da camada inclui os furos fechados (< 1 km²) e não tem os componentes < 1 km²; a da máscara é a da pesquisa-2 (1.133,1 km² no medida-enchente.json, com o cos de 5,8° fixo). NÃO VAI À TELA: nem área, nem tamanho, nem comparação",
+        "pixels_mascara": 34228,
+        "pixels_camada": 34559,
+        "furos_fechados_px": 1281,
+        "componentes_antes": 227
+      },
+      "fidelidade": "a água do índice na grade de ~182 m, sem pixels soltos < 0.99 km² (30 px), DP 0.75 px (~136 m); cortada na borda leste da cena (a água segue para leste, fora da imagem); onde encosta no peru-ne erodido 1 km, o limite é a régua, não a margem; 350 dos 6878 px de borda encostam em água do índice que a régua da terra ou o mínimo tiraram, e 507 em nuvem (ali o limite não é a margem); furos de nuvem ≥ 30 px ficam como buraco; 0.000 % fora do peru-ne; Piura a ~25.3 km da camada",
+      "cache_da_maquina": "não gravado em ~/.regie/geo (camada só deste vídeo, presa a esta imagem)"
     }
   ],
   "bloqueios": [
