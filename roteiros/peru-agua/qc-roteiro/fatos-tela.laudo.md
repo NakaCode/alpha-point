@@ -1901,6 +1901,10 @@ Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do la
 - **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
 - **O lote B,** com ela, ficou com o sha256 `21920d38…7b81`.
 
+**O conserto 13 (texto-12, de `2f748bfc…` a `cebd9480…`), sem reconferência:** na s49, o TB209 e o TB211 (PB051 e PB052) passaram do papel `citacao` ao `traducao`, sem as aspas curvas e com as mesmas palavras, como na s41. Foi decisão da Sala, porque a 260 px (o piso da fala citada) as duas não cabem com a folha.
+- **O que muda:** só o papel e as aspas. As palavras, os tempos e a fonte são os mesmos, e os dois vereditos CONFIRMADA continuam valendo.
+- **O lote B** não mudou: as linhas dizem `citacao`, como o verificador gravou.
+
 O texto de tela não tem DIVERGE nem REFUTADA. Desde a reconferência 10, a RESSALVA é só pelas 5 primárias do gob.pe, NÃO FOI CHECADO (os rótulos da caça estão checados).
 
 COBERTURA: 600 de 632
