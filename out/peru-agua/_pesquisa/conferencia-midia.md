@@ -1,4 +1,174 @@
-# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-pesquisa-3` às 04:0x (Brasília)
+# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-excecao-s03c` às 15:5x (Brasília)
+
+A resposta do Lucas sobre as marcas no clipe do Callao (s03-c), trazida pela Sala.
+
+**O laudo desta tarefa:** 1 veredito regravado. O s03-c passou de `reprovado` a **`aprovado`**, com a `excecao_lucas`. O
+veredito das 15:35 está em `substituidos`.
+**O laudo do arquivo inteiro:** 28 aprovados de 34 vereditos (2 reprovados, 4 trocar, 0 pendente_lucas); 1 com algo não
+conferido (de antes); recebidos: 34.
+
+| arquivo (em `_media/_caca/`) | cena | fonte | mesmo_item | veredito | motivo |
+|---|---|---|---|---|---|
+| `s03/envato/callao-sea-port-peru-…-utc.mp4` | s03 (beat 2) | Envato b142d057 | true | **aprovado** | é o item da prévia: o porto do Callao, em 4K, com 40 s. As marcas ao fundo entram pela exceção do Lucas, só na s03 |
+
+**A resposta do Lucas** (no chat da Sala, 22/10/2026, às 15:40 de Brasília):
+- **A pergunta:** "O clipe do porto de Callao (s03, linha 5) é o item certo, mas no 4K dá para ler as marcas nos contêineres
+  (Maersk, Hapag-Lloyd) e o logo da APM Terminals por uns 10 s. A regra da marca recusa marca de terceiro legível. O que faço?"
+- **A resposta**, a opção que ele escolheu: **"Usar com as marcas"**. A opção dizia: "Vale como exceção só desta cena: o
+  conferente registra a sua resposta e aprova. As marcas aparecem ao fundo, não são o assunto."
+- **A outra opção** era "Fica fora (Recomendado)".
+- **Ela cobre o item:** a linha 5 da lista `22d59fbd75d8` é o s03-c (preferida, Envato b142d057). Conferi isso no
+  `lista-caca-aprovacao.json`.
+- **O arquivo não mudou:** ainda está em `_caca/`, sem instalar, com o mesmo sha256 (`c05046fd…`) e a mesma medida que eu julguei
+  às 15:35. A exceção vale para o que o Lucas pesou.
+- **Gravado em `excecao_lucas`:** a mensagem, a hora, a pergunta, o texto da opção e o escopo. O critério `licenca_fonte` passa
+  citando a exceção. O `mesmo_item: true`, os quadros, o `o_que_viu` e a medida ficam como estavam.
+
+**A regra da marca não mudou.** Nos outros clipes, marca ou logotipo de terceiro legível continua falhando (`midia.md` §3.1; ofício
+§5.2). A exceção vale só para este arquivo e só nesta cena. Nada na marca impede a aprovação: o §3.1 diz que, no Envato, "quem avalia
+é o licenciado" a autorização de propriedade. O Lucas é o licenciado, e foi ele quem avaliou.
+
+**O escopo: a s03 sim, a s51 não.**
+- **Vale:** cena s03, beat 2 da regência, de 7,2 a 11,6 s da cena (29,667 a 34,067 s do master), na frase "With its port, Callao,
+  it is home to more than ten million people."
+- **A s51 está declarada, mas a exceção não a cobre.**
+  - A regência (s51, beat 2, "Then the port: in fifteen thirty-five…", de 663,6 a 669,4 s) pede a miniatura deste mesmo clipe, com
+    a condição "ONLY if approved for this phrase". O espelho também declara a volta (s51 › `_reuso_declarado`).
+  - A opção que o Lucas escolheu diz "só desta cena", e a exceção vale na medida em que ele a deu (ofício §6.1). Por isso, na s51
+    este arquivo não tem veredito e não vai à cena: até lá, só a pílula do Callao.
+  - Para usar o clipe na s51, são duas coisas:
+    - uma conferência própria contra a frase de lá. Atenção: a frase fala de 1535, e o clipe é o porto de hoje. Pela identidade
+      §6, vídeo de outro ano não entra;
+    - se as marcas se lerem na miniatura, a pergunta de novo ao Lucas.
+
+## Para o Lucas pesar
+
+Nada.
+
+## Para reconferir no navegador do app
+
+Nada.
+
+## Para trocar
+
+Nada novo. O recado das 15:35 sobre o s03-c (a busca de outro aéreo do Callao) caiu com o aprovado. A s03 tem agora um aprovado por
+beat: o s03-a, o s03-b e o s03-c.
+
+## Divergências entre a marca e o ofício
+
+Nenhuma. Uma nota de método: o ofício (§6.1) descreve a `excecao_lucas` como a volta de um `pendente_lucas`. Aqui ela veio sobre um
+`reprovado` que dependia só de uma régua que o próprio ofício (§5.2) diz ser do canal: "se o Lucas a mudar, vale a dele". Gravei a
+exceção do mesmo jeito, com o veredito antigo em `substituidos`.
+
+## Contas desta tarefa
+
+- **Nada olhado de novo:** o arquivo é o mesmo das 15:35.
+- **Rede:** nenhum `WebFetch` e nenhuma ferramenta de navegador.
+- **A emenda do JSON** foi feita pelo `python`, porque o arquivo tem mais de 300 KB.
+  - Ela conferiu o sha256 do JSON antes de gravar (`d1e1e672…`). Mudaram só o veredito do s03-c, o laudo, a `tarefa` e o
+    `conferido_em`.
+  - As cópias de antes estão em `out/peru-agua/_tmp/conferencia/conferencia-midia.antes-excecao-s03c.json` e `.md`.
+- **Checagem 6:** veja o relato do despacho (as listas `_media-antes-excecao-s03c-s01a4.txt` e `_media-depois-excecao-s03c-s01a4.txt`,
+  em `out/peru-agua/_tmp/conferencia/`).
+  - Uma correção: a primeira lista desta tarefa saiu com o nome `_media-antes.txt` e regravou a lista dos lotes 1 e 2 que tinha
+    esse nome. Renomeei a minha, mas a de antes se perdeu.
+  - A checagem daqueles lotes continua registrada abaixo, no histórico, com o `diff` vazio. A `_media-depois.txt` ficou intacta.
+
+---
+
+# Histórico: a conferência até a tarefa `peru-agua-caca-faseB`, como estava (Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-caca-faseB` às 15:1x–15:3x (Brasília))
+
+Os 10 arquivos que a caça baixou na Fase B (14:58–15:16), antes do `_instalar-lote` (skill `cacar-no-chrome`, §3, passo 5).
+
+**O laudo desta tarefa:** 9 aprovados de 10 conferidos (1 reprovado, 0 trocar, 0 pendente_lucas); 0 com algo não conferido;
+recebidos: 10. Todos com `mesmo_item: true`.
+**O laudo do arquivo inteiro:** 27 aprovados de 34 vereditos (3 reprovados, 4 trocar, 0 pendente_lucas); 1 com algo não conferido
+(de antes); recebidos: 34.
+
+| arquivo (em `_media/_caca/`) | cena | fonte | mesmo_item | veredito | motivo |
+|---|---|---|---|---|---|
+| `s03/motionarray/Drone_Aerial_View_…_Paracas_National_Peru_03_uhd_2.mp4` | s03 | Motion Array 2556702 | true | aprovado | é o item da prévia (penhasco, ilhotas e nuvens iguais; o nome traz o ID): deserto de Paracas contra o Pacífico, 4K, 40 s |
+| `s03/envato/miraflores-skyline-at-lima-…-utc.MOV.mov` | s03 | Envato a42e7496 | true | aprovado | as três prévias estão no arquivo (11,5, 4,0 e 14,0 s, pelo laço do player): Lima sobre a Costa Verde, 4K, 17 s |
+| `s03/envato/callao-sea-port-peru-…-utc.mp4` | s03 | Envato b142d057 | true | **reprovado** | é o item da prévia, mas no 4K se leem os armadores nos contêineres (Hapag-Lloyd, ONE, MAERSK, CMA CGM) e "APM TERMINALS" nos silos: marca de terceiro legível |
+| `s09/motionarray/Aerial_View_Of_Amazon_River_…_Iquitos_City_And.mp4` | s09 | Motion Array 4074338 | true | aprovado | mesmos barcos, fumaça e ilha (o nome traz o ID): o Amazonas em Iquitos ao pôr do sol, 4K, 13 s |
+| `s15/envato/aerial-view-of-costa-verde-cliffs-…-utc.mov` | s15 | Envato daf75d35 | true | aprovado | as três prévias estão no arquivo, pelo laço: neblina grossa sobre a Costa Verde, 4K ProRes, 27 s |
+| `s15/envato/foggy-hyperlapse-aerial-over-miraflores-…-utc.mp4` | s15 | Envato c3538aaf | true | aprovado | as três prévias estão no arquivo, pelo laço: o céu cinza sobre Miraflores, hyperlapse 4K, 15 s |
+| `s17/storyblocks/aerial-cityscape-over-the-la-molina-…-san.mov` | s17 | Storyblocks SBV-339018031 | true | aprovado | os três pontos batem no ponto (o nome traz o SBV): La Molina entre morros de areia, 4K ProRes, 34 s |
+| `s19/envato/colca-canyon-river-valley-…-utc.mov` | s19 | Envato 762de3d9 | true | aprovado | mesmo enquadramento, terraços e rio (câmera parada): o Colca com corredeiras, 4K ProRes, 7,7 s |
+| `s29/motionarray/Plaza_De_Armas_In_Lima_…_4330946.mp4` | s29 | Motion Array 4330946 | true | aprovado | a mesma ave e as mesmas torres (o nome traz o ID): a catedral e a Plaza de Armas do ar, 4K, 19 s |
+| `s33/envato/drone-reversing-above-red-valley-…-utc.mp4` | s33 | Envato 0c62893f | true | aprovado | as três prévias estão no arquivo, pelo laço: a serra perto de Vinicunca com as parcelas, 4K, 15 s |
+
+**A comparação com as prévias.**
+- O laço do player do Envato (o aviso da Fase A) se confirmou: nos seis do Envato, as prévias de 15, 50 e 85 % não caem nos
+  pontos do arquivo. Por isso, além dos quadros de 15, 50 e 85 %, eu procurei cada prévia no arquivo inteiro, de meio em meio
+  segundo (cada `lado-a-lado.png` mostra a prévia, o quadro do arquivo em que ela está e o quadro do ponto nominal).
+- Nos seis, as três prévias estão no arquivo, quadro por quadro, com as mesmas coisas nos mesmos lugares (barcos, prédios,
+  guindaste, pintura da pista). Isso prova mais que o ponto: o `mesmo_item` saiu `true` em todos, e nenhum `null`.
+- No Motion Array, as prévias também saíram atrasadas (de 1 a 7 s), e o nome traz o ID nos três.
+- Na Storyblocks, os três pontos batem no ponto, e o nome traz o `SBV-339018031`.
+- O campo `id_na_fonte` do manifest do s17-a saiu `null`: a URL da Storyblocks não traz o SBV. O ID está na mesma linha, no
+  `arquivo_baixado`. Não é falha de quem baixou, e eu não completo o manifest.
+
+## Para o Lucas pesar
+
+Nada. Nenhum `pendente_lucas`.
+
+Uma escolha de régua, se ele quiser outra: o s03-c caiu pela leitura conservadora do ofício (§5.2): marca ou logotipo de terceiro
+legível, mesmo sem ser o assunto do quadro. É a mesma régua do Los Angeles (o Motion Array 4239434 na s51, e os três candidatos do
+porto na caça de lá). Os nomes dos armadores só se leem no 4K em tamanho cheio. O "APM TERMINALS" dos silos, entre ~15 e ~25 s, se
+lê até no quadro reduzido a 1920 px. Se o Lucas preferir a régua mais branda (marca só falha quando é o assunto), o veredito muda,
+mas isso é decisão dele.
+
+## Para reconferir no navegador do app
+
+Nada.
+
+## Para trocar
+
+Ao `pesquisa-imagens`, sobre o reprovado:
+- **s03, beat 2** ("With its port, Callao…", 4,4 s): busca `Callao bay aerial with fishing boats, La Punta or the Callao waterfront,
+  container terminal out of frame or too far for any brand to read, 4K`.
+  - Sem clipe, vale o fallback da regência: o satélite da baía do Callao.
+  - A reserva da lista (`s03-c-2`) já tinha, na Fase A, o mesmo aviso dos contêineres. No 4K, ela pode cair pelo mesmo motivo:
+    antes de baixá-la, vale olhar a página com isso em mente.
+- **s51**: a volta declarada do porto (miniatura) cai junto com o s03-c.
+
+Os avisos do conjunto das cenas, para o `regente-de-imagem` e o `montador`:
+- A s03 fica com o s03-a (2,6 s) e o s03-b (4,6 s). O beat 2, de 4,4 s, fica sem clipe, e cai no fallback da regência.
+- As outras cenas com aprovado têm o beat coberto: cada arquivo dura mais que a janela dele.
+
+Para quem monta (não é critério):
+- **s15-b:** os últimos ~3 s (12–15 s) chegam ao Parque del Amor: a escultura do beijo num canto, com uma pequena multidão. O beat,
+  de 3,1 s, cabe no trecho de 0 a 11 s, que é o das prévias.
+- **s19-a:** um reflexo de lente aparece no céu, à direita, por volta dos 6 s.
+- **s03-a:** o arquivo traz uma faixa de áudio AAC; o clipe vai à cena sem o áudio.
+- **O MOV do s03-b** traz duas trilhas de dados e uma miniatura mjpeg.
+- **Fora de 30 fps:** o s15-a, o s19-a e o s17-a vêm em ProRes 10 bits; o s15-a e o s09-a-2 em 23,976 fps, e o s19-a em 25 fps.
+  O `_instalar-lote` trata disso.
+
+## Divergências entre a marca e o ofício
+
+Nenhuma nova.
+
+## Contas desta tarefa
+
+- **Quadros:** os de 15, 50 e 85 % pelo `_frames-de-clipe.mjs`, em `out/peru-agua/_tmp/conferencia/faseB/<id>/`. Ao lado:
+  - as folhas lado a lado com as prévias;
+  - as folhas de 1 s (s03-b e s15-b), de 2 s (s03-c) e de 0,5 s (s19-a);
+  - os recortes 1:1 do 4K onde podia haver letreiro: os contêineres e os silos do Callao, os prédios de Miraflores, a ponte da
+    Costa Verde, o fim do s15-b, a praça de Lima, o golfe de La Molina e a aldeia do s33-a.
+- **O casamento das prévias:** procurei cada prévia no arquivo de meio em meio segundo, pela diferença média dos tons de cinza, com o
+  quarto de baixo fora por causa da barra do player e do cursor. Nas prévias recortadas do Motion Array, testei também o
+  deslocamento vertical.
+  - É ajuda ao olho, não prova. A prova é a folha lado a lado, olhada.
+  - Os dois scripts são de uso único, fora do canal, na pasta de rascunho da sessão (`casar.py`, `casar2.py` e `lado.py`).
+- **WebFetch:** nenhum. Nenhum site de banco aberto; nenhuma ferramenta de navegador.
+- **A emenda do JSON** está em `out/peru-agua/_tmp/conferencia/faseB/emenda.py`. A cópia de antes (o JSON e o `.md`) está ao lado,
+  com `.antes-faseB`. O sha256 foi conferido antes de gravar, e os 24 vereditos antigos ficaram como estavam.
+- **Checagem 6:** `out/peru-agua/_tmp/conferencia/_media-antes-faseB.txt` (15:16) e `_media-depois-faseB.txt` (15:32), com os
+  mesmos 188 arquivos e o `diff` vazio. Nada mudou em `out/peru-agua/_media/` durante a conferência.
+
+# Histórico: a conferência até a tarefa `peru-agua-pesquisa-3`, como estava (Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-pesquisa-3` às 04:0x (Brasília))
 
 As janelas da regência, no passo `conducting`. A regência é `out/peru-agua/regencia.json`, sha256 `cf443768…`, com a lista
 `_conferencia_de_janelas` e o relato do regente (`out/peru-agua/_tmp/setores/peru-agua-direcao-4.md`, "Os usos de mídia por cena").

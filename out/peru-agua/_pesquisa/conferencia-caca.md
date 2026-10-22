@@ -1,4 +1,89 @@
-# Conferência da caça · peru-agua · fluxo `caca` · 22/10/2026, 14:4x (Brasília)
+# Conferência da caça · peru-agua · fluxo `caca` · 22/10/2026, 15:5x (Brasília): o s01-a-4, da volta do Shutterstock
+
+**Laudo desta tarefa:** 0 aprovados de 1 conferido (1 reprovado); 1 com algo não conferido; recebidos: 1.
+**Laudo do arquivo:** 14 aprovados de 26 conferidos (3 reprovados, 9 trocar, 0 pendente_lucas); 1 com algo não conferido;
+recebidos: 26.
+
+| id | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| s01-a-4 | s01 | shutterstock | reprovado | é a Laguna Parón, na Cordilheira Branca, que a recusa do item exclui. O lago fica fora da linha da divisória, do lado do Pacífico, e domina o quadro, em vez da crista vista de cima: pela frase, seria `trocar`. Além disso, a IA não foi conferida (a busca rodou sem o filtro do Shutterstock) |
+
+**O ponto que pesa: o lugar serve à frase e à cena?** Não.
+- **O item recusa este lugar.** A recusa do s01-a diz "Cordillera Blanca/Huascarán no lugar dos Andes centrais". O item pede a crista
+  dos Andes centrais, de preferência Ticlio ou Anticona, entre Lima e Junín. A Parón fica uns 400 km ao norte, em Áncash.
+- **A regência pede um lugar sobre a divisória.** A s01, beat 0, desenha a linha "on the clip's crest" e prende a miniatura "to the clip's
+  real spot". Pela própria regência, o fallback de mapa "vale também se o lugar_na_origem do item não estiver sobre a divisória".
+  - O lugar que a origem dá é o lago, e ele está fora da linha. Medi contra a linha do próprio vídeo
+    (`_media/geo/divisoria-continental-peru.json`, HydroBASINS, Pacífico–Atlântico): o centro do lago fica a ~7 km e a ponta leste a
+    ~4 km a oeste dela, do lado do Pacífico. A Parón drena ao Santa.
+  - A coordenada do lago (~ −8,999 / −77,682) é minha, aproximada: a origem não dá coordenada.
+- **A crista ao fundo pode ser a divisória, mas a origem não diz isso.** A linha passa a ~1 km de onde eu poria os picos da cabeceira
+  do vale, também por coordenada aproximada minha. A origem diz só "picos cobertos de neve da Cordilheira Branca": não nomeia os picos
+  nem a direção da câmera. Desenhar a linha ali afirmaria o que ninguém conferiu.
+- **O quadro não é o que a frase pede.** É um voo baixo, de dentro do vale, sobre um lago turquesa que ocupa a metade de baixo da
+  tela, com um pico nevado ao fundo. Não há crista vista de cima nem passo. Congelada em "A line runs along the Andes", a tela mostra
+  uma lagoa glaciar.
+  - Num vídeo sobre a água de Lima, uma lagoa turquesa na abertura pode passar pelas lagoas altas da s52. O item da s52 também recusa a
+    Parón.
+- **O rótulo:** a pílula honesta seria "Laguna Parón" ou "Cordillera Blanca, Peru", nunca "Huaraz". A origem usa esse nome de forma solta:
+  a lagoa fica perto de Caraz, em Huaylas. Mas uma pílula de lago não responde à frase sobre a linha.
+- **A s02:** a mesma tomada viraria a miniatura presa ao ponto do clipe sobre o satélite, nos beats de mapa. Ela ficaria sobre a Parón,
+  fora da linha e longe do ponto perto de Lima que o fallback usa.
+
+**O `lugar_na_origem`**, se um dia fosse usado: "Vista aérea deslumbrante das águas azul-turquesa de Laguna Parón, com picos cobertos de
+neve da Cordilheira Branca em Huaraz, Peru." (título e descrição da página, em português).
+
+**O crédito na tela, se entrasse:**
+- a linha "Image(s) and/or video used under license from Shutterstock.com", na faixa de crédito da última cena e na descrição
+  (`midia.md` §3.4);
+- `LV_DreamyTravelers/Shutterstock.com` na faixa da cena, só se o Lucas estender ao vídeo 4 a decisão do Juneau. O `midia.md` §3.4 diz:
+  "nos próximos vídeos, pergunta nova, ou o Lucas estende". Em Los Angeles, a leitura foi a mesma. O artista está gravado.
+
+**A técnica e a repetição passam:** 3840×2160 na horizontal, MP4, 0:17 (declarados pela página), com a câmera estável; o ID não aparece
+em mais nenhum lugar.
+
+**A licença: a IA não foi conferida.** Ela se apoia no filtro "Exclua imagens geradas por IA" (`midia.md` §2.6; skill §2.3, item 5: "no
+Shutterstock, só com o filtro ligado"), e a volta rodou sem filtro nenhum. O resto passa.
+
+**Preferência:** nenhuma. O s01-a continua sem aprovado e cai no fallback da regência: o run s01+s02 vira mapa, aberto sobre o ponto da
+divisória mais perto de Lima.
+
+## Para o Lucas pesar
+
+Nada.
+
+## Para reconferir
+
+- **s01-a-4, a IA:** o selo ou o filtro de IA do Shutterstock, na página do item
+  (https://www.shutterstock.com/pt/video/clip-4061957539-stunning-aerial-view-turquoise-waters-laguna-par%C3%B3n).
+  - Quem confere é a Sala, numa caça. Banco pago não vai ao navegador do app.
+  - Mesmo conferida, o veredito fica `trocar`, porque o contexto falha. Por isso, só vale a pena se a Sala quiser o clipe para outra
+    cena.
+
+## Para trocar (recado ao `pesquisa-imagens`)
+
+- **s01** (agora também o s01-a-4): a busca continua `Ticlio pass Anticona Carretera Central Peru aerial drone 4K Andes crest continental
+  divide`. Pelo relato, nenhum dos quatro bancos tem um aéreo de Ticlio, e o fallback de mapa já cobre o beat.
+
+## Divergências entre a marca e este ofício
+
+Nenhuma.
+
+## Contas desta tarefa
+
+- **Imagens abertas:** 4, as três prévias e o print da página.
+- **Rede:** nenhum `WebFetch` e nenhuma ferramenta de navegador.
+- **A medida da distância:** o `python` leu a geometria da divisória e calculou a menor distância de cada coordenada, que eu dei de
+  memória, aproximada.
+- **A emenda:**
+  - o script e o veredito estão em `out/peru-agua/_tmp/conferencia/s01-a-4/` (`emenda.py` e `veredito.json`);
+  - o sha256 do JSON foi conferido antes de gravar (`3ab466f8…`);
+  - as cópias de antes estão em `out/peru-agua/_tmp/conferencia/conferencia-caca.antes-s01a4.json` e `.md`.
+- **Checagem 6:** veja o `conferencia-midia.md` desta mesma hora. Nada mudou em `out/peru-agua/_media/`.
+
+---
+
+# Histórico: Conferência da caça · peru-agua · fluxo `caca` · 22/10/2026, 14:4x (Brasília)
 
 **Laudo:** 14 aprovados de 25 conferidos (2 reprovados, 9 trocar, 0 pendente_lucas). Nenhum ficou com algo não conferido. Recebidos: 25.
 
