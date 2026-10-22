@@ -246,6 +246,11 @@
   - o canto inferior direito, 400 × 400 px, vazio; nenhuma logo;
   - esses três números vêm do `portao-margens` (§3), não do olho; a logo no canto, você olha;
   - um herói por cena, ou nenhum. Nome de lugar como herói reprova.
+    - O herói desta regra é o número-herói ou o título (identidade.md §4.1, a linha "número-herói / título").
+    - A fala citada leva `data-qc-papel="heroi"` só porque é o único papel do `qc-tamanho` com piso de 260 (Sala,
+      22/10/2026; roupa do editor-de-arte, §4). Ela não conta neste "um herói": é bloco, e o teto dela é o de 3 blocos
+      vivos (§4.2).
+    - Duas citações ao mesmo tempo numa cena de "de → para" (a s32 do Peru) não são dois heróis.
 - **poluicao** (identidade.md §4.2): teto de 6 elementos simultâneos, alvo de 4 a 5.
   - Contam texto e gráfico. Não contam a base de tela cheia, o crédito e a textura. O ator com bandeira e nome
     conta como um.
