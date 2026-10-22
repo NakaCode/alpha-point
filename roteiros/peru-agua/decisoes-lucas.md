@@ -80,3 +80,21 @@ vídeo 3? Seria sem relevo 3D: cada cena com relevo eu te pergunto antes. O gast
 escrita por ele: **"Sim e pode usar relevo quando necessário"**. As cenas de mapa usam o MapTiler, e o relevo 3D entra onde a cena precisa
 dele, sem pergunta por cena; a cena da prova ("The mountains help…") fica plana, como ele preferiu em 19/10. O contador:
 `out/peru-agua/_pesquisa/maptiler-gasto.md` (`marca/identidade.md` §6).
+
+## 21/10/2026, 23:4x (Brasília): as perguntas do plano de cenas, no chat da Sala
+
+O montador (`out/peru-agua/_tmp/setores/peru-agua-direcao-1.md`, "O que depende do Lucas") deixou quatro perguntas. As respostas, literais:
+- **A paleta** ("o lado seco (a costa, onde vive a maior parte do Peru) em âmbar, que é a cor do protagonista; o lado amazônico em
+  turquesa; o lago Titicaca em cinza; os países vizinhos em azul"): **"Sim, assim (Recomendado)"**. Nos tokens: o lado seco em
+  `--destaque`, o amazônico em `--contraparte`, o Titicaca em `--neutro`, os vizinhos em `--contexto-2`.
+- **A tela final** (s53; "o último mapa parado, escurecendo até a metade, sem texto novo, com o pedido de comentário à esquerda"):
+  **"Como nos vídeos 1 a 3 (Recomendado)"**.
+- **O retrato pintado de Pizarro** no card da s26 ("A legenda diria que é pintura e de quando ela é, pela regra do aviso de ano"):
+  **"Sim, com legenda de pintura e ano (Recomendado)"**. A opção dizia: "Um retrato antigo, de acervo aberto como o Commons, com
+  "Painting, <ano>" na tela. Pizarro nunca é desenhado por nós."
+- **As fontes peruanas** (a Andina, os sites do governo peruano, a SEDAPAL): **"Leia as licenças antes (Recomendado)"**. A opção
+  dizia: "Eu leio a licença de cada fonte na origem. Uso só o que ela deixa, citando a fonte na tela, e te conto o que cada uma
+  permite. Site que bloquear robô fica de fora." Até a licença de cada uma ser lida e contada a ele, nenhuma foto delas vai à cena.
+  - **Lidas em 21/10/2026, 23:5x** (`out/peru-agua/_pesquisa/fontes-peruanas-licencas.md`): a Andina proíbe reproduzir "sin el
+    consentimiento expreso de EDITORA PERU"; o gob.pe bloqueia leitura automática, até pelo navegador do app; a SEDAPAL não tem termos,
+    só "© Sedapal 2020". As três ficam fora (a imagem; os dados oficiais continuam valendo como fonte de fato). Contado ao Lucas no chat.
