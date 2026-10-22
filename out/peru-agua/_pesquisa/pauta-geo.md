@@ -98,9 +98,15 @@ deserto de outra fonte.
 | `agua-landsat5-1998-06-03` | (sem need: pedido da Sala, s16 plano 2) | Landsat 5 TM `LT05_L2SP_011064_19980603_02_T1`, 03/06/1998 (USGS), máscara MNDWI/NDWI | domínio público, sem crédito na tela | 1 (24 polígonos, 49 buracos) | a água na imagem de 03/06/1998, grade de ~182 m, mínimo 30 px (≈ 0,99 km²), DP 0,75 px (~137 m); cortada na borda leste da cena; só sobre o PNG de `_media/base/s16/` (sha256 `8fde207d…`). Abaixo |
 
 **As cenas que carregam OSM**, e por isso levam `© OpenStreetMap contributors` na tela (o crédito da base MapTiler já o
-traz) e `openstreetmap.org/copyright` na descrição: s04, s07, s08, s18, s19, s22, s23, s24, s25, s26, s28, s29, s34,
-s35, s36, s39, s40, s41, s42, s43, s44, s45, s48, s49, s50, s51 e s52 (a lista por camada está no campo `cena` do json). A s43
-e a s44 entram pelo túnel (s43) e pela `lima-callao-metropolitana` (s44), não pela periferia, que ficou bloqueada.
+traz) e `openstreetmap.org/copyright` na descrição: s04, s07, s08, s18, s19, s20, s22, s23, s24, s25, s26, s28, s29, s34,
+s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s47, s48, s49, s50, s51 e s52 (a lista por camada está no campo `cena`
+do json). A s43 e a s44 entram pelo túnel (s43) e pela `lima-callao-metropolitana` (s43 e s44), não pela periferia, que ficou
+bloqueada.
+
+**Tarefa `peru-agua-pesquisa-6` (22/10/2026):** o espelho `1c8e62a7…` (commit `aa479cc`) pede camadas que já existiam em mais
+cenas, e o campo `cena` delas passou a dizê-lo, sem nenhuma geometria nova: `rio-rimac` + s20, s37, s38;
+`lagoas-marcapomacocha-antacoto` + s38; `lima-callao-metropolitana` + s43; `san-juan-de-miraflores` + s47. Por isso s20, s37,
+s38 e s47 entraram na lista de OSM acima.
 
 ## A água na imagem Landsat 5 de 03/06/1998 (`agua-landsat5-1998-06-03`, s16)
 
