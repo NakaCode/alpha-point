@@ -132,3 +132,18 @@ respostas, literais:
 **A caça** (22/10/2026, 03:0x). À pergunta "Quando fazemos?" (os 30 clipes da `out/peru-agua/_pesquisa/lista-de-caca.json`, com ele por
 perto), a resposta: **"De manhã (Recomendado)"**. A opção dizia: "Amanhã de manhã, você me avisa no chat que está no PC. Até lá, a
 regência e o texto de tela seguem sem você." A caça começa só com o aviso dele no chat e o pedido, pela skill `cacar-no-chrome`.
+
+## 22/10/2026, 12:4x (Brasília): de volta, as quatro perguntas da manhã, no chat da Sala
+
+O Lucas voltou ("Estou de volta, faça um resumo do que foi feito e do que está me aguardando"). As respostas, literais:
+- **O ritmo da s11 e da s26** (o `qc-carga` reprova pela régua do Top10, 0,9 textos por segundo: s11 1,09, s26 0,98; a triagem deu
+  limitação, `out/peru-agua/_tmp/triagem-portoes-ritmo-2026-10-22.json`; os trechos 1080p em `out/peru-agua/_tmp/ritmo-lucas/`):
+  **"Manter as duas (Recomendado)"**. A exceção de cada uma está em `out/peru-agua/qc/_excecoes-portao.json`, com o sha1 (s11
+  `98b3df8b…`, s26 `09de4529…`), a mensagem e a hora.
+- **As formas curtas da s41**: **"As recomendadas (Recomendado)"**, que são `BUILT 1958–1962`, `IN SERVICE, 1963` e `HUINCO · 1964`. As
+  fontes ficam no crédito.
+- **A lista de músicas** (`out/peru-agua/_tmp/trilha/lista-trilha-peru-agua.md`, assinatura `31442a10ac54`): **"Ainda vou ouvir"**.
+  Nada se baixa até o "sim" dele.
+- **A caça dos 30 clipes**: **"Começar agora (Recomendado)"**. A opção dizia: "Antes, você cria no Envato o projeto 'peru-agua' e
+  deixa o Brave aberto, com a aba da caça à vista. Eu provo o perfil, busco, gravo as prévias e o conferente julga. Depois, você aprova
+  a lista no chat antes de qualquer download."
