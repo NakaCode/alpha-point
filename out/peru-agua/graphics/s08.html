@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s08</title>
+<!--
+CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 3,1 s).
+  "Lima's own river, the Rímac, is one of them."
+  Mapista, lote M1 (tarefa peru-agua-arte-12), 22/10/2026: cena NOVA. O que manda: textos-tela.json 2f748bfc (s08) no QUE e na
+  grafia; regencia.json 460eb6e1 (s08 › b0, direcao-18 e -19) no TEMPO, na câmera e no exige; o conceito 4ac21dbc na direção.
+
+  SEM CORTE DE MAPA PARA MAPA (direcao-18; identidade §4.4). O 1º quadro desta cena É o quadro seguinte ao último da s06
+  (graphics/s06.html, aprovada, só lida): a s08 t = 0 é a s06 t = 29,1 (cameraAt(29,1) = CENA.pontos.L2: −76,745 / −11,845,
+  zoom 10,32, rumo 60°, inclinação 60°). A câmera continua a última perna da s06 (L1 → L2, linear em Mercator) NO MESMO RITMO,
+  sem viagem nova: em 3,1 s, rumo 60° → 62,50°, zoom 10,32 → 10,363, centro → −76,7396 / −11,8414 (u = 1 → 1,3576), a inclinação
+  parada em 60°. O relevo da s06: terrain-rgb-v2 a 2,4×, o centro da câmera congelado na cota 0 (_elevationFreeze) e a textura das
+  linhas refeita a cada quadro (freeRtt). A base no tratamento C da s06 (brilho 0,92, saturação 0, contraste 0,25).
+
+  AS CAMADAS que chegam do último quadro da s06, iguais: a divisória (divisoria-continental-peru, --tinta 20 px sobre o contorno
+  escuro de 30 px: a regra da s06 a 60°); os rios curtos do lado do Pacífico (rios-vertente-pacifico, OSM, --destaque 4/10 px); o
+  Rímac (rio-rimac, OSM, --destaque 10/18 px); a pílula 'Rímac' da s06 › b6, na mesma âncora e deslocamento, sem entrada.
+  O que era da s07 e não é texto da s08 sai no corte, com a s06: a régua, 'LESS THAN 70 MILES', o crédito dela e a pílula 'Lima'.
+
+  O que a cena faz (o mapa nunca para: a câmera anda do 1º ao último quadro):
+    · 0–0,7 ('river,'): os outros rios curtos baixam a 35 %; o Rímac fica cheio, o que a voz separa.
+    · 1,1: 'ABOUT 90 MILES LONG (145 km)' no alto do quadro, longe da linha, e 'Source: ANA (Peru), 2014' na faixa, até o fim
+      (a voz não diz o número; é do redator).
+    · a saída também não corta (direcao-19): a s09 parte do último quadro desta cena (u = 1,3576) e viaja ao leste.
+  ELEMENTOS (teto 6): linha, rios, Rímac, pílula 'Rímac' (4); de 1,1 ao fim, + a cota (5).
+  CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px (--fs-credito) a cena toda, com data-qc-credito="mapa" só no próprio
+  elemento (cobre o OSM do Rímac e dos rios). Acima dele, sem a marca de mapa: 'Source: ANA (Peru), 2014' de 1,1 ao fim.
+  HydroBASINS: nada na tela (o Exhibit B da WWF vai na descrição).
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<!-- UMA linha por geometria usada na cena (slugs de out/peru-agua/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/divisoria-continental-peru.js"></script>
+<script src="../_media/geo/rio-rimac.js"></script>
+<script src="../_media/geo/rios-vertente-pacifico.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  #rotulos { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+  /* RÓTULO (identidade §3 e §4.1): pílula --rotulo, cantos 12, respiro 24 × 40, Inter 700 a 128 px em --tinta (= s06) */
+  .rotulo { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1;
+    letter-spacing: 0; color: var(--tinta); font-variant-numeric: var(--numeros); }
+  .rotulo.caixa { letter-spacing: var(--tracking-lugar); }
+  /* CRÉDITOS (identidade §4.1/§4.2/§6; = s06): 56 px, Inter 500, --sec sobre a pílula --rotulo, de x = 200 até antes de
+     x = 1720, abaixo de y = 1880. data-qc-credito="mapa" SÓ na linha da MapTiler; a outra empilha acima dela */
+  .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: nowrap; }
+  #credito { bottom: 24px; }
+  .credito.extra { bottom: 114px; opacity: 0; visibility: hidden; white-space: pre; }
+  #credito[hidden] { display: none; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <div id="map"></div>
+  <div id="rotulos">
+    <div class="rotulo" id="rotRimac" data-qc-papel="rotulo">Rímac</div>
+    <div class="rotulo caixa" id="rotCota" data-qc-papel="rotulo">ABOUT 90 MILES LONG (145 km)</div>
+  </div>
+  <div id="credAna" class="credito extra" data-qc-papel="credito">Source: ANA (Peru), 2014</div>
+  <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
+  // Tempos desta cena (0 = 82,167 s do master), do words.json: 'Lima's' 0,023 · 'own' 0,553 · 'river,' 0,713 · 'the' 1,138 ·
+  // 'Rímac,' 1,313 · 'is' 1,993 · 'one' 2,153 · 'them.' 2,393 (acaba 2,533).
+  var DUR = 3.1;   // espelho.json › s08 › dur, literal (roupa §8)
+  var CENA = {
+    perfil: "maptiler",
+    fontes: ["div", "rios", "rimac"],
+    // A CÂMERA DA s06, SEM CORTE: a última perna dela (L1 → L2, 20,43 → 29,1 s, linear em Mercator) continua no MESMO ritmo.
+    // s08 t = 0 é a s06 t = 29,1 (u = 1); s08 t = 3,1 é u = (8,67 + 3,1) / 8,67 = 1,3576. A inclinação fica em 60°.
+    L1: { lng: -76.760, lat: -11.855, zoom: 10.20, bearing: 53 },   // = s06 › CENA.pontos.L1
+    L2: { lng: -76.745, lat: -11.845, zoom: 10.32, bearing: 60 },   // = s06 › CENA.pontos.L2 (o último quadro da s06)
+    perna: { t0: 20.43, t1: 29.1, emS06: 29.1 },                    // = s06 › CENA.pernas[7]; s08 t = 0 ⇔ s06 t = 29,1
+    pitch: 60,
+    exag: 2.4,                                                       // = s06 › CENA.exag (relevo cheio desde 17,82 s da s06)
+    divGrossa: { pitch: 58, linha: [6, 20], sob: [12, 30] },         // = s06 (a 60° a linha fica em 20/30 px)
+    riosBaixam: { t0: 0.0, t1: 0.7, ate: 0.35 }                      // até 'river,' (0,713) os outros rios curtos baixam a 35 %
+  };
+  // ═════════════════════════════════════════════════════════════════════════════════════════════════
+
+  window.__duracao = DUR;
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (t) { t = cl(t, 0, 1); return 1 - Math.pow(1 - t, 3); };
+  var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+  window.__avisos = window.__avisos || [];
+
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  window.__fotosProntas = true;
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== CENA.perfil) return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa '" + CENA.perfil + "' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster; esta cena desenha sobre satélite.");
+  if (!P.dem) return falhar("o perfil '" + P.nome + "' não traz o relevo (dem), e esta cena continua o relevo da s06.");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo.");
+    return g;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+
+  // ── crédito na tela: base (pelo perfil) + toda geometria cuja licença exige (molde, sem mudança) ──────
+  var creditoTexto = (function () {
+    var partes = [];
+    if (P.atribuicao && P.atribuicao.exigida) {
+      if (!P.atribuicao.tela) { falhar("a base '" + P.nome + "' exige crédito na tela e o perfil não traz o texto (atribuicao.tela)."); return ""; }
+      partes.push(P.atribuicao.tela);
+    }
+    var geos = window.__GEO || {}, meta = window.__GEO_META || {};
+    var slugs = Object.keys(geos);
+    for (var i = 0; i < slugs.length; i++) {
+      var m = meta[slugs[i]];
+      if (!m) { falhar("a geometria '" + slugs[i] + "' foi carregada sem procedência (fonte/licença)."); return ""; }
+      if (!m.exige_credito) continue;
+      var t = m.credito_tela || (m.fonte && m.licenca ? "Geometria: " + m.fonte + " (" + m.licenca + ")" : "");
+      if (!t) { falhar("a geometria '" + slugs[i] + "' exige crédito e a procedência não diz o texto."); return ""; }
+      var junto = partes.join(" · ");
+      if (/OpenStreetMap/i.test(t) && /OpenStreetMap/i.test(junto)) continue;
+      if (junto.indexOf(t) >= 0) continue;
+      partes.push(t);
+    }
+    var c = E("credito");
+    if (c) { c.textContent = partes.join(" · "); c.hidden = !partes.length; }
+    return partes.join(" · ");
+  })();
+  window.__creditoMapa = creditoTexto;
+  if (!window.__erroCena && creditoTexto !== "© MapTiler © OpenStreetMap contributors")
+    falhar("o crédito de mapa montado ('" + creditoTexto + "') não é o do textos-tela.json.");
+  if (window.__erroCena) return;
+
+  // ═══ A GEOMETRIA (toda de _media/geo/; nenhum traço desenhado à mão) ════════════════════════════════
+  var DIV = geo("divisoria-continental-peru"), RIM = geo("rio-rimac"), RPAC = geo("rios-vertente-pacifico");
+  if (window.__erroCena) return;
+  function km(a, b) { var la = (a[1] + b[1]) / 2 * Math.PI / 180; return Math.hypot((a[0] - b[0]) * 111.32 * Math.cos(la), (a[1] - b[1]) * 110.57); }
+  function maisPerto(linha, p) { var bi = 0, bd = Infinity; for (var i = 0; i < linha.length; i++) { var d = km(linha[i], p); if (d < bd) { bd = d; bi = i; } } return bi; }
+  var RIM_C = RIM.features[0].geometry.coordinates;
+
+  // ═══ A BASE COM O RELEVO, E AS CAMADAS (as da s06 que chegam acesas ao último quadro dela; as outras não existem aqui) ═══
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  var COR = { tinta: tok("--tinta", "#F4F1EA"), destaque: tok("--destaque", "#F5A524"),
+    sob: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)") };
+  function estilo() {
+    var fontes = {
+      base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+      dem: { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding },
+      div: { type: "geojson", data: DIV },
+      rios: { type: "geojson", data: RPAC },
+      rimac: { type: "geojson", data: RIM }
+    };
+    var lc = { "line-join": "round", "line-cap": "round" };
+    // a ordem e os valores são os da s06 (base, rios, Rímac, divisória por cima)
+    var camadas = [
+      { id: "base", type: "raster", source: "base",
+        paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // = s06 (identidade §6, o tratamento C)
+      { id: "rios-sob", type: "line", source: "rios", layout: lc, paint: { "line-color": COR.sob, "line-width": 10, "line-opacity": 1 } },
+      { id: "rios", type: "line", source: "rios", layout: lc, paint: { "line-color": COR.destaque, "line-width": 4, "line-opacity": 1 } },
+      { id: "rimac-sob", type: "line", source: "rimac", layout: lc, paint: { "line-color": COR.sob, "line-width": 18, "line-opacity": 1 } },
+      { id: "rimac", type: "line", source: "rimac", layout: lc, paint: { "line-color": COR.destaque, "line-width": 10, "line-opacity": 1 } },
+      { id: "div-sob", type: "line", source: "div", layout: lc, paint: { "line-color": COR.sob, "line-width": 30 } },
+      { id: "div", type: "line", source: "div", layout: lc, paint: { "line-color": COR.tinta, "line-width": 20 } }
+    ];
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
+  }
+
+  // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  function erroCorpo(msg, url, st) { var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e; }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) { var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http"; throw e; }
+        if (params.type === "json") return r.text().then(function (t) { try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); } });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+
+  // ── a câmera: a perna L1 → L2 da s06 prolongada no mesmo ritmo (linear em Mercator), a inclinação parada em 60° ──
+  var merc = function (lng, lat) { var s = Math.sin(lat * Math.PI / 180); return [lng, 0.5 * Math.log((1 + s) / (1 - s))]; };
+  var unmercLat = function (y) { return (2 * Math.atan(Math.exp(y)) - Math.PI / 2) * 180 / Math.PI; };
+  function cameraAt(t) {
+    var K = CENA.perna, a = CENA.L1, b = CENA.L2;
+    var u = (K.emS06 + cl(t, 0, DUR) - K.t0) / (K.t1 - K.t0);
+    var ma = merc(a.lng, a.lat), mb = merc(b.lng, b.lat);
+    return { center: [a.lng + (b.lng - a.lng) * u, unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u,
+      bearing: a.bearing + (b.bearing - a.bearing) * u, pitch: CENA.pitch, u: u };
+  }
+  window.__cameraAt = cameraAt;
+
+  var c0 = cameraAt(0);
+  var map;
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: c0.bearing, pitch: c0.pitch
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa.");
+  }
+  window.map = map;
+  // A BASE ANDA LISA (s03 do Juneau; = s06): toda pintura vai como "em movimento"
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
+
+  // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg))
+      return "mandou tile CORROMPIDO" + n + " (" + String(msg).replace(/^tile corrompido: /, "") + "). Renderize de novo.";
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + ". Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  var mapaCarregado = false;
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ".");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : ""));
+  });
+  map.on("load", function () {
+    try { map.setTerrain({ source: "dem", exaggeration: CENA.exag }); } catch (e) { return falhar("não consegui ligar o relevo: " + e.message); }
+    mapaCarregado = true;
+    map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
+  });
+
+  // ── rótulos: âncora no mapa (lnglat) ou na tela; o 'Rímac' é o da s06 › b6, no mesmo lugar e sem entrada (atravessa o corte);
+  //    a cota entra em 300 ms (opacidade + 24 px de subida). O que a câmera leva para perto da margem esmaece (60 px) ──
+  var ROT = [
+    { id: "rotRimac", ll: null, lado: "direita", dx: 96, dy: 30, entra: -1, sai: null },   // = s06 › ROT 'rotRimac' (âncora, lado e deslocamento)
+    { id: "rotCota",  tela: [1650, 310], entra: 1.1, sai: null }                          // no alto, longe da linha: a régua da s07 saiu no corte
+  ];
+  ROT[0].ll = RIM_C[maisPerto(RIM_C, [-76.92, -11.98])];   // = s06: no Rímac, perto da costa
+  function naArea(l, tp, w, h) {   // distância (px) da caixa à área segura; o canto 400 × 400 conta (= s06)
+    var r = l + w, b = tp + h;
+    return Math.min(l - 200, 3640 - r, tp - 160, 1880 - b, Math.max(3440 - r, 1760 - b));
+  }
+  function aplicarRotulos(t) {
+    ROT.forEach(function (r) {
+      var el = E(r.id); if (!el) return;
+      var vin = r.entra < 0 ? 1 : eo(seg(t, r.entra, 0.3)), vout = r.sai != null ? 1 - eio(seg(t, r.sai, 0.3)) : 1;
+      var v = vin * vout;
+      if (v <= 0) { el.style.opacity = "0"; el.style.visibility = "hidden"; r._v = 0; return; }
+      var x, y;
+      if (r.tela) { x = r.tela[0]; y = r.tela[1]; }
+      else { var p = map.project(r.ll); x = p.x; y = p.y; }
+      x += r.dx || 0; y += r.dy || 0;
+      var w = el.offsetWidth, h = el.offsetHeight;
+      var fx = r.lado === "direita" ? 0 : r.lado === "esquerda" ? 1 : 0.5;
+      var l = x - w * fx, tp = y - h / 2 + (1 - vin) * 24;
+      v *= cl(naArea(l, tp, w, h) / 60, 0, 1);
+      el.style.opacity = v.toFixed(3);
+      el.style.visibility = v > 0 ? "visible" : "hidden";
+      el.style.transform = "translate(" + l.toFixed(2) + "px," + tp.toFixed(2) + "px)";
+      r._v = v; r._l = l; r._t = tp; r._w = w; r._h = h;
+    });
+  }
+
+  var opAntes = {};
+  function opac(id, prop, v) { v = +(+v).toFixed(3); var k = id + "|" + prop; if (opAntes[k] === v) return; map.setPaintProperty(id, prop, v); opAntes[k] = v; }
+
+  function aplicarCena(t) {
+    if (map.terrain) map.terrain.exaggeration = CENA.exag;
+    map._elevationFreeze = true;
+    window.__exagero = CENA.exag;
+    // a divisória: a regra da s06 (engrossa com a inclinação; a 60° fica cheia, 20/30 px)
+    var fp = cl(cameraAt(t).pitch / CENA.divGrossa.pitch, 0, 1);
+    opac("div", "line-width", CENA.divGrossa.linha[0] + (CENA.divGrossa.linha[1] - CENA.divGrossa.linha[0]) * fp);
+    opac("div-sob", "line-width", CENA.divGrossa.sob[0] + (CENA.divGrossa.sob[1] - CENA.divGrossa.sob[0]) * fp);
+    // os outros rios curtos baixam a 35 % até 'river,'; o Rímac fica cheio (o que a voz separa)
+    var R = CENA.riosBaixam, vr = 1 - (1 - R.ate) * eio(seg(t, R.t0, R.t1 - R.t0));
+    opac("rios", "line-opacity", vr); opac("rios-sob", "line-opacity", vr);
+    opac("rimac", "line-opacity", 1); opac("rimac-sob", "line-opacity", 1);
+  }
+
+  function aplicarCreditos(t) {
+    var c = E("credito"); if (c) { c.style.opacity = "1"; c.style.visibility = "visible"; }
+    var el = E("credAna");
+    if (el) { var v = eo(seg(t, 1.1, 0.3)); el.style.opacity = v.toFixed(3); el.style.visibility = v > 0 ? "visible" : "hidden"; }
+  }
+
+  function aplicar(t) {
+    if (!mapaCarregado) return;
+    if (!map.getTerrain()) map.setTerrain({ source: "dem", exaggeration: CENA.exag });
+    map.jumpTo(cameraAt(t));
+    if (map.terrain && map.transform.elevation !== 0) map.transform.elevation = 0;
+    aplicarCena(t);
+    aplicarRotulos(t);
+    aplicarCreditos(t);
+    // A ESPESSURA DAS LINHAS SOBRE O RELEVO (= s06): a textura em que a base e as linhas se pintam sobre o relevo se refaz em todo quadro
+    if (map.terrain) {
+      var tsc = map.terrain.sourceCache;
+      if (!tsc || typeof tsc.freeRtt !== "function") return falhar("o MapLibre desta cena não tem terrain.sourceCache.freeRtt.");
+      tsc.freeRtt(); map.triggerRepaint();
+    }
+  }
+
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) { var ts = (sc[id] && sc[id]._tiles) || {}; for (var k in ts) if (ts[k] && ts[k].state === "errored") return id; }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou. O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  // pronto: os tiles da base E do relevo carregados, o terreno ligado, o mapa parado (contrato do mapista §3)
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!map.areTilesLoaded() || map.isMoving()) return false;
+          for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
+          if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+          if (!map.getSource("dem") || !map.isSourceLoaded("dem") || !map.getTerrain()) return false;
+          return true;
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
+      (function tick() {
+        barrarTileComErro();
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.triggerRepaint(); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__renderAt(0) || true;
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+
+})();
+
+</script>
+</body>
+</html>
