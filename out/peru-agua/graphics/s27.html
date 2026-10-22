@@ -12,6 +12,12 @@
   cabe na tela), três grifos na palavra, as traduções como legenda sob cada trecho. Lote EF2 (peru-agua-arte-1, 22/10/2026),
   editor-de-arte em Fable.
 
+  CONSERTO peru-agua-arte-7 (lote E-s27, 22/10/2026; qualidade-4, L69, lente espaco): a saída de cada citação (o cartão E a tradução) dura
+    200 ms e TERMINA no t0 da seguinte (a 1ª de 3,7 a 3,9; a 2ª de 6,034 a 6,234), com a opacidade caindo linear a 0: nenhum quadro tem dois
+    cartões visíveis. Antes, o levantar durava 350 ms (a opacidade só zerava em t1 + 0,15) e as duas citações de 280 px se sobrepunham no
+    mesmo retângulo por ~0,35 s. Nenhum t0 de entrada, grifo, folha ou cabeçalho mudou; a permanência mínima fica em ~2,07 s (a citação 2,
+    3,9 → 6,034).
+
   CONSERTO peru-agua-arte-5 (lote E-s27, 22/10/2026; textos-tela.json sha256 5217132f…, texto-6: só a s27 mudou):
     o trecho ampliado em Courier a 140 px (arte-4) vira a FALA CITADA, uma por vez, no CARTÃO DE PAPEL do canal (identidade §5, "a fala
     citada … num cartão de papel ao lado, em --papel, Inter 700, alvo 280 px, piso 260"; o da s28 e da s13): “fria y de / muchas nieves”
@@ -21,8 +27,8 @@
     acaba em x ~3586 em repouso e em ≤ 3640 durante a entrada a 1,04 — a coluna inteira foi de x 1440 a 1390 por isso, medido pelo portao-margens). A
     tradução de cada uma é LEGENDA (84 px) sob o cartão: "cold, with much snow"; "[…] from the sea, and the road very deserted"; "[…] many of
     them have died". O grifo 2 da página entra com a citação 2, em "road" (3,9), inteiro ("de la mar … despoblado"; "cuarenta leguas" sem
-    luz), e varre até o fim de "coast." (4,777). Nunca duas citações: o cartão que sai LEVANTA (350 ms, 1,00 → 1,04, ease-in cúbico) a partir
-    de 0,2 s antes do t1 (ofício §5: o que entra por cima manda o que estava sair antes), e o seguinte entra no t0 (300 ms, 1,04 → 1,00). A
+    luz), e varre até o fim de "coast." (4,777). Nunca duas citações: o cartão que sai LEVANTA (200 ms desde o arte-7; 1,00 → 1,04, ease-in
+    cúbico) de 0,2 s antes do t1 até o t1 (ofício §5: o que entra por cima manda o que estava sair antes), e o seguinte entra no t0 (300 ms, 1,04 → 1,00). A
     Courier Prime não aparece mais fora da folha (o scan). Ficam: a página que recua e escurece, os grifos 1 e 3, o rótulo da página
     (1,20 s) e "Translated from Spanish" (1,634 → fim, y 1750). O data-qc-sem-heroi sai do palco. Textos vivos ≤ 4 (rótulo, citação,
     tradução, marca); elementos ≤ 6 (página, rótulo, cartão, tradução, marca = 5); blocos de leitura ≤ 3 (rótulo, cartão, tradução).
@@ -309,15 +315,17 @@
   }
   // o CARTÃO DA FALA entra na palavra (300 ms: opacidade, 24 px de subida, 1,04 → 1,00) e sai LEVANTANDO (350 ms, 1,00 → 1,04 em
   // ease-in cúbico, a única curva fora do eo/eb do RIG: identidade §4.4), a partir de tSai
+  // arte-7: a SAÍDA dura 200 ms e TERMINA em tSai + 0,2 = o t0 da citação seguinte: a opacidade cai linear a 0 (nenhum quadro com dois
+  // cartões visíveis); o levantar (1,00 → 1,04, ease-in cúbico) corre nesses mesmos 200 ms
   function cartao(el, t, t0, tSai) {
     if (!el) return;
-    var p = eo(seg(t, t0, 0.3)), q = tSai !== undefined ? seg(t, tSai, 0.35) : 0, qi = q * q * q;
-    el.style.opacity = (p * (1 - qi)).toFixed(3);
+    var p = eo(seg(t, t0, 0.3)), q = tSai !== undefined ? seg(t, tSai, 0.2) : 0, qi = q * q * q;
+    el.style.opacity = (p * (1 - q)).toFixed(3);
     el.style.transform = "translateY(" + ((1 - p) * 24).toFixed(1) + "px) scale(" + (lerp(1.04, 1.0, p) * lerp(1.0, 1.04, qi)).toFixed(4) + ")";
   }
-  function texto(el, t, t0, tSai) {
+  function texto(el, t, t0, tSai, dOut) {
     if (!el) return;
-    var p = eo(seg(t, t0, 0.3)), q = tSai !== undefined ? eo(seg(t, tSai, 0.3)) : 0;
+    var p = eo(seg(t, t0, 0.3)), q = tSai !== undefined ? eo(seg(t, tSai, dOut || 0.3)) : 0;
     el.style.opacity = (p * (1 - q)).toFixed(3);
     el.style.transform = "translateY(" + ((1 - p) * 24 + q * 24).toFixed(1) + "px)";
   }
@@ -388,7 +396,7 @@
     g1: 1.634, g1b: 2.567, g1Fim: 2.987,     // "the" · "snow" · o fim de "snow"
     g1Sai: 3.9,                              // "road": a citação 1 e a tradução 1 saem (textos-tela t1 3,9); o grifo 1 baixa a 35 %
     g2: 3.9, g2Fim: 4.777,                   // "road" · o fim de "coast.": o grifo 2 (inteiro, "de la mar … despoblado") entra com a citação 2 (texto-6)
-    levanta: 0.2,                            // o cartão que sai começa a levantar 0,2 s antes do t1 (ofício §5)
+    levanta: 0.2,                            // o cartão e a tradução que saem levantam de t1 − 0,2 a t1 (200 ms; arte-7: a saída termina no t0 da seguinte)
     g3: 6.234, g3b: 6.5, g3Fim: 9.607,       // "many" · … · o fim de "died"
     repouso: DUR - 0.25
   };
@@ -426,8 +434,8 @@
     fita(E("folFe"), t, T.fita, "e"); fita(E("folFd"), t, T.fita + 0.12, "d");
     grifar(GF, t);
     texto(E("rotPag"), t, T.rotPag);
-    cartao(E("cit1"), t, T.g1, T.g1Sai - T.levanta); texto(E("tr1"), t, T.g1, T.g1Sai - T.levanta);
-    cartao(E("cit2"), t, T.g2, T.g3 - T.levanta);    texto(E("tr2"), t, T.g2, T.g3 - T.levanta);
+    cartao(E("cit1"), t, T.g1, T.g1Sai - T.levanta); texto(E("tr1"), t, T.g1, T.g1Sai - T.levanta, T.levanta);
+    cartao(E("cit2"), t, T.g2, T.g3 - T.levanta);    texto(E("tr2"), t, T.g2, T.g3 - T.levanta, T.levanta);
     cartao(E("cit3"), t, T.g3);                      texto(E("tr3"), t, T.g3);
     texto(E("leg"), t, T.g1);
   }
