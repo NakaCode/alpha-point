@@ -111,3 +111,17 @@ papel. É o caminho mais barato e seguro, sem estilo novo para testar."
 - O que a prova ensinou e continua valendo: poucos elementos por quadro; nada de ícone repetido; a cordilheira como uma forma só, do
   relevo ou de uma linha; a encosta leste nomeada (EASTERN SLOPES) e marcada de forma clara; o satélite plano na s18.
 - Sem mais provas de estilo neste vídeo: o objetivo é terminar o vídeo dentro do plano semanal.
+
+## 22/10/2026, 02:2x (Brasília): as duas perguntas da pesquisa, no chat da Sala
+
+A verificação independente do research (`out/peru-agua/_tmp/verificar-research/cetico.md`, `wf_eab5a080-24b`) deixou duas perguntas. As
+respostas, literais:
+- **A divisória (HydroBASINS v1, da WWF)**, baixada por programa de `data.hydrosheds.org`, cujo robots.txt é "Disallow: /", e com licença
+  própria da WWF (uso comercial com crédito; `marca/acervos/5-dados-e-fronteiras.md` §1.9), fora da lista aprovada: **"Aceito a v1 e eu
+  baixo (Recomendado)"**. A opção dizia: "Você baixa um arquivo de uns 10 MB no Brave, pelo botão Download da página do HydroBASINS (eu te
+  passo o link), e eu confiro que é idêntico ao que já temos. Nada muda no vídeo; o crédito vai só na descrição."
+  - O arquivo: `hybas_sa_lev06_v1c.zip` (América do Sul, nível 6, standard), 10.389.476 bytes, sha256 `6b1899bdbee46354…`. Até o download
+    dele e a conferência do sha256, as 5 camadas do HydroBASINS não vão a render nenhum.
+  - O crédito longo da WWF (o "Exhibit B") vai na descrição do YouTube, com o título do vídeo no lugar de "This product".
+- **O retrato de Pizarro** (Coutan, 1835; a foto no Commons é provavelmente a da RMN, que pede autorização fora dos EUA): **"Seguir com a
+  pintura de 1835 (Recomendado)"**, com "Painting, 1835" na tela.
