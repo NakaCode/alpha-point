@@ -7,119 +7,133 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "sinalização, sem reprovar: em 8,5–11,5 s (b1) e em 15,5–17,6 s (b2) a cena está nos 6 elementos do teto (identidade §4.2): linha, ponto, pílula, miniatura, aviso e cota; e linha, 2 pontos, Callao, 1535 e Lima. Pior extremo, mas dentro do teto.",
-        "sinalização: no b1 a pilha do canto inferior esquerdo tem 'Photo from 2022' sobre 3 créditos (UNESCO, foto em 2 linhas, MapTiler), com uns 50 px entre o aviso e o primeiro crédito (quadro 8,5 s). O portão-margens leu 0 (26 itens, 383 amostras, sha1 db7158f3…, sem avisos) e eu não remeço.",
-        "exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 (\"Quero reduzir para 56px\"), no sha1 db7158f3… (entrada s51 de _excecoes-portao.json, reconferida pela Sala em 22/10/2026); os 3 créditos medidos são ANA, foto e UNESCO, todos com data-qc-papel=\"credito\" e o tamanho vindo de var(--fs-credito) (56 px em tokens.css); o crMapa leva data-qc-credito=\"mapa\" sozinho, na própria linha.",
-        "ANOTAÇÃO DA QUALIDADE-1 (cota3000 com data-qc-papel=\"rotulo\"): o papel está certo. A cota é rótulo de 128 px (var(--fs-rotulo), identidade §4.1; piso 104 no portão) e 'cota' é o tipo editorial do textos-tela, não classe de tamanho; o qc-tamanho só conhece heroi|rotulo|eixo|credito, e 'cota' cairia no piso de legibilidade de 72. O mesmo vale para cota18, cota1535 e cota20. A Arte tem razão."
+        "item 11, margem e canto: b4 sem defeito. O portao-margens leu 0 (sha1 d00e5f56, 28 itens, 383 amostras, avisos []) e eu nao remeco. Canto de 400x400 livre em todos os quadros (28,0 a 38,05 s); nenhuma logo.",
+        "sinalizacao, o Chicama encosta na borda de cima no ultimo segundo (recorte 4K de 38,1 s, y 0 a 420): o arco norte do rio toca y=0 por uns poucos px, e a ponta cresce para fora do quadro com o push-in. E linha do mapa (camada que o portao-margens nao mede), nao texto: nao reprova, o rio ja foi lido de 30,7 a 38 s e a ponta cortada nao esconde nada narrado.",
+        "sinalizacao, o lugar da miniatura do caminhao (932 x 592, x ~1124-2056, y ~682-1274 a 4K, borda direita alinhada a da pilula Lima, 18 px de vao): confere com o quadro de 38,1 s (topo da pilula em y ~1290). Dentro das margens (x>=200, y>=160) e longe do canto de 400x400. Nao cobre Lima, o ponto, o anel (x ~2320), a divisoria (x>=2130 nessa faixa de y) nem o Chicama (y<~190 ao fim): cobriria so mar e a faixa costeira ao norte de Lima, sem marca nenhuma. Serve. Ate a caca, o vazio acima da pilula e mar escuro e a cena fecha sem buraco (Lima, anel e Chicama carregam o quadro).",
+        "sinalizacao: b1 (8,5-11,5 s) e b2 (15,5-17,6 s) seguem no teto de 6 elementos (identidade 4.2), e a pilha do canto inferior esquerdo do b1 tem 'Photo from 2022' com uns 50 px sobre 3 creditos. Inalterado desde a qualidade-2; o b4 tem 5 elementos (linha, Chicama, tunel+anel, ponto e pilula Lima), no alvo.",
+        "excecao do Lucas: qc-tamanho, credito a 56 px, 07/10/2026 ('Quero reduzir para 56px'), no sha1 d00e5f56 (entrada s51 de _excecoes-portao.json, regravada no sha1 de hoje; a reprovacao e so o credito: ANA, foto e UNESCO). gatesDuros vazio."
       ],
       "correcoes": [
-        "nada a mudar para aprovar. Se a Arte mexer no b1, afastar 'Photo from 2022' da pilha de créditos, sem encolher nada."
+        "nada a mudar para aprovar. Opcional (mapista): parar o push-in em zoom ~7,6 em vez de 7,75, ou baixar o centro final uns 40 px, para o arco do Chicama nao tocar o topo em 38,1 s; Lima e o anel ficam no quadro de qualquer forma."
       ]
     },
     {
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "sinalização (associação posicional): '1535' fica sobre a pílula 'Callao' de 13,4 a 17,6 s, e a data confirmada (TB227, UNESCO 500) é a da fundação de Lima; a pílula 'Lima' só entra em 15,53 s ('capital'). Não inverte o sentido (a voz diz 'in 1535… put their capital near a very good [port]'), por isso não reprova.",
-        "sinalização (o canal): a voz diz 'by canal in the old valleys' e o traço do b4 (30,7 s) é o rio Chicama real (OSM), não o canal. Está declarado no cabeçalho da cena (desvio da Arte, sem 'Approximate route') e a geometria é real: no recorte 4K de 36,0 s a linha cola no vale (a faixa verde da irrigação ao longo dela) da serra ao mar. Não pede 'Approximate route', porque é rio, não rota inventada.",
-        "sinalização: '1.8% OF THE WATER' (3,7–5,7 s) fica sobre o mar, ao lado da faixa laranja e não sobre ela (a regência pedia 'sobre o lado seco'; a faixa tem ~120 px de largura, declarado). Lê-se junto da faixa laranja, mas pode ser lido como 'água do Pacífico'. O valor é CONFIRMADO (TA198, 1,76 %) e o crédito da ANA o acompanha.",
-        "conferido sem problema: 'Caral' (menos específico que o lugar_na_origem), 'Photo from 2022' (data_na_origem 27/11/2022, aviso_de_ano true), 'ABOUT 3000 B.C.' (UNESCO), '20TH CENTURY', grafia contra o textos-tela f588540e; nenhum texto do nao_vai_para_tela; ponto de Caral sobre o satélite."
+        "item 11: o b4 nao criou defeito factual. A pilula 'Lima' (36,333 s, \"city's\") esta no ponto branco de Lima, na grafia e caixa da de 15,533 e igual ao textos-tela befa3f95 (rotulo, 36,333-38,133). Nenhum texto fora do textos-tela nem do nao_vai_para_tela.",
+        "o anel do tunel (centro em ~(2320,1195) a 4K ao fim) fica no tunel Marcapomacocha-Cuevas-Milloc (OSM), com o traco turquesa do tunel dentro dele (recortes de 33,6 s e 38,1 s): ancora certa, rotulo nenhum a inverter.",
+        "sinalizacao (herdada, ja registrada na qualidade-2): o traco do b4 e o rio Chicama real (OSM), nao o canal que a voz diz; desvio declarado no cabecalho da cena e na regencia. No recorte 4K de 36,0 s a linha cola no vale da serra ao mar e o fim de montante toca a divisoria (rio da vertente do Pacifico nasce ali): geometria real, sem 'Approximate route' (e rio, nao rota).",
+        "sinalizacao: '1535' sobre 'Callao' (13,4-17,6 s) com a data da fundacao de Lima; a voz junta os dois, nao inverte o sentido. '1.8% OF THE WATER' (3,7-5,7 s) ao lado da faixa laranja. Ambos como na qualidade-2."
       ],
       "correcoes": [
-        "redator-de-tela/Sala, opcional: se o regente quiser a data colada ao dono dela, mover o '1535' para a pílula 'Lima' quando ela entrar (15,53 s), ou aceitar como está (a voz junta os dois).",
-        "mapista, opcional: tingir a cota '1.8% OF THE WATER' com a cor do lado seco (--destaque) ou aproximá-la da faixa, para não ser lida como água do mar."
+        "redator-de-tela/Sala, opcional: mover o '1535' para a pilula 'Lima' quando ela entra (15,53 s), ou aceitar como esta."
       ]
     },
     {
       "lente": "wordlock",
       "nota": 9,
       "problemas": [
-        "conferido contra o words.json (tempos relativos a 651,8 s): '1.8% OF THE WATER' em 'Not' (3,76), Caral em 'valleys:' (6,90), ABOUT 3000 B.C. e o crédito da UNESCO em 'five' (8,26; entram em 8,233), Callao em 'port:' (12,42), 1535 em 'fifteen' (13,46), Lima em 'capital' (15,54), 20TH CENTURY em 'twentieth' (19,46), as silhuetas em 'came' (20,90), Chicama em 'canal' (30,74), o anel em 'tunnel'. O conserto de RITMO (7,867 → 8,233) foi re-checado contra a fala: a cota agora cai no número, 0,03 s antes de 'five'.",
-        "o primeiro segundo: o plano do Peru já está na tela com os dois lados nas cores desde o quadro 0,3 s, então a primeira frase tem cobertura.",
-        "observação: de 'truck' (37,22) ao fim (38,13) nada entra (a miniatura do caminhão depende da caça); a tela termina com a fala, sem conteúdo sobrando."
+        "tempos conferidos contra words.json (relogio = 651,8 + t): 'Not' 3,76 (cota 3,733); 'valleys:' 6,90 (Caral); 'five' 8,26 (cota e UNESCO 8,233); 'port:' 12,42 (Callao 12,4); 'fifteen' 13,46 (1535 13,433); 'capital' 15,54 (Lima 15,533); 'twentieth' 19,46 (20TH CENTURY 19,433); 'came' 20,9 (silhuetas); 'canal' 30,74 (Chicama 30,733); 'tunnel' 32,66 (anel 32,633); \"city's\" 36,34 (pilula Lima 36,333). A pilula Lima do conserto entra na palavra: o quadro de 36,0 s ainda nao a tem e o de 37,0 s ja a tem.",
+        "primeiro segundo: sem texto, mas os dois lados do pais ja nas cores desde o quadro 0,3 s (a pergunta 'dry side of that line' tem imagem desde o inicio). Fim: a cena termina em 'truck.' (37,37 s) e o corte e antes de 'Every' (38,16 s).",
+        "nenhum elemento atrasado por ritmo perdeu a ancora: a cota e o credito da UNESCO em 'five' (8,233) estao 0,03 s antes da palavra."
       ],
-      "correcoes": []
+      "correcoes": [
+        "nada a mudar."
+      ]
     },
     {
       "lente": "abordagem",
       "nota": 9,
       "problemas": [
-        "MAPA é o modo certo: a resposta é espacial (vales, porto, descida, água levada) e o espelho a põe como palco do 5º pico. Registro dentro do mapa (a foto reusada de Caral) e a descida das silhuetas, mapa com ilustração (identidade §5, 'Mais ilustração').",
-        "observação: o b4 (os três traços) é o mais fraco dos cinco planos; ver acessibilidade."
+        "MAPA e o modelo certo para a resposta em camadas ao longo da linha (lugar, rota, distancia, territorio: identidade 5, 'Mais mapa'); registro real onde a fala aponta uma prova (a Piramide Mayor reusada, declarada). O b4 e linha e marca sobre satelite real, nao desenho sobre fundo liso.",
+        "o 'caminhao' do ultimo trecho segue sem registro real (miniatura da caca s44-a/s47, so se aprovada para a frase): a abordagem do b4 continua certa, so incompleta ate la."
       ],
-      "correcoes": []
+      "correcoes": [
+        "nada a mudar. Com a miniatura do caminhao a cena muda e pede julgamento novo."
+      ]
     },
     {
       "lente": "acessibilidade",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "b4 (28,5–38,1 s): o traço do Chicama é uma linha fina (uns 8 px a 4K, recortes de 36,0 s), o anel do túnel tem ~70 px e o ponto de Lima ficou sem rótulo desde 17,6 s. Sem texto, um leigo precisa lembrar a s39/s40 para ler o anel como túnel; 'canal' e 'truck' não têm imagem legível. Não reprova, porque a descida das silhuetas, a Caral com a foto e o Callao/Lima se leem em 2 s e o b4 retoma marcas já provadas no vídeo, mas é o ponto fraco da cena.",
-        "o b0 se lê: lados nas cores desde o 1º quadro, a linha acesa e a cota sobre o mar."
+        "item 11, o b4 legivel: resolvido. Nos quadros de 960 px (32,0; 34,0; 36,0; 37,0; 38,05) o Chicama (13 px sobre contorno de 20 a 4K) se le como linha turquesa grossa da serra ao mar, e o anel de 112 px laranja se le sobre a serra escura; antes eram um fio e uma bolinha. As tres marcas entram na palavra que as nomeia ('canal', 'tunnel', \"city's\"), o que explica a cena sem rotulo.",
+        "sinalizacao: o traco do canal e o anel do tunel continuam sem nome na tela (decisao do redator: a voz os nomeia e o anel e a marca aprendida do tunel). Um leigo entende por causa do tempo exato das entradas e porque a pilula Lima fecha a frase.",
+        "sinalizacao: 'truck' (37,37 s) ainda nao tem imagem: de 37,3 a 38,1 s so ha a pilula Lima. Fica 0,8 s, curto o bastante para nao pesar."
       ],
       "correcoes": [
-        "mapista, sem texto novo: no b4, engrossar o traço do Chicama e dar ao anel do túnel o peso dos outros marcadores, mantendo o ponto de Lima legível. Texto só se o redator-de-tela o prescrever (o b4 é 'nenhum texto novo' no textos-tela)."
+        "nada a mudar para aprovar."
       ]
     },
     {
       "lente": "poluicao",
       "nota": 8,
       "problemas": [
-        "b1 e b2 encostam no teto de 6 elementos (identidade §4.2): sinalizo, não reprovo. Nenhum bloco de texto de leitura (só rótulos curtos e cotas), no máximo 3 rótulos ao mesmo tempo.",
-        "teste de lastro: nenhum texto órfão. 1.8% OF THE WATER cai em 'the water'; Caral em 'valleys:'/'a city'; Callao em 'port'; 1535 em 'fifteen thirty-five'; Lima em 'capital'; 20TH CENTURY em 'twentieth'. Todos são destilação (dado ou nome), não eco da fala. Sem entidade HTML, tofu ou glifo quebrado; o portão til (12 textos) leu 0."
+        "b4 com 5 elementos simultaneos (linha, Chicama a 60 % depois de 'tunnel', tunel + anel, ponto e pilula Lima), no alvo de 4 a 5 e sem bloco de texto. Com a miniatura do caminhao seriam 6, no teto (sinalizacao para quando a caca chegar).",
+        "teste de lastro: todo texto cai numa palavra da fala ('Not', 'valleys', 'five', 'port', 'fifteen thirty-five', 'capital', 'twentieth', \"city's\"); nenhum orfao, nenhuma entidade HTML nem tofu nos quadros. Os tracinhos claros dentro da linha do Chicama (recorte 36,0 s) sao emenda de feicoes do OSM, invisiveis abaixo de 4K: observacao, nao defeito.",
+        "sinalizacao herdada: b1 e b2 no teto de 6 (identidade 4.2), no pior extremo."
       ],
-      "correcoes": []
+      "correcoes": [
+        "nada a mudar."
+      ]
     },
     {
       "lente": "motion",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "o mapa viaja entre os planos (aproximação do b0, 1,5 s à costa central em 6,1 s, 1,5 s ao Callao, recuo de 2 s à serra em 17,6 s, recuo ao norte em 28,5 s) e as silhuetas descem em 3 passos que amortecem, como pede a regência; o aviso do ano entra 150 ms depois da foto assentar (7,7 s, quadro).",
-        "sinalização: depois de 24,4 s (silhuetas paradas) e depois de 34 s (o anel já pulsou) o quadro só tem a deriva do RIG: o ponto de Lima anda ~2 px em 2 s a 960 de largura (519,395 → 519,397 em 36,0 → 38,05 s; 380,298 → 377,300 em 25 → 28 s), uns 8 px a 4K em 2 s, abaixo do perceptível. São os 'respiros' que a regência declara (4), mas os últimos ~4 s da cena e os 4 s de 24,5 a 28,5 s são foto na prática. Não reprova (há viagem de câmera e movimento de elemento no resto, e o respiro é declarado).",
-        "o fim da cena está parado nos 250 ms antes do corte (37,85–38,13 s), como a regra manda."
+        "item 11, o push-in: resolvido. De 33,5 s ao fim a camera anda sem parar: o ponto de Lima sobe ~42 px/s a 4K (y 391 a 345 a 960 px entre 34,0 e 38,05 s); antes eram ~8 px em 2 s. E volta lenta e continua, nao velocidade (oficio, lente 7). O b4 agora tem o recuo de 28,5-30,5, o Chicama em 30,7, o tunel e o anel em 32,6 e o push-in: nada congela.",
+        "o pulso do anel (32,633 a 33,83 s, 1 a 2,6x) abre sem tranco e some; no recorte de 33,6 s o halo largo e translucido e o anel de 112 px, mesma cor e mesmo traco de 10 px. O anel nao se move nos ultimos 250 ms (so a deriva do push-in).",
+        "SINALIZACAO PARA A SALA, nao reprova: o anel de 112 px e o pulso unico fogem de identidade 4.4 ('56 px de diametro... pulso 1 a 1,8x, duas vezes, e para'). Os dois estao declarados na regencia (b4: 'twice the 56 px of the identity, only in this beat' e 'pulsing once... the last time') e foram ordem da Sala (espectador-r1, item 11). Nao reprovo porque o espectador nao e prejudicado: o recorte mostra a mesma marca (laranja --destaque, traco de 10 px, halo escuro), so mais perto, e o pulso unico ja estava na versao aprovada na qualidade-2. Mas e regra da marca mudada sem o Lucas: a Sala deve registrar a excecao (identidade 4.4) ou perguntar a ele; sem isso, o proximo julgador pode ler como violacao da lei da casa.",
+        "corte seco entre mapas: nao ha (a s51 corta para registro real, ver emenda)."
       ],
       "correcoes": [
-        "mapista: nos dois respiros longos, um push-in lento e contínuo (a régua é volta lenta e ininterrupta, não velocidade), que termine antes dos 250 ms do corte. Não acelerar a deriva."
+        "Sala: decidir com o Lucas se o anel de 112 px e o pulso unico no b4 viram excecao escrita em identidade 4.4; se ele mandar voltar a 56 px, o conserto e do mapista (anel r 28, pulso 1 a 1,8x, duas vezes) e a legibilidade do item 11 teria de vir so do enquadramento."
       ]
     },
     {
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "crédito do mapa '© MapTiler © OpenStreetMap contributors' a cena inteira, na faixa, 56 px, com data-qc-credito=\"mapa\" só na própria linha; cobre o OSM do rio Chicama e do túnel. Contraste 12,02:1 em 13,35 s (rodape v5, sha1 de hoje). Foto reusada de Caral com o crédito 'JOSE MORALES CIENCIA POLITICA UNMSM / Wikimedia Commons · CC BY-SA 4.0' (veredito aprovado para a cena, sha256 040d35aa…); ANA com a cota de 1,8 %; UNESCO com a cota de 3000 B.C. (TB220, TB223). Nenhum crédito supérfluo nem crédito-fantasma (cada crédito tem a mídia ou o dado na tela no quadro 8,5 s); HydroBASINS vai só na descrição, por decisão do Lucas (22/10/2026).",
-        "sinalização (nota 1 da triagem da Arte): os créditos com janelas ligam e desligam secos, sem os 300 ms de entrada (identidade §4.4); o ramo `janelas` de `creditos` vale também para a ANA e a foto. O portão não mede."
+        "creditos conferidos: '(c) MapTiler (c) OpenStreetMap contributors' em todos os quadros (cobre OSM do Chicama, do tunel e dos pontos); ANA com a cota de 3,7 a 5,7 s; foto 'JOSE MORALES CIENCIA POLITICA UNMSM / Wikimedia Commons · CC BY-SA 4.0' e UNESCO enquanto a miniatura esta (6,9-11,8 s); 'Photo from 2022' junto da miniatura (veredito do reuso: aprovado, aviso_de_ano true, data 27/11/2022). Sem credito-fantasma: a foto esta nos quadros de 8,9 e 11,5 s, e o credito dela sai com ela. Nenhum credito superfluo para dominio publico.",
+        "portao-mapa rodape v5: 0 (12,02:1 @13,35 s, 81 instantes); til: 0 (13 textos). Creditos a 56 px com data-qc-papel, pela excecao do Lucas (lente espaco); o crMapa so na propria linha.",
+        "o b4 nao traz foto nem dado novo, entao nao pede credito novo."
       ],
       "correcoes": [
-        "mapista, conserto próprio, como a Arte propôs: entrada em 300 ms no ramo `janelas`, saída seca no t1; refazer portões e clipe depois. Não segura o render."
+        "nada a mudar."
       ]
     },
     {
       "lente": "tema",
       "nota": 8,
       "problemas": [
-        "a cor segue o papel: --destaque a 85 % no lado seco, --contraparte a 35 % no lado úmido, a linha branca com contorno escuro, a divisa em branco. Sem degradê, véu nem vinheta no mapa.",
-        "sinalização: a --contraparte (o lado úmido) volta como a cor da água levada (Chicama e túnel no b4). O significado é coerente ('a água'), mas o Chicama é do lado seco; se o diretor-de-arte quiser 'uma cor = um significado' à risca, o b4 pede outro token. Não reprova."
+        "uma cor = um significado mantido: --destaque (laranja) no lado seco do b0 e no anel (a excecao da assinatura, identidade 2); --contraparte (turquesa) = agua (lado umido no b0; o Chicama e o tunel no b4, a agua levada). Satelite escurecido sem veu. Casa com as irmas (s30, s34, s40, s43).",
+        "o anel a 112 px e o mesmo laranja e o mesmo traco que os outros do video: le-se como a mesma marca mais perto, nao como outro significado (ver motion para a questao de regra)."
       ],
-      "correcoes": []
+      "correcoes": [
+        "nada a mudar."
+      ]
     },
     {
       "lente": "cobertura",
       "nota": 8,
       "problemas": [
-        "o concreto central da cena tem registro real: Caral (a foto frontal da s22, aprovada para esta frase pelo conferente) e o satélite do Peru, e o lugar (Callao, Lima, os vales) está sobre satélite real.",
-        "sinaliza: o porto (Callao) sem foto e 'truck' sem imagem; o s03-c e o caminhão (s44-a ou s47) ainda esperam a caça e o veredito para esta frase (regência, `falta_de`), e o caminhão aparece nas cenas irmãs s44/s47. Observação, não reprova."
+        "concretos do b4: canal, tunel, caminhao. Canal e tunel tem registro real (satelite com o Chicama e o tunel OSM; o canal aparece na s24 irma); o caminhao nao tem imagem (37,37-38,1 s) e e o unico concreto sem registro na cena.",
+        "nao reprova: caminhao e conhecido de qualquer espectador (criterio duplo: central E desconhecido), e a miniatura esta prevista na regencia (falta_de: s44-a/s47, so se aprovada para a frase) e com lugar reservado. Sinalizacao para a Sala, na caca."
       ],
       "correcoes": [
-        "Sala, na caça: o plano do porto (s03-c) e o do caminhão (s44-a ou s47), com veredito do conferente para a frase da s51, entram como miniaturas no b2 e no b4, se chegarem."
+        "Sala, na caca: miniatura de caminhao-tanque levando agua a bairro de Lima (busca: 'water tanker truck Lima Peru informal settlement'; aerea ou plano medio, 4K horizontal, so de acervo aprovado), com veredito para esta frase."
       ]
     },
     {
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "5 planos para 5 objetos (a pergunta, os vales, o porto, a gente, a água), cada um convocado por uma palavra ('Not', 'valleys:', 'port:', 'came', 'canal'); nenhum clipe de vídeo na cena e uma só foto, com uma janela só (6,9–11,8 s), sem aparição sucessiva.",
-        "sinalização: o b4 cobre 3 objetos (canal, túnel, caminhão) em um plano, mas eles têm trajetória própria (os traços entram em sequência) e a continuidade de uma explicação, o que a trava do ofício permite."
+        "sem footage nesta cena: a unica imagem parada e a miniatura de Caral (6,9-11,8 s, 4,9 s, abaixo do teto de 6 s, mapa andando por baixo). O b4 e plano unico por regime declarado (a regencia: respiros), mas agora com tres entradas (Chicama, tunel e anel, pilula Lima) e push-in continuo: o quadro nao fica mais de 2 s sem mudar.",
+        "cinco planos no mesmo mapa para cinco objetos da fala (pergunta, vales, porto, gente, agua), um por beat; nenhum plano cobre dois objetos."
       ],
-      "correcoes": []
+      "correcoes": [
+        "nada a mudar."
+      ]
     },
     {
       "lente": "autoria",
@@ -129,22 +143,24 @@
     },
     {
       "lente": "camadas",
-      "nota": 8,
+      "nota": 9,
       "problemas": [
-        "oportunidade, não reprova: o b1 tem as camadas (satélite, a foto como prova, a cota de data) e o b4 só tem o mapa e os traços. O material nomeado que ficou na mesa: a miniatura do porto (s03-c), a de 'a gente' (s35-a) e a do caminhão (s44-a ou s47), previstas na regência e sem veredito para esta frase."
+        "oportunidade, nao reprova: a regencia prescreve tres miniaturas de camada para a frase e a tela so tem uma (Caral): o porto (s03-c, b2), a gente (s35-a, b3) e o caminhao (s44-a ou s47, b4, no lugar reservado). Nenhuma esta em _media com veredito para esta frase (a caca ainda nao veio), entao nao ha arquivo baixado que ficou de fora."
       ],
       "correcoes": [
-        "Sala: se a caça trouxer os registros com veredito, o b2, o b3 e o b4 ganham a camada do registro, como o b1."
+        "Sala, na caca: trazer as tres miniaturas com veredito para a frase; a do caminhao entra no lugar reservado acima da pilula Lima, e a cena pede novo julgamento."
       ]
     },
     {
       "lente": "circulo",
       "nota": 8,
       "problemas": [
-        "a cena é a recapitulação do vídeo e repete de propósito: a foto de Caral (s22), as silhuetas (s30/s31), o anel (s39/s40), o 1.8 % (s01/s02). É callback declarado (espelho › _reuso_declarado), e a marca dele é o degrau novo: aqui eles se juntam numa resposta, ao longo da mesma linha; se ela sumisse, o espectador perderia o fecho visual.",
-        "sinalização: o b4 usa o mesmo anel da s39 ('o último pulso'); é o pagamento do callback, sem informação nova além do lugar."
+        "a s51 e a resposta em camadas e volta de proposito a provas ja mostradas (a Piramide Mayor da s22, as silhuetas da s31, o anel do tunel das s40/s43/s50): callbacks que pagam com informacao nova (a causa em cada camada, o canal, o tunel, o caminhao), todos declarados no espelho. Se a s51 sumisse, o espectador perderia a resposta visual a 'por que vivem no lado seco'.",
+        "sinalizacao de forma: o quadro do b4 repete o enquadramento norte-centro das cenas de rota anteriores; o conteudo e novo e a forma varia (traco real, anel, pilula)."
       ],
-      "correcoes": []
+      "correcoes": [
+        "nada a mudar."
+      ]
     }
   ]
 }
