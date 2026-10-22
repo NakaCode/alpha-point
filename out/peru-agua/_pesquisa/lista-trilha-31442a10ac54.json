@@ -1,0 +1,596 @@
+{
+ "proj": "peru-agua",
+ "_leia": [
+  "A lista de faixas da trilha do vídeo 4 (Peru, título de trabalho 'Why Peru Lives on the Dry Side of the Andes'), para o Lucas aprovar no chat. Nada foi baixado.",
+  "Feita em 22/10/2026: as buscas das 09:57 às 09:59 de Brasília (a hora do `date` do Git Bash, sem TZ), só com a busca do Epidemic (ferramentas/epidemic.mjs buscar e parecidas): 21 pedidos, um por vez, sem laço de páginas, todos com saída 0, sem RETRY_LATER, 429, 503 nem 406 (registro em out/peru-agua/_tmp/trilha/buscas/registro.md); a escolha por duas lentes independentes (continuidade com os 3 vídeos; o assunto e a voz) e a lista montada às 10:06. Depois, a lista --conferir (1 SearchRecordings pelos ids; assinatura_conferida), que é do Claude central.",
+  "As linhas seguem o formato do `epidemic.mjs lista/baixar`: todas com \"aprovado\": false. O \"sim\" do Lucas marca \"aprovado\": true só nas linhas que ele cobrir; a assinatura sai do `lista`.",
+  "O \"sim\" cobre as 4 preferidas (linhas 1 a 4). Reserva (5 a 12) só com o número dela na resposta.",
+  "O que o \"sim\" cobre, dito ao Lucas no .md: o download das músicas que ele nomear e o lugar delas nos trechos da tabela. Não cobre o volume, que vai ao Lucas como pergunta à parte, no chat, com as opções (na Zona, 15/10/2026, a resposta foi 'Subir a voz no Premiere (Recomendado)').",
+  "duracao_s está arredondada ao segundo, como nas listas do Juneau, de LA e da Zona; `lista --conferir` confere contra o servidor, com tolerância de 1,5 s. moods, generos, uso, stems e bpm são as marcas do próprio Epidemic, como a busca as devolveu (out/peru-agua/_tmp/trilha/candidatas.json). As sobras do .md saem dessas durações arredondadas.",
+  "Ninguém ouviu as faixas, e nenhuma prévia nem página de faixa foi pedida por programa: o robots.txt de audiocdn.epidemicsound.com é 'Disallow: /', e a música nunca entra em ferramenta de IA nem de reconhecimento de música (licença do Epidemic; CLAUDE.md, 'A trilha'). A escolha é só pelos metadados da busca (clima, gênero, andamento, stems, sem voz, marcas de uso), pelas vizinhanças que o 'parecidas' devolveu, e pelas escolhas do Lucas no Juneau, em LA e na Zona (padrao_lucas em out/peru-agua/_tmp/trilha/trechos.json), lidas como preferência pelo calmo, pelo misterioso no começo e no meio, pelo sonhador com algum pulso no trecho de mapa e pelo esperançoso e tranquilo no fecho. Essa leitura é palpite: ele não disse o motivo.",
+  "Os endereços https://www.epidemicsound.com/music/tracks/<id>/ são montados a partir do id (PAGINA(rec.id) em ferramentas/epidemic.mjs; todos os ids casam com o UUID de RE_PAGINA); nesta lista NÃO foram abertos. O Lucas ouve na página, no navegador dele.",
+  "precisa_cobrir_s, em cada trecho, é o tamanho dele mais 0,2 s: a pré-v1 não pede de um arquivo mais que a duração dele menos 0,2 s (MARGEM_ARQUIVO_S). Toda linha tem pelo menos o trecho mais 5 s.",
+  "Nenhuma das 12 é faixa das listas do Juneau, de LA nem da Zona (preferidas, reservas e baixadas; os 12 ids das baixadas foram excluídos na busca). Também ficaram fora as candidatas que o Lucas já viu e não escolheu: Starry Dwelling (reserva do trecho 3 de LA), Soul Temple (reserva do trecho 4 de LA), Nostalgic Drawings (preferida do trecho 3 da Zona, trocada) e fauna (reserva do trecho 4 da Zona). Artistas que se repetem com faixa nova: Elin Piel (linhas 1 e 6; Ultra, a abertura de LA), Ave Air (linha 8; Zero:Null, a abertura da Zona) Trevor Kowalski (linha 12; The Sunken Library, o fecho da Zona) e Rand Aldo (linha 9; Lightless Current, o meio do Juneau).",
+  "Ficaram fora, pela voz do canal (marca/voz.md §1 e §2) e pelo padrão do Lucas: as marcas de uso suspense, horror, crime, supernatural, build e drama; os moods dark, restless, sad, epic, euphoric, dramatic e sentimental; a música de meditação e o piano solo; as sem pulso (BPM 0) e as abaixo de 65 BPM. Tudo instrumental ('sem voz' do Epidemic).",
+  "Os números do vídeo foram conferidos no disco: os capítulos em espelho.json › _capitulos; a duração (723,78 s) em narracao.json › audio.duracaoSec; a cauda de 703,78 a 723,78 em narracao.json › tratamento_canal.cauda_tela_final; a última palavra ('one.') acaba em 703,63 s em words.json (espelho.json › _relogio.fim_da_fala_s). As trocas caem no começo da 1ª palavra do capítulo: 'It' em 225,50 ('ago.' acaba em 225,05), 'From' em 444,21 ('it.' em 443,72) e 'The' em 629,17 ('work.' em 628,71)."
+ ],
+ "duracao_video_s": 723.78,
+ "fala_ate_s": 703.63,
+ "tela_final_s": [
+  703.78,
+  723.78
+ ],
+ "fonte_dos_trechos": "out/peru-agua/espelho.json › _capitulos (em_s): o gancho e as partes p1 a p7 do roteiro (roteiros/peru-agua/roteiro-narrador.md, marcas <!-- pN -->). A duração e a cauda vêm de out/peru-agua/narracao.json (audio.duracaoSec 723,78; tratamento_canal.cauda_tela_final de 703,78 a 723,78). A fala acaba em 703,63 s (a última palavra, 'one.', em words.json). O plano é feito à mão, como os do Juneau, de LA e da Zona (o trilha.mjs da pré-v1 só entende card de título). O gancho e os 7 capítulos viram 4 trechos: gancho+p1+p2, p3+p4, p5+p6, p7 com a tela final. Cada troca cai num começo de capítulo onde o assunto muda: 225,50 s ('It is called Caral'), 444,21 s ('From December to April') e 629,17 s ('The water Lima keeps'), logo depois da pausa normal entre parágrafos (0,45, 0,49 e 0,46 s). Com as rampas de 1 s do XML, a música que sai desce sobre o fim da frase anterior e a pausa, e a que entra sobe sob a primeira frase do capítulo.",
+ "voz_do_canal": "marca/voz.md §1: energia calma e firme, a provocação está no fato e não no volume; §2: sem trilha de suspense por cima de morte ou sofrimento; aqui, estendido à trilha inteira, como na Zona, e reforçado no p4 (os carregadores mortos de Jauja, a violência dos anos 80 e 90) e no p6 (os vermes no tanque, o caminhão que desceu a ladeira). A regra de mood da trilha ainda não existe na marca. Por isso ficam fora os moods dark, suspense, scary, epic, euphoric, dramatic, restless, sad e sentimental, as marcas de uso suspense, horror, crime, supernatural, build e drama, a música de meditação e o piano solo (nenhuma das 12 linhas tem essas marcas). Tudo instrumental.",
+ "trechos": [
+  {
+   "trecho": 1,
+   "partes": [
+    "gancho",
+    "p1",
+    "p2"
+   ],
+   "inicio_s": 0,
+   "fim_s": 225.5,
+   "cenas": "s01 a s21",
+   "assunto": "A linha que divide o Peru, os dois lados e a pergunta; a divisória pelos Andes e a tabela da água; por que o lado seco é seco (a alta do Pacífico, o mar frio, a tampa de ar, o El Niño, a sombra dos Andes)",
+   "mood_pre_v1": [
+    "Mysterious",
+    "Peaceful"
+   ],
+   "mood_nota": "o tom-base do canal, contemplativo e lento, como as aberturas do Juneau (Drone of Thoughts, 73 BPM), de LA (Ultra, 70) e da Zona (Zero:Null, 68). A preferida (Hazy Particles) é floating e peaceful, 70 BPM, com a marca de uso 'mystery': não é 'mysterious' porque as misteriosas de 65 a 75 BPM que cobrem o trecho têm marca que fica fora (suspense, dark, epic, build, meditation ou, na The City Did This, 'supernatural', que a lista do vídeo 3 deixou fora); a Never Leave the Stream é curta (3:39) e a Ultra já é do canal.",
+   "linhas": {
+    "preferida": 1,
+    "reservas": [
+     5,
+     6
+    ]
+   },
+   "precisa_cobrir_s": 225.7
+  },
+  {
+   "trecho": 2,
+   "partes": [
+    "p3",
+    "p4"
+   ],
+   "inicio_s": 225.5,
+   "fim_s": 444.21,
+   "cenas": "s22 a s37",
+   "assunto": "As pessoas chegam ao lado seco: Caral, Chan Chan e os puquios, Pizarro e a fundação de Lima junto ao porto; o século XX descendo dos Andes até a periferia de Lima e Villa El Salvador",
+   "mood_pre_v1": [
+    "Mysterious",
+    "Peaceful"
+   ],
+   "mood_nota": "no meio dos 3 vídeos, o Lucas ficou com misteriosas de pulso constante (Lightless Current 104, Sunshine Rain 104, Zatelitez 97) e recusou a inquieta; aqui a preferida segue essa leitura (palpite: ele não disse o motivo), com 102 BPM. Sem tensão nos carregadores de Jauja nem na violência dos anos 80 e 90 (marca/voz.md §2).",
+   "linhas": {
+    "preferida": 2,
+    "reservas": [
+     7,
+     8
+    ]
+   },
+   "precisa_cobrir_s": 218.91
+  },
+  {
+   "trecho": 3,
+   "partes": [
+    "p5",
+    "p6"
+   ],
+   "inicio_s": 444.21,
+   "fim_s": 629.17,
+   "cenas": "s38 a s49",
+   "assunto": "A água atravessa a linha: os lagos do lado amazônico, o túnel de 1962 até o Rímac e a soltura de maio a novembro; onde os canos acabam, os 700 mil sem rede e o caminhão-pipa nas encostas de Lima",
+   "mood_pre_v1": [
+    "Dreamy",
+    "Floating"
+   ],
+   "mood_nota": "o ar de mapa do canal, como a Sand Mandala de LA (dreamy, floating, 90 BPM) e a Austafjord da Zona (94), as duas reservas que o Lucas escolheu no lugar da preferida, com um pouco mais de pulso. O p6 (os vermes no tanque, o caminhão que desceu a ladeira) continua calmo, sem tristeza dramática.",
+   "linhas": {
+    "preferida": 3,
+    "reservas": [
+     9,
+     10
+    ]
+   },
+   "precisa_cobrir_s": 185.16
+  },
+  {
+   "trecho": 4,
+   "partes": [
+    "p7",
+    "tela final"
+   ],
+   "inicio_s": 629.17,
+   "fim_s": 723.78,
+   "cenas": "s50 a s53 (a s53 é a tela final, 20 s sem voz)",
+   "assunto": "Um caminho só: o risco do túnel único e o segundo túnel sem data; a resposta em camadas (os vales, o porto, a gente) e a água do lado amazônico que cruza a divisória todo 1º de maio; depois, os 20 s da tela final",
+   "mood_pre_v1": [
+    "Hopeful",
+    "Peaceful"
+   ],
+   "mood_nota": "o fecho de entendimento, não de vitória, como os do Juneau (fading into blue, 66 BPM), de LA (Happiness, 68) e da Zona (The Sunken Library, 72), todos hopeful e peaceful; fora o Epic, o Euphoric e o drama, e calmo também sob o aviso do terremoto.",
+   "linhas": {
+    "preferida": 4,
+    "reservas": [
+     11,
+     12
+    ]
+   },
+   "precisa_cobrir_s": 94.81
+  }
+ ],
+ "opcao_com_menos_troca": "Os pares vizinhos pedem 7:24 (1+2), 6:44 (2+3) ou 4:40 (3+4). Só a The Ethereal (linha 8, 4:50) cobriria os trechos 3 e 4 juntos, mas ela é dreamy e floating, não esperançosa: com ela, o fecho perderia o clima que o Lucas escolheu nos 3 vídeos. Com 3 músicas de verdade, seria outra busca.",
+ "plano_proposto": {
+  "_leia": "O _trilha-plano.json que o Claude central monta à mão depois do download, no formato da pré-v1 ({ato, faixa, relogio, inSec, outSec, entrada, notaMix}), como o do Juneau e o da Zona. Entre capítulos, a pré-v1 emenda sem sobrepor (um trecho acaba onde o outro começa, cada um com 1 s de subida e 1 s de descida no XML). Todos os trechos vão no mesmo par de faixas A2/A3, com in=0: cada música toca do começo dela. 'faixa' é null até o arquivo existir: a linha diz qual. Se o Lucas trocar uma preferida por uma reserva, a 'linha' e a notaMix do trecho mudam com ela. O −35 das notaMix é PROVISÓRIO: o XML só regula o volume da música (DB_NARR, xml-premiere.mjs da pré-v1, como conferido na lista do vídeo 3), e a voz só sobe no Premiere. A narração do vídeo 4 mede −19,7 LUFS integrados (ebur128 do ffmpeg sobre out/peru-agua/narracao.wav, 22/10/2026; pico verdadeiro −3,6 dBTP, LRA 2,0 LU), igual à do vídeo 3. O volume vai ao Lucas como pergunta à parte, no chat; na Zona a resposta foi 'Subir a voz no Premiere (Recomendado)' (15/10/2026, 21:3x; out/zona-do-canal/_creditos-trilha.md), e o \"sim\" das músicas não o decide.",
+  "trechos": [
+   {
+    "ato": "trecho 1 · gancho + p1 + p2",
+    "linha": 1,
+    "faixa": null,
+    "relogio": "LIMPO",
+    "inSec": 0,
+    "outSec": 225.5,
+    "entrada": "fade 0.5s",
+    "notaMix": "cama amena (−35dB sob narração); mood=Mysterious; \"Hazy Particles\" 70bpm"
+   },
+   {
+    "ato": "trecho 2 · p3 + p4",
+    "linha": 2,
+    "faixa": null,
+    "relogio": "LIMPO",
+    "inSec": 225.5,
+    "outSec": 444.21,
+    "entrada": "fade 0.5s",
+    "notaMix": "cama amena (−35dB sob narração); mood=Mysterious; \"Retrouvailles\" 102bpm"
+   },
+   {
+    "ato": "trecho 3 · p5 + p6",
+    "linha": 3,
+    "faixa": null,
+    "relogio": "LIMPO",
+    "inSec": 444.21,
+    "outSec": 629.17,
+    "entrada": "fade 0.5s",
+    "notaMix": "cama amena (−35dB sob narração); mood=Dreamy; \"Polar Crossing\" 95bpm"
+   },
+   {
+    "ato": "trecho 4 · p7 + tela final",
+    "linha": 4,
+    "faixa": null,
+    "relogio": "LIMPO",
+    "inSec": 629.17,
+    "outSec": 723.78,
+    "entrada": "fade 0.5s",
+    "notaMix": "cama amena (−35dB sob narração); mood=Hopeful; \"Butterfly Traces\" 72bpm"
+   }
+  ]
+ },
+ "edicao_de_duracao": "Nenhuma preferida precisa dela: todas cobrem o trecho. A do fecho (linha 4, 3:47) é cortada no fim do vídeo, com a descida de 1 s do XML, e toca só os primeiros 1:35; não termina no acorde final dela. Para terminar no acorde, seria a edição de duração do Epidemic (EditRecording), que é outro \"sim\" do Lucas e que a ferramenta do canal ainda não faz.",
+ "pendencias_antes_do_baixar": [
+  "A regra de mood da trilha na marca e a linha do Epidemic na tabela de Content ID do marca/midia.md §5 ainda não existem (CLAUDE.md, 'A trilha: Epidemic Sound', 'Ainda não feito'). Não seguram o download: o Juneau, LA e a Zona já baixaram pela mesma porta.",
+  "O volume vai ao Lucas como pergunta à parte, no chat, com as opções. Não segura o download das músicas; segura o XML com trilha.",
+  "Os lembretes de licença, ditos ao Lucas no .md ('Bom saber'): o vídeo vai ao ar com a assinatura ativa e o canal conectado; e a leitura de 'documentário' e tema político feita no Juneau ('Seguir: é vídeo de YouTube') se estende a este vídeo, que conta a conquista, a migração do século XX e a violência dos anos 80 e 90 no Peru: contar história não é apoiar partido nem candidato. Se ele disser que não vale, para."
+ ],
+ "buscas": [
+  "1. parecidas 9bf14691-3b32-447e-b122-5189bbfaf276 --n=10 --instrumental --dur-min=231 --json (09:57; sim-zeronull; saída 0)",
+  "2. buscar --mood=mysterious,peaceful --genero=ambient --bpm=65-75 --dur-min=231 --instrumental --n=10 --json (09:58; t1-myst-peace; saída 0)",
+  "3. buscar --mood=mysterious,dreamy --genero=ambient --bpm=65-75 --dur-min=231 --instrumental --n=10 --json (09:58; t1-myst-dreamy; saída 0)",
+  "4. parecidas e41e8c40-a826-4cbb-bed0-932d8374f12f --n=10 --instrumental --dur-min=231 --json (09:58; sim-ultra; saída 0)",
+  "5. buscar --genero=drone --mood=mysterious,peaceful,floating --dur-min=231 --instrumental --ordem=popularidade --n=10 --json (09:58; t1-drone; saída 0)",
+  "6. parecidas db33c176-5c6b-4abe-82d1-f6bb122008fa --n=10 --instrumental --dur-min=224 --json (09:58; sim-zatelitez; saída 0)",
+  "7. buscar --mood=mysterious,peaceful --genero=ambient --bpm=95-105 --dur-min=224 --instrumental --n=10 --json (09:58; t2-myst-peace; saída 0)",
+  "8. parecidas 38c9377d-4f67-4dcd-9f6a-2aabf0c228e2 --n=20 --instrumental --dur-min=224 --json (09:58; sim-lightless; saída 0)",
+  "9. buscar --mood=floating,peaceful,mysterious --genero=ambient --bpm=95-105 --dur-min=224 --instrumental --ordem=popularidade --n=15 --json (09:58; t2-float-pop; saída 0)",
+  "10. parecidas 1c7b4766-2bb5-3e63-8c62-7f635e180be2 --n=20 --instrumental --dur-min=224 --json (09:58; sim-sunshine; saída 0)",
+  "11. parecidas 0829eba1-3bf7-45db-8d9f-bba53d8f1b86 --n=20 --instrumental --dur-min=190 --json (09:58; sim-austafjord; saída 0)",
+  "12. buscar --mood=dreamy,floating --genero=ambient --bpm=88-95 --dur-min=190 --instrumental --n=15 --json (09:58; t3-dreamy-float; saída 0)",
+  "13. parecidas 0636a463-8985-48a0-8b35-a09a49743c0d --n=20 --instrumental --dur-min=190 --json (09:58; sim-sandmandala; saída 0)",
+  "14. parecidas 81000c95-e2d4-4a94-9c6c-d44d7b30fc6f --n=20 --instrumental --dur-min=190 --json (09:59; sim-wilderness; saída 0)",
+  "15. parecidas 8e555eba-91d6-4e71-97b4-5dda6218744c --n=20 --instrumental --dur-min=100 --json (09:59; sim-sunkenlib; saída 0)",
+  "16. buscar --mood=hopeful,peaceful --genero=ambient --bpm=66-74 --dur-min=100 --instrumental --n=15 --json (09:59; t4-hope-peace; saída 0)",
+  "17. parecidas 148f6a7c-2ed0-4fe0-8be0-d698a2954ca4 --n=20 --instrumental --dur-min=100 --json (09:59; sim-fadingblue; saída 0)",
+  "18. buscar --mood=hopeful --genero=ambient --bpm=66-74 --dur-min=100 --instrumental --ordem=popularidade --n=15 --json (09:59; t4-hopeful-pop; saída 0)",
+  "19. parecidas fd6d518e-e356-4824-8e13-6391463b2667 --n=20 --instrumental --dur-min=231 --json (09:59; sim-droneofthoughts; saída 0)",
+  "20. buscar --mood=floating,mysterious --genero=ambient --bpm=65-75 --dur-min=231 --instrumental --ordem=popularidade --n=15 --json (09:59; t1-floating-pop; saída 0)",
+  "21. buscar --mood=peaceful,dreamy --genero=ambient --bpm=95-105 --dur-min=224 --instrumental --ordem=popularidade --n=15 --json (09:59; t2-peace-dreamy; saída 0)"
+ ],
+ "linhas": [
+  {
+   "n": 1,
+   "id": "60804495-03e7-4ee2-85f4-7490ed889526",
+   "titulo": "Hazy Particles",
+   "artista": "Elin Piel",
+   "duracao_s": 252,
+   "bpm": 70,
+   "moods": [
+    "floating",
+    "peaceful"
+   ],
+   "generos": [
+    "ambient"
+   ],
+   "uso": [
+    "mystery"
+   ],
+   "voz": "sem voz",
+   "stems": [
+    "BASS",
+    "INSTRUMENTS",
+    "MELODY"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/60804495-03e7-4ee2-85f4-7490ed889526/",
+   "cena": "trecho 1 (s01–s21)",
+   "trecho": 1,
+   "papel": "preferida",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Pelas marcas do Epidemic: ambient, floating e peaceful, 70 BPM, sem stem de bateria; a marca de uso é 'mystery'. A ideia é a cama lenta e contínua da abertura: a linha que divide o Peru e por que o lado seco é seco. 70 BPM fica no meio das aberturas escolhidas (Drone of Thoughts 73, Ultra 70, Zero:Null 68), e 'peaceful' é o par da Ultra e da Zero:Null. Não é marcada 'mysterious': as misteriosas de 65 a 75 BPM que cobrem o trecho têm marca que fica fora (suspense, dark, epic, build, meditation ou, na The City Did This, a marca de uso 'supernatural', que a lista do vídeo 3 deixou fora); a Never Leave the Stream (72 BPM, mysterious e romantic) tem 3:39, curta para o trecho, e a Ultra já é do canal. É da artista da Ultra (Elin Piel), noutra faixa. Tem stem de melodia: na página, ouça se ela chama atenção. Cobre o trecho (3:46) com uns 26 s de sobra. As duas lentes a escolheram.",
+   "achada_em": "buscas 2 e 16",
+   "aprovado": true
+  },
+  {
+   "n": 2,
+   "id": "d4605a21-54b8-3439-b0be-c5b28f4748f9",
+   "titulo": "Retrouvailles",
+   "artista": "Ooyy",
+   "duracao_s": 230,
+   "bpm": 102,
+   "moods": [
+    "mysterious",
+    "peaceful"
+   ],
+   "generos": [
+    "ambient"
+   ],
+   "uso": [
+    "mystery"
+   ],
+   "voz": "sem voz",
+   "stems": [
+    "BASS",
+    "MELODY",
+    "INSTRUMENTS",
+    "DRUMS"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/d4605a21-54b8-3439-b0be-c5b28f4748f9/",
+   "cena": "trecho 2 (s22–s37)",
+   "trecho": 2,
+   "papel": "preferida",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Pelas marcas do Epidemic: ambient, mysterious e peaceful (os moods da Zatelitez e da Ultra), 102 BPM, com stem de bateria; a marca de uso é 'mystery'. A ideia é o pulso leve e constante para Caral, Chan Chan, Pizarro e a descida dos Andes, sem tensão nos carregadores de Jauja nem na violência dos anos 80 e 90. 102 BPM fica dentro dos 97 a 104 do meio dos 3 vídeos. É a única candidata com mysterious e peaceful juntos. Cobre o trecho (3:39) com uns 11 s de sobra. As duas lentes a escolheram.",
+   "achada_em": "busca 7",
+   "aprovado": true
+  },
+  {
+   "n": 3,
+   "id": "44763b5c-e238-37a6-88fb-b8ad47790162",
+   "titulo": "Polar Crossing",
+   "artista": "Spirits Of Our Dreams",
+   "duracao_s": 235,
+   "bpm": 95,
+   "moods": [
+    "dreamy",
+    "floating"
+   ],
+   "generos": [
+    "ambient"
+   ],
+   "uso": [],
+   "voz": "sem voz",
+   "stems": [
+    "INSTRUMENTS",
+    "BASS",
+    "MELODY",
+    "DRUMS"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/44763b5c-e238-37a6-88fb-b8ad47790162/",
+   "cena": "trecho 3 (s38–s49)",
+   "trecho": 3,
+   "papel": "preferida",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Pelas marcas do Epidemic: ambient, dreamy e floating (os moods da Sand Mandala), 95 BPM, com stem de bateria, sem marca de uso. A ideia é o ar de mapa do canal para o túnel de 1962 e a travessia da água, e a calma sob as encostas sem rede (o p6). 95 BPM fica no alto dos 88 a 95; no trecho de mapa, o Lucas preferiu duas vezes a reserva com um pouco mais de pulso (Sand Mandala 90, Austafjord 94). Artista nova no canal. Cobre o trecho (3:05) com uns 50 s de sobra. As duas lentes a escolheram.",
+   "achada_em": "busca 12",
+   "aprovado": false
+  },
+  {
+   "n": 4,
+   "id": "a8e4701e-0feb-3246-adc2-05e2ac80f4ec",
+   "titulo": "Butterfly Traces",
+   "artista": "Sight of Wonders",
+   "duracao_s": 227,
+   "bpm": 72,
+   "moods": [
+    "hopeful",
+    "peaceful"
+   ],
+   "generos": [
+    "ambient"
+   ],
+   "uso": [],
+   "voz": "sem voz",
+   "stems": [
+    "BASS",
+    "MELODY",
+    "INSTRUMENTS"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/a8e4701e-0feb-3246-adc2-05e2ac80f4ec/",
+   "cena": "trecho 4 (s50–s53, com a tela final)",
+   "trecho": 4,
+   "papel": "preferida",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Pelas marcas do Epidemic: ambient, hopeful e peaceful (o par das três escolhas de fecho: fading into blue, Happiness e The Sunken Library), 72 BPM (o da The Sunken Library), sem stem de bateria, sem marca de uso. A ideia é o fecho de entendimento, não de vitória, calmo também sob o aviso do terremoto. Artista nova no canal. Toca só os primeiros 1:35 dela. As duas lentes a escolheram.",
+   "achada_em": "busca 18",
+   "aprovado": true
+  },
+  {
+   "n": 5,
+   "id": "a37d09f4-8c0a-3995-a9f5-8b8256d85a54",
+   "titulo": "Silent Memories",
+   "artista": "Calm Shores",
+   "duracao_s": 252,
+   "bpm": 75,
+   "moods": [
+    "floating",
+    "peaceful"
+   ],
+   "generos": [
+    "ambient"
+   ],
+   "uso": [],
+   "voz": "sem voz",
+   "stems": [
+    "INSTRUMENTS",
+    "BASS",
+    "MELODY"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/a37d09f4-8c0a-3995-a9f5-8b8256d85a54/",
+   "cena": "trecho 1 (s01–s21)",
+   "trecho": 1,
+   "papel": "reserva",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Reserva da abertura: ambient, floating e peaceful, 75 BPM (o teto dos 65 a 75), sem stem de bateria, sem marca de uso. O mesmo par de moods da preferida, um pouco mais andada. Artista nova no canal. Não é marcada 'mysterious'. Cobre com uns 26 s de sobra.",
+   "achada_em": "busca 20",
+   "aprovado": false
+  },
+  {
+   "n": 6,
+   "id": "5e9967f3-b25b-4a64-a18b-49e8230ac019",
+   "titulo": "All the Birds",
+   "artista": "Elin Piel",
+   "duracao_s": 260,
+   "bpm": 70,
+   "moods": [
+    "floating",
+    "relaxing"
+   ],
+   "generos": [
+    "ambient"
+   ],
+   "uso": [],
+   "voz": "sem voz",
+   "stems": [
+    "BASS",
+    "INSTRUMENTS",
+    "MELODY"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/5e9967f3-b25b-4a64-a18b-49e8230ac019/",
+   "cena": "trecho 1 (s01–s21)",
+   "trecho": 1,
+   "papel": "reserva",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Reserva da abertura: ambient, floating e relaxing, 70 BPM, sem stem de bateria, sem marca de uso. O mesmo andamento e a mesma artista da preferida (Elin Piel, também da Ultra). Tem 'relaxing' no lugar do 'peaceful' e não tem o 'mysterious': ouça se ela não soa parada demais. Cobre com uns 34 s de sobra.",
+   "achada_em": "busca 20",
+   "aprovado": false
+  },
+  {
+   "n": 7,
+   "id": "cb68f59d-a825-3542-b3aa-a327fc482ac0",
+   "titulo": "Red Starling",
+   "artista": "Cora Zea",
+   "duracao_s": 230,
+   "bpm": 104,
+   "moods": [
+    "dreamy",
+    "peaceful"
+   ],
+   "generos": [
+    "ambient"
+   ],
+   "uso": [],
+   "voz": "sem voz",
+   "stems": [
+    "INSTRUMENTS",
+    "BASS",
+    "DRUMS",
+    "MELODY"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/cb68f59d-a825-3542-b3aa-a327fc482ac0/",
+   "cena": "trecho 2 (s22–s37)",
+   "trecho": 2,
+   "papel": "reserva",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Reserva do meio: ambient, dreamy e peaceful, 104 BPM (o da Lightless Current e da Sunshine Rain), com stem de bateria, sem marca de uso. Perde o 'mysterious'. Artista nova no canal. Cobre com uns 11 s de sobra.",
+   "achada_em": "busca 7",
+   "aprovado": false
+  },
+  {
+   "n": 8,
+   "id": "28d12f8e-06df-4048-901d-1ae67f188f47",
+   "titulo": "The Ethereal",
+   "artista": "Ave Air",
+   "duracao_s": 290,
+   "bpm": 96,
+   "moods": [
+    "dreamy",
+    "floating"
+   ],
+   "generos": [
+    "ambient"
+   ],
+   "uso": [],
+   "voz": "sem voz",
+   "stems": [
+    "INSTRUMENTS",
+    "DRUMS",
+    "MELODY",
+    "BASS"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/28d12f8e-06df-4048-901d-1ae67f188f47/",
+   "cena": "trecho 2 (s22–s37)",
+   "trecho": 2,
+   "papel": "reserva",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Reserva do meio: ambient, dreamy e floating, 96 BPM, com stem de bateria, sem marca de uso. Fica no limite de baixo do andamento do meio. É do artista da Zero:Null (Ave Air), a abertura da Zona, noutra faixa. Cobre com 1:11 de sobra.",
+   "achada_em": "buscas 9 e 21",
+   "aprovado": false
+  },
+  {
+   "n": 9,
+   "id": "51d62bcc-ae7a-3c00-872f-ff8e2031f634",
+   "titulo": "Lullaby Beach",
+   "artista": "Rand Aldo",
+   "duracao_s": 221,
+   "bpm": 90,
+   "moods": [
+    "relaxing",
+    "water"
+   ],
+   "generos": [
+    "ambient"
+   ],
+   "uso": [],
+   "voz": "sem voz",
+   "stems": [
+    "MELODY",
+    "BASS",
+    "INSTRUMENTS"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/51d62bcc-ae7a-3c00-872f-ff8e2031f634/",
+   "cena": "trecho 3 (s38–s49)",
+   "trecho": 3,
+   "papel": "reserva",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Reserva do trecho de mapa: ambient, relaxing e com a marca 'water' do Epidemic, 90 BPM (o da Wilderness e da Sand Mandala), sem stem de bateria, sem marca de uso. Veio das parecidas com a Austafjord, a escolhida da Zona. É do artista da Lightless Current (Rand Aldo), o meio do Juneau, noutra faixa. Sem 'dreamy': ouça se ela não soa mais parada que o ar de mapa. Cobre com uns 36 s de sobra.",
+   "achada_em": "busca 11",
+   "aprovado": true
+  },
+  {
+   "n": 10,
+   "id": "c65aa069-3cf1-4898-bddb-255ea8bd9013",
+   "titulo": "Sea Shells",
+   "artista": "Young Community",
+   "duracao_s": 199,
+   "bpm": 89,
+   "moods": [
+    "dreamy",
+    "relaxing"
+   ],
+   "generos": [
+    "ambient"
+   ],
+   "uso": [],
+   "voz": "sem voz",
+   "stems": [
+    "MELODY",
+    "BASS",
+    "INSTRUMENTS"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/c65aa069-3cf1-4898-bddb-255ea8bd9013/",
+   "cena": "trecho 3 (s38–s49)",
+   "trecho": 3,
+   "papel": "reserva",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Reserva do trecho de mapa: ambient, dreamy e relaxing, 89 BPM, sem stem de bateria, sem marca de uso. Veio das parecidas com a Sand Mandala. Artista nova no canal. Cobre com uns 14 s de sobra.",
+   "achada_em": "busca 13",
+   "aprovado": false
+  },
+  {
+   "n": 11,
+   "id": "827e3377-ec6a-46c6-9eff-f732556244e3",
+   "titulo": "Silent Currents",
+   "artista": "Tellsonic",
+   "duracao_s": 167,
+   "bpm": 73,
+   "moods": [
+    "hopeful",
+    "peaceful"
+   ],
+   "generos": [
+    "ambient",
+    "post-rock"
+   ],
+   "uso": [],
+   "voz": "sem voz",
+   "stems": [
+    "BASS",
+    "INSTRUMENTS",
+    "DRUMS",
+    "MELODY"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/827e3377-ec6a-46c6-9eff-f732556244e3/",
+   "cena": "trecho 4 (s50–s53, com a tela final)",
+   "trecho": 4,
+   "papel": "reserva",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Reserva do fecho: hopeful e peaceful (o mesmo par da preferida), 73 BPM, ambient e post-rock, com stem de bateria, sem marca de uso. O post-rock pode crescer: ouça se ela não sobe sob o aviso do terremoto ou no fim. Toca só os primeiros 1:35.",
+   "achada_em": "busca 18",
+   "aprovado": false
+  },
+  {
+   "n": 12,
+   "id": "5fe65094-7594-3e93-82a7-19b3616de027",
+   "titulo": "Amber Pull",
+   "artista": "Trevor Kowalski",
+   "duracao_s": 179,
+   "bpm": 71,
+   "moods": [
+    "hopeful",
+    "relaxing"
+   ],
+   "generos": [
+    "ambient",
+    "contemporary classical"
+   ],
+   "uso": [],
+   "voz": "sem voz",
+   "stems": [
+    "MELODY",
+    "INSTRUMENTS",
+    "BASS"
+   ],
+   "url": "https://www.epidemicsound.com/music/tracks/5fe65094-7594-3e93-82a7-19b3616de027/",
+   "cena": "trecho 4 (s50–s53, com a tela final)",
+   "trecho": 4,
+   "papel": "reserva",
+   "formato": "MP3",
+   "stem": "FULL",
+   "porque": "Reserva do fecho: hopeful e relaxing, 71 BPM, ambient e contemporary classical, sem stem de bateria, sem marca de uso. É do artista da The Sunken Library (Trevor Kowalski), o fecho da Zona, noutra faixa. Tem stem de melodia e o gênero contemporary classical: ouça se a melodia não sobe acima da voz. Toca só os primeiros 1:35.",
+   "achada_em": "busca 18",
+   "aprovado": false
+  }
+ ],
+ "assinatura_conferida": "31442a10ac54, pelo lista --conferir do Claude central em 22/10/2026, 10:13 (Brasília): título, artista, duração, voz e stem das 12 linhas batem com o servidor; 1 SearchRecordings.",
+ "_cetico": {
+  "quando": "22/10/2026, revisão cética da lista (só leitura do disco, sem pedido ao Epidemic)",
+  "conferido_sem_achado": "formato do lista/baixar (n inteiro e único, id UUID, titulo, artista, duracao_s >= 60, url da própria faixa, voz 'sem voz', aprovado false); título, artista, duração (arredondada, < 0,5 s), bpm, moods, gêneros, uso, voz e stems de cada linha contra as saídas brutas de buscas/ (os stems só mudam de ordem entre buscas); duração >= trecho + 5 s; nenhum mood ou uso excluído; nenhum id do acervo/trilha/biblioteca.json nem das listas do Juneau, de LA e da Zona; nenhuma faixa em dois trechos; as trocas contra words.json ('ago.' 225,05 -> 'It' 225,50; 'it.' 443,72 -> 'From' 444,21; 'work.' 628,71 -> 'The' 629,17; 'one.' 703,63; fim 723,78) e contra espelho.json › _capitulos; a narração em −19,7 LUFS (ebur128); as rampas de 1 s (xml-premiere.mjs: fadeIn = min(1, L), foStart = t1 − 1); nenhum e-mail nem conta no texto.",
+  "corrigido": [
+   "linha 1 (porque), trechos[0].mood_nota e o .md: 'a única misteriosa nesse andamento era a de sobrenatural' era falso; nas buscas há outras misteriosas de 65 a 75 BPM que cobrem o trecho (Outer Orbit, Volant, Samadhi Sindhu, Unfinished Stories, Vildmark, Slipping), todas com marca excluída. O texto agora diz isso.",
+   "_leia e o .md (linha 9): faltava que Rand Aldo, da Lullaby Beach, é o artista da Lightless Current, o meio do Juneau.",
+   ".md, o padrão do trecho de mapa: 'sonhadoras' trocado por 'sonhadoras ou flutuantes' (a Wilderness do Juneau é floating e mysterious, não dreamy).",
+   ".md, linhas 1 e 12: 'Tem uma linha de melodia' e 'com um toque de música clássica' afirmavam o som; agora dizem a marca do Epidemic (a faixa separada de melodia; o gênero música clássica contemporânea). Linha 12 do JSON: 'é clássica' -> 'o gênero contemporary classical'.",
+   ".md, as exclusões pela voz do canal: faltavam 'sombrias' (dark) e 'de crescendo' (build), que o JSON lista."
+  ]
+ }
+}
