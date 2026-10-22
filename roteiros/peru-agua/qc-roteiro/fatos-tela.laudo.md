@@ -1206,11 +1206,210 @@ COBERTURA: 20 de 20 (esta reconferência: todo item que mudou no lote B e nas se
 NOTA: 10/10
 VEREDITO: RESSALVA
 
+## Reconferência 2 (texto-3, fase 1, sobre db0c89f8…)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `db0c89f8d63c8719128be469078788b90f30d77bbc28076f11ff670da02ac5d8`.
+- **Comparado com:** a cópia de antes, `out/peru-agua/_tmp/redator/antes-consertos-3/textos-tela.json.f588540e` (sha256 `f588540e7e9f…`).
+- **O que o diff mostra:**
+  - só 8 itens de `_textos_por_cena` mudaram, todos na s13 e na s28, e só em `t0`/`t1` e `nota`; o texto continua byte a byte igual;
+  - mudaram também 3 linhas novas em `_instrucoes_para_a_arte`, 1 em `_pedidos_a_montante`, o `_consertos` e o campo novo `_entradas_congeladas_porque`.
+- **Os tempos** foram conferidos contra `out/peru-agua/words.json`:
+  - s13 começa em 117,094 s absolutos: "and" está em 135,96 s, que dá 18,866, e "blanket" em 136,18 s, que dá 19,086;
+  - s28 começa em 290,718 s: "had" está em 294,76 s, que dá 4,04, e "people" em 300,64 s, que dá 9,92.
+  - O beat 3 da s13 em `out/peru-agua/regencia.json` (foto_real, MODIS) começa em 18,867.
+- **Limites:** 0 imagens, nenhum navegador, nenhum site que recuse robô; nada foi gravado no canal.
+
+| id | cena | item (texto inalterado, veredito de texto de antes) | tempos novos | o que se conferiu | veredito |
+|---|---|---|---|---|---|
+| RB21 | s13 | "Satellite image · June 2018" (lote A, PA016: "Date Acquired: 6/20/2018") | 18,866–20,966 (2,1 s) | Entra em "and", junto com o beat 3 (foto_real, 18,867). O crédito do MapTiler sai em 18,866, de modo que a data aparece só com a imagem de 2018 na tela. **Condição:** o `exige` do beat 3 na regência ainda diz "at 'blanket' the real NASA MODIS image … enters". O `_pedidos_a_montante` da s13 pede "and", e a instrução à arte também. Enquanto a regência não mudar o `exige`, a arte segue a instrução, e a legenda nunca entra antes da imagem | CONFIRMADA (com a condição) |
+| RB22 | s13 | `_instrucoes_para_a_arte`: a MODIS e a legenda entram juntas em "and", e a legenda fica presa à moldura | — | o mesmo tempo de RB21; "nunca a legenda antes da imagem" | CONFIRMADA |
+| RB23 | s13 | `_pedidos_a_montante`: a regência › s13 › beats[3], "and" (18,866) e não "blanket" (19,11) | — | os dois tempos batem com o `words.json` (19,086 ≈ 19,11 na grade da regência) | CONFIRMADA |
+| RB24 | s28 | “MUY BUEN PUERTO” (A VERY GOOD PORT), ainda como `rotulo` (TB004) | 4,033–6,133 (2,1 s) | entra em "had" ("it had a very good port nearby"), antes de "very" e na fala do porto; sai no corte para a mesa | CONFIRMADA |
+| RB25 | s28 | "Translated from Spanish" (TB005) | 4,033–6,133 | cobre o rótulo bilíngue o tempo todo (as mesmas bordas) | CONFIRMADA |
+| RB26 | s28 | "Source: Bernabé Cobo, 1639 (1882 ed.)" (TB006) | 4,033–6,133 | cobre a citação o tempo todo; da mesa em diante, a legenda da página (TB007, 6,133–12,167) atribui o mesmo documento | CONFIRMADA |
+| RB27 | s28 | o grifo "comedio de tierra" (TB008) | 7,033–9,933 | fica no ar junto com a tradução dele (RB28), nas mesmas bordas | CONFIRMADA |
+| RB28 | s28 | "in the middle of the land" (TB009) | 7,033–9,933 | a voz diz "in the middle of the land" antes de "people" (300,64 s); sai quando entra a tradução 2 | CONFIRMADA |
+| RB29 | s28 | o grifo "puedan servir con poco trabajo" (TB010) | 9,933–12,167 | junto com a tradução dele (RB30), nas mesmas bordas, até o fim da cena | CONFIRMADA |
+| RB30 | s28 | "could serve with little work" (TB011) | 9,933–12,167 (2,23 s) | entra em "people", logo antes de "could serve" (301,04 s), e cobre a fala inteira; as duas traduções não se sobrepõem | CONFIRMADA |
+| RB31 | s28 | "Translated from Spanish" sob as traduções (TB012) | 7,033–12,167 (sem mudança) | segue cobrindo as duas traduções o tempo todo | CONFIRMADA |
+| RB32 | s28 | `_instrucoes_para_a_arte` (os dois itens novos da s28) | — | repetem os tempos de RB24 a RB30 e "nada muda na forma" até a decisão | CONFIRMADA |
+| RB33 | s28, forma (a) | `citacao`: “MUY BUEN PUERTO” (A VERY GOOD PORT) | — | "y por estar como está junto á él muy buen puerto" (`cobo-1639-historia-fundacion-lima_djvu.txt` l. 2615, p. 14). As aspas trazem o literal, e a tradução, entre parênteses e com a marca, é fiel. Sete palavras | FIEL (à fonte e à voz) |
+| RB34 | s28, forma (b) | rótulo `VERY GOOD PORT`, sem aspas nem tradução | — | são as palavras da voz ("it had a very good port nearby") e a tradução exata de "muy buen puerto"; sem aspas, não se apresenta como citação, e sair a marca de tradução está certo. O crédito do Cobo pode ficar | FIEL (à fonte e à voz) |
+| RB35 | s28, forma (c) | rótulo `GOOD PORT` | — | não afirma mais que a fonte, mas perde o "muy" da fonte e o "very" da voz: mais fraco que as duas | fiel, mas incompleta: não recomendada |
+| RB36 | s28, forma (d) | rótulo `PIZARRO'S PORT` | — | a fonte diz que o sítio escolhido tinha "junto á él muy buen puerto": um porto perto do lugar, não um porto de Pizarro. O possessivo atribui a ele o porto, coisa que nem a ordem nem a voz dizem, e omite "very good", que é a razão citada | **NÃO FIEL**: se for à tela, é DIVERGE; nunca use |
+
+**Outra observação, fora das 8 trocas** (o texto não mudou; o item é do lote A):
+- Na s13, "HUMBOLDT CURRENT" e "Schematic" ficam até 20,966, os 2,1 s em que a foto real MODIS também está na tela.
+- A `nota` de "Schematic" diz "fica enquanto elas [as setas] estão na tela". Se a MODIS cobrir o mar onde estão as setas, as setas e o "Schematic" precisam sair em 18,866. Se não saírem, "Schematic" fica sobre uma imagem real.
+- Isso vai à Sala e ao `qc-visual`. Não é achado de fato.
+
+**Fora desta fase, não julgado:** o `_entradas_congeladas_porque` registra que a regência › s41 › beats[2] virou mapa (Huinco no satélite, 14,5–18,333 s), e o `textos-tela.json` ainda não tem o crédito do mapa nem o texto revisto dessa cena. É a fase 2, e a s41 é do lote B: quando o texto chegar, passa por esta lente.
+
+**O lote B depois desta rodada:**
+- nada de texto mudou; os vereditos de antes ficam;
+- os 12 rótulos que esperam a caça e as 5 primárias do gob.pe continuam NÃO FOI CHECADO, e o laudo segue CHECADO PARCIALMENTE (329 de 346);
+- nenhum DIVERGE nem REFUTADA na tela. A forma (d) só seria DIVERGE se fosse adotada.
+
+COBERTURA: 16 de 16 (esta reconferência: as 8 trocas, as 3 instruções e o pedido a montante tirados do diff, e as 4 formas da nota da s28)
+NOTA: 10/10
+VEREDITO: RESSALVA
+
+## Reconferência 3 (texto-3, fase 2: as silhuetas da s30)
+
+- **Data-base:** 22/10/2026.
+- **Fonte:** a do TB026 e de PB005, sem pesquisa nova: `midia/peru-agua/fontes/documento/inei-2026-censo2025-presentacion-resultados.txt` (PDF p. 12), em números absolutos e em "Distribución porcentual".
+- **Leitura:** o `textos-tela.json` não foi lido nesta fase, como pediu a Sala.
+- **Limites:** 0 imagens, nenhum navegador; nada foi gravado no canal.
+
+**Os números da fonte** (Costa · Sierra · Selva · Total):
+- **1940:** 1 759 573 · 4 033 952 · 414 452 · 6 207 967. A soma das três regiões dá 6 207 977, 10 a mais que o total impresso: é diferença da própria tabela, e nada muda à escala de 10. Os percentuais publicados são 28.3 · 65.0 · 6.7.
+- **2025:** 19 185 930 · 8 733 585 · 4 786 513 · 32 706 028. Os percentuais publicados são 58.7 · 26.7 · 14.6.
+
+| id | o quê | conta (de 10 silhuetas) | veredito |
+|---|---|---|---|
+| RB37 | 1940, costa | 1 759 573 ÷ 6 207 977 × 10 = **2,83** (28,3 %) | 2 cheias e a 3ª preenchida em 5/6 (0,83) |
+| RB38 | 1940, serra | 4 033 952 ÷ 6 207 977 × 10 = **6,50** (65,0 %) | 6 cheias e a 7ª preenchida em 1/2 (0,50) |
+| RB39 | 1940, selva | 414 452 ÷ 6 207 977 × 10 = **0,67** (6,7 %) | 0 cheias e 1 preenchida em 2/3 (0,67): **declarada**, desenhada (ver RB43) |
+| RB40 | 2025, costa | 19 185 930 ÷ 32 706 028 × 10 = **5,87** (58,7 %) | 5 cheias e a 6ª preenchida em 7/8 (0,87) |
+| RB41 | 2025, serra | 8 733 585 ÷ 32 706 028 × 10 = **2,67** (26,7 %) | 2 cheias e a 3ª preenchida em 2/3 (0,67) |
+| RB42 | 2025, selva | 4 786 513 ÷ 32 706 028 × 10 = **1,46** (14,6 %) | 1 cheia e a 2ª preenchida em ~1/2 (0,46, um pouco menos que a metade) |
+| RB43 | a selva de 1940: declarada ou ausente | Sem ela, as 10 silhuetas ficariam só com a costa e a serra, e uma das duas ganharia os 0,67: a serra iria a 7,17 (72 %) ou a costa a 3,50 (35 %). Deixar o vão em branco esconde 6,7 % dos peruanos | **Fiel: declarada**, como fração de 2/3 de silhueta, num tom que não seja nem o da serra nem o da costa. Não precisa de rótulo novo (o "RAINFOREST" entra em 39,1 s). **Ausente, ou somada a outra região: NÃO FIEL** |
+| RB44 | a fileira única, se o desenho for uma fileira de 10 em ordem costa · serra · selva | 1940: as divisas caem em 2,83 e 9,33, ou seja, dentro da 3ª silhueta (0,83 costa / 0,17 serra) e da 10ª (0,33 serra / 0,67 selva). 2025: caem em 5,87 e 8,54, dentro da 6ª (0,87 costa / 0,13 serra) e da 9ª (0,54 serra / 0,46 selva) | fiel nas duas formas. Por região, cada uma é "N cheias + a última em fração" (RB37–RB42). Na fileira única, a silhueta da divisa fica partida na fração da conta |
+| RB45 | "6 descem, 4 ficam" (a leitura de hoje) | Em 2025 a serra é 2,67 de 10, não 4; de 1940 a 2025 a serra perde 3,83 de 10, a costa ganha 3,03 e a selva 0,80. A fileira toda em HIGHLANDS ao lado de "65.0% (1940)" também não é fiel: a serra de 1940 é 6,5 de 10, não 10 | **NÃO FIEL**, as duas. A fileira mostra as três regiões nas frações de RB37–RB42 |
+| RB46 | o estado final num censo nomeado | 2025 está na tela ("58.7% (2025)", TB036, 33,1 s), e o eixo nomeia os 8 censos. O "censo em que a balança vira" fica entre 1961 (costa 39,0, serra 52,3) e 1972 (costa 46,1, serra 44,0), e não é um censo só | 2025: **FIEL**. "O censo em que a balança vira": não usar |
+
+**As formas para o redator copiar:**
+- **1940** (com "65.0% (1940)" e "28.3% (1940)"): serra com 6 silhuetas cheias e a 7ª em 1/2 (6,5); costa com 2 cheias e a 3ª em 5/6 (2,83); selva com 1 silhueta em 2/3 (0,67), num tom neutro. Total: 10.
+- **2025** (com "58.7% (2025)"): costa com 5 cheias e a 6ª em 7/8 (5,87); serra com 2 cheias e a 3ª em 2/3 (2,67); selva com 1 cheia e a 2ª em ~1/2 (1,46). Total: 10.
+- Nenhum grupo declarado que se possa contar, nenhuma silhueta inteira para uma fração, e nenhuma região de fora.
+
+COBERTURA: 10 de 10 (esta reconferência: as 6 frações, a selva de 1940, a fileira única, a leitura de hoje e o censo nomeado)
+NOTA: 10/10
+VEREDITO: RESSALVA. O lote B fica como estava: as 2 formas de hoje (RB45) vão à arte como conserto, e os 17 NÃO FOI CHECADO continuam.
+
+## Reconferência 4 (texto-3, fase 2, sobre 0c588d53…)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `0c588d5357f70811bb01c5d08a744d78b910d6ba8f5c32858354af5b3065a10d`.
+- **Comparado com:** a cópia de antes, `out/peru-agua/_tmp/redator/antes-consertos-4/textos-tela.json.db0c89f8`, que confere com o sha256 `db0c89f8…`.
+- **Como se fez:** um script tirou o diff; todo texto novo ou mudado, e toda seção mudada, tem uma linha abaixo.
+- **Os tempos** foram conferidos contra `out/peru-agua/words.json` pela distância entre a âncora velha e a nova, todas certas até 0,02 s:
+  - s12 "imbalance": 1,8;
+  - s21 "border": 7,034;
+  - s32 "to": 5,934;
+  - s34 "about": 4,333;
+  - s16 "floods": 9,567, porque "the desert coast" está em 7,767 e "floods" vem 1,80 s depois;
+  - s27 "road": 3,914;
+  - s41 "service": 4,613 e "Huinco": 15,533, a partir de "fifty-eight" = 1,333;
+  - s30: o começo da cena é 316,227 s absolutos.
+- **O `s16.html`** foi lido como texto, sem rodar nada.
+- **Limites:** 0 imagens, nenhum navegador; nada foi gravado no canal.
+
+**A s28 vem primeiro, porque é a que a Arte espera.**
+
+| id | cena | item | tempos | o que se conferiu | veredito |
+|---|---|---|---|---|---|
+| RB47 | s28 | `citacao` “muy buen puerto” | 4,033–6,133 | "y por estar como está junto á él muy buen puerto" (`cobo-1639-historia-fundacion-lima_djvu.txt` l. 2615, p. 14): letra a letra, em caixa baixa como na fonte, entre aspas, 3 palavras; entra em "had" | CONFIRMADA |
+| RB48 | s28 | a legenda `A very good port` | 4,033–6,133 | "muy buen puerto" = "a very good port": tradução fiel, sem aspas (não se apresenta como citação), igual à voz ("it had a very good port nearby") | CONFIRMADA |
+| RB49 | s28 | "Translated from Spanish" | 4,033–6,133 | cobre a tradução todo o tempo, nas mesmas bordas | CONFIRMADA |
+| RB50 | s28 | "Source: Bernabé Cobo, 1639 (1882 ed.)" | 4,033–6,133 | cobre a citação e a tradução todo o tempo (PB001) | CONFIRMADA |
+| RB51 | s28 | `JANUARY 1535` sai em 4,033 | 0,167–4,033 | 3,87 s no ar; o mês da ordem continua dito pela legenda da página (TB007, de 6,133 em diante); nada se perde | CONFIRMADA |
+| RB52 | s28 | `_instrucoes_para_a_arte` | — | repete RB47–RB51 | CONFIRMADA |
+| RB53 | s27 (lote A) | a tradução 1 e o grifo 1 até 3,9 | 1,634–3,9 | "road" está em 3,914; cada tradução fica com o seu grifo, e os dois pares se sobrepõem 0,63 s, cada um preso ao seu grifo | CONFIRMADA |
+| RB54 | s27 (lote A) | `[…] from the sea, and the road very deserted` | 3,267–6,234 | "…[cua]renta leguas de la mar y el camino muy despoblado" (Cobo, l. 2438–2439). O "[…]" marca a omissão de "cuarenta leguas", e o resto é tradução fiel ("de la mar" = "from the sea"; "muy despoblado" = "very deserted"). O sentido fica, e a voz diz "the long road to the coast". **O corte é fiel.** Nota opcional: o grifo da página continua "cuarenta leguas de la mar…", e um grifo em "de la mar y el camino muy despoblado" casaria melhor com o "[…]" | CONFIRMADA |
+| RB55 | `nao_vai_para_tela` | as 40 léguas e uma conversão | — | a légua castelhana não tem valor fixo, e a conversão daria uma precisão que a fonte não tem: é verdade, e deixar de fora não afirma nada | CONFIRMADA |
+| RB56 | s30 | `SHARE OF PERUVIANS`, sob o gráfico | 22,0–37,167 | as duas séries são "Distribución porcentual" da "población censada" por "Región natural" (INEI, PDF p. 12): a parte dos peruanos recenseados em cada região. É fiel ao referente das cotas 52.4 e 58.7, e é a palavra da voz | CONFIRMADA |
+| RB57 | s30 | `SHARE OF PERUVIANS`, sob a cota da selva | 40,367–42,733 | a Selva 6.7 → 14.6 é a mesma distribuição percentual; a voz: "whose share of Peruvians more than doubled" | CONFIRMADA |
+| RB58 | s30 | crédito do INEI | 9,233–42,733, sem interrupção | cobre todo número da cena, do 65.0 ao 14.6 (PB007) | CONFIRMADA |
+| RB59 | s30 | "52.4% (1993)" sai em 33,1 | 28,833–33,1 | sai quando entra "58.7% (2025)"; nada fica sem dono | CONFIRMADA |
+| RB60 | s30 | "6.7% → 14.6%" e "1940 → 2025" | 40,367–42,733 | entram em "share" (40,363), 1 s antes de "more than doubled"; os números e os anos são os do PB006 | CONFIRMADA |
+| RB61 | s30 | `_regras_de_serie`, as silhuetas | — | iguais às RB37–RB46: 1940 = 6,5 / 2,83 / 0,67; 2025 = 5,87 / 2,67 / 1,46; a selva desenhada; nunca "6 descem, 4 ficam" | CONFIRMADA |
+| RB62 | s30 | `_instrucoes_para_a_arte`, a fileira: "2025, o fim da caminhada (18,567–22,0 s)" | 18,567–22,0 | As frações conferem com RB44 (#9 = 0,545 serra / 0,455 selva). **Mas o tempo não:** de 18,567 a 22,0, a fileira chega ao estado de 2025, e na tela continuam "28.3% (1940)" (15,5–22,0), "HIGHLANDS" e "COAST". Nenhum texto nomeia 2025 antes de 33,1, e a voz diz só "Then, census by census, the balance tipped". A figura mostra a costa com 5,87 de 10 ao lado de uma cota que diz 28,3 %. Ver o achado R4-1 | **DIVERGE** (periférica: figura contra cota) |
+| RB63 | s30 | `_instrucoes_para_a_arte`, o gráfico | — | repete RB56–RB59 | CONFIRMADA |
+| RB64 | s30 | as notas de "HIGHLANDS" e de "28.3% (1940)", com a figura de 1940 | 9,233–22,0 | iguais às RB37–RB39 e RB43 | CONFIRMADA |
+| RB65 | s41 | `© MapTiler © OpenStreetMap contributors` | 14,5–18,333 | o beat 2 virou satélite da MapTiler, e o ponto da usina é do OSM (way/864802081, PB035): os dois créditos são devidos, do 1º quadro do mapa ao fim | CONFIRMADA |
+| RB66 | s41 | "HUINCO POWER PLANT · 1964", agora ao lado do ponto no satélite | 15,533–18,333 | o ponto do OSM é a usina (PB035); 1964 = "AÑO DE INICIO" (Tabla 3-2, F188); o crédito do SENAMHI cobre o ano na mesma janela | CONFIRMADA |
+| RB67 | s41 | "IN SERVICE SINCE 1963 (DEFENSORÍA)" | 4,633–6,9 | entra em "service" (4,613); "El subsistema Marca I entró en operación en el año 1963" (F185) | CONFIRMADA |
+| RB68 | s41, forma curta | `BUILT 1958–1962` | — | "la primera fue ejecutada entre los años 1958 y 1962, tiempo en el cual se construyo el túnel" (F184); "built" é a palavra da voz | FIEL (recomendada) |
+| RB69 | s41, forma curta | `1958–1962` | — | o número é fiel, mas não diz o que a data é | fiel, não recomendada |
+| RB70 | s41, forma curta | `IN SERVICE, 1963` | — | "entró en operación en el año 1963" = "entered service in 1963" | FIEL (recomendada) |
+| RB71 | s41, forma curta | `SINCE 1963` | — | não afirma mais que a fonte, mas não diz desde quando o quê | fiel, não recomendada |
+| RB72 | s41, forma curta | `IN SERVICE SINCE 1963` | — | fiel; o "since" (em serviço ainda hoje) é o que a Defensoría de 2025 descreve | FIEL |
+| RB73 | s41, forma curta | `HUINCO · 1964` | — | o nome e o "AÑO DE INICIO"; sobre o ponto da usina, com a voz "The power plant, at Huinco, opened in 1964" | FIEL (recomendada) |
+| RB74 | s41, forma curta | `HUINCO PLANT · 1964` | — | idem | FIEL |
+| RB75 | s41, forma curta | a pílula "Huinco" e a cota `OPENED 1964` | — | "AÑO DE INICIO 1964" = o ano em que começou a operar; "opened" é a palavra da voz | FIEL |
+| RB76 | s12 (lote A), forma | ficar como está, “PARADÓJICAMENTE” (PARADOXICALLY) | — | literal da folha (PA013) com a tradução | FIEL (recomendada) |
+| RB77 | s12, forma | `PARADOXICALLY` como `traducao` do grifo | — | tradução fiel de "paradójicamente" | FIEL |
+| RB78 | s12, forma | “paradójicamente” em `citacao`, com a tradução em legenda | — | literal e em caixa baixa, como na folha; é a forma da s28 | FIEL |
+| RB79 | s06 (lote A) | a pílula "Lima" | 21,1–29,1 | entra em "Lima," (74,19 s absolutos), em "From downtown Lima"; é um rótulo de lugar e não afirma nada | CONFIRMADA |
+| RB80 | s12 (lote A) | o grifo, o rótulo e a marca de tradução | 1,8–4,0 | entram em "imbalance" (0,85 s antes de "paradox"), juntos, e a marca cobre o rótulo todo o tempo | CONFIRMADA |
+| RB81 | s16 (lote A) | "Satellite image · June 1998" | 9,567–11,767 | no `textos-tela.json`, a data entra em "floods", com o Landsat inteiro (o `s16.html`: `landsat: {… entra: 8.1, dur: 1.0}`, inteiro em 9,1), e assim a data só aparece com o recorte de 1998. **Mas o `out/peru-agua/graphics/s16.html` de hoje ainda põe `{ id: "legLandsat", … entra: 7.767 }`:** na cena construída, a legenda entra 0,33 s antes de o Landsat começar e 1,33 s antes de ele estar inteiro. Ver o achado R4-2 | CONFIRMADA no texto; a cena construída está pendente |
+| RB82 | s21 (lote A) | Piura, Tacna e CHILE até 9,234; CHILE em 7,034 | 4,867/6,167/7,034–9,234 | "border" está em 219,89 s absolutos (7,034); são rótulos de lugar e não afirmam nada | CONFIRMADA |
+| RB83 | s32 | “mostly coastal” e o grifo em 5,934 | 5,934–8,067 | entram em "to", junto da seta e do grifo dela; a marca (4,367–8,067) cobre | CONFIRMADA |
+| RB84 | s34 | "ABOUT 1 IN 10" em 4,333; "ABOUT 1 IN 3" até 12,733; os créditos trocam em 12,733 | — | "about" está em 4,333; o crédito do censo cobre as duas legendas todo o tempo (0–12,733), e o do PIB entra com "LIMA REGION + CALLAO" (12,733), antes da cota 41.9% (15,366) | CONFIRMADA |
+| RB85 | `_pergunta_cta` | a janela de 6 para 7 s | — | não afirma fato | NADA A CHECAR (fora da conta) |
+| RB86 | as seções de máquina (`_entradas_sha256`, `_entradas_conferidas`, `_entradas_congeladas_porque`, `_textos_vivos_max`, `_consertos`, os 2 `_pedidos_a_montante` da s21 e da s34) | — | — | não afirmam fato de tela; os tempos dos pedidos são os de RB82 e RB84 | CONFIRMADA |
+
+**Os achados:**
+
+1. **[MÉDIO] R4-1 · s30, a fileira chega a 2025 sob uma cota de 1940 (RB62).**
+   - **O problema:** de 18,567 a 22,0, as silhuetas andam até o estado de 2025 (costa 5,87, serra 2,67, selva 1,46). Enquanto isso, "28.3% (1940)", "HIGHLANDS" e "COAST" seguem na tela, e nenhum texto nomeia 2025 (o 2025 só entra no gráfico, em 33,1). O espectador lê a costa com quase 6 de 10 ao lado de "28.3%".
+   - **CONSERTO:** "28.3% (1940)" sai em "Then," (18,567), e entra a legenda `1940 → 2025` sob a fileira, de 18,567 a 22,0. São 4 textos: HIGHLANDS, COAST, a legenda do censo e esta. As frações não mudam.
+   - **A outra saída:** a caminhada para numa posição sem número (o "balance tipped", sem fração), e o estado de 2025 só se desenha no gráfico, em 33,1.
+   - **RAIZ:** INSTRUÇÃO. "O estado final num censo nomeado na tela" (RB46) quer dizer nomeado enquanto a figura está nele.
+2. **[LEVE] R4-2 · s16, a cena construída ainda adianta a data (RB81).**
+   - **O problema:** o `s16.html` tem `legLandsat … entra: 7.767`, e o texto e a instrução à arte pedem 9,567.
+   - **CONSERTO:** na cena, `{ id: "legLandsat", … entra: 9.567, sai: null }`. É trabalho da Arte, e o texto já está certo.
+   - **RAIZ:** PONTUAL. A cena é anterior ao conserto 4.
+3. **[LEVE, opcional] s27, o grifo das léguas (RB54):** o grifo pode passar a "de la mar y el camino muy despoblado", para casar com o "[…]". O corte da tradução já é fiel como está.
+
+**Continuam NÃO FOI CHECADO, sem mudança:** os 12 rótulos da caça e as 5 primárias do gob.pe.
+
+COBERTURA: 39 de 39 (esta reconferência: as 40 linhas de RB47 a RB86, menos RB85, NADA A CHECAR; todo texto ou seção que o diff mostrou mudado, e as 11 formas curtas)
+NOTA: 9/10
+VEREDITO: RESSALVA. O lote B tem um DIVERGE periférico (R4-1, figura contra cota), com o conserto de uma linha pronto; nenhum DIVERGE em afirmação de tese, nenhuma REFUTADA; os 17 NÃO FOI CHECADO continuam.
+
+## Reconferência 5 (texto-3, sobre a0b58f31…)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `a0b58f31863960419bfc2fe077a64cb08d613785dc7a56bbe594545a1237aa1f`.
+- **Comparado com:** a cópia de antes, `out/peru-agua/_tmp/redator/antes-consertos-4b/textos-tela.json.0c588d53`, que confere com o sha256 `0c588d53…`.
+- **O que o diff mostra:**
+  - mudaram só 3 textos de cena (abaixo) e 1 linha de `_instrucoes_para_a_arte`;
+  - o `_consertos` e o `_entradas_sha256` são de máquina e não afirmam nada.
+- **Limites:** 0 imagens, nenhum navegador; nada foi gravado no canal.
+
+| id | cena | item | tempos | o que se conferiu | veredito |
+|---|---|---|---|---|---|
+| RB87 | s30 | "28.3% (1940)" sai em "Then," | 15,5–18,567 | "Then," está em 18,553 (316,227 + 18,553 s); a cota fica 3,07 s no ar, toda com a figura de 1940 (costa 2,83) | CONFIRMADA |
+| RB88 | s30 | a legenda `1940 → 2025`, sob a fileira | 18,567–22,0 | os anos são os do PB005/PB006 e do eixo; é a mesma forma da legenda da selva. No ar, de 18,567 a 22,0, ficam só HIGHLANDS, COAST, a legenda do censo, `1940 → 2025` e os créditos: **nenhum número de 1940 fica sobre a figura de 2025, e a tela agora nomeia 2025 enquanto as silhuetas o mostram.** R4-1 está fechado | CONFIRMADA |
+| RB89 | s30 | `_instrucoes_para_a_arte` (conserto 4b) | — | repete RB87 e RB88 | CONFIRMADA |
+| RB90 | s27 (lote A) | o grifo `de la mar y el camino muy despoblado` | 3,267–6,234 | "cua- / renta leguas de la mar y el camino muy despoblado" (`cobo-1639-historia-fundacion-lima_djvu.txt` l. 2438–2439, p. 10): o trecho é contíguo e letra a letra no impresso, e casa com a tradução "[…] from the sea, and the road very deserted" | CONFIRMADA |
+
+**Pendente fora do texto, sem mudança:** R4-2. O `s16.html` ainda tem `legLandsat entra: 7.767`, e o texto pede 9,567. Quem conserta é a Arte.
+
+**Continuam NÃO FOI CHECADO:** os 12 rótulos da caça e as 5 primárias do gob.pe.
+
+COBERTURA: 4 de 4 (esta reconferência: todo texto e toda instrução que o diff mostrou mudados)
+NOTA: 10/10
+VEREDITO: RESSALVA. No texto de tela do lote B não há DIVERGE nem REFUTADA. Seguram a RESSALVA os 17 NÃO FOI CHECADO e a cena construída da s16 (R4-2), que é trabalho da Arte.
+
 ---
 
 ## Fecho do setor
 
 Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do laudo é o da soma, no topo.
+
+**A reconferência 2 (texto-3, fase 1, sobre `db0c89f8…`)**, no fim do lote B (RB21–RB36), foi feita pelo verificador do lote B. Os tempos novos da s13 e da s28 conferem: 16 de 16, e nada pede conserto. O lote B, com ela, ficou com o sha256 `6b82cfe1…47543`.
+
+**As reconferências 3 e 4 (texto-3, fase 2)** estão no fim do lote B:
+- RB37–RB46: as frações das silhuetas da s30;
+- RB47 em diante: as mudanças sobre `0c588d53…`, com 39 de 39 e RESSALVA.
+
+**A reconferência 5** está sobre `a0b58f31…` (a s30 e a s27), com 4 de 4. Com ela, o lote B ficou com o sha256 `95dc2469…`.
+
+O texto de tela não tem DIVERGE nem REFUTADA. A RESSALVA é só pelos NÃO FOI CHECADO: os rótulos da caça e as primárias do gob.pe.
 
 COBERTURA: 600 de 632
 VEREDITO: RESSALVA
