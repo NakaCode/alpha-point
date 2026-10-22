@@ -1,4 +1,85 @@
-# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-excecao-s03c` às 15:5x (Brasília)
+# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-pesquisa-5` às 16:0x (Brasília)
+
+A foto de Caral numa janela nova da s22, o b0: a caça terminou sem o clipe aéreo de Caral (o item s22-a). Pedido do setor Pesquisa e
+mídia.
+
+**O laudo desta tarefa:** 1 veredito novo, **`trocar`**. Nenhum veredito anterior mudou.
+**O laudo do arquivo inteiro:** 28 aprovados de 35 vereditos (2 reprovados, 5 trocar, 0 pendente_lucas); 1 com algo não conferido
+(de antes); recebidos: 35.
+
+| arquivo | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `_media/foto/s22/s22-caral-piramide-mayor-2022-commons.jpg` (`ee444c12…`) | s22 b0 (225,5–233,033 s) | Commons, Soto Caldaa Cesar, CC BY-SA 4.0 | **trocar** | a Pirámide Mayor de Caral vista do chão, sem o terraço, o vale verde nem o Supe que a frase afirma; e quase a mesma vista da frontal que entra logo depois, no b1. O b0 fica no satélite sobre Caral com o Supe aceso |
+
+**A frase**, conferida no `words.json` (palavras 694–718, de 225,5 a 232,45 s) e no `roteiro-narrador.md`: "It is called Caral, and
+it sits on a desert terrace above the green valley of the Supe River, about 90 miles north of Lima." A janela é a do b0 da regência
+(sha256 `1875d0c1…`), de 225,5 a 233,033 s do master: 7,533 s.
+
+**Os quatro critérios:**
+- **Contexto: falha.** A foto foi tirada do chão, dentro do sítio: a pirâmide de terraços de pedra, a praça circular, os monólitos e,
+  na metade de baixo, areia. Não se vê terraço sobre nada, nem vale, nem verde, nem rio. Na borda direita, só morros nus na névoa, e a
+  contagem não acha nenhum pixel esverdeado na foto inteira. Com a tela parada em "green valley of the Supe River", o espectador veria
+  uma pirâmide na areia. A foto cobre "It is called Caral" e o "desert", não o resto, e a ressalva conta como falha (ofício §5.1).
+- **Licença e fonte: passa.** CC BY-SA 4.0, relida na API do Commons às 16:0x. É "Own work", e o sha1 da página é o do arquivo.
+- **Técnica: passa.** 3264×2448 é a maior versão da origem; enche a tela a 1,176×. O Ken Burns de 1,00 → 1,12 em 6 s chega a 1,151 em
+  7,533 s: produto de 1,354×, dentro de 1,4×. O teto do Ken Burns neste arquivo é 1,19.
+  Para a cena: uma foto só em 7,533 s passa do teto de 6 s da foto parada (identidade §4.3).
+- **Repetição: falha.** No corte de 233,033 s entra a frontal do b1: o mesmo prédio, do mesmo lado da praça, 11 minutos depois e com
+  o mesmo céu. Seriam 11,8 s de quase a mesma imagem, com um salto no meio, e o "mais perto" do b1 deixaria de existir.
+
+**O que a tela pode e não pode dizer sobre esta foto** (no b1, onde ela continua reserva aprovada):
+- O lugar: o rótulo pode dizer "Caral" ou "Pirámide Mayor, Caral". A origem nomeia o sítio, e a localização da câmera na página
+  (-10,891, -77,522) cai nele. O GPS do iPad em Lima é o da **outra** foto, a frontal: esta foi tirada num Samsung, com o GPS em Caral.
+- O que a origem não nomeia: o vale do Supe, o rio, o terraço e Lima. Nenhum rótulo sobre a foto os nomeia como se ela os mostrasse.
+- O ano: a foto é de 27/11/2022. Na fala no presente, não leva aviso (`aviso_de_ano: false`). Se a data do fato
+  ("3000–1800 B.C.") ficar sobre ela, leva "Photo from 2022" (identidade §6).
+- O crédito, enquanto ela estiver na tela: `Soto Caldaa Cesar / Wikimedia Commons · CC BY-SA 4.0`.
+
+## Para o Lucas pesar
+
+Nada nesta tarefa.
+
+## Para reconferir no navegador do app
+
+Nada nesta tarefa.
+
+## Para trocar
+
+- **s22 b0**, de 225,5 a 233,033 s: o caminho já escrito na regência (`fallback_se_negado: "mapa"`). É o satélite sobre Caral
+  (`pontos-fontes › caral`), com o `rio-supe` (OSM) aceso e aproximação lenta: ele mostra o terraço, o vale e o rio de uma vez.
+  - Com ele, o crédito da foto ("only in the fallback with the reserve photo") sai do b0.
+  - Entram o `© MapTiler © OpenStreetMap contributors` e o "© OpenStreetMap contributors" do Supe.
+  - Em busca, o que a frase pede é o próprio s22-a: `Caral archaeological site aerial, pyramids on the dry terrace with the green
+    Supe River valley below, Peru`. Vai a `pesquisa-imagens`, só como recado.
+- **O arquivo não sai da pasta.** O `trocar` vale só para a janela b0. O veredito do mesmo sha256 para o b1 continua `aprovado`, e o
+  arquivo fica em `_media/foto/s22/`.
+  - Para o portão do `research` ("sem `trocar` em arquivo que continua lá"): este `trocar` é de janela, num arquivo com outro
+    veredito aprovado na mesma cena. Não é arquivo a retirar.
+- **O conjunto da cena**, para a Direção: com o satélite no b0, a s22 continua com o respiro em movimento (o mapa anda) e com o corte
+  a foto no b1, como o espelho pensou: de cima e depois de perto.
+
+## Divergências entre a marca e o ofício
+
+Nenhuma nesta tarefa.
+
+## Contas desta tarefa
+
+- **Imagens abertas: 3 de 25.**
+  - a foto inteira reduzida a 1600 px;
+  - um recorte do canto direito (os morros);
+  - a frontal do b1, reaberta da pasta `pesquisa-3/`, para a repetição.
+
+  Um recorte 16:9 foi gerado e não foi aberto. Tudo está em `out/peru-agua/_tmp/conferencia/pesquisa-5/`.
+- **Rede:** 1 pedido à API do Commons (`imageinfo`, com o User-Agent do canal), lido sem recusa. Nenhum `WebFetch`, nenhuma busca nova.
+- **Olhos novos:** não. O veredito anterior e a regência foram lidos antes de olhar, para achar a janela, e o `o_que_viu` diz isso.
+- **A emenda do JSON** está em `out/peru-agua/_tmp/conferencia/pesquisa-5/emenda.py`. Ela conferiu o sha256 de antes (`20385bbb…`),
+  e a cópia de antes ficou em `out/peru-agua/_tmp/conferencia/conferencia-midia.antes-pesquisa-5.json` (e `.md`). Os 34 vereditos e
+  os 22 substituídos anteriores estão iguais, conferidos campo a campo. O `fora_desta_tarefa` da s22 b0 ganhou só a chave
+  `julgado_depois`.
+- **Checagem 6:** `_media-antes-pesquisa-5.txt` e `_media-depois-pesquisa-5.txt`, em `out/peru-agua/_tmp/conferencia/` (205
+  arquivos), com o `diff` vazio.
+
+# Histórico: a conferência até a tarefa `peru-agua-excecao-s03c`, como estava (Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-excecao-s03c` às 15:5x (Brasília))
 
 A resposta do Lucas sobre as marcas no clipe do Callao (s03-c), trazida pela Sala.
 
