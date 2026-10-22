@@ -1705,6 +1705,38 @@ COBERTURA: 13 de 13 (esta reconferência: todo item do diff contra o a3a8babe, m
 NOTA: 9/10
 VEREDITO: RESSALVA. O texto de tela da s27 está checado e limpo. Sobra um LEVE de redação numa nota, e os 17 NÃO FOI CHECADO de antes continuam.
 
+## Reconferência 9 (texto-7, sobre e04eaf10…)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `e04eaf10ad4639774c4d6419ac3ddfd97ad43256a6674b86511b26f01903e4ca`.
+- **Comparado com:** `antes-consertos-8/textos-tela.json.5217132f`, cujo sha256 confere.
+- **O diff:** são 440 itens. Mudaram só o crédito da s06 (t0 12,8 → 12,1, com a nota), a linha da s06 em `_instrucoes_para_a_arte` e o `_consertos`, que ganhou a rodada 8 (de 13 para 14).
+- **As fontes:** `out/peru-agua/_pesquisa/conferencia-midia.json`; `out/peru-agua/graphics/s06.html` (sha256 `f793bb49…`, sha1 `f6935e77…`), lido sem rodar; `marca/identidade.md`, l. 193–194.
+- **Limites:** 0 imagens, nenhuma web; nada foi gravado no canal.
+
+| id | o quê | o que se conferiu | veredito |
+|---|---|---|---|
+| RB202 | o texto do crédito "Diego Delso, delso.photo / Wikimedia Commons · CC BY-SA 4.0" | O veredito vigente é `candidatos[4]`: `aprovado`, o arquivo `s06-puno-titicaca-bay-2015-commons.jpg`, sha256 `0367b82e…`, igual ao do `_media/foto/s06/` que o `s06.html` cita (l. 135). O `credito_na_tela` dele é igual letra a letra ao texto da tela, e ao do `credFoto` no HTML (l. 141–142, quebrado em duas linhas). A forma sem "delso.photo" está só no veredito substituído (`substituidos[1]`) e no `trocar` da outra foto (`candidatos[5]`) | CONFIRMADA |
+| RB203 | os tempos (12,1–14,8) contra a identidade §4.2 | l. 193–194: o crédito "entra em 300 ms no primeiro quadro em que o asset aparece e fica até o último". No `s06.html`, a `MINI` tem `pousa: 12.1` e `sai: 14.8` (l. 550–551). Em `aplicarMini` (l. 573), `v = eo(seg(t, 12.1, 0.2)) * (1 - eio(seg(t, 14.8, 0.3)))`: a foto aparece a partir de 12,1 e sai de 14,8 a 15,1. O `credFoto` (l. 668–670) sai com `1 - eio(seg(t, 14.8, 0.3))`, igual à foto. Com t0 = 12,1, o crédito começa no mesmo quadro que a foto. Com t1 = 14,8 (o começo da saída, a convenção das pílulas), os dois somem juntos | CONFIRMADA |
+| RB204 | a nota nova do crédito | "MINI pousa 12.1, assenta 12.65, preso 12.8, sai 14.8" (l. 550–551): confere. "antes dos rótulos da bacia e de Puno (12,8)": os dois rótulos estão em 12,8–14,8 neste arquivo. "saem juntos de 14,8 a 15,1 (l. 573 e l. 668–670)": confere, e os números de linha batem. "15,1 deixaria o crédito 0,3 s depois da foto": confere. Ressalva: a nota fala da saída pelas l. 668–670, mas a entrada do `credFoto` no HTML de hoje ainda é **12,8**, não 12,1 (l. 668: `["credFoto", 12.8, 14.8]`). Não é erro da nota; é a mudança que a instrução pede à Arte. Achado R9-1 | CONFIRMADA |
+| RB205 | a instrução nova à Arte (s06) | A miniatura pousa em ~12,1 e assenta até ~12,65 (l. 551: 12.1 e 12.65); o rótulo de lugar entra 150 ms depois do assentamento (12,65 + 0,15 = 12,8); "Lake" fica em 12,833, na regência; a bacia e o rótulo dela em 12,8; o `credFoto` em 12,1 até 14,8, e sai com a miniatura. Tudo confere com o arquivo e o HTML. O que muda no HTML é a entrada do `credFoto` (R9-1) | CONFIRMADA |
+| RB206 | `_consertos`, a rodada 8 | O "antes" (12,8–14,8) bate com o `5217132f`, e o "depois" (12,1–14,8) bate com o arquivo; o antes e o depois da instrução batem com a seção | CONFIRMADA |
+| RB207 | a s06 com no máximo 4 textos vivos | Sem contar os créditos: até 6,1 há CONTINENTAL DIVIDE e PACIFIC (2); de 10,033 a 11,066, PACIFIC, Amazon e ATLANTIC (3); de 12,1 a 12,266, só ATLANTIC (1); de 12,8 a 14,8, a bacia e Puno (2); de 25,0 a 29,1, Lima, LESS THAN 70 MILES e Rímac (3). O máximo é 3, igual ao `_textos_vivos_max` (s06: 3 e 3) | CONFIRMADA |
+
+**Os achados:**
+1. **[LEVE] R9-1 · s06, a entrada do crédito no HTML** (pendência da Arte, não erro de texto). O `s06.html` de hoje (`f793bb49`) ainda entra o crédito do Delso em 12,8 (l. 668), e o texto e a instrução pedem 12,1.
+   - **O efeito:** sem o conserto, a foto fica 0,7 s na tela sem crédito.
+   - **CONSERTO:** na l. 668, `["credFoto", 12.1, 14.8]`, e o `qc` confere no quadro de 12,2.
+   - **RAIZ:** PONTUAL.
+
+**O texto de tela da s06 está checado e limpo.**
+
+**Continuam:** os 12 rótulos da caça e as 5 primárias do gob.pe, NÃO FOI CHECADO.
+
+COBERTURA: 6 de 6 (esta reconferência: o crédito, os tempos, a nota, a instrução, `_consertos` e os textos vivos)
+NOTA: 9/10
+VEREDITO: RESSALVA. Nenhum DIVERGE nem REFUTADA. R9-1 é uma pendência do HTML, e os 17 NÃO FOI CHECADO de antes continuam.
+
 ---
 
 ## Fecho do setor
@@ -1746,6 +1778,12 @@ Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do la
 - **Os achados:** R8-1 a R8-4 estão fechados na 8b. O R8b-1, LEVE, de redação numa nota, o setor mandou corrigir com o texto que o verificador deu, e conferiu pela diferença que só ela mudou.
 - **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
 - **O lote B,** com elas, ficou com o sha256 `59a6be18…f6219`.
+
+**A reconferência 9 (texto-7, sobre `e04eaf10…`)** está no fim do lote B (RB202–RB207), com 6 de 6. Ela cobre o crédito da foto de Puno na s06, que passou de 12,8 a 12,1–14,8, porque a miniatura pousa em 12,1 na arte-5 e o crédito entra no primeiro quadro do asset (identidade §4.2).
+- **O texto do crédito:** é o `credito_na_tela` do veredito vigente.
+- **O achado:** R9-1, LEVE. O `s06.html` ainda põe o crédito em 12,8 (l. 668). É pendência da Arte.
+- **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
+- **O lote B,** com ela, ficou com o sha256 `2fb9d47d…d74c`.
 
 O texto de tela não tem DIVERGE nem REFUTADA. A RESSALVA é só pelos NÃO FOI CHECADO: os rótulos da caça e as primárias do gob.pe.
 
