@@ -49,8 +49,8 @@
   fontes de 27/09/2026 em `marca/midia.md` §7.3). Nunca banco pago.
 - **Sem foto do ano do fato:** a do mesmo assunto de outro ano, com o aviso do ano; só sem nenhuma o plano vira mapa ou
   desenho. Vídeo de outro ano não entra.
-- **B-roll genérico:** dos bancos pagos, na ordem Envato → Motion Array → Storyblocks → Shutterstock (`marca/midia.md`
-  §1), sem editorial e sem pessoa de banco em política. (Conflito com o motor novo: `LEIA.md`.)
+- **B-roll genérico:** dos bancos pagos, Envato e depois Storyblocks, baixados só pelo navegador, nunca por
+  script ou robô (decisão do Mateus, 22/out/2026: «Vou usar Storyblocks e Envato aceitando o risco»; Motion Array e Shutterstock fora), sem editorial e sem pessoa de banco em política.
 - **Logo de instituição** não se pede: vai o nome escrito. Documento estadual ou de imprensa: «licença a conferir».
 
 ## 5 · Paleta e grafia
