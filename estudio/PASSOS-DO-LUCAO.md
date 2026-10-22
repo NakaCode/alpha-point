@@ -104,8 +104,9 @@ Confira também que o canal está numa conta Google e num AdSense **seus**, sem 
 5. **YouTube**: os dois vídeos saíram na categoria Pessoas e blogs, que é o padrão do YouTube: fica assim ou passa
    para Educação? Há e-mail de contato profissional para a descrição (ou nenhum)? O canal já está no programa de
    parcerias? E o que você marca em «conteúdo alterado ou sintético» (o motor marca «sim», por ser voz de IA, até você dizer)?
-6. **Imagens genéricas**: sem o Storyblocks e o Envato da Top10, e sem caça por robô nos bancos (os termos deles
-   proíbem), o canal vive de acervo aberto, fonte oficial, mapa e ilustração. Está bem assim?
+6. **Imagens genéricas**: o Storyblocks e o Envato da Top10 continuam, sempre pelo navegador (decisão do Mateus,
+   22/out), depois do acervo aberto, da fonte oficial, do mapa e da ilustração. O Motion Array e o Shutterstock saem.
+   Há algum tipo de imagem que você só achava neles?
 7. **A trilha automática**: a regra do canal diz que a trilha nunca passa por ferramenta de IA nem de reconhecimento de
    música. No motor novo, um agente lê o ROTEIRO e escreve o clima de cada trecho em texto (por exemplo «misterioso,
    ambiente, calmo»); a faixa sai de um ranking dos dados da própria Epidemic contra esse texto, e a prévia é medida pelo

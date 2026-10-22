@@ -43,7 +43,7 @@
   jornal: `<author> / <outlet>`, ou só o veículo ou o órgão.
 - Domínio público e retrato oficial em uso editorial: sem crédito na tela.
 - Mapa: `© MapTiler © OpenStreetMap contributors` o tempo todo. Copernicus Sentinel: `Contains modified Copernicus
-  Sentinel data <year>`. Shutterstock: a linha de licença na última cena e na descrição.
+  Sentinel data <year>`. Banco pago (Envato, Storyblocks): sem crédito na tela.
 - **Aviso do ano:** `Photo from 1998`; aproximação como a origem a dá, na forma do AP (`Photo from the 1990s`); nunca um
   ano que a origem não diz. Documento de outra data que atesta o fato leva rótulo do que é (`upheld on appeal, 2011`).
 - O crédito mora abaixo de y 1880, à esquerda, a 56 px, e quebra em duas linhas sem encolher.

@@ -18,7 +18,7 @@
 | evento real específico, pessoa pública, registro histórico | só acervo aberto ou oficial, com data e local conferidos na origem: NARA, NASA, USGS, Smithsonian, Wikimedia Commons (licença arquivo a arquivo), Library of Congress, salas de imprensa federais, DVIDS, e as fontes de 27/09/2026 (§7.3). **Nunca banco pago** |
 | foto do governo de um Estado ou de jornal (não retrato de pessoa citada) | entra com a fonte creditada na tela (§7.5); foto de agência espera o ok do Lucas (Content ID); Reuters não |
 | vídeo de jornal, de veículo ou de agência | só com licença conferida na origem (27/09/2026) |
-| B-roll genérico: paisagem, cidade, porto, indústria, drone | bancos pagos, na ordem Envato Elements → Motion Array → Storyblocks → Shutterstock (§1). Conflito com o motor novo: `LEIA.md` |
+| B-roll genérico: paisagem, cidade, porto, indústria, drone | bancos pagos, Envato Elements e depois Storyblocks, as assinaturas da Top10 (decisão do Mateus, 22/out/2026: «Vou usar Storyblocks e Envato aceitando o risco»). Motion Array e Shutterstock estão fora. O banco se usa **só pelo navegador**, nunca por script nem por robô, e você não tem navegador: escreva a busca (termos, duração, orientação, o que o plano precisa mostrar) e deixe o item pendente para quem baixa pelo navegador |
 | mapa, satélite | não é seu (`mapista`) |
 
 - **Fora:** Pexels, Pixabay, Openverse, Met, Europeana, Internet Archive como acervo de imagem (`fontes_desligadas`,
@@ -51,6 +51,6 @@ Peça de acervo de museu fotografada depois vai sem aviso, como documento (28/09
 - `credito_na_tela` em inglês: `<author> / <archive> · <license>` (ex.: `Jane Doe / Wikimedia Commons · CC BY-SA 4.0`).
 - Foto de Estado ou de jornal: a fonte como a origem a credita, `<author> / <outlet>`, ou só o veículo ou o órgão.
 - Domínio público (NASA, Landsat/USGS, NARA, DVIDS, salas de imprensa federais): sem crédito na tela, e o registro diz.
-- Banco pago: sem crédito na tela, exceto Shutterstock (`Image(s) and/or video used under license from
-  Shutterstock.com` na última cena e na descrição).
+- Banco pago (Envato, Storyblocks): sem crédito na tela. O Shutterstock, que pedia a linha de licença na última cena e
+  na descrição, saiu do canal em 22/out/2026.
 - Na descrição, as coleções das fotos vão como cortesia, numa linha (`Historical photos … (public domain): …`).
