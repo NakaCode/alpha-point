@@ -17,3 +17,12 @@ O Lucas, no chat da Sala, durante o art do vídeo 4 (Peru):
   - a demanda e a concorrência no YouTube;
   - o acervo aberto: a NOAA Ocean Exploration, a GEBCO e o USGS.
 - O Egito continua de reserva (pauta do vídeo 4, `pautas/2026-10-16-video-4.md`).
+
+## A segunda mensagem do Lucas (22/10/2026)
+
+> "A fossa de Sandwich pode ser citada no vídeo também e quanto a concorrência, medir o tempo em que foi postado pode validar ela
+> também. Afinal não entregaremos diretamente no título do que se trata"
+
+- **A Fossa das Sandwich do Sul** entra no vídeo, como a outra candidata.
+- **A concorrência se mede também pela data:** vídeos antigos sobre o tema deixam espaço para um novo.
+- **O título não entrega o assunto** (não nomeia a Fossa de Porto Rico): a disputa por busca pesa menos, e a curiosidade pesa mais.
