@@ -1,0 +1,138 @@
+{
+  "cena": "s01",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "portao-margens leu 0 (sha1 daedddb4, 18 itens medidos, 226 amostras, avisos []); nao remedi no olho. Cena sem relevo 3D, entao a margem e do portao. Canto de 400x400 livre nos 16 quadros (0,1 a 22,3 s), sem logo.",
+        "sinalizacao: a coluna de numeros no mar (x 1990/2200, y 250 a 1324 a 4K) deixa um vao de ~210 px entre AMAZON SIDE e 97.9% depois que 74.5% sai (10,467 s), e a pilula PACIFIC SIDE fica a ~130 px de 97.9% (quadro 13,0 s, recorte 4K). Ver a lente factual: o vao pesa mais ali do que aqui.",
+        "sinalizacao: credito ANA em 2 linhas (quebra antes de 'Plan, 2012 data'), sem aviso do portao; credito de mapa a 56 px via var(--fs-credito), data-qc-credito='mapa' so na linha dele; papel 'credito' declarado no ANA.",
+        "a metade esquerda do quadro (mar escuro, ~40% da area) e a cama da coluna de texto, nao buraco: serve a hierarquia (4 a 6 blocos legiveis).",
+        "excecao do Lucas: qc-tamanho, credito a 56 px, 07/10/2026 ('Quero reduzir para 56px'), no sha1 daedddb4 (entrada s01 de _excecoes-portao.json: \"Source: ANA (Peru), National Water Resources\" 56<72; a reprovacao e so o credito). gatesDuros vazio."
+      ],
+      "correcoes": [
+        "nada a mudar para aprovar. Opcional (mapista): resolver o vao junto com o item da lente factual (97.9% sobe para a vaga do 74.5%, y 442, como a propria Arte propos em M4)."
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 7,
+      "problemas": [
+        "ASSOCIACAO POSICIONAL, sinalizada (nao reprovada, porque a regra da casa de alinhamento e o empilhamento anterior ainda amarram o numero ao lado certo): de 10,467 a 15,033 s '97.9% OF THE WATER' (x 1990, y 634) fica a ~210 px abaixo de AMAZON SIDE (borda de baixo y ~422) e a ~130 px acima de PACIFIC SIDE (topo y 940). Medido nas posicoes de s01.html (linhas 173-178) e no recorte 4K de 13,0 s. O numero da vertente amazonica passa a ficar mais perto do rotulo da vertente do Pacifico; de 13,6 s o 1.8% cola embaixo do PACIFIC SIDE e o 97.9% fica por cima dele a ~130 px. A fala (97% e Amazonia, 'two percent' e Pacifico) e a pilha dos 8 s anteriores resolvem para quem acompanhou, mas um olhar que entra depois de 10,5 s le '97.9% / PACIFIC' e inverte o argumento central do video.",
+        "geometria: divisoria-continental-peru (HydroBASINS) acompanha a crista com neve em todo o comprimento visto (quadros 1,0 e 2,0 s); poligonos das vertentes sao do arquivo (recorte por latitude subindo, nada a mao); Titicaca em --neutro sem nome; divisa do pais entra com 'PERU'. Sem bandeira, sem pino. Asset correto.",
+        "textos conferem com textos-tela.json na grafia e nos tempos (PERU 2,267; AMAZON SIDE e 74.5% em 4,333; 97.9% em 7,867; PACIFIC SIDE em 10,467; 1.8% em 13,6; 62.5% em 17,633), nenhum texto do nao_vai_para_tela. Os numeros em si (74.5, 97.9, 1.8, 62.5) sao do laudo de fatos, nao remedi."
+      ],
+      "correcoes": [
+        "mapista, antes do render final (a cena nao muda de tempo): subir '97.9% OF THE WATER' para a vaga do 74.5% (tela [1990,442], 10,467 a 15,033 s) ou, se a coluna for mantida, aproximar PACIFIC SIDE e 1.8% e afastar o 97.9% do PACIFIC SIDE ate o vao para o AMAZON SIDE ser o menor. Alinhar o PACIFIC SIDE em x 1990 como o resto do grupo tambem tira a leitura de 'bloco do Pacifico' deslocado para cima do 97.9%."
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 9,
+      "problemas": [
+        "primeiro segundo coberto: a linha acende em 'line' (0,233; ausente em 0,1 s, em curso em 1,0 s); PERU ausente em 2,0 e presente em 2,8 (entrada 2,267) e some em 4,333 (ausente em 4,9). AMAZON SIDE com preenchimento ja assentado em 4,9; 97.9% ausente em 6,5 e presente em 8,4; 74.5% sai em 10,467 (ausente em 10,8); 1.8% ausente em 12,5/13,0 e presente em 14,2; silhuetas em 15,5 (97.9% ja saiu), 5 acesas em 16,8, 62.5% ausente em 16,8 e presente em 18,5. Nada sobra depois da fala; a cena fecha em 22,467 com o dado da ultima frase.",
+        "nenhum elemento foi atrasado por ritmo nesta cena; nao ha re-checagem pendente."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 8,
+      "problemas": [
+        "MAPA e o modelo certo para 'a line runs along the Andes and divides Peru' (posicao relativa, dois lados, geometria real sobre satelite MapTiler). A caca de 22/10 nao trouxe aereo aprovado da crista (s01-a sem aprovado; s01-a-4 reprovado, caca-relato.md linhas 24-25 e 117-118), e o fallback escrito da regencia virou o plano: o video abre de cima, sobre o lugar, como a identidade pede. Nao ha registro real a trocar por vetor.",
+        "sinalizacao: o gancho do video fica sem registro de movimento real (so o satelite); se um aereo da divisoria aparecer, a abertura ganha, mas nao e defeito."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "em ~2 s o espectador entende: a linha que corta o pais (1,0 e 2,0 s), os dois lados em duas cores com legenda de cor dentro das pilulas, o numero grande ao lado de cada. As silhuetas (5 de 8 em --destaque) explicam '62.5% of the people' sem texto adicional.",
+        "sinalizacao: a mancha cinza (bacia do Titicaca, sem nome) fica 17 s na tela sem legenda; fecha a conta de terra e agua (74.5 + 1.8 nao somam 100), mas um leigo nao sabe o que e. Nao reprova: e contexto, nao dado, e a voz nao a cita.",
+        "ver factual: a ordem dos numeros na coluna entre 10,5 e 15 s e o unico ponto em que a leitura sem som pode tropecar."
+      ],
+      "correcoes": [
+        "opcional (mapista): baixar a opacidade do Titicaca a ~25% ou deixa-lo como esta; nao pedir legenda (seria texto orfao)."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 7,
+      "problemas": [
+        "sinalizacao: de 17,633 a 22,467 s a tela leva AMAZON SIDE, PACIFIC SIDE, 1.8%, 62.5%, o grupo de 8 silhuetas e os dois preenchimentos (+ divisa e Titicaca): 7 elementos por contagem seca, no teto de 6 da identidade 4.2 (a Arte conta pilula+numero como um 'bloco do Pacifico', 6). O qc-carga nao reprovou. Cena raspa o teto, no pior extremo: sinalizo, nao reprovo.",
+        "teste de lastro: PERU ('Peru.'), AMAZON/PACIFIC SIDE ('Amazon', 'Pacific'), 74.5/97.9/1.8/62.5 (a fala diz cada numero), silhuetas ('Peruvians'), credito ANA (dado). Nenhum texto orfao. Sem entidade malformada nem tofu (portao-mapa til: 0 glifos defeituosos em 9 textos, 49 instantes). Sem degrade nem veu: o preenchimento e territorio, nao filtro."
+      ],
+      "correcoes": [
+        "opcional (mapista): quando 62.5% entra (17,633), baixar o 1.8% (ja dito em 13,6) a opacidade ~50% ou tira-lo, deixando PACIFIC SIDE + silhuetas + 62.5%. Reduz para 5 e tambem encurta o bloco da coluna."
+      ]
+    },
+    {
+      "lente": "motion",
+      "nota": 7,
+      "problemas": [
+        "b0 certo: aproximacao lenta sobre a crista, linha que se desenha ao longo dela (0,233 a ~1,0 s) e recuo de 2,333 s em ease-out cubico ao pais inteiro (desvio 1, aceito pela Sala, decisao 4; em 2,8 s o enquadramento ja assentou e a pilula PERU entra inteira).",
+        "SINALIZACAO FORTE, na fronteira do reprova: depois do recuo (a partir de ~3,2 s) o deslocamento do mapa e minusculo. Correlacao de fase entre quadros (1280 px, x3 = 4K): 4,9 a 8,4 s = 5 px; 10,8 a 14,2 s = 5 px; 18,5 a 22,3 s = 4 px (~15 px a 4K em 3,5 s). Os tres enquadramentos (4,9; 14,2; 22,3) sao o mesmo ponto de vista. A regencia pede 'slow approach, the map never still' e o giro de -1 a +1 grau esta no codigo, entao o mapa nunca para; o que carrega o quadro sao as entradas de rotulo e de preenchimento. Nao reprovo porque ha entradas a cada 1 a 3 s em 4,3 a 17,6 s; a cauda de 17,633 a 22,467 s (4,8 s) fica so com o drift de ~4 px. Nao e velocidade que falta: e uma aproximacao que se veja.",
+        "easing e propositos: entradas em 300 ms, preenchimento de sul a norte em 500 ms, silhuetas que pousam e 5 que se acendem em 'most'. Nada congela por completo."
+      ],
+      "correcoes": [
+        "mapista: dar a cauda (17,6 a 22,5 s) uma aproximacao perceptivel e lenta (push-in de ~6% de zoom, z 6,1 a ~6,25, ou o centro andando ~120 px a 4K), sem tocar nos tempos nem nas ancoras dos rotulos (a coluna e fixa na tela). Nao acelerar o giro."
+      ]
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "credito de mapa '© MapTiler © OpenStreetMap contributors' em todos os quadros (0,1 a 22,3 s), 56 px, so na linha dele; portao-mapa rodape v5: 12,02:1 (piso 3:1). Dado numerico com fonte: 'Source: ANA (Peru), National Water Resources Plan, 2012 data' entra em 4,333 s com o primeiro numero e fica ate o fim (cobre 74.5, 97.9, 1.8 e 62.5). HydroBASINS sem credito na tela (licenca na descricao, decisao anterior da Sala); nenhum credito supérfluo ou fantasma (sem midia de banco na cena).",
+        "credito ANA a 56 px: reprovacao do qc-tamanho coberta pela excecao do Lucas, sha1 daedddb4 (ver espaco). Papel 'credito' declarado, tamanho de var(--fs-credito)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [
+        "uma cor = um significado, o mesmo do video todo: --contraparte (verde-agua) = vertente amazonica, --destaque (laranja) = vertente seca e as silhuetas que moram nela, --neutro = Titicaca, linha branca = divisoria. Nenhuma cor da bandeira; vermelho nao aparece. 3 matizes fora a base. Preenchimento do Pacifico a 85% e opaco (cobre o satelite da faixa seca): e territorio, nao veu, e a mesma leitura da s04, s06 e s51.",
+        "evidencia.paleta nao existe para clipe de mapa neste lote; a cor foi lida nos quadros (estavel de 4,9 a 22,3 s)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "concreto central da frase: a cordilheira (a crista dos Andes) e o pais. Ambos tem registro real aqui: satelite MapTiler sobre a crista de 0 a 3 s e sobre o Peru inteiro depois. Sinalizacao: nao ha aereo/footage da crista (caca de 22/10 sem aprovado, s01-a-4 reprovado por ser Cordilheira Branca, fora da divisoria); a cobertura por satelite e o possivel, e foi declarada como fallback."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 9,
+      "problemas": [
+        "sem footage na cena; planos de mapa em quatro beats (crista, lado amazonico, lado seco, a gente), um objeto por plano, cada um com entrada nova. Nenhum clipe repetido (a cena nao tem clipe). Regime 'normal' da regencia, com respiros de >=6 s ja declarados."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    }
+  ]
+}

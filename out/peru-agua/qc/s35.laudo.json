@@ -1,0 +1,122 @@
+{
+  "cena": "s35",
+  "aprovado": false,
+  "motivo": "motion: corte seco mapa -> mapa dentro da cena, em 4,733 s (identidade §4.4 e roupa do mapista §6: mapa seguido de mapa é uma viagem de 1,5 a 3 s). Gates: nenhum vivo (a exceção do crédito a 56 px vale no sha1 16cb1fcc).",
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "exceção do Lucas: qc-tamanho, crédito a 56 px (\"[tamanho] [credito] \\\"Source: Medina García, PUCP, 1982\\\" 56<72\"), 07/10/2026 11:3x (\"Quero reduzir para 56px\"), sha1 16cb1fcc igual ao de qc/_excecoes-portao.json; o crédito vem de var(--fs-credito), com data-qc-papel=\"credito\"; o de mapa leva data-qc-credito=\"mapa\"",
+        "portões lidos no sha1 de hoje (16cb1fcc, marca c647bf6c = tokens.css de hoje): portao-margens veredito 0 (14 itens, 214 amostras de 0,1 s, nenhum aviso); portao-mapa til 0 e rodape v5 0 (12,03:1); _portao.json: falhas só `tamanho` (a exceção), til-glifo coberto pelo portao-mapa e mapa-vivo fora do portão. Nos 14 quadros olhados nada sai da margem nem entra no canto de 400 × 400.",
+        "sinal (nota >= 7): em 5,1–10,8 s o bloco da cota, a pílula com o ponto e os 3 bonecos, e a legenda ficam a ~30 px uns dos outros no meio do quadro (nenhuma colisão, 4 itens)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 9,
+      "problemas": [
+        "observação: o ponto de Pamplona é declarado (`Approximate location` na tela todo o tempo do ponto, 4,734–11,034 s) e nunca aparece `Pamplona Alta`; o polígono de Villa El Salvador é o do distrito de hoje (OSM) e a voz fecha com `That ground became Villa El Salvador`, coerente; `1971 · 180 FAMILIES` e `ABOUT 7,000 FAMILIES TO RESETTLE` batem com o textos-tela (Medina García 1982, `alrededor de 7,000 familias`). Grafia e vírgula de milhar corretas, `García` sem tofu."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 9,
+      "problemas": [
+        "tempos conferidos contra o words.json (vídeo - 407,433 s): `Pamplona` + legenda a 4,734 s (`In` a 4,74), cota `1971 · 180 FAMILIES` a 4,934 (`nineteen` a 4,94), cota `ABOUT 7,000…` a 13,234 (`seven` a 13,26), `Villa El Salvador` a 19,234 (`became` a 19,18, `Villa` a 19,51: o nome entra 0,27 s antes de `Villa`, o mínimo que a regência declara). A cena abre com o mapa andando e sem texto sobre `The city drew newcomers…`, sem frase descoberta."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 8,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 7,
+      "problemas": [
+        "sinal: o b0 (0–4,733 s) é um satélite aproximado (z 15,9 -> 16,4) sem rótulo, ponto nem anel, e em 2 s lê-se como `cidade densa entre morros`, não como `borda de Lima`; a borda só se infere dos morros de areia sem casas ao lado da malha. A voz explica (`built their own homes at the city's edge`), e a regência não pôs rótulo de lugar nesse trajeto.",
+        "sinal: os 60 bonecos do b2 são uma figura, não uma contagem (declarado); a cota `ABOUT 7,000 FAMILIES TO RESETTLE` ao lado diz o número, então não induz a ler 60."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "poluicao",
+      "nota": 8,
+      "problemas": [
+        "sinal: o b1 junta cota, ponto com pílula, 3 bonecos e legenda, mais o crédito de fonte (4 a 5 itens, o alvo da identidade §4.2, abaixo do teto de 6). Lastro: `Pamplona` e `Approximate location` (`In nineteen seventy-one… took over a plot of land`), `1971 · 180 FAMILIES` (`one hundred eighty families`), `ABOUT 7,000…` (`seven thousand families`), `Villa El Salvador` (a voz): nenhum órfão."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 5,
+      "problemas": [
+        "REPROVA: corte seco mapa -> mapa DENTRO da cena, em 4,733 s. O último quadro do b0 (4,700 s: satélite a z ~16,4, as quadras de Huaycán de perto) e o primeiro do b1 (4,733 s: z 12,6 sobre o sul de Lima, com o mar à esquerda) têm diferença média de luma de 39,4 entre quadros vizinhos (0,0 antes do corte e 3,6 depois), e são dois lugares e dois zooms diferentes na mesma base de satélite (MapTiler), sem troca de regime. Lei da casa: identidade.md §4.4 e marca/agentes/mapista.md §6, `Mapa seguido de mapa é UMA viagem de câmera (fundir: true), nunca um corte. Corte seco só na troca de regime: mapa -> registro`, com viagem de 1,5 a 3 s, easing cúbico. A regência (s35 b1, `cut to the FLAT map`) escreve o corte, e a lei da casa vence a regência.",
+        "sinal (não reprova): o push-in do b1 (z 12,6 -> 12,7, 4,734–11,033 s) é contínuo mas muito lento: por correlação de fase numa região sem texto, o mapa se desloca ~92 × 39 px nas bordas do quadro 4K entre 5,1 e 10,8 s (~2,4 %), e a pílula, perto do centro, praticamente não sai do lugar em 6,3 s. O ponto de vista é reconhecível nos três instantes, mas há deslocamento contínuo e a régua é volta lenta e ininterrupta: não se pede velocidade.",
+        "o resto está certo: o b0 anda com deriva e zoom visíveis (0,1 -> 2,4 -> 4,6 s), a viagem b1 -> b2 é de 2 s cúbica (11,033–13,03 s), o polígono preenche e o nome entra no ponto da fala; nenhuma pílula presa nem anel em movimento no fim."
+      ],
+      "correcoes": [
+        "mapista: trocar o corte de 4,733 s por UMA viagem de 1,5 a 3 s, cúbica, de Huaycán ao sul de Lima, chegando ao enquadramento do b1 em 4,733 s (a viagem de 1,5 s começa em ~3,2 s e encurta o push-in do b0; não encurtar abaixo de 1,5 s, nem trocar o corte por fusão/dissolvência). `Pamplona`, `Approximate location` (4,734 s) e a cota (4,934 s) continuam nos tempos do textos-tela: se a pílula só couber na área segura no fim da viagem, entra quando o ponto chega, como já faz nas outras cenas; re-rodar portao-margens, qc-cena e portao-mapa no HTML novo (a exceção do crédito pede o sha1 novo à Sala).",
+        "Direção (regente-de-imagem): alinhar a regência da s35 b1, de `cut to the FLAT map` para a viagem de câmera (identidade §4.4)."
+      ]
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "`© MapTiler © OpenStreetMap contributors` (data-qc-credito=\"mapa\") visível nos 14 quadros olhados, de 0,1 a 21,1 s, em 56 px na faixa de crédito e fora do canto; a geometria OSM (Villa El Salvador, pontos) está coberta pela mesma linha. `Source: Medina García, PUCP, 1982` aparece em 5,1–18,3 s e some em 19,4 s, como o textos-tela (4,934–18,467 s); sem mídia na cena, então nenhum crédito-fantasma; sem veredito de mídia a casar (a cena não cita arquivo de _media/ além de geo e base)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [
+        "observação: o `--destaque` laranja só pinta o polígono de Villa El Salvador (uma entidade); traço branco do contorno, pílulas escuras, bonecos brancos; sem véu nem degradê sobre o satélite. No quadro final há uma emenda de ladrilhos no mar (retângulo um pouco mais claro à esquerda do mar); é da base."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "sinal: o concreto central (casas de autoconstrução na borda, o terreno da invasão, o areal) aparece só como satélite de geometria real, sem foto nem vídeo de solo: a caça de 22/10 não trouxe aéreo para s35-a nem s35-b (a regência já está no fallback), então não há material a apontar. O espectador que nunca viu uma barriada sai vendo a malha e os morros, não o chão."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 8,
+      "problemas": [
+        "mapa, sem footage: quatro planos para quatro objetos da fala (a borda, o terreno de 1971, o areal, Villa El Salvador), cada um trocando num beat (4,733; 11,033; 18,467 s). Os respiros declarados (6,3 e 7,4 s) têm movimento contínuo, ainda que lento (ver motion)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "sinal (eco de forma, não repetição): na série há três planos de satélite dos morros da borda de Lima: s35 b0 (esta, z ~16, malha de casas legível), s42 b6 (30,0 s, com a pílula `Lima` e o vale) e s44 b1 (12,5 s, morros largos, quase sem malha). Lugar e zoom diferem (decisão 6 da Sala), e só a s35 lê as casas subindo o morro; sem perda de informação visual se a s35 sumisse? Não: perderia a leitura da autoconstrução."
+      ],
+      "correcoes": []
+    }
+  ]
+}
