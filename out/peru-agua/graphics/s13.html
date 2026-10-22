@@ -16,7 +16,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s13 (117,067 → 138,033 s do master
   HydroBASINS v1, a mesma do vídeo inteiro) acesa do 1º ao último quadro, --tinta 6 px sobre o contorno escuro.
 
   O que a cena faz (o mapa nunca para: o bearing anda de −1,5° a +1,5° do 1º ao último quadro, e cada perna anda):
-    · b0 (0–5,167): o Peru de cima, aproximação lenta; em 'main' (1,5) o cartão pequeno da citação (papel, Inter 700 a 112 px)
+    · b0 (0–5,167): o Pacífico com o Peru à direita, aproximação lenta; em 'main' (1,5) o cartão da citação (papel, Inter 700 a 280 px; arte-3)
       com 'Translated from Spanish' e a fonte 'Source: SENAMHI (Peru), 2021' na faixa, até 5,166; em 'lies out over the
       Pacific' (3,39) viagem de 3 s (cúbica, van Wijk) ao Pacífico sudeste, com o Peru no alto à direita.
     · b1 (5,167–10,867): o traço do canal SOBRE o mapa (esquema): o 'H' (Inter 700, 160 px, só o contorno) e 3 setas em espiral
@@ -27,13 +27,28 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s13 (117,067 → 138,033 s do master
       peru-ne, Natural Earth: o ponto mais a oeste de cada faixa de 0,5° de latitude, afastado 90 e 200 km mar adentro), com
       'HUMBOLDT CURRENT' e a legenda 'Schematic'; em 'water' (17,18) traços curtos sobem junto à costa (a ressurgência).
       Nada disso afirma percurso medido: as setas são esquema declarado (PA015), e a legenda fica enquanto elas estão na tela.
-    · b3 (18,867–20,966): em 'blanket' (19,11) a imagem real da NASA (MODIS/Terra, 20/06/2018; aprovada para esta frase)
+    · b3 (18,867–20,966): em 'and' (18,866; arte-3 rodada 2, antes 'blanket' 19,11) a imagem real da NASA (MODIS/Terra, 20/06/2018; aprovada para esta frase)
       entra sobre o mar em 300 ms, numa moldura, com 'Satellite image · June 2018'. A imagem não tem georreferência no disco
       (nem a pauta nem a procedência dão os limites): ela entra como cartão sobre o mar, à esquerda da costa, NÃO deitada
       sobre o mapa; o alinhamento à costa que a regência pede não se faz sem os limites (vai à Sala).
   ELEMENTOS (teto 6): b0 = linha, cartão (2); b1 = linha, H + setas (1), a pílula (3); b2 = linha, corrente, ressurgência,
   HUMBOLDT CURRENT, Schematic (5); b3 = linha, corrente, HUMBOLDT CURRENT, Schematic, imagem, a legenda dela (6: a ressurgência
   sai antes de a imagem entrar).
+  CONSERTO peru-agua-arte-3 (lote M-s13, 22/10/2026; laudo qc/s13.laudo.json, lente espaco 5), e só isto mudou:
+    1. A FALA CITADA sobe de 112 a 280 px (var(--fs-fala); identidade §4.1: piso 260, alvo 280), Inter 700, nas mesmas
+       palavras do textos-tela, quebrada em 3 linhas ('“the main cause of / the aridity of the / Peruvian coast”'); o cartão
+       fica com ~2.550 × 1.169 px (respiro 56/72/52, 'Translated from Spanish' 36 px abaixo). O papel do .fala passa de
+       'rotulo' a 'heroi': o qc-tamanho só conhece heroi|titulo|rotulo|eixo|credito, e o piso de heroi (260) é o da fala citada.
+    2. O COMEÇO reenquadrado para o cartão caber no mar: P0/P1 passam ao Pacífico a oeste do Peru (o Peru na faixa da
+       direita) e a viagem de 3,39 s vai a Q0 = (−87, −24, z 5,75) em vez de (−82, −22, z 5,45), com Q1 junto; afastar menos
+       o zoom é o que segura a costa fora do cartão enquanto ele está no ar (folga ≥ 100 px de 1,5 a 5,47 s, pela câmera
+       desta cena sobre o contorno peru-ne). O H continua em (−90, −27), ~250 px mais à direita na tela. Tempos iguais.
+    3. A COLUNA DA ESQUERDA no fim: a imagem MODIS sobe 55 px (topo 640 → 585) e HUMBOLDT CURRENT sobe 20 px (centro 1640 →
+       1620): o vão legenda-da-imagem → HUMBOLDT CURRENT passa de ~29 a 64 px, e HUMBOLDT CURRENT → 'Schematic' de ~4 a 24 px
+       (a legenda da corrente fica junto dela; a da imagem, junto da imagem).
+  CONSERTO peru-agua-arte-3, rodada 2 (textos-tela db0c89f8…): a imagem MODIS e a legenda 'Satellite image · June 2018'
+    entram juntas em 'and' (18,866), não mais em 'blanket' (19,11); a legenda continua presa à moldura (mesma entrada de
+    300 ms). 'Schematic' fica até 20,966 (textos-tela), embaixo de HUMBOLDT CURRENT, a 64 px da legenda da imagem e fora dela.
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (o mapa continua em volta da imagem), com
   data-qc-credito="mapa" só no próprio elemento. A fonte da citação acima dele, de 1,5 a 5,166, sem a marca de mapa. A NASA é
   domínio público federal: nada na tela. O HydroBASINS e o Natural Earth: nada na tela.
@@ -69,11 +84,11 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s13 (117,067 → 138,033 s do master
   /* O CARTÃO PEQUENO DA CITAÇÃO (textos-tela: "cartão pequeno"): a folha --papel, texto --tinta-escura em Inter 700, com
      'Translated from Spanish' (legenda, 84 px, Inter 500) embaixo; a fonte vai na faixa de crédito */
   #citacao { position: absolute; left: 200px; top: 0; opacity: 0; visibility: hidden; z-index: 45;
-    background: var(--papel); border-radius: var(--cantos); padding: 44px 56px 40px;
+    background: var(--papel); border-radius: var(--cantos); padding: 56px 72px 52px;
     box-shadow: 0 18px 48px color-mix(in srgb, var(--fundo) 55%, transparent); }
-  #citacao .fala { font-family: var(--fonte); font-weight: 700; font-size: 112px; line-height: 1.12; color: var(--tinta-escura);
+  #citacao .fala { font-family: var(--fonte); font-weight: 700; font-size: var(--fs-fala); line-height: 1.12; color: var(--tinta-escura);
     white-space: pre; letter-spacing: 0; }
-  #citacao .trad { margin-top: 28px; font-family: var(--fonte); font-weight: 500; font-size: var(--fs-eixo); line-height: 1;
+  #citacao .trad { margin-top: 36px; font-family: var(--fonte); font-weight: 500; font-size: var(--fs-eixo); line-height: 1;
     color: color-mix(in srgb, var(--tinta-escura) 72%, transparent); white-space: nowrap; }
   /* A IMAGEM DA NASA: numa moldura --rotulo sobre o mar; a foto só encolhe (escala ≤ 1), sem filtro */
   #modis { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; z-index: 41; }
@@ -112,9 +127,9 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s13 (117,067 → 138,033 s do master
     <div id="modis"><div class="moldura"></div><div class="janela"><img id="imgModis" src="../_media/foto/s13/s13-modis-low-clouds-peru-coast-2018-06-24.jpg" alt=""></div></div>
     <div class="rotulo legenda" id="legModis" data-qc-papel="legenda">Satellite image · June 2018</div>
   </div>
-  <div id="citacao"><div class="fala" data-qc-papel="rotulo">“the main cause
-of the aridity of
-the Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated from Spanish</div></div>
+  <div id="citacao"><div class="fala" data-qc-papel="heroi">“the main cause of
+the aridity of the
+Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated from Spanish</div></div>
   <div id="credFonte" class="credito extra" data-qc-papel="credito">Source: SENAMHI (Peru), 2021</div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
   <div id="erroCena" hidden></div>
@@ -132,10 +147,10 @@ the Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated 
     perfil: "maptiler",
     fontes: ["div"],
     pontos: {
-      P0: { lng: -72.00, lat: -7.50,  zoom: 6.25, bearing: -1.5, pitch: 0 },   // o Peru de cima, a costa à esquerda do centro
-      P1: { lng: -72.15, lat: -7.62,  zoom: 6.30, bearing: -1.2, pitch: 0 },
-      Q0: { lng: -82.00, lat: -22.00, zoom: 5.45, bearing: -0.6, pitch: 0 },   // o Pacífico sudeste: o Peru no alto à direita
-      Q1: { lng: -82.10, lat: -22.05, zoom: 5.52, bearing: 0.0,  pitch: 0 },
+      P0: { lng: -89.50, lat: -12.50, zoom: 6.00, bearing: -1.5, pitch: 0 },   // o Pacífico a oeste: o Peru na faixa da direita (arte-3)
+      P1: { lng: -89.65, lat: -12.62, zoom: 6.05, bearing: -1.2, pitch: 0 },
+      Q0: { lng: -87.00, lat: -24.00, zoom: 5.75, bearing: -0.6, pitch: 0 },   // o Pacífico sudeste: o Peru no alto à direita (arte-3)
+      Q1: { lng: -87.10, lat: -24.05, zoom: 5.82, bearing: 0.0,  pitch: 0 },
       K0: { lng: -77.60, lat: -11.60, zoom: 6.50, bearing: 0.4,  pitch: 0 },   // a costa do Peru: o mar à esquerda, a terra à direita
       K1: { lng: -77.65, lat: -11.66, zoom: 6.62, bearing: 1.5,  pitch: 0 }
     },
@@ -149,7 +164,7 @@ the Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated 
     H: { ll: [-90.0, -27.0], entra: 7.1, pousa: 0.8, desce: 9.567, sai: 10.88 },
     corrente: { entra: 15.966, desenha: 1.3, km: [90, 200], lat: [-15.6, -5.8] },   // as pontas dentro do quadro (acima da faixa do crédito)
     ressurg: { entra: 17.167, sai: 18.87, lats: [-6.5, -8.5, -10.5, -12.5, -14.3, -16.3], km: 45 },
-    modis: { entra: 19.11, natural: [3076, 2298], foto: [960, 717], borda: 16, pos: [200, 640] }   // abaixo da ponta norte das setas
+    modis: { entra: 18.866, natural: [3076, 2298], foto: [960, 717], borda: 16, pos: [200, 585] }   // abaixo da ponta norte das setas
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -436,9 +451,9 @@ the Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated 
   var ROT = [
     { id: "letraH",  ll: CENA.H.ll, entra: CENA.H.entra, sai: CENA.H.sai, sobe: 0 },
     { id: "rotAlta", ll: CENA.H.ll, dy: -400, entra: 7.1, sai: 10.866 },
-    { id: "rotHumb", tela: [1000, 1640], fixo: true, entra: 15.966, sai: null },
+    { id: "rotHumb", tela: [1000, 1620], fixo: true, entra: 15.966, sai: null },
     { id: "legEsq",  tela: [1000, 1790], fixo: true, entra: 15.966, sai: null },
-    { id: "legModis", tela: null, fixo: true, entra: 19.11, sai: null }
+    { id: "legModis", tela: null, fixo: true, entra: 18.866, sai: null }
   ];
   function rot(id) { return ROT.filter(function (r) { return r.id === id; })[0]; }
   function naArea(l, tp, w, h) {

@@ -9,6 +9,14 @@
   [nome e cargo] ficam no lugar da foto"; "a fala citada vai num cartão de papel ao lado, em --papel, Inter 700, alvo 280 px, até 12
   palavras, entrando junto com a voz"), sobre a MESA DO VÍDEO 4 (satélite sob a luz, §5), com o movimento A, "A mão que arruma" (§4.4).
   Lote EF2 (peru-agua-arte-1, 22/10/2026), editor-de-arte em Fable.
+  CONSERTO peru-agua-arte-3 (lote E-s46, 22/10/2026, editor-de-arte em Fable): o qc-visual (laudo s46, lente motion 5: de 0,55 a 7,9 s só
+  a deriva de ±6 px) pediu o push-in lento do RIG. O que mudou: (1) a câmera faz push-in 1,00 → 1,03 em `eb` de 2,0 a 7,6 s e fica em 1,03
+  (função escalaCam/aplicarCamera); (2) a origem da câmera (#cam e #still) passou do centro a (2800, 1600), para o cartão ficar dentro da
+  margem a 1,03; (3) o still acompanha o push-in a 0,6 (1,018). Textos, tempos de texto, o card, o cartão e o crédito ficaram como estavam.
+  Entradas vigentes: regência sha256 de5af07e… (só mudou a peça do comentário, que a s46 não lê), textos-tela.json sha256 f588540e… (o
+  texto da s46 é o mesmo), espelho sha256 016fbaf1….
+  ACRÉSCIMO peru-agua-arte-3 (a fala como heroi): o cartão da fala #c1 passou de data-qc-papel="fala" a "heroi", e o data-qc-sem-heroi
+  saiu do #palco (a cena TEM herói: a fala). Tamanho da fala antes e depois: 280 px (--fs-fala), sem mudar palavra, tempo nem geometria.
 
   O que manda em cada coisa: os textos de tela (textos-tela.json sha256 344396a4… › s46: card_nome "CATALINA NAUPA, 59" t0 0 ("do 1º
   quadro: a voz diz o nome em 0,0 s"); card_cargo "Resident, San Juan de Miraflores (2025)" t0 0,133; credito "Source: AFP, March 2025"
@@ -27,27 +35,44 @@
           visível desde o 1º quadro (a voz diz o nome em 0,0 s): a pílula em x 330→1742, y 360→549; o cargo em 0,133 (300 ms), em
           x 330→1825, y 573→670, numa linha só (as larguras reais da Inter, medidas no DOM). O crédito "Source: AFP, March 2025" acende
           em 0 (300 ms), 56 px, a cena toda.
-    0,55–7,9  a câmera PARADA (só a deriva do RIG): a fala dela é a imagem. Nada mais entra: o caminhão fica na voz (regência).
+    0,55–2,0  a câmera parada (só a deriva do RIG): o nome é dito e lido ("fifty-nine" acaba em 1,877).
+    2,0–7,6   o PUSH-IN lento do RIG (peru-agua-arte-3): escala 1,00 → 1,03 em `eb`, origem (2800, 1600); o still a 1,018 (paralaxe 0,6).
+          Termina 0,3 s antes de ""There" (7,907): o texto já na tela não é lido durante o movimento, e a câmera está PARADA quando o
+          cartão entra (a regência, 2º beat). Nada mais entra: o caminhão fica na voz (regência).
+    7,6–7,9   a câmera parada em 1,03 (só a deriva).
     7,9   ""There" (572,033 s): o CARTÃO DE PAPEL "“There are worms / in the bottom / of the tank.”" (--papel, Inter 700, 280 px = o alvo
           da fala citada; 9 palavras ≤ 12) entra na palavra, abaixo e à direita do card (300 ms, opacidade + 24 px, escala 1,04 → 1,00,
           com a sombra solta já assentada; identidade §4.4), em x 1200→3589, y 820→1720 (+0,6°; a linha mais larga, "“There are worms",
           mede 2.309 px na Inter 700 a 280 px; o cartão se dimensiona pelo texto, medido no DOM); a luz vai do card ao cartão, 120 ms
           atrás. Fica 3,2 s no ar (≥ 2,0 s).
     10,85–11,1  REPOUSO: nada se move além da deriva do RIG, que congela nos últimos 250 ms.
-    A CÂMERA: escala 1,00 a cena toda (só a deriva ±6/4,8 px). A margem (roupa §4): tudo em x ≥ 330, y ≥ 360, y ≤ 1720 (+ a deriva);
-    o cartão girado 0,6° (cantos a ±12 px: x ≤ 3601, y ≤ 1732); o canto inferior direito (x ≥ 3440, y ≥ 1760) vazio; nada abaixo de
-    1880 fora o crédito. PRODUTO MÁXIMO DAS ESCALAS: o card construído 1,03; o cartão 1,04 (a entrada). Ken Burns: não há foto.
+    A CÂMERA: escala 1,00 até 2,0 s, push-in 1,00 → 1,03 de 2,0 a 7,6 s, e 1,03 até o fim (mais a deriva ±6/4,8 px, que congela nos
+    últimos 250 ms). A ORIGEM do push-in é (2800, 1200), não o centro: com a origem no centro, o limite direito a 1,03 seria
+    1920 + 1720/1,03 = 3590 (roupa §4), e os cantos do cartão (x ≤ 3601) sairiam da margem em ~17 px com a deriva. A conta no pior
+    instante (escala 1,03, deriva ±6,18/±4,94 px já multiplicada pela escala), com x' = 2800 + (x − 2800) × 1,03 e y' = 1600 + (y − 1600)
+    × 1,03: o cartão à direita 3601 → 3625 + 6,18 = 3631 ≤ 3640 (9 px de folga; medido no quadro de 9,3 s: 3608); embaixo 1732 → 1736 +
+    4,94 = 1741 < 1760 (fora do canto de 400 × 400), e na ENTRADA do cartão (7,9–8,2 s: +24 px de subida e escala 1,04 → 1,00, que a 1,03
+    somam até ~13 px em 8,0 s, quando a passagem já é lenta e o portão conta) ~1754 < 1760 (a origem em y 1200 deixava 6 px no canto em
+    8,0 s: medido pelo portao-margens, e por isso y 1600); o card à esquerda 330 → 256 − 6,18 = 250 ≥ 200; no topo 360 → 323 − 4,94 = 318
+    ≥ 160; nada de #cam abaixo de 1880. O card desloca 52 px à esquerda e 33 px para cima ao longo dos 5,6 s (≤ 11 px/s no 4K): é o
+    push-in, não viagem.
+    O STILL (sangria 56 px, --mesa-satelite-margem) a 1,018 sobre a mesma origem: bordas em x −107 e 3916, y −86 e 2227, mais a
+    deriva × 0,6 (≤ 3,7 px): nenhuma borda aparece, e a mesa-peru-agua.png (sem a -sangria1400) basta.
+    PRODUTO MÁXIMO DAS ESCALAS: o card construído 1,03 × a câmera 1,03 = 1,061 (o card já está a 1,00 quando o push-in começa: 1,03);
+    o cartão 1,04 (a entrada) × 1,03 = 1,071. Ken Burns: não há foto.
 
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): o card (nome + cargo = 1) + o cartão da fala (1) = 2
-    (abaixo do alvo 4–5: regime respiro, "a fala dela é a imagem"). Blocos de texto de leitura: 2 (o cargo, a fala) ≤ 3. Herói: nenhum
-    (data-qc-sem-heroi: a fala citada a 280 px é o alvo da fala, não herói).
+    (abaixo do alvo 4–5: regime respiro, "a fala dela é a imagem"). Blocos de texto de leitura: 2 (o cargo, a fala) ≤ 3. Herói: a FALA
+    CITADA, o cartão #c1 com data-qc-papel="heroi" (a regra da Sala, peru-agua-arte-3: numa cena de citação o herói é a fala; o
+    qc-tamanho só conhece heroi|rotulo|eixo|credito, e "fala" caía no piso de legibilidade, 72, sem provar os 260 da identidade §4.1).
+    A fala está a 280 px (--fs-fala, o alvo) ≥ 260; o nome continua rótulo (128 px) e o cargo, eixo (84 px).
 
   A MÍDIA: nenhuma de registro (midia "animacao" no espelho: "card sem foto; a fala sai do roteiro-narrador, verbatim"); nenhum arquivo
     de _media/ é citado fora a mesa.
 
   A MESA (identidade §5, "A mesa do vídeo 2 em diante"): ../_media/base/mesa-peru-agua.png (3840 × 2160; Landsat 8 de 09/06/2022, USGS,
-    domínio público, SEM crédito na tela), primeiro filho de #palco, com os 56 px do token --mesa-satelite-margem. A câmera fica em 1,00:
-    o still anda só a deriva × 0,6 (≤ 3,6 px; folga ≥ 52 px). A luz é o véu no fundo de #cam, atrás do card e depois do cartão, 120 ms
+    domínio público, SEM crédito na tela), primeiro filho de #palco, com os 56 px do token --mesa-satelite-margem. O still acompanha a
+    câmera a 0,6 (escala até 1,018 e a deriva × 0,6, ≤ 3,7 px; folga ≥ 52 px antes do push-in, e maior com ele: a conta acima). A luz é o véu no fundo de #cam, atrás do card e depois do cartão, 120 ms
     atrás (--mov-luz-atraso); o feltro é #mesa, a 50 %.
 
   A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). Crédito 56 px --sec (Lucas, 07/10/2026) em x = 200,
@@ -69,8 +94,9 @@
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
-    opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
-  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
+    opacity: var(--mesa-satelite-opacidade); pointer-events: none;
+    transform-origin: calc(2800px + var(--mesa-satelite-margem)) calc(1600px + var(--mesa-satelite-margem)); /* a origem do push-in, no still (peru-agua-arte-3) */ }
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 2800px 1600px; /* a origem do push-in (peru-agua-arte-3) */
     background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
       var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
   #mesa { position: absolute; left: -160px; top: -160px; width: 4160px; height: 2480px; pointer-events: none;
@@ -94,7 +120,7 @@
 </style>
 </head>
 <body>
-<div id="palco" data-qc-sem-heroi="o card de Catalina Naupa sem foto (nome na pílula, cargo embaixo) e o cartão de papel com a fala verbatim: a cena não tem herói; o nome é rótulo de 128 px e a fala citada está a 280 px, o alvo da fala (ofício do editor-de-arte §6; identidade §4.2 e §5)">
+<div id="palco">
   <img id="still" src="../_media/base/mesa-peru-agua.png" alt="" data-qc-reuso="a mesa do vídeo 4: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; _media/base/mesa-peru-agua.png, Landsat 8 de 09/06/2022, USGS, domínio público)">
   <div id="cam">
     <div id="mesa"></div>
@@ -106,7 +132,7 @@
     </div>
     <!-- o cartão de papel da fala (textos-tela s46 › citacao, t0 7,9) -->
     <div class="sombra-solta" id="c1Sombra"></div>
-    <div class="cartao" id="c1" data-qc-papel="fala"></div>
+    <div class="cartao" id="c1" data-qc-papel="heroi"></div>
   </div>
   <div id="creds"><div class="cred" id="cred1" data-qc-papel="credito"></div></div>
 </div>
@@ -230,12 +256,19 @@
     por(el, G.cx, G.cy + dy, G.w, G.h, G.rot, k, p);
     if (sh) por(sh, G.cx, G.cy + dy + 12, G.w, G.h, G.rot, k, 0.8 * p);
   }
+  // o PUSH-IN lento do RIG (peru-agua-arte-3, o conserto do motion do qc-visual): escala 1,00 → 1,03 em `eb`, de 2,0 s (o nome já dito
+  // e lido: "fifty-nine" acaba em 1,877) a 7,6 s (0,3 s antes de ""There", 7,907: a câmera PARADA quando o cartão entra, como a regência
+  // pede no 2º beat); depois fica em 1,03. A origem da câmera é (2800, 1600) e não o centro, para o cartão ficar dentro da margem a 1,03
+  // (a conta no cabeçalho; y 1600 e não 1200 porque, a 1,03, a ENTRADA do cartão (+24 px, escala 1,04) passava 6 px no canto em 8,0 s); o still acompanha a --mesa-satelite-paralaxe (0,6): escala 1 + 0,03 × 0,6 = 1,018, sobre a mesma origem.
+  var PUSH = { t0: 2.0, t1: 7.6, de: 1.00, ate: 1.03 };
+  function escalaCam(t) { return lerp(PUSH.de, PUSH.ate, eb(seg(t, PUSH.t0, PUSH.t1 - PUSH.t0))); }
   function aplicarCamera(t, luz) {
     var camEl = E("cam"), st = E("still");
     var td = Math.min(t, (window.__duracao || 1e9) - 0.25);
     var dx = 6 * Math.sin(td * 0.23), dy = 4.8 * Math.sin(td * 0.17);
-    if (camEl) camEl.style.transform = "scale(1) translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
-    if (st) { var PAR = 0.6; st.style.transform = "scale(1) translate(" + (dx * PAR).toFixed(2) + "px," + (dy * PAR).toFixed(2) + "px)"; }
+    var s = escalaCam(t), PAR = 0.6, ss = 1 + (s - 1) * PAR;
+    if (camEl) camEl.style.transform = "scale(" + s.toFixed(5) + ") translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
+    if (st) { st.style.transform = "scale(" + ss.toFixed(5) + ") translate(" + (dx * PAR).toFixed(2) + "px," + (dy * PAR).toFixed(2) + "px)"; }
     if (camEl && luz) { camEl.style.setProperty("--luz-x", luz.x.toFixed(1) + "px"); camEl.style.setProperty("--luz-y", luz.y.toFixed(1) + "px"); }
   }
 
