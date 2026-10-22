@@ -1525,6 +1525,97 @@ COBERTURA: 49 de 49 (sem mudança)
 NOTA: 9/10
 VEREDITO: RESSALVA. Sem mudança: o R6-2 fica LEVE, só pelo pouso que falta na `s06.html`; o R6-1, os 17 NÃO FOI CHECADO e o R4-2 continuam.
 
+## Reconferência 7 (texto-5, sobre 804e4133…)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `804e4133d913cd61e80d552f6ecf9c754cba531db871c870f01bd6af9b7fde31`.
+- **Comparado com:** `out/peru-agua/_tmp/redator/antes-consertos-6/textos-tela.json.da7c651d` (sha256 `da7c651d…`). O passo do meio, `antes-consertos-6b/textos-tela.json.7c6392c4`, confere com o sha256 `7c6392c4…`.
+- **O diff:**
+  - 4 textos mudaram: s30 `65.0% (1940)` (só a nota) e `COAST` (a nota), s38 e s47;
+  - 1 saiu (s42 `AND WELLS`); a lista vai de 438 a 437 itens;
+  - mudaram as seções `_conflitos_para_a_sala`, `_instrucoes_para_a_arte` (+5 −2), `_pedidos_a_montante` (+2), `nao_vai_para_tela` (+1), `_entradas_conferidas` e `_entradas_sha256`.
+- **As outras entradas, conferidas por sha256:**
+  - regência `55cebfa3…`, e a cópia de antes `_tmp/regente/regencia.json.antes-direcao-7` dá `37f6aa5a…`;
+  - conceito `94ace8e2…`, e a cópia de antes `_tmp/setores/conceito-antes-direcao-7.json` dá `743ae5fe…`;
+  - espelho `a24d77d2…`.
+- **Os tempos:** `words.json` (`start − inSec`).
+- **Limites:** 0 imagens, nenhum navegador, nenhuma web; nada foi gravado no canal.
+
+| id | o quê | o que se conferiu | veredito |
+|---|---|---|---|
+| RB141 | s38 `ABOUT A QUARTER`, de 7,4–9,4 para **7,9–9,4** | "about" está em 7,925 (falls 7,46; quarter 8,26): entra 0,03 s antes da palavra do número, no quadro 237 (7,9 = 237/30). 1,5 s no ar, até o corte do beat (9,4, s38 › beats[1]); a regência dá `{"t": 7.9, "palavra": "about"}`. O texto não mudou (PB022, TB102) | CONFIRMADA |
+| RB142 | s47 `FREE`, de 15,234 para **15,6–17,234** | "deliveries" está em 15,602, e 15,6 é o quadro 468. No ar 1,634 s; "free" está em 16,412, 0,81 s depois ("~0,8 s" confere); a regência dá `{"t": 15.6, "palavra": "deliveries", "o_que": "FREE"}`. O texto não mudou (F214, TB187), e o crédito da AFP (14,134–17,234) cobre | CONFIRMADA |
+| RB143 | s42 `AND WELLS` sai | O item não está mais em `_textos_por_cena`; nenhum texto da s42 contém "WELLS". No beat do mapa (4,633–10,167) ficam `Rímac` (4,633), `Chillón` (7,167) e `Lurín` (8,067), e o crédito do mapa | CONFIRMADA |
+| RB144 | `nao_vai_para_tela`: "AND WELLS" | o motivo: a voz diz "and on wells" (9,19 s); "nenhum lugar de poço foi lido" é o que a regência diz ("no well location was read", s42 › beats[1]). "1,0 s na palavra ou 1,02 s antes dela" confere com RB120 e RB125 | CONFIRMADA |
+| RB145 | s30 `65.0% (1940)`, t1 em 12,2 | "Fewer" está em 12,193, e 12,2 é o quadro 366. A regência `55cebfa3`: beats[2] vai de 6,133 a 12,2 ("'65.0% (1940)' leaves at 12.2 s (the end of this beat)"), e beats[3] de 12,2 a 18,567 (`entra` `{"t": 12.2, "palavra": "Fewer", "o_que": "65.0% (1940) leaves"}`). O número sai quando a voz passa à costa ("Fewer than three in ten…"), e não fica sobre ela | CONFIRMADA |
+| RB146 | s30, a nota e a instrução agora iguais | a nota: "sai em 'Fewer' (12,2 s)"; a instrução nova: "'65.0% (1940)' sai em 'Fewer' (12,2 s), o fim do beat 2". A instrução antiga ("sai quando a costa entra (15,5 s)") saiu | CONFIRMADA |
+| RB147 | s30, a nota da `COAST`: `--contexto-1` → `--rotulo` | a identidade, l. 49: "`--rotulo` … pílula do rótulo sobre mapa ou registro"; l. 56: "`--contexto-1` … violeta: o segundo vizinho de contexto … só no mapa, a 25 %" (território, não pílula); l. 64–66: "as únicas cores da paleta que só existem no mapa". A regência, s30 › beats[3]: "the pill in --rotulo like every label over the map (§4.1), NEVER flat violet nor --destaque … NO context color appears on the map". A nota nova diz o mesmo | CONFIRMADA |
+| RB148 | `_conflitos_para_a_sala`, s38, decidido | "1,5 s na palavra (7,9–9,4) … o corte da regência não muda", 22/10/2026, 08:5x, "decisão da Sala, peru-agua-texto-5": casa com RB141 e com a decisão 1 | CONFIRMADA |
+| RB149 | idem, s42, decidido | "sai da tela: a voz diz, nenhum lugar de poço foi lido…": casa com RB143 e RB144 e com a decisão 2 | CONFIRMADA |
+| RB150 | idem, s47, decidido | "em 'deliveries' (15,6), com 1,63 s … ~0,8 s da palavra": casa com RB142 e com a decisão 3 | CONFIRMADA |
+| RB151 | idem, s09, decidido (item novo, já decidido) | "fica como está, 0,55 s antes de 'thinly'": no arquivo, 7,866–9,866 (a cota, a legenda e o crédito), e "thinly" está em 8,413 (RB106); casa com a decisão 4 | CONFIRMADA |
+| RB152 | instrução s47 (substitui a de antes) | o mesmo de RB142, com "nenhum card de Nicolas Reyes" (como antes) | CONFIRMADA |
+| RB153 | instrução s09 | o mesmo de RB151 | CONFIRMADA |
+| RB154 | instrução s38 | o mesmo de RB141 | CONFIRMADA |
+| RB155 | instrução s30 (substitui a de antes) | o mesmo de RB145 e RB146 | CONFIRMADA |
+| RB156 | instrução s42 | o mesmo de RB143 | CONFIRMADA |
+| RB157 | pedido: a regência › s42 › beats[1], tirar "'AND WELLS' as a loose label at 'wells'" | a regência `55cebfa3` ainda tem esse trecho no `exige` e `{"t": 9.167, "palavra": "wells.", "o_que": "AND WELLS"}` no `entra`: o pedido é devido | CONFIRMADA |
+| RB158 | pedido: os `entra` sem o texto-2 ao texto-5 | Cada número, a regência `55cebfa3` contra o arquivo: s03 › beats[1] 5,267 "third" → 4,866; beats[2] 10,0 "ten" → 9,6; s09 › beats[1] 8,4 "thinly" → 7,866; s12 › beats[0] 2,667 → 1,8; s28 › beats[1] 10,333 "could" → 9,933; s32 › beats[0] 6,333 → 5,934; s35 › beats[3] 19,5 "Villa" → 19,234; s41 › beats[0] 5,3 "nineteen" → 4,633; s51 › beats[1] 7,867 "about" → 8,233. **Os 9 conferem.** Falta um: ver RB166 | CONFIRMADA, com a falta de RB166 |
+| RB159 | `_entradas_conferidas`: as cadeias de sha256 | a regência 37f6aa5a → 55cebfa3, o conceito 743ae5fe → 94ace8e2 e o espelho a24d77d2 conferem com os arquivos e com as cópias de antes | CONFIRMADA |
+| RB160 | "nenhuma janela de cena mudou (43 cenas, inSec e dur iguais)" | a regência tem 43 cenas antes e depois, o mesmo conjunto de ids. Nas cenas que mudaram, só o campo `beats` mudou, e os `t0`/`t1` de todos os beats estão iguais. O espelho não mudou | CONFIRMADA |
+| RB161 | "Mudaram s11, s13, s16, s21, s30, s31 e s34 (beats, exige, entra; no conceito, técnica e metáfora)" | na regência mudaram os `beats` de s11, s13, s16, s21, s30 e s34; no conceito, `tecnica` de s11, s13, s16, s21, s31 e s34, e `metafora` de s13, s16 e s31. A s31 é do conceito (no espelho ela é `_mergedInto: s30`). Nenhuma outra cena; no topo da regência mudaram só metadados (`gerado_em`, `_quem`, `_entradas_sha256`, `_decisoes_…`, `_para_o_redator_e_a_arte`, `_pedidos_…`, `_geo`, `auditoria`) | CONFIRMADA |
+| RB162 | "batem s01, s04 ('early' 8,867), s11, s13 ('and' 18,867), s16 (3,767 e 'floods,' 9,567), s17 (1,9), s21 (7,033 e 9,233), s22, s27, s30 (9,233; 12,2; 15,5; 18,567; 22,0; 28,833; 33,1; 40,367), s34, s36, s38 (7,9), s41 (Huinco 15,533) e s47 (15,6)" | Todos os `entra` citados batem com o `t0` do arquivo, com diferença de no máximo 0,001 s. **Duas ressalvas de redação, sem tempo errado:** (1) s27 › beats[0]: `{"t": 3.267, "o_que": "highlight: cuarenta leguas…"}`. O tempo bate, mas o grifo é agora "de la mar y el camino muy despoblado" (RB90), e o `o_que` da regência ficou com o grifo velho. (2) s01: a regência encolhe o quadro em "divides" (1,867, por 0,8 s), e a pílula da caça fica até 3,2. A nota dela ainda diz "sai quando o quadro encolhe" e, logo depois, "fica até o fim do aéreo (3,2)" | CONFIRMADA (os tempos); ver o achado R7-2 |
+| RB163 | "DIVERGEM … s03 … s09 … s12 … s28 o grifo 2 … s32 … s35 … s41 … s51 ABOUT 3000 B.C. (7,867; aqui 8,233)" | os 9 pares de números conferem (RB158) | CONFIRMADA |
+| RB164 | "Esperadas, nos pedidos abertos: s06 (12,833 'Lake'; aqui 12,8); s19 (0,967; aqui 0,634) e HIGH UP (4,1; aqui 3,434); s42 AND WELLS (9,167; fora da tela)" | a regência dá s06 12,833 "Lake"; s19 0,967 "real" e 4,1 "December"; s42 9,167 "wells.". O arquivo dá 12,8; 0,634; 3,434; e a s42 sem o texto | CONFIRMADA |
+| RB165 | s51 `ABOUT 3000 B.C.` e o crédito da UNESCO em 8,233 (mudança do texto-2, que não passou pelas reconferências 1 a 6 deste lote; conferida agora porque o `_entradas_conferidas` a cita) | "five" está em 8,26 (s51, inSec 651,8): entra na palavra do número, em "about five thousand years ago". 3,57 s no ar; o texto (PB058, TB223) e o crédito (RB09) não mudaram | CONFIRMADA |
+| RB166 | **o que falta na tabela:** s28 › beats[0] | a regência `55cebfa3` dá `{"t": 4.233, "palavra": "very", "o_que": "MUY BUEN PUERTO"}`, e o arquivo põe a citação “muy buen puerto”, a legenda e a marca em **4,033** ("had"; RB24, RB47). O par **não está** em "batem", nem em "DIVERGEM", nem no pedido de `entra` (RB158); e o `o_que` da regência ainda nomeia a forma velha. Achado R7-1 | **DIVERGE** (periférica: a tabela de conferência omite um `entra` que diverge) |
+
+**Os achados:**
+1. **[LEVE] R7-1 · `_entradas_conferidas` e `_pedidos_a_montante` omitem a s28 › beats[0].** A regência ainda põe "MUY BUEN PUERTO" em "very" (4,233), e o texto o põe em "had" (4,033), na forma “muy buen puerto” com a legenda "A very good port".
+   - **CONSERTO:** acrescentar ao DIVERGEM "s28 a citação (4,233 'very', MUY BUEN PUERTO; aqui 4,033 'had', “muy buen puerto” e a tradução em legenda)", e ao pedido de `entra` "s28 › beats[0] a citação em 4,033".
+   - **RAIZ:** PONTUAL.
+2. **[LEVE] R7-2 · s01, a nota da pílula da caça se contradiz** ("sai quando o quadro encolhe" e "fica até o fim do aéreo, 3,2"). A regência encolhe o quadro em 1,867.
+   - **CONSERTO:** tirar da nota o "sai quando o quadro encolhe", ou dizer que a pílula fica sobre a miniatura do clipe até 3,2.
+   - O mesmo vale para o `o_que` da s27 na regência ("cuarenta leguas…" → "de la mar…"), que é pedido a montante, sem efeito no tempo.
+
+**Continuam:**
+- os 12 rótulos da caça e as 5 primárias do gob.pe: NÃO FOI CHECADO;
+- as cenas construídas atrás do texto, R4-2 (s16) e R6-1 (s36), e o pouso da s06 (R6-2), não reconferidas aqui.
+
+COBERTURA: 26 de 26 (esta reconferência: os 4 textos mudados e o que saiu, a nota de `nao_vai_para_tela`, 4 conflitos, 5 instruções, 2 pedidos, as afirmações do `_entradas_conferidas` e a omissão da s28)
+NOTA: 9/10
+VEREDITO: RESSALVA. No texto de tela não há DIVERGE nem REFUTADA, e as quatro decisões da Sala estão aplicadas como foram dadas. O DIVERGE de RB166 é de documentação (uma linha que falta numa tabela de conferência), periférico e com conserto de uma linha. Os 17 NÃO FOI CHECADO continuam.
+
+## Reconferência 7b (sobre 7a6b71c0…)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `7a6b71c0b248ac65862325d1aef84f16119d72a43bbe478ede79e2e5ca0525f8`.
+- **Comparado com:** `out/peru-agua/_tmp/redator/antes-consertos-6c/textos-tela.json.804e4133`, que confere com o sha256 `804e4133…`.
+- **O diff, item a item na mesma posição:**
+  - 437 textos antes e depois. Só 1 item mudou, o 0 (s01, a pílula da caça), e só no campo `nota`;
+  - nenhum `texto`, `papel`, `t0` ou `t1` mudou;
+  - nas seções, mudaram só `_instrucoes_para_a_arte` (+1, s01), `_pedidos_a_montante` (+1, s28 e s27), `_entradas_conferidas` (um acréscimo no fim; o texto de antes fica intacto) e `_consertos`.
+- **Limites:** 0 imagens, nenhuma web; nada foi gravado no canal.
+
+| id | o quê | o que se conferiu | veredito |
+|---|---|---|---|
+| RB167 | a lista | o diff campo a campo dos 437 itens: só a `nota` do item 0 mudou. Nenhum texto, papel ou tempo mudou | CONFIRMADA |
+| RB168 | R7-1, s28, no registro (`_entradas_conferidas`, acréscimo) | "DIVERGEM também s28, a citação (regência 'MUY BUEN PUERTO' em 'very', 4,233; aqui “muy buen puerto”, papel citacao, com a tradução 'A very good port' em legenda, em 'had', 4,033 …)". Contra a regência `55cebfa3`, s28 › beats[0]: `{"t": 4.233, "palavra": "very", "o_que": "MUY BUEN PUERTO"}`. Contra o arquivo: `citacao` “muy buen puerto”, 4,033–6,133, e `legenda` "A very good port", 4,033–6,133 | CONFIRMADA; R7-1 fechado |
+| RB169 | R7-1, s28, no pedido | "regência › s28 › beats[0] · a citação “muy buen puerto” … com a tradução 'A very good port' em legenda, em 'had' (4,033), não 'MUY BUEN PUERTO' em 'very' (4,233); 'JANUARY 1535' sai em 'had'". No arquivo, `JANUARY 1535` vai de 0,167 a **4,033** (RB51); "had" está em 4,04 (RB24) | CONFIRMADA |
+| RB170 | R7-2b, s27, no pedido e no registro | "s27 › beats[0] · o 2º entra (3,267) passa a 'highlight: de la mar y el camino muy despoblado'". Na regência, os `entra` de s27 › beats[0] são 1,633, **3,267** ("highlight: cuarenta leguas…") e 6,233: o 2º é o de 3,267. O grifo do arquivo, de 3,267 a 6,234, é "de la mar y el camino muy despoblado" (RB90). O registro diz "o tempo bate, o o_que não", e é isso | CONFIRMADA; R7-2b fechado |
+| RB171 | R7-2, s01, a nota nova | "entra 300 ms depois do 1º quadro (0,3 s); em 'divides' (1,867 s) vai junto com o quadro que encolhe na miniatura do lugar (0,8 s, até 2,667), presa ao ponto real sobre o satélite, e fica com a miniatura … até o fim do aéreo, em 'East' (3,2 s): 2,9 s no ar". Contra a regência, s01 › beats[0] (0–3,2, footage_real): "the place pill from the item's lugar_na_origem (300 ms) … at 'divides' the frame shrinks (0.8 s) into the place thumbnail pinned to the clip's real spot on the satellite"; `entra` 1,867 "divides". As contas: 1,867 + 0,8 = 2,667; 3,2 − 0,3 = 2,9 s; "East" está em 3,23. A frase "sai quando o quadro encolhe" saiu, e a nota já não se contradiz | CONFIRMADA; R7-2 fechado |
+| RB172 | R7-2, s01, a nota contra a identidade §5, "Nome de lugar com a foto" (l. 709–719) | A identidade: o nome "numa etiqueta … com uma ponta que aponta o ponto"; "logo abaixo da etiqueta, a foto … sem cobrir o território"; "as cores … são as da paleta do canal". A nota trata a pílula como a etiqueta da miniatura, presa ao ponto real; o texto continua o `lugar_na_origem`, nunca mais específico (midia §2.7) | CONFIRMADA |
+| RB173 | R7-2, s01, a instrução nova à Arte | Ela diz que a pílula acompanha o quadro de 1,867 a 2,667, "sem trocar de lugar relativo nem de tamanho de letra", e termina com a miniatura até 3,2. A etiqueta fica "ACIMA da miniatura, com a foto logo abaixo dela e uma ponta apontando o ponto real, sem cobrir o território": é o que a identidade diz (l. 715–717). "A caixa segue a regra do canal …, não a do print de referência": a identidade mostra o print (SALVADOR em caixa alta) como exemplo de forma, e a regra de caixa do canal é a do glossário (país e região em caixa alta; cidade e rio em caixa normal, como "Lima" e "Rímac") | CONFIRMADA |
+| RB174 | `_consertos` | é de máquina e não afirma fato de tela | NADA A CHECAR (fora da conta) |
+
+**Continuam:**
+- os 12 rótulos da caça e as 5 primárias do gob.pe: NÃO FOI CHECADO;
+- as cenas construídas atrás do texto, R4-2 (s16) e R6-1 (s36), e o pouso da s06 (R6-2), são da Arte e não foram reconferidas aqui.
+
+COBERTURA: 7 de 7 (esta reconferência: a lista inteira, os 2 lados de R7-1, o R7-2b e as 3 afirmações do R7-2; o `_consertos` fica fora, como NADA A CHECAR)
+NOTA: 10/10
+VEREDITO: RESSALVA. Os 3 achados da Reconferência 7 estão fechados, e não há DIVERGE nem REFUTADA no lote B. Seguram a RESSALVA os 17 NÃO FOI CHECADO.
+
 ---
 
 ## Fecho do setor
@@ -1548,6 +1639,15 @@ Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do la
   - R6-2, LEVE: o pouso da miniatura de Puno, que falta no `s06.html`;
   - as antecipações acima de 0,5 s (s09, s38, s42 e s47), que são escolha da Sala.
 - Com ela, o lote B ficou com o sha256 `da44c05e…61460`.
+
+**As reconferências 7 e 7b (texto-5, sobre `804e4133…` e `7a6b71c0…`)** estão no fim do lote B, com 26 de 26 e 7 de 7.
+- **O que cobrem:**
+  - as decisões da Sala: a s38 com 1,5 s na palavra, a s42 sem o `AND WELLS`, a s47 em "deliveries" e a s09 como estava;
+  - a s30: o `65.0% (1940)` sai em 12,2, e a pílula `COAST` é `--rotulo`;
+  - o registro das entradas da direcao-7 e os pedidos a montante;
+  - os 3 achados LEVES da 7, já fechados na 7b: a citação da s28 no registro, o `o_que` da s27 e a nota da pílula da s01.
+- No texto de tela não há DIVERGE nem REFUTADA.
+- Com elas, o lote B ficou com o sha256 `bbd07ddb…5665d`.
 
 O texto de tela não tem DIVERGE nem REFUTADA. A RESSALVA é só pelos NÃO FOI CHECADO: os rótulos da caça e as primárias do gob.pe.
 
