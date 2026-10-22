@@ -23,6 +23,11 @@ Claude central (`wf_831f1d07-375`): quatro leitores, três desenhos independente
 - **A fila de comentários** (`out/_feedback-queue.jsonl`) vai ao git com o vídeo, depois do `segredos.mjs --staged`.
 - **Cada comentário dele** vira uma lista de opções no chat antes de ir ao `editor-de-arte` ou ao `mapista`
   (CLAUDE.md, "A autonomia do vídeo 2 em diante").
+- **A legenda em português (22/10/2026).** O pedido, no chat: "Quanto ao nosso painel de aprovação de cenas, eu queria por
+  legenda em português, apenas na preview que eu vejo. Acredito que vá facilitar minha verificação". A escolha: "Sobre o vídeo
+  (Recomendado)", que dizia: "Embaixo da prévia, como legenda do YouTube: a frase da narração traduzida, trocando junto com a
+  voz. A tecla L liga e desliga. A linha em inglês com a palavra acesa continua embaixo, como hoje. Só aparece na página: não
+  entra na cena, no render nem no XML." Como se usa: `LEIA-ME.md`, "A legenda em português"; o código, `legenda.mjs`.
 
 ---
 

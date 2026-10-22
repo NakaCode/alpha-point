@@ -147,3 +147,40 @@ O Lucas voltou ("Estou de volta, faça um resumo do que foi feito e do que está
 - **A caça dos 30 clipes**: **"Começar agora (Recomendado)"**. A opção dizia: "Antes, você cria no Envato o projeto 'peru-agua' e
   deixa o Brave aberto, com a aba da caça à vista. Eu provo o perfil, busco, gravo as prévias e o conferente julga. Depois, você aprova
   a lista no chat antes de qualquer download."
+
+## 22/10/2026, 14:5x–15:2x (Brasília): a lista da caça, a trilha, o volume, o anel da s51 e o Shutterstock, no chat da Sala
+
+- **O workspace do Envato**: "criei o workspace peru-agua" (14:5x). O nome de licença `peru-agua` da janela de download ele criou na
+  primeira janela de licença, digitando ele mesmo: "Pronto, fiz o projeto no envato" (15:0x).
+- **A trilha** (lista `31442a10ac54`): "Trilhas: Trecho 1,  música recomendada (1), trecho 2, música recomendada (2), trecho 3, música
+  reserva (9), trecho 4, música recomendada (4)", e logo depois "Pode baixar e sim, às contas estão corretas". Baixadas as linhas 1, 2,
+  9 e 4 (`acervo/trilha/biblioteca.json`; plano e créditos em `out/peru-agua/_trilha-plano.json` e `_creditos-trilha.md`).
+- **As contas da caça**: "sim, às contas estão corretas" (Envato "Assinaturas" e Storyblocks só com o ícone: a assinatura da Top10;
+  Motion Array "Business": a conta dele).
+- **A lista da caça** (`out/peru-agua/_pesquisa/lista-caca-aprovacao.md`, assinatura `22d59fbd75d8`), à pergunta "O "Pode baixar" vale
+  também para a lista da caça? Seriam as 10 preferidas (1, 3, 5, 7, 8, 10, 11, 12, 13 e 14) e o comprovante de licença de cada uma, sem
+  nenhuma reserva.": **"Sim, baixar as 10 preferidas (Recomendado)"**. A opção dizia: "Um download por vez, na ordem da lista: Envato com
+  o workspace peru-agua, a 11 da Storyblocks no arquivo grande de 3,6 GB, e cada arquivo conferido contra a prévia antes de ir à cena."
+- **O volume**: **"Subir a voz no Premiere (Recomendado)"**, como em Los Angeles e na Zona.
+- **O anel da s51** (112 px no 4K, o dobro dos 56 px da identidade §4.4, com um pulso só, declarado pela regência; a Qualidade aprovou
+  e pediu a decisão dele, `out/peru-agua/_tmp/setores/peru-agua-qualidade-6.md`), à pergunta com o quadro de 34,5 s
+  (`out/peru-agua/_tmp/sala/s51-anel-112.jpg`): **"Manter os 112 px (Recomendado)"**. A opção dizia: "Registro como exceção só desta
+  cena. Nada é refeito: a cena já está aprovada e renderizada." A exceção vale só para a s51, no beat do túnel; a regra da marca não muda.
+- **O Shutterstock**, à pergunta "Faço uma volta só no Shutterstock para os 7 itens que ficaram sem clipe (s01, s05, s08, s25, s37, s43 e
+  s49)? Eu abriria cada item e conferiria o "editorial" na própria página, sem o filtro que a trava barrou.": **"Pode fazer
+  (Recomendado)"**. A opção dizia: "Uma busca por item, abrindo só o que parecer servir, com 30 s entre páginas. O que passar vai ao
+  conferente e vira uma lista curta para o seu "sim". Cada download conta 1 no dia do Shutterstock (teto de 100)."
+
+## 22/10/2026, 15:3x–15:4x (Brasília): o espaço do disco, o Callao com marcas e o Juneau, no chat da Sala
+
+- **O espaço**: "Quanto a questão de espaço, pode deletar os clips dos vídeos passados". Os clipes renderizados (`graphics/*.mp4`) e a mídia
+  de trabalho do `_tmp` (quadros, folhas, provas, proxies) de Los Angeles e da Zona do Canal foram para `C:\projetos\APAGAR-clipes-antigos-2026-10-22`
+  (102,7 GB), por mudança de pasta no mesmo disco. O HTML, os carimbos, o `_media`, a narração e os textos do `_tmp` ficaram. Apagar de
+  vez é dele (o Claude não apaga dado em definitivo); a Lixeira deste PC só comporta uns 48 GB.
+- **O Callao (s03-c, Envato b142d057)**, reprovado pelo conferente por marca de terceiro legível nos contêineres e no terminal, à pergunta
+  "O clipe do porto de Callao (s03, linha 5) é o item certo, mas no 4K dá para ler as marcas nos contêineres (Maersk, Hapag-Lloyd) e o
+  logo da APM Terminals por uns 10 s. A regra da marca recusa marca de terceiro legível. O que faço?": **"Usar com as marcas"** (15:40). A
+  opção dizia: "Vale como exceção só desta cena: o conferente registra a sua resposta e aprova. As marcas aparecem ao fundo, não são o
+  assunto." O conferente grava a `excecao_lucas` antes de o clipe ir à cena.
+- **O Juneau**, à pergunta "O Juneau ainda está esperando a sua revisão no Premiere. Separo os clipes dele também (mais uns 48 GB)?":
+  **"Não, o Juneau fica (Recomendado)"** (15:40). Os clipes do Juneau não se mexem.

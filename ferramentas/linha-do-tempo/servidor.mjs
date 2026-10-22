@@ -4,12 +4,15 @@
 //   GET  /                          a página, com um token aleatório desta sessão
 //   GET  /lt/pagina.js|pagina.css   o código da página
 //   GET  /lt/motor.js               o verificarMidias do render (renderizar.mjs), para a página repetir a recusa dele
-//   GET  /api/linha                 as cenas, os quadros, a versão, o tipo, o modo do mapa e o estado
+//   GET  /api/linha                 as cenas, os quadros, a versão, o tipo, o modo do mapa e o estado; e a legenda em
+//                                   português: "em-dia" só se o words_sha256 dela é o do words.json servido agora (a
+//                                   página ainda a recusa se esse words.json ou a narração não são os que ela carregou)
 //   GET  /api/versao                o mesmo estado, leve: a página pergunta a cada 2 s
 //   GET  /api/comentarios           a fila do projeto, com as notas do Claude
 //   POST /api/comentar | /api/visto | /api/medida   (JSON, Origin conferido e o token da sessão)
 //   GET  /mapa/{base|dem}/{z}/{x}/{y}  o tile de rascunho
-//   GET  o resto                    só a lista fechada (linha.mjs, caminhoPermitido), byte a byte como está no disco
+//   GET  o resto                    só a lista fechada (linha.mjs, caminhoPermitido), byte a byte como está no disco;
+//                                   de _tmp, só os proxies e out/<proj>/_tmp/linha-do-tempo/legenda-pt.json
 //
 // Travas copiadas da galeria (scripts/serve-galeria.mjs, que não as exporta): o Host (421), o Origin (403), o
 // application/json (415), o método (405), o corpo até 64 KB; mais o token da sessão no POST (403). Toda resposta leva
@@ -33,6 +36,7 @@ import {
   caminhoPermitido, comentariosDoProjeto, estadoDoProjeto, lerLinha, raizReal, registrarComentario, registrarMedida, registrarVisto,
 } from "./linha.mjs";
 import { perfilRascunhoJs, tileBase, tileDem } from "./mapa.mjs";
+import { estadoDaLegenda } from "./legenda.mjs";
 
 export const HOST = "127.0.0.1";
 export const PORTA_PADRAO = 8790;
@@ -117,9 +121,12 @@ function paraPagina(est, { proj }) {
   const v = (rel, ver) => `/${rel.split("/").map(encodeURIComponent).join("/")}${ver ? `?v=${ver}` : ""}`;
   let narrVer = "";
   try { const st = statSync(join(est.raiz, ...est.narracao.split("/"))); narrVer = `${st.size.toString(36)}-${Math.floor(st.mtimeMs).toString(36)}`; } catch {}
+  // O estado da legenda traz sempre o words_sha256 do words.json de agora (mesmo sem legenda montada): a página o guarda na
+  // partida como o do words.json que ela carregou, e a url do words.json leva os 12 primeiros, como a da narração leva a dela.
+  const lg = estadoDaLegenda(est.raiz, proj);
   return {
     proj, fps: 30, totalQuadros: est.totalQuadros, duracao: est.duracao,
-    narracao: v(est.narracao, narrVer), words: est.words ? v(est.words) : null,
+    narracao: v(est.narracao, narrVer), words: est.words ? v(est.words, lg.words_sha256 ? lg.words_sha256.slice(0, 12) : "") : null,
     assinatura: `${est.espelhoMtime}-${est.totalQuadros}-${est.cenas.map((c) => `${c.id}:${c.ini}:${c.fim}`).join(",")}`,
     cenas: est.cenas.map((c) => ({
       id: c.id, ini: c.ini, fim: c.fim, n: c.n, tipo: c.tipo, sha1: c.sha1, versao: c.versao, erro: c.erro || null,
@@ -129,6 +136,11 @@ function paraPagina(est, { proj }) {
       visto: c.visto, vistoModo: c.vistoModo, abertos: c.abertos, aprovada: c.aprovada,
     })),
     resumo: est.resumo, fundidas: est.fundidas,
+    // A legenda em português (legenda.mjs; Lucas, 22/10/2026): a página só a mostra no "em-dia", só se este words_sha256 é
+    // o que ela guardou na partida e a narração é a que ela tocou, e confere de novo o words_sha256 do arquivo que baixar.
+    // A url leva a versão (o words_sha256 dela, o tamanho e a data).
+    legenda: { estado: lg.estado, motivo: lg.motivo, detalhe: lg.detalhe, words_sha256: lg.words_sha256,
+      url: lg.estado === "em-dia" && lg.rel ? v(lg.rel, lg.ver) : null },
   };
 }
 

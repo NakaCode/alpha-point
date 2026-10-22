@@ -8,15 +8,20 @@
 // out/juneau/_tmp/linha-do-tempo/prova-raiz/ (fora do git), e a prova confere, no fim, que a fila de verdade
 // (out/_feedback-queue.jsonl), out/juneau/qc/, out/juneau/graphics/ e os vistos/medidas de verdade não mudaram.
 // Nada aqui abre navegador, Chrome ou render; nada fala com host de fora.
+//
+// A seção 8 (22/10/2026) prova a legenda em português (legenda.mjs montar e conferir, o legenda-pt.json na lista fechada e
+// o estado "em-dia"/"outra-versao"/"sem" que a página recebe), também na cópia, com uma tradução de mentira; e a página aberta
+// durante a troca da narração, que recusa a legenda nova sobre o words.json e a narração velhos que ela carregou.
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { appendFileSync, copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { appendFileSync, copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { request } from "node:http";
 import { join } from "node:path";
 import vm from "node:vm";
 import sharp from "sharp";
 import {
-  ENTRADAS_MOTOR, MOTOR, RAIZ_CANAL, SHA_MOTOR, carregarMotor, citadosDoHtml, conferirMotor, estadoDoProjeto, fechoDeImports, lerLinha,
+  ENTRADAS_MOTOR, MOTOR, RAIZ_CANAL, SHA_MOTOR, caminhoPermitido, carregarMotor, citadosDoHtml, conferirMotor, estadoDoProjeto, fechoDeImports,
+  lerLinha,
 } from "./linha.mjs";
 import { criarServidor } from "./servidor.mjs";
 import { DEM_RGB } from "./mapa.mjs";
@@ -40,10 +45,15 @@ function cli(args) {
   return { codigo: r.status, out: r.stdout || "", err: r.stderr || "" };
 }
 
-/** Um pedido HTTP cru (o caminho vai como está: %2e%2e e %5c chegam ao servidor sem normalizar). */
+/**
+ * Um pedido HTTP cru (o caminho vai como está: %2e%2e e %5c chegam ao servidor sem normalizar). Cada pedido numa conexão
+ * nova (agent: false): o servidor roda neste mesmo processo, e o spawnSync das checagens de linha de comando o congela;
+ * uma conexão guardada pelo agente podia vencer o keep-alive dele bem na hora do pedido seguinte (ECONNRESET, visto em
+ * 22/10/2026 na seção 8).
+ */
 function pedir(porta, caminho, { method = "GET", headers = {}, corpo = null, host } = {}) {
   return new Promise((ok, falha) => {
-    const req = request({ host: "127.0.0.1", port: porta, path: caminho, method,
+    const req = request({ host: "127.0.0.1", port: porta, path: caminho, method, agent: false,
       headers: { host: host ?? `127.0.0.1:${porta}`, ...headers } }, (res) => {
       const partes = []; res.on("data", (d) => partes.push(d));
       res.on("end", () => ok({ status: res.statusCode, h: res.headers, corpo: Buffer.concat(partes) }));
@@ -71,6 +81,8 @@ function retrato() {
   arq(join(RAIZ_CANAL, "out", "_feedback-queue.jsonl"));
   arq(join(RAIZ_CANAL, "out", PROJ, "_tmp", "linha-do-tempo", "vistos.jsonl"));
   arq(join(RAIZ_CANAL, "out", PROJ, "_tmp", "linha-do-tempo", "medidas.jsonl"));
+  arq(join(RAIZ_CANAL, "out", PROJ, "_tmp", "linha-do-tempo", "legenda-pt.json"));
+  arq(join(RAIZ_CANAL, "out", PROJ, "_tmp", "linha-do-tempo", "legenda-pt.traducao.json"));
   for (const d of ["qc", "graphics"]) {
     const pasta = join(RAIZ_CANAL, "out", PROJ, d);
     for (const f of readdirSync(pasta).sort()) if (!/\.mp4$/i.test(f)) arq(join(pasta, f));
@@ -138,8 +150,10 @@ async function principal() {
   checar("o 'clipe em dia' bate com a linha 1 + 2160p do .mp4.de-html e as datas dos arquivos citados", emDiaOk === 55, `${emDia}/55 com clipe 4K desta versão`);
   checar("nenhuma cena do Juneau com erro (contrato do render, arquivo citado que falta)", est.cenas.every((c) => !c.erro), est.cenas.filter((c) => c.erro).map((c) => `${c.id}: ${c.erro}`).join("; ").slice(0, 300));
   const tipos = est.resumo.porTipo;
-  checar("36 de página, 3 com vídeo (s01, s40, s53), 16 de mapa", tipos.dom === 36 && tipos.video === 3 && tipos.mapa === 16 &&
-    ["s01", "s40", "s53"].every((id) => est.cenas.find((c) => c.id === id).tipo === "video"), JSON.stringify(tipos));
+  // Desde 03/10/2026 a s01 é o voo de abertura sobre o mapa (CLAUDE.md, "MapTiler"; relevo 3D em s01), não mais vídeo
+  // de banco: 2 com vídeo e 17 de mapa. Até 02/10 eram 3 e 16, e esta checagem falhava desde então (achado em 22/10).
+  checar("36 de página, 2 com vídeo (s40, s53), 17 de mapa (a s01 é o voo de abertura desde 03/10)", tipos.dom === 36 && tipos.video === 2 && tipos.mapa === 17 &&
+    ["s40", "s53"].every((id) => est.cenas.find((c) => c.id === id).tipo === "video") && est.cenas.find((c) => c.id === "s01").tipo === "mapa", JSON.stringify(tipos));
   checar("só a s44 avisa o relevo plano no rascunho", est.cenas.filter((c) => c.avisoRelevo).map((c) => c.id).join(",") === (est.cenas.find((c) => c.id === "s44").modoMapa === "rascunho" ? "s44" : ""),
     est.cenas.filter((c) => c.avisoRelevo).map((c) => c.id).join(",") || "nenhuma");
 
@@ -477,7 +491,8 @@ async function principal() {
   // As cenas de mapa só se aprovam vistas pelo clipe: o proxy de cada uma, simulado.
   for (const cc of estadoDoProjeto(m, COPIA, PROJ).cenas.filter((x) => x.tipo === "mapa" && x.modoMapa !== "proxy")) simularProxy(cc.proxyEsperado);
   const L2 = await linhaC();
-  checar("as 16 de mapa pelo clipe na cópia", L2.cenas.filter((x) => x.modoMapa === "proxy").length === 16);
+  checar("as 17 de mapa pelo clipe na cópia", L2.cenas.filter((x) => x.tipo === "mapa").length === 17 && L2.cenas.filter((x) => x.modoMapa === "proxy").length === 17,
+    `${L2.cenas.filter((x) => x.modoMapa === "proxy").length} pelo clipe`);
   for (const cc of L2.cenas) {
     if (cc.visto === "atual") continue;
     r = await vistoDe(cc, cc.id === "s04" ? { arquivos: [{ u: urlExtra, t: daqui }] } : {});
@@ -561,6 +576,264 @@ async function principal() {
   c = cli(["conferir", PROJ, R, "--depois-do-render"]); checar("tudo de volta: --depois-do-render sai 0", c.codigo === 0, c.out.trim().split("\n").slice(0, 2).join(" | "));
   const estC = estadoDoProjeto(m, COPIA, PROJ);
   checar("estado da cópia: 55 aprovadas nesta versão", estC.resumo.aprovadasAtual === 55, `${estC.resumo.aprovadasAtual}`);
+
+  // ── 8. a legenda em português (na cópia) ───────────────────────────────────────────────────────
+  // Lucas, 22/10/2026: "Sobre o vídeo (Recomendado)". A tradução é de mentira (o texto não importa aqui): a prova é do
+  // contrato (legenda.mjs montar e conferir), da lista fechada (só o legenda-pt.json montado, do projeto da linha) e do
+  // estado que a página recebe ("em-dia", "outra-versao", "sem"). Tudo na cópia; o Juneau real só se lê.
+  titulo("8. a legenda em português (legenda.mjs, a lista fechada e o estado; na cópia)");
+  const LEG_CLI = join(PASTA_CODIGO, "legenda.mjs");
+  const leg = (args) => { const x = spawnSync(process.execPath, [LEG_CLI, ...args], { cwd: RAIZ_CANAL, encoding: "utf8" }); return { codigo: x.status, out: (x.stdout || "") + (x.stderr || "") }; };
+  const RL = `--raiz=${COPIA}`;
+  const pastaLC = join(COPIA, "out", PROJ, "_tmp", "linha-do-tempo");
+  const arqTrad = join(pastaLC, "legenda-pt.traducao.json"), arqLeg = join(pastaLC, "legenda-pt.json");
+  const wordsC = join(COPIA, "out", PROJ, "words.json"), roteiroC = join(COPIA, "roteiros", PROJ, "roteiro-narrador.md");
+  mkdirSync(join(COPIA, "roteiros", PROJ), { recursive: true });
+  copyFileSync(join(RAIZ_CANAL, "roteiros", PROJ, "roteiro-narrador.md"), roteiroC);
+  rmSync(arqTrad, { force: true }); rmSync(arqLeg, { force: true });
+  const sha256 = (b) => createHash("sha256").update(b).digest("hex");
+  const palavrasC = JSON.parse(readFileSync(wordsC, "utf8"));
+  // Um bloco por frase (palavra que termina em . ? !), partido a cada 14 palavras.
+  const blocosProva = [];
+  for (let i = 0, de = 0; i < palavrasC.length; i++) {
+    if (/[.?!]["\u201d\u2019)]*$/.test(palavrasC[i].w) || i - de >= 13 || i === palavrasC.length - 1) {
+      blocosProva.push({ de, ate: i, pt: `Bloco de prova ${blocosProva.length}, palavras ${de} a ${i}.` }); de = i + 1;
+    }
+  }
+  const tradBase = () => ({ proj: PROJ, words_sha256: sha256(readFileSync(wordsC)), roteiro_sha256: sha256(readFileSync(roteiroC)), idioma: "pt-BR",
+    blocos: blocosProva.map((b) => ({ ...b })) });
+  const gravarTrad = (t) => writeFileSync(arqTrad, JSON.stringify(t, null, 1));
+  const retratoLeg = () => { try { const st = statSync(arqLeg); return `${st.size}|${st.mtimeMs}|${sha256(readFileSync(arqLeg))}`; } catch { return "ausente"; } };
+  const estadoLeg = async () => (await linhaC()).legenda || {};
+  // Um bloco do meio com pelo menos 2 palavras (para abrir buraco ou sobrepor sem inverter o bloco).
+  const kM = blocosProva.findIndex((b, i) => i >= 5 && b.ate - b.de >= 2);
+
+  let lg = await estadoLeg();
+  checar("[legenda] sem legenda montada: o estado diz \"sem legenda\", sem url", lg.estado === "sem" && lg.motivo === "sem legenda" && lg.url === null, JSON.stringify(lg));
+  checar("[legenda] …mas traz o words_sha256 do words.json de agora (a página o guarda na partida)", lg.words_sha256 === sha256(readFileSync(wordsC)), `${lg.words_sha256}`);
+  c = leg(["montar", PROJ, RL]);
+  checar("[legenda] montar sem a tradução: sai 1, diz o que falta e não grava", c.codigo === 1 && /falta out\/juneau\/_tmp\/linha-do-tempo\/legenda-pt\.traducao\.json/.test(c.out) && !existsSync(arqLeg), `${c.codigo} ${c.out.trim().split("\n").slice(-1)}`);
+  c = leg(["conferir", PROJ, RL]); checar("[legenda] conferir sem legenda montada: sai 1", c.codigo === 1, `${c.codigo} ${c.out.trim()}`);
+
+  gravarTrad(tradBase());
+  c = leg(["montar", PROJ, RL]);
+  const montada = existsSync(arqLeg) ? JSON.parse(readFileSync(arqLeg, "utf8")) : null;
+  checar("[legenda] a tradução válida: montar sai 0 e grava o legenda-pt.json", c.codigo === 0 && !!montada, `${c.codigo} ${c.out.trim().split("\n").slice(-1)}`);
+  checar("[legenda] …com proj, idioma, words_sha256 e roteiro_sha256 de agora, a hora da montagem e todos os blocos", !!montada && montada.proj === PROJ && montada.idioma === "pt-BR" &&
+    montada.words_sha256 === sha256(readFileSync(wordsC)) && montada.roteiro_sha256 === sha256(readFileSync(roteiroC)) && !Number.isNaN(Date.parse(montada.montado_em)) &&
+    montada.blocos.length === blocosProva.length, montada && `${montada.blocos.length} blocos`);
+  checar("[legenda] …e cada bloco com t0 = start da palavra \"de\" e t1 = end da palavra \"ate\"", !!montada && montada.blocos.every((b, i) => b.de === blocosProva[i].de && b.ate === blocosProva[i].ate &&
+    b.t0 === palavrasC[b.de].start && b.t1 === palavrasC[b.ate].end && b.pt === blocosProva[i].pt));
+  c = leg(["conferir", PROJ, RL]); checar("[legenda] conferir com a legenda em dia: sai 0", c.codigo === 0, c.out.trim());
+
+  // As recusas: cada uma sai 1, aponta o bloco e o motivo, e não toca a legenda montada.
+  const valida = retratoLeg();
+  const recusa = (nome, mudar, re) => {
+    const t = tradBase(); mudar(t); gravarTrad(t);
+    const x = leg(["montar", PROJ, RL]);
+    checar(`[legenda] recusa ${nome}: sai 1 e não grava`, x.codigo === 1 && re.test(x.out) && retratoLeg() === valida, `${x.codigo} ${x.out.trim().split("\n").filter((l) => /^\s+-/.test(l)).slice(0, 2).join(" | ")}`);
+  };
+  recusa("o buraco", (t) => { t.blocos[kM].de += 1; }, new RegExp(`bloco ${kM}: buraco: as palavras ${blocosProva[kM].de}–${blocosProva[kM].de} ficam sem legenda`));
+  recusa("a sobreposição", (t) => { t.blocos[kM].de -= 1; }, new RegExp(`bloco ${kM}: sobreposição`));
+  recusa("o primeiro bloco fora do 0", (t) => { t.blocos[0].de = 1; }, /bloco 0: o primeiro bloco começa em 1/);
+  recusa("as últimas palavras sem bloco", (t) => { t.blocos.pop(); }, /ficam sem legenda \(o último bloco tem de acabar em/);
+  recusa("o índice fora do words.json", (t) => { t.blocos.at(-1).ate = palavrasC.length; }, new RegExp(`bloco ${blocosProva.length - 1}: "ate" ${palavrasC.length} fora do words\\.json`));
+  recusa("o índice que não é inteiro", (t) => { t.blocos[kM].de = String(t.blocos[kM].de); }, new RegExp(`bloco ${kM}: "de" e "ate" têm de ser inteiros`));
+  recusa("o \"de\" depois do \"ate\"", (t) => { const b = t.blocos[kM]; [b.de, b.ate] = [b.ate, b.de]; }, new RegExp(`bloco ${kM}: "de" \\d+ depois do "ate"`));
+  recusa("o pt vazio", (t) => { t.blocos[kM].pt = "   "; }, new RegExp(`bloco ${kM}: "pt" vazio`));
+  recusa("o pt só de espaço de largura zero", (t) => { t.blocos[kM].pt = String.fromCharCode(0x200b, 0x200b); }, new RegExp(`bloco ${kM}: "pt" vazio`));
+  recusa("o pt com controle de direção (bidi)", (t) => { t.blocos[kM].pt = "a" + String.fromCharCode(0x202e) + "b"; }, new RegExp(`bloco ${kM}: "pt" com caractere de controle`));
+  recusa("o pt com mais de 100 caracteres", (t) => { t.blocos[kM].pt = "á".repeat(101); }, new RegExp(`bloco ${kM}: "pt" com 101 caracteres \\(o teto é 100\\)`));
+  recusa("o pt com quebra de linha", (t) => { t.blocos[kM].pt = "linha um" + String.fromCharCode(10) + "linha dois"; }, new RegExp(`bloco ${kM}: "pt" com quebra de linha`));
+  recusa("o pt com quebra de linha Unicode (U+2028)", (t) => { t.blocos[kM].pt = "linha um" + String.fromCharCode(0x2028) + "linha dois"; }, new RegExp(`bloco ${kM}: "pt" com quebra de linha`));
+  recusa("o words_sha256 de outra narração", (t) => { t.words_sha256 = "0".repeat(64); }, /tradução: a tradução é de outra versão da narração/);
+  recusa("o roteiro_sha256 de outro roteiro", (t) => { t.roteiro_sha256 = "f".repeat(64); }, /tradução: a tradução é de outra versão do roteiro/);
+  recusa("o projeto errado", (t) => { t.proj = "outro"; }, /"proj" é "outro"/);
+  recusa("o idioma errado", (t) => { t.idioma = "en-US"; }, /"idioma" é "en-US"/);
+  writeFileSync(arqTrad, "{ isto não é JSON");
+  c = leg(["montar", PROJ, RL]); checar("[legenda] recusa a tradução que não é JSON: sai 1 e não grava", c.codigo === 1 && /não é JSON válido/.test(c.out) && retratoLeg() === valida, `${c.codigo}`);
+  // Os limites que passam: 100 caracteres (contados depois do NFC: 100 "á" decompostos são 200 unidades) e o aviso.
+  const decomposto = ("a" + String.fromCharCode(0x301)).repeat(100);
+  let t8 = tradBase(); t8.blocos[kM].pt = decomposto; gravarTrad(t8);
+  c = leg(["montar", PROJ, RL]);
+  const comNfc = existsSync(arqLeg) ? JSON.parse(readFileSync(arqLeg, "utf8")).blocos[kM].pt : "";
+  checar("[legenda] 100 caracteres passam (contados no NFC), com aviso acima de 84", c.codigo === 0 && new RegExp(`aviso · bloco ${kM}: "pt" com 100 caracteres`).test(c.out) && comNfc === "á".repeat(100), `${c.codigo} ${c.out.trim().split("\n")[0]}`);
+  t8 = tradBase(); const bk = t8.blocos[kM];
+  t8.blocos.splice(kM, 1, { de: bk.de, ate: bk.de, pt: "Curto." }, { de: bk.de + 1, ate: bk.ate, pt: bk.pt }); gravarTrad(t8);
+  c = leg(["montar", PROJ, RL]);
+  checar("[legenda] a fala abaixo de 0,8 s (um bloco de uma palavra) é aviso, não erro", c.codigo === 0 && new RegExp(`aviso · bloco ${kM}: [\\d.]+ s de fala \\(abaixo de 0\\.8 s`).test(c.out),
+    `${c.codigo} · ${(palavrasC[bk.de].end - palavrasC[bk.de].start).toFixed(2)} s · ${c.out.trim().split("\n")[0]}`);
+  gravarTrad(tradBase());
+  c = leg(["montar", PROJ, RL]); checar("[legenda] a tradução válida de novo: sai 0", c.codigo === 0, `${c.codigo}`);
+  // Uso errado: 2.
+  for (const [nome, args] of [["sem verbo", [RL]], ["verbo desconhecido", ["traduzir", PROJ, RL]], ["sem projeto", ["montar", RL]], ["dois projetos", ["montar", PROJ, "outro", RL]],
+    ["opção desconhecida", ["montar", PROJ, RL, "--forcar"]], ["projeto que não existe", ["montar", "nao-existe", RL]], ["projeto com ..", ["conferir", "..", RL]]]) {
+    c = leg(args); checar(`[legenda] uso errado (${nome}): sai 2`, c.codigo === 2, `${c.codigo} ${c.out.trim().split("\n")[0]}`);
+  }
+
+  // A lista fechada: só o legenda-pt.json montado, do projeto da linha.
+  const ctx = { proj: PROJ, ids: new Set(["s02"]), narracao: `out/${PROJ}/narracao.wav` };
+  checar("[legenda] caminhoPermitido: o legenda-pt.json do projeto da linha entra", caminhoPermitido(`out/${PROJ}/_tmp/linha-do-tempo/legenda-pt.json`, ctx));
+  for (const p of [`out/outro/_tmp/linha-do-tempo/legenda-pt.json`, `out/${PROJ}/_tmp/linha-do-tempo/legenda-pt.traducao.json`, `out/${PROJ}/_tmp/linha-do-tempo/vistos.jsonl`,
+    `out/${PROJ}/_tmp/linha-do-tempo/medidas.jsonl`, `out/${PROJ}/_tmp/linha-do-tempo/legenda-pt.json.tmp-1`, `out/${PROJ}/_tmp/linha-do-tempo/x/legenda-pt.json`,
+    `out/${PROJ}/_tmp/legenda-pt.json`, `out/${PROJ}/legenda-pt.json`, `out/${PROJ}/_tmp/linha-do-tempo/legenda-pt.jsonx`, `out/${PROJ}/_tmp/linha-do-tempo/quadros/s02/s02@001.png`]) {
+    checar(`[legenda] caminhoPermitido recusa ${p}`, !caminhoPermitido(p, ctx));
+  }
+  // E pelo servidor: o arquivo montado sai; os vizinhos, outro projeto e a travessia, não.
+  const outroLeg = join(COPIA, "out", "outro", "_tmp", "linha-do-tempo", "legenda-pt.json");
+  mkdirSync(join(outroLeg, ".."), { recursive: true }); copyFileSync(arqLeg, outroLeg);
+  writeFileSync(`${arqLeg}.tmp-1`, "{}");
+  r = await pedir(CP, `/out/${PROJ}/_tmp/linha-do-tempo/legenda-pt.json`);
+  checar("[legenda] GET do legenda-pt.json montado: 200, JSON, os mesmos bytes do disco", r.status === 200 && /^application\/json/.test(r.h["content-type"]) && Buffer.compare(r.corpo, readFileSync(arqLeg)) === 0, `${r.status} ${r.h["content-type"]}`);
+  for (const p of [`/out/outro/_tmp/linha-do-tempo/legenda-pt.json`, `/out/${PROJ}/_tmp/linha-do-tempo/legenda-pt.traducao.json`, `/out/${PROJ}/_tmp/linha-do-tempo/LEGENDA-PT.TRADUCAO.JSON`,
+    `/out/${PROJ}/_tmp/linha-do-tempo/vistos.jsonl`, `/out/${PROJ}/_tmp/linha-do-tempo/medidas.jsonl`, `/out/${PROJ}/_tmp/linha-do-tempo/legenda-pt.json.tmp-1`]) {
+    r = await pedir(CP, p); checar(`[legenda] 404 em ${p}`, r.status === 404, `${r.status}`);
+  }
+  for (const p of [`/out/outro/%2e%2e/${PROJ}/_tmp/linha-do-tempo/legenda-pt.json`, `/out/${PROJ}/_tmp/linha-do-tempo/legenda-pt.json/%2e%2e/legenda-pt.traducao.json`,
+    `/out/${PROJ}/_tmp/linha-do-tempo/%2e%2e/linha-do-tempo/vistos.jsonl`, `/out/${PROJ}/_tmp/linha-do-tempo%5clegenda-pt.traducao.json`, `/out/${PROJ}/_tmp/linha-do-tempo/..%5clinha-do-tempo%5clegenda-pt.traducao.json`]) {
+    r = await pedir(CP, p); checar(`[legenda] travessia recusada (403 ou 404): ${p}`, r.status === 403 || r.status === 404, `${r.status}`);
+  }
+
+  // O estado que a página recebe: "em-dia" só com o words_sha256 igual ao do words.json servido.
+  lg = await estadoLeg();
+  const shaW = sha256(readFileSync(wordsC));
+  checar("[legenda] legenda montada e narração igual: o estado diz \"em-dia\", com a url versionada e o words_sha256 de agora", lg.estado === "em-dia" && !lg.motivo &&
+    typeof lg.url === "string" && lg.url.startsWith(`/out/${PROJ}/_tmp/linha-do-tempo/legenda-pt.json?v=${shaW.slice(0, 12)}-`) && lg.words_sha256 === shaW, JSON.stringify(lg));
+  r = await pedir(CP, lg.url || "/"); checar("[legenda] …e a url do estado se serve", r.status === 200 && jsonDe(r)?.words_sha256 === shaW, `${r.status}`);
+  const lgV = jsonDe(await pedir(CP, "/api/versao"))?.legenda || {};
+  checar("[legenda] …e o /api/versao (a pergunta de 2 s) traz o mesmo estado", lgV.estado === "em-dia" && lgV.url === lg.url, JSON.stringify(lgV));
+  const LW0 = await linhaC();   // a /api/linha de uma página que abre agora (o words.json e a narração que ela carrega)
+  checar("[legenda] a url do words.json na /api/linha leva os 12 primeiros do words_sha256 de agora, o mesmo do estado da legenda", LW0.words === `/out/${PROJ}/words.json?v=${shaW.slice(0, 12)}` &&
+    LW0.legenda?.words_sha256 === shaW, `${LW0.words}`);
+  r = await pedir(CP, LW0.words || "/"); checar("[legenda] …e se serve, com os bytes do disco", r.status === 200 && Buffer.compare(r.corpo, readFileSync(wordsC)) === 0, `${r.status}`);
+  const wordsOrig = readFileSync(wordsC);
+  writeFileSync(wordsC, Buffer.concat([wordsOrig, Buffer.from("\n")]));   // a narração "mudou": outros bytes, o mesmo JSON
+  lg = await estadoLeg();
+  checar("[legenda] words.json mudou depois da montagem: o estado diz \"legenda de outra versão da narração\", sem url", lg.estado === "outra-versao" && lg.motivo === "legenda de outra versão da narração" &&
+    lg.url === null && lg.words_sha256 === sha256(readFileSync(wordsC)), JSON.stringify(lg));
+  checar("[legenda] …e a url do words.json passa a levar o sha256 novo", (await linhaC()).words === `/out/${PROJ}/words.json?v=${sha256(readFileSync(wordsC)).slice(0, 12)}`);
+  c = leg(["conferir", PROJ, RL]); checar("[legenda] …conferir sai 1 e diz que a narração mudou", c.codigo === 1 && /a narração mudou depois da montagem/.test(c.out), c.out.trim());
+  gravarTrad({ ...tradBase(), words_sha256: sha256(wordsOrig) });   // a tradução de antes da mudança
+  const antesMud = retratoLeg();
+  c = leg(["montar", PROJ, RL]);
+  checar("[legenda] …e montar com a tradução de antes da mudança sai 1, sem tocar a legenda", c.codigo === 1 && /outra versão da narração/.test(c.out) && retratoLeg() === antesMud, `${c.codigo}`);
+  writeFileSync(wordsC, wordsOrig);
+  lg = await estadoLeg(); checar("[legenda] o words.json de volta: \"em-dia\" de novo", lg.estado === "em-dia", lg.estado);
+  c = leg(["conferir", PROJ, RL]); checar("[legenda] …e conferir sai 0", c.codigo === 0, c.out.trim());
+
+  // A página aberta durante a troca da narração (defeito 1 da revisão do código, 22/10/2026): ela carregou o words.json e a
+  // narração uma vez só, na partida. O words.json muda e a tradução nova é montada sobre ele: o servidor diz "em-dia" (certo,
+  // contra o words.json de agora), e a página tem de recusar, porque o áudio e a fala que ela toca são os velhos. Com o
+  // código do próprio pagina.js (legendaDestaPagina e carregarLegenda), num vm, contra o servidor da cópia.
+  const jsPgV = readFileSync(join(PASTA_CODIGO, "pagina.js"), "utf8");
+  const fonteV = (assinatura) => { const i = jsPgV.indexOf(assinatura); const j = jsPgV.indexOf("\n  }\n", i); return i >= 0 && j > i ? jsPgV.slice(i, j + 4) : ""; };
+  const codigoGuarda = `${fonteV("function legendaDestaPagina(")} ${fonteV("async function carregarLegenda(")}`;
+  /** Uma "página" que abriu com a /api/linha `Lp`: o fetch vai ao servidor da cópia, e cada pedido se conta. */
+  const paginaQueAbriu = (Lp) => {
+    const pedidos = [];
+    const cx = { WORDS_DA_PAGINA: (Lp.legenda && Lp.legenda.words_sha256) || null, NARRACAO_DA_PAGINA: Lp.narracao, ultimoT: 0,
+      desenharBotaoLegenda() {}, atualizarLegenda() {}, pedidos,
+      LEG: { estado: "sem", motivo: "sem legenda", url: null, wordsSha: null, blocos: [], geracao: 0 },
+      fetch: async (url) => { pedidos.push(url); const x = await pedir(CP, url); return { ok: x.status === 200, json: async () => jsonDe(x) }; } };
+    vm.runInNewContext(codigoGuarda, cx);
+    return cx;
+  };
+  // O servidor roda neste processo e serve o legenda-pt.json por stream: o pedido acaba (o cliente já tem os bytes) antes de
+  // o stream ver o fim do arquivo e fechá-lo, e o spawnSync do montar congela o processo com o arquivo aberto. No Windows, o
+  // rename do montar sobre arquivo aberto dá EPERM (visto em 22/10/2026). Antes de cada montar depois de a "página" baixar a
+  // legenda, espera o servidor soltar o arquivo: um rename de prova sobre ele (os mesmos bytes), até 2 s.
+  const soltarLegenda = async () => {
+    const tmp = `${arqLeg}.prova-solta`;
+    for (let i = 0; i < 100; i++) {
+      try { copyFileSync(arqLeg, tmp); renameSync(tmp, arqLeg); return true; } catch { await new Promise((ok) => setTimeout(ok, 20)); }
+    }
+    rmSync(tmp, { force: true });
+    return false;
+  };
+  checar("[legenda] página: legendaDestaPagina e carregarLegenda achadas no pagina.js", /function legendaDestaPagina\(info, narracao\)/.test(codigoGuarda) &&
+    /^async function carregarLegenda\(info, narracao\) \{\s*info = legendaDestaPagina\(info, narracao\);/.test(codigoGuarda.slice(codigoGuarda.indexOf("async function"))));
+  let pgv = paginaQueAbriu(LW0);
+  await pgv.carregarLegenda(LW0.legenda, LW0.narracao);
+  checar("[legenda] página aberta com a narração de agora: baixa e mostra a legenda (\"em-dia\")", pgv.LEG.estado === "em-dia" && pgv.LEG.blocos.length === blocosProva.length && pgv.pedidos.length === 1,
+    `${pgv.LEG.estado} ${pgv.LEG.blocos.length} ${pgv.pedidos.length}`);
+  writeFileSync(wordsC, Buffer.concat([wordsOrig, Buffer.from("\n")]));   // a narração muda com a página aberta
+  gravarTrad(tradBase());                                                  // e a tradução nova é feita sobre o words.json novo
+  await soltarLegenda();
+  c = leg(["montar", PROJ, RL]);
+  const LW1 = await linhaC();
+  checar("[legenda] …o words.json muda e a tradução nova se monta: o servidor diz \"em-dia\" com o sha256 novo", c.codigo === 0 && LW1.legenda?.estado === "em-dia" &&
+    LW1.legenda.words_sha256 === sha256(readFileSync(wordsC)) && LW1.legenda.words_sha256 !== LW0.legenda.words_sha256, `${c.codigo} ${c.out.trim().split("\n").filter((l) => /^[✓✗]/.test(l)).join(" | ")} ${JSON.stringify(LW1.legenda)}`);
+  await pgv.carregarLegenda(LW1.legenda, LW1.narracao);
+  checar("[legenda] …e a página que abriu antes recusa: \"outra-versao\", \"recarregue a página\", sem blocos e sem baixar nada", pgv.LEG.estado === "outra-versao" &&
+    /a narração mudou depois que a página abriu: recarregue a página/.test(pgv.LEG.motivo) && pgv.LEG.blocos.length === 0 && pgv.pedidos.length === 1, `${pgv.LEG.estado} · ${pgv.LEG.motivo} · ${pgv.pedidos.length}`);
+  const pgNova = paginaQueAbriu(LW1);
+  await pgNova.carregarLegenda(LW1.legenda, LW1.narracao);
+  checar("[legenda] …e a página recarregada (que carrega o words.json novo) mostra a legenda nova", pgNova.LEG.estado === "em-dia" && pgNova.LEG.blocos.length === blocosProva.length && pgNova.pedidos.length === 1,
+    `${pgNova.LEG.estado} ${pgNova.pedidos.length}`);
+  // A narração (o áudio) com outra versão, com o mesmo words.json: também recusa. E a página que abriu sem words.json não
+  // aceita legenda que apareça depois. O "sem" do servidor passa como veio.
+  pgv = paginaQueAbriu(LW1);
+  await pgv.carregarLegenda(LW1.legenda, `${LW1.narracao}x`);
+  checar("[legenda] página: o mesmo words.json com a narração em outra versão: \"outra-versao\", sem baixar", pgv.LEG.estado === "outra-versao" && pgv.pedidos.length === 0, `${pgv.LEG.estado} ${pgv.pedidos.length}`);
+  await pgv.carregarLegenda(LW1.legenda, LW1.narracao);
+  checar("[legenda] …e de volta à narração que ela tocou: \"em-dia\" de novo", pgv.LEG.estado === "em-dia" && pgv.pedidos.length === 1, `${pgv.LEG.estado} ${pgv.pedidos.length}`);
+  pgv = paginaQueAbriu({ ...LW1, legenda: { estado: "sem", motivo: "sem legenda", url: null, words_sha256: null } });
+  await pgv.carregarLegenda(LW1.legenda, LW1.narracao);
+  checar("[legenda] página: a que abriu sem words.json não aceita a legenda que aparece depois", pgv.LEG.estado === "outra-versao" && pgv.pedidos.length === 0, `${pgv.LEG.estado} ${pgv.pedidos.length}`);
+  await pgv.carregarLegenda({ estado: "sem", motivo: "sem legenda", detalhe: "x", url: null, words_sha256: LW1.legenda.words_sha256 }, LW1.narracao);
+  checar("[legenda] página: o \"sem\" do servidor passa como veio", pgv.LEG.estado === "sem" && pgv.LEG.motivo === "sem legenda" && pgv.pedidos.length === 0, `${pgv.LEG.estado} ${pgv.LEG.motivo}`);
+  // A ligação na partida e na pergunta de 2 s: os dois guardados uma vez só, ANTES de baixar o words.json, e as duas
+  // chamadas com a narração da mesma resposta.
+  checar("[legenda] página: a partida guarda o words_sha256 e a narração da /api/linha antes de baixar o words.json, e só ela os grava",
+    /L = await r\.json\(\);[\s\S]*?\n\s*WORDS_DA_PAGINA = \(L\.legenda && L\.legenda\.words_sha256\) \|\| null;\s*NARRACAO_DA_PAGINA = L\.narracao;\s*if \(L\.words\)[\s\S]*?carregarLegenda\(L\.legenda, L\.narracao\);/.test(jsPgV) &&
+    (jsPgV.match(/^\s*WORDS_DA_PAGINA = /gm) || []).length === 1 && (jsPgV.match(/^\s*NARRACAO_DA_PAGINA = /gm) || []).length === 1);
+  checar("[legenda] página: a pergunta de 2 s passa a narração da mesma resposta, e não há outra chamada", /carregarLegenda\(v\.legenda, v\.narracao\);/.test(jsPgV) &&
+    (jsPgV.match(/carregarLegenda\(/g) || []).length === 3);
+  // De volta: o words.json original e a legenda montada sobre ele.
+  writeFileSync(wordsC, wordsOrig);
+  gravarTrad(tradBase());
+  await soltarLegenda();
+  c = leg(["montar", PROJ, RL]);
+  lg = await estadoLeg(); checar("[legenda] o words.json original e a legenda montada sobre ele de volta: \"em-dia\"", c.codigo === 0 && lg.estado === "em-dia" && lg.words_sha256 === shaW, `${c.codigo} ${lg.estado}`);
+  const legBoa = readFileSync(arqLeg);
+  writeFileSync(arqLeg, "{ quebrada");
+  lg = await estadoLeg(); checar("[legenda] legenda montada ilegível: \"sem legenda\", sem url", lg.estado === "sem" && lg.motivo === "sem legenda" && lg.url === null, JSON.stringify(lg));
+  c = leg(["conferir", PROJ, RL]); checar("[legenda] …e conferir sai 1", c.codigo === 1, `${c.codigo}`);
+  writeFileSync(arqLeg, JSON.stringify({ ...JSON.parse(legBoa.toString("utf8")), proj: "outro" }));
+  lg = await estadoLeg(); checar("[legenda] legenda de outro projeto no lugar: \"sem legenda\"", lg.estado === "sem" && lg.url === null, JSON.stringify(lg));
+  writeFileSync(arqLeg, legBoa);
+  lg = await estadoLeg(); checar("[legenda] a legenda de volta: \"em-dia\"", lg.estado === "em-dia", lg.estado);
+
+  // A página: a legenda é elemento dela, por cima da prévia, e o relógio dos blocos (acharBloco) e a quebra das linhas
+  // (quebrarLinhas) se provam aqui, fora do navegador, com o código do próprio pagina.js.
+  const htmlPg = readFileSync(join(PASTA_CODIGO, "pagina.html"), "utf8"), jsPg = readFileSync(join(PASTA_CODIGO, "pagina.js"), "utf8");
+  const iPalco = htmlPg.indexOf('<div id="palco"'), iLeg = htmlPg.indexOf('<div id="legendaPt"'), iCtl = htmlPg.indexOf('<div id="controles"');
+  checar("[legenda] na página: #legendaPt dentro do #palco, depois das cenas, e o botão \"Legenda PT\" nos controles", iPalco >= 0 && iLeg > htmlPg.indexOf('id="slotB"') && iLeg < iCtl &&
+    /<button id="legendaBtn"[^>]*>Legenda PT<\/button>/.test(htmlPg) && htmlPg.indexOf('id="legendaBtn"') > iCtl);
+  checar("[legenda] na página: o texto entra por textContent (nunca innerHTML), e nada da legenda vai ao iframe", /sp\.textContent = quebrarLinhas/.test(jsPg) &&
+    !/legendaPt[^\n]*innerHTML|innerHTML[^\n]*legenda/i.test(jsPg) && !/contentDocument[^\n]*legenda|legenda[^\n]*contentDocument/i.test(jsPg));
+  checar("[legenda] na página: a tecla L passa pelo mesmo filtro das outras (caixa aberta, foco em TEXTAREA ou INPUT)",
+    /if \(\$\("caixa"\)\.open[^\n]*\n[^\n]*\n\s*if \(tag === "TEXTAREA" \|\| tag === "INPUT"\) return;[\s\S]*?e\.key === "l" \|\| e\.key === "L"\) \{ e\.preventDefault\(\); alternarLegenda\(\); \}/.test(jsPg));
+  checar("[legenda] na página: o localStorage só dentro de try/catch", (jsPg.match(/localStorage\./g) || []).length === 2 &&
+    /try \{ if \(localStorage\.getItem\(CHAVE_LEG\)/.test(jsPg) && /try \{ localStorage\.setItem\(CHAVE_LEG/.test(jsPg));
+  const fonteDe = (nome) => { const i = jsPg.indexOf(`function ${nome}(`); const j = jsPg.indexOf("\n  }\n", i); return i >= 0 && j > i ? jsPg.slice(i, j + 4) : ""; };
+  const caixaPg = vm.runInNewContext(`const SEGURA_S = 0.6, LINHA_MAX = 42; const LEG = { blocos: B }; ${fonteDe("acharBloco")} ${fonteDe("quebrarLinhas")} ({ acharBloco, quebrarLinhas });`,
+    { B: [{ t0: 1, t1: 2 }, { t0: 3, t1: 4 }, { t0: 4.2, t1: 5 }] });
+  const casos = [[0.5, -1], [1, 0], [1.5, 0], [2, 0], [2.5, 0], [2.6, 0], [2.61, -1], [2.99, -1], [3, 1], [4.1, 1], [4.19, 1], [4.2, 2], [5.6, 2], [5.61, -1], [99, -1]];
+  const errados = casos.filter(([t, k]) => caixaPg.acharBloco(t) !== k).map(([t, k]) => `${t} s → ${caixaPg.acharBloco(t)} (esperado ${k})`);
+  checar("[legenda] o relógio dos blocos: mostra o do instante, segura o anterior até 0,6 s depois do t1, e nunca o próximo antes do t0", errados.length === 0, errados.join("; "));
+  const l1 = caixaPg.quebrarLinhas("Uma linha corre ao longo da costa.");
+  const l2 = caixaPg.quebrarLinhas("Uma linha corre ao longo da costa do Peru, e a água desce dos Andes até Lima.");
+  const l3 = caixaPg.quebrarLinhas("A".repeat(10) + " " + "b".repeat(60) + " " + "c".repeat(29));
+  // O meio exato desta frase cai entre "Santa" e "Eulalia": sem a regra do nome, a quebra seria ali.
+  const l4 = caixaPg.quebrarLinhas("A represa grande fica em Santa Eulalia, bem longe da costa.");
+  checar("[legenda] a quebra: texto curto numa linha; o de 84 em 2 linhas de até 42; nunca 3 linhas", l1.length === 1 && l2.length === 2 && l2.every((x) => x.length <= 42) &&
+    l3.length === 2 && l2.join(" ") === "Uma linha corre ao longo da costa do Peru, e a água desce dos Andes até Lima.", JSON.stringify([l1, l2, l3.map((x) => x.length)]));
+  checar("[legenda] a quebra evita partir um nome (Santa | Eulalia), mesmo quando o meio cai ali", l4.length === 2 && (l4[0].endsWith("Santa Eulalia,") || l4[1].startsWith("Santa Eulalia,")), JSON.stringify(l4));
+  // A 1ª linha não termina em artigo nem preposição, e um nome com partícula não se parte (a revisão de 22/10/2026).
+  const l5 = caixaPg.quebrarLinhas("A Comissão da Verdade e Reconciliação do Peru estimou o número de mortos.");
+  checar("[legenda] a quebra não deixa a 1ª linha em artigo ou preposição, nem parte \"Verdade e | Reconciliação\"",
+    l5.length === 2 && !/(^|\s)(de|da|do|e|o|a|que|para)$/i.test(l5[0]) && !l5[0].endsWith("Verdade e") && l5.every((x) => x.length <= 42), JSON.stringify(l5));
   await descer(C);
 
   // ── o projeto de verdade não mudou ─────────────────────────────────────────────────────────────
@@ -571,7 +844,7 @@ async function principal() {
   checar("out/_feedback-queue.jsonl de verdade não foi criado pela prova", antes.includes("_feedback-queue.jsonl|ausente") ? !existsSync(join(RAIZ_CANAL, "out", "_feedback-queue.jsonl")) : true);
 
   console.log(`\n${falhas ? "✗" : "✓"} ${total - falhas} de ${total} checagens passaram${falhas ? ` — ${falhas} falharam` : ""}.`);
-  console.log("Não provado aqui (pede navegador): o relógio, a troca de cena, os quadros por segundo, o vídeo ao vivo (o setter, a pausa do vídeo que a cena deixa de posicionar), o rascunho de mapa desenhado, as recusas da página na carga (verificarMidias, erro de JS, HTTP ≥ 400) e o quadro contra o render.");
+  console.log("Não provado aqui (pede navegador): o relógio, a troca de cena, os quadros por segundo, o vídeo ao vivo (o setter, a pausa do vídeo que a cena deixa de posicionar), o rascunho de mapa desenhado, as recusas da página na carga (verificarMidias, erro de JS, HTTP ≥ 400) e o quadro contra o render; e, da legenda em português, ela desenhada sobre a prévia (tamanho, posição, as 2 linhas), a troca com a voz tocando, a tecla L, o botão e o localStorage.");
   return falhas ? 1 : 0;
 }
 

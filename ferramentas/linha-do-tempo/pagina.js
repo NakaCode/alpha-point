@@ -7,6 +7,12 @@
 // Plano B por cena, pela URL (quando as medidas mostrarem engasgo): ?proxy=s01,s23 toca a cópia leve do clipe (se o
 // verbo proxies a fez), ?pausa=s23 posiciona a cena só na pausa. ?atraso=<ms> compensa o atraso de saída do áudio
 // (0 por padrão; não medido).
+//
+// A legenda em português (Lucas, 22/10/2026: "Sobre o vídeo (Recomendado)"): a frase da narração traduzida, num elemento
+// da PÁGINA por cima da prévia (#legendaPt), nunca dentro do iframe: a cena não sabe dela, e nada muda no render, nos
+// portões nem no XML. Troca com o mesmo relógio da palavra acesa; a tecla L e o botão "Legenda PT" ligam e desligam.
+// Só aparece a legenda "em dia" (o words_sha256 dela igual ao do words.json servido) e, ainda, só a do words.json e da
+// narração que esta página carregou na partida: nunca a velha, e nunca a nova sobre o áudio e a fala velhos.
 (function () {
   "use strict";
   const FPS = 30;
@@ -27,6 +33,135 @@
   let L = null;               // a linha (/api/linha)
   let palavras = [];          // words.json
   const audio = $("narracao");
+
+  // ─── a legenda em português ──────────────────────────────────────────────────────────────────
+  // O bloco cujo [t0, t1] contém o instante; entre blocos, o anterior fica até 0,6 s depois do t1 dele e some. Nunca o
+  // próximo antes do t0 dele. Ligada por padrão; a escolha fica no localStorage (a página funciona sem ele).
+  const SEGURA_S = 0.6, LINHA_MAX = 42, CHAVE_LEG = "lt-legenda-pt";
+  let legendaLigada = true;
+  try { if (localStorage.getItem(CHAVE_LEG) === "0") legendaLigada = false; } catch (e) {}
+  // estado: "em-dia" (blocos carregados e conferidos), "carregando", "outra-versao" ou "sem".
+  const LEG = { estado: "sem", motivo: "sem legenda", url: null, wordsSha: null, blocos: [], geracao: 0 };
+  let legIdx = -2, ultimoT = 0;
+  // O words.json e a narração que ESTA página carregou na partida (os dois se baixam uma vez só, e a fala em inglês e o
+  // áudio que tocam aqui são eles). A legenda só vale para eles: se o servidor passar a medir outro words.json, ou a
+  // narração mudar de versão, ela some até a página recarregar, mesmo com a legenda nova em dia com o words.json novo.
+  let WORDS_DA_PAGINA = null, NARRACAO_DA_PAGINA = null;
+
+  /** O último bloco que começou até t, se t ainda está nele (ou até 0,6 s depois do fim dele); senão -1. */
+  function acharBloco(t) {
+    const bs = LEG.blocos;
+    let lo = 0, hi = bs.length - 1, k = -1;
+    while (lo <= hi) { const mid = (lo + hi) >> 1; if (bs[mid].t0 <= t) { k = mid; lo = mid + 1; } else hi = mid - 1; }
+    return k >= 0 && t <= bs[k].t1 + SEGURA_S ? k : -1;
+  }
+  /**
+   * Até 2 linhas, como a legenda do YouTube: o texto curto fica numa linha; o longo se parte num espaço, com as duas
+   * linhas até 42 caracteres quando dá, o mais equilibradas possível, de preferência depois de pontuação, evitando
+   * partir entre duas palavras com maiúscula (um nome) e terminar a 1ª linha em artigo, preposição ou conjunção (a
+   * "Comissão da Verdade e | Reconciliação" da revisão: nos 208 blocos do peru-agua, de 40 linhas assim para 5).
+   */
+  function quebrarLinhas(txt) {
+    const FRACA = /(^|\s)(de|da|do|dos|das|e|o|a|os|as|um|uma|em|no|na|nos|nas|num|numa|ao|aos|à|às|para|com|que|por|pelo|pela|pelos|pelas|se|como)$/i;
+    const s = String(txt).replace(/\s+/g, " ").trim();
+    if (s.length <= LINHA_MAX) return [s];
+    let melhor = -1, nota = Infinity;
+    for (let i = s.indexOf(" "); i > 0; i = s.indexOf(" ", i + 1)) {
+      const a = i, b = s.length - i - 1, antes = s.slice(0, i), depois = s.slice(i + 1);
+      let n = Math.max(a, b) + (a > LINHA_MAX || b > LINHA_MAX ? 100 : 0);
+      if (/[,;:.!?)–—]$/.test(antes)) n -= 4;
+      if (/(^|\s)\p{Lu}[\p{L}'-]*$/u.test(antes) && /^\p{Lu}/u.test(depois)) n += 8;
+      if (FRACA.test(antes)) {
+        n += 6;
+        if (/\p{Lu}[\p{L}'-]*\s\S+$/u.test(antes) && /^\p{Lu}/u.test(depois)) n += 8;
+      }
+      if (n < nota) { nota = n; melhor = i; }
+    }
+    return melhor < 0 ? [s] : [s.slice(0, melhor), s.slice(melhor + 1)];
+  }
+  function atualizarLegenda(t, forcar) {
+    ultimoT = t;
+    const k = legendaLigada && LEG.estado === "em-dia" && LEG.blocos.length ? acharBloco(t) : -1;
+    if (k === legIdx && !forcar) return;
+    legIdx = k;
+    const el = $("legendaPt"), sp = el.firstElementChild;
+    if (k < 0) { el.hidden = true; sp.textContent = ""; return; }
+    sp.textContent = quebrarLinhas(LEG.blocos[k].pt).join("\n");   // textContent: o texto nunca vira HTML
+    el.hidden = false;
+  }
+  function desenharBotaoLegenda() {
+    const b = $("legendaBtn"), ok = LEG.estado === "em-dia" && LEG.blocos.length > 0;
+    b.classList.toggle("ligada", legendaLigada && ok);
+    b.classList.toggle("indisponivel", !ok);
+    b.setAttribute("aria-pressed", String(legendaLigada));
+    b.title = !ok ? (LEG.motivo || "sem legenda")
+      : "Legenda em português " + (legendaLigada ? "ligada" : "desligada") + " (tecla L)";
+  }
+  function alternarLegenda() {
+    legendaLigada = !legendaLigada;
+    try { localStorage.setItem(CHAVE_LEG, legendaLigada ? "1" : "0"); } catch (e) {}
+    desenharBotaoLegenda();
+    atualizarLegenda(ultimoT, true);
+  }
+  /**
+   * O tamanho da letra acompanha o palco (que muda com a janela), pela altura e pela largura: no palco estreito, a linha
+   * de 42 caracteres não pode quebrar em 3. Acima do aviso, quando ele aparece.
+   */
+  function ajustarLegenda() {
+    const p = $("palco");
+    const px = Math.min(48, p.clientHeight * 0.042, (p.clientWidth * 0.92 - 16) / (LINHA_MAX * 0.56));
+    $("legendaPt").style.fontSize = Math.round(Math.max(10, px)) + "px";
+    posicionarLegenda();
+  }
+  function posicionarLegenda() {
+    const a = $("aviso"), p = $("palco");
+    $("legendaPt").style.bottom = a.hidden ? "" : (a.offsetHeight + Math.round(p.clientHeight * 0.02)) + "px";
+  }
+  /**
+   * O estado do servidor relido contra o que esta página carregou: o "em-dia" de um words.json ou de uma narração que não
+   * são os da página (ou a página que abriu sem words.json) vira "outra-versao", sem url, e nada se baixa. Os outros estados
+   * passam como vieram.
+   */
+  function legendaDestaPagina(info, narracao) {
+    if (!info || info.estado !== "em-dia") return info;
+    if (!WORDS_DA_PAGINA || info.words_sha256 !== WORDS_DA_PAGINA || narracao !== NARRACAO_DA_PAGINA) {
+      return { estado: "outra-versao", motivo: "a narração mudou depois que a página abriu: recarregue a página",
+        words_sha256: info.words_sha256 || null, url: null };
+    }
+    return info;
+  }
+  /**
+   * O que o servidor diz da legenda (/api/linha e /api/versao), com a url da narração da mesma resposta. Só "em-dia" carrega,
+   * só se o words.json e a narração são os que a página carregou (legendaDestaPagina), e o arquivo baixado tem de trazer o
+   * mesmo words_sha256; qualquer outra coisa esconde a legenda.
+   */
+  async function carregarLegenda(info, narracao) {
+    info = legendaDestaPagina(info, narracao);
+    if (info && info.estado === "em-dia" && info.url && LEG.estado === "em-dia" && LEG.url === info.url && LEG.wordsSha === info.words_sha256) return;
+    // A mesma legenda ainda baixando: a pergunta de 2 s não recomeça a busca (num servidor lento, pelo Tailscale ou com
+    // render rodando, ela recomeçaria para sempre, e a legenda nunca apareceria).
+    if (info && info.estado === "em-dia" && info.url && LEG.estado === "carregando" && LEG.urlPendente === info.url) return;
+    const g = ++LEG.geracao;
+    LEG.urlPendente = null;
+    LEG.blocos = []; LEG.url = null; LEG.wordsSha = (info && info.words_sha256) || null;
+    if (!info || info.estado !== "em-dia" || !info.url) {
+      LEG.estado = info && info.estado === "outra-versao" ? "outra-versao" : "sem";
+      LEG.motivo = (info && info.motivo) || "sem legenda";
+      desenharBotaoLegenda(); atualizarLegenda(ultimoT, true);
+      return;
+    }
+    LEG.estado = "carregando"; LEG.motivo = "carregando a legenda"; LEG.urlPendente = info.url;
+    desenharBotaoLegenda(); atualizarLegenda(ultimoT, true);
+    let j = null;
+    try { const r = await fetch(info.url, { cache: "no-store" }); if (r.ok) j = await r.json(); } catch (e) { j = null; }
+    if (g !== LEG.geracao) return;
+    LEG.urlPendente = null;
+    const blocos = j && Array.isArray(j.blocos) ? j.blocos.filter((b) => b && Number.isFinite(b.t0) && Number.isFinite(b.t1) && typeof b.pt === "string" && b.pt.trim()) : [];
+    if (!blocos.length) { LEG.estado = "sem"; LEG.motivo = "sem legenda"; }
+    else if (j.words_sha256 !== info.words_sha256) { LEG.estado = "outra-versao"; LEG.motivo = "legenda de outra versão da narração"; }
+    else { LEG.estado = "em-dia"; LEG.motivo = null; LEG.url = info.url; LEG.blocos = blocos.slice().sort((a, b) => a.t0 - b.t0); }
+    desenharBotaoLegenda(); atualizarLegenda(ultimoT, true);
+  }
 
   // ─── o relógio ───────────────────────────────────────────────────────────────────────────────
   // performance.now() a partir de uma âncora, refeita quando a diferença para audio.currentTime passa de 50 ms.
@@ -332,7 +467,7 @@
     if (s.estado === "erro") aviso("A cena " + c.id + " não abriu: " + s.erro, true);
     else if (!R.esperando) aviso("");
   }
-  function aviso(txt, erro) { const a = $("aviso"); a.textContent = txt || ""; a.hidden = !txt; a.classList.toggle("erro", !!erro); }
+  function aviso(txt, erro) { const a = $("aviso"); a.textContent = txt || ""; a.hidden = !txt; a.classList.toggle("erro", !!erro); posicionarLegenda(); }
 
   // ─── as medidas (vão para out/<proj>/_tmp/linha-do-tempo/medidas.jsonl) ────────────────────────────
   const erros = new Map();
@@ -607,6 +742,7 @@
     $("relogio").textContent = mmss(t) + " / " + mmss(L.duracao);
     const idx = acharIdx(F);
     $("cenaAtual").textContent = idx >= 0 ? L.cenas[idx].id + " · " + ((F - L.cenas[idx].ini) / FPS).toFixed(1) + " s da cena" : "—";
+    atualizarLegenda(t);   // antes da fala: ela volta cedo quando a palavra não mudou
     // a fala: a palavra do momento acesa
     let lo = 0, hi = palavras.length - 1, i = -1;
     while (lo <= hi) { const mid = (lo + hi) >> 1; if (palavras[mid].start <= t) { i = mid; lo = mid + 1; } else hi = mid - 1; }
@@ -648,7 +784,8 @@
   });
   $("tocar").addEventListener("click", () => { if (R.tocando) pausar(); else iniciar(); });
   $("soMudou").addEventListener("change", desenharFaixa);
-  window.addEventListener("resize", () => S.forEach(escalar));
+  window.addEventListener("resize", () => { S.forEach(escalar); ajustarLegenda(); });
+  $("legendaBtn").addEventListener("click", alternarLegenda);
 
   // ─── comentar (C) ─────────────────────────────────────────────────────────────────────────────
   let alvoComentario = null;
@@ -686,6 +823,7 @@
     else if (e.key === " " && tag !== "BUTTON") { e.preventDefault(); if (R.tocando) pausar(); else iniciar(); }
     else if (e.key === "ArrowRight") { e.preventDefault(); irPara(agora() + 5); }
     else if (e.key === "ArrowLeft") { e.preventDefault(); irPara(agora() - 5); }
+    else if (e.key === "l" || e.key === "L") { e.preventDefault(); alternarLegenda(); }
   });
 
   // ─── as respostas do Claude ────────────────────────────────────────────────────────────────────
@@ -735,6 +873,7 @@
     });
     L.resumo = v.resumo;
     desenharFaixa();
+    carregarLegenda(v.legenda, v.narracao);
     if (mudouOutra) prepararSlot(outra, outra.idx);
     if (mudouAtual) irPara(agora(), { tocarDepois: R.tocando });   // a cena atual se recarrega sozinha
   }
@@ -746,8 +885,14 @@
       if (!r.ok) throw new Error("HTTP " + r.status);
       L = await r.json();
     } catch (e) { aviso("Não consegui ler a linha do projeto (" + e.message + "). O servidor está aberto?", true); return; }
+    // Antes de baixar o words.json: o sha256 que o servidor mediu nele nesta mesma resposta (a url dele leva os 12 primeiros).
+    WORDS_DA_PAGINA = (L.legenda && L.legenda.words_sha256) || null;
+    NARRACAO_DA_PAGINA = L.narracao;
     if (L.words) { try { palavras = await (await fetch(L.words)).json(); if (!Array.isArray(palavras)) palavras = palavras.words || []; } catch (e) { palavras = []; } }
     audio.src = L.narracao;
+    ajustarLegenda();
+    desenharBotaoLegenda();
+    carregarLegenda(L.legenda, L.narracao);
     desenharFaixa();
     atualizarUI(0, 0);
     mandarMedida({ tipo: "sessao", dpr: devicePixelRatio, palcoPx: $("palco").clientWidth, atrasoMs: ATRASO * 1000,

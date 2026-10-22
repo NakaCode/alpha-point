@@ -106,3 +106,58 @@ agora?": "Começar agora (Recomendado)". A lista é `out/peru-agua/_pesquisa/lis
   Envato e do Motion Array. Na 11 (s17-a, Storyblocks), o formato é o 4K MOV (ProRes, 3.569 MB), não o 4K MP4 de 24,6 MB (uns 6 Mbit/s),
   pelo aviso do conferente.
 - Avisada em `#pendencias` (com a marcação) e no Telegram.
+
+## A volta do Shutterstock (22/10/2026, 15:19–15:26), pedida pelo Lucas
+
+- **O pedido**, à pergunta "Faço uma volta só no Shutterstock para os 7 itens que ficaram sem clipe (s01, s05, s08, s25, s37, s43 e s49)?
+  Eu abriria cada item e conferiria o "editorial" na própria página, sem o filtro que a trava barrou.": **"Pode fazer (Recomendado)"**
+  (15:1x). Sem filtro nenhum (o clique no filtro tinha sido barrado às 13:1x, e nada o substituiu por URL): só a busca simples e o
+  editorial lido na página do item. O dia do Shutterstock antes: 0 de 100. A conta do Shutterstock ainda não foi confirmada nesta
+  caça (o topo mostra só o ícone); nada se baixa dele sem a confirmação.
+- **s01-a**: "Ticlio pass aerial" só trouxe passos dos Alpes (Stelvio, Fluela). "Andes Peru drone": Machu Picchu, Titicaca, Vinicunca,
+  Moray e a **Laguna Parón** (Cordilheira Branca, Huaraz), gravada como **`s01-a-4`** (Shutterstock 4061957539, LV_DreamyTravelers,
+  0:17, 4K MP4, sem marca de editorial nem de IA), com a nota de que não é Ticlio e que a crista ao fundo é a divisória na
+  Cordilheira Branca: o conferente decide.
+- **s05-a**: "Peru desert Andes aerial" trouxe Colca, Moray, Nazca, Salinas, Caral e o sopé do deserto em Arequipa; nenhum deserto
+  costeiro perto de Lima com a cordilheira atrás. Sem candidato.
+- **s25-b**: "Cantalloc aqueducts": um só clipe de Cantalloc ("The Spiral Cantalloc Aqueducts Spiral of Nazca, Peru. Aerial Top Down
+  Shot"), uma espiral só, de cima, como a do Envato que o conferente mandou trocar; o resto são aquedutos da Europa. Sem candidato.
+- **s08-a e s37-a**: "Rimac river": o Rímac no centro de Lima (ByDroneVideos), em clipes de 0:05 (curtos para os planos de 5,37 e
+  mais) ou na vertical (4073031645, 2160×3840), e a Via de Evitamiento ao longo do rio. Nenhum do vale (Chosica, Matucana). Sem
+  candidato.
+- **s43-a**: "Lima hillside houses aerial": a série "Ventanilla Peru Aerial" (Lynn Media Global, de 2017, Ventanilla é do Callao) e o
+  Cerro San Cristóbal (o Rímac, centro de Lima, não a borda da cidade); "Villa Maria San Gabriel Alto" traz data na legenda (editorial
+  provável). Sem candidato.
+- **s49-a**: "Lima hill stairs": a Costa Verde, Miraflores, o San Cristóbal e uma escadaria da Colômbia (Guatapé). Sem candidato.
+- **Fim da volta: 15:26**, com 1 candidato novo (`s01-a-4`). Vai ao conferente depois do despacho do fluxo `midia`, que roda agora (um
+  despacho por vez).
+
+## A Fase B (22/10/2026, 14:58–15:16), o conferente sobre os arquivos e a instalação
+
+Um download por vez, na ordem da lista `22d59fbd75d8`, com o `inUse` no Brave `2e106ec9…` e a pasta Downloads sem download em curso antes de cada clique, e 20 s entre um `recolher` e o próximo download do mesmo banco. Uma correção ao registro: nas linhas 1 e 3, o `--busca` do `marcar` saiu "Paracas desert coast aerial" e "Lima Costa Verde aerial"; as buscas de verdade foram "Peru desert coast aerial" e "Lima Costa Verde drone". O manifest não se edita: a correção fica aqui.
+
+| Nº | Item | marcar → recolher | O que chegou | Passo 4 |
+|---|---|---|---|---|
+| 1 | Motion Array 2556702 (s03), 4K | 14:58:36 → 14:59:00, saída 0 | `Drone_Aerial_View__Red_Sand_Beach__Desert_Cliff_Sea__Paracas_National_Peru_03_uhd_2556702.mp4`, 3840×2160, h264, 40,49 s, 204.681.283 bytes, sha256 `246386e9…` | bate: nome com o ID; página 0:40, 3840×2160; o balão do botão 4K diz "file size: 195.2MB" (= 204.681.283 bytes); os 366,19 MB do cabeçalho da página são do original |
+| 1L | PDF de licença (o botão *License* ao lado do Download; o 1º clique, pelo ref, não baixou; o 2º, no ícone, baixou) | 15:00:30 | `licencas/2556702-licenca.pdf`, sha256 `6da4f4c7…` | cita o ID e o título |
+| 3 | Envato a42e7496 (s03), Download 4K | 15:01:08 → (a janela de licença: o nome `peru-agua` não existia na lista; o Lucas o digitou e criou ali, "Pronto, fiz o projeto no envato") → 15:02:43, saída 0 | `miraflores-skyline-at-lima-in-metropolitan-region-2026-10-03-14-32-34-utc.MOV` (gravado como `.MOV.mov`), 3840×2160, h264, 17,35 s, 289.400.283 bytes, sha256 `5e9dfe11…`, chegou às 15:02:27 | bate: página 17 seconds, 3840×2160, H.264 (no contêiner MOV); a página não mostra o tamanho; o nome traz o slug do título (no Envato o nome não prova) |
+| 3L | certificado (painel *Licenses* → "22/10/2026 peru-agua" → o ícone de baixar) | 15:03:16 | `licencas/a42e7496-dd5d-4b5a-a5a0-3e38721cf18a-licenca.pdf` | cita o ID, o título e `peru-agua` |
+| 5 | Envato b142d057 (s03), Download 4K, licença `peru-agua` | 15:03:58 → 15:04:25, saída 0 | `callao-sea-port-peru-2026-10-03-11-02-11-utc.mp4`, 3840×2160, h264, 39,96 s, 348.859.522 bytes, sha256 `c05046fd…` | bate: página 39 seconds, 3840×2160, H.264, 23,98 fps; sem tamanho na página |
+| 5L | certificado ("22/10/2026 peru-agua") | 15:04:56 | `licencas/b142d057-4dab-4ebc-9943-aae569173991-licenca.pdf`, sha256 `1507851f…` | cita o ID, o título e `peru-agua` |
+| 7 | Motion Array 4074338 (s09), 4K | 15:05:16 → 15:05:30, saída 0 | `Aerial_View_Of_Amazon_River_During_Sunset__Capturing_Expanse_Of_Iquitos_City_And_uhd_4074338.mp4`, 3840×2160, h264, 13,22 s, 65.475.172 bytes, sha256 `a2a0b48b…` | bate: nome com o ID; página 0:13; o balão do 4K diz "file size: 62.44MB" (= 65.475.172 bytes); os 30,72 MB do cabeçalho não são os do formato 4K |
+| 7L | PDF de licença (ícone *License*) | 15:05:57 | `licencas/4074338-licenca.pdf`, sha256 `7e70746b…` | cita o ID e o título |
+| 8 | Envato daf75d35 (s15), Download 4K (ProRes), licença `peru-agua` | 15:06:22 → 15:07:53, saída 0 | `aerial-view-of-costa-verde-cliffs-and-the-pacific-2026-10-03-05-23-10-utc.mov`, 3840×2160, prores, 27,40 s, 2.474.432.933 bytes, sha256 `68449f11…` | bate: página 27 seconds, 3840×2160, ProRes, 23,98 fps; sem tamanho na página |
+| 8L | certificado ("22/10/2026 peru-agua") | 15:08:16 | `licencas/daf75d35-9c14-479e-8a63-3badfc43cbaa-licenca.pdf`, sha256 `758c2183…` | cita o ID, o título e `peru-agua` |
+| 10 | Envato c3538aaf (s15), Download 4K, licença `peru-agua` | 15:08:39 → 15:09:05, saída 0 | `foggy-hyperlapse-aerial-over-miraflores-city-coast-2026-10-03-01-16-00-utc.mp4`, 3840×2160, h264, 15,00 s, 243.396.412 bytes, sha256 `e9196083…` | bate: página 15 seconds, 3840×2160, H.264, 30 fps; sem tamanho na página |
+| 10L | certificado ("22/10/2026 peru-agua") | 15:09:30 | `licencas/c3538aaf-1ab6-479f-be4f-d3332d567e4a-licenca.pdf`, sha256 `7da9ac6c…` | cita o ID, o título e `peru-agua` |
+| 11 | Storyblocks SBV-339018031 (s17), 4K MOV (ProRes), pela decisão de 22/10 | 15:10:06 → 15:12:20, saída 0 (o Brave baixou como "Não confirmado 251494.crdownload", o nome em português do "Unconfirmed") | `aerial-cityscape-over-the-la-molina-district-of-the-city-of-lima-showing-the-sandy--SBV-339018031-4K.mov`, 3840×2160, prores, 29,97 fps, 34,40 s, 3.742.632.948 bytes, sha256 `dd15aaec…` | bate: nome com o `SBV-339018031`; página 00:34, "4KMOV (prores) - 3569.3 MB" (= 3.742.632.948 bytes em MiB). Sem linha L (Storyblocks) |
+| 12 | Envato 762de3d9 (s19), Download 4K (ProRes), licença `peru-agua` | 15:12:49 → 15:13:17, saída 0 | `colca-canyon-river-valley-arequipa-peru-2026-10-02-06-47-59-utc.mov`, 3840×2160, prores, 7,72 s, 446.364.345 bytes, sha256 `2d238dbe…` | bate: página 7 seconds, 3840×2160, ProRes, 25 fps; sem tamanho na página |
+| 12L | certificado ("22/10/2026 peru-agua") | 15:13:41 | `licencas/762de3d9-2d13-4854-bc08-9617c79491a1-licenca.pdf`, sha256 `5b5d6f1a…` | cita o ID, o título e `peru-agua` |
+| 13 | Motion Array 4330946 (s29), 4K | 15:14:08 → 15:14:22, saída 0 | `Plaza_De_Armas_In_Lima_Capital_City_Of_Peru._uhd_4330946.mp4`, 3840×2160, h264, 19,45 s, 99.028.676 bytes, sha256 `7b3df92a…` | bate: nome com o ID; página 0:19; o balão do 4K diz "file size: 94.44MB" (= 99.028.676 bytes); os 380,87 MB do cabeçalho não são os do formato 4K |
+| 13L | PDF de licença (ícone *License*) | 15:14:43 | `licencas/4330946-licenca.pdf`, sha256 `ba26ac31…` | cita o ID e o título |
+| 14 | Envato 0c62893f (s33), Download 4K, licença `peru-agua` | 15:15:10 → 15:15:27, saída 0 | `drone-reversing-above-red-valley-farmland-near-vin-2026-10-03-11-08-41-utc.mp4`, 3840×2160, h264, 15,35 s, 104.815.356 bytes, sha256 `4e9f63e2…` | bate: página 15 seconds, 3840×2160, H.264, 29,97 fps; sem tamanho na página |
+| 14L | certificado ("22/10/2026 peru-agua") | 15:15:51 | `licencas/0c62893f-4ea4-49eb-89ff-79c9dbe2db20-licenca.pdf`, sha256 `777e2065…` | cita o ID, o título e `peru-agua` |
+
+- **O conferente, fluxo `midia`** (15:16–15:32; `conferencia-midia.json`): 9 `aprovado` e o s03-c (Envato b142d057, Callao) `reprovado` por marca de terceiro legível (contêineres e o terminal da APM), os 10 com `mesmo_item: true`. No Envato, as prévias não caem nos pontos de 15, 50 e 85 % (o laço do player); ele procurou cada prévia no arquivo inteiro, de meio em meio segundo, e as três de cada item estão lá. O `id_na_fonte` do s17-a saiu `null` no manifest (a URL da Storyblocks não traz o SBV); o ID está no `arquivo_baixado`.
+- **Instalados** (15:37–15:4x, `_instalar-lote`, saída 0 nos 9; 3840×2160, h264, yuv420p, 30 fps; `_PROCEDENCIA.json` em cada `_media/footage/<cena>/`): s03 `costa-desertica-peru-aerea` e `lima-costa-verde-aerea`; s09 `iquitos-rio-floresta-aerea`; s15 `lima-neblina-costa-verde` e `lima-ceu-cinza`; s17 `lima-morros-de-areia-aerea`; s19 `rio-andino-cheio`; s29 `lima-centro-historico-aereo`; s33 `serra-peru-parcelas-aerea`.
+- **O s03-c**: o Lucas, às 15:40, à pergunta do Callao com as marcas: "Usar com as marcas" (`roteiros/peru-agua/decisoes-lucas.md`). Volta ao conferente para a `excecao_lucas`; só se instala com o `aprovado` que ele gravar.

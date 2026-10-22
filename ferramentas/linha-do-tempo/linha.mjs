@@ -173,7 +173,8 @@ export function raizReal(raiz) {
 }
 
 /**
- * A lista fechada do que o servidor entrega (DESENHO, A.3). `rel` é o caminho REAL relativo à raiz, com "/", e a
+ * A lista fechada do que o servidor entrega (DESENHO, A.3; desde 22/10/2026, também a legenda em português montada).
+ * `rel` é o caminho REAL relativo à raiz, com "/", e a
  * comparação é em minúsculas porque o NTFS não distingue maiúsculas (_CACA é _caca). Pura.
  */
 export function caminhoPermitido(rel, { proj, ids, narracao }) {
@@ -188,6 +189,9 @@ export function caminhoPermitido(rel, { proj, ids, narracao }) {
   if (m) return m[1] === p && PASTAS_MIDIA.has(m[2]);
   m = /^out\/([^/]+)\/_tmp\/linha-do-tempo\/proxies\/[^/]+\.mp4$/.exec(r);
   if (m) return m[1] === p;
+  // A legenda em português montada (legenda.mjs montar; Lucas, 22/10/2026): só este nome exato, do projeto da linha. A
+  // tradução crua, os vistos, as medidas e o resto de _tmp continuam fora.
+  if (r === `out/${p}/_tmp/linha-do-tempo/legenda-pt.json`) return true;
   return false;
 }
 
