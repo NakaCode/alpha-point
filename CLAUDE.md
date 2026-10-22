@@ -615,6 +615,11 @@ leitura). Onde ela diverge desta lista, vale esta:
   mapa, com o contador em `out/zona-do-canal/_pesquisa/maptiler-gasto.md`, anotado antes e depois de cada render de mapa. O
   relevo 3D não foi perguntado e não está liberado: cena com relevo pede o ok dele antes. É esta mensagem que a Sala cita no
   `MapTiler liberado` aos setores.
+  **No vídeo 4 (Peru), liberado, com relevo quando necessário** (Lucas, 21/10/2026, 23:1x, no chat da Sala, à pergunta "Posso usar o
+  MapTiler no vídeo do Peru, do mesmo jeito que no vídeo 3? Seria sem relevo 3D: cada cena com relevo eu te pergunto antes": "Sim e pode
+  usar relevo quando necessário"). As cenas de mapa e o relevo 3D onde a cena precisa dele, sem pergunta por cena; a cena da prova
+  ("The mountains help…") fica plana, porque o Lucas a preferiu assim (19/10). O contador fica em `out/peru-agua/_pesquisa/maptiler-gasto.md`,
+  anotado antes e depois de cada render e de cada rodada de portão com a pré-carga. É esta mensagem que a Sala cita no `MapTiler liberado`.
 
 **Os scripts do canal** rodam de dentro do canal, sempre com o alvo que o ofício do agente dá. Sem alvo,
 alguns varrem todos os projetos de `out/`. Na maioria, o alvo é o `<proj>` (`node scripts/<portão>.mjs <proj>`);

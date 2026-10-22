@@ -899,6 +899,15 @@ texto". A proposta era a de agora, 5 px a 70 % sobre 12 px a 60 %. Vale para tod
     - O contador se anota a cada render e a cada rodada de portão com a pré-carga, em
       `out/los-angeles/_pesquisa/maptiler-gasto.md`, e a conta vai ao Lucas quando o painel a mostrar.
     - O vídeo 3 em diante pede um ok próprio.
+  - **O gasto do vídeo 4 (Peru), liberado, com relevo** (Lucas, 21/10/2026, 23:1x de Brasília). A pergunta: "Posso usar o MapTiler no
+    vídeo do Peru, do mesmo jeito que no vídeo 3? Seria sem relevo 3D: cada cena com relevo eu te pergunto antes. O gasto fica anotado
+    antes e depois de cada render." A resposta, escrita por ele: "Sim e pode usar relevo quando necessário".
+    - Cobre as cenas de mapa do vídeo 4, os renders, as provas e os portões delas, e o relevo (`terrain-rgb-v2`, câmera 3D) **onde a cena
+      precisa dele**: o relevo explica a cordilheira, a encosta ou o vale, nunca enfeita. Nunca relevo forçado, como nunca mapa forçado.
+    - A cena da prova da ilustração sobre o mapa ("The mountains help…") fica plana: depois de ver as duas versões, o Lucas preferiu a
+      sem relevo ("A versão anterior estava definitivamente melhor", 19/10/2026; `roteiros/peru-agua/decisoes-lucas.md`).
+    - O contador se anota a cada render e a cada rodada de portão com a pré-carga, em `out/peru-agua/_pesquisa/maptiler-gasto.md`.
+    - O vídeo 5 em diante pede um ok próprio.
 
 Qualquer outra base (Mapbox, Esri) só entra **depois** de a licença ser lida e registrada aqui.
 

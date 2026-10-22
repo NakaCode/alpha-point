@@ -74,3 +74,9 @@ encosta, e o acabamento de papel nas nuvens e na chuva; depois de 22/10.
 Correção do Lucas, logo depois: **"A faixa branca representa o que? Não precisa remover, só melhorar/deixar mais claro"**. A faixa marca
 a encosta leste (entra em "On the eastern slopes"). Fica, mais clara: com o rótulo "EASTERN SLOPES" na palavra, feita do mesmo papel da
 crista e colada ao lado leste dela, e escurecendo (o tom molhado) quando a chuva cai.
+
+**O MapTiler e o relevo na produção** (21/10/2026, 23:1x). À pergunta "Posso usar o MapTiler no vídeo do Peru, do mesmo jeito que no
+vídeo 3? Seria sem relevo 3D: cada cena com relevo eu te pergunto antes. O gasto fica anotado antes e depois de cada render.", a resposta,
+escrita por ele: **"Sim e pode usar relevo quando necessário"**. As cenas de mapa usam o MapTiler, e o relevo 3D entra onde a cena precisa
+dele, sem pergunta por cena; a cena da prova ("The mountains help…") fica plana, como ele preferiu em 19/10. O contador:
+`out/peru-agua/_pesquisa/maptiler-gasto.md` (`marca/identidade.md` §6).
