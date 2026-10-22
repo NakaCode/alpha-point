@@ -98,3 +98,16 @@ O montador (`out/peru-agua/_tmp/setores/peru-agua-direcao-1.md`, "O que depende 
   - **Lidas em 21/10/2026, 23:5x** (`out/peru-agua/_pesquisa/fontes-peruanas-licencas.md`): a Andina proíbe reproduzir "sin el
     consentimiento expreso de EDITORA PERU"; o gob.pe bloqueia leitura automática, até pelo navegador do app; a SEDAPAL não tem termos,
     só "© Sedapal 2020". As três ficam fora (a imagem; os dados oficiais continuam valendo como fonte de fato). Contado ao Lucas no chat.
+
+**A prova 3 e o estilo da ilustração sobre o mapa** (22/10/2026, 02:0x). A prova 3 (`out/prova-mapa-ilustrado/s-nuvens-v3-1080p.mp4`, fora do git:
+a crista em papel único, a encosta leste com EASTERN SLOPES, nuvens e chuva de papel; 4 rodadas de revisão e conserto) foi ao Lucas, com o
+ponto fraco dito pela Sala (a faixa vista de cima parece uma tira cinza recortada). A resposta: **"Não sei se o estilo recorte de papel
+foi a melhor escolha, o problema é que já estamos em 12% do plano semanal e precisamos terminar o vídeo inteiro"**. À pergunta "Para as
+cenas de ilustração sobre o mapa do Peru, qual caminho seguimos?", a resposta: **"O traço do canal (Recomendado)"**. A opção dizia: "Uso a
+linguagem que já funcionou nos vídeos 2 e 3: setas, áreas coloridas e animação em traço de engenheiro sobre o satélite, sem textura de
+papel. É o caminho mais barato e seguro, sem estilo novo para testar."
+- A "ilustração sobre o mapa" do Capital Financeiro continua escolhida, mas no traço do canal (identidade §5), não em papel recortado:
+  uma linguagem só no vídeo (a pendência "papel × traço" do espelho fica resolvida).
+- O que a prova ensinou e continua valendo: poucos elementos por quadro; nada de ícone repetido; a cordilheira como uma forma só, do
+  relevo ou de uma linha; a encosta leste nomeada (EASTERN SLOPES) e marcada de forma clara; o satélite plano na s18.
+- Sem mais provas de estilo neste vídeo: o objetivo é terminar o vídeo dentro do plano semanal.
