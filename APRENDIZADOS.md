@@ -1568,3 +1568,17 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   de energia é a prova; o aceite registra quem a fez.
 - **Por que serve a qualquer canal:** todo canal que alinha narração sintética com um transcritor como juiz esbarra nisso: o
   transcritor tem viés de juntar a função reduzida à palavra de conteúdo, e um portão que exige o acordo dele trava sem defeito real.
+
+### 87. O robots.txt do host de download não é o do site: ler o dele antes do primeiro pedido
+
+- **O problema:** em 22/10/2026, no research do vídeo 4 (o Peru), o `pesquisa-geo` baixou por script o HydroBASINS v1 de
+  `data.hydrosheds.org` e só depois leu o `robots.txt` desse host: "Disallow: /". O levantamento de acervos de 27/09 tinha lido o
+  `robots.txt` de `www.hydrosheds.org` (só o Sitemap) e registrado "Script: sem veto", sem olhar o host para onde a página manda baixar.
+  No mesmo dia, um pedido ao serviço do CENEPRED saiu junto com a leitura do `robots.txt`, antes de saber que ele vetava `/arcgis/`.
+- **O que resolveu:** nada mais se pediu aos dois hosts; o Lucas aceitou baixar ele mesmo o arquivo no navegador, pelo botão da página
+  do produto, e a Sala confere o sha256 contra o que já estava no disco. O levantamento (`marca/acervos/5-dados-e-fronteiras.md` §1.9)
+  passou a dizer o veto do host de download.
+- **Como evitar:** antes do primeiro pedido a um host, ler o `robots.txt` DELE (o de download, o de API, o de tiles), num comando
+  separado, e só seguir com o "pode" lido. O levantamento de uma fonte registra os hosts todos que ela usa, não só o das páginas.
+- **Por que serve a qualquer canal:** muitos acervos servem as páginas num host e os arquivos noutro (data., files., cdn., api.); a
+  regra de não contornar quem recusa robô só funciona se a recusa for lida no host certo e antes do pedido.

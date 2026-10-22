@@ -255,7 +255,10 @@ sugeriu nesses casos vai marcado como **pista (não conferida)**, para o Lucas c
 - **Termos do SITE** (não dos dados): proíbem "any commercial use or any resale or redistribution of the Site or
   the Site Materials", ou seja, textos e imagens do site. Para conteúdo do site, o crédito é "Source: [Page title],
   [url address] downloaded on [date of download] © HydroSHEDS."
-- **Script:** o `robots.txt` tem só a linha do Sitemap, sem veto. Os downloads ficam em `data.hydrosheds.org`.
+- **Script:** o `robots.txt` de `www.hydrosheds.org` tem só a linha do Sitemap, sem veto. **Mas os downloads ficam em
+  `data.hydrosheds.org`, cujo `robots.txt` é "User-agent: * / Disallow: /"** (conferido em 22/10/2026, no vídeo 4, depois de um
+  download por script: `APRENDIZADOS.md` item 87). Arquivo de lá, só pela pessoa no navegador, pelo botão Download da página do
+  produto; o canal confere o sha256 depois. A leitura de 27/09 olhou só o host das páginas.
 - **Páginas:** https://www.hydrosheds.org/products/hydrorivers · https://www.hydrosheds.org/products/hydrosheds ·
   https://www.hydrosheds.org/products/hydrosheds-v2 · https://www.hydrosheds.org/terms-of-use ·
   https://data.hydrosheds.org/file/technical-documentation/HydroSHEDS_TechDoc_v1_4.pdf (lidas em 27/09/2026).
