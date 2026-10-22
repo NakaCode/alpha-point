@@ -47,6 +47,11 @@
     · a aproximação final termina mais perto: D passa de z 8,40 a 8,85 e D2 de 8,50 a 9,15 (o vale do Supe e Lima no mesmo
       quadro). A viagem continua 9,0 → 11,1; os pontos de partida e os tempos não mudam.
     · o crédito continua '© MapTiler © OpenStreetMap contributors': o do OSM do Supe já está nele.
+  CONSERTO peru-agua-arte-10 (lote M-s21, 22/10/2026): sai o anel da foz do Supe (decisão da Sala). O anel é a marca do túnel no
+  vídeo inteiro (s04, s40, s43, s50, s51; identidade §2), e Caral fica vale acima, não na foz. Nada entra no lugar dele. Saíram o
+  <g id="anFoz">, a entrada em CENA.aneis (volta a []), o CSS .anel/.anel-sob e a referência FOZ. Onde o texto da arte-8 acima
+  fala do anel, ele não vale mais; o comentário do .ponto-lugar ("sem anel: o anel do vídeo marca só o túnel") volta a valer.
+  O Supe em --destaque em 'city' (9,68), o ponto de Lima sem nome e a aproximação final da arte-8 ficam.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -94,9 +99,6 @@
   #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
   /* o ponto de lugar sob a pílula (sem anel: o anel do vídeo marca só o túnel): --neutro com o contorno escuro */
   .ponto-lugar { fill: var(--neutro); stroke: var(--rotulo); stroke-width: 6px; }
-  /* arte-8: o anel da marca (identidade §4.4) na foz do Supe: 56 px, traço 10 em --destaque, sobre o halo --rotulo */
-  .anel { fill: none; stroke: var(--destaque); stroke-width: 10px; }
-  .anel-sob { fill: none; stroke: var(--rotulo); stroke-width: 20px; }
   /* a imagem impressa sobre o mapa (identidade §4.4, "a mão que arruma"; §5, "Nome de lugar com a foto"): moldura
      --tinta de 8 px, o recorte por overflow (nada de arquivo novo), a sombra solta com desfoque fixo */
   .cartao { position: absolute; left: 0; top: 0; z-index: 42; opacity: 0; transform-origin: 50% 50%; overflow: hidden;
@@ -124,7 +126,6 @@
     <circle class="ponto-lugar" id="pPiu" cx="0" cy="0" r="14" opacity="0"/>
     <circle class="ponto-lugar" id="pTac" cx="0" cy="0" r="14" opacity="0"/>
     <circle class="ponto-lugar" id="pLima" cx="0" cy="0" r="14" opacity="0"/>
-    <g id="anFoz" opacity="0"><circle class="anel-sob" r="28"/><circle class="anel" r="28"/><circle class="anel" id="anFozP1" r="28" opacity="0"/></g>
   </svg>
 
   <div id="rotulos">
@@ -166,7 +167,7 @@ farms, cities and mines not counted</div>
       { t0: 11.1,  t1: 12.667, de: "D",  para: "D2", tipo: "h" }
     ],
     giro: [-0.8, 0.8],
-    aneis: [ { id: "anFoz", ref: "FOZ", entra: 10.48, sai: null, pulsos: [10.78] } ],   // arte-8: a foz do Supe, um pulso
+    aneis: [],   // arte-10: sai o anel da foz do Supe (decisão da Sala)
     supe: { entra: 9.68, desenha: 0.8 },   // arte-8: em 'city'
     rotulos: [
       { id: "rotDeserto", lnglat: [-78.25, -10.10], lado: "esquerda", vert: "centro", dx: 30, dy: 0, entra: 1.2, sai: 8.467 },   // sobre o mar, a ponta direita na faixa da costa (a pílula não cobre o deserto)
@@ -211,12 +212,11 @@ farms, cities and mines not counted</div>
     preparar: function (A) {
       A.REFS.PIU = A.pontoNome("cidades-peru-ne", "Piura");
       A.REFS.TAC = A.pontoNome("cidades-peru-ne", "Tacna");
-      // arte-8: Lima (o ponto do NE) e a foz do Supe (o último vértice da linha do OSM, ponta_b)
+      // arte-8: Lima (o ponto do NE) e a linha do Supe (OSM)
       A.REFS.LIMA = A.pontoNome("cidades-peru-ne", "Lima");
       var sp = A.feicao("rio-supe");
       if (!sp || !sp.geometry || sp.geometry.type !== "LineString") return A.falhar("o rio-supe não é uma LineString.");
       SUPE = sp.geometry.coordinates;
-      A.REFS.FOZ = SUPE[SUPE.length - 1];
       // a divisa Peru–Chile: as sequências de vértices que os dois polígonos do Natural Earth têm em comum (nada à mão)
       var pe = A.feicao("peru-ne"), ch = A.feicao("chile-ne");
       if (!pe || !ch) return;

@@ -28,3 +28,4 @@ ilustração sobre o mapa de 19/10 (2.767 pedidos contados) fica no contador del
 | 22/10/2026 10:48 | antes · peru-agua-arte-9 (Arte), s30, s34 e s51 (texto-9 e os consertos 7, 8, 9 e 11 do espectador r1) | — | o `_tmp/maptiler-portoes.jsonl` com 458 linhas |
 | 22/10/2026 11:10 | depois · peru-agua-arte-9 (Arte), s30, s34 e s51 | 3.365 | as 27 linhas novas do `_tmp/maptiler-portoes.jsonl` (459–485): s30 1.020, s34 1.149, s51 1.196. **Não contados:** os 3 renders 4K de prova (s30 às 10:52, s51 até 11:03, s34 até 11:08) e os quadros. Sem relevo. |
 | 22/10/2026 11:10 | antes · peru-agua-arte-10 (Arte), a s21 sem o anel na foz do Supe | — | o `_tmp/maptiler-portoes.jsonl` com 485 linhas |
+| 22/10/2026 11:16 | depois · peru-agua-arte-10 (Arte), a s21 sem o anel na foz do Supe | 791 | as 8 linhas novas do `_tmp/maptiler-portoes.jsonl` (486–493), só s21. **Não contado:** o render 4K de prova (11:12–11:15). Sem relevo. |
