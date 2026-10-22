@@ -29,6 +29,13 @@
       de 03/06/1998 (USGS, domínio público, georreferenciado em Web Mercator: os quatro cantos do recorte projetados a cada
       quadro) aparece sobre o satélite do mapa durante a viagem (8,1 → 9,1); 'Satellite image · June 1998' em legenda e
       'Piura' só como o ponto da cidade (cidades-peru-ne), nada que diga 'Piura flooded' nem 'Sechura'. Aproximação lenta.
+  CONSERTO peru-agua-arte-5 (lote M-s16, 22/10/2026), só isto mudou: (1) 'Satellite image · June 1998' entra em 'floods'
+    (9,567), com o recorte de 1998 inteiro desde 9,1 (R4-2; textos-tela 7a6b71c0); assim a legenda da NOAA, que sai de 7,767
+    a ~8,07, não divide mais o canto com ela. (2) O realce da água: a camada medida agua-landsat5-1998-06-03 (pauta-geo; a
+    mesma imagem, IoU 0,962) em CONTORNO NEUTRO (--fronteira-cor 5 px sobre --fronteira-contorno-cor 12 px, a regra da divisa
+    sobre o gelo, identidade §6), desenhado no canvas #ilu acima do PNG, crescendo em 1 s a partir de 9,567; só sobre o PNG de
+    1998 (entra depois de ele estar inteiro e fica até o fim, como ele), sem cor de lado e sem rótulo (nao_pode_dizer, PA021,
+    PA022). A divisória continental não entra: a regência da s16 (55cebfa3) não a pede.
   Crédito: '© MapTiler © OpenStreetMap contributors' a 56 px, do primeiro ao último quadro (o mapa por baixo das duas imagens).
   O 'H', as setas e os traços da ressurgência são esquema (o mecanismo, como na s13); a costa e o mar são o satélite real.
 -->
@@ -39,6 +46,7 @@
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <!-- UMA linha por geometria usada na cena (slugs de out/peru-agua/_pesquisa/pauta-geo.json): -->
 <script src="../_media/geo/cidades-peru-ne.js"></script>
+<script src="../_media/geo/agua-landsat5-1998-06-03.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -140,13 +148,16 @@
       { id: "rotNino",   tela: [200, 200], lado: "direita", vert: "baixo", entra: 0.167, sai: 3.767 },
       { id: "rotNino2",  tela: [200, 200], lado: "direita", vert: "baixo", entra: 3.767, sai: null },
       { id: "legNoaa",   tela: [200, 1730], lado: "direita", vert: "baixo", entra: 3.767, sai: 7.767 },
-      { id: "legLandsat", tela: [200, 1730], lado: "direita", vert: "baixo", entra: 7.767, sai: null },
+      { id: "legLandsat", tela: [200, 1730], lado: "direita", vert: "baixo", entra: 9.567, sai: null },   // arte-5: em 'floods' (R4-2)
       { id: "rotPiura",  ref: "PIU", lado: "direita", vert: "centro", dx: 44, dy: 0, entra: 7.767, sai: null }
     ],
     // a NOAA impressa sobre o mar: 1500 × 1256 (o painel de 2476 × 1800 a 0,6977, cortado à direita em 2150 px: sem o logo)
     cartao: { id: "cartaoNoaa", sombra: "sombraNoaa", x: 224, y: 440, pouso: 3.767, levanta: 7.767, rot: -1.0, queda: 180 },
     // o Landsat: o recorte em Web Mercator (procedência: recorte.lonlat), 2840 × 4766 px
     landsat: { oeste: -81.35, leste: -80.20, norte: -4.83, sul: -6.75, w: 2840, h: 4766, entra: 8.1, dur: 1.0 },
+    // arte-5: o realce da água (agua-landsat5-1998-06-03, a camada MEDIDA desta mesma imagem, IoU 0,962): contorno neutro
+    // (a regra da divisa sobre o gelo), desenhado em 1 s a partir de 'floods'; só sobre o PNG de 1998, sem rótulo
+    realceAgua: { slug: "agua-landsat5-1998-06-03", entra: 9.567, dur: 1.0 },
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
     creditos: [
       { id: "crMapa", mapa: true, entra: 0 }
@@ -176,11 +187,21 @@
     return { g: g, limpar: limpar, traco: traco, ponta: ponta, preencher: preencher };
   })();
   function hash(a, b) { var x = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return x - Math.floor(x); }
-  var COR = null, PH = null, SETAS = null, RESS = null;
+  var COR = null, PH = null, SETAS = null, RESS = null, AGUA = null;
   var SCENE = {
     preparar: function (A) {
       A.REFS.PIU = A.pontoNome("cidades-peru-ne", "Piura");
-      COR = { tinta: A.tok("--tinta", "#F4F1EA"), contra: A.tok("--contraparte", "#2EC4B6"), sob: A.tok("--fundo", "#0E1726") };
+      COR = { tinta: A.tok("--tinta", "#F4F1EA"), contra: A.tok("--contraparte", "#2EC4B6"), sob: A.tok("--fundo", "#0E1726"),
+        fr: A.tok("--fronteira-cor", "rgba(255,255,255,0.70)"), frSob: A.tok("--fronteira-contorno-cor", "rgba(11,15,20,0.60)"),
+        frW: parseFloat(A.tok("--fronteira-espessura", "5px")) || 5, frSobW: parseFloat(A.tok("--fronteira-contorno-espessura", "12px")) || 12 };
+      // os anéis da camada da água (contornos externos e buracos), tal como vêm do arquivo
+      AGUA = [];
+      var fa = A.feicao(CENA.realceAgua.slug);
+      if (fa && fa.geometry) {
+        var gg = fa.geometry, pols = gg.type === "MultiPolygon" ? gg.coordinates : gg.type === "Polygon" ? [gg.coordinates] : [];
+        pols.forEach(function (pl) { pl.forEach(function (r) { if (r.length > 1) AGUA.push(r); }); });
+      }
+      if (!AGUA.length) A.falhar("a camada " + CENA.realceAgua.slug + " veio sem anéis.");
       // ESQUEMA (o mecanismo da s13, sem geometria): o centro da alta no Pacífico sudeste e os alísios de SE que sopram ao
       // longo da costa rumo ao equador (três curvas de Bézier em graus, projetadas a cada quadro)
       PH = [-93.0, -20.0];
@@ -242,6 +263,25 @@
         var m6 = [(tr.x - tl.x) / L.w, (tr.y - tl.y) / L.w, (bl.x - tl.x) / L.h, (bl.y - tl.y) / L.h, tl.x, tl.y];
         im.style.transform = "matrix(" + m6.map(function (v) { return v.toFixed(6); }).join(",") + ")";
         im.style.opacity = A.eio(A.seg(t, L.entra, L.dur)).toFixed(3);
+      }
+      // ── arte-5: o contorno da água de 1998, só sobre o PNG (que está inteiro desde 9,1 s); cresce em 1 s ──
+      var ua = A.eio(A.seg(t, CENA.realceAgua.entra, CENA.realceAgua.dur));
+      if (ua > 0 && AGUA && ILU.g) {
+        var oa = { w: COR.frW, cor: COR.fr, sob: COR.frSobW, sobCor: COR.frSob, sobA: 1, alpha: Math.min(1, ua * 4) };
+        AGUA.forEach(function (r) {
+          var pts = [], tot = 0;
+          for (var i = 0; i < r.length; i++) { var q = A.project(r[i]); pts.push([q.x, q.y]); if (i) tot += Math.hypot(q.x - pts[i - 1][0], q.y - pts[i - 1][1]); }
+          if (ua < 1) {
+            var alvo = tot * ua, acc = 0, cut = [pts[0]];
+            for (var j = 1; j < pts.length; j++) {
+              var d = Math.hypot(pts[j][0] - pts[j - 1][0], pts[j][1] - pts[j - 1][1]);
+              if (acc + d >= alvo) { var f = d > 0 ? (alvo - acc) / d : 0; cut.push([pts[j - 1][0] + (pts[j][0] - pts[j - 1][0]) * f, pts[j - 1][1] + (pts[j][1] - pts[j - 1][1]) * f]); break; }
+              acc += d; cut.push(pts[j]);
+            }
+            pts = cut;
+          }
+          ILU.traco(pts, oa);
+        });
       }
       // ── o ponto de Piura ──
       var pp = A.E("pPiu");

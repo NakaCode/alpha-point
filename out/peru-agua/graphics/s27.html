@@ -12,6 +12,21 @@
   cabe na tela), três grifos na palavra, as traduções como legenda sob cada trecho. Lote EF2 (peru-agua-arte-1, 22/10/2026),
   editor-de-arte em Fable.
 
+  CONSERTO peru-agua-arte-5 (lote E-s27, 22/10/2026; textos-tela.json sha256 5217132f…, texto-6: só a s27 mudou):
+    o trecho ampliado em Courier a 140 px (arte-4) vira a FALA CITADA, uma por vez, no CARTÃO DE PAPEL do canal (identidade §5, "a fala
+    citada … num cartão de papel ao lado, em --papel, Inter 700, alvo 280 px, piso 260"; o da s28 e da s13): “fria y de / muchas nieves”
+    (1,634–3,9), “…de la mar y / el camino muy / despoblado” (3,9–6,234) e “…han sido / muchos de / ellos muertos” (6,234–10,867), em
+    --fs-fala (280 px), data-qc-papel="heroi" (o nome que o portão dá ao piso de 260: Sala, 22/10/2026, 09:2x), --tinta-escura sobre --papel,
+    no mesmo lugar da coluna (x 1390, y 480; 2 ou 3 linhas a 314 px de entrelinha; a mais larga, "muchas nieves”", conferida no quadro: o cartão
+    acaba em x ~3586 em repouso e em ≤ 3640 durante a entrada a 1,04 — a coluna inteira foi de x 1440 a 1390 por isso, medido pelo portao-margens). A
+    tradução de cada uma é LEGENDA (84 px) sob o cartão: "cold, with much snow"; "[…] from the sea, and the road very deserted"; "[…] many of
+    them have died". O grifo 2 da página entra com a citação 2, em "road" (3,9), inteiro ("de la mar … despoblado"; "cuarenta leguas" sem
+    luz), e varre até o fim de "coast." (4,777). Nunca duas citações: o cartão que sai LEVANTA (350 ms, 1,00 → 1,04, ease-in cúbico) a partir
+    de 0,2 s antes do t1 (ofício §5: o que entra por cima manda o que estava sair antes), e o seguinte entra no t0 (300 ms, 1,04 → 1,00). A
+    Courier Prime não aparece mais fora da folha (o scan). Ficam: a página que recua e escurece, os grifos 1 e 3, o rótulo da página
+    (1,20 s) e "Translated from Spanish" (1,634 → fim, y 1750). O data-qc-sem-heroi sai do palco. Textos vivos ≤ 4 (rótulo, citação,
+    tradução, marca); elementos ≤ 6 (página, rótulo, cartão, tradução, marca = 5); blocos de leitura ≤ 3 (rótulo, cartão, tradução).
+
   CONSERTO peru-agua-arte-4 (lote E-mesa, 22/10/2026; textos-tela.json sha256 3ff2dfbe…, idêntico ao a0b58f31… nesta cena):
     (1) o CABEÇALHO IMPRESSO não sai mais do quadro (L58, achado 4; decisões D9; identidade §5, l. 424). A 1ª saída da identidade (a
         câmera desce "sem tirar o cabeçalho do quadro") NÃO CABE nesta página: o cabeçalho "10 HISTORIA DE LIMA." e o grifo 3 (linha 24)
@@ -23,8 +38,8 @@
         a sangria só "onde a câmera anda").
     (2) o GRIFO 2 passa a "de la mar y el camino muy despoblado" (linha 18, palavras 3–10: x 1112→2720 do scan, medido por projeção de
         colunas em 22/10; "cuarenta leguas" fica sem luz), e a TRADUÇÃO 2 a "[…] from the sea, and the road very deserted".
-    (3) os TEMPOS NOVOS do textos-tela: grifo 1 e tradução 1 até 3,9 ("road"; 0,63 s junto do trecho 2, por isso os dois blocos têm
-        lugar próprio na coluna); o resto como estava.
+    (3) os TEMPOS NOVOS do textos-tela de então (grifo 1 e tradução 1 até 3,9; dois blocos juntos por 0,63 s): SUPERADO pelo arte-5 acima
+        (uma citação por vez; o grifo 2 em 3,9).
 
   O que manda em cada coisa: os textos de tela (textos-tela.json › s27: legenda "JAUJA TOWN COUNCIL, NOVEMBER 1534 · IN BERNABÉ COBO
   (1639; 1882 ED.)" t0 0–10,867 (o rótulo da página real, todo o tempo dela; sem crédito: domínio público); grifo_na_pagina "fria y de
@@ -135,9 +150,12 @@
   .folha img { position: absolute; display: block; max-width: none; }
   /* o VÉU do recuo (identidade §5: "a folha recua e escurece"): --tinta-escura, sobe a 45 % com o recuo, sob os grifos */
   .folha .veu { position: absolute; inset: 0; background: var(--tinta-escura); opacity: 0; pointer-events: none; }
-  /* o TRECHO AMPLIADO AO LADO (identidade §5): a letra da folha (--fonte-doc, Courier Prime 400) a 140 px, em --tinta, sobre a mesa */
-  .trecho { position: absolute; font-family: var(--fonte-doc); font-weight: var(--peso-doc); font-size: 140px; line-height: 1.15;
-    letter-spacing: 0; color: var(--tinta); opacity: 0; white-space: pre; }
+  /* O CARTÃO DA FALA CITADA (identidade §5; o da s28 e da s13): a folha --papel, a fala em Inter 700 a --fs-fala (280 px), --tinta-escura */
+  .cartao-fala { position: absolute; left: 0; top: 0; opacity: 0; white-space: pre; transform-origin: 50% 50%;
+    background: var(--papel); border-radius: var(--cantos); padding: 56px 72px 52px;
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--fundo) 55%, transparent); }
+  .cartao-fala .fala { font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-fala); line-height: 1.12;
+    color: var(--tinta-escura); letter-spacing: 0; white-space: pre; }
   .rasgada { clip-path: polygon(0% 0%, 100% 0%, 100% 96.5%, 100.00% 97.49%, 98.44% 96.95%, 96.88% 98.60%, 95.31% 96.61%, 93.75% 98.20%, 92.19% 97.67%, 90.62% 96.55%, 89.06% 98.08%, 87.50% 96.46%, 85.94% 97.86%, 84.38% 96.60%, 82.81% 96.69%, 81.25% 97.83%, 79.69% 99.26%, 78.12% 96.83%, 76.56% 97.16%, 75.00% 98.50%, 73.44% 99.68%, 71.88% 98.38%, 70.31% 97.71%, 68.75% 99.80%, 67.19% 96.50%, 65.62% 99.39%, 64.06% 97.35%, 62.50% 96.82%, 60.94% 96.71%, 59.38% 97.43%, 57.81% 99.21%, 56.25% 96.98%, 54.69% 98.40%, 53.12% 98.65%, 51.56% 97.70%, 50.00% 98.26%, 48.44% 96.57%, 46.88% 96.56%, 45.31% 97.09%, 43.75% 98.73%, 42.19% 97.84%, 40.62% 97.45%, 39.06% 98.42%, 37.50% 97.95%, 35.94% 97.39%, 34.38% 99.12%, 32.81% 98.81%, 31.25% 97.25%, 29.69% 98.37%, 28.12% 98.16%, 26.56% 99.46%, 25.00% 98.94%, 23.44% 97.44%, 21.88% 99.81%, 20.31% 96.71%, 18.75% 97.70%, 17.19% 98.96%, 15.62% 96.85%, 14.06% 97.90%, 12.50% 96.47%, 10.94% 98.67%, 9.38% 99.09%, 7.81% 98.36%, 6.25% 99.46%, 4.69% 97.35%, 3.12% 98.79%, 1.56% 98.46%, 0.00% 98.39%); }
   /* A COLUNA DA DIREITA, fixa na tela (fora da câmera, como o crédito): o rótulo da página, a tradução e a marca de tradução */
   #coluna { position: absolute; inset: 0; pointer-events: none; }
@@ -151,7 +169,7 @@
 </style>
 </head>
 <body>
-<div id="palco" data-qc-sem-heroi="a página real de Cobo (ed. 1882) sobre a mesa, que recua e escurece, com três grifos e o trecho de cada um ampliado ao lado, na letra da folha (identidade §5, a 2ª saída para o texto que não cabe), com a tradução como legenda: a cena não tem herói; o trecho ampliado é texto da folha a 140 px, não fala citada; o rótulo da página, as traduções e a marca de tradução são legendas de 84 px (ofício do editor-de-arte §6; identidade §4.2 e §5)">
+<div id="palco">
   <img id="still" src="../_media/base/mesa-peru-agua.png" alt="" data-qc-reuso="a mesa do vídeo 4: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; _media/base/mesa-peru-agua.png, Landsat 8 de 09/06/2022, USGS, domínio público)">
   <div id="cam">
     <div id="mesa"></div>
@@ -167,16 +185,16 @@
       <div class="fita" id="folFd" style="left:1630px;top:-50px"></div>
     </div>
   </div>
-  <!-- a coluna da direita, fixa na tela: o rótulo da página; o bloco A (trecho 1 + tradução 1); o bloco B (trecho 2 + tradução 2, depois trecho 3 + tradução 3); a marca de tradução -->
+  <!-- a coluna da direita, fixa na tela: o rótulo da página; UMA citação por vez no cartão da fala (x 1390, y 480), com a tradução (legenda) sob ela; a marca de tradução -->
   <div id="coluna">
-    <div class="pilula-leg" id="rotPag" data-qc-papel="eixo" style="left:1440px;top:180px"></div>
-    <div class="trecho" id="ex1" data-qc-fonte-livre="o trecho da folha ampliado ao lado, na letra da folha: Courier Prime (--fonte-doc), identidade §5" style="left:1440px;top:600px"></div>
-    <div class="traducao" id="tr1" data-qc-papel="eixo" style="left:1440px;top:800px"></div>
-    <div class="trecho" id="ex2" data-qc-fonte-livre="o trecho da folha ampliado ao lado, na letra da folha: Courier Prime (--fonte-doc), identidade §5" style="left:1440px;top:1060px"></div>
-    <div class="traducao" id="tr2" data-qc-papel="eixo" style="left:1440px;top:1420px"></div>
-    <div class="trecho" id="ex3" data-qc-fonte-livre="o trecho da folha ampliado ao lado, na letra da folha: Courier Prime (--fonte-doc), identidade §5" style="left:1440px;top:1060px"></div>
-    <div class="traducao" id="tr3" data-qc-papel="eixo" style="left:1440px;top:1420px"></div>
-    <div class="legenda" id="leg" data-qc-papel="eixo" style="left:1440px;top:1750px"></div>
+    <div class="pilula-leg" id="rotPag" data-qc-papel="eixo" style="left:1390px;top:180px"></div>
+    <div class="cartao-fala" id="cit1" style="left:1390px;top:480px"><div class="fala" id="cit1t" data-qc-papel="heroi"></div></div>
+    <div class="traducao" id="tr1" data-qc-papel="eixo" style="left:1390px;top:1270px"></div>
+    <div class="cartao-fala" id="cit2" style="left:1390px;top:480px"><div class="fala" id="cit2t" data-qc-papel="heroi"></div></div>
+    <div class="traducao" id="tr2" data-qc-papel="eixo" style="left:1390px;top:1580px"></div>
+    <div class="cartao-fala" id="cit3" style="left:1390px;top:480px"><div class="fala" id="cit3t" data-qc-papel="heroi"></div></div>
+    <div class="traducao" id="tr3" data-qc-papel="eixo" style="left:1390px;top:1580px"></div>
+    <div class="legenda" id="leg" data-qc-papel="eixo" style="left:1390px;top:1750px"></div>
   </div>
 </div>
 <script>
@@ -289,6 +307,14 @@
     sombra(E(idS), gs, s, rot);
     por(E(idG), g.cx, g.cy - s.dy, g.w, g.h, rot, s.k * (g.k || 1), s.op);
   }
+  // o CARTÃO DA FALA entra na palavra (300 ms: opacidade, 24 px de subida, 1,04 → 1,00) e sai LEVANTANDO (350 ms, 1,00 → 1,04 em
+  // ease-in cúbico, a única curva fora do eo/eb do RIG: identidade §4.4), a partir de tSai
+  function cartao(el, t, t0, tSai) {
+    if (!el) return;
+    var p = eo(seg(t, t0, 0.3)), q = tSai !== undefined ? seg(t, tSai, 0.35) : 0, qi = q * q * q;
+    el.style.opacity = (p * (1 - qi)).toFixed(3);
+    el.style.transform = "translateY(" + ((1 - p) * 24).toFixed(1) + "px) scale(" + (lerp(1.04, 1.0, p) * lerp(1.0, 1.04, qi)).toFixed(4) + ")";
+  }
   function texto(el, t, t0, tSai) {
     if (!el) return;
     var p = eo(seg(t, t0, 0.3)), q = tSai !== undefined ? eo(seg(t, tSai, 0.3)) : 0;
@@ -346,12 +372,12 @@
   // ═══ OS TEXTOS DE TELA (um lugar só; a grafia final é do redator-de-tela: textos-tela.json › _textos_por_cena s27) ═══
   var TEXTOS = {
     rotPag: "JAUJA TOWN COUNCIL, NOVEMBER 1534\nIN BERNABÉ COBO (1639; 1882 ED.)",   // legenda, t0 0 ("todo o tempo da página")
-    ex1: "fria y de muchas nieves",                                      // grifo_na_pagina 1, ampliado ao lado (identidade §5), 1,634–3,9
-    tr1: "cold, with much snow",                                         // traducao 1, 1,634–3,9
-    ex2: "de la mar y el camino\nmuy despoblado",                        // grifo_na_pagina 2, ampliado ao lado, 3,267–6,234
-    tr2: "[…] from the sea, and the road very deserted",                 // traducao 2, 3,267–6,234 (sem as léguas: textos-tela, conserto 4)
-    ex3: "por cargarlos han sido\nmuchos de ellos muertos",              // grifo_na_pagina 3, ampliado ao lado, 6,234–10,867
-    tr3: "from being loaded with burdens,\nmany of them have died",      // traducao 3, 6,234–10,867
+    cit1t: "“fria y de\nmuchas nieves”",                                 // citacao 1 (texto-6), 1,634–3,9: 2 linhas a 280 px
+    tr1: "cold, with much snow",                                         // legenda (a tradução da citação 1), 1,634–3,9
+    cit2t: "“…de la mar y\nel camino muy\ndespoblado”",                   // citacao 2, 3,9–6,234: 3 linhas (o "…" no lugar de "cuarenta leguas")
+    tr2: "[…] from the sea, and the road very deserted",                 // legenda (a tradução da citação 2), 3,9–6,234
+    cit3t: "“…han sido\nmuchos de\nellos muertos”",                       // citacao 3, 6,234–10,867: 3 linhas (o "…" no lugar de "por cargarlos")
+    tr3: "[…] many of them have died",                                   // legenda (a tradução da citação 3), 6,234–10,867
     leg: "Translated from Spanish"                                       // legenda, 1,634–10,867, sob as traduções
   };
   (function () { for (var k in TEXTOS) { var e = E(k); if (e) e.textContent = TEXTOS[k]; } })();
@@ -360,8 +386,9 @@
     pousa: 0.00, pousaDur: 0.80, fita: 0.70, rotPag: 1.20,   // o rótulo entra quando a página já saiu de sob ele (a borda direita passa x 1440 em ~1,18 s)
     recua: 0.85, recuaDur: 0.50,             // a página recua e escurece (a 2ª saída da identidade §5) e para 0,28 s antes de "the"
     g1: 1.634, g1b: 2.567, g1Fim: 2.987,     // "the" · "snow" · o fim de "snow"
-    g1Sai: 3.9,                              // "road": o trecho 1 e a tradução 1 saem (textos-tela t1 3,9); o grifo 1 baixa a 35 %
-    g2: 3.267, g2Fim: 4.777,                 // "and" · o fim de "coast." (o grifo 2 começa em "de la mar": textos-tela, conserto 4)
+    g1Sai: 3.9,                              // "road": a citação 1 e a tradução 1 saem (textos-tela t1 3,9); o grifo 1 baixa a 35 %
+    g2: 3.9, g2Fim: 4.777,                   // "road" · o fim de "coast.": o grifo 2 (inteiro, "de la mar … despoblado") entra com a citação 2 (texto-6)
+    levanta: 0.2,                            // o cartão que sai começa a levantar 0,2 s antes do t1 (ofício §5)
     g3: 6.234, g3b: 6.5, g3Fim: 9.607,       // "many" · … · o fim de "died"
     repouso: DUR - 0.25
   };
@@ -399,9 +426,9 @@
     fita(E("folFe"), t, T.fita, "e"); fita(E("folFd"), t, T.fita + 0.12, "d");
     grifar(GF, t);
     texto(E("rotPag"), t, T.rotPag);
-    texto(E("ex1"), t, T.g1, T.g1Sai); texto(E("tr1"), t, T.g1, T.g1Sai);
-    texto(E("ex2"), t, T.g2, T.g3);    texto(E("tr2"), t, T.g2, T.g3);
-    texto(E("ex3"), t, T.g3);          texto(E("tr3"), t, T.g3);
+    cartao(E("cit1"), t, T.g1, T.g1Sai - T.levanta); texto(E("tr1"), t, T.g1, T.g1Sai - T.levanta);
+    cartao(E("cit2"), t, T.g2, T.g3 - T.levanta);    texto(E("tr2"), t, T.g2, T.g3 - T.levanta);
+    cartao(E("cit3"), t, T.g3);                      texto(E("tr3"), t, T.g3);
     texto(E("leg"), t, T.g1);
   }
 
@@ -410,11 +437,8 @@
     catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }
   };
   window.__prepararCaptura = function () { window.__renderAt(0); };
-  // a face da folha (MarcaDoc = Courier Prime 400) também é esperada: o trecho ampliado é escrito nela
-  var fontesDoc = [
-    document.fonts.load('400 140px "MarcaDoc"').then(function (f) { if (!f.length) window.__fontesFaltando.push("MarcaDoc 400 (Courier Prime do trecho ampliado)"); }, function () { window.__fontesFaltando.push("MarcaDoc 400 (Courier Prime do trecho ampliado)"); })
-  ];
-  window.__fotosProntas = Promise.all([R.prontas()].concat(fontesDoc)).then(function () { window.__renderAt(0); return true; });
+  // a folha é o scan: nenhuma Courier Prime fora dela (arte-5); a fala citada é Inter 700 (as faces "Marca", esperadas pelo RIG)
+  window.__fotosProntas = R.prontas().then(function () { window.__renderAt(0); return true; });
   window.__renderAt(0);
 
 })();

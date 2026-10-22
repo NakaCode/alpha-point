@@ -24,12 +24,14 @@
     · a foto de 1997 (Håkan Svensson, Commons, CC BY 2.5; 1788 × 1173) IMPRESSA, a 1,15× (2.056 × 1.349 px; com o
       assentamento, 1,18×; nunca em tela cheia), moldura --tinta (40 px, 190 px embaixo), fita nos dois lados, −1,5°; pousa em
       0,55 s (a mão que arruma: desce 240 px, 0,72 → 1,03 → 1,00), sombra solta, a luz 120 ms atrás;
-    · 'Photo from 1997' na margem de baixo da moldura (84 px, Inter 500, --tinta-escura a 72 %), 150 ms depois do assentamento (8,333);
+    · 'Photo from 1997' na margem de baixo da moldura (84 px, Inter 500, --tinta-escura a 72 %), em 8,166 (peru-agua-arte-5);
     · 'Lima' (pílula) sobre a mesa, FORA da foto, 8,333 (nunca um distrito: a origem diz "southern part of Lima");
-    · 'barriadas' (legenda, itálico) em "barriadas." (8,9);
+    · 'barriadas' (legenda, itálico) em 8,666 (peru-agua-arte-5; antes 8,9);
     · crédito 'Håkan Svensson / Wikimedia Commons · CC BY 2.5' na faixa, de 7,633 ao fim;
     · a câmera da mesa só deriva (6 / 4,8 px); de 9,916 ao fim (250 ms) nada se move. O mapa fica parado por baixo (tempo do mapa
       preso em 7,633: nenhum tile novo).
+  CONSERTO peru-agua-arte-5 (22/10/2026, lote M-s36s52): pelo textos-tela.json 7a6b71c0 (texto-4, rodada 5b), 'Photo from 1997'
+  passa de 8,333 a 8,166 e 'barriadas' de 8,9 a 8,666. Nada mais mudou.
   ELEMENTOS: beat 0 = cidade, nome, casas, cota, legenda = 5; beat 1 = foto, Lima, barriadas = 3 (o aviso não conta). TEXTOS VIVOS ≤ 3.
 
   A MÍDIA: s36-lima-pueblo-joven-1997-commons.jpg 1788×1173, sha256 98b393c6e3893cf7b449cf22ac717606d331a019cc52eb5305c23f0de6dec6d2,
@@ -182,7 +184,7 @@ IN INFORMAL SETTLEMENTS</div>
     pouso: CORTE, rot: -1.5, repouso: 9.916,
     textos: [
       { id: "rotLugar", x: 2720, y: 560, entra: 8.333 },
-      { id: "legBarr",  x: 2720, y: 800, entra: 8.9 }
+      { id: "legBarr",  x: 2720, y: 800, entra: 8.666 }
     ]
   };
   var SCENE = {
@@ -275,8 +277,8 @@ IN INFORMAL SETTLEMENTS</div>
       el.style.opacity = w.toFixed(3);
       el.style.transform = "rotate(" + f[2] + "deg) scale(" + (1.06 - 0.06 * w).toFixed(4) + ")";
     });
-    // o aviso do ano, na margem de baixo da moldura, 150 ms depois do assentamento (8,333)
-    var av = A.E("aviso"); if (av) av.style.opacity = A.eo(A.seg(t, 8.333, 0.3)).toFixed(3);
+    // o aviso do ano, na margem de baixo da moldura, em 8,166 (textos-tela, texto-4 rodada 5b; peru-agua-arte-5)
+    var av = A.E("aviso"); if (av) av.style.opacity = A.eo(A.seg(t, 8.166, 0.3)).toFixed(3);
     // os textos da mesa, fixos na tela (fora da câmera); entram em 300 ms (opacidade + 24 px)
     MESA.textos.forEach(function (tx) {
       var el = A.E(tx.id); if (!el) return;

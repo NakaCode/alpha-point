@@ -50,6 +50,15 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s06 (+s07) (53,067 → 82,167 s do m
   ELEMENTOS (teto 6): b0 = linha + pílula (2); b1 = linha, gota/traço (1), CONTINENTAL DIVIDE, PACIFIC (4); b2 = linha,
   traços (1), PACIFIC, Amazon, ATLANTIC (5); b3 = linha, bacia, 2 pílulas, miniatura (5); b4 = linha, região + nome (3);
   b5/b6 = linha, régua, Lima, a cota, os rios, Rímac (6, de 25,0 ao fim; o Rímac é rio da mesma camada).
+  peru-agua-arte-5 (lote M-s06, 22/10/2026), conserto: só isto mudou.
+    · 'PACIFIC' em 'Pacific.' (5,066): a âncora passou de −78,30/−12,95 (que caía em y ~1950, sob a faixa do crédito, e só
+      entrava em ~7,1) a −77,60/−12,40, no mar a oeste da foz do Rímac, com a pílula à ESQUERDA da âncora: fica longe da linha
+      branca o tempo todo (≥ 130 px até sair; antes encostava em 8,0–8,4) e esmaece na margem esquerda em ~8,1, com a abertura.
+    · os tempos do texto-5 (textos-tela 7a6b71c0): ATLANTIC sai em 12,266; LAKE TITICACA BASIN, Lake Titicaca (Puno), a bacia e o
+      crédito da foto em 12,8; LIMA REGION (e o chão dela) em 18,433; 'Lima' em 21,1.
+    · R6-2: a miniatura pousa em 12,1 e assenta até 12,65 (1,03 → 1,00, 36 px de descida), parada na tela no lugar da pílula de
+      12,8; a pílula entra em 12,8, e daí a miniatura segue com ela.
+    · o relevo continua a 2,4× (o porquê vai no relato M-s06).
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px (--fs-credito) a cena toda, com data-qc-credito="mapa" só no
   próprio elemento (cobre o OSM do Rímac e dos rios). Acima dele, sem a marca de mapa: o da foto (12,833–14,8) e o da régua
   (22,3 ao fim). O HydroBASINS e o Natural Earth: nada na tela (o Exhibit B da WWF vai na descrição).
@@ -172,8 +181,8 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     // a gota: cai em 'Rain' (2,64), pousa em 3,25, parte-se em 3,45; a metade oeste desce de 4,27 a 5,07; a leste afunda 6,11–6,7
     gota: { cai: [2.64, 0.61], parte: 3.45, oeste: [4.27, 0.80], leste: [6.11, 0.60] },
     trilhas: { oesteSai: [11.07, 0.5], tributarios: [6.70, 1.80], amazonas: [8.50, 1.55], lesteSai: [11.07, 0.5] },
-    titicaca: { entra: 12.833, sai: 14.82, opacidade: 0.5 },
-    limaReg: { entra: 18.733, sai: 20.433, opacidade: 0.25 },
+    titicaca: { entra: 12.8, sai: 14.82, opacidade: 0.5 },
+    limaReg: { entra: 18.433, sai: 20.433, opacidade: 0.25 },
     regua: { entra: 20.45, sobe: 1.45 },
     rios: { entra: 25.0 },
     exag: 2.4
@@ -495,13 +504,13 @@ Wikimedia Commons · CC BY-SA 4.0</div>
   //    o que a câmera leva para perto da margem, da faixa do crédito ou do canto reservado esmaece antes (60 px) ──
   var ROT = [
     { id: "rotDiv",    ll: null, lado: "esquerda", dx: -120, dy: 0, entra: 0.9,    sai: 6.1 },
-    { id: "rotPac",    ll: [-78.30, -12.95], entra: 5.066, sai: 11.066 },
+    { id: "rotPac",    ll: [-77.60, -12.40], lado: "esquerda", entra: 5.066, sai: 11.066 },   // arte-5: no mar, a oeste da foz do Rímac; à esquerda da âncora, nunca chega à linha nem à faixa do crédito
     { id: "rotAmazon", ll: [-62.20, -3.05], dy: -200, entra: 8.833, sai: 11.066 },
-    { id: "rotAtl",    ll: [-45.60, 2.10], lado: "esquerda", entra: 10.033, sai: 11.066 },
-    { id: "rotTit",    ll: [-69.62, -13.70], entra: 12.833, sai: 14.8 },
-    { id: "rotPuno",   ll: [-68.62, -15.42], lado: "direita", dx: 60, entra: 12.833, sai: 14.8 },
-    { id: "rotLimaReg", ll: [-76.80, -11.75], entra: 18.733, sai: 20.433 },
-    { id: "rotLima",   ll: null, dx: 90, dy: 175, entra: 20.433, sai: null },   // abaixo de Lima e um pouco a leste, sobre o mar: o Rímac chega ao mar a oeste dela, e a pílula não encosta nele
+    { id: "rotAtl",    ll: [-45.60, 2.10], lado: "esquerda", entra: 10.033, sai: 12.266 },
+    { id: "rotTit",    ll: [-69.62, -13.70], entra: 12.8, sai: 14.8 },
+    { id: "rotPuno",   ll: [-68.62, -15.42], lado: "direita", dx: 60, entra: 12.8, sai: 14.8 },
+    { id: "rotLimaReg", ll: [-76.80, -11.75], entra: 18.433, sai: 20.433 },
+    { id: "rotLima",   ll: null, dx: 90, dy: 175, entra: 21.1, sai: null },   // abaixo de Lima e um pouco a leste, sobre o mar: o Rímac chega ao mar a oeste dela, e a pílula não encosta nele
     { id: "rotCota",   tela: null, entra: 22.3, sai: null },
     { id: "rotRimac",  ll: null, lado: "direita", dx: 96, dy: 30, entra: 25.0, sai: null }
   ];
@@ -535,7 +544,11 @@ Wikimedia Commons · CC BY-SA 4.0</div>
   }
 
   // ── a miniatura: logo abaixo da pílula 'Lake Titicaca (Puno)', borda direita alinhada; a foto só encolhe ──
-  var MINI = { id: "miniPuno", sob: "rotPuno", natural: [8593, 4322], recorte: [900, 50, 6800, 4232], foto: [900, 560], borda: 16, vao: 18 };
+  // arte-5 (R6-2): a miniatura POUSA antes do rótulo: aparece em 12,1, assenta (1,03 → 1,00, 36 px de descida) até 12,65, e a
+  // pílula entra em 12,8. Até 12,8 ela fica parada na tela, no lugar em que a pílula estará em 12,8 (a câmera ainda volta ao sul
+  // até 13,07, e o lago chega por baixo dela); de 12,8 em diante segue a pílula, presa ao mapa (contínuo em 12,8)
+  var MINI = { id: "miniPuno", sob: "rotPuno", natural: [8593, 4322], recorte: [900, 50, 6800, 4232], foto: [900, 560], borda: 16, vao: 18,
+    pousa: 12.1, assenta: 12.65, preso: 12.8, sai: 14.8 };
   (function montarMini(M) {
     var el = E(M.id), jan = el && el.querySelector(".janela"), im = el && el.querySelector("img");
     if (!el || !jan || !im) return falhar("a miniatura não está no palco.");
@@ -549,14 +562,29 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     im.style.left = (-M.recorte[0] * esc) + "px"; im.style.top = (-M.recorte[1] * esc) + "px";
   })(MINI);
   if (window.__erroCena) return;
+  function caixaPill(r) {   // a caixa da pílula na câmera atual, sem a subida de entrada
+    var el = E(r.id); if (!el) return null;
+    var p = map.project(r.ll), x = p.x + (r.dx || 0), y = p.y + (r.dy || 0), w = el.offsetWidth, h = el.offsetHeight;
+    var fx = r.lado === "direita" ? 0 : r.lado === "esquerda" ? 1 : 0.5;
+    return { l: x - w * fx, t: y - h / 2, w: w, h: h };
+  }
   function aplicarMini(t) {
     var el = E(MINI.id), r = rot(MINI.sob); if (!el || !r) return;
-    var v = r._v || 0;
+    var v = eo(seg(t, MINI.pousa, 0.2)) * (1 - eio(seg(t, MINI.sai, 0.3)));
     if (v <= 0) { el.style.opacity = "0"; el.style.visibility = "hidden"; return; }
-    var l = r._l + r._w - MINI.w, tp = r._t + r._h + MINI.vao;
+    var cx;
+    if (t < MINI.preso) {   // parada na tela: a caixa da pílula na câmera de 12,8, e a câmera de volta a t
+      map.jumpTo(cameraAt(MINI.preso)); if (map.terrain && map.transform.elevation !== 0) map.transform.elevation = 0;
+      cx = caixaPill(r);
+      map.jumpTo(cameraAt(t)); if (map.terrain && map.transform.elevation !== 0) map.transform.elevation = 0;
+    } else cx = caixaPill(r);
+    if (!cx) return;
+    var l = cx.l + cx.w - MINI.w, tp = cx.t + cx.h + MINI.vao;
+    var ua = eo(seg(t, MINI.pousa, MINI.assenta - MINI.pousa)), esc = 1.03 - 0.03 * ua, desce = -36 * (1 - ua);
     v *= cl(naArea(l, tp, MINI.w, MINI.h) / 60, 0, 1);
     el.style.opacity = v.toFixed(3); el.style.visibility = v > 0 ? "visible" : "hidden";
-    el.style.transform = "translate(" + l.toFixed(2) + "px," + tp.toFixed(2) + "px)";
+    el.style.transformOrigin = "50% 50%";
+    el.style.transform = "translate(" + l.toFixed(2) + "px," + (tp + desce).toFixed(2) + "px) scale(" + esc.toFixed(4) + ")";
   }
 
   // ── a gota e as duas metades (SVG, presas ao ponto da linha) ──
@@ -637,7 +665,7 @@ Wikimedia Commons · CC BY-SA 4.0</div>
 
   function aplicarCreditos(t) {
     var c = E("credito"); if (c) { c.style.opacity = "1"; c.style.visibility = "visible"; }
-    [["credFoto", 12.833, 14.8], ["credRegua", 22.3, null]].forEach(function (x) {
+    [["credFoto", 12.8, 14.8], ["credRegua", 22.3, null]].forEach(function (x) {
       var el = E(x[0]); if (!el) return;
       var v = eo(seg(t, x[1], 0.3)) * (x[2] != null ? 1 - eio(seg(t, x[2], 0.3)) : 1);
       el.style.opacity = v.toFixed(3); el.style.visibility = v > 0 ? "visible" : "hidden";
