@@ -9,8 +9,7 @@ de 22/10.
 O que fica com você, sempre: escolher a pauta entre opções, aprovar o roteiro, escolher título e capa, ver o vídeo pronto
 e publicar. O resto roda sozinho.
 
-Para isso, cada serviço precisa ser **seu**: conta Claude, Cloudflare (onde ficam os arquivos do canal) e a
-autorização do YouTube. Nenhuma credencial passa por chat, e-mail ou mensagem. Você digita no próprio PC, num script que
+Para isso, cada serviço precisa ser **seu**: a conta Claude e a autorização do YouTube. Nenhuma credencial passa por chat, e-mail ou mensagem. Você digita no próprio PC, num script que
 não mostra o que você digita, e manda para a Top10 só a **linha verde** que ele imprime no fim.
 
 **Comece só quando a Top10 avisar que a pasta `C:\estudio\maquina\` existe no PC do escritório.** Todos os passos são
@@ -34,23 +33,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File C:\estudio\maquina\preparar-
 Ele não cria usuário nem pede senha: anota que a produção é do seu usuário e cria `C:\estudio\`. Tire o `-Ligado24h` se
 este PC não puder ficar ligado o tempo todo. Mande à Top10 a linha verde `PRONTO …` (ela deve dizer `modo=mesmo-usuario`).
 
-## 2 · Cloudflare (onde ficam os vídeos e o backup do canal)
+## 2 · Cloudflare: nada a fazer
 
-1. Em cloudflare.com, crie a conta do canal (ou use a sua). Se a Cloudflare pedir um cartão para ligar o R2, é o seu: o
-   custo é do canal. Preço lido em 21/out/2026 na página oficial: US$ 0,015 por GB por mês, com 10 GB grátis, e baixar os
-   arquivos não custa nada.
-2. R2 → **Create bucket** → nome `alpha-point` → crie.
-3. R2 → **Manage R2 API Tokens** → **Create API token** → permissão **Object Read & Write** → **Apply to specific buckets
-   only** → `alpha-point` → crie. A tela mostra uma vez só o **Access Key ID** e o **Secret Access Key**: deixe a tela
-   aberta. O **Account ID** aparece na página do R2.
-4. No PowerShell como administrador:
-
-   ```
-   powershell -NoProfile -ExecutionPolicy Bypass -File C:\estudio\maquina\guardar-segredo-no-cofre.ps1 -Canal alpha-point -Segredo r2
-   ```
-
-   Ele pergunta o Account ID e o nome do bucket (Enter = `alpha-point`) e depois as duas chaves, sem mostrar na tela.
-   Mande à Top10 a linha verde `GUARDADO …`.
+Os vídeos e o backup do canal ficam num bucket só do Alpha Point (`qint-alpha-point`), na conta Cloudflare da Top10
+(decisão do Mateus, 22/out/2026). A Top10 criou o bucket e põe a credencial no cofre do PC; você não cria conta nem paga
+nada.
 
 ## 3 · ElevenLabs: nada a fazer
 
@@ -104,9 +91,10 @@ Confira também que o canal está numa conta Google e num AdSense **seus**, sem 
 5. **YouTube**: os dois vídeos saíram na categoria Pessoas e blogs, que é o padrão do YouTube: fica assim ou passa
    para Educação? Há e-mail de contato profissional para a descrição (ou nenhum)? O canal já está no programa de
    parcerias? E o que você marca em «conteúdo alterado ou sintético» (o motor marca «sim», por ser voz de IA, até você dizer)?
-6. **Imagens genéricas**: o Storyblocks e o Envato da Top10 continuam, sempre pelo navegador (decisão do Mateus,
-   22/out), depois do acervo aberto, da fonte oficial, do mapa e da ilustração. O Motion Array e o Shutterstock saem.
-   Há algum tipo de imagem que você só achava neles?
+6. **Imagens genéricas**: os quatro bancos de hoje (Envato, Motion Array, Storyblocks e Shutterstock, assinaturas da
+   Top10) continuam, sempre pelo navegador e depois do acervo aberto, da fonte oficial, do mapa e da ilustração
+   (decisão do Mateus, 22/out). No motor novo, o agente deixa a busca escrita e a imagem é baixada pelo navegador:
+   quem baixa, você ou a Top10?
 7. **A trilha automática**: a regra do canal diz que a trilha nunca passa por ferramenta de IA nem de reconhecimento de
    música. No motor novo, um agente lê o ROTEIRO e escreve o clima de cada trecho em texto (por exemplo «misterioso,
    ambiente, calmo»); a faixa sai de um ranking dos dados da própria Epidemic contra esse texto, e a prévia é medida pelo
