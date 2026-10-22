@@ -184,3 +184,12 @@ O Lucas voltou ("Estou de volta, faça um resumo do que foi feito e do que está
   assunto." O conferente grava a `excecao_lucas` antes de o clipe ir à cena.
 - **O Juneau**, à pergunta "O Juneau ainda está esperando a sua revisão no Premiere. Separo os clipes dele também (mais uns 48 GB)?":
   **"Não, o Juneau fica (Recomendado)"** (15:40). Os clipes do Juneau não se mexem.
+
+## 22/10/2026, 16:23 (Brasília): a s37 com o clipe do Rímac baixo, no chat da Sala
+
+- À pergunta "Na s37 ("its river runs low for seven months"), o Motion Array tem o plano certo do Rímac baixo em Lima, mas o clipe dura 5 s
+  e o trecho tem 5,4 s. Daria para tocar a 93 % da velocidade, uma diferença que não se percebe. Baixo esse clipe, ou a s37 fica no
+  satélite?": **"Baixar o clipe (Recomendado)"**. A opção dizia: "Uma caça curta só com ele: o conferente revê com a velocidade, te mando a
+  linha para o "sim" e baixo pelo Brave. O rio baixo aparece de verdade na tela. Custa uns 15 minutos e pouco do semanal."
+- O item é o `s37-a-2` (Motion Array 4333181, 0:05, 3840×2160), que o conferente deixou `trocar` só pela duração. A resposta autoriza a
+  caça curta e a linha; o download continua esperando o "sim" dele à linha da lista.
