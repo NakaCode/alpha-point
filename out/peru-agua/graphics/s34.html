@@ -37,6 +37,14 @@
   CRÉDITOS (56 px): '© MapTiler © OpenStreetMap contributors' de 0 ao fim; 'Source: INEI (Peru), censuses 1940 and 2025' de 0 a 11,3;
   'Source: INEI (Peru), 2022 GDP estimate' de 11,3 ao fim. O OSM dos polígonos de Lima e do Callao está na linha da MapTiler.
   ELEMENTOS (máx.): b0 = cidade, nome, fila, cota, legenda = 5; b1 = região, nome, barra, cota, legenda = 5. TEXTOS VIVOS ≤ 3.
+  CONSERTO peru-agua-arte-4 (lote M-s21s34, 22/10/2026), pelo textos-tela (D4, conserto 4) e pelo L51 achado 1:
+    · 'ABOUT 1 IN 10 PERUVIANS' (e a 1ª silhueta) em 'about' (4,333), não mais em 4,733;
+    · 'ABOUT 1 IN 3 PERUVIANS', a fila de silhuetas e o crédito do censo ficam até 'Lima' (12,733, T3), no começo da viagem;
+      o crédito do PIB entra em 12,733 (era 11,3);
+    · a pílula 'Lima and Callao' 35 px a leste (tela [1285, 1065]; era [1250, 1066]), para desencostar o canto inferior esquerdo
+      da linha de costa (identidade §6). A posição saiu de uma busca medida nos quadros 4K de 0,6, 5,0 e 10,8 s: a pílula
+      (618 × 325 px) fica a ~15 px do traço branco mais perto (a costa da baía embaixo à esquerda, o recuo da divisa a leste e
+      o entalhe ao norte); 50 px a leste ela encostava na divisa leste (3 px). Câmera sem mudança. Onde o texto acima diz outros tempos para esses elementos, vale isto.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -118,6 +126,7 @@ Callao</div>
   // Tempos (0 = 387,367 s do master), do words.json: 'Lima' 0,023 · 'about' 1,188 · 'one' 4,753 · 'By' 6,543 · 'more' 8,273 ·
   // 'about' 10,013 · 'In' 11,323 · 'Lima' 12,753 · 'forty' 15,393. Os t0 dos textos são os do textos-tela.json (grade de 30 fps).
   var B1 = 11.3, VIAGEM = 12.8;
+  var T3 = 12.733;   // peru-agua-arte-4: o t1 de "ABOUT 1 IN 3 PERUVIANS" e do crédito do censo, e o t0 do crédito do PIB ("Lima", textos-tela)
   var CENA = {
     duracao: 20.066,
     largura: 3840, altura: 2160,
@@ -138,11 +147,11 @@ Callao</div>
     giro: [-1.0, 1.0],
     aneis: [],
     rotulos: [
-      { id: "rotLima",   tela: [1250, 1066], lado: "meio",    vert: "centro", entra: 0.0,    sai: B1 },
+      { id: "rotLima",   tela: [1285, 1065], lado: "meio",    vert: "centro", entra: 0.0,    sai: B1 },
       { id: "cota1940",  tela: [1640, 200],  lado: "direita", vert: "baixo",  entra: 1.166,  sai: 6.533 },
       { id: "cotaSoma",  tela: [1640, 200],  lado: "direita", vert: "baixo",  entra: 8.266,  sai: B1 },
-      { id: "leg10",     tela: [2040, 1250], lado: "direita", vert: "baixo",  entra: 4.733,  sai: 6.533 },
-      { id: "leg3",      tela: [2040, 1250], lado: "direita", vert: "baixo",  entra: 10.0,   sai: B1 },
+      { id: "leg10",     tela: [2040, 1250], lado: "direita", vert: "baixo",  entra: 4.333,  sai: 6.533 },
+      { id: "leg3",      tela: [2040, 1250], lado: "direita", vert: "baixo",  entra: 10.0,   sai: T3 },
       { id: "rotRegiao", tela: [1850, 420],  lado: "direita", vert: "baixo",  entra: 12.733, sai: null },
       { id: "cotaPib",   tela: [1850, 1100], lado: "direita", vert: "baixo",  entra: 15.366, sai: null },
       { id: "legPib",    tela: [1850, 1320], lado: "direita", vert: "baixo",  entra: 15.366, sai: null }
@@ -150,8 +159,8 @@ Callao</div>
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
     creditos: [
       { id: "crMapa", mapa: true, entra: 0, sai: null },
-      { id: "crInei", janelas: [[0, B1]] },
-      { id: "crPib",  janelas: [[B1, 20.067]] }
+      { id: "crInei", janelas: [[0, T3]] },
+      { id: "crPib",  janelas: [[T3, 20.067]] }
     ]
   };
   var FILA = { x0: 2100, passo: 150, y: 1130, n: 10 };          // os pés das 10 silhuetas
@@ -204,10 +213,10 @@ Callao</div>
   }
   function fila(t, A) {
     var g = A.E("fila"); if (!g) return;
-    g.setAttribute("opacity", A.janela(t, 0.0, B1, 0.3, 0.3).toFixed(3));
+    g.setAttribute("opacity", A.janela(t, 0.0, T3, 0.3, 0.3).toFixed(3));
     g.setAttribute("transform", "translate(0 " + ((1 - A.eo(A.seg(t, 0, 0.3))) * 24).toFixed(2) + ")");
     // 1940: a 1ª acende em "one in ten" e apaga com os textos de 1940
-    var a1940 = A.janela(t, 4.733, 6.533, 0.3, 0.3);
+    var a1940 = A.janela(t, 4.333, 6.533, 0.3, 0.3);
     // 2025: 3 cheias e a 4ª em 1/4 da largura (3,25 de 10), em "about a third"; uma a uma, 0,08 s
     for (var i = 0; i < FILA.n; i++) {
       var el = A.E("silCheia" + i); if (!el) continue;

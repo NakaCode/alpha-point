@@ -31,6 +31,12 @@
     · CÂMERA: as pernas abaixo e o giro contínuo de −0,8° a +0,8°.
   Crédito: '© MapTiler © OpenStreetMap contributors' a 56 px, do primeiro ao último quadro. Geometria: Natural Earth
   (domínio público, sem crédito).
+  CONSERTO peru-agua-arte-4 (lote M-s21s34, 22/10/2026), pelo textos-tela (D4, conserto 4): 'CHILE' entra em 'border' (7,034) e
+  sai em 'built' (9,234); 'Piura' e 'Tacna' saem também em 9,234, e o Chile a 25 % e os pontos das cidades saem com eles. O
+  'COASTAL DESERT' continua até 8,467. A ÚNICA mudança de câmera: a viagem de 'And yet' começa em 9,0 (era 8,6) e termina
+  em 11,1, como antes (2,1 s, cúbica); a perna lenta B → B2 vai até 9,0. Com a viagem em 8,6, o 'CHILE' (preso ao país)
+  descia à faixa do crédito entre 9,1 e 9,3 s (portao-margens: y 1980 > 1880); subir o nome o punha sobre a pílula de Tacna.
+  Os três nomes ficam no começo lento da viagem, como o textos-tela diz (L50). Onde o texto acima diz 7,534/8,467/8,6, vale isto.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -139,8 +145,8 @@ farms, cities and mines not counted</div>
     pernas: [
       { t0: 0,     t1: 4.667,  de: "A0", para: "A1", tipo: "h" },
       { t0: 4.667, t1: 7.667,  de: "A1", para: "B",  tipo: "v", ease: "cubico" },   // 'from Piura … to Tacna': 3 s
-      { t0: 7.667, t1: 8.6,    de: "B",  para: "B2", tipo: "h" },
-      { t0: 8.6,   t1: 11.1,   de: "B2", para: "D",  tipo: "v", ease: "cubico" },   // 'And yet': 2,5 s
+      { t0: 7.667, t1: 9.0,    de: "B",  para: "B2", tipo: "h" },   // peru-agua-arte-4: a viagem começa em 9,0 (era 8,6), para o CHILE ficar acima da faixa do crédito até 9,234
+      { t0: 9.0,   t1: 11.1,   de: "B2", para: "D",  tipo: "v", ease: "cubico" },   // 'And yet': 2,1 s (era 8,6–11,1)
       { t0: 11.1,  t1: 12.667, de: "D",  para: "D2", tipo: "h" }
     ],
     giro: [-0.8, 0.8],
@@ -149,9 +155,9 @@ farms, cities and mines not counted</div>
       { id: "rotDeserto", lnglat: [-78.25, -10.10], lado: "esquerda", vert: "centro", dx: 30, dy: 0, entra: 1.2, sai: 8.467 },   // sobre o mar, a ponta direita na faixa da costa (a pílula não cobre o deserto)
       { id: "numDeserto", tela: [200, 1200], lado: "direita", vert: "baixo", entra: 2.4, sai: 4.667 },
       { id: "legDeserto", tela: [200, 1544], lado: "direita", vert: "baixo", entra: 2.4, sai: 4.667 },
-      { id: "rotPiura",   ref: "PIU", lado: "esquerda", vert: "centro", dx: -44, dy: 0, entra: 4.867, sai: 8.467 },
-      { id: "rotTacna",   ref: "TAC", lado: "esquerda", vert: "centro", dx: -44, dy: 0, entra: 6.167, sai: 8.467 },
-      { id: "nomeChile",  lnglat: [-69.40, -20.10], lado: "centro", vert: "centro", entra: 7.534, sai: 8.467 }
+      { id: "rotPiura",   ref: "PIU", lado: "esquerda", vert: "centro", dx: -44, dy: 0, entra: 4.867, sai: 9.234 },
+      { id: "rotTacna",   ref: "TAC", lado: "esquerda", vert: "centro", dx: -44, dy: 0, entra: 6.167, sai: 9.234 },
+      { id: "nomeChile",  lnglat: [-69.40, -20.10], lado: "centro", vert: "centro", entra: 7.034, sai: 9.234 }
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
     creditos: [
@@ -210,12 +216,12 @@ farms, cities and mines not counted</div>
     quadro: function (t, A) {
       A.lin("divisa", 1);
       // o Chile acende em 'Tacna,' (a fronteira chega na fala) e sai com os rótulos, antes da viagem de 'And yet'
-      A.opac("chile-fill", "fill-opacity", 0.25 * A.janela(t, 6.167, 8.467, 0.5, 0.5));
+      A.opac("chile-fill", "fill-opacity", 0.25 * A.janela(t, 6.167, 9.234, 0.5, 0.5));
       [["pPiu", "PIU", 4.867], ["pTac", "TAC", 6.167]].forEach(function (x) {
         var el = A.E(x[0]); if (!el || !A.REFS[x[1]]) return;
         var p = A.project(A.REFS[x[1]]);
         el.setAttribute("cx", p.x.toFixed(2)); el.setAttribute("cy", p.y.toFixed(2));
-        el.setAttribute("opacity", A.janela(t, x[2], 8.467).toFixed(3));
+        el.setAttribute("opacity", A.janela(t, x[2], 9.234).toFixed(3));
       });
     }
   };
