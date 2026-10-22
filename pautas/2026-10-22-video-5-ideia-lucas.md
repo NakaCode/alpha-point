@@ -1,0 +1,19 @@
+# Vídeo 5: a ideia do Lucas (22/10/2026)
+
+O Lucas, no chat da Sala, durante o art do vídeo 4 (Peru):
+
+> "Eu tive uma ideia para o próximo vídeo "The Deepest Point in the Atlantic Ocean". Normalmente quando se fala em lugar profundo,
+> pensa-se na Fossa das marianas, mas ela não fica no Atlântico então é isso que vai trazer ao espectador o pensamento de "Como
+> assim?" Pôr na Thumb algo como "Não é a fossa das Marianas", explicar que estão em um lugar diferente e falar sobre o que existe
+> lá, sobre a região e etc..."
+
+- **Título de trabalho:** "The Deepest Point in the Atlantic Ocean".
+- **Miniatura:** a negação do que o espectador pensa ("NOT the Mariana Trench").
+- **O vídeo:** onde fica o ponto, o que existe lá, a região.
+- **A conferir antes da pauta (nada disto está checado):**
+  - o lugar: a Fossa de Porto Rico (Milwaukee Deep / Brownson Deep), com a profundidade e a data de cada medição;
+  - a distância até a costa de Porto Rico;
+  - a Fossa das Sandwich do Sul, no sul do Atlântico, e o limite do Oceano Austral;
+  - a demanda e a concorrência no YouTube;
+  - o acervo aberto: a NOAA Ocean Exploration, a GEBCO e o USGS.
+- O Egito continua de reserva (pauta do vídeo 4, `pautas/2026-10-16-video-4.md`).
