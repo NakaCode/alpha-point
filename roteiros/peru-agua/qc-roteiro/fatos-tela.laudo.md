@@ -1737,6 +1737,115 @@ COBERTURA: 6 de 6 (esta reconferência: o crédito, os tempos, a nota, a instru�
 NOTA: 9/10
 VEREDITO: RESSALVA. Nenhum DIVERGE nem REFUTADA. R9-1 é uma pendência do HTML, e os 17 NÃO FOI CHECADO de antes continuam.
 
+## Reconferência 10 (texto-11, sobre ce90bfb8…)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `ce90bfb872f870f1de431fe78e028f3d23a3d15fedf990d689e73a27fda5f3ef`.
+- **Comparado com:** `antes-consertos-12/textos-tela.json.76a9a174`, cujo sha256 confere.
+- **O diff:** refeito aqui, sem as notas (`scripts/diff10.py`). Batem com o do setor: 21 cenas; de 441 para 401 textos; nenhum texto com `_caminho` nem `_espera_a_caca`. Mudaram 14 seções.
+- **As entradas:**
+  - regência `02eb32a7`, conceito `33ae1e09` e `conferencia-midia.json` `9837bd9c` (37 candidatos): batem no disco;
+  - a lista da Direção (`textos-sem-objeto-direcao-17.json`, `c66f1bfd…`);
+  - `pauta-geo.json` e as camadas de `_media/geo/` (o nome de cada feição);
+  - os `_PROCEDENCIA.json` de `_media/footage/`;
+  - `words.json`;
+  - `fundamento.json`;
+  - `marca/midia.md`, l. 89.
+- **Limites:** 0 imagens, nenhuma web; nada foi gravado no canal.
+
+**A casa de cada clipe.** O arquivo de cada clipe em `_media/footage/<cena>/` casa com o veredito pela `url` do `_PROCEDENCIA.json`, e os 10 têm `mesmo_item: true`:
+
+| cena | arquivo | veredito |
+|---|---|---|
+| s03 | costa-desertica | Motion Array 2556702 |
+| s03 | lima-costa-verde | Envato a42e7496 |
+| s03 | callao-porto | Envato b142d057 |
+| s09 | iquitos | Motion Array 4074338 |
+| s15 | lima-neblina-costa-verde | Envato daf75d35 |
+| s15 | lima-ceu-cinza | Envato c3538aaf |
+| s17 | lima-morros | Storyblocks SBV-339018031 |
+| s19 | rio-andino-cheio | Envato 762de3d9 |
+| s29 | lima-centro-historico | Motion Array 4330946 |
+| s33 | serra-peru-parcelas | Envato 0c62893f |
+
+| id | o quê | o que se conferiu | veredito |
+|---|---|---|---|
+| RB208 | s03 b0 "PERU" (0,3–2,6) | Origem: "Drone Aerial View, Red Sand Beach, Desert Cliff Sea_ Paracas National Peru_03" (título). "PERU" é menos específico que Paracas. A voz diz "The coast on that side is mostly desert." | CONFIRMADA |
+| RB209 | s03 b1 "Lima" (3,833–7,2) | Origem: "the iconic Costa Verde in Lima, Peru" (descrição). "Lima" entra em "Lima," (3,838) | CONFIRMADA |
+| RB210 | s03 b2 "Callao" (8,066–11,6) | Origem: "The Port is located in the city of Callao in Peru". A pílula sai do `lugar_na_origem`, e a `excecao_lucas` ("Usar com as marcas", 22/10, 15:40) não entra nela; a regra de série diz isso. "Callao" entra em "Callao," (8,093) | CONFIRMADA |
+| RB211 | s09 b2 "Iquitos" (10,666–16,033) | Origem: "Capturing Expanse Of Iquitos City And[...]". A cidade está nomeada, e "Iquitos," está em 10,666 | CONFIRMADA |
+| RB212 | s15 b0 "Lima" (0,3–3,2) | Origem (daf75d35): "…Costa Verde Cliffs and the Pacific Ocean in Lima Peru…" e "the expansive coastline of Lima, Peru". A pílula é menos específica | CONFIRMADA |
+| RB213 | s15 b1 "Miraflores, Lima" (3,5–6,333) | Origem (c3538aaf): "Foggy hyperlapse aerial over Miraflores city coastal cliffs, Lima Peru". A pílula diz o mesmo que a origem, sem nada mais específico | CONFIRMADA |
+| RB214 | s17 b1 "Lima" (5,266–10,133) | Origem: "…Over The La Molina District Of The City Of Lima…". "Lima" é menos específico que La Molina | CONFIRMADA |
+| RB215 | s19 b1 "Colca Canyon" (5,734–8,6) | Origem: "Colca Canyon River Valley - Arequipa - Peru". É o que a origem nomeia, e sem "Arequipa" (a região ou a cidade, que a origem não distingue) | CONFIRMADA |
+| RB216 | s29 b1 "Lima" (5,566–13,333) | Origem: "Plaza De Armas In Lima Capital City Of Peru.". A pílula é menos específica | CONFIRMADA |
+| RB217 | s33 b0 "PERUVIAN HIGHLANDS" (0,3–9,2) | Origem: "…near Vinicunca Peru." e "rugged Andean mountains … a small village … cultivated fields". "PERUVIAN HIGHLANDS" é a categoria que a própria descrição sustenta (montanha andina, no Peru), menos específica que Vinicunca, e é a palavra da voz ("in the highlands") | CONFIRMADA |
+| RB218 | s47 b0 "San Juan de Miraflores" (0,0–5,1, pílula de mapa) | A camada que o beat acende, `san-juan-de-miraflores` (OSM relation/1944816), tem a feição `name: "San Juan de Miraflores"`. A voz da s45 diz "In San Juan de Miraflores, in southern Lima" (0,25), e o card da s46 diz "Resident, San Juan de Miraflores (2025)". A pílula nomeia o distrito, e nenhuma ponta aponta casa. A regência ainda diz "no new label" e "no place pill"; a contradição está registrada em `_pedidos_a_montante` | CONFIRMADA |
+| RB219 | s38 b0 "Rímac", t0 de 0,3 para 0,0 | A Direção pediu (`t0_a_mudar`), e a regência s38 › b0 manda a pílula entrar em 0,0, "carried over from s37". Na s37, a "Rímac" vai até 5,367, o fim da cena, e na s38 continua de 0,0 a 3,267, sobre a camada `rio-rimac` ("Rímac River"). A voz diz "the Rímac runs high" | CONFIRMADA |
+| RB220 | as pílulas de mapa que eram do par caca/sem_caca e agora são uma entrada só | Cada uma está na camada do beat. **s08** Rímac (`rio-rimac`); **s22** Caral (`pontos-fontes › caral`); **s23** Chan Chan (`pontos-fontes › chan-chan`) e Cantalloc (`pontos-osm`, "Cantalloc puquios"); **s35** Villa El Salvador (`villa-el-salvador`); **s37** Rímac; **s38** Laguna Marcapomacocha (`lagoas-marcapomacocha-antacoto`, feição "Marcapomacocha"); **s42** Lima (`lima-callao-metropolitana`, "Lima Province"); **s48** Puente Piedra (`puente-piedra`). Os textos e os tempos são os da linha sem_caca, já conferida | CONFIRMADA |
+| RB221 | os créditos dos 10 clipes | O `credito_na_tela` dos 10 vereditos é "nenhum": o Envato (§3.1) e o Motion Array (§3.2) não exigem crédito, e o Storyblocks (§3.3) não o leva na tela, com os metadados intactos. Nenhum clipe tem crédito na lista, e nenhum vem do Shutterstock | CONFIRMADA |
+| RB222 | o crédito do MapTiler, cena a cena | Recalculado contra a regência `02eb32a7`: em 29 das 32 cenas, o crédito é igual à união dos beats `mapa` e `mapa_relevo`. As mudanças: s01 0–22,467; s03, s15, s17 e s33 sem crédito (são clipes); s04 0–19; s09 só 0–9,866; s19 0–5,434 e 8,6–11,3; s22 0–7,533; s23 0–27,5 e 31,633–34,4; s29 só 0–5,566; s35 0–21,234; s42 20,967–32,233; s44 0–15,7; s47 0–5,1. As 3 cenas fora da união não mudaram nesta rodada e têm o mapa por baixo: s16 (a foto sobre o mapa, 3,5–11,767), s39 (o desenho sobre o satélite, 25,8–30,867) e s52 (o quadro do mapa congelado). A lista `_na_tela` do glossário bate com as 32 cenas | CONFIRMADA |
+| RB223 | s22: o crédito "Soto Caldaa Cesar / Wikimedia Commons · CC BY-SA 4.0" sai | O b0 (0–7,533) agora é satélite (`mapa`, `pontos-fontes › caral`). A foto de reserva tem veredito `trocar` para a frase do b0 (candidatos[34]). O b1 (7,533–11,767) tem a foto frontal, com "JOSE MORALES CIENCIA POLITICA UNMSM / Wikimedia Commons · CC BY-SA 4.0", igual letra a letra ao `credito_na_tela` do aprovado (candidatos[11]), do primeiro ao último quadro do beat | CONFIRMADA |
+| RB224 | os números que mudaram de beat (o texto e o tempo são os mesmos) | **s03, agora sobre os clipes:** "0.3 INCHES (8 mm)" em 4,866, com "about" na voz em 4,873; "LIMA 9.6 M + CALLAO 1.0 M = 10.6 M" em 9,6, com "more" em 9,633. **s47, agora dentro da animação:** "ABOUT 260 GALLONS (1 m³)" em 8,467, com "two" em 8,477 ("two hundred sixty gallons"); "FREE" em 15,6, com "deliveries" em 15,602 e "free." em 16,412. Os créditos não mudaram. Nenhum outro número mudou de tempo | CONFIRMADA |
+| RB225 | `_pilulas_de_mapa` s19 b2: sem pílula | A decisão se sustenta: a voz não nomeia rio, e a camada acesa é a genérica `rios-vertente-pacifico`. **Mas a razão diverge:** "o que nenhuma fonte desta cena sustenta" não é verdade. O `fundamento.json` › `mec.num-41` (a fonte do "run dry" no roteiro-editor) nomeia 8 rios com vazão média zero no mês mais seco: Piura, Moche, Virú, San Juan, Ica, Acarí, Yauca e Caplina (Table 2, p. 630, 1969–2004). O que falta é que a regência escolha um deles para a câmera descer. Achado R10-1 | DIVERGE (razão; a decisão fica) |
+| RB226 | `_pilulas_de_mapa` s20 b0: sem pílula | A voz de 0 a 4,5 é "In two thousand nine, Peru's water authority said that, for lack of storage,", sem lugar. `doc.num-17` tem o escopo "bacia úmida do Pacífico", não um rio. A foz acesa é a do Rímac (`rio-rimac`), e "Rímac" ligaria o número da ANA ao rio | CONFIRMADA |
+| RB227 | `_pilulas_de_mapa` s35 b0: sem pílula | A voz ("the city", "the city's edge") e "Pamplona" no corte (4,734) conferem. **Mas a razão diverge:** a s34 não fica "sobre o mesmo polígono metropolitano com 'Lima and Callao' até o último quadro". "Lima and Callao" sai em 11,3; de 12,733 ao fim (20,066), a s34 está sobre o `departamento-lima`, com "LIMA REGION + CALLAO" (regência s34 › b-último). A s35 › b0 volta ao `lima-callao-metropolitana`, sem contorno. A decisão se sustenta pelos outros motivos (nenhum distrito dos morros lido; "LIMA" acabou de sair na pílula da região). Achado R10-2 | DIVERGE (razão; a decisão fica) |
+| RB228 | `_pilulas_de_mapa` s44 b1: sem pílula | A voz diz "In the districts it studied" (10,237); "Lima and Callao" sai em 10,234, sobre a mesma camada `lima-callao-metropolitana` | CONFIRMADA |
+| RB229 | `_pilulas_de_mapa` s47 b0: com pílula | Ver RB218. "É o único texto vivo do b0": de 0 a 5,1 só há a pílula e o crédito do mapa | CONFIRMADA |
+| RB230 | `_pilulas_de_mapa` s49 b0: sem pílula | A voz diz "the slope there" (1,712–2,102). "Puente Piedra" da s48 vai até 19,566, o fim da cena, e as duas cenas acendem a mesma camada `puente-piedra`. O pedido a montante (um plano só) está registrado | CONFIRMADA |
+| RB231 | glossário: os itens novos e os mudados | "Colca Canyon": a grafia vem do título da origem (Envato 762de3d9). A frase "é a forma da imprensa em inglês" ficou NÃO ACHEI, sem web, mas a grafia não depende dela. "Miraflores": a origem c3538aaf, e a a42e7496 da s03 traz "Miraflores Skyline At Lima" (candidatos[25]), como a nota diz. "PERUVIAN HIGHLANDS": agora com a fonte no veredito (RB217). "San Juan de Miraflores": ganha a s47 no `_na_tela`. MapTiler: a lista bate com as 32 cenas (RB222). "Soto Caldaa Cesar" sai, com a foto (RB223) | CONFIRMADA (com o NÃO ACHEI de uma frase de apoio) |
+| RB232 | `rotulos_dado`: a linha das imagens de satélite | Agora diz "s13, s16 · June 2018 / June 1998": a MODIS de 20/06/2018 (PA016) e o Landsat 5 de 03/06/1998 (PA019). A MODIS de 2015 (PA017) sai, porque a s15 é clipe; o "Satellite image · June 2015" saiu da lista (era da s15 sem_caca). A s13 e a s16 continuam com as legendas "June 2018" e "June 1998" | CONFIRMADA |
+| RB233 | `nao_vai_para_tela`: os itens novos | A linha do Shutterstock não vai à tela: nenhum dos 10 clipes vem do Shutterstock, e isso confere. **A conta, não:** o texto diz "Motion Array 4, Envato 5, Storyblocks 1", e os vereditos dão **Motion Array 3** (s03-a, s09, s29), **Envato 6** (s03-b, s03-c, s15-a, s15-b, s19, s33) e **Storyblocks 1** (s17). Achado R10-3. O resto confere: o Soto Caldaa (RB223); as 5 cenas sem pílula (RB225–RB230); "Arequipa" e "Vinicunca" fora (RB215, RB217); o Schmaltz só na s13 | DIVERGE (contagem; a conclusão fica) |
+| RB234 | `_regras_de_serie`: as 4 regras mudadas | A regra do rótulo de lugar, a do satélite e a dos textos vivos conferem (RB208–RB220, RB232, RB235). **A do crédito do mapa** ("…e só nele: nunca sobre clipe, foto ou desenho") é mais absoluta que o arquivo: a s16 (a foto da NOAA sobre o mapa), a s39 (o desenho sobre o satélite) e a s52 (o quadro congelado) levam o crédito sobre foto, desenho e quadro parado, com o mapa por baixo, e estão certas. Achado R10-4 | CONFIRMADA (com a ressalva de redação) |
+| RB235 | `_textos_vivos_max` | Recontei as 401 entradas, sem o crédito, a folha, o grifo, o eixo e o "nada": o máximo por cena é igual ao `medido` em todas as cenas, e o maior é 4. As chaves de caça e sem caça viraram uma por cena | CONFIRMADA |
+| RB236 | `_instrucoes_para_a_arte`, `_pedidos_a_montante`, `_fechados`, `_espera_a_sala` e `_como_ler` | As instruções da s38 e da s47 batem com RB219 e RB218, e a da s01 (a pílula da caça) sai. Os pedidos novos (as pílulas dos clipes, a s47 contra a regência, a s48/s49 num plano só) batem com o arquivo. `_fechados`: "10 clipes aprovados (s03 a/b/c, s09, s15 a/b, s17, s19, s29, s33)" confere com os vereditos 24–33. `_espera_a_sala` perde a linha da caça, e `_como_ler` registra o fim da caça | CONFIRMADA |
+| RB237 | `_entradas_sha256` e `_entradas_conferidas` | No disco, a regência dá `02eb32a7`, o conceito `33ae1e09` e a conferência `9837bd9c`, e batem. **O espelho no disco é `fecc4e8e…`, não o `1c8e62a7…` registrado.** O `espelho.json` é das 17:26:41, e o `textos-tela.json` das 17:25:20. O `_tmp/montador/direcao-18-espelho.py` parte do `1c8e62a7` e muda só o s52 (modo, mídia, `_fusao`), o s03 (`midia_necessidade`) e o s08 (`motivo`, `_planos[0].objeto`), "nenhum tempo … nem tempo de plano". Os relatos de `peru-agua-direcao-18` são das 17:31. O redator conferiu contra o espelho certo do momento. Achado R10-5 (aviso) | CONFIRMADA (com o aviso) |
+
+**Os achados:**
+1. **[LEVE] R10-1 · `_pilulas_de_mapa` s19, a razão.**
+   - **CONSERTO:** "a fonte do 'run dry' (mec.num-41) nomeia 8 rios com vazão zero no mês mais seco (Piura, Moche, Virú, San Juan, Ica, Acarí, Yauca, Caplina), mas a câmera desce um rio da camada genérica, não escolhido entre eles: nomeá-lo afirmaria o que a fonte não diz dele".
+   - **Opcional, a montante:** se a regência fizer a câmera descer um dos 8, a pílula com o nome dele se sustenta.
+   - **RAIZ:** PONTUAL.
+2. **[LEVE] R10-2 · `_pilulas_de_mapa` s35, a razão.**
+   - **CONSERTO:** "a s34 termina sobre o departamento de Lima com 'LIMA REGION + CALLAO' (12,733–20,066); 'Lima and Callao' sai em 11,3".
+   - O resto da razão fica.
+   - **RAIZ:** PONTUAL.
+3. **[LEVE] R10-3 · `nao_vai_para_tela`, a linha do Shutterstock.**
+   - **CONSERTO:** "(Motion Array 3, Envato 6, Storyblocks 1)".
+   - **RAIZ:** PONTUAL.
+4. **[LEVE] R10-4 · `_regras_de_serie`, o crédito do mapa.**
+   - **CONSERTO:** "…e só nele: nunca sobre clipe, nem sobre foto ou desenho sem o mapa por baixo (a s16, a s39 e a s52 levam o crédito porque o mapa continua sob a foto, o desenho e o quadro congelado)".
+   - **RAIZ:** INSTRUÇÃO. É regra de série, e sem o ajuste ela pode levar a Arte a tirar o crédito da s16, da s39 ou da s52.
+5. **[AVISO] R10-5 · a direcao-18 começou depois deste arquivo.**
+   - O espelho mudou de `1c8e62a7` para `fecc4e8e`. A `regencia-previa-direcao-18b.json` é de 17:29, e a regência no disco ainda é `02eb32a7`.
+   - Pelo escopo declarado, nenhum tempo nem texto muda. Mas a s52 muda de modo (a foto de Marcapomacocha e o mapa).
+   - Se a regência nova mexer na s52, na s03 ou na s08, o crédito do mapa e as pílulas dessas cenas pedem conferência nova.
+   - **RAIZ:** PONTUAL.
+
+**Nenhum texto de tela diverge da fonte, da origem da mídia nem da voz.** As 3 DIVERGE desta rodada são de razão e de contagem, no apoio, não na tela.
+
+**Os 12 rótulos da caça (TB018, TB049, TB070, TB079, TB090, TB095, TB104, TB163, TB171, TB182, TB195 e TB197): agora 12 de 12 checados.**
+- **8 viraram texto final, e estão checados:**
+  - s29 Lima (RB216);
+  - s33 PERUVIAN HIGHLANDS (RB217);
+  - s35 Villa El Salvador (RB220);
+  - s37 Rímac (RB220);
+  - s38 Rímac (RB219);
+  - s42 Lima (RB220);
+  - s47 San Juan de Miraflores (RB218);
+  - s48 Puente Piedra (RB220).
+- **4 marcadores saíram**, e as decisões que os substituem estão checadas:
+  - s35-a (RB227);
+  - s38-b, agora "Laguna Marcapomacocha" (RB220);
+  - s44-a (RB228);
+  - s49-a (RB230).
+
+**Continuam NÃO FOI CHECADO:** só as 5 primárias do gob.pe (TB284–TB288).
+
+COBERTURA: 30 de 30 (esta reconferência: as 13 pílulas novas ou trocadas, as pílulas de mapa fundidas, os créditos de clipe, de foto e de mapa, os números que mudaram de beat, as 6 decisões de `_pilulas_de_mapa`, o glossário, `rotulos_dado`, `nao_vai_para_tela`, as regras de série, os textos vivos, as seções de apoio e as entradas). No laudo inteiro, os NÃO FOI CHECADO vão de 17 para 5.
+NOTA: 9/10
+VEREDITO: RESSALVA. O texto de tela está checado e limpo. Sobram 3 DIVERGE periféricas no apoio (R10-1, R10-2, R10-3), cada uma com o conserto de uma frase, uma regra de série a reescrever (R10-4), o aviso da direcao-18 (R10-5) e as 5 primárias do gob.pe.
+
 ---
 
 ## Fecho do setor
@@ -1785,7 +1894,14 @@ Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do la
 - **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
 - **O lote B,** com ela, ficou com o sha256 `2fb9d47d…d74c`.
 
-O texto de tela não tem DIVERGE nem REFUTADA. A RESSALVA é só pelos NÃO FOI CHECADO: os rótulos da caça e as primárias do gob.pe.
+**A reconferência 10 (texto-11, sobre `ce90bfb8…`)** está no fim do lote B (RB208–RB237), com 30 de 30. Ela cobre os textos das cenas da caça, depois da caça: as pílulas de lugar contra o `lugar_na_origem` dos 10 clipes aprovados ou contra a camada de geo do beat, os números que mudaram de beat, as 6 decisões de pílula de mapa e os créditos.
+- **Os 12 rótulos da caça** que eram NÃO FOI CHECADO estão checados agora: 8 viraram texto final e conferem; os 4 marcadores saíram. Os NÃO FOI CHECADO do laudo caem de 17 para 5, as primárias do gob.pe.
+- **Os achados, todos LEVES e de apoio, não de tela** (R10-1 a R10-4: duas razões de decisão, uma contagem e a redação de uma regra): o setor mandou consertar, com o texto que o verificador deu, e conferiu pela diferença que só eles mudaram.
+- **O aviso R10-5:** a direcao-18 mudou o espelho depois.
+- **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
+- **O lote B,** com ela, ficou com o sha256 `21920d38…7b81`.
+
+O texto de tela não tem DIVERGE nem REFUTADA. Desde a reconferência 10, a RESSALVA é só pelas 5 primárias do gob.pe, NÃO FOI CHECADO (os rótulos da caça estão checados).
 
 COBERTURA: 600 de 632
 VEREDITO: RESSALVA
