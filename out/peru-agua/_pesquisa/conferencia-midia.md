@@ -1,4 +1,134 @@
-# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, lote 1 às 01:2x, lote 2 às 01:4x e tarefa `peru-agua-pesquisa-2` às 02:4x (Brasília)
+# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-pesquisa-3` às 04:0x (Brasília)
+
+As janelas da regência, no passo `conducting`. A regência é `out/peru-agua/regencia.json`, sha256 `cf443768…`, com a lista
+`_conferencia_de_janelas` e o relato do regente (`out/peru-agua/_tmp/setores/peru-agua-direcao-4.md`, "Os usos de mídia por cena").
+O JSON está em `out/peru-agua/_pesquisa/conferencia-midia.json`.
+
+**Laudo:** 18 aprovados de 24 vereditos (2 reprovados, 4 trocar, 0 pendente_lucas); 1 com algo não conferido (o JPL da s16, já
+reprovado); recebidos: 23 arquivos e 1 uso novo.
+- Nesta tarefa, 17 usos da regência: 13 com a janela definitiva, 2 em conferência nova (os dois aprovados) e 2 fora, de propósito.
+- 14 vereditos refeitos, com os antigos em `substituidos`, e 1 veredito novo (a Caral frontal na s51).
+
+## Os 13 usos com veredito aprovado: a janela definitiva
+
+Todos cabem na janela provisória que eu tinha julgado, e nenhum muda de veredito. Cada arquivo casa com o veredito pelo sha256:
+- o retrato, as páginas e o Landsat, pelo sha256 do arquivo;
+- as fotos de acervo, pelo `medido.sha256` do `_PROCEDENCIA.json`;
+- as duas de Cantalloc, pelo `medido_no_download.sha256`, porque o `entregar` as reduziu para 5120 px.
+
+| Uso na regência | Arquivo | Janela definitiva (s) | Muda? |
+|---|---|---|---|
+| s06 b3 | Puno e o Titicaca | 64,133–67,867 (3,73) | não. A miniatura pousa em "Lake". |
+| s13 b3 | MODIS de 2018 | 135,933–138,033 (2,1) | não |
+| s16 b2 | Landsat 5 de 03/06/1998 | 161,867–165,867 (4,0) | sim, para dentro. Começa em "the desert coast"; o "The sea warms, and" passou à NOAA. |
+| s18 b2 | Satipo | 186,2–190,833 (4,63) | não |
+| s22 b1 | Caral frontal | 233,033–237,267 (4,23) | não. Ken Burns até 1,12, que dá 1,07× o arquivo. |
+| s23 b5 (a janela da s25) | Cantalloc, a espiral | 264,767–266,9 (2,13) | sim, para dentro. Só em "underground channels called puquios". |
+| s23 b6 (a janela da s25) | Cantalloc, o poço | 266,9–268,9 (2,0) | sim, para dentro. Só em "carry water to some fields". |
+| s26 b0 | Pizarro, "Painting, 1835" | 271,667–275,667 (4,0) | não |
+| s27 b0 | Cobo, p. 10 | 279,833–290,7 (10,87) | não |
+| s28 b1 | Cobo, p. 14 | 296,833–302,867 (6,03) | não |
+| s36 b1 | a barriada de 1997, impressa até 1,4× | 436,3–438,833 (2,53) | não. Leva "Photo from 1997". |
+| s39 b3 (a janela da s40) | o rio Santa Eulalia | beat 480,033–487,1; miniatura de 482,533 a 484,8 (2,27) | sim, para dentro. A miniatura só aparece de "Santa" a "reaches". |
+| s52 b0–b1 | a lagoa Marcapomacocha | tela cheia 689,933–695,167 (5,23); miniatura até 697,5 | sim, para dentro. Resolve a nota da foto parada de 7,57 s. |
+
+**Onde o número da cena difere.** A regência fundiu algumas cenas do espelho, e conferi pelo tempo e pela frase que a janela é a mesma
+que eu julguei:
+- **s23 b5 e b6 são a janela da s25.** A fusão é s23←s24+s25. O beat começa em 237,267 + 27,5 = 264,767 s, que é o plano 2 da s25 no
+  espelho. As palavras do `words.json` batem: "underground channels called puquios" vai de 264,79 a 266,64 s, e "carry water to some
+  fields." de 266,9 a 268,4 s.
+- **A ordem das duas de Cantalloc é a da fala.** A espiral, o canal que desce, entra no nome "puquios". O poço, com a água no fundo, entra
+  em "carry water". Cada uma fica 2 s ou mais, acima do piso de 1,5 s.
+- **s39 b3 é a janela da s40.** A fusão é s39←s40, e 461,3 + 18,733 = 480,033 s, o plano 2 da s40. A frase é a mesma, de 480,05 a
+  486,45 s.
+- **Os vereditos continuam com a cena do espelho** (s25 e s40). A cena da regência vai em `janela_definitiva.beats[].cena_regencia`.
+
+**O Landsat da s16, o que a tela pode e não pode dizer:**
+- Pode: "JUNE 1998" como legenda, e Piura só como o ponto da camada `cidades-peru-ne`, que fica seco no quadro.
+- Não pode:
+  - "Piura flooded", ou qualquer coisa que ligue a cidade à água;
+  - o nome "La Niña" e o tamanho da lagoa;
+  - "El Niño 1997–98", sem o `verificador-de-fatos`;
+  - "Sechura" como rótulo. A origem não nomeia lugar, então o nome só entra por uma camada geo com procedência, na coordenada dela;
+  - o realce da água desenhado à mão;
+  - a borda da cena emendada sem costura no satélite de hoje.
+- O exige da regência está de acordo com isso.
+
+**A lagoa da s52 em tela cheia.** O arquivo tem 4056×2144 e enche a tela 4K pela altura a 1,0075×. Com o Ken Burns até 1,12, ele chega a
+1,13× o arquivo, abaixo de 1,4×. Olhei de novo e a foto está nítida. Ela fica 5,23 s na tela, com movimento, abaixo dos 6 s. O plano
+`aereo-real` vai em foto porque não há footage da lagoa nomeada, como já dizia o veredito.
+
+**Pizarro.** Pela decisão da Sala de 22/10, o retrato pintado não conta como registro na régua de mundo real. Isso está anotado no
+veredito. Para a Sala: o relato do regente conta o card como foto, 4,0 s, nos 74,96 %. Não mexi na régua.
+
+## As 2 conferências novas
+
+1. **s16 b1: o mapa de anomalia da NOAA, de 157,6 a 161,867 s (4,27 s). Aprovado.**
+   - A janela começa em "and the cold water" e vai até "The sea warms, and".
+   - Olhei de novo. A língua vermelha, de +3 a +5 °C, encostada na costa do Peru em JUN, JUL e AUG é, no próprio quadro, "The sea warms".
+     O azul que some junto à costa é o "slows or stops rising".
+   - A imagem parada fica agora 4,27 s na tela; antes eram 6,5 s.
+   - A licença foi relida na API do Commons: domínio público, NOAA.
+   - Para quem monta, do veredito anterior:
+     - nada do logo da NOAA nem da escala em °C sem o °F;
+     - "aligned to the coast" vai até 1,4× o arquivo. Um painel tem uns 930 px, então uns 1.300 px na tela.
+   - O "In El Niño years… ease," fica no mapa do b0.
+2. **s51 b1: o reuso declarado da Caral frontal, de 657,9 a 663,6 s. Aprovado, com o aviso "Photo from 2022" (`aviso_de_ano: true`).**
+   - O reuso está declarado no espelho (s51 › `_reuso_declarado`), e a aparição vem 420,6 s depois da s22.
+   - A fala é "about 5,000 years ago, people built a city above one of them": fala da construção, e a foto é de 27/11/2022. É o mesmo
+     prédio, com a data na origem, e não existe foto do ano do fato. Pela identidade §6, a foto de outro ano de um prédio leva o aviso.
+   - O quadro não desmente a fala: é a ruína do que foi construído.
+   - **A regência não põe o aviso no s51 b1.** O `redator-de-tela` o escreve a partir deste veredito, junto da miniatura e fora da faixa do
+     crédito. Sem o aviso, a miniatura não vai à cena.
+   - Na miniatura, o recorte fica na pirâmide, porque o terço de baixo da foto é areia.
+   - Na s22 b1, a fala está no presente e o aviso não entra. Mas a legenda "CARAL · c. 3000–1800 BC" do b0 não pode ficar sobre a foto:
+     com a data do fato sobre ela, a foto pediria o aviso.
+
+## Fora desta tarefa, de propósito
+
+Os dois são fallback da caça. A Sala pediu que fiquem para depois da caça, e só se ela não trouxer o clipe. Até lá, nenhum dos dois
+arquivos entra nessas janelas. Os dois continuam aprovados só na cena em que foram julgados, com a janela provisória.
+- **s15 b0:** a reserva MODIS de 2015, aprovada na s13.
+- **s22 b0:** a reserva de Caral, em 225,5–233,033 s.
+
+A p. 9 de Cobo continua aprovada, com janela provisória e sem uso na regência. A página é opcional, e a decisão é do redator.
+
+## Para o Lucas pesar
+
+Nada.
+
+## Para reconferir no navegador do app
+
+Nada novo.
+
+## Para trocar
+
+Nada novo. O aviso do conjunto, para a Sala, o `regente-de-imagem` e o `redator-de-tela`: a s51 b1 precisa do "Photo from 2022" junto da
+miniatura de Caral.
+
+## Divergências entre a marca e o ofício
+
+Nenhuma.
+
+O olhar não foi de olhos novos: a regência e os vereditos anteriores foram lidos antes, e o `o_que_viu` diz isso.
+
+## Contas desta tarefa
+
+- **Imagens abertas: 5 de 25.** As 5 são cópias a 1600 px dos arquivos entregues, em `out/peru-agua/_tmp/conferencia/pesquisa-3/`: a
+  NOAA, a Caral frontal, as duas de Cantalloc e a lagoa da s52.
+- **Rede: 2 pedidos à API do Commons**, pelo `Bash`, com o User-Agent do canal, um por vez, com 2 s de pausa. Os dois responderam 200: a
+  NOAA e a Caral frontal. Nenhum `WebFetch` e nenhuma busca nova.
+- **A emenda do JSON** foi feita pelo `python`, porque o arquivo tem 147 KB.
+  - O script está em `out/peru-agua/_tmp/conferencia/pesquisa-3/emenda.py`.
+  - Antes de gravar, ele conferiu o sha256 do JSON e o da regência, e que o arquivo que a regência cita casa com cada veredito.
+  - As cópias de antes estão em `out/peru-agua/_tmp/conferencia/conferencia-midia.antes-pesquisa-3.json` (sha256 `b375878d…`) e em
+    `.antes-pesquisa-3.md`.
+- **Checagem 6:** `out/peru-agua/_media/` não mudou. O sha256 dos 145 arquivos, antes e depois, está em
+  `out/peru-agua/_tmp/conferencia/_media-antes-pesquisa-3.txt` e `_media-depois-pesquisa-3.txt`, e o `diff` saiu vazio.
+
+---
+
+# Histórico: a conferência até a tarefa `peru-agua-pesquisa-2`, como estava (Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, lote 1 às 01:2x, lote 2 às 01:4x e tarefa `peru-agua-pesquisa-2` às 02:4x (Brasília))
 
 Tarefas `peru-agua-pesquisa-1` (lotes 1 e 2) e `peru-agua-pesquisa-2` (os acertos da verificação do research, no passo `art_direction`).
 O JSON está em `out/peru-agua/_pesquisa/conferencia-midia.json`.
