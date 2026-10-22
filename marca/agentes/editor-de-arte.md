@@ -156,6 +156,7 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
 - Margem: 200 px nas laterais, 160 px no topo. Abaixo de y = 1880, só crédito, a partir de x = 200 e
   terminando antes de x = 1720. Crédito longo quebra em duas linhas de 56 px (76 no Juneau) e nunca encolhe. O centro dessa
   faixa fica livre para a legenda automática do YouTube e a barra do player.
+- **A fala citada leva `data-qc-papel="heroi"`** (Sala, 22/10/2026, no vídeo 4). O `qc-tamanho` só conhece `heroi|rotulo|eixo|credito`: a citação marcada como `rotulo` é medida pelo piso de 104, e a marcada como "fala" (ou sem papel), pelo de legibilidade, 72. Nas duas, o verde não prova os 260 da fala citada (identidade.md §4.1). O `heroi` é o único papel com piso de 260, e o próprio portão trata a fala como o herói da cena de citação. No vídeo 4, a s13 tinha a citação a 112 px, marcada como `rotulo`, e passou no portão (`APRENDIZADOS.md`, item 88).
 - **A margem, a faixa do crédito e o canto valem em todo quadro, sob a câmera** (Claude central, 01/10/2026, depois
   da conferência dos primeiros renders do Juneau; `APRENDIZADOS.md`, item 58). O `R.camera` do RIG tem zoom contínuo
   (base + 0,0024 por segundo), e a órbita e a deriva movem o palco. Quem é posto rente à margem na montagem sai dela

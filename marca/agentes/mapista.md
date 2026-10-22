@@ -189,6 +189,7 @@ necessidade.
   px**: cena do Juneau refeita declara `--fs-credito: 76px` no `:root`, num `<style>` posto **depois** do `<link>` do
   `tokens.css` (antes dele, perde para o 56), para não misturar dois tamanhos no mesmo vídeo. Sem o override, nenhum
   render do Juneau, nem com `--forcar`: o carimbo `.mp4.de-html` não enxerga a troca da marca.
+- **A fala citada sobre o mapa leva `data-qc-papel="heroi"`** (Sala, 22/10/2026, no vídeo 4): o `qc-tamanho` só conhece `heroi|rotulo|eixo|credito`, e a citação marcada como `rotulo` passa a 104 px (a da s13 do Peru passou a 112). O piso da fala citada é 260, alvo 280 (identidade.md §4.1), e só o `heroi` o cobra (`APRENDIZADOS.md`, item 88).
 - **Geometria do OpenStreetMap** (no Juneau: o Taku, Willow, Haines, a estrada e Cascade Point) já está coberta
   pelo `© OpenStreetMap contributors` da linha da MapTiler: não repita. Numa cena sem MapTiler, ela leva a
   linha sozinha (CLAUDE.md, item 6).

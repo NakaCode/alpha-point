@@ -1582,3 +1582,16 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   separado, e só seguir com o "pode" lido. O levantamento de uma fonte registra os hosts todos que ela usa, não só o das páginas.
 - **Por que serve a qualquer canal:** muitos acervos servem as páginas num host e os arquivos noutro (data., files., cdn., api.); a
   regra de não contornar quem recusa robô só funciona se a recusa for lida no host certo e antes do pedido.
+
+### 88. A fala citada marcada como rótulo passa no portão de tamanho com menos da metade do piso
+
+- **O problema:** em 22/10/2026, no art do vídeo 4 (o Peru), a s13 tinha uma citação de 9 palavras a 112 px, e o `qc-tamanho` saiu
+  verde. O piso da fala citada na marca é 260 (alvo 280). O cartão estava marcado `data-qc-papel="rotulo"`, que o portão mede pelo piso
+  do rótulo (104). Em outras duas cenas (s32 e s46), a fala estava marcada "fala", um papel que o portão não conhece e mede pelo piso de
+  legibilidade (72). Quem pegou foi o `qc-visual`, no olho, com a régua da identidade.
+- **O que resolveu:** a fala citada passou a levar `data-qc-papel="heroi"`, o único papel do portão com piso de 260. O próprio portão
+  foi desenhado assim: na cena de citação, o herói é a fala. A regra entrou nas roupas do `editor-de-arte` e do `mapista`.
+- **Como evitar:** o papel que a marca dá ao texto e o papel que o portão conhece precisam casar. Todo papel da marca que o portão
+  não nomeia ("fala", "cota", "legenda") deve ser traduzido para um dos papéis dele, escolhendo o de piso igual ou maior.
+- **Por que serve a qualquer canal:** todo portão que mede por declaração mede o que se declara, não o que se pretende. Uma marcação
+  frouxa compra o verde, e o defeito só aparece no celular do espectador.
