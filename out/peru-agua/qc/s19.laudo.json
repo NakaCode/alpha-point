@@ -1,0 +1,143 @@
+{
+  "cena": "s19",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "portao-margens da s19: veredito 2, NÃO MEDIDO POR DESENHO (a cena usa relevo 3D: 55 pedidos de terreno com relevo plano). Esse 2 não segura o aprovado; a margem é olhada no clipe, dentro do orçamento: relevo 3D, olhada no clipe. Recortes 4K (6,0 s e 4,5 s): pílula 'Colca Canyon' com borda esquerda em x 200 e topo em y 160 (no limite exato, não dentro dele); cartão do gráfico com borda esquerda em x 200 e base em y ~1855 (<1880); crédito das fontes e crédito do mapa de y ~1898 para baixo (só crédito); legenda 'HIGH UP' com borda direita em x ~3445 (<3640); canto de 400x400 livre em todos os 20 quadros olhados. Nada fora da margem.",
+        "sinalização: crédito das fontes em 2 linhas (quebra antes de '(Lima, Vilca)'), sem aviso do portão; crédito de mapa a 56 px via var(--fs-credito), só na linha dele. O crédito das fontes (a 56) é a reprovação do qc-tamanho: exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 ('Quero reduzir para 56px'), no sha1 ee49a43e (entrada s19 de _excecoes-portao.json: \"Sources: SENAMHI (Peru), 1981–2010 average (\" 56<72; a reprovação é só o crédito). gatesDuros vazio.",
+        "hierarquia: sem herói; o gráfico (3 números sobre as barras, cartão de papel) é o bloco de leitura e a legenda 'HIGH UP' entra 1,1 s depois, ligada pelo colchete às barras de Matucana e Vilca. Cartão do gráfico e legenda não colidem com os pontos nem com os créditos em nenhum quadro (3,1; 3,7; 4,5; f161; f162)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "dados conferem com o textos-tela.json (grafia e valores): LIMA · 0.3 INCHES (8 mm), MATUCANA · 12 INCHES (312 mm), VILCA · 38 INCHES (963 mm), 'HIGH UP: MOSTLY DECEMBER–MARCH' e o crédito 'Sources: SENAMHI (Peru), 1981–2010 average (Lima, Vilca); WMO, 1991–2020 average (Matucana)' (letra por letra no recorte 4K). Os comprimentos das barras respeitam a razão dos números (Matucana/Vilca ~0,32 = 12/38; Lima, 0,3 in, é um fio). Os números em si são do laudo de fatos, não remedi.",
+        "associação posicional: os pontos de Lima (junto à costa, ao lado da cidade) e de Matucana (na encosta, a leste e acima) caem onde as estações estão; os nomes entram no ponto certo (0,5; 1,5; 2,2 s) e saem com a entrada do gráfico. Vilca só no gráfico, nunca no mapa (decisão declarada).",
+        "geometria real: a divisória (HydroBASINS) acompanha a crista com neve ao longo de todo o topo do quadro (0,1 a 5,4 s); o Virú do b2 é a feição 'Río Virú' do rios-vertente-pacifico (OSM relation/4637093, conferida no código), traçado de dado real, sem pílula. Sem bandeira, sem pino.",
+        "sinalização: no b2 a linha laranja do Virú tem interrupções onde a crista do relevo passa na frente dela (recorte 4K de 8,7 s: três cortes curtos, com a sombra do contorno dos dois lados); é oclusão do terreno, não furo no dado, mas com a voz dizendo 'run dry' pode ser lida como trecho seco do rio, e a regência pede que nada na tela afirme o leito seco. Não reprovo: nada na tela diz 'seco' e a voz carrega a palavra."
+      ],
+      "correcoes": [
+        "opcional (mapista): se a Sala quiser evitar a leitura de trecho seco, subir um pouco a câmera no b2 (inclinação de 52 para ~48 graus) ou elevar a linha sobre o relevo para a oclusão sumir; não mexer em tempo nem em texto."
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 9,
+      "problemas": [
+        "primeiro segundo coberto: o quadro 0,1 s tem o mapa e o crédito; 'The dry side' (words.json: The 0,03; dry 0,17; side 0,41) abre sem texto por 0,33 s e os pontos com os nomes entram em 0,333, 0,07 s antes de 'side' (a Direção registrou o 0,067 como antes_da_palavra; dentro da tolerância).",
+        "RE-CHECAGEM DO ATRASO POR RITMO (a correção do RITMO empurrou entradas): gráfico e crédito das fontes em 2,333 contra 'mostly' em 2,362 (0,03 s antes); legenda em 3,433 contra 'most' em 3,447 (0,014 s antes); pílula 'Colca Canyon' em 5,734 contra 'rain' em 5,792 (0,06 s antes); b0 inteiro sai em 5,433, 0,014 s antes de 'That' (5,447). Nada ficou depois da deixa nem parado depois da fala do beat.",
+        "o defeito do quadro 163 (o b0 sobre o clipe) sumiu: f161 (5,367 s) e f162 (5,400 s) ainda têm o b0 inteiro sobre o mapa; f163 (5,433 s) e f164 (5,467 s) mostram só o clipe do Colca, sem gráfico, legenda nem crédito. Também não sobra b0 no clipe em 6,0; 7,1; 8,2 e 8,52 s.",
+        "o crédito do mapa sai no corte do b0 (não há crédito-fantasma sobre o clipe) e volta no b2 (8,6), com o mapa."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "três planos, três modelos certos: b0 MAPA COM RELEVO (a frase é sobre altitude, 'mostly high up': só o relevo mostra que a chuva está lá em cima; o gráfico de 3 barras é o dado), b1 REGISTRO (o rio que desce rápido se move: footage real do Colca, aprovado para a frase), b2 MAPA COM RELEVO descendo o Virú até a costa. Relevo liberado pelo Lucas (21/10/2026).",
+        "mídia do b1: _media/footage/s19/rio-andino-cheio.mp4 (sha256 62ba5a9f…, instalado do baixado 2d238dbe… do Envato 762de3d9); veredito 'aprovado', mesmo_item true, na conferencia-midia.json para a cena s19 (id_candidato s19-a); B-roll genérico, sem editorial, sem pessoa, Envato (assinatura da Top10), sem crédito exigido."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 7,
+      "problemas": [
+        "DADO LEGÍVEL SÓ COM A VOZ (sinalizo, não reprovo): lido sem áudio, 'LIMA · 0.3 INCHES (8 mm)' não diz de quê nem em quanto tempo; o textos-tela guarda a unidade 'inches (mm) a year', mas a tela não a leva. A voz ('real rain', 'from December to March') resolve para quem ouve, e a legenda 'MOSTLY DECEMBER–MARCH' pode ser lida como 0.3 polegada só nesses meses. Um leigo que olha só o cartão faz uma pergunta em vez de receber uma resposta.",
+        "sinalização: depois que os nomes saem (2,333 s) os dois pontos brancos ficam 3,1 s no mapa sem nome (até 5,433), e o gráfico lista três estações mas o mapa tem dois pontos (Vilca sem ponto, por decisão declarada). Não dá para ligar o ponto à barra sem a voz.",
+        "em ~2 s: o relevo inclinado com a divisória no alto, o cartão com barras crescentes (o fio de Lima contra a barra longa de Vilca) e a legenda 'HIGH UP' explicam a ideia 'a chuva está no alto' sem texto longo. b1 e b2 se explicam sozinhos (rio cheio; rio que desce ao deserto)."
+      ],
+      "correcoes": [
+        "redator-de-tela (opcional, é texto dele): levar a unidade ao cartão, p.ex. 'LIMA · 0.3 INCHES (8 mm) A YEAR' ou um subtítulo único 'RAIN PER YEAR' no topo do cartão, sem repetir em cada barra; verificar que cabe a 104 px no cartão e que não ultrapassa o teto de palavras do rótulo.",
+        "mapista (opcional): manter os dois pontos até o corte só se o redator ligar cada ponto à barra por cor ou rótulo curto; do contrário, apagar os pontos junto com os nomes em 2,333."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 8,
+      "problemas": [
+        "contagem simultânea no pico (3,7 a 5,4 s): divisória (linha), 2 pontos sem nome, cartão do gráfico (1 bloco), legenda 'HIGH UP' (1 bloco) = 5 elementos, mais os dois créditos (não contam). Abaixo do teto de 6; 2 blocos de texto vivos (teto 3). O RITMO que o qc-carga reprovou saiu: a pior janela é de 4 entradas (log da Arte; _portao.json sem 'carga' em falhas no sha1 de hoje).",
+        "sinalização: os dois pontos sem nome de 2,333 a 5,433 s não têm texto que os convoque (teste de lastro de texto não se aplica a ponto), mas são o único elemento da tela sem leitura própria nesse trecho; ver acessibilidade.",
+        "teste de lastro: 'Lima' e 'Matucana' ('real rain' / dados da frase), cotas (a voz diz 'mostly high up'), legenda ('most of it from December to March'), 'Colca Canyon' (lugar_na_origem do veredito, ancora a imagem; exceção (a) de orientação mínima do ofício, e a pílula evita que se leia o rio como o de Lima). Sem entidade malformada nem tofu (portao-mapa til = 0 em 27 instantes, sha1 de hoje). Sem degradê, véu nem vinheta sobre o registro: o clipe do b1 está limpo."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "b0: o mapa abre inclinado com aproximação lenta e contínua. Correlação de fase na faixa do alto (divisória, sem texto), quadros 1280 px: ~(5,3) px por segundo em 0,5 a 4,5 s, ou ~(22,16) px em 4 s a 1280 (x3 = ~66 px a 4K, ~85 px no total); os pontos andam ~7 px (Lima) e ~3 px (Matucana) em 2 s na folha. É lento (a regência pede 'slow approach'), mas contínuo e com paralaxe do relevo, e os pontos, as barras que crescem (2,333 a ~3,1 s) e a legenda (3,433) carregam os 5,4 s. Nada congela.",
+        "b1 (5,433 a 8,6): footage com câmera fixa por 3,17 s, abaixo do teto de 6 s de imagem parada; a água e as sombras andam (quadros 6,0; 7,1; 8,2 e 8,52 s). O último quadro da janela (8,52 s) está sem o reflexo de lente que o conferente anotou aos ~6 s do clipe.",
+        "b2 (8,6 a 11,3): descida contínua pelo Virú, rápida o bastante para ser vista: deslocamento do relevo de (-18,-54) px em 8,7->9,5 s, (-30,-77) em 9,5->10,5 s e (-24,-52) em 10,5->11,2 s (1280 px; x3 = 4K). Sem salto, sem jumpTo, sem tile cinza.",
+        "o corte do mapa (b0) para o clipe e do clipe para o mapa (b2) é troca de registro, não corte seco de mapa para mapa; a troca s18->s19 (mapa para mapa) e s19->s20 não são deste lote (sem emenda) e ficam para a revisão de espectador, como a Sala decidiu.",
+        "nada se move de forma incoerente nos 250 ms antes do corte do b0 além da deriva (f161 -> f162 sem deslocamento medido; o gráfico e a legenda ficam parados até saírem)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "crédito de mapa '© MapTiler © OpenStreetMap contributors' no b0 (0,1 a 5,4 s) e no b2 (8,7 a 11,2 s), 56 px, só na linha dele; portao-mapa rodape v5 no sha1 de hoje: 10,02:1 (piso 3:1). No b1 (o clipe) não há mapa e não há crédito de mapa: sem crédito-fantasma.",
+        "dado com fonte: 'Sources: SENAMHI (Peru), 1981–2010 average (Lima, Vilca); WMO, 1991–2020 average (Matucana)' entra com o gráfico (2,333) e sai com ele (5,433), cada barra com o seu dono e período. O clipe do Envato (assinatura da Top10, ID 762de3d9) não exige crédito na tela (conferencia-midia: 'nenhum'); a cena não tem foto nem vídeo de Shutterstock. HydroBASINS e OSM (Virú): coberto pela linha do MapTiler/OSM e pela descrição.",
+        "crédito das fontes a 56 px: reprovação do qc-tamanho coberta pela exceção do Lucas no sha1 ee49a43e (ver espaco)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [
+        "uma cor = um significado, o do vídeo todo: --destaque (laranja) = o lado seco (barras de chuva e o Virú, ambos do lado do Pacífico), papel claro no cartão do dado, linha branca = divisória. Nenhuma cor de bandeira; vermelho não aparece; no máximo 3 matizes fora a base e o clipe.",
+        "o clima serve ao assunto: o relevo seco do deserto costeiro no b0 e no b2 e o verde do vale do Colca no b1 mostram a diferença entre o alto (chove) e o baixo (seco) sem pintar nada.",
+        "evidencia.paleta não existe para clipe de mapa neste lote; a cor foi lida nos quadros (estável dentro de cada beat)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "concretos da frase: a chuva no alto (relevo + estações, b0), o rio curto e rápido (footage do Colca, b1) e os rios que secam (o Virú no relevo, b2). O central 'rio que corre cheio' tem registro real (b1); o 'rio que seca' não tem o leito seco em registro real (a caça de 22/10 não trouxe o s19-b: só leitos secos de outros países; FALTA declarada na regência).",
+        "sinalização (nota 8): o Colca desce ao Pacífico mas não é o rio curto do exemplo; a escala de 'short' fica na voz e no relevo. A cobertura do leito seco se cumpre, se vier, numa cena irmã; sem arquivo a apontar, não reprovo."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 9,
+      "problemas": [
+        "a fala atravessa três objetos (a chuva alta e sazonal; a água que desce rápido pelos rios curtos; os rios que secam), cada um com um plano na palavra que o convoca: 'The dry side' / 'mostly' (b0), 'That rain' (b1, 5,447), 'Some of these rivers' (b2, 8,627). Nenhum plano cobre dois objetos.",
+        "footage único (b1) por 3,17 s, câmera fixa, abaixo do teto de 6 s; um único src de vídeo na cena (nenhum clipe repetido entre planos sucessivos nem simultâneos); o mapa tem movimento próprio em b0 e b2. Regime 'normal' da regência."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [
+        "a divisória volta do b0 da s01 como callback, agora com informação nova (as estações e a chuva por altitude), e o relevo é a primeira vez no vídeo; o b1 é o primeiro registro real do lado seco; o b2 desce um rio específico. Esta cena avança em relação às irmãs julgadas (s01, e a s18 da crista, descrita na regência); se sumisse, o espectador perderia a ideia de altitude e o registro do rio. Eco de forma sinalizado: dois mapas em relevo inclinados (b0 e b2) com enquadramentos diferentes, separados pelo clipe."
+      ],
+      "correcoes": []
+    }
+  ]
+}
