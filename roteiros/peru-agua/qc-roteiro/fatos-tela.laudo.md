@@ -1616,6 +1616,95 @@ COBERTURA: 7 de 7 (esta reconferência: a lista inteira, os 2 lados de R7-1, o R
 NOTA: 10/10
 VEREDITO: RESSALVA. Os 3 achados da Reconferência 7 estão fechados, e não há DIVERGE nem REFUTADA no lote B. Seguram a RESSALVA os 17 NÃO FOI CHECADO.
 
+## Reconferência 8 (texto-6, sobre a3a8babe…)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `a3a8babe24aec455f2eb98331a1a8af0ef4aaa7d841667116f642f2fab3ab407`.
+- **Comparado com:** `out/peru-agua/_tmp/redator/antes-consertos-7/textos-tela.json.7a6b71c0`, que confere com o sha256 `7a6b71c0…`.
+- **O diff:**
+  - a lista vai de 437 a 440 itens, e tudo é da s27: saem as 3 `traducao`, entram 3 `citacao` e 3 `legenda`. As legendas têm o mesmo texto e os mesmos tempos das traduções de antes;
+  - mudaram `_instrucoes_para_a_arte` (+1, s27), `_conflitos_para_a_sala` (+3, s27 a, b e c), `_textos_vivos_max`, `_consertos` e `_entradas_sha256`.
+- **A fonte:** `midia/peru-agua/fontes/gente/cobo-1639-historia-fundacion-lima_djvu.txt`, l. 2437–2445, p. 10 da ed. de 1882.
+- **A voz:** `words.json`, s27, inSec 279,833.
+- **A geometria:** o comentário do `out/peru-agua/graphics/s27.html`, lido como texto, sem render.
+- **Limites:** 0 imagens, nenhuma web; nada foi gravado no canal.
+
+| id | o quê | o que se conferiu | veredito |
+|---|---|---|---|
+| RB175 | `citacao` “fria y de muchas nieves” (1,634–3,9) | l. 2437: "asi por ser fria y de muchas nieves y falta de leña". O trecho é contíguo, em caixa baixa, com "fria" sem acento, como está impresso. 5 palavras (≤ 12). É o mesmo trecho do grifo 1 da página (lote A) | CONFIRMADA |
+| RB176 | `citacao` “de la mar y el camino muy despoblado” (3,267–6,234) | l. 2438–2439: "cua- / renta leguas de la mar y el camino muy despoblado, malos pasos". Contíguo, sem acentos a acrescentar, 8 palavras. É o mesmo trecho do grifo 2 (RB90) | CONFIRMADA. A forma da tradução casada vai em RB179 |
+| RB177 | `citacao` “por cargarlos han sido muchos de ellos muertos” (6,234–10,867) | l. 2444–2445: "que por / cargarlos han sido muchos de ellos muertos y alejadose". Contíguo, 8 palavras. É o mesmo trecho do grifo 3 (lote A) | CONFIRMADA |
+| RB178 | `legenda` "cold, with much snow" (era `traducao`) | o texto e os tempos (1,634–3,9) não mudaram. "fria y de muchas nieves" = "cold, with much snow": casa com RB175. Há uma tradução só desse trecho | CONFIRMADA |
+| RB179 | `legenda` "[…] from the sea, and the road very deserted" (era `traducao`) | O texto e os tempos (3,267–6,234) não mudaram, e há uma tradução só desse trecho. **O par ficou desigual:** o "[…]" marca a omissão de "cuarenta leguas", mas a citação já começa em "de la mar" e não traz "…" nenhum. A tradução avisa de um corte que a citação esconde. Sem o "[…]", "from the sea, …" fica sem sujeito. Achado R8-1 | CONFIRMADA (fiel); a forma do par pede ajuste |
+| RB180 | `legenda` "from being loaded with burdens, many of them have died" (era `traducao`) | o texto e os tempos (6,234–10,867) não mudaram. "por cargarlos han sido muchos de ellos muertos" = "from being loaded [with burdens], many of them have died": casa com RB177. Há uma tradução só | CONFIRMADA |
+| RB181 | "Translated from Spanish" (1,634–10,867, sem mudança) | cobre as 3 legendas o tempo todo | CONFIRMADA |
+| RB182 | as notas das 3 citações | "decisão da Sala (22/10/2026, 09:1x)", "Inter 700 a 280 px (piso 260)", "a Courier Prime fica só na folha (identidade l. 90)": a l. 90 diz "fora dela, nunca: a fala citada … continua em Inter". As contagens de palavras conferem (5, 8, 8). **Ressalva de redação:** as notas das citações 2 e 3 repetem "('fria' sem acento, como está)", que só vale para a 1 (copiado). Não muda nada na tela | CONFIRMADA (com a nota de redação) |
+| RB183 | a instrução nova à Arte (s27) | os 3 textos e os 3 tempos conferem com o arquivo; "as 3 traduções passam a legenda, uma por citação"; os grifos da página continuam | CONFIRMADA |
+| RB184 | `_conflitos_para_a_sala` (a) | "3 citações = 3 heróis numa cena; a identidade §4.2 (l. 216) … 'Um herói por cena, ou nenhum'": a l. 216 diz exatamente isso, e a roupa do editor, l. 193, traz "Um herói por". As opções não afirmam fato novo | CONFIRMADA |
+| RB185 | `_conflitos_para_a_sala` (b) | De 3,267 a 3,9, as citações 1 e 2 se sobrepõem 0,633 s. Os textos vivos são 6: o rótulo da página, 2 citações, 2 legendas e a marca; o teto é 4 (`_textos_vivos_max`). Os blocos de leitura passam do teto de 3 (identidade l. 207). Opção 1: "road" está em 3,93, e 6,234 − 3,9 = 2,334 ≈ "2,33 s"; "the long road to the coast" é a voz (3,61–4,41). Opção 2: 3,267 − 1,634 = 1,633 ≈ "1,63 s" | CONFIRMADA |
+| RB186 | `_conflitos_para_a_sala` (c), a conta de largura | **A métrica é razoável:** Inter 700 em caixa baixa dá ~0,55–0,6 em de avanço médio, ~157 px por caractere a 280 px; a entrelinha de 1,15 × 280 dá 322 px, e a de 260, 299 px. **Mas a largura da coluna está errada:** de x 1440 até a margem de 200 (x 3640) são **2.200 px**, não "~1.932 px úteis". Os 1.932 vêm do `s27.html` (l. 77): é a largura do trecho mais largo de hoje, "muchos de ellos muertos", 23 caracteres × 84 px = 1.932, "x 1440→3372 ≤ 3640". Não é a coluna. Com 2.200 px, cabem ~14 caracteres por linha, não 12, e a quebra gulosa dá: “fria y de muchas nieves” em **2** linhas (~644 px); “de la mar y el camino muy despoblado” em **3** (~966 px); “por cargarlos han sido muchos de ellos muertos” em **4** (~1.288 px). A altura útil vai de ~406 (o fim do rótulo) a ~1.750 (a marca), ~1.340 px. Assim: a 1ª e a 2ª cabem com a tradução, e a 2ª deixa de estar "no limite"; a 3ª (1.288 px + 1 ou 2 linhas de tradução a 84 px + a marca) ainda não cabe a 280 e fica no limite a 260 (4 × 299 = 1.196 px). Duas juntas, (b), continuam sem caber. O "teto de 6 elementos" passa em 3,267–3,9: são 9, e a conta confere | a métrica, CONFIRMADA; a largura de 1.932 px e as linhas que saem dela, **DIVERGE** (periférica). Achado R8-2 |
+| RB187 | forma curta (c) 1: “…el camino muy despoblado” com "[…] the road very deserted" | É literal e contígua (l. 2439: "el camino muy despoblado"). O "…" marca o corte de "[cuarenta leguas] de la mar y", e é fiel. A tradução casa ("el camino muy despoblado" = "the road very deserted"), com o "[…]" no mesmo lugar do "…". O que se perde ("from the sea") não muda o sentido da voz nessa janela: de 3,267 a 6,234 ela diz "and the long road to the coast" (3,3–4,41), e a costa fica na voz. Em 3 linhas a 280 px, com 12 ou 14 caracteres | FIEL |
+| RB188 | forma curta (c) 1: “…muchos de ellos muertos” com "[…] many of them have died" | É literal e contígua (l. 2445). O "…" marca o corte de "por cargarlos han sido", e é fiel. O que se perde (a causa, "por cargarlos") não muda o sentido da voz nessa janela: de 6,234 a 10,867 ela diz "many of the Indigenous people forced to carry their supplies had died doing it" (6,25–10,01), e a causa fica na voz. **Ressalva de tradução (como A2):** "have died" verte "han sido … muertos", e o "han sido" ficou fora do corte. A forma casada exata é "[…] many of them dead". Achado R8-3 | FIEL; a tradução casada pede "many of them dead" |
+
+**Os achados:**
+1. **[LEVE] R8-1 · s27, a citação 2 e a tradução dela ficaram desiguais.** A citação começa em "de la mar" sem "…", e a tradução abre com "[…]".
+   - **CONSERTO:** `“…de la mar y el camino muy despoblado”`, com o "…" no lugar de "cuarenta leguas", e a tradução fica como está. Se a Sala ficar com a forma curta de RB187, o problema some.
+   - **RAIZ:** PONTUAL.
+2. **[MÉDIO] R8-2 · s27, a conta (c) usa uma largura de coluna errada.** Diz "~1.932 px úteis", e de x 1440 a 3640 são 2.200 px. Os 1.932 são a largura do trecho mais largo, no `s27.html` (l. 77).
+   - **O efeito:** com 2.200 px, a citação 2 cabe inteira em 3 linhas e só a 3 continua grande demais (4 linhas). A recomendação (c), de encurtar as citações 2 e 3, fica sustentada só para a 3.
+   - **CONSERTO:** na questão (c), trocar "~1.932 px úteis" por "~2.200 px (x 1440 → 3640)", "~12 caracteres" por "~14 caracteres", e as contas de linha por 2, 3 e 4 (~644, ~966 e ~1.288 px).
+   - **A medida certa** é a da Arte, num quadro, e não esta conta.
+   - **RAIZ:** PONTUAL.
+3. **[LEVE] R8-3 · forma curta 2: "[…] many of them have died" traduz um "han sido" que ficou fora do corte.**
+   - **CONSERTO:** "[…] many of them dead", ou a citação “…han sido muchos de ellos muertos” (5 palavras; com 12 ou 14 caracteres por linha, 3 linhas).
+   - **RAIZ:** PONTUAL.
+
+**A s27 não tem divergência da voz.** Nenhuma citação muda o que a voz diz, e as 3 são literais.
+
+**Continuam:** os 12 rótulos da caça e as 5 primárias do gob.pe, NÃO FOI CHECADO.
+
+COBERTURA: 14 de 14 (esta reconferência: 3 citações, 3 legendas e a marca, as notas, a instrução, os 3 conflitos e as 2 formas curtas)
+NOTA: 9/10
+VEREDITO: RESSALVA. As citações e as traduções do texto de tela são fiéis. O DIVERGE (R8-2) está numa conta de apoio à decisão, não na tela, e tem conserto de uma linha. Os 17 NÃO FOI CHECADO continuam.
+
+## Reconferência 8b (texto-6, sobre a52f2812…)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `a52f2812a4775ef47a65b064303e7adbe7750abd78c8d01a652be6e02b4eeaaa`.
+- **Comparado com:** o `a3a8babe` (a cópia em `antes-consertos-7b/`), com o passo do meio `7a1a4ba9` (`antes-consertos-7c/`). Os sha256 das duas cópias conferem.
+- **O diff:** são 440 itens, e só a s27 mudou: saem 6 itens e entram 6 (a citação 1 mudou só na nota). Mudaram `_entradas_conferidas`, `_conflitos_para_a_sala`, `_consertos`, `_instrucoes_para_a_arte` e `_textos_vivos_max`.
+- **As fontes:** Cobo, l. 2436–2446; o `words.json` da s27, inSec 279,833; `marca/identidade.md`, l. 106–107 e 207; o `conceito-visual.json` `3c73b70f` contra a cópia `94ace8e2`; a regência `55cebfa3` e o espelho `a24d77d2`, sem mudança.
+- **Limites:** 0 imagens, nenhuma web; nada foi gravado no canal.
+
+| id | o quê | o que se conferiu | veredito |
+|---|---|---|---|
+| RB189 | citação 2 “…de la mar y el camino muy despoblado” com a legenda "[…] from the sea, and the road very deserted" | l. 2438–2439: "estar cua- / renta leguas de la mar y el camino muy despoblado, malos pasos". O trecho é literal e contíguo, e o "…" está no lugar de "cuarenta leguas", o mesmo do "[…]" da legenda. A tradução casa. **R8-1 fechado** | CONFIRMADA |
+| RB190 | citação 3 “…han sido muchos de ellos muertos” com a legenda "[…] many of them have died" | l. 2445: "cargarlos han sido muchos de ellos muertos y alejadose". Literal e contíguo, 6 palavras, e o "…" está no lugar de "por cargarlos". Agora "have died" verte o "han sido … muertos" que está na citação. **R8-3 fechado** | CONFIRMADA |
+| RB191 | citação 1 “fria y de muchas nieves”: só a nota mudou | A nota cita l. 2437–2438, e está certo: "fria y de muchas" fecha a l. 2437, e "nieves" abre a 2438. *Correção a RB175, na Reconf. 8: ali a citação aparece como da "l. 2437"; o trecho atravessa a quebra da 2437 para a 2438. O veredito não muda.* São 5 palavras, e o texto e os tempos (1,634–3,9) não mudaram | CONFIRMADA |
+| RB192 | grifo 2 na página, agora 3,9–6,234 | O texto continua inteiro ("de la mar y el camino muy despoblado"), e "cuarenta leguas" fica sem luz. Na nota, "283,13–284,61 s abs." é a âncora da voz (3,297 "and" até 4,777 "coast"), não a janela da tela, e confere | CONFIRMADA |
+| RB193 | os tempos novos contra a voz | "road" começa em 3,927, e 3,9 é o quadro 117, o mesmo da convenção do resto do arquivo. A citação 3 entra em "many" (6,247; t0 6,234). A citação 1 entra em "the" (1,647; t0 1,634). **Uma citação por vez:** a 1 vai de 1,634 a 3,9, a 2 de 3,9 a 6,234 e a 3 de 6,234 a 10,867, sem sobreposição. A 2 fica 2,334 s no ar (≥ 2,0). **Textos vivos:** o rótulo da página, "Translated from Spanish", a citação k e a legenda k, 4 em todo instante. **Elementos:** a folha, o grifo, o rótulo, a citação, a legenda e a marca, 6 ≤ 6. **Blocos de leitura:** a folha, a citação e a legenda, 3 ≤ 3 (identidade l. 207) | CONFIRMADA |
+| RB194 | a voz em cada janela não contradiz a tela | 3,9–6,234: "road to the coast. It also says"; a tela diz "…de la mar y el camino muy despoblado" / "from the sea, and the road very deserted". 6,234–10,867: "many of the Indigenous people forced to carry their supplies had died doing it"; a tela diz "…han sido muchos de ellos muertos" / "many of them have died". A causa que saiu da citação ("por cargarlos") continua na voz | CONFIRMADA |
+| RB195 | a instrução à Arte (s27), com a medida | Diz 2.200 px (x 1440 → 3640), ~14 caracteres, 157 px por caractere e linha de 322 px. As citações inteiras dariam 2, 3 e 4 linhas. As formas escolhidas, contadas com as aspas: “fria y de (10) / muchas nieves” (14); “…de la mar y (13) / el camino muy (13) / despoblado” (11); “…han sido (10) / muchos de (9) / ellos muertos” (14). São 2, 3 e 3 linhas (~644, ~966 e ~966 px), e duas linhas dão 14 caracteres com a aspa de fechar, no teto da conta. A aspa é mais estreita que a média, e a instrução já manda a Arte medir e avisar antes de encolher. Com uma legenda de uma linha a 84 px, cabem nos ~1.340 px entre o rótulo e a marca. **R8-2 fechado** | CONFIRMADA |
+| RB196 | `_conflitos_para_a_sala` (c), o registro | `estado: decidido`, com a decisão de 09:2x (a opção 1 com as formas de antes) e a `decidido_0930` (09:3x: as formas de RB189–RB190, o mesmo critério e a citação 1 que fica). A `questao` antiga, com os 1.932 px, fica como histórico, e a `questao_conta_corrigida` traz a conta certa, igual à da instrução | CONFIRMADA |
+| RB197 | `_conflitos_para_a_sala` (a) e (b), o registro | (a): `decidido`, 09:2x, "a opção 2, sem exceção", com a razão. (b): `decidido`, 09:2x, a opção 1, "2,33 s no ar, 4 textos vivos, uma citação por vez", o que bate com RB193 | CONFIRMADA |
+| RB198 | as notas das 3 citações: o "fria" e o (a) sem "exceção" | O "('fria' sem acento, como está)" ficou só na citação 1, e as notas da 2 e da 3 não o trazem: **R8-4 fechado**. Nenhuma das 3 notas fala em "exceção". A razão citada confere com a identidade: l. 106, "número-herói / título · 260 · 360 · 560"; l. 107, "fala citada · 260 · 280 · 340 · 12"; e o simultâneo da l. 207 ("até 3 blocos … dentro dos 6 elementos"; "Bloco é texto de leitura … a fala citada"). **Ressalva:** a nota diz que "a s32 já tem duas falas citadas em sequência, #c1 e #c2", mas neste arquivo a s32 tem “predominantly Andean” de 4,367 a 8,067 e “mostly coastal” de 5,934 a 8,067. As duas ficam juntas 2,133 s, e o `s32.html` traz as duas com `data-qc-papel="heroi"` (l. 172 e 174). O precedente vale para duas falas citadas na mesma cena, não para "uma de cada vez". Achado R8b-1 | CONFIRMADA (com a ressalva de redação) |
+| RB199 | `_consertos`: as rodadas 7b e 7c | A 7b registra as formas de 09:2x (“…el camino muy despoblado”, “…muchos de ellos muertos”) e os tempos 3,267 → 3,9 da citação 2, da legenda 2 e do grifo 2. A 7c registra a troca para as formas de 09:3x, e a legenda 3 só com a nota. Cada "antes" bate com o `7a1a4ba9` | CONFIRMADA |
+| RB200 | `_textos_vivos_max` | `maior` foi de 6 para 4, e a s27 de 6 para 4 (com e sem caça); as outras cenas não mudaram. Bate com RB193 | CONFIRMADA |
+| RB201 | `_entradas_conferidas`, o conserto 7b (direcao-8) | Comparei o conceito `94ace8e2` → `3c73b70f` campo a campo. Mudaram só `s11.tecnica`, `s13.tecnica`, `s16.tecnica`, `s16.metafora` e `s16.midia_ancora`, e `s34.tecnica`; a s27 não mudou. Confere com este arquivo: s11, as pílulas desde 0 s e "ABOUT 100×" em 2,5 s ("hundred"); s13, "Satellite image · June 2018" (18,866); s16, a legenda da NOAA em 3,767 ("the cold water"); s34, "LIMA REGION + CALLAO" e "Source: INEI (Peru), 2022 GDP estimate" em 12,733, e "41.9% OF PERU'S GDP" e "2022 ESTIMATE" em 15,366. A regência `55cebfa3` e o espelho `a24d77d2` estão sem mudança | CONFIRMADA |
+
+**Os achados:**
+1. **[LEVE] R8b-1 · s27, a nota das 3 citações.** Diz que "a s32 já tem duas falas citadas em sequência, #c1 e #c2"; na s32 elas ficam juntas de 5,934 a 8,067 s.
+   - **CONSERTO:** "a s32 já tem duas falas citadas na mesma cena (#c1 e #c2, juntas de 5,934 a 8,067 s)".
+   - **RAIZ:** PONTUAL. Não muda nada na tela.
+
+**R8-1, R8-2, R8-3 e R8-4 estão fechados.** A s27 não tem DIVERGE nem REFUTADA, e a tela não contradiz a voz.
+
+**Continuam:** os 12 rótulos da caça e as 5 primárias do gob.pe, NÃO FOI CHECADO.
+
+COBERTURA: 13 de 13 (esta reconferência: todo item do diff contra o a3a8babe, mais as seções `_conflitos`, `_consertos`, `_textos_vivos_max`, a instrução e `_entradas_conferidas`)
+NOTA: 9/10
+VEREDITO: RESSALVA. O texto de tela da s27 está checado e limpo. Sobra um LEVE de redação numa nota, e os 17 NÃO FOI CHECADO de antes continuam.
+
 ---
 
 ## Fecho do setor
@@ -1648,6 +1737,15 @@ Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do la
   - os 3 achados LEVES da 7, já fechados na 7b: a citação da s28 no registro, o `o_que` da s27 e a nota da pílula da s01.
 - No texto de tela não há DIVERGE nem REFUTADA.
 - Com elas, o lote B ficou com o sha256 `bbd07ddb…5665d`.
+
+**As reconferências 8 e 8b (texto-6, sobre `a3a8babe…` e `a52f2812…`)** estão no fim do lote B, com 14 de 14 e 13 de 13. Elas cobrem a s27, onde o trecho ampliado ao lado da folha virou `citacao` por decisão da Sala.
+- **As citações:** as 3 são literais (Cobo, ed. 1882, p. 10).
+- **As traduções:** passaram a legenda.
+- **Uma citação por vez:** a 2ª entra em "road" (3,9).
+- **As formas finais**, decididas pela Sala com a conta certa da coluna (R8-2): `“…de la mar y el camino muy despoblado”` e `“…han sido muchos de ellos muertos”`, com as legendas casadas.
+- **Os achados:** R8-1 a R8-4 estão fechados na 8b. O R8b-1, LEVE, de redação numa nota, o setor mandou corrigir com o texto que o verificador deu, e conferiu pela diferença que só ela mudou.
+- **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
+- **O lote B,** com elas, ficou com o sha256 `59a6be18…f6219`.
 
 O texto de tela não tem DIVERGE nem REFUTADA. A RESSALVA é só pelos NÃO FOI CHECADO: os rótulos da caça e as primárias do gob.pe.
 
