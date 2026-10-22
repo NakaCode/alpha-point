@@ -1,0 +1,151 @@
+{
+  "cena": "s30",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "Exceção do Lucas: qc-tamanho, crédito a 56 px ('Source: INEI (Peru), censuses 1940–2025', 56<72), 'Quero reduzir para 56px', 07/10/2026 11:3x, sha1 af92b461 igual ao do HTML de hoje (identidade §4.1, 'Crédito a 56 px'; _excecoes-portao.json). É o único item reprovado do qc-cena (5 de 5 portões com a pré-carga). O crédito vem de var(--fs-credito) (56 px), com data-qc-papel='credito', e só o crMapa leva data-qc-credito='mapa'.",
+        "Margem, faixa do crédito, canto de 400×400 e fita: portao-margens veredito 0 (sha1 af92b461, marca c647bf6c = sha1 do tokens.css de hoje, 429 amostras, 34 itens medidos), não remedido no olho. O recorte 4K do crédito sob o gráfico (34,5 s) e o do par INEI + MapTiler (16,5 s) mostram os dois créditos inteiros, em uma linha cada, abaixo de y 1880.",
+        "Sinalização (não derruba): o beat b3 (15,5–18,567 s) tem 6 elementos simultâneos (linha, HIGHLANDS, as 10 silhuetas, COAST, a legenda de duas linhas, 28.3%), exatamente o teto da identidade §4.2; a Arte declarou o mesmo no cabeçalho. Cena que encosta no teto está no pior extremo; o par 65.0% sai em 15,2–15,5 s justamente para não passar de 6.",
+        "Sinalização: as 10 silhuetas em traço têm ~110 px de altura no 4K e os braços se tocam em corrente (recorte 11,0 s); na chegada à costa (recorte 21,9 s) dois pares se sobrepõem (a 3ª com a 4ª, a 5ª com a 6ª). Legível, mas é o elemento menor da cena e o que mais perde no celular.",
+        "Hierarquia: cada beat tem um dono claro (Lima; a linha; HIGHLANDS; COAST; a série; RAINFOREST). Nenhum herói de lugar; rótulos a 128 px, legenda e eixo a 84 px, tudo acima do piso."
+      ],
+      "correcoes": [
+        "Opcional, a critério da Arte: afastar um pouco as silhuetas (sem o toque dos braços) e dar espaço entre as que pousam na costa, para não se sobreporem. Não encolher nada."
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 7,
+      "problemas": [
+        "Sinalização (nota 7, não reprova): a figura de 10 silhuetas fica TODA em HIGHLANDS ao lado de '65.0% (1940)' (quadros de 10,0 a 19,0 s), e a COAST (28.3%) não tem nenhuma. Quem conta lê 10 de 10 contra 65,0 %. Depois, em 'census by census' (19,0–21,6 s), 6 descem e 4 ficam: 6 a 4 é quase o estado de 2025 (58,7 % × 26,7 %), não o ponto em que a balança vira (~45 %, 1970,5 no gráfico que vem logo depois). O verificador só fechou figura com contagem onde ela existe (s01, s34, s36) e deu a s30 como 'sem contagem' (fatos-tela.laudo.md, 'As silhuetas'); mas o desenho aqui é contável.",
+        "O que confere: 65.0, 28.3, 52.4, 58.7 e 6.7 → 14.6 batem com o PDF do INEI p. 12 (TB026–TB038, todas CONFIRMADA). A geometria do gráfico foi medida no quadro: eixo 0–70 % com o 0 no eixo, 4,39 px por ponto percentual de 65,0 a 26,7, x proporcional ao ano real, e o cruzamento marcado em 1970,5 / 45,1 % é a interseção linear 1961→1972, coerente com 'between 1961 and 1972'.",
+        "Geometria: a linha é a divisoria-continental-peru (HydroBASINS), a mesma do vídeo, sem crista à mão; o lado seco é o polígono vertente-pacifico inteiro; Lima é o ponto NE no litoral. Nada de mapa à mão, pino no lugar de território ou rótulo de vizinho. HIGHLANDS cai no marrom de Ayacucho–Apurímac–Cusco e RAINFOREST na floresta de Ucayali, sobre o satélite, sem área do censo (decisão da Sala: a lista de distritos do INEI não foi lida).",
+        "Grafia e texto: os 23 textos medidos pelo portao-mapa til estão no textos-tela; nada do nao_vai_para_tela na tela. Nenhum asset de _media/ na cena."
+      ],
+      "correcoes": [
+        "À Sala e ao verificador-de-fatos, antes do render: ou a fileira de silhuetas passa a ter contagem honesta (65,0 % = 6 cheias + 1 meia em HIGHLANDS; 2 cheias + a 3ª a ~83 % na costa; e o 'depois' perto de 5 a 5), ou a nota da cena declara 'sem contagem' e a Arte tira o número redondo de 10 da fileira (um grupo de 7 a 9 não lê como a população inteira). A escolha da fração é da Sala; o QC não a decide."
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 8,
+      "problemas": [
+        "Conferido contra words.json (tempo da cena = tempo do master − 316,2): 'highlands,' 9,26 → HIGHLANDS e 65.0% em 9,233; 'coast,' 15,50 → COAST, legenda e 28.3% em 15,5; 'census' 19,16 e 'tipped' ~21,2 → as silhuetas descem de 19,0 a 21,6 (a 1ª sai 0,16 s antes da palavra, imperceptível; o balanço amortece e para antes do corte); 'overtook' 22,54 → o cruzamento acende em 22,533; 'nineteen' (1993) 28,86 → 52.4% em 28,833; 'twenty' (2025) 33,10 → 58.7% em 33,1; 'rainforest,' 39,12 → RAINFOREST em 39,1; 'more' 41,35 → 6.7% → 14.6% em 41,333. A linha do gráfico passa por 1993 em ~29,0 s e por 2025 em ~33,1 s, junto da voz.",
+        "Primeiro segundo: o lado seco acende em 0–0,5 s e 'Lima' já está no quadro de 0,1 s (a voz diz 'That' em 0,01). Sinalização: 'capital' é dita em 0,99 s e 'dry side' em 1,57 s, então o ponto e o polígono entram ~1 s antes da palavra que os convoca; é o t0 do textos-tela (0,0) e o beat precisa de imagem no primeiro quadro, então não reprova.",
+        "Nada fica depois da fala: a voz termina em 42,12 s e a cena em 42,733; o que está na tela é o RAINFOREST e o 6.7% → 14.6%, ancorados na última frase. Nenhum elemento foi atrasado por ritmo nesta cena, então não há re-checagem de word-lock a registrar."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "Os modos estão certos: lugar e posição ('dry side of the line', a serra, a floresta) = MAPA de satélite com geometria real; a série de oito censos = DADO (número no tempo, não filmável), com corte seco mapa → dado → mapa, a troca de regime que a identidade §4.4 permite; as silhuetas são a ilustração sobre o mapa que o conceito pediu. Não há alternativa melhor por registro real: nenhum arquivo de _media/ cobre censo ou migração (pasta conferida).",
+        "O mapa volta no mesmo lugar em que parou (quadro de 21,8 s × o de 37,4 s), o que dá continuidade à troca de regime."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 7,
+      "problemas": [
+        "Sinalização (nota 7): o gráfico (22,0–37,167 s) não escreve em lugar nenhum DO QUE são as linhas. Lido só pelo texto, de 22,0 a 28,8 s: 'HIGHLANDS', 'COAST', 1940…2025 e nada mais; o eixo não tem unidade e o 65.0 / 28.3 saiu da tela junto com o mapa. A pergunta '% de quê?' fica para a voz ('most populous census region'). Só a partir de 28,8 s o '52.4% (1993)' põe um número, ainda sem 'of Peruvians'. O mesmo vale para '6.7% → 14.6%' (41,3 s): o referente está só na voz.",
+        "O que funciona: a leitura visual do cruzamento é imediata (duas linhas que trocam de lugar, a escura caindo e a violeta subindo, com o ponto aceso no cruzamento); HIGHLANDS e COAST são nomes que o leigo entende; as silhuetas deixam claro que o assunto é gente."
+      ],
+      "correcoes": [
+        "Ao redator-de-tela (não à Arte): uma legenda de eixo de 84 px, por exemplo 'SHARE OF PERUVIANS', junto dos rótulos das séries ou logo acima do eixo, de 22,0 a 37,167 s; ou os dois números do começo (65.0% e 28.3%) reentrando no começo das linhas. Pede linha nova no textos-tela (t0 22,0, t1 37,167, papel legenda)."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 8,
+      "problemas": [
+        "Teste de lastro, texto por texto, contra a fala da janela: Lima ('capital'), HIGHLANDS ('highlands'), 65.0% e 28.3% (dado atribuível que a cena existe para provar), COAST e a legenda ('the region the census calls the coast, which covers only part of the dry side'), os rótulos e o eixo do gráfico (orientação mínima), 52.4% e 58.7% ('more than half', 'nearly six in ten'), RAINFOREST ('rainforest'), 6.7% → 14.6% e '1940 → 2025' ('more than doubled'). Nenhum órfão. Texto malformado, tofu ou entidade: nenhum (portao-mapa til: 23 textos, 0 glifos).",
+        "Densidade: pico de 6 elementos em b3 (o teto, sinalizado em espaco); 1 bloco de texto (a legenda de duas linhas), contra o máximo de 3. No gráfico: 2 séries + 2 rótulos + 2 cotas + o eixo. Os dois números de 1940 nunca ficam juntos (65.0% sai em 15,2–15,5 s, antes de o 28.3% entrar)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 7,
+      "problemas": [
+        "Sinalização (nota 7): de ~33,9 a 37,167 s (≈3,3 s, durante 'nearly six in ten lived in that coastal region') o gráfico fica COMPLETAMENTE parado: diferença de pixel 0,0 em todos os pares de quadros medidos (34,0 / 34,5 / 35,0 / 35,5 / 36,0 / 36,5 / 37,0 s, em 960×540), nem a deriva do RIG. Antes disso a linha desenha continuamente (22,0–33,9 s). A Arte declarou 'completo e parado (4 s)'. Não reprova (7,7 % da cena, abaixo do teto de 6 s, e é o momento em que se lê o 58.7%), mas é o único trecho morto da cena e o ofício diz que nada congela.",
+        "Mapa de 9,2 a 19,0 s: o satélite anda pouco (zoom 7,85 → 7,98, ~9 % em 13 s, mais o giro de −1° a +1°; correlação de fase, ~1 px/s em 960 de largura). É uma aproximação lenta e ininterrupta, como pedem a regência e a identidade §5 ('Mapa nunca fica parado'), e as entradas de HIGHLANDS (9,2 s) e COAST (15,5 s) e a descida das silhuetas (19,0–21,6 s) carregam o quadro. Não reprova; é sutil. A volta ao mapa (37,2–42,7 s) anda para leste ~20 px/s no 4K, de acordo com 'went east'.",
+        "O que está certo: recuo de 3 s cúbico (3,067–6,133 s) e viagem de 2,57 s cúbica aos Andes centrais (dentro de 1,5–3 s); o lado seco e a divisa do país saem em ~500 ms; cortes secos só nas trocas de regime (22,0 e 37,167 s); as silhuetas descem uma a uma, com passo e balanço que amortecem a zero, e param em 21,6 s, 0,4 s antes do corte (nada se move nos últimos 250 ms além da deriva do mapa); rótulo em 300 ms, território em 500 ms. Crédito de mapa inteiro no 1º quadro, sem fade."
+      ],
+      "correcoes": [
+        "À Arte (opcional, uma linha): manter um respiro no gráfico de 33,9 a 37,167 s, por exemplo uma deriva de 1–1,5 % na placa do gráfico ou um pulso único do ponto de 2025, sem mexer em nada que se lê. Não é velocidade de câmera: o mapa já está na régua de 'lenta e ininterrupta'."
+      ]
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "Pergunta 2 da Arte (INEI sob o gráfico, 22,0–37,167 s, fora das janelas do textos-tela): CONFIRMO. O gráfico é dado atribuível de oito censos e, sem a linha, ficaria sem fonte na tela (fonte (a) do ofício); a nota do próprio textos-tela diz 'do 1º número ao fim do gráfico'. Não é crédito supérfluo, e a linha é uma só, sem duplicar. A incoerência é do arquivo de montante: as janelas listadas (9,233–22,0 e 37,167–42,733) deixam o gráfico de fora.",
+        "Mapa: '© MapTiler © OpenStreetMap contributors' a 56 px, inteiro desde o 1º quadro, em 0–22,0 e 37,167–42,733 s (todo quadro de mapa, nenhum quadro de dado), na faixa de crédito, legível (portao-mapa rodape v5: pior instante 8,46:1, 89 amostras; o pior é o crédito sobre o gráfico), com data-qc-credito='mapa' só na linha do mapa. Formato do INEI: 'Source: INEI (Peru), censuses 1940–2025' (§5/§7), com data-qc-papel='credito'.",
+        "Sem crédito supérfluo: Natural Earth (Lima, peru-ne) e HydroBASINS não aparecem na tela (o HydroSHEDS tem o Exhibit B na descrição, conforme o pauta-geo). Sem mídia de banco, foto, logo, bandeira nem crédito-fantasma.",
+        "Para a descrição do vídeo (Sala): o INEI (censos 1940–2025) e o Exhibit B do HydroSHEDS; o crédito de MapTiler/OSM já está na tela."
+      ],
+      "correcoes": [
+        "À Sala e ao redator-de-tela: alinhar o textos-tela ao que a cena mostra (crédito do INEI de 9,233 a 42,733 s, janela única), para o gate textos-tela × cena não acusar a diferença depois."
+      ]
+    },
+    {
+      "lente": "tema",
+      "nota": 7,
+      "problemas": [
+        "Sinalização (nota 7): a Costa do censo usa --contexto-1 (violeta #694C8B) na pílula COAST e na LINHA do gráfico (DADO sobre --papel). A identidade §2 diz que as cores de contexto 'são as únicas cores da paleta que só existem no mapa' e que fora dele o terceiro ator é --neutro; e a tabela do DADO (§5) manda a série do protagonista em --destaque e a da contraparte em --contraparte. Aqui: Costa em violeta, Sierra em --tinta-escura. É decisão de montante (regência, beats 3 e 5; conceito da s31: 'a mesma cor na linha do gráfico'), para o âmbar continuar a ser SÓ o lado seco e a Costa do censo (que cobre apenas parte do lado seco) não ser lida como ele. A razão é boa e cumpre 'uma cor = um significado'; o contraste é 5,71:1 sobre --papel (a --tinta-escura faz 14,55:1). Mas a identidade escrita não prevê isso, e nem a Arte nem o QC podem abonar a exceção sozinhos.",
+        "O resto serve ao assunto: --destaque a 85 % só no lado seco (protagonista), a linha em --tinta com contorno escuro, silhuetas e rótulos em --tinta, no máximo 3 matizes por beat (âmbar, violeta, preto/branco), sem degradê, véu ou vinheta, tratamento C do satélite igual ao das irmãs (mesmo motor da s28 e da s45)."
+      ],
+      "correcoes": [
+        "À Sala: confirmar, numa frase ao Lucas se preferir, que o --contexto-1 pode sair do mapa para a linha da Costa do censo no gráfico (e, se sim, anotar a exceção na identidade §2), ou trocar a linha por --contraparte (#2EC4B6) como manda o DADO, mantendo a pílula COAST violeta no mapa. A escolha muda duas cores no HTML (a linha e o rótulo COAST do gráfico); o QC não decide."
+      ]
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "Concretos nomeados: a capital (Lima), os peruanos, a serra (highlands), a costa, a floresta (rainforest). Registro real de cada um: o satélite MapTiler com a geometria real (litoral de Lima, a cordilheira, a floresta amazônica; quadros de 2,0, 10,0 e 40,0 s). Nenhum central ficou só em ícone: as silhuetas compõem, e o assunto é a parcela do censo, não a imagem de gente.",
+        "Sinalização: nenhum registro real de Lima ou de gente nesta cena (a s03 e a s33 do mesmo bloco cobrem a costa e a gente de cima); a regência não pede, e não há arquivo baixado em _media/ para a s30 ou a s31."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 7,
+      "problemas": [
+        "Sinalização (nota 7, não reprova): '6.7% → 14.6%' e '1940 → 2025' ficam 1,40 s no ar (41,333–42,733 s), abaixo dos 2,0 s da identidade §4.3 e do piso de ofício de ~1,5 s. A causa é o t0 do textos-tela na palavra 'more' (41,35 s) e a cena acabar com a fala (a voz termina em 42,12 s). É o mesmo padrão que a Arte levou à Sala na s12, na s32 e na s41. Como o texto é curto e é a última coisa dita, fica sinalizado e não reprovado.",
+        "Planos: 7 objetos narrativos (capital, país sem gente, serra, Costa do censo, migração, série, floresta) e 7 planos, um por objeto (regência › auditoria). O mesmo enquadramento dos Andes centrais dura ~15,9 s (de ~8,7 a 22,0 s) para três objetos (serra, costa, migração), com a camada mudando em 9,2, 15,5 e 19,0 s (o maior vão sem camada nova é 9,233 → 15,5 = 6,3 s, raspando o teto de 6 s). Pelo ofício é aceitável aqui: o plano tem aproximação e a descida das silhuetas como trajetória própria, e a migração exige serra e costa no mesmo quadro. Não há footage nem arquivo repetido (nenhum src de vídeo ou foto na cena).",
+        "O gráfico é um plano de 15,17 s, a mesma série, com os pontos entrando na palavra; fica parado nos últimos ~3,3 s (ver motion)."
+      ],
+      "correcoes": [
+        "Ao redator-de-tela: t0 de '6.7% → 14.6%' e de '1940 → 2025' em 'share' (40,39 s) ou 'Peruvians' (40,63 s), para chegar a ≥ 2,0 s (2,34 s ou 2,10 s no ar), sem entrar antes do que a voz quantifica ('share of Peruvians' é o objeto do número)."
+      ]
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "Observação (nota ≥7): o primeiro beat (lado seco aceso com a linha, 0–3,067 s) repete o enquadramento-assinatura da s02 e da s05, e as silhuetas em traço voltam da s01/s02 e vão à s34. Como a s30 PAGA a frase com informação nova (Lima no lado seco; depois a pergunta 'onde está a gente?') e o gráfico, a RAINFOREST e a descida são degraus novos, é callback, não círculo. Se a s30 sumisse, o espectador perderia a série de oito censos e a migração. A comparação foi feita pelo espelho, pelo conceito e pelo texto do verificador; os quadros das cenas irmãs não foram abertos neste lote (orçamento e tipo de lote).",
+        "Eco de forma, só sinalizado: três cenas seguidas de mapa (s28 mapa + mesa, s29 mapa + footage, s30 mapa + dado + mapa). A s30 varia o modelo por dentro, com o corte ao DADO."
+      ],
+      "correcoes": []
+    }
+  ]
+}

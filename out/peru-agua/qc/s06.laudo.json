@@ -1,0 +1,160 @@
+{
+  "cena": "s06",
+  "aprovado": false,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "portao-margens (sha1 ef2ea579, marca c647bf6c = sha1 do tokens.css de hoje): veredito 2 por desenho, motivo 'a cena usa relevo 3D' (292 amostras, 28 objetos medidos). Esse NÃO MEDIDO não segura o aprovado (roupa §3). Margem de relevo 3D olhada no clipe, nos quadros 13,6, 17,6, 22,8, 25,6 e 28,9 s: nenhuma pílula, a miniatura nem o crédito fora da margem de 200/160 px, nada abaixo de y 1880 fora os créditos, canto 400×400 livre (mar escuro). Não remedi no olho o que o portão mede; só conferi onde ele não alcança.",
+        "exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 ('Quero reduzir para 56px'). A reprovação é só dos dois créditos ('Diego Delso, delso.photo / Wikimedia Commons' e 'Straight line, measured by Alpha Point', 56<72), com o sha1 ef2ea579 igual ao de out/peru-agua/qc/_excecoes-portao.json. Os dois leem var(--fs-credito)=56 sem override (HTML l. 95) e levam data-qc-papel='credito'; data-qc-credito='mapa' só na linha da MapTiler. gatesDuros vazio.",
+        "sinalização (sem reprovar): 'LESS THAN 70 MILES' (22,3–29,1 s) tem 4 palavras, uma acima do máximo de 3 do rótulo (identidade §4.1). É o papel `cota` do textos-tela (redator-de-tela), em pílula de 128 px; a forma curta é decisão do redator/Lucas, não da cena.",
+        "sinalização: a pílula 'LESS THAN 70 MILES' assenta rente à linha da divisória (recorte 4K a 25,6 s: vão de uns 5–10 px entre a borda de baixo da pílula e o traço, que corre colado por baixo na ponta esquerda). Não há sobreposição, mas identidade §6 manda rótulo fora das linhas.",
+        "sinalização: de 25,0 s ao fim a cena tem 6 elementos (linha, régua, Lima, a cota, os rios, Rímac): no teto de 6 (identidade §4.2), o pior extremo."
+      ],
+      "correcoes": [
+        "Nada a mudar para aprovar a lente. Se a Sala quiser vão limpo na cota: subir a pílula uns 40 px (a ponta da régua continua na linha); não reduzir a fonte.",
+        "Levar ao redator-de-tela/Lucas se a cota de 4 palavras vale ou se vira forma de 3."
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "Textos conferidos contra textos-tela e contra o laudo de fatos (TA034–TA046 CONFIRMADA): CONTINENTAL DIVIDE, PACIFIC, Amazon, ATLANTIC, LAKE TITICACA BASIN, Lake Titicaca (Puno) (dentro do lugar_na_origem do veredito aprovado, sha256 0367b82e), LIMA REGION, Lima, LESS THAN 70 MILES, Rímac. Foto do Titicaca: asset aprovado para a cena. Linha: a mesma do HydroBASINS; a ponta de cima da régua cai sobre a linha (recorte 25,6 s). A régua mede 59,4 mi (conta da cena) e a voz diz 'less than seventy': sustenta.",
+        "sinalização: o relevo está a exagero 2,4× (relato M1) e a tela não diz. A frase afirma 'steep' e 'less than seventy miles': a inclinação aparente da muralha e dos rios é inflada, e a régua é medida no plano. Não reprova (identidade §6 libera o relevo 'quando necessário' e não pede declaração), mas é decisão de marca/Sala se isso se declara.",
+        "sinalização (pergunta da Arte sobre o Mantaro): a metade leste afunda e os rios reais só começam 190–220 km adiante. Nos quadros 7,0 e 7,6 s aparecem pedaços soltos de traço teal (Marañón, Ucayali) sem ligação com a gota. É pictograma declarado, não geometria inventada, então não reprova; mas o caminho real da água leste a partir dali tem de existir na geometria para a gota 'andar' (resposta no report)."
+      ],
+      "correcoes": [
+        "Mantaro: vale pedir à pesquisa-geo (OSM ou HydroRIVERS, mesma licença HydroSHEDS já usada). O caminho real a leste é Mantaro → Apurímac/Ene → Tambo → Ucayali (a conferir pela geo); só o Mantaro fecharia o primeiro trecho e deixaria o hiato até o Ucayali, então pedir a cadeia. Não é condição do aprovado.",
+        "Exagero 2,4×: a Sala decide se declara; sem declarar, não subir além de 2,4."
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 5,
+      "problemas": [
+        "REPROVA: 'PACIFIC' entra 2,0 s depois da palavra. A voz diz 'Pacific.' em 5,08–5,54 s (words.json); textos-tela t0 5,066 e regência 'entra 5,067'. Nos quadros 5,1, 5,4, 5,9, 6,5, 6,7 e 7,0 s não há rótulo nenhum no mar (a gota acabou de chegar à costa em 5,1 s); a pílula só aparece entre 7,0 e 7,2 s (presente em 7,2, 7,6 e 8,4; ausente em 9,2). Causa no código (HTML l. 498): âncora em [-78.30, -12.95], que no enquadramento de 5–7 s cai em y ~1950, abaixo da faixa de crédito (y 1880), e a regra de área segura (naArea) a esconde. Resultado: o mar só é nomeado quando a voz já está em 'eastern… rivers' (6,1–9,4 s), e a palavra 'Pacific' fica sem cobertura.",
+        "sinalização: no quadro 8,4 s a pílula PACIFIC já está rente à linha branca da divisória (borda direita encostada), o que a identidade §6 proíbe (rótulo fora das linhas).",
+        "sinalização: 'Lima' (pílula) entra em 20,433 s, na deixa do textos-tela (1ª palavra do beat, 'From'), mas a voz só diz 'Lima' em 21,12 s (words.json): 0,7 s de antecipação. A régua também começa em 20,45; o rótulo é a origem dela. Fica como observação.",
+        "Demais elementos conferidos contra words.json: CONTINENTAL DIVIDE 0,9 ('continental' 0,92), gota 2,64 ('Rain'), Amazon 8,833 ('Amazon' 8,84), ATLANTIC 10,033 ('Atlantic' 10,05), LAKE TITICACA BASIN e miniatura 12,833 ('Lake' 12,84), viagem 14,82 ('In'), LIMA REGION 18,733 ('Lima' 18,76), LESS THAN 70 MILES 22,3 ('seventy' 22,33), rios e Rímac 25,0 ('dozens' 25,01): tudo na palavra. Primeiro segundo: a linha acesa desde o quadro 1, o rótulo em 'continental'. Nenhum elemento foi atrasado por ritmo nesta cena (sem reprovação de carga), então não há re-checagem de word-lock por isso."
+      ],
+      "correcoes": [
+        "Reancorar PACIFIC num ponto de mar que fique dentro do quadro de 5,07 a ~6,4 s (a oeste-noroeste da foz do Rímac; por exemplo perto de [-78.2, -11.7], x ~715, y ~1020 no quadro de 5,5 s) e entrar em 5,066. Conferir nos quadros que o rótulo não encosta na linha nem na margem enquanto a câmera abre ao continente (6,4–8,9 s); pode esmaecer pela regra de área segura quando a câmera o levar à margem, como já faz com os outros. Não atrasar nem adiantar o t0: a voz é 5,08.",
+        "Opcional (observação): 'Lima' em 21,1 s no lugar de 20,43 s, se a Sala preferir a palavra; o custo é a régua nascer sem origem nomeada por 0,7 s."
+      ]
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "Modo certo: MAPA com ilustração sobre o satélite (a gota, a régua) e relevo 3D onde a frase é a cordilheira ('western range of the Andes', 'steep'); registro real (satélite, foto de Puno) cobre cada coisa nomeada. Nenhum erro de modo."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "Clareza em 2 s boa nos beats: linha + nome, gota que se divide, rios até o Atlântico, bacia com foto, régua com a medida. Duas ressalvas, sem reprovar: (1) de 5,1 a ~7,1 s a gota chega ao mar sem nome, e o ouvinte ouve 'Pacific' sobre um mar sem rótulo (consequência do defeito de wordlock); (2) o ramo leste 'afunda' em 6,11–6,71 s como pictograma, e os traços teal aparecem soltos antes de se ligar (ver factual)."
+      ],
+      "correcoes": [
+        "Sai com a correção do wordlock; o Mantaro (factual) reduz a segunda ressalva."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 8,
+      "problemas": [
+        "6 elementos de 25,0 s ao fim (teto da marca, §4.2): sinaliza o pior extremo, não reprova. Em 12,833–14,8 s duas pílulas nomeiam o mesmo lago (LAKE TITICACA BASIN e 'Lake Titicaca (Puno)') mais a miniatura e o crédito: a segunda é o rótulo de lugar que a identidade §5 pede sobre a foto, então fica.",
+        "Lastro: todo texto cai numa palavra da voz (Puno só no rótulo da foto, que a identidade §5 exige; 'Straight line, measured by Alpha Point' é crédito do textos-tela). Nenhum texto órfão, entidade HTML, tofu ou glifo quebrado; portao-mapa til v5 saiu 0 (63 amostras, 13 textos)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 9,
+      "problemas": [
+        "Câmera nunca para: bearing de -2 a 62 graus, aproximação lenta nos beats 0–3 e órbita no 3D; viagens de 2,5 s (6,4–8,9), 2 s (11,07–13,07) e 3 s (14,82–17,82), todas na faixa de 1,5–3 s da marca. Cota 'LESS THAN 70 MILES' e rios entram em 300/500 ms. Entre 22,3 e 25,0 s (2,7 s) a régua e a cota estão paradas e só a órbita anda: dentro do que a regência pede ('no camera trip between seventy and dozens').",
+        "sinalização: de 11,07 a 12,83 s (1,8 s) o quadro só tem a linha e a viagem de câmera, sem elemento novo; a câmera carrega."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "Crédito de mapa '© MapTiler © OpenStreetMap contributors' presente nos quadros olhados (0,3 até 28,9 s), cobrindo o OSM do Rímac e dos rios; foto de Puno 12,83–14,8 s com 'Diego Delso, delso.photo / Wikimedia Commons · CC BY-SA 4.0' (crédito do veredito, 2 linhas, abaixo de y 1880), sem crédito-fantasma (a foto está na tela enquanto o crédito está); contraste do rodapé 10,01:1 (portao-mapa rodape v5, 63 amostras, 151 créditos medidos). Natural Earth e HydroBASINS sem crédito na tela, como a marca decidiu (o Exhibit B da WWF vai na descrição).",
+        "Para a Sala (não é defeito da cena): a descrição do vídeo tem de levar o Exhibit B do HydroSHEDS/HydroBASINS, a linha da MapTiler/OSM e o crédito da foto."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [
+        "Laranja = o lado seco (Rímac e rios do Pacífico), teal = o lado amazônico, neutro = o Titicaca, branco = a divisória: uma cor, um significado; 3 matizes fora o satélite. Tratamento C do satélite (identidade §6, do vídeo 2 em diante): mar quase preto e terra viva, como a marca pediu."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 9,
+      "problemas": [
+        "Coisas nomeadas com registro real: Andes e Lima (satélite com relevo), Amazon e rios (satélite), Lake Titicaca (foto aprovada de Puno + satélite), Pacific/Atlantic (satélite). Nada central sem imagem."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 9,
+      "problemas": [
+        "Sete objetos em sete planos de 2,6 a 5,6 s, cada um com câmera em curso; nenhum footage, nada parado além do teto de 6 s da marca. Regime normal; o 3D vira por dentro da cena em 'In Peru' (14,82 s), que é batida da fala."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [
+        "Base da comparação: espelho, conceito e textos-tela das irmãs (s01–s05, s08–s10); não vi quadros delas (são de outros lotes). A s02 e a s05 mostram a linha acesa sem nome nem caminho; a s06 dá o degrau novo (nomeia a linha, parte a gota, leva aos três destinos) e a s07 fundida entrega a muralha e a régua. Nenhuma repetição sem degrau."
+      ],
+      "correcoes": []
+    }
+  ],
+  "julgamento": {
+    "modo": "completo",
+    "lentes_julgadas": [
+      "espaco",
+      "factual",
+      "wordlock",
+      "abordagem",
+      "acessibilidade",
+      "poluicao",
+      "motion",
+      "fonte",
+      "tema",
+      "cobertura",
+      "cadencia",
+      "autoria",
+      "camadas",
+      "circulo"
+    ],
+    "lentes_herdadas": [],
+    "frames": 29,
+    "porque": "Quadros do clipe 4K de prova (carimbo igual ao sha1 ef2ea579, 2160p) pelo ffmpeg: 7 folhas 2x2 (28 instantes, 0,3 a 28,9 s, com passo fino de 5,1 a 7,0 s) e 1 recorte 4K a 25,6 s; 8 imagens lidas. Reprovada só em wordlock (PACIFIC entra 2 s depois da palavra); gatesDuros vazio (exceção do crédito a 56 px; portao-margens NÃO MEDIDO por relevo 3D não segura)."
+  }
+}

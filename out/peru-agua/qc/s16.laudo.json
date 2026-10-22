@@ -1,0 +1,139 @@
+{
+  "cena": "s16",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "portao-margens veredito 0 (sha1 339cd76a e marca c647bf6c de hoje; 119 amostras, 15 objetos medidos; as duas falhas da rodada de 08:54, a NOAA a 189 px, foram consertadas e o sha1 final saiu 0). Nenhuma falha de qc-tamanho (a cena só tem o crédito de mapa, a 56 px com data-qc-credito=\"mapa\"): não precisa de exceção. Não remedi no olho.",
+        "sinalização (sem reprovar): em 7,83–7,97 s a legenda da NOAA ainda está opaca quando 'Satellite image · June 1998' entra no mesmo lugar: por uns 0,25 s os dois textos ficam sobrepostos e ilegíveis (quadro 7,83; no 7,97 sobra o fantasma do texto antigo). É transição no mesmo ponto (a pílula EL NIÑO → EL NIÑO 1997–98 faz o mesmo em 3,83), e fica entre os instantes amostrados pelo portão de colisão. A roupa (identidade §4.4) manda o rótulo preso ao objeto sair ANTES de o objeto levantar.",
+        "sinalização: em 3,83 s o cartão da NOAA, ao descer, passa por cima do H e encosta na base da pílula (um quadro; em 3,97 já assentou e o H saiu). Hierarquia estável: pílula (128 px), cartão (1.516 px de largura, ~39 % do palco) e legenda (84 px); no fim, pílula, patch Landsat, Piura e legenda (4 elementos)."
+      ],
+      "correcoes": [
+        "mapista (opcional): a legenda da NOAA começa a sair ~300 ms antes do levantar (7,47 s) e a nova só entra depois de o cartão sair (>= 8,0 s); o mesmo no crossfade das pílulas (sair, depois entrar, sem sobrepor). Não segura o render."
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "Asset correto: o painel é o da NOAA (AVHRR SST ANOMALIES, MAR–AUG 1997; sha256 c0d90c23, aprovado no conferencia-midia.json para a s16) com o logo da NOAA recortado fora; o Landsat 5 é o de 03/06/1998 (sha256 8fde207d, aprovado). As legendas batem com o textos-tela e com o laudo de fatos (TA095–TA098; 'Sea surface temperature anomalies, March–August 1997' já na forma corrigida).",
+        "Geometria: o Landsat está georreferenciado (cantos do recorte projetados a cada quadro): no recorte 4K a costa da península de Sechura da imagem encontra a costa do satélite da MapTiler sem degrau. Piura é só o ponto de NE e fica a dezenas de milhas da água verde da imagem; nenhum texto liga a cidade à enchente (nao_vai_para_tela, PA021; laudo de fatos O2): respeitado. Sem 'Sechura', sem 'floodwater'.",
+        "sinalização: 'Satellite image · June 1998' entra em 7,77 s (textos-tela), mas o patch só aparece de 8,1 a 9,1 s (viagem): por ~0,4–1,0 s a legenda diz 'junho de 1998' sobre o satélite de hoje (quadros 8,15 e 8,4). Curto, mas é rótulo sem o objeto.",
+        "sinalização: o painel da NOAA pousa sobre o mar sem alinhar à costa (a regência pedia 'aligned to the coast'; o mapista declarou que os seis mapas do painel têm projeção própria). Lido como imagem impressa pousada, não como camada geográfica: aceito."
+      ],
+      "correcoes": [
+        "redator-de-tela/mapista: para fechar o 'junho de 1998' sobre o mapa de hoje, mover a entrada da legenda para ~8,6 s (patch com >= 50 % de opacidade); o t0 7,767 é do textos-tela. Não segura o render."
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 8,
+      "problemas": [
+        "Conferido contra o words.json (-154,1 s): 'El' 0,17 -> pílula EL NIÑO em 0,17; 'years' 0,73 -> H encolhe e setas afrouxam (0,17–0,97); 'ease' 3,06 -> setas enfraquecem; 'cold' 3,80 -> cartão da NOAA e legenda (3,77); 'slows' 4,49 e 'stops' 5,21 -> a ressurgência desacelera e para; 'desert' 7,93 -> viagem e Landsat (7,77/8,1). Nada antes do que a voz diz e nada depois. O 1º segundo está coberto (H, setas e ressurgência já no quadro 0, pílula em 0,17).",
+        "sinalização: 'Piura' entra em 7,77 s e a voz só diz 'north' em 10,96 (3,2 s depois); o ponto de lugar chega com a viagem, e o textos-tela fixa t0=7,767. Aceito.",
+        "Nenhum elemento foi atrasado para consertar ritmo nesta cena: não há re-checagem de word-lock a fazer por isso."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 8,
+      "problemas": [
+        "Modo certo para uma frase sobre mecanismo invisível (pressão, ventos) que acontece num lugar real: mapa plano com o traço do canal para o invisível e dois registros reais (anomalia da NOAA e Landsat de 1998) para o que foi medido e visto do espaço. Sem foto de chão, como decidido (licença da foto de agência)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 7,
+      "problemas": [
+        "Em 2 s, sem som: 'EL NIÑO' + H + setas que encolhem -> o leigo entende que algo enfraquece, mas o 'H' não tem rótulo nesta cena (o 'SOUTH PACIFIC HIGH' ficou na s13, 20 s antes, com a s15 de footage no meio). Aceito: a voz diz 'high pressure' logo no início.",
+        "'Sea surface temperature anomalies' é vocabulário técnico, e a escala do painel (graus, -5 a +5) é minúscula no 1080p; o leigo vê 'mancha vermelha encostando na costa' sem saber que vermelho = água quente. A voz diz 'The sea warms' em 6,65 s, com o painel já há 3 s na tela e até 7,77: o argumento se completa, mas pela voz.",
+        "A cena promete 'floods' (voz em 9,57 s) e o Landsat mostra a depressão de Sechura com superfícies verde-oliva, que a olho nu leem como várzea ou vegetação, não como água de enchente (quadro 11,7 e recorte 4K). O mapa não prova a enchente para quem não sabe o que olhar, e a marca proíbe 'FLOODWATER' e 'Sechura' (PA021, PA022). É a prova mais fraca do trecho, por decisão de licença e de fatos, não de execução."
+      ],
+      "correcoes": [
+        "Sala/redator-de-tela (decisão, não é reprova): se o Lucas quiser que a enchente se leia, a saída que não afirma percurso nem medida é um halo ou hachura neutra sobre a depressão, com legenda que diga só o que o Landsat prova; precisa do verificador-de-fatos. Sem isso, a cena fica como está."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 8,
+      "problemas": [
+        "Teste de lastro: 'EL NIÑO' <- 'El Niño years'; 'EL NIÑO 1997–98' + legenda <- 'cold water' (dado atribuível que a cena existe para provar); 'Satellite image · June 1998' <- 'desert coast'; 'Piura' <- 'north' (lugar). Nenhum órfão. No máximo 4 elementos simultâneos (teto 6, alvo 4–5). Sem entidade HTML nem tofu (portao-mapa til 0: 6 textos).",
+        "sinalização: o patch do Landsat é mais claro e enevoado que o satélite escurecido da marca e tem a borda de quadrilátero à vista; lê-se como um retângulo pálido sobre o mapa (quadro 11,7). Não é véu sobre o mapa (é a imagem real), por isso só observação."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "Nada congela: a câmera aproxima o tempo todo (z 5,25 -> 5,38 e a viagem de 2 s ao norte), a ressurgência sobe, o painel pousa (assenta em ~0,5 s, sem segundo retorno nos quadros 3,70–4,13), o H encolhe, o Landsat aparece durante a viagem. Nos últimos 250 ms (11,53–11,73) só há a deriva do RIG.",
+        "sinalização: o crossfade das legendas em 7,83–7,97 (ver espaco). A aproximação final (9,1–11,77) é lenta: o enquadramento quase não muda entre 10,0 e 11,7 s, mas o patch e Piura seguram o quadro; aceito."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "Crédito de mapa '© MapTiler © OpenStreetMap contributors' do 1º ao último quadro, 56 px, data-qc-credito=\"mapa\" só na própria linha (identidade §4.1; portao-mapa rodape v5 0 a 12,02:1). NOAA (domínio público federal) e Landsat/USGS (domínio público) sem crédito na tela, como manda a identidade §6 e §7; a linha 'Landsat imagery courtesy of the U.S. Geological Survey' vai na descrição (procedência). Sem crédito-fantasma. Os dois arquivos de _media/ têm 'aprovado' do conferente para a s16 (sha256 c0d90c23 e 8fde207d); nenhum '-prova' nem arquivo reprovado na cena (a JPL de 26/12/1997 não entrou)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 7,
+      "problemas": [
+        "sinalização: o painel da NOAA é o objeto mais saturado do vídeo (amarelo, azul e vermelho de dado) sobre um mapa quase monocromático; é a imagem real e a escala é a da fonte (vermelho = quente, não 'dois lados'), por isso só sinaliza. A cor do traço do canal segue o papel (branco = ar, verde-água = água fria).",
+        "sinalização (consistência entre irmãs): a divisória continental, que o conceito-visual diz que 'se acende em s02 e nunca se apaga' (todas as cenas de mapa; a s13 e a s18 a têm), não aparece na s16 (o HTML não tem a geometria; a regência da s16 também não a lista). No enquadramento largo do começo ela seria um fio fino na borda direita. Conflito entre o conceito e a regência, que cabe à Sala."
+      ],
+      "correcoes": [
+        "Sala: decidir se a divisória entra na s16 (mapista, linha igual à da s13) ou se a regência prevalece e o conceito é corrigido. Não segura o render."
+      ]
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "Concretos da fala: o mar quente, a costa do deserto, a chuva e a enchente 'no norte'. O registro real de cada um está na cena: a anomalia medida do mar (NOAA 1997) e o Landsat de junho de 1998 sobre Piura/Sechura (registro real do mesmo El Niño, georreferenciado). A enchente é o central e o espectador não sai sabendo 'como é uma enchente' (ver acessibilidade), mas o registro real existe e é o único que a licença permite. Não reprova."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 9,
+      "problemas": [
+        "Mapa, não footage. Planos: 0–3,77 s (mapa + traço), 3,77–7,77 s (painel da NOAA, 4,0 s, com a câmera aproximando), 7,77–11,77 s (viagem + Landsat). Nenhum passa de 6 s parado; um objeto por plano, e a virada cai em 'cold water' e 'desert coast'. Nenhum clipe repetido entre planos."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [
+        "Nada com dono desenhado: o painel é o da NOAA e o Landsat é o da USGS, ambos arquivos reais com procedência; o logo da NOAA foi recortado fora, não redesenhado. O 'H', as setas e a ressurgência são o traço do canal (esquema)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "A s16 volta ao mesmo mar da s13 (H, setas, ressurgência), mas como callback que paga com informação nova: o H e as setas enfraquecem, e entram a anomalia da NOAA e o Landsat de 1998. Se a cena sumisse, o espectador perderia as duas imagens reais. sinalização de forma: o 'H' da s16 é um H de traço fino, sem o contorno nem as setas em espiral do 'H' da s13 (quadros q1-s13@9.0 e q1-s16@0.0); a leitura sobrevive, mas o refrão não é o mesmo glifo."
+      ],
+      "correcoes": [
+        "mapista (opcional): usar o mesmo glifo do H da s13 encolhendo-o, em vez de redesenhar um H de linha."
+      ]
+    }
+  ]
+}
