@@ -1,4 +1,171 @@
-# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-pesquisa-5` às 16:0x (Brasília)
+# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-reuso-s38-4333181` às 16:5x (Brasília)
+
+O mesmo arquivo do Motion Array 4333181, já julgado para a s37 (`trocar`), agora numa janela nova: a s38 b0. Pedido da Sala, no
+passo `art`; a conferência própria que o veredito da s37 pediu em `serviria_em`.
+
+**O laudo desta tarefa:** 1 veredito novo, **`trocar`**, com `mesmo_item: true`. Nenhum veredito anterior mudou (o da s37 fica como
+está).
+**O laudo do arquivo inteiro:** 28 aprovados de 37 vereditos (2 reprovados, 7 trocar, 0 pendente_lucas); 1 com algo não conferido
+(de antes); recebidos: 37.
+
+| arquivo | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `_media/_caca/s37/motionarray/Lima_Skyline_…_uhd_4333181.mp4` (`cf1debbf…`) | s38 b0 (444,2–447,467 s) | Motion Array 4333181, conta do Lucas | **trocar** | o rio está a meio leito: corre barrento, mas a barra de cascalho seco ocupa metade do leito em todo o clipe, e o palácio e a ponte dominam o quadro; não sustenta “runs high” |
+
+**A frase**, no `words.json` (444,21–446,9 s; “runs high” em 446,3–446,9 s) e no `roteiro-narrador.md` (linha 54): “From December to
+April, the Rímac runs high.” A janela é o b0 da regência (sha256 `111cafe5…`): 3,267 s. Hoje o b0 é o mapa, com o `rio-rimac` aceso,
+`DECEMBER–APRIL` e a pílula “Rímac”; o clipe entraria no lugar dele.
+
+**Os quatro critérios:**
+- **Contexto: falha.**
+  - **Não é um rio cheio.** A água corre barrenta, com cristas brancas à esquerda e a soleira em espuma à direita. Mas a barra larga
+    de cascalho seco ocupa a metade de baixo do leito, à esquerda, e há ilhas de cascalho à mostra logo abaixo da soleira. Isso está
+    em todos os quadros, de 0 a 5,5 s. Com a tela parada em “runs high”, a coisa mais clara do rio é o leito seco.
+  - O clipe mostra um estado intermediário: não sustenta “runs low” (s37) nem “runs high” (s38).
+  - “Corre forte, mas metade do leito está seca à vista” é ressalva, e ressalva conta como falha.
+  - **O assunto não domina.** O Palacio de Gobierno, a catedral e a ponte com a fila de carros pretos e motos de polícia ocupam os
+    dois terços de cima e o centro. O rio fica no terço de baixo, partido pela ponte.
+  - **A data.** A origem não diz o mês nem o ano, e o quadro não o mostra. O B-roll sem data é honesto enquanto não afirma nada, mas
+    aqui a frase dá o período e diz o estado do rio nele. Sozinha, a falta de data não reprovaria um rio visivelmente cheio; somada à
+    barra seca, nada sustenta “high”.
+  - **O lugar não mente:** é o Rímac atrás do Palacio de Gobierno. Mas a origem nomeia só Lima.
+  - Recortar o quadro para esconder a barra seca faria a imagem afirmar mais do que o clipe mostra, e abaixo da soleira também há
+    cascalho à mostra. Não é saída.
+- **Licença e fonte: passa.** O mesmo da s37: Motion Array, conta individual do Lucas, procedência completa, sem editorial nem IA
+  marcada. Nenhum rosto reconhecível nem marca legível. A s38 é sobre água, não cena de política: a fila de carros oficiais não pesa
+  na licença, só no contexto.
+- **Técnica: passa.** 3840×2160 h264, 29,97 fps, 166 quadros, 5,5055 s, sem áudio, útil inteiro. Cobre os 3,267 s a 1,0×.
+- **Repetição: passa.** O arquivo não está em cena nenhuma, e o sha256 é único em `_media/`. O Rímac no satélite (s29 b0, s37 b0,
+  s38 b0) é outro material. O voo do s29-a (Plaza de Armas, 4330946) é outra tomada: a catedral volta 130 s depois, de outro ângulo.
+
+**O trecho**, se servisse: o fim, de 2,24 a 5,5055 s, em que a câmera recua o bastante para mostrar a soleira inteira em espuma. Mas
+é também o que mais mostra a barra seca, a via expressa e o parquinho. Nenhum trecho de 3,267 s tira a barra do quadro.
+
+**O rótulo** (gravado no veredito, em `rotulo`):
+- o lugar, no máximo “Lima” (o `lugar_na_origem` é o título do item, que não nomeia o Rímac);
+- a pílula “Rímac” não entra sobre este clipe;
+- o `DECEMBER–APRIL`: **sobre o mapa, como hoje, fica.** É o período do dado (Defensoría del Pueblo, 2025), e o satélite não afirma
+  data. Sobre um clipe real, a mesma legenda seria lida como o mês da filmagem, que a origem não dá. Com este clipe, não poderia
+  ficar.
+
+## Para o Lucas pesar
+
+Nada nesta tarefa.
+
+## Para reconferir no navegador do app
+
+Nada nesta tarefa.
+
+## Para trocar
+
+- **s38 b0**, de 444,2 a 447,467 s, recado ao `pesquisa-imagens`: `Rimac river flood Lima Peru rainy season, brown water filling the
+  channel bank to bank, no dry gravel bars, aerial 4K`.
+  - A caça de 22/10 já não achou esse clipe (o item s38-a). Sem ele, fica o que a regência tem: o satélite com o `rio-rimac` aceso,
+    o `DECEMBER–APRIL` e a pílula “Rímac”, com a falta declarada.
+- **Não instalar.** O arquivo continua em `_media/_caca/s37/motionarray/` como chegou, sem `aprovado` em cena nenhuma.
+- **Onde mais serviria:** em nenhuma frase sobre o volume do rio. Fora delas, só como B-roll de Lima com o centro histórico, e com
+  conferência própria.
+- **Aviso ao `regente-de-imagem`:** sem o clipe, o mesmo `rio-rimac` aceso no satélite abre a s29 (b0), a s37 (b0) e a s38 (b0).
+  A s37 e a s38 vêm em seguida: são 8,6 s do mesmo mapa, só com a legenda trocando de `MAY–NOVEMBER` para `DECEMBER–APRIL`. Não é
+  repetição de arquivo e não é critério meu, mas o conjunto pede a atenção dele e do `montador`.
+
+## Divergências entre a marca e o ofício
+
+Nenhuma nesta tarefa.
+
+## Contas desta tarefa
+
+- **Imagens abertas: 6.** Os quadros de 0, 2,24, 3,27 e 5,47 s, em 1920 px, e 2 recortes em resolução cheia de 4,4 s (o rio à
+  esquerda e a soleira). Tudo em `out/peru-agua/_tmp/conferencia/s38-4333181/`.
+- **Rede:** nenhuma.
+- **Olhos novos:** não. O meu veredito da s37 e o pedido da Sala foram lidos antes.
+- **A emenda** está em `out/peru-agua/_tmp/conferencia/s38-4333181/emenda_a.py`, com os textos em `textos.json` e `textos2.json`.
+  Ela conferiu o sha256 de antes (`9100fff0…`). As cópias de antes estão em
+  `out/peru-agua/_tmp/conferencia/conferencia-midia.json.antes-s38-4333181` (e `.md.antes-s38-4333181`).
+- **Checagem 6:** `_media-antes-s38.txt` e `_media-depois-s38.txt`, em `out/peru-agua/_tmp/conferencia/`.
+
+# Histórico: a conferência até a tarefa `peru-agua-caca-s37-faseB`, como estava (Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-caca-s37-faseB` às 16:4x (Brasília))
+
+O arquivo baixado do s37-a-2 (a caça curta da s37), antes do `_instalar-lote`. Pedido da Sala.
+
+**O laudo desta tarefa:** 1 veredito novo, **`trocar`**, com `mesmo_item: true`. Nenhum veredito anterior mudou.
+**O laudo do arquivo inteiro:** 28 aprovados de 36 vereditos (2 reprovados, 6 trocar, 0 pendente_lucas); 1 com algo não conferido
+(de antes); recebidos: 36.
+
+| arquivo | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `_media/_caca/s37/motionarray/Lima_Skyline_…_uhd_4333181.mp4` (`cf1debbf…`) | s37 b0 (438,833–444,2 s) | Motion Array 4333181, conta do Lucas | **trocar** | é o item da prévia, mas no 4K o rio corre barrento e forte em mais da metade do leito, com a soleira toda em corredeira: não é o rio baixo de "runs low" |
+
+**A frase**, no `words.json` (438,85–443,72 s; "runs low" em 442,13–442,695 s) e no `roteiro-narrador.md`: "A city that size needs
+water all year, and its river runs low for seven months of it." A janela é o b0 da regência (sha256 `111cafe5…`): 5,367 s.
+
+**É o item da prévia (`mesmo_item: true`).** As prévias caíram em 0:04, 0:02 e 0:04 do player, não nos pontos de 15, 50 e 85 %. Por
+isso a comparação foi pelo quadro do arquivo no instante que cada prévia mostra. A p15 e a p85 são o quadro de ~4,3 s, com a van
+branca, o carro vermelho, o parquinho e o mesmo enquadramento; a p50 cai entre 2,2 e 4,3 s, com o mesmo urubu no céu. Os quadros de
+15, 50 e 85 % do arquivo são o mesmo voo, e o nome traz o ID 4333181.
+
+**Os quatro critérios:**
+- **Contexto: falha.** No 4K, a metade de cima do leito, à esquerda, é água barrenta correndo forte, com cristas brancas de muro a
+  muro. À direita, a soleira ocupa o leito inteiro, em corredeira e espuma. O seco é só a barra de cascalho de baixo, à esquerda.
+  - Com a tela parada em "runs low", o espectador vê um rio cheio de água em movimento.
+  - É o motivo que tirou o Envato dd0d70ab (s37-a) da caça. O conceito-visual da s37 chama "o mesmo Rímac cheio e barrento na
+    estação das chuvas" de "o contrário exato de s37".
+  - "Mostra a barra seca, mas a água corre forte no resto" é ressalva, e ressalva conta como falha.
+- **Licença e fonte: passa.** Motion Array, conta individual do Lucas, com a procedência completa. No 4K, nenhum rosto
+  reconhecível, nenhuma marca legível e nenhuma propriedade privada como assunto.
+- **Técnica: passa.** 3840×2160 h264, 29,97 fps, 166 quadros, 5,5055 s, sem áudio, 28,45 MiB.
+  - As duas condições do veredito de caça se cumprem: a duração real é 5,5055 s, e o clipe é útil inteiro, sem fade nem cartela. O
+    primeiro e o último quadro são imagem cheia, e a luma média fica entre 123,7 e 126,5 nos 166 quadros.
+  - **A velocidade:** a 1,0×, o clipe cobre os 5,367 s com 0,14 s de folga, e os 0,93× deixam de ser precisos. Isso tira a única
+    condição técnica do veredito de caça, mas não muda o contexto.
+- **Repetição: passa.** O sha256 é único em `_media/`, e o ID não está em outro veredito.
+
+**A divergência com o meu veredito de caça.** Na caça, eu aprovei este item (preferência 1). A prévia tinha 547 px, e nela a faixa
+escura da esquerda parecia "areia ou lama, sem correnteza". No arquivo 4K, ela é água correndo. Vale o que se vê no arquivo. O
+`conferencia-caca.json` não foi tocado: é de outro fluxo. O "sim" do Lucas à lista `563edcd07bc5` foi dado sobre aquele aprovado.
+
+## Para o Lucas pesar
+
+Nada nesta tarefa. A Sala diz a ele que o clipe que ele aprovou para baixar não vai à s37, e por quê.
+
+## Para reconferir no navegador do app
+
+Nada nesta tarefa.
+
+## Para trocar
+
+- **s37 b0**, de 438,833 a 444,2 s, recado ao `pesquisa-imagens`: `Rimac river dry season Lima Peru, a thin stream over a wide dry
+  stone riverbed, aerial 4K`.
+  - Sem clipe, fica o que a regência já tem: o satélite com o `rio-rimac` aceso e o "MAY–NOVEMBER" da Defensoría, com a falta
+    declarada.
+- **Não instalar.** Sem `aprovado`, o `_instalar-lote` não roda sobre este arquivo. Ele fica em `_media/_caca/s37/motionarray/` como
+  chegou, e como nunca foi entregue a `_media/footage/s37/`, não há retirada a fazer.
+- **Onde talvez sirva:** a s38 ("From December to April, the Rímac runs high"), só com conferência própria. A água barrenta e a
+  corredeira dizem cheia, mas a barra de cascalho seca pesa contra "high". E a origem nomeia Lima, não o Rímac: o rótulo seria no
+  máximo "Lima".
+
+## Divergências entre a marca e o ofício
+
+Nenhuma nesta tarefa.
+
+## Contas desta tarefa
+
+- **Imagens abertas: 17.**
+  - as 3 prévias;
+  - os 3 quadros da régua;
+  - 2 quadros nos instantes das prévias;
+  - o primeiro e o último quadro;
+  - 6 recortes em resolução cheia (o rio à esquerda em 0 e 4,3 s, a soleira, a via, a ponte e o casario);
+  - a prévia s08-a-p15, para a coerência com o veredito do Envato.
+
+  Tudo está em `out/peru-agua/_tmp/conferencia/s37-a-2-faseB/`.
+- **Rede:** nenhuma.
+- **Olhos novos:** não. O meu veredito de caça e o pedido da Sala foram lidos antes.
+- **A emenda** está em `out/peru-agua/_tmp/conferencia/s37-a-2-faseB/emenda.py`. Ela conferiu o sha256 de antes (`70793a59…`), e as
+  cópias de antes estão em `out/peru-agua/_tmp/conferencia/conferencia-midia.json.antes-s37-faseB` (e `.md.antes-s37-faseB`).
+- **Checagem 6:** `_media-antes-s37-faseB.txt` e `_media-depois-s37-faseB.txt`, em `out/peru-agua/_tmp/conferencia/`.
+
+# Histórico: a conferência até a tarefa `peru-agua-pesquisa-5`, como estava (Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-pesquisa-5` às 16:0x (Brasília))
 
 A foto de Caral numa janela nova da s22, o b0: a caça terminou sem o clipe aéreo de Caral (o item s22-a). Pedido do setor Pesquisa e
 mídia.
