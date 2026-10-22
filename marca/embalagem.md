@@ -113,6 +113,23 @@ para o canal seria de conteúdos com esse ângulo".
 - **Expressão feita com sentido próprio engana.** "Survive a vote" sugere que a votação fracassou.
 - **Estimativa não é custo.** Número contestado vai com a palavra que diz o que ele é ("estimate"), ou fica fora.
 - **Termo que colide na busca fica fora.** No Juneau, "Willow" traz só vídeos do projeto de petróleo.
+- **O título não entrega a resposta: a curiosidade vale mais que a busca** (desde 22/10/2026).
+  - A origem foi o vídeo 5. O Lucas, no chat da Sala: "Afinal não entregaremos diretamente no título do que se trata". Depois: "Essa
+    regra deveria ser geral para o canal, com exceções, claro".
+  - **O título nomeia o que o espectador já conhece**: o mar, o país, a região. **E guarda o que o vídeo revela**: o lugar exato, a causa, o
+    nome. Exemplos:
+    - "The Deepest Point in the Atlantic Ocean" não diz "Puerto Rico Trench";
+    - "Why Peru Lives on the Dry Side of the Andes" não diz a causa.
+  - **A miniatura aponta a virada sem dar a resposta** ("NOT THE MARIANA TRENCH") e não repete o título (§3).
+  - **O contrato da primeira regra continua.** O mistério é do título, não do vídeo: a resposta pode vir no gancho, e o núcleo se paga nas 3
+    primeiras frases.
+  - **A concorrência:** o nome escondido pesa menos pela busca. A pauta mede os vídeos parecidos também pela data e pelas visualizações
+    (Lucas, 22/10/2026: "medir o tempo em que foi postado pode validar ela também").
+  - **As exceções.** O Lucas não as listou; estas são as da Sala, e ele pode mudá-las:
+    - o nome escondido é, ele mesmo, o que faz clicar: um lugar ou evento muito conhecido, que o público procura pelo nome;
+    - esconder deixaria o título vago ou enganoso, com uma promessa que lê como outro assunto ou que o vídeo não paga;
+    - o nome ou a data são necessários pelas regras acima, como a data absoluta do fato histórico ou o termo que colide na busca.
+  - Na dúvida, decide o teste de leitores do título (§4).
 
 ## 3 · A miniatura
 
