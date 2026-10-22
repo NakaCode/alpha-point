@@ -7,3 +7,5 @@ ilustração sobre o mapa de 19/10 (2.767 pedidos contados) fica no contador del
 
 | Quando (Brasília) | Rodada | Pedidos | Notas |
 |---|---|---|---|
+| 22/10/2026 05:38 | antes · peru-agua-arte-1 (Arte), leva 1 | — | o `_tmp/maptiler-portoes.jsonl` ainda não existe (0 linhas); nenhuma cena em `graphics/` |
+| 22/10/2026 07:01 | depois · peru-agua-arte-1 (Arte), as 9 peças (M1–M6, EO, EF2; o EF1 não tem mapa) | 23.096 | a soma de `pedidos_maptiler` das 226 linhas do `_tmp/maptiler-portoes.jsonl` (portões com a pré-carga): s06 4.838, s13 2.035, s16 757, s18 448, s21 788, s26 2.367, s28 578, s30 2.201, s34 1.083, s36 608, s39 1.450, s41 1.317, s45 384, s51 2.861, s52 1.381. **Não contados:** os 15 renders 4K de prova e as execuções do `quadro.mjs`/`shot.mjs`/sonda de relevo de cada peça (as horas estão nos relatos `_tmp/setores/arte-1/<lote>.md`). O M1 relata 4 quadros da s06 tirados por engano sobre o HTML sem a mudança. Relevo em s06, s26 e s39. |

@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s06</title>
+<!--
+CANAL ALPHA POINT — PERU (vídeo 4), CENA s06 (+s07) (53,067 → 82,167 s do master; 29,1 s). O run s06+s07, sem corte.
+  "That line is the continental divide. Rain that falls on its western side drains to the Pacific. Rain on its eastern
+  side runs into rivers that reach the Amazon, and then the Atlantic. A small part of the south drains into Lake Titicaca
+  instead. In Peru, the divide runs along the western range of the Andes, through the Lima region itself. From downtown
+  Lima, it is less than seventy miles away. On the dry side, dozens of short, steep rivers drop from the mountains to the sea."
+  Mapista, lote M1 (tarefa peru-agua-arte-1), 22/10/2026: cena NOVA, construída do zero sobre o corpo das cenas de mapa do
+  vídeo 3 (zona-do-canal s08: o fail-closed, a câmera, os créditos). O que manda: textos-tela.json (s06) no QUE e na grafia;
+  regencia.json (s06, com os beats de s07) no TEMPO e no exige; o conceito (s06, s07 e o fluxo) na direção; a marca
+  (identidade §4–§6, tokens.css).
+
+  A BASE: MapTiler satellite-v2 + terrain-rgb-v2 (canal.json › mapa.perfil), no tratamento C (identidade §6). O RELEVO 3D
+  ligado desde o 1º quadro, a exagero 0 e câmera a pitch 0 até 'In Peru' (14,82 s); na viagem de 3 s ao Lima region a
+  câmera inclina a 58° e o exagero sobe a 2,4 (relevo liberado: Lucas, 21/10/2026, 23:1x, "Sim e pode usar relevo quando
+  necessário"). O centro da câmera fica congelado na cota 0 (_elevationFreeze, como a s44 do Juneau), e a textura das linhas
+  sobre o relevo se refaz a cada quadro (freeRtt), para a espessura não saltar.
+
+  A LINHA: divisoria-continental-peru (HydroBASINS v1, as 3 feições), a MESMA no vídeo inteiro, acesa do 1º ao último quadro,
+  em --tinta 6 px sobre o contorno escuro da fronteira (12 px). Camada do MapLibre: deita no relevo.
+
+  O que a cena faz (o mapa nunca para: o bearing anda do 1º ao último quadro, −2° → 62°):
+    · b0 (0–2,633): o Peru central de cima, aproximação lenta; 'CONTINENTAL DIVIDE' em 'continental' (0,9).
+    · b1 (2,633–6,1): a gota (traço --tinta 6 px, sem preenchimento) cai sobre a linha no ponto da linha mais perto da
+      nascente do Rímac (vértice 1005, a 0,8 km dela), em 'Rain'; parte-se em duas em 'falls'; a metade oeste desce o
+      Rímac real (rio-rimac, OSM) até o mar de 'drains' (4,27) a 'Pacific.' (5,07), deixando o traço em --destaque
+      (o lado seco); 'PACIFIC' em 'Pacific.'.
+    · b2 (6,1–11,067): a metade leste afunda no lado amazônico em 'Rain' (6,1–6,7) e os rios reais da vertente do
+      Atlântico se desenham em --contraparte (amazonas-ate-o-atlantico, Natural Earth): o Ucayali (do vértice mais perto
+      da gota, o 107, rio abaixo) e o Marañón (da nascente) até a confluência, e o Amazonas, mais grosso, até a foz em
+      'Atlantic.' (10,05). A câmera abre ao continente em 2,5 s (6,4–8,9, cúbica, van Wijk). 'Amazon' (o rio) em 8,833;
+      'ATLANTIC' em 10,033. A gota NÃO desenha caminho fora da geometria: entre a linha e os rios ela é só a gota que
+      afunda (pictograma), nunca um traço (ofício §6c).
+    · b3 (11,067–14,8): a câmera volta ao sul em 2 s (11,07–13,07); em 'Lake' (12,833) a bacia do Titicaca
+      (vertente-titicaca) acende em --neutro a 50 % com 'LAKE TITICACA BASIN', e a miniatura do lago real (Delso, 2015;
+      aprovada para esta frase) pousa sob a pílula 'Lake Titicaca (Puno)'; o crédito da foto na faixa.
+    · b4 (14,8–20,433, s07): em 'In Peru' (14,82) viagem de 3 s (cúbica) do Titicaca à região de Lima, a câmera inclinando
+      a 58° com o relevo subindo: a cordilheira ocidental de pé, a linha na crista. 'LIMA REGION' (departamento-lima, só o
+      nome e o chão a 25 % de --neutro) de 18,733 a 20,433.
+    · b5 (20,433–23,9, s07): a régua reta (--tinta 6 px, traço de engenheiro, com as duas pontas) sobe de Lima
+      (pontos-fontes › campo-de-marte) ao ponto da linha mais perto dela (−76,3492 / −11,5410; 95,6 km = 59,4 mi pelo
+      cálculo desta cena; a pauta mediu 59,5) de 'From' a 21,9; 'LESS THAN 70 MILES' em 'seventy' (22,3), ao lado da régua,
+      e o crédito 'Straight line, measured by Alpha Point'. A régua sozinha: nenhuma sobreposição de escala (Sala, decisão 4).
+    · b6 (23,9–29,1, s07): em 'dozens' (25,0) os rios curtos da vertente do Pacífico (rios-vertente-pacifico, OSM) acendem
+      em --destaque em 500 ms, o Rímac mais grosso com o nome. Nenhuma viagem entre 'seventy' e 'dozens': só a órbita.
+  ELEMENTOS (teto 6): b0 = linha + pílula (2); b1 = linha, gota/traço (1), CONTINENTAL DIVIDE, PACIFIC (4); b2 = linha,
+  traços (1), PACIFIC, Amazon, ATLANTIC (5); b3 = linha, bacia, 2 pílulas, miniatura (5); b4 = linha, região + nome (3);
+  b5/b6 = linha, régua, Lima, a cota, os rios, Rímac (6, de 25,0 ao fim; o Rímac é rio da mesma camada).
+  CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px (--fs-credito) a cena toda, com data-qc-credito="mapa" só no
+  próprio elemento (cobre o OSM do Rímac e dos rios). Acima dele, sem a marca de mapa: o da foto (12,833–14,8) e o da régua
+  (22,3 ao fim). O HydroBASINS e o Natural Earth: nada na tela (o Exhibit B da WWF vai na descrição).
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/camera-mapa.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<!-- UMA linha por geometria usada na cena (slugs de out/peru-agua/_pesquisa/pauta-geo.json): -->
+<script src="../_media/geo/divisoria-continental-peru.js"></script>
+<script src="../_media/geo/rio-rimac.js"></script>
+<script src="../_media/geo/amazonas-ate-o-atlantico.js"></script>
+<script src="../_media/geo/vertente-titicaca.js"></script>
+<script src="../_media/geo/departamento-lima.js"></script>
+<script src="../_media/geo/pontos-fontes.js"></script>
+<script src="../_media/geo/rios-vertente-pacifico.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; overflow: visible; }
+  #rotulos { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+  /* RÓTULO (identidade §3 e §4.1): pílula --rotulo, cantos 12, respiro 24 × 40, Inter 700 a 128 px em --tinta */
+  .rotulo { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1;
+    letter-spacing: 0; color: var(--tinta); font-variant-numeric: var(--numeros); }
+  .rotulo.caixa { letter-spacing: var(--tracking-lugar); }
+  /* a MINIATURA (identidade §5, "Nome de lugar com a foto"): a foto numa moldura --rotulo, logo abaixo da pílula, com a
+     borda direita alinhada a ela; a foto só encolhe (escala ≤ 1), sem filtro */
+  .mini { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; z-index: 41; }
+  .mini .moldura { position: absolute; inset: 0; background: var(--rotulo); border-radius: var(--cantos);
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--fundo) 55%, transparent); }
+  .mini .janela { position: absolute; overflow: hidden; border-radius: 4px; }
+  .mini img { position: absolute; display: block; max-width: none; }
+  /* CRÉDITOS (identidade §4.1/§4.2/§6): 56 px, Inter 500, --sec sobre a pílula --rotulo, de x = 200 até antes de x = 1720,
+     abaixo de y = 1880. data-qc-credito="mapa" SÓ na linha da MapTiler; as outras empilham acima dela */
+  .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: nowrap; }
+  /* a linha do mapa embaixo; as outras logo acima dela (6 px de vão). O crédito da foto passa de x = 1720 numa linha só e
+     quebra em duas (identidade §4.2): por isso a linha do mapa desce a 24 px da borda, e as duas linhas ficam abaixo de y = 1880 */
+  #credito { bottom: 24px; }
+  .credito.extra { bottom: 114px; opacity: 0; visibility: hidden; white-space: pre; }
+  #credito[hidden] { display: none; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+  /* o traço de engenheiro (identidade §5): --tinta 6 px, sem preenchimento, com o halo escuro por baixo para ler no satélite */
+  .tr-sob { fill: none; stroke: var(--rotulo); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+  .tr { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <div id="map"></div>
+  <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+    <g id="gotaG" opacity="0"><path class="tr-sob" id="gotaSob"/><path class="tr" id="gota"/></g>
+    <g id="metadeO" opacity="0"><path class="tr-sob" id="metOSob"/><path class="tr" id="metO"/></g>
+    <g id="metadeL" opacity="0"><path class="tr-sob" id="metLSob"/><path class="tr" id="metL"/></g>
+    <g id="regua" opacity="0"><path class="tr-sob" id="reguaSob"/><path class="tr" id="reguaLinha"/></g>
+  </svg>
+  <div id="rotulos">
+    <div class="rotulo caixa" id="rotDiv" data-qc-papel="rotulo">CONTINENTAL DIVIDE</div>
+    <div class="rotulo caixa" id="rotPac" data-qc-papel="rotulo">PACIFIC</div>
+    <div class="rotulo" id="rotAmazon" data-qc-papel="rotulo">Amazon</div>
+    <div class="rotulo caixa" id="rotAtl" data-qc-papel="rotulo">ATLANTIC</div>
+    <div class="rotulo caixa" id="rotTit" data-qc-papel="rotulo">LAKE TITICACA BASIN</div>
+    <div class="rotulo" id="rotPuno" data-qc-papel="rotulo">Lake Titicaca (Puno)</div>
+    <div class="mini" id="miniPuno"><div class="moldura"></div><div class="janela"><img id="imgPuno" src="../_media/foto/s06/s06-puno-titicaca-bay-2015-commons.jpg" alt=""></div></div>
+    <div class="rotulo caixa" id="rotLimaReg" data-qc-papel="rotulo">LIMA REGION</div>
+    <div class="rotulo" id="rotLima" data-qc-papel="rotulo">Lima</div>
+    <div class="rotulo caixa" id="rotCota" data-qc-papel="rotulo">LESS THAN 70 MILES</div>
+    <div class="rotulo" id="rotRimac" data-qc-papel="rotulo">Rímac</div>
+  </div>
+  <div id="credFoto" class="credito extra" data-qc-papel="credito">Diego Delso, delso.photo /
+Wikimedia Commons · CC BY-SA 4.0</div>
+  <div id="credRegua" class="credito extra" data-qc-papel="credito">Straight line, measured by Alpha Point</div>
+  <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
+  // Tempos desta cena (0 = 53,067 s do master), do words.json: 'continental' 0,92 · 'Rain' 2,64 · 'falls' 3,08 ·
+  // 'drains' 4,52 · 'Pacific.' 5,08 · 'Rain' 6,11 · 'eastern' 6,68 · 'Amazon,' 8,84 · 'Atlantic.' 10,05 · 'A' 11,07 ·
+  // 'Lake' 12,84 · 'In' 14,82 · 'Lima' 18,76 · 'From' 20,45 · 'seventy' 22,33 · 'dozens' 25,01 · 'sea.' 28,29 (acaba 28,53).
+  var DUR = 29.1;   // espelho.json › s06 › dur (o run s06+s07: 53,067 → 82,167 s), literal (roupa §8)
+  var CENA = {
+    perfil: "maptiler",
+    fontes: ["div", "titicaca", "limaReg", "rios", "rimac", "trO", "trL", "trA"],
+    pontos: {
+      A0: { lng: -76.62, lat: -11.80, zoom: 9.00, bearing: -2.0, pitch: 0 },   // o Peru central de cima: Lima, o Rímac, a linha
+      A1: { lng: -76.58, lat: -11.78, zoom: 9.14, bearing: -0.8, pitch: 0 },   // aproximação lenta até 'eastern'
+      C0: { lng: -61.80, lat: -5.30,  zoom: 6.00, bearing: 0.4,  pitch: 0 },   // o continente: do Peru à foz do Amazonas
+      C1: { lng: -61.60, lat: -5.25,  zoom: 6.06, bearing: 0.8,  pitch: 0 },
+      T0: { lng: -69.05, lat: -15.75, zoom: 7.80, bearing: 1.0,  pitch: 0 },   // o sul: a bacia do Titicaca à esquerda, a miniatura à direita
+      T1: { lng: -69.02, lat: -15.76, zoom: 7.88, bearing: 2.0,  pitch: 0 },
+      L0: { lng: -76.765, lat: -11.859, zoom: 10.15, bearing: 50,  pitch: 58 },   // a região de Lima, inclinada: Lima embaixo, a crista no alto
+      L1: { lng: -76.760, lat: -11.855, zoom: 10.20, bearing: 53,  pitch: 58 },
+      L2: { lng: -76.745, lat: -11.845, zoom: 10.32, bearing: 60,  pitch: 60 }
+    },
+    pernas: [
+      { t0: 0,     t1: 6.40,  de: "A0", para: "A1", tipo: "h" },
+      { t0: 6.40,  t1: 8.90,  de: "A1", para: "C0", tipo: "v" },   // 'eastern side … Amazon': 2,5 s, cúbica
+      { t0: 8.90,  t1: 11.07, de: "C0", para: "C1", tipo: "h" },
+      { t0: 11.07, t1: 13.07, de: "C1", para: "T0", tipo: "v" },   // 'A small part of the south': 2 s
+      { t0: 13.07, t1: 14.82, de: "T0", para: "T1", tipo: "h" },
+      { t0: 14.82, t1: 17.82, de: "T1", para: "L0", tipo: "v" },   // 'In Peru': 3 s, cúbica, inclinando a 58°
+      { t0: 17.82, t1: 20.43, de: "L0", para: "L1", tipo: "h" },
+      { t0: 20.43, t1: 29.1,  de: "L1", para: "L2", tipo: "h" }    // nenhuma viagem entre 'seventy' e 'dozens': só a órbita
+    ],
+    relevo: { sobe: [14.82, 3.0], exagero: 2.4 },
+    // a gota: cai em 'Rain' (2,64), pousa em 3,25, parte-se em 3,45; a metade oeste desce de 4,27 a 5,07; a leste afunda 6,11–6,7
+    gota: { cai: [2.64, 0.61], parte: 3.45, oeste: [4.27, 0.80], leste: [6.11, 0.60] },
+    trilhas: { oesteSai: [11.07, 0.5], tributarios: [6.70, 1.80], amazonas: [8.50, 1.55], lesteSai: [11.07, 0.5] },
+    titicaca: { entra: 12.833, sai: 14.82, opacidade: 0.5 },
+    limaReg: { entra: 18.733, sai: 20.433, opacidade: 0.25 },
+    regua: { entra: 20.45, sobe: 1.45 },
+    rios: { entra: 25.0 },
+    exag: 2.4
+  };
+  // ═════════════════════════════════════════════════════════════════════════════════════════════════
+
+  window.__duracao = DUR;
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (t) { t = cl(t, 0, 1); return 1 - Math.pow(1 - t, 3); };
+  var ei = function (t) { t = cl(t, 0, 1); return t * t * t; };
+  var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+  window.__avisos = window.__avisos || [];
+
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+  // a foto da miniatura: o render espera por ela
+  var imgP = E("imgPuno");
+  window.__fotosProntas = new Promise(function (res) {
+    if (!imgP || (imgP.complete && imgP.naturalWidth)) return res(true);
+    imgP.addEventListener("load", function () { res(true); });
+    imgP.addEventListener("error", function () { falhar("a foto da miniatura não carregou (../_media/foto/s06/…)."); res(true); });
+  });
+
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (typeof criarCameraMapa !== "function") return falhar("não carregou ../_media/_vendor/camera-mapa.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== CENA.perfil) return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa '" + CENA.perfil + "' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster; esta cena desenha sobre satélite.");
+  if (!P.dem) return falhar("o perfil '" + P.nome + "' não traz o relevo (dem), e esta cena é a do relevo.");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo.");
+    return g;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+
+  // ── crédito na tela: base (pelo perfil) + toda geometria cuja licença exige (molde, sem mudança) ──────
+  var creditoTexto = (function () {
+    var partes = [];
+    if (P.atribuicao && P.atribuicao.exigida) {
+      if (!P.atribuicao.tela) { falhar("a base '" + P.nome + "' exige crédito na tela e o perfil não traz o texto (atribuicao.tela)."); return ""; }
+      partes.push(P.atribuicao.tela);
+    }
+    var geos = window.__GEO || {}, meta = window.__GEO_META || {};
+    var slugs = Object.keys(geos);
+    for (var i = 0; i < slugs.length; i++) {
+      var m = meta[slugs[i]];
+      if (!m) { falhar("a geometria '" + slugs[i] + "' foi carregada sem procedência (fonte/licença)."); return ""; }
+      if (!m.exige_credito) continue;
+      var t = m.credito_tela || (m.fonte && m.licenca ? "Geometria: " + m.fonte + " (" + m.licenca + ")" : "");
+      if (!t) { falhar("a geometria '" + slugs[i] + "' exige crédito e a procedência não diz o texto."); return ""; }
+      var junto = partes.join(" · ");
+      if (/OpenStreetMap/i.test(t) && /OpenStreetMap/i.test(junto)) continue;
+      if (junto.indexOf(t) >= 0) continue;
+      partes.push(t);
+    }
+    var c = E("credito");
+    if (c) { c.textContent = partes.join(" · "); c.hidden = !partes.length; }
+    return partes.join(" · ");
+  })();
+  window.__creditoMapa = creditoTexto;
+  if (!window.__erroCena && creditoTexto !== "© MapTiler © OpenStreetMap contributors")
+    falhar("o crédito de mapa montado ('" + creditoTexto + "') não é o do textos-tela.json.");
+  if (window.__erroCena) return;
+
+  // ═══ A GEOMETRIA (toda de _media/geo/; nenhum traço desenhado à mão) ════════════════════════════════
+  var DIV = geo("divisoria-continental-peru"), RIM = geo("rio-rimac"), AMZ = geo("amazonas-ate-o-atlantico"),
+      TIT = geo("vertente-titicaca"), LREG = geo("departamento-lima"), PF = geo("pontos-fontes"), RPAC = geo("rios-vertente-pacifico");
+  if (window.__erroCena) return;
+  function km(a, b) { var la = (a[1] + b[1]) / 2 * Math.PI / 180; return Math.hypot((a[0] - b[0]) * 111.32 * Math.cos(la), (a[1] - b[1]) * 110.57); }
+  function maisPerto(linha, p) { var bi = 0, bd = Infinity; for (var i = 0; i < linha.length; i++) { var d = km(linha[i], p); if (d < bd) { bd = d; bi = i; } } return bi; }
+  function porNome(fc, nome) { return (fc.features || []).filter(function (f) { return f.properties && f.properties.name === nome; })[0]; }
+  function ponto(fc, id) { var f = (fc.features || []).filter(function (x) { return x.properties && x.properties.id === id; })[0]; return f && f.geometry.coordinates; }
+  var LINHA_PRINC = DIV.features[0].geometry.coordinates;             // pacífico × atlântico
+  var RIM_C = RIM.features[0].geometry.coordinates;                   // da nascente à foz
+  var D = LINHA_PRINC[maisPerto(LINHA_PRINC, RIM_C[0])];               // a gota: o ponto da linha mais perto da nascente do Rímac
+  var LIMA = ponto(PF, "campo-de-marte");
+  var ALVO = [-76.3492, -11.5410];                                     // o ponto da linha mais perto de Lima (a pauta-geo)
+  var ALVO_LINHA = LINHA_PRINC[maisPerto(LINHA_PRINC, ALVO)];
+  if (!LIMA) return falhar("não achei campo-de-marte em pontos-fontes.");
+  if (km(ALVO_LINHA, ALVO) > 0.2) return falhar("o alvo da régua não está sobre a divisória (" + km(ALVO_LINHA, ALVO).toFixed(2) + " km).");
+  window.__reguaKm = km(LIMA, ALVO);
+  var UCA = porNome(AMZ, "Ucayali").geometry.coordinates, MAR = porNome(AMZ, "Marañón").geometry.coordinates;
+  var AMZg = porNome(AMZ, "Amazonas").geometry;
+  var AMZ_C = (AMZg.type === "MultiLineString" ? AMZg.coordinates.reduce(function (a, b) { return b.length > a.length ? b : a; }) : AMZg.coordinates).slice();
+  if (AMZ_C[0][0] > AMZ_C[AMZ_C.length - 1][0]) AMZ_C.reverse();      // da confluência (oeste) à foz (leste)
+  var UCA_TRECHO = UCA.slice(maisPerto(UCA, D));                       // do vértice mais perto da gota, rio abaixo
+  var TRILHA_O = [D].concat(RIM_C);                                    // a gota está a 0,8 km da nascente: o traço começa nela
+  window.__geoConta = { D: D, ucayaliDesde: maisPerto(UCA, D), reguaKm: window.__reguaKm };
+
+  // comprimento acumulado (km) e o trecho inicial de uma linha por fração
+  function acum(c) { var L = [0]; for (var i = 1; i < c.length; i++) L.push(L[i - 1] + km(c[i - 1], c[i])); return L; }
+  function trecho(c, L, f) {
+    f = cl(f, 0, 1); if (f <= 0) return null;
+    var alvo = L[L.length - 1] * f, out = [c[0]];
+    for (var i = 1; i < c.length; i++) {
+      if (L[i] <= alvo) { out.push(c[i]); continue; }
+      var u = (alvo - L[i - 1]) / ((L[i] - L[i - 1]) || 1);
+      out.push([c[i - 1][0] + (c[i][0] - c[i - 1][0]) * u, c[i - 1][1] + (c[i][1] - c[i - 1][1]) * u]);
+      break;
+    }
+    if (out.length < 2) out.push(out[0]);
+    return out;
+  }
+  var LO = acum(TRILHA_O), LU = acum(UCA_TRECHO), LM = acum(MAR), LA = acum(AMZ_C);
+  var fcVazia = { type: "FeatureCollection", features: [] };
+  function fcLinhas(ls) { return { type: "FeatureCollection", features: ls.filter(Boolean).map(function (c) { return { type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: c } }; }) }; }
+
+  // ── utilidades do SVG ──
+  var fmt = function (p) { return p.x.toFixed(2) + " " + p.y.toFixed(2); };
+  function gotaPath(esc) {   // a gota: ponta em cima, fundo redondo com centro em (0,0)
+    var r = 42 * esc, h = 112 * esc;
+    return "M 0 " + (-h).toFixed(2) + " C " + (0.6 * r).toFixed(2) + " " + (-0.62 * h).toFixed(2) + " " + r.toFixed(2) + " " + (-0.38 * h).toFixed(2) +
+      " " + r.toFixed(2) + " 0 A " + r.toFixed(2) + " " + r.toFixed(2) + " 0 0 1 " + (-r).toFixed(2) + " 0 C " + (-r).toFixed(2) + " " + (-0.38 * h).toFixed(2) +
+      " " + (-0.6 * r).toFixed(2) + " " + (-0.62 * h).toFixed(2) + " 0 " + (-h).toFixed(2) + " Z";
+  }
+  function pousarGota(gid, sobId, linId, x, y, esc, sx, sy, op) {
+    var g = E(gid); if (!g) return;
+    g.setAttribute("opacity", op.toFixed(3));
+    g.setAttribute("transform", "translate(" + x.toFixed(2) + " " + y.toFixed(2) + ") scale(" + sx.toFixed(4) + " " + sy.toFixed(4) + ")");
+    var d = gotaPath(esc); E(sobId).setAttribute("d", d); E(linId).setAttribute("d", d);
+  }
+
+  // ═══ A BASE COM O RELEVO, E AS CAMADAS DA CENA (todas deitam no relevo) ══════════════════════════════
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  var COR = { tinta: tok("--tinta", "#F4F1EA"), destaque: tok("--destaque", "#F5A524"), contraparte: tok("--contraparte", "#2EC4B6"),
+    neutro: tok("--neutro", "#737D8E"), sob: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)"), rotulo: tok("--rotulo", "rgba(11, 15, 20, 0.88)") };
+  function estilo() {
+    var fontes = {
+      base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+      dem: { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding },
+      div: { type: "geojson", data: DIV },
+      titicaca: { type: "geojson", data: TIT },
+      limaReg: { type: "geojson", data: LREG },
+      rios: { type: "geojson", data: RPAC },
+      rimac: { type: "geojson", data: RIM },
+      trO: { type: "geojson", data: fcVazia },
+      trL: { type: "geojson", data: fcVazia },
+      trA: { type: "geojson", data: fcVazia }
+    };
+    var lc = { "line-join": "round", "line-cap": "round" };
+    var camadas = [
+      { id: "base", type: "raster", source: "base",
+        paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // identidade §6, o tratamento C
+      { id: "titicaca", type: "fill", source: "titicaca", paint: { "fill-color": COR.neutro, "fill-opacity": 0, "fill-antialias": true } },
+      { id: "limaReg", type: "fill", source: "limaReg", paint: { "fill-color": COR.neutro, "fill-opacity": 0, "fill-antialias": true } },
+      { id: "rios-sob", type: "line", source: "rios", layout: lc, paint: { "line-color": COR.sob, "line-width": 10, "line-opacity": 0 } },
+      { id: "rios", type: "line", source: "rios", layout: lc, paint: { "line-color": COR.destaque, "line-width": 4, "line-opacity": 0 } },
+      { id: "rimac-sob", type: "line", source: "rimac", layout: lc, paint: { "line-color": COR.sob, "line-width": 18, "line-opacity": 0 } },
+      { id: "rimac", type: "line", source: "rimac", layout: lc, paint: { "line-color": COR.destaque, "line-width": 10, "line-opacity": 0 } },
+      { id: "trO-sob", type: "line", source: "trO", layout: lc, paint: { "line-color": COR.sob, "line-width": 16, "line-opacity": 1 } },
+      { id: "trO", type: "line", source: "trO", layout: lc, paint: { "line-color": COR.destaque, "line-width": 8, "line-opacity": 1 } },
+      { id: "trL-sob", type: "line", source: "trL", layout: lc, paint: { "line-color": COR.sob, "line-width": 14, "line-opacity": 1 } },
+      { id: "trL", type: "line", source: "trL", layout: lc, paint: { "line-color": COR.contraparte, "line-width": 6, "line-opacity": 1 } },
+      { id: "trA-sob", type: "line", source: "trA", layout: lc, paint: { "line-color": COR.sob, "line-width": 20, "line-opacity": 1 } },
+      { id: "trA", type: "line", source: "trA", layout: lc, paint: { "line-color": COR.contraparte, "line-width": 11, "line-opacity": 1 } },
+      { id: "div-sob", type: "line", source: "div", layout: lc, paint: { "line-color": COR.sob, "line-width": 12 } },
+      { id: "div", type: "line", source: "div", layout: lc, paint: { "line-color": COR.tinta, "line-width": 6 } }
+    ];
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
+  }
+
+  // ── rede com nova tentativa: falha passageira não derruba a cena inteira (molde, sem mudança) ────────
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  function erroCorpo(msg, url, st) { var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e; }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) { var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http"; throw e; }
+        if (params.type === "json") return r.text().then(function (t) { try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); } });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+
+  // ── a câmera: pernas presas às palavras (h = deriva linear em Mercator; v = viagem van Wijk com rampa cúbica), o
+  //    bearing e a inclinação interpolados nas duas; o bearing anda do 1º ao último quadro (ofício §6b) ──
+  var PT = CENA.pontos;
+  CENA.pernas.forEach(function (L) {
+    if (L.tipo === "v") L.cam = criarCameraMapa({ viewports: [PT[L.de], PT[L.para]], duration: L.t1 - L.t0,
+      width: 3840, height: 2160, bearingLoop: null, cameraAbre: 0.5, cameraFecha: 0.5 });
+  });
+  var merc = function (lng, lat) { var s = Math.sin(lat * Math.PI / 180); return [lng, 0.5 * Math.log((1 + s) / (1 - s))]; };
+  var unmercLat = function (y) { return (2 * Math.atan(Math.exp(y)) - Math.PI / 2) * 180 / Math.PI; };
+  function cameraAt(t) {
+    var L = CENA.pernas[CENA.pernas.length - 1];
+    for (var i = 0; i < CENA.pernas.length; i++) if (t < CENA.pernas[i].t1) { L = CENA.pernas[i]; break; }
+    if (L.tipo === "v") { var c = L.cam(cl(t - L.t0, 0, L.t1 - L.t0)); return { center: c.center, zoom: c.zoom, bearing: c.bearing, pitch: c.pitch }; }
+    var u = cl((t - L.t0) / (L.t1 - L.t0), 0, 1), a = PT[L.de], b = PT[L.para];
+    var ma = merc(a.lng, a.lat), mb = merc(b.lng, b.lat);
+    return { center: [a.lng + (b.lng - a.lng) * u, unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u,
+      bearing: a.bearing + (b.bearing - a.bearing) * u, pitch: a.pitch + (b.pitch - a.pitch) * u };
+  }
+  window.__cameraAt = cameraAt;
+  var exageroAt = function (t) { return CENA.exag * eio(seg(t, CENA.relevo.sobe[0], CENA.relevo.sobe[1])); };
+
+  var c0 = cameraAt(0);
+  var map;
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: c0.bearing, pitch: c0.pitch
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa.");
+  }
+  window.map = map;
+  // A BASE ANDA LISA (s03 do Juneau): toda pintura vai como "em movimento"
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
+
+  // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (molde) ─────────────────────────────
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg))
+      return "mandou tile CORROMPIDO" + n + " (" + String(msg).replace(/^tile corrompido: /, "") + "). Renderize de novo.";
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + ". Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  var mapaCarregado = false;
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ".");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : ""));
+  });
+  map.on("load", function () {
+    try { map.setTerrain({ source: "dem", exaggeration: 0 }); } catch (e) { return falhar("não consegui ligar o relevo: " + e.message); }
+    mapaCarregado = true;
+    map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
+  });
+
+  // ── rótulos: âncora no mapa (lnglat), ou função de tela; entram em 300 ms (opacidade + 24 px de subida) e saem em 300 ms;
+  //    o que a câmera leva para perto da margem, da faixa do crédito ou do canto reservado esmaece antes (60 px) ──
+  var ROT = [
+    { id: "rotDiv",    ll: null, lado: "esquerda", dx: -120, dy: 0, entra: 0.9,    sai: 6.1 },
+    { id: "rotPac",    ll: [-78.30, -12.95], entra: 5.066, sai: 11.066 },
+    { id: "rotAmazon", ll: [-62.20, -3.05], dy: -200, entra: 8.833, sai: 11.066 },
+    { id: "rotAtl",    ll: [-45.60, 2.10], lado: "esquerda", entra: 10.033, sai: 11.066 },
+    { id: "rotTit",    ll: [-69.62, -13.70], entra: 12.833, sai: 14.8 },
+    { id: "rotPuno",   ll: [-68.62, -15.42], lado: "direita", dx: 60, entra: 12.833, sai: 14.8 },
+    { id: "rotLimaReg", ll: [-76.80, -11.75], entra: 18.733, sai: 20.433 },
+    { id: "rotLima",   ll: null, dx: 90, dy: 175, entra: 20.433, sai: null },   // abaixo de Lima e um pouco a leste, sobre o mar: o Rímac chega ao mar a oeste dela, e a pílula não encosta nele
+    { id: "rotCota",   tela: null, entra: 22.3, sai: null },
+    { id: "rotRimac",  ll: null, lado: "direita", dx: 96, dy: 30, entra: 25.0, sai: null }
+  ];
+  ROT[0].ll = LINHA_PRINC[maisPerto(LINHA_PRINC, [-76.55, -11.05])];   // a pílula à esquerda da linha (o lado do Pacífico), ao norte da gota: à direita ela encostava na margem
+  ROT[7].ll = LIMA;
+  ROT[9].ll = RIM_C[maisPerto(RIM_C, [-76.92, -11.98])];               // no Rímac, perto da costa
+  function rot(id) { return ROT.filter(function (r) { return r.id === id; })[0]; }
+  function naArea(l, tp, w, h) {   // distância (px) da caixa à área segura; o canto 400 × 400 conta
+    var r = l + w, b = tp + h;
+    return Math.min(l - 200, 3640 - r, tp - 160, 1880 - b, Math.max(3440 - r, 1760 - b));
+  }
+  function aplicarRotulos(t) {
+    ROT.forEach(function (r) {
+      var el = E(r.id); if (!el) return;
+      var vin = eo(seg(t, r.entra, 0.3)), vout = r.sai != null ? 1 - eio(seg(t, r.sai, 0.3)) : 1;
+      var v = vin * vout;
+      if (v <= 0) { el.style.opacity = "0"; el.style.visibility = "hidden"; r._v = 0; return; }
+      var x, y;
+      if (r.telaFn) { var tf = r.telaFn(t); if (!tf) return; x = tf[0]; y = tf[1]; }
+      else { var p = map.project(r.ll); x = p.x; y = p.y; }
+      x += r.dx || 0; y += r.dy || 0;
+      var w = el.offsetWidth, h = el.offsetHeight;
+      var fx = r.lado === "direita" ? 0 : r.lado === "esquerda" ? 1 : 0.5;
+      var l = x - w * fx, tp = y - h / 2 + (1 - vin) * 24;
+      v *= cl(naArea(l, tp, w, h) / 60, 0, 1);
+      el.style.opacity = v.toFixed(3);
+      el.style.visibility = v > 0 ? "visible" : "hidden";
+      el.style.transform = "translate(" + l.toFixed(2) + "px," + tp.toFixed(2) + "px)";
+      r._v = v; r._l = l; r._t = tp; r._w = w; r._h = h;
+    });
+  }
+
+  // ── a miniatura: logo abaixo da pílula 'Lake Titicaca (Puno)', borda direita alinhada; a foto só encolhe ──
+  var MINI = { id: "miniPuno", sob: "rotPuno", natural: [8593, 4322], recorte: [900, 50, 6800, 4232], foto: [900, 560], borda: 16, vao: 18 };
+  (function montarMini(M) {
+    var el = E(M.id), jan = el && el.querySelector(".janela"), im = el && el.querySelector("img");
+    if (!el || !jan || !im) return falhar("a miniatura não está no palco.");
+    var esc = M.foto[0] / M.recorte[2];
+    if (Math.abs(M.foto[1] / M.recorte[3] - esc) > 0.01) return falhar("a miniatura distorceria a foto.");
+    if (esc > 1) return falhar("a miniatura ampliaria a foto.");
+    M.w = M.foto[0] + 2 * M.borda; M.h = M.foto[1] + 2 * M.borda;
+    el.style.width = M.w + "px"; el.style.height = M.h + "px";
+    jan.style.left = M.borda + "px"; jan.style.top = M.borda + "px"; jan.style.width = M.foto[0] + "px"; jan.style.height = M.foto[1] + "px";
+    im.style.width = (M.natural[0] * esc) + "px"; im.style.height = (M.natural[1] * esc) + "px";
+    im.style.left = (-M.recorte[0] * esc) + "px"; im.style.top = (-M.recorte[1] * esc) + "px";
+  })(MINI);
+  if (window.__erroCena) return;
+  function aplicarMini(t) {
+    var el = E(MINI.id), r = rot(MINI.sob); if (!el || !r) return;
+    var v = r._v || 0;
+    if (v <= 0) { el.style.opacity = "0"; el.style.visibility = "hidden"; return; }
+    var l = r._l + r._w - MINI.w, tp = r._t + r._h + MINI.vao;
+    v *= cl(naArea(l, tp, MINI.w, MINI.h) / 60, 0, 1);
+    el.style.opacity = v.toFixed(3); el.style.visibility = v > 0 ? "visible" : "hidden";
+    el.style.transform = "translate(" + l.toFixed(2) + "px," + tp.toFixed(2) + "px)";
+  }
+
+  // ── a gota e as duas metades (SVG, presas ao ponto da linha) ──
+  function aplicarGota(t) {
+    var G = CENA.gota, pd = map.project(D);
+    // a gota inteira: cai de 260 px acima, pousa em 3,25, achata e se parte em 3,45
+    var uc = seg(t, G.cai[0], G.cai[1]), vg = eo(seg(t, G.cai[0], 0.2)) * (1 - seg(t, G.parte, 0.12));
+    var sq = seg(t, G.cai[0] + G.cai[1], G.parte - G.cai[0] - G.cai[1]);
+    pousarGota("gotaG", "gotaSob", "gota", pd.x, pd.y - 260 * (1 - ei(uc)), 1, 1 + 0.25 * sq, 1 - 0.3 * sq, vg);
+    // as metades: nascem do pouso e se afastam 60 px; a oeste vai à cabeça do traço e desce o rio; a leste afunda
+    var ab = eo(seg(t, G.parte, 0.5));
+    var po = map.project(RIM_C[0]), dir = Math.hypot(po.x - pd.x, po.y - pd.y) > 4 ? [(po.x - pd.x), (po.y - pd.y)] : [-1, 0.3];
+    var n = Math.hypot(dir[0], dir[1]) || 1; dir = [dir[0] / n, dir[1] / n];
+    var fo = seg(t, G.oeste[0], G.oeste[1]), xo, yo;
+    if (fo <= 0) { xo = pd.x + dir[0] * 60 * ab; yo = pd.y + dir[1] * 60 * ab; }
+    else { var c = trecho(TRILHA_O, LO, ei(fo) * 0.4 + fo * 0.6), q = map.project(c[c.length - 1]); xo = q.x; yo = q.y; }
+    var vo = (t >= G.parte ? 1 : 0) * (1 - seg(t, G.oeste[0] + G.oeste[1], 0.3));
+    pousarGota("metadeO", "metOSob", "metO", xo, yo, 0.7, 1, 1, vo);
+    var fl = seg(t, G.leste[0], G.leste[1]);
+    var vl = (t >= G.parte ? 1 : 0) * (1 - eo(fl));
+    pousarGota("metadeL", "metLSob", "metL", pd.x - dir[0] * 60 * ab + 70 * eo(fl), pd.y - dir[1] * 60 * ab + 30 * eo(fl), 0.7, 1 - 0.4 * fl, 1 - 0.4 * fl, vl);
+  }
+  // ── os traços: só sobre a geometria real ──
+  var ultimo = {};
+  function dados(id, fc, k) { if (ultimo[id] === k) return; var s = map.getSource(id); if (s) s.setData(fc); ultimo[id] = k; }
+  function aplicarTrilhas(t) {
+    var G = CENA.gota, T = CENA.trilhas;
+    var fo = seg(t, G.oeste[0], G.oeste[1]); fo = ei(fo) * 0.4 + fo * 0.6;
+    dados("trO", fo > 0 ? fcLinhas([trecho(TRILHA_O, LO, fo)]) : fcVazia, fo.toFixed(4));
+    var ft = eio(seg(t, T.tributarios[0], T.tributarios[1]));
+    dados("trL", ft > 0 ? fcLinhas([trecho(UCA_TRECHO, LU, ft), trecho(MAR, LM, ft)]) : fcVazia, ft.toFixed(4));
+    var fa = seg(t, T.amazonas[0], T.amazonas[1]); fa = fa * fa * (3 - 2 * fa) * 0.5 + fa * 0.5;
+    dados("trA", fa > 0 ? fcLinhas([trecho(AMZ_C, LA, fa)]) : fcVazia, fa.toFixed(4));
+    var so = 1 - seg(t, T.oesteSai[0], T.oesteSai[1]), sl = 1 - seg(t, T.lesteSai[0], T.lesteSai[1]);
+    opac("trO", "line-opacity", so); opac("trO-sob", "line-opacity", so);
+    opac("trL", "line-opacity", sl); opac("trL-sob", "line-opacity", sl);
+    opac("trA", "line-opacity", sl); opac("trA-sob", "line-opacity", sl);
+  }
+  var opAntes = {};
+  function opac(id, prop, v) { v = +(+v).toFixed(3); var k = id + "|" + prop; if (opAntes[k] === v) return; map.setPaintProperty(id, prop, v); opAntes[k] = v; }
+
+  // ── a régua: de Lima ao ponto da linha, reta na tela, com as duas pontas ──
+  function aplicarRegua(t) {
+    var R = CENA.regua, g = E("regua"); if (!g) return;
+    var f = eio(seg(t, R.entra, R.sobe));
+    if (f <= 0) { g.setAttribute("opacity", "0"); return; }
+    var a = map.project(LIMA), b = map.project(ALVO);
+    var x = a.x + (b.x - a.x) * f, y = a.y + (b.y - a.y) * f;
+    var dx = b.x - a.x, dy = b.y - a.y, n = Math.hypot(dx, dy) || 1, px = -dy / n * 34, py = dx / n * 34;
+    var d = "M " + fmt(a) + " L " + x.toFixed(2) + " " + y.toFixed(2) +
+      " M " + (a.x + px).toFixed(2) + " " + (a.y + py).toFixed(2) + " L " + (a.x - px).toFixed(2) + " " + (a.y - py).toFixed(2);
+    if (f >= 1) d += " M " + (b.x + px).toFixed(2) + " " + (b.y + py).toFixed(2) + " L " + (b.x - px).toFixed(2) + " " + (b.y - py).toFixed(2);
+    E("reguaSob").setAttribute("d", d); E("reguaLinha").setAttribute("d", d);
+    g.setAttribute("opacity", eo(seg(t, R.entra, 0.15)).toFixed(3));
+    window.__regua = { a: [a.x, a.y], b: [b.x, b.y] };
+  }
+  // a cota fica logo acima da ponta de cima da régua, onde ela toca a linha (sem encostar nela)
+  rot("rotCota").telaFn = function () {
+    var a = map.project(LIMA), b = map.project(ALVO);
+    return [b.x + CENA_COTA.dx, b.y + CENA_COTA.dy];
+  };
+  var CENA_COTA = { dx: 0, dy: -170 };   // logo acima da ponta da régua, sobre o lado amazônico: os rios do lado seco não passam ali
+
+  function aplicarCena(t) {
+    var ex = exageroAt(t);
+    if (map.terrain) map.terrain.exaggeration = ex;
+    map._elevationFreeze = true;
+    window.__exagero = ex;
+    opac("titicaca", "fill-opacity", CENA.titicaca.opacidade * eo(seg(t, CENA.titicaca.entra, 0.5)) * (1 - seg(t, CENA.titicaca.sai, 0.5)));
+    opac("limaReg", "fill-opacity", CENA.limaReg.opacidade * eo(seg(t, CENA.limaReg.entra, 0.5)) * (1 - seg(t, CENA.limaReg.sai, 0.3)));
+    var vr = eo(seg(t, CENA.rios.entra, 0.5));
+    opac("rios", "line-opacity", vr); opac("rios-sob", "line-opacity", vr);
+    opac("rimac", "line-opacity", vr); opac("rimac-sob", "line-opacity", vr);
+    aplicarTrilhas(t);
+    aplicarGota(t);
+    aplicarRegua(t);
+  }
+
+  function aplicarCreditos(t) {
+    var c = E("credito"); if (c) { c.style.opacity = "1"; c.style.visibility = "visible"; }
+    [["credFoto", 12.833, 14.8], ["credRegua", 22.3, null]].forEach(function (x) {
+      var el = E(x[0]); if (!el) return;
+      var v = eo(seg(t, x[1], 0.3)) * (x[2] != null ? 1 - eio(seg(t, x[2], 0.3)) : 1);
+      el.style.opacity = v.toFixed(3); el.style.visibility = v > 0 ? "visible" : "hidden";
+    });
+  }
+
+  function aplicar(t) {
+    if (!mapaCarregado) return;
+    if (!map.getTerrain()) map.setTerrain({ source: "dem", exaggeration: exageroAt(t) });
+    map.jumpTo(cameraAt(t));
+    if (map.terrain && map.transform.elevation !== 0) map.transform.elevation = 0;
+    aplicarCena(t);
+    aplicarRotulos(t);
+    aplicarMini(t);
+    aplicarCreditos(t);
+    // A ESPESSURA DAS LINHAS SOBRE O RELEVO (s44 do Juneau): a textura em que a base e as linhas se pintam sobre o
+    // relevo se refaz em todo quadro, no zoom dele
+    if (map.terrain) {
+      var tsc = map.terrain.sourceCache;
+      if (!tsc || typeof tsc.freeRtt !== "function") return falhar("o MapLibre desta cena não tem terrain.sourceCache.freeRtt.");
+      tsc.freeRtt(); map.triggerRepaint();
+    }
+  }
+
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) { var ts = (sc[id] && sc[id]._tiles) || {}; for (var k in ts) if (ts[k] && ts[k].state === "errored") return id; }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou. O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  // pronto: os tiles da base E do relevo carregados, o terreno ligado, o mapa parado (contrato do mapista §3)
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!map.areTilesLoaded() || map.isMoving()) return false;
+          for (var i = 0; i < CENA.fontes.length; i++) if (!map.getSource(CENA.fontes[i]) || !map.isSourceLoaded(CENA.fontes[i])) return false;
+          if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+          if (!map.getSource("dem") || !map.isSourceLoaded("dem") || !map.getTerrain()) return false;
+          return true;
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
+      (function tick() {
+        barrarTileComErro();
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.triggerRepaint(); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__renderAt(0) || true;
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+
+})();
+</script>
+</body>
+</html>
