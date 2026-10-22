@@ -26,3 +26,6 @@ O Lucas, no chat da Sala, durante o art do vídeo 4 (Peru):
 - **A Fossa das Sandwich do Sul** entra no vídeo, como a outra candidata.
 - **A concorrência se mede também pela data:** vídeos antigos sobre o tema deixam espaço para um novo.
 - **O título não entrega o assunto** (não nomeia a Fossa de Porto Rico): a disputa por busca pesa menos, e a curiosidade pesa mais.
+- **A checagem da pauta**, à pergunta "Faço agora a checagem da pauta do vídeo 5?": **"Depois do Peru"**. Ela roda quando o Peru chegar à
+  revisão do Lucas na linha do tempo, com até 30 créditos do vidIQ: a concorrência com a data e as visualizações, os fatos principais e um
+  cético.
