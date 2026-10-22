@@ -52,7 +52,10 @@ else if (pos.length === 2 && opt.dur) [html, saida] = pos;
 if (typeof opt.dur === "string") durArg = opt.dur;
 if (!html || !durArg || !saida || (durArg !== "auto" && !(Number(durArg) > 0))) usoErrado("faltou a peça, a duração ou a pasta de saída");
 if (!existsSync(html)) usoErrado(`a peça não existe: ${html}`);
-const fps = Number(opt.fps || 30), W = 3840, H = 2160;
+// --fps aceita número ou razão («30000/1001», a régua do motor comum para cenas e master); o ffmpeg recebe o texto exato.
+const fpsTxt = String(opt.fps || 30), [fpsA, fpsB] = fpsTxt.split("/");
+const fps = fpsB === undefined ? Number(fpsA) : Number(fpsA) / Number(fpsB), W = 3840, H = 2160;
+if (!(fps > 0)) usoErrado(`--fps inválido: ${fpsTxt}`);
 const nome = typeof opt.nome === "string" ? opt.nome : basename(html).replace(/\.html$/, "");
 mkdirSync(saida, { recursive: true });
 const quadros = join(saida, `_quadros-${nome}`);
@@ -66,7 +69,8 @@ for (const k of ["q", "lugar", "gira", "corpo"]) if (typeof opt[k] === "string")
 if (durArg !== "auto") url.searchParams.set("dur", String(Number(durArg)));
 
 let dur, info = null, contratoNovo = false;
-const browser = await chromium.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true, args: ["--disable-gpu-rasterization"] });
+// CHROME_PATH: o Chrome de outra máquina (o WSL do motor comum usa /opt/google/chrome/chrome); sem ela, o desta máquina.
+const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true, args: ["--disable-gpu-rasterization"] });
 try {
   const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
   await page.goto(url.href, { waitUntil: "load" });
@@ -153,7 +157,7 @@ if (motivos.length) console.log(`aviso: reprovada, mas montada com --sem-trava: 
 const mov = join(saida, `${nome}.mov`);
 const cor709 = ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709", "-color_range", "tv"];
 try {
-  execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-framerate", String(fps), "-i", join(quadros, "f_%05d.png"),
+  execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-framerate", fpsTxt, "-i", join(quadros, "f_%05d.png"),
     "-vf", "scale=out_color_matrix=bt709:out_range=tv,format=yuva444p10le,setparams=color_primaries=bt709:color_trc=bt709:colorspace=bt709:range=tv",
     "-c:v", "prores_ks", "-profile:v", "4444", "-alpha_bits", "16", "-vendor", "apl0", ...cor709, mov]);
   console.log(`ok ${mov} (${n} quadros, ${fps} fps, alfa, BT.709)`);
@@ -161,10 +165,10 @@ try {
   // ---- as prévias: a peça composta em 4K, em RGB, sobre o quadro do canal, reduzida para 1080p ----
   for (const f of (typeof opt.fundos === "string" ? opt.fundos.split(",") : [])) {
     const out = join(saida, `${nome}-sobre-${basename(f).replace(/\.\w+$/, "")}.mp4`);
-    execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-loop", "1", "-framerate", String(fps), "-i", f,
-      "-framerate", String(fps), "-i", join(quadros, "f_%05d.png"),
+    execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-loop", "1", "-framerate", fpsTxt, "-i", f,
+      "-framerate", fpsTxt, "-i", join(quadros, "f_%05d.png"),
       "-filter_complex", "[0:v]scale=3840:2160:flags=bicubic,format=gbrp[b];[b][1:v]overlay=0:0:format=gbrp:shortest=1,scale=1920:1080:flags=lanczos:out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=color_primaries=bt709:color_trc=bt709:colorspace=bt709:range=tv[v]",
-      "-map", "[v]", "-frames:v", String(n), "-c:v", "libx264", "-crf", "16", "-r", String(fps), ...cor709, out]);
+      "-map", "[v]", "-frames:v", String(n), "-c:v", "libx264", "-crf", "16", "-r", fpsTxt, ...cor709, out]);
     console.log(`ok ${out}`);
   }
 } catch (e) { falhar(`o ffmpeg parou: ${String(e?.stderr || e?.message || e).trim().split("\n")[0]}`); }

@@ -1,0 +1,95 @@
+{
+  "schema": "estudio-canal-motor/1",
+  "canal": "alpha-point",
+  "idioma": "en-US",
+  "roteiro": {
+    "fonte": "obra"
+  },
+  "rosto": {
+    "tem_apresentador": false,
+    "faixa_apresentador": {
+      "piso": 0,
+      "teto": 0,
+      "alvo": 0
+    },
+    "cobertura_cenas_pct_min": 100,
+    "modelos_excluidos": [
+      "M28",
+      "M32",
+      "M33"
+    ]
+  },
+  "narracao": {
+    "fonte": "tts",
+    "provedor": "elevenlabs",
+    "credencial": "ELEVENLABS_API_KEY",
+    "voice_id": "829pig94w9GefZ9jJQYl",
+    "model_id": "eleven_v4",
+    "output_format": "pcm_44100",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75
+    },
+    "seed": null,
+    "language_code": "en",
+    "cards": "nenhum",
+    "pausa_entre_trechos_s": 0.25,
+    "cauda_s": 20,
+    "relogio": {
+      "fonte": "tts+ouvido",
+      "ouvido": {
+        "motor": "faster-whisper",
+        "modelo": "large-v3",
+        "dispositivo": "cpu"
+      },
+      "reserva": "scribe"
+    },
+    "limites": {
+      "tentativas_por_trecho": 2,
+      "caracteres_max_por_obra": 30000
+    }
+  },
+  "midia": {
+    "caca_stock_assinado": false
+  },
+  "publicacao": {
+    "perfil_youtube": "marcas/alpha-point/publicacao-youtube.json",
+    "credencial_oauth": "youtube-oauth.json"
+  },
+  "master": {
+    "fonte": "automatico",
+    "lufs_alvo": -14,
+    "true_peak_max_db": -1,
+    "fps": 30,
+    "largura": 3840,
+    "altura": 2160,
+    "trilha": {
+      "sem_voz_db": -40,
+      "sob_narrador_db": -40.5
+    },
+    "logo": {
+      "arquivo": "../marca/logo/agulha/marca-dagua-4k.png",
+      "canto": "quadro",
+      "opacidade": 1
+    },
+    "cta": [],
+    "pecas_da_obra": {
+      "script": "pecas/pecas-da-obra.mjs",
+      "gera": [
+        "_master/sobreposicoes.json",
+        "_master/logo.json"
+      ]
+    }
+  },
+  "portoes": {
+    "pauta": true,
+    "roteiro": true,
+    "titulo_capa": true,
+    "publicar": true
+  },
+  "contas_claude": {
+    "pool": "canal",
+    "cofre": "claude.env",
+    "portas": 1
+  }
+}
