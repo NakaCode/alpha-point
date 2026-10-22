@@ -6,6 +6,8 @@
 <!--
   CANAL ALPHA POINT — PERU (vídeo 4, peru-agua), CENA s51 (651,800 → 689,933 s do master; 38,133 s), o 5º pico. Mapista, lote M6 da
   tarefa peru-agua-arte-1, 22/10/2026. Construída do zero sobre o motor da s30 (M3), que é o da s20 do vídeo 3.
+  Conserto peru-agua-arte-2 (lote M-s51, 22/10/2026): o RITMO do qc-carga (5 entradas em 1 s @6,9). A cota 'ABOUT 3000 B.C.' e o
+  crédito da UNESCO passam de 7,867 ('about') a 8,233 ('five'), como o textos-tela (f588540e…); o t1 continua 11,8. Nada mais mudou.
   "So why do most Peruvians live on the dry side of that line? Not because that side has the water. First, the valleys: about five
   thousand years ago, people built a city above one of them. Then the port: in fifteen thirty-five, the Spanish put their capital near
   a very good one. Then the people: in the twentieth century, the country came down from the mountains, to the coast and to that
@@ -23,7 +25,7 @@
     · b1 6,1–11,8: em "First, the valleys" os lados e a divisa saem (500 ms) e a câmera fecha em 1,5 s na costa central. Caral
       (pontos-fontes › caral): o ponto, a pílula 'Caral' em "valleys:" (6,9) e a miniatura REUSADA da Pirámide Mayor (a foto frontal
       da s22, veredito do reuso na s51: aprovado, aviso_de_ano) pousando sob a pílula, sobre o mar (pousa em 6,9, assenta em 7,45);
-      'Photo from 2022' sob a miniatura em 7,6 (150 ms depois do assentamento); 'ABOUT 3000 B.C.' acima da pílula em 7,867.
+      'Photo from 2022' sob a miniatura em 7,6 (150 ms depois do assentamento); 'ABOUT 3000 B.C.' acima da pílula em 8,233 ("five").
     · b2 11,8–17,6: 1,5 s ao Callao e a Lima; o ponto e a pílula 'Callao' em "port:" (12,4), '1535' acima dela em 13,433, o ponto e
       a pílula 'Lima' em "capital" (15,533). Sem miniatura do porto (o s03-c da caça não tem veredito para esta frase).
     · b3 17,6–28,5: recuo de 2 s à serra central (Lima a oeste, a linha, a serra a leste); '20TH CENTURY' (19,433) no céu da serra,
@@ -41,7 +43,7 @@
       "truck." (37,333): nada (a miniatura do caminhão só com veredito para esta frase; a caça ainda não veio).
   CRÉDITOS (56 px, a faixa): '© MapTiler © OpenStreetMap contributors' a cena toda (cobre o OSM dos rios, do túnel e dos pontos);
   'Source: ANA (Peru), National Water Resources Plan, 2012 data' 3,733–5,733; 'JOSE MORALES CIENCIA POLITICA UNMSM / Wikimedia
-  Commons · CC BY-SA 4.0' 6,9–11,8 (quebra em duas linhas); 'Source: UNESCO (World Heritage List, 2009)' 7,867–11,8. HydroBASINS sem
+  Commons · CC BY-SA 4.0' 6,9–11,8 (quebra em duas linhas); 'Source: UNESCO (World Heritage List, 2009)' 8,233–11,8. HydroBASINS sem
   crédito na tela.
   ELEMENTOS (teto 6): b0 = linha, lados, divisa, cota (4); b1 = linha, ponto, pílula, miniatura, aviso, cota (6); b2 = linha, 2 pontos,
   Callao, 1535, Lima (6); b3 = linha, ponto de Lima, silhuetas, 20TH CENTURY (4); b4 = linha, Lima, Chicama, túnel + anel (4–5).
@@ -137,7 +139,7 @@
   "use strict";
   // ═══ CONFIGURAÇÃO DA CENA (M6) ═══
   // Tempos (0 = 651,800 s do master; a grade de 30 fps da regência e do textos-tela): 'Not' 3,733 · 'First,' 6,1 · 'valleys:' 6,9 ·
-  // 'about' 7,867 · 'Then' 11,8 · 'port:' 12,4 · 'fifteen' 13,433 · 'capital' 15,533 · 'Then' 17,6 · 'twentieth' 19,433 · 'came' 20,9 ·
+  // 'five' 8,233 · 'Then' 11,8 · 'port:' 12,4 · 'fifteen' 13,433 · 'capital' 15,533 · 'Then' 17,6 · 'twentieth' 19,433 · 'came' 20,9 ·
   // 'pushed' 24,52 · 'The' 28,5 · 'canal' 30,733 · 'tunnel' 32,633 · 'truck.' 37,333.
   var CENA = {
     duracao: 38.133,
@@ -171,7 +173,7 @@
     rotulos: [
       { id: "cota18",   lnglat: [-79.6, -11.6], lado: "esquerda", vert: "centro", dx: 75, entra: 3.733, sai: 5.433 },
       { id: "rotCaral", ref: "CARAL", lado: "esquerda", vert: "centro", dx: -44, entra: 6.9, sai: 11.5 },
-      { id: "cota3000", ref: "CARAL", lado: "esquerda", vert: "cima", dx: -44, dy: -112, entra: 7.867, sai: 11.5 },
+      { id: "cota3000", ref: "CARAL", lado: "esquerda", vert: "cima", dx: -44, dy: -112, entra: 8.233, sai: 11.5 },
       { id: "rotCallao", ref: "CALLAO", lado: "esquerda", vert: "centro", dx: -44, entra: 12.4, sai: 17.3 },
       { id: "cota1535", ref: "CALLAO", lado: "esquerda", vert: "cima", dx: -44, dy: -112, entra: 13.433, sai: 17.3 },
       { id: "rotLima",  ref: "LIMA", lado: "direita", vert: "centro", dx: 44, entra: 15.533, sai: 17.3 },
@@ -182,7 +184,7 @@
       { id: "crMapa", mapa: true, janelas: [[0, 99]] },
       { id: "crAna", janelas: [[3.733, 5.733]] },
       { id: "crFoto", janelas: [[6.9, 11.8]] },
-      { id: "crUnesco", janelas: [[7.867, 11.8]] }
+      { id: "crUnesco", janelas: [[8.233, 11.8]] }
     ]
   };
   // a miniatura da Pirámide Mayor (4032 × 3024): o recorte da pirâmide, sem o céu de cima nem o chão de baixo
