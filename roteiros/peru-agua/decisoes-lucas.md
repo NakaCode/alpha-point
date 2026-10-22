@@ -128,3 +128,7 @@ respostas, literais:
   - **Conferido em 22/10/2026, 02:2x:** o Lucas baixou no Brave, pela página do HydroBASINS, `C:\Users\zangp\Downloads\hybas_sa_lev06_v1c.zip`
     (02:19; "baixei o arquivo"), 10.389.476 bytes, sha256 `6b1899bdbee46354a9f4729bbf916108fb31ed2facdfac449237c00d3e39e90e`: idêntico,
     byte a byte, ao que o `pesquisa-geo` tinha baixado. As 5 camadas do HydroBASINS estão liberadas para render.
+
+**A caça** (22/10/2026, 03:0x). À pergunta "Quando fazemos?" (os 30 clipes da `out/peru-agua/_pesquisa/lista-de-caca.json`, com ele por
+perto), a resposta: **"De manhã (Recomendado)"**. A opção dizia: "Amanhã de manhã, você me avisa no chat que está no PC. Até lá, a
+regência e o texto de tela seguem sem você." A caça começa só com o aviso dele no chat e o pedido, pela skill `cacar-no-chrome`.
