@@ -36,7 +36,12 @@
         4,300  "lid": "WARM LID" entra acima da tampa (300 ms) e fica parado até o corte.
         6,040  "Under that lid": o H esmaece (300 ms; o papel dele acabou no beat 1). 8 fios de umidade sobem do mar e da
                encosta (um a cada 0,12 s, 1,0 s cada, desacelerando), PARAM sob a tampa e se achatam em véus que se juntam numa
-               neblina rente à tampa (0,9 s); os fios esmaecem de 8,70 a 9,30 e a neblina fica.
+               neblina rente à tampa (0,9 s); os fios e a neblina ficam até o corte (arte-8).
+  CONSERTO peru-agua-arte-8 (espectador r1, nº 4; sha1 de antes c27ac975e4a464697f14ee0fe396a48518d1825a): só a umidade do
+    beat 2 muda. .ar-umid passa de stroke-width 4 a var(--linha-espessura) (a espessura da tampa); os fios a opacidade 1 (antes
+    0,75) e não esmaecem mais (antes 8,70–9,30): ficam até o corte; os véus a 1 e 0,8 (antes 0,8 e 0,55). Nenhuma cor, texto,
+    tempo de texto ou elemento novo; a tampa, a câmera e os tempos de entrada não mudam. O contato continua: a ponta do fio
+    (y 1146, tampa 6 px de traço até 1143) encosta no traço da tampa sem atravessá-lo.
         9,484–9,734  REPOUSO: o push-in para; só a deriva do RIG.
     A CÂMERA: push-in do RIG (0,0024/s, base 1,0, origem no centro), parando 250 ms antes do corte. Escala máxima 1,0228: a
     margem sob a câmera fica em x 238→3602 e y 181→1862; os textos ficam de x ~1060 a ~1740 e de y 908 a 1812.
@@ -87,7 +92,7 @@
   .ar-fina { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-linecap: round; opacity: .5; }
   .ar-oculta { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-dasharray: 20 16; stroke-linecap: round; opacity: .5; }
   .ar-frio { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; }
-  .ar-umid { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .ar-umid { fill: none; stroke: var(--tinta); stroke-width: var(--linha-espessura); stroke-linecap: round; stroke-linejoin: round; }
   .sombra-linha { fill: none; stroke: var(--tinta-escura); stroke-width: 16; stroke-linejoin: round; stroke-linecap: round; }
   .txt { position: absolute; left: 0; top: 0; white-space: nowrap; opacity: 0; transform-origin: 50% 50%; color: var(--tinta); }
   .rotulo { font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.05;
@@ -243,7 +248,7 @@
   if (E("cred1")) E("cred1").textContent = TEXTOS.cred1;
 
   var T = { frio: 0.16, rotFrio: 0.134, setas: 2.47, tampaAparece: 2.75, tampaDesce: 3.05, setasSaem: 3.90,
-            rotTampa: 4.30, beat2: 6.04, fios: 6.10, fiosSaem: 8.70, repouso: DUR - 0.25 };
+            rotTampa: 4.30, beat2: 6.04, fios: 6.10, repouso: DUR - 0.25 };
 
   // ── o corte (px do palco) ──
   var YMAR = 1480, YFUNDO = 1660;
@@ -343,12 +348,11 @@
       var p = eo(seg(t, F.t0, 1.0));                         // sobe desacelerando e PARA sob a tampa
       var yTop = lerp(F.base, YTOPO, p);
       var v = eo(seg(t, F.t0 + 0.85, 0.9));                  // o véu abre quando o fio encosta
-      var saida = seg(t, T.fiosSaem, 0.6);
       F.fio.setAttribute("d", p > 0 ? fioPath(F, yTop) : "");
-      F.fio.style.opacity = (0.75 * (p > 0 ? 1 : 0) * (1 - saida)).toFixed(3);
+      F.fio.style.opacity = (p > 0 ? 1 : 0).toFixed(3);   // arte-8: cheio e até o corte (antes 0,75, saindo em 8,70)
       F.veu.setAttribute("d", veuPath(F.x, YTOPO + 14, 230 * v, F.fase));
       F.veu2.setAttribute("d", veuPath(F.x, YTOPO + 48, 190 * v, F.fase + 2));
-      F.veu.style.opacity = (0.8 * v).toFixed(3); F.veu2.style.opacity = (0.55 * v).toFixed(3);
+      F.veu.style.opacity = (1 * v).toFixed(3); F.veu2.style.opacity = (0.8 * v).toFixed(3);   // arte-8: antes 0,8 e 0,55
     });
   }
 

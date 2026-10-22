@@ -38,6 +38,10 @@
       Junín, 2018; recorte por overflow que deixa o poste de fora) pousa ao lado, a leste da forma, com 'Mr AndrewHolmes /
       Wikimedia Commons · CC BY-SA 4.0' na faixa; 'six' (13,067): 'MORE THAN 6 FT (2,013 mm)' e 'OF RAIN A YEAR', com
       'Source: WMO / SENAMHI (Peru), 1991–2020 average' na faixa.
+  CONSERTO peru-agua-arte-8 (22/10/2026, revisão de espectador r1, achado 5): só a chuva. 12 traços por nuvem (eram 5),
+  espalhados por 80 % da base da nuvem (eram 60 %), cada um com 60 px no zref (eram 30), a 6 px --tinta como o contorno das
+  nuvens, com o contorno escuro de 14 px (era 12) e opacidade cheia (era 0,9); nascem de 'moisture' (8,44) até 'East' (10,2;
+  era 10,0) e saem junto com as nuvens. A mesma inclinação e a mesma queda com arrasto; nenhuma cor, texto ou tempo de texto.
   Corte seco para a s19 (Sala, decisão 2). Crédito: '© MapTiler © OpenStreetMap contributors' a 56 px, a cena inteira
   (cobre o OSM dos dois cumes). O HydroBASINS sem crédito na tela (o Exhibit B vai na descrição).
 -->
@@ -162,7 +166,7 @@ SLOPES</div>
     ],
     vento: { v0: 900, L: 300, D: 1300, folga: 110 },
     sobe: { de: 7.28, dur: 0.68, esc: 0.12 },
-    chuva: { de: 8.44, ate: 10.0, periodo: 0.55, vt: 700, tau: 0.12, por: 5, ang: 30 },
+    chuva: { de: 8.44, ate: 10.2, periodo: 0.55, vt: 700, tau: 0.12, por: 12, ang: 30, lg: 60, abre: 0.8 },   // peru-agua-arte-8: 12 traços (eram 5), 60 px (eram 30), até 'East'
     saida: { de: 10.23, dur: 0.4 },
     rotulos: [
       { id: "rotAndes",   tela: [0, 0], ancora: "andes",   lado: "esquerda", vert: "centro", entra: 1.5, sai: 10.2 },
@@ -280,12 +284,12 @@ SLOPES</div>
           var nasc = C.de + fase + Math.floor(tt / C.periodo) * C.periodo;
           if (nasc > C.ate) continue;
           var uu = tt % C.periodo;
-          var sx = x0 + (-0.35 + 0.6 * (j + 0.5) / C.por) * n.w * e, sy = cy + 6;
+          var sx = x0 + (-0.35 - (C.abre - 0.6) / 2 + C.abre * (j + 0.5) / C.por) * n.w * e, sy = cy + 6;
           var alvo = (sx - (xNaAltura(sy) + W * 0.5)) / Math.abs(dx);          // a distância até o meio da faixa, na direção
           var dd = C.vt * k * (uu - C.tau * (1 - Math.exp(-uu / C.tau)));
           if (dd >= alvo || alvo <= 0) continue;                                 // tocou a faixa: some
-          var px = sx + dx * dd, py = sy + dy * dd, lg = Math.min(30 * k, dd);
-          ILU.traco([[px, py], [px - dx * lg, py - dy * lg]], { w: 6, cor: COR.tinta, sob: 12, sobCor: COR.sob, alpha: 0.9 * al });
+          var px = sx + dx * dd, py = sy + dy * dd, lg = Math.min(C.lg * k, dd);
+          ILU.traco([[px, py], [px - dx * lg, py - dy * lg]], { w: 6, cor: COR.tinta, sob: 14, sobCor: COR.sob, alpha: al });
         }
       });
       // ── as âncoras dos rótulos ──

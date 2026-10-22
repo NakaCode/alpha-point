@@ -37,6 +37,16 @@
   em 11,1, como antes (2,1 s, cúbica); a perna lenta B → B2 vai até 9,0. Com a viagem em 8,6, o 'CHILE' (preso ao país)
   descia à faixa do crédito entre 9,1 e 9,3 s (portao-margens: y 1980 > 1880); subir o nome o punha sobre a pílula de Tacna.
   Os três nomes ficam no começo lento da viagem, como o textos-tela diz (L50). Onde o texto acima diz 7,534/8,467/8,6, vale isto.
+  CONSERTO peru-agua-arte-8 (lote M-s13s21, 22/10/2026; revisão de espectador r1, conserto 6 de
+  out/peru-agua/_tmp/sala/espectador-r1-consertos.md), e só isto mudou (nenhum texto, nenhum t0/t1 de texto; o beat 2 continua
+  'nenhum texto'):
+    · em 'city' (9,68) o rio Supe (rio-supe, OSM relation/12024858, a geometria inteira) se desenha da nascente à foz em 0,8 s,
+      em --destaque (o lado seco; o mesmo token do lado seco no vídeo) a 6 px sobre o contorno --rotulo de 14 px; na foz (o
+      último vértice da linha), o anel da marca (§4.4: 56 px, traço 10 em --destaque, halo --rotulo) entra em 10,48 e pulsa
+      UMA vez (1,2 s); o ponto de Lima (cidades-peru-ne, o ponto --neutro das cidades desta cena) entra em 9,68, sem nome.
+    · a aproximação final termina mais perto: D passa de z 8,40 a 8,85 e D2 de 8,50 a 9,15 (o vale do Supe e Lima no mesmo
+      quadro). A viagem continua 9,0 → 11,1; os pontos de partida e os tempos não mudam.
+    · o crédito continua '© MapTiler © OpenStreetMap contributors': o do OSM do Supe já está nele.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -47,6 +57,7 @@
 <script src="../_media/geo/peru-ne.js"></script>
 <script src="../_media/geo/chile-ne.js"></script>
 <script src="../_media/geo/cidades-peru-ne.js"></script>
+<script src="../_media/geo/rio-supe.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -83,6 +94,9 @@
   #tintaRotulos { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
   /* o ponto de lugar sob a pílula (sem anel: o anel do vídeo marca só o túnel): --neutro com o contorno escuro */
   .ponto-lugar { fill: var(--neutro); stroke: var(--rotulo); stroke-width: 6px; }
+  /* arte-8: o anel da marca (identidade §4.4) na foz do Supe: 56 px, traço 10 em --destaque, sobre o halo --rotulo */
+  .anel { fill: none; stroke: var(--destaque); stroke-width: 10px; }
+  .anel-sob { fill: none; stroke: var(--rotulo); stroke-width: 20px; }
   /* a imagem impressa sobre o mapa (identidade §4.4, "a mão que arruma"; §5, "Nome de lugar com a foto"): moldura
      --tinta de 8 px, o recorte por overflow (nada de arquivo novo), a sombra solta com desfoque fixo */
   .cartao { position: absolute; left: 0; top: 0; z-index: 42; opacity: 0; transform-origin: 50% 50%; overflow: hidden;
@@ -109,6 +123,8 @@
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
     <circle class="ponto-lugar" id="pPiu" cx="0" cy="0" r="14" opacity="0"/>
     <circle class="ponto-lugar" id="pTac" cx="0" cy="0" r="14" opacity="0"/>
+    <circle class="ponto-lugar" id="pLima" cx="0" cy="0" r="14" opacity="0"/>
+    <g id="anFoz" opacity="0"><circle class="anel-sob" r="28"/><circle class="anel" r="28"/><circle class="anel" id="anFozP1" r="28" opacity="0"/></g>
   </svg>
 
   <div id="rotulos">
@@ -139,8 +155,8 @@ farms, cities and mines not counted</div>
       A1: { lng: -76.00, lat: -11.50, zoom: 5.82 },
       B:  { lng: -74.90, lat: -12.60, zoom: 5.92 },   // descida N → S: o Chile e o nome dele no quadro, Piura ainda dentro
       B2: { lng: -74.85, lat: -12.62, zoom: 5.95 },
-      D:  { lng: -77.36, lat: -11.45, zoom: 8.40 },   // a costa central: a foz do Supe em cima, Lima embaixo
-      D2: { lng: -77.34, lat: -11.44, zoom: 8.50 }
+      D:  { lng: -77.36, lat: -11.45, zoom: 8.85 },   // a costa central: a foz do Supe em cima, Lima embaixo (arte-8: era z 8,40)
+      D2: { lng: -77.34, lat: -11.44, zoom: 9.15 }    // arte-8: era z 8,50
     },
     pernas: [
       { t0: 0,     t1: 4.667,  de: "A0", para: "A1", tipo: "h" },
@@ -150,7 +166,8 @@ farms, cities and mines not counted</div>
       { t0: 11.1,  t1: 12.667, de: "D",  para: "D2", tipo: "h" }
     ],
     giro: [-0.8, 0.8],
-    aneis: [],
+    aneis: [ { id: "anFoz", ref: "FOZ", entra: 10.48, sai: null, pulsos: [10.78] } ],   // arte-8: a foz do Supe, um pulso
+    supe: { entra: 9.68, desenha: 0.8 },   // arte-8: em 'city'
     rotulos: [
       { id: "rotDeserto", lnglat: [-78.25, -10.10], lado: "esquerda", vert: "centro", dx: 30, dy: 0, entra: 1.2, sai: 8.467 },   // sobre o mar, a ponta direita na faixa da costa (a pílula não cobre o deserto)
       { id: "numDeserto", tela: [200, 1200], lado: "direita", vert: "baixo", entra: 2.4, sai: 4.667 },
@@ -165,7 +182,7 @@ farms, cities and mines not counted</div>
       { id: "crMinam", entra: 2.4, sai: 4.667 }
     ]
   };
-  var DIVISA = [];
+  var DIVISA = [], SUPE = null;
   // ═══ O DESENHO NO TRAÇO DO CANAL (canvas #ilu; tudo função de t, sem relógio) ═════════════════════════
   var ILU = (function () {
     var cv = document.getElementById("ilu"), g = cv ? cv.getContext("2d") : null;
@@ -194,6 +211,12 @@ farms, cities and mines not counted</div>
     preparar: function (A) {
       A.REFS.PIU = A.pontoNome("cidades-peru-ne", "Piura");
       A.REFS.TAC = A.pontoNome("cidades-peru-ne", "Tacna");
+      // arte-8: Lima (o ponto do NE) e a foz do Supe (o último vértice da linha do OSM, ponta_b)
+      A.REFS.LIMA = A.pontoNome("cidades-peru-ne", "Lima");
+      var sp = A.feicao("rio-supe");
+      if (!sp || !sp.geometry || sp.geometry.type !== "LineString") return A.falhar("o rio-supe não é uma LineString.");
+      SUPE = sp.geometry.coordinates;
+      A.REFS.FOZ = SUPE[SUPE.length - 1];
       // a divisa Peru–Chile: as sequências de vértices que os dois polígonos do Natural Earth têm em comum (nada à mão)
       var pe = A.feicao("peru-ne"), ch = A.feicao("chile-ne");
       if (!pe || !ch) return;
@@ -212,6 +235,8 @@ farms, cities and mines not counted</div>
       // a divisa: a única linha branca (--fronteira-cor 5 px sobre o contorno escuro de 12 px)
       A.linha("divisa", { type: "FeatureCollection", features: [{ type: "Feature", properties: {},
         geometry: { type: "MultiLineString", coordinates: DIVISA } }] }, {});
+      // arte-8: o rio Supe em --destaque (o lado seco), 6 px sobre o contorno --rotulo de 14 px; cresce por setDado
+      A.linhaCor("supe", { type: "FeatureCollection", features: [] }, { cor: "--destaque", w: 6, sob: 14 });
     },
     quadro: function (t, A) {
       A.lin("divisa", 1);
@@ -223,6 +248,16 @@ farms, cities and mines not counted</div>
         el.setAttribute("cx", p.x.toFixed(2)); el.setAttribute("cy", p.y.toFixed(2));
         el.setAttribute("opacity", A.janela(t, x[2], 9.234).toFixed(3));
       });
+      // arte-8: o Supe se desenha da nascente à foz em 'city'; Lima, o ponto sem nome
+      var S = CENA.supe, u = A.eio(A.seg(t, S.entra, S.desenha)), k = u.toFixed(3);
+      if (u > 0) {
+        var tr = A.ateFracao(SUPE, u).pts;
+        A.setDado("supe", k, { type: "FeatureCollection", features: tr.length > 1 ? [{ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: tr } }] : [] });
+      } else A.setDado("supe", "0", { type: "FeatureCollection", features: [] });
+      A.lin("supe", A.janela(t, S.entra, null, 0.15));
+      var pl = A.E("pLima");
+      if (pl && A.REFS.LIMA) { var q = A.project(A.REFS.LIMA); pl.setAttribute("cx", q.x.toFixed(2)); pl.setAttribute("cy", q.y.toFixed(2));
+        pl.setAttribute("opacity", A.janela(t, S.entra, null).toFixed(3)); }
     }
   };
   // ═══ O MOTOR DA CENA (copiado sem mudança da s20 do vídeo 3, commit 36acb97; só o DUR literal) ══════════════

@@ -60,6 +60,9 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s06 (+s07) (53,067 → 82,167 s do m
       12,8; a pílula entra em 12,8, e daí a miniatura segue com ela.
     · o relevo continua a 2,4× (o porquê vai no relato M-s06).
   peru-agua-arte-6 (22/10/2026): o crédito da foto entra em 12,1, com a miniatura (textos-tela e04eaf10, texto-7).
+  peru-agua-arte-8 (22/10/2026, revisão de espectador r1, achado 1), conserto: só isto mudou. A divisória (div e div-sob)
+    engrossa com a inclinação da câmera: de 6/12 px (pitch 0) a 20/30 px (pitch 58°), interpolada pelo pitch de cameraAt(t)
+    (cheia em ~17,8 s; volta a 6/12 se o pitch cair). Sob o pitch, a crista nevada encurtava a linha a 1–2 px no 1080p.
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px (--fs-credito) a cena toda, com data-qc-credito="mapa" só no
   próprio elemento (cobre o OSM do Rímac e dos rios). Acima dele, sem a marca de mapa: o da foto (12,833–14,8) e o da régua
   (22,3 ao fim). O HydroBASINS e o Natural Earth: nada na tela (o Exhibit B da WWF vai na descrição).
@@ -186,7 +189,8 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     limaReg: { entra: 18.433, sai: 20.433, opacidade: 0.25 },
     regua: { entra: 20.45, sobe: 1.45 },
     rios: { entra: 25.0 },
-    exag: 2.4
+    exag: 2.4,
+    divGrossa: { pitch: 58, linha: [6, 20], sob: [12, 30] }   // peru-agua-arte-8 (revisão de espectador r1, achado 1)
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -656,6 +660,11 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     window.__exagero = ex;
     opac("titicaca", "fill-opacity", CENA.titicaca.opacidade * eo(seg(t, CENA.titicaca.entra, 0.5)) * (1 - seg(t, CENA.titicaca.sai, 0.5)));
     opac("limaReg", "fill-opacity", CENA.limaReg.opacidade * eo(seg(t, CENA.limaReg.entra, 0.5)) * (1 - seg(t, CENA.limaReg.sai, 0.3)));
+    // peru-agua-arte-8: a divisória engrossa com a inclinação (a crista deita no relevo e encurta com a distância): de 6/12 px a
+    // pitch 0 até 12/20 px a 58°, pela inclinação da câmera em t (volta a 6/12 se o pitch cair)
+    var fp = cl(cameraAt(t).pitch / CENA.divGrossa.pitch, 0, 1);
+    opac("div", "line-width", CENA.divGrossa.linha[0] + (CENA.divGrossa.linha[1] - CENA.divGrossa.linha[0]) * fp);
+    opac("div-sob", "line-width", CENA.divGrossa.sob[0] + (CENA.divGrossa.sob[1] - CENA.divGrossa.sob[0]) * fp);
     var vr = eo(seg(t, CENA.rios.entra, 0.5));
     opac("rios", "line-opacity", vr); opac("rios-sob", "line-opacity", vr);
     opac("rimac", "line-opacity", vr); opac("rimac-sob", "line-opacity", vr);

@@ -31,7 +31,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s13 (117,067 → 138,033 s do master
       entra sobre o mar em 300 ms, numa moldura, com 'Satellite image · June 2018'. A imagem não tem georreferência no disco
       (nem a pauta nem a procedência dão os limites): ela entra como cartão sobre o mar, à esquerda da costa, NÃO deitada
       sobre o mapa; o alinhamento à costa que a regência pede não se faz sem os limites (vai à Sala).
-  ELEMENTOS (teto 6): b0 = linha, cartão (2); b1 = linha, H + setas (1), a pílula (3); b2 = linha, corrente, ressurgência,
+  ELEMENTOS (teto 6): b0 = linha, cartão (2); b1 = linha, H + setas (1), a pílula (3); b2 = linha, faixa do mar (12,87–16,27; arte-8), corrente, ressurgência,
   HUMBOLDT CURRENT, Schematic (5); b3 = linha, corrente, HUMBOLDT CURRENT, Schematic, imagem, a legenda dela (6: a ressurgência
   sai antes de a imagem entrar).
   CONSERTO peru-agua-arte-3 (lote M-s13, 22/10/2026; laudo qc/s13.laudo.json, lente espaco 5), e só isto mudou:
@@ -49,6 +49,16 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s13 (117,067 → 138,033 s do master
   CONSERTO peru-agua-arte-3, rodada 2 (textos-tela db0c89f8…): a imagem MODIS e a legenda 'Satellite image · June 2018'
     entram juntas em 'and' (18,866), não mais em 'blanket' (19,11); a legenda continua presa à moldura (mesma entrada de
     300 ms). 'Schematic' fica até 20,966 (textos-tela), embaixo de HUMBOLDT CURRENT, a 64 px da legenda da imagem e fora dela.
+  CONSERTO peru-agua-arte-8 (lote M-s13s21, 22/10/2026; revisão de espectador r1, consertos 2 e 3 de
+    out/peru-agua/_tmp/sala/espectador-r1-consertos.md), e só isto mudou (nenhum texto, nenhum t0/t1 de texto):
+    2. A FAIXA DE MAR COSTEIRA (b2): em 'sea' (12,87) entra em 300 ms o mar de 0 a 200 km da costa (o mesmo contorno peru-ne
+       afastado que as setas usam; a borda de terra é a costa real do peru-ne, pela máscara da terra), preenchido em
+       --contraparte a 18 %, sem contorno e sem texto; sai em 300 ms a partir de 'Humboldt' (15,966), enquanto as setas da
+       corrente se desenham dentro dela. 1 elemento, que sai antes de a corrente entrar inteira: o teto do b3 não muda.
+    3. A RESSURGÊNCIA: as 6 setinhas viram 6 anéis no mar (30 km do contorno, entre a costa real e a seta turquesa de 90 km), que nascem
+       e se abrem em 2 pulsos cada (raio 12 → 72 px no palco 4K), no traço das setas do H (--tinta 6 px sobre o halo
+       --rotulo de 16 px). A mesma máscara da terra: nada do anel cai sobre a terra. Mesma janela ('water' 17,167 → 18,87).
+       Continua 1 elemento, sem texto, e sai antes da imagem da NASA, como antes.
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (o mapa continua em volta da imagem), com
   data-qc-credito="mapa" só no próprio elemento. A fonte da citação acima dele, de 1,5 a 5,166, sem a marca de mapa. A NASA é
   domínio público federal: nada na tela. O HydroBASINS e o Natural Earth: nada na tela.
@@ -108,6 +118,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s13 (117,067 → 138,033 s do master
   .tr-sob { fill: none; stroke: var(--rotulo); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
   .tr { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
   .cor-sob { fill: none; stroke: var(--fronteira-contorno-cor); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+  .faixa { fill: var(--contraparte); stroke: none; }
   .cor { fill: none; stroke: var(--contraparte); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
 </style>
 </head>
@@ -115,9 +126,12 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s13 (117,067 → 138,033 s do master
 <div id="palco">
   <div id="map"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+    <defs><mask id="mMar" maskUnits="userSpaceOnUse" x="0" y="0" width="3840" height="2160">
+      <rect x="0" y="0" width="3840" height="2160" fill="white"/><path id="mTerra" fill="black" fill-rule="nonzero"/></mask></defs>
+    <g id="faixaMar" opacity="0" mask="url(#mMar)"><path class="faixa" id="faixaPol"/></g>
     <g id="espiral" opacity="0"><path class="tr-sob" id="espSob"/><path class="tr" id="espLin"/></g>
     <g id="corrente" opacity="0"><path class="cor-sob" id="corSob"/><path class="cor" id="corLin"/></g>
-    <g id="ressurg" opacity="0"><path class="tr-sob" id="resSob"/><path class="tr" id="resLin"/></g>
+    <g id="ressurg" opacity="0" mask="url(#mMar)"></g>
   </svg>
   <div id="rotulos">
     <div id="letraH" data-qc-papel="rotulo">H</div>
@@ -163,7 +177,8 @@ Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated from
     ],
     H: { ll: [-90.0, -27.0], entra: 7.1, pousa: 0.8, desce: 9.567, sai: 10.88 },
     corrente: { entra: 15.966, desenha: 1.3, km: [90, 200], lat: [-15.6, -5.8] },   // as pontas dentro do quadro (acima da faixa do crédito)
-    ressurg: { entra: 17.167, sai: 18.87, lats: [-6.5, -8.5, -10.5, -12.5, -14.3, -16.3], km: 45 },
+    faixa: { entra: 12.87, sai: 15.966, km: [-60, 200], op: 0.18 },   // arte-8: o mar costeiro (−60 km fica na terra, que a máscara tira)
+    ressurg: { entra: 17.167, sai: 18.87, lats: [-6.5, -8.5, -10.5, -12.5, -14.3, -16.3], km: 30, r: [12, 72], pulso: 1.0, entre: 0.55 },   // 30 km do contorno de faixas = no meio entre a costa real e a seta de 90 km (quadro 17,6 da 1ª rodada)
     modis: { entra: 18.866, natural: [3076, 2298], foto: [960, 717], borda: 16, pos: [200, 585] }   // abaixo da ponta norte das setas
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
@@ -528,22 +543,56 @@ Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated from
     E("corSob").setAttribute("d", d); E("corLin").setAttribute("d", d);
     g.setAttribute("opacity", eo(seg(t, C.entra, 0.15)).toFixed(3));
   }
-  // ── a ressurgência: traços curtos que sobem junto à costa (a água fria do fundo), de 'water' até antes da imagem ──
+  // ── a terra do Peru (peru-ne) projetada: a máscara que tira a faixa e os anéis de cima da terra (arte-8) ──
+  var TERRA = (function () { var g = PERU.features[0].geometry; return g.type === "Polygon" ? [g.coordinates] : g.coordinates; })();
+  var terraEm = -1;
+  function aplicarTerra(t) {
+    if (terraEm === t) return; terraEm = t;
+    var d = "";
+    TERRA.forEach(function (pol) { pol.forEach(function (anel) {
+      d += "M " + anel.map(function (c) { return fmt(map.project(c)); }).join(" L ") + " Z ";
+    }); });
+    var m = E("mTerra"); if (m) m.setAttribute("d", d);
+  }
+  // ── a faixa de mar costeira (arte-8): de 'sea' até 'Humboldt', o mar de 0 a 200 km, --contraparte a 18 %, sem texto ──
+  var FAIXA = (function () { var a = afastada(CENA.faixa.km[0]), b = afastada(CENA.faixa.km[1]); return a.concat(b.slice().reverse()); })();
+  function aplicarFaixa(t) {
+    var g = E("faixaMar"), F = CENA.faixa; if (!g) return;
+    var v = eo(seg(t, F.entra, 0.3)) * (1 - eio(seg(t, F.sai, 0.3)));
+    if (v <= 0) { g.setAttribute("opacity", "0"); return; }
+    aplicarTerra(t);
+    var pl = E("faixaPol"); if (pl) pl.setAttribute("d", "M " + FAIXA.map(function (c) { return fmt(map.project(c)); }).join(" L ") + " Z");
+    g.setAttribute("opacity", (v * F.op).toFixed(4));
+  }
+  // ── a ressurgência (arte-8): anéis que nascem e se abrem no mar, 2 pulsos por ponto, de 'water' até antes da imagem ──
   var RES_PTS = CENA.ressurg.lats.map(function (la) {
     var i = 0, bd = Infinity; COSTA.forEach(function (p, k) { var dd = Math.abs(p[1] - la); if (dd < bd) { bd = dd; i = k; } });
     var pts = afastada(CENA.ressurg.km); return pts[i];
   });
+  var NS = "http://www.w3.org/2000/svg", RES_EL = [];
+  (function () {
+    var g = E("ressurg"); if (!g) return;
+    RES_PTS.forEach(function () { for (var k = 0; k < 2; k++) {
+      var sb = document.createElementNS(NS, "circle"), ln = document.createElementNS(NS, "circle");
+      sb.setAttribute("class", "tr-sob"); ln.setAttribute("class", "tr");
+      g.appendChild(sb); g.appendChild(ln); RES_EL.push([sb, ln]);
+    } });
+  })();
   function aplicarRessurg(t) {
     var g = E("ressurg"), R = CENA.ressurg; if (!g) return;
     var v = eo(seg(t, R.entra, 0.3)) * (1 - eio(seg(t, R.sai, 0.3)));
     if (v <= 0) { g.setAttribute("opacity", "0"); return; }
-    var d = "";
+    aplicarTerra(t);
     RES_PTS.forEach(function (ll, i) {
-      var p = map.project(ll), u = seg(t, R.entra + i * 0.08, 1.1), sub = 70 * eo(u);
-      var a = { x: p.x, y: p.y + 40 - sub }, b = { x: p.x, y: p.y - 30 - sub };
-      d += "M " + fmt(a) + " L " + fmt(b) + ponta(b, a, 22);
+      var p = map.project(ll);
+      for (var k = 0; k < 2; k++) {
+        var par = RES_EL[i * 2 + k]; if (!par) continue;
+        var u = (t - (R.entra + i * 0.08 + k * R.entre)) / R.pulso, vivo = u >= 0 && u < 1;
+        var r = R.r[0] + (R.r[1] - R.r[0]) * eo(u), a = vivo ? cl(u / 0.12, 0, 1) * (1 - 0.75 * eio(u)) : 0;
+        par.forEach(function (c) { c.setAttribute("cx", p.x.toFixed(2)); c.setAttribute("cy", p.y.toFixed(2));
+          c.setAttribute("r", r.toFixed(2)); c.setAttribute("opacity", a.toFixed(3)); });
+      }
     });
-    E("resSob").setAttribute("d", d); E("resLin").setAttribute("d", d);
     g.setAttribute("opacity", v.toFixed(3));
   }
 
@@ -582,6 +631,7 @@ Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated from
     aplicarRotulos(t);
     aplicarCitacao(t);
     aplicarAlta(t);
+    aplicarFaixa(t);
     aplicarCorrente(t);
     aplicarRessurg(t);
     aplicarModis(t);
