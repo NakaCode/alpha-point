@@ -602,6 +602,10 @@ antigo, e o `recolher` o recusa como "criado ANTES do 'marcar'" (saída 3). O Mo
      e o tamanho que a página mostra (Lucas, 07/10/2026: "Baixar o Original (Recomendado)").
    - **Storyblocks**: o formato **4K MP4 (h264)** na lista do clipe, e o "Download" do MESMO painel. Nunca o
      "Download Watermarked", nem os botões dos clipes semelhantes ou das músicas mais abaixo. Sem 4K MP4: pule.
+     O **4K MOV (ProRes)** só numa linha que o Lucas aprove para ele, quando o 4K MP4 sai com taxa baixa demais
+     para 4K (o conferente avisa): a linha diz o formato e o tamanho que a página mostra (Lucas, 22/10/2026, no
+     vídeo 4: "Sim, baixar as 10 preferidas (Recomendado)", à opção que dizia "a 11 da Storyblocks no arquivo
+     grande de 3,6 GB"; o 4K MP4 dela tinha 24,6 MB em 34 s, uns 6 Mbit/s).
    - **Shutterstock**: a resolução em **4K / 3840×2160**, e o botão do painel de licenciamento
      (`data-automation="conversionPanel_licensingButton"`). Se o rótulo falar em carrinho, compra ou preço, pare.
    - **Se o clique abrir algo que não estava na linha aprovada**, feche (Esc) e volte ao Lucas. Por exemplo: termo

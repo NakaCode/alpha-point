@@ -1021,6 +1021,9 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
 
 **O método** é o da pré-v1, com a skill adaptada ao canal:
 - A skill `.claude/skills/cacar-no-chrome/SKILL.md` é a **cópia adaptada do canal**, com sha256
+  `52e563bb29f003ccccac5e9425940179361a647d4cb1598f1036fc416e77d241` em 22/10/2026, às 14:5x, quando o 4K MOV (ProRes) da Storyblocks passou a
+  entrar numa linha que o Lucas aprove para ele, se o 4K MP4 vier com taxa baixa demais (Lucas, 22/10/2026: "Sim, baixar as 10 preferidas
+  (Recomendado)", à opção que dizia "a 11 da Storyblocks no arquivo grande de 3,6 GB"; na skill, o §3, passo 2). Antes,
   `ed2af70320eee34c3b64d1a9dfae12fac3cfc6127c22fa3d9c479d24482e2391` em 07/10/2026, às 14:1x, quando o "Original" do Motion Array passou a entrar numa
   linha que o Lucas aprove para ele, se o "4K" vier abaixo de 2160 de altura (Lucas, 07/10/2026: "Baixar o Original
   (Recomendado)"; na skill, o §3, passo 2). Antes, `285327ea39b8b564106b3cbb19705a3518c19a65fed6e0a2734a95621f7b097c`,
