@@ -1,113 +1,91 @@
 {
   "cena": "s13",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 5,
+      "nota": 8,
       "problemas": [
-        "REPROVA: o cartão da citação (“the main cause of the aridity of the Peruvian coast”, 9 palavras, 1,5–5,166 s) está a 112 px (HTML l. 74, `#citacao .fala {font-size:112px}`; quadros 2,0, 3,0, 4,2 e 5,0 s). A fala citada tem piso 260, alvo 280 e teto 340 px, até 12 palavras (identidade §4.1; roupa §4 espaco): 112 px é 43 % do piso. O qc-tamanho ficou verde porque o elemento está marcado `data-qc-papel=\"rotulo\"` (HTML l. 115) em vez de citação; o próprio script descreve esse defeito (scripts/qc-tamanho.mjs l. 20–22: 'a fala real passava a 132px — METADE do piso — com o gate verde'). 'Cartão pequeno' no textos-tela é nota do redator, não decisão do Lucas, e o tamanho é do editor (roupa do redator-de-tela §3).",
-        "sinalização: o cartão assenta rente à costa e à linha branca (recorte 4K a 3,0 s: a borda direita encosta na faixa costeira e a linha nasce no canto de cima), cobrindo um pedaço da planície costeira que a frase fala. Identidade §6: rótulo fora das linhas.",
-        "sinalização: de 19,1 a 20,97 s a coluna da esquerda empilha a imagem MODIS, a legenda 'Satellite image · June 2018', HUMBOLDT CURRENT e 'Schematic' com vãos de uns 28 px (recorte 4K a 20,5 s): lê-se como uma coluna só, e a legenda da imagem parece parte do rótulo da corrente.",
-        "exceção do Lucas: qc-tamanho, crédito a 56 px, 07/10/2026 ('Quero reduzir para 56px'): a reprovação é só 'Source: SENAMHI (Peru), 2021' 56<72, sha1 d126aee2 igual ao de out/peru-agua/qc/_excecoes-portao.json; o crédito lê var(--fs-credito)=56 sem override (HTML l. 85) e leva data-qc-papel='credito'. portao-margens: veredito 0 no sha1 d126aee2 e marca c647bf6c (211 amostras, 18 objetos medidos, 3 em passagem); não remedi no olho. Com a exceção, gatesDuros fica vazio: o que reprova aqui é a lente, não o portão."
+        "Achado da qualidade-1 (citação a 112 px, espaco 5): RESOLVIDO. Em 2,0, 3,0, 4,2 e 5,1 s o cartão “the main cause of the aridity of the Peruvian coast” (9 palavras) está em 3 linhas de Inter 700 a 280 px (var(--fs-fala)), com data-qc-papel=heroi: piso 260, alvo 280 (identidade §4.1; regra de 22/10, 9ef61be). O cartão fica inteiro no mar, com x 200 (margem) e fundo até y ~1815, acima da faixa do crédito. Prova no recorte 4K de 4,2 s: aresta direita do cartão em x 2750 e a costa a ~170 px dela na mesma altura; nos outros instantes a folga é maior. O cartão não toca a costa nem a linha (era o 2º defeito da qualidade-1).",
+        "Exceção do Lucas: qc-tamanho, crédito a 56 px (\"Source: SENAMHI (Peru), 2021\" 56<72), 07/10/2026, sha1 d5440886 igual ao de _excecoes-portao.json. portao-margens veredito 0 (sha1 de hoje, 211 amostras, 18 objetos): margem, faixa do crédito e canto não remedidos no olho.",
+        "Sinalização: a coluna da esquerda de 18,9 a 20,97 s (MODIS, legenda, HUMBOLDT CURRENT, Schematic) tem vãos de ~69 px (legenda→HUMBOLDT) e ~24 px (HUMBOLDT→Schematic); melhorou em relação aos ~29 e ~4 px da qualidade-1, e a leitura é limpa. O H (160 px, só contorno) continua pequeno no mar de ~2/3 da tela."
       ],
       "correcoes": [
-        "Subir a fala a 260–280 px (Inter 700; 9 palavras, dentro das 12) e trocar o papel do `.fala` para citação, para o qc-tamanho passar a medi-la. A 280 px o cartão fica com uns 2.600 × 1.100 px em 3 linhas; o mar ocupa só ~1.300 px à esquerda a 3,0 s e uns 1.600–2.400 px a 5,0 s (estimado nos quadros), então reenquadrar o b0 (o Peru mais à direita desde 0 s) para o cartão cair no mar, ou aceitar que ele cubra a costa nos 3,7 s. Não encolher outro elemento para caber.",
-        "Caminho alternativo que mantém o 'cartão pequeno': a Sala leva ao Lucas a exceção 'citação sobre mapa a 112 px' e grava a mensagem literal dele; com ela, a lente sobe a ≥ 7 sem refazer a cena. Sem a resposta dele, a cena fica reprovada.",
-        "Folga entre a legenda MODIS e HUMBOLDT CURRENT: abrir uns 60 px ou separar em colunas (opcional)."
+        "Opcional (mapista): abrir ~30–40 px entre HUMBOLDT CURRENT e 'Schematic' em 18,9–20,97 s; opcional, subir o H a 200 px."
       ]
     },
     {
       "lente": "factual",
       "nota": 8,
-      "problemas": [
-        "Textos conferidos contra textos-tela e laudo de fatos (TA077–TA084 CONFIRMADA): citação literal e tradução fiel de 'es el causante principal de la aridez de la Costa peruana' (SENAMHI 2021, l. 828–832), 'Translated from Spanish', 'Source: SENAMHI (Peru), 2021', SOUTH PACIFIC HIGH, HUMBOLDT CURRENT, 'Schematic', 'Satellite image · June 2018' (Date Acquired 6/20/2018). Sem rótulo de lugar sobre a MODIS (lugar_na_origem: 'Peru's Pacific coast'). Setas da corrente para o norte ao largo da costa: sentido certo da Humboldt.",
-        "O H está em 27°S, 90°W: dentro da faixa que a fonte dá para o centro da alta (25°S 90°W em outubro; 35°S 92°W em abril, SENAMHI 2021, l. 805–809). É símbolo de uma feição cujo centro varia; só a corrente leva 'Schematic' (textos-tela). A pergunta da Arte (legenda no b1): não é exigida; sinalização apenas.",
-        "A regência pedia a MODIS 'aligned to the coast'; foi entregue como cartão sobre o mar porque a imagem não tem georreferência no disco (relato M1). Serve: o cartão não afirma posição, só mostra a manta real, e a legenda diz o mês. Com os limites da NASA, a versão alinhada seria melhor, mas não é condição."
-      ],
-      "correcoes": [
-        "Nada a mudar para aprovar a lente. Se pesquisa-imagens achar o bbox da MODIS de 20/06/2018 (galeria da NASA), a Sala pode pedir a versão alinhada à costa."
-      ]
+      "problemas": [],
+      "correcoes": []
     },
     {
       "lente": "wordlock",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "Tudo conferido contra words.json: citação + 'Translated from Spanish' + crédito em 1,5 ('main' 1,50, sai 5,166); H e SOUTH PACIFIC HIGH em 7,1 ('high-pressure' 7,12); setas descem em 9,567 ('air' 9,59); HUMBOLDT CURRENT e 'Schematic' em 15,966 ('Humboldt' 15,99); traços da ressurgência em 17,167 ('water' 17,18); MODIS e legenda em 19,1 ('blanket' 19,11). Nada antes da palavra, nada depois da fala (a fala acaba em 20,29 s; a cena em 20,966). Primeiro segundo: o Peru de cima, a linha acesa, sem texto (a frase 'Peru's weather service says' é a que a citação vai pagar em 'main'). Sem reprovação de carga nesta cena: nenhum elemento atrasado por ritmo."
+        "Entradas conferidas contra words.json: cartão em 1,5 s ('main'), SOUTH PACIFIC HIGH + H em 7,1 s ('high-pressure' 7,12), HUMBOLDT CURRENT/Schematic em 15,97 s ('Humboldt' 15,99), foto MODIS e legenda em 18,866 s ('and' 18,89). Nenhum elemento foi atrasado por RITMO nesta cena, então não há re-checagem de word-lock a registrar. Observação: de 5,17 a 7,1 s (~1,9 s) e de 10,87 a 15,97 s (5,1 s, respiro declarado na regência) não há elemento gráfico; a câmera anda nos dois."
       ],
       "correcoes": []
     },
     {
       "lente": "abordagem",
       "nota": 9,
-      "problemas": [
-        "Mapa com ilustração sobre o satélite (H, setas, corrente) para o mecanismo, e registro real (MODIS) para a manta de nuvem, que é coisa real fotografada do espaço. Modo certo."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "Entende-se em 2 s em cada plano. Três ressalvas, sem reprovar: (1) o H é um glifo de 160 px (uns 100 px de largura, quadro 8,4 s) num mar quase preto: 'a vast high-pressure system' lê-se como um símbolo pequeno; (2) os 6 traços brancos da ressurgência (17,2–18,9 s) apontam para o norte junto à costa e leem-se como uma segunda corrente, não como água subindo; não têm rótulo; (3) de 10,87 a 15,97 s (5,1 s) não há elemento gráfico nenhum enquanto a voz diz 'three things keep the sea unusually cold for its latitude'. A regência declarou esse trecho como respiro."
+        "Os primeiros 1,5 s são só o mar escuro com a faixa do Peru à direita e o crédito, sem elemento; a voz nomeia o Peru e o quadro o localiza. Lê-se em ~2 s, mas a abertura é pobre (observação da Arte já registrada)."
       ],
-      "correcoes": [
-        "Sinalizações para quem desenha: escala maior para o H (ou o anel de isóbaras) e uma seta curta que suba do mar (círculo + seta) no lugar do traço reto; nenhuma é condição do aprovado."
-      ]
+      "correcoes": []
     },
     {
       "lente": "poluicao",
       "nota": 8,
-      "problemas": [
-        "Elementos de 19,1 s ao fim: linha, setas da corrente, HUMBOLDT CURRENT, 'Schematic', imagem MODIS e a legenda dela: 5–6, dentro do teto, no pior extremo. A linha da divisória fica acesa a cena toda sem que nenhuma palavra da s13 a convoque (continuidade declarada do vídeo, 'a mesma linha'); não reprova. Lastro: todo texto cai numa palavra da voz; nada de entidade HTML, tofu ou glifo quebrado (portao-mapa til v5 saiu 0: 46 amostras, 9 textos)."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "motion",
       "nota": 7,
       "problemas": [
-        "Medido por correlação de fase nos quadros do clipe (área de terra sem texto): de 13,4 a 20,9 s a câmera anda ≈ 22 px a 960 de largura, 88 px no 4K, em 7,5 s (≈ 12 px/s, deslocamento coerente e contínuo, mais o bearing de ±1,5°). Contínua e nunca para, mas quase imperceptível; e de 13,4 a 15,97 s (2,6 s) nada desenha e a câmera anda uns 30 px no 4K. As duas viagens (3,39–6,4 s e 10,88–13,38 s) têm 3 s e 2,5 s, dentro de 1,5–3 s (aceleração suave nos quadros; o easing cúbico não foi medido). Dentro da régua da marca ('mapa parado mais de 2 s ganha aproximação suave e contínua', identidade §5), mas no limite: nota 7 por ser 'bom o suficiente', sem reprovar.",
-        "Entradas: H e setas pousam em 0,8 s e completam a espiral em 'air'; as setas da corrente se desenham em 'Humboldt'; a MODIS entra em 300 ms. Sem estalo, sem enfeite. Antes do fim (20,5–20,97 s) tudo o que se mexe é a deriva."
+        "Nota 7, no limite: de 14,0 a 20,8 s o mapa anda ~11–12 px/s no 4K (correlação de fase nos quadros 14,0/16,2/18,4/20,0/20,8: 24, 26, 20 e 10 px por intervalo), contínua e sem salto; as setas e a foto entram por cima. É a mesma deriva da qualidade-1 (≈12 px/s), não piorou. De 11 a 14 s a câmera fecha na costa (viagem). Nada se move de forma brusca nos últimos 250 ms (quadros 20,0 e 20,8 estáveis)."
       ],
       "correcoes": [
-        "Dar ao trecho 13,4–15,97 s uma aproximação visível (um push-in contínuo de uns 6–8 % ou deriva lateral de ~300 px ao longo do trecho), sem acelerar a órbita; opcional, porque a regência declarou o respiro."
+        "Opcional (mapista): push-in visível de ~6–8 % em 14–20,9 s, sem acelerar a órbita (a régua é volta lenta e contínua)."
       ]
     },
     {
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "Crédito de mapa '© MapTiler © OpenStreetMap contributors' em todos os quadros olhados (0,3–20,2 s), inclusive depois da MODIS, porque o mapa continua em volta do cartão (o textos-tela dizia 'até 18,866' e 'volta a valer se o mapa aparecer em volta'); 'Source: SENAMHI (Peru), 2021' só com a citação (1,5–5,166 s), sem crédito-fantasma; MODIS (domínio público federal) sem crédito, como a identidade §7. Contraste do rodapé 12,02:1 (portao-mapa rodape v5, 46 amostras, 99 créditos medidos). Linha do HydroBASINS sem crédito na tela (Exhibit B na descrição)."
+        "Crédito da MapTiler/OSM presente nos quadros 0,3 a 20,8 s (o mapa segue visível em volta da foto MODIS), na faixa de crédito. 'Source: SENAMHI (Peru), 2021' só com a citação (1,5–5,17 s). MODIS (NASA, domínio público) sem crédito e com a legenda 'Satellite image · June 2018' (Date Acquired 20/06/2018 conferido pelo laudo de fatos); o 'Schematic' acompanha as setas esquemáticas."
       ],
       "correcoes": []
     },
     {
       "lente": "tema",
       "nota": 8,
-      "problemas": [
-        "O mar quase preto (tratamento C) carrega o assunto: o oceano frio. Uma cor, um significado dentro da cena: branco = o ar (H e setas), teal = a corrente. Observação de série: o teal da s06 é o lado amazônico e aqui é a corrente fria (`--contraparte` como segundo ator); não confunde dentro da cena, e as duas são água."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "cobertura",
       "nota": 9,
-      "problemas": [
-        "A coisa central da frase final (a manta de nuvem baixa) tem registro real (MODIS 2018); a alta e a corrente são invisíveis e vão em esquema declarado sobre o satélite do lugar real; SENAMHI aparece como fonte citada."
-      ],
+      "problemas": [],
       "correcoes": []
     },
     {
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Quatro planos (5,2 / 5,7 / 8,0 / 2,1 s), com a câmera em curso. O plano 3 (10,87–18,87 s) cobre duas coisas da mesma frase (a corrente e a ressurgência) num só plano de 8 s, e os primeiros 5,1 s dele não têm elemento: a regência o declara como respiro e a frase segue no mesmo objeto, então não reprova. A legenda da MODIS fica 1,87 s no ar (19,1–20,966), abaixo dos 2,0 s da identidade §4.3 para bloco de texto; por ser legenda de quatro palavras no último plano, fica acima do piso de 1,5 s do ofício e só sinaliza."
+        "A legenda 'Satellite image · June 2018' fica 2,1 s (18,866–20,966), agora ≥ 2,0 s (D4 da Sala resolvido). 5,1 s sem elemento em 10,87–15,97 s: respiro declarado (regime da cena), com a câmera em viagem e depois em deriva."
       ],
-      "correcoes": [
-        "Para a legenda chegar a 2,0 s sem antecipar 'blanket': nada a fazer (a entrada em 'and', 18,97 s, antecipa a palavra); fica como observação ao redator-de-tela."
-      ]
+      "correcoes": []
     },
     {
       "lente": "autoria",
@@ -124,9 +102,7 @@
     {
       "lente": "circulo",
       "nota": 9,
-      "problemas": [
-        "Base da comparação: espelho, conceito e textos-tela das irmãs (s12, s14–s17); não vi quadros delas (outros lotes). A s14 retoma o H como callback pago com informação nova (a tampa de ar quente); a s15 (footage de neblina) e a MODIS de 2018 da s13 mostram a manta por registros diferentes; a s16 abre outro mapa. Nenhuma repetição sem degrau."
-      ],
+      "problemas": [],
       "correcoes": []
     }
   ],
@@ -149,7 +125,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 23,
-    "porque": "Quadros do clipe 4K de prova (carimbo igual ao sha1 d126aee2, 2160p) pelo ffmpeg: 5 folhas 2x2 (20 instantes, 0,3 a 20,2 s) e 3 recortes 4K (cartão a 3,0 s, H a 8,4 s, MODIS a 20,5 s); 9 imagens lidas (um recorte de 3,0 s saiu com a janela errada e foi refeito). Reprovada só em espaco (citação a 112 px contra o piso de 260 da fala citada; papel marcado como rótulo); gatesDuros vazio (exceção do crédito a 56 px)."
+    "frames": 17,
+    "porque": "Quadros do clipe 4K de prova (carimbo = sha1 d5440886 do HTML, 2160p, 629 quadros) pelo ffmpeg: 4 folhas 2x2 (16 instantes, 0,3 a 20,8 s) e 1 recorte 4K do cartão contra a costa a 4,2 s (5 imagens lidas); o deslocamento do mapa foi medido por correlação de fase (cálculo). O achado que reprovou a cena (citação a 112 px, espaco 5) saiu: a fala está a 280 px como heroi, fora da costa. Nenhum defeito novo reprova. gatesDuros vazio (exceção do crédito a 56 px no sha1 d5440886; til/rodape v5 0, portao-margens 0)."
   }
 }
