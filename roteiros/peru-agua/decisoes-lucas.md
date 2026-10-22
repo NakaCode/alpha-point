@@ -125,3 +125,6 @@ respostas, literais:
   - O crédito longo da WWF (o "Exhibit B") vai na descrição do YouTube, com o título do vídeo no lugar de "This product".
 - **O retrato de Pizarro** (Coutan, 1835; a foto no Commons é provavelmente a da RMN, que pede autorização fora dos EUA): **"Seguir com a
   pintura de 1835 (Recomendado)"**, com "Painting, 1835" na tela.
+  - **Conferido em 22/10/2026, 02:2x:** o Lucas baixou no Brave, pela página do HydroBASINS, `C:\Users\zangp\Downloads\hybas_sa_lev06_v1c.zip`
+    (02:19; "baixei o arquivo"), 10.389.476 bytes, sha256 `6b1899bdbee46354a9f4729bbf916108fb31ed2facdfac449237c00d3e39e90e`: idêntico,
+    byte a byte, ao que o `pesquisa-geo` tinha baixado. As 5 camadas do HydroBASINS estão liberadas para render.
