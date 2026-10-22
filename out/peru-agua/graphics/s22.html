@@ -26,10 +26,16 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s22 (225,5 → 237,267 s do master; 
       legenda 'ABOUT 90 MILES NORTH OF LIMA', abaixo da cota, até o corte. Sem foto e sem crédito de foto.
     · b1 (7,533–11,767), FOTO: corte seco à foto frontal real da Pirámide Mayor (Commons, JOSE MORALES CIENCIA POLITICA
       UNMSM, CC BY-SA 4.0; aprovada para esta frase, sha256 040d35aa…), tela cheia (4.032 px de largura a 3.840: 0,952×),
-      Ken Burns 1,00 → 1,12 rumo à escadaria (pico de ampliação 1,067×, abaixo de 1,4×). No corte: a pílula
+      Ken Burns 1,00 → 1,08 a partir do meio da pirâmide (pico de ampliação 1,028×, abaixo de 1,4×; arte-14). No corte: a pílula
       'Pirámide Mayor, Caral', o cartão da fala citada '“the oldest centre of civilization in the Americas”' (a grafia da
       UNESCO, literal; Inter 700 a 280 px, data-qc-papel="heroi"), 'Source: UNESCO (World Heritage List, 2009)' e o
       crédito da foto. Sem aviso de ano (o veredito: aviso_de_ano false; tempo presente).
+  CONSERTO peru-agua-arte-14 (lote MB, 22/10/2026; decisão da Sala na qualidade-7, achado 1 do L83): o cartão cobria o eixo
+    da pirâmide. No b1, só o arranjo mudou: a foto sobe (topo −370 → −600 px) e o Ken Burns cresce a partir do meio da
+    pirâmide (origem 1990, 1097 no <img>; 1,00 → 1,08, pico 0,952 × 1,08 = 1,028×), para a pirâmide (o topo, a escadaria
+    central e o monólito) ficar de y ~107 a ~887 no corte e ~76 a ~918 no fim; o cartão desce para a metade de baixo
+    (y 944 → 1860, sobre a muralha da frente e a areia; entrelinha 1,0 e respiro 40/36; a fala continua a 280 px); a pílula
+    'Pirámide Mayor, Caral' sobe ao topo (200, 160). Textos, tempos, mídia, créditos e o b0 ficam como estavam.
   ELEMENTOS (teto 6): b0 = rio, ponto, pílula, cota, legenda (5); b1 = foto, pílula, cartão (3).
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px (--fs-credito) de 0 a 7,533 (do 1º ao último quadro do mapa),
   com data-qc-credito="mapa" só no próprio elemento (cobre o OSM do Supe). Acima dele, sem a marca de mapa, o das fontes. Na
@@ -52,8 +58,10 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s22 (225,5 → 237,267 s do master; 
   svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; overflow: visible; }
   /* A FOTO (b1): tela cheia, por cima do mapa; Ken Burns por t */
   #foto { position: absolute; inset: 0; z-index: 35; visibility: hidden; overflow: hidden; background: var(--fundo); }
-  #foto img { position: absolute; left: 0; top: -370px; width: 3840px; height: 2880px; display: block; max-width: none;
-    transform-origin: 1920px 1870px; }
+  /* arte-14: a foto sobe (topo −370 → −600) e o Ken Burns cresce a partir do meio da pirâmide (1990, 1097 no <img>), para a
+     pirâmide (o topo, a escadaria central e o monólito) ficar inteira acima do cartão, de y ~107 a ~887 no corte e ~76 a ~918 no fim */
+  #foto img { position: absolute; left: 0; top: -600px; width: 3840px; height: 2880px; display: block; max-width: none;
+    transform-origin: 1990px 1097px; }
   #rotulos { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
   /* RÓTULO (identidade §3 e §4.1): pílula --rotulo, cantos 12, respiro 24 × 40, Inter 700 a 128 px em --tinta */
   .rotulo { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; white-space: nowrap;
@@ -64,10 +72,12 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s22 (225,5 → 237,267 s do master; 
   .rotulo.legenda { padding: 16px 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2;
     letter-spacing: var(--tracking-lugar); }
   /* O CARTÃO DA FALA CITADA (como a s13): a folha --papel, texto --tinta-escura em Inter 700 a 280 px (--fs-fala) */
-  #citacao { position: absolute; left: 200px; top: 160px; opacity: 0; visibility: hidden; z-index: 45;
-    background: var(--papel); border-radius: var(--cantos); padding: 56px 72px 52px;
+  /* arte-14: o cartão desce para a metade de baixo (sobre a muralha da frente e a areia): topo em 944, base em 1860 (< 1880);
+     entrelinha 1,0 (a fala não tem descendente) e respiro 40/36 para caber abaixo do monólito, com a fala a 280 px */
+  #citacao { position: absolute; left: 200px; top: 944px; opacity: 0; visibility: hidden; z-index: 45;
+    background: var(--papel); border-radius: var(--cantos); padding: 40px 72px 36px;
     box-shadow: 0 18px 48px color-mix(in srgb, var(--fundo) 55%, transparent); }
-  #citacao .fala { font-family: var(--fonte); font-weight: 700; font-size: var(--fs-fala); line-height: 1.12; color: var(--tinta-escura);
+  #citacao .fala { font-family: var(--fonte); font-weight: 700; font-size: var(--fs-fala); line-height: 1; color: var(--tinta-escura);
     white-space: pre; letter-spacing: 0; }
   /* CRÉDITOS (identidade §4.1/§4.2/§6): 56 px, Inter 500, --sec sobre a pílula --rotulo, de x = 200 até antes de x = 1720,
      abaixo de y = 1880. data-qc-credito="mapa" SÓ na linha da MapTiler */
@@ -131,7 +141,7 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     ],
     entra: 0.633,                         // 'Caral,': o ponto, a pílula, a cota, o rio e as fontes
     legenda: { entra: 5.2 },              // 'about'
-    foto: { t0: 7.533, kb: [1.00, 1.12] } // o corte à foto; Ken Burns até o fim
+    foto: { t0: 7.533, kb: [1.00, 1.08] } // o corte à foto; Ken Burns até o fim (arte-14: 1,12 → 1,08, pico 1,028×)
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -165,7 +175,7 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     }
     // no corte: a pílula, o cartão e os dois créditos (sem subida: entram com a foto, no mesmo quadro do corte)
     var v = on ? 1 : 0;
-    var p = E("rotPiramide"); if (p) caixa(p, v, 200, 1840 - p.offsetHeight);
+    var p = E("rotPiramide"); if (p) caixa(p, v, 200, 160);   // arte-14: a pílula sobe ao topo (o cartão ocupa a metade de baixo)
     caixa(E("citacao"), v);
     caixa(E("credUnesco"), v);
     caixa(E("credFoto"), v);

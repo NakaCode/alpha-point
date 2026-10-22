@@ -8,6 +8,12 @@
   = dur (faceless). Modo: mapa (regime de abertura); a cena VIRA por dentro em "An" (5,1 s; ofício §9, "sequencial"): b0 MAPA →
   b1–b3 ANIMAÇÃO no traço de engenheiro (regência › _animacao_em_opus: s47 beats 1 a 3; editor em Opus). Tarefa peru-agua-arte-12,
   lote EO1 (o beat de mapa no corpo do mapista, como a s41 da arte-1). Nenhum hex.
+  CONSERTO peru-agua-arte-14 (lote EO; laudo s47 da qualidade-7, lente factual 6: "o cubo de 1 m³ afunda na rampa"): o cubo assenta.
+    O TERRENO SE INTERROMPE no corte do pátio: a rampa vai até o canto de baixo da casa (x 2270, a cota do piso) e recomeça no topo do
+    arrimo; entre os dois, o chão é o piso horizontal do pátio, onde a base do cubo pousa inteira. O pátio foi de x 2440 a 2480, para o
+    arrimo ficar 0,4 m além do fundo do cubo (em 2440 ele caía sobre a aresta de trás). O DESENHO DO CUBO NÃO MUDA (frente quadrada,
+    profundidade (0,40, −0,24) × o lado, as três arestas escondidas tracejadas com remate round): é o que a s44 copia. O gancho
+    __s47peca(t) devolve agora também o contato do cubo (pontos do terreno dentro da caixa dele, que têm de ser 0). Nada mais mudou.
 
   O QUE MANDA: os TEXTOS (textos-tela 2f748bfc › s47, a lista fechada: 'San Juan de Miraflores' rótulo 0–5,1; '© MapTiler ©
   OpenStreetMap contributors' 0–5,1; 'ABOUT 260 GALLONS (1 m³)' cota 8,467–14,134; 'A WEEK PER FAMILY' legenda 8,467–14,134;
@@ -629,12 +635,16 @@
     return lerp(CAM.a0, CAM.a1, marcha((t - T.sobe2) / (T.para2 - T.sobe2)));
   }
   // as casas (fixas): a 1ª térrea (3,2 × 2,6 m), a 2ª de dois andares, a 3ª cortada pela borda; cada uma no muro de arrimo dela
-  var CASA1 = { x0: 1950, x1: 2270 }, PATIO = 2440;
+  // peru-agua-arte-14: o pátio vai a 2480 (era 2440), 0,4 m além do fundo do cubo, para o arrimo não cair sobre a aresta de trás dele
+  var CASA1 = { x0: 1950, x1: 2270 }, PATIO = 2480;
   var TQ1 = { x0: 1955, x1: 2055, h: 130 };                        // o tanque do telhado da 1ª casa (Ø 1,0 × 1,3 m = 1,02 m³)
   var CUBO = { x0: 2300, l: 100, dx: 40, dy: -24 };                // o cubo de 1 m³ no pátio, ao lado da casa
   function estatico() {
     var d = "", oc = "", y;
-    var chao = "M-400," + YC + " L" + XS + "," + YC + " L4400," + f2(yChao(4400));
+    // peru-agua-arte-14: o terreno se INTERROMPE no corte do pátio (de CASA1.x1 a PATIO): ali o chão é o piso horizontal e o arrimo
+    // (desenhados com a casa), e a rampa não atravessa mais o cubo, que assenta inteiro no piso do pátio
+    var chao = "M-400," + YC + " L" + XS + "," + YC + " L" + CASA1.x1 + "," + f2(yChao(CASA1.x1)) +
+      " M" + PATIO + "," + f2(yChao(PATIO)) + " L4400," + f2(yChao(4400));
     // o cano deitado no chão (Ø 34), da borda até a ponta tampada; a tampa é um flange à parte (é ela que pulsa)
     var cano = "M-400," + (YC - 34) + " L980," + (YC - 34);
     var tampa = "M980," + (YC - 44) + " L1000," + (YC - 44) + " L1000," + YC + " L980," + YC + " Z";
@@ -810,7 +820,12 @@
     var mg = E("mangueira"), L = mg.getTotalLength ? mg.getTotalLength() : 0, a = L ? mg.getPointAtLength(0) : { x: 0, y: 0 }, b = L ? mg.getPointAtLength(L) : { x: 0, y: 0 };
     var r1 = [+E("mR1").getAttribute("cx"), +E("mR1").getAttribute("cy")], r2 = [+E("mR2").getAttribute("cx"), +E("mR2").getAttribute("cy")];
     function folga(r) { var x = r[0], yc = x <= XS ? YC : YC - G * (x - XS); return (yc - r[1]) * Math.cos(Math.atan(x <= XS ? 0 : G)) - CAM.r; }
-    return { t: t, rodaTras: folga(r1), rodaFrente: folga(r2), mangueira: [a.x, a.y, b.x, b.y], volume: volume(t) };
+    // peru-agua-arte-14: o contato do cubo, do DOM. A caixa do cubo (frente + profundidade) contra o traço do terreno, amostrado a
+    // cada 2 px: quantos pontos do terreno caem DENTRO dela (tem de ser 0), e a base do cubo contra o piso do pátio (o mesmo y)
+    var cb = E("cubo").getBBox(), ch = E("chao"), Lc = ch.getTotalLength(), dentro = 0;
+    for (var s = 0; s <= Lc; s += 2) { var q = ch.getPointAtLength(s); if (q.x > cb.x + 0.5 && q.x < cb.x + cb.width - 0.5 && q.y > cb.y + 0.5 && q.y < cb.y + cb.height - 0.5) dentro++; }
+    return { t: t, rodaTras: folga(r1), rodaFrente: folga(r2), mangueira: [a.x, a.y, b.x, b.y], volume: volume(t),
+      cubo: { caixa: [cb.x, cb.y, cb.width, cb.height], base: cb.y + cb.height, piso: EST.f1, terrenoDentro: dentro } };
   };
   window.__renderAt(0);
 })();

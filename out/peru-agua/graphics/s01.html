@@ -38,6 +38,10 @@
     · b2 10,467–15,033: o lado seco (vertente-pacifico) acende em --destaque a 85 % em "West" (500 ms), com 'PACIFIC SIDE'; a bacia
       do Titicaca (vertente-titicaca) acende junto, em --neutro a 50 %, SEM nome; '74.5% OF THE LAND' sai em "West"; '1.8% OF THE
       WATER' em "about" (13,6).
+      CONSERTO peru-agua-arte-14 (lote MB, 22/10/2026; decisão da Sala na qualidade-7, achado 1 do L82): depois que '74.5% OF THE
+      LAND' sai (10,467 + 0,3 s), '97.9% OF THE WATER' sobe à vaga dele (de y 634 a 442, em 500 ms, 10,767–11,267, ease-in-out
+      cúbico), junto ao AMAZON SIDE: quem entra depois de 10,5 s não lê mais "97.9% / PACIFIC". Tempo de entrada e saída, a coluna
+      (x 1990) e o texto ficam como estavam; o resto da cena também.
     · b3 15,033–22,467: em "But" '97.9% OF THE WATER' sai e a fila de 8 silhuetas (a da s34, em traço, UM elemento) pousa no mar
       junto da costa seca, sob o bloco do Pacífico; em "most" (15,833) as 5 mais perto da costa se enchem de --destaque, uma a uma;
       '62.5% OF THE PEOPLE (2012)' em "twenty" (17,633). 5 de 8 = 62,5 %, a proporção exata do rótulo.
@@ -172,7 +176,11 @@
       { id: "rPeru", lnglat: [-78.30, -11.20], lado: "esquerda", vert: "centro", dx: -44, entra: 2.267, sai: 4.333 },
       { id: "rAmz", tela: [1990, 250], lado: "esquerda", vert: "baixo", entra: 4.333, sai: null },
       { id: "c745", tela: [1990, 442], lado: "esquerda", vert: "baixo", entra: 4.333, sai: 10.467 },
-      { id: "c979", tela: [1990, 634], lado: "esquerda", vert: "baixo", entra: 7.867, sai: 15.033 },
+      // arte-14 (MB): depois que o 74.5% sai (10,467 + 0,3 s), o 97.9% sobe à vaga dele (de y 634 a 442, 500 ms, eio), junto
+      // ao AMAZON SIDE: quem entra depois de 10,5 s não lê "97.9% / PACIFIC". Tempo e âncora (a coluna x 1990) como estavam.
+      { id: "c979", tela: [1990, 634], lado: "esquerda", vert: "baixo", entra: 7.867, sai: 15.033,
+        mover: function (t, p) { var u = Math.min(Math.max((t - 10.767) / 0.5, 0), 1);
+          u = u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; return { x: p.x, y: p.y - (634 - 442) * u }; } },
       { id: "rPac", tela: [2200, 940], lado: "esquerda", vert: "baixo", entra: 10.467, sai: null },
       { id: "c18",  tela: [2200, 1132], lado: "esquerda", vert: "baixo", entra: 13.6, sai: null },
       { id: "c625", tela: [2200, 1324], lado: "esquerda", vert: "baixo", entra: 17.633, sai: null }

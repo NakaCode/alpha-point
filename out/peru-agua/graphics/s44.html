@@ -8,6 +8,10 @@
   (faceless). Modo do espelho: mapa · a cena VIRA por dentro (ofício §9, "sequencial"): b0 e b1 MAPA plano (corpo de mapa da roupa e
   do ofício do mapista) → b2 ANIMAÇÃO no traço de engenheiro sobre a mesa (identidade §5; editor em Opus: regencia.json ›
   _animacao_em_opus). Tarefa peru-agua-arte-12, lote EO3. Nenhum hex.
+  CONSERTO peru-agua-arte-14 (lote EO; laudo s44 da qualidade-7, lente tema 6, decisão 12 da Sala): os dois cubos de 1 m³ copiam o da
+    s47 já consertada: a profundidade passa de (0,36, −0,36) a (0,40, −0,24) × o lado, e as arestas escondidas tracejadas passam do
+    remate butt ao round (com a junta round), a mesma espessura (4) e o mesmo traço (20 16) da s47. O TAMANHO FICA O DA s44 (lado
+    440). As marcas de preço, os rótulos e a marca de chão, que se medem pelo meio da profundidade, andam 8,8 px junto. Nada mais mudou.
 
   O que manda em cada coisa: os TEXTOS (textos-tela.json sha256 2f748bfc… › s44: "© MapTiler © OpenStreetMap contributors" 0–15,7;
   "Lima and Callao" (rotulo) 0–10,234; "MORE THAN 700,000 PEOPLE" (heroi) e "WITHOUT A CONNECTION TO THE WATER NETWORK" (legenda)
@@ -33,7 +37,7 @@
         distrito, nenhum caminhão: os caminhões-pipa ficam na voz (FALTA declarada; regência › s44 › beats[1]). Fica o crédito da
         MapTiler.
     b2 15,7–18,567 · CORTE SECO À MESA: ANIMAÇÃO no traço de engenheiro.
-        15,700 "at": DOIS CUBOS IGUAIS em contorno (o mesmo metro cúbico; projeção oblíqua, profundidade (0,36, −0,36) do lado, arestas
+        15,700 "at": DOIS CUBOS IGUAIS em contorno (o mesmo metro cúbico; projeção oblíqua, profundidade (0,40, −0,24) do lado, arestas
                escondidas tracejadas), "PIPED WATER" sob o da esquerda e "TRUCKED WATER" sob o da direita, e o crédito da Sunass; UMA
                marca de preço (uma moeda simbólica em contorno, sem valor nem moeda) cai sob o cubo da rede e para.
         16,200 "six": SEIS marcas caem uma a uma sob o cubo do caminhão e EMPILHAM (cada uma para sobre a de baixo); "ABOUT 6× THE
@@ -112,7 +116,7 @@
     background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); opacity: var(--mesa-satelite-feltro); }
   #desenho { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
   .ar { fill: none; stroke: var(--tinta); stroke-width: var(--linha-espessura); stroke-linejoin: round; stroke-linecap: round; }
-  .ar-oculta { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-dasharray: 20 16; stroke-linecap: butt; }
+  .ar-oculta { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-dasharray: 20 16; stroke-linecap: round; stroke-linejoin: round; }
   .ar-fina { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-linecap: round; opacity: .6; }
   .sombra-linha { fill: none; stroke: var(--tinta-escura); stroke-width: 16; stroke-linejoin: round; stroke-linecap: round; }
   .heroi { position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap; font-family: var(--fonte-sec); font-weight: var(--peso-heroi);
@@ -302,7 +306,7 @@
   }
 
   // ═══ A MESA (b2) ═══
-  var LADO = 440, PR = [0.36 * LADO, -0.36 * LADO], CHAO = 1200;
+  var LADO = 440, PR = [0.40 * LADO, -0.24 * LADO], CHAO = 1200;   // peru-agua-arte-14: a profundidade do cubo da s47
   var CA = { x: 1000, nome: "a" }, CB = { x: 2640, nome: "b" };    // o meio da aresta de baixo da face da frente
   function cubo(bx, by) {
     var x0 = bx - LADO / 2, x1 = bx + LADO / 2, y0 = by - LADO, y1 = by, dx = PR[0], dy = PR[1];
