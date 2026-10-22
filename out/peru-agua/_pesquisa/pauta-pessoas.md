@@ -1,6 +1,6 @@
 # Pauta de pessoas: peru-agua (vídeo 4)
 
-`pesquisa-pessoas`, tarefa `peru-agua-pesquisa-1`, 22/10/2026. O registro completo está em `pauta-pessoas.json`, ao lado.
+`pesquisa-pessoas`, tarefa `peru-agua-pesquisa-1`, 22/10/2026; acertos da `peru-agua-pesquisa-2` (o art. 26(2), a decisão do Lucas e a medida da gravura da LoC). O registro completo está em `pauta-pessoas.json`, ao lado.
 
 ## O retrato entregue
 
@@ -20,6 +20,9 @@
   - a reprodução está em domínio público pelo `{{PD-art-100-expired}}` do Commons.
   - **Ressalva:** a POP credita a foto do museu com "© Franck Raux ; RMN - utilisation soumise à autorisation". Não se provou que o arquivo do
     Commons (que veio do artsy.net) é essa foto.
+  - **O art. 26(2)** da mesma Diretiva 2019/790 ressalva os direitos adquiridos antes de 07/06/2021 (NÃO CONFERIDO na origem). A foto da RMN é de
+    ~1999: na França, a RMN pode sustentar um direito sobre a reprodução, e o art. 14 não o apaga.
+  - **Decisão do Lucas** (22/10/2026, 02:2x): "Seguir com a pintura de 1835 (Recomendado)", com "Painting, 1835" na tela. O risco que sobra é dele.
 - Recorte para o card de 932 px: x 0-2900, y 0-2900, a 0,32x. O rosto fica inteiro, com o chapéu e a pluma. Nada é ampliado.
 - Validado por visão: sim. Ainda falta o veredito do `conferente-de-midia`.
 
@@ -36,4 +39,5 @@ s42 Rómulo Cárhuaz (SEDAPAL) · s46 Catalina Naupa · s48 Virginia Martínez M
 | Daniel Hernández | 4146×4857 | "exibido em 1929" | Não é a data da criação. O quadro está no Palácio de Governo do Peru, e a origem é um blog. |
 | Museo Naval de Madrid | 2026×2408 | "1853", ambíguo | É "own work" do enviador, e não se sabe se a data é do quadro ou da foto. |
 | Jean Monier, Beauregard | 450×549 | "17th century" | Pequeno demais para o card. |
-| Gravuras de 1598 e 1791 e as da LoC | até 790 px | — | São gravuras, não pinturas, e são pequenas. |
+| Gravura da LoC, `Francisco Pizarro LCCN91789529.jpg` | 3282×4096 (medido pela Sala) | 1891 (livro de D. M. Kelsey) | É gravura de 1891, não pintura: não serve à decisão do Lucas ("retrato pintado", "Painting, <ano>"). Pediria "Engraving, 1891". |
+| Gravuras de 1598 e 1791 | não medidas aqui | 1598, 1791 | São gravuras, não pinturas. |

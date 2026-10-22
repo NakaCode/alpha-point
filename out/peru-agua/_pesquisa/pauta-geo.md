@@ -37,15 +37,30 @@ Este arquivo dá a fonte, a data, a fidelidade medida e o crédito de cada uma. 
   estação de Marcapomacocha fica a 7,6 km dela.
 - **Licença:** a HydroSHEDS v1 License Agreement (WWF), livre para uso comercial. O crédito do Exhibit B vai na DESCRIÇÃO
   (`credito_descricao` no json), não na tela. A licença é "com ressalvas" em `marca/acervos/5-dados-e-fronteiras.md` §1.9:
-  é privada, com auditoria e rescisão a critério da WWF. **Pendente da Sala:** o `robots.txt` de `data.hydrosheds.org` é
-  `Disallow: /` (ver o relato).
+  é privada, com auditoria e rescisão a critério da WWF. O `robots.txt` de `data.hydrosheds.org` é `Disallow: /`, e o zip da
+  1ª tarefa veio por script (ver o relato).
+- **Resolvido em 22/10/2026 (2ª tarefa).** A licença v1: o Lucas, 22/10/2026, 02:2x, no chat da Sala, literal: "Aceito a v1 e
+  eu baixo (Recomendado)" (`roteiros/peru-agua/decisoes-lucas.md`, "22/10/2026, 02:2x"). O download: o Lucas baixou no Brave o
+  `hybas_sa_lev06_v1c.zip` pela página do HydroBASINS, às 02:19 ("baixei o arquivo"); a Sala o conferiu às 02:2x: 10.389.476
+  bytes, sha256 `6b1899bdbee46354a9f4729bbf916108fb31ed2facdfac449237c00d3e39e90e`, idêntico byte a byte ao da 1ª tarefa (o
+  setor conferiu o sha256 e o tamanho; registro no commit `8cfa910`). Nada se refaz. **As 5 camadas do HydroBASINS
+  (`divisoria-continental-peru`, as três vertentes e `bacia-mantaro`) estão liberadas para render** (`render_liberado: true`
+  no json). A licença continua a v1 da WWF; o crédito longo (Exhibit B) vai na descrição do YouTube, com o título do vídeo no
+  lugar de "This product", e nada na tela. Nada mais se pede a `data.hydrosheds.org` por programa.
 - **`bacia-mantaro`:** a 4ª peça da mesma cobertura. É a bacia INTEIRA do Mantaro, com 34.534 km² (a ANA dá 34.550 ao
-  Mantaro). No nível 6 a "cuenca alta" não se separa.
+  Mantaro). No nível 6 a "cuenca alta" não se separa. **Desde a 2ª tarefa, o `rotulo` da camada é "Mantaro basin"** (antes,
+  "upper Mantaro basin", que dizia mais do que o polígono), e a `nota_mapista` diz: a voz da s39 diz "upper Mantaro basin";
+  nunca pintar o polígono inteiro com esse rótulo; para "upper", câmera e rótulo no norte, sobre as lagoas de
+  Marcapomacocha, ou um recorte declarado na tela. O texto de tela é do `redator-de-tela`. sha256 novo `0a179c78da1c3cba…`
+  (antes `62eac8b5cd2834ab…`); a geometria é a mesma, byte a byte.
 
-### O desierto costero do MINAM: NÃO ENTREGUE
+### O desierto costero do MINAM: SEM POLÍGONO (decisão da Sala)
 
 O polígono não foi obtido, e a área **não foi medida**. Os 7.107.338 ha (≈ 27.442 mi²) do folheto (doc.num-41) seguem como
-o único número; nenhuma geometria o confere. O que se tentou está no relato e em `bloqueios` do json.
+o único número; nenhuma geometria o confere. O que se tentou está no relato e em `bloqueios` do json. **Decisão da Sala
+(22/10/2026, `consolidado.json` › `decisoes_da_sala`, "s21, o deserto costeiro"):** a s21 fica sem polígono. Na tela vão o
+número e a fonte ("ABOUT 27,000 SQ MI (71,000 km²)", "Source: MINAM (Peru), 2019"), Piura e Tacna. Nenhum contorno de
+deserto de outra fonte.
 
 ## As camadas
 
@@ -100,3 +115,14 @@ e a s44 entram pelo túnel (s43) e pela `lima-callao-metropolitana` (s44), não 
 `desierto-costero-minam` (s21), `regioes-naturais-inei` (s31), `lima-periferia-sem-rede` (s43, s44),
 `cordilheira-oriental-crista` (s18; só os cumes foram entregues) e `encosta-leste-andes` (s18). O que se tentou e o caminho
 de cada um está no relato.
+
+**As decisões da Sala sobre eles** (22/10/2026, `out/peru-agua/_tmp/verificar-research/consolidado.json` › `decisoes_da_sala`;
+o campo `decisao_sala` de cada bloqueio no json):
+- **s21** (`desierto-costero-minam`): fica sem polígono; na tela, o número e a fonte, Piura e Tacna; nenhum contorno de outra
+  fonte (acima). Bloqueio definitivo neste vídeo.
+- **s43 e s44** (`lima-periferia-sem-rede`): o need sai; quem muda o espelho é a Direção. Na s43, o aéreo da borda com "Lima";
+  na s44, o `lima-callao-metropolitana` com o número da Sunass para Lima e Callao inteiros, sem borda nem distrito aceso.
+- **s31** (`regioes-naturais-inei`): fica com a Direção, que replaneja sem a mancha da Costa do censo, sem trocar a régua pela
+  vertente. Nenhuma rodada de Overpass para distritos.
+- **s18** (a crista e a encosta): uma forma só, no traço do canal, entre os dois cumes reais (`pontos-osm`), declarada como
+  esquema e sem altitude (Lucas, 22/10/2026, 02:0x, "O traço do canal"). Nenhuma linha de crista se mede aqui.

@@ -1,41 +1,188 @@
-# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, lote 1 às 01:2x e lote 2 às 01:4x (Brasília)
+# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, lote 1 às 01:2x, lote 2 às 01:4x e tarefa `peru-agua-pesquisa-2` às 02:4x (Brasília)
 
-Tarefa `peru-agua-pesquisa-1`, lotes 1 e 2 de 2. O JSON está em `out/peru-agua/_pesquisa/conferencia-midia.json`.
+Tarefas `peru-agua-pesquisa-1` (lotes 1 e 2) e `peru-agua-pesquisa-2` (os acertos da verificação do research, no passo `art_direction`).
+O JSON está em `out/peru-agua/_pesquisa/conferencia-midia.json`.
 
-**Laudo:** 16 aprovados de 22 conferidos (2 reprovados, 4 trocar, 0 pendente_lucas); 1 com algo não conferido; recebidos: 22.
+**Laudo:** 17 aprovados de 23 conferidos (2 reprovados, 4 trocar, 0 pendente_lucas); 1 com algo não conferido; recebidos: 23.
 - Lote 1: 9 aprovados de 11 (1 reprovado, 1 trocar).
 - Lote 2: 7 aprovados de 11 (1 reprovado, 3 trocar, 0 pendente_lucas).
+- Tarefa `peru-agua-pesquisa-2`: 1 arquivo novo, aprovado (o Landsat 5 de 1998, s16); 7 vereditos regravados, todos ainda aprovados, com
+  os antigos em `substituidos` (s40; s06 e as duas da s25; Cobo p. 9, 10 e 14).
 - Ficou fora da conferência, sem veredito: `_media/_caca/s26/acervo-livre/s26-jauja-panoramic-commons.jpg`. O próprio `pesquisa-imagens`
   o descartou (a Jauja de hoje numa fala de 1534, identidade §6) e não vai entregá-lo. Sem veredito, ele não vai à cena.
 
-| id | cena | fonte | veredito | motivo |
-|---|---|---|---|---|
-| `_media/documento/cobo-1882-p9.jpg` | s27 | Commons (Cobo, 1882) | aprovado | p. 9 do Cobo de 1882 (o começo do auto de Jauja), domínio público lido no Commons; cobre "Their town council's record" na s27 (página opcional) |
-| `_media/documento/cobo-1882-p10.jpg` | s27 | Commons (Cobo, 1882) | aprovado | p. 10, com o frio, a neve, a estrada e os carregadores mortos; cobre os dois planos da s27 |
-| `_media/documento/cobo-1882-p14.jpg` | s28 | Commons (Cobo, 1882) | aprovado | p. 14, com a ordem de Pizarro ("comedio de tierra", "poco trabajo", "muy buen puerto"); cobre o plano 2 da s28 |
-| `_media/pessoa/s26/francisco-pizarro-coutan-1835-commons.jpg` | s26 | Commons (Coutan, Versailles) | aprovado | retrato pintado de Pizarro (1835), domínio público, 2900 px; card com "Painting, 1835" |
-| `_media/_caca/s06/acervo-livre/s06-puno-titicaca-bay-2015-commons.jpg` | s06 | Commons (Diego Delso) | aprovado | o Titicaca aberto visto de Puno, CC BY-SA 4.0; miniatura do lago |
-| `_media/_caca/s06/acervo-livre/s06-titicaca-totora-puno-2015-commons.jpg` | s06 | Commons (Diego Delso) | trocar | o quadro é um morro com um hotel atrás do juncal; o lago aberto não aparece |
-| `_media/_caca/s13/acervo-livre/s13-modis-low-clouds-peru-coast-2018-06-24.jpg` | s13 | NASA, pelo Commons | aprovado | a manta de nuvem baixa parando na costa do Peru (MODIS, 20/06/2018) |
-| `_media/_caca/s13/acervo-livre/s13-modis-low-clouds-peru-coast-2015-06-18.jpg` | s13 | NASA, pelo Commons | aprovado | a nuvem baixa ao longo da costa inteira (MODIS, junho de 2015); reserva |
-| `_media/_caca/s16/acervo-livre/s16-noaa-avhrr-sst-anomalies-mar-aug-1997.jpg` | s16 | NOAA, pelo Commons | aprovado | a anomalia de TSM de mar.–ago. de 1997 junto ao Peru; cobre o plano 1, sem o logo da NOAA |
-| `_media/_caca/s16/acervo-livre/s16-jpl-ssta-1997-12-26.png` | s16 | SVS/JPL, pelo Commons | reprovado | a origem credita o JPL (Caltech, contratado), e não é obra federal; a licença do JPL não está conferida para o item do SVS |
-| `_media/_caca/s18/acervo-livre/s18-satipo-aerial-2018-commons.jpg` | s18 | Commons (Mr AndrewHolmes) | aprovado | Satipo no vale verde sob nuvens, CC BY-SA 4.0; miniatura junto ao nome |
-| `_media/_caca/s22/acervo-livre/s22-caral-piramide-mayor-frontal-2022-commons.jpg` | s22 | Commons (JOSE MORALES CIENCIA POLITICA UNMSM) | aprovado | a Pirámide Mayor de Caral de frente, CC BY-SA 4.0, 4032 px; cobre "UNESCO calls it" (plano 2 da s22) |
-| `_media/_caca/s22/acervo-livre/s22-caral-piramide-mayor-2022-commons.jpg` | s22 | Commons (Soto Caldaa Cesar) | aprovado | a Pirámide Mayor de Caral (GPS no sítio), CC BY-SA 4.0, 3264 px; reserva da pauta para o plano 2 da s22 |
-| `_media/_caca/s25/acervo-livre/s25-cantalloc-puquio-spiral-2015-commons.jpg` | s25 | Commons (Diego Delso) | aprovado | um puquio de Cantalloc (a espiral), CC BY-SA 4.0, 8688 px; cobre "underground channels called puquios" |
-| `_media/_caca/s25/acervo-livre/s25-cantalloc-puquio-well-2015-commons.jpg` | s25 | Commons (Diego Delso) | aprovado | a água no fundo de um puquio de Cantalloc, CC BY-SA 4.0; a 2ª foto do plano 2 da s25 ("carry water") |
-| `_media/_caca/s26/acervo-livre/s26-mantaro-valley-from-concepcion-2024-commons.jpg` | s26 | Commons (Guillermo Carlos Gómez) | trocar | a origem não nomeia Jauja, e a cidade de hoje domina o quadro numa fala de 1534 (identidade §6) |
-| `_media/_caca/s36/acervo-livre/s36-lima-pueblo-joven-1997-commons.jpg` | s36 | Commons (Håkan Svensson) | aprovado | barriada de Lima em abril de 1997, CC BY 2.5; impressa sobre a mesa (até 1,4×), com "Photo from 1997" |
-| `_media/_caca/s36/acervo-livre/s36-lima-pueblo-joven-ancon-2004-commons.jpg` | s36 | Commons (Maurice Chédel, enviada por Altiplano) | reprovado | o domínio público foi declarado por quem enviou (Altiplano), e o autor é Maurice Chédel: a licença não está provada; e a de 1997 está mais perto de 1981 |
-| `_media/_caca/s40/acervo-livre/s40-santa-eulalia-river-2021-commons.jpg` | s40 | Commons (Johnattan Rupire) | aprovado | o rio Santa Eulalia nomeado na origem, CC BY-SA 4.0, 4000 px; miniatura junto ao nome (plano 2 da s40) |
-| `_media/_caca/s40/acervo-livre/s40-santa-eulalia-valley-2010-commons.jpg` | s40 | Commons (Juan Lozada, Panoramio) | trocar | o rio Santa Eulalia não aparece: é o vale verde com a encosta seca |
-| `_media/_caca/s52/acervo-livre/s52-laguna-marcapomacocha-2018-commons.jpg` | s52 | Commons (Sichuancay) | aprovado | a Laguna Marcapomacocha nomeada na origem, CC BY-SA 4.0, 4056 px; cobre "its high lakes" (plano 1 da s52), como foto parada |
-| `_media/_caca/s52/acervo-livre/s52-laguna-en-marcapomacocha-2025-commons.jpg` | s52 | Commons (KimDivulga) | trocar | a origem nomeia só o distrito, "Laguna en Marcapomacocha", não a lagoa do sistema que a decisão do Lucas pede |
+| id | cena | veredito | motivo |
+|---|---|---|---|
+| `_media/documento/cobo-1882-p9.jpg` | s27 | aprovado | p. 9 do Cobo de 1882 (o começo do auto de Jauja), domínio público lido no Commons, fonte aprovada pela resposta do Lucas de 07/10/2026, 12:03 ("Outra cópia, senão recriar"); cobre 'Their town council's record' na s27 (página opcional) |
+| `_media/documento/cobo-1882-p10.jpg` | s27 | aprovado | p. 10 do Cobo de 1882, com o frio, a neve, a estrada e os carregadores mortos; domínio público lido no Commons; cobre os dois planos da s27; o Commons é fonte aprovada pela resposta do Lucas de 07/10/2026, 12:03 ("Outra cópia, senão recriar") |
+| `_media/documento/cobo-1882-p14.jpg` | s28 | aprovado | p. 14 do Cobo de 1882, com a ordem de Pizarro ('comedio de tierra', 'poco trabajo', 'muy buen puerto'); domínio público lido no Commons; cobre o plano 2 da s28; o Commons é fonte aprovada pela resposta do Lucas de 07/10/2026, 12:03 ("Outra cópia, senão recriar") |
+| `_media/pessoa/s26/francisco-pizarro-coutan-1835-commons.jpg` | s26 | aprovado | retrato pintado de Pizarro por Coutan (1835, Versailles), domínio público lido no Commons, 2900 px; card da s26 com 'Painting, 1835' |
+| `_media/_caca/s06/acervo-livre/s06-puno-titicaca-bay-2015-commons.jpg` | s06 | aprovado | o Titicaca aberto visto de Puno (a origem nomeia Puno e o lago), CC BY-SA 4.0, 8593 px; miniatura do lago na s06 |
+| `_media/_caca/s06/acervo-livre/s06-titicaca-totora-puno-2015-commons.jpg` | s06 | trocar | o quadro é um morro com um hotel atrás do juncal; o lago aberto não aparece, e a frase nomeia o Titicaca |
+| `_media/_caca/s13/acervo-livre/s13-modis-low-clouds-peru-coast-2018-06-24.jpg` | s13 | aprovado | manta de nuvem baixa parando na costa do Peru (MODIS/Terra, 20/06/2018), domínio público da NASA; cobre 'a blanket of low cloud' na s13 |
+| `_media/_caca/s13/acervo-livre/s13-modis-low-clouds-peru-coast-2015-06-18.jpg` | s13 | aprovado | a nuvem baixa ao longo de toda a costa do Peru (MODIS, junho de 2015), domínio público da NASA; reserva para 'a blanket of low cloud' na s13 |
+| `_media/_caca/s16/acervo-livre/s16-noaa-avhrr-sst-anomalies-mar-aug-1997.jpg` | s16 | aprovado | anomalia de TSM da NOAA, mar.–ago. de 1997, o mar esquentando junto ao Peru; domínio público; cobre o plano 1 da s16 (sem o logo da NOAA) |
+| `_media/_caca/s16/acervo-livre/s16-jpl-ssta-1997-12-26.png` | s16 | reprovado | a origem credita o JPL (Caltech, contratado), não é obra federal; a licença do JPL não está conferida para este item do SVS |
+| `_media/base/s16/landsat5-1998-06-03-piura-sechura.png` | s16 | aprovado | Landsat 5 de 03/06/1998 (USGS, domínio público): o deserto do norte com água na depressão de Sechura, no mesmo El Niño de 1997–98; cobre o plano 2 da s16 com 'JUNE 1998' na tela, e nunca 'Piura alagada' |
+| `_media/_caca/s18/acervo-livre/s18-satipo-aerial-2018-commons.jpg` | s18 | aprovado | Satipo no vale verde sob nuvens (a origem nomeia Satipo), CC BY-SA 4.0; miniatura junto ao nome na s18 |
+| `_media/_caca/s22/acervo-livre/s22-caral-piramide-mayor-frontal-2022-commons.jpg` | s22 | aprovado | a Pirámide Mayor de Caral de frente, CC BY-SA 4.0, 4032 px; cobre "UNESCO calls it" (plano 2 da s22) |
+| `_media/_caca/s22/acervo-livre/s22-caral-piramide-mayor-2022-commons.jpg` | s22 | aprovado | a Pirámide Mayor de Caral (GPS no sítio), CC BY-SA 4.0, 3264 px; reserva da pauta para o plano 2 da s22 |
+| `_media/_caca/s25/acervo-livre/s25-cantalloc-puquio-spiral-2015-commons.jpg` | s25 | aprovado | um puquio de Cantalloc (a espiral), Diego Delso, CC BY-SA 4.0, 8688 px; cobre "underground channels called puquios" (plano 2 da s25) |
+| `_media/_caca/s25/acervo-livre/s25-cantalloc-puquio-well-2015-commons.jpg` | s25 | aprovado | a água no fundo de um puquio de Cantalloc, Diego Delso, CC BY-SA 4.0; a 2ª foto do plano 2 da s25 ("carry water") |
+| `_media/_caca/s26/acervo-livre/s26-mantaro-valley-from-concepcion-2024-commons.jpg` | s26 | trocar | a origem não nomeia Jauja, e a cidade de hoje domina o quadro numa fala de 1534 (identidade §6) |
+| `_media/_caca/s36/acervo-livre/s36-lima-pueblo-joven-1997-commons.jpg` | s36 | aprovado | barriada de Lima em abril de 1997, CC BY 2.5; impressa sobre a mesa (até 1,4×), com "Photo from 1997"; cobre "Peruvians call them barriadas" |
+| `_media/_caca/s36/acervo-livre/s36-lima-pueblo-joven-ancon-2004-commons.jpg` | s36 | reprovado | o domínio público foi declarado por quem enviou (Altiplano), e o autor é Maurice Chédel: a licença não está provada; e a de 1997 está mais perto de 1981 |
+| `_media/_caca/s40/acervo-livre/s40-santa-eulalia-river-2021-commons.jpg` | s40 | aprovado | o rio Santa Eulalia nomeado na origem, CC BY-SA 4.0 dada pelo autor (Txolo liga 'Johnattan Rupire' à conta dele), 4000 px; miniatura junto ao nome (plano 2 da s40) |
+| `_media/_caca/s40/acervo-livre/s40-santa-eulalia-valley-2010-commons.jpg` | s40 | trocar | o rio Santa Eulalia não aparece: é o vale verde com a encosta seca |
+| `_media/_caca/s52/acervo-livre/s52-laguna-marcapomacocha-2018-commons.jpg` | s52 | aprovado | a Laguna Marcapomacocha nomeada na origem, CC BY-SA 4.0, 4056 px; cobre "its high lakes" (plano 1 da s52), como foto parada |
+| `_media/_caca/s52/acervo-livre/s52-laguna-en-marcapomacocha-2025-commons.jpg` | s52 | trocar | a origem nomeia só o distrito, "Laguna en Marcapomacocha", não a lagoa do sistema que a decisão do Lucas pede |
 
-Os créditos na tela vão no `credito_na_tela` de cada veredito, no formato `<autor> / Wikimedia Commons · <licença>`. Os do lote 2:
-JOSE MORALES CIENCIA POLITICA UNMSM, Soto Caldaa Cesar, Diego Delso e Johnattan Rupire, com CC BY-SA 4.0; Håkan Svensson, com CC BY 2.5;
-Sichuancay, com CC BY-SA 4.0.
+**Os créditos na tela** vão no `credito_na_tela` de cada veredito, no formato `<autor> / Wikimedia Commons · <licença>`:
+- **Diego Delso, desde a tarefa `peru-agua-pesquisa-2`:** `Diego Delso, delso.photo / Wikimedia Commons · CC BY-SA 4.0` (s06 e as duas
+  da s25);
+- JOSE MORALES CIENCIA POLITICA UNMSM, Soto Caldaa Cesar, Johnattan Rupire, Mr AndrewHolmes e Sichuancay, com CC BY-SA 4.0;
+- Håkan Svensson, com CC BY 2.5;
+- sem crédito na tela: NASA, NOAA, o Landsat/USGS, o Pizarro de 1835 e o Cobo de 1882 (domínio público).
+
+## Tarefa `peru-agua-pesquisa-2` (22/10/2026, 02:3x–02:4x): o que mudou
+
+As decisões da Sala estão em `out/peru-agua/_tmp/verificar-research/consolidado.json` (`decisoes_da_sala`). Aqui ficam registradas, não
+rediscutidas.
+
+### 1. s40, o rio Santa Eulalia de 2021: continua aprovado, agora com a prova do autor
+
+Pela API do MediaWiki, em 5 pedidos, um por vez:
+- **Río Santa Eulalia.jpg.** Enviado por Txolo em 03/10/2021, às 21:42 UTC, com o comentário "Uploaded using [[COM:MOA|Commons Mobile
+  App]]". O texto do arquivo traz `{{own}}`, `|author=[[User:Johnattan Rupire|Johnattan Rupire]]` e `{{self|cc-by-sa-4.0}}`.
+- **Frutillada cusqueña.jpg** (02/10/2021) e **Iglesia Matriz del Callao 2.jpg** (05/10/2021). Os dois foram enviados por Txolo pelo
+  mesmo app, na mesma versão (Android 3.1.1), com o mesmo autor e a mesma licença.
+- **A prova mais forte, a mais do que a Sala citou.** Na Iglesia Matriz, 13 minutos depois de enviar (07:45:33 UTC), **o próprio Txolo
+  trocou o link do autor** para `[[User:Txolo|Johnattan Rupire]]`. As revisões de 07:36 e 07:38 ainda tinham o link antigo. O dono
+  da conta liga o nome "Johnattan Rupire" à conta dele: é o nome de autor que ele escolheu no app, não um terceiro. A licença
+  `{{self}}` foi dada pelo próprio autor.
+- **Por que não é o caso da reserva de 2004 da s36.** Lá, o autor e a fonte eram "Maurice Chédel", sem "Own work", e quem enviou
+  (Altiplano) declarou o domínio público por outra pessoa. Aqui há `{{own}}` e `{{self}}`, e quem enviou se diz o autor.
+- **O crédito não muda:** `Johnattan Rupire / Wikimedia Commons · CC BY-SA 4.0`. Base: midia §7.3.
+
+### 2. Diego Delso: o crédito que ele pede (s06 e as duas da s25)
+
+- O `credito_na_tela` passa a `Diego Delso, delso.photo / Wikimedia Commons · CC BY-SA 4.0`.
+- **Por quê:** o modelo `{{User:Poco a poco/credit}}` pede "Diego Delso, delso.photo, License CC BY-SA" ao lado da imagem. Reli o
+  modelo pela API, na revisão de 26/10/2024. A CC BY-SA 4.0, §3(a)(1)(A)(i), manda dar o crédito do jeito que o autor pede.
+- O aviso por e-mail que o modelo pede é cortesia, não condição.
+
+### 3. Cobo, p. 9 e p. 10 (s27) e p. 14 (s28): o motivo cita a resposta do Lucas
+
+- **A resposta:** em Los Angeles, em 07/10/2026, às 12:03, o Lucas respondeu "Outra cópia, senão recriar (Recomendado)". A opção dizia:
+  "Os pesquisadores procuram a mesma página numa fonte aprovada (Commons, governo). O que não aparecer, a cena recria". Lida em
+  `out/los-angeles/_pesquisa/conferencia-midia.md`, "A resposta do Lucas aos 10 do Internet Archive"; o JSON de lá grava a hora
+  `2026-10-07T12:03:00-03:00`.
+- **O que ela quer dizer aqui:** por ela, o arquivo do Commons vem de fonte aprovada, mesmo nascido no Internet Archive. É o mesmo caso
+  dos PDFs do Fæ que o conferente de Los Angeles aprovou depois dela.
+- O `motivo` das três e o critério de licença agora citam essa resposta.
+
+### 4. NOVO: o Landsat 5 de 03/06/1998 para a s16, plano 2. Aprovado
+
+- **O arquivo:** `_media/base/s16/landsat5-1998-06-03-piura-sechura.png`, 2840 × 4766, RGBA, sha256 `8fde207d…`. O veredito casa por
+  esse sha256.
+- **O que olhei:** a prévia, a máscara de água e três recortes do próprio arquivo (a depressão reduzida; Piura e a borda leste a 100 %).
+  - O deserto do norte tem uma rede grande de água verde-oliva, lisa, na depressão a leste da península de Illescas, e uma lagoa escura
+    no meio dela.
+  - O rio leva água ao estuário, e há uma faixa verde atrás da praia do sul.
+  - Piura aparece seca: a mancha cinza da cidade dos dois lados do rio, sem água parada.
+- **O contexto passa:** é o registro real do mesmo El Niño de 1997–98 do plano 1, com a data e a pegada na origem. Ele cobre "the desert
+  coast gets … floods, mostly in the north". A água está no quadro, e não há gente.
+- **A licença passa:** é USGS, domínio público. A página de citação do EROS diz "may be used, transferred, or reproduced without copyright
+  restriction". É uma base aceita da identidade §6.
+  - Não leva crédito na tela. A linha da descrição está na procedência: "Landsat imagery courtesy of the U.S. Geological Survey".
+  - Veio pelo Planetary Computer, sem conta, como a identidade manda, e o robots.txt dele não veta nada.
+- **A técnica passa:** são 45 m Mercator por pixel. Com a área da água enchendo a altura do quadro 4K, sai a ~1,07×. O arquivo aguenta
+  até 1,4×, com pelo menos ~1.540 px dele na altura (uns 69 km).
+  - A nuvem cobre 1,18 % da terra, sem cobrir o miolo da água.
+  - A janela do plano é de 5,27 s, abaixo dos 6 s.
+- **A repetição passa:** o still da mesa é outro Landsat (Landsat 8, de 2022).
+- **`lugar_na_origem`:** a origem não nomeia lugar por nome; dá a pegada em coordenadas (bbox −82,31 a −80,21 de longitude e −6,74 a
+  −4,84 de latitude).
+
+**O que a tela pode dizer:**
+- "JUNE 1998": o ano na tela que o espelho pede. Não é aviso de foto de outro ano, e o `aviso_de_ano` fica `false`.
+- O nome de um lugar só por camada geo com procedência, na coordenada dela. "Piura", do Natural Earth, vai no ponto da cidade, que está
+  seco no quadro.
+
+**O que a tela não pode dizer:**
+- "Piura alagada", nem nada que ligue a cidade à água.
+- Que toda a água é a enchente: parte pode ser lagoa permanente, e a faixa verde atrás da praia entra na máscara.
+- O nome da lagoa ("La Niña").
+- O tamanho dela: nem os ~145 km da Wikipedia nem os ~978 km² medidos, sem o verificador-de-fatos.
+- "El Niño 1997–98" na tela, só com o verificador-de-fatos.
+
+**Para quem monta** (o `mapista`; não é critério):
+1. Enquadrar a depressão de Sechura e o estuário, não a cena inteira com o mar e a nuvem do sul. Em cor natural, a água sai verde-oliva e,
+   de longe, pode passar por vegetação.
+2. Realçar a água só a partir de uma camada medida, com procedência, nunca com contorno à mão. Seria a máscara do `pesquisa-geo` em
+   `_media/geo/`, que é a pergunta 2 dele à Sala.
+3. A borda leste da cena corta a água. Não emende o Landsat de 1998 sem costura no satélite de hoje da MapTiler: a água de 1998
+   terminaria numa linha reta sobre o chão de outra data. A borda da imagem fica à vista, como recorte de 1998, ou o quadro fica
+   dentro da faixa da cena.
+4. O PNG tem 30,6 % de área transparente, fora da faixa da cena.
+
+## Para o Lucas pesar
+
+Nada.
+
+## Para reconferir no navegador do app
+
+Nada novo. Ficam os itens da tarefa anterior (abaixo): a reserva de 2004 da s36 e a do JPL da s16, só se a Sala as quiser.
+
+## Para trocar
+
+Nada novo nesta tarefa. Os recados da tarefa anterior (abaixo) continuam.
+
+O aviso do conjunto da cena, para o `regente-de-imagem` e o `montador`:
+- **s16** tem agora um `aprovado` por plano: a NOAA no plano 1 (6,5 s) e o Landsat no plano 2 (5,27 s).
+- As duas são imagens paradas sobre um mapa que se move, e nenhum dos dois planos passa de 6 s.
+- A mudança do plano 2 de "foto" para satélite já está no espelho (direcao-3).
+
+## Divergências entre a marca e o ofício
+
+Nenhuma. Três notas de método:
+- **A régua de técnica do Landsat.** O §5.3 do ofício não tem linha para base de satélite usada como registro. Julguei a resolução contra o
+  uso (até 1,4×, como a foto de época), e não pela regra "a maior versão da origem", que é de foto de página. A origem tem 30 m nativos,
+  1,5 vez o arquivo, se um quadro mais perto pedir.
+- **O User-Agent.** Os pedidos ao Commons e ao USGS saíram pelo `WebFetch`, a única ferramenta de rede do contrato §5. Ele não leva o
+  User-Agent do canal.
+- **O olhar.** Nenhum olhar foi de olhos novos: o pedido, o espelho e o relato foram lidos antes, e o `o_que_viu` diz isso.
+
+## Contas desta tarefa
+
+- **Imagens abertas: 5 de 25:**
+  - a prévia do Landsat;
+  - a máscara de água;
+  - três recortes do arquivo, em `out/peru-agua/_tmp/conferencia/pesquisa-2/`: `s16-depressao.jpg`, reduzido, e `s16-piura-100.jpg` e
+    `s16-borda-leste-100.jpg`, a 100 %.
+- **WebFetch: 7 pedidos, um por vez, nenhum recusado:**
+  - 6 à API do MediaWiki, todos da s40 e de Delso:
+    - a s40;
+    - a Frutillada e a Iglesia juntas;
+    - a 1ª revisão da Iglesia;
+    - a lista de revisões dela;
+    - as três revisões de 07:36–07:45;
+    - o modelo de Delso;
+  - 1 à página de citação do USGS EROS.
+- **A emenda do JSON** foi feita pelo `python`, porque o arquivo tem mais de 95 KB.
+  - O script, com o veredito novo ao lado, está em `out/peru-agua/_tmp/conferencia/pesquisa-2/`: `emenda.py` e `landsat-s16.json`.
+  - Ele conferiu o sha256 do JSON antes de gravar, e também que o sha256 de cada um dos 7 arquivos regravados continua o do veredito.
+  - As cópias de antes estão em `out/peru-agua/_tmp/conferencia/conferencia-midia.antes-pesquisa-2.json` (sha256 `2968601e…`) e em
+    `.antes-pesquisa-2.md`.
+  - Os 7 vereditos antigos estão em `substituidos`, com `substituido_em`.
+- **Checagem 6:** `out/peru-agua/_media/` não mudou.
+  - O sha256 dos 144 arquivos, antes e depois, está em `out/peru-agua/_tmp/conferencia/_media-antes-pesquisa-2.txt` e
+    `_media-depois-pesquisa-2.txt`, e o `diff` saiu vazio.
+  - As listas dos lotes anteriores ficaram como estavam.
+
+---
+
+# Histórico: a tarefa `peru-agua-pesquisa-1` (lotes 1 e 2), como estava
 
 O aviso do ano: no lote 2, só a barriada da s36 leva aviso (`Photo from 1997`; a fala é de 1981). As outras fotos aprovadas cobrem falas
 no presente (Caral, os puquios, o Santa Eulalia, a lagoa) e vão sem aviso (`aviso_de_ano: false`).
@@ -77,22 +224,22 @@ no presente (Caral, os puquios, o Santa Eulalia, a lagoa) e vão sem aviso (`avi
   nome de um usuário.
 - **A foto pequena:** nenhuma foto do lote está abaixo de 1.600 px de largura. A regra "A foto pequena preenche a lacuna" não foi usada.
 
-## Para o Lucas pesar
+## Para o Lucas pesar (tarefa 1)
 
-Nada neste lote. A única pergunta possível é a da reserva da s52, acima, e ela só vai ao Lucas se a Sala a quiser.
+Nada no lote 2. A única pergunta possível é a da reserva da s52, acima, e ela só vai ao Lucas se a Sala a quiser.
 
-## Para reconferir no navegador do app
+## Para reconferir no navegador do app (tarefa 1)
 
 - **s36, a reserva de 2004**, só se a Sala a quiser (a de 1997 está aprovada). Página: https://commons.wikimedia.org/wiki/File:Pueblo_joven_%28Lima%29.JPG.
   O que falta conferir: se o usuário Altiplano, que liberou o arquivo, é Maurice Chédel (pela página do usuário no Commons ou por um
   ticket VRT). O Commons não recusou leitura: é só uma página que não é a de origem do item, e por isso ficou fora desta conferência.
 - Do lote 1: a reserva da s16, nas mesmas condições de lá.
 
-## Para trocar
+## Para trocar (tarefa 1)
 
 Do lote 2, tudo ao `pesquisa-imagens`:
 - **s26:** a miniatura de Jauja sai. Busca, se a Direção quiser mesmo uma: `Jauja, Mantaro Valley, Peru, photograph naming Jauja,
-  without the modern town`. O caminho mais simples é ficar sem miniatura.
+  without the modern town`. O caminho mais simples é ficar sem miniatura (a Sala decidiu assim em 22/10/2026).
 - **s40**, a reserva: `Santa Eulalia River, Huarochirí, Peru, photograph with the river water in frame`. A preferida, aprovada, já
   cobre o plano. A reserva serviria na **s23** ("their valleys run as strips of green"), com conferência nova, se o montador quiser.
 - **s52**, a reserva: `Antacoto or Huascacocha lagoon, Junín, Peru, photograph with the lake named in the item`.
@@ -113,26 +260,16 @@ Os avisos do conjunto das cenas, para o `regente-de-imagem` e o `montador`:
   - na foto da barriada (s36), a bandeira do Peru e os painéis pintados do morro ficam pequenos;
   - no rio de 2021 (s40), a placa e o prédio branco da borda esquerda saem no recorte da miniatura.
 
-## Divergências entre a marca e o ofício
+## Notas de método e contas (tarefa 1)
 
-Nenhuma.
-
-Duas notas de método:
 - O despacho mandou ler a pauta e o relato antes de olhar, para achar a cena e o plano. Por isso, nenhum olhar foi de olhos novos, e
   cada `o_que_viu` diz isso.
 - Neste lote, o que vi divergiu da pauta em dois pontos: os "tubos" da s52 são troncos de madeira, e a reserva do Santa Eulalia não
   mostra o rio.
-
-## Contas
-
 - **Imagens abertas no lote 2: 12 de 25.** Onze cópias reduzidas, uma por arquivo, e um recorte do morro da s36 de 1997, todas em
   `out/peru-agua/_tmp/conferencia/olhar/` (prefixo `l2-`).
-- **WebFetch: 11 pedidos**, um por vez, todos lidos sem recusa: a página do Commons de cada um dos 11 arquivos do lote. O descarte da
-  Jauja não foi buscado.
-- **A emenda do JSON** foi feita pelo `python`, porque o arquivo passou de ~95 KB. O script está em
-  `out/peru-agua/_tmp/conferencia/lote2/emenda.py`. A cópia de antes, com o sha256 conferido, está em
-  `out/peru-agua/_tmp/conferencia/conferencia-midia.antes-lote2.json`. Os 11 vereditos do lote 1 ficaram idênticos, e `substituidos`
-  continua vazio, porque nenhum candidato foi julgado de novo.
-- **Checagem 6:** `out/peru-agua/_media/` sem mudança. O sha256 dos 121 arquivos de antes e de depois está em
-  `out/peru-agua/_tmp/conferencia/_media-antes-lote2.txt` e `_media-depois-lote2.txt`, e o `diff` saiu vazio. As listas do lote 1
-  (`_media-antes.txt`, `_media-depois.txt`) ficaram como estavam.
+- **WebFetch no lote 2: 11 pedidos**, um por vez, todos lidos sem recusa: a página do Commons de cada um dos 11 arquivos.
+- **A emenda do JSON do lote 2** está em `out/peru-agua/_tmp/conferencia/lote2/emenda.py`, com a cópia de antes em
+  `out/peru-agua/_tmp/conferencia/conferencia-midia.antes-lote2.json`.
+- **Checagem 6 dos lotes 1 e 2:** `_media-antes.txt` e `_media-depois.txt`, `_media-antes-lote2.txt` e `_media-depois-lote2.txt`, com o
+  `diff` vazio.
