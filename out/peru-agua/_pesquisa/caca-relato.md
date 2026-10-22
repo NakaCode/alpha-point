@@ -168,3 +168,22 @@ Um download por vez, na ordem da lista `22d59fbd75d8`, com o `inUse` no Brave `2
 - **O s01-a-4 (Shutterstock, Laguna Parón)**: `reprovado`. A `recusa` do item s01-a recusa a Cordilheira Branca no lugar dos Andes centrais; o lago fica a uns 7 km da divisória do vídeo, do lado do Pacífico; a crista do fundo não está provada como a divisória; e a volta do Shutterstock rodou sem o filtro de IA. A s01 segue no fallback de mapa da regência. Nada se baixou do Shutterstock, e a conta dele não precisou de confirmação.
 - **No total:** 10 clipes instalados em 7 cenas (s03 ×3, s09, s15 ×2, s17, s19, s29, s33), com 9 comprovantes de licença. Sem clipe, no fallback da regência: s01-a, s05-a, s08-a, s19-b, s20-a, s22-a, s24-a, s25-b, s35-a, s35-b, s37-a, s38-a, s38-b, s43-a, s44-a, s47-a, s47-b, s47-c, s48-a e s49-a.
 - **Caça encerrada.** A aba fixa do Brave fica aberta para a próxima.
+
+## A caça curta da s37 (22/10/2026, 16:2x–16:3x)
+
+- **A decisão:** o Lucas, às 16:2x, escolheu "Baixar o clipe (Recomendado)" para o s37-a-2 (Motion Array 4333181), que o conferente tinha deixado
+  `trocar` só pela duração. O conferente o reviu a 0,93× e deu `aprovado`, preferência 1. O rótulo fica em no máximo "Lima": o título não
+  nomeia o Rímac.
+- **A lista:** `lista-caca-aprovacao-s37.md`, com a assinatura `563edcd07bc5` e as linhas 1 e 1L. O "sim" do Lucas: "Pode baixar" (16:3x).
+- **A prova do perfil, refeita às 16:35:** o `connectedAt` mudou (a extensão reconectou). A marca `alpha-point-perfil-20261022-163444-31501` apareceu
+  no histórico do Brave `Default` na 2ª procura. O grupo de abas da caça sumiu depois, e foi recriado sem nova reconexão (o mesmo
+  `connectedAt`). A conta no topo era "Business", a mesma confirmada.
+- **O clipe 1:** `marcar` às 16:35:47, clique no botão 4K (o balão dizia "file size: 28.45MB") e `recolher` às 16:36:29, com saída 0.
+  - O arquivo: `Lima_Skyline_In_Metropolitan_Region_Of_Lima_In_Peru._uhd_4333181.mp4`, 3840×2160, h264, 29,97 fps, 5,51 s, 29.835.147 bytes,
+    sha256 `cf1debbf…`.
+  - O passo 4 bateu: o nome traz o ID, a resolução é a da página, a duração (0:05) e o tamanho (os 28,45 MiB do balão) conferem. Os 84,6 MB do
+    cabeçalho são do original.
+  - Com 5,51 s, o clipe cobre os 5,367 s da s37 a 1,0×, sem desacelerar.
+- **O 1L:** baixado às 16:37, depois de 20 s, do ícone de licença ao lado do Download. O PDF cita o ID e o título e foi para
+  `licencas/4333181-licenca.pdf`, sha256 `fe34424e…`.
+- **A seguir:** o conferente no fluxo `midia` e, com `aprovado` e `mesmo_item: true`, o `_instalar-lote` como `rimac-baixo-estacao-seca`.

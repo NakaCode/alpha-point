@@ -1,4 +1,86 @@
-# Conferência da caça · peru-agua · fluxo `caca` · 22/10/2026, 15:5x (Brasília): o s01-a-4, da volta do Shutterstock
+# Conferência da caça · peru-agua · fluxo `caca` · 22/10/2026, 16:2x (Brasília): o s37-a-2 de novo, a 0,93×
+
+**Laudo desta tarefa:** 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1.
+**Laudo do arquivo:** 15 aprovados de 26 conferidos (3 reprovados, 8 trocar, 0 pendente_lucas); 1 com algo não conferido;
+recebidos: 26.
+
+| id | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| s37-a-2 | s37 | motionarray | **aprovado (1)** | o rio baixo no centro de Lima (o título nomeia Lima), 4K horizontal; a 0,93× cobre os 5,37 s do plano sem mudar o que o quadro mostra; rótulo no máximo 'Lima', nunca 'Rímac' |
+
+O veredito antigo (`trocar`, "é o rio baixo que a frase pede, em Lima, mas o clipe tem 5 s para um plano de 5,37 s") foi para
+`substituidos`. O que mudou foi só a proposta da Sala de tocar o clipe a 0,93× (5,0 s → 5,37 s), na tarefa de 22/10, 16:2x.
+
+**O quadro, olhado de novo.** Um aéreo alto e quase parado sobre o rio no centro de uma cidade, com céu claro. O leito é largo e quase
+todo seco: areia e uma faixa mais escura, lisa, sem correnteza. A água corre só num canal à direita, descendo uma soleira de
+concreto. Uma ponte cheia de carros cruza o rio, com pedestres e motociclistas minúsculos. Atrás, o casario e um palácio. Congelada em
+"river runs low", a tela mostra um rio com pouca água no meio da cidade.
+
+**A velocidade de 0,93× não muda o que o quadro afirma.**
+- O drone quase não se move. Os carros, os pedestres e os motociclistas andam 7 % mais devagar, e isso não se nota num aéreo alto:
+  eles têm poucos pixels.
+- A frase não afirma nada sobre movimento ou rapidez. Não vira câmera lenta de efeito.
+- A marca não tem regra sobre mudar a velocidade de clipe de banco, e o `midia.md` §3.2 não diz nada sobre isso. Os termos do Motion
+  Array não foram relidos aqui: banco pago não se abre nesta conferência.
+
+**A folga é de 9 ms, e vale com duas condições**, que se conferem no fluxo `midia`, sobre o arquivo:
+1. **A duração real.** A 0,93×, 5,0 s viram 5,376 s, e o plano tem 5,367 s. A velocidade sai da duração que o `ffprobe` medir
+   (duração ÷ 5,367). Se o arquivo medir menos de 4,99 s, ela fica abaixo de 0,93×, e o encaixe se julga de novo.
+2. **O clipe inteiro, sem fade nem cartela.** As prévias não mostram o primeiro nem o último quadro, porque o player volta ao
+   começo. Eu olho os dois no arquivo.
+
+**Para quem monta:** de 29,97 fps a 0,93× e depois a 30 fps, os ~150 quadros do clipe viram ~161, com uns 11 quadros repetidos ou
+misturados. Vale olhar o tranco nos carros da ponte. O retime e a conversão a 30 fps devem ser feitos num passo só.
+
+**O rótulo:** no máximo "Lima", ou nenhum rótulo de lugar.
+- O `lugar_na_origem` é só o título: "Lima Skyline In Metropolitan Region Of Lima In Peru.". A página não tem descrição e não nomeia o
+  Rímac.
+- Com este clipe, a pílula "Rímac" não pode entrar (`midia.md` §2.7). Ela está hoje no `regencia.json` (s37, beat 0, em 0,3 s) e no
+  `textos-tela.json` (`_caminho: caca`).
+- A frase diz "its river", sem o nome, e não precisa dele.
+- A legenda "MAY–NOVEMBER" pode entrar, com a fonte da Defensoría: é um dado, não a data da imagem. A origem não dá a data do clipe.
+
+**O crédito na tela:** nenhum. O Motion Array não exige crédito (`midia.md` §3.2).
+
+**A repetição passa.** O ID 4333181 não aparece em outro lugar do vídeo.
+- Não é o mesmo voo do s29-a (Plaza de Armas, do mesmo autor, aprovado e instalado). Aquele é numa tarde enevoada, mostra a catedral
+  e vem 130 s antes.
+- Também não é o do s08-a/s37-a do Envato, que mostra a Puente de Piedra com o leito cheio, noutro dia.
+
+**Preferência:** 1. É o único aprovado do item s37-a (`quantos: 1`). O s37-a (Envato) continua `trocar`, como estava.
+
+## Para o Lucas pesar
+
+Nada.
+
+## Para reconferir
+
+Nada.
+
+## Para trocar (recado ao `pesquisa-imagens`)
+
+Nada novo. A s37 sai do recado anterior.
+
+## Divergências entre a marca e este ofício
+
+Nenhuma.
+
+## Contas desta tarefa
+
+- **Imagens abertas:** 8. São as três prévias, dois recortes ampliados delas (`out/peru-agua/_tmp/conferencia/s37-a-2/`), o print da
+  página e, para a repetição, uma prévia do s29-a e uma do s08-a.
+- **Rede:** nenhum `WebFetch` e nenhuma ferramenta de navegador.
+- **A emenda:**
+  - o script e o veredito estão em `out/peru-agua/_tmp/conferencia/s37-a-2/` (`emenda.py` e `veredito-parcial.json`);
+  - o sha256 do JSON foi conferido antes de gravar (`6aa5129d…`);
+  - este `.md` também foi emendado pelo `python`, para o histórico abaixo ficar byte a byte;
+  - as cópias de antes estão em `out/peru-agua/_tmp/conferencia/conferencia-caca.json.antes-s37a2` e `conferencia-caca.md.antes-s37a2`.
+- **Checagem 6:** nada mudou em `out/peru-agua/_media/`. Os 205 arquivos têm o mesmo sha256 antes e depois
+  (`out/peru-agua/_tmp/conferencia/_media-antes-s37a2.txt` e `_media-depois-s37a2.txt`).
+
+---
+
+# Histórico: Conferência da caça · peru-agua · fluxo `caca` · 22/10/2026, 15:5x (Brasília): o s01-a-4, da volta do Shutterstock
 
 **Laudo desta tarefa:** 0 aprovados de 1 conferido (1 reprovado); 1 com algo não conferido; recebidos: 1.
 **Laudo do arquivo:** 14 aprovados de 26 conferidos (3 reprovados, 9 trocar, 0 pendente_lucas); 1 com algo não conferido;
