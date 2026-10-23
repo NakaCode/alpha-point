@@ -47,10 +47,21 @@
         9,150–9,400 repouso (só a deriva).
     b2 9,4–17,1 · CORTE AO MAPA das lagoas de Marcapomacocha (lagoas-marcapomacocha-antacoto, OSM: Marcapomacocha, Antacoto,
         Marcacocha e Tucto), MapTiler PLANO (a regência não pede relevo), tratamento C; aproximação lenta e contínua (zoom 12,95 →
-        13,30 e giro −1,5° → +1,5°, lineares, os 7,7 s inteiros). As 4 lagoas acesas em --contraparte (o lado amazônico, como na s39):
-        preenchimento a 35 % e contorno de 6 px sobre o escuro de 14, em 500 ms a partir do corte.
+        13,30 e giro −1,5° → +1,5°, lineares, os 7,7 s inteiros). As 4 lagoas acesas em --agua (arte-17; eram --contraparte), PARADAS:
+        preenchimento a 58 % (fase 2) e contorno de 6 px sobre o escuro de 14, em 500 ms a partir do corte.
         9,700  "Lima's": 'Laguna Marcapomacocha' (pílula, 128 px), colada ao lado LESTE da lagoa, nunca sobre outra lagoa.
        10,500  "utility": 'SEDAPAL · Lima's water utility' (legenda, 84 px) na pílula do canto de cima à esquerda.
+  peru-agua-arte-17 (o que mudou, e só isto; decisoes-lucas 23/10, "Azul em toda a água" e "Faça então"; identidade §2, "A água é
+  azul, e corre"; regência 4ea3b5b0 › s38 e › _agua_direcao_23: "o Rímac (engrossa em 'runs high') · rio abaixo (oeste) · lenta (da
+  s37) → CHEIO: rápida e cheia em 'runs' · parado: as lagoas (b2)"):
+    · b0: a linha do Rímac passa de --destaque a --agua (o contorno escuro e as larguras, fina e grossa, ficam) e leva a CORRENTEZA,
+      o bloco "A CORRENTEZA" (o MESMO texto da s37): um trecho mais claro da própria linha (--agua-luz) desce rio abaixo, para o mar,
+      e se repete. Até "runs" ela é a LENTA da s37, sem pular no corte (é função do tempo absoluto); em "runs" ela acelera para a
+      CHEIA (720 px/s, trecho de 600 px a cada 1.100 px, na escala do zoom 13,4) junto com a frente que engrossa a linha, trecho a
+      trecho (a posição da luz é a integral da velocidade: acelera, não pula). É luz NA linha, não partícula;
+    · b2: as 4 lagoas em --agua (preenchimento a 58 %, fase 2: o Lucas pediu 55–60 % às águas paradas; contorno de 6 px sobre o
+      escuro de 14, como antes), paradas: lago não corre;
+    · nada mais muda: textos, tempos, câmeras, a mesa, a pílula e os créditos são os de antes.
   O que NÃO aparece: o rio cheio e barrento em si (sem clipe aprovado: o s38-a não veio; FALTA declarada: a voz o diz); nenhum
   aéreo de lagoa (o s38-b não veio: o fallback escrito, o satélite das lagoas, vira o plano). 'lakes', nunca 'lagoons'.
 
@@ -537,6 +548,8 @@
   // ═══ O RÍMAC EM DUAS ESTAÇÕES — o MESMO código na s37 e na s38 (um plano só em dois arquivos; regência direcao-17) ═══
   // A câmera é UMA função do tempo ABSOLUTO do master, de 438,833 a 447,467 s (o corte em 444,2 s): o último quadro da s37
   // e o primeiro da s38 saem da mesma conta. Deriva lenta para montante (leste) e recuo lento, linear, norte para cima.
+  // peru-agua-arte-17: a linha passa de --destaque a --agua (identidade §2, "A água é azul, e corre"; direcao-23) e leva a
+  // CORRENTEZA (o bloco "A CORRENTEZA", abaixo), também função do tempo ABSOLUTO: ela atravessa o corte sem pular.
   var RIM = {
     T0: 438.833, T1: 447.467,
     c0: [-77.000, -12.032], c1: [-76.955, -12.012],   // o trecho do centro de Lima, rio acima da foz (a foz fica fora)
@@ -550,6 +563,63 @@
     return { center: [RIM.c0[0] + (RIM.c1[0] - RIM.c0[0]) * u, RIM.c0[1] + (RIM.c1[1] - RIM.c0[1]) * u],
              zoom: RIM.z0 + (RIM.z1 - RIM.z0) * u, bearing: 0, pitch: 0 };
   }
+
+  // ═══ A CORRENTEZA — o modelo das cenas de água do vídeo (peru-agua-arte-17; identidade §2; regência › _agua_direcao_23) ═══
+  // O QUE É: um trecho MAIS CLARO da própria linha da água (--agua-luz sobre --agua) que desce no sentido da água e se repete.
+  //   É a COR da linha que muda, peça a peça (a linha é desenhada em pedaços curtos, cada um com a mistura opaca das duas cores):
+  //   luz na linha, nunca partícula, nunca brilho por cima, nunca alfa (pedaços com alfa somariam contas nas pontas redondas).
+  // ONDE MORA A LUZ: no CHÃO, não na tela. A posição é medida em km ao longo do rio (de montante = 0 até a foz) e anda a uma
+  //   velocidade em km/s; com a câmera que aproxima ou recua, a luz continua presa à água, como a linha.
+  // OS PARÂMETROS são dados em px de TELA na escala de referência (zoomRef, latRef: o zoom médio da cena) e convertidos a km uma
+  //   vez, por kmPorPx(). Para outra cena: troque zoomRef/latRef pelo zoom médio e a latitude dela, e escolha o ritmo.
+  // O RITMO (regência › _agua_direcao_23 › correnteza[].ritmo): LENTA = o rio baixo (espaçada: trecho curto); CHEIA = o rio cheio
+  //   (rápida e cheia: trecho longo); BASE = "nem o lento do rio baixo da s37 nem o rápido da cheia da s38", para as cenas sem nível
+  //   dito. O período (de um começo de luz ao próximo) é o MESMO nos três ritmos: só a velocidade e o comprimento do trecho mudam,
+  //   e assim a troca de ritmo no meio da cena (a s38 em "runs") não faz a luz pular.
+  // FASE 2 (peru-agua-arte-17, 23/10/2026, os ajustes do Lucas tirados da prova): o --agua-luz passou a quase branco (só no
+  //   tokens.css: a cena lê o token), e o trecho claro ficou mais longo para se ler no celular na linha fina do rio baixo (LENTA 280 →
+  //   380 px; BASE 380 → 450; CHEIA 550 → 600). A luz continua opaca, a cor da própria linha: brilho máximo 1, sem alfa.
+  var CORRENTEZA = {
+    zoomRef: 13.4, latRef: -12.02,   // a escala em que os px abaixo valem (a s37/s38: o zoom médio do plano, no centro de Lima)
+    periodoPx: 1100,                 // de um trecho claro ao seguinte, em px de tela na escala de referência
+    LENTA: { velPx: 220, luzPx: 380 },   // px/s e px de trecho claro: o rio baixo (s37, e a s38 antes de "runs")
+    BASE:  { velPx: 420, luzPx: 450 },   // o ritmo de base (as cenas sem nível dito; não usado aqui, é a referência da fase 2)
+    CHEIA: { velPx: 720, luzPx: 600 },   // o rio cheio (a s38 depois de "runs")
+    subida: 0.45,                    // a fração do trecho em que a luz cresce (a cauda, rio acima)
+    frente: 0.15,                    // a fração final em que ela cai (a frente, rio abaixo: curta, a luz "aponta" para o mar);
+                                     // no meio, a luz inteira (o patamar), para o trecho se ler numa linha fina de 6 px
+    passoPx: 12                      // o tamanho máximo de cada pedaço de linha, em px de tela (a luz fica lisa, sem degrau)
+  };
+  // metros de chão por px de tela no MapLibre (ladrilho de 512 px), no zoom z e na latitude lat
+  function kmPorPx(z, lat) { return 40075.016686 * Math.cos(lat * Math.PI / 180) / (512 * Math.pow(2, z)); }
+  // a velocidade (km/s), o período (km) e o comprimento do trecho claro (fração do período) de um ritmo
+  function ritmoEmKm(r) {
+    var k = kmPorPx(CORRENTEZA.zoomRef, CORRENTEZA.latRef);
+    return { vel: r.velPx * k, periodo: CORRENTEZA.periodoPx * k, luz: r.luzPx / CORRENTEZA.periodoPx };
+  }
+  // a integral de 0 a t do smoothstep que vai de 0 a 1 entre t0 e t0 + d (em segundos): quanto tempo "de cheia" já correu.
+  // A posição da luz é a integral da velocidade: assim a troca de ritmo acelera a luz, nunca a teletransporta.
+  function integralSuave(t, t0, d) {
+    if (t <= t0) return 0;
+    if (t >= t0 + d) return d / 2 + (t - t0 - d);
+    var p = (t - t0) / d; return d * (p * p * p - p * p * p * p / 2);
+  }
+  // o brilho (0 a 1) da correnteza no km do rio, com a luz já andada S (km) e o trecho claro de fração luz do período (km):
+  // a cauda cresce devagar rio acima, o meio fica aceso, e a frente cai rápido rio abaixo (a luz "aponta" para o mar)
+  function brilhoCorrenteza(km, S, periodo, luz) {
+    var u = (km - S) / periodo; u = u - Math.floor(u);
+    if (u >= luz) return 0;
+    var x = u / luz, y = Math.min(1, x / CORRENTEZA.subida, (1 - x) / CORRENTEZA.frente);
+    return y * y * (3 - 2 * y);
+  }
+  // a cor opaca da linha com o brilho b: a mistura de --agua (b = 0) e --agua-luz (b = 1), em rgb
+  function corDaAgua(cores, b) {
+    var a = cores.agua, l = cores.luz;
+    return "rgb(" + Math.round(a[0] + (l[0] - a[0]) * b) + "," + Math.round(a[1] + (l[1] - a[1]) * b) + "," + Math.round(a[2] + (l[2] - a[2]) * b) + ")";
+  }
+  function rgbDe(css) { var m = /rgba?\(([^)]*)\)/.exec(css || ""); return m ? m[1].split(",").slice(0, 3).map(Number) : [0, 0, 0]; }
+  // ═══ fim do bloco da correnteza ═══
+
   // o rio: a geometria do OSM (rio-rimac, relation/4637139), de montante (0 km) à foz; o km acumulado de cada vértice
   var RIO_C = null, RIO_KM = null;
   function prepararRio() {
@@ -564,34 +634,56 @@
     }
     return true;
   }
+  // A CORRENTEZA DO RÍMAC no tempo ABSOLUTO T: a luz andada S(km) = lenta desde T0 + (cheia − lenta) × o tempo de cheia já
+  // corrido naquele km (integralCheia(km), em s; null = nada de cheia, a s37 inteira). O trecho claro vai do LENTO ao CHEIO com o
+  // mesmo engrosso e(km) que engrossa a linha: a cheia chega a cada trecho junto com a grossura.
+  var CR_L = null, CR_C = null;
+  function correntezaRimac(T, integralCheia) {
+    if (!CR_L) { CR_L = ritmoEmKm(CORRENTEZA.LENTA); CR_C = ritmoEmKm(CORRENTEZA.CHEIA); }
+    return function (km, e) {
+      var S = CR_L.vel * (T - RIM.T0) + (integralCheia ? (CR_C.vel - CR_L.vel) * integralCheia(km) : 0);
+      return brilhoCorrenteza(km, S, CR_L.periodo, CR_L.luz + (CR_C.luz - CR_L.luz) * e);
+    };
+  }
   // desenha o rio no canvas sobre o mapa, em coordenadas de tela (map.project), com a largura de cada trecho dada por
   // engrosso(km) ∈ [0, 1] (0 = fino, 1 = grosso). O contorno escuro vai num buffer OPACO, colado UMA vez com o alfa do papel
-  // (trecho por trecho, as pontas redondas se somariam em contas escuras); depois a linha em --destaque.
+  // (trecho por trecho, as pontas redondas se somariam em contas escuras); depois a linha em --agua, em pedaços de até
+  // CORRENTEZA.passoPx, cada um com a cor opaca da correnteza (brilho(km, e), de correntezaRimac).
   var COR_RIO = null, BUF_RIO = null;
-  function desenharRio(cv, engrosso, opac) {
+  function desenharRio(cv, engrosso, opac, brilho) {
     if (!cv || !map || !RIO_C) return;
     var ctx = cv.getContext("2d"); ctx.clearRect(0, 0, cv.width, cv.height);
     if (opac <= 0) return;
     if (!COR_RIO) {
       var sob = corDe("--fronteira-contorno-cor"), m = /rgba?\(([^)]*)\)/.exec(sob), v = m ? m[1].split(",").map(Number) : [0, 0, 0, 0.6];
-      COR_RIO = { sob: "rgb(" + v[0] + "," + v[1] + "," + v[2] + ")", sobAlfa: v.length > 3 ? v[3] : 1, linha: corDe("--destaque") };
+      COR_RIO = { sob: "rgb(" + v[0] + "," + v[1] + "," + v[2] + ")", sobAlfa: v.length > 3 ? v[3] : 1,
+                  agua: { agua: rgbDe(corDe("--agua")), luz: rgbDe(corDe("--agua-luz")) } };
       BUF_RIO = document.createElement("canvas"); BUF_RIO.width = cv.width; BUF_RIO.height = cv.height;
     }
     var P = RIO_C.map(function (c) { return map.project(c); });
-    function tracar(c2, cor, w0, w1) {
-      c2.strokeStyle = cor; c2.lineCap = "round"; c2.lineJoin = "round";
-      for (var i = 1; i < P.length; i++) {
-        var a = P[i - 1], q = P[i];
-        if ((a.x < -200 && q.x < -200) || (a.x > 4040 && q.x > 4040) || (a.y < -200 && q.y < -200) || (a.y > 2360 && q.y > 2360)) continue;
-        var e = engrosso((RIO_KM[i - 1] + RIO_KM[i]) / 2);
-        c2.lineWidth = w0 + (w1 - w0) * e;
-        c2.beginPath(); c2.moveTo(a.x, a.y); c2.lineTo(q.x, q.y); c2.stroke();
+    function fora(a, q) { return (a.x < -200 && q.x < -200) || (a.x > 4040 && q.x > 4040) || (a.y < -200 && q.y < -200) || (a.y > 2360 && q.y > 2360); }
+    // o contorno escuro: trecho a trecho, no buffer opaco
+    var b = BUF_RIO.getContext("2d"); b.clearRect(0, 0, BUF_RIO.width, BUF_RIO.height);
+    b.strokeStyle = COR_RIO.sob; b.lineCap = "round"; b.lineJoin = "round";
+    for (var i = 1; i < P.length; i++) {
+      if (fora(P[i - 1], P[i])) continue;
+      b.lineWidth = RIM.finoSob + (RIM.grossoSob - RIM.finoSob) * engrosso((RIO_KM[i - 1] + RIO_KM[i]) / 2);
+      b.beginPath(); b.moveTo(P[i - 1].x, P[i - 1].y); b.lineTo(P[i].x, P[i].y); b.stroke();
+    }
+    ctx.globalAlpha = COR_RIO.sobAlfa * opac; ctx.drawImage(BUF_RIO, 0, 0);
+    // a linha da água, com a correnteza: cada trecho em pedaços curtos, a largura do trecho e a cor de cada pedaço
+    ctx.globalAlpha = opac; ctx.lineCap = "round"; ctx.lineJoin = "round";
+    for (var j = 1; j < P.length; j++) {
+      var a = P[j - 1], q = P[j]; if (fora(a, q)) continue;
+      var k0 = RIO_KM[j - 1], k1 = RIO_KM[j], e = engrosso((k0 + k1) / 2);
+      ctx.lineWidth = RIM.fino + (RIM.grosso - RIM.fino) * e;
+      var n = Math.max(1, Math.ceil(Math.sqrt((q.x - a.x) * (q.x - a.x) + (q.y - a.y) * (q.y - a.y)) / CORRENTEZA.passoPx));
+      for (var s = 0; s < n; s++) {
+        var u0 = s / n, u1 = (s + 1) / n, km = k0 + (k1 - k0) * (s + 0.5) / n;
+        ctx.strokeStyle = corDaAgua(COR_RIO.agua, brilho ? brilho(km, e) : 0);
+        ctx.beginPath(); ctx.moveTo(a.x + (q.x - a.x) * u0, a.y + (q.y - a.y) * u0); ctx.lineTo(a.x + (q.x - a.x) * u1, a.y + (q.y - a.y) * u1); ctx.stroke();
       }
     }
-    var b = BUF_RIO.getContext("2d"); b.clearRect(0, 0, BUF_RIO.width, BUF_RIO.height);
-    tracar(b, COR_RIO.sob, RIM.finoSob, RIM.grossoSob);
-    ctx.globalAlpha = COR_RIO.sobAlfa * opac; ctx.drawImage(BUF_RIO, 0, 0);
-    ctx.globalAlpha = opac; tracar(ctx, COR_RIO.linha, RIM.fino, RIM.grosso);
     ctx.globalAlpha = 1;
   }
   // a pílula 'Rímac': presa ao vértice-âncora, acima do rio; o mesmo lugar e o mesmo tamanho dos dois lados do corte
@@ -603,11 +695,15 @@
 
   // ═══ b0: a cheia que desce o rio (o engrossar) ═══
   var KM_A = null, KM_B = null;
+  function chegadaCheia(km) {   // o instante em que a frente da cheia chega ao km (de 2,10 na borda de montante a 2,55 na cidade)
+    return km <= KM_A ? T.cheia : (km >= KM_B ? T.cheiaFim : lerp(T.cheia, T.cheiaFim, (km - KM_A) / (KM_B - KM_A)));
+  }
   function engrossoEm(t) {
-    return function (km) {
-      var tc = km <= KM_A ? T.cheia : (km >= KM_B ? T.cheiaFim : lerp(T.cheia, T.cheiaFim, (km - KM_A) / (KM_B - KM_A)));
-      var p = seg(t, tc, T.cheiaSobe); return p * p * (3 - 2 * p);
-    };
+    return function (km) { var p = seg(t, chegadaCheia(km), T.cheiaSobe); return p * p * (3 - 2 * p); };
+  }
+  // peru-agua-arte-17: a correnteza acelera com a mesma frente (o mesmo smoothstep do engrosso): o tempo de cheia já corrido no km
+  function integralCheiaEm(t) {
+    return function (km) { return integralSuave(t, chegadaCheia(km), T.cheiaSobe); };
   }
 
   // ═══ b2: as lagoas ═══
@@ -616,6 +712,7 @@
     var u = clamp((t - T.lagoas) / (DUR - T.lagoas), 0, 1);
     return { center: LAG.c, zoom: lerp(LAG.z0, LAG.z1, u), bearing: lerp(LAG.b0, LAG.b1, u), pitch: 0 };
   }
+  var LAGOA_OPAC = 0.58;   // arte-17 fase 2 (Lucas): lagoa e represa paradas a 55–60 % (era 0,35)
   var MARCA_ANC = null;   // o lado leste da lagoa de Marcapomacocha, na latitude média dela
   var COR = null;
   window.__fotosProntas = true;
@@ -628,12 +725,12 @@
     var anel = mp.geometry.coordinates[0], lon = -999, lat = 0;
     anel.forEach(function (c) { if (c[0] > lon) lon = c[0]; lat += c[1] / anel.length; });
     MARCA_ANC = [lon, lat];
-    COR = { contra: corDe("--contraparte"), sob: corDe("--fronteira-contorno-cor") };
+    COR = { agua: corDe("--agua"), sob: corDe("--fronteira-contorno-cor") };   // peru-agua-arte-17: as lagoas em --agua, paradas
     iniciarMapa({ geos: ["rio-rimac", "lagoas-marcapomacocha-antacoto"], fontes: { lagoas: L },
       camadas: [
-        { id: "lag-fill", type: "fill", source: "lagoas", paint: { "fill-color": COR.contra, "fill-opacity": 0 } },
+        { id: "lag-fill", type: "fill", source: "lagoas", paint: { "fill-color": COR.agua, "fill-opacity": 0 } },
         { id: "lag-sob", type: "line", source: "lagoas", layout: { "line-join": "round", "line-cap": "round" }, paint: { "line-color": COR.sob, "line-width": 14, "line-opacity": 0 } },
-        { id: "lag-lin", type: "line", source: "lagoas", layout: { "line-join": "round", "line-cap": "round" }, paint: { "line-color": COR.contra, "line-width": 6, "line-opacity": 0 } }
+        { id: "lag-lin", type: "line", source: "lagoas", layout: { "line-join": "round", "line-cap": "round" }, paint: { "line-color": COR.agua, "line-width": 6, "line-opacity": 0 } }
       ], c0: cameraRimac(IN), creditoMapa: TEXTOS.crMapa });
   })();
   var opAntes = {};
@@ -705,12 +802,13 @@
     if (mp) mp.style.opacity = b1 ? "0" : "1";
     // a câmera do mapa: o Rímac no b0; as lagoas no b2 (e paradas no enquadramento de 9,4 durante a mesa, para pedir os tiles)
     if (map && mapaCarregado) map.jumpTo(b0 ? cameraRimac(IN + t) : cameraLagoas(Math.max(t, T.lagoas)));
-    if (mapaCarregado) desenharRio(E("rio"), engrossoEm(t), b0 ? 1 : 0);
+    // o rio (b0): fino e LENTO, e em "runs" grosso e CHEIO, a correnteza no tempo absoluto (continua a da s37, sem pular)
+    if (mapaCarregado) desenharRio(E("rio"), engrossoEm(t), b0 ? 1 : 0, b0 ? correntezaRimac(IN + t, integralCheiaEm(t)) : null);
     var rr = E("rotRimac"); if (rr) { rr.style.opacity = b0 ? "1" : "0"; if (b0) porPilulaRimac(rr, 0); }
     var lm = E("legMes"); if (lm) { var q = b0 ? eo(seg(t, T.mes, 0.3)) : 0; lm.style.opacity = q.toFixed(3); lm.style.transform = "translate(200px," + f2(160 + 24 * (1 - q)) + "px)"; }
     // b2: as lagoas acendem em 500 ms; a pílula e a legenda
     var fl = b2 ? eo(seg(t, T.lagoas, 0.5)) : 0;
-    opac("lag-fill", "fill-opacity", +(0.35 * fl).toFixed(3)); opac("lag-sob", "line-opacity", +fl.toFixed(3)); opac("lag-lin", "line-opacity", +fl.toFixed(3));
+    opac("lag-fill", "fill-opacity", +(LAGOA_OPAC * fl).toFixed(3)); opac("lag-sob", "line-opacity", +fl.toFixed(3)); opac("lag-lin", "line-opacity", +fl.toFixed(3));
     var rl = E("rotLaguna");
     if (rl) {
       if (b2 && map && mapaCarregado && MARCA_ANC) {

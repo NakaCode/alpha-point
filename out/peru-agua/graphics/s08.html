@@ -30,6 +30,20 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px (--fs-credito) a cena toda, com data-qc-credito="mapa" só no próprio
   elemento (cobre o OSM do Rímac e dos rios). Acima dele, sem a marca de mapa: 'Source: ANA (Peru), 2014' de 1,1 ao fim.
   HydroBASINS: nada na tela (o Exhibit B da WWF vai na descrição).
+  CONSERTO peru-agua-arte-17 (mapista, lote M-A, 23/10/2026; regência direcao-23 4ea3b5b0; identidade §2, "A água é azul, e corre"; a
+  prova aprovada pelo Lucas às 03:1x). Mudou só a ÁGUA:
+    · os rios curtos do Pacífico e o Rímac passam de --destaque a --agua, com a CORRENTEZA no ritmo de base (o bloco da referência do
+      EO-A, copiado inteiro, com o adaptador do M-A ao MapLibre: a cor de cada pedaço da linha), da serra ao mar (oeste); a luz cobre
+      no máximo 1/3 de cada rio (longe), e o período é ≥ 3 × a luz.
+    · A LARGURA DE LONGE (o acréscimo da Sala, 03:3x): toda a água aqui é vista de longe (zoom < 11): 12 px de --agua sobre 24 de
+      escuro (o --fronteira-contorno-cor de sempre sob os rios); o Rímac, o mais grosso, a 18/30 (era 10/18; os rios curtos 4/10).
+    · A CADEIA s06 → s08 → s09: os rios curtos e o Rímac correm no tempo ABSOLUTO do master (T0 = 78,067, 'dozens' da s06), com as
+      mesmas larguras e a mesma escala (z 10,3) nas três cenas: a luz e as camadas do último quadro de uma são as do 1º da seguinte.
+    · Os pedaços da linha têm ponta reta (eles se emendam sem sobrepor), e por isso a água esmaece sem contas nas emendas.
+    · Nada mais mudou: a câmera, o relevo, a divisória, a pílula, a cota e os créditos.
+    · RODADA 2 (M-A): os pedaços da linha passaram a ponta REDONDA (a reta abria fendas nas emendas e picotava os rios de várias
+      partes) e só aparecem com opacidade 1; o rio de fundo escurece pela COR (misturada ao escuro do contorno, com a correnteza viva)
+      e, nos esmaecimentos de entrada e saída, uma linha lisa em --agua (sem correnteza) assume só enquanto eles duram.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -80,6 +94,233 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
 <script>
 (function () {
   "use strict";
+  // ═══ A CORRENTEZA — o modelo das cenas de água do vídeo (peru-agua-arte-17; identidade §2; regência › _agua_direcao_23) ═══
+  // O QUE É: um trecho MAIS CLARO da própria linha da água (--agua-luz sobre --agua) que desce no sentido da água e se repete.
+  //   É a COR da linha que muda, peça a peça (a linha é desenhada em pedaços curtos, cada um com a mistura opaca das duas cores):
+  //   luz na linha, nunca partícula, nunca brilho por cima, nunca alfa (pedaços com alfa somariam contas nas pontas redondas).
+  // ONDE MORA A LUZ: no CHÃO, não na tela. A posição é medida em km ao longo do rio (de montante = 0 até a foz) e anda a uma
+  //   velocidade em km/s; com a câmera que aproxima ou recua, a luz continua presa à água, como a linha.
+  // OS PARÂMETROS são dados em px de TELA na escala de referência (zoomRef, latRef: o zoom médio da cena) e convertidos a km uma
+  //   vez, por kmPorPx(). Para outra cena: troque zoomRef/latRef pelo zoom médio e a latitude dela, e escolha o ritmo.
+  // O RITMO (regência › _agua_direcao_23 › correnteza[].ritmo): LENTA = o rio baixo (espaçada: trecho curto); CHEIA = o rio cheio
+  //   (rápida e cheia: trecho longo); BASE = "nem o lento do rio baixo da s37 nem o rápido da cheia da s38", para as cenas sem nível
+  //   dito. O período (de um começo de luz ao próximo) é o MESMO nos três ritmos: só a velocidade e o comprimento do trecho mudam,
+  //   e assim a troca de ritmo no meio da cena (a s38 em "runs") não faz a luz pular.
+  // FASE 2 (peru-agua-arte-17, 23/10/2026, os ajustes do Lucas tirados da prova): o --agua-luz passou a quase branco (só no
+  //   tokens.css: a cena lê o token), e o trecho claro ficou mais longo para se ler no celular na linha fina do rio baixo (LENTA 280 →
+  //   380 px; BASE 380 → 450; CHEIA 550 → 600). A luz continua opaca, a cor da própria linha: brilho máximo 1, sem alfa.
+  var CORRENTEZA = {
+    zoomRef: 13.4, latRef: -12.02,   // a escala em que os px abaixo valem (a s37/s38: o zoom médio do plano, no centro de Lima)
+    periodoPx: 1100,                 // de um trecho claro ao seguinte, em px de tela na escala de referência
+    LENTA: { velPx: 220, luzPx: 380 },   // px/s e px de trecho claro: o rio baixo (s37, e a s38 antes de "runs")
+    BASE:  { velPx: 420, luzPx: 450 },   // o ritmo de base (as cenas sem nível dito; não usado aqui, é a referência da fase 2)
+    CHEIA: { velPx: 720, luzPx: 600 },   // o rio cheio (a s38 depois de "runs")
+    subida: 0.45,                    // a fração do trecho em que a luz cresce (a cauda, rio acima)
+    frente: 0.15,                    // a fração final em que ela cai (a frente, rio abaixo: curta, a luz "aponta" para o mar);
+                                     // no meio, a luz inteira (o patamar), para o trecho se ler numa linha fina de 6 px
+    passoPx: 12                      // o tamanho máximo de cada pedaço de linha, em px de tela (a luz fica lisa, sem degrau)
+  };
+  // metros de chão por px de tela no MapLibre (ladrilho de 512 px), no zoom z e na latitude lat
+  function kmPorPx(z, lat) { return 40075.016686 * Math.cos(lat * Math.PI / 180) / (512 * Math.pow(2, z)); }
+  // a velocidade (km/s), o período (km) e o comprimento do trecho claro (fração do período) de um ritmo
+  function ritmoEmKm(r) {
+    var k = kmPorPx(CORRENTEZA.zoomRef, CORRENTEZA.latRef);
+    return { vel: r.velPx * k, periodo: CORRENTEZA.periodoPx * k, luz: r.luzPx / CORRENTEZA.periodoPx };
+  }
+  // a integral de 0 a t do smoothstep que vai de 0 a 1 entre t0 e t0 + d (em segundos): quanto tempo "de cheia" já correu.
+  // A posição da luz é a integral da velocidade: assim a troca de ritmo acelera a luz, nunca a teletransporta.
+  function integralSuave(t, t0, d) {
+    if (t <= t0) return 0;
+    if (t >= t0 + d) return d / 2 + (t - t0 - d);
+    var p = (t - t0) / d; return d * (p * p * p - p * p * p * p / 2);
+  }
+  // o brilho (0 a 1) da correnteza no km do rio, com a luz já andada S (km) e o trecho claro de fração luz do período (km):
+  // a cauda cresce devagar rio acima, o meio fica aceso, e a frente cai rápido rio abaixo (a luz "aponta" para o mar)
+  function brilhoCorrenteza(km, S, periodo, luz) {
+    var u = (km - S) / periodo; u = u - Math.floor(u);
+    if (u >= luz) return 0;
+    var x = u / luz, y = Math.min(1, x / CORRENTEZA.subida, (1 - x) / CORRENTEZA.frente);
+    return y * y * (3 - 2 * y);
+  }
+  // a cor opaca da linha com o brilho b: a mistura de --agua (b = 0) e --agua-luz (b = 1), em rgb
+  function corDaAgua(cores, b) {
+    var a = cores.agua, l = cores.luz;
+    return "rgb(" + Math.round(a[0] + (l[0] - a[0]) * b) + "," + Math.round(a[1] + (l[1] - a[1]) * b) + "," + Math.round(a[2] + (l[2] - a[2]) * b) + ")";
+  }
+  function rgbDe(css) { var m = /rgba?\(([^)]*)\)/.exec(css || ""); return m ? m[1].split(",").slice(0, 3).map(Number) : [0, 0, 0]; }
+  // ═══ fim do bloco da correnteza ═══
+  // ═══ M-A (peru-agua-arte-17): A ÁGUA NAS CAMADAS DO MAPLIBRE — a correnteza da referência e a largura pelo zoom ═══
+  // O bloco "A CORRENTEZA" (acima, copiado inteiro da referência do EO-A) dá o brilho; aqui ele vira a COR de cada pedaço de
+  // uma camada de linha do MapLibre: a linha da água vai em pedaços curtos (até CORRENTEZA.passoPx de tela na escala do
+  // elemento), e cada pedaço leva a propriedade "b" (o brilho), que a cor interpola de --agua (0) a --agua-luz (1). É a cor
+  // opaca da própria linha: sem alfa, sem camada por cima, sem partícula. Vale igual no mapa plano e no relevo (a camada é
+  // drapejada como as outras).
+  // A ESCALA: cada elemento de água tem a sua (zoomRef, latRef = o zoom e a latitude em que ELE é visto), porque a mesma cena
+  //   passa por escalas muito diferentes (a gota da s06 desce o Rímac a z ~10 e o Amazonas a z ~4,5); os px da referência
+  //   valem na escala de cada um.
+  // LONGE (zoom < 11; acréscimo da Sala, 23/10/2026): o trecho claro cobre no máximo 1/3 do rio (luz ≤ L/3, por rio), e o
+  //   período é no mínimo 3 × a luz. A LARGURA: abaixo do zoom 11, o piso de 12 px de --agua sobre 24 px de escuro (o token
+  //   escuro que a cena já usa sob a linha); de 11,25 para cima, as larguras de perto; entre os dois, uma rampa linear.
+  var AGUA_PISO = { w: 12, sob: 24, z0: 10.75, z1: 11.25 };
+  function aguaLargura(perto, piso) {
+    var lo = Math.max(perto, piso);
+    return lo === perto ? perto : ["interpolate", ["linear"], ["zoom"], AGUA_PISO.z0, lo, AGUA_PISO.z1, perto];
+  }
+  function aguaKm(a, b) {
+    var R = 6371.0088, f1 = a[1] * Math.PI / 180, f2 = b[1] * Math.PI / 180, df = f2 - f1, dl = (b[0] - a[0]) * Math.PI / 180;
+    var h = Math.sin(df / 2) * Math.sin(df / 2) + Math.cos(f1) * Math.cos(f2) * Math.sin(dl / 2) * Math.sin(dl / 2);
+    return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
+  }
+  // rios: lista de linhas ([lng, lat], ...), cada uma JÁ no sentido da água (de montante à foz).
+  // o: { ritmo: "BASE" | "LENTA" | "CHEIA", zoomRef, latRef, longe: bool, T0: o tempo em que a 1ª luz sai da nascente,
+  //      fase: bool (rios de uma mesma camada saem defasados, para não correrem em uníssono) }
+  function aguaCriar(rios, o) {
+    var R = CORRENTEZA[o.ritmo || "BASE"], k = kmPorPx(o.zoomRef, o.latRef), passo = CORRENTEZA.passoPx * k;
+    var obj = { o: o, vel: R.velPx * k, rios: [], pecas: [] };
+    rios.forEach(function (c, i) {
+      if (!c || c.length < 2) return;
+      var acc = [0];
+      for (var j = 1; j < c.length; j++) acc.push(acc[j - 1] + aguaKm(c[j - 1], c[j]));
+      var L = acc[acc.length - 1], luz = R.luzPx * k, per = CORRENTEZA.periodoPx * k;
+      // longe: o período do rio é L / n (n trechos inteiros cabem nele, cada um ≥ max(período, 3 × luz)), e assim nenhuma janela
+      // do rio inteiro tem mais que 1/3 de luz, seja qual for a fase
+      if (o.longe) { luz = Math.min(luz, L / 3); per = L / Math.max(1, Math.floor(L / Math.max(per, 3 * luz))); }
+      var ri = { i: i, c: c, acc: acc, L: L, luz: luz, per: per, fase: o.fase ? ((i * 0.6180339887) % 1) * per : 0, kc: 0 };
+      obj.rios.push(ri);
+      var n = Math.max(1, Math.ceil(L / passo));
+      for (var p = 0; p < n; p++) obj.pecas.push({ r: ri, k0: L * p / n, k1: L * (p + 1) / n });
+    });
+    // o.cadeias: as partes de um mesmo rio (listas de índices de rios, de montante à foz), que a geometria traz cortadas (o
+    // Putumayo e o Javari, recortados pela fronteira, vêm em 77 e 40 pedaços): a luz corre pela cadeia inteira, com o km somado
+    // (kc = o km da cadeia onde a parte começa), e a escala da luz, a regra do 1/3 e a fase são as da cadeia
+    (o.cadeias || []).forEach(function (cad, ic) {
+      var porI = {}; obj.rios.forEach(function (ri) { porI[ri.i] = ri; });
+      var partes = cad.map(function (i) { return porI[i]; }).filter(Boolean), Lc = 0;
+      partes.forEach(function (ri) { ri.kc = Lc; Lc += ri.L; });
+      var luz = R.luzPx * k, per = CORRENTEZA.periodoPx * k;
+      if (o.longe) { luz = Math.min(luz, Lc / 3); per = Lc / Math.max(1, Math.floor(Lc / Math.max(per, 3 * luz))); }
+      var fase = o.fase ? ((ic * 0.6180339887) % 1) * per : 0;
+      partes.forEach(function (ri) { ri.luz = luz; ri.per = per; ri.fase = fase; });
+    });
+    return obj;
+  }
+  // o ponto da linha no km x, e os vértices entre os km a e b
+  function aguaTrecho(ri, a, b) {
+    var c = ri.c, acc = ri.acc, pts = [], j = 0;
+    function em(x) { while (j < acc.length - 2 && acc[j + 1] < x) j++; var s = acc[j + 1] - acc[j], f = s > 0 ? (x - acc[j]) / s : 0;
+      return [c[j][0] + (c[j + 1][0] - c[j][0]) * f, c[j][1] + (c[j + 1][1] - c[j][1]) * f]; }
+    pts.push(em(a));
+    while (j < acc.length - 1 && acc[j + 1] < b) { pts.push(c[j + 1]); j++; }
+    pts.push(em(b));
+    return pts;
+  }
+  // o GeoJSON dos pedaços no tempo T; ate(ri, i) = o km até onde o rio i está desenhado (o traço que cresce), ou null = inteiro
+  function aguaDados(obj, T, ate) {
+    var fs = [], idx = new Map();
+    obj.rios.forEach(function (ri, i) { idx.set(ri, i); });
+    obj.pecas.forEach(function (pc) {
+      var ri = pc.r, lim = ate ? ate(ri, idx.get(ri)) : ri.L;
+      if (lim == null) lim = ri.L;
+      if (lim <= pc.k0) return;
+      var k1 = Math.min(pc.k1, lim);
+      var S = obj.vel * (T - obj.o.T0) - ri.luz - ri.fase;
+      var b = brilhoCorrenteza(ri.kc + (pc.k0 + k1) / 2, S, ri.per, ri.luz / ri.per);
+      fs.push({ type: "Feature", properties: { b: Math.round(b * 100) / 100 }, geometry: { type: "LineString", coordinates: aguaTrecho(ri, pc.k0, k1) } });
+    });
+    return { type: "FeatureCollection", features: fs };
+  }
+  // a fração do rio coberta pelo trecho claro (b > 0) no tempo T, a mais alta entre os rios (para o relato)
+  function aguaFracaoLuz(obj, T) {
+    var m = 0;
+    obj.rios.forEach(function (ri) {
+      var S = obj.vel * (T - obj.o.T0) - ri.luz - ri.fase, aceso = 0, n = 400;
+      for (var q = 0; q < n; q++) { var x = ri.L * (q + 0.5) / n; if (brilhoCorrenteza(x, S, ri.per, ri.luz / ri.per) > 0) aceso++; }
+      m = Math.max(m, aceso / n);
+    });
+    return m;
+  }
+  // TRÊS camadas por elemento: o contorno escuro (id + "-sob", a geometria inteira ou a que cresce, fonte id + "-g"), a linha
+  // LISA (id + "-plano", a mesma geometria, --agua sem correnteza) e a linha em PEDAÇOS com a correnteza (a camada dos pedaços,
+  // fonte id). Os pedaços têm ponta REDONDA (sem fenda nas emendas nem entre as partes de um rio), e por isso só aparecem com
+  // opacidade 1: duas pontas redondas sobrepostas a meia opacidade somariam contas. Para escurecer um rio de fundo (a s08 baixa os
+  // rios curtos a 35 %), a cor dos pedaços se mistura ao escuro do contorno, com a correnteza viva; para entrar ou sair (opacidade
+  // entre 0 e 1), a linha lisa assume, sem correnteza, só enquanto dura o esmaecimento (aguaVer).
+  function aguaCores(sobCor) {
+    var cs = getComputedStyle(document.documentElement);
+    var c = { agua: cs.getPropertyValue("--agua").trim(), luz: cs.getPropertyValue("--agua-luz").trim(), sob: cs.getPropertyValue(sobCor || "--rotulo").trim() };
+    if (!c.agua || !c.luz || !c.sob) throw new Error("os tokens --agua, --agua-luz e " + (sobCor || "--rotulo") + " não foram lidos do tokens.css.");
+    c.rA = rgbHexOuRgb(c.agua); c.rL = rgbHexOuRgb(c.luz); c.rS = rgbHexOuRgb(c.sob);
+    return c;
+  }
+  function rgbHexOuRgb(css) {
+    var m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/i.exec(css);
+    return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : rgbDe(css);
+  }
+  function aguaMistura(a, s, k) { return "rgb(" + Math.round(s[0] + (a[0] - s[0]) * k) + "," + Math.round(s[1] + (a[1] - s[1]) * k) + "," + Math.round(s[2] + (a[2] - s[2]) * k) + ")"; }
+  function aguaCorPedacos(c, k) {
+    return k >= 0.999 ? ["interpolate", ["linear"], ["get", "b"], 0, c.agua, 1, c.luz]
+      : ["interpolate", ["linear"], ["get", "b"], 0, aguaMistura(c.rA, c.rS, k), 1, aguaMistura(c.rL, c.rS, k)];
+  }
+  function aguaEspecs(id, w, sob, op, c) {
+    return [
+      { id: id + "-sob", type: "line", source: id + "-g", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": c.sob, "line-width": aguaLargura(sob, AGUA_PISO.sob), "line-opacity": op, "line-opacity-transition": { duration: 0, delay: 0 } } },
+      { id: id + "-plano", type: "line", source: id + "-g", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": c.agua, "line-width": aguaLargura(w, AGUA_PISO.w), "line-opacity": 0, "line-opacity-transition": { duration: 0, delay: 0 } } },
+      { id: id + "-linha", type: "line", source: id, layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": aguaCorPedacos(c, 1), "line-width": aguaLargura(w, AGUA_PISO.w), "line-opacity": op >= 0.999 ? 1 : 0, "line-opacity-transition": { duration: 0, delay: 0 } } }
+    ];
+  }
+  // as camadas por addLayer (as cenas do motor da s51: s04 e s51)
+  function aguaCamadas(map, id, obj, o, antes, fontes) {
+    var c = aguaCores(o.sobCor), vazio = { type: "FeatureCollection", features: [] };
+    map.addSource(id + "-g", { type: "geojson", data: vazio }); map.addSource(id, { type: "geojson", data: vazio });
+    if (fontes) { fontes.push(id + "-g"); fontes.push(id); }
+    aguaEspecs(id, o.w, o.sob, 0, c).forEach(function (L) { map.addLayer(L, antes); });
+    aguaNome(obj, id); obj.cores = c;
+  }
+  // a visibilidade v (0 a 1: entra e sai) e o escuro k (1 = a cor da água; < 1 = o rio de fundo, misturado ao escuro do contorno)
+  function aguaVer(map, obj, v, k) {
+    v = Math.round(v * 1000) / 1000; k = k == null ? 1 : Math.round(k * 1000) / 1000;
+    var c = obj.cores, chave = v + "|" + k;
+    if (obj.ver === chave) return;
+    var cheio = v >= 0.999;
+    map.setPaintProperty(obj.id + "-sob", "line-opacity", Math.round(v * k * 1000) / 1000);   // o contorno do rio de fundo baixa com ele
+    map.setPaintProperty(obj.id + "-linha", "line-opacity", cheio ? 1 : 0);
+    map.setPaintProperty(obj.id + "-plano", "line-opacity", cheio ? 0 : v);
+    if (obj.k !== k) {
+      map.setPaintProperty(obj.id + "-linha", "line-color", aguaCorPedacos(c, k));
+      map.setPaintProperty(obj.id + "-plano", "line-color", k >= 0.999 ? c.agua : aguaMistura(c.rA, c.rS, k));
+      obj.k = k;
+    }
+    obj.ver = chave;
+  }
+  // o quadro: a geometria do contorno (a que cresce) e os pedaços com a cor do tempo T (só enquanto os pedaços se veem)
+  function aguaQuadro(map, obj, T, ate) {
+    var kg = ate ? obj.rios.map(function (ri, i) { var v = ate(ri, i); return v == null ? "x" : v.toFixed(3); }).join(",") : "tudo";
+    if (obj.chaveG !== kg) {
+      var g = map.getSource(obj.id + "-g");
+      if (g) g.setData({ type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: obj.rios.map(function (ri, i) {
+        var v = ate ? ate(ri, i) : null; if (v == null) v = ri.L; return v > 0 ? aguaTrecho(ri, 0, Math.min(v, ri.L)) : null; }).filter(function (x) { return x && x.length > 1; }) } });
+      obj.chaveG = kg;
+    }
+    var k = T.toFixed(4) + "|" + kg;
+    if (obj.chave === k) return;
+    var s = map.getSource(obj.id); if (s) s.setData(aguaDados(obj, T, ate));
+    obj.chave = k;
+  }
+  // a mesma água nas cenas que montam o ESTILO de uma vez (s06, s08, s09): aguaFontesEstilo põe as fontes id (os pedaços) e
+  // id + "-g" (o contorno e a linha lisa), vazias; aguaCamadasEstilo devolve as três camadas; aguaNome dá ao objeto o id e as cores
+  function aguaFontesEstilo(fontes, ids) {
+    ids.forEach(function (id) { fontes[id] = { type: "geojson", data: { type: "FeatureCollection", features: [] } };
+      fontes[id + "-g"] = { type: "geojson", data: { type: "FeatureCollection", features: [] } }; });
+  }
+  function aguaCamadasEstilo(id, w, sob, op, sobCor) { return aguaEspecs(id, w, sob, op, aguaCores(sobCor)); }
+  function aguaNome(obj, id, sobCor) { obj.id = id; obj.chave = null; obj.chaveG = null; obj.ver = null; obj.k = 1;
+    if (!obj.cores) obj.cores = aguaCores(sobCor || obj.o.sobCor); return obj; }
+  // lago e represa (PARADOS): --agua a 0,58 no preenchimento, o contorno --agua 6 px sobre 14 escuros de perto, 12 sobre 24 de longe
+  var AGUA_PARADA = 0.58;
+  // ═══ fim da água no MapLibre (M-A) ═══
 
   // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
   // Tempos desta cena (0 = 82,167 s do master), do words.json: 'Lima's' 0,023 · 'own' 0,553 · 'river,' 0,713 · 'the' 1,138 ·
@@ -87,7 +328,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
   var DUR = 3.1;   // espelho.json › s08 › dur, literal (roupa §8)
   var CENA = {
     perfil: "maptiler",
-    fontes: ["div", "rios", "rimac"],
+    fontes: ["div", "rios", "rimac", "rios-g", "rimac-g"],   // arte-17: + os contornos da água
     // A CÂMERA DA s06, SEM CORTE: a última perna dela (L1 → L2, 20,43 → 29,1 s, linear em Mercator) continua no MESMO ritmo.
     // s08 t = 0 é a s06 t = 29,1 (u = 1); s08 t = 3,1 é u = (8,67 + 3,1) / 8,67 = 1,3576. A inclinação fica em 60°.
     L1: { lng: -76.760, lat: -11.855, zoom: 10.20, bearing: 53 },   // = s06 › CENA.pontos.L1
@@ -177,6 +418,15 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
   function km(a, b) { var la = (a[1] + b[1]) / 2 * Math.PI / 180; return Math.hypot((a[0] - b[0]) * 111.32 * Math.cos(la), (a[1] - b[1]) * 110.57); }
   function maisPerto(linha, p) { var bi = 0, bd = Infinity; for (var i = 0; i < linha.length; i++) { var d = km(linha[i], p); if (d < bd) { bd = d; bi = i; } } return bi; }
   var RIM_C = RIM.features[0].geometry.coordinates;
+  // arte-17: a água como a s06 a deixa (o tempo do master, a escala z 10,3, os rios da crista ao mar)
+  var INSEC = 82.167, T0_RIOS = 78.067;
+  var RPAC_C = [];
+  (RPAC.features || []).forEach(function (f) { var g = f.geometry, ps = g.type === "LineString" ? [g.coordinates] : g.type === "MultiLineString" ? g.coordinates : [];
+    ps.forEach(function (c) { c = c.slice(); if (c[0][0] < c[c.length - 1][0]) c.reverse(); RPAC_C.push(c); }); });
+  var AG = {
+    rios: aguaNome(aguaCriar(RPAC_C, { ritmo: "BASE", zoomRef: 10.3, latRef: -11.85, longe: true, T0: T0_RIOS, fase: true }), "rios"),
+    rimac: aguaNome(aguaCriar([RIM_C], { ritmo: "BASE", zoomRef: 10.3, latRef: -11.85, longe: true, T0: T0_RIOS }), "rimac")
+  };
 
   // ═══ A BASE COM O RELEVO, E AS CAMADAS (as da s06 que chegam acesas ao último quadro dela; as outras não existem aqui) ═══
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
@@ -187,21 +437,18 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
       base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
       dem: { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding },
       div: { type: "geojson", data: DIV },
-      rios: { type: "geojson", data: RPAC },
-      rimac: { type: "geojson", data: RIM }
     };
+    aguaFontesEstilo(fontes, ["rios", "rimac"]);   // arte-17
     var lc = { "line-join": "round", "line-cap": "round" };
     // a ordem e os valores são os da s06 (base, rios, Rímac, divisória por cima)
     var camadas = [
       { id: "base", type: "raster", source: "base",
         paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // = s06 (identidade §6, o tratamento C)
-      { id: "rios-sob", type: "line", source: "rios", layout: lc, paint: { "line-color": COR.sob, "line-width": 10, "line-opacity": 1 } },
-      { id: "rios", type: "line", source: "rios", layout: lc, paint: { "line-color": COR.destaque, "line-width": 4, "line-opacity": 1 } },
-      { id: "rimac-sob", type: "line", source: "rimac", layout: lc, paint: { "line-color": COR.sob, "line-width": 18, "line-opacity": 1 } },
-      { id: "rimac", type: "line", source: "rimac", layout: lc, paint: { "line-color": COR.destaque, "line-width": 10, "line-opacity": 1 } },
+    // arte-17: a água em --agua com a correnteza, 12/24 (o Rímac 18/30), como a s06 a deixa
+    ].concat(aguaCamadasEstilo("rios", 12, 24, 1, "--fronteira-contorno-cor"), aguaCamadasEstilo("rimac", 18, 30, 1, "--fronteira-contorno-cor"), [
       { id: "div-sob", type: "line", source: "div", layout: lc, paint: { "line-color": COR.sob, "line-width": 30 } },
       { id: "div", type: "line", source: "div", layout: lc, paint: { "line-color": COR.tinta, "line-width": 20 } }
-    ];
+    ]);
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
 
@@ -376,8 +623,8 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
     opac("div-sob", "line-width", CENA.divGrossa.sob[0] + (CENA.divGrossa.sob[1] - CENA.divGrossa.sob[0]) * fp);
     // os outros rios curtos baixam a 35 % até 'river,'; o Rímac fica cheio (o que a voz separa)
     var R = CENA.riosBaixam, vr = 1 - (1 - R.ate) * eio(seg(t, R.t0, R.t1 - R.t0));
-    opac("rios", "line-opacity", vr); opac("rios-sob", "line-opacity", vr);
-    opac("rimac", "line-opacity", 1); opac("rimac-sob", "line-opacity", 1);
+    aguaVer(map, AG.rios, 1, vr); aguaVer(map, AG.rimac, 1, 1);   // arte-17 (r2): os rios de fundo baixam a 35 % pela cor, a correnteza viva
+    aguaQuadro(map, AG.rios, INSEC + t, null); aguaQuadro(map, AG.rimac, INSEC + t, null);   // arte-17: o tempo do master
   }
 
   function aplicarCreditos(t) {

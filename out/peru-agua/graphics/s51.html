@@ -60,6 +60,26 @@
       932 × 592 (a moldura da miniatura de Caral, 900 × 560 + borda de 16): no fim, x ~1124–2056, y ~682–1274. Embaixo não cabe
       (passaria de y 1880), e à direita estão o túnel e o anel. Nada da cena passa por lá de 36,3 ao fim.
     · ELEMENTOS no b4 (máx.): linha, Chicama, túnel + anel, ponto e pílula Lima (5), com a miniatura futura 6.
+  CONSERTO peru-agua-arte-17 (mapista, lote M-A, 23/10/2026; as escolhas do Lucas de 23/10 sobre a linha do tempo; regência direcao-23
+  4ea3b5b0; textos-tela texto-17 53943561). Mudou só isto:
+    · b2, A CARTA DE FRÉZIER (o Lucas, 23/10, 00:4x, "Gravura de 1717 (Recomendado)"): a miniatura da carta gravada da baía do Callao
+      (_media/foto/s51/s51-frezier-rade-callao-1717-jcb-commons.jpg, sha256 c9a32c92…, JCB, domínio público; conferencia-midia:
+      aprovado para esta frase, o veredito da pesquisa-8, que casa pelo sha256) pousa em 12,6 ('in') como objeto (a mão que arruma,
+      a de Caral), À ESQUERDA da pílula 'Callao', sobre o mar, centrada na altura dela (embaixo não cabe: a miniatura e o rótulo
+      passariam de y 1880). O recorte do conferente, 1052 × 603 a partir de (589, 435): sem o cartucho do "Frezier 1713". A foto a
+      960 × 550 no palco (escala 0,91, só encolhe), na moldura --rotulo de 16 px (992 × 582). O rótulo 'Engraved chart, 1717' (o
+      aviso de outra data, papel aviso_ano, a legenda de 84 px, a do 'Photo from 2022' de Caral) sob a miniatura em 13,9 ('the'),
+      até 17,3 (sai em 300 ms, fora em 17,6); a miniatura levanta em 17,25 (fora em 17,6). Sem crédito na tela (domínio público).
+      ELEMENTOS no b2: linha, Callao (ponto + pílula), 1535, a miniatura, o rótulo, Lima (ponto + pílula) = 6, o teto.
+    · b4, A ÁGUA (identidade §2, "A água é azul, e corre"; a prova aprovada pelo Lucas às 03:1x): o Chicama e o túnel passam de
+      --contraparte a --agua, com a CORRENTEZA no ritmo de base (o bloco da referência do EO-A, copiado inteiro, com o adaptador do
+      M-A ao MapLibre: a cor de cada pedaço da linha): o Chicama da serra ao mar (oeste), o canal e o túnel da lagoa Marcapomacocha a
+      Milloc (leste → oeste). Na escala do b4 (z 7,25–7,75, LONGE), a luz cobre no máximo 1/3 de cada rio e o período é ≥ 3 × a luz.
+    · A LARGURA DE LONGE (o acréscimo da Sala, 03:3x): abaixo do zoom 11, a água a 12 px (o Chicama fica nos 13 de hoje) sobre 24 px
+      de escuro (--rotulo, o de hoje); o túnel, de 6/14, vai a 12/24. O resto do b4 (o anel, Lima, o push-in) não mudou.
+    · RODADA 2 (M-A): os pedaços da linha passaram a ponta REDONDA (a reta abria fendas nas emendas e picotava os rios de várias
+      partes) e só aparecem com opacidade 1; o rio de fundo escurece pela COR (misturada ao escuro do contorno, com a correnteza viva)
+      e, nos esmaecimentos de entrada e saída, uma linha lisa em --agua (sem correnteza) assume só enquanto eles duram.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -137,6 +157,9 @@
     <div class="rotulo liso" id="cota3000" data-qc-papel="rotulo">ABOUT 3000 B.C.</div>
     <div class="rotulo liso" id="rotCallao" data-qc-papel="rotulo">Callao</div>
     <div class="rotulo liso" id="cota1535" data-qc-papel="rotulo">1535</div>
+    <div class="sombra" id="sombraFrez"></div>
+    <div class="mini" id="miniFrez"><div class="moldura"></div><div class="janela"><img id="imgFrez" src="../_media/foto/s51/s51-frezier-rade-callao-1717-jcb-commons.jpg" alt=""></div></div>
+    <div class="rotulo legenda" id="avisoFrez" data-qc-papel="aviso_ano">Engraved chart, 1717</div>
     <div class="rotulo liso" id="rotLima" data-qc-papel="rotulo">Lima</div>
     <div class="rotulo liso" id="cota20" data-qc-papel="rotulo">20TH CENTURY</div>
     <div class="rotulo liso" id="rotLima4" data-qc-papel="rotulo">Lima</div>
@@ -151,6 +174,233 @@
 <script>
 (function () {
   "use strict";
+  // ═══ A CORRENTEZA — o modelo das cenas de água do vídeo (peru-agua-arte-17; identidade §2; regência › _agua_direcao_23) ═══
+  // O QUE É: um trecho MAIS CLARO da própria linha da água (--agua-luz sobre --agua) que desce no sentido da água e se repete.
+  //   É a COR da linha que muda, peça a peça (a linha é desenhada em pedaços curtos, cada um com a mistura opaca das duas cores):
+  //   luz na linha, nunca partícula, nunca brilho por cima, nunca alfa (pedaços com alfa somariam contas nas pontas redondas).
+  // ONDE MORA A LUZ: no CHÃO, não na tela. A posição é medida em km ao longo do rio (de montante = 0 até a foz) e anda a uma
+  //   velocidade em km/s; com a câmera que aproxima ou recua, a luz continua presa à água, como a linha.
+  // OS PARÂMETROS são dados em px de TELA na escala de referência (zoomRef, latRef: o zoom médio da cena) e convertidos a km uma
+  //   vez, por kmPorPx(). Para outra cena: troque zoomRef/latRef pelo zoom médio e a latitude dela, e escolha o ritmo.
+  // O RITMO (regência › _agua_direcao_23 › correnteza[].ritmo): LENTA = o rio baixo (espaçada: trecho curto); CHEIA = o rio cheio
+  //   (rápida e cheia: trecho longo); BASE = "nem o lento do rio baixo da s37 nem o rápido da cheia da s38", para as cenas sem nível
+  //   dito. O período (de um começo de luz ao próximo) é o MESMO nos três ritmos: só a velocidade e o comprimento do trecho mudam,
+  //   e assim a troca de ritmo no meio da cena (a s38 em "runs") não faz a luz pular.
+  // FASE 2 (peru-agua-arte-17, 23/10/2026, os ajustes do Lucas tirados da prova): o --agua-luz passou a quase branco (só no
+  //   tokens.css: a cena lê o token), e o trecho claro ficou mais longo para se ler no celular na linha fina do rio baixo (LENTA 280 →
+  //   380 px; BASE 380 → 450; CHEIA 550 → 600). A luz continua opaca, a cor da própria linha: brilho máximo 1, sem alfa.
+  var CORRENTEZA = {
+    zoomRef: 13.4, latRef: -12.02,   // a escala em que os px abaixo valem (a s37/s38: o zoom médio do plano, no centro de Lima)
+    periodoPx: 1100,                 // de um trecho claro ao seguinte, em px de tela na escala de referência
+    LENTA: { velPx: 220, luzPx: 380 },   // px/s e px de trecho claro: o rio baixo (s37, e a s38 antes de "runs")
+    BASE:  { velPx: 420, luzPx: 450 },   // o ritmo de base (as cenas sem nível dito; não usado aqui, é a referência da fase 2)
+    CHEIA: { velPx: 720, luzPx: 600 },   // o rio cheio (a s38 depois de "runs")
+    subida: 0.45,                    // a fração do trecho em que a luz cresce (a cauda, rio acima)
+    frente: 0.15,                    // a fração final em que ela cai (a frente, rio abaixo: curta, a luz "aponta" para o mar);
+                                     // no meio, a luz inteira (o patamar), para o trecho se ler numa linha fina de 6 px
+    passoPx: 12                      // o tamanho máximo de cada pedaço de linha, em px de tela (a luz fica lisa, sem degrau)
+  };
+  // metros de chão por px de tela no MapLibre (ladrilho de 512 px), no zoom z e na latitude lat
+  function kmPorPx(z, lat) { return 40075.016686 * Math.cos(lat * Math.PI / 180) / (512 * Math.pow(2, z)); }
+  // a velocidade (km/s), o período (km) e o comprimento do trecho claro (fração do período) de um ritmo
+  function ritmoEmKm(r) {
+    var k = kmPorPx(CORRENTEZA.zoomRef, CORRENTEZA.latRef);
+    return { vel: r.velPx * k, periodo: CORRENTEZA.periodoPx * k, luz: r.luzPx / CORRENTEZA.periodoPx };
+  }
+  // a integral de 0 a t do smoothstep que vai de 0 a 1 entre t0 e t0 + d (em segundos): quanto tempo "de cheia" já correu.
+  // A posição da luz é a integral da velocidade: assim a troca de ritmo acelera a luz, nunca a teletransporta.
+  function integralSuave(t, t0, d) {
+    if (t <= t0) return 0;
+    if (t >= t0 + d) return d / 2 + (t - t0 - d);
+    var p = (t - t0) / d; return d * (p * p * p - p * p * p * p / 2);
+  }
+  // o brilho (0 a 1) da correnteza no km do rio, com a luz já andada S (km) e o trecho claro de fração luz do período (km):
+  // a cauda cresce devagar rio acima, o meio fica aceso, e a frente cai rápido rio abaixo (a luz "aponta" para o mar)
+  function brilhoCorrenteza(km, S, periodo, luz) {
+    var u = (km - S) / periodo; u = u - Math.floor(u);
+    if (u >= luz) return 0;
+    var x = u / luz, y = Math.min(1, x / CORRENTEZA.subida, (1 - x) / CORRENTEZA.frente);
+    return y * y * (3 - 2 * y);
+  }
+  // a cor opaca da linha com o brilho b: a mistura de --agua (b = 0) e --agua-luz (b = 1), em rgb
+  function corDaAgua(cores, b) {
+    var a = cores.agua, l = cores.luz;
+    return "rgb(" + Math.round(a[0] + (l[0] - a[0]) * b) + "," + Math.round(a[1] + (l[1] - a[1]) * b) + "," + Math.round(a[2] + (l[2] - a[2]) * b) + ")";
+  }
+  function rgbDe(css) { var m = /rgba?\(([^)]*)\)/.exec(css || ""); return m ? m[1].split(",").slice(0, 3).map(Number) : [0, 0, 0]; }
+  // ═══ fim do bloco da correnteza ═══
+  // ═══ M-A (peru-agua-arte-17): A ÁGUA NAS CAMADAS DO MAPLIBRE — a correnteza da referência e a largura pelo zoom ═══
+  // O bloco "A CORRENTEZA" (acima, copiado inteiro da referência do EO-A) dá o brilho; aqui ele vira a COR de cada pedaço de
+  // uma camada de linha do MapLibre: a linha da água vai em pedaços curtos (até CORRENTEZA.passoPx de tela na escala do
+  // elemento), e cada pedaço leva a propriedade "b" (o brilho), que a cor interpola de --agua (0) a --agua-luz (1). É a cor
+  // opaca da própria linha: sem alfa, sem camada por cima, sem partícula. Vale igual no mapa plano e no relevo (a camada é
+  // drapejada como as outras).
+  // A ESCALA: cada elemento de água tem a sua (zoomRef, latRef = o zoom e a latitude em que ELE é visto), porque a mesma cena
+  //   passa por escalas muito diferentes (a gota da s06 desce o Rímac a z ~10 e o Amazonas a z ~4,5); os px da referência
+  //   valem na escala de cada um.
+  // LONGE (zoom < 11; acréscimo da Sala, 23/10/2026): o trecho claro cobre no máximo 1/3 do rio (luz ≤ L/3, por rio), e o
+  //   período é no mínimo 3 × a luz. A LARGURA: abaixo do zoom 11, o piso de 12 px de --agua sobre 24 px de escuro (o token
+  //   escuro que a cena já usa sob a linha); de 11,25 para cima, as larguras de perto; entre os dois, uma rampa linear.
+  var AGUA_PISO = { w: 12, sob: 24, z0: 10.75, z1: 11.25 };
+  function aguaLargura(perto, piso) {
+    var lo = Math.max(perto, piso);
+    return lo === perto ? perto : ["interpolate", ["linear"], ["zoom"], AGUA_PISO.z0, lo, AGUA_PISO.z1, perto];
+  }
+  function aguaKm(a, b) {
+    var R = 6371.0088, f1 = a[1] * Math.PI / 180, f2 = b[1] * Math.PI / 180, df = f2 - f1, dl = (b[0] - a[0]) * Math.PI / 180;
+    var h = Math.sin(df / 2) * Math.sin(df / 2) + Math.cos(f1) * Math.cos(f2) * Math.sin(dl / 2) * Math.sin(dl / 2);
+    return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
+  }
+  // rios: lista de linhas ([lng, lat], ...), cada uma JÁ no sentido da água (de montante à foz).
+  // o: { ritmo: "BASE" | "LENTA" | "CHEIA", zoomRef, latRef, longe: bool, T0: o tempo em que a 1ª luz sai da nascente,
+  //      fase: bool (rios de uma mesma camada saem defasados, para não correrem em uníssono) }
+  function aguaCriar(rios, o) {
+    var R = CORRENTEZA[o.ritmo || "BASE"], k = kmPorPx(o.zoomRef, o.latRef), passo = CORRENTEZA.passoPx * k;
+    var obj = { o: o, vel: R.velPx * k, rios: [], pecas: [] };
+    rios.forEach(function (c, i) {
+      if (!c || c.length < 2) return;
+      var acc = [0];
+      for (var j = 1; j < c.length; j++) acc.push(acc[j - 1] + aguaKm(c[j - 1], c[j]));
+      var L = acc[acc.length - 1], luz = R.luzPx * k, per = CORRENTEZA.periodoPx * k;
+      // longe: o período do rio é L / n (n trechos inteiros cabem nele, cada um ≥ max(período, 3 × luz)), e assim nenhuma janela
+      // do rio inteiro tem mais que 1/3 de luz, seja qual for a fase
+      if (o.longe) { luz = Math.min(luz, L / 3); per = L / Math.max(1, Math.floor(L / Math.max(per, 3 * luz))); }
+      var ri = { i: i, c: c, acc: acc, L: L, luz: luz, per: per, fase: o.fase ? ((i * 0.6180339887) % 1) * per : 0, kc: 0 };
+      obj.rios.push(ri);
+      var n = Math.max(1, Math.ceil(L / passo));
+      for (var p = 0; p < n; p++) obj.pecas.push({ r: ri, k0: L * p / n, k1: L * (p + 1) / n });
+    });
+    // o.cadeias: as partes de um mesmo rio (listas de índices de rios, de montante à foz), que a geometria traz cortadas (o
+    // Putumayo e o Javari, recortados pela fronteira, vêm em 77 e 40 pedaços): a luz corre pela cadeia inteira, com o km somado
+    // (kc = o km da cadeia onde a parte começa), e a escala da luz, a regra do 1/3 e a fase são as da cadeia
+    (o.cadeias || []).forEach(function (cad, ic) {
+      var porI = {}; obj.rios.forEach(function (ri) { porI[ri.i] = ri; });
+      var partes = cad.map(function (i) { return porI[i]; }).filter(Boolean), Lc = 0;
+      partes.forEach(function (ri) { ri.kc = Lc; Lc += ri.L; });
+      var luz = R.luzPx * k, per = CORRENTEZA.periodoPx * k;
+      if (o.longe) { luz = Math.min(luz, Lc / 3); per = Lc / Math.max(1, Math.floor(Lc / Math.max(per, 3 * luz))); }
+      var fase = o.fase ? ((ic * 0.6180339887) % 1) * per : 0;
+      partes.forEach(function (ri) { ri.luz = luz; ri.per = per; ri.fase = fase; });
+    });
+    return obj;
+  }
+  // o ponto da linha no km x, e os vértices entre os km a e b
+  function aguaTrecho(ri, a, b) {
+    var c = ri.c, acc = ri.acc, pts = [], j = 0;
+    function em(x) { while (j < acc.length - 2 && acc[j + 1] < x) j++; var s = acc[j + 1] - acc[j], f = s > 0 ? (x - acc[j]) / s : 0;
+      return [c[j][0] + (c[j + 1][0] - c[j][0]) * f, c[j][1] + (c[j + 1][1] - c[j][1]) * f]; }
+    pts.push(em(a));
+    while (j < acc.length - 1 && acc[j + 1] < b) { pts.push(c[j + 1]); j++; }
+    pts.push(em(b));
+    return pts;
+  }
+  // o GeoJSON dos pedaços no tempo T; ate(ri, i) = o km até onde o rio i está desenhado (o traço que cresce), ou null = inteiro
+  function aguaDados(obj, T, ate) {
+    var fs = [], idx = new Map();
+    obj.rios.forEach(function (ri, i) { idx.set(ri, i); });
+    obj.pecas.forEach(function (pc) {
+      var ri = pc.r, lim = ate ? ate(ri, idx.get(ri)) : ri.L;
+      if (lim == null) lim = ri.L;
+      if (lim <= pc.k0) return;
+      var k1 = Math.min(pc.k1, lim);
+      var S = obj.vel * (T - obj.o.T0) - ri.luz - ri.fase;
+      var b = brilhoCorrenteza(ri.kc + (pc.k0 + k1) / 2, S, ri.per, ri.luz / ri.per);
+      fs.push({ type: "Feature", properties: { b: Math.round(b * 100) / 100 }, geometry: { type: "LineString", coordinates: aguaTrecho(ri, pc.k0, k1) } });
+    });
+    return { type: "FeatureCollection", features: fs };
+  }
+  // a fração do rio coberta pelo trecho claro (b > 0) no tempo T, a mais alta entre os rios (para o relato)
+  function aguaFracaoLuz(obj, T) {
+    var m = 0;
+    obj.rios.forEach(function (ri) {
+      var S = obj.vel * (T - obj.o.T0) - ri.luz - ri.fase, aceso = 0, n = 400;
+      for (var q = 0; q < n; q++) { var x = ri.L * (q + 0.5) / n; if (brilhoCorrenteza(x, S, ri.per, ri.luz / ri.per) > 0) aceso++; }
+      m = Math.max(m, aceso / n);
+    });
+    return m;
+  }
+  // TRÊS camadas por elemento: o contorno escuro (id + "-sob", a geometria inteira ou a que cresce, fonte id + "-g"), a linha
+  // LISA (id + "-plano", a mesma geometria, --agua sem correnteza) e a linha em PEDAÇOS com a correnteza (a camada dos pedaços,
+  // fonte id). Os pedaços têm ponta REDONDA (sem fenda nas emendas nem entre as partes de um rio), e por isso só aparecem com
+  // opacidade 1: duas pontas redondas sobrepostas a meia opacidade somariam contas. Para escurecer um rio de fundo (a s08 baixa os
+  // rios curtos a 35 %), a cor dos pedaços se mistura ao escuro do contorno, com a correnteza viva; para entrar ou sair (opacidade
+  // entre 0 e 1), a linha lisa assume, sem correnteza, só enquanto dura o esmaecimento (aguaVer).
+  function aguaCores(sobCor) {
+    var cs = getComputedStyle(document.documentElement);
+    var c = { agua: cs.getPropertyValue("--agua").trim(), luz: cs.getPropertyValue("--agua-luz").trim(), sob: cs.getPropertyValue(sobCor || "--rotulo").trim() };
+    if (!c.agua || !c.luz || !c.sob) throw new Error("os tokens --agua, --agua-luz e " + (sobCor || "--rotulo") + " não foram lidos do tokens.css.");
+    c.rA = rgbHexOuRgb(c.agua); c.rL = rgbHexOuRgb(c.luz); c.rS = rgbHexOuRgb(c.sob);
+    return c;
+  }
+  function rgbHexOuRgb(css) {
+    var m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/i.exec(css);
+    return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : rgbDe(css);
+  }
+  function aguaMistura(a, s, k) { return "rgb(" + Math.round(s[0] + (a[0] - s[0]) * k) + "," + Math.round(s[1] + (a[1] - s[1]) * k) + "," + Math.round(s[2] + (a[2] - s[2]) * k) + ")"; }
+  function aguaCorPedacos(c, k) {
+    return k >= 0.999 ? ["interpolate", ["linear"], ["get", "b"], 0, c.agua, 1, c.luz]
+      : ["interpolate", ["linear"], ["get", "b"], 0, aguaMistura(c.rA, c.rS, k), 1, aguaMistura(c.rL, c.rS, k)];
+  }
+  function aguaEspecs(id, w, sob, op, c) {
+    return [
+      { id: id + "-sob", type: "line", source: id + "-g", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": c.sob, "line-width": aguaLargura(sob, AGUA_PISO.sob), "line-opacity": op, "line-opacity-transition": { duration: 0, delay: 0 } } },
+      { id: id + "-plano", type: "line", source: id + "-g", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": c.agua, "line-width": aguaLargura(w, AGUA_PISO.w), "line-opacity": 0, "line-opacity-transition": { duration: 0, delay: 0 } } },
+      { id: id + "-linha", type: "line", source: id, layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": aguaCorPedacos(c, 1), "line-width": aguaLargura(w, AGUA_PISO.w), "line-opacity": op >= 0.999 ? 1 : 0, "line-opacity-transition": { duration: 0, delay: 0 } } }
+    ];
+  }
+  // as camadas por addLayer (as cenas do motor da s51: s04 e s51)
+  function aguaCamadas(map, id, obj, o, antes, fontes) {
+    var c = aguaCores(o.sobCor), vazio = { type: "FeatureCollection", features: [] };
+    map.addSource(id + "-g", { type: "geojson", data: vazio }); map.addSource(id, { type: "geojson", data: vazio });
+    if (fontes) { fontes.push(id + "-g"); fontes.push(id); }
+    aguaEspecs(id, o.w, o.sob, 0, c).forEach(function (L) { map.addLayer(L, antes); });
+    aguaNome(obj, id); obj.cores = c;
+  }
+  // a visibilidade v (0 a 1: entra e sai) e o escuro k (1 = a cor da água; < 1 = o rio de fundo, misturado ao escuro do contorno)
+  function aguaVer(map, obj, v, k) {
+    v = Math.round(v * 1000) / 1000; k = k == null ? 1 : Math.round(k * 1000) / 1000;
+    var c = obj.cores, chave = v + "|" + k;
+    if (obj.ver === chave) return;
+    var cheio = v >= 0.999;
+    map.setPaintProperty(obj.id + "-sob", "line-opacity", Math.round(v * k * 1000) / 1000);   // o contorno do rio de fundo baixa com ele
+    map.setPaintProperty(obj.id + "-linha", "line-opacity", cheio ? 1 : 0);
+    map.setPaintProperty(obj.id + "-plano", "line-opacity", cheio ? 0 : v);
+    if (obj.k !== k) {
+      map.setPaintProperty(obj.id + "-linha", "line-color", aguaCorPedacos(c, k));
+      map.setPaintProperty(obj.id + "-plano", "line-color", k >= 0.999 ? c.agua : aguaMistura(c.rA, c.rS, k));
+      obj.k = k;
+    }
+    obj.ver = chave;
+  }
+  // o quadro: a geometria do contorno (a que cresce) e os pedaços com a cor do tempo T (só enquanto os pedaços se veem)
+  function aguaQuadro(map, obj, T, ate) {
+    var kg = ate ? obj.rios.map(function (ri, i) { var v = ate(ri, i); return v == null ? "x" : v.toFixed(3); }).join(",") : "tudo";
+    if (obj.chaveG !== kg) {
+      var g = map.getSource(obj.id + "-g");
+      if (g) g.setData({ type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: obj.rios.map(function (ri, i) {
+        var v = ate ? ate(ri, i) : null; if (v == null) v = ri.L; return v > 0 ? aguaTrecho(ri, 0, Math.min(v, ri.L)) : null; }).filter(function (x) { return x && x.length > 1; }) } });
+      obj.chaveG = kg;
+    }
+    var k = T.toFixed(4) + "|" + kg;
+    if (obj.chave === k) return;
+    var s = map.getSource(obj.id); if (s) s.setData(aguaDados(obj, T, ate));
+    obj.chave = k;
+  }
+  // a mesma água nas cenas que montam o ESTILO de uma vez (s06, s08, s09): aguaFontesEstilo põe as fontes id (os pedaços) e
+  // id + "-g" (o contorno e a linha lisa), vazias; aguaCamadasEstilo devolve as três camadas; aguaNome dá ao objeto o id e as cores
+  function aguaFontesEstilo(fontes, ids) {
+    ids.forEach(function (id) { fontes[id] = { type: "geojson", data: { type: "FeatureCollection", features: [] } };
+      fontes[id + "-g"] = { type: "geojson", data: { type: "FeatureCollection", features: [] } }; });
+  }
+  function aguaCamadasEstilo(id, w, sob, op, sobCor) { return aguaEspecs(id, w, sob, op, aguaCores(sobCor)); }
+  function aguaNome(obj, id, sobCor) { obj.id = id; obj.chave = null; obj.chaveG = null; obj.ver = null; obj.k = 1;
+    if (!obj.cores) obj.cores = aguaCores(sobCor || obj.o.sobCor); return obj; }
+  // lago e represa (PARADOS): --agua a 0,58 no preenchimento, o contorno --agua 6 px sobre 14 escuros de perto, 12 sobre 24 de longe
+  var AGUA_PARADA = 0.58;
+  // ═══ fim da água no MapLibre (M-A) ═══
   // ═══ CONFIGURAÇÃO DA CENA (M6) ═══
   // Tempos (0 = 651,800 s do master; a grade de 30 fps da regência e do textos-tela): 'Not' 3,733 · 'First,' 6,1 · 'valleys:' 6,9 ·
   // 'five' 8,233 · 'Then' 11,8 · 'port:' 12,4 · 'fifteen' 13,433 · 'capital' 15,533 · 'Then' 17,6 · 'twentieth' 19,433 · 'came' 20,9 ·
@@ -207,6 +457,9 @@
   // a miniatura da Pirámide Mayor (4032 × 3024): o recorte da pirâmide, sem o céu de cima nem o chão de baixo
   var MINI = { id: "miniCaral", sombra: "sombraCaral", sob: "rotCaral", natural: [4032, 3024], recorte: [0, 500, 4032, 2509], foto: [900, 560],
     borda: 16, vao: 18, pouso: 6.9, levanta: 11.45 };
+  // arte-17: a carta de Frézier (1784 × 1207): o recorte do conferente (sem o cartucho com o "Frezier 1713"), à esquerda da pílula
+  var MINI2 = { id: "miniFrez", sombra: "sombraFrez", sob: "rotCallao", natural: [1784, 1207], recorte: [589, 435, 1052, 603], foto: [960, 550],
+    borda: 16, vao: 18, pouso: 12.6, levanta: 17.25 };
   // as silhuetas: 5 em fila; os pés nos 4 pontos do caminho (serra → crista → encosta → borda de Lima), 3 passos
   var CAMINHO = [[-75.30, -11.95], [-75.85, -11.97], [-76.40, -11.99], [-76.90, -12.02]];
   var PASSOS = [[20.9, 21.95], [22.25, 23.25], [23.45, 24.2]];
@@ -231,6 +484,7 @@
         g.appendChild(gr);
       }
       montarMini(A);
+      montarMini(A, MINI2);   // arte-17
     },
     prontas: function () {
       var im = document.getElementById("imgCaral");
@@ -238,6 +492,13 @@
         if (!im || (im.complete && im.naturalWidth)) return res(true);
         im.addEventListener("load", function () { res(true); });
         im.addEventListener("error", function () { res(true); });
+      }).then(function () {   // arte-17: a carta de Frézier também
+        var i2 = document.getElementById("imgFrez");
+        return new Promise(function (res) {
+          if (!i2 || (i2.complete && i2.naturalWidth)) return res(true);
+          i2.addEventListener("load", function () { res(true); });
+          i2.addEventListener("error", function () { res(true); });
+        });
       });
     },
     camadas: function (map, A) {
@@ -245,12 +506,24 @@
       A.territorio("umido", A.geo("vertente-atlantico"), { fill: "--contraparte", fracao: 0.35, linha: "--tinta", w: 0.01, sob: 0.01 });
       A.linha("peru", A.geo("peru-ne"), { cor: "--fronteira-cor", w: 5, sob: 12 });
       A.linha("div", A.geo("divisoria-continental-peru"), { cor: "--tinta", w: 6, sob: 12, sobCor: "--rotulo" });
-      A.linhaCor("chic", { type: "FeatureCollection", features: [] }, { cor: "--contraparte", w: 13, sob: 20 });   // arte-9: 13 sobre 20 (era 6 sobre 14)
-      A.linha("tun", A.geo("tunel-transandino"), { cor: "--contraparte", w: 6, sob: 14, sobCor: "--rotulo" });
       // o Chicama da serra ao mar (o vértice mais a leste primeiro)
       var ch = A.feicao("rio-chicama", "Chicama"), cc = ch ? ch.geometry.coordinates.slice() : [];
       if (cc.length && cc[0][0] < cc[cc.length - 1][0]) cc.reverse();
       A.REFS.CHIC = cc;
+      // arte-17: o canal e o túnel no sentido da água: o canal (norte → sul, da lagoa a Cuevas) e o túnel (Cuevas → Milloc)
+      var ca = A.feicao("tunel-transandino", "Marcapomacocha"), tu = A.feicao("tunel-transandino", "Cuevas");
+      if (!ca || !tu) return;
+      var c1 = ca.geometry.coordinates.slice(), c2 = tu.geometry.coordinates.slice();
+      if (c1[0][1] < c1[c1.length - 1][1]) c1.reverse();
+      if (A.metros(c2[0], c1[c1.length - 1]) > A.metros(c2[c2.length - 1], c1[c1.length - 1])) c2.reverse();
+      if (A.metros(c2[0], c1[c1.length - 1]) > 50) return A.falhar("o canal e o túnel não se encontram em Cuevas.");
+      // arte-17: a água em --agua com a correnteza (base), na escala do b4 (LONGE): o Chicama 13/20 e o túnel 6/14 de perto; de longe,
+      // o piso 12/24
+      A.REFS.MAP = map;
+      A.REFS.AGUA_CHIC = aguaCriar([cc], { ritmo: "BASE", zoomRef: 7.5, latRef: -7.8, longe: true, T0: 30.733 });
+      A.REFS.AGUA_TUN = aguaCriar([c1.concat(c2.slice(1))], { ritmo: "BASE", zoomRef: 7.5, latRef: -11.5, longe: true, T0: 32.633 });
+      aguaCamadas(map, "chic", A.REFS.AGUA_CHIC, { w: 13, sob: 20 }, undefined, A.fontes);
+      aguaCamadas(map, "tun", A.REFS.AGUA_TUN, { w: 6, sob: 14 }, undefined, A.fontes);
     },
     quadro: function (t, A) {
       // os lados e a divisa: do 1º quadro a 'First,' (6,1), saem em 500 ms
@@ -261,25 +534,27 @@
       A.lin("div", 1);
       // o Chicama: cresce em 'canal' (30,733) em 1,2 s; baixa a 60 % em 'tunnel'
       var fc = A.eio(A.seg(t, 30.733, 1.2));
-      A.setDado("chic", fc.toFixed(3), fc > 0 ? { type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: A.ateFracao(A.REFS.CHIC, fc).pts } } : { type: "FeatureCollection", features: [] });
+      aguaQuadro(A.REFS.MAP, A.REFS.AGUA_CHIC, t, function (ri) { return fc * ri.L; });   // arte-17: em pedaços, com a correnteza
+      aguaQuadro(A.REFS.MAP, A.REFS.AGUA_TUN, t, null);
       var vc = (fc > 0 ? 1 : 0) * (1 - 0.4 * A.eo(A.seg(t, 32.633, 0.5)));
-      A.opac("chic-linha", "line-opacity", vc); A.opac("chic-sob", "line-opacity", vc);
-      A.lin("tun", A.eo(A.seg(t, 32.633, 0.5)));
+      // arte-17 (r2): o Chicama "baixa a 60 %" pela cor (escurece, com a correnteza viva); o túnel entra pela linha lisa
+      aguaVer(A.REFS.MAP, A.REFS.AGUA_CHIC, fc > 0 ? 1 : 0, 1 - 0.4 * A.eo(A.seg(t, 32.633, 0.5)));
+      aguaVer(A.REFS.MAP, A.REFS.AGUA_TUN, A.eo(A.seg(t, 32.633, 0.5)), 1);
       // os pontos
       ponto(A, "pCaral", A.REFS.CARAL, A.janela(t, 6.4, 11.5));   // o ponto chega com a câmera, antes do nome
       ponto(A, "pCallao", A.REFS.CALLAO, A.janela(t, 12.4, 17.3));
       ponto(A, "pLima", A.REFS.LIMA, A.janela(t, 15.533, null));
       silhuetas(t, A);
     },
-    depois: function (t, A) { aplicarMini(t, A); }
+    depois: function (t, A) { aplicarMini(t, A); aplicarFrez(t, A); }
   };
   function ponto(A, id, ll, v) {
     var el = A.E(id); if (!el || !ll) return;
     var p = A.project(ll); el.setAttribute("cx", p.x.toFixed(2)); el.setAttribute("cy", p.y.toFixed(2)); el.setAttribute("opacity", v.toFixed(3));
   }
   // ── a miniatura (s06): logo abaixo da pílula, borda direita alinhada; pousa e levanta como objeto (identidade §4.4) ──
-  function montarMini(A) {
-    var M = MINI, el = A.E(M.id), jan = el && el.querySelector(".janela"), im = el && el.querySelector("img");
+  function montarMini(A, M2) {
+    var M = M2 || MINI, el = A.E(M.id), jan = el && el.querySelector(".janela"), im = el && el.querySelector("img");
     if (!el || !jan || !im) return A.falhar("a miniatura não está no palco.");
     var esc = M.foto[0] / M.recorte[2];
     if (Math.abs(M.foto[1] / M.recorte[3] - esc) > 0.01) return A.falhar("a miniatura distorceria a foto.");
@@ -290,6 +565,20 @@
     jan.style.left = M.borda + "px"; jan.style.top = M.borda + "px"; jan.style.width = M.foto[0] + "px"; jan.style.height = M.foto[1] + "px";
     im.style.width = (M.natural[0] * esc) + "px"; im.style.height = (M.natural[1] * esc) + "px";
     im.style.left = (-M.recorte[0] * esc) + "px"; im.style.top = (-M.recorte[1] * esc) + "px";
+  }
+  // arte-17: a carta de Frézier, À ESQUERDA da pílula 'Callao' (vão de 18 px), centrada na altura dela; o rótulo sob a miniatura,
+  // alinhado à esquerda dela, de 13,9 a 17,3 (+ 300 ms); sem crédito (domínio público)
+  function aplicarFrez(t, A) {
+    var M = MINI2, rot = A.E(M.sob), pa = A.project(A.REFS.CALLAO);
+    if (!rot) return;
+    var esq = pa.x - 44 - rot.offsetWidth, x = esq - M.vao - M.w, y = pa.y - M.h / 2;
+    A.objeto(M.id, M.sombra, t, { x: x, y: y, rot: -1.2, queda: 80, pouso: M.pouso, levanta: M.levanta });
+    var av = A.E("avisoFrez");
+    if (av) {
+      var v = A.janela(t, 13.9, 17.3), sub = A.eo(A.seg(t, 13.9, 0.3));
+      av.style.opacity = v.toFixed(3);
+      av.style.transform = "translate(" + x.toFixed(2) + "px," + (y + M.h + 14 + (1 - sub) * 24).toFixed(2) + "px)";
+    }
   }
   function aplicarMini(t, A) {
     var M = MINI, rot = A.E(M.sob), pa = A.project(A.REFS.CARAL);

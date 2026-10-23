@@ -19,12 +19,19 @@
       aproximação lenta (z 10,15 → 10,30). Em "line" (0,233) a linha acende e se desenha AO LONGO da crista, a partir do vértice
       mais perto desse ponto, para os dois lados (0,8 s): o trecho desenhado vai a 45 % da largura da tela de cada lado, e por isso
       continua a crescer, sempre por dados do arquivo, quando a câmera recua; as 2 feições do Titicaca entram quando o traço chega
-      à ponta sul da 1ª. Em "divides" (1,867) a câmera recua ao Peru inteiro (van Wijk, 2,333 s, ease-out cúbico: ver DESVIO 1);
-      'PERU' em "Peru." (2,267), no mar ao lado da costa central, até o lado amazônico acender (4,333); a divisa do país entra com o
-      nome (500 ms).
-      DESVIO 1: a regência pede a viagem "cubic" (1,5–3 s). Com o ease-in-out a câmera mal saiu da crista em 2,267 (z 10,2), e
-      'PERU' teria de entrar fora do quadro ou preso a um ponto que cruza a margem; com o ease-out cúbico ela já está em z 8,4, e a
-      pílula entra inteira dentro do quadro. A duração (2,333 s) e o fim (4,2) ficam dentro do pedido.
+      à ponta sul da 1ª. Em "divides" (1,867) a câmera recua ao Peru inteiro (van Wijk, 3 s, com a rampa da câmera do molde, pousando
+      em 4,867: CONSERTO arte-17); 'PERU' em "Peru." (2,267), PRESA À TELA no lugar em que fica no pouso (no mar, ao lado da costa
+      central), até o lado amazônico acender (4,333); a divisa do país entra com o nome (500 ms).
+      CONSERTO peru-agua-arte-17 (M-A, 23/10/2026; o comentário do Lucas na linha do tempo, s01 @2,8 "Movimento de câmera muito
+      rápido e abrupto"; camera-cetico, opção "Recuo de 3 s, suave", recomendada; regência direcao-23 4ea3b5b0): o DESVIO 1 (o
+      ease-out cúbico de 2,333 s, pouso em 4,2) saiu. A viagem vai de 1,867 a 4,867 (3 s, o teto da marca), com a rampa da câmera do
+      molde (cameraAbre e cameraFecha 0,5, como a s42): sai devagar da crista, ganha velocidade, freia e pousa. A pílula 'PERU'
+      deixou de seguir o ponto do mar (em 2,267 a câmera ainda está na crista) e fica parada na tela, com a borda direita em
+      x 1760, y 1237 (a âncora 1804 e os 44 px): no mar, a oeste da costa central, no pouso. Na 1ª prova ela ficava no ponto
+      (−78,30 / −11,20) do pouso, em x 2311, e a divisória a cruzava de 2,27 a ~3,0 s e a divisa da costa encostava nela de 3,7 a 4,3
+      s (faixa01.py no clipe): a 550 px a oeste, nenhuma linha branca passa por ela. Ela fica sobre a encosta no começo e o mar chega
+      por baixo dela.
+      O lado amazônico acende em 4,333, ainda na freada. Nada mais mudou: textos, tempos dos textos, camadas e créditos.
     · b1 3,2–10,467: o Peru inteiro, à direita do quadro (a ponta noroeste parada em (2080, 617), aproximação lenta z 6,00 → 6,10).
       Em "three-quarters" (4,333) o lado amazônico (vertente-atlantico) se preenche de sul para norte em 500 ms (o polígono do
       arquivo recortado por uma latitude que sobe: nada desenhado à mão), --contraparte a 35 %; 'AMAZON SIDE' (a pílula com a
@@ -168,12 +175,12 @@
     },
     pernas: [
       { t0: 0,     t1: 1.867,  de: "A0", para: "A1", tipo: "h" },
-      { t0: 1.867, t1: 4.2,    de: "A1", para: "P0", tipo: "v", ease: "saida" },   // 'divides': o recuo (DESVIO 1)
-      { t0: 4.2,   t1: 22.467, de: "P0", para: "P1", tipo: "h" }
+      { t0: 1.867, t1: 4.867,  de: "A1", para: "P0", tipo: "v" },   // 'divides': o recuo de 3 s, rampa do molde (arte-17)
+      { t0: 4.867, t1: 22.467, de: "P0", para: "P1", tipo: "h" }
     ],
     giro: [-1.0, 1.0],
     rotulos: [
-      { id: "rPeru", lnglat: [-78.30, -11.20], lado: "esquerda", vert: "centro", dx: -44, entra: 2.267, sai: 4.333 },
+      { id: "rPeru", tela: [1804, 1237], lado: "esquerda", vert: "centro", dx: -44, entra: 2.267, sai: 4.333 },   // arte-17: presa à tela, no mar, longe da divisória e da costa (r2)
       { id: "rAmz", tela: [1990, 250], lado: "esquerda", vert: "baixo", entra: 4.333, sai: null },
       { id: "c745", tela: [1990, 442], lado: "esquerda", vert: "baixo", entra: 4.333, sai: 10.467 },
       // arte-14 (MB): depois que o 74.5% sai (10,467 + 0,3 s), o 97.9% sobe à vaga dele (de y 634 a 442, 500 ms, eio), junto

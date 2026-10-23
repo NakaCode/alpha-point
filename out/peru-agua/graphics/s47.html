@@ -8,6 +8,10 @@
   = dur (faceless). Modo: mapa (regime de abertura); a cena VIRA por dentro em "An" (5,1 s; ofício §9, "sequencial"): b0 MAPA →
   b1–b3 ANIMAÇÃO no traço de engenheiro (regência › _animacao_em_opus: s47 beats 1 a 3; editor em Opus). Tarefa peru-agua-arte-12,
   lote EO1 (o beat de mapa no corpo do mapista, como a s41 da arte-1). Nenhum hex.
+  peru-agua-arte-17 (fase 2; decisoes-lucas 23/10, "Azul em toda a água" e a fase 2: água parada a 55–60 %; regência 4ea3b5b0 ›
+    _agua_direcao_23: "s47 · parado: os níveis do tanque e do cubo (sobem)"): a linha do nível do tanque e a do cubo (tracejadas)
+    passam de --tinta a --agua, e o corpo da água parada (no tanque, do nível ao fundo; no cubo, a frente, o lado e a face de cima até
+    o nível) entra em --agua a 58 %, sob o traço. O nível continua o mesmo (volume ÷ área); sem correnteza (água parada). Nada mais muda.
   CONSERTO peru-agua-arte-14 (lote EO; laudo s47 da qualidade-7, lente factual 6: "o cubo de 1 m³ afunda na rampa"): o cubo assenta.
     O TERRENO SE INTERROMPE no corte do pátio: a rampa vai até o canto de baixo da casa (x 2270, a cota do piso) e recomeça no topo do
     arrimo; entre os dois, o chão é o piso horizontal do pátio, onde a base do cubo pousa inteira. O pátio foi de x 2440 a 2480, para o
@@ -154,6 +158,10 @@
   .cred { position: absolute; left: 0; bottom: 0; width: 100%; font-family: var(--fonte); font-weight: var(--peso-texto);
     font-size: var(--fs-credito); line-height: 1.2; color: var(--sec); letter-spacing: 0; opacity: 0; white-space: nowrap; }
   #desenho .ar, #desenho .ar-oculta, #desenho .ar-cota, #desenho .ar-agua, #desenho .sombra-linha { vector-effect: non-scaling-stroke; }
+  /* peru-agua-arte-17: a água em --agua (identidade §2, "A água é azul, e corre"): a linha do nível, tracejada como antes, e o corpo da
+     água parada (o tanque e o cubo) a 58 % (Lucas, fase 2: lago, represa e água parada a 55–60 %). Água parada: sem correnteza. */
+  #desenho .ar-agua { stroke: var(--agua); }
+  #desenho .ar-agua-corpo { fill: var(--agua); fill-opacity: 0.58; stroke: none; }
 </style>
 </head>
 <body>
@@ -185,6 +193,8 @@
           <path id="chao" class="ar" d=""/>
           <g mask="url(#semRodas)"><path id="cano" class="ar" d=""/></g>
           <path id="tampa" class="ar" d=""/>
+          <path id="aguaTanqueCorpo" class="ar-agua-corpo" d=""/>
+          <path id="aguaCuboCorpo" class="ar-agua-corpo" d=""/>
           <path id="casas" class="ar" d=""/>
           <path id="casasOc" class="ar-oculta" d=""/>
           <path id="aguaTanque" class="ar-agua" d=""/>
@@ -759,7 +769,13 @@
     // o nível: o mesmo volume no tanque (1,02 m³: 98 %) e no cubo (1 m³)
     var fv = volume(t), hT = fv / 1.02 * (TQ1.h - 6), yT = EST.r1 - 3 - hT;
     E("aguaTanque").setAttribute("d", fv > 0.002 ? "M" + (TQ1.x0 + 5) + "," + f2(yT) + " L" + (TQ1.x1 - 5) + "," + f2(yT) : "");
+    var tc = E("aguaTanqueCorpo");   // arte-17: o corpo da água no tanque, do nível ao fundo (o cilindro em pé visto de lado)
+    if (tc) tc.setAttribute("d", fv > 0.002 ? "M" + (TQ1.x0 + 5) + "," + f2(yT) + " L" + (TQ1.x1 - 5) + "," + f2(yT) + " L" + (TQ1.x1 - 5) + "," + f2(EST.r1 - 3) + " L" + (TQ1.x0 + 5) + "," + f2(EST.r1 - 3) + " Z" : "");
     var hC = fv * CUBO.l, yC = EST.f1 - hC, x0 = CUBO.x0, l = CUBO.l;
+    // arte-17: o corpo da água no cubo, na vista oblíqua: a frente e o lado direito até o nível, e a face de cima no nível
+    var cc = E("aguaCuboCorpo");
+    if (cc) cc.setAttribute("d", fv > 0.002 ? "M" + x0 + "," + f2(EST.f1) + " L" + (x0 + l) + "," + f2(EST.f1) + " L" + (x0 + l + CUBO.dx) + "," + f2(EST.f1 + CUBO.dy) +
+      " L" + (x0 + l + CUBO.dx) + "," + f2(yC + CUBO.dy) + " L" + (x0 + CUBO.dx) + "," + f2(yC + CUBO.dy) + " L" + x0 + "," + f2(yC) + " Z" : "");
     E("aguaCubo").setAttribute("d", fv > 0.002 ? "M" + x0 + "," + f2(yC) + " L" + (x0 + l) + "," + f2(yC) + " L" + (x0 + l + CUBO.dx) + "," + f2(yC + CUBO.dy) + " L" + (x0 + CUBO.dx) + "," + f2(yC + CUBO.dy) + " Z" : "");
     // a tampa do cano pulsa uma vez em "without"
     var pp = seg(t, T.pulso, 0.7), tp = E("tampa"); if (tp) tp.style.strokeWidth = (6 + 10 * Math.sin(Math.PI * pp)).toFixed(2) + "px";

@@ -39,6 +39,27 @@
   b2/b3 = linha, 2 lados (3).
   CONSERTO peru-agua-arte-15 (espectador r2, mantidos[0]): o traçado do túnel (a camada 'rota', com o contorno escuro) esmaece
   de 10,6 a 10,9 s, junto com o anel; antes ficava com opacidade 1 até o fim, um resto na área livre da vinheta. Nada mais mudou.
+  CONSERTO peru-agua-arte-17 (M-A, 23/10/2026; as escolhas do Lucas de 23/10 sobre a linha do tempo; regência direcao-23 4ea3b5b0,
+  textos-tela texto-17 53943561):
+    · A ÁGUA (identidade §2, "A água é azul, e corre"; a prova aprovada pelo Lucas às 03:1x): as 4 lagoas passam de --contraparte a
+      --agua, PARADAS, com o preenchimento a 0,58 (o Lucas: 55–60 %) e o contorno --agua sobre o escuro; o traçado do canal e do
+      túnel passa de --destaque a --agua, com a CORRENTEZA no ritmo de base (o bloco da referência do EO-A, copiado inteiro, com o
+      adaptador do M-A ao MapLibre: a cor de cada pedaço da linha), da lagoa Marcapomacocha a Milloc (leste → oeste), a escala do
+      traçado z 11,36. O anel continua --destaque (é a marca do cruzamento, não água).
+    · A LARGURA DE LONGE (o acréscimo da Sala, 03:3x): abaixo do zoom 11, a água vai a 12 px sobre 24 escuros; de 11,25 para cima,
+      as larguras de perto (o traçado 10/22, o contorno das lagoas 6/14); uma rampa linear entre os dois, pelo zoom da câmera, sem
+      salto. As lagoas, vistas a z 9,9–10,8, ficam no piso; o traçado (z 11,3–11,42) fica nas de perto e engrossa no recuo.
+    · A PERGUNTA DO GANCHO (identidade §4.1; textos-tela, papel 'pergunta'): "Why do most / Peruvians live / on the dry side?" em
+      Barlow Condensed 800 a 176 px (a linha mais larga mede 1.048 px), --tinta, sem caixa, alinhada à esquerda em x 200, de y 1290
+      a ~1840 (acima da faixa do crédito); entra em 11,1 (300 ms, +24 px) e começa a sair em 13,6 (300 ms, fora em 13,9).
+      LIMITAÇÃO (vai à Sala): em 11,1 a câmera ainda está perto da crista (z 11,2), e o canto de baixo à esquerda é terra (o lado
+      seco, que acende de 10,9 a 11,7); a costa só cruza a caixa da pergunta em ~11,85 (medido pela câmera da cena, perg04.mjs). Por
+      isso a pergunta leva o tratamento do nome sobre o mapa (identidade §4.1): o contorno de 14 px em --rotulo por fora da letra
+      (paint-order) e a sombra suave dos tokens, que a deixam legível sobre o laranja nesses ~0,75 s; de ~11,9 em diante ela fica
+      sobre o mar escuro. Nenhum tempo de texto mudou.
+    · RODADA 2 (M-A): os pedaços da linha passaram a ponta REDONDA (a reta abria fendas nas emendas e picotava os rios de várias
+      partes) e só aparecem com opacidade 1; o rio de fundo escurece pela COR (misturada ao escuro do contorno, com a correnteza viva)
+      e, nos esmaecimentos de entrada e saída, uma linha lisa em --agua (sem correnteza) assume só enquanto eles duram.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -125,6 +146,7 @@
     <div class="rotulo liso" id="rLima" data-qc-papel="rotulo">Lima</div>
     <div class="rotulo cartao" id="card1"><span class="leg" data-qc-papel="legenda">STORAGE CAPACITY <br>FOR LIMA (2007)</span><span class="lin heroi" data-qc-papel="heroi">MORE THAN <br>HALF · <br>AMAZON SIDE</span></div>
     <div class="rotulo cartao" id="card2"><span class="lin heroi" data-qc-papel="heroi">A SINGLE <br>TUNNEL · <br>EARLY 1960s</span></div>
+    <div id="perg" data-qc-papel="pergunta" style="position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap; font-family: var(--fonte-sec); font-weight: 800; font-size: 176px; line-height: 1.04; letter-spacing: 0; color: var(--tinta); -webkit-text-stroke: var(--nome-territorio-contorno); paint-order: stroke fill; text-shadow: var(--nome-territorio-sombra);">Why do most<br>Peruvians live<br>on the dry side?</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
   <div id="crMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
@@ -135,6 +157,233 @@
 <script>
 (function () {
   "use strict";
+  // ═══ A CORRENTEZA — o modelo das cenas de água do vídeo (peru-agua-arte-17; identidade §2; regência › _agua_direcao_23) ═══
+  // O QUE É: um trecho MAIS CLARO da própria linha da água (--agua-luz sobre --agua) que desce no sentido da água e se repete.
+  //   É a COR da linha que muda, peça a peça (a linha é desenhada em pedaços curtos, cada um com a mistura opaca das duas cores):
+  //   luz na linha, nunca partícula, nunca brilho por cima, nunca alfa (pedaços com alfa somariam contas nas pontas redondas).
+  // ONDE MORA A LUZ: no CHÃO, não na tela. A posição é medida em km ao longo do rio (de montante = 0 até a foz) e anda a uma
+  //   velocidade em km/s; com a câmera que aproxima ou recua, a luz continua presa à água, como a linha.
+  // OS PARÂMETROS são dados em px de TELA na escala de referência (zoomRef, latRef: o zoom médio da cena) e convertidos a km uma
+  //   vez, por kmPorPx(). Para outra cena: troque zoomRef/latRef pelo zoom médio e a latitude dela, e escolha o ritmo.
+  // O RITMO (regência › _agua_direcao_23 › correnteza[].ritmo): LENTA = o rio baixo (espaçada: trecho curto); CHEIA = o rio cheio
+  //   (rápida e cheia: trecho longo); BASE = "nem o lento do rio baixo da s37 nem o rápido da cheia da s38", para as cenas sem nível
+  //   dito. O período (de um começo de luz ao próximo) é o MESMO nos três ritmos: só a velocidade e o comprimento do trecho mudam,
+  //   e assim a troca de ritmo no meio da cena (a s38 em "runs") não faz a luz pular.
+  // FASE 2 (peru-agua-arte-17, 23/10/2026, os ajustes do Lucas tirados da prova): o --agua-luz passou a quase branco (só no
+  //   tokens.css: a cena lê o token), e o trecho claro ficou mais longo para se ler no celular na linha fina do rio baixo (LENTA 280 →
+  //   380 px; BASE 380 → 450; CHEIA 550 → 600). A luz continua opaca, a cor da própria linha: brilho máximo 1, sem alfa.
+  var CORRENTEZA = {
+    zoomRef: 13.4, latRef: -12.02,   // a escala em que os px abaixo valem (a s37/s38: o zoom médio do plano, no centro de Lima)
+    periodoPx: 1100,                 // de um trecho claro ao seguinte, em px de tela na escala de referência
+    LENTA: { velPx: 220, luzPx: 380 },   // px/s e px de trecho claro: o rio baixo (s37, e a s38 antes de "runs")
+    BASE:  { velPx: 420, luzPx: 450 },   // o ritmo de base (as cenas sem nível dito; não usado aqui, é a referência da fase 2)
+    CHEIA: { velPx: 720, luzPx: 600 },   // o rio cheio (a s38 depois de "runs")
+    subida: 0.45,                    // a fração do trecho em que a luz cresce (a cauda, rio acima)
+    frente: 0.15,                    // a fração final em que ela cai (a frente, rio abaixo: curta, a luz "aponta" para o mar);
+                                     // no meio, a luz inteira (o patamar), para o trecho se ler numa linha fina de 6 px
+    passoPx: 12                      // o tamanho máximo de cada pedaço de linha, em px de tela (a luz fica lisa, sem degrau)
+  };
+  // metros de chão por px de tela no MapLibre (ladrilho de 512 px), no zoom z e na latitude lat
+  function kmPorPx(z, lat) { return 40075.016686 * Math.cos(lat * Math.PI / 180) / (512 * Math.pow(2, z)); }
+  // a velocidade (km/s), o período (km) e o comprimento do trecho claro (fração do período) de um ritmo
+  function ritmoEmKm(r) {
+    var k = kmPorPx(CORRENTEZA.zoomRef, CORRENTEZA.latRef);
+    return { vel: r.velPx * k, periodo: CORRENTEZA.periodoPx * k, luz: r.luzPx / CORRENTEZA.periodoPx };
+  }
+  // a integral de 0 a t do smoothstep que vai de 0 a 1 entre t0 e t0 + d (em segundos): quanto tempo "de cheia" já correu.
+  // A posição da luz é a integral da velocidade: assim a troca de ritmo acelera a luz, nunca a teletransporta.
+  function integralSuave(t, t0, d) {
+    if (t <= t0) return 0;
+    if (t >= t0 + d) return d / 2 + (t - t0 - d);
+    var p = (t - t0) / d; return d * (p * p * p - p * p * p * p / 2);
+  }
+  // o brilho (0 a 1) da correnteza no km do rio, com a luz já andada S (km) e o trecho claro de fração luz do período (km):
+  // a cauda cresce devagar rio acima, o meio fica aceso, e a frente cai rápido rio abaixo (a luz "aponta" para o mar)
+  function brilhoCorrenteza(km, S, periodo, luz) {
+    var u = (km - S) / periodo; u = u - Math.floor(u);
+    if (u >= luz) return 0;
+    var x = u / luz, y = Math.min(1, x / CORRENTEZA.subida, (1 - x) / CORRENTEZA.frente);
+    return y * y * (3 - 2 * y);
+  }
+  // a cor opaca da linha com o brilho b: a mistura de --agua (b = 0) e --agua-luz (b = 1), em rgb
+  function corDaAgua(cores, b) {
+    var a = cores.agua, l = cores.luz;
+    return "rgb(" + Math.round(a[0] + (l[0] - a[0]) * b) + "," + Math.round(a[1] + (l[1] - a[1]) * b) + "," + Math.round(a[2] + (l[2] - a[2]) * b) + ")";
+  }
+  function rgbDe(css) { var m = /rgba?\(([^)]*)\)/.exec(css || ""); return m ? m[1].split(",").slice(0, 3).map(Number) : [0, 0, 0]; }
+  // ═══ fim do bloco da correnteza ═══
+  // ═══ M-A (peru-agua-arte-17): A ÁGUA NAS CAMADAS DO MAPLIBRE — a correnteza da referência e a largura pelo zoom ═══
+  // O bloco "A CORRENTEZA" (acima, copiado inteiro da referência do EO-A) dá o brilho; aqui ele vira a COR de cada pedaço de
+  // uma camada de linha do MapLibre: a linha da água vai em pedaços curtos (até CORRENTEZA.passoPx de tela na escala do
+  // elemento), e cada pedaço leva a propriedade "b" (o brilho), que a cor interpola de --agua (0) a --agua-luz (1). É a cor
+  // opaca da própria linha: sem alfa, sem camada por cima, sem partícula. Vale igual no mapa plano e no relevo (a camada é
+  // drapejada como as outras).
+  // A ESCALA: cada elemento de água tem a sua (zoomRef, latRef = o zoom e a latitude em que ELE é visto), porque a mesma cena
+  //   passa por escalas muito diferentes (a gota da s06 desce o Rímac a z ~10 e o Amazonas a z ~4,5); os px da referência
+  //   valem na escala de cada um.
+  // LONGE (zoom < 11; acréscimo da Sala, 23/10/2026): o trecho claro cobre no máximo 1/3 do rio (luz ≤ L/3, por rio), e o
+  //   período é no mínimo 3 × a luz. A LARGURA: abaixo do zoom 11, o piso de 12 px de --agua sobre 24 px de escuro (o token
+  //   escuro que a cena já usa sob a linha); de 11,25 para cima, as larguras de perto; entre os dois, uma rampa linear.
+  var AGUA_PISO = { w: 12, sob: 24, z0: 10.75, z1: 11.25 };
+  function aguaLargura(perto, piso) {
+    var lo = Math.max(perto, piso);
+    return lo === perto ? perto : ["interpolate", ["linear"], ["zoom"], AGUA_PISO.z0, lo, AGUA_PISO.z1, perto];
+  }
+  function aguaKm(a, b) {
+    var R = 6371.0088, f1 = a[1] * Math.PI / 180, f2 = b[1] * Math.PI / 180, df = f2 - f1, dl = (b[0] - a[0]) * Math.PI / 180;
+    var h = Math.sin(df / 2) * Math.sin(df / 2) + Math.cos(f1) * Math.cos(f2) * Math.sin(dl / 2) * Math.sin(dl / 2);
+    return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
+  }
+  // rios: lista de linhas ([lng, lat], ...), cada uma JÁ no sentido da água (de montante à foz).
+  // o: { ritmo: "BASE" | "LENTA" | "CHEIA", zoomRef, latRef, longe: bool, T0: o tempo em que a 1ª luz sai da nascente,
+  //      fase: bool (rios de uma mesma camada saem defasados, para não correrem em uníssono) }
+  function aguaCriar(rios, o) {
+    var R = CORRENTEZA[o.ritmo || "BASE"], k = kmPorPx(o.zoomRef, o.latRef), passo = CORRENTEZA.passoPx * k;
+    var obj = { o: o, vel: R.velPx * k, rios: [], pecas: [] };
+    rios.forEach(function (c, i) {
+      if (!c || c.length < 2) return;
+      var acc = [0];
+      for (var j = 1; j < c.length; j++) acc.push(acc[j - 1] + aguaKm(c[j - 1], c[j]));
+      var L = acc[acc.length - 1], luz = R.luzPx * k, per = CORRENTEZA.periodoPx * k;
+      // longe: o período do rio é L / n (n trechos inteiros cabem nele, cada um ≥ max(período, 3 × luz)), e assim nenhuma janela
+      // do rio inteiro tem mais que 1/3 de luz, seja qual for a fase
+      if (o.longe) { luz = Math.min(luz, L / 3); per = L / Math.max(1, Math.floor(L / Math.max(per, 3 * luz))); }
+      var ri = { i: i, c: c, acc: acc, L: L, luz: luz, per: per, fase: o.fase ? ((i * 0.6180339887) % 1) * per : 0, kc: 0 };
+      obj.rios.push(ri);
+      var n = Math.max(1, Math.ceil(L / passo));
+      for (var p = 0; p < n; p++) obj.pecas.push({ r: ri, k0: L * p / n, k1: L * (p + 1) / n });
+    });
+    // o.cadeias: as partes de um mesmo rio (listas de índices de rios, de montante à foz), que a geometria traz cortadas (o
+    // Putumayo e o Javari, recortados pela fronteira, vêm em 77 e 40 pedaços): a luz corre pela cadeia inteira, com o km somado
+    // (kc = o km da cadeia onde a parte começa), e a escala da luz, a regra do 1/3 e a fase são as da cadeia
+    (o.cadeias || []).forEach(function (cad, ic) {
+      var porI = {}; obj.rios.forEach(function (ri) { porI[ri.i] = ri; });
+      var partes = cad.map(function (i) { return porI[i]; }).filter(Boolean), Lc = 0;
+      partes.forEach(function (ri) { ri.kc = Lc; Lc += ri.L; });
+      var luz = R.luzPx * k, per = CORRENTEZA.periodoPx * k;
+      if (o.longe) { luz = Math.min(luz, Lc / 3); per = Lc / Math.max(1, Math.floor(Lc / Math.max(per, 3 * luz))); }
+      var fase = o.fase ? ((ic * 0.6180339887) % 1) * per : 0;
+      partes.forEach(function (ri) { ri.luz = luz; ri.per = per; ri.fase = fase; });
+    });
+    return obj;
+  }
+  // o ponto da linha no km x, e os vértices entre os km a e b
+  function aguaTrecho(ri, a, b) {
+    var c = ri.c, acc = ri.acc, pts = [], j = 0;
+    function em(x) { while (j < acc.length - 2 && acc[j + 1] < x) j++; var s = acc[j + 1] - acc[j], f = s > 0 ? (x - acc[j]) / s : 0;
+      return [c[j][0] + (c[j + 1][0] - c[j][0]) * f, c[j][1] + (c[j + 1][1] - c[j][1]) * f]; }
+    pts.push(em(a));
+    while (j < acc.length - 1 && acc[j + 1] < b) { pts.push(c[j + 1]); j++; }
+    pts.push(em(b));
+    return pts;
+  }
+  // o GeoJSON dos pedaços no tempo T; ate(ri, i) = o km até onde o rio i está desenhado (o traço que cresce), ou null = inteiro
+  function aguaDados(obj, T, ate) {
+    var fs = [], idx = new Map();
+    obj.rios.forEach(function (ri, i) { idx.set(ri, i); });
+    obj.pecas.forEach(function (pc) {
+      var ri = pc.r, lim = ate ? ate(ri, idx.get(ri)) : ri.L;
+      if (lim == null) lim = ri.L;
+      if (lim <= pc.k0) return;
+      var k1 = Math.min(pc.k1, lim);
+      var S = obj.vel * (T - obj.o.T0) - ri.luz - ri.fase;
+      var b = brilhoCorrenteza(ri.kc + (pc.k0 + k1) / 2, S, ri.per, ri.luz / ri.per);
+      fs.push({ type: "Feature", properties: { b: Math.round(b * 100) / 100 }, geometry: { type: "LineString", coordinates: aguaTrecho(ri, pc.k0, k1) } });
+    });
+    return { type: "FeatureCollection", features: fs };
+  }
+  // a fração do rio coberta pelo trecho claro (b > 0) no tempo T, a mais alta entre os rios (para o relato)
+  function aguaFracaoLuz(obj, T) {
+    var m = 0;
+    obj.rios.forEach(function (ri) {
+      var S = obj.vel * (T - obj.o.T0) - ri.luz - ri.fase, aceso = 0, n = 400;
+      for (var q = 0; q < n; q++) { var x = ri.L * (q + 0.5) / n; if (brilhoCorrenteza(x, S, ri.per, ri.luz / ri.per) > 0) aceso++; }
+      m = Math.max(m, aceso / n);
+    });
+    return m;
+  }
+  // TRÊS camadas por elemento: o contorno escuro (id + "-sob", a geometria inteira ou a que cresce, fonte id + "-g"), a linha
+  // LISA (id + "-plano", a mesma geometria, --agua sem correnteza) e a linha em PEDAÇOS com a correnteza (a camada dos pedaços,
+  // fonte id). Os pedaços têm ponta REDONDA (sem fenda nas emendas nem entre as partes de um rio), e por isso só aparecem com
+  // opacidade 1: duas pontas redondas sobrepostas a meia opacidade somariam contas. Para escurecer um rio de fundo (a s08 baixa os
+  // rios curtos a 35 %), a cor dos pedaços se mistura ao escuro do contorno, com a correnteza viva; para entrar ou sair (opacidade
+  // entre 0 e 1), a linha lisa assume, sem correnteza, só enquanto dura o esmaecimento (aguaVer).
+  function aguaCores(sobCor) {
+    var cs = getComputedStyle(document.documentElement);
+    var c = { agua: cs.getPropertyValue("--agua").trim(), luz: cs.getPropertyValue("--agua-luz").trim(), sob: cs.getPropertyValue(sobCor || "--rotulo").trim() };
+    if (!c.agua || !c.luz || !c.sob) throw new Error("os tokens --agua, --agua-luz e " + (sobCor || "--rotulo") + " não foram lidos do tokens.css.");
+    c.rA = rgbHexOuRgb(c.agua); c.rL = rgbHexOuRgb(c.luz); c.rS = rgbHexOuRgb(c.sob);
+    return c;
+  }
+  function rgbHexOuRgb(css) {
+    var m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/i.exec(css);
+    return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : rgbDe(css);
+  }
+  function aguaMistura(a, s, k) { return "rgb(" + Math.round(s[0] + (a[0] - s[0]) * k) + "," + Math.round(s[1] + (a[1] - s[1]) * k) + "," + Math.round(s[2] + (a[2] - s[2]) * k) + ")"; }
+  function aguaCorPedacos(c, k) {
+    return k >= 0.999 ? ["interpolate", ["linear"], ["get", "b"], 0, c.agua, 1, c.luz]
+      : ["interpolate", ["linear"], ["get", "b"], 0, aguaMistura(c.rA, c.rS, k), 1, aguaMistura(c.rL, c.rS, k)];
+  }
+  function aguaEspecs(id, w, sob, op, c) {
+    return [
+      { id: id + "-sob", type: "line", source: id + "-g", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": c.sob, "line-width": aguaLargura(sob, AGUA_PISO.sob), "line-opacity": op, "line-opacity-transition": { duration: 0, delay: 0 } } },
+      { id: id + "-plano", type: "line", source: id + "-g", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": c.agua, "line-width": aguaLargura(w, AGUA_PISO.w), "line-opacity": 0, "line-opacity-transition": { duration: 0, delay: 0 } } },
+      { id: id + "-linha", type: "line", source: id, layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": aguaCorPedacos(c, 1), "line-width": aguaLargura(w, AGUA_PISO.w), "line-opacity": op >= 0.999 ? 1 : 0, "line-opacity-transition": { duration: 0, delay: 0 } } }
+    ];
+  }
+  // as camadas por addLayer (as cenas do motor da s51: s04 e s51)
+  function aguaCamadas(map, id, obj, o, antes, fontes) {
+    var c = aguaCores(o.sobCor), vazio = { type: "FeatureCollection", features: [] };
+    map.addSource(id + "-g", { type: "geojson", data: vazio }); map.addSource(id, { type: "geojson", data: vazio });
+    if (fontes) { fontes.push(id + "-g"); fontes.push(id); }
+    aguaEspecs(id, o.w, o.sob, 0, c).forEach(function (L) { map.addLayer(L, antes); });
+    aguaNome(obj, id); obj.cores = c;
+  }
+  // a visibilidade v (0 a 1: entra e sai) e o escuro k (1 = a cor da água; < 1 = o rio de fundo, misturado ao escuro do contorno)
+  function aguaVer(map, obj, v, k) {
+    v = Math.round(v * 1000) / 1000; k = k == null ? 1 : Math.round(k * 1000) / 1000;
+    var c = obj.cores, chave = v + "|" + k;
+    if (obj.ver === chave) return;
+    var cheio = v >= 0.999;
+    map.setPaintProperty(obj.id + "-sob", "line-opacity", Math.round(v * k * 1000) / 1000);   // o contorno do rio de fundo baixa com ele
+    map.setPaintProperty(obj.id + "-linha", "line-opacity", cheio ? 1 : 0);
+    map.setPaintProperty(obj.id + "-plano", "line-opacity", cheio ? 0 : v);
+    if (obj.k !== k) {
+      map.setPaintProperty(obj.id + "-linha", "line-color", aguaCorPedacos(c, k));
+      map.setPaintProperty(obj.id + "-plano", "line-color", k >= 0.999 ? c.agua : aguaMistura(c.rA, c.rS, k));
+      obj.k = k;
+    }
+    obj.ver = chave;
+  }
+  // o quadro: a geometria do contorno (a que cresce) e os pedaços com a cor do tempo T (só enquanto os pedaços se veem)
+  function aguaQuadro(map, obj, T, ate) {
+    var kg = ate ? obj.rios.map(function (ri, i) { var v = ate(ri, i); return v == null ? "x" : v.toFixed(3); }).join(",") : "tudo";
+    if (obj.chaveG !== kg) {
+      var g = map.getSource(obj.id + "-g");
+      if (g) g.setData({ type: "Feature", properties: {}, geometry: { type: "MultiLineString", coordinates: obj.rios.map(function (ri, i) {
+        var v = ate ? ate(ri, i) : null; if (v == null) v = ri.L; return v > 0 ? aguaTrecho(ri, 0, Math.min(v, ri.L)) : null; }).filter(function (x) { return x && x.length > 1; }) } });
+      obj.chaveG = kg;
+    }
+    var k = T.toFixed(4) + "|" + kg;
+    if (obj.chave === k) return;
+    var s = map.getSource(obj.id); if (s) s.setData(aguaDados(obj, T, ate));
+    obj.chave = k;
+  }
+  // a mesma água nas cenas que montam o ESTILO de uma vez (s06, s08, s09): aguaFontesEstilo põe as fontes id (os pedaços) e
+  // id + "-g" (o contorno e a linha lisa), vazias; aguaCamadasEstilo devolve as três camadas; aguaNome dá ao objeto o id e as cores
+  function aguaFontesEstilo(fontes, ids) {
+    ids.forEach(function (id) { fontes[id] = { type: "geojson", data: { type: "FeatureCollection", features: [] } };
+      fontes[id + "-g"] = { type: "geojson", data: { type: "FeatureCollection", features: [] } }; });
+  }
+  function aguaCamadasEstilo(id, w, sob, op, sobCor) { return aguaEspecs(id, w, sob, op, aguaCores(sobCor)); }
+  function aguaNome(obj, id, sobCor) { obj.id = id; obj.chave = null; obj.chaveG = null; obj.ver = null; obj.k = 1;
+    if (!obj.cores) obj.cores = aguaCores(sobCor || obj.o.sobCor); return obj; }
+  // lago e represa (PARADOS): --agua a 0,58 no preenchimento, o contorno --agua 6 px sobre 14 escuros de perto, 12 sobre 24 de longe
+  var AGUA_PARADA = 0.58;
+  // ═══ fim da água no MapLibre (M-A) ═══
   // ═══ CONFIGURAÇÃO DA CENA (arte-12, M4) ═══
   // Tempos (0 = 34,067 s do master): 'half' 0,566 · 'lakes' 3,667 · 'That' 5,7 · 'single' 7,433 · 'early' 8,866 · 'So' 10,533 ·
   // 'do' 10,867 · 'You're' 14,067 (48,133 abs.; a vinheta de 48,14 a 52,91 abs.).
@@ -167,7 +416,9 @@
     rotulos: [
       { id: "rLima", ref: "LIMA", lado: "direita", vert: "centro", dx: 44, entra: 0, sai: 3.666, dIn: 0.001 },
       { id: "card1", tela: [2300, 160], lado: "direita", vert: "baixo", entra: 0.566, sai: 5.7 },
-      { id: "card2", tela: [2260, 200], lado: "direita", vert: "baixo", entra: 8.866, sai: 10.867 }
+      { id: "card2", tela: [2260, 200], lado: "direita", vert: "baixo", entra: 8.866, sai: 10.867 },
+      // arte-17: a pergunta do gancho (textos-tela, papel 'pergunta', 11,1 → 13,6 + 300 ms), presa à tela no canto de baixo à esquerda
+      { id: "perg", tela: [200, 1290], lado: "direita", vert: "baixo", entra: 11.1, sai: 13.6 }
     ],
     creditoMapa: "© MapTiler © OpenStreetMap contributors",
     creditos: [
@@ -212,9 +463,15 @@
       A.territorio("seco", A.geo("vertente-pacifico"), { fill: "--destaque", fracao: 0.85, linha: "--tinta", w: 0.01, sob: 0.01 });
       A.territorio("umido", A.geo("vertente-atlantico"), { fill: "--contraparte", fracao: 0.35, linha: "--tinta", w: 0.01, sob: 0.01 });
       A.linha("peru", A.geo("peru-ne"), { cor: "--fronteira-cor", w: 5, sob: 12 });
-      A.REFS.LAGOAS.forEach(function (f, k) { A.territorio("lag" + k, f, { fill: "--contraparte", fracao: 0.85, linha: "--tinta", w: 4, sob: 10 }); });
+      // arte-17: as lagoas em --agua, PARADAS (0,58), o contorno --agua 6/14 de perto e 12/24 de longe (a rampa pelo zoom)
+      A.REFS.LAGOAS.forEach(function (f, k) { A.territorio("lag" + k, f, { fill: "--agua", fracao: AGUA_PARADA, linha: "--agua", w: 6, sob: 14 });
+        map.setPaintProperty("lag" + k + "-linha", "line-width", aguaLargura(6, AGUA_PISO.w));
+        map.setPaintProperty("lag" + k + "-sob", "line-width", aguaLargura(14, AGUA_PISO.sob)); });
       A.linha("div", A.geo("divisoria-continental-peru"), { cor: "--tinta", w: 6, sob: 12, sobCor: "--rotulo" });
-      A.linhaCor("rota", { type: "FeatureCollection", features: [] }, { cor: "--destaque", w: 10, sob: 22 });
+      // arte-17: o traçado em --agua com a correnteza (base, leste → oeste: da lagoa a Milloc), 10/22 de perto e 12/24 de longe
+      A.REFS.MAP = map;
+      A.REFS.AGUA_ROTA = aguaCriar([A.REFS.ROTA], { ritmo: "BASE", zoomRef: 11.36, latRef: -11.47, longe: false, T0: ROTA.t0 });
+      aguaCamadas(map, "rota", A.REFS.AGUA_ROTA, { w: 10, sob: 22 }, undefined, A.fontes);
     },
     quadro: function (t, A) {
       A.lin("div", 1);
@@ -222,9 +479,9 @@
       A.REFS.LAGOAS.forEach(function (f, k) { A.terr("lag" + k, A.eo(A.seg(t, 3.667 + 0.15 * k, 0.4))); });
       // o traçado: cresce de 'single' (7,433) em 1,4 s, da lagoa ao lado do Pacífico
       var u = A.eio(A.seg(t, ROTA.t0, ROTA.dur));
-      A.setDado("rota", u.toFixed(3), u > 0 ? { type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: A.ateFracao(A.REFS.ROTA, u).pts } } : { type: "FeatureCollection", features: [] });
+      aguaQuadro(A.REFS.MAP, A.REFS.AGUA_ROTA, t, function (ri) { return u * ri.L; });   // arte-17: a linha em pedaços, com a correnteza
       // peru-agua-arte-15: o traçado (com o contorno escuro) sai junto com o anel, no começo do recuo (10,6 → 10,9 s)
-      A.lin("rota", u > 0 ? 1 - A.eo(A.seg(t, 10.6, 0.3)) : 0);
+      aguaVer(A.REFS.MAP, A.REFS.AGUA_ROTA, u > 0 ? 1 - A.eo(A.seg(t, 10.6, 0.3)) : 0, 1);   // arte-17 (r2): o esmaecimento pela linha lisa
       // o recuo: os lados e a divisa do país
       var v = A.eo(A.seg(t, 10.9, 0.8));
       A.opac("seco-fill", "fill-opacity", 0.85 * v);

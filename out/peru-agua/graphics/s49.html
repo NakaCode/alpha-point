@@ -30,6 +30,16 @@
   centro em y 1448), já inteiro na área segura em 14,7; sai em 17,134 como antes. Não toca o polígono, não empilha com 'Puente
   Piedra', e a seta passa sempre acima dele (medido no DOM, _tmp/arte-16/EO/). Só isso mudou; a emenda com a s48 (o b0) não muda.
   Entradas: textos-tela dc0c0ea4, regência 679d2809, espelho cf7869d6, conceito 56a14133.
+  peru-agua-arte-17 (lote EO-B, fase 2; a escolha do Lucas "Azul em toda a água" e a regra "A água é azul, e corre", identidade §2;
+  regência 4ea3b5b0 › s49 › beats[3] e › _agua_direcao_23): o traçado do canal e do túnel (OSM, b3) passa de --destaque a --agua
+  (cor de TIPO), com a largura (10 px) e o contorno escuro (20 px) de hoje, e CORRE: um trecho mais claro da própria linha
+  (--agua-luz) desce da lagoa para Lima (leste → oeste) e se repete, no ritmo BASE, com o bloco "A CORRENTEZA" da referência do
+  EO-A (out/peru-agua/_tmp/arte-12/EO1/src/rimac-comum.js) copiado sem mudança, fora o zoomRef/latRef (12,6 / −11,49), aplicado
+  por line-gradient sobre line-progress (a linha vai sobre o relevo). A SETA do b2 continua --destaque: é seta de procedência, não
+  água. O piso da escala grande (acréscimo da Sala, 12 sobre 24 px abaixo do zoom 11) não se aplica: o túnel só aparece a partir
+  de 19,25, com o zoom já em 11,9 e subindo até 12,62 (medido com a câmera da cena). Nada mais mudou: os tempos, a câmera, o anel,
+  os rótulos, os créditos, a folha, a linha do tempo e a emenda com a s48 (o b0). Onde o texto abaixo diz "o traçado do túnel em
+  --destaque", vale isto. Entradas: textos-tela 53943561, regência 4ea3b5b0, espelho 4a2ab762, conceito 25fb37bb.
 
   O que manda em cada coisa (entradas de 22/10/2026, sha256 conferidos): os TEXTOS (textos-tela.json 2f748bfc… › s49, a lista fechada; na arte-13, cebd9480… › s49; na arte-15, 946283df… › s49);
   os BEATS, o exige e a câmera (regencia.json 460eb6e1… › s49, _decisoes_da_regencia e _para_o_redator_e_a_arte); o conceito
@@ -488,6 +498,94 @@
   function exageroAt(t) { return PLANO_EXAGERO + (1.5 - PLANO_EXAGERO) * eio(seg(t, 17.133, 3.0)); }
   function cotaAt(t) { return PLANO_COTA + (4300 - PLANO_COTA) * eio(seg(t, 17.133, 3.0)); }
 
+  // ═══ A CORRENTEZA — o modelo das cenas de água do vídeo (peru-agua-arte-17; identidade §2; regência › _agua_direcao_23) ═══
+  // O QUE É: um trecho MAIS CLARO da própria linha da água (--agua-luz sobre --agua) que desce no sentido da água e se repete.
+  //   É a COR da linha que muda, peça a peça (a linha é desenhada em pedaços curtos, cada um com a mistura opaca das duas cores):
+  //   luz na linha, nunca partícula, nunca brilho por cima, nunca alfa (pedaços com alfa somariam contas nas pontas redondas).
+  // ONDE MORA A LUZ: no CHÃO, não na tela. A posição é medida em km ao longo do rio (de montante = 0 até a foz) e anda a uma
+  //   velocidade em km/s; com a câmera que aproxima ou recua, a luz continua presa à água, como a linha.
+  // OS PARÂMETROS são dados em px de TELA na escala de referência (zoomRef, latRef: o zoom médio da cena) e convertidos a km uma
+  //   vez, por kmPorPx(). Para outra cena: troque zoomRef/latRef pelo zoom médio e a latitude dela, e escolha o ritmo.
+  // O RITMO (regência › _agua_direcao_23 › correnteza[].ritmo): LENTA = o rio baixo (espaçada: trecho curto); CHEIA = o rio cheio
+  //   (rápida e cheia: trecho longo); BASE = "nem o lento do rio baixo da s37 nem o rápido da cheia da s38", para as cenas sem nível
+  //   dito. O período (de um começo de luz ao próximo) é o MESMO nos três ritmos: só a velocidade e o comprimento do trecho mudam,
+  //   e assim a troca de ritmo no meio da cena (a s38 em "runs") não faz a luz pular.
+  // FASE 2 (peru-agua-arte-17, 23/10/2026, os ajustes do Lucas tirados da prova): o --agua-luz passou a quase branco (só no
+  //   tokens.css: a cena lê o token), e o trecho claro ficou mais longo para se ler no celular na linha fina do rio baixo (LENTA 280 →
+  //   380 px; BASE 380 → 450; CHEIA 550 → 600). A luz continua opaca, a cor da própria linha: brilho máximo 1, sem alfa.
+  var CORRENTEZA = {
+    zoomRef: 12.6, latRef: -11.49,   // a escala em que os px abaixo valem (s49 › b3: o zoom do quadro da s40, D0 12,55 → D1 12,62, no túnel)
+    periodoPx: 1100,                 // de um trecho claro ao seguinte, em px de tela na escala de referência
+    LENTA: { velPx: 220, luzPx: 380 },   // px/s e px de trecho claro: o rio baixo (s37, e a s38 antes de "runs")
+    BASE:  { velPx: 420, luzPx: 450 },   // o ritmo de base (as cenas sem nível dito; não usado aqui, é a referência da fase 2)
+    CHEIA: { velPx: 720, luzPx: 600 },   // o rio cheio (a s38 depois de "runs")
+    subida: 0.45,                    // a fração do trecho em que a luz cresce (a cauda, rio acima)
+    frente: 0.15,                    // a fração final em que ela cai (a frente, rio abaixo: curta, a luz "aponta" para o mar);
+                                     // no meio, a luz inteira (o patamar), para o trecho se ler numa linha fina de 6 px
+    passoPx: 12                      // o tamanho máximo de cada pedaço de linha, em px de tela (a luz fica lisa, sem degrau)
+  };
+  // metros de chão por px de tela no MapLibre (ladrilho de 512 px), no zoom z e na latitude lat
+  function kmPorPx(z, lat) { return 40075.016686 * Math.cos(lat * Math.PI / 180) / (512 * Math.pow(2, z)); }
+  // a velocidade (km/s), o período (km) e o comprimento do trecho claro (fração do período) de um ritmo
+  function ritmoEmKm(r) {
+    var k = kmPorPx(CORRENTEZA.zoomRef, CORRENTEZA.latRef);
+    return { vel: r.velPx * k, periodo: CORRENTEZA.periodoPx * k, luz: r.luzPx / CORRENTEZA.periodoPx };
+  }
+  // a integral de 0 a t do smoothstep que vai de 0 a 1 entre t0 e t0 + d (em segundos): quanto tempo "de cheia" já correu.
+  // A posição da luz é a integral da velocidade: assim a troca de ritmo acelera a luz, nunca a teletransporta.
+  function integralSuave(t, t0, d) {
+    if (t <= t0) return 0;
+    if (t >= t0 + d) return d / 2 + (t - t0 - d);
+    var p = (t - t0) / d; return d * (p * p * p - p * p * p * p / 2);
+  }
+  // o brilho (0 a 1) da correnteza no km do rio, com a luz já andada S (km) e o trecho claro de fração luz do período (km):
+  // a cauda cresce devagar rio acima, o meio fica aceso, e a frente cai rápido rio abaixo (a luz "aponta" para o mar)
+  function brilhoCorrenteza(km, S, periodo, luz) {
+    var u = (km - S) / periodo; u = u - Math.floor(u);
+    if (u >= luz) return 0;
+    var x = u / luz, y = Math.min(1, x / CORRENTEZA.subida, (1 - x) / CORRENTEZA.frente);
+    return y * y * (3 - 2 * y);
+  }
+  // a cor opaca da linha com o brilho b: a mistura de --agua (b = 0) e --agua-luz (b = 1), em rgb
+  function corDaAgua(cores, b) {
+    var a = cores.agua, l = cores.luz;
+    return "rgb(" + Math.round(a[0] + (l[0] - a[0]) * b) + "," + Math.round(a[1] + (l[1] - a[1]) * b) + "," + Math.round(a[2] + (l[2] - a[2]) * b) + ")";
+  }
+  function rgbDe(css) { var m = /rgba?\(([^)]*)\)/.exec(css || ""); return m ? m[1].split(",").slice(0, 3).map(Number) : [0, 0, 0]; }
+  // ═══ fim do bloco da correnteza ═══
+
+  // peru-agua-arte-17 (EO-B): a APLICAÇÃO do bloco acima numa camada de linha do MapLibre (line-gradient sobre line-progress, a fonte
+  // com lineMetrics; o método da s21). A cor de cada ponto é a do bloco: corDaAgua(cores, brilhoCorrenteza(km, S, periodo, luz)),
+  // amostrada em CORR_N degraus por trecho claro (~11 px de tela); fora dos trechos, --agua. km = o progresso × o comprimento
+  // desenhado (a linha que ainda cresce: line-progress vai de 0 à ponta).
+  var CORR_N = 40, CORES_AGUA = null;
+  function corDe(nome) {
+    var pr = document.createElement("i"); pr.style.color = "var(" + nome + ")"; pr.style.display = "none";
+    document.body.appendChild(pr); var c = getComputedStyle(pr).color; pr.remove();
+    if (!c) falhar("o papel " + nome + " não resolveu no tokens.css."); return c;
+  }
+  function coresAgua() {
+    if (!CORES_AGUA) CORES_AGUA = { agua: rgbDe(corDe("--agua")), luz: rgbDe(corDe("--agua-luz")) };
+    return CORES_AGUA;
+  }
+  function gradienteCorrenteza(totKm, S, r) {
+    var cores = coresAgua(), base = corDaAgua(cores, 0);
+    var ex = ["interpolate", ["linear"], ["line-progress"], -1e6, base];
+    if (totKm > 0) {
+      var kIni = Math.floor(-S / r.periodo) - 1, kFim = Math.ceil((totKm - S) / r.periodo) + 1;
+      for (var k = kIni; k <= kFim; k++) {
+        var s0 = S + k * r.periodo, s1 = s0 + r.luz * r.periodo;
+        if (s1 <= 0 || s0 >= totKm) continue;
+        for (var i = 0; i <= CORR_N; i++) {
+          var kmi = s0 + (s1 - s0) * i / CORR_N;
+          ex.push(kmi / totKm, (i === 0 || i === CORR_N) ? base : corDaAgua(cores, brilhoCorrenteza(kmi, S, r.periodo, r.luz)));
+        }
+      }
+    }
+    ex.push(1e6, base);
+    return ex;
+  }
+
   // ═══ A GEOMETRIA ═══
   var PP, DIV, TUN, ROTA, LR, CRUZ, SETA_PONTA, SETA_CAUDA = [-76.00, -11.42];
   function prepararGeo() {
@@ -517,7 +615,7 @@
     var fontes = fontesBase();
     fontes.pp = { type: "geojson", data: PP };
     fontes.div = { type: "geojson", data: DIV };
-    fontes.trR = { type: "geojson", data: { type: "FeatureCollection", features: [] } };
+    fontes.trR = { type: "geojson", data: { type: "FeatureCollection", features: [] }, lineMetrics: true };   // arte-17: a correnteza
     var lc = { "line-join": "round", "line-cap": "round" };
     var camadas = [
       CAMADA_BASE,
@@ -527,7 +625,8 @@
       { id: "div-sob", type: "line", source: "div", layout: lc, paint: { "line-color": COR.sob, "line-width": 12, "line-opacity": 0 } },
       { id: "div", type: "line", source: "div", layout: lc, paint: { "line-color": COR.tinta, "line-width": 6, "line-opacity": 0 } },
       { id: "trR-sob", type: "line", source: "trR", layout: lc, paint: { "line-color": COR.sob, "line-width": 20, "line-opacity": 1 } },
-      { id: "trR", type: "line", source: "trR", layout: lc, paint: { "line-color": COR.destaque, "line-width": 10, "line-opacity": 1 } }
+      // peru-agua-arte-17: o canal e o túnel são ÁGUA (--agua, cor de TIPO; identidade §2), com a correnteza; a largura e o contorno de hoje
+      { id: "trR", type: "line", source: "trR", layout: lc, paint: { "line-color": corDe("--agua"), "line-gradient": gradienteCorrenteza(0, 0, ritmoEmKm(CORRENTEZA.BASE)), "line-width": 10, "line-opacity": 1 } }
     ];
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
@@ -541,9 +640,17 @@
     // a divisória acende quando a câmera abre ('the divide lit') e fica até o fim do mapa
     var vd = t < 11.067 ? 0 : eo(seg(t, 14.0, 0.5));
     opac("div", "line-opacity", vd); opac("div-sob", "line-opacity", vd);
-    // o traçado do túnel (OSM) se desenha SOZINHO em --destaque quando a câmera chega ao quadro da s40
+    // o traçado do túnel (OSM) se desenha SOZINHO em --agua (arte-17; antes --destaque) quando a câmera chega ao quadro da s40
     var fr = eio(seg(t, 19.25, 0.9));
     dados("trR", fr > 0 ? fcLinha(trecho(ROTA, LR, fr)) : fcVazia, fr.toFixed(4));
+    // peru-agua-arte-17: a CORRENTEZA no canal e no túnel (regência › _agua_direcao_23: leste → oeste, da lagoa para Lima, ritmo
+    // BASE). ROTA vai de Marcapomacocha a Milloc, que é o sentido da água: o km acumulado (LR) já é rio abaixo. A luz parte da
+    // lagoa quando a pena começa (19,25): S = vel × (t − 19,25).
+    if (fr > 0) {
+      var rB = ritmoEmKm(CORRENTEZA.BASE), Sb = rB.vel * (t - 19.25), totB = LR[LR.length - 1] * fr;
+      var kg = Sb.toFixed(4) + "|" + fr.toFixed(4);
+      if (ultimo.gradTrR !== kg && map.getLayer("trR")) { map.setPaintProperty("trR", "line-gradient", gradienteCorrenteza(totB, Sb, rB)); ultimo.gradTrR = kg; }
+    }
   }
 
   // ═══ OS RÓTULOS DO MAPA ═══

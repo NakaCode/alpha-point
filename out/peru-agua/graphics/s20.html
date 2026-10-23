@@ -11,6 +11,15 @@
   peru-agua-arte-16 (lote EO; texto-16, conserto 17 do textos-tela dc0c0ea4…, mantidos[3] da revisão r2): a pílula "Rímac" (rotulo)
   na foz, de 1,6 a 4,5, ao lado da linha, sem cobri-la. Só isso mudou. Entradas: textos-tela dc0c0ea4, regência 679d2809, espelho
   cf7869d6, conceito 56a14133.
+  peru-agua-arte-17 (lote EO-B, fase 2; a escolha do Lucas "Azul em toda a água" e a regra "A água é azul, e corre", identidade §2;
+  regência 4ea3b5b0 › s20 › beats[0] e › _agua_direcao_23): no b0, o Rímac passa de --destaque a --agua (cor de TIPO), com a
+  largura (6 px) e o contorno escuro (14 px) de hoje, e CORRE: um trecho mais claro da própria linha (--agua-luz) desce rio abaixo
+  até o mar (oeste) e se repete, no ritmo CHEIA ("the flood water"), com o bloco "A CORRENTEZA" da referência do EO-A
+  (out/peru-agua/_tmp/arte-12/EO1/src/rimac-comum.js) copiado sem mudança, fora o zoomRef/latRef (12,925 / −12,03), aplicado por
+  line-gradient sobre line-progress. O piso da escala grande (acréscimo da Sala, 12 sobre 24 px abaixo do zoom 11) não se aplica:
+  o zoom do b0 vai de 12,80 a 13,05. O b1 (o mar e o volume da cheia, no traço de engenheiro) continua --tinta. Nada mais mudou:
+  a pílula, os tempos, a câmera, os créditos e a mesa. Onde o texto abaixo diz "--destaque" para o rio, vale isto. Entradas:
+  textos-tela 53943561, regência 4ea3b5b0, espelho 4a2ab762, conceito 25fb37bb.
 
   O que manda em cada coisa: os TEXTOS (textos-tela.json sha256 2f748bfc… › s20: "© MapTiler © OpenStreetMap contributors" 0–4,5;
   "Source: ANA (Peru), 2009" 0–10,7; "ABOUT HALF" (heroi) e "OF THE FLOOD WATER FROM THE WETTER PART OF THE PACIFIC SIDE" (legenda)
@@ -20,7 +29,7 @@
 
   OS BEATS (tempo local = master − 202,133; palavras do words.json):
     b0 0–4,5 · O MAPA (MapTiler satellite-v2, PLANO, tratamento C da identidade §6) sobre a foz do Rímac (rio-rimac, OSM): a foz em
-        x ~1305, o mar à esquerda; os últimos 16 km do rio acendem finos em --destaque (6 px sobre 14 px escuros), correndo rio abaixo
+        x ~1305, o mar à esquerda; os últimos 16 km do rio acendem finos em --agua (arte-17; 6 px sobre 14 px escuros), correndo rio abaixo
         até o mar de 0,3 a 1,6 s; a câmera se aproxima devagar (zoom 12,80 → 13,05) e gira devagar (−1,5° → +1,5°), sem parar. Em 1,6,
         quando o traço chega ao mar, a pílula "Rímac" (rotulo, --rotulo, 128 px; arte-16) entra na foz (300 ms, opacidade + 24 px),
         presa à ponta do rio-rimac (−77,14759/−12,03074) e projetada a cada quadro: acima e à esquerda da foz, sobre o mar, com a
@@ -388,6 +397,94 @@
     var cm = E("credMesa"); if (cm) cm.style.opacity = "1";
   }
 
+  // ═══ A CORRENTEZA — o modelo das cenas de água do vídeo (peru-agua-arte-17; identidade §2; regência › _agua_direcao_23) ═══
+  // O QUE É: um trecho MAIS CLARO da própria linha da água (--agua-luz sobre --agua) que desce no sentido da água e se repete.
+  //   É a COR da linha que muda, peça a peça (a linha é desenhada em pedaços curtos, cada um com a mistura opaca das duas cores):
+  //   luz na linha, nunca partícula, nunca brilho por cima, nunca alfa (pedaços com alfa somariam contas nas pontas redondas).
+  // ONDE MORA A LUZ: no CHÃO, não na tela. A posição é medida em km ao longo do rio (de montante = 0 até a foz) e anda a uma
+  //   velocidade em km/s; com a câmera que aproxima ou recua, a luz continua presa à água, como a linha.
+  // OS PARÂMETROS são dados em px de TELA na escala de referência (zoomRef, latRef: o zoom médio da cena) e convertidos a km uma
+  //   vez, por kmPorPx(). Para outra cena: troque zoomRef/latRef pelo zoom médio e a latitude dela, e escolha o ritmo.
+  // O RITMO (regência › _agua_direcao_23 › correnteza[].ritmo): LENTA = o rio baixo (espaçada: trecho curto); CHEIA = o rio cheio
+  //   (rápida e cheia: trecho longo); BASE = "nem o lento do rio baixo da s37 nem o rápido da cheia da s38", para as cenas sem nível
+  //   dito. O período (de um começo de luz ao próximo) é o MESMO nos três ritmos: só a velocidade e o comprimento do trecho mudam,
+  //   e assim a troca de ritmo no meio da cena (a s38 em "runs") não faz a luz pular.
+  // FASE 2 (peru-agua-arte-17, 23/10/2026, os ajustes do Lucas tirados da prova): o --agua-luz passou a quase branco (só no
+  //   tokens.css: a cena lê o token), e o trecho claro ficou mais longo para se ler no celular na linha fina do rio baixo (LENTA 280 →
+  //   380 px; BASE 380 → 450; CHEIA 550 → 600). A luz continua opaca, a cor da própria linha: brilho máximo 1, sem alfa.
+  var CORRENTEZA = {
+    zoomRef: 12.925, latRef: -12.03,   // a escala em que os px abaixo valem (s20 › b0: o zoom médio da aproximação, 12,80 → 13,05, na foz do Rímac)
+    periodoPx: 1100,                 // de um trecho claro ao seguinte, em px de tela na escala de referência
+    LENTA: { velPx: 220, luzPx: 380 },   // px/s e px de trecho claro: o rio baixo (s37, e a s38 antes de "runs")
+    BASE:  { velPx: 420, luzPx: 450 },   // o ritmo de base (as cenas sem nível dito; não usado aqui, é a referência da fase 2)
+    CHEIA: { velPx: 720, luzPx: 600 },   // o rio cheio (a s38 depois de "runs")
+    subida: 0.45,                    // a fração do trecho em que a luz cresce (a cauda, rio acima)
+    frente: 0.15,                    // a fração final em que ela cai (a frente, rio abaixo: curta, a luz "aponta" para o mar);
+                                     // no meio, a luz inteira (o patamar), para o trecho se ler numa linha fina de 6 px
+    passoPx: 12                      // o tamanho máximo de cada pedaço de linha, em px de tela (a luz fica lisa, sem degrau)
+  };
+  // metros de chão por px de tela no MapLibre (ladrilho de 512 px), no zoom z e na latitude lat
+  function kmPorPx(z, lat) { return 40075.016686 * Math.cos(lat * Math.PI / 180) / (512 * Math.pow(2, z)); }
+  // a velocidade (km/s), o período (km) e o comprimento do trecho claro (fração do período) de um ritmo
+  function ritmoEmKm(r) {
+    var k = kmPorPx(CORRENTEZA.zoomRef, CORRENTEZA.latRef);
+    return { vel: r.velPx * k, periodo: CORRENTEZA.periodoPx * k, luz: r.luzPx / CORRENTEZA.periodoPx };
+  }
+  // a integral de 0 a t do smoothstep que vai de 0 a 1 entre t0 e t0 + d (em segundos): quanto tempo "de cheia" já correu.
+  // A posição da luz é a integral da velocidade: assim a troca de ritmo acelera a luz, nunca a teletransporta.
+  function integralSuave(t, t0, d) {
+    if (t <= t0) return 0;
+    if (t >= t0 + d) return d / 2 + (t - t0 - d);
+    var p = (t - t0) / d; return d * (p * p * p - p * p * p * p / 2);
+  }
+  // o brilho (0 a 1) da correnteza no km do rio, com a luz já andada S (km) e o trecho claro de fração luz do período (km):
+  // a cauda cresce devagar rio acima, o meio fica aceso, e a frente cai rápido rio abaixo (a luz "aponta" para o mar)
+  function brilhoCorrenteza(km, S, periodo, luz) {
+    var u = (km - S) / periodo; u = u - Math.floor(u);
+    if (u >= luz) return 0;
+    var x = u / luz, y = Math.min(1, x / CORRENTEZA.subida, (1 - x) / CORRENTEZA.frente);
+    return y * y * (3 - 2 * y);
+  }
+  // a cor opaca da linha com o brilho b: a mistura de --agua (b = 0) e --agua-luz (b = 1), em rgb
+  function corDaAgua(cores, b) {
+    var a = cores.agua, l = cores.luz;
+    return "rgb(" + Math.round(a[0] + (l[0] - a[0]) * b) + "," + Math.round(a[1] + (l[1] - a[1]) * b) + "," + Math.round(a[2] + (l[2] - a[2]) * b) + ")";
+  }
+  function rgbDe(css) { var m = /rgba?\(([^)]*)\)/.exec(css || ""); return m ? m[1].split(",").slice(0, 3).map(Number) : [0, 0, 0]; }
+  // ═══ fim do bloco da correnteza ═══
+
+  // peru-agua-arte-17 (EO-B): a APLICAÇÃO do bloco acima numa camada de linha do MapLibre (line-gradient sobre line-progress, a fonte
+  // com lineMetrics; o método da s21). A cor de cada ponto é a do bloco: corDaAgua(cores, brilhoCorrenteza(km, S, periodo, luz)),
+  // amostrada em CORR_N degraus por trecho claro (~11 px de tela); fora dos trechos, --agua. km = o progresso × o comprimento
+  // desenhado (a linha que ainda cresce: line-progress vai de 0 à ponta).
+  var CORR_N = 40, CORES_AGUA = null;
+  function corDe(nome) {
+    var pr = document.createElement("i"); pr.style.color = "var(" + nome + ")"; pr.style.display = "none";
+    document.body.appendChild(pr); var c = getComputedStyle(pr).color; pr.remove();
+    if (!c) falhar("o papel " + nome + " não resolveu no tokens.css."); return c;
+  }
+  function coresAgua() {
+    if (!CORES_AGUA) CORES_AGUA = { agua: rgbDe(corDe("--agua")), luz: rgbDe(corDe("--agua-luz")) };
+    return CORES_AGUA;
+  }
+  function gradienteCorrenteza(totKm, S, r) {
+    var cores = coresAgua(), base = corDaAgua(cores, 0);
+    var ex = ["interpolate", ["linear"], ["line-progress"], -1e6, base];
+    if (totKm > 0) {
+      var kIni = Math.floor(-S / r.periodo) - 1, kFim = Math.ceil((totKm - S) / r.periodo) + 1;
+      for (var k = kIni; k <= kFim; k++) {
+        var s0 = S + k * r.periodo, s1 = s0 + r.luz * r.periodo;
+        if (s1 <= 0 || s0 >= totKm) continue;
+        for (var i = 0; i <= CORR_N; i++) {
+          var kmi = s0 + (s1 - s0) * i / CORR_N;
+          ex.push(kmi / totKm, (i === 0 || i === CORR_N) ? base : corDaAgua(cores, brilhoCorrenteza(kmi, S, r.periodo, r.luz)));
+        }
+      }
+    }
+    ex.push(1e6, base);
+    return ex;
+  }
+
   // ═══ O MAPA (b0) — o corpo do mapista ═══
   var CENA = { perfil: "maptiler", agua: null, creditoMapa: TEXTOS.crMapa };
   var FONTES = ["rim"];
@@ -542,11 +639,12 @@
         maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
         style: { version: 8, transition: { duration: 0, delay: 0 },
           sources: { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
-                     rim: { type: "geojson", data: { type: "FeatureCollection", features: [] } } },
+                     rim: { type: "geojson", data: { type: "FeatureCollection", features: [] }, lineMetrics: true } },   // arte-17: a correnteza
           layers: [{ id: "base", type: "raster", source: "base",
             paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
             { id: "rim-sob", type: "line", source: "rim", layout: lc, paint: { "line-color": COR.sob, "line-width": 14 } },
-            { id: "rim", type: "line", source: "rim", layout: lc, paint: { "line-color": COR.destaque, "line-width": 6 } }] },
+            // peru-agua-arte-17: o Rímac é ÁGUA (--agua, cor de TIPO; identidade §2), com a correnteza; 6 px sobre 14 escuros, como antes
+            { id: "rim", type: "line", source: "rim", layout: lc, paint: { "line-color": corDe("--agua"), "line-gradient": gradienteCorrenteza(0, 0, ritmoEmKm(CORRENTEZA.CHEIA)), "line-width": 6 } }] },
         center: c0.center, zoom: c0.zoom, bearing: c0.bearing, pitch: 0
       });
     } catch (e) { return falhar("o MapLibre não subiu (" + (e && e.message) + ")."); }
@@ -653,7 +751,7 @@
   };
   })();
 
-  var ultimoRio = null;
+  var ultimoRio = null, ultimoGrad = null;
   // a pílula "Rímac" (arte-16): presa à ponta do rio (a foz, projetada a cada quadro, screen-space), acima e à esquerda dela, sobre o
   // mar: a borda de baixo 56 px acima da ponta, a direita 60 px a leste dela (a linha segue para o leste e desce: nada a cobre).
   // Entra em 1,6 (300 ms, opacidade + 24 px de subida) e sai no corte (4,5), inteira até ele; o esmaecer de 60 px da borda segura.
@@ -676,6 +774,13 @@
       map.jumpTo(cameraAt(Math.min(t, T.mesa)));
       var f = eb(seg(t, T.rio, T.rioDur)), k = f.toFixed(4);
       if (k !== ultimoRio) { var s = map.getSource("rim"); if (s) s.setData(f > 0 ? trechoAte(f) : { type: "FeatureCollection", features: [] }); ultimoRio = k; }
+      // peru-agua-arte-17: a CORRENTEZA (regência › _agua_direcao_23, s20: rio abaixo → mar, oeste; CHEIO, "the flood water": rápida
+      // e cheia). RIO vai de 16 km rio acima até a foz: o km acumulado (LRIO) já é rio abaixo. S = vel × (t − 0,3), a luz parte
+      // de cima junto com a pena.
+      if (f > 0) {
+        var rC = ritmoEmKm(CORRENTEZA.CHEIA), Sc = rC.vel * (t - T.rio), totC = LRIO[LRIO.length - 1] * f, kg = Sc.toFixed(4) + "|" + k;
+        if (kg !== ultimoGrad && map.getLayer("rim")) { map.setPaintProperty("rim", "line-gradient", gradienteCorrenteza(totC, Sc, rC)); ultimoGrad = kg; }
+      }
     }
     pilulaFoz(t, noMapa);
     // os créditos: no mapa, em pílula, o da MapTiler embaixo e o da ANA acima; na mesa, o da ANA no mesmo pé

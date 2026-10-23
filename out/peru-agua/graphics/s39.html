@@ -84,6 +84,24 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
   próprio elemento (cobre o OSM das lagoas, do traçado, dos rios e de La Atarjea). Acima dele, numa vaga só, sem a marca de
   mapa, os de dado e o da foto, um por vez: quem sai termina de sair no t1 dele, quem entra começa no t0. HydroBASINS: nada na
   tela (o Exhibit B da WWF vai na descrição).
+  CONSERTO peru-agua-arte-17, FASE 2 (lote M-B, 23/10/2026; fase2.md e fase2-acrescimo.md; regência 4ea3b5b0 › s39), só isto:
+    · b0: os dois cubos saem, e entram DUAS REPRESAS cheias em traço (animação desenhada, em Opus): num VALE EM V, a parede na
+      frente (um trapézio: a crista larga em cima, a base estreita no fundo do vale), a crista, a borda do lago atrás, as duas
+      encostas que sobem das pontas da crista, o V do fundo escondido e tracejado; o mesmo desenho nas duas (o símbolo de um lago de
+      montanha represado). A REGRA DO VOLUME: a mesma altura (230 px) e a mesma profundidade, e a do lado amazônico ~26 % mais larga (480 ×
+      382,2 px = 157 : 125). Elas pousam como os cubos pousavam (2,033 e 2,283; queda de 120 px, aceleração constante, restituição
+      0); depois do pouso a água sobe por dentro, em --agua a 0,58 com o contorno --agua de 6 px sobre o escuro de 14, de 0 à crista em 1,6 s com
+      desaceleração constante até parar NA crista, e fica parada (capacidade, não nível). Sem número e sem rótulo novo.
+    · b1: as lagoas PARADAS em --agua (era --contraparte): preenchimento a 0,58, contorno 6 sobre o escuro de 14 (a referência, s38 ›
+      b2); de longe, o contorno vai ao piso de 12 sobre 24.
+    · b2 e b3: o traçado (canal + túnel), o Santa Eulalia e o Rímac passam de --destaque a --agua e correm no sentido da água: o bloco
+      "A CORRENTEZA" da referência (out/peru-agua/_tmp/arte-12/EO1/src/rimac-comum.js, byte a byte), zoomRef 12,6 / latRef −11,5, pelo
+      adaptador M-B (o mesmo brilhoCorrenteza/corDaAgua num line-gradient que deita no relevo); o túnel (leste → oeste) e o Santa
+      Eulalia (vale abaixo) no ritmo BASE, o Rímac LENTA (a estação seca). O vale do b3 (z 10,85 → 10,95) é vista de longe: 12 px
+      sobre 24 (o acréscimo), com o teto da luz de longe; a rampa da largura vai de z 11,0 (piso inteiro) a 11,25 (as larguras de
+      hoje, como o traçado do b2 a 12,55: 10 sobre 20). O ANEL continua --destaque.
+    · b4: os filetes dos dois tubos em --agua (eram --contraparte e --destaque), à mesma velocidade, como antes.
+    Onde o texto acima fala de cubos, de --contraparte nas lagoas e de --destaque nas linhas de água, vale isto. Nada mais muda.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -152,9 +170,12 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
   .heroi.h360 { font-size: var(--fs-heroi); }
   .tr.oculta { stroke-dasharray: 18 16; stroke-linecap: butt; }
   .fil { fill: none; stroke-width: 6; stroke-linecap: round; }
-  .fil.tunel { stroke: var(--contraparte); }
-  .fil.rio { stroke: var(--destaque); }
+  .fil.tunel { stroke: var(--agua); }   /* peru-agua-arte-17: os filetes dos dois tubos em --agua (a cor de TIPO) */
+  .fil.rio { stroke: var(--agua); }
   .anel { fill: none; stroke: var(--destaque); stroke-width: var(--anel-traco); }
+  /* peru-agua-arte-17 (fase 2): a água parada da represa: --agua a 0,58 (o Lucas: 55–60 %), o contorno --agua de 6 px */
+  .agua-rep { fill: var(--agua); fill-opacity: 0.58; stroke: var(--agua); stroke-width: 6; stroke-linejoin: round; }
+  .agua-sob { fill: none; stroke: var(--fronteira-contorno-cor); stroke-width: 14; stroke-linejoin: round; }
 </style>
 </head>
 <body>
@@ -162,8 +183,14 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
   <div id="map"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
     <!-- b0: os dois volumes -->
-    <g id="volP" opacity="0"><path class="tr-sob" id="volPSob"/><path class="tr oculta" id="volPOc"/><path class="tr" id="volPLin"/></g>
-    <g id="volA" opacity="0"><path class="tr-sob" id="volASob"/><path class="tr oculta" id="volAOc"/><path class="tr" id="volALin"/></g>
+    <!-- peru-agua-arte-17 (fase 2): os volumes viram DUAS REPRESAS cheias em traço (a parede na frente, o lago atrás); a água
+         sobe por dentro e para na crista; o recorte (clipPath) é o que a parede e a encosta da direita escondem -->
+    <defs>
+      <clipPath id="volPClip"><path id="volPClipD" d="M 0 0 Z"/></clipPath>
+      <clipPath id="volAClip"><path id="volAClipD" d="M 0 0 Z"/></clipPath>
+    </defs>
+    <g id="volP" opacity="0"><path class="agua-sob" id="volPAguaSob" clip-path="url(#volPClip)"/><path class="agua-rep" id="volPAgua" clip-path="url(#volPClip)"/><path class="tr-sob" id="volPSob"/><path class="tr oculta" id="volPOc"/><path class="tr" id="volPLin"/></g>
+    <g id="volA" opacity="0"><path class="agua-sob" id="volAAguaSob" clip-path="url(#volAClip)"/><path class="agua-rep" id="volAAgua" clip-path="url(#volAClip)"/><path class="tr-sob" id="volASob"/><path class="tr oculta" id="volAOc"/><path class="tr" id="volALin"/></g>
     <!-- b1: a haste da cota -->
     <g id="haste" opacity="0"><path class="tr-sob" id="hasteSob"/><path class="tr" id="hasteLin"/></g>
     <!-- b2: o anel no cruzamento -->
@@ -236,7 +263,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
     relevo: { sobe: [7.0, 3.0] },
     exag: 1.5,
     atl: { sai: 7.0, opacidade: 0.35 },
-    lagoas: { entra: 7.867, opacidade: 0.85 },
+    lagoas: { entra: 7.867, opacidade: 0.58 },   // peru-agua-arte-17 (fase 2): paradas, --agua a 0,58 (era --contraparte a 0,85)
     rota: { entra: 14.15, dur: 1.05, sai: 22.0 },
     se: { entra: 19.2, dur: 2.4 },
     rim: { entra: 21.8, dur: 1.2 },
@@ -395,10 +422,182 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
   var fcVazia = { type: "FeatureCollection", features: [] };
   function fcLinha(c) { return c ? { type: "FeatureCollection", features: [{ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: c } }] } : fcVazia; }
 
+  // ═══ A CORRENTEZA — o modelo das cenas de água do vídeo (peru-agua-arte-17; identidade §2; regência › _agua_direcao_23) ═══
+  // O QUE É: um trecho MAIS CLARO da própria linha da água (--agua-luz sobre --agua) que desce no sentido da água e se repete.
+  //   É a COR da linha que muda, peça a peça (a linha é desenhada em pedaços curtos, cada um com a mistura opaca das duas cores):
+  //   luz na linha, nunca partícula, nunca brilho por cima, nunca alfa (pedaços com alfa somariam contas nas pontas redondas).
+  // ONDE MORA A LUZ: no CHÃO, não na tela. A posição é medida em km ao longo do rio (de montante = 0 até a foz) e anda a uma
+  //   velocidade em km/s; com a câmera que aproxima ou recua, a luz continua presa à água, como a linha.
+  // OS PARÂMETROS são dados em px de TELA na escala de referência (zoomRef, latRef: o zoom médio da cena) e convertidos a km uma
+  //   vez, por kmPorPx(). Para outra cena: troque zoomRef/latRef pelo zoom médio e a latitude dela, e escolha o ritmo.
+  // O RITMO (regência › _agua_direcao_23 › correnteza[].ritmo): LENTA = o rio baixo (espaçada: trecho curto); CHEIA = o rio cheio
+  //   (rápida e cheia: trecho longo); BASE = "nem o lento do rio baixo da s37 nem o rápido da cheia da s38", para as cenas sem nível
+  //   dito. O período (de um começo de luz ao próximo) é o MESMO nos três ritmos: só a velocidade e o comprimento do trecho mudam,
+  //   e assim a troca de ritmo no meio da cena (a s38 em "runs") não faz a luz pular.
+  // FASE 2 (peru-agua-arte-17, 23/10/2026, os ajustes do Lucas tirados da prova): o --agua-luz passou a quase branco (só no
+  //   tokens.css: a cena lê o token), e o trecho claro ficou mais longo para se ler no celular na linha fina do rio baixo (LENTA 280 →
+  //   380 px; BASE 380 → 450; CHEIA 550 → 600). A luz continua opaca, a cor da própria linha: brilho máximo 1, sem alfa.
+  var CORRENTEZA = {
+    zoomRef: 13.4, latRef: -12.02,   // a escala em que os px abaixo valem (a s37/s38: o zoom médio do plano, no centro de Lima)
+    periodoPx: 1100,                 // de um trecho claro ao seguinte, em px de tela na escala de referência
+    LENTA: { velPx: 220, luzPx: 380 },   // px/s e px de trecho claro: o rio baixo (s37, e a s38 antes de "runs")
+    BASE:  { velPx: 420, luzPx: 450 },   // o ritmo de base (as cenas sem nível dito; não usado aqui, é a referência da fase 2)
+    CHEIA: { velPx: 720, luzPx: 600 },   // o rio cheio (a s38 depois de "runs")
+    subida: 0.45,                    // a fração do trecho em que a luz cresce (a cauda, rio acima)
+    frente: 0.15,                    // a fração final em que ela cai (a frente, rio abaixo: curta, a luz "aponta" para o mar);
+                                     // no meio, a luz inteira (o patamar), para o trecho se ler numa linha fina de 6 px
+    passoPx: 12                      // o tamanho máximo de cada pedaço de linha, em px de tela (a luz fica lisa, sem degrau)
+  };
+  // metros de chão por px de tela no MapLibre (ladrilho de 512 px), no zoom z e na latitude lat
+  function kmPorPx(z, lat) { return 40075.016686 * Math.cos(lat * Math.PI / 180) / (512 * Math.pow(2, z)); }
+  // a velocidade (km/s), o período (km) e o comprimento do trecho claro (fração do período) de um ritmo
+  function ritmoEmKm(r) {
+    var k = kmPorPx(CORRENTEZA.zoomRef, CORRENTEZA.latRef);
+    return { vel: r.velPx * k, periodo: CORRENTEZA.periodoPx * k, luz: r.luzPx / CORRENTEZA.periodoPx };
+  }
+  // a integral de 0 a t do smoothstep que vai de 0 a 1 entre t0 e t0 + d (em segundos): quanto tempo "de cheia" já correu.
+  // A posição da luz é a integral da velocidade: assim a troca de ritmo acelera a luz, nunca a teletransporta.
+  function integralSuave(t, t0, d) {
+    if (t <= t0) return 0;
+    if (t >= t0 + d) return d / 2 + (t - t0 - d);
+    var p = (t - t0) / d; return d * (p * p * p - p * p * p * p / 2);
+  }
+  // o brilho (0 a 1) da correnteza no km do rio, com a luz já andada S (km) e o trecho claro de fração luz do período (km):
+  // a cauda cresce devagar rio acima, o meio fica aceso, e a frente cai rápido rio abaixo (a luz "aponta" para o mar)
+  function brilhoCorrenteza(km, S, periodo, luz) {
+    var u = (km - S) / periodo; u = u - Math.floor(u);
+    if (u >= luz) return 0;
+    var x = u / luz, y = Math.min(1, x / CORRENTEZA.subida, (1 - x) / CORRENTEZA.frente);
+    return y * y * (3 - 2 * y);
+  }
+  // a cor opaca da linha com o brilho b: a mistura de --agua (b = 0) e --agua-luz (b = 1), em rgb
+  function corDaAgua(cores, b) {
+    var a = cores.agua, l = cores.luz;
+    return "rgb(" + Math.round(a[0] + (l[0] - a[0]) * b) + "," + Math.round(a[1] + (l[1] - a[1]) * b) + "," + Math.round(a[2] + (l[2] - a[2]) * b) + ")";
+  }
+  function rgbDe(css) { var m = /rgba?\(([^)]*)\)/.exec(css || ""); return m ? m[1].split(",").slice(0, 3).map(Number) : [0, 0, 0]; }
+  // ═══ fim do bloco da correnteza ═══
+  // peru-agua-arte-17 (M-B, fase 2): a escala de referência DESTA cena (o bloco acima vem sem mudança da referência)
+  CORRENTEZA.zoomRef = 12.6; CORRENTEZA.latRef = -11.5;   // o zoom do traçado (b2, 12,55 → 12,62) e a latitude do túnel; o vale do b3 é vista de longe
+  // ═══ O ADAPTADOR M-B (peru-agua-arte-17, fase 2): o bloco "A CORRENTEZA" acima, sem mudar um número, numa linha do MapLibre ═══
+  // A referência (s37/s38) desenha o rio num canvas, em pedaços de até passoPx, cada um com corDaAgua(brilhoCorrenteza(km, …)).
+  // Aqui a água é camada do mapa (fica sob os rótulos, acompanha o relevo e a câmera sem reprojetar), e a mesma conta vira um
+  // line-gradient sobre o line-progress: em cada trecho claro, PERFIL_N + 1 paradas com corDaAgua(brilhoCorrenteza(km, S, P, luz)),
+  // e --agua (brilho 0) no resto. A luz é a cor OPACA da própria linha; nada de alfa, partícula ou camada por cima.
+  // O line-progress é por linha: cada rio (e cada parte de um MultiLineString) vira uma fonte e uma camada próprias, com o km
+  // acumulado no sentido da água (todas as geometrias usadas vêm de montante à foz: conferido no geo_info.py da M-B).
+  var MB = (function () {
+    var PERFIL_N = 16, cores = null, lc = { "line-join": "round", "line-cap": "round" }, semT = { duration: 0, delay: 0 };
+    function corTok(nome) {
+      var pr = document.createElement("i"); pr.style.color = "var(" + nome + ")"; pr.style.display = "none";
+      document.body.appendChild(pr); var c = getComputedStyle(pr).color; pr.remove(); return c;
+    }
+    function C() { if (!cores) cores = { agua: rgbDe(corTok("--agua")), luz: rgbDe(corTok("--agua-luz")) }; return cores; }
+    function metros(a, b) {
+      var la = (a[1] + b[1]) / 2 * Math.PI / 180;
+      return Math.hypot((b[0] - a[0]) * 111320 * Math.cos(la), (b[1] - a[1]) * 110574);
+    }
+    function km(cs) { var s = 0; for (var i = 1; i < cs.length; i++) s += metros(cs[i - 1], cs[i]); return s / 1000; }
+    // as linhas de uma geometria (LineString, MultiLineString, Feature ou FeatureCollection), cada uma no sentido em que veio
+    function linhas(g) {
+      if (!g) return [];
+      if (g.type === "FeatureCollection") return [].concat.apply([], g.features.map(linhas));
+      if (g.type === "Feature") return linhas(g.geometry);
+      if (g.type === "LineString") return [g.coordinates];
+      if (g.type === "MultiLineString") return g.coordinates.slice();
+      return [];
+    }
+    // o trecho de uma linha do começo até d km
+    function ateKm(cs, d) {
+      var out = [cs[0]], acc = 0;
+      for (var i = 1; i < cs.length; i++) {
+        var m = metros(cs[i - 1], cs[i]) / 1000;
+        if (acc + m <= d) { out.push(cs[i]); acc += m; continue; }
+        var f = (d - acc) / (m || 1); out.push([cs[i - 1][0] + (cs[i][0] - cs[i - 1][0]) * f, cs[i - 1][1] + (cs[i][1] - cs[i - 1][1]) * f]); break;
+      }
+      return out;
+    }
+    // o line-gradient de uma linha de totKm (o trecho desenhado), com a luz andada S, o período P e o trecho claro luz (fração)
+    function grad(totKm, S, P, luz) {
+      var c = C(), base = corDaAgua(c, 0), ex = ["interpolate", ["linear"], ["line-progress"], -1e6, base];
+      if (totKm > 0 && P > 0 && luz > 0) {
+        for (var k = Math.floor(-S / P) - 1; k < Math.floor(-S / P) + Math.ceil(totKm / P) + 2; k++) {
+          var a = S + k * P, b = a + luz * P;
+          if (b <= 0 || a >= totKm) continue;
+          for (var i = 0; i <= PERFIL_N; i++) {
+            var x = a + (b - a) * i / PERFIL_N;
+            ex.push(x / totKm, (i === 0 || i === PERFIL_N) ? base : corDaAgua(c, brilhoCorrenteza(x, S, P, luz)));
+          }
+        }
+      }
+      ex.push(1e6, base);
+      return ex;
+    }
+    // cria as camadas de um rio (uma por linha). o: { w (px), antes (id da camada de cima, opcional), fontes (a lista do motor) }
+    function criar(map, id, geom, o) {
+      var ls = linhas(geom), r = { ids: [], km: [], cs: [], w: o.w, desenhado: [] };
+      ls.forEach(function (cs, i) {
+        var sid = id + "-agua" + i;
+        map.addSource(sid, { type: "geojson", data: { type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: cs } }, lineMetrics: true });
+        if (o.fontes) o.fontes.push(sid);
+        map.addLayer({ id: sid, type: "line", source: sid, layout: lc,
+          paint: { "line-color": corDaAgua(C(), 0), "line-gradient": grad(0, 0, 1, 0), "line-width": o.w, "line-opacity": 0, "line-opacity-transition": semT } }, o.antes);
+        r.ids.push(sid); r.km.push(km(cs)); r.cs.push(cs); r.desenhado.push(null);
+      });
+      r.chave = {}; r.op = {};
+      return r;
+    }
+    // um quadro: opacidade v; a luz andada S (km), período P, trecho luz; frac = a fração desenhada (1 = inteiro), opcional
+    // O TETO DA LUZ DE LONGE (ajuste da Sala ao acréscimo, 23/10/2026): com z < 11, a luz cobre no máximo 1/3 do rio desenhado em
+    // qualquer quadro. Com L km desenhados e período P, cabem no máximo floor(L/P) + 1 trechos; cada um fica com até (projeto: 1/4)
+    // L / (4 × (floor(L/P) + 1)) km. De perto (z ≥ 11), o trecho da referência; entre os dois, a mesma rampa da largura.
+    function luzComTeto(tot, P, luz, z) {
+      if (z == null || !(tot > 0)) return luz;
+      var teto = tot / (4 * (Math.floor(tot / P) + 1)) / P, longe = Math.min(luz, teto);   // 1/4 de projeto: a medida no quadro (com as pontas redondas e a rampa do perfil) deu até 35 % com 1/3
+      var u = Math.max(0, Math.min(1, (z - RAMPA[0]) / (RAMPA[1] - RAMPA[0]))); u = u * u * (3 - 2 * u);
+      return longe + (luz - longe) * u;
+    }
+    function quadro(map, r, v, S, P, luz, frac, z) {
+      if (!r) return;
+      r.ids.forEach(function (sid, i) {
+        if (!map.getLayer(sid)) return;
+        var vv = +(+v).toFixed(3);
+        if (r.op[sid] !== vv) { map.setPaintProperty(sid, "line-opacity", vv); r.op[sid] = vv; }
+        var f = frac == null ? 1 : Math.max(0, Math.min(1, frac)), tot = r.km[i] * f;
+        var kd = f.toFixed(4);
+        if (r.desenhado[i] !== kd) {
+          var src = map.getSource(sid);
+          if (src) src.setData({ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: f >= 1 ? r.cs[i] : (f > 0 ? ateKm(r.cs[i], tot) : [r.cs[i][0], r.cs[i][0]]) } });
+          r.desenhado[i] = kd;
+        }
+        if (vv <= 0) return;
+        var g = grad(tot, S, P, luzComTeto(tot, P, luz, z)), ch = JSON.stringify(g);
+        if (r.chave[sid] !== ch) { map.setPaintProperty(sid, "line-gradient", g); r.chave[sid] = ch; }
+      });
+    }
+    function largura(map, r, w) {
+      if (!r) return; w = +(+w).toFixed(2);
+      r.ids.forEach(function (sid) { if (r.op[sid + "|w"] !== w && map.getLayer(sid)) { map.setPaintProperty(sid, "line-width", w); r.op[sid + "|w"] = w; } });
+    }
+    // A LARGURA DE LONGE (acréscimo da Sala à fase 2, 23/10/2026 03:3x; decisoes-lucas.md, dc2d1f6): com o zoom abaixo de 11, a
+    // água tem no mínimo 12 px sobre o contorno escuro de 24 px (palco 4K); de 11 para cima, as larguras de perto da cena. Na
+    // câmera que cruza o limite, a largura passa de uma à outra numa rampa suave (smoothstep) entre z 10,75 e 11,0: sem salto,
+    // e o piso inteiro em todo zoom ≤ 10,75.
+    var PISO = { linha: 12, sob: 24 }, RAMPA = [10.75, 11.0];
+    function porZoom(z, perto, piso) {
+      var longe = Math.max(perto, piso), u = Math.max(0, Math.min(1, (z - RAMPA[0]) / (RAMPA[1] - RAMPA[0])));
+      u = u * u * (3 - 2 * u);
+      return longe + (perto - longe) * u;
+    }
+    return { criar: criar, quadro: quadro, largura: largura, linhas: linhas, km: km, cor: function (b) { return corDaAgua(C(), b); },
+      PISO: PISO, linhaZ: function (z, perto) { return porZoom(z, perto, PISO.linha); }, sobZ: function (z, perto) { return porZoom(z, perto, PISO.sob); } };
+  })();
+  // ═══ fim do adaptador M-B ═══
   // ═══ A BASE COM O RELEVO, E AS CAMADAS DA CENA (todas deitam no relevo) ══════════════════════════════
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   var COR = { tinta: tok("--tinta", "#F4F1EA"), destaque: tok("--destaque", "#F5A524"), contraparte: tok("--contraparte", "#2EC4B6"),
-    sob: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)") };
+    sob: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)"), agua: tok("--agua", "") };   // peru-agua-arte-17: --agua, só pelo token
+  if (!COR.agua) return falhar("falta o token --agua no marca/tokens.css.");
   function estilo() {
     var fontes = {
       base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
@@ -416,19 +615,20 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
       { id: "base", type: "raster", source: "base",
         paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // identidade §6, o tratamento C (como a s06)
       { id: "atl", type: "fill", source: "atl", paint: { "fill-color": COR.contraparte, "fill-opacity": 0, "fill-antialias": true } },
-      { id: "lagoas", type: "fill", source: "lagoas", paint: { "fill-color": COR.contraparte, "fill-opacity": 0, "fill-antialias": true } },
-      { id: "lagoas-sob", type: "line", source: "lagoas", layout: lc, paint: { "line-color": COR.sob, "line-width": 8, "line-opacity": 0 } },
-      { id: "lagoas-lin", type: "line", source: "lagoas", layout: lc, paint: { "line-color": COR.contraparte, "line-width": 4, "line-opacity": 0 } },
+      // peru-agua-arte-17 (fase 2): as lagoas PARADAS em --agua: preenchimento a 0,58 (o Lucas pediu 55–60 %), contorno --agua
+      // de 6 px sobre o escuro de 14 (a referência, s38 › b2)
+      { id: "lagoas", type: "fill", source: "lagoas", paint: { "fill-color": COR.agua, "fill-opacity": 0, "fill-antialias": true } },
+      { id: "lagoas-sob", type: "line", source: "lagoas", layout: lc, paint: { "line-color": COR.sob, "line-width": 14, "line-opacity": 0 } },
+      { id: "lagoas-lin", type: "line", source: "lagoas", layout: lc, paint: { "line-color": COR.agua, "line-width": 6, "line-opacity": 0 } },
       { id: "atj-sob", type: "line", source: "atj", layout: lc, paint: { "line-color": COR.sob, "line-width": 14, "line-opacity": 0 } },
       { id: "atj", type: "line", source: "atj", layout: lc, paint: { "line-color": COR.tinta, "line-width": 6, "line-opacity": 0 } },
+      // peru-agua-arte-17 (fase 2): o Santa Eulalia, o Rímac e o traçado (canal + túnel) ficam com o contorno escuro aqui; a linha
+      // da água de cada um, em --agua com a correnteza, é a do adaptador M-B, posta no 'load' logo acima do contorno
       { id: "se-sob", type: "line", source: "se", layout: lc, paint: { "line-color": COR.sob, "line-width": 14, "line-opacity": 1 } },
-      { id: "se", type: "line", source: "se", layout: lc, paint: { "line-color": COR.destaque, "line-width": 6, "line-opacity": 1 } },
       { id: "rim-sob", type: "line", source: "rim", layout: lc, paint: { "line-color": COR.sob, "line-width": 14, "line-opacity": 1 } },
-      { id: "rim", type: "line", source: "rim", layout: lc, paint: { "line-color": COR.destaque, "line-width": 6, "line-opacity": 1 } },
       { id: "div-sob", type: "line", source: "div", layout: lc, paint: { "line-color": COR.sob, "line-width": 12 } },
       { id: "div", type: "line", source: "div", layout: lc, paint: { "line-color": COR.tinta, "line-width": 6 } },
-      { id: "trR-sob", type: "line", source: "trR", layout: lc, paint: { "line-color": COR.sob, "line-width": 20, "line-opacity": 1 } },
-      { id: "trR", type: "line", source: "trR", layout: lc, paint: { "line-color": COR.destaque, "line-width": 10, "line-opacity": 1 } }
+      { id: "trR-sob", type: "line", source: "trR", layout: lc, paint: { "line-color": COR.sob, "line-width": 20, "line-opacity": 1 } }
     ];
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
   }
@@ -556,7 +756,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
     if (st) return "respondeu HTTP " + st + ".";
     return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
   }
-  var mapaCarregado = false;
+  var mapaCarregado = false, SE_AGUA = null, RIM_AGUA = null, TR_AGUA = null;   // peru-agua-arte-17 (fase 2): a água (MB.criar)
   map.on("error", function (ev) {
     window.__errosMapa++;
     var err = (ev && ev.error) || {};
@@ -568,6 +768,10 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
   });
   map.on("load", function () {
     try { map.setTerrain({ source: "dem", exaggeration: 0 }); } catch (e) { return falhar("não consegui ligar o relevo: " + e.message); }
+    // peru-agua-arte-17 (fase 2): a água do Santa Eulalia, do Rímac e do traçado (canal + túnel), no sentido da água
+    SE_AGUA = MB.criar(map, "se", { type: "LineString", coordinates: SE_C }, { w: 6, antes: "rim-sob", fontes: CENA.fontes });
+    RIM_AGUA = MB.criar(map, "rim", { type: "LineString", coordinates: RIM_T }, { w: 6, antes: "div-sob", fontes: CENA.fontes });
+    TR_AGUA = MB.criar(map, "trR", { type: "LineString", coordinates: ROTA }, { w: 10, fontes: CENA.fontes });
     mapaCarregado = true;
     map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
   });
@@ -649,26 +853,54 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
   function op(id, v) { var e = E(id); if (e) e.setAttribute("opacity", cl(v, 0, 1).toFixed(3)); }
 
   // ── b0: os volumes (cubos em projeção oblíqua; lado ∝ ∛capacidade: o volume lido é 157 : 125) ──
-  var LADO_A = 440, LADO_P = 440 * Math.cbrt(125 / 157), PROF = [0.36, -0.36];   // vetor de profundidade (fração do lado)
-  function cubo(bx, by, S) {   // (bx, by) = meio da aresta de baixo da face da frente
-    var x0 = bx - S / 2, x1 = bx + S / 2, y0 = by - S, y1 = by, dx = PROF[0] * S, dy = PROF[1] * S;
-    var vis = "M " + f2(x0) + " " + f2(y1) + " L " + f2(x1) + " " + f2(y1) + " L " + f2(x1) + " " + f2(y0) + " L " + f2(x0) + " " + f2(y0) + " Z" +
-      " M " + f2(x0) + " " + f2(y0) + " L " + f2(x0 + dx) + " " + f2(y0 + dy) + " L " + f2(x1 + dx) + " " + f2(y0 + dy) + " L " + f2(x1) + " " + f2(y0) +
-      " M " + f2(x1 + dx) + " " + f2(y0 + dy) + " L " + f2(x1 + dx) + " " + f2(y1 + dy) + " L " + f2(x1) + " " + f2(y1);
-    var oc = "M " + f2(x0 + dx) + " " + f2(y0 + dy) + " L " + f2(x0 + dx) + " " + f2(y1 + dy) + " L " + f2(x1 + dx) + " " + f2(y1 + dy) +
-      " M " + f2(x0 + dx) + " " + f2(y1 + dy) + " L " + f2(x0) + " " + f2(y1);
-    return { vis: vis, oc: oc };
+  // peru-agua-arte-17 (fase 2; regência 4ea3b5b0 › s39 b0, D9 reescrita pela escolha do Lucas, opção 1): no lugar dos cubos, DUAS
+  // REPRESAS cheias, o mesmo desenho nas duas (o símbolo de um lago de montanha represado, não uma represa real): a parede na frente
+  // (face e espessura da crista), a encosta da direita, a borda do lago atrás; as arestas escondidas tracejadas. A REGRA DO VOLUME:
+  // a mesma altura e a mesma profundidade, e a do lado amazônico ~26 % MAIS LARGA (157 : 125), para o volume lido bater com o dado.
+  // Sem número e sem rótulo novo. Projeção oblíqua com o vetor de profundidade único da cena (PROF, o dos cubos).
+  var REP = { alt: 200, prof: 380, crista: 0.16, larguraA: 480 }, PROF = [0.36, -0.36];
+  REP.larguraP = REP.larguraA * 125 / 157;   // 382,2 px: a largura ∝ capacidade (altura e profundidade iguais)
+  // A FORMA (2ª rodada, depois do 1º clipe: a caixa se lia como cubo): a represa num VALE EM V. A face da parede é um trapézio, com
+  // a crista larga em cima e a base estreita no fundo do vale (fundo = REP.fundo × a largura); atrás dela, o vale é um prisma ao
+  // longo do vetor de profundidade (a borda do lago no nível da crista, o V do fundo escondido); as duas encostas sobem da ponta da
+  // crista para fora (o lago de montanha). A largura escala o desenho inteiro na horizontal: com a mesma altura e profundidade, a
+  // seção do vale e o volume do lago ficam ∝ largura (157 : 125).
+  REP.alt = 230; REP.fundo = 0.28; REP.encosta = [0.2, 0.3];
+  function represa(bx, by, W, h) {   // (bx, by) = meio da aresta de baixo da face da parede; h = o nível da água (0 a alt)
+    var H = REP.alt, x0 = bx - W / 2, x1 = bx + W / 2, yb = by, yt = by - H, dx = PROF[0] * REP.prof, dy = PROF[1] * REP.prof;
+    var tx = REP.crista * dx, ty = REP.crista * dy, b0 = bx - REP.fundo * W / 2, b1 = bx + REP.fundo * W / 2;
+    var ex = REP.encosta[0] * W, ey = REP.encosta[1] * H;
+    var P = function (x, y) { return f2(x) + " " + f2(y); };
+    var vis = "M " + P(x0, yt) + " L " + P(x1, yt) + " L " + P(b1, yb) + " L " + P(b0, yb) + " Z" +                       // a face da parede
+      " M " + P(x0, yt) + " L " + P(x0 + tx, yt + ty) + " L " + P(x1 + tx, yt + ty) + " L " + P(x1, yt) +                  // a crista
+      " M " + P(x0 + tx, yt + ty) + " L " + P(x0 + dx, yt + dy) + " L " + P(x1 + dx, yt + dy) + " L " + P(x1 + tx, yt + ty) +  // a borda do lago
+      " M " + P(x0, yt) + " L " + P(x0 - ex, yt - ey) + " L " + P(x0 - ex + dx, yt - ey + dy) + " L " + P(x0 + dx, yt + dy) +  // a encosta da esquerda
+      " M " + P(x1, yt) + " L " + P(x1 + ex, yt - ey) + " L " + P(x1 + ex + dx, yt - ey + dy) + " L " + P(x1 + dx, yt + dy);   // a encosta da direita
+    var oc = "M " + P(x0 + dx, yt + dy) + " L " + P(b0 + dx, yb + dy) + " L " + P(b1 + dx, yb + dy) + " L " + P(x1 + dx, yt + dy) +  // o V do fundo
+      " M " + P(b0, yb) + " L " + P(b0 + dx, yb + dy) + " M " + P(b1, yb) + " L " + P(b1 + dx, yb + dy);
+    // a superfície da água no nível h: a largura do V nesse nível, da parede (atrás da crista) ao fim do vale
+    var z = yb - h, hw = REP.fundo * W / 2 + (W - REP.fundo * W) / 2 * (h / H);
+    var agua = "M " + P(bx - hw + tx, z + ty) + " L " + P(bx + hw + tx, z + ty) + " L " + P(bx + hw + dx, z + dy) + " L " + P(bx - hw + dx, z + dy) + " Z";
+    // o que se vê da água: o que fica acima da crista (atrás da parede)
+    var clip = "M -10000 -10000 L 10000 -10000 L 10000 " + f2(yt + ty) + " L -10000 " + f2(yt + ty) + " Z";
+    return { vis: vis, oc: oc, agua: agua, clip: clip };
   }
-  // o pouso: queda de 120 px com aceleração constante em 0,45 s (posição ∝ t²), restituição 0: para no chão
+  // o pouso: queda de 120 px com aceleração constante em 0,45 s (posição ∝ t²), restituição 0: para no chão (como os cubos)
   function queda(t, t0) { var u = seg(t, t0, 0.45); return 120 * (1 - u * u); }
+  // A ÁGUA SOBE (o ilustrador, movimento-fisica.md: um executor por transformação, função só de t): depois do pouso, o nível vai
+  // de 0 à crista em 1,6 s com desaceleração constante até parar (h = alt·(1 − (1 − u)²): velocidade que cai a zero NA crista,
+  // sem passar dela e sem quique); depois, parada (o cartão fala de CAPACIDADE, nunca de nível). As duas sobem igual (a mesma
+  // altura), cada uma a partir do próprio pouso.
+  function nivel(t, t0) { var u = seg(t, t0 + 0.45, 1.6); return REP.alt * (1 - (1 - u) * (1 - u)); }
   function aplicarVolumes(t) {
     var vis = 1 - eio(seg(t, 7.0 - 0.3, 0.3));
-    [["volP", VOL_P, LADO_P, 2.033], ["volA", VOL_A, LADO_A, 2.283]].forEach(function (V) {
+    [["volP", VOL_P, REP.larguraP, 2.033], ["volA", VOL_A, REP.larguraA, 2.283]].forEach(function (V) {
       var g = E(V[0]); if (!g) return;
       var v = eo(seg(t, V[3], 0.15)) * vis;
       if (v <= 0) { g.setAttribute("opacity", "0"); return; }
-      var p = map.project(V[1]), c = cubo(p.x, p.y - queda(t, V[3]), V[2]);
+      var p = map.project(V[1]), h = nivel(t, V[3]), c = represa(p.x, p.y - queda(t, V[3]), V[2], h);
       setD([V[0] + "Sob"], c.vis + " " + c.oc); setD([V[0] + "Lin"], c.vis); setD([V[0] + "Oc"], c.oc);
+      setD([V[0] + "ClipD"], c.clip); setD([V[0] + "Agua", V[0] + "AguaSob"], h > 0.5 ? c.agua : "M 0 0 Z");
       g.setAttribute("opacity", v.toFixed(3));
     });
   }
@@ -786,9 +1018,12 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
     var vl = eo(seg(t, CENA.lagoas.entra, 0.5));
     opac("lagoas", "fill-opacity", CENA.lagoas.opacidade * vl);
     opac("lagoas-lin", "line-opacity", vl); opac("lagoas-sob", "line-opacity", vl);
+    // peru-agua-arte-17 (fase 2): o contorno das lagoas vistas de longe também vai ao piso (12 sobre 24), pela mesma rampa
+    var zl = map.getZoom() - 0.25;
+    opac("lagoas-lin", "line-width", MB.linhaZ(zl, 6)); opac("lagoas-sob", "line-width", MB.sobZ(zl, 14));
     var R = CENA.rota, fr = eio(seg(t, R.entra, R.dur)), sr = 1 - eio(seg(t, R.sai, 0.5));
     dados("trR", fr > 0 ? fcLinha(trecho(ROTA, LR, fr)) : fcVazia, fr.toFixed(4));
-    opac("trR", "line-opacity", sr); opac("trR-sob", "line-opacity", sr);
+    opac("trR-sob", "line-opacity", sr);
     var fs = eio(seg(t, CENA.se.entra, CENA.se.dur));
     dados("se", fs > 0 ? fcLinha(trecho(SE_C, LS, fs)) : fcVazia, fs.toFixed(4));
     var fm = eio(seg(t, CENA.rim.entra, CENA.rim.dur));
@@ -796,7 +1031,18 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s39 (+s40) (461,3 → 492,167 s do m
     var va = eo(seg(t, CENA.atj.entra, 0.5));
     // sem véu (arte-4): o Santa Eulalia, o Rímac e La Atarjea saem com o b3, antes dos tubos
     var vb = 1 - eio(seg(t, CENA.b3sai - 0.3, 0.3));
-    opac("se", "line-opacity", vb); opac("se-sob", "line-opacity", vb); opac("rim", "line-opacity", vb); opac("rim-sob", "line-opacity", vb);
+    opac("se-sob", "line-opacity", vb); opac("rim-sob", "line-opacity", vb);
+    // peru-agua-arte-17 (fase 2): a água em --agua com a correnteza do bloco (regência › _agua_direcao_23, s39: o túnel leste →
+    // oeste e o Santa Eulalia vale abaixo no ritmo BASE; o Rímac LENTA, a estação seca). A largura pelo zoom com o piso de longe
+    // do acréscimo; aqui a rampa vai 0,25 acima (zs = z − 0,25): o piso inteiro em todo z ≤ 11,0 (o vale do b3 fica a 10,85 →
+    // 10,95) e as larguras de perto a partir de 11,25 (o traçado do b2 a 12,55, as de hoje: 10 sobre 20)
+    var zs = map.getZoom() - 0.25, RB = ritmoEmKm(CORRENTEZA.BASE), RL = ritmoEmKm(CORRENTEZA.LENTA);
+    opac("trR-sob", "line-width", MB.sobZ(zs, 20)); MB.largura(map, TR_AGUA, MB.linhaZ(zs, 10));
+    opac("se-sob", "line-width", MB.sobZ(zs, 14)); MB.largura(map, SE_AGUA, MB.linhaZ(zs, 6));
+    opac("rim-sob", "line-width", MB.sobZ(zs, 14)); MB.largura(map, RIM_AGUA, MB.linhaZ(zs, 6));
+    MB.quadro(map, TR_AGUA, fr > 0 ? sr : 0, RB.vel * t, RB.periodo, RB.luz, fr, zs);
+    MB.quadro(map, SE_AGUA, fs > 0 ? vb : 0, RB.vel * t, RB.periodo, RB.luz, fs, zs);
+    MB.quadro(map, RIM_AGUA, fm > 0 ? vb : 0, RL.vel * t, RL.periodo, RL.luz, fm, zs);
     opac("atj", "line-opacity", va * vb); opac("atj-sob", "line-opacity", va * vb);
   }
 
