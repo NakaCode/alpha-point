@@ -1,4 +1,114 @@
-# Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-reuso-s38-4333181` às 16:5x (Brasília)
+# Conferência de mídia: peru-agua, fluxo `midia`, 23/10/2026, tarefa `peru-agua-pesquisa-8` às 01:4x (Brasília)
+
+Quatro rascunhos do `pesquisa-imagens`, ainda não entregues, para duas escolhas do Lucas de 23/10, 00:4x: **s46**, "Foto do bairro na
+mesa (Recomendado)", e **s51**, "Gravura de 1717 (Recomendado)". Passo `art`; despachada pelo setor Pesquisa e mídia. O `entregar` só
+roda sobre o `aprovado`, e casa pelo sha256.
+
+**O laudo desta tarefa:** 4 vereditos novos, **4 aprovados**. Nenhum veredito anterior mudou.
+**O laudo do arquivo inteiro:** 32 aprovados de 41 vereditos (2 reprovados, 7 trocar, 0 pendente_lucas); 1 com algo não conferido (de antes); recebidos: 41.
+
+| arquivo | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `_media/_caca/s46/acervo-livre/s46-sjm-viviendas-laderas-2022-commons.jpg` (`87d60be0…`) | s46 b0 | Commons, Isabel Mamani, CC BY-SA 4.0 | **aprovado** | os morros de San Juan de Miraflores (a origem nomeia só o distrito), abril de 2022, 3840×2160; impressa na mesa ao lado do card, com "Photo from 2022"; nada a liga à casa dela |
+| `_media/_caca/s46/acervo-livre/s46-sjm-viviendas-bloques-2022-commons.jpg` (`0fad36c3…`) | s46 b0 | Commons, Isabel Mamani, CC BY-SA 4.0 | **aprovado** | casas sobre a encosta de pedra do distrito, abril de 2022, 3840×2160; reserva ou 2ª foto na mesma mesa, com "Photo from 2022"; o cartaz e a faixa ao fundo não se leem |
+| `_media/_caca/s51/acervo-livre/s51-frezier-rade-callao-1717-jcb-commons.jpg` (`c9a32c92…`) | s51 b2 | Commons, John Carter Brown Library, domínio público | **aprovado** | a carta gravada da baía do Callao de Frézier, edição de Londres de 1717; atesta o porto bom pelo sim do Lucas; recorte de 1052×603, miniatura de ~900 px, rótulo "Engraved chart, 1717" |
+| `_media/_caca/s51/acervo-livre/s51-frezier-rade-callao-1713-bnf-commons.jpg` (`8a085a21…`) | s51 b2 | Commons, BnF/Gallica, domínio público | **aprovado** | a mesma gravura, a cópia mais nítida; a origem a data de 1713, então o rótulo leva 1713, nunca 1717; reserva da JCB, com o carimbo fora do recorte |
+
+**As frases.**
+- **s46** (`words.json` 564,16–574,6 s; `roteiro-narrador.md`, linha 66): "Catalina Naupa, 59, told the news agency AFP in March 2025
+  that her water comes by truck. "There are worms in the bottom of the tank," she said." A foto pousa no beat 0 (0–7,9 s), ao lado do
+  card, e recua no beat 1, quando entra o cartão da fala. A janela de 7,9 s é **provisória**: a regência (sha256 `679d2809…`) ainda
+  diz "card sem foto".
+- **s51** (`words.json` 663,6–669,4 s; linha 74): "Then the port: in 1535, the Spanish put their capital near a very good one." A
+  miniatura entra em "port:" (664,22 s) e fica até o fim do beat 2: 5,2 s, **provisória**, porque a regência ainda diz "NO thumbnail".
+
+**s46, o que vale para as duas fotos.**
+- **Contexto: passa.** A origem nomeia o distrito do card, e o quadro mostra os morros: casas de tijolo subindo a areia e a pedra,
+  escadarias amarelas, neblina. Nada no quadro contradiz o sul de Lima.
+  - **Não é a casa dela.** São encostas inteiras, sem casa em destaque, e a origem não nomeia nada abaixo do distrito.
+  - **Ninguém no papel dela.** Na laderas não há ninguém; na bloques, gente só em vultos de poucos pixels.
+  - **O ano.** As duas são de 9 de abril de 2022; a fala é de março de 2025. Entram com "Photo from 2022" (identidade §6). São as mais
+    perto de 2025 entre as que mostram o assunto. A de 2024, descartada, é mata na neblina, sem casa, e nomeia Pamplona.
+- **Licença: passa.** CC BY-SA 4.0, obra da própria autora, lida na página pela API do Commons. O sha1 de cada arquivo é o do
+  original da página.
+- **Técnica: passa.** 3840×2160 cada, a única versão da origem. Vão impressas na mesa, até 1,4×.
+- **Repetição: passa.** sha256 e URL únicos. Juntas na mesma mesa, é composição: a mesma autora e o mesmo dia, mas outra encosta e
+  outro enquadramento.
+- **A tela pode dizer:** a etiqueta "San Juan de Miraflores", se houver; "Photo from 2022"; o crédito `Isabel Mamani / Wikimedia
+  Commons · CC BY-SA 4.0`.
+- **A tela não pode dizer:**
+  - nada que ligue a foto à casa, à rua ou ao bairro dela: nem "her home" ou "where she lives", nem seta ou círculo numa casa;
+  - Pamplona, Pamplona Alta ou qualquer nome abaixo do distrito;
+  - nenhum zoom que isole uma casa ou um tanque (a fala do beat 1 é "the tank"; na bloques há um tanque preto num telhado, miúdo).
+- **Na bloques,** um cartaz com dois rostos e um número, e uma faixa com um peixe azul, não se leem nem em resolução cheia. Na mesa
+  ficam com poucas dezenas de pixels; o editor não aproxima a câmera deles.
+
+**s51, as duas cópias da carta.** São a mesma gravura, a "planche XXVI" da "pag. 173" do livro de Frézier: só uma das duas vai à
+cena. As duas juntas, ou uma delas noutra cena, seriam repetição.
+- **Contexto: passa.** É o Callao, o porto da fala. A carta atesta o "very good one": o ancoradouro, com âncoras e sondagens, fechado
+  pela Isla San Lorenzo e pela Isla del Callao. É documento de outra data, e entra pela regra do documento que atesta o fato, com o
+  rótulo na tela todo o tempo (identidade §5), pelo sim do Lucas a esta carta.
+- **A data e o rótulo.**
+  - O levantamento é de 1713: o cartucho traz "Frezier 1713" gravado. A edição francesa é de 1716, e a inglesa, de 1717.
+  - **JCB:** a origem dá 1717 (Londres, 1717), e "Engraved chart, 1717" é exato. O recorte tira o cartucho com o 1713.
+  - **BnF:** a origem dá só 1713, sem a edição. A folha tem "pag. 173", então foi impressa em 1716 ou depois, mas o rótulo só pode
+    levar o ano que a origem diz: 1713 (ex.: "Chart by Frézier, 1713"; a grafia é do redator e do verificador). Se a cena usar esta
+    cópia, a Sala avisa o Lucas que a tela diz 1713, e não o 1717 da opção que ele escolheu.
+  - Nenhuma das duas pode dizer 1535, "Spanish chart" ou "Photo from".
+- **Licença: passa.** Domínio público nas duas: PD-old-100 na JCB, PD-France e PD-US-expired na BnF. Não é da coleção Rumsey. O
+  crédito na tela é **nenhum** (identidade §7); o que vai à tela é o rótulo.
+- **Técnica: passa.**
+  - **JCB:** 1784×1207. O recorte proposto tem 1052×603 px; na miniatura do tamanho da de Caral (900 px no palco 4K), vai a 0,86×, e o
+    teto é 1.473 px (1,4×).
+  - **BnF:** 5984×4119; o recorte tem uns 3231×1730 px. O carimbo vermelho e as cotas a lápis ficam fora dele.
+- **Ela se lê pequena?** A 900 px, sim: a costa curva, a vila, a ponta e as duas ilhas fechando o ancoradouro. A 450 px (o 1080p),
+  a forma ainda se reconhece, mas o texto não, e o sépia sobre sépia da JCB tem pouco contraste. A BnF, traço preto sobre cinza-claro,
+  lê-se melhor. Para quem monta: não abaixo de ~900 px no palco 4K.
+
+## Para o Lucas pesar
+
+Nada nesta tarefa. A escolha das duas cenas já é dele (23/10, 00:4x). Só um aviso, se a cena usar a cópia da BnF: a tela dirá 1713,
+e não 1717.
+
+## Para reconferir no navegador do app
+
+Nada nesta tarefa.
+
+## Para trocar
+
+Nada nesta tarefa. Ficaram fora da conferência, por descarte da pesquisa (não julgados, sem veredito, não vão à cena):
+- **s46:** `s46-pamplona-sjm-2020-commons.jpg`, `s46-lomas-de-pamplona-2024-commons.jpg` e `s46-cerros-sjm-2019-commons.jpg`;
+- **s51:** `s51-frezier-rade-callao-1717-planche-xxvi-gray-commons.jpg` e `s51-frezier-planche-xxvii-callao-1717-gray-commons.jpg`.
+
+**Avisos do conjunto da cena** (para o `regente-de-imagem` e o `editor-de-arte`, não são critério):
+- **s46:** a foto parada fica 7,9 s no beat 0, acima dos 6 s do plano parado (identidade §4.3). A câmera derivando, ou a 2ª foto
+  pousando na mesma mesa, resolve.
+- **s51:** o trecho de "port:" já tem três textos (Callao, 1535, Lima). Com a miniatura e o rótulo, são quatro, o teto. As entradas
+  têm de ser escalonadas (fotos-cetico.json).
+- **s51:** como na s46, a regência das duas cenas ainda não tem esta mídia. Quando tiver, o Claude central me despacha de novo sobre
+  estes `aprovado` de janela provisória.
+
+## Divergências entre a marca e o ofício
+
+Nenhuma nesta tarefa.
+
+## Contas desta tarefa
+
+- **Imagens abertas: 5 de 7.**
+  - as cópias de 1920 px das duas fotos da s46;
+  - um recorte em resolução cheia do cartaz e da faixa da bloques;
+  - a folha com as duas cartas inteiras, lado a lado;
+  - a folha com os dois recortes da s51, a 900 e a 450 px.
+
+  Tudo em `out/peru-agua/_tmp/conferencia/p8/`.
+- **Rede:** 4 pedidos à API do Commons, um por vez, com o User-Agent do canal, todos respondidos com 200. As respostas estão em
+  `out/peru-agua/_tmp/conferencia/p8-api-{1..4}.json`. Nenhum `WebFetch`.
+- **Olhos novos:** não. O despacho mandou ler antes o relato, o `fotos-cetico.json` e a decisão do Lucas.
+- **A emenda** está em `out/peru-agua/_tmp/conferencia/p8/emenda.py` e conferiu o sha256 de antes (`9837bd9c…` e `0fa37bcc…`). As
+  cópias de antes estão em `out/peru-agua/_tmp/conferencia/conferencia-midia.{json,md}.antes-pesquisa-8`.
+- **Checagem 6:** `_media-antes-pesquisa-8.txt` e `_media-depois-pesquisa-8.txt`, em `out/peru-agua/_tmp/conferencia/`.
+
+# Histórico: a conferência até a tarefa `peru-agua-reuso-s38-4333181`, como estava (Conferência de mídia: peru-agua, fluxo `midia`, 22/10/2026, tarefa `peru-agua-reuso-s38-4333181` às 16:5x (Brasília))
 
 O mesmo arquivo do Motion Array 4333181, já julgado para a s37 (`trocar`), agora numa janela nova: a s38 b0. Pedido da Sala, no
 passo `art`; a conferência própria que o veredito da s37 pediu em `serviria_em`.

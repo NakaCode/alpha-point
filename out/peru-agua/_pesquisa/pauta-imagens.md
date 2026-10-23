@@ -40,3 +40,34 @@ O JSON é `out/peru-agua/_pesquisa/pauta-imagens.json` (válido no contrato `pau
 - **s52**, footage aéreo de lagoa nomeada da SEDAPAL, de acervo aberto: sem VÍDEO; duas FOTOS no rascunho. Antacoto e Yuracmayo: nada; Huascacocha: uma foto de 565x430 (abaixo de 800 px). A cena fica com a foto da Laguna Marcapomacocha e o satélite das lagoas.
 - **s33**, foto da violência dos anos 1980–90: não buscado. decisão do Lucas: nenhuma foto sem acervo com a licença lida, e nenhuma encenação; a cena usa o aéreo das parcelas (lista de caça) e o documento da CVR (pesquisa-documentos).
 - **s26**, retrato pintado de Pizarro: não é desta peça. é do pesquisa-pessoas (pedido da Sala).
+
+## Tarefa peru-agua-pesquisa-8 (23/10/2026): rascunho da s46 e da s51, não entregue
+
+Em `out/peru-agua/_media/_caca/<cena>/acervo-livre/`, pelo `baixar` do `buscar-midia`. Esperam o `conferente-de-midia`; o `entregar` não rodou.
+
+| Cena | Arquivo | Papel | Medida | Autor · licença | Data na origem | Aviso proposto | sha256 |
+|---|---|---|---|---|---|---|---|
+| s46 | `s46-sjm-viviendas-laderas-2022-commons.jpg` | preferida | 3840x2160 | Isabel Mamani · CC BY-SA 4.0 | 2022-04-09 | Photo from 2022 | `87d60be03bca52e6…` |
+| s46 | `s46-sjm-viviendas-bloques-2022-commons.jpg` | reserva | 3840x2160 | Isabel Mamani · CC BY-SA 4.0 | 2022-04-09 | Photo from 2022 | `0fad36c31a07c238…` |
+| s46 | `s46-pamplona-sjm-2020-commons.jpg` | descartada pela pesquisa (não mandar ao conferente como candidata) | 1600x1200 | Baav · CC BY-SA 4.0 | 2020-10-14 | — | `817b34d26dc927fd…` |
+| s46 | `s46-lomas-de-pamplona-2024-commons.jpg` | descartada pela pesquisa (não mandar ao conferente como candidata) | 5152x3864 | Verde-wanka · CC BY-SA 4.0 | 2024-09-22 | — | `b6b72123ed0db7ee…` |
+| s46 | `s46-cerros-sjm-2019-commons.jpg` | descartada pela pesquisa (não mandar ao conferente como candidata) | 4160x3120 | Pilar · CC BY-SA 4.0 | 2019-11-01 | — | `694bd24afba7aaf8…` |
+| s51 | `s51-frezier-rade-callao-1717-jcb-commons.jpg` | preferida | 1784x1207 | Amédée François Frézier · Public domain | 1717 | — | `c9a32c924e8e14d5…` |
+| s51 | `s51-frezier-rade-callao-1713-bnf-commons.jpg` | reserva (com pergunta: a data) | 5984x4119 | Frezier, Amédée-François (1682-1773). Cartographe · Public domain | 1713 | — | `8a085a213eccb38d…` |
+| s51 | `s51-frezier-rade-callao-1717-planche-xxvi-gray-commons.jpg` | descartada pela pesquisa (não mandar ao conferente como candidata) | 3088x1952 | Amédée Frézier (scan Jeffdelonge) · Public domain | 1717 | — | `e5c09d1fb0ff0fb2…` |
+| s51 | `s51-frezier-planche-xxvii-callao-1717-gray-commons.jpg` | descartada pela pesquisa (não mandar ao conferente como candidata) | 3096x1930 | Amédée Frézier (scan Jeffdelonge) · Public domain | 1717 | — | `42c6ea42f48a948d…` |
+
+Recorte proposto na s51 (preferida, JCB): x 0,33–0,92, y 0,36–0,86 (1052x603 px). O porquê de cada um e o lugar na origem estão no JSON.
+
+### Entrega (23/10/2026)
+
+Os 4 com `aprovado` em `conferencia-midia.json` (sha256 `72ef96235793…`), entregues pelo `entregar`; crédito, data, aviso e lugar são os do veredito.
+
+| Cena | Arquivo entregue | sha256 entregue | sha256 do rascunho julgado | Crédito na tela (veredito) | Data na origem (veredito) |
+|---|---|---|---|---|---|
+| s46 | `_media/foto/s46/s46-sjm-viviendas-laderas-2022-commons.jpg` | `87d60be03bca52e6…` | `87d60be03bca52e6…` | Isabel Mamani / Wikimedia Commons · CC BY-SA 4.0 | 2022-04-09 12:09:06 |
+| s46 | `_media/foto/s46/s46-sjm-viviendas-bloques-2022-commons.jpg` | `0fad36c31a07c238…` | `0fad36c31a07c238…` | Isabel Mamani / Wikimedia Commons · CC BY-SA 4.0 | 2022-04-09 15:09:59 |
+| s51 | `_media/foto/s51/s51-frezier-rade-callao-1717-jcb-commons.jpg` | `c9a32c924e8e14d5…` | `c9a32c924e8e14d5…` | nenhum (domínio público; identidade §7); o que vai à tela é o rótulo "Engraved chart, 1717", do redator-de-tela | 1717 |
+| s51 | `_media/foto/s51/s51-frezier-rade-callao-1713-bnf-commons.jpg` | `8a085a213eccb38d…` | `8a085a213eccb38d…` | nenhum (domínio público; identidade §7); o que vai à tela é o rótulo de documento de outra data, com 1713, do redator-de-tela | 1713 |
+
+As 5 descartadas pela pesquisa ficam no rascunho, sem entrega.
