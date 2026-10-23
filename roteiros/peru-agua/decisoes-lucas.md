@@ -251,3 +251,6 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
 - "As lagoas e represas (paradas) saem azul-acinzentadas, a 35 %… Como ficam?": **"Mais azuis, 55–60 % (Recomendado)"**.
 - "A correnteza na linha fina do rio baixo (s37) ficou sutil… Deixo mais visível?": **"Mais visível (Recomendado)"** (a luz quase branca e um
   pouco mais longa, sem virar partícula). A Sala trocou o `--agua-luz` de #CEE3F1 para #EAF5FD.
+- Correção do Lucas, 23/10/2026 03:3x, mandando de volta o quadro da s21 (a linha da água fina sobre o deserto claro, no mapa do país):
+  **"a terceira para mim era essa"**. A cena "quase cinza" era a s21, não a das lagoas. A Sala pediu à Arte largura mínima e contorno escuro
+  na linha da água em toda vista de escala grande, para o azul se ler como azul. As lagoas a 55–60 % continuam.
