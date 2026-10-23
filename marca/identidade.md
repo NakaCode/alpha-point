@@ -186,6 +186,12 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
 - **Aviso do ano da foto** (Lucas, 27/09/2026): é **legenda** (84 px, Inter 500, `--tinta`). Sobre a foto, vai
   numa pílula `--rotulo`, com cantos de 12 px e respiro interno de 16 px × 28 px. Na margem da foto impressa do
   card, vai sem pílula, em `--tinta-escura` a 72 %. A regra inteira está em §6.
+- **A pergunta do gancho na tela** (Lucas, 23/10/2026, no vídeo 4, à pergunta "a pergunta do gancho hoje só está na voz, como nos vídeos 2
+  e 3. Põe na tela?": "A pergunta inteira, discreta (Recomendado)"; a opção dizia que ela "vira prática do canal"). Do vídeo 4 em diante, a
+  pergunta central do gancho, a que a voz faz antes da assinatura, entra na tela inteira (ou quase: a forma é do redator), no papel
+  `pergunta` do textos-tela: a letra da pergunta da chamada (abaixo: Barlow Condensed 800, 176 px, até 3 linhas), branca, num canto livre
+  do quadro, sem caixa, na palavra em que a pergunta começa, saindo antes da vinheta. É bloco de leitura e não é herói nem card de título
+  (os capítulos continuam só na descrição).
 - **A chamada (CTA)** (Lucas, 01/10/2026; do vídeo 2 em diante). Três textos que só existem dentro dela. A regra
   inteira está em `marca/cta.md`:
   - **a pergunta da chamada**: Barlow Condensed 800, alvo **176 px**, piso 160, e nunca acima do alvo (Lucas: "176 px,

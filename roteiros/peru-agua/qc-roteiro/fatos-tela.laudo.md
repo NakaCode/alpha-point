@@ -1930,6 +1930,54 @@ COBERTURA: 7 de 7 (esta reconferência: as 5 mudanças na tela, com 2 itens na s
 NOTA: 10/10
 VEREDITO: RESSALVA. Esta rodada sai limpa: nenhum DIVERGE nem REFUTADA, e só 2 avisos. A ressalva é o estado do lote B: as 5 primárias do gob.pe continuam NÃO FOI CHECADO.
 
+## Reconferência 13 (texto-17, sobre `19083829…`)
+
+- **Data-base:** 23/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `19083829a729cfcc2866475f16bfa8e727cd5b0c8905f3a14452a9a6c6a5dbd5`.
+- **Comparado com:** `antes-consertos-18/textos-tela.json.dc0c0ea4`, cujo sha256 confere. A regência é a `4ea3b5b0` e a `conferencia-midia.json` a `72ef9623`, as duas conferidas no disco.
+- **O diff** (`scripts/r13.py`): de 404 para 408 textos. Entram 4: a s04 `pergunta`, o `aviso_ano` e o `credito` da s46, e o `rotulo` da s51. Os 3 textos do calendário da s42 mudam só o t1. Mudaram `_como_ler` (o papel novo `pergunta`), `_consertos` (a rodada 18), `_instrucoes_para_a_arte`, `_pedidos_a_montante`, `_textos_vivos_max` (s46 e s51, de 3 para 4) e `glossario`.
+- **O lote:** a s04 é do lote A, e vai gravada aqui como o pedido manda; a s42, a s46 e a s51 são do lote B.
+- **As fontes:**
+  - os `_PROCEDENCIA.json` de `_media/foto/s46/` e `_media/foto/s51/`;
+  - a resposta da API do Commons gravada em 23/10 (`out/peru-agua/_tmp/conferencia/p8-api-3.json` e `p8-api-4.json`);
+  - `roteiros/peru-agua/decisoes-lucas.md`, l. 212–232;
+  - o `words.json`;
+  - o laudo do lote A (`roteiros/peru-agua/qc-roteiro/fatos-tela.laudo.md`, l. 147);
+  - `pautas/peru-agua/fundamento.json`.
+- **Limites:** 0 imagens, nenhuma web; nada foi gravado no canal.
+
+| id | o quê | o que se conferiu | veredito |
+|---|---|---|---|
+| RB252 | s51 · o arquivo da JCB é a edição de 1717 | O `_PROCEDENCIA.json` (s51) liga o `s51-frezier-rade-callao-1717-jcb-commons.jpg` (sha256 `c9a32c92…`, igual ao do veredito `candidatos[39]`, `aprovado`) a `File:Frezier_Voyage_Rade_Callao.jpg`. A página desse arquivo, gravada localmente em `p8-api-3.json`, diz: `date=1717`; `source=A voyage to the South-sea, and along the coasts of Chili and Peru, in the years 1712, 1713, and 1714. London: 1717`, com a busca da JCB "E717 F896v"; e as categorias "Images from the John Carter Brown Library" e "1717 maps of South America". **Na origem do arquivo, confirma.** A ficha da própria JCB (jcb.lunaimaging.com) não foi aberta nesta rodada, sem web, e a edição só se confirma no guardião. Uma leitura única da ficha fecha isso; o rótulo não depende dela (RB254) | CONFIRMADA na origem do arquivo; na ficha da JCB, NÃO ACHEI (não aberta) |
+| RB253 | s51 · "Engraved chart" descreve o item | `ImageDescription`: "Fold-out, engraved map of the bay of Callao in present-day Peru. Includes location of settlement with anchorage in the roads and soundings. Also includes scale, profile of mountains, and compass rose." Categoria: "Engraved maps". Carta de baía com ancoradouro e sondagens é carta náutica, então "chart" é exato e "engraved" é a técnica que a origem dá. A cópia da BnF é a mesma gravura, linha por linha (o veredito `candidatos[40]`, `o_que_viu`) | CONFIRMADA |
+| RB254 | s51 · "1717" cumpre o aviso do ano | O veredito traz `data_na_origem` "1717" e `aviso_de_ano` true, e o rótulo "Engraved chart, 1717" põe o ano junto da miniatura (13,9–17,6), que fica de 12,6 a 17,6. **O cuidado é a gravura dizer "Frezier 1713" no cartucho** (`candidatos[39]` › `o_que_viu`). A regência `4ea3b5b0` › s51 › b2 diz "the crop leaves out the engraved 'Frezier 1713'", então nenhum 1713 entra na tela para contradizer o rótulo. O 1717 é o ano desta impressão (a edição de Londres); o levantamento é de 1713, e a edição francesa de 1716. A regra (o ano sai do `data_na_origem`) está cumprida. Na voz, "Then the port: in fifteen thirty-five…" (12,420–16,900), e "1535" entra em 13,433: o prefixo "Engraved chart," separa as duas datas. O Lucas autorizou documento de outra data que ateste o porto (`decisoes-lucas.md` l. 222–223). Os "entra" da regência rotulados com a palavra errada (12,6 "in", 13,9 "the") estão no `_pedidos_a_montante`, e eu confirmo: "in" está em 13,230 e "the" em 14,660 | CONFIRMADA |
+| RB255 | s46 · "Isabel Mamani / Wikimedia Commons · CC BY-SA 4.0" (1,167–11,1) | O veredito `candidatos[37]` (`aprovado`, sha256 `87d60be0…`) traz `credito_na_tela` "Isabel Mamani / Wikimedia Commons · CC BY-SA 4.0", igual letra a letra. O `_PROCEDENCIA.json` (s46) traz o mesmo sha256, `autor` "Isabel Mamani", `licenca` "CC BY-SA 4.0", `exige_credito` true e a URL `File:IMG_SJM_02.jpg`. O crédito vai do 1º ao último quadro da foto: a foto pousa em 0,0 (regência s46 › b0), mas o crédito entra em 1,167, escalonado pelo RITMO, e fica até 11,1 ("the photo recedes" e fica). A página do Commons não precisou ser aberta | CONFIRMADA |
+| RB256 | s46 · "Photo from 2022" | O `data_na_origem` é "2022-04-09 12:09:06", e `aviso_de_ano` true; o ano é 2022. Ele entra em "fifty-nine," (1,197; o quadro de 1,167), com o crédito. O card diz "(2025)" e a foto "2022": os dois anos se distinguem | CONFIRMADA |
+| RB257 | s46 · nada liga a foto à casa ou à rua da moradora | O `lugar_na_origem` é "Viviendas ubicadas en laderas de fuerte pendiente en San Juan de Miraflores.": nomeia só o distrito. Na tela não há pílula de lugar, seta, círculo nem zoom (instrução à Arte; regência s46 › b0, "NO place label"). O único nome de lugar é o do cargo, "Resident, San Juan de Miraflores (2025)", que é o distrito, não mais específico que a origem. O `o_que_viu` do veredito: "nenhuma casa domina: é a encosta inteira. Nenhum tanque d'água em destaque". A citação "There are worms in the bottom of the tank." entra em 7,9, quando a foto recua, e não fica sobre ela | CONFIRMADA |
+| RB258 | s04 · a pergunta casa com a voz | A voz: "So why do most Peruvians live on the dry side of that line?" (So 10,553, why 10,833, most 11,113 … line? 13,193). A tela: "Why do most Peruvians live on the dry side?". As palavras são da voz, sem o "So" e sem "of that line", como a opção aprovada (`decisoes-lucas.md` l. 219–221). O corte não muda o sentido: no quadro, o mapa mostra a linha acesa e os dois lados nas suas cores (regência s04 › b2). Entra em "most" (11,113) e começa a sair em 13,6, fora em 13,9, antes de "You're" (14,073) | CONFIRMADA |
+| RB259 | s04 · a premissa "most Peruvians live on the dry side" | O lado seco é a vertente do Pacífico, com "1.8% OF THE WATER" na s01. O laudo do lote A, TA011: "62.5% OF THE PEOPLE (2012)", CONFIRMADA, «Pacífico … 18 801 417 62,53» (`midia/peru-agua/fontes/documento/ana-pnrh-1416.txt` l. 1988–2040; `fatos-tela.laudo.md` l. 147). O `fundamento.json` (l. 59 e 153) diz que a vertente do Pacífico "abrigava 62,53 % da população em 2012". 62,53 % é maioria, então "most" se sustenta. O "live" no presente usa o número de 2012, o mesmo da voz e da s01, que levam o ano | CONFIRMADA |
+| RB260 | s42 · o calendário até 20,967 | O texto não muda; só o t1 dos três textos vai de 13,9 a 20,967, e a fileira fica na mesa durante o card de Cárhuaz (regência s42 › b2 e b3). Não toca fato: "MAY 1 – NOV. 30" vem da entrevista que o card atribui ("Source: SEDAPAL interview, reported by Infobae, September 2024", 11,9–25,833), e mantê-la junto do nome reforça a atribuição. Os vivos de 14,033 a 20,967 são a legenda, a cota, o nome e o cargo (4; o eixo não conta), iguais ao `medido` (s42: 4) | CONFIRMADA (não toca fato) |
+| RB261 | as seções de apoio da rodada 18 | O glossário ganha "Isabel Mamani" (fonte: o veredito e o `_PROCEDENCIA.json`, que conferem), e o Commons ganha a s46. `_como_ler` registra o papel `pergunta`. `_textos_vivos_max`: s46 4 (o nome, o cargo, o aviso e a citação, de 7,9 a 11,1) e s51 4 (Callao, 1535, Engraved chart e Lima, de 15,533 a 17,6), recontados à mão sobre a lista. `_pedidos_a_montante`: os 3 pedidos novos batem com os words (s51) e com a lista (s04, s46). **As linhas da `decisoes-lucas.md` citadas nas notas e na rodada 18 estão deslocadas** em relação ao arquivo de hoje: s04 "l. 218–220" é a l. 219–221; s51 "l. 221–222" é a l. 222–223; s46 "l. 224–225" é a l. 226–227; s42 "l. 226" é a l. 228. O bloco "l. 212–232" está certo. Achado R13-1 | CONFIRMADA (com a ressalva das linhas) |
+
+**Os vereditos por texto:**
+- **s51, "Engraved chart, 1717": CONFIRMADA.** "Engraved chart" descreve o item (RB253), e o 1717 é o `data_na_origem` da impressão de Londres, com o "Frezier 1713" fora do recorte (RB254). A edição de 1717 se confirma na origem do arquivo; a ficha da JCB não foi aberta (RB252).
+- **s46, "Photo from 2022" e o crédito de Isabel Mamani: CONFIRMADA.** Os dois conferem com o veredito e com a procedência, e nada liga a foto à casa dela.
+- **s04, a pergunta: CONFIRMADA.** Casa com a voz, e a premissa se sustenta em 62,53 % (ANA, PNRH, 2012).
+- **s42, o calendário até 20,967: CONFIRMADA, e não toca fato.**
+
+**Os achados:**
+1. **[LEVE] R13-1 · as linhas da `decisoes-lucas.md` nas notas da rodada 18.**
+   - **CONSERTO:** s04 "l. 219–221", s51 "l. 222–223", s46 "l. 226–227", s42 "l. 228", nas notas dos textos e nas trocas da rodada 18.
+   - **RAIZ:** PONTUAL. O arquivo andou 1 ou 2 linhas.
+2. **[AVISO] RB252:** a edição de 1717 da cópia da JCB está confirmada pela página do Commons, que transcreve a JCB. A ficha da própria JCB não foi lida. Se a Sala quiser o guardião, é uma leitura única de jcb.lunaimaging.com (cota E717 F896v).
+3. **[AVISO] Os vereditos da s46 e da s51** (`candidatos[37]` e `[39]`) ainda têm `janela_provisoria: true`, porque foram dados contra a regência `679d2809`. A regência `4ea3b5b0` já tem as duas fotos nas janelas que o conferente supôs: s46 › b0, de 0,0, recuando em 7,9; s51 › b2, de 12,6 a 17,6. O fecho da janela é do conferente, no `conducting`, e não muda nenhum texto.
+
+**Continuam:** as 5 primárias do gob.pe, NÃO FOI CHECADO (TB284–TB288).
+
+COBERTURA: 10 de 10 (esta reconferência: s51 com 3 itens, s46 com 3, s04 com 2, s42 e as seções de apoio)
+NOTA: 9/10
+VEREDITO: RESSALVA. Nenhum DIVERGE nem REFUTADA no texto de tela. Há 1 achado leve de referência (R13-1) e 2 avisos, e as 5 primárias do gob.pe continuam NÃO FOI CHECADO.
+
 ---
 
 ## Fecho do setor
@@ -2020,6 +2068,20 @@ Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do la
   - na s21, a regência `95d75b1e` ainda pede o ponto, e o pedido à Direção está registrado.
 - **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
 - **O lote B,** com ela, ficou com o sha256 `cd8d76dd…ae1b`.
+
+**A reconferência 13 (texto-17, sobre `19083829…`)** está no fim do lote B (RB252–RB261), com 10 de 10 e NOTA 9/10. Ela cobre os textos das escolhas do Lucas de 23/10 (o conserto 18). A s04 é do lote A e foi gravada aqui.
+- **s51, `Engraved chart, 1717`:** CONFIRMADA. É a carta gravada da baía do Callao, e a origem dá "London: 1717" (JCB E717 F896v).
+  - O 1713 do cartucho fica fora do recorte.
+  - O ano no rótulo cumpre o aviso do ano.
+- **s46, `Photo from 2022` e o crédito:** CONFIRMADA, letra a letra com o veredito. Nada liga a foto à casa da moradora.
+- **s04, a pergunta:** CONFIRMADA. São as palavras da voz, e a premissa vem da ANA (62,53 % em 2012; TA011).
+- **s42, o calendário até 20,967:** não toca fato.
+- **O achado:** R13-1, LEVE, as linhas do `decisoes-lucas.md` deslocadas nas notas. O setor mandou consertar no 18b (`53943561…`) e conferiu pela diferença.
+- **Os dois avisos, sem conserto:**
+  - a ficha da própria JCB não foi aberta: a edição vem da página do Commons, que a transcreve;
+  - os vereditos da s46 e da s51 ainda dizem `janela_provisoria: true`, e fechá-los é do conferente.
+- **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
+- **O lote B,** com ela, ficou com o sha256 `49d93230…53b0`.
 
 O texto de tela não tem DIVERGE nem REFUTADA. Desde a reconferência 10, a RESSALVA é só pelas 5 primárias do gob.pe, NÃO FOI CHECADO (os rótulos da caça estão checados).
 
