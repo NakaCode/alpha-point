@@ -7,21 +7,23 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Exceção do Lucas: qc-tamanho, crédito a 56 px (\"Source: INEI (Peru), censuses 1940–2025\" 56<72), 07/10/2026, 'Quero reduzir para 56px', exceção regravada no sha1 8915483b (reconferência da Sala 22/10); é a única falha do qc-cena.",
-        "portao-margens veredito 0 (429 amostras, 39 itens, sem itens nem avisos) no sha1 de hoje; não remedido no olho.",
-        "Sinalização (12,2–15,5 s): sem a legenda, o 28.3% (1940) fica ~120 px abaixo da pílula COAST, com um vazio entre os dois; só fecha em 15,5 s, quando a legenda entra. Lê-se bem, mas o número flutua por 3,3 s.",
-        "Sinalização (herdada): as figuras da costa e a pílula COAST ficam em pleno mar, a ~400 px da praia (recorte 14,0 s); lê-se como a região pela legenda, não como gente na água."
+        "Exceção do Lucas: qc-tamanho, crédito a 56 px (\"Source: INEI (Peru), censuses 1940–2025\" 56<72), 07/10/2026, 'Quero reduzir para 56px'; regravada para o sha1 62e74f73 pela Sala (reconferência de 22/10, 22:2x). É a única falha do qc-cena. No HTML, o crédito leva data-qc-papel=\"credito\" e o tamanho vem de var(--fs-credito); o crédito de mapa (crMapa) tem data-qc-credito=\"mapa\" na própria linha.",
+        "portao-margens veredito 0 no sha1 62e74f73 (429 amostras, 39 itens, sem itens nem avisos): lido, não remedido no olho. Nos 18 quadros nenhum texto passa da margem nem entra na faixa do crédito ou no canto de 400 × 400.",
+        "Sinalização (herdada, 12,2–15,5 s): sem a legenda, o 28.3% (1940) fica uns 190 px (1080p) abaixo da pílula COAST, com um vazio entre os dois, e só fecha em 15,5 s, quando a legenda entra. Lê-se bem.",
+        "Sinalização (herdada): as figuras da costa e a pílula COAST ficam no mar, a ~400 px da praia (quadros 13,0 e 16,5 s); lê-se como a região pela legenda, não como gente na água.",
+        "Sinalização (novo, 33,5 s em diante): COAST fica no vão entre as duas linhas, a ~70 px (1080p) abaixo da cinza e ~130 px acima da preta; a proximidade o liga à cinza, mas não está colado. HIGHLANDS fica ~55–100 px abaixo da linha preta. Os dois rótulos cabem sem colisão com o 58.7% (2025)."
       ],
       "correcoes": [
-        "Opcional (mapista): aproximar o 28.3% (1940) da pílula COAST em 12,2–15,5 s, ou deixar a legenda ocupar o vão. Não segura render."
+        "Opcional (mapista): aproximar o 28.3% (1940) da pílula COAST em 12,2–15,5 s. Não segura render."
       ]
     },
     {
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "52.4% (1993) fica preso ao ponto cinza de 1993 da Costa (a ponta direita do número em x do ponto, base ~29 px acima dele): recorte 4K de 30,0 s. O valor 52.4 é da Costa (série cinza) e o ponto aceso é o dela, não o da Serra: âncora posicional certa.",
-        "Frações das silhuetas e cotas conferem com o textos-tela e o `_dados/s31.json` (28,3 / 65,0 / 6,7 e 58,7 / 26,7 / 14,6); grafia e formato de tela corretos (1940 → 2025, %, ponto decimal)."
+        "Frações conferem com o textos-tela (\"AS SILHUETAS DA s30\") e com o _dados/s31: 1940 serra 6,5 (6 cheias e a 7ª pela metade), costa 2,83 (2 cheias e a 3ª em 5/6), selva 0,67; 2025 costa 5,87 (a 6ª em 7/8), serra 2,67, selva 1,46. Quadros 13,0, 16,5 e 21,9 s. O número de figuras por região não mudou com o conserto (só o corte do desenho).",
+        "O 52.4% (1993) fica preso ao ponto cinza de 1993 da costa (quadro 30,0 s), e o 58.7% (2025), acima do fim da linha cinza (33,5 e 36,5 s): âncora posicional certa.",
+        "Grafia e formato de tela corretos (1940 → 2025, %, ponto decimal). A legenda \"As Peru's census draws it: only part of the dry side\" fica quando a costa do censo está na tela (15,5–22,0 s), como o textos-tela manda."
       ],
       "correcoes": []
     },
@@ -29,9 +31,10 @@
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "Tempos conferidos no words.json: COAST e 28.3% entram em 12,2 (\"Fewer\" 12,22); legenda em 15,5 (\"coast,\" 15,50); \"Then,\" 18,58 troca o 28.3% pela legenda 1940 → 2025; 52.4% em 28,833 (\"ninety-three\" 29,22: entra uns 0,4 s antes da palavra, dentro do \"nineteen\" que a antecede); 58.7% em 33,10 (\"twenty\" 33,10); RAINFOREST 39,10; cota final 40,367 (\"share\" 40,39).",
-        "O 52.4% começa a sair ~0,25 s antes de 33,1 e há ~0,1 s sem número (frame de 33,0 s): detalhe, não atrapalha.",
-        "Esta rodada não atrasou nenhum elemento por ritmo; o item 7 antecipou COAST e 28.3% para a deixa da voz (melhora o word-lock)."
+        "Tempos conferidos no words.json (cena em 316,2 s do master): COAST e 28.3% em 12,2 (\"Fewer\" 12,22); legenda em 15,5 (\"coast,\"); \"Then,\" 18,58 troca o 28.3% por 1940 → 2025; 52.4% em 28,833 (\"ninety-three\" 29,22); 58.7% em 33,1 (\"twenty\" 33,10); RAINFOREST em 39,1; cota final em 40,367 (\"share\" 40,39).",
+        "O conserto novo: COAST e HIGHLANDS saem em 32,1–32,35 s e entram em 32,35–32,65 s, logo depois de \"lived there.\" (32,14) e antes de \"By twenty twenty-five\" (32,86): cai na pausa certa e o 58.7% entra em 33,1 com o COAST já assentado. Quadro 32,4 s: os rótulos velhos já saíram e os novos estão em 50 % (≈0,5 s de gráfico sem rótulo de série; um piscar curto, que cai na pausa da voz).",
+        "Atrasos por ritmo: esta rodada não atrasou nenhum elemento por ritmo; os tempos de entrada de texto não mudaram. Só se moveram COAST e HIGHLANDS (de 32,1 a 32,65), re-checados contra a fala acima.",
+        "Detalhe herdado: o 52.4% entra uns 0,4 s antes de \"ninety-three\", dentro do \"nineteen\" que o antecede."
       ],
       "correcoes": []
     },
@@ -39,7 +42,7 @@
       "lente": "abordagem",
       "nota": 9,
       "problemas": [
-        "Mapa → dado (corte seco para o gráfico em 22,0 s) → mapa: modo certo para lugar, tendência censitária e fecho; vetor sobre satélite real."
+        "Mapa de satélite real → dado (corte seco para o gráfico em 22,0 s) → mapa: modo certo para lugar, tendência censitária e fecho. O desenho (silhuetas, linhas) vai sobre o registro real, e o mapa não é redesenhado."
       ],
       "correcoes": []
     },
@@ -47,30 +50,33 @@
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "Sinalização (herdada, regra do textos-tela): a figura cinza da selva (15,5–22,0 s) fica sem rótulo; a figura cortada pode ler-se como desenho quebrado. RAINFOREST só em 39,1 s.",
-        "12,2–15,5 s: a voz diz 'coast' e o espectador agora tem COAST + 28.3% na tela (o vão que o revisor viu está coberto); o 'draws it' só chega em 15,5."
+        "O conserto pedido saiu: a ½ da serra e a 5/6 da costa agora se leem como fração. Quadro 13,0 s (recorte 4K): a 3ª figura da costa tem a cabeça tracejada e se distingue das duas inteiras; a ½ da serra tem a metade de cima tracejada e lê como meia pessoa, não como figura cortada pelo quadro. Em 19,6 s a 5/6 se completa (3 inteiras).",
+        "A figura da selva (15,5–22,0 s) agora lê como uma pessoa com a cabeça tracejada, em cinza e sem rótulo, e não mais como um 'C' quebrado (quadros 16,5 e 19,6 s). Fica sem rótulo por decisão do textos-tela; a voz a paga em \"rainforest\" (39,1 s).",
+        "Sinalização: em 1080p o fantasma da 5/6 é só a cabeça tracejada; no celular deitado a diferença entre 2 inteiras e 2⅚ é sutil, e a voz diz \"fewer than three in ten\". Lê-se, sem reprova."
       ],
       "correcoes": [
-        "Decisão da Sala/redator-de-tela, opcional: rótulo para a selva já em 15,5 s."
+        "Opcional (mapista): se o Lucas achar o fantasma da 5/6 fraco no celular, aumentar um pouco o contraste do tracejado da cabeça. Não segura render."
       ]
     },
     {
       "lente": "poluicao",
       "nota": 7,
       "problemas": [
-        "Teto de 6 (identidade §4.2) no limite, nota 7 como sinalização: contando cada grupo de silhuetas como um elemento, 12,5 s tem 6 (linha, HIGHLANDS, figuras da serra, figuras da costa, COAST, 28.3%) e 15,8–18,4 s tem 8 (mais legenda e figura da selva). Contado como a Arte conta (figuras = 1 elemento), são 5 e 6. O qc-carga passou.",
-        "Cena mais cheia que antes de 12,2 s (quando o 65.0% saía e a costa só entrava em 15,5); o conserto aumentou a carga em 3,3 s, sem passar do teto pela conta declarada."
+        "Teto de 6 (identidade §4.2) no limite, nota 7 como sinalização. Em 15,5–18,5 s (quadro 16,5): HIGHLANDS, figuras da serra, figuras da costa, COAST, legenda, 28.3% e a figura da selva. Contando cada fileira como um elemento, são 6 a 7, como a Arte conta (6). O qc-carga passou. Os fantasmas ficam no mesmo grupo da figura e não são elemento novo.",
+        "Em 22–37 s o gráfico tem de 3 a 5 elementos (série, rótulos, valor, legenda), limpo.",
+        "Em 40,4–42,7 s o cartão da selva empilha 4 pílulas (RAINFOREST, 6.7% → 14.6%, SHARE OF PERUVIANS, 1940 → 2025) sobre o mapa: legível, perto do teto de blocos."
       ],
       "correcoes": [
-        "Sala: confirmar a regra de contagem das silhuetas (um elemento por grupo ou por fileira) em `_regras_de_serie`; se for por grupo, tirar a legenda 'As Peru's census draws it' ou fundir COAST e legenda."
+        "Sala: confirmar em _regras_de_serie a regra de contagem das silhuetas (um elemento por fileira ou por grupo). Não segura render."
       ]
     },
     {
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Câmera em deriva e viagem lenta contínuas; entradas de 300 ms; o ponto de 1993 acende com o mesmo marcador do cruzamento de 1970 (.cruz), não com o anel âmbar do túnel; nada congela (gráfico com linha crescendo e push-in de 33,9 a 37,1 s).",
-        "Respiro de 37,17 a 39,1 s (~1,9 s) só com câmera andando, sem texto (herdado)."
+        "Câmera em deriva e viagem lentas e contínuas (quadros 0,3, 5,0, 7,5 e 9,6 s mostram o Peru recuando do detalhe de Lima ao país e depois à costa); entradas de 300 ms; as figuras caminham da serra para a costa entre 18,6 e 19,0 s; o gráfico tem linha crescendo e o push-in de 33,9 a 37,1 s. Nada congela.",
+        "Os rótulos COAST e HIGHLANDS trocam de lugar por saída e entrada (32,1–32,65 s), sem trajeto: foi a solução da Arte, porque o trajeto em linha reta cruzava os dois (check-overlap a 32,2 s). Lê-se como entrada nova, não como arrasto. Nada se move nos 250 ms antes do corte final.",
+        "Respiro de 37,17 a 39,1 s (~1,9 s) só com a câmera andando (quadro 38,0 s), sem texto: herdado e dentro de 2,0 s; os cortes secos map→gráfico (22,0 s) e gráfico→mapa (37,17 s) não são mapa seguido de mapa."
       ],
       "correcoes": []
     },
@@ -78,7 +84,7 @@
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "© MapTiler © OpenStreetMap contributors presente em todo quadro de mapa (0–22 s e 37,17–42,7 s), 56 px; no gráfico não há mapa e o crédito INEI cobre 9,233–42,733 s (uma janela só). Rodapé v5: 0, pior 8,46:1 (piso 3:1). Sem crédito supérfluo."
+        "© MapTiler © OpenStreetMap contributors presente em todo quadro de mapa (0–22 s e 37,17–42,7 s), a 56 px, na faixa abaixo de y 1880. No gráfico não há mapa, e o crédito INEI cobre 9,233–42,733 s. Rodapé v5 no sha1 de hoje: 0 (pior 8,46:1, piso 3:1). Sem crédito supérfluo (Natural Earth e dados abertos não têm crédito na tela)."
       ],
       "correcoes": []
     },
@@ -86,7 +92,8 @@
       "lente": "tema",
       "nota": 7,
       "problemas": [
-        "Sinalização (herdada, Sala): `--neutro` com dois donos na cena (série Costa no gráfico e a selva nas silhuetas); o ponto aceso de 1993 repete o marcador cinza do cruzamento de 1970, coerente com a série Costa. Uma cor = um significado fica fraca, sem reprova."
+        "Sinalização (herdada): --neutro com dois donos na cena (a série Costa no gráfico e a selva nas silhuetas); o fantasma dos cortes é --neutro tracejado, coerente com 'parte que falta'. Uma cor = um significado fica fraca, sem reprova.",
+        "No mapa, o laranja só marca a costa seca (0–9 s), e a deriva de câmera e as pílulas seguem a família de cor do vídeo."
       ],
       "correcoes": [
         "Decisão da Sala; se mexer, só nas silhuetas da selva (mapista)."
@@ -96,7 +103,7 @@
       "lente": "cobertura",
       "nota": 8,
       "problemas": [
-        "O concreto central (as regiões do censo e a Costa de Lima) está coberto pelo satélite real do Peru; `_media/` sem arquivo para a s30/s31 e sem nomeados_sem_imagem na regência."
+        "O concreto central (as regiões do censo e a costa de Lima) está coberto pelo satélite real do Peru; `_media/` sem arquivo para a s30/s31 e sem nomeados_sem_imagem na regência."
       ],
       "correcoes": []
     },
@@ -104,7 +111,8 @@
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Mapa em deriva contínua, gráfico com linha e push-in; nenhum plano parado além do teto de 6 s; a cena alterna mapa, dado e mapa em 42,7 s."
+        "Mapa em deriva contínua, gráfico com linha e push-in; nenhum plano parado além do teto de 6 s; a cena alterna mapa, dado e mapa em 42,7 s.",
+        "Sinalização (herdada): de 6,2 a 9,2 s só o mapa com a linha, sem dado (quadro 7,5 s), sobre a fala da capital; a câmera anda o tempo todo."
       ],
       "correcoes": []
     },
@@ -124,7 +132,7 @@
       "lente": "circulo",
       "nota": 8,
       "problemas": [
-        "Julgada pelo espelho, o conceito e os relatos das irmãs (sem abrir quadros delas, fora do teto e do lote); a s30 avança com o dado censitário (65.0% → 28.3% → 52.4% → 58.7% → 6.7% → 14.6%)."
+        "Julgada pelo espelho, o conceito e os relatos das irmãs (sem abrir quadros delas, fora do teto e do lote). A s30 avança com o dado censitário (65.0% → 28.3% → 52.4% → 58.7% → 6.7% → 14.6%); o conserto desta rodada não repete nada de uma irmã."
       ],
       "correcoes": []
     }
