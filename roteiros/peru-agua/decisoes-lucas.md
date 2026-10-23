@@ -268,3 +268,5 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
 - **A cota:** "Até 90 % (Recomendado)". Os consertos seguem agora; a Sala para em 90 % e avisa. O freio dos setores fica em 89 %.
 - Decisão da Sala, aplicando "toda água azul" (como a s23): os rios curtos de contexto a 75 % em todas as cenas (s08 e s19 estavam a 35 %); as lagoas
   ainda sem azul (a Marcapomacocha da s52, a de origem da s49) em `--agua` 55–60 %.
+- **A cota, de novo** (Lucas, 23/10/2026, 13:1x, no chat da Sala, depois do erro de lugar do Huascacocha na s42): "Liberar até 93 % (Recomendado)". A
+  Sala termina a s42 no lugar certo, a s39 com as represas reais e a revisão de qualidade, e para em 93 %. O freio dos setores sobe a 92 %.
