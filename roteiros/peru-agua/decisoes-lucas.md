@@ -254,3 +254,6 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
 - Correção do Lucas, 23/10/2026 03:3x, mandando de volta o quadro da s21 (a linha da água fina sobre o deserto claro, no mapa do país):
   **"a terceira para mim era essa"**. A cena "quase cinza" era a s21, não a das lagoas. A Sala pediu à Arte largura mínima e contorno escuro
   na linha da água em toda vista de escala grande, para o azul se ler como azul. As lagoas a 55–60 % continuam.
+- Correção da correção (23/10/2026, 04:5x, Sala): o M-B da Arte mediu o quadro de 9,7 s da s21, e a linha clara sobre o deserto do sul é a **divisa
+  Peru–Chile** (branca pela identidade §6), não água: o Supe só começa a se desenhar em 9,667 s, perto de Lima. O piso de largura da água vista de longe
+  (12 sobre 24 px no 4K, com contorno escuro) fica, porque a s29 a 6 px também saía quase cinza. A pergunta sobre a divisa vai ao Lucas quando ele voltar.
