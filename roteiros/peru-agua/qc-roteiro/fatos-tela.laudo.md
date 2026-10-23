@@ -1889,6 +1889,47 @@ COBERTURA: 7 de 7 (esta reconferência: as 3 formas, a manchete de 2027, a guard
 NOTA: 9/10
 VEREDITO: RESSALVA. As 3 formas são fiéis ao fato. Há 2 ressalvas periféricas de redação na proposta (R11-1, R11-2), nenhuma na tela, e as 5 primárias do gob.pe continuam NÃO FOI CHECADO.
 
+## Reconferência 12 (texto-16, sobre `dc0c0ea4…`)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `dc0c0ea41ecb1429f0d2499690fdfbbfd8d9ede15550d91487a93433bb6eabc0`.
+- **Comparado com:** `antes-consertos-17/textos-tela.json.946283df`, cujo sha256 confere. A regência é a `95d75b1e`, que confere no disco.
+- **O diff** (`scripts/r12.py`): de 401 para 404 textos. Saem 3 (o ANDES da s18 com o t1 antigo, a nota antiga do `nada` da s21 e a nota antiga da legenda da s33). Entram 6 (o ANDES até 11,9, o Rímac da s20, o `nada` da s21 com a nota nova, as duas legendas da s33 e o eixo da s42). Mudaram 6 seções: `_pilulas_de_mapa`, `_consertos` (a rodada 17), `_instrucoes_para_a_arte`, `_pedidos_a_montante`, `glossario` e `nao_vai_para_tela`.
+- **As fontes:**
+  - o `words.json`;
+  - a regência `95d75b1e`;
+  - as camadas `out/peru-agua/_media/geo/rio-rimac.json` e `lima-callao-metropolitana.json` (`scripts/r12geo.py`, ponto no polígono);
+  - o `out/peru-agua/graphics/s20.html`, l. 20 e 273, lido sem rodar;
+  - a CVR, em `midia/peru-agua/fontes/gente/cvr-tomo6-1.9-desplazamiento.txt`.
+- **Limites:** 0 imagens, nenhuma web; nada foi gravado no canal.
+
+| id | o quê | o que se conferiu | veredito |
+|---|---|---|---|
+| RB245 | s18 · "ANDES", com o t1 de 10,2 para 11,9 | A voz diz "East" (10,230), "of the" e "Andes," (10,760; o fim, pela palavra seguinte, em 11,370). "Satipo" está em 11,915, e a regência faz a pílula de Satipo entrar em 11,9 (s18 › b2). O rótulo agora cobre a fala que o nomeia e sai quando entra o nome seguinte. O texto não muda, e o fato não muda: o rótulo continua nomeando a forma da cordilheira. A regência ainda diz "when everything leaves" em 10,2, e o pedido a montante está registrado | CONFIRMADA (não toca fato) |
+| RB246 | s20 · a pílula "Rímac" (1,6–4,5) é a foz e não é mais específica que a geometria | A camada `rio-rimac` (OSM relation/4637139) tem `name: "Rímac River"`, `name_pt: "Rímac"` e `ponta_b: [-77.14759, -12.03074]`, que é o vértice mais a oeste, a foz. No `lima-callao-metropolitana`, a ponta cai no polígono **"Callao"** e fora de **"Lima Province"**: é um vértice da linha da costa do Callao (distância 0,000 km). A pílula "Rímac" diz o mesmo nome que a feição, sem nada mais específico, e a nota recusa "Rímac River, Lima" com a razão certa. O t0: o `s20.html` desenha o rio com `rio: 0.30, rioDur: 1.30` (l. 273), e o traço termina em 1,60, entre "Peru's" (1,357) e "water" (1,822), sem palavra que nomeie o rio. O glossário põe a s20 no `_na_tela` do Rímac, e o `nao_vai_para_tela` tira a s20 da lista sem pílula | CONFIRMADA |
+| RB247 | s20 · a pílula não liga o Rímac à cifra da ANA | A pílula sai em 4,5, no corte para o desenho, e "ABOUT HALF" com "OF THE FLOOD WATER FROM THE WETTER PART OF THE PACIFIC SIDE" entra em 4,867, com "half" na voz em 4,877. Não há quadro com as duas. Na janela da pílula, a voz diz "Peru's water authority said that, for lack of storage," (1,357–3,757), sem número. **O limite:** o crédito "Source: ANA (Peru), 2009" está na tela desde 0,0, junto da pílula. Ele não afirma número nem lugar, então não liga a cifra ao rio, mas o espectador vê o nome do rio e a ANA lado a lado por 2,9 s. A cifra continua sendo da vertente (`doc.num-17`: "bacia úmida do Pacífico"), e a tela nunca diz "Rímac" junto dela | CONFIRMADA (com o limite dito) |
+| RB248 | s21 · sem o ponto de Lima (9,667–12,667) | Nada na tela de 9,234 a 12,667, fora o crédito do mapa (`nada`). Não há texto "Lima" na s21 inteira: os rótulos são COASTAL DESERT, Piura, Tacna e CHILE, que saem em 9,234. A voz diz "people built a city on that coast about five thousand years ago" (8,897–11,937). Sem o ponto, o que se acende é só o Supe (`rio-supe`, na regência s21 › b2), e a s22 nomeia Caral em 0,633. Nada na tela se lê como a cidade de 5 mil anos. **A regência `95d75b1e` ainda manda "Lima's point (cidades-peru-ne) enters WITHOUT a name, for scale"**, e o pedido a montante e a instrução à Arte estão registrados. Enquanto a Direção não muda, a regência e a lista se contradizem nesse ponto, e a Arte segue a lista | CONFIRMADA |
+| RB249 | s33 · "1980–2000" (10,4–16,3) e "1980–2000 · ESTIMATE" (16,3–20,367) | CVR, l. 355: "El fenómeno del desplazamiento interno asociado a la violencia durante el período 1980-2000"; l. 1543: "…1980-2000 habría ascendido a aproximadamente medio millón de peruanos y peruanas". O período é o da fonte, e é o da violência que ela estuda. **A voz diz "the nineteen eighties and nineties" (10,430–11,350), e a tela diz 1980–2000: cabe, não diverge.** As décadas da voz são o arredondamento de um período que a CVR fecha em 2000, e nenhuma das duas formas contradiz a outra. Se a tela dissesse "1980–1999", aí sim encolheria a fonte. O t0 está em "nineteen" (10,430; o quadro de 10,4). A passagem para "· ESTIMATE" em 16,3 ("about", 16,310) vem depois de "estimated" (15,670) e casa com "No existen estimados absolutamente fiables" (a `folha_texto`) | CONFIRMADA |
+| RB250 | s42 · o eixo "J F M A M J J A S O N D" (10,167–13,9) | São 12 iniciais, na ordem de January a December, em inglês: J(anuary) F(ebruary) M(arch) A(pril) M(ay) J(une) J(uly) A(ugust) S(eptember) O(ctober) N(ovember) D(ecember). Estão certas. As casas de maio a novembro (M J J A S O N, 7 meses) enchem em "May" (11,910), com "MAY 1 – NOV. 30", e a voz diz "from May first to November thirtieth" (11,670–13,115). O eixo não afirma data; a cota, que não mudou, afirma. É papel `eixo`, fora da conta de vivos | CONFIRMADA (não toca fato) |
+| RB251 | as seções de apoio da rodada 17 | `_pilulas_de_mapa` (s20: a decisão nova, com a razão de RB247), `_instrucoes_para_a_arte` (5 linhas novas) e `_pedidos_a_montante` (5 pedidos à regência `95d75b1e`) batem com RB245–RB250. `glossario` e `nao_vai_para_tela` batem com RB246. `_textos_vivos_max`, recontado (`scripts/r12viv.py`): s18 4, s20 3, s21 4, s33 2 e s42 4, iguais ao `medido`, e nenhuma cena diverge. **Os achados da Reconferência 10 aparecem consertados no arquivo:** R10-1 e R10-2 (as razões da s19 e da s35, em `_pilulas_de_mapa`), R10-3 (a contagem "Motion Array 3, Envato 6, Storyblocks 1") e R10-4 (a regra do crédito do mapa, com "sem o mapa por baixo") | CONFIRMADA |
+
+**Os vereditos por mudança:**
+- **s18, ANDES até 11,9: CONFIRMADA.** Não toca fato, e agora cobre o "Andes" da voz.
+- **s20, a pílula "Rímac": CONFIRMADA.** É a foz, que está no Callao, e não é mais específica que a geometria. Ela sai antes da cifra da ANA, com o limite do crédito da ANA no mesmo quadro (RB247).
+- **s21, sem o ponto de Lima: CONFIRMADA.** A regência ainda pede o ponto; o pedido à Direção está registrado.
+- **s33, "1980–2000": CONFIRMADA.** É o período da CVR (l. 355 e 1543). A voz em décadas cabe nele; não é DIVERGE.
+- **s42, o eixo dos meses: CONFIRMADA.** As iniciais estão certas, e o eixo não toca fato.
+
+**Os achados:** nenhum acionável no texto de tela. Há dois avisos sem conserto do redator, e nenhum é DIVERGE:
+1. **[AVISO] RB247:** de 1,6 a 4,5, o crédito "Source: ANA (Peru), 2009" e a pílula "Rímac" ficam no mesmo quadro. Não afirmam nada juntos, e a cifra só entra depois do corte. Se a Sala quiser zero proximidade, o crédito da ANA entraria em 4,867, com a cifra, mas isso mexe na regência e no `qc-carga`. Fica com a Sala.
+2. **[AVISO] RB248:** a regência `95d75b1e` › s21 › b2 ainda pede o ponto de Lima. A lista e a instrução à Arte o tiram, e o pedido à Direção está aberto.
+
+**Continuam:** as 5 primárias do gob.pe, NÃO FOI CHECADO (TB284–TB288).
+
+COBERTURA: 7 de 7 (esta reconferência: as 5 mudanças na tela, com 2 itens na s20, e as seções de apoio)
+NOTA: 10/10
+VEREDITO: RESSALVA. Esta rodada sai limpa: nenhum DIVERGE nem REFUTADA, e só 2 avisos. A ressalva é o estado do lote B: as 5 primárias do gob.pe continuam NÃO FOI CHECADO.
+
 ---
 
 ## Fecho do setor
@@ -1963,6 +2004,22 @@ Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do la
   - RB243: o `por_que_diverge` do TB273, com a frase corrigida do R11-2, que é a que está no arquivo.
 - **O que continua:** o TB217 e o TB273 valem pela fonte e pela data, e a releitura da Sala na véspera de publicar continua.
 - **O lote B** não mudou: as linhas TB217 e TB273 trazem o texto longo, como o verificador gravou.
+
+**A reconferência 12 (texto-16, sobre `dc0c0ea4…`)** está no fim do lote B (RB245–RB251), com 7 de 7 e NOTA 10/10. Ela cobre os consertos de texto da revisão de espectador r2 (o conserto 17).
+- **s18:** o `ANDES` fica até 11,9, sobre o "Andes" da voz. CONFIRMADA, e não toca fato.
+- **s20:** a pílula `Rímac` vai de 1,6 a 4,5. CONFIRMADA.
+  - A ponta da `rio-rimac` cai no Callao, e "Rímac" não é mais específico que a feição.
+  - Ela sai antes de a cifra da ANA entrar.
+- **s21:** o ponto de Lima saiu. CONFIRMADA: nada na tela se lê como a cidade de 5 mil anos.
+- **s33:** `1980–2000` vai de 10,4 a 16,3, e depois `1980–2000 · ESTIMATE`. CONFIRMADA.
+  - É o período da CVR, e as décadas da voz o arredondam.
+  - O "ESTIMATE" vem depois do "estimated".
+- **s42:** o eixo `J F M A M J J A S O N D`. CONFIRMADA, e não toca fato.
+- **Os dois avisos, sem conserto:**
+  - na s20, o crédito da ANA divide o quadro com a pílula, mas sem a cifra;
+  - na s21, a regência `95d75b1e` ainda pede o ponto, e o pedido à Direção está registrado.
+- **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
+- **O lote B,** com ela, ficou com o sha256 `cd8d76dd…ae1b`.
 
 O texto de tela não tem DIVERGE nem REFUTADA. Desde a reconferência 10, a RESSALVA é só pelas 5 primárias do gob.pe, NÃO FOI CHECADO (os rótulos da caça estão checados).
 
