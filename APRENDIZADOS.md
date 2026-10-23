@@ -1610,3 +1610,9 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   Chrome e do Brave já manda.
 - **Por que serve a qualquer canal:** qualquer canal que rode agentes no Windows usa o Git Bash; um comando que espera a entrada não falha,
   só para, e o que vem depois dele numa cadeia roda tarde, sobre um estado que já mudou.
+- **Voltou na arte-17 (23/10/2026, 03:0x–05:0x):** as peças da Arte travaram 6 vezes em `python -`, com a regra no pedido. O setor encerrou cada
+  uma pelo PID, sem nada gravado. A regra escrita no pedido não basta: o hábito do agente vence. Dois reforços:
+  - a Sala põe a regra no `setores/REGIMENTO.md`, que todo setor lê e repete em todo pedido às peças: o Python sempre num arquivo,
+    `python -X utf8 -B <arquivo>.py`, e antes do "terminou" o setor confere que não sobrou `python.exe` preso (pelo PID);
+  - a trava técnica seria um hook no `.claude/settings.json` que recuse o comando do Bash com `python -` ou heredoc para o Python. Mexer
+    no `settings.json` pede o ok do Lucas (CLAUDE.md, "Os setores"): fica proposto a ele.

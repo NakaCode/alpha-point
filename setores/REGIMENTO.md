@@ -162,6 +162,10 @@ O setor usa só:
   - se ela pode abrir o Chrome (`chrome liberado`) e pedir tiles (`MapTiler liberado`), ou não;
   - que, onde o ofício ou a roupa dizem "Claude central", se lê "a Sala de controle": a peça devolve ao setor o que é da
     Sala;
+  - **que o Python roda sempre de um arquivo de script** (`python -X utf8 -B <arquivo>.py`), gravado na pasta da tarefa,
+    nunca por `python -`, heredoc ou `-c` longo, e o `ffmpeg` com `-nostdin` (`APRENDIZADOS.md`, item 89: no Git Bash do
+    Windows o comando fica preso esperando a entrada, e o que vem depois na cadeia roda tarde; travou 6 vezes na arte-17 do
+    Peru, com a regra no pedido). A linha vai no começo do pedido, não no fim;
   - o fim: um relato, sem commit, sem `regie`, sem Discord ou Telegram.
 - **O setor só repassa o que é da Sala.** Não grava exceção, não pergunta ao Lucas em nome da Sala e não decide o que o
   ofício dá ao Claude central: leva à Sala o que a peça pediu.
@@ -259,6 +263,9 @@ não cada peça.
   no `out/<proj>/_pesquisa/maptiler-gasto.md`; o painel da MapTiler, quem lê é a Sala.
 - **A música do Epidemic** nunca vai a Whisper, a subagente, a `Read` de áudio ou a qualquer ferramenta de IA, sozinha ou
   mixada: nem `acervo/trilha/`, nem master ou XML com música. O único áudio que se confere é a `narracao.wav`.
+- **Nenhum Python preso:** antes do "terminou", o setor confere que não sobrou `python.exe` das peças rodando
+  (`Get-CimInstance Win32_Process -Filter "Name='python.exe'"`, no PowerShell). O que sobrou se encerra pelo PID da árvore,
+  nunca por nome, e o relato diz qual era e se gravou algo (`APRENDIZADOS.md`, item 89).
 - **O fim da tarefa:**
   - o relato vai a `out/<proj>/_tmp/setores/<id>.md`; numa tarefa `_geral`, a `out/_maquina/setores/<id>.md`. As duas
     pastas ficam fora do git;
