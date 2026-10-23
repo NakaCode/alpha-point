@@ -22,7 +22,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
   O que era da s07 e não é texto da s08 sai no corte, com a s06: a régua, 'LESS THAN 70 MILES', o crédito dela e a pílula 'Lima'.
 
   O que a cena faz (o mapa nunca para: a câmera anda do 1º ao último quadro):
-    · 0–0,7 ('river,'): os outros rios curtos baixam a 35 %; o Rímac fica cheio, o que a voz separa.
+    · 0–0,7 ('river,'): os outros rios curtos baixam a 75 % (arte-18; eram 35 %); o Rímac fica cheio, o que a voz separa.
     · 1,1: 'ABOUT 90 MILES LONG (145 km)' no alto do quadro, longe da linha, e 'Source: ANA (Peru), 2014' na faixa, até o fim
       (a voz não diz o número; é do redator).
     · a saída também não corta (direcao-19): a s09 parte do último quadro desta cena (u = 1,3576) e viaja ao leste.
@@ -44,6 +44,11 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
     · RODADA 2 (M-A): os pedaços da linha passaram a ponta REDONDA (a reta abria fendas nas emendas e picotava os rios de várias
       partes) e só aparecem com opacidade 1; o rio de fundo escurece pela COR (misturada ao escuro do contorno, com a correnteza viva)
       e, nos esmaecimentos de entrada e saída, uma linha lisa em --agua (sem correnteza) assume só enquanto eles duram.
+  CONSERTO peru-agua-arte-18 (mapista, lote M-A, 23/10/2026; a decisão da Sala depois da qualidade-10: "toda água azul", os rios curtos
+  de contexto a 75 % em todas as cenas). Mudou só isto: os rios curtos de contexto baixam a 75 % (eram 35 %), pela cor (misturada ao
+  escuro do contorno), com a correnteza viva; a luz da correnteza para antes da divisória (a trava da s06: 0 até 2 × o contorno dela
+  + 12 px na tela, rampa de 90 px); a linha lisa fica por baixo dos pedaços também cheia. A emenda com a s06 e com a s09 não muda: as
+  três levam a mesma trava, as mesmas larguras e o tempo do master.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -225,6 +230,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
       var k1 = Math.min(pc.k1, lim);
       var S = obj.vel * (T - obj.o.T0) - ri.luz - ri.fase;
       var b = brilhoCorrenteza(ri.kc + (pc.k0 + k1) / 2, S, ri.per, ri.luz / ri.per);
+      if (pc.ft != null) { b *= pc.ft; if (b > 0.004 && obj.trava) obj.trava.minLuzPx = Math.min(obj.trava.minLuzPx, pc.dpx); }   // arte-18: a trava da luz perto da divisória
       fs.push({ type: "Feature", properties: { b: Math.round(b * 100) / 100 }, geometry: { type: "LineString", coordinates: aguaTrecho(ri, pc.k0, k1) } });
     });
     return { type: "FeatureCollection", features: fs };
@@ -287,7 +293,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
     var cheio = v >= 0.999;
     map.setPaintProperty(obj.id + "-sob", "line-opacity", Math.round(v * k * 1000) / 1000);   // o contorno do rio de fundo baixa com ele
     map.setPaintProperty(obj.id + "-linha", "line-opacity", cheio ? 1 : 0);
-    map.setPaintProperty(obj.id + "-plano", "line-opacity", cheio ? 0 : v);
+    map.setPaintProperty(obj.id + "-plano", "line-opacity", cheio ? 1 : v);   // arte-18: cheia, a linha lisa fica POR BAIXO dos pedaços: as pontas redondas deles não granulam mais a borda
     if (obj.k !== k) {
       map.setPaintProperty(obj.id + "-linha", "line-color", aguaCorPedacos(c, k));
       map.setPaintProperty(obj.id + "-plano", "line-color", k >= 0.999 ? c.agua : aguaMistura(c.rA, c.rS, k));
@@ -306,6 +312,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
     }
     var k = T.toFixed(4) + "|" + kg;
     if (obj.chave === k) return;
+    aguaTravaQuadro(map, obj);   // arte-18: o fator da trava, pela câmera de agora
     var s = map.getSource(obj.id); if (s) s.setData(aguaDados(obj, T, ate));
     obj.chave = k;
   }
@@ -320,6 +327,57 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
     if (!obj.cores) obj.cores = aguaCores(sobCor || obj.o.sobCor); return obj; }
   // lago e represa (PARADOS): --agua a 0,58 no preenchimento, o contorno --agua 6 px sobre 14 escuros de perto, 12 sobre 24 de longe
   var AGUA_PARADA = 0.58;
+  // ═══ arte-18 (M-A): A TRAVA DA LUZ PERTO DA DIVISÓRIA (Sala e Direção, direcao-24; qualidade-10) ═══
+  // O rio que NASCE na divisória (a linha das águas) não acende colado nela: a luz de cada pedaço é multiplicada por um fator que é
+  // 0 até a "zona" (2 × a largura do contorno escuro da divisória no quadro + a meia largura do contorno da água, 12 px) e sobe a 1
+  // numa rampa de TRAVA.rampa px. A distância é medida NA TELA, a cada quadro (map.project do meio do pedaço e do ponto da divisória
+  // mais perto dele, achado uma vez), e vale também com a câmera inclinada. Só os pedaços a menos de capKm da divisória entram na
+  // conta; os outros ficam com a luz inteira. A cor de base (--agua) não muda: só a luz se apaga perto da linha branca.
+  var TRAVA = { rampa: 90, aguaSobMeia: 12 };
+  function aguaTravaPrep(obj, divLinhas, capKm) {
+    var cel = 0.1, grade = {};
+    divLinhas.forEach(function (c) {
+      for (var i = 1; i < c.length; i++) {
+        var a = c[i - 1], b = c[i];
+        var x0 = Math.floor(Math.min(a[0], b[0]) / cel), x1 = Math.floor(Math.max(a[0], b[0]) / cel);
+        var y0 = Math.floor(Math.min(a[1], b[1]) / cel), y1 = Math.floor(Math.max(a[1], b[1]) / cel);
+        for (var x = x0; x <= x1; x++) for (var y = y0; y <= y1; y++) { var k = x + "," + y; (grade[k] = grade[k] || []).push([a, b]); }
+      }
+    });
+    var ry = Math.ceil(capKm / 110.57 / cel) + 1, n = 0;
+    obj.pecas.forEach(function (pc) {
+      pc.ft = null; pc.dp = null;
+      var m = aguaTrecho(pc.r, (pc.k0 + pc.k1) / 2, (pc.k0 + pc.k1) / 2)[0];
+      var co = Math.cos(m[1] * Math.PI / 180), rx = Math.ceil(capKm / (111.32 * Math.max(0.2, co)) / cel) + 1;
+      var cx = Math.floor(m[0] / cel), cy = Math.floor(m[1] / cel), best = Infinity, bp = null;
+      for (var x = cx - rx; x <= cx + rx; x++) for (var y = cy - ry; y <= cy + ry; y++) {
+        var L = grade[x + "," + y]; if (!L) continue;
+        for (var s = 0; s < L.length; s++) {
+          var a = L[s][0], b = L[s][1];
+          var ax = (a[0] - m[0]) * 111.32 * co, ay = (a[1] - m[1]) * 110.57, bx = (b[0] - m[0]) * 111.32 * co, by = (b[1] - m[1]) * 110.57;
+          var dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy, u = l2 > 0 ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / l2)) : 0;
+          var d = Math.hypot(ax + dx * u, ay + dy * u);
+          if (d < best) { best = d; bp = [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u]; }
+        }
+      }
+      if (best < capKm) { pc.m = m; pc.dp = bp; n++; }
+    });
+    obj.trava = { n: n, divSob: 12, minLuzPx: Infinity };
+    return obj;
+  }
+  // a cada quadro, antes dos pedaços: o fator de cada pedaço perto da divisória, pela câmera de agora
+  function aguaTravaQuadro(map, obj) {
+    if (!obj.trava) return;
+    var z0 = 2 * obj.trava.divSob + TRAVA.aguaSobMeia, z1 = z0 + TRAVA.rampa;
+    obj.trava.zona = z0; obj.trava.minLuzPx = Infinity;
+    obj.pecas.forEach(function (pc) {
+      if (!pc.dp) return;
+      var a = map.project(pc.m), b = map.project(pc.dp), d = Math.hypot(a.x - b.x, a.y - b.y);
+      var u = Math.max(0, Math.min(1, (d - z0) / (z1 - z0)));
+      pc.ft = u * u * (3 - 2 * u); pc.dpx = d;
+    });
+  }
+  // ═══ fim da trava (arte-18) ═══
   // ═══ fim da água no MapLibre (M-A) ═══
 
   // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
@@ -337,7 +395,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
     pitch: 60,
     exag: 2.4,                                                       // = s06 › CENA.exag (relevo cheio desde 17,82 s da s06)
     divGrossa: { pitch: 58, linha: [6, 20], sob: [12, 30] },         // = s06 (a 60° a linha fica em 20/30 px)
-    riosBaixam: { t0: 0.0, t1: 0.7, ate: 0.35 }                      // até 'river,' (0,713) os outros rios curtos baixam a 35 %
+    riosBaixam: { t0: 0.0, t1: 0.7, ate: 0.75 }                      // até 'river,' (0,713) os outros rios curtos baixam a 75 % (arte-18; eram 35 %)
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -427,6 +485,11 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
     rios: aguaNome(aguaCriar(RPAC_C, { ritmo: "BASE", zoomRef: 10.3, latRef: -11.85, longe: true, T0: T0_RIOS, fase: true }), "rios"),
     rimac: aguaNome(aguaCriar([RIM_C], { ritmo: "BASE", zoomRef: 10.3, latRef: -11.85, longe: true, T0: T0_RIOS }), "rimac")
   };
+  // arte-18: a trava da luz perto da divisória (a mesma da s06: o último quadro dela é o 1º desta)
+  var DIV_LINHAS = [];
+  (DIV.features || []).forEach(function (f) { var g = f.geometry; (g.type === "LineString" ? [g.coordinates] : g.type === "MultiLineString" ? g.coordinates : []).forEach(function (c) { DIV_LINHAS.push(c); }); });
+  aguaTravaPrep(AG.rios, DIV_LINHAS, 40); aguaTravaPrep(AG.rimac, DIV_LINHAS, 40);
+  window.__travaS08 = AG;
 
   // ═══ A BASE COM O RELEVO, E AS CAMADAS (as da s06 que chegam acesas ao último quadro dela; as outras não existem aqui) ═══
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
@@ -621,9 +684,12 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s08 (82,167 → 85,267 s do master; 
     var fp = cl(cameraAt(t).pitch / CENA.divGrossa.pitch, 0, 1);
     opac("div", "line-width", CENA.divGrossa.linha[0] + (CENA.divGrossa.linha[1] - CENA.divGrossa.linha[0]) * fp);
     opac("div-sob", "line-width", CENA.divGrossa.sob[0] + (CENA.divGrossa.sob[1] - CENA.divGrossa.sob[0]) * fp);
+    // arte-18: a trava da luz mede a zona pela largura do contorno da divisória neste quadro
+    var sobW = CENA.divGrossa.sob[0] + (CENA.divGrossa.sob[1] - CENA.divGrossa.sob[0]) * fp;
+    Object.keys(AG).forEach(function (k) { if (AG[k].trava) AG[k].trava.divSob = sobW; });
     // os outros rios curtos baixam a 35 % até 'river,'; o Rímac fica cheio (o que a voz separa)
     var R = CENA.riosBaixam, vr = 1 - (1 - R.ate) * eio(seg(t, R.t0, R.t1 - R.t0));
-    aguaVer(map, AG.rios, 1, vr); aguaVer(map, AG.rimac, 1, 1);   // arte-17 (r2): os rios de fundo baixam a 35 % pela cor, a correnteza viva
+    aguaVer(map, AG.rios, 1, vr); aguaVer(map, AG.rimac, 1, 1);   // arte-17 (r2): os rios de fundo baixam pela cor (arte-18: a 75 %), a correnteza viva
     aguaQuadro(map, AG.rios, INSEC + t, null); aguaQuadro(map, AG.rimac, INSEC + t, null);   // arte-17: o tempo do master
   }
 

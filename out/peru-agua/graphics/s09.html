@@ -50,6 +50,13 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
       e, nos esmaecimentos de entrada e saída, uma linha lisa em --agua (sem correnteza) assume só enquanto eles duram.
     · As partes de um mesmo rio (o Putumayo e o Javari vêm do recorte em 77 e 40 pedaços, o tracejado que já estava na geometria) são
       uma CADEIA: a luz corre pelo rio inteiro, de montante à foz, em vez de piscar em cada pedaço.
+  CONSERTO peru-agua-arte-18 (mapista, lote M-A, 23/10/2026; a qualidade-10: a linha da água picotada aos 3,6 s e na ponta do
+  Amazonas). A CAUSA: o rios-vertente-atlantico é o NE recortado pelo peru-ne, e o rio que é a fronteira (o Putumayo, o Javari, o
+  Amazonas no trapézio de Leticia) vinha em 77, 40 e 3 partes, com vãos de até 23 km entre elas (não era a emenda dos pedaços). O
+  CONSERTO: cada rio vira UMA linha (costurar): as partes em cadeia e cada vão fechado pela própria borda do peru-ne entre as duas
+  pontas, onde ela corre junto do vão (ali a fronteira é o rio), ou pela reta, onde o vão tem até 10 km (o rio cruza a fronteira e
+  volta); window.__costura conta. E a linha lisa da água fica por baixo dos pedaços também cheia (as pontas redondas granulavam a
+  borda). Com a s08: os rios curtos de contexto a 75 % (eram 35 %) e a mesma trava da luz perto da divisória; a emenda não muda.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -62,6 +69,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
 <script src="../_media/geo/rios-vertente-pacifico.js"></script>
 <script src="../_media/geo/rios-vertente-atlantico.js"></script>
 <script src="../_media/geo/loreto.js"></script>
+<script src="../_media/geo/peru-ne.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -252,6 +260,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
       var k1 = Math.min(pc.k1, lim);
       var S = obj.vel * (T - obj.o.T0) - ri.luz - ri.fase;
       var b = brilhoCorrenteza(ri.kc + (pc.k0 + k1) / 2, S, ri.per, ri.luz / ri.per);
+      if (pc.ft != null) { b *= pc.ft; if (b > 0.004 && obj.trava) obj.trava.minLuzPx = Math.min(obj.trava.minLuzPx, pc.dpx); }   // arte-18: a trava da luz perto da divisória
       fs.push({ type: "Feature", properties: { b: Math.round(b * 100) / 100 }, geometry: { type: "LineString", coordinates: aguaTrecho(ri, pc.k0, k1) } });
     });
     return { type: "FeatureCollection", features: fs };
@@ -314,7 +323,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
     var cheio = v >= 0.999;
     map.setPaintProperty(obj.id + "-sob", "line-opacity", Math.round(v * k * 1000) / 1000);   // o contorno do rio de fundo baixa com ele
     map.setPaintProperty(obj.id + "-linha", "line-opacity", cheio ? 1 : 0);
-    map.setPaintProperty(obj.id + "-plano", "line-opacity", cheio ? 0 : v);
+    map.setPaintProperty(obj.id + "-plano", "line-opacity", cheio ? 1 : v);   // arte-18: cheia, a linha lisa fica POR BAIXO dos pedaços: as pontas redondas deles não granulam mais a borda
     if (obj.k !== k) {
       map.setPaintProperty(obj.id + "-linha", "line-color", aguaCorPedacos(c, k));
       map.setPaintProperty(obj.id + "-plano", "line-color", k >= 0.999 ? c.agua : aguaMistura(c.rA, c.rS, k));
@@ -333,6 +342,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
     }
     var k = T.toFixed(4) + "|" + kg;
     if (obj.chave === k) return;
+    aguaTravaQuadro(map, obj);   // arte-18: o fator da trava, pela câmera de agora
     var s = map.getSource(obj.id); if (s) s.setData(aguaDados(obj, T, ate));
     obj.chave = k;
   }
@@ -347,6 +357,57 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
     if (!obj.cores) obj.cores = aguaCores(sobCor || obj.o.sobCor); return obj; }
   // lago e represa (PARADOS): --agua a 0,58 no preenchimento, o contorno --agua 6 px sobre 14 escuros de perto, 12 sobre 24 de longe
   var AGUA_PARADA = 0.58;
+  // ═══ arte-18 (M-A): A TRAVA DA LUZ PERTO DA DIVISÓRIA (Sala e Direção, direcao-24; qualidade-10) ═══
+  // O rio que NASCE na divisória (a linha das águas) não acende colado nela: a luz de cada pedaço é multiplicada por um fator que é
+  // 0 até a "zona" (2 × a largura do contorno escuro da divisória no quadro + a meia largura do contorno da água, 12 px) e sobe a 1
+  // numa rampa de TRAVA.rampa px. A distância é medida NA TELA, a cada quadro (map.project do meio do pedaço e do ponto da divisória
+  // mais perto dele, achado uma vez), e vale também com a câmera inclinada. Só os pedaços a menos de capKm da divisória entram na
+  // conta; os outros ficam com a luz inteira. A cor de base (--agua) não muda: só a luz se apaga perto da linha branca.
+  var TRAVA = { rampa: 90, aguaSobMeia: 12 };
+  function aguaTravaPrep(obj, divLinhas, capKm) {
+    var cel = 0.1, grade = {};
+    divLinhas.forEach(function (c) {
+      for (var i = 1; i < c.length; i++) {
+        var a = c[i - 1], b = c[i];
+        var x0 = Math.floor(Math.min(a[0], b[0]) / cel), x1 = Math.floor(Math.max(a[0], b[0]) / cel);
+        var y0 = Math.floor(Math.min(a[1], b[1]) / cel), y1 = Math.floor(Math.max(a[1], b[1]) / cel);
+        for (var x = x0; x <= x1; x++) for (var y = y0; y <= y1; y++) { var k = x + "," + y; (grade[k] = grade[k] || []).push([a, b]); }
+      }
+    });
+    var ry = Math.ceil(capKm / 110.57 / cel) + 1, n = 0;
+    obj.pecas.forEach(function (pc) {
+      pc.ft = null; pc.dp = null;
+      var m = aguaTrecho(pc.r, (pc.k0 + pc.k1) / 2, (pc.k0 + pc.k1) / 2)[0];
+      var co = Math.cos(m[1] * Math.PI / 180), rx = Math.ceil(capKm / (111.32 * Math.max(0.2, co)) / cel) + 1;
+      var cx = Math.floor(m[0] / cel), cy = Math.floor(m[1] / cel), best = Infinity, bp = null;
+      for (var x = cx - rx; x <= cx + rx; x++) for (var y = cy - ry; y <= cy + ry; y++) {
+        var L = grade[x + "," + y]; if (!L) continue;
+        for (var s = 0; s < L.length; s++) {
+          var a = L[s][0], b = L[s][1];
+          var ax = (a[0] - m[0]) * 111.32 * co, ay = (a[1] - m[1]) * 110.57, bx = (b[0] - m[0]) * 111.32 * co, by = (b[1] - m[1]) * 110.57;
+          var dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy, u = l2 > 0 ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / l2)) : 0;
+          var d = Math.hypot(ax + dx * u, ay + dy * u);
+          if (d < best) { best = d; bp = [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u]; }
+        }
+      }
+      if (best < capKm) { pc.m = m; pc.dp = bp; n++; }
+    });
+    obj.trava = { n: n, divSob: 12, minLuzPx: Infinity };
+    return obj;
+  }
+  // a cada quadro, antes dos pedaços: o fator de cada pedaço perto da divisória, pela câmera de agora
+  function aguaTravaQuadro(map, obj) {
+    if (!obj.trava) return;
+    var z0 = 2 * obj.trava.divSob + TRAVA.aguaSobMeia, z1 = z0 + TRAVA.rampa;
+    obj.trava.zona = z0; obj.trava.minLuzPx = Infinity;
+    obj.pecas.forEach(function (pc) {
+      if (!pc.dp) return;
+      var a = map.project(pc.m), b = map.project(pc.dp), d = Math.hypot(a.x - b.x, a.y - b.y);
+      var u = Math.max(0, Math.min(1, (d - z0) / (z1 - z0)));
+      pc.ft = u * u * (3 - 2 * u); pc.dpx = d;
+    });
+  }
+  // ═══ fim da trava (arte-18) ═══
   // ═══ fim da água no MapLibre (M-A) ═══
 
   // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
@@ -478,7 +539,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
 
   // ═══ A GEOMETRIA (toda de _media/geo/; nenhum traço desenhado à mão) ════════════════════════════════
   var DIV = geo("divisoria-continental-peru"), RIM = geo("rio-rimac"), RPAC = geo("rios-vertente-pacifico"),
-      RATL = geo("rios-vertente-atlantico"), LOR = geo("loreto");
+      RATL = geo("rios-vertente-atlantico"), LOR = geo("loreto"), PERU = geo("peru-ne");   // arte-18: + peru-ne (a costura)
   if (window.__erroCena) return;
   function km(a, b) { var la = (a[1] + b[1]) / 2 * Math.PI / 180; return Math.hypot((a[0] - b[0]) * 111.32 * Math.cos(la), (a[1] - b[1]) * 110.57); }
   function partes(g) { return g.type === "LineString" ? [g.coordinates] : g.type === "MultiLineString" ? g.coordinates : []; }
@@ -487,6 +548,56 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
   // o Amazonas de oeste a leste; cada afluente da nascente à foz (a ponta mais perto do Amazonas é a foz)
   var AMZ_P = partes(AMZ_F.geometry).map(function (c) { c = c.slice(); if (c[0][0] > c[c.length - 1][0]) c.reverse(); return c; });
   var AMZ_V = [].concat.apply([], AMZ_P);
+  // ═══ arte-18 (M-A): A COSTURA DAS PARTES DE CADA RIO (qualidade-10: a linha picotada aos 3,6 s e na ponta do Amazonas) ═══
+  // O rios-vertente-atlantico é o NE 1:10M recortado pelo peru-ne: o rio que É a fronteira (o Putumayo com a Colômbia, o Javari
+  // com o Brasil, o Amazonas no trapézio de Leticia) sai do polígono a cada volta e volta, e chegava em 77, 40 e 3 partes, com vãos
+  // de até 23 km (o "tracejado" dos relatos de antes, e o corte de ~8 px na ponta do Amazonas). Agora cada rio é UMA linha: as partes
+  // em cadeia (de montante, sempre a parte cuja ponta está mais perto), e cada vão fechado
+  //   · pela própria borda do peru-ne entre as duas pontas (ali a fronteira É o rio: geometria real, nada à mão), quando ela corre
+  //     junto do vão (o caminho pelo anel ≤ 1,5 × o vão + 2 km, as duas pontas a menos de 5 km dela);
+  //   · senão, pela reta entre as duas pontas, quando o vão tem até 10 km (≤ 16 px de tela no z 7, menos que o contorno de 24 px da
+  //     água): é onde o rio cruza a fronteira e volta;
+  //   · vão maior fica aberto (nenhum nesta geometria). window.__costura conta cada caso, para o relato.
+  var PERU_ANEL = (function () {
+    var g = PERU.features[0].geometry, ps = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+    var r = ps.reduce(function (a, p) { return p[0].length > a.length ? p[0] : a; }, []).slice();
+    if (r.length > 1 && r[0][0] === r[r.length - 1][0] && r[0][1] === r[r.length - 1][1]) r.pop();
+    return r;
+  })();
+  var ANEL_ACC = [0];
+  for (var ai = 1; ai < PERU_ANEL.length; ai++) ANEL_ACC.push(ANEL_ACC[ai - 1] + km(PERU_ANEL[ai - 1], PERU_ANEL[ai]));
+  var ANEL_PER = ANEL_ACC[ANEL_ACC.length - 1] + km(PERU_ANEL[PERU_ANEL.length - 1], PERU_ANEL[0]);
+  function anelPerto(p) { var bi = 0, bd = Infinity; for (var i = 0; i < PERU_ANEL.length; i++) { var d = km(p, PERU_ANEL[i]); if (d < bd) { bd = d; bi = i; } } return [bi, bd]; }
+  function anelCaminho(i, j) {
+    var N = PERU_ANEL.length, fwd = j >= i ? ANEL_ACC[j] - ANEL_ACC[i] : ANEL_PER - ANEL_ACC[i] + ANEL_ACC[j], pts = [], k;
+    if (fwd <= ANEL_PER - fwd) { for (k = 0; k <= (j - i + N) % N; k++) pts.push(PERU_ANEL[(i + k) % N]); return { pts: pts, km: fwd }; }
+    for (k = 0; k <= (i - j + N) % N; k++) pts.push(PERU_ANEL[(i - k + N) % N]);
+    return { pts: pts, km: ANEL_PER - fwd };
+  }
+  window.__costura = { borda: 0, bordaKm: 0, reta: 0, retaKm: 0, retaMax: 0, abertos: [], rios: {} };
+  // ps: as partes do rio; primeira: o índice da parte de montante, já no sentido da água. Devolve as linhas (uma, sem vão aberto)
+  function costurar(nome, ps, primeira) {
+    ps = ps.map(function (c) { return c.slice(); });
+    var cad = [ps.splice(primeira, 1)[0]];
+    while (ps.length) {
+      var ult = cad[cad.length - 1], e = ult[ult.length - 1], bi = 0, bd = Infinity, rev = false;
+      ps.forEach(function (c, i) { var d0 = km(e, c[0]), d1 = km(e, c[c.length - 1]); if (d0 < bd) { bi = i; bd = d0; rev = false; } if (d1 < bd) { bi = i; bd = d1; rev = true; } });
+      var c = ps.splice(bi, 1)[0]; cad.push(rev ? c.reverse() : c);
+    }
+    var linhas = [cad[0].slice()];
+    for (var k = 1; k < cad.length; k++) {
+      var cur = linhas[linhas.length - 1], a = cur[cur.length - 1], b = cad[k][0], vao = km(a, b);
+      var pa = anelPerto(a), pb = anelPerto(b), cam = anelCaminho(pa[0], pb[0]), L = cam.km + pa[1] + pb[1];
+      if (vao < 1e-6) { /* emendadas */ }
+      else if (pa[1] < 5 && pb[1] < 5 && L <= 1.5 * vao + 2) { cur.push.apply(cur, cam.pts); window.__costura.borda++; window.__costura.bordaKm += L; }
+      else if (vao <= 10) { window.__costura.reta++; window.__costura.retaKm += vao; window.__costura.retaMax = Math.max(window.__costura.retaMax, vao); }
+      else { window.__costura.abertos.push(nome + " " + vao.toFixed(1) + " km"); linhas.push([]); cur = linhas[linhas.length - 1]; }
+      cur.push.apply(cur, cad[k]);
+    }
+    window.__costura.rios[nome] = { partes: cad.length, linhas: linhas.length };
+    return linhas;
+  }
+  // ═══ fim da costura (arte-18) ═══
   function distAmz(p) { var b = Infinity; for (var i = 0; i < AMZ_V.length; i += 2) b = Math.min(b, km(AMZ_V[i], p)); return b; }
   var ORDEM = ["Ucayali", "Marañón", "Huallaga", "Santiago", "Napo", "Putumayo", "Javari", "Purús", "Juruá", "Madre de Dios"];
   var AFL = (RATL.features || []).filter(function (f) { return f.properties && f.properties.name !== "Amazonas"; }).map(function (f) {
@@ -521,18 +632,27 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
   // as partes de cada afluente, de montante à foz (a mais longe do Amazonas primeiro): uma CADEIA, para a luz correr pelo rio inteiro
   var CADEIAS = [];
   AFL.forEach(function (a) {
-    var ps = a.ps.filter(function (c) { return c.length > 1; }).slice().sort(function (x, y) { return distAmz(y[y.length - 1]) - distAmz(x[x.length - 1]); });
+    // arte-18: as partes costuradas numa linha por rio (a parte de montante é a que tem a ponta mais longe do Amazonas)
+    var ps = a.ps.filter(function (c) { return c.length > 1; }), i0 = 0, m0 = -1;
+    ps.forEach(function (c, i) { var d = distAmz(c[0]); if (d > m0) { m0 = d; i0 = i; } });
     var cad = [];
-    ps.forEach(function (c) { cad.push(AFL_C.length); AFL_C.push(c); AFL_K.push(a.k); });
+    costurar(a.nome, ps, i0).forEach(function (c) { if (c.length > 1) { cad.push(AFL_C.length); AFL_C.push(c); AFL_K.push(a.k); } });
     CADEIAS.push(cad);
   });
+  // arte-18: o Amazonas costurado, a partir da parte mais a oeste (cada parte já de oeste a leste)
+  var AMZ_C = costurar("Amazonas", AMZ_P, AMZ_P.reduce(function (b, c, i) { return c[0][0] < AMZ_P[b][0][0] ? i : b; }, 0));
   var AG = {
     rios: aguaNome(aguaCriar(RPAC_C, { ritmo: "BASE", zoomRef: 10.3, latRef: -11.85, longe: true, T0: T0_RIOS, fase: true }), "rios"),
     rimac: aguaNome(aguaCriar([RIM_C9], { ritmo: "BASE", zoomRef: 10.3, latRef: -11.85, longe: true, T0: T0_RIOS }), "rimac"),
     atl: aguaNome(aguaCriar(AFL_C, { ritmo: "BASE", zoomRef: 7.0, latRef: -5.0, longe: true, T0: 1.80, fase: true, cadeias: CADEIAS }), "atl"),
-    amz: aguaNome(aguaCriar(AMZ_P, { ritmo: "BASE", zoomRef: 7.0, latRef: -4.0, longe: true, T0: 2.55,
-      cadeias: [AMZ_P.map(function (c, i) { return i; }).sort(function (x, y) { return AMZ_P[x][0][0] - AMZ_P[y][0][0]; })] }), "amz")
+    amz: aguaNome(aguaCriar(AMZ_C, { ritmo: "BASE", zoomRef: 7.0, latRef: -4.0, longe: true, T0: 2.55,
+      cadeias: [AMZ_C.map(function (c, i) { return i; })] }), "amz")   // arte-18: o Amazonas costurado (de oeste a leste)
   };
+  // arte-18: a trava da luz perto da divisória (a mesma da s06 e da s08)
+  var DIV_LINHAS = [];
+  (DIV.features || []).forEach(function (f) { var g = f.geometry; (g.type === "LineString" ? [g.coordinates] : g.type === "MultiLineString" ? g.coordinates : []).forEach(function (c) { DIV_LINHAS.push(c); }); });
+  aguaTravaPrep(AG.rios, DIV_LINHAS, 40); aguaTravaPrep(AG.rimac, DIV_LINHAS, 40); aguaTravaPrep(AG.atl, DIV_LINHAS, 100); aguaTravaPrep(AG.amz, DIV_LINHAS, 100);
+  window.__travaS09 = AG;
   var fcVazia = { type: "FeatureCollection", features: [] };
   function fcLinhas(ls) { return { type: "FeatureCollection", features: ls.filter(Boolean).map(function (c) { return { type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: c } }; }) }; }
 
@@ -556,7 +676,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
       { id: "loreto-sob", type: "line", source: "loreto", layout: lc, paint: { "line-color": COR.sob, "line-width": 12, "line-opacity": 0 } },
       { id: "loreto-linha", type: "line", source: "loreto", layout: lc, paint: { "line-color": COR.contraparte, "line-width": 6, "line-opacity": 0 } },
     // arte-17: a água em --agua com a correnteza, 12/24 (o Rímac 18/30 e o Amazonas 16/28)
-    ].concat(aguaCamadasEstilo("rios", 12, 24, 0.35, "--fronteira-contorno-cor"), aguaCamadasEstilo("rimac", 18, 30, 1, "--fronteira-contorno-cor"),
+    ].concat(aguaCamadasEstilo("rios", 12, 24, 0.75, "--fronteira-contorno-cor"), aguaCamadasEstilo("rimac", 18, 30, 1, "--fronteira-contorno-cor"),
       aguaCamadasEstilo("atl", 12, 24, 1, "--fronteira-contorno-cor"), aguaCamadasEstilo("amz", 16, 28, 1, "--fronteira-contorno-cor"), [
       { id: "div-sob", type: "line", source: "div", layout: lc, paint: { "line-color": COR.sob, "line-width": 30 } },
       { id: "div", type: "line", source: "div", layout: lc, paint: { "line-color": COR.tinta, "line-width": 20 } }
@@ -795,10 +915,13 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s09 (85,267 → 101,3 s do master; 1
     var fp = cl(cameraAt(t).pitch / CENA.divGrossa.pitch, 0, 1);
     opac("div", "line-width", CENA.divGrossa.linha[0] + (CENA.divGrossa.linha[1] - CENA.divGrossa.linha[0]) * fp);
     opac("div-sob", "line-width", CENA.divGrossa.sob[0] + (CENA.divGrossa.sob[1] - CENA.divGrossa.sob[0]) * fp);
+    // arte-18: a trava da luz mede a zona pela largura do contorno da divisória neste quadro
+    var sobW = CENA.divGrossa.sob[0] + (CENA.divGrossa.sob[1] - CENA.divGrossa.sob[0]) * fp;
+    Object.keys(AG).forEach(function (k) { if (AG[k].trava) AG[k].trava.divSob = sobW; });
     opac("div", "line-opacity", baixa); opac("div-sob", "line-opacity", baixa);
     // o lado do Pacífico esmaece no começo da viagem (de como a s08 o deixa: os rios a 35 %, o Rímac cheio)
     var ps = 1 - eio(seg(t, CENA.pacificoSai[0], CENA.pacificoSai[1]));
-    aguaVer(map, AG.rios, ps, 0.35); aguaVer(map, AG.rimac, ps, 1);   // arte-17 (r2): como a s08 os deixa, e saem pela linha lisa
+    aguaVer(map, AG.rios, ps, 0.75); aguaVer(map, AG.rimac, ps, 1);   // arte-17 (r2): como a s08 os deixa (arte-18: a 75 %), e saem pela linha lisa
     if (ps > 0) { aguaQuadro(map, AG.rios, INSEC + t, null); aguaQuadro(map, AG.rimac, INSEC + t, null); }   // arte-17: o tempo do master
     // os afluentes do Atlântico, um a um, da nascente à foz; o Amazonas por último, de oeste a leste
     // arte-17: em pedaços, com a correnteza; cada afluente cresce no tempo dele (a mesma conta de antes)

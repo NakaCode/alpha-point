@@ -85,6 +85,22 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s06 (+s07) (53,067 → 82,167 s do m
     · RODADA 2 (M-A): os pedaços da linha passaram a ponta REDONDA (a reta abria fendas nas emendas e picotava os rios de várias
       partes) e só aparecem com opacidade 1; o rio de fundo escurece pela COR (misturada ao escuro do contorno, com a correnteza viva)
       e, nos esmaecimentos de entrada e saída, uma linha lisa em --agua (sem correnteza) assume só enquanto eles duram.
+  CONSERTO peru-agua-arte-18 (mapista, lote M-A, 23/10/2026; as escolhas do Lucas de 23/10, 12:2x, "Viagem de 1,5 a 3 s"; a regência
+  direcao-24 d9203ae9). Mudou só isto:
+    · O CORTE SECO DA s04 VIROU VIAGEM (b0): o 1º quadro é o último da s04 (graphics/s04.html, sha1 3eeb4c39, que não muda): o Peru
+      inteiro, centro −75,00 / −9,30, zoom 5,80, giro +1,0° (o giro dela vai de −1° a +1° em 19 s), sem inclinação; e o que ela mostra
+      aceso: o lado seco (vertente-pacifico, --destaque a 85 %), o amazônico (vertente-atlantico, --contraparte a 35 %), a divisa do país
+      (peru-ne, --fronteira-cor 5 px sobre 12), as quatro lagoas (lagoas-marcapomacocha-antacoto, --agua parada a 0,58, 12/24 de longe),
+      a divisória com o contorno --rotulo e o crédito do mapa a 52 px da borda. Daí a câmera viaja 2,0 s (van Wijk com a rampa do molde,
+      cameraAbre e cameraFecha 0,5) ao Peru central (A0), e de 0,15 a 1,6 s os lados, a divisa e as lagoas esmaecem, o contorno da
+      divisória passa do --rotulo (88 %) ao --fronteira-contorno-cor (60 %; a mesma cor, a camada de 1 a 60/88) e o crédito desce de
+      52 a 24 px (o lugar desta cena). Nada mais entra. Enquanto esmaece, a divisa se desenha numa cópia SEM DOBRA da
+      mesma geometria (semDobra: o pontilhado da linha translúcida de vértices densos), no zoom de cada quadro; o contorno das lagoas fica opaco e afina até zero (as margens sobrepostas acenderiam).
+    · A TRAVA DA LUZ (b1, b2, b6): a luz da correnteza dos rios que nascem na divisória (o rastro oeste da gota, o Ucayali e o Marañón,
+      os rios curtos e o Rímac) apaga antes de chegar a ela: o fator é 0 até 2 × o contorno da divisória no quadro + 12 px, medido na
+      tela, e sobe numa rampa de 90 px (aguaTrava). A cor de base da água não muda.
+    · A linha lisa da água fica por baixo dos pedaços também com a água cheia (as pontas redondas dos pedaços granulavam a borda).
+  A cadeia s06 → s08 → s09 continua um plano só: a s08 e a s09 levam a mesma trava e a mesma linha lisa.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -99,6 +115,10 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s06 (+s07) (53,067 → 82,167 s do m
 <script src="../_media/geo/departamento-lima.js"></script>
 <script src="../_media/geo/pontos-fontes.js"></script>
 <script src="../_media/geo/rios-vertente-pacifico.js"></script>
+<script src="../_media/geo/vertente-pacifico.js"></script>
+<script src="../_media/geo/vertente-atlantico.js"></script>
+<script src="../_media/geo/peru-ne.js"></script>
+<script src="../_media/geo/lagoas-marcapomacocha-antacoto.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -301,6 +321,7 @@ Wikimedia Commons · CC BY-SA 4.0</div>
       var k1 = Math.min(pc.k1, lim);
       var S = obj.vel * (T - obj.o.T0) - ri.luz - ri.fase;
       var b = brilhoCorrenteza(ri.kc + (pc.k0 + k1) / 2, S, ri.per, ri.luz / ri.per);
+      if (pc.ft != null) { b *= pc.ft; if (b > 0.004 && obj.trava) obj.trava.minLuzPx = Math.min(obj.trava.minLuzPx, pc.dpx); }   // arte-18: a trava da luz perto da divisória
       fs.push({ type: "Feature", properties: { b: Math.round(b * 100) / 100 }, geometry: { type: "LineString", coordinates: aguaTrecho(ri, pc.k0, k1) } });
     });
     return { type: "FeatureCollection", features: fs };
@@ -363,7 +384,7 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     var cheio = v >= 0.999;
     map.setPaintProperty(obj.id + "-sob", "line-opacity", Math.round(v * k * 1000) / 1000);   // o contorno do rio de fundo baixa com ele
     map.setPaintProperty(obj.id + "-linha", "line-opacity", cheio ? 1 : 0);
-    map.setPaintProperty(obj.id + "-plano", "line-opacity", cheio ? 0 : v);
+    map.setPaintProperty(obj.id + "-plano", "line-opacity", cheio ? 1 : v);   // arte-18: cheia, a linha lisa fica POR BAIXO dos pedaços: as pontas redondas deles não granulam mais a borda
     if (obj.k !== k) {
       map.setPaintProperty(obj.id + "-linha", "line-color", aguaCorPedacos(c, k));
       map.setPaintProperty(obj.id + "-plano", "line-color", k >= 0.999 ? c.agua : aguaMistura(c.rA, c.rS, k));
@@ -382,6 +403,7 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     }
     var k = T.toFixed(4) + "|" + kg;
     if (obj.chave === k) return;
+    aguaTravaQuadro(map, obj);   // arte-18: o fator da trava, pela câmera de agora
     var s = map.getSource(obj.id); if (s) s.setData(aguaDados(obj, T, ate));
     obj.chave = k;
   }
@@ -396,6 +418,57 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     if (!obj.cores) obj.cores = aguaCores(sobCor || obj.o.sobCor); return obj; }
   // lago e represa (PARADOS): --agua a 0,58 no preenchimento, o contorno --agua 6 px sobre 14 escuros de perto, 12 sobre 24 de longe
   var AGUA_PARADA = 0.58;
+  // ═══ arte-18 (M-A): A TRAVA DA LUZ PERTO DA DIVISÓRIA (Sala e Direção, direcao-24; qualidade-10) ═══
+  // O rio que NASCE na divisória (a linha das águas) não acende colado nela: a luz de cada pedaço é multiplicada por um fator que é
+  // 0 até a "zona" (2 × a largura do contorno escuro da divisória no quadro + a meia largura do contorno da água, 12 px) e sobe a 1
+  // numa rampa de TRAVA.rampa px. A distância é medida NA TELA, a cada quadro (map.project do meio do pedaço e do ponto da divisória
+  // mais perto dele, achado uma vez), e vale também com a câmera inclinada. Só os pedaços a menos de capKm da divisória entram na
+  // conta; os outros ficam com a luz inteira. A cor de base (--agua) não muda: só a luz se apaga perto da linha branca.
+  var TRAVA = { rampa: 90, aguaSobMeia: 12 };
+  function aguaTravaPrep(obj, divLinhas, capKm) {
+    var cel = 0.1, grade = {};
+    divLinhas.forEach(function (c) {
+      for (var i = 1; i < c.length; i++) {
+        var a = c[i - 1], b = c[i];
+        var x0 = Math.floor(Math.min(a[0], b[0]) / cel), x1 = Math.floor(Math.max(a[0], b[0]) / cel);
+        var y0 = Math.floor(Math.min(a[1], b[1]) / cel), y1 = Math.floor(Math.max(a[1], b[1]) / cel);
+        for (var x = x0; x <= x1; x++) for (var y = y0; y <= y1; y++) { var k = x + "," + y; (grade[k] = grade[k] || []).push([a, b]); }
+      }
+    });
+    var ry = Math.ceil(capKm / 110.57 / cel) + 1, n = 0;
+    obj.pecas.forEach(function (pc) {
+      pc.ft = null; pc.dp = null;
+      var m = aguaTrecho(pc.r, (pc.k0 + pc.k1) / 2, (pc.k0 + pc.k1) / 2)[0];
+      var co = Math.cos(m[1] * Math.PI / 180), rx = Math.ceil(capKm / (111.32 * Math.max(0.2, co)) / cel) + 1;
+      var cx = Math.floor(m[0] / cel), cy = Math.floor(m[1] / cel), best = Infinity, bp = null;
+      for (var x = cx - rx; x <= cx + rx; x++) for (var y = cy - ry; y <= cy + ry; y++) {
+        var L = grade[x + "," + y]; if (!L) continue;
+        for (var s = 0; s < L.length; s++) {
+          var a = L[s][0], b = L[s][1];
+          var ax = (a[0] - m[0]) * 111.32 * co, ay = (a[1] - m[1]) * 110.57, bx = (b[0] - m[0]) * 111.32 * co, by = (b[1] - m[1]) * 110.57;
+          var dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy, u = l2 > 0 ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / l2)) : 0;
+          var d = Math.hypot(ax + dx * u, ay + dy * u);
+          if (d < best) { best = d; bp = [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u]; }
+        }
+      }
+      if (best < capKm) { pc.m = m; pc.dp = bp; n++; }
+    });
+    obj.trava = { n: n, divSob: 12, minLuzPx: Infinity };
+    return obj;
+  }
+  // a cada quadro, antes dos pedaços: o fator de cada pedaço perto da divisória, pela câmera de agora
+  function aguaTravaQuadro(map, obj) {
+    if (!obj.trava) return;
+    var z0 = 2 * obj.trava.divSob + TRAVA.aguaSobMeia, z1 = z0 + TRAVA.rampa;
+    obj.trava.zona = z0; obj.trava.minLuzPx = Infinity;
+    obj.pecas.forEach(function (pc) {
+      if (!pc.dp) return;
+      var a = map.project(pc.m), b = map.project(pc.dp), d = Math.hypot(a.x - b.x, a.y - b.y);
+      var u = Math.max(0, Math.min(1, (d - z0) / (z1 - z0)));
+      pc.ft = u * u * (3 - 2 * u); pc.dpx = d;
+    });
+  }
+  // ═══ fim da trava (arte-18) ═══
   // ═══ fim da água no MapLibre (M-A) ═══
 
   // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
@@ -405,8 +478,9 @@ Wikimedia Commons · CC BY-SA 4.0</div>
   var DUR = 29.1;   // espelho.json › s06 › dur (o run s06+s07: 53,067 → 82,167 s), literal (roupa §8)
   var CENA = {
     perfil: "maptiler",
-    fontes: ["div", "titicaca", "limaReg", "rios", "rimac", "trO", "trL", "trA", "rios-g", "rimac-g", "trO-g", "trL-g", "trA-g"],   // arte-17: + os contornos da água
+    fontes: ["div", "titicaca", "limaReg", "seco", "umido", "peru", "lag", "rios", "rimac", "trO", "trL", "trA", "rios-g", "rimac-g", "trO-g", "trL-g", "trA-g"],   // arte-17: + os contornos da água
     pontos: {
+      W:  { lng: -75.00, lat: -9.30,  zoom: 5.80, bearing: 1.0,  pitch: 0 },   // arte-18: o fim da s04 (W1, o giro em +1°, plano)
       A0: { lng: -76.62, lat: -11.80, zoom: 9.00, bearing: -2.0, pitch: 0 },   // o Peru central de cima: Lima, o Rímac, a linha
       A1: { lng: -76.58, lat: -11.78, zoom: 9.14, bearing: -0.8, pitch: 0 },   // aproximação lenta até 'eastern'
       C0: { lng: -61.80, lat: -5.30,  zoom: 6.00, bearing: 0.4,  pitch: 0 },   // o continente: do Peru à foz do Amazonas
@@ -418,7 +492,8 @@ Wikimedia Commons · CC BY-SA 4.0</div>
       L2: { lng: -76.745, lat: -11.845, zoom: 10.32, bearing: 60,  pitch: 60 }
     },
     pernas: [
-      { t0: 0,     t1: 6.40,  de: "A0", para: "A1", tipo: "h" },
+      { t0: 0,     t1: 2.00,  de: "W",  para: "A0", tipo: "v" },   // arte-18: do fim da s04 ao Peru central, 2,0 s, a rampa do molde
+      { t0: 2.00,  t1: 6.40,  de: "A0", para: "A1", tipo: "h" },
       { t0: 6.40,  t1: 8.90,  de: "A1", para: "C0", tipo: "v" },   // 'eastern side … Amazon': 2,5 s, cúbica
       { t0: 8.90,  t1: 11.07, de: "C0", para: "C1", tipo: "h" },
       { t0: 11.07, t1: 13.07, de: "C1", para: "T0", tipo: "v" },   // 'A small part of the south': 2 s
@@ -436,6 +511,7 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     regua: { entra: 20.45, sobe: 1.45 },
     rios: { entra: 25.0 },
     exag: 2.4,
+    s04: { sai: [0.15, 1.45], creditoDe: 52 },   // arte-18: o que a s04 deixa aceso esmaece de 0,15 a 1,6 s; o crédito vem de 52 px
     divGrossa: { pitch: 58, linha: [6, 20], sob: [12, 30] }   // peru-agua-arte-8 (revisão de espectador r1, achado 1)
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
@@ -556,6 +632,15 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     rimac: aguaNome(aguaCriar([RIM_C], { ritmo: "BASE", zoomRef: 10.3, latRef: -11.85, longe: true, T0: T0_RIOS }), "rimac")
   };
   window.__aguaS06 = AG;
+  // arte-18: a trava da luz perto da divisória, nos rios que nascem nela
+  var DIV_LINHAS = [];
+  (DIV.features || []).forEach(function (f) { var g = f.geometry; (g.type === "LineString" ? [g.coordinates] : g.type === "MultiLineString" ? g.coordinates : []).forEach(function (c) { DIV_LINHAS.push(c); }); });
+  aguaTravaPrep(AG.trO, DIV_LINHAS, 40); aguaTravaPrep(AG.trL, DIV_LINHAS, 200); aguaTravaPrep(AG.trA, DIV_LINHAS, 200);
+  aguaTravaPrep(AG.rios, DIV_LINHAS, 40); aguaTravaPrep(AG.rimac, DIV_LINHAS, 40);
+  window.__travaS06 = AG;
+  // arte-18: o que o último quadro da s04 mostra e este enquadramento não: aceso no 1º quadro, esmaece na viagem
+  var SECO = geo("vertente-pacifico"), UMIDO = geo("vertente-atlantico"), PERU = geo("peru-ne"), LAG = geo("lagoas-marcapomacocha-antacoto");
+  if (window.__erroCena) return;
 
   // comprimento acumulado (km) e o trecho inicial de uma linha por fração
   function acum(c) { var L = [0]; for (var i = 1; i < c.length; i++) L.push(L[i - 1] + km(c[i - 1], c[i])); return L; }
@@ -590,10 +675,82 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     var d = gotaPath(esc); E(sobId).setAttribute("d", d); E(linId).setAttribute("d", d);
   }
 
+  // ═══ arte-18 (M-A): A LINHA SEM DOBRA, SÓ NOS ESMAECIMENTOS (qualidade-10: o pontilhado da água que esmaece) ═══
+  // Uma linha do MapLibre com opacidade < 1 mostra cada triângulo que se sobrepõe a outro: nas curvas de vértices densos (o OSM
+  // traz vértices a 0,3 px um do outro no zoom da cena), o lado de dentro da linha DOBRA sobre si mesmo, e a sobreposição sai como
+  // tracinhos escuros e claros em cada curva. Com opacidade 1 isso não se vê. Por isso, SÓ enquanto a linha esmaece, ela é
+  // desenhada com uma cópia sem dobra da mesma geometria: Douglas-Peucker a SD.eps px de tela no zoom do quadro (invisível) e,
+  // depois, sai todo vértice em que o lado de dentro da linha (meia largura × tan(meio giro)) passaria do segmento vizinho.
+  // window.__semDobra guarda o maior desvio (px de tela) de um vértice original até a cópia, para o relato.
+  var SD = { eps: 0.6 };
+  function sdPx(c, z) {
+    var W = 512 * Math.pow(2, z);
+    return c.map(function (p) {
+      var s = Math.sin(Math.max(-85, Math.min(85, p[1])) * Math.PI / 180);
+      return [(p[0] + 180) / 360 * W, (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * W];
+    });
+  }
+  function sdDistSeg(p, a, b) {
+    var dx = b[0] - a[0], dy = b[1] - a[1], l2 = dx * dx + dy * dy, u = l2 > 0 ? Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / l2)) : 0;
+    return Math.hypot(p[0] - a[0] - dx * u, p[1] - a[1] - dy * u);
+  }
+  function sdDP(px, eps) {
+    var keep = new Uint8Array(px.length); keep[0] = 1; keep[px.length - 1] = 1;
+    var pilha = [[0, px.length - 1]];
+    while (pilha.length) {
+      var s = pilha.pop(), a = s[0], b = s[1], mi = -1, md = eps;
+      for (var i = a + 1; i < b; i++) { var d = sdDistSeg(px[i], px[a], px[b]); if (d > md) { md = d; mi = i; } }
+      if (mi >= 0) { keep[mi] = 1; pilha.push([a, mi], [mi, b]); }
+    }
+    var out = []; for (var j = 0; j < px.length; j++) if (keep[j]) out.push(j);
+    return out;
+  }
+  // c: a linha (lng/lat); z: o zoom do quadro; w: a largura mais grossa desenhada sobre ela (px de tela)
+  function semDobra(c, z, w) {
+    if (!c || c.length < 3) return c;
+    var px = sdPx(c, z), idx = sdDP(px, SD.eps), mudou = true, voltas = 0;
+    while (mudou && voltas++ < 40 && idx.length > 2) {
+      mudou = false;
+      for (var k = 1; k < idx.length - 1; k++) {
+        var a = px[idx[k - 1]], p = px[idx[k]], b = px[idx[k + 1]];
+        var v1x = p[0] - a[0], v1y = p[1] - a[1], v2x = b[0] - p[0], v2y = b[1] - p[1];
+        var l1 = Math.hypot(v1x, v1y), l2 = Math.hypot(v2x, v2y);
+        if (l1 < 1e-6 || l2 < 1e-6) { idx.splice(k, 1); mudou = true; k--; continue; }
+        var cs = Math.max(-1, Math.min(1, (v1x * v2x + v1y * v2y) / (l1 * l2))), giro = Math.acos(cs);
+        var dentro = giro > 3.0 ? Infinity : (w / 2) * Math.tan(giro / 2);
+        if (dentro > Math.min(l1, l2)) { idx.splice(k, 1); mudou = true; k--; }
+      }
+    }
+    var out = idx.map(function (i) { return c[i]; }), md = 0;
+    for (var i = 0, k2 = 0; i < px.length; i++) {
+      while (k2 < idx.length - 2 && idx[k2 + 1] < i) k2++;
+      md = Math.max(md, sdDistSeg(px[i], px[idx[k2]], px[idx[Math.min(k2 + 1, idx.length - 1)]]));
+    }
+    window.__semDobra = Math.max(window.__semDobra || 0, md);
+    return out;
+  }
+  // a mesma cópia para uma geometria inteira (LineString, MultiLineString, Polygon, MultiPolygon, Feature, FeatureCollection)
+  function semDobraGeo(g, z, w) {
+    if (!g) return g;
+    if (g.type === "FeatureCollection") return { type: g.type, features: g.features.map(function (f) { return semDobraGeo(f, z, w); }) };
+    if (g.type === "Feature") return { type: "Feature", properties: g.properties || {}, geometry: semDobraGeo(g.geometry, z, w) };
+    if (g.type === "LineString") return { type: g.type, coordinates: semDobra(g.coordinates, z, w) };
+    if (g.type === "MultiLineString" || g.type === "Polygon") return { type: g.type, coordinates: g.coordinates.map(function (c) {
+      var r = semDobra(c, z, w); if (g.type === "Polygon" && r.length && (r[0] !== r[r.length - 1])) r = r.concat([r[0]]); return r.length >= (g.type === "Polygon" ? 4 : 2) ? r : c; }) };
+    if (g.type === "MultiPolygon") return { type: g.type, coordinates: g.coordinates.map(function (p) { return semDobraGeo({ type: "Polygon", coordinates: p }, z, w).coordinates; }) };
+    return g;
+  }
+  // ═══ fim da linha sem dobra (arte-18) ═══
   // ═══ A BASE COM O RELEVO, E AS CAMADAS DA CENA (todas deitam no relevo) ══════════════════════════════
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   var COR = { tinta: tok("--tinta", "#F4F1EA"), destaque: tok("--destaque", "#F5A524"), contraparte: tok("--contraparte", "#2EC4B6"),
-    neutro: tok("--neutro", "#737D8E"), sob: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)"), rotulo: tok("--rotulo", "rgba(11, 15, 20, 0.88)") };
+    neutro: tok("--neutro", "#737D8E"), sob: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)"), rotulo: tok("--rotulo", "rgba(11, 15, 20, 0.88)"),
+    fronteira: tok("--fronteira-cor", "rgba(255, 255, 255, 0.70)"), agua: tok("--agua", "#AFD8F6") };   // arte-18
+  // arte-18: o contorno da divisória passa do --rotulo (s04) ao --fronteira-contorno-cor (esta cena): a mesma cor, outro alfa
+  function rgbaDe(css) { var m = /rgba?\(([^)]*)\)/.exec(css || ""); var v = m ? m[1].split(",").map(Number) : [0, 0, 0, 1]; if (v.length < 4) v.push(1); return v; }
+  var SOBa = rgbaDe(COR.sob), ROTa = rgbaDe(COR.rotulo);
+  if (SOBa[0] !== ROTa[0] || SOBa[1] !== ROTa[1] || SOBa[2] !== ROTa[2]) return falhar("--rotulo e --fronteira-contorno-cor não são a mesma cor: a passagem da s04 não vale.");
+  var DIV_SOB_FRAC = SOBa[3] / ROTa[3];
   function estilo() {
     var fontes = {
       base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
@@ -601,6 +758,7 @@ Wikimedia Commons · CC BY-SA 4.0</div>
       div: { type: "geojson", data: DIV },
       titicaca: { type: "geojson", data: TIT },
       limaReg: { type: "geojson", data: LREG },
+      seco: { type: "geojson", data: SECO }, umido: { type: "geojson", data: UMIDO }, peru: { type: "geojson", data: PERU }, lag: { type: "geojson", data: LAG },   // arte-18
     };
     aguaFontesEstilo(fontes, ["rios", "rimac", "trO", "trL", "trA"]);   // arte-17: os pedaços e os contornos da água
     var lc = { "line-join": "round", "line-cap": "round" };
@@ -609,11 +767,19 @@ Wikimedia Commons · CC BY-SA 4.0</div>
         paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // identidade §6, o tratamento C
       { id: "titicaca", type: "fill", source: "titicaca", paint: { "fill-color": COR.neutro, "fill-opacity": 0, "fill-antialias": true } },
       { id: "limaReg", type: "fill", source: "limaReg", paint: { "fill-color": COR.neutro, "fill-opacity": 0, "fill-antialias": true } },
+      // arte-18: o fim da s04 (as mesmas cores, larguras e frações dela), aceso no 1º quadro e esmaecendo na viagem
+      { id: "seco", type: "fill", source: "seco", paint: { "fill-color": COR.destaque, "fill-opacity": 0.85, "fill-antialias": true } },
+      { id: "umido", type: "fill", source: "umido", paint: { "fill-color": COR.contraparte, "fill-opacity": 0.35, "fill-antialias": true } },
+      { id: "peru-sob", type: "line", source: "peru", layout: lc, paint: { "line-color": COR.sob, "line-width": 12, "line-opacity": 1 } },
+      { id: "peru", type: "line", source: "peru", layout: lc, paint: { "line-color": COR.fronteira, "line-width": 5, "line-opacity": 1 } },
+      { id: "lag-fill", type: "fill", source: "lag", paint: { "fill-color": COR.agua, "fill-opacity": AGUA_PARADA, "fill-antialias": true } },
+      { id: "lag-sob", type: "line", source: "lag", layout: lc, paint: { "line-color": COR.rotulo, "line-width": aguaLargura(14, AGUA_PISO.sob), "line-opacity": 1 } },
+      { id: "lag-linha", type: "line", source: "lag", layout: lc, paint: { "line-color": COR.agua, "line-width": aguaLargura(6, AGUA_PISO.w), "line-opacity": 1 } },
     // arte-17: a água em --agua com a correnteza; 12/24 de longe (o Amazonas 16/28 e o Rímac 18/30, os mais grossos de antes)
     ].concat(aguaCamadasEstilo("rios", 12, 24, 0, "--fronteira-contorno-cor"), aguaCamadasEstilo("rimac", 18, 30, 0, "--fronteira-contorno-cor"),
       aguaCamadasEstilo("trO", 12, 24, 1, "--fronteira-contorno-cor"), aguaCamadasEstilo("trL", 12, 24, 1, "--fronteira-contorno-cor"),
       aguaCamadasEstilo("trA", 16, 28, 1, "--fronteira-contorno-cor"), [
-      { id: "div-sob", type: "line", source: "div", layout: lc, paint: { "line-color": COR.sob, "line-width": 12 } },
+      { id: "div-sob", type: "line", source: "div", layout: lc, paint: { "line-color": COR.rotulo, "line-width": 12, "line-opacity": 1 } },   // arte-18: o --rotulo da s04, que baixa a 60/88 na viagem
       { id: "div", type: "line", source: "div", layout: lc, paint: { "line-color": COR.tinta, "line-width": 6 } }
     ]);
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
@@ -901,6 +1067,17 @@ Wikimedia Commons · CC BY-SA 4.0</div>
   };
   var CENA_COTA = { dx: 0, dy: -170 };   // logo acima da ponta da régua, sobre o lado amazônico: os rios do lado seco não passam ali
 
+  // arte-18: enquanto esmaecem, a divisa e as lagoas se desenham sem dobra (no zoom do quadro); cheias, a geometria original
+  var SD_CHAVE = {};
+  function s04SemDobra(vs) {
+    [["peru", PERU, 12]].forEach(function (x) {
+      if (vs <= 0) return;
+      var z = map.getZoom(), k = vs < 1 ? "sd" + z.toFixed(2) : "orig";
+      if (SD_CHAVE[x[0]] === k) return;
+      var s = map.getSource(x[0]); if (!s) return;
+      s.setData(k === "orig" ? x[1] : semDobraGeo(x[1], z, x[2])); SD_CHAVE[x[0]] = k;
+    });
+  }
   function aplicarCena(t) {
     var ex = exageroAt(t);
     if (map.terrain) map.terrain.exaggeration = ex;
@@ -913,6 +1090,16 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     var fp = cl(cameraAt(t).pitch / CENA.divGrossa.pitch, 0, 1);
     opac("div", "line-width", CENA.divGrossa.linha[0] + (CENA.divGrossa.linha[1] - CENA.divGrossa.linha[0]) * fp);
     opac("div-sob", "line-width", CENA.divGrossa.sob[0] + (CENA.divGrossa.sob[1] - CENA.divGrossa.sob[0]) * fp);
+    // arte-18: a trava da luz mede a zona pela largura do contorno da divisória neste quadro
+    var sobW = CENA.divGrossa.sob[0] + (CENA.divGrossa.sob[1] - CENA.divGrossa.sob[0]) * fp;
+    Object.keys(AG).forEach(function (k) { if (AG[k].trava) AG[k].trava.divSob = sobW; });
+    // arte-18: a viagem desde o fim da s04: os lados, a divisa do país e as lagoas esmaecem; o contorno da divisória vai a 60/88
+    var vs = 1 - eio(seg(t, CENA.s04.sai[0], CENA.s04.sai[1]));
+    opac("seco", "fill-opacity", 0.85 * vs); opac("umido", "fill-opacity", 0.35 * vs);
+    opac("peru-sob", "line-opacity", vs); opac("peru", "line-opacity", vs);
+    opac("lag-fill", "fill-opacity", AGUA_PARADA * vs); opac("lag-sob", "line-opacity", vs > 0 ? 1 : 0); opac("lag-linha", "line-opacity", vs > 0 ? 1 : 0); opac("lag-sob", "line-width", AGUA_PISO.sob * vs); opac("lag-linha", "line-width", AGUA_PISO.w * vs);   // o contorno das lagoas, opaco, afina até zero (translúcido, as margens sobrepostas acenderiam)
+    opac("div-sob", "line-opacity", 1 - (1 - DIV_SOB_FRAC) * (1 - vs));
+    s04SemDobra(vs);
     var vr = eo(seg(t, CENA.rios.entra, 0.5));
     aguaVer(map, AG.rios, vr, 1); aguaVer(map, AG.rimac, vr, 1);   // arte-17 (r2)
     if (vr > 0) { aguaQuadro(map, AG.rios, INSEC + t, null); aguaQuadro(map, AG.rimac, INSEC + t, null); }   // arte-17: o tempo do master
@@ -922,7 +1109,8 @@ Wikimedia Commons · CC BY-SA 4.0</div>
   }
 
   function aplicarCreditos(t) {
-    var c = E("credito"); if (c) { c.style.opacity = "1"; c.style.visibility = "visible"; }
+    var c = E("credito"); if (c) { c.style.opacity = "1"; c.style.visibility = "visible";
+      c.style.bottom = (24 + (CENA.s04.creditoDe - 24) * (1 - eio(seg(t, CENA.s04.sai[0], CENA.s04.sai[1])))).toFixed(2) + "px"; }   // arte-18: de 52 (s04) a 24
     [["credFoto", 12.1, 14.8], ["credRegua", 22.3, null]].forEach(function (x) {
       var el = E(x[0]); if (!el) return;
       var v = eo(seg(t, x[1], 0.3)) * (x[2] != null ? 1 - eio(seg(t, x[2], 0.3)) : 1);

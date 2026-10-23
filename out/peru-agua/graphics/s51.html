@@ -80,6 +80,11 @@
     · RODADA 2 (M-A): os pedaços da linha passaram a ponta REDONDA (a reta abria fendas nas emendas e picotava os rios de várias
       partes) e só aparecem com opacidade 1; o rio de fundo escurece pela COR (misturada ao escuro do contorno, com a correnteza viva)
       e, nos esmaecimentos de entrada e saída, uma linha lisa em --agua (sem correnteza) assume só enquanto eles duram.
+  CONSERTO peru-agua-arte-18 (lote M-B, 23/10/2026; regência d9203ae9 › s51 b4, alinhada pela Direção na direcao-24): em 'tunnel'
+  (32,633) o Chicama baixa a 75 % (era 60 %), pela mesma cor misturada ao escuro do contorno, com a correnteza viva; e a miniatura de
+  Caral (a foto frontal da Pirámide Mayor, a mesma do b1 da s22) leva data-qc-reuso, a ponta desta cena do reuso que o conferente
+  aprovou (conferencia-midia.json, s51, reuso_de s22). A luz no túnel que cruza a divisória fica. Nada mais muda. Onde o texto
+  acima diz 60 %, vale 75 %. Sem gerador em dia (arte-17): o conserto foi direto no HTML (out/peru-agua/_tmp/arte-18/M-B/ed_s51.py).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -151,7 +156,7 @@
   <div id="rotulos">
     <div class="rotulo liso" id="cota18" data-qc-papel="rotulo">1.8% OF THE WATER</div>
     <div class="sombra" id="sombraCaral"></div>
-    <div class="mini" id="miniCaral"><div class="moldura"></div><div class="janela"><img id="imgCaral" src="../_media/foto/s22/s22-caral-piramide-mayor-frontal-2022-commons.jpg" alt=""></div></div>
+    <div class="mini" id="miniCaral"><div class="moldura"></div><div class="janela"><img id="imgCaral" src="../_media/foto/s22/s22-caral-piramide-mayor-frontal-2022-commons.jpg" alt="" data-qc-reuso="a foto frontal da Pirámide Mayor (sha256 040d35aa…), primeiro no b1 da s22 (UNESCO calls it…) e aqui na miniatura de Caral do b1 (about 5,000 years ago), que volta à cidade antiga; o conferente aprovou as duas janelas (conferencia-midia.json: s22, e s51 com reuso_de s22)"></div></div>
     <div class="rotulo liso" id="rotCaral" data-qc-papel="rotulo">Caral</div>
     <div class="rotulo legenda" id="aviso22" data-qc-papel="aviso_ano">Photo from 2022</div>
     <div class="rotulo liso" id="cota3000" data-qc-papel="rotulo">ABOUT 3000 B.C.</div>
@@ -532,13 +537,13 @@
       A.opac("umido-fill", "fill-opacity", lados * 0.35);
       A.lin("peru", lados);
       A.lin("div", 1);
-      // o Chicama: cresce em 'canal' (30,733) em 1,2 s; baixa a 60 % em 'tunnel'
+      // o Chicama: cresce em 'canal' (30,733) em 1,2 s; baixa a 75 % em 'tunnel' (peru-agua-arte-18, era 60 %; regência d9203ae9)
       var fc = A.eio(A.seg(t, 30.733, 1.2));
       aguaQuadro(A.REFS.MAP, A.REFS.AGUA_CHIC, t, function (ri) { return fc * ri.L; });   // arte-17: em pedaços, com a correnteza
       aguaQuadro(A.REFS.MAP, A.REFS.AGUA_TUN, t, null);
-      var vc = (fc > 0 ? 1 : 0) * (1 - 0.4 * A.eo(A.seg(t, 32.633, 0.5)));
+      var vc = (fc > 0 ? 1 : 0) * (1 - 0.25 * A.eo(A.seg(t, 32.633, 0.5)));
       // arte-17 (r2): o Chicama "baixa a 60 %" pela cor (escurece, com a correnteza viva); o túnel entra pela linha lisa
-      aguaVer(A.REFS.MAP, A.REFS.AGUA_CHIC, fc > 0 ? 1 : 0, 1 - 0.4 * A.eo(A.seg(t, 32.633, 0.5)));
+      aguaVer(A.REFS.MAP, A.REFS.AGUA_CHIC, fc > 0 ? 1 : 0, 1 - 0.25 * A.eo(A.seg(t, 32.633, 0.5)));
       aguaVer(A.REFS.MAP, A.REFS.AGUA_TUN, A.eo(A.seg(t, 32.633, 0.5)), 1);
       // os pontos
       ponto(A, "pCaral", A.REFS.CARAL, A.janela(t, 6.4, 11.5));   // o ponto chega com a câmera, antes do nome

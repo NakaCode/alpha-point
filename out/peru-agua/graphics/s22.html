@@ -45,6 +45,18 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s22 (225,5 → 237,267 s do master; 
   da referência (out/peru-agua/_tmp/arte-12/EO1/src/rimac-comum.js, byte a byte), ritmo BASE, zoomRef 13,4 / latRef −10,9, aplicado
   ao MapLibre pelo adaptador M-B (o mesmo brilhoCorrenteza/corDaAgua num line-gradient; uma camada supe-agua0 sobre o supe-sob).
   A vista é de perto (z 13,0 → 13,9): o piso de longe (12 sobre 24) e o teto da luz de 1/3 não entram. Nada mais muda.
+  CONSERTO peru-agua-arte-18 (lote M-B, 23/10/2026; o Lucas, 23/10, 12:2x: "Viagem de 1,5 a 3 s (Recomendado)"; regência d9203ae9
+  › s22 b0; textos-tela 672560c4, o conserto 19): SEM CORTE da s21. O 1º quadro é o último da s21 (S0: o quadro 379 dela, t 12,6333:
+  −77,340430 / −11,440215, z 9,14355, rumo 0,796 com o giro dela; a regência escreve rumo 0, mas a cameraAt da s21 dá 0,796 no último
+  quadro, e vale o quadro), com o Supe JÁ ACESO: a mesma linha (12 px de --agua), o mesmo contorno (--rotulo a 24 px, a cor dele na
+  s21) e a mesma correnteza (a escala, a fase e o teto de longe da s21). A câmera viaja 2,5 s, com a câmera do molde (van Wijk,
+  cameraAbre e cameraFecha 0,5), subindo o vale até A0 (Caral, z 13,0, rumo −4), e pousa em 2,5; dali a aproximação lenta A0 → A1
+  segue até o corte (2,5 → 7,533, era 0 → 7,533). Na viagem, a correnteza da s21 passa à desta cena por um peso pelo zoom (de z 10,5
+  a 12,5, smoothstep; as duas somadas no mesmo line-gradient, sempre a luz da própria linha, opaca), e o contorno passa dos 0,88 do
+  --rotulo aos 0,60 de antes pela opacidade (a largura, de 24 aos 22 de perto, pela rampa de sempre). A pílula 'Caral' e o ponto
+  continuam em 0,633, presos ao sítio durante a viagem; a cota '3000–1800 B.C.' e o crédito das fontes passam a 2,7 ('terrace'),
+  depois do pouso. A foto frontal leva data-qc-reuso (a outra ponta é a miniatura da s51; o conferente aprovou as duas). O b1 não
+  muda. Onde o texto acima diz que o b0 abre em A0, que o Supe acende em 'Caral,' e que a cota entra em 0,633, vale isto.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -107,7 +119,7 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s22 (225,5 → 237,267 s do master; 
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
     <g id="ptCaral" opacity="0"><circle class="pt-sob" r="30"/><circle class="pt" r="20"/></g>
   </svg>
-  <div id="foto"><img id="imgFoto" src="../_media/foto/s22/s22-caral-piramide-mayor-frontal-2022-commons.jpg" alt=""></div>
+  <div id="foto"><img id="imgFoto" src="../_media/foto/s22/s22-caral-piramide-mayor-frontal-2022-commons.jpg" alt="" data-qc-reuso="a foto frontal da Pirámide Mayor (sha256 040d35aa…), aqui no b1 da s22 (UNESCO calls it…) e de novo na miniatura de Caral da s51 b1 (about 5,000 years ago), que volta à cidade antiga; o conferente aprovou as duas janelas (conferencia-midia.json: s22, e s51 com reuso_de s22)"></div>
   <div id="rotulos">
     <div class="rotulo" id="rotCaral" data-qc-papel="rotulo">Caral</div>
     <div class="rotulo" id="rotData" data-qc-papel="rotulo">3000–1800 B.C.</div>
@@ -137,14 +149,19 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     perfil: "maptiler",
     fontes: ["supe"],
     pontos: {
+      // peru-agua-arte-18: S0 = o ÚLTIMO quadro da s21 (o quadro 379, t 12,6333 da cameraAt dela: a perna D → D2 a u 0,9785 e o
+      // giro −0,8 → 0,8 em 12,6333/12,667); o 1º quadro desta cena é ele
+      S0: { lng: -77.340430, lat: -11.440215, zoom: 9.14355, bearing: 0.79575, pitch: 0 },
       A0: { lng: -77.54833, lat: -10.9121, zoom: 13.00, bearing: -4, pitch: 0 },   // Caral à direita do centro, o vale do Supe atravessando
       A1: { lng: -77.53239, lat: -10.89924, zoom: 13.90, bearing: 3,  pitch: 0 }    // a câmera chega ao sítio no terraço
     },
     pernas: [
-      { t0: 0,     t1: 7.533,  de: "A0", para: "A1", tipo: "h" },
+      { t0: 0,     t1: 2.5,    de: "S0", para: "A0", tipo: "v" },   // peru-agua-arte-18: a viagem sobe o vale do Supe (a rampa do molde, abre e fecha 0,5)
+      { t0: 2.5,   t1: 7.533,  de: "A0", para: "A1", tipo: "h" },   // a aproximação lenta, depois do pouso (era 0 → 7,533)
       { t0: 7.533, t1: 11.767, de: "A1", para: "A1", tipo: "h" }   // sob a foto: parada (o mapa não aparece)
     ],
-    entra: 0.633,                         // 'Caral,': o ponto, a pílula, a cota, o rio e as fontes
+    entra: 0.633,                         // 'Caral,': o ponto e a pílula, presos ao sítio durante a viagem (arte-18: o rio já aceso no quadro 0)
+    cota: 2.7,                            // peru-agua-arte-18 (textos-tela 672560c4): a cota e o crédito das fontes em 'terrace', depois do pouso
     legenda: { entra: 5.2 },              // 'about'
     foto: { t0: 7.533, kb: [1.00, 1.08] } // o corte à foto; Ken Burns até o fim (arte-14: 1,12 → 1,08, pico 1,028×)
   };
@@ -312,6 +329,9 @@ Wikimedia Commons · CC BY-SA 4.0</div>
   // ═══ fim do bloco da correnteza ═══
   // peru-agua-arte-17 (M-B, fase 2): a escala de referência DESTA cena (o bloco acima vem sem mudança da referência)
   CORRENTEZA.zoomRef = 13.4; CORRENTEZA.latRef = -10.9;   // o zoom médio do plano (13,0 → 13,9) e a latitude de Caral
+  // peru-agua-arte-18: a correnteza da s21 (graphics/s21.html: zoomRef 9,0, latRef −10,8, BASE, T0_CORRENTEZA 11,0), que esta cena
+  // continua no quadro 0 (o t 0 daqui é o t 12,6333 de lá, o último quadro dela)
+  var S21 = { zoomRef: 9.0, latRef: -10.8, t0Correnteza: 11.0, tFim: 379 / 30 };
   // ═══ O ADAPTADOR M-B (peru-agua-arte-17, fase 2): o bloco "A CORRENTEZA" acima, sem mudar um número, numa linha do MapLibre ═══
   // A referência (s37/s38) desenha o rio num canvas, em pedaços de até passoPx, cada um com corDaAgua(brilhoCorrenteza(km, …)).
   // Aqui a água é camada do mapa (fica sob os rótulos, acompanha o relevo e a câmera sem reprojetar), e a mesma conta vira um
@@ -408,6 +428,43 @@ Wikimedia Commons · CC BY-SA 4.0</div>
         if (r.chave[sid] !== ch) { map.setPaintProperty(sid, "line-gradient", g); r.chave[sid] = ch; }
       });
     }
+    // peru-agua-arte-18: a mesma conta com DUAS correntezas somadas (cada uma com peso w), para a viagem: a da s21 (a escala dela,
+    // a fase dela, o teto de longe) no quadro 0, e a desta cena depois do pouso. Com um peso só em 1, sai o grad() de antes.
+    function gradMisto(totKm, conj, z) {
+      var c = C(), base = corDaAgua(c, 0), xs = [];
+      conj.forEach(function (q) {
+        q.l = 0;
+        if (!(q.w > 0) || !(totKm > 0) || !(q.P > 0)) return;
+        q.l = q.teto ? luzComTeto(totKm, q.P, q.luz, z) : q.luz;
+        if (!(q.l > 0)) return;
+        for (var k = Math.floor(-q.S / q.P) - 1; k < Math.floor(-q.S / q.P) + Math.ceil(totKm / q.P) + 2; k++) {
+          var a = q.S + k * q.P, b = a + q.l * q.P;
+          if (b <= 0 || a >= totKm) continue;
+          for (var i = 0; i <= PERFIL_N; i++) xs.push(a + (b - a) * i / PERFIL_N);
+        }
+      });
+      xs.sort(function (a, b) { return a - b; });
+      var ex = ["interpolate", ["linear"], ["line-progress"], -1e6, base], ult = -1e6;
+      xs.forEach(function (x) {
+        var pr = x / totKm; if (!(pr > ult) || !(pr < 1e6)) return;
+        var bb = 0;
+        conj.forEach(function (q) { if (q.w > 0 && q.l > 0) bb += q.w * brilhoCorrenteza(x, q.S, q.P, q.l); });
+        ex.push(pr, corDaAgua(c, Math.min(1, bb))); ult = pr;
+      });
+      ex.push(1e6, base);
+      return ex;
+    }
+    function quadroMisto(map, r, v, conj, z) {
+      if (!r) return;
+      r.ids.forEach(function (sid, i) {
+        if (!map.getLayer(sid)) return;
+        var vv = +(+v).toFixed(3);
+        if (r.op[sid] !== vv) { map.setPaintProperty(sid, "line-opacity", vv); r.op[sid] = vv; }
+        if (vv <= 0) return;
+        var g = gradMisto(r.km[i], conj, z), ch = JSON.stringify(g);
+        if (r.chave[sid] !== ch) { map.setPaintProperty(sid, "line-gradient", g); r.chave[sid] = ch; }
+      });
+    }
     function largura(map, r, w) {
       if (!r) return; w = +(+w).toFixed(2);
       r.ids.forEach(function (sid) { if (r.op[sid + "|w"] !== w && map.getLayer(sid)) { map.setPaintProperty(sid, "line-width", w); r.op[sid + "|w"] = w; } });
@@ -422,13 +479,14 @@ Wikimedia Commons · CC BY-SA 4.0</div>
       u = u * u * (3 - 2 * u);
       return longe + (perto - longe) * u;
     }
-    return { criar: criar, quadro: quadro, largura: largura, linhas: linhas, km: km, cor: function (b) { return corDaAgua(C(), b); },
+    return { criar: criar, quadro: quadro, quadroMisto: quadroMisto, largura: largura, linhas: linhas, km: km, cor: function (b) { return corDaAgua(C(), b); },
       PISO: PISO, linhaZ: function (z, perto) { return porZoom(z, perto, PISO.linha); }, sobZ: function (z, perto) { return porZoom(z, perto, PISO.sob); } };
   })();
   // ═══ fim do adaptador M-B ═══
   // ═══ A BASE (plana) E A CAMADA DO RIO ════════════════════════════════════════════════════════════
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
-  var COR = { destaque: tok("--destaque", "#F5A524"), sob: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)") };
+  var COR = { destaque: tok("--destaque", "#F5A524"), sob: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)"),
+    sobS21: tok("--rotulo", "rgba(11, 15, 20, 0.88)") };
   function estilo() {
     var fontes = {
       base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
@@ -438,7 +496,9 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     var camadas = [
       { id: "base", type: "raster", source: "base",
         paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // identidade §6, o tratamento C
-      { id: "supe-sob", type: "line", source: "supe", layout: lc, paint: { "line-color": COR.sob, "line-width": 22, "line-opacity": 0 } }
+      // peru-agua-arte-18: o contorno na cor do da s21 (--rotulo, 0,88), para o quadro 0 ser o último dela; depois do pouso a
+      // opacidade o leva aos 0,60 de antes (0,88 × 0,682), o mesmo escuro de hoje na vista de perto
+      { id: "supe-sob", type: "line", source: "supe", layout: lc, paint: { "line-color": COR.sobS21, "line-width": 24, "line-opacity": 0 } }
       // peru-agua-arte-17 (fase 2): a linha do Supe (--agua, 12 px, com a correnteza) é a do adaptador M-B, posta no 'load'
     ];
     return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
@@ -514,9 +574,15 @@ Wikimedia Commons · CC BY-SA 4.0</div>
   var PT = CENA.pontos;
   var merc = function (lng, lat) { var s = Math.sin(lat * Math.PI / 180); return [lng, 0.5 * Math.log((1 + s) / (1 - s))]; };
   var unmercLat = function (y) { return (2 * Math.atan(Math.exp(y)) - Math.PI / 2) * 180 / Math.PI; };
+  // peru-agua-arte-18: a perna "v" é a câmera do molde (van Wijk, criarCameraMapa), com a rampa cameraAbre/cameraFecha 0,5
+  CENA.pernas.forEach(function (L) {
+    if (L.tipo === "v") L.cam = criarCameraMapa({ viewports: [PT[L.de], PT[L.para]], duration: L.t1 - L.t0,
+      width: 3840, height: 2160, bearingLoop: null, cameraAbre: 0.5, cameraFecha: 0.5 });
+  });
   function cameraAt(t) {
     var L = CENA.pernas[CENA.pernas.length - 1];
     for (var i = 0; i < CENA.pernas.length; i++) if (t < CENA.pernas[i].t1) { L = CENA.pernas[i]; break; }
+    if (L.tipo === "v") { var cv = L.cam(cl(t - L.t0, 0, L.t1 - L.t0)); return { center: cv.center, zoom: cv.zoom, bearing: cv.bearing, pitch: cv.pitch || 0 }; }
     var u = cl((t - L.t0) / (L.t1 - L.t0), 0, 1), a = PT[L.de], b = PT[L.para];
     var ma = merc(a.lng, a.lat), mb = merc(b.lng, b.lat);
     return { center: [a.lng + (b.lng - a.lng) * u, unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u,
@@ -574,7 +640,7 @@ Wikimedia Commons · CC BY-SA 4.0</div>
   // ── rótulos do mapa: a pilha a sudoeste do ponto (à esquerda e abaixo), no terraço; o rio passa ao norte e a leste ──
   var ROT = [
     { id: "rotCaral", lado: "esquerda", dx: -64, dy: 150,  entra: CENA.entra },
-    { id: "rotData",  lado: "esquerda", dx: -64, dy: 350, entra: CENA.entra },
+    { id: "rotData",  lado: "esquerda", dx: -64, dy: 350, entra: CENA.cota },
     { id: "legDist",  lado: "esquerda", dx: -64, dy: 520, entra: CENA.legenda.entra }
   ];
   function naArea(l, tp, w, h) {   // distância (px) da caixa à área segura; o canto 400 × 400 conta
@@ -609,20 +675,27 @@ Wikimedia Commons · CC BY-SA 4.0</div>
 
   function aplicarCreditos(t) {
     var c = E("credito"); if (c) { var vm = naFoto(t) ? 0 : 1; c.style.opacity = String(vm); c.style.visibility = vm ? "visible" : "hidden"; }
-    caixa(E("credFontes"), naFoto(t) ? 0 : eo(seg(t, CENA.entra, 0.3)));
+    caixa(E("credFontes"), naFoto(t) ? 0 : eo(seg(t, CENA.cota, 0.3)));
   }
 
   function aplicar(t) {
     if (!mapaCarregado) return;
     map.jumpTo(cameraAt(t));
-    var vs = naFoto(t) ? 0 : eo(seg(t, CENA.entra, 0.5));
-    opac("supe-sob", "line-opacity", vs);
+    // peru-agua-arte-18: o Supe aceso do quadro 0 (é a linha com que a s21 termina: sem redesenho, sem piscar), até o corte à foto
+    var vs = naFoto(t) ? 0 : 1;
     // peru-agua-arte-17 (fase 2): o Supe em --agua com a correnteza do bloco, ritmo BASE (regência › _agua_direcao_23, s22: serra →
     // mar, abaixo de Caral, oeste); a largura pelo zoom (aqui 13,0 → 13,9: as de perto, 12 sobre 22, o piso de longe não entra)
     var zz = map.getZoom(), R = ritmoEmKm(CORRENTEZA.BASE);
+    // a viagem (arte-18): wn = o peso desta cena, pelo zoom (0 até z 10,5; 1 de z 12,5 ao pouso em 13,0); 1 − wn, o da s21
+    var wn = cl((zz - 10.5) / 2.0, 0, 1); wn = wn * wn * (3 - 2 * wn);
+    opac("supe-sob", "line-opacity", vs * (1 + (0.60 / 0.88 - 1) * wn));
     MB.largura(map, SUPE_AGUA, MB.linhaZ(zz, 12));
     if (map.getLayer("supe-sob")) { var ws = +MB.sobZ(zz, 22).toFixed(2); if (opAntes["supe-sob|w"] !== ws) { map.setPaintProperty("supe-sob", "line-width", ws); opAntes["supe-sob|w"] = ws; } }
-    MB.quadro(map, SUPE_AGUA, vs, R.vel * t, R.periodo, R.luz, null, zz);
+    var kF = kmPorPx(S21.zoomRef, S21.latRef), RF = { vel: CORRENTEZA.BASE.velPx * kF, periodo: CORRENTEZA.periodoPx * kF, luz: CORRENTEZA.BASE.luzPx / CORRENTEZA.periodoPx };
+    MB.quadroMisto(map, SUPE_AGUA, vs, [
+      { S: RF.vel * (t + S21.tFim - S21.t0Correnteza), P: RF.periodo, luz: RF.luz, w: 1 - wn, teto: true },   // a da s21, na fase dela
+      { S: R.vel * t, P: R.periodo, luz: R.luz, w: wn, teto: true }                                            // a desta cena (de perto, o teto não age)
+    ], zz);
     aplicarPonto(t);
     aplicarRotulos(t);
     aplicarCreditos(t);

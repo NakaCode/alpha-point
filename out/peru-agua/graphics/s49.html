@@ -40,6 +40,16 @@
   de 19,25, com o zoom já em 11,9 e subindo até 12,62 (medido com a câmera da cena). Nada mais mudou: os tempos, a câmera, o anel,
   os rótulos, os créditos, a folha, a linha do tempo e a emenda com a s48 (o b0). Onde o texto abaixo diz "o traçado do túnel em
   --destaque", vale isto. Entradas: textos-tela 53943561, regência 4ea3b5b0, espelho 4a2ab762, conceito 25fb37bb.
+  peru-agua-arte-18 (lote EO-B; regência d9203ae9 › s49 › beats[3] e › _agua_direcao_23 › correnteza[14]; direcao-24; qualidade-10,
+  s49 @19,6), dois consertos, só no b3: (1) A LAGOA DE ORIGEM: as lagoas reais do alto Mantaro (lagoas-marcapomacocha-antacoto, OSM;
+  a Marcapomacocha, de onde o canal sai, entre elas) pintadas em --agua a 58 %, PARADAS (só o preenchimento, sem contorno), sob a
+  divisória e o traçado; acendem em 0,5 s de 18,35 (0,9 s antes da pena do canal, com a câmera já descendo ao quadro da s40) e ficam
+  até o corte à mesa; nenhuma nomeada (o OSM já está no crédito do mapa). (2) A LUZ SE ESCONDE SOB A DIVISÓRIA: o brilho da correnteza
+  é multiplicado por uma máscara da distância REAL do ponto do rio à divisória: zero até 48 px (4× os 12 px do contorno dela; a
+  regência pede ≥ 2×), subindo em smoothstep até 120 px (px de tela na escala de referência da correnteza); dos dois lados, e a
+  linha azul (--agua) continua. A seta do b2 e o anel continuam --destaque. Nada mais mudou (tempos, câmera, larguras, textos,
+  créditos, folha, linha do tempo, a emenda com a s48). Conta do b3: a divisória, o traçado, o anel, as lagoas (4). Entradas:
+  textos-tela 672560c4, regência d9203ae9, espelho d3b83a5a, conceito 380ae035.
 
   O que manda em cada coisa (entradas de 22/10/2026, sha256 conferidos): os TEXTOS (textos-tela.json 2f748bfc… › s49, a lista fechada; na arte-13, cebd9480… › s49; na arte-15, 946283df… › s49);
   os BEATS, o exige e a câmera (regencia.json 460eb6e1… › s49, _decisoes_da_regencia e _para_o_redator_e_a_arte); o conceito
@@ -135,6 +145,7 @@
 <script src="../_media/geo/puente-piedra.js"></script>
 <script src="../_media/geo/divisoria-continental-peru.js"></script>
 <script src="../_media/geo/tunel-transandino.js"></script>
+<script src="../_media/geo/lagoas-marcapomacocha-antacoto.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -469,7 +480,7 @@
   var CENA = {
     perfil: "maptiler",
     inSec: 612.033,
-    fontes: ["pp", "div", "trR"],
+    fontes: ["pp", "div", "trR", "lagoas"],   // peru-agua-arte-18: + as lagoas (a de origem do canal em --agua a 58 %)
     pontos: {
       B0: { lng: -77.0870, lat: -11.8770, zoom: 12.70, bearing: 0, pitch: 0 },     // Puente Piedra inteiro, plano (b2)
       B1: { lng: -77.0866, lat: -11.8762, zoom: 12.82, bearing: -1.0, pitch: 0 },
@@ -578,18 +589,66 @@
         if (s1 <= 0 || s0 >= totKm) continue;
         for (var i = 0; i <= CORR_N; i++) {
           var kmi = s0 + (s1 - s0) * i / CORR_N;
-          ex.push(kmi / totKm, (i === 0 || i === CORR_N) ? base : corDaAgua(cores, brilhoCorrenteza(kmi, S, r.periodo, r.luz)));
+          ex.push(kmi / totKm, (i === 0 || i === CORR_N) ? base : corDaAgua(cores, brilhoCorrenteza(kmi, S, r.periodo, r.luz) * mascaraDiv(kmi)));
         }
       }
     }
     ex.push(1e6, base);
     return ex;
   }
+  // peru-agua-arte-18 (regência d9203ae9 › s49 › beats[3]; direcao-24; qualidade-10, s49 @19,6): onde a rota passa SOB a divisória,
+  // a luz se ESCONDE dos dois lados dela, e a linha azul (--agua) continua. A luz é multiplicada por uma máscara da DISTÂNCIA REAL
+  // do ponto do rio à linha da divisória (não a distância ao longo do rio, que num cruzamento oblíquo seria maior que a real):
+  // 0 até ESCONDE.cheioPx (4× os 12 px do contorno da divisória; a regência pede pelo menos 2×), subindo em smoothstep até
+  // cheioPx + rampaPx. Os px são de tela na escala de referência da correnteza (kmPorPx(zoomRef, latRef)), como o resto do bloco.
+  var ESCONDE = { cheioPx: 48, rampaPx: 72 }, DIV_SEG = null, ESC_KM = null;
+  function xyKm(p) { return [p[0] * 111.32 * Math.cos(-11.49 * Math.PI / 180), p[1] * 110.57]; }
+  function prepararEsconde() {
+    if (!LR) LR = acum(ROTA);
+    var k = kmPorPx(CORRENTEZA.zoomRef, CORRENTEZA.latRef);
+    ESC_KM = { cheio: ESCONDE.cheioPx * k, rampa: ESCONDE.rampaPx * k };
+    var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+    ROTA.forEach(function (p) { x0 = Math.min(x0, p[0]); x1 = Math.max(x1, p[0]); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); });
+    var folga = 0.1;   // graus (~11 km): só os segmentos da divisória perto da rota entram na conta
+    DIV_SEG = [];
+    (DIV.features || []).forEach(function (f) {
+      var g = f.geometry, linhas = g.type === "LineString" ? [g.coordinates] : (g.type === "MultiLineString" ? g.coordinates : []);
+      linhas.forEach(function (c) {
+        for (var i = 1; i < c.length; i++) {
+          var a = c[i - 1], b = c[i];
+          if (Math.max(a[0], b[0]) < x0 - folga || Math.min(a[0], b[0]) > x1 + folga || Math.max(a[1], b[1]) < y0 - folga || Math.min(a[1], b[1]) > y1 + folga) continue;
+          DIV_SEG.push([xyKm(a), xyKm(b)]);
+        }
+      });
+    });
+    if (!DIV_SEG.length) falhar("a divisória não passa perto da rota do túnel (a luz não teria onde se esconder).");
+  }
+  function pontoNoKm(kmi) {
+    var n = LR.length; if (kmi <= 0) return ROTA[0]; if (kmi >= LR[n - 1]) return ROTA[n - 1];
+    var lo = 0, hi = n - 1; while (hi - lo > 1) { var m = (lo + hi) >> 1; if (LR[m] <= kmi) lo = m; else hi = m; }
+    var f = (kmi - LR[lo]) / ((LR[hi] - LR[lo]) || 1);
+    return [ROTA[lo][0] + (ROTA[hi][0] - ROTA[lo][0]) * f, ROTA[lo][1] + (ROTA[hi][1] - ROTA[lo][1]) * f];
+  }
+  function distDivKm(p) {
+    var q = xyKm(p), d = 1e9;
+    for (var i = 0; i < DIV_SEG.length; i++) {
+      var a = DIV_SEG[i][0], b = DIV_SEG[i][1], vx = b[0] - a[0], vy = b[1] - a[1], L2 = vx * vx + vy * vy;
+      var u = L2 ? ((q[0] - a[0]) * vx + (q[1] - a[1]) * vy) / L2 : 0; u = u < 0 ? 0 : (u > 1 ? 1 : u);
+      d = Math.min(d, Math.hypot(q[0] - a[0] - u * vx, q[1] - a[1] - u * vy));
+    }
+    return d;
+  }
+  function mascaraDiv(kmi) {
+    if (!DIV_SEG) prepararEsconde();
+    var y = (distDivKm(pontoNoKm(kmi)) - ESC_KM.cheio) / ESC_KM.rampa; y = y < 0 ? 0 : (y > 1 ? 1 : y);
+    return y * y * (3 - 2 * y);
+  }
 
   // ═══ A GEOMETRIA ═══
-  var PP, DIV, TUN, ROTA, LR, CRUZ, SETA_PONTA, SETA_CAUDA = [-76.00, -11.42];
+  var PP, DIV, TUN, LAG, ROTA, LR, CRUZ, SETA_PONTA, SETA_CAUDA = [-76.00, -11.42];
   function prepararGeo() {
     PP = geo("puente-piedra"); DIV = geo("divisoria-continental-peru"); TUN = geo("tunel-transandino");
+    LAG = geo("lagoas-marcapomacocha-antacoto");   // peru-agua-arte-18: as lagoas reais (OSM), a de origem do canal entre elas
     if (window.__erroCena) return;
     var anel = PP.features[0].geometry.coordinates[0];
     // a ponta da seta: o vértice mais a leste do polígono (a seta sai DO polígono para o leste; contato no contorno)
@@ -616,12 +675,16 @@
     fontes.pp = { type: "geojson", data: PP };
     fontes.div = { type: "geojson", data: DIV };
     fontes.trR = { type: "geojson", data: { type: "FeatureCollection", features: [] }, lineMetrics: true };   // arte-17: a correnteza
+    fontes.lagoas = { type: "geojson", data: LAG };   // arte-18
     var lc = { "line-join": "round", "line-cap": "round" };
     var camadas = [
       CAMADA_BASE,
       { id: "pp-fill", type: "fill", source: "pp", paint: { "fill-color": COR.destaque, "fill-opacity": PLANO_PP_FILL, "fill-antialias": true } },
       { id: "pp-sob", type: "line", source: "pp", layout: lc, paint: { "line-color": COR.sob, "line-width": 14, "line-opacity": 1 } },
       { id: "pp", type: "line", source: "pp", layout: lc, paint: { "line-color": COR.destaque, "line-width": 6, "line-opacity": 1 } },
+      // peru-agua-arte-18 (regência d9203ae9 › s49 › beats[3]; direcao-24): as lagoas reais do alto Mantaro (a de origem do canal,
+      // Marcapomacocha, entre elas) pintadas em --agua a 58 %, PARADAS (a lagoa não corre), sob a divisória e o traçado; sem nome
+      { id: "lagoas", type: "fill", source: "lagoas", paint: { "fill-color": corDe("--agua"), "fill-opacity": 0, "fill-antialias": true } },
       { id: "div-sob", type: "line", source: "div", layout: lc, paint: { "line-color": COR.sob, "line-width": 12, "line-opacity": 0 } },
       { id: "div", type: "line", source: "div", layout: lc, paint: { "line-color": COR.tinta, "line-width": 6, "line-opacity": 0 } },
       { id: "trR-sob", type: "line", source: "trR", layout: lc, paint: { "line-color": COR.sob, "line-width": 20, "line-opacity": 1 } },
@@ -642,6 +705,8 @@
     opac("div", "line-opacity", vd); opac("div-sob", "line-opacity", vd);
     // o traçado do túnel (OSM) se desenha SOZINHO em --agua (arte-17; antes --destaque) quando a câmera chega ao quadro da s40
     var fr = eio(seg(t, 19.25, 0.9));
+    // peru-agua-arte-18: a lagoa acende (0,5 s) 0,9 s antes da pena do canal, com a câmera já descendo ao quadro da s40, e fica
+    opac("lagoas", "fill-opacity", 0.58 * eo(seg(t, 18.35, 0.5)));
     dados("trR", fr > 0 ? fcLinha(trecho(ROTA, LR, fr)) : fcVazia, fr.toFixed(4));
     // peru-agua-arte-17: a CORRENTEZA no canal e no túnel (regência › _agua_direcao_23: leste → oeste, da lagoa para Lima, ritmo
     // BASE). ROTA vai de Marcapomacocha a Milloc, que é o sentido da água: o km acumulado (LR) já é rio abaixo. A luz parte da

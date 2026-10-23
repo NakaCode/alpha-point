@@ -70,7 +70,11 @@
   bloco "A CORRENTEZA" da referência (out/peru-agua/_tmp/arte-12/EO1/src/rimac-comum.js, byte a byte; --agua-luz agora #EAF5FD, só
   pelo token; BASE 420 px/s e trecho de 450 px), com zoomRef 9,0 / latRef −10,8, aplicado ao MapLibre pelo adaptador M-B (o mesmo
   brilhoCorrenteza/corDaAgua num line-gradient). O Supe de longe vai a 12 px de --agua sobre o contorno --rotulo de 24 px (o
-  acréscimo: zoom < 11; aqui o zoom nunca passa de 9,15). Onde o texto acima fala da correnteza da fase 1 e de 6 sobre 14, vale isto.
+  acréscimo: zoom < 11; aqui o zoom nunca passa de 9,15). Onde o texto acima fala da correnteza da fase 1 e de 6 sobre 14, vale isto.  CONSERTO peru-agua-arte-18 (lote M-B, 23/10/2026; a escolha do Lucas, 23/10, 12:2x: "Sai com os nomes"): a divisa Peru–Chile,
+  acesa do quadro 0, sai junto com Piura, Tacna e CHILE em 'built' (9,234), com a mesma curva de saída deles (0,3 s, eio), para não
+  sobrar uma linha sem nome na viagem. Só isto: a câmera, o fim (o começo da viagem da s22), o Supe, a água, os rótulos e os créditos
+  ficam. Onde o texto acima diz que a divisa fica acesa até o fim, vale isto. O gerar.py da arte-1 não está em dia (arte-17): o
+  conserto foi direto no HTML (out/peru-agua/_tmp/arte-18/M-B/ed_s21.py).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -262,7 +266,9 @@ farms, cities and mines not counted</div>
       SUPE_AGUA = MB.criar(map, "supe", { type: "LineString", coordinates: SUPE }, { w: 6, fontes: A.fontes });
     },
     quadro: function (t, A) {
-      A.lin("divisa", 1);
+      // peru-agua-arte-18: a divisa sai com Piura, Tacna e CHILE em 'built' (9,234), com a mesma curva de saída deles (0,3 s, eio);
+      // a entrada em -1 a deixa inteira desde o quadro 0, como antes
+      A.lin("divisa", A.janela(t, -1, 9.234));
       // o Chile acende em 'Tacna,' (a fronteira chega na fala) e sai com os rótulos, antes da viagem de 'And yet'
       A.opac("chile-fill", "fill-opacity", 0.25 * A.janela(t, 6.167, 9.234, 0.5, 0.5));
       [["pPiu", "PIU", 4.867], ["pTac", "TAC", 6.167]].forEach(function (x) {

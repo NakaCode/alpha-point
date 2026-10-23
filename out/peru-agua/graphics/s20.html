@@ -20,6 +20,19 @@
   o zoom do b0 vai de 12,80 a 13,05. O b1 (o mar e o volume da cheia, no traço de engenheiro) continua --tinta. Nada mais mudou:
   a pílula, os tempos, a câmera, os créditos e a mesa. Onde o texto abaixo diz "--destaque" para o rio, vale isto. Entradas:
   textos-tela 53943561, regência 4ea3b5b0, espelho 4a2ab762, conceito 25fb37bb.
+  CONSERTO peru-agua-arte-18 (lote EO-A; a decisão da Sala aplicada na direcao-24, regência d9203ae9 › s20 › beats[1] e
+  › _agua_direcao_23 "CHEIA SOBRE A MESA VAI A --agua"; qualidade-10, laudo s20, lente acessibilidade): no b1, o VOLUME DA CHEIA
+  passa de --tinta a --agua (a linha): o contorno das duas metades, as arestas escondidas tracejadas, o corte ao meio e as linhas
+  d'água de dentro. A água fica SOBRE A MESA (#vistaMesa: --fundo com o still do satélite sob a luz), nunca sobre --papel (a cena
+  não usa --papel). O MAR (a linha que ondula), o CHÃO e a BARRAGEM tracejada que não existe continuam --tinta; a sombra solta
+  continua --tinta-escura. O volume DESLIZA SEM LUZ DE CORRENTEZA (regência d9203ae9 › s20 › beats[1].exige e
+  › _agua_direcao_23: "s20 › b1 … ritmo: sem luz"): a linha é --agua lisa, sem o --agua-luz; as linhas d'água de dentro ficam
+  como eram (3 px, opacidade 0,6), só na cor.
+  conserto 2 (peru-agua-arte-18, EO-A): a 1ª entrega desta tarefa (sha1 deae53e5) punha a correnteza CHEIA nas linhas d'água
+  de dentro, por um erro do pedido; o setor confirmou que vale a regência. A correnteza da mesa (os dois gradientes, CORR_MESA,
+  gradMesa e correntezaMesa) saiu inteira, e as linhas de dentro voltaram a 0,6. O b0 continua com a correnteza da arte-17.
+  Nada mais mudou: os tempos, a câmera, os textos, os créditos, a física e o b0. Entradas: textos-tela 672560c4, regência
+  d9203ae9, espelho d3b83a5a, conceito 380ae035.
 
   O que manda em cada coisa: os TEXTOS (textos-tela.json sha256 2f748bfc… › s20: "© MapTiler © OpenStreetMap contributors" 0–4,5;
   "Source: ANA (Peru), 2009" 0–10,7; "ABOUT HALF" (heroi) e "OF THE FLOOD WATER FROM THE WETTER PART OF THE PACIFIC SIDE" (legenda)
@@ -112,6 +125,10 @@
   .ar-oculta { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-dasharray: 20 16; stroke-linecap: butt; }
   .ar-tracejada { fill: none; stroke: var(--tinta); stroke-width: var(--linha-espessura); stroke-dasharray: 26 20; stroke-linecap: butt; stroke-linejoin: round; }
   .sombra-linha { fill: none; stroke: var(--tinta-escura); stroke-width: 16; stroke-linejoin: round; stroke-linecap: round; }
+  /* peru-agua-arte-18: o volume da cheia é ÁGUA (--agua, cor de TIPO; identidade §2), sobre a mesa; as mesmas larguras e traços */
+  .ag { fill: none; stroke: var(--agua); stroke-width: var(--linha-espessura); stroke-linejoin: round; stroke-linecap: round; }
+  .ag-oculta { fill: none; stroke: var(--agua); stroke-width: 4; stroke-dasharray: 20 16; stroke-linecap: butt; }
+  .ag-fina { fill: none; stroke: var(--agua); stroke-width: 3; stroke-linecap: round; opacity: .6; }
   .heroi { position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap; font-family: var(--fonte-sec); font-weight: var(--peso-heroi);
     font-size: var(--fs-heroi); line-height: 1.0; letter-spacing: var(--tracking-heroi); color: var(--tinta); }
   .legenda { position: absolute; left: 0; top: 0; opacity: 0; white-space: pre; text-align: right; font-family: var(--fonte);
@@ -152,19 +169,19 @@
         <!-- a metade da esquerda: fica -->
         <g id="gL">
           <path id="lSom" class="sombra-linha" d="" opacity="0.5" transform="translate(0,12)"/>
-          <path id="lOc" class="ar-oculta" d=""/>
-          <path id="lLin" class="ar" d="" pathLength="1"/>
-          <path id="lAgua" class="ar-fina" d=""/>
-          <path id="lAresta" class="ar" d="" pathLength="1"/>
-          <path id="lArestaOc" class="ar-oculta" d=""/>
+          <path id="lOc" class="ag-oculta" d=""/>
+          <path id="lLin" class="ag" d="" pathLength="1"/>
+          <path id="lAgua" class="ag-fina" d=""/>
+          <path id="lAresta" class="ag" d="" pathLength="1"/>
+          <path id="lArestaOc" class="ag-oculta" d=""/>
         </g>
         <!-- a metade da direita: sai pela queda (um executor: sR) -->
         <g id="gR">
           <path id="rSom" class="sombra-linha" d="" opacity="0.5" transform="translate(0,12)"/>
-          <path id="rOc" class="ar-oculta" d=""/>
-          <path id="rLin" class="ar" d="" pathLength="1"/>
-          <path id="rAgua" class="ar-fina" d=""/>
-          <path id="rAresta" class="ar" d="" pathLength="1"/>
+          <path id="rOc" class="ag-oculta" d=""/>
+          <path id="rLin" class="ag" d="" pathLength="1"/>
+          <path id="rAgua" class="ag-fina" d=""/>
+          <path id="rAresta" class="ag" d="" pathLength="1"/>
           <circle id="rCanto" cx="1900" cy="1500" r="0.5" fill="none" stroke="none"/>
         </g>
         <!-- a barragem que não existe: tracejada, na borda do plano -->

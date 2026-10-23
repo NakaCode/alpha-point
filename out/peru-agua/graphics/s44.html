@@ -33,6 +33,19 @@
     window.__s44caminhao (a roda de trás e a da frente contra a rua, o giro, a inclinação). Fica fora da prova do pacote: a inclinação
     (rotação de corpo, "exercício futuro" no ESTUDO.md:53, aqui só quase estática e ≤ 0,5°); a mão v003 não entra.
 
+  CONSERTO peru-agua-arte-18 (lote EO-A; o Lucas, 23/10/2026, 12:2x: "Viagem de 1,5 a 3 s (Recomendado)"; qualidade-10, s42 → s44;
+    regência d9203ae9 › s44 › beats[0] (direcao-24); textos-tela 672560c4 (texto-18, conserto 19): o corte seco de mapa para mapa
+    vira VIAGEM. O 1º quadro é o último da s42 (graphics/s42.html, sha1 b76d260b, que não muda): PT.Z0 = o PT.D1 da s42 (−76,883 /
+    −12,029, zoom 14,05, rumo 1,5, pitch 0), conferido no Chrome com o __cameraAt(32,233) da s42; nenhuma água acesa ali (rios,
+    traçado, represas e divisória a 0 desde 28,567). De 0 a 2,5 s a câmera viaja com a rampa do molde (criarCameraMapa, van Wijk,
+    cameraAbre e cameraFecha 0,5, como a viagem do b1) até o PT.A0 da s44, e de 2,5 a 10,233 segue a aproximação lenta de antes
+    (A0 → A1). Em "Peru's" (2,9 s), DEPOIS DO POUSO: o polígono lima-callao-metropolitana acende (--destaque a 40 %, 500 ms), a
+    pílula "Lima and Callao" entra (300 ms) e o crédito da Sunass entra na faixa (300 ms); antes, só o crédito da MapTiler. A
+    pílula "Lima" da s42 é texto da s42 e termina com ela (regência). Nada mais mudou: o bloco, o cartão, o caminhão da arte-17,
+    a mesa, os créditos de mapa e os tempos do b1 e do b2. Onde o texto abaixo diz "do 1º quadro" para o polígono, a pílula e a
+    fonte, ou "aproximação lenta" de 0 a 10,233, vale isto. Entradas: textos-tela 672560c4, regência d9203ae9, espelho d3b83a5a,
+    conceito 380ae035.
+
   O que manda em cada coisa: os TEXTOS (textos-tela.json sha256 2f748bfc… › s44: "© MapTiler © OpenStreetMap contributors" 0–15,7;
   "Lima and Callao" (rotulo) 0–10,234; "MORE THAN 700,000 PEOPLE" (heroi) e "WITHOUT A CONNECTION TO THE WATER NETWORK" (legenda)
   4,967–10,234; "Source: Sunass, Peru's water and sanitation regulator (via Gestión), March 2026" 0–10,234; "PIPED WATER" e
@@ -301,7 +314,8 @@
   };
   ["crFonte", "rotLima", "heroiMapa", "legMapa", "rotA", "rotB", "heroiMesa", "credMesa"].forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
 
-  var T = { seven: 4.967, saiB0: 10.234, b1: 10.233, viagem: 2.2, mesa: 15.7, six: 16.2, repouso: 18.317 };
+  var T = { seven: 4.967, saiB0: 10.234, b1: 10.233, viagem: 2.2, mesa: 15.7, six: 16.2, repouso: 18.317,
+            viagem0: 2.5, peru: 2.9 };   // peru-agua-arte-18: a viagem da s42 (0 → 2,5) e o polígono, o nome e a fonte em "Peru's"
 
   // a janela de um texto: entra em 300 ms a partir de a e TERMINA de sair em b (300 ms); b null = até o fim
   function janela(t, a, b) { return eo(seg(t, a, 0.3)) * (b != null ? 1 - eio(seg(t, b - 0.3, 0.3)) : 1); }
@@ -504,13 +518,15 @@
   var map = null, mapaCarregado = false;
   // a câmera: b0 aproximação lenta sobre o polígono (à esquerda); b1 viagem de 2,2 s aos morros do norte de Lima e aproximação lenta
   var PT = {
+    Z0: { lng: -76.883, lat: -12.029, zoom: 14.05, bearing: 1.5, pitch: 0 },   // arte-18: o PT.D1 da s42 (o último quadro dela)
     A0: { lng: -76.25,  lat: -12.05,  zoom: 10.00, bearing: 0,   pitch: 0 },
     A1: { lng: -76.26,  lat: -12.05,  zoom: 10.10, bearing: 1.2, pitch: 0 },
     B0: { lng: -77.005, lat: -11.940, zoom: 13.30, bearing: 3.0, pitch: 0 },
     B1: { lng: -77.003, lat: -11.941, zoom: 13.55, bearing: 4.5, pitch: 0 }
   };
   var PERNAS = [
-    { t0: 0,        t1: T.b1,                    de: "A0", para: "A1", tipo: "h" },
+    { t0: 0,        t1: T.viagem0,               de: "Z0", para: "A0", tipo: "v" },   // arte-18: a viagem da s42
+    { t0: T.viagem0, t1: T.b1,                   de: "A0", para: "A1", tipo: "h" },
     { t0: T.b1,     t1: T.b1 + T.viagem,         de: "A1", para: "B0", tipo: "v" },
     { t0: T.b1 + T.viagem, t1: T.mesa,           de: "B0", para: "B1", tipo: "h" }
   ];
@@ -642,7 +658,7 @@
                      lima: { type: "geojson", data: g } },
           layers: [{ id: "base", type: "raster", source: "base",
             paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },
-            { id: "lima", type: "fill", source: "lima", paint: { "fill-color": COR.destaque, "fill-opacity": 0.40, "fill-antialias": false } }] },
+            { id: "lima", type: "fill", source: "lima", paint: { "fill-color": COR.destaque, "fill-opacity": 0, "fill-antialias": false } }] },
         center: c0.center, zoom: c0.zoom, bearing: c0.bearing, pitch: 0
       });
     } catch (e) { return falhar("o MapLibre não subiu (" + (e && e.message) + ")."); }
@@ -757,13 +773,13 @@
     if (mp) mp.style.opacity = noMapa ? "1" : "0";
     if (map && mapaCarregado) {
       map.jumpTo(cameraAt(Math.min(t, T.mesa)));
-      var o = +(0.40 * (1 - eio(seg(t, T.b1, 0.567)))).toFixed(3);
+      var o = +(0.40 * eo(seg(t, T.peru, 0.5)) * (1 - eio(seg(t, T.b1, 0.567)))).toFixed(3);   // arte-18: acende em "Peru's"
       if (o !== opAntes) { map.setPaintProperty("lima", "fill-opacity", o); opAntes = o; }
       var rl = E("rotLima");
       if (rl) {
-        var p = map.project(PILULA_LL), v = janela(t, 0, T.saiB0);
+        var p = map.project(PILULA_LL), v = janela(t, T.peru, T.saiB0);   // arte-18: em "Peru's", depois do pouso
         rl.style.opacity = (noMapa ? v : 0).toFixed(3);
-        rl.style.transform = "translate(" + f2(p.x - rl.offsetWidth / 2) + "px," + f2(p.y - rl.offsetHeight / 2 + (1 - eo(seg(t, 0, 0.3))) * 24) + "px)";
+        rl.style.transform = "translate(" + f2(p.x - rl.offsetWidth / 2) + "px," + f2(p.y - rl.offsetHeight / 2 + (1 - eo(seg(t, T.peru, 0.3))) * 24) + "px)";
       }
     }
     var ca = E("cartao");
@@ -772,7 +788,7 @@
     aplicarCaminhao(t, noMapa);   // arte-17
     var cm = E("crMapa"), cf = E("crFonte"), base = 24;
     if (cm) { cm.style.opacity = noMapa ? "1" : "0"; cm.style.bottom = base + "px"; base += cm.offsetHeight + 10; }
-    if (cf) { cf.style.opacity = janela(t, 0, T.saiB0).toFixed(3); cf.style.bottom = base + "px"; }
+    if (cf) { cf.style.opacity = janela(t, T.peru, T.saiB0).toFixed(3); cf.style.bottom = base + "px"; }   // arte-18: em "Peru's"
   }
 
   function cena(t) {

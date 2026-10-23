@@ -51,6 +51,10 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s19 (190,833 → 202,133 s do master
   (out/peru-agua/_tmp/arte-12/EO1/src/rimac-comum.js, byte a byte), ritmo LENTA (o rio baixo), zoomRef 11,1 / latRef −8,25, pelo
   adaptador M-B (o mesmo brilhoCorrenteza/corDaAgua num line-gradient que deita no relevo; uma camada por linha). O b2 fica em z
   11,0 → 11,2: pela regra do acréscimo (≥ 11), as larguras de hoje. Nada mais muda.
+  CONSERTO peru-agua-arte-18 (lote M-B, 23/10/2026; decisão da Sala depois da qualidade-10, aplicando "toda água azul", como a s23;
+  direcao-24 › Para a Arte): no b2, os rios curtos de contexto passam de 35 % a 75 % (a água e o contorno escuro dela, juntos). O
+  Virú, as larguras, a correnteza, a câmera, os textos e os tempos ficam. Onde o texto acima diz 35 %, vale 75 %. Sem gerador em
+  dia (arte-17): o conserto foi direto no HTML (out/peru-agua/_tmp/arte-18/M-B/ed_s19.py).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -708,10 +712,11 @@ MOSTLY DECEMBER–MARCH</div>
     // primeiro plano, grossa pela perspectiva)
     var vd = t < CENA.mapa2.entra ? 1 : 0;
     opac("div", "line-opacity", vd); opac("div-sob", "line-opacity", vd);
-    // b2: o Virú aceso desde o corte; os outros rios curtos a 35 % (contexto)
+    // b2: o Virú aceso desde o corte; os outros rios curtos a 75 % (contexto; peru-agua-arte-18, era 35 %)
     var v2 = t >= CENA.mapa2.entra ? 1 : 0;   // no corte, já aceso
+    var OPAC_CURTOS = 0.75;   // peru-agua-arte-18: a decisão da Sala ("toda água azul", como a s23), na água e no contorno
     opac("viru-sob", "line-opacity", v2);
-    opac("rios-sob", "line-opacity", 0.35 * v2);
+    opac("rios-sob", "line-opacity", OPAC_CURTOS * v2);
     // peru-agua-arte-17 (fase 2): o Virú e os rios curtos em --agua, com a correnteza do bloco no ritmo LENTA (o rio baixo:
     // regência › _agua_direcao_23, s19: vale alto → mar pelo deserto, sudoeste). Os dois ficam acima de z 11 (11,0 → 11,2):
     // as larguras de hoje; o piso de longe só entraria abaixo de 11.
@@ -719,7 +724,7 @@ MOSTLY DECEMBER–MARCH</div>
     MB.largura(map, VIRU_AGUA, MB.linhaZ(zz, 14)); MB.largura(map, RIOS_AGUA, MB.linhaZ(zz, 4));
     opac("viru-sob", "line-width", MB.sobZ(zz, 24)); opac("rios-sob", "line-width", MB.sobZ(zz, 10));
     MB.quadro(map, VIRU_AGUA, v2, S, R.periodo, R.luz, null, zz);
-    MB.quadro(map, RIOS_AGUA, 0.35 * v2, S, R.periodo, R.luz, null, zz);
+    MB.quadro(map, RIOS_AGUA, OPAC_CURTOS * v2, S, R.periodo, R.luz, null, zz);
   }
 
   function aplicarCreditos(t) {
