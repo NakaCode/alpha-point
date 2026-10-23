@@ -208,3 +208,25 @@ O Lucas voltou ("Estou de volta, faça um resumo do que foi feito e do que está
   relacionadas a gastos adicionais no maptiler devem ser refeitas, às que dependerem da nossa cota me informe a expectativa de custo"**.
 - Leitura da Sala: o gasto de tiles da MapTiler nos consertos desses comentários está liberado; o que pesa na cota do Claude vai a ele com
   a estimativa de custo antes de rodar.
+
+## 23/10/2026, 00:4x (Brasília): as escolhas sobre os comentários da linha do tempo, no chat da Sala
+
+As perguntas, com as opções investigadas e conferidas por céticos (out/peru-agua/_tmp/comentarios-lucas/<tema>-cetico.json), e as respostas:
+- **s37, a água** ("A linha do Rímac é laranja porque, neste vídeo, a cor marca o LADO… Azul para a água é cor nova na paleta que você
+  aprovou em 21/10. Como fica?"): **"Azul em toda a água"**. A opção dizia: "Rios, lagoas, represas, canal e túnel azuis nas 17 cenas de mapa;
+  a cor passa a dizer 'água' no vídeo todo. Custo: ~5 % do semanal (fica em ~82 %, acima dos 80), 17 renders e você revê as 17 na linha do tempo."
+  É o ok dele para passar dos 80 % do semanal por este conserto.
+- **s04, o gancho** ("…hoje só está na voz, como nos vídeos 2 e 3. Põe na tela?"): **"A pergunta inteira, discreta (Recomendado)"**. A opção
+  dizia: "\"Why do most / Peruvians live / on the dry side?\" em letra branca grossa (~176 px), no mar escuro, de 'most' até antes da vinheta
+  (~2,2 s). Vira prática do canal (linha nova na identidade). Custo: ~0,5 % do semanal."
+- **s51, o porto**: **"Gravura de 1717 (Recomendado)"** (a carta gravada da baía do Callao, Frézier, 1717, Commons, com rótulo tipo
+  "Engraved chart, 1717"; ele autoriza documento de outra data que atesta o porto bom).
+- **s44, o caminhão-pipa**: **"Caminhão-pipa em traço (Recomendado)"** (o ok dele para o desenho valer no lugar do registro nesta cena).
+- **s39, os cubos**: **"Duas represas cheias (Recomendado)"**.
+- **s46, o card vazio**: **"Foto do bairro na mesa (Recomendado)"** (morros de San Juan de Miraflores, Commons, com o aviso do ano, se o
+  conferente aprovar).
+- **s42, o Rómulo sem foto**: **"Calendário fica, card ao lado (Recomendado)"**.
+- **s03 e s33, o "congelar"** (é da prévia): **"Seguir sem rever"**.
+- Pela mensagem dele de 00:2x, os consertos de mapa (s01, a câmera; s42, a transição; s37, a correnteza) se refazem sem pergunta, com a
+  opção recomendada pelos céticos.
+- Registrado em 23/10/2026 01:25.
