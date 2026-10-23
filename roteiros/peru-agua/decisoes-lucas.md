@@ -257,3 +257,14 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
 - Correção da correção (23/10/2026, 04:5x, Sala): o M-B da Arte mediu o quadro de 9,7 s da s21, e a linha clara sobre o deserto do sul é a **divisa
   Peru–Chile** (branca pela identidade §6), não água: o Supe só começa a se desenhar em 9,667 s, perto de Lima. O piso de largura da água vista de longe
   (12 sobre 24 px no 4K, com contorno escuro) fica, porque a s29 a 6 px também saía quase cinza. A pergunta sobre a divisa vai ao Lucas quando ele voltar.
+
+## Depois da qualidade-10 (Lucas, 23/10/2026, 12:2x, no chat da Sala, respondendo às 4 perguntas)
+- **A divisa da s21:** "Sai com os nomes (Recomendado)". A divisa Peru–Chile sai junto com Piura, Tacna e CHILE em 'built' (9,233 s), para não
+  sobrar uma linha sem nome na viagem. Só a s21; a regra da marca (§6) não muda.
+- **As represas da s39 (b0):** "Lagoas reais, em azul (Recomendado)". No lugar do símbolo desenhado (lido como "dois baldes de traço branco" pela
+  Qualidade), as represas reais de cada lado da divisória, sobre o satélite, em `--agua`.
+- **Os 4 cortes secos de mapa para mapa** (s04→s06, s21→s22, s38→s39, s42→s44): "Viagem de 1,5 a 3 s (Recomendado)". A cena seguinte abre onde a
+  anterior termina e a câmera viaja até o enquadramento dela; na s21→s22, o Supe continua aceso.
+- **A cota:** "Até 90 % (Recomendado)". Os consertos seguem agora; a Sala para em 90 % e avisa. O freio dos setores fica em 89 %.
+- Decisão da Sala, aplicando "toda água azul" (como a s23): os rios curtos de contexto a 75 % em todas as cenas (s08 e s19 estavam a 35 %); as lagoas
+  ainda sem azul (a Marcapomacocha da s52, a de origem da s49) em `--agua` 55–60 %.
