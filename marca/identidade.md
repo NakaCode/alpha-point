@@ -72,6 +72,15 @@ ator continua `--neutro`, porque a lavanda pura não passa 3:1 sobre o `--papel`
 - Destaque em texto de leitura é PESO, não cor (ofício). `--destaque` em texto só no rótulo do
   próprio protagonista.
 - Bandeira é asset oficial (ofício), não fonte de paleta: não pinte território com as cores da bandeira.
+- **A água é azul, e corre** (Lucas, 23/10/2026, no chat da Sala, depois de escolher "Azul em toda a água" para o vídeo 4: "Nos
+  próximos toda água deve ser azul e com fluxo"). Do vídeo 5 em diante (o Peru já vai assim, pela escolha dele de 23/10):
+  - a água tem cor de TIPO, não de lado: rio, lago, represa, canal, túnel e cano saem no azul da água em todo mapa e desenho, mesmo
+    quando o território em volta é o protagonista ou a contraparte. O tom é o que a Direção do Peru mediu (direcao-23, separado do
+    `--contexto-2` e do `--contraparte` também para daltonismo); ele entra na tabela acima como `--agua` quando a Sala o gravar;
+  - a água que corre mostra a correnteza: um trecho mais claro da própria linha desce no sentido da água e se repete, mais lento no rio
+    baixo e mais rápido no cheio (a forma aprovada para a s37 e a s38 do Peru). É luz na linha, não partícula solta (§4.4). Lago e
+    represa ficam parados; o que muda neles é o nível;
+  - o azul da água conta nas 3 matizes da cena.
 
 ## 3 · Tipografia
 
