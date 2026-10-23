@@ -243,3 +243,11 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
 - À estimativa da Sala (de 73 % para 81–83 % do semanal ao terminar todos os ajustes, com risco de chegar perto de 85 % se a Arte pedir
   segunda rodada; "Se passar de 83 %, eu paro e te aviso"), o Lucas: **"Pode chegar a 85% sem problemas"**. O freio dos setores, que era
   75 %, passa a 85 % para estes ajustes do vídeo 4; acima disso, a Sala para e pergunta.
+
+## 23/10/2026, 03:1x (Brasília): a prova do azul da água, no chat da Sala
+
+- Com os quadros da prova (s37, s38 cheia, s38 lagoas, s21) mandados a ele: "O azul da água (#AFD8F6, claro)… aprova para as 17 cenas?":
+  **"Aprovo este azul, mas na terceira cena ele parece quase cinza"** (a terceira era a das lagoas a 35 %).
+- "As lagoas e represas (paradas) saem azul-acinzentadas, a 35 %… Como ficam?": **"Mais azuis, 55–60 % (Recomendado)"**.
+- "A correnteza na linha fina do rio baixo (s37) ficou sutil… Deixo mais visível?": **"Mais visível (Recomendado)"** (a luz quase branca e um
+  pouco mais longa, sem virar partícula). A Sala trocou o `--agua-luz` de #CEE3F1 para #EAF5FD.
