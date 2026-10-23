@@ -73,6 +73,18 @@
     15,5–18,567 = os mesmos e a legenda (6).
   - '52.4% (1993)' preso ao ponto cinza de 1993 da Costa, como o '58.7% (2025)': a ponta direita em GX(1993), a base 29 px acima do
     ponto (GY(52.4) − 45); de 28,833 a 33,1 o ponto de 1993 da Costa acende com o mesmo anel do cruzamento de 1970 (.cruz).
+  CONSERTO peru-agua-arte-15 (lote MC; revisão de espectador r2, mantidos[6], [7] e [8]), 22/10/2026:
+  - AS FIGURAS FRACIONÁRIAS (9,233–22,0): a parte que falta de cada figura cortada (a ½ da serra, a ⅚ da costa, a ⅔ da selva e as
+    frações de chegada ⅞, ⅔ e ~0,455) é desenhada como fantasma: o mesmo traço, em --neutro, tracejado, com o halo --rotulo
+    tracejado a meia opacidade. O corte passa de vertical (a parte de oeste) a de ALTURA (acesa a parte de baixo, da fração f;
+    a de cima é o fantasma), medido sobre o desenho (226 px, do alto da cabeça aos pés): no corte vertical a ⅚ só perdia a ponta
+    do braço e lia inteira; no de altura, a ⅚ tem a cabeça tracejada, e a ½ tem a metade de cima tracejada. As frações e as
+    somas são as da regra. O fantasma é parte da figura (o mesmo grupo, a mesma entrada), não elemento novo; some quando a
+    fração chega a 1. Sem rótulo novo, sem cor nova.
+  - NO GRÁFICO (22,0–37,167): COAST e HIGHLANDS saem do começo das linhas e vão para junto delas depois do cruzamento, quando as
+    linhas já passaram por 2017: saem do começo das linhas em 32,1–32,35 e entram junto delas em 32,35–32,65 (ease-out, a subida
+    de 24 px da casa); COAST logo abaixo da linha da Costa e HIGHLANDS logo abaixo da linha da Sierra, de 1996 em diante. Por saída
+    e entrada, não por trajeto: em linha reta os dois se cruzavam (check-overlap, 32,2 s). Nenhum elemento novo.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -114,6 +126,9 @@
   .sil .sob { stroke: var(--rotulo); stroke-width: 16px; }
   .sil .tra { stroke: var(--tinta); stroke-width: 6px; }
   .sil .traN { stroke: var(--neutro); stroke-width: 6px; }
+  /* arte-15: o fantasma da parte que falta (o mesmo traço, tracejado, a baixa opacidade) */
+  .sil .fsob { stroke: var(--rotulo); stroke-width: 14px; stroke-dasharray: 14 12; opacity: 0.5; }
+  .sil .fan { stroke: var(--neutro); stroke-width: 6px; stroke-dasharray: 14 12; opacity: 0.95; }
   /* O DADO em tela cheia (identidade §5, DADO: --papel) */
   #grafico { position: absolute; inset: 0; z-index: 45; visibility: hidden; background: var(--papel); transform-origin: 1920px 1080px; }
   #grafico svg { position: absolute; inset: 0; width: 3840px; height: 2160px; }
@@ -270,9 +285,18 @@ only part of the dry side</div>
       for (var i = 0; i < FIG.length; i++) {
         // arte-4: a fração é um corte vertical (clipPath no espaço da figura): fica a parte de oeste, de largura f × 100 px
         var cp = document.createElementNS(ns, "clipPath"); cp.setAttribute("id", "corte" + i); cp.setAttribute("clipPathUnits", "userSpaceOnUse");
-        var rc = document.createElementNS(ns, "rect"); rc.setAttribute("id", "corteR" + i); rc.setAttribute("x", "-50"); rc.setAttribute("y", "-250");
-        rc.setAttribute("width", "100"); rc.setAttribute("height", "270"); cp.appendChild(rc); defs.appendChild(cp);
+        var rc = document.createElementNS(ns, "rect"); rc.setAttribute("id", "corteR" + i); rc.setAttribute("x", "-80"); rc.setAttribute("y", "-260");
+        rc.setAttribute("width", "160"); rc.setAttribute("height", "290"); cp.appendChild(rc); defs.appendChild(cp);
         var gr = document.createElementNS(ns, "g"); gr.setAttribute("id", "sil" + i); gr.setAttribute("class", "sil"); gr.setAttribute("opacity", "0");
+        // arte-15: o fantasma (a parte de leste que falta), com o corte complementar
+        var cf = document.createElementNS(ns, "clipPath"); cf.setAttribute("id", "fant" + i); cf.setAttribute("clipPathUnits", "userSpaceOnUse");
+        var rf = document.createElementNS(ns, "rect"); rf.setAttribute("id", "fantR" + i); rf.setAttribute("x", "-80"); rf.setAttribute("y", "-260");
+        rf.setAttribute("width", "160"); rf.setAttribute("height", "0"); cf.appendChild(rf); defs.appendChild(cf);
+        var gf = document.createElementNS(ns, "g"); gf.setAttribute("id", "fantG" + i); gf.setAttribute("clip-path", "url(#fant" + i + ")"); gr.appendChild(gf);
+        ["fsob", "fan"].forEach(function (k) {
+          var c = document.createElementNS(ns, "circle"); c.setAttribute("class", k); c.setAttribute("cx", "0"); c.setAttribute("cy", "-196"); c.setAttribute("r", "24"); gf.appendChild(c);
+          var p = document.createElementNS(ns, "path"); p.setAttribute("class", k); p.setAttribute("data-corpo", "1"); gf.appendChild(p);
+        });
         var gc = document.createElementNS(ns, "g"); gc.setAttribute("clip-path", "url(#corte" + i + ")"); gr.appendChild(gc);
         ["sob", "tra", "traN"].forEach(function (k) {
           var c = document.createElementNS(ns, "circle"); c.setAttribute("class", k); c.setAttribute("cx", "0"); c.setAttribute("cy", "-196"); c.setAttribute("r", "24"); gc.appendChild(c);
@@ -334,7 +358,12 @@ only part of the dry side</div>
         }
       }
       var fr = F.f0 + (F.f1 - F.f0) * (F.muda ? A.eio(A.seg(t, F.muda[0], F.muda[1])) : 0);
-      var rc = A.E("corteR" + i); if (rc) rc.setAttribute("width", (100 * fr).toFixed(2));
+      // arte-15: o corte é de ALTURA, medido sobre o desenho (do alto da cabeça, −223, aos pés, +3: 226 px): acesa a parte de baixo,
+      // da fração f; a de cima, que falta, é o fantasma. Inteira = sem corte.
+      var cheia = fr >= 0.999, yc = -223 + 226 * (1 - fr);
+      var rc = A.E("corteR" + i); if (rc) { rc.setAttribute("y", (cheia ? -260 : yc).toFixed(2)); rc.setAttribute("height", (cheia ? 290 : 30 - yc).toFixed(2)); }
+      var rf = A.E("fantR" + i); if (rf) rf.setAttribute("height", (cheia ? 0 : yc + 260).toFixed(2));
+      var gf = A.E("fantG" + i); if (gf) gf.setAttribute("opacity", cheia ? "0" : "1");
       var n = F.neutro === true ? 1 : F.neutro === "chega" ? A.eio(A.seg(u, 0.5, 0.5)) : 0;   // o tom da selva
       var v = vivo ? A.eo(A.seg(t, F.vem, 0.3)) : 0;
       gr.setAttribute("transform", "translate(" + x.toFixed(2) + " " + (y + bob).toFixed(2) + ")");
@@ -411,6 +440,19 @@ only part of the dry side</div>
       ["d52", GX(1993), GY(52.4) - 45, "dir-baixo", 28.833, 33.1],   // arte-9: preso ao ponto de 1993 da Costa (a ponta direita em GX(1993), a base 29 px acima do ponto)
       ["d58", GX(2025) + 140, GY(58.7) - 70, "dir-baixo", 33.1]
     ];
+    // arte-15 (r2, mantidos[8]): COAST e HIGHLANDS vão para junto das linhas, abaixo de cada uma, de 1996 em diante, quando as
+    // linhas já passaram por 2017 (32,1 s; 300 ms, ease-out). O destino: a ponta esquerda em GX(1996); o topo 40 px abaixo do ponto
+    // mais baixo de cada linha no trecho que o rótulo cobre (a Costa sobe para a direita; a Sierra desce).
+    // A troca de lugar é por saída e entrada (sai 32,1–32,35; entra 32,35–32,65), não por trajeto: em linha reta os dois se
+    // cruzavam no meio do gráfico (check-overlap, 32,2 s) e passavam sobre o '52.4% (1993)'.
+    // dHigh tem a âncora embaixo (esq-baixo): o destino é a base, o topo + 128 (a linha da --fs-rotulo, line-height 1)
+    var DEST = { dHigh: [GX(1996), GY(26.7) + 40 + 128], dCoast: [GX(1996), GY(52.9) + 40] };
+    var LEVA = 32.1, novo = t >= LEVA + 0.25;
+    T.forEach(function (x) {
+      if (!DEST[x[0]]) return;
+      if (novo) { x[1] = DEST[x[0]][0]; x[2] = DEST[x[0]][1]; x[4] = LEVA + 0.25; }   // entra no lugar novo (300 ms, eo + 24 px)
+      else x[5] = LEVA + 0.25;                                                          // sai do começo da linha em 32,1–32,35
+    });
     T.forEach(function (x) {
       var el = A.E(x[0]); if (!el) return;
       var v = x[4] <= GRAF0 ? 1 : A.eo(A.seg(t, x[4], 0.3));

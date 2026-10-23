@@ -37,6 +37,8 @@
   'Source: SEDAPAL, 2007' 0,566–5,7; 'Sources: SENAMHI (Peru), 2016; Defensoría del Pueblo (Peru), 2025' 8,866–10,867.
   ELEMENTOS (máx.): b0 = linha, Lima (ponto + pílula), cartão, lagoas (4); b1 = linha, lagoas, traçado + anel, cartão (4);
   b2/b3 = linha, 2 lados (3).
+  CONSERTO peru-agua-arte-15 (espectador r2, mantidos[0]): o traçado do túnel (a camada 'rota', com o contorno escuro) esmaece
+  de 10,6 a 10,9 s, junto com o anel; antes ficava com opacidade 1 até o fim, um resto na área livre da vinheta. Nada mais mudou.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -221,7 +223,8 @@
       // o traçado: cresce de 'single' (7,433) em 1,4 s, da lagoa ao lado do Pacífico
       var u = A.eio(A.seg(t, ROTA.t0, ROTA.dur));
       A.setDado("rota", u.toFixed(3), u > 0 ? { type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: A.ateFracao(A.REFS.ROTA, u).pts } } : { type: "FeatureCollection", features: [] });
-      A.lin("rota", u > 0 ? 1 : 0);
+      // peru-agua-arte-15: o traçado (com o contorno escuro) sai junto com o anel, no começo do recuo (10,6 → 10,9 s)
+      A.lin("rota", u > 0 ? 1 - A.eo(A.seg(t, 10.6, 0.3)) : 0);
       // o recuo: os lados e a divisa do país
       var v = A.eo(A.seg(t, 10.9, 0.8));
       A.opac("seco-fill", "fill-opacity", 0.85 * v);

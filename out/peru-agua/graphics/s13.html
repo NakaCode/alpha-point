@@ -59,6 +59,12 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s13 (117,067 → 138,033 s do master
        e se abrem em 2 pulsos cada (raio 12 → 72 px no palco 4K), no traço das setas do H (--tinta 6 px sobre o halo
        --rotulo de 16 px). A mesma máscara da terra: nada do anel cai sobre a terra. Mesma janela ('water' 17,167 → 18,87).
        Continua 1 elemento, sem texto, e sai antes da imagem da NASA, como antes.
+  CONSERTO peru-agua-arte-15 (lote MA, 22/10/2026; revisão de espectador r2, mantidos[1]), e só isto mudou (nenhum texto, nenhum
+    t0/t1, nenhuma cor): os 6 anéis da ressurgência (17,167 → 18,87) vão mar adentro. Cada centro é o meio, na tela, entre a costa
+    do peru-ne naquela latitude e o ponto mais próximo da seta turquesa de dentro (90 km), uns 45 km da costa; o raio final
+    (antes 72 px) fica limitado à metade dessa faixa e à distância até a terra, menos os halos e 6 px de folga, para o anel
+    aberto não tocar terra nem a seta. As latitudes passam a −7,0, −8,5, −10,0, −11,4, −13,1 e −14,8: costa reta, fora da
+    península de Sechura/Paita (o anel de cima, antes em −6,5), de Callao e de Paracas.
   CRÉDITOS: '© MapTiler © OpenStreetMap contributors' a 56 px a cena toda (o mapa continua em volta da imagem), com
   data-qc-credito="mapa" só no próprio elemento. A fonte da citação acima dele, de 1,5 a 5,166, sem a marca de mapa. A NASA é
   domínio público federal: nada na tela. O HydroBASINS e o Natural Earth: nada na tela.
@@ -178,7 +184,7 @@ Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated from
     H: { ll: [-90.0, -27.0], entra: 7.1, pousa: 0.8, desce: 9.567, sai: 10.88 },
     corrente: { entra: 15.966, desenha: 1.3, km: [90, 200], lat: [-15.6, -5.8] },   // as pontas dentro do quadro (acima da faixa do crédito)
     faixa: { entra: 12.87, sai: 15.966, km: [-60, 200], op: 0.18 },   // arte-8: o mar costeiro (−60 km fica na terra, que a máscara tira)
-    ressurg: { entra: 17.167, sai: 18.87, lats: [-6.5, -8.5, -10.5, -12.5, -14.3, -16.3], km: 30, r: [12, 72], pulso: 1.0, entre: 0.55 },   // 30 km do contorno de faixas = no meio entre a costa real e a seta de 90 km (quadro 17,6 da 1ª rodada)
+    ressurg: { entra: 17.167, sai: 18.87, lats: [-7.0, -8.5, -10.0, -11.4, -13.1, -14.8], r: [12, 72], folga: 6, pulso: 1.0, entre: 0.55 },   // arte-15: o centro no meio entre a costa e a seta de dentro; o raio limitado pela folga até a terra e a seta (costa reta: fora de Sechura/Paita, Callao e Paracas)
     modis: { entra: 18.866, natural: [3076, 2298], foto: [960, 717], borda: 16, pos: [200, 585] }   // abaixo da ponta norte das setas
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
@@ -565,10 +571,33 @@ Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated from
     g.setAttribute("opacity", (v * F.op).toFixed(4));
   }
   // ── a ressurgência (arte-8): anéis que nascem e se abrem no mar, 2 pulsos por ponto, de 'water' até antes da imagem ──
-  var RES_PTS = CENA.ressurg.lats.map(function (la) {
-    var i = 0, bd = Infinity; COSTA.forEach(function (p, k) { var dd = Math.abs(p[1] - la); if (dd < bd) { bd = dd; i = k; } });
-    var pts = afastada(CENA.ressurg.km); return pts[i];
+  // arte-15: em cada latitude, o ponto da costa do peru-ne (o cruzamento mais a oeste do contorno com a latitude); em cada quadro,
+  // o centro do anel é o meio entre esse ponto e o ponto mais próximo da seta de dentro (90 km), e o raio não passa da metade
+  // da faixa nem da distância até a terra, menos os halos (8 + 8) e a folga
+  var RES_COSTA = CENA.ressurg.lats.map(function (la) {
+    var best = Infinity, pt = null;
+    TERRA.forEach(function (pol) { var r = pol[0]; for (var i = 1; i < r.length; i++) { var a = r[i - 1], b = r[i];
+      if (a[1] === b[1] || (a[1] - la) * (b[1] - la) > 0) continue;
+      var x = a[0] + (b[0] - a[0]) * (la - a[1]) / (b[1] - a[1]); if (x < best) { best = x; pt = [x, la]; } } });
+    return pt;
   });
+  if (RES_COSTA.some(function (p) { return !p; })) return falhar("a ressurgência: uma latitude dos anéis não cruza a costa do peru-ne.");
+  var RES_PTS = RES_COSTA;
+  function maisPerto(c, pts) {
+    var best = { d: Infinity, p: null };
+    for (var k = 1; k < pts.length; k++) { var a = pts[k - 1], b = pts[k], vx = b.x - a.x, vy = b.y - a.y, L = vx * vx + vy * vy;
+      var u = L > 0 ? cl(((c.x - a.x) * vx + (c.y - a.y) * vy) / L, 0, 1) : 0, q = { x: a.x + vx * u, y: a.y + vy * u };
+      var d = Math.hypot(c.x - q.x, c.y - q.y); if (d < best.d) best = { d: d, p: q }; }
+    return best;
+  }
+  function anelRes(i) {
+    var c = map.project(RES_COSTA[i]), seta = CORR[0].map(function (ll) { return map.project(ll); });
+    var q = maisPerto(c, seta).p, m = { x: (c.x + q.x) / 2, y: (c.y + q.y) / 2 }, gap = Math.hypot(q.x - c.x, q.y - c.y);
+    var dT = Infinity;
+    TERRA.forEach(function (pol) { var pr = pol[0].map(function (ll) { return map.project(ll); }); dT = Math.min(dT, maisPerto(m, pr).d); });
+    var F = CENA.ressurg.folga, rmax = Math.min(CENA.ressurg.r[1], gap / 2 - 16 - F, dT - 8 - F);
+    return { p: m, rmax: Math.max(rmax, 8) };
+  }
   var NS = "http://www.w3.org/2000/svg", RES_EL = [];
   (function () {
     var g = E("ressurg"); if (!g) return;
@@ -584,11 +613,11 @@ Peruvian coast”</div><div class="trad" data-qc-papel="legenda">Translated from
     if (v <= 0) { g.setAttribute("opacity", "0"); return; }
     aplicarTerra(t);
     RES_PTS.forEach(function (ll, i) {
-      var p = map.project(ll);
+      var an = anelRes(i), p = an.p, r0 = Math.min(R.r[0], an.rmax * 0.3);
       for (var k = 0; k < 2; k++) {
         var par = RES_EL[i * 2 + k]; if (!par) continue;
         var u = (t - (R.entra + i * 0.08 + k * R.entre)) / R.pulso, vivo = u >= 0 && u < 1;
-        var r = R.r[0] + (R.r[1] - R.r[0]) * eo(u), a = vivo ? cl(u / 0.12, 0, 1) * (1 - 0.75 * eio(u)) : 0;
+        var r = r0 + (an.rmax - r0) * eo(u), a = vivo ? cl(u / 0.12, 0, 1) * (1 - 0.75 * eio(u)) : 0;
         par.forEach(function (c) { c.setAttribute("cx", p.x.toFixed(2)); c.setAttribute("cy", p.y.toFixed(2));
           c.setAttribute("r", r.toFixed(2)); c.setAttribute("opacity", a.toFixed(3)); });
       }

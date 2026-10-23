@@ -32,8 +32,9 @@
       muros de adobe no satélite; o Moche sai em 0,5 s. O ponto e 'Chan Chan' em 'Chan' (12,933), 'Chimú capital' sob o nome em
       'Chimú' (13,9); em 'UNESCO' (15,333) a fala citada no cartão --papel (280 px, data-qc-papel="heroi"), à esquerda, sobre o
       mar e o deserto, com 'Source: UNESCO (World Heritage List, 1986)' na faixa.
-    · b3 19,967–23,933: recuo cúbico de 1,5 s (z 11,0), e o canal se desenha em 2 s, tracejado em --contraparte 6 px sobre 14
-      escuros, da tomada no vale do Chicama (o vértice do rio-chicama mais perto de Ascope) até Chan Chan: rota SEM traçado lido,
+    · b3 19,967–23,933: recuo cúbico de 1,5 s (z 11,0), e o canal se desenha em 2 s, tracejado em --contraparte 11 px sobre um
+      contorno escuro CONTÍNUO de 20 px (peru-agua-arte-15: antes 6 sobre 14, os dois tracejados; só a largura mudou), da
+      tomada no vale do Chicama (o vértice do rio-chicama mais perto de Ascope) até Chan Chan: rota SEM traçado lido,
       uma curva entre os dois lugares reais, com 'Approximate route' o tempo todo (identidade §6; textos-tela, ESQUEMA DECLARADO).
       'Chicama Valley' à esquerda da tomada, 'Chan Chan' fica (a mesma pílula desde 12,933), 'Approximate route' sobre o canal
       (o lado da serra), 'CANAL · ABOUT 50 MILES (80 km)' acima, em 'fifty' (20,8), com a fonte da UNESCO na faixa.
@@ -244,7 +245,10 @@ America”</div></div>
       A.linha("div", A.geo("divisoria-continental-peru"), { cor: "--tinta", w: 6, sob: 12, sobCor: "--rotulo" });
       A.linha("supe", A.geo("rio-supe"), { cor: "--destaque", w: 6, sob: 12, sobCor: "--rotulo" });
       A.linha("moche", A.geo("rio-moche"), { cor: "--destaque", w: 6, sob: 12, sobCor: "--rotulo" });
-      A.linha("canal", { type: "FeatureCollection", features: [] }, { cor: "--contraparte", w: 6, sob: 14, sobCor: "--rotulo", dash: [2, 1.6], cap: "butt" });
+      // peru-agua-arte-15 (r2, mantidos[5]): o canal é a peça principal do b3. O ciano a 11 px, só ele tracejado; por baixo, o
+      //   contorno escuro CONTÍNUO de 20 px (antes 6 sobre 14, os dois tracejados, que se liam como pontilhado fino)
+      A.linha("canal", { type: "FeatureCollection", features: [] }, { cor: "--contraparte", w: 11, sob: 20, sobCor: "--rotulo", cap: "butt" });
+      map.setPaintProperty("canal-linha", "line-dasharray", [2, 1.6]);
     },
     quadro: function (t, A) {
       var mapa = !(t >= 27.5 && t < 31.633);

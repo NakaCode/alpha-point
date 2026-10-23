@@ -18,8 +18,15 @@
   Inter no peso de texto, 92 px, data-qc-papel="legenda"), com 'Translated from Spanish' sob elas. Editado à mão sobre o HTML da
   arte-12 (sha1 4d0bf347…); o montar.py da arte-12 não foi refeito. A folha, os grifos, os tempos, a câmera (o b0 continua a mesma
   função do tempo que fecha a s48 b2) e o resto da cena não mudaram.
+  peru-agua-arte-15 (lote EO): (1) mantidos[12] da revisão de espectador r2: 'ANDEAN REGIONS' (14,7–17,134) deixa a posição fixa de
+  tela (1520, 560), que caía sobre a costa, e se prende à SERRA, logo a leste da cauda da seta (−76,00/−11,42, a leste da
+  divisória), projetado a cada quadro; o ponto chega inteiro à área segura em 15,85 (medido),
+  e a entrada de 300 ms começa ali (sem ela, saltaria de 0 a 1 num quadro); a janela do textos-tela segue 14,7–17,134. (2) texto-15
+  (textos-tela 946283df, a escolha do Lucas): o rótulo da ponta aberta passa a 'NO CONSTRUCTION DATE', numa linha. Os dois
+  consertos da arte-13 e estes foram levados ao montar.py, que volta a reproduzir a cena. O resto não mudou. Entradas: textos-tela
+  946283df (as linhas da s49 idênticas no dc0c0ea4 do texto-16); a direcao-22 (regência 679d2809) já descreve os dois consertos.
 
-  O que manda em cada coisa (entradas de 22/10/2026, sha256 conferidos): os TEXTOS (textos-tela.json 2f748bfc… › s49, a lista fechada; na arte-13, cebd9480… › s49);
+  O que manda em cada coisa (entradas de 22/10/2026, sha256 conferidos): os TEXTOS (textos-tela.json 2f748bfc… › s49, a lista fechada; na arte-13, cebd9480… › s49; na arte-15, 946283df… › s49);
   os BEATS, o exige e a câmera (regencia.json 460eb6e1… › s49, _decisoes_da_regencia e _para_o_redator_e_a_arte); o conceito
   (4ac21dbc… › s49 e s50); a marca.
 
@@ -37,8 +44,9 @@
         e a câmera se aproxima devagar; em 'come' (14,0) a SETA no traço do canal (--destaque 6 px, tracejada, com o contorno escuro)
         sai do polígono para o leste, a ponta no contorno dele (o vértice mais a leste, calculado) apontando para dentro, a linha
         crescendo até a serra em 1,6 s, enquanto a câmera ABRE em 3 s (cúbica) até a serra inteira do centro do Peru, e a divisória
-        (divisoria-continental-peru, a MESMA do vídeo) acende; em 'Andean' (14,7) 'ANDEAN REGIONS' (pílula, caixa alta, em duas linhas para caber
-        sobre a faixa da serra) solto sobre a serra, PARADO na tela; a seta termina na serra, a leste da divisória. Nenhum departamento nomeado. Rótulos, seta e a fonte da revista saem em 17,134.
+        (divisoria-continental-peru, a MESMA do vídeo) acende; de 'Andean' (14,7) 'ANDEAN REGIONS' (pílula, caixa alta, em duas linhas para caber
+        sobre a faixa da serra) PRESO À SERRA, à direita da cauda da seta (arte-15), entrando (300 ms) em 15,85, quando a câmera traz a serra inteira à área segura;
+        a seta termina na serra, a leste da divisória. Nenhum departamento nomeado. Rótulos, seta e a fonte da revista saem em 17,134.
     b3 17,133–21,933 · em 'The water Lima keeps': a viagem de 3 s (cúbica) da serra aberta ao QUADRO DA s40 (os pontos C0 e C1 da s39:
         −76,335/−11,488, zoom 12,55 → 12,62, rumo 254° → 247°, inclinação 42° → 44°), o relevo subindo a 1,5× e a cota do centro a
         4.300 m (como a s39 no mesmo quadro); o polígono sai; o traçado do túnel (tunel-transandino, OSM: o canal e o túnel) se desenha
@@ -59,7 +67,7 @@
         Gestión, Aug. 30, 2026' em 31,334; a pena desenha a linha do tempo (70 px por ano: 1990 em x 560) desde o começo (a marca de
         1990), cobrindo a década de 1990 até 'nineteen' (33,534), quando POUSAM a cota da década com '1990s' (abaixo) e a marca de 1996
         com 'DEFINITIVE STUDY, 1996' (acima); a linha segue até a marca do fim de agosto de 2026 (x 3125,5) e, em 'August' (35,434),
-        pousa 'NO CONSTRUCTION DATE / AS OF LATE AUGUST 2026' pendurado nela, e a PONTA ABERTA se desenha tracejada, cada traço mais
+        pousa 'NO CONSTRUCTION DATE' (texto-15, numa linha) pendurado nela, e a PONTA ABERTA se desenha tracejada, cada traço mais
         apagado, até sumir em x 3560: sem fim, sem seta. Nunca 2027 nem custo. Push-in do RIG retomado; 250 ms de repouso; corte seco
         para a s51.
 
@@ -438,7 +446,7 @@
     titulo: "SECOND TUNNEL",                                                 // legenda, 31,334–39,767
     rot90: "1990s",                                                          // rotulo, 33,534–39,767
     rot96: "DEFINITIVE STUDY, 1996",                                         // rotulo, 33,534–39,767
-    rotSem: "NO CONSTRUCTION DATE\nAS OF LATE AUGUST 2026",                  // rotulo, 35,434–39,767
+    rotSem: "NO CONSTRUCTION DATE",                                          // rotulo, 35,434–39,767 (texto-15: a forma curta, escolha do Lucas; textos-tela 946283df)
     crSen: "Sources: SENAMHI (Peru), 2016;\nGestión, Aug. 30, 2026"           // credito, 31,334–39,767
   };
   (function () { for (var k in TEXTOS) { var e = E(k); if (e && k !== "credito") e.textContent = TEXTOS[k]; } })();
@@ -536,7 +544,14 @@
   // ═══ OS RÓTULOS DO MAPA ═══
   var ROT = [
     { id: "rotPP",    ll: [-77.1160, -11.8650], lado: "esquerda", dx: -48, entra: 11.067, sai: 17.134 },   // à esquerda do polígono
-    { id: "rotAndes", tela: [1520, 560], lado: "centro", entra: 14.7, sai: 17.134 }                        // solto sobre a serra, parado na tela
+    // peru-agua-arte-15 (mantidos[12]): preso à SERRA, logo a leste da cauda da seta (−76,00/−11,42, a leste da divisória), à
+    // direita dela: a pílula começa 56 px a leste do ponto, centrada nele na vertical. Projetado a cada quadro como os outros
+    // rótulos (screen-space, mapista §7); enquanto a câmera ainda não trouxe o ponto à área segura, o esmaecer de 60 px da borda
+    // (naArea) o segura, e ele entra quando a serra entra no quadro. Antes: fixo na tela em (1520, 560), sobre a costa.
+    // A janela do textos-tela é 14,7–17,134; o ponto só chega inteiro à área segura em 15,85 (medido no DOM, medir-andes-r1.log:
+    // 15,80 a borda direita em 3642 > 3640; 15,85 em 3505), e sem entrada própria ele saltaria de 0 a 1 num quadro. Por isso a
+    // entrada de 300 ms (opacidade + 24 px) começa em 15,85, durante 'regions in search' (o que o conserto da revisão pede).
+    { id: "rotAndes", ll: [-76.00, -11.42], lado: "direita", dx: 56, entra: 15.85, sai: 17.134 }           // sobre a serra, a leste da cauda da seta
   ];
 
   // ═══ OS CRÉDITOS (vaga A embaixo, vaga B acima; nenhuma linha salta) ═══
