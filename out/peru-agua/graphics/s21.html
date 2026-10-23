@@ -52,6 +52,11 @@
   <g id="anFoz">, a entrada em CENA.aneis (volta a []), o CSS .anel/.anel-sob e a referência FOZ. Onde o texto da arte-8 acima
   fala do anel, ele não vale mais; o comentário do .ponto-lugar ("sem anel: o anel do vídeo marca só o túnel") volta a valer.
   O Supe em --destaque em 'city' (9,68), o ponto de Lima sem nome e a aproximação final da arte-8 ficam.
+  CONSERTO peru-agua-arte-16 (22/10/2026, textos-tela dc0c0ea4, conserto 17; revisão de espectador r2, idx 4): sai o ponto de
+  Lima (de 9,667 ao fim fica só o Supe aceso, sem texto além do crédito do mapa): sob 'built a city ... five thousand years
+  ago' ele se leria como a cidade de 5 mil anos, que é Caral, no Supe. Saíram o <circle id="pLima">, A.REFS.LIMA e o bloco que
+  o posicionava. Onde o texto da arte-8 acima fala do ponto de Lima, ele não vale mais. A aproximação final (D z 8,85, D2 z 9,15,
+  viagem 9,0 → 11,1) não muda; o enquadramento continua o da arte-8.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -125,7 +130,6 @@
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
     <circle class="ponto-lugar" id="pPiu" cx="0" cy="0" r="14" opacity="0"/>
     <circle class="ponto-lugar" id="pTac" cx="0" cy="0" r="14" opacity="0"/>
-    <circle class="ponto-lugar" id="pLima" cx="0" cy="0" r="14" opacity="0"/>
   </svg>
 
   <div id="rotulos">
@@ -212,8 +216,7 @@ farms, cities and mines not counted</div>
     preparar: function (A) {
       A.REFS.PIU = A.pontoNome("cidades-peru-ne", "Piura");
       A.REFS.TAC = A.pontoNome("cidades-peru-ne", "Tacna");
-      // arte-8: Lima (o ponto do NE) e a linha do Supe (OSM)
-      A.REFS.LIMA = A.pontoNome("cidades-peru-ne", "Lima");
+      // arte-8: a linha do Supe (OSM); peru-agua-arte-16: o ponto de Lima saiu
       var sp = A.feicao("rio-supe");
       if (!sp || !sp.geometry || sp.geometry.type !== "LineString") return A.falhar("o rio-supe não é uma LineString.");
       SUPE = sp.geometry.coordinates;
@@ -255,9 +258,6 @@ farms, cities and mines not counted</div>
         A.setDado("supe", k, { type: "FeatureCollection", features: tr.length > 1 ? [{ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: tr } }] : [] });
       } else A.setDado("supe", "0", { type: "FeatureCollection", features: [] });
       A.lin("supe", A.janela(t, S.entra, null, 0.15));
-      var pl = A.E("pLima");
-      if (pl && A.REFS.LIMA) { var q = A.project(A.REFS.LIMA); pl.setAttribute("cx", q.x.toFixed(2)); pl.setAttribute("cy", q.y.toFixed(2));
-        pl.setAttribute("opacity", A.janela(t, S.entra, null).toFixed(3)); }
     }
   };
   // ═══ O MOTOR DA CENA (copiado sem mudança da s20 do vídeo 3, commit 36acb97; só o DUR literal) ══════════════

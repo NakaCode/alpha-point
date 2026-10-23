@@ -25,6 +25,11 @@
   (textos-tela 946283df, a escolha do Lucas): o rótulo da ponta aberta passa a 'NO CONSTRUCTION DATE', numa linha. Os dois
   consertos da arte-13 e estes foram levados ao montar.py, que volta a reproduzir a cena. O resto não mudou. Entradas: textos-tela
   946283df (as linhas da s49 idênticas no dc0c0ea4 do texto-16); a direcao-22 (regência 679d2809) já descreve os dois consertos.
+  peru-agua-arte-16 (lote EO): 'ANDEAN REGIONS' fica legível só ~1,3 s preso à cauda da seta; passa à alternativa do cético
+  (mantidos[12]): entra em 14,7 ('Andean'), PRESO À TELA sobre os morros a leste, à direita da seta e abaixo dela (a pílula de x 2260,
+  centro em y 1448), já inteiro na área segura em 14,7; sai em 17,134 como antes. Não toca o polígono, não empilha com 'Puente
+  Piedra', e a seta passa sempre acima dele (medido no DOM, _tmp/arte-16/EO/). Só isso mudou; a emenda com a s48 (o b0) não muda.
+  Entradas: textos-tela dc0c0ea4, regência 679d2809, espelho cf7869d6, conceito 56a14133.
 
   O que manda em cada coisa (entradas de 22/10/2026, sha256 conferidos): os TEXTOS (textos-tela.json 2f748bfc… › s49, a lista fechada; na arte-13, cebd9480… › s49; na arte-15, 946283df… › s49);
   os BEATS, o exige e a câmera (regencia.json 460eb6e1… › s49, _decisoes_da_regencia e _para_o_redator_e_a_arte); o conceito
@@ -45,7 +50,7 @@
         sai do polígono para o leste, a ponta no contorno dele (o vértice mais a leste, calculado) apontando para dentro, a linha
         crescendo até a serra em 1,6 s, enquanto a câmera ABRE em 3 s (cúbica) até a serra inteira do centro do Peru, e a divisória
         (divisoria-continental-peru, a MESMA do vídeo) acende; de 'Andean' (14,7) 'ANDEAN REGIONS' (pílula, caixa alta, em duas linhas para caber
-        sobre a faixa da serra) PRESO À SERRA, à direita da cauda da seta (arte-15), entrando (300 ms) em 15,85, quando a câmera traz a serra inteira à área segura;
+        sobre a faixa da serra) PRESO À TELA sobre os morros a leste, à direita da seta e abaixo dela (arte-16), entrando (300 ms) em 14,7;
         a seta termina na serra, a leste da divisória. Nenhum departamento nomeado. Rótulos, seta e a fonte da revista saem em 17,134.
     b3 17,133–21,933 · em 'The water Lima keeps': a viagem de 3 s (cúbica) da serra aberta ao QUADRO DA s40 (os pontos C0 e C1 da s39:
         −76,335/−11,488, zoom 12,55 → 12,62, rumo 254° → 247°, inclinação 42° → 44°), o relevo subindo a 1,5× e a cota do centro a
@@ -544,14 +549,14 @@
   // ═══ OS RÓTULOS DO MAPA ═══
   var ROT = [
     { id: "rotPP",    ll: [-77.1160, -11.8650], lado: "esquerda", dx: -48, entra: 11.067, sai: 17.134 },   // à esquerda do polígono
-    // peru-agua-arte-15 (mantidos[12]): preso à SERRA, logo a leste da cauda da seta (−76,00/−11,42, a leste da divisória), à
-    // direita dela: a pílula começa 56 px a leste do ponto, centrada nele na vertical. Projetado a cada quadro como os outros
-    // rótulos (screen-space, mapista §7); enquanto a câmera ainda não trouxe o ponto à área segura, o esmaecer de 60 px da borda
-    // (naArea) o segura, e ele entra quando a serra entra no quadro. Antes: fixo na tela em (1520, 560), sobre a costa.
-    // A janela do textos-tela é 14,7–17,134; o ponto só chega inteiro à área segura em 15,85 (medido no DOM, medir-andes-r1.log:
-    // 15,80 a borda direita em 3642 > 3640; 15,85 em 3505), e sem entrada própria ele saltaria de 0 a 1 num quadro. Por isso a
-    // entrada de 300 ms (opacidade + 24 px) começa em 15,85, durante 'regions in search' (o que o conserto da revisão pede).
-    { id: "rotAndes", ll: [-76.00, -11.42], lado: "direita", dx: 56, entra: 15.85, sai: 17.134 }           // sobre a serra, a leste da cauda da seta
+    // peru-agua-arte-16 (mantidos[12], a alternativa do cético): entra em 'Andean' (14,7) PRESO À TELA, sobre os morros a leste,
+    // à direita da seta e abaixo dela: a pílula começa em x 2260 (98 px a leste do contorno do polígono em 14,7, 2162) com o
+    // centro em y 1448 (a caixa ~2260–2936 × 1290–1607). Já está inteira na área segura em 14,7, e a seta (que só encolhe para a
+    // esquerda e para cima enquanto a câmera abre) passa sempre acima dela; 'Puente Piedra' fica à esquerda do polígono (até x 1696).
+    // Em 14,7 a caixa cobre os morros de Carabayllo (≈ −77,0/−11,9); com a câmera aberta (17,0), a serra a leste do Mantaro.
+    // Medido no DOM (arte-16/EO/medir-s49-*.log). Antes (arte-15): projetado na cauda da seta, entrando em 15,85 (~1,3 s legível);
+    // um ponto do mapa já visível em 14,7 converge, com a câmera abrindo, para a ponta da seta e a cruza (medir-s49-r0.log).
+    { id: "rotAndes", tela: [2260, 1448], lado: "direita", entra: 14.7, sai: 17.134 }           // sobre os morros a leste, à direita da seta
   ];
 
   // ═══ OS CRÉDITOS (vaga A embaixo, vaga B acima; nenhuma linha salta) ═══

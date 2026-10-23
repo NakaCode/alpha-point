@@ -10,6 +10,11 @@
   s42+s43, fundido: a s43 é o b5 e o b6 da regência). cleanDur = dur (faceless). Modo do espelho: documento · a cena VIRA por dentro
   (ofício §9): b0 DOCUMENTO recriado → b1 MAPA → b2 ANIMAÇÃO (editor em Opus) → b3 CARD DE PESSOA sem retrato → b4–b6 MAPA (um mapa
   só até o fim). Tarefa peru-agua-arte-12, lote EO3. Nenhum hex.
+  peru-agua-arte-16 (lote EO; texto-16, conserto 17 do textos-tela dc0c0ea4…, mantidos[10] da revisão r2): o eixo "J F M A M J J A
+  S O N D" (eixo, 84 px, Inter 500), UM elemento, uma inicial centrada sob cada uma das 12 casas, de 10,167 a 13,9; cada letra nasce
+  quando a pena fecha a sua casa (o traço das casas, 0,4 s, casa a casa). Nada dentro das casas. Para caber, a linha de cota e
+  "MAY 1 – NOV. 30" descem 90 px (a cota de y 1226 a 1316). Só isso mudou. Entradas: textos-tela dc0c0ea4, regência 679d2809,
+  espelho cf7869d6, conceito 56a14133.
 
   O que manda em cada coisa: os TEXTOS (textos-tela.json sha256 2f748bfc… › s42 e cards_pessoa s42), os BEATS (regencia.json sha256
   460eb6e1… › s42), o conceito (s42 e s43, "Uma porta, vários copos"; vale a regência onde ele fala do aéreo que não veio), o words.json,
@@ -35,7 +40,8 @@
         abaixo (0,6 s), com a pílula, em "Chillón" (7,167); o Lurín (rio-lurin, OSM) idem em "Lurín," (8,067). Os poços ficam só na voz:
         nenhum texto, nenhum ponto. A câmera se aproxima devagar (zoom 10,22 → 10,32), sem parar.
     b2 10,167–13,9 · CORTE SECO À MESA: ANIMAÇÃO no traço de engenheiro: DOZE CASAS de calendário em contorno (sem texto dentro),
-        desenhando-se no corte, com "DRY-SEASON RELEASES" acima delas (legenda, 300 ms).
+        desenhando-se no corte, com "DRY-SEASON RELEASES" acima delas (legenda, 300 ms) e, sob elas, o eixo "J F M A M J J A S O N D"
+        (arte-16), cada inicial nascendo com a sua casa.
         11,900 "May": as casas de maio a novembro (a 5ª à 11ª) ENCHEM, duas a cada 500 ms (11,9 · 12,4 · 12,9 · 13,4), cada uma em
                0,30 s; a linha de cota de maio a novembro se desenha sob elas e "MAY 1 – NOV. 30" pousa sob a cota (300 ms); o crédito
                da Infobae entra.
@@ -63,7 +69,7 @@
   PRODUTO MÁXIMO DAS ESCALAS: o levantar do calendário 1,04 × 1,0087 = 1,049; a folha 1,03 × 1,0032.
 
   CONTA DOS ELEMENTOS (identidade §4.2, minha, não portão): b0: a folha, a citação, a legenda = 3. b1: 3 rios + 3 pílulas = 6 (cada rio
-    com a sua pílula conta 1: 3). b2: as 12 casas (1), a cota com o rótulo (1), o título (1) = 3. b3: o card (nome + cargo) = 1.
+    com a sua pílula conta 1: 3). b2: as 12 casas com o eixo (1), a cota com o rótulo (1), o título (1) = 3. b3: o card (nome + cargo) = 1.
     b4: as represas com os nomes (3) + o número (1) = 4. b5: a divisória, o traçado, o anel = 3. b6: a pílula = 1.
     Blocos de leitura no pior quadro: 3 (b0: a folha, a citação e a legenda).
 
@@ -166,6 +172,10 @@
   .legenda { position: absolute; left: 0; top: 0; opacity: 0; white-space: pre; font-family: var(--fonte);
     font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.18; letter-spacing: 0; color: var(--legenda-cor); }
   .legenda.caixa { letter-spacing: var(--tracking-lugar); }
+  /* o eixo dos meses (arte-16): UM elemento; cada inicial numa célula da largura da casa, centrada sob ela */
+  .eixo-meses { position: absolute; left: 0; top: 0; opacity: 0; display: flex; white-space: nowrap; font-family: var(--fonte);
+    font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.0; letter-spacing: 0; color: var(--legenda-cor); }
+  .eixo-meses span { display: block; text-align: center; opacity: 0; }
   .rot { position: absolute; left: 0; top: 0; opacity: 0; white-space: nowrap; font-family: var(--fonte); font-weight: var(--peso-rotulo);
     font-size: var(--fs-rotulo); line-height: 1.0; letter-spacing: var(--tracking-lugar); color: var(--tinta); }
   .card-nome { position: absolute; left: 0; top: 0; white-space: nowrap; background: var(--rotulo); border-radius: var(--cantos);
@@ -224,6 +234,7 @@
         </svg>
         <div class="legenda caixa" id="calTit" data-qc-papel="eixo"></div>
         <div class="rot" id="calRot" data-qc-papel="rotulo"></div>
+        <div class="eixo-meses" id="calEixo" data-qc-papel="eixo"></div>
       </div>
       <!-- b3: o card de pessoa sem retrato -->
       <div class="sombra-solta" id="cardSombra"></div>
@@ -351,6 +362,7 @@
     pLurin: "Lurín",                                                      // rotulo, 8,067 · lastro: "the Lurín"
     calTit: "DRY-SEASON RELEASES",                                        // legenda, 10,167 · lastro: "The dry-season releases"
     calRot: "MAY 1 – NOV. 30",                                            // cota, 11,9 · lastro: "from May first to November thirtieth"
+    eixoMeses: "J F M A M J J A S O N D",                                 // eixo, 10,167–13,9 (arte-16; conserto 17): uma inicial sob cada casa
     credInf: "Source: SEDAPAL interview, reported by\nInfobae, September 2024",   // credito, 11,9–25,833 (na mesa)
     crInf: "Source: SEDAPAL interview, reported by\nInfobae, September 2024",     // o mesmo, em pílula, no mapa (20,967–25,833)
     cardNome: "RÓMULO CÁRHUAZ",                                           // card_nome, 13,9 · lastro: "Rómulo Cárhuaz"
@@ -455,13 +467,25 @@
     var d = "";
     for (var k = 0; k < CAL.n; k++) { var x = xCasa(k); d += "M" + x + "," + CAL.y0 + " L" + (x + CAL.lado) + "," + CAL.y0 + " L" + (x + CAL.lado) + "," + CAL.y1 + " L" + x + "," + CAL.y1 + " Z "; }
     E("calCasas").setAttribute("d", d); E("calSom").setAttribute("d", d);
-    var xa = xCasa(4), xb = xCasa(10) + CAL.lado, yc = CAL.y1 + 90;
+    var xa = xCasa(4), xb = xCasa(10) + CAL.lado, yc = CAL.y1 + 180;   // arte-16: +90 px, abaixo do eixo dos meses (era y1 + 90)
     E("calCota").setAttribute("d", "M" + xa + "," + (CAL.y1 + 30) + " L" + xa + "," + (yc + 30) + " M" + xb + "," + (CAL.y1 + 30) + " L" + xb + "," + (yc + 30) + " M" + xa + "," + yc + " L" + xb + "," + yc);
     E("calPontas").setAttribute("d", "M" + xa + "," + yc + " L" + (xa + 40) + "," + (yc - 14) + " L" + (xa + 40) + "," + (yc + 14) + " Z M" + xb + "," + yc + " L" + (xb - 40) + "," + (yc - 14) + " L" + (xb - 40) + "," + (yc + 14) + " Z");
     var ns = "http://www.w3.org/2000/svg", g = E("calNiveis");
     ENCHE.forEach(function (e) { var p = document.createElementNS(ns, "path"); p.setAttribute("class", "ar-fina"); p.setAttribute("id", "niv" + e[0]); p.style.opacity = "1"; g.appendChild(p);
       var s = document.createElementNS(ns, "path"); s.setAttribute("class", "ar"); s.setAttribute("id", "sup" + e[0]); g.appendChild(s); });
     CAL.yCota = yc;
+    // o eixo dos meses (arte-16): UM elemento (o texto inteiro do redator); cada inicial numa célula da largura da casa, com o vão
+    // entre elas, de modo que a letra k fica centrada sob a casa k. Os espaços do texto ficam entre as células (não ocupam lugar).
+    var ex = E("calEixo");
+    if (ex) {
+      ex.textContent = "";
+      TEXTOS.eixoMeses.split(" ").forEach(function (L, k) {
+        if (k > 0) ex.appendChild(document.createTextNode(" "));
+        var s = document.createElement("span"); s.textContent = L; s.style.width = CAL.lado + "px";
+        if (k < CAL.n - 1) s.style.marginRight = CAL.vao + "px";
+        ex.appendChild(s);
+      });
+    }
   })();
   // o nível de cada casa: vazão constante → h = (τ / DUR_ENCHE) × lado (linear, sem easing); para na boca
   function nivel(e, t) { return CAL.lado * clamp((t - e[1]) / DUR_ENCHE, 0, 1); }
@@ -484,6 +508,14 @@
     });
     var cota = eo(seg(t, T.encher, 0.6)), ct = E("calCota"); if (ct) { ct.style.strokeDasharray = "1 1"; ct.style.strokeDashoffset = (1 - cota).toFixed(4); }
     var pp = E("calPontas"); if (pp) pp.style.opacity = eo(seg(t, T.encher + 0.45, 0.15)).toFixed(3);
+    // o eixo (arte-16): a letra k nasce enquanto a pena fecha a casa k (o traço tem as 12 casas iguais em sequência: a casa k é
+    // o trecho [k/12, (k+1)/12] do comprimento); o eixo inteiro sai com os textos do calendário (13,6–13,9). Parado, 34 px sob as casas.
+    var ex = E("calEixo");
+    if (ex) {
+      ex.style.opacity = (t >= T.mesa2 ? 1 - eio(seg(t, T.card - 0.3, 0.3)) : 0).toFixed(3);
+      ex.style.transform = "translate(" + CAL.x0 + "px," + (CAL.y1 + 34) + "px)";
+      for (var i = 0, sp = ex.children; i < sp.length; i++) sp[i].style.opacity = clamp(d * CAL.n - i, 0, 1).toFixed(3);
+    }
     var tit = E("calTit"), rot = E("calRot");
     if (tit) { var a = janela(t, T.mesa2, T.card); tit.style.opacity = a.toFixed(3); tit.style.transform = "translate(" + CAL.x0 + "px," + f2(CAL.y0 - 60 - tit.offsetHeight + (1 - eo(seg(t, T.mesa2, 0.3))) * 24) + "px)"; }
     if (rot) { var b = janela(t, T.encher, T.card), xm = (xCasa(4) + xCasa(10) + CAL.lado) / 2;

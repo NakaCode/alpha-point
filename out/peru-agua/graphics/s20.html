@@ -8,6 +8,9 @@
   b0 MAPA plano sobre a foz do Rímac (corpo de mapa da roupa e do ofício do mapista) → b1 ANIMAÇÃO no traço de engenheiro sobre a
   mesa (identidade §5, "Animação para explicar" e "Mais ilustração"; editor em Opus: regencia.json › _animacao_em_opus).
   Tarefa peru-agua-arte-12, lote EO3. Nenhum hex.
+  peru-agua-arte-16 (lote EO; texto-16, conserto 17 do textos-tela dc0c0ea4…, mantidos[3] da revisão r2): a pílula "Rímac" (rotulo)
+  na foz, de 1,6 a 4,5, ao lado da linha, sem cobri-la. Só isso mudou. Entradas: textos-tela dc0c0ea4, regência 679d2809, espelho
+  cf7869d6, conceito 56a14133.
 
   O que manda em cada coisa: os TEXTOS (textos-tela.json sha256 2f748bfc… › s20: "© MapTiler © OpenStreetMap contributors" 0–4,5;
   "Source: ANA (Peru), 2009" 0–10,7; "ABOUT HALF" (heroi) e "OF THE FLOOD WATER FROM THE WETTER PART OF THE PACIFIC SIDE" (legenda)
@@ -18,8 +21,11 @@
   OS BEATS (tempo local = master − 202,133; palavras do words.json):
     b0 0–4,5 · O MAPA (MapTiler satellite-v2, PLANO, tratamento C da identidade §6) sobre a foz do Rímac (rio-rimac, OSM): a foz em
         x ~1305, o mar à esquerda; os últimos 16 km do rio acendem finos em --destaque (6 px sobre 14 px escuros), correndo rio abaixo
-        até o mar de 0,3 a 1,6 s; a câmera se aproxima devagar (zoom 12,80 → 13,05) e gira devagar (−1,5° → +1,5°), sem parar. Nenhuma
-        pílula (o textos-tela não tem). A água barrenta da cheia fica na voz: a imagem não a afirma.
+        até o mar de 0,3 a 1,6 s; a câmera se aproxima devagar (zoom 12,80 → 13,05) e gira devagar (−1,5° → +1,5°), sem parar. Em 1,6,
+        quando o traço chega ao mar, a pílula "Rímac" (rotulo, --rotulo, 128 px; arte-16) entra na foz (300 ms, opacidade + 24 px),
+        presa à ponta do rio-rimac (−77,14759/−12,03074) e projetada a cada quadro: acima e à esquerda da foz, sobre o mar, com a
+        borda de baixo 56 px acima da ponta e a direita 60 px a leste dela, sem cobrir a linha (que segue para o leste e desce); sai
+        no corte (4,5). A água barrenta da cheia fica na voz: a imagem não a afirma.
         Créditos: "© MapTiler © OpenStreetMap contributors" (data-qc-credito="mapa") e, acima dele, "Source: ANA (Peru), 2009", do 1º
         quadro.
     b1 4,5–10,7 · CORTE SECO À MESA (troca de regime): ANIMAÇÃO no traço de engenheiro (só linha --tinta 6 px, sem preenchimento,
@@ -41,7 +47,7 @@
     crédito; o canto de 400 × 400 vazio (a linha do mar passa em y ~1700, fora dele: x ≥ 3440 só abaixo de y 1760 conta).
     PRODUTO MÁXIMO DAS ESCALAS: 1,0143 (sem foto; o volume não escala).
 
-  CONTA DOS ELEMENTOS (identidade §4.2, minha, não portão): b0: o rio (1) = 1. b1: o chão com o mar (1), a metade da esquerda (1), a
+  CONTA DOS ELEMENTOS (identidade §4.2, minha, não portão): b0: o rio com a sua pílula (1) = 1. b1: o chão com o mar (1), a metade da esquerda (1), a
     metade da direita (1, até sair), a barragem tracejada (1), o herói (1), as duas legendas (2) = 6 no pior quadro (7,77 s em diante:
     a metade da direita já saiu). Blocos de leitura: o herói e as duas legendas = 3 (o teto).
 
@@ -109,6 +115,10 @@
   .credito { position: absolute; left: var(--credito-x); max-width: 1520px; opacity: 0;
     font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
     color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: nowrap; }
+  /* a pílula do rio (arte-16): o .pilula da s42, sem mudança */
+  .pilula { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; white-space: nowrap; background: var(--rotulo); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-family: var(--fonte); font-weight: var(--peso-rotulo);
+    font-size: var(--fs-rotulo); line-height: 1; letter-spacing: 0; color: var(--tinta); font-variant-numeric: var(--numeros); }
   #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: var(--tensao); color: var(--tinta);
     font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; }
   #erroCena[hidden] { display: none; }
@@ -159,6 +169,7 @@
       <div class="cred" id="credMesa" data-qc-papel="credito"></div>
     </div>
   </div>
+  <div class="pilula" id="pRimac" data-qc-papel="rotulo"></div>
   <div class="credito" id="crFonte" data-qc-papel="credito"></div>
   <div class="credito" id="crMapa" data-qc-papel="credito" data-qc-credito="mapa"></div>
   <div id="erroCena" hidden></div>
@@ -264,14 +275,15 @@
     crMapa: "© MapTiler © OpenStreetMap contributors",                 // credito, 0–4,5 (o mapa; o OSM do Rímac vai nele)
     crFonte: "Source: ANA (Peru), 2009",                                // credito, 0–10,7 (no mapa, em pílula)
     credMesa: "Source: ANA (Peru), 2009",                               // o mesmo crédito, sobre a mesa (4,5–10,7)
+    pRimac: "Rímac",                                                    // rotulo, 1,6–4,5 (arte-16; conserto 17): a foz, quando o traço chega ao mar
     heroi: "ABOUT HALF",                                                // heroi, 4,867 · lastro: "about half"
     leg1: "OF THE FLOOD WATER FROM THE WETTER\nPART OF THE PACIFIC SIDE",  // legenda, 4,867 · lastro: "of the flood water from the wetter part of the Pacific side"
     leg2: "RUNS BACK TO THE SEA UNUSED"                                 // legenda, 7,767 · lastro: "runs back into the sea unused"
   };
-  ["crFonte", "credMesa", "heroi", "leg1", "leg2"].forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+  ["crFonte", "credMesa", "pRimac", "heroi", "leg1", "leg2"].forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
 
   var T = { rio: 0.30, rioDur: 1.30, mesa: 4.50, desenha: 0.35, metade: 4.867, solta: 5.35, barragem: 5.90, runs: 7.767,
-            repouso: 10.45 };
+            repouso: 10.45, pilula: 1.6 };
 
   // ═══ A MESA (b1) ═══
   var TH = 8 * Math.PI / 180, TAN = Math.tan(TH), COS = Math.cos(TH), SIN = Math.sin(TH);
@@ -642,6 +654,20 @@
   })();
 
   var ultimoRio = null;
+  // a pílula "Rímac" (arte-16): presa à ponta do rio (a foz, projetada a cada quadro, screen-space), acima e à esquerda dela, sobre o
+  // mar: a borda de baixo 56 px acima da ponta, a direita 60 px a leste dela (a linha segue para o leste e desce: nada a cobre).
+  // Entra em 1,6 (300 ms, opacidade + 24 px de subida) e sai no corte (4,5), inteira até ele; o esmaecer de 60 px da borda segura.
+  function naArea(l, tp, w, h) { var r = l + w, b = tp + h; return Math.min(l - 200, 3640 - r, tp - 160, 1880 - b, Math.max(3440 - r, 1760 - b)); }
+  function pilulaFoz(t, noMapa) {
+    var el = E("pRimac"); if (!el) return;
+    var vin = eo(seg(t, T.pilula, 0.3)), v = (noMapa && t >= T.pilula && map && mapaCarregado && RIO) ? vin : 0;
+    if (v <= 0) { el.style.opacity = "0"; el.style.visibility = "hidden"; return; }
+    var q = map.project(RIO[RIO.length - 1]), w = el.offsetWidth, h = el.offsetHeight;
+    var l = q.x + 60 - w, tp = q.y - 56 - h + (1 - vin) * 24;
+    v *= cl(naArea(l, tp, w, h) / 60, 0, 1);
+    el.style.opacity = v.toFixed(3); el.style.visibility = v > 0 ? "visible" : "hidden";
+    el.style.transform = "translate(" + f2(l) + "px," + f2(tp) + "px)";
+  }
   function mapaQuadro(t) {
     var vm = E("vistaMesa"), mp = E("map"), noMapa = t < T.mesa;
     if (vm) vm.style.opacity = noMapa ? "0" : "1";
@@ -651,6 +677,7 @@
       var f = eb(seg(t, T.rio, T.rioDur)), k = f.toFixed(4);
       if (k !== ultimoRio) { var s = map.getSource("rim"); if (s) s.setData(f > 0 ? trechoAte(f) : { type: "FeatureCollection", features: [] }); ultimoRio = k; }
     }
+    pilulaFoz(t, noMapa);
     // os créditos: no mapa, em pílula, o da MapTiler embaixo e o da ANA acima; na mesa, o da ANA no mesmo pé
     var cm = E("crMapa"), cf = E("crFonte"), base = 24;
     if (cm) { cm.style.opacity = noMapa ? "1" : "0"; cm.style.bottom = base + "px"; base += cm.offsetHeight + 10; }
