@@ -1,6 +1,6 @@
 # Peru (peru-agua) — a geometria (pesquisa-geo, 22/10/2026)
 
-Registro de cada camada de `out/peru-agua/_media/geo/`. O contrato é o `pauta-geo.json` ao lado (35 itens e 5 bloqueios).
+Registro de cada camada de `out/peru-agua/_media/geo/`. O contrato é o `pauta-geo.json` ao lado (36 itens e 7 bloqueios).
 Este arquivo dá a fonte, a data, a fidelidade medida e o crédito de cada uma. Tudo em WGS84, lon/lat em graus decimais. Cada
 `.json` tem o seu `.js` (o que a cena carrega). O relato da tarefa está em `out/peru-agua/_tmp/pesquisa-geo/relato.md`.
 
@@ -73,7 +73,8 @@ deserto de outra fonte.
 | `bacia-mantaro` | bacia-alto-mantaro | HydroBASINS v1c | idem | 1 | a bacia inteira (34.534 km²) |
 | `tunel-transandino` | tunel-transandino | OSM way/1226268824 + 37 ways do canal, 22/10/2026 | ODbL: `© OpenStreetMap contributors` | 2 | canal 11,98 km (JICA 11,9) + túnel 10,08 km (JICA 10,1) = 22,06 km = **13,71 mi**; no OSM o túnel é uma reta de 2 nós; o canal começa em (−76,3293, −11,4052), a leste da lagoa Marcapomacocha |
 | `lagoas-marcapomacocha-antacoto` | idem | OSM (way/26966977, relation/16907593, relation/16907595, way/26976126) | ODbL | 4 | Marcapomacocha 4,62 km², Antacoto 5,18 (no OSM "Antaquta", alt "Antacota"), Marcacocha 2,97, Tucto 0,55; Sangrar não tem lago no OSM; a lista das 19 lagoas não foi lida |
-| `represas-antacoto-huascacocha-yuracmayo` | idem | OSM (relation/16907593, way/26966700, way/26943485) | ODbL | 3 | Antacoto e Huascacocha no lado atlântico; Yuracmayo no Pacífico (rio Blanco → Rímac) |
+| `represas-antacoto-huascacocha-yuracmayo` | idem | OSM (relation/16907593, way/26966700, way/26943485) | ODbL | 3 | Antacoto e Huascacocha no lado atlântico; Yuracmayo no Pacífico (rio Blanco → Rímac). **Alerta de 23/10:** o Huascacocha daqui (way/26966700) é o lago de Morococha, não o da SEDAPAL (Marca IV, em Pasco): ver "As lagoas do Santa Eulalia" |
+| `lagoas-santa-eulalia` | (sem need ainda: s39 › b0, direcao-24) | OSM, dump do Overpass de 22/10/2026 (7 ways) | ODbL | 7 | 7 das 15 lagoas represadas da Tabla 3-4 do SENAMHI 2016, 3,89 km² de água; **parcial**: faltam 8. Abaixo |
 | `segundo-tunel-pontas` | segundo-tunel-planejado | OSM (way/26966553, way/26966527, way/293766958) | ODbL | 3 | Pomacocha e Huallacocha (Mantaro) e o rio Blanco; **a quebrada Pucullo não está no OSM** |
 | `huinco` | huinco | OSM way/864802081 | ODbL | 1 | ponto dentro da usina (start_date 1964) |
 | `la-atarjea` | la-atarjea | OSM way/299519645 | ODbL | 2 | contorno da planta (2,68 km²) + ponto |
@@ -151,7 +152,51 @@ nenhum pedido à rede.
   até ~25 px no palco de 3840.
 - O túnel do OSM é uma reta entre as bocas; o traçado sob a montanha não está mapeado.
 
+## As lagoas do Santa Eulalia (`lagoas-santa-eulalia`, s39 › b0; tarefa `peru-agua-pesquisa-9`, 23/10/2026)
+
+- **A lista:** SENAMHI (2016), *Estudio de vulnerabilidad climática de los recursos hídricos en las cuencas de los ríos Chillón,
+  Rímac, Lurín y parte alta del Mantaro*, Tabla 3-4 "Resumen de las 15 lagunas represadas en la cuenca del río Rímac" (p. 46 do
+  PDF, p. 31 impressa), https://hdl.handle.net/20.500.12542/124, lido em 17/10/2026 (lim-02; cópia local em
+  `midia/peru-agua/fontes/agua-de-lima/`). A tabela cita o *Manejo integrado de recursos hídricos para el abastecimiento de agua
+  potable de Lima Metropolitana*. A Defensoría (2025, lim-01, p. 77) confirma as 15 lagoas de alvenaria (17 embalses, 77 MMC), sem
+  os nomes. A tabela soma 75,73 MMC, e o texto do SENAMHI diz 77: a diferença é da fonte.
+- **A geometria:** o dump do Overpass de 22/10/2026 (`_tmp/pesquisa-geo/osm/q1-marca.json`, base OSM 2026-10-22T03:41:48Z). Em
+  23/10 o Overpass deu timeout e 502 na repetição única, e parei. Simplify 5e-05°, como as outras lagoas.
+- **A régua de bacia** (só conferência, não vai à tela): a bacia do Santa Eulalia derivada do Copernicus DEM GLO-90 (preenchimento
+  de depressões, D8, exutório na confluência com o Rímac), 1.077 km², com Huinco dentro. O dump cobre 92,7 % dela acima de 4.300 m;
+  fica de fora a faixa sul (lat −11,81 a −11,75, lon −76,56 a −76,41).
+
+| lagoa (tabela) | OSM | água no OSM | altitude: tabela / DEM | casa? |
+|---|---|---|---|---|
+| Quisha | falta | | 4.650 | — |
+| Carpa | way/26976173 "Laguna Carpa" | 1,542 km² | 4.500 / 4.582 | sim |
+| Huasca | falta (a "Laguna Huasca" way/488884846 fica fora da bacia) | | "440" / — | não |
+| Quiula | way/26976197 "Laguna Quiula" | 0,426 | — / 4.557 | sim (as 4 "Quiulacocha" do OSM ficam fora da bacia) |
+| Sacsa | falta | | 4.400 | — |
+| Piti | way/26976144 "Laguna Piti" | 0,984 | 4.620 / 4.667 | sim |
+| Huampar | falta | | 4.630 | — |
+| Huachuacocha | falta | | 4.570 | — |
+| Chichis | way/26976073 "Laguna Chichis" | 0,311 | 4.490 / 4.524 | sim |
+| Pucro | way/26976070 "Laguna Pucro" | 0,258 | 4.435 / 4.473 | sim (as outras "Pucro"/"Pucrococha" ficam fora) |
+| Misha | falta | | 4.650 | — |
+| Canchis | way/295776217 "Laguna Canchis" | 0,267 | 4.420 / 4.455 | sim |
+| Huallunque | falta | | 4.510 | — |
+| Rondán | way/26976009 "Laguna Rondán" | 0,106 | 4.740 / 4.777 | sim |
+| Manca | falta (a "Laguna Manccoto" way/26975998 cai na bacia, mas o nome não casa) | | 4.530 | — |
+
+- As 7 ficam todas na `vertente-pacifico`, a oeste da divisória; bbox −76,490/−11,674 a −76,320/−11,471. O DEM dá 33 a 82 m acima
+  da tabela (o DSM sobre a água).
+- As 7 somam 33,84 dos 75,73 MMC da tabela. A camada é parcial: nunca "15 lagoons" na tela, nem o volume lido pela área.
+- **O Huascacocha:** o da camada `represas-antacoto-huascacocha-yuracmayo` (way/26966700, −76,10/−11,59, wikipedia "Waskhaqucha
+  (Morococha)") é o lago de Morococha (Yauli, Junín), ao sul do Marca I–III. O da SEDAPAL (Marca IV) fica na província de Pasco,
+  "al norte de los sistemas de Marca I-III" (SENAMHI 2016; Defensoría 2025, p. 77–78, Huayllay). Não está em nenhum dump, e a
+  consulta (`rodada9/qb.overpassql`) não saiu. A camada antiga não foi mexida. Ela tem um `alerta_rodada9` no json.
+- Crédito: `© OpenStreetMap contributors` na s39 (já no crédito da base MapTiler); `openstreetmap.org/copyright` na descrição.
+  Nada gravado no cache da máquina.
+
 ## Bloqueios (em `bloqueios` do json)
+
+Da 9ª tarefa: `lagoas-santa-eulalia` (s39; as 8 que faltam) e `huascacocha-marca-iv` (s39, s42), acima.
 
 `desierto-costero-minam` (s21), `regioes-naturais-inei` (s31), `lima-periferia-sem-rede` (s43, s44),
 `cordilheira-oriental-crista` (s18; só os cumes foram entregues) e `encosta-leste-andes` (s18). O que se tentou e o caminho

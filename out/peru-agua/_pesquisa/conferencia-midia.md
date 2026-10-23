@@ -1,3 +1,65 @@
+# Conferência de mídia: peru-agua, fluxo `midia`, 23/10/2026, tarefa `peru-agua-pesquisa-9` às 13:10 (Brasília)
+
+A janela nova de um uso já julgado: a foto dos morros de San Juan de Miraflores (`87d60be0…`) na **s46**, agora na regência
+`d9203ae9…` (direcao-24). Passo `art`; despachada pelo setor Pesquisa e mídia. Nenhuma busca, nenhuma rede, nenhuma imagem aberta.
+
+**O laudo desta tarefa:** 1 veredito refeito, **aprovado** de novo, com a janela **definitiva**. O antigo foi para `substituidos`.
+**O laudo do arquivo inteiro:** 32 aprovados de 41 conferidos (2 reprovados, 7 trocar, 0 pendente_lucas); 1 com algo não conferido (de antes); recebidos: 41.
+
+| arquivo | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `_media/_caca/s46/acervo-livre/s46-sjm-viviendas-laderas-2022-commons.jpg` = `_media/foto/s46/…` (`87d60be0…`) | s46 b0 (objeto) e b1 (fica) | Commons, Isabel Mamani, CC BY-SA 4.0 | **aprovado** | na janela definitiva, de "fifty-nine" ao fim da cena (565,3–575,233 s), impressa ao lado do card, com "Photo from 2022"; nada a liga à casa dela |
+
+**A janela, de antes e de agora.**
+- **Julgada em pesquisa-8 (provisória):** o b0 inteiro, 564,133–572,033 s (7,9 s), sobre a frase de "Catalina" (564,16) a "said." (574,6).
+- **Agora (definitiva):** a foto pousa em 1,167 s da cena, **565,300 s**, junto com o aviso e o crédito, 0,03 s antes de "fifty-nine,"
+  (565,33). Fica como objeto até 572,033 s (6,733 s, até "truck.") e, recuada, sob o cartão da fala até o fim da cena, **575,233 s** (3,2 s).
+  Na tela: **9,933 s**.
+- **As palavras que ela cobre:** `words.json` 1687–1713, "fifty-nine, told the news agency AFP in March twenty twenty-five that her
+  water comes by truck. "There are worms in the bottom of the tank," she said.", e 0,633 s de pausa depois de "said." até o fim da cena
+  (a s47 começa em "To", 575,25 s). "Catalina Naupa," (564,16–565,17) fica só com o card.
+- **O despacho dizia "0,633 s antes da janela que você julgou".** Pelos números, nada cai antes: a foto entra 1,167 s **depois** do começo
+  da janela julgada. Os 0,633 s são o que ela fica **depois** da última palavra julgada (574,6 → 575,233), em pausa, dentro da s46.
+- **O mesmo arquivo:** o sha256 da cópia entregue (`_media/foto/s46/`, a que a regência cita) é o do rascunho julgado.
+- **A mesma frase:** a fala do b1 ("worms… the tank") já estava na `frase_coberta`, e o `rotulo.nao_pode` já guardava o tanque. Nenhuma
+  frase nova: a foto não se abriu de novo.
+- **O que a tela pode e não pode dizer:** o mesmo do veredito. Pode o aviso "Photo from 2022" e, se um dia houver etiqueta, só
+  "San Juan de Miraflores". Não pode nada que ligue a foto à casa, à rua ou ao bairro dela (seta, círculo, zoom numa casa ou num tanque,
+  "her home"), nem Pamplona, nem outro ano. A regência cumpre: sem rótulo de lugar, sem zoom, nada desenhado do tanque.
+
+## Para o Lucas pesar
+
+Nada nesta tarefa.
+
+## Para reconferir no navegador do app
+
+Nada nesta tarefa.
+
+## Para trocar
+
+Nada nesta tarefa.
+
+**Avisos do conjunto da cena** (para o `regente-de-imagem` e o `editor-de-arte`, não são critério):
+- **s46:** como objeto do b0, a foto fica parada 6,733 s (565,3–572,033), 0,733 s acima do teto de 6 s do plano parado (identidade §4.3),
+  com a câmera parada pela regência. A regência chama o regime de "respiro", e o respiro da §4.3 pede movimento lento. Antes eram 7,9 s;
+  o aviso continua, menor.
+- A reserva `bloques` (`0fad36c3…`) não está na regência: o veredito dela fica como está, com a janela provisória, e não vai à cena
+  sem um plano.
+
+## Divergências entre a marca e o ofício
+
+Nenhuma nesta tarefa.
+
+## Contas desta tarefa
+
+- **Imagens abertas: 0.** O olhar é o de pesquisa-8 (`out/peru-agua/_tmp/conferencia/p8/s46-laderas-1920.jpg`).
+- **Rede:** nenhuma. A licença não precisou ser relida.
+- **A emenda** está em `out/peru-agua/_tmp/conferencia/p9/emenda.py` e conferiu o sha256 de antes (`72ef9623…` e `1f1c2bd4…`). As
+  cópias de antes estão em `out/peru-agua/_tmp/conferencia/conferencia-midia.{json,md}.antes-pesquisa-9`.
+- **Checagem 6:** `_media-antes-p9.txt` e `_media-depois-p9.txt`, em `out/peru-agua/_tmp/conferencia/`.
+
+---
+
 # Conferência de mídia: peru-agua, fluxo `midia`, 23/10/2026, tarefa `peru-agua-pesquisa-8` às 01:4x (Brasília)
 
 Quatro rascunhos do `pesquisa-imagens`, ainda não entregues, para duas escolhas do Lucas de 23/10, 00:4x: **s46**, "Foto do bairro na
