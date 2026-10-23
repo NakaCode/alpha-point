@@ -57,6 +57,11 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s22 (225,5 → 237,267 s do master; 
   continuam em 0,633, presos ao sítio durante a viagem; a cota '3000–1800 B.C.' e o crédito das fontes passam a 2,7 ('terrace'),
   depois do pouso. A foto frontal leva data-qc-reuso (a outra ponta é a miniatura da s51; o conferente aprovou as duas). O b1 não
   muda. Onde o texto acima diz que o b0 abre em A0, que o Supe acende em 'Caral,' e que a cota entra em 0,633, vale isto.
+  CONSERTO peru-agua-arte-19 (lote M, 23/10/2026; qualidade-11, os sinais da s22): (1) o pouso sem degrau: a viagem do molde chega a
+  A0 com velocidade 0 e a aproximação lenta A0 → A1 passa a sair dela numa rampa (a velocidade cresce linear de 0 à de cruzeiro em
+  0,45 s; a perna termina no mesmo 7,533), sem salto de centro, zoom ou rumo; (2) o crédito de mapa fica parado no corte s21 → s22:
+  bottom 52 (era 24), o lugar dele na s21, e o crédito das fontes sobe junto, a 146 (era 114). A viagem, o 1º quadro, os textos e o
+  b1 ficam.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -101,8 +106,8 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s22 (225,5 → 237,267 s do master; 
   .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
     font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
     color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: pre; }
-  #credito { bottom: 24px; white-space: nowrap; }
-  #credFontes { bottom: 114px; opacity: 0; visibility: hidden; }
+  #credito { bottom: 52px; white-space: nowrap; }   /* peru-agua-arte-19: 52 (era 24), o lugar do crédito de mapa na s21 */
+  #credFontes { bottom: 146px; opacity: 0; visibility: hidden; }   /* arte-19: acima do de mapa, a pilha da s21 (era 114) */
   #credFoto { bottom: 24px; opacity: 0; visibility: hidden; }
   #credUnesco { bottom: 179px; opacity: 0; visibility: hidden; }
   #credito[hidden] { display: none; }
@@ -157,7 +162,7 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     },
     pernas: [
       { t0: 0,     t1: 2.5,    de: "S0", para: "A0", tipo: "v" },   // peru-agua-arte-18: a viagem sobe o vale do Supe (a rampa do molde, abre e fecha 0,5)
-      { t0: 2.5,   t1: 7.533,  de: "A0", para: "A1", tipo: "h" },   // a aproximação lenta, depois do pouso (era 0 → 7,533)
+      { t0: 2.5,   t1: 7.533,  de: "A0", para: "A1", tipo: "h", rampa: 0.45 },   // arte-19: sai do pouso com velocidade 0 (sem degrau)   // a aproximação lenta, depois do pouso (era 0 → 7,533)
       { t0: 7.533, t1: 11.767, de: "A1", para: "A1", tipo: "h" }   // sob a foto: parada (o mapa não aparece)
     ],
     entra: 0.633,                         // 'Caral,': o ponto e a pílula, presos ao sítio durante a viagem (arte-18: o rio já aceso no quadro 0)
@@ -584,6 +589,12 @@ Wikimedia Commons · CC BY-SA 4.0</div>
     for (var i = 0; i < CENA.pernas.length; i++) if (t < CENA.pernas[i].t1) { L = CENA.pernas[i]; break; }
     if (L.tipo === "v") { var cv = L.cam(cl(t - L.t0, 0, L.t1 - L.t0)); return { center: cv.center, zoom: cv.zoom, bearing: cv.bearing, pitch: cv.pitch || 0 }; }
     var u = cl((t - L.t0) / (L.t1 - L.t0), 0, 1), a = PT[L.de], b = PT[L.para];
+    // peru-agua-arte-19: a rampa de saída do pouso. A viagem do molde chega a A0 com velocidade 0; a perna lenta não arranca de uma
+    // vez: a velocidade cresce linear de 0 à de cruzeiro em L.rampa s, e a perna termina no mesmo t1 (C1 contínua, sem salto)
+    if (L.rampa) {
+      var tau = cl(t - L.t0, 0, L.t1 - L.t0), r = L.rampa, vc = 1 / ((L.t1 - L.t0) - r / 2);
+      u = tau < r ? vc * tau * tau / (2 * r) : vc * (tau - r / 2);
+    }
     var ma = merc(a.lng, a.lat), mb = merc(b.lng, b.lat);
     return { center: [a.lng + (b.lng - a.lng) * u, unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u,
       bearing: a.bearing + (b.bearing - a.bearing) * u, pitch: a.pitch + (b.pitch - a.pitch) * u };

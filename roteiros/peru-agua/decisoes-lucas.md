@@ -270,3 +270,6 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
   ainda sem azul (a Marcapomacocha da s52, a de origem da s49) em `--agua` 55–60 %.
 - **A cota, de novo** (Lucas, 23/10/2026, 13:1x, no chat da Sala, depois do erro de lugar do Huascacocha na s42): "Liberar até 93 % (Recomendado)". A
   Sala termina a s42 no lugar certo, a s39 com as represas reais e a revisão de qualidade, e para em 93 %. O freio dos setores sobe a 92 %.
+- **A passagem s19 → s20** (Lucas, 23/10/2026, 15:5x, no chat da Sala, depois de saber que a viagem giraria o mapa 122° em 2 s): "Corte, sem viagem
+  (Recomendado)". A s20 volta à versão de antes da arte-19 (sha1 854ce74e), e a passagem do Virú para a foz do Rímac fica um corte assumido: são dois
+  lugares distantes. A viagem fica só nos 4 cortes da escolha anterior.

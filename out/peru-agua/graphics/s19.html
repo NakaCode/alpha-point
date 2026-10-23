@@ -55,6 +55,10 @@ CANAL ALPHA POINT — PERU (vídeo 4), CENA s19 (190,833 → 202,133 s do master
   direcao-24 › Para a Arte): no b2, os rios curtos de contexto passam de 35 % a 75 % (a água e o contorno escuro dela, juntos). O
   Virú, as larguras, a correnteza, a câmera, os textos e os tempos ficam. Onde o texto acima diz 35 %, vale 75 %. Sem gerador em
   dia (arte-17): o conserto foi direto no HTML (out/peru-agua/_tmp/arte-18/M-B/ed_s19.py).
+  CONSERTO peru-agua-arte-19 (lote M, 23/10/2026; qualidade-11, o foco 3 da Sala: a 75 % com 4 px os curtos viravam fio
+  branco-acinzentado no celular): no b2, os rios curtos de contexto passam de 4 a 6 px de --agua, sobre o contorno escuro de 12 (era 10:
+  os mesmos 3 px de cada lado), e continuam a 75 %. O Virú, a correnteza, a câmera (o fim em V1, onde a s20 abre), os textos e os
+  tempos ficam. Onde o texto acima diz "rios curtos 4 sobre 10", vale 6 sobre 12.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
@@ -471,7 +475,7 @@ MOSTLY DECEMBER–MARCH</div>
     var camadas = [
       { id: "base", type: "raster", source: "base",
         paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // identidade §6, o tratamento C (o da s06)
-      { id: "rios-sob", type: "line", source: "rios", layout: lc, paint: { "line-color": COR.sob, "line-width": 10, "line-opacity": 0 } },
+      { id: "rios-sob", type: "line", source: "rios", layout: lc, paint: { "line-color": COR.sob, "line-width": 12, "line-opacity": 0 } },   // peru-agua-arte-19: 12 (era 10)
       // peru-agua-arte-17 (fase 2): as linhas de água dos rios curtos (4 px) e do Virú (14 px) são as do adaptador M-B, em --agua,
       // postas no 'load' logo acima do contorno de cada um (rios-sob, viru-sob; as larguras de hoje)
       { id: "viru-sob", type: "line", source: "viru", layout: lc, paint: { "line-color": COR.sob, "line-width": 24, "line-opacity": 0 } },
@@ -607,7 +611,7 @@ MOSTLY DECEMBER–MARCH</div>
   map.on("load", function () {
     try { map.setTerrain({ source: "dem", exaggeration: CENA.exag }); } catch (e) { return falhar("não consegui ligar o relevo: " + e.message); }
     // peru-agua-arte-17 (fase 2): a água dos rios curtos e do Virú, cada linha numa camada (o line-progress é por linha)
-    RIOS_AGUA = MB.criar(map, "rios", OUTROS, { w: 4, antes: "viru-sob", fontes: CENA.fontes });
+    RIOS_AGUA = MB.criar(map, "rios", OUTROS, { w: 6, antes: "viru-sob", fontes: CENA.fontes });   // peru-agua-arte-19: 6 px (era 4)
     VIRU_AGUA = MB.criar(map, "viru", VIRU, { w: 14, antes: "div-sob", fontes: CENA.fontes });
     mapaCarregado = true;
     map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
@@ -721,8 +725,8 @@ MOSTLY DECEMBER–MARCH</div>
     // regência › _agua_direcao_23, s19: vale alto → mar pelo deserto, sudoeste). Os dois ficam acima de z 11 (11,0 → 11,2):
     // as larguras de hoje; o piso de longe só entraria abaixo de 11.
     var zz = map.getZoom(), R = ritmoEmKm(CORRENTEZA.LENTA), S = R.vel * t;
-    MB.largura(map, VIRU_AGUA, MB.linhaZ(zz, 14)); MB.largura(map, RIOS_AGUA, MB.linhaZ(zz, 4));
-    opac("viru-sob", "line-width", MB.sobZ(zz, 24)); opac("rios-sob", "line-width", MB.sobZ(zz, 10));
+    MB.largura(map, VIRU_AGUA, MB.linhaZ(zz, 14)); MB.largura(map, RIOS_AGUA, MB.linhaZ(zz, 6));
+    opac("viru-sob", "line-width", MB.sobZ(zz, 24)); opac("rios-sob", "line-width", MB.sobZ(zz, 12));
     MB.quadro(map, VIRU_AGUA, v2, S, R.periodo, R.luz, null, zz);
     MB.quadro(map, RIOS_AGUA, OPAC_CURTOS * v2, S, R.periodo, R.luz, null, zz);
   }
