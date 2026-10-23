@@ -1846,6 +1846,49 @@ COBERTURA: 30 de 30 (esta reconferência: as 13 pílulas novas ou trocadas, as p
 NOTA: 9/10
 VEREDITO: RESSALVA. O texto de tela está checado e limpo. Sobram 3 DIVERGE periféricas no apoio (R10-1, R10-2, R10-3), cada uma com o conserto de uma frase, uma regra de série a reescrever (R10-4), o aviso da direcao-18 (R10-5) e as 5 primárias do gob.pe.
 
+## Reconferência 11 (texto-14, formas propostas, não na tela)
+
+- **Data-base:** 22/10/2026.
+- **O objeto:** `out/peru-agua/textos-tela.json`, sha256 `dc9ef65af0671696aade64e061e5f90c56ff9b83b3c57c67c2dbcc2a4a99e572`, em `_formas_curtas[1]` (s49, `NO CONSTRUCTION DATE AS OF LATE AUGUST 2026`, 35,434–39,767). Isto é uma proposta ao Lucas: `_textos_por_cena` não mudou, e o TB217 e o TB273 continuam valendo para o texto de hoje.
+- **As fontes:**
+  - `midia/peru-agua/fontes/agua-de-lima/gestion-obras-cabecera-2026-08-30.txt` (a data "30/08/2026", l. 76);
+  - o `words.json` da s49;
+  - `roteiros/peru-agua/decisoes-lucas.md`, l. 143–144;
+  - `marca/identidade.md`, l. 166, 207–213 e 574.
+- **Limites:** 0 imagens, nenhuma web; nada foi gravado no canal.
+- **A voz, na janela:** "As of late August twenty twenty-six, that tunnel still had no construction date." "As" está em 34,887, "August" em 35,457, "twenty-six," em 36,177, "no" em 38,337, "construction" em 38,497 e "date." em 39,162; o corte vem em 39,767.
+
+| id | o quê | o que se conferiu | veredito |
+|---|---|---|---|
+| RB238 | (a) o rótulo "NO CONSTRUCTION DATE" | O "túnel trasandino de 10 kilómetros" é a **Fase 2** (Gestión, l. 89; também l. 81). Para ela, a ProInversión diz que "la oportunidad de la convocatoria de la Fase 2 … depende de la planificación de abastecimiento de agua potable a cargo de Sedapal, y del MVCS" (l. 99). Sem convocatória com data, não há data de obra: o rótulo se sustenta, e é a fala da voz (38,337–39,162) | CONFIRMADA |
+| RB239 | (a) a manchete do "verano 2027" contradiz o rótulo? | **Não contradiz.** O 2027 é a adjudicação da **Fase 1**: "La fase 1 … alista su adjudicación aún para el primer trimestre del 2027" (l. 72) e "fecha estimada para la buena pro el primer trimestre del año 2027" (l. 93). A Fase 1 é a planta Huachipa II e o Ramal Sur (l. 87), e o investimento "comprende menos obras (solo de la fase 1, mas no de la fase 2)" (l. 94). O túnel não está nela. E mesmo a da Fase 1 é data de adjudicação ("buena pro"), não de obra. **A razão do redator, porém, diverge:** o `por_que` diz que "a Gestión fala de adjudicar no verão de 2027" como se isso falasse do túnel. Para o túnel, nem a convocatória tem data. Achado R11-1 | CONFIRMADA (o rótulo); a razão, DIVERGE (periférica) |
+| RB240 | (a) a guarda do fato volátil sem o "as of" no rótulo | No mesmo quadro, de 35,434 a 39,767, a data-base aparece duas vezes. A voz diz "As of late August twenty twenty-six" de 34,887 a 36,177, em volta da entrada do rótulo. O crédito "Sources: SENAMHI (Peru), 2016; Gestión, Aug. 30, 2026" está na tela de 31,334 a 39,767, e o rótulo sai com ele. Com a releitura da Sala na véspera de publicar (`rotulos_dado`, "reler na véspera de publicar"), a guarda basta para a data de publicação. O limite: depois de publicado, o rótulo afirma no presente e o crédito data a fonte, não a validade. É a mesma escolha da s41 ("As fontes ficam no crédito", `decisoes-lucas.md` l. 143–144) | CONFIRMADA (com o limite dito) |
+| RB241 | (b) a frase inteira como `legenda` | As palavras são as do TB217, e o papel não muda o fato. Ela vira um bloco de leitura ("a legenda longa em frase", identidade l. 211–213), o único na janela: "SECOND TUNNEL" (2 palavras), "1990s" e "DEFINITIVE STUDY, 1996" não são bloco. O teto de 3 blocos (l. 207) não aperta | CONFIRMADA |
+| RB242 | (c) a frase inteira como rótulo, por exceção | As palavras são as do TB217, e o fato não muda. A exceção é de marca: 8 palavras num rótulo de "até 3, ou 4 se for nome próprio" (identidade l. 166 e 574). Isso é do Lucas, não desta lente | CONFIRMADA |
+| RB243 | `rotulos_dado` (TB273) na (a): o `por_que_diverge` "o 'as of' fica na voz e no crédito" | **Na voz, exato:** "As of late August twenty twenty-six" (34,887–36,177). **No crédito, não:** ele não traz "as of", traz a data da fonte, "Gestión, Aug. 30, 2026". O 30/08 é o dia da matéria (l. 76), e o "late August" da voz vem dela. A frase dá ao crédito um papel que ele não tem. Achado R11-2 | DIVERGE (periférica, uma frase) |
+| RB244 | os números e as citações da proposta | "palavras": 8 (confere). "August" em 35,457 (35,434 é o quadro), e 39,767 − 35,434 = 4,333 s no ar. "no" em 38,337 daria 39,767 − 38,337 = 1,43 s. "still" em 37,722 (o quadro de 37,7) daria 2,067 s. A citação do Lucas na s41 ("As recomendadas", "as fontes ficam no crédito") bate com `decisoes-lucas.md` l. 143–144. Todos conferem | CONFIRMADA |
+
+**Os vereditos por forma:**
+- **(a) `NO CONSTRUCTION DATE`: CONFIRMADA.** O fato se sustenta na Gestión (l. 89 e 99), a manchete de 2027 não o contradiz (l. 72, 93 e 94), e a data-base fica na voz e no crédito do mesmo quadro. Sobram duas ressalvas de redação, nenhuma na tela: R11-1 e R11-2.
+- **(b) a legenda: CONFIRMADA.** O papel não muda o fato.
+- **(c) o rótulo por exceção: CONFIRMADA.** O papel não muda o fato; a exceção é decisão de marca, do Lucas.
+
+**Os achados:**
+1. **[LEVE] R11-1 · `_formas_curtas[1]` › `por_que`, a razão do "CONSTRUCTION".**
+   - **CONSERTO:** "'CONSTRUCTION' fica: o verão de 2027 da manchete é a adjudicação da Fase 1 (a planta Huachipa II e o Ramal Sur, l. 72, 87, 93–94), que não inclui o túnel; para a Fase 2, a do túnel de 10 km (l. 89), nem a convocatória tem data (l. 99). Um 'NO DATE' seco não diria data de quê".
+   - **RAIZ:** PONTUAL.
+2. **[LEVE] R11-2 · `rotulos_dado` (TB273) na (a), o `por_que_diverge`.**
+   - **CONSERTO:** "o 'as of late August 2026' fica na voz; o crédito, no mesmo quadro, traz a data da fonte (Gestión, Aug. 30, 2026)".
+   - **RAIZ:** PONTUAL.
+
+**Uma sugestão de 3 palavras** (só sugestão, não veredito): `NO TENDER DATE` é a mais literal à fonte, porque a Gestión fala da "convocatoria" (l. 99), que é o que falta. Mas não é a fala da voz, e "tender" é palavra de contrato, menos clara para o espectador. A (a) continua a melhor: é a fala da voz, e a inferência (sem convocatória, sem data de obra) se sustenta.
+
+**Continuam:** as 5 primárias do gob.pe, NÃO FOI CHECADO (TB284–TB288).
+
+COBERTURA: 7 de 7 (esta reconferência: as 3 formas, a manchete de 2027, a guarda do volátil, o `rotulos_dado` e os números e as citações da proposta)
+NOTA: 9/10
+VEREDITO: RESSALVA. As 3 formas são fiéis ao fato. Há 2 ressalvas periféricas de redação na proposta (R11-1, R11-2), nenhuma na tela, e as 5 primárias do gob.pe continuam NÃO FOI CHECADO.
+
 ---
 
 ## Fecho do setor
@@ -1904,6 +1947,13 @@ Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do la
 **O conserto 13 (texto-12, de `2f748bfc…` a `cebd9480…`), sem reconferência:** na s49, o TB209 e o TB211 (PB051 e PB052) passaram do papel `citacao` ao `traducao`, sem as aspas curvas e com as mesmas palavras, como na s41. Foi decisão da Sala, porque a 260 px (o piso da fala citada) as duas não cabem com a folha.
 - **O que muda:** só o papel e as aspas. As palavras, os tempos e a fonte são os mesmos, e os dois vereditos CONFIRMADA continuam valendo.
 - **O lote B** não mudou: as linhas dizem `citacao`, como o verificador gravou.
+
+**A reconferência 11 (texto-14, sobre `dc9ef65a…`)** está no fim do lote B (RB238–RB244), com 7 de 7. Ela cobre as formas curtas propostas ao Lucas para o rótulo da s49, `NO CONSTRUCTION DATE AS OF LATE AUGUST 2026`. São proposta, não tela: `_textos_por_cena` não mudou.
+- **As três formas são fiéis ao fato (CONFIRMADA):** (a) `NO CONSTRUCTION DATE`, a recomendada, se sustenta na Gestión (a Fase 2, a do túnel, sem data nem de convocatória); o verão de 2027 da manchete é a adjudicação da Fase 1, que não inclui o túnel. (b) e (c) têm as palavras de hoje.
+- **A guarda do volátil na (a):** a voz diz "As of late August twenty twenty-six" no mesmo quadro, e o crédito traz a data da fonte. O limite: depois de publicado, o rótulo afirma no presente, e por isso a Sala relê na véspera.
+- **Os achados:** R11-1 e R11-2, LEVES, de redação na proposta. O setor mandou consertar com o texto do verificador (15b, `280b7d54…`) e conferiu pela diferença que só eles mudaram.
+- **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
+- **O lote B,** com ela, ficou com o sha256 `ddfbc07b…1e0c`.
 
 O texto de tela não tem DIVERGE nem REFUTADA. Desde a reconferência 10, a RESSALVA é só pelas 5 primárias do gob.pe, NÃO FOI CHECADO (os rótulos da caça estão checados).
 
