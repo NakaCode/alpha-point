@@ -73,7 +73,8 @@ deserto de outra fonte.
 | `bacia-mantaro` | bacia-alto-mantaro | HydroBASINS v1c | idem | 1 | a bacia inteira (34.534 km²) |
 | `tunel-transandino` | tunel-transandino | OSM way/1226268824 + 37 ways do canal, 22/10/2026 | ODbL: `© OpenStreetMap contributors` | 2 | canal 11,98 km (JICA 11,9) + túnel 10,08 km (JICA 10,1) = 22,06 km = **13,71 mi**; no OSM o túnel é uma reta de 2 nós; o canal começa em (−76,3293, −11,4052), a leste da lagoa Marcapomacocha |
 | `lagoas-marcapomacocha-antacoto` | idem | OSM (way/26966977, relation/16907593, relation/16907595, way/26976126) | ODbL | 4 | Marcapomacocha 4,62 km², Antacoto 5,18 (no OSM "Antaquta", alt "Antacota"), Marcacocha 2,97, Tucto 0,55; Sangrar não tem lago no OSM; a lista das 19 lagoas não foi lida |
-| `represas-antacoto-huascacocha-yuracmayo` | idem | OSM (relation/16907593, way/26966700, way/26943485) | ODbL | 3 | Antacoto e Huascacocha no lado atlântico; Yuracmayo no Pacífico (rio Blanco → Rímac). **Alerta de 23/10:** o Huascacocha daqui (way/26966700) é o lago de Morococha, não o da SEDAPAL (Marca IV, em Pasco): ver "As lagoas do Santa Eulalia" |
+| `represas-antacoto-huascacocha-yuracmayo` | idem | OSM (relation/16907593, way/26966700, way/26943485) | ODbL | 3 | Antacoto e Huascacocha no lado atlântico; Yuracmayo no Pacífico (rio Blanco → Rímac). **Alerta de 23/10:** o Huascacocha daqui (way/26966700) é o lago de Morococha, não o da SEDAPAL (Marca IV, em Pasco): ver "As lagoas do Santa Eulalia". **Desde a rodada 10 (23/10): o Huascacocha desta camada NÃO SE USA; o certo é `represa-huascacocha-pasco`.** Antacoto e Yuracmayo daqui continuam certos. A camada não foi mexida |
+| `represa-huascacocha-pasco` | (sem need ainda; s42) | OSM way/26966934 "Laguna Huascacocha" (wikidata Q10857888, source ign.gob.pe), Overpass de 23/10/2026 | ODbL: `© OpenStreetMap contributors` | 1 | o Huascacocha da SEDAPAL: 7,90 km² (3,05 sq mi), centro −11,0942/−76,4117, em Pasco (o espelho encosta na divisa Junín–Pasco); a represa (way/553479140) na saída sudeste. Abaixo, "O Huascacocha" |
 | `lagoas-santa-eulalia` | (sem need ainda: s39 › b0, direcao-24) | OSM, dump do Overpass de 22/10/2026 (7 ways) | ODbL | 7 | 7 das 15 lagoas represadas da Tabla 3-4 do SENAMHI 2016, 3,89 km² de água; **parcial**: faltam 8. Abaixo |
 | `segundo-tunel-pontas` | segundo-tunel-planejado | OSM (way/26966553, way/26966527, way/293766958) | ODbL | 3 | Pomacocha e Huallacocha (Mantaro) e o rio Blanco; **a quebrada Pucullo não está no OSM** |
 | `huinco` | huinco | OSM way/864802081 | ODbL | 1 | ponto dentro da usina (start_date 1964) |
@@ -191,12 +192,23 @@ nenhum pedido à rede.
   (Morococha)") é o lago de Morococha (Yauli, Junín), ao sul do Marca I–III. O da SEDAPAL (Marca IV) fica na província de Pasco,
   "al norte de los sistemas de Marca I-III" (SENAMHI 2016; Defensoría 2025, p. 77–78, Huayllay). Não está em nenhum dump, e a
   consulta (`rodada9/qb.overpassql`) não saiu. A camada antiga não foi mexida. Ela tem um `alerta_rodada9` no json.
+- **O Huascacocha, achado na rodada 10 (23/10/2026):** não estava nos dumps de 22/10 (a caixa do q1 para em −11,15). Um pedido
+  ao Overpass (`rodada10/q-huascacocha-pasco.overpassql`, caixa −11,35/−76,55/−10,80/−76,00; HTTP 200, 13:21) trouxe o
+  **way/26966934 "Laguna Huascacocha"** (wikidata Q10857888, es:Laguna Huascacocha, source ign.gob.pe): centro **−11,0942 /
+  −76,4117**, **7,90 km²** (3,05 sq mi; caixa de 7,9 × 3,8 km), em Pasco pelo NE admin1, encostado na divisa Junín–Pasco (a
+  Defensoría: "Huayllay, límite Junín–Pasco"); a represa do OSM (way/553479140, `waterway=dam`) fica na saída sudeste, a 38 m do
+  espelho. Distâncias centro a centro: **65,0 km** ao do Huascacocha errado (way/26966700), **36,5 km** ao Antacoto, **89,6 km**
+  ao Yuracmayo, 34,9 km ao Marcapomacocha (fica ao norte de todos: rumo 341° a 353°). Camada nova `represa-huascacocha-pasco`
+  (1 feature, simplify 5e-05°, 194 vértices). O Huascacocha da camada antiga fica marcado `huascacocha_nao_usar` no json; quem
+  troca a citação na s42, e revê o enquadramento (ele cresce ~35 km para o norte), é a Arte. Nota: o SENAMHI 2016 e a Defensoría
+  chamam o sistema de Marca IV; o pedido da Sala dizia Marca III.
 - Crédito: `© OpenStreetMap contributors` na s39 (já no crédito da base MapTiler); `openstreetmap.org/copyright` na descrição.
   Nada gravado no cache da máquina.
 
 ## Bloqueios (em `bloqueios` do json)
 
-Da 9ª tarefa: `lagoas-santa-eulalia` (s39; as 8 que faltam) e `huascacocha-marca-iv` (s39, s42), acima.
+Da 9ª tarefa: `lagoas-santa-eulalia` (s39; as 8 que faltam) e `huascacocha-marca-iv` (s39, s42), acima. O
+`huascacocha-marca-iv` tem a geometria desde a rodada 10 (`represa-huascacocha-pasco`); falta só a troca da citação na s42.
 
 `desierto-costero-minam` (s21), `regioes-naturais-inei` (s31), `lima-periferia-sem-rede` (s43, s44),
 `cordilheira-oriental-crista` (s18; só os cumes foram entregues) e `encosta-leste-andes` (s18). O que se tentou e o caminho
