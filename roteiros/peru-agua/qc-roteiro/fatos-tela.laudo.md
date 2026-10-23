@@ -1955,6 +1955,15 @@ Os dois lotes terminam em RESSALVA, só pelos NÃO FOI CHECADO. O veredito do la
 - **O resultado:** no texto de tela não há DIVERGE nem REFUTADA.
 - **O lote B,** com ela, ficou com o sha256 `ddfbc07b…1e0c`.
 
+**O conserto 16 (texto-15, de `280b7d54…` a `946283df…`), sem reconferência:** a forma (a) foi à tela. Na s49, o rótulo `NO CONSTRUCTION DATE AS OF LATE AUGUST 2026` (TB217) passou a `NO CONSTRUCTION DATE`, a decisão do Lucas no chat da Sala (22/10/2026, 21:0x: "NO CONSTRUCTION DATE (Recomendado)"; `decisoes-lucas.md`, commit `64211ea`). O espelho no `rotulos_dado` (TB273) acompanhou.
+- **A cobertura:** a forma (a) já saiu CONFIRMADA na reconferência 11, antes de ir à tela:
+  - RB238: o fato, a Fase 2, sem data nem de convocatória;
+  - RB239: o 2027 da manchete é da Fase 1;
+  - RB240: a guarda do volátil pela voz e pelo crédito datado, com o limite dito;
+  - RB243: o `por_que_diverge` do TB273, com a frase corrigida do R11-2, que é a que está no arquivo.
+- **O que continua:** o TB217 e o TB273 valem pela fonte e pela data, e a releitura da Sala na véspera de publicar continua.
+- **O lote B** não mudou: as linhas TB217 e TB273 trazem o texto longo, como o verificador gravou.
+
 O texto de tela não tem DIVERGE nem REFUTADA. Desde a reconferência 10, a RESSALVA é só pelas 5 primárias do gob.pe, NÃO FOI CHECADO (os rótulos da caça estão checados).
 
 COBERTURA: 600 de 632
