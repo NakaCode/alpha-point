@@ -193,3 +193,11 @@ O Lucas voltou ("Estou de volta, faça um resumo do que foi feito e do que está
   linha para o "sim" e baixo pelo Brave. O rio baixo aparece de verdade na tela. Custa uns 15 minutos e pouco do semanal."
 - O item é o `s37-a-2` (Motion Array 4333181, 0:05, 3840×2160), que o conferente deixou `trocar` só pela duração. A resposta autoriza a
   caça curta e a linha; o download continua esperando o "sim" dele à linha da lista.
+
+## 22/10/2026, 21:0x (Brasília): o rótulo de 8 palavras da s49, no chat da Sala
+
+- À pergunta "Na s49, o fim da linha do tempo do segundo túnel diz NO CONSTRUCTION DATE AS OF LATE AUGUST 2026: são 8 palavras numa
+  etiqueta que a marca limita a 3. Como fica?": **"NO CONSTRUCTION DATE (Recomendado)"**. A opção dizia: "As palavras da própria voz. A
+  data fica na voz ("As of late August 2026") e no crédito ("Gestión, Aug. 30, 2026"), no mesmo instante. É o que você escolheu na s41."
+- As formas e o porquê: `textos-tela.json` › `_formas_curtas` (s49) e `out/peru-agua/_tmp/setores/peru-agua-texto-14.md`. O fato continua
+  volátil: a Sala relê a fonte na véspera de publicar.
