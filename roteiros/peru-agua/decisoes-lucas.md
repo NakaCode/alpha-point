@@ -201,3 +201,10 @@ O Lucas voltou ("Estou de volta, faça um resumo do que foi feito e do que está
   data fica na voz ("As of late August 2026") e no crédito ("Gestión, Aug. 30, 2026"), no mesmo instante. É o que você escolheu na s41."
 - As formas e o porquê: `textos-tela.json` › `_formas_curtas` (s49) e `out/peru-agua/_tmp/setores/peru-agua-texto-14.md`. O fato continua
   volátil: a Sala relê a fonte na véspera de publicar.
+
+## 23/10/2026, 00:2x (Brasília): os comentários da linha do tempo e o gasto, no chat da Sala
+
+- Depois de ver a linha do tempo e deixar 12 comentários em 10 cenas ("Fiz algumas observações"), o Lucas escreveu: **"Todas às
+  relacionadas a gastos adicionais no maptiler devem ser refeitas, às que dependerem da nossa cota me informe a expectativa de custo"**.
+- Leitura da Sala: o gasto de tiles da MapTiler nos consertos desses comentários está liberado; o que pesa na cota do Claude vai a ele com
+  a estimativa de custo antes de rodar.
