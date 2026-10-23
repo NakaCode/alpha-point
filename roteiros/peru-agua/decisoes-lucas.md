@@ -230,3 +230,10 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
 - Pela mensagem dele de 00:2x, os consertos de mapa (s01, a câmera; s42, a transição; s37, a correnteza) se refazem sem pergunta, com a
   opção recomendada pelos céticos.
 - Registrado em 23/10/2026 01:25.
+
+## 23/10/2026, 01:0x (Brasília): a correnteza em todos os rios do Peru, no chat da Sala
+
+- Depois da regra nova do canal ("Nos próximos toda água deve ser azul e com fluxo"; identidade §2, commit 3b58966), a Sala disse que, no
+  Peru, a correnteza estava só no Rímac da s37 e da s38, e que dava para pô-la em todos os rios do Peru na mesma rodada do azul, por menos de
+  1 % do semanal. O Lucas: **"Faça então"**. A água que corre (rios, canal, túnel) mostra a correnteza em todo o vídeo 4; lago e represa
+  ficam parados.
