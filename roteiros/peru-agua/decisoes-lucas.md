@@ -237,3 +237,9 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
   Peru, a correnteza estava só no Rímac da s37 e da s38, e que dava para pô-la em todos os rios do Peru na mesma rodada do azul, por menos de
   1 % do semanal. O Lucas: **"Faça então"**. A água que corre (rios, canal, túnel) mostra a correnteza em todo o vídeo 4; lago e represa
   ficam parados.
+
+## 23/10/2026, 01:1x (Brasília): o teto do semanal nos ajustes do Peru, no chat da Sala
+
+- À estimativa da Sala (de 73 % para 81–83 % do semanal ao terminar todos os ajustes, com risco de chegar perto de 85 % se a Arte pedir
+  segunda rodada; "Se passar de 83 %, eu paro e te aviso"), o Lucas: **"Pode chegar a 85% sem problemas"**. O freio dos setores, que era
+  75 %, passa a 85 % para estes ajustes do vídeo 4; acima disso, a Sala para e pergunta.
