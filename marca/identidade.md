@@ -54,6 +54,8 @@ Cor com PAPEL. Uma cor = um significado, no vídeo inteiro.
 | `--contexto-2` | `#4575EE` | **azul**: território de contexto do outro lado da fronteira internacional, só no mapa, a 25 % (§6, "Os territórios do contexto") |
 | `--contexto-3` | `#BAACF6` | **lavanda**: o vizinho de contexto mais importante do mesmo país, só no mapa, a 25 % (§6) |
 | `--contexto-1` | `#694C8B` | **violeta**: o segundo vizinho de contexto do mesmo país, sempre com nome, só no mapa, a 25 % (§6) |
+| `--agua` | `#AFD8F6` | **a água** (rio, lago, represa, canal, túnel, cano), cor de TIPO, em mapa e desenho; nunca sobre `--papel` (abaixo, "A água é azul, e corre") |
+| `--agua-luz` | `#CEE3F1` | a luz da correnteza que desce pela linha da água que corre |
 
 **O `--neutro` foi escurecido em 25/09/2026** (era `#8A94A6`; mesma matiz, só mais escuro). Medido com o
 `contraste.mjs` da pré-v1 da Régie (daltonismo por Machado 2009, distância CIEDE2000, limiar 10): o antigo ficava a
@@ -75,8 +77,12 @@ ator continua `--neutro`, porque a lavanda pura não passa 3:1 sobre o `--papel`
 - **A água é azul, e corre** (Lucas, 23/10/2026, no chat da Sala, depois de escolher "Azul em toda a água" para o vídeo 4: "Nos
   próximos toda água deve ser azul e com fluxo"). Do vídeo 5 em diante (o Peru já vai assim, pela escolha dele de 23/10):
   - a água tem cor de TIPO, não de lado: rio, lago, represa, canal, túnel e cano saem no azul da água em todo mapa e desenho, mesmo
-    quando o território em volta é o protagonista ou a contraparte. O tom é o que a Direção do Peru mediu (direcao-23, separado do
-    `--contexto-2` e do `--contraparte` também para daltonismo); ele entra na tabela acima como `--agua` quando a Sala o gravar;
+    quando o território em volta é o protagonista ou a contraparte. O tom, `--agua` `#AFD8F6` (com a luz `--agua-luz` `#CEE3F1`), foi
+    escolhido e medido pela Direção do Peru (direcao-23, 23/10/2026): o pior par é com o `--contraparte`, a 12,5 de ΔE00 em deuteranopia e
+    tritanopia; com o `--contexto-2`, de 23,5 a 29,9; contraste de 12,0:1 sobre o contorno escuro e 5,48:1 sobre a terra mediana do
+    satélite. Nenhum azul médio passou: todos colapsam com o verde-água na tritanopia. Limites: fica a 9,4 da lavanda (`--contexto-3`) em
+    deuteranopia, abaixo do limiar de 10 (não ponha água encostada em território de lavanda), e não serve sobre o `--papel`. O mar não é
+    "água" desta regra: segue a cena (no Peru, a s13 e a s16 o têm em `--contraparte`);
   - a água que corre mostra a correnteza: um trecho mais claro da própria linha desce no sentido da água e se repete, mais lento no rio
     baixo e mais rápido no cheio (a forma aprovada para a s37 e a s38 do Peru). É luz na linha, não partícula solta (§4.4). Lago e
     represa ficam parados; o que muda neles é o nível;
