@@ -280,5 +280,10 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
   `--destaque`, os rios amazônicos em `--agua`, Lima com anel e seta (a receita com pílula, `marca/embalagem.md` §3). Os arquivos e os scripts
   estão em `roteiros/peru-agua/miniatura/`. A pílula-herói ficou a 236 px, não aos 300 da receita: a 300 a frase não cabe numa linha sobre o
   mar e cobre Lima. Lê sem esforço a 168×94 (conferido pela Sala na versão ampliada ×4).
+- **A miniatura A2** (Lucas, 24/10/2026, 15:4x, no chat da Sala, depois de ver a A: "A thumb talvez pudesse ter o texto mais no centro esquerdo
+  com a seta na parte inferior. Poderia ser fonte maior em duas linhas"). A Sala fez a A2 (`base-A2.py`): "AND THE" / "WATER?" em duas pílulas,
+  aos 300 px da receita, no centro-esquerda sobre o Pacífico, sem encostar no Peru, e a seta saindo de baixo do texto até o anel de Lima. À
+  pergunta "Fica a A2?": **"Fica a A2 (Recomendado)"**. Os `miniatura-1280.jpg` e `miniatura-2560.jpg` de `roteiros/peru-agua/miniatura/`
+  são a A2; o `base-A.py` fica como histórico.
 - **As conferências da descrição:** "Agora (Recomendado)", à pergunta de quando rodar o verificador de fatos (a cota estava em 91 %, com o
   teto de 93 %). O laudo: 74 de 74 afirmações, nenhuma errada, PASS (`roteiros/peru-agua/qc-roteiro/fatos-descricao.laudo.md`).
