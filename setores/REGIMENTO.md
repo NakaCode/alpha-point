@@ -183,9 +183,9 @@ O setor usa só:
 - **O defeito volta à peça** pelo `SendMessage` ao subagente, se ele ainda estiver vivo, ou por um despacho novo com a lista
   do defeito.
 
-### O `qc-visual`: o orçamento de imagens (M11, em teste no vídeo 3)
+### O `qc-visual`: o orçamento de imagens (M11, mantido no balanço de 24/10/2026)
 
-O Lucas, 14/10/2026, sobre a M11 da auditoria de tokens: "Sim", para ver o texto final; e, ao texto final, "Aplicar, até 4 (Recomendado)", às 12:2x de Brasília. Em teste no vídeo 3; se não funcionar, volta como estava antes (`CLAUDE.md`, "Os portões
+O Lucas, 14/10/2026, sobre a M11 da auditoria de tokens: "Sim", para ver o texto final; e, ao texto final, "Aplicar, até 4 (Recomendado)", às 12:2x de Brasília. Mantido no balanço de 24/10/2026 ("Ficam as duas"); se um dia não funcionar, volta como estava antes (`CLAUDE.md`, "Os portões
 medem"). É regra que aperta: vale quando a Sala manda o setor reler este arquivo ("Mudança deste arquivo", acima).
 
 No setor Qualidade:

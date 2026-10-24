@@ -87,11 +87,11 @@
   não fotografa satélite nesta máquina (acima). A medida sai do `ffprobe`. Os quadros ficam em
   `out/<proj>/_tmp/`, fora do git.
 
-## 2.1 · O orçamento de imagens (M11, em teste no vídeo 3)
+## 2.1 · O orçamento de imagens (M11, mantido no balanço de 24/10/2026)
 
 > A decisão: o Lucas, 14/10/2026, sobre a M11 da auditoria de tokens (`auditoria-tokens.html`), depois da explicação da
 > "mesa que só cabe um tanto de fotos": "Sim", para ver o texto final; e, ao texto final (com a pergunta de quantas cenas
-> sem mapa por rodada), "Aplicar, até 4 (Recomendado)", às 12:2x de Brasília. Em teste no vídeo 3; se não funcionar, volta como estava antes (CLAUDE.md, "Os portões medem").
+> sem mapa por rodada), "Aplicar, até 4 (Recomendado)", às 12:2x de Brasília. Mantido no balanço de 24/10/2026 ("Ficam as duas"); se um dia não funcionar, volta como estava antes (CLAUDE.md, "Os portões medem").
 
 - **Por quê.** Quando as imagens de uma conversa passam de uns 25 MB, o Claude Code tira as mais antigas, e a conversa
   inteira se regrava. A peça reabre o que sumiu, e o laço recomeça (CLAUDE.md, "A revisão de espectador, antes do

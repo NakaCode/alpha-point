@@ -465,8 +465,8 @@ outro modelo no despacho, fora a exceção da animação desenhada (abaixo):
   'editor-de-arte'` com `model: 'opus'`; no `Workflow`, `agentType: 'editor-de-arte', model: 'opus'`. As outras cenas dele
   (a prancha, o documento e o mapa, mesmo com uma peça feita pelo método do ilustrador) continuam em `fable`, e o
   `diretor-de-arte` também. Confira no transcript que subiu `claude-opus-5-5`.
-  - Em teste no vídeo 3: as 5 ilustrações de Los Angeles que o Lucas aprovou foram feitas em Fable, e nenhuma em Opus ainda.
-    Se ele achar as de Opus piores na linha do tempo, elas voltam ao Fable, e ele decide de novo.
+  - **Fica em Opus**, decidido no balanço de 24/10/2026 ("Fica tudo"): 9 cenas em Opus no vídeo 3 e 10 no vídeo 4. As 5
+    ilustrações de Los Angeles que o Lucas aprovou tinham sido feitas em Fable.
   - Antes do vídeo 3, o teste: a s52 de Los Angeles (o TEU) refeita em Opus com o mesmo pedido, ao lado da de Fable (Lucas,
     14/10/2026: "Sim, refazer a s52 (Recomendado)"), em `out/prova-opus/`, fora do git. **Feito no mesmo dia**: o editor em Opus
     (conferido no transcript) fez a cena às cegas, com as entradas da 1ª versão (commit `9f8aaef`), e o `qc-cena` saiu 0 na primeira
@@ -495,7 +495,7 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
 - **O que o Claude central decide sozinho** (os agentes dele, não os especialistas): leitores, montagem de lista e as conferências
   mecânicas da linha (ingest, cut_detect, mirror) em `model: 'sonnet'`; todo agente com `effort: 'xhigh'` (desde 24/10/2026,
   "O esforço em extra", abaixo; antes, `'high'`); conferência que julga licença, procedência ou texto de tela fica em Opus; revisão de
-  espectador em lotes de até 20 folhas e 25 imagens por revisor (desde 14/10/2026, em teste no vídeo 3: "A revisão de espectador,
+  espectador em lotes de até 20 folhas e 25 imagens por revisor (desde 14/10/2026, mantida no balanço de 24/10/2026: "A revisão de espectador,
   antes do Lucas"), e todo agente grava o resultado no disco ao terminar. Haiku em nada que pede julgamento; o `qc-visual`
   continua em Sonnet.
 - **O esforço em extra, e o ultracode só quando necessário** (Lucas, 24/10/2026, 16:0x, no chat da Sala, depois de publicar o Peru:
@@ -520,7 +520,15 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
 **O balanço depois do vídeo 3** (Lucas, 14/10/2026, 14:2x: "após a finalização do vídeo 3 veremos se essas mudanças de hoje
 continuam ou retrocedem ao que eram antes"). Com o vídeo 3 entregue, o Claude central leva ao Lucas, uma por uma, as mudanças de
 14/10 abaixo, cada uma com o que se mediu no vídeo e o que seria voltar. Ele decide se cada uma fica ou volta; até lá, todas
-valem. Voltar é refazer o texto como estava antes do commit dela, num commit novo (nunca reescrever o histórico):
+valem. Voltar é refazer o texto como estava antes do commit dela, num commit novo (nunca reescrever o histórico).
+**Decidido em 24/10/2026, tudo fica**, depois de publicar o Peru, com as medidas dos vídeos 3 e 4 mostradas no chat da Sala:
+- M10: "Fica, com 2 perguntas (Recomendado)" (o revisor pergunta também pela imagem parada tempo demais e pela câmera brusca);
+- M11 e M6: "Ficam as duas (Recomendado)";
+- a ilustração e o Opus: "Fica tudo, mas acredito que as animações não tenham aumentado substituindo, acontece que agora há
+  também animações sobre o mapa (o que é o correto e deveria ocorrer mais)" (identidade §5, "Sobre o mapa, mais vezes");
+- a vinheta: "Fica"; o ultracode: só quando necessário ("O esforço em extra", acima).
+
+A lista do que se ia medir, como registro:
 - **M10**, a revisão de espectador em lotes de até 20 folhas (`5fc4d58`): o `medir-espectador.py --lotes=` de cada rodada e o
   que o Lucas achou na linha do tempo que a revisão deixou passar. Voltar: o texto do commit `632c844`.
 - **M11**, o orçamento de imagens do `qc-visual` (`d484140`): o `medir-espectador.py --rotulo=qc-visual:L --teto=25` de cada
@@ -714,9 +722,9 @@ nas cenas de mapa. Custa algumas horas a mais."
 - **O orçamento de imagens do `qc-visual`** (M11, `auditoria-tokens.html`; Lucas, 14/10/2026: "Sim", para ver o texto final;
   e, ao texto final, "Aplicar, até 4 (Recomendado)", às 12:2x de Brasília): até 25 imagens por execução, os lotes pelo tipo (até 2 de mapa ou 4 sem mapa) e um passo curto
   nas emendas. O como está na roupa (`marca/agentes/qc-visual.md` §2.1) e no `setores/REGIMENTO.md` ("O `qc-visual`"); a
-  medida, `ferramentas/medir-espectador.py <pasta> --rotulo=qc-visual:L --teto=25`. Em teste no vídeo 3. Se não funcionar
-  (o medidor fora de 0 depois de um ajuste), o Claude central avisa o Lucas e volta a roupa, o regimento e este item como
-  estavam antes do commit da M11; o conserto do medidor fica, porque serve também à M10.
+  medida, `ferramentas/medir-espectador.py <pasta> --rotulo=qc-visual:L --teto=25`. Mantido no balanço de
+  24/10/2026 ("Ficam as duas", com a M6): nas rodadas medidas dos vídeos 3 e 4, nenhuma regravação; no vídeo 2, o laço custou
+  US$ 116.
 - **A limitação do portão vai ao Lucas, cena por cena** (01/10/2026).
   - **A pergunta:** em 7 cenas do Juneau, o portão reprova com uma régua do Top10 que a marca não tem, e não há
     declaração honesta que ele aceite. O código dele vem do motor e não se edita. "Como seguimos?"
@@ -862,7 +870,10 @@ robô, termos e compra. As quatro respostas:
   - há marca, campo ou moldura sem conteúdo?
   - há mais de 2 s sem nada que acompanhe a fala?
   - algum texto ou foto pequeno demais para o celular?
-- **Em lotes curtos, em teste no vídeo 3** (Lucas, 14/10/2026, sobre a M10 da auditoria de tokens, `auditoria-tokens.html`:
+  - a imagem fica a mesma por tempo demais, mesmo acompanhando a fala? (esta e a seguinte desde 24/10/2026, do balanço: foi o
+    que o Lucas mais achou depois da revisão nos vídeos 3 e 4)
+  - a câmera anda rápido ou bruscamente demais?
+- **Em lotes curtos, mantida no balanço de 24/10/2026** (Lucas, 14/10/2026, sobre a M10 da auditoria de tokens, `auditoria-tokens.html`:
   "Vamos seguir apenas com a opção 1, ela é reversível certo? Testaremos ela no vídeo 3 e caso não funcione bem, pensaremos
   novamente na solução").
   - **Por quê:** quando as imagens de uma conversa passam de uns 25 MB, o Claude Code tira as mais antigas, e a conversa

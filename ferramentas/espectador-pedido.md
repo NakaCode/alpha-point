@@ -35,6 +35,9 @@ Para cada cena, pergunte só o que um espectador perguntaria:
    aparece)?
 5. Algum texto ou foto pequeno demais para o celular? Texto cortado pela borda, colado na borda, sobreposto a outro, ilegível
    sobre o fundo?
+6. A imagem fica a mesma por tempo demais, mesmo acompanhando a fala (a página, o mapa ou a foto parados uns 8 s ou mais, sem
+   nada novo acontecendo)?
+7. A câmera anda rápido ou bruscamente demais (um voo, um recuo ou uma troca de mapa que dá tranco)?
 E também: algo que pareça erro (um número que a voz não diz, um rótulo que contradiz a fala, uma foto que não tem a ver com a
 frase, um elemento que pisca ou some de repente, uma troca de cena brusca, repetição cansativa da mesma imagem).
 

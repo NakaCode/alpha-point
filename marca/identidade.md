@@ -563,6 +563,11 @@ vídeo"). Vale do vídeo 3 em diante. O Juneau e Los Angeles ficam como estão (
     número na tela. A série no tempo e o gráfico de barras continuam DADO;
   - **sequências e linhas do tempo**: o que acontece em etapas (um tratado, depois a lei, depois a ordem) se monta passo a
     passo, uma etapa por vez, com a voz.
+- **Sobre o mapa, mais vezes** (Lucas, 24/10/2026, no balanço depois do vídeo 3: "acredito que as animações não tenham
+  aumentado substituindo, acontece que agora há também animações sobre o mapa (o que é o correto e deveria ocorrer mais)"). Do
+  vídeo 5 em diante, a animação desenhada por cima do mapa, presa ao lugar que a fala nomeia (no Peru, o caminhão-pipa da s44 e
+  a correnteza da s37), é o jeito preferido de pôr ilustração em fala de lugar, e entra mais vezes. Ela soma ao mapa: não o
+  tira da tela.
 - **O que não muda:**
   - o MAPA continua a primeira escolha para a fala de lugar, rota, distância e território ("Mais mapa", abaixo);
   - a coisa concreta que a fala nomeia, o evento nomeado e a pessoa continuam em registro real. O que tem foto, vídeo,
