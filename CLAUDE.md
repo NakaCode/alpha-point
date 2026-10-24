@@ -493,12 +493,23 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
     em Opus, não?". Do vídeo 4 em diante: os planos e o juiz em Opus; o Fable só na escrita do texto (com o gancho) e nas
     reescritas que a bancada pede.
 - **O que o Claude central decide sozinho** (os agentes dele, não os especialistas): leitores, montagem de lista e as conferências
-  mecânicas da linha (ingest, cut_detect, mirror) em `model: 'sonnet'`; céticos, verificadores, conferências e leitores com `effort:
-  'high'` (não herdar o `xhigh` da sessão); conferência que julga licença, procedência ou texto de tela fica em Opus; revisão de
+  mecânicas da linha (ingest, cut_detect, mirror) em `model: 'sonnet'`; todo agente com `effort: 'xhigh'` (desde 24/10/2026,
+  "O esforço em extra", abaixo; antes, `'high'`); conferência que julga licença, procedência ou texto de tela fica em Opus; revisão de
   espectador em lotes de até 20 folhas e 25 imagens por revisor (desde 14/10/2026, em teste no vídeo 3: "A revisão de espectador,
   antes do Lucas"), e todo agente grava o resultado no disco ao terminar. Haiku em nada que pede julgamento; o `qc-visual`
   continua em Sonnet.
-- **O ultracode continua ligado** (Lucas, 14/10/2026, 14:1x: "Manter ligado", às opções de desligá-lo com cético só no que
+- **O esforço em extra, e o ultracode só quando necessário** (Lucas, 24/10/2026, 16:0x, no chat da Sala, depois de publicar o Peru:
+  "Quero que você (o orquestrador) rode em extra (ultracode só quando necessário) e todos os outros chats, agentes e etc rodem em
+  EXTRA").
+  - A Sala roda em `xhigh` (já rodava). Os cinco setores foram postos em `xhigh` pela Sala no mesmo dia (`set_session_effort`).
+  - Todo agente roda em `xhigh`: no `Agent`, `effort: 'xhigh'`; no `Workflow`, `agent(…, {effort: 'xhigh'})`. Vale para os
+    especialistas despachados pela Sala e pelos setores (o modelo continua o do frontmatter, e o `effort` vai no despacho, porque o
+    `.md` do motor não se edita) e para os agentes da Sala (leitores, céticos, verificadores, revisores de espectador).
+  - O ultracode continua ligado na sessão (a chave é do Lucas, e a Sala não a muda), mas a Sala só monta equipe de agentes, com
+    `Workflow`, quando a tarefa pede: várias frentes independentes, conferência adversarial de algo que vai ao ar ou à marca, ou
+    volume que uma conversa não aguenta. Tarefa curta, conversa, conserto pontual e conta de disco, a Sala faz sozinha.
+  - Isto decide o item "O ultracode ligado" do balanço depois do vídeo 3 (abaixo).
+- **O ultracode, de 14/10 a 24/10/2026** (Lucas, 14/10/2026, 14:1x: "Manter ligado", às opções de desligá-lo com cético só no que
   importa ou de vez). Ele é a chave do Claude Code que faz a Sala montar equipe de agentes, com conferência, em quase toda
   tarefa (code.claude.com/docs/en/workflows). O dia que embasou a resposta, de 13/10, 23h, a 14/10, 14h, a preço de tabela: uns
   US$ 600, dos quais US$ 95 em céticos e verificadores e US$ 74 em versões alternativas; e o que a conferência pegou nesse dia
@@ -520,7 +531,8 @@ valem. Voltar é refazer o texto como estava antes do commit dela, num commit no
 - **A vinheta de apresentação** (`43f7098`): como ela ficou no vídeo montado. Voltar: sem vinheta, e a marca d'água do começo
   ao fim (identidade §8, roupa do regente e `xml-chamadas.py` de antes de `43f7098`).
 - **O ultracode ligado** (`f158d2f`): o custo dos céticos e verificadores no vídeo 3 contra o que eles pegaram. "Voltar", aqui,
-  é desligá-lo, a escolha que ele não fez em 14/10.
+  é desligá-lo, a escolha que ele não fez em 14/10. **Decidido em 24/10/2026**: "ultracode só quando necessário" ("O esforço em
+  extra", acima).
 - **M6**, a medida de margens e fitas antes de entregar, se for aplicada: a "Como validar" da ficha (rodadas de `qc` por cena ≤
   metade das do vídeo 2). Voltar: tirar a linha das roupas.
 - Ficam fora do balanço, por não se medirem no vídeo 3: os planos e o juiz do roteiro em Opus (`066f63d`, do vídeo 4 em diante) e
@@ -948,7 +960,8 @@ arquivadas. O painel caiu no mesmo dia: "Não vamos fazer o painel, não há nec
   `run_in_background: false`: sem ele, o `Agent` dos setores roda em segundo plano).
   - Nunca `Agent` sem `subagent_type`: o agente geral herdaria as ferramentas da sessão, com o navegador do Lucas.
   - As ferramentas do próprio setor são uma lista fechada, no regimento.
-  - As conversas dos setores rodam em Opus, com esforço `high`; com o ultracode do Lucas ligado, o app as roda em `xhigh`.
+  - As conversas dos setores rodam em Opus, com esforço `xhigh` (Lucas, 24/10/2026; "O esforço em extra", em "Os modelos"), e
+    despacham cada peça com `effort: 'xhigh'`.
 - **A máquina:** render, portão com Chrome, caça, linha do tempo e conferente se marcam em `out/_maquina/` (fora do git),
   pelas regras do regimento. A Sala agenda: não caça nem sobe a linha do tempo com `chrome` de setor ocupado.
 - **O Lucas pode falar direto num setor.** O setor faz ali só a correção pequena que não toque cena vista ou aprovada nem o

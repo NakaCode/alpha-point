@@ -19,7 +19,9 @@ A proposta foi uma conversa fixa por setor, aberta por ele uma vez só, mais um 
 resposta: "Quais as conversas que preciso abrir? e sim, pode arquivar as antigas".
 Ele abriu as cinco ("Criei todas às conversas"). O painel caiu no mesmo dia: "Não vamos fazer o painel, não há
 necessidade". A Sala de controle as pôs nos grupos, em Opus e no modo sem perguntas, com os
-cartões aprovados por ele. O esforço foi posto em `high`, mas, com o ultracode do Lucas ligado, o app as roda em `xhigh`.
+cartões aprovados por ele. O esforço foi posto em `high`, mas, com o ultracode do Lucas ligado, o app as roda em `xhigh`. Desde
+24/10/2026, o esforço é `xhigh` por decisão dele (no chat da Sala: "todos os outros chats, agentes e etc rodem em EXTRA"), posto pela
+Sala nas cinco conversas.
 
 ## A mensagem de abertura: a raiz da autorização
 
@@ -144,11 +146,12 @@ O setor usa só:
 
 ## Quem faz o trabalho: a peça, como subagente
 
-- **A peça roda como subagente do setor:** `Agent` com `subagent_type: '<id>'`, sem passar `model` e com
-  `run_in_background: false`. Nas conversas dos setores, o `Agent` sem esse parâmetro roda em segundo plano (medido
+- **A peça roda como subagente do setor:** `Agent` com `subagent_type: '<id>'`, sem passar `model`, com `effort: 'xhigh'` e
+  com `run_in_background: false`. Nas conversas dos setores, o `Agent` sem esse parâmetro roda em segundo plano (medido
   pela Arte, 12/10/2026), e o setor encerraria a volta com a peça ainda rodando.
-  - O modelo e o esforço vêm do frontmatter: Fable no `diretor-de-arte` e no `editor-de-arte`, Sonnet no `qc-visual`, Opus
-    nos outros.
+  - O modelo vem do frontmatter: Fable no `diretor-de-arte` e no `editor-de-arte`, Sonnet no `qc-visual`, Opus nos outros.
+  - **O esforço é `xhigh` em toda peça** (Lucas, 24/10/2026, no chat da Sala: "todos os outros chats, agentes e etc rodem em
+    EXTRA"; CLAUDE.md, "O esforço em extra"): o `effort: 'xhigh'` vai em todo despacho, porque o frontmatter do motor não se edita.
   - **A exceção, na Arte:** a cena `desenho` com `ANIMAÇÃO` no `porque` da regência vai ao `editor-de-arte` com `model:
     'opus'` (Lucas, 14/10/2026; `CLAUDE.md`, "Os modelos"), na construção e no conserto. O pedido da Sala diz quais cenas
     são essas; sem a lista, o setor a pede à Sala. As outras cenas do editor continuam sem `model`.
