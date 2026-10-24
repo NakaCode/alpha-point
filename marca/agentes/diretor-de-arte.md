@@ -77,6 +77,9 @@ por dentro desse mapa**: do mundo ao estreito, do estreito à foto do porto, do 
   quando ele explica menos que o desenho, na comparação de tamanho, quantidade ou proporção, e nas etapas e linhas do
   tempo. No arco, as cenas desenhadas se espalham pelo vídeo, sem amontoar, e o mapa e o registro real continuam onde a
   fala os pede.
+- **O gancho que prende** (Lucas, 24/10/2026, do vídeo 5 em diante; identidade.md §5): nenhuma fusão (`fundir`) nas cenas do
+  gancho, até a vinheta; o arco abre na imagem real do lugar, o mapa do gancho entra em movimento (o voo até o lugar, o relevo
+  onde ajuda, os números animados), e o gancho mistura pelo menos três linguagens.
 - A `tecnica` fala nas medidas da casa (identidade.md §4.4): viagem de mapa de **1,5–3 s**, easing cúbico
   de entrada e saída; foto parada com Ken Burns de **1,00 → 1,12 em 6 s**, linear (do vídeo 2 em diante, na foto que
   enche a tela a mais de 1,25 vez, ele termina em 1,4 ÷ a escala de encher, e o produto fica ≤ 1,4: identidade.md

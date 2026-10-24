@@ -33,6 +33,11 @@ mostra uma contradição, não porque grita.
 - **150–160 palavras por minuto**;
 - frase de até **18 palavras** em média, uma ideia por frase;
 - nos primeiros **15 s**, uma contradição concreta e a pergunta que ela abre;
+- do vídeo 5 em diante, **a primeira frase é o fato mais surpreendente sobre o lugar que a imagem de abertura mostra**
+  (Lucas, 24/10/2026; `marca/identidade.md` §5, "O gancho que prende"): concreto, com o nome do lugar e um número ou uma
+  imagem, nunca uma ideia geral. O Peru abriu com "A line runs along the Andes and divides Peru."; pela regra, abriria com
+  algo como "Lima gets about a third of an inch of rain a year. More than ten million people live there." O primeiro tempo
+  do molde de cinco (a escala com uma comparação) passa a ser dito sobre esse lugar;
 - do vídeo 2 em diante, o gancho segue o molde de cinco tempos do `marca/embalagem.md` §1 ("Geography By Geoff"): a
   escala com uma comparação, o "But", o contraste, a segunda virada que vira a pergunta, e a **assinatura do canal**.
   A assinatura fecha o gancho, logo antes do capítulo 1, com o tema do vídeo: `You're at Alpha Point, and this is where

@@ -539,6 +539,14 @@ etapas e linhas do tempo. O mapa e o registro real não se trocam por desenho, e
 regra mora em `marca/identidade.md` §5 ("Mais ilustração"), e as roupas do montador, do diretor-de-arte e do regente
 apontam para lá. Quem constrói é o `editor-de-arte`, em Opus ("Os modelos", acima).
 
+**O gancho que prende** (Lucas, 24/10/2026, depois de publicar o Peru: "Talvez nosso hook não seja "forte o suficiente" e o
+início dos próximos deva ser mais atrativo visualmente, ou seja, mais interativo, com animações, imagens sobre o local e o uso do
+mapa"; às quatro regras propostas, marcou as quatro): do vídeo 5 em diante, o gancho abre na imagem real mais forte do lugar, troca
+de imagem a cada 3–6 s até a vinheta (sem fusão, nenhuma cena acima de ~8 s, três linguagens, duas imagens reais do lugar), o mapa
+entra voando até o lugar com os números animados, e a primeira frase da fala é o fato mais surpreendente sobre o lugar que a imagem
+mostra. As regras moram em `marca/identidade.md` §5 e `marca/voz.md` ("Os números da fala"); as roupas do montador, do
+diretor-de-arte, do regente e do qc-visual apontam para lá. O portão do roteiro de cada vídeo cobra a primeira frase.
+
 **O ilustrador, com a física** (desde 07/10/2026, do vídeo 2 em diante). O pacote `ilustracao-narrativa` v1.4.0 (em
 `v1.4.0-ilustracao-narrativa/`, fora do git, nesta máquina) foi testado numa cópia da s34 do Juneau (`out/prova-ilustracao/`,
 fora do git): o fio passou a entrar no furo, mas o balanço caiu de ±3° para 0,43° para a etiqueta parar antes da leitura. A

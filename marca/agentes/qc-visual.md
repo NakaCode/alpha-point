@@ -35,6 +35,9 @@
   Ver §6.
 - **Sem título de capítulo na tela** (CLAUDE.md; Lucas, 26/09/2026). O gate duro do card de título (ofício §2)
   fica sem objeto; card de capítulo na tela reprova (§5).
+- **O gancho que prende** (Lucas, 24/10/2026, do vídeo 5 em diante; identidade.md §5): nas cenas até a vinheta, é achado abrir
+  no mapa em vez da imagem real do lugar, uma cena acima de ~8 s, um trecho de mais de 6 s sem troca visual, menos de três
+  linguagens ou de duas imagens reais do lugar, e número da fala parado na tela.
 - **Tudo roda no PC do Lucas, no Windows.** `<motor>` é a pré-v1 (CLAUDE.md, "Os especialistas"), nunca o
   `motor.caminho` do `canal.json`. Portões: `node scripts/<portão>.mjs`, com `REGIE_MOTOR` na mesma linha.
 - **Nunca rode** `narrar.mjs` nem `transcrever.mjs`: gastam crédito da ElevenLabs e refazem o relógio.

@@ -596,6 +596,27 @@ para os próximos vídeos)"). Vale do vídeo 5 em diante; o Peru fica como está
 - Quem planeja é a regência (a pergunta "qual região a fala nomeia, e como ela aparece demarcada?" em toda cena de mapa);
   quem constrói é o mapista; o `qc-visual` cobra a região falada sem demarcação como achado.
 
+**O gancho que prende** (Lucas, 24/10/2026, depois de publicar o Peru: "Talvez nosso hook não seja "forte o suficiente" e o
+início dos próximos deva ser mais atrativo visualmente, ou seja, mais interativo, com animações, imagens sobre o local e o uso
+do mapa"; às quatro regras propostas pela Sala, ele marcou as quatro). Vale do vídeo 5 em diante; o Peru fica como está.
+- **Por quê.** O gancho do Peru (0–53 s, até a vinheta) teve 3 cenas: abriu com 22,5 s de um mapa só (a fusão s01+s02), e a
+  primeira imagem real do lugar (o drone de Lima) entrou aos 22,5 s. O de Los Angeles teve 3 cenas, com um mapa de 27 s; o da
+  Zona do Canal, 8, abrindo no drone de Balboa (`out/<proj>/espelho.json` de cada um).
+- **Abrir no lugar.** Os primeiros 2–3 s são a imagem real mais forte do lugar de que o vídeo trata (drone, aéreo ou foto), em
+  movimento: o voo do drone, ou o empurrão lento sobre a foto. O mapa vem logo depois, nunca primeiro. Sem imagem real do lugar
+  com licença, a Sala pergunta ao Lucas antes de abrir no mapa.
+- **Ritmo no gancho.** Até a vinheta, uma troca visual a cada 3–6 s: troca de cena, ou um beat que muda a imagem inteira (outra
+  vista, outra linguagem). Nenhuma cena do gancho passa de ~8 s, e as fusões de cena (o `fundir` do diretor de arte) não se
+  aplicam ao gancho. O gancho mistura pelo menos três linguagens (imagem real, mapa, animação ou gráfico) e mostra o lugar em pelo
+  menos duas imagens reais.
+- **Mapa em movimento.** O mapa do gancho entra voando do continente (ou do globo) até o lugar, com o relevo 3D onde ele ajuda a
+  ler (o gasto da MapTiler segue o ok do Lucas de cada vídeo, §6), a região falada demarcada (acima) e os números da fala
+  animados na tela (contagem, barra, área que se acende), nunca um número parado.
+- **A fala começa pelo concreto**: a regra mora em `marca/voz.md` ("Os números da fala").
+- Quem planeja: o montador (as cenas do gancho e as durações, no espelho), o diretor de arte (sem fusão no gancho) e a regência
+  (as imagens reais, as linguagens e os beats). Quem constrói: o editor de arte e o mapista. O `qc-visual` e a revisão de
+  espectador cobram como achado o gancho fora destas regras.
+
 **Faceless**: nenhum plano de pessoa falando para a câmera no papel de narrador, e nenhuma pessoa gerada
 por IA apresentada como real.
 - **Cota de apresentador: 0 %.** O montador supõe 10–15 % de rosto do apresentador; aqui não há rosto.

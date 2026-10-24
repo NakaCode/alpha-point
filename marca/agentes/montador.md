@@ -101,6 +101,9 @@ Os cinco modelos são os de identidade.md §5. O enum é o de `contratos/espelho
   ou numa linha do tempo, montado passo a passo. O mapa continua a primeira escolha para fala de lugar, e o que tem
   registro real de verdade (coisa nomeada, evento, pessoa) não vira desenho. O report diz quantas cenas são `desenho`,
   quais entraram no lugar de B-roll, e a régua de mundo real (≥ 60 %) com elas.
+- **O gancho que prende** (Lucas, 24/10/2026, do vídeo 5 em diante; identidade.md §5): o espelho abre na imagem real mais
+  forte do lugar (2–3 s, em movimento) e só depois no mapa; até a vinheta, uma troca visual a cada 3–6 s, nenhuma cena acima
+  de ~8 s, pelo menos três linguagens e duas imagens reais do lugar. O report diz as cenas do gancho com a duração de cada uma.
 - **Nunca** `titulo-topico`, `navegacao`, `apresentador*` nem `anima:false` (que aqui é tela preta).
 - **Mapa seguido de mapa é UMA viagem de câmera** (`fundir`), nunca corte; corte seco só na troca de
   regime, mapa → registro, registro → prancha (identidade.md §4.4).

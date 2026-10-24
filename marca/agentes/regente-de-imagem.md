@@ -89,6 +89,11 @@
 
 Os cinco modelos são os de identidade.md §5.
 
+**O gancho que prende** (Lucas, 24/10/2026, do vídeo 5 em diante; identidade.md §5): até a vinheta, o primeiro beat é a imagem
+real mais forte do lugar (2–3 s, em movimento); depois, uma troca visual a cada 3–6 s (beat que muda a imagem inteira), pelo
+menos três linguagens e duas imagens reais do lugar; o mapa do gancho entra voando até o lugar, com a região falada demarcada e
+os números animados.
+
 | a fala… | `tipo` | modelo do canal |
 |---|---|---|
 | situa lugar, rota, fronteira, distância | `mapa` | MAPA: território aceso sobre satélite. Do vídeo 2 em diante é a primeira escolha para essa fala, antes de B-roll genérico e de prancha (Lucas, 27/09/2026; identidade.md §5, "Mais mapa") |
