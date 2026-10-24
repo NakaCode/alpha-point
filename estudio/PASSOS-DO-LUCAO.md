@@ -38,7 +38,7 @@ Top10 a linha verde `PRONTO …` (ela deve dizer `modo=mesmo-usuario`).
 ## 2 · Cloudflare: nada a fazer
 
 Os vídeos e o backup do canal ficam num bucket só do Alpha Point (`qint-alpha-point`), na conta Cloudflare da Top10
-(decisão do Mateus, 22/out/2026). A Top10 criou o bucket e põe a credencial no cofre do PC; você não cria conta nem paga
+(a Holding o criou em 22/out/2026, depois de o Mateus preferir um bucket ao Google Drive). A Top10 criou o bucket e põe a credencial no cofre do PC; você não cria conta nem paga
 nada.
 
 ## 3 · ElevenLabs: nada a fazer
@@ -52,8 +52,10 @@ você não cria conta nem escolhe voz nova. Se um dia quiser trocar a voz, a mes
 A MapTiler (plano Flex) e a Epidemic Sound (plano Creator) já são contas suas: copie a chave de cada painel. A da
 Epidemic é a que o motor usa para escolher e baixar a trilha de cada vídeo sozinho (você decidiu a trilha automática em
 24/10/2026). As chaves dos acervos abertos que o canal usa (DVIDS, NARA e Smithsonian) estão hoje no seu arquivo de
-chaves, e o canal não registrou quem as criou: se foi você, use as mesmas; se vieram de outra pessoa, crie as suas no
-cadastro de cada site. Para cada uma, no PowerShell como administrador, troque o último nome pelo serviço:
+chaves, e o canal não registrou quem as criou: se foi você, use as mesmas. Se não foi, você não precisa criar conta: o
+Mateus liberou aos sócios, em 24/10/2026, o MapTiler e as chaves de acervo do Top10, e a Top10 as põe no cofre do PC
+pelo nome da variável, se você preferir (escolha sua, como a MapTiler Flex que já é sua). ⚰️ *Até 24/10 este passo
+dizia «se vieram de outra pessoa, crie as suas no cadastro de cada site».* Para cada uma, no PowerShell como administrador, troque o último nome pelo serviço:
 
 ```
 powershell -NoProfile -ExecutionPolicy Bypass -File C:\estudio\maquina\guardar-segredo-no-cofre.ps1 -Canal alpha-point -Segredo maptiler

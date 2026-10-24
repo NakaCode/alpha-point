@@ -145,7 +145,7 @@ e2ccf4cfa8e06a41b87909560a4c6a83074b498480afff420740a6d8e630930f  (monorepo, ori
    montador, pelos 0,25 s do v4; o «espectador norte-americano» do qc-visual, pelo público de 14/10; a água, a região
    falada e a pergunta do gancho estão na identidade e não nas roupas de lá. Aqui vale o mais novo.
 6. **Banco pago: nenhum no piloto.** Os quatro bancos da marca (Envato, Motion Array, Storyblocks e Shutterstock,
-   `marca/midia.md` §1 e §2.3) continuam no canal, só pelo navegador (decisões do Mateus de 22/out/2026). O motor não tem
+   `marca/midia.md` §1 e §2.3) continuam no canal, só pelo navegador (o risco que o Mateus aceitou em 22/out/2026: «Vou usar Storyblocks e Envato aceitando o risco», às 06:00Z, e a Shutterstock e a Motion Array na resposta das 08:29Z; «só pelo navegador» é regra do estúdio Top10, não fala dele sobre este canal). O motor não tem
    mais trava de sócio contra o stock (`scripts/lib/canal.mjs`, linhas 21-23): ele caça na Green, com as contas do Top10 e
    sem a lista do Lucas, se o canal declarar `midia.caca_stock_assinado: true`. À pergunta «E o B-roll dos bancos
    pagos?», o Lucas respondeu **«Sem banco no piloto (Recomendado)»** (24/10/2026): o campo fica `false`, a cena que só
