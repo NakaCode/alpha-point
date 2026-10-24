@@ -132,6 +132,11 @@ No palco **3840×2160**. O piso reprova (ofício); o alvo é o que a marca pede;
   - **O que vale:** todo crédito (foto, documento, vídeo, dado e mapa) a **56 px**, teto **64 px**, do vídeo 2
     (`los-angeles`) em diante. Longo, quebra em duas linhas e nunca encolhe (§4.2). O "num geral" é dele: nenhum crédito
     fica em 76.
+  - **Do vídeo 5 em diante, 60 px** (Lucas, 24/10/2026, no chat da Sala, depois de decidir o vídeo 5 no motor sem rosto do
+    Top10; à pergunta "O crédito de fonte na tela: o motor exige hoje no mínimo 60 px, e você tinha decidido 56 px (07/10).
+    Qual fica?", a resposta "60 px (Recomendado)"). O motor cobra 60 de todo crédito, inclusive o de mapa, e o pacote
+    `estudio/` leva o 60 às cenas dele (`estudio/LEIA.md`). Os vídeos 2 a 4 ficam com 56, e o `tokens.css` do canal não
+    muda por isso: trocá-lo mexeria nos carimbos dos vídeos entregues (o Juneau, abaixo).
   - **A conta do motor** (`scripts/qc-tamanho.mjs` e `scripts/lib/marca-tokens.mjs`, só leitura): o piso que o portão
     cobra é o MAIOR entre o ofício (crédito 72 no 4K) e o `--piso-credito` do `tokens.css`; a marca sobe, não desce. O
     crédito de MAPA (`data-qc-credito="mapa"`, nele ou num ancestral: o portão usa `closest`, e a marca num contêiner
