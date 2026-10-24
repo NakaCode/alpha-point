@@ -95,10 +95,12 @@ Confira também que o canal está numa conta Google e num AdSense **seus**, sem 
 
 ## 6 · Sete respostas (pode ser pelo chat, numeradas)
 
-As que você já respondeu no chat da Sala, em 24/10/2026, estão marcadas com a sua resposta. Faltam a 1 e a 5 e a última
-frase da 7.
+As que você já respondeu no chat da Sala, em 24/10/2026, estão marcadas com a sua resposta. Faltam a 5 e a última frase
+da 7.
 
-1. **Juneau**: o vídeo 1 tem XML pronto desde 07/10 e não foi publicado. Publica, arquiva ou descarta?
+1. ~~**Juneau**: o vídeo 1 tem XML pronto desde 07/10 e não foi publicado. Publica, arquiva ou descarta?~~ **Respondida em
+   24/10/2026**: à pergunta «O Juneau tem o XML pronto desde 07/10 e nunca foi publicado. O que fazemos com ele?», «Arquivar».
+   Ele fica guardado como está, neste PC, sem publicar, e não entra no motor.
 2. ~~**Este PC** pode ficar ligado 24 h? (decide o `-Ligado24h` do passo 1)~~ **Respondida em 24/10/2026**: à pergunta
    «Este PC pode ficar ligado 24 horas, sem suspender, para o motor trabalhar sozinho?», «Sim, 24 h (Recomendado)». O
    passo 1 vai com `-Ligado24h`.

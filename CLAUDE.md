@@ -1047,8 +1047,13 @@ motor. Você aprova pauta, roteiro, título e capa; a linha do tempo e o Premier
   - o "sim" do Lucas em cada portão.
 - **O que o motor ainda não faz como o canal**, para o Top10: o `_obra/R2.json` da obra, o modelo e o esforço por papel (o motor
   fixa os dele), o satélite das cenas de mesa e os 15 s entre pedidos à Epidemic (`pacote-24-10.md`, §7).
-- **Falta perguntar ao Lucas:** o Juneau (publica, arquiva ou descarta) e o YouTube (a categoria, o e-mail de contato, o programa de
-  parcerias e o "conteúdo alterado ou sintético"), antes do primeiro envio (`PASSOS-DO-LUCAO.md` §6).
+- **O Juneau fica arquivado** (Lucas, 24/10/2026, à pergunta "O Juneau tem o XML pronto desde 07/10 e nunca foi publicado. O que
+  fazemos com ele?": "Arquivar"). Ele fica guardado como está, neste PC, sem publicar. No banco da Régie, a linha dele continua parada
+  no `finalize`: a v0.1.0 não tem verbo de arquivar.
+- **O YouTube, antes do primeiro envio** (`PASSOS-DO-LUCAO.md` §6):
+  - "conteúdo alterado ou sintético": o Lucas não o marcou nos vídeos publicados ("Não marquei", 24/10/2026);
+  - a categoria: ele pediu a dos canais de referência ("Conseguimos verificar a dos nossos canais de referência?").
+  - Faltam o e-mail de contato e o programa de parcerias.
 - **O jeito de hoje** (a linha da Régie, os setores, a linha do tempo, o Premiere) continua para o que não for o vídeo 5, até o Lucas
   aprovar o piloto.
 
