@@ -1017,8 +1017,8 @@ motor. Você aprova pauta, roteiro, título e capa; a linha do tempo e o Premier
 **As respostas do Lucas (24/10/2026, das 17h às 19h, no chat da Sala):**
 - **A trilha:** "Automática, pelo roteiro". Um agente lê o roteiro e escreve o clima de cada trecho; o motor escolhe pela ficha da
   Epidemic e baixa da conta do Lucas, sem lista. Nenhuma IA ouve a música, como a licença pede.
-  - As prévias baixadas por programa, só para medir o volume: "Pode (Recomendado)". Isso vale só para o motor; no jeito de hoje,
-    continua "A trilha: Epidemic Sound", abaixo.
+  - As prévias baixadas por programa, só para medir o volume: "Pode (Recomendado)". Elas vêm pela mesma API, pelo link que a busca
+    devolve, e nunca pelo site. Isso vale só para o motor; no jeito de hoje, continua "A trilha: Epidemic Sound", abaixo.
 - **Os bancos pagos:** "Sem banco no piloto (Recomendado)". A cena que só teria footage de banco sai em "versão pronta", que o Lucas vê
   nomeada antes de publicar.
 - **As conferências:** "Faço as que dá (Recomendado)". O motor não tem a checagem de fatos nem a revisão de espectador do canal. A Sala
@@ -1510,7 +1510,9 @@ no arquivo de chaves da máquina pelo Bloco de Notas, como `EPIDEMIC_SOUND_API_K
   NARA e a do Commons: o MCP, com a chave da conta do Lucas, é a porta que o Epidemic abre para programas, e o arquivo que o
   `DownloadRecording` devolve é a entrega dela. As prévias nenhum programa do canal pede: o Lucas ouve na página da faixa
   (`https://www.epidemicsound.com/music/tracks/<id>/`), no navegador dele. **A exceção é o motor sem rosto** (Lucas, 24/10/2026: "Pode
-  (Recomendado)"): a trilha automática dele baixa as prévias pela conta do Lucas, só para medir o volume ("O motor sem rosto do Top10").
+  (Recomendado)"). A trilha automática dele usa a mesma API, o servidor MCP da Epidemic, com a chave do Lucas no cofre do motor
+  (`scripts/sem-rosto/epidemic.mjs` do `top10-estudio`). Ela baixa a prévia de cada candidata pelo link que a própria busca devolve
+  (`lqmp3Url`, um MP3 de baixa qualidade), só para medir o volume com o ffmpeg ("O motor sem rosto do Top10").
 - **A licença**, lida pelo Claude central no navegador do app em 05/10/2026 (`out/juneau/_tmp/trilha/epidemic-licenca.md`, §8 e §9):
   - o plano do Lucas é o Creator, e o Alpha Point é canal pessoal dele ("Pessoal, meu"), na *Safelist* da conta. O Creator cobre só canal
     pessoal e um usuário;

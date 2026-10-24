@@ -125,7 +125,8 @@ ferramenta de IA nem de reconhecimento de música):
   prompt diz «Nenhum modelo escuta música» (linha 81);
 - a escolha é o ranking determinístico dos metadados da busca contra esse clima (`trilha.mjs:214-226`;
   `scripts/compilado/motor/lib/trilha-metadados.mjs`, que só importa o `ficha.mjs`: nenhum modelo, nenhuma rede);
-- a prévia de cada candidata é baixada e medida pelo volume: o `medirPrevia` decodifica pelo ffmpeg e tira uma curva de
+- a prévia de cada candidata é baixada pelo link que a própria busca da API devolve (`lqmp3Url`, um MP3 de baixa
+  qualidade; `trilha.mjs:208-209`), sem passar pelo site, e medida pelo volume: o `medirPrevia` decodifica pelo ffmpeg e tira uma curva de
   RMS (`trilha.mjs:207-213`; `scripts/compilado/motor/musica.mjs:769-797`). O cabeçalho do `musica.mjs` registra que o
   Gemini saiu da trilha (linhas 17-20);
 - o cliente da Epidemic só busca (`SearchRecordings`) e baixa o WAV (`DownloadRecording`), com a chave no cabeçalho
