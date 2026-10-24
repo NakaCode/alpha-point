@@ -501,7 +501,8 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
 - **O esforço em extra, e o ultracode só quando necessário** (Lucas, 24/10/2026, 16:0x, no chat da Sala, depois de publicar o Peru:
   "Quero que você (o orquestrador) rode em extra (ultracode só quando necessário) e todos os outros chats, agentes e etc rodem em
   EXTRA").
-  - A Sala roda em `xhigh` (já rodava). Os cinco setores foram postos em `xhigh` pela Sala no mesmo dia (`set_session_effort`).
+  - A Sala roda em `max`: o Lucas a pôs ele mesmo, no mesmo dia ("Já mudei esta conversa para Máx"). Os cinco setores foram
+    postos em `xhigh` pela Sala (`set_session_effort`).
   - Todo agente roda em `xhigh`: no `Agent`, `effort: 'xhigh'`; no `Workflow`, `agent(…, {effort: 'xhigh'})`. Vale para os
     especialistas despachados pela Sala e pelos setores (o modelo continua o do frontmatter, e o `effort` vai no despacho, porque o
     `.md` do motor não se edita) e para os agentes da Sala (leitores, céticos, verificadores, revisores de espectador).
