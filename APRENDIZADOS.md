@@ -1629,3 +1629,19 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   (`python -X utf8 -B - <<'EOF'` com o `EOF` na linha seguinte) prendeu o Python por mais de 2 minutos, e ele foi encerrado pelo PID.
   - **Por que serve a qualquer canal:** a regra escrita não venceu o hábito do agente (6 travas na arte-17 com a regra no pedido); o
     verificador vence, e custa uns 0,1 s por comando (medido: 99 ms, a partida do Node). Vale para qualquer projeto que rode agentes no Git Bash do Windows.
+
+### 90. O motor sem rosto não lê a marca do canal: a cópia vai no pacote, e uma conferência acusa quando ela envelhece
+
+- **O problema** (24/10/2026, no pacote `estudio/` do vídeo 5): o motor sem rosto do Top10 só semeia na obra o que está dentro do
+  pacote do canal. O `obra_semente` recusa `..` no caminho (`semente.mjs:30`), e o agente do motor só lê a pasta da roupa. O
+  `tokens.css`, as fontes e as regras da marca que moram em `marca/` não chegam às cenas do motor.
+- **O que resolveu:**
+  - a cópia byte a byte do `tokens.css` e das fontes em `estudio/semente/marca/`, com o sha256 de cada arquivo em
+    `estudio/semente/ORIGEM.json`;
+  - o que o motor pede diferente da marca (o crédito a 60 px) vai num `motor.css` à parte, ligado depois do `tokens.css`. A cópia
+    continua igual à `marca/`;
+  - `node estudio/conferir-copias.mjs` confere a semente e as fontes da roupa contra `marca/` e sai 1 com a lista do que envelheceu.
+    Na primeira rodada, ele acusou os 10 arquivos da marca que tinham mudado desde 20/10.
+- **Por que serve a qualquer canal:** todo canal que entra no motor tem a marca fora do pacote e muda a marca com o tempo. Sem a
+  conferência, a roupa do motor fica para trás em silêncio. No Alpha Point, a roupa de 20/10 já não tinha as regras de 22 a 24/10.
+  Vale avisar o Lucas e o Mateus: os canais Polar Plasma e Blue Casefiles têm o mesmo caminho.
