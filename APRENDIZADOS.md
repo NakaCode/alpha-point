@@ -1616,3 +1616,16 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
     `python -X utf8 -B <arquivo>.py`, e antes do "terminou" o setor confere que não sobrou `python.exe` preso (pelo PID);
   - a trava técnica seria um hook no `.claude/settings.json` que recuse o comando do Bash com `python -` ou heredoc para o Python. Mexer
     no `settings.json` pede o ok do Lucas (CLAUDE.md, "Os setores"): fica proposto a ele.
+- **A trava técnica, instalada em 24/10/2026** (Lucas: "Instalar (Recomendado)"): o hook `PreToolUse` do `.claude/settings.json` roda
+  `ferramentas/trava-python.mjs` antes de cada comando do Bash, do PowerShell e do Monitor, e recusa o Python que lê o script pela
+  entrada (`python -`, heredoc, here-string, pipe, `python < arquivo`, Python sem script), com a mensagem do jeito certo. O texto entre
+  aspas, o comentário e o corpo do heredoc não contam (`grep "python -"` e a mensagem de commit passam). A prova tem 215 casos
+  (`ferramentas/trava-python-provar.mjs`).
+  - **A varredura e os céticos:** o verificador passou pelos 100 mil comandos distintos já rodados no canal (3.146 conversas, 23 GB): recusaria
+    12 mil, 11.882 deles `python - <<'EOF'`. Três céticos tentaram derrubá-lo. Dos 12 mil, só 3 eram falsos positivos (uma função `py()` e
+    dois `foreach` do PowerShell). Acharam também um furo real: o script `.sh` gravado por heredoc com `python -` dentro e rodado depois
+    (18 comandos, 12 deles da arte do Peru). A versão consertada lê o `.sh` que o comando grava ou roda, e a nova varredura mudou só esses
+    21 comandos. No mesmo dia, antes da trava, a Sala reproduziu o defeito sem querer: um heredoc VAZIO
+  (`python -X utf8 -B - <<'EOF'` com o `EOF` na linha seguinte) prendeu o Python por mais de 2 minutos, e ele foi encerrado pelo PID.
+  - **Por que serve a qualquer canal:** a regra escrita não venceu o hábito do agente (6 travas na arte-17 com a regra no pedido); o
+    verificador vence, e custa uns 0,1 s por comando (medido: 99 ms, a partida do Node). Vale para qualquer projeto que rode agentes no Git Bash do Windows.

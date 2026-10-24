@@ -273,3 +273,12 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
 - **A passagem s19 → s20** (Lucas, 23/10/2026, 15:5x, no chat da Sala, depois de saber que a viagem giraria o mapa 122° em 2 s): "Corte, sem viagem
   (Recomendado)". A s20 volta à versão de antes da arte-19 (sha1 854ce74e), e a passagem do Virú para a foz do Rímac fica um corte assumido: são dois
   lugares distantes. A viagem fica só nos 4 cortes da escolha anterior.
+
+## A embalagem (Lucas, 24/10/2026, 15:0x, no chat da Sala)
+- **A miniatura:** "A (Recomendado)", à pergunta "Qual miniatura fica para o Peru?", com as duas versões à vista e a preferência da banca
+  (`out/peru-agua/_tmp/miniatura/banca.md`). Fica a A, "AND THE WATER?": o Peru sobre a Blue Marble da NASA, a vertente do Pacífico em
+  `--destaque`, os rios amazônicos em `--agua`, Lima com anel e seta (a receita com pílula, `marca/embalagem.md` §3). Os arquivos e os scripts
+  estão em `roteiros/peru-agua/miniatura/`. A pílula-herói ficou a 236 px, não aos 300 da receita: a 300 a frase não cabe numa linha sobre o
+  mar e cobre Lima. Lê sem esforço a 168×94 (conferido pela Sala na versão ampliada ×4).
+- **As conferências da descrição:** "Agora (Recomendado)", à pergunta de quando rodar o verificador de fatos (a cota estava em 91 %, com o
+  teto de 93 %). O laudo: 74 de 74 afirmações, nenhuma errada, PASS (`roteiros/peru-agua/qc-roteiro/fatos-descricao.laudo.md`).

@@ -921,6 +921,21 @@ arquivadas. O painel caiu no mesmo dia: "Não vamos fazer o painel, não há nec
 - **A trava é escrita, não técnica.** A Sala não consegue desligar o navegador nas conversas dos setores: a extensão não
   é conector, e a chave de conector só vale para a própria conversa. Um hook em `.claude/settings.json` pediria o ok do
   Lucas. Hoje a trava são três coisas: a mensagem dele, a lista fechada do regimento e o `tools:` dos especialistas.
+- **A trava do Python é técnica** (desde 24/10/2026). O Lucas, à pergunta "Instalo a trava técnica do Python?": "Instalar
+  (Recomendado)". A opção dizia: "Eu escrevo o verificador, testo com um comando que trava e com um que não trava, e registro
+  no CLAUDE.md. Se um dia atrapalhar, tiro a linha."
+  - O `.claude/settings.json` tem um hook `PreToolUse` (Bash, PowerShell e Monitor) que roda `ferramentas/trava-python.mjs`. Ele
+    recusa, antes de rodar, o Python que lê o script pela entrada: `python -`, o heredoc, o here-string, o pipe para o Python, o
+    `python < arquivo` e o Python sem script. A recusa volta ao agente com o jeito certo: o script num arquivo, `python -X utf8 -B
+    <arquivo>.py` (`APRENDIZADOS.md`, item 89). O `-c` e o `-m` passam.
+  - Ele olha também o script `.sh` que o comando grava (`cat > x.sh <<EOF`) ou roda (`bash x.sh`, `./x.sh`, lido do disco), o texto que vai a
+    um shell (`bash <<EOF`, `… | bash`), `bash -c`, `eval`, `cmd /c`, `powershell -Command`, `iex` e as crases. O texto entre aspas, o
+    comentário e o corpo de heredoc que vai a outro programa não contam: a mensagem de commit passa.
+  - Vale para a Sala, os setores, as peças e todo subagente. Um defeito do verificador nunca segura o Bash: ele sai 0.
+  - A prova: `node ferramentas/trava-python-provar.mjs` (215 casos em 24/10/2026, com os quatro comandos que travaram de verdade e os achados
+    de três céticos). Provado ao vivo na Sala no mesmo dia: `true || python -` recusado no Bash, e o mesmo no PowerShell. Sobre os 100 mil
+    comandos já rodados no canal, ele recusa 12 mil (quase todos `python - <<'EOF'`), sem nenhum falso positivo achado na revisão.
+  - Se atrapalhar um comando legítimo, conserta-se o verificador (com o caso novo na prova); tirar o hook é decisão do Lucas.
 - **No setor, a peça roda como subagente** (`subagent_type: '<id>'`, sem passar modelo e com
   `run_in_background: false`: sem ele, o `Agent` dos setores roda em segundo plano).
   - Nunca `Agent` sem `subagent_type`: o agente geral herdaria as ferramentas da sessão, com o navegador do Lucas.

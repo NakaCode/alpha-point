@@ -165,7 +165,9 @@ O setor usa só:
   - **que o Python roda sempre de um arquivo de script** (`python -X utf8 -B <arquivo>.py`), gravado na pasta da tarefa,
     nunca por `python -`, heredoc ou `-c` longo, e o `ffmpeg` com `-nostdin` (`APRENDIZADOS.md`, item 89: no Git Bash do
     Windows o comando fica preso esperando a entrada, e o que vem depois na cadeia roda tarde; travou 6 vezes na arte-17 do
-    Peru, com a regra no pedido). A linha vai no começo do pedido, não no fim;
+    Peru, com a regra no pedido). A linha vai no começo do pedido, não no fim. Desde 24/10/2026, um verificador do
+    `.claude/settings.json` recusa esse comando antes de rodar (`ferramentas/trava-python.mjs`; CLAUDE.md, "Os setores"): a
+    recusa volta à peça com o jeito certo, e a linha no pedido continua;
   - o fim: um relato, sem commit, sem `regie`, sem Discord ou Telegram.
 - **O setor só repassa o que é da Sala.** Não grava exceção, não pergunta ao Lucas em nome da Sala e não decide o que o
   ofício dá ao Claude central: leva à Sala o que a peça pediu.
