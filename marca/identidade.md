@@ -585,6 +585,17 @@ se valia também para ele, o Lucas respondeu "Só a partir do próximo".
 - O mapa sobre satélite de geometria real conta na régua de mundo real (§4.3). Cada mapa renderizado gasta da
   MapTiler (§6): o contador se acompanha com o Lucas.
 
+**A região falada, sempre demarcada** (Lucas, 24/10/2026, na linha do tempo do Peru, sobre a s21 em 8,1 s, quando a fala
+vai de Piura a Tacna pela costa e o mapa não marca a faixa: "SEMPRE demarcar a região que está sendo falada (considerar
+para os próximos vídeos)"). Vale do vídeo 5 em diante; o Peru fica como está.
+- Quando a fala nomeia ou percorre uma região (uma costa, um deserto, uma bacia, um vale, uma faixa entre duas cidades),
+  o mapa a demarca enquanto ela é dita: contorno ou área acesa da região, ou, se não há polígono lido, o trecho marcado
+  entre os pontos que a fala dá (de Piura a Tacna, a costa entre os dois). O espectador não deduz a região só pelo nome.
+- A demarcação sai de geometria lida, com procedência (§6), nunca de um polígono desenhado à mão como se fosse o oficial.
+  Sem fonte para o limite, marca-se o que a fala afirma (os pontos, o trecho, a direção) e se declara.
+- Quem planeja é a regência (a pergunta "qual região a fala nomeia, e como ela aparece demarcada?" em toda cena de mapa);
+  quem constrói é o mapista; o `qc-visual` cobra a região falada sem demarcação como achado.
+
 **Faceless**: nenhum plano de pessoa falando para a câmera no papel de narrador, e nenhuma pessoa gerada
 por IA apresentada como real.
 - **Cota de apresentador: 0 %.** O montador supõe 10–15 % de rosto do apresentador; aqui não há rosto.
