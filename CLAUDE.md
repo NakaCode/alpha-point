@@ -649,6 +649,11 @@ leitura). Onde ela diverge desta lista, vale esta:
   usar relevo quando necessário"). As cenas de mapa e o relevo 3D onde a cena precisa dele, sem pergunta por cena; a cena da prova
   ("The mountains help…") fica plana, porque o Lucas a preferiu assim (19/10). O contador fica em `out/peru-agua/_pesquisa/maptiler-gasto.md`,
   anotado antes e depois de cada render e de cada rodada de portão com a pré-carga. É esta mensagem que a Sala cita no `MapTiler liberado`.
+  **No vídeo 5 (`atlantico-fundo`), liberado como no Peru** (Lucas, 24/10/2026, 18:5x, no chat da Sala, à pergunta "O vídeo 5 é quase
+  todo mar: o fundo vem da GEBCO (grátis). Posso usar o MapTiler na costa e na superfície, como no Peru?": "Sim, como no Peru
+  (Recomendado)"). As cenas de mapa e o relevo 3D onde a cena precisa dele, sem pergunta por cena. O vídeo sai pelo motor sem rosto
+  ("O motor sem rosto", abaixo), que renderiza sozinho e não anota o contador por render: a conta da MapTiler se confere pelo painel
+  dela, no começo e no fim do vídeo.
 
 **Os scripts do canal** rodam de dentro do canal, sempre com o alvo que o ofício do agente dá. Sem alvo,
 alguns varrem todos os projetos de `out/`. Na maioria, o alvo é o `<proj>` (`node scripts/<portão>.mjs <proj>`);
@@ -985,6 +990,67 @@ arquivadas. O painel caiu no mesmo dia: "Não vamos fazer o painel, não há nec
   - Ela não consegue abrir nem limpar conversa que o Lucas abriu.
   - Se uma conversa sumir, ele abre outra e digita a mensagem de abertura, e o sessionId novo entra aqui e no regimento.
 - O regimento inteiro está em `setores/REGIMENTO.md`.
+
+## O motor sem rosto do Top10 (desde 24/10/2026, com o vídeo 5 como piloto)
+
+**A decisão.** O Lucas, 24/10/2026, depois de publicar o Peru: "Lembrando também que para o próximo temos algumas coisas novas no
+github". A novidade é o motor sem rosto do `top10-company/top10-estudio` (a skill `motor-sem-rosto`). À pergunta "Como fazemos o vídeo
+5?", ele respondeu **"Vídeo 5 no motor"**. A opção dizia: "Eu monto o pacote agora, o Top10 instala a máquina, e o vídeo 5 sai pelo
+motor. Você aprova pauta, roteiro, título e capa; a linha do tempo e o Premiere deixam de existir."
+- **O que é:** um motor que roda num WSL deste PC (uma distro só dele, `C:\estudio\`, um cofre de chaves por canal), operado pelo Top10
+  por SSH. Um relógio o conduz a cada 5 min: a narração, o relógio, o espelho, a pesquisa, a direção, a regência, os textos, a arte e o
+  QC, o render, a trilha, o master (sem Premiere), o título e a capa, e o envio privado ao YouTube.
+- **Os portões** são quatro: pauta, roteiro, título e capa, e publicar. Cada um só abre com a palavra do Lucas no chat da Sala.
+- **As contas:** a ElevenLabs e o depósito R2 são do Top10. O Claude, a Epidemic, a MapTiler e o YouTube são do Lucas.
+- **O pacote do canal** é `estudio/`, no repositório. O Mateus Souza o fez em 21–22/10, e a Sala o pôs em dia em 24/10 (commit
+  `a035245`): `canal.json`, `canal-motor.json`, a roupa em `estudio/marcas/alpha-point/`, as peças do master, a paleta da trilha e a
+  semente da marca.
+  - O que o Lucas faz para a máquina está em `estudio/PASSOS-DO-LUCAO.md`. Começa só quando o Top10 avisar que `C:\estudio\maquina\`
+    existe. Em 24/10, nada do motor estava instalado neste PC.
+  - O estudo do motor e o relato do pacote estão em `out/_maquina/motor-sem-rosto/` (`requisitos.md` e `pacote-24-10.md`), fora do
+    git.
+- **Instalar não é da Sala:** o WSL, os usuários, as tarefas agendadas, o cofre, as permissões e o `-Ligado24h` são do Lucas e do
+  Top10.
+- **A Sala não edita o motor**, como não edita a Régie. O pacote `estudio/` é do canal: a Sala o mantém, e o
+  `node estudio/conferir-copias.mjs` confere a semente e a roupa contra `marca/`.
+
+**As respostas do Lucas (24/10/2026, das 17h às 19h, no chat da Sala):**
+- **A trilha:** "Automática, pelo roteiro". Um agente lê o roteiro e escreve o clima de cada trecho; o motor escolhe pela ficha da
+  Epidemic e baixa da conta do Lucas, sem lista. Nenhuma IA ouve a música, como a licença pede.
+  - As prévias baixadas por programa, só para medir o volume: "Pode (Recomendado)". Isso vale só para o motor; no jeito de hoje,
+    continua "A trilha: Epidemic Sound", abaixo.
+- **Os bancos pagos:** "Sem banco no piloto (Recomendado)". A cena que só teria footage de banco sai em "versão pronta", que o Lucas vê
+  nomeada antes de publicar.
+- **As conferências:** "Faço as que dá (Recomendado)". O motor não tem a checagem de fatos nem a revisão de espectador do canal. A Sala
+  faz as duas por fora:
+  - a checagem do roteiro, por cobertura, antes do portão `roteiro`;
+  - a revisão de espectador do vídeo pronto, com cético, antes de o Lucas publicar.
+- **As aprovações:** "Só com a sua palavra (Recomendado)". O Mateus entra como `operador`: o motor recusa a aprovação dele sem a fala do
+  Lucas (`--fala`). O motor não confere que a fala é dele, e por isso a Sala só passa adiante o "sim" que o Lucas deu no chat dela.
+- **O crédito:** "60 px (Recomendado)", que é o piso do motor (`marca/identidade.md` §4.1). Os vídeos 2 a 4 ficam com 56.
+- **A nuvem:** "Só o do motor (Recomendado)". A `midia/` e o histórico dos vídeos 1 a 4 ficam só neste PC (regra 3, "O bruto não
+  viaja"). O `backup-r2-canal.ps1` não roda sobre `C:\projetos\alpha-point` sem decisão nova.
+- **O PC:** "Sim, 24 h (Recomendado)". O passo 1 vai com `-Ligado24h`.
+- **As contas Claude:** "As duas" (a principal e a de reserva, `portas: 2`), e o plano: "As duas Max 20x".
+- **O relógio:** fica o do canal (`ingest-local.py`, portado), com o Scribe pago da ElevenLabs de reserva ("Fica o Scribe
+  (Recomendado)"). A conta da ElevenLabs no motor é a do Top10.
+- **O MapTiler do vídeo 5:** "Sim, como no Peru (Recomendado)" ("Peças da pré-v1 em uso", item 7).
+
+**O que muda no vídeo 5:**
+- **Saem do caminho:** a linha do tempo pré-render, o XML do Premiere, a caça nos bancos e os portões do canal (M6, conferente,
+  `qc-cena`). Quem julga as cenas é o `qc-visual` do motor, com a roupa do canal.
+- **Continua com a Sala:**
+  - o roteiro, escrito aqui, como sempre ("Os modelos");
+  - a checagem dos fatos do roteiro e a revisão de espectador do vídeo pronto;
+  - o título e a miniatura (`marca/embalagem.md`);
+  - a descrição;
+  - o "sim" do Lucas em cada portão.
+- **O que o motor ainda não faz como o canal**, para o Top10: o `_obra/R2.json` da obra, o modelo e o esforço por papel (o motor
+  fixa os dele), o satélite das cenas de mesa e os 15 s entre pedidos à Epidemic (`pacote-24-10.md`, §7).
+- **Falta perguntar ao Lucas:** o Juneau (publica, arquiva ou descarta) e o YouTube (a categoria, o e-mail de contato, o programa de
+  parcerias e o "conteúdo alterado ou sintético"), antes do primeiro envio (`PASSOS-DO-LUCAO.md` §6).
+- **O jeito de hoje** (a linha da Régie, os setores, a linha do tempo, o Premiere) continua para o que não for o vídeo 5, até o Lucas
+  aprovar o piloto.
 
 ## A linha do tempo pré-render (desde 02/10/2026)
 
@@ -1443,7 +1509,8 @@ no arquivo de chaves da máquina pelo Bloco de Notas, como `EPIDEMIC_SOUND_API_K
 - **O robots.txt** do Epidemic veta `/a/*` (onde fica o MCP) e o `audiocdn` veta tudo. Decisão do Claude central (05/10/2026), como a da
   NARA e a do Commons: o MCP, com a chave da conta do Lucas, é a porta que o Epidemic abre para programas, e o arquivo que o
   `DownloadRecording` devolve é a entrega dela. As prévias nenhum programa do canal pede: o Lucas ouve na página da faixa
-  (`https://www.epidemicsound.com/music/tracks/<id>/`), no navegador dele.
+  (`https://www.epidemicsound.com/music/tracks/<id>/`), no navegador dele. **A exceção é o motor sem rosto** (Lucas, 24/10/2026: "Pode
+  (Recomendado)"): a trilha automática dele baixa as prévias pela conta do Lucas, só para medir o volume ("O motor sem rosto do Top10").
 - **A licença**, lida pelo Claude central no navegador do app em 05/10/2026 (`out/juneau/_tmp/trilha/epidemic-licenca.md`, §8 e §9):
   - o plano do Lucas é o Creator, e o Alpha Point é canal pessoal dele ("Pessoal, meu"), na *Safelist* da conta. O Creator cobre só canal
     pessoal e um usuário;

@@ -182,8 +182,11 @@ diante):
 
 - MapTiler satellite-v2 + terrain-rgb-v2 (`canal.json` › `mapa.perfil`, 26/09). **Relevo 3D só com o ok do Lucas do
   vídeo**: no vídeo 3, «Plano, sem relevo» (15/10); no vídeo 4, «Sim e pode usar relevo quando necessário» (21/10), onde
-  o relevo explica a cordilheira, a encosta ou o vale, nunca enfeite. **O vídeo 5 pede um ok próprio**, que a Sala
-  escreve aqui quando ele der; até lá, mapa plano, mesmo que o prompt da estação fale em terreno DEM.
+  o relevo explica a cordilheira, a encosta ou o vale, nunca enfeite. **No vídeo 5, como no Peru** (Lucas, 24/10/2026,
+  à pergunta «O vídeo 5 é quase todo mar: o fundo vem da GEBCO (grátis). Posso usar o MapTiler na costa e na superfície,
+  como no Peru?»: «Sim, como no Peru (Recomendado)»): o MapTiler nas cenas de mapa, com relevo 3D onde a cena precisar,
+  sem pergunta por cena. O fundo do mar vem da batimetria da GEBCO (domínio público); se o `terrain-rgb-v2` tem o fundo
+  do mar, ainda está a conferir.
 - Tratamento do satélite (09/10): `raster-brightness-max 0.92`, `raster-saturation 0`, `raster-contrast 0.25`.
 - Protagonista `--destaque` a 85 % (40 % com contexto), contorno `--tinta` 6 px; contraparte a 35 %.
 - Fronteira: branco a 70 %, 5 px, sobre `#0B0F14` a 60 %, 12 px — única linha branca; estrada/rota em

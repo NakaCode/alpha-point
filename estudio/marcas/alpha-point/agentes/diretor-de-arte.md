@@ -26,8 +26,8 @@
   B-roll genérico quando explica melhor, na comparação de tamanho, quantidade ou proporção, e nas etapas e linhas do
   tempo. Espalhe as cenas desenhadas; o registro real de coisa nomeada, evento ou pessoa não vira desenho.
 - **Mapa nunca fica parado** (03/10/2026) e **mais relevo 3D e câmera viajando** (03/10/2026), com o relevo liberado
-  pelo Lucas por vídeo (no vídeo 4, «quando necessário», 21/10; o vídeo 5 pede um ok próprio, que a Sala escreve em
-  `identidade.md`); sem o ok, proponha `ESCALAR mapa3d` no report.
+  pelo Lucas por vídeo (no vídeo 4, «quando necessário», 21/10; no vídeo 5, «Sim, como no Peru», 24/10: relevo onde a
+  cena precisar); sem o ok, proponha `ESCALAR mapa3d` no report.
 - **O gancho que prende** (Lucas, 24/10/2026; do vídeo 5 em diante; `identidade.md`, «A abertura e o mapa»): **nenhuma
   fusão (`fundir`) nas cenas do gancho**, até a vinheta; o arco abre na imagem real mais forte do lugar (2–3 s, em
   movimento), e o mapa vem depois, entrando em voo até o lugar, com a região falada demarcada e os números animados; o

@@ -160,8 +160,9 @@ e2ccf4cfa8e06a41b87909560a4c6a83074b498480afff420740a6d8e630930f  (monorepo, ori
    diz. **Para o Top10.**
 10. **O still da mesa** (`../_media/base/mesa-<lugar>.png`) sai da ferramenta do canal `ferramentas/mesa-satelite.py`,
     que o motor não roda. Sem ele, a mesa fica sem o satélite, declarada. **Para o Top10 e a Sala.**
-11. **O relevo do vídeo 5:** a roupa diz «plano até o ok do Lucas», e o prompt do mapista do motor diz «terreno DEM
-    real» (`desenhar-cenas.mjs`, linhas 641-642). Quem vence não está provado.
+11. ~~**O relevo do vídeo 5:** a roupa diz «plano até o ok do Lucas», e o prompt do mapista do motor diz «terreno DEM
+    real» (`desenhar-cenas.mjs`, linhas 641-642). Quem vence não está provado.~~ **Resolvido em 24/10/2026:** «Sim, como
+    no Peru (Recomendado)». O relevo vale onde a cena precisar, e a roupa e o prompt deixam de brigar.
 12. **A margem do topo:** a marca usa 160 px no topo; o prompt da arte fala em 5 % (192 px). Se algum portão do motor
     cobra 192 no topo, as cenas do canal reprovam ali. **Não provado.**
 
@@ -187,5 +188,5 @@ de imagens do qc-visual (M11). Tudo continua em `marca/agentes/`, `CLAUDE.md` e 
    de época abaixo de 4K; a palavra de foto de arquivo (`FILE`); grifo fixo; papel da manchete; nota de tradução; a voz
    da chamada; o arranjo da tela final no Studio. (A ilustração sobre o mapa depois do Peru foi decidida em 24/10: «Sobre
    o mapa, mais vezes».)
-5. O relevo 3D no vídeo 5 (conflito 11).
+5. ~~O relevo 3D no vídeo 5 (conflito 11).~~ Respondida em 24/10/2026: «Sim, como no Peru (Recomendado)».
 6. A trilha: há algum clima que o canal nunca deve usar? (Os vetos da `musica/paleta.json` estão vazios.)

@@ -15,8 +15,9 @@
   repintar), Copernicus DEM, USGS 3DEP, GEBCO, ETOPO, Worldview/GIBS, NAIP, GOES, Himawari.
 - **Relevo 3D só com o ok do Lucas do vídeo.** No vídeo 3, «Plano, sem relevo» (15/10/2026); no vídeo 4, «Sim e pode
   usar relevo quando necessário» (21/10/2026), onde o relevo explica a cordilheira, a encosta ou o vale, nunca enfeite.
-  **O vídeo 5 pede um ok próprio**: até a Sala escrevê-lo aqui, mapa plano, mesmo que o prompt da estação fale em
-  terreno DEM real. Onde a frase argumenta altura, proponha o relevo no relato.
+  **No vídeo 5, como no Peru** (Lucas, 24/10/2026: «Sim, como no Peru (Recomendado)»): relevo 3D onde a cena precisar,
+  sem pergunta por cena, e nunca enfeite. O fundo do mar vem da batimetria da GEBCO (domínio público), com a fonte na
+  tela; se o `terrain-rgb-v2` tem o fundo do mar, ainda está a conferir.
 - A cena liga, nesta ordem, `../_media/marca/tokens.css` (a cópia da marca que o motor semeia na obra) e
   `../_media/marca/motor.css` (o crédito a 60 px por cima), e escreve só `var(--…)`.
 

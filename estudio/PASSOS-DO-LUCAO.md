@@ -93,8 +93,8 @@ Confira também que o canal está numa conta Google e num AdSense **seus**, sem 
 
 ## 6 · Sete respostas (pode ser pelo chat, numeradas)
 
-As que você já respondeu no chat da Sala, em 24/10/2026, estão marcadas com a sua resposta. Faltam a 1 e a 5, a parte do
-plano na 3 e a última frase da 7.
+As que você já respondeu no chat da Sala, em 24/10/2026, estão marcadas com a sua resposta. Faltam a 1 e a 5 e a última
+frase da 7.
 
 1. **Juneau**: o vídeo 1 tem XML pronto desde 07/10 e não foi publicado. Publica, arquiva ou descarta?
 2. ~~**Este PC** pode ficar ligado 24 h? (decide o `-Ligado24h` do passo 1)~~ **Respondida em 24/10/2026**: à pergunta
@@ -102,7 +102,8 @@ plano na 3 e a última frase da 7.
    passo 1 vai com `-Ligado24h`.
 3. **Contas Claude**: quantas você tem, e de qual plano (Max 5x ou 20x)? **Respondida em parte em 24/10/2026**: à pergunta
    «Quais contas Claude o motor pode usar?», «As duas» — a principal e a de reserva; quando uma bate no limite, o motor
-   passa para a outra (o passo 4, item 3, vale). **Falta:** o plano de cada uma.
+   passa para a outra (o passo 4, item 3, vale). **O plano**, à pergunta «Suas duas contas Claude são de qual plano?»:
+   «As duas Max 20x» (24/10/2026).
 4. ~~**Crédito de tela**: você decidiu 56 px (07/10). O motor tem piso de 72 px, porque abaixo disso não se lê numa TV.
    Sobe para 72 px, ou fica 56 px com exceção permanente no motor?~~ (O piso do motor é 60 px, não 72, para todo crédito,
    o de mapa inclusive.) **Respondida em 24/10/2026**: à pergunta «O crédito de fonte na tela: o motor exige hoje no
