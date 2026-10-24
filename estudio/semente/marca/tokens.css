@@ -1,0 +1,293 @@
+/* ============================================================================================
+   ALPHA POINT · tokens de cena (marca/tokens.css)
+   --------------------------------------------------------------------------------------------
+   O arquivo de estilos que toda cena HTML 4K do canal liga, de out/<slug>/graphics/<id>.html:
+       <link rel="stylesheet" href="../../../marca/tokens.css">
+   A cena escreve var(--fonte), var(--destaque), var(--fs-rotulo)… e nunca o nome da face nem um hex.
+
+   ESCRITO À MÃO em 25/09/2026, não gerado. O molde é o tokens.css neutro da pré-v1 da Régie
+   (C:\projetos\regie-v1\src\cena\marca-padrao\tokens.css, commit 7ab9543): mesma estrutura, mesmos
+   nomes de variável e as mesmas faces "Marca"/"MarcaSec" que o RIG (src/cena/_rig.js, RIG.prontas)
+   espera. NÃO rode "marca.mjs gerar" da pré-v1 sobre este arquivo: o marca.json dela não comporta a
+   paleta por papéis do canal (CLAUDE.md, "Peças da pré-v1 em uso") e apagaria tudo isto.
+
+   DE ONDE VEM CADA COISA
+   - A LEI é marca/identidade.md. Nada aqui tem cor ou tamanho que não esteja lá:
+       cores ............ §2 (paleta por papel; o --neutro é #737D8E desde 25/09/2026)
+       fontes e pesos ... §3 (Barlow Condensed 800 · Inter 500/700/800 · Noto Sans de alternativa ·
+                          Courier Prime 400/700 só na folha de documento, desde 27/09/2026)
+       alvos/pisos/tetos  §4.1 · margens, faixa de crédito e canto reservado §4.2 · movimento §4.4
+       pílula, anel, ator e linhas §4.1, §4.4, §5 e §6
+   - Os arquivos de fonte estão em marca/fontes/<família>/, cada um com OFL.txt e ORIGEM.json
+     (google/fonts, commit 23e54b51, sha256 conferido). Os url() abaixo são RELATIVOS a este arquivo:
+     o Chrome os resolve a partir de marca/, qualquer que seja a pasta da cena.
+   - Os pisos que reprovam (260/104/72/72) são do ofício; os portões da pré-v1 os leem daqui
+     (template/scripts/lib/marca-tokens.mjs lê --fs-* e --piso-*), e a marca só pode SUBI-los. A única
+     exceção é o CRÉDITO, a 56 px desde 07/10/2026 (Lucas: "Quero reduzir para 56px"): o --piso-credito
+     abaixo diz 56, o portão continua cobrando 72 (e 40 no crédito de mapa), e a reprovação que é só isso
+     vira exceção registrada do canal (identidade §4.1, "Crédito a 56 px").
+   - Os NOMES DO CANAL (--fundo, --painel, --papel, --tinta, --tinta-escura, --rotulo, --destaque,
+     --contraparte, --neutro, --tensao) são os de verdade. Os nomes da pré-v1 (--texto, --sec,
+     --acento, --dado, --geo, --alerta, --grifo, --linha) existem só como APELIDOS que apontam para
+     o papel do canal, para que o RIG, as peças do kit, os exemplos e os agentes da pré-v1 (que
+     escrevem var(--texto), var(--acento)…) vistam a marca certa. Cena nova do canal usa os nomes
+     do canal. A tabela dos apelidos, com o porquê de cada um, está no bloco "APELIDOS" abaixo.
+   - Paleta por vídeo: RIG.paleta({destaque:"#…"}) sobrescreve a variável no :root. Como os apelidos
+     são var(--papel-do-canal), sobrescrever --destaque arrasta --acento, --dado, --geo e --grifo junto.
+   ============================================================================================ */
+
+/* Inter — SIL Open Font License 1.1 (marca/fontes/inter/OFL.txt). Arquivo variável (eixos wght 100–900
+   e opsz 14–32): uma face cobre os três pesos do canal, 500 corpo · 700 rótulo · 800 ênfase. */
+@font-face { font-family: "Marca"; src: url("fontes/inter/Inter-VF.ttf") format("truetype"); font-weight: 100 900; font-style: normal; font-display: block; }
+
+/* Barlow Condensed — SIL Open Font License 1.1 (marca/fontes/barlowcondensed/OFL.txt). Só o 800:
+   número-herói e título de bloco (§3). Aqui a secundária ESCREVE título, ao contrário da marca neutra
+   da pré-v1 ("a secundária nunca escreve título"): no Alpha Point o herói é dela, por decisão de marca. */
+@font-face { font-family: "MarcaSec"; src: url("fontes/barlowcondensed/BarlowCondensed-ExtraBold.ttf") format("truetype"); font-weight: 800; font-style: normal; font-display: block; }
+
+/* Noto Sans — SIL Open Font License 1.1 (marca/fontes/notosans/OFL.txt). A alternativa declarada (§3),
+   para glifo que falte na Inter. Face própria ("MarcaAlt"), para nunca pegar uma Noto instalada no
+   sistema. O RIG não espera por ela (RIG.prontas só espera "Marca"/"MarcaSec"): o Chrome só a baixa se
+   um glifo faltar, e o render espera document.fonts.ready a cada quadro. */
+@font-face { font-family: "MarcaAlt"; src: url("fontes/notosans/NotoSans-VF.ttf") format("truetype"); font-weight: 100 900; font-stretch: 62.5% 100%; font-style: normal; font-display: block; }
+
+/* Courier Prime — SIL Open Font License 1.1 (marca/fontes/courierprime/OFL.txt). Só o texto da FOLHA DE
+   DOCUMENTO (identidade §3 e §5, Lucas, 27/09/2026): 400 no corpo, 700 no cabeçalho. Fora da folha, nunca.
+   Como a "MarcaAlt", o RIG não espera por ela: a cena de documento confere no primeiro quadro que a letra
+   é a Courier Prime (o render espera document.fonts.ready a cada quadro). */
+@font-face { font-family: "MarcaDoc"; src: url("fontes/courierprime/CourierPrime-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "MarcaDoc"; src: url("fontes/courierprime/CourierPrime-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: block; }
+
+:root {
+  /* ---- COR · a paleta do canal, por papel (identidade §2) ---- */
+  --fundo:        #0E1726;   /* fundo de prancha (atores, fluxos, causa → efeito) */
+  --painel:       #172338;   /* cartão sobre --fundo */
+  --agua-base:    #00050c;   /* a água escura dos mapas do porto, sobre o satélite no tratamento C (identidade §6; Lucas, 08 e 09/10/2026; antes #061416) */
+  --papel:        #ECE8DF;   /* fundo claro de DADO; a folha de DOCUMENTO e o cartão da fala (sobre --fundo) */
+  --tinta:        #F4F1EA;   /* texto sobre escuro, contorno do território protagonista */
+  --tinta-escura: #14181F;   /* texto sobre --papel */
+  --rotulo:       rgba(11, 15, 20, 0.88);   /* #0B0F14 a 88 %: pílula do rótulo sobre mapa ou registro */
+  --destaque:     #F5A524;   /* o protagonista do vídeo (UMA entidade) e o anel, assinatura do canal */
+  --contraparte:  #2EC4B6;   /* o segundo ator, quando a cena compara dois */
+  --neutro:       #737D8E;   /* do terceiro ator em diante: sem matiz nova, só rótulo */
+  --tensao:       #E4572E;   /* zona de conflito, risco, perda. Nunca é a cor de um lado */
+  --contexto-1:   #694C8B;   /* violeta: 2º vizinho de contexto do mesmo país, sempre com nome; só no mapa (§6, Lucas 04/10/2026) */
+  --contexto-2:   #4575EE;   /* azul: território de contexto do outro lado da fronteira internacional; só no mapa (§6) */
+  --contexto-3:   #BAACF6;   /* lavanda: o vizinho de contexto mais importante do mesmo país; só no mapa (§6) */
+  --agua:         #AFD8F6;   /* a água (rio, lago, represa, canal, túnel, cano), cor de TIPO; não sobre --papel (§2, Lucas 23/10/2026) */
+  --agua-luz:     #EAF5FD;   /* a luz da correnteza, quase branca, que desce pela linha da água que corre (§2; Lucas 23/10/2026: "Mais visível") */
+
+  /* ---- COR · derivadas que a identidade escreve (valor = papel + opacidade, sem cor nova) ---- */
+  --legenda-cor:    color-mix(in srgb, var(--tinta) 80%, transparent);          /* §4.1: legenda de relação, --tinta a 80 % */
+  --eixo-cor:       color-mix(in srgb, var(--tinta-escura) 60%, transparent);   /* §5 DADO: eixo em --tinta-escura a 60 % */
+  --grifo-cor:      color-mix(in srgb, var(--destaque) 35%, transparent);       /* §5 DOCUMENTO: grifo em --destaque a 35 % */
+  --territorio-cor: color-mix(in srgb, var(--destaque) 85%, transparent);       /* §6: preenchimento do protagonista a 85 % */
+  --territorio-contraparte-cor: color-mix(in srgb, var(--contraparte) 35%, transparent);   /* §6: território da contraparte a 35 % (Lucas, 01/10/2026) */
+  --territorio-contexto-1-cor: color-mix(in srgb, var(--contexto-1) 25%, transparent);    /* §6: território de contexto a 25 % (Lucas, 04/10/2026) */
+  --territorio-contexto-2-cor: color-mix(in srgb, var(--contexto-2) 25%, transparent);
+  --territorio-contexto-3-cor: color-mix(in srgb, var(--contexto-3) 25%, transparent);
+  --territorio-protagonista-com-contexto-cor: color-mix(in srgb, var(--destaque) 40%, transparent);   /* §6: o protagonista quando há contexto pintado */
+  --nome-territorio-contorno: 14px var(--rotulo);   /* §4.1: o nome dentro do território de contexto, com paint-order: stroke fill */
+  --nome-territorio-sombra: 0 0 22px color-mix(in srgb, var(--fundo) 75%, transparent), 0 2px 6px color-mix(in srgb, var(--fundo) 65%, transparent);
+  --fronteira-cor:  rgba(255, 255, 255, 0.70);                                  /* §6: demais fronteiras, branco a 70 % (Lucas, 30/09) */
+
+  /* ---- APELIDOS · os nomes da pré-v1 apontando para o papel do canal ----
+     apelido   → papel do canal         por quê
+     --texto   → --tinta                "texto principal sobre escuro" é exatamente o papel da --tinta.
+     --sec     → --tinta a 80 %         o secundário da pré-v1 (legenda, crédito) é a legenda de §4.1.
+                                        A identidade não dá cor ao crédito; ele herda esta.
+     --acento  → --destaque             a cor viva, a do protagonista e do anel (pré-v1 M14: cor-assinatura).
+     --dado    → --destaque             no canal a série de DADO não tem cor própria: a do protagonista é
+                                        --destaque e a da contraparte é --contraparte (§5). Sem cor honesta
+                                        de "dado", fica a do protagonista; a 2ª série usa var(--contraparte).
+     --geo     → --destaque             o "território aceso" da pré-v1 (M37). No canal o território se pinta
+                                        pelo PAPEL (protagonista, contraparte, neutro), nunca por ser
+                                        geografia. O teal da pré-v1 NÃO vira --contraparte só por ser teal.
+     --alerta  → --tensao               risco, perda, conflito: mesmo sentido.
+     --grifo   → --destaque a 35 %      o marca-texto do DOCUMENTO (§5). Na pré-v1 o texto sobre o grifo
+                                        usa --fundo; aqui o grifo fica sobre --papel e o texto é --tinta-escura.
+     --linha   → --neutro               SEM correspondência exata: a identidade não tem cor de régua ou
+                                        borda. O --neutro é o único cinza sem papel de lado e passa de 3:1
+                                        (elemento gráfico) sobre --fundo, --painel e --papel. Cuidado: numa
+                                        cena com 3+ atores, o --neutro também é o do terceiro ator.
+     Ciladas: --tinta aqui é CLARA (texto sobre escuro). O exemplo documento-grifado da pré-v1 declara
+     a própria --tinta escura no :root dele e vence esta; ao copiar um molde, confira qual vale. */
+  --texto:  var(--tinta);
+  --sec:    var(--legenda-cor);
+  --acento: var(--destaque);
+  --dado:   var(--destaque);
+  --geo:    var(--destaque);
+  --alerta: var(--tensao);
+  --grifo:  var(--grifo-cor);
+  --linha:  var(--neutro);
+
+  /* ---- TIPOGRAFIA (identidade §3) ---- */
+  --fonte:     "Marca", "MarcaAlt", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-sec: "MarcaSec", "Marca", "MarcaAlt", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* A alternativa entra no BLOCO INTEIRO, nunca no meio da linha (§3, ofício). A "MarcaAlt" nas pilhas
+     acima é só rede de segurança contra o sistema; se um glifo cair nela, troque o bloco todo para
+     var(--fonte-alt). Escritas não latinas (árabe, hebraico, CJK) pedem a Noto da escrita, que ainda
+     não está em marca/fontes/. */
+  --fonte-alt: "MarcaAlt", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-doc: "MarcaDoc", "Courier Prime", "Courier New", ui-monospace, monospace;   /* só na folha de documento (§5) */
+  --fonte-nome:     "Inter";
+  --fonte-doc-nome: "Courier Prime";
+  --fonte-sec-nome: "Barlow Condensed";
+  --fonte-alt-nome: "Noto Sans";
+  --peso-heroi:  800;   /* Barlow Condensed, número-herói */
+  --peso-titulo: 800;   /* Barlow Condensed, título de bloco */
+  --peso-rotulo: 700;   /* Inter, rótulo (inclui nome de lugar) */
+  --peso-texto:  500;   /* Inter, corpo e legenda */
+  --peso-enfase: 800;   /* Inter, ênfase: destaque em texto de leitura é PESO, não cor */
+  --peso-caixa-alta: 700;   /* nome de país e região em CAIXA ALTA: Inter 700 */
+  --pesos-proibidos-caixa-alta: "";
+  --peso-minimo: 400;   /* o piso do portão de tipografia da pré-v1, que lê isto. Era 500 até 27/09/2026: a
+                           Inter continua nunca abaixo de 500 (identidade §3, o qc-visual confere), mas a
+                           Courier Prime da folha de documento escreve em 400, o peso regular dela. 400 é o
+                           piso do ofício (qc-tipografia: "nunca abaixo de 400"). */
+  --peso-doc:    400;   /* Courier Prime, corpo da folha de documento */
+  --peso-doc-cabecalho: 700;   /* Courier Prime, cabeçalho da folha */
+  --tracking-lugar: 0.04em;    /* país e região, em caixa alta */
+  --tracking-heroi: -0.01em;   /* só herói de 1–2 palavras em Barlow Condensed; texto de leitura, 0 */
+  --numeros: tabular-nums;     /* font-variant-numeric em tabela e eixo */
+
+  /* ---- TAMANHO · alvos em px no palco 4K (identidade §4.1) ---- */
+  --fs-heroi:   360px;
+  --fs-titulo:  360px;
+  --fs-fala:    280px;   /* fala citada */
+  --fs-rotulo:  128px;   /* inclui NOME DE LUGAR */
+  --fs-eixo:    84px;    /* eixo e legenda (a legenda de relação da prancha também) */
+  --fs-credito: 56px;    /* 56 desde 07/10/2026 (Lucas: "pode seguir com maptiler (quero diminuir o tamanho dos créditos
+                            num geral)" e, logo depois, "Quero reduzir para 56px"); era 76. Vale do vídeo 2 (los-angeles) em
+                            diante, para todo crédito: foto, documento, vídeo, dado e mapa. O Juneau fica com 76: cena dele
+                            refeita declara --fs-credito: 76px no próprio HTML (identidade §4.1, "Crédito a 56 px"). */
+
+  /* ---- FOLHA DE DOCUMENTO (identidade §5, Lucas, 27/09/2026) ----
+     Fora do padrão --fs-* de propósito: o portão lê os papéis --fs-<papel> da lista dele, e a folha não é
+     um papel novo de texto. O corpo é legenda em tamanho (piso 84 px); o cabeçalho, 84 px. */
+  --doc-corpo:      86px;    /* Courier Prime 400, alvo; piso 84 px */
+  --doc-cabecalho:  84px;    /* Courier Prime 700 */
+  --doc-margem-rasgo: 240px; /* branco mínimo entre a última linha e a borda rasgada: nada se corta */
+  --doc-inclinacao: 1.5deg;  /* a folha fica torta até isto, para um lado ou para o outro */
+
+  /* ---- TAMANHO · pisos que reprovam (ofício; a marca não os baixa, fora o crédito, abaixo) ---- */
+  --piso-heroi:   260px;
+  --piso-titulo:  260px;
+  --piso-fala:    260px;
+  --piso-rotulo:  104px;
+  --piso-eixo:    72px;
+  --piso-credito: 56px;  /* O piso da MARCA para o crédito, desde 07/10/2026 (Lucas: "Quero reduzir para 56px"). O PORTÃO
+                            não lê isto para baixo: o qc-tamanho fica com o MAIOR entre o ofício e este valor
+                            (scripts/lib/marca-tokens.mjs › pisosEfetivos), então continua cobrando 72 px no crédito de
+                            foto, documento, dado e vídeo, e 40 px no crédito de MAPA (data-qc-credito="mapa", nele ou num
+                            ancestral; docs/CREDITO-DE-MAPA.md §6.2 da pré-v1, que recomenda 46). Crédito de mapa a 56
+                            passa; o outro crédito a 56 reprova no qc-tamanho, e essa reprovação, quando é SÓ ela, vira
+                            exceção registrada em out/<proj>/qc/_excecoes-portao.json, cena a cena, sem nova pergunta ao
+                            Lucas (identidade §4.1, "Crédito a 56 px"). */
+
+  /* ---- TAMANHO · tetos, que também reprovam (identidade §4.1) ---- */
+  --teto-heroi:   560px;
+  --teto-titulo:  560px;
+  --teto-fala:    340px;
+  --teto-rotulo:  160px;   /* vale para nome de lugar: é rótulo, nunca herói */
+  --teto-eixo:    104px;
+  --teto-credito: 64px;   /* era 88; desceu com o alvo em 07/10/2026 (identidade §4.1, "Crédito a 56 px") */
+
+  /* ---- PALCO E MARGEM (identidade §4.2) ---- */
+  --palco-largura: 3840px;
+  --palco-altura:  2160px;
+  --safe-x: 200px;   /* laterais */
+  --safe-y: 160px;   /* topo */
+  --faixa-credito-y: 1880px;   /* abaixo disto, só crédito */
+  --credito-x: 200px;          /* o crédito começa aqui, alinhado à esquerda… */
+  --credito-x-fim: 1720px;     /* …e termina antes daqui; longo quebra em duas linhas, nunca encolhe */
+  --canto-reservado: 400px;    /* caixa 400 × 400 no canto inferior direito: marca-d'água do YouTube */
+  --max-blocos: 3;             /* blocos de TEXTO vivos: o teto da neutra, que a pré-v1 diz que não sobe (MARCA.md M27);
+                                  bloco é texto de leitura, não rótulo curto (identidade §4.2; Lucas, 28/09/2026) */
+  --max-elementos: 6;          /* §4.2: texto + gráfico ao mesmo tempo; alvo 4 a 5 */
+  --logo-slot: "canto inferior direito livre (400 x 400) — reservado à marca-d'água do YouTube; sem logo na cena";
+
+  /* ---- ACABAMENTO ---- */
+  --degrade: none;             /* a identidade não tem degradê; a única exceção é a luz da mesa, logo abaixo (§5) */
+
+  /* ---- A MESA (identidade §5, "A mesa: feltro sob a luz"; Lucas, 30/09/2026, a variante E) ----
+     O fundo das cenas sem mapa: --fundo + a luz (degradê radial atrás do objeto principal) + o feltro (textura).
+     As duas ficam POR BAIXO de tudo: a luz no fundo da câmera, o feltro numa camada que é o PRIMEIRO filho dela.
+     Nunca um ::after por cima: pinta sobre a foto e o texto (APRENDIZADOS item 53). Uso:
+       #cam  { background: radial-gradient(ellipse var(--mesa-luz-tamanho) at <x>px <y>px,
+                 var(--mesa-luz-centro) 0%, var(--fundo) var(--mesa-luz-meio), var(--mesa-luz-borda) 100%); }
+       #mesa { position: absolute; inset: 0; background-image: var(--mesa-feltro);
+               background-size: var(--mesa-feltro-tamanho); }
+     <x> <y> = o centro do objeto principal (a foto, a folha, o card) no instante. */
+  --mesa-luz-centro: color-mix(in srgb, var(--fundo) 78%, var(--tinta));
+  --mesa-luz-meio: 48%;
+  --mesa-luz-borda: color-mix(in srgb, var(--fundo) 62%, var(--tinta-escura));
+  --mesa-luz-tamanho: 1700px 1250px;
+  --mesa-feltro:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.004 0.55' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.55 0.004' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.26 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.13 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --mesa-feltro-tamanho: 960px 960px, 960px 960px, 480px 480px, 480px 480px;
+
+  /* ---- A MESA DO VÍDEO 2 EM DIANTE: SATÉLITE SOB A LUZ (identidade §5; Lucas, 07/10/2026) ----
+     O fundo das cenas sem mapa passa a ser uma imagem de satélite PÚBLICA do lugar do vídeo (Landsat/USGS ou NASA:
+     domínio público, sem crédito na tela, identidade §7), escurecida e desfocada, POR BAIXO da câmera. O Juneau fica
+     com a mesa de cima (feltro sob a luz). Camadas, de baixo para cima: --fundo · o still · a luz como VÉU · o feltro a
+     50 % · o objeto. Nada do still anda sozinho: ele acompanha a câmera a --mesa-satelite-paralaxe. Uso:
+       <img id="still" src="../_media/base/mesa-<lugar>.png" alt="">   (primeiro filho do palco, antes de #cam)
+       #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
+                width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
+                opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; }
+       #cam  { background: radial-gradient(ellipse var(--mesa-luz-tamanho) at <x>px <y>px,
+                 var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
+       #mesa { ... como acima ...; opacity: var(--mesa-satelite-feltro); }
+     e, por quadro: escala do still = 1 + (escala da câmera − 1) × paralaxe; translação = a da câmera × paralaxe.
+     O still se faz com `python ferramentas/mesa-satelite.py <imagem pública> out/<proj>/_media/base/mesa-<lugar>.png`,
+     que aplica --mesa-satelite-tratamento (lido daqui), com um ganho de exposição antes do desfoque que leva a luma
+     média a --mesa-satelite-luma-alvo (a cidade escurece mais que a neve), e recusa a imagem que deixa a faixa do
+     crédito clara demais. */
+  --mesa-satelite-opacidade: 1;     /* o still já vem escurecido; 0 = a mesa sem satélite */
+  --mesa-satelite-paralaxe: .6;     /* fração do movimento da câmera que o still acompanha (está "atrás" da folha) */
+  --mesa-satelite-margem: 56px;     /* o sangramento do still além do palco (desfoque + deriva da câmera) */
+  --mesa-satelite-tratamento: "scale=3840:2160:force_original_aspect_ratio=increase,crop=3840:2160,gblur=sigma=28,curves=all='0/0 0.5/0.06 1/0.20',hue=s=0.7";
+  --mesa-satelite-luma-alvo: 17.7;  /* a luma média (0–255) do quadro aprovado; a ferramenta acha o ganho que leva cada imagem até ela */
+  --mesa-luz-veu-centro: color-mix(in srgb, var(--tinta) 14%, transparent);   /* a luz da mesa como véu sobre o satélite */
+  --mesa-satelite-feltro: .5;       /* o satélite já é textura: o feltro fica a 50 %, só como grão */
+  --texto-tratamento: "caixa"; /* texto sobre mapa ou registro vai na pílula --rotulo */
+  --texto-contorno: 0px transparent;
+  --texto-sombra: none;
+  --texto-caixa: var(--rotulo);
+  --rotulo-respiro-y: 24px;    /* pílula: respiro interno 24 × 40 */
+  --rotulo-respiro-x: 40px;
+  --cantos: 12px;              /* cantos da pílula */
+  --linha-espessura: 6px;      /* setas e linhas da prancha; contorno do protagonista */
+  --linha-cor: var(--linha);
+  --fronteira-espessura: 5px;      /* §6: 5 px desde 30/09/2026 (eram 3) */
+  --fronteira-contorno-cor: rgba(11, 15, 20, 0.60);   /* §6: contorno escuro por baixo, para a divisa se ler sobre neve (60 % desde 30/09) */
+  --fronteira-contorno-espessura: 12px;   /* §6: 12 px desde 30/09/2026 (eram 7) */
+  --rede-cor: var(--contraparte);   /* §6: estrada, rota ou malha que não é a protagonista; nunca cinza (Lucas, 30/09/2026) */
+  --ator-diametro: 640px;      /* §5 PRANCHA: círculo do ator, traço de 6 px na cor do papel dele */
+  --icone-diametro: 160px;
+  --anel-diametro: 56px;       /* §4.4 o anel, a assinatura: traço 10 px em --destaque */
+  --anel-traco: 10px;
+
+  /* ---- MOVIMENTO (a cena anima por __renderAt(t); isto é o dado, não animação CSS) ---- */
+  --mov-personalidade: "suave";   /* a identidade não nomeia personalidade; fica o valor da neutra */
+  --mov-entrada: 0.3s;            /* rótulo: opacidade + 24 px de subida, ease-out */
+  --mov-subida: 24px;
+  --mov-preenchimento: 0.5s;      /* preenchimento de território */
+  --mov-viagem-min: 1.5s;         /* viagem de mapa, cúbica de entrada e saída */
+  --mov-viagem-max: 3s;
+  --mov-anel-pulso: 1.2s;         /* escala 1 → 1.8 e opacidade 1 → 0, duas vezes, e para */
+  --mov-kenburns: 6s;             /* foto parada: escala 1.00 → 1.12, linear */
+
+  /* ---- MOVIMENTO · "A mão que arruma" (Lucas, 07/10/2026: "movimento A"; identidade §4.4 e §5) ----
+     Do vídeo 2 (los-angeles) em diante; o Juneau fica como está. Os números são os do BRIEF do diretor-de-arte
+     (out/juneau/_tmp/movimento/BRIEF.md, §0b e §A). Continuam dado, não animação CSS: a cena os lê e anima por
+     __renderAt(t). As linguagens B e C não entraram: nenhum token de deslize, antecipação, reenquadre ou mergulho. */
+  --mov-assentamento: 0.22s;      /* a chegada termina 1,03 → 1,00 nos últimos 200–240 ms, uma vez, sem voltar */
+  --mov-luz-atraso: 0.12s;        /* a luz da mesa segue o centro do objeto principal 120 ms atrás */
+  --mov-levantar: 0.35s;          /* o objeto sai da mesa: 1,00 → 1,04, a sombra solta cresce, opacidade 1 → 0 nos últimos 200 ms */
+  --mov-kenburns-vetor: 80px;     /* o Ken Burns da foto em tela cheia anda ATÉ isto rumo ao assunto, declarado no cabeçalho */
+}

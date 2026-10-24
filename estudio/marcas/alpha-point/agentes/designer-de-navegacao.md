@@ -1,7 +1,8 @@
 # ROUPA ALPHA POINT — designer-de-navegacao
 
-> Só o que é deste canal. Base: `estudio/marcas/alpha-point/identidade.md` e `voz.md`. Destilada de
-> `marca/agentes/designer-de-navegacao.md` (caminhos relativos à raiz do repositório do canal).
+> Só o que é deste canal. Base: `identidade.md` e `voz.md`, na pasta desta roupa (um nível acima de `agentes/`). Destilada
+> de `marca/agentes/designer-de-navegacao.md`, em dia com a marca de 24/10/2026. Caminho `marca/…` aqui é procedência no
+> repositório do canal, não arquivo seu.
 
 ## 1 · Neste canal você não tem trabalho
 

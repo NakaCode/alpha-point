@@ -1,7 +1,12 @@
 # ROUPA ALPHA POINT — verificador-de-fatos
 
-> Só o que é deste canal. Base: `estudio/marcas/alpha-point/voz.md` («O que o canal NUNCA diz») e `identidade.md` («Grafia de
-> tela»). Destilada de `marca/agentes/verificador-de-fatos.md`.
+> Só o que é deste canal. Base: `voz.md` («O que o canal NUNCA diz») e `identidade.md` («Grafia de tela»), na pasta desta
+> roupa (um nível acima de `agentes/`). Destilada de `marca/agentes/verificador-de-fatos.md`, em dia com a marca de
+> 24/10/2026. Caminho `marca/…`, `pautas/…` ou `roteiros/…` aqui é procedência no repositório do canal.
+>
+> **No motor, você não está na linha do vídeo novo** (`canal.mjs`, os agentes cobrados). A checagem de fatos do roteiro
+> fica com a Sala de controle do canal, antes do portão do roteiro (Lucas, 24/10/2026, à pergunta sobre as conferências
+> que o motor não tem: «Faço as que dá»). Esta roupa vale para quem a fizer.
 
 ## 1 · O que você checa, e em que língua
 

@@ -1,8 +1,12 @@
 # ROUPA ALPHA POINT — executor-de-molde
 
-> Só o que é deste canal: quais moldes ele tem e como cada um se veste. Base: `estudio/marcas/alpha-point/identidade.md`
-> e `voz.md`. Fontes: `marca/identidade.md` §4.1, §4.4 e §5; `marca/prancha-documento-card.html` (a régua visual, montagem
-> de conferência a 1 px do 4K, não cena do pipeline). Caminhos relativos à raiz do repositório do canal.
+> Só o que é deste canal: quais moldes ele tem e como cada um se veste. Base: `identidade.md` e `voz.md`, na pasta desta
+> roupa (um nível acima de `agentes/`). Fontes: `marca/identidade.md` §4.1, §4.4 e §5; `marca/prancha-documento-card.html`
+> (a régua visual, montagem de conferência a 1 px do 4K, não cena do pipeline), em dia com a marca de 24/10/2026. Esses
+> caminhos são procedência no repositório do canal, não arquivos seus: as medidas estão aqui. A cena liga
+> `../_media/marca/tokens.css`, a cópia que o motor semeia na obra, e depois dele `../_media/marca/motor.css` (o crédito
+> a 60 px). Onde a `knowledge/ROUPA-CENA.md` ou o prompt da
+> estação divergem desta roupa no gosto, vale esta roupa (`identidade.md`, «O que vence»).
 
 ## 1 · Os moldes deste canal (e só estes)
 
@@ -24,9 +28,11 @@ A foto impressa sobre a mesa e o aviso do ano entram dentro desses moldes, como 
 
 ## 3 · A mesa, base dos dois moldes
 
-Do vídeo 2 em diante (Lucas, 07/10/2026): `--fundo`, o still de satélite público do lugar, escurecido e desfocado, o véu
-de luz atrás do objeto principal (`--mesa-luz-veu-centro`) e o feltro a 50 %, tudo por baixo do objeto e do texto
-(`marca/tokens.css`, «A MESA DO VÍDEO 2 EM DIANTE»). Nada se lê sobre o still. O Juneau fica com o feltro sob a luz.
+Do vídeo 2 em diante (Lucas, 07/10/2026): `--fundo`, o still de satélite público do lugar, escurecido e desfocado
+(`../_media/base/mesa-<lugar>.png`), o véu de luz atrás do objeto principal (`--mesa-luz-veu-centro`) e o feltro a 50 %,
+tudo por baixo do objeto e do texto (`../_media/marca/tokens.css`, «A MESA DO VÍDEO 2 EM DIANTE»). Nada se lê sobre o
+still. O still é feito fora do motor: sem ele na obra, não invente outro e diga no relato que a mesa ficou sem o
+satélite. O Juneau fica com o feltro sob a luz.
 
 ## 4 · DOCUMENTO (identidade §5, «A folha de documento»)
 
@@ -52,7 +58,9 @@ de luz atrás do objeto principal (`--mesa-luz-veu-centro`) e o feltro a 50 %, t
 - **Cargo** logo abaixo, legenda: Inter 500, 84 px (teto 104), como a fonte o escreve, pelo cargo e sem partido, com o ano
   entre parênteses quando é de outra época. Ex.: `MARIA GLADZISZEWSKI` / `Assembly member, City and Borough of Juneau (2017)`.
 - **Fala citada** num cartão `--papel` ao lado, Inter 700, alvo 280 px (piso 260, teto 340), até 12 palavras, entrando na
-  palavra da voz. Fala maior não encolhe: vai ao report. O cargo nunca passa por baixo do cartão.
+  palavra da voz, marcada `data-qc-papel="heroi"` (Sala, 22/10/2026: é o único papel do `qc-tamanho` com piso de 260;
+  como `rotulo`, passaria a 104). Continua bloco de leitura e não conta no «um herói por cena». Fala maior não encolhe:
+  vai ao report. O cargo nunca passa por baixo do cartão.
 - Nome fora de `--destaque`. Crédito da fala na faixa de crédito (prancha: `Source: KTOO, June 13, 2025`).
 - Entradas: o nome 150 ms depois de o retrato assentar (300 ms, +24 px), o cargo 120 ms depois do nome.
 
@@ -65,7 +73,9 @@ de luz atrás do objeto principal (`--mesa-luz-veu-centro`) e o feltro a 50 %, t
 
 ## 7 · Espaço, tempo e texto
 
-Palco 3840×2160, `<html lang="en-US" data-render="4k-native">`. Margem 200 px laterais e 160 no topo; abaixo de y 1880 só
-crédito, de x 200 a x 1720, 56 px (conflito com o piso de 72: `LEIA.md`); canto inferior direito 400 × 400 vazio. Teto de
+Palco 3840×2160, `<html lang="en-US" data-render="4k-native">`, com `<link rel="stylesheet"
+href="../_media/marca/tokens.css">` e, depois dele, `<link rel="stylesheet" href="../_media/marca/motor.css">`. Margem
+200 px laterais e 160 no topo; abaixo de y 1880 só crédito, de x 200 a x 1720, a 60 px (`var(--fs-credito)`; Lucas,
+24/10/2026: «60 px (Recomendado)»); canto inferior direito 400 × 400 vazio. Teto de
 6 elementos; a folha, a fala e o card com cargo são blocos de leitura (até 3). Texto no ar ≥ 2,0 s e parado enquanto se
 lê; nada se move nos 250 ms antes do corte. Grafia en-US pelo AP Stylebook (`identidade.md`).

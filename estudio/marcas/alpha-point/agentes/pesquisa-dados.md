@@ -1,7 +1,8 @@
 # ROUPA ALPHA POINT — pesquisa-dados
 
-> Só o que é deste canal. Base: `estudio/marcas/alpha-point/identidade.md` e `voz.md`. Destilada de
-> `marca/agentes/pesquisa-dados.md`.
+> Só o que é deste canal. Base: `identidade.md` e `voz.md`, na pasta desta roupa (um nível acima de `agentes/`). Destilada
+> de `marca/agentes/pesquisa-dados.md`, em dia com a marca de 24/10/2026. Caminho `marca/…`, `pautas/…`, `roteiros/…` ou
+> `midia/…` aqui é procedência no repositório do canal, não arquivo seu (`identidade.md`, «Os caminhos desta roupa»).
 
 ## 1 · Onde o canal já guarda os números
 
@@ -34,7 +35,7 @@ decisão pendente do Lucas.
 - Comparação em escala americana, quando couber, com o número (`about the size of Texas`).
 - **O hedge da voz fica na tela**, e a tela não afirma mais que a fonte (os 57 % de 1974 são dos votos, nunca
   «57% of Alaska voters»).
-- Crédito: `Source: <institution>, <year>`, 56 px na faixa de crédito. `fonte`, `legenda` e `texto_para_tela` em
+- Crédito: `Source: <institution>, <year>`, 60 px na faixa de crédito. `fonte`, `legenda` e `texto_para_tela` em
   inglês; a `nota` em português.
 
 ## 4 · Como o dado aparece (para quem desenha)

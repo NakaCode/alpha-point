@@ -1,7 +1,8 @@
 # ROUPA ALPHA POINT — pesquisa-documentos
 
-> Só o que é deste canal. Base: `estudio/marcas/alpha-point/identidade.md` («Modelos de cena») e `marca/midia.md` §7.1 e §7.6.
-> Destilada de `marca/agentes/pesquisa-documentos.md`.
+> Só o que é deste canal. Base: `identidade.md` («Modelos de cena»), na pasta desta roupa (um nível acima de `agentes/`), e
+> `marca/midia.md` §7.1 e §7.6. Destilada de `marca/agentes/pesquisa-documentos.md`, em dia com a marca de 24/10/2026.
+> Caminho `marca/…` aqui é procedência no repositório do canal, não arquivo seu: a regra está escrita abaixo.
 
 ## 1 · O DOCUMENTO deste canal
 
@@ -32,7 +33,7 @@
 
 ## 3 · A tela, em inglês
 
-- Atribuição `Source: <institution>, <year>`, 56 px, na faixa de crédito (x 200 a x 1720, abaixo de y 1880). Datas
+- Atribuição `Source: <institution>, <year>`, 60 px, na faixa de crédito (x 200 a x 1720, abaixo de y 1880). Datas
   `March 3, 2024`; em caixa alta, `MAY 1, 1994`. Título e números como a fonte imprime; o hedge da voz fica.
 - Fonte em outra língua: tradução natural para o inglês dos EUA. A nota de tradução, em inglês, espera o Lucas.
 - O canal não tem papel «manchete»: em que papel entram a manchete e o trecho citado espera o Lucas. A manchete não se

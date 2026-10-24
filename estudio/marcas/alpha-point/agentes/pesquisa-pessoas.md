@@ -1,7 +1,8 @@
 # ROUPA ALPHA POINT — pesquisa-pessoas
 
-> Só o que é deste canal. Base: `estudio/marcas/alpha-point/identidade.md` («Modelos de cena»); regra em `marca/midia.md` §7.2.
-> Destilada de `marca/agentes/pesquisa-pessoas.md`.
+> Só o que é deste canal. Base: `identidade.md` («Modelos de cena»), na pasta desta roupa (um nível acima de `agentes/`);
+> regra em `marca/midia.md` §7.2. Destilada de `marca/agentes/pesquisa-pessoas.md`, em dia com a marca de 24/10/2026.
+> Caminho `marca/…` aqui é procedência no repositório do canal, não arquivo seu.
 
 ## 1 · De onde vem o retrato (Lucas, 26/09/2026: segue o ofício)
 
@@ -36,7 +37,7 @@ O retrato é grande quando o recorte que vai ao quadro da foto do card (932 × 9
 
 ## 4 · Crédito e grafia
 
-- `credito_na_tela` em inglês: `<author> / <archive> · <license>`, 56 px na faixa de crédito. Domínio público e retrato
+- `credito_na_tela` em inglês: `<author> / <archive> · <license>`, 60 px na faixa de crédito. Domínio público e retrato
   oficial em uso editorial: sem crédito na tela, com o registro na pauta.
 - O nome se escreve como a fonte o escreve. A coluna «alias» de `marca/pronuncias.md` é grafia para a voz
   (`Gladyshevsky`, `Keel`) e nunca vai à tela.

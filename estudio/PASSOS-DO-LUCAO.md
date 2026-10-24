@@ -7,7 +7,8 @@ já usa. O jeito de hoje continua até você aprovar o vídeo piloto (o vídeo 5
 de 22/10.
 
 O que fica com você, sempre: escolher a pauta entre opções, aprovar o roteiro, escolher título e capa, ver o vídeo pronto
-e publicar. O resto roda sozinho.
+e publicar. O resto roda sozinho. Os portões do motor só se aprovam com a sua palavra: o Mateus entra como operador e
+só aprova citando uma mensagem sua, com a data (você decidiu em 24/10/2026: «Só com a sua palavra»).
 
 Para isso, cada serviço precisa ser **seu**: a conta Claude e a autorização do YouTube. Nenhuma credencial passa por chat, e-mail ou mensagem. Você digita no próprio PC, num script que
 não mostra o que você digita, e manda para a Top10 só a **linha verde** que ele imprime no fim.
@@ -30,8 +31,9 @@ Entre no Windows com o seu usuário de sempre. No PowerShell como administrador:
 powershell -NoProfile -ExecutionPolicy Bypass -File C:\estudio\maquina\preparar-maquina-producao.ps1 -Canal alpha-point -Ligado24h
 ```
 
-Ele não cria usuário nem pede senha: anota que a produção é do seu usuário e cria `C:\estudio\`. Tire o `-Ligado24h` se
-este PC não puder ficar ligado o tempo todo. Mande à Top10 a linha verde `PRONTO …` (ela deve dizer `modo=mesmo-usuario`).
+Ele não cria usuário nem pede senha: anota que a produção é do seu usuário e cria `C:\estudio\`. O `-Ligado24h` fica: você
+decidiu que este PC fica ligado 24 horas, sem suspender, para o motor trabalhar sozinho (24/10/2026: «Sim, 24 h»). Mande à
+Top10 a linha verde `PRONTO …` (ela deve dizer `modo=mesmo-usuario`).
 
 ## 2 · Cloudflare: nada a fazer
 
@@ -47,17 +49,22 @@ você não cria conta nem escolhe voz nova. Se um dia quiser trocar a voz, a mes
 
 ## 3b · As outras chaves do canal (MapTiler, Epidemic e acervos)
 
-A MapTiler (plano Flex) e a Epidemic Sound (plano Creator) já são contas suas: copie a chave de cada painel. As chaves
-dos acervos abertos (Pexels, Pixabay, DVIDS, NARA, Europeana e Smithsonian) estão hoje no seu arquivo de chaves, e o
-canal não registrou quem as criou: se foi você, use as mesmas; se vieram de outra pessoa, crie as suas no cadastro de
-cada site. Para cada uma, no PowerShell como administrador, troque o último nome pelo serviço:
+A MapTiler (plano Flex) e a Epidemic Sound (plano Creator) já são contas suas: copie a chave de cada painel. A da
+Epidemic é a que o motor usa para escolher e baixar a trilha de cada vídeo sozinho (você decidiu a trilha automática em
+24/10/2026). As chaves dos acervos abertos que o canal usa (DVIDS, NARA e Smithsonian) estão hoje no seu arquivo de
+chaves, e o canal não registrou quem as criou: se foi você, use as mesmas; se vieram de outra pessoa, crie as suas no
+cadastro de cada site. Para cada uma, no PowerShell como administrador, troque o último nome pelo serviço:
 
 ```
 powershell -NoProfile -ExecutionPolicy Bypass -File C:\estudio\maquina\guardar-segredo-no-cofre.ps1 -Canal alpha-point -Segredo maptiler
 ```
 
-Os nomes são `maptiler`, `epidemic`, `pexels`, `pixabay`, `dvids`, `nara`, `europeana` e `smithsonian`. Cada um imprime
-a sua linha verde.
+Os nomes são `maptiler`, `epidemic`, `dvids`, `nara` e `smithsonian`. Cada um imprime a sua linha verde.
+
+**Pexels, Pixabay e Europeana não vão ao cofre.** Você os tirou dos acervos do canal em 26/09/2026 ("só acervos
+oficiais": `marca/midia.md` §7.3 e `marca/midia.json` › `fontes_desligadas`). A roupa do `pesquisa-imagens` os proíbe,
+mas o código do motor não lê a roupa para isso: com a chave no cofre, a pesquisa do motor poderia usá-los. Sem a chave,
+não usa. As chaves continuam no seu arquivo de chaves deste PC, para o jeito de hoje.
 
 ## 4 · Claude (a sua conta Max)
 
@@ -70,7 +77,10 @@ a sua linha verde.
    ```
 
    Cole o token (ele não aparece na tela). Mande à Top10 a linha verde.
-3. Se você tiver uma segunda conta e combinar com o Mateus usá-la na produção, repita com ela e `-Porta 2`.
+3. **A segunda conta, com `-Porta 2`.** Você decidiu que o motor usa as duas contas, a principal e a de reserva: quando
+   uma bate no limite, ele passa para a outra (24/10/2026: «As duas»). Repita os itens 1 e 2 com a outra conta Claude e,
+   no fim do comando do item 2, `-Porta 2` no lugar de `-Porta 1`. Mande à Top10 as duas linhas verdes. Sem a segunda, a
+   conferência da máquina não passa: o pacote declara 2 contas.
 
 Se o comando `claude` não existir nesse PowerShell, avise a Top10, que instala antes.
 
@@ -83,22 +93,36 @@ Confira também que o canal está numa conta Google e num AdSense **seus**, sem 
 
 ## 6 · Sete respostas (pode ser pelo chat, numeradas)
 
+As que você já respondeu no chat da Sala, em 24/10/2026, estão marcadas com a sua resposta. Faltam a 1 e a 5, a parte do
+plano na 3 e a última frase da 7.
+
 1. **Juneau**: o vídeo 1 tem XML pronto desde 07/10 e não foi publicado. Publica, arquiva ou descarta?
-2. **Este PC** pode ficar ligado 24 h? (decide o `-Ligado24h` do passo 1)
-3. **Contas Claude**: quantas você tem, e de qual plano (Max 5x ou 20x)?
-4. **Crédito de tela**: você decidiu 56 px (07/10). O motor tem piso de 72 px, porque abaixo disso não se lê numa TV.
-   Sobe para 72 px, ou fica 56 px com exceção permanente no motor?
+2. ~~**Este PC** pode ficar ligado 24 h? (decide o `-Ligado24h` do passo 1)~~ **Respondida em 24/10/2026**: à pergunta
+   «Este PC pode ficar ligado 24 horas, sem suspender, para o motor trabalhar sozinho?», «Sim, 24 h (Recomendado)». O
+   passo 1 vai com `-Ligado24h`.
+3. **Contas Claude**: quantas você tem, e de qual plano (Max 5x ou 20x)? **Respondida em parte em 24/10/2026**: à pergunta
+   «Quais contas Claude o motor pode usar?», «As duas» — a principal e a de reserva; quando uma bate no limite, o motor
+   passa para a outra (o passo 4, item 3, vale). **Falta:** o plano de cada uma.
+4. ~~**Crédito de tela**: você decidiu 56 px (07/10). O motor tem piso de 72 px, porque abaixo disso não se lê numa TV.
+   Sobe para 72 px, ou fica 56 px com exceção permanente no motor?~~ (O piso do motor é 60 px, não 72, para todo crédito,
+   o de mapa inclusive.) **Respondida em 24/10/2026**: à pergunta «O crédito de fonte na tela: o motor exige hoje no
+   mínimo 60 px, e você tinha decidido 56 px (07/10). Qual fica?», «60 px (Recomendado)».
 5. **YouTube**: os dois vídeos saíram na categoria Pessoas e blogs, que é o padrão do YouTube: fica assim ou passa
    para Educação? Há e-mail de contato profissional para a descrição (ou nenhum)? O canal já está no programa de
    parcerias? E o que você marca em «conteúdo alterado ou sintético» (o motor marca «sim», por ser voz de IA, até você dizer)?
-6. **Imagens genéricas**: os quatro bancos de hoje (Envato, Motion Array, Storyblocks e Shutterstock, assinaturas da
+6. ~~**Imagens genéricas**: os quatro bancos de hoje (Envato, Motion Array, Storyblocks e Shutterstock, assinaturas da
    Top10) continuam, sempre pelo navegador e depois do acervo aberto, da fonte oficial, do mapa e da ilustração
    (decisão do Mateus, 22/out). No motor novo, o agente deixa a busca escrita e a imagem é baixada pelo navegador:
-   quem baixa, você ou a Top10?
-7. **A trilha automática**: a regra do canal diz que a trilha nunca passa por ferramenta de IA nem de reconhecimento de
+   quem baixa, você ou a Top10?~~ **Respondida em 24/10/2026**: à pergunta «E o B-roll dos bancos pagos?», «Sem banco no
+   piloto (Recomendado)». No vídeo 5, nenhum banco pago: o B-roll vem só de acervo aberto ou oficial, e a cena que só
+   teria footage de banco sai em «versão pronta», que você vê nomeada antes de publicar.
+7. ~~**A trilha automática**: a regra do canal diz que a trilha nunca passa por ferramenta de IA nem de reconhecimento de
    música. No motor novo, um agente lê o ROTEIRO e escreve o clima de cada trecho em texto (por exemplo «misterioso,
    ambiente, calmo»); a faixa sai de um ranking dos dados da própria Epidemic contra esse texto, e a prévia é medida pelo
    volume. Nenhum modelo escuta a música. Isso está dentro da sua regra? Se não estiver, o canal usa um clima fixo,
    sem agente nenhum: os climas das 12 faixas que você aprovou nos vídeos 1 a 3 (misterioso, tranquilo, sonhador; ambiente
-   e drone; de 66 a 104 BPM, todas sem voz), que estão em `estudio/musica/paleta.json`. E há algum clima que o canal
-   nunca deve usar?
+   e drone; de 66 a 104 BPM, todas sem voz), que estão em `estudio/musica/paleta.json`.~~ **Respondida em 24/10/2026**: à
+   pergunta «No piloto (vídeo 5), como sai a trilha?», «Automática, pelo roteiro». A opção dizia: «Um agente lê o roteiro
+   e escreve o clima de cada trecho; o motor escolhe pela ficha da Epidemic e baixa da sua conta, sem lista. Nenhuma IA
+   escuta a música.» A paleta de `estudio/musica/paleta.json` vai junto. **Falta:** há algum clima que o canal nunca
+   deve usar? (Hoje, nenhum está vetado.)

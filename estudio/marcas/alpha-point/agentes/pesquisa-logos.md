@@ -1,7 +1,8 @@
 # ROUPA ALPHA POINT — pesquisa-logos
 
-> Só o que é deste canal. Base: `estudio/marcas/alpha-point/identidade.md`; regra em `marca/midia.md` §7.6 e
-> `marca/identidade.md` §6 («País no mapa»). Destilada de `marca/agentes/pesquisa-logos.md`.
+> Só o que é deste canal. Base: `identidade.md`, na pasta desta roupa (um nível acima de `agentes/`); regra em
+> `marca/midia.md` §7.6 e `marca/identidade.md` §6 («País no mapa»). Destilada de `marca/agentes/pesquisa-logos.md`, em
+> dia com a marca de 24/10/2026. Caminho `marca/…` aqui é procedência no repositório do canal, não arquivo seu.
 
 ## 1 · Logo de instituição: neste canal, só o nome escrito
 

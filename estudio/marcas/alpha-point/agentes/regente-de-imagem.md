@@ -1,7 +1,8 @@
 # ROUPA ALPHA POINT — regente-de-imagem
 
-> Só o que é deste canal. Base: `estudio/marcas/alpha-point/identidade.md` («Tempo e movimento», «Modelos de cena»). Destilada
-> de `marca/agentes/regente-de-imagem.md`.
+> Só o que é deste canal. Base: `identidade.md` («Tempo e movimento», «Modelos de cena», «A abertura e o mapa»), na pasta
+> desta roupa (um nível acima de `agentes/`). Destilada de `marca/agentes/regente-de-imagem.md`, em dia com a marca de
+> 24/10/2026. Caminho `marca/…` ou `roteiros/…` aqui é procedência no repositório do canal, não arquivo seu.
 
 ## 1 · Os números do canal
 
@@ -30,7 +31,17 @@ ficou de fora por escolha do Lucas (17/10/2026).
 | compara tamanho, quantidade ou proporção; conta etapas ou linha do tempo; explica mecanismo | `desenho`, com `ANIMAÇÃO` no `porque` | animação no traço de engenheiro (27/09 e 14/10/2026) |
 | relaciona atores, causa → efeito | `desenho`, com `PRANCHA` no `porque` | PRANCHA |
 
-- **Mapa seguido de mapa** não é troca de plano: é a mesma viagem; o `porque` diz «a câmera anda».
+- **O gancho que prende** (Lucas, 24/10/2026; do vídeo 5 em diante): até a vinheta, o primeiro beat é a imagem real mais
+  forte do lugar (2–3 s, em movimento: drone, aéreo ou foto com empurrão lento), nunca o mapa; depois, uma troca visual a
+  cada 3–6 s (beat que muda a imagem inteira: outra vista, outra linguagem), pelo menos três linguagens e duas imagens
+  reais do lugar; o mapa do gancho entra voando do continente ou do globo até o lugar, com a região falada demarcada e os
+  números da fala animados. Sem imagem real do lugar com licença, diga no `porque` e no report, em destaque.
+- **A região falada, sempre demarcada** (Lucas, 24/10/2026): em toda cena de mapa, responda no `exige` «qual região a
+  fala nomeia, e como ela aparece demarcada?» — contorno ou área acesa da região, de geometria lida, ou o trecho entre os
+  pontos que a fala dá.
+- **Sobre o mapa, mais vezes** (Lucas, 24/10/2026): em fala de lugar, a ilustração preferida é a animação desenhada por
+  cima do mapa, presa ao lugar (`mapa`, com `ANIMAÇÃO SOBRE O MAPA` e o que animar no `porque`); ela soma ao mapa.
+- **Mapa seguido de mapa** não é troca de plano: é a mesma viagem; o `porque` diz «a câmera anda». No gancho, sem fusão.
 - **País ou região** é o polígono inteiro; o **anel** marca ponto. Diga no `exige` qual dos dois a frase pede.
 - **Pessoa nomeada** → `foto_real` com nome completo e cargo. **Evento real** → registro daquele evento, nunca de banco.
 - **A mão que arruma** custa tempo: a câmera da folha chega 0,3 s antes da primeira palavra do grifo e para; a passagem
@@ -46,10 +57,13 @@ ficou de fora por escolha do Lucas (17/10/2026).
 
 ## 3 · O `exige`
 
-- Em inglês dos EUA, com assunto, lugar e época (`Juneau Alaska waterfront 1970s archival photo`), na grafia aprovada
-  do `roteiro-narrador.md`, não na do alias da voz.
-- Banco pago só para B-roll genérico, e o `exige` diz por que o beat é genérico; Storyblocks nunca sobre ator político
-  ou conflito.
+- Em inglês dos EUA, com assunto, lugar e época (`Juneau Alaska waterfront 1970s archival photo`), na grafia do AP
+  Stylebook, não na do alias da voz nem no número por extenso que o roteiro gravado da obra
+  (`_obra/roteiro-aprovado.md`) pode trazer para a voz.
+- **No piloto do motor (vídeo 5), sem banco pago** (Lucas, 24/10/2026: «Sem banco no piloto»): o B-roll genérico só de
+  acervo aberto ou oficial; o beat que só teria footage de banco vai ao mapa ou ao desenho quando eles explicam a fala,
+  ou fica como necessidade de footage e a cena sai em versão pronta, declarada. Fora do piloto: banco pago só para
+  B-roll genérico, com o `exige` dizendo por que o beat é genérico, e Storyblocks nunca sobre ator político ou conflito.
 - Foto de outro ano pode ser aceita, com o aviso na tela; o `porque` diz qual. Vídeo de outro ano, não.
 - Documento estadual ou de imprensa: «licença a conferir» no `porque` até a permissão estar gravada.
 - O `exige` nunca pede logo de instituição: o nome escrito.

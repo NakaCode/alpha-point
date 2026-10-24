@@ -1,14 +1,16 @@
 # ROUPA ALPHA POINT — montador
 
-> Só o que é deste canal. Base: `estudio/marcas/alpha-point/identidade.md` e `superficies.md`. Destilada de
-> `marca/agentes/montador.md`.
+> Só o que é deste canal. Base: `identidade.md` e `superficies.md`, na pasta desta roupa (um nível acima de `agentes/`).
+> Destilada de `marca/agentes/montador.md`, em dia com a marca de 24/10/2026. Caminho `marca/…` ou `roteiros/…` aqui é
+> procedência no repositório do canal, não arquivo seu (`identidade.md`, «Os caminhos desta roupa»).
 
 ## 1 · O canal, para quem monta
 
 - Faceless: o master é a narração sintética sobre tela preta 3840×2160; cota de apresentador **0 %**; não existe
   veredito `manter`; 100 % do tempo coberto por cena, inclusive os **20 s** finais sem voz (um segmento próprio).
-- Não há vão de card na narração: a pausa entre parágrafos é curta (0,25 s, `estudio/canal-motor.json` › `narracao`), e nenhum silêncio vira
-  fronteira de tópico.
+- Não há vão de card na narração: a pausa entre parágrafos é curta (0,25 s, `canal-motor.json` › `narracao`), e nenhum
+  silêncio vira fronteira de tópico. Os `##` do roteiro aprovado são marcas invisíveis (`cards: "nenhum"`), sem vão nem
+  tela, com o instante gravado no `narracao.json`.
 - Sem card de capítulo, título ou progresso. As viradas de parte vão no `motivo` da primeira cena de cada parte, com o
   tempo: é daí que saem os capítulos da **descrição**.
 
@@ -29,6 +31,13 @@
 - **Mais ilustração quando explica melhor** (14/10/2026): `desenho` no lugar do B-roll genérico quando explica melhor,
   na comparação de tamanho ou proporção e nas etapas. O que tem registro real (coisa nomeada, evento, pessoa) não vira
   desenho. Report: quantas cenas são `desenho` e quais entraram no lugar de B-roll.
+- **Sobre o mapa, mais vezes** (Lucas, 24/10/2026; do vídeo 5 em diante): em fala de lugar, a ilustração preferida é a
+  animação desenhada por cima do mapa, presa ao lugar que a fala nomeia (`mapa`, com a semente do que animar no
+  `motivo`); ela soma ao mapa, não o tira.
+- **O gancho que prende** (Lucas, 24/10/2026; do vídeo 5 em diante; `identidade.md`, «A abertura e o mapa»): o espelho
+  abre na imagem real mais forte do lugar (2–3 s, em movimento) e só depois no mapa; até a vinheta, uma troca visual a
+  cada 3–6 s, nenhuma cena acima de ~8 s, nenhuma fusão (`fundir`), pelo menos três linguagens e duas imagens reais do
+  lugar. O report diz as cenas do gancho com a duração de cada uma.
 - Nunca `titulo-topico`, `navegacao`, `apresentador*`. O campo `modelo` (códigos `Mxx` do Top10) fica ausente.
 - A escolha entre a mesa (fotos pequenas impressas) e o mapa, plano a plano, é sua.
 
@@ -49,9 +58,12 @@
   fontes de 27/09/2026 em `marca/midia.md` §7.3). Nunca banco pago.
 - **Sem foto do ano do fato:** a do mesmo assunto de outro ano, com o aviso do ano; só sem nenhuma o plano vira mapa ou
   desenho. Vídeo de outro ano não entra.
-- **B-roll genérico:** dos bancos pagos, na ordem Envato → Motion Array → Storyblocks → Shutterstock (`marca/midia.md`
-  §1), baixados só pelo navegador, nunca por script ou robô (decisão do Mateus, 22/out/2026 ~08:30Z: Shutterstock e Motion Array também, sempre pelo navegador), sem editorial e sem pessoa
-  de banco em política.
+- **B-roll genérico, no piloto do motor (vídeo 5): sem banco pago** (Lucas, 24/10/2026, à pergunta «E o B-roll dos
+  bancos pagos?»: «Sem banco no piloto»; `canal-motor.json` › `midia.caca_stock_assinado: false`). O B-roll genérico só
+  vem de acervo aberto ou oficial; onde ele faltaria, a fala de lugar vai ao mapa e a de escala ou etapa ao `desenho`,
+  quando explicam; a cena que só esperaria footage sai em versão pronta, e o Lucas a vê nomeada no portão de publicar.
+  Fora do piloto, os bancos da marca (Envato → Motion Array → Storyblocks → Shutterstock, `marca/midia.md` §1) só pelo
+  navegador, nunca por script ou robô, sem editorial e sem pessoa de banco em política.
 - **Logo de instituição** não se pede: vai o nome escrito. Documento estadual ou de imprensa: «licença a conferir».
 
 ## 5 · Paleta e grafia
@@ -59,8 +71,10 @@
 - **Um** protagonista por vídeo em `--destaque`, segundo ator `--contraparte`, terceiro em diante `--neutro`;
   `--tensao` nunca é um lado; nome de token, nunca cor escrita. Proponha o protagonista pela tese; quem confirma é o
   Lucas.
-- `_grafias` en-US pelo AP Stylebook, como no `roteiro-narrador.md`, nunca como o alias da voz. O dossiê vem em
-  português com números brasileiros: na tela é `91,049`. Milhas antes de quilômetros.
+- `_grafias` en-US pelo AP Stylebook, com algarismos, nunca como o alias da voz. No motor, o roteiro gravado é
+  `_obra/roteiro-aprovado.md`: se ele traz o número por extenso ou um alias (é o que a voz lê), a grafia de tela continua
+  a do AP (`2,700`, `Gladziszewski`). O dossiê vem em português com números brasileiros: na tela é `91,049`. Milhas
+  antes de quilômetros.
 
 ## 6 · O que o espelho não reserva
 

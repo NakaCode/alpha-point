@@ -1,9 +1,11 @@
 # MARCA ALPHA POINT — voz
 
-> Índice destilado de `marca/voz.md` (§1 e §2) e `marca/embalagem.md` §1. A voz técnica (provedor, modelo,
-> configurações, pausa, cauda) mora em `estudio/canal-motor.json` › `narracao`, e o loudness em › `master`, que é de
-> onde o motor lê; a fonte e a medida de cada valor estão em `estudio/LEIA.md`. Aqui não: o `marca/voz.md` §1 ainda cita o eleven_v3 e a
-> voz `iAc9oLyb1zcwD4O3ZTBv`, que estão superados pelo `canal.json` (ver `LEIA.md`).
+> Índice destilado de `marca/voz.md` (§1 e §2) e `marca/embalagem.md` §1 e §2, em dia com a marca de 24/10/2026. A voz
+> técnica (provedor, modelo, configurações, pausa, cauda) mora em `canal-motor.json` › `narracao`, e o loudness em
+> › `master`, que é de onde o motor lê; a fonte e a medida de cada valor estão no `LEIA.md` do pacote. Aqui não: o
+> `marca/voz.md` §1 ainda cita o eleven_v3 e a voz `iAc9oLyb1zcwD4O3ZTBv`, superados pelo `canal.json` (ver `LEIA.md`).
+> Caminho `marca/…`, `roteiros/…` ou `CLAUDE.md` aqui é procedência no repositório do canal, não arquivo seu
+> (`identidade.md`, «Os caminhos desta roupa»).
 
 ## Persona e público
 
@@ -30,7 +32,13 @@
 ## A abertura (do vídeo 2 em diante; voz §1, embalagem §1)
 
 Gancho em cinco tempos, no molde de «Geography By Geoff» (Lucas, 07/10/2026), com uma contradição concreta e a pergunta
-nos primeiros 15 s:
+nos primeiros 15 s.
+
+**A primeira frase, do vídeo 5 em diante** (Lucas, 24/10/2026; `identidade.md`, «O gancho que prende»): é o fato mais
+surpreendente sobre o lugar que a imagem de abertura mostra — concreto, com o nome do lugar e um número ou uma imagem,
+nunca uma ideia geral. O Peru abriu com «A line runs along the Andes and divides Peru.»; pela regra, abriria com algo como
+«Lima gets about a third of an inch of rain a year. More than ten million people live there.» O primeiro tempo do molde
+(a escala com uma comparação) passa a ser dito sobre esse lugar.
 
 1. a escala, com uma comparação;
 2. o «But»;
@@ -40,8 +48,9 @@ nos primeiros 15 s:
    `You're at Alpha Point, and this is where the story of <tema> begins.`
    O `<tema>` é curto, concreto e não repete o título palavra por palavra (07/10: «Com o tema do vídeo»).
 
-A abertura mostra o lugar de cima: imagem aérea ou mapa abrangente no início (02/10). A vinheta da marca corre sobre a
-assinatura (`identidade.md`, logo).
+A imagem abre no lugar: os primeiros 2–3 s são a imagem real mais forte dele, em movimento, e o mapa vem logo depois,
+nunca primeiro (24/10/2026; supera o «aérea ou mapa abrangente no início» de 02/10). A vinheta da marca corre sobre a
+assinatura, e a pergunta do gancho entra na tela (`identidade.md`).
 
 ## O fecho (Lucas, 17/10/2026)
 

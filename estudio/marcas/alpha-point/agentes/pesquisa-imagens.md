@@ -1,7 +1,8 @@
 # ROUPA ALPHA POINT — pesquisa-imagens
 
-> Só o que é deste canal. Base: `estudio/marcas/alpha-point/identidade.md`; a doutrina de mídia inteira é `marca/midia.md` e
-> `marca/midia.json`. Destilada de `marca/agentes/pesquisa-imagens.md`.
+> Só o que é deste canal. Base: `identidade.md`, na pasta desta roupa (um nível acima de `agentes/`); a doutrina de mídia
+> inteira é `marca/midia.md` e `marca/midia.json`, no repositório do canal (fora da sua pasta: o que vale para você está
+> aqui). Destilada de `marca/agentes/pesquisa-imagens.md`, em dia com a marca de 24/10/2026.
 
 ## 1 · O que a tela pede da mídia
 
@@ -10,6 +11,11 @@
 - Foto ou footage parado fica no máximo 6 s: cena longa pede várias mídias.
 - O assunto não cai no canto inferior direito de 400 × 400 px nem na faixa abaixo de y 1880.
 - Aéreo 4K do lugar entre os mapas foi pedido para o vídeo 4, Peru (17/10/2026), com o lugar nomeado na origem.
+- **O gancho que prende** (Lucas, 24/10/2026; do vídeo 5 em diante; `identidade.md`, «A abertura e o mapa»): o vídeo abre
+  nos 2–3 s da imagem real mais forte do lugar de que ele trata, em movimento (drone, aéreo, ou foto grande para um
+  empurrão lento), e o gancho mostra o lugar em pelo menos duas imagens reais. Procure essas primeiro, com o lugar
+  nomeado na origem e a licença conferida. Sem nenhuma com licença, diga no relato, em destaque: o vídeo não abre no mapa
+  sem que o Lucas saiba.
 
 ## 2 · De onde vem cada imagem (`marca/midia.md` §1, §7.3; `marca/midia.json`)
 
@@ -18,7 +24,7 @@
 | evento real específico, pessoa pública, registro histórico | só acervo aberto ou oficial, com data e local conferidos na origem: NARA, NASA, USGS, Smithsonian, Wikimedia Commons (licença arquivo a arquivo), Library of Congress, salas de imprensa federais, DVIDS, e as fontes de 27/09/2026 (§7.3). **Nunca banco pago** |
 | foto do governo de um Estado ou de jornal (não retrato de pessoa citada) | entra com a fonte creditada na tela (§7.5); foto de agência espera o ok do Lucas (Content ID); Reuters não |
 | vídeo de jornal, de veículo ou de agência | só com licença conferida na origem (27/09/2026) |
-| B-roll genérico: paisagem, cidade, porto, indústria, drone | bancos pagos, as assinaturas da Top10, na ordem da marca: Envato Elements → Motion Array → Storyblocks → Shutterstock (§1; decisões do Mateus de 22/out/2026: «Vou usar Storyblocks e Envato aceitando o risco» e, às ~08:30Z, Shutterstock e Motion Array também). O banco se usa **só pelo navegador**, nunca por script nem por robô, e você não tem navegador: escreva a busca (termos, duração, orientação, o que o plano precisa mostrar) e deixe o item pendente para quem baixa pelo navegador |
+| B-roll genérico: paisagem, cidade, porto, indústria, drone | **no piloto do motor (vídeo 5), nenhum banco pago** (Lucas, 24/10/2026, à pergunta «E o B-roll dos bancos pagos?»: «Sem banco no piloto»; `canal-motor.json` › `midia.caca_stock_assinado: false`): só o acervo aberto ou oficial das linhas acima (NASA, USGS, DVIDS, NARA, Commons com licença conferida). O que só um banco teria fica como necessidade de footage, com a busca escrita (termos, duração, orientação, o que o plano precisa mostrar), e a cena sai em versão pronta, nomeada ao Lucas no portão de publicar. Fora do piloto, os bancos da marca (Envato Elements → Motion Array → Storyblocks → Shutterstock, §1) só pelo navegador, nunca por script nem por robô |
 | mapa, satélite | não é seu (`mapista`) |
 
 - **Fora:** Pexels, Pixabay, Openverse, Met, Europeana, Internet Archive como acervo de imagem (`fontes_desligadas`,
