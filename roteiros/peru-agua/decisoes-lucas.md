@@ -287,3 +287,7 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
   são a A2; o `base-A.py` fica como histórico.
 - **As conferências da descrição:** "Agora (Recomendado)", à pergunta de quando rodar o verificador de fatos (a cota estava em 91 %, com o
   teto de 93 %). O laudo: 74 de 74 afirmações, nenhuma errada, PASS (`roteiros/peru-agua/qc-roteiro/fatos-descricao.laudo.md`).
+
+## Publicado (Lucas, 24/10/2026, 15:5x, no chat da Sala)
+- **"Pronto, o vídeo foi publicado"**, depois de receber no chat o título, a descrição sem links, as tags, o comentário fixado e a miniatura A2. A
+  linha fechou (`regie advance peru-agua done`: finalize → done; `out/peru-agua/linha.md`). O link não foi registrado.
