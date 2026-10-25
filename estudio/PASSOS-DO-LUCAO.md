@@ -115,6 +115,9 @@ da 7.
 5. **YouTube**: os dois vídeos saíram na categoria Pessoas e blogs, que é o padrão do YouTube: fica assim ou passa
    para Educação? Há e-mail de contato profissional para a descrição (ou nenhum)? O canal já está no programa de
    parcerias? E o que você marca em «conteúdo alterado ou sintético» (o motor marca «sim», por ser voz de IA, até você dizer)?
+   **Respondida em parte em 24/10/2026:** a categoria, «Educação (Recomendado)» (a 27, a de 4 dos 5 canais de referência);
+   o conteúdo sintético, «Deixar desmarcado (Recomendado)» (você não marcava: «Não marquei»). As duas já estão em
+   `marcas/alpha-point/publicacao-youtube.json`. **Faltam** o e-mail de contato e o programa de parcerias.
 6. ~~**Imagens genéricas**: os quatro bancos de hoje (Envato, Motion Array, Storyblocks e Shutterstock, assinaturas da
    Top10) continuam, sempre pelo navegador e depois do acervo aberto, da fonte oficial, do mapa e da ilustração
    (decisão do Mateus, 22/out). No motor novo, o agente deixa a busca escrita e a imagem é baixada pelo navegador:

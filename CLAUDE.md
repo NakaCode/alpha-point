@@ -1050,10 +1050,14 @@ motor. Você aprova pauta, roteiro, título e capa; a linha do tempo e o Premier
 - **O Juneau fica arquivado** (Lucas, 24/10/2026, à pergunta "O Juneau tem o XML pronto desde 07/10 e nunca foi publicado. O que
   fazemos com ele?": "Arquivar"). Ele fica guardado como está, neste PC, sem publicar. No banco da Régie, a linha dele continua parada
   no `finalize`: a v0.1.0 não tem verbo de arquivar.
-- **O YouTube, antes do primeiro envio** (`PASSOS-DO-LUCAO.md` §6):
-  - "conteúdo alterado ou sintético": o Lucas não o marcou nos vídeos publicados ("Não marquei", 24/10/2026);
-  - a categoria: ele pediu a dos canais de referência ("Conseguimos verificar a dos nossos canais de referência?").
-  - Faltam o e-mail de contato e o programa de parcerias.
+- **O YouTube no motor** (`estudio/marcas/alpha-point/publicacao-youtube.json`; `PASSOS-DO-LUCAO.md` §6):
+  - a categoria é Educação (27): "Educação (Recomendado)" (24/10/2026), depois de ver que 4 dos 5 canais de referência a usam;
+  - o "conteúdo alterado ou sintético" fica desmarcado: "Deixar desmarcado (Recomendado)". O Lucas não o marcava, e o YouTube só o
+    pede em conteúdo realista (support.google.com/youtube/answer/14328491);
+  - faltam o e-mail de contato e o programa de parcerias.
+- **A porta do roteiro:** `node ferramentas/roteiro-motor.mjs converter <proj>` converte o roteiro ao formato do portão do motor, e
+  `conferir <arquivo>` confere as regras dele. A prova (`ferramentas/roteiro-motor-provar.mjs --clone=<clone do top10-estudio>`) deu
+  85 de 85, com o validador do próprio motor. O relato está em `out/_maquina/motor-sem-rosto/porta-roteiro-relato.md`.
 - **O jeito de hoje** (a linha da Régie, os setores, a linha do tempo, o Premiere) continua para o que não for o vídeo 5, até o Lucas
   aprovar o piloto.
 
