@@ -95,8 +95,7 @@ Confira também que o canal está numa conta Google e num AdSense **seus**, sem 
 
 ## 6 · Sete respostas (pode ser pelo chat, numeradas)
 
-As que você já respondeu no chat da Sala, em 24/10/2026, estão marcadas com a sua resposta. Faltam a 5 e a última frase
-da 7.
+Você já respondeu todas no chat da Sala, em 24 e 25/10/2026, e cada uma está marcada com a sua resposta. Nenhuma falta.
 
 1. ~~**Juneau**: o vídeo 1 tem XML pronto desde 07/10 e não foi publicado. Publica, arquiva ou descarta?~~ **Respondida em
    24/10/2026**: à pergunta «O Juneau tem o XML pronto desde 07/10 e nunca foi publicado. O que fazemos com ele?», «Arquivar».
@@ -104,7 +103,7 @@ da 7.
 2. ~~**Este PC** pode ficar ligado 24 h? (decide o `-Ligado24h` do passo 1)~~ **Respondida em 24/10/2026**: à pergunta
    «Este PC pode ficar ligado 24 horas, sem suspender, para o motor trabalhar sozinho?», «Sim, 24 h (Recomendado)». O
    passo 1 vai com `-Ligado24h`.
-3. **Contas Claude**: quantas você tem, e de qual plano (Max 5x ou 20x)? **Respondida em parte em 24/10/2026**: à pergunta
+3. ~~**Contas Claude**: quantas você tem, e de qual plano (Max 5x ou 20x)?~~ **Respondida em 24/10/2026**: à pergunta
    «Quais contas Claude o motor pode usar?», «As duas» — a principal e a de reserva; quando uma bate no limite, o motor
    passa para a outra (o passo 4, item 3, vale). **O plano**, à pergunta «Suas duas contas Claude são de qual plano?»:
    «As duas Max 20x» (24/10/2026).
@@ -112,12 +111,14 @@ da 7.
    Sobe para 72 px, ou fica 56 px com exceção permanente no motor?~~ (O piso do motor é 60 px, não 72, para todo crédito,
    o de mapa inclusive.) **Respondida em 24/10/2026**: à pergunta «O crédito de fonte na tela: o motor exige hoje no
    mínimo 60 px, e você tinha decidido 56 px (07/10). Qual fica?», «60 px (Recomendado)».
-5. **YouTube**: os dois vídeos saíram na categoria Pessoas e blogs, que é o padrão do YouTube: fica assim ou passa
+5. ~~**YouTube**: os dois vídeos saíram na categoria Pessoas e blogs, que é o padrão do YouTube: fica assim ou passa
    para Educação? Há e-mail de contato profissional para a descrição (ou nenhum)? O canal já está no programa de
-   parcerias? E o que você marca em «conteúdo alterado ou sintético» (o motor marca «sim», por ser voz de IA, até você dizer)?
-   **Respondida em parte em 24/10/2026:** a categoria, «Educação (Recomendado)» (a 27, a de 4 dos 5 canais de referência);
-   o conteúdo sintético, «Deixar desmarcado (Recomendado)» (você não marcava: «Não marquei»). As duas já estão em
-   `marcas/alpha-point/publicacao-youtube.json`. **Faltam** o e-mail de contato e o programa de parcerias.
+   parcerias? E o que você marca em «conteúdo alterado ou sintético» (o motor marca «sim», por ser voz de IA, até você dizer)?~~
+   **Respondida em 24 e 25/10/2026:** a categoria, «Educação (Recomendado)» (a 27, a de 4 dos 5 canais de referência);
+   o conteúdo sintético, «Deixar desmarcado (Recomendado)» (você não marcava: «Não marquei»); o e-mail, à pergunta «A
+   descrição dos vídeos leva um e-mail de contato?», «Nenhum, como hoje»; as parcerias, à pergunta «O Alpha Point já está no
+   Programa de Parcerias do YouTube (com anúncios)?», «Ainda não» (a monetização fica «desligada» até você dizer que entrou).
+   Tudo está em `marcas/alpha-point/publicacao-youtube.json`.
 6. ~~**Imagens genéricas**: os quatro bancos de hoje (Envato, Motion Array, Storyblocks e Shutterstock, assinaturas da
    Top10) continuam, sempre pelo navegador e depois do acervo aberto, da fonte oficial, do mapa e da ilustração
    (decisão do Mateus, 22/out). No motor novo, o agente deixa a busca escrita e a imagem é baixada pelo navegador:
@@ -132,5 +133,7 @@ da 7.
    e drone; de 66 a 104 BPM, todas sem voz), que estão em `estudio/musica/paleta.json`.~~ **Respondida em 24/10/2026**: à
    pergunta «No piloto (vídeo 5), como sai a trilha?», «Automática, pelo roteiro». A opção dizia: «Um agente lê o roteiro
    e escreve o clima de cada trecho; o motor escolhe pela ficha da Epidemic e baixa da sua conta, sem lista. Nenhuma IA
-   escuta a música.» A paleta de `estudio/musica/paleta.json` vai junto. **Falta:** há algum clima que o canal nunca
-   deve usar? (Hoje, nenhum está vetado.)
+   escuta a música.» A paleta de `estudio/musica/paleta.json` vai junto. **O veto**, em 25/10/2026, à pergunta «Há algum
+   clima de música que o motor nunca deve escolher?»: «Vetar festivos e agitados (Recomendado)». A opção dizia: «Nunca
+   alegre, eufórico, excêntrico, brincalhão, glamoroso, romântico, raivoso, de perseguição ou frenético. Os climas tensos
+   (suspense, sombrio) continuam, para os trechos de risco.» Está em `moods_evitar` da paleta.

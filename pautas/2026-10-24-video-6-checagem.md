@@ -650,3 +650,22 @@ Na régua das pautas: o vídeo 5 teve 5,5 no cético, e o Peru, 6,5 no cético e
    do Lucas.
 5. **Alguém que possa assistir** (o Lucas) ver a Drake do Epic Adventure Archives (30 min) e o Cabo Horn do Scary Interesting (27 min), para
    não repetir a estrutura: o canal não lê legenda (`/api/` vetado).
+
+---
+
+## A decisão do Lucas (25/10/2026)
+
+À pergunta "Qual virada a pauta da Passagem de Drake segue?", às 03:0x, no chat da Sala: **"O mar de verdade"**. A opção dizia: "A
+virada é o número oficial contra o mito: ondas de 8 a 20 ft na maior parte do tempo, contra os 60 a 80 ft que os concorrentes dizem. Já
+está lido." As outras eram "Magalhães 2026 (Recomendado)" e "Trocar pelo Egito".
+
+**A próxima rodada**, na renovação da cota (28/10), depois do roteiro do vídeo 5:
+- **A pauta, com a virada do mar medido.** De um lado, o *Antarctic Pilot* (9ª ed., 2019), pelo relatório da NSIA: a oeste do Horn, ondas
+  "mostly between 2.3 and 6.2 metres". Do outro, a onda do *Viking Polaris*, que a ponte estimou em 12–14 m, e os 60 ft do Scary
+  Interesting e os 80 ft do Infographics Show. O próprio relatório diz que os dados de onda da área são "very limited". A fala não diz que
+  a Drake é mansa: o perigo é a onda que quebra e o vento (Young 1999).
+- **Ler na fonte:** o *Antarctic Pilot*, se houver cópia aberta, e o texto inteiro de Young 1999 (403 à checagem).
+- **O gancho**, com a IAATO de 2025–26 e a frase do *Bounty* consertada (cético §6).
+- **O título**, pela `marca/embalagem.md` §4, sem "most dangerous", sem "under South America" e sem "100,000".
+- **A abertura**, numa imagem que o Scary Interesting não usou (cético §5).
+- **O Magalhães de 2026** não é a virada. Pode entrar como camada, se a pauta pedir, com o dado da Marinha do Chile lido.

@@ -1054,7 +1054,12 @@ motor. Você aprova pauta, roteiro, título e capa; a linha do tempo e o Premier
   - a categoria é Educação (27): "Educação (Recomendado)" (24/10/2026), depois de ver que 4 dos 5 canais de referência a usam;
   - o "conteúdo alterado ou sintético" fica desmarcado: "Deixar desmarcado (Recomendado)". O Lucas não o marcava, e o YouTube só o
     pede em conteúdo realista (support.google.com/youtube/answer/14328491);
-  - faltam o e-mail de contato e o programa de parcerias.
+  - nenhum e-mail de contato na descrição: "Nenhum, como hoje" (25/10/2026);
+  - a monetização fica `desligada`: à pergunta "O Alpha Point já está no Programa de Parcerias do YouTube (com anúncios)?", "Ainda
+    não" (25/10/2026). Quando o canal entrar, ela passa a `ligada`, com a palavra dele.
+- **O veto da trilha** (`estudio/musica/paleta.json` › `moods_evitar`): "Vetar festivos e agitados (Recomendado)" (25/10/2026). O
+  motor nunca escolhe alegre, eufórico, excêntrico, brincalhão, glamoroso, romântico, raivoso, de perseguição nem frenético. Os tensos
+  (suspense, sombrio) continuam. A música com voz o motor já tira.
 - **A porta do roteiro:** `node ferramentas/roteiro-motor.mjs converter <proj>` converte o roteiro ao formato do portão do motor, e
   `conferir <arquivo>` confere as regras dele. A prova (`ferramentas/roteiro-motor-provar.mjs --clone=<clone do top10-estudio>`) deu
   85 de 85, com o validador do próprio motor. O relato está em `out/_maquina/motor-sem-rosto/porta-roteiro-relato.md`.
