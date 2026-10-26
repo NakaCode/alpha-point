@@ -193,6 +193,16 @@ alerta("21-de-dezembro", "Five Deeps announced the dive on December 21, 2018.", 
 reprova("83-san-juan", "The deepest point lies 83 miles north of San Juan.");
 passa("83-san-juan", "The deepest point lies about 83 miles from the coast near Aguadilla.");
 reprova("bermudas", "The trench sits at the edge of the Bermuda Triangle.");
+// a bancada 1 do roteiro (26/10/2026, à noite): C27 e N50 do dossiê
+reprova("lista-decadas", "For decades, the official list of undersea features gave the Atlantic a number about 1,200 feet too deep.");
+passa("lista-decadas", "A 2019 study found that the official list of undersea features still had the Atlantic about 1,200 feet too deep.");
+passa("lista-decadas", "For decades, sailors told stories about this trench.", "'for decades' sem a lista: passa");
+reprova("nenhum-peixe", "It found no fish at all.");
+reprova("nenhum-peixe", "In 2019, no fish were seen at the same spot.");
+passa("nenhum-peixe", "It saw none of those fish.");
+reprova("vescovo-voltou", "The scientists who went back concluded that the fish were sea cucumbers.");
+reprova("vescovo-voltou", "In 2019, Vescovo went back to the spot where the French had seen their fish.");
+passa("vescovo-voltou", "In a 2020 paper, the scientists concluded that the 'fish' had been sea cucumbers. One of the five authors was Vescovo.");
 reprova("especies", "The expedition discovered four new species.");
 alerta("especies", "The chief scientist believed four new species were found.", "atribuída: alerta");
 reprova("sandwich-mais-funda", "The South Sandwich Trench is deeper than the Puerto Rico Trench.");

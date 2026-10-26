@@ -280,6 +280,16 @@ const NAO_SE_DIZ = [
   { id: "misterio",
     porque: '"sinal desconhecido", "o que a NOAA esconde": o gênero "What They Captured…"; nenhuma fonte lida tem nada disso (pauta §3; checagem §2.8)',
     julga: (f) => (MISTERIO.test(f) ? "reprova" : null) },
+  // Os três abaixo vêm da bancada 1 do roteiro (26/10/2026, à noite; o dossiê, C27 e N50).
+  { id: "lista-decadas",
+    porque: 'nenhuma fonte data a entrada da lista oficial: a única prova (Stewart & Jamieson 2019) a põe por volta de 2019, e o mesmo artigo se contradiz; o 8.740 se atribui ao estudo ("A 2019 study found that the official list…"), nunca "for decades" (dossiê C27, N50)',
+    julga: (f) => (/\bfor decades\b/i.test(f) && /\blist\b|\bgazetteer\b/i.test(f) ? "reprova" : null) },
+  { id: "nenhum-peixe",
+    porque: 'a volta de 2019 não viu peixe-caracol ("No snailfish were observed", o resumo do artigo de 2020); "no fish at all" passa da fonte: "It saw none of those fish" (dossiê F38, C27, N50)',
+    julga: (f) => (/\bno fish at all\b|\bnot a single fish\b|\bno fish whatsoever\b|\bfound no fish\b|\bno fish (?:was|were) (?:seen|found|observed)\b/i.test(f) ? "reprova" : null) },
+  { id: "vescovo-voltou",
+    porque: 'nenhuma fonte diz quem estava no submersível na volta de 2019: nunca "the scientists who went back" (com o F91, faz Vescovo ter voltado) nem Vescovo voltando; "In a 2020 paper, the scientists concluded…" (dossiê F91, R14, C27, N50)',
+    julga: (f) => (/\bscientists who went back\b/i.test(f) || (/\bVescovo\b/.test(f) && /\b(?:went back|returned|came back)\b/i.test(f)) ? "reprova" : null) },
 ];
 // ---- os ALERTA do vídeo 5 com mais de uma condição (conferir, nunca reprovar): {id, porque, testa(frase, a anterior)}
 const NUM_PALAVRAS = "two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|dozen";
