@@ -64,8 +64,8 @@ Revisão do roteiro: `7b965eecdb7c`
 > - É essa a palavra que vai ao portão `roteiro` do motor, no `--fala`, quando a máquina existir.
 > - Os números ficam em algarismos porque a amostra do v4 leu certo os 66 do texto
 >   (`out/atlantico-fundo/_pesquisa/narracao-conferencia.md`).
-> - Os nomes da `pronuncia.md` seguem em aberto. Um alias só entra se ele ouvir um erro em `amostra-nomes.mp3`, e alias muda o
->   texto do portão.
+> - Os nomes: o Lucas ouviu a `amostra-nomes.mp3` em 27/10/2026, às 13:1x, e respondeu "Tudo certo, ficou Nérz". Nenhum alias
+>   entra, e o texto do portão fica como está. Nares fica em uma sílaba, como a voz já o disse (o registro está na `pronuncia.md`).
 >
 > **O piloto do motor sem rosto:** a Sala converte com `node ferramentas/roteiro-motor.mjs converter atlantico-fundo`. As marcas
 > `<!-- pN · Título -->` viram as "##" invisíveis do motor (`estudio/canal-motor.json` › `narracao.cards: "nenhum"`). Os títulos

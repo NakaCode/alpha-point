@@ -60,7 +60,8 @@ Revisão do roteiro: `7b965eecdb7c`
 > pessoa o diz.
 >
 > **O alias só entra na cópia para a voz quando o nome foi confirmado de ouvido e a amostra mostra a voz errando** (a política
-> da folha permanente). Nada aqui foi ouvido: a coluna do alias diz **reserva** em tudo.
+> da folha permanente). Nenhum nome foi confirmado ouvindo a pessoa ou o lugar: a coluna do alias diz **reserva** em tudo. A amostra
+> da voz, o Lucas ouviu em 27/10/2026, e nenhum nome saiu errado: nenhum alias entrou ("A amostra que esta folha pede", abaixo).
 >
 > **Neste vídeo a voz é a do motor sem rosto** (`estudio/canal-motor.json` › `narracao`): a mesma voz do canal
 > (`829pig94w9GefZ9jJQYl`), o `eleven_v4`, `stability` 0,5 e `language_code: "en"`, a mesma configuração do `canal.json` com que
@@ -106,7 +107,7 @@ Revisão do roteiro: `7b965eecdb7c`
 | Anegada ("Anegada is a low island") | 1 (p4, 13º parágrafo) | an-uh-GAH-duh | /ˌænəˈɡɑdə/ | Confirmado | Wiktionary, *Anegada*: "/ˌænəˈɡɑː.də/", "An island in the British Virgin Islands". Wikipedia, *Anegada*: "/ˌænəˈɡɑːdə/". A hipótese do dossiê bate. | **Médio.** "uh-NEG-uh-duh" ou "ah-nay-GAH-dah", à espanhola (também serviria). | reserva: **An-uh-GAH-da** |
 | NOAA (e "NOAA's") | 5 (p2, 8º; p3, 9º; p4, 12º, "NOAA's"; p5, 15º; p8, 28º, "NOAA's") | NOH-uh, dito como palavra, como o nome Noah | /ˈnoʊə/ | Confirmado | Wikipedia, *National Oceanic and Atmospheric Administration*: "/ˈnoʊ.ə/ NOH-ə". O Wiktionary dá as duas formas, "/ˌɛn oʊ eɪ ˈeɪ/" (soletrada) e "/ˈnoʊə/"; a agência se diz como palavra. | **Médio.** Soletrar "N-O-A-A" numa vez e dizer "NOH-uh" noutra, nos 5 pedidos. A 1ª vez (8º parágrafo) já vem com a explicação ("the U.S. ocean and weather agency"). | reserva: **Noah** e **Noah's** (só nos parágrafos em que a voz soletrar) |
 | Geodetic ("the U.S. Coast and Geodetic Survey") | 1 (p1, 3º parágrafo) | jee-uh-DET-ik | /ˌdʒiəˈdɛtɪk/ | Confirmado | Dictionary.com, *geodetic*: "[jee-uh-det-ik] / ˌdʒi əˈdɛt ɪk /". Wiktionary: "/ˌd͡ʒiː.əˈdɛt.ɪk/". | **Médio.** "jee-OH-det-ik" ou "GEE-oh-det-ik", com o "g" duro. | reserva: **Jee-uh-DET-ik** |
-| Nares ("under Captain Nares") | 1 (p1, 5º parágrafo) | NAIR-eez (a da Wikipedia) ou NAIRZ (sobrenome de uma sílaba) | /ˈnɛəriz/, /nɛərz/ | **Hipótese** (em disputa) | Wikipedia, *George Nares*: "/ˈnɛəriːz/ NAIR-eez", com a fonte "How to pronounce Nares in English" (SayItVid), consultada em 21/10/2026. Dictionary.com, *nares*: "[nair-eez] / ˈnɛər iz /", mas é o plural de *naris* (narina), não o sobrenome. Nenhuma fonte lida dá NAIRZ. | Baixo a médio. A voz deve dizer NAIR-eez (é a palavra que ela conhece); as duas formas se entendem. | — (a decisão é do Lucas, de ouvido; sem alias) |
+| Nares ("under Captain Nares") | 1 (p1, 5º parágrafo) | **NAIRZ, uma sílaba** (decidido pelo Lucas em 27/10/2026); NAIR-eez é a da Wikipedia | /nɛərz/; a da Wikipedia, /ˈnɛəriz/ | **Decidido pelo Lucas** (27/10/2026: "Tudo certo, ficou Nérz"); nas fontes, segue em disputa | Wikipedia, *George Nares*: "/ˈnɛəriːz/ NAIR-eez", com a fonte "How to pronounce Nares in English" (SayItVid), consultada em 21/10/2026. Dictionary.com, *nares*: "[nair-eez] / ˈnɛər iz /", mas é o plural de *naris* (narina), não o sobrenome. Nenhuma fonte lida dá NAIRZ. | Baixo. Esperava-se NAIR-eez (é a palavra que a voz conhece), mas na amostra de 27/10 a voz disse NAIRZ (a medida está em "A amostra que esta folha pede"). | — (sem alias: a voz já diz como o Lucas decidiu) |
 | USGS ("the U.S. Geological Survey", 1, no 9º; o "USGS's" saiu na r1, L10; no 11º, "To the USGS" desde o P01) | 4 (p3, 10º e 11º; p4, 12º; p6, 19º) | YOO-ES-JEE-ES, as quatro letras | /ˌjuˌɛsˌdʒiˈɛs/ | Confirmado (a sigla soletrada) | Wiktionary, *USGS*: "initialism of United States Geological Survey" (sem IPA: é sigla que se soletra). A nota do dossiê diz o mesmo ("a sigla se soletra U-S-G-S"). | **Baixo, desde a r1.** O risco médio desta linha era o possessivo do 10º parágrafo ("By the USGS's measure"), que saiu da voz (L10: "According to the USGS"). Fica nesta tabela só para a leitura da mudança. | — (o alias do possessivo, U-S-G-S's, ficou sem uso) |
 
 ## Risco baixo (a voz deve ler certo sem nada)
@@ -176,7 +177,20 @@ palavras comuns ou nomes que a voz já sabe: ficam sem pesquisa. Se entrarem num
 >   e é o nome a ouvir com mais cuidado.
 >
 > O áudio para o Lucas é `out/atlantico-fundo/_tmp/amostra-voz/amostra-nomes.mp3`, com os 14 pedidos na ordem e 1,2 s entre eles.
-> Falta o ouvido dele nos nomes.
+>
+> **Ouvida pelo Lucas em 27/10/2026, às 13:1x de Brasília**, no celular, pelos arquivos que a Sala mandou na conversa, com o segundo
+> de cada nome: "Tudo certo, ficou Nérz".
+> - Nenhum nome saiu errado, e nenhum alias entra. O texto do portão fica como está
+>   (`roteiros/atlantico-fundo/motor/roteiro-portao.md`, sha256 `cba1f21ba72b…`).
+> - Nares fica em uma sílaba, NAIRZ, como ele decidiu, e a voz já o disse assim. A Sala mediu o pedido 3 com
+>   `ferramentas/formantes.py` (o "Nares" do `A03.wav`, de 6,58 a 7,06 s):
+>   - o "r" derruba o F3 de ~2.540 Hz (6,58 s) a ~1.690 Hz (6,78 s);
+>   - o F2 fica entre 1.460 e 1.490 Hz de 6,73 a 6,85 s, e a voz entra direto no "z" (6,86 s);
+>   - não há a vogal "ee" da segunda sílaba, nem um segundo pico de volume (nada volta ao nível do "a", −16 dB).
+> - O controle é o "ri" de "Mariana", na mesma voz (pedido 1, `A01.wav`, de 9,01 a 9,09 s): o "ee" aparece com F1 de 290 a 380 Hz,
+>   F2 de 1.890 a 2.180 Hz e um pico de volume próprio (−14,5 dB, depois de −17 dB no "a").
+> - O motor gera a narração de novo, e outra geração pode dizer diferente. Os nomes se conferem de ouvido no vídeo pronto, antes do
+>   portão "publicar".
 
 Antes do portão "roteiro" do motor, uma amostra no v4, com a voz e os ajustes do `canal.json` › `narracao` (os mesmos do motor) e
 **um pedido por linha abaixo** (como na produção, um pedido por parágrafo), **sem nenhum alias e com o acento do roteiro**, para o

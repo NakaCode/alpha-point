@@ -1645,3 +1645,17 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** todo canal que entra no motor tem a marca fora do pacote e muda a marca com o tempo. Sem a
   conferência, a roupa do motor fica para trás em silêncio. No Alpha Point, a roupa de 20/10 já não tinha as regras de 22 a 24/10.
   Vale avisar o Lucas e o Mateus: os canais Polar Plasma e Blue Casefiles têm o mesmo caminho.
+
+### 91. O transcritor escreve o nome que está no texto: quantas sílabas a voz disse, quem mostra é o espectro
+
+- **O problema** (27/10/2026, na amostra de nomes do vídeo 5): o Lucas escolheu "Nares" em uma sílaba (NAIRZ), e a Sala precisava
+  saber se a voz já o dizia assim ou se o texto do portão pedia um alias. O faster-whisper escreveu "Nares", como está no texto, e a
+  mesma grafia serve às duas pronúncias. O alinhamento da ElevenLabs também não mostra: ele reparte o tempo da palavra entre as letras.
+- **O que resolveu:** `ferramentas/formantes.py` mede as vogais quadro a quadro (LPC, só com o numpy) e desenha o espectro pelo
+  ffmpeg. No "Nares", o "r" derrubou o F3 e a voz entrou direto no "z", sem o "ee" da segunda sílaba (F1 baixo e F2 alto). Que a
+  medida enxerga o "ee" mostrou uma palavra da mesma voz que o tem: o "ri" de "Mariana", no mesmo lote, com F1 de ~300 Hz e F2 acima
+  de 2.000 Hz.
+- **Como evitar:** quando a dúvida é de som (uma sílaba a mais ou a menos, uma vogal trocada), o transcritor não é o juiz. Meça o
+  trecho e compare com uma palavra da mesma voz que tem o som em dúvida. A medida não mostra a tônica, e vale só para a geração medida.
+- **Por que serve a qualquer canal:** todo canal com voz sintética confere os nomes pelo transcritor, e ele escreve o que espera ler.
+  Um canal de culinária teria o mesmo problema com "Worcestershire" ou "quinoa".
