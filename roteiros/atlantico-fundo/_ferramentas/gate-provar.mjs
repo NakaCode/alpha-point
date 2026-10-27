@@ -195,7 +195,7 @@ passa("83-san-juan", "The deepest point lies about 83 miles from the coast near 
 reprova("bermudas", "The trench sits at the edge of the Bermuda Triangle.");
 // a bancada 1 do roteiro (26/10/2026, à noite): C27 e N50 do dossiê
 reprova("lista-decadas", "For decades, the official list of undersea features gave the Atlantic a number about 1,200 feet too deep.");
-passa("lista-decadas", "A 2019 study found that the official list of undersea features still had the Atlantic about 1,200 feet too deep.");
+passa("lista-decadas", "A 2019 study found that the official list of undersea features still had the Atlantic more than 1,000 feet too deep.");
 passa("lista-decadas", "For decades, sailors told stories about this trench.", "'for decades' sem a lista: passa");
 reprova("nenhum-peixe", "It found no fish at all.");
 reprova("nenhum-peixe", "In 2019, no fish were seen at the same spot.");
@@ -203,6 +203,16 @@ passa("nenhum-peixe", "It saw none of those fish.");
 reprova("vescovo-voltou", "The scientists who went back concluded that the fish were sea cucumbers.");
 reprova("vescovo-voltou", "In 2019, Vescovo went back to the spot where the French had seen their fish.");
 passa("vescovo-voltou", "In a 2020 paper, the scientists concluded that the 'fish' had been sea cucumbers. One of the five authors was Vescovo.");
+// a bancada final do roteiro (26/10/2026, mais tarde): C28 e N51 do dossiê
+reprova("gancho-1200", "And a 2019 study found that the official list of undersea features still had the Atlantic about 1,200 feet too deep, even after sonar showed otherwise.");
+passa("gancho-1200", "And a 2019 study found that the official list of undersea features still had the Atlantic more than 1,000 feet too deep, even after sonar showed otherwise.");
+passa("gancho-1200", "The floor the sonar found is about 1,200 feet shallower.", "o 1.200 contra o sonar da expedição, sem o estudo de 2019: passa");
+reprova("tripulacao-francesa", "In 1964, a French crew dove into the Puerto Rico Trench and reported a crowd of fish.");
+reprova("tripulacao-francesa", "Off Puerto Rico, the French crew's fish were waiting for a second look.");
+passa("tripulacao-francesa", "In 1964, a crew in a French deep-diving craft reported a crowd of fish in the Puerto Rico Trench.");
+reprova("porque-sem-dono", "That is why the trench is so deep.");
+passa("porque-sem-dono", "That, the agency suggests, is why the trench is so deep.");
+passa("porque-sem-dono", "Why is the trench so deep?", "a pergunta: passa");
 reprova("especies", "The expedition discovered four new species.");
 alerta("especies", "The chief scientist believed four new species were found.", "atribuída: alerta");
 reprova("sandwich-mais-funda", "The South Sandwich Trench is deeper than the Puerto Rico Trench.");
@@ -236,7 +246,7 @@ alertaPalavra("here", "Out here, the water is very cold.", String.raw`/\bhere\b/
 alertaPalavra("this-line", "Follow this line to the coast.", String.raw`/\bthis line\b/i`);
 alerta("1918-fossa", "A tsunami from the trench reached Anegada in the Middle Ages.");
 alerta("200-peixes", "In 1964, the dive found 200 snailfish.");
-passa("200-peixes", "In 1964, the French crew reported 200 snailfish.", '"reported": atribuído, sem alerta');
+passa("200-peixes", "In 1964, its crew reported 200 snailfish.", '"reported": atribuído, sem alerta (sem "French crew", N51)');
 alerta("duas-medidas", "The sonar found 8,378 meters, and the sub logged 27,480 feet.");
 passa("duas-medidas", "The sonar found a depth of about 27,480 feet.", "uma medida só, sem alerta");
 alerta("mais-fundo-da-terra", "The Puerto Rico Trench is the deepest place on Earth.", "a frase pode falar da Marianas: alerta, não reprova");

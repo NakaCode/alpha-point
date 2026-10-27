@@ -290,6 +290,16 @@ const NAO_SE_DIZ = [
   { id: "vescovo-voltou",
     porque: 'nenhuma fonte diz quem estava no submersível na volta de 2019: nunca "the scientists who went back" (com o F91, faz Vescovo ter voltado) nem Vescovo voltando; "In a 2020 paper, the scientists concluded…" (dossiê F91, R14, C27, N50)',
     julga: (f) => (/\bscientists who went back\b/i.test(f) || (/\bVescovo\b/.test(f) && /\b(?:went back|returned|came back)\b/i.test(f)) ? "reprova" : null) },
+  // Os três abaixo vêm da bancada final do roteiro (26/10/2026, mais tarde; o dossiê, C28 e N51).
+  { id: "gancho-1200",
+    porque: 'o "about 1,200 feet" é a régua do sonar da expedição, publicado em 2021; pelo número do estudo de 2019 (8.740 − 8.408 m) a lista passava 1.089 ft: na frase do estudo de 2019, "more than 1,000 feet", que vale nas duas réguas (dossiê R03, F09, C28, N51)',
+    julga: (f) => (/\b2019 study\b|\bstudy (?:from|in|of) 2019\b/i.test(f) && /\b1,200\b/.test(f) ? "reprova" : null) },
+  { id: "tripulacao-francesa",
+    porque: 'nenhuma fonte lida diz quem estava a bordo do Archimède em 1964 nem quem escreveu o relato de 1965: o francês é o batiscafo ("a French bathyscaphe"), e a tripulação vai sem nacionalidade ("its crew") (dossiê F37, R14, A19, C28, N51)',
+    julga: (f) => (/\bFrench (?:crew|crewmen|scientists?|observers?|divers?|team|sailors?|oceanographers?)\b/i.test(f) ? "reprova" : null) },
+  { id: "porque-sem-dono",
+    porque: 'o USGS sugere a causa da profundidade ("we suggest that these features are manifestations of large vertical movements"), não a afirma: o pouso da pergunta leva o dono ("That, the agency suggests, is why…") (dossiê S28, N51; bancada final, roteiro 1 e fatos A1)',
+    julga: (f) => (/\bwhy the trench is so deep\b/i.test(f) && !/\b(?:suggests?|suggested|USGS|agency|according to)\b/i.test(f) ? "reprova" : null) },
 ];
 // ---- os ALERTA do vídeo 5 com mais de uma condição (conferir, nunca reprovar): {id, porque, testa(frase, a anterior)}
 const NUM_PALAVRAS = "two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|dozen";
