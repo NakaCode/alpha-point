@@ -213,6 +213,12 @@ passa("tripulacao-francesa", "In 1964, a crew in a French deep-diving craft repo
 reprova("porque-sem-dono", "That is why the trench is so deep.");
 passa("porque-sem-dono", "That, the agency suggests, is why the trench is so deep.");
 passa("porque-sem-dono", "Why is the trench so deep?", "a pergunta: passa");
+// a bancada final da rodada 2 (26/10/2026, à noite): C29 e N52 do dossiê
+reprova("challenger-ano", "The trench itself had been found eight years earlier, by the British research ship HMS Challenger, under Captain Nares, far to the east.");
+reprova("challenger-ano", "In 1875, the British research ship HMS Challenger found the trench.");
+passa("challenger-ano", "The trench itself had been found less than a decade earlier, by the British research ship HMS Challenger, under Captain Nares, far to the east.");
+reprova("relato-de-quem", "Their account, published the next year, described them as snailfish, a family of fish.");
+passa("relato-de-quem", "The report, published the next year, described them as snailfish, a family of fish.");
 reprova("especies", "The expedition discovered four new species.");
 alerta("especies", "The chief scientist believed four new species were found.", "atribuída: alerta");
 reprova("sandwich-mais-funda", "The South Sandwich Trench is deeper than the Puerto Rico Trench.");
@@ -336,6 +342,8 @@ const DIR_D = join(CASOS, "derivados");
 gravar(join(DIR_D, "roteiro-narrador.md"), montar());
 gravar(join(DIR_D, "qc-roteiro", "fatos.laudo.md"), `> Revisão julgada: \`${sBase.laudo?.sha256.slice(0, 12)}\`\n`);
 gravar(join(DIR_D, "roteiro-editor.md"), "Revisão do roteiro: `000000000000`\n");
+// os laudos com sufixo de rodada (-r1, -r2, -r2b…) e os -antigo ficam fora: julgaram o texto de antes (a Sala, 26/10/2026)
+for (const n of ["roteiro-r1.laudo.md", "roteiro-r2.laudo.md", "roteiro-r2b.laudo.md", "roteiro-r2-antigo.laudo.md"]) gravar(join(DIR_D, "qc-roteiro", n), "> Revisão julgada: `000000000000`\n");
 const der = rodar(["--derivados", join(DIR_D, "roteiro-narrador.md")]);
 conferir(der.exit === 1 && der.laudo?.derivados?.length === 2 && der.laudo.derivados_velhos?.length === 1
   && der.laudo.derivados_velhos[0].arquivo.endsWith("roteiro-editor.md"),

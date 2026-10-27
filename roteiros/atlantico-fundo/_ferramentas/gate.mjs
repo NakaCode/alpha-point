@@ -131,7 +131,9 @@
 // começo dele, 12 caracteres hex (o mesmo "Revisão julgada" que o montar-roteiro.mjs do Juneau já escrevia). Os
 // derivados moram na pasta do roteiro medido (no padrão, roteiros/atlantico-fundo/), e cada um traz, numa linha só dela
 // (pode vir dentro de citação "> " e com o valor entre crases; 12 a 64 hex, e contam os 12 primeiros):
-//   - qc-roteiro/*.laudo.md:   Revisão julgada: `<sha12>`        (fora: os que terminam em -r1.laudo.md ou -antigo.laudo.md)
+//   - qc-roteiro/*.laudo.md:   Revisão julgada: `<sha12>`        (fora: os que terminam em -r<n>.laudo.md, com ou sem letra,
+//                              como -r1, -r2 e -r2b, ou em -antigo.laudo.md: são a entrada da lista daquela rodada e julgaram o
+//                              texto de antes; a Sala, 26/10/2026, depois de o aplicador da r2 apontar que só o -r1 ficava fora)
 //   - roteiro-editor.md:       Revisão do roteiro: `<sha12>`
 //   - pronuncia.md:            Revisão do roteiro: `<sha12>`
 //   - voz/texto-para-voz.md:   Revisão do roteiro: `<sha12>`
@@ -300,6 +302,13 @@ const NAO_SE_DIZ = [
   { id: "porque-sem-dono",
     porque: 'o USGS sugere a causa da profundidade ("we suggest that these features are manifestations of large vertical movements"), não a afirma: o pouso da pergunta leva o dono ("That, the agency suggests, is why…") (dossiê S28, N51; bancada final, roteiro 1 e fatos A1)',
     julga: (f) => (/\bwhy the trench is so deep\b/i.test(f) && !/\b(?:suggests?|suggested|USGS|agency|according to)\b/i.test(f) ? "reprova" : null) },
+  // Os dois abaixo vêm da bancada final da rodada 2 (26/10/2026, à noite; o dossiê, C29 e N52).
+  { id: "challenger-ano",
+    porque: 'o ano da sondagem do Challenger está em disputa: as fontes do disco dão 26/03/1875, mas o IHR de 1936 põe o navio "cruising between St. Thomas, Virgin Islands and the Bermudas", o trecho de março de 1873; na fala, "less than a decade earlier" (antes do Blake de 1883), que vale para os dois anos, sem o ano e sem "eight years" (dossiê F22, C29, N52)',
+    julga: (f) => (/\bChallenger\b/.test(f) && !/\bChallenger Deep\b/.test(f) && /\b187[0-9]\b|\beight years\b/i.test(f) ? "reprova" : null) },
+  { id: "relato-de-quem",
+    porque: 'nenhuma fonte lida diz quem escreveu o relato de 1965: "the report" (a palavra da fonte), nunca "their account" nem "the crew\'s report" (dossiê F37, N51, C29)',
+    julga: (f) => (/\b(?:their|the crew['’]s|its crew['’]s) (?:own )?(?:account|report|paper|article)\b/i.test(f) ? "reprova" : null) },
 ];
 // ---- os ALERTA do vídeo 5 com mais de uma condição (conferir, nunca reprovar): {id, porque, testa(frase, a anterior)}
 const NUM_PALAVRAS = "two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|dozen";
@@ -572,7 +581,7 @@ if (COM_DERIVADOS) {
   const PASTA = dirname(ARQ);
   const LINHA_LAUDO = /^[ \t]*(?:>[ \t]*)?Revisão julgada:[ \t]*`?([0-9a-fA-F]{12,64})\b/m;
   const LINHA_DERIVADO = /^[ \t]*(?:>[ \t]*)?Revisão do roteiro:[ \t]*`?([0-9a-fA-F]{12,64})\b/m;
-  const FORA = /-(?:r1|antigo)\.laudo\.md$/;
+  const FORA = /-(?:r\d+[a-z]?|antigo)\.laudo\.md$/;
   const alvos = [];
   const qc = join(PASTA, "qc-roteiro");
   if (existsSync(qc)) for (const n of readdirSync(qc).sort()) if (n.endsWith(".laudo.md") && !FORA.test(n)) alvos.push([join(qc, n), LINHA_LAUDO]);

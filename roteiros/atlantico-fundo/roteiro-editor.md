@@ -1,6 +1,6 @@
 # Dossiê do roteiro · atlantico-fundo (vídeo 5)
 
-Revisão do roteiro: `04ae6bfbeb60`
+Revisão do roteiro: `b064eb75cb8c`
 
 > Escrito à mão em 26/10/2026 pelo roteirista (Fable 5.1), sobre `roteiros/atlantico-fundo/_trabalho/plano-final.json` (o plano do
 > juiz: o ângulo "quem desceu", com os enxertos de "o número" e de "o lugar"; o porquê em `_trabalho/juiz.md`) e
@@ -8,24 +8,42 @@ Revisão do roteiro: `04ae6bfbeb60`
 > N.., C.., A.. e R.. são os dele). O texto falado está em `roteiros/atlantico-fundo/roteiro-narrador.md`. O que mudou em relação
 > ao plano está em `_trabalho/escrita-notas.md`.
 >
-> **A medida do portão** (26/10/2026, à noite, depois da rodada 1 e do pedido P01 ao escritor, `node
-> roteiros/atlantico-fundo/_ferramentas/gate.mjs`): sha256 do texto falado
-> `04ae6bfbeb6048c8993ece4150945de28cb81e5a6b9a2e906c4e803a16b0438c` · **2.038 palavras** (a faixa é 1.950–2.150) · ≈ 11:05 de
-> fala a 184 palavras/min (+ 20 s de cauda ≈ 11:25, mais a vinheta) · 29 parágrafos · 161 frases pelo portão · média 12,7 palavras por
-> frase (teto 18) · maior frase 28 (teto 34) · gancho com 161 palavras até a assinatura (≈ 52 s), "But" na palavra 49. **PASSA**, sem
-> problema, com os mesmos 8 alertas da lista de conferência, todos decididos: os 7 que já estavam ("never" ×2, "first" ×2, "Milwaukee
-> Deep" ×3; `escrita-notas.md` §5) e o "still" da frase nova do gancho (o passado da R03, dentro de 2019; decidido em
-> `_trabalho/lista-r1.md`). O "anomaly" saiu da voz (L10); as três frases do P01 não trouxeram alerta. Taxas todas abaixo dos tetos;
-> autoplágio vazio contra Juneau, Los Angeles, Zona do Canal e Peru; nenhum alerta de fecho. (A medida da rodada 1, antes do P01:
-> `0081efb271f0`, 2.018 palavras, 159 frases, os mesmos 8 alertas; `_trabalho/aplicado-r1.md` §5.)
+> **A medida do portão** (26/10/2026, à noite, depois da rodada 2 e das listas r2b e r2c da Sala, `node roteiros/atlantico-fundo/_ferramentas/gate.mjs`): sha256
+> do texto falado `b064eb75cb8ccfd1f4373650be4f9a67cc1bd4588ad5775b77eb948ba7497345` · **2.030 palavras** (a faixa é 1.950–2.150) ·
+> ≈ 11:02 de fala a 184 palavras/min (+ 20 s de cauda ≈ 11:21, mais a vinheta) · 29 parágrafos · 160 frases pelo portão · média 12,7
+> palavras por frase (teto 18) · maior frase 28 (teto 34) · gancho com 166 palavras até a assinatura (≈ 54 s; teto 170), "But" na
+> palavra 49. **PASSA**, sem problema (as três regras novas do portão, [gancho-1200], [porque-sem-dono] e [tripulacao-francesa], que
+> reprovavam `04ae6bfbeb60` com 6 problemas, passam), com os mesmos 8 alertas, todos decididos: "never" ×2, "first" ×2, "Milwaukee
+> Deep" ×3 (`escrita-notas.md` §5; o 2º é agora a ponte de p6 com os dois autores, L54) e o "still" do gancho (o passado da R03,
+> dentro de 2019; `_trabalho/lista-r1.md`). Nenhum alerta novo da r2. Taxas todas abaixo dos tetos; autoplágio vazio contra Juneau,
+> Los Angeles, Zona do Canal e Peru; nenhum alerta de fecho. (As medidas de antes: a rodada 1, `0081efb271f0`, 2.018 palavras, 159
+> frases, `_trabalho/aplicado-r1.md` §5; o P01, `04ae6bfbeb60`, 2.038 palavras, 161 frases, gancho 161; `_trabalho/aplicado-r2.md`.)
 >
 > **A rodada 1** (26/10/2026): as cinco lentes da bancada (`qc-roteiro/roteiro-r1`, `clareza-r1`, `locucao-r1`, `fatos-r1` e
 > `subtracao-r1`) julgaram a revisão `4694e58092c2`; a lista fechada `_trabalho/lista-r1.json` (42 trocas, L01–L42, e 89 pares deste
 > dossiê) foi aplicada por `ferramentas/aplicar-lista.mjs` (o relato em `_trabalho/aplicado-r1.md`) e deu `0081efb271f0`. O pedido
 > ao escritor P01 (`_trabalho/pedidos-r1.json`: p3, 3º parágrafo, o que a laje de calcário mostra e o pouso de "Why is the trench so
 > deep?") foi escrito no mesmo dia, à noite, sobre `0081efb271f0`, e deu `04ae6bfbeb60`: o parágrafo foi de 55 a 75 palavras, o teto
-> do pedido, com três frases novas no lugar de uma (o relato, com o antes e o depois, em `_trabalho/pedidos-r1-feito.md`). O Lucas
-> ainda não leu esta revisão.
+> do pedido, com três frases novas no lugar de uma (o relato, com o antes e o depois, em `_trabalho/pedidos-r1-feito.md`).
+>
+> **A rodada 2** (26/10/2026, à noite): as cinco lentes da bancada final (`qc-roteiro/roteiro-r2`, `clareza-r2`, `locucao-r2`,
+> `fatos-r2` e `escuta-fria-r2`) julgaram a revisão `04ae6bfbeb60`; a lista fechada `_trabalho/lista-r2.json` (24 trocas, L43–L66, e
+> 49 pares deste dossiê; nenhum pedido ao escritor, `_trabalho/pedidos-r2.json` com `itens: []`) foi aplicada por
+> `ferramentas/aplicar-lista.mjs` e deu `432dcb4041d4` (o relato em `_trabalho/aplicado-r2.md`). É a última lista: nenhuma troca trouxe
+> fato novo à voz.
+>
+> **A lista r2b da Sala** (26/10/2026, à noite): a bancada final da rodada 2 (`qc-roteiro/*-r2b.laudo.md`) julgou `432dcb4041d4`; os
+> fatos deram PASS, sem achado, e as outras lentes deixaram médios e leves de troca segura. A Sala fez a lista `_trabalho/lista-r2b.json`
+> (7 trocas, L67–L73: o relato de 1965 sem dono, o 1.200 na régua do sonar da expedição, o Challenger "about a decade earlier", sem o
+> ano, que está em disputa, a laje como "layer", "how deep it got", os blocos girados só sob o setor mais fundo e "the Dominican
+> Republic's waters"), com as correções do dossiê (C29, N52) e duas regras novas no portão ([challenger-ano], [relato-de-quem]). O
+> aplicador deu `ffafacc2329b` (o relato em `_trabalho/aplicado-r2b.md`). O ouvinte a frio da mesma bancada deu FAIL de ritmo (o meio
+> longo, p4 e p7): vai ao Lucas, porque mexe nas camadas da pauta.
+>
+> **A lista r2c da Sala** (26/10/2026, à noite): a conferência de fatos da r2b (`qc-roteiro/fatos-r2c.laudo.md`) deu RESSALVA
+> por um achado só, o A1: "about a decade" ficava a 27,5 % dos 7,84 anos das cópias. A troca exata dele, "less than a decade
+> earlier" (L74, `_trabalho/lista-r2c.json`), vale para 1875 e para 1873. O aplicador deu o texto de agora (o relato em
+> `_trabalho/aplicado-r2c.md`). O Lucas ainda não leu esta revisão.
 >
 > **O piloto do motor sem rosto:** depois do "sim" do Lucas, a Sala converte com `node ferramentas/roteiro-motor.mjs converter
 > atlantico-fundo`. As marcas `<!-- pN · Título -->` viram as "##" invisíveis do motor (`estudio/canal-motor.json` › `narracao.cards:
@@ -35,21 +53,21 @@ Revisão do roteiro: `04ae6bfbeb60`
 
 - **Pergunta (na fala, S11):** So what is really down there, and how did anyone find out?
 - **Pergunta longa (a que o corpo paga, não dita):** o que há no fundo do Atlântico, a umas 83 mi de Porto Rico, e como alguém
-  soube: quão fundo é de verdade, quem chegou lá, por que o número de referência durou, e o que havia lá embaixo quando os
-  franceses disseram ter visto peixes.
+  soube: quão fundo é de verdade, quem chegou lá, por que o número de referência durou, e o que havia lá embaixo quando a
+  tripulação de 1964 disse ter visto peixes.
 - **Tese:** o ponto mais fundo do Atlântico, a umas 83 mi de Porto Rico e a uns 27.500 ft, só se conhece porque gente e máquinas
   foram até a fossa, uma visita depois da outra, e cada uma corrigiu o que a anterior deixou: o arame de 1883 (lodo marrom, ~60 mi a
   leste), o eco de 1939 (mais de 28.000 ft e um nome), a tripulação de 1964 (mais de 4 mi, sem chegar ao ponto, e um relato de uns
   200 peixes), a rede de 1970 (uma enguia de profundidade desconhecida), o multifeixe do USGS em 2002–2003 (~27.300 ft, quinze anos
   antes de alguém chegar ao ponto), o robô de 2015 na parede sul, longe a leste, o sonar da Five Deeps e Vescovo sozinho em 19/12/2018 (~27.500 ft,
-  ±16 ft, confirmado a ~7 ft), a conferência de 2019 (a lista ~1.200 ft funda demais até pelo menos 2019; uma crista no ponto da lista;
+  ±16 ft, confirmado a ~7 ft), a conferência de 2019 (a lista mais de 1.000 ft funda demais até pelo menos 2019, ~1.200 ft contra o sonar da expedição; uma crista no ponto da lista;
   o ponto posto em águas da República Dominicana antes de a expedição o pôr em águas dos EUA), a outra candidata (o Meteor, 370 ft mais
   raso; a linha de 60°S; o Factorian), e a volta de 2019 ao sítio de 1964: pepinos-do-mar onde se relataram peixes. O que há lá
   embaixo é um fundo na borda de onde, pela NOAA, os peixes param.
 - **O que a tese não diz** (`plano-final.json` › `tese.o_que_ela_nao_diz`; fundamento, "O que não se diz"): que a ciência mediu
   errado por 80 anos (o USGS tinha ~27.300 ft em 2003: o que ficou errado foi o número da lista, F09, F32, N04); que Vescovo foi o
   primeiro humano no fundo (o Archimède desceu na fossa em 1964; ele é o primeiro a chegar ao ponto mais fundo, F39, N03); que o
-  Archimède pousou no fundo, quanto desceu em número, nem o mês (F36, N28); que os franceses viram pepinos-do-mar ou que isso foi
+  Archimède pousou no fundo, quanto desceu em número, nem o mês (F36, N28); que a tripulação de 1964 viu pepinos-do-mar ou que isso foi
   provado (é a conclusão dos autores, F38, N45); que o número de 1939 foi copiado para a lista (N23) nem que 1883 acertou (N22); que o
   tsunami medieval saiu do ponto mais fundo, que 1918 veio da fossa, ou que um grande terremoto vem aí (N10, N11, N24); que o ponto
   fica em território dos EUA (fica na zona econômica, F14, N32); que a enguia de 1970 é o peixe mais fundo (N18); que a Sandwich do Sul
@@ -71,16 +89,16 @@ Revisão do roteiro: `04ae6bfbeb60`
 | S2 "It's more than five miles down." | p5, 3º parágrafo ("about 27,500 feet down", "Give or take about 16 feet") e 4º ("The sub's own gauges confirmed the sonar's number, within about 7 feet."). |
 | S3 o Everest com o topo de fora | na própria frase, com a animação e a cota; não volta. |
 | S4–S5 a Marianas no Pacífico, a ~9.500 mi | na própria frase; não volta (N41). |
-| S6 "In 1964, a French crew dove into the Puerto Rico Trench and reported a crowd of fish." | p2, 1º parágrafo (o batiscafo, "more than four miles down", a disputa dita, "It never reached the deepest point, though", o relato de uns 200 a ~24.000 ft, publicado no ano seguinte, "Keep those fish in mind."). |
-| S7–S8 "In 2019, a submersible went back to the exact same spot. It saw none of those fish." | p7, a ponte ("the French crew's fish were waiting for a second look"); p8, 1º e 2º parágrafos (o mesmo submersível, pepinos-do-mar na mesma densidade, a conclusão dos autores com o porquê e o limite, o artigo de 2020). |
+| S6 "In 1964, a crew in a French deep-diving craft descended into the Puerto Rico Trench and reported a crowd of fish." | p2, 1º parágrafo (o batiscafo, "more than four miles down", a disputa dita, "It never reached the deepest point, though", o relato de uns 200 a ~24.000 ft, publicado no ano seguinte, "Keep those fish in mind."). |
+| S7–S8 "In 2019, a submersible went back to the exact same spot. It saw none of those fish." | p7, a ponte ("the 1964 crew's fish were waiting for a second look"); p8, 1º e 2º parágrafos (o mesmo submersível, pepinos-do-mar na mesma densidade, a conclusão dos autores com o porquê e o limite, o artigo de 2020). |
 | S9 "The first person to reach the deepest point itself got there only in December 2018." | p5, 4º parágrafo (quarta-feira, 19/12/2018; Vescovo sozinho; ~2 h 30; "the first person to reach the deepest point of the Atlantic"; os medidores confirmam o sonar). |
-| S10 "And a 2019 study found that the official list of undersea features still had the Atlantic about 1,200 feet too deep, even after sonar showed otherwise." | p1, 4º parágrafo (o número de 1939 e os jornais); p3, 1º (o USGS a ~27.300 ft em 2003, quinze anos antes); p5, a ponte ("That number was not the one in the official list."); p6 inteira (28.700 contra 27.500; "since 2003"; "shallower every time"; a crista; o nome fora da lista em outubro de 2026). |
+| S10 "And a 2019 study found that the official list of undersea features still had the Atlantic more than 1,000 feet too deep, even after sonar showed otherwise." | p1, 4º parágrafo (o número de 1939 e os jornais); p3, 1º (o USGS a ~27.300 ft em 2003, quinze anos antes); p5, a ponte ("That number was not the one in the official list."); p6 inteira (28.700 contra 27.500; "since 2003"; "shallower every time"; a crista; o nome fora da lista em outubro de 2026). |
 | S11 "So what is really down there, and how did anyone find out?" | O "what": lodo marrom (p1), uma enguia (p2), uma fossa que afunda entre placas que deslizam (p3), paredes com deslizamentos (p4), uma parede filmada e um fundo a ~27.500 ft (p5), uma crista onde a lista punha o ponto (p6), pepinos-do-mar e a borda da vida (p8). O "how": cada parte é uma visita. A pergunta não volta no fecho. |
 | S12 "the story of the bottom of the Atlantic" | o vídeo inteiro; a última frase volta a "The deepest point in the Atlantic". |
 | p1 "the deepest point the sonar would later find" | p5, 2º e 3º parágrafos (o sonar da Five Deeps e o número). |
 | p1 "newspapers printed the news in a bulletin" | p6, 1º parágrafo ("almost exactly what the newspapers reported in 1939"). |
 | p2 "Keep those fish in mind." | p7, a ponte, e p8. |
-| p3 "Why is the trench so deep?" | p3, 2º e 3º parágrafos (as placas, a gravidade, a laje, os blocos girados) e, desde o P01, o pouso que a ecoa palavra por palavra: "That is why the trench is so deep." (o fundo afunda). |
+| p3 "Why is the trench so deep?" | p3, 2º e 3º parágrafos (as placas, a gravidade, a laje, os blocos girados) e, desde o P01, o pouso que a ecoa palavra por palavra: "That, the agency suggests, is why the trench is so deep." (o fundo afunda, pela leitura do USGS; r2, L52). |
 | p5 "That number was not the one in the official list." | p6, 1º parágrafo. |
 | p6 "The expedition also took its sonar, and its sub, to the other end of the Atlantic." | p7 inteira. |
 
@@ -90,15 +108,15 @@ Tempos estimados a 184 palavras/min, pela contagem do portão (sem a vinheta nem
 
 | Parte | Função | Orçamento do plano | Palavras | Tempo | O que o espectador entende ao fim |
 |---|---|---|---|---|---|
-| gancho | os cinco tempos | 159 | 160 (161 pelo portão) | 0:00–0:52 | A umas 83 mi de Porto Rico, uma ilha dos EUA, fica o ponto mais fundo do Atlântico, a mais de 5 mi; o Everest de pé deixaria 1.500 ft de fora; a Marianas é o Pacífico, a ~9.500 mi. Em 1964 uma tripulação francesa relatou uma multidão de peixes; em 2019 um submersível voltou ao mesmo sítio e não viu nenhum daqueles peixes; a primeira pessoa a chegar ao ponto mais fundo só chegou em dezembro de 2018; um estudo de 2019 achou a lista oficial ainda com o Atlântico ~1.200 ft fundo demais, mesmo depois do sonar. A pergunta. |
-| p1 · A wire and a sound | estabelecer (1875–1939) | 235 | 240 | 0:52–2:10 | Medir o fundo começou de cima: em 27/01/1883 o Blake baixou um arame de mais de 5 mi, uns 60 mi a leste do ponto de hoje, e trouxe lodo marrom (o relatório do Survey); a fossa tinha sido achada em 1875 pelo Challenger, longe a leste, a ~23.000 ft; ela corre centenas de milhas ao longo da costa norte; em 1939 o cruzador Milwaukee deu ao lugar um número (mais de 28.000 ft, recorde do Atlântico) e um nome, que os jornais espalharam num boletim da National Geographic Society. Um som dá número; não mostra o que há lá embaixo. |
-| p2 · A crew and a net | complicar (1964–1970) | 200 | 190 | 2:10–3:12 | Gente desceu na fossa em 1964, num batiscafo francês, a mais de 4 mi (as fontes discordam de quanto), sem chegar ao ponto mais fundo; a ~24.000 ft relatou uma multidão de peixes, uns 200 ao longo de uma milha, descritos como peixes-caracol no relato de 1965. Em 1970 uma rede trouxe uma enguia-cusk de uns 8 in (NOAA e Australian Museum); a rede foi quase tão fundo quanto o ponto mais fundo, mas não se sabe a que profundidade o peixe entrou. Ver um pedaço ou pescar não é mapear o fundo. |
-| p3 · The sonar that already knew | demonstrar (2002–2003; a geologia, atribuída) | 190 | 234 | 3:12–4:29 | Em 2002–2003 o USGS mapeou a fossa com multifeixe (três cruzeiros no Ron Brown) e já tinha o setor mais fundo a ~27.300 ft, quinze anos antes de alguém chegar ao ponto. Por que é tão fundo: no Pacífico, as fossas fundas ficam onde uma placa mergulha sob a outra; aqui, as placas Norte-Americana e do Caribe deslizam uma pela outra (só um pouco de uma afunda), a do Caribe a ~¾ in por ano; pelo USGS, a gravidade mais abaixo do normal da Terra, sinal de uma força ativa puxando a área para baixo; uma laje de calcário inclinada, pela reconstrução do USGS, de +4.000 ft a −13.000 ft, que para o USGS registra grandes deslocamentos verticais desse trecho da fossa e da própria ilha; blocos girados sob a fossa apontam um fundo que afunda, e é por isso que a fossa é tão funda (o pouso do P01). As paredes mostram outra coisa. |
-| p4 · What came ashore | virar, sem alarme (1918; 1381–1391) | 240 | 226 | 4:29–5:42 | O risco tem dono (o USGS: deslizamentos antigos nas paredes, risco de tsunami por deslizamento "appears to be high") e não tem data. 1918 foi na Passagem de Mona, fora da fossa (M 7,1 pela NOAA; 20 ft; mais de 100 mortos). A única prova de um grande terremoto da própria fossa tem uns seis séculos: os blocos de coral de Anegada (ilha britânica), ao longo de ~6 mi da costa norte, datados pelo urânio em 1381–1391, um século antes de Colombo; o terremoto foi na parte leste, longe do ponto mais fundo; os modelos dão M 8 ou mais; eventos assim ficam milhares de anos separados. |
-| p5 · A robot, a sonar and a man alone | demonstrar e virar (2015–2018); a inscrição | 275 | 261 | 5:42–7:08 | A parede sul filmada em 2015 pelo Deep Discoverer (Okeanos Explorer), a quase 20.000 ft, longe a leste do ponto; o mergulho cortado por um problema no robô. Em dezembro de 2018 a Five Deeps (a meta: o ponto mais fundo de cada um dos cinco oceanos) mapeou a fossa com multifeixe moderno (o Pressure Drop), com a velocidade do som medida pela equipe a cada profundidade. O ponto: ~27.500 ft, ±16 ft; a ~83 mi da costa de Aguadilla; mais de três milhões de pessoas na ilha. Quarta, 19/12/2018: Vescovo sozinho no Limiting Factor, o submersível dele, ~2 h 30 de descida, o primeiro a chegar ao ponto mais fundo ("One down!", ouviu o repórter a bordo); os medidores do submersível confirmam o sonar a ~7 ft. Esse número não era o da lista. |
-| p6 · The number on the list | pagar a segunda virada (1939–2026) | 270 | 253 | 7:08–8:30 | Um estudo de 2019 achou na lista oficial o Milwaukee Deep a ~28.700 ft, quase o número dos jornais de 1939; o sonar achou ~1.200 ft mais raso, e o USGS já mostrava fundo mais raso desde 2003. Em 2019 Stewart e Jamieson conferiram os números publicados contra o sonar público: mais raso toda vez em Porto Rico; os números tinham se espalhado sem correção; no ponto da lista, ~24.400 ft, uma crista. O estudo deles pôs o ponto ~36 mi a oeste, em águas da República Dominicana; a expedição, em 2021, em águas dos EUA, a ~100 mi da República Dominicana (a zona econômica: onde os EUA controlam os recursos; as ~230 mi só na tela). Em outubro de 2026 a lista não tem o Milwaukee Deep; os dados foram ao Seabed 2030. |
-| p7 · The other contender | complicar e fechar o 1º título (2019–2026, no extremo sul) | 300 | 307 | 8:30–10:10 | A outra candidata: a Fossa das Sandwich do Sul, onde a placa mergulha ~3 in por ano (3 a 4 vezes Porto Rico); ilhas vulcânicas sem moradores permanentes, reivindicadas pelo Reino Unido e pela Argentina; o lago de lava do Mount Michael em agosto de 2026. Mapeada em 2019 (nove décimos sem mapa antes); o número mais publicado a punha mais funda que o sonar de Porto Rico; o sonar a deixou 370 ft mais rasa (o Meteor Deep), sem mergulho. O nome Meteor é antigo e desde 2021 pertence ao ponto do sonar, ~30 mi de onde fontes mais antigas o punham. A IHO reconheceu o Oceano Austral em 2023, a partir de 60°S, sem significado político e sem todos os países (a Argentina discorda); por essa linha o Meteor é Atlântico e o Factorian, ao sul, é o ponto mais fundo do Oceano Austral, batizado pelo Limiting Factor (o vizinho, Limiting Deep). Os peixes esperavam uma segunda olhada. |
-| p8 · The second look | pagar (2019; a NOAA de hoje); o comentário | 160 | 167 | 10:10–11:05 | Em 2019 o mesmo submersível voltou ao sítio dos peixes: nenhum peixe-caracol, pepinos-do-mar na mesma densidade, parecidos por fora. Num artigo de 2020 sobre essa volta, cinco autores concluíram que os "peixes" de 1964 eram pepinos-do-mar: uma conclusão pela contagem e pela aparência, e os animais de 1964 não se reveem; um dos cinco é Vescovo. Pela NOAA nenhum peixe vive muito abaixo de ~27.500 ft; a rede de 1970 chegou quase lá; o ponto mais fundo do Atlântico, a ~83 mi de Porto Rico, fica bem nessa borda. |
+| gancho | os cinco tempos | 159 | 165 (166 pelo portão) | 0:00–0:54 | A umas 83 mi de Porto Rico, uma ilha dos EUA, fica o ponto mais fundo do Atlântico, a mais de 5 mi; o Everest de pé deixaria 1.500 ft de fora; a Marianas é o Pacífico, a ~9.500 mi. Em 1964 uma tripulação num batiscafo francês relatou uma multidão de peixes; em 2019 um submersível voltou ao mesmo sítio e não viu nenhum daqueles peixes; a primeira pessoa a chegar ao ponto mais fundo só chegou em dezembro de 2018; um estudo de 2019 achou a lista oficial ainda com o Atlântico mais de 1.000 ft fundo demais, mesmo depois do sonar (r2, L43). A pergunta. |
+| p1 · A wire and a sound | estabelecer (anos 1870–1939) | 235 | 229 | 0:54–2:08 | Medir o fundo começou de cima: em 27/01/1883 o Blake baixou um arame de mais de 5 mi, uns 60 mi a leste do ponto de hoje, e trouxe lodo marrom (o relatório do Survey); a fossa tinha sido achada menos de uma década antes pelo Challenger (o ano em disputa: F22), longe a leste, a ~23.000 ft; ela corre centenas de milhas ao longo da costa norte; em 1939 o cruzador Milwaukee deu ao lugar um número (mais de 28.000 ft, recorde do Atlântico) e um nome, que os jornais espalharam num boletim da National Geographic Society. Um som dá número; não mostra o que há lá embaixo. |
+| p2 · A crew and a net | complicar (1964–1970) | 200 | 189 | 2:08–3:10 | Gente desceu na fossa em 1964, num batiscafo francês, a mais de 4 mi (as fontes discordam de quanto), sem chegar ao ponto mais fundo; a ~24.000 ft relatou uma multidão de peixes, uns 200 ao longo de uma milha, descritos como peixes-caracol no relato de 1965. Em 1970 uma rede trouxe uma enguia-cusk de uns 8 in (NOAA e Australian Museum); a rede foi quase tão fundo quanto o ponto mais fundo, mas não se sabe a que profundidade o peixe entrou. Ver um pedaço ou pescar não é mapear o fundo. |
+| p3 · The sonar that already knew | demonstrar (2002–2003; a geologia, atribuída) | 190 | 237 | 3:10–4:27 | Em 2002–2003 o USGS mapeou a fossa com multifeixe (três cruzeiros no Ron Brown) e já tinha o setor mais fundo a ~27.300 ft, quinze anos antes de alguém chegar ao ponto. Por que é tão fundo: no Pacífico, as fossas fundas ficam onde uma placa mergulha sob a outra; aqui, as placas Norte-Americana e do Caribe deslizam uma pela outra (só um pouco de uma afunda), a do Caribe a ~¾ in por ano; pelo USGS, a gravidade mais abaixo do normal da Terra, sinal de uma força ativa puxando a área para baixo; uma laje de calcário inclinada, pela reconstrução do USGS, de +4.000 ft a −13.000 ft, que para o USGS reflete grandes deslocamentos verticais desse trecho da fossa e da própria ilha; blocos girados sob a fossa apontam um fundo que afunda, e é por isso, sugere o USGS, que a fossa é tão funda (o pouso do P01, atribuído na r2, L52). As paredes mostram outra coisa. |
+| p4 · What came ashore | virar, sem alarme (1918; 1381–1391) | 240 | 215 | 4:27–5:38 | O risco tem dono (o USGS: deslizamentos antigos nas paredes, risco de tsunami por deslizamento "appears to be high") e não tem data. 1918 foi na Passagem de Mona, fora da fossa (M 7,1 pela NOAA; 20 ft; mais de 100 mortos). A única prova de um grande terremoto da própria fossa tem uns seis séculos: os blocos de coral de Anegada (ilha britânica), ao longo de ~6 mi da costa norte, datados pelo urânio em 1381–1391, um século antes de Colombo; o terremoto foi na parte leste, longe do ponto mais fundo; os modelos dão M 8 ou mais; eventos assim ficam milhares de anos separados. |
+| p5 · A robot, a sonar and a man alone | demonstrar e virar (2015–2018); a inscrição | 275 | 261 | 5:38–7:03 | A parede sul filmada em 2015 pelo Deep Discoverer (Okeanos Explorer), a quase 20.000 ft, longe a leste do ponto; o mergulho cortado por um problema no robô. Em dezembro de 2018 a Five Deeps (a meta: o ponto mais fundo de cada um dos cinco oceanos) mapeou a fossa com multifeixe moderno (o Pressure Drop), com a velocidade do som medida pela equipe a cada profundidade. O ponto: ~27.500 ft, ±16 ft; a ~83 mi da costa de Aguadilla; mais de três milhões de pessoas na ilha. Quarta, 19/12/2018: Vescovo sozinho no Limiting Factor, o submersível dele, ~2 h 30 de descida, o primeiro a chegar ao ponto mais fundo ("One down!", ouviu o repórter a bordo); os medidores do submersível confirmam o sonar a ~7 ft. Esse número não era o da lista. |
+| p6 · The number on the list | pagar a segunda virada (1939–2026) | 270 | 252 | 7:03–8:25 | Em 2019, Stewart e Jamieson acharam na lista oficial o Milwaukee Deep a ~28.700 ft, quase o número dos jornais de 1939; o sonar achou ~1.200 ft mais raso, e o USGS já mostrava fundo mais raso desde 2003. Eles conferiram os números publicados contra o sonar público: mais raso toda vez em Porto Rico; os números tinham se espalhado sem correção; no ponto da lista, ~24.400 ft, uma crista. O estudo deles pôs o ponto ~36 mi a oeste, em águas da República Dominicana; a expedição, em 2021, em águas dos EUA, a ~100 mi da República Dominicana (a zona econômica: onde os EUA controlam os recursos; as ~230 mi só na tela). Em outubro de 2026 a lista não tem o Milwaukee Deep; os dados foram ao Seabed 2030. |
+| p7 · The other contender | complicar e fechar o 1º título (2019–2026, no extremo sul) | 300 | 311 | 8:25–10:06 | A outra candidata: a Fossa das Sandwich do Sul, onde a placa mergulha ~3 in por ano (3 a 4 vezes Porto Rico); ilhas vulcânicas sem moradores permanentes, reivindicadas pelo Reino Unido e pela Argentina; o lago de lava do Mount Michael em agosto de 2026. Mapeada em 2019 (nove décimos sem mapa antes); o número mais publicado a punha mais funda que o sonar de Porto Rico; o sonar a deixou 370 ft mais rasa (o Meteor Deep), sem mergulho. O nome Meteor é antigo e desde 2021 marca o ponto do sonar, ~30 mi de onde fontes mais antigas o punham. A IHO reconheceu o Oceano Austral em 2023, a partir de 60°S; por essa linha o Meteor é Atlântico (a linha não tem significado político, e nem todos os países a usam: a Argentina discorda), e o Factorian, ao sul, é o ponto mais fundo do Oceano Austral, batizado pelo Limiting Factor (o vizinho, Limiting Deep). Os peixes esperavam uma segunda olhada. |
+| p8 · The second look | pagar (2019; a NOAA de hoje); o comentário | 160 | 167 | 10:06–11:01 | Em 2019 o mesmo submersível voltou ao sítio dos peixes: nenhum peixe-caracol, pepinos-do-mar na mesma densidade, parecidos por fora. Num artigo de 2020 sobre essa volta, cinco autores concluíram que os "peixes" de 1964 eram pepinos-do-mar: uma conclusão pela contagem e pela aparência, e os animais de 1964 não se reveem; um dos cinco é Vescovo. Pela NOAA nenhum peixe vive muito abaixo de ~27.500 ft; a rede de 1970 chegou quase lá; o ponto mais fundo do Atlântico, a ~83 mi de Porto Rico, fica bem nessa borda. |
 
 O plano orçava 2.029 (gancho 159 + partes 1.870) e o esqueleto medido tinha 2.011; o texto fechou em **2.089**. As partes ficam dentro
 da folga de ±30 do plano: p6 (+26) com a definição da zona econômica (F14, fechado pela Sala em 26/10), p7 (+24) mesmo sem o b4 (o
@@ -113,25 +131,40 @@ piso de 1.950. A L39 juntou o 2º e o 3º parágrafos de p7 (o Pressure Deep sai
 palavras: o maior é o de p7, 2º parágrafo (107, o número mais publicado da Sandwich do Sul e o nome Meteor), o menor continua o da
 borda da vida (p8, 3º, 44). A medida sai de `pautas/atlantico-fundo/_trabalho/scripts/medida-partes-r1.py`, com o `contar` do portão.
 
-Depois do pedido P01 ao escritor (`04ae6bfbeb60`; as colunas "Palavras" e "Tempo" acima são desta revisão): **2.038** palavras
+Depois do pedido P01 ao escritor (`04ae6bfbeb60`): **2.038** palavras
 (+20, todas no 3º parágrafo de p3, que foi de 55 a 75, o teto que o pedido dava; `_trabalho/pedidos-r1-feito.md`), 88 acima do piso e
 112 abaixo do teto. Os pedidos à voz continuam 29, entre 44 e 107; p3 passa de 214 a 234 palavras, e as partes de p4 em diante começam
 uns 7 s mais tarde. A mesma medida, pelo mesmo script.
+
+Depois da lista r2c da Sala (`b064eb75cb8c`): **2.030** palavras (+1: "less than a decade" no lugar de "about a decade").
+
+Depois da lista r2b da Sala (`ffafacc2329b`): **2.029** palavras (+3: "about a decade" +1, "how deep it got" +2, "the trench's
+ deepest part" +2, "indicate" −1, "the expedition's sonar" +1, "the Dominican Republic's waters" −2), nos mesmos 29 pedidos à voz,
+entre 44 e 109; as colunas "Palavras" e "Tempo" acima continuam as da rodada 2.
+
+Depois da rodada 2 (`432dcb4041d4`; as colunas "Palavras" e "Tempo" acima são desta revisão): **2.026** palavras (−12), 76 acima do
+piso e 124 abaixo do teto. Os pedidos à voz continuam 29, agora entre 44 e 109 (a regra é 40 a 110): o maior passa a ser o 2º do
+gancho (104 → 109, L43 e L44); o de p7, 2º, continua com 107; o menor continua o da borda da vida (p8, 3º, 44). Mudaram de tamanho: o
+2º do gancho, p1 1º (73 → 62, L45), p2 1º (85 → 84), p3 3º (75 → 78, L52), p4 3º (72 → 61, L53), p6 1º (49 → 55), 2º (66 → 60) e 3º (83
+→ 82), p7 4º (67 → 71), p8 1º (76 → 75) e 2º (47 → 48). p1 começa ≈ 2 s mais tarde (o gancho cresceu 5 palavras); de p2 em diante,
+as partes começam de 2 a 5 s mais cedo, e a fala termina ≈ 4 s antes. A mesma medida, pelo mesmo script (`medida-partes-r1.py`,
+que reproduz a tabela de antes sobre `_trabalho/roteiro-r2.antes.md`).
 
 ## As chamadas (CTA), pela regra de `marca/cta.md`
 
 - **Inscrição (35 a 60 %, nunca no 1º minuto):** "Soon after, a problem with the robot cut this one short." (p5, 1º parágrafo, a
   última frase, 11 palavras ≈ 3,6 s), seguida da pausa de fim de parágrafo, com o vídeo da NOAA por baixo (registro real, câmera
-  parada). Pela contagem do portão ela começa na palavra ≈ 1.095 de 2.038, ≈ 5:57 de fala, ≈ 52 % de ≈ 11:25 (fala + cauda; depois do P01). Frase
+  parada). Pela contagem do portão ela começa na palavra ≈ 1.080 de 2.026, ≈ 5:52 de fala, ≈ 52 % de ≈ 11:21 (fala + cauda; depois da r2). Frase
   calma, sem número, sem "here", sem citação sendo lida; não é a frase-chave da parte (que é o "first person" do 4º parágrafo). O rótulo
   da parede e o crédito da NOAA ocupam o terço de baixo: o regente põe o rótulo em cima ou usa `?lugar=cima` para a peça, nunca as
   duas placas na mesma faixa (cta §5).
-- **Reserva:** "They think quakes like that come thousands of years apart." (p4, 3º parágrafo, palavra ≈ 1.030, ≈ 5:36, ≈ 49 %), só
-  com a régua do tempo já parada e o canto de baixo livre; nunca sobre Anegada acendendo nem sobre 1918.
+- **Reserva:** "They think quakes like that come thousands of years apart." (p4, 3º parágrafo, desde a r2 a última frase de p4, L53;
+  palavra ≈ 1.026, ≈ 5:34, ≈ 49 %), só com a régua do tempo já parada e o canto de baixo livre; nunca sobre Anegada acendendo nem
+  sobre 1918.
 - **Comentário (perto do fim):** as duas primeiras frases do último parágrafo, "By NOAA's estimate, no fish lives much deeper than
-  about 27,500 feet. The net that brought up the cusk-eel in 1970 had gone down nearly that far." (27 palavras ≈ 8,8 s, de ≈ 10:50 a
-  ≈ 10:59), sobre o medidor com a faixa da NOAA; a pergunta da abertura já foi respondida nos dois parágrafos anteriores. A peça sai
-  antes da última frase (a frase-chave, de ≈ 10:59 a 11:05) e termina ≈ 6 s antes da cauda de 20 s (cta §6). Com fala densa no trecho,
+  about 27,500 feet. The net that brought up the cusk-eel in 1970 had gone down nearly that far." (27 palavras ≈ 8,8 s, de ≈ 10:46 a
+  ≈ 10:55), sobre o medidor com a faixa da NOAA; a pergunta da abertura já foi respondida nos dois parágrafos anteriores. A peça sai
+  antes da última frase (a frase-chave, de ≈ 10:55 a 11:01) e termina ≈ 6 s antes da cauda de 20 s (cta §6). Com fala densa no trecho,
   `?lugar=cima`. A pergunta é do `redator-de-tela` (o plano propõe "What would you want to see five miles down?" e, como alternativas,
   "Would you dive five miles down, alone?" e "Would you have gone back to check on the fish?"), rodada no `_perguntas.mjs`; a mesma
   vai à descrição e ao comentário fixado. A chamada é só de tela: a voz não a lê. O motor sem rosto monta as chamadas a seu modo: a
@@ -151,14 +184,14 @@ uma fonte (R02; o portão alerta [duas-medidas]). Na fala, só milhas e pés (N4
    R30, N26, N35. Tela: ≈ 83 MI · AGUADILLA.
 2. "more than five miles down" / "about 27,500 feet down" (o sonar): gancho S2; p5, 3º parágrafo; p8, pela borda da NOAA ("much deeper
    than about 27,500 feet"). F03, F70 (S01, S31); R02, R32. Tela: 8,378 ± 5 M (27,487 FT) · BONGIOVANNI ET AL. 2021.
-3. "about 1,200 feet too deep" / "about 28,700 feet" (a lista): gancho S10; p6, 1º parágrafo. F09, F29 (S02 Tabela 1); R03, R06, N23.
+3. "more than 1,000 feet too deep" (gancho S10; desde a r2, L43: vale pelo estudo de 2019, 1.089 ft, e pelo sonar da expedição, 1.188 ft) / "about 1,200 feet shallower" (p6, só contra o sonar da expedição) / "about 28,700 feet" (a lista): gancho S10; p6, 1º parágrafo. F09, F29 (S02 Tabela 1); R03, R06, N23.
    Tela: 8,740 M (28,675 FT) · GEBCO GAZETTEER · UNTIL AT LEAST 2019.
 4. "a crowd of fish", "some 200 of them", "about 200 fish" (o relato de 1965): gancho S6; p2, 1º parágrafo; p8, 1º parágrafo. F37, F38
    (S06); R14. Tela: ~200 · 1964 (REPORTED) → NO SNAILFISH SEEN · 2019.
 5. "about 370 feet shallower" (o Meteor): p7, 2º parágrafo. F74 (S01 Tabela 1); N14. Tela: 113 M (371 FT) SHALLOWER.
 
 **Narradas uma vez:** "its top 1,500 feet" (o Everest, S3; F06); "about 9,500 miles" (a Marianas, S5; F08); "more than five miles"
-(o arame) e "about 60 miles east" (p1; F23); "eight years earlier" e "about 23,000 feet" (1875; F22); "hundreds of miles" (F20, em
+(o arame) e "about 60 miles east" (p1; F23); "less than a decade earlier" e "about 23,000 feet" (F22; o ano em disputa, N52); "hundreds of miles" (F20, em
 disputa: sem número); "more than 28,000 feet, a record for the Atlantic at the time" (1939; F26); "more than four miles down" (o
 Archimède; F36); "About 24,000 feet", "some 200", "roughly a mile" (o relato; F37; "about a mile" virou "roughly a mile" na r1, L06); "about eight inches" (a enguia; F69); "about 27,300
 feet" e "15 years" (o USGS; F32); "about three-quarters of an inch a year" (F42); "more than 4,000 feet" / "about 13,000 feet", em
@@ -171,7 +204,7 @@ year", "three to four times" (F73); "about nine-tenths" (F78); "about 30 miles" 
 "about 20 miles" (o Limiting Deep; F80); "five authors" (F91).
 
 **Só na tela:** 8,378 ± 5 M (27,487 FT) e, numa batida separada, SUB GAUGES · 8,376 ± 5 M (F03, F11, F13; N05); 19.712°N 67.311°W
-(F10); 27,366 FT · 4,561 FATHOMS · 1883 · 60 MI EAST (F23); 23,250 FT · 3,875 FATHOMS · 1875 (F22); MORE THAN 28,000 FT · REPORTED,
+(F10); 27,366 FT · 4,561 FATHOMS · 1883 · 60 MI EAST (F23); 23,250 FT · 3,875 FATHOMS, sem o ano (F22, N52); MORE THAN 28,000 FT · REPORTED,
 1939 (F26); 28,680 FT · NEWSPAPERS, 1939 e 8,740 M · GEBCO GAZETTEER (F29); ~7,450 M (24,442 FT) · A RIDGE · STEWART & JAMIESON 2019
 (F30); 8,408 M · 2019 ESTIMATE (F15); ≈ 36 MI, ≈ 100 MI (F15, F16); 8,300–8,340 M · USGS, 2002–2003 (F32); −380 mGal · USGS (F43);
 +1,300 M / −4,000 M · USGS (F44); ≈ 20 MM/YR (¾ IN) (F42); 1918 · MONA PASSAGE · NOT IN THE TRENCH; M 7.1 · NOAA NCEI; UP TO 20 FT
@@ -208,7 +241,7 @@ importam a quem monta a cena:
    submersível na volta não está em fonte lida (A02).
 3. **O Pressure Drop entra em p5** ("on a ship called the Pressure Drop"). Desde a r1 (L39), o "Pressure Deep" saiu de p7, e o navio fica só aqui; ele entrou cedo para p7 não
    apresentar o navio no fim: o mapa de p5 pode rotular o navio desenhado; a Five Deeps não tem imagem livre (pauta §6).
-4. **Os pedidos à voz têm de 44 a 105 palavras:** as sete pontes do plano fecham o último parágrafo de cada parte (p1 a p7), e a
+4. **Os pedidos à voz têm de 44 a 109 palavras:** as pontes do plano fecham o último parágrafo de cada parte (p1 a p7; a de p4 saiu da voz na r2, L53), e a
    inscrição entra na pausa que segue "Soon after, a problem with the robot cut this one short." (o fim do 1º parágrafo de p5), como o
    Peru fez com a frase da fundação.
 5. **A definição das placas vem numa frase só dela** (p3: "Earth's outer shell is made of giant slabs called plates."), porque a
@@ -251,7 +284,7 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - F07, F08 (15.270 km = 9.488 mi, S01, S03); R01, N41 (a Marianas uma vez só; a diferença de 1,6 mi fica fora). O "But" estrutural,
     na palavra 49.
   - Mapa (globo): o arco entre os dois pontos com "≈ 9,500 MI", e o globo volta ao Atlântico.
-- "In 1964, a French crew dove into the Puerto Rico Trench and reported a crowd of fish."
+- "In 1964, a crew in a French deep-diving craft descended into the Puerto Rico Trench and reported a crowd of fish." (r2, L44: nenhuma fonte lida diz quem estava a bordo do Archimède nem quem escreveu o relato de 1965: o francês é o batiscafo, F36, e a tripulação vai sem nacionalidade, F37, R14, A19, C28, N51; sai também o "dove", homógrafo da ave, que a escuta do motor não pega; "deep-diving craft" é a glosa de p2, e "bathyscaphe" só se define lá)
   - F36 (em disputa: 7.300 × ~8.300 m; S06, S04, S07), F37 (atribuído: "reported"; S06); R05, R14, N28 (nenhum número na frase: o portão
     alertaria [archimede]). A fossa pelo nome, a 1ª vez.
   - Ilustração sobre o mapa: a fossa acesa (sem alfinete: o sítio não está no dossiê, A02) e um batiscafo em traço de engenheiro
@@ -266,12 +299,12 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - F39 (S04, S05, S01, S53); R15, N03 (sem "bottom"/"floor" na frase: o portão só reprova com eles), N06. O alerta "first" está
     decidido (escrita-notas §5).
   - Ilustração: nasce o MEDIDOR DE PROFUNDIDADE, à direita; um submersível desenhado desce sozinho até o anel, "DEC. 2018".
-- "And a 2019 study found that the official list of undersea features still had the Atlantic about 1,200 feet too deep, even after sonar showed otherwise." (r1, L02: a forma da R03 corrigida em 26/10, à noite; sem "for decades", que nenhuma fonte data, e sem "that point", porque a entrada da lista ficava ~60 mi a leste do ponto do sonar; C27, N50)
+- "And a 2019 study found that the official list of undersea features still had the Atlantic more than 1,000 feet too deep, even after sonar showed otherwise." (r2, L43: o "about 1,200" é a régua do sonar da expedição, publicado em 2021; pelo número do próprio estudo de 2019, 8.740 − 8.408 m, a lista passava 1.089 ft; "more than 1,000" vale nas duas réguas, e o 1.200 fica só em p6, na frase que compara com o sonar; R03, F09, C28, N51) (r1, L02: a forma da R03 corrigida em 26/10, à noite; sem "for decades", que nenhuma fonte data, e sem "that point", porque a entrada da lista ficava ~60 mi a leste do ponto do sonar; C27, N50)
   - F09 (8.740 − 8.378 = 362 m = 1.188 ft; S02 Tabela 1, §1.2, p. 11 e resumo), F28 (datar; S15), F29 (S02, S09), F32 (o sonar de 2003,
     S28); R03 ("the official list", nunca "the books"; desde a r1, o 8.740 atribuído ao estudo de 2019 e comparado como profundidade máxima: "had the Atlantic"), N04, N23, N50. O "still" é o da R03 (passado, dentro de 2019: o alerta do portão está decidido na lista-r1); p3 diz qual sonar (o USGS) e p6
     paga com "since 2003".
   - Documento → gráfico: a ficha da lista sobre a mesa, "MILWAUKEE DEEP · 8,740 M · GEBCO GAZETTEER (UNTIL AT LEAST 2019)", fonte
-    "STEWART & JAMIESON 2019, TABLE 1"; no medidor, a marca "28,700 FT" abaixo da linha "27,500 FT" e o vão "≈ 1,200 FT" aceso.
+    "STEWART & JAMIESON 2019, TABLE 1"; no medidor, a marca "28,700 FT" abaixo da linha "27,500 FT" e o vão "MORE THAN 1,000 FT" aceso (r2, L43: o "≈ 1,200 FT" contra o sonar da expedição só em p6, onde a voz o diz).
 - "So what is really down there, and how did anyone find out?"
   - A pergunta do ângulo (plano, `pergunta_no_gancho`). Não volta no fecho (o portão conferiu).
   - Imagem real (2ª do lugar, A12, a confirmar na regência): um satélite livre (Landsat ou Sentinel) da costa noroeste, em Aguadilla,
@@ -290,7 +323,7 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
     curva de 8.000 m; o alfinete "1883 · BLAKE" cai em 19°40'50"N, 66°23'40"W (F23). A costa em satélite da MapTiler, com o crédito
     (liberada para o vídeo 5 "como no Peru").
   - Ilustração sobre o mapa: o navio em traço de engenheiro baixa o arame, que desce num corte lateral até tocar o fundo.
-- "Its commander was a Navy officer named Brownson, who had taken charge of the ship a few months earlier."
+- "Its commander was a Navy officer named Brownson." (r2, L45: a oração "who had taken charge of the ship a few months earlier" saiu da voz: o nome fica, como a presença de p1; o mês em que ele assumiu o navio não voltava e alongava o minuto mais frágil do vídeo; a data fica no card)
   - F23 (S11, Apêndice 5, p. 113: Brownson assumiu o Blake em 01/10/1882); F24 (`nao_dizer`), R07, N09: nunca "named after him"; o nome
     "Brownson Deep" não entra no vídeo, nem na tela (N08).
   - Card de pessoa, sem foto: W. H. BROWNSON · LIEUTENANT-COMMANDER, U.S. NAVY · IN COMMAND OF THE BLAKE SINCE OCT. 1882 (a grafia do
@@ -312,15 +345,15 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
     a mesa, com a linha "he sounded in four thousand five hundred and sixty-one fathoms, finding the bottom to be brown ooze"
     grifada junto com a voz; obra do governo dos EUA; a permissão de mostrar a página real se confere (marca/midia.md §7.1, o
     conferente-de-midia); sem ela, a recriação datilografada fiel, com a fonte. Tela: U.S. COAST AND GEODETIC SURVEY, 1883.
-- "At the time, no sounding was known to have brought back a sample and a temperature from that deep."
+- "At the time, no one was known to have brought back a sample and a temperature from that deep." (r2, L46: "sounding" chegava antes da glosa, que vem na frase da Challenger; dito, soava como "som", logo antes do eco de 1939)
   - F23 (S11, l. 3516–3518 da cópia: "No record is known of any sounding from which bottom specimen and temperature have been obtained at a depth equaling this"). O recorde é da amostra e da temperatura juntas (r1, L04); datado por "At the time". A temperatura da 1ª frase do parágrafo ganha aqui a sua função.
-- "The trench itself had been found eight years earlier, by the British research ship HMS Challenger, under Captain Nares, far to the east."
+- "The trench itself had been found less than a decade earlier, by the British research ship HMS Challenger, under Captain Nares, far to the east." (r2c, L74: "about a decade" ficava a 27,5 % dos 7,84 anos das cópias, fora da régua de 10 % do "about"; "less than a decade" vale para 1875 e para 1873; fatos-r2c, A1. r2b, L69: "eight years" contava de 1875; o ano está em disputa, F22, C29)
   - F22 (S07, o resumo da Endeavour 2020: "Discovered by the HMS Challenger Expedition in 1875"; S12: 26/03/1875, sob Nares, a 19°42'N,
-    65°07'W); C11. "Eight years earlier" (1875) sem abrir a frase com data (voz §1). O 2º corte do plano ("under Captain Nares") ficou.
-  - Mapa: o alfinete "1875 · HMS CHALLENGER" em 19°42'N, 65°07'W, longe a leste.
+    65°07'W); C11. "Less than a decade earlier" (r2c, L74; antes, "about a decade earlier", r2b, L69), sem abrir a frase com data (voz §1) e sem o ano: as fontes do disco dão 26/03/1875, mas o IHR de 1936 põe o navio "cruising between St. Thomas, Virgin Islands and the Bermudas", o trecho de março de 1873; "less than a decade" vale para os dois (7,84 e 9,84 anos; F22, C29, N52). O 2º corte do plano ("under Captain Nares") ficou.
+  - Mapa: o alfinete "HMS CHALLENGER" em 19°42'N, 65°07'W, longe a leste, sem o ano (F22 em disputa; N52).
 - "Its sounding there, the depth it measured, came to about 23,000 feet."
-  - F22 (3.875 braças = 23.250 ft; S12); o termo "sounding" definido numa oração (voz §1). Tela: 23,250 FT · 3,875 FATHOMS · 1875.
-  - Ilustração: o marcador "1875 · 23,250 FT" no medidor.
+  - F22 (3.875 braças = 23.250 ft; S12); o termo "sounding" definido numa oração (voz §1); desde a r2 (L46), é a 1ª vez que a voz o diz. Tela: 23,250 FT · 3,875 FATHOMS, sem o ano (F22 em disputa; N52).
+  - Ilustração: o marcador "23,250 FT" no medidor, sem o ano (N52).
 - "The trench runs for hundreds of miles, almost parallel to Puerto Rico's north coast."
   - F20 (em disputa, 810 × 1.750 km: só "hundreds of miles", R23, N36); F02 nota (S01, p. 2: a fossa quase paralela à costa norte).
   - Mapa: a câmera corre a fossa inteira ao longo da costa norte (a região falada demarcada pela curva de 8.000 m, GEBCO 2026).
@@ -357,12 +390,12 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
 - "It went more than four miles down."
   - F36 (em disputa: 7.300 m = 4,54 mi × ~8.300 m = 5,16 mi; "more than four miles" vale para os dois); C07, R05. Tela: MORE THAN 4 MI ·
     1964.
-- "The sources disagree on exactly how deep." (r1, L05: o tópico na frente a voz entoava como pergunta)
+- "The sources disagree on exactly how deep it got." (r2b, L71: o 24.000 da frase seguinte não é a resposta da discordância; r1, L05: o tópico na frente a voz entoava como pergunta)
   - F36 (em disputa), A01 (os textos de 2020 são pagos; a Ingenta e o NYT recusaram, leitura 10).
 - "It never reached the deepest point, though."
   - F36 (S04, o release da Five Deeps: ele não chegou ao ponto mais fundo); C08 (nunca "landed on the bottom"), R05. O alerta "never"
     está decidido.
-- "About 24,000 feet down, the French crew reported a crowd of fish."
+- "About 24,000 feet down, its crew reported a crowd of fish." (r2, L47: a forma do F37 corrigido; o "its" é o Archimède das frases de antes; N51, C28)
   - F37 (atribuído: "reported"; S06: 7.300 m = 23.950 ft); R14. A profundidade do relato, nunca na mesma frase que "Archimède",
     "bathyscaphe" ou "1964" (o portão alertaria [archimede]). Tela: ~24,000 FT · REPORTED 1964, PUBLISHED 1965.
   - Ilustração: no fundo, uma linha de uma milha; o marcador "1964 · CREW · ~24,000 FT (REPORT)" no medidor.
@@ -370,12 +403,12 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - F37 (S06: "200 snailfish (Liparidae) during a one mile transect"). "Of them", não "fish", na frase (o portão). Tela: ~200 · ALONG ~1
     MI.
   - Ilustração: ~200 riscos de "peixe" aparecendo ao longo da linha.
-- "Their account, published the next year, described them as snailfish, a family of fish."
+- "The report, published the next year, described them as snailfish, a family of fish." (r2b, L67: "Their account" dizia que o relato era da tripulação; a fonte diz "the report", sem autor; N51)
   - F37 (relato publicado em 1965; S06), C26; R14 ("described" é o verbo de relato que o portão pede com "snailfish"). O 1º corte do
     plano, mantido.
 - "Keep those fish in mind."
   - A promessa interna do plano (p2 b4), paga na ponte de p7 e em p8.
-- "NOAA, the U.S. ocean and weather agency, records that in 1970 a net brought back a small cusk-eel." (r1, L07: a página da NOAA não nomeia a fossa; o lugar passou à frase do Australian Museum, e some a relativa que a voz lia como oração inteira)
+- "NOAA, the U.S. ocean and weather agency, reports that in 1970 a net brought back a small cusk-eel." (r2, L48: "agency, records" se lia também como "agency records", os registros; a atribuição é a mesma) (r1, L07: a página da NOAA não nomeia a fossa; o lugar passou à frase do Australian Museum, e some a relativa que a voz lia como oração inteira)
   - F69 (atribuído; S31: a rede "descended to 8,370 meters"); NOAA definida na 1ª vez e dita como palavra, NOH-uh (nomes); "cusk-eel"
     definido na frase seguinte.
   - Ilustração: a rede desce pela régua até quase a linha do fundo.
@@ -433,37 +466,37 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - F43 (atribuído; S27: "the most negative free-air gravity anomaly on earth, -380 mGal"); R20, N17 (desde a r1, a palavra "anomaly" não
     está na voz; o termo e o número do USGS só na tela). Tela: −380 mGal · USGS.
   - Ilustração: uma linha do "normal" sobre a fossa e a curva que cai abaixo dela.
-- "The agency says that points to an active force pulling down on the area." (r1, L10)
+- "The agency says this points to an active force pulling down on the area." (r1, L10; r2, L49: dito, "says that" é "diz que", e o ouvido esperava uma oração)
   - F43 (S27, a mesma frase do USGS: "which indicates the presence of an active downward force"). O pouso da pergunta da parte (clareza:2, roteiro:7).
-- "By the agency's reconstruction, a tilted slab of limestone starts more than 4,000 feet above sea level." (r1, L11: as cotas são de uma reconstrução; nunca "found"; C27)
+- "By the agency's reconstruction, a tilted layer of limestone starts more than 4,000 feet above sea level." (r2b, L70: "slab" já era a placa, uma frase antes; r1, L11: as cotas são de uma reconstrução; nunca "found"; C27)
   - F44 (atribuído, como reconstrução: "a tilted carbonate platform between (reconstructed) elevations of +1300 m and -4000 m"; "the agency" = o USGS; S28: +1.300 m = 4.265 ft); N05 (duas medidas em duas frases). "Limestone" traduz "carbonate
     platform" para o ouvido (F44 nota; se a Sala preferir, "a tilted platform of carbonate rock"). Tela: +1,300 M / −4,000 M · USGS.
-  - Ilustração: o corte em traço de engenheiro da ilha ao fundo, a laje inclinada com a cota "+4,000 FT" acendendo.
+  - Ilustração: o corte em traço de engenheiro da ilha ao fundo, a laje inclinada com a ponta alta do lado da ilha e a cota "+4,000 FT" acendendo nela (r2: a voz não diz onde fica a ponta alta, e o ouvinte a frio perdeu a laje, EF-05; a clareza r2 pede que a tela a mostre; a legenda do mapa do USGS, S28, cópia fb-usgs-seafloor-map.txt, l. 31, marca a "northern edge of tilted carbonate platform and southern edge on land"; a fala não ganha o lugar, que não está no dossiê).
 - "It ends about 13,000 feet below the surface."
   - F44 (−4.000 m = 13.123 ft). "Below the surface" (o "below it" do plano ficava ambíguo depois de "sea level").
   - Ilustração: a cota "−13,000 FT" acende.
-- "To the USGS, that tilt records big vertical shifts in this part of the trench and in Puerto Rico itself." (P01, 26/10/2026, à noite: o que a laje mostra, numa oração atribuída; `_trabalho/pedidos-r1-feito.md`)
+- "To the USGS, that tilt reflects big vertical shifts in this part of the trench and in Puerto Rico itself." (r2, L50: "records" se lia também como o substantivo, "that tilt records", e a escuta do motor não pega homógrafo) (P01, 26/10/2026, à noite: o que a laje mostra, numa oração atribuída; `_trabalho/pedidos-r1-feito.md`)
   - F44 (S28, cópia `midia/atlantico-fundo/fontes/fb-usgs-seafloor-map.txt`, l. 57: o USGS lê a profundidade, a gravidade baixa e a
     plataforma inclinada como "manifestations of large vertical movements of a segment of the Puerto Rico Trench, its forearc, and the
-    island of Puerto Rico"), sem os 3,3 milhões de anos (o plano os cortou) e sem número novo. "Records" traduz "manifestations of" para
+    island of Puerto Rico"), sem os 3,3 milhões de anos (o plano os cortou) e sem número novo. "Reflects" (desde a r2, L50; antes "records") traduz "manifestations of" para
     o ouvido; "this part of the trench" é "a segment of the Puerto Rico Trench" (o setor oeste, F44); o antearco ("its forearc") fica
     fora da fala; "Puerto Rico itself" é "the island of Puerto Rico". A atribuição vai como adjunto ("To the USGS"), não como sujeito
     (clareza:1 pedia menos USGS como sujeito; no 11º parágrafo, agora, nenhum). Tela: nada além do corte da laje.
   - Ilustração sobre o mapa: a laje inclinada do corte anterior com a seta vertical dupla, e a ilha de Porto Rico acendendo junto (a
     ilha também se moveu, pela fonte).
-- "Rotated blocks of rock under the trench point to a sinking floor." (P01: a frase de antes, "The USGS also reads rotated blocks of rock deep in the trench as signs that the trench has been sinking.", redita sem o USGS como sujeito e sem "the trench … the trench" na mesma frase)
+- "Under the trench's deepest part, rotated blocks of rock indicate a sinking floor." (r2b, L72: o USGS os põe só sob o setor mais fundo, a oeste, e diz "indicate trench subsidence" (S28, l. 25; F44); r2, L51: "under the trench point" se ouvia como nome de lugar, num roteiro em que "point" é substantivo umas vinte vezes; as mesmas palavras, em outra ordem) (P01: a frase de antes, "The USGS also reads rotated blocks of rock deep in the trench as signs that the trench has been sinking.", redita sem o USGS como sujeito e sem "the trench … the trench" na mesma frase)
   - F44 (atribuído pelo bloco; "rotated", a palavra do USGS, S28, l. 25: "underlain by rotated blocks of the NOAM plate that indicate
     trench subsidence"). "Under the trench" é o "underlain"; "point to" é o "indicate", o mesmo verbo da gravidade no parágrafo anterior
-    ("that points to an active force"). O 2º corte do plano, mantido.
+    ("this points to an active force"). O 2º corte do plano, mantido.
   - Ilustração: os blocos girados sob o fundo com a seta do afundamento.
-- "That is why the trench is so deep." (P01: o pouso da pergunta da parte, que ele ecoa palavra por palavra, de propósito)
+- "That, the agency suggests, is why the trench is so deep." (P01: o pouso da pergunta da parte, que ele ecoa palavra por palavra, de propósito; r2, L52: o USGS sugere, não afirma, "we suggest that these features are manifestations of large vertical movements", S28, l. 57; o verbo da fonte, na voz; N51, o portão [porque-sem-dono])
   - F44, F43 (S28, l. 25 e l. 27: os blocos girados "indicate trench subsidence", e os mapas servem para "investigate the causes of the
     subsidence and deformation of this unusually deep part of the Atlantic Ocean"; S27, l. 13: a gravidade "indicates the presence of
     an active downward force"). A frase que o ouvinte repete: a fossa é funda porque o fundo afunda, puxado para baixo. A causa da força
     o USGS diz que ainda estuda (l. 27): a fala não a afirma nem a nega, e não diz que o porquê está resolvido. Dentro do bloco
     atribuído ("By the agency's reconstruction" … "To the USGS"); nunca a fossa como subducção típica (N39), nada de "anomaly" nem
-    "megaquake" (N17). Se a Sala quiser a atribuição também nesta frase, "That, to the USGS, is why the trench is so deep." custa +3
-    palavras e passa do teto de 75 do pedido: é dela decidir.
+    "megaquake" (N17). Desde a r2 (L52), a atribuição está na própria frase, com o verbo
+    da fonte ("suggests"): o teto de 75 era do pedido, não do texto, e o pedido à voz vai a 78.
   - Ilustração: a seta do afundamento vira o medidor de profundidade da parte, caindo até "≈ 27,300 FT · USGS · 2002–2003".
 - "On the trench's walls, the agency's maps showed something else." (r1, L12: o "its" colado a "the trench's walls" se ouvia como da fossa; a ponte do plano fica)
   - Ponte do plano (F45 vem da mesma página do USGS, S28).
@@ -534,7 +567,7 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - F56 (atribuído; S17: "probably spans thousands of years", citando ten Brink & Geist 2025 e Wei et al. 2024; S67); R11. É a frase que
     segura o tom, por último no bloco. A reserva da inscrição.
   - Ilustração: a régua se alonga para milhares de anos, com o evento medieval como um ponto só e o resto vazio: a imagem da calma.
-- "To see the trench's walls, you need a camera down there."
+- ~~"To see the trench's walls, you need a camera down there."~~ (saiu da voz na r2, lista-r2 L53, por decisão da Sala: a quarta ponte-promessa seguida, a segunda sobre "the trench's walls", e a única segunda pessoa genérica do texto; o ouvinte a frio ouviu nela uma promessa que p5 não paga, EF-06; p5 abre com a ponte de entrada dela, que não depende de p4, e p4 fecha em "They think quakes like that come thousands of years apart."; sem ponte nova)
   - Ponte consertada pelo juiz ("the trench's walls", referente dito de novo).
 
 ### p5 · A robot, a sonar and a man alone
@@ -619,7 +652,7 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
 
 ### p6 · The number on the list
 
-- "A 2019 study found that the official list of undersea features had the Milwaukee Deep at about 28,700 feet." (r1, L27: a fonte única se contradiz, Tabela 1 e §2.1.2 × §5, e o 8.740 se atribui ao estudo; C27; a ponte de entrada de p6, reescrita na mesma troca, paga o gancho com as palavras dele)
+- "In 2019, two scientists, Heather Stewart and Alan Jamieson, found that the official list of undersea features had the Milwaukee Deep at about 28,700 feet." (r2, L54: o estudo abria p6 sem dono, e os donos chegavam no parágrafo seguinte como se fossem outro trabalho, clareza A3 e a escuta fria EF-08; a atribuição é a mesma, ao estudo pelos seus dois autores, C27, e a ponte continua a pagar o gancho com as palavras dele, "found that the official list of undersea features") (r1, L27: a fonte única se contradiz, Tabela 1 e §2.1.2 × §5, e o 8.740 se atribui ao estudo; C27; a ponte de entrada de p6, reescrita na mesma troca, paga o gancho com as palavras dele)
   - F28 (datar; S15, S02), F29 (8.740 m = 28.675 ft, a 19°35'N, 66°30'W; S02 Tabela 1), F09; R03 ("the official list"), N08 (como nome da
     lista antiga). O alerta "Milwaukee Deep" está decidido. Tela: 8,740 M (28,675 FT) · GEBCO GAZETTEER · UNTIL AT LEAST 2019.
   - Documento: Stewart & Jamieson 2019, Tabela 1 (cópia local 01-04-stewart-jamieson-2019-earscirev.pdf; CC BY 4.0, crédito aos
@@ -629,7 +662,7 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
 - "That's almost exactly what the newspapers reported in 1939."
   - F29 (4.780 braças = 28.680 ft; S09); R06 (palavra por palavra), N23 (nunca que um saiu do outro; a voz não diz de onde a lista tirou
     o número). Tela: 28,680 FT · NEWSPAPERS, 1939. O boletim de 1939 (The Sun) de novo, se a permissão sair em p1.
-- "The floor the sonar found is about 1,200 feet shallower."
+- "The floor the expedition's sonar found is about 1,200 feet shallower." (r2b, L68: o 1.200 é contra o sonar da expedição, não do estudo de 2019, que abre o parágrafo; C28)
   - F09 (362 m = 1.188 ft), F03; R03.
   - Ilustração: no medidor, a marca "28,700 FT · THE LIST" fica ABAIXO da linha do fundo do sonar ("27,500 FT"), e o vão "≈ 1,200 FT" se
     preenche de rocha: o número da lista cairia dentro do chão.
@@ -638,8 +671,8 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
 - ~~"As late as 2011, a press release for a planned deep-diving sub listed more than 28,000 feet."~~ (saiu da voz na r1, lista-r1 L28: a 3ª volta da família dos 28.000 ft; o número que circulou fica dito, com dono, em "spread, uncorrected")
   - F33 (S02 §1.2: a Virgin Oceanic, 8.605 m = 28.232 ft); N07. É o exemplo do número que circulou, não o alvo: a empresa não se nomeia.
     O 2º corte do plano, mantido.
-- "In 2019, two scientists, Heather Stewart and Alan Jamieson, checked the published depths against sonar data that was already public."
-  - F34 (atribuído; S02); nomes. Cards sem foto: HEATHER A. STEWART · ALAN J. JAMIESON · EARTH-SCIENCE REVIEWS, 2019.
+- "Stewart and Jamieson checked the published depths against sonar data that was already public." (r2, L55: os dois já foram apresentados na ponte de entrada, L54; apresentá-los de novo, com o ano, fazia o ouvinte achar que era outro trabalho)
+  - F34 (atribuído; S02); nomes. Os cards sem foto (HEATHER A. STEWART · ALAN J. JAMIESON · EARTH-SCIENCE REVIEWS, 2019) sobem para a ponte de entrada de p6, onde os nomes entram desde a r2 (L54).
 - "Off Puerto Rico, the real floor came out shallower every time." (r1, L29: na conferência inteira, a Sandwich do Sul e o Molloy saíram mais fundos; o "consistently shallower" é dos três pontos de Porto Rico)
   - F34 (S02, p. 11: "consistently shallower than those published"; "every time" vale para os três pontos conferidos em Porto Rico).
 - "They wrote that numbers like these had spread, uncorrected, through online sources and the scientific literature."
@@ -651,7 +684,7 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - Mapa: a câmera desce no relevo sombreado da GEBCO (2D; o relevo 3D da GEBCO nunca foi provado no canal) e mostra a crista.
 - "Their study came out before the expedition's own results, and it put the deepest point somewhere else." (r1, L30: a data vem antes da surpresa, e o ouvinte não acha que Vescovo desceu no lugar errado)
   - F15 (atribuído; S02, conclusões), F35 nota (R31: a ordem das datas).
-- "Working from public data from eight older surveys, it placed that point about 36 miles west of the sonar's spot, in waters claimed by the Dominican Republic."
+- "Using public data from eight older surveys, it placed that point about 36 miles west of the sonar's spot, in the Dominican Republic's waters." (r2b, L73: o mesmo substantivo das "U.S. waters", voz §2; a zona dominicana não está em disputa na Marine Regions; r2, L56: "from … from" a quatro palavras)
   - F15 (8 levantamentos de 1996–2015; 19,613°N, 67,847°W, 8.408 m; 57,3 km = 35,6 mi; a zona econômica da República Dominicana pela
     Marine Regions, S16); R31; N46 (o "long, flat strip" fica fora). O 8.408 só na tela (N05). "West of the sonar's spot" (o conserto do
     juiz). Tela: 8,408 M · 2019 ESTIMATE; ≈ 36 MI.
@@ -710,10 +743,10 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
 - "Before that, about nine-tenths of it had never been mapped."
   - F78 (S01 §3.2: ~91 % sem mapa antes; quase tudo vinha de altimetria por satélite). O alerta "never" está decidido: é o "nove décimos
     sem mapa" de Bongiovanni, não um universal.
-- "The same 2019 study noted the depth most often published for its deepest point." / "It was deeper than the sonar's number for Puerto Rico." (r1, L36: o estudo de 2019 só dá o número mais publicado do Meteor; a comparação com o sonar de Porto Rico, que só saiu em 2021, é a conta do F77, fora da atribuição)
+- "Stewart and Jamieson's study noted the depth most often published for its deepest point." / "It was deeper than the sonar's number for Puerto Rico." (r1, L36: o estudo de 2019 só dá o número mais publicado do Meteor; a comparação com o sonar de Porto Rico, que só saiu em 2021, é a conta do F77, fora da atribuição)
   - F77 (atribuído; S02, p. 11: "The most commonly reported depth for the Meteor Deep is 8428 m" = 27.651 ft, contra os 27.487 ft do sonar
-    de Porto Rico). O conserto do juiz ao "como dizer" ambíguo ("would have beaten Puerto Rico's"). "The same 2019 study": Stewart &
-    Jamieson, nomeados em p6. Tela: 8,428 M · MOST PUBLISHED · STEWART & JAMIESON 2019.
+    de Porto Rico). O conserto do juiz ao "como dizer" ambíguo ("would have beaten Puerto Rico's"). "Stewart and Jamieson's study" (r2, L57: logo depois de "The expedition mapped this trench with its sonar in 2019", "the same 2019 study" se ouvia como o levantamento da expedição): os dois,
+    nomeados em p6. Tela: 8,428 M · MOST PUBLISHED · STEWART & JAMIESON 2019.
   - Ilustração: o medidor ganha uma segunda coluna, a do sul: o número mais publicado do Meteor abaixo da linha do sonar de Porto Rico.
 - "The sonar settled that."
   - F74 (S01). Frase curta (4 palavras; taxa 0,97 por mil, teto 3,92).
@@ -728,7 +761,7 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - Ilustração: o submersível desenhado passa direto pelo anel do Meteor.
 - "The name Meteor Deep is old, taken from a German research ship." (r1, L38: sem o "named", o "after" se ouvia como de tempo)
   - F76 (S14, S15, S01, p. 2: o navio de pesquisa alemão Meteor; o Meteor Deep descoberto em 1926); nomes (MEE-tee-or).
-- "Since 2021, it has officially belonged to the spot the sonar found, about 30 miles from where older sources put it." (r1, L37: Allaby 2009 é livro; Zhivago 2002 é resumo de congresso)
+- "Since 2021, that name has officially marked the spot the sonar found, about 30 miles from where older sources put it." (r2, L58: o "it" logo depois de "a German research ship" pedia rebobinar, e nome não "pertence" a um ponto; o mesmo F76) (r1, L37: Allaby 2009 é livro; Zhivago 2002 é resumo de congresso)
   - F76 (SCUFN34/VTC02/37, 07/06/2021; a posição antiga 55,67°S, 25,92°W, Zhivago 2002 e Allaby 2009, a 51 km = 31,7 mi; S14, S15, S02);
     C02. "Older sources" desde a r1 (um livro e um resumo de congresso); para Porto Rico a fala nunca diz "the books" (R03).
   - Mapa: o ponto antigo do Meteor acendendo e apagando em "about 30 miles".
@@ -743,15 +776,15 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
     linha.
 - "It begins at 60 degrees south."
   - F81 (o limite norte no paralelo de 60°S).
+- "By that line, the Meteor Deep, well to the north, is in the Atlantic." (r2, L59: o porquê vem logo depois da linha, antes das ressalvas; as ressalvas da Sala ficam inteiras, na forma decidida)
+  - F83 (S20, S01: 55,23°S, ~530 km = 330 mi ao norte de 60°S), F75; N48 (nunca "the Meteor is in the Southern Ocean"); "by that line",
+    nunca "still the Atlantic" (o portão alerta "still"). Tela: ~330 MI NORTH OF 60°S.
 - "The organization says the line carries no political meaning, and not every country uses it."
   - F82 (atribuído; S20, apêndice 1: sem significado político nem oceanográfico; cada serviço hidrográfico pode manter os seus; S21:
     "without prejudice"). "The line" / "that line", nunca "this line" (o portão alerta).
 - "Argentina, for one, disagrees."
   - F82 (S20, S21: a Argentina discorda; a Austrália usa os próprios limites; Chile, Equador e EUA concordam). O enxerto do "lugar". Frase
     curta (4 palavras).
-- "By that line, the Meteor Deep, well to the north, is in the Atlantic."
-  - F83 (S20, S01: 55,23°S, ~530 km = 330 mi ao norte de 60°S), F75; N48 (nunca "the Meteor is in the Southern Ocean"); "by that line",
-    nunca "still the Atlantic" (o portão alerta "still"). Tela: ~330 MI NORTH OF 60°S.
 - "The trench's southern tip crosses the line."
   - F73 (de ~54°40'S a 60°40'S: fica no Atlântico e no Oceano Austral), F83.
   - Mapa: a fossa cruzando a linha de 60°S.
@@ -760,7 +793,7 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
     Atlantic"); C16, C23. "Just south of the line", nunca "of it" (ambíguo). A profundidade só na tela: 7,432 ± 13 M · FACTORIAN DEEP
     (os ~24.400 ft brigariam com os da crista de p6).
   - Mapa: o anel do Factorian em 60,479°S, 25,542°W.
-- "The Limiting Factor reached its bottom in 2019, and that's where the odd name comes from."
+- "The expedition's sub, the Limiting Factor, reached the bottom there in 2019, and that's where the odd name comes from." (r2, L60: o nome do submersível foi dito uma vez, a 60 %, e sem ele o "odd name" não paga; "its bottom" se prendia ao sujeito; "there" é o Factorian da frase de antes; "the expedition's sub" é o "its sub" da ponte de p6, sem dizer quem pilotava, que o dossiê não tem)
   - F79 (o Limiting Factor chegou ao fundo dele em 2019), F80 (S15, a ficha do gazetteer: "Named in relation to the full ocean depth
     submersible 'Limiting Factor'"; S13: aprovado na SCUFN-33, 9–10/11/2020, C22); A18 (o dia do mergulho não está na página: só "in
     2019"). Quem pilotava no Factorian não está no dossiê: a voz não diz Vescovo.
@@ -770,13 +803,13 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - F80 (S15: o Limiting Deep, 7.286 m, a ~33 km = 20,5 mi, o 2º mais fundo do Oceano Austral; propostos em 2019 por Jamieson e
     Bongiovanni). O 2º corte do plano, mantido. Tela: ≈ 20 MI · LIMITING DEEP.
   - Mapa: o anel do Limiting Deep.
-- "Off Puerto Rico, the French crew's fish were waiting for a second look."
+- "Off Puerto Rico, the 1964 crew's fish were waiting for a second look." (r2, L61: continua a ponte do plano; só sai a nacionalidade, que nenhuma fonte dá, N51)
   - Ponte do plano (paga o "Keep those fish in mind" de p2); F38. "Off Puerto Rico" marca a volta ao norte (cadeia referencial).
   - Mapa: o globo volta ao anel de Porto Rico.
 
 ### p8 · The second look
 
-- "In 2019, the same sub went back to the spot where the French crew had reported their fish."
+- "In 2019, the same sub went back to the spot where that crew had reported their fish." (r2, L62: a ponte de entrada de p8, sem a nacionalidade; "that crew" é a "1964 crew" da ponte de p7, logo antes; N51)
   - F38 (atribuído; S06: "the Limiting Factor voltou exatamente ao mesmo sítio"), F37 ("reported"); R14; A02 (sem profundidade nem dia
     da volta).
   - Ilustração: a cena de p2, espelhada, em traço de engenheiro: a mesma linha de uma milha no fundo e o submersível chegando. Nenhuma
@@ -784,21 +817,21 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
 - "It was the craft that had carried Vescovo to the deepest point the year before."
   - F39 (S04, S05: o Limiting Factor, dezembro de 2018), F38 (o mesmo submersível em 2019; S06). "Vescovo" sem o prenome: a 1ª menção
     inteira foi em p5 (a regra dos nomes).
-- "Where the French had counted about 200 fish, it saw no snailfish." (r1, L40: a escala do L01; a fonte diz "No snailfish were observed")
+- "Where the 1964 crew had counted about 200 fish, it saw no snailfish." (r2, L63: sem a nacionalidade, N51; o ano ancora de novo a tripulação depois de "the year before") (r1, L40: a escala do L01; a fonte diz "No snailfish were observed")
   - F37, F38 (S06); R14 ("counted" é o verbo de relato que o portão pede com "200 fish").
   - Ilustração: os ~200 riscos de "peixe" se apagando um a um.
-- "It found sea cucumbers instead, spread about as thickly as the fish the French had reported." (r1, L41: a fonte compara densidades, não contagens: "in a density similar to that reported originally for the snailfish"; o tamanho do transecto de 2019 não está em fonte lida, A02)
+- "It found sea cucumbers instead, spread about as thickly as the fish the crew had reported." (r2, L64: sem a nacionalidade, N51; não "the fish reported in 1964", a como_dizer do F38: o resumo diz que o relato é de 1965, "was reported in 1965") (r1, L41: a fonte compara densidades, não contagens: "in a density similar to that reported originally for the snailfish"; o tamanho do transecto de 2019 não está em fonte lida, A02)
   - F38 (S06: muitos Peniagone sp., numa densidade parecida); nomes ("sea cucumbers", o nome comum; "Peniagone" só se a tela pedir,
     pen-ee-AG-uh-nee). Tela: ~200 · 1964 (REPORTED) → NO SNAILFISH SEEN · 2019; PENIAGONE SP. (SEA CUCUMBER) · JAMIESON ET AL. 2020, só se o desenho
     pedir.
   - Ilustração: no lugar dos riscos, ~200 contornos de pepino-do-mar (a mesma densidade, outro bicho).
-- "From the outside, the two look a lot alike: similar color, similar texture, similar shape."
+- "From the outside, the two look a lot alike in color, texture and shape." (r2, L65: a única tríade em anáfora do texto, no parágrafo do payoff; a fonte dá os três numa lista só, "a similar exterior colour, texture and morphology")
   - F38 (S06: cor, textura e forma parecidas por fora).
   - Ilustração: por um instante, os dois contornos lado a lado com "COLOR · TEXTURE · SHAPE".
 - "In a 2020 paper on that return visit, five authors concluded that the "fish" of 1964 were sea cucumbers." (r1, L42: "the scientists who went back", colado a "One of them was Vescovo", fazia Vescovo ter voltado ao sítio, o que nenhuma fonte diz (F91, A02); a forma da R14 corrigida, com "five authors": nem todos os cinco são cientistas)
   - F38 (atribuído; S06: "It is concluded that the reported hadal snailfish … was in fact a misidentification of the holothurian
     Peniagone sp."); R14, N45 (nunca "it was proven" nem "the French saw sea cucumbers"); "fish" entre aspas só aqui (cadeia referencial).
-- "It's a conclusion drawn from the count and the look, and the animals the French saw that day can't be checked again."
+- "It's a conclusion drawn from the count and the look, and the animals the 1964 crew saw that day can't be checked again." (r2, L66: sem a nacionalidade, N51)
   - F38 nota (a conclusão é pela densidade e pela aparência; ninguém viu de novo o animal de 1964); N45 (o porquê e o limite).
 - ~~"The paper that reported it came out in 2020, with five authors."~~ (r1, L42: o ano e os cinco autores foram à 1ª frase do parágrafo)
   - F91 (S06: Deep-Sea Research I 162:103336, 2020; a ficha do NORA lista Jamieson, Linley, Stewart, Nargeolet e Vescovo). Tela: JAMIESON,
