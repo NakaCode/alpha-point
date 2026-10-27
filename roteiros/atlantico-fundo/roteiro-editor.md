@@ -52,9 +52,32 @@ Revisão do roteiro: `7b965eecdb7c`
 > para dentro do bloco de 60°S e uma emenda sem fato novo, para o texto não cair abaixo do piso de 1.950 palavras; o porquê em
 > `_trabalho/lista-r3.md`) dá `286ff3abf7c7`, com 1.956 palavras. A opção do Lucas previa, depois, mais uma revisão curta.
 >
-> **O piloto do motor sem rosto:** depois do "sim" do Lucas, a Sala converte com `node ferramentas/roteiro-motor.mjs converter
-> atlantico-fundo`. As marcas `<!-- pN · Título -->` viram as "##" invisíveis do motor (`estudio/canal-motor.json` › `narracao.cards:
-> "nenhum"`); os títulos das partes são só para a descrição do YouTube (Lucas, 26/09/2026: nenhum título de capítulo na tela).
+> **A lista r3b da Sala** (27/10/2026, ~00:3x): a revisão curta (`qc-roteiro/*-r3b.laudo.md`) deixou um achado só, do crítico de
+> roteiro. A troca L81 (`_trabalho/lista-r3b.json`) põe "lies north of the equator" no lugar de "lies at the other end of the ocean"
+> e dá o texto de agora, `7b965eecdb7c`, com 1.953 palavras. Fatos PASS, 285 de 285 (`qc-roteiro/fatos-r3b.laudo.md`).
+>
+> **A aprovação do Lucas** (27/10/2026, 02:40 de Brasília, no chat da Sala). A revisão `7b965eecdb7c` foi mandada a ele no mesmo dia
+> (`out/atlantico-fundo/_tmp/roteiro-para-ler.md`). À pergunta "Sigo por esse caminho no vídeo 5?", a resposta foi **"Sim, aprovo
+> (Recomendado)"**. A opção dizia: "Aprovo o roteiro como está (a versão final que te mandei, com o Atlântico Sul enxugado) e os
+> números em algarismos. O título segue no teste dos dois, e a descrição sai no formato do Geoff, com as fontes. Os nomes eu digo
+> depois de ouvir a amostra."
+> - É essa a palavra que vai ao portão `roteiro` do motor, no `--fala`, quando a máquina existir.
+> - Os números ficam em algarismos porque a amostra do v4 leu certo os 66 do texto
+>   (`out/atlantico-fundo/_pesquisa/narracao-conferencia.md`).
+> - Os nomes da `pronuncia.md` seguem em aberto. Um alias só entra se ele ouvir um erro em `amostra-nomes.mp3`, e alias muda o
+>   texto do portão.
+>
+> **O piloto do motor sem rosto:** a Sala converte com `node ferramentas/roteiro-motor.mjs converter atlantico-fundo`. As marcas
+> `<!-- pN · Título -->` viram as "##" invisíveis do motor (`estudio/canal-motor.json` › `narracao.cards: "nenhum"`). Os títulos
+> das partes são só para a descrição do YouTube (Lucas, 26/09/2026: nenhum título de capítulo na tela).
+> - **Feito em 27/10/2026, às 02:44, depois do "sim":** `roteiros/atlantico-fundo/motor/roteiro-portao.md`, com algarismos
+>   (`--de=narrador`), 28 parágrafos, 8 marcas e 10.897 caracteres falados, sha256 `cba1f21ba72b` (o registro está no `.json` ao lado).
+> - A conferência passou pela réplica e pelo `lerRoteiro` do próprio motor, exportado do `top10-estudio` em `563b59ba`, a ponta
+>   de 27/10. O `roteiro.mjs` de lá é o mesmo do `6253755` em que a réplica foi feita (sha256 `33226ac2d550`). O `portao.mjs` mudou
+>   em `c3844e1c`, mas chama o `lerRoteiro` do mesmo jeito.
+> - A mudança do `c3844e1c` deixa cada canal de sócio entregar ao Top10 a pauta, o roteiro e o título e capa (o modo
+>   `"estudio"`). O pacote do canal continua com os quatro portões do Lucas (`estudio/canal-motor.json` › `portoes`, todos `true`),
+>   como ele decidiu em 24/10/2026: "Só com a sua palavra (Recomendado)".
 
 ## A espinha
 

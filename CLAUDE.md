@@ -1063,6 +1063,15 @@ motor. Você aprova pauta, roteiro, título e capa; a linha do tempo e o Premier
 - **A porta do roteiro:** `node ferramentas/roteiro-motor.mjs converter <proj>` converte o roteiro ao formato do portão do motor, e
   `conferir <arquivo>` confere as regras dele. A prova (`ferramentas/roteiro-motor-provar.mjs --clone=<clone do top10-estudio>`) deu
   85 de 85, com o validador do próprio motor. O relato está em `out/_maquina/motor-sem-rosto/porta-roteiro-relato.md`.
+- **Os números na voz do vídeo 5: algarismos** (Lucas, 27/10/2026, 02:40, no chat da Sala: "Sim, aprovo (Recomendado)"). A opção
+  dizia: "Aprovo o roteiro como está (…) e os números em algarismos". O motor não tem cópia para a voz, e o texto do portão é o que a
+  voz lê e o que toda etapa lê como o roteiro.
+  - Por isso o portão recebe o `roteiro-narrador.md` (`converter <proj> --de=narrador`, o padrão), e não a cópia com os números por
+    extenso.
+  - A amostra do v4, na voz e nos ajustes do motor, leu os 66 algarismos certo. O registro está em
+    `out/atlantico-fundo/_pesquisa/narracao-conferencia.md`.
+  - O texto do portão do vídeo 5 é `roteiros/atlantico-fundo/motor/roteiro-portao.md`, e a aprovação está no dossiê do roteiro.
+  - Os vídeos seguintes no motor pedem a pergunta de novo.
 - **O jeito de hoje** (a linha da Régie, os setores, a linha do tempo, o Premiere) continua para o que não for o vídeo 5, até o Lucas
   aprovar o piloto.
 
