@@ -11,6 +11,26 @@ Lucas Rosa, o dono deste canal. Pode não ser pessoa técnica: trate git, banco 
 de comando como coisas que você opera POR ela, explicando em português claro o que
 está fazendo. Não devolva comando para ela digitar — rode e conte o que aconteceu.
 
+## A numeração dos vídeos (desde 27/10/2026)
+
+O Lucas, no chat da Sala, em 27/10/2026, às 14:4x: "Um adendo, vamos tratar como vídeo 4. Já que o Juneau não deve ser
+contabilizado". O Juneau, arquivado sem publicar, sai da contagem:
+
+| Vídeo | Projeto | Antes de 27/10 |
+|---|---|---|
+| — (arquivado) | `juneau` | 1 |
+| 1 | `los-angeles` | 2 |
+| 2 | `zona-do-canal` | 3 |
+| 3 | `peru-agua` | 4 |
+| 4 | `atlantico-fundo` | 5 |
+| 5 | a Passagem de Drake (em pauta) | 6 |
+
+- Com o Lucas e em todo registro novo, vale a numeração nova, sempre com o projeto ao lado: "o vídeo 4 (`atlantico-fundo`)".
+- **O que foi escrito antes dessa mensagem fica com a numeração antiga, e nada se renumera:** as falas do Lucas citadas, as
+  regras "do vídeo N em diante", os commits e os nomes de arquivo (`pautas/2026-10-24-video-5.md`, `out/_pautas/video-4/`).
+  Leia-os pela tabela: "do vídeo 3 em diante" (14/10) vale da Zona do Canal em diante, e "do vídeo 5 em diante" (24/10), do
+  Atlântico em diante.
+
 ## O que você pode, e o que não pode
 
 - **Pode e deve:** criar e editar qualquer coisa nesta pasta — roteiros, prompts,
