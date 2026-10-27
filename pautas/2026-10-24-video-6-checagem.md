@@ -669,3 +669,41 @@ está lido." As outras eram "Magalhães 2026 (Recomendado)" e "Trocar pelo Egito
 - **O título**, pela `marca/embalagem.md` §4, sem "most dangerous", sem "under South America" e sem "100,000".
 - **A abertura**, numa imagem que o Scary Interesting não usou (cético §5).
 - **O Magalhães de 2026** não é a virada. Pode entrar como camada, se a pauta pedir, com o dado da Marinha do Chile lido.
+
+---
+
+## Correção da Sala (27/10/2026): o vídeo do Geography by Geoff sobre a Drake
+
+A checagem (§3, "Dos canais de geografia de referência") e o cético (§3) disseram que a busca não achou nenhum vídeo do RealLifeLore,
+do Wendover, do Half as Interesting nem do Geography by Geoff sobre o tema. **O Geoff tem um**, e ele apareceu na análise do canal dele
+(`out/_analises/geography-by-geoff/relatorio.md`, §8, só nesta máquina):
+- **"Inside Earth's Most Complicated Ocean Crossing"**, https://www.youtube.com/watch?v=HuwCzWf49qM;
+- publicado em 17/09/2026, com 1,51 mi de views em 27/10 (breakout 1,66 no vidIQ);
+- uma lista de 15 fatos, com 16:38.
+
+O título não diz "Drake", e a busca por palavra não o pegou: é o título que esconde o lugar, o caso que a própria checagem descreve em
+"Como os títulos nomeiam ou escondem o lugar".
+
+**O que ele diz do mar** (transcrição lida pelo vidIQ em 27/10):
+- as ondulações de tempestade "routinely reach 40 ft high";
+- uma onda maior que o barco seria comum;
+- capitães relatariam mais de 60 ft;
+- ele aposta que o "Drake Shake" é mais provável que o "Drake Lake".
+
+É o contrário da virada que o Lucas escolheu em 25/10 ("O mar de verdade"). A pauta ganha mais um concorrente que diz o mito, este de
+um canal de referência, com 1,5 mi, publicado seis semanas antes.
+
+**O que ele já conta**, e que o vídeo 6 não pode vender como novidade:
+- as 800 embarcações e os 20 mil mortos;
+- o Drake que não passou pela passagem;
+- o Mar de Hoces;
+- o Shackleton;
+- as Shetland do Sul;
+- o albatroz;
+- Ushuaia e Punta Arenas;
+- o voo de 2 h até a ilha King George.
+
+O gancho dele abre nos 20 mil mortos e nas ondas "do tamanho de prédios".
+
+**Na próxima rodada da pauta:** o mapa da concorrência (§3) entra com este vídeo, e a busca de concorrentes procura também pelos títulos
+que escondem o lugar ("ocean crossing", "most dangerous water", "between South America and Antarctica").
