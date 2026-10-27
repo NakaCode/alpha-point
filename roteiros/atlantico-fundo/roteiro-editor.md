@@ -1,6 +1,6 @@
 # Dossiê do roteiro · atlantico-fundo (vídeo 5)
 
-Revisão do roteiro: `b064eb75cb8c`
+Revisão do roteiro: `7b965eecdb7c`
 
 > Escrito à mão em 26/10/2026 pelo roteirista (Fable 5.1), sobre `roteiros/atlantico-fundo/_trabalho/plano-final.json` (o plano do
 > juiz: o ângulo "quem desceu", com os enxertos de "o número" e de "o lugar"; o porquê em `_trabalho/juiz.md`) e
@@ -8,15 +8,15 @@ Revisão do roteiro: `b064eb75cb8c`
 > N.., C.., A.. e R.. são os dele). O texto falado está em `roteiros/atlantico-fundo/roteiro-narrador.md`. O que mudou em relação
 > ao plano está em `_trabalho/escrita-notas.md`.
 >
-> **A medida do portão** (26/10/2026, à noite, depois da rodada 2 e das listas r2b e r2c da Sala, `node roteiros/atlantico-fundo/_ferramentas/gate.mjs`): sha256
-> do texto falado `b064eb75cb8ccfd1f4373650be4f9a67cc1bd4588ad5775b77eb948ba7497345` · **2.030 palavras** (a faixa é 1.950–2.150) ·
-> ≈ 11:02 de fala a 184 palavras/min (+ 20 s de cauda ≈ 11:21, mais a vinheta) · 29 parágrafos · 160 frases pelo portão · média 12,7
+> **A medida do portão** (26/10/2026, à noite, depois da rodada 2, das listas r2b e r2c da Sala e da lista r3, a decisão do Lucas, `node roteiros/atlantico-fundo/_ferramentas/gate.mjs`): sha256
+> do texto falado `7b965eecdb7c` (depois da r3b) · **1.953 palavras** (a faixa é 1.950–2.150) ·
+> ≈ 10:38 de fala a 184 palavras/min (+ 20 s de cauda ≈ 10:58, mais a vinheta) · 28 parágrafos · 154 frases pelo portão · média 12,8
 > palavras por frase (teto 18) · maior frase 28 (teto 34) · gancho com 166 palavras até a assinatura (≈ 54 s; teto 170), "But" na
 > palavra 49. **PASSA**, sem problema (as três regras novas do portão, [gancho-1200], [porque-sem-dono] e [tripulacao-francesa], que
 > reprovavam `04ae6bfbeb60` com 6 problemas, passam), com os mesmos 8 alertas, todos decididos: "never" ×2, "first" ×2, "Milwaukee
 > Deep" ×3 (`escrita-notas.md` §5; o 2º é agora a ponte de p6 com os dois autores, L54) e o "still" do gancho (o passado da R03,
-> dentro de 2019; `_trabalho/lista-r1.md`). Nenhum alerta novo da r2. Taxas todas abaixo dos tetos; autoplágio vazio contra Juneau,
-> Los Angeles, Zona do Canal e Peru; nenhum alerta de fecho. (As medidas de antes: a rodada 1, `0081efb271f0`, 2.018 palavras, 159
+> dentro de 2019; `_trabalho/lista-r1.md`). Nenhum alerta novo da r2 nem da r3. Taxas todas abaixo dos tetos; autoplágio vazio contra Juneau,
+> Los Angeles, Zona do Canal e Peru; nenhum alerta de fecho. (As medidas de antes: a r2c, `b064eb75cb8c`, 2.030 palavras, 29 parágrafos, 160 frases, média 12,7; a rodada 1, `0081efb271f0`, 2.018 palavras, 159
 > frases, `_trabalho/aplicado-r1.md` §5; o P01, `04ae6bfbeb60`, 2.038 palavras, 161 frases, gancho 161; `_trabalho/aplicado-r2.md`.)
 >
 > **A rodada 1** (26/10/2026): as cinco lentes da bancada (`qc-roteiro/roteiro-r1`, `clareza-r1`, `locucao-r1`, `fatos-r1` e
@@ -43,7 +43,14 @@ Revisão do roteiro: `b064eb75cb8c`
 > **A lista r2c da Sala** (26/10/2026, à noite): a conferência de fatos da r2b (`qc-roteiro/fatos-r2c.laudo.md`) deu RESSALVA
 > por um achado só, o A1: "about a decade" ficava a 27,5 % dos 7,84 anos das cópias. A troca exata dele, "less than a decade
 > earlier" (L74, `_trabalho/lista-r2c.json`), vale para 1875 e para 1873. O aplicador deu o texto de agora (o relato em
-> `_trabalho/aplicado-r2c.md`). O Lucas ainda não leu esta revisão.
+> `_trabalho/aplicado-r2c.md`). O Lucas leu esta revisão no mesmo dia.
+>
+> **A lista r3** (26/10/2026, ~23:5x, a decisão do Lucas no chat da Sala, depois de ler `b064eb75cb8c`): à pergunta "Depois de
+> ler o roteiro: o que faço com o trecho do Atlântico Sul, que o ouvinte achou longo?", a resposta "Enxugar o Atlântico Sul (Recomendado)". Saem de
+> p7 a Argentina, a história do nome Meteor e os nomes Factorian e Limiting; ficam a outra candidata, a resposta (o Meteor uns
+> 370 pés mais raso) e a linha de 60°S. A lista `_trabalho/lista-r3.json` (L75–L80: quatro cortes, a ponta sul da fossa levada
+> para dentro do bloco de 60°S e uma emenda sem fato novo, para o texto não cair abaixo do piso de 1.950 palavras; o porquê em
+> `_trabalho/lista-r3.md`) dá `286ff3abf7c7`, com 1.956 palavras. A opção do Lucas previa, depois, mais uma revisão curta.
 >
 > **O piloto do motor sem rosto:** depois do "sim" do Lucas, a Sala converte com `node ferramentas/roteiro-motor.mjs converter
 > atlantico-fundo`. As marcas `<!-- pN · Título -->` viram as "##" invisíveis do motor (`estudio/canal-motor.json` › `narracao.cards:
@@ -62,7 +69,7 @@ Revisão do roteiro: `b064eb75cb8c`
   antes de alguém chegar ao ponto), o robô de 2015 na parede sul, longe a leste, o sonar da Five Deeps e Vescovo sozinho em 19/12/2018 (~27.500 ft,
   ±16 ft, confirmado a ~7 ft), a conferência de 2019 (a lista mais de 1.000 ft funda demais até pelo menos 2019, ~1.200 ft contra o sonar da expedição; uma crista no ponto da lista;
   o ponto posto em águas da República Dominicana antes de a expedição o pôr em águas dos EUA), a outra candidata (o Meteor, 370 ft mais
-  raso; a linha de 60°S; o Factorian), e a volta de 2019 ao sítio de 1964: pepinos-do-mar onde se relataram peixes. O que há lá
+  raso; a linha de 60°S, que a ponta sul da fossa cruza), e a volta de 2019 ao sítio de 1964: pepinos-do-mar onde se relataram peixes. O que há lá
   embaixo é um fundo na borda de onde, pela NOAA, os peixes param.
 - **O que a tese não diz** (`plano-final.json` › `tese.o_que_ela_nao_diz`; fundamento, "O que não se diz"): que a ciência mediu
   errado por 80 anos (o USGS tinha ~27.300 ft em 2003: o que ficou errado foi o número da lista, F09, F32, N04); que Vescovo foi o
@@ -100,7 +107,7 @@ Revisão do roteiro: `b064eb75cb8c`
 | p2 "Keep those fish in mind." | p7, a ponte, e p8. |
 | p3 "Why is the trench so deep?" | p3, 2º e 3º parágrafos (as placas, a gravidade, a laje, os blocos girados) e, desde o P01, o pouso que a ecoa palavra por palavra: "That, the agency suggests, is why the trench is so deep." (o fundo afunda, pela leitura do USGS; r2, L52). |
 | p5 "That number was not the one in the official list." | p6, 1º parágrafo. |
-| p6 "The expedition also took its sonar, and its sub, to the other end of the Atlantic." | p7 inteira. |
+| p6 "The expedition also took its sonar, and its sub, to the other end of the Atlantic." | p7 inteira: o sonar ("The expedition mapped this trench with its sonar in 2019.") e o submersível, que mapeou o Meteor sem mergulhar lá ("The expedition mapped it but didn't dive there."). O mergulho no Factorian, que também a pagava, saiu da voz na r3 (L78); o submersível volta em p8 ("the same sub"). A emenda L80 ("the other end of the ocean") devolve o eco da ponte. |
 
 ## As partes
 
@@ -109,14 +116,14 @@ Tempos estimados a 184 palavras/min, pela contagem do portão (sem a vinheta nem
 | Parte | Função | Orçamento do plano | Palavras | Tempo | O que o espectador entende ao fim |
 |---|---|---|---|---|---|
 | gancho | os cinco tempos | 159 | 165 (166 pelo portão) | 0:00–0:54 | A umas 83 mi de Porto Rico, uma ilha dos EUA, fica o ponto mais fundo do Atlântico, a mais de 5 mi; o Everest de pé deixaria 1.500 ft de fora; a Marianas é o Pacífico, a ~9.500 mi. Em 1964 uma tripulação num batiscafo francês relatou uma multidão de peixes; em 2019 um submersível voltou ao mesmo sítio e não viu nenhum daqueles peixes; a primeira pessoa a chegar ao ponto mais fundo só chegou em dezembro de 2018; um estudo de 2019 achou a lista oficial ainda com o Atlântico mais de 1.000 ft fundo demais, mesmo depois do sonar (r2, L43). A pergunta. |
-| p1 · A wire and a sound | estabelecer (anos 1870–1939) | 235 | 229 | 0:54–2:08 | Medir o fundo começou de cima: em 27/01/1883 o Blake baixou um arame de mais de 5 mi, uns 60 mi a leste do ponto de hoje, e trouxe lodo marrom (o relatório do Survey); a fossa tinha sido achada menos de uma década antes pelo Challenger (o ano em disputa: F22), longe a leste, a ~23.000 ft; ela corre centenas de milhas ao longo da costa norte; em 1939 o cruzador Milwaukee deu ao lugar um número (mais de 28.000 ft, recorde do Atlântico) e um nome, que os jornais espalharam num boletim da National Geographic Society. Um som dá número; não mostra o que há lá embaixo. |
-| p2 · A crew and a net | complicar (1964–1970) | 200 | 189 | 2:08–3:10 | Gente desceu na fossa em 1964, num batiscafo francês, a mais de 4 mi (as fontes discordam de quanto), sem chegar ao ponto mais fundo; a ~24.000 ft relatou uma multidão de peixes, uns 200 ao longo de uma milha, descritos como peixes-caracol no relato de 1965. Em 1970 uma rede trouxe uma enguia-cusk de uns 8 in (NOAA e Australian Museum); a rede foi quase tão fundo quanto o ponto mais fundo, mas não se sabe a que profundidade o peixe entrou. Ver um pedaço ou pescar não é mapear o fundo. |
-| p3 · The sonar that already knew | demonstrar (2002–2003; a geologia, atribuída) | 190 | 237 | 3:10–4:27 | Em 2002–2003 o USGS mapeou a fossa com multifeixe (três cruzeiros no Ron Brown) e já tinha o setor mais fundo a ~27.300 ft, quinze anos antes de alguém chegar ao ponto. Por que é tão fundo: no Pacífico, as fossas fundas ficam onde uma placa mergulha sob a outra; aqui, as placas Norte-Americana e do Caribe deslizam uma pela outra (só um pouco de uma afunda), a do Caribe a ~¾ in por ano; pelo USGS, a gravidade mais abaixo do normal da Terra, sinal de uma força ativa puxando a área para baixo; uma laje de calcário inclinada, pela reconstrução do USGS, de +4.000 ft a −13.000 ft, que para o USGS reflete grandes deslocamentos verticais desse trecho da fossa e da própria ilha; blocos girados sob a fossa apontam um fundo que afunda, e é por isso, sugere o USGS, que a fossa é tão funda (o pouso do P01, atribuído na r2, L52). As paredes mostram outra coisa. |
-| p4 · What came ashore | virar, sem alarme (1918; 1381–1391) | 240 | 215 | 4:27–5:38 | O risco tem dono (o USGS: deslizamentos antigos nas paredes, risco de tsunami por deslizamento "appears to be high") e não tem data. 1918 foi na Passagem de Mona, fora da fossa (M 7,1 pela NOAA; 20 ft; mais de 100 mortos). A única prova de um grande terremoto da própria fossa tem uns seis séculos: os blocos de coral de Anegada (ilha britânica), ao longo de ~6 mi da costa norte, datados pelo urânio em 1381–1391, um século antes de Colombo; o terremoto foi na parte leste, longe do ponto mais fundo; os modelos dão M 8 ou mais; eventos assim ficam milhares de anos separados. |
-| p5 · A robot, a sonar and a man alone | demonstrar e virar (2015–2018); a inscrição | 275 | 261 | 5:38–7:03 | A parede sul filmada em 2015 pelo Deep Discoverer (Okeanos Explorer), a quase 20.000 ft, longe a leste do ponto; o mergulho cortado por um problema no robô. Em dezembro de 2018 a Five Deeps (a meta: o ponto mais fundo de cada um dos cinco oceanos) mapeou a fossa com multifeixe moderno (o Pressure Drop), com a velocidade do som medida pela equipe a cada profundidade. O ponto: ~27.500 ft, ±16 ft; a ~83 mi da costa de Aguadilla; mais de três milhões de pessoas na ilha. Quarta, 19/12/2018: Vescovo sozinho no Limiting Factor, o submersível dele, ~2 h 30 de descida, o primeiro a chegar ao ponto mais fundo ("One down!", ouviu o repórter a bordo); os medidores do submersível confirmam o sonar a ~7 ft. Esse número não era o da lista. |
-| p6 · The number on the list | pagar a segunda virada (1939–2026) | 270 | 252 | 7:03–8:25 | Em 2019, Stewart e Jamieson acharam na lista oficial o Milwaukee Deep a ~28.700 ft, quase o número dos jornais de 1939; o sonar achou ~1.200 ft mais raso, e o USGS já mostrava fundo mais raso desde 2003. Eles conferiram os números publicados contra o sonar público: mais raso toda vez em Porto Rico; os números tinham se espalhado sem correção; no ponto da lista, ~24.400 ft, uma crista. O estudo deles pôs o ponto ~36 mi a oeste, em águas da República Dominicana; a expedição, em 2021, em águas dos EUA, a ~100 mi da República Dominicana (a zona econômica: onde os EUA controlam os recursos; as ~230 mi só na tela). Em outubro de 2026 a lista não tem o Milwaukee Deep; os dados foram ao Seabed 2030. |
-| p7 · The other contender | complicar e fechar o 1º título (2019–2026, no extremo sul) | 300 | 311 | 8:25–10:06 | A outra candidata: a Fossa das Sandwich do Sul, onde a placa mergulha ~3 in por ano (3 a 4 vezes Porto Rico); ilhas vulcânicas sem moradores permanentes, reivindicadas pelo Reino Unido e pela Argentina; o lago de lava do Mount Michael em agosto de 2026. Mapeada em 2019 (nove décimos sem mapa antes); o número mais publicado a punha mais funda que o sonar de Porto Rico; o sonar a deixou 370 ft mais rasa (o Meteor Deep), sem mergulho. O nome Meteor é antigo e desde 2021 marca o ponto do sonar, ~30 mi de onde fontes mais antigas o punham. A IHO reconheceu o Oceano Austral em 2023, a partir de 60°S; por essa linha o Meteor é Atlântico (a linha não tem significado político, e nem todos os países a usam: a Argentina discorda), e o Factorian, ao sul, é o ponto mais fundo do Oceano Austral, batizado pelo Limiting Factor (o vizinho, Limiting Deep). Os peixes esperavam uma segunda olhada. |
-| p8 · The second look | pagar (2019; a NOAA de hoje); o comentário | 160 | 167 | 10:06–11:01 | Em 2019 o mesmo submersível voltou ao sítio dos peixes: nenhum peixe-caracol, pepinos-do-mar na mesma densidade, parecidos por fora. Num artigo de 2020 sobre essa volta, cinco autores concluíram que os "peixes" de 1964 eram pepinos-do-mar: uma conclusão pela contagem e pela aparência, e os animais de 1964 não se reveem; um dos cinco é Vescovo. Pela NOAA nenhum peixe vive muito abaixo de ~27.500 ft; a rede de 1970 chegou quase lá; o ponto mais fundo do Atlântico, a ~83 mi de Porto Rico, fica bem nessa borda. |
+| p1 · A wire and a sound | estabelecer (anos 1870–1939) | 235 | 231 | 0:54–2:09 | Medir o fundo começou de cima: em 27/01/1883 o Blake baixou um arame de mais de 5 mi, uns 60 mi a leste do ponto de hoje, e trouxe lodo marrom (o relatório do Survey); a fossa tinha sido achada menos de uma década antes pelo Challenger (o ano em disputa: F22), longe a leste, a ~23.000 ft; ela corre centenas de milhas ao longo da costa norte; em 1939 o cruzador Milwaukee deu ao lugar um número (mais de 28.000 ft, recorde do Atlântico) e um nome, que os jornais espalharam num boletim da National Geographic Society. Um som dá número; não mostra o que há lá embaixo. |
+| p2 · A crew and a net | complicar (1964–1970) | 200 | 191 | 2:09–3:11 | Gente desceu na fossa em 1964, num batiscafo francês, a mais de 4 mi (as fontes discordam de quanto), sem chegar ao ponto mais fundo; a ~24.000 ft relatou uma multidão de peixes, uns 200 ao longo de uma milha, descritos como peixes-caracol no relato de 1965. Em 1970 uma rede trouxe uma enguia-cusk de uns 8 in (NOAA e Australian Museum); a rede foi quase tão fundo quanto o ponto mais fundo, mas não se sabe a que profundidade o peixe entrou. Ver um pedaço ou pescar não é mapear o fundo. |
+| p3 · The sonar that already knew | demonstrar (2002–2003; a geologia, atribuída) | 190 | 238 | 3:11–4:29 | Em 2002–2003 o USGS mapeou a fossa com multifeixe (três cruzeiros no Ron Brown) e já tinha o setor mais fundo a ~27.300 ft, quinze anos antes de alguém chegar ao ponto. Por que é tão fundo: no Pacífico, as fossas fundas ficam onde uma placa mergulha sob a outra; aqui, as placas Norte-Americana e do Caribe deslizam uma pela outra (só um pouco de uma afunda), a do Caribe a ~¾ in por ano; pelo USGS, a gravidade mais abaixo do normal da Terra, sinal de uma força ativa puxando a área para baixo; uma laje de calcário inclinada, pela reconstrução do USGS, de +4.000 ft a −13.000 ft, que para o USGS reflete grandes deslocamentos verticais desse trecho da fossa e da própria ilha; blocos girados sob a fossa apontam um fundo que afunda, e é por isso, sugere o USGS, que a fossa é tão funda (o pouso do P01, atribuído na r2, L52). As paredes mostram outra coisa. |
+| p4 · What came ashore | virar, sem alarme (1918; 1381–1391) | 240 | 215 | 4:29–5:39 | O risco tem dono (o USGS: deslizamentos antigos nas paredes, risco de tsunami por deslizamento "appears to be high") e não tem data. 1918 foi na Passagem de Mona, fora da fossa (M 7,1 pela NOAA; 20 ft; mais de 100 mortos). A única prova de um grande terremoto da própria fossa tem uns seis séculos: os blocos de coral de Anegada (ilha britânica), ao longo de ~6 mi da costa norte, datados pelo urânio em 1381–1391, um século antes de Colombo; o terremoto foi na parte leste, longe do ponto mais fundo; os modelos dão M 8 ou mais; eventos assim ficam milhares de anos separados. |
+| p5 · A robot, a sonar and a man alone | demonstrar e virar (2015–2018); a inscrição | 275 | 261 | 5:39–7:04 | A parede sul filmada em 2015 pelo Deep Discoverer (Okeanos Explorer), a quase 20.000 ft, longe a leste do ponto; o mergulho cortado por um problema no robô. Em dezembro de 2018 a Five Deeps (a meta: o ponto mais fundo de cada um dos cinco oceanos) mapeou a fossa com multifeixe moderno (o Pressure Drop), com a velocidade do som medida pela equipe a cada profundidade. O ponto: ~27.500 ft, ±16 ft; a ~83 mi da costa de Aguadilla; mais de três milhões de pessoas na ilha. Quarta, 19/12/2018: Vescovo sozinho no Limiting Factor, o submersível dele, ~2 h 30 de descida, o primeiro a chegar ao ponto mais fundo ("One down!", ouviu o repórter a bordo); os medidores do submersível confirmam o sonar a ~7 ft. Esse número não era o da lista. |
+| p6 · The number on the list | pagar a segunda virada (1939–2026) | 270 | 251 | 7:04–8:26 | Em 2019, Stewart e Jamieson acharam na lista oficial o Milwaukee Deep a ~28.700 ft, quase o número dos jornais de 1939; o sonar achou ~1.200 ft mais raso, e o USGS já mostrava fundo mais raso desde 2003. Eles conferiram os números publicados contra o sonar público: mais raso toda vez em Porto Rico; os números tinham se espalhado sem correção; no ponto da lista, ~24.400 ft, uma crista. O estudo deles pôs o ponto ~36 mi a oeste, em águas da República Dominicana; a expedição, em 2021, em águas dos EUA, a ~100 mi da República Dominicana (a zona econômica: onde os EUA controlam os recursos; as ~230 mi só na tela). Em outubro de 2026 a lista não tem o Milwaukee Deep; os dados foram ao Seabed 2030. |
+| p7 · The other contender | complicar e fechar o 1º título (2019–2026, no extremo sul) | 300 | 237 | 8:26–9:43 | A outra candidata: a Fossa das Sandwich do Sul, onde a placa mergulha ~3 in por ano (3 a 4 vezes Porto Rico); ilhas vulcânicas sem moradores permanentes; o lago de lava do Mount Michael em agosto de 2026. Mapeada em 2019 (nove décimos sem mapa antes); o número mais publicado a punha mais funda que o sonar de Porto Rico; o sonar a deixou 370 ft mais rasa (o Meteor Deep), sem mergulho. A IHO reconheceu o Oceano Austral em 2023, a partir de 60°S; a ponta sul da fossa cruza a linha, e por ela o Meteor, bem ao norte, é Atlântico (a linha não tem significado político, e nem todos os países a usam); com a linha ou sem ela, o ponto mais fundo do Atlântico fica na outra ponta do oceano. Os peixes esperavam uma segunda olhada. (Desde a r3, a decisão do Lucas: sem a Argentina, sem a história do nome Meteor e sem os nomes Factorian e Limiting.) |
+| p8 · The second look | pagar (2019; a NOAA de hoje); o comentário | 160 | 167 | 9:43–10:38 | Em 2019 o mesmo submersível voltou ao sítio dos peixes: nenhum peixe-caracol, pepinos-do-mar na mesma densidade, parecidos por fora. Num artigo de 2020 sobre essa volta, cinco autores concluíram que os "peixes" de 1964 eram pepinos-do-mar: uma conclusão pela contagem e pela aparência, e os animais de 1964 não se reveem; um dos cinco é Vescovo. Pela NOAA nenhum peixe vive muito abaixo de ~27.500 ft; a rede de 1970 chegou quase lá; o ponto mais fundo do Atlântico, a ~83 mi de Porto Rico, fica bem nessa borda. |
 
 O plano orçava 2.029 (gancho 159 + partes 1.870) e o esqueleto medido tinha 2.011; o texto fechou em **2.089**. As partes ficam dentro
 da folga de ±30 do plano: p6 (+26) com a definição da zona econômica (F14, fechado pela Sala em 26/10), p7 (+24) mesmo sem o b4 (o
@@ -136,13 +143,23 @@ Depois do pedido P01 ao escritor (`04ae6bfbeb60`): **2.038** palavras
 112 abaixo do teto. Os pedidos à voz continuam 29, entre 44 e 107; p3 passa de 214 a 234 palavras, e as partes de p4 em diante começam
 uns 7 s mais tarde. A mesma medida, pelo mesmo script.
 
+Depois da lista r3b da Sala (`7b965eecdb7c`): **1.953** palavras (−3: "lies north of the equator" no lugar de "lies at the other end of the ocean", L81, o único achado do crítico de roteiro da bancada curta; o relato em `_trabalho/lista-r3b.json`).
+
+Depois da lista r3 (`286ff3abf7c7`; as colunas "Palavras" e "Tempo" acima são desta revisão, pelo mesmo
+`medida-partes-r1.py`): **1.956** palavras (−74, todas em p7: a decisão do Lucas de 26/10/2026, "Enxugar o Atlântico Sul", tira
+94, a emenda L80 põe 20, e a ponta sul da fossa, L79, só muda de lugar; a conta por item em `_trabalho/lista-r3.md`), 6 acima do
+piso e 194 abaixo do teto; ≈ 10:38 de fala (+ 20 s de cauda ≈ 10:58). Os pedidos à voz passam a 28 (o 3º e o 4º de p7 viraram um,
+L79), entre 44 e 109: p7 1º 84 → 78 (L75), 2º 107 → 74 (L76) e o 3º, 49 + 71 → 85 (L77 a L80). p7 passa de 311 a 237 palavras
+(orçamento 300); p8 começa ≈ 25 s mais cedo (≈ 9:43). As partes antes de p7 não mudam com a r3; os tempos delas na tabela sobem
+1 ou 2 s porque a tabela de antes era da rodada 2, e as listas r2b e r2c puseram 4 palavras antes de p7.
+
 Depois da lista r2c da Sala (`b064eb75cb8c`): **2.030** palavras (+1: "less than a decade" no lugar de "about a decade").
 
 Depois da lista r2b da Sala (`ffafacc2329b`): **2.029** palavras (+3: "about a decade" +1, "how deep it got" +2, "the trench's
  deepest part" +2, "indicate" −1, "the expedition's sonar" +1, "the Dominican Republic's waters" −2), nos mesmos 29 pedidos à voz,
-entre 44 e 109; as colunas "Palavras" e "Tempo" acima continuam as da rodada 2.
+entre 44 e 109; as colunas "Palavras" e "Tempo" acima continuaram as da rodada 2 até a r3.
 
-Depois da rodada 2 (`432dcb4041d4`; as colunas "Palavras" e "Tempo" acima são desta revisão): **2.026** palavras (−12), 76 acima do
+Depois da rodada 2 (`432dcb4041d4`; as colunas "Palavras" e "Tempo" acima foram desta revisão até a r3): **2.026** palavras (−12), 76 acima do
 piso e 124 abaixo do teto. Os pedidos à voz continuam 29, agora entre 44 e 109 (a regra é 40 a 110): o maior passa a ser o 2º do
 gancho (104 → 109, L43 e L44); o de p7, 2º, continua com 107; o menor continua o da borda da vida (p8, 3º, 44). Mudaram de tamanho: o
 2º do gancho, p1 1º (73 → 62, L45), p2 1º (85 → 84), p3 3º (75 → 78, L52), p4 3º (72 → 61, L53), p6 1º (49 → 55), 2º (66 → 60) e 3º (83
@@ -154,23 +171,23 @@ que reproduz a tabela de antes sobre `_trabalho/roteiro-r2.antes.md`).
 
 - **Inscrição (35 a 60 %, nunca no 1º minuto):** "Soon after, a problem with the robot cut this one short." (p5, 1º parágrafo, a
   última frase, 11 palavras ≈ 3,6 s), seguida da pausa de fim de parágrafo, com o vídeo da NOAA por baixo (registro real, câmera
-  parada). Pela contagem do portão ela começa na palavra ≈ 1.080 de 2.026, ≈ 5:52 de fala, ≈ 52 % de ≈ 11:21 (fala + cauda; depois da r2). Frase
+  parada). Pela contagem do portão ela começa na palavra ≈ 1.085 de 1.956, ≈ 5:53 de fala, ≈ 54 % de ≈ 10:58 (fala + cauda; depois da r3). Frase
   calma, sem número, sem "here", sem citação sendo lida; não é a frase-chave da parte (que é o "first person" do 4º parágrafo). O rótulo
   da parede e o crédito da NOAA ocupam o terço de baixo: o regente põe o rótulo em cima ou usa `?lugar=cima` para a peça, nunca as
   duas placas na mesma faixa (cta §5).
 - **Reserva:** "They think quakes like that come thousands of years apart." (p4, 3º parágrafo, desde a r2 a última frase de p4, L53;
-  palavra ≈ 1.026, ≈ 5:34, ≈ 49 %), só com a régua do tempo já parada e o canto de baixo livre; nunca sobre Anegada acendendo nem
+  palavra ≈ 1.031, ≈ 5:35, ≈ 51 %, depois da r3), só com a régua do tempo já parada e o canto de baixo livre; nunca sobre Anegada acendendo nem
   sobre 1918.
 - **Comentário (perto do fim):** as duas primeiras frases do último parágrafo, "By NOAA's estimate, no fish lives much deeper than
-  about 27,500 feet. The net that brought up the cusk-eel in 1970 had gone down nearly that far." (27 palavras ≈ 8,8 s, de ≈ 10:46 a
-  ≈ 10:55), sobre o medidor com a faixa da NOAA; a pergunta da abertura já foi respondida nos dois parágrafos anteriores. A peça sai
-  antes da última frase (a frase-chave, de ≈ 10:55 a 11:01) e termina ≈ 6 s antes da cauda de 20 s (cta §6). Com fala densa no trecho,
+  about 27,500 feet. The net that brought up the cusk-eel in 1970 had gone down nearly that far." (27 palavras ≈ 8,8 s, de ≈ 10:23 a
+  ≈ 10:32, depois da r3), sobre o medidor com a faixa da NOAA; a pergunta da abertura já foi respondida nos dois parágrafos anteriores. A peça sai
+  antes da última frase (a frase-chave, de ≈ 10:32 a 10:38) e termina ≈ 6 s antes da cauda de 20 s (cta §6). Com fala densa no trecho,
   `?lugar=cima`. A pergunta é do `redator-de-tela` (o plano propõe "What would you want to see five miles down?" e, como alternativas,
   "Would you dive five miles down, alone?" e "Would you have gone back to check on the fish?"), rodada no `_perguntas.mjs`; a mesma
   vai à descrição e ao comentário fixado. A chamada é só de tela: a voz não a lê. O motor sem rosto monta as chamadas a seu modo: a
   Sala confere como ele as recebe.
 - **Onde NÃO:** o gancho e o 1º minuto; p3, 2º e 3º parágrafos (as placas e a laje animando); p5, 3º e 4º parágrafos (o número e o
-  mergulho); p6 inteira (números em leitura e o anel saltando); p7, 3º e 4º parágrafos (a linha de 60°S; eram o 4º e o 5º antes da L39); nunca sobre "He was the
+  mergulho); p6 inteira (números em leitura e o anel saltando); p7, 3º parágrafo (a linha de 60°S, a emenda e a ponte; desde a r3, L79, o antigo 4º está dentro dele); nunca sobre "He was the
   first person to reach the deepest point of the Atlantic." nem sobre a última frase do vídeo.
 
 ## O destino das cifras
@@ -200,8 +217,9 @@ and 1391", "about a century", "magnitude 8 or more", "thousands of years" (Anega
 (o robô; F68); "about 16 feet" (F11; o "95 percent" e o "about 250 feet" saíram da voz na r1, L24); "more than three million" (F62); "about two and a half hours",
 "within about 7 feet" (F39, F13); o "more than 28,000 feet" do release de 2011 (F33) saiu da voz na r1, L28; "about 24,400 feet" (a crista; F30); "eight older
 surveys", "about 36 miles", "about 100 miles" (F15, F16); a zona econômica sem largura na voz (F14; o "up to about 230 miles out" saiu na r1, L31, e vai à tela); "about three inches a
-year", "three to four times" (F73); "about nine-tenths" (F78); "about 30 miles" (o nome Meteor; F76); "2023", "60 degrees south" (F81);
-"about 20 miles" (o Limiting Deep; F80); "five authors" (F91).
+year", "three to four times" (F73); "about nine-tenths" (F78); "2023", "60 degrees south" (F81);
+"five authors" (F91). Saíram da voz na r3: "about 30 miles" (o nome Meteor; F76; L76) e "about 20 miles" (o Limiting Deep;
+F80; L78).
 
 **Só na tela:** 8,378 ± 5 M (27,487 FT) e, numa batida separada, SUB GAUGES · 8,376 ± 5 M (F03, F11, F13; N05); 19.712°N 67.311°W
 (F10); 27,366 FT · 4,561 FATHOMS · 1883 · 60 MI EAST (F23); 23,250 FT · 3,875 FATHOMS, sem o ano (F22, N52); MORE THAN 28,000 FT · REPORTED,
@@ -213,8 +231,8 @@ year", "three to four times" (F73); "about nine-tenths" (F78); "about 30 miles" 
 ~200 · ALONG ~1 MI (F36, F37); 8,370 M (27,460 FT) · THE NET, 1970 · NOAA (F69); INSIDE THE U.S. EXCLUSIVE ECONOMIC ZONE; EXCLUSIVE
 ECONOMIC ZONE · UP TO 200 NMI (230 MI) · NOAA (F14); SURVEYED DEC. 18–19, 2018 (F35; sem área, A06, R18); ≈ 3 IN / YEAR (65–78 MM)
 (F73); 8,428 M · MOST PUBLISHED · STEWART & JAMIESON 2019 (F77); 8,265 ± 13 M · METEOR DEEP · BONGIOVANNI ET AL. 2021; 113 M (371
-FT) SHALLOWER; ~330 MI NORTH OF 60°S (F74, F75); 7,432 ± 13 M · FACTORIAN DEEP; ≈ 20 MI · LIMITING DEEP (F79, F80); 60°S · SOUTHERN
-OCEAN (IHO, 2023) (F81); SOUTH SANDWICH ISLANDS · CLAIMED BY BOTH THE UK AND ARGENTINA (F85); 8,200–8,400 M · FISH LIMIT · NOAA
+FT) SHALLOWER; ~330 MI NORTH OF 60°S (F74, F75); 60°S · SOUTHERN
+OCEAN (IHO, 2023) (F81); 8,200–8,400 M · FISH LIMIT · NOAA
 ESTIMATE (F70); PENIAGONE SP. (SEA CUCUMBER) · JAMIESON ET AL. 2020, só se o desenho pedir (F38); ≈ 5,700 MI de Porto Rico ao Meteor
 (F75); e, em toda cena de mapa com a base da MapTiler, © MapTiler © OpenStreetMap contributors; nas de GEBCO, GEBCO 2026 GRID
 (identidade §6).
@@ -226,7 +244,9 @@ hour" (F60); 3.184.835 e 3.285.874 (F62, F63: "more than three million" dispensa
 Deep (F07: a Marianas entra uma vez, com a distância); ~116 mi de San Juan (F17), os 76 mi e os 100 mi das fontes populares (F18); a
 altura do Mount Michael (F87); as "four new species" (F72); o peixe-caracol de 8.336 m (F71); 3,3 milhões de anos (F44); 1.500 sq mi
 do levantamento (F21: brigaria com os 1.500 ft do Everest); o ecossistema mais frio (F88, o b4 de p7, o 1º corte da parte); o Caribe
-Wave (F61); os romances de Iain M. Banks (F40); as câmeras com isca (F89); o Oceano Austral de 1937 (F84).
+Wave (F61); os romances de Iain M. Banks (F40); as câmeras com isca (F89); o Oceano Austral de 1937 (F84). Na r3, pela decisão do Lucas ("Enxugar o Atlântico Sul (Recomendado)", 26/10/2026),
+saíram de p7 a reivindicação das ilhas (F85), a história do nome Meteor com as ~30 mi (F76), a discordância da Argentina
+(F82, que fica só como a ressalva geral "not every country uses it") e o Factorian e o Limiting Deep, com as ~20 mi (F79, F80).
 
 ## Decisões de escrita
 
@@ -592,7 +612,7 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - Mapa: a câmera voa para oeste até o anel do ponto mais fundo. Nada da Five Deeps em imagem: fotos e vídeos não são livres (pauta §6).
   - Ilustração sobre o mapa: o navio desenhado com o leque do multifeixe varrendo uma faixa; rótulo "PRESSURE DROP".
 - "The expedition's goal was to reach the deepest point of each of the five oceans." (r1, L21)
-  - S05 (Popular Science, a bordo, cópia fb-popsci-2018-12-21-vescovo.txt, l. 31 e 35: "the deepest point in all five oceans"; "an attempt to become the first person to reach the lowest point in all five oceans"), S04 ("the first dive in the Five Deeps Expedition"). A meta é da expedição, não da IHO (N20). Paga o "One down!" (L26), a ponte de p6 e o Factorian de p7. Fato novo na voz: o verificador o confere na r2.
+  - S05 (Popular Science, a bordo, cópia fb-popsci-2018-12-21-vescovo.txt, l. 31 e 35: "the deepest point in all five oceans"; "an attempt to become the first person to reach the lowest point in all five oceans"), S04 ("the first dive in the Five Deeps Expedition"). A meta é da expedição, não da IHO (N20). Paga o "One down!" (L26) e a ponte de p6 (o Factorian de p7, que ela também pagava, saiu da voz na r3, L78). Fato novo na voz: o verificador o confere na r2.
 - "To get the sonar right, the team measured how fast sound travels at every depth, from the surface to the floor." (r1, L22)
   - F12 (S01, §2.1–2.2: as profundidades corrigidas com a velocidade do som medida por CTD da superfície ao fundo). O navio só lançou sondas até 1.800 m (XBT); o perfil até o fundo veio dos CTDs do submersível e de três landers, "determined after the deep submersible dives": nunca "the ship lowered instruments" (fatos AC10, roteiro 8).
   - Ilustração: uma coluna do navio ao fundo com marcas a cada profundidade, "SPEED OF SOUND, MEASURED AT EVERY DEPTH"; sem número de
@@ -729,9 +749,9 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
 - "The islands there are a chain of small volcanoes, with no permanent residents." (r1, L35: a NASA diz "no permanent human residents nearby")
   - F86 (S40, S39, S42, S43: uma fileira de ~350 km de pequenos vulcões, sem moradores), F73 (o arco vulcânico).
   - Mapa: as ilhas no satélite da MapTiler (com o crédito), com o relevo 3D onde ajudar a ler (liberado no vídeo 5 "como no Peru").
-- "Both Britain and Argentina claim them."
-  - F85 (S16, camada eez, MRGID 8383: reivindicação sobreposta); R09, N15 (nunca "British islands" nem "Argentine islands"). Tela: SOUTH
-    SANDWICH ISLANDS · CLAIMED BY BOTH THE UK AND ARGENTINA, sem bandeira.
+- ~~"Both Britain and Argentina claim them."~~ (saiu da voz na r3, lista-r3 L75: a decisão do Lucas, 26/10/2026, "Enxugar o Atlântico Sul (Recomendado)", tira a Argentina de p7; a tela da reivindicação saiu com ela)
+  - F85 (S16, camada eez, MRGID 8383: reivindicação sobreposta); R09, N15. Se o mapa rotular as ilhas, só SOUTH SANDWICH
+    ISLANDS, sem bandeira e sem dono (nunca "British islands" nem "Argentine islands").
 - "In August 2026, a Landsat satellite caught the heat of a lava lake in the crater of Mount Michael, one of those volcanoes."
   - F86 (datar; S40, "A Bright Spot at Mount Michael", NASA EO, 07/09/2026: Landsat 8 de 24/08/2026); C04, R19, N30 (sem altura, F87; nunca
     a imagem de 2021, falsa cor, como a cor real da ilha).
@@ -759,12 +779,11 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
 - "The expedition mapped it but didn't dive there."
   - F75 (S01, Tabela 1: "N/A" na coluna do submersível); R27 (o "N/A", não um universal), N21 (nunca "Vescovo dove the Meteor Deep").
   - Ilustração: o submersível desenhado passa direto pelo anel do Meteor.
-- "The name Meteor Deep is old, taken from a German research ship." (r1, L38: sem o "named", o "after" se ouvia como de tempo)
+- ~~"The name Meteor Deep is old, taken from a German research ship."~~ (saiu da voz na r3, lista-r3 L76: a decisão do Lucas tira de p7 a história do nome Meteor; o nome fica, como nome do ponto. r1, L38: sem o "named", o "after" se ouvia como de tempo)
   - F76 (S14, S15, S01, p. 2: o navio de pesquisa alemão Meteor; o Meteor Deep descoberto em 1926); nomes (MEE-tee-or).
-- "Since 2021, that name has officially marked the spot the sonar found, about 30 miles from where older sources put it." (r2, L58: o "it" logo depois de "a German research ship" pedia rebobinar, e nome não "pertence" a um ponto; o mesmo F76) (r1, L37: Allaby 2009 é livro; Zhivago 2002 é resumo de congresso)
+- ~~"Since 2021, that name has officially marked the spot the sonar found, about 30 miles from where older sources put it."~~ (saiu da voz na r3, lista-r3 L76, com a frase de antes; a nota de mapa saiu com ela. r2, L58: o "it" logo depois de "a German research ship" pedia rebobinar, e nome não "pertence" a um ponto; o mesmo F76) (r1, L37: Allaby 2009 é livro; Zhivago 2002 é resumo de congresso)
   - F76 (SCUFN34/VTC02/37, 07/06/2021; a posição antiga 55,67°S, 25,92°W, Zhivago 2002 e Allaby 2009, a 51 km = 31,7 mi; S14, S15, S02);
     C02. "Older sources" desde a r1 (um livro e um resumo de congresso); para Porto Rico a fala nunca diz "the books" (R03).
-  - Mapa: o ponto antigo do Meteor acendendo e apagando em "about 30 miles".
 - ~~"The expedition had wanted to call it Pressure Deep, after its own ship, the Pressure Drop."~~ (saiu da voz na r1, lista-r1 L39: o apelido que não pegou, no trecho mais cheio de nomes; o parágrafo do nome Meteor juntou-se ao anterior)
   - F76 (S37, o blog de 09/02/2019); R29 (que o ponto do "Pressure Deep" é o Meteor de hoje é dedução consistente: "had wanted" se apoia
     no blog). O 3º corte do plano, mantido.
@@ -776,34 +795,40 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
     linha.
 - "It begins at 60 degrees south."
   - F81 (o limite norte no paralelo de 60°S).
+- "The trench's southern tip crosses the line." (r3, L79: subiu do antigo 4º parágrafo de p7 para logo depois da linha. Sem o
+  Factorian, ali ela ficava solta entre a ressalva dos países e a ponte; aqui é o degrau entre a linha e "By that line, the
+  Meteor Deep, well to the north, is in the Atlantic.": a linha corta esta fossa, e por isso importa de que lado o Meteor fica.
+  O antigo 4º parágrafo, só com a ponte, juntou-se ao 3º)
+  - F73 (de ~54°40'S a 60°40'S: fica no Atlântico e no Oceano Austral), F83.
+  - Mapa: a fossa cruzando a linha de 60°S, com a ponta sul do outro lado; nenhum anel ao sul da linha.
 - "By that line, the Meteor Deep, well to the north, is in the Atlantic." (r2, L59: o porquê vem logo depois da linha, antes das ressalvas; as ressalvas da Sala ficam inteiras, na forma decidida)
   - F83 (S20, S01: 55,23°S, ~530 km = 330 mi ao norte de 60°S), F75; N48 (nunca "the Meteor is in the Southern Ocean"); "by that line",
     nunca "still the Atlantic" (o portão alerta "still"). Tela: ~330 MI NORTH OF 60°S.
 - "The organization says the line carries no political meaning, and not every country uses it."
   - F82 (atribuído; S20, apêndice 1: sem significado político nem oceanográfico; cada serviço hidrográfico pode manter os seus; S21:
     "without prejudice"). "The line" / "that line", nunca "this line" (o portão alerta).
-- "Argentina, for one, disagrees."
-  - F82 (S20, S21: a Argentina discorda; a Austrália usa os próprios limites; Chile, Equador e EUA concordam). O enxerto do "lugar". Frase
-    curta (4 palavras).
-- "The trench's southern tip crosses the line."
-  - F73 (de ~54°40'S a 60°40'S: fica no Atlântico e no Oceano Austral), F83.
-  - Mapa: a fossa cruzando a linha de 60°S.
-- "Just south of the line lies the deepest point of the Southern Ocean, the Factorian Deep."
-  - F79 (S01, S03, S15, S37: 7.432 ± 13 m pelo sonar, 60,479°S, 25,542°W, uns 53 km ao sul da linha); N48 (nunca "the Factorian is in the
-    Atlantic"); C16, C23. "Just south of the line", nunca "of it" (ambíguo). A profundidade só na tela: 7,432 ± 13 M · FACTORIAN DEEP
-    (os ~24.400 ft brigariam com os da crista de p6).
-  - Mapa: o anel do Factorian em 60,479°S, 25,542°W.
-- "The expedition's sub, the Limiting Factor, reached the bottom there in 2019, and that's where the odd name comes from." (r2, L60: o nome do submersível foi dito uma vez, a 60 %, e sem ele o "odd name" não paga; "its bottom" se prendia ao sujeito; "there" é o Factorian da frase de antes; "the expedition's sub" é o "its sub" da ponte de p6, sem dizer quem pilotava, que o dossiê não tem)
-  - F79 (o Limiting Factor chegou ao fundo dele em 2019), F80 (S15, a ficha do gazetteer: "Named in relation to the full ocean depth
-    submersible 'Limiting Factor'"; S13: aprovado na SCUFN-33, 9–10/11/2020, C22); A18 (o dia do mergulho não está na página: só "in
-    2019"). Quem pilotava no Factorian não está no dossiê: a voz não diz Vescovo.
-  - Ilustração: o submersível desenhado desce no Factorian; a palavra "LIMITING FACTOR" se parte em "LIMITING" e "FACTOR", e cada metade
-    voa para o seu anel, sem virar tela só de texto.
-- "Its neighbor, about 20 miles away, got the other half of the name: Limiting Deep."
-  - F80 (S15: o Limiting Deep, 7.286 m, a ~33 km = 20,5 mi, o 2º mais fundo do Oceano Austral; propostos em 2019 por Jamieson e
-    Bongiovanni). O 2º corte do plano, mantido. Tela: ≈ 20 MI · LIMITING DEEP.
-  - Mapa: o anel do Limiting Deep.
-- "Off Puerto Rico, the 1964 crew's fish were waiting for a second look." (r2, L61: continua a ponte do plano; só sai a nacionalidade, que nenhuma fonte dá, N51)
+- ~~"Argentina, for one, disagrees."~~ (saiu da voz na r3, lista-r3 L77: a decisão do Lucas tira a Argentina de p7; a
+  ressalva dos países fica na frase de antes, "not every country uses it")
+  - F82 (S20, S21: a Argentina discorda; a Austrália usa os próprios limites; Chile, Equador e EUA concordam). Era o enxerto do
+    "lugar".
+- ~~"Just south of the line lies the deepest point of the Southern Ocean, the Factorian Deep."~~
+- ~~"The expedition's sub, the Limiting Factor, reached the bottom there in 2019, and that's where the odd name comes from."~~
+- ~~"Its neighbor, about 20 miles away, got the other half of the name: Limiting Deep."~~
+  - As três saíram da voz na r3 (lista-r3 L78: a decisão do Lucas, 26/10/2026, "Enxugar o Atlântico Sul (Recomendado)", tira de p7 os nomes Factorian
+    e Limiting). Eram F79 e F80 (S01, S03, S13, S15, S37; C16, C22, C23; A18; N48). Com elas saíram as telas 7,432 ± 13 M ·
+    FACTORIAN DEEP e ≈ 20 MI · LIMITING DEEP, os anéis do Factorian e do Limiting Deep no mapa e a ilustração do nome partido. A
+    ponta sul da fossa continua do outro lado da linha, na frase que subiu para logo depois de "It begins at 60 degrees south." (L79).
+- "With the line or without it, the deepest point in the Atlantic lies north of the equator." (r3b, L81: "at the other end of the ocean" punha o ponto de Porto Rico, a 19,712°N, na ponta norte do Atlântico, e trocava o referente do "other end of the Atlantic" de p6; F02, F03; r3, L80: a emenda da lista r3, sem fato,
+  número nem nome novos. Os cortes da decisão do Lucas tiravam 94 palavras e levavam o texto a 1.936, abaixo do piso de 1.950 do
+  portão; ela fecha a outra candidata com o veredito que o título pede e faz a passagem de p7 a p8, do sul para Porto Rico)
+  - DO-DOSSIE: F02 (o ponto mais fundo do Atlântico fica na Fossa de Porto Rico), F74 (o Meteor, o mais fundo da Fossa das
+    Sandwich do Sul, 113 m = ~370 ft mais raso), F83 (pela linha de 60°S, o Meteor é Atlântico; pelo limite britânico de 1953, de
+    55°S, cairia no Oceano Austral) e F79 (o Factorian, ao sul da linha, 7.432 m, mais raso ainda): com a linha ou sem ela, nem
+    o Meteor nem o Factorian passam o ponto de Porto Rico, e ele continua o mais fundo do Atlântico (F02). Desde a r3b (L81), "north of the equator" no lugar de "the other end of the
+    ocean", que ecoava o "the other end of the Atlantic" da ponte de p6 com o referente trocado (fatos r3b, O13).
+  - Mapa: o globo recua até mostrar o Atlântico de ponta a ponta, com os dois anéis (o Meteor no sul, Porto Rico no norte); a
+    ponte, logo depois, desce no anel de Porto Rico. Sem tela de texto: o anel do norte acende, o do sul apaga.
+- "Off Puerto Rico, the 1964 crew's fish were waiting for a second look." (r2, L61: continua a ponte do plano; só sai a nacionalidade, que nenhuma fonte dá, N51; desde a r3, vem depois da emenda L80 e fecha o 3º parágrafo de p7)
   - Ponte do plano (paga o "Keep those fish in mind" de p2); F38. "Off Puerto Rico" marca a volta ao norte (cadeia referencial).
   - Mapa: o globo volta ao anel de Porto Rico.
 

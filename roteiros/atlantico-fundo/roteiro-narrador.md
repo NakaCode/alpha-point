@@ -67,13 +67,11 @@ As of October 2026, the official list of undersea features doesn't include the M
 
 <!-- p7 · The other contender -->
 
-The Atlantic has another contender for its deepest point: the South Sandwich Trench, far to the south, where one plate dives under another about three inches a year. That is three to four times the pace of the plates off Puerto Rico. The islands there are a chain of small volcanoes, with no permanent residents. Both Britain and Argentina claim them. In August 2026, a Landsat satellite caught the heat of a lava lake in the crater of Mount Michael, one of those volcanoes.
+The Atlantic has another contender for its deepest point: the South Sandwich Trench, far to the south, where one plate dives under another about three inches a year. That is three to four times the pace of the plates off Puerto Rico. The islands there are a chain of small volcanoes, with no permanent residents. In August 2026, a Landsat satellite caught the heat of a lava lake in the crater of Mount Michael, one of those volcanoes.
 
-The expedition mapped this trench with its sonar in 2019. Before that, about nine-tenths of it had never been mapped. Stewart and Jamieson's study noted the depth most often published for its deepest point. It was deeper than the sonar's number for Puerto Rico. The sonar settled that. The trench's deepest point, the Meteor Deep, is about 370 feet shallower than the one off Puerto Rico. The expedition mapped it but didn't dive there. The name Meteor Deep is old, taken from a German research ship. Since 2021, that name has officially marked the spot the sonar found, about 30 miles from where older sources put it.
+The expedition mapped this trench with its sonar in 2019. Before that, about nine-tenths of it had never been mapped. Stewart and Jamieson's study noted the depth most often published for its deepest point. It was deeper than the sonar's number for Puerto Rico. The sonar settled that. The trench's deepest point, the Meteor Deep, is about 370 feet shallower than the one off Puerto Rico. The expedition mapped it but didn't dive there.
 
-In 2023, the International Hydrographic Organization recognized the Southern Ocean. It begins at 60 degrees south. By that line, the Meteor Deep, well to the north, is in the Atlantic. The organization says the line carries no political meaning, and not every country uses it. Argentina, for one, disagrees.
-
-The trench's southern tip crosses the line. Just south of the line lies the deepest point of the Southern Ocean, the Factorian Deep. The expedition's sub, the Limiting Factor, reached the bottom there in 2019, and that's where the odd name comes from. Its neighbor, about 20 miles away, got the other half of the name: Limiting Deep. Off Puerto Rico, the 1964 crew's fish were waiting for a second look.
+In 2023, the International Hydrographic Organization recognized the Southern Ocean. It begins at 60 degrees south. The trench's southern tip crosses the line. By that line, the Meteor Deep, well to the north, is in the Atlantic. The organization says the line carries no political meaning, and not every country uses it. With the line or without it, the deepest point in the Atlantic lies north of the equator. Off Puerto Rico, the 1964 crew's fish were waiting for a second look.
 
 <!-- p8 · The second look -->
 
