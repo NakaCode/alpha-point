@@ -165,7 +165,18 @@ Outros nomes da tabela que a narração não diz (the Mariana Trench e o Challen
 Theodore N. Gill, Dolphin, the U.S. Virgin Islands, the U.S. Census Bureau, the International Space Station, Antarctica) são
 palavras comuns ou nomes que a voz já sabe: ficam sem pesquisa. Se entrarem numa revisão do roteiro, esta folha se refaz com o sha novo.
 
-## A amostra que esta folha pede (proposta, nada foi gerado)
+## A amostra que esta folha pede (gerada em 27/10/2026, na grafia do roteiro)
+
+> **Gerada em 27/10/2026** pela Sala, na conta do canal (2.820 créditos pelos recibos; `out/atlantico-fundo/_pesquisa/narracao-conferencia.md`),
+> com os 14 pedidos abaixo **na grafia do roteiro, com algarismos**, e não na da cópia, e mais as outras 44 frases com algarismo.
+> O motor lê o mesmo texto para a voz e para a tela, e a pergunta 12 de `out/_maquina/motor-sem-rosto/requisitos.md` (§5) pedia
+> saber se o v4 lê algarismo. Resultados:
+> - o v4 leu os 66 algarismos de um jeito certo, e 1381 e 1391 como anos (`out/atlantico-fundo/_pesquisa/amostra-voz-conferir.py`);
+> - disse 99,3 % das palavras como estão (`amostra-voz-palavras.py`). As diferenças são do transcritor: "Anegada" saiu "Anagata",
+>   e é o nome a ouvir com mais cuidado.
+>
+> O áudio para o Lucas é `out/atlantico-fundo/_tmp/amostra-voz/amostra-nomes.mp3`, com os 14 pedidos na ordem e 1,2 s entre eles.
+> Falta o ouvido dele nos nomes.
 
 Antes do portão "roteiro" do motor, uma amostra no v4, com a voz e os ajustes do `canal.json` › `narracao` (os mesmos do motor) e
 **um pedido por linha abaixo** (como na produção, um pedido por parágrafo), **sem nenhum alias e com o acento do roteiro**, para o
@@ -219,12 +230,12 @@ amostra errar, o caminho é o alias, não tirar o acento (sem ele, a voz tende a
 ## O que a cópia para a voz vai trocar (para o passo seguinte)
 
 Não é pronúncia de nome, mas é onde a voz costuma errar (`marca/pronuncias.md`, "Leituras que a voz costuma errar"). A forma é a
-do `_ferramentas/preparar-voz.mjs` dos vídeos 3 e 4; o vídeo 5 ainda não tem o dele.
+do `_ferramentas/preparar-voz.mjs` dos vídeos 3 e 4. O do vídeo 5 existe desde 27/10/2026: ele dá 66 trocas (`voz/trocas.md`).
+Se o texto do portão for o roteiro com algarismos (a pergunta 12 dos requisitos, que vai ao Lucas com a amostra acima), a cópia
+fica só de reserva.
 
-- **Os anos do século XIV não passam pelo preparar-voz de hoje:** a regra de ano dele só pega 1500 a 2099
-  (`/\b(1[5-9]\d\d|20\d\d)\b/`). "between 1381 and 1391" (13º parágrafo) sobraria em algarismo, e o script para com "ficou dígito".
-  O do vídeo 5 precisa da regra para 13xx: thirteen eighty-one and thirteen ninety-one. É também um par de anos com o mesmo verbo:
-  conferir de ouvido que a voz não o lê como quantidade.
+- **Os anos do século XIV:** a regra de ano dos vídeos 3 e 4 só pegava 1500 a 2099 (`/\b(1[5-9]\d\d|20\d\d)\b/`). A do vídeo 5
+  pega desde 1300: thirteen eighty-one and thirteen ninety-one. Na amostra de 27/10, o v4 leu o par como anos, com algarismo.
 - **Datas com dia** (o ordinal): "On January 27, 1883" (3º) → On January twenty-seventh, eighteen eighty-three; "On Wednesday,
   December 19, 2018" (18º) → December nineteenth, twenty eighteen.
 - **Anos**: 1883 → eighteen eighty-three; 1918 (12º; o do 14º saiu na r1, L18), 1939 (6º e 19º), 1964 (2º, 7º, 25º, 26º e 27º, duas
