@@ -64,3 +64,19 @@ para este vídeo, cada uma com a mensagem dele e a hora (Brasília). Onde a deci
   "do vídeo 5 em diante", na numeração antiga).
 - **A animação sobre o mapa, mais vezes** (Lucas, 24/10/2026, no balanço: "agora há também animações sobre o mapa (o que é o
   correto e deveria ocorrer mais)"; `marca/identidade.md` §5).
+
+## Antes da direção de arte (28/10/2026, 14:0x, no chat da Sala, na conta reserva)
+
+As três perguntas foram feitas às 12:5x e cortadas pela queda de energia antes da resposta; refeitas depois da volta.
+- **A tela final e o comentário.** A pergunta: "Nos 20 s finais do vídeo (a tela em que o YouTube põe os vídeos sugeridos), o que
+  fica na tela e onde entra o pedido de comentário?" As opções eram como nos vídeos anteriores (Recomendado), a foto da ISS de volta e
+  sem pedido de comentário. A resposta, escrita por ele: **"Eu achei nosso finais bem sem graça, queria novas sugestões, mas que mantenha
+  o comentário"**. A tela final fica em aberto até ele escolher entre sugestões novas; o pedido de comentário fica.
+- **As cores.** À pergunta "A cor de destaque do vídeo fica com quem?": **"A Fossa de Porto Rico (Recomendado)"**. A opção dizia: "A
+  cor de destaque fica com a Fossa de Porto Rico e o ponto mais fundo dela, do começo ao fim. A outra candidata, a Fossa das Sandwich do
+  Sul, fica com a cor de contraparte. O vermelho de alerta só aparece no risco (os tsunamis)." É a paleta proposta no espelho.
+- **Os vídeos da NOAA em HD.** À pergunta "Se a NOAA só tiver em HD os vídeos do peixe-caracol (cena 27) e do pepino-do-mar do fundo
+  (cena 72), posso usar em HD, como o vídeo do mergulho 9?": **"Pode usar em HD (Recomendado)"**. A opção dizia: "São registros reais
+  do fundo da fossa, e a NOAA só filma em HD lá embaixo. O conferente de mídia confere a licença de cada um, como sempre." Quando o
+  conferente der `pendente_lucas` a esses dois por serem HD, a Sala o despacha de novo com esta mensagem e a hora, para a
+  `excecao_lucas`.
