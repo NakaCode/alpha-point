@@ -12,6 +12,8 @@ pauta (`pautas/2026-10-24-video-5.md` §9).
   baixado.
 - **O enquadramento** (visto numa prévia de 1280 × 853, só para conferir):
   - é a costa norte de Porto Rico em San Juan: a baía, o aeroporto e a lagoa, com o norte para cima;
+    - **Corrigido em 28/10/2026:** essa é a descrição da 1042. A 1036 mostra Porto Rico inteiro, com Vieques e Culebra a leste e a Mona a
+      sudoeste (a Sala, pela folha do conferente, `out/atlantico-fundo/_tmp/conferencia/lote2/s01-folha.jpg`, feita dos arquivos inteiros);
   - o Atlântico ocupa o terço de cima, com nuvens;
   - **a fossa não está no quadro.** O ponto mais fundo fica a uns 116 mi de San Juan, ao norte, e a 83 mi da costa mais perto
     (Aguadilla);

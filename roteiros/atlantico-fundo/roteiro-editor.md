@@ -312,8 +312,8 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
 - "About 83 miles off Puerto Rico, a U.S. island, lies the deepest point in the Atlantic Ocean."
   - F01 (a foto ISS071-E-1036, S44, S45), F02 (S01, S02, S03), F04 (134,3 km = 83,5 mi, S01, S55), F05 (S16, S46, S27); R16, R30, N26,
     N31. Paga o 1º título palavra por palavra e o 2º ("about 83 miles", "Puerto Rico", "a U.S. island"); a marca dos EUA na 1ª frase.
-    "Off Puerto Rico", nunca "off this coast" nem "from San Juan" (a foto mostra San Juan; as 83 mi são de Aguadilla).
-  - Imagem real (1ª do lugar): a foto da ISS, San Juan e o mar ao norte, com o empurrão lento subindo para o mar (0–3 s); crédito "Image
+    "Off Puerto Rico", nunca "off this coast" nem "from San Juan" (a foto mostra a ilha inteira; as 83 mi são da costa de Aguadilla).
+  - Imagem real (1ª do lugar): a foto da ISS, Porto Rico inteiro e o mar ao norte, com o empurrão lento subindo para o mar (0–3 s); crédito "Image
     courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center". O "83 MI" NÃO vai sobre a foto. Aos ~3 s, o
     mapa assume e voa para o norte.
 - "It's more than five miles down."

@@ -23,7 +23,7 @@ Na fala, distância e profundidade só em milhas e pés; um número por frase, d
 
 ### O gancho
 
-- **F01** · *firme* · A foto de abertura é a ISS071-E-1036, da Estação Espacial (06/04/2024, Nikon Z9, 50 mm), na página 'Puerto Rico From Above' da NASA (14/11/2025): a costa norte de Porto Rico em San Juan, com o Atlântico no terço de cima e o norte para cima. A fossa fica fora do quadro. O arquivo grande tem 6902 × 4601 px.
+- **F01** · *firme* · A foto de abertura é a ISS071-E-1036, da Estação Espacial (06/04/2024, Nikon Z9, 50 mm), na página 'Puerto Rico From Above' da NASA (14/11/2025): Porto Rico inteiro, com Vieques e Culebra a leste e a Mona a sudoeste, o mar em volta (o Atlântico no terço de cima) e o norte para cima. A fossa fica fora do quadro. O arquivo grande tem 6902 × 4601 px.
   - Como dizer: Say the place the photo shows: 'off this island' or 'off Puerto Rico'. Not 'right there' or 'off this coast' pointing at San Juan with the 83 miles.
   - valor 6902 × 4601 px.
   - Fontes: S44, S45. Lida pela Sala em 24/10 (roteiros/atlantico-fundo/abertura-conferida-2026-10-24.md; pauta §6 e §9, item 5). Licença da NASA, com o crédito 'Image courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center'. Passa do 4K com folga (1,8 vez a largura), e o empurrão lento cabe; ele pode subir para o mar, e o mapa continua dali para o norte. A outra foto da página (iss071e001042, 8256 × 5504) traz nomes impressos na prévia: reserva, a conferir.
@@ -595,7 +595,7 @@ A forma do roteiro (en-US), as formas das fontes e o cuidado de pronúncia. As p
 - **R27 · O Meteor sem mergulho** (*reticencias*): O 'N/A' da Five Deeps, não um universal. Como dizer: The expedition mapped it but didn't dive there.
 - **R28 · O Oceano Austral em 1937** (*inferencia*): Já esteve na S-23 de 1937: nunca 'for the first time'. Como dizer: It had been on the organization's official list once before, in 1937, and was dropped in 1953.
 - **R29 · O 'Pressure Deep'** (*inferencia*): Que o ponto proposto em 2019 é o Meteor de hoje é dedução consistente, não escrita; 'had wanted' se apoia no blog. Como dizer: The expedition had wanted to call it Pressure Deep, after its own ship.
-- **R30 · San Juan na foto** (*inferencia*): A foto mostra San Juan; as 83 mi são de Aguadilla. Como dizer: About 83 miles off this island… (nunca 'off this city' nem 'from San Juan')
+- **R30 · San Juan na foto** (*inferencia*): A foto mostra a ilha inteira (corrigido em 28/10/2026: o registro de 24/10 dizia San Juan, que é a 1042); as 83 mi são da costa de Aguadilla. Como dizer: About 83 miles off this island… (nunca 'off this city' nem 'from San Juan')
 - **R31 · As datas do sonar** (*inferencia*): O levantamento da Five Deeps é de dezembro de 2018 e saiu em 2021; a estimativa de 2019 usou dados mais velhos: a ordem das frases não pode inverter isso. Como dizer: In 2019, a study of older public sonar data put the deepest point about 36 miles farther west… The expedition's survey, published in 2021, placed it in U.S. waters.
 - **R32 · O limite dos peixes** (*reticencias*): 8.400 m = 27.559 ft; a NOAA arredonda para 28.000 ft: ou a conta, ou o número da NOAA atribuído. Como dizer: By NOAA's estimate, no fish lives much deeper than about 27,500 feet.
 

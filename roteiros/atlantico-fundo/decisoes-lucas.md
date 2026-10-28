@@ -10,8 +10,8 @@ para este vídeo, cada uma com a mensagem dele e a hora (Brasília). Onde a deci
 - **A abertura** (18:0x): **"As duas (Recomendado)"**.
   - O vídeo abre na foto da ISS (ISS071-E-1036), com um empurrão lento, e o mapa voa até a fossa.
   - O vídeo da NOAA em HD (EX1502 L3 Dive 09) entra mais adiante. A resposta cobre o HD como exceção dele à regra do 4K.
-  - O que se conferiu da foto e do relevo: `roteiros/atlantico-fundo/abertura-conferida-2026-10-24.md`. A foto mostra San Juan, e a
-    fossa fica fora do quadro. O relevo da MapTiler não tem o fundo do mar: o fundo vem da GEBCO.
+  - O que se conferiu da foto e do relevo: `roteiros/atlantico-fundo/abertura-conferida-2026-10-24.md`. A foto mostra San Juan (corrigido em
+    28/10/2026: mostra Porto Rico inteiro; San Juan de perto é a 1042), e a fossa fica fora do quadro. O relevo da MapTiler não tem o fundo do mar: o fundo vem da GEBCO.
 - **O título** (18:4x): **"Manter o meu e o "Only" para teste"**. Vão a teste no YouTube Studio:
   - *The Deepest Point in the Atlantic Ocean* (o título dele);
   - *The Deepest Point in the Atlantic Ocean Is Only 83 Miles From a U.S. Island*.
@@ -91,7 +91,8 @@ As três perguntas foram feitas às 12:5x e cortadas pela queda de energia antes
   profundidade. Não gasta MapTiler."
 - O que segue, pela proposta A (`propostas.md`, "A · A descida" e "O que a Sala faz depois da resposta"):
   - a s75 passa de `mapa` a `desenho` (ANIMAÇÃO, editor-de-arte em Opus), sem fusão com a s74; a s74 volta à borda comum
-    (677,833 s), e o plano 3 da s73 passa a 2,10 s;
+    (677,833 s), e o plano 3 da s73 passa a 2,10 s. Esses números são do relógio de antes; com o parágrafo 15 refeito (15:4x),
+    ficaram 678,1 s e 2,133 s (espelho r3, `34849733…`);
   - o comentário entra à esquerda, de ~1 a ~8 s da cauda (`marca/cta.md` §6), com a pergunta do `redator-de-tela`;
   - o `pesquisa-geo` dá o perfil da GEBCO 2026 ao longo da linha das 83 mi, da costa de Aguadilla (18,5130°N, 67,1145°W) ao anel
     (19,712°N, 67,311°W); sem o perfil, a parede esquemática da s71.
@@ -121,6 +122,24 @@ As três perguntas saíram do que as seis pesquisas acharam (`out/atlantico-fund
   **"Foto do robô e mapa (Recomendado)"**. A opção dizia: "Uso a foto real do robô sendo baixado ao mar pelo navio, da mesma
   expedição de 2015, impressa sobre a mesa, e o mapa com o ponto do mergulho. O vídeo pequeno fica de fora."
   - O trailer de 640×360 fica no rascunho, fora da cena. O vídeo da NOAA em HD da decisão de 24/10 ("As duas") não existe aberto.
+
+## Os vídeos em HD, de novo (28/10/2026, 17:38, no chat da Sala, na conta reserva)
+
+A verificação do espelho r3 (`out/atlantico-fundo/_tmp/verificar-espelho-r3/decisoes-fidelidade.json`, DF-01) mostrou que a
+resposta das 14:0x ("Pode usar em HD") partia de uma premissa que não vale: a opção dizia "São registros reais do fundo da fossa", e
+os vídeos achados não são. A Sala perguntou de novo: "Os vídeos em HD que achei para as cenas 27 e 72 não são do fundo da Fossa de
+Porto Rico, como a pergunta das 14h dizia. O peixe-caracol é do Alasca, a 1.365 m (2023). O pepino-do-mar é de St. Croix, nas Ilhas
+Virgens, a 2.400 m (2015). Na tela vai o lugar real de cada um. Uso assim?" A resposta: **"Pode usar, com o lugar real
+(Recomendado)"**. A opção dizia: "Mostram o animal de que a fala trata, filmado pela NOAA, com o lugar e a profundidade de origem na
+legenda. Nada na tela diz que é a fossa." É esta resposta, e não a das 14:0x, que vai à `excecao_lucas` do conferente na s27 e na s72.
+
+## A gravura do Challenger (28/10/2026, 17:5x, no chat da Sala, na conta reserva)
+
+O `conferente-de-midia` (lote 2) deu `pendente_lucas` à gravura da s17. A pergunta: "Na cena 17, não existe fotografia do navio HMS
+Challenger em acervo aberto, só gravura e pintura. Posso usar a gravura de 1872 do jornal Illustrated London News, com "Engraving,
+1872" na tela, como fizemos com a pintura de Pizarro no Peru? Ela é de domínio público e vai impressa sobre a mesa." A resposta: **"Pode
+usar a gravura (Recomendado)"**. A opção dizia: "Entra a gravura, com o aviso "Engraving, 1872" na tela. É a imagem de época mais fiel
+do navio que existe aberta." Vai ao conferente como `excecao_lucas`.
 
 ## O parágrafo refeito e o retrato do Brownson (28/10/2026, 15:4x, no chat da Sala, na conta reserva)
 
