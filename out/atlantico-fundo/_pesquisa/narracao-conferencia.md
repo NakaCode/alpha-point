@@ -106,3 +106,40 @@ próprio v4.
   (5:24), Okeanos (6:18), Aguadilla (6:59), Vescovo (7:08, 10:42 e 11:16), Jamieson (7:41, 8:02 e 9:47) e NOAA (2:52 a 11:17).
   Nome que ele ouvir errado ganha o alias de reserva da `roteiros/atlantico-fundo/pronuncia.md` na cópia para a voz, e só aquele
   trecho se refaz (`narrar.mjs atlantico-fundo --refazer=N`, depois `tratar-narracao.py` de novo).
+- **O ok do Lucas** (28/10/2026, às 10:2x, no chat da Sala na conta reserva), depois de receber a narração e os nomes: **"Tudo certo
+  com o áudio"**. Nenhum trecho refeito; o master sai desta narração (`30cfff20a8ea`).
+
+## O relógio de palavras (ingest)
+
+- **O alinhamento da ElevenLabs** (`node out/juneau/_pesquisa/alinhamento-elevenlabs.mjs atlantico-fundo`, só GET, sem gasto;
+  `alinhamento-1.log`): os 28 trechos casados pelo `request_id`, o texto igual ao aprovado (2.028 palavras). Em 27 trechos o
+  alinhamento mede 0,08 s a mais que o PCM, e a última palavra fica presa ao fim do som do trecho (o mesmo v4 dos vídeos 3 e 4).
+- **O master** (`node out/juneau/_pesquisa/gerar-master.mjs atlantico-fundo`, `master-1.log`): `_media/_master.mp4`, preto 3840×2160
+  a 30 fps com a narração, 713,95 s, carimbo da narração `30cfff20a8ea`.
+- **1ª rodada** (`python -X utf8 -B out/juneau/_pesquisa/ingest-local.py atlantico-fundo`, `ingest-1.log`, 1.231 s): REPROVADO em dois
+  portões, os outros 5 passaram (palavras, duração, fora das falas, idioma, cobertura de 0,970 a 1,037).
+  - `conteudo`: 23 itens em 17 trechos, todos do transcritor e todos já na conferência acima. São 15 "thousand" que somem quando o
+    Whisper escreve "1 ,500" (o próprio algarismo prova o milhar: "23 ,000", "27 ,500"); as duas datas, que no recorte curto ele ouve
+    como "27th" e "19th"; e as grafias "Archimede", "Anagata", "Jamison" (2), "cruise" (o homófono de "crew's") e "Cusqueal".
+  - `relogio`: dois vãos com voz e sem vale no som, de 0,28 s cada: t21 "expedition's | results," (519,535–519,815) e t28 "the |
+    Atlantic," (689,525–689,805). Nos dois, o ouvido do script fechou o vão na 1ª borda: a 2ª palavra ocupa o vão. O script avisa que
+    essa escolha não prova nada.
+- **A conferência da Sala nos dois vãos** (`conferir-vaos-som.py`, desta pasta, no método do cético do som do vídeo 3:
+  `out/zona-do-canal/_tmp/relogio-vaos-cetico-som.md`; `conferir-vaos-som-1.log` e `-2.log`). Usei a energia em 10 ms, com a razão
+  entre as bandas de 3 a 10 kHz e de menos de 1 kHz. Usei também a varredura de corte com o Whisper, em que o recorte que COMEÇA
+  no ponto é o que discrimina, e cada palavra em recorte isolado.
+  - **t21:** o /z/ de "expedition's" vai de 519,455 a 519,485 s. Segue um vale leve, de 519,495 a 519,525 s (−25 a −27 dBFS). Em
+    519,535 s o /r/ de "results" começa a subir. O resto da palavra se vê no som: o /z/ do meio (519,60–519,68), a oclusão do /t/
+    (−50 dBFS em 519,925) e o /s/ (519,935–520,075, +30 dB).
+    - O recorte que começa em 519,535 ouve "Results published".
+    - O que termina em 519,535 ouve só "The expedition's". O que termina em 519,585 já ouve uma palavra a mais ("were", que é o
+      /r/).
+    - Na borda antiga (519,815), o recorte que começa ali perde o "results" ("published in"). A 1ª palavra cortada ali ouve "The
+      expedition's result".
+    - **A troca fica entre 519,50 e 519,535: a borda 519,535 erra no máximo 0,03 s.**
+  - **t28:** a 1ª oclusão do /t/ de "Atlantic" fica em 689,585–689,625 (−26 a −32 dBFS). Depois vêm o "lan" (689,635–689,795), o 2º
+    /t/ (a explosão em 689,855–689,875) e o /k/ (690,0–690,1), antes da pausa da vírgula.
+    - O recorte que começa em 689,495 ainda ouve "the Atlantic". O que começa em 689,525 ouve só "Atlantic".
+    - Na borda antiga (689,805), o recorte que começa ali não ouve nada. A 1ª palavra cortada ali ouve "in the Atlantic".
+    - **A troca fica entre 689,495 e 689,525: a borda 689,525 erra no máximo 0,03 s.**
+  - Nos dois vãos, o alinhamento do v4 põe a 2ª palavra uns 0,28 s atrasada, como nos 9 vãos do vídeo 3.
