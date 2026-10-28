@@ -80,3 +80,54 @@ As três perguntas foram feitas às 12:5x e cortadas pela queda de energia antes
   do fundo da fossa, e a NOAA só filma em HD lá embaixo. O conferente de mídia confere a licença de cada um, como sempre." Quando o
   conferente der `pendente_lucas` a esses dois por serem HD, a Sala o despacha de novo com esta mensagem e a hora, para a
   `excecao_lucas`.
+
+## A tela final (28/10/2026, 14:5x, no chat da Sala, na conta reserva)
+
+- O diretor de arte fez quatro propostas novas, todas com o pedido de comentário à esquerda: a prancha e o texto estão em
+  `out/atlantico-fundo/_tmp/tela-final/` (`prancha.png`, `prancha.html`, `propostas.md`). A pergunta: "Qual tela final fecha o
+  vídeo 4? As quatro mantêm o pedido de comentário à esquerda nos primeiros segundos." A resposta: **"A · A descida
+  (Recomendado)"**. A opção dizia: "Um desenho no traço do canal: a câmera mergulha da superfície até o fundo em 20 s, com a
+  profundidade contando até 27.487 pés, os anos das visitas passando e o anel do ponto mais fundo no fim. O escurecer vira
+  profundidade. Não gasta MapTiler."
+- O que segue, pela proposta A (`propostas.md`, "A · A descida" e "O que a Sala faz depois da resposta"):
+  - a s75 passa de `mapa` a `desenho` (ANIMAÇÃO, editor-de-arte em Opus), sem fusão com a s74; a s74 volta à borda comum
+    (677,833 s), e o plano 3 da s73 passa a 2,10 s;
+  - o comentário entra à esquerda, de ~1 a ~8 s da cauda (`marca/cta.md` §6), com a pergunta do `redator-de-tela`;
+  - o `pesquisa-geo` dá o perfil da GEBCO 2026 ao longo da linha das 83 mi, da costa de Aguadilla (18,5130°N, 67,1145°W) ao anel
+    (19,712°N, 67,311°W); sem o perfil, a parede esquemática da s71.
+
+## Depois da pesquisa (28/10/2026, 15:0x, no chat da Sala, na conta reserva)
+
+As três perguntas saíram do que as seis pesquisas acharam (`out/atlantico-fundo/_tmp/pesquisa-imagens/relato.md` e
+`_tmp/pesquisa-pessoas/relato.md`).
+- **A frase do robô de 2015** (o parágrafo 15 do `roteiro-narrador.md`, cena s47). A pergunta: "Achei um erro de fato na narração
+  aprovada. A frase diz que, em 2015, o robô da NOAA filmou a parede sul da fossa. O relatório oficial do mergulho diz que ele só
+  filmou a água, na descida e na subida: chegou a 6.000 m e o mergulho foi abortado logo depois, sem tempo no fundo. Como seguimos?"
+  A resposta: **"Corrigir a frase (Recomendado)"**. A opção dizia: "Troco só esse trecho, para dizer que o robô desceu quase 20.000
+  pés junto à parede sul, sem dizer que a filmou. A voz refaz só esse parágrafo (menos de 500 créditos). Você ouve o trecho novo, e
+  eu refaço o relógio e o plano. Agora é o momento mais barato: nenhuma cena foi construída."
+  - A fonte é o resumo oficial do mergulho (S32, `midia/atlantico-fundo/fontes/fa-noaa-ir-21287-ex1502l3-dive09.txt`): "Bottom
+    Time: N/A", "Observations in the water column during descent and ascent". A reverificação: `roteiros/atlantico-fundo/qc-roteiro/
+    f132-reverificacao-2026-10-28.laudo.md`.
+- **As fotos da Five Deeps.** A pergunta: "A pauta deixou de fora as fotos da Five Deeps (a expedição de 2018) porque não eram
+  livres. A empresa da expedição liberou umas 12 delas no Wikimedia Commons, com licença aberta (CC BY-SA 4.0) e pedindo crédito.
+  Entre elas estão o submersível no dia do mergulho na fossa (19/12/2018) e um retrato do Vescovo de 2018. Posso usá-las?" A
+  resposta: **"Pode usar, com crédito (Recomendado)"**. A opção dizia: "Elas passam pelo conferente de mídia como as outras. O
+  crédito vai na tela: "Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0"."
+  - Vale só para o que a Caladan Oceanic licenciou no Commons com a permissão registrada (VRT); o resto do material da Five Deeps
+    continua fora (pauta §6).
+- **O vídeo do mergulho de 2015** (cena s47). A pergunta: "O vídeo do mergulho de 2015 que você pediu para o meio do vídeo só existe
+  aberto em 640×360, abaixo do HD. O HD sai só por pedido no site da NOAA, com formulário e e-mail. Como fica a cena?" A resposta:
+  **"Foto do robô e mapa (Recomendado)"**. A opção dizia: "Uso a foto real do robô sendo baixado ao mar pelo navio, da mesma
+  expedição de 2015, impressa sobre a mesa, e o mapa com o ponto do mergulho. O vídeo pequeno fica de fora."
+  - O trailer de 640×360 fica no rascunho, fora da cena. O vídeo da NOAA em HD da decisão de 24/10 ("As duas") não existe aberto.
+
+## O parágrafo refeito e o retrato do Brownson (28/10/2026, 15:4x, no chat da Sala, na conta reserva)
+
+- **O parágrafo 15 refeito** (só ele, pela API; 156 créditos), mandado com um pedaço do anterior e do seguinte
+  (`out/atlantico-fundo/_tmp/escuta/p15-refeito-com-vizinhos.mp3`). A pergunta: "A voz ficou como o resto da narração?" A resposta:
+  **"Está bom"**. Dele saem o relógio novo (`words.json` `a86e44af…`) e o master.
+- **O retrato do Brownson (s14).** A pergunta: "Para o card do Brownson (cena 14), a Marinha americana tem um retrato dele dos anos
+  1890, mais perto de 1883 que o atual, de 1900–1909. Ele só sai pelo navegador do app. Posso baixar este arquivo? NH 64332, "Captain
+  Willard H. Brownson, USN", JPEG de 1280 px (161 KB), do site da Marinha (history.navy.mil)." A resposta: **"Sim, baixar
+  (Recomendado)"**. Baixado às 15:52 (`out/atlantico-fundo/_tmp/pesquisa-pessoas/nhhc-brownson-2026-10-28.md`, §5).

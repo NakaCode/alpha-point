@@ -1,6 +1,9 @@
 # Folha de pronúncia
 
-Revisão do roteiro: `7b965eecdb7c`
+Revisão do roteiro: `ddd4567309e3`
+
+> 28/10/2026: a única mudança desde `7b965eecdb7c` é "filmed" → "descended along" na 1ª frase do parágrafo 15 (a reverificação F132,
+> com o ok do Lucas). Nenhum nome novo: esta folha vale como estava.
 
 > Para o passo de voz do vídeo 5 (o ponto mais fundo do Atlântico, na Fossa de Porto Rico). Feita em 26/10/2026 sobre o texto
 > falado de `roteiros/atlantico-fundo/roteiro-narrador.md` (sha256 do texto falado pelo `gate.mjs`: `4694e58092c2…`, 30

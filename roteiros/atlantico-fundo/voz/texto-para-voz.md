@@ -1,4 +1,4 @@
-> Revisão do roteiro: `7b965eecdb7c`
+> Revisão do roteiro: `ddd4567309e3`
 
 About eighty-three miles off Puerto Rico, a U.S. island, lies the deepest point in the Atlantic Ocean. It's more than five miles down. Stand Mount Everest on the bottom, and its top one thousand five hundred feet would stick out of the water. When you think "deepest ocean," you think Mariana. But that's the Pacific, about nine thousand five hundred miles away.
 
@@ -28,7 +28,7 @@ Farther east, an island holds a sign of what the trench itself can do. Anegada i
 
 The earthquake behind that wave struck the eastern part of this trench, far from its deepest point. Computer models put it at magnitude eight or more. The scientists who dated the coral call the wave the only known sign that this stretch of the trench has produced a quake that big. They think quakes like that come thousands of years apart.
 
-In twenty fifteen, a NOAA robot filmed the trench's south wall, almost twenty thousand feet down. That's a long way east of its deepest point. The robot, Deep Discoverer, worked from the ship Okeanos Explorer, on one of a dozen dives it made on that voyage. Soon after, a problem with the robot cut this one short.
+In twenty fifteen, a NOAA robot descended along the trench's south wall, almost twenty thousand feet down. That's a long way east of its deepest point. The robot, Deep Discoverer, worked from the ship Okeanos Explorer, on one of a dozen dives it made on that voyage. Soon after, a problem with the robot cut this one short.
 
 In December twenty eighteen, the Five Deeps Expedition came to map the trench with a modern multibeam sonar, on a ship called the Pressure Drop. The expedition's goal was to reach the deepest point of each of the five oceans. To get the sonar right, the team measured how fast sound travels at every depth, from the surface to the floor.
 

@@ -24,11 +24,12 @@ inteira sai daqui, na conta do canal, pelo `narrar.mjs` da pré-v1, sobre a cóp
 |---|---|---|---|---|---|
 | 27/10, 00:04–00:06 | a amostra antes do portão, revisão `7b965eecdb7c`: os 14 pedidos de nomes da `pronuncia.md` (12 das frases deles têm algarismo) e as outras 44 frases com algarismo do roteiro (23 pedidos, um por parágrafo), 37 pedidos, 5.856 caracteres, na grafia do roteiro (com algarismos), com os parâmetros do narrador do motor (`estudio/canal-motor.json` › `narracao`: eleven_v4, a voz `829pig94w9GefZ9jJQYl`, stability 0,5, similarity 0,75, `language_code` "en", `pcm_44100`, `/with-timestamps`, sem seed) | 5.396.399 | 5.394.660 | 1.739 | 37 recibos, 2.820 créditos, em `out/atlantico-fundo/_tmp/amostra-voz/recibos.jsonl` |
 | 28/10, 02:26–02:29 | a narração inteira, pelo `narrar.mjs` (`narrar-1.log`): a cópia por extenso da revisão `7b965eecdb7c`, 28 pedidos, um por parágrafo, 11.764 caracteres; 694,0 s | 5.388.729 | 5.383.343 | 5.386 | 5.665 (`narracao.json` › `custo.character_cost_total`) |
+| 28/10, 15:21 | o parágrafo 15 refeito, pelo `narrar.mjs` (`narrar-2.log`): a cópia por extenso da revisão `ddd4567309e3` ("filmed the trench's south wall" → "descended along the trench's south wall"), 1 pedido, 323 caracteres; os outros 27 trechos do cache | 5.380.860 | 5.380.860 (o contador ainda não tinha andado) | — | 1 recibo, 156 créditos (`dxGkHeuJLy4IAMIjPBcQ`; `narracao.json` › segmento do trecho 15) |
 
 O v4 cobrou 0,48 crédito por caractere (2.820 por 5.856), como nos vídeos 3 e 4. O contador do saldo anda com atraso (a conta é
 compartilhada com outros canais), e a conta do vídeo segue pelos recibos.
 
-**Soma do vídeo até aqui:** 8.485 créditos pelos recibos (2.820 da amostra e 5.665 da narração; teto de 15.000).
+**Soma do vídeo até aqui:** 8.641 créditos pelos recibos (2.820 da amostra, 5.665 da narração e 156 do parágrafo 15 refeito; teto de 15.000).
 
 ## A amostra (27/10/2026)
 
@@ -143,3 +144,29 @@ próprio v4.
     - Na borda antiga (689,805), o recorte que começa ali não ouve nada. A 1ª palavra cortada ali ouve "in the Atlantic".
     - **A troca fica entre 689,495 e 689,525: a borda 689,525 erra no máximo 0,03 s.**
   - Nos dois vãos, o alinhamento do v4 põe a 2ª palavra uns 0,28 s atrasada, como nos 9 vãos do vídeo 3.
+
+## O parágrafo 15 refeito (28/10/2026, à tarde)
+
+- **Por quê.** A pesquisa de imagens achou, e a reverificação confirmou, que a 1ª frase do parágrafo 15 era falsa: "In 2015, a NOAA
+  robot filmed the trench's south wall" (`roteiros/atlantico-fundo/qc-roteiro/f132-reverificacao-2026-10-28.laudo.md`: o resumo do
+  mergulho dá "Bottom Time: N/A" e só "Observations in the water column during descent and ascent"; o relatório da expedição diz
+  "without exploring the seafloor at this dive location"). O Lucas, 15:0x: "Corrigir a frase (Recomendado)". A escrita, em Fable:
+  "In 2015, a NOAA robot descended along the trench's south wall, almost 20,000 feet down." (`out/atlantico-fundo/_tmp/frase-2015/
+  escrita.md`). O verificador a confirmou, e o laudo de fatos do roteiro inteiro foi refeito por diff (`qc-roteiro/fatos.laudo.md`,
+  revisão `ddd4567309e3`, 285 de 285, PASS; o anterior em `fatos-r3c.laudo.md`). O `gate.mjs --derivados` passa.
+- **A voz.** Só o trecho 15, pelo `narrar.mjs` (os outros 27 vieram do cache): 323 caracteres, 156 créditos (tabela acima). O trecho
+  passou de 19,84 s a 20,08 s (366,78–386,86 s): tudo o que vem depois andou +0,24 s. A narração nova tem 694,19 s de fala.
+- **A conferência.** `conferir-paragrafos.py` (`conferir-2.log`): trecho 15 a 98,4 %, com a única marca do transcritor no milhar
+  ("thousand" → "zero"); os outros 27 como antes. O recorte (`conferir-recortes-2.log`) ouve "almost 20 ,000 feet down"; o fim
+  (`conferir-fins-2.log`) termina em "short." a p 1,0.
+- **O tratamento** (`tratar-2.log`): 28 trechos esmaecidos, nenhum som solto, cauda de 20 s; 694,19 → 714,19 s; sha `aa7d7c95107d` →
+  `70d99287436c`.
+- **A escuta do Lucas**, com um pedaço do parágrafo anterior e do seguinte (`out/atlantico-fundo/_tmp/escuta/p15-refeito-com-vizinhos.mp3`,
+  31,6 s), às 15:4x: **"Está bom"**.
+- **O relógio.** O alinhamento da ElevenLabs refeito só por GET (`alinhamento-2.log`). O `ingest-local.py` (`ingest-3.log`) deu os mesmos
+  23 itens do transcritor e os mesmos 2 vãos sem vale, agora em 519,775 e 689,765 (+0,24 s). A Sala refez a conferência dos dois no som
+  (`conferir-vaos-som-3.log`), e ela repete a de antes deslocada: o recorte que começa em 519,775 ouve "Results published", e o que
+  termina ali ouve só "The expedition's"; o que começa em 689,735 ouve "the Atlantic", e o que começa em 689,785, só "Atlantic". Com
+  os aceites (`ingest-4.log`): **APROVADO, 7 de 7**, `words.json` `a86e44af…`, 2.029 palavras (uma a mais, "along").
+- **O master** (`master-2.log`): `_media/_master.mp4`, preto 3840×2160 a 30 fps com a narração nova, 714,19 s (o contêiner arredonda
+  a 714,200 s), carimbo `70d99287436c`.

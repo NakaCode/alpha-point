@@ -47,7 +47,7 @@ The earthquake behind that wave struck the eastern part of this trench, far from
 
 <!-- p5 · A robot, a sonar and a man alone -->
 
-In 2015, a NOAA robot filmed the trench's south wall, almost 20,000 feet down. That's a long way east of its deepest point. The robot, Deep Discoverer, worked from the ship Okeanos Explorer, on one of a dozen dives it made on that voyage. Soon after, a problem with the robot cut this one short.
+In 2015, a NOAA robot descended along the trench's south wall, almost 20,000 feet down. That's a long way east of its deepest point. The robot, Deep Discoverer, worked from the ship Okeanos Explorer, on one of a dozen dives it made on that voyage. Soon after, a problem with the robot cut this one short.
 
 In December 2018, the Five Deeps Expedition came to map the trench with a modern multibeam sonar, on a ship called the Pressure Drop. The expedition's goal was to reach the deepest point of each of the five oceans. To get the sonar right, the team measured how fast sound travels at every depth, from the surface to the floor.
 
