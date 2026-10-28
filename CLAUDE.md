@@ -47,6 +47,13 @@ contabilizado". O Juneau, arquivado sem publicar, sai da contagem:
   manter a MAIN sempre atualizada").
   - O repositório é `top10-company/alpha-point`, privado. O `gh` 2.92 está instalado, com o login do Lucas.
   - Depois de cada commit, `git push origin main`.
+  - **A cópia na conta do Lucas** (28/10/2026). O Lucas pediu "uma cópia do meu repositório na minha conta (fora da
+    organiza[ção])". À pergunta "Ela fica sempre em dia ou é só a cópia de hoje?", ele respondeu "Sempre em dia (Recomendado)".
+    - A cópia é `NakaCode/alpha-point`, privada. É um repositório independente, não um fork: o fork de um repositório privado
+      é apagado se a organização tira o acesso. Ela está no remote `pessoal`.
+    - Depois de cada `git push origin main`, rode `git push pessoal main`.
+    - Ela só recebe: nunca se puxa dela nem se faz merge dela.
+    - Se ela recusar o push porque a história divergiu, pare e avise o Lucas. Nunca force push.
   - Se a `main` de lá andou: `git fetch` e merge na `main` daqui, resolvendo o conflito, e depois o push. Nunca force push,
     nem reescrever o histórico que já subiu.
   - O `segredos.mjs --staged` continua antes de cada commit, e nada pessoal vai ao git ("Caça nos bancos pagos").
