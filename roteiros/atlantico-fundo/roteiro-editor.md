@@ -312,7 +312,8 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
     mapa assume e voa para o norte.
 - "It's more than five miles down."
   - F03 (8.378 ± 5 m = 27.487 ft = 5,21 mi, S01, S03), F10 (19,712°N, 67,311°W, S01); R02.
-  - Mapa: o voo chega ao anel do ponto mais fundo sobre a GEBCO 2026 (S52), a fossa demarcada pela curva de 8.000 m; a linha "≈ 83 MI"
+  - Mapa: o voo chega ao anel do ponto mais fundo sobre a GEBCO 2026 (S52), o trecho mais fundo da fossa demarcado pela curva de 8.000 m (só ele: a curva não fecha a fossa
+    inteira; verificação do espelho, 28/10/2026); a linha "≈ 83 MI"
     sai da costa de Aguadilla (18,5130°N, 67,1145°W, S55), nunca de San Juan; o contador desce até "27,487 FT · MORE THAN 5 MI".
 - "Stand Mount Everest on the bottom, and its top 1,500 feet would stick out of the water."
   - F06 (8.848,86 m − 8.378 m = 470,86 m = 1.545 ft; S26, a AP de 08/12/2020, com cópia local desde a leitura 10), F03; R24, N02 (nunca
@@ -362,8 +363,9 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
 - "On January 27, 1883, a steamer called the Blake, from the U.S. Coast and Geodetic Survey, lowered a weighted wire into the sea north of Puerto Rico."
   - F23 (S11, o relatório do Superintendente de 1883, p. 46; S12); C12, C13 (vale o relatório do próprio ano, não o IHR 1936 que atribui
     a Sigsbee). "Weighted wire" é a forma da leitura 04 ("sounded", no relatório). O nome do órgão inteiro, a 1ª vez (nomes).
-  - Mapa: abre o MAPA DAS VISITAS; a região falada ("north of Puerto Rico") é a faixa de mar ao norte da ilha, com a fossa acesa pela
-    curva de 8.000 m; o alfinete "1883 · BLAKE" cai em 19°40'50"N, 66°23'40"W (F23). A costa em satélite da MapTiler, com o crédito
+  - Mapa: abre o MAPA DAS VISITAS; a região falada ("north of Puerto Rico") é a faixa de mar ao norte da ilha, com a fossa inteira acesa
+    por uma isóbata mais rasa e declarada (a curva de 8.000 m só fecha o trecho mais fundo, e a sondagem de 1883 fica fora
+    dela; verificação do espelho, 28/10/2026); o alfinete "1883 · BLAKE" cai em 19°40'50"N, 66°23'40"W (F23). A costa em satélite da MapTiler, com o crédito
     (liberada para o vídeo 5 "como no Peru").
   - Ilustração sobre o mapa: o navio em traço de engenheiro baixa o arame, que desce num corte lateral até tocar o fundo.
 - "Its commander was a Navy officer named Brownson." (r2, L45: a oração "who had taken charge of the ship a few months earlier" saiu da voz: o nome fica, como a presença de p1; o mês em que ele assumiu o navio não voltava e alongava o minuto mais frágil do vídeo; a data fica no card)
@@ -399,7 +401,8 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - Ilustração: o marcador "23,250 FT" no medidor, sem o ano (N52).
 - "The trench runs for hundreds of miles, almost parallel to Puerto Rico's north coast."
   - F20 (em disputa, 810 × 1.750 km: só "hundreds of miles", R23, N36); F02 nota (S01, p. 2: a fossa quase paralela à costa norte).
-  - Mapa: a câmera corre a fossa inteira ao longo da costa norte (a região falada demarcada pela curva de 8.000 m, GEBCO 2026).
+  - Mapa: a câmera corre a fossa inteira ao longo da costa norte (a região falada é a fossa inteira, por uma isóbata mais rasa e declarada da GEBCO 2026; a curva de
+    8.000 m só fecha o trecho mais fundo; verificação do espelho, 28/10/2026).
 - "In 1939, the cruiser USS Milwaukee bounced sound off the bottom north of Puerto Rico."
   - F26 (em disputa: 30.246 ft × 28.680 ft × 8.750 m; S08, S09, S10); R04, C09. "North of Puerto Rico", nunca "here": a posição do
     Milwaukee muda de fonte para fonte. SEM alfinete (F29 nota); a tela diz "NORTH OF PUERTO RICO" sobre a fossa.
@@ -894,7 +897,8 @@ onde p6 põe o número da lista dentro da rocha. Quem constrói é o `editor-de-
   - Ilustração: no medidor, a faixa "8,200–8,400 M · FISH LIMIT (NOAA ESTIMATE)" atravessando a régua, com o fundo do sonar dentro dela.
 - "The net that brought up the cusk-eel in 1970 had gone down nearly that far."
   - F69 (8.370 m; S30, S31); R13 (a rede, não o peixe), N18.
-  - Ilustração: a rede de 1970 aparece de leve chegando perto da faixa; o submersível de p5 fica pousado no fundo, dentro dela.
+  - Ilustração: a rede de 1970 desce dentro da faixa, quase até ~27,500 FT, logo acima do fundo do sonar (27,487 FT;
+    verificação do espelho, 28/10/2026); o submersível de p5 fica pousado no fundo, dentro dela.
 - "The deepest point in the Atlantic, about 83 miles off Puerto Rico, sits right at that edge."
   - F03 (8.378 m), F70 (8.378 m dentro da faixa de 8.200–8.400 m: a comparação é da checagem), F04 (as 83 mi); R16, N26 (nunca San Juan
     nem "capital" com as 83 mi: o portão [83-san-juan]). A última frase volta ao 1º título e ao lugar do 2º; nada depois dela além da
