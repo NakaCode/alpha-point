@@ -1013,6 +1013,20 @@ arquivadas. O painel caiu no mesmo dia: "Não vamos fazer o painel, não há nec
 
 ## O motor sem rosto do Top10 (desde 24/10/2026, com o vídeo 5 como piloto)
 
+**O piloto passa à Passagem de Drake, o vídeo 5 na numeração nova** (Lucas, 28/10/2026, 02:2x, no chat da Sala: "Vamos continuar
+esse vídeo com nosso motor. O Top10 entra no próximo"). O vídeo 4 (`atlantico-fundo`) sai no jeito de hoje: a narração pela API, o
+relógio, a linha da Régie, os setores, a linha do tempo e o Premiere. O que esta seção diz do "vídeo 5" foi escrito na numeração
+antiga e falava do Atlântico ("A numeração dos vídeos", no topo):
+- vão para o piloto da Drake as respostas de 24 e 25/10 sobre o motor: a trilha automática, sem banco no piloto, as conferências
+  por fora, a palavra dele nos portões, a nuvem, o PC 24 h, as duas contas Claude, o relógio, o YouTube e o veto da trilha;
+- ficam com o Atlântico: a aprovação do roteiro (27/10, 02:40), os nomes ouvidos (27/10, 13:1x), o MapTiler liberado como no Peru
+  (com o contador anotado a cada render, em `out/atlantico-fundo/_pesquisa/maptiler-gasto.md`) e o crédito a 60 px, que a
+  identidade registra do Atlântico em diante. A caça nos bancos volta, se a lista de mídia pedir, e a trilha sai pela lista da
+  Epidemic com o "sim" dele;
+- deixam de valer no Atlântico: o texto do portão (`roteiros/atlantico-fundo/motor/roteiro-portao.md` fica como registro) e os
+  números em algarismos na voz, cujo motivo era o motor não ter cópia para a voz. A voz do Atlântico lê a cópia com os números por
+  extenso (`out/atlantico-fundo/roteiro.md`), como nos vídeos 1 a 3.
+
 **A decisão.** O Lucas, 24/10/2026, depois de publicar o Peru: "Lembrando também que para o próximo temos algumas coisas novas no
 github". A novidade é o motor sem rosto do `top10-company/top10-estudio` (a skill `motor-sem-rosto`). À pergunta "Como fazemos o vídeo
 5?", ele respondeu **"Vídeo 5 no motor"**. A opção dizia: "Eu monto o pacote agora, o Top10 instala a máquina, e o vídeo 5 sai pelo

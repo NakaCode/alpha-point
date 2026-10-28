@@ -3,8 +3,8 @@
 O motor novo produz o Alpha Point no PC do escritório (`lucasrosa-escritorio`), no seu mesmo usuário do Windows, para
 você ver tudo o que ele faz, sem conversa aberta. Ele trabalha na pasta `C:\estudio\` e numa distro do WSL só dele
 (`estudio-alpha-point`), sem mexer na pasta `C:\projetos\alpha-point`, nas suas sessões do app nem nas distros que você
-já usa. O jeito de hoje continua até você aprovar o vídeo piloto (o vídeo 5); o Peru você termina no jeito atual, depois
-de 22/10.
+já usa. O jeito de hoje continua até você aprovar o vídeo piloto, que passou a ser a Passagem de Drake (você decidiu em
+28/10/2026: «Vamos continuar esse vídeo com nosso motor. O Top10 entra no próximo»). O Peru e o Atlântico saem no jeito atual.
 
 O que fica com você, sempre: escolher a pauta entre opções, aprovar o roteiro, escolher título e capa, ver o vídeo pronto
 e publicar. O resto roda sozinho. Os portões do motor só se aprovam com a sua palavra: o Mateus entra como operador e
