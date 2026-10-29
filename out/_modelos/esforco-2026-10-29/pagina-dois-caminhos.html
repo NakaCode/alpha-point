@@ -1,0 +1,653 @@
+<title>Dois caminhos para a cota</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: uma coluna de leitura (~68ch), a resposta primeiro (o gráfico e a tabela dos dois caminhos) e o porquê depois; a paleta e as fontes são as do canal (marca/tokens.css). */
+:root {
+  --bg: #F2F5F9;
+  --surface: #FFFFFF;
+  --ink: #14181F;
+  --muted: #566173;
+  --line: #D6DDE7;
+  --accent: #B86E00;
+  --accent-fill: #F5A524;
+  --teal: #13897E;
+  --c-gasto: #5B6B82;
+  --on-gasto: #FFFFFF;
+  --c-reler: #7FB2E0;
+  --c-gravar: #2EC4B6;
+  --c-largada: #157A71;
+  --c-regravar: #E4572E;
+  --c-resposta: #F5A524;
+  --c-app: #B9C3D0;
+  --c-claude: #6F7B8E;
+  --c-dado: #F5A524;
+  --c-quadro: #E4572E;
+  --c-portao: #8E5BD6;
+  --c-ver: #7FB2E0;
+  --c-fixo: #6F7B8E;
+  --c-construir: #2EC4B6;
+  --c-outra: #C3CBD6;
+  --c-sala: #E4572E;
+  --c-misto: #F5A524;
+  --c-agente: #2EC4B6;
+  --area: rgba(127, 178, 224, 0.22);
+  --f-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --f-mono: ui-monospace, "Cascadia Mono", "Consolas", "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1726; --surface: #172338; --ink: #F4F1EA; --muted: #A6B0C0; --line: #2B3B57;
+    --accent: #F5A524; --accent-fill: #F5A524; --teal: #2EC4B6; --c-gasto: #9AA6B8; --on-gasto: #0E1726;
+    --c-reler: #8CC3EE; --c-gravar: #2EC4B6; --c-largada: #5FD9CC; --c-regravar: #F06A43; --c-resposta: #F5A524;
+    --c-app: #4A5A74; --c-claude: #8C97AA; --c-dado: #F5A524; --c-quadro: #F06A43; --c-portao: #A97BEA;
+    --c-ver: #8CC3EE; --c-fixo: #8C97AA; --c-construir: #2EC4B6; --c-outra: #3D4C66;
+    --c-sala: #F06A43; --c-misto: #F5A524; --c-agente: #2EC4B6; --area: rgba(140, 195, 238, 0.16);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1726; --surface: #172338; --ink: #F4F1EA; --muted: #A6B0C0; --line: #2B3B57;
+  --accent: #F5A524; --accent-fill: #F5A524; --teal: #2EC4B6; --c-gasto: #9AA6B8; --on-gasto: #0E1726;
+  --c-reler: #8CC3EE; --c-gravar: #2EC4B6; --c-largada: #5FD9CC; --c-regravar: #F06A43; --c-resposta: #F5A524;
+  --c-app: #4A5A74; --c-claude: #8C97AA; --c-dado: #F5A524; --c-quadro: #F06A43; --c-portao: #A97BEA;
+  --c-ver: #8CC3EE; --c-fixo: #8C97AA; --c-construir: #2EC4B6; --c-outra: #3D4C66;
+  --c-sala: #F06A43; --c-misto: #F5A524; --c-agente: #2EC4B6; --area: rgba(140, 195, 238, 0.16);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 64px;
+}
+.wrap { max-width: 980px; margin: 0 auto; display: grid; gap: 56px; }
+.prose { max-width: 68ch; }
+header { display: grid; gap: 14px; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(44px, 8vw, 76px); line-height: 0.95; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+h2 { font-family: var(--f-display); font-weight: 800; font-size: clamp(30px, 4.6vw, 40px); line-height: 1.02; margin: 0; text-wrap: balance; }
+h2 .path-no { color: var(--accent); }
+h3 { font-size: 17px; font-weight: 700; margin: 0; }
+p { margin: 0; }
+.lede { font-size: 19px; color: var(--ink); max-width: 62ch; }
+section { display: grid; gap: 18px; }
+.stack { display: grid; gap: 12px; }
+.muted { color: var(--muted); }
+code, .mono { font-family: var(--f-mono); font-size: 0.88em; }
+.num { font-family: var(--f-display); font-weight: 800; font-variant-numeric: tabular-nums; }
+ol, ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.note { border-left: 3px solid var(--accent-fill); padding: 4px 0 4px 14px; color: var(--ink); max-width: 68ch; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* o ponto */
+.meter { display: grid; gap: 8px; max-width: 760px; }
+.meter-bar { position: relative; height: 34px; border-radius: 6px; background: var(--surface); border: 1px solid var(--line); overflow: hidden; }
+.meter-fill { position: absolute; inset: 0 auto 0 0; background: var(--accent-fill); }
+.meter-one { position: absolute; top: 0; bottom: 0; left: 0; width: 1%; background: var(--ink); opacity: .85; }
+.meter-scale { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.fact { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.fact .num { font-size: 34px; line-height: 1; }
+.fact p { font-size: 14px; color: var(--muted); }
+
+/* figuras */
+figure { margin: 0; display: grid; gap: 10px; }
+.fig-scroll { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.fig-scroll svg { display: block; width: 100%; min-width: 560px; height: auto; }
+figcaption { font-size: 14px; color: var(--muted); max-width: 72ch; }
+svg text { fill: var(--ink); font-family: var(--f-body); }
+svg .lbl-muted { fill: var(--muted); }
+svg .lbl-on { fill: var(--on-gasto); }
+svg .lbl-acc { fill: var(--accent); }
+svg .grid { stroke: var(--line); stroke-width: 1; }
+svg .axis { stroke: var(--muted); stroke-width: 1; }
+svg .whisk { stroke: var(--ink); stroke-width: 1.5; }
+.f-gasto { fill: var(--c-gasto); }
+.f-sai { fill: var(--c-gasto); fill-opacity: .16; stroke: var(--c-gasto); stroke-width: 1.2; stroke-dasharray: 4 3; }
+.f-reler { fill: var(--c-reler); } .f-gravar { fill: var(--c-gravar); } .f-largada { fill: var(--c-largada); }
+.f-regravar { fill: var(--c-regravar); } .f-resposta { fill: var(--c-resposta); } .f-app { fill: var(--c-app); } .f-claude { fill: var(--c-claude); }
+.t-d { fill: var(--c-dado); } .t-q { fill: var(--c-quadro); } .t-p { fill: var(--c-portao); } .t-v { fill: var(--c-ver); }
+.t-f { fill: var(--c-fixo); } .t-c { fill: var(--c-construir); } .t-o { fill: var(--c-outra); }
+.f-area { fill: var(--area); } .s-line { fill: none; stroke: var(--c-reler); stroke-width: 2; }
+.s-enxuto { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-dasharray: 6 4; }
+.dot-mec { stroke: var(--ink); stroke-width: 1.2; }
+
+/* preço */
+.prices { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.price { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; }
+.price .swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; vertical-align: -2px; margin-right: 8px; }
+.price .num { font-size: 30px; line-height: 1; }
+.price p { font-size: 14px; color: var(--muted); }
+
+/* barra empilhada */
+.stackbar { display: flex; height: 44px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+.stackbar > div { display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #14181F; font-variant-numeric: tabular-nums; min-width: 0; }
+.keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 8px 18px; }
+.key { display: grid; grid-template-columns: 14px 1fr; gap: 10px; align-items: start; font-size: 14px; }
+.key i { width: 14px; height: 14px; border-radius: 3px; margin-top: 4px; }
+.key b { font-variant-numeric: tabular-nums; }
+
+/* cartões dos caminhos */
+.cards { display: grid; gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 14px; }
+.card-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; align-items: baseline; }
+.card-head h3 { font-family: var(--f-display); font-weight: 800; font-size: 26px; }
+.tag { font-size: 13px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+.flow { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 720px) { .flow { grid-template-columns: 1fr 1fr; } }
+.flow > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.flow h4 { margin: 0; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 13px; line-height: 1.3; padding: 5px 9px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); }
+.chip.mec { border-color: var(--c-dado); }
+.chip.one { border: 2px solid var(--teal); font-weight: 600; }
+.card dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; font-size: 14px; }
+.card dt { color: var(--muted); }
+.card dd { margin: 0; min-width: 0; }
+@media (max-width: 520px) { .card dl { grid-template-columns: 1fr; } .card dt { margin-top: 6px; } }
+.small { font-size: 14px; }
+
+/* claude.md */
+.md-bar { display: flex; height: 40px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+.md-bar > div { min-width: 2px; border-right: 1px solid var(--surface); }
+.md-bar > div:last-child { border-right: 0; }
+.md-list { display: grid; gap: 6px; font-size: 14px; }
+.md-row { display: grid; grid-template-columns: 14px 1fr auto; gap: 10px; align-items: center; }
+.md-row i { width: 14px; height: 14px; border-radius: 3px; }
+.md-row span:last-child { font-variant-numeric: tabular-nums; color: var(--muted); }
+
+/* a tabela dos caminhos */
+.table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 14px; }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font-size: 13px; color: var(--ink); font-weight: 700; }
+thead th span { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+tbody th { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; width: 150px; }
+tr:last-child td, tr:last-child th { border-bottom: 0; }
+td .num { font-size: 24px; line-height: 1.1; display: block; }
+td .range-txt { font-size: 12px; color: var(--muted); }
+td.both { background: color-mix(in srgb, var(--accent-fill) 9%, transparent); }
+
+/* o que se pede */
+.steps { counter-reset: s; list-style: none; padding: 0; display: grid; gap: 10px; max-width: 68ch; }
+.steps li { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: baseline; }
+.steps li::before { counter-increment: s; content: counter(s); font-family: var(--f-display); font-weight: 800; font-size: 22px; color: var(--accent); }
+.decisions { display: grid; gap: 14px; }
+.decision { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 8px; }
+.decision ol { list-style: upper-alpha; }
+.rec { font-size: 12px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: .06em; margin-left: 6px; }
+footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-width: 80ch; border-top: 1px solid var(--line); padding-top: 18px; }
+@media (prefers-reduced-motion: no-preference) { .meter-fill { transition: width .6s ease; } }
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">Alpha Point · a cota semanal · medido em 29/10/2026</span>
+  <h1>Dois caminhos para a cota</h1>
+  <p class="lede">Os agentes gastam a maior parte da cota com a própria pilha de trabalho: relendo, gravando e regravando. Há dois caminhos para gastar menos sem mexer na qualidade. O primeiro são os scripts. O segundo é o jeito de hoje, com a releitura resolvida. Os dois também se somam.</p>
+  <p class="muted prose">Os números vêm das conversas deste PC: os 60 agentes do vídeo 4 (<code>atlantico-fundo</code>), das 22h de 28/10 às 10h35 de 29/10.</p>
+</header>
+
+<section aria-labelledby="s-caminhos">
+  <h2 id="s-caminhos">Os dois caminhos, lado a lado</h2>
+  <p class="prose">Num dia como 29/10, o canal gastou uns 40 pontos da barra semanal. Um ponto é 1 % da barra (a parte seguinte explica a conta). Cada caminho tira uma parte desses 40.</p>
+  <figure>
+    <div class="fig-scroll"><svg id="fig-caminhos" viewBox="0 0 960 300" role="img" aria-label="Num dia de 40 pontos: os scripts tiram uns 6 (de 4 a 9), o jeito de hoje com a releitura resolvida tira uns 5 (de 4 a 6), e os dois juntos tiram uns 10 (de 7 a 14)"></svg></div>
+    <figcaption>A barra cheia é o que continuaria gasto num dia como 29/10, e a parte tracejada é o que sai, no centro da estimativa. O traço embaixo de cada barra mostra a faixa. Só um teste num lote confirma.</figcaption>
+  </figure>
+  <figure>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"><span>Caminho 1</span>Os scripts</th>
+            <th scope="col"><span>Caminho 2</span>Como está, com a releitura resolvida</th>
+            <th scope="col"><span>1 e 2</span>Os dois juntos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Sai do total</th>
+            <td><span class="num">~15 %</span><span class="range-txt">de 10 a 23 %</span></td>
+            <td><span class="num">~12 %</span><span class="range-txt">de 9 a 15 %</span></td>
+            <td class="both"><span class="num">~25 %</span><span class="range-txt">de 18 a 35 %</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Num dia como 29/10</th>
+            <td>uns 6 pontos a menos, de 4 a 9</td>
+            <td>uns 5 pontos a menos, de 4 a 6</td>
+            <td class="both">uns 10 pontos a menos, de 7 a 14</td>
+          </tr>
+          <tr>
+            <th scope="row">Onde mexe</th>
+            <td>Tira voltas do agente: o trabalho mecânico sai dele.</td>
+            <td>Deixa cada volta mais leve: a pilha começa menor e não se regrava.</td>
+            <td class="both">As duas coisas.</td>
+          </tr>
+          <tr>
+            <th scope="row">O que custa fazer</th>
+            <td>De 1 a 2 pontos. A Sala escreve três scripts e os prova em cenas prontas.</td>
+            <td>Menos de 1 ponto. O texto do CLAUDE.md muda de lugar, e uma regra entra nas roupas.</td>
+            <td class="both">De 2 a 3 pontos.</td>
+          </tr>
+          <tr>
+            <th scope="row">Para as peças</th>
+            <td>Quem despacha roda o script antes, e a peça lê um pacote curto em vez de procurar.</td>
+            <td>Nada muda no que elas fazem. Elas começam com menos texto.</td>
+            <td class="both">Os dois.</td>
+          </tr>
+          <tr>
+            <th scope="row">Para você</th>
+            <td>Só a decisão.</td>
+            <td>Ver a divisão do CLAUDE.md antes de ela valer.</td>
+            <td class="both">Ver a divisão.</td>
+          </tr>
+          <tr>
+            <th scope="row">O risco</th>
+            <td>Um erro do pacote passar para todas as peças. A defesa é a impressão digital de cada fonte e a prova antes.</td>
+            <td>Um agente perder uma regra que morava no CLAUDE.md. A defesa é o núcleo guardar toda regra dos agentes, com um índice para o resto.</td>
+            <td class="both">Os dois, testados num lote antes de seguir.</td>
+          </tr>
+          <tr>
+            <th scope="row">A qualidade</th>
+            <td>As mesmas regras, portões e peças. Quem julga continua sendo a peça.</td>
+            <td>As mesmas regras, em outro lugar. A peça relê menos texto que não é dela.</td>
+            <td class="both">A mesma.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+  <p class="note">Os dois mexem em lugares diferentes. O caminho 1 tira voltas, e o caminho 2 deixa cada volta mais leve. Por isso quase se somam: juntos, uns 25 % em vez dos 27 da soma.</p>
+</section>
+
+<section aria-labelledby="s-ponto">
+  <h2 id="s-ponto">Um ponto é 1 % da barra semanal</h2>
+  <div class="prose stack">
+    <p>Quando eu falo em "ponto", é um ponto percentual da barra <b>Semanal</b> do app. Os 100 pontos são a semana inteira de uma conta, e cada conta tem a sua barra: a principal e a reserva.</p>
+    <p>As conversas não dizem em pontos quanto gastaram. Elas dizem em tokens, que eu converto em dólar pelo preço de tabela e depois em pontos, pela calibragem de 08/10, conferida de novo em 29/10.</p>
+  </div>
+  <div class="meter" role="img" aria-label="Barra semanal: os agentes do vídeo 4 gastaram uns 36 dos 100 pontos em pouco mais de 12 horas">
+    <div class="meter-bar"><div class="meter-fill" style="width:36%"></div><div class="meter-one"></div></div>
+    <div class="meter-scale"><span>0</span><span>36 pontos: os 60 agentes, das 22h às 10h35</span><span>100</span></div>
+  </div>
+  <div class="facts">
+    <div class="fact"><span class="num">1 %</span><p>da barra semanal de uma conta: é isso um ponto.</p></div>
+    <div class="fact"><span class="num">≈ US$ 26</span><p>de trabalho em Opus, a preço de tabela, gastam 1 ponto.</p></div>
+    <div class="fact"><span class="num">≈ 2×</span><p>O Fable gasta uns 2 pontos para cada ponto do Opus, pelo mesmo dólar. O Sonnet, uns 1,5.</p></div>
+  </div>
+  <p class="note">Quando o documento diz "uns 6 pontos a menos num dia como 29/10", são 6 % a menos da barra da semana.</p>
+</section>
+
+<section aria-labelledby="s-volta">
+  <h2 id="s-volta">Uma volta, por dentro</h2>
+  <div class="prose stack">
+    <p>Um agente trabalha em <b>voltas</b>. Cada volta é uma resposta dele, e nela o modelo faz três coisas:</p>
+    <ol>
+      <li><b>relê a pilha inteira:</b> o pedido, as instruções e tudo o que ele já leu, rodou e respondeu;</li>
+      <li><b>escreve a resposta:</b> o pensamento, o texto e o próximo comando;</li>
+      <li><b>grava na pilha o que é novo:</b> a resposta e o que o comando devolveu.</li>
+    </ol>
+    <p>A pilha nunca diminui. Na volta 50, ele relê as 49 anteriores inteiras.</p>
+  </div>
+  <figure>
+    <div class="fig-scroll"><svg id="fig-volta" viewBox="0 0 720 300" role="img" aria-label="Seis voltas: a pilha relida cresce a cada volta, com a parte nova e a resposta somadas por cima"></svg></div>
+    <figcaption>Um esquema, fora de escala: a cada volta, o que era novo vira parte da pilha que a próxima volta relê.</figcaption>
+  </figure>
+  <div class="prices">
+    <div class="price"><span><i class="swatch" style="background:var(--c-reler)"></i><b>Reler</b></span><span class="num">US$ 0,20</span><p>por milhão de tokens, no Opus. É barato, mas a pilha de um agente tem uns 300 mil tokens em média, e ele a relê em toda volta.</p></div>
+    <div class="price"><span><i class="swatch" style="background:var(--c-gravar)"></i><b>Gravar o que é novo</b></span><span class="num">US$ 5</span><p>por milhão: 25 vezes o preço de reler. Tudo o que um comando imprime é gravado uma vez e relido em todas as voltas seguintes.</p></div>
+    <div class="price"><span><i class="swatch" style="background:var(--c-resposta)"></i><b>Escrever a resposta</b></span><span class="num">US$ 20</span><p>por milhão: 100 vezes o preço de reler. É aqui que o esforço mexe, porque mais esforço é mais pensamento.</p></div>
+  </div>
+  <div class="prose stack">
+    <p class="muted">Um token é um pedaço de palavra. No texto do canal, em português e com marcação, dá uns 2 caracteres por token: medi isso em 86 leituras dos agentes. No Fable, os três preços são 2,5 vezes os do Opus.</p>
+    <h3>A memória curta</h3>
+    <p>A pilha fica numa memória curta, o cache. Enquanto ela vale, reler sai pelo preço baixo. <b>Nos agentes, ela dura 5 minutos</b>: todas as gravações deles foram na memória de 5 minutos. Se um agente fica mais de 5 minutos parado, esperando um render ou uma rodada de portões, a memória vence. Aí a pilha inteira é gravada de novo, ao preço de gravar.</p>
+  </div>
+</section>
+
+<section aria-labelledby="s-custo">
+  <h2 id="s-custo">Onde foi o custo dos agentes</h2>
+  <p class="prose">De cada 100 pontos que os 60 agentes gastaram:</p>
+  <figure>
+    <div class="stackbar" id="stackbar" role="img" aria-label="Reler 35, gravar o novo 18, gravar a largada 5, regravar a pilha 11, resposta 30"></div>
+    <div class="keys" id="stackkeys"></div>
+  </figure>
+  <div class="prose stack">
+    <p>Reler, gravar e regravar a pilha somam 69 % do custo dos agentes, e é nelas que os dois caminhos mexem. O caminho 1 tira voltas, e cada volta a menos é uma pilha inteira a menos para reler. O caminho 2 encolhe a pilha desde a volta 1 e evita a regravação. A resposta, 30 %, é a parte que o esforço mexe.</p>
+    <p class="note">No documento, chamei tudo o que é pilha de "reler a conversa". A medida de hoje separa as partes: reler, sozinho, é 35 %, e com gravar e regravar a pilha chega a 69 %.</p>
+  </div>
+</section>
+
+<section aria-labelledby="s-real">
+  <h2 id="s-real">A pilha de um agente de verdade</h2>
+  <div class="prose stack">
+    <p>Um mapista do vídeo 4, em Opus, de uma das tarefas desta manhã. Cada ponto é uma volta, na altura da pilha que ela releu. Passe o mouse num ponto para ver o que a volta fez.</p>
+  </div>
+  <figure>
+    <div class="fig-scroll"><svg id="fig-real" viewBox="0 0 900 380" role="img" aria-label="A pilha do mapista cresce de 101 mil para 470 mil tokens em 104 voltas; 40 voltas foram mecânicas; com o CLAUDE.md enxuto, a mesma pilha ficaria 60 mil tokens mais baixa em toda volta"></svg></div>
+    <div class="keys" id="realkeys"></div>
+    <figcaption>A pilha começa com 101 mil tokens antes de ele fazer qualquer coisa. Uns 75 mil são o CLAUDE.md, que o app põe inteiro em todo agente, e o resto são as instruções do app, as ferramentas e o ofício do mapista. Ela termina com 470 mil. Das 104 voltas, <b>40 foram mecânicas</b> (22 procurando dado da cena, 8 montando quadros e 10 rodando portões), e cada uma releu a pilha inteira: são os pontos com contorno, onde o caminho 1 mexe. <b>A linha tracejada é o caminho 2</b>, num esquema: a mesma tarefa com o CLAUDE.md enxuto, 60 mil tokens mais baixa em toda volta. Esse agente gastou o equivalente a US$ 12 de Opus, uns 0,5 ponto: 54 % relendo, 19 % gravando e 28 % na resposta.</figcaption>
+  </figure>
+</section>
+
+<section aria-labelledby="s-scripts">
+  <h2 id="s-scripts"><span class="path-no">Caminho 1.</span> Os scripts</h2>
+  <div class="prose stack">
+    <p>Um script faz no próprio PC, sem gastar cota, o trabalho mecânico que hoje toma voltas do agente. Cada volta a menos é uma releitura a menos da pilha inteira. E o que o script imprime curto deixa a pilha menor em todas as voltas seguintes.</p>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <div class="card-head"><h3>O pacote da cena</h3><span class="tag">~8 % do custo dos agentes</span></div>
+      <div class="flow">
+        <div><h4>Hoje, em várias voltas</h4><div class="chips"><span class="chip mec">grep na regência</span><span class="chip mec">ler trecho do espelho</span><span class="chip mec">imprimir os textos de tela</span><span class="chip mec">ler o veredito da mídia</span><span class="chip mec">ler o laudo e as exceções</span><span class="chip mec">despejar o espelho em texto</span></div><p class="muted small">Cada peça procura a própria cena nos arquivos grandes do vídeo, e cada despejo fica na pilha até o fim.</p></div>
+        <div><h4>Com o script, uma volta</h4><div class="chips"><span class="chip one">ler o pacote da cena</span></div><p class="muted small">Um arquivo curto, feito por quem despacha: a fala com o tempo de cada palavra, a regência, o conceito, os textos de tela, as mídias com o veredito e o laudo, cada parte com a impressão digital da fonte.</p></div>
+      </div>
+      <dl><dt>Quem roda</dt><dd>A Sala ou o setor, logo antes do despacho: <code>ferramentas/pacote-cena.py</code>.</dd><dt>O que continua</dt><dd>O ofício, a roupa e o julgamento da peça. Ela abre o original quando precisa.</dd></dl>
+    </article>
+    <article class="card">
+      <div class="card-head"><h3>As folhas de quadros</h3><span class="tag">~6 % do custo dos agentes</span></div>
+      <div class="flow">
+        <div><h4>Hoje, em várias voltas</h4><div class="chips"><span class="chip mec">ffmpeg: um quadro</span><span class="chip mec">ffmpeg: outro tempo</span><span class="chip mec">escrever o script da folha</span><span class="chip mec">montar a folha</span><span class="chip">abrir a folha</span></div><p class="muted small">No vídeo 4 foram 176 comandos de ffmpeg no qc-visual e 138 voltas de quadros no mapista.</p></div>
+        <div><h4>Com o script, duas voltas</h4><div class="chips"><span class="chip one">folhas-cena.py</span><span class="chip">abrir as folhas</span></div><p class="muted small">Os quadros do começo, de cada batida, do fim e das emendas, com o tempo e a fala embaixo.</p></div>
+      </div>
+      <dl><dt>Quem roda</dt><dd>O setor Qualidade, antes de cada lote do qc-visual, e o editor e o mapista, para ver o próprio trabalho.</dd><dt>O que continua</dt><dd>Quem julga a imagem é a peça, com o teto de 25 imagens (M11).</dd></dl>
+    </article>
+    <article class="card">
+      <div class="card-head"><h3>Os portões num comando só</h3><span class="tag">~4 % do custo dos agentes</span></div>
+      <div class="flow">
+        <div><h4>Hoje, em quatro voltas ou mais</h4><div class="chips"><span class="chip mec">qc-cena</span><span class="chip mec">portao-mapa</span><span class="chip mec">portao-margens</span><span class="chip mec">chaves-nos-portoes conferir</span></div><p class="muted small">Cada um com uma saída longa, que fica na pilha, e a hora anotada à mão para o conferir.</p></div>
+        <div><h4>Com o script, uma volta</h4><div class="chips"><span class="chip one">portoes-cena.mjs</span></div><p class="muted small">Uma tabela curta, de cena por portão, com as linhas que reprovaram inteiras. O registro completo fica gravado.</p></div>
+      </div>
+      <dl><dt>Quem roda</dt><dd>O editor e o mapista, antes de entregar, e a Sala, na conferência.</dd><dt>O que continua</dt><dd>Os mesmos portões e as mesmas réguas: o script só os chama na ordem certa e com a pré-carga.</dd></dl>
+    </article>
+  </div>
+  <p class="note">Os três juntos tiram uns 18 % do custo dos agentes, ou 15 % do total (de 10 a 23 %). Montar custa de 1 a 2 pontos. Nenhuma regra, portão ou peça sai.</p>
+</section>
+
+<section aria-labelledby="s-releitura">
+  <h2 id="s-releitura"><span class="path-no">Caminho 2.</span> Como está, com a releitura resolvida</h2>
+  <div class="prose stack">
+    <p>Aqui o trabalho continua como é hoje: as mesmas peças, nas mesmas voltas. O que muda é o peso de cada volta.</p>
+    <h3>A releitura em si não se desliga</h3>
+    <p>O modelo não guarda nada de uma volta para a outra. A pilha é a memória dele, e ele precisa relê-la para continuar. Nenhuma skill faz o agente parar de reler, e a memória curta já deixa a releitura no preço mais baixo. A skill ajuda de outro jeito: ela deixa fora da pilha o texto que o agente não usa.</p>
+    <p>Dá para fazer três coisas: encolher o que se relê, não deixar a memória curta vencer e, depois de medir, encurtar as pilhas.</p>
+  </div>
+
+  <article class="card">
+    <div class="card-head"><h3>1. O CLAUDE.md enxuto, com skills</h3><span class="tag">~10 % do total</span></div>
+    <div class="prose stack">
+      <p>O app põe o CLAUDE.md inteiro em todo agente, na volta 1: são uns <b>75 mil tokens</b>, com o índice de memórias, relidos em toda volta até o fim. Na conta desta manhã, isso foi <b>14 % do custo dos agentes</b>, contando a leitura e a gravação dele.</p>
+      <p>Um agente usa pouco disso. A caça, os avisos do Discord e do Telegram, a trilha, a linha do tempo, o motor sem rosto, a narração e os setores são trabalho só da Sala, e somam uns 39 mil tokens.</p>
+    </div>
+    <figure>
+      <div class="md-bar" id="mdbar" role="img" aria-label="O CLAUDE.md por seção: 53 % só da Sala, 38 % misturado, 8 % usado pelos agentes"></div>
+      <div class="keys">
+        <div class="key"><i style="background:var(--c-sala)"></i><span><b>Só a Sala usa</b>: 39 mil tokens (53 %)</span></div>
+        <div class="key"><i style="background:var(--c-misto)"></i><span><b>Misturado</b>: regras dos agentes e histórico, 28 mil (38 %)</span></div>
+        <div class="key"><i style="background:var(--c-agente)"></i><span><b>Os agentes usam</b>: 6 mil (8 %)</span></div>
+      </div>
+      <div class="md-list" id="mdlist"></div>
+      <figcaption>As seções do CLAUDE.md de hoje, em mil tokens, a 2,2 caracteres por token. A divisão por quem usa é a minha leitura: ela é a proposta, não uma medida.</figcaption>
+    </figure>
+    <div class="prose stack">
+      <p><b>Onde entram as skills.</b> Uma skill é um manual que fica fechado. Na pilha fica só a linha que diz para que ela serve, e o texto inteiro entra quando alguém a usa. A caça já é assim, com a skill <code>cacar-no-chrome</code>, mas o CLAUDE.md repete a caça inteira, e todo agente a relê.</p>
+      <p><b>A proposta.</b> O que é só da Sala vira skill ou arquivo que ela lê quando precisa. O que os agentes usam fica num CLAUDE.md curto, com um índice de onde está cada assunto. Nenhum texto se apaga: ele muda de lugar.</p>
+      <ul>
+        <li><b>Só tirar o que é da Sala:</b> uns 7 % do total.</li>
+        <li><b>Um núcleo de uns 15 mil tokens:</b> uns 10 % do total, de 8 a 11 %. A Sala e os setores também passam a reler menos.</li>
+      </ul>
+      <p class="muted">O risco é um agente perder uma regra que morava lá. A defesa: o núcleo guarda toda regra que um agente usa, o índice diz onde está o resto, as roupas apontam para os arquivos novos, e o teste num lote usa a mesma medida dos scripts.</p>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-head"><h3>2. Nenhum agente parado mais de 5 minutos</h3><span class="tag">até ~4 % do total</span></div>
+    <div class="prose stack">
+      <p>Regravar a pilha inteira custou <b>11 % dos agentes</b>, em 39 vezes. Em 38 % desse valor, o agente tinha ficado mais de 5 minutos esperando um comando, como portões em lote ou um render, e a memória curta venceu.</p>
+      <p>A regra seria esta: nenhum agente espera mais de 5 minutos por um comando, e o que é longo roda fora dele, pela Sala ou pelo setor, antes ou depois.</p>
+      <p class="muted">A memória dos agentes é de 5 minutos, e não achei como o canal a mude: por isso a regra é não deixá-los parados. Os outros 62 % das regravações aconteceram com pausas curtas, e a causa não está medida. Provavelmente é o app aparando uma pilha grande, como nas imagens da M10.</p>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-head"><h3>3. Despachos menores</h3><span class="tag">a medir</span></div>
+    <div class="prose stack">
+      <p>A pilha de um agente chega a 250–550 mil tokens. Menos cenas por despacho deixam a pilha menor, mas cada agente novo paga a largada, que hoje é de uns 100 mil tokens. Com o CLAUDE.md enxuto a largada cai, e aí o despacho menor passa a compensar. Fica para testar depois do item 1.</p>
+    </div>
+  </article>
+  <p class="note">Os itens 1 e 2 juntos tiram uns 12 % do total (de 9 a 15 %), por menos de 1 ponto. O item 3 fica para medir depois.</p>
+</section>
+
+<section aria-labelledby="s-recomendo">
+  <h2 id="s-recomendo">O que eu recomendo</h2>
+  <div class="prose stack">
+    <p><b>Os dois caminhos juntos, testados num lote do vídeo 4.</b> A medida separa o efeito de cada um: a largada mostra o CLAUDE.md, e o número de voltas mostra os scripts.</p>
+    <p>Se for um só, o caminho 2 primeiro. Ele custa menos, vale para todo agente desde o próximo despacho e não muda o trabalho de ninguém. O caminho 1 economiza mais, mas pede montar e provar os scripts antes.</p>
+  </div>
+  <ol class="steps">
+    <li><span>A regra dos 5 minutos entra nas roupas e no regimento dos setores.</span></li>
+    <li><span>Eu te mostro a divisão do CLAUDE.md: o núcleo que fica, o índice e para onde vai cada seção. Ela só vale com o seu ok.</span></li>
+    <li><span>Os três scripts se montam e se provam em cenas prontas do Atlântico, sem pedir mapa à MapTiler.</span></li>
+    <li><span>Um lote do vídeo 4 roda com tudo, e a mesma medida de hoje compara com 29/10.</span></li>
+  </ol>
+</section>
+
+<section aria-labelledby="s-voce">
+  <h2 id="s-voce">O que depende de você</h2>
+  <p class="prose">Responda no chat da Sala. Nada escrito nesta página vale como aprovação.</p>
+  <div class="decisions">
+    <div class="decision">
+      <h3>Qual caminho</h3>
+      <ol>
+        <li>Os dois, testados num lote do vídeo 4.<span class="rec">recomendado</span></li>
+        <li>Só o caminho 2: como está, com a releitura resolvida.</li>
+        <li>Só o caminho 1: os scripts.</li>
+        <li>Nenhum por enquanto.</li>
+      </ol>
+    </div>
+    <div class="decision">
+      <h3>Se entrar o caminho 2</h3>
+      <p>Eu te mostro a divisão do CLAUDE.md antes de mudar qualquer linha. Nenhum texto se apaga, e nada muda sem o seu ok.</p>
+    </div>
+  </div>
+  <p class="muted prose">As outras perguntas do documento continuam lá: o esforço dos agentes, o ultracode dos setores e a Sala.</p>
+</section>
+
+<footer>
+  <p><b>De onde vêm os números.</b> As conversas deste PC: os 60 agentes do vídeo 4, das 22h de 28/10 às 10h35 de 29/10, lidas por scripts que ficam em <code>out/_modelos/esforco-2026-10-29/</code> (<code>releitura-fixos.py</code>, <code>partes-do-custo.py</code>, <code>razao-tokens.py</code> e <code>dados-pagina.py</code>). O preço de tabela está em <code>out/_modelos/peso.md</code>. O dia de 40 pontos é o de 29/10, das 01:00 às 10:40, como no documento.</p>
+  <p>As faixas dos dois juntos descontam a parte em que os caminhos se sobrepõem: com menos voltas, o CLAUDE.md enxuto economiza um pouco menos.</p>
+  <p>O documento com os detalhes dos scripts e as outras decisões: <a href="https://claude.ai/artifact/HRasnQysVLoDBNNpbY88zE" target="_blank" rel="noopener">Scripts no lugar das voltas mecânicas</a>.</p>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent, text) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  // 0. os dois caminhos, em pontos de um dia como 29/10 (40): o que continua gasto, o que sai e a faixa do que sai
+  (function () {
+    var svg = document.getElementById('fig-caminhos');
+    var L = 270, R = 850, T = 26, RH = 62, H = 28, DIA = 40;
+    var ROWS = [
+      ['Hoje', 'o jeito de hoje, sem mudança', 40, 0, 0, 0],
+      ['Caminho 1', 'os scripts', 34, 6, 4, 9],
+      ['Caminho 2', 'como está, com a releitura resolvida', 35, 5, 4, 6],
+      ['Os dois juntos', 'caminhos 1 e 2', 30, 10, 7, 14]
+    ];
+    function X(v) { return L + v * (R - L) / DIA; }
+    var fim = T + ROWS.length * RH - 14;
+    [0, 10, 20, 30, 40].forEach(function (v) {
+      el('line', { x1: X(v), y1: T - 10, x2: X(v), y2: fim, 'class': 'grid' }, svg);
+      el('text', { x: X(v), y: fim + 18, 'text-anchor': 'middle', 'font-size': 12, 'class': 'lbl-muted' }, svg, v === 40 ? '40 pontos' : String(v));
+    });
+    ROWS.forEach(function (r, i) {
+      var y = T + i * RH;
+      el('text', { x: 0, y: y + 13, 'font-size': 15, 'font-weight': 700 }, svg, r[0]);
+      el('text', { x: 0, y: y + 31, 'font-size': 12.5, 'class': 'lbl-muted' }, svg, r[1]);
+      el('rect', { x: X(0), y: y, width: X(r[2]) - X(0), height: H, rx: 3, 'class': 'f-gasto' }, svg);
+      el('text', { x: X(r[2]) - 9, y: y + 19, 'text-anchor': 'end', 'font-size': 14, 'font-weight': 700, 'class': 'lbl-on' }, svg, String(r[2]));
+      if (r[3]) {
+        el('rect', { x: X(r[2]), y: y + 0.6, width: X(DIA) - X(r[2]), height: H - 1.2, rx: 3, 'class': 'f-sai' }, svg);
+        var a = X(DIA - r[5]), b = X(DIA - r[4]), yc = y + H + 8;
+        el('line', { x1: a, y1: yc, x2: b, y2: yc, 'class': 'whisk' }, svg);
+        el('line', { x1: a, y1: yc - 4, x2: a, y2: yc + 4, 'class': 'whisk' }, svg);
+        el('line', { x1: b, y1: yc - 4, x2: b, y2: yc + 4, 'class': 'whisk' }, svg);
+        el('text', { x: X(DIA) + 12, y: y + 15, 'font-size': 16, 'font-weight': 700, 'class': 'lbl-acc' }, svg, '−' + r[3] + ' pontos');
+        el('text', { x: X(DIA) + 12, y: y + 33, 'font-size': 12, 'class': 'lbl-muted' }, svg, 'de ' + r[4] + ' a ' + r[5]);
+      }
+    });
+  })();
+
+  // 1. uma volta por dentro (esquema)
+  (function () {
+    var svg = document.getElementById('fig-volta');
+    var base = 150, x0 = 70, w = 70, gap = 40, sc = 0.55;
+    var pile = 100, cols = 6;
+    for (var i = 0; i < cols; i++) {
+      var x = x0 + i * (w + gap);
+      var relida = pile + i * 30;
+      var hR = relida * sc, hN = 18 * sc + 6, hA = 12 * sc + 4;
+      var yR = base + 110 - hR;
+      el('rect', { x: x, y: yR, width: w, height: hR, rx: 3, 'class': 'f-reler' }, svg);
+      el('rect', { x: x, y: yR - hN, width: w, height: hN, rx: 3, 'class': 'f-gravar' }, svg);
+      el('rect', { x: x, y: yR - hN - hA, width: w, height: hA, rx: 3, 'class': 'f-resposta' }, svg);
+      el('text', { x: x + w / 2, y: base + 132, 'text-anchor': 'middle', 'font-size': 13, 'class': 'lbl-muted' }, svg, 'volta ' + (i + 1));
+    }
+    var lx = x0 + cols * (w + gap) - gap + 18;
+    el('line', { x1: x0 - 10, y1: base + 110, x2: lx - 8, y2: base + 110, 'class': 'axis' }, svg);
+    var legend = [['f-resposta', 'a resposta'], ['f-gravar', 'o que é novo, gravado'], ['f-reler', 'a pilha, relida inteira']];
+    legend.forEach(function (l, j) {
+      el('rect', { x: 20, y: 18 + j * 22, width: 12, height: 12, rx: 2, 'class': l[0] }, svg);
+      el('text', { x: 38, y: 29 + j * 22, 'font-size': 13 }, svg, l[1]);
+    });
+  })();
+
+  // 2. onde foi o custo
+  var PARTES = [
+    ['reler a pilha', 35, 'var(--c-reler)', 'Toda volta relê tudo o que veio antes, ao preço baixo.'],
+    ['gravar o que é novo', 18, 'var(--c-gravar)', 'O resultado de cada comando e a resposta, gravados uma vez.'],
+    ['gravar a largada', 5, 'var(--c-largada)', 'A pilha da volta 1, com o CLAUDE.md e o ofício.'],
+    ['regravar a pilha', 11, 'var(--c-regravar)', 'A pilha inteira de novo, depois que a memória curta venceu.'],
+    ['a resposta', 30, 'var(--c-resposta)', 'O pensamento, o texto e os comandos.']
+  ];
+  (function () {
+    var bar = document.getElementById('stackbar'), keys = document.getElementById('stackkeys');
+    PARTES.forEach(function (p) {
+      var d = document.createElement('div');
+      d.style.flex = p[1] + ' 1 0'; d.style.background = p[2];
+      d.textContent = p[1] >= 8 ? p[1] : '';
+      d.title = p[0] + ': ' + p[1] + ' %';
+      bar.appendChild(d);
+      var k = document.createElement('div'); k.className = 'key';
+      k.innerHTML = '<i style="background:' + p[2] + '"></i><span><b>' + p[1] + ' %</b> ' + p[0] + '. <span class="muted">' + p[3] + '</span></span>';
+      keys.appendChild(k);
+    });
+  })();
+
+  // 3. a pilha do mapista real (contexto de cada volta, em mil tokens, e o tipo da volta)
+  var AG = [[101,"d"],[113,"f"],[114,"f"],[129,"d"],[130,"d"],[133,"d"],[135,"o"],[140,"d"],[143,"o"],[150,"d"],[152,"o"],[157,"d"],[161,"o"],[164,"q"],[167,"d"],[170,"d"],[180,"o"],[184,"o"],[190,"o"],[198,"o"],[203,"o"],[210,"o"],[214,"o"],[220,"o"],[222,"f"],[224,"o"],[225,"d"],[232,"o"],[236,"d"],[236,"d"],[245,"d"],[249,"d"],[249,"c"],[251,"f"],[252,"f"],[256,"d"],[262,"d"],[266,"o"],[270,"o"],[275,"o"],[278,"o"],[280,"d"],[288,"o"],[308,"c"],[309,"f"],[316,"o"],[316,"c"],[317,"f"],[320,"d"],[324,"d"],[325,"c"],[336,"o"],[338,"o"],[340,"q"],[341,"q"],[342,"v"],[347,"d"],[361,"q"],[362,"o"],[362,"o"],[363,"o"],[363,"c"],[366,"v"],[370,"c"],[371,"c"],[376,"o"],[378,"o"],[380,"c"],[387,"c"],[400,"q"],[402,"v"],[406,"o"],[410,"o"],[413,"c"],[415,"q"],[416,"v"],[418,"c"],[420,"c"],[425,"p"],[426,"p"],[427,"o"],[427,"p"],[428,"p"],[429,"p"],[430,"p"],[432,"p"],[433,"p"],[434,"o"],[436,"p"],[436,"p"],[437,"o"],[438,"o"],[439,"c"],[440,"c"],[441,"q"],[442,"v"],[446,"v"],[451,"d"],[452,"q"],[452,"v"],[454,"d"],[456,"c"],[469,"o"],[470,"o"]];
+  var TIPOS = {
+    d: ['procurar dado da cena', true], q: ['montar quadros', true], p: ['rodar portões', true],
+    v: ['olhar quadros', false], f: ['ler ofício, roupa ou marca', false], c: ['construir ou editar a cena', false], o: ['outras: pensar, escrever scripts, conferir', false]
+  };
+  var CORTE = 60; // o CLAUDE.md de ~75 mil vira um núcleo de ~15 mil
+  (function () {
+    var svg = document.getElementById('fig-real');
+    var L = 64, R = 884, T = 16, B = 330, YMAX = 500, N = AG.length;
+    function X(k) { return L + (k - 1) * (R - L) / (N - 1); }
+    function Y(v) { return B - v * (B - T) / YMAX; }
+    [0, 100, 200, 300, 400, 500].forEach(function (v) {
+      el('line', { x1: L, y1: Y(v), x2: R, y2: Y(v), 'class': 'grid' }, svg);
+      el('text', { x: L - 8, y: Y(v) + 4, 'text-anchor': 'end', 'font-size': 12, 'class': 'lbl-muted' }, svg, v + ' mil');
+    });
+    [1, 25, 50, 75, 104].forEach(function (k) {
+      var ult = k === N;
+      el('text', { x: ult ? R + 8 : X(k), y: B + 20, 'text-anchor': ult ? 'end' : 'middle', 'font-size': 12, 'class': 'lbl-muted' }, svg, 'volta ' + k);
+    });
+    // o que é fixo desde a volta 1 (os rótulos à direita, longe da linha tracejada)
+    el('rect', { x: L, y: Y(19), width: R - L, height: Y(0) - Y(19), 'class': 'f-app', opacity: 0.9 }, svg);
+    el('rect', { x: L, y: Y(96), width: R - L, height: Y(19) - Y(96), 'class': 'f-claude', opacity: 0.55 }, svg);
+    el('text', { x: R - 10, y: Y(9) + 4, 'text-anchor': 'end', 'font-size': 12 }, svg, 'instruções do app, ferramentas e ofício · 19 mil');
+    el('text', { x: R - 10, y: Y(58) + 4, 'text-anchor': 'end', 'font-size': 13, 'font-weight': 700 }, svg, 'CLAUDE.md e o índice de memórias · ~75 mil, relidos em toda volta');
+    // a área da pilha
+    var d = 'M ' + X(1) + ' ' + Y(96);
+    AG.forEach(function (a, i) { d += ' L ' + X(i + 1) + ' ' + Y(a[0]); });
+    d += ' L ' + X(N) + ' ' + Y(96) + ' Z';
+    el('path', { d: d, 'class': 'f-area' }, svg);
+    var ln = 'M ' + X(1) + ' ' + Y(AG[0][0]);
+    AG.forEach(function (a, i) { ln += ' L ' + X(i + 1) + ' ' + Y(a[0]); });
+    el('path', { d: ln, 'class': 's-line' }, svg);
+    // o caminho 2, num esquema: a mesma pilha sem os 60 mil do CLAUDE.md
+    var lx = 'M ' + X(1) + ' ' + Y(AG[0][0] - CORTE);
+    AG.forEach(function (a, i) { lx += ' L ' + X(i + 1) + ' ' + Y(a[0] - CORTE); });
+    el('path', { d: lx, 'class': 's-enxuto' }, svg);
+    el('text', { x: X(60), y: Y(250), 'font-size': 13, 'class': 'lbl-muted' }, svg, 'o que a tarefa juntou');
+    AG.forEach(function (a, i) {
+      var t = TIPOS[a[1]];
+      var c = el('circle', { cx: X(i + 1), cy: Y(a[0]), r: t[1] ? 5 : 3.6, 'class': 't-' + a[1] + (t[1] ? ' dot-mec' : '') }, svg);
+      el('title', {}, c, 'volta ' + (i + 1) + ' · ' + t[0] + ' · pilha de ' + a[0] + ' mil tokens');
+    });
+    var keys = document.getElementById('realkeys');
+    var tr = document.createElement('div'); tr.className = 'key';
+    tr.innerHTML = '<i style="background:none;border-top:2px dashed var(--ink);height:0;margin-top:11px"></i><span><b>A linha tracejada</b>: o caminho 2, a mesma pilha com o CLAUDE.md enxuto <span class="muted">(esquema)</span></span>';
+    keys.appendChild(tr);
+    var cont = {};
+    AG.forEach(function (a) { cont[a[1]] = (cont[a[1]] || 0) + 1; });
+    ['d', 'q', 'p', 'v', 'f', 'c', 'o'].forEach(function (k) {
+      var div = document.createElement('div'); div.className = 'key';
+      div.innerHTML = '<i style="background:var(--c-' + { d: 'dado', q: 'quadro', p: 'portao', v: 'ver', f: 'fixo', c: 'construir', o: 'outra' }[k] + ')' + (TIPOS[k][1] ? ';outline:1.5px solid var(--ink)' : '') + '"></i><span><b>' + cont[k] + '</b> ' + TIPOS[k][0] + (TIPOS[k][1] ? ' <span class="muted">(mecânica, caminho 1)</span>' : '') + '</span>';
+      keys.appendChild(div);
+    });
+  })();
+
+  // 4. o CLAUDE.md por seção (mil tokens) e quem usa: A = os agentes, M = misturado, S = só a Sala
+  var MD = [
+    ['Quem está do outro lado, a numeração, as regras do canal', 1.0, 'A'],
+    ['O que você pode, e o que não pode', 1.1, 'A'],
+    ['A marca', 3.0, 'A'],
+    ['O vídeo fala inglês; a casa fala português', 1.1, 'A'],
+    ['Os especialistas (portões, scripts, tropeços e o histórico das decisões)', 21.5, 'M'],
+    ['Peças da pré-v1 em uso', 6.9, 'M'],
+    ['Caça nos bancos pagos', 14.2, 'S'],
+    ['O motor sem rosto do Top10', 4.2, 'S'],
+    ['O que a Régie faz (a narração)', 4.1, 'S'],
+    ['A autonomia do vídeo 2 em diante', 4.0, 'S'],
+    ['Os setores', 3.3, 'S'],
+    ['A trilha: Epidemic Sound', 2.6, 'S'],
+    ['A linha do tempo pré-render', 2.5, 'S'],
+    ['O Discord e o Telegram', 3.6, 'S'],
+    ['Como rodar e atualizar o motor', 0.7, 'S']
+  ];
+  (function () {
+    var bar = document.getElementById('mdbar'), list = document.getElementById('mdlist');
+    var COR = { A: 'var(--c-agente)', M: 'var(--c-misto)', S: 'var(--c-sala)' };
+    MD.forEach(function (m) {
+      var d = document.createElement('div');
+      d.style.flex = m[1] + ' 1 0'; d.style.background = COR[m[2]];
+      d.title = m[0] + ': ' + m[1].toFixed(1).replace('.', ',') + ' mil tokens';
+      bar.appendChild(d);
+    });
+    MD.slice().sort(function (a, b) { return b[1] - a[1]; }).slice(0, 8).forEach(function (m) {
+      var r = document.createElement('div'); r.className = 'md-row';
+      r.innerHTML = '<i style="background:' + COR[m[2]] + '"></i><span>' + m[0] + '</span><span>' + m[1].toFixed(1).replace('.', ',') + ' mil</span>';
+      list.appendChild(r);
+    });
+  })();
+})();
+</script>
