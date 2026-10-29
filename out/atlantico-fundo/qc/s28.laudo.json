@@ -1,0 +1,141 @@
+{
+  "cena": "s28",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "Exceção do Lucas: qc-tamanho, crédito a 60 px ('Source: NOAA Ocean Exploration, 2026' 60<72), '60 px (Recomendado)', 24/10/2026 entre 17h e 19h (Brasília); sha1 do HTML 92327c40693f = o da exceção em qc/_excecoes-portao.json. É só o crédito: o crédito de mapa (MapTiler/OSM + GEBCO, data-qc-credito='mapa', var(--fs-credito)=60px) passa no piso de 40. A faixa de crédito, na folha de t=3,87 s em diante: três linhas a partir de x 200, a de cima abaixo de y 1880.",
+        "portao-margens no sha1 e na marca de hoje (6314f177…): veredito 0, 9 itens medidos em 76 amostras, avisos []; no qc-cena do sha1 final, check-overlap, fora-do-quadro e crédito-fantasma saíram 0 (portoes-saidas.jsonl) e o carimbo só falha em 'tamanho'. Não remedi no olho.",
+        "Sinalização: a pílula '1970 · NET' (104 px) fica colada em '30,000 FT'. No recorte 4K de t=5,0 e 7,4 s, a base da pílula está em y ~1667 e o topo dos algarismos de '30,000 FT' em ~1687: ~20 px de folga, com as duas alinhadas à direita em x ~3300. Não há colisão (check-overlap 0), mas as duas leem como um bloco só, e a pílula parece rotular o 30,000.",
+        "Sinalização: a cota a 104 px é o piso do rótulo (alvo 128, teto 160, identidade §4.1) e o marcador da série (s15, s18, s20, s25). Aqui 128 não caberia sem apertar ainda mais o '30,000 FT'.",
+        "Sinalização: a rede passa rente ao '15,000' (recorte 4K de t=2,7–2,9 s): a borda esquerda dela toca a ponta do tique do 15,000, a ~30 px do número; transitório, sem sobreposição de texto."
+      ],
+      "correcoes": [
+        "mapista, no próximo toque (sem mudar tempo nem texto): subir a pílula '1970 · NET' uns 40 px, com a guia já ligando-a ao traço, para abrir ~60 px sobre o '30,000 FT'.",
+        "Nenhuma obrigatória para aprovar."
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 9,
+      "problemas": [
+        "Conferido nos recortes 4K: a ponta da rede pára em y ~1593 (27,460 ft = 8,370 m da NOAA; fatos-tela TA246: a 1,4 px do fundo do sonar, y 1594); a linha fraca do fundo está em 27,487 ft. O traço sem rótulo de 1964 está em y 1420 = 24,000 ft (o '~24,000 ft' da série; a regra da Sala bate), o do Challenger em y 1382 (23,250), o de 1939 em y 1620 (28,000) e o de 1883 (27,366, y 1588) fica sob a marca de 1970. Textos idênticos aos do textos-tela b034414f: '1970 · NET' (TA120/F071) e 'Source: NOAA Ocean Exploration, 2026' (TA121, achado A7: o ano). Nenhuma divergência com a regência 9d0ab49f nem com o conceito e34292ec.",
+        "Sinalização: o anel fica visível no mapa ao lado da rede (a regência pede 'the ring visible on the map'). A fonte (F071) dá o ano e a profundidade, não o ponto onde a rede foi descida; o anel perto da rede pode ser lido como 'a rede foi até este ponto'. Não reprova (é a regência, e a cena não rotula a posição); fica registrado."
+      ],
+      "correcoes": [
+        "Sala/regente (só se quiser blindar a leitura): avaliar se o anel precisa estar no quadro da s28; a regência o exige, então vale até decisão contrária."
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 8,
+      "problemas": [
+        "Conferido contra o words.json (a86e44af, tempos relativos a 172,067 s): a cota '1970 · NET' e a fonte entram em 3,633 s ('nineteen' 3,66, t0 do textos-tela); a rede pousa em 5,10 s, na palavra 'net' (4,94–5,26), e a marca da visita e a guia entram aí; a cena acaba quando 'A cusk-eel' começa (7,46 s; a s29 abre em 7,43 s). Nada foi atrasado por ritmo; o texto é dado, não eco.",
+        "Sinalização: a rede entra em 0,10 s e desce por 5 s, ou seja, aparece ~4,8 s antes da palavra 'net' e durante a definição de NOAA, sem texto que a nomeie até 3,63 s. Ela termina a descida em cima da palavra, e a descida de 5 s é da regência (a pergunta 2 da Arte): mantida.",
+        "Resposta à Arte: a pílula entrar 1,47 s antes de a rede chegar não é defeito. Ela está presa à palavra 'nineteen seventy' (textos-tela t0 3,633) e a rede chega em 'net': o texto marca o destino da descida."
+      ],
+      "correcoes": [
+        "Nenhuma. Se um dia o redator quiser a pílula só em 'seventy' (4,08 s), é decisão dele; vale o textos-tela."
+      ]
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "A rede em traço de engenheiro descendo a régua, sobre o mapa com o anel, é a escolha certa: a rede real de 1970 não tem foto (regência), a profundidade pede a régua, e o peixe que ela trouxe vem em foto real na s29. É a ilustração sobre o mapa que a marca prefere (identidade §5). Alternativa melhor não há."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "Em ~2 s o leigo lê: uma rede descendo ao longo de uma régua de profundidade (0 FT, 15,000, 30,000 FT) e, em 3,6 s, '1970 · NET' no fundo. O desenho da rede (cone com malha e cabo reto) se entende sem legenda.",
+        "Sinalização: a pílula '1970 · NET' encostada em '30,000 FT' (~20 px) pode ser lida como um rótulo do 30,000; e nos primeiros 3,6 s nada escrito diz o que a rede é (é a voz que define NOAA nesse trecho).",
+        "Sinalização: o anel não leva rótulo; quem o liga ao ponto mais fundo é a série."
+      ],
+      "correcoes": [
+        "mapista, no próximo toque: a mesma subida da pílula pedida em 'espaco' resolve a leitura."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 9,
+      "problemas": [
+        "No pico (a partir de 3,63 s) contam: anel, régua, rede e cota (4; o teto é 6, o alvo 4 a 5), mais o crédito, que não conta. Teste de lastro: '1970 · NET' ← 'nineteen seventy' e 'net'; 'Source: NOAA Ocean Exploration, 2026' ← 'NOAA'; '0 FT', '15,000' e '30,000 FT' são orientação mínima da régua (exceção a); os traços sem rótulo (1883, Challenger, 1939, 1964) são a série do medidor. Nenhum texto órfão; sem entidade HTML nem tofu."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "Nada congela: a câmera dá uma aproximação linear do 1º ao último quadro (zoom 8,70 → 9,20, +41 %; rumo 0, pitch 0, norte para cima) e a rede desce por 5 s a ~240 px/s, com rampas de 0,35 s no começo e no fim. Uma tira tempo-espaço de n138 a n168 (cada coluna é um quadro) mostra a rede desacelerando e parando em ~5,1 s, sem balanço nem repique (a física do ilustrador: cabo reto e tenso, rede rígida, nenhum balanço sem fonte de energia); a marca da visita e a guia entram só depois.",
+        "Depois do pouso (5,1–7,43 s, 31 % da cena) só a deriva da câmera anda, sob a voz 'brought back a small cusk-eel'; a cena declara regime de respiro (um plano de 7,4 s) e a aproximação é contínua, então não é o 'dois beats com o resto congelado'. Corte seco para a foto da s29 (troca de regime), como a marca permite.",
+        "Sinalização: a descida é a velocidade constante (um guincho); o ease está só nas rampas. Coerente com o cabo."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "Crédito de mapa '© MapTiler © OpenStreetMap contributors' + 'GEBCO Compilation Group (2026) GEBCO 2026 Grid' num elemento só, do 1º ao último quadro, 60 px, data-qc-credito='mapa'; contraste 12,16:1 (portao-mapa rodape v5, sha1 de hoje). 'Source: NOAA Ocean Exploration, 2026' (data-qc-papel='credito', sem a marca de mapa) entra com a cota, em 3,633 s, com o ano da publicação (A7). Sem logo da NOAA (midia §7.6); nenhuma mídia na tela, logo nenhum crédito-fantasma."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 8,
+      "problemas": [
+        "Uma cor = um significado: o laranja só no anel e na linha fraca do fundo do sonar (a fossa e o ponto mais fundo, decisão do Lucas de 28/10/2026); --neutro na marca de 1970 e nos traços antigos (a série); --tinta na régua e na rede. Satélite no tratamento C (brilho 0,92, saturação 0, contraste 0,25: o código da cena e a identidade §6). Resposta à Arte: o C é o certo; o '65/70' que o conceito cita é o do Juneau, e a identidade §6 mantém o C do vídeo 2 em diante. O conceito é que está defasado, não a cena.",
+        "Sinalização: a rede leva um miolo --rotulo a 45 % (o batiscafo da s25, a 80 %); a identidade §5 pede o traço de engenheiro 'só linha, sem preenchimento', e o código declara o miolo para a malha se separar da régua. Não é degradê nem cor de papel: sinaliza.",
+        "Sinalização: a linha do fundo do sonar vai de x 3330 a 3480 aqui (eixo−50 a +100) e de x 3270 a 3430 na s25 (eixo−110 a +50); a série fixa o medidor, e as duas extensões diferem."
+      ],
+      "correcoes": [
+        "mapista, no próximo toque: unificar a extensão da linha do fundo do sonar entre as cenas do medidor (a da s28 existe para a marca de 1970 não cobri-la).",
+        "diretor-de-arte/Sala: atualizar a técnica da s37 no conceito (o '65/70'), que a Arte já respondeu com o C."
+      ]
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "Os concretos da fala: NOAA (organização; logo não se pede, midia §7.6), a rede e a enguia-cusk. A rede de 1970 não tem foto (regência), e o desenho a compõe. A enguia-cusk, o desfecho da frase (palavra em 6,22 s), tem o registro real na cena irmã s29, que abre em 179,5 s, 1,2 s depois da palavra (foto com veredito 'aprovado' no conferencia-midia). A cobertura se cumpre na sequência; aqui só sinaliza."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 9,
+      "problemas": [
+        "Sem footage nem foto. Um plano de 7,43 s, regime de respiro declarado na regência, com um mecanismo contínuo de trajetória própria (a rede descendo por 5 s) e a câmera sempre em aproximação: não é o caso de plano único cobrindo objetos distintos. Nenhum clipe repetido."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [
+        "A cena avança: a quarta visita (1970, uma rede) com desenho novo; a s25 (1964) e a s30 (a mesma régua com '~27,460 FT') não repetem o conteúdo, e entre as duas há um desenho (s26) e um vídeo (s27).",
+        "Sinalização (série): é a 5ª cena com o medidor (s15, s18, s20, s25, s28), eco de forma planejado no espelho (_medidor), com conteúdo novo em cada uma."
+      ],
+      "correcoes": []
+    }
+  ]
+}

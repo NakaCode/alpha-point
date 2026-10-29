@@ -1,0 +1,119 @@
+{
+  "cena": "s13",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "SINALIZA: o anel (centro em x ~1243, y ~752 a t=3,0) encosta na borda oeste reta da região acesa (x ~1275): com raio de 33 px ele toca a borda (quadros t=2,20 e t=3,00; recorte 1:1). É o dado: o ponto mais fundo (67,311°W) fica 0,04° a oeste da longitude extrema da ilha (67,2712°W), que é a borda da região. No quadro, o anel parece preso ao retângulo; não colide com texto e não reprova.",
+        "Estrutura: 4 elementos (anel, navio com o arame, alfinete com a pílula, região), teto 6; 1 texto vivo (a pílula de 128 px); nenhuma sobreposição de texto; o canto de 400 × 400 e a faixa do crédito livres; o portao-margens deu 0 (37 amostras, sha1 a8b8adb7)."
+      ],
+      "correcoes": [
+        "Sem conserto só por isto. Se a cena for reaberta por outro motivo: esmaecer as bordas leste e oeste da região nos ~60 a 100 px de fora (a região é declarada e não tem contorno), o que tira o encosto do anel e a leitura de caixa."
+      ]
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "SINALIZA (resposta à pergunta 1 da Arte): a região acesa é `regiao-norte-pr-m2`, só inline no HTML, com a procedência no cabeçalho (geo_plano.py): a união da camada registrada `mar-ao-norte-de-porto-rico` (−67,2712 a −65,5904°W, 18,42 a 19,4188°N; 'o mar entre a costa norte da ilha principal e a borda sul da fossa') com o trecho da `fossa-porto-rico` nas longitudes da ilha, o furo preenchido e simplificada a 0,002°; bbox final até 20,1778°N. É geometria lida, derivada e declarada (identidade §5, 'A região falada, sempre demarcada': aceita), nunca desenhada à mão, e contém o alfinete (19,6806°N), como o textos-tela pede (instrução PA015/TA256). Mas não é a camada que a pesquisa-geo registrou: a da cena vai até a borda norte da fossa (inclui a fossa inteira nessas longitudes), e a registrada acaba na borda sul, abaixo do alfinete. Não está no `pauta-geo.json`.",
+        "SINALIZA: as bordas leste e oeste são retas (as longitudes extremas da ilha). No quadro a região lê-se como um retângulo `--neutro` a 25 % sobre o relevo; o topo irregular segue a borda norte da fossa. Quem não sabe não deduz 'faixa de mar' pela forma; a leitura vem da voz ('north of Puerto Rico', 'north' em 1,97 s) e da posição do alfinete e do navio dentro dela.",
+        "Conferido e sem defeito: o alfinete em 19°40'50\"N 66°23'40\"W (a camada sondagem-blake-1883, ~60 mi a leste do anel); '1883 · BLAKE' com a grafia do textos-tela, colado ao alfinete certo; o anel em 19,712°N 67,311°W; a ilha e o relevo são reais (satélite MapTiler e GEBCO 2026); nenhum país nem bandeira rotulado; o navio é ilustração fora de escala, declarada."
+      ],
+      "correcoes": [
+        "À Sala e à pesquisa-geo (não é conserto da cena): registrar `regiao-norte-pr-m2` no `pauta-geo.json` e em `_media/geo/` com a procedência (a união, o furo, a tolerância de 0,002°) e o porquê da borda norte, para a cena deixar de ter geometria só inline; ou dizer que a faixa registrada passa a ser essa. O texto de registro da regência ('between the coast and the south edge') pode passar a dizer 'até a borda norte da fossa'.",
+        "Opcional na cena: esmaecer as bordas retas (como em espaco)."
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 9,
+      "problemas": [
+        "OBSERVAÇÃO: o alfinete aparece 0,22 s antes de 'wire' (cai de 0,628 a 0,848 s, quadrático, e crava sem quicar na palavra; 'weighted' vai de 0,53 a 0,85 s). É pousar na palavra, e a regência diz 'drops at wire'. A pílula entra em 0,833 s ('wire' 0,848), a região em 1,968 s ('north' 1,97), o carretel gira de 0,368 s ('a weighted'). Nenhum elemento foi atrasado por ritmo nesta cena. O primeiro segundo tem cobertura (o navio, o carretel e o alfinete caindo) e o visual termina com a frase ('Rico.' acaba em 3,01 s; o corte, em 3,6 s, cai antes do 'Its' da s14)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "SINALIZA: a ilha e o anel ficam sem rótulo nesta cena (o textos-tela só pede '1883 · BLAKE', e vale ele). 'Puerto Rico' é dito em 2,41 s, e a ilha, embaixo, se reconhece pelo formato das s01 e s02; o anel é a chamada de volta ao ponto mais fundo. O mecanismo da frase (o arame que desce) tem ~60 px no 4K: ao 1080p o espectador lê 'navio + alfinete + faixa', e não 'arame descendo'; a voz explica o resto."
+      ],
+      "correcoes": [
+        "Sem conserto só por isto. Se a cena for reaberta: ampliar o navio e o carretel (hoje ~560 px de proa a popa) para o arame se ler a 1080p, sem encostar na pílula."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 9,
+      "problemas": [
+        "Lastro conferido: '1883 · BLAKE' é o marcador de visita da série e continua a frase da s12 ('On January 27, 1883, a steamer called the Blake … | lowered a weighted wire'): 1883 e Blake foram ditos na mesma sentença, na cena de trás. Sem texto órfão, sem redundância; o crédito é o único bloco além do rótulo."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "SINALIZA: o mapa anda pelo zoom de 1,13× (z 8,96 → 9,14) com o rumo de −0,3° a +0,3° em 3,6 s; o anel desliza ~90 px. É contínuo do 1º ao último quadro (nenhum quadro para), mas curto: o movimento que se vê é o do alfinete (queda quadrática em 0,22 s, crava sem quicar), da região (500 ms, a partir de 1,968 s) e da pílula (300 ms). Passa pelo teste de começo, meio e fim, no limite (o anel anda ~90 px entre t=0,03 e t=3,00, folhas A e B). O carretel e o 'arame que engrossa' têm 6 a 8 px de linha e não se leem como movimento a 1080p.",
+        "Norte para cima e sem órbita, como a regra da Sala; nenhum corte seco entre mapas (a vizinha de trás é a s12, foto; a da frente, a s14, documento)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 8,
+      "problemas": [
+        "Conferido: '© MapTiler © OpenStreetMap contributors' e 'GEBCO Compilation Group (2026) GEBCO 2026 Grid' (a forma do textos-tela) do 1º ao último quadro, a 60 px (var(--fs-credito), override depois do tokens.css), num elemento só com data-qc-credito='mapa' e data-qc-papel='credito' (os dois créditos são de mapa; não há crédito de foto no contêiner), faixa abaixo de y 1880, contraste 12,29:1. Nenhum crédito supérfluo; nenhum crédito-fantasma. A exceção do crédito a 60 px não se aplica: não há falha de tamanho.",
+        "SINALIZA: a ordem e o formato diferem da s07 (M1): aqui uma pílula com a MapTiler em cima; na s07, duas pílulas com a GEBCO em cima. O textos-tela lista a MapTiler primeiro, que é a ordem desta cena. Só vale padronizar se a Sala quiser; sozinho não pede conserto."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "SINALIZA: o concreto central da frase, o arame com peso, aparece só em traço (o arame de 1883 não tem foto). A cobertura real se cumpre na irmã de trás, a s12 (o vapor Blake e a máquina de sondagem do Survey, pelo espelho); o lugar (o mar ao norte da ilha) está no mapa, sobre geometria e satélite reais."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [],
+      "correcoes": []
+    }
+  ]
+}
