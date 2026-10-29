@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s22 · "A sound could give a number. It couldn't show anyone what was down there."
+  Word-lock (−135.533) · inSec 135.533 · dur 4.1 (123 quadros a 30 fps; espelho.json de atlantico-fundo, sha256 ad3b18e9…,
+  _quadros 4066→4189, palavras 397–410). cleanDur = dur (faceless: o relógio é um só, out/atlantico-fundo/words.json). Modo do
+  espelho: desenho · Modelo da identidade: ANIMAÇÃO PARA EXPLICAR sobre a MESA DO VÍDEO 2 EM DIANTE (satélite sob a luz, §5; still
+  mesa-porto-rico.png), no TRAÇO DE ENGENHEIRO, COM A FÍSICA DO ILUSTRADOR (§4.4). A ideia-ponte (regência: "o som dá número, não dá
+  imagem"), um palco só; corte seco na entrada e na saída (conceito › fluxo: "desenho de ponte; corte seco para o mapa de p2").
+  Tarefa atlantico-fundo-arte-1, lote EO1, editor-de-arte em Opus (regencia.json › _animacao_em_opus). Nenhum hex.
+
+  O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json sha256 b034414f… › s22: papel "nada", "o desenho do som que dá um número e
+  não mostra o fundo: sem texto"): NENHUM nó de texto e nenhum crédito (não há dado nem mídia de terceiro); o BEAT (regencia.json
+  sha256 304ad420… › s22 b0 0–4,1: "a water column in section; a pulse goes down (thin arcs), touches an invisible floor and comes
+  back; at the top it becomes a generic line-drawn number (no real value) at 'number'; the floor stays hatched and dark at 'down
+  there'; the light behind the rising number"); o conceito (s22: "o eco que não ilumina … o número fica pendurado no alto, e o
+  escuro embaixo não muda"); a marca.
+  O NÚMERO SEM VALOR: cinco células de sete segmentos, DESENHADAS (traço de 6 px, não texto), com todos os segmentos: o "8" de
+    mostrador, a forma de "um número" sem dizer qual (a tela não dá número; nunca o 28,680 da s21). Cinco células porque a
+    profundidade em pés tem cinco algarismos; sem vírgula e sem unidade, para não se ler como uma medida.
+
+  OS BEATS (tempo local = master − 135,533; palavras do words.json):
+    0,000  o copo em corte (as paredes, a linha d'água com o ∇ e a hachura do líquido, do s03), o emissor na linha d'água e o chão
+           hachurado, ESCURO (a 45 %), do 1º quadro.
+    0,252  "sound": o pulso sai do emissor, um trem de três frentes (0,035 s uma da outra) a c = 2716 px/s; toca o chão em 0,727 e
+           volta: a primeira frente chega à linha d'água em "number" (1,202). A reflexão é a do ESPELHO: a frente volta como se
+           viesse da fonte-imagem (1920, 430 + 2 × 1290), dobrada no chão (abaixo). O chão não acende: o pulso não traz luz.
+    1,200  "number": a frente que chega vira o número: os sete segmentos de cada célula crescem JUNTOS, do meio às pontas (0,18 s), uma célula a
+           cada 0,07 s, até 1,66 (nenhum estado intermediário forma um algarismo), e o número SOBE da linha d'água (centro 345 → 300 em
+           0,7 s, eo) e fica PENDURADO; a luz vai com ele, 120 ms atrás.
+    1,20–2,15  o eco que sobra (as reflexões múltiplas da superfície e do chão, a física do sonar): desce e volta mais uma vez, a
+           22 % e a 12 %, e se apaga. Nada de energia nova: cada travessia perde amplitude.
+    1,797  "It couldn't show anyone what was down there": a câmera se inclina para o chão escuro (o push-in em torno de (1920,
+           1450)), e o chão continua hachurado e escuro em "down there" (3,272–3,667): nada se revela.
+    3,850–4,100  REPOUSO: o push-in para; só a deriva do RIG.
+  A CÂMERA: push-in de 0,006/s (base 1,0) em torno de (1920, 1450), o chão escuro, até 3,85 s, e a deriva (6 / 4,8 px); escala
+    máxima 1,0231. O still a 0,6 da câmera, em torno do mesmo ponto (+ 56): a câmera não viaja, e o still comum basta.
+  PRODUTO MÁXIMO DAS ESCALAS: 1,0231 (a câmera). Ken Burns: não há foto.
+
+  A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): o copo com o emissor e o ∇ (1), o pulso (1), o
+    chão (1) e o número (1) = 4 no pior instante. Blocos de texto: 0. Herói: nenhum (data-qc-sem-heroi; modo desenho, papel "nada").
+
+  O ILUSTRADOR, COM A FÍSICA (identidade §4.4; roupa §5; lidos: ilustracao/habilidades/ilustracao-narrativa/SKILL.md:18-26,30;
+    ilustracao/knowledge/ilustracao/CONSTRUCAO.md:49-53,67-76; references/movimento-fisica.md:116-128,144-150):
+    · a onda: frente esférica (em corte, arco de círculo) que parte do emissor com velocidade constante; a reflexão num fundo plano é
+      a da fonte-imagem (a frente refletida é o círculo do mesmo raio centrado no espelho da fonte), e a linha da frente é contínua
+      no ponto em que toca o chão (as duas contas dão y = 1720 ali). Implementado como a profundidade "dobrada": z = r·cos φ, dobrado
+      entre a superfície e o chão a cada travessia. Hipóteses declaradas: fundo plano, velocidade única, superfície que reflete;
+      ESCALA DE TEMPO EDITORIAL (o som leva ~11 s para ir e voltar a 8 km de fundo; aqui, 0,95 s: movimento-fisica.md:164);
+    · a energia: cada travessia multiplica a amplitude (0,95 → 0,85 → 0,22 → 0,12 → 0): só perde, nunca ganha;
+    · um executor por transformação: o pulso tem um controlador (o raio r(t) de cada frente); o número, outro (os segmentos e a
+      subida); a câmera, o dela;
+    · fica fora da prova do pacote: a acústica (o pacote não tem estudo de ondas sonoras: a construção acima é geometria de
+      reflexão, não simulação); não há pêndulo, rotação nem mão (a mão v003 não entra).
+    · a sombra é a sombra solta do próprio traço (identidade §5), no número: o traço grosso --tinta-escura 12 px abaixo, sem filter.
+
+  O CONTRATO: window.__duracao = 4.1; __renderAt(t) determinístico e à prova de erro; __prepararCaptura; __fotosProntas =
+    RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia inteira de templates-cena/_rig.js.
+-->
+<head>
+<meta charset="utf-8">
+<title>s22 — A sound could give a number. It couldn't show anyone what was down there.</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  /* o crédito a 60 px do Atlântico em diante (identidade §4.1): a cena não tem crédito, e o override fica pela série */
+  :root { --fs-credito: 60px; }
+</style>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+  #cam { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; transform-origin: 1920px 1450px; }
+  #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
+    width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem)); pointer-events: none;
+    opacity: var(--mesa-satelite-opacidade); transform-origin: 1976px 1506px; }
+  #luz { position: absolute; left: -140px; top: -140px; width: 4120px; height: 2440px; pointer-events: none;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 2060px) var(--luz-y, 570px),
+      var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
+  #mesa { position: absolute; left: -140px; top: -140px; width: 4120px; height: 2440px; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); opacity: var(--mesa-satelite-feltro); }
+  #desenho { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
+  .ar { fill: none; stroke: var(--tinta); stroke-width: var(--linha-espessura); stroke-linejoin: round; stroke-linecap: round; }
+  .ar-agua { fill: none; stroke: var(--tinta); stroke-width: 5; stroke-linecap: round; }
+  .ar-parede { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; opacity: .6; }
+  .ar-fina { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: .5; }
+  .ar-simb { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-linecap: round; opacity: .38; }
+  .ar-onda { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .chao-escuro { opacity: .45; }
+  .sombra-linha { fill: none; stroke: var(--tinta-escura); stroke-width: 16; stroke-linejoin: round; stroke-linecap: round; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="ideia-ponte desenhada sem texto (textos-tela › s22: papel nada): o número é desenho de sete segmentos sem valor, não texto; nenhum herói (identidade §4.2)">
+  <img id="still" src="../_media/base/mesa-porto-rico.png" alt="" data-qc-reuso="a mesa do vídeo: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; espelho › _nota_mesa)">
+  <div id="cam">
+    <div id="luz"></div>
+    <div id="mesa"></div>
+    <svg id="desenho" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+      <g id="gColuna">
+        <path id="paredes" class="ar-parede" d=""/>
+        <path id="simbAgua" class="ar-simb" d=""/>
+        <path id="linhaAgua" class="ar-agua" d=""/>
+        <path id="nivel" class="ar-fina" d=""/>
+        <path id="emissor" class="ar" d=""/>
+      </g>
+      <g id="gChao" class="chao-escuro">
+        <path id="chao" class="ar" d=""/>
+        <path id="hachura" class="ar-fina" d=""/>
+      </g>
+      <g id="gOnda"></g>
+      <g id="gNum">
+        <path id="somNum" class="sombra-linha" d="" opacity="0.8" transform="translate(0,12)"/>
+        <g id="gSegs"></g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo, eb = R.eb;
+  var E = function (id) { return document.getElementById(id); };
+  var lerp = function (a, b, p) { return a + (b - a) * p; };
+  var f2 = function (v) { return (+v).toFixed(2); };
+  var NS = "http://www.w3.org/2000/svg";
+
+  var DUR = 4.1;
+  window.__duracao = DUR;
+  // nenhum texto de tela (textos-tela.json › s22: papel "nada"), nenhum crédito
+
+  var T = { som: 0.252, numero: 1.20, sobe: 0.7, inclina: 1.797, repouso: DUR - 0.25 };
+
+  // ── o copo em corte: a linha d'água, as paredes, o chão escuro (a mesma linguagem do s03) ──
+  var YS = 430, YF = 1720, DP = YF - YS;          // a linha d'água, o chão, a profundidade desenhada (1290 px)
+  var XL = 760, XR = 3080, XE = 1920;             // as paredes; o emissor no meio da linha d'água
+  if (E("paredes")) E("paredes").setAttribute("d", "M" + XL + "," + YS + " L" + XL + "," + YF + " M" + XR + "," + YS + " L" + XR + "," + YF);
+  if (E("linhaAgua")) E("linhaAgua").setAttribute("d", "M" + XL + "," + YS + " L" + XR + "," + YS);
+  if (E("chao")) E("chao").setAttribute("d", "M" + XL + "," + YF + " L" + XR + "," + YF);
+  if (E("emissor")) E("emissor").setAttribute("d", "M" + (XE - 32) + "," + YS + " A32,32 0 0 0 " + (XE + 32) + "," + YS);
+  (function () {
+    var d = ""; for (var x = XL + 24; x <= XR; x += 48) d += "M" + x + "," + (YF + 8) + " L" + (x - 26) + "," + (YF + 40) + " ";
+    if (E("hachura")) E("hachura").setAttribute("d", d);
+    var s = "", AG = [[1100, 820], [2760, 1000], [1240, 1440]];   // a hachura do líquido, fora do feixe
+    AG.forEach(function (c) { s += "M" + (c[0] - 36) + "," + c[1] + " L" + (c[0] + 36) + "," + c[1] + " M" + (c[0] - 24) + "," + (c[1] + 16) +
+      " L" + (c[0] + 24) + "," + (c[1] + 16) + " M" + (c[0] - 12) + "," + (c[1] + 32) + " L" + (c[0] + 12) + "," + (c[1] + 32) + " "; });
+    if (E("simbAgua")) E("simbAgua").setAttribute("d", s);
+    var xn = 2850;
+    if (E("nivel")) E("nivel").setAttribute("d", "M" + (xn - 32) + "," + (YS - 52) + " L" + (xn + 32) + "," + (YS - 52) + " L" + xn + "," + (YS - 5) + " Z" +
+      " M" + (xn - 26) + "," + (YS + 22) + " L" + (xn + 26) + "," + (YS + 22) + " M" + (xn - 12) + "," + (YS + 40) + " L" + (xn + 12) + "," + (YS + 40));
+  })();
+
+  // ── o PULSO: três frentes; a profundidade dobrada entre a superfície e o chão (a fonte-imagem a cada travessia) ──
+  var C = 2 * DP / (1.202 - T.som);                // 2716 px/s: a 1ª frente volta à linha d'água em "number"
+  var TE = [T.som, T.som + 0.035, T.som + 0.070];  // o trem de três frentes
+  var BRILHO = [1.0, 0.7, 0.45];                    // a frente da vez mais forte
+  var AMP = [0.95, 0.85, 0.22, 0.12];               // a amplitude por travessia: desce, volta, desce de novo, volta; depois, nada
+  var TETA = 26 * Math.PI / 180, NAMOS = 48;
+  var gO = E("gOnda"), ondas = [];
+  for (var a = 0; a < TE.length; a++) { ondas.push([]); for (var k = 0; k < AMP.length; k++) {
+    var p = document.createElementNS(NS, "path"); p.setAttribute("class", "ar-onda"); p.setAttribute("d", ""); if (gO) gO.appendChild(p); ondas[a].push(p); } }
+  function frente(a, t) {
+    var r = C * (t - TE[a]), ds = ["", "", "", ""];
+    if (r < 24) return ds;
+    var ant = [-1, -1];                               // a travessia do ponto anterior (para quebrar a linha) e se estava dentro
+    for (var i = 0; i <= NAMOS; i++) {
+      var fi = -TETA + 2 * TETA * i / NAMOS;
+      var x = XE + r * Math.sin(fi), z = r * Math.cos(fi);
+      var k = Math.floor(z / DP), dd = z - k * DP; if (k % 2 === 1) dd = DP - dd;
+      var dentro = x > XL + 8 && x < XR - 8 && k < AMP.length;
+      if (dentro) { ds[k] += (ant[0] === k && ant[1] ? " L" : " M") + f2(x) + "," + f2(YS + dd); }
+      ant = [k, dentro];
+    }
+    return ds;
+  }
+
+  // ── o NÚMERO SEM VALOR: cinco células de sete segmentos (o "8"). Os sete segmentos de uma célula crescem JUNTOS, do meio para as
+  //    pontas (0,18 s, eo), para que nenhum estado intermediário forme um algarismo ou uma letra (um "7" ou um "J" seria um valor);
+  //    as células se sucedem a cada 0,07 s, da esquerda para a direita ──
+  var CW = 96, CH = 176, GAP = 34, NC = 5, X0N = XE - (NC * CW + (NC - 1) * GAP) / 2, CRESCE = 0.18, PASSO_C = 0.07;
+  var SEGS = [[8, 0, 88, 0], [96, 8, 96, 84], [96, 92, 96, 168], [88, 176, 8, 176], [0, 168, 0, 92], [0, 84, 0, 8], [8, 88, 88, 88]];
+  var gS = E("gSegs"), segs = [], somD = "";
+  for (var ci = 0; ci < NC; ci++) for (var si = 0; si < SEGS.length; si++) {
+    var q = SEGS[si], x0 = X0N + ci * (CW + GAP);
+    var ax = x0 + q[0], ay = q[1] - CH / 2, bx = x0 + q[2], by = q[3] - CH / 2;
+    var el = document.createElementNS(NS, "path"); el.setAttribute("class", "ar"); el.setAttribute("d", ""); if (gS) gS.appendChild(el);
+    segs.push({ el: el, t0: T.numero + ci * PASSO_C, ax: ax, ay: ay, bx: bx, by: by });
+    somD += "M" + ax + "," + ay + " L" + bx + "," + by + " ";
+  }
+  if (E("somNum")) E("somNum").setAttribute("d", somD);
+  function yNum(t) { return lerp(345, 300, eo(seg(t, T.numero, T.sobe))); }   // o centro do número: da linha d'água ao alto
+
+  // a CÂMERA: push-in de 0,006/s em torno de (1920, 1450), o chão escuro; para 250 ms antes do corte; a deriva; o still a 0,6
+  function camera(t) {
+    var s = 1 + 0.006 * Math.min(t, T.repouso), dx = 6 * Math.sin(t * 0.23), dy = 4.8 * Math.sin(t * 0.17);
+    var c = E("cam"); if (c) c.style.transform = "scale(" + s.toFixed(5) + ") translate(" + f2(dx) + "px," + f2(dy) + "px)";
+    var st = E("still"); if (st) st.style.transform = "scale(" + (1 + (s - 1) * 0.6).toFixed(5) + ") translate(" + f2(dx * 0.6) + "px," + f2(dy * 0.6) + "px)";
+  }
+
+  function cena(t) {
+    t = t + 0.0005;
+    camera(t);
+    // o pulso
+    for (var a = 0; a < TE.length; a++) {
+      var ds = frente(a, t);
+      for (var k = 0; k < AMP.length; k++) { var p = ondas[a][k]; p.setAttribute("d", ds[k]); p.style.opacity = (AMP[k] * BRILHO[a]).toFixed(3); }
+    }
+    // o número: os segmentos de cada célula crescem juntos do meio às pontas; o conjunto sobe da linha d'água e fica
+    var yc = yNum(t), vis = t >= T.numero;
+    var g = E("gNum"); if (g) { g.setAttribute("transform", "translate(0," + f2(yc) + ")"); g.style.opacity = vis ? "1" : "0"; }
+    for (var i = 0; i < segs.length; i++) {
+      var sg = segs[i], pr = eo(seg(t, sg.t0, CRESCE)), mx = (sg.ax + sg.bx) / 2, my = (sg.ay + sg.by) / 2;
+      sg.el.setAttribute("d", pr > 0 ? "M" + f2(lerp(mx, sg.ax, pr)) + "," + f2(lerp(my, sg.ay, pr)) + " L" + f2(lerp(mx, sg.bx, pr)) + "," + f2(lerp(my, sg.by, pr)) : "");
+    }
+    var sm = E("somNum"); if (sm) sm.style.opacity = (0.8 * eo(seg(t, T.numero + (NC - 1) * PASSO_C + CRESCE, 0.3))).toFixed(3);
+    // a luz: no emissor; depois atrás do número, 120 ms atrás dele. Nunca desce ao chão.
+    var ly = t < T.numero + 0.12 ? YS : yNum(t - 0.12);
+    var lz = E("luz"); if (lz) { lz.style.setProperty("--luz-x", (XE + 140) + "px"); lz.style.setProperty("--luz-y", f2(ly + 140) + "px"); }
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // nunca lança
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); };
+  window.__fotosProntas = R.prontas();
+  // O GANCHO DE MEDIDA (só leitura, do DOM): onde a 1ª frente está (o ponto do meio, na tela), e onde está o número
+  window.__s22peca = function (t) {
+    t = clamp(+t || 0, 0, DUR); window.__renderAt(t);
+    var r = C * (t - TE[0]), z = r, k = Math.floor(z / DP), dd = z - k * DP; if (k % 2 === 1) dd = DP - dd;
+    var bn = E("gSegs").getBoundingClientRect(), lw = E("linhaAgua").getBoundingClientRect(), ch = E("chao").getBoundingClientRect();
+    return { t: t, travessia: k, y_frente_desenho: +(YS + dd).toFixed(1), numero_tela: [Math.round(bn.left), Math.round(bn.top), Math.round(bn.right), Math.round(bn.bottom)],
+      linha_dagua_tela: Math.round((lw.top + lw.bottom) / 2), chao_tela: Math.round((ch.top + ch.bottom) / 2) };
+  };
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>
