@@ -9,11 +9,13 @@
   "split-footage" dentro de um dos cinco modelos: é o REGISTRO, em duas metades). Regime da regência: normal ("a comparação dos dois
   animais: um split, um plano"); conceito s72: "os gêmeos do escuro: dois animais vivos lado a lado, um peixe-caracol e um pepino-do-mar,
   cada um com o endereço de onde foi filmado, e as três palavras (cor, textura, forma) entram entre os dois como os pontos de uma
-  comparação". Lote EF4 da tarefa atlantico-fundo-arte-2 (29/10/2026), editor-de-arte em Fable. Vídeo 4 (atlantico-fundo).
+  comparação". Lote EF4 da tarefa atlantico-fundo-arte-2 (29/10/2026), editor-de-arte em Fable; CONSERTADA no lote FB da arte-4
+  (29/10/2026, o lote de consertos; o que mudou está em ARTE-4, abaixo). Vídeo 4 (atlantico-fundo).
 
-  O que manda em cada coisa: os textos de tela (textos-tela.json sha256 f4eede4d… › _textos_por_cena s72: legenda "Denson Seamount,
-  Alaska · 4,480 ft (1,365 m) · 2023" 0–4,5 e rótulo "SNAILFISH" 0,3–4,5, os dois no _bloco "s72-peixe"; legenda "North Tutuila Flank,
-  American Samoa · Dive 03 · 2026" 0–4,5 (sem a profundidade: PB160) e rótulo "SEA CUCUMBER" 0,3–4,5, no _bloco "s72-pepino"; a cota
+  O que manda em cada coisa: os textos de tela (textos-tela.json sha256 bfa9e5d1… › _textos_por_cena s72: legenda "Denson Seamount,
+  Alaska · 4,480 ft (1,365 m) · 2023" 0–4,5 e rótulo "SNAILFISH" 0–4,5 (conserto 6: no 1º quadro, sem esmaecer; era 0,3), os dois no
+  _bloco "s72-peixe"; legenda "North Tutuila Flank, American Samoa · Dive 03 · 2026" 0–4,5 (sem a profundidade: PB160) e rótulo "SEA
+  CUCUMBER" 0–4,5 (conserto 6, idem), no _bloco "s72-pepino"; a cota
   "COLOR" 2,466, "COLOR · TEXTURE" 2,866 e "COLOR · TEXTURE · SHAPE" 3,733, no _bloco "s72-cts", "palavra a palavra, sem aspas", 2,03 s
   no ar; nenhum crédito), a regência (sha256 9d0ab49f… › s72 › beats[0], 0–4,5, footage_real: "SPLIT FOOTAGE: LEFT the snailfish (the
   s27 NOAA clip, ANOTHER window: 28.9–33.4 s), RIGHT the last take of the NOAA American Samoa video (68.6–73.1 s), both HD scaled by the
@@ -22,17 +24,42 @@
   sua pílula e a sua legenda de origem (um bloco por clipe); COLOR · TEXTURE · SHAPE cresce palavra a palavra"), o conceito (sha256
   e34292ec… › s72) e o espelho (s72). TODO TEXTO DE TELA está no objeto TEXTOS. Nada na tela diz que é a fossa, nem 1964, nem 2019.
 
+  ARTE-4 (lote FB, 29/10/2026; sala-lote-consertos.md §2, qualidade-2 l. 92–127 e 149–177, qc/s72.laudo.json): três consertos, nada mais.
+    1. O RITMO (conserto 6, instrução 34 do textos-tela): "SNAILFISH" e "SEA CUCUMBER" no ar JÁ NO QUADRO 0, sem esmaecer de entrada,
+       como as legendas (T.rot 0,3 → 0; a função fixo() põe opacidade 1 e transform none desde t = 0). As legendas, que antes entravam em
+       300 ms a partir de 0, ficam fixas também: os dois blocos chegam prontos com o corte seco da s71, e não há um texto que esmaece ao
+       lado de um que aparece. Só a cota estreia (2,466; a troca de forma não conta): a conta do qc-carga cai de 5 estreias em 4,5 s
+       (1,11/s) para 1 (0,22/s); a conta do redator previa 3 (0,67), contando as duas legendas, que com o esmaecer estreavam em 0,1.
+    2. A CAUDA NO VÃO (o sinal 1 da qualidade-2): o recorte do peixe desloca 120 px à esquerda (#vA left −1080 → −1200: a faixa do clipe
+       passa de x 540–1.497 a 600–1.557). Medido com a máscara da arte-2 em 45 quadros (_tmp/arte-4/FB/medir-peixe.py): o peixe vai de
+       x 140 (t 4,4) a 1.768 (a cauda, t 2,7) do palco, centrado na metade (957), e a cauda fica a 146 px do vão (antes 1.888, a 26 px, e
+       a franja translúcida da nadadeira entrava no vão em 2,5–2,7 s); sob as colunas da pílula e da legenda do peixe (x 200–1.085) o
+       peixe não desce de y 1.352 (t 1,2; a pílula começa em 1.430); o caranguejo anda em x 1.206–1.590, y 1.128–1.560, fora dos dois
+       textos. Nada do ROV entra: a alça amarela fica em x < 130 do clipe, e as anêmonas em x ~240. Conferido nos quadros de 2,6 e 2,7 s.
+    3. A COTA COLADA NO "SEA CUCUMBER" (o sinal 3): a cota desloca 73 px à esquerda (left 1.073 → 1.000): a forma final (1.694 px) vai de
+       x 1.000 a 2.694, a 142 px do rótulo (que começa em 2.836; antes 69 px), e continua atravessando o vão (centro 1.847, a 73 px do
+       centro do vão). Sob as colunas da cota (x 1.000–1.914), com a cota no ar (t ≥ 2,466), o peixe fica abaixo de y 428 (t 2,5; a cota
+       vai até 349); o pepino, abaixo de 420, como antes.
+    O SINAL 2 (o par não parece "alike", factual 7): NÃO se conserta por enquadramento nem por escala, que é o que esta tarefa permitia
+    (sem conferente, nada de trocar mídia nem janela). Os dois clipes já estão a 2× (a altura do HD enche a metade: não há como reduzir
+    sem faixa preta), e ampliar o pepino além disso cortaria o véu aberto no vão (1.238 px de largura em 3,8–4,5 s) ou o poria sob o
+    "SEA CUCUMBER" e a legenda, além de degradar o HD que o Lucas aceitou a 2×. A semelhança é da JANELA de cada clipe (o pepino
+    fechado e o peixe de frente, no começo da janela, parecem-se mais do que o véu aberto e o peixe de perfil, no fim), e a janela é da
+    regência e do conferente: fica com a Sala, como o laudo já mandava. O que o enquadramento podia fazer, fez: cada bicho centrado na
+    sua metade.
+
   O BEAT (tempo local = master − 656,867; palavras do words.json: From 0,023 · the 0,198 · outside, 0,318–0,833 · the 1,053 · two 1,278 ·
   look 1,438 · a 1,598 · lot 1,678 · alike 1,918–2,238 · in 2,318 · color, 2,478–2,878 · texture 2,878–3,548 · and 3,548 · shape.
   3,758–4,023; "In" em 4,513 já é a s73):
     0,00  O SPLIT desde o 1º quadro, as duas metades cheias (cada metade 1.914 × 2.160; um vão de 12 px em --fundo no meio, x 1914–1926):
           ESQUERDA o peixe-caracol (o clipe da s27, a 3ª tomada, janela 28,9 → 33,4 s do clipe, t local 0 → 4,5), DIREITA o pepino-do-mar
           nadador (o clipe da Samoa, a 3ª e última tomada, janela 68,6 → 73,1 s). Cada clipe HD a 2× (1920 × 1080 → 3840 × 2160, 16:9
-          exato), e cada metade mostra uma FAIXA de 1.914 px do clipe ampliado (957 px do clipe): o peixe de x 540 a 1.497 do clipe (o vídeo
-          em left −1080 na metade), o pepino de x 450 a 1.407 (left −900). Os recortes e as posições dos textos foram escolhidos pelos
-          quadros medidos (10 por segundo; _tmp/arte-2/EF4/medir-bichos2.py, medir-layout.py, medir-pepino4.py e -5.py, a máscara do
-          pepino validada à vista em mascara4.png): o peixe nada de x 260 a 1.888 do palco (a cauda chega a 1.888 em 2,7 s, dentro da
-          metade) e de y 172 a ~1.280; o caranguejo vermelho anda de x ~1.512 a ~1.350, y ~1.140–1.420; a alça amarela do ROV (x < 130 do
+          exato), e cada metade mostra uma FAIXA de 1.914 px do clipe ampliado (957 px do clipe): o peixe de x 600 a 1.557 do clipe (o vídeo
+          em left −1200 na metade; arte-4: era 540 a 1.497), o pepino de x 450 a 1.407 (left −900). Os recortes e as posições dos textos
+          foram escolhidos pelos quadros medidos (10 por segundo; _tmp/arte-2/EF4/medir-bichos2.py, medir-layout.py, medir-pepino4.py e
+          -5.py, a máscara do pepino validada à vista em mascara4.png; o peixe remedido em _tmp/arte-4/FB/medir-peixe.py): o peixe nada
+          de x 140 a 1.768 do palco (a cauda chega a 1.768 em 2,7 s, a 146 px do vão) e de y 172 a ~1.352; o caranguejo vermelho anda de
+          x ~1.206 a ~1.590, y ~1.128–1.560; a alça amarela do ROV (x < 130 do
           clipe) e as anêmonas da borda esquerda (x ~240) ficam FORA do recorte. O pepino vai de x 1.954 (3,8–4,0 s, 28 px à direita do
           vão) a 3.192, e de y 420 (o véu aberto, 4,4 s) a 1.778 (o fundo do corpo, no 1º quadro; ≥ 1.700 até 3,1 s, 1.462 no fim): ele
           ocupa a metade dele quase inteira, de alto a baixo; o arco branco do ROV (x < 75 do clipe) e a peça escura do canto de baixo à
@@ -43,17 +70,18 @@
           textContent continua o do redator, com o espaço antes de cada <br>), as duas a 72 PX, O PISO DA LEGENDA (o alvo é 84): a do
           peixe em DUAS linhas (a quebra no separador) embaixo à esquerda (x 200 → 1.085, y 1.656 → 1.861); a do pepino em TRÊS linhas (a
           quebra na vírgula do endereço e no separador) embaixo à direita, alinhada em x 3.640, ACIMA do canto reservado (x 2.976 → 3.640,
-          y 1.459 → 1.750; com os 24 px da subida de entrada o fundo da caixa fica em 1.757 em 0,1 s, a 70 % de opacidade). As duas em 300
-          ms (opacidade + 24 px), do 1º ao último quadro (t0 0: a legenda de origem vai com o clipe, como o crédito iria). POR QUE O PISO:
+          y 1.459 → 1.750). As duas NO AR desde o 1º quadro, sem esmaecer (arte-4; antes, 300 ms a partir de 0), até o último quadro (t0 0: a
+          legenda de origem vai com o clipe, como o crédito iria). POR QUE O PISO:
           o pepino ocupa a metade dele de y 420 a 1.778 e de x 1.954 a 3.192; a única coluna livre embaixo à direita, acima do canto
           reservado (y < 1.760), é a de x ≥ 2.976, onde o fundo dele é 1.462 no 1º quadro (a legenda a 0 de opacidade), 1.450 em 0,1 s
           (16 px abaixo da caixa a 70 %) e ≤ 1.422 de 0,3 s em diante: a 84 px a linha "North Tutuila Flank," (775 px com o respiro) não
           cabe nessa coluna (664 px); a 72 px cabe. A do peixe vai a 72 px também, para as duas legendas da comparação serem iguais.
-    0,30  "outside" (657,185 s): os RÓTULOS "SNAILFISH" e "SEA CUCUMBER" (pílula --rotulo, 128 px, Inter 700; só o nome, sem a família, pela
-          série do redator), 300 ms, opacidade + 24 px, até o corte (4,2 s no ar): o do peixe em cima da legenda dele, embaixo à esquerda
-          (x 200 → 935, y 1.430 → 1.619); o do pepino no alto à direita, EMPILHADO em duas linhas ("SEA" sobre "CUCUMBER", alinhado à
-          direita: "palavra longa empilha, nunca encolhe", ofício §6), x 2.836 → 3.640, y 160 → 490, 54 px acima do topo do pepino sob
-          essas colunas (≥ 544) e 69 px à direita da cota. UM BLOCO POR CLIPE: o rótulo e a legenda do peixe ficam empilhados no canto de
+    0,00  os RÓTULOS "SNAILFISH" e "SEA CUCUMBER" (pílula --rotulo, 128 px, Inter 700; só o nome, sem a família, pela série do redator), NO
+          AR desde o 1º quadro, sem esmaecer (conserto 6; antes entravam em "outside", 0,30, com 300 ms), até o corte (4,5 s no ar): o do
+          peixe em cima da legenda dele, embaixo à esquerda (x 200 → 935, y 1.430 → 1.619); o do pepino no alto à direita, EMPILHADO em
+          duas linhas ("SEA" sobre "CUCUMBER", alinhado à direita: "palavra longa empilha, nunca encolhe", ofício §6), x 2.836 → 3.640,
+          y 160 → 490, 54 px acima do topo do pepino sob essas colunas (≥ 544) e 142 px à direita da cota (arte-4; antes 69). UM BLOCO POR
+          CLIPE: o rótulo e a legenda do peixe ficam empilhados no canto de
           baixo da metade dele, onde o peixe não passa (fica acima de y ~1.280) e o caranguejo não chega (x ≥ 1.350); os do pepino ficam
           na borda direita da metade dele, o rótulo em cima e a legenda embaixo, porque o pepino ocupa o meio da metade de alto a baixo e
           os dois textos não cabem juntos em nenhuma faixa livre sem cobri-lo (a faixa de cima, y < 420, tem 1.700 px de largura e a cota
@@ -62,8 +90,9 @@
           2,866 "texture" (659,745 s): o mesmo bloco passa a "COLOR · TEXTURE"; 3,733 "shape" (660,625 s): "COLOR · TEXTURE · SHAPE". É UM
           só nó de texto cujo textContent muda (como um count-up: o qc-carga conta por elemento, e o bloco fica 2,03 s no ar); a pílula
           cresce da esquerda para a direita (a largura vai da forma anterior à nova em 300 ms, eo, com overflow hidden: a palavra nova
-          aparece por revelação, e as que já estão na tela não saem do lugar). Ancorada em x 1.073, a forma final (1.694 px) fica centrada
-          no vão (x 1.073 → 2.767, y 160 → 349): a comparação nasce no lado do peixe e atravessa o vão até o pepino. No alto porque é a
+          aparece por revelação, e as que já estão na tela não saem do lugar). Ancorada em x 1.000 (arte-4; era 1.073), a forma final
+          (1.694 px) vai de x 1.000 a 2.694 (y 160 → 349), a 142 px do "SEA CUCUMBER": a comparação nasce no lado do peixe e atravessa o
+          vão até o pepino. No alto porque é a
           faixa livre dos dois bichos quando a cota está no ar: de 2,466 s em diante o peixe fica abaixo de y 428 sob essas colunas (a
           ponta da cauda; antes, de 0,7 a 1,5 s, a cauda sobe até y 160, mas a cota ainda não existe) e o pepino abaixo de y 420 (o véu,
           no último quadro; ≥ 552 até 3,3 s).
@@ -74,10 +103,9 @@
 
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): os dois clipes são a base (não contam); o bloco do peixe
     (rótulo + legenda, 1) + o bloco do pepino (1) + a cota (1) = 3 (alvo 4–5). Blocos de texto de leitura: 0. Herói: nenhum
-    (data-qc-sem-heroi). Textos vivos ≤ 3 (o redator mede 3 na s72). Ritmo (a conta do redator): 2 legendas em 0 + 2 rótulos em 0,3 = 4 na
-    pior janela de 1 s (o máximo); a cota é um bloco só, e a troca de forma não conta. O qc-carga mede também a MÉDIA (entradas/s): 5
-    textos em 4,5 s = 1,11 > 0,9, e reprova por isso; os 5 textos são os do redator, e a reprovação vai ao relato para a triagem (pedido
-    comum da arte-1: "A reprovação de RITMO do qc-carga passa por triagem, não por truque").
+    (data-qc-sem-heroi). Textos vivos ≤ 3 (o redator mede 3 na s72). Ritmo (conserto 6): os 4 textos dos dois blocos estão no ar no
+    quadro 0 e não estreiam; só a cota estreia (2,466), e a troca de forma não conta: a MÉDIA do qc-carga passa de 1,11 (5 em 4,5 s) a
+    0,22 (1 em 4,5 s), abaixo do teto de 0,9, e a pior janela de 1 s tem 1 estreia.
 
   A MARGEM (roupa §4; medida pelo portao-margens): tudo entre x 200 e 3.640 e entre y 160 e 1.861; a faixa abaixo de y 1.880 vazia (sem
     crédito); o canto inferior direito (x ≥ 3.440, y ≥ 1.760) vazio: a legenda do pepino termina em y 1.750 (1.757 com a subida de
@@ -129,7 +157,7 @@
   #meiaA { left: 0; }
   #meiaB { left: 1926px; }
   .meia video { position: absolute; top: 0; width: 3840px; height: 2160px; object-fit: cover; display: block; }
-  #vA { left: -1080px; }   /* a faixa do peixe: x 540 → 1497 do clipe */
+  #vA { left: -1200px; }   /* a faixa do peixe: x 600 → 1557 do clipe (arte-4: era 540 → 1497; a cauda encostava no vão em ~2,6 s) */
   #vB { left: -900px; }    /* a faixa do pepino: x 450 → 1407 do clipe */
 
   /* a pílula do rótulo (§4.1: --rotulo, cantos 12, respiro 24 × 40; 128 px Inter 700); "SEA CUCUMBER" empilhado em duas linhas */
@@ -164,7 +192,7 @@
   <div class="pilula dir" id="rotB" data-qc-papel="rotulo" style="right:200px;top:160px"></div>
   <div class="legenda dir" id="legB" data-qc-papel="eixo" style="right:200px;top:1459px"></div>
   <!-- a cota (textos-tela _bloco s72-cts): um nó só, no alto, no meio, crescendo palavra a palavra -->
-  <div class="pilula" id="cota" data-qc-papel="rotulo" style="left:1073px;top:160px"></div>
+  <div class="pilula" id="cota" data-qc-papel="rotulo" style="left:1000px;top:160px"></div>
   <span id="med" aria-hidden="true"></span>
 </div>
 
@@ -261,9 +289,9 @@
   // ═══ OS TEXTOS DE TELA (um lugar só; a grafia final é do redator-de-tela: textos-tela.json › _textos_por_cena s72) ═══
   var TEXTOS = {
     legA: ["Denson Seamount, Alaska ", "· 4,480 ft (1,365 m) · 2023"],                      // legenda, 0–4,5 (2 linhas; textContent = a linha do redator)
-    rotA: ["SNAILFISH"],                                                                    // rotulo, 0,3–4,5 ("outside"); só o nome (série do redator)
+    rotA: ["SNAILFISH"],                                                                    // rotulo, 0–4,5 (conserto 6: no 1º quadro, sem esmaecer); só o nome (série do redator)
     legB: ["North Tutuila Flank, ", "American Samoa ", "· Dive 03 · 2026"],                 // legenda, 0–4,5 (3 linhas; sem a profundidade: PB160; nada diz "trench")
-    rotB: ["SEA ", "CUCUMBER"],                                                             // rotulo, 0,3–4,5 ("outside"); empilhado (textContent "SEA CUCUMBER")
+    rotB: ["SEA ", "CUCUMBER"],                                                             // rotulo, 0–4,5 (conserto 6: no 1º quadro, sem esmaecer); empilhado (textContent "SEA CUCUMBER")
     cota: ["COLOR", "COLOR · TEXTURE", "COLOR · TEXTURE · SHAPE"]                          // cota, 2,466 / 2,866 / 3,733 ("color" / "texture" / "shape")
   };
   (function () {
@@ -274,16 +302,17 @@
   })();
 
   // ── os tempos (locais, −656,867), do words.json e dos textos de tela s72 ──
-  var T = { leg: 0.0, rot: 0.3, cota: [2.466, 2.866, 3.733] };
+  // conserto 6 (textos-tela bfa9e5d1): os rótulos e as legendas estão NO AR NO QUADRO 0, sem esmaecer de entrada (o corte seco
+  // da s71 os traz com o clipe); só a cota entra palavra a palavra
+  var T = { leg: 0.0, rot: 0.0, cota: [2.466, 2.866, 3.733] };
   // ── os dois planos, ao mesmo tempo: início da janela no clipe ──
   var PLANOS = [{ id: "vA", ini: 28.9 }, { id: "vB", ini: 68.6 }];
 
-  // o texto: entra em 300 ms (opacidade + 24 px de subida, ease-out)
-  function texto(el, t, t0) {
+  // o texto que vem com o clipe: no ar desde o 1º quadro, sem esmaecer (conserto 6; o corte seco traz os dois blocos prontos)
+  function fixo(el, t, t0) {
     if (!el) return;
-    var p = eo(seg(t, t0, 0.3));
-    el.style.opacity = p.toFixed(3);
-    el.style.transform = "translateY(" + ((1 - p) * 24).toFixed(1) + "px)";
+    el.style.opacity = t >= t0 ? "1" : "0";
+    el.style.transform = "none";
   }
   // a cota: as larguras das três formas, medidas no DOM uma vez (a Inter da marca, 128 px, 700) + o respiro de 40 × 2
   var LARG = null;
@@ -321,8 +350,8 @@
 
   function cena(t) {
     var tt = t + 0.0005;
-    texto(E("legA"), tt, T.leg); texto(E("legB"), tt, T.leg);
-    texto(E("rotA"), tt, T.rot); texto(E("rotB"), tt, T.rot);
+    fixo(E("legA"), tt, T.leg); fixo(E("legB"), tt, T.leg);
+    fixo(E("rotA"), tt, T.rot); fixo(E("rotB"), tt, T.rot);
     cota(tt);
     return Promise.all(PLANOS.map(function (P) { return plano(P, t); }));
   }

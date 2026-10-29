@@ -49,6 +49,22 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s07 (36,267
   ELEMENTOS (teto 6): anel, medidor (a régua com os números e o traço do fundo), submersível, 'DEC. 2018' = 4.
   CRÉDITOS (60 px, var(--fs-credito), o override do Atlântico): '© MapTiler © OpenStreetMap contributors' e 'GEBCO Compilation Group
     (2026) GEBCO 2026 Grid' a cena toda, cada uma com data-qc-credito="mapa" no próprio elemento, a da MapTiler embaixo.
+
+  LOTE DE CONSERTOS (tarefa atlantico-fundo-arte-4, lote MB, mapista, 29/10/2026; textos-tela bfa9e5d1). Muda só isto; o resto
+  (o mapa, a câmera, o anel e os pulsos, o medidor e os tempos) fica como o Lucas viu:
+    · O SUBMERSÍVEL AO LADO DA RÉGUA (Lucas, s07 em 2,2 s: "A ilustração de decida deve ficar ao lado da "régua" e não sobre ela"):
+      ele desce À DIREITA do eixo, o lado sem tiques nem números (os dois ficam à esquerda), centrado em x 3548, a 0,9 da medida
+      local (o traço a 18 e 6 px que não escalam, como na s53): de x 3461,6 a 3634,4 (a margem direita é 3640) e 139 px de altura.
+      A FOLGA: 72,6 px do contorno do eixo (x 3389) à borda esquerda dele (o propulsor). O mesmo lado, o mesmo tamanho e o mesmo x
+      na s53. O LÍDER: um traço curto no estilo do líder dos marcadores (--neutro 4 px sobre o contorno --rotulo de 12) liga, na
+      altura dos patins, o eixo (x 3380) à ponta esquerda dos patins (x 3488,6); entra quando a régua desenrolada passa por ele e
+      sai no pouso (180 ms), quando a linha do fundo cheia faz esse papel.
+    · M1 (o L2; sala-decisoes-qualidade-1): o fundo do sonar a 60 % até o pouso e a 100 % no pouso, em "there" (3,0 s; 180 ms),
+      de x 3330 a 3626, passando dos patins dos dois lados (3488,6–3607,4).
+    · O texto da data: "DECEMBER 2018" (textos-tela › s07, o AP: mês por extenso só com o ano), no mesmo lugar (borda direita em
+      x 3230, à esquerda da régua, na altura do fundo).
+    · Os créditos de mapa numa faixa só, a MapTiler em cima e a GEBCO embaixo, a ordem do textos-tela (sala-decisoes-qualidade-1,
+      M1 e a pergunta 13).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -76,6 +92,8 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s07 (36,267
   .med-sob { stroke: var(--rotulo); stroke-linecap: round; fill: none; }
   .med-traco { stroke: var(--tinta); stroke-linecap: round; fill: none; }
   .med-fundo { stroke: var(--destaque); stroke-linecap: round; fill: none; }
+  /* o líder do submersível até o eixo: o do marcador da série (--neutro 4 px sobre o contorno de 12) */
+  .med-marca { stroke: var(--neutro); stroke-linecap: round; fill: none; }
   /* os números da régua (papel eixo, 84 px, Inter 500), soltos sobre o mapa com o contorno escuro (§4.1) */
   .eixo-num { position: absolute; left: 0; top: 0; white-space: nowrap; transform: translate(-100%, -50%);
     font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1;
@@ -87,9 +105,8 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s07 (36,267
   .anel .halo { stroke: var(--rotulo); }
   .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
     font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
-    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: nowrap; }
+    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: pre-line; }
   #credMapa { bottom: 24px; }
-  #credGebco { bottom: 121px; }
   #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
     font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
   #erroCena[hidden] { display: none; }
@@ -100,6 +117,10 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s07 (36,267
   <div id="map"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
     <defs><clipPath id="medCorte" clipPathUnits="userSpaceOnUse"><rect id="medCorteRet" x="2600" y="0" width="1100" height="0"/></clipPath></defs>
+    <g id="subLider" opacity="0">
+      <line id="subLiderSob" class="med-sob" stroke-width="12" x1="0" y1="0" x2="0" y2="0"/>
+      <line id="subLiderLinha" class="med-marca" stroke-width="4" x1="0" y1="0" x2="0" y2="0"/>
+    </g>
     <g id="medidor" opacity="0">
       <g clip-path="url(#medCorte)">
         <path id="medSobEixo" class="med-sob" d="" stroke-width="18"/>
@@ -110,22 +131,21 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s07 (36,267
         <path id="medCurto" class="med-traco" d="" stroke-width="4"/>
       </g>
       <g id="medFundo" opacity="0">
-        <path id="medFundoLinha" class="med-fundo" d="" stroke-width="6" stroke-opacity="0.45"/>
+        <path id="medFundoLinha" class="med-fundo" d="" stroke-width="6" stroke-opacity="0.6"/>
       </g>
     </g>
     <g id="sub" opacity="0">
-      <path id="subSob" class="sub-sob" d="" stroke-width="18"/>
-      <path id="subLinha" class="sub" d="" stroke-width="6"/>
-      <path id="subOculto" class="sub" d="" stroke-width="6" stroke-dasharray="16 14"/>
+      <path id="subSob" class="sub-sob" d="" stroke-width="18" vector-effect="non-scaling-stroke"/>
+      <path id="subLinha" class="sub" d="" stroke-width="6" vector-effect="non-scaling-stroke"/>
+      <path id="subOculto" class="sub" d="" stroke-width="6" stroke-dasharray="16 14" vector-effect="non-scaling-stroke"/>
     </g>
   </svg>
   <div id="rotulos">
     <div class="eixo-num" data-qc-papel="eixo" id="num0" style="left: 3310px; top: 220px; opacity: 0;">0 FT</div>
     <div class="eixo-num" data-qc-papel="eixo" id="num15000" style="left: 3310px; top: 970px; opacity: 0;">15,000</div>
     <div class="eixo-num" data-qc-papel="eixo" id="num30000" style="left: 3310px; top: 1720px; opacity: 0;">30,000 FT</div>
-    <div class="rotulo" id="rotData" data-qc-papel="rotulo">DEC. 2018</div>
+    <div class="rotulo" id="rotData" data-qc-papel="rotulo">DECEMBER 2018</div>
   </div>
-  <div id="credGebco" class="credito" data-qc-papel="credito" data-qc-credito="mapa">GEBCO Compilation Group (2026) GEBCO 2026 Grid</div>
   <div id="credMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa"></div>
   <div id="erroCena" hidden></div>
 </div>
@@ -144,10 +164,12 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s07 (36,267
     anel: { pulsos: [3.0, 4.2] },
     // o MEDIDOR (a peça do vídeo): eixo em x 3380, 0 ft em y 220, 20 ft por px (30,000 ft em y 1720); o fundo do sonar 27,487 ft
     med: { x: 3380, y0: 220, ftPorPx: 20, max: 30000, nasce: 0.198, desenrola: 1.2, fundoFt: 27487,
-      numeros: [0, 15000, 30000], tiqueCurto: 26, tiqueLongo: 50, fundoX: [3330, 3440] },   // a série (s15, s18); números em x 3310
-    sub: { entra: 0.25, pousa: 3.0, yIni: 445, escala: 1.45 },    // o submersível (250 × 194 px): os patins de y 445 (o casco começa em
-                                                                  // y 285, abaixo do "0 FT", que vai até y 269) ao fundo do sonar
-    rotData: { entra: 3.733, dir: 3230, dy: -80 }                 // à esquerda do submersível pousado, um pouco acima do fundo (longe do 30,000 FT)
+      numeros: [0, 15000, 30000], tiqueCurto: 26, tiqueLongo: 50,
+      fundoX: [3330, 3626], fundoOp: [0.6, 1.0], fundoSobe: 0.18 },   // arte-4 (M1): de x 3330 a 3626, passando dos patins; 60 % → 100 % no pouso
+    // arte-4: o submersível AO LADO da régua, à direita do eixo (Lucas): centro x 3548, a 0,9 (173 × 139 px com o contorno de 18,
+    // que não escala), de x 3461,6 a 3634,4; os patins de y 445 ao fundo do sonar; o líder dos patins até o eixo
+    sub: { entra: 0.25, pousa: 3.0, yIni: 445, escala: 0.9, x: 3548, liderSai: 0.18 },
+    rotData: { entra: 3.733, dir: 3230, dy: -80 }                 // à esquerda da régua, um pouco acima do fundo (longe do 30,000 FT)
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -196,7 +218,8 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s07 (36,267
 
   var credMapaTexto = (P.atribuicao && P.atribuicao.exigida && P.atribuicao.tela) || "";
   if (credMapaTexto !== "© MapTiler © OpenStreetMap contributors") return falhar("o crédito do perfil ('" + credMapaTexto + "') não é o do textos-tela.json.");
-  E("credMapa").textContent = credMapaTexto;
+  // arte-4: as duas linhas de mapa numa faixa só, na ordem do textos-tela (a MapTiler em cima, a GEBCO embaixo)
+  E("credMapa").textContent = credMapaTexto + "\nGEBCO Compilation Group (2026) GEBCO 2026 Grid";
   window.__creditoMapa = credMapaTexto + " · GEBCO Compilation Group (2026) GEBCO 2026 Grid";
 
   var ANEL_G = geo("ponto-mais-fundo-atlantico"), GEB = baseGebco("gebco-caribe");
@@ -468,12 +491,17 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s07 (36,267
     E("medFundoLinha").setAttribute("d", "M" + M.fundoX[0] + " " + Y_FUNDO.toFixed(2) + "L" + M.fundoX[1] + " " + Y_FUNDO.toFixed(2));
   })();
   var NUMS = M.numeros.map(function (ft) { return { el: E("num" + ft), ft: ft }; });
+  var FRENTE = -1;   // arte-4: até onde a régua já desenrolou (o líder do submersível só entra onde há régua)
   function aplicarMedidor(t) {
     var u = eio(seg(t, M.nasce, M.desenrola));
     var nasceu = t >= M.nasce;
     E("medidor").setAttribute("opacity", nasceu ? "1" : "0");
-    if (!nasceu) { NUMS.forEach(function (n) { if (n.el) n.el.style.opacity = "0"; }); return; }
+    // arte-4 (M1): o fundo do sonar a 60 % até o pouso; a 100 % no pouso ("there"), em 180 ms
+    var fl = E("medFundoLinha");
+    if (fl) fl.setAttribute("stroke-opacity", (M.fundoOp[0] + (M.fundoOp[1] - M.fundoOp[0]) * eo(seg(t, CENA.sub.pousa, M.fundoSobe))).toFixed(3));
+    if (!nasceu) { FRENTE = -1; NUMS.forEach(function (n) { if (n.el) n.el.style.opacity = "0"; }); return; }
     var frente = M.y0 + (Y_MAX - M.y0) * u;
+    FRENTE = frente;
     // o corte vai da margem de cima (com folga para a ponta redonda e o contorno) até a frente
     var r = E("medCorteRet"); r.setAttribute("y", (M.y0 - 30).toFixed(2)); r.setAttribute("height", Math.max(0, frente - M.y0 + 30).toFixed(2));
     NUMS.forEach(function (n) {
@@ -504,14 +532,26 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s07 (36,267
   };
   E("subLinha").setAttribute("d", SUB.linha); E("subSob").setAttribute("d", SUB.linha); E("subOculto").setAttribute("d", SUB.oculto);
   function aplicarSub(t) {
-    var S = CENA.sub, g = E("sub");
+    var S = CENA.sub, g = E("sub"), gl = E("subLider");
+    if (!g) return null;
     var vin = eo(seg(t, S.entra, 0.3));
-    if (vin <= 0) { g.setAttribute("opacity", "0"); return null; }
+    if (vin <= 0) { g.setAttribute("opacity", "0"); if (gl) gl.setAttribute("opacity", "0"); return null; }
     var u = eio(seg(t, S.entra, S.pousa - S.entra));
     var y = S.yIni + (Y_FUNDO - S.yIni) * u;
-    g.setAttribute("transform", "translate(" + M.x + " " + y.toFixed(2) + ") scale(" + S.escala + ")");
+    // arte-4: ao lado da régua (à direita do eixo), não sobre ela
+    g.setAttribute("transform", "translate(" + S.x + " " + y.toFixed(2) + ") scale(" + S.escala + ")");
     g.setAttribute("opacity", vin.toFixed(3));
-    return { x: M.x, y: y };
+    // o líder: na altura dos patins, do eixo à ponta esquerda dos patins; só onde a régua já desenrolou, e sai no pouso
+    if (gl) {
+      var xa = (M.x).toFixed(2), xb = (S.x - 66 * S.escala).toFixed(2), ys = y.toFixed(2);
+      ["subLiderSob", "subLiderLinha"].forEach(function (id) {
+        var l = E(id); if (!l) return;
+        l.setAttribute("x1", xa); l.setAttribute("x2", xb); l.setAttribute("y1", ys); l.setAttribute("y2", ys);
+      });
+      var naRegua = FRENTE < 0 ? 0 : cl((FRENTE - y) / 40, 0, 1);
+      gl.setAttribute("opacity", (vin * naRegua * (1 - eo(seg(t, S.pousa, S.liderSai)))).toFixed(3));
+    }
+    return { x: S.x, y: y };
   }
 
   function mostrar(el, v, l, tp) {
@@ -526,8 +566,7 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s07 (36,267
     mostrar(el, v, R.dir - w, Y_FUNDO + R.dy - h / 2 + (1 - v) * 24);
   }
   function aplicarCreditos() {
-    E("credMapa").style.opacity = "1"; E("credMapa").style.visibility = "visible";
-    E("credGebco").style.opacity = "1"; E("credGebco").style.visibility = "visible";
+    var c = E("credMapa"); if (c) { c.style.opacity = "1"; c.style.visibility = "visible"; }
   }
 
   function aplicar(t) {

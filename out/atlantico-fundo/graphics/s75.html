@@ -4,8 +4,28 @@
   s75 · A TELA FINAL, "A · A descida" (Lucas, 28/10/2026, 14:5x, no chat da Sala: "A · A descida (Recomendado)"; roteiros/atlantico-
   fundo/decisoes-lucas.md, "A tela final"; a proposta em out/atlantico-fundo/_tmp/tela-final/propostas.md). Sem voz: a cauda de 20 s
   (canal.json › narracao.cauda_tela_final_s; narracao.json, segmento pausa 694,19–714,19).
-  Word-lock (−694.2) · inSec 694.2 · dur 20.0 (600 quadros a 30 fps; espelho.json de atlantico-fundo, sha256 c10fc98c…, _quadros
-  20826→21426, o último quadro do _master.mp4). cleanDur = dur. Modo do espelho: desenho · Modelo da identidade: ANIMAÇÃO PARA EXPLICAR
+  Word-lock (−694.2) · inSec 694.2 · dur 20.0 (600 quadros a 30 fps; espelho.json de atlantico-fundo, sha256 c10fc98c… e, conferido no
+  lote de consertos, bcfe74f9…, com o mesmo inSec e a mesma dur; _quadros 20826→21426, o último quadro do _master.mp4).
+
+  O LOTE DE CONSERTOS (tarefa atlantico-fundo-arte-4, lote OB, editor-de-arte em Opus, 29/10/2026; textos-tela bfa9e5d1…, os consertos
+  6, 6b e 6d, e as _instrucoes_para_a_arte 6/7, 30 e 31; a qualidade-2, `fonte` 5). O que mudou, e só isto:
+    · a LICENÇA DO SHUTTERSTOCK vale (SHUTTERSTOCK = true): "Image(s) and/or video used under license" / "from Shutterstock.com", em 2
+      linhas, de 0 a 13,0 (sai de 12,7 a 13,0), na faixa da GEBCO: a s10 usa o clipe 3607760923;
+    · as FONTES DA CAUDA, uma a uma, cada uma numa linha, com a opacidade do rótulo dela (entra e sai com ele): "Source: International
+      Hydrographic Review, 1936" com "HMS Challenger · 23,250 FT" (13,0; sai quando a cota sobe para perto da legenda, ~14,6),
+      "Source: Jamieson et al., 2020" com "1964 · CREW · ~24,000 FT" (14,2–16,2), "Source: NOAA Ocean Exploration, 2026" com a faixa
+      (15,4) até 18,6 (o t1 do textos-tela; sai de 18,3 a 18,6, junto com "1970 · NET · ~27,460 FT", que sai de 18,2 a 18,5 para dar o
+      lugar à cota do sonar), "Source: Bongiovanni et al., 2021" com a cota do sonar (18,5–20,0): de 18,5 a 18,6 as duas se cruzam, 3 linhas;
+    · a PILHA: a GEBCO embaixo, parada, do 1º ao último quadro, fora do escurecer; cada linha de cima sobe a soma das alturas das de
+      baixo, pesadas pela opacidade (nenhuma salta); no máximo 3 linhas, o topo em y 1930 (medido a cada 0,1 s:
+      _tmp/arte-4/OB/medir75.mjs). Cada linha é um nó com data-qc-papel="credito"; só a da GEBCO leva data-qc-credito="mapa";
+    · as COTAS na forma do textos-tela: "HMS Challenger · 23,250 FT" (o navio em caixa normal, conserto 4) e "DECEMBER 2018 · SONAR ·
+      27,487 FT", em 2 linhas ("DECEMBER 2018 ·" / "SONAR · 27,487 FT": numa linha ela teria ~1.840 px e passaria da margem de 200 px),
+      com 0,9 de entrelinha, a borda direita a 70 px da régua (fora do pulso do anel) e o topo 35 px abaixo do fundo; entra só com a
+      opacidade (sem a subida de 24 px), para a caixa da letra (até y ~1877, medida pelo portao-margens) nunca descer à faixa do crédito;
+    · a régua e o perfil já estavam na mesma escala vertical (×10; instrução 31): não mudaram.
+  O resto fica como estava. Onde o texto abaixo diz outra coisa sobre o crédito, a licença ou as cotas, vale este bloco.
+  cleanDur = dur. Modo do espelho: desenho · Modelo da identidade: ANIMAÇÃO PARA EXPLICAR
   sobre a MESA DO VÍDEO 2 EM DIANTE (satélite sob a luz, §5; still mesa-porto-rico.png), no TRAÇO DE ENGENHEIRO, sobre o PERFIL REAL
   da GEBCO 2026. PICO (showpiece). Corte seco casado com s74: o anel em x 1700, y 760 (o último quadro de s74; _tmp/setores/arte-1/
   M7.md, "A pose de saída": __cameraAt(16.1) = center [-66.96395, 19.23608], zoom 8.80, bearing 0, pitch 0, o anel em x 1700, y 760).
@@ -151,7 +171,12 @@
     text-shadow: var(--nome-territorio-sombra); }
   #creds { position: absolute; left: var(--credito-x); bottom: 14px; width: calc(var(--credito-x-fim) - var(--credito-x)); }
   .cred { position: absolute; left: 0; bottom: 0; width: 100%; font-family: var(--fonte); font-weight: var(--peso-texto);
-    font-size: var(--fs-credito); line-height: 1.2; color: var(--sec); letter-spacing: 0; opacity: 0; white-space: normal; }
+    font-size: var(--fs-credito); line-height: 1.2; color: var(--sec); letter-spacing: 0; opacity: 0; white-space: nowrap; }
+  /* a licença do Shutterstock, em 2 linhas, com a quebra depois de "license" (textos-tela, conserto 6) */
+  .cred.duas { white-space: pre-line; }
+  /* a cota do sonar em 2 linhas (a forma "DECEMBER 2018" não cabe numa linha entre a margem de 200 px e a régua): 0,9 de entrelinha
+     para as duas linhas caberem entre a rocha e a faixa do crédito (y 1880) */
+  .cota.linhas.aperta { line-height: 0.9; }
 </style>
 </head>
 <body>
@@ -216,9 +241,19 @@
     <div class="txt cota" id="c1964" data-qc-papel="rotulo"></div>
     <div class="txt cota linhas" id="cFaixa" data-qc-papel="rotulo"></div>
     <div class="txt cota" id="c1970" data-qc-papel="rotulo"></div>
-    <div class="txt cota" id="cDec" data-qc-papel="rotulo"></div>
+    <div class="txt cota linhas aperta" id="cDec" data-qc-papel="rotulo"></div>
   </div>
-  <div id="creds"><div class="cred" id="credGebco" data-qc-papel="credito" data-qc-credito="mapa"></div></div>
+  <!-- a faixa de crédito (lote de consertos arte-4, conserto 6 e 6b): a GEBCO embaixo, do 1º ao último quadro; por cima dela, a licença
+       do Shutterstock (2 linhas, 0–13,0) e, de 13,0 ao fim, as fontes da cauda, uma a uma, cada uma com o rótulo dela; a pilha se
+       refaz sem salto (a altura de cada linha anda com o esmaecer dela); no máximo 3 linhas -->
+  <div id="creds">
+    <div class="cred" id="credGebco" data-qc-papel="credito" data-qc-credito="mapa"></div>
+    <div class="cred duas" id="credSS" data-qc-papel="credito"></div>
+    <div class="cred" id="credIHR" data-qc-papel="credito"></div>
+    <div class="cred" id="credJam" data-qc-papel="credito"></div>
+    <div class="cred" id="credNOAA" data-qc-papel="credito"></div>
+    <div class="cred" id="credBong" data-qc-papel="credito"></div>
+  </div>
 </div>
 
 <script>
@@ -314,28 +349,36 @@
 
   var DUR = 20.0;
   window.__duracao = DUR;
-  var SHUTTERSTOCK = false;   // a _condicao do textos-tela: só se algum clipe da caça vier do Shutterstock (até 29/10/2026, nenhum)
+  // a licença do Shutterstock VALE (conserto 6 do textos-tela bfa9e5d1): a s10 usa o clipe 3607760923 do Shutterstock, e o Lucas respondeu
+  // à lista da caça "B. Só a linha do fim" (29/10/2026, 12:0x; caca-relato.md)
+  var SHUTTERSTOCK = true;
 
   // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é do redator-de-tela: textos-tela.json › s75) ═══
   var TEXTOS = {
     legenda: "Vertical exaggeration ×10",                                   // legenda, 0–20
     superf: "SURFACE · 0 FT",                                              // eixo, 0–20 (sai pelo alto com a superfície)
     n5: "5,000", n10: "10,000", n15: "15,000", n20: "20,000", n25: "25,000 FT", // eixo, 7,0–20 ("5,000 · 10,000 · 15,000 · 20,000 · 25,000 FT")
-    cChall: "HMS CHALLENGER · 23,250 FT",                                  // cota, 13,0–15,0
+    cChall: "HMS Challenger · 23,250 FT",                                  // cota, 13,0–15,0 (o navio em caixa normal: conserto 4)
     c1964: "1964 · CREW · ~24,000 FT",                                     // cota, 14,2–16,2
     // cota, 15,4–17,4: a string do redator, quebrada em 4 linhas nos espaços (a mesma sequência de caracteres)
     cFaixa: "~26,900–27,560 FT\n(8,200–8,400 M) ·\nFISH LIMIT\n(NOAA ESTIMATE)",
     c1970: "1970 · NET · ~27,460 FT",                                      // cota, 16,6–18,6
-    cDec: "DEC. 2018 · SONAR · 27,487 FT",                                 // cota, 18,5–20
-    credGebco: "GEBCO Compilation Group (2026) GEBCO 2026 Grid",           // credito, 0–20
-    credSS: "Image(s) and/or video used under license from Shutterstock.com"   // credito, só com a _condicao
+    // cota, 18,5–20: a string do redator ("DECEMBER 2018 · SONAR · 27,487 FT"), quebrada em 2 linhas num espaço (a mesma sequência de
+    // caracteres): numa linha só ela tem ~1.840 px e passaria da margem de 200 px
+    cDec: "DECEMBER 2018 ·\nSONAR · 27,487 FT",
+    credGebco: "GEBCO Compilation Group (2026) GEBCO 2026 Grid",           // credito, 0–20 (crédito de mapa)
+    // credito, 0–13,0: em 2 linhas, a quebra depois de "license" (a mesma sequência de caracteres)
+    credSS: "Image(s) and/or video used under license\nfrom Shutterstock.com",
+    // as fontes da cauda (conserto 6b): cada uma com o rótulo dela, numa linha
+    credIHR: "Source: International Hydrographic Review, 1936",           // credito, 13,0–15,0, com "HMS Challenger · 23,250 FT"
+    credJam: "Source: Jamieson et al., 2020",                             // credito, 14,2–16,2, com "1964 · CREW · ~24,000 FT"
+    credNOAA: "Source: NOAA Ocean Exploration, 2026",                     // credito, 15,4–18,6, com a faixa e "1970 · NET · ~27,460 FT"
+    credBong: "Source: Bongiovanni et al., 2021"                          // credito, 18,5–20,0, com "DECEMBER 2018 · SONAR · 27,487 FT"
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════
-  ["legenda", "superf", "n5", "n10", "n15", "n20", "n25", "cChall", "c1964", "cFaixa", "c1970", "cDec", "credGebco"].forEach(function (k) {
-    var e = E(k); if (e) e.textContent = TEXTOS[k]; });
-  if (SHUTTERSTOCK) {   // a 2ª linha na mesma faixa da GEBCO, no mesmo elemento de crédito (um nó só)
-    var cg = E("credGebco"); if (cg) { cg.textContent = TEXTOS.credGebco + "\n" + TEXTOS.credSS; cg.style.whiteSpace = "pre-line"; cg.removeAttribute("data-qc-credito"); }
-  }
+  ["legenda", "superf", "n5", "n10", "n15", "n20", "n25", "cChall", "c1964", "cFaixa", "c1970", "cDec", "credGebco", "credIHR", "credJam",
+   "credNOAA", "credBong"].forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+  (function () { var e = E("credSS"); if (e) { if (SHUTTERSTOCK) e.textContent = TEXTOS.credSS; else e.parentNode.removeChild(e); } })();
 
   // ── o PERFIL REAL (GEBCO 2026): [km desde a costa de Aguadilla, profundidade em pés], o recuo em terra (declarado), a linha das
   //    83 mi e a continuação ao norte (declarada) ──
@@ -537,13 +580,40 @@
     // a rede e o sonar: embaixo do fundo, a borda direita na régua (x 1800); a da rede sai (18,2–18,5) antes da do sonar entrar no lugar dela
     var yf = Y(C, FUNDO);
     var v4 = vida(t, 16.6, 18.5); mostrar("c1970", v4.op, C.xr + C.dv[0] - w("c1970"), yf + 60 + v4.dy);
-    var v5 = vida(t, 18.5, null); mostrar("cDec", v5.op, C.xr + C.dv[0] - w("cDec"), yf + 60 + v5.dy);
+    // a do sonar, em 2 linhas: a borda direita a 70 px da régua (o lugar dos números dela), fora do pulso do anel (até ~61 px dele), e o
+    // topo 35 px abaixo do fundo (a rocha acaba em +35; a letra começa ~9 px abaixo dela): as duas linhas cabem acima da faixa (y 1880)
+    // (entra só com a opacidade: a subida de 24 px a levaria à faixa do crédito)
+    var v5 = vida(t, 18.5, null), y5 = yf + 35;
+    mostrar("cDec", v5.op, C.xr + C.dv[0] - 70 - w("cDec"), y5);
     // os líderes das visitas: só se a cota ficar a mais de 8 px do começo do traço (com a régua em 1800, nunca: a cota encosta no traço)
     var dl = "";
     if (v1.op * j1 > 0.01 && C.xr + C.dv[0] - 50 - DIR > 8) dl += "M" + DIR + "," + f2(y1) + " L" + f2(C.xr + C.dv[0] - 50) + "," + f2(y1) + " ";
     if (v2.op * j2 > 0.01 && C.xr + C.dv[0] - 50 - DIR > 8) dl += "M" + DIR + "," + f2(y2) + " L" + f2(C.xr + C.dv[0] - 50) + "," + f2(y2) + " ";
     ["medLider", "medSobLider"].forEach(function (id) { var e = E(id); if (e) { e.setAttribute("d", dl || "M-500,-500"); e.style.opacity = Math.max(v1.op * j1, v2.op * j2).toFixed(3); } });
-    var cr = E("credGebco"); if (cr) cr.style.opacity = eo(seg(t, 0, 0.3)).toFixed(3);
+    // A FAIXA DE CRÉDITO (conserto 6 e 6b): cada linha com a vida dela; cada fonte entra e sai com o rótulo dela (a mesma opacidade)
+    var c0 = eo(seg(t, 0, 0.3));
+    var vidas = [
+      ["credGebco", c0],                                                   // 0–20, embaixo, parada
+      ["credSS", Math.min(c0, 1 - seg(t, 12.7, 0.3))],                     // 0–13,0
+      ["credIHR", v1.op * j1],                                             // com "HMS Challenger · 23,250 FT"
+      ["credJam", v2.op * j2],                                             // com "1964 · CREW · ~24,000 FT"
+      ["credNOAA", Math.min(eo(seg(t, 15.4, 0.3)), 1 - seg(t, 18.3, 0.3))], // com a faixa (15,4) até o t1 do textos-tela (18,6), junto da saída de "1970 · NET" (18,2–18,5)
+      ["credBong", v5.op]                                                  // com "DECEMBER 2018 · SONAR · 27,487 FT", até o fim
+    ];
+    creditos(vidas);
+  }
+  // a pilha: de baixo para cima, na ordem da lista; cada linha sobe a soma das alturas das de baixo, cada uma pesada pela opacidade dela
+  // (a que entra abre o lugar dela enquanto aparece; a que sai fecha o dela enquanto some): nenhuma linha salta
+  function creditos(vidas) {
+    var base = 0;
+    vidas.forEach(function (q) {
+      var e = E(q[0]); if (!e) return;
+      var op = clamp(q[1], 0, 1);
+      e.style.opacity = op.toFixed(3);
+      e.style.visibility = op > 0.002 ? "visible" : "hidden";
+      e.style.transform = "translateY(" + f2(-base) + "px)";
+      base += e.offsetHeight * op;
+    });
   }
 
   function cena(t) {
@@ -579,7 +649,7 @@
     t = clamp(+t || 0, 0, DUR); window.__renderAt(t);
     var cx = function (id) { var el = E(id); if (!el) return null; var r = el.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.top), Math.round(r.right), Math.round(r.bottom), +(+getComputedStyle(el).opacity).toFixed(2)]; };
     var o = { t: t, cam: window.__cameraAt(t), erros: window.__errosRender || 0 };
-    ["legenda", "superf", "n5", "n10", "n15", "n20", "n25", "cChall", "c1964", "cFaixa", "c1970", "cDec", "credGebco", "anel", "gRede", "perfil", "regua", "gFaixa"].forEach(function (id) { o[id] = cx(id); });
+    ["legenda", "superf", "n5", "n10", "n15", "n20", "n25", "cChall", "c1964", "cFaixa", "c1970", "cDec", "credGebco", "credSS", "credIHR", "credJam", "credNOAA", "credBong", "anel", "gRede", "perfil", "regua", "gFaixa"].forEach(function (id) { o[id] = cx(id); });
     return o;
   };
   window.__renderAt(0);

@@ -69,6 +69,12 @@
                em "more" (30,533; textos-tela). Crédito "El Mundo / Universidad de Puerto Rico" a 60 px do 1º ao último quadro
                da foto. Sem número exato, sem corpo, sem trilha. Os créditos de mapa saem com o mapa (textos-tela › _regras_de_serie).
 
+  ARTE-4 (o lote de consertos; textos-tela bfa9e5d1): (1) "MORE THAN 100" passa a "MORE THAN 100 DEATHS · NOAA NCEI" (o dono, a
+    unidade e a fonte; conserto 4 · item 2; a Sala, qualidade-1, pergunta 2), em duas linhas como a cota UP TO 20 FT (a quebra só no
+    " · "), no mesmo lugar e no mesmo tempo (30,533–32,4); (2) a data de 1918 na forma AP do textos-tela: "OCTOBER 1918" e "OCTOBER
+    1918 · NOT IN THE TRENCH" (conserto 4 · item 6), nos mesmos tempos. As instruções 2 e 28 (o marcador no epicentro do NCEI, a
+    "Mona Passage" sobre a passagem, "DOMINICAN REPUBLIC" sobre a terra) ficam como estavam. Onde o texto abaixo diz "OCT. 1918" e
+    "MORE THAN 100", vale isto.
   ELEMENTOS (identidade §4.2, conta minha, não portão): b0 a fossa = 1; b1 a fossa, a parede, a legenda = 3; b2 + o cartão = 4;
     b3–b4 a fossa, a passagem (com nome), a RD (com nome), o marcador com a pílula de 1918, M 7.1 = 5; b5 o marcador com M 7.1, a
     costa, a régua com a cota = 3 a 5; b6 a foto (base), o lugar, MORE THAN 100 = 2. Herói: a fala citada (data-qc-papel="heroi"),
@@ -645,19 +651,22 @@
     crFonte: "Source: U.S. Geological Survey, 2018",          // credito, 4,0–13,533
     legDesl: "Old underwater landslides",                     // legenda, 7,267–13,533 ("landslides")
     fala: "“APPEARS TO BE HIGH” · USGS",                       // citacao, 9,033–13,533 ("tsunami")
-    oct: "OCT. 1918",                                          // cota, 13,667–19,033 ("October nineteen eighteen")
-    octNot: "OCT. 1918 · NOT IN THE TRENCH",                   // cota, 19,033–24,533 ("wasn't"), a mesma etiqueta que cresce
+    oct: "OCTOBER 1918",                                       // cota, 13,667–19,033 ("October nineteen eighteen"); a forma AP (conserto 4 · item 6)
+    octNot: "OCTOBER 1918 · NOT IN THE TRENCH",                // cota, 19,033–24,533 ("wasn't"), a mesma etiqueta que cresce
     rotMona: "Mona Passage",                                   // rotulo, 16,3–24,533 ("Mona Passage")
     rotRD: "DOMINICAN REPUBLIC",                               // rotulo, 16,633–24,533 (sobre a terra do país)
     cotaM71: "M 7.1 · NOAA NCEI",                              // cota, 22,4–28,8 ("magnitude seven point one")
     cotaUp: "UP TO 20 FT (6.1 M) · NOAA NCEI",                 // cota, 26,033–28,8 ("twenty feet"), SÓ no mapa
     crFoto: "El Mundo / Universidad de Puerto Rico",           // credito, 28,8–32,4 (a foto)
     rotMay: "Mayagüez, Puerto Rico",                           // rotulo, 29,1–32,4 (o lugar_na_origem)
-    cotaMorte: "MORE THAN 100"                                 // cota, 30,533–32,4 ("more than one hundred people")
+    cotaMorte: "MORE THAN 100 DEATHS · NOAA NCEI"              // cota, 30,533–32,4 ("more than one hundred people"); o dono, a unidade e a fonte (conserto 4 · item 2)
   };
   // as quebras de linha só nos " · " (as linhas juntadas por " · " são o texto do redator) e, na fala, entre palavras
   var FALA_LINHAS = ["“APPEARS", "TO BE HIGH”"], FALA_DONO = "USGS";
   var UP_LINHAS = ["UP TO 20 FT (6.1 M)", "NOAA NCEI"], RD_LINHAS = ["DOMINICAN", "REPUBLIC"];
+  // (arte-4) a cota das mortes em duas linhas, como a UP TO 20 FT: a quebra só no " · " (o dono numa linha embaixo)
+  var MORTE_LINHAS = ["MORE THAN 100 DEATHS", "NOAA NCEI"];
+  if (MORTE_LINHAS.join(" · ") !== TEXTOS.cotaMorte) falhar("a cota das mortes em linhas não é a do textos-tela.");
   if ([FALA_LINHAS.join(" "), FALA_DONO].join(" · ") !== TEXTOS.fala) falhar("a fala em linhas não é a do textos-tela.");
   if (UP_LINHAS.join(" · ") !== TEXTOS.cotaUp) falhar("a cota UP TO em linhas não é a do textos-tela.");
   if (RD_LINHAS.join(" ") !== TEXTOS.rotRD) falhar("o nome da RD em linhas não é o do textos-tela.");
@@ -667,7 +676,7 @@
     s("crFonte", TEXTOS.crFonte); s("legDesl", TEXTOS.legDesl); s("fala", FALA_LINHAS.join("\n")); s("dono", FALA_DONO);
     s("octL1", TEXTOS.oct); s("octL2", "NOT IN THE TRENCH"); s("rotMona", TEXTOS.rotMona); s("rotRD", RD_LINHAS.join("\n"));
     s("cotaM71", TEXTOS.cotaM71); s("cotaUp", UP_LINHAS.join("\n")); s("crFoto", TEXTOS.crFoto); s("rotMay", TEXTOS.rotMay);
-    s("cotaMorte", TEXTOS.cotaMorte);
+    s("cotaMorte", MORTE_LINHAS.join("\n"));
   })();
   var T = {
     fossa: 0.275, desce: 0.865, desceFim: 3.4, fonte: 4.0, parede: 7.267, fala: 9.033, fimB2: 13.533,

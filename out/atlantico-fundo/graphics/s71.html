@@ -4,8 +4,27 @@
   s71 · "In twenty nineteen, the same sub went back to the spot where that crew had reported their fish. It was the craft that had
   carried Vescovo to the deepest point the year before. Where the nineteen sixty-four crew had counted about two hundred fish, it
   saw no snailfish. It found sea cucumbers instead, spread about as thickly as the fish the crew had reported."
-  Word-lock (−636.767) · inSec 636.767 · dur 20.1 (603 quadros a 30 fps; espelho.json de atlantico-fundo, sha256 ad3b18e9…, palavras
-  1852–1915). cleanDur = dur (faceless: o relógio é um só, out/atlantico-fundo/words.json). Modo do espelho: desenho · Modelo da
+  Word-lock (−636.767) · inSec 636.767 · dur 20.1 (603 quadros a 30 fps; espelho.json de atlantico-fundo, sha256 ad3b18e9… e, conferido
+  no lote de consertos, bcfe74f9…, com o mesmo inSec e a mesma dur; palavras 1852–1915).
+
+  O LOTE DE CONSERTOS (tarefa atlantico-fundo-arte-4, lote OB, editor-de-arte em Opus, 29/10/2026; textos-tela bfa9e5d1…, regência
+  9d0ab49f…, conceito e34292ec…; _tmp/espectador-r1b/mantidos.json, mantidos[17] e [18]). O que mudou, e só isto:
+    · o GLIFO do peixe a 1,5× (44 px, o traço de 6 px): o CARDUME DA SÉRIE, o mesmo bloco da s26 (a mesma semente, as mesmas contas),
+      8 fileiras em quincôncio, ~260 px acima da linha; nenhum par a menos de 9,33 px eixo a eixo (DOM, window.__s71peca(t, true)).
+      Não os ~2× do pedido: a conta está na s26. Os pepinos-do-mar nascem nos lugares novos (o mesmo centro, 9 px mais alto), com o
+      tamanho e o traço de 4 px de antes (classe .ar-pepino): nenhum par a menos de 15,7 px, nenhum a menos de 20 px da encosta;
+    · o SUBMERSÍVEL repousa em y 900 (era 1080), para os patins ficarem acima dos peixes mais altos sob eles (59,8 px; eram 51): larga
+      o peso em 1,013 s e PARA (abaixo de 0,5 px) em 3,05 s. O ano, o nome e a data sobem com ele (centros em y 670, 720 e 868; eram
+      860, 900 e 1048), e "SEA CUCUMBERS" sobe a y 300 (era 520), para a ponta esquerda do cardume ampliado a 1,99 não chegar a ele;
+    · a CÂMERA: a aproximação começa quando o submersível assenta (3,05 s) e segue contínua e lenta até os mesmos 1,9 em 19,6 s (a
+      escala em log com o smoothstep, × o push-in do RIG: 1,27 em 9,5 s e 1,47 em 12,0 s, medidas no DOM), centrada perto do submersível (o lado
+      direito dele, x 2210, y 790) até "Where" (9,567) e daí à linha, P = (2130, 1190), em 2,5 s (eb). Isto mexe no b2 da regência ("the
+      camera slowly closes in"), com a autorização da Sala no lote de consertos (mantidos[18]). A luz da linha passa ao meio do cardume;
+    · "DEC. 2018" passou a "DECEMBER 2018" (a forma AP do textos-tela);
+    · o comentário do Lucas na s07 ("ao lado da régua e não sobre ela") não se aplica: esta cena não tem régua de profundidade; o
+      submersível desce sobre a fila, não sobre um medidor.
+  O resto fica como estava. Onde o texto abaixo diz outra coisa sobre os peixes, o submersível, a câmera ou a data, vale este bloco.
+  cleanDur = dur (faceless: o relógio é um só, out/atlantico-fundo/words.json). Modo do espelho: desenho · Modelo da
   identidade: ANIMAÇÃO PARA EXPLICAR (etapas; números e escala) sobre a MESA DO VÍDEO 2 EM DIANTE (satélite sob a luz, §5; still
   mesa-porto-rico.png), no TRAÇO DE ENGENHEIRO, COM A FÍSICA DO ILUSTRADOR (§4.4). PICO (showpiece: paga S7–S8). Corte seco na
   entrada (mapa s70 → desenho) e na saída (→ registro s72): troca de regime. Tarefa atlantico-fundo-arte-1, lote EO3, editor-de-arte
@@ -104,10 +123,11 @@
   #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
     font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
   /* a câmera amplia em torno de P = (2130, 1190); o still em torno do mesmo ponto (P + 56, a sangria dele) */
-  #cam { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; transform-origin: 2130px 1190px; }
+  /* a câmera amplia em torno de um centro que anda (o submersível, depois a linha): a conta inteira vai no transform, com a origem em 0 0 */
+  #cam { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; transform-origin: 0 0; }
   #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
     width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem)); pointer-events: none;
-    opacity: var(--mesa-satelite-opacidade); transform-origin: 2186px 1246px; }
+    opacity: var(--mesa-satelite-opacidade); transform-origin: 0 0; }
   #luz { position: absolute; left: -140px; top: -140px; width: 4120px; height: 2440px; pointer-events: none;
     background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 2240px) var(--luz-y, 1330px),
       var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
@@ -117,7 +137,9 @@
   .ar { fill: none; stroke: var(--tinta); stroke-width: var(--linha-espessura); stroke-linejoin: round; stroke-linecap: round; }
   .ar-fina { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: .5; }
   .ar-oculto { fill: none; stroke: var(--tinta); stroke-width: var(--linha-espessura); stroke-linecap: round; stroke-dasharray: 16 14; }
-  .ar-peixe { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .ar-peixe { fill: none; stroke: var(--tinta); stroke-width: var(--linha-espessura); stroke-linecap: round; stroke-linejoin: round; }
+  /* o pepino-do-mar fica com o traço de antes (4 px): o conserto do espectador é só o do peixe (mantidos[17]: os pepinos "se leem") */
+  .ar-pepino { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
   .sombra-linha { fill: none; stroke: var(--tinta-escura); stroke-width: 16; stroke-linejoin: round; stroke-linecap: round; }
   /* os textos, todos FORA da câmera: rótulos soltos, sem pílula (o traço de engenheiro, identidade §5) */
   .txt { position: absolute; left: 0; top: 0; white-space: nowrap; opacity: 0; color: var(--tinta); }
@@ -257,7 +279,7 @@
   var TEXTOS = {
     rot2019: "2019",                              // cota, 0,166 · lastro: "twenty nineteen" (0,178–1,043)
     rotNome: "Limiting Factor",                   // rotulo, 5,666 · lastro: "the craft that had carried Vescovo" (5,668–7,138)
-    rotData: "DEC. 2018",                         // cota, 7,533 · lastro: "the deepest point the year before" (7,538–8,913)
+    rotData: "DECEMBER 2018",                     // cota, 7,533 · lastro: "the deepest point the year before" (7,538–8,913); a forma AP do textos-tela bfa9e5d1
     etq1: "~200 · 1964 (REPORTED)",               // cota, 11,933 · lastro: "counted about two hundred fish" (11,228–12,753)
     etq2: "→ NO SNAILFISH SEEN · 2019",           // a mesma etiqueta, 13,6 · lastro: "it saw no snailfish" (13,298–14,373)
     rotPepino: "SEA CUCUMBERS",                   // rotulo, 15,366 · lastro: "sea cucumbers" (15,378–16,018)
@@ -279,19 +301,32 @@
     if (E("hachura")) E("hachura").setAttribute("d", d);
   })();
 
-  // ── os ~200 riscos de "peixe": o bloco de s06 transcrito (a mesma semente, as mesmas contas, na mesma ordem de sorteio) ──
-  var NPEIXE = 200, FILAS = 4, XA = 1250, XB = 2950;
-  var rnd = R.mulberry32(1964);
-  var glifos = [];
-  for (var i = 0; i < NPEIXE; i++) {
-    var fila = i % FILAS, j = Math.floor(i / FILAS);
-    var s = (j + 0.5 + fila / FILAS) / (NPEIXE / FILAS) + (rnd() - 0.5) * 0.004;
-    s = clamp(s, 0.002, 0.998);
-    var x = XA + s * (XB - XA);
-    var h = 18 + fila * 20 + (rnd() - 0.5) * 10;
-    var dir = rnd() < 0.5 ? 1 : -1, a = ANG + (rnd() - 0.5) * 0.40;
-    glifos.push({ s: s, x: x, h: h, dir: dir, a: a });
-  }
+  // ── os ~200 peixes: O CARDUME DA SÉRIE, o mesmo bloco de s26 (a mesma semente, as mesmas contas, na mesma ordem de sorteio; lote de
+  //    consertos arte-4, o conserto do espectador mantidos[17], "o conserto da série do C6 (s26), igual na s71"). O glifo de dois arcos
+  //    a 1,5× (44 px, o traço de 6 px), 8 fileiras em quincôncio, sorteio de semente fixa e relaxamento determinístico: nenhum par a
+  //    menos de ~9 px eixo a eixo, medido no DOM (window.__s71peca(t, true)). ──
+  var NPEIXE = 200, FILAS = 8, POR = NPEIXE / FILAS, XA = 1250, XB = 2950, GP = 1.5, DHP = 31, IT_REL = 150;
+  var COSA = Math.cos(ANG), SINA = Math.sin(ANG), LU = (XB - XA) / COSA, H0P = 13 * GP + 8;
+  var EU = 33 * GP + 14, EH = 17 * GP + 12, HMIN = H0P - 2, HMAX = H0P + (FILAS - 1) * DHP + 2, UA = 18 * GP, UB = LU - 18 * GP;
+  var glifos = (function () {
+    var rnd = R.mulberry32(1964), C = [], i, j, it;
+    for (i = 0; i < NPEIXE; i++) {
+      var fila = i % FILAS, jj = Math.floor(i / FILAS);
+      var s = (jj + 0.25 + 0.5 * (fila % 2)) / POR + (rnd() - 0.5) * 0.010;
+      var h = H0P + fila * DHP + (rnd() - 0.5) * 10;
+      var dir = rnd() < 0.5 ? 1 : -1, a = (rnd() - 0.5) * 0.30;
+      C.push([s * LU, h, dir, a]);
+    }
+    for (it = 0; it < IT_REL; it++) {
+      for (i = 0; i < NPEIXE; i++) for (j = i + 1; j < NPEIXE; j++) {
+        var du = (C[j][0] - C[i][0]) / EU, dh = (C[j][1] - C[i][1]) / EH, dd = Math.sqrt(du * du + dh * dh);
+        if (dd < 1 && dd > 1e-9) { var k = (1 - dd) * 0.25;
+          C[i][0] -= du / dd * k * EU; C[j][0] += du / dd * k * EU; C[i][1] -= dh / dd * k * EH; C[j][1] += dh / dd * k * EH; }
+      }
+      for (i = 0; i < NPEIXE; i++) { C[i][0] = clamp(C[i][0], UA, UB); C[i][1] = clamp(C[i][1], HMIN, HMAX); }
+    }
+    return C.map(function (c) { return { s: c[0] / LU, x: XA + c[0] * COSA, h: c[1], dir: c[2], a: ANG + c[3] }; });
+  })();
   var gP = E("gPeixes"), gQ = E("gPepinos");
   // o pepino-do-mar: um saco alongado (ponta arredondada embaixo) com a borda franjada, o véu, em cima; v = rumo ao véu
   var rndP = R.mulberry32(2019);
@@ -305,14 +340,14 @@
   glifos.forEach(function (g) {
     var cx = g.x + Math.sin(ANG) * g.h, cy = yF(g.x) - Math.cos(ANG) * g.h;   // a h px acima da linha, na normal da encosta
     var c = Math.cos(g.a), sn = Math.sin(g.a), dir = g.dir;
-    var P = function (u, v) { u *= dir; return f2(cx + u * c - v * sn) + "," + f2(cy + u * sn + v * c); };
-    // o peixe de dois arcos (o nariz em +16; os arcos se cruzam e abrem a cauda em −13): 30 px de comprimento (o glifo de s06)
+    var P = function (u, v) { u *= dir * GP; v *= GP; return f2(cx + u * c - v * sn) + "," + f2(cy + u * sn + v * c); };
+    // o peixe de dois arcos (o nariz em +16; os arcos se cruzam e abrem a cauda em −13): o glifo de s06 a 1,5×, 44 px de comprimento
     var dP = "M" + P(16, 0) + " Q" + P(1, -11) + " " + P(-13, 6) + " M" + P(16, 0) + " Q" + P(1, 11) + " " + P(-13, -6);
     var pe = document.createElementNS(NS, "path"); pe.setAttribute("class", "ar-peixe"); pe.setAttribute("d", dP); if (gP) gP.appendChild(pe);
     // o pepino-do-mar no MESMO lugar: o mesmo centro, 9 px mais alto na normal da encosta; quase de pé (o véu para cima), ±0,35 rad
     var qx = cx + Math.sin(ANG) * 9, qy = cy - Math.cos(ANG) * 9;
     var th = (ANG - Math.PI / 2) + (rndP() - 0.5) * 0.70;
-    var pq = document.createElementNS(NS, "path"); pq.setAttribute("class", "ar-peixe"); pq.setAttribute("d", pepino(qx, qy, th));
+    var pq = document.createElementNS(NS, "path"); pq.setAttribute("class", "ar-pepino"); pq.setAttribute("d", pepino(qx, qy, th));
     pq.style.opacity = "0"; if (gQ) gQ.appendChild(pq);
     g.peixe = pe; g.pepino = pq;
   });
@@ -342,8 +377,11 @@
   var ALT = 134 * KS;
 
   // a CHEGADA: um controlador só, vertical. Velocidade terminal, depois quase neutro e arrasto linear até parar (o modelo de s06).
-  var XS = 2100, YH = 1080, VT = 900, TAU = 0.32, YIN = -30;
-  var YB = YH - VT * TAU, TB = T.entra + (YB - YIN) / VT;      // onde e quando larga o peso: y 792, 1,213 s
+  // o repouso passou de y 1080 a 900 (lote de consertos arte-4): o cardume maior sobe ~260 px acima da linha, e os patins ficam acima
+  // dos peixes mais altos sob eles, com a mesma folga de antes (~50 px, medida no DOM: window.__s71peca)
+  var XS = 2100, YH = 900, VT = 900, TAU = 0.32, YIN = -30;
+  var YB = YH - VT * TAU, TB = T.entra + (YB - YIN) / VT;      // onde e quando larga o peso: y 612, 1,013 s
+  var TREP = TB + TAU * Math.log(VT * TAU / 0.5);              // o repouso (abaixo de 0,5 px): 3,05 s
   function ySub(t) {
     if (t <= T.entra) return YIN;
     if (t < TB) return YIN + VT * (t - T.entra);
@@ -351,18 +389,25 @@
     return (YH - y) < 0.5 ? YH : y;                            // o limiar de repouso declarado: 0,5 px
   }
 
-  // a CÂMERA: o push-in do RIG × a aproximação, em torno de P; a deriva; o still a 0,6
-  var PX = 2130, PY = 1190;
-  function escala(t) { return (1 + 0.0024 * Math.min(t, T.repouso)) * (1 + 0.90 * eb(seg(t, T.aprox, T.aproxDur))); }
+  // a CÂMERA (lote de consertos arte-4, o conserto do espectador mantidos[18]): a aproximação começa quando o submersível assenta (TREP,
+  // 3,05 s) e segue contínua e lenta até os mesmos 1,9 em 19,6 s (a escala em log, com o smoothstep: sem tranco na partida nem na
+  // chegada), × o push-in do RIG. O centro: perto do submersível (o lado direito dele, para a legenda à direita não ser alcançada) até
+  // "Where" (9,567), e de lá à linha, P = (2130, 1190), como antes, em 2,5 s (eb). A deriva; o still a 0,6.
+  var PX = 2130, PY = 1190, CSX = XS + 110, CSY = YH - 110;
+  function zoom(t) { var p = seg(t, TREP, T.aprox + T.aproxDur - TREP), f = p * p * (3 - 2 * p); return Math.pow(1.9, f); }
+  function escala(t) { return (1 + 0.0024 * Math.min(t, T.repouso)) * zoom(t); }
+  function centro(t) { var q = eb(seg(t, T.saem, 2.5)); return [lerp(CSX, PX, q), lerp(CSY, PY, q)]; }
   function deriva(t) { return [6 * Math.sin(t * 0.23), 4.8 * Math.sin(t * 0.17)]; }
   function camera(t) {
-    var s = escala(t), dv = deriva(t);
-    var c = E("cam"); if (c) c.style.transform = "scale(" + s.toFixed(5) + ") translate(" + f2(dv[0]) + "px," + f2(dv[1]) + "px)";
-    var st = E("still"); if (st) st.style.transform = "scale(" + (1 + (s - 1) * 0.6).toFixed(5) + ") translate(" + f2(dv[0] * 0.6) + "px," + f2(dv[1] * 0.6) + "px)";
+    var s = escala(t), dv = deriva(t), C = centro(t), s2 = 1 + (s - 1) * 0.6, M = 56;
+    // tela = C + s·(desenho + deriva − C); com a origem em 0 0: translate(C·(1 − s) + s·deriva) scale(s)
+    var c = E("cam"); if (c) c.style.transform = "translate(" + f2(C[0] * (1 - s) + s * dv[0]) + "px," + f2(C[1] * (1 - s) + s * dv[1]) + "px) scale(" + s.toFixed(5) + ")";
+    // o still (deslocado −56 px, a sangria): em torno do mesmo centro, a 0,6
+    var st = E("still"); if (st) st.style.transform = "translate(" + f2((C[0] + M) * (1 - s2) + 0.6 * dv[0]) + "px," + f2((C[1] + M) * (1 - s2) + 0.6 * dv[1]) + "px) scale(" + s2.toFixed(5) + ")";
   }
 
   // a LUZ: atrás da linha; passa ao submersível em "craft" e volta à linha em "Where" (0,6 s, eb), sempre 120 ms atrás
-  var LUZ_LINHA = [2100, yF(2100) - 50], LUZ_SUB = [XS, YH - ALT / 2];
+  var LUZ_LINHA = [2100, yF(2100) - 130], LUZ_SUB = [XS, YH - ALT / 2];   // a luz atrás do meio do cardume (o cardume maior: lote arte-4)
   function luzAlvo(t) {
     var p = eb(seg(t, T.nome, 0.6)) * (1 - eb(seg(t, T.saem, 0.6)));
     return [lerp(LUZ_LINHA[0], LUZ_SUB[0], p), lerp(LUZ_LINHA[1], LUZ_SUB[1], p)];
@@ -391,13 +436,14 @@
       g.pepino.style.opacity = (0.9 * eo(seg(t, g.tNasce, 0.3))).toFixed(3);
     }
     // b0–b1: o ano sobre a ponta esquerda da fila (o lugar revisitado); a legenda do submersível (nome e data) à direita dele
-    texto("rot2019", t, T.rot2019, T.saem, 1260, 860, "esquerda");
-    texto("rotNome", t, T.nome, T.saem, 2290, 900, "esquerda");
-    texto("rotData", t, T.data, T.saem, 2290, 1048, "esquerda");
+    // (lote arte-4: o ano, o nome e a data sobem com o cardume maior e com o submersível, 190, 180 e 180 px; o bicho novo, 220 px)
+    texto("rot2019", t, T.rot2019, T.saem, 1260, 670, "esquerda");
+    texto("rotNome", t, T.nome, T.saem, 2290, 720, "esquerda");
+    texto("rotData", t, T.data, T.saem, 2290, 868, "esquerda");
     // b2–b3: a etiqueta da contagem embaixo à esquerda (abaixo da linha); o bicho novo no alto à esquerda (acima dela)
     texto("etq1", t, T.etq1, null, 240, 1540, "esquerda");
     texto("etq2", t, T.etq2, null, 240, 1690, "esquerda");
-    texto("rotPepino", t, T.rotPepino, null, 240, 520, "esquerda");
+    texto("rotPepino", t, T.rotPepino, null, 240, 300, "esquerda");
     credito("cred1", t, T.cred);
   }
 
@@ -425,6 +471,28 @@
       glifos.forEach(function (g) { var p = g.pepino, L = p.getTotalLength();
         for (var u = 0; u <= 1.0001; u += 0.02) { var q = p.getPointAtLength(u * L); var d = -((q.x - X0F) * nx + (q.y - Y0F) * ny); minimo = Math.min(minimo, d); } });
       out.pepino_folga_minima_px = +minimo.toFixed(2);   // a distância do eixo do traço ao eixo da reta (sem as meias-espessuras 2 + 3)
+      // a menor distância entre os eixos dos traços de dois peixes, e de dois pepinos-do-mar (no desenho), pelos pontos do caminho
+      var par = function (chave) {
+        var pts = glifos.map(function (g) { var p = g[chave], L = p.getTotalLength(), l = []; for (var u = 0; u <= 1.0001; u += 0.02) { var q = p.getPointAtLength(u * L); l.push([q.x, q.y]); } return l; });
+        var m = Infinity;
+        for (var a = 0; a < pts.length; a++) for (var b = a + 1; b < pts.length; b++) {
+          if (Math.abs(pts[a][0][0] - pts[b][0][0]) > 120 || Math.abs(pts[a][0][1] - pts[b][0][1]) > 120) continue;
+          for (var i = 0; i < pts[a].length; i++) for (var j = 0; j < pts[b].length; j++) { var dx = pts[a][i][0] - pts[b][j][0], dy = pts[a][i][1] - pts[b][j][1]; if (dx * dx + dy * dy < m) m = dx * dx + dy * dy; } }
+        return +Math.sqrt(m).toFixed(2);
+      };
+      out.peixe_par_minimo_px = par("peixe"); out.pepino_par_minimo_px = par("pepino");
+      // na tela: a menor folga entre cada texto visível e os glifos visíveis (peixes, pepinos) e o submersível; negativa = sobreposição
+      var txt = ["rot2019", "rotNome", "rotData", "etq1", "etq2", "rotPepino"].map(function (id) { return [id, E(id)]; })
+        .filter(function (q) { return q[1] && +getComputedStyle(q[1]).opacity > 0.02; }).map(function (q) { return [q[0], q[1].getBoundingClientRect()]; });
+      var alvos = [];
+      glifos.forEach(function (g) { if (+g.peixe.style.opacity > 0.02) alvos.push(g.peixe.getBoundingClientRect()); if (+g.pepino.style.opacity > 0.02) alvos.push(g.pepino.getBoundingClientRect()); });
+      if (t > T.entra) alvos.push(sr);
+      var pior = Infinity, quem = null;
+      txt.forEach(function (q) { var c = q[1]; alvos.forEach(function (r) {
+        var dx = Math.max(c.left - r.right, r.left - c.right, 0), dy = Math.max(c.top - r.bottom, r.top - c.bottom, 0);
+        var d = (dx === 0 && dy === 0) ? -Math.min(c.right - r.left, r.right - c.left, c.bottom - r.top, r.bottom - c.top) : Math.hypot(dx, dy);
+        if (d < pior) { pior = d; quem = q[0]; } }); });
+      out.texto_x_desenho_px = pior === Infinity ? null : +pior.toFixed(1); out.texto_mais_perto = quem;
     }
     return out;
   };

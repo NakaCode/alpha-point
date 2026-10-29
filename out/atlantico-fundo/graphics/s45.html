@@ -9,7 +9,17 @@
   (2D, plano, norte para cima, sem inclinar, sem órbita, sem relevo; a Sala). Tarefa atlantico-fundo-arte-2, lote M3, mapista (Opus).
   Corte seco na entrada (foto s44 → mapa) e na saída (mapa → desenho s46). Nenhum hex.
 
-  O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json b034414f… › s45: Anegada 0–17,3; North shore 1,7–4,667; LESS THAN 80 MI SOUTH
+  ARTE-4 (atlantico-fundo-arte-4, o lote de consertos, lote ME, mapista; textos-tela bfa9e5d1, conserto 6, instruções 27 e 37). Só isto
+  mudou, e onde o texto de baixo diz outra coisa, vale este parágrafo:
+    1. a COSTA NORTE de Anegada passa a --tinta FINO (5 px sobre o contorno escuro de 12 px, as medidas da divisa), sem --destaque, que é
+       só da fossa e do ponto mais fundo (a qualidade-2, `tema` 6);
+    2. o ANEL pulsa DUAS vezes a partir de "deepest" (21,712–24,112) e para (identidade §4.4);
+    3. a RÉGUA DO TEMPO, na grade da s46 (pontas 940 e 1740), tem os traços maiores nos séculos redondos (1000 … 1700) e os anos "1200 · 1300 · 1400" embaixo (eixo, 5,8–17,3),
+       nos números de eixo do canal; a haste para 180 px abaixo da linha enquanto o "1400" está no ar (o número fica no vão);
+    4. saíram "LESS THAN 80 MI SOUTH OF THE TRENCH" e "Source: Wei et al., 2024" do b0 (o textos-tela os tirou).
+  A câmera, os outros textos, os tempos e as cores do resto ficam como estavam.
+
+  O QUE MANDA EM CADA COISA (até a arte-2): os TEXTOS (textos-tela.json b034414f… › s45: Anegada 0–17,3; North shore 1,7–4,667; LESS THAN 80 MI SOUTH
   OF THE TRENCH 2,734–4,667; 1381–1391 · URANIUM-SERIES DATING 11,034–17,3; 1492 · COLUMBUS 15,534–17,3; Eastern Puerto Rico Trench
   19,5–fim; M 8+ · COMPUTER MODELS 24,167–fim; os créditos) e a instrução 25 da arte (TB393, PB023: a costa norte acesa SEM prendê-la
   a "six miles"; o "6 MI" está em nao_vai_para_tela); os BEATS (regencia.json 9d0ab49f… › s45, 5 beats; o b1 junta os planos 2 e 3
@@ -60,7 +70,7 @@
   A RÉGUA DO TEMPO É A MESMA PEÇA DA s46 (graphics/s46.html, do EO3 da arte-1, lida e não editada): horizontal; a linha --tinta de
     6 px; 40 intervalos de 64 px, o maior a cada 5; traços para cima de 4 px (menor 28, maior 56, pontas 84); 2.560 px de ponta a
     ponta, de TX − 1.440 a TX + 1.120; o tique do evento em --tensao, 10 px, 220 px, nascendo 24 px abaixo da linha, no MEIO de um
-    intervalo maior; a sombra solta do traço em --tinta-escura 16 px, 12 px abaixo, a 0,8. Sem número na régua.
+    intervalo maior; a sombra solta do traço em --tinta-escura 16 px, 12 px abaixo, a 0,8. Sem número na régua (até a arte-2; na arte-4, os anos dos séculos: ARTE-4, item 3).
     Aqui ela é uma ESCALA de verdade: 1 intervalo maior = 100 anos (3,2 px por ano), com 1386 (o meio de 1381–1391) no tique. As
     gotas caem nos anos das quatro datações do bloco de coral-cérebro de Bones Bight (Kilbourne et al. 2025, l. 418–421: 1321,6;
     1329,3; 1352,2; 1354,7), as que datam o tsunami (l. 445–446: "imply coral death in 1381–1390 or 1386–1391 CE—ranges we combine
@@ -162,12 +172,13 @@
   <svg id="svgAnel" class="sobreMapa" viewBox="0 0 3840 2160" width="3840" height="2160" aria-hidden="true"></svg>
   <div class="pilula" id="rotAnegada" data-qc-papel="rotulo"></div>
   <div class="pilula legenda" id="legCosta" data-qc-papel="eixo"></div>
-  <div class="pilula cota" id="cotaDist" data-qc-papel="rotulo"></div>
+  <div class="num" id="ano0" data-qc-papel="eixo"></div>
+  <div class="num" id="ano1" data-qc-papel="eixo"></div>
+  <div class="num" id="ano2" data-qc-papel="eixo"></div>
   <div class="pilula cota" id="cota1381" data-qc-papel="rotulo"></div>
   <div class="pilula cota" id="cota1492" data-qc-papel="rotulo"></div>
   <div class="pilula" id="rotLeste" data-qc-papel="rotulo"></div>
   <div class="pilula cota" id="cotaM8" data-qc-papel="rotulo"></div>
-  <div class="credito" id="crWei" data-qc-papel="credito"></div>
   <div class="credito" id="crKil" data-qc-papel="credito"></div>
   <div class="credito" id="crModelo" data-qc-papel="credito" data-qc-credito="mapa"></div>
   <div class="credito" id="crMapa" data-qc-papel="credito" data-qc-credito="mapa"></div>
@@ -710,13 +721,13 @@
   window.__duracao = DUR;
   var lerp = function (a, b, p) { return a + (b - a) * p; };
 
-  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é do redator-de-tela: textos-tela.json b034414f › s45) ═══
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é do redator-de-tela: textos-tela.json bfa9e5d1 › s45, o conserto 6; na arte-4 saíram
+  // "LESS THAN 80 MI SOUTH OF THE TRENCH" e "Source: Wei et al., 2024", e entraram os anos da régua) ═══
   var TEXTOS = {
     crMapa: ["© MapTiler © OpenStreetMap contributors", "GEBCO Compilation Group (2026) GEBCO 2026 Grid"],   // credito, 0–26,2
     anegada: "Anegada",                                             // rotulo, 0–17,3
     costa: "North shore",                                           // legenda, 1,7–4,667 ("north shore"; sem "6 MI": PB023)
-    dist: "LESS THAN 80 MI SOUTH OF THE TRENCH",                    // cota, 2,734–4,667 ("the side that faces the trench")
-    crWei: "Source: Wei et al., 2024",                              // credito, 2,734–4,667
+    anos: "1200 · 1300 · 1400",                                     // eixo, 5,8–17,3 (os anos da régua do tempo, sob os traços dos séculos)
     crKil: "Source: Kilbourne et al., 2025",                        // credito, 4,9–17,3
     c1381: "1381–1391 · URANIUM-SERIES DATING",                     // cota, 11,034–17,3 ("thirteen eighty-one")
     c1492: "1492 · COLUMBUS",                                       // cota, 15,534–17,3 ("Columbus")
@@ -725,17 +736,19 @@
     m8: "M 8+ · COMPUTER MODELS"                                    // cota, 24,167–26,2 ("magnitude eight or more")
   };
   // as quebras: só no " · " (as linhas juntadas por " · " são o texto do redator) e, na distância, entre palavras
-  var DIST_L = ["LESS THAN 80 MI", "SOUTH OF THE TRENCH"], C1381_L = ["1381–1391", "URANIUM-SERIES DATING"], C1492_L = ["1492", "COLUMBUS"];
+  var C1381_L = ["1381–1391", "URANIUM-SERIES DATING"], C1492_L = ["1492", "COLUMBUS"];
   var M8_L = ["M 8+", "COMPUTER MODELS"];
-  if (DIST_L.join(" ") !== TEXTOS.dist) falhar("a distância em linhas não é a do textos-tela.");
+  var ANOS = [1200, 1300, 1400];                                    // os séculos com número (o "1500" fica fora: a 26 px do tique de 1492)
+  if (ANOS.join(" · ") !== TEXTOS.anos) falhar("os anos da régua não são os do textos-tela.");
   if (C1381_L.join(" · ") !== TEXTOS.c1381) falhar("a cota 1381–1391 em linhas não é a do textos-tela.");
   if (C1492_L.join(" · ") !== TEXTOS.c1492) falhar("a cota 1492 em linhas não é a do textos-tela.");
   if (M8_L.join(" · ") !== TEXTOS.m8) falhar("a cota M 8+ em linhas não é a do textos-tela.");
   (function () {
     var s = function (id, v) { var e = E(id); if (e) e.textContent = v; };
-    s("rotAnegada", TEXTOS.anegada); s("legCosta", TEXTOS.costa); s("cotaDist", DIST_L.join("\n"));
+    s("rotAnegada", TEXTOS.anegada); s("legCosta", TEXTOS.costa);
+    ANOS.forEach(function (a, i) { s("ano" + i, String(a)); });
     s("cota1381", C1381_L.join("\n")); s("cota1492", C1492_L.join("\n")); s("rotLeste", TEXTOS.leste); s("cotaM8", M8_L.join("\n"));
-    s("crWei", TEXTOS.crWei); s("crKil", TEXTOS.crKil); s("crModelo", TEXTOS.crModelo);
+    s("crKil", TEXTOS.crKil); s("crModelo", TEXTOS.crModelo);
   })();
 
   // ═══ O RELÓGIO DA CENA (palavras do words.json, tempo local): along 0,007 · six 0,842 · miles 1,062–1,382 · north 1,702 ·
@@ -747,16 +760,17 @@
   var T = {
     anegada: 0.0, fimIlha: 17.3,                  // a pílula da ilha, do 1º quadro até a câmera abrir para a fossa
     costa: 1.702, costaDur: 0.6, costaSai: 6.3,   // b0: a costa norte INTEIRA acende em "north shore" (de oeste a leste); sai depois da haste
-    legCosta: 1.7, fimB0: 4.667,                  // "North shore" e a distância saem até 4,667 (o t1 do redator)
-    dist: 2.734, fossa: 3.622, fossaSai: 4.9,     // a fossa inteira, contexto a 40 %, em "trench"; sai na régua
+    legCosta: 1.7, fimB0: 4.667,                  // "North shore" sai até 4,667 (o t1 do redator)
+    fossa: 3.622, fossaSai: 4.9,                  // a fossa inteira, contexto a 40 %, em "trench"; sai na régua
     haste: 5.382, hasteDur: 0.4, regua: 5.78, reguaDur: 0.8,   // b1: em "uranium" a haste sobe da costa e a régua se abre dos dois lados
+    anos: 5.8,                                    // os anos (o t0 do redator): cada um entra quando a régua que se abre chega ao traço dele
     kil: 4.9,
     gotas: 6.262, gotaPasso: 0.12, gotaQueda: 0.35,   // em "coral" as datações caem na régua como gotas (queda livre, sem quique)
     janela: 8.342, estreita: 11.062, estreitaDur: 1.2,   // a janela aparece em "dated" e estreita em "thirteen eighty-one"
     c1381: 11.034, tique: 12.262, tiqueDur: 0.35, // a cota; o tique --tensao nasce quando a janela fecha
     c1492: 15.534, t1492: 15.542,                 // b2: 1492 · COLUMBUS como tique à direita, em "Columbus"
     fossa2: 17.6, leste: 19.502, rotLeste: 19.5,  // b3: a fossa volta (40 %) na viagem; a parte leste acende em --tensao em "eastern"
-    anel: 19.5, pulso: 21.712,                    // o anel, longe a oeste, com um pulso em "deepest"
+    anel: 19.5, pulso: 21.712, pulsos: 2,         // o anel, longe a oeste, pulsa DUAS vezes a partir de "deepest" e para (identidade §4.4)
     rupturas: 22.933, rupturasDur: 0.6, m8: 24.167   // b4: as rupturas do MODELO (declaradas) e M 8+ · COMPUTER MODELS
   };
 
@@ -827,21 +841,24 @@
   function cores2() {
     if (C2) return C2;
     C2 = { destaque: rgbaDe(corDe("--destaque")), tensao: rgbaDe(corDe("--tensao")), tinta: rgbaDe(corDe("--tinta")),
-      neutro: rgbaDe(corDe("--neutro")), rotulo: rgbaDe(corDe("--rotulo")), escura: rgbaDe(corDe("--tinta-escura")) };
+      neutro: rgbaDe(corDe("--neutro")), rotulo: rgbaDe(corDe("--rotulo")), escura: rgbaDe(corDe("--tinta-escura")),
+      contorno: rgbaDe(corDe("--fronteira-contorno-cor")) };
     return C2;
   }
   function P(q) { return map.project(q); }
   function proj(L) { return L.map(function (q) { var p = P(q); return [p.x, p.y]; }); }
 
   // ── A COSTA NORTE INTEIRA (anegada-costa-norte, do OSM; sem comprimento escrito, nunca presa a "six miles": TB393, PB023), traçada
-  // de oeste a leste até a fração k, em --destaque "fraco" (a 75 %, 10 px, sobre o contorno --rotulo de 22 px) ──
+  // de oeste a leste até a fração k. arte-4 (a qualidade-2, `tema` 6: o --destaque é só da fossa e do ponto mais fundo): em --tinta
+  // FINO, 5 px, sobre o contorno escuro de 12 px (as medidas da divisa, identidade §6: --fronteira-espessura e
+  // --fronteira-contorno-espessura, com a --fronteira-contorno-cor) ──
   function tracarCosta(ctx, k, alfa) {
     if (k <= 0 || alfa <= 0) return;
     var c = cores2(), Q = proj(COSTA), n = Math.max(2, Math.round(Q.length * k));
     ctx.save(); ctx.lineJoin = "round"; ctx.lineCap = "round";
     function caminho() { ctx.beginPath(); for (var i = 0; i < n; i++) { if (i) ctx.lineTo(Q[i][0], Q[i][1]); else ctx.moveTo(Q[i][0], Q[i][1]); } }
-    caminho(); ctx.lineWidth = 22; ctx.strokeStyle = css(c.rotulo, 0.7 * alfa); ctx.stroke();
-    caminho(); ctx.lineWidth = 10; ctx.strokeStyle = css(c.destaque, 0.75 * alfa); ctx.stroke();
+    caminho(); ctx.lineWidth = 12; ctx.strokeStyle = css(c.contorno, c.contorno[3] * alfa); ctx.stroke();
+    caminho(); ctx.lineWidth = 5; ctx.strokeStyle = css(c.tinta, alfa); ctx.stroke();
     ctx.restore();
   }
   // o ponto da costa que a régua toma como pé: o meio da costa em longitude, e a costa mais ao norte na tela
@@ -857,21 +874,37 @@
   // (--linha-espessura); 40 intervalos de 64 px, o maior a cada 5 (320 px); traços para CIMA, 4 px: menor 28, maior 56, pontas 84;
   // o tique do evento em --tensao, 10 px, 220 px, nascendo 24 px abaixo da linha, no MEIO de um intervalo maior (TX = X0 + 4,5
   // maiores); a sombra solta do próprio traço em --tinta-escura 16 px, 12 px abaixo, a 0,8. Aqui ela é uma ESCALA de verdade: 1
-  // intervalo maior = 100 anos (3,2 px por ano), com o centro da janela 1381–1391 (1386) no TX; sem número na régua: os únicos anos são
+  // intervalo maior = 100 anos (3,2 px por ano), com o centro da janela 1381–1391 (1386) no TX; até a arte-2 sem número na régua (na arte-4, os séculos: abaixo); os anos das cotas são
   // os das duas cotas. PRESA À ILHA: o TX é o meio da costa norte na tela e a linha fica 610 px acima dela, com uma haste do pé à régua ──
-  var RG = { passo: 64, n: 40, maior: 5, hMenor: 28, hMaior: 56, hPonta: 84, hTique: 220, tiqueAbaixo: 24, pxAno: 3.2, anoTX: 1386, acima: 610 };
+  // arte-4 (o Lucas, sobre a s46: "A régua da s45, que tem o mesmo problema, ganha os anos também"; textos-tela, conserto 6): a mesma
+  // peça, agora com os traços maiores nos SÉCULOS REDONDOS. Os 40 intervalos (2.560 px, 800 anos) vão de 940 a 1740 (ano0, a grade da s46): os maiores (pelo ano, a cada 100)
+  // em 1000, 1100, … 1700, os menores a cada 20 anos, as pontas em 940 e 1740; o 1386 continua no TX (86 % do intervalo 1300–1400), e o 1492 a 92 % do 1400–1500. A régua andou 12,8 px para a direita
+  // em relação ao TX (de TX − 1.440 … TX + 1.120 para TX − 1.427,2 … TX + 1.132,8, à direita); nada mais muda nela.
+  // OS ANOS "1200 · 1300 · 1400" (eixo do textos-tela) ficam EMBAIXO da linha, centrados nos traços desses séculos, no corpo dos
+  // números de eixo do canal (.num: Inter 500, --fs-eixo 84 px, --tinta com o contorno escuro do nome de território, como os do
+  // medidor), com o topo 76 px abaixo da linha, como na s46 (abaixo da sombra solta, que vai a YR + 20, e do pé do tique de 1386 com a sombra
+  // dele, que vai a YR + 44). A HASTE passa por x = TX, dentro do "1400": ela termina 180 px abaixo da linha (vaoHaste)
+  // enquanto o "1400" está no ar: o trecho de cima esmaece com a entrada dele, e o número fica entre a ponta da haste e a linha.
+  var RG = { passo: 64, n: 40, maior: 5, hMenor: 28, hMaior: 56, hPonta: 84, hTique: 220, tiqueAbaixo: 24, pxAno: 3.2, anoTX: 1386, acima: 610,
+    ano0: 940, anosAbaixo: 76, vaoHaste: 180 };   // a grade da s46 (Sala, 29/10, 18:1x): pontas 940 e 1740, anos 76 px abaixo
   // as datações do bloco de coral-cérebro de Bones Bight (Kilbourne et al. 2025, l. 418–421: 13AN6b 1321,6; 13AN6a 1329,3; 13AN5b 1352,2;
   // 13AN5a 1354,7), as que datam o tsunami; a janela que elas fecham, 1381–1391 (l. 446)
   var DATAS = [1321.6, 1329.3, 1352.2, 1354.7], JANELA = [1381, 1391], JANELA_LARGA = [1355, 1430];
   function xAno(TX, ano) { return TX + (ano - RG.anoTX) * RG.pxAno; }
+  // o instante em que a régua, abrindo do TX para os dois lados (eb em reguaDur), chega ao ano dado; nunca antes do t0 dos anos
+  function tAno(TX, ano) {
+    var dx = xAno(TX, ano) - TX, lado = dx < 0 ? xAno(TX, RG.ano0) - TX : xAno(TX, RG.ano0) + RG.n * RG.passo - TX;
+    var k = clamp(dx / lado, 0, 1), p = k <= 0.5 ? Math.cbrt(k / 4) : 1 - Math.cbrt(2 * (1 - k)) / 2;
+    return Math.max(T.anos, T.regua + p * T.reguaDur);
+  }
   function regua(ctx, TX, YR, kAbre, alfa) {
     if (kAbre <= 0 || alfa <= 0) return;
-    var c = cores2(), X0 = TX - 4.5 * RG.maior * RG.passo, X1 = X0 + RG.n * RG.passo;
+    var c = cores2(), X0 = xAno(TX, RG.ano0), X1 = X0 + RG.n * RG.passo;
     var xa = lerp(TX, X0, kAbre), xb = lerp(TX, X1, kAbre);
     var dMaior = [], dMenor = [];
     for (var i = 0; i <= RG.n; i++) {
       var x = X0 + i * RG.passo; if (x < xa - 0.5 || x > xb + 0.5) continue;
-      var ponta = (i === 0 || i === RG.n), maior = (i % RG.maior === 0), h = ponta ? RG.hPonta : (maior ? RG.hMaior : RG.hMenor);
+      var ponta = (i === 0 || i === RG.n), maior = ((RG.ano0 + i * 20) % 100 === 0), h = ponta ? RG.hPonta : (maior ? RG.hMaior : RG.hMenor);
       (ponta || maior ? dMaior : dMenor).push([x, h]);
     }
     function base(dy) { ctx.beginPath(); ctx.moveTo(xa, YR + dy); ctx.lineTo(xb, YR + dy); }
@@ -958,7 +991,7 @@
     // a FOSSA INTEIRA, contexto a 40 %: no b0 (em "trench", sai na régua) e de novo na viagem do b3 até o fim
     var aF = Math.max(eo(seg(t, T.fossa, 0.5)) * (1 - eb(seg(t, T.fossaSai, 0.5))), eo(seg(t, T.fossa2, 0.5)));
     if (ok) desenharFossa(E("cvFossa"), { preench: aF * 0.40 / 0.85, contorno: aF * 0.6 });
-    if (!ok || !ctx) { ["rotAnegada", "legCosta", "cotaDist", "cota1381", "cota1492", "rotLeste", "cotaM8"].forEach(function (id) { por(E(id), 0, 0, NADA); }); return; }
+    if (!ok || !ctx) { ["rotAnegada", "legCosta", "ano0", "ano1", "ano2", "cota1381", "cota1492", "rotLeste", "cotaM8"].forEach(function (id) { por(E(id), 0, 0, NADA); }); return; }
     var fimIlha = 1 - eb(seg(t, T.fimIlha - 0.3, 0.3));
     // b3–b4: a parte leste e as rupturas (por baixo da régua, que já saiu)
     parteLeste(ctx, eo(seg(t, T.leste, 0.5)));
@@ -968,20 +1001,27 @@
     // b1–b2: a RÉGUA presa à ilha
     var pe = peDaCosta(), TX = pe.x, YR = pe.yTopo - RG.acima;
     var kH = eo(seg(t, T.haste, T.hasteDur));
-    traco(ctx, TX, pe.yTopo - 18, lerp(pe.yTopo - 18, YR + 8, kH), 4, cores2().tinta, 0.65 * fimIlha * (kH > 0 ? 1 : 0));
+    // os anos: cada um entra quando a régua que se abre chega ao traço dele (nunca antes do t0 do redator, 5,8) e sai com ela (17,3)
+    var vAnos = ANOS.map(function (a) { return vida(t, tAno(TX, a), T.fimIlha); });
+    var vao = vAnos[ANOS.indexOf(1400)].op;   // o vão da haste atrás do "1400" abre com ele
+    var yHb = pe.yTopo - 18, yHt = lerp(yHb, YR + 8, kH), yVao = YR + RG.vaoHaste, aH = 0.65 * fimIlha * (kH > 0 ? 1 : 0);
+    traco(ctx, TX, yHb, Math.max(yHt, yVao), 4, cores2().tinta, aH);
+    if (yHt < yVao) traco(ctx, TX, yVao, yHt, 4, cores2().tinta, aH * (1 - vao));
     regua(ctx, TX, YR, eb(seg(t, T.regua, T.reguaDur)), fimIlha);
+    ANOS.forEach(function (a, i) { var el = E("ano" + i); if (el) por(el, xAno(TX, a) - el.offsetWidth / 2, YR + RG.anosAbaixo, vAnos[i]); });
     janela(ctx, TX, YR, t);
     gotas(ctx, TX, YR, t, fimIlha * (1 - eb(seg(t, T.estreita, 0.6))));
     var kT = eo(seg(t, T.tique, T.tiqueDur));
     if (kT > 0) traco(ctx, TX, YR + RG.tiqueAbaixo, YR + RG.tiqueAbaixo - (RG.hTique + RG.tiqueAbaixo) * kT, 10, cores2().tensao, fimIlha);
     var k92 = eo(seg(t, T.t1492, 0.35)), x92 = xAno(TX, 1492);
     if (k92 > 0) traco(ctx, x92, YR, YR - 150 * k92, 8, cores2().tinta, fimIlha);
-    // o ANEL (o ponto mais fundo, o mesmo do vídeo inteiro), longe a oeste, com um pulso em "deepest"
+    // o ANEL (o ponto mais fundo, o mesmo do vídeo inteiro), longe a oeste; arte-4: pulsa DUAS vezes a partir de "deepest" (21,712 e
+    // 22,912; 1,2 s cada, um logo depois do outro) e para (identidade §4.4; a qualidade-2, `motion` 7)
     if (ANEL && ANEL_C) {
       var pa = P(ANEL_C), aA = eo(seg(t, T.anel, 0.3));
       ANEL.setAttribute("transform", "translate(" + pa.x.toFixed(2) + "," + pa.y.toFixed(2) + ")");
       ANEL.style.opacity = aA.toFixed(3);
-      var pu = seg(t, T.pulso, 1.2), vivo = t >= T.pulso && pu < 1;
+      var dP = t - T.pulso, vivo = dP >= 0 && dP < 1.2 * T.pulsos, pu = vivo ? (dP % 1.2) / 1.2 : 1;
       ANEL.__pulso.setAttribute("transform", "scale(" + (1 + 0.8 * (vivo ? pu : 0)).toFixed(4) + ")");
       ANEL.__pulso.setAttribute("opacity", vivo ? (1 - pu).toFixed(3) : "0");
     }
@@ -993,8 +1033,6 @@
     // "North shore": acima da costa, 40 px acima do ponto mais alto dela, com a borda direita 40 px depois do meio da costa (ela se
     // estende sobre a metade oeste: na abertura da câmera a ilha encolhe, e a legenda centrada encostava na pílula da ilha, em 4,4 s)
     var lc = E("legCosta"); if (lc) por(lc, pe.x + 40 - lc.offsetWidth, pe.yTopo - 40 - lc.offsetHeight, vida(t, T.legCosta, T.fimB0));
-    // a distância: acima de "North shore" (30 px), centrada na ilha
-    var cd = E("cotaDist"); if (cd && lc) por(cd, pe.x - cd.offsetWidth / 2, pe.yTopo - 40 - lc.offsetHeight - 30 - cd.offsetHeight, vida(t, T.dist, T.fimB0));
     // 1381–1391: à esquerda do tique --tensao, a borda direita 30 px antes dele, a base 110 px acima da linha (acima dos traços maiores)
     var c81 = E("cota1381"); if (c81) por(c81, TX - 30 - c81.offsetWidth, YR - 110 - c81.offsetHeight, vida(t, T.c1381, T.fimIlha));
     // 1492 · COLUMBUS: à direita do tique de 1492, 30 px depois dele, na mesma altura
@@ -1003,7 +1041,7 @@
     var rl = E("rotLeste"); if (rl) { var q = P([-62.60, 20.55]); porCentro(rl, q.x, q.y, vida(t, T.rotLeste, null)); }
     // M 8+ · COMPUTER MODELS: ao sul das rupturas, a leste de Anegada, presa ao mapa (o canto de cima à esquerda)
     var m8 = E("cotaM8"); if (m8) { var q2 = P([-63.95, 18.78]); por(m8, q2.x, q2.y, vida(t, T.m8, null)); }
-    creditos(t, [{ id: "crWei", t0: T.dist, t1: T.fimB0 }, { id: "crKil", t0: T.kil, t1: T.fimIlha }, { id: "crModelo", t0: T.rupturas, t1: null }], true);
+    creditos(t, [{ id: "crKil", t0: T.kil, t1: T.fimIlha }, { id: "crModelo", t0: T.rupturas, t1: null }], true);
   }
 
   window.__renderAt = function (t) {
@@ -1017,7 +1055,7 @@
   // ── A CONFERÊNCIA DA COMPOSIÇÃO (só leitura): as caixas no instante t; a folga de cada uma até a costa norte, a fossa inteira, a parte
   // leste e as rupturas; a régua (TX, YR) e a vista contra o recorte da GEBCO (72,5–59°W, 15–24,5°N) ──
   window.__medidas = function (t) {
-    var ids = ["rotAnegada", "legCosta", "cotaDist", "cota1381", "cota1492", "rotLeste", "cotaM8", "crMapa", "crWei", "crKil", "crModelo"];
+    var ids = ["rotAnegada", "legCosta", "ano0", "ano1", "ano2", "cota1381", "cota1492", "rotLeste", "cotaM8", "crMapa", "crKil", "crModelo"];
     window.__renderAt(t);
     var out = { t: t, cam: cameraEm(t) };
     if (!map) return out;

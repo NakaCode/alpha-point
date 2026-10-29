@@ -6,6 +6,24 @@
 <!--
 CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 → 29,933 s do master; 8,033 s). Gancho, S6.
   "In nineteen sixty-four, a crew in a French deep-diving craft descended into the Puerto Rico Trench and reported a crowd of fish."
+  ARTE-4 (mapista, lote MA, tarefa atlantico-fundo-arte-4, 29/10/2026; o lote de consertos; textos-tela bfa9e5d1). VALE SOBRE O QUE
+    ESTÁ ABAIXO: · o batiscafo fica COMO ESTÁ (Lucas: "Se ele é assim, pode manter"); só a ÂNCORA sai de dentro da curva de 8.000 m
+    (TA253; Sala, decisões da arte-2, 4): a antiga (−65,55°, 19,928°) caía DENTRO do polígono fossa-porto-rico-trecho-mais-fundo; a
+    nova (−66,18°, 19,372°) fica na faixa sul da fossa, entre as isóbatas de 8.000 e de 7.000 m: na pose F a caixa inteira da
+    silhueta (×1,15) fica dentro da de 7.000 m e fora da de 8.000 m, a 17 px das duas; na P0 (×2,06 no pouso) o traço fica a 26 px do
+    halo do anel, que ela nunca toca. FORA da faixa de longitude do trecho (68,46–64,34°W) ela não cabe: a oeste a fossa tem 0,06°, e a
+    leste 60–104 px de altura na pose F, menos que a silhueta mesmo a ×0,8 (_tmp/arte-4/MA/geo_ancora*.py). O quadro F é o de antes
+    (a fossa de 277 a 3566 px); a âncora cai nele em ≈ (1300, 1128), e o batiscafo da mesa (B) fica nesse mesmo lugar no corte casado.
+    · a VISTA DE LADO MAIS CLARA (Lucas: "Vista de lado mais clara"): o corte desenhado COMO CORTE, água escura em cima da encosta
+    (--agua-base a 90 %) e rocha preenchida embaixo (--neutro a 45 % sobre --fundo), sob a luz e o feltro da mesa; nenhum chão
+    desenhado (TA254): a rocha só tem a encosta por borda e sai do quadro; a encosta e a hachura vão de x −3000 a 8000 da s06. ·
+    'SEAFLOOR' (rótulo, 5,733–8,033; conserto 6): solto na rocha, girado com a encosta (11,7°), abaixo da hachura, preso ao ponto x 1800
+    da encosta (a metade esquerda da linha dos peixes) em px de tela, e só aparece quando a varredura do corte já passou por ele
+    (nunca sobre o still): não cresce com o close, não cobre os peixes e fica longe do ponto
+    mais baixo do perfil (o fim da direita). · OS PEIXES MAIORES (o espectador, mantidos[0]): em 'crowd' (6,565) a câmera desenhada
+    aproxima ×1,65 em 0,7 s (cúbica de entrada e saída) em torno do meio da linha dos peixes, como a s06 em 'It'; os últimos 250 ms
+    ficam em repouso (só a deriva); o still acompanha a 0,6. '1964 · REPORTED' fica à direita do batiscafo (B + 340). · os créditos de
+    mapa numa pílula só, MapTiler em cima e GEBCO embaixo (a ordem do textos-tela). O resto da cena não mudou.
   Mapista, lote M1 (tarefa atlantico-fundo-arte-2), 29/10/2026: cena NOVA. O que manda: textos-tela.json b034414f (s05) no QUE e na
   grafia, e as _instrucoes_para_a_arte TA253 e TA254; regencia.json (s05 › beats[0..2]) no TEMPO e no exige; o conceito (s05) na
   direção. Plana, norte para cima, sem inclinar e sem órbita (Sala: os mapas planos deste vídeo). Sem relevo.
@@ -135,8 +153,19 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 �
   .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
     font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
     color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: nowrap; }
-  #credMapa { bottom: 24px; }
-  #credGebco { bottom: 121px; }
+  /* arte-4 (MA): os dois créditos de mapa numa pílula só, na ordem do textos-tela (MapTiler em cima, GEBCO embaixo; Sala,
+     qualidade-1, pergunta 13); a marca de mapa vai em cada linha, nunca na pílula */
+  .credito-pilula { position: absolute; left: var(--credito-x); bottom: 24px; max-width: 1520px; z-index: 50;
+    background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); }
+  .credito-linha { display: block; font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15;
+    letter-spacing: 0; color: var(--sec); white-space: nowrap; }
+  /* arte-4 (MA), o corte de lado mais claro (Lucas, 29/10/2026: "Vista de lado mais clara"): ÁGUA ESCURA em cima da encosta e
+     ROCHA PREENCHIDA embaixo dela, sob a luz e o feltro da mesa; nenhum chão desenhado (TA254): a rocha só tem a encosta por borda */
+  #corteFundo { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
+  .corte-agua { fill: var(--agua-base); opacity: .9; stroke: none; }
+  .corte-rocha { fill: color-mix(in srgb, var(--neutro) 45%, var(--fundo)); opacity: .96; stroke: none; }
+  /* o rótulo da rocha, solto (identidade §5: rótulos soltos sobre a mesa), girado com a encosta, preso à rocha em px de tela */
+  #rotRocha { transform-origin: 0 0; }
   /* o crédito da fonte sobre a mesa (como na s06: sem pílula, na faixa, x 200) */
   #credFonte { position: absolute; left: var(--credito-x); bottom: 14px; z-index: 50; max-width: 1520px; white-space: nowrap;
     font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.2; color: var(--sec);
@@ -152,10 +181,13 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 �
   <div id="mesaWrap">
     <img id="still" src="../_media/base/mesa-porto-rico.png" alt="" data-qc-reuso="a mesa do vídeo: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz)">
     <div id="cam">
+      <svg id="corteFundo" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#corteTraco)"><path id="corteAgua" class="corte-agua" d=""/><path id="corteRocha" class="corte-rocha" d=""/></g>
+      </svg>
       <div id="luz"></div>
       <div id="mesa"></div>
       <svg id="desenho" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
-        <defs><clipPath id="corteTraco" clipPathUnits="userSpaceOnUse"><rect id="corteTracoRet" x="0" y="0" width="0" height="2160"/></clipPath></defs>
+        <defs><clipPath id="corteTraco" clipPathUnits="userSpaceOnUse"><rect id="corteTracoRet" x="-400" y="-400" width="0" height="2960"/></clipPath></defs>
         <g clip-path="url(#corteTraco)">
           <g id="gCorte">
             <path id="fundo" class="ar" d=""/>
@@ -182,9 +214,12 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 �
     <div class="rotulo" id="rot1964" data-qc-papel="rotulo">1964</div>
     <div class="rotulo" id="rotFossa" data-qc-papel="rotulo">Puerto Rico Trench</div>
     <div class="solto" id="rotRelato" data-qc-papel="rotulo">1964 · REPORTED</div>
+    <div class="solto" id="rotRocha" data-qc-papel="rotulo">SEAFLOOR</div>
   </div>
-  <div id="credGebco" class="credito" data-qc-papel="credito" data-qc-credito="mapa">GEBCO Compilation Group (2026) GEBCO 2026 Grid</div>
-  <div id="credMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa"></div>
+  <div id="credMapaPilula" class="credito-pilula">
+    <div id="credMapa" class="credito-linha" data-qc-papel="credito" data-qc-credito="mapa"></div>
+    <div id="credGebco" class="credito-linha" data-qc-papel="credito" data-qc-credito="mapa">GEBCO Compilation Group (2026) GEBCO 2026 Grid</div>
+  </div>
   <div id="credFonte" data-qc-papel="credito">Source: Jamieson et al., 2020</div>
   <div id="erroCena" hidden></div>
 </div>
@@ -198,17 +233,29 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 �
     perfil: "maptiler",
     corte: 5.733,                                                       // b2: o mapa vira o corte desenhado (regência › s05 › beats[2].t0)
     P0: { c: [-65.8, 19.4], z: Math.log2(3840 / 14.4 * 360 / 512) },    // a pose P0 (conceito › fluxo), o último quadro da s04
-    ancora: [-65.55, 19.928],                                            // um ponto do interior da fossa, na faixa larga (polo2.mjs: a caixa da silhueta cabe nela)
+    // arte-4 (MA): a âncora SAI de dentro da curva de 8.000 m (TA253; Sala, decisões da arte-2, 4): a antiga (−65,55°, 19,928°) caía
+    // DENTRO do polígono fossa-porto-rico-trecho-mais-fundo. A nova fica na faixa sul da fossa, entre as isóbatas de 8.000 e de 7.000 m:
+    // na pose F a caixa inteira da silhueta (×1,15) fica dentro da de 7.000 m e fora da de 8.000 m, com 17 px de folga das duas; na P0
+    // (×2,06 no pouso) o traço fica a 26 px do halo do anel (_tmp/arte-4/MA/geo_ancora2.py a geo_ancora4.py)
+    ancora: [-66.18, 19.372],
     deriva: { rz: 0.016, rampa: 0.5 },                                   // a aproximação lenta, em torno da silhueta
-    empurra: { t0: 3.685, dur: 1.5, z: 8.26, tela: [1574, 871] },      // 'descended': OUTRA VISTA, a fossa inteira de 277 a 3566 px
+    // 'descended': OUTRA VISTA, a fossa inteira de 277 a 3566 px. arte-4: o MESMO quadro F de antes (o que punha a âncora antiga em
+    // (1574, 871)); a âncora nova cai onde esse quadro a projeta (EMP.tela, calculada abaixo, ≈ (1300, 1128))
+    empurra: { t0: 3.685, dur: 1.5, z: 8.26, quadroF: { ll: [-65.55, 19.928], tela: [1574, 871] } },
     fossa: { entra: 3.685, dura: 0.5 },
     bat: { entra: 0.133, k0: 2.0, kf: 1.15, td: 3.685, ta: 0.30, tb: 4.50, taub: 0.20 },
     rot1964: { entra: 0.133, sai: 3.667, dy: -36 },
     rotFossa: { entra: 4.533, cx: 1100, cy: 612 },
-    relato: { entra: 5.967, x: 1860, cy: 851 },
+    relato: { entra: 5.967, dx: 340, dcy: -128 },                        // à direita do batiscafo da mesa (B + dx, B.y + dcy), fora da câmera
     peixes: { entra: 6.565, dur: 0.8 },
+    // arte-4 (MA): em 'crowd' a câmera desenhada aproxima ×1,65 da linha dos peixes em 0,7 s (cúbica de entrada e saída), em torno do
+    // meio dela, como a s06 faz em 'It' (o espectador, mantidos[0]): cada risco passa de ~15 a ~25 px no 1080p
+    close: { t0: 6.565, dur: 0.7, k: 1.65 },
+    // "SEAFLOOR" (textos-tela, conserto 6): na rocha, abaixo da encosta e da hachura, junto da metade esquerda da linha dos peixes, sem
+    // cobri-la e longe do ponto mais baixo do perfil (o fim da direita); preso a um ponto da encosta (x 1800 da s06), em px de tela
+    rocha: { entra: 5.733, xs06: 1800, folga: 30 },
     traco: { dur: 0.35 },
-    secao: { B: [1574, 871], SP: [2100, 1000], S: 0.82 }               // tela = B + (p − SP)·S (p nas coordenadas da s06)
+    secao: { B: null, SP: [2100, 1000], S: 0.82 }                      // tela = B + (p − SP)·S (p nas coordenadas da s06); B = EMP.tela
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -279,6 +326,12 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 �
   function naTela(ll, c, z) { var k = ws(z); return { x: W / 2 + (mx(ll[0]) - mx(c[0])) * k, y: H / 2 + (my(ll[1]) - my(c[1])) * k }; }
   // o centro que põe o ponto ll na posição (sx, sy) da tela com o zoom z
   function centroPara(ll, sx, sy, z) { var k = ws(z); return [lngDe(mx(ll[0]) - (sx - W / 2) / k), latDe(my(ll[1]) - (sy - H / 2) / k)]; }
+  // arte-4: o quadro F é o de antes; a âncora nova cai nele onde ele a projeta, e o batiscafo da mesa (B) fica nesse mesmo lugar
+  (function () {
+    var Q = CENA.empurra.quadroF, cF = centroPara(Q.ll, Q.tela[0], Q.tela[1], CENA.empurra.z), p = naTela(CENA.ancora, cF, CENA.empurra.z);
+    CENA.empurra.tela = [+p.x.toFixed(2), +p.y.toFixed(2)];
+    CENA.secao.B = CENA.empurra.tela.slice();
+  })();
 
   // ═══ A CÂMERA DA s05 ════════════════════════════════════════════════════════════════════════════════
   // b0: o zoom cresce devagar EM TORNO da silhueta (a âncora parada na tela onde a P0 a põe), com rampa de velocidade zero;
@@ -345,11 +398,15 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 �
   var ANG = Math.atan(K);
   function aTela(x, y) { return [SEC.B[0] + (x - SEC.SP[0]) * SEC.S, SEC.B[1] + (y - SEC.SP[1]) * SEC.S]; }
   (function () {
-    var a = aTela(-1000, yF(-1000)), b = aTela(5000, yF(5000));
+    var a = aTela(-3000, yF(-3000)), b = aTela(8000, yF(8000));   // arte-4: mais longa (o batiscafo foi para a esquerda)
     if (E("fundo")) E("fundo").setAttribute("d", "M" + f2(a[0]) + "," + f2(a[1]) + " L" + f2(b[0]) + "," + f2(b[1]));
     var d = "";
-    for (var x = -1000; x <= 5000; x += 48) { var y = yF(x), p = aTela(x, y + 9), q = aTela(x - 26, y + 41); d += "M" + f2(p[0]) + "," + f2(p[1]) + " L" + f2(q[0]) + "," + f2(q[1]) + " "; }
+    for (var x = -3000; x <= 8000; x += 48) { var y = yF(x), p = aTela(x, y + 9), q = aTela(x - 26, y + 41); d += "M" + f2(p[0]) + "," + f2(p[1]) + " L" + f2(q[0]) + "," + f2(q[1]) + " "; }
     if (E("hachura")) E("hachura").setAttribute("d", d);
+    // arte-4: a água acima da encosta e a rocha abaixo dela, largas o bastante para nenhuma borda entrar no quadro com o close
+    var a2 = aTela(-6000, yF(-6000)), b2 = aTela(9000, yF(9000)), lin = "M" + f2(a2[0]) + "," + f2(a2[1]) + " L" + f2(b2[0]) + "," + f2(b2[1]);
+    if (E("corteAgua")) E("corteAgua").setAttribute("d", lin + " L" + f2(b2[0]) + ",-4000 L" + f2(a2[0]) + ",-4000 Z");
+    if (E("corteRocha")) E("corteRocha").setAttribute("d", lin + " L" + f2(b2[0]) + ",8000 L" + f2(a2[0]) + ",8000 Z");
   })();
   // os ~200 riscos de "peixe": os MESMOS da s06 (semente 1964, quatro fileiras, x 1250 → 2950, 24 lotes), na escala do corte
   function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; var x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
@@ -646,20 +703,35 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 �
     E("mesaWrap").style.visibility = mesa ? "visible" : "hidden";
     E("gBatMapa").style.visibility = mesa ? "hidden" : "visible";
     E("anel").style.visibility = mesa ? "hidden" : "visible";
-    ["credGebco", "credMapa"].forEach(function (id) { E(id).style.visibility = mesa ? "hidden" : "visible"; E(id).style.opacity = mesa ? "0" : "1"; });
+    ["credMapaPilula"].forEach(function (id) { var e = E(id); if (!e) return; e.style.visibility = mesa ? "hidden" : "visible"; e.style.opacity = mesa ? "0" : "1"; });
     regimeAntes = mesa;
   }
 
   // ═══ o b2: a mesa e o corte desenhado ═══
-  var PC = [1574, 1035];
+  var PC = [SEC.B[0], SEC.B[1] + 164];                                 // o centro do push-in, no mesmo lugar relativo ao batiscafo
+  var QP = aTela(2100, yF(2100) - 48);                                 // o meio da linha dos peixes (x 2100 da s06, 48 acima da encosta)
   function escalaMesa(tb) { return 1 + 0.0024 * Math.min(tb, DUR - 0.25 - CENA.corte); }
   function derivaMesa(tb) { return [6 * Math.sin(tb * 0.23), 4.8 * Math.sin(tb * 0.17)]; }
+  // a câmera da mesa como uma afim só (a, b): tela = a·p + b. Primeiro o push-in e a deriva de antes, em torno de PC
+  // (PC + s·(p + dv − PC)); depois o close de 'crowd', em torno do meio da linha dos peixes (QP + z·(… − QP))
+  function camMesa(t) {
+    var tb = Math.max(0, t - CENA.corte), s = escalaMesa(tb), dv = derivaMesa(tb), C = CENA.close;
+    var z = 1 + (C.k - 1) * eio(seg(t, C.t0, C.dur));
+    return { a: z * s, bx: QP[0] + z * (PC[0] + s * (dv[0] - PC[0]) - QP[0]), by: QP[1] + z * (PC[1] + s * (dv[1] - PC[1]) - QP[1]) };
+  }
   function aplicarMesa(t) {
-    var tb = Math.max(0, t - CENA.corte), s = escalaMesa(tb), dv = derivaMesa(tb);
-    var c = E("cam"); if (c) c.style.transform = "scale(" + s.toFixed(5) + ") translate(" + f2(dv[0]) + "px," + f2(dv[1]) + "px)";
-    var st = E("still"); if (st) st.style.transform = "scale(" + (1 + (s - 1) * 0.6).toFixed(5) + ") translate(" + f2(dv[0] * 0.6) + "px," + f2(dv[1] * 0.6) + "px)";
-    // o corte se traça da esquerda para a direita em 0,35 s
-    var r = E("corteTracoRet"); if (r) r.setAttribute("width", (W * eio(seg(t, CENA.corte, CENA.traco.dur))).toFixed(1));
+    var M = camMesa(t);
+    var c = E("cam"); if (c) { c.style.transformOrigin = "0 0"; c.style.transform = "matrix(" + M.a.toFixed(5) + ",0,0," + M.a.toFixed(5) + "," + f2(M.bx) + "," + f2(M.by) + ")"; }
+    // o still, a 0,6 da câmera (está "atrás" da folha): a mistura da afim da câmera com a identidade; ampliar em torno de um ponto
+    // interno só empurra as bordas para fora (a margem de 56 px cobre a deriva)
+    var st = E("still");
+    if (st) {
+      var as = 0.6 * M.a + 0.4, bsx = 0.6 * M.bx, bsy = 0.6 * M.by, o = -56;
+      st.style.transformOrigin = "0 0";
+      st.style.transform = "matrix(" + as.toFixed(5) + ",0,0," + as.toFixed(5) + "," + f2((as - 1) * o + bsx) + "," + f2((as - 1) * o + bsy) + ")";
+    }
+    // o corte (água, rocha, encosta e hachura) se traça da esquerda para a direita em 0,35 s
+    var r = E("corteTracoRet"); if (r) r.setAttribute("width", ((W + 800) * eio(seg(t, CENA.corte, CENA.traco.dur))).toFixed(1));
     // o batiscafo da mesa: inteiro desde o corte, no mesmo lugar e na mesma medida em que o mergulho o deixou
     E("gBatMesa").setAttribute("opacity", "1");
     // os riscos aparecem um a um em "crowd", da esquerda para a direita (24 lotes em 0,8 s)
@@ -671,7 +743,23 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 �
     var lz = E("luz"); if (lz) { lz.style.setProperty("--luz-x", (PC[0] + 140) + "px"); lz.style.setProperty("--luz-y", (PC[1] + 140) + "px"); }
     // "1964 · REPORTED": solto sobre a mesa, à direita do batiscafo, fora da câmera
     var R = CENA.relato, er = E("rotRelato"), vr = eo(seg(t, R.entra, 0.3));
-    if (vr > 0.001) mostrar(er, vr, R.x, R.cy - er.offsetHeight / 2 + (1 - vr) * 24); else mostrar(er, 0, 0, 0);
+    if (vr > 0.001) mostrar(er, vr, SEC.B[0] + R.dx, SEC.B[1] + R.dcy - er.offsetHeight / 2 + (1 - vr) * 24); else mostrar(er, 0, 0, 0);
+    // "SEAFLOOR": na rocha, girado com a encosta, abaixo da hachura (que cresce com o close), preso ao ponto xs06 da encosta
+    var RR = CENA.rocha, eR = E("rotRocha"), vR = eo(seg(t, RR.entra, 0.3));
+    if (eR) {
+      if (vR > 0.001) {
+        var pe = aTela(RR.xs06, yF(RR.xs06)), sx = M.a * pe[0] + M.bx, sy = M.a * pe[1] + M.by;
+        var nx = -Math.sin(ANG), ny = Math.cos(ANG), wR = eR.offsetWidth;
+        var d = 41 * SEC.S * M.a + RR.folga + (1 - vR) * 24;          // o fundo da hachura + a folga (e os 24 px da entrada)
+        var ox = sx + nx * d - Math.cos(ANG) * wR / 2, oy = sy + ny * d - Math.sin(ANG) * wR / 2;   // o canto de cima à esquerda, girado
+        // só com a rocha já embaixo: a varredura do corte (em px de tela) tem de ter passado a ponta direita do rótulo, senão ele
+        // apareceria por um instante sobre o still da mesa (visto no clipe da arte-4, 5,85 s)
+        var xVar = M.a * (-400 + (W + 800) * eio(seg(t, CENA.corte, CENA.traco.dur))) + M.bx, xFim = ox + Math.cos(ANG) * wR + 60;
+        vR *= cl((xVar - xFim) / 160, 0, 1);
+        eR.style.opacity = vR.toFixed(3); eR.style.visibility = vR > 0.001 ? "visible" : "hidden";
+        eR.style.transform = "translate(" + f2(ox) + "px," + f2(oy) + "px) rotate(" + (ANG * 180 / Math.PI).toFixed(3) + "deg)";
+      } else { eR.style.opacity = "0"; eR.style.visibility = "hidden"; }
+    }
     // o crédito da fonte: entra em 300 ms no primeiro quadro do corte
     var cf = E("credFonte"), vc = eo(seg(t, CENA.corte, 0.3));
     cf.style.opacity = vc.toFixed(3); cf.style.visibility = vc > 0.001 ? "visible" : "hidden";
@@ -690,6 +778,7 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 �
       var bat = aplicarBatMapa(t);
       aplicarRotulosMapa(t, bat);
       mostrar(E("rotRelato"), 0, 0, 0);
+      var rr = E("rotRocha"); if (rr) { rr.style.opacity = "0"; rr.style.visibility = "hidden"; }
       var cf = E("credFonte"); cf.style.opacity = "0"; cf.style.visibility = "hidden";
     } else {
       mostrar(E("rot1964"), 0, 0, 0);
@@ -710,7 +799,7 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s05 (21,9 �
     var pa = mapaCarregado ? map.project(ANEL) : null, bm = E("gBatMapa").getBoundingClientRect();
     var folga = pa ? Math.round(Math.max(bm.left - pa.x, pa.x - bm.right, bm.top - pa.y, pa.y - bm.bottom) - 43) : null;
     return { t: t, cam: cameraAt(t), anel: pa ? [Math.round(pa.x), Math.round(pa.y)] : null, k: +batK(t).toFixed(4), folgaBatAnel: folga,
-      batMapa: cx("gBatMapa"), batMesa: cx("gBatMesa"), rot1964: cx("rot1964"), rotFossa: cx("rotFossa"), rotRelato: cx("rotRelato"),
+      batMapa: cx("gBatMapa"), batMesa: cx("gBatMesa"), rot1964: cx("rot1964"), rotFossa: cx("rotFossa"), rotRelato: cx("rotRelato"), rotRocha: cx("rotRocha"),
       peixes: cx("gPeixes"), credFonte: cx("credFonte") };
   };
 

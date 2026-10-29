@@ -54,6 +54,20 @@
   MÍDIA: _media/foto/s53/s53-limiting-factor-underwater-test-phase-2018-caladan.jpg (sha256 3a20efe2…; conferencia-midia a9565fb8:
     aprovado, janela 434,4–439,367 = o b2, casada pelo sha256 do rascunho julgado). O still da mesa fica fora do conferente.
   GEOMETRIA: ponto-mais-fundo-atlantico (19,712°N, 67,311°W; pauta-geo), o anel de todo o vídeo.
+  LOTE DE CONSERTOS (tarefa atlantico-fundo-arte-4, lote MB, mapista, 29/10/2026; textos-tela bfa9e5d1, nenhum texto mudou aqui).
+    Muda só isto; o resto fica como o Lucas viu:
+    · O SUBMERSÍVEL AO LADO DA RÉGUA (Lucas, na s07: "A ilustração de decida deve ficar ao lado da "régua" e não sobre ela"; vale
+      para a s07, a s53 e a s55): ele desce À DIREITA do eixo, o lado sem tiques nem números, como na s07: centro em x 3548, a 0,9
+      (o traço a 18 e 6 px, que não escalam), de x 3461,6 a 3634,4 (a margem é 3640). A FOLGA: 72,6 px do contorno do eixo (3389) e
+      34,1 px da ponta direita dos traços das visitas (3420 + 7,5 do contorno). O LÍDER (o do marcador: --neutro 4 px sobre o
+      contorno de 12) liga, na altura dos patins, o eixo à ponta esquerda dos patins (x 3488,6); sai no pouso (180 ms), quando a
+      linha do fundo cheia faz esse papel. O fundo do sonar vai de x 3250 a 3626 (passa dos patins, 3488,6–3607,4), e o corte do
+      medidor, até x 3640. "Limiting Factor" fica onde estava (a borda direita em x 3215,3), à esquerda da régua, na altura do casco.
+    · O ANEL PULSA DUAS VEZES (identidade §4.4; sala-decisoes-qualidade-1, pergunta 3): 13,388 e 14,588, 1,2 s cada, e para.
+    · OS 250 ms DE REPOUSO antes do corte mesa → mapa (identidade §4.4): o levantar (350 ms) vai de 9,6 a 9,95 (a opacidade 1 → 0
+      nos últimos 200 ms) e a mesa fica parada de 9,95 a 10,2; o push-in termina em 9,6, e o crédito da foto fica parado até o
+      corte (o t1 do redator, 10,2), sem esmaecer.
+
   O CONTRATO: window.__duracao = 16.733; __renderAt(t) determinístico e à prova de erro; __prepararCaptura; __fotosProntas (RIG);
     __ready e __aguardarMapa (a base e a GEBCO); __cameraAt(t) e __medidas(t), só leitura. Nada de relógio, sorteio, @keyframes,
     transition ou SMIL. O RIG é a cópia de templates-cena/_rig.js; o motor do mapa e as peças do medidor são os do lote M3 (s20, s25).
@@ -563,7 +577,8 @@
   // enrola ao sair (nada atravessa a margem). Marcadores em --neutro sobre o contorno; o fundo do sonar (27,487 ft) como a
   // linha FRACA em --destaque (antes da s50, sem rótulo); as visitas anteriores (1883, Challenger, 1939) como traços sem
   // rótulo (textos-tela › _regras_de_serie: "SÓ A VISITA DA VEZ TEM RÓTULO").
-  var MED = { eixo: 3380, y0: 220, ftPx: 20, fita: { x0: 3180, x1: 3530, y0: 150, y1: 1790 }, fundo: 27487 };
+  // arte-4: o corte vai até x 3640 (a margem), para o fundo do sonar passar dos patins do submersível, que desce à direita do eixo
+  var MED = { eixo: 3380, y0: 220, ftPx: 20, fita: { x0: 3180, x1: 3640, y0: 150, y1: 1790 }, fundo: 27487, fundoX1: 3626 };
   function yFt(ft) { return MED.y0 + ft / MED.ftPx; }
   var NS = "http://www.w3.org/2000/svg";
   function svgEl(pai, tag, at) { var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); if (pai) pai.appendChild(e); return e; }
@@ -597,7 +612,8 @@
     // o fundo do sonar: a linha FRACA (60 %), sem rótulo, atravessando o eixo
     // M6 (s53): o fundo do sonar no desenho da s07 (M1), onde o submersível POUSA nele: 10 px em --destaque sobre o contorno de 22,
     // de x 3250 a 3510 (mais largo que os patins, 3284–3476), inteiro (é o lugar que o sonar "had just mapped"), sem rótulo
-    var fundo = parTraco(g, "line", { x1: MED.eixo - 130, y1: yFt(MED.fundo), x2: MED.eixo + 130, y2: yFt(MED.fundo) }, 10, 22, "var(--destaque)");
+    // arte-4: até x 3626, passando dos patins (3488,6–3607,4) do submersível ao lado da régua
+    var fundo = parTraco(g, "line", { x1: MED.eixo - 130, y1: yFt(MED.fundo), x2: MED.fundoX1, y2: yFt(MED.fundo) }, 10, 22, "var(--destaque)");
     fundo.sobre.setAttribute("stroke-linecap", "butt");
     fundo.op("1");
     // as visitas anteriores: traços sem rótulo, no mesmo lugar do marcador da vez, mais finos
@@ -720,7 +736,8 @@
     med: 0.0, num0: 0.05, num30: 0.30,             // b1: o medidor desenrola (450 ms) e as pontas da régua entram
     subEntra: 0.258, rotLF: 1.266, solta: 2.523,     // o submersível entra em "submersible", o nome em "Limiting Factor", desce em "down"
     foto: 5.233, fita: 5.533, leg: 5.533,            // b2: o corte de regime para a MESA; a foto pousa (0,55 s)
-    push0: 5.783, push1: 9.6, levanta: 9.85,         // o push-in rumo ao submersível (até 250 ms antes do levantar); o levantar (350 ms)
+    push0: 5.783, push1: 9.6, levanta: 9.6,          // o push-in rumo ao submersível; o levantar (350 ms) de 9,6 a 9,95 e o REPOUSO
+                                                     // de 9,95 a 10,2 (arte-4: os 250 ms antes do corte, identidade §4.4)
     volta: 10.2,                                     // b3: a foto levantou, corte de volta ao MAPA com o medidor
     tempo: 11.366, fonte: 11.366,                    // "two and a half hours": o colchete abre e a cota entra
     primeiro: 13.366, pousa: 13.388                  // b4: "first person": o pouso no fundo do sonar e o pulso ÚNICO do anel
@@ -767,8 +784,10 @@
       "M -58 -70 m -16 0 a 16 16 0 1 0 32 0 a 16 16 0 1 0 -32 0"
     ].join(" "),
     oculto: "M -16 -70 a 30 30 0 1 0 60 0 a 30 30 0 1 0 -60 0",
-    k: 1.45
+    k: 0.9, x: 3548, liderSai: 0.18     // arte-4: ao lado da régua (Lucas), à direita do eixo; antes, 1,45 sobre o eixo
   };
+  var RLF_DIR = 3215.3;                 // arte-4: a borda direita de "Limiting Factor" fica onde estava (3380 − 86 × 1,45 − 40)
+  var LIDER = null;
   var SUBG = null;
   function montarSub(s) {
     var g = svgEl(s, "g", { id: "sub", opacity: 0 });
@@ -804,8 +823,15 @@
   function porSub(t) {
     if (!SUBG) return null;
     var y = patinsEm(t), op = noMapa(t) ? (t < T.foto ? eo(seg(t, T.subEntra, 0.3)) : 1) : 0;
-    SUBG.setAttribute("transform", "translate(" + MED.eixo + "," + y.toFixed(2) + ")");
+    SUBG.setAttribute("transform", "translate(" + SUB.x + "," + y.toFixed(2) + ")");
     SUBG.style.opacity = op.toFixed(3);
+    // arte-4: o líder, na altura dos patins, do eixo à ponta esquerda dos patins; só onde a régua já desenrolou; sai no pouso
+    if (LIDER) {
+      LIDER.set("x1", MED.eixo); LIDER.set("x2", (SUB.x - 66 * SUB.k).toFixed(2));
+      LIDER.set("y1", y.toFixed(2)); LIDER.set("y2", y.toFixed(2));
+      var kMed = t < T.foto ? eo(seg(t, T.med, 0.45)) : 1, frente = MED.fita.y0 + (MED.fita.y1 - MED.fita.y0) * kMed;
+      LIDER.op((op * clamp((frente - y) / 40, 0, 1) * (1 - eo(seg(t, T.pousa, SUB.liderSai)))).toFixed(3));
+    }
     return y;
   }
 
@@ -841,7 +867,8 @@
     var t0 = T.foto, p = eo(seg(t, t0, 0.33)), q = eo(seg(t, t0 + 0.33, 0.22)), pt = eo(seg(t, t0, 0.55));
     return { dy: 240 * (1 - pt), k: t < t0 + 0.33 ? lerp(0.72, 1.03, p) : lerp(1.03, 1.00, q), p: pt, rot: lerp(F.rot0, F.rot, pt) };
   }
-  function levantar(t) { var p = seg(t, T.levanta, 0.35); return { k: 1 + 0.04 * p * p * p, p: p, op: 1 - seg(t, T.volta - 0.2, 0.2) }; }
+  // arte-4: a opacidade cai nos últimos 200 ms do levantar (9,75–9,95), não do corte: a mesa fica parada de 9,95 a 10,2
+  function levantar(t) { var p = seg(t, T.levanta, 0.35); return { k: 1 + 0.04 * p * p * p, p: p, op: 1 - seg(t, T.levanta + 0.15, 0.2) }; }
   function por(el, cx, cy, w, h, rot, s, op) {
     if (!el) return;
     el.style.transform = "translate(" + (cx - w / 2).toFixed(2) + "px," + (cy - h / 2).toFixed(2) + "px) rotate(" + rot.toFixed(3) + "deg) scale(" + s.toFixed(5) + ")";
@@ -891,6 +918,14 @@
   // os traços sem rótulo das visitas anteriores, no lugar de sempre: o Challenger (23,250, s18), 1964 (~24,000, s26), 2002–2003 (27,300,
   // s33), 1883 (27,366, s15), 1970 (27,460, s30) e 1939 (28,000, s20) — "SÓ A VISITA DA VEZ TEM RÓTULO" (textos-tela › _regras_de_serie)
   MEDIDOR = montarMedidor([23250, 24000, 27300, 27366, 27460, 28000]);
+  // arte-4: o líder do submersível (o do marcador da série), por baixo da régua (antes do grupo dela): o eixo o cobre na ponta
+  (function () {
+    var s = E("svgMed"); if (!s || !MEDIDOR) return;
+    var gl = svgEl(null, "g", { id: "subLider" });
+    s.insertBefore(gl, MEDIDOR.grupo);
+    LIDER = parTraco(gl, "line", { x1: 0, y1: 0, x2: 0, y2: 0 }, 4, 12, "var(--neutro)");
+    LIDER.op("0");
+  })();
   montarColchete(E("svgMed"));
   montarSub(E("svgMed"));
   ANEL = montarAnel(E("svgIlus"));
@@ -902,7 +937,8 @@
     // o anel, preso ao ponto, aceso; UM pulso em "first person"
     if (ANEL && map && mapaCarregado) {
       var pa = map.project(ANEL_C); ANEL.setAttribute("transform", "translate(" + pa.x.toFixed(2) + "," + pa.y.toFixed(2) + ")"); ANEL.style.opacity = mapa ? "1" : "0";
-      var u = (t - T.pousa) / 1.2, vivo = u >= 0 && u < 1;
+      // arte-4: DOIS pulsos seguidos (13,388 e 14,588; identidade §4.4), e para
+      var k2 = (t - T.pousa) / 1.2, vivo = k2 >= 0 && k2 < 2, u = vivo ? k2 - Math.floor(k2) : 0;
       ANEL.__pulso.setAttribute("transform", "scale(" + (1 + 0.8 * (vivo ? u : 0)).toFixed(4) + ")"); ANEL.__pulso.setAttribute("opacity", vivo ? (1 - u).toFixed(3) : "0");
     }
     // o medidor: desenrola no 1º quadro (450 ms); some com o mapa no corte da mesa e VOLTA inteiro com ele em 10,2
@@ -912,7 +948,7 @@
     var yp = porSub(t);
     colchete(t);
     // "Limiting Factor": à esquerda do submersível, na altura do meio do casco; parado enquanto a voz o lê, e desce com ele em "down"
-    porDireita(E("rotLF"), MED.eixo - 86 * SUB.k - 40, (yp == null ? 0 : yp) - 70 * SUB.k, ate(t, T.rotLF, T.foto));
+    porDireita(E("rotLF"), RLF_DIR, (yp == null ? 0 : yp) - 70 * SUB.k, ate(t, T.rotLF, T.foto));
     // ≈ 2 H 30 MIN: à esquerda do bico do colchete; o número que a voz diz entra na palavra (300 ms, + 24 px, escala 1,04 → 1,00)
     var vt = mapa ? ate(t, T.tempo, null) : { op: 0, dy: 24 };
     porDireita(E("tempo"), COL.dir, (COL.y0 + COL.y1) / 2, vt, lerp(1.04, 1.0, vt.op));
@@ -920,7 +956,8 @@
     var vp = mapa ? ate(t, T.primeiro, null) : { op: 0, dy: 24 };
     porDireita(E("primeiro"), COL.dir, 1460, vp);
     mesa(t);
-    creditos(t, [{ id: "crFoto", t0: T.foto, t1: T.volta }, { id: "crFonte", t0: mapa ? T.fonte : 99, t1: null }], mapa);
+    // arte-4: o crédito da foto fica PARADO até o corte (10,2, o t1 do redator), sem esmaecer nos 250 ms de repouso
+    creditos(t, [{ id: "crFoto", t0: mapa ? 99 : T.foto, t1: null }, { id: "crFonte", t0: mapa ? T.fonte : 99, t1: null }], mapa);
   }
 
   window.__renderAt = function (t) {

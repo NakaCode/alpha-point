@@ -27,7 +27,11 @@
 
   O BEAT (tempo local):
     0,000  Porto Rico (com Vieques, Culebra, Mona e Desecheo) e a fossa diante dela, em relevo sombreado; a câmera deriva para
-           nordeste e aproxima devagar, linear do 1º ao último quadro (z 8,72 → 8,86, norte para cima, pitch 0).
+           nordeste e aproxima devagar, linear do 1º ao último quadro (z 8,72 → 9,05, norte para cima, pitch 0; arte-4: era 8,86).
+    ARTE-4 (o lote de consertos; a Sala, qualidade-1, s37 M4; o laudo › tema reprovado): a FOSSA passa ao tratamento da série
+           (--territorio-cor, o --destaque a 85 %, e o contorno --tinta de 6 px sobre o escuro de 14 px, como na s18 e na s20), e a
+           ILHA sai do --destaque: --neutro a 40 % com o contorno --tinta de 6 px (a opção b), como a faixa do mar na s39. A deriva
+           sobe (o opcional do laudo › motion). O que segue abaixo sobre a cor da fossa e da ilha é a 1ª versão e não vale mais.
     2,715  "vertical": a SETA DUPLA vertical se traça do centro para as pontas (400 ms) sobre o trecho da fossa diante da ilha
            (19,55°N, 66,40°W; 500 px de ponta a ponta); 3,15 ("shifts"): ela respira uma vez (o comprimento 1 → 1,12 → 1 em 0,8 s).
     4,235  "trench": a FOSSA se demarca (500 ms): SÓ o contorno da isóbata de 7.000 m, inteiro, em --destaque (6 px sobre o
@@ -38,7 +42,7 @@
            de novo com ela (5,155) e para; o rótulo PUERTO RICO (128 px) entra no mar logo ao norte da ilha e fica até o corte.
 
   DECLARADO: (1) a fossa vai INTEIRA, sem recorte (conserto 1: o recorte pelos meridianos da ilha deixava dois traços soltos
-    e um gancho que não se liam como região); o "trecho" é dito pela seta e pelo quadro; (2) a ilha em --destaque a 40 %, como a regência e o conceito pedem, embora o --destaque seja a fossa no vídeo (o
+    e um gancho que não se liam como região); o "trecho" é dito pela seta e pelo quadro; (2) [arte-4: SUPERADO, a ilha vai em --neutro a 40 %; abaixo, o texto da 1ª versão] a ilha em --destaque a 40 %, como a regência e o conceito pedem, embora o --destaque seja a fossa no vídeo (o
     espelho › paleta): a frase põe a ilha e a fossa no mesmo movimento, e as duas ficam na cor dela (a fossa no contorno, a ilha a 40 %); (3) "To the
     USGS" é a atribuição da VOZ: o textos-tela não dá linha de fonte para a s37, e nenhuma vai à tela; (4) o rótulo no mar ao
     norte da ilha, e não sobre ela (cobriria o relevo) nem ao sul (sairia na faixa do crédito); (5) a seta é um sinal desenhado,
@@ -655,8 +659,11 @@
   var T = { seta: 2.715, respiro1: 3.15, trecho: 4.235, ilha: 5.155, respiro2: 5.155, rotulo: 5.133 };
 
   // ═══ A CÂMERA, plana, norte para cima, SEM inclinar (Sala, decisão 3; espelho › s37 › _relevo): uma deriva lenta para
-  // nordeste com aproximação suave, linear do 1º ao último quadro (o mapa nunca para): z 8,72 → 8,86 ═══
-  var CAM = { c0: [-66.62, 18.834], z0: 8.72, c1: [-66.50, 18.9151], z1: 8.86 };
+  // nordeste com aproximação suave, linear do 1º ao último quadro (o mapa nunca para): z 8,72 → 9,05 (arte-4: era 8,86; o opcional
+  // do laudo › motion, "+0,3 a +0,4 de z", perto do ritmo da s28: 0,049 z/s). O fim, conferido na conta Web Mercator sem tile
+  // (_tmp/arte-4/MD/geo-conta.cjs): a seta de y 345 a 905, a borda norte da fossa na longitude da seta em y ~274, a ilha até y ~1951
+  // (acima da faixa do crédito), o rótulo em (1950, 1231) ═══
+  var CAM = { c0: [-66.62, 18.834], z0: 8.72, c1: [-66.47, 18.98], z1: 9.05 };
   function cameraEm(t) {
     t = clamp(t, 0, DUR); var p = t / DUR;
     return { center: [CAM.c0[0] + (CAM.c1[0] - CAM.c0[0]) * p, CAM.c0[1] + (CAM.c1[1] - CAM.c0[1]) * p], zoom: CAM.z0 + (CAM.z1 - CAM.z0) * p, bearing: 0, pitch: 0 };
@@ -699,24 +706,27 @@
   function terras(t) {
     var cv = E("cvTerr"); if (!cv) return; var ctx = cv.getContext("2d"); ctx.clearRect(0, 0, cv.width, cv.height);
     if (!map || !mapaCarregado || !ILHA || !FOSSA) return;
-    var c = cores(), fill = rgbaDe(corDe("--territorio-protagonista-com-contexto-cor"));
-    // a fossa: SÓ o contorno, em --destaque (6 px sobre o contorno escuro da divisa, 12 px), entra em "trench" (500 ms). SEM
-    // preenchimento: o relevo sombreado da GEBCO dentro dela é o argumento ("this part of the trench in the GEBCO shaded relief"),
-    // e o --destaque a 40 % o apagava (prévia de 29/10, 06:5x)
+    var c = cores();
+    // (arte-4; a Sala, qualidade-1, s37 M4; o laudo › tema) a fossa é o ASSUNTO: o tratamento da série (s18, s20), o preenchimento
+    // --territorio-cor (o --destaque a 85 %) e o contorno --tinta de 6 px sobre o escuro de 14 px (--fronteira-contorno-cor), entra
+    // em "trench" (500 ms). (Antes: só o contorno em --destaque, sem preenchimento: a hierarquia da cor saía invertida.)
     var kf = eo(seg(t, T.trecho, 0.5));
     if (kf > 0) {
-      var sob = rgbaDe(corDe("--fronteira-contorno-cor"));
+      var sob = rgbaDe(corDe("--fronteira-contorno-cor")), terr = c.territorio;
       ctx.save();
-      ctx.beginPath(); caminho(ctx, FOSSA); ctx.lineJoin = "round"; ctx.lineCap = "round";
-      ctx.lineWidth = 12; ctx.strokeStyle = css(sob, sob[3] * kf); ctx.stroke();
-      ctx.lineWidth = 6; ctx.strokeStyle = css(c.destaque, kf); ctx.stroke();
+      ctx.beginPath(); caminho(ctx, FOSSA);
+      ctx.fillStyle = css(terr, terr[3] * kf); ctx.fill("evenodd");
+      ctx.lineJoin = "round"; ctx.lineCap = "round";
+      ctx.lineWidth = 14; ctx.strokeStyle = css(sob, sob[3] * kf); ctx.stroke();
+      ctx.lineWidth = 6; ctx.strokeStyle = css(c.tinta, kf); ctx.stroke();
       ctx.restore();
     }
-    // a ilha: acende junto, na palavra "Puerto" (500 ms), no mesmo tratamento (40 % e o contorno --tinta de 6 px)
+    // a ilha: acende junto, na palavra "Puerto" (500 ms). (arte-4; a Sala, a opção (b) do laudo › tema) --neutro a 40 % com o
+    // contorno --tinta de 6 px, como a faixa do mar na s39: o --destaque é só da fossa (decisão do Lucas, 28/10/2026)
     var ki = eo(seg(t, T.ilha, 0.5));
     if (ki > 0) {
       ctx.beginPath(); ILHA.forEach(function (pol) { caminho(ctx, pol); });
-      ctx.fillStyle = css(fill, fill[3] * ki); ctx.fill("evenodd");
+      ctx.fillStyle = css(c.neutro, 0.40 * ki); ctx.fill("evenodd");
       ctx.lineJoin = "round"; ctx.lineWidth = 6; ctx.strokeStyle = css(c.tinta, ki); ctx.stroke();
     }
   }

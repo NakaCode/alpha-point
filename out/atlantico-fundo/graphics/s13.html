@@ -22,7 +22,7 @@
     · 'a weighted' 0,368: o arame começa a descer: o carretel (a máquina de sondagem no costado) GIRA e o arame, visto de cima, é um
       PONTO que engrossa (ilustrador com a física: um executor, o comprimento pago L(t); o giro do carretel é L / R, o raio do ponto
       sai de L; o carretel arranca com rampa de 0,35 s e paga a velocidade constante).
-    · 'wire' 0,848: o ALFINETE cai sobre o ponto (queda livre de 150 px, crava sem quique) e a pílula "1883 · BLAKE" entra (0,833).
+    · 'wire' 0,848: o ALFINETE cai sobre o ponto (queda livre de 150 px, crava sem quique) e a pílula "1883 · Blake" entra (0,833).
     · 'north' 1,968: a REGIÃO "north of Puerto Rico" acende em --neutro a 25 % (500 ms), sem contorno (o cinza não se usa em linha).
   DECLARADO — A REGIÃO (PA015/TA256): a camada do disco mar-ao-norte-de-porto-rico acaba em 19,419°N, e o alfinete do Blake fica em
     19,681°N, dentro da fossa: o laudo da tela pede que a região acesa o contenha ("quem muda a camada é o mapista"). A região desta cena
@@ -35,6 +35,15 @@
   elemento só, marcado como crédito de mapa) do 1º ao último quadro, a 60 px. A região deriva da GEBCO e do Census: coberta pela linha
   da GEBCO; o Census é domínio público.
   A MÃO v003 NÃO ENTRA. Fica fora da prova do pacote: a rotação (o carretel gira por relação geométrica, L / R, não por torque).
+
+  ARTE-4, LOTE MC (o lote de consertos, 29/10/2026; textos-tela bfa9e5d1…, regência 9d0ab49f…): só dois consertos, o resto como estava.
+    · A pílula do alfinete passa a "1883 · Blake" (a regra CAIXA da _regras_de_serie: navio em caixa normal; conserto 4). Mesmos t0/t1.
+    · A REGIÃO FALADA ("north" 1,968, --neutro a 25 %, sem contorno, 500 ms) sai da camada do MapLibre e é pintada no canvas do traço,
+      por baixo do navio, com a MESMA geometria inline (regiao-norte-pr-m2): as bordas leste e oeste, que são os meridianos declarados
+      (67,27122°W e 65,59035°W), esmaecem de 1 a 0 nos 90 px de dentro de cada ponta, no 4K, por um degradê ao longo do paralelo
+      de 19,3°N (o achado do espectador r1b, mantidos[1]: "esmaecer as bordas leste e oeste … ~80–100 px no 4K, para fora, como as
+      pontas da faixa na s39"). A borda de cima (a borda norte da fossa) e a de baixo (a costa) ficam inteiras. O anel (fora da
+      região, a oeste) deixa de encostar numa borda reta. O alfinete continua dentro da região (instrução 3 do textos-tela, PA015).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>
@@ -128,7 +137,7 @@ window.__GEO["regiao-norte-pr-m2"] = {"type":"FeatureCollection","features":[{"t
     <g id="pinoB" opacity="0"><line class="agulha-sob" x1="0" y1="0" x2="64" y2="-78"/><line class="agulha" x1="0" y1="0" x2="64" y2="-78"/><circle class="cabeca-sob" cx="64" cy="-78" r="24"/><circle class="cabeca" cx="64" cy="-78" r="24"/></g>
   </svg>
   <div id="rotulos">
-    <div class="rotulo liso" id="rotBlake" data-qc-papel="rotulo">1883 · BLAKE</div>
+    <div class="rotulo liso" id="rotBlake" data-qc-papel="rotulo">1883 · Blake</div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
   </div>
   <div id="crMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
@@ -221,6 +230,39 @@ window.__GEO["regiao-norte-pr-m2"] = {"type":"FeatureCollection","features":[{"t
     p = p.concat(quad([-205, 128], [-228, 84], [-205, 40], 10));
     return p;
   })();
+  // ── A REGIÃO FALADA (arte-4, lote MC): --neutro a 25 %, sem contorno (o cinza não se usa em linha), entra em 'north' em 500 ms.
+  //    Desenhada num canvas de passagem com a geometria do disco (regiao-norte-pr-m2, projetada pelo map.project do quadro) e as
+  //    pontas leste e oeste, que são os meridianos DECLARADOS (67,27122°W e 65,59035°W), esmaecidas por um degradê ao longo do
+  //    paralelo de 19,3°N (perpendicular aos meridianos também com o giro): 0 → 1 nos 90 px de dentro de cada ponta, no 4K
+  //    (o pedido: 80–100 px; a s39 usa o mesmo esquema com 150). A borda de cima (a fossa) e a de baixo (a costa) ficam inteiras ──
+  var RG = { tmp: null, x0: -67.27122, x1: -65.59035, latRef: 19.3, faixaPx: 90 };
+  function regiaoQuadro(t, A) {
+    var v = 0.25 * A.janela(t, CENA.regiao.entra, null, 0.5);
+    if (!(v > 0) || !ILU.g) return;
+    if (!RG.tmp) { RG.tmp = document.createElement("canvas"); RG.tmp.width = 3840; RG.tmp.height = 2160; }
+    var k = RG.tmp.getContext("2d");
+    k.setTransform(1, 0, 0, 1, 0, 0); k.globalCompositeOperation = "source-over"; k.globalAlpha = 1; k.clearRect(0, 0, 3840, 2160);
+    var fc = A.geo("regiao-norte-pr-m2"); if (!fc) return;
+    k.beginPath();
+    (fc.features || []).forEach(function (f) {
+      A.aneis(f.geometry).forEach(function (anel) {
+        anel.forEach(function (q, i) { var p = A.project(q); if (i) k.lineTo(p.x, p.y); else k.moveTo(p.x, p.y); });
+        k.closePath();
+      });
+    });
+    k.fillStyle = COR.neutro; k.fill("evenodd");
+    var a = A.project([RG.x0, RG.latRef]), b = A.project([RG.x1, RG.latRef]);
+    var L = Math.hypot(b.x - a.x, b.y - a.y);
+    if (L > 2 * RG.faixaPx) {
+      var fx = RG.faixaPx / L, gr = k.createLinearGradient(a.x, a.y, b.x, b.y);
+      gr.addColorStop(0, "rgba(0,0,0,0)"); gr.addColorStop(fx, "rgba(0,0,0,1)");
+      gr.addColorStop(1 - fx, "rgba(0,0,0,1)"); gr.addColorStop(1, "rgba(0,0,0,0)");
+      k.globalCompositeOperation = "destination-in"; k.fillStyle = gr; k.fillRect(0, 0, 3840, 2160);
+      k.globalCompositeOperation = "source-over";
+    }
+    var g = ILU.g; g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = v; g.drawImage(RG.tmp, 0, 0); g.restore();
+    window.__s13regiao = { alfa: +v.toFixed(3), leste: +b.x.toFixed(1), oeste: +a.x.toFixed(1), faixaPx: RG.faixaPx };
+  }
   function arameL(t) {
     var A = CENA.arame, u = t - A.t0;
     if (u <= 0) return 0;
@@ -230,17 +272,14 @@ window.__GEO["regiao-norte-pr-m2"] = {"type":"FeatureCollection","features":[{"t
     preparar: function (A) {
       A.REFS.B = A.pontoNome("sondagem-blake-1883");
       A.REFS.R = A.pontoNome("ponto-mais-fundo-atlantico");
-      COR = { tinta: A.tok("--tinta", "#F4F1EA"), sob: A.tok("--rotulo", "rgba(11,15,20,0.88)") };
+      COR = { tinta: A.tok("--tinta", "#F4F1EA"), sob: A.tok("--rotulo", "rgba(11,15,20,0.88)"), neutro: A.tok("--neutro", "#737D8E") };
     },
-    camadas: function (map, A) {
-      // a região falada, só preenchimento (--neutro a 25 %); nada de contorno cinza (identidade §6: cinza não é linha de mapa)
-      map.addSource("regiao", { type: "geojson", data: A.geo("regiao-norte-pr-m2") }); A.fontes.push("regiao");
-      map.addLayer({ id: "regiao-fill", type: "fill", source: "regiao",
-        paint: { "fill-color": A.tok("--neutro", "#737D8E"), "fill-opacity": 0, "fill-opacity-transition": { duration: 0, delay: 0 } } });
-    },
+    // arte-4, lote MC: a região falada sai da camada do MapLibre e vai ao canvas do traço, por baixo do navio, para as bordas
+    // leste e oeste (os meridianos declarados) esmaecerem como as pontas da faixa da s39 (o achado do espectador, mantidos[1])
+    camadas: function (map, A) {},
     quadro: function (t, A) {
       ILU.limpar();
-      A.opac("regiao-fill", "fill-opacity", 0.25 * A.janela(t, CENA.regiao.entra, null, 0.5));
+      regiaoQuadro(t, A);
       var k = CENA.escalaNavio * Math.pow(2, A.map.getZoom() - CENA.zref);
       var pB = A.project(A.REFS.B), pR = A.project(A.REFS.R);
       anelQuadroFixo("anel", pR, 1, A);

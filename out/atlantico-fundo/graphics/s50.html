@@ -15,6 +15,14 @@ da s53 (M6 da arte-1), no traço da série (s07, s15, s18).
   1,875 · 'twenty-seven' 3,615 · 'down.' 5,555–5,840 · 'Give' 6,310 · 'sixteen' 7,175 · 'feet.' 7,585–7,800 · 'That' 8,430 ·
   'eighty-three' 9,635 · 'coast' 11,115 · 'Puerto' 11,555 · 'Rico,' 11,795 · 'Aguadilla,' 12,635–13,240 · 'northwest.' 14,145–14,640.
 
+  ARTE-4 (atlantico-fundo-arte-4, o lote de consertos, lote ME, mapista; textos-tela bfa9e5d1, conserto 6, instrução 38). Só isto mudou,
+  e onde o texto de baixo diz outra coisa, vale este parágrafo:
+    1. o traço de 1939 (28,000 ft, sem rótulo) na régua, no desenho e no lugar dos outros traços das visitas (o da s53; decisão 5 da Sala);
+    2. 'Surveyed Dec. 18–19, 2018' presa ao ANEL, nunca à isóbata de 8.000 m: centrada no anel, com a base 170 px acima do centro dele
+       (fora do trecho aceso, cuja borda norte fica 34–47 px acima do anel nos zooms do b0) e um líder curto (--tinta 4 px sobre o
+       contorno escuro de 12) do anel até ela; o trecho continua aceso, sem legenda;
+    3. 'Maritime boundaries: MarineRegions.org (VLIZ)' entra com a zona, em 11,533 (antes, 9,633).
+
   POR QUE PLANO (ofício §5 e §5c; Sala, decisão 4): a profundidade se lê na régua do vídeo (o MEDIDOR, 20 ft por px, a escala vertical
   honesta), e o ± 16 ft na LUPA (2,6 px por pé): no relevo, 16 pés seriam fração de pixel. O mapa diz ONDE: o anel, a costa de
   Aguadilla e a zona econômica. Norte para cima, sem órbita (a decisão da série); a câmera nunca para.
@@ -130,6 +138,11 @@ da s53 (M6 da arte-1), no traço da série (s07, s15, s18).
       <path id="l83" class="cota" d="" stroke-width="5"/>
       <circle id="l83ponto" r="12" style="fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6"/>
     </g>
+    <!-- arte-4: o líder curto da legenda do levantamento, do anel até ela (a forma da linha das 83 mi, mais fina) -->
+    <g id="liderSurvey" opacity="0">
+      <path id="lsSob" class="cota-sob" d="" stroke-width="12"/>
+      <path id="lsLinha" class="cota" d="" stroke-width="4"/>
+    </g>
     <g id="anel" opacity="0">
       <g id="pulso" opacity="0"><circle class="anel-halo" r="23"/><circle class="anel-a" r="23"/></g>
       <circle class="anel-halo" r="23"/><circle class="anel-a" r="23"/>
@@ -182,12 +195,13 @@ da s53 (M6 da arte-1), no traço da série (s07, s15, s18).
     longe: { z: 8.30, a: [900, 330] }, longeFim: { z: 8.26, a: [906, 326] },
     aproxDur: 5.8,
     // a legenda do levantamento: acima da borda norte do trecho mais fundo, no meridiano que ela usa
-    surveyLng: -66.55,
+    surveyLng: -66.55,   // (até a arte-2: o meridiano da legenda sobre a borda do trecho; na arte-4 a legenda vai presa ao anel, e este ponto só fica em __medidas)
+    surveyAcima: 170,    // arte-4: a base da legenda do levantamento, em px acima do centro do anel
     // a legenda da zona: presa a um ponto DENTRO da zona dos EUA, a leste da área sobreposta (conferido na cena: __medidas)
     zeeLL: [-68.2, 17.75]
   };
   var MED = { eixo: 3380, y0: 220, ftPx: 20, fita: { x0: 3180, x1: 3530, y0: 150, y1: 1790 }, fundo: 27487,
-    visitas: [23250, 24000, 27300, 27366, 27460] };
+    visitas: [23250, 24000, 27300, 27366, 27460, 28000] };   // arte-4: + 1939 (28,000 ft), como na s53 (a série; decisão 5 da Sala)
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
   window.__duracao = DUR;
@@ -661,12 +675,17 @@ da s53 (M6 da arte-1), no traço da série (s07, s15, s18).
   }
   // os textos do mapa
   function aplicarRotulos(t) {
-    // 'Surveyed Dec. 18–19, 2018': acima da borda norte do trecho mais fundo
-    var ls = E("legSurvey"), vs = vida(t, T.survey, T.surveySai);
+    // 'Surveyed Dec. 18–19, 2018' (arte-4, instrução 38: presa ao ANEL, nunca à isóbata de 8.000 m): centrada no anel, com a base
+    // 170 px (CENA.surveyAcima) acima do centro dele, fora do trecho aceso (a borda norte do trecho fica 34–47 px acima do anel neste zoom), e um líder
+    // curto do anel (40 px acima do centro, fora do halo) até a base dela; o trecho continua aceso, sem legenda
+    var ls = E("legSurvey"), vs = vida(t, T.survey, T.surveySai), gl = E("liderSurvey");
     if (ls && vs.op > 0.001) {
-      var p = pt(SURVEY_LL), w = ls.offsetWidth, h = ls.offsetHeight, l = p.x - w / 2, tp = p.y - 28 - h + vs.dy;
-      mostrar(ls, vs.op * cl(naArea(l, tp, w, h) / 60, 0, 1), l, tp);
-    } else mostrar(ls, 0, 0, 0);
+      var p = pt(ANEL), w = ls.offsetWidth, h = ls.offsetHeight, l = p.x - w / 2, base = p.y - CENA.surveyAcima, tp = base - h + vs.dy;
+      var os = vs.op * cl(naArea(l, tp, w, h) / 60, 0, 1);
+      mostrar(ls, os, l, tp);
+      var dL = "M" + p.x.toFixed(1) + " " + (p.y - 40).toFixed(1) + "L" + p.x.toFixed(1) + " " + (base + vs.dy).toFixed(1);
+      at("lsSob", "d", dL); at("lsLinha", "d", dL); if (gl) gl.setAttribute("opacity", os.toFixed(3));
+    } else { mostrar(ls, 0, 0, 0); if (gl) gl.setAttribute("opacity", "0"); }
     // '≈ 83 MI · Aguadilla': à direita do meio da linha (a linha já na tela)
     var c8 = E("cota83"), v8 = vida(t, T.cota83, null);
     if (c8 && v8.op > 0.001) {
@@ -699,7 +718,7 @@ da s53 (M6 da arte-1), no traço da série (s07, s15, s18).
       if (v > 0.001) base += el.offsetHeight + 8;
     }
     um("crMapa", 1);
-    um("crZonas", eo(seg(t, T.cota83, 0.3)));
+    um("crZonas", eo(seg(t, T.zee, 0.3)));   // arte-4: entra com a zona (11,533), não com a cota das 83 mi (instrução 38)
   }
 
   var opAntes = {};

@@ -3,8 +3,22 @@
 <!--
   s26 · "About twenty-four thousand feet down, its crew reported a crowd of fish. They counted some two hundred of them along
   roughly a mile of seafloor."
-  Word-lock (−156.167) · inSec 156.167 · dur 8.6 (258 quadros a 30 fps; espelho.json de atlantico-fundo, sha256 c10fc98c…, _quadros
-  4685→4943, palavras 455–479). cleanDur = dur (faceless: o relógio é um só, out/atlantico-fundo/words.json). Modo do espelho: desenho ·
+  Word-lock (−156.167) · inSec 156.167 · dur 8.6 (258 quadros a 30 fps; espelho.json de atlantico-fundo, sha256 c10fc98c… e, conferido
+  no lote de consertos, bcfe74f9…, com o mesmo inSec e a mesma dur; _quadros 4685→4943, palavras 455–479).
+
+  O LOTE DE CONSERTOS (tarefa atlantico-fundo-arte-4, lote OB, editor-de-arte em Opus, 29/10/2026; textos-tela bfa9e5d1…, regência
+  9d0ab49f…, conceito e34292ec…; _tmp/espectador-r1b/mantidos.json, mantidos[3] e [4]). O que mudou, e só isto:
+    · os peixes NASCEM em "crowd" (3,148), e não em "counted" (4,748): a rajada da esquerda para a direita, acelerando, agora em 4,1 s
+      (o i-ésimo em 3,148 + 4,1·(i/199)^0,6), cheia em 7,248, antes de "mile" acabar, como antes. O b1 da regência (4,533) começa em
+      3,148, com a autorização da Sala no lote de consertos (mantidos[3]);
+    · o GLIFO do peixe a 1,5× (44 px de comprimento, o traço de 6 px, --linha-espessura), legível no celular: o CARDUME DA SÉRIE
+      (o mesmo bloco na s71), 8 fileiras em quincôncio, ~260 px acima da linha, sorteio de semente fixa e relaxamento determinístico;
+      nenhum par a menos de 9,33 px eixo a eixo, nenhum peixe a menos de 14 px da encosta (DOM, window.__s26peca(t, true)). Não os ~2×
+      do pedido: 200 glifos de 58 px sem se tocarem pedem ~370 px de faixa (10 fileiras), e a faixa cobriria a cota de 1964;
+    · a LEGENDA "Report published 1965" passou de baixo para CIMA da cota de 1964 (o mesmo alinhamento à esquerda com ela): o cardume
+      maior sobe até onde ela ficava. No pior quadro (8,35 s, a câmera a 1,1424), o peixe mais alto fica 16,7 px abaixo da caixa da cota.
+  O resto fica como estava. Onde o texto abaixo diz outra coisa sobre os peixes, a legenda ou o b1, vale este bloco.
+  cleanDur = dur (faceless: o relógio é um só, out/atlantico-fundo/words.json). Modo do espelho: desenho ·
   Modelo da identidade: ANIMAÇÃO PARA EXPLICAR (números e escala) sobre a MESA DO VÍDEO 2 EM DIANTE (satélite sob a luz, §5; still
   mesa-porto-rico.png), no TRAÇO DE ENGENHEIRO. Corte seco dos dois lados (mapa s25 → desenho → s27). Tarefa atlantico-fundo-arte-2,
   lote EO1, editor-de-arte em Opus (regencia.json › _animacao_em_opus: s26 b0–b1). Nenhum hex.
@@ -97,7 +111,7 @@
   #desenho, #med { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
   .ar { fill: none; stroke: var(--tinta); stroke-width: var(--linha-espessura); stroke-linejoin: round; stroke-linecap: round; }
   .ar-fina { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: .5; }
-  .ar-peixe { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .ar-peixe { fill: none; stroke: var(--tinta); stroke-width: var(--linha-espessura); stroke-linecap: round; stroke-linejoin: round; }
   /* o medidor da série: a régua em --tinta sobre o contorno --rotulo; as marcas em --neutro; o fundo do sonar em --destaque */
   .med-sob { fill: none; stroke: var(--rotulo); stroke-linecap: round; }
   .med-traco { fill: none; stroke: var(--tinta); stroke-linecap: round; }
@@ -271,7 +285,9 @@
   // ═════════════════════════════════════════════════════════════════════════════════════════════
   ["cota1964", "leg1965", "cota200", "num0", "num30", "cred1"].forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
 
-  var T = { med: 0.0, medDur: 0.45, cota: 0.366, cred: 0.366, milha: 0.368, milhaDur: 0.85, leg: 2.633, peixes: 4.748, peixesDur: 2.5,
+  // os peixes nascem em "crowd" (3,148), e não mais em "counted" (4,748): o conserto do espectador (mantidos[3]); a fila fica cheia em
+  // 7,248, antes de "mile" acabar (7,308), como antes
+  var T = { med: 0.0, medDur: 0.45, cota: 0.366, cred: 0.366, milha: 0.368, milhaDur: 0.85, leg: 2.633, peixes: 3.148, peixesDur: 4.1,
             cota200: 5.366, repouso: DUR - 0.25 };
 
   // ── o fundo em declive (a encosta da fossa; sem o chão da fossa abaixo: TA254) — a geometria de s06 e s71 ──
@@ -298,26 +314,48 @@
   function barra(x) { var a = pN(x, -BARRA), b = pN(x, OFS); return "M" + f2(a[0]) + "," + f2(a[1]) + " L" + f2(b[0]) + "," + f2(b[1]); }
   var barraA = barra(XA), barraB = barra(XB);
 
-  // ── os ~200 riscos de "peixe" ao longo da linha (x 1250 → 2950), quatro fileiras, semente fixa: o bloco de s06, sem mudar uma conta ──
-  var NPEIXE = 200, FILAS = 4;
-  var rnd = R.mulberry32(1964);
-  var gP = E("gPeixes"), glifos = [];
-  for (var i = 0; i < NPEIXE; i++) {
-    var fila = i % FILAS, j = Math.floor(i / FILAS);
-    var s = (j + 0.5 + fila / FILAS) / (NPEIXE / FILAS) + (rnd() - 0.5) * 0.004;
-    s = clamp(s, 0.002, 0.998);
-    var x = XA + s * (XB - XA);
-    var h = 18 + fila * 20 + (rnd() - 0.5) * 10;
-    var dir = rnd() < 0.5 ? 1 : -1, a = ANG + (rnd() - 0.5) * 0.40;
-    var cx = x + Math.sin(ANG) * h, cy = yF(x) - Math.cos(ANG) * h;
-    var c = Math.cos(a), sn = Math.sin(a);
-    var P = function (u, v) { u *= dir; return f2(cx + u * c - v * sn) + "," + f2(cy + u * sn + v * c); };
-    var g = "M" + P(16, 0) + " Q" + P(1, -11) + " " + P(-13, 6) + " M" + P(16, 0) + " Q" + P(1, 11) + " " + P(-13, -6);
-    var p = document.createElementNS(NS, "path"); p.setAttribute("class", "ar-peixe"); p.setAttribute("d", g); p.style.opacity = "0";
-    if (gP) gP.appendChild(p);
-    // NASCEM na ordem do índice (da esquerda para a direita, as 4 fileiras intercaladas), a cadência acelerando
-    glifos.push({ el: p, tNasce: T.peixes + T.peixesDur * Math.pow(i / (NPEIXE - 1), 0.6) });
+  // ── os ~200 peixes ao longo da milha (x 1250 → 2950): O CARDUME DA SÉRIE (s26 e s71, o mesmo bloco, a mesma semente; lote de consertos
+  //    arte-4, o conserto do espectador mantidos[4] e [17]). O glifo de dois arcos de s06 a 1,5× (44 px de comprimento, o traço de 6 px
+  //    do traço de engenheiro), em 8 fileiras em quincôncio, com um sorteio de semente fixa (posição, altura, ângulo, lado) e um
+  //    relaxamento determinístico (os centros perto demais se afastam, em unidades do glifo), dentro da faixa e da milha: nenhum par a
+  //    menos de ~9 px eixo a eixo (3 px de mesa entre dois traços de 6 px), medido no DOM (window.__s26peca(t, true)). Por que 1,5× e não
+  //    os ~2× do pedido: 200 glifos de 58 px sem se tocarem pedem uma faixa de ~370 px (10 fileiras), que cobriria a cota de 1964; a
+  //    1,5× a faixa tem ~260 px. ──
+  var NPEIXE = 200, FILAS = 8, POR = NPEIXE / FILAS, GP = 1.5, DHP = 31, IT_REL = 150;
+  var COSA = Math.cos(ANG), SINA = Math.sin(ANG), LU = (XB - XA) / COSA, H0P = 13 * GP + 8;
+  var EU = 33 * GP + 14, EH = 17 * GP + 12, HMIN = H0P - 2, HMAX = H0P + (FILAS - 1) * DHP + 2, UA = 18 * GP, UB = LU - 18 * GP;
+  var cardume = (function () {
+    var rnd = R.mulberry32(1964), C = [], i, j, it;
+    for (i = 0; i < NPEIXE; i++) {
+      var fila = i % FILAS, jj = Math.floor(i / FILAS);
+      var s = (jj + 0.25 + 0.5 * (fila % 2)) / POR + (rnd() - 0.5) * 0.010;
+      var h = H0P + fila * DHP + (rnd() - 0.5) * 10;
+      var dir = rnd() < 0.5 ? 1 : -1, a = (rnd() - 0.5) * 0.30;
+      C.push([s * LU, h, dir, a]);
+    }
+    for (it = 0; it < IT_REL; it++) {
+      for (i = 0; i < NPEIXE; i++) for (j = i + 1; j < NPEIXE; j++) {
+        var du = (C[j][0] - C[i][0]) / EU, dh = (C[j][1] - C[i][1]) / EH, dd = Math.sqrt(du * du + dh * dh);
+        if (dd < 1 && dd > 1e-9) { var k = (1 - dd) * 0.25;
+          C[i][0] -= du / dd * k * EU; C[j][0] += du / dd * k * EU; C[i][1] -= dh / dd * k * EH; C[j][1] += dh / dd * k * EH; }
+      }
+      for (i = 0; i < NPEIXE; i++) { C[i][0] = clamp(C[i][0], UA, UB); C[i][1] = clamp(C[i][1], HMIN, HMAX); }
+    }
+    return C.map(function (c) { var x = XA + c[0] * COSA; return { u: c[0], x: x, h: c[1], dir: c[2], a: ANG + c[3],
+      cx: x + SINA * c[1], cy: yF(x) - COSA * c[1] }; });
+  })();
+  function peixeD(g) {   // o glifo de s06 (o nariz em +16, os arcos se cruzam e abrem a cauda em −13), a GP
+    var c = Math.cos(g.a), sn = Math.sin(g.a);
+    var P = function (u, v) { u *= g.dir * GP; v *= GP; return f2(g.cx + u * c - v * sn) + "," + f2(g.cy + u * sn + v * c); };
+    return "M" + P(16, 0) + " Q" + P(1, -11) + " " + P(-13, 6) + " M" + P(16, 0) + " Q" + P(1, 11) + " " + P(-13, -6);
   }
+  var gP = E("gPeixes"), glifos = [];
+  // NASCEM da esquerda para a direita (a ordem ao longo da milha), a cadência acelerando
+  cardume.slice().sort(function (p, q) { return p.u - q.u; }).forEach(function (g, i) {
+    var p = document.createElementNS(NS, "path"); p.setAttribute("class", "ar-peixe"); p.setAttribute("d", peixeD(g)); p.style.opacity = "0";
+    if (gP) gP.appendChild(p);
+    glifos.push({ el: p, tNasce: T.peixes + T.peixesDur * Math.pow(i / (NPEIXE - 1), 0.6) });
+  });
 
   // ── o MEDIDOR PEQUENO (o da série, reduzido): eixo em x 3380, 0 ft em y 220, 30,000 ft em y 1000 ──
   var M = { x: 3380, y0: 220, y1: 1000, max: 30000, curto: 26, longo: 50 };
@@ -387,9 +425,11 @@
     for (var k = 0; k < glifos.length; k++) glifos[k].el.style.opacity = (0.9 * eo(seg(t, glifos[k].tNasce, 0.25))).toFixed(3);
     // os textos: a cota de 1964 à esquerda do marcador (borda direita em x 3300, o meio na altura do marcador); a legenda logo abaixo,
     // alinhada à esquerda com ela; a cota ~200 embaixo da milha, centrada no meio da fila
+    // a legenda passou de baixo para CIMA da cota (lote de consertos arte-4): o cardume maior sobe até onde ela ficava (y 910–1007)
     var c64 = E("cota1964"), hc = c64 ? c64.offsetHeight : 120, wc = c64 ? c64.offsetWidth : 1325;
+    var l65 = E("leg1965"), hl = l65 ? l65.offsetHeight : 97;
     texto("cota1964", t, T.cota, 3300, Y64 - hc / 2, "direita");
-    texto("leg1965", t, T.leg, 3300 - wc, Y64 + hc / 2 + 6, "esquerda");
+    texto("leg1965", t, T.leg, 3300 - wc, Y64 - hc / 2 - 6 - hl, "esquerda");
     texto("cota200", t, T.cota200, PX, 1490, "centro");
     var cr = E("cred1"); if (cr) cr.style.opacity = eo(seg(t, T.cred, 0.3)).toFixed(3);
   }
@@ -408,10 +448,26 @@
     var out = { t: t, escala: +escala(t).toFixed(4), fila: cx(E("gPeixes")), milha: cx(E("gMilha")), hachura: cx(E("hachura")), still: cx(E("still")),
       cota1964: cx(E("cota1964")), leg1965: cx(E("leg1965")), cota200: cx(E("cota200")), num0: cx(E("num0")), num30: cx(E("num30")), med: cx(E("medidor")) };
     if (folga) {
-      var minimo = Infinity;
-      glifos.forEach(function (g) { var p = g.el, L = p.getTotalLength();
-        for (var u = 0; u <= 1.0001; u += 0.02) { var q = p.getPointAtLength(u * L); var d = -((q.x - X0F) * NX + (q.y - Y0F) * NY); minimo = Math.min(minimo, d); } });
+      var minimo = Infinity, pts = [];
+      glifos.forEach(function (g) { var p = g.el, L = p.getTotalLength(), lista = [];
+        for (var u = 0; u <= 1.0001; u += 0.02) { var q = p.getPointAtLength(u * L); lista.push([q.x, q.y]); var d = -((q.x - X0F) * NX + (q.y - Y0F) * NY); minimo = Math.min(minimo, d); }
+        pts.push(lista); });
       out.peixe_folga_minima_px = +minimo.toFixed(2);
+      // a menor distância entre os eixos dos traços de dois peixes (no desenho), pelos pontos do caminho desenhado
+      var par = Infinity;
+      for (var a = 0; a < pts.length; a++) for (var b = a + 1; b < pts.length; b++) {
+        if (Math.abs(pts[a][0][0] - pts[b][0][0]) > 120 || Math.abs(pts[a][0][1] - pts[b][0][1]) > 120) continue;
+        for (var ia = 0; ia < pts[a].length; ia++) for (var ib = 0; ib < pts[b].length; ib++) {
+          var dx = pts[a][ia][0] - pts[b][ib][0], dy = pts[a][ia][1] - pts[b][ib][1], dd = dx * dx + dy * dy; if (dd < par) par = dd; } }
+      out.peixe_par_minimo_px = +Math.sqrt(par).toFixed(2);
+      // na tela: a menor folga vertical (e se há sobreposição) entre os peixes já nascidos e as caixas da cota de 1964 e da legenda
+      var caixas = [["cota1964", E("cota1964")], ["leg1965", E("leg1965")], ["num30", E("num30")]].filter(function (q) { return q[1] && +getComputedStyle(q[1]).opacity > 0.02; })
+        .map(function (q) { var r = q[1].getBoundingClientRect(); return [q[0], r]; });
+      var folgaTxt = Infinity, quem = null;
+      glifos.forEach(function (g) { if (+g.el.style.opacity < 0.02) return; var r = g.el.getBoundingClientRect();
+        caixas.forEach(function (q) { var c = q[1]; if (r.right < c.left - 2 || r.left > c.right + 2) return; var d = r.top - c.bottom; if (d < folgaTxt) { folgaTxt = d; quem = q[0]; } }); });
+      out.peixe_abaixo_do_texto_px = folgaTxt === Infinity ? null : +folgaTxt.toFixed(1);
+      out.peixe_abaixo_de = quem;
     }
     return out;
   };

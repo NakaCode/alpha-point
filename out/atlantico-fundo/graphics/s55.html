@@ -64,6 +64,17 @@
     b1 = + a marca da lista com o marcador (6) até a lupa sair em 6,3; depois, 4.
   CRÉDITOS (60 px, --fs-credito com o override): as duas linhas do mapa (MapTiler e GEBCO) do 1º ao último quadro, num elemento só com
   data-qc-credito="mapa"; "Source: Bongiovanni et al., 2021" de 2,867 a 6,3 (o redator), sem a marca de mapa.
+  LOTE DE CONSERTOS (tarefa atlantico-fundo-arte-4, lote MB, mapista, 29/10/2026; textos-tela bfa9e5d1, nenhum texto mudou aqui).
+    Muda só isto; o resto fica como o Lucas viu:
+    · SAI o traço da leitura dos medidores do submersível (27,480 ft) de dentro do colchete (sala-decisoes-arte-2, decisão 6: o
+      exige não o pede). Os ~7 ft ficam no texto; o colchete de ± 16 ft fica como está.
+    · O bloco "SUB GAUGES · / WITHIN ~7 FT / OF THE SONAR" DESCE para a rocha hachurada, logo abaixo do dente do colchete (o topo
+      20 px abaixo da linha do fundo, y 716; x 2128, à direita do colchete), de 2,867 a 6,3 (espectador-r1b, mantidos[9]): a linha
+      laranja do fundo atravessa a janela inteira, sem corte, com o submersível pousado nela.
+    · O SUBMERSÍVEL AO LADO DA RÉGUA (Lucas, na s07): aqui ele já está ao lado. Ele não desce pelo medidor: fica pousado DENTRO da
+      lupa (centro x 1900, de x ~1820 a ~1980), a 1.060 px da escala da lupa (eixo em x 3040, tiques de 3000 a 3040) e a 1.400 px
+      do eixo do medidor (x 3380). Nada se moveu nele.
+    (Os itens (3) e o b0 acima falam do traço da leitura: ele saiu.)
   A MÃO v003 NÃO ENTRA. Do ilustrador: o submersível está pousado (nenhuma força o move: parado, sem balanço; ESTUDO.md:57, amplitude
   só com fonte de energia); a marca da lista é um corpo que o atrito para (references/movimento-fisica.md:39, o limiar de repouso de
   0,25 px declarado); o colchete é diagrama, não corpo (fecha numa curva de saída, eo).
@@ -274,10 +285,6 @@
         <path id="colcheteSob" d="" fill="none" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" class="med-sob"/>
         <path id="colcheteLinha" d="" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="med-marca"/>
       </g>
-      <g id="leitura" opacity="0">
-        <line class="med-sob" stroke-width="14" x1="1990" y1="640.00" x2="2072" y2="640.00"/>
-        <line class="med-traco" stroke-width="5" x1="1990" y1="640.00" x2="2072" y2="640.00" style="stroke-linecap: butt"/>
-      </g>
     </g>
   </svg>
   <div id="rotulos">
@@ -313,7 +320,7 @@
     anel: 0.6,
     lupa: [1.167, 6.3],                                  // "DETAIL · 100 FT": 'confirmed' → 'official'
     colchete: { t0: 1.45, dur: 0.7, de: 30, para: 16 },  // a pinça fecha de ± 30 ft a ± 16 ft
-    leitura: [2.867, 6.3],                               // o traço da leitura e "SUB GAUGES · …": 'within' → 'official'
+    leitura: [2.867, 6.3],                               // "SUB GAUGES · …": 'within' → 'official' (arte-4: o traço da leitura saiu)
     lista: { t0: 4.633, cai: 50, tau: 0.10 },            // a marca da lista volta em 'That'
     mk: { xDir: 3100, sonarTop: 1185, listaTop: 1490 },
     rotulos: [],
@@ -445,13 +452,13 @@
       var dC = "M1800 " + yt.toFixed(2) + "H2080" + "V" + yb.toFixed(2) + "H1800" + "M2080 " + YL_FUNDO.toFixed(2) + "H2116";
       at("colcheteSob", "d", dC); at("colcheteLinha", "d", dC);
       at("colchete", "opacity", Math.min(A.seg(t, Cc.t0, 0.15), 1 - A.seg(t, CENA.lupa[1] - 0.3, 0.3)).toFixed(3));
-      // ── a leitura dos medidores do submersível (27,480 ft) e o texto no dente ──
+      // ── o texto no dente (arte-4: sem o traço da leitura de 27,480 ft, decisão 6 da Sala; o bloco DESCE para a rocha, o
+      //    topo 20 px abaixo do fundo, à direita do colchete: a linha do fundo atravessa a janela inteira, sem corte) ──
       var oS = vidaOp(t, CENA.leitura[0], CENA.leitura[1]);
-      at("leitura", "opacity", oS.toFixed(3));
       var cs = A.E("cotaSub");
       if (cs) {
         cs.style.opacity = oS.toFixed(3);
-        cs.style.transform = "translate(2128px," + (YL_FUNDO - cs.offsetHeight / 2 + 24 * (1 - A.eo(A.seg(t, CENA.leitura[0], 0.3)))).toFixed(2) + "px)";
+        cs.style.transform = "translate(2128px," + (YL_FUNDO + 20 + 24 * (1 - A.eo(A.seg(t, CENA.leitura[0], 0.3)))).toFixed(2) + "px)";
       }
       // ── a MARCA DA LISTA volta em 'That' (abaixo do fundo do sonar), com o marcador e o líder; nada a liga ao anel ──
       var L = CENA.lista, yL = yLista(t), vL = A.cl((t - L.t0) / 0.12, 0, 1);

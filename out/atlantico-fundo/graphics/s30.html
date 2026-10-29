@@ -34,8 +34,13 @@
        128 px; o anel da marca é outro: --destaque cheio, 56 px), e o cone fraco da esfera até ele (o que a tripulação via); 8,3: "~1 MI"
        (128 px) à esquerda do batiscafo, sobre o mar aberto, com o líder até a chamada. 10,175 ('net'): o FIO DA REDE desce num ponto (o guincho: rampas de 0,35 s,
        o cabo reto e tenso, sem balanço) e sobe 140 px em 'up' (11,345: "could only bring something up").
-    b3 12,033–16,0 12,05 ('Neither'): o chão escurece mais (a GEBCO a 50 % do brilho), e o batiscafo, o retalho e o fio saem (500 ms); a
-       costa (o satélite) e o anel ficam. A câmera segue a deriva lenta sobre a fossa inteira (z 8,10 → 8,22 até 20,075).
+    b3 12,033–16,0 12,05 ('Neither'): o chão escurece mais (a GEBCO a 50 % do brilho) em 1,4 s, até 13,45, enquanto a frase é dita
+       (arte-4: eram 0,6 s), e o batiscafo, o retalho e o fio saem (500 ms); a costa (o satélite) e o anel ficam. A câmera segue a deriva
+       lenta sobre a fossa inteira (z 8,10 → 8,22 até 20,075). (arte-4, o espectador r1b › mantidos[5]: de 12,5 a 16,1 a tela não
+       mudava) 14,225 ('took'): o NAVIO de traço da b5 (o mesmo desenho, 1,15×) entra (300 ms) sobre o mar aberto ao norte da fossa,
+       com a pegada num ponto da perna real de 2002 que ele navega na b5 (a 14 km do começo, dentro da fossa); 15,185 ('sonar'): o LEQUE de 7 feixes abre uma vez (0,3 s)
+       até a pegada, na largura real da faixa, sobre o chão escuro, sem acendê-lo; 16,155: as faixas acendem como antes e o navio sai
+       (400 ms). Sem texto novo; os tempos da b4 e da b5 não mudam.
     b4 16,0–22,633 (s31) 16,155 ('two thousand two'): o chão VOLTA AO BRILHO PLENO dentro das faixas do multifeixe, faixa por faixa, pela
        ordem das trilhas reais do levantamento: 2002 de 16,155 a 17,655; fevereiro–março de 2003 de 17,275 ('two thousand three') a 19,675;
        agosto–setembro de 2003 de 17,6 a 19,9; com a fossa INTEIRA no quadro (PA047, TA258). 16,133: "USGS MULTIBEAM · 2002–2003" (128 px)
@@ -67,7 +72,7 @@
         2002–2003") a 128 px. (7) Três números da régua (0 FT, 15,000 e 30,000 FT), como na s28. (8) Os traços das visitas são os da s28
         (1883, Challenger, 1939, 1964 em ~24,000 ft); o de 1939 (28,000) fica, como na s28 e na s53.
   ELEMENTOS (identidade §4.2, conta minha): b0 o anel, o medidor (com a rede), a cota = 3; b1 + o "?" = 4; b2 o anel, a fossa, o batiscafo
-    (com o cone), o retalho com a chamada e "~1 MI", o fio = 5; b3 o anel, a fossa = 2; b4 o anel, a fossa, a área acesa, as duas
+    (com o cone), o retalho com a chamada e "~1 MI", o fio = 5; b3 o anel, a fossa, o navio com o leque (de 14,225) = 3; b4 o anel, a fossa, a área acesa, as duas
     pílulas = 5; b5 + o navio com o leque e a faixa = 6. Herói: nenhum.
   CRÉDITOS a 60 px: '© MapTiler © OpenStreetMap contributors' e 'GEBCO Compilation Group (2026) GEBCO 2026 Grid' num elemento só, do 1º
     ao último quadro (data-qc-credito="mapa" nele); acima dele, sem a marca, 'Source: NOAA Ocean Exploration, 2026', de 1,0 a 7,1. As
@@ -787,7 +792,8 @@
     bat: 7.275,                                     // 'crew' 7,275
     milha: 8.3, milhaSai: 12.033, retalho: 8.315,   // 'small' 8,315 · 'patch' 8,635
     rede: 10.175, redeSobe: 11.345,                 // 'net' 10,175 · 'up.' 11,345
-    escuro2: 12.05,                                 // 'Neither' 12,050: o chão escurece mais (a base a 50 %)
+    escuro2: 12.05,                                 // 'Neither' 12,050: o chão escurece mais (a base a 50 %), em 1,4 s (arte-4)
+    anuncio: 14.225, anuncioLeque: 15.185, anuncioSai: 16.155,   // (arte-4) 'took' 14,225 · 'sonar' 15,185 · 'two (thousand two)' 16,155
     multi: 16.133, luz2002: 16.155, luz2003: 17.275, luz2003b: 17.6, usgs: 18.7,   // 'two (thousand two)' 16,155 · 'two (thousand three)' 17,275
     desce: 20.075,                                  // 'mapped' 20,075: só então a câmera desce ao trecho oeste (2,5 s)
     navio: 22.795, leque: 23.115, largo: 24.875     // 'ship's' 22,795 · 'sonar' 23,115 · 'wide' 24,875
@@ -887,7 +893,9 @@
   // b2 ('A crew'): a GEBCO cai de 1,00 a 0,72 de brilho em 1 s (o chão escuro, à espera); b3 ('Neither'): a 0,50 em 0,6 s ("the base
   // at 50 % brightness"); o satélite da terra (a costa) e o anel ficam. b4: DENTRO das faixas, o chão volta ao brilho pleno: a mesma
   // GEBCO 2026 (a mesma imagem, _media/base/gebco-caribe.png), desenhada num canvas por cima do mapa só onde as faixas já passaram
-  function brilhoFundo(t) { return 1 - 0.28 * eo(seg(t, T.recua, 1.0)) - 0.22 * eo(seg(t, T.escuro2, 0.6)); }
+  // (arte-4, o espectador r1b › mantidos[5]) o escurecer de 'Neither' passa de 0,6 s a 1,4 s (12,05 → 13,45): o chão sem mapa se
+  // apaga enquanto a frase "Neither could map the floor" é dita, e não num passo só
+  function brilhoFundo(t) { return 1 - 0.28 * eo(seg(t, T.recua, 1.0)) - 0.22 * eo(seg(t, T.escuro2, 1.4)); }
   var brilhoAntes = null;
   function aplicarBrilho(v) { v = +v.toFixed(3); if (brilhoAntes === v) return; try { map.setPaintProperty("gebco", "raster-brightness-max", v); brilhoAntes = v; } catch (e) {} }
   var GEBIMG = null, MASCARA = null;
@@ -1065,6 +1073,16 @@
     IL.navioSob = svgEl(gn, "path", { d: "M0 0", "stroke-width": 16, fill: "none", "stroke-linecap": "round", "stroke-linejoin": "round" }); IL.navioSob.style.stroke = "var(--rotulo)";
     IL.navio = svgEl(gn, "path", { d: "M0 0", "stroke-width": 6, fill: "none", "stroke-linecap": "round", "stroke-linejoin": "round" }); IL.navio.style.stroke = "var(--tinta)";
     IL.gNavio = gn;
+    // (arte-4) o ANÚNCIO do multifeixe na b3: o MESMO navio de traço (a 1,15×), o leque e a pegada, num grupo à parte (a b5 fica
+    // como estava); sem faixa varrida: o leque abre uma vez sobre o chão escuro, sem acendê-lo
+    var ga = svgEl(s, "g", { id: "gAnuncio" }); ga.style.opacity = "0";
+    IL.aLeque = svgEl(ga, "path", { d: "M0 0" }); IL.aLeque.style.fill = "var(--tinta)"; IL.aLeque.style.stroke = "none";
+    IL.aRaios = svgEl(ga, "path", { d: "M0 0", "stroke-width": 3, fill: "none", "stroke-linecap": "round" }); IL.aRaios.style.stroke = "var(--tinta)";
+    IL.aPegadaSob = svgEl(ga, "path", { d: "M0 0", "stroke-width": 14, fill: "none", "stroke-linecap": "round" }); IL.aPegadaSob.style.stroke = "var(--rotulo)";
+    IL.aPegada = svgEl(ga, "path", { d: "M0 0", "stroke-width": 6, fill: "none", "stroke-linecap": "round" }); IL.aPegada.style.stroke = "var(--tinta)";
+    IL.aNavioSob = svgEl(ga, "path", { d: "M0 0", "stroke-width": 16, fill: "none", "stroke-linecap": "round", "stroke-linejoin": "round" }); IL.aNavioSob.style.stroke = "var(--rotulo)";
+    IL.aNavio = svgEl(ga, "path", { d: "M0 0", "stroke-width": 6, fill: "none", "stroke-linecap": "round", "stroke-linejoin": "round" }); IL.aNavio.style.stroke = "var(--tinta)";
+    IL.gAnuncio = ga;
   }
 
   // ── O BATISCAFO, O RETALHO E A CHAMADA (b2) ──
@@ -1150,6 +1168,31 @@
     IL.navio.setAttribute("d", nd); IL.navioSob.setAttribute("d", nd);
   }
 
+  // ── (arte-4) O ANÚNCIO DO MULTIFEIXE (b3, 'That took a different kind of sonar'; o espectador r1b › mantidos[5]): o navio de
+  // traço da b5 (o mesmo desenho, a 1,15×) entra em 'took' (300 ms) sobre o mar aberto ao norte da fossa, com a pegada num ponto
+  // da mesma perna real da trilha de 2002 que ele navega na b5 (a 14 km do começo dela, ~19,89°N), dentro da fossa; o casco 220 px
+  // acima da pegada (a convenção do traço da b5: a vertical da tela é a vertical da água). Em 'sonar' o leque de 7 feixes abre uma
+  // vez (0,3 s) até a pegada, na largura real da faixa (2 × 6 km, a mesma das faixas que acendem a seguir), sobre o chão escuro,
+  // SEM acendê-lo. Em 'two (thousand two)' (16,155) as faixas acendem como antes e o navio sai em 400 ms; ele volta na b5.
+  // Parado no lugar (preso ao mapa, que deriva): é o navio que sonda, não o que varre ──
+  var ANUNCIO_D = 14;   // km do começo da perna (−65,61782; 20,02834): ~19,89°N, dentro da fossa, a ~60 px da borda norte (quadro de 29/10, 18:27: no começo da perna a pegada caía sobre o contorno)
+  function anuncio(t) {
+    var v = Math.min(eo(seg(t, T.anuncio, 0.3)), 1 - eo(seg(t, T.anuncioSai, 0.4)));
+    IL.gAnuncio.style.opacity = v.toFixed(3);
+    if (v <= 0) return;
+    var pt = naPerna(ANUNCIO_D), q = map.project(pt), meia = MEIA_FAIXA_KM * pxPorKm(map.getZoom(), pt[1]);
+    var kL = eo(seg(t, T.anuncioLeque, 0.3)), ax = q.x, ay = q.y - NAVIO_H, w = meia * kL;
+    IL.aLeque.setAttribute("d", "M" + f2(ax) + " " + f2(ay) + "L" + f2(q.x - w) + " " + f2(q.y) + "L" + f2(q.x + w) + " " + f2(q.y) + "Z");
+    IL.aLeque.style.opacity = (0.12 * kL).toFixed(3);
+    var r = "";
+    for (var j = 0; j <= 6; j++) { var xx = q.x - w + 2 * w * j / 6; r += "M" + f2(ax) + " " + f2(ay) + "L" + f2(xx) + " " + f2(q.y); }
+    IL.aRaios.setAttribute("d", r); IL.aRaios.style.opacity = (0.75 * kL).toFixed(3);
+    var pg = "M" + f2(q.x - w) + " " + f2(q.y) + "L" + f2(q.x + w) + " " + f2(q.y);
+    IL.aPegada.setAttribute("d", pg); IL.aPegadaSob.setAttribute("d", pg); IL.aPegada.style.opacity = kL.toFixed(3); IL.aPegadaSob.style.opacity = kL.toFixed(3);
+    var nd = navioD(ax, ay - 30 * NAVIO_K);
+    IL.aNavio.setAttribute("d", nd); IL.aNavioSob.setAttribute("d", nd);
+  }
+
   // ═══ O QUE SE MONTA ═══
   window.__fotosProntas = true;
   if (prepararGeo()) iniciarMapa({ c0: cameraEm(0), creditoMapa: TEXTOS.crMapa });
@@ -1192,7 +1235,7 @@
     // a cota de 1970, à esquerda da régua, centrada na altura da marca (y 1593): entra na palavra e sai no t1 do redator
     var ct = E("cota");
     if (ct) { var v = vida(t, T.cota, T.cotaSai); ct.style.opacity = v.op.toFixed(3); ct.style.transform = "translate(" + (COTA_DIR - ct.offsetWidth).toFixed(1) + "px," + (yFt(FT.rede) - ct.offsetHeight / 2 + v.dy).toFixed(1) + "px)"; }
-    if (noMapa) { batiscafo(t); fioDaRede(t); navio(t); }
+    if (noMapa) { batiscafo(t); fioDaRede(t); anuncio(t); navio(t); }
     // as duas pílulas do levantamento (s31), presas à tela no alto à esquerda, sobre o mar aberto ao norte (fora da fossa e das linhas)
     var m1 = E("multi"), m2 = E("usgs"), v1 = vida(t, T.multi, null), v2 = vida(t, T.usgs, null);
     if (m1) { m1.style.opacity = v1.op.toFixed(3); m1.style.transform = "translate(200px," + (190 + v1.dy).toFixed(1) + "px)"; }
@@ -1211,7 +1254,7 @@
     var m = medir(t, ["cota", "num0", "num15", "num30", "milha", "multi", "usgs", "crMapa", "crFonte"]);
     if (ANEL_C && map) { var p = map.project(ANEL_C); m.anel = [Math.round(p.x), Math.round(p.y)]; }
     var cx = function (el) { if (!el) return null; var r = el.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.top), Math.round(r.right), Math.round(r.bottom), +(+getComputedStyle(el).opacity).toFixed(2)]; };
-    m.bat = cx(IL.gBat); m.retalho = cx(IL.retalho); m.fio = cx(IL.gFio); m.navio = cx(IL.gNavio); m.pergunta = cx(PERG);
+    m.bat = cx(IL.gBat); m.retalho = cx(IL.retalho); m.fio = cx(IL.gFio); m.navio = cx(IL.gNavio); m.pergunta = cx(PERG); m.anuncio = cx(IL.gAnuncio);
     m.faixas = window.__faixas; m.brilho = brilhoAntes; m.perna = PERNA ? +PERNA.total.toFixed(2) : null;
     if (m.retalho && m.anel) m.retalhoAteAnel = Math.round(Math.hypot((m.retalho[0] + m.retalho[2]) / 2 - m.anel[0], (m.retalho[1] + m.retalho[3]) / 2 - m.anel[1]));
     if (m.bat && m.anel) m.batAteAnel = Math.round(Math.max(m.bat[0] - m.anel[0], m.anel[0] - m.bat[2], m.bat[1] - m.anel[1], m.anel[1] - m.bat[3]));

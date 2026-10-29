@@ -6,6 +6,13 @@
 <!--
 CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s04 (14,367 → 21,9 s do master; 7,533 s). Gancho, o "But".
   "When you think "deepest ocean," you think Mariana. But that's the Pacific, about nine thousand five hundred miles away."
+  ARTE-4 (mapista, lote MA, tarefa atlantico-fundo-arte-4, 29/10/2026; o lote de consertos; textos-tela bfa9e5d1). VALE SOBRE O QUE
+    ESTÁ ABAIXO: · os créditos de mapa numa pílula só, MapTiler em cima e GEBCO embaixo (a ordem do textos-tela; Sala, qualidade-1,
+    pergunta 13); a linha da MapTiler some e volta com o satélite (_condicao), fechando e abrindo a altura dela em 300 ms; · a fonte do
+    '≈ 9,500 MI', 'Source: Bongiovanni et al., 2021' (conserto 4 · item 8 e 4b), entra em 300 ms em 5,266 e fica até o fim, na pílula
+    dela, 8 px acima da dos mapas (na P0 do fim a faixa chega a 3 linhas, como o textos-tela prevê); · o 'PACIFIC' esmaece em 300 ms,
+    de 6,2 a 6,5 s, antes de o voo de volta o levar à margem (antes sumia em menos de 0,1 s). A câmera e a P0 do último quadro não
+    mudaram: window.__cameraAt(7.5) = { center: [-65.8, 19.4], zoom: 7.5507, bearing: 0, pitch: 0 }.
   Mapista, lote M1 (tarefa atlantico-fundo-arte-1), 29/10/2026: cena NOVA. O que manda: textos-tela.json b034414f (s04) no QUE e
   na grafia; regencia.json 304ad420 (s04 › beats[0] e [1]) no TEMPO e no exige; o conceito beff3d33 na direção e no fluxo (a POSE
   P0 do último quadro). Plana, em Mercator, sem globo (Sala, decisões 2 e 4).
@@ -92,8 +99,14 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s04 (14,367
   .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
     font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
     color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: nowrap; }
-  #credMapa { bottom: 24px; }
-  #credGebco { bottom: 121px; }
+  /* arte-4 (MA): os dois créditos de mapa numa pílula só, na ordem do textos-tela (MapTiler em cima, GEBCO embaixo; Sala,
+     qualidade-1, pergunta 13); a marca de mapa vai em cada linha, nunca na pílula. A linha da MapTiler some e volta com o satélite
+     (_condicao do textos-tela) fechando a altura dela; a fonte do ≈ 9,500 MI fica na pílula dela, logo acima da dos mapas */
+  .credito-pilula { position: absolute; left: var(--credito-x); bottom: 24px; max-width: 1520px; z-index: 50;
+    background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); }
+  .credito-linha { display: block; font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15;
+    letter-spacing: 0; color: var(--sec); white-space: nowrap; overflow: hidden; }
+  #credFonte { opacity: 0; visibility: hidden; }
   #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
     font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
   #erroCena[hidden] { display: none; }
@@ -113,8 +126,11 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s04 (14,367
     <div class="rotulo caixa" id="rotPacifico" data-qc-papel="rotulo">PACIFIC</div>
     <div class="rotulo" id="rotDist" data-qc-papel="rotulo">≈ 9,500 MI</div>
   </div>
-  <div id="credGebco" class="credito" data-qc-papel="credito" data-qc-credito="mapa">GEBCO Compilation Group (2026) GEBCO 2026 Grid</div>
-  <div id="credMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa"></div>
+  <div id="credFonte" class="credito" data-qc-papel="credito">Source: Bongiovanni et al., 2021</div>
+  <div id="credMapaPilula" class="credito-pilula">
+    <div id="credMapa" class="credito-linha" data-qc-papel="credito" data-qc-credito="mapa"></div>
+    <div id="credGebco" class="credito-linha" data-qc-papel="credito" data-qc-credito="mapa">GEBCO Compilation Group (2026) GEBCO 2026 Grid</div>
+  </div>
   <div id="erroCena" hidden></div>
 </div>
 <script>
@@ -148,7 +164,8 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s04 (14,367
     fossa: { entra: 2.528, dura: 0.5 },
     rotMariana: { entra: 2.5, sai: 5.933 },
     arco: { t0: 3.55, t1: 4.75, sai: 7.233, n: 160 },
-    rotPacifico: { entra: 4.133, ll: [-130.0, 0.0] },     // o Pacífico aberto, ao sul do arco e longe da pílula das Marianas
+    rotPacifico: { entra: 4.133, ll: [-130.0, 0.0], sai: 6.2 },   // o Pacífico aberto, ao sul do arco; arte-4: esmaece 6,2–6,5, antes da margem
+    credFonte: { entra: 5.266 },                          // a fonte do ≈ 9,500 MI (textos-tela, conserto 4 · item 8 e 4b), até o fim
     rotDist: { entra: 5.266, pousa: 6.488, sai: 7.233, dx: 110, dy: -150 }   // à direita do fim do arco (Porto Rico) na pose C
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
@@ -582,7 +599,8 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s04 (14,367
       mostrar(el, v * cl(naArea(l, tp, w, h) / 60, 0, 1), l, tp);
     } else mostrar(el, 0, 0, 0);
     // 'PACIFIC': sobre o Pacífico, ao sul do arco
-    var RP = CENA.rotPacifico, ep = E("rotPacifico"), vp = eo(seg(t, RP.entra, 0.3));
+    // arte-4 (MA): esmaece em 300 ms (6,2–6,5) antes de o voo de volta o levar à margem: antes sumia em < 0,1 s (qualidade-1, motion)
+    var RP = CENA.rotPacifico, ep = E("rotPacifico"), vp = eo(seg(t, RP.entra, 0.3)) * (1 - eio(seg(t, RP.sai, 0.3)));
     if (vp > 0.001) {
       var pp = map.project(RP.ll), wp = ep.offsetWidth, hp = ep.offsetHeight;
       var lp = pp.x - wp / 2, tpp = pp.y - hp / 2 + (1 - vp) * 24;
@@ -608,8 +626,22 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s04 (14,367
       if (SAT.volta != null && t >= iniVolta) v = eio(seg(t, iniVolta, 0.3));
       if (t >= fimSaida && t < iniVolta) v = 0;
     }
-    E("credMapa").style.opacity = v.toFixed(3); E("credMapa").style.visibility = v > 0.001 ? "visible" : "hidden";
+    var cm = E("credMapa");
+    if (!LINHA_CRED && E("credGebco")) LINHA_CRED = E("credGebco").offsetHeight;   // uma linha a 60 px: 69 px
+    if (cm) {
+      cm.style.opacity = v.toFixed(3); cm.style.visibility = v > 0.001 ? "visible" : "hidden";
+      // a altura da linha fecha e abre com ela (a pílula não fica com uma linha vazia em cima)
+      cm.style.height = v >= 0.999 ? "" : (v * LINHA_CRED).toFixed(2) + "px";
+    }
+    // a fonte do ≈ 9,500 MI: entra em 300 ms com o número e fica até o fim, na pílula dela, 8 px acima da dos mapas
+    var cf = E("credFonte"), pm = E("credMapaPilula");
+    if (cf && pm) {
+      var vf = eo(seg(t, CENA.credFonte.entra, 0.3));
+      cf.style.opacity = vf.toFixed(3); cf.style.visibility = vf > 0.001 ? "visible" : "hidden";
+      cf.style.bottom = (24 + pm.offsetHeight + 8).toFixed(2) + "px";
+    }
   }
+  var LINHA_CRED = 0;
 
   var opAntes = {}, visAntes = null;
   function opac(id, prop, v) { v = +(+v).toFixed(3); var k = id + "|" + prop; if (opAntes[k] === v) return; map.setPaintProperty(id, prop, v); opAntes[k] = v; }

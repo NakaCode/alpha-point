@@ -25,6 +25,10 @@
            25 %: a 25 % a ilha de ~160 px some; vai no relato) em 500 ms, e a pílula "Anegada" logo acima dela, no mar entre a ilha e
            a fossa (textos-tela: em "an island"; a voz diz o nome no 1º quadro da s43). Nada em --tensao.
 
+  ARTE-4 (o lote de consertos; a Sala, qualidade-1, s42): a fossa leste passa a 40 % (o --territorio-protagonista-com-contexto-cor
+    inteiro, a regra da fossa como contexto, como na s39; era 70 % dele, 28 %), o contorno --tinta a 60 % fica; e Anegada ganha o
+    CONTORNO DE DIVISA da série (--fronteira-cor 5 px sobre --fronteira-contorno-cor 12 px, identidade §6), aceso com a tinta
+    --neutro a 40 % em "island" (500 ms). O "a 70 %" do beat acima é a 1ª versão.
   ELEMENTOS (identidade §4.2, conta minha, não portão): a fossa leste, Anegada com o nome = 2. Herói: nenhum (data-qc-sem-heroi).
     As Ilhas Virgens Britânicas não levam tinta (sem nome no quadro). Matiz: só o --destaque (+ --neutro).
   CRÉDITO a 60 px (o :root logo depois do tokens.css): '© MapTiler © OpenStreetMap contributors' e 'GEBCO Compilation Group (2026)
@@ -429,10 +433,14 @@
   // ═══ fim do motor ═══
 
   // ═══ AS PEÇAS POR CIMA DO MAPA (lote M5: s39 e s42), função de t; a cor vem dos papéis do tokens.css (corDe), nunca de hex ═══
-  var COR = null;
+  var COR = null, DIVISA = { w: 5, sobW: 12 };
   function cores() {
     if (COR) return COR;
-    COR = { tinta: rgbaDe(corDe("--tinta")), neutro: rgbaDe(corDe("--neutro")), prot: rgbaDe(corDe("--territorio-protagonista-com-contexto-cor")) };
+    COR = { tinta: rgbaDe(corDe("--tinta")), neutro: rgbaDe(corDe("--neutro")), prot: rgbaDe(corDe("--territorio-protagonista-com-contexto-cor")),
+      div: rgbaDe(corDe("--fronteira-cor")), divSob: rgbaDe(corDe("--fronteira-contorno-cor")) };
+    // (arte-4) as espessuras da divisa, lidas do tokens.css (px)
+    var cs = getComputedStyle(document.documentElement);
+    DIVISA = { w: parseFloat(cs.getPropertyValue("--fronteira-espessura")) || 5, sobW: parseFloat(cs.getPropertyValue("--fronteira-contorno-espessura")) || 12 };
     return COR;
   }
   function poligonos(slug) {
@@ -560,7 +568,8 @@
     if (!map || !mapaCarregado) return;
     var c = cores();
     // a metade leste da fossa, acesa fraca, com o preenchimento esmaecendo junto do corte declarado e o contorno sem ele
-    var aF = 0.7 * eo(seg(t, T.fossa, 0.4));
+    // (arte-4; a Sala, qualidade-1: a fossa como contexto vai a 40 %, a regra da série, como na s39; era 0,7 × 40 % = 28 %)
+    var aF = eo(seg(t, T.fossa, 0.4));
     if (aF > 0) {
       var k = tmp(); caminhoPolis(k, LESTE); k.fillStyle = css(c.prot); k.fill("evenodd");
       var xc = P([CORTE, 19.4]).x; esmaecer(k, xc, 0, xc + 260, 0, [[0, 0], [1, 1]]);
@@ -571,6 +580,15 @@
     // Anegada em --neutro, em "island"
     var aI = eo(seg(t, T.ilha, 0.5));
     if (aI > 0) { ctx.save(); ctx.globalAlpha = aI; caminhoPolis(ctx, ANEG); ctx.fillStyle = css(c.neutro, 0.40); ctx.fill("evenodd"); ctx.restore(); }
+    // (arte-4; a Sala, qualidade-1; o laudo › acessibilidade) Anegada com o CONTORNO DE DIVISA da série (identidade §6, "A divisa
+    // mais grossa"): --fronteira-cor (branco a 70 %) de --fronteira-espessura (5 px) sobre --fronteira-contorno-cor (escuro a 60 %) de
+    // --fronteira-contorno-espessura (12 px), aceso junto com a tinta, em "island" (500 ms): a ilha "acende" pelo contorno
+    if (aI > 0) {
+      ctx.save(); ctx.globalAlpha = aI; ctx.lineJoin = "round"; ctx.lineCap = "round";
+      caminhoPolis(ctx, ANEG); ctx.lineWidth = DIVISA.sobW; ctx.strokeStyle = css(c.divSob); ctx.stroke();
+      ctx.lineWidth = DIVISA.w; ctx.strokeStyle = css(c.div); ctx.stroke();
+      ctx.restore();
+    }
   }
   function pecas(t) {
     var el = E("rotAneg");

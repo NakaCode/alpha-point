@@ -6,6 +6,13 @@
 <!--
 CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s02 (3,5 → 8,533 s do master; 5,033 s). PICO do gancho.
   "lies the deepest point in the Atlantic Ocean. It's more than five miles down."
+  ARTE-4 (mapista, lote MA, tarefa atlantico-fundo-arte-4, 29/10/2026; o lote de consertos; textos-tela bfa9e5d1). VALE SOBRE O QUE
+    ESTÁ ABAIXO: · os créditos de mapa numa pílula só, MapTiler em cima e GEBCO embaixo (a ordem do textos-tela; Sala, qualidade-1,
+    pergunta 13), INTEIROS do quadro 9 (0,3 s, o 1º com mapa) ao fim; de 0 a 0,267 a foto de s01 cobre o quadro e a faixa fica vazia
+    (conserto 4 · item 9b; identidade §4.2); a fonte do 27,487 na pílula dela, logo acima (bottom 190); · a 2ª linha da pílula do número
+    é 'MORE THAN 5 MI DEEP' (conserto 5): a pílula fica presa pela borda DIREITA a 90 px do anel, com o texto à direita, e cresce para a
+    esquerda; para ela caber na margem de 200, o anel vai a x 1800 (anelTela; instrução 5: x ≥ 1.760), e o quadro do voo inteiro anda
+    com ele; · '≈ 83 MI · Aguadilla' em caixa normal (conserto 5, a regra CAIXA). O resto da cena não mudou.
   Mapista, lote M1 (tarefa atlantico-fundo-arte-1), 29/10/2026: cena NOVA. O que manda: textos-tela.json b034414f (s02) no QUE e
   na grafia; regencia.json 304ad420 (s02 › beats[0] e [1], _gancho, _para_o_redator_e_a_arte) no TEMPO e no exige; o conceito
   beff3d33 na direção (a foto vira a própria ilha; o número desce como um prumo). Plana, sem relevo (Sala, decisão 4).
@@ -43,7 +50,7 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s02 (3,5 �
       · 1,25: o trecho mais fundo (fossa-porto-rico-trecho-mais-fundo, a isóbata de 8.000 m da GEBCO) acende em 500 ms, --destaque a
         85 % (--territorio-cor) com o contorno --tinta de 6 px, SEM nome; o anel (ponto-mais-fundo-atlantico, 19,712°N 67,311°W) entra (300 ms);
       · 1,25–1,85: a linha das 83 mi se traça da costa de Aguadilla (aguadilla-costa-ponto, F04) ao anel, nunca de San Juan;
-        1,733 ('Atlantic'): '≈ 83 MI · AGUADILLA' à direita do meio da linha (o rótulo entra com a linha já na tela).
+        1,733 ('Atlantic'): '≈ 83 MI · Aguadilla' à direita do meio da linha (o rótulo entra com a linha já na tela).
     b1 (2,8–5,033; "It's more than five miles down."):
       · a mesma câmera, sem corte: depois de 2,6, a aproximação lenta com o anel parado na tela (zoom 8,55 → 8,66);
       · 2,8 ('It's'): a pílula do número nasce à esquerda do anel e DESCE 330 px contando de 0 a 27,487 FT, e pousa em 3,467
@@ -52,7 +59,7 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s02 (3,5 �
         número, sem caixa vazia);
         os dois até o corte (27,487 FT: 2,23 s no ar);
       · o anel pulsa duas vezes (2,82 e 3,82; 1,2 s cada) e para.
-  ELEMENTOS (teto 6): anel, trecho aceso, linha das 83 mi (com o ponto da costa), '≈ 83 MI · AGUADILLA' e a pílula do número = 5.
+  ELEMENTOS (teto 6): anel, trecho aceso, linha das 83 mi (com o ponto da costa), '≈ 83 MI · Aguadilla' e a pílula do número = 5.
   CRÉDITOS (60 px, var(--fs-credito), o override do Atlântico; identidade §4.1): '© MapTiler © OpenStreetMap contributors' e
     'GEBCO Compilation Group (2026) GEBCO 2026 Grid' a cena toda (cada linha com data-qc-credito="mapa" no próprio elemento: as duas
     são de mapa, a base e o fundo); 'Source: Bongiovanni et al., 2021' de 2,8 ao fim (a fonte do 27,487; crédito de dado, sem a marca
@@ -86,6 +93,9 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s02 (3,5 �
     letter-spacing: 0; color: var(--tinta); font-variant-numeric: var(--numeros); }
   /* a 2ª linha cresce sem corte (overflow visível): a caixa da pílula abre em 300 ms e a letra só aparece com a caixa já aberta */
   .rotulo .linha2 { display: block; overflow: visible; }
+  #rotFundo { text-align: right; }
+  #rotFundo #rotFundoNum { display: inline-block; }
+  #rotFundo .linha2 { margin-left: auto; }
   .rotulo .linha2 span { display: block; padding-top: 24px; white-space: nowrap; }
   /* a linha das 83 mi e o anel (SVG): --tinta sobre o contorno escuro; o anel em --destaque com o halo do piloto */
   .cota-sob { fill: none; stroke: var(--fronteira-contorno-cor); stroke-linecap: round; }
@@ -99,9 +109,13 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s02 (3,5 �
   .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
     font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
     color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: nowrap; }
-  #credMapa { bottom: 24px; }
-  #credGebco { bottom: 121px; }
-  #credFonte { bottom: 218px; opacity: 0; visibility: hidden; }
+  /* arte-4 (MA): os dois créditos de mapa numa pílula só, na ordem do textos-tela (MapTiler em cima, GEBCO embaixo; Sala,
+     qualidade-1, pergunta 13); a marca de mapa vai em cada linha, nunca na pílula. A fonte do 27,487 fica na pílula dela, acima */
+  .credito-pilula { position: absolute; left: var(--credito-x); bottom: 24px; max-width: 1520px; z-index: 50;
+    background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); opacity: 0; visibility: hidden; }
+  .credito-linha { display: block; font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15;
+    letter-spacing: 0; color: var(--sec); white-space: nowrap; }
+  #credFonte { bottom: 190px; opacity: 0; visibility: hidden; }
   #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
     font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
   #erroCena[hidden] { display: none; }
@@ -123,12 +137,14 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s02 (3,5 �
     </g>
   </svg>
   <div id="rotulos">
-    <div class="rotulo" id="rot83" data-qc-papel="rotulo">≈ 83 MI · AGUADILLA</div>
-    <div class="rotulo" id="rotFundo" data-qc-papel="rotulo"><span id="rotFundoNum">0 FT</span><span class="linha2" id="rotFundoL2"><span id="rotFundoL2t">MORE THAN 5 MI</span></span></div>
+    <div class="rotulo" id="rot83" data-qc-papel="rotulo">≈ 83 MI · Aguadilla</div>
+    <div class="rotulo" id="rotFundo" data-qc-papel="rotulo"><span id="rotFundoNum">0 FT</span><span class="linha2" id="rotFundoL2"><span id="rotFundoL2t">MORE THAN 5 MI DEEP</span></span></div>
   </div>
   <div id="credFonte" class="credito" data-qc-papel="credito">Source: Bongiovanni et al., 2021</div>
-  <div id="credGebco" class="credito" data-qc-papel="credito" data-qc-credito="mapa">GEBCO Compilation Group (2026) GEBCO 2026 Grid</div>
-  <div id="credMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa"></div>
+  <div id="credMapaPilula" class="credito-pilula">
+    <div id="credMapa" class="credito-linha" data-qc-papel="credito" data-qc-credito="mapa"></div>
+    <div id="credGebco" class="credito-linha" data-qc-papel="credito" data-qc-credito="mapa">GEBCO Compilation Group (2026) GEBCO 2026 Grid</div>
+  </div>
   <div id="erroCena" hidden></div>
 </div>
 <script>
@@ -147,13 +163,14 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s02 (3,5 �
       cantos: { tl: [-67.892293, 18.944206], tr: [-65.110432, 18.945006], bl: [-67.801962, 17.310094] },
       retSai: [0.45, 1.0], ilhaSai: [1.15, 1.6] },
     // a câmera: K0 = o quadro da foto (a foto a 0,80×), K2 = o anel em (1520, 830) no zoom 8,55; o recuo até z ~7,78 no meio (apice-s02.py)
-    cam: { voo: [0, 2.6], z0: 10.0, z2: 8.55, recuo: 1.4, anelTela: [1520, 830], deriva: { t0: 2.6, ramp: 0.5, vel: 0.05 } },
+    cam: { voo: [0, 2.6], z0: 10.0, z2: 8.55, recuo: 1.4, anelTela: [1800, 830], deriva: { t0: 2.6, ramp: 0.5, vel: 0.05 } },
     trecho: { entra: 1.25, dura: 0.5, preench: 0.85 },
     anel: { entra: 1.25, pulsos: [2.82, 3.82] },
     linha83: { t0: 1.25, t1: 1.85 },
     rot83: { entra: 1.733 },
     fundo: { nasce: 2.8, pousa: 3.467, desce: 330, l2: 3.467, dx: -90, dy: 100 },
-    credFonte: 2.8
+    credFonte: 2.8,
+    credMapa: 0.3        // o quadro 9: o 1º com mapa (textos-tela, conserto 4 · item 9b)
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -592,17 +609,18 @@ CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s02 (3,5 �
     l2.style.width = (wNum + Math.max(0, wL2 - wNum) * Math.min(1, v2 / 0.6)).toFixed(2) + "px";
     l2t.style.opacity = (v2 >= 1 ? 1 : Math.max(0, (v2 - 0.6) / 0.4)).toFixed(3);
     E("rotFundoL2t").style.transform = "translateY(" + ((1 - v2) * 24).toFixed(2) + "px)";
-    // presa pela borda ESQUERDA da largura final (a das duas linhas): o número não anda para o lado quando a pílula cresce
-    var wL2agora = parseFloat(l2.style.width) || 0;
-    var w = el.offsetWidth - Math.max(wNum, wL2agora) + Math.max(wNum, wL2);
-    var l = pa.x + F.dx - w, tp = pa.y + F.dy + F.desce * u;
+    // arte-4 (MA): presa pela borda DIREITA (a F.dx do anel), com o texto à direita: o número não anda para o lado quando a pílula
+    // cresce, e cresce para a esquerda (a 2ª linha, MORE THAN 5 MI DEEP, mede ~1.390 px; a margem de 200 pede o anel a x ≥ 1.760)
+    var l = pa.x + F.dx - el.offsetWidth, tp = pa.y + F.dy + F.desce * u;
     mostrar(el, vin, l, tp);
   }
 
   // ═══ OS CRÉDITOS (fora da câmera: o de mapa inteiro do 1º ao último quadro) ═══════════════════════════
   function aplicarCreditos(t) {
-    E("credMapa").style.opacity = "1"; E("credMapa").style.visibility = "visible";
-    E("credGebco").style.opacity = "1"; E("credGebco").style.visibility = "visible";
+    // o crédito de mapa já está INTEIRO no 1º quadro em que o mapa aparece (identidade §4.2): o quadro 9 (0,3 s); antes, a foto de
+    // s01 cobre o quadro inteiro e a faixa fica vazia (textos-tela, conserto 4 · item 9b)
+    var vm = t >= CENA.credMapa - 0.015 ? 1 : 0, pm = E("credMapaPilula");
+    if (pm) { pm.style.opacity = String(vm); pm.style.visibility = vm ? "visible" : "hidden"; }
     var v = eo(seg(t, CENA.credFonte, 0.3));
     E("credFonte").style.opacity = v.toFixed(3); E("credFonte").style.visibility = v > 0 ? "visible" : "hidden";
   }

@@ -19,6 +19,13 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
   'December' 20,492 · 'multibeam' 25,212 · 'on' 26,567 · 'Pressure' 27,692 · 'Drop.' 28,092–28,387 · 'The' 29,017 · 'each' 31,852 ·
   'five' 32,342 · 'oceans.' 32,532–32,957.
 
+  ARTE-4 (atlantico-fundo-arte-4, o lote de consertos, lote ME, mapista; a qualidade-2, `motion` 6). Só isto mudou:
+    1. b5: a foto do Pressure Drop não levanta mais (era 28,65–29,0): o push-in termina em 28,6 e ela fica parada até o corte seco
+       para o mapa em 29,0, com a pílula e o crédito (os 250 ms de repouso antes do corte mesa → mapa, identidade §4.4);
+    2. b4: a deriva no anel depois do voo (23,3 → 29,0) anda ~10 px/s no rumo do voo (o anel de x 1700 a 1760 e de z 9,00 a 9,08),
+       em vez de ~1,3 px/s (antes: a 1690 e z 9,06), para o mapa não ficar parado ~3 s no fim do b4. O b3 (o respiro) fica.
+  A instrução 5 (nada novo de 13,767 a 18,267 s; o alfinete e os créditos voltam com o mapa) continua como estava.
+
   UMA VIAGEM (conceito › fluxo): mapa → mesa → mapa → mapa → mesa → mapa, num arquivo só; as duas mesas são cortes de regime POR
   DENTRO. Mapa plano, norte para cima e sem órbita (a decisão da série, pedido comum da arte-2); a câmera nunca para.
 
@@ -68,7 +75,7 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
       (Richard Varcoe / Caladan Oceanic, 17/12/2018; 2.400 × 1.349, impressa a 1,00 ×: a 1,4 × ela teria 1.889 px de altura, mais que a
       área segura; o centro em y 1.060 e o push-in curto, para as fitas não passarem da margem de cima) pousa, a luz atrás do navio, push-in rumo ao navio; a pílula 'Pressure Drop' (navio: caixa normal) em 26,867, no céu
       da foto; sem aviso do ano (2018 = o ano do fato); o crédito 'Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0' (o
-      credito_na_tela do veredito) do 1º ao último quadro da foto. A foto levanta de 28,65 a 29,0, e o mapa volta por corte em 29,0.
+      credito_na_tela do veredito) do 1º ao último quadro da foto. A foto fica parada de 28,6 (o fim do push-in) ao corte em 29,0 (arte-4: sem levantar, os 250 ms de repouso), e o mapa volta por corte.
     b6 29,0–33,567 (s48; mapa): a câmera RECUA à VISTA DO MUNDO em Mercator (2,6 s, van Wijk; sem globo: Sala, decisão 2) e deriva; a
       fossa sai no começo do recuo; em 31,834 ('each') 'FIVE OCEANS' (presa à tela, no alto à esquerda: é uma conta, não um lugar); em
       'five' (32,342) os cinco oceanos acendem um a um, a cada 0,2 s, em --neutro (cada um sobe a 40 % em 250 ms e assenta em 25 %: o
@@ -240,7 +247,7 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
     // b4 (o voo com o leque)
     voo0: 20.3, voo1: 23.3, five: 20.467, leque0: 20.3, leque1: 23.6,
     // b5 (a mesa do Pressure Drop)
-    mesa2: 26.567, pill2: 26.867, push2a: 27.117, push2b: 28.6, lev2: 28.65, volta2: 29.0,
+    mesa2: 26.567, pill2: 26.867, push2a: 27.117, push2b: 28.6, lev2: null, volta2: 29.0,   // arte-4: sem levantar; a foto fica parada de 28,6 ao corte (os 250 ms de repouso, identidade §4.4)
     // b6 (o mundo)
     mundo0: 29.0, mundo1: 31.6, fossaSai: 29.0, oceanosRot: 31.834, oceanos0: 32.342, oceanosPasso: 0.2
   };
@@ -250,7 +257,7 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
     descida: { z0: 7.9, z1: 9.3, z2: 9.4, a0: [1560, 1000], a2: [1540, 1000] },     // b0: presa ao alfinete
     recuo: { z: 8.55, a: [2000, 1250] },                                              // b1: o alfinete e o anel no mesmo quadro
     respiro: { z: 8.60, a: [1985, 1258] },                                            // b3: a deriva quase parada até 20,3
-    anel: { z: 9.0, a: [1700, 1000] }, anelFim: { z: 9.06, a: [1690, 1006] },         // b4: o voo até o anel e a deriva
+    anel: { z: 9.0, a: [1700, 1000] }, anelFim: { z: 9.08, a: [1760, 1012] },         // b4: o voo até o anel e a deriva (arte-4: ~10 px/s, no rumo do voo)
     mundo: { c: [-30.0, 8.0], z: 2.95 }, mundoFim: { c: [-33.0, 8.0], z: 3.0 },       // b6: a vista do mundo
     // o rumo do leque: do lado leste da fossa (ao norte do alfinete, sobre a fossa) até o anel
     rumoIni: [-65.45, 19.48],
@@ -783,12 +790,12 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
     el.style.opacity = p.toFixed(3);
     el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + (lado === "e" ? -6 : 5) + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
   }
-  // uma foto: no ar de t0 a tFim (pousa em 0,55 s, levanta de tLev a tFim); devolve se está no ar
+  // uma foto: no ar de t0 a tFim (pousa em 0,55 s, levanta de tLev a tFim; tLev null = não levanta: fica parada até o corte em tFim); devolve se está no ar
   function umaFoto(t, n, F, t0, tLev, tFim) {
     var on = t >= t0 && t < tFim;
     var g = E("fGrupo" + n), s = E("fSombra" + n);
     if (!on) { por(g, F.cx, F.cy, F.w, F.h, F.rot, 1, 0); if (s) s.style.opacity = "0"; return false; }
-    var a = pousoFoto(t, t0, F), l = levantar(t, tLev, tFim), sp = a.p * (1 - l.p);
+    var a = pousoFoto(t, t0, F), l = tLev == null ? { k: 1, p: 0, op: 1 } : levantar(t, tLev, tFim), sp = a.p * (1 - l.p);
     por(s, F.cx, F.cy - a.dy + lerp(64, 12, sp), F.w, F.h, a.rot, lerp(1.05, 1.0, sp) * a.k * l.k, lerp(0.35, 0.80, sp) * l.op);
     por(g, F.cx, F.cy - a.dy, F.w, F.h, a.rot, a.k * l.k, l.op);
     fita(E("fFe" + n), t, t0 + 0.2, "e"); fita(E("fFd" + n), t, t0 + 0.32, "d");

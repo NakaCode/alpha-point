@@ -22,7 +22,7 @@
   19,35, z 8,40; o fim (9,833) está 2 % além de B1 no mesmo caminho.
     · b0 0–4,967 · o mapa composto à esquerda, o anel do ponto mais fundo a oeste (fraco, 75 %, sem pulso) e o medidor à direita, com
       só parte dos números ("0 FT", "15,000", "30,000 FT"). 'there' (0,728): o ALFINETE do Challenger cai em 19°42'N 65°07'W, longe a
-      leste (do lado do medidor), e "HMS CHALLENGER" (sem ano, N52) entra em 0,7, 342 px ACIMA da ponta (fora da fossa: no b1 a borda norte dela não toca a pílula), com um fio --tinta até a cabeça do alfinete. 'depth' 1,398 → 3,033: o FIO DE SONDAGEM
+      leste (do lado do medidor), e "HMS Challenger" (sem ano, N52) entra em 0,7, 342 px ACIMA da ponta (fora da fossa: no b1 a borda norte dela não toca a pílula), com um fio --tinta até a cabeça do alfinete. 'depth' 1,398 → 3,033: o FIO DE SONDAGEM
       desce pelo medidor com o peso e a marca --neutro e PARA no contato (o mesmo fio da s15: rampa de 0,35 s, velocidade constante,
       sem ultrapassar); em 3,033 ('twenty-three') a marca crava em y 1382,5 e a pílula "23,250 FT / 3,875 FATHOMS" entra com o líder,
       e "Source: International Hydrographic Review, 1936" entra na faixa.
@@ -38,6 +38,23 @@
   ELEMENTOS (máx. 4): b0 = medidor, marcador, alfinete com a pílula e o fio, anel; b1 = a fossa com o nome, o alfinete, o anel.
   Créditos: as duas linhas do mapa (MapTiler e GEBCO; a fossa deriva da GEBCO e fica coberta) do 1º ao último quadro, a 60 px; a fonte
   da sondagem de 3,033 a 5,533. A MÃO v003 NÃO ENTRA; o fio segue o método do ilustrador (ver s15).
+
+  ARTE-4, LOTE MC (o lote de consertos, 29/10/2026; textos-tela bfa9e5d1…, regência 9d0ab49f…): três consertos, o resto como estava.
+    · "HMS Challenger" em caixa normal (a regra CAIXA; conserto 4). Mesmos t0/t1.
+    · A DERIVA no ritmo da s15 (a decisão da Sala sobre a qualidade-1, M2; o laudo, motion): a câmera ganha uma deriva própria, a
+      composição da s15 (push-in de 0,030 de zoom/s e panorâmica para leste de 0,015°/s), somada ao caminho B0 → B1 de antes (a
+      corrida, com d = 0,012, não muda) e com deslocamento ZERO no último quadro: a pose final é a de antes (a fossa inteira no
+      quadro). Medida na projeção (_tmp/arte-4/MC/deriva2.py): 18 px/s na mediana do quadro e 34 px/s na janela de mar
+      x 200–1200, y 1000–1700, como a s15 (18 e 34), contra 5 e 2 antes; o "corrida.d ~0,03" dava 12 e 5 (a panorâmica e o
+      zoom-out se anulam do lado esquerdo), e por isso a deriva é a composição da s15, e não um d maior. A pose do 1º quadro muda
+      (z 8,834 → 8,539, centro −65,629 → −65,776): o anel passa de x ~828 a ~1108; o alfinete fica em x ~2270. Corte seco com a
+      s17, como antes.
+    · A COSTA NORTE DEMARCADA (Sala, qualidade-1, M2: "um traço --tinta fino, sem acender a ilha"; identidade §5, "A região falada,
+      sempre demarcada"): a linha costa-norte-pr-mc, DECLARADA e derivada só da camada do disco porto-rico (Census 2025,
+      1:500k, domínio público, sem crédito): o lado norte do anel da ilha principal, do vértice mais a oeste (67,27122°W) ao mais a
+      leste (65,59035°W), 258,7 km, simplificado a 0,001° (263 vértices). --tinta de 4 px sobre o contorno escuro de 10 px, no
+      canvas do traço, presa ao mapa, traçada de oeste a leste em "parallel" (7,538, 0,8 s) e no ar até o fim. Sem rótulo (o
+      textos-tela não pede). ELEMENTOS no b1: a fossa com o nome, o alfinete, o anel e a costa (4).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>
@@ -55,6 +72,11 @@
 <script src="../_media/geo/sondagem-challenger.js"></script>
 <script src="../_media/geo/ponto-mais-fundo-atlantico.js"></script>
 <script src="../_media/geo/fossa-porto-rico.js"></script>
+<!-- arte-4, lote MC: a costa norte da ilha, DECLARADA e derivada só da camada do disco porto-rico (Census 2025, 1:500k;
+     out/atlantico-fundo/_tmp/arte-4/MC/costa_norte.py): -->
+<script>window.__GEO = window.__GEO || {}; window.__GEO_META = window.__GEO_META || {};
+window.__GEO_META["costa-norte-pr-mc"] = {"fonte": "Derivada pelo mapista (lote MC da arte-4, 29/10/2026) de porto-rico (U.S. Census Bureau, Cartographic Boundary Files 2025, 1:500k; sha256 34112f863742…): o lado norte do anel da ilha principal, do vértice mais a oeste ao mais a leste, simplificado a 0,001°", "licenca": "Domínio público (U.S. Census Bureau: obra federal dos EUA, 17 U.S.C. §105) — sem crédito obrigatório", "exige_credito": false, "credito_tela": null};
+window.__GEO["costa-norte-pr-mc"] = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"rotulo":"Puerto Rico north coast","papel":"linha DECLARADA (derivada pelo mapista, lote MC da arte-4, 29/10/2026): o trecho do anel da ilha principal da camada porto-rico (Census 2025, 1:500k) do vértice mais a oeste ao mais a leste, pelo lado norte; simplificada a 0,001°"},"geometry":{"type":"LineString","coordinates":[[-67.27122,18.36251],[-67.26806,18.36702],[-67.25993,18.37051],[-67.22803,18.37801],[-67.19396,18.39307],[-67.18834,18.40048],[-67.1637,18.41266],[-67.15729,18.41784],[-67.15539,18.42438],[-67.15682,18.43994],[-67.16066,18.44772],[-67.16181,18.45482],[-67.1687,18.46361],[-67.16952,18.47495],[-67.16621,18.48464],[-67.16328,18.48808],[-67.15363,18.49098],[-67.15224,18.49548],[-67.14528,18.50272],[-67.1378,18.50757],[-67.11451,18.51298],[-67.10635,18.51198],[-67.09865,18.51536],[-67.09047,18.51602],[-67.07969,18.51343],[-67.07411,18.51478],[-67.06873,18.51294],[-67.05129,18.51501],[-67.02247,18.50836],[-67.01941,18.51097],[-66.97567,18.49111],[-66.97146,18.49254],[-66.95526,18.48866],[-66.94769,18.4915],[-66.94081,18.49114],[-66.91998,18.48506],[-66.90165,18.48327],[-66.89053,18.48569],[-66.88912,18.48726],[-66.87363,18.48865],[-66.86631,18.4912],[-66.85843,18.48985],[-66.84976,18.49076],[-66.83711,18.48707],[-66.82656,18.4869],[-66.8237,18.49088],[-66.7896,18.49292],[-66.78105,18.49134],[-66.74962,18.4769],[-66.73926,18.47396],[-66.73271,18.47346],[-66.72101,18.47554],[-66.70991,18.47195],[-66.70414,18.47293],[-66.70018,18.4772],[-66.70016,18.48272],[-66.68383,18.48116],[-66.6729,18.48942],[-66.66886,18.48773],[-66.64533,18.48886],[-66.64129,18.49247],[-66.62144,18.49308],[-66.61904,18.49145],[-66.60763,18.49061],[-66.5909,18.48548],[-66.57854,18.48435],[-66.56886,18.4863],[-66.56588,18.48535],[-66.56298,18.4864],[-66.56123,18.48995],[-66.53472,18.48106],[-66.52533,18.48413],[-66.51192,18.47664],[-66.50845,18.47737],[-66.50216,18.47515],[-66.4994,18.47714],[-66.48395,18.47331],[-66.48165,18.47109],[-66.46636,18.46902],[-66.45447,18.46925],[-66.44948,18.47105],[-66.4428,18.47698],[-66.44093,18.4848],[-66.43831,18.48593],[-66.41227,18.48988],[-66.4013,18.48916],[-66.39827,18.49258],[-66.38152,18.4829],[-66.37806,18.48352],[-66.37842,18.48819],[-66.36478,18.48479],[-66.35564,18.48586],[-66.34326,18.48103],[-66.34038,18.4812],[-66.33833,18.48456],[-66.33546,18.48455],[-66.32055,18.47566],[-66.31721,18.47624],[-66.31588,18.47443],[-66.31024,18.47686],[-66.30307,18.47533],[-66.29903,18.47736],[-66.28961,18.47197],[-66.28447,18.47202],[-66.27449,18.47916],[-66.26956,18.48007],[-66.24206,18.46853],[-66.22012,18.46609],[-66.19397,18.4658],[-66.18835,18.4679],[-66.18426,18.47564],[-66.18305,18.47382],[-66.18556,18.46677],[-66.1837,18.45947],[-66.17302,18.45095],[-66.16208,18.4507],[-66.15263,18.45418],[-66.14462,18.46242],[-66.14054,18.46433],[-66.13756,18.45802],[-66.13917,18.45549],[-66.13595,18.44766],[-66.12875,18.44256],[-66.12079,18.44132],[-66.11252,18.44496],[-66.11084,18.4433],[-66.11286,18.4396],[-66.11036,18.43685],[-66.11088,18.42848],[-66.10776,18.42752],[-66.08568,18.44001],[-66.08193,18.43952],[-66.08166,18.44383],[-66.08729,18.44838],[-66.09343,18.44696],[-66.10118,18.45176],[-66.10655,18.45632],[-66.10454,18.45964],[-66.10061,18.45965],[-66.10046,18.4609],[-66.10444,18.46286],[-66.11528,18.4633],[-66.11591,18.46046],[-66.1176,18.46064],[-66.11952,18.46506],[-66.12431,18.46808],[-66.12403,18.47156],[-66.09851,18.46598],[-66.08852,18.4678],[-66.08619,18.46708],[-66.08275,18.46182],[-66.06008,18.4543],[-66.05366,18.45449],[-66.04754,18.45238],[-66.0389,18.45427],[-66.03649,18.44935],[-66.02315,18.44389],[-66.01616,18.44585],[-66.01118,18.4436],[-66.00111,18.44701],[-65.99647,18.45031],[-65.99231,18.46017],[-65.99061,18.46036],[-65.98119,18.45645],[-65.97934,18.45945],[-65.97602,18.45682],[-65.95882,18.45125],[-65.92588,18.44499],[-65.91707,18.4446],[-65.90778,18.44681],[-65.90498,18.44875],[-65.90518,18.45268],[-65.89711,18.45107],[-65.8955,18.44753],[-65.8775,18.4376],[-65.8536,18.43529],[-65.84264,18.43118],[-65.83698,18.43205],[-65.83365,18.43012],[-65.83028,18.42413],[-65.82157,18.41924],[-65.81933,18.41243],[-65.81478,18.40939],[-65.80221,18.41151],[-65.79209,18.42157],[-65.78958,18.42127],[-65.79056,18.41594],[-65.79881,18.40791],[-65.7961,18.40444],[-65.78437,18.40806],[-65.7741,18.41436],[-65.77043,18.41311],[-65.76948,18.40995],[-65.77243,18.40569],[-65.77267,18.40141],[-65.76692,18.39816],[-65.76242,18.39766],[-65.75965,18.39241],[-65.7431,18.38037],[-65.73583,18.38069],[-65.73026,18.38379],[-65.72841,18.38783],[-65.72352,18.38936],[-65.72103,18.38732],[-65.72043,18.38206],[-65.71668,18.38037],[-65.71434,18.37634],[-65.70864,18.3718],[-65.69985,18.36774],[-65.68934,18.3665],[-65.68212,18.36767],[-65.67496,18.3626],[-65.66712,18.36148],[-65.65392,18.36525],[-65.64769,18.3756],[-65.64346,18.37847],[-65.63987,18.37676],[-65.64089,18.3729],[-65.63848,18.36942],[-65.63321,18.36968],[-65.6274,18.37613],[-65.62686,18.38072],[-65.62349,18.38375],[-65.62345,18.38677],[-65.61844,18.3875],[-65.61798,18.38489],[-65.61519,18.38388],[-65.61513,18.38115],[-65.61742,18.37916],[-65.61756,18.37314],[-65.62005,18.36616],[-65.62439,18.36486],[-65.6242,18.3586],[-65.62842,18.35322],[-65.63596,18.34796],[-65.63609,18.34466],[-65.63117,18.34241],[-65.63406,18.33821],[-65.62677,18.33173],[-65.62915,18.31118],[-65.62587,18.30855],[-65.62529,18.30367],[-65.62614,18.29954],[-65.6358,18.29156],[-65.63625,18.28844],[-65.63269,18.28047],[-65.6256,18.28085],[-65.62562,18.27941],[-65.62866,18.27842],[-65.62935,18.27619],[-65.62763,18.2726],[-65.63137,18.26826],[-65.63123,18.265],[-65.62518,18.25655],[-65.61655,18.25381],[-65.61084,18.26034],[-65.60641,18.26176],[-65.60503,18.26006],[-65.61012,18.25554],[-65.60943,18.25119],[-65.60355,18.2432],[-65.60231,18.23703],[-65.59035,18.22815]]}}]};</script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
@@ -204,7 +226,7 @@
     <div class="eixo-num" data-qc-papel="eixo" id="num0" style="left: 3310px; top: 220px;">0 FT</div>
     <div class="eixo-num" data-qc-papel="eixo" id="num15000" style="left: 3310px; top: 970px;">15,000</div>
     <div class="eixo-num" data-qc-papel="eixo" id="num30000" style="left: 3310px; top: 1720px;">30,000 FT</div>
-    <div class="rotulo liso" id="rotChal" data-qc-papel="rotulo">HMS CHALLENGER</div>
+    <div class="rotulo liso" id="rotChal" data-qc-papel="rotulo">HMS Challenger</div>
     <div class="rotulo liso" id="rotFossa" data-qc-papel="rotulo">Puerto Rico Trench</div>
     <div class="marcador" id="marcaChal"><span class="linha" data-qc-papel="rotulo">23,250 FT</span><span class="linha" data-qc-papel="rotulo">3,875 FATHOMS</span></div>
     <canvas id="tintaRotulos" width="3840" height="2160"></canvas>
@@ -229,6 +251,12 @@
     pernas: [ { t0: 0, t1: 9.833, de: "B0", para: "B1", tipo: "h" } ],
     // a corrida: s(t) = d·t + eio((t − 5,133)/3); B0 em s(5,133), B1 em s(8,133)
     corrida: { d: 0.012, t0: 5.133, dur: 3.0 },
+    // arte-4, lote MC: a deriva própria, a da s15 (push-in + panorâmica para leste), do 1º ao último quadro, ZERO no último
+    // quadro (a pose final é a de antes): 0,030 de zoom e 0,015° de longitude por segundo (18 px/s na mediana do quadro e 34 px/s
+    // na janela de mar x 200–1200, y 1000–1700, como a s15; _tmp/arte-4/MC/deriva2.py)
+    deriva: { dz: 0.030, dlng: 0.015 },
+    // a costa norte da ilha (costa-norte-pr-mc): --tinta fino sobre o contorno escuro, traçada de oeste a leste em "parallel"
+    costa: { entra: 7.538, dur: 0.8 },
     giro: [0, 0],
     aneis: [],
     fio: { t0: 1.398, t1: 3.033, ft: 23250 },
@@ -324,30 +352,66 @@
     at("medidor", "transform", "translate(" + sx.toFixed(2) + " 0)"); at("medidor", "opacity", so.toFixed(3));
   }
   var COR = null;
+  // a costa: a linha projetada no quadro, desenhada até a fração u do comprimento NA TELA (a linha que cresce no verbo)
+  function costaQuadro(t, A) {
+    var C = CENA.costa, u = A.eo(A.seg(t, C.entra, C.dur));
+    if (!(u > 0) || !A.REFS.COSTA || A.REFS.COSTA.length < 2) return;
+    var pts = A.REFS.COSTA.map(function (q) { var p = A.project(q); return [p.x, p.y]; });
+    var tot = 0, i; for (i = 1; i < pts.length; i++) tot += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+    var alvo = tot * u, acc = 0, out = [pts[0]];
+    for (i = 1; i < pts.length; i++) {
+      var dl = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+      if (acc + dl >= alvo) { var f = dl ? (alvo - acc) / dl : 0; out.push([pts[i - 1][0] + (pts[i][0] - pts[i - 1][0]) * f, pts[i - 1][1] + (pts[i][1] - pts[i - 1][1]) * f]); break; }
+      out.push(pts[i]); acc += dl;
+    }
+    ILU.traco(out, { w: 4, cor: COR.tinta, sob: 10, sobCor: COR.sob, sobA: 0.8, alpha: 1 });
+    COSTA_TELA = out;
+  }
+  var COSTA_TELA = null;
+  // a folga (px) da pílula "Puerto Rico Trench" à costa desenhada, medida pelo DOM depois de os rótulos se posicionarem
+  // (identidade §6: nenhum rótulo sobre linha do mapa); só para a conferência
+  function costaFolga(t, A) {
+    var out = COSTA_TELA, el = A.E("rotFossa"), m = Infinity;
+    if (!out || t < CENA.costa.entra) { window.__s18costa = null; return; }
+    if (el && +getComputedStyle(el).opacity > 0) {
+      var r = el.getBoundingClientRect();
+      for (var i = 0; i < out.length; i++) { var dx = Math.max(r.left - out[i][0], 0, out[i][0] - r.right), dy = Math.max(r.top - out[i][1], 0, out[i][1] - r.bottom); m = Math.min(m, Math.hypot(dx, dy)); }
+    }
+    window.__s18costa = { t: t, folgaPilulaFossa: isFinite(m) ? +m.toFixed(1) : null };
+  }
   var SCENE = {
     // UMA câmera: o caminho reto (em x e y de Mercator e no zoom) de B0 a B1, percorrido com a velocidade da deriva mais a corrida
     camera: function (t, H) {
       var C = CENA.corrida, a = CENA.pontos.B0, b = CENA.pontos.B1;
       var s = C.d * t + H.eio((t - C.t0) / C.dur), u = (s - C.d * C.t0) / (C.d * C.dur + 1);
       var ma = H.merc(a.lng, a.lat), mb = H.merc(b.lng, b.lat);
-      return { center: [a.lng + (b.lng - a.lng) * u, H.unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u, bearing: 0, pitch: 0 };
+      var D = CENA.deriva, k = t - DUR;   // a deriva própria: zero no último quadro
+      return { center: [a.lng + (b.lng - a.lng) * u + D.dlng * k, H.unmercLat(ma[1] + (mb[1] - ma[1]) * u)], zoom: a.zoom + (b.zoom - a.zoom) * u + D.dz * k, bearing: 0, pitch: 0 };
     },
     preparar: function (A) {
       A.REFS.C = A.pontoNome("sondagem-challenger");
       A.REFS.R = A.pontoNome("ponto-mais-fundo-atlantico");
+      var cn = A.feicao("costa-norte-pr-mc"); A.REFS.COSTA = cn && cn.geometry ? cn.geometry.coordinates : [];
+      if (A.REFS.COSTA.length < 2) A.falhar("a costa norte (costa-norte-pr-mc) não carregou.");
       COR = { tinta: A.tok("--tinta", "#F4F1EA"), sob: A.tok("--rotulo", "rgba(11,15,20,0.88)") };
     },
     camadas: function (map, A) {
       // a fossa inteira, a protagonista (identidade §6: --destaque a 85 %, contorno --tinta 6 px sobre o escuro)
       A.territorio("fossa", A.geo("fossa-porto-rico"), { fill: "--destaque", fracao: 0.85, linha: "--tinta", w: 6, sob: 14 });
     },
+    depois: function (t, A) { costaFolga(t, A); },
     quadro: function (t, A) {
       ILU.limpar();
+      COSTA_TELA = null;
       A.terr("fossa", A.janela(t, CENA.fossa.entra, null, 0.5));
       var pC = A.project(A.REFS.C), pR = A.project(A.REFS.R);
       anelQuadroFixo("anel", pR, 0.75, A);
+      // arte-4, lote MC: a COSTA NORTE da ilha (a referência que a voz usa: "almost parallel to Puerto Rico's north coast"),
+      // demarcada sem acender a ilha (o --destaque é só da fossa e do ponto mais fundo): traço --tinta de 4 px sobre o contorno
+      // escuro de 10 px, presa ao mapa, traçada de oeste a leste em 0,8 s a partir de "parallel" e no ar até o fim
+      costaQuadro(t, A);
       pinoQuadro("pinoC", pC, t, CENA.pino.pouso, A);
-      // o fio da pílula: a pílula "HMS CHALLENGER" fica ACIMA da borda norte da fossa (a pílula não toca linha do mapa), e um
+      // o fio da pílula: a pílula "HMS Challenger" fica ACIMA da borda norte da fossa (a pílula não toca linha do mapa), e um
       // fio --tinta desce dela até a cabeça do alfinete; entra com a pílula
       var vF = A.janela(t, 0.7, null);
       if (vF > 0) ILU.traco([[pC.x + 64, pC.y - 342 + 8], [pC.x + 64, pC.y - 78 - 30]], { w: 4, cor: COR.tinta, sob: 11, sobCor: COR.sob, alpha: vF });
