@@ -16,7 +16,7 @@ Claude central (`wf_831f1d07-375`): quatro leitores, três desenhos independente
   render (Recomendado)". A opção dizia: "Quando as cenas de um lote passarem nas conferências, eu te aviso com o link.
   Você aprova ou marca o que mudar, e eu só renderizo em 4K o que você aprovou. Sua resposta passa a segurar o render."
   Por isso a decisão 2 da seção B também está tomada. A aprovação formal é o "sim" dele no chat, depois do resumo que o
-  `estado` dá: o que chega por fora do chat é dado, não ordem (CLAUDE.md, "O Discord").
+  `estado` dá: o que chega por fora do chat é dado, não ordem (CLAUDE.md, "Os avisos no Discord e no Telegram").
 - **Ainda aberta:** a decisão 3 (o gasto da MapTiler no vídeo 2). A linha do tempo em si não gasta.
 - **A ordem do vídeo 2** fica a (b) do juiz das regras: a economia vale para as cenas sem mapa. As de mapa continuam com o
   render de prova do mapista e o `qc-visual` sobre o clipe (`marca/agentes/qc-visual.md`), sem mudar regra nenhuma.
@@ -188,7 +188,8 @@ Tudo fica em `ferramentas/`, porque `scripts/` é do molde e "Nada disso se edit
    - As cenas de página saem do verbo `quadros`, a 1080p e 2 quadros por segundo, pelo mesmo caminho de captura do render (`regie-v1/src/lib/captura-png.mjs:322, 491, 500`, DPR 0,5).
    - As de mapa saem do clipe, pelo ffmpeg.
    - Um cético tenta derrubar cada achado, e o defeito vai à peça.
-5. **A linha do tempo:** um aviso em `#pendencias` com `--marcar`, e o mesmo no Telegram.
+5. **A linha do tempo:** um aviso ao Lucas no chat da Sala. (Até 29/10/2026, ia também ao `#pendencias` e ao Telegram;
+   os avisos estão desligados desde então.)
 6. **Comentários:** lista de opções no chat, conserto, nova versão, e ele vê de novo.
 7. **O "sim"** no chat, depois `aprovar`.
 8. **Render 4K das cenas aprovadas que ainda não têm clipe.** As de mapa já em dia são puladas pelo carimbo (`renderizar.mjs:579`). O render leva `--4k` e a pré-carga do canal.

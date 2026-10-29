@@ -351,6 +351,7 @@ Nem o setor nem a peça:
   - antes de cada uma dessas coisas, ela mesma confere e marca os avisos de `out/_maquina/`.
 - **No primeiro despacho de cada setor, e no primeiro em Fable,** confere o modelo no transcript do subagente. Se não subir,
   para e avisa o Lucas.
-- **Roda os portões e os verificadores independentes,** posta no `#status`, faz o commit e dá o `regie advance`.
+- **Roda os portões e os verificadores independentes,** faz o commit e dá o `regie advance`. (Até 29/10/2026, postava
+  também no `#status`; os avisos estão desligados desde então.)
 - **Acerta as conversas:** nome, grupo, modo e esforço. Mantém a Sala e os setores no mesmo modo de permissão: se o Lucas
   trocar o modo de uma conversa, as mensagens ficam presas à espera dele.

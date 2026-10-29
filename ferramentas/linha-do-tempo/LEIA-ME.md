@@ -45,8 +45,8 @@ atualiza a lista em `linha.mjs`.
 3. `qc-visual`: as de página pelo `quadro.mjs`/`shot`, as de mapa pelo clipe. Nenhuma regra muda.
 4. A revisão de espectador, sobre os quadros pré-render (`quadros`, quando provado; as de mapa saem do clipe), com o
    cético. O defeito vai à peça.
-5. Rode `proxies <proj>` (as de mapa com clipe em dia) e suba o `servir`. Avise o Lucas em `#pendencias` com `--marcar`,
-   e o mesmo no Telegram, com o endereço.
+5. Rode `proxies <proj>` (as de mapa com clipe em dia) e suba o `servir`. Avise o Lucas no chat da Sala,
+   com o endereço. (Os avisos no Discord e no Telegram estão desligados desde 29/10/2026.)
 6. Comentários: cada um vira uma **lista de opções no chat** antes de ir ao `editor-de-arte` ou ao `mapista` (CLAUDE.md,
    "A autonomia do vídeo 2 em diante"). Conserto, nova versão; a página recarrega sozinha a cena que mudou, e o bloco
    ganha o ponto "nova versão para ver". Ele vê de novo.

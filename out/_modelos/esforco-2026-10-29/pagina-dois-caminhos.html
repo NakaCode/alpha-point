@@ -116,6 +116,13 @@ svg .whisk { stroke: var(--ink); stroke-width: 1.5; }
 .f-area { fill: var(--area); } .s-line { fill: none; stroke: var(--c-reler); stroke-width: 2; }
 .s-enxuto { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-dasharray: 6 4; }
 .dot-mec { stroke: var(--ink); stroke-width: 1.2; }
+.hl { fill: none; stroke: var(--ink); stroke-width: 2.2; pointer-events: none; }
+.chart-wrap { position: relative; min-width: 560px; }
+.chart-wrap svg { cursor: crosshair; }
+.tip { position: absolute; z-index: 2; pointer-events: none; max-width: 260px; background: var(--ink); color: var(--bg); font-size: 13px; line-height: 1.4; padding: 7px 10px; border-radius: 6px; transform: translate(-50%, calc(-100% - 12px)); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25); }
+.tip.below { transform: translate(-50%, 14px); }
+.readout { font-size: 14px; font-variant-numeric: tabular-nums; min-height: 1.6em; }
+.fig-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* preço */
 .prices { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
@@ -191,7 +198,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-widt
   <span class="eyebrow">Alpha Point · a cota semanal · medido em 29/10/2026</span>
   <h1>Dois caminhos para a cota</h1>
   <p class="lede">Os agentes gastam a maior parte da cota com a própria pilha de trabalho: relendo, gravando e regravando. Há dois caminhos para gastar menos sem mexer na qualidade. O primeiro são os scripts. O segundo é o jeito de hoje, com a releitura resolvida. Os dois também se somam.</p>
-  <p class="muted prose">Os números vêm das conversas deste PC: os 60 agentes do vídeo 4 (<code>atlantico-fundo</code>), das 22h de 28/10 às 10h35 de 29/10.</p>
+  <p class="muted prose">Feito pela Sala, o Claude que orquestra o canal, para o Lucas e a equipe. Os números vêm das conversas deste PC: os 60 agentes do vídeo 4 (<code>atlantico-fundo</code>), das 22h de 28/10 às 10h35 de 29/10.</p>
 </header>
 
 <section aria-labelledby="s-caminhos">
@@ -244,7 +251,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-widt
             <td class="both">Os dois.</td>
           </tr>
           <tr>
-            <th scope="row">Para você</th>
+            <th scope="row">Para o Lucas</th>
             <td>Só a decisão.</td>
             <td>Ver a divisão do CLAUDE.md antes de ela valer.</td>
             <td class="both">Ver a divisão.</td>
@@ -329,10 +336,11 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-widt
 <section aria-labelledby="s-real">
   <h2 id="s-real">A pilha de um agente de verdade</h2>
   <div class="prose stack">
-    <p>Um mapista do vídeo 4, em Opus, de uma das tarefas desta manhã. Cada ponto é uma volta, na altura da pilha que ela releu. Passe o mouse num ponto para ver o que a volta fez.</p>
+    <p>Um mapista do vídeo 4, em Opus, de uma das tarefas desta manhã. Cada ponto é uma volta, na altura da pilha que ela releu. Passe o mouse ou toque no gráfico para ver o que cada volta fez. No teclado, selecione o gráfico e use as setas.</p>
   </div>
   <figure>
-    <div class="fig-scroll"><svg id="fig-real" viewBox="0 0 900 380" role="img" aria-label="A pilha do mapista cresce de 101 mil para 470 mil tokens em 104 voltas; 40 voltas foram mecânicas; com o CLAUDE.md enxuto, a mesma pilha ficaria 60 mil tokens mais baixa em toda volta"></svg></div>
+    <div class="fig-scroll" id="real-box" tabindex="0" aria-describedby="real-out"><div class="chart-wrap" id="real-wrap"><svg id="fig-real" viewBox="0 0 900 380" role="img" aria-label="A pilha do mapista cresce de 101 mil para 470 mil tokens em 104 voltas; 40 voltas foram mecânicas; com o CLAUDE.md enxuto, a mesma pilha ficaria 60 mil tokens mais baixa em toda volta"></svg><div class="tip" id="real-tip" hidden></div></div></div>
+    <p class="readout" id="real-out" aria-live="polite"></p>
     <div class="keys" id="realkeys"></div>
     <figcaption>A pilha começa com 101 mil tokens antes de ele fazer qualquer coisa. Uns 75 mil são o CLAUDE.md, que o app põe inteiro em todo agente, e o resto são as instruções do app, as ferramentas e o ofício do mapista. Ela termina com 470 mil. Das 104 voltas, <b>40 foram mecânicas</b> (22 procurando dado da cena, 8 montando quadros e 10 rodando portões), e cada uma releu a pilha inteira: são os pontos com contorno, onde o caminho 1 mexe. <b>A linha tracejada é o caminho 2</b>, num esquema: a mesma tarefa com o CLAUDE.md enxuto, 60 mil tokens mais baixa em toda volta. Esse agente gastou o equivalente a US$ 12 de Opus, uns 0,5 ponto: 54 % relendo, 19 % gravando e 28 % na resposta.</figcaption>
   </figure>
@@ -384,15 +392,15 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-widt
   <article class="card">
     <div class="card-head"><h3>1. O CLAUDE.md enxuto, com skills</h3><span class="tag">~10 % do total</span></div>
     <div class="prose stack">
-      <p>O app põe o CLAUDE.md inteiro em todo agente, na volta 1: são uns <b>75 mil tokens</b>, com o índice de memórias, relidos em toda volta até o fim. Na conta desta manhã, isso foi <b>14 % do custo dos agentes</b>, contando a leitura e a gravação dele.</p>
-      <p>Um agente usa pouco disso. A caça, os avisos do Discord e do Telegram, a trilha, a linha do tempo, o motor sem rosto, a narração e os setores são trabalho só da Sala, e somam uns 39 mil tokens.</p>
+      <p>O app põe o CLAUDE.md inteiro em todo agente, na volta 1, com o índice de memórias, e o agente o relê em toda volta até o fim. Na conta desta manhã eram uns <b>75 mil tokens</b>, e isso foi <b>14 % do custo dos agentes</b>, contando a leitura e a gravação dele. Hoje são uns 73 mil, porque uma seção que só a Sala usava saiu do arquivo no fim da manhã.</p>
+      <p>Um agente usa pouco disso. A caça, a trilha, a linha do tempo, o motor sem rosto, a narração e os setores são trabalho só da Sala, e somam uns 36 mil tokens.</p>
     </div>
     <figure>
-      <div class="md-bar" id="mdbar" role="img" aria-label="O CLAUDE.md por seção: 53 % só da Sala, 38 % misturado, 8 % usado pelos agentes"></div>
+      <div class="md-bar" id="mdbar" role="img" aria-label="O CLAUDE.md por seção: 51 % só da Sala, 40 % misturado, 9 % usado pelos agentes"></div>
       <div class="keys">
-        <div class="key"><i style="background:var(--c-sala)"></i><span><b>Só a Sala usa</b>: 39 mil tokens (53 %)</span></div>
-        <div class="key"><i style="background:var(--c-misto)"></i><span><b>Misturado</b>: regras dos agentes e histórico, 28 mil (38 %)</span></div>
-        <div class="key"><i style="background:var(--c-agente)"></i><span><b>Os agentes usam</b>: 6 mil (8 %)</span></div>
+        <div class="key"><i style="background:var(--c-sala)"></i><span><b>Só a Sala usa</b>: 36 mil tokens (51 %)</span></div>
+        <div class="key"><i style="background:var(--c-misto)"></i><span><b>Misturado</b>: regras dos agentes e histórico, 28 mil (40 %)</span></div>
+        <div class="key"><i style="background:var(--c-agente)"></i><span><b>Os agentes usam</b>: 6 mil (9 %)</span></div>
       </div>
       <div class="md-list" id="mdlist"></div>
       <figcaption>As seções do CLAUDE.md de hoje, em mil tokens, a 2,2 caracteres por token. A divisão por quem usa é a minha leitura: ela é a proposta, não uma medida.</figcaption>
@@ -401,7 +409,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-widt
       <p><b>Onde entram as skills.</b> Uma skill é um manual que fica fechado. Na pilha fica só a linha que diz para que ela serve, e o texto inteiro entra quando alguém a usa. A caça já é assim, com a skill <code>cacar-no-chrome</code>, mas o CLAUDE.md repete a caça inteira, e todo agente a relê.</p>
       <p><b>A proposta.</b> O que é só da Sala vira skill ou arquivo que ela lê quando precisa. O que os agentes usam fica num CLAUDE.md curto, com um índice de onde está cada assunto. Nenhum texto se apaga: ele muda de lugar.</p>
       <ul>
-        <li><b>Só tirar o que é da Sala:</b> uns 7 % do total.</li>
+        <li><b>Só tirar o que é da Sala:</b> uns 6 % do total.</li>
         <li><b>Um núcleo de uns 15 mil tokens:</b> uns 10 % do total, de 8 a 11 %. A Sala e os setores também passam a reler menos.</li>
       </ul>
       <p class="muted">O risco é um agente perder uma regra que morava lá. A defesa: o núcleo guarda toda regra que um agente usa, o índice diz onde está o resto, as roupas apontam para os arquivos novos, e o teste num lote usa a mesma medida dos scripts.</p>
@@ -427,22 +435,22 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-widt
 </section>
 
 <section aria-labelledby="s-recomendo">
-  <h2 id="s-recomendo">O que eu recomendo</h2>
+  <h2 id="s-recomendo">A recomendação da Sala</h2>
   <div class="prose stack">
     <p><b>Os dois caminhos juntos, testados num lote do vídeo 4.</b> A medida separa o efeito de cada um: a largada mostra o CLAUDE.md, e o número de voltas mostra os scripts.</p>
     <p>Se for um só, o caminho 2 primeiro. Ele custa menos, vale para todo agente desde o próximo despacho e não muda o trabalho de ninguém. O caminho 1 economiza mais, mas pede montar e provar os scripts antes.</p>
   </div>
   <ol class="steps">
     <li><span>A regra dos 5 minutos entra nas roupas e no regimento dos setores.</span></li>
-    <li><span>Eu te mostro a divisão do CLAUDE.md: o núcleo que fica, o índice e para onde vai cada seção. Ela só vale com o seu ok.</span></li>
+    <li><span>A Sala mostra ao Lucas a divisão do CLAUDE.md: o núcleo que fica, o índice e para onde vai cada seção. Ela só vale com o ok dele.</span></li>
     <li><span>Os três scripts se montam e se provam em cenas prontas do Atlântico, sem pedir mapa à MapTiler.</span></li>
     <li><span>Um lote do vídeo 4 roda com tudo, e a mesma medida de hoje compara com 29/10.</span></li>
   </ol>
 </section>
 
 <section aria-labelledby="s-voce">
-  <h2 id="s-voce">O que depende de você</h2>
-  <p class="prose">Responda no chat da Sala. Nada escrito nesta página vale como aprovação.</p>
+  <h2 id="s-voce">A decisão</h2>
+  <p class="prose">O Lucas decide com a equipe, e a resposta vem no chat da Sala. Nada escrito nesta página vale como aprovação.</p>
   <div class="decisions">
     <div class="decision">
       <h3>Qual caminho</h3>
@@ -455,7 +463,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-widt
     </div>
     <div class="decision">
       <h3>Se entrar o caminho 2</h3>
-      <p>Eu te mostro a divisão do CLAUDE.md antes de mudar qualquer linha. Nenhum texto se apaga, e nada muda sem o seu ok.</p>
+      <p>A Sala mostra ao Lucas a divisão do CLAUDE.md antes de mudar qualquer linha. Nenhum texto se apaga, e nada muda sem o ok dele.</p>
     </div>
   </div>
   <p class="muted prose">As outras perguntas do documento continuam lá: o esforço dos agentes, o ultracode dos setores e a Sala.</p>
@@ -600,9 +608,47 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-widt
     el('text', { x: X(60), y: Y(250), 'font-size': 13, 'class': 'lbl-muted' }, svg, 'o que a tarefa juntou');
     AG.forEach(function (a, i) {
       var t = TIPOS[a[1]];
-      var c = el('circle', { cx: X(i + 1), cy: Y(a[0]), r: t[1] ? 5 : 3.6, 'class': 't-' + a[1] + (t[1] ? ' dot-mec' : '') }, svg);
-      el('title', {}, c, 'volta ' + (i + 1) + ' · ' + t[0] + ' · pilha de ' + a[0] + ' mil tokens');
+      el('circle', { cx: X(i + 1), cy: Y(a[0]), r: t[1] ? 5 : 3.6, 'class': 't-' + a[1] + (t[1] ? ' dot-mec' : '') }, svg);
     });
+    // a volta escolhida: o anel, a etiqueta que segue o mouse ou o toque, e a linha embaixo do gráfico (vale também no teclado)
+    var hl = el('circle', { cx: X(1), cy: Y(AG[0][0]), r: 8.5, 'class': 'hl' }, svg);
+    var wrap = document.getElementById('real-wrap'), tip = document.getElementById('real-tip');
+    var out = document.getElementById('real-out'), box = document.getElementById('real-box');
+    var cur = 1;
+    function corpo(k) {
+      var a = AG[k - 1], t = TIPOS[a[1]];
+      return t[0] + (t[1] ? ' (mecânica)' : '') + ' · pilha de ' + a[0] + ' mil tokens';
+    }
+    function escolher(k, comEtiqueta) {
+      k = Math.max(1, Math.min(N, k)); cur = k;
+      var a = AG[k - 1];
+      hl.setAttribute('cx', X(k)); hl.setAttribute('cy', Y(a[0]));
+      out.textContent = 'Volta ' + k + ' de ' + N + ' · ' + corpo(k);
+      if (!comEtiqueta) return;
+      tip.innerHTML = '<b>Volta ' + k + ' de ' + N + '</b><br>' + corpo(k);
+      tip.hidden = false;
+      var p = svg.createSVGPoint(); p.x = X(k); p.y = Y(a[0]);
+      var c = p.matrixTransform(svg.getScreenCTM()), r = wrap.getBoundingClientRect();
+      var x = c.x - r.left, y = c.y - r.top, w = tip.offsetWidth;
+      tip.style.left = Math.max(w / 2 + 4, Math.min(r.width - w / 2 - 4, x)) + 'px';
+      tip.style.top = y + 'px';
+      tip.classList.toggle('below', y < 70);
+    }
+    function voltaDo(e) {
+      var p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY;
+      var q = p.matrixTransform(svg.getScreenCTM().inverse());
+      return Math.round((q.x - L) / ((R - L) / (N - 1))) + 1;
+    }
+    svg.addEventListener('pointermove', function (e) { escolher(voltaDo(e), true); });
+    svg.addEventListener('pointerdown', function (e) { escolher(voltaDo(e), true); });
+    svg.addEventListener('pointerleave', function () { tip.hidden = true; });
+    box.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      escolher(cur + (e.key === 'ArrowRight' ? 1 : -1), true);
+    });
+    box.addEventListener('blur', function () { tip.hidden = true; });
+    escolher(1, false);
     var keys = document.getElementById('realkeys');
     var tr = document.createElement('div'); tr.className = 'key';
     tr.innerHTML = '<i style="background:none;border-top:2px dashed var(--ink);height:0;margin-top:11px"></i><span><b>A linha tracejada</b>: o caminho 2, a mesma pilha com o CLAUDE.md enxuto <span class="muted">(esquema)</span></span>';
@@ -627,12 +673,11 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-widt
     ['Caça nos bancos pagos', 14.2, 'S'],
     ['O motor sem rosto do Top10', 4.2, 'S'],
     ['O que a Régie faz (a narração)', 4.1, 'S'],
-    ['A autonomia do vídeo 2 em diante', 4.0, 'S'],
+    ['A autonomia do vídeo 2 em diante', 4.1, 'S'],
     ['Os setores', 3.3, 'S'],
     ['A trilha: Epidemic Sound', 2.6, 'S'],
     ['A linha do tempo pré-render', 2.5, 'S'],
-    ['O Discord e o Telegram', 3.6, 'S'],
-    ['Como rodar e atualizar o motor', 0.7, 'S']
+    ['Como rodar e atualizar o motor, e outras seções curtas', 1.0, 'S']
   ];
   (function () {
     var bar = document.getElementById('mdbar'), list = document.getElementById('mdlist');
@@ -643,7 +688,7 @@ footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; max-widt
       d.title = m[0] + ': ' + m[1].toFixed(1).replace('.', ',') + ' mil tokens';
       bar.appendChild(d);
     });
-    MD.slice().sort(function (a, b) { return b[1] - a[1]; }).slice(0, 8).forEach(function (m) {
+    MD.slice().sort(function (a, b) { return b[1] - a[1]; }).forEach(function (m) {
       var r = document.createElement('div'); r.className = 'md-row';
       r.innerHTML = '<i style="background:' + COR[m[2]] + '"></i><span>' + m[0] + '</span><span>' + m[1].toFixed(1).replace('.', ',') + ' mil</span>';
       list.appendChild(r);
