@@ -102,6 +102,16 @@
     âncora anda pela 3602 de 54 % a 62 % do comprimento (e o afastamento de 95 a 83 px) de 33,0 a 33,6, no recuo, e fica. Medido com a
     câmera da cena (_tmp/arte-4/MF/caminho.mjs): a caixa de 555 × 94 px fica inteira na cunha, nas margens e longe do anel, com folga
     mínima de 17 px. Antes de 33,0 nenhuma forma da marca cabe na cunha (cunha-cabe.mjs).
+  ARTE-5 (atlantico-fundo-arte-5, lote M4, mapista, 29/10/2026; textos-tela a5de351a, conserto 7). Muda SÓ isto; o resto fica como o
+    Lucas viu (o "DISPUTED" da texto-6 inclusive):
+    · "Source: Stewart & Jamieson, 2019" fica até 21,367 (antes 19,1), junto com os dois últimos números do estudo (o 27,585 e o
+      "≈ 36 MI", que vão até 21,367). De 19,333 a 21,367 a faixa tem 4 linhas de crédito: o de mapa (2 linhas) embaixo, a fonte do
+      estudo em cima dele e a das zonas no alto (a pilha de dois assets, identidade §4.2; como na s09 e na s67). A linha que sai fica
+      no lugar até a opacidade 0 (21,367) e só então a das zonas desce ao lugar dela, em 300 ms (eo), sem salto (a regra da arte-5 para
+      a pilha, a mesma da s75). O "No máximo 3 linhas" e o "de 3,467 a 19,1" acima ficam como história: valem estas linhas.
+    · A pílula do 27,585 ("27,585 FT (8,408 M) / 2019 ESTIMATE") sobe 60 px (qualidade-3, L38, sinal 3: as bases quase na altura do
+      "30,000 FT"). O líder continua na altura da marca (y 1599), da borda direita da pílula (x 2830) até 3330: ele ainda encosta na
+      pílula, que vai de ~y 1405 a ~y 1673 (a conta está no relato do lote).
 -->
 <head>
 <meta charset="utf-8">
@@ -681,7 +691,10 @@
     (extras || []).forEach(function (x) {
       var el = E(x.id); if (!el) return;
       var v = vida(t, x.t0, x.t1); el.style.opacity = v.op.toFixed(3); el.style.bottom = base + "px";
-      if (v.op > 0) base += el.offsetHeight + 8;
+      // o lugar dela na pilha (arte-5): inteiro do t0 ao t1 (a linha que sai fica no lugar até a opacidade 0); depois do t1 a de cima
+      // desce ao lugar dela em 300 ms (eo), sem salto
+      var lugar = t <= x.t0 ? 0 : (x.t1 == null || t < x.t1 ? 1 : 1 - eo(seg(t, x.t1, 0.3)));
+      base += (el.offsetHeight + 8) * lugar;
     });
   }
   // ═══ fim das peças ═══
@@ -726,7 +739,7 @@
   // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é do redator-de-tela: textos-tela.json b034414f › s60) ═══
   var TEXTOS = {
     crMapa: ["© MapTiler © OpenStreetMap contributors", "GEBCO Compilation Group (2026) GEBCO 2026 Grid"],   // credito, 0–36,4
-    crFonte: "Source: Stewart & Jamieson, 2019",                    // credito, 3,467–19,1 (com o 1º número dele; textos-tela, conserto 6)
+    crFonte: "Source: Stewart & Jamieson, 2019",                    // credito, 3,467–21,367 (com o 1º e os últimos números dele; textos-tela, consertos 6 e 7)
     crZonas: "Maritime boundaries: MarineRegions.org (VLIZ)",      // credito, 19,333–36,4 (as zonas; a 3ª linha)
     lista: "Milwaukee Deep · LISTED",                               // rotulo, 0,967–12,567 ("old listing"); a feição em caixa normal (textos-tela, conserto 5)
     crista: "24,442 FT (7,450 M) · A RIDGE",                        // cota, 3,467–12,567 ("twenty-four thousand")
@@ -769,7 +782,7 @@
     cristaSolta: 2.867, crista: 3.467,             // a marca da crista desce na régua e crava em "twenty-four" (y 1442)
     datas: 7.833,                                  // b1: 2019 → 2021 em "came out before"
     fimB1: 12.567,                                 // o alfinete, a crista e as datas saem até aqui (o t1 do textos-tela)
-    fonte0: 3.467, fonte1: 19.1,                   // "Source: Stewart & Jamieson, 2019": entra com a cota da crista, o 1º número dele (arte-4, conserto 6)
+    fonte0: 3.467, fonte1: 21.367,                 // "Source: Stewart & Jamieson, 2019": entra com a cota da crista, o 1º número dele (arte-4, conserto 6); sai com o 27,585 e o ≈ 36 MI (arte-5, conserto 7)
     e2019Solta: 14.833, e2019: 15.433,             // b2: a marca de 2019 desce e crava em "it placed" (y 1599)
     salto: 16.533, voo: 1.2,                       // o anel SALTA em "thirty-six" (1,2 s) e pousa em 17,733 ("west")
     fimB3: 21.367,                                 // a cota de 2019 e o ≈ 36 MI saem até aqui; o medidor enrola (400 ms)
@@ -972,7 +985,7 @@
     if (pl) {
       var w = pl.offsetWidth, h = pl.offsetHeight;
       pl.style.opacity = (vP.op * opMed).toFixed(3);
-      pl.style.transform = "translate(" + (xD - w).toFixed(2) + "px," + (yC - h / 2 + vP.dy).toFixed(2) + "px)";
+      pl.style.transform = "translate(" + (xD - w).toFixed(2) + "px," + (yC - h / 2 + (o.dyPil || 0) + vP.dy).toFixed(2) + "px)";   // dyPil: a pílula fora do centro da marca (arte-5: a de 2019 sobe 60 px)
     }
     M.lider.set("x1", String(xD)); M.lider.set("x2", "3330"); M.lider.set("y1", yC.toFixed(2)); M.lider.set("y2", yC.toFixed(2));
     M.lider.op((vP.op * opMed).toFixed(3));
@@ -1093,7 +1106,7 @@
     marca("crista", "cotaCrista", t, { solta: T.cristaSolta, crava: T.crista, ft: 24442, fim: T.fimB1 }, 1);
     // a de 2019 crava em y 1599, logo acima do "30,000 FT": a pílula termina em x 2830 (como a cota de 1939 da s20, "longe dos números
     // da régua") e o líder vai de 2830 a 3330, acima do número
-    marca("e2019", "cotaE2019", t, { solta: T.e2019Solta, crava: T.e2019, ft: 27585, fim: T.fimB3, xDir: 2830 }, 1);
+    marca("e2019", "cotaE2019", t, { solta: T.e2019Solta, crava: T.e2019, ft: 27585, fim: T.fimB3, xDir: 2830, dyPil: -60 }, 1);   // arte-5: sobe 60 px (L38, sinal 3); o líder fica em y 1599
     // 2019 → 2021: no alto, à esquerda (tempo, não lugar: preso à tela)
     por(E("datas"), 200, 200, vida(t, T.datas, T.fimB1));
     // ≈ 36 MI: abaixo do meio da reta, afastado dela pela meia caixa na direção da normal (nunca sobre a linha)

@@ -26,6 +26,32 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
        em vez de ~1,3 px/s (antes: a 1690 e z 9,06), para o mapa não ficar parado ~3 s no fim do b4. O b3 (o respiro) fica.
   A instrução 5 (nada novo de 13,767 a 18,267 s; o alfinete e os créditos voltam com o mapa) continua como estava.
 
+  ARTE-5 (atlantico-fundo-arte-5, lote M2, mapista; o 2º item do espectador r2, _tmp/espectador-r2/mantidos.json 35e5fc03). Só o b6
+  (29,0–33,567) mudou; os b0–b5 ficam como a arte-4 os deixou, e não mudam os textos, os tempos de fala, o 'FIVE OCEANS', o anel nem a
+  câmera:
+    1. os mares marginais juntos de cada oceano: os cinco oceanos são cinco camadas de canvas (oceanosContinuos), não mais as áreas de
+       rótulo do NE em 'fill'. Cada pixel de mar da GEBCO mundo dentro de uma área do NE é daquele oceano; o de fora (o mar marginal)
+       herda PELA ÁGUA o oceano para onde abre. Conferido no protótipo (_tmp/arte-5/M2/proto_oceanos.png): o Caribe, o Golfo do
+       México, o Mediterrâneo, a Baía de Hudson, o Labrador, o da Groenlândia e o da Noruega vão com o Atlântico; o Arábico, Bengala,
+       o Vermelho e o Golfo Pérsico, com o Índico; o Tasman e os mares do leste da Ásia, com o Pacífico. DECLARADO: o Mar Negro e o
+       Cáspio não têm passagem na grade de 4096 e ficam apagados, com a costa natural (o Cáspio não é oceano; o Negro, pela IHO, é do
+       Atlântico, via Mediterrâneo); a partilha dos mares marginais é a da água na grade, não a lista da IHO, e por isso nenhum nome vai
+       à tela. Só fontes que a cena já usava: a GEBCO mundo e o oceanos-ne;
+    2. a borda em mar aberto (as divisas do NE: 20°E, 60°S, ~166°E a sudoeste da Nova Zelândia, Groenlândia–Islândia–Escócia, e as que a água
+       traça dentro de um mar marginal) esmaece em ~50 px no 4K, metade para cada lado; a costa fica nítida (o alfa é a cobertura de mar);
+    3. o contraste: cada oceano sobe a 55 % em 200 ms e, quando o seguinte acende, assenta em 35 % (300 ms); o último fica a 55 %;
+    4. a ordem: o Atlântico, o Índico e o Pacífico, depois o Antártico e o Ártico (a cada 0,2 s a partir de 'five', 32,342; o Ártico
+       chega ao pico em 33,342). DECLARADO: o mundoFim não enquadra as duas faixas sem repetir o mundo. Para ver de ~80°N a ~70°S
+       seria preciso z ≈ 2,67, e abaixo de z ≈ 2,91 o mundo (512 · 2^z px) fica mais estreito que os 3840 px do palco e se repete;
+       a câmera fica (z 2,95 → 3,0), com o Antártico na faixa de baixo (abaixo de ~60°S, y ≳ 2.000) e o Ártico nas fatias de cima
+       (mar de Kara, Beaufort, o arquipélago canadense, y ≲ 160);
+    5. nenhum nome de oceano na tela (como antes).
+  A pílula 'Pressure Drop' fica no céu da foto (é rótulo de objeto, preso ao navio: a decisão 4 da Sala, sala-decisoes-qualidade-3.md).
+  A INSCRIÇÃO (marca/cta.md §4; regencia › _chamadas): a peça 'inscricao.html?lugar=cima', 4,5 s, de 13,767 a 18,267 s da cena (380,6 a
+  385,1 s do master), na caixa x 2029–3626, y 195–484, sobre o respiro do b3. O b6 (29,0–33,567) NÃO entra nela: começa 10,7 s depois de
+  ela sair. A peça não está gravada em out/atlantico-fundo/cta/; a distância dos rótulos do b3 até a caixa (os rótulos de y ~1.010 para
+  baixo) foi estimada nos quadros pela qualidade-3 e continua NÃO MEDIDO formalmente: quem grava a peça por cima e mede é a Sala.
+
   UMA VIAGEM (conceito › fluxo): mapa → mesa → mapa → mapa → mesa → mapa, num arquivo só; as duas mesas são cortes de regime POR
   DENTRO. Mapa plano, norte para cima e sem órbita (a decisão da série, pedido comum da arte-2); a câmera nunca para.
 
@@ -41,9 +67,9 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
     lugar do mergulho; 3,1 km ao sul da isóbata de 7.000 m, a parede sul), fossa-porto-rico (a isóbata de 7.000 m da GEBCO 2026, aqui
     CONTEXTO: --destaque a 40 % com o contorno --tinta de 6 px), ponto-mais-fundo-atlantico (o anel), oceanos-ne (b6: as 7 ÁREAS DE
     RÓTULO de oceano do Natural Earth, juntadas em 5 oceanos pela propriedade 'oceano'; DECLARADO: são áreas de rótulo, não os limites
-    da IHO, e por isso acendem só como preenchimento, sem contorno; os mares marginais do NE (Caribe, golfo do México, Mediterrâneo…)
-    são outras feições e ficam apagados; o furo do Mar dos Sargaços, no meio do Atlântico Norte, é preenchido na cena, porque o Sargaço
-    é parte do Atlântico: sem isso, um quadrado apagado ficava logo ao norte do anel) e cinco-oceanos-five-deeps (lida só para conferir que o ponto do
+    da IHO, e por isso acendem só como preenchimento, sem contorno; arte-5: as áreas são só as SEMENTES, e os mares marginais vão com
+    o oceano para onde abrem, pela água da GEBCO mundo (o bloco ARTE-5, item 1); o furo do Mar dos Sargaços fica dentro do Atlântico,
+    porque só o anel externo de cada área se desenha) e cinco-oceanos-five-deeps (lida só para conferir que o ponto do
     Atlântico é o anel: os outros 4 pontos ficam sem marca, "só um deles com um ponto", o conceito).
 
   O QUE A CENA FAZ (tempo local; 0 = 366,833 s):
@@ -78,8 +104,9 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
       credito_na_tela do veredito) do 1º ao último quadro da foto. A foto fica parada de 28,6 (o fim do push-in) ao corte em 29,0 (arte-4: sem levantar, os 250 ms de repouso), e o mapa volta por corte.
     b6 29,0–33,567 (s48; mapa): a câmera RECUA à VISTA DO MUNDO em Mercator (2,6 s, van Wijk; sem globo: Sala, decisão 2) e deriva; a
       fossa sai no começo do recuo; em 31,834 ('each') 'FIVE OCEANS' (presa à tela, no alto à esquerda: é uma conta, não um lugar); em
-      'five' (32,342) os cinco oceanos acendem um a um, a cada 0,2 s, em --neutro (cada um sobe a 40 % em 250 ms e assenta em 25 %: o
-      olho conta cinco; o Atlântico primeiro, o último assenta em 33,44), só o Atlântico com o anel, e NENHUM nome de oceano na tela.
+      'five' (32,342) os cinco oceanos acendem um a um, a cada 0,2 s, em --neutro, contínuos até a costa (arte-5: cada um sobe a 55 % em
+      200 ms e assenta em 35 % quando o seguinte acende; o Atlântico, o Índico, o Pacífico, o Antártico e o Ártico, que fica no pico),
+      só o Atlântico com o anel, e NENHUM nome de oceano na tela.
 
   ELEMENTOS (teto 6; conta minha): b0 a fossa, o alfinete com o rótulo, a cota = 3 (+ o anel, fora do quadro na maior parte); b1 a
     fossa, o alfinete com o rótulo, a cota, o anel, a legenda = 5; b2 a foto com a legenda = 2; b3 a fossa, o alfinete com o rótulo, o
@@ -262,7 +289,8 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
     // o rumo do leque: do lado leste da fossa (ao norte do alfinete, sobre a fossa) até o anel
     rumoIni: [-65.45, 19.48],
     leque: { frente: 90, meia: 200, cauda: 600 },
-    oceanos: ["ATLANTIC", "SOUTHERN", "INDIAN", "PACIFIC", "ARCTIC"]
+    oceanos: ["ATLANTIC", "INDIAN", "PACIFIC", "SOUTHERN", "ARCTIC"],   // arte-5: os que se veem inteiros primeiro; as duas faixas por último
+    oceanoPico: 0.55, oceanoAssenta: 0.35, oceanoSobe: 0.2, oceanoBaixa: 0.3   // arte-5: o pico e o assento (era 40 → 25 %)
   };
   // ═════════════════════════════════════════════════════════════════════════════════════════════════
 
@@ -328,21 +356,8 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
   });
   if (window.__erroCena) return;
   var PINO = MERG_G.features[0].geometry.coordinates, ANEL = ANEL_G.features[0].geometry.coordinates;
-  // os oceanos do NE com o furo do MAR DOS SARGAÇOS preenchido: a área de rótulo dele (−70,1 a −50,0°, 20 a 35°N) é um furo no Atlântico
-  // Norte, e o Sargaço é parte do Atlântico; os outros furos (ilhas: Canárias, Havaí, Malvinas, Geórgia do Sul…) ficam. Só os furos com
-  // mais de 5° de lado saem (há um só, conferido no disco).
-  var OCEANOS_CHEIOS = { type: "FeatureCollection", features: OCEANOS.features.map(function (f) {
-    var g = f.geometry, partes = g.type === "Polygon" ? [g.coordinates] : g.coordinates, tirados = 0;
-    var novas = partes.map(function (p) {
-      return [p[0]].concat(p.slice(1).filter(function (r) {
-        var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
-        r.forEach(function (q) { x0 = Math.min(x0, q[0]); x1 = Math.max(x1, q[0]); y0 = Math.min(y0, q[1]); y1 = Math.max(y1, q[1]); });
-        var grande = x1 - x0 > 5 && y1 - y0 > 5; if (grande) tirados++; return !grande;
-      }));
-    });
-    if (tirados) window.__furosPreenchidos = (window.__furosPreenchidos || []).concat([f.properties.name_ne + ": " + tirados]);
-    return { type: "Feature", properties: f.properties, geometry: { type: g.type, coordinates: g.type === "Polygon" ? novas[0] : novas } };
-  }) };
+  // arte-5: o OCEANOS_CHEIOS (as áreas do NE com o furo do Sargaço preenchido) saiu: o oceanosContinuos desenha só o anel externo de
+  // cada área (o Sargaço fica dentro do Atlântico, e a terra sai pela máscara de mar da GEBCO)
   (function () {   // o ponto do Atlântico da Five Deeps é o anel (o ponto do vídeo): confere, só leitura
     var a = CINCO.features.filter(function (f) { return f.properties.oceano === "Atlantic"; })[0];
     if (!a || Math.abs(a.geometry.coordinates[0] - ANEL[0]) > 1e-6 || Math.abs(a.geometry.coordinates[1] - ANEL[1]) > 1e-6)
@@ -500,6 +515,112 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
     cv.getContext("2d").drawImage(fonte, L * pc.i / 4, A * pc.j / 4, L / 4, A / 4, 0, 0, 1023, 1023);
     return cv;
   }
+  // b6 (arte-5; espectador r2, 2º item): OS CINCO OCEANOS CONTÍNUOS ATÉ A COSTA, com a borda de mar aberto esmaecida.
+  // Só fontes que a cena já usa: a máscara de mar da GEBCO mundo (o mesmo teste de cor do canvasMar, sem a erosão de 1 px; a grade de
+  // 4096 × 4096 em Web Mercator) e as 5 áreas de rótulo do NE (oceanos-ne, só o anel externo: a terra sai pela máscara, e o furo do
+  // Sargaço fica preenchido). (1) cada pixel de mar dentro de uma área do NE é daquele oceano; (2) cada pixel de mar FORA delas (os mares
+  // marginais, que o NE guarda como outras feições) herda, PELA ÁGUA (BFS 8-conexo, sementes na ordem dos pixels, o x dá a volta no
+  // antimeridiano), o oceano que o alcança primeiro: o mar marginal vai com o oceano para onde ele abre; o mar sem passagem na grade (o
+  // Negro e o Cáspio) fica apagado, com a costa natural; (3) a grade desce a 2048 (a cobertura de mar de cada 2 × 2 é o alfa da costa)
+  // e (4) a divisa entre dois oceanos, que só existe em mar aberto, esmaece em W = 25 células (~50 px no 4K a z 2,95–3,0), metade para
+  // cada lado, pela água (BFS 8-conexo dentro do mar rotulado): a costa fica nítida, e nenhuma borda reta dura sobra no mar.
+  // Determinístico: a mesma imagem e a mesma geometria dão os mesmos pixels. O protótipo (a mesma conta em Python, só leitura) está em
+  // _tmp/arte-5/M2/proto_oceanos.py.
+  function oceanosContinuos(im) {
+    var N = 4096, M = 2048, Wc = 25, R = 13;
+    if (im.naturalWidth !== N || im.naturalHeight !== N) throw new Error("a GEBCO mundo não tem 4096 × 4096");
+    var cv = document.createElement("canvas"); cv.width = N; cv.height = N;
+    var x = cv.getContext("2d", { willReadFrequently: true });
+    x.drawImage(im, 0, 0);
+    var p = x.getImageData(0, 0, N, N).data, NN = N * N, mar = new Uint8Array(NN), lab = new Uint8Array(NN), i, k, nSea = 0;
+    for (i = 0; i < NN; i++) { var j4 = i * 4; if (p[j4 + 2] > p[j4] + 10 && p[j4 + 1] - p[j4 + 2] < 25) { mar[i] = 1; nSea++; } }
+    p = null;
+    function pxX(lng) { return (lng + 180) / 360 * N; }
+    function pxY(lat) { lat = cl(lat, -85.051129, 85.051129); return my(lat) * N; }
+    CENA.oceanos.forEach(function (o, ko) {
+      x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, N, N); x.fillStyle = "#fff"; x.beginPath();
+      OCEANOS.features.forEach(function (f) {
+        if (f.properties.oceano !== o) return;
+        var g = f.geometry, partes = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+        partes.forEach(function (pp) {
+          pp[0].forEach(function (q, n) { if (n) x.lineTo(pxX(q[0]), pxY(q[1])); else x.moveTo(pxX(q[0]), pxY(q[1])); });
+          x.closePath();
+        });
+      });
+      x.fill();
+      var d = x.getImageData(0, 0, N, N).data;
+      for (var ii = 0; ii < NN; ii++) if (mar[ii] && !lab[ii] && d[ii * 4 + 3] > 127) lab[ii] = ko + 1;
+    });
+    cv.width = 1; cv.height = 1;
+    // (2) a BFS pela água
+    var fila = new Int32Array(nSea), ini = 0, fim = 0, DX = [-1, 0, 1, -1, 1, -1, 0, 1], DY = [-1, -1, -1, 0, 0, 1, 1, 1];
+    function viz(ii, cb) {
+      var yy = (ii / N) | 0, xx = ii - yy * N;
+      for (var n = 0; n < 8; n++) { var y2 = yy + DY[n]; if (y2 < 0 || y2 >= N) continue; var x2 = (xx + DX[n] + N) % N; cb(y2 * N + x2); }
+    }
+    for (i = 0; i < NN; i++) {
+      if (!lab[i]) continue;
+      var semente = false;
+      viz(i, function (q) { if (mar[q] && !lab[q]) semente = true; });
+      if (semente) fila[fim++] = i;
+    }
+    while (ini < fim) {
+      var cur = fila[ini++], L = lab[cur];
+      viz(cur, function (q) { if (mar[q] && !lab[q]) { lab[q] = L; fila[fim++] = q; } });
+    }
+    fila = null;
+    // (3) a grade de 2048: a cobertura de mar (0–4) e o oceano da maioria
+    var MM = M * M, cob = new Uint8Array(MM), labC = new Uint8Array(MM), cont = [0, 0, 0, 0, 0, 0];
+    for (var cy = 0; cy < M; cy++) for (var cx = 0; cx < M; cx++) {
+      var c = cy * M + cx, a0 = (2 * cy) * N + 2 * cx, sub = [a0, a0 + 1, a0 + N, a0 + N + 1], s, melhor = 0;
+      cont[1] = cont[2] = cont[3] = cont[4] = cont[5] = 0;
+      for (s = 0; s < 4; s++) if (mar[sub[s]]) { cob[c]++; if (lab[sub[s]]) cont[lab[sub[s]]]++; }
+      for (k = 1; k <= 5; k++) if (cont[k] > (melhor ? cont[melhor] : 0)) melhor = k;
+      labC[c] = melhor;
+    }
+    mar = null; lab = null;
+    // (4) a divisa esmaecida, pela água, e as cinco telas
+    function vizC(c, cb) {
+      var yy = (c / M) | 0, xx = c - yy * M;
+      for (var n = 0; n < 8; n++) { var y2 = yy + DY[n]; if (y2 < 0 || y2 >= M) continue; var x2 = (xx + DX[n] + M) % M; cb(y2 * M + x2); }
+    }
+    var rgb = (function () {
+      var t = document.createElement("canvas").getContext("2d"); t.fillStyle = COR.neutro; t.fillRect(0, 0, 1, 1);
+      var d = t.getImageData(0, 0, 1, 1).data; return [d[0], d[1], d[2]];
+    })();
+    var dist = new Uint8Array(MM), fc = new Int32Array(MM), telas = [];
+    var tmp = document.createElement("canvas"); tmp.width = M; tmp.height = M;
+    var tx = tmp.getContext("2d");
+    for (k = 1; k <= 5; k++) {
+      dist.fill(255);
+      var a = 0, b = 0, c2;
+      // as sementes dos dois lados da divisa: a célula de k com vizinho de outro oceano, e a célula de outro oceano com vizinho k
+      for (c2 = 0; c2 < MM; c2++) {
+        var l = labC[c2]; if (!l) continue;
+        var toca = false;
+        vizC(c2, function (q) { var lq = labC[q]; if (lq && ((l === k) !== (lq === k))) toca = true; });
+        if (toca) { dist[c2] = 0; fc[b++] = c2; }
+      }
+      while (a < b) {
+        var cc = fc[a++], dc = dist[cc], dentro = labC[cc] === k;
+        if (dc >= R) continue;
+        vizC(cc, function (q) { var lq = labC[q]; if (lq && (lq === k) === dentro && dist[q] > dc + 1) { dist[q] = dc + 1; fc[b++] = q; } });
+      }
+      var img = tx.createImageData(M, M), d = img.data;
+      for (c2 = 0; c2 < MM; c2++) {
+        var lc = labC[c2], f = 0;
+        if (lc === k) f = dist[c2] === 255 ? 1 : ss(0.5 + (dist[c2] + 0.5) / Wc);
+        else if (lc && dist[c2] !== 255) f = ss(0.5 - (dist[c2] + 0.5) / Wc);
+        var j = c2 * 4; d[j] = rgb[0]; d[j + 1] = rgb[1]; d[j + 2] = rgb[2]; d[j + 3] = Math.round(255 * f * cob[c2] / 4);
+      }
+      tx.putImageData(img, 0, 0);
+      var out = document.createElement("canvas"); out.width = M - 1; out.height = M - 1;   // nenhum lado em potência de 2 (a M1)
+      var ox = out.getContext("2d"); ox.imageSmoothingEnabled = true; ox.drawImage(tmp, 0, 0, M - 1, M - 1);
+      telas.push(out);
+    }
+    window.__oceanosConta = { mar4096: nSea, w: Wc, ordem: CENA.oceanos.slice() };
+    return telas;
+  }
   var PECAS_MAR = pecas("mmar-");
   var imgsProntas = Promise.all([MUNDO, ATL, CARIBE].map(function (b) { return carregarImagem(b.imagem.arquivo); }));
   var midiaProntas = Promise.all(["foto1", "foto2", "still"].map(function (id) {
@@ -514,18 +635,15 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
   function estilo() {
     var fontes = {
       base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
-      fossa: { type: "geojson", data: FOSSA },
-      oceanos: { type: "geojson", data: OCEANOS_CHEIOS }
+      fossa: { type: "geojson", data: FOSSA }
     };
     var t0 = { duration: 0, delay: 0 };
     var camadas = [
       { id: "base", type: "raster", source: "base",
         paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }   // identidade §6, o tratamento C
     ];
-    CENA.oceanos.forEach(function (o) {   // b6: os cinco oceanos (as áreas de rótulo do NE), só o preenchimento
-      camadas.push({ id: "oc-" + o, type: "fill", source: "oceanos", filter: ["==", ["get", "oceano"], o],
-        paint: { "fill-color": COR.neutro, "fill-opacity": 0, "fill-opacity-transition": t0, "fill-antialias": false } });
-    });
+    // b6 (arte-5): os cinco oceanos NÃO são mais camadas 'fill' das áreas de rótulo do NE; são cinco camadas de canvas montadas na carga
+    // (oceanosContinuos, abaixo), entre o fundo da GEBCO e a fossa
     camadas.push(
       // a fossa como CONTEXTO: --destaque a 40 % (--territorio-protagonista-com-contexto-cor) e o contorno --tinta de 6 px
       { id: "fossa-fill", type: "fill", source: "fossa", paint: { "fill-color": COR.destaque, "fill-opacity": 0, "fill-opacity-transition": t0 } },
@@ -649,7 +767,7 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
     Promise.all([imgsProntas, midiaProntas]).then(function (r) {
       var ims = r[0];   // [mundo-relevo, atlantico-relevo, caribe]
       try {
-        var antes = "oc-" + CENA.oceanos[0];
+        var antes = "fossa-fill";   // arte-5: o fundo da GEBCO e, por cima dele, os cinco oceanos, todos abaixo da fossa
         // o mundo, só o mar, a 0,34
         var marMundo = canvasMar(ims[0], 0, 0);
         PECAS_MAR.forEach(function (pc) {
@@ -669,12 +787,21 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
         map.addLayer({ id: "caribe", type: "raster", source: "caribe", paint: { "raster-fade-duration": 0, "raster-resampling": "linear" } }, antes);
         CAMADAS_MAR.push("caribe");
       } catch (e) { return falhar("não consegui montar o fundo da GEBCO: " + e.message); }
+      try {
+        // b6 (arte-5): os cinco oceanos contínuos até a costa, com a borda de mar aberto esmaecida (oceanosContinuos)
+        var ocs = oceanosContinuos(ims[0]);
+        CENA.oceanos.forEach(function (o, i) {
+          map.addSource("oc-" + o, { type: "canvas", canvas: ocs[i], coordinates: MUNDO.imagem.coordinates, animate: false });
+          map.addLayer({ id: "oc-" + o, type: "raster", source: "oc-" + o, layout: { visibility: "none" },
+            paint: { "raster-fade-duration": 0, "raster-resampling": "linear", "raster-opacity": 0 } }, antes);
+        });
+      } catch (e) { return falhar("não consegui montar os cinco oceanos: " + e.message); }
       mapaCarregado = true;
       window.__renderAt(0);
       map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
     }, function (e) { falhar(e.message); });
   });
-  function FONTES_ESPERA() { return ["fossa", "oceanos", "atl", "caribe"].concat(PECAS_MAR.map(function (p) { return p.id; })); }
+  function FONTES_ESPERA() { return ["fossa", "atl", "caribe"].concat(CENA.oceanos.map(function (o) { return "oc-" + o; })).concat(PECAS_MAR.map(function (p) { return p.id; })); }
 
   // ═══ POSIÇÕES E VISIBILIDADE ═══════════════════════════════════════════════════════════════════════
   // a pílula presa ao mapa esmaece nos últimos 60 px antes da área segura (margem, faixa do crédito, canto)
@@ -853,10 +980,14 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
     // a fossa (contexto, 40 %): acende em 'trench's' (500 ms) e sai no começo do recuo ao mundo
     var vf = eo(seg(t, T.fossa, 0.5)) * (1 - eio(seg(t, T.fossaSai, 0.5)));
     opac("fossa-fill", "fill-opacity", vf * 0.40); opac("fossa-linha", "line-opacity", vf); opac("fossa-sob", "line-opacity", vf);
-    // os cinco oceanos, um a um a partir de 'five' (um a cada 0,2 s): cada um sobe a 40 % em 250 ms e assenta em 25 % (o olho conta cinco)
+    // os cinco oceanos, um a um a partir de 'five' (um a cada 0,2 s; arte-5): cada um sobe a 55 % em 200 ms e, quando o seguinte acende,
+    // assenta em 35 % (300 ms); o último fica no pico. A ordem: o Atlântico, o Índico e o Pacífico, depois o Antártico e o Ártico
     CENA.oceanos.forEach(function (o, i) {
-      var ti = T.oceanos0 + i * T.oceanosPasso;
-      opac("oc-" + o, "fill-opacity", 0.40 * eo(seg(t, ti, 0.25)) - 0.15 * ss(seg(t, ti + 0.25, 0.45)));
+      var ti = T.oceanos0 + i * T.oceanosPasso, ult = i === CENA.oceanos.length - 1;
+      var v = CENA.oceanoPico * eo(seg(t, ti, CENA.oceanoSobe)) -
+        (ult ? 0 : (CENA.oceanoPico - CENA.oceanoAssenta) * ss(seg(t, ti + T.oceanosPasso, CENA.oceanoBaixa)));
+      vis("oc-" + o, v > 0.0005);
+      opac("oc-" + o, "raster-opacity", v);
     });
   }
   function aplicarDom(t) {

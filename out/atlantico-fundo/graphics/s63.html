@@ -51,8 +51,8 @@ _fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 
     b1 8,5–13,2 (corte de regime para a MESA): a foto do Limiting Factor sendo baixado na Cumberland East Bay, Geórgia do Sul, em
       31/01/2019 (Caladan Oceanic; 2.400 × 1.462, impressa a 0,90 ×: 2.160 × 1.316; o produto das escalas fica ≤ 0,98 ×) pousa em
       0,55 s (desce 240 px, 0,72 → 1,03 → 1,00, −2° → −1,5°), sombra solta, fitas; a luz da mesa atrás da frente do submersível, 120 ms
-      atrás; push-in rumo ao submersível (9,05 → 12,75). Em 8,8 a pílula 'South Georgia' no céu da foto (o lugar_na_origem; nunca
-      'South Sandwich' nem 'Southern Ocean'), sem aviso do ano (2019, o ano da viagem). Arte-4: a foto não levanta; de 12,75 ao corte (13,2) nada se move.
+      atrás; push-in rumo ao submersível (9,05 → 12,75). Em 9,2 (150 ms depois do assentamento; arte-5) a pílula 'South Georgia'
+      SOBRE A MESA, à direita da foto (o lugar_na_origem; nunca 'South Sandwich' nem 'Southern Ocean'), sem aviso do ano (2019, o ano da viagem). Arte-4: a foto não levanta; de 12,75 ao corte (13,2) nada se move.
     b2 13,2–19,3 (s64; o mapa volta): a câmera sai da POSE P0 de Porto Rico (a da s04: 19,4°N 65,8°W, zoom 7,5507), com o anel, e desce
       o Atlântico em 4 s (van Wijk, cúbica com um resto linear que entra na deriva) até o arco das Sandwich do Sul; o grande círculo se
       traça À FRENTE da câmera (a ponta nunca passa de 520 px abaixo do centro da tela) e termina no Meteor Deep. O anel fica para cima.
@@ -95,6 +95,13 @@ _fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 
     · o voo do b2 (13,2–17,2) com o perfil de velocidade do camera-mapa.js (abre e fecha a 0,5), no lugar da cúbica com 8 % de linear;
     · o retângulo do b6: o recorte do sul vai em 4 peças cortadas nas linhas da grade (22,5°W e 55,78°S), cada uma dentro do ladrilho
       que o MapLibre lhe dá; com o relevo, a peça única só se pintava no ladrilho 4/6/11 (pecasDoRecorte).
+  ARTE-5 (atlantico-fundo-arte-5, lote M3, 29/10/2026; sala-pedido-arte-5 e sala-decisoes-qualidade-3, decisão 3):
+    · o retângulo claro do mar no voo do b2 (13,9–15,2): não era camada faltando, era a RAMPA. O recorte do Caribe (a rampa do canal,
+      azul-marinho) dentro do Atlântico e do mundo (a rampa do WMS a 0,34, verde-azulada no fundo médio): bordas retas em 15°N e 59°W.
+      Em volta do Caribe (caixa 86–52°W, 6–30°N, caindo em 5°) a cor do Atlântico e do mundo passa à do recorte (CENA.corMar, um
+      ajuste linear medido onde os dois são mar), e a borda do recorte esmaece em ~1° (CENA.caribePena). Nenhum pixel de geometria muda;
+    · 'South Georgia' sai da foto para a mesa, à direita dela, em 9,2 (o t1 continua 13,2);
+    · 'SOUTH SANDWICH ISLANDS': rotIlhasDx 270 → 540, longe da Geórgia do Sul.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; } /* o crédito a 60 px do Atlântico em diante (identidade §4.1); o tokens.css continua com 56 */</style>
@@ -258,10 +265,13 @@ _fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 
         <div class="polaroide" style="width:2248px;height:1404px">
           <div class="janela" style="width:2160px;height:1316px"><img id="foto" src="../_media/foto/s63/s63-limiting-factor-cumberland-east-bay-south-georgia-2019-01-31-caladan.jpg" alt="" style="width:2160px;height:1316px;left:0;top:0"></div>
         </div>
-        <div class="pilula" id="rotGeorgia" data-qc-papel="rotulo" style="left:110px;top:110px">South Georgia</div>
         <div class="fita" id="fFe" style="left:-30px;top:-56px"></div>
         <div class="fita" id="fFd" style="left:1838px;top:-56px"></div>
       </div>
+      <!-- arte-5: 'South Georgia' é rótulo de LUGAR: sobre a mesa, fora da foto (identidade §5, "A foto impressa"), à direita dela, no
+           alto (a borda direita da foto girada −1,5° fica ~30 px mais à esquerda em cima); em duas linhas (largura min-content: o texto
+           continua "South Georgia"), porque a mesa à direita da foto tem ~570 px até a margem de 3.640 -->
+      <div class="pilula" id="rotGeorgia" data-qc-papel="rotulo" style="left:3086px;top:470px;white-space:normal;width:min-content">South Georgia</div>
     </div>
   </div>
   <div class="credito" id="crGebcoMundo" data-qc-papel="credito" data-qc-credito="mapa">GEBCO Compilation Group (2026) GEBCO 2026 Grid</div>
@@ -287,7 +297,8 @@ _fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 
     // b0
     seabed: 3.5, veu0: 3.525, veuDur: 2.0, legenda: 6.067, mesa: 8.5,
     // b1 (a mesa)
-    fita: 8.8, georgia: 8.8, push0: 9.05, push1: 12.75, levanta: 12.85, volta: 13.2,
+    fita: 8.8, georgia: 9.2, push0: 9.05, push1: 12.75, levanta: 12.85, volta: 13.2,
+    // (arte-5: 'georgia' 8,8 → 9,2: 'South Georgia' sobre a mesa, 150 ms depois do assentamento da foto em 9,05; identidade §4.4)
     // b2
     voo0: 13.2, voo1: 17.2, fossa: 16.655, rotFossa: 16.633, dist: 18.067,
     // b3
@@ -315,8 +326,19 @@ _fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 
     exagero: 2.6,       // b6: o exagero do relevo no fim (o gelo liso pede mais: ofício §6)
     contato: [-24.9, -56.5],                       // o contato das placas: o eixo da fossa (o meio da faixa de 6.000 m) a 56,5°S
     rotFossaLL: [-25.4, -60.85],                   // a pílula da fossa: embaixo da ponta sul (o topo dela 34 px abaixo deste ponto)
-    rotIlhasDx: 270,                               // a pílula das ilhas: acima da ponta norte do arco (o pé dela 36 px acima do vértice mais ao
-                                                   // norte da geometria), 270 px para leste (longe da Geórgia do Sul); no mergulho ela sai pelo alto
+    rotIlhasDx: 540,                               // a pílula das ilhas: acima da ponta norte do arco (o pé dela 36 px acima do vértice mais ao
+                                                   // norte da geometria), 540 px para leste (arte-5: era 270, e a ponta oeste dela ficava a ~60–100 px
+                                                   // da Geórgia do Sul em 26,7–28,5; agora a ~300 px); no mergulho ela sai pelo alto
+    // arte-5 (o retângulo claro do b2, qualidade-3 › L39, sinal 1): o recorte fino do Caribe usa a rampa do canal (azul-marinho, já
+    // escurecida no PNG), e o Atlântico e o mundo usam a rampa do WMS da GEBCO a 0,34 (verde-azulada no fundo médio, 1.000–4.000 m).
+    // Em volta do Caribe a diferença virava um retângulo claro de bordas retas (15°N e 59°W). O conserto: (1) em volta do Caribe, a
+    // cor do Atlântico e do mundo passa à do recorte por um ajuste linear RGB → RGB medido onde os dois são mar
+    // (_tmp/arte-5/M3/ajuste.py: erro médio de 5 → 3 níveis), com o peso 1 na caixa e caindo a 0 em 5° (smoothstep), no mar aberto;
+    // (2) a borda do recorte do Caribe esmaece em ~1° (0,5° a oeste) no lugar de 72 × 60 px, para não ficar emenda de textura reta.
+    corMar: { caixa: [-86, 6, -52, 30], queda: 5,
+      atl:   [[0.09367, 0.0428, 0.01944], [1.21375, 1.614, 1.79032], [-0.83419, -0.99487, -0.9628], [17.64859, 24.88879, 35.30634]],
+      mundo: [[0.05066, -0.02202, -0.07044], [1.20617, 1.61492, 1.81178], [-0.80957, -0.97174, -0.95561], [17.41486, 24.80772, 35.73594]] },
+    caribePena: { o: 0.5, l: 1.0, n: 1.0, s: 1.0 },   // graus de esmaecimento da borda do recorte do Caribe (oeste, leste, norte, sul)
     cartaoA: { dx: 712, dy: -660 },                // o canto de cima à esquerda do cartão do corte, a partir do contato na tela
     distIdx: 0.972,                                // o ponto do arco ao lado do qual fica '≈ 5,700 MI'
     veu: { escuro: 0.40, claro: 0.22 },            // b0: o mar sem dado a 60 % (preto a 40 %) e o mar com dado (a --tinta a 22 %)
@@ -521,6 +543,23 @@ _fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 
     if (penaY > 0) { faixa(0, 0, 0, penaY, w, penaY); faixa(0, h, 0, h - penaY, w, penaY); }
     x.globalCompositeOperation = "source-over";
   }
+  // arte-5: o recorte do Caribe com cada borda esmaecida na sua largura (px da imagem), no lugar das 72 × 60 simétricas
+  function canvasEsmaecido4(im, o, l, n, s) {
+    var w = semPot2(im.naturalWidth), h = semPot2(im.naturalHeight);
+    var c = document.createElement("canvas"); c.width = w; c.height = h;
+    var x = c.getContext("2d"); x.drawImage(im, 0, 0, w, h);
+    x.globalCompositeOperation = "destination-out";
+    function faixa(x0, y0, x1, y1, rx, ry, rw, rh) {
+      var g = x.createLinearGradient(x0, y0, x1, y1);
+      g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)");
+      x.fillStyle = g; x.fillRect(rx, ry, rw, rh);
+    }
+    // as quatro faixas se sobrepõem nos cantos (destination-out multiplica: o canto fica o produto das duas, sem degrau)
+    faixa(0, 0, o, 0, 0, 0, o, h); faixa(w, 0, w - l, 0, w - l, 0, l, h);
+    faixa(0, 0, 0, n, 0, 0, w, n); faixa(0, h, 0, h - s, 0, h - s, w, s);
+    x.globalCompositeOperation = "source-over";
+    return c;
+  }
   // o recorte fino inteiro, com as bordas esmaecidas (a M1)
   function canvasEsmaecido(im, penaX, penaY) {
     var w = semPot2(im.naturalWidth), h = semPot2(im.naturalHeight);
@@ -533,16 +572,37 @@ _fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 
   // vermelho), com uma folga no verde: na rampa do WMS a plataforma rasa sai ciano-esverdeada (o verde até 24 acima do azul; medido na
   // plataforma da Geórgia do Sul e das Falklands, _tmp/arte-2/M7/amostra-wms.py), e a terra baixa sai verde (o verde 37 a 71 acima);
   // com o teste da M1 a plataforma virava "terra" e o mar quase preto do satélite fazia um halo escuro em volta das ilhas
-  function canvasMar(im, penaX, penaY) {
+  // arte-5: o peso da cor casada com o recorte do Caribe (CENA.corMar), separável: 1 dentro da caixa, smoothstep até 0 em `queda` graus
+  function pesoCor(v, a, b, queda) { return v >= a && v <= b ? 1 : ss(1 - (v < a ? a - v : v - b) / queda); }
+  function canvasMar(im, penaX, penaY, coords, M) {
     var w = semPot2(im.naturalWidth), h = semPot2(im.naturalHeight);
     var cv = document.createElement("canvas"); cv.width = w; cv.height = h;
     var x = cv.getContext("2d", { willReadFrequently: true }); x.drawImage(im, 0, 0, w, h);
     var d = x.getImageData(0, 0, w, h), p = d.data, mar = new Uint8Array(w * h), i, q;
     for (i = 0, q = 0; i < p.length; i += 4, q++) mar[q] = (p[i + 2] > p[i] + 10 && p[i + 1] - p[i + 2] < 25) ? 1 : 0;
+    // arte-5: a cor do mar em volta do Caribe passa à rampa do recorte (a tela é 0,34 × o canvas: o alvo se divide por 0,34)
+    var wx = null, wy = null, C = CENA.corMar;
+    if (coords && M) {
+      wx = new Float32Array(w); wy = new Float32Array(h);
+      var X0 = mx(coords[0][0]), X1 = mx(coords[1][0]), Y0 = my(coords[0][1]), Y1 = my(coords[2][1]);
+      for (var cx = 0; cx < w; cx++) wx[cx] = pesoCor(lngDe(X0 + (X1 - X0) * (cx + 0.5) / w), C.caixa[0], C.caixa[2], C.queda);
+      for (var cy = 0; cy < h; cy++) wy[cy] = pesoCor(latDe(Y0 + (Y1 - Y0) * (cy + 0.5) / h), C.caixa[1], C.caixa[3], C.queda);
+    }
     for (var yy = 0; yy < h; yy++) for (var xx = 0; xx < w; xx++) {
       q = yy * w + xx;
       var ok = mar[q] && (xx === 0 || mar[q - 1]) && (xx === w - 1 || mar[q + 1]) && (yy === 0 || mar[q - w]) && (yy === h - 1 || mar[q + w]);
-      if (!ok) p[q * 4 + 3] = 0;
+      if (!ok) { p[q * 4 + 3] = 0; continue; }
+      if (wx) {
+        var pw = wx[xx] * wy[yy];
+        if (pw > 0) {
+          var o = q * 4, r = p[o] * 0.34, g = p[o + 1] * 0.34, b = p[o + 2] * 0.34;
+          for (var k = 0; k < 3; k++) {
+            var alvo = (r * M[0][k] + g * M[1][k] + b * M[2][k] + M[3][k]) / 0.34;
+            alvo = alvo < 0 ? 0 : alvo > 255 ? 255 : alvo;
+            p[o + k] = Math.round(p[o + k] + (alvo - p[o + k]) * pw);
+          }
+        }
+      }
     }
     x.putImageData(d, 0, 0);
     if (penaX || penaY) apagarBordas(x, w, h, penaX, penaY);
@@ -775,7 +835,7 @@ _fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 
       try {
         var antes = "relevo";
         // o mundo, só o mar, a 0,34 (b2–b6: o que sobra fora do Atlântico na descida)
-        var marMundo = canvasMar(ims[0], 0, 0);
+        var marMundo = canvasMar(ims[0], 0, 0, [[-180, latDe(0)], [180, latDe(0)], [180, latDe(1)], [-180, latDe(1)]], CENA.corMar.mundo);
         PECAS_MAR.forEach(function (pc) {
           map.addSource(pc.id, { type: "canvas", canvas: cortarPeca(marMundo, pc), coordinates: pc.coords, animate: false });
           map.addLayer({ id: pc.id, type: "raster", source: pc.id, layout: { visibility: "none" },
@@ -784,12 +844,17 @@ _fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 
         });
         // o Atlântico, só o mar, a 0,34, com a borda esmaecida em 2°
         var penaAtl = Math.round(2 / 120 * ATL.imagem.largura);
-        map.addSource("atl", { type: "canvas", canvas: canvasMar(ims[2], penaAtl, penaAtl), coordinates: ATL.imagem.coordinates, animate: false });
+        map.addSource("atl", { type: "canvas", canvas: canvasMar(ims[2], penaAtl, penaAtl, ATL.imagem.coordinates, CENA.corMar.atl), coordinates: ATL.imagem.coordinates, animate: false });
         map.addLayer({ id: "atl", type: "raster", source: "atl", layout: { visibility: "none" },
           paint: { "raster-fade-duration": 0, "raster-resampling": "linear", "raster-brightness-max": 0.34 } }, antes);
         CAMADAS_MAR.push("atl");
-        // os recortes finos: o Caribe (a pilha da P0 da s04: 72 × 60) e o sul (260 × 300)
-        map.addSource("caribe", { type: "canvas", canvas: canvasEsmaecido(ims[3], 72, 60), coordinates: CARIBE.imagem.coordinates, animate: false });
+        // os recortes finos: o Caribe (a pilha da P0 da s04; arte-5: a borda esmaece em CENA.caribePena graus, no lugar de 72 × 60 px)
+        // e o sul (260 × 300)
+        var cc = CARIBE.imagem.coordinates, cw = semPot2(ims[3].naturalWidth), ch = semPot2(ims[3].naturalHeight), CP = CENA.caribePena;
+        var pxLng = cw / (cc[1][0] - cc[0][0]), pxY = ch / (my(cc[2][1]) - my(cc[0][1]));
+        var caribeCanvas = canvasEsmaecido4(ims[3], Math.round(CP.o * pxLng), Math.round(CP.l * pxLng),
+          Math.round((my(cc[0][1] - CP.n) - my(cc[0][1])) * pxY), Math.round((my(cc[2][1]) - my(cc[2][1] + CP.s)) * pxY));
+        map.addSource("caribe", { type: "canvas", canvas: caribeCanvas, coordinates: cc, animate: false });
         map.addLayer({ id: "caribe", type: "raster", source: "caribe", layout: { visibility: "none" },
           paint: { "raster-fade-duration": 0, "raster-resampling": "linear" } }, antes);
         CAMADAS_MAR.push("caribe");
@@ -1019,7 +1084,7 @@ _fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 
     por(E("fSombra"), F.cx, F.cy - a.dy + lerp(64, 12, sp), F.w, F.h, a.rot, lerp(1.05, 1.0, sp) * a.k * l.k, lerp(0.35, 0.80, sp) * op);
     por(E("fGrupo"), F.cx, F.cy - a.dy, F.w, F.h, a.rot, a.k * l.k, op);
     fita(E("fFe"), t, T.fita, "e"); fita(E("fFd"), t, T.fita + 0.12, "d");
-    // 'South Georgia' no céu da foto (presa à foto), em 8,8
+    // 'South Georgia' sobre a mesa, à direita da foto (no #cam: anda com a mesa no push-in), em 9,2 (arte-5)
     var rg = E("rotGeorgia"), vg = vida(t, T.georgia, null);
     if (rg) { rg.style.opacity = vg.op.toFixed(3); rg.style.visibility = vg.op > 0.001 ? "visible" : "hidden"; rg.style.transform = "translateY(" + vg.dy.toFixed(1) + "px)"; }
     var c = camMesa(t), td = Math.min(t, T.push1) - T.mesa;

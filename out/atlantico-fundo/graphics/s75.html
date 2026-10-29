@@ -25,6 +25,21 @@
       opacidade (sem a subida de 24 px), para a caixa da letra (até y ~1877, medida pelo portao-margens) nunca descer à faixa do crédito;
     · a régua e o perfil já estavam na mesma escala vertical (×10; instrução 31): não mudaram.
   O resto fica como estava. Onde o texto abaixo diz outra coisa sobre o crédito, a licença ou as cotas, vale este bloco.
+
+  A ÚLTIMA RODADA DE CONSERTOS (tarefa atlantico-fundo-arte-5, lote E75, editor-de-arte em Opus, 29/10/2026; textos-tela 58a328d0…,
+  regência 9d0ab49f…, espelho bcfe74f9…, com o mesmo inSec 694.2 e a mesma dur 20.0). O que mudou, e só isto (a qualidade-3, L44, s75,
+  "Reprova", item 1: a pilha das fontes sobrepunha texto em ~14,4–14,6 s e ~16,0–16,3 s):
+    · a TROCA DAS LINHAS DE CRÉDITO separa a opacidade do LUGAR na pilha. A linha que sai fica no lugar dela até a opacidade 0, e só
+      então o lugar fecha (0,3 s, eb) e a de cima desce, já sozinha. Os instantes em que cada fonte some (TE_IHR ~14,6, com o rótulo do
+      Challenger que sobe; TE_JAM 16,2; TE_NOAA 18,6) saem de uma bisseção feita uma vez, no início, sobre a mesma opacidade do rótulo
+      (função pura de t). A licença do Shutterstock fecha o lugar junto com o esmaecer (12,7–13,0), porque nada acima dela está no ar.
+    · o mesmo defeito, na entrada (0–0,23 s, achado pela medida desta rodada, que a qualidade-3 não pegou): a licença subia o lugar dela
+      com a opacidade da GEBCO e cruzava a GEBCO enquanto as duas apareciam. O lugar da GEBCO está inteiro desde o 1º quadro: as três
+      linhas aparecem já no lugar delas (roupa §4: "as duas linhas já ocupam o lugar delas desde o começo").
+    · a medida (_tmp/arte-5/E75/medir75.mjs, a cada quadro, 0–20 s): crédito x crédito, 26 quadros antes e 0 depois; no máximo 3 linhas.
+    · ficam: as opacidades (cada fonte entra e sai com o rótulo dela), os t0 e t1 do textos-tela (IHR 13,0–15,0; Jamieson 14,2–16,2;
+      NOAA 15,4–18,6; Bongiovanni 18,5–20,0), no máximo 3 linhas, a licença de 0 a 13,0 e a GEBCO embaixo, parada, fora do escurecer.
+    · fora: o opcional da L44 (a cota da faixa depois do "1964 · CREW").
   cleanDur = dur. Modo do espelho: desenho · Modelo da identidade: ANIMAÇÃO PARA EXPLICAR
   sobre a MESA DO VÍDEO 2 EM DIANTE (satélite sob a luz, §5; still mesa-porto-rico.png), no TRAÇO DE ENGENHEIRO, sobre o PERFIL REAL
   da GEBCO 2026. PICO (showpiece). Corte seco casado com s74: o anel em x 1700, y 760 (o último quadro de s74; _tmp/setores/arte-1/
@@ -245,7 +260,8 @@
   </div>
   <!-- a faixa de crédito (lote de consertos arte-4, conserto 6 e 6b): a GEBCO embaixo, do 1º ao último quadro; por cima dela, a licença
        do Shutterstock (2 linhas, 0–13,0) e, de 13,0 ao fim, as fontes da cauda, uma a uma, cada uma com o rótulo dela; a pilha se
-       refaz sem salto (a altura de cada linha anda com o esmaecer dela); no máximo 3 linhas -->
+       refaz sem salto e sem cruzar (arte-5: a linha que sai fica no lugar até sumir, e só então a de cima desce em 0,3 s); no máximo
+       3 linhas -->
   <div id="creds">
     <div class="cred" id="credGebco" data-qc-papel="credito" data-qc-credito="mapa"></div>
     <div class="cred duas" id="credSS" data-qc-papel="credito"></div>
@@ -590,29 +606,49 @@
     if (v1.op * j1 > 0.01 && C.xr + C.dv[0] - 50 - DIR > 8) dl += "M" + DIR + "," + f2(y1) + " L" + f2(C.xr + C.dv[0] - 50) + "," + f2(y1) + " ";
     if (v2.op * j2 > 0.01 && C.xr + C.dv[0] - 50 - DIR > 8) dl += "M" + DIR + "," + f2(y2) + " L" + f2(C.xr + C.dv[0] - 50) + "," + f2(y2) + " ";
     ["medLider", "medSobLider"].forEach(function (id) { var e = E(id); if (e) { e.setAttribute("d", dl || "M-500,-500"); e.style.opacity = Math.max(v1.op * j1, v2.op * j2).toFixed(3); } });
-    // A FAIXA DE CRÉDITO (conserto 6 e 6b): cada linha com a vida dela; cada fonte entra e sai com o rótulo dela (a mesma opacidade)
+    // A FAIXA DE CRÉDITO (conserto 6 e 6b): cada linha com a vida dela; cada fonte entra e sai com o rótulo dela (a mesma opacidade).
+    // arte-5: a opacidade e o LUGAR na pilha se separam. A linha que sai fica no lugar dela até a opacidade 0 (TE_*), e só então o lugar
+    // fecha (0,3 s, eb) e a de cima desce, já sozinha: nunca duas linhas se cruzando no meio da troca (a qualidade-3, L44, s75, item 1).
     var c0 = eo(seg(t, 0, 0.3));
     var vidas = [
-      ["credGebco", c0],                                                   // 0–20, embaixo, parada
-      ["credSS", Math.min(c0, 1 - seg(t, 12.7, 0.3))],                     // 0–13,0
-      ["credIHR", v1.op * j1],                                             // com "HMS Challenger · 23,250 FT"
-      ["credJam", v2.op * j2],                                             // com "1964 · CREW · ~24,000 FT"
-      ["credNOAA", Math.min(eo(seg(t, 15.4, 0.3)), 1 - seg(t, 18.3, 0.3))], // com a faixa (15,4) até o t1 do textos-tela (18,6), junto da saída de "1970 · NET" (18,2–18,5)
-      ["credBong", v5.op]                                                  // com "DECEMBER 2018 · SONAR · 27,487 FT", até o fim
+      // 0–20, embaixo, parada; o lugar dela está inteiro desde o 1º quadro (a licença entra junto, já no lugar dela, sem cruzar a GEBCO)
+      ["credGebco", c0, 1],
+      // 0–13,0: nada acima dela está no ar enquanto ela some (a IHR só entra em 13,0), então o lugar fecha junto com o esmaecer
+      ["credSS", Math.min(c0, 1 - seg(t, 12.7, 0.3)), Math.min(c0, 1 - seg(t, 12.7, 0.3))],
+      ["credIHR", opIHR(t), lugar(t, 13.0, TE_IHR)],                       // com "HMS Challenger · 23,250 FT"
+      ["credJam", opJam(t), lugar(t, 14.2, TE_JAM)],                       // com "1964 · CREW · ~24,000 FT"
+      ["credNOAA", opNOAA(t), lugar(t, 15.4, TE_NOAA)],                    // com a faixa (15,4) até o t1 do textos-tela (18,6), junto da saída de "1970 · NET" (18,2–18,5)
+      ["credBong", v5.op, v5.op]                                           // com "DECEMBER 2018 · SONAR · 27,487 FT", até o fim
     ];
     creditos(vidas);
   }
-  // a pilha: de baixo para cima, na ordem da lista; cada linha sobe a soma das alturas das de baixo, cada uma pesada pela opacidade dela
-  // (a que entra abre o lugar dela enquanto aparece; a que sai fecha o dela enquanto some): nenhuma linha salta
+  // a opacidade de cada fonte, como função pura de t (a mesma do rótulo dela, como no textos())
+  function opIHR(t) { var C = camAt(t), y1 = Y(C, 23250); return vida(t, 13.0, 15.0).op * clamp((y1 + 14 - 290) / 60, 0, 1); }
+  function opJam(t) { var C = camAt(t), y2 = Y(C, 24000); return vida(t, 14.2, 16.2).op * clamp((y2 + 14 - 290) / 60, 0, 1); }
+  function opNOAA(t) { return Math.min(eo(seg(t, 15.4, 0.3)), 1 - seg(t, 18.3, 0.3)); }
+  // o instante em que a linha some (opacidade ≤ 0,002, o limiar do visibility): bisseção feita uma vez, no início, sobre a função pura
+  // (depois da entrada, a opacidade só desce: a câmera do b2 só aproxima, e o rótulo do Challenger sobe sem voltar)
+  function some(f, a, b) {
+    if (f(b) > 0.002) return b;
+    var lo = a, hi = b;
+    for (var i = 0; i < 40; i++) { var m = (lo + hi) / 2; if (f(m) > 0.002) lo = m; else hi = m; }
+    return hi;
+  }
+  var TE_IHR = some(opIHR, 13.3, 15.0), TE_JAM = some(opJam, 14.5, 16.2), TE_NOAA = some(opNOAA, 15.7, 18.6);
+  window.__s75trocas = { IHR: TE_IHR, Jam: TE_JAM, NOAA: TE_NOAA };   // só leitura, para a medida
+  // o lugar na pilha: abre com a entrada (0,3 s, a mesma rampa da opacidade); fica inteiro enquanto a linha some; fecha em 0,3 s depois
+  function lugar(t, t0, te) { return t < te ? eo(seg(t, t0, 0.3)) : 1 - eb(seg(t, te, 0.3)); }
+  // a pilha: de baixo para cima, na ordem da lista; cada linha sobe a soma das alturas das de baixo, cada uma pesada pelo LUGAR dela
+  // (a que entra abre o lugar dela enquanto aparece; a que sai só fecha o dela depois de sumir): nenhuma linha salta, nenhuma cruza outra
   function creditos(vidas) {
     var base = 0;
     vidas.forEach(function (q) {
       var e = E(q[0]); if (!e) return;
-      var op = clamp(q[1], 0, 1);
+      var op = clamp(q[1], 0, 1), lg = clamp(q[2], 0, 1);
       e.style.opacity = op.toFixed(3);
       e.style.visibility = op > 0.002 ? "visible" : "hidden";
       e.style.transform = "translateY(" + f2(-base) + "px)";
-      base += e.offsetHeight * op;
+      base += e.offsetHeight * lg;
     });
   }
 

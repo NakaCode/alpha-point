@@ -44,6 +44,14 @@
       de 19,3°N (o achado do espectador r1b, mantidos[1]: "esmaecer as bordas leste e oeste … ~80–100 px no 4K, para fora, como as
       pontas da faixa na s39"). A borda de cima (a borda norte da fossa) e a de baixo (a costa) ficam inteiras. O anel (fora da
       região, a oeste) deixa de encostar numa borda reta. O alfinete continua dentro da região (instrução 3 do textos-tela, PA015).
+
+  ARTE-5, LOTE M1 (29/10/2026; textos-tela 58a328d0…, sem mudança nas entradas da s13): um conserto só, o resto como estava.
+    · O degradê das bordas leste e oeste da região passa de 90 px lineares a 300 px em smoothstep (13 paradas de 3s²−2s³), para
+      dentro, indo a zero no meridiano declarado (o espectador r2, mantidos[0]: "~280–320 px no 4K … smoothstep … indo a zero no
+      meridiano"; com 90 px os lados ainda se liam como duas retas verticais no quadro de 960 px). A conta na projeção
+      (_tmp/arte-5/M1/conta_s13.py): de 1,968 a 3,6 s a região tem 1.278–1.349 px de largura, e o casco do navio fica de 56 a 76 px
+      dentro do miolo aceso a oeste e de 19 a 36 px a leste; o alfinete (x ~1.960–1.972) fica no centro. A borda de cima, a de baixo,
+      o --neutro a 25 %, a entrada em "north" (1,968, 500 ms) e a geometria não mudam.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>
@@ -235,7 +243,8 @@ window.__GEO["regiao-norte-pr-m2"] = {"type":"FeatureCollection","features":[{"t
   //    pontas leste e oeste, que são os meridianos DECLARADOS (67,27122°W e 65,59035°W), esmaecidas por um degradê ao longo do
   //    paralelo de 19,3°N (perpendicular aos meridianos também com o giro): 0 → 1 nos 90 px de dentro de cada ponta, no 4K
   //    (o pedido: 80–100 px; a s39 usa o mesmo esquema com 150). A borda de cima (a fossa) e a de baixo (a costa) ficam inteiras ──
-  var RG = { tmp: null, x0: -67.27122, x1: -65.59035, latRef: 19.3, faixaPx: 90 };
+  //    arte-5, lote M1: a faixa passa a 300 px, em smoothstep (o espectador r2, mantidos[0]; os 90 px lineares ainda liam como retas)
+  var RG = { tmp: null, x0: -67.27122, x1: -65.59035, latRef: 19.3, faixaPx: 300, paradas: 12 };
   function regiaoQuadro(t, A) {
     var v = 0.25 * A.janela(t, CENA.regiao.entra, null, 0.5);
     if (!(v > 0) || !ILU.g) return;
@@ -255,8 +264,11 @@ window.__GEO["regiao-norte-pr-m2"] = {"type":"FeatureCollection","features":[{"t
     var L = Math.hypot(b.x - a.x, b.y - a.y);
     if (L > 2 * RG.faixaPx) {
       var fx = RG.faixaPx / L, gr = k.createLinearGradient(a.x, a.y, b.x, b.y);
-      gr.addColorStop(0, "rgba(0,0,0,0)"); gr.addColorStop(fx, "rgba(0,0,0,1)");
-      gr.addColorStop(1 - fx, "rgba(0,0,0,1)"); gr.addColorStop(1, "rgba(0,0,0,0)");
+      for (var i = 0; i <= RG.paradas; i++) {
+        var s = i / RG.paradas, al = (s * s * (3 - 2 * s)).toFixed(4);
+        gr.addColorStop(fx * s, "rgba(0,0,0," + al + ")");
+        gr.addColorStop(1 - fx * s, "rgba(0,0,0," + al + ")");
+      }
       k.globalCompositeOperation = "destination-in"; k.fillStyle = gr; k.fillRect(0, 0, 3840, 2160);
       k.globalCompositeOperation = "source-over";
     }
