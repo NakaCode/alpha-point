@@ -133,6 +133,19 @@ Virgens, a 2.400 m (2015). Na tela vai o lugar real de cada um. Uso assim?" A re
 (Recomendado)"**. A opção dizia: "Mostram o animal de que a fala trata, filmado pela NOAA, com o lugar e a profundidade de origem na
 legenda. Nada na tela diz que é a fossa." É esta resposta, e não a das 14:0x, que vai à `excecao_lucas` do conferente na s27 e na s72.
 
+## O vídeo da cena 72 (29/10/2026, 00:1x, no chat da Sala, na conta reserva)
+
+O `conferente-de-midia` (lote 4) mandou trocar o vídeo de St. Croix, que a resposta das 17:38 tinha coberto: o pepino-do-mar dele é
+transparente, com o miolo amarelo, e a frase da s72 ("From the outside, the two look a lot alike in color, texture and shape.") diz
+que ele se parece com o peixe-caracol rosa da s27. Ele deu `pendente_lucas` à reserva, porque é HD e a resposta das 17:38 não a
+nomeou. A Sala mandou a comparação dos três (`out/atlantico-fundo/_tmp/conferencia/lote4/s72-par-comparar.jpg`) e perguntou: "Na cena
+72, a frase diz que o peixe-caracol e o pepino-do-mar "se parecem na cor, na textura e na forma". O vídeo de St. Croix que você
+liberou às 17:38 mostra um pepino-do-mar transparente, que não lembra o peixe rosa da cena 27. Outro vídeo da NOAA, também só em HD,
+mostra no fim um pepino-do-mar inteiro, rosa-arroxeado: Samoa Americana, 2.300 m, agosto de 2026. Uso esse, com o lugar real na
+tela?" A resposta: **"Usar o da Samoa (Recomendado)"**. A opção dizia: "Entra a última tomada do vídeo da NOAA da Samoa Americana, em
+HD, ao lado do peixe-caracol, com o lugar e a profundidade de origem na legenda. Nada na tela diz que é a fossa." Vai ao conferente
+como `excecao_lucas` do vídeo da Samoa.
+
 ## A gravura do Challenger (28/10/2026, 17:5x, no chat da Sala, na conta reserva)
 
 O `conferente-de-midia` (lote 2) deu `pendente_lucas` à gravura da s17. A pergunta: "Na cena 17, não existe fotografia do navio HMS

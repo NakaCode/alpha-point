@@ -3,39 +3,49 @@
 O `pesquisa-pessoas`, no passo `research`. O espelho é `out/atlantico-fundo/espelho.json` (sha256 `8899a33b…`, 75 cenas). Os dados completos
 estão em `pauta-pessoas.json`, e a procedência de cada arquivo está no `_PROCEDENCIA.json` da pasta dele.
 
-**Atualizada às 15:3x (2ª rodada, depois do `conferente-de-midia`, lote 1).** O conferente aprovou Nares (s17) e reprovou Brownson (s14)
-e Jamieson (s56). Os dois reprovados saíram de `_media/pessoa/` para `_media/_caca/_retirado/pessoa/s14/` e `…/s56/`, cada um com o
-`_PROCEDENCIA.json` dele, sem mudar um byte. Vescovo (s52) ficou fora do lote 1 e ainda espera o conferente. Nenhuma cena cita um
-arquivo sem `aprovado` casado pelo sha256.
+**Atualizada às 21:1x (4ª rodada, depois do `conferente-de-midia`, lote 4).** O conferente aprovou Brownson (s14) e Jamieson (s56) na
+reconferência do lote 4 (20:59), com as buscas feitas, e o Vescovo (s52), que era arquivo novo do lote. Os dois voltaram de
+`_media/_caca/_retirado/pessoa/` para `_media/pessoa/s14/` e `…/s56/`, cada um com o `_PROCEDENCIA.json` dele, sem mudar um byte do
+retrato. A procedência só ganhou o campo `volta`. Os quatro retratos em `_media/pessoa/` têm `aprovado` casado pelo sha256. O espelho
+desta rodada é o r3b (sha256 `2d411782…f468`).
+
+Às 15:3x (2ª rodada, depois do lote 1), o conferente tinha aprovado Nares (s17) e reprovado Brownson e Jamieson. Os dois saíram então
+para `_media/_caca/_retirado/pessoa/`. A retirada e a volta de cada um estão no item dele em `pauta-pessoas.json` (`retirada` e `volta`).
 
 ## Os retratos em `_media/pessoa/`
 
 | Cena | Pessoa | Arquivo | Medida | Licença | Crédito na tela | Aviso do ano | Conferente |
 |---|---|---|---|---|---|---|---|
+| s14 | W. H. Brownson | `_media/pessoa/s14/willard-h-brownson-harris-ewing-1907-nh57975-commons.jpg` (NH 57975) | 3284×5322, 17,5 MP | domínio público nos EUA (Harris & Ewing, 1907) | nenhum | sim: a faixa da origem, 1900–1909 (o veredito sugere `Photo from about 1900–1909`; a forma é do redator) | aprovado (lote 4) |
 | s17 | George Nares | `_media/pessoa/s17/george-nares-lock-whitfield-rijksmuseum-commons.jpg` | 7214×4534, 32,7 MP (a página dupla) | domínio público (Rijksmuseum; CC0) | nenhum | `Photo from the 1870s` (recomendado) | aprovado (lote 1) |
-| s52 | Victor Vescovo | `_media/pessoa/s52/victor-vescovo-varcoe-2018-commons.jpg` | 2048×1152, 2,4 MP | CC BY-SA 4.0 (Caladan Oceanic, VRT) | `Richard Varcoe / Wikimedia Commons · CC BY-SA 4.0` | nenhum (a foto é de 2018) | ainda não conferido |
+| s52 | Victor Vescovo | `_media/pessoa/s52/victor-vescovo-varcoe-2018-commons.jpg` | 2048×1152, 2,4 MP | CC BY-SA 4.0 (Caladan Oceanic, VRT) | o veredito dá `Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0` (ressalva 3) | nenhum (a foto é de 2018) | aprovado (lote 4) |
+| s56 | Alan J. Jamieson | `_media/pessoa/s56/alan-j-jamieson-gnangcomapp-2022-commons.jpg` | 3000×4000, 12 MP | CC BY-SA 4.0 (Gnangcomapp) | `Gnangcomapp / Wikimedia Commons · CC BY-SA 4.0` | `Photo from 2022` | aprovado (lote 4) |
 
 As medidas são do ffprobe. Nenhum retrato foi ampliado, e todos ficam abaixo de 40 MP.
 
-## Os retirados (em `_media/_caca/_retirado/pessoa/`)
+| Cena | sha256 do retrato (antes e depois da volta) | sha256 da procedência (antes → depois da volta) |
+|---|---|---|
+| s14 | `fa90788bd1294a3ce5cce721d269218c5527f3f8f697da0ecdca41c61fd78c62` | `68ef2b0d…e7a8` → `bcb6691bfe31d79296ae0619297aac3df7bb6d80219168e9eb19f041f04c82b3` |
+| s56 | `679f2962b235745684ee66c56409d145602c6ff1e003e8a617d3434cea1794b8` | `fceb0a29…a36d` → `7afa0f4d23866ea369a58c17bd545110314da1c60d3570f4418e166e653c598c` |
 
-| Cena | Arquivo | sha256 (antes e depois de mover) | Veredito | O que falta |
-|---|---|---|---|---|
-| s14 | `s14/willard-h-brownson-harris-ewing-1907-nh57975-commons.jpg` (NH 57975, 1900–1909) | `fa90788bd1294a3ce5cce721d269218c5527f3f8f697da0ecdca41c61fd78c62` | reprovado: o NHHC não tinha sido visto | o NH 64332 (1890–1899) baixado em "Med" não enche o card sem ampliar (abaixo): falta o TIFF, a volta deste ou uma decisão do Lucas |
-| s56 | `s56/alan-j-jamieson-gnangcomapp-2022-commons.jpg` (29/09/2022) | `679f2962b235745684ee66c56409d145602c6ff1e003e8a617d3434cea1794b8` | reprovado: a busca de 2019 não tinha sido feita | nada: a busca foi feita e não achou foto de 2018–2019 que sirva. Este arquivo volta ao conferente com ela |
+O `id` dos dois vereditos do lote 4 ainda é o caminho em `_retirado`, de quando eles foram julgados. No retrato, o veredito casa pelo
+sha256 do arquivo, que é o mesmo.
 
-Os `_PROCEDENCIA.json` foram junto, sem mudança: o de s14 tem sha256 `68ef2b0d…e7a8`, e o de s56, `fceb0a29…a36d`.
+## Os retirados
+
+Nenhum. `_media/_caca/_retirado/pessoa/` ficou vazia.
 
 ## A janela de cada card (o quadro de 932 × 932 px)
 
 | Cena | Janela | Escala | O que fica fora |
 |---|---|---|---|
+| s14 | x 400–2900, y 300–2800 | 0,37x | a dragona de contra-almirante e a legenda impressa ("REAR-ADMIRAL…"), que o card não mostra porque diz o cargo de 1883 |
 | s17 | x 1450–2750, y 1250–2550 | 0,72x | a página de texto, à direita. Nos cantos aparece o passe-partout creme do oval |
 | s52 | x 800–1952, y 0–1152 | 0,81x | — (uma gota d'água pendurada no alto entra na janela) |
+| s56 | x 1000–1950, y 600–1550 (a de cima dos bolsos, que o conferente recomenda) | 0,98x | o brasão da UWA e o distintivo da Minderoo. A janela da 1ª rodada (x 1025–2125, y 650–1750, 0,85x) os mostra |
 
-As janelas dos retirados, se eles voltarem:
-- s14: x 400–2900, y 300–2800 (0,37x);
-- s56: x 1025–2125, y 650–1750 (0,85x). O conferente sugere parar acima dos bolsos (950 px, y 600–1550), para tirar os logos da UWA e da Minderoo.
+Olhei de novo as janelas de s14 e s56 nesta rodada, feitas do próprio arquivo (`_tmp/pesquisa-pessoas/ver/r4-*`). Nas duas, o rosto
+fica inteiro.
 
 ## Nome e cargo, como a fonte os dá
 
@@ -112,6 +122,14 @@ Outras cópias abertas do NH 64332 (a conta do NHHC no Flickr, por exemplo) não
   2. O NH 57975 (1900–1909) de volta pelo reconferir, com o texto do NHHC que a Sala copiou.
   3. O "Med" pela exceção da foto pequena (1,24×), só com decisão do Lucas.
 
+### O caminho seguido (4ª rodada, 21:1x)
+
+- **Foi o 2.** O conferente aprovou o NH 57975 no lote 4, e ele voltou a `_media/pessoa/s14/`.
+- **O NH 64332 fica fora da entrega.**
+  - O "Med" continua em `_tmp/navegador/nh64332/`, onde a Sala o pôs, e não se move.
+  - No lote 4, o conferente o olhou só como prova da busca, sem julgá-lo.
+- **O TIFF do NH 64332 só entra se o Lucas o baixar ele mesmo**, e aí com conferência nova (espelho r3b, s14; veredito do lote 4).
+
 ## s56: a busca do retrato de Jamieson de 2018–2019
 
 Nenhum retrato dele de 2018–2019 serve. O detalhe está em `pauta-pessoas.json`, `retirados` › Alan J. Jamieson › `busca_do_ano`.
@@ -136,6 +154,9 @@ Nenhum retrato dele de 2018–2019 serve. O detalhe está em `pauta-pessoas.json
 **Conclusão:** o retrato de 2022 é, das fotos que servem, a do ano mais perto de 2019. Ele volta ao conferente em conferência nova, com esta
 busca. Nada ficou sem conferir por recusa de site.
 
+**4ª rodada:** o conferente o aprovou no lote 4 ("a busca pela de 2018–2019 (Caladan, Newcastle, UWA) não achou nenhuma que sirva"), e
+ele voltou a `_media/pessoa/s56/`.
+
 ## Sem retrato: Heather A. Stewart (s56)
 
 O card dela sai só com nome e cargo. A busca foi esta:
@@ -152,8 +173,11 @@ O card dela sai só com nome e cargo. A busca foi esta:
 
 ## As ressalvas, para o conferente e a Sala
 
-1. **Brownson.** O retrato retirado não é obra federal: entra por prazo vencido nos EUA (Harris & Ewing, 1907). Fora dos EUA, não conferi.
+1. **Brownson.** O retrato não é obra federal: entra por prazo vencido nos EUA (Harris & Ewing, 1907). Fora dos EUA, não conferi.
    Ele mostra o uniforme de contra-almirante, uns 24 anos depois de 1883.
+   - O aviso diz a faixa que a origem dá, 1900–1909. Não vale o `Photo from the 1900s` que a procedência gravou na 1ª rodada (se lê
+     como o século), nem `Photo from 1907` (é o ano do copyright impresso). A procedência guarda os dois textos antigos, e a `volta`
+     dela diz que vale o veredito.
 2. **Nares.** O Rijksmuseum está entre os acervos "não perguntados" de midia.md §7.3. O retrato de pessoa histórica entra pelo §7.2 ("museu, Wikimedia Commons com licença conferida"). O conferente aprovou.
 3. **Vescovo.**
    - A pauta (§6) diz "Fora: a Five Deeps, que não é livre". Este arquivo é a própria Caladan Oceanic licenciando o retrato em CC BY-SA 4.0, com bilhete VRT (2019022710007903).
@@ -162,5 +186,6 @@ O card dela sai só com nome e cargo. A busca foi esta:
      (`Richard Varcoe / Wikimedia Commons · CC BY-SA 4.0`). A forma final é do `redator-de-tela`.
 4. **Jamieson.**
    - O retrato de 2022 é o fallback do ofício: Commons com licença explícita, e é a imagem P18 do Wikidata dele.
-   - O logo da UWA aparece na camisa. A foto é de 2022, e o cargo do card é o de 2019 (Newcastle).
+   - O logo da UWA aparece na camisa. A foto é de 2022, e o cargo do card é o de 2019 (Newcastle). Na janela de cima dos bolsos, que o
+     conferente recomenda, o logo fica fora.
    - O arquivo foi girado conforme o EXIF e regravado. O sha256 do download original está na procedência.

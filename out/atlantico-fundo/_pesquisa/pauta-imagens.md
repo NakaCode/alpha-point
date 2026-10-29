@@ -1,9 +1,115 @@
-# Vídeo 4 (`atlantico-fundo`) · pauta de imagens (rodada 1 e a rodada da noite, rascunho)
+# Vídeo 4 (`atlantico-fundo`) · pauta de imagens (rodada 1, a rodada da noite e a entrega)
 
-Pesquisa de imagens, passo `research`, 28/10/2026. **Nada entregue**: tudo está no rascunho
-`out/atlantico-fundo/_media/_caca/<cena>/acervo-livre/`. A fonte da verdade é o `pauta-imagens.json` (mesma pasta); este arquivo
+Pesquisa de imagens, passo `research`, 28/10/2026. **17 arquivos entregues** (seção "A entrega", abaixo); o resto continua no
+rascunho `out/atlantico-fundo/_media/_caca/<cena>/acervo-livre/`. A fonte da verdade é o `pauta-imagens.json` (mesma pasta); este arquivo
 é o resumo. Os tempos de plano são os do espelho r3b (sha256 `2d411782…f468`). O veredito é o do `conferente-de-midia`
-(`conferencia-midia.json`, lotes 1 a 3), casado pelo sha256; "—" é arquivo que o conferente ainda não julgou.
+(`conferencia-midia.json`, lotes 1 a 4), casado pelo sha256; "—" é arquivo que o conferente ainda não julgou.
+
+## A entrega (28/10/2026, noite)
+
+Os 17 arquivos com `aprovado` no `conferencia-midia.json` (lotes 1 a 4, sha256 `995d915c20fd…`) cujo rascunho está
+em `_media/_caca/<cena>/acervo-livre/` e bate pelo sha256 com o veredito. 14 entraram pelo `buscar-midia entregar` (linha selada);
+3 (s27, s44 e s66) à mão, por não terem selo (baixados pelo `amao.mjs`), com os campos da roupa §5 no `_PROCEDENCIA.json`. Em cada
+`_PROCEDENCIA.json` vão também o `sha256_rascunho_julgado`, o bloco `conferencia` e o `para_a_tela`, com o crédito, a data, o
+aviso do ano e o lugar **copiados do veredito**. Nada saiu do rascunho; a entrega copiou.
+
+- **A s01 foi reduzida** no gate do ofício §10 (lei PESQ-18): o JPEG da ISS é progressivo, 6902×4601 e 19,3 MB, o caso que já
+  estourou o carregamento das fotos no render. Entregue a 5120×3414, baseline (10,5 MB); o veredito casa pelo
+  `medido_no_download.sha256`. O original continua no rascunho.
+- **A prancha 13 da s12** é a página dupla do livro, com a prancha girada 90° na página da direita: o recorte e o giro são da cena.
+- **A s27** tem trilha de áudio e roda a 29,97 fps; o começo traz a legenda da NOAA gravada no quadro, e a 3ª tomada (20,5–31,5 s)
+  é a limpa. O veredito não grava `data_na_origem` nem `aviso_de_ano` para ela.
+- **As duas da s43** são reserva do aéreo em vídeo do banco (item `s43-a` da lista de caça).
+
+- **s01** · `_media/foto/s01/s01-iss071-e-1036-puerto-rico-nasa.jpg` (5120x3414) · buscar-midia entregar + gate do ofício §10 (reduzido a 5120 px, JPEG baseline)
+  - sha256 do rascunho julgado `d4ca77533cd33f0e…`; entregue `0de1767936d59da9…`
+  - crédito na tela (veredito): nenhum (domínio público federal; identidade §7). Na descrição: 'Image courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center' (a linha da NASA EO, pela pauta), com ISS071-E-1036
+  - data na origem (veredito): Taken on 6 April 2024; aviso do ano: não
+  - lugar na origem (veredito): Puerto Rico (Caribbean) (Commons; a página da NASA EO é 'Puerto Rico From Above', e a de 50 mm é a vista larga da ilha)
+- **s12** · `_media/foto/s12/s12-blake-steamer-plate1-sigsbee-1880-rijksmuseum.jpg` (2507x1965) · buscar-midia entregar
+  - sha256 do rascunho julgado `04370884a15f9a18…`; entregue `04370884a15f9a18…`
+  - crédito na tela (veredito): nenhum (CC0 e domínio público por idade; identidade §7). Na descrição, se o redator quiser: Rijksmuseum; C. D. Sigsbee, Deep-Sea Sounding and Dredging (U.S. Coast and Geodetic Survey, 1880)
+  - data na origem (veredito): ca. 1870 – in or before 1880 (o Rijksmuseum, pela página do Commons); aviso do ano: sim
+  - lugar na origem (veredito): — (a origem não nomeia lugar: o rótulo não leva lugar)
+- **s12** · `_media/foto/s12/s12-sigsbee-sounding-machine-on-blake-plate-sigsbee-1880-rijksmuseum.jpg` (7274x4342) · buscar-midia entregar
+  - sha256 do rascunho julgado `064ee016fd929927…`; entregue `064ee016fd929927…`
+  - crédito na tela (veredito): nenhum (CC0 e domínio público por idade; identidade §7)
+  - data na origem (veredito): ca. 1870 – in or before 1880 (o Rijksmuseum, pela página do Commons); aviso do ano: sim
+  - lugar na origem (veredito): — (a origem não nomeia lugar: o rótulo não leva lugar)
+- **s17** · `_media/foto/s17/s17-hms-challenger-iln-1872-engraving.jpg` (2000x1371) · buscar-midia entregar
+  - sha256 do rascunho julgado `21e581fe31abd86a…`; entregue `21e581fe31abd86a…`
+  - crédito na tela (veredito): nenhum (domínio público por idade; identidade §7). Na descrição: The Illustrated London News, Dec. 14, 1872
+  - data na origem (veredito): 14 December 1872; aviso do ano: sim
+  - lugar na origem (veredito): Sheerness ('Depicted place' na página; 'HMS Challenger's refit commenced at the Royal Navy's Sheerness Dockyard in June 1872')
+- **s19** · `_media/foto/s19/s19-uss-milwaukee-cl5-new-york-1942-01-07-nara-19-n-27088.jpg` (5642x4179) · buscar-midia entregar
+  - sha256 do rascunho julgado `a6e8a8e3d8da5f5b…`; entregue `a6e8a8e3d8da5f5b…`
+  - crédito na tela (veredito): nenhum (domínio público federal; identidade §7). Na descrição: U.S. Navy photo, National Archives (19-N-27088)
+  - data na origem (veredito): 7 January 1942; aviso do ano: sim
+  - lugar na origem (veredito): off the New York Naval Shipyard, New York City (USA)
+- **s24** · `_media/foto/s24/s24-bathyscaphe-archimede-cite-de-la-mer-2021-spekking.jpg` (5858x3295) · buscar-midia entregar
+  - sha256 do rascunho julgado `65f8177ccfde8af2…`; entregue `65f8177ccfde8af2…`
+  - crédito na tela (veredito): Raimond Spekking / Wikimedia Commons · CC BY-SA 4.0
+  - data na origem (veredito): 27 December 2021; aviso do ano: não
+  - lugar na origem (veredito): the Cité de la Mer museum, Cherbourg
+- **s27** · `_media/footage/s27/s27-snailfish-seascape-alaska5-ex2306-dive08-1365m-2023-noaa-hd.mp4` (1920x1080, 39.306 s) · à mão (linha sem selo), cópia byte a byte
+  - sha256 do rascunho julgado `b9ee3737f5c21e51…`; entregue `b9ee3737f5c21e51…`
+  - crédito na tela (veredito): nenhum (domínio público federal; identidade §7). Na descrição: NOAA Ocean Exploration, Seascape Alaska 5 (2023), com a URL da página
+  - data na origem (veredito): — (o veredito não grava); aviso do ano: — (o veredito não grava)
+  - lugar na origem (veredito): Site: Denson Seamount; Expedition: Seascape Alaska 5; Depth: 1,365 meters (4,480 feet) (a legenda gravada no vídeo); a página: 'during dive 8 of NOAA Ocean Exploration's 2023 Seascape Alaska 5 expedition'
+- **s29** · `_media/foto/s29/s29-cusk-eel-ophidiid-salmon-bank-2015-noaa.jpg` (1920x1080) · buscar-midia entregar
+  - sha256 do rascunho julgado `26ebf9b35945c9b3…`; entregue `26ebf9b35945c9b3…`
+  - crédito na tela (veredito): nenhum (domínio público federal; identidade §7). Na descrição: NOAA Office of Ocean Exploration and Research
+  - data na origem (veredito): 2015 (Commons; os metadados da câmera dizem 2006); aviso do ano: não
+  - lugar na origem (veredito): off Salmon Bank, Papahānaumokuākea Marine National Monument (PMNM), Northwestern Hawaiian Islands
+- **s32** · `_media/foto/s32/s32-noaa-ship-ronald-h-brown-gulf-of-mexico-2003-noaa.jpg` (3008x2000) · buscar-midia entregar
+  - sha256 do rascunho julgado `df01336ec8e10f82…`; entregue `df01336ec8e10f82…`
+  - crédito na tela (veredito): NOAA Photo Library / Wikimedia Commons · CC BY 2.0
+  - data na origem (veredito): 27 September 2003; aviso do ano: não
+  - lugar na origem (veredito): Gulf of Mexico
+- **s41** · `_media/foto/s41/s41-mayaguez-correo-y-casino-1918-earthquake-el-mundo.jpg` (5902x4814) · buscar-midia entregar
+  - sha256 do rascunho julgado `80d4ca691ab7409b…`; entregue `80d4ca691ab7409b…`
+  - crédito na tela (veredito): nenhum (domínio público, PD-1923; identidade §7). Na descrição: Colección de Fotos del Periódico El Mundo, Universidad de Puerto Rico, Recinto de Río Piedras, via Wikimedia Commons
+  - data na origem (veredito): 1918; aviso do ano: não
+  - lugar na origem (veredito): Mayagüez, Puerto Rico ('The US Post Office and Casino in Mayagüez, Puerto Rico after the Earthquake of San Firmín in 1918')
+- **s43** · `_media/foto/s43/s43-anegada-flying-past-aerial-2011-12-27-david-broad.jpg` (3264x2448) · buscar-midia entregar
+  - sha256 do rascunho julgado `a4030807ee086b50…`; entregue `a4030807ee086b50…`
+  - crédito na tela (veredito): David Broad / Wikimedia Commons · CC BY 3.0
+  - data na origem (veredito): Taken on 27 December 2011; aviso do ano: não
+  - lugar na origem (veredito): 'Flying past Anegada island in the BVI chain'
+- **s43** · `_media/foto/s43/s43-anegada-island-aerial-2012-david-broad.jpg` (3264x2448) · buscar-midia entregar
+  - sha256 do rascunho julgado `6668c746fc6d8bac…`; entregue `6668c746fc6d8bac…`
+  - crédito na tela (veredito): David Broad / Wikimedia Commons · CC BY 3.0
+  - data na origem (veredito): 5 January 2012 (original upload date); aviso do ano: não
+  - lugar na origem (veredito): 'Anegada Island, part of the British Virgin Islands'
+- **s44** · `_media/foto/s44/s44-anegada-brain-coral-boulder-750ft-inland-atwater-usgs.jpg` (3264x2448) · à mão (linha sem selo), cópia byte a byte
+  - sha256 do rascunho julgado `493354fc37e4414b…`; entregue `493354fc37e4414b…`
+  - crédito na tela (veredito): nenhum (domínio público federal; identidade §7). Na descrição: Brian F. Atwater, U.S. Geological Survey, com a URL da página
+  - data na origem (veredito): — (o veredito não grava); aviso do ano: não
+  - lugar na origem (veredito): '…stands 750 feet inland in the British Virgin Islands.' (a legenda da foto); 'The coral boulders were found in the British Virgin Islands at Anegada' (a notícia do USGS de 20/03/2017 que publica a foto com o crédito)
+- **s47** · `_media/foto/s47/s47-okeanos-explorer-deploys-deep-discoverer-2015-04-10-noaa.png` (999x666) · buscar-midia entregar
+  - sha256 do rascunho julgado `3edbb0687d9b8c2f…`; entregue `3edbb0687d9b8c2f…`
+  - crédito na tela (veredito): nenhum (domínio público federal; identidade §7). Na descrição: NOAA Office of Ocean Exploration and Research, Exploring Puerto Rico's Seamounts, Trenches, and Troughs (2015)
+  - data na origem (veredito): 10 April 2015; aviso do ano: não
+  - lugar na origem (veredito): 'off Puerto Rico' (o título e a descrição)
+- **s48** · `_media/foto/s48/s48-pressure-drop-limiting-factor-pre-dive-2018-12-17-caladan.jpg` (2400x1349) · buscar-midia entregar
+  - sha256 do rascunho julgado `4c3e79a733fd7bbb…`; entregue `4c3e79a733fd7bbb…`
+  - crédito na tela (veredito): Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0
+  - data na origem (veredito): 17 December 2018, 13:00:50; aviso do ano: não
+  - lugar na origem (veredito): 'im Rahmen der Tauchgänge im Atlantischen Ozean' (no Atlântico); o título: 'to be prepared for a dive into the Atlantic Ocean'
+- **s53** · `_media/foto/s53/s53-limiting-factor-underwater-test-phase-2018-caladan.jpg` (2400x1250) · buscar-midia entregar
+  - sha256 do rascunho julgado `3a20efe287856061…`; entregue `3a20efe287856061…`
+  - crédito na tela (veredito): Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0
+  - data na origem (veredito): 2018 ('The pictures shows the deep diving submersible Limiting Factor during the test phase near in 2018'); aviso do ano: não
+  - lugar na origem (veredito): — (a origem não nomeia lugar: o rótulo não leva lugar)
+- **s66** · `_media/foto/s66/s66-mount-michael-landsat8-oli-2026-08-24-nasa-eo.jpg` (2993x2494) · à mão (linha sem selo), cópia byte a byte
+  - sha256 do rascunho julgado `7d3660ca02a463fa…`; entregue `7d3660ca02a463fa…`
+  - crédito na tela (veredito): nenhum (domínio público federal; identidade §7). Na descrição: NASA Earth Observatory images by Michala Garrison, using Landsat data from the U.S. Geological Survey
+  - data na origem (veredito): August 24, 2026 ('acquired with the OLI (Operational Land Imager) on Landsat 8 on August 24, 2026'); aviso do ano: não
+  - lugar na origem (veredito): 'Mount Michael on Saunders Island'; 'Saunders Island is one of the South Sandwich Islands' (a página da NASA Earth Observatory)
+
+Não entregues, por veredito: os `trocar` (s01 1042, s17 Mitchell, s19 1938, s29 CAS 36574, s32 2014, s41 torre de Mayagüez, s48 Leith,
+s53 Yeti-Hunter, 19/12/2018 e Cumberland, s72 St. Croix), os `reprovado` (s24 1962, s41 as duas do NCEI) e o `pendente_lucas`
+(s72 Samoa, que o Lucas ainda decide). Sem veredito, fora da cena: o trailer da s47 e a vista da água da s43.
 
 ## A rodada da noite (28/10/2026)
 
@@ -24,42 +130,42 @@ Pesquisa de imagens, passo `research`, 28/10/2026. **Nada entregue**: tudo está
 
 ## Cena a cena
 
-| Cena | Plano | Papel | Arquivo | Medida | Fonte · licença | Data na origem | Crédito proposto | Veredito |
-|---|---|---|---|---|---|---|---|---|
-| s01 | único (0–3,5 s), empurrão lento | preferida (decidida pelo Lucas: ISS071-E-1036) | `s01-iss071-e-1036-puerto-rico-nasa.jpg` | 6902x4601 | Wikimedia Commons · Public domain | 2024-04-06 (Nikon Z9, 50 mm; página da NASA EO de 14/11/2025) | sem crédito na tela | aprovado |
-| s01 | reserva de s01 (ou de s10, como a outra imagem real do lugar) | reserva | `s01-iss071-e-1042-san-juan-nasa-reserva.jpg` | 8256x5504 | Wikimedia Commons · Public domain | 2024-04-06 (Nikon Z9, 290 mm) | sem crédito na tela | trocar |
-| s12 | 1 (60,433–64,967 s): o navio | preferida | `s12-blake-steamer-plate1-sigsbee-1880-rijksmuseum.jpg` | 2507x1965 | Wikimedia Commons · CC0 | ca. 1870 – em ou antes de 1880 (Rijksmuseum: 'ca. 1870 - in of voor 1880'); é a Plate 1 (frontispício) de Sigsbee, Deep-sea sounding and dredging, U.S. Coast and Geodetic Survey, 1880 | Rijksmuseum / Wikimedia Commons · CC0 | reprovado |
-| s12 | 2 (64,967–67,467 s): o Survey em trabalho | preferida (com recorte) | `s12-sigsbee-sounding-machine-on-blake-plate-sigsbee-1880-rijksmuseum.jpg` | 7274x4342 | Wikimedia Commons · CC0 | ca. 1870 – em ou antes de 1880 (o livro de Sigsbee, 1880) | Rijksmuseum / Wikimedia Commons · CC0 | reprovado |
-| s17 | 1 (97,1–103,0 s): o navio | preferida, com pergunta ao Lucas (gravura, não foto) | `s17-hms-challenger-iln-1872-engraving.jpg` | 2000x1371 | Wikimedia Commons · Public domain | 1872-12-14 (The Illustrated London News; reimpressa no Report of the Scientific Results ... HMS Challenger) | The Illustrated London News, 1872 / Wikimedia Commons · Public domain | aprovado |
-| s17 | reserva de s17 | reserva | `s17-hms-challenger-w-f-mitchell-print-pre1881.jpg` | 4952x3408 | Wikimedia Commons · Public domain | antes de 1881 (W. F. Mitchell; a série de estampas da Royal Navy; RMG tem a de 01/12/1880) | W. F. Mitchell / Wikimedia Commons · Public domain | trocar |
-| s19 | único (115,6–118,9 s) | item novo (a foto com data na origem mais perto de 1939; despacho da Sala, 28/10/2026, noite) | `s19-uss-milwaukee-cl5-1938-sam-hood-slnsw-8366.jpg` | 1400x960 | Wikimedia Commons (cópia do State Library of New South Wales, item 8366) · Public domain | 1938 (o campo date e o Date_of_Work do SLNSW; Names: 'Milwaukee (cruiser); United States. Navy; Australian Sesquicentenary (1938)') | sem crédito na tela | — |
-| s19 | único (115,6–118,9 s) | alternativa (a foto grande, de 1942, com o aviso do ano) | `s19-uss-milwaukee-cl5-new-york-1942-01-07-nara-19-n-27088.jpg` | 5642x4179 | Wikimedia Commons · Public domain | 1942-01-07 (off the New York Naval Shipyard; NARA 19-N-27088, Bureau of Ships) | sem crédito na tela | reprovado |
-| s24 | único (143,7–148,6 s) | preferida, com risco de licença | `s24-bathyscaphe-archimede-launch-1962-houot.jpg` | 3301x2393 | Wikimedia Commons · Public domain | 1962 (Commons; 'La mise à l'eau de l'Archimède') | Houot / Wikimedia Commons · Public domain | reprovado |
-| s24 | reserva de s24 | reserva | `s24-bathyscaphe-archimede-cite-de-la-mer-2021-spekking.jpg` | 5858x3295 | Wikimedia Commons · CC BY-SA 4.0 | 2021-12-27 | Raimond Spekking / Wikimedia Commons · CC BY-SA 4.0 | aprovado |
-| s27 | único (164,8–172,1 s) | preferida | `s27-snailfish-seascape-alaska5-ex2306-dive08-1365m-2023-noaa-hd.mp4` | 1920x1080, 39.306 s | NOAA Ocean Exploration (oceanexplorer.noaa.gov) · dominio publico federal dos EUA | 2023-08-31 (o cartão final do vídeo; Seascape Alaska 5, dive 8) | sem crédito na tela | aprovado |
-| s29 | 1 (179,5–184,6 s): o TIPO de peixe | preferida | `s29-abyssobrotula-galatheae-cas-36574-specimen.jpg` | 5634x2118 | Wikimedia Commons · CC0 | 2010 (a foto); o exemplar CAS 36574 foi coletado em 06/10/1968 (GBIF 473280064) | California Academy of Sciences / Wikimedia Commons · CC0 | trocar |
-| s29 | alternativa de s29 (o peixe vivo) | alternativa | `s29-cusk-eel-ophidiid-salmon-bank-2015-noaa.jpg` | 1920x1080 | Wikimedia Commons · Public domain | 2015 | sem crédito na tela | aprovado |
-| s32 | único (215,2–218,8 s) | preferida | `s32-noaa-ship-ronald-h-brown-gulf-of-mexico-2003-noaa.jpg` | 3008x2000 | Wikimedia Commons · CC BY 2.0 | 2003-09-27 (NOAA Photo Library, ship1906) | NOAA Photo Library / Wikimedia Commons · CC BY 2.0 | aprovado |
-| s32 | reserva de s32 | reserva | `s32-noaa-ship-ronald-h-brown-san-francisco-2014.jpg` | 4000x2664 | Wikimedia Commons · CC BY 2.0 | 2014-07-30 | rulenumberone2 / Wikimedia Commons · CC BY 2.0 | trocar |
-| s41 | 2 (316–319,6 s): o terremoto e o tsunami mataram | preferida | `s41-mayaguez-correo-y-casino-1918-earthquake-el-mundo.jpg` | 5902x4814 | Wikimedia Commons · Public domain | 1918 | El Mundo / Universidad de Puerto Rico | aprovado |
-| s41 | 1 (311,733–316 s): o tsunami na costa oeste | item novo, preferida do plano 1 (a costa: a casa na água junto à praia, com barcos e coqueiros) | `s41-mayaguez-house-washed-away-by-waves-shore-1918-ncei-273-033.jpg` | 1430x1100 | NOAA NCEI Natural Hazards Image Database (www.ngdc.noaa.gov/hazardimages), evento 273, 'October 1918 Puerto Rico, USA Images' · a pesar pelo conferente-de-midia | 1918 (evento 273 do NCEI, o terremoto e o tsunami de 11/10/1918; o crédito do item: 'Puerto Rico Ilustrado: YEAR IX. San Juan P.R. October 19, 1918. Num. 451'; o campo date do item vem vazio) | sem crédito na tela | — |
-| s41 | 1 (311,733–316 s): o tsunami na costa oeste | item novo, segunda do plano 1 (para a mesma mesa, ou reserva: a casa à deriva no mar) | `s41-mayaguez-house-washed-away-by-waves-adrift-1918-ncei-273-034.jpg` | 1430x1100 | NOAA NCEI Natural Hazards Image Database (www.ngdc.noaa.gov/hazardimages), evento 273, 'October 1918 Puerto Rico, USA Images' · a pesar pelo conferente-de-midia | 1918 (evento 273 do NCEI, o terremoto e o tsunami de 11/10/1918; o crédito do item: 'Puerto Rico Ilustrado: YEAR IX. San Juan P.R. October 19, 1918. Num. 451'; o campo date do item vem vazio) | sem crédito na tela | — |
-| s41 | fora (era o plano 1) | fora do plano 1 (conferente, lote 3: 'trocar': nenhuma das quatro fotos mostra o dano do tsunami); fica no rascunho | `s41-point-borinquen-album-mayaguez-tower-tidal-wave-1918-nara-26-lg-41-42.jpg` | 8950x6487 | U.S. National Archives (NARA) · NARA | outubro–novembro de 1918 (as fotos do álbum depois do terremoto de 11/10/1918; 26-LG-41-33A e 64A, do mesmo arquivo, são de 02/11/1918) | sem crédito na tela | trocar |
-| s43 | reserva de s43 | reserva | `s43-anegada-flying-past-aerial-2011-12-27-david-broad.jpg` | 3264x2448 | Wikimedia Commons · CC BY 3.0 | 2011-12-27 | David Broad / Wikimedia Commons · CC BY 3.0 | aprovado |
-| s43 | reserva de s43 (sem vídeo de banco) | reserva de acervo aberto | `s43-anegada-island-aerial-2012-david-broad.jpg` | 3264x2448 | Wikimedia Commons · CC BY 3.0 | 2012-01-05 (data de envio ao Panoramio; a foto é de avião) | David Broad / Wikimedia Commons · CC BY 3.0 | aprovado |
-| s43 | — | descartada pela pesquisa | `s43-water-view-of-anegada-panoramio.jpg` | 4320x3240 | Wikimedia Commons · CC BY-SA 3.0 | — | — | — |
-| s44 | único (327,4–330,2 s) | preferida | `s44-anegada-brain-coral-boulder-750ft-inland-atwater-usgs.jpg` | 3264x2448 | U.S. Geological Survey (usgs.gov, Multimedia Gallery) · dominio publico federal dos EUA | sem data na página da foto; publicada na notícia do USGS de 20/03/2017 | sem crédito na tela | aprovado |
-| s47 | nenhum: FORA da cena (Lucas, 28/10/2026, 15:0x: 'Foto do robô e mapa (Recomendado)') | fora da cena, pela decisão do Lucas; fica no rascunho | `s47-ex1502l3-dive09-2015-04-26-trailer-noaa.mov` | 640x360, 186.386 s | NOAA Ocean Exploration (NCEI, arquivo dos mergulhos do Okeanos Explorer) · dominio publico federal dos EUA | 2015-04-26 (o cartão do próprio vídeo: 'EX1502 Leg 3 Dive 09') | sem crédito na tela | — |
-| s47 | 3 (376,433–380,6 s): o robô e o navio, impressa sobre a mesa | preferida do plano 3 (aprovada pelo conferente, lote 3; a foto que o Lucas escolheu: 'Foto do robô e mapa (Recomendado)', 28/10/2026, 15:0x) | `s47-okeanos-explorer-deploys-deep-discoverer-2015-04-10-noaa.png` | 999x666 | Wikimedia Commons · Public domain | 2015-04-10 (a mesma expedição, EX1502 Leg 3) | sem crédito na tela | aprovado |
-| s48 | 2 (393,4–395,833 s) | era a preferida; fora do plano 2 (conferente, lote 3: 'trocar': a de 17/12/2018 da Caladan cobre o plano) | `s48-dssv-pressure-drop-leith-2019-geograph.jpg` | 3264x2448 | Wikimedia Commons · CC BY-SA 2.0 | 2019-09-06 | M J Richardson / Wikimedia Commons · CC BY-SA 2.0 | trocar |
-| s48 | plano 2 de s48 (393,4–395,833 s); aprovada pelo conferente no lote 3 | a do plano 2 (aprovada pelo conferente, lote 3; a Caladan entra pela decisão do Lucas, 28/10/2026, 15:0x: 'Pode usar, com crédito (Recomendado)') | `s48-pressure-drop-limiting-factor-pre-dive-2018-12-17-caladan.jpg` | 2400x1349 | Wikimedia Commons · CC BY-SA 4.0 | 2018-12-17 (os mergulhos no Atlântico, a Fossa de Porto Rico) | Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0 | aprovado |
-| s53 | 2 (434,4–439,367 s): o submersível, um homem só a bordo | item novo, preferida do plano 2 (a busca que o conferente pediu, lote 3) | `s53-limiting-factor-underwater-test-phase-2018-caladan.jpg` | 2400x1250 | Wikimedia Commons (Caladan Oceanic, permissão VRT) · CC BY-SA 4.0 | 2018 (a descrição: 'The pictures shows the deep diving submersible Limiting Factor during the test phase near in 2018'). O campo date do Commons, 2019-02-21, é a data do envio, perto da permissão VRT (25/02/2019), não a da foto. A fonte é um quadro de vídeo publicado no fivedeeps.com em outubro de 2018 (o caminho: wp-content/uploads/2018/10/LF-Bahamas-Highlight.01_49_46_09.Still005.jpg). | Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0 | — |
-| s53 | alternativa do plano 2 (434,4–439,367 s) | alternativa (fora do material da Five Deeps, 2019); o item novo de 2018 a passa | `s53-limiting-factor-aft-on-deck-2019-yeti-hunter.jpg` | 4320x2432 | Wikimedia Commons · CC BY-SA 4.0 | 2019-09-10 | Yeti-Hunter / Wikimedia Commons · CC BY-SA 4.0 | reprovado |
-| s53 | fora do plano 2 (conferente, lote 3: 'trocar'); serviria na s54 ('When he climbed out…'), atrás do cartão da citação, se a regência quiser, com conferência nova | fora do plano 2 (trocar, lote 3); candidata da s54, se a regência quiser | `s53-limiting-factor-after-puerto-rico-trench-dive-2018-12-19-caladan.jpg` | 2400x1349 | Wikimedia Commons · CC BY-SA 4.0 | 2018-12-19 18:19 (o dia do mergulho, depois de voltar à superfície) | Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0 | trocar |
-| s53 | fora (conferente, lote 3: 'trocar': o gelo desmente a fossa tropical) | fora (trocar, lote 3); fica no rascunho | `s53-limiting-factor-cumberland-east-bay-2019-01-31-caladan.jpg` | 2400x1462 | Wikimedia Commons · CC BY-SA 4.0 | 2019-01-31 | Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0 | trocar |
-| s66 | 1 e 2 (571,8–579,433 s): a ilha e o recorte da cratera | preferida | `s66-mount-michael-landsat8-oli-2026-08-24-nasa-eo.jpg` | 2993x2494 | NASA Earth Observatory · dominio publico federal dos EUA | 2026-08-24 (Landsat 8 OLI) | sem crédito na tela | — |
-| s72 | único (656,867–661,367 s), ao lado do peixe-caracol de s27 | preferida | `s72-swimming-sea-cucumber-ex1502-st-croix-2400m-2015-04-28-noaa-hd.mp4` | 1920x1080, 47.948 s | NOAA Ocean Exploration (oceanexplorer.noaa.gov) · dominio publico federal dos EUA | 2015-04-28 | sem crédito na tela | — |
-| s72 | reserva de s72 | reserva | `s72-swimming-sea-cucumber-ex2606-dive03-american-samoa-2026-noaa-hd.mp4` | 1920x1080, 84.284 s | NOAA Ocean Exploration (oceanexplorer.noaa.gov) · dominio publico federal dos EUA | 2026 (EX2606, Dive 03) | sem crédito na tela | — |
+| Cena | Plano | Papel | Arquivo | Medida | Fonte · licença | Data na origem | Crédito proposto pela pesquisa | Veredito (lotes 1 a 4) | Estado |
+|---|---|---|---|---|---|---|---|---|---|
+| s01 | único (0–3,5 s), empurrão lento | preferida (decidida pelo Lucas: ISS071-E-1036) | `s01-iss071-e-1036-puerto-rico-nasa.jpg` | 6902x4601 | Wikimedia Commons · Public domain | 2024-04-06 (Nikon Z9, 50 mm; página da NASA EO de 14/11/2025) | sem crédito na tela | aprovado | **entregue** em `_media/foto/s01/` |
+| s01 | reserva de s01 (ou de s10, como a outra imagem real do lugar) | reserva | `s01-iss071-e-1042-san-juan-nasa-reserva.jpg` | 8256x5504 | Wikimedia Commons · Public domain | 2024-04-06 (Nikon Z9, 290 mm) | sem crédito na tela | trocar | rascunho |
+| s12 | 1 (60,433–64,967 s): o navio | preferida | `s12-blake-steamer-plate1-sigsbee-1880-rijksmuseum.jpg` | 2507x1965 | Wikimedia Commons · CC0 | ca. 1870 – em ou antes de 1880 (Rijksmuseum: 'ca. 1870 - in of voor 1880'); é a Plate 1 (frontispício) de Sigsbee, Deep-sea sounding and dredging, U.S. Coast and Geodetic Survey, 1880 | Rijksmuseum / Wikimedia Commons · CC0 | aprovado | **entregue** em `_media/foto/s12/` |
+| s12 | 2 (64,967–67,467 s): o Survey em trabalho | preferida (com recorte) | `s12-sigsbee-sounding-machine-on-blake-plate-sigsbee-1880-rijksmuseum.jpg` | 7274x4342 | Wikimedia Commons · CC0 | ca. 1870 – em ou antes de 1880 (o livro de Sigsbee, 1880) | Rijksmuseum / Wikimedia Commons · CC0 | aprovado | **entregue** em `_media/foto/s12/` |
+| s17 | 1 (97,1–103,0 s): o navio | preferida, com pergunta ao Lucas (gravura, não foto) | `s17-hms-challenger-iln-1872-engraving.jpg` | 2000x1371 | Wikimedia Commons · Public domain | 1872-12-14 (The Illustrated London News; reimpressa no Report of the Scientific Results ... HMS Challenger) | The Illustrated London News, 1872 / Wikimedia Commons · Public domain | aprovado | **entregue** em `_media/foto/s17/` |
+| s17 | reserva de s17 | reserva | `s17-hms-challenger-w-f-mitchell-print-pre1881.jpg` | 4952x3408 | Wikimedia Commons · Public domain | antes de 1881 (W. F. Mitchell; a série de estampas da Royal Navy; RMG tem a de 01/12/1880) | W. F. Mitchell / Wikimedia Commons · Public domain | trocar | rascunho |
+| s19 | único (115,6–118,9 s) | item novo (a foto com data na origem mais perto de 1939; despacho da Sala, 28/10/2026, noite) | `s19-uss-milwaukee-cl5-1938-sam-hood-slnsw-8366.jpg` | 1400x960 | Wikimedia Commons (cópia do State Library of New South Wales, item 8366) · Public domain | 1938 (o campo date e o Date_of_Work do SLNSW; Names: 'Milwaukee (cruiser); United States. Navy; Australian Sesquicentenary (1938)') | sem crédito na tela | trocar | rascunho |
+| s19 | único (115,6–118,9 s) | alternativa (a foto grande, de 1942, com o aviso do ano) | `s19-uss-milwaukee-cl5-new-york-1942-01-07-nara-19-n-27088.jpg` | 5642x4179 | Wikimedia Commons · Public domain | 1942-01-07 (off the New York Naval Shipyard; NARA 19-N-27088, Bureau of Ships) | sem crédito na tela | aprovado | **entregue** em `_media/foto/s19/` |
+| s24 | único (143,7–148,6 s) | preferida, com risco de licença | `s24-bathyscaphe-archimede-launch-1962-houot.jpg` | 3301x2393 | Wikimedia Commons · Public domain | 1962 (Commons; 'La mise à l'eau de l'Archimède') | Houot / Wikimedia Commons · Public domain | reprovado | rascunho |
+| s24 | reserva de s24 | reserva | `s24-bathyscaphe-archimede-cite-de-la-mer-2021-spekking.jpg` | 5858x3295 | Wikimedia Commons · CC BY-SA 4.0 | 2021-12-27 | Raimond Spekking / Wikimedia Commons · CC BY-SA 4.0 | aprovado | **entregue** em `_media/foto/s24/` |
+| s27 | único (164,8–172,1 s) | preferida | `s27-snailfish-seascape-alaska5-ex2306-dive08-1365m-2023-noaa-hd.mp4` | 1920x1080, 39.306 s | NOAA Ocean Exploration (oceanexplorer.noaa.gov) · dominio publico federal dos EUA | 2023-08-31 (o cartão final do vídeo; Seascape Alaska 5, dive 8) | sem crédito na tela | aprovado | **entregue** em `_media/footage/s27/` |
+| s29 | 1 (179,5–184,6 s): o TIPO de peixe | preferida | `s29-abyssobrotula-galatheae-cas-36574-specimen.jpg` | 5634x2118 | Wikimedia Commons · CC0 | 2010 (a foto); o exemplar CAS 36574 foi coletado em 06/10/1968 (GBIF 473280064) | California Academy of Sciences / Wikimedia Commons · CC0 | trocar | rascunho |
+| s29 | alternativa de s29 (o peixe vivo) | alternativa | `s29-cusk-eel-ophidiid-salmon-bank-2015-noaa.jpg` | 1920x1080 | Wikimedia Commons · Public domain | 2015 | sem crédito na tela | aprovado | **entregue** em `_media/foto/s29/` |
+| s32 | único (215,2–218,8 s) | preferida | `s32-noaa-ship-ronald-h-brown-gulf-of-mexico-2003-noaa.jpg` | 3008x2000 | Wikimedia Commons · CC BY 2.0 | 2003-09-27 (NOAA Photo Library, ship1906) | NOAA Photo Library / Wikimedia Commons · CC BY 2.0 | aprovado | **entregue** em `_media/foto/s32/` |
+| s32 | reserva de s32 | reserva | `s32-noaa-ship-ronald-h-brown-san-francisco-2014.jpg` | 4000x2664 | Wikimedia Commons · CC BY 2.0 | 2014-07-30 | rulenumberone2 / Wikimedia Commons · CC BY 2.0 | trocar | rascunho |
+| s41 | 2 (316–319,6 s): o terremoto e o tsunami mataram | preferida | `s41-mayaguez-correo-y-casino-1918-earthquake-el-mundo.jpg` | 5902x4814 | Wikimedia Commons · Public domain | 1918 | El Mundo / Universidad de Puerto Rico | aprovado | **entregue** em `_media/foto/s41/` |
+| s41 | 1 (311,733–316 s): o tsunami na costa oeste | item novo, preferida do plano 1 (a costa: a casa na água junto à praia, com barcos e coqueiros) | `s41-mayaguez-house-washed-away-by-waves-shore-1918-ncei-273-033.jpg` | 1430x1100 | NOAA NCEI Natural Hazards Image Database (www.ngdc.noaa.gov/hazardimages), evento 273, 'October 1918 Puerto Rico, USA Images' · a pesar pelo conferente-de-midia | 1918 (evento 273 do NCEI, o terremoto e o tsunami de 11/10/1918; o crédito do item: 'Puerto Rico Ilustrado: YEAR IX. San Juan P.R. October 19, 1918. Num. 451'; o campo date do item vem vazio) | sem crédito na tela | reprovado | rascunho |
+| s41 | 1 (311,733–316 s): o tsunami na costa oeste | item novo, segunda do plano 1 (para a mesma mesa, ou reserva: a casa à deriva no mar) | `s41-mayaguez-house-washed-away-by-waves-adrift-1918-ncei-273-034.jpg` | 1430x1100 | NOAA NCEI Natural Hazards Image Database (www.ngdc.noaa.gov/hazardimages), evento 273, 'October 1918 Puerto Rico, USA Images' · a pesar pelo conferente-de-midia | 1918 (evento 273 do NCEI, o terremoto e o tsunami de 11/10/1918; o crédito do item: 'Puerto Rico Ilustrado: YEAR IX. San Juan P.R. October 19, 1918. Num. 451'; o campo date do item vem vazio) | sem crédito na tela | reprovado | rascunho |
+| s41 | fora (era o plano 1) | fora do plano 1 (conferente, lote 3: 'trocar': nenhuma das quatro fotos mostra o dano do tsunami); fica no rascunho | `s41-point-borinquen-album-mayaguez-tower-tidal-wave-1918-nara-26-lg-41-42.jpg` | 8950x6487 | U.S. National Archives (NARA) · NARA | outubro–novembro de 1918 (as fotos do álbum depois do terremoto de 11/10/1918; 26-LG-41-33A e 64A, do mesmo arquivo, são de 02/11/1918) | sem crédito na tela | trocar | rascunho |
+| s43 | reserva de s43 | reserva | `s43-anegada-flying-past-aerial-2011-12-27-david-broad.jpg` | 3264x2448 | Wikimedia Commons · CC BY 3.0 | 2011-12-27 | David Broad / Wikimedia Commons · CC BY 3.0 | aprovado | **entregue** em `_media/foto/s43/` |
+| s43 | reserva de s43 (sem vídeo de banco) | reserva de acervo aberto | `s43-anegada-island-aerial-2012-david-broad.jpg` | 3264x2448 | Wikimedia Commons · CC BY 3.0 | 2012-01-05 (data de envio ao Panoramio; a foto é de avião) | David Broad / Wikimedia Commons · CC BY 3.0 | aprovado | **entregue** em `_media/foto/s43/` |
+| s43 | — | descartada pela pesquisa | `s43-water-view-of-anegada-panoramio.jpg` | 4320x3240 | Wikimedia Commons · CC BY-SA 3.0 | — | — | — | rascunho |
+| s44 | único (327,4–330,2 s) | preferida | `s44-anegada-brain-coral-boulder-750ft-inland-atwater-usgs.jpg` | 3264x2448 | U.S. Geological Survey (usgs.gov, Multimedia Gallery) · dominio publico federal dos EUA | sem data na página da foto; publicada na notícia do USGS de 20/03/2017 | sem crédito na tela | aprovado | **entregue** em `_media/foto/s44/` |
+| s47 | nenhum: FORA da cena (Lucas, 28/10/2026, 15:0x: 'Foto do robô e mapa (Recomendado)') | fora da cena, pela decisão do Lucas; fica no rascunho | `s47-ex1502l3-dive09-2015-04-26-trailer-noaa.mov` | 640x360, 186.386 s | NOAA Ocean Exploration (NCEI, arquivo dos mergulhos do Okeanos Explorer) · dominio publico federal dos EUA | 2015-04-26 (o cartão do próprio vídeo: 'EX1502 Leg 3 Dive 09') | sem crédito na tela | — | rascunho |
+| s47 | 3 (376,433–380,6 s): o robô e o navio, impressa sobre a mesa | preferida do plano 3 (aprovada pelo conferente, lote 3; a foto que o Lucas escolheu: 'Foto do robô e mapa (Recomendado)', 28/10/2026, 15:0x) | `s47-okeanos-explorer-deploys-deep-discoverer-2015-04-10-noaa.png` | 999x666 | Wikimedia Commons · Public domain | 2015-04-10 (a mesma expedição, EX1502 Leg 3) | sem crédito na tela | aprovado | **entregue** em `_media/foto/s47/` |
+| s48 | 2 (393,4–395,833 s) | era a preferida; fora do plano 2 (conferente, lote 3: 'trocar': a de 17/12/2018 da Caladan cobre o plano) | `s48-dssv-pressure-drop-leith-2019-geograph.jpg` | 3264x2448 | Wikimedia Commons · CC BY-SA 2.0 | 2019-09-06 | M J Richardson / Wikimedia Commons · CC BY-SA 2.0 | trocar | rascunho |
+| s48 | plano 2 de s48 (393,4–395,833 s); aprovada pelo conferente no lote 3 | a do plano 2 (aprovada pelo conferente, lote 3; a Caladan entra pela decisão do Lucas, 28/10/2026, 15:0x: 'Pode usar, com crédito (Recomendado)') | `s48-pressure-drop-limiting-factor-pre-dive-2018-12-17-caladan.jpg` | 2400x1349 | Wikimedia Commons · CC BY-SA 4.0 | 2018-12-17 (os mergulhos no Atlântico, a Fossa de Porto Rico) | Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0 | aprovado | **entregue** em `_media/foto/s48/` |
+| s53 | 2 (434,4–439,367 s): o submersível, um homem só a bordo | item novo, preferida do plano 2 (a busca que o conferente pediu, lote 3) | `s53-limiting-factor-underwater-test-phase-2018-caladan.jpg` | 2400x1250 | Wikimedia Commons (Caladan Oceanic, permissão VRT) · CC BY-SA 4.0 | 2018 (a descrição: 'The pictures shows the deep diving submersible Limiting Factor during the test phase near in 2018'). O campo date do Commons, 2019-02-21, é a data do envio, perto da permissão VRT (25/02/2019), não a da foto. A fonte é um quadro de vídeo publicado no fivedeeps.com em outubro de 2018 (o caminho: wp-content/uploads/2018/10/LF-Bahamas-Highlight.01_49_46_09.Still005.jpg). | Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0 | aprovado | **entregue** em `_media/foto/s53/` |
+| s53 | alternativa do plano 2 (434,4–439,367 s) | alternativa (fora do material da Five Deeps, 2019); o item novo de 2018 a passa | `s53-limiting-factor-aft-on-deck-2019-yeti-hunter.jpg` | 4320x2432 | Wikimedia Commons · CC BY-SA 4.0 | 2019-09-10 | Yeti-Hunter / Wikimedia Commons · CC BY-SA 4.0 | trocar | rascunho |
+| s53 | fora do plano 2 (conferente, lote 3: 'trocar'); serviria na s54 ('When he climbed out…'), atrás do cartão da citação, se a regência quiser, com conferência nova | fora do plano 2 (trocar, lote 3); candidata da s54, se a regência quiser | `s53-limiting-factor-after-puerto-rico-trench-dive-2018-12-19-caladan.jpg` | 2400x1349 | Wikimedia Commons · CC BY-SA 4.0 | 2018-12-19 18:19 (o dia do mergulho, depois de voltar à superfície) | Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0 | trocar | rascunho |
+| s53 | fora (conferente, lote 3: 'trocar': o gelo desmente a fossa tropical) | fora (trocar, lote 3); fica no rascunho | `s53-limiting-factor-cumberland-east-bay-2019-01-31-caladan.jpg` | 2400x1462 | Wikimedia Commons · CC BY-SA 4.0 | 2019-01-31 | Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0 | trocar | rascunho |
+| s66 | 1 e 2 (571,8–579,433 s): a ilha e o recorte da cratera | preferida | `s66-mount-michael-landsat8-oli-2026-08-24-nasa-eo.jpg` | 2993x2494 | NASA Earth Observatory · dominio publico federal dos EUA | 2026-08-24 (Landsat 8 OLI) | sem crédito na tela | aprovado | **entregue** em `_media/foto/s66/` |
+| s72 | único (656,867–661,367 s), ao lado do peixe-caracol de s27 | preferida | `s72-swimming-sea-cucumber-ex1502-st-croix-2400m-2015-04-28-noaa-hd.mp4` | 1920x1080, 47.948 s | NOAA Ocean Exploration (oceanexplorer.noaa.gov) · dominio publico federal dos EUA | 2015-04-28 | sem crédito na tela | trocar | rascunho |
+| s72 | reserva de s72 | reserva | `s72-swimming-sea-cucumber-ex2606-dive03-american-samoa-2026-noaa-hd.mp4` | 1920x1080, 84.284 s | NOAA Ocean Exploration (oceanexplorer.noaa.gov) · dominio publico federal dos EUA | 2026 (EX2606, Dive 03) | sem crédito na tela | pendente_lucas | rascunho |
 
 ## Por que cada uma (e o que pesa)
 
