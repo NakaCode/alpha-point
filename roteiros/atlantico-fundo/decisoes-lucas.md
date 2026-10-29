@@ -195,3 +195,30 @@ Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
   80 %, eu paro tudo e te pergunto. A semana renova em 05/11."
   - **O que muda:** neste vídeo, o freio do semanal nos pedidos aos setores passa de 50 % a 80 %. O freio de 85 % da janela de 5 h fica.
   - A Sala para tudo em 80 % e pergunta.
+
+## A tarde de 29/10/2026, no chat da Sala
+
+- **A medida de consumo (13:0x).** "a medida de consumo pode ficar para depois, quero evitar gastos desnecessários agora para que possamos
+  finalizar o vídeo". A medida de consumo por etapa sai da fila até o vídeo sair.
+- **A linha do tempo antes dos consertos (15:4x).** A pergunta: "As duas revisões marcaram 29 cenas para consertar: 20 mapas e 9 cenas de
+  desenho. Quando você quer ver o vídeo inteiro na linha do tempo?" A resposta: **"Agora, antes dos consertos (Recomendado)"**. A opção
+  dizia: "Seus comentários entram na mesma rodada: cada mapa é refeito uma vez só, e depois você vê só o que mudou." À pergunta "Onde você
+  vai assistir?": **"No PC de casa"** (pelo Tailscale Serve, desligado às 16:45).
+- **Os comentários (16:1x–16:2x, na linha do tempo; 67 de 67 cenas vistas):**
+  - s05, 2,0 s: "A ilustração do submarino está meio rudimentar (feia)". À pergunta "s05: o batiscafo do começo está rudimentar. Como
+    fica?": **"Se ele é assim, pode manter"**. O desenho segue a forma de um batiscafo como o Archimède (o flutuador comprido com a torre,
+    a esfera embaixo e os tanques de lastro), e fica.
+  - s05, 7,0 s: "Não entendi o que a ilustração da linha representa". À pergunta "s05: a linha com os peixes (aos 7 s) é a parede da fossa
+    vista de lado, e não se entende. Como deixar claro?": **"Vista de lado mais clara"**. A opção dizia: "Mantém o corte de lado, mas
+    desenhado como corte: água escura em cima, rocha preenchida embaixo, peixes maiores e um rótulo curto na parede."
+  - s07, 2,2 s: "A ilustração de decida deve ficar ao lado da "régua" e não sobre ela". Vale para toda cena em que algo desce pelo medidor
+    (a s07, a s53 e a s55, todas na rodada de consertos).
+  - s15, 7,6 s: "Essa cena parece ter muita informação e ainda assim não explicar muito bem, há muitos elementos ao mesmo tempo"; 9,7 s:
+    "As ilustrações ficaram confusas também. Acredito que seja um termómetro?". À pergunta "s15: muita informação ao mesmo tempo, e o
+    desenho do fim confunde (é o termômetro e a amostra de lama que voltaram no arame). Como fica?": **"Enxugar e fechar em close
+    (Recomendado)"**. A opção dizia: "Uma coisa por vez, só o que a voz diz: a profundidade no medidor, depois a distância (sem o '60 MI'
+    repetido e sem a lupa). No fim, o mapa escurece e entra um desenho grande do que voltou no arame: a lama e o termômetro, com rótulo."
+  - s46, 5,0 s: "Ilustração meio vaga por um longo período". À pergunta "s46: a régua do tempo fica vaga por muito tempo (sem anos, só um
+    traço vermelho). Como fica?": **"Anos e o coral desenhado (Recomendado)"**. A opção dizia: "A régua ganha os anos, o traço vermelho
+    ganha a data, e ao lado entra um desenho do bloco de coral que a onda jogou, que é o que os cientistas dataram. A régua da s45, que tem o
+    mesmo problema, ganha os anos também."
