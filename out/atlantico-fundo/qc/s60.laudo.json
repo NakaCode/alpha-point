@@ -1,143 +1,173 @@
 {
   "cena": "s60",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Exceção do Lucas: qc-tamanho, crédito 'Source: Stewart & Jamieson, 2019' a 60 px < 72, 24/10/2026 ('60 px (Recomendado)'), gravada em qc/_excecoes-portao.json no sha1 6d64ce4ebfc8 (mensagem literal do portão: '[credito] \"Source: Stewart & Jamieson, 2019\" 60<72'). O crédito de mapa (MapTiler/OSM, GEBCO) e o das zonas (Marine Regions) estão em data-qc-credito=\"mapa\" (piso 40) e passam.",
-        "portao-margens lido: 0 (26 itens medidos, 365 amostras, sha1 e marca de hoje); não remedi margem, faixa do crédito nem canto. Crédito de 3 linhas no máximo (crMapa em 2 + Source ou Maritime em 1), sem avisos do portão. Cena com lang en-US e data-render 4k-native.",
-        "SINALIZA (17,4–21,4 s, quadro 17,8 e recorte 4K): a pílula '27,585 FT (8,408 M) / 2019 ESTIMATE' termina a ~70 px do rótulo '30,000 FT' da régua, e os dois ficam na mesma altura; lê-se quase como uma linha só ('2019 ESTIMATE  30,000 FT'). Não colide (a Arte já recuou a pílula para não cobrir o 30,000), mas está no limite de separação respirável."
+        "Exceção do Lucas: qc-tamanho, crédito 'Source: Stewart & Jamieson, 2019' a 60 px < 72 (mensagem literal do portão: '[credito] \"Source: Stewart & Jamieson, 2019\" 60<72'), '60 px (Recomendado)', 24/10/2026, gravada em qc/_excecoes-portao.json no sha1 ad5f1af3c923 (o HTML de hoje; carimbo do clipe 2160p). O crédito de mapa (MapTiler/OSM + GEBCO, e o Marine Regions) é data-qc-credito='mapa' (piso 40) e passa. Cena com lang en-US e data-render 4k-native; o quadro enche o palco.",
+        "Portões lidos, não remedidos: portao-margens veredito 0 (27 itens medidos, 365 amostras, sha1 e marca de hoje, 0 avisos), portao-mapa til 0 e rodape 0 (~12,2:1), _portao.json só com 'tamanho' (o crédito) e til-glifo indefinido (coberto pelo portao-mapa til). Nos 6 folhas e 3 recortes 4K que abri, nada fora da margem, da faixa do crédito (a pilha de 'Source'/'Maritime' + crMapa fica abaixo de y 1880, antes de x 1720) nem do canto de 400x400: o portão não está em xeque.",
+        "O 'DISPUTED' (a saída (a) da Sala, 33,0–36,4 s; recortes 4K de 33,2, 34,5 e 36,3 s): texto sem pílula, a 104 px (o piso), girado ~-55 graus ao longo da 3602, com contorno escuro, inteiro dentro da cunha escura (a sobreposição), do lado da tracejada com folga de ~15–30 px e longe do anel (o anel fica no pé da cunha, ~600 px abaixo do 'D'). Nunca toca a zona azul dominicana nem a lavanda dos EUA, nem a legenda da NOAA. Lê-se no celular: o contorno e o branco sobre o azul-marinho quase preto dão contraste alto e a letra tem ~104 px de altura de capital. Cumpre o que a Sala pediu para a qualidade-3.",
+        "SINALIZA (17,4–21,4 s, quadro 17,8 e recorte 4K): a pílula '27,585 FT (8,408 M) / 2019 ESTIMATE' termina a ~70 px (4K) do rótulo '30,000 FT' da régua, e os dois têm a base quase na mesma altura; a leitura pode juntá-los ('2019 ESTIMATE  30,000 FT'). Não colide; é o mesmo que a qualidade-2 anotou, e a arte-4 não o tocou (a Sala não o pôs nos consertos). Está no limite da separação respirável.",
+        "Pilha de crédito: no máximo 3 linhas (Source ou Maritime em 1 + crMapa em 2), sem avisos do portão. As trocas de linha são limpas nos quadros 19,0 (a fonte do estudo esvaindo) e 20,4 (a do Marine Regions já plena)."
       ],
       "correcoes": [
-        "mapista (opcional, no render do lote de consertos): subir a pílula do 27,585 uns ~60 px, ou recolher o fim dela, para abrir ≥ 120 px até o '30,000 FT'."
-      ]
+        "mapista (opcional, só em render futuro por outro motivo): subir a pílula do 27,585 ~60 px, ou recolher o fim dela, para abrir >= 120 px até o '30,000 FT'. Não pede render só por isso."
+      ],
+      "origem": "julgada"
     },
     {
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "Textos conferem com o textos-tela f4eede4d (24,442 FT (7,450 M) · A RIDGE; 27,585 FT (8,408 M) · 2019 ESTIMATE; ≈ 36 MI; DOMINICAN REPUBLIC WATERS; U.S. WATERS; 2019 → 2021; 2021; ≈ 100 MI; 'Exclusive economic zone: up to ~230 mi (200 nmi) · NOAA'). A forma de 'MILWAUKEE DEEP · LISTED' que a cena mostra (caixa alta) já foi trocada no textos-tela para 'Milwaukee Deep · LISTED': já decidido pela Sala (lote de consertos), não é achado novo.",
-        "Geometria real: zonas (MRGID 8409 e 33179) e a 3602 vêm do WFS da Marine Regions, a costa é a do satélite; a reta das 100 mi chega à costa de La Altagracia (leste da Hispaniola) e a das 36 mi sai do ponto do sonar a oeste, ambas coerentes com a fala. Nenhum vizinho rotulado, nenhuma bandeira.",
-        "SINALIZA (25,3–36,4 s, recortes 4K em 27,2 e 36,3): o anel, que a fala põe 'in U.S. waters', cai SOBRE a borda da zona lavanda (a 2,5 km da 3602, pelo cabeçalho), com metade do aro na cunha escura. É honesto com o dado, mas, de 25,3 a 30,0 s, antes de a tracejada entrar, o espectador vê o anel fora do preenchimento dos EUA enquanto ouve 'in U.S. waters'.",
-        "SINALIZA: a cunha escura entre a zona azul e a lavanda (a área de sobreposição) fica sem nome em toda a cena (ver acessibilidade)."
+        "Textos conferidos contra o textos-tela 58a328d0 (o de hoje), nos quadros abertos: 'Milwaukee Deep · LISTED' em caixa normal (o conserto 5 da arte-4 saiu), '24,442 FT (7,450 M) · A RIDGE', '2019 → 2021', '27,585 FT (8,408 M) · 2019 ESTIMATE', '≈ 36 MI', 'DOMINICAN REPUBLIC WATERS', '2021', 'U.S. WATERS', '≈ 100 MI', 'Exclusive economic zone: up to ~230 mi (200 nmi) · NOAA', 'DISPUTED' e os créditos. Nada do nao_vai_para_tela; nenhuma bandeira, nenhum vizinho rotulado além das duas zonas da fala.",
+        "Geometria real: zonas (MRGID 8409 e 33179) e a 3602 vêm do WFS da Marine Regions; a costa é a do satélite. A reta das 100 mi chega à costa de La Altagracia (quadro 28,4) e a das 36 mi sai do ponto do sonar a oeste; coerentes com a fala. A tracejada de 30,0 s acompanha a borda direita da cunha no comprimento todo (quadros 30,5, 32,0 e recortes de 33,2–36,3: o traço cola na borda do preenchimento lavanda, sem abrir no meio). O 'DISPUTED' não adota lado: fica na cunha (a sobreposição), o que lê a reivindicação sobreposta, não a de um país (identidade §6, 'Fronteira disputada').",
+        "SINALIZA (25,3–30,0 s, quadros 25,8, 27,0, 28,4 e recorte 25,5): o anel, que a fala põe 'in U.S. waters', cai SOBRE a borda da zona lavanda (com metade do aro na cunha escura); é honesto com o dado (o ponto fica a ~2,5 km da 3602, pelo cabeçalho do HTML), mas antes de a tracejada entrar (30,0 s) o espectador ouve 'U.S. waters' vendo o anel no limite do preenchimento. Já anotado na qualidade-2; sem decisão nova, e a cunha agora tem nome a partir de 33,0 s.",
+        "Posição do alfinete e das datas: o alfinete 'Milwaukee Deep · LISTED' crava no ponto da lista, longe do anel (a leste dele, quadro 2,0 s); o '27,585' está ancorado na marca da régua em y ~27,585 ft e a reta de 36 mi liga o ponto do sonar ao anel de 2019 (quadros 17,8–20,4). Nada associado ao elemento errado."
       ],
       "correcoes": [
-        "mapista (opcional): no render do lote de consertos, entrar a 3602 tracejada junto com a zona dos EUA (25,3 s) em vez de 30,0 s, para o anel já se ler sobre a linha que ele toca.",
-        "Sala/redator-de-tela: decidir se a 3602 leva 'DISPUTED' (identidade §6, 'Fronteira disputada'; a regência deixa a chamada ao redator)."
-      ]
+        "mapista (opcional): entrar a 3602 tracejada junto com a zona dos EUA (25,3 s), em vez de 30,0 s, para o anel já se ler sobre a linha que ele toca. A Sala já escolheu manter 30,0 (a fala só explica a zona ali)."
+      ],
+      "origem": "julgada"
     },
     {
       "lente": "wordlock",
       "nota": 9,
       "problemas": [
-        "Conferido contra o words.json (menos 497,7 s), tudo entra na palavra ou até 0,03 s dela: alfinete em 'old listing' (0,97), cota 24,442 em 'twenty-four' (3,47 contra 3,48), '2019 → 2021' em 'came out before' (7,83), 27,585 em 'placed' (15,43), salto do anel e '≈ 36 MI' em 'thirty-six' (16,53), zona dominicana em 'Dominican' (19,33), volta do anel e '2021' em 'twenty twenty-one' (23,43), U.S. em 'U.S.' (25,27), '≈ 100 MI' em 'one hundred' (27,43), tracejada em 'Those' (30,0), legenda em 'exclusive' (31,33). Nada sobra depois da fala: o último beat acaba em 36,4 s com a frase.",
-        "Os primeiros 0,97 s só têm o anel e a régua, que desenrola nos primeiros quadros; a primeira frase ('At the spot the old listing pointed to') é coberta pelo mapa e pelo alfinete em 'old listing'. Nenhum elemento foi atrasado por ritmo."
+        "Conferido nos quadros contra o textos-tela e a fala (words.json, menos 497,7 s): alfinete e pílula em 'old listing' (0,97; ausentes em 0,1 s, presentes em 2,0 s); cota 24,442 e a fonte do estudo em 'twenty-four' (3,467; ausentes em 2,0 s, presentes em 3,8 s: a fonte entra junto com o primeiro número dela, o conserto 6 da arte-4); '2019 → 2021' em 'came out before' (8,5 s presente); 27,585 em 'placed' (15,8 s presente, 14,0 s ausente); '≈ 36 MI' em 16,533 (presente em 16,9 s); zona dominicana e a linha do Marine Regions em 'Dominican' (19,0 s ausentes, 20,4 s presentes); '2021' e a volta do anel (24,3 s); 'U.S. WATERS' em 25,267 (24,3 s ausente, 25,8 s presente); '≈ 100 MI' em 27,433 (27,0 s ausente, 28,4 s presente); tracejada em 30,0 (28,4 s ausente, 30,5 s presente); legenda da zona em 31,333 (30,5 s ausente, 32,0 s presente); 'DISPUTED' em 33,0 (32,0 s ausente, 33,2 s presente). O 'DISPUTED' entra 3 s depois da tracejada por decisão da Sala (a voz de 30,0 a 36,4 não diz 'disputed'): leitura de mapa, não ancora palavra. Primeiros 0,97 s: o anel e a régua, e a câmera já descendo; a primeira frase é coberta pelo mapa e pelo alfinete em 'old listing'. Nada sobra depois da fala (o último beat acaba em 36,4 s). Nenhum elemento foi atrasado por ritmo na arte-4, exceto o 'DISPUTED', que já tem o tempo do textos-tela: não há o que rechecar contra outra fala."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "abordagem",
       "nota": 9,
       "problemas": [
-        "MAPA é o modelo certo: a fala é lugar, distância e zona (a crista, o ponto de 2019 a 36 mi a oeste, as águas da República Dominicana e dos EUA). Plano, norte para cima, sem órbita e sem relevo (regra da Sala). A ilustração sobre o mapa (o salto do anel, método do ilustrador com a física) explica a mudança de lugar melhor que um corte."
+        "MAPA é o modelo certo: a fala é lugar, distância e zona (o ponto da lista, o salto de 36 mi para oeste, as águas da República Dominicana e dos EUA). Plano, norte para cima, sem órbita e sem relevo (regra da Sala). A ilustração sobre o mapa (o salto do anel, método do ilustrador com a física) explica 'somewhere else' melhor que um corte. A fossa vai à régua da série (o medidor), que carrega a profundidade."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "acessibilidade",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "SINALIZA (30,0–36,4 s, quadros 30,1 a 36,3): a linha tracejada entre as zonas e a cunha escura ao lado do anel não têm nome. A fala só define a zona econômica; quem nunca viu o desenho não sabe que o tracejado é uma linha mediana não assentada nem por que há uma faixa sem tinta. A marca pede 'linha tracejada e rótulo DISPUTED' (identidade §6); o textos-tela hoje não dá o rótulo.",
-        "SINALIZA (12,6–15,4 s, quadro 14,5): ~3 s só com o anel e a régua enquanto a câmera viaja a oeste ('Using public data from eight older surveys'); é a viagem de câmera, com o anel vivo, e a fala não nomeia um objeto de mapa ali. Não reprova.",
-        "O resto se lê em 2 s: o salto do anel mostra o 'somewhere else', a reta de 36 mi o 'west', as duas cores de zona o 'where'. 'U.S. WATERS' e 'DOMINICAN REPUBLIC WATERS' estão na forma da voz."
+        "Melhora em relação à qualidade-2: a tracejada e a cunha ganharam nome ('DISPUTED', 33,0–36,4 s). Em 2 s um leigo lê o 'where': o salto do anel e a reta de 36 mi mostram 'west'; as duas cores de zona, com 'DOMINICAN REPUBLIC WATERS' e 'U.S. WATERS' na forma da voz, mostram os dois lados; a faixa escura com 'DISPUTED' diz que entre eles há uma área sem dono assentado.",
+        "SINALIZA (30,0–33,0 s, quadros 30,5 e 32,0): a tracejada e a cunha escura ficam 3 s sem nome, até o 'DISPUTED' entrar; é a decisão da Sala (a única forma que cabe na cunha só cabe de 33,0 em diante). Nesse trecho a fala está explicando a zona econômica exclusiva, que a legenda de 31,333 define.",
+        "SINALIZA (12,6–15,4 s, quadro 14,0): ~3 s só com o anel e a régua enquanto a câmera viaja a oeste ('Using public data from eight older surveys'); é a viagem de câmera, com o anel vivo, e a fala não nomeia objeto de mapa ali. Não reprova."
       ],
-      "correcoes": [
-        "Sala/redator-de-tela: decidir o 'DISPUTED' (ou outro nome curto) para a 3602 e, se entrar, o mapista o põe na cor do traço sem tocar a linha.",
-        "mapista (opcional): uma legenda curta para a cunha escura só se o redator der o texto; sem texto, deixar como está."
-      ]
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "poluicao",
-      "nota": 8,
+      "nota": 7,
       "problemas": [
-        "Picos de 5 elementos simultâneos (b2: anel, reta, '≈ 36 MI', cota 27,585, régua; b6: duas zonas com nome, anel, tracejada, legenda), abaixo do teto de 6 (identidade §4.2); no máximo 4 textos vivos fora o crédito. Teste de lastro: todo texto cai numa palavra da fala (Milwaukee/listing, twenty-four, came out before, thirty-six, Dominican, twenty twenty-one, U.S., one hundred, exclusive economic zone); '0 FT' e '30,000 FT' são a régua da série (exceção (a) de orientação, decisão da Sala). Sem entidade HTML nem tofu nos quadros."
+        "SINALIZA (33,0–36,4 s): a cena encosta no teto de 6 elementos simultâneos (identidade §4.2): o anel, 'DOMINICAN REPUBLIC WATERS', 'U.S. WATERS', a tracejada, a legenda da zona e o 'DISPUTED', fora o crédito. Textos vivos: 4 (a regra é no máximo 4). Os quadros 33,2–36,3 ainda leem limpos (sem sobreposição; o 'DISPUTED' está na cunha, as duas zonas têm o nome em áreas distintas e a legenda no mar aberto à direita), por isso a nota não cai abaixo de 7; mas é o pior extremo da série e o próximo texto nesse plano estoura.",
+        "Teste de lastro: todo texto cai numa palavra da fala (Milwaukee/listing, twenty-four, came out before, thirty-six, Dominican, twenty twenty-one, U.S., one hundred, exclusive economic zone); '0 FT' e '30,000 FT' são a régua da série (exceção (a)). O 'DISPUTED' não tem palavra: cai na exceção (a) de orientação (sem nome, a linha tracejada é ilegível) e é regra da marca (identidade §6, 'Fronteira disputada') e decisão da Sala, não achado. Sem entidade HTML nem tofu nos quadros."
       ],
-      "correcoes": []
+      "correcoes": [
+        "Sem correção. Se a Sala quiser alívio, o '2021' e o '≈ 100 MI' já saem em 30,0; a legenda da NOAA poderia sair 1 s antes do fim, mas a fala a ancora até 36,4 s."
+      ],
+      "origem": "julgada"
     },
     {
       "lente": "motion",
-      "nota": 6,
+      "nota": 8,
       "problemas": [
-        "REPROVA (17,73 e 24,63 s; identidade §4.4 'o anel pulsa duas vezes e para'; decisão da Sala 'O pulso do anel: duas vezes', que vale sobre a regência): cada pouso do anel dá UM só pulso. No HTML, `if (tp >= 0 && tp < 1.2) s.pulso = tp / 1.2` (linhas ~881) e o comentário 'UM pulso … a s53 pede pulses ONCE'; nos quadros 19,6 e 20,8, depois do 1º pulso, o anel está limpo. A regência que pede 'once' já foi vencida pela identidade para a s53 (decisão da Sala), e vale aqui também.",
-        "O resto do movimento passa: câmera sempre em deslocamento (descida 2,4 s, deriva, viagem a oeste de 2,43 s, viagem de volta de 2,63 s, recuo de 2,57 s, cúbicas, de 1,5 a 3 s); salto do anel balístico sem quique (e = 0), sem retorno; rótulos em 300 ms e zonas em 500 ms; sem órbita, norte para cima. Quadros 16,6–17,9 (recortes 4K): o anel sobe, cruza e pousa na ponta oeste da reta sem tremor.",
-        "SINALIZA: a sombra solta do anel no voo quase some sobre a GEBCO escura (os recortes 16,8–17,3 não a mostram); o salto se lê só pelo arco do anel. Ao pousar (17,9), a ponta da reta aparece como um traço branco dentro do aro; é detalhe, não reprova.",
-        "Nos últimos 250 ms (36,15–36,4) só há a deriva do RIG; o corte seco para a s62 (tipografia) é troca de regime, sem mapa → mapa."
+        "O conserto da arte-4 saiu: o anel pulsa DUAS vezes em cada pouso. Recortes 4K: em 18,3 s o anel mostra o 1º anel de onda expandindo; em 19,5 s, depois de o 1º pulso acabar (~18,93 s), um 2º anel de onda aparece; em 25,5 s, no pouso de 24,633, o anel de onda volta a aparecer. Depois de 20,13 s (o 2º pulso do 1º pouso acaba), o anel está limpo (quadro 20,4), e o pulso não encosta no salto seguinte (23,433). A regra de identidade §4.4 ('o anel pulsa duas vezes e para') e a da Sala estão cumpridas.",
+        "O resto passa: câmera sempre em deslocamento (descida 2,4 s, deriva, viagem a oeste de 2,43 s, viagem de volta de 2,63 s, recuo de 2,57 s a 1,5–3 s, cúbicas); salto do anel balístico sem quique; rótulos em 300 ms e zonas em 500 ms; norte para cima, sem órbita. A tracejada da 3602 entra em 500 ms e o 'DISPUTED' entra em 33,0, no fim do recuo, deslizando um pouco ao longo da linha (a âncora anda de 54 a 62 % do comprimento entre 33,0 e 33,6) — nos quadros 33,2 e 34,5 o texto está dentro da cunha nos dois, sem sair dela. Nos últimos 250 ms só há a deriva do RIG; o corte seco para a s62 é mapa -> mesa, troca de regime.",
+        "SINALIZA: a sombra solta do anel no voo quase some sobre a GEBCO escura; o salto se lê pelo arco do anel. Detalhe, não reprova."
       ],
-      "correcoes": [
-        "mapista (no render único do lote de consertos, que já vem por causa do 'Milwaukee Deep · LISTED'): dar ao pouso do anel dois pulsos (1 → 1,8, opacidade 1 → 0, 1,2 s cada, o 2º logo depois do 1º), em 17,73 (até ~20,13) e em 24,63 (até ~27,03); cabem sem tocar o salto de 23,43 nem o '≈ 100 MI' de 27,43. Tirar o comentário 'pulses ONCE' do cabeçalho.",
-        "mapista (opcional): dar à sombra solta um pouco mais de opacidade sobre o mar escuro, ou aceitar que o salto se lê pelo arco."
-      ]
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "fonte",
       "nota": 7,
       "problemas": [
-        "MapTiler/OSM e GEBCO aparecem no 1º quadro (0,1 s) e ficam até o último, num elemento só (crMapa, data-qc-credito=\"mapa\", 60 px, x 200–1658, faixa abaixo de y 1880). Marine Regions entra em 19,33 s, junto com a zona dominicana, e fica até o fim: é a atribuição de uma camada do mapa (CC BY 4.0), e a linha está sozinha no próprio elemento, sem outro crédito dentro dele (não é verde comprado). Sem crédito para domínio público, sem logo, sem mídia de _media/ (nada a casar com o conferente). A descrição leva as três linhas (MapTiler/OSM, GEBCO com DOI, Marine Regions com 'Consulted on 2026-10-28').",
-        "SINALIZA (19,1–21,37 s, quadros 19,6 e 20,8): 'Source: Stewart & Jamieson, 2019' sai em 19,1 s (textos-tela t1 = 19,1, 'a 3ª linha até a zona marítima entrar'), mas a cota '27,585 FT (8,408 M) · 2019 ESTIMATE' e o '≈ 36 MI' ficam na tela até 21,37 s: 2,27 s de número do estudo sem a fonte na faixa (voz.md §2). A fala segue no mesmo estudo ('Their study … it placed'), por isso não reprovo; quem decide é o redator.",
-        "SINALIZA: o 'Exclusive economic zone: up to ~230 mi (200 nmi) · NOAA' cita a instituição sem o ano (o formato é 'Source: <instituição>, <ano>'); é o texto do textos-tela, e a medida é a definição legal de 200 nmi. Vai ao redator.",
-        "SINALIZA: 'Maritime boundaries: MarineRegions.org (VLIZ)' não leva o ano; a descrição leva (Flanders Marine Institute 2026)."
+        "MapTiler/OSM e GEBCO no 1º quadro (0,1 s) e até o último, num elemento só (crMapa, data-qc-credito='mapa', 60 px, faixa abaixo de y 1880; presente em todos os quadros abertos). O Marine Regions (CC BY 4.0) entra em 19,333 s junto da zona dominicana e fica até o fim: é a atribuição de uma camada do mapa, e a linha está sozinha no próprio elemento (não é verde comprado). Sem crédito para domínio público, sem logo, sem mídia de _media/ (nada a casar com o conferente). A descrição leva as três linhas.",
+        "SINALIZA (19,1–21,37 s, quadros 19,0 e 20,4): 'Source: Stewart & Jamieson, 2019' sai em 19,1 s (textos-tela t1 = 19,1), mas a cota '27,585 FT (8,408 M) · 2019 ESTIMATE' e o '≈ 36 MI' ficam na tela até 21,367 s: 2,27 s de número do estudo sem a fonte na faixa (voz.md §2). A qualidade-2 já o anotou; a texto-4 consertou o caso igual da s67 (a fonte fica enquanto o número está no ar) mas não o da s60. A 'ESTIMATE' do rótulo diz o ano e a fala segue no mesmo estudo ('Their study ... it placed'), por isso não reprovo; se a Sala aplicar à s60 o raciocínio que aplicou à s67, o conserto é uma linha no textos-tela e a cena sai mais correta.",
+        "SINALIZA: 'Exclusive economic zone: up to ~230 mi (200 nmi) · NOAA' cita a instituição sem o ano; e 'Maritime boundaries: MarineRegions.org (VLIZ)' não leva o ano (a descrição leva). É o texto do textos-tela; vai ao redator."
       ],
       "correcoes": [
-        "Sala/redator-de-tela: estender o 'Source: Stewart & Jamieson, 2019' até 21,37 s (mantendo 3 linhas: a linha das zonas passa a entrar em 21,37) ou juntar as duas fontes numa linha; e dizer se a legenda da zona leva o ano da NOAA.",
-        "mapista: só mexe no crédito depois que o redator mudar o textos-tela."
-      ]
+        "Sala/redator-de-tela: estender 'Source: Stewart & Jamieson, 2019' de 19,1 até 21,367 s (a linha das zonas passa a entrar em 21,367 ou entra numa 4ª linha só por 0,2 s; a mais limpa é ir a 21,367) — como a decisão da s67; o mapista aplica depois de o textos-tela mudar. Dizer também se a legenda da zona leva o ano da NOAA."
+      ],
+      "origem": "julgada"
     },
     {
       "lente": "tema",
       "nota": 9,
       "problemas": [
-        "Uma cor, um significado: --destaque só no anel (assinatura, exceção do §4.4) e no fundo do sonar da régua; --contexto-2 (azul) na zona dominicana, estrangeira, e --contexto-3 (lavanda) na zona dos EUA, mesmo país que Porto Rico, ambas só no preenchimento e sem contorno; --neutro no alfinete, no ponto do sonar e nos traços da régua. Três matizes fora o satélite, sem --tensao nem --contraparte, nenhum vermelho contra azul, nenhum território com as cores da bandeira. Mar escurecido da GEBCO e satélite claro na terra, sem véu nem degradê por cima. Família de cor coerente com as cenas irmãs (a série da régua)."
+        "Uma cor, um significado: --destaque só no anel e no fundo do sonar da régua; --contexto-2 (azul) na zona dominicana, estrangeira, e --contexto-3 (lavanda) na zona dos EUA (mesmo país que Porto Rico), ambas só no preenchimento e sem contorno; --neutro no alfinete, no ponto do sonar, nas retas e na tracejada. Três matizes fora o satélite, sem --tensao nem --contraparte e sem vermelho contra azul; nenhum território com as cores da bandeira. O 'DISPUTED' é texto branco com contorno escuro sobre a cunha escura, sem cor nova. Mar escurecido da GEBCO e satélite claro na terra, sem véu nem degradê por cima. Família de cor coerente com a s53 e as irmãs da série da régua."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "cobertura",
       "nota": 9,
       "problemas": [
-        "O central da janela é o lugar e a medida (a crista, o ponto de 2019, as duas zonas), e todos têm registro real na tela: o relevo da GEBCO, o satélite da costa da Hispaniola e de Porto Rico e as geometrias reais. Os concretos secundários ('sonar', 'eight older surveys') são abstratos de dado e não têm foto a buscar; o submersível da expedição tem a foto real na s63 (regência, beat da s63). Não há mídia de _media/ para esta cena."
+        "O central da janela é o lugar e a medida (a crista, o ponto de 2019, as duas zonas), e todos têm registro real: o relevo da GEBCO, o satélite da costa da Hispaniola e de Porto Rico e as geometrias reais. Os concretos secundários ('sonar', 'eight older surveys') são abstratos de dado, sem foto a buscar; o submersível da expedição tem a foto real na s63."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Mapa, sem footage parado: o quadro muda de escala ou de lugar pelo menos a cada ~6 s (descida 0,98–3,4 s; deriva 6,9–9,5 s; viagem a oeste 12,6–15,0 s; salto 16,5–17,7 s; viagem 21,4–24,0 s; recuo 31,3–33,9 s) e entra um objeto novo a cada 1,5–3 s. Os planos mais longos sem troca de escala (~5,7 s em 6,9–12,6 s e ~4 s em 24,6–27,0 s) têm trajetória própria em curso (deriva e anel que acaba de pousar) e objeto novo (datas, zona dos EUA). Regime 'normal' da regência; nenhum clipe repetido (a cena não usa vídeo ou foto)."
+        "Mapa, sem footage parado: o quadro muda de escala ou de lugar pelo menos a cada ~6 s (descida 0,98–3,4 s; deriva 6,9–9,5 s; viagem a oeste 12,6–15,0 s; salto 16,5–17,7 s; viagem 21,4–24,0 s; recuo 31,3–33,9 s) e entra objeto novo a cada 1,5–3 s (conferido nas folhas A–F). Os planos mais longos sem troca de escala (~5,7 s em 6,9–12,6 s e ~4 s em 24,6–27,0 s) têm trajetória própria em curso e objeto novo. Regime 'normal' da regência; a cena não usa vídeo nem foto, e nenhum clipe se repete."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "autoria",
       "nota": 10,
       "problemas": [],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "camadas",
       "nota": 10,
       "problemas": [],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "circulo",
       "nota": 9,
       "problemas": [
-        "A cena avança em relação às irmãs: o medidor e o anel são a série declarada (identidade e decisões da Sala), e o conteúdo é novo (o lugar da lista antiga e da crista, o salto de 36 mi, as duas zonas e as 100 mi). O 24,442 FT já saiu na s58, mas aqui volta como callback com informação nova: ONDE está a crista (o alfinete no ponto da lista). Se a cena sumisse, o espectador perderia a geografia da disputa. Eco de forma com a s53 (medidor + anel) é consistência de marca, não círculo."
+        "A cena avança em relação às irmãs: o medidor e o anel são a série declarada, e o conteúdo é novo (o lugar da lista antiga e da crista, o salto de 36 mi, as duas zonas, as 100 mi e a cunha disputada). O 24,442 FT já saiu na s58, mas aqui volta como callback com informação nova (ONDE está a crista). Se a cena sumisse, o espectador perderia a geografia da disputa. Eco de forma com a s53 (medidor + anel) é consistência de marca, não círculo."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     }
-  ]
+  ],
+  "julgamento": {
+    "modo": "completo",
+    "lentes_julgadas": [
+      "espaco",
+      "factual",
+      "wordlock",
+      "abordagem",
+      "acessibilidade",
+      "poluicao",
+      "motion",
+      "fonte",
+      "tema",
+      "cobertura",
+      "cadencia",
+      "autoria",
+      "camadas",
+      "circulo"
+    ],
+    "lentes_herdadas": [],
+    "frames": 9,
+    "porque": "Qualidade-3 (lote L38), sobre a versão da arte-4 (sha1 ad5f1af3c923, carimbo 2160p, 1092 quadros; textos-tela 58a328d0). Imagens lidas: 9 de 25. Seis folhas 2x2 do clipe 4K graphics/s60.mp4, tiradas por ffmpeg (A 0,1/2,0/3,8/6,0 s; B 8,5/11,5/14,0/15,8; C 16,9/17,8/19,0/20,4; D 21,0/22,8/24,3/25,8; E 27,0/28,4/30,5/32,0; F 33,2/34,5/35,5/36,3), dois recortes 4K empilhados (o 'DISPUTED' em 33,2/34,5/36,3 s; o pulso do anel em 18,3/19,5/25,5 s) e um recorte da pílula do 27,585 contra o '30,000 FT' (17,8 s). Portões lidos (margens 0, 27 itens, 365 amostras; til 0; rodape 0; _portao.json só com o crédito a 60 px, coberto pela exceção do Lucas no sha1 de hoje). Aprovada: todas as lentes >= 7 (poluicao 7, fonte 7), gatesDuros vazio."
+  }
 }

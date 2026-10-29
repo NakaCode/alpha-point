@@ -7,7 +7,8 @@
       "lente": "espaco",
       "nota": 9,
       "problemas": [
-        "Sinalização, sem reprovar: o crédito do vídeo está a 60 px (identidade §4.1, Atlântico em diante) e o qc-tamanho o reprova a 60<72 em `Source: NOAA Ocean Exploration, 2026`. É a exceção do Lucas, 24/10/2026 ('60 px (Recomendado)'), gravada em qc/_excecoes-portao.json para o sha1 033adfc29420 (exceção do Lucas: qc-tamanho, crédito a 60 px). Portões lidos: _portao.json falhas só `tamanho` (a exceção), `til-glifo` indefinido (coberto pelo portao-mapa til = 0); portao-margens veredito 0 (15 itens, 263 amostras, sha1 e marca de hoje); portao-mapa rodape v5 = 0 (12,03:1). No recorte 4K de 3,0 s: o crédito tem 3 linhas, termina antes de x 1720 e a primeira linha começa abaixo de y 1880."
+        "Exceção do Lucas: qc-tamanho, crédito a 60 px ('Source: NOAA Ocean Exploration, 2026' 60<72), 24/10/2026, '60 px (Recomendado)'; sha1 do HTML 07b448ccb39a = o da exceção em qc/_excecoes-portao.json (o de antes, 033adfc29420, foi para 'superadas'). É só o crédito: o tamanho vem de var(--fs-credito) com o override de 60 px, e o crédito de mapa (data-qc-credito=mapa, MapTiler/OSM e GEBCO) passa no piso de 40. Portões lidos: _portao.json falha só 'tamanho'; 'til-glifo' indefinido, coberto pelo portao-mapa til = 0; portao-margens veredito 0 (15 itens em 263 amostras, sha1 e marca de hoje, sem relevo); portao-mapa rodape v5 = 0 (12,03:1); carga passa (a s30 não tem RITMO). Não remedi no olho. Cabeçalho en-US com 4k-native.",
+        "Os blocos novos da b3 (navio e leque) ficam longe de qualquer texto e do canto do crédito: o navio no mar aberto ao norte e o leque descendo até a pegada, dentro da fossa; o leque cruza a linha do contorno, que é o desenho. Nenhuma colisão nos quadros de 14,8 e 15,6 s."
       ],
       "correcoes": []
     },
@@ -15,21 +16,25 @@
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "SINALIZA (s30 b2, 10,8 s, recorte q2-L11-t10.8-crop-fio): a ponta do fio da rede pousa em cima do contorno NORTE da fossa de 7.000 m, não dentro do trecho mais fundo como o cabeçalho declara (declarado 3: -66,2; 19,8). Quem vê lê 'a rede caiu na borda da fossa'. A rede foi a 8.370 m (F69), e a borda de 7.000 m não tem essa profundidade. Não reprova porque a cena declara que o ponto não é o lugar da rede e nenhuma fonte o dá (TA253, PA006).",
-        "SINALIZA (s30 b4, 19,9 s): a área acesa do multifeixe é derivada das trilhas (2 x 6 km, calibrada nos 100.000 km2 do USGS, declarado 1) e, no quadro largo, termina dentro da imagem no leste: a ponta leste da fossa fica escura. O quadro de 19,9 s não lê 'só o oeste foi mapeado' (a luz cobre 96,6 % da fossa de 7.000 m, de borda a borda no oeste), então o TA258 está cumprido; a derivação só está dita no cabeçalho, não na tela."
+        "CONSERTO DA ARTE-4 (navio e leque na b3): saiu e não abriu defeito. No recorte 1:1 de 15,6 s (n468) o navio está no mar aberto ao norte e o leque abre uma vez até a pegada, cuja barra fica ~100 px no 4K DENTRO do contorno de 7.000 m, nunca sobre ele; a pegada é um ponto da perna real de 2002 que o navio navega na b5, a 14 km do começo dela, declarado no cabeçalho (o 1º quadro de prova da Arte a tinha posto sobre o contorno norte, e ela a moveu). A trilha e a largura (2 × 6 km) são as do USGS OFR 2006-1210.",
+        "SINALIZA (inalterado desde a qualidade-2; fora do que a arte-4 mexeu), b2, 10,8 s (folha C): a ponta do fio da rede pousa em cima do contorno NORTE da fossa de 7.000 m, não dentro do trecho mais fundo, como o cabeçalho declara. A rede foi a 8.370 m (F69), e a borda de 7.000 m não tem essa profundidade; quem vê lê 'a rede caiu na borda da fossa'. Não reprova: a cena declara que o ponto não é o lugar da rede e nenhuma fonte o dá (TA253).",
+        "SINALIZA (inalterado), b2, 9,5 s (recorte 1:1, n285): o anel de chamada do retalho de ~1 mi (tracejado, 128 px) cavalga o contorno norte da fossa, com a metade de cima fora e o ponto do retalho um pouco dentro; nunca toca o anel do ponto mais fundo, que é a regra do TA253 (a âncora do batiscafo da s05 é outra coisa). O retalho segue sem rótulo de lugar, sem alfinete e sem data, então não se lê como o sítio de 1964.",
+        "SINALIZA (inalterado), b4 e b5: a área acesa do multifeixe é derivada das trilhas (2 × 6 km, calibrada nos 100.000 km² do USGS, declarado 1). Ela cobre 96,6 % da fossa de 7.000 m, com a ponta leste escura, e uma faixa isolada acende fora da fossa, entre as Ilhas Virgens e a fossa, em 18,9 e 20,0 s (folha E): é uma trilha real do levantamento. O TA258 está cumprido (a câmera mostra a fossa inteira antes de descer); a derivação só está dita no cabeçalho."
       ],
       "correcoes": [
-        "Se a Sala quiser o polígono lido do USGS no lugar da derivação, pedir à pesquisa-geo (bloqueio 3 da pauta-geo). Se o fio for refeito, descê-lo num ponto interior ao trecho de 8.000 m (isóbata de 8.000 m da fossa-porto-rico), a pelo menos ~40 px do contorno de 7.000 m, sem tocar o anel (mapista)."
+        "mapista (só se a cena voltar por outro motivo): descer a ponta do fio num ponto interior ao trecho de 8.000 m, a pelo menos ~40 px do contorno de 7.000 m e sem tocar o anel; afastar o anel de chamada do retalho do contorno uns 60 px, ou aceitar que o retalho está 'na borda' (o ponto representativo da zona fica a ~15 km dela)."
       ]
     },
     {
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "SINALIZA (s30 b2, quadros 7,8 / 8,1 / 8,3 s): o batiscafo entra em fade em 7,275 s ('crew'), mas a câmera ainda está recuando e o objeto está fora do quadro. O espectador só o vê, cortado na borda direita, a ~8,1 s, e inteiro a ~8,3 s: ~0,9 s depois de 'crew', ainda dentro da frase 'A crew could see only a small patch'. Retalho e '~1 MI' em 8,3 s ('small') estão no tempo. O resto confere pelos quadros: marca de 1970 em 0,2 s ('net'), fonte em 'nearly' (visível em 3,0 s), tudo limpo em 7,1 s, fio em 10,8 s, multifeixe em 16,3 s, pílula do USGS entre 18,5 e 19,9 s (18,7), navio em 22,8 s e leque em 23,3 s. A cena termina com a frase (26,13 s). Nenhum elemento foi atrasado por ritmo nesta rodada, então não há re-checagem de word-lock a registrar."
+        "Conferido contra o words.json (janela 189,1 s): a marca de 1970 pousa em 'net' (0,145; no quadro de 0,2 s já está caindo); a fonte entra em 'nearly' (visível em 1,5 s); o '?' e o peixe descem em 'No one knows' (4,0; no quadro de 5,0 s); o medidor enrola em 'A' (7,12; no de 7,4 s resta só o rasto do enrolar, e no de 7,9 s já saiu); o retalho e o '~1 MI' acendem em 'small' (8,315); o fio da rede desce em 'net' (10,175; no quadro de 10,8 s); o chão escurece em 'Neither' (12,05, 1,4 s) e o batiscafo, o retalho e o fio saem; NAVIO em 'took' (14,225) e LEQUE em 'sonar' (15,185): as duas palavras estão no words.json nesses tempos, e o quadro de 14,8 s mostra só o navio e o de 15,6 s o leque aberto. As faixas acendem em 'two thousand two' (16,155) e a pílula do USGS em 18,7. A cena acaba com a frase (26,13 s).",
+        "SINALIZA (inalterado): o batiscafo entra em fade em 7,275 s ('crew'), mas a câmera ainda recua e o objeto está fora do quadro; no quadro de 7,4 s ele não aparece e só se vê, inteiro, no de 7,9 s: ~0,6 a 0,9 s depois da palavra, ainda dentro da frase. Não segura o render.",
+        "Nenhum elemento foi atrasado por ritmo nesta rodada (a b3 ganhou elementos, ancorados nas palavras 'took' e 'sonar'), então não há re-checagem de word-lock a registrar."
       ],
       "correcoes": [
-        "Opcional (mapista): antecipar o fade do batiscafo para quando ele já esteja no quadro (~8,0 s), ou pousá-lo na primeira posição visível, sem mexer no resto. Não segura o render."
+        "Opcional (mapista): antecipar o fade do batiscafo para quando ele já esteja no quadro (~7,7 s), ou pousá-lo na primeira posição visível."
       ]
     },
     {
@@ -42,38 +47,40 @@
       "lente": "acessibilidade",
       "nota": 7,
       "problemas": [
-        "SINALIZA (s30 b4, 16,3 e 17,2 s): a leitura 'o chão volta ao brilho dentro das faixas' depende de uma diferença de brilho pequena (GEBCO a 50 % para 100 %). Nos dois primeiros quadros do beat quase não se vê mudança; a área acesa só se lê claramente a partir de ~18,5 s (a pílula do USGS entra em 18,7). O texto 'USGS MULTIBEAM · 2002–2003' carrega o sentido enquanto isso.",
-        "SINALIZA (s30 b2, 10,8 s): o batiscafo é o objeto BAT da s05, e o desenho (cabine achatada, vela e patins) pode ler-se como pequena aeronave para quem não sabe o que é um batiscafo. O contexto ('A crew', a bolha da esfera e o cone até o retalho) ajuda; sem ele, a forma confunde."
+        "SINALIZA (inalterado), b4, 16,5 s e 17,5 s (folha D): a leitura 'o chão volta ao brilho dentro das faixas' depende de uma diferença de brilho pequena; nos dois primeiros quadros do beat quase não se vê mudança, e a área acesa só se lê com clareza a partir de ~18,9 s (folha E). O texto 'USGS MULTIBEAM · 2002–2003' carrega o sentido enquanto isso.",
+        "SINALIZA (inalterado), b2, 8,3 a 9,5 s: o batiscafo é o objeto BAT da s05, e o desenho (cabine achatada, asas e patins) pode ler-se como pequena aeronave para quem não sabe o que é um batiscafo; o cone até o retalho e o 'A crew' ajudam. A decisão do desenho é de série (a pergunta da s05 × s25), não desta cena.",
+        "A b3 melhorou: de 13,45 a 14,2 s ainda há só o contorno, mas o navio e o leque anunciam o sonar antes de ele acender o chão, e o espectador entende a ponte 'sonar → faixas' sem o texto."
       ],
       "correcoes": [
-        "Mapista: no beat b4, subir o contraste da luz nos primeiros 1,5 s (por exemplo, a borda da faixa em --tinta nítida desde a primeira entrada) sem encolher o resto; não é pedido de velocidade. Para o batiscafo, a decisão é de série (ver a pergunta da s05 × s25 no report)."
+        "Mapista: no b4, subir a nitidez da borda da faixa (--tinta) desde a primeira entrada, sem encolher o resto; não é pedido de velocidade."
       ]
     },
     {
       "lente": "poluicao",
       "nota": 9,
       "problemas": [
-        "SINALIZA: 'USGS MULTIBEAM · 2002–2003' e 'U.S. Geological Survey' (s30 b4 e b5, de 18,7 a 26,1 s) dizem a mesma instituição duas vezes, empilhados no alto à esquerda. Os dois vêm do textos-tela f4eede4d, com papéis diferentes (cota e rótulo), então é redundância de texto do redator, não defeito da cena. Teste de lastro: todo texto cai em palavra da fala ('net', 'small patch', 'two thousand two', 'U.S. Geological Survey'); nenhum órfão. Elementos por beat: 3 / 4 / 5 / 2 / 5 / 6 (teto 6, identidade §4.2): o b5 encosta no teto, e o QC de carga ficou verde."
+        "SINALIZA (inalterado): 'USGS MULTIBEAM · 2002–2003' e 'U.S. Geological Survey' (b4 e b5, de 18,7 a 26,1 s) dizem a mesma instituição duas vezes, empilhados no alto à esquerda (folhas E e F). Os dois vêm do textos-tela (papéis diferentes: cota e rótulo), então é redundância de texto do redator, não defeito da cena. Teste de lastro: todo texto cai em palavra da fala ('net', 'small patch', 'two thousand two', 'U.S. Geological Survey'); nenhum órfão. Elementos por beat: 3 / 4 / 5 / 3 / 5 / 6 (teto 6, identidade §4.2); o b5 encosta no teto, e a carga passou. A b3 sobe de 2 a 3 elementos (anel, fossa, navio com o leque), longe do teto."
       ],
       "correcoes": [
-        "Redator-de-tela: considerar fundir os dois rótulos em um só ('U.S. Geological Survey · MULTIBEAM · 2002–2003') se a Sala quiser tirar um bloco; a cena não muda."
+        "redator-de-tela: considerar fundir os dois rótulos em um ('U.S. Geological Survey · MULTIBEAM · 2002–2003') se a Sala quiser tirar um bloco; a cena não muda."
       ]
     },
     {
       "lente": "motion",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "SINALIZA (s30 b3, 12,5 / 14,0 / 15,8 s): por ~3,5 s o quadro é só o contorno da fossa, o anel e a base escurecida. A deriva existe (zoom 8,10 para 8,22; a borda esquerda da fossa anda ~13 px na folha de 2.000 px em 3,3 s, ~7 px/s em 4K), mas o olho mal a percebe. Está de acordo com a regência ('stays like that'), a cena não congela e o mapa anda de um beat ao outro (recuo cúbico de 2,5 s a partir de 7,12 s; descida cúbica de 2,5 s a partir de 20,075 s; aproximação do navio em b5), por isso fica em 7 e não reprova. Norte para cima, sem órbita e sem relevo, como manda a Sala. Cortes secos dos dois lados (foto da s29 e foto da s32), fora do alcance do corte mapa-mapa."
+        "CONSERTO DA ARTE-4 (b3 parada): saiu. Antes, de 12,5 a 16,1 s a tela não mudava (só o contorno, o anel e a base escurecida). Agora: o chão escurece em 1,4 s (12,05–13,45), o navio entra em 300 ms em 14,225, o leque abre uma vez em 0,3 s em 15,185 (folha D: n444 só o navio, n468 o leque aberto) e o navio sai em 400 ms em 16,155, onde as faixas acendem. O tempo sem evento novo caiu de ~3,5 s para ~0,8 s (13,45–14,225), e a deriva continua por baixo.",
+        "Medi a deriva por correlação de fase (cv2.phaseCorrelate, q3-L32-deriva.py) no clipe 4K, janela x 200–1200, y 1000–1700: de 12,5 a 16,0 s o mapa anda 9,1 · 9,2 · 9,6 px/s (33 px em 3,5 s), a mesma deriva de antes (~7 px/s). O olho mal a percebe, mas o beat já não depende dela. A cena não congela: recuo cúbico de 2,5 s a partir de 7,12 s, descida cúbica de 2,5 s a partir de 20,075 s e aproximação do navio na b5. Norte para cima, sem órbita e sem relevo, como manda a Sala; cortes secos dos dois lados contra foto (s29 e s32), fora do alcance do corte mapa-mapa."
       ],
       "correcoes": [
-        "Não pedir velocidade. Se a Sala quiser tirar o repouso do b3, a saída é fazer a luz ou o escurecer carregarem o beat (o escurecer em 12,05 s já faz isso nos primeiros 0,5 s), não acelerar a deriva."
+        "Não pedir velocidade. A nota fica em 8 e não mais porque o b3, de 13,45 a 14,2 s, e o b4 inicial ainda dependem de uma deriva de ~9 px/s."
       ]
     },
     {
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "Créditos conferidos nos quadros: '© MapTiler © OpenStreetMap contributors' + 'GEBCO Compilation Group (2026) GEBCO 2026 Grid' numa pílula só, do primeiro ao último quadro, na ordem do textos-tela, e 'Source: NOAA Ocean Exploration, 2026' acima dela, fora da marca de mapa (cabeçalho: data-qc-credito='mapa' só na pílula de mapa). 60 px, 3 linhas, contraste 12,03:1 (portao-mapa rodape v5). O dado de 27,460 ft tem dono e ano na tela (voz.md §2). Trilhas do USGS e limite: domínio público, sem crédito na tela. Nenhuma mídia de _media/ na cena (sem conferência a casar). Nenhuma bandeira, logo nem selo (o 'U.S. Geological Survey' é só texto). O crédito da MapTiler continua no quadro quando o satélite já não aparece na descida (a partir de ~21,5 s): a Sala já decidiu que sobrar crédito não é achado (decisões da qualidade-1, 5)."
+        "Créditos nos quadros: '© MapTiler © OpenStreetMap contributors' + 'GEBCO Compilation Group (2026) GEBCO 2026 Grid' numa pílula só, do primeiro ao último quadro, na ordem do textos-tela, e 'Source: NOAA Ocean Exploration, 2026' acima dela, fora da marca de mapa (1,0 a 7,1 s). 60 px, 3 linhas, contraste 12,03:1 (portao-mapa rodape v5). O dado de 27,460 ft tem dono e ano na tela (voz.md §2). Trilhas do USGS e limite: domínio público, sem crédito na tela. Nenhuma mídia de _media/ na cena, nenhuma bandeira, logo nem selo ('U.S. Geological Survey' é só texto). O crédito da MapTiler continua no quadro quando o satélite já não aparece, a partir de ~21,5 s: a Sala decidiu que sobrar crédito não é achado (qualidade-1, decisão 5)."
       ],
       "correcoes": []
     },
@@ -81,25 +88,25 @@
       "lente": "tema",
       "nota": 8,
       "problemas": [
-        "SINALIZA (para a Sala, s30 b2 a b5): a fossa é o assunto nesses beats e aparece só em contorno --tinta, sem o tom de 85 % que a regra da série dá à fossa quando ela é o assunto (decisões da Sala; qualidade-1). A regência manda o chão escuro como o assunto e o cabeçalho declara 'sem preenchimento'; um preenchimento a 85 % taparia o brilho escurecido e depois o brilho do multifeixe, que são o argumento da cena. Cores por papel conferem: anel e linha do fundo em --destaque (ponto mais fundo), tudo o mais em --tinta/--neutro, sem vermelho contra azul, sem véu nem degradê. O mar escurecido (72 % e 50 %) é a decisão da regência, não da regra de 0,34."
+        "SINALIZA (para a Sala, inalterado), b2 a b5: a fossa é o assunto nesses beats e aparece só em contorno --tinta, sem o tom de 85 % que a regra da série dá à fossa quando ela é o assunto. A regência manda o chão escuro como o assunto e o cabeçalho declara 'sem preenchimento': um preenchimento a 85 % taparia o brilho escurecido e depois o do multifeixe, que são o argumento da cena. Cores por papel conferem: o anel em --destaque (ponto mais fundo), o navio, o leque e o resto em --tinta/--neutro; sem vermelho contra azul, sem véu nem degradê. O navio e o leque novos da b3 usam o mesmo traço --tinta do navio da b5."
       ],
       "correcoes": [
-        "Sala: decidir se a regra dos 85 % vale para o contorno desta cena. Minha leitura: não, porque o preenchimento esconderia o que a cena mostra; registrar a exceção da s30 b2 a b5 na série."
+        "Sala: registrar na série que a regra dos 85 % não vale para o contorno da s30 b2–b5 (minha leitura: o preenchimento esconderia o que a cena mostra)."
       ]
     },
     {
       "lente": "cobertura",
       "nota": 8,
       "problemas": [
-        "Concretos centrais da frase: a rede, o peixe, a tripulação/batiscafo, a fossa e o sonar do navio. A fossa e o lugar têm registro real (satélite na costa e GEBCO no fundo). Rede, peixe, batiscafo e navio são traço, sem foto, e compõem sem substituir: a enguia-cusk aparece em foto na irmã s29 e o navio da NOAA Ron Brown em foto na irmã s32. A rede e o batiscafo não têm foto na sequência (nada baixado a nomear)."
+        "Concretos centrais da frase: a rede, o peixe, a tripulação/batiscafo, a fossa e o sonar do navio. A fossa e o lugar têm registro real (satélite na costa e GEBCO no fundo). Rede, peixe, batiscafo e navio são traço, sem foto, e compõem sem substituir: a enguia-cusk aparece em foto na irmã s29 e o navio da NOAA, Ron Brown, em foto na irmã s32; a rede e o batiscafo não têm foto na sequência (nada baixado a nomear)."
       ],
       "correcoes": []
     },
     {
       "lente": "cadencia",
-      "nota": 8,
+      "nota": 9,
       "problemas": [
-        "Os seis beats são seis objetos e seis planos (4,0 / 3,1 / 4,9 / 4,0 / 6,6 / 3,5 s): a marca de 1970, o '?' com o peixe, o batiscafo e o retalho, a fossa escurecida, o multifeixe aceso e o navio com o leque. O b4 (6,6 s) tem uma sequência de três faixas acendendo e a descida de câmera, ou seja, trajetória própria em curso. O único repouso é o b3 (~3,5 s), que a regência pede. Não há footage nem clipe repetido."
+        "Seis beats, seis objetos e seis planos (4,0 / 3,1 / 4,9 / 4,0 / 6,6 / 3,5 s): a marca de 1970, o '?' com o peixe, o batiscafo e o retalho, a fossa escurecida com o navio e o leque, o multifeixe aceso e o navio com o leque da b5. O b4 (6,6 s) tem três faixas acendendo e a descida de câmera, trajetória própria em curso. O repouso do b3 (~3,5 s antes) agora tem três eventos dentro dele (o escurecer, o navio e o leque), o que fecha o achado da revisão de espectador r1b (mantidos[5]). Não há footage nem clipe repetido."
       ],
       "correcoes": []
     },
@@ -119,11 +126,33 @@
       "lente": "circulo",
       "nota": 8,
       "problemas": [
-        "SINALIZA (s30 b5, 23,3 a 26,1 s): o navio varre uma faixa 'acendendo' o fundo atrás dele, mas o b4 (16,0 a 22,6 s) já acendeu a fossa inteira. A faixa do b5 aparece como um retângulo claro com borda sobre uma área que já está acesa, então o degrau novo é o mecanismo (navio, leque, largura da faixa), não mais chão iluminado. A s28 e a s33 também usam a régua e a fossa: a s30 b0 só retoma a rede da s28 para pagar a marca de 1970 (callback com informação nova)."
+        "SINALIZA: a b3 agora mostra o navio e o leque (14,2 a 16,1 s) e a b5 mostra de novo o navio e o leque (22,8 a 26,1 s): o mesmo desenho duas vezes na cena. A b5 acrescenta o degrau novo (o navio navegando a perna, a faixa varrida e o zoom no mecanismo), e a b3 o prepara ('That took a different kind of sonar'), então é callback com informação nova e não repetição. Também sinalizo, como antes, que na b5 a faixa varrida cai sobre uma área que o b4 já acendeu; o que ela traz de novo é o mecanismo (navio, leque, largura da faixa), não mais chão iluminado. A s28 e a s33 usam a régua e a fossa; a s30 b0 só retoma a rede da s28 para pagar a marca de 1970."
       ],
       "correcoes": [
-        "Mapista (lote de consertos, só se a cena voltar por outro motivo): deixar a faixa varrida do b5 mais evidente do que o brilho do b4 (por exemplo, a borda da faixa em --tinta nítida com o miolo mais claro), para ela ler como o degrau seguinte."
+        "Mapista (só se a cena voltar por outro motivo): deixar a faixa varrida do b5 mais evidente do que o brilho do b4 (a borda da faixa em --tinta nítida com o miolo mais claro), para ela ler como o degrau seguinte."
       ]
     }
-  ]
+  ],
+  "julgamento": {
+    "modo": "completo",
+    "lentes_julgadas": [
+      "espaco",
+      "factual",
+      "wordlock",
+      "abordagem",
+      "acessibilidade",
+      "poluicao",
+      "motion",
+      "fonte",
+      "tema",
+      "cobertura",
+      "cadencia",
+      "autoria",
+      "camadas",
+      "circulo"
+    ],
+    "lentes_herdadas": [],
+    "frames": 26,
+    "porque": "Rejulgamento completo da versão da arte-4 (sha1 07b448ccb39a, carimbo 2160p). Os quadros saem do clipe 4K de prova graphics/s30.mp4 por ffmpeg: 6 folhas de contato 2x2 (24 quadros, de 0,2 a 26,1 s, 4 deles dentro do b3: 13,0, 14,0, 14,8 e 15,6 s) e 2 recortes 1:1 (o leque em 15,6 s e o retalho em 9,5 s); mais a medida de deriva por correlação de fase. Os portões foram lidos, não rodados. A s31 não tem clipe: o laudo é o da mãe."
+  }
 }

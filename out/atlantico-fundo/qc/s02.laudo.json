@@ -1,15 +1,18 @@
 {
   "cena": "s02",
-  "aprovado": true,
-  "gatesDuros": [],
+  "aprovado": false,
+  "gatesDuros": ["carga"],
+  "motivo": "limitação de portão (RITMO, qc-carga): em triagem. O qc-carga dá RITMO 1,19 entradas/s (teto 0,9) no sha1 16291ab8ec1a porque as duas linhas de crédito de mapa estreiam em 0,3 s, o t0 do textos-tela (conserto 4 · item 9b) e da identidade §4.2. As 14 lentes estão ≥ 7: sem o RITMO, a cena aprovaria.",
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "exceção do Lucas: qc-tamanho, crédito a 60 px ([credito] \"Source: Bongiovanni et al., 2021\" 60<72), \"60 px (Recomendado)\", 24/10/2026, entre 17h e 19h (Brasília), no sha1 003333a84954 (igual ao do HTML de hoje, conferido em _excecoes-portao.json). É só o crédito; nenhum outro item do qc-tamanho reprovou.",
-        "Portões lidos no sha1 de hoje: portao-margens 0 (11 itens, 52 amostras, marca = sha1 do tokens.css de hoje), portao-mapa til 0 (8 textos) e rodape 0 (11,51:1), check-overlap 0, fora-do-quadro 0. O til-glifo do qc-cena sai NÃO MEDIDO por desenho nas cenas de mapa e é coberto pelo portao-mapa til.",
-        "Sem remedir no olho o que o portão mede. No recorte 4K do t = 4,0 s: a pílula \"≈ 83 MI · AGUADILLA\" fica a ~95 px da linha, e a pílula do número a ~190 px dela; as três linhas de crédito (60 px, Inter 500, caixa de uma linha, sem sobreposição) sobem até y ≈ 1853, só crédito na faixa. Canto 400 × 400 livre nos quadros olhados."
+        "exceção do Lucas: qc-tamanho, crédito a 60 px ([tamanho] [credito] \"Source: Bongiovanni et al., 2021\" 60<72), \"60 px (Recomendado)\", 24/10/2026, entre 17h e 19h (Brasília), no sha1 16291ab8ec1a (igual ao do HTML de hoje, conferido em qc/_excecoes-portao.json). É só o crédito; o qc-tamanho não reprovou mais nada. O outro item vermelho do _portao.json é a carga (RITMO), que vai a gatesDuros e à triagem; nada a ver com espaço.",
+        "Portões lidos no sha1 de hoje, sem remedir: portao-margens 0 (10 itens, 52 amostras, marca = sha1 do tokens.css de hoje, 6314f177); portao-mapa til 0 (8 textos) e rodape 0 (pior 11,51:1, v5). O til-glifo do qc-cena sai NÃO MEDIDO por desenho em cena de mapa e é coberto pelo portao-mapa til.",
+        "Recorte 4K de t = 4,6 s (olhado): a linha 'Source: Bongiovanni et al., 2021' (pílula própria) e a pílula de 2 linhas (MapTiler em cima, GEBCO embaixo) ficam separadas por ~10 px, sem sobreposição, no mesmo corpo (60 px, Inter 500) e só crédito na faixa. Canto 400 × 400 livre em todos os quadros olhados.",
+        "SINALIZA (hierarquia): de 3,5 a 5,0 s a pílula '≈ 83 MI · Aguadilla' e a pílula do número ('27,487 FT / MORE THAN 5 MI DEEP') têm o mesmo corpo de rótulo e o mesmo peso; o olho vai ao número por causa da contagem que acabou de pousar e da linha com o anel, não por tamanho. Não reprova (a marca não pede herói aqui; o dado é cota), mas é o ponto onde a cena é mais plana.",
+        "Conserto da arte-4 (o anel em x ≈ 1800 para a pílula nova caber): saiu. A borda esquerda da pílula do número fica a ~210 px (folha, t = 3,6 a 5,0 s), dentro da margem de 200 px que o portão mede (0)."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -18,9 +21,9 @@
       "lente": "factual",
       "nota": 9,
       "problemas": [
-        "Conferido contra o textos-tela e a pesquisa: 27,487 FT = 8.378 m (Bongiovanni et al., 2021), \"MORE THAN 5 MI\" = 5,21 mi, \"≈ 83 MI\" = 134,3 km = 83,45 mi, anel em 19,712°N 67,311°W. Grafia igual à do textos-tela (b034414f), sem texto de nao_vai_para_tela.",
-        "Geometria real: a ilha é o polígono porto-rico (a foto da ISS, georreferenciada com IoU 0,906, cai sobre ele; no recorte 4K de t = 1,3–1,4 s só resta uma fresta fina entre o contorno e a foto na costa SW, sem leitura); o trecho aceso é a isóbata de 8.000 m da GEBCO, e o anel cai dentro dele. A linha parte do ponto da costa NW de Aguadilla (o ponto assenta na costa nos quadros 4K de 1,3 a 1,4 s), nunca de San Juan, e sobe quase ao norte até o anel, como os 134,3 km pedem.",
-        "OBSERVAÇÃO (nota ≥ 7): a pílula do número pousa a ~430 px abaixo e à esquerda do anel e não toca nem a linha nem o anel. O vínculo vem da descida e da fala (\"It's more than five miles down\"), não da posição. Não inverte o sentido, por isso não é achado de associação posicional. Ver `acessibilidade`."
+        "Texto conferido letra a letra contra o textos-tela 58a328d0: '≈ 83 MI · Aguadilla' (caixa normal, conserto 5), '27,487 FT', 'MORE THAN 5 MI DEEP', 'Source: Bongiovanni et al., 2021', '© MapTiler © OpenStreetMap contributors' e 'GEBCO Compilation Group (2026) GEBCO 2026 Grid'. Nenhum texto do nao_vai_para_tela. 'DEEP' diz o que o 27,487 mede e não contradiz a voz ('more than five miles down').",
+        "Geometria: a ilha é a foto da ISS que encolhe até o polígono real de Porto Rico (folha de 0,5 a 1,15 s: a foto vira um retângulo e o contorno branco da ilha cai sobre a costa, sem fresta que se leia); o trecho aceso é o polígono do trecho mais fundo e o anel cai dentro dele, em x ≈ 1800. A linha parte da ponta NW da ilha (Aguadilla), nunca de San Juan, e sobe ao anel. A olho, o comprimento da linha contra a ilha é coerente com um '≈ 83 MI'; isso não é medição (a conta é da pesquisa-geo, e o laudo anterior a conferiu).",
+        "Asset: foto da ISS/NASA, domínio público, sem crédito na tela (certo); é o reuso declarado de s01, com veredito no conferencia-midia.json (986ae802). Não remedi o sha256 desta vez: nenhuma mídia mudou na arte-4."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -29,9 +32,10 @@
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "OBSERVAÇÃO: o trecho aceso e o anel entram em 1,25 s (o anel cheio em ~1,55 s); 'deepest' é dito em 0,555 s e 'point' em 0,96 s (relógio da cena). O elemento chega ~0,3 s depois do início de 'point' e ~0,7 s depois de 'deepest'. Os primeiros 1,25 s são cobertos pela foto que encolhe até a ilha, que continua o 'a U.S. island, lies' de s01: não há buraco de cobertura no primeiro segundo. É a janela da regência (o voo e a foto), e a regência cita 1,25 s: não é achado.",
-        "OBSERVAÇÃO: \"≈ 83 MI · AGUADILLA\" (1,733 s, 'Atlantic') não tem a sua palavra nesta cena: o 'eighty-three miles' foi dito em s01. É a mesma frase atravessando o corte s01/s02 e o dado que a cena existe para provar (exceção (b) do lastro). O t0 é o do textos-tela.",
-        "Conferidos na palavra: o número começa a descer em 'It's' (2,82 s) e crava 27,487 FT em 'five' (3,49 s; 3,467 no HTML); 'MORE THAN 5 MI' entra em 'five'; o anel pulsa em 2,82 e 3,82 s. O visual termina com a frase (a fala acaba em ~4,6 s; o texto fica até o corte, 5,03 s). Nenhum elemento foi atrasado por ritmo nesta cena, então não há re-checagem de word-lock a fazer."
+        "OBSERVAÇÃO: o trecho aceso e o anel entram em ~1,25 s; 'deepest' é dito em 0,555 s e 'point' em 0,96 s. Os primeiros 1,25 s são cobertos pela foto que encolhe até a ilha e pelo voo (folha de 0,5 a 1,15 s), que continuam o 'a U.S. island, lies' de s01: sem buraco de cobertura no primeiro segundo. É a janela da regência, não é achado.",
+        "OBSERVAÇÃO: '≈ 83 MI · Aguadilla' (1,733 s, 'Atlantic') não tem a sua palavra nesta cena: o 'eighty-three miles' foi dito em s01. É a mesma frase atravessando o corte s01/s02 e o dado que a cena existe para provar (exceção (b) do lastro).",
+        "Conferido nas palavras do relógio da cena: o número começa a descer em 'It's' (2,82 s) e crava 27,487 em 'five' (3,49 s); 'MORE THAN 5 MI DEEP' entra em 'five' (3,467); a fonte entra junto do número (2,8); o visual termina com a frase ('down' em 4,24 s; o texto fica até o corte, 5,03 s).",
+        "Nenhum elemento foi atrasado por ritmo na arte-4 (os créditos estreiam no t0 do textos-tela). Se a triagem do RITMO resolver atrasando entradas, cada uma tem de ser re-checada contra a fala que a ancora; hoje não há o que re-checar."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -45,20 +49,20 @@
     },
     {
       "lente": "acessibilidade",
-      "nota": 8,
+      "nota": 9,
       "problemas": [
-        "SINALIZA (teste de custo zero, só o texto do quadro): \"27,487 FT / MORE THAN 5 MI\" não tem substantivo (depth, down, deep) nem liame com o anel, então a leitura sem áudio pergunta \"de quê?\". Quem vê a pílula DESCER enquanto conta e ouve \"It's more than five miles down\" entende de primeira, por isso fica em 8 e não reprova. O quadro final (t = 4,0 a 5,0 s), parado, é o que depende só da fala.",
-        "OBSERVAÇÃO: o trecho aceso está sem nome por decisão (o nome da fossa entra em s05); com o anel dentro dele e a fala 'the deepest point', o leigo lê \"a zona mais funda\"."
+        "Conserto da arte-4 (o substantivo): saiu e resolveu o sinal do laudo anterior. O teste de custo zero, lendo só o texto do quadro de 4,0 s ('≈ 83 MI · Aguadilla' / '27,487 FT / MORE THAN 5 MI DEEP'), agora responde: a ilha está a ~83 milhas da costa e ali o mar tem mais de 5 milhas de fundo. Em 2 s o leigo entende.",
+        "OBSERVAÇÃO: o trecho aceso segue sem nome (o nome da fossa entra em s05, por decisão); com o anel dentro dele e a fala 'the deepest point', o leigo o lê como 'a zona mais funda'."
       ],
-      "correcoes": [
-        "Opcional, a escolha é da Sala: o `redator-de-tela` pode fechar a 2ª linha da pílula com a palavra que a fala já usa (\"MORE THAN 5 MI DEEP\"), ou o `mapista` pode ligar o anel à pílula com um prumo fino (a metáfora do conceito é \"o número desce como um prumo\"). Qualquer das duas mexe no textos-tela ou na cena e pede conferência nova; nenhuma é condição do `aprovado`."
-      ],
+      "correcoes": [],
       "origem": "julgada"
     },
     {
       "lente": "poluicao",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "De 3,5 a 5,0 s há 5 elementos juntos (trecho aceso com o anel, linha, pílula do 83 MI, pílula do número, mais a fonte como crédito, que não conta): dentro do alvo de 4 a 5 e abaixo do teto de 6 (identidade §4.2). Blocos de texto de leitura: nenhum. Todo texto tem a palavra que o convoca (lastro ok). Nenhum rótulo redundante."
+      ],
       "correcoes": [],
       "origem": "julgada"
     },
@@ -66,8 +70,8 @@
       "lente": "motion",
       "nota": 9,
       "problemas": [
-        "Sem pop: foto → ilha → satélite varridos a 0,1 s de 0,4 a 1,8 s e a 0,033 s de 1,300 a 1,400 s (a ilha passa da foto ao satélite de quadro a quadro, sem salto). A câmera recua e voa em cúbica (z 10,0 → ~7,78 → 8,55 até ~2,6 s) e depois empurra devagar (8,55 → 8,66); o anel pulsa até ~5,0 s. Depois que o número pousa (3,47 s), o que se move é o empurrão e o pulso: nada congela.",
-        "Resposta à pergunta da Arte: o norte para cima, sem órbita, é decisão da Sala para todos os mapas; o zoom e o voo contínuos carregam o quadro o tempo todo, então a falta de órbita não reprova."
+        "Sem pop: foto → retângulo → ilha com satélite → Caribe varridos em 0,0 / 0,3 / 0,5 / 0,65 / 0,8 / 1,0 / 1,15 / 1,3 s; a foto encolhe em cúbica, o contorno da ilha fica no lugar e o satélite assume sem salto. A câmera recua e voa (voo contínuo) e depois empurra devagar até o fim; o anel pulsa; o número desce a régua de 'It's' a 'five' (10.602 em 2,9 s, 27.056 em 3,3 s, 27.487 em 3,6 s). Depois que o número pousa, o que se move é o empurrão e o pulso: nada congela.",
+        "Norte para cima e sem órbita é decisão da Sala para todos os mapas; o zoom e o voo contínuos carregam o quadro o tempo todo, então a falta de órbita não reprova."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -76,12 +80,12 @@
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "Em ordem: crédito de mapa ('© MapTiler © OpenStreetMap contributors' e a GEBCO, as duas com data-qc-credito=\"mapa\" no próprio elemento, GEBCO tratada como crédito de mapa por decisão da Sala) legível a 60 px em todo quadro, pior contraste 11,51:1 no portao-mapa rodape v5 (piso 3:1); 'Source: Bongiovanni et al., 2021' só com data-qc-papel=\"credito\", sem a marca de mapa, de 2,8 s ao fim (fonte do 27,487). Foto da ISS: NASA, domínio público, sem crédito na tela (certo); o sha256 do arquivo (0de17679…) casa com o reuso aprovado para a s02 no conferencia-midia.json (lote 7).",
-        "SINALIZA: de 0 a ~0,4 s os dois créditos de mapa ficam sobre a foto, antes de o mapa aparecer (a primeira faixa do mapa surge na borda direita em ~0,4 s). São ~12 quadros de crédito sem o mapa. O t0 = 0 é o do textos-tela (\"MapTiler no quadro inteiro do mapa\"), então a cena está certa; o qc-credito-fantasma do portão passou.",
-        "SINALIZA: \"≈ 83 MI\" fica 1,07 s (1,733 a 2,8 s) no ar antes de a linha 'Source: Bongiovanni…' entrar (o dono do dado do número, a localização do anel, chega só em 2,8 s). Fica, por decisão do textos-tela, e o crédito cobre os últimos ~2,2 s com o número na tela."
+        "Em ordem: '© MapTiler © OpenStreetMap contributors' e a GEBCO, cada linha com data-qc-credito=\"mapa\" no próprio elemento (a GEBCO tratada como crédito de mapa por decisão da Sala), numa pílula só e na ordem do textos-tela (conserto 4 · item 9b, saiu); legíveis a 60 px (recorte 4K de 4,6 s), pior contraste 11,51:1 (portao-mapa rodape v5, piso 3:1). 'Source: Bongiovanni et al., 2021' só com data-qc-papel=\"credito\", de 2,8 s ao fim (fonte do 27,487), a 60 px: é o item da exceção do Lucas (ver espaco). Foto da ISS: NASA, domínio público, sem crédito (certo).",
+        "Conserto da arte-4 que saiu: os créditos de mapa agora estreiam em 0,3 s (o 1º quadro com mapa), e não no quadro 0 sobre a foto de s01. Em 0,3 s o mapa é só uma fresta nas bordas e a foto ocupa quase tudo (folhas de 0,0 e 0,3 s); em 0,5 s o satélite já cerca a foto. São ~0,2 s de crédito sobre quase só foto, o t0 que o textos-tela fixa. SINALIZA, não reprova; o qc-credito-fantasma passou.",
+        "SINALIZA: '≈ 83 MI · Aguadilla' fica 1,07 s (1,733 a 2,8 s) no ar antes de a linha 'Source: Bongiovanni…' entrar (o dono do dado da localização do anel chega em 2,8 s). O textos-tela manda assim; o crédito cobre os últimos ~2,2 s com o número na tela."
       ],
       "correcoes": [
-        "Opcional, para o `redator-de-tela` (Sala decide): t0 do crédito de mapa no 1º quadro em que o mapa aparece (~0,4 s) e t0 do 'Source: Bongiovanni…' junto da pílula de 83 mi (1,733 s). Nenhum dos dois reprova a cena."
+        "Opcional, para o `redator-de-tela` (a Sala decide): t0 do 'Source: Bongiovanni…' junto da pílula de 83 mi (1,733 s). Não é condição do `aprovado`."
       ],
       "origem": "julgada"
     },
@@ -103,8 +107,8 @@
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Resposta à pergunta da Arte (\"27,487 FT\" 1,57 s e \"MORE THAN 5 MI\" 1,48 s, abaixo dos ~1,8 s): NÃO reprova. A pílula (o bloco) fica 2,23 s no ar desde o nascimento, em 2,8 s, e passa dos 2,0 s do §4.3; só a 2ª linha, medida do textos-tela (3,467 a 5,033), fica 1,57 s, acima do piso do ofício (~1,5 s) e abaixo do alvo (2,0 s). O valor é dito na mesma hora ('five' em 3,49 s), então o espectador o ouve e o lê juntos. Adiantar a 2ª linha para 'more' (3,04 s) mostraria o 5 antes da voz. Fica como está: SINALIZA.",
-        "Gancho (identidade §5): 5,03 s (abaixo de ~8 s), sem fusão, e duas trocas visuais (a foto vira a ilha e o mapa voa, em ~0,45–1,6 s; o número desce, em 2,8 s). A régua de três linguagens e duas imagens reais é do gancho inteiro (s01–s07), não desta cena: a s02 traz a foto real, o mapa e o número animado."
+        "SINALIZA: 'MORE THAN 5 MI DEEP' fica 1,57 s no ar (3,467 a 5,033), acima do piso do ofício (~1,5 s) e abaixo do alvo de 2,0 s da identidade §4.3; a pílula inteira (o bloco) está no ar desde 2,8 s, 2,23 s. O valor é dito na mesma hora ('five', 3,49 s), então o espectador o ouve e o lê juntos. Adiantar a linha para 'more' mostraria o 5 antes da voz. Fica.",
+        "Gancho (identidade §5): 5,03 s (abaixo de ~8 s), sem fusão, e duas trocas visuais (a foto vira a ilha e o mapa voa, em ~0,45–1,6 s; o número desce, em 2,8 s). A régua de três linguagens e duas imagens reais é do gancho inteiro (s01–s07), não desta cena."
       ],
       "correcoes": [],
       "origem": "julgada"
@@ -137,7 +141,8 @@
     "modo": "completo",
     "lentes_julgadas": ["espaco", "factual", "wordlock", "abordagem", "acessibilidade", "poluicao", "motion", "fonte", "tema", "cobertura", "cadencia", "autoria", "camadas", "circulo"],
     "lentes_herdadas": [],
-    "frames": 26,
-    "porque": "Primeira rodada de qc-visual da arte-1 (atlantico-fundo, passo art), sobre o clipe 4K de prova s02.mp4 (carimbo = sha1 003333a84954, 2160p, 151 quadros): 26 instantes distintos (0 a 5,0 s, a 0,1 s de 0,4 a 1,8 s e a 0,033 s de 1,3 a 1,4 s), em folhas de contato e 3 recortes 4K. Sem Chrome, sem tile, sem render; portões lidos, não rodados."
+    "frames": 16,
+    "rodadas_incrementais": 0,
+    "porque": "Qualidade-3 (atlantico-fundo, lote L29), rejulgamento completo sobre o clipe 4K de prova s02.mp4 da arte-4 (carimbo = sha1 16291ab8ec1a, 2160p, 151 quadros; o HTML tem o mesmo sha1): 16 instantes (0,0; 0,3; 0,5; 0,65; 0,8; 1,0; 1,15; 1,3; 1,8; 2,3; 2,9; 3,3; 3,6; 4,0; 4,6; 5,0 s) em 4 folhas de contato e 1 recorte 4K. Sem Chrome, sem tile, sem render; portões lidos, não rodados. O laudo da qualidade anterior (sha1 003333a84954) não vale para esta versão e foi lido só para conferir o que se pediu: os 3 consertos (créditos só com o mapa, formato dos créditos, 'MORE THAN 5 MI DEEP') saíram."
   }
 }

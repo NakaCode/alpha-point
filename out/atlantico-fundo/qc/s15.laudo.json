@@ -5,125 +5,142 @@
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "Exceção do Lucas: qc-tamanho, crédito a 60 px ('Source: U.S. Coast and Geodetic Survey, 1883' 60<72), 24/10/2026 entre 17h e 19h, '60 px (Recomendado)'; sha1 do HTML a91ac9114d74 = o da exceção em qc/_excecoes-portao.json. É só o crédito. O crédito de mapa (MapTiler/OSM e GEBCO, data-qc-credito=mapa) passa no piso de 40. O 'portao-margens' deu veredito 0 (16 itens em 135 amostras, sha1 de hoje, marca = sha1 do tokens.css de hoje); não remedi no olho.",
-        "Sinalização: o marcador fica a 104 px (piso do rótulo; abaixo do alvo 128), declarado no cabeçalho como a medida da série das s15/s18; a borda direita dele fica a 80 px da régua. De 4,5 a 5,2 s o canto de cima à direita do marcador encosta nos líderes da lupa (folha B, t=4,90 s); não há texto sobre texto."
+        "Exceção do Lucas: qc-tamanho, crédito a 60 px ('Source: U.S. Coast and Geodetic Survey, 1883' 60<72), 24/10/2026 entre 17h e 19h, '60 px (Recomendado)'; sha1 do HTML 56373860c3bc = o da exceção em qc/_excecoes-portao.json. É só o crédito; o crédito de mapa (MapTiler/OSM e GEBCO) passa no piso de 40. O HTML declara var(--fs-credito) com override de 60 px.",
+        "Portões lidos no sha1 de hoje: portao-margens 0 (16 itens medidos em 135 amostras, sem avisos); contrato, carga, colisão e fora do quadro 0; til-glifo NÃO MEDIDO por desenho (mapa), coberto pelo portao-mapa til 0. Não remedi margem no olho.",
+        "O defeito do laudo anterior (muita coisa ao mesmo tempo e a lupa encostando nos líderes) saiu: não há lupa, e a pílula do marcador subiu 72 px sobre a marca, sem cobrir o '30,000 FT'. No recorte 4K de t=3,33 s (1900×650 a partir de x 1800, y 1250) a pílula termina junto da ponta esquerda da marca e fica a ~70 px do rótulo '30,000 FT': não há texto sobre texto, mas é folga curta.",
+        "SINALIZA: no b2 (t=13,0 s) 'WATER TEMPERATURE' termina a ~3580 px no 4K, a ~60 px do limite da margem de 3640; o portão deu 0. O marcador a 104 px (o piso do rótulo, abaixo do alvo de 128) é a medida da série do medidor (s15 e s18), aceita pela Sala."
       ],
-      "correcoes": []
+      "correcoes": [
+        "Sem conserto só por isto. Opcional, se a cena voltar por outro motivo: dar ao marcador ~100 px de folga até o '30,000 FT' (mapista)."
+      ],
+      "origem": "julgada"
     },
     {
       "lente": "factual",
       "nota": 9,
       "problemas": [
-        "Conferido: 4,561 fathoms x 6 = 27,366 ft e 5,18 mi ('more than five miles'); a distância entre o alfinete do Blake (19°40'50\"N, 66°23'40\"W) e o anel (19,712°N, 67,311°W) é 96,1 km = 59,7 mi, igual ao '≈ 60 MI'; o Blake fica a leste do anel, como o marcador diz ('EAST'); na lupa, os 121 ft entre 27,366 e 27,487 dão 62 px no recorte 1:1 (63 px a 0,52 px/ft). A linha tracejada liga os dois pontos reais; não afirma rota. Nenhuma bandeira, nenhum vizinho rotulado.",
-        "Sinalização para o redator-de-tela (a cena não muda): a linha de caixa de _regras_de_serie diz 'navio em caixa normal (… Blake)', mas as entradas do próprio textos-tela escrevem '1883 · BLAKE' (e, na s18, 'HMS CHALLENGER') em caixa alta. A cena segue as entradas, que vencem pela precedência."
+        "Conferido: 4,561 braças × 6 = 27,366 ft e 5,18 mi ('more than five miles'); a distância entre o alfinete do Blake (19°40'50\"N, 66°23'40\"W) e o anel (19,712°N, 67,311°W) é ~96 km = ~60 mi, igual ao '≈ 60 MI'; o Blake fica a leste do anel, como a voz diz ('east'); a escala do medidor: 125 px no recorte 4K entre 27,366 e 30,000 ft = ~21 ft por px (a série usa 20). A linha tracejada liga os dois pontos reais e não afirma rota. '1883 · Blake' em caixa normal, 'SEAFLOOR SAMPLE' e 'WATER TEMPERATURE' e o crédito 'Source: U.S. Coast and Geodetic Survey, 1883' com a grafia do textos-tela 58a328d0. Nenhuma bandeira nem vizinho rotulado.",
+        "Peça construída (b2), julgada pelos quadros: o arame chega à alça do copo (o vértice da alça cai sobre o arame, em t=13,0 s); as duas braçadeiras do termômetro tocam o arame; a subida é uma só, rígida e sem balanço, e não há oclusão trocada. O desenho não afirma número de temperatura, marca nem modelo (a voz não diz o número). SINALIZA: o termômetro preso ao arame acima do peso vem do mesmo relatório de 1883, mas de outro cruzeiro do Blake (relato da arte-4); é genérico e declarado, e não afirma a sondagem de 27/01/1883 em detalhe."
       ],
-      "correcoes": [
-        "redator-de-tela: alinhar a regra de caixa de _regras_de_serie às entradas (rótulo de alfinete 'ANO · NOME' em caixa alta) ou o contrário; é ajuste de texto, sem efeito na s15."
-      ]
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "wordlock",
       "nota": 9,
       "problemas": [
-        "Primeiro segundo: o quadro de 0,1 s tem só o palco herdado (medidor, alfinete '1883 · BLAKE' da s13, anel a 40 %); o fio arranca em 'wire' (0,198 s) e a marca crava em 'bottom' (2,868; cena 2,866), com o marcador, a lupa e a fonte; a linha e o '≈ 60 MI' entram em 'sixty' (4,478; cena 4,466); o anel acende em 'deepest' (5,828); o arame entra em 'The' (8,243), sobe em 'back' (8,958) e a marca da leitura se traça em 'temperature' (11,918). Fim: a voz acaba em 12,78 s e o quadro só deriva até 13,333; nada de outra cena sobra.",
-        "Sinalização, sem achado: o ' · ≈ 60 MI EAST' do marcador está inteiro por volta de 4,9 s e a voz diz 'east' em 5,188 s (uns 0,3 s antes). É a forma do textos-tela (entra em 'sixty'), que vale pela precedência. Nenhum elemento foi atrasado por ritmo nesta cena, então não há re-checagem de word-lock a registrar."
+        "Primeiro segundo: o quadro de 0,1 s tem só o palco herdado (medidor, alfinete '1883 · Blake' da s13, anel a 40 %); o fio arranca em 'wire' (0,198 s) e a marca crava em 'bottom' (2,868 s), com o marcador e a fonte; a linha e o '≈ 60 MI' entram em 'sixty' (4,478 s); o anel acende em 'deepest' (5,828 s); o arame entra em 'The' (8,243 s) e o conjunto sobe com 'came back up' (8,40 a 9,55 s); 'SEAFLOOR SAMPLE' entra em 'sample' (9,598 s) e o termômetro, em 'water' (11,598 s). Fim: a voz acaba em 12,78 s e o desenho segura até 13,33 s.",
+        "Nenhum elemento foi atrasado por ritmo nesta cena, então não há re-checagem de word-lock a registrar."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "abordagem",
       "nota": 9,
       "problemas": [
-        "MAPA com a régua e, no b2, ilustração sobre o mapa presa ao alfinete: é o modelo certo para profundidade, distância entre dois pontos reais e o que voltou com o arame ('Mais mapa' e 'Sobre o mapa, mais vezes', identidade §5). O satélite com a GEBCO real conta na régua de mundo real; a ilustração, não. Sem alternativa melhor."
+        "MAPA com a régua para profundidade e distância entre dois pontos reais, e, no fim, o close em traço de engenheiro sobre o mapa escurecido: o modelo certo, e é o que o Lucas escolheu em 29/10 ('Enxugar e fechar em close'). O satélite com a GEBCO real conta na régua de mundo real; o desenho, não."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "Sinalização: de 3,77 s ao fim (9,6 s) a régua fica sem número nenhum: o '0 FT' e o '30,000 FT' saem com o resto do eixo, porque o textos-tela dá o eixo só até 3,767 s (vale pela precedência), e a decisão da Sala sobre a série diz que o '0 FT' e o '30,000 FT' ficam sempre. O marcador ('27,366 FT') salva o sentido; a régua perde a escala.",
-        "Sinalização: a lupa (2,87 a 5,17 s) mostra duas linhas, a cinza do 1883 e a laranja fraca do fundo do sonar, sem rótulo; o leigo só sabe o que é a laranja quando a fala chega ao 'deepest point… sonar' (5,8 a 6,6 s). A linha a 45 % é decisão da Sala e fica.",
-        "A ilustração do b2 é pequena (cerca de 200 px de altura no 4K) e a 'leitura' é só um traço de ~80 px ao lado do termômetro (recorte do n366): lê-se como termômetro e copo de amostra, mas a marca da leitura é fácil de perder."
+        "O conserto saiu: uma coisa por vez (profundidade, depois distância, depois o que voltou), e o desenho do fim tem rótulo. A dúvida do Lucas ('acredito que seja um termômetro?') se resolve: o tubo, o bulbo e as divisões, com 'WATER TEMPERATURE' ao lado, leem-se como termômetro; o copo com a hachura e 'SEAFLOOR SAMPLE', como amostra.",
+        "SINALIZA: de 3,77 a 8,23 s (4,5 s) a régua continua no ar sem número nenhum e com a marca de 27,366 ft sem rótulo (o textos-tela dá o eixo só até 3,767 s, e vale). Enquanto a voz fala de distância, o leigo vê uma régua vazia que não explica nada; é o resto da cena anterior (folha B)."
       ],
       "correcoes": [
-        "Sala: dizer se o '0 FT' e o '30,000 FT' ficam na régua até 13,333 s (então o textos-tela muda o t1 do eixo) ou se o t1 de 3,767 s da s15 vale; hoje a cena segue o textos-tela.",
-        "mapista (opcional, se a cena voltar por outro motivo): crescer a peça do b2 e a marca da leitura em ~20 %; o topo do termômetro está a ~250 px do topo, e a margem é 160."
-      ]
+        "mapista (opcional, na próxima passada da cena): a régua e a marca saem junto com o marcador, em 4,466 s, para a distância ser a única coisa na tela; ou, se a Sala quiser a régua até 8,233 s, o textos-tela passa a dar o '0 FT' e o '30,000 FT' até lá (pela regra da Sala, 'valem por cena enquanto a régua está no ar')."
+      ],
+      "origem": "julgada"
     },
     {
       "lente": "poluicao",
       "nota": 8,
       "problemas": [
-        "Sinalização: de 4,47 a 5,17 s há seis elementos (medidor, marcador, lupa, alfinete com pílula, anel, linha com '≈ 60 MI'), o teto da identidade §4.2, mais 3 linhas de crédito; depois que a lupa fecha são cinco. Na virada do b1 para o b2 (n250, t=8,33 s) a linha e o '≈ 60 MI' ainda estão quase cheios enquanto o arame, o copo e o termômetro entram a uns 35 %: sete elementos por ~0,3 s, numa dissolução. O qc-carga passou; é o pior extremo do teto, não passa dele.",
-        "Teste de lastro: '1883 · BLAKE' fica a cena toda sem palavra da s15 que o convoque (a voz não diz 'Blake' aqui). Cai na exceção (b): é o alfinete que identifica a sondagem da frase, vindo do palco da s13 (textos-tela › rotulo). O marcador longo (1883 · WIRE · 27,366 FT · ≈ 60 MI EAST / 4,561 FATHOMS) lê-se com a voz junto; é a forma da série. Sem texto órfão, sem entidade nem tofu."
+        "O conserto saiu: no b0 são 4 elementos (régua com o fio, alfinete com a pílula, anel, marcador), no b1, 5 (régua, alfinete, anel, linha e '≈ 60 MI') e no b2, 5 (arame, copo, termômetro e 2 rótulos), sempre abaixo do teto de 6 (identidade §4.2), mais 3 linhas de crédito. Nenhuma virada com sete elementos juntos: o marcador sai em 0,3 s antes da linha entrar, e a linha e o alfinete saem em 0,3 s antes do desenho do b2 entrar (folhas B e C).",
+        "SINALIZA: a régua com a marca, sem número, é o único elemento que poderia sair do b1 (3,77 a 8,23 s) sem perder o sentido (ver acessibilidade).",
+        "Teste de lastro: '1883 · Blake' fica a cena toda (até 8,233 s) sem palavra da s15 que o convoque (a voz não diz 'Blake' aqui); cai na exceção (b), pois identifica a sondagem da frase e vem do palco da s13 (textos-tela › rotulo). 'SEAFLOOR SAMPLE' e 'WATER TEMPERATURE' vêm das palavras 'sample of the seafloor' e 'water temperature'; são rótulos de desenho que o Lucas pediu ('com rótulo'). Sem texto órfão, sem entidade nem tofu."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "motion",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "Medido por correlação de fase nos quadros 1:1 do clipe, numa janela de mar sem sobreposições (x 200–1200, y 1000–1700): o mapa anda de 31 a 40 px/s no 4K (zoom 9,05 → 9,38 linear, rumo −0,3° → +0,3°), sem degraus e sem trecho parado, também depois do b2. O 1º e o último quadros são pontos de vista diferentes (a ilha de Porto Rico passa do centro-baixo ao canto, ~25 % maior; o anel anda ~340 px).",
-        "O fio arranca com rampa de 0,35 s, desce a velocidade constante e para no contato, sem ultrapassar. O conjunto do b2 sobe em quíntica, rígido e sem balanço (nada o excita), de acordo com 'o ilustrador, com a física'. Fora o corte seco dos dois lados (mapa → documento, troca de regime), nada pede a regra dos 250 ms."
+        "O mapa anda do 1º ao último quadro, também sob o véu: no par de recortes da área de mar (t=9,0 s e t=13,17 s) a mesma feição foi ~170 px para a esquerda em ~4 s (~40 px/s, ordem de grandeza igual à medida anterior de 31 a 40 px/s), sem degraus. Sob o véu a 78 %, porém, a deriva mal se percebe.",
+        "O fio do b0 arranca com rampa e para no contato, sem ultrapassar; o conjunto do b2 sobe em 1,15 s com a velocidade nula nas pontas e fica rígido, sem balanço. SINALIZA: de 9,6 a 11,5 s e de 12,0 a 13,3 s só o rótulo e a deriva imperceptível vivem na tela (o desenho não 'respira'). A roupa diz que o objeto que quase não se move para o texto ficar parado na leitura não é achado (escolha do Lucas, §5), então não reprova.",
+        "O véu --fundo a 78 % em 0,4 s sobre o mapa é a forma do 'o mapa escurece' que o Lucas escolheu; nenhum quadro para, e nada se move nos últimos 250 ms além da deriva. Corte seco dos dois lados, como o cabeçalho declara; as vizinhas (s14 e s16) não são mapa, então não é corte entre mapas."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "MapTiler/OSM e GEBCO do 1º ao último quadro, numa pílula só com 2 linhas e data-qc-credito=mapa; a forma curta da GEBCO é a credito_na_tela do _PROCEDENCIA.json da base. 'Source: U.S. Coast and Geodetic Survey, 1883' entra em 2,866 s, onde o 27,366 aparece: é dado atribuível (não é crédito supérfluo de domínio público), com data-qc-papel=credito, fora do contêiner do crédito de mapa. Contraste do crédito: 9,74:1 (portao-mapa rodape v5, sha1 de hoje). Três linhas ao mesmo tempo, o teto. Sem crédito-fantasma: a MapTiler tem tile na terra e a GEBCO é o fundo do mar em todos os quadros."
+        "MapTiler/OSM e GEBCO do 1º ao último quadro, numa pílula de 2 linhas com data-qc-credito='mapa'; no b2 o mapa segue na tela (a 22 %), então o crédito não é fantasma. 'Source: U.S. Coast and Geodetic Survey, 1883' entra em 2,866 s, onde o 27,366 aparece: dado atribuível, com data-qc-papel='credito', fora do contêiner do crédito de mapa, e fica até o fim, porque o desenho do b2 vem do mesmo relatório. 3 linhas de crédito ao mesmo tempo, o teto. Contraste do crédito: 9,74:1 (portao-mapa rodape v5, sha1 de hoje); tamanho: 60 px pela exceção citada em espaco."
       ],
-      "correcoes": [
-        "Sala (descrição do YouTube): a linha da GEBCO leva o DOI completo (10.5285/4f68d5c7-45eb-f999-e063-7086abc036fa, do _PROCEDENCIA.json) e a da MapTiler/OSM também; a cena não muda."
-      ]
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "tema",
-      "nota": 9,
+      "nota": 8,
       "problemas": [
-        "--destaque só no anel e na linha fraca do fundo do sonar (o ponto mais fundo, como o Lucas decidiu); --neutro nas visitas antigas (marcador, alfinete); a linha ≈ 60 MI em tinta. Duas matizes mais o satélite, sem degradê nem véu. A linha do fundo do sonar a 45 % fica, por decisão da Sala."
+        "--destaque só no anel e na linha fraca do fundo do sonar (o ponto mais fundo, como o Lucas decidiu); --neutro nas visitas antigas; o desenho do b2 só em --tinta, sem preenchimento. Duas matizes mais o satélite, sem degradê.",
+        "SINALIZA: o véu --fundo a 78 % sobre o mapa, no b2 (de 8,233 a 13,333 s), é o 'o mapa escurece' do Lucas (29/10/2026: 'Enxugar e fechar em close'), mas a identidade §5/§6 diz que o MAPA continua sem véu. Não reprovo (decisão do Lucas, e é uma transição de 0,4 s para um close, não um scrim empilhado na base), mas o texto da identidade não registra essa exceção."
       ],
-      "correcoes": []
+      "correcoes": [
+        "Sala: registrar na identidade §5/§6, quando houver outra rodada do arquivo, que o 'mapa escurece para um close' (véu --fundo a 78 %, a 0,4 s) é a exceção aprovada de 29/10/2026 ao 'MAPA sem véu'. A cena não muda."
+      ],
+      "origem": "julgada"
     },
     {
       "lente": "cobertura",
       "nota": 9,
       "problemas": [
-        "O concreto central é o arame de sondagem, desconhecido do público. O registro real dele está nas irmãs: a s12 (fotos do vapor Blake e da máquina de sondagem, pelo espelho) e a s16 (a página real do relatório, 'brown ooze'); regencia.json › auditoria.nomeados_sem_imagem = []. Aqui a amostra e a temperatura aparecem só desenhadas, o que compõe e não substitui; sinalizo, não reprovo."
+        "O concreto central é o arame de sondagem, desconhecido do público; o registro real dele está nas irmãs: a s12 (o vapor Blake e a máquina de sondagem) e a s16 (a página do relatório, 'brown ooze'). A amostra e o termômetro aparecem só desenhados, o que compõe e não substitui; sinalizo, não reprovo."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "cadencia",
       "nota": 9,
       "problemas": [
-        "Três objetos, três planos, cada um com a palavra que o convoca: a profundidade (0–3,77 s, 'The wire went down'), a distância (3,77–8,23 s, 'sixty miles') e o que voltou (8,23–13,33 s, 'came back up'). Sem footage e sem clipe repetido. Nenhum texto no ar abaixo de 2,0 s (a lupa tem 2,3 s); nenhum beat abaixo de 1,5 s. Cena de 13,3 s, regime normal; o mapa nunca para."
+        "Três objetos, três planos, cada um com a palavra que o convoca: a profundidade (0 a 3,77 s, 'The wire went down'), a distância (3,77 a 8,23 s, 'sixty miles east') e o que voltou (8,23 a 13,33 s, 'came back up'). O b2 tem duas coisas em sequência (amostra em 9,6 s, termômetro em 11,6 s), cada uma com o rótulo na palavra. Sem footage nem clipe repetido; nenhum texto abaixo de 2,0 s; nenhum beat abaixo de 1,5 s."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "autoria",
       "nota": 10,
       "problemas": [],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "camadas",
       "nota": 10,
       "problemas": [],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     },
     {
       "lente": "circulo",
       "nota": 9,
       "problemas": [
-        "Sinalização: o medidor da s15 e o da s18 repetem a mesma forma (fio desce, marcador crava, fonte entra). É a série decidida (o conceito: 'a régua enchendo de marcadores'); o degrau novo é o conteúdo. Em relação à s13 (mesmo alfinete e mesmo mapa), cada beat traz uma informação nova (a profundidade, a distância, o que voltou), e a s16 paga o 'brown ooze'."
+        "O medidor da s15 e o da s18 repetem a forma (fio desce, marcador crava, fonte entra): é a série decidida pela Sala, e o degrau novo é o conteúdo. Em relação à s13 (mesmo alfinete e mesmo mapa), cada beat traz informação nova, e a s16 paga o 'brown ooze' na página real."
       ],
-      "correcoes": []
+      "correcoes": [],
+      "origem": "julgada"
     }
   ],
   "julgamento": {
@@ -145,7 +162,7 @@
       "circulo"
     ],
     "lentes_herdadas": [],
-    "frames": 17,
-    "porque": "Os 17 quadros saem do clipe 4K de prova graphics/s15.mp4 (carimbo = sha1 do HTML a91ac9114d74, 2160p), por ffmpeg, em 4 folhas de contato, 3 recortes 1:1 e a medida de deriva por correlação de fase. Os portões foram lidos, não rodados."
+    "frames": 7,
+    "porque": "Os 7 quadros saem do clipe 4K de prova graphics/s15.mp4 (carimbo = sha1 do HTML 56373860c3bc, 2160p), pelo ffmpeg: 4 folhas de contato (16 instantes de 0,1 a 13,3 s), 1 quadro cheio do b2, 1 recorte 4K do marcador e 1 par de recortes do mar sob o véu. Os portões foram lidos, não rodados."
   }
 }
