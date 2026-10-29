@@ -1659,3 +1659,22 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   trecho e compare com uma palavra da mesma voz que tem o som em dúvida. A medida não mostra a tônica, e vale só para a geração medida.
 - **Por que serve a qualquer canal:** todo canal com voz sintética confere os nomes pelo transcritor, e ele escreve o que espera ler.
   Um canal de culinária teria o mesmo problema com "Worcestershire" ou "quinoa".
+
+### 92. O preparar-cena regrava o perfil do mapa a cada cena nova, e a linha do tempo passa a achar velhos os clipes de mapa já feitos
+
+- **O problema** (29/10/2026, no vídeo 4, `atlantico-fundo`): o verbo `proxies` da linha do tempo pulou 21 das 25 cenas de mapa com
+  "sem clipe 4K em dia". Os carimbos batiam com o HTML e terminavam em `2160p`. O que pesou foi a regra da linha do tempo
+  (`ferramentas/linha-do-tempo/linha.mjs`, `clipeEmDia`): um arquivo citado pela cena mais novo que o clipe deixa o clipe velho. O
+  `_media/_vendor/perfil-mapa.js` tinha a data das 08:44, de um `preparar-cena` da arte-2. Esse script grava o `perfil-mapa.js` e o
+  `.json` a cada cena nova, mesmo quando o texto não muda (`gravarAtomico`). Ele só marca as cenas para refazer quando o texto muda.
+- **O que resolveu:**
+  - um script gera o perfil como o `preparar-cena` gera, com o `perfis.mjs` do motor e o `canal.json`, e compara com o disco. Deu
+    igual byte a byte nos dois arquivos;
+  - com o conteúdo provado igual, a data dos dois voltou à da cópia do vendor (`touch -r camera-mapa.js`, 00:27, quando o conteúdo
+    nasceu);
+  - o `proxies` fez as 21 cópias que faltavam, e o `quadros` tirou os quadros das 25 cenas de mapa.
+- **Como evitar:** depois de toda tarefa de arte que rode `preparar-cena`, antes do `proxies`, refaça a prova. Só com o texto igual a
+  data volta. Com o texto diferente, os clipes estão mesmo velhos, e o render se refaz. O conserto de verdade é a linha do tempo comparar
+  o perfil pelo conteúdo, e não pela data, com o caso novo na prova dela.
+- **Por que serve a qualquer canal:** todo canal que use a linha do tempo com cena de mapa da pré-v1 cai nisso no segundo mapa de cada
+  vídeo. A data de um arquivo regravado sem mudança não prova que ele mudou.
