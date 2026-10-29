@@ -146,12 +146,15 @@ O setor usa só:
 
 ## Quem faz o trabalho: a peça, como subagente
 
-- **A peça roda como subagente do setor:** `Agent` com `subagent_type: '<id>'`, sem passar `model`, com `effort: 'xhigh'` e
+- **A peça roda como subagente do setor:** `Agent` com `subagent_type: '<id>'`, sem passar `model`, com o `effort` da peça e
   com `run_in_background: false`. Nas conversas dos setores, o `Agent` sem esse parâmetro roda em segundo plano (medido
   pela Arte, 12/10/2026), e o setor encerraria a volta com a peça ainda rodando.
   - O modelo vem do frontmatter: Fable no `diretor-de-arte` e no `editor-de-arte`, Sonnet no `qc-visual`, Opus nos outros.
   - **O esforço é `xhigh` em toda peça** (Lucas, 24/10/2026, no chat da Sala: "todos os outros chats, agentes e etc rodem em
     EXTRA"; CLAUDE.md, "O esforço em extra"): o `effort: 'xhigh'` vai em todo despacho, porque o frontmatter do motor não se edita.
+  - **Menos três peças, que voltaram ao `high`** (Lucas, 29/10/2026, 12:56, no chat da Sala: "Quero o retorno dos agentes que
+    você sugeriu ao High"; CLAUDE.md, "Três peças voltam ao alto"): o `mapista`, o `qc-visual` e o `verificador-de-fatos` vão com
+    `effort: 'high'`. O pedido da Sala repete o esforço de cada peça no teto da tarefa.
   - **A exceção, na Arte:** a cena `desenho` com `ANIMAÇÃO` no `porque` da regência vai ao `editor-de-arte` com `model:
     'opus'` (Lucas, 14/10/2026; `CLAUDE.md`, "Os modelos"), na construção e no conserto. O pedido da Sala diz quais cenas
     são essas; sem a lista, o setor a pede à Sala. As outras cenas do editor continuam sem `model`.

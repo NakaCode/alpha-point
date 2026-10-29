@@ -533,6 +533,12 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
   - Todo agente roda em `xhigh`: no `Agent`, `effort: 'xhigh'`; no `Workflow`, `agent(…, {effort: 'xhigh'})`. Vale para os
     especialistas despachados pela Sala e pelos setores (o modelo continua o do frontmatter, e o `effort` vai no despacho, porque o
     `.md` do motor não se edita) e para os agentes da Sala (leitores, céticos, verificadores, revisores de espectador).
+  - **Três peças voltam ao alto** (Lucas, 29/10/2026, 12:56, no chat da Sala: "Quero o retorno dos agentes que você sugeriu ao
+    High"). A sugestão era a opção B do documento "Scripts no lugar das voltas mecânicas"
+    (https://claude.ai/artifact/HRasnQysVLoDBNNpbY88zE): "Alto só no mapista, no qc-visual e no verificador, os três que mais subiram
+    com o extra". Na medida do documento, o mapista subiu 81 % por cena, o qc-visual 49 %, e o verificador custou 2,7 vezes por
+    item. Desde então, o `mapista`, o `qc-visual` e o `verificador-de-fatos` vão com `effort: 'high'`, despachados pela Sala ou
+    pelos setores. As outras peças e os agentes da Sala continuam em `xhigh`.
   - O ultracode continua ligado na sessão (a chave é do Lucas, e a Sala não a muda), mas a Sala só monta equipe de agentes, com
     `Workflow`, quando a tarefa pede: várias frentes independentes, conferência adversarial de algo que vai ao ar ou à marca, ou
     volume que uma conversa não aguenta. Tarefa curta, conversa, conserto pontual e conta de disco, a Sala faz sozinha.
@@ -1014,7 +1020,8 @@ arquivadas. O painel caiu no mesmo dia: "Não vamos fazer o painel, não há nec
   - Nunca `Agent` sem `subagent_type`: o agente geral herdaria as ferramentas da sessão, com o navegador do Lucas.
   - As ferramentas do próprio setor são uma lista fechada, no regimento.
   - As conversas dos setores rodam em Opus, com esforço `xhigh` (Lucas, 24/10/2026; "O esforço em extra", em "Os modelos"), e
-    despacham cada peça com `effort: 'xhigh'`.
+    despacham cada peça com `effort: 'xhigh'`, menos o `mapista`, o `qc-visual` e o `verificador-de-fatos`, que vão com
+    `'high'` desde 29/10/2026 ("Três peças voltam ao alto", em "Os modelos").
 - **A máquina:** render, portão com Chrome, caça, linha do tempo e conferente se marcam em `out/_maquina/` (fora do git),
   pelas regras do regimento. A Sala agenda: não caça nem sobe a linha do tempo com `chrome` de setor ocupado.
 - **O Lucas pode falar direto num setor.** O setor faz ali só a correção pequena que não toque cena vista ou aprovada nem o
