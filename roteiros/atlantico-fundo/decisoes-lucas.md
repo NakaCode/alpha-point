@@ -163,3 +163,23 @@ do navio que existe aberta." Vai ao conferente como `excecao_lucas`.
   1890, mais perto de 1883 que o atual, de 1900–1909. Ele só sai pelo navegador do app. Posso baixar este arquivo? NH 64332, "Captain
   Willard H. Brownson, USN", JPEG de 1280 px (161 KB), do site da Marinha (history.navy.mil)." A resposta: **"Sim, baixar
   (Recomendado)"**. Baixado às 15:52 (`out/atlantico-fundo/_tmp/pesquisa-pessoas/nhhc-brownson-2026-10-28.md`, §5).
+
+## A foto do El Mundo na cena 41 (29/10/2026, 01:1x, no chat da Sala, na conta principal)
+
+A verificação do research (`out/atlantico-fundo/_tmp/verificar-research/laudo.md`, M03) achou dois pontos na foto
+`s41-mayaguez-correo-y-casino-1918-earthquake-el-mundo.jpg`. A licença vem só pelo PD-1923 do Commons, que supõe publicação antes
+de 1931. E a foto de jornal pede crédito na tela sempre (`marca/identidade.md` §7), que o veredito não punha.
+
+A ficha da Universidade de Porto Rico, citada como fonte no Commons, não foi lida por ninguém:
+- o conferente teve a conexão recusada;
+- o pedido do verificador expirou;
+- a página não abriu no navegador do app da Sala (29/10, 01:1x).
+
+A pergunta: "A foto do correio de Mayagüez depois do terremoto de 1918 (cena 41) é do arquivo do jornal El Mundo. O Wikimedia
+Commons, o banco público de imagens de onde ela veio, a marca como domínio público por ter sido publicada antes de 1931. A página da
+universidade que confirmaria isso não abre. Como fica?"
+
+A resposta: **"Usar, com crédito (Recomendado)"**. A opção dizia: "Fica, com "El Mundo / Universidad de Puerto Rico" na tela, como a
+marca pede para foto de jornal. O risco: se ela nunca saiu no jornal, não é domínio público."
+
+Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
