@@ -183,3 +183,15 @@ A resposta: **"Usar, com crédito (Recomendado)"**. A opção dizia: "Fica, com 
 marca pede para foto de jornal. O risco: se ela nunca saiu no jornal, não é domínio público."
 
 Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
+
+## A manhã de 29/10/2026, no chat da Sala
+
+- **A caça (08:4x).** A pergunta: "Os 4 trechos de vídeo aéreo (cenas 10, 11, 43 e 51) dependem da caça nos bancos. Como seguimos?" A
+  resposta: **"Caçar depois das 11h (Recomendado)"**. Depois, ao combinado da caça: **"Ok, combinado"**. E à pergunta "O Shutterstock
+  entra nesta caça, como último banco da ordem?": **"Sim, com o Shutterstock"**. O relato está em `out/atlantico-fundo/_pesquisa/caca-relato.md`.
+- **A cota (08:5x).** A pergunta: "Para o vídeo 4 chegar à linha do tempo, o limite semanal deve ir de 38 % a uns 75–85 %. Faltam: o
+  resto da arte, o julgamento das cenas sem mapa, a revisão de espectador e os consertos. Os setores param sozinhos em 50 %. Até onde eu
+  libero?" A resposta: **"Até 80 % (Recomendado)"**. A opção dizia: "Os setores seguem até 80 % do semanal sem parar para perguntar. Em
+  80 %, eu paro tudo e te pergunto. A semana renova em 05/11."
+  - **O que muda:** neste vídeo, o freio do semanal nos pedidos aos setores passa de 50 % a 80 %. O freio de 85 % da janela de 5 h fica.
+  - A Sala para tudo em 80 % e pergunta.
