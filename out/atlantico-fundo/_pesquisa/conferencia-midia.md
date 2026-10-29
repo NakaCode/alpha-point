@@ -1,19 +1,191 @@
-# Conferência de mídia: atlantico-fundo (vídeo 4), fluxo `midia`, lotes 1 a 5; o lote 5 em 29/10/2026, 00:28 (Brasília)
+# Conferência de mídia: atlantico-fundo (vídeo 4), fluxo `midia`, lotes 1 a 6; o lote 6 em 29/10/2026, 01:27 (Brasília)
 
-**O laudo do lote 5:** 4 aprovados de 4 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido;
-recebidos: 4. São todos reconferências, e nenhum arquivo é novo:
-- a s72 da Samoa, com a resposta do Lucas;
-- a s27, com os dois campos do aviso do ano;
-- o Brownson (s14) e o Jamieson (s56), só com o id no caminho novo.
+**O laudo do lote 6:** 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1.
+É uma reconferência, no `art_direction`, e o arquivo não é novo: a foto do El Mundo da s41, com o achado M03 da verificação do
+research e a resposta do Lucas de 29/10/2026, 01:1x.
 
-**O laudo do arquivo inteiro (lotes 1 a 5):** 30 aprovados de 44 vereditos sobre 42 arquivos (3 reprovados, 11 trocar,
+**O laudo do arquivo inteiro (lotes 1 a 6):** 30 aprovados de 44 vereditos sobre 42 arquivos (3 reprovados, 11 trocar,
 0 pendente_lucas); 0 com algo não conferido.
 
 O veredito de cada rascunho casa pelo sha256 dele. O `entregar` grava esse sha256 no `_PROCEDENCIA.json` da cena:
 `medido.sha256` na cópia, `medido.medido_no_download.sha256` quando trata o arquivo. O retrato casa pelo sha256 do arquivo. A
 janela de cada plano é a do espelho r3b, provisória até a regência.
 
+## Lote 6: a foto do El Mundo da s41, com o crédito na tela (29/10/2026, 01:27)
+
+| Arquivo (`out/atlantico-fundo/`) | Cena | Fonte | sha256 | Veredito | O que mudou |
+|---|---|---|---|---|---|
+| `_media/_caca/s41/acervo-livre/s41-mayaguez-correo-y-casino-1918-earthquake-el-mundo.jpg` (entregue em `_media/foto/s41/s41-mayaguez-correo-y-casino-1918-earthquake-el-mundo.jpg`, o mesmo sha256) | s41 | Commons (coleção do El Mundo, UPR), PD-1923 | `80d4ca69…8315` | aprovado | o mesmo veredito, agora com a `excecao_lucas` de 29/10, 01:1x, e "El Mundo / Universidad de Puerto Rico" na tela |
+
+O lote 6 está em `lotes[5]` do JSON. O veredito novo ficou no lugar do antigo em `candidatos`, e o antigo foi para `substituidos`
+(o último), com `substituido_em` e `substituido_por`. Nenhum outro veredito mudou.
+
+### O que mudou no veredito, e por quê
+
+- **`credito_na_tela`:**
+  - antes: "nenhum (domínio público, PD-1923; identidade §7). Na descrição: Colección de Fotos del Periódico El Mundo, Universidad
+    de Puerto Rico, Recinto de Río Piedras, via Wikimedia Commons";
+  - depois: **"El Mundo / Universidad de Puerto Rico"**, pela resposta do Lucas.
+  - A linha da descrição não mudou. Ela foi para um campo novo, `credito_na_descricao`, para o `credito_na_tela` levar só o texto
+    da tela.
+- **`excecao_lucas`:** de `null` para a resposta de 29/10, 01:1x (abaixo).
+- **`licenca_fonte`:** continua `passa`, com os motivos refeitos.
+  - A publicação antes de 1931 é o que o PD-1923 supõe, e nada a prova: ninguém leu a ficha da UPR.
+  - A foto é de jornal, e a identidade §7 pede crédito na tela sempre. O lote 3 tirou o crédito por ser domínio público. O achado
+    M03 está certo, e o crédito volta.
+  - Passa pela `excecao_lucas`. A base gravada continua o PD-1923 do Commons, e não a regra da foto de jornal do `midia.md` §7.5:
+    essa regra pede, na procedência, o que a origem diz sobre uso, e a origem do jornal (a ficha da UPR) não foi lida.
+- **`fonte.licenca`:** o texto do lote 3, mais as duas tentativas depois dele (o pedido do verificador, que expirou, e o navegador
+  do app da Sala, onde a página não abriu).
+- **`tecnica`:** continua `passa`, com a mesma medida, relida no arquivo entregue. Uma anotação nova: no canto inferior direito há
+  uma mancha clara em anel, de dano da cópia, sem texto nem logotipo. Não é marca d'água. Em tela cheia, ela cai perto do canto de
+  400 × 400 (identidade §4.2) e sai no recorte.
+- **`repeticao`:** continua `passa`, relida sobre os 211 arquivos de `_media/`.
+- **`frase_coberta.de_onde`:** cita o espelho r3b, relido hoje; o lote 3 citava o r3. O plano é o mesmo.
+- **`arquivos_olhados` e `o_que_viu`:** os desta leitura. Este olhar não foi de olhos novos: o pedido mandava ler o veredito antigo
+  antes.
+- **`motivo`:** diz a foto de jornal, o risco pesado pelo Lucas e o crédito.
+- **O que não mudou:** o veredito (`aprovado`), o `id`, a frase, o `t0` e o `t1`, a janela de 3,6 s (provisória), o
+  `lugar_na_origem`, o `data_na_origem` ("1918"), o `aviso_de_ano` (`false`) e o contexto.
+
+### A frase e a janela
+
+- O espelho r3b (`2d411782…f468`), relido hoje, dá à s41 o plano 2 de 316,0 a 319,6 s, "uma segunda foto dos danos de 1918,
+  sóbria: MORE THAN 100", nas palavras 922–932.
+- A frase é "The quake and its tsunami killed more than 100 people." (roteiro, l. 42), de 316,02 a 319,13 s no `words.json`.
+- **O arquivo ainda cobre essa frase.** A regência não existe (`out/atlantico-fundo/regencia.json`), e a janela continua
+  provisória.
+
+### A exceção gravada
+
+- **s41, a foto do El Mundo** (`80d4ca69…8315`): "Usar, com crédito (Recomendado)", em 29/10/2026, 01:1x (Brasília), no chat da Sala.
+  - A pergunta, a opção e o risco ("se ela nunca saiu no jornal, não é domínio público") estão literais na `excecao_lucas`.
+  - O registro foi conferido no disco: `roteiros/atlantico-fundo/decisoes-lucas.md`, "A foto do El Mundo na cena 41" (l. 167–185,
+    sha256 `bda454e4…ea05`), no commit `035bab3`.
+  - **Cobre o item:** a resposta é direta à pergunta sobre esta foto, a única do El Mundo na s41. O `cobre` é o sha256 do arquivo.
+  - **O que ela cobre:** a licença só pelo PD-1923, com o risco dito, e o crédito "El Mundo / Universidad de Puerto Rico" na tela.
+  - **Uma diferença das outras exceções:** a pergunta não nasceu de um `pendente_lucas` meu. Ela veio do achado M03, e a Sala a
+    levou ao Lucas. O ofício §6.1 aceita "a resposta direta à pergunta", e esta é.
+  - A hora vem sem o minuto: o pedido e o registro dizem 01:1x. A `excecao_lucas` a grava assim, em `hora` (na forma das outras
+    exceções do arquivo) e em `hora_dita` (na forma da Sala).
+
+### Como foi conferido
+
+- **Duas imagens**, as duas do arquivo entregue (`_media/foto/s41/`):
+  - o arquivo inteiro, reduzido a 1600 px;
+  - uma folha com os quatro cantos em tamanho real.
+  - As duas estão em `_tmp/conferencia/reconf-s41/`.
+- **O `ffprobe` e o `sha256sum`** do arquivo entregue e do rascunho: 5902x4814, mjpeg, yuvj444p, `80d4ca69…8315` nos dois.
+- **A rede:** nenhum pedido. A licença do Commons é a lida no lote 3, e a ficha da UPR não foi pedida, como a Sala mandou.
+- **Nada mudou em `_media/`.** As 211 linhas de sha256 são iguais antes (01:20) e depois (01:25):
+  `_tmp/conferencia/reconf-s41/_media-antes.txt` e `_media-depois.txt`.
+- **As entradas não mudaram:** o espelho r3b, o `words.json` e o roteiro têm o sha256 que os lotes 4 e 5 registraram.
+- **As cópias de antes da emenda** estão em `_tmp/conferencia/reconf-s41/conferencia-midia.antes-reconf-s41.json` e `.md`. O
+  script da emenda é o `emendar.py`, e o das checagens do contrato, o `checar.py`.
+
+### Para o Lucas pesar
+
+Nada.
+
+### Para reconferir
+
+Nada novo. A ficha da UPR continua sem leitura, e a resposta do Lucas cobre essa lacuna. Se um dia ela for lida e disser que a
+foto não foi publicada, ou trouxer uma restrição de uso, este veredito se refaz.
+
+### Para quem volta
+
+- **`pesquisa-imagens`:** o `_PROCEDENCIA.json` de `_media/foto/s41/` ficou desatualizado. Ele ainda diz:
+  - `exige_credito: false`;
+  - `para_a_tela.credito_na_tela` "nenhum (…)";
+  - `conferencia.sha256_arquivo` `995d915c…`.
+  - Quem entregou o põe em dia a partir do veredito novo. Eu não edito a procedência.
+- **`redator-de-tela`:** na s41, plano 2 (316,0–319,6 s):
+  - o crédito "El Mundo / Universidad de Puerto Rico" vai na faixa de crédito, no tamanho que a identidade dá a este vídeo;
+  - sem "Photo from": a foto é de 1918, o ano do fato;
+  - o rótulo de lugar, se houver, não passa de Mayagüez, Puerto Rico;
+  - na descrição, a linha de sempre (`credito_na_descricao`).
+- **`diretor-de-arte` e `editor-de-arte`:** a margem branca da cópia sai no enquadramento, e a mancha em anel do canto inferior
+  direito também.
+
+### Avisos do conjunto da cena
+
+- **s41:** o plano 2 está coberto por esta foto. O plano 1 (a cota UP TO 20 FT) continua sem foto aprovada, como no lote 4 e no
+  achado M02. O espelho declara a reserva, o mapa da costa oeste com a cota.
+
+### Divergências entre a marca e este ofício
+
+Nenhuma entre a marca e o ofício. Quatro registros:
+- **Duas linhas da identidade §7 na mesma foto.** "Domínio público: sem crédito na tela" e "Foto … de jornal: crédito na tela
+  sempre" se cruzam numa foto de jornal em domínio público. O lote 3 seguiu a primeira, e o M03 apontou a segunda. O Lucas
+  decidiu esta foto. Se a Sala quiser a regra para as próximas, a pergunta é dele.
+- **O campo `credito_na_descricao`**, que o contrato §2.1 não lista. Nos outros vereditos, a linha da descrição vai junto, no
+  `credito_na_tela`.
+- **O `id`** ficou o do rascunho julgado, como nos outros vereditos de acervo aberto já entregues. O casamento é pelo sha256, e o
+  arquivo entregue tem o mesmo.
+- **A pasta dos scripts.** O pedido dizia `_tmp/conferente/pesquisa-1/`. O contrato §5 só me deixa criar pasta dentro de
+  `_tmp/conferencia/`, e os scripts ficaram em `_tmp/conferencia/reconf-s41/`.
+
+## Os vereditos de agora (os 44 de `candidatos`, depois do lote 6)
+
+Um por linha, na ordem do JSON. Um arquivo que cobre duas cenas tem um veredito para cada uma.
+
+| Arquivo (`out/atlantico-fundo/`) | Cena | Fonte | sha256 | Veredito | Motivo |
+|---|---|---|---|---|---|
+| `_media/pessoa/s14/willard-h-brownson-harris-ewing-1907-nh57975-commons.jpg` | s14 | commons | `fa90788b…8c62` | aprovado | Willard H. Brownson em retrato de 1900–1909 (Harris & Ewing, NHHC NH 57975; domínio público nos EUA), com o aviso do ano: o NHHC não tem retrato de 1881–1884, e o dos anos 1890 (NH 64332) só chega pequeno ao canal |
+| `_media/pessoa/s17/george-nares-lock-whitfield-rijksmuseum-commons.jpg` | s17 | commons | `f8f86ba5…bea8` | aprovado | George Nares em retrato de ca. 1873–1878 (Rijksmuseum, domínio público), rosto inteiro no card a 0,72×; vai com o aviso do ano da década, sem o ano do fato |
+| `_media/pessoa/s56/alan-j-jamieson-gnangcomapp-2022-commons.jpg` | s56 | commons | `679f2962…94b8` | aprovado | Alan Jamieson em foto de 2022 (Commons, CC BY-SA 4.0), com o aviso do ano: a busca pela de 2018–2019 (Caladan, Newcastle, UWA) não achou nenhuma que sirva |
+| `_media/documento/stewart-jamieson-2019-p4.jpg` | s08 | nora | `82c102bd…aa0b` | aprovado | a Tabela 1 de 2019 (CC BY 4.0) com a linha 'Milwaukee Deep … 8740 … GEBCO Gazetteer'; sem 'Brownson' na página |
+| `_media/documento/stewart-jamieson-2019-p4.jpg` | s56 | nora | `82c102bd…aa0b` | aprovado | a mesma Tabela 1 cobre a lista, o nome e os 8.740 m de s56 (plano 2), como volta declarada de s08 |
+| `_media/documento/stewart-jamieson-2019-p6-gazetteer.jpg` | s56 | nora | `147342ba…6f14` | aprovado | a frase da p. 6 ('8740 m as published in the IHO-IOC GEBCO Gazetteer…') cobre s56 (plano 2) palavra por palavra; alternativa à Tabela 1 |
+| `_media/documento/stewart-jamieson-2019-p6-gazetteer.jpg` | s08 | nora | `147342ba…6f14` | aprovado | a frase da p. 6 também cobre s08 ('the official list of undersea features'); alternativa à Tabela 1 |
+| `_media/documento/stewart-jamieson-2019-p1-resumo.jpg` | s59 | nora | `c6a6ed9a…e65f` | aprovado | o resumo de 2019 (CC BY 4.0) com 'propagated uncorrected through online sources and the scientific literature', a frase que s59 atribui aos autores |
+| `_media/documento/stewart-jamieson-2019-p1-titulo.jpg` | s56 | nora | `b727bf40…1442` | aprovado | o título e os autores do artigo de 2019, ao lado dos cards de s56 (plano 1), com as instituições de 2019 |
+| `_media/documento/uscgs-1883-p8.jpg` | s16 | noaa | `e435ec98…18a2` | aprovado | a p. 8 do relatório de 1883 tem as duas frases de s16 seguidas ('brown ooze' e 'No record is known…'); obra federal; até 1,4× |
+| `_media/documento/uscgs-1883-p46.jpg` | s16 | noaa | `cf82473f…25c7` | aprovado | a p. 46 cobre s16 com 'brown ooze' e a frase irmã 'This is believed to be the greatest depth…'; alternativa à p. 8; vale só para s16 |
+| `_media/_caca/s01/acervo-livre/s01-iss071-e-1036-puerto-rico-nasa.jpg` | s01 | commons | `d4ca7753…f0a7` | aprovado | Porto Rico inteiro visto da ISS em 06/04/2024 (NASA, domínio público), 6902 px: cobre 'off Puerto Rico, a U.S. island'; a foto mostra a ilha, e não San Juan, como o espelho supunha |
+| `_media/_caca/s01/acervo-livre/s01-iss071-e-1042-san-juan-nasa-reserva.jpg` | s01 | commons | `8ed4b3dd…078c` | trocar | San Juan de perto (NASA, domínio público): não mostra a ilha da fala; a 1036, aprovada, mostra. Serviria à ancoragem em San Juan de s02, com conferência nova |
+| `_media/_caca/s12/acervo-livre/s12-blake-steamer-plate1-sigsbee-1880-rijksmuseum.jpg` | s12 | commons | `04370884…4334` | aprovado | o vapor Blake na prancha 1 do livro do Survey de 1880 (Rijksmuseum, CC0), com o aviso do ano: a busca na NOAA Photo Library parou na verificação humana, e a cópia dela não tem foto de 1881–1885 |
+| `_media/_caca/s12/acervo-livre/s12-sigsbee-sounding-machine-on-blake-plate-sigsbee-1880-rijksmuseum.jpg` | s12 | commons | `064ee016…36e6` | aprovado | a máquina de sondagem do Survey a bordo do Blake (prancha 13, 1880; Rijksmuseum, CC0), com o aviso do ano: cobre o plano 2; a mesma busca da prancha 1 |
+| `_media/_caca/s17/acervo-livre/s17-hms-challenger-iln-1872-engraving.jpg` | s17 | commons | `21e581fe…a590` | aprovado | o HMS Challenger em gravura do Illustrated London News de 14/12/1872 (domínio público), impressa sobre a mesa com 'Engraving, 1872' na tela: a gravura entra pela palavra do Lucas (17:5x) |
+| `_media/_caca/s17/acervo-livre/s17-hms-challenger-w-f-mitchell-print-pre1881.jpg` | s17 | commons | `a057539a…6849` | trocar | o HMS Challenger pintado entre icebergs: o gelo desmente a fala sobre a fossa do Atlântico tropical; e é pintura |
+| `_media/_caca/s19/acervo-livre/s19-uss-milwaukee-cl5-new-york-1942-01-07-nara-19-n-27088.jpg` | s19 | commons | `a6e8a8e3…576c` | aprovado | o USS Milwaukee em 07/01/1942 (Marinha, NARA 19-N-27088, domínio público), com o aviso do ano: a busca no NHHC não achou foto grande e livre mais perto de 1939, e a de 1938 é pequena |
+| `_media/_caca/s24/acervo-livre/s24-bathyscaphe-archimede-launch-1962-houot.jpg` | s24 | commons | `8553e572…dcd3` | reprovado | o Archimède em 1962 serve à fala, mas a licença é só a declaração de quem subiu ('Private collection', PD-self), sem prova de autoria; vale a de 2021, aprovada |
+| `_media/_caca/s24/acervo-livre/s24-bathyscaphe-archimede-cite-de-la-mer-2021-spekking.jpg` | s24 | commons | `65f8177c…757d` | aprovado | o próprio Archimède, inteiro, no museu de Cherbourg em 2021 (CC BY-SA 4.0, com crédito): peça de acervo, sem aviso do ano |
+| `_media/_caca/s27/acervo-livre/s27-snailfish-seascape-alaska5-ex2306-dive08-1365m-2023-noaa-hd.mp4` | s27 | noaa-oer | `b9ee3737…f7bb` | aprovado | um peixe-caracol vivo filmado pela NOAA em Denson Seamount, Alasca, a 1.365 m (31/08/2023), em HD, aceito pelo Lucas com o lugar real na tela; 15 s limpos na 3ª tomada; sem o aviso do ano, que é de foto e de retrato |
+| `_media/_caca/s29/acervo-livre/s29-abyssobrotula-galatheae-cas-36574-specimen.jpg` | s29 | commons | `ea650176…4905` | trocar | exemplar conservado da mesma espécie, mas de outro peixe (Equador, 1968): na fala de 'this one' e 'the same catch', a tela diria que é o peixe de 1970; a enguia-cusk viva, aprovada, cobre o tipo |
+| `_media/_caca/s29/acervo-livre/s29-cusk-eel-ophidiid-salmon-bank-2015-noaa.jpg` | s29 | commons | `26ebf9b3…e282` | aprovado | uma enguia-cusk viva no fundo (NOAA, domínio público, 1920 px), como o tipo de peixe, com o contorno e a cota do exemplar de 1970 ao lado |
+| `_media/_caca/s32/acervo-livre/s32-noaa-ship-ronald-h-brown-gulf-of-mexico-2003-noaa.jpg` | s32 | commons | `df01336e…0a0a` | aprovado | o Ron Brown (R 104) no mar em 27/09/2003, no período dos cruzeiros (NOAA Photo Library, CC BY 2.0, com crédito); sem aviso do ano |
+| `_media/_caca/s32/acervo-livre/s32-noaa-ship-ronald-h-brown-san-francisco-2014.jpg` | s32 | commons | `d7fd3213…ec2f` | trocar | o Ron Brown em 2014, 11 anos depois dos cruzeiros; há a foto de 2003, aprovada |
+| `_media/_caca/s41/acervo-livre/s41-mayaguez-correo-y-casino-1918-earthquake-el-mundo.jpg` | s41 | commons | `80d4ca69…8315` | aprovado | o Correio e o Casino de Mayagüez destruídos pelo terremoto de 1918, sóbria, sem corpo; foto de jornal (El Mundo) com a licença só pelo PD-1923 do Commons e o risco pesado pelo Lucas: entra com 'El Mundo / Universidad de Puerto Rico' na tela; cobre o plano 2, o dos mortos, nunca a cota do tsunami |
+| `_media/_caca/s41/acervo-livre/s41-point-borinquen-album-mayaguez-tower-tidal-wave-1918-nara-26-lg-41-42.jpg` | s41 | nara | `5715f6b3…15f2` | trocar | a torre de Mayagüez de pé ('the tower is not damaged') e o farol de Point Borinquen rachado pelo tremor: nenhuma das quatro fotos mostra o dano do tsunami que a cota UP TO 20 FT diria |
+| `_media/_caca/s43/acervo-livre/s43-anegada-flying-past-aerial-2011-12-27-david-broad.jpg` | s43 | commons | `a4030807…99ee` | aprovado | Anegada inteira, baixa e cercada de recife, vista do avião em 27/12/2011 (CC BY 3.0, com crédito): reserva do aéreo de banco, a mais aberta das duas |
+| `_media/_caca/s43/acervo-livre/s43-anegada-island-aerial-2012-david-broad.jpg` | s43 | commons | `6668c746…c187` | aprovado | a metade oeste de Anegada de perto, baixa e plana, com o recife, as lagoas de sal e a pista (CC BY 3.0, com crédito): reserva do aéreo de banco |
+| `_media/_caca/s44/acervo-livre/s44-anegada-brain-coral-boulder-750ft-inland-atwater-usgs.jpg` | s44 | usgs | `493354fc…2faa` | aprovado | um bloco de coral-cérebro de 8 pés a 750 pés da praia em Anegada (USGS, domínio público), com um pesquisador dando a escala: é um dos 'hundreds of coral boulders' |
+| `_media/_caca/s47/acervo-livre/s47-okeanos-explorer-deploys-deep-discoverer-2015-04-10-noaa.png` | s47 | commons | `3edbb068…d35b` | aprovado | o Deep Discoverer baixado ao mar pelo Okeanos Explorer em 10/04/2015, na mesma viagem (NOAA, domínio público), impressa sobre a mesa até 1,4×: a foto que o Lucas escolheu para o plano 3 |
+| `_media/_caca/s48/acervo-livre/s48-dssv-pressure-drop-leith-2019-geograph.jpg` | s48 | commons | `56343525…0371` | trocar | o Pressure Drop atracado em Leith em 06/09/2019; há a foto do ano, a do navio no mar em 17/12/2018 (Caladan Oceanic), aprovada |
+| `_media/_caca/s48/acervo-livre/s48-pressure-drop-limiting-factor-pre-dive-2018-12-17-caladan.jpg` | s48 | commons | `4c3e79a7…9ec0` | aprovado | o Pressure Drop no mar em 17/12/2018, a semana do mergulho, com o nome na popa (Caladan Oceanic, CC BY-SA 4.0 com VRT, com crédito), impressa sobre a mesa até 1,4× |
+| `_media/_caca/s53/acervo-livre/s53-limiting-factor-aft-on-deck-2019-yeti-hunter.jpg` | s53 | commons | `f8b6a793…f41e` | trocar | o Limiting Factor no convés em 10/09/2019 serviria com o aviso do ano, mas o item 11, de 2018, mais perto do fato, cobre o plano 2 |
+| `_media/_caca/s53/acervo-livre/s53-limiting-factor-after-puerto-rico-trench-dive-2018-12-19-caladan.jpg` | s53 | commons | `6fe81741…5c43` | trocar | o Limiting Factor na superfície da Fossa de Porto Rico em 19/12/2018, depois do mergulho, mas pequeno, uma luz no mar ao entardecer: não domina o plano 'in his own sub' |
+| `_media/_caca/s53/acervo-livre/s53-limiting-factor-cumberland-east-bay-2019-01-31-caladan.jpg` | s53 | commons | `768fb8bb…e0fa` | trocar | o Limiting Factor sendo baixado numa baía com neve da Geórgia do Sul em 31/01/2019: o gelo desmente a descida na Fossa de Porto Rico e mistura a fossa do sul |
+| `_media/_caca/s66/acervo-livre/s66-mount-michael-landsat8-oli-2026-08-24-nasa-eo.jpg` | s66 | nasa | `7d3660ca…4371` | aprovado | a imagem do Landsat 8 de 24/08/2026 da ilha Saunders com o Mount Michael (NASA EO, domínio público), em tela cheia a 1,28×: cobre o plano 1; o plano 2, o calor na cratera, não sai deste arquivo (o ponto quente tem 4 px) |
+| `_media/_caca/s72/acervo-livre/s72-swimming-sea-cucumber-ex1502-st-croix-2400m-2015-04-28-noaa-hd.mp4` | s72 | noaa-oer | `129f8b8c…a0d9` | trocar | o pepino-do-mar de St. Croix é transparente, com o miolo amarelo; ao lado do peixe-caracol rosa e opaco da s27, os dois não se parecem, e a frase diz que se parecem na cor, na textura e na forma |
+| `_media/_caca/s72/acervo-livre/s72-swimming-sea-cucumber-ex2606-dive03-american-samoa-2026-noaa-hd.mp4` | s72 | noaa-oer | `0f313ccb…eb7c` | aprovado | um pepino-do-mar nadador opaco, rosa-arroxeado (NOAA, Samoa Americana, 2.300 m, 2026), que se parece com o peixe-caracol da s27; HD aceito pelo Lucas (29/10, 00:1x) só na última tomada: serve de 68,44 a 78,2 s |
+| `_media/pessoa/s52/victor-vescovo-varcoe-2018-commons.jpg` | s52 | commons | `1bbcd2f5…c3af` | aprovado | Victor Vescovo a bordo em 24/10/2018 (Caladan Oceanic, CC BY-SA 4.0 com VRT, liberada pelo Lucas às 15:0x): enche o card a 0,81×, sem aviso do ano, com crédito |
+| `_media/_caca/s19/acervo-livre/s19-uss-milwaukee-cl5-1938-sam-hood-slnsw-8366.jpg` | s19 | commons | `3bd1b7b3…f5e3` | trocar | o Milwaukee em 1938, um ano antes do fato, mas pequeno (1400×960) e com cabo desfocado na frente; a foto grande de 1942 serve, e pela ordem da identidade §6 a grande de outro ano vem antes da pequena |
+| `_media/_caca/s53/acervo-livre/s53-limiting-factor-underwater-test-phase-2018-caladan.jpg` | s53 | commons | `3a20efe2…3979` | aprovado | o Limiting Factor inteiro sob a água, na fase de testes de 2018 (Caladan Oceanic, CC BY-SA 4.0 com VRT), impresso sobre a mesa: cobre "his own sub"; nunca dito como o mergulho na fossa |
+| `_media/_caca/s41/acervo-livre/s41-mayaguez-house-washed-away-by-waves-shore-1918-ncei-273-033.jpg` | s41 | noaa-ncei | `ba8359b4…c2de` | reprovado | a casa arrastada pelas ondas na praia de Mayagüez, 1918, mostra o tsunami, mas o NCEI não dá licença ('courtesy' da UPR, 'otherRestrictions') e declara que recriou pixels para subir a resolução |
+| `_media/_caca/s41/acervo-livre/s41-mayaguez-house-washed-away-by-waves-adrift-1918-ncei-273-034.jpg` | s41 | noaa-ncei | `160ee177…f443` | reprovado | a casa à deriva no mar de Mayagüez, 1918, mostra o tsunami, mas o NCEI não dá licença ('courtesy' da UPR, 'otherRestrictions') e declara que recriou pixels para subir a resolução |
+
 ## Lote 5: a s72 da Samoa com a resposta do Lucas, o aviso do ano da s27 e o caminho de s14 e s56 (29/10/2026, 00:28)
+
+Histórico. No lote 6, nada deste lote mudou.
+
+**O laudo do lote 5 (29/10/2026, 00:28):** 4 aprovados de 4 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido;
+recebidos: 4. São todos reconferências, e nenhum arquivo é novo:
+- a s72 da Samoa, com a resposta do Lucas;
+- a s27, com os dois campos do aviso do ano;
+- o Brownson (s14) e o Jamieson (s56), só com o id no caminho novo.
+
 
 | Arquivo (`out/atlantico-fundo/`) | Cena | Fonte | sha256 | Veredito | O que mudou |
 |---|---|---|---|---|---|
@@ -165,57 +337,6 @@ Nenhuma entre a marca e o ofício. Três registros:
   - uma para ler o começo do `_PROCEDENCIA.json` da s14;
   - outra para validar o JSON gravado, com o comando que o contrato §3 (item 1) dá.
   - Nenhuma das duas gravou nada. O resto rodou como script em `_tmp/conferencia/lote5/`.
-
-## Os vereditos de agora (os 44 de `candidatos`, depois do lote 5)
-
-Um por linha, na ordem do JSON. Um arquivo que cobre duas cenas tem um veredito para cada uma.
-
-| Arquivo (`out/atlantico-fundo/`) | Cena | Fonte | sha256 | Veredito | Motivo |
-|---|---|---|---|---|---|
-| `_media/pessoa/s14/willard-h-brownson-harris-ewing-1907-nh57975-commons.jpg` | s14 | commons | `fa90788b…8c62` | aprovado | Willard H. Brownson em retrato de 1900–1909 (Harris & Ewing, NHHC NH 57975; domínio público nos EUA), com o aviso do ano: o NHHC não tem retrato de 1881–1884, e o dos anos 1890 (NH 64332) só chega pequeno ao canal |
-| `_media/pessoa/s17/george-nares-lock-whitfield-rijksmuseum-commons.jpg` | s17 | commons | `f8f86ba5…bea8` | aprovado | George Nares em retrato de ca. 1873–1878 (Rijksmuseum, domínio público), rosto inteiro no card a 0,72×; vai com o aviso do ano da década, sem o ano do fato |
-| `_media/pessoa/s56/alan-j-jamieson-gnangcomapp-2022-commons.jpg` | s56 | commons | `679f2962…94b8` | aprovado | Alan Jamieson em foto de 2022 (Commons, CC BY-SA 4.0), com o aviso do ano: a busca pela de 2018–2019 (Caladan, Newcastle, UWA) não achou nenhuma que sirva |
-| `_media/documento/stewart-jamieson-2019-p4.jpg` | s08 | nora | `82c102bd…aa0b` | aprovado | a Tabela 1 de 2019 (CC BY 4.0) com a linha 'Milwaukee Deep … 8740 … GEBCO Gazetteer'; sem 'Brownson' na página |
-| `_media/documento/stewart-jamieson-2019-p4.jpg` | s56 | nora | `82c102bd…aa0b` | aprovado | a mesma Tabela 1 cobre a lista, o nome e os 8.740 m de s56 (plano 2), como volta declarada de s08 |
-| `_media/documento/stewart-jamieson-2019-p6-gazetteer.jpg` | s56 | nora | `147342ba…6f14` | aprovado | a frase da p. 6 ('8740 m as published in the IHO-IOC GEBCO Gazetteer…') cobre s56 (plano 2) palavra por palavra; alternativa à Tabela 1 |
-| `_media/documento/stewart-jamieson-2019-p6-gazetteer.jpg` | s08 | nora | `147342ba…6f14` | aprovado | a frase da p. 6 também cobre s08 ('the official list of undersea features'); alternativa à Tabela 1 |
-| `_media/documento/stewart-jamieson-2019-p1-resumo.jpg` | s59 | nora | `c6a6ed9a…e65f` | aprovado | o resumo de 2019 (CC BY 4.0) com 'propagated uncorrected through online sources and the scientific literature', a frase que s59 atribui aos autores |
-| `_media/documento/stewart-jamieson-2019-p1-titulo.jpg` | s56 | nora | `b727bf40…1442` | aprovado | o título e os autores do artigo de 2019, ao lado dos cards de s56 (plano 1), com as instituições de 2019 |
-| `_media/documento/uscgs-1883-p8.jpg` | s16 | noaa | `e435ec98…18a2` | aprovado | a p. 8 do relatório de 1883 tem as duas frases de s16 seguidas ('brown ooze' e 'No record is known…'); obra federal; até 1,4× |
-| `_media/documento/uscgs-1883-p46.jpg` | s16 | noaa | `cf82473f…25c7` | aprovado | a p. 46 cobre s16 com 'brown ooze' e a frase irmã 'This is believed to be the greatest depth…'; alternativa à p. 8; vale só para s16 |
-| `_media/_caca/s01/acervo-livre/s01-iss071-e-1036-puerto-rico-nasa.jpg` | s01 | commons | `d4ca7753…f0a7` | aprovado | Porto Rico inteiro visto da ISS em 06/04/2024 (NASA, domínio público), 6902 px: cobre 'off Puerto Rico, a U.S. island'; a foto mostra a ilha, e não San Juan, como o espelho supunha |
-| `_media/_caca/s01/acervo-livre/s01-iss071-e-1042-san-juan-nasa-reserva.jpg` | s01 | commons | `8ed4b3dd…078c` | trocar | San Juan de perto (NASA, domínio público): não mostra a ilha da fala; a 1036, aprovada, mostra. Serviria à ancoragem em San Juan de s02, com conferência nova |
-| `_media/_caca/s12/acervo-livre/s12-blake-steamer-plate1-sigsbee-1880-rijksmuseum.jpg` | s12 | commons | `04370884…4334` | aprovado | o vapor Blake na prancha 1 do livro do Survey de 1880 (Rijksmuseum, CC0), com o aviso do ano: a busca na NOAA Photo Library parou na verificação humana, e a cópia dela não tem foto de 1881–1885 |
-| `_media/_caca/s12/acervo-livre/s12-sigsbee-sounding-machine-on-blake-plate-sigsbee-1880-rijksmuseum.jpg` | s12 | commons | `064ee016…36e6` | aprovado | a máquina de sondagem do Survey a bordo do Blake (prancha 13, 1880; Rijksmuseum, CC0), com o aviso do ano: cobre o plano 2; a mesma busca da prancha 1 |
-| `_media/_caca/s17/acervo-livre/s17-hms-challenger-iln-1872-engraving.jpg` | s17 | commons | `21e581fe…a590` | aprovado | o HMS Challenger em gravura do Illustrated London News de 14/12/1872 (domínio público), impressa sobre a mesa com 'Engraving, 1872' na tela: a gravura entra pela palavra do Lucas (17:5x) |
-| `_media/_caca/s17/acervo-livre/s17-hms-challenger-w-f-mitchell-print-pre1881.jpg` | s17 | commons | `a057539a…6849` | trocar | o HMS Challenger pintado entre icebergs: o gelo desmente a fala sobre a fossa do Atlântico tropical; e é pintura |
-| `_media/_caca/s19/acervo-livre/s19-uss-milwaukee-cl5-new-york-1942-01-07-nara-19-n-27088.jpg` | s19 | commons | `a6e8a8e3…576c` | aprovado | o USS Milwaukee em 07/01/1942 (Marinha, NARA 19-N-27088, domínio público), com o aviso do ano: a busca no NHHC não achou foto grande e livre mais perto de 1939, e a de 1938 é pequena |
-| `_media/_caca/s24/acervo-livre/s24-bathyscaphe-archimede-launch-1962-houot.jpg` | s24 | commons | `8553e572…dcd3` | reprovado | o Archimède em 1962 serve à fala, mas a licença é só a declaração de quem subiu ('Private collection', PD-self), sem prova de autoria; vale a de 2021, aprovada |
-| `_media/_caca/s24/acervo-livre/s24-bathyscaphe-archimede-cite-de-la-mer-2021-spekking.jpg` | s24 | commons | `65f8177c…757d` | aprovado | o próprio Archimède, inteiro, no museu de Cherbourg em 2021 (CC BY-SA 4.0, com crédito): peça de acervo, sem aviso do ano |
-| `_media/_caca/s27/acervo-livre/s27-snailfish-seascape-alaska5-ex2306-dive08-1365m-2023-noaa-hd.mp4` | s27 | noaa-oer | `b9ee3737…f7bb` | aprovado | um peixe-caracol vivo filmado pela NOAA em Denson Seamount, Alasca, a 1.365 m (31/08/2023), em HD, aceito pelo Lucas com o lugar real na tela; 15 s limpos na 3ª tomada; sem o aviso do ano, que é de foto e de retrato |
-| `_media/_caca/s29/acervo-livre/s29-abyssobrotula-galatheae-cas-36574-specimen.jpg` | s29 | commons | `ea650176…4905` | trocar | exemplar conservado da mesma espécie, mas de outro peixe (Equador, 1968): na fala de 'this one' e 'the same catch', a tela diria que é o peixe de 1970; a enguia-cusk viva, aprovada, cobre o tipo |
-| `_media/_caca/s29/acervo-livre/s29-cusk-eel-ophidiid-salmon-bank-2015-noaa.jpg` | s29 | commons | `26ebf9b3…e282` | aprovado | uma enguia-cusk viva no fundo (NOAA, domínio público, 1920 px), como o tipo de peixe, com o contorno e a cota do exemplar de 1970 ao lado |
-| `_media/_caca/s32/acervo-livre/s32-noaa-ship-ronald-h-brown-gulf-of-mexico-2003-noaa.jpg` | s32 | commons | `df01336e…0a0a` | aprovado | o Ron Brown (R 104) no mar em 27/09/2003, no período dos cruzeiros (NOAA Photo Library, CC BY 2.0, com crédito); sem aviso do ano |
-| `_media/_caca/s32/acervo-livre/s32-noaa-ship-ronald-h-brown-san-francisco-2014.jpg` | s32 | commons | `d7fd3213…ec2f` | trocar | o Ron Brown em 2014, 11 anos depois dos cruzeiros; há a foto de 2003, aprovada |
-| `_media/_caca/s41/acervo-livre/s41-mayaguez-correo-y-casino-1918-earthquake-el-mundo.jpg` | s41 | commons | `80d4ca69…8315` | aprovado | o Correio e o Casino de Mayagüez destruídos pelo terremoto de 1918, sóbria, sem corpo (domínio público): cobre o plano 2, o dos mortos, nunca a cota do tsunami |
-| `_media/_caca/s41/acervo-livre/s41-point-borinquen-album-mayaguez-tower-tidal-wave-1918-nara-26-lg-41-42.jpg` | s41 | nara | `5715f6b3…15f2` | trocar | a torre de Mayagüez de pé ('the tower is not damaged') e o farol de Point Borinquen rachado pelo tremor: nenhuma das quatro fotos mostra o dano do tsunami que a cota UP TO 20 FT diria |
-| `_media/_caca/s43/acervo-livre/s43-anegada-flying-past-aerial-2011-12-27-david-broad.jpg` | s43 | commons | `a4030807…99ee` | aprovado | Anegada inteira, baixa e cercada de recife, vista do avião em 27/12/2011 (CC BY 3.0, com crédito): reserva do aéreo de banco, a mais aberta das duas |
-| `_media/_caca/s43/acervo-livre/s43-anegada-island-aerial-2012-david-broad.jpg` | s43 | commons | `6668c746…c187` | aprovado | a metade oeste de Anegada de perto, baixa e plana, com o recife, as lagoas de sal e a pista (CC BY 3.0, com crédito): reserva do aéreo de banco |
-| `_media/_caca/s44/acervo-livre/s44-anegada-brain-coral-boulder-750ft-inland-atwater-usgs.jpg` | s44 | usgs | `493354fc…2faa` | aprovado | um bloco de coral-cérebro de 8 pés a 750 pés da praia em Anegada (USGS, domínio público), com um pesquisador dando a escala: é um dos 'hundreds of coral boulders' |
-| `_media/_caca/s47/acervo-livre/s47-okeanos-explorer-deploys-deep-discoverer-2015-04-10-noaa.png` | s47 | commons | `3edbb068…d35b` | aprovado | o Deep Discoverer baixado ao mar pelo Okeanos Explorer em 10/04/2015, na mesma viagem (NOAA, domínio público), impressa sobre a mesa até 1,4×: a foto que o Lucas escolheu para o plano 3 |
-| `_media/_caca/s48/acervo-livre/s48-dssv-pressure-drop-leith-2019-geograph.jpg` | s48 | commons | `56343525…0371` | trocar | o Pressure Drop atracado em Leith em 06/09/2019; há a foto do ano, a do navio no mar em 17/12/2018 (Caladan Oceanic), aprovada |
-| `_media/_caca/s48/acervo-livre/s48-pressure-drop-limiting-factor-pre-dive-2018-12-17-caladan.jpg` | s48 | commons | `4c3e79a7…9ec0` | aprovado | o Pressure Drop no mar em 17/12/2018, a semana do mergulho, com o nome na popa (Caladan Oceanic, CC BY-SA 4.0 com VRT, com crédito), impressa sobre a mesa até 1,4× |
-| `_media/_caca/s53/acervo-livre/s53-limiting-factor-aft-on-deck-2019-yeti-hunter.jpg` | s53 | commons | `f8b6a793…f41e` | trocar | o Limiting Factor no convés em 10/09/2019 serviria com o aviso do ano, mas o item 11, de 2018, mais perto do fato, cobre o plano 2 |
-| `_media/_caca/s53/acervo-livre/s53-limiting-factor-after-puerto-rico-trench-dive-2018-12-19-caladan.jpg` | s53 | commons | `6fe81741…5c43` | trocar | o Limiting Factor na superfície da Fossa de Porto Rico em 19/12/2018, depois do mergulho, mas pequeno, uma luz no mar ao entardecer: não domina o plano 'in his own sub' |
-| `_media/_caca/s53/acervo-livre/s53-limiting-factor-cumberland-east-bay-2019-01-31-caladan.jpg` | s53 | commons | `768fb8bb…e0fa` | trocar | o Limiting Factor sendo baixado numa baía com neve da Geórgia do Sul em 31/01/2019: o gelo desmente a descida na Fossa de Porto Rico e mistura a fossa do sul |
-| `_media/_caca/s66/acervo-livre/s66-mount-michael-landsat8-oli-2026-08-24-nasa-eo.jpg` | s66 | nasa | `7d3660ca…4371` | aprovado | a imagem do Landsat 8 de 24/08/2026 da ilha Saunders com o Mount Michael (NASA EO, domínio público), em tela cheia a 1,28×: cobre o plano 1; o plano 2, o calor na cratera, não sai deste arquivo (o ponto quente tem 4 px) |
-| `_media/_caca/s72/acervo-livre/s72-swimming-sea-cucumber-ex1502-st-croix-2400m-2015-04-28-noaa-hd.mp4` | s72 | noaa-oer | `129f8b8c…a0d9` | trocar | o pepino-do-mar de St. Croix é transparente, com o miolo amarelo; ao lado do peixe-caracol rosa e opaco da s27, os dois não se parecem, e a frase diz que se parecem na cor, na textura e na forma |
-| `_media/_caca/s72/acervo-livre/s72-swimming-sea-cucumber-ex2606-dive03-american-samoa-2026-noaa-hd.mp4` | s72 | noaa-oer | `0f313ccb…eb7c` | aprovado | um pepino-do-mar nadador opaco, rosa-arroxeado (NOAA, Samoa Americana, 2.300 m, 2026), que se parece com o peixe-caracol da s27; HD aceito pelo Lucas (29/10, 00:1x) só na última tomada: serve de 68,44 a 78,2 s |
-| `_media/pessoa/s52/victor-vescovo-varcoe-2018-commons.jpg` | s52 | commons | `1bbcd2f5…c3af` | aprovado | Victor Vescovo a bordo em 24/10/2018 (Caladan Oceanic, CC BY-SA 4.0 com VRT, liberada pelo Lucas às 15:0x): enche o card a 0,81×, sem aviso do ano, com crédito |
-| `_media/_caca/s19/acervo-livre/s19-uss-milwaukee-cl5-1938-sam-hood-slnsw-8366.jpg` | s19 | commons | `3bd1b7b3…f5e3` | trocar | o Milwaukee em 1938, um ano antes do fato, mas pequeno (1400×960) e com cabo desfocado na frente; a foto grande de 1942 serve, e pela ordem da identidade §6 a grande de outro ano vem antes da pequena |
-| `_media/_caca/s53/acervo-livre/s53-limiting-factor-underwater-test-phase-2018-caladan.jpg` | s53 | commons | `3a20efe2…3979` | aprovado | o Limiting Factor inteiro sob a água, na fase de testes de 2018 (Caladan Oceanic, CC BY-SA 4.0 com VRT), impresso sobre a mesa: cobre "his own sub"; nunca dito como o mergulho na fossa |
-| `_media/_caca/s41/acervo-livre/s41-mayaguez-house-washed-away-by-waves-shore-1918-ncei-273-033.jpg` | s41 | noaa-ncei | `ba8359b4…c2de` | reprovado | a casa arrastada pelas ondas na praia de Mayagüez, 1918, mostra o tsunami, mas o NCEI não dá licença ('courtesy' da UPR, 'otherRestrictions') e declara que recriou pixels para subir a resolução |
-| `_media/_caca/s41/acervo-livre/s41-mayaguez-house-washed-away-by-waves-adrift-1918-ncei-273-034.jpg` | s41 | noaa-ncei | `160ee177…f443` | reprovado | a casa à deriva no mar de Mayagüez, 1918, mostra o tsunami, mas o NCEI não dá licença ('courtesy' da UPR, 'otherRestrictions') e declara que recriou pixels para subir a resolução |
 
 ## Lote 4: a s66, a s72, o Vescovo, as fotos do ano que faltavam e as reconferências (28/10/2026, 20:59)
 
@@ -418,6 +539,8 @@ Nenhuma. Cinco leituras a registrar:
   da Sala como prova da busca, com o que as fichas mostraram copiado e o limite declarado em `conferido_no_navegador_do_app`.
 
 ## Lote 3: o rascunho de acervo aberto (s41 a s53) e a gravura da s17
+
+Histórico. No lote 6 (29/10/2026), o veredito da foto do El Mundo da s41 continua `aprovado`, agora com a `excecao_lucas` de 29/10, 01:1x, e "El Mundo / Universidad de Puerto Rico" na tela (o achado M03 da verificação do research).
 
 **O laudo do lote 3 (28/10/2026, 20:04):** 7 aprovados de 12 conferidos (1 reprovado, 4 trocar, 0 pendente_lucas); 1 com algo
 não conferido; recebidos: 12, todos conferidos. São 11 rascunhos novos do `pesquisa-imagens` (s41, s43, s44, s47, s48 e s53) e a
