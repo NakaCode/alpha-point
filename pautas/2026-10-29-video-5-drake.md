@@ -385,3 +385,17 @@ E o *Bounty* agora trabalha a favor da tese: o próprio comandante diz que o que
 
 **De pé:** nenhum concorrente faz a virada com fonte (cinco buscas próprias). A abertura do Quinn é do lugar: ~17 km ao sul do Horn, CC BY-SA
 2.0 com revisão do Flickr. Os fatos de apoio também ficam: a IAATO, a NSIA, a NWS, a MetOcean e o Bligh.
+
+## A decisão do Lucas (29/10/2026, 08:4x, no chat da Sala)
+
+- **A Sala admitiu o erro de base.** Em 25/10, a opção disse que os "8 a 20 ft" já estavam lidos. O cético achou que eles são do
+  Pacífico aberto, a ~760 e ~1.040 mi do Cabo Horn, e não da passagem (`pautas/drake/_trabalho/cetico-pauta.md`, A1).
+- **A pergunta:** "A pauta da Passagem de Drake perdeu o número que sustentava a virada "o mar de verdade". Qual caminho?"
+- **A resposta: "Voltar ao Magalhães 2026 (Recomendado)".** A opção dizia: "É a virada que eu recomendei em 25/10. O tráfego no Estreito de
+  Magalhães subiu mais de 70 % em agosto e setembro de 2026, com o Panamá na seca (Bloomberg, com dados da Marinha do Chile). Liga ao
+  vídeo da Zona do Canal, e o mar da Drake entra como camada."
+- **As outras opções eram:**
+  - a *Pub. 200* (NGA/NOAA), com a noite medida de 2022;
+  - um número moderno calculado pelo canal com o hindcast WAVEWATCH III da NOAA.
+- **O próximo passo:** refazer esta pauta com a virada do Magalhães 2026, pela checagem e pelo cético, e trazê-la de volta para o sim
+  dele. O mar da Drake entra como camada, sem nenhum número de altura de onda que não seja da própria passagem.
