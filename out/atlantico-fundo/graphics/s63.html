@@ -1,0 +1,1130 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s63 — Seabed 2030; the sub at South Georgia; the South Sandwich Trench; the chain of small volcanoes</title>
+<!--
+CANAL ALPHA POINT — O ATLÂNTICO (vídeo 4, atlantico-fundo), CENA s63 com os filhos s64 e s65 (o run fundido pelo diretor; espelho ›
+_fusao_diretor): 540,5 → 571,8 s do master, 31,3 s, 7 beats. Mapista, lote M7 da tarefa atlantico-fundo-arte-2 (29/10/2026): cena NOVA.
+  "The expedition's scientists write that all of its sonar data went to Seabed 2030, the project to map the whole ocean floor by 2030.
+   The expedition also took its sonar, and its sub, to the other end of the Atlantic. The Atlantic has another contender for its
+   deepest point: the South Sandwich Trench, far to the south, where one plate dives under another about three inches a year. That is
+   three to four times the pace of the plates off Puerto Rico. The islands there are a chain of small volcanoes, with no permanent
+   residents."
+  O que manda: textos-tela.json b034414f (o QUE e a grafia, s63); regencia.json 9d0ab49f (s63 › beats[0..6]: o TEMPO, o exige e a
+  mídia); conceito-visual.json e34292ec (s63, s64, s65 e o fluxo do run); espelho.json c10fc98c (a janela e a fusão).
+
+  UMA VIAGEM (conceito › fluxo): mapa → mesa → mapa → mapa 3D, num arquivo só. Norte para cima e sem órbita em todo o mapa plano (a
+  decisão da série); a ÚNICA inclinação do vídeo é a do fim (b6, os ~2,8 s de "volcanoes"), com o relevo real.
+
+  A BASE:
+    · b0, a VISTA DO MUNDO em Mercator (sem globo: Sala, decisão 2): a gebco-mundo-relevo (o WMS GEBCO_LATEST, terra e mar) em 16 peças
+      de 1023 px (fora da potência de 2: em potência de 2 a textura sai preta no MapLibre 4.7.1, a M1), escurecida como na s04 (brilho
+      máx. 0,42, saturação −0,45). Sem satélite (visibility none): nenhum tile da MapTiler no quadro nem pedido, e por isso a linha da
+      MapTiler fica fora do b0 (textos-tela, _regras_de_serie).
+    · A MÁSCARA DA TID (gebco-mundo-medido.png: branco onde a célula da GEBCO 2026 tem dado de levantamento, TID 10–17 direto e 44
+      indireto; nunca chamada de "medida": PB087), num <canvas> de tela por cima do mapa, desenhado a cada quadro pela mesma projeção
+      do mapa (Mercator, rumo 0, pitch 0): o MAR SEM DADO a 60 % (preto a 40 % por cima) e o mar com dado claro (a --tinta a 22 % por
+      cima); a terra fica como está (o assunto é o fundo do mar). Ela se revela em 2 s de 'Seabed' (3,525) a 5,525, como uma película
+      raspada: a frente anda de oeste para leste na tela.
+    · b2–b6: o satélite da MapTiler (perfil maptiler) no tratamento C da identidade §6 (brilho 0,92, saturação 0, contraste +0,25) na
+      terra; o fundo do mar pela GEBCO 2026, quatro camadas da mesma rampa, de baixo para cima: o mundo (gebco-mundo-relevo, só o mar,
+      16 peças), o Atlântico (gebco-atlantico-relevo, só o mar, borda esmaecida em 2°) — os dois a 0,34, o mar escurecido das camadas
+      largas da série (M1) —, o recorte fino do Caribe (gebco-caribe, bordas esmaecidas 72 × 60 px, a pilha da P0 da s04) e o recorte
+      fino do sul (gebco-sandwich-do-sul, bordas esmaecidas 260 × 300 px). "Só o mar" = onde a cor é de mar, um pixel para dentro (a M1, com a folga da plataforma: canvasMar).
+    · b6: o relevo da terra pelo terrain-rgb-v2 do perfil (setTerrain), ligado de 28,3 s ao fim, exagero de 0 a CENA.exagero; o centro da
+      câmera congelado na cota 0 (_elevationFreeze, como a s44 do Juneau e a s06 do Peru: o centro final fica no MAR, ao sul da ilha).
+      O mar dá 0 m no terrain: só a terra levanta. Um hillshade 2D do mesmo DEM entra com o zoom, para o cone ler.
+    · A MESA (b1): o still do vídeo, mesa-porto-rico-sangria1400.png (Landsat, domínio público, sem crédito; a versão com sangria
+      porque a câmera anda), sob a luz, o feltro e a foto impressa (identidade §5; o CSS e o movimento da s53 da série).
+
+  A GEOMETRIA (toda de _media/geo/, a da _pesquisa/pauta-geo.json): fossa-sandwich-do-sul (a isóbata de 6.000 m da GEBCO 2026),
+    ilhas-sandwich-do-sul (Natural Earth 10m), mount-michael-saunders (o CENTRO da ilha Saunders, declarado: não é o cume lido; o
+    pauta-geo e o textos-tela, _nao_conferido), ponto-mais-fundo-atlantico (o anel) e meteor-deep (o fim do arco, ≈ 5,700 MI: o
+    meteor-deep.json dá 5.698,13 mi pela geodésica; F75). O arco é o grande círculo entre os dois pontos lidos, calculado NA CENA
+    (interpolação esférica): não é feição desenhada, é a distância entre dois pontos.
+
+  O QUE A CENA FAZ (tempo local; 0 = 540,5 s):
+    b0 0–8,5 (mapa, o mundo): a câmera deriva devagar (W0 → W1); em 3,5 a pílula 'Seabed 2030' (sem logo) e de 3,525 a 5,525 a máscara
+      se revela; em 6,067 ('whole') a legenda 'Goal: map the whole ocean floor by 2030' (84 px). O bloco fica embaixo à esquerda, sobre o
+      Pacífico Sul (o mar menos levantado), sem cobrir o Atlântico Norte, o mais levantado. Nenhum anel: a vista do mundo não sugere o ponto.
+    b1 8,5–13,2 (corte de regime para a MESA): a foto do Limiting Factor sendo baixado na Cumberland East Bay, Geórgia do Sul, em
+      31/01/2019 (Caladan Oceanic; 2.400 × 1.462, impressa a 0,90 ×: 2.160 × 1.316; o produto das escalas fica ≤ 0,98 ×) pousa em
+      0,55 s (desce 240 px, 0,72 → 1,03 → 1,00, −2° → −1,5°), sombra solta, fitas; a luz da mesa atrás da frente do submersível, 120 ms
+      atrás; push-in rumo ao submersível (9,05 → 12,75). Em 8,8 a pílula 'South Georgia' no céu da foto (o lugar_na_origem; nunca
+      'South Sandwich' nem 'Southern Ocean'), sem aviso do ano (2019, o ano da viagem). A foto levanta de 12,85 a 13,2.
+    b2 13,2–19,3 (s64; o mapa volta): a câmera sai da POSE P0 de Porto Rico (a da s04: 19,4°N 65,8°W, zoom 7,5507), com o anel, e desce
+      o Atlântico em 4 s (van Wijk, cúbica com um resto linear que entra na deriva) até o arco das Sandwich do Sul; o grande círculo se
+      traça À FRENTE da câmera (a ponta nunca passa de 520 px abaixo do centro da tela) e termina no Meteor Deep. O anel fica para cima.
+      Em 16,655 ('South') a fossa acende em --contraparte (o preenchimento a 35 %, o território da contraparte, e a linha de 6 px sobre
+      o contorno escuro de 14); em 16,633 a pílula 'South Sandwich Trench' embaixo da ponta sul dela; em 18,067 ('far') '≈ 5,700 MI'
+      (104 px, a cota da série) ao lado do arco, que já está na tela. Sem comparação de tamanho entre as duas regiões.
+    b3 19,3–22,9 (s64, ILUSTRAÇÃO SOBRE O MAPA): o CORTE em traço de engenheiro, num cartão preso ao contato da fossa (o ponto no eixo da
+      fossa a 56,5°S, 24,9°W, com um líder): a placa da direita (a Sul-Americana) corre para oeste e mergulha sob a da esquerda (a das
+      Sandwich do Sul, com o vulcão das ilhas); as placas em hachura --neutro (a cor da s33, "the SAME colour until s64"); em 'dives'
+      (20,095) os traços da placa que mergulha começam a correr; em 21,367 ('three') '≈ 3 IN/YR (65–78 MM/YR)' no cartão e a fonte
+      'Source: Stewart & Jamieson, 2019' na faixa (a 3ª linha). Sem nome de placa na tela (o textos-tela não os dá).
+    b4 22,9–26,567 (s64): em 23,267 ('three') '3–4×' sob o cartão; em 23,295 a MINIATURA do deslize de Porto Rico ao lado (abaixo): as duas
+      placas em hachura --neutro, vistas de cima, a de baixo (a do Caribe) correndo para leste ao longo do contato; em 24,4 ('pace') o
+      rótulo dela, '≈ ¾ IN/YR (20 MM/YR)'. AS SETAS EM ESCALA: a do corte tem 358 px e a da miniatura 100 px (71,5 : 20 = 3,575, o meio de
+      65–78 contra 20); os traços correm a 64 e a 17,9 px/s, na mesma razão. Tudo do b3 e do b4 sai em 26,567.
+    b5 26,567–28,467 (s65): a câmera começa a fechar sobre o arco de ilhas; em 26,735 ('islands') as ilhas acendem em --neutro (25 % e o
+      contorno de 6 px sobre o escuro de 14, a forma da Mariana da s04: na escala do arco, cada ilha tem poucos px); em 26,733 a pílula
+      'SOUTH SANDWICH ISLANDS' (sem bandeira, sem dono) acima do norte do arco, que fica no plano seguinte (≥ 2,0 s no ar) e esmaece
+      quando a câmera a leva à margem (no ar de 26,733 a ~28,85). A fossa sai com a pílula dela (26,567–26,867): a das ilhas não fica
+      sobre a linha dela. O progresso da câmera no b5–b6 é uma Hermite em dois trechos (devagar no b5, o mergulho no b6).
+    b6 28,467–31,3 (s65, o ÚNICO 3D do vídeo): em 'volcanoes' a câmera inclina (pitch 0 → CENA.pitch) e desce sobre a ilha Saunders até
+      o cone ler em relevo; a pílula 'Mount Michael' acima do centro declarado da ilha, sem alfinete, de 28,467 ao fim (para a s66). O
+      contorno das ilhas (Natural Earth, grosso para este zoom) sai antes de o zoom passar de 8,3, para não descolar da costa do satélite.
+
+  ELEMENTOS (teto 6; conta minha): b0 a máscara, 'Seabed 2030', a legenda = 3; b1 a foto (com 'South Georgia') = 2; b2 o anel, o arco, a
+    fossa, a pílula dela, '≈ 5,700 MI' = 5; b3 o arco, '≈ 5,700 MI', a fossa, a pílula, o cartão do corte (com a cota) = 5; b4 a fossa, a
+    pílula, o cartão do corte, '3–4×', a miniatura (com a cota) = 5; b5 a fossa, as ilhas, 'SOUTH SANDWICH ISLANDS' = 3; b6 a pílula das
+    ilhas, 'Mount Michael' = 2.
+  CRÉDITOS (60 px, var(--fs-credito), o override do Atlântico), empilhados de baixo (bottom 40, 8 px entre eles):
+    · b0: 'GEBCO Compilation Group (2026) GEBCO 2026 Grid' (crédito de mapa);
+    · b1: 'Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0' (o credito_na_tela do veredito; duas linhas depois de ' / ');
+    · b2–b6: '© MapTiler © OpenStreetMap contributors' + 'GEBCO Compilation Group (2026) GEBCO 2026 Grid' num elemento só (crédito de
+      mapa), do 1º ao último quadro de mapa; 21,367–26,567 'Source: Stewart & Jamieson, 2019' acima deles (3 linhas).
+  A MÍDIA: _media/foto/s63/s63-limiting-factor-cumberland-east-bay-south-georgia-2019-01-31-caladan.jpg, sha256 768fb8bb…e0fa = o
+    rascunho julgado; conferencia-midia.json, cena s63: 'aprovado' (lote 7), aviso_de_ano false.
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>:root { --fs-credito: 60px; } /* o crédito a 60 px do Atlântico em diante (identidade §4.1); o tokens.css continua com 56 */</style>
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<!-- a geometria (slugs de out/atlantico-fundo/_pesquisa/pauta-geo.json) e o fundo (window.__BASE_GEBCO) -->
+<script src="../_media/geo/fossa-sandwich-do-sul.js"></script>
+<script src="../_media/geo/ilhas-sandwich-do-sul.js"></script>
+<script src="../_media/geo/mount-michael-saunders.js"></script>
+<script src="../_media/geo/meteor-deep.js"></script>
+<script src="../_media/geo/ponto-mais-fundo-atlantico.js"></script>
+<script src="../_media/base/gebco-mundo-relevo.js"></script>
+<script src="../_media/base/gebco-mundo-medido.js"></script>
+<script src="../_media/base/gebco-atlantico-relevo.js"></script>
+<script src="../_media/base/gebco-caribe.js"></script>
+<script src="../_media/base/gebco-sandwich-do-sul.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  #veu { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 10; }
+  svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; overflow: visible; }
+  .cota-sob { fill: none; stroke: var(--fronteira-contorno-cor); stroke-linecap: round; stroke-linejoin: round; }
+  .cota { fill: none; stroke: var(--tinta); stroke-linecap: round; stroke-linejoin: round; }
+  .anel circle { fill: none; stroke: var(--destaque); }
+  .anel .halo { stroke: var(--rotulo); }
+  /* RÓTULO (identidade §3 e §4.1): pílula --rotulo, cantos 12, respiro 24 × 40, Inter 700 a 128 px em --tinta */
+  .pilula { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; white-space: nowrap; background: var(--rotulo);
+    border-radius: var(--cantos); padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-family: var(--fonte);
+    font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1; letter-spacing: 0; color: var(--tinta);
+    font-variant-numeric: var(--numeros); z-index: 40; }
+  .pilula.caixa { letter-spacing: var(--tracking-lugar); }      /* país e região em caixa alta, +0.04em */
+  .pilula.piso { font-size: var(--piso-rotulo); }               /* a COTA da série a 104 px (o piso): o pedido-comum da arte-2 */
+  /* LEGENDA (84 px, Inter 500) numa pílula --rotulo com respiro 16 × 28 (identidade §4.1; a forma da s53) */
+  .pilula.legenda { padding: 16px 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; }
+  /* OS CARTÕES DA ILUSTRAÇÃO SOBRE O MAPA (b3, b4): fundo --rotulo, cantos 12; o desenho em traço de engenheiro em cima e a cota
+     (104 px, a da série, em duas linhas) embaixo, no próprio cartão */
+  .cartao { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; background: var(--rotulo); border-radius: var(--cantos);
+    border: 4px solid var(--neutro); z-index: 35; }
+  #cartaoA { width: 1040px; height: 700px; border-color: var(--contraparte); }
+  #cartaoB { width: 820px; height: 500px; }
+  .cartao svg { position: absolute; left: 0; top: 0; overflow: hidden; }
+  .cartao .cota-cartao { position: absolute; left: 36px; bottom: 26px; white-space: pre; font-family: var(--fonte);
+    font-weight: var(--peso-rotulo); font-size: var(--piso-rotulo); line-height: 1.15; letter-spacing: 0; color: var(--tinta);
+    font-variant-numeric: var(--numeros); }
+  .traco { fill: none; stroke: var(--tinta); stroke-linecap: round; stroke-linejoin: round; }
+  .traco-sob { fill: none; stroke: var(--rotulo); stroke-linecap: round; stroke-linejoin: round; }
+  .hach { stroke: var(--neutro); stroke-width: 5; }
+  .placa { stroke: var(--tinta); stroke-width: 5; stroke-linejoin: round; }
+  .seta { fill: var(--tinta); stroke: none; }
+  /* CRÉDITO: pílula --rotulo, texto --sec, Inter 500, var(--fs-credito) (60 px do Atlântico em diante), de x 200, na faixa de baixo;
+     o longo quebra em duas linhas e nunca encolhe */
+  .credito { position: absolute; left: var(--credito-x); max-width: 1520px; opacity: 0; visibility: hidden; font-family: var(--fonte);
+    font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.12; letter-spacing: 0; color: var(--sec);
+    background: var(--rotulo); padding: 6px 20px; border-radius: var(--cantos); white-space: pre-line; z-index: 60; }
+  /* o crédito da foto quebra depois de " / " (a largura da 1ª linha "Richard Varcoe, Caladan Oceanic /"), nunca no meio do acervo */
+  #crFoto { max-width: 1250px; }
+  /* A MESA (b1): o regime vira DENTRO do arquivo, por corte seco; a camada cobre o mapa inteiro (identidade §5, satélite sob a luz;
+     o CSS da s53 da série): --fundo · o still com 1.400 px de sangria (a câmera anda) · a luz como véu · o feltro a 50 % · a foto */
+  #mesaPalco { position: absolute; inset: 0; overflow: hidden; background: var(--fundo); visibility: hidden; opacity: 0; z-index: 50; }
+  #still { position: absolute; left: -1400px; top: -1400px; width: 6640px; height: 4960px; display: block; max-width: none;
+    opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 50%) var(--luz-y, 50%),
+      var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
+  #mesa { position: absolute; left: -160px; top: -160px; width: 4160px; height: 2480px; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); opacity: var(--mesa-satelite-feltro); }
+  .grupo { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; opacity: 0; }
+  .sombra-solta { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; opacity: 0; background: var(--tinta-escura);
+    filter: blur(28px); }
+  .fita { position: absolute; width: 440px; height: 140px; background: color-mix(in srgb, var(--papel) 62%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--tinta-escura) 18%, transparent);
+    clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 12%, 100% 25%, 96% 40%, 100% 55%, 96% 70%, 100% 86%, 97% 100%, 0 100%, 4% 88%, 0 72%, 4% 56%, 0 40%, 4% 24%);
+    transform-origin: 50% 50%; opacity: 0; }
+  /* A FOTO IMPRESSA (identidade §5): moldura --tinta de 44 px em volta (sem legenda na margem: o lugar vai na pílula) */
+  .polaroide { position: absolute; left: 0; top: 0; background: var(--tinta); padding: 44px; }
+  .polaroide .janela { position: relative; overflow: hidden; background: var(--tinta-escura); }
+  .polaroide .janela img { position: absolute; display: block; max-width: none; }
+  #rotGeorgia { z-index: 2; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: var(--tensao); color: var(--tinta);
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="viagem de mapa com a máscara da GEBCO, a foto impressa do Limiting Factor, a fossa do sul com o corte e a miniatura de Porto Rico, e o mergulho no cone do Mount Michael; nenhum herói (identidade §4.2)">
+  <div id="map"></div>
+  <canvas id="veu" width="3840" height="2160"></canvas>
+  <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g id="arco" opacity="0">
+      <path id="arcoSob" class="cota-sob" d="" stroke-width="18"/>
+      <path id="arcoSobre" class="cota" d="" stroke-width="6"/>
+    </g>
+    <g id="lider" opacity="0">
+      <path id="liderSob" class="cota-sob" d="" stroke-width="14"/>
+      <path id="liderSobre" class="cota" d="" stroke-width="5"/>
+      <circle id="liderPonto" r="13" style="fill: var(--tinta); stroke: var(--rotulo); stroke-width: 6"/>
+    </g>
+  </svg>
+  <!-- b3: o CORTE (a placa que mergulha), preso ao contato da fossa -->
+  <div class="cartao" id="cartaoA">
+    <svg id="svgA" width="1040" height="430" viewBox="0 0 1040 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <pattern id="hachA" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line class="hach" x1="0" y1="0" x2="0" y2="24"/>
+        </pattern>
+        <clipPath id="clipA"><rect x="4" y="4" width="1032" height="422"/></clipPath>
+      </defs>
+      <g clip-path="url(#clipA)">
+        <line class="traco" x1="20" y1="60" x2="1020" y2="60" stroke-width="3" stroke-dasharray="14 12" style="opacity: .45"/>
+        <path id="placaBaixo" class="placa" d="" style="fill: url(#hachA)"/>
+        <path id="fluxoA" class="traco" d="" stroke-width="5" stroke-dasharray="34 30"/>
+        <path class="placa" d="M20 150 L560 150 L510 250 L20 250 Z" style="fill: var(--rotulo)"/>
+        <path class="placa" d="M20 150 L560 150 L510 250 L20 250 Z" style="fill: url(#hachA)"/>
+        <path class="placa" d="M210 150 L300 36 L390 150 Z" style="fill: var(--rotulo)"/>
+        <path id="setaASob" class="traco-sob" d="M1004 108 L646 108" stroke-width="18"/>
+        <path id="setaA" class="traco" d="M1004 108 L668 108" stroke-width="7"/>
+        <path id="setaAPonta" class="seta" d="M646 108 L684 88 L684 128 Z"/>
+      </g>
+    </svg>
+    <div class="cota-cartao" id="cotaA" data-qc-papel="rotulo" style="opacity: 0">≈ 3 IN/YR
+(65–78 MM/YR)</div>
+  </div>
+  <div class="pilula piso" id="vezes" data-qc-papel="rotulo">3–4×</div>
+  <!-- b4: a MINIATURA do deslize de Porto Rico (vista de cima) -->
+  <div class="cartao" id="cartaoB">
+    <svg id="svgB" width="820" height="230" viewBox="0 0 820 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <pattern id="hachB" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line class="hach" x1="0" y1="0" x2="0" y2="24"/>
+        </pattern>
+        <clipPath id="clipB"><rect x="4" y="4" width="812" height="222"/></clipPath>
+      </defs>
+      <g clip-path="url(#clipB)">
+        <rect class="placa" x="24" y="22" width="772" height="94" style="fill: url(#hachB)"/>
+        <rect class="placa" x="24" y="116" width="772" height="94" style="fill: url(#hachB)"/>
+        <path id="fluxoB" class="traco" d="M-200 188 L1020 188" stroke-width="5" stroke-dasharray="34 30"/>
+        <line class="traco" x1="24" y1="116" x2="796" y2="116" stroke-width="7"/>
+        <path class="traco-sob" d="M360 152 L478 152" stroke-width="18"/>
+        <path class="traco" d="M360 152 L456 152" stroke-width="7"/>
+        <path class="seta" d="M478 152 L440 132 L440 172 Z"/>
+      </g>
+    </svg>
+    <div class="cota-cartao" id="cotaB" data-qc-papel="rotulo" style="opacity: 0">≈ ¾ IN/YR
+(20 MM/YR)</div>
+  </div>
+  <div class="pilula" id="rotSeabed" data-qc-papel="rotulo">Seabed 2030</div>
+  <div class="pilula legenda" id="legSeabed" data-qc-papel="eixo">Goal: map the whole ocean floor by 2030</div>
+  <div class="pilula" id="rotFossa" data-qc-papel="rotulo">South Sandwich Trench</div>
+  <div class="pilula piso" id="rotDist" data-qc-papel="rotulo">≈ 5,700 MI</div>
+  <div class="pilula caixa" id="rotIlhas" data-qc-papel="rotulo">SOUTH SANDWICH ISLANDS</div>
+  <div class="pilula" id="rotMichael" data-qc-papel="rotulo">Mount Michael</div>
+  <div id="mesaPalco">
+    <img id="still" src="../_media/base/mesa-porto-rico-sangria1400.png" alt="" data-qc-reuso="a mesa do vídeo 4 (atlantico-fundo): UM still para o vídeo inteiro, em toda cena de mesa (identidade §5, satélite sob a luz; _media/base/mesa-porto-rico-sangria1400.png, Landsat 9 e 8 de fev./mar. 2025, USGS, domínio público; a versão com sangria porque a câmera anda)">
+    <div id="cam">
+      <div id="mesa"></div>
+      <div class="sombra-solta" id="fSombra" style="width:2248px;height:1404px"></div>
+      <div class="grupo" id="fGrupo" style="width:2248px;height:1404px">
+        <div class="polaroide" style="width:2248px;height:1404px">
+          <div class="janela" style="width:2160px;height:1316px"><img id="foto" src="../_media/foto/s63/s63-limiting-factor-cumberland-east-bay-south-georgia-2019-01-31-caladan.jpg" alt="" style="width:2160px;height:1316px;left:0;top:0"></div>
+        </div>
+        <div class="pilula" id="rotGeorgia" data-qc-papel="rotulo" style="left:110px;top:110px">South Georgia</div>
+        <div class="fita" id="fFe" style="left:-30px;top:-56px"></div>
+        <div class="fita" id="fFd" style="left:1838px;top:-56px"></div>
+      </div>
+    </div>
+  </div>
+  <div class="credito" id="crGebcoMundo" data-qc-papel="credito" data-qc-credito="mapa">GEBCO Compilation Group (2026) GEBCO 2026 Grid</div>
+  <div class="credito" id="crFoto" data-qc-papel="credito">Richard Varcoe, Caladan Oceanic / Wikimedia Commons · CC BY-SA 4.0</div>
+  <div class="credito" id="crFonte" data-qc-papel="credito">Source: Stewart &amp; Jamieson, 2019</div>
+  <div class="credito" id="crMapa" data-qc-papel="credito" data-qc-credito="mapa"></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  // ═══ CONFIGURAÇÃO DA CENA ═══════════════════════════════════════════════════════════════════════
+  // Tempos desta cena (0 = 540,5 s do master), do words.json: 'Seabed' 3,525 · 'twenty' 3,975 · 'thirty,' 4,325 · 'project' 5,315 ·
+  // 'whole' 6,085 · 'thirty.' 7,515–7,880 · 'The' 8,520 · 'expedition' 8,705 · 'sub,' 11,155 · 'Atlantic.' 12,305–12,760 · 'The' 13,200 ·
+  // 'Atlantic' 13,375 · 'South' 16,655 · 'Sandwich' 16,905 · 'Trench,' 17,455 · 'far' 18,070 · 'south,' 18,655–18,940 · 'where' 19,300 ·
+  // 'dives' 20,095 · 'three' 21,375 · 'inches' 21,615 · 'year.' 22,015–22,310 · 'That' 22,910 · 'three' 23,295 · 'four' 23,705 ·
+  // 'times' 23,955 · 'pace' 24,425 · 'Rico.' 25,695–26,050 · 'The' 26,580 · 'islands' 26,735 · 'chain' 27,725 · 'small' 28,165 ·
+  // 'volcanoes,' 28,495–29,135 · 'residents.' 30,175–30,650.
+  var DUR = 31.3;   // espelho.json › s63 › dur, literal (roupa §8)
+  var T = {
+    // b0
+    seabed: 3.5, veu0: 3.525, veuDur: 2.0, legenda: 6.067, mesa: 8.5,
+    // b1 (a mesa)
+    fita: 8.8, georgia: 8.8, push0: 9.05, push1: 12.75, levanta: 12.85, volta: 13.2,
+    // b2
+    voo0: 13.2, voo1: 17.2, fossa: 16.655, rotFossa: 16.633, dist: 18.067,
+    // b3
+    cartaoA: 19.3, mergulha: 20.095, cotaA: 21.367, fonte: 21.367, distSai: 22.9,
+    // b4
+    vezes: 23.267, cartaoB: 23.295, cotaB: 24.4, b5: 26.567,
+    // b5
+    ilhas: 26.735, rotIlhas: 26.733, ilhasSai: 28.2,
+    // b6
+    b6: 28.467, michael: 28.467, terreno: 28.3
+  };
+  var CENA = {
+    perfil: "maptiler",
+    poses: {
+      W0: { c: [-16.0, 4.0], z: 2.98 },            // o mundo, o Atlântico no meio, um pouco à direita
+      W1: { c: [-21.0, 2.0], z: 3.10 },            // a deriva lenta do b0 (a câmera nunca para)
+      P0: { c: [-65.8, 19.4], z: Math.log2(3840 / 14.4 * 360 / 512) },   // a POSE P0 da série (s04 → s05)
+      S1: { c: [-21.0, -57.9], z: 5.90 },          // a chegada: a fossa à esquerda, os cartões à direita
+      S2: { c: [-21.5, -58.05], z: 5.95 },         // a deriva do b2–b4 (para o sul: a pílula da fossa não desce para a faixa do crédito)
+      S4: { c: [-26.445, -57.836], z: 12.0 }      // o fim: no mar, ao sul da ilha Saunders (a cota 0 do centro é verdade)
+    },
+    mergulho: { meio: 0.15, v0: 0.012, vMeio: 0.11, vFim: 0.03 },   // o progresso do van Wijk S2 → S4 (por segundo nas derivadas)
+    pitch: 60,          // b6: a inclinação final (ofício §6: 55–70°)
+    exagero: 2.6,       // b6: o exagero do relevo no fim (o gelo liso pede mais: ofício §6)
+    contato: [-24.9, -56.5],                       // o contato das placas: o eixo da fossa (o meio da faixa de 6.000 m) a 56,5°S
+    rotFossaLL: [-25.4, -60.85],                   // a pílula da fossa: embaixo da ponta sul (o topo dela 34 px abaixo deste ponto)
+    rotIlhasDx: 270,                               // a pílula das ilhas: acima da ponta norte do arco (o pé dela 36 px acima do vértice mais ao
+                                                   // norte da geometria), 270 px para leste (longe da Geórgia do Sul); no mergulho ela sai pelo alto
+    cartaoA: { dx: 712, dy: -660 },                // o canto de cima à esquerda do cartão do corte, a partir do contato na tela
+    distIdx: 0.972,                                // o ponto do arco ao lado do qual fica '≈ 5,700 MI'
+    veu: { escuro: 0.40, claro: 0.22 },            // b0: o mar sem dado a 60 % (preto a 40 %) e o mar com dado (a --tinta a 22 %)
+    vA: 64, vB: 64 / 3.575                         // a velocidade dos traços (px/s): 71,5 : 20 mm/ano
+  };
+  // ═════════════════════════════════════════════════════════════════════════════════════════════════
+
+  window.__duracao = DUR;
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (t) { t = cl(t, 0, 1); return 1 - Math.pow(1 - t, 3); };
+  var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var ss = function (x) { x = cl(x, 0, 1); return x * x * (3 - 2 * x); };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+  var lerp = function (a, b, u) { return a + (b - a) * u; };
+
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== CENA.perfil) return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa '" + CENA.perfil + "' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster; esta cena desenha sobre satélite.");
+  if (!P.dem) return falhar("o perfil '" + P.nome + "' não tem DEM: o b6 pede o relevo real.");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo.");
+    return g;
+  }
+  function baseGebco(nome) {
+    var b = (window.__BASE_GEBCO || {})[nome];
+    if (!b || !b.imagem) falhar("o fundo '" + nome + "' não foi carregado: falta <script src=\"../_media/base/" + nome + ".js\">.");
+    return b;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+
+  var credMapaTexto = (P.atribuicao && P.atribuicao.exigida && P.atribuicao.tela) || "";
+  if (credMapaTexto !== "© MapTiler © OpenStreetMap contributors") return falhar("o crédito do perfil ('" + credMapaTexto + "') não é o do textos-tela.json.");
+  var GEBCO_TELA = "GEBCO Compilation Group (2026) GEBCO 2026 Grid";
+  E("crMapa").textContent = credMapaTexto + "\n" + GEBCO_TELA;
+  window.__creditoMapa = credMapaTexto + " · " + GEBCO_TELA;
+
+  // ═══ A GEOMETRIA (toda de _media/geo/) E O FUNDO (_media/base/) ═══════════════════════════════════════
+  var FOSSA = geo("fossa-sandwich-do-sul"), ILHAS = geo("ilhas-sandwich-do-sul"), MM_G = geo("mount-michael-saunders"),
+      METEOR_G = geo("meteor-deep"), ANEL_G = geo("ponto-mais-fundo-atlantico");
+  var MUNDO = baseGebco("gebco-mundo-relevo"), MEDIDO = baseGebco("gebco-mundo-medido"), ATL = baseGebco("gebco-atlantico-relevo"),
+      CARIBE = baseGebco("gebco-caribe"), SUL = baseGebco("gebco-sandwich-do-sul");
+  if (window.__erroCena) return;
+  [MUNDO, MEDIDO, ATL, CARIBE, SUL].forEach(function (b) {
+    if (b.atribuicao.tela !== GEBCO_TELA) falhar("o crédito da GEBCO mudou na base '" + b.nome + "': confira o textos-tela.json.");
+  });
+  if (window.__erroCena) return;
+  var ANEL = ANEL_G.features[0].geometry.coordinates, METEOR = METEOR_G.features[0].geometry.coordinates;
+  var MICHAEL = MM_G.features[0].geometry.coordinates;   // o CENTRO da ilha Saunders (declarado), não o cume
+  var ILHAS_NORTE = (function () {   // o vértice mais ao norte do arco de ilhas (a ilha Zavodovski)
+    var best = null;
+    ILHAS.features.forEach(function (f) { var g = f.geometry, ps = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+      ps.forEach(function (p) { p[0].forEach(function (q) { if (!best || q[1] > best[1]) best = q; }); }); });
+    return best;
+  })();
+
+  // ═══ A CÂMERA em Mercator (o bloco comum da M1: norte para cima; o pitch só no b6) ═══════════════════
+  var W = 3840, H = 2160;
+  function mx(lng) { return (lng + 180) / 360; }
+  function my(lat) { var s = Math.sin(lat * Math.PI / 180); return 0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI); }
+  function lngDe(x) { return x * 360 - 180; }
+  function latDe(y) { return 360 / Math.PI * Math.atan(Math.exp((0.5 - y) * 2 * Math.PI)) - 90; }
+  function ws(z) { return 512 * Math.pow(2, z); }
+  function lerpMerc(a, b, u) { return [lngDe(mx(a[0]) + (mx(b[0]) - mx(a[0])) * u), latDe(my(a[1]) + (my(b[1]) - my(a[1])) * u)]; }
+  // van Wijk (o flyInterp do camera-mapa.js da Régie, como função pura do tempo; o da s04)
+  function flyInterp(c0, z0, c1, z1, k) {
+    var rho = 1.42, rho2 = rho * rho;
+    var ws0 = ws(z0), p0 = [mx(c0[0]) * ws0, my(c0[1]) * ws0], p1 = [mx(c1[0]) * ws0, my(c1[1]) * ws0];
+    var u1 = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
+    var w0 = Math.max(W, H), w1 = w0 / Math.pow(2, z1 - z0);
+    var cosh = function (x) { return (Math.exp(x) + Math.exp(-x)) / 2; }, sinh = function (x) { return (Math.exp(x) - Math.exp(-x)) / 2; }, sq = function (n) { return n * n; };
+    var uFn, wFn, S, r0;
+    if (u1 < 1e-6) {
+      if (Math.abs(z0 - z1) < 1e-6) return { center: c0, zoom: z0 };
+      var kk = w1 < w0 ? -1 : 1; S = Math.abs(Math.log(w1 / w0)) / rho; uFn = function () { return 0; }; wFn = function (s) { return Math.exp(kk * rho * s); };
+    } else {
+      var r = function (i) { var b = (sq(w1) - sq(w0) + (i ? -1 : 1) * sq(rho2) * sq(u1)) / (2 * (i ? w1 : w0) * rho2 * u1); return Math.log(Math.sqrt(sq(b) + 1) - b); };
+      r0 = r(0); S = (r(1) - r0) / rho;
+      uFn = function (s) { return w0 * ((cosh(r0) * (sinh(r0 + rho * s) / cosh(r0 + rho * s)) - sinh(r0)) / rho2) / u1; };
+      wFn = function (s) { return cosh(r0) / cosh(r0 + rho * s); };
+    }
+    if (!isFinite(S)) return { center: c1, zoom: z1 };
+    var s = k * S, us = uFn(s);
+    var px = p0[0] + (p1[0] - p0[0]) * us, py = p0[1] + (p1[1] - p0[1]) * us;
+    return { center: [lngDe(px / ws0), latDe(py / ws0)], zoom: z0 + Math.log2(1 / wFn(s)) };
+  }
+  function deriva(a, b, u) { return { center: lerpMerc(a.c, b.c, u), zoom: a.z + (b.z - a.z) * u }; }
+  // a Hermite cúbica de p0 a p1 com as derivadas m0 e m1 (em unidades de progresso por segundo) num trecho de d segundos
+  function hermite(u, p0, p1, m0, m1, d) {
+    var u2 = u * u, u3 = u2 * u;
+    return (2 * u3 - 3 * u2 + 1) * p0 + (u3 - 2 * u2 + u) * m0 * d + (-2 * u3 + 3 * u2) * p1 + (u3 - u2) * m1 * d;
+  }
+  // b5 (26,567–28,467): de 0 a CENA.mergulho.meio, começando no ritmo da deriva; b6 (28,467–31,3): do meio a 1, terminando devagar
+  function progressoMergulho(t) {
+    var M = CENA.mergulho;
+    if (t < T.b6) return hermite(seg(t, T.b5, T.b6 - T.b5), 0, M.meio, M.v0, M.vMeio, T.b6 - T.b5);
+    return hermite(seg(t, T.b6, DUR - T.b6), M.meio, 1, M.vMeio, M.vFim, DUR - T.b6);
+  }
+  function cameraAt(t) {
+    var PS = CENA.poses, c;
+    if (t < T.volta) {   // b0 e b1: o mundo (no b1 o mapa fica atrás da mesa, na última pose do mundo, sem pedir tile)
+      c = deriva(PS.W0, PS.W1, cl(t, 0, T.mesa) / T.mesa);
+      return { center: c.center, zoom: c.zoom, bearing: 0, pitch: 0 };
+    }
+    if (t < T.voo1) {    // b2: a descida do Atlântico, 4 s (a cúbica com 8 % de linear: chega andando e entra na deriva)
+      var u = seg(t, T.voo0, T.voo1 - T.voo0), k = 0.92 * eio(u) + 0.08 * u;
+      var f = flyInterp(PS.P0.c, PS.P0.z, PS.S1.c, PS.S1.z, k);
+      return { center: f.center, zoom: f.zoom, bearing: 0, pitch: 0 };
+    }
+    if (t < T.b5) {      // b2–b4: a deriva lenta na fossa do sul
+      c = deriva(PS.S1, PS.S2, seg(t, T.voo1, T.b5 - T.voo1));
+      return { center: c.center, zoom: c.zoom, bearing: 0, pitch: 0 };
+    }
+    // b5–b6: fecha devagar sobre o arco (o arco inteiro no quadro, com a pílula dele) e, de 'volcanoes', mergulha na ilha Saunders
+    // (van Wijk), inclinando; o progresso é uma Hermite cúbica em dois trechos, com a velocidade contínua em 28,467
+    var k3 = progressoMergulho(t);
+    var f3 = flyInterp(PS.S2.c, PS.S2.z, PS.S4.c, PS.S4.z, k3);
+    var up = seg(t, T.b6, DUR - T.b6);
+    return { center: f3.center, zoom: f3.zoom, bearing: 0, pitch: CENA.pitch * (0.94 * eio(up) + 0.06 * up) };
+  }
+  window.__cameraAt = cameraAt;
+  function exageroAt(t) { return t < T.terreno ? 0 : CENA.exagero * ss(seg(t, T.b6, 1.7)); }
+  window.__exageroAt = exageroAt;
+  function noMapa(t) { return t < T.mesa || t >= T.volta; }
+
+  // ═══ O ARCO (grande círculo) entre os dois pontos lidos: interpolação esférica ═══════════════════════
+  var ARCO = (function () {
+    var r = Math.PI / 180, n = 200;
+    function vec(ll) { var la = ll[1] * r, lo = ll[0] * r; return [Math.cos(la) * Math.cos(lo), Math.cos(la) * Math.sin(lo), Math.sin(la)]; }
+    var A = vec(ANEL), B = vec(METEOR);
+    var om = Math.acos(cl(A[0] * B[0] + A[1] * B[1] + A[2] * B[2], -1, 1)), pts = [];
+    for (var i = 0; i <= n; i++) {
+      var f = i / n, s1 = Math.sin((1 - f) * om) / Math.sin(om), s2 = Math.sin(f * om) / Math.sin(om);
+      var x = s1 * A[0] + s2 * B[0], y = s1 * A[1] + s2 * B[1], z = s1 * A[2] + s2 * B[2];
+      pts.push([Math.atan2(y, x) / r, Math.atan2(z, Math.hypot(x, y)) / r]);
+    }
+    return { pts: pts, km: om * 6371.0088 };
+  })();
+  window.__arco = { km: ARCO.km, mi: ARCO.km / 1.609344, metadoMeteor: METEOR_G.features[0].properties.mi_ate_o_anel };
+  function arcoEm(f) {   // o ponto do arco na fração f (0 = o anel, 1 = o Meteor)
+    var n = ARCO.pts.length - 1, a = cl(f, 0, 1) * n, i = Math.min(Math.floor(a), n - 1), u = a - i, p = ARCO.pts[i], q = ARCO.pts[i + 1];
+    return [p[0] + (q[0] - p[0]) * u, p[1] + (q[1] - p[1]) * u];
+  }
+
+  // ═══ AS IMAGENS DO FUNDO (carregadas uma vez, tratadas num canvas; nenhum lado em potência de 2) ═══════
+  function carregarImagem(src) {
+    return new Promise(function (res, rej) {
+      var im = new Image();
+      im.onload = function () { (im.decode ? im.decode() : Promise.resolve()).then(function () { res(im); }, function () { res(im); }); };
+      im.onerror = function () { rej(new Error("a imagem " + src + " não carregou (arquivo ausente ou caminho errado).")); };
+      im.src = src;
+    });
+  }
+  function semPot2(n) { return (n & (n - 1)) === 0 ? n - 1 : n; }
+  function apagarBordas(x, w, h, penaX, penaY) {
+    x.globalCompositeOperation = "destination-out";
+    function faixa(x0, y0, x1, y1, ww, hh) {
+      var g = x.createLinearGradient(x0, y0, x1, y1);
+      g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)");
+      x.fillStyle = g; x.fillRect(Math.min(x0, x1), Math.min(y0, y1), ww, hh);
+    }
+    if (penaX > 0) { faixa(0, 0, penaX, 0, penaX, h); faixa(w, 0, w - penaX, 0, penaX, h); }
+    if (penaY > 0) { faixa(0, 0, 0, penaY, w, penaY); faixa(0, h, 0, h - penaY, w, penaY); }
+    x.globalCompositeOperation = "source-over";
+  }
+  // o recorte fino inteiro, com as bordas esmaecidas (a M1)
+  function canvasEsmaecido(im, penaX, penaY) {
+    var w = semPot2(im.naturalWidth), h = semPot2(im.naturalHeight);
+    var c = document.createElement("canvas"); c.width = w; c.height = h;
+    var x = c.getContext("2d"); x.drawImage(im, 0, 0, w, h);
+    apagarBordas(x, w, h, penaX, penaY);
+    return c;
+  }
+  // só o MAR, um pixel para dentro dele (a grade grossa nunca pinta sobre a costa do satélite). O teste é o da M1 (azul acima do
+  // vermelho), com uma folga no verde: na rampa do WMS a plataforma rasa sai ciano-esverdeada (o verde até 24 acima do azul; medido na
+  // plataforma da Geórgia do Sul e das Falklands, _tmp/arte-2/M7/amostra-wms.py), e a terra baixa sai verde (o verde 37 a 71 acima);
+  // com o teste da M1 a plataforma virava "terra" e o mar quase preto do satélite fazia um halo escuro em volta das ilhas
+  function canvasMar(im, penaX, penaY) {
+    var w = semPot2(im.naturalWidth), h = semPot2(im.naturalHeight);
+    var cv = document.createElement("canvas"); cv.width = w; cv.height = h;
+    var x = cv.getContext("2d", { willReadFrequently: true }); x.drawImage(im, 0, 0, w, h);
+    var d = x.getImageData(0, 0, w, h), p = d.data, mar = new Uint8Array(w * h), i, q;
+    for (i = 0, q = 0; i < p.length; i += 4, q++) mar[q] = (p[i + 2] > p[i] + 10 && p[i + 1] - p[i + 2] < 25) ? 1 : 0;
+    for (var yy = 0; yy < h; yy++) for (var xx = 0; xx < w; xx++) {
+      q = yy * w + xx;
+      var ok = mar[q] && (xx === 0 || mar[q - 1]) && (xx === w - 1 || mar[q + 1]) && (yy === 0 || mar[q - w]) && (yy === h - 1 || mar[q + w]);
+      if (!ok) p[q * 4 + 3] = 0;
+    }
+    x.putImageData(d, 0, 0);
+    if (penaX || penaY) apagarBordas(x, w, h, penaX, penaY);
+    return cv;
+  }
+  // o VÉU da máscara (b0), 4096 × 4096 como as duas imagens do mundo: mar sem dado = preto (alfa escuro), mar com dado = --tinta (alfa claro)
+  function canvasVeu(imRelevo, imMedido) {
+    var w = imRelevo.naturalWidth, h = imRelevo.naturalHeight;
+    var a = document.createElement("canvas"); a.width = w; a.height = h;
+    var xa = a.getContext("2d", { willReadFrequently: true }); xa.drawImage(imRelevo, 0, 0);
+    var b = document.createElement("canvas"); b.width = w; b.height = h;
+    var xb = b.getContext("2d", { willReadFrequently: true }); xb.drawImage(imMedido, 0, 0, w, h);
+    var dr = xa.getImageData(0, 0, w, h).data, dm = xb.getImageData(0, 0, w, h).data;
+    var out = xa.createImageData(w, h), po = out.data;
+    var tinta = (tok("--tinta", "") || "").match(/[0-9a-f]{6}/i), tr = 244, tg = 241, tb = 234;
+    if (tinta) { var hx = tinta[0]; tr = parseInt(hx.slice(0, 2), 16); tg = parseInt(hx.slice(2, 4), 16); tb = parseInt(hx.slice(4, 6), 16); }
+    var aE = Math.round(CENA.veu.escuro * 255), aC = Math.round(CENA.veu.claro * 255), nMed = 0, nMar = 0;
+    for (var i = 0; i < dr.length; i += 4) {
+      var mar = dr[i + 2] > dr[i] + 10 && dr[i + 2] >= dr[i + 1];
+      var medido = dm[i + 3] > 127 && dm[i] > 127;
+      if (medido && mar) { po[i] = tr; po[i + 1] = tg; po[i + 2] = tb; po[i + 3] = aC; nMed++; nMar++; }
+      else if (mar) { po[i] = 0; po[i + 1] = 0; po[i + 2] = 0; po[i + 3] = aE; nMar++; }
+      else po[i + 3] = 0;
+    }
+    xa.putImageData(out, 0, 0);
+    window.__veuConta = { mar: nMar, comDado: nMed, fracao: nMar ? +(nMed / nMar).toFixed(4) : 0 };
+    return a;
+  }
+  // as 16 peças do mundo (90° × um quarto da altura em Mercator), cada uma num canvas de 1023 × 1023 (a s04)
+  function pecas(prefixo) {
+    var out = [], n = 4;
+    for (var i = 0; i < n; i++) for (var j = 0; j < n; j++) {
+      var w0 = -180 + 360 * i / n, w1 = -180 + 360 * (i + 1) / n, la0 = latDe(j / n), la1 = latDe((j + 1) / n);
+      out.push({ id: prefixo + i + "-" + j, i: i, j: j, coords: [[w0, la0], [w1, la0], [w1, la1], [w0, la1]] });
+    }
+    return out;
+  }
+  function cortarPeca(fonte, pc) {
+    var L = fonte.width || fonte.naturalWidth, A = fonte.height || fonte.naturalHeight;
+    var cv = document.createElement("canvas"); cv.width = 1023; cv.height = 1023;
+    cv.getContext("2d").drawImage(fonte, L * pc.i / 4, A * pc.j / 4, L / 4, A / 4, 0, 0, 1023, 1023);
+    return cv;
+  }
+  var PECAS_MUNDO = pecas("mundo-"), PECAS_MAR = pecas("mmar-");
+  var VEU = null;
+  var imgsProntas = Promise.all([MUNDO, MEDIDO, ATL, CARIBE, SUL].map(function (b) { return carregarImagem(b.imagem.arquivo); }));
+  var midiaProntas = Promise.all(["foto", "still"].map(function (id) {
+    var im = E(id); if (!im) return Promise.resolve();
+    return (im.complete ? Promise.resolve() : new Promise(function (r) { im.onload = r; im.onerror = r; })).then(function () { return im.decode ? im.decode().catch(function () {}) : null; });
+  }));
+  window.__fotosProntas = Promise.all([imgsProntas, midiaProntas]).then(function () { return true; }, function (e) { falhar(e.message); return true; });
+
+  // ═══ O ESTILO ═════════════════════════════════════════════════════════════════════════════════════════
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  var COR = { tinta: tok("--tinta", "#F4F1EA"), neutro: tok("--neutro", "#737D8E"), contraparte: tok("--contraparte", "#2EC4B6"),
+    rotulo: tok("--rotulo", "rgba(11, 15, 20, 0.88)"), sob: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)") };
+  function estilo() {
+    var fontes = {
+      base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+      dem: { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding },
+      fossa: { type: "geojson", data: FOSSA },
+      ilhas: { type: "geojson", data: ILHAS }
+    };
+    var t0 = { duration: 0, delay: 0 };
+    var camadas = [
+      { id: "base", type: "raster", source: "base", layout: { visibility: "none" },
+        paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // identidade §6, o tratamento C
+      // o relevo sombreado 2D da terra (b6), do mesmo DEM (a forma da s37: sombra no --rotulo, luz na --tinta)
+      { id: "relevo", type: "hillshade", source: "dem", layout: { visibility: "none" },
+        paint: { "hillshade-exaggeration": 0, "hillshade-shadow-color": COR.rotulo, "hillshade-highlight-color": COR.tinta,
+          "hillshade-accent-color": COR.rotulo, "hillshade-illumination-direction": 315, "hillshade-exaggeration-transition": t0 } },
+      { id: "fossa-fill", type: "fill", source: "fossa", paint: { "fill-color": COR.contraparte, "fill-opacity": 0, "fill-opacity-transition": t0 } },
+      { id: "fossa-sob", type: "line", source: "fossa", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": COR.sob, "line-width": 14, "line-opacity": 0, "line-opacity-transition": t0 } },
+      { id: "fossa-linha", type: "line", source: "fossa", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": COR.contraparte, "line-width": 6, "line-opacity": 0, "line-opacity-transition": t0 } },
+      { id: "ilhas-sob", type: "line", source: "ilhas", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": COR.sob, "line-width": 14, "line-opacity": 0, "line-opacity-transition": t0 } },
+      { id: "ilhas-fill", type: "fill", source: "ilhas", paint: { "fill-color": COR.neutro, "fill-opacity": 0, "fill-opacity-transition": t0 } },
+      { id: "ilhas-linha", type: "line", source: "ilhas", layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": COR.neutro, "line-width": 6, "line-opacity": 0, "line-opacity-transition": t0 } }
+    ];
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes, layers: camadas };
+  }
+
+  // ── rede com nova tentativa (molde, sem mudança; a da s04) ─────────────────────────────────────────
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  function erroCorpo(msg, url, st) { var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e; }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) { var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http"; throw e; }
+        if (params.type === "json") return r.text().then(function (t) { try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); } });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+
+  var c0 = cameraAt(0);
+  var map;
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie, renderWorldCopies: true,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: 0, pitch: 0
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa.");
+  }
+  window.map = map;
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
+
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg))
+      return "mandou tile CORROMPIDO" + n + " (" + String(msg).replace(/^tile corrompido: /, "") + "). Renderize de novo.";
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + ". Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  var mapaCarregado = false;
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ".");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : ""));
+  });
+  var CAMADAS_MAR = [];   // as camadas do fundo do mar do b2–b6 (ligadas com o satélite)
+  map.on("load", function () {
+    Promise.all([imgsProntas, midiaProntas]).then(function (r) {
+      var ims = r[0];   // [mundo-relevo, mundo-medido, atlantico-relevo, caribe, sandwich]
+      try {
+        var antes = "relevo";
+        // o mundo, só o mar, a 0,34 (b2–b6: o que sobra fora do Atlântico na descida)
+        var marMundo = canvasMar(ims[0], 0, 0);
+        PECAS_MAR.forEach(function (pc) {
+          map.addSource(pc.id, { type: "canvas", canvas: cortarPeca(marMundo, pc), coordinates: pc.coords, animate: false });
+          map.addLayer({ id: pc.id, type: "raster", source: pc.id, layout: { visibility: "none" },
+            paint: { "raster-fade-duration": 0, "raster-resampling": "linear", "raster-brightness-max": 0.34 } }, antes);
+          CAMADAS_MAR.push(pc.id);
+        });
+        // o Atlântico, só o mar, a 0,34, com a borda esmaecida em 2°
+        var penaAtl = Math.round(2 / 120 * ATL.imagem.largura);
+        map.addSource("atl", { type: "canvas", canvas: canvasMar(ims[2], penaAtl, penaAtl), coordinates: ATL.imagem.coordinates, animate: false });
+        map.addLayer({ id: "atl", type: "raster", source: "atl", layout: { visibility: "none" },
+          paint: { "raster-fade-duration": 0, "raster-resampling": "linear", "raster-brightness-max": 0.34 } }, antes);
+        CAMADAS_MAR.push("atl");
+        // os recortes finos: o Caribe (a pilha da P0 da s04: 72 × 60) e o sul (260 × 300)
+        map.addSource("caribe", { type: "canvas", canvas: canvasEsmaecido(ims[3], 72, 60), coordinates: CARIBE.imagem.coordinates, animate: false });
+        map.addLayer({ id: "caribe", type: "raster", source: "caribe", layout: { visibility: "none" },
+          paint: { "raster-fade-duration": 0, "raster-resampling": "linear" } }, antes);
+        CAMADAS_MAR.push("caribe");
+        map.addSource("sul", { type: "canvas", canvas: canvasEsmaecido(ims[4], 260, 300), coordinates: SUL.imagem.coordinates, animate: false });
+        map.addLayer({ id: "sul", type: "raster", source: "sul", layout: { visibility: "none" },
+          paint: { "raster-fade-duration": 0, "raster-resampling": "linear", "raster-opacity": 1, "raster-opacity-transition": { duration: 0, delay: 0 } } }, antes);
+        CAMADAS_MAR.push("sul");
+        // b0: a vista do mundo (terra e mar), escurecida como na s04 (0,42, saturação −0,45)
+        PECAS_MUNDO.forEach(function (pc) {
+          map.addSource(pc.id, { type: "canvas", canvas: cortarPeca(ims[0], pc), coordinates: pc.coords, animate: false });
+          map.addLayer({ id: pc.id, type: "raster", source: pc.id,
+            paint: { "raster-fade-duration": 0, "raster-resampling": "linear", "raster-brightness-max": 0.42, "raster-saturation": -0.45 } }, antes);
+        });
+        // b0: o véu da máscara da TID
+        VEU = canvasVeu(ims[0], ims[1]);
+      } catch (e) { return falhar("não consegui montar o fundo da GEBCO: " + e.message); }
+      mapaCarregado = true;
+      window.__renderAt(0);
+      map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
+    }, function (e) { falhar(e.message); });
+  });
+
+  // ═══ O ANEL (identidade §4.4; o da s04) ════════════════════════════════════════════════════════════
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function svgEl(tag, at, pai) { var el = document.createElementNS(SVGNS, tag); for (var k in at) el.setAttribute(k, at[k]); if (pai) pai.appendChild(el); return el; }
+  (function () {
+    var g = svgEl("g", { id: "anel", "class": "anel", opacity: "0" }, E("ov"));
+    svgEl("circle", { "class": "halo", cx: 0, cy: 0, r: 28, "stroke-width": 30 }, g);
+    svgEl("circle", { cx: 0, cy: 0, r: 28, "stroke-width": 10 }, g);
+  })();
+
+  // ═══ OS DESENHOS DOS CARTÕES (traço de engenheiro) ══════════════════════════════════════════════════
+  // o corte: a placa da direita (a Sul-Americana) corre para oeste e mergulha sob a da esquerda; a linha do meio dela é o caminho
+  // dos traços que correm (a 64 px/s), e o polígono é ela engrossada para 60 px
+  var LINHA_A = [[1060, 205], [700, 205], [640, 218], [575, 250], [500, 300], [420, 355], [340, 410], [300, 440]];
+  (function () {
+    var d = "", L = LINHA_A, meia = 40, cima = [], baixo = [];
+    for (var i = 0; i < L.length; i++) {
+      var a = L[Math.max(0, i - 1)], b = L[Math.min(L.length - 1, i + 1)], dx = b[0] - a[0], dy = b[1] - a[1], n = Math.hypot(dx, dy) || 1;
+      var nx = -dy / n, ny = dx / n;   // a normal (para cima à direita do caminho, que anda para oeste)
+      cima.push([L[i][0] - nx * meia, L[i][1] - ny * meia]); baixo.push([L[i][0] + nx * meia, L[i][1] + ny * meia]);
+    }
+    var pts = cima.concat(baixo.reverse());
+    pts.forEach(function (p, i) { d += (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); });
+    E("placaBaixo").setAttribute("d", d + "Z");
+    var c = ""; L.forEach(function (p, i) { c += (i ? "L" : "M") + p[0] + " " + p[1]; });
+    E("fluxoA").setAttribute("d", c);
+  })();
+
+  // ═══ POSIÇÕES E VISIBILIDADE ═══════════════════════════════════════════════════════════════════════
+  // a pílula presa ao mapa esmaece nos últimos 60 px antes da área segura (margem, faixa do crédito, canto)
+  function naArea(l, tp, w, h) {
+    var r = l + w, b = tp + h;
+    return Math.min(l - 200, 3640 - r, tp - 160, 1880 - b, Math.max(3440 - r, 1760 - b));
+  }
+  function mostrar(el, v, l, tp) {
+    if (!el) return;
+    el.style.opacity = v.toFixed(3);
+    el.style.visibility = v > 0.001 ? "visible" : "hidden";
+    el.style.transform = "translate(" + l.toFixed(2) + "px," + tp.toFixed(2) + "px)";
+  }
+  // entra em 300 ms (opacidade + 24 px de subida, eo) e sai em 300 ms terminando no t1 (null = fica)
+  function vida(t, t0, t1) {
+    if (t < t0) return { op: 0, dy: 24 };
+    var e = eo(seg(t, t0, 0.3)), s = t1 == null ? 1 : 1 - eio(seg(t, t1 - 0.3, 0.3));
+    if (t1 != null && t >= t1) s = 0;
+    return { op: e * s, dy: 24 * (1 - e) };
+  }
+  function pt(ll) { var p = map.project(ll); return { x: p.x, y: p.y }; }
+
+  // o arco: a ponta só cresce com o tempo E nunca passa de 520 px abaixo do centro da tela (à frente da câmera)
+  var arcoFrac = 0;
+  function aplicarArco(t) {
+    var g = E("arco");
+    var v = t >= T.voo0 + 0.1 ? 1 - eio(seg(t, T.distSai - 0.3, 0.3)) : 0;
+    if (!noMapa(t) || v <= 0.001) { g.setAttribute("opacity", "0"); arcoFrac = 0; return; }
+    var porTempo = eio(seg(t, T.voo0 + 0.1, 3.55));
+    // a fração cuja projeção chega a y = 1600 (o arco desce para o sul: y cresce com a fração)
+    var lo = 0, hi = 1;
+    if (pt(arcoEm(1)).y <= 1600) lo = 1;
+    else for (var it = 0; it < 26; it++) { var m = (lo + hi) / 2; if (pt(arcoEm(m)).y <= 1600) lo = m; else hi = m; }
+    var f = Math.min(porTempo, lo);
+    arcoFrac = f;
+    if (f <= 0.0005) { g.setAttribute("opacity", "0"); return; }
+    var n = ARCO.pts.length - 1, ate = f * n, d = "";
+    for (var i = 0; i <= Math.floor(ate); i++) { var p = map.project(ARCO.pts[i]); d += (i ? "L" : "M") + p.x.toFixed(1) + " " + p.y.toFixed(1); }
+    if (ate < n) { var q = map.project(arcoEm(f)); d += "L" + q.x.toFixed(1) + " " + q.y.toFixed(1); }
+    E("arcoSob").setAttribute("d", d); E("arcoSobre").setAttribute("d", d);
+    g.setAttribute("opacity", v.toFixed(3));
+  }
+  function aplicarAnel(t) {
+    var g = E("anel"); if (!g) return;
+    if (!noMapa(t) || t < T.volta || t >= T.b5) { g.setAttribute("opacity", "0"); return; }
+    var pa = pt(ANEL);
+    g.setAttribute("transform", "translate(" + pa.x.toFixed(2) + " " + pa.y.toFixed(2) + ")");
+    g.setAttribute("opacity", "1");
+  }
+
+  // b0: o véu da máscara, desenhado na tela pela projeção do mapa (Mercator, rumo 0, pitch 0), com as cópias do mundo
+  function aplicarVeu(t) {
+    var cv = E("veu"); if (!cv) return;
+    var x = cv.getContext("2d");
+    x.clearRect(0, 0, W, H);
+    if (!VEU || t >= T.mesa || t < T.veu0) return;
+    var cam = cameraAt(t), k = ws(cam.zoom);
+    var x0 = W / 2 - mx(cam.center[0]) * k, y0 = H / 2 - my(cam.center[1]) * k;
+    x.imageSmoothingEnabled = true; x.imageSmoothingQuality = "high";
+    for (var n = -1; n <= 1; n++) {
+      var xx = x0 + n * k;
+      if (xx > W || xx + k < 0) continue;
+      x.drawImage(VEU, xx, y0, k, k);
+    }
+    // a película raspada: a frente anda de oeste para leste na tela em 2 s, com a borda de 420 px
+    var u = eio(seg(t, T.veu0, T.veuDur));
+    if (u < 1) {
+      var borda = 420, fx = -borda + (W + 2 * borda) * u;
+      var gr = x.createLinearGradient(fx - borda, 0, fx, 0);
+      gr.addColorStop(0, "rgba(0,0,0,1)"); gr.addColorStop(1, "rgba(0,0,0,0)");
+      x.globalCompositeOperation = "destination-in";
+      x.fillStyle = gr; x.fillRect(0, 0, W, H);
+      x.globalCompositeOperation = "source-over";
+    }
+  }
+
+  // os cartões, presos ao contato da fossa na tela
+  function cartoesEm() {
+    var c = pt(CENA.contato), A = { x: c.x + CENA.cartaoA.dx, y: c.y + CENA.cartaoA.dy };
+    return { c: c, A: A, vezes: { x: A.x, y: A.y + 700 + 36 }, B: { x: A.x, y: A.y + 700 + 36 + 152 + 36 } };
+  }
+  function aplicarCartoes(t) {
+    var mapa = noMapa(t) && t >= T.volta;
+    var K = cartoesEm();
+    // o cartão do corte: entra em 'where' (19,3) e sai em 26,567
+    var va = mapa ? vida(t, T.cartaoA, T.b5) : { op: 0, dy: 24 };
+    mostrar(E("cartaoA"), va.op, K.A.x, K.A.y + va.dy);
+    var ca = E("cotaA"); if (ca) ca.style.opacity = (mapa ? vida(t, T.cotaA, null).op : 0).toFixed(3);
+    // os traços da placa que mergulha correm a partir de 'dives' (64 px/s)
+    var fa = E("fluxoA"); if (fa) fa.setAttribute("stroke-dashoffset", (-CENA.vA * Math.max(0, t - T.mergulha)).toFixed(2));
+    // o líder: do contato ao lado esquerdo do cartão, na altura do vale da fossa no desenho
+    var lg = E("lider");
+    if (lg) {
+      var y1 = K.A.y + 214 + va.dy, x1 = K.A.x - 2;
+      var d = "M" + (K.c.x + 16).toFixed(1) + " " + K.c.y.toFixed(1) + "L" + x1.toFixed(1) + " " + y1.toFixed(1);
+      E("liderSob").setAttribute("d", d); E("liderSobre").setAttribute("d", d);
+      E("liderPonto").setAttribute("cx", K.c.x.toFixed(1)); E("liderPonto").setAttribute("cy", K.c.y.toFixed(1));
+      lg.setAttribute("opacity", va.op.toFixed(3));
+    }
+    // '3–4×' e a miniatura de Porto Rico
+    var vv = mapa ? vida(t, T.vezes, T.b5) : { op: 0, dy: 24 };
+    mostrar(E("vezes"), vv.op, K.vezes.x, K.vezes.y + vv.dy);
+    var vb = mapa ? vida(t, T.cartaoB, T.b5) : { op: 0, dy: 24 };
+    mostrar(E("cartaoB"), vb.op, K.B.x, K.B.y + vb.dy);
+    var cb = E("cotaB"); if (cb) cb.style.opacity = (mapa ? vida(t, T.cotaB, null).op : 0).toFixed(3);
+    var fb = E("fluxoB"); if (fb) fb.setAttribute("stroke-dashoffset", (-CENA.vB * Math.max(0, t - T.cartaoB)).toFixed(2));
+  }
+
+  function aplicarRotulos(t) {
+    var mapa = noMapa(t);
+    // b0: 'Seabed 2030' e a legenda, presos à TELA embaixo à esquerda (o projeto não é um lugar)
+    // (os dois terminam no CORTE para a mesa, em 8,5, e saem com ele, sem esmaecer antes: a forma da s53)
+    var vs = vida(t, T.seabed, null), el = E("rotSeabed");
+    mostrar(el, t < T.mesa ? vs.op : 0, 200, 1330 + vs.dy);
+    var vl = vida(t, T.legenda, null);
+    mostrar(E("legSeabed"), t < T.mesa ? vl.op : 0, 200, 1330 + (el ? el.offsetHeight : 176) + 24 + vl.dy);
+    // b2: 'South Sandwich Trench', embaixo da ponta sul da fossa
+    var ef = E("rotFossa"), vf = mapa && t >= T.volta ? vida(t, T.rotFossa, T.b5) : { op: 0, dy: 24 };
+    if (vf.op > 0.001) {
+      var p = pt(CENA.rotFossaLL), w = ef.offsetWidth, h = ef.offsetHeight, l = p.x - w / 2, tp = p.y + 34 + vf.dy;
+      mostrar(ef, vf.op * cl(naArea(l, tp, w, h) / 60, 0, 1), l, tp);
+    } else mostrar(ef, 0, 0, 0);
+    // '≈ 5,700 MI', ao lado do arco (à direita dele, perto do alto da tela na chegada)
+    var ed = E("rotDist"), vd = mapa && t >= T.volta ? vida(t, T.dist, T.distSai) : { op: 0, dy: 24 };
+    if (vd.op > 0.001) {
+      var pd = pt(arcoEm(CENA.distIdx)), wd = ed.offsetWidth, hd = ed.offsetHeight, ld = pd.x + 150, tpd = pd.y - hd / 2 + vd.dy;
+      mostrar(ed, vd.op * cl(naArea(ld, tpd, wd, hd) / 60, 0, 1), ld, tpd);
+    } else mostrar(ed, 0, 0, 0);
+    // b5: 'SOUTH SANDWICH ISLANDS', acima do norte do arco; fica no plano seguinte e esmaece na margem
+    var ei = E("rotIlhas"), vi = mapa && t >= T.volta ? vida(t, T.rotIlhas, null) : { op: 0, dy: 24 };
+    if (vi.op > 0.001) {
+      var pi = pt(ILHAS_NORTE), wi = ei.offsetWidth, hi = ei.offsetHeight, li = pi.x - wi / 2 + CENA.rotIlhasDx, tpi = pi.y - 36 - hi + vi.dy;
+      mostrar(ei, vi.op * cl(naArea(li, tpi, wi, hi) / 60, 0, 1), li, tpi);
+    } else mostrar(ei, 0, 0, 0);
+    // b6: 'Mount Michael', acima do centro declarado da ilha (com o relevo, o map.project() o levanta), sem alfinete
+    var em = E("rotMichael"), vm = mapa && t >= T.volta ? vida(t, T.michael, null) : { op: 0, dy: 24 };
+    if (vm.op > 0.001) {
+      var pm = pt(MICHAEL), wm = em.offsetWidth, hm = em.offsetHeight, lm = pm.x - wm / 2, tpm = pm.y - 130 - hm + vm.dy;
+      mostrar(em, vm.op * cl(naArea(lm, tpm, wm, hm) / 60, 0, 1), lm, tpm);
+    } else mostrar(em, 0, 0, 0);
+  }
+
+  // A MESA (b1: identidade §5, "satélite sob a luz", e §4.4; o movimento da s53 da série)
+  var F = { w: 2248, h: 1404, cx: 1920, cy: 1030, rot: -1.5, rot0: -2.0, rosto: [560, -90] };   // o rosto: a frente do submersível
+  function pousoFoto(t) {
+    var t0 = T.mesa, p = eo(seg(t, t0, 0.33)), q = eo(seg(t, t0 + 0.33, 0.22)), pp = eo(seg(t, t0, 0.55));
+    return { dy: 240 * (1 - pp), k: t < t0 + 0.33 ? lerp(0.72, 1.03, p) : lerp(1.03, 1.00, q), p: pp, rot: lerp(F.rot0, F.rot, pp) };
+  }
+  function levantar(t) { var p = seg(t, T.levanta, T.volta - T.levanta); return { k: 1 + 0.04 * p * p * p, p: p, op: 1 - seg(t, T.volta - 0.2, 0.2) }; }
+  function por(el, cx, cy, w, h, rot, s, op) {
+    if (!el) return;
+    el.style.transform = "translate(" + (cx - w / 2).toFixed(2) + "px," + (cy - h / 2).toFixed(2) + "px) rotate(" + rot.toFixed(3) + "deg) scale(" + s.toFixed(5) + ")";
+    if (op !== undefined) el.style.opacity = cl(op, 0, 1).toFixed(3);
+  }
+  function fita(el, t, t0, lado) {
+    if (!el) return;
+    var p = eo(seg(t, t0, 0.3));
+    el.style.opacity = p.toFixed(3);
+    el.style.transform = "translateY(" + ((1 - p) * -40).toFixed(1) + "px) rotate(" + (lado === "e" ? -6 : 5) + "deg) scale(" + (1 + (1 - p) * 0.08).toFixed(4) + ")";
+  }
+  function camMesa(t) { var p = ss(seg(t, T.push0, T.push1 - T.push0)); return { s: lerp(1.0, 1.04, p), cx: lerp(1920, 2040, p), cy: 1080 }; }
+  function aplicarMesa(t) {
+    var mp = E("mesaPalco"); if (!mp) return;
+    var on = !noMapa(t);
+    mp.style.visibility = on ? "visible" : "hidden"; mp.style.opacity = on ? "1" : "0";
+    if (!on) { var r0 = E("rotGeorgia"); if (r0) { r0.style.visibility = "hidden"; r0.style.opacity = "0"; } return; }
+    var a = pousoFoto(t), l = levantar(t), op = l.op;
+    var sp = a.p * (1 - l.p);
+    por(E("fSombra"), F.cx, F.cy - a.dy + lerp(64, 12, sp), F.w, F.h, a.rot, lerp(1.05, 1.0, sp) * a.k * l.k, lerp(0.35, 0.80, sp) * op);
+    por(E("fGrupo"), F.cx, F.cy - a.dy, F.w, F.h, a.rot, a.k * l.k, op);
+    fita(E("fFe"), t, T.fita, "e"); fita(E("fFd"), t, T.fita + 0.12, "d");
+    // 'South Georgia' no céu da foto (presa à foto), em 8,8
+    var rg = E("rotGeorgia"), vg = vida(t, T.georgia, null);
+    if (rg) { rg.style.opacity = vg.op.toFixed(3); rg.style.visibility = vg.op > 0.001 ? "visible" : "hidden"; rg.style.transform = "translateY(" + vg.dy.toFixed(1) + "px)"; }
+    var c = camMesa(t), td = Math.min(t, T.push1) - T.mesa;
+    var dx = 6 * Math.sin(td * 0.23) + (1920 - c.cx), dy = 4.8 * Math.sin(td * 0.17) + (1080 - c.cy);
+    var cm = E("cam"), st = E("still");
+    if (cm) cm.style.transform = "scale(" + c.s.toFixed(5) + ") translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
+    if (st) { var sk = 1 + (c.s - 1) * 0.6; st.style.transform = "scale(" + sk.toFixed(5) + ") translate(" + (dx * 0.6).toFixed(2) + "px," + (dy * 0.6).toFixed(2) + "px)"; }
+    var b = pousoFoto(Math.max(T.mesa, t - 0.12));
+    if (cm) { cm.style.setProperty("--luz-x", (F.cx + F.rosto[0]).toFixed(1) + "px"); cm.style.setProperty("--luz-y", (F.cy + F.rosto[1] - b.dy).toFixed(1) + "px"); }
+  }
+
+  // os créditos, empilhados de baixo (bottom 40, 8 px entre eles; a forma da s53)
+  function aplicarCreditos(t) {
+    var base = 40;
+    function um(id, v) {
+      var el = E(id); if (!el) return;
+      el.style.opacity = v ? "1" : "0"; el.style.visibility = v ? "visible" : "hidden"; el.style.bottom = base + "px";
+      if (v) base += el.offsetHeight + 8;
+    }
+    um("crGebcoMundo", t < T.mesa);
+    um("crFoto", !noMapa(t));
+    um("crMapa", t >= T.volta);
+    um("crFonte", t >= T.fonte && t < T.b5);
+  }
+
+  var opAntes = {}, visAntes = {};
+  function opac(id, prop, v) { v = +(+v).toFixed(3); var k = id + "|" + prop; if (opAntes[k] === v) return; map.setPaintProperty(id, prop, v); opAntes[k] = v; }
+  function vis(id, on) { var v = on ? "visible" : "none"; if (visAntes[id] === v) return; map.setLayoutProperty(id, "visibility", v); visAntes[id] = v; }
+
+  var tUltimo = 0;
+  function aplicarMapa(t) {
+    // o relevo: liga em 28,3 (exagero 0 até 'volcanoes') e desliga antes; o centro congelado na cota 0 (o fim é no mar)
+    var ex = exageroAt(t), ligado = !!map.getTerrain(), querTerreno = t >= T.terreno;
+    if (!querTerreno && ligado) { map.setTerrain(null); map._elevationFreeze = false; }
+    if (querTerreno && !ligado) map.setTerrain({ source: "dem", exaggeration: ex });
+    if (querTerreno) { if (map.terrain) map.terrain.exaggeration = ex; map._elevationFreeze = true; }
+    map.jumpTo(cameraAt(t));
+    if (map.terrain && map.transform.elevation !== 0) map.transform.elevation = 0;
+    window.__exagero = ex;
+    var mundo = t < T.volta, sat = t >= T.volta;
+    PECAS_MUNDO.forEach(function (pc) { vis(pc.id, mundo); });
+    vis("base", sat);
+    CAMADAS_MAR.forEach(function (id) { vis(id, sat); });
+    var z = map.getZoom();
+    // o hillshade da terra, só no b6, entra com o zoom
+    vis("relevo", querTerreno);
+    opac("relevo", "hillshade-exaggeration", querTerreno ? 0.55 * ss((z - 8.5) / 1.5) : 0);
+    // a fossa: acende em 'South' (500 ms); a meio tom no b5; sai no mergulho
+    // (sai com a pílula dela, em 26,567–26,867: no b5 o assunto passa às ilhas, e a pílula delas não fica sobre a linha da fossa)
+    var vf = eo(seg(t, T.fossa, 0.5)) * (1 - eio(seg(t, T.b5, 0.3)));
+    if (!sat) vf = 0;
+    opac("fossa-fill", "fill-opacity", vf * 0.35); opac("fossa-linha", "line-opacity", vf); opac("fossa-sob", "line-opacity", vf);
+    // as ilhas: acendem em 'islands' (500 ms) e saem antes de o zoom chegar a 8,3 (o Natural Earth descola da costa de perto)
+    var vi = sat ? eo(seg(t, T.ilhas, 0.5)) * (1 - eio(seg(t, T.ilhasSai, 0.35))) * (1 - ss((z - 7.8) / 0.5)) : 0;
+    opac("ilhas-fill", "fill-opacity", vi * 0.25); opac("ilhas-linha", "line-opacity", vi); opac("ilhas-sob", "line-opacity", vi);
+  }
+  function aplicarDom(t) {
+    aplicarVeu(t);
+    aplicarAnel(t);
+    aplicarArco(t);
+    aplicarCartoes(t);
+    aplicarRotulos(t);
+    aplicarMesa(t);
+    aplicarCreditos(t);
+  }
+  function aplicar(t) {
+    tUltimo = t;
+    if (!mapaCarregado) return;
+    aplicarMapa(t);
+    aplicarDom(t);
+  }
+
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+
+  // ═══ A ESPERA (a da s04, mais o DEM quando o relevo está ligado) ══════════════════════════════════════
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) { var ts = (sc[id] && sc[id]._tiles) || {}; for (var k in ts) if (ts[k] && ts[k].state === "errored") return id; }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou. O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!mapaCarregado || !map.areTilesLoaded() || map.isMoving()) return false;
+          if (tUltimo >= T.volta && (!map.getSource("base") || !map.isSourceLoaded("base"))) return false;
+          if (tUltimo >= T.terreno && (!map.isSourceLoaded("dem") || !map.getTerrain())) return false;
+          var fs = ["fossa", "ilhas", "atl", "caribe", "sul"].concat(PECAS_MUNDO.map(function (p) { return p.id; }));
+          for (var i = 0; i < fs.length; i++) if (!map.getSource(fs[i]) || !map.isSourceLoaded(fs[i])) return false;
+          return true;
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
+      (function tick() {
+        barrarTileComErro();
+        var ok = pronto(), cheio = false;
+        try { cheio = mapaCarregado && map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.triggerRepaint(); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) {
+          // com o DEM chegado, o map.project() da pílula presa à ilha muda: reposiciona o DOM no mesmo t antes da foto
+          try { aplicarDom(tUltimo); } catch (e) {}
+          return res(true);
+        }
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  // ═══ A CONFERÊNCIA (só leitura): as caixas no instante t, para a prévia do mapista ══════════════════
+  window.__medidas = function (t) {
+    if (t != null) window.__renderAt(t);
+    var out = { t: t, cam: cameraAt(t == null ? tUltimo : t), arcoFrac: +arcoFrac.toFixed(4), exagero: window.__exagero };
+    ["rotSeabed", "legSeabed", "rotFossa", "rotDist", "rotIlhas", "rotMichael", "cartaoA", "cartaoB", "vezes", "rotGeorgia", "fGrupo",
+     "crGebcoMundo", "crFoto", "crFonte", "crMapa"].forEach(function (id) {
+      var el = E(id); if (!el) return;
+      var op = +getComputedStyle(el).opacity; if (op < 0.01 || getComputedStyle(el).visibility !== "visible") return;
+      var r = el.getBoundingClientRect(); out[id] = [Math.round(r.left), Math.round(r.top), Math.round(r.right), Math.round(r.bottom), +op.toFixed(2)];
+    });
+    if (map && mapaCarregado) {
+      var c = pt(CENA.contato), m = pt(MICHAEL), a = pt(ANEL), mt = pt(METEOR);
+      out.contato = [Math.round(c.x), Math.round(c.y)]; out.michael = [Math.round(m.x), Math.round(m.y)];
+      out.anel = [Math.round(a.x), Math.round(a.y)]; out.meteor = [Math.round(mt.x), Math.round(mt.y)];
+      out.zoom = +map.getZoom().toFixed(3); out.pitch = +map.getPitch().toFixed(2);
+      var bb = function (fc) {
+        var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+        fc.features.forEach(function (f) { var g = f.geometry, ps = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+          ps.forEach(function (p) { p[0].forEach(function (q) { var s = pt(q); x0 = Math.min(x0, s.x); y0 = Math.min(y0, s.y); x1 = Math.max(x1, s.x); y1 = Math.max(y1, s.y); }); }); });
+        return [Math.round(x0), Math.round(y0), Math.round(x1), Math.round(y1)];
+      };
+      out.fossa = bb(FOSSA); out.ilhas = bb(ILHAS);
+    }
+    return out;
+  };
+  window.__veu = function () { return window.__veuConta || null; };
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__renderAt(0) || true;
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+</script>
+</body>
+</html>
