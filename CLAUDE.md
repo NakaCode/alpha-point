@@ -537,6 +537,14 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
     `Workflow`, quando a tarefa pede: várias frentes independentes, conferência adversarial de algo que vai ao ar ou à marca, ou
     volume que uma conversa não aguenta. Tarefa curta, conversa, conserto pontual e conta de disco, a Sala faz sozinha.
   - Isto decide o item "O ultracode ligado" do balanço depois do vídeo 3 (abaixo).
+- **A Sala recomeça a cada etapa** (Lucas, 29/10/2026, 09:5x, no chat da Sala).
+  - O contexto da Sala chegou a ~480 mil tokens, relidos a cada resposta, e uma semana inteira já não cobre um vídeo. À ideia de
+    recomeçar a Sala, ele respondeu: "se isso ajudar no consumo sem reduzir a qualidade do resultado eu também quero que faça".
+  - **Como:** num ponto calmo, sem desafio de setor no meio e de preferência depois de um `regie advance`, a Sala grava a passagem de
+    turno na memória do vídeo e se limpa (`clear_session` com `"self"`). A passagem diz os ids abertos, o que cada setor espera, o
+    próximo passo e as decisões ainda não registradas.
+  - A sessão continua a mesma, e os setores seguem conferindo o `from`. Sem a passagem gravada, a Sala não se limpa.
+  - Os agentes e os setores rodavam em "alto" (`high`) antes de 24/10. A Sala, o Lucas pôs em "máx".
 - **O ultracode, de 14/10 a 24/10/2026** (Lucas, 14/10/2026, 14:1x: "Manter ligado", às opções de desligá-lo com cético só no que
   importa ou de vez). Ele é a chave do Claude Code que faz a Sala montar equipe de agentes, com conferência, em quase toda
   tarefa (code.claude.com/docs/en/workflows). O dia que embasou a resposta, de 13/10, 23h, a 14/10, 14h, a preço de tabela: uns
