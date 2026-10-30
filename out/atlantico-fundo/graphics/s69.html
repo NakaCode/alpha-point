@@ -28,8 +28,15 @@
   contorno, Courier 700 a 84 px) e o CORPO (o trecho literal, Courier 400 a 86 px, 6 linhas de até 59 caracteres, com as quebras escritas
   no HTML: a Courier é monoespaçada e a quebra é determinística; a junção das 6 linhas por espaço devolve o literal do redator, conferido
   por quebrar.py). O cabeçalho mede 3.324 px numa linha a 84 px (medir.mjs), mais que o miolo da folha (3.048): vai em DUAS linhas na
-  caixa, com a quebra no espaço antes do "·" ("INTERNATIONAL HYDROGRAPHIC ORGANIZATION (IHO)" / "· RESOLUTION 02/2023"); nenhuma palavra
-  muda. Os dois pousam juntos, dentro do mesmo grupo (um objeto). Ritmo: 2 estreias (a folha e o crédito, em 0); textos vivos 0.
+  caixa, "INTERNATIONAL HYDROGRAPHIC ORGANIZATION (IHO)" / "RESOLUTION 02/2023", a forma escrita com "\n" no textos-tela (a texto-9, abaixo);
+  nenhuma palavra muda. Os dois pousam juntos, dentro do mesmo grupo (um objeto). Ritmo: 2 estreias (a folha e o crédito, em 0); textos vivos 0.
+
+  A QUEBRA SEM "·" (atlantico-fundo-arte-7, lote A6, 29/10/2026, editor-de-arte em Fable; textos-tela.json sha256 64c558cd…, a texto-9,
+  conserto 9; a regra de série "A QUEBRA DE LINHA": nenhuma linha começa nem termina com "·", e na quebra o "·" sai): o folha_cabecalho [362]
+  passou de "INTERNATIONAL HYDROGRAPHIC ORGANIZATION (IHO) · RESOLUTION 02/2023" (citado acima, do textos-tela b034414f…, que a cena
+  quebrava em "…(IHO)" / "· RESOLUTION 02/2023") a "INTERNATIONAL HYDROGRAPHIC ORGANIZATION (IHO)" / "RESOLUTION 02/2023". O ponto de
+  quebra é o mesmo, a 2ª linha só encurta pela esquerda (a caixa segue a 1ª linha, a mais larga, e não muda), e os tempos, as palavras, a
+  folha, os grifos, a câmera e o crédito ficam. Só a string TEXTOS.cab mudou no código.
 
   OS BEATS (tempo local = master − 621,267; palavras do words.json: The 0,003 · organization 0,148 · says 0,788 · the 1,068 · line 1,188 ·
   carries 1,508 · no 1,908 · political 2,068 · meaning, 2,548–2,883 · and 3,113 · not 3,348 · every 3,508 · country 3,828 · uses 4,148 · it.
@@ -343,7 +350,7 @@ areas (IHO S-130).</div>
   window.__duracao = DUR;
   // ═══ OS TEXTOS DE TELA (um lugar só; a grafia final é do redator-de-tela: textos-tela.json › _textos_por_cena s69) ═══
   var TEXTOS = {
-    cab: "INTERNATIONAL HYDROGRAPHIC ORGANIZATION (IHO)\n· RESOLUTION 02/2023",   // folha_cabecalho, 0–5,166 (em duas linhas na caixa: 3.324 px numa só; nenhuma palavra muda)
+    cab: "INTERNATIONAL HYDROGRAPHIC ORGANIZATION (IHO)\nRESOLUTION 02/2023",     // folha_cabecalho [362], 0–5,166, a forma da texto-9 (conserto 9): duas linhas na caixa, o mesmo ponto de quebra, SEM o "·" que começava a 2ª linha; nenhuma palavra muda
     cred: "Source: IHO Publication M-3, 2026"                                      // credito, 0–5,166
     // o corpo (folha_texto, literal) e os grifos (grifo_na_pagina) estão no HTML da folha, nas quebras de 59 caracteres
   };

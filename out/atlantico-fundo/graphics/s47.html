@@ -38,7 +38,10 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
        Atlântico, via Mediterrâneo); a partilha dos mares marginais é a da água na grade, não a lista da IHO, e por isso nenhum nome vai
        à tela. Só fontes que a cena já usava: a GEBCO mundo e o oceanos-ne;
     2. a borda em mar aberto (as divisas do NE: 20°E, 60°S, ~166°E a sudoeste da Nova Zelândia, Groenlândia–Islândia–Escócia, e as que a água
-       traça dentro de um mar marginal) esmaece em ~50 px no 4K, metade para cada lado; a costa fica nítida (o alfa é a cobertura de mar);
+       traça dentro de um mar marginal) esmaece em ~300 px no 4K, metade para cada lado (arte-7, espectador r3, lote 2: era ~50 px, e
+       com o Atlântico aceso sozinho a 20°E e a 60°S se liam como retas e a quina como caixa); a distância é euclidiana, pela água, e o
+       alfa dos cinco é partilhado (soma 1), o que tira o clarão das junções triplas no estado final e arredonda a quina de quem acende
+       sozinho; a costa fica nítida (o alfa é a cobertura de mar);
     3. o contraste: cada oceano sobe a 55 % em 200 ms e, quando o seguinte acende, assenta em 35 % (300 ms); o último fica a 55 %;
     4. a ordem: o Atlântico, o Índico e o Pacífico, depois o Antártico e o Ártico (a cada 0,2 s a partir de 'five', 32,342; o Ártico
        chega ao pico em 33,342). DECLARADO: o mundoFim não enquadra as duas faixas sem repetir o mundo. Para ver de ~80°N a ~70°S
@@ -522,12 +525,13 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
   // marginais, que o NE guarda como outras feições) herda, PELA ÁGUA (BFS 8-conexo, sementes na ordem dos pixels, o x dá a volta no
   // antimeridiano), o oceano que o alcança primeiro: o mar marginal vai com o oceano para onde ele abre; o mar sem passagem na grade (o
   // Negro e o Cáspio) fica apagado, com a costa natural; (3) a grade desce a 2048 (a cobertura de mar de cada 2 × 2 é o alfa da costa)
-  // e (4) a divisa entre dois oceanos, que só existe em mar aberto, esmaece em W = 25 células (~50 px no 4K a z 2,95–3,0), metade para
-  // cada lado, pela água (BFS 8-conexo dentro do mar rotulado): a costa fica nítida, e nenhuma borda reta dura sobra no mar.
+  // e (4) a divisa entre dois oceanos, que só existe em mar aberto, esmaece em W = 151 células (~300 px no 4K a z 2,95–3,0; arte-7, era
+  // 25), metade para cada lado, pela água (a semente mais próxima, em distância euclidiana, dentro do mar rotulado), com a partilha da
+  // unidade entre os cinco: a costa fica nítida, e nenhuma borda reta dura sobra no mar.
   // Determinístico: a mesma imagem e a mesma geometria dão os mesmos pixels. O protótipo (a mesma conta em Python, só leitura) está em
   // _tmp/arte-5/M2/proto_oceanos.py.
   function oceanosContinuos(im) {
-    var N = 4096, M = 2048, Wc = 25, R = 13;
+    var N = 4096, M = 2048, Wc = 151, R = 76;   // arte-7: W de 25 a 151 células (~300 px no 4K); R = W/2 + 1
     if (im.naturalWidth !== N || im.naturalHeight !== N) throw new Error("a GEBCO mundo não tem 4096 × 4096");
     var cv = document.createElement("canvas"); cv.width = N; cv.height = N;
     var x = cv.getContext("2d", { willReadFrequently: true });
@@ -588,30 +592,58 @@ fatiar.mjs sem mudar o texto: a câmera em Mercator, o van Wijk, o fundo da GEBC
       var t = document.createElement("canvas").getContext("2d"); t.fillStyle = COR.neutro; t.fillRect(0, 0, 1, 1);
       var d = t.getImageData(0, 0, 1, 1).data; return [d[0], d[1], d[2]];
     })();
-    var dist = new Uint8Array(MM), fc = new Int32Array(MM), telas = [];
-    var tmp = document.createElement("canvas"); tmp.width = M; tmp.height = M;
-    var tx = tmp.getContext("2d");
+    // arte-7 (espectador r3, lote 2): a rampa passa de W = 25 a W = 151 células (~300 px no 4K a z 2,95–3,0, ~150 para cada lado), com a
+    // distância EUCLIDIANA (cada célula guarda a semente mais próxima, pela água; a de passos 8-conexos fazia quina quadrada), e a
+    // PARTILHA DA UNIDADE: f_k' = f_k / soma(f). Na divisa de dois oceanos a soma já é ~1 e nada muda; na junção de três (20°E × 60°S,
+    // ~147°E × 60°S e ~67°W × 60°S) a soma ia a ~1,5, um clarão de ~300 px no estado final, e a quina de quem acende sozinho cai de 0,5 a
+    // ~1/3 (a quina se arredonda). Protótipo, a mesma conta em Python: _tmp/arte-7/A1/proto_normal.py.
+    var dist = new Float64Array(MM), sem = new Int32Array(MM), fila = new Int32Array(MM), naFila = new Uint8Array(MM), FK = [], telas = [];
     for (k = 1; k <= 5; k++) {
-      dist.fill(255);
-      var a = 0, b = 0, c2;
+      dist.fill(Infinity); naFila.fill(0);
+      var ini2 = 0, fim2 = 0, qtd = 0, c2;
       // as sementes dos dois lados da divisa: a célula de k com vizinho de outro oceano, e a célula de outro oceano com vizinho k
       for (c2 = 0; c2 < MM; c2++) {
         var l = labC[c2]; if (!l) continue;
         var toca = false;
         vizC(c2, function (q) { var lq = labC[q]; if (lq && ((l === k) !== (lq === k))) toca = true; });
-        if (toca) { dist[c2] = 0; fc[b++] = c2; }
+        if (toca) { dist[c2] = 0; sem[c2] = c2; naFila[c2] = 1; fila[fim2] = c2; fim2 = (fim2 + 1) % MM; qtd++; }
       }
-      while (a < b) {
-        var cc = fc[a++], dc = dist[cc], dentro = labC[cc] === k;
-        if (dc >= R) continue;
-        vizC(cc, function (q) { var lq = labC[q]; if (lq && (lq === k) === dentro && dist[q] > dc + 1) { dist[q] = dc + 1; fc[b++] = q; } });
+      // a semente mais próxima, pela água do mesmo lado (dentro de k, ou fora), até R; a fila é circular, e cada célula entra uma vez
+      // por vez (naFila); a distância só desce, e por isso o laço acaba
+      while (qtd > 0) {
+        var cc = fila[ini2]; ini2 = (ini2 + 1) % MM; qtd--; naFila[cc] = 0;
+        if (dist[cc] >= R) continue;
+        var dentro = labC[cc] === k, s0 = sem[cc], sy0 = (s0 / M) | 0, sx0 = s0 - sy0 * M, yc = (cc / M) | 0, xc = cc - yc * M;
+        for (var n = 0; n < 8; n++) {
+          var y2 = yc + DY[n]; if (y2 < 0 || y2 >= M) continue;
+          var x2 = (xc + DX[n] + M) % M, q = y2 * M + x2, lq = labC[q];
+          if (!lq || (lq === k) !== dentro) continue;
+          var ddx = Math.abs(x2 - sx0); if (ddx > M - ddx) ddx = M - ddx;
+          var ddy = y2 - sy0, dd = Math.sqrt(ddx * ddx + ddy * ddy);
+          if (dd < dist[q] - 1e-9) {
+            dist[q] = dd; sem[q] = s0;
+            if (!naFila[q]) { naFila[q] = 1; fila[fim2] = q; fim2 = (fim2 + 1) % MM; qtd++; }
+          }
+        }
       }
-      var img = tx.createImageData(M, M), d = img.data;
+      var fk = new Uint8Array(MM);
       for (c2 = 0; c2 < MM; c2++) {
-        var lc = labC[c2], f = 0;
-        if (lc === k) f = dist[c2] === 255 ? 1 : ss(0.5 + (dist[c2] + 0.5) / Wc);
-        else if (lc && dist[c2] !== 255) f = ss(0.5 - (dist[c2] + 0.5) / Wc);
-        var j = c2 * 4; d[j] = rgb[0]; d[j + 1] = rgb[1]; d[j + 2] = rgb[2]; d[j + 3] = Math.round(255 * f * cob[c2] / 4);
+        var lc = labC[c2], f = 0; if (!lc) continue;
+        if (lc === k) f = dist[c2] === Infinity ? 1 : ss(0.5 + (dist[c2] + 0.5) / Wc);
+        else if (dist[c2] !== Infinity) f = ss(0.5 - (dist[c2] + 0.5) / Wc);
+        fk[c2] = Math.round(255 * f);
+      }
+      FK.push(fk);
+    }
+    dist = null; sem = null; fila = null; naFila = null;
+    var tmp = document.createElement("canvas"); tmp.width = M; tmp.height = M;
+    var tx = tmp.getContext("2d");
+    for (k = 0; k < 5; k++) {
+      var img = tx.createImageData(M, M), d = img.data, fk2 = FK[k];
+      for (c2 = 0; c2 < MM; c2++) {
+        var soma = FK[0][c2] + FK[1][c2] + FK[2][c2] + FK[3][c2] + FK[4][c2];
+        var j = c2 * 4; d[j] = rgb[0]; d[j + 1] = rgb[1]; d[j + 2] = rgb[2];
+        d[j + 3] = soma ? Math.round(255 * (fk2[c2] / soma) * cob[c2] / 4) : 0;
       }
       tx.putImageData(img, 0, 0);
       var out = document.createElement("canvas"); out.width = M - 1; out.height = M - 1;   // nenhum lado em potência de 2 (a M1)

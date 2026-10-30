@@ -40,6 +40,15 @@
     · ficam: as opacidades (cada fonte entra e sai com o rótulo dela), os t0 e t1 do textos-tela (IHR 13,0–15,0; Jamieson 14,2–16,2;
       NOAA 15,4–18,6; Bongiovanni 18,5–20,0), no máximo 3 linhas, a licença de 0 a 13,0 e a GEBCO embaixo, parada, fora do escurecer.
     · fora: o opcional da L44 (a cota da faixa depois do "1964 · CREW").
+
+  A QUEBRA SEM "·" (tarefa atlantico-fundo-arte-7, lote A5, editor-de-arte em Opus, 29/10/2026; textos-tela 64c558cd…, a texto-9,
+  itens [410] e [412]; a qualidade-4 reprovou a cena por isso). O que mudou, e só isto: as duas strings quebram com "\n" e nenhuma
+  linha começa nem termina com "·":
+    · cFaixa (15,4–17,4): "~26,900–27,560 FT" / "(8,200–8,400 M)" / "FISH LIMIT" / "(NOAA ESTIMATE)" (era "(8,200–8,400 M) ·");
+    · cDec (18,5–20,0): "DECEMBER 2018" / "SONAR · 27,487 FT" (era "DECEMBER 2018 ·"), a forma da s67.
+    · ficam: as posições (as duas alinhadas à direita, na mesma âncora), as opacidades, os tempos e o resto da cena. A 1ª linha da cDec
+      só encurta, e a caixa da letra não desce à faixa do crédito (a medida: _tmp/arte-7/A5/medir-a5.mjs).
+    · onde o texto acima e abaixo diz outra forma destas duas cotas, vale este bloco.
   cleanDur = dur. Modo do espelho: desenho · Modelo da identidade: ANIMAÇÃO PARA EXPLICAR
   sobre a MESA DO VÍDEO 2 EM DIANTE (satélite sob a luz, §5; still mesa-porto-rico.png), no TRAÇO DE ENGENHEIRO, sobre o PERFIL REAL
   da GEBCO 2026. PICO (showpiece). Corte seco casado com s74: o anel em x 1700, y 760 (o último quadro de s74; _tmp/setores/arte-1/
@@ -376,12 +385,12 @@
     n5: "5,000", n10: "10,000", n15: "15,000", n20: "20,000", n25: "25,000 FT", // eixo, 7,0–20 ("5,000 · 10,000 · 15,000 · 20,000 · 25,000 FT")
     cChall: "HMS Challenger · 23,250 FT",                                  // cota, 13,0–15,0 (o navio em caixa normal: conserto 4)
     c1964: "1964 · CREW · ~24,000 FT",                                     // cota, 14,2–16,2
-    // cota, 15,4–17,4: a string do redator, quebrada em 4 linhas nos espaços (a mesma sequência de caracteres)
-    cFaixa: "~26,900–27,560 FT\n(8,200–8,400 M) ·\nFISH LIMIT\n(NOAA ESTIMATE)",
+    // cota, 15,4–17,4: a forma da texto-9 ([410]; textos-tela 64c558cd), em 4 linhas, sem "·" na ponta de nenhuma linha
+    cFaixa: "~26,900–27,560 FT\n(8,200–8,400 M)\nFISH LIMIT\n(NOAA ESTIMATE)",
     c1970: "1970 · NET · ~27,460 FT",                                      // cota, 16,6–18,6
-    // cota, 18,5–20: a string do redator ("DECEMBER 2018 · SONAR · 27,487 FT"), quebrada em 2 linhas num espaço (a mesma sequência de
-    // caracteres): numa linha só ela tem ~1.840 px e passaria da margem de 200 px
-    cDec: "DECEMBER 2018 ·\nSONAR · 27,487 FT",
+    // cota, 18,5–20: a forma da texto-9 ([412]; textos-tela 64c558cd), em 2 linhas, sem "·" na ponta de nenhuma linha (a forma da s67):
+    // numa linha só ela teria ~1.840 px e passaria da margem de 200 px
+    cDec: "DECEMBER 2018\nSONAR · 27,487 FT",
     credGebco: "GEBCO Compilation Group (2026) GEBCO 2026 Grid",           // credito, 0–20 (crédito de mapa)
     // credito, 0–13,0: em 2 linhas, a quebra depois de "license" (a mesma sequência de caracteres)
     credSS: "Image(s) and/or video used under license\nfrom Shutterstock.com",
