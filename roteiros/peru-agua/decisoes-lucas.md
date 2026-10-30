@@ -291,3 +291,12 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
 ## Publicado (Lucas, 24/10/2026, 15:5x, no chat da Sala)
 - **"Pronto, o vídeo foi publicado"**, depois de receber no chat o título, a descrição sem links, as tags, o comentário fixado e a miniatura A2. A
   linha fechou (`regie advance peru-agua done`: finalize → done; `out/peru-agua/linha.md`). O link não foi registrado.
+
+## A miniatura A3, depois de publicado (Lucas, 30/10/2026, 00:2x, no chat da Sala)
+- **O pedido**, junto da resposta sobre as embalagens novas de Los Angeles e do Panamá: "E eu quero trocar o texto na thumb do peru, quero algo
+  como "Não há água aqui?", mas somente o texto".
+- **A A3** (`base-A3.py`, os `miniatura-A3-1280.jpg` e `miniatura-A3-2560.jpg` nesta pasta): "NO WATER" / "HERE?", com WATER em `--agua`, como o
+  WATER da A2, e a seta até Lima, que é o "here". Todo o resto é a A2 (o diff entre os dois scripts mostra só o texto, o tamanho e os nomes de
+  saída). A pílula-herói ficou a 280 px: a 300, a 1ª linha cobria a ponta norte do Peru (2 % da pílula sobre o país; a 280, nada). Lê sem
+  esforço a 168×94 (conferido pela Sala na versão ampliada ×4), e o canto da duração continua livre.
+- Os `miniatura-1280.jpg` e `miniatura-2560.jpg` continuam sendo a A2, a que foi publicada. A troca no YouTube Studio é do Lucas.
