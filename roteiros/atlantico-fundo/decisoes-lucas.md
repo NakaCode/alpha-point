@@ -263,3 +263,24 @@ Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
   `_trilha-plano.json` (o `trilha.mjs --conferir` passa) e no `_creditos-trilha.md`.
   - **O volume.** À pergunta "O volume: a narração deste vídeo está mais baixa que o padrão do YouTube, como a do Peru. No XML, eu só regulo
     a música. Como fica a voz?": **"Subir a voz no Premiere (Recomendado)"**, como em Los Angeles, na Zona e no Peru.
+
+## A embalagem (30/10/2026, da 00:0x à 01:1x, no chat da Sala, com o Premiere exportando)
+- **O pedido:** "Estou renderizando, vamos preparar o pacote de thumb, descrição, título e etc". A Sala fez, no método do Peru, as miniaturas A
+  ("RIGHT HERE?", Porto Rico de cima com a fossa) e B ("5 MILES DOWN", o corte da descida), a descrição com o cético dos créditos e o
+  `verificador-de-fatos` (95 de 95, PASS; `qc-roteiro/fatos-descricao.laudo.md`).
+- **A miniatura C:** "Eu quero uma terceira que desperte curiosidade comparando com a da Marianas "Não é a das marianas", algo assim". A C é
+  "NOT THE MARIANA TRENCH" sobre o mundo pela GEBCO, com as Marianas riscadas e a seta até o ponto do Atlântico (a frase já era o exemplo de
+  `marca/embalagem.md`, e a voz a paga na 1ª fala: "When you think "deepest ocean," you think Mariana"). A banca das três
+  (`out/atlantico-fundo/_tmp/miniatura/banca-abc.md`) pôs a C em 1º, a A em 2º, perto, e a B em 3º, e sugeriu testar a A e a C.
+- **A A sem o nome:** "Acho que tirar o nome Puerto Rico da A". A A2 é a A sem a pílula "Puerto Rico" (o título guarda o lugar).
+- **A descrição mais curta:** "A descrição está MUITO grande, não?". A versão sem links foi de 4.687 para 2.938 caracteres: ficaram o 1º
+  parágrafo do gancho (com a pergunta do 2º), a pergunta do comentário, os capítulos e os créditos que as licenças pedem.
+- **O 3º título do teste:** "Quero uma terceira sugestão de título". Das três propostas da Sala, depois de pedir a tradução das duas primeiras:
+  **"Perfeito, vou com o 1"**, que é *What If Mount Everest Sat at the Bottom of the Atlantic?* (56 caracteres; a voz responde na 3ª frase,
+  aos 13,7 s: "Stand Mount Everest on the bottom, and its top 1,500 feet would stick out of the water").
+  - **O principal não muda:** "Ele vai ser de teste, o principal ainda é The Deepest Point in the Atlantic Ocean". No Studio, o título do
+    vídeo é *The Deepest Point in the Atlantic Ocean*; *…Is Only 83 Miles From a U.S. Island* e *What If Mount Everest Sat at the Bottom of
+    the Atlantic?* entram como variantes do teste.
+- **A miniatura:** à pergunta "Se o teste dos três títulos usar uma miniatura só, eu iria de C (…). Se der para testar miniaturas também, a
+  sugestão continua sendo a A sem o nome e a C. Qual vai?": **"A e C"**. Vão ao teste a A2 (a A sem o nome) e a C. Os arquivos, os scripts e a
+  banca estão em `roteiros/atlantico-fundo/miniatura/` (`miniatura-A2-1280.jpg` e `miniatura-C-1280.jpg` são os que sobem ao Studio).
