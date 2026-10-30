@@ -256,3 +256,10 @@ Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
     - O render 4K das 37 aprovadas sem clipe começou às 22:55.
   - **As músicas.** À pergunta "Posso baixar as músicas da lista que te mandei às 21h30?": **"Quero ouvir antes"**. A lista `ed73bcaa3b55`
     espera a escuta dele.
+- **A trilha (23:0x).** Depois de ouvir: **"Aprovo às 3 primeiras preferidas, o trecho 4 deve seguir com a música 11"**. O `baixar` do
+  canal recusou a mensagem como ambígua ("aprova a(s) linha(s) 3"), e a Sala confirmou os números: à pergunta "Para baixar, confirmo os
+  números da lista: a 1 (In Our House), a 2 (We Are the Visitors), a 3 (Baby's Room) e a 11 (Aureole Of Hope, no trecho 4, no lugar da
+  Domestic). Está certo?": **"Sim, 1, 2, 3 e 11 (Recomendado)"**. As 4 foram baixadas, com a duração igual à do Epidemic, e estão no
+  `_trilha-plano.json` (o `trilha.mjs --conferir` passa) e no `_creditos-trilha.md`.
+  - **O volume.** À pergunta "O volume: a narração deste vídeo está mais baixa que o padrão do YouTube, como a do Peru. No XML, eu só regulo
+    a música. Como fica a voz?": **"Subir a voz no Premiere (Recomendado)"**, como em Los Angeles, na Zona e no Peru.
