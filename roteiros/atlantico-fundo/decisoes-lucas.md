@@ -284,3 +284,8 @@ Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
 - **A miniatura:** à pergunta "Se o teste dos três títulos usar uma miniatura só, eu iria de C (…). Se der para testar miniaturas também, a
   sugestão continua sendo a A sem o nome e a C. Qual vai?": **"A e C"**. Vão ao teste a A2 (a A sem o nome) e a C. Os arquivos, os scripts e a
   banca estão em `roteiros/atlantico-fundo/miniatura/` (`miniatura-A2-1280.jpg` e `miniatura-C-1280.jpg` são os que sobem ao Studio).
+
+## Programado (30/10/2026, 10:1x, no chat da Sala)
+- **"programei o vídeo do atlântico para 12:00 PM no horário de nova york"**, depois de receber no chat os títulos, a descrição curta, as tags, o
+  comentário fixado e as miniaturas A2 e C. Ao meio-dia de Nova York, ainda no horário de verão (EDT, UTC−4, até 01/11/2026), são 13h de
+  Brasília; a data não veio na mensagem. A linha fechou (`regie advance atlantico-fundo done`: finalize → done; `out/atlantico-fundo/linha.md`).
