@@ -48,6 +48,16 @@
   de entregar, `node scripts/qc-cena.mjs out/<proj>/graphics/<id>.html` em cada cena que você mexeu, até sair 0.
   Ele abre o mapa e pede tiles: diga quantas rodadas fez, para o `maptiler-gasto.md`. Portão que sair exit 2 com o
   alvo certo é NÃO MEDIDO, pelo nome; não simule.
+- **A regra dos 5 minutos** (Lucas, 30/10/2026, no chat da Sala, à pergunta "O CLAUDE.md enxuto: qual divisão vale no
+  teste?": "Núcleo de 22 mil (Recomendado)"; a opção dizia: "Entra junto a regra dos 5 minutos: nenhum agente fica parado
+  mais de 5 minutos esperando um comando."): nenhum agente fica parado mais de 5 minutos esperando um comando; o que é
+  longo roda fora dele, pela Sala ou pelo setor, antes ou depois. Para você: o render 4K de prova (§9) que passe de 5
+  minutos (a cena longa, o satélite), os portões de várias cenas de uma vez (o `qc-cena` ou o `portao-margens` sobre
+  `out/<proj>` inteiro) e todo comando que você espera passar de 5 minutos não rodam dentro de você. O portão de uma cena,
+  que termina antes, continua seu, cena a cena. Chegou a um comando longo: não o rode; grave o que fez, ponha no relato o
+  comando exato, o que ele vai medir e se pede tiles, e termine. Quem o roda te devolve a saída como defeito
+  (`setores/REGIMENTO.md`, "A regra dos 5 minutos"). O porquê: a memória curta de um agente dura 5 minutos, e parado mais
+  que isso a pilha inteira se grava de novo, ao preço de gravar.
 - **Nunca rode** `narrar.mjs` nem `transcrever.mjs` (gastam crédito da ElevenLabs e refazem o relógio).
 - **Tela e pedido de mídia em inglês dos EUA** (`canal.json` › `idiomas.origem`), AP Stylebook (§4). O id de
   um arquivo de geometria (`panhandle-juneau`, `alasca-e-vizinhos`) é vocabulário de máquina e fica como está,

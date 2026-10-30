@@ -5,7 +5,9 @@ Desde 12/10/2026, do vídeo 3 em diante.
 - **Quem edita:** só a Sala de controle.
 - **Se este arquivo e o `CLAUDE.md` divergirem,** vale o `CLAUDE.md` lido do disco, e o setor para e avisa a Sala de
   controle. A cópia do `CLAUDE.md` que a conversa tem no contexto pode ser anterior a esta seção: o setor lê a seção "Os
-  setores" do disco.
+  setores" do disco. Desde 30/10/2026, o `CLAUDE.md` é o núcleo (o CLAUDE.md enxuto, em teste; Lucas, no chat da Sala: "Núcleo
+  de 22 mil (Recomendado)"), e o que a seção "Os setores" tinha e não ficou no núcleo mudou, palavra por palavra, para
+  `sala/setores.md`: o setor lê as duas do disco, e as duas valem aqui como o `CLAUDE.md`.
 
 ## O pedido do Lucas
 
@@ -174,6 +176,8 @@ O setor usa só:
     Peru, com a regra no pedido). A linha vai no começo do pedido, não no fim. Desde 24/10/2026, um verificador do
     `.claude/settings.json` recusa esse comando antes de rodar (`ferramentas/trava-python.mjs`; CLAUDE.md, "Os setores"): a
     recusa volta à peça com o jeito certo, e a linha no pedido continua;
+  - **a regra dos 5 minutos** ("A regra dos 5 minutos", abaixo): o que, naquela tarefa, roda fora da peça, e que comando longo
+    ela não roda;
   - o fim: um relato, sem commit, sem `regie`, sem Discord ou Telegram.
 - **O setor só repassa o que é da Sala.** Não grava exceção, não pergunta ao Lucas em nome da Sala e não decide o que o
   ofício dá ao Claude central: leva à Sala o que a peça pediu.
@@ -185,6 +189,29 @@ O setor usa só:
   Com 80 % ou mais do semanal, ele para e avisa a Sala, a menos que o pedido traga o ok do Lucas para seguir.
 - **O defeito volta à peça** pelo `SendMessage` ao subagente, se ele ainda estiver vivo, ou por um despacho novo com a lista
   do defeito.
+
+### A regra dos 5 minutos (desde 30/10/2026)
+
+O Lucas, no chat da Sala, em 30/10/2026, à pergunta "O CLAUDE.md enxuto: qual divisão vale no teste?": "Núcleo de 22 mil
+(Recomendado)". A opção dizia: "Guarda palavra por palavra toda regra que os agentes usam, e o resto vai para os arquivos da
+Sala. Economiza uns 9 % do total. Entra junto a regra dos 5 minutos: nenhum agente fica parado mais de 5 minutos esperando um
+comando." É regra que aperta: vale quando a Sala manda o setor reler este arquivo ("Mudança deste arquivo", acima).
+
+- **A regra:** nenhum agente fica parado mais de 5 minutos esperando um comando; o que é longo roda fora dele, pela Sala ou
+  pelo setor, antes ou depois.
+- **O porquê:** a memória curta de um agente (o cache) dura 5 minutos. Parado mais que isso, esperando um render ou uma rodada
+  de portões, a memória vence, e a pilha inteira dele se grava de novo, ao preço de gravar. Na medida de 29/10, regravar a
+  pilha custou 11 % dos agentes, e 38 % desse valor veio de esperas de mais de 5 minutos por um comando (página "Dois caminhos
+  para a cota", item 2; `out/_modelos/esforco-2026-10-29/pagina-dois-caminhos.html`).
+- **O que é longo:** o render 4K de prova que passe de 5 minutos (a cena longa, o mapa com satélite), os portões de várias cenas de uma vez (o `qc-cena` ou o
+  `portao-margens` sobre `out/<proj>` inteiro, uma rodada com a pré-carga em lote) e todo comando que a peça espera passar de
+  5 minutos. O portão de uma cena, que termina antes disso, continua com a peça, cena a cena.
+- **A peça que chega a um comando longo não o roda:** grava o que fez, põe no relato o comando exato e o que ele vai medir, e
+  termina.
+- **O setor roda o que é longo** antes de despachar a peça (por exemplo, os portões das cenas que ela vai consertar) ou depois
+  que ela devolve, com os avisos de `out/_maquina/` e as liberações do pedido, e manda a saída de volta à peça como defeito
+  ("O defeito volta à peça", acima). O que o setor não pode rodar (o render 4K de entrega e o que nunca sai da Sala, abaixo)
+  ele devolve à Sala.
 
 ### O `qc-visual`: o orçamento de imagens (M11, mantido no balanço de 24/10/2026)
 

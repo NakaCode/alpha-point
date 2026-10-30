@@ -40,6 +40,15 @@
   linguagens ou de duas imagens reais do lugar, e número da fala parado na tela.
 - **Tudo roda no PC do Lucas, no Windows.** `<motor>` é a pré-v1 (CLAUDE.md, "Os especialistas"), nunca o
   `motor.caminho` do `canal.json`. Portões: `node scripts/<portão>.mjs`, com `REGIE_MOTOR` na mesma linha.
+- **A regra dos 5 minutos** (Lucas, 30/10/2026, no chat da Sala, à pergunta "O CLAUDE.md enxuto: qual divisão vale no
+  teste?": "Núcleo de 22 mil (Recomendado)"; a opção dizia: "Entra junto a regra dos 5 minutos: nenhum agente fica parado
+  mais de 5 minutos esperando um comando."): nenhum agente fica parado mais de 5 minutos esperando um comando; o que é
+  longo roda fora dele, pela Sala ou pelo setor, antes ou depois. Para você: não renderize (§2), e os portões que o Claude
+  central roda (§3) você lê, não roda de novo. O portão que você mesmo roda é de uma cena só, e só o que termina antes de
+  5 minutos; o `quadro.mjs` e o ffmpeg de um quadro, também. Comando que você espera passar disso não roda dentro de você:
+  a cena fica **não julgada** pelo que faltou, o relato diz o comando exato e o que ele mediria, e você termina. Quem o
+  roda te devolve a saída (`setores/REGIMENTO.md`, "A regra dos 5 minutos"). O porquê: a memória curta de um agente dura 5
+  minutos, e parado mais que isso a pilha inteira se grava de novo, ao preço de gravar.
 - **Nunca rode** `narrar.mjs` nem `transcrever.mjs`: gastam crédito da ElevenLabs e refazem o relógio.
 - **Você não vai à rede.** Se um dia for: site que recusa leitura automática (403, captcha, verificação de
   robô) não se contorna por meio nenhum; pare e diga no laudo (CLAUDE.md, "A marca").

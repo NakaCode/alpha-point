@@ -3,6 +3,13 @@
 
 Uso, da raiz do canal:
     python -X utf8 -B out/_modelos/md-enxuto/conferir-divisao.py [--previa=<pasta>]
+    python -X utf8 -B out/_modelos/md-enxuto/conferir-divisao.py --aplicado
+
+Com --aplicado (depois do ok do Lucas, 30/10/2026, e da divisão feita), a origem é a cópia `sala/CLAUDE-completo.md`, o
+núcleo é o `CLAUDE.md` e os arquivos da Sala são os de `sala/`, todos lidos do disco. O que a aplicação pôs a mais (a frase
+da nota do topo, o registro da decisão) está declarado em `aplicacao.json`, com o texto exato em `aplicacao/`; além das
+conferências abaixo, ele confere byte a byte que o `CLAUDE.md` é o rascunho com esses acréscimos, e que cada arquivo de
+`sala/` é o que a prévia monta, mais o acréscimo declarado no fim, e nada mais.
 
 Só lê o CLAUDE.md, o mapa-de-linhas.json e o CLAUDE-nucleo-rascunho.md. Não usa o montar-rascunho.py: a conta é feita de
 novo, do zero. Confere:
@@ -35,6 +42,8 @@ PASTA = os.path.join(RAIZ, 'out', '_modelos', 'md-enxuto')
 ORIGEM = os.path.join(RAIZ, 'CLAUDE.md')
 MAPA = os.path.join(PASTA, 'mapa-de-linhas.json')
 NUCLEO = os.path.join(PASTA, 'CLAUDE-nucleo-rascunho.md')
+RASCUNHO = NUCLEO  # o rascunho aprovado; com --aplicado, NUCLEO passa a ser o CLAUDE.md
+APLICACAO = os.path.join(PASTA, 'aplicacao.json')
 
 # Aspas que casam com o nome de um assunto, mas não o citam (a resposta do Lucas sobre o Programa de Parcerias).
 NAO_E_CITACAO = {'Ainda não'}
@@ -96,6 +105,18 @@ def main():
     linhas = sem_quebra(texto)
     cpt = mapa.get('chars_por_token', 2.2)
 
+    # os acréscimos da aplicação (só com --aplicado): o texto exato de cada um, lido de aplicacao/
+    acr_nucleo = []   # (id, depois_de, texto)
+    acr_sala = {}     # destino -> texto
+    if aplicado:
+        aplic = json.loads(ler(APLICACAO))
+        for a in aplic.get('nucleo', []):
+            acr_nucleo.append((a['id'], a['depois_de'], ler(os.path.join(PASTA, a['arquivo'].replace('/', os.sep)))))
+        for a in aplic.get('sala', []):
+            if a['destino'] in acr_sala:
+                falha(f'aplicacao.json: dois acréscimos para {a["destino"]}')
+            acr_sala[a['destino']] = ler(os.path.join(PASTA, a['arquivo'].replace('/', os.sep)))
+
     def tok(c):
         return round(c / cpt)
 
@@ -143,7 +164,31 @@ def main():
     # 4. o núcleo
     nucleo_ids = [b['id'] for b in blocos if b['destino'] == 'nucleo']
     novos = {n['id']: n['texto'] for n in mapa.get('nucleo_novo', [])}
-    ordem = mapa.get('nucleo_ordem', [])
+    n_novos_mapa = len(novos)
+    ordem = list(mapa.get('nucleo_ordem', []))
+    if aplicado:
+        # cada acréscimo da aplicação entra logo depois do texto novo que ele declara, e o CLAUDE.md tem de ser,
+        # byte a byte, o rascunho aprovado com esses acréscimos
+        esperado_nucleo = ler(RASCUNHO)
+        for aid, depois, txt in acr_nucleo:
+            if aid in novos or aid in por_id:
+                falha(f'aplicacao.json: o id {aid} já existe no mapa')
+                continue
+            if depois not in novos or depois not in ordem:
+                falha(f'aplicacao.json: {aid} vem depois de {depois}, que não é texto novo do núcleo')
+                continue
+            ordem.insert(ordem.index(depois) + 1, aid)
+            novos[aid] = txt
+            ancora = novos[depois].rstrip('\n')
+            if esperado_nucleo.count(ancora) != 1:
+                falha(f'aplicacao.json: o texto de {depois} não aparece uma vez só no rascunho')
+                continue
+            esperado_nucleo = esperado_nucleo.replace(ancora, ancora + '\n' + txt.rstrip('\n'), 1)
+        if rascunho != esperado_nucleo:
+            p = next((j for j, (x, y) in enumerate(zip(rascunho, esperado_nucleo)) if x != y),
+                     min(len(rascunho), len(esperado_nucleo)))
+            falha(f'o CLAUDE.md não é o rascunho com os acréscimos declarados: difere no caractere {p + 1} '
+                  f'(está «{rascunho[max(0, p - 30):p + 30]}», devia «{esperado_nucleo[max(0, p - 30):p + 30]}»)')
     blocos_na_ordem = [x for x in ordem if x in por_id]
     if sorted(blocos_na_ordem) != sorted(nucleo_ids) or len(set(blocos_na_ordem)) != len(blocos_na_ordem):
         falha('a nucleo_ordem não traz cada bloco do núcleo exatamente uma vez')
@@ -251,7 +296,25 @@ def main():
                 falha(f'{b["id"]} ({a}-{z}, vai para {b["destino"]}) cita «{nome}», que está em '
                       f'{destino_da_linha(alvo)}, e o núcleo não diz onde')
 
-    # 7. a prévia
+    # 7. a prévia (e, com --aplicado, os arquivos de verdade contra a mesma montagem)
+    def montar_sala(d, info):
+        saida = [f'# `{d}`, da Sala de controle', '',
+                 'Veio do `CLAUDE.md` na divisão do CLAUDE.md enxuto, palavra por palavra (o mapa: '
+                 '`out/_modelos/md-enxuto/mapa-de-linhas.json`). O núcleo, com o índice, é o `CLAUDE.md`; o completo de antes, '
+                 '`sala/CLAUDE-completo.md`.', '', info['papel'], '']
+        secao = None
+        for b in blocos:
+            if b['destino'] != d:
+                continue
+            a, z = b['linhas']
+            trecho = linhas[a - 1:z]
+            primeira = next((l for l in trecho if l.strip()), '')
+            if b['secao_origem'] != secao and not primeira.startswith('#'):
+                saida += ['', f'## {b["secao_origem"]} (do CLAUDE.md)', '']
+            secao = b['secao_origem']
+            saida += trecho
+        return '\n'.join(saida).rstrip('\n') + '\n'
+
     if previa:
         previa = os.path.abspath(previa)
         if os.path.commonpath([previa, RAIZ]) == RAIZ and not previa.startswith(PASTA):
@@ -265,24 +328,37 @@ def main():
         for d, info in arquivos.items():
             if d == 'nucleo':
                 continue
-            saida = [f'# `{d}`, da Sala de controle', '',
-                     'Veio do `CLAUDE.md` na divisão do CLAUDE.md enxuto, palavra por palavra (o mapa: '
-                     '`out/_modelos/md-enxuto/mapa-de-linhas.json`). O núcleo, com o índice, é o `CLAUDE.md`; o completo de antes, '
-                     '`sala/CLAUDE-completo.md`.', '', info['papel'], '']
-            secao = None
-            for b in blocos:
-                if b['destino'] != d:
-                    continue
-                a, z = b['linhas']
-                trecho = linhas[a - 1:z]
-                primeira = next((l for l in trecho if l.strip()), '')
-                if b['secao_origem'] != secao and not primeira.startswith('#'):
-                    saida += ['', f'## {b["secao_origem"]} (do CLAUDE.md)', '']
-                secao = b['secao_origem']
-                saida += trecho
             caminho = os.path.join(previa, d.replace('/', os.sep))
             with open(caminho, 'w', encoding='utf-8', newline='\n') as f:
-                f.write('\n'.join(saida).rstrip('\n') + '\n')
+                f.write(montar_sala(d, info))
+    shas = {}
+    if aplicado:
+        # cada arquivo de sala/ é, byte a byte, o que a prévia monta, mais o acréscimo declarado no fim, e nada mais
+        for d in acr_sala:
+            if d not in arquivos or d == 'nucleo':
+                falha(f'aplicacao.json: acréscimo para {d}, que não é arquivo da Sala no mapa')
+        for d, info in arquivos.items():
+            if d == 'nucleo':
+                continue
+            caminho = os.path.join(RAIZ, d.replace('/', os.sep))
+            if not os.path.exists(caminho):
+                continue  # a falta sai abaixo, na releitura
+            bruto = open(caminho, 'rb').read()
+            shas[d] = hashlib.sha256(bruto).hexdigest()
+            esperado_sala = montar_sala(d, info) + acr_sala.get(d, '')
+            if bruto.decode('utf-8') != esperado_sala:
+                obtido_sala = bruto.decode('utf-8')
+                p = next((j for j, (x, y) in enumerate(zip(obtido_sala, esperado_sala)) if x != y),
+                         min(len(obtido_sala), len(esperado_sala)))
+                falha(f'{d} não é a montagem do mapa mais o acréscimo declarado: difere no caractere {p + 1} '
+                      f'(está «{obtido_sala[max(0, p - 30):p + 30]}», devia «{esperado_sala[max(0, p - 30):p + 30]}»)')
+        conhecidos = {d for d in arquivos if d != 'nucleo'} | {'sala/CLAUDE-completo.md'}
+        for f in sorted(glob.glob(os.path.join(RAIZ, 'sala', '*'))):
+            rel = 'sala/' + os.path.basename(f)
+            if rel not in conhecidos:
+                falha(f'{rel} está em sala/ e não é arquivo do mapa')
+        shas['CLAUDE.md'] = hashlib.sha256(open(os.path.join(RAIZ, 'CLAUDE.md'), 'rb').read()).hexdigest()
+        shas['sala/CLAUDE-completo.md'] = hashlib.sha256(open(ORIGEM, 'rb').read()).hexdigest()
     lida = previa or (RAIZ if aplicado else None)
     if lida:
         # relê os arquivos (os da prévia, ou os de verdade com --aplicado) e confere linha a linha, por arquivo
@@ -315,8 +391,10 @@ def main():
         por_dest[b['destino']] += c
         por_cat[(b['categoria'], 'núcleo' if b['destino'] == 'nucleo' else 'sala')] += c
     print(f'CLAUDE.md de hoje: {len(linhas)} linhas ({nao_vazias} não vazias), ~{tok(len(texto))} tokens')
-    print(f'blocos: {len(blocos)}; no núcleo, {len(nucleo_ids)} blocos e {len(novos)} trechos de texto novo')
-    print(f'núcleo (o rascunho inteiro): ~{tok(len(rascunho))} tokens; das linhas de hoje, ~{tok(por_dest["nucleo"])}; '
+    print(f'blocos: {len(blocos)}; no núcleo, {len(nucleo_ids)} blocos e {n_novos_mapa} trechos de texto novo'
+          + (f', mais {len(acr_nucleo)} acréscimo(s) da aplicação' if aplicado else ''))
+    print(f'núcleo ({"o CLAUDE.md aplicado" if aplicado else "o rascunho inteiro"}): {len(rascunho)} caracteres, '
+          f'~{tok(len(rascunho))} tokens; das linhas de hoje, ~{tok(por_dest["nucleo"])}; '
           f'texto novo, ~{tok(len(rascunho) - por_dest["nucleo"])} (alvo da página: uns {mapa.get("alvo_nucleo_tokens", 15000)})')
     for d in sorted(por_dest, key=lambda k: -por_dest[k]):
         if d != 'nucleo':
@@ -327,6 +405,9 @@ def main():
         print(f'prévia gravada e relida em {previa}')
     if aplicado:
         print('aplicado: o CLAUDE.md (núcleo), os arquivos de sala/ e a cópia completa relidos do disco')
+        print(f'acréscimos declarados: {len(acr_nucleo)} no núcleo, {len(acr_sala)} em sala/ (aplicacao.json)')
+        for d in sorted(shas, key=lambda k: (k != 'CLAUDE.md', k)):
+            print(f'  sha256 {shas[d]}  {d}')
 
     if problemas:
         print(f'\n{len(problemas)} problema(s):')

@@ -55,6 +55,16 @@
   chamada) em cada cena que você mexeu, e conserte até sair 0; no relato, a saída de cada uma. Portão que sair
   exit 2 com o alvo certo é NÃO MEDIDO, pelo nome. Não simule, não chame de verde. Cena com mapa no `qc-cena`
   pede tiles: diga quantas rodadas fez, para o `maptiler-gasto.md`.
+- **A regra dos 5 minutos** (Lucas, 30/10/2026, no chat da Sala, à pergunta "O CLAUDE.md enxuto: qual divisão vale no
+  teste?": "Núcleo de 22 mil (Recomendado)"; a opção dizia: "Entra junto a regra dos 5 minutos: nenhum agente fica parado
+  mais de 5 minutos esperando um comando."): nenhum agente fica parado mais de 5 minutos esperando um comando; o que é
+  longo roda fora dele, pela Sala ou pelo setor, antes ou depois. Para você: o render 4K de prova que passe de 5 minutos
+  (§11; a cena longa, o mapa com satélite), os portões de várias cenas de uma vez (o `qc-cena` ou o `portao-margens`
+  sobre `out/<proj>` inteiro) e todo comando que você espera passar de 5 minutos não rodam dentro de você. O portão de
+  uma cena, que termina antes, continua seu, cena a cena (o "antes de entregar", acima). Chegou a um comando longo: não o rode; grave o que fez, ponha no relato
+  o comando exato e o que ele vai medir, e termine. Quem o roda te devolve a saída como defeito (`setores/REGIMENTO.md`,
+  "A regra dos 5 minutos"). O porquê: a memória curta de um agente dura 5 minutos, e parado mais que isso a pilha inteira
+  se grava de novo, ao preço de gravar.
 - **Nunca rode** `narrar.mjs` nem `transcrever.mjs`: gastam crédito da ElevenLabs e refazem o relógio
   (CLAUDE.md). Onde o ofício manda "o relógio sai do transcrever", aqui ele já vem pronto.
 - **Você não vai à rede.** Mídia vem das pesquisas. Site que recusa leitura automática (403, captcha,
