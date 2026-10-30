@@ -222,3 +222,13 @@ Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
     traço vermelho). Como fica?": **"Anos e o coral desenhado (Recomendado)"**. A opção dizia: "A régua ganha os anos, o traço vermelho
     ganha a data, e ao lado entra um desenho do bloco de coral que a onda jogou, que é o que os cientistas dataram. A régua da s45, que tem o
     mesmo problema, ganha os anos também."
+
+## A noite de 29/10/2026, no chat da Sala
+
+- **A cota, de novo (21:0x).** Sem pergunta da Sala, logo depois de ela contar quanto faltava até o XML (com o semanal a 70 % às 20:50 e
+  o freio em 80 %): **"o freio pode ser até 90%, 10% devem ficar para finalizarmos o pacote se necessário"**.
+  - **O que muda:** neste vídeo, o freio do semanal sobe de 80 % para 90 %. Os consertos, as conferências e as revisões seguem até 90 %.
+    De 90 % a 100 %, só entra o que for preciso para fechar o pacote: o render 4K, o XML e o pacote do Premiere.
+  - Nos pedidos aos setores, o freio vai a 85 %, com a mesma folga de 5 pontos de antes. A Sala para tudo o que não é o pacote em 90 % e
+    avisa o Lucas. O freio de 85 % da janela de 5 h fica.
+  - Às 21:05, o semanal estava em 71 %.
