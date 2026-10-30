@@ -1,27 +1,29 @@
 {
   "cena": "s75",
   "aprovado": false,
-  "motivo": "REPROVA em espaco (nota 6): texto sobre texto na faixa de crédito, em dois cruzamentos da pilha (a \"Source: International Hydrographic Review, 1936\" que sai por baixo de \"Source: Jamieson et al., 2020\" em ~14,3–14,7 s, e a Jamieson que sai por baixo de \"Source: NOAA Ocean Exploration, 2026\" em ~16,0–16,3 s). Defeito novo da arte-4 (as fontes da cauda uma a uma). Sem ele, todas as outras lentes são ≥ 7 e a cena aprovaria: a linha do Shutterstock saiu e está na faixa. gatesDuros vazio: a exceção do crédito a 60 px vale no sha1 de hoje.",
+  "motivo": "REPROVA em espaco (nota 6) por uma lei da casa: a regra de série da texto-7/texto-8 (\"nenhuma linha começa nem termina com ·\", inclusive na quebra pela largura; textos-tela._regras_de_serie, sala-decisoes-qualidade-3.md item 7). Duas linhas da s75 terminam em \"·\": \"(8,200–8,400 M) ·\" (a cota da faixa, 15,4–17,4 s) e \"DECEMBER 2018 ·\" (a cota do sonar, 18,5–20 s), ambas improvisadas no HTML (cFaixa e cDec) e fora da lista \"Hoje quebram\" da regra. O conserto é de duas strings. O que a qualidade-3 pediu saiu: a pilha das fontes da cauda não tem nenhuma sobreposição (0 de 13 recortes 4K) e a entrada de 0 a 0,23 s está limpa. As outras 13 lentes são >= 7. gatesDuros vazio: a exceção do crédito a 60 px vale no sha1 de hoje.",
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
       "nota": 6,
       "problemas": [
-        "PORTÕES LIDOS (sha1 8b602bff94ab = o HTML de hoje): _portao.json falha só em tamanho (os 5 créditos a 60 px; mapa-vivo fora, regra); portao-margens 0 (18 itens medidos, 0 em passagem); portao-mapa til v5 0 e rodape v5 0 (o aviso de 3,32:1 em 14,5 s passa). Exceção do Lucas: qc-tamanho, 5 créditos a 60<72, no sha1 igual (\"60 px (Recomendado)\", 24/10/2026; identidade §4.1). O portão de colisão passou (qc-cena sem falha), mas não pega os dois cruzamentos abaixo: a prova está nos quadros. Lido, não remedido.",
-        "REPROVA: texto sobre texto na faixa de crédito, em dois cruzamentos da pilha de fontes. Lei: ofício, lente espaco (\"texto sobre texto em qualquer frame\"); identidade §4.2 (dois assets no quadro dão duas linhas empilhadas, e a do antigo só sai quando o asset dele sai). Prova, recortes 4K da faixa (q3-L44-s75-pilha-cruzamentos.png, quadros de 14,4, 14,5, 14,7, 16,1 e 16,3 s; q3-L44-s75-t14.5-credito.png): (1) em ~14,4–14,6 s a \"Source: International Hydrographic Review, 1936\", a ~35 % de opacidade, está sob a \"Source: Jamieson et al., 2020\" a 100 %: as duas linhas se interpenetram, com as letras de uma sobre as da outra (em 14,5 s, mais de metade da altura da linha); (2) em ~16,0–16,3 s a \"Source: Jamieson et al., 2020\", que está saindo, fica sob a \"Source: NOAA Ocean Exploration, 2026\" inteira (quadro de 16,1 s: as duas se sobrepõem no trecho comum). Cada cruzamento dura uns 0,3 s. Causa, no HTML (creditos(), l. ~606): cada linha desce pela soma das alturas das de baixo pesadas pela opacidade, e a linha que sai continua desenhada onde a de cima chega, ainda com opacidade. A linha de cima fica legível; o que reprova é a colisão visível, que o gate de colisão não amostrou.",
-        "O conserto da arte-4 saiu para o que a qualidade-2 pediu (a linha do Shutterstock, as quatro fontes uma a uma, a cota do sonar em duas linhas) e o resto do quadro está limpo: o canto de 400 × 400 livre, a metade direita livre para os botões, e a pilha de no máximo 3 linhas, fora da zona da peça do comentário (o topo da faixa em y ~1930, a mais de 180 px da caixa de 1,0 a 7,0 s).",
-        "SINALIZA (já registrado na qualidade-2): a faixa dos peixes e o perfil terminam em corte vertical seco em x ~1918 (de 16,5 s ao fim); a metade direita fica livre, mas a aresta se lê como corte. O \"·\" da cota da faixa fica perto do anel (15,5 s), sem tocar."
+        "PORTÕES LIDOS (sha1 c950efa09e74 = o HTML de hoje): _portao.json falha só em tamanho (os 5 créditos a 60 px) e mapa-vivo fica fora (regra); portao-margens 0 (201 amostras, 18 medidos, 0 em passagem, sha1 de hoje); til e rodape v5 0 (relato da arte-5). Exceção do Lucas: qc-tamanho, 5 créditos a 60<72, \"60 px (Recomendado)\", 24/10/2026, no sha1 igual. Lido, não remedido.",
+        "REPROVA: linha terminando em \"·\". Lei: textos-tela.json › _regras_de_serie, \"A QUEBRA DE LINHA\" (Sala, sala-decisoes-qualidade-3.md, 7): \"nenhuma linha começa nem termina com ·. Na quebra, o · sai\"; \"A quebra PELA LARGURA também conta\"; \"Fora delas, a Arte que precisar quebrar uma linha com · pede a quebra aqui antes, e não a improvisa no HTML\". Prova: no HTML, cFaixa = \"~26,900–27,560 FT\\n(8,200–8,400 M) ·\\nFISH LIMIT\\n(NOAA ESTIMATE)\" (l. 380) e cDec = \"DECEMBER 2018 ·\\nSONAR · 27,487 FT\" (l. 384); nos quadros, a 3ª linha da faixa termina em \"M) ·\" em 15,5 e 16,5 s (q4-L51-s75-folhaB.png) e a 1ª linha do sonar termina em \"2018 ·\" em 18,55 e 19,5 s (q4-L51-s75-t18.55-zona.png, recorte 4K). A forma que o textos-tela já manda para o mesmo sonar na s67 é \"DECEMBER 2018\" / \"SONAR · 27,487 FT\" (textos-tela l. 5867). A regra \"Hoje quebram\" lista s55, s67, s47 e s63 e não lista a s75: foi esquecida, não isentada.",
+        "O QUE SAIU, do que a qualidade-3 pediu: a pilha de créditos não sobrepõe linha nenhuma. Recortes 4K da faixa (x 150–1850, y 1850–2160, 1:1) em 0,03, 0,1, 0,2, 12,85, 14,4, 14,5, 14,6, 14,7, 16,1, 16,2, 16,3, 18,4 e 18,55 s (q4-L51-s75-pilhaA.png e -pilhaB.png): as linhas ficam sempre em linhas distintas. Em 14,4 e 14,5 s a Jamieson (100 %) está acima da IHR (esmaecendo) sem tocá-la; em 16,1 s a NOAA está acima da Jamieson (esmaecendo) sem tocá-la; em 18,55 s a Bongiovanni, a NOAA esmaecendo e a GEBCO estão em três linhas separadas. A entrada (0 a 0,23 s): as três linhas (licença, \"from Shutterstock.com\", GEBCO) já ocupam o lugar delas desde o 1º quadro e só a opacidade sobe; nenhuma cruza a GEBCO. No máximo 3 linhas, o topo na faixa (y ~1930).",
+        "A cota do sonar em 18,55 s fica ~95 px acima da linha mais alta da pilha (a Bongiovanni); o canto de 400 × 400 e a metade direita estão livres (x > 1920 sem texto, a parte do canto inferior só tem o desenho do fundo no 19,5 s).",
+        "SINALIZA (já registrado): a faixa dos peixes e o perfil terminam em corte vertical seco em x ~1918 de 16,5 s ao fim, e o \"·\" da cota da faixa fica perto do anel em 15,5 s, sem tocar."
       ],
       "correcoes": [
-        "editor-de-arte (cena sem mapa, sem tile): no creditos() de s75, separar a saída da entrada, para nenhuma linha em fade ocupar o lugar da outra. Duas saídas: (a) a linha que sai fica no lugar dela até a opacidade 0 e só então a de cima desce (peso por visibilidade, não por opacidade); ou (b) a que sai some por opacidade em ~0,15 s antes de a de cima começar a descer, e a de cima desce em ~0,3 s já sozinha. Manter o t0 e o t1 do textos-tela (IHR 13,0–15,0; Jamieson 14,2–16,2; NOAA 15,4–18,6; Bongiovanni 18,5–20,0) e o máximo de 3 linhas. Depois: qc-cena, portao-margens, portao-mapa rodape, a exceção do crédito a 60 px no sha1 novo, e rever os quadros de 14,3–14,7 s e 16,0–16,3 s e o cruzamento NOAA → Bongiovanni de 18,3 a 18,6 s."
+        "redator-de-tela (textos-tela, antes da Arte): escrever as duas quebras da s75 sem o \"·\" no fim da linha, como já está na s67: cota do sonar \"DECEMBER 2018\\nSONAR · 27,487 FT\"; cota da faixa \"~26,900–27,560 FT\\n(8,200–8,400 M)\\nFISH LIMIT\\n(NOAA ESTIMATE)\". Conferir a s74, que tem a mesma faixa e o mesmo sonar (\"s74 e s75\" no textos-tela) e pode ter a mesma quebra, e registrar as duas cenas na lista \"Hoje quebram\" de _regras_de_serie.",
+        "editor-de-arte (Opus, cena sem mapa, sem tile, sem render de mapa): trocar cFaixa (l. 380) e cDec (l. 384) pelas strings acima, só isso; a cota continua alinhada à direita, a borda a 70 px da régua e o topo 35 px abaixo do fundo (a 1ª linha de \"DECEMBER 2018\" é mais curta que \"DECEMBER 2018 ·\", então não passa da margem). Depois: qc-cena, portao-margens, portao-mapa rodape, exceção do crédito a 60 px no sha1 novo, e rever os quadros de 15,5, 16,5, 18,55 e 19,5 s. Nada mais da cena muda."
       ]
     },
     {
       "lente": "factual",
       "nota": 9,
       "problemas": [
-        "Cotas conferem com o fatos-tela.laudo.md (TB228 a TB235: GEBCO 2026, HMS Challenger 23,250 ft, 1964 ~24,000 ft, faixa ~26,900–27,560 ft = 8,200–8,400 m, rede ~27,460 ft, sonar 27,487 ft). Régua e perfil na mesma escala (×10, declarado na legenda), rede e anel nos lugares certos. \"HMS Challenger · 23,250 FT\" em caixa normal e \"DECEMBER 2018 · SONAR · 27,487 FT\" na forma AP, como o textos-tela 58a328d0 manda. As fontes da cauda casam com o dono de cada número: IHR 1936 com o 23,250, Jamieson 2020 com o 1964, NOAA com a faixa e a rede, Bongiovanni 2021 com o sonar. Sem achado."
+        "Cotas conferem com o textos-tela e o fatos-tela (GEBCO 2026, HMS Challenger 23,250 ft, 1964 ~24,000 ft, a faixa ~26,900–27,560 ft = 8,200–8,400 m, a rede ~27,460 ft, o sonar 27,487 ft). Régua e perfil na mesma escala (×10, declarado), rede e anel nos lugares certos. As fontes da cauda casam com o dono de cada número: IHR 1936 com o 23,250, Jamieson 2020 com o 1964, NOAA com a faixa e a rede, Bongiovanni 2021 com o sonar. A grafia da cota do sonar é a do textos-tela (a quebra é o achado de espaco, não de grafia). Sem achado."
       ],
       "correcoes": []
     },
@@ -29,7 +31,7 @@
       "lente": "wordlock",
       "nota": 8,
       "problemas": [
-        "Cena sem voz (cauda de 20 s): vale o relógio do textos-tela. Quadros: \"HMS Challenger\" em 13,5 s e já esmaecendo em 14,5 s; \"1964 · CREW\" em 14,5 s; a faixa em 15,5 s; \"1970 · NET\" em 17,5 s; o sonar em 19,0 s: nos tempos. SINALIZA: \"HMS Challenger\" fica ~1,6 s no ar (pede 13,0–15,0) porque sobe para perto da legenda; o sonar fica 1,5 s por decisão da Sala (6d). Nada atrasado por ritmo."
+        "Cena sem voz (cauda de 20 s): vale o relógio do textos-tela. Quadros: \"HMS Challenger\" em 13,0 e esmaecendo em 14,5 s; \"1964 · CREW\" em 14,5 s; a faixa em 15,5 s; \"1970 · NET\" em 17,5 s; o sonar em 19,0 s: nos tempos. SINALIZA: \"HMS Challenger\" fica ~1,6 s no ar (pede 13,0–15,0) porque sobe para perto da legenda, e o sonar fica 1,5 s por decisão da Sala (6d). O deslocamento da pilha de crédito não atrasa nenhum rótulo: o lugar abre com a entrada e fecha 0,3 s depois da saída, e cada linha entra e sai com o rótulo dela."
       ],
       "correcoes": []
     },
@@ -45,7 +47,7 @@
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "SINALIZA: sem voz, as cotas só fazem sentido para quem viu o vídeo; o que se lê sozinho é \"SURFACE · 0 FT\", a régua descendo e o anel pousando em \"27,487 FT\". Aceitável para uma tela final de quem chegou até aqui."
+        "SINALIZA: sem voz, as cotas só fazem sentido para quem viu o vídeo; o que se lê sozinho é \"SURFACE · 0 FT\", a régua descendo e o anel pousando em \"27,487 FT\". Aceitável numa tela final de quem chegou até aqui."
       ],
       "correcoes": []
     },
@@ -53,17 +55,17 @@
       "lente": "poluicao",
       "nota": 7,
       "problemas": [
-        "SINALIZA (nota 7, encosta no teto): em 15,4–16,2 s há ao mesmo tempo legenda, régua com \"25,000 FT\", perfil, faixa, cota do 1964, cota da faixa (a entrar) e anel: sete por contagem estrita, contra o teto de 6 (identidade §4.2). O pico do qc-carga passa e o desenho se lê como um gráfico só, mas a pilha de crédito, com a colisão acima, agrava o aperto naquele trecho."
+        "SINALIZA (nota 7, encosta no teto): em 15,4–16,2 s há ao mesmo tempo legenda, régua com \"25,000 FT\", perfil, faixa, cota do 1964, cota da faixa e anel: sete por contagem estrita, contra o teto de 6 (identidade §4.2). O pico do qc-carga passa e o desenho se lê como um gráfico só; a pilha de crédito agora é limpa e não agrava o aperto. Nenhum texto órfão (a cena é sem voz: valem as exceções (b) dado atribuível e (c) tela final)."
       ],
       "correcoes": [
-        "Opcional, junto do conserto da pilha: a cota da faixa entrar depois de \"1964 · CREW\" sair (t1 16,2), se a Sala aceitar mexer no t0 dela; não é condição."
+        "Opcional, não condição: a cota da faixa entrar depois de \"1964 · CREW\" sair (t1 16,2), se a Sala aceitar mexer no t0 dela."
       ]
     },
     {
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "Sem reprova. Câmera contínua em três tempos (descida lenta, aceleração, freio nas visitas); o mundo anda o tempo todo; o anel pulsa e para no fundo. As cotas passam a ~230 px/s enquanto se leem, como a regência pede. O deslize de ~72 px da pilha de crédito em ~0,3 s é o que causa a colisão do espaco; fora dela, o movimento está certo."
+        "Câmera contínua em três tempos (descida lenta, aceleração, freio nas visitas); o mundo anda o tempo todo; o anel pulsa e para no fundo; nada congela. Os créditos que deslizam 72 px em 0,3 s (ease-in-out cúbico, eb) enquanto são lidos: a Jamieson desce em ~14,6–14,9 s (0,4 s depois de acender), a NOAA em ~16,3–16,6 s (~0,9 s depois de acender); a Bongiovanni abre o lugar dela com a entrada e não desce. SINALIZA (nota 8, não reprova): a velocidade de pico é ~180 px/s num quadro de 1080p, uma linha de 30 px de altura por ~0,3 s, sem texto novo em cima e sem cruzar nenhuma outra linha (a pilha foi consertada para isso); o mecanismo é o que a qualidade-3 pediu e a Sala deixou para este julgamento. A linha só translada (opacidade 100 % durante o deslize, pelo código); os quadros de 14,7 e 16,2–16,3 s mostram o vão fechando e a linha inteira legível, e nenhum quadro de 4K foi tirado no meio do deslize (14,8–14,9 e 16,4–16,5 s): é inferência do código e do quadro seguinte, não medida."
       ],
       "correcoes": []
     },
@@ -71,7 +73,7 @@
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "A linha \"Image(s) and/or video used under license from Shutterstock.com\" está na faixa de crédito da última cena (o conserto saiu), em duas linhas a 60 px (recorte 4K de 5,0 s, q3-L44-s75-t5.0-credito.png; passo de ~72 px = 60 × 1,2), abaixo de y 1880, antes de x 1720, de 0 a 13,0 s; a s10 usa o clipe Shutterstock 3607760923 (conferencia-midia.json, sem crédito de artista na tela por decisão do Lucas). identidade §7 e midia.md §3.4 pedem a linha \"na faixa de crédito da última cena\", e ela está, ainda que só nos primeiros 13 s dos 20; a linha na descrição do YouTube é da Sala. Crédito-fantasma: a cena não tem clipe Shutterstock, mas a licença o exige aqui por regra (roupa §6), então não é achado. As fontes da cauda entram uma a uma, no formato \"Source: <instituição>, <ano>\", e o crédito de mapa da GEBCO fica de 0 a 20 s embaixo, fora do escurecer. Os números sem dono do achado de antes agora têm dono."
+        "A linha \"Image(s) and/or video used under license from Shutterstock.com\" está na faixa de crédito da última cena, em duas linhas a 60 px, de 0 a 13,0 s, junto da GEBCO (a s10 usa o clipe Shutterstock 3607760923; identidade §7 e midia.md §3.4), e sai de 12,7 a 13,0 s sem cruzar outra linha (recorte de 12,85 s). SINALIZA: ela cobre só os primeiros 13 s dos 20; a linha na descrição do YouTube é da Sala. As quatro fontes uma a uma entram no formato \"Source: <instituição>, <ano>\", cada uma com o rótulo que prova; a GEBCO fica embaixo, parada, fora do escurecer, até o último quadro. Sem crédito supérfluo."
       ],
       "correcoes": []
     },
@@ -79,7 +81,7 @@
       "lente": "tema",
       "nota": 9,
       "problemas": [
-        "Cinza e branco sobre a mesa escura, o âmbar só no anel (o ponto mais fundo, --destaque). O brilho vai a 50 % em 20 s, linear, e nunca chega ao preto (quadros de 0,0 a 19,5 s); composição à esquerda de x ~1920, canto de 400 × 400 livre."
+        "Cinza e branco sobre a mesa escura, o âmbar só no anel (o ponto mais fundo, --destaque). O brilho vai de 100 % a 50 % em 20 s, linear, e nunca chega ao preto (quadros de 0,0 a 19,5 s); composição à esquerda de x ~1920, canto de 400 × 400 livre, texto novo nos 20 s só como sinalização (roupa §6)."
       ],
       "correcoes": []
     },
