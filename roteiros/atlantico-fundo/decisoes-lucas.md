@@ -242,3 +242,17 @@ Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
       exceção.
   - À pergunta "Onde você vai ver a linha do tempo com as 34 cenas que mudaram?": **"No PC de casa (Recomendado)"**. O Tailscale Serve foi
     ligado às 22:31, só para o aparelho `lucasrosa-casa`, e se desliga ao fim.
+- **O fim da linha do tempo (22:4x–22:5x).** Ele comentou duas cenas novas, a s04 e a s10.
+  - **s04** ("Porque o mapa muda?"). Depois da explicação da Sala (o satélite não tem o fundo do mar, e a fala cita a Fossa das Marianas):
+    **"Terminei de ver, pode manter o mapa do fundo"**. A vista do mundo pela GEBCO fica, na s04 e na s63.
+  - **s10** ("A pergunta está fora do card da marca (canal)"). À pergunta "Na s10, a pergunta do gancho (…) está sem caixa, branca sobre o
+    mar, como a regra de 23/10 (…). Entendi do seu comentário que você a quer dentro de uma caixa da marca, como a do "Aguadilla, Puerto
+    Rico". Como fica?": **"Manter sem caixa"**. A regra de 23/10 continua.
+  - **A aprovação.** À pergunta "Você viu 66 das 67 cenas. Faltou a s72 (o vídeo da NOAA perto do fim, 4 s), que mudou depois de você ver.
+    Aprovo as 65 que você viu e que não têm comentário aberto, e começo já o render 4K das que ainda não têm vídeo pronto?": **"Eu assisti e
+    aprovo, provavelmente foi algum bug"**.
+    - O `aprovar` gravou as 66 cenas vistas na versão de hoje, a s10 inclusive, que a resposta anterior resolveu (assinatura `7bb9dd72dfa3`).
+    - A s72 não tem o visto da versão de hoje na página. Ele diz que a viu, e a Sala pediu que ele a toque de novo para o visto valer.
+    - O render 4K das 37 aprovadas sem clipe começou às 22:55.
+  - **As músicas.** À pergunta "Posso baixar as músicas da lista que te mandei às 21h30?": **"Quero ouvir antes"**. A lista `ed73bcaa3b55`
+    espera a escuta dele.
