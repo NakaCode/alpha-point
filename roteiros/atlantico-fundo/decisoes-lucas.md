@@ -232,3 +232,13 @@ Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
   - Nos pedidos aos setores, o freio vai a 85 %, com a mesma folga de 5 pontos de antes. A Sala para tudo o que não é o pacote em 90 % e
     avisa o Lucas. O freio de 85 % da janela de 5 h fica.
   - Às 21:05, o semanal estava em 71 %.
+- **A s02 e onde ver (22:3x),** depois que a rodada de consertos acabou. Ao lado da pergunta foi o trecho
+  `out/atlantico-fundo/_tmp/s02-trecho/s02-ritmo-trecho.mp4` (do fim da s01 ao corte, com a voz e os 4 textos marcados).
+  - À pergunta "A s02 (o mapa logo depois da foto de Porto Rico) põe 6 textos na tela em 5 segundos. Um portão do motor reprova pelo ritmo,
+    com uma régua que a nossa marca não tem. Veja o trecho que mandei. Como fica?": **"Manter (Recomendado)"**. A opção dizia: "Fica como
+    está, como a s11 e a s26 do Peru. Eu registro a exceção do portão para esta cena."
+    - A exceção do `qc-carga` ("[carga] ✗ RITMO: 1.19 entradas/s (teto 0.9)") está em `out/atlantico-fundo/qc/_excecoes-portao.json`, no
+      sha1 `16291ab8…`. Ela cobre também a forma de 0,99/s, se a instrução 16 do `textos-tela` entrar. O `qc-visual` aprova a s02 citando a
+      exceção.
+  - À pergunta "Onde você vai ver a linha do tempo com as 34 cenas que mudaram?": **"No PC de casa (Recomendado)"**. O Tailscale Serve foi
+    ligado às 22:31, só para o aparelho `lucasrosa-casa`, e se desliga ao fim.
