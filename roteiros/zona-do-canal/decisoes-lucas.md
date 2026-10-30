@@ -96,3 +96,18 @@ Três blocos de perguntas de opção (`out/zona-do-canal/_pesquisa/pendencias-lu
   dentro da Zona vale como exceção só nesta miniatura, e eu registro isso." Vale só aqui: a regra da marca (País no mapa: o nome escrito,
   sem bandeira; Lucas, 27/09/2026) continua para o resto. Os arquivos: `roteiros/zona-do-canal/miniatura/miniatura-B3.html` e
   `base-B3.py`; a final em `miniatura-1280.jpg` e `miniatura-2560.jpg`.
+
+## 30/10/2026: o título novo, com o vídeo publicado (no chat da Sala)
+- **O pedido** (00:2x): "Eu queria uma nova thumb e um novo título para o vídeo de Los Angeles e para o do Panamá"; à pergunta do gasto, "Depois
+  do atlântico, mas apenas 1 thumb e 1 título para cada".
+- **O que a Sala fez:** um agente (Opus) fez um título e uma miniatura novos (*Why a Strip of Panama Had U.S. Police and Courts Until 1979*,
+  e "U.S. SOIL?" sobre o Landsat 9), e uma banca a frio (Sonnet) os comparou com o par de hoje (`miniatura/banca-2026-10-30.md`; o relato do
+  agente em `miniatura/RELATO-2026-10-30.md`). A banca preferiu o par de hoje: a miniatura nova saiu com nuvens, uma mancha difícil de ler e o
+  "U.S." repetido do título; do título novo, ela só elogiou a troca de "Town" por "Strip". A Sala não recomendou o título do agente: o
+  próprio vídeo diz que a polícia e os tribunais americanos seguiram mais 30 meses depois de 1979 (`roteiro-narrador.md`, l. 74).
+- **A escolha do Lucas** (30/10/2026, 10:1x), à pergunta "Panamá: o que vai?": **"Strip... Was American (Recomendado)"**. A opção dizia:
+  ""Why a Strip of Panama Was American Until 1979" com a miniatura de hoje. Corrige o "Town", mantém o "American" e o paradoxo do "IN
+  PERPETUITY". Muda pouco do título atual."
+  - O título novo é *Why a Strip of Panama Was American Until 1979* (45 caracteres): a Zona era "a band ten miles wide that the United
+    States ran across Panama" (l. 12), e não uma cidade; o resto é o título de 12/10/2026, já pago no gancho ("Until October 1, 1979", l. 10).
+  - A miniatura continua a de hoje (`miniatura-1280.jpg`, a B3). A troca do título no YouTube Studio é dele.

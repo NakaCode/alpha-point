@@ -584,3 +584,19 @@ As variantes que o curador mostrou ao lado dos finalistas, e dois consertos do r
   logo. Isso apoia a mitigação dos laudos: o contorno com a faixa na tela desde 0:00.
 - **O que continua aberto:** a nota do vidIQ (pede os créditos do Lucas) e, se o Claude central quiser a prova inteira da
   §4, três leitores independentes, despachados sem este arquivo. Nada aqui grava `titulo_final` nem decide pelo Lucas.
+
+## A embalagem nova, com o vídeo publicado (30/10/2026, no chat da Sala)
+- **O pedido** (00:2x): "Eu queria uma nova thumb e um novo título para o vídeo de Los Angeles e para o do Panamá"; à pergunta do gasto, "Depois
+  do atlântico, mas apenas 1 thumb e 1 título para cada"; depois, "E pode fazer as outras que eu havia pedido".
+- **O que a Sala fez:** um agente (Opus) escreveu um título e uma miniatura no molde do Geoff ("Why" + o lugar sem o nome + um paradoxo
+  concreto; `out/_analises/geography-by-geoff/relatorio.md`) e no ângulo do §1.1 da `marca/embalagem.md`, e uma banca a frio (Sonnet)
+  comparou o par novo com o de hoje (`miniatura/banca-E.md`). A banca: "NOVO", pelo título; ela achou o "SO CLOSE" um texto sem objeto.
+- **O título novo:** *Why America's Second-Largest City Had No Coastline Until 1909* (61 caracteres). A voz o paga no gancho: "Los Angeles is
+  America's second-largest city" (1ª frase, 1,6 s) e "Until 1909, Los Angeles had no coastline of its own" (≈ 0:36). O "second-largest"
+  é o F001 do dossiê (Census 2025).
+- **A miniatura nova, a E** (`miniatura/base-E.py`, `miniatura-E-1280.jpg` e `miniatura-E-2560.jpg`): o contorno de Los Angeles em 1906 em
+  `--destaque` sobre o Landsat 8 de 2024 (domínio público), com a faixa descendo quase até o mar, o anel na ponta e "SO CLOSE" com a seta. O
+  relato do agente está em `miniatura/E-RELATO.md`.
+- **A escolha do Lucas** (30/10/2026, 10:1x), à pergunta "Los Angeles: o que vai?": **"Novo, sem o nome na miniatura"**. A opção dizia: "O
+  mesmo par, mas eu tiro o "Los Angeles" da miniatura, como fizemos na A do Atlântico." A E é a do agente sem a pílula "Los Angeles"
+  (`MOSTRAR_NOME = False`). A troca no YouTube Studio é dele: o título e a miniatura, no lugar dos de hoje.
