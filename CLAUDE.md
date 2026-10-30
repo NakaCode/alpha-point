@@ -597,4 +597,5 @@ Os ofícios foram escritos para vídeo em pt-BR, então, ao rodar os passos:
 | "A trilha: Epidemic Sound" | `sala/trilha.md` |
 | "Os avisos no Discord e no Telegram: desligados" | `sala/avisos.md` |
 | Como a Sala usa o navegador do app; as fontes do Juneau | `sala/fontes-e-navegador.md` |
+| O backup dos pacotes do Premiere no Google Drive (rclone, uma subpasta numerada por vídeo) | `sala/backup-drive.md` |
 | O `CLAUDE.md` completo de antes da divisão | `sala/CLAUDE-completo.md` |
