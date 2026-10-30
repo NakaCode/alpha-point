@@ -1034,6 +1034,31 @@ arquivadas. O painel caiu no mesmo dia: "Não vamos fazer o painel, não há nec
   - Se uma conversa sumir, ele abre outra e digita a mensagem de abertura, e o sessionId novo entra aqui e no regimento.
 - O regimento inteiro está em `setores/REGIMENTO.md`.
 
+## Do vídeo 5 em diante: mais calmo, mais longo, e o teste dos dois caminhos (30/10/2026)
+
+O Lucas, no chat da Sala, em 30/10/2026, de manhã, com o Atlântico já programado:
+- **O motor do Top10 fica sem data:** "o motor top10 não tem previsão, então vamos seguir da forma que trabalhamos hoje até que ele chegue".
+  O vídeo 5 (a Drake, com a virada do Magalhães 2026) sai no jeito de hoje: a narração pela API, o relógio, a linha da Régie, os setores, a
+  linha do tempo e o Premiere. O que "O motor sem rosto do Top10", abaixo, diz do piloto vale quando o motor chegar.
+- **O ritmo mais calmo:** "Uma observação para os próximos vídeos, quero um ritmo mais calmo, tive a impressão de nossa narrativa ser MUITO
+  acelerada...". Hoje a voz fala a ~184 palavras/min no v4 (a marca pede 150–160; o v4 ignora velocidade), com 0,25 s entre parágrafos, e o
+  gancho troca de imagem a cada 3–6 s. O caminho sai de um teste às cegas na narração da Drake, que o Lucas ouve antes de narrar o vídeo
+  inteiro. A escrita também desacelera: frases mais curtas e mais espaço entre os fatos.
+- **Vídeos mais longos, dentro da cota:** "Se possível estender os vídeos um pouco mais também, quanto maior, melhor... Mas precisamos estar
+  dentro da nossa cota". A voz mais calma já estica o mesmo texto; o resto vem do roteiro. A conta é a barra semanal: o vídeo inteiro cabe
+  numa semana.
+- **O teste dos dois caminhos:** "Vamos testar neste próximo vídeo os trabalhos mecânicos com script e o .md enxuto, a depender do resultado,
+  voltamos ao modo como funciona hoje". São os dois caminhos da página "Dois caminhos para a cota"
+  (https://claude.ai/artifact/KchScGBo3Bq5rpM71QnKzf; cópia em `out/_modelos/esforco-2026-10-29/pagina-dois-caminhos.html`):
+  - o caminho 1, os scripts (`ferramentas/pacote-cena.py`, `folhas-cena.py` e `portoes-cena.mjs`), montados e provados em cenas prontas
+    do Atlântico, sem pedir mapa à MapTiler;
+  - o caminho 2, o CLAUDE.md enxuto: o que é só da Sala vira skill ou arquivo que ela lê quando precisa, e um núcleo curto guarda toda
+    regra que um agente usa, com um índice para o resto. Nenhum texto se apaga. **A divisão vai ao Lucas antes de valer**, e só vale com
+    o ok dele no chat da Sala; a regra dos 5 minutos (nenhum agente parado mais de 5 minutos esperando um comando) entra nas roupas e no
+    regimento;
+  - a medida é a de 29/10 (`out/_modelos/esforco-2026-10-29/`), comparada com o Atlântico. Se o resultado não for bom, volta o jeito de
+    hoje: o CLAUDE.md completo fica guardado para voltar inteiro.
+
 ## O motor sem rosto do Top10 (desde 24/10/2026, com o vídeo 5 como piloto)
 
 **O piloto passa à Passagem de Drake, o vídeo 5 na numeração nova** (Lucas, 28/10/2026, 02:2x, no chat da Sala: "Vamos continuar
