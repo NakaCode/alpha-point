@@ -31,7 +31,8 @@ contabilizado". O Juneau, arquivado sem publicar, sai da contagem:
 | 2 | `zona-do-canal` | 3 |
 | 3 | `peru-agua` | 4 |
 | 4 | `atlantico-fundo` | 5 |
-| 5 | a Passagem de Drake (em pauta) | 6 |
+| 5 | o Mar Negro (em pauta, desde 31/10/2026) | — |
+| — (fora, em 31/10/2026) | a Passagem de Drake | 6 |
 
 - Com o Lucas e em todo registro novo, vale a numeração nova, sempre com o projeto ao lado: "o vídeo 4 (`atlantico-fundo`)".
 - **O que foi escrito antes dessa mensagem fica com a numeração antiga, e nada se renumera:** as falas do Lucas citadas, as
