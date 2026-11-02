@@ -1,6 +1,7 @@
 # Vídeo 5 · Big Sur: por que este pedaço da Califórnia é tão vazio quanto o Wyoming · Pauta v1 · 01/11/2026
 
-**Rascunho para o Lucas aprovar. Nada aqui foi aprovado.** Esta pauta parte da busca "onde quase ninguém mora"
+**Aprovada pelo Lucas em 02/11/2026:** "Sim", no chat da Sala, depois do teste dos leitores (`out/_pautas/video-5-2026-11-01/teste-leitores.md`).
+As leituras da Sala depois do sim estão logo abaixo de "Três coisas". Esta pauta parte da busca "onde quase ninguém mora"
 (`pautas/2026-11-01-video-5-ninguem-mora.md`, com "O cético (01/11/2026)" no fim) e da parte de Big Sur em
 `out/_pautas/video-5-2026-11-01/cacador.md`. A pauta do Mar Negro (`pautas/2026-10-31-video-5-mar-negro.md`) fica como está.
 
@@ -34,6 +35,62 @@ O hoje é a estrada que fechou por quase três anos, as casas vazias e os visita
 
    O preço das casas e quantas das casas vazias são de veraneio não foram lidos: a API do Census recusou a leitura automática, e isso
    foi para a lista da Sala.
+
+**Depois do sim (02/11/2026): as leituras da Sala.** Antes do roteiro, a Sala leu o que o cético e a lista do fim pediam (02/11, ~01:00–01:45
+de Brasília, uma página por vez; nada contornado):
+
+1. **O RealLifeLore não colide (K3, resolvido).** No YouTube, pelo navegador do app: "The Empty Coast: Why 100 Miles of California Has Zero
+   People" é do canal Behind the History (07/03/2026, 5:20, 16 views), e a descrição diz que é a Lost Coast. Não é do RealLifeLore. O
+   RealLifeLore publicou em 31/10/2026 "Why the Pacific Northwest Coast is Insanely Empty" (41:06; 482.655 views em 02/11), sem capítulos e
+   sem "Big Sur" nos dados da página: é outro lugar, e mostra que o tema "a costa vazia" está quente agora. O Earth Curious ("Why This HUGE
+   Part Of The West Coast Is Forced To Stay Empty", 12/02/2026, 1.656 views) fala de San Francisco ao sul do Oregon. Nenhum colide com o
+   título 1, e o eixo do distrito, do Wyoming e da regra do que se vê continua só nosso.
+2. **O fogo de 2026 tem dono (K1).** O CAL FIRE, na página do Timber Fire (pelo navegador do app; o robots.txt do site respondeu 403 ao
+   WebFetch):
+   - começou em 08/08/2026, às 20:35, e queimou 25.352 acres; estava 97 % contido na última atualização (20/10/2026);
+   - a jurisdição é da Los Padres National Forest, no ponto "Southeast of Loma Vista" (36,2249 N, 121,7298 W);
+   - a página mostra "661 Structures Threatened (Residential, Commercial and Other)" e 3 bombeiros feridos, sem número de estruturas destruídas;
+   - e diz: "CHP - Monterey has lifted the Highway 1 closure. The highway is fully reopened."
+
+   O fechamento das notas da Caltrans (PM 37.5–47) fica dentro do distrito (o cético, K1). O InciWeb respondeu 403 ao navegador do app, e
+   parei nele. O Plaskett Fire só tem a nota da Caltrans de 02/09 (o cético).
+3. **A estrada hoje.** A informação de estradas da Caltrans (roads.dot.ca.gov, sem robots.txt), "as of Sunday, November 1st, 2026 at 08:31
+   PM", não tem fechamento total em Big Sur. Tem mão única controlada em três pontos:
+   - em Mud Creek, por obra de emergência, nos dias úteis das 6:30 às 12:00, até 13/11/2026;
+   - entre Point Sur e o norte de Big Sur, por obra, até 31/12/2026;
+   - na ponte de Rocky Creek, por obra, até 30/11/2026.
+
+   É volátil: relê-se antes da publicação.
+4. **As casas vazias são quase todas de uso ocasional.** A fonte é a ACS de 5 anos (2020–2024, tabela B25004), no arquivo por tabela do
+   www2.census.gov (sha256 `cbc82f08…`); o data.census.gov pediu verificação de robô, e parei nele. No distrito:
+   - 285 ± 95 casas vagas, das quais **265 ± 94 "for seasonal, recreational, or occasional use" (93 %)**;
+   - para alugar, 6 ± 11; à venda, 5 ± 8; outras, 9 ± 10;
+   - para comparar: no condado de Monterey, 54 % das vagas são desse tipo; na Califórnia, 33 % (`acs_vagas.py`).
+
+   São duas réguas: o dia do censo de 2020 (39 % vagas) e a pesquisa de 5 anos (quase todas as vagas são de temporada). Na fala, cada uma
+   com o dono e sem o número com margem: "almost four in ten homes stood empty on census day", e "the bureau's surveys find nearly all of
+   the empty ones are kept for seasonal or occasional use".
+5. **Não lido, de propósito:**
+   - a mediana do valor das casas: é o assunto dos concorrentes, que a pauta já deixa fora;
+   - a Califórnia em 1880: é fundo, e o verificador lê se o roteiro usar;
+   - os visitantes de hoje: vale o de 1986, com o ano, e "the visitors came back", da nota da Caltrans de 15/05/2026;
+   - o post mile do Regent's Slide (K4): a nota de 14/01/2026 não o dá, e o `mapista` o lê nos boletins da Caltrans antes das animações;
+   - a contagem do Wyoming no censo (K7): fica com o verificador.
+
+**O que muda no roteiro:**
+- **O ato 3 ganha o verão de 2026**, em palavras e com dono (CAL FIRE e Caltrans): um incêndio queimou mais de 25 mil acres destas
+  montanhas, ameaçou centenas de casas e prédios e fechou a estrada de novo, por semanas.
+  - O fogo já está na frase-mãe do ato 1 ("dangers of fire and flood", o plano de 1986): o ato 3 liga as duas pontas.
+  - O tom é o de gente que acabou de passar pelo fogo: "vazio", nunca dito dela.
+- **A segunda virada do ato 3** responde ao aviso dos leitores (a resposta precisa de mais que "montanha"): as casas existem, mas quase
+  todas as vazias são de temporada. Há quem tenha casa aqui e não more nela. As duas réguas vão cada uma com o seu dono.
+- **O §5 ganha quatro proibições:**
+  - "the road is closed" no presente (aberta em 01/11, com mão única por obras);
+  - "the fire destroyed homes" (o CAL FIRE não mostra estrutura destruída, só 661 ameaçadas);
+  - "the third-largest fire in California" (só imprensa);
+  - número do Plaskett Fire (não lido).
+- **As três condições do cético para voltar a 6,0 estão cumpridas:** a estrada de hoje, o fogo com dono e o RealLifeLore conferido. Das três
+  para 6,5, o RealLifeLore está feito; das casas, só as de temporada (o valor ficou fora de propósito); falta o ok da MapTiler.
 
 ---
 
@@ -461,7 +518,9 @@ relevância), e pela busca da web de hoje (o RealLifeLore, sem views nem data):
 
 | Título | Canal | O que se sabe |
 |---|---|---|
-| The Empty Coast: Why 100 Miles of California Has Zero People | RealLifeLore | **busca da web, 01/11: lugar e data *a confirmar*** (deve ser a Lost Coast); o vizinho de estrutura mais perto, num canal grande |
+| The Empty Coast: Why 100 Miles of California Has Zero People | Behind the History (não é o RealLifeLore; conferido em 02/11) | 07/03/2026, 5:20, 16 views; a Lost Coast, pela descrição |
+| Why the Pacific Northwest Coast is Insanely Empty | RealLifeLore | 31/10/2026, 41:06, **482.655 views em 02/11**; outro lugar (sem "Big Sur" nos dados da página): o tema está quente agora |
+| Why This HUGE Part Of The West Coast Is Forced To Stay Empty | Earth Curious | 12/02/2026, 13:18, 1.656 views; de San Francisco ao sul do Oregon |
 | Why Nobody Wants to Visit Big Sur, California Anymore | The History Vault (5,58 mil) | 08/09/2026, 39:44, 6.256 views; o molde "Why Nobody Wants to Visit…" com o nome do lugar |
 | Big Sur's $35 Million Cliffside Estates Are Sliding Into the Ocean… | Luxury Radar (8,18 mil) | 18/09/2026, 21:39, **290.567 views, 36,9×** |
 | Big Sur's $40M Cliff Estates Are Losing Their Only Road to the Ocean… | Edge of Value (774) | 03/10/2026, 24:55, **34.470, 41,5×** |
