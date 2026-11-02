@@ -1,982 +1,845 @@
 # Dossiê do roteiro · big-sur (vídeo 5)
 
-Revisão do roteiro: `daa92ea6d0c4`
+Revisão do roteiro: `50c2c56aaefc`
 
-> Escrito em 02/11/2026, ~03:2x de Brasília, por um subagente da Sala de controle (o editor do roteiro), sobre
-> `roteiros/big-sur/roteiro-narrador.md` (o texto falado, que este arquivo não muda), `_trabalho/plano-final.json` (o plano do juiz: "o
-> vazio medido", com os enxertos de "a estrada"), `_trabalho/escrita-notas.md` (o que o roteirista mudou do plano) e o dossiê, a pauta
-> aprovada `pautas/2026-11-01-video-5-big-sur.md` inteira. Onde a pauta e "Depois do sim" divergem, vale "Depois do sim"; sobre as duas
-> valem as decisões da Sala de 02/11/2026 (o pedido desta rodada). Nada aqui passou pelo `verificador-de-fatos`, pela bancada nem pelo
-> Lucas.
+> Reescrito em 02/11/2026, ~14:2x de Brasília, por um subagente da Sala de controle (o doutor de roteiro da r2, no papel do editor), sobre
+> `roteiros/big-sur/roteiro-narrador.md` na reescrita r2 (o texto falado, que este arquivo não muda), `_trabalho/briefing-r2.md` (o briefing
+> em Fable, a pedido do Lucas), `_trabalho/escrita-notas-r2.md` (o que o roteirista mudou do r1), os dois laudos da bancada da r2
+> (`qc-roteiro/fatos.laudo.md` e `qc-roteiro/ouvinte-r2.laudo.md`, ambos com "Revisão julgada: `4f827c30b9f8`"), a tabela do verificador
+> (`qc-roteiro/fatos-tabela.json`, 237 linhas, R001–R237) e a pauta aprovada, `pautas/2026-11-01-video-5-big-sur.md`. O dossiê do r1
+> (`daa92ea6d0c4`) está em `_trabalho/roteiro-editor-r1-final.md`; os desenhos de mapa e de ilustração dele seguem aqui onde a frase do r2 é
+> a mesma ideia. Nada aqui passou pelo Lucas.
 >
-> **A medida do portão** (`node roteiros/big-sur/_ferramentas/gate.mjs`, 02/11/2026): sha256 do texto falado `c00a9cce37c4…` ·
-> **2.396 palavras** (a faixa é 2.250–2.450) · ≈ 13:01 de fala a 184 palavras/min (+ 20 s de cauda ≈ 13:21) e ≈ 15:28 a 155 (≈ 15:48) ·
-> 34 parágrafos · 193 frases pelo portão (o "U.S." parte a frase três vezes no contador principal; são **187 frases** de verdade, as
-> numeradas abaixo, f1 a f187) · média 12,4 palavras por frase (teto 15) · maior frase 23 (teto 30) · gancho com 134 palavras até a
-> assinatura (≈ 43,7 s a 184; teto 170), "But" na palavra 19 · **PASSA**, sem problema, com os 4 alertas que o plano previa e o
-> roteirista decidiu (`escrita-notas.md` §4: "nobody" em f7, "never" em f13, "first" em f111 e a 1ª frase sem número). Taxas todas
-> abaixo dos tetos; autoplágio vazio; nenhum alerta de fecho.
+> **A medida do portão** (`node roteiros/big-sur/_ferramentas/gate.mjs`, 02/11/2026, exit 0): sha256 do texto falado `4f827c30b9f8…` ·
+> **2.321 palavras** (a faixa é 2.250–2.450) · ≈ 12:37 de fala a 184 palavras/min (+ 20 s de cauda ≈ 12:57) e ≈ 14:58 a 155 (≈ 15:18) · 35
+> parágrafos · 175 frases pelo portão (o "U.S." parte três; são **169 frases** de verdade, as numeradas abaixo, f1 a f169) · média 13,3
+> palavras por frase (teto 18) · a maior com 33 (teto 34) · o gancho com 156 palavras até a assinatura (teto 170), o "But" na palavra 19 ·
+> **PASSA**, sem problema, com 5 alertas decididos (`escrita-notas-r2.md` §2): "nobody" em f7, "never" em f14, "first" em f101, a 1ª frase sem
+> número e a taxa de perguntas (6×, 2,61 por mil; teto 2,27). Autoplágio vazio; nenhum alerta de fecho.
 >
-> **Depois da rodada 1** (`_trabalho/lista-r1.json`, aplicada por `ferramentas/aplicar-lista.mjs` em 02/11/2026; a medida acima é a de partida, `c00a9cce37c4`): sha256 do texto falado `a280be45a53a…` · **2.357 palavras** (eram 2.396) · 34 parágrafos · 190 frases pelo portão (eram 193; as três que saíram: f107 juntada a f106, f167 e f168 cortadas, com os números f dos outros mantidos neste arquivo) · média 12,4 · maior frase 23 · gancho com 141 palavras até a assinatura, "But" na palavra 19 · **PASSA**, com os mesmos 4 alertas. Cada frase trocada traz abaixo a marca "(r1, Lnn)".
+> **Depois da lista r2, aplicada como r2b** (02/11/2026, por um subagente da Sala de controle; a medida acima é a do texto que a bancada
+> julgou, `4f827c30b9f8`). A 1ª aplicação de `_trabalho/lista-r2.json` saiu com exit 2, NAO_RODOU: a cópia `_trabalho/roteiro-r2.antes.md`
+> já existia (é o r1, guardado pela reescrita). A mesma lista, só com `"rodada": "r2b"` (o `revisao_julgada` continua `4f827c30b9f8`), passou
+> no seco e na aplicação de verdade (`node ferramentas/aplicar-lista.mjs`, exit 0, APLICADO: 21 itens, 18 diferenças, nenhuma frase sem
+> item, 0 recusas, 0 avisos). A cópia do texto julgado está em `_trabalho/roteiro-r2b.antes.md`, a do dossiê de antes desta troca em
+> `_trabalho/roteiro-editor-r2b.antes.md`, e o registro em `_trabalho/aplicado-r2b.md`. O portão no texto novo (exit 0): sha256 do texto
+> falado `50c2c56aaefc…` · **2.260 palavras** (eram 2.321; o piso é 2.250) · ≈ 12:17 de fala a 184 palavras/min (+ 20 s de cauda ≈ 12:37)
+> e ≈ 14:35 a 155 (≈ 14:55) · 35 parágrafos · 169 frases pelo portão (eram 175; **163 de verdade**: f20, f68 e f103 juntadas à vizinha,
+> f30, f50, f51, f70 e f138 cortadas, f116 e f167 partidas em duas; os números f das outras não mudam neste arquivo) · média 13,4 · a maior
+> com 32 · o gancho com 158 palavras até a assinatura, o "But" na palavra 19 · **PASSA**, sem problema, com 4 alertas ("nobody" em f7,
+> "never" em f14, "first" em f101 e a 1ª frase sem número; o das perguntas saiu: 5, 2,23 por mil). Cada frase trocada traz a nota "Lista
+> r2, Lnn (r2b)" com a redação de antes; as que saíram ficam riscadas no lugar, com os ids.
 >
-> **Depois dos pedidos da rodada 1** (`_trabalho/pedidos-r1.json`; o P01, na saída (b), e o P03, à mão pelo escritor em 02/11/2026, sem rede; o
-> antes e o porquê em `_trabalho/pedidos-r1-feito.md`): sha256 do texto falado `dbf3aa915b13…` · **2.378 palavras** (eram 2.357) · 34
-> parágrafos · 191 frases pelo portão (f185 saiu; f146a e f146b entraram) · média 12,5 · maior frase 23 · gancho com 141 palavras até a
-> assinatura, "But" na palavra 19 · **PASSA**, com os mesmos 4 alertas; autoplágio vazio. As frases novas levam a marca "(r1, P01 b)" e
-> "(r1, P03)". O P02 não é texto, e o P04 não achou fonte: nenhum dos dois mudou o roteiro. A fala de P03 vale depois do verificador de fatos.
+> **Os ids** são os da tabela do verificador (R001–R237: a coluna `id` de `qc-roteiro/fatos-tabela.json`, casada pela frase; o trecho entre
+> aspas é o da tabela, relido pelo verificador na cópia local) e, dentro deles, os da pauta: L1–L7 (§1); C1–C3 e P (o plano do condado de
+> 1986, `midia/big-sur/fontes/bigsur-lup-1986-govinfo.htm`; **P [n] é o índice da frase pelo `pautas/big-sur/_trabalho/scripts/plano_trecho.py`**);
+> K1–K7 ("O cético"); DS1–DS5 ("Depois do sim"); M18–M21 (as medidas do verificador, em `qc-roteiro/fatos-medidas*.txt`); § é a seção da
+> pauta; "Sala" são as decisões de 02/11/2026. As posições das frases (palavra e tempo) saem da contagem do portão, por scripts fora do
+> canal: no texto julgado, a soma bate 2.321
+> (`C:\Users\zangp\AppData\Local\Temp\claude\C--projetos-alpha-point\b375663d-aa56-4ef7-91a0-2424b9ea0483\scratchpad\frases_r2.mjs`); no
+> texto da r2b, 2.260, e as posições e os tempos deste arquivo são os dele
+> (`C:\Users\zangp\AppData\Local\Temp\claude\C--projetos-alpha-point\b375663d-aa56-4ef7-91a0-2424b9ea0483\scratchpad\r2b\medir.mjs`).
 >
-> **Os ids** são os da pauta: L1–L7 (§1); C1–C3 e P (relidos da busca de 01/11; P e L3 são o mesmo documento, o plano do condado de
-> 1986, e **P [n] é o índice da frase pelo `pautas/big-sur/_trabalho/scripts/plano_trecho.py` sobre a cópia local
-> `midia/big-sur/fontes/bigsur-lup-1986-govinfo.htm`**, não o número de linha que as notas do roteirista citam); K1–K7 ("O cético");
-> DS1–DS5 ("Depois do sim", itens 1 a 5); § é a seção da pauta (§4.2, por exemplo); "Sala" são as decisões de 02/11/2026; "conta" é
-> conta dos scripts da pauta ou deste editor, sobre as cópias locais. Todo trecho P citado abaixo foi relido hoje na cópia local, pelo
-> `plano_trecho.py`. As posições das frases (palavra e tempo) saem do `contar()` do portão, por um script fora do canal
-> (`C:\Users\zangp\AppData\Local\Temp\claude\C--projetos-alpha-point\b375663d-aa56-4ef7-91a0-2424b9ea0483\scratchpad\frases_bigsur.mjs`).
->
-> **As marcas no texto abaixo:** "SEM APOIO:" é a frase (ou a parte dela) que a pauta não sustenta, que diz mais que a fonte, mistura
-> réguas ou fere uma decisão da Sala; "A CONFERIR:" tem apoio, mas depende de uma leitura, da imagem ou de um volátil; "LEVE:" é a forma
-> que diz um pouco diferente da fonte, sem mudar o fato. Nenhuma foi consertada: a lista está no fim, em "Para a bancada".
+> **O crédito da tela.** A Sala tirou a fonte da voz como cacoete (o "engessado" do Lucas, 02/11/2026): na voz, o dono só na citação ou no
+> contestável, uma vez por fonte. Toda frase com fato cujo dono não é dito nela traz abaixo "Crédito", no formato da identidade §7
+> (`Source: <instituição>, <ano>`; o de mídia, `<autor> / <acervo> · <licença>`); onde a r2 tirou um dono que o r1 dizia, a linha diz "A
+> fonte saiu da voz na r2". Quem fecha o texto da tela é o `redator-de-tela`; o crédito vai na faixa de crédito, a 56 px (identidade §4).
 
 ## A espinha
 
-- **Pergunta (na fala):** "Why?" (f4, a palavra 35; 36 na cópia para a voz com "fifteen hundred", ≈ 14,4 s a 150 palavras/min) e "So why
-  did so few follow?" (f9, a pergunta do gancho para o portão; na forma da r1, L02). Nenhuma das duas volta no fecho.
+- **Pergunta (na fala):** "Why?" (f4, a palavra 36; 37 na cópia para a voz com "fifteen hundred", ≈ 14,8 s a 150 palavras/min, dentro do
+  contrato dos 15 s da pauta §3) e "So why didn't it fill up?" (f9, a pergunta do gancho para o portão; até a r2b, "So why did so few
+  follow?", L02). Nenhuma das duas volta no fecho.
 - **Pergunta longa (a que o corpo paga, não dita):** por que um pedaço da costa entre Los Angeles e San Francisco guarda um distrito do
-  censo tão vazio quanto o Wyoming, se já havia gente nesta costa nos anos 1880 (`plano-final.json` › `pergunta_longa`).
-- **Tese:** o distrito do censo de Big Sur tem a densidade do Wyoming não pelo clima nem por falta de quem viesse, mas porque três camadas
-  se somam, cada uma medida pelo seu dono: a terra deixa pouco lugar para morar (a serra que cai no mar, o solo que desliza, a água pouca e
-  sazonal, metade da área do plano em floresta nacional e área selvagem); a história fez da costa um lugar de passagem (quase mil pessoas
-  viviam do que mandavam por mar nos anos 1880; a estrada só ficou pronta em 1937, e trouxe visitantes; o plano de 1986 proibiu o novo que
-  se vê da Highway 1 e guardou a maior parte da estrada para a recreação); e o hoje mantém o padrão (a estrada fechada por quase três anos e
-  de novo no fogo de 2026, casas que existem e ficam vazias, quase todas de uso ocasional, e visitantes que voltam e seguem viagem). O vazio
-  é um vazio de moradores: contado por casas ou por carros, esta costa não é vazia.
-- **O que a tese não diz** (`plano-final.json` › `tese.o_que_ela_nao_diz`; pauta §5; Sala): que a regra de 1986 criou o vazio (f134);
-  que a população não cresceu desde os anos 1880, que é "a mesma" ou menor (os quase mil são da costa do plano, e o 1.474 é de parte
-  dela); que construir é proibido (só o novo que se vê da estrada e dos mirantes); que a regra vale igual hoje; que ninguém mora lá, ou "a
-  cidade de Big Sur"; que a estrada é a única causa ou o assunto; que a Highway 1 é a única estrada (f41 diz o contrário); que o fogo
-  destruiu casas, ou qualquer número do fogo na voz; mansões, bilionários e o preço das casas; a costa mais vazia da Califórnia ou o plano
-  mais rígido do país; quantos visitantes vêm hoje; que a regra tirou de vista as casas antigas.
+  censo tão vazio quanto o Wyoming, se já havia gente nesta costa nos anos 1880.
+- **Tese:** o distrito do censo de Big Sur tem a densidade do Wyoming não pelo clima nem por falta de quem viesse, mas porque a terra quase
+  não dá chão para uma casa (a serra que cai no mar, a água pouca e sazonal, metade da área do plano em floresta nacional e área selvagem, o
+  solo que desliza), a estrada chegou tarde e quebra (quase mil pessoas viviam do que mandavam por mar nos anos 1880; a estrada só ficou
+  pronta em 1937, e trouxe visitantes, não moradores), e o condado decidiu em 1986 que esta costa seria olhada da estrada, não ocupada à
+  vista dela (o novo que se vê da Highway 1 e dos mirantes, proibido; a maior parte da estrada guardada para a recreação). O hoje mantém o
+  padrão: a estrada fechada por quase três anos e de novo no fogo de 2026, e as casas que existem ficam muitas vezes vazias, quase todas as
+  vazias de uso ocasional. O vazio é de moradores: contado por casas ou por visitantes, esta costa não é vazia.
+- **O fio (novo na r2):** o espectador tentando morar nesta costa (f31–f34: "Say you wanted to move to this coast. … Where would you put the
+  house?"): onde poria a casa (não há chão), como chegaria (uma estrada), de que é a água, de quem é a terra (metade é pública), o que a terra
+  faz (desliza); quem conseguiu antes dele (quase mil, por mar); o que o condado decidiu (a vista); o que acontece quando a estrada quebra; e,
+  ao voltar à casa (f144), vizinhos que não moram nela.
+- **O que a tese não diz** (pauta §5; Sala): que a regra de 1986 criou o vazio (f119; a L17 tirou o "by itself" na r2b); que a população
+  não cresceu desde os anos 1880, que é "a mesma" ou menor (os quase mil são da costa do plano, e o 1.474 é de parte dela); que construir é
+  proibido (só o novo que se vê da estrada e dos mirantes); que a regra vale igual hoje; que ninguém mora lá, ou "a cidade de Big Sur"; que a
+  estrada é a única causa; que a Highway 1 é a única estrada (f43 diz o contrário); que o fogo destruiu casas, ou qualquer número do fogo na
+  voz; mansões, bilionários e o preço das casas; a costa mais vazia da Califórnia ou o plano mais rígido; quantos visitantes vêm hoje.
 - **Promessa (na fala):** o gancho promete o lugar entre as duas metrópoles (f1), o normal (f2), a surpresa com o Wyoming (f3), a pergunta
   (f4), o contraste do clima e dos anos 1880 (f5–f8), a segunda pergunta (f9) e a resposta em quatro peças, sem o como: a serra, a estrada
-  que fecha, a regra do que se vê e as casas vazias (f10–f12).
-- **Payoff (na fala):** p8, último parágrafo, a virada da régua (contado por moradores, é o Wyoming; por casas e por carros, não: f174–f177);
-  e p9, a cena no mirante de Bixby Creek: quase nenhuma casa à vista, "Part of that is the mountains, and part of it was a choice." (f183),
-  a regra de 1986 sobre esta vista (f184) e, na última frase, as duas cifras do gancho espelhadas (f186–f187). Sem "So", sem a pergunta do
-  gancho e sem lista (voz §1, "Como ele fecha"; o portão não deu alerta de fecho).
+  que cede, a regra do que se vê e as casas vazias (f10–f13).
+- **Payoff (na fala):** p7, a virada da régua (f158–f161: contado por moradores, é o Wyoming; por casas e por visitantes, não); e a cena no
+  mirante de Bixby Creek: quase nenhuma casa à vista (f166), "Part of that is the mountains, and part of it was a choice" e a regra de 1986
+  sobre esta vista (f167), e as duas cifras do gancho espelhadas (f168–f169). Sem "So", sem a pergunta do gancho e sem lista (voz §1, "Como
+  ele fecha"; o portão não deu alerta de fecho).
 
 ## Livro-razão da promessa
 
 | Promessa | Onde se paga no texto |
 |---|---|
-| f1 "This is Big Sur, between Los Angeles and San Francisco." | p1, 1º parágrafo (o contorno do distrito, de Carmel para o sul, f17–f20); p5, f109 (a Baía e Los Angeles a menos de um dia de carro); p9, f186 (as duas pelo nome; a f185 saiu na r1, P01 b). |
-| f2 "Their metro areas hold more than 17 million people." | p1, f27 (a Califórnia mais de 40 vezes mais cheia); p9, f186 ("Together, the Los Angeles and San Francisco metro areas hold more than 17 million people.", r1, P01 b). |
-| f3 "But the census district around this bridge counted fewer than 1,500, as empty as Wyoming." (o título) | p1 inteiro (o distrito, o contorno, os 250 mi², as seis por milha quadrada, o Wyoming no mesmo ano, f14–f27); p8, f175; a última frase do vídeo (f187). |
-| f5–f6 "It isn't the weather." / o clima ameno | p2, f47–f48 ("The weather itself, remember, is mild. The trouble is finding ground…"). |
-| f7–f8 "And it isn't that nobody came." / quase mil nos anos 1880 | p4 inteiro (do que viviam, os nomes, pelo mar, Manchester, os primeiros visitantes), com a régua do plano em f72. |
-| f9 "So why did so few follow?" (r1, L02) | p2–p3 (a terra); p4, f86–f87 (a estrada perigosa que segurava o turismo); p5 (a estrada tarde, o modo de vida que acabou, a gente de passagem); p6 (a regra do que se vê e a estrada para a recreação); p8 (as casas de uso ocasional e os visitantes que seguem; os trabalhadores sem casa saíram na r1, L20); p9, f183. Não se repete no fecho. |
-| f10 "The mountains are only part of it." | p2, f49 ("That's one reason…"); p3 (a terra pública e a que anda); p5 a p8 (o resto); p9, f183. |
-| f11 "a road that has closed again and again" | p4, f86 (a estrada que fechava parte do ano); p3, f58–f62 (Mud Creek, 2017); p7 inteiro (2023–2026 e o fogo de 2026). |
-| f11 "a rule in that plan about building in sight of it" | p6 (o "critical viewshed", o mirante de Bixby Creek, o teste da visão, o que podia e o que não podia); p9, f179 e f184. |
-| f12 "And then there are the homes that often sit empty." | p8, 1º e 2º parágrafos (quase quatro em dez no dia do censo; quase todas as vazias de uso ocasional, f158–f166). |
-| f13 "the coast that never filled up" | o vídeo inteiro; p8, f176–f177 (o que encheu a costa no lugar de moradores: casas de uso ocasional, carros); p9 (a vista vazia, em parte de propósito). |
-| f30 "The census district and the plan don't cover the same ground." (r1, L03) | p3, f59 (Mud Creek "outside the census district"); p4, f72 ("That count is for the whole coast in the plan, not just the census district."); p7, f154 ("inside the census district"); p9, f187. |
-| f38 "the dangers of fire and flood" | p7, f147 ("Fire was on the county's list of dangers, too."). |
-| f65 "Two of them are called Paul's Slide and Regent's Slide." (r1, L09) | p7, f139–f145 (os dois deslizamentos, as datas e os quase três anos). |
-| f74 e f95, o nome de Bixby e a travessia de Bixby Creek | p6, f121 (o mirante que a regra nomeia); p9, f178–f181 (a cena no mirante). |
-| f113 "More visitors raised a harder question for the county…" | p6 inteiro ("The county's answer took final form in 1986", r1, L11). |
+| f1 "This is Big Sur, between Los Angeles and San Francisco." | p1, f19 (o contorno do distrito, a partir de Carmel); p4, f99 (a Baía e Los Angeles a menos de um dia de carro); p7, f168 (as duas pelo nome). |
+| f2 "Their metro areas hold more than 17 million people." | p1, f26 (a Califórnia mais de 40 vezes mais cheia que o distrito); p7, f168. |
+| f3 "But the census district around this bridge counted fewer than 1,500 people, as empty as Wyoming." (o título) | p1 inteiro (o distrito, o contorno, os 250 mi², as seis por milha quadrada, o Wyoming no mesmo ano, f16–f26); p7, f159; a última frase (f169). |
+| f5–f6 "It isn't a harsh climate." (r2b, L01) / o clima ameno | p2, f49 e f52 (a lista do condado não tem o clima; o que falta é chão e acesso). As f50–f51 ("Not the weather… mild") saíram na r2b (L09). |
+| f7–f8 "And it isn't that nobody came." / quase mil nos anos 1880 | p3 inteiro (do que viviam, os nomes, pelo mar, a estrada perigosa, os primeiros visitantes), com a régua em f75. |
+| f9 "So why didn't it fill up?" (r2b, L02) | p2 (a terra, f36–f67); p3, f82 (a estrada perigosa); p4 (a estrada tarde, os visitantes); p5 (a regra do que se vê e a estrada para a recreação); p7 (as casas de uso ocasional e os visitantes que seguem); f167. Não se repete no fecho. |
+| f10 "Part of the answer is what you'd expect: mountains, and a road that keeps giving way." (r2b, L03: a serra e a estrada, que eram f10 e f11) | a serra: p2, f37–f40 e f60; f167. A estrada que cede: p3, f85 ("decades away"); p4, f86 ("nearly two decades"); p2, f61–f66 (Mud Creek, Paul's, Regent's); p6 inteiro. O "took decades to build" (VF-R2-01) saiu com a L03. |
+| f11 "The rest is less obvious." (r2b, L03) | anuncia f12 e f13, pagos nas duas linhas abaixo. |
+| f12 "a rule in that plan about building anything you could see from the road" | p5 (o "critical viewshed", o mirante de Bixby Creek, o teste da visão, o que podia e o que não podia, f106–f114); p7, f163 e f167. |
+| f13 "the homes that do stand along this coast, and often sit empty" | p7, f145–f152 (quase quatro em dez vazias no dia do censo; quase todas as vazias de uso ocasional). |
+| f14 "the coast that never filled up" | o vídeo inteiro; p7, f158–f161; f166–f167. |
+| f29 "you'll hear which is which" (as duas réguas) | f61 (Mud Creek "outside the census district"); f75 ("a count for the whole coast, not just the census district"); f140 ("inside the census district"); f169. |
+| f31–f34 o fio: "Say you wanted to move to this coast. … Where would you put the house?" | p2 (f35 "Picture it", f41 "Then you need a way in", f44 "And then there's water", f53 "And suppose you did find your patch of flat ground", f67 "So that's the ground you'd be building on"); p7, f144 ("So go back to the house you were trying to build."). |
+| f49 "the dangers of fire and flood" | p6, f134 ("Fire was on the county's list of dangers, too."). |
+| f66 "Paul's Slide and Regent's Slide" | p6, f124–f131 (as datas, os quase três anos, a reabertura). |
+| f77 e f89, o nome de Bixby e a travessia de Bixby Creek | p5, f109 (o mirante que a regra nomeia); p7, f162–f165 (a cena no mirante). |
+| f102 "how much of this coast should be built on" (r2b, L14: f102 e f103 numa frase só; a pergunta virou afirmação, paga do mesmo jeito) | p5 inteiro (f104 "The county's answer took final form in 1986"). |
+| f123 "So how long can a coast like this go without its road?" | p6, f128 ("For almost three years, you couldn't drive this coast from end to end."). |
 
 ## As partes
 
 Tempos estimados pela contagem do portão, a 184 palavras/min (a voz v4 de hoje) e a 155 (a marca), sem a vinheta nem a cauda. O regente
-recalcula pelo `words.json`.
+recalcula pelo `words.json`. Os números são os do texto da r2b (`50c2c56aaefc`); "Antes da r2b" é a contagem no texto que a bancada julgou
+(`4f827c30b9f8`).
 
-| Parte | Função | Plano | Palavras | Tempo a 184 | Tempo a 155 | O que o espectador entende ao fim |
-|---|---|---:|---:|---|---|---|
-| gancho | os cinco tempos | 134 | 134 | 0:00–0:44 | 0:00–0:52 | Big Sur fica entre Los Angeles e San Francisco, cujas regiões metropolitanas somam mais de 17 milhões; o distrito do censo em volta da ponte contou menos de 1.500 pessoas, tão vazio quanto o Wyoming. Não é o clima (o plano de 1986), e não é que ninguém veio (quase mil nos anos 1880, na costa do plano). A resposta tem a serra, uma estrada que fecha, uma regra sobre o que se vê e casas vazias. |
-| p1 · What the census counted | estabelecer a régua (2020; a régua de 1986) | 215 | 213 | 0:44–1:53 | 0:52–2:14 | O número é de um distrito do censo, não de uma cidade; o distrito cobre uns dois terços da costa, ao norte, com a serra atrás (o sul é outro distrito); uns 250 mi², umas seis pessoas por milha quadrada, como o Wyoming em 2020; só o Alasca é menos denso; a Califórnia, mais de 40 vezes mais cheia. O plano de 1986 fala de uma costa maior, de mais de 70 milhas. |
-| p2 · Mountains that drop into the sea | a terra (o plano de 1986) | 245 | 248 | 1:53–3:14 | 2:14–3:50 | A serra de Santa Lucia sobe a 5.200 pés e cai no mar; falésias, poucas praias, pouco chão plano. O plano lista os limites (água, acesso, solo instável, fogo e enchente); em 1986, só uma outra estrada vinha do interior; muitos riachos, pouca água, chuva no inverno e seca no verão. O clima é ameno: o problema é chão e acesso. |
-| p3 · Public land and moving ground | a terra pública e a que anda | 225 | 224 | 3:14–4:27 | 3:50–5:17 | Metade da área do plano é floresta nacional e área selvagem, federal; os parques estaduais ficam com mais; as casas cabem no que sobra, e é íngreme. A terra anda: Mud Creek, 2017, fora do distrito, filmado por Shawn Harrison, do USGS; a Caltrans dá nome a outras encostas, Paul's Slide e Regent's Slide. |
-| p4 · Nearly a thousand, by sea | a história (anos 1880 a 1900) | 295 | 301 | 4:27–6:05 | 5:17–7:14 | Gado, sequoia, casca, cal e ouro; quase mil pessoas nos anos 1880, na costa do plano (não no distrito); os nomes que ficaram no mapa (Pfeiffer, Bixby, Anderson, os Post); tudo saía por mar, pelos desembarcadouros (Notley's Landing); Manchester, de 1880 a 1895; a estrada perigosa que fechava parte do ano e segurava o turismo; os primeiros visitantes de diligência. Uma estrada de todo o ano demorou décadas. |
-| p5 · A road cut into the cliffs | a estrada (1919–1965) | 310 | 312 | 6:05–7:47 | 7:14–9:14 | A ideia de Doctor John Roberts; a obra de 1919 (FHWA) a junho de 1937 (≈ US$ 8 milhões, o plano), com presos de três acampamentos de San Quentin, a 35 centavos por dia; a ponte de Bixby Creek é uma das travessias; os colonos furiosos com o estrago; a venda de Pfeiffer em 1934, o começo da proteção; "A way of life had ended"; a estrada trouxe visitantes; a primeira scenic highway do estado em 1965; o tráfego de verão quase todo de recreação. |
-| p6 · The rule about what you can see | a resposta do condado (1986) | 315 | 321 | 7:47–9:32 | 9:14–11:19 | Em 1986, metade da zona costeira era pública; a regra proibia o novo que se visse da Highway 1 e dos mirantes (o "critical viewshed"), com o mirante de Bixby Creek entre os nomeados e o teste da visão normal; o novo tinha de mudar de lugar, de desenho, ou não ser feito; fora da vista, casas com condições; a estrada racionada (quase três milhões de visitantes, o dobro esperado, no máximo 15 % para as casas novas). A regra não esvaziou a costa: decidiu como ela se vê e para quem é a estrada. |
-| p7 · Three years without the road, then fire | o hoje (2023–2026) | 250 | 250 | 9:32–10:53 | 11:19–12:55 | Paul's Slide (janeiro de 2023) e Regent's Slide (fevereiro de 2024, seis milhas ao norte); quase três anos sem atravessar a costa; a reabertura de 14/01/2026, com barras de aço e quase US$ 83 milhões; o Timber Fire de agosto de 2026 (centenas de prédios ameaçados, bombeiros feridos, quase todo contido em meados de outubro), trechos fechados dentro do distrito por semanas, o Plaskett Fire ao sul; a estrada aberta em novembro de 2026. |
-| p8 · Empty homes and passing visitors | o hoje (as casas e os visitantes); a virada da régua | 265 | 267 | 10:53–12:20 | 12:55–14:39 | Menos de 900 casas no distrito, quase quatro em dez vazias no dia do censo; pela pesquisa do Census Bureau, quase todas as vazias são de uso ocasional (na Califórnia, um terço); em 1986, quem trabalhava não achava casa; os visitantes voltaram em 2026 e seguem viagem. O vazio depende do que se conta. |
-| p9 · The view from Bixby Creek | o fecho, numa cena; o comentário | 130 | 126 | 12:20–13:01 | 14:39–15:28 | O mirante de Bixby Creek é um dos lugares da regra; o riacho tem o nome de um colono, e a estrada foi aberta em parte por presos; quase nenhuma casa à vista, em parte pela serra, em parte por uma escolha de 1986; entre as duas metrópoles de mais de 17 milhões, o distrito contou menos de 1.500 moradores. |
+| Parte | Função | Palavras | Tempo a 184 | Tempo a 155 | Antes da r2b | O que o espectador entende ao fim |
+|---|---|---:|---|---|---:|---|
+| gancho | os cinco tempos | 158 | 0:00–0:52 | 0:00–1:01 | 156 | Big Sur fica entre Los Angeles e San Francisco, cujas regiões metropolitanas somam mais de 17 milhões; o distrito do censo em volta da ponte contou menos de 1.500 pessoas, tão vazio quanto o Wyoming. Não é o clima (o plano de 1986, um livro de regras do que se podia construir), e não é que ninguém veio (quase mil nos anos 1880, na costa do plano). A resposta tem a serra, uma estrada que cede, uma regra sobre o que se vê e casas vazias. |
+| p1 · The number, and the district it belongs to | a régua (2020; a régua de 1986) e o convite do fio | 243 | 0:52–2:11 | 1:01–2:35 | 257 | O número é de um distrito do censo, não de uma cidade; o distrito cobre uns dois terços da costa, com a serra atrás (o sul é outro distrito); uns 250 mi², umas seis pessoas por milha quadrada, como o Wyoming em 2020; só o Alasca é menos denso; a Califórnia, mais de 40 vezes mais cheia. O plano de 1986 fala de uma costa maior, de mais de 70 milhas. E: onde você poria a casa? |
+| p2 · Try to build a house | a terra, como tentativa do espectador | 429 | 2:11–4:31 | 2:35–5:21 | 457 | Quase não há chão plano: a serra sobe a 5.200 pés e cai no mar. Uma estrada (em 1986, só uma outra vinha do interior). Muitos riachos, pouca água, chuva no inverno e seca no verão. O que falta é chão e acesso, não clima. Metade da área do plano é floresta nacional e área selvagem (pode-se andar, não morar); os parques estaduais ficam com mais. E a terra anda: Mud Creek (2017, fora do distrito), Paul's Slide, Regent's Slide. |
+| p3 · Nearly a thousand, by sea | a história (anos 1880 a 1900) | 210 | 4:31–5:39 | 5:21–6:43 | 214 | Gado, sequoia, casca, cal e ouro; quase mil pessoas nos anos 1880, na costa do plano (não no distrito); os Pfeiffer e Charlie Bixby no mapa; tudo saía por mar; a estrada perigosa que fechava parte do ano; os primeiros visitantes de diligência. Uma estrada de todo o ano demorou décadas. |
+| p4 · A road cut into the cliffs | a estrada (1919–1980s) | 290 | 5:39–7:14 | 6:43–8:35 | 293 | A obra de 1919 (FHWA) a junho de 1937, quase duas décadas; os riachos e a ponte de Bixby Creek; presos de três acampamentos de San Quentin, a 35 centavos por dia e com a pena reduzida; os colonos furiosos com o estrago; a venda de Pfeiffer em 1934; ≈ US$ 8 milhões e "a way of life had ended"; a estrada trouxe visitantes; a primeira scenic highway do estado em 1965; o tráfego de verão quase todo de recreação. Quanto desta costa se devia construir? |
+| p5 · The rule about what you can see | a resposta do condado (1986) | 309 | 7:14–8:54 | 8:35–10:34 | 318 | Em 1986, muito da costa já era público; a regra proibia o novo que se visse da Highway 1 e dos mirantes (o "critical viewshed"), com o mirante de Bixby Creek entre os nomeados e o teste da visão normal; o novo tinha de mudar de lugar, de desenho, ou não ser feito; fora da vista, casas com condições; a estrada racionada (quase três milhões de visitantes em 1986, o dobro esperado, no máximo 15 % para as casas novas). A regra não esvaziou a costa: decidiu como ela se vê e para quem é a estrada. |
+| p6 · Three years without the road, then fire | o hoje (2023–2026) | 266 | 8:54–10:21 | 10:34–12:17 | 271 | Paul's Slide (janeiro de 2023) e Regent's Slide (fevereiro de 2024, seis milhas ao norte); quase três anos sem atravessar a costa; a reabertura de 14/01/2026, com barras de aço e quase US$ 83 milhões; Kirk Gafill, do Nepenthe, e a recuperação; o Timber Fire de agosto de 2026 (centenas de prédios ameaçados, quase todo contido em meados de outubro), trechos fechados dentro do distrito por semanas, o Plaskett ao sul; a estrada aberta em novembro de 2026. |
+| p7 · Empty homes, passing visitors, and the view from Bixby Creek | as casas e os visitantes; a virada da régua; o fecho, numa cena; o comentário | 355 | 10:21–12:17 | 12:17–14:35 | 355 | Pouco menos de 900 casas no distrito, quase quatro em dez vazias no dia do censo; pela pesquisa do Census Bureau, quase todas as vazias são de uso ocasional (na Califórnia, um terço); os visitantes voltaram em 2026 e seguem viagem. O vazio depende do que se conta. No mirante de Bixby Creek, quase nenhuma casa à vista: em parte a serra, em parte uma escolha de 1986; entre as duas metrópoles de mais de 17 milhões, o distrito contou menos de 1.500 moradores. |
 
-O plano orçava 2.384 e o esqueleto medido tinha 2.379; o texto fechou em **2.396**, dentro da folga de ±30 em toda parte
-(`escrita-notas.md` §1). Os 34 pedidos à voz têm de 43 a 104 palavras, fora o 1º do gancho, com 35, de propósito: a quebra cai depois do
-"Why?" (`escrita-notas.md` §2). A 155 palavras/min o vídeo passa dos 15 min da faixa: o teste às cegas do ritmo decide, e a ordem de
-cortes do plano (`destino_das_cifras` › `cortar_primeiro`) tira até ~96 palavras sem descer de 2.250: f75 (−23), f82–f84 (−36), f93
-(−10), f116 (−17) e f150 (−10).
+Os 35 pedidos à voz têm de 44 (o 3º de p2, f49 e f52) a 95 palavras (o 1º de p3), fora o 1º do gancho, com 36, de propósito (a quebra cai
+depois do "Why?"); antes da r2b, de 46 a 99. A 155 palavras/min o vídeo tem 14:35 de fala (≈ 14:55 com a cauda); o teste às cegas do ritmo
+decide. O texto está a 10 palavras do piso (a r2 julgada estava a 71): não há folga para outra subtração sem descer de 2.250.
 
 ## As chamadas (CTA), pela regra de `marca/cta.md`
 
-- **Inscrição (35 a 60 %, nunca no 1º minuto):** na pausa depois de f89 ("Some locals earned extra money guiding hunters and fishermen from
-  the cities."), sobre f90, "A road you could count on in every season was decades away." (12 palavras, palavras 1.108–1.120; ≈ 6:01–6:05
-  a 184 e ≈ 7:04–7:09 a 155), e a pausa de fim de parte antes de p5. Ela termina a ≈ 46 % do vídeo (fala + cauda) nos dois ritmos. Frase
-  calma, sem número, sem "here" nem "this line", fora da frase-chave da parte (que é f71–f72). Por baixo, o mapa da costa do plano já
-  pousado, com os desembarcadouros acesos e a estrada antiga em pontilhado, câmera parada; o regente confere que o rótulo "CLOSED PART OF
-  THE YEAR" de f86 já saiu do terço de baixo (cta §5).
-- **Reserva:** a do plano ("The agency was tracking how the slide kept changing.", f61) termina na palavra 744, a ≈ 30 % do vídeo, fora
-  da janela: não serve. O candidato do roteirista (p5, 3º parágrafo, f103–f107, até ≈ 54 %) esbarra no cta §5 se a regência puser ali a
-  folha recriada do plano com "A way of life had ended" (f106–f107 são citação sendo lida). Outro candidato, para o regente pesar: f108,
-  "The new road put the coast within easy reach." (palavras 1.339–1.348; ≈ 7:17 a 184, ≈ 55 %), sem número, só se a câmera ficar parada
-  até o recuo de f109 começar.
-- **Comentário (perto do fim):** sobre f180–f181, "The creek below carries a homesteader's name. Above it runs a road that prisoners helped
-  cut into the cliffs." (20 palavras, palavras 2.302–2.321; ≈ 12:31–12:37 a 184, ≈ 14:51–14:58 a 155), `?lugar=cima`, com a foto da ponte
-  parada por baixo. É depois do último fato novo (p8); as duas frases só lembram p4 e p5. A peça sai antes de f182 ("Hardly a house is in
-  sight.", a fala aponta a imagem) e muito antes da cauda (que começa em ≈ 13:01 a 184 e ≈ 15:28 a 155). A pergunta do plano é "Would you
-  live in Big Sur, or just visit?" (alternativas: "Would you live on this coast, or just visit?" e "Would you live where the road can close
-  for years?"); quem a fecha e a roda no `_perguntas.mjs` é o `redator-de-tela`. A chamada é só de tela: a voz não a lê.
-- **Onde NÃO:** o gancho e o 1º minuto; p1, 2º parágrafo (a régua desenhada); p5, 1º e 2º parágrafos (a linha do tempo e os acampamentos
-  acendendo); p6 inteiro (a regra, o cone de visão, o mirante acendendo, a faixa de capacidade); p7 inteiro (os fechamentos animados e o
-  fogo); f175 e f187 (o número do distrito).
+- **Inscrição (35 a 60 %, nunca no 1º minuto):** na pausa depois de f84 ("Some locals earned extra money guiding hunters and fishermen from
+  the cities."), sobre f85, "A road you could count on in every season was decades away." (12 palavras, palavras 1.029–1.040; ≈ 5:35–5:39
+  a 184 e ≈ 6:38–6:43 a 155), e a pausa de fim de parte antes de p4. Ela termina a ≈ 45 % do vídeo (fala + cauda) nos dois ritmos (44,8 %
+  a 184 e 45,0 % a 155; antes da r2b, ≈ 45,5 %). Frase calma, sem número, sem "here" nem "this line", fora da frase-chave da parte (f74–f75). Por baixo, o mapa da costa do
+  plano pousado, com os desembarcadouros acesos e a estrada antiga em pontilhado, câmera parada; o regente confere que o rótulo "CLOSED PART
+  OF THE YEAR" de f82 já saiu do terço de baixo (cta §5).
+- **Reserva:** f98, "The new road put the coast within easy reach." (palavras 1.237–1.245; ≈ 6:43 a 184, ≈ 54 % com a cauda), sem número,
+  só se a câmera ficar parada até o recuo de f99 começar. O 3º parágrafo de p4 (f94–f97) não serve: f97 é citação sendo lida, e a folha
+  recriada do plano pode estar na tela (cta §5).
+- **Comentário (perto do fim):** sobre f164–f165, "The creek below carries a homesteader's name. Above it runs a road that prisoners helped
+  cut into the cliffs." (19 palavras, palavras 2.171–2.189; ≈ 11:48–11:54 a 184, ≈ 14:00–14:07 a 155), `?lugar=cima`, com a foto da ponte
+  parada por baixo. É depois do último fato novo (p7, f154); as duas frases só lembram p3 e p4. A peça sai antes de f166 ("Hardly a house
+  is in sight.", a fala aponta a imagem) e antes da cauda (≈ 12:17 a 184, ≈ 14:35 a 155). A pergunta do plano é "Would you live in Big Sur,
+  or just visit?" (alternativas: "Would you live on this coast, or just visit?" e "Would you live where the road can close for years?"); o
+  fio da r2 ("Say you wanted to move to this coast") a deixa mais natural. Quem a fecha e a roda no `_perguntas.mjs` é o `redator-de-tela`.
+  A chamada é só de tela: a voz não a lê.
+- **Onde NÃO:** o gancho e o 1º minuto; p1, 2º parágrafo (o contorno desenhado); p4, 1º e 2º parágrafos (a linha do tempo e os acampamentos
+  acendendo); p5 inteiro (a regra, o cone de visão, o mirante acendendo, a faixa de capacidade); p6 inteiro (os fechamentos animados e o
+  fogo); f159 e f169 (o número do distrito).
 
 ## O destino das cifras
 
-No máximo cinco cifras para a memória, ditas e retomadas onde pagam; as outras ditas uma vez, arredondadas e com o hedge, ou só na tela
-com a fonte e o ano, ou cortadas. Um número por frase e a frase seguinte sem número (as três exceções declaradas do plano: f2 → f3, f186 →
-f187, e f142 → f143, com o vizinho vago). Datas e durações não contam como cifra. Na voz, só milhas; acres só na tela; nenhum decimal na voz.
+No máximo cinco cifras para a memória, ditas e retomadas onde pagam; as outras ditas uma vez, arredondadas e com o hedge, ou só na tela com
+a fonte e o ano, ou cortadas. A regra "um número por frase, e a frase seguinte sem número" saiu (a Sala, 02/11/2026, pelo "engessado"): onde
+dois números contam a mesma coisa, ficam juntos (f26). Datas e durações não contam como cifra. Na voz, só milhas; acres só na tela; nenhum
+decimal na voz.
 
 **Narradas, para a memória (5):**
-1. "fewer than 1,500" (o distrito do censo, 2020): f3 e f187, as duas com "the census district". C3; Sala. Tela: 1,474 · CENSUS DISTRICT ·
+1. "fewer than 1,500" (o distrito do censo, 2020): f3 e f169, as duas com "the census district". C3; Sala. Tela: 1,474 · CENSUS DISTRICT ·
    2020.
-2. "more than 17 million" (Los Angeles e San Francisco, as duas regiões metropolitanas): f2 e f186 (e f109 sem número: "less than a day's
+2. "more than 17 million" (Los Angeles e San Francisco, as duas regiões metropolitanas): f2 e f168 (e f99 sem número: "less than a day's
    drive"). L2, K2. Tela: 17 MILLION+, com o ano no crédito (17,474,482 em 2025 ou 17,958,344 na base de 2020).
-3. "about six people per square mile" (= o Wyoming, 2020): f24, com "as empty as Wyoming" sem número em f3 e f175. C3, C1, C2. Tela: ≈ 6
+3. "about six people per square mile" (= o Wyoming, 2020): f24, com "as empty as Wyoming" sem número em f3 e f159. C3, C1, C2. Tela: ≈ 6
    PEOPLE / SQ MI · 2020; WYOMING 5.94 · CALIFORNIA 253.7 / SQ MI · 2020.
-4. "nearly a thousand" (anos 1880, a costa do plano): f8 e f71, sempre atribuído ao plano e dito da costa. P [1481]. Tela: NEARLY 1,000
-   PEOPLE · 1880s · MONTEREY COUNTY PLAN (1986).
-5. "almost four in ten" (casas vazias no dia do censo de 2020, no distrito): f161 (o gancho o anuncia sem número em f12). C3 (345 de 887).
+4. "nearly a thousand" (anos 1880, a costa do plano): f8 e f74, sempre atribuído ao plano (f8; f75) e dito da costa. P [1481]. Tela: NEARLY
+   1,000 PEOPLE · 1880s · MONTEREY COUNTY PLAN (1986).
+5. "almost four in ten" (casas vazias no dia do censo de 2020, no distrito): f147 (o gancho o anuncia sem número em f13). C3 (345 de 887).
    Tela: 887 HOMES · 345 EMPTY ON CENSUS DAY · 2020 CENSUS.
+O ouvinte da r2 levaria também "no more than 15 percent" (f118) e "35 cents a day" (f92): ficam ditas uma vez, onde estão.
 
-**Narradas uma vez:** "roughly two-thirds" (f19; L1); "about 250 square miles" (f22; C3, L1); "only Alaska" (f26; C1, C2, conta); "more
-than 40 times" (f27; C3, conta 43×); "more than 70 miles" (f29; P [51]; a mais de 150 palavras de qualquer 1.500); "5,200 feet" (f34; P
-[53]); "just one other road" (f41; P [1293]); "nearly fifty" (f44; P [58]) e "dozens" (f94, a mesma conta em palavras); "about half" (f51;
-P [79]) e "about half" (f115; P [1514]), duas metades do plano, cada uma com o seu objeto; "three" camps (f97) e "35 cents a day" (f99; L4),
-em frases separadas; "about 8 million dollars" (f105; P [1232]); "nearly all summer traffic" (f112; P [1300]); "nearly three million
-visitors a year", em 1986 (f129; P [1298]), e "double" (f131); "no more than 15 percent" (f133; P [1429]); "six miles" (f140; L5); "almost
-three years" (f142; L5); "thousands of steel bars" (f143; L5 relida); "nearly 83 million dollars" (f145; L5); "hundreds of homes,
-businesses and other buildings" (f151; DS2, em palavras); "a little under 900" (f159; C3); "nearly all" das vazias (f164; DS4); "about a
-third" (f166; DS4). Datas: 1880s, 1895, a virada do século, 1919, 1934, junho de 1937, 1965, 1980s, 1986, 2017, julho (de 2017), janeiro
-de 2023, fevereiro de 2024, 14/01/2026, agosto de 2026, meados de outubro, novembro de 2026, 2020 e 2020 a 2024.
+**Narradas uma vez:** "roughly two-thirds" (f19, desde a r2b; L1); "about 250 square miles" (f23; C3, L1); "only Alaska" (f26; C1, C2); "more than 40
+times" (f26; C3); "more than 70 miles" (f28; P [51]; a mais de 150 palavras de qualquer 1.500); "about 5,200 feet" (f38; P [53]); "just one
+other road" (f43; P [1293]); "nearly fifty" (f44; P [58]) e "dozens" (f88, a mesma conta em palavras); "about half" (f55; P [79]); "three
+temporary camps" (f91) e "35 cents a day" (f92; L4), em frases separadas; "about 8 million dollars" (f97; P [1232]); "nearly all of its
+summer traffic" (f101; P [1300]); "nearly three million visitors a year", em 1986, "double" e "20 to 25 years" (f116; P [1298]); "no more than
+15 percent" (f118; P [1429]); "six miles" (f125; L5); "almost three years" (f128; L5); "thousands of steel bars" (f129; L5); "nearly 83 million
+dollars" (f131; L5); "hundreds of homes, businesses and other buildings" (f137; DS2, em palavras); "a little under 900" (f146; C3); "nearly
+all" das vazias (f150; DS4); "about a third" (f152; DS4). Datas: os anos 1880, a virada do século, 1919, 1934, junho de 1937, 1965, os anos
+1980, 1986, 2017, julho (de 2017), janeiro de 2023, fevereiro de 2024, 14/01/2026, maio de 2026, agosto de 2026, meados de outubro, novembro de
+2026, 2020 e 2020 a 2024.
 
-**Só na tela:** 1,474 e 251.4 SQ MI OF LAND; 5.86 vs 5.94 / SQ MI (2020); 253.7 (Califórnia, 2020) (C3, C1, C2, conta); 17,474,482 (2025)
-ou 17,958,344 (base de 2020), com o ano (L2, K2); MORE THAN 70 MI · MONTEREY COUNTY PLAN (1986) (P [51]); CONE PEAK · 5,200 FT (P [53]);
-≈ HALF FEDERAL LAND (P [79]); MUD CREEK · JULY 19, 2017 · USGS (L6); 706 ACRES (Pfeiffer, 1934; P [1235]); FINISHED JUNE 27, 1937 · ≈ $8
-MILLION (P [1232]); SAN QUENTIN · 3 TEMPORARY CAMPS · 35¢ A DAY · FHWA (L4); FIRST STATE SCENIC HIGHWAY · 1965 (P [1291]); PEAK SUMMER:
-95% RECREATIONAL TRIPS · 1986 PLAN (P [1300]); ≈ 2.9 MILLION VISITORS A YEAR · 1986 · EXPECTED TO DOUBLE IN 20–25 YEARS (P [1298]); 85%
-RECREATION & VISITORS · NEW HOMES ≤ 15% OF CAPACITY · 1986 PLAN (P [1428]–[1429]; o 85 % inclui militares e agricultura: ver f132); PAUL'S
-SLIDE · JAN 14, 2023 – JUN 23, 2024; REGENT'S SLIDE · FEB 9, 2024 · 6 MI NORTH; REOPENED JAN 14, 2026 · NOON · $82.6 MILLION (EST.); 4,600
-STEEL BARS · UP TO 60 FT · CALTRANS (L5); TIMBER FIRE · STARTED AUG 8, 2026 · 25,352 ACRES · 661 STRUCTURES THREATENED · CAL FIRE, e os 3
-bombeiros feridos e os 97 % contido, se a tela os quiser (DS2); NOV 1, 2026: OPEN · ONE-WAY AT WORK ZONES · CALTRANS (DS3); 887 HOMES · 345
-EMPTY (C3); OF THE EMPTY: ≈ 93% SEASONAL / OCCASIONAL USE · ACS 2020–2024 (WIDE MARGINS); CALIFORNIA ≈ 33% · MONTEREY COUNTY ≈ 54% (DS4);
-'THE VISITORS CAME BACK' · CALTRANS, MAY 2026 (O cético, "O que passou"); e, em toda cena de mapa com a Highway 1 do OSM, "© OpenStreetMap
-contributors".
+**Só na tela:** 1,474 e 251.4 SQ MI OF LAND; 5.86 vs 5.94 / SQ MI (2020); 253.7 (Califórnia, 2020) (C3, C1, C2); 17,474,482 (2025) ou
+17,958,344 (base de 2020), com o ano (L2, K2); MORE THAN 70 MI · MONTEREY COUNTY PLAN (1986) (P [51]); CONE PEAK · 5,200 FT (P [53]); ≈ HALF
+FEDERAL LAND (P [79]); MUD CREEK · JULY 19, 2017 · USGS (L6); 706 ACRES (Pfeiffer, 1934; P [1235]); FINISHED JUNE 27, 1937 · ≈ $8 MILLION (P
+[1232]); SAN QUENTIN · 3 TEMPORARY CAMPS · 35¢ A DAY · FHWA (L4); FIRST STATE SCENIC HIGHWAY · 1965 (P [1291]); PEAK SUMMER: 95% RECREATIONAL
+TRIPS · 1986 PLAN (P [1300]); ≈ 2.9 MILLION VISITORS A YEAR · 1986 · EXPECTED TO DOUBLE IN 20–25 YEARS (P [1298]); 85% RECREATION & VISITORS ·
+NEW HOMES ≤ 15% OF CAPACITY · 1986 PLAN (P [1428]–[1429]; o 85 % inclui militares e agricultura); PAUL'S SLIDE · JAN 14, 2023 – JUN 23, 2024;
+REGENT'S SLIDE · FEB 9, 2024 · 6 MI NORTH; REOPENED JAN 14, 2026 · NOON · $82.6 MILLION (EST.); 4,600 STEEL BARS · UP TO 60 FT · CALTRANS (L5);
+KIRK GAFILL · OWNER, NEPENTHE · CALTRANS, MAY 15, 2026; TIMBER FIRE · STARTED AUG 8, 2026 · 25,352 ACRES · 661 STRUCTURES THREATENED · CAL FIRE,
+e os 3 bombeiros feridos e os 97 % contido, se a tela os quiser (DS2); NOV 1, 2026: OPEN · ONE-WAY AT WORK ZONES · CALTRANS (DS3); 887 HOMES ·
+345 EMPTY (C3); OF THE EMPTY: ≈ 93% SEASONAL / OCCASIONAL USE · ACS 2020–2024 (WIDE MARGINS); CALIFORNIA ≈ 33% · MONTEREY COUNTY ≈ 54% (DS4);
+'THE VISITORS CAME BACK' · CALTRANS, MAY 2026; e, em toda cena de mapa com a Highway 1 do OSM, "© OpenStreetMap contributors".
 
-**Cortadas** (as do plano, e por quê): os 26 milhões das regiões maiores (L2: outra régua); 39.538.223 e o total da Califórnia em 1880 (só
-da busca); o 60 % de terra pública (era plano, não fato; P [1521]); os US$ 10 milhões e o US$ 1,5 milhão da FHWA e o trecho de 65 milhas
-(outra régua: a Highway One inteira); 1921 como começo da obra, 1928 e o encontro de 1934 (só da busca; o 1921 dos eleitores virou "soon
-after", f93); os 4,5 a 7 milhões de visitantes (sem dono primário); o 900 % de Ragged Point (o ano de base tinha a estrada cortada, e na voz
-soaria como contagem de visitantes); os 150.000 acres do plano e os 9.000 acres dos parques; as ~800 casas e os 17 % de 1976 (P
-[1523]–[1524], [1539]: uma terceira régua); a área do fogo em milhas quadradas e os 3 bombeiros na voz; os 3.113 do distrito de San Ardo.
+**Cortadas** (e por quê): os 26 milhões das regiões maiores (L2: outra régua); 39.538.223 e o total da Califórnia em 1880 (só da busca); o
+60 % de terra pública (era plano, P [1521]); os US$ 10 milhões e o US$ 1,5 milhão da FHWA e o trecho de 65 milhas (outra régua: a Highway One
+inteira); 1921, 1922 e 1928 como começo da obra e o encontro de 1934 (só da busca; K6); os 4,5 a 7 milhões de visitantes (sem dono
+primário); o 900 % de Ragged Point (o ano de base tinha a estrada cortada; na voz soaria como contagem de visitantes); os 150.000 acres do
+plano e os 9.000 acres dos parques; as ~800 casas e os 17 % de 1976 (P [1523]–[1524], [1539]: uma terceira régua); a área do fogo e os 3
+bombeiros na voz; os 3.113 do distrito de San Ardo; o "45 percent" do Nepenthe (número de visitantes de hoje). Saíram da voz na r2, sem
+número (podem ir como rótulo): Jim Anderson, os Post, Notley's Landing, Manchester e Alder Creek (1895), os três lugares dos acampamentos,
+Doctor John Roberts e Seaside, os eleitores de 1921, as famílias doadoras, os aviões-tanque, o nome do pesquisador do USGS, os nomes dos
+parques estaduais, "Big Sur Valley" e "south coast".
 
 ## Decisões de escrita
 
-O que o texto faz diferente do plano, com o porquê, está em `roteiros/big-sur/_trabalho/escrita-notas.md`. As cinco que mais importam a
-quem monta a cena:
-1. **O gancho é o do plano, palavra por palavra**, em dois parágrafos: o 1º (35 palavras) acaba no "Why?", e a pausa de parágrafo cai depois
-   dele, não antes. Na cópia para a voz, "1,500" tem de ser "fifteen hundred": com "one thousand five hundred" o "Why?" passa dos 15 s
-   (`escrita-notas.md` §3).
-2. **Cada número diz de que contorno é** (a cadeia referencial do plano): "the census district" em toda frase com número dele; "this coast",
-   "the whole coast" ou "the coast in the plan" para a régua do plano. O mapa segue a fala: o polígono do distrito aceso quando o número
-   dele é dito, e a costa do plano em tracejado próprio quando o número é dela.
-3. **O plano de 1986 sustenta quase todo o ato 2** (p4–p6) e parte dos outros; cada paráfrase tem o índice P [n] abaixo, e as trocas do
-   roteirista ("estimated" em f129, "largely on work like this" em f71, "more of the land" em f55) foram relidas na cópia local.
-4. **"grading" vem glosado** em f124 ("the earthmoving that reshapes a slope", pela definição do plano, P [243]): é a única frase com
-   palavras fora do esqueleto e do plano ao pé da letra; volta à forma curta (−6) se a bancada preferir.
-5. **As quebras de parágrafo servem às chamadas**: p4 fecha em f90 (a inscrição) e p9 quebra depois de f181, onde a chamada de comentário
+O que o r2 faz diferente do r1, com o porquê, está em `roteiros/big-sur/_trabalho/escrita-notas-r2.md`. As cinco que mais importam a quem
+monta a cena:
+1. **O gancho em três parágrafos**: o 1º (36 palavras) acaba no "Why?", e a pausa de parágrafo cai depois dele. O trecho até o "Why?" não
+   ganha palavra (o contrato dos 15 s da pauta §3; por isso a A2 do ouvinte ficou fora da lista). Na cópia para a voz, "1,500" tem de ser
+   "fifteen hundred".
+2. **O fio em segunda pessoa** (f31–f34, o p2 inteiro, f144): a arte o acompanha (a casinha do PERFIL DA ENCOSTA procurando chão, a estrada
+   como prateleira a meia altura, os riachos que somem no verão, a hachura pública onde não se mora).
+3. **A fonte na tela**: na voz, o dono só na citação ou no contestável, uma vez por fonte. Ditos na voz: o plano de 1986 (apresentado em f6
+   como "a rulebook for what could be built on it"; dono de citação em f38, f93, f97 e f110; o condado como ator em f43, f49, f95, f99, f101,
+   f115 e f116), o Census Bureau (f17, f149), o USGS (f62), a Caltrans (f65, f130, f133, f140, f154), a FHWA (f86, com o 1919 contestável) e
+   o CAL FIRE (f137). O resto vai ao crédito, frase por frase, abaixo.
+4. **Cada número diz de que contorno é**: "the census district" em toda frase com número dele; "this coast" ou "the whole coast" para a
+   régua do plano. O mapa segue a fala: o polígono do distrito aceso quando o número dele é dito, e a costa do plano em tracejado próprio
+   quando o número é dela.
+5. **As quebras de parágrafo servem às chamadas**: p3 fecha em f85 (a inscrição) e p7 quebra depois de f165, onde a chamada de comentário
    tem de sair.
 
 ## De onde vem cada frase
 
-"Atribuído" quer dizer: a voz diz de quem é o fato (ou a data). "Mapa" diz o que a frase pede à tela quando a fala é espacial: a região
-falada sempre demarcada (identidade §5), e **o polígono do distrito do censo (TIGER 2020, L1, domínio público, com a procedência) aceso
-sempre que o número dele é dito** (o aviso dos leitores a frio: o 1.474 é só parte da costa); a costa do plano (de Carmel à divisa de San
-Luis Obispo, P [51]) em tracejado próprio quando o número é dela. O que não é espacial (o plano, a regra, a pesquisa) vai a folha recriada,
-card, dado ou animação, nunca a mapa forçado. "Ilustração" é a animação desenhada no traço de engenheiro, de preferência sobre o mapa,
-presa ao lugar (identidade §5, "Sobre o mapa, mais vezes"); os fios visuais do plano são a RÉGUA (p1, p8 e p9), o PERFIL DA ENCOSTA (p2,
-p5 e p7) e o CONE DE VISÃO (gancho, p6 e p9). O mapa é sempre o mesmo: satélite, o distrito aceso ou em contorno fraco, Los Angeles e San
-Francisco demarcadas pelos condados da OMB (L2) quando ditas, a Highway 1 como fio branco do OSM ("© OpenStreetMap contributors"). O
-relevo 3D depende do ok do Lucas para a MapTiler deste vídeo (pauta §10: nenhum vale ainda); sem ele, o satélite plano com o perfil
-desenhado. Quem constrói é o `editor-de-arte` e o `mapista`.
+"Mapa" diz o que a frase pede à tela quando a fala é espacial: a região falada sempre demarcada (identidade §5), e **o polígono do distrito
+do censo (TIGER 2020, L1, domínio público, com a procedência) aceso sempre que o número dele é dito** (o aviso dos leitores a frio: o 1.474 é
+só parte da costa); a costa do plano (de Carmel à divisa de San Luis Obispo, P [51]) em tracejado próprio quando o número é dela. O que não
+é espacial (o plano, a regra, a pesquisa) vai a folha recriada, card, dado ou animação, nunca a mapa forçado. "Ilustração" é a animação
+desenhada no traço de engenheiro, de preferência sobre o mapa, presa ao lugar (identidade §5, "Sobre o mapa, mais vezes"); os fios visuais
+são a RÉGUA (p1 e p7), o PERFIL DA ENCOSTA (p2, p4 e p6) e o CONE DE VISÃO (gancho, p5 e p7). O mapa é sempre o mesmo: satélite, o distrito
+aceso ou em contorno fraco, Los Angeles e San Francisco demarcadas pelos condados da OMB (L2) quando ditas, a Highway 1 como fio branco do
+OSM ("© OpenStreetMap contributors"). O relevo 3D depende do ok do Lucas para a MapTiler deste vídeo (pauta §10: nenhum vale ainda); sem
+ele, o satélite plano com o perfil desenhado. Quem constrói é o `editor-de-arte` e o `mapista`.
 
-### Gancho (o texto de `plano-final.json` › `gancho.texto`, palavra por palavra)
+### Gancho
 
 - **f1** "This is Big Sur, between Los Angeles and San Francisco."
-  - Ids: L1 (a ponte de Bixby fica dentro do distrito "Big Sur CCD", GEOID 0605390235), L2 (as duas cidades pelo nome), §6 (a imagem de
-    abertura), §8 (o gancho A, aprovado com a pauta). Paga "this stretch of California" do título. O alerta do portão (1ª frase sem
-    número) está decidido: a regra da voz §1 aceita "um número ou uma imagem", e a imagem é a ponte (`escrita-notas.md` §4).
-  - Imagem real (a 1ª do lugar, 0–3 s): a foto de drone da ponte de Bixby (L7: Commons, "Mavic of Steel", 24/06/2023, 5.280 × 2.970, CC
-    BY-SA 4.0), com o empurrão lento; crédito `Mavic of Steel / Wikimedia Commons · CC BY-SA 4.0` e a data (é de antes do fogo de 2026,
-    K1 d). Com a caça, o drone 4K de banco (§6, 1-B). O conferente confere o lugar e a licença na página do arquivo.
+  - Ids: R001 (P [51]: "The Big Sur coast of Central California is over seventy miles in length"); R002 (L1 (medição): "point Bixby Bridge 36.3715,-121.9020 -> Big Sur CCD").
+  - Imagem real (a 1ª do lugar, 0–3 s): a foto de drone da ponte de Bixby (L7: Commons, 5.280 × 2.970), com o empurrão lento; crédito `Mavic of Steel / Wikimedia Commons · CC BY-SA 4.0`, com a data (24/06/2023, de antes do fogo de 2026, K1 d). Com a caça, o drone 4K de banco (§6, 1-B). O conferente confere o lugar e a licença na página do arquivo.
+  - O alerta do portão (1ª frase sem número) está decidido: a voz §1 aceita "um número ou uma imagem", e a imagem é a ponte, dentro do distrito (R002).
 - **f2** "Their metro areas hold more than 17 million people."
-  - Ids: L2 (as duas regiões metropolitanas pelos condados da OMB: 17.474.482 em 2025, 17.958.344 na base de 2020; o `censo_metros.py`
-    reroda sobre a cópia local e confere), K2 (nunca "the two largest"; "more than 17 million" vale nos dois anos), Sala ("Los Angeles and
-    San Francisco", pelo nome). "Hold", no presente: a safra 2025. O número seguido do de f3 é a exceção declarada (o normal e a surpresa).
-  - Mapa (o voo do globo à Califórnia): as duas regiões demarcadas pelos condados da OMB (Los Angeles + Orange; San Francisco, Alameda,
-    Contra Costa, Marin e San Mateo; geometria do Census, com procedência), não manchas genéricas; "17 MILLION+" contando. Crédito
-    "Source: U.S. Census Bureau (2025 estimates)", ou a base de 2020 com o ano (K2).
-- **f3** "But the census district around this bridge counted fewer than 1,500, as empty as Wyoming."
-  - Ids: C3 (PL 94-171: "Big Sur CCD", `POP100` 1.474 em 251,4 mi² de terra = 5,86/mi²), L1 (o polígono, com a ponte dentro), C1, C2 (o
-    Wyoming, 5,94/mi² em 2020, o menos denso dos 48 contíguos), §4.1, Sala ("fewer than 1,500", sempre com "the census district"; 2020 com
-    2020). O "But" estrutural (palavra 19). Nenhuma milhagem na frase. Paga "as empty as Wyoming" do título, palavra por palavra.
-  - Mapa (a região falada, demarcada): o polígono do distrito acende entre as duas regiões, com o anel na ponte e "1,474" contando (o exato
-    na tela, o hedge na voz); a silhueta do Wyoming entra ao lado. O resto da costa fica apagado: o distrito tem de ler como parte dela.
-    Crédito "Source: U.S. Census Bureau (2020)".
+  - Ids: R003 (L2, K2 (medição): "together 17,474,482 people in 2025 and 17,958,344 in the 2020 base").
+  - Mapa (o voo do globo à Califórnia): as duas regiões metropolitanas demarcadas pelos condados da OMB (Los Angeles + Orange; San Francisco, Alameda, Contra Costa, Marin e San Mateo; geometria do Census, com procedência), não manchas genéricas; "17 MILLION+" contando. Crédito `Source: U.S. Census Bureau, 2025` (ou a base de 2020, com o ano; K2).
+  - "Hold", no presente: a safra 2025. Nunca "the two largest" (K2; Sala).
+- **f3** "But the census district around this bridge counted fewer than 1,500 people, as empty as Wyoming."
+  - Ids: R004 (C3 (medição): "census 2020 population (POP100) 1,474 people"); R005 (C1, C2, C3 (medição): "576,872 people over 97,089 square miles of land = 5.94 per square mile; Big Sur CCD 5.86"); R006 (L1 (medição): "point Bixby Bridge 36.3715,-121.9020 -> Big Sur CCD").
+  - Mapa (a região falada, demarcada): o polígono do distrito (TIGER 2020, L1, domínio público, com procedência) acende entre as duas regiões, com o anel na ponte e "1,474" contando (o exato na tela, o hedge na voz); a silhueta do Wyoming entra ao lado; o resto da costa fica apagado (o distrito tem de ler como parte dela: o aviso dos leitores a frio). Crédito `Source: U.S. Census Bureau, 2020`.
+  - O "But" estrutural (palavra 19); nenhuma milhagem na frase (Sala). A A2 do ouvinte ("which, for its size, is as empty as Wyoming") ficou fora da lista-r2: o trecho até o "Why?" não pode ganhar palavra (pauta §3; "O cético", "O que passou").
 - **f4** "Why?"
-  - Ids: — (sem fato: a pergunta curta, palavra 35; até ela não entra palavra nem pausa longa, O cético, "O que passou").
-  - Ilustração sobre o mapa (de ~12 a ~16 s): a RÉGUA, um quadrado de uma milha quadrada com seis pontinhos ao lado do Wyoming com seis
-    (números e escala; o da Califórnia entra em f27).
-- **f5** "It isn't the weather."
-  - Ids: P [65] ("The climate in Big Sur is mild"), pago em f6 e f47; §4.2.
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Ilustração sobre o mapa (de ~12 a ~16 s): a RÉGUA, um quadrado de uma milha quadrada com seis pontinhos ao lado do Wyoming com seis (o da Califórnia entra em f26). Sem fato: a pergunta na palavra 36 (37 na cópia para a voz, com "fifteen hundred"; ≈ 14,8 s a 150 palavras/min).
+- **f5** "It isn't a harsh climate."
+  - Ids: R007 (P [65]: "The climate in Big Sur is mild").
   - Imagem real (a 2ª do lugar): a costa em sol (banco, pela caça, ou Commons).
-- **f6** "Monterey County's 1986 plan for this coast, the rulebook for building on it, calls the climate mild." (r1, L01: o ouvinte não sabia o que era o plano até o p6, ouvinte A1; a aposição sai do próprio plano, P [43] "the Land Use Plan for the Big Sur Coast segment of Monterey County's Local Coastal Program" e P [45] "it will provide development standards to guide the actions of all State and local agencies"; a aposição não tem tempo de verbo: nada sobre a regra hoje)
-  - Ids: P [65]; §4.2 ("sim, no gancho"). Atribuído ao plano, com o ano; "for this coast" é a régua do plano (P [51]).
-  - Imagem real: a mesma costa em sol; crédito "Source: Monterey County, Big Sur Coast Land Use Plan (1986)".
+  - Lista r2, L01 (r2b): era "It isn't the weather." (ouvinte A4: "the weather" soa falso ao lado da chuva, do verão seco e de "fire and flood").
+- **f6** "Monterey County's 1986 plan for this coast, a rulebook for what could be built on it, calls the climate mild."
+  - Ids: R008 (P (capa): "LOCAL COASTAL PROGRAM 1986 MONTEREY COUNTY, CALIFORNIA"); R009 (P [45]: "it will provide development standards to guide the actions of all State and local agencies"); R010 (P [65]: "The climate in Big Sur is mild").
+  - Imagem real: a mesma costa em sol. O dono está na voz (o plano apresentado antes de ser citado, A1 do ouvinte da r1); a tela leva o nome por extenso, `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+  - A aposição ("a rulebook for what could be built on it") não tem tempo de verbo: nada diz que a regra vale hoje (Sala).
 - **f7** "And it isn't that nobody came."
-  - Ids: P [1481] (pago em f8); §5 (nunca "nobody lives here"). O alerta "nobody" está decidido: é negação; o [ninguem-mora] não dispara.
-  - Mapa: a costa do plano em tracejado próprio, de Carmel à divisa de San Luis Obispo (P [51]), com o distrito em contorno fraco dentro
-    (dois traços diferentes, para o espectador não somar os dois contornos).
-- **f8** "The same plan says nearly a thousand people lived along this coast by the 1880s."
-  - Ids: P [1481] ("there was a population of nearly 1000 people by the 1880's largely supported by these basic-industries"); §4.3; Sala
-    (atribuído ao plano de 1986 e dito da costa, nunca do distrito). Nenhuma comparação com hoje na frase.
-  - Ilustração sobre o mapa: os desembarcadouros e as casas dos colonos acendendo ao longo da costa do plano (P [1484]: Palo Colorado
-    Canyon, Notley's Landing, Bixby Creek, o vale do Big Sur, Partington Canyon), um barquinho saindo de uma enseada; rótulo "NEARLY 1,000 ·
-    1880s · MONTEREY COUNTY PLAN (1986)". Dois beats (o tracejado e as casas), para nenhum passar de ~8 s.
-- **f9** "So why did so few follow?" (r1, L02: "didn't more follow" pressupunha que mais ninguém veio e podia ser ouvido como "não cresceu", fatos VF03; vieram poucos)
-  - Ids: P [1481]; §8. A pergunta do gancho para o portão. A CONFERIR (montagem): logo depois dos quase mil dos anos 1880, pode ser ouvida
-    como "não cresceu" (o ponto fraco do gancho B, §8; Sala: nunca "it hasn't grown"). Os dois números ficam cada um com o dono, em frases
-    diferentes (f3 e f8), e a gente de hoje na costa inteira do plano não foi lida (§4.1; §11, item 1). A troca pronta do roteirista ("So
-    why didn't more people move in?") carrega a mesma pressuposição: a decisão é do verificador.
-  - Mapa: o relevo da serra caindo no mar (3D com o ok do Lucas para a MapTiler; sem ele, o satélite plano com o perfil desenhado).
-- **f10** "The mountains are only part of it."
-  - Ids: P [53], P [70] (o terreno como limite). Anuncia a resposta sem o como (§8).
+  - Ids: R011 (P [1481]: "there was a population of nearly 1000 people by the 1880's").
+  - Mapa: a costa do plano em tracejado próprio, de Carmel à divisa de San Luis Obispo (P [51]), com o distrito em contorno fraco dentro (dois traços diferentes, para o espectador não somar os dois contornos). O alerta "nobody" está decidido: é negação.
+- **f8** "By the 1880s, the same plan says, nearly a thousand people were living along this coast."
+  - Ids: R012 (P [1481]: "there was a population of nearly 1000 people by the 1880's largely supported by these basic-industries").
+  - Ilustração sobre o mapa: os desembarcadouros e as casas dos colonos acendendo ao longo da costa do plano (P [1484]), um barquinho saindo de uma enseada; rótulo "NEARLY 1,000 · 1880s · MONTEREY COUNTY PLAN (1986)". Atribuído na voz ("the same plan says") e dito da costa, nunca do distrito (Sala).
+- **f9** "So why didn't it fill up?"
+  - Ids: R013 (P [1481]; C3: "there was a population of nearly 1000 people by the 1880's").
+  - Mapa: o relevo da serra caindo no mar (3D só com o ok do Lucas para a MapTiler deste vídeo (pauta §10: nenhum vale ainda); sem ele, o satélite plano com o perfil desenhado). É a pergunta do gancho para o portão; não volta no fecho.
+  - Lista r2, L02 (r2b): era "So why did so few follow?" (ouvinte A11: a conta de 1880 contra hoje; sem o "still" da troca dele).
+- **f10** "Part of the answer is what you'd expect: mountains, and a road that keeps giving way."
+  - Ids: R014 (P [70]: "will continue to serve as a limitation on the kinds of activities that can be carried on and the scale of development").
   - Mapa: o mesmo relevo.
-- **f11** "The rest is a road that has closed again and again, and a rule in that plan about building in sight of it."
-  - Ids: P [1226] (a estrada antiga "closed part of the year"), L6 (Mud Creek, 2017), L5 (Paul's e Regent's, 2023–2026), K1 (o fogo de
-    2026), P [226] (o "critical viewshed"). "Has closed", nunca "is closed" (§5; Depois do sim); a regra sem verbo no presente (Sala).
-  - Imagem real (a 3ª do lugar, 34–39 s): o drone do USGS sobre Mud Creek, 19/07/2017 (L6, domínio público, sem crédito; pixels a medir:
-    abaixo de 4K vai ao Lucas como `pendente_lucas`). Ilustração sobre o relevo (39–44 s): o CONE DE VISÃO a partir da estrada, e as casas
-    novas saindo dele para trás da crista.
-- **f12** "And then there are the homes that often sit empty."
-  - Ids: C3 (887 casas, 345 vagas no dia do censo de 2020), DS4 (quase todas as vagas de uso ocasional, ACS 2020–2024). A virada além de
-    "montanha" e "parque" que os leitores a frio pediram. Sem número.
-  - Dado: os 887 quadradinhos dentro do contorno do distrito, 345 se apagando ("2020 CENSUS").
-- **f13** "You're at Alpha Point, and this is where the story of the coast that never filled up begins."
-  - Ids: — (a assinatura, `marca/embalagem.md` §2, na forma do portão, uma vez, na palavra 134). O `<tema>` não repete o título. O alerta
-    "never" está decidido: a costa nunca encheu (a alternativa do plano: "the coast that stayed almost empty").
-  - A vinheta (identidade §8), que termina virando a marca d'água.
+  - Lista r2, L03 (r2b): era "The mountains are part of it."; f10 e f11 viraram esta frase e "The rest is less obvious." (ouvinte A3, o índice). A estrada que cede veio de f11: os ids dela (R016–R018) e o drone de Mud Creek, listados em f11, valem para esta metade da frase.
+- **f11** "The rest is less obvious."
+  - Ids: R015 CORRIGIR (L4 (FHWA); P [1232]: "Construction on Highway One began in 1919"); R016 (L5: "which closed the highway from January 14, 2023, to June 23, 2024"); R017 (L6: "buried California State Highway 1 under a third-of-a-mile-wide mass of rock and dirt on May 20, 2017"); R018 (L5: "may encounter occasional full closures while crews remove debris").
+  - Imagem real (a 3ª do lugar): o drone do USGS sobre Mud Creek, 19/07/2017 (L6, domínio público; os pixels pelo ffprobe: abaixo de 4K, `pendente_lucas`). "Keeps giving way" confere (Mud Creek, Paul's, Regent's, o aviso da Caltrans).
+  - Lista r2, L03 (r2b): era "A road that took decades to build, and keeps giving way, is another."; a estrada que cede passou a f10, e o "took decades to build" saiu (fatos VF-R2-01: a obra foi de 1919 a 1937, 18 anos, M21; a R015 fica sem frase).
+- **f12** "There's a rule in that plan about building anything you could see from the road."
+  - Ids: R019 (P [226]: "it is the County's policy to prohibit all future public or private development visible from Highway 1 and major public viewing areas").
+  - Ilustração sobre o relevo: o CONE DE VISÃO a partir da estrada, e as casas novas saindo dele para trás da crista. "There's", no presente, fala do texto do plano, não da regra hoje. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+  - Lista r2, L03 (r2b): era "There's also a rule in that plan about building anything you could see from the road." (saiu o "also").
+- **f13** "And there are the homes that do stand along this coast, and often sit empty."
+  - Ids: R020 (C3 (medição): "887 housing units, 542 occupied, 345 vacant on census day"); R021 (DS4 (medição): "265 of 285 vacant homes for seasonal, recreational, or occasional use = 93%").
+  - Dado: os 887 quadradinhos dentro do contorno do distrito, 345 se apagando ("2020 CENSUS"). A virada além de "montanha" e "parque" que os leitores a frio pediram; sem número. Crédito `Source: U.S. Census Bureau, 2020`.
+- **f14** "You're at Alpha Point, and this is where the story of the coast that never filled up begins."
+  - Ids: R022 (C3 (medição); P [1481]: "density 5.86 people per square mile in 2020").
+  - A assinatura (`marca/embalagem.md` §2), uma vez, na palavra 158 (teto 170; 156 antes da r2b). O alerta "never" está decidido: a costa nunca encheu. A vinheta (identidade §8), que termina virando a marca d'água.
 
-### p1 · What the census counted
+### p1 · The number, and the district it belongs to
 
-- **f14** "The census doesn't count a town called Big Sur."
-  - Ids: C3 ("Não existe lugar recenseado 'Big Sur' em 2020"); §5 (nunca "the town of Big Sur"); Sala. "Doesn't count a town called",
-    nunca "there is no town": a comunidade existe.
-  - Mapa: do anel na ponte ao polígono do distrito aceso sobre o satélite, "CENSUS DISTRICT · 2020".
-- **f15** "It counts a district, one of the areas the Census Bureau draws inside a county to report its numbers."
-  - Ids: L1 (TIGER/Line 2020, as subdivisões de condado: "Big Sur CCD"). O termo técnico definido numa oração (voz §1).
-  - Mapa: as subdivisões do condado de Monterey em linha fina, e o distrito aceso entre elas.
-- **f16** "This one, in Monterey County, carries the name Big Sur."
-  - Ids: L1 ("Big Sur CCD", GEOID 0605390235, condado de Monterey).
+- **f15** "Let's start with the district's number, because it's easy to hear it wrong."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Mapa: do anel na ponte ao polígono do distrito aceso sobre o satélite.
+  - Lista r2, L04 (r2b): era "Let's start with that number, because it's easy to hear it wrong." (ouvinte A5 a: "that number" órfão).
+- **f16** "The census doesn't count a town called Big Sur."
+  - Ids: R023 (C3 (medição): "no census place named Big Sur in 2020").
+  - Mapa: "CENSUS DISTRICT · 2020" sobre o polígono. "Doesn't count a town called", nunca "there is no town": a comunidade existe.
+- **f17** "It counts a district, one of the areas the Census Bureau draws inside a county to add up its numbers."
+  - Ids: R024 (Census, glossário de geografia: "are areas delineated by the Census Bureau in cooperation with state, tribal, and local officials for statistical purposes").
+  - Mapa: as subdivisões do condado de Monterey em linha fina, e o distrito aceso entre elas. O Census Bureau dito na voz (a 1ª vez). Crédito `Source: U.S. Census Bureau, 2020`.
+- **f18** "This one, in Monterey County, carries the name Big Sur."
+  - Ids: R025 (L1, C3 (medição): "Big Sur CCD (GEOID 0605390235, Monterey County)").
   - Mapa: o rótulo "BIG SUR CCD · MONTEREY COUNTY".
-- **f17** "It begins a few miles south of Carmel and follows the shore past this bridge, a long way down the coast."
-  - Ids: L1 (a terra vai de ~36,48 N, logo ao sul de Carmel Highlands, a ~35,99 N na costa; Bixby dentro; Carmel Highlands e Point Lobos
-    no distrito de Carmel-by-the-Sea, pelas coordenadas da autora da pauta, que o mapista confere).
-  - Mapa: o polígono se desenha de norte a sul enquanto a frase corre; o anel passa pela ponte. Imagem real (opcional, no "past this
-    bridge"): a foto da ponte (L7), com a data.
-- **f18** "Behind the shore, it climbs into the mountains."
-  - Ids: L1; §4.1 ("mais a serra atrás"). O 1º corte da parte, pelo plano.
-  - Mapa: o polígono subindo a serra.
-- **f19** "Altogether, it takes in roughly two-thirds of the Big Sur coast."
-  - Ids: L1; pauta, "Três coisas", item 1 ("uns dois terços do norte da costa"); Sala. Conta da pauta: ~34 mi de norte a sul em linha reta.
+- **f19** "It takes in roughly two-thirds of the Big Sur coast and the mountains behind it, from a few miles south of Carmel, past this bridge, and a long way down the shore."
+  - Ids: R026 (L1 (medição): "5.0 miles (latitude only) south of Carmel-by-the-Sea; its land reaches the shore south to 35.9921 N"); R027 (L1 (medição): "point Bixby Bridge 36.3715,-121.9020 -> Big Sur CCD"); R028 (L1 (medição): "point Ventana Double Cone (mountains) 36.2930,-121.7210 -> Big Sur CCD").
+  - Mapa: o polígono se desenha de norte a sul enquanto a frase corre; o anel passa pela ponte; no fim, o polígono sobe a serra. Imagem real (opcional, no "past this bridge"): a foto da ponte (L7), com o crédito e a data.
+  - Lista r2, L05 (r2b): era "It starts a few miles south of Carmel, follows the shore past this bridge and a long way down the coast, and then climbs back into the mountains behind it."; f19 e f20 viraram esta frase (ouvinte A5 b; a serra fica). Os dois terços de f20 (R029) e o mapa dela valem aqui.
+- **f20** ~~"Altogether, it takes in roughly two-thirds of the Big Sur coast."~~
+  - Ids: R029 (L1 (medição): "= 0.64 of the coast = 1.92 thirds (roughly two-thirds)").
   - Mapa: o distrito aceso e o resto da costa do plano apagado, para os dois terços se verem.
-- **f20** "The southern end belongs to a different district, one that reaches over the mountains to a valley inland."
-  - Ids: L1 (o distrito de San Ardo: Gorda, Mud Creek e o Cone Peak; a divisa chega ao mar em 35,9921 N, 121,5010 W); "Três coisas", item 1
-    (a gente de San Ardo mora no vale do outro lado da serra). Os 3.113 de San Ardo ficam no fundo (K7).
-  - Mapa: o distrito de San Ardo só contornado, "ANOTHER CENSUS DISTRICT", indo até o vale do outro lado da serra.
-- **f21** "The count is from 2020, the most recent census."
-  - Ids: C3 (o censo de 2020); §4.1.
-  - Tela: "1,474 · CENSUS DISTRICT · 2020", sobre o polígono.
-- **f22** "The district has about 250 square miles of land."
-  - Ids: C3, L1 (251,4 mi² de terra; os 195,2 mi² de água ficam fora); §4.1 ("about 250 square miles").
-  - Mapa: o polígono com "251.4 SQ MI OF LAND".
-- **f23** "Spread its people evenly across all of it."
-  - Ids: — (sem fato novo: a média é a distribuição igual, `escrita-notas.md` §2; imperativo de explicação, não de mapa).
-  - Ilustração: os pontinhos se espalhando por igual dentro do polígono.
-- **f24** "You get about six people per square mile."
-  - Ids: C3 (1.474 / 251,4 = 5,86/mi², conta do `contas_big_sur.py`); §4.1; Sala ("about six people per square mile").
-  - Ilustração sobre o mapa: a RÉGUA, o quadrado de uma milha quadrada do distrito com seis pontinhos; tela "≈ 6 PEOPLE / SQ MI · 2020".
+  - Lista r2, L05 (r2b): juntada a f19.
+- **f21** "The southern end of the coast belongs to a different district, one that reaches over the mountains to a valley inland."
+  - Ids: R030 (L1 (medição): "point Mud Creek 35.8655,-121.4305 -> San Ardo CCD"); R031 (L1 (medição): "point San Ardo (town, Salinas Valley) 36.0205,-120.9044 -> San Ardo CCD").
+  - Mapa: o distrito de San Ardo só contornado, "ANOTHER CENSUS DISTRICT", indo até o vale do outro lado da serra. Os 3.113 de San Ardo ficam fora (K7).
+- **f22** "The count is from 2020, the most recent census."
+  - Ids: R032 (C3 (medição): "census 2020 population (POP100) 1,474 people").
+  - Tela: "1,474 · CENSUS DISTRICT · 2020", sobre o polígono. Crédito `Source: U.S. Census Bureau, 2020`.
+- **f23** "The district has about 250 square miles of land."
+  - Ids: R033 (C3, L1 (medição): "land area 251.4 square miles in 2020").
+  - Mapa: o polígono com "251.4 SQ MI OF LAND" (os 195,2 mi² de água ficam fora). Crédito `Source: U.S. Census Bureau, 2020`.
+- **f24** "Spread its people evenly across all of it, and you get about six people per square mile."
+  - Ids: R034 (C3 (medição): "density 5.86 people per square mile in 2020").
+  - Ilustração: os pontinhos se espalhando por igual dentro do polígono, até a RÉGUA (o quadrado de uma milha quadrada com seis); tela "≈ 6 PEOPLE / SQ MI · 2020". Crédito `Source: U.S. Census Bureau, 2020`.
 - **f25** "Wyoming had about the same that year."
-  - Ids: C1, C2 (576.872 na base de 2020 / 97.089 mi² = 5,94/mi²); Sala (2020 com 2020: "that year"); K7 (a contagem do censo do Wyoming
-    fica com o verificador; a densidade é 5,94 nas duas).
-  - Mapa: a câmera recua até os EUA; o Wyoming acende ao lado da Califórnia, "≈ 6 / SQ MI · 2020" no distrito e no Wyoming. Ilustração: o
-    quadrado do Wyoming com seis.
-- **f26** "Among U.S. states, only Alaska had fewer people for its size."
-  - Ids: C1, C2 (o menos denso dos 48 contíguos; o seguinte é Montana, 7,45); conta deste editor sobre as cópias locais (a base de 2020 do
-    `co-est2025-alldata.csv`, L2, e a terra dos condados do `2020_Gaz_counties_national.txt`): Alasca 1,28/mi², Wyoming 5,94, Montana 7,45;
-    o Havaí é denso. A reescrita do roteirista confere. "U.S. states", nunca "our country".
-  - Mapa: o Alasca acende por um instante, mais claro que o Wyoming.
-- **f27** "California, the most populous of them, was more than 40 times as crowded."
-  - Ids: C3 (39.538.223 em 155.858 mi² = 253,7/mi²; 43× o distrito e 42,7× o Wyoming: "more than 40" vale nos dois), L2 (o estado mais
-    populoso). "Of them" = os estados da frase anterior.
-  - Ilustração: o terceiro quadrado, o da Califórnia com ~250 pontinhos; tela "WYOMING 5.94 · CALIFORNIA 253.7 / SQ MI · 2020".
-- **f28** "The county's plan for this coast draws a longer outline."
-  - Ids: P [51] (a área do plano); §4.1 ("A costa do plano"). A segunda régua.
-  - Mapa: a costa do plano em tracejado próprio, com o distrito dentro.
-- **f29** "It covers the whole coast, more than 70 miles, from Carmel down to the next county."
-  - Ids: P [51] ("over seventy miles in length and stretches from the Carmel area on the north, south to the San Luis Obispo County line
-    near San Simeon"); §4.1, §5; Sala (as 70 milhas nunca na frase do 1.500; nenhum 1.500 no p1).
-  - Mapa: o tracejado de Carmel à divisa de San Luis Obispo, "MORE THAN 70 MI · MONTEREY COUNTY PLAN (1986)".
-- **f30** "The census district and the plan don't cover the same ground." (r1, L03: sem o molde "Keep … in mind" do vídeo 4 e sem a promessa de espera, roteiro 7a; a régua dos dois contornos fica, que o ouvinte pôs no NÃO TOCAR)
-  - Ids: L1, P [51] (os dois contornos). O 2º corte da parte, só se f72 continuar dizendo a régua.
-  - Mapa: os dois contornos juntos, em traços diferentes.
-- **f31** "To see why the census number is so low, start with the ground itself."
-  - Ids: — (ponte do plano, sem fato novo).
-  - Mapa: o voo baixa para o relevo da serra.
+  - Ids: R035 (C1, C2 (medição): "576,872 people over 97,089 square miles of land = 5.94 per square mile").
+  - Mapa: a câmera recua até os EUA; o Wyoming acende ao lado da Califórnia, "≈ 6 / SQ MI · 2020" no distrito e no Wyoming; o quadrado do Wyoming com seis. Crédito `Source: U.S. Census Bureau, 2020` (o Wyoming da tela pede a contagem do PL, que o `pesquisa-dados` lê antes da tela, K7; a densidade é 5,94 nas duas).
+- **f26** "Among U.S. states, only Alaska had fewer people for its size, and California, the most populous of them, was more than 40 times as crowded as this district."
+  - Ids: R036 (C1, C2 (medição): "Alaska 1.28; Wyoming 5.94; Montana 7.45"); R037 (L2 (medição): "most populous state: California in the 2020 base"); R038 (C3 (medição): "253.7 per square mile = 43.3 times the Big Sur CCD density in 2020").
+  - Mapa: o Alasca acende por um instante, mais claro que o Wyoming. Ilustração: o terceiro quadrado, o da Califórnia com ~250 pontinhos; tela "WYOMING 5.94 · CALIFORNIA 253.7 / SQ MI · 2020". Crédito `Source: U.S. Census Bureau, 2020`. "U.S. states", nunca "our country".
+- **f27** "One more outline, and then we can get going."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Mapa: a costa do plano começa a se desenhar (sem fato).
+- **f28** "The county's 1986 plan covers the whole coast, more than 70 miles of it, from Carmel down to the next county."
+  - Ids: R039 (P [51]: "is over seventy miles in length and stretches from the Carmel area on the north, south to the San Luis Obispo County line"); R040 (P (capa): "LOCAL COASTAL PROGRAM 1986 MONTEREY COUNTY, CALIFORNIA").
+  - Mapa: o tracejado de Carmel à divisa de San Luis Obispo, com o distrito dentro; tela "MORE THAN 70 MI · MONTEREY COUNTY PLAN (1986)". Nenhum 1.500 na frase nem no parágrafo (Sala).
+- **f29** "So when a number comes from the plan, it's a number for that bigger coast, and you'll hear which is which."
+  - Ids: R041 (P [51], [1481]: "The Big Sur coast of Central California is over seventy miles in length").
+  - Mapa: os dois contornos juntos, em traços diferentes (o distrito cheio, a costa do plano tracejada). É a régua que o vídeo cumpre em f61, f75 e f140.
+- **f30** ~~"With that settled, let's try something."~~
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Lista r2, L06 (r2b): saiu (ouvinte A5 c: o segundo aviso de "agora vai" no parágrafo).
+- **f31** "Say you wanted to move to this coast."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Mapa: o voo baixa para a costa. O fio em segunda pessoa (sem fato).
+- **f32** "Not visit."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+- **f33** "Move."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+- **f34** "Where would you put the house?"
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Mapa: o relevo da serra de Santa Lucia (3D só com o ok do Lucas para a MapTiler deste vídeo (pauta §10: nenhum vale ainda); sem ele, o satélite plano com o perfil desenhado).
 
-### p2 · Mountains that drop into the sea
+### p2 · Try to build a house
 
-- **f32** "So what makes this ground so hard to live on?"
-  - Ids: — (a pergunta do ato 1, pauta §7).
-  - Mapa: o relevo da serra de Santa Lucia (3D com o ok; sem ele, o satélite plano e o perfil desenhado).
-- **f33** "Behind the coast rise the Santa Lucia Mountains."
-  - Ids: P [53].
-  - Mapa: "SANTA LUCIA MOUNTAINS" sobre o relevo.
-- **f34** "At Cone Peak, in the southern part of the coast, they reach about 5,200 feet." (r1, L04: o pico fica a 0,66 do caminho de Carmel à divisa, no terço sul, fatos M14; os 5.200 são o arredondamento do plano, P [53], com o hedge da voz §1)
-  - Ids: P [53] ("reaching an elevation of 5,200 feet at Cone Peak"); §4.2; L1 (o Cone Peak no distrito de San Ardo); §5 (nunca o Cone
-    Peak no distrito: a frase não diz "district"). LEVE: "near the southern end" diz mais que L1, que só põe o pico no outro distrito, o
-    terço sul; a posição se mede no mapa (o mapista).
-  - Mapa: o Cone Peak marcado ao sul do polígono, fora dele; tela "CONE PEAK · 5,200 FT". Ilustração: o PERFIL DA ENCOSTA, a serra
-    subindo a 5.200 pés e caindo no mar (a distância horizontal só com a medida do mapista, §11, item 6).
-- **f35** "Their western slopes, in the words of the county's plan, drop precipitously to the sea."
-  - Ids: P [53] ("The western slopes of the Santa Lucia Mountains … drop precipitously to the sea"). Atribuído, com a palavra do plano.
-  - Tela: "'DROP PRECIPITOUSLY TO THE SEA' · MONTEREY COUNTY PLAN (1986)", sobre o perfil caindo no mar.
-- **f36** "Much of the coast is bounded by sheer cliffs, and beaches are few." (r1, L05: sem a etiqueta "the plan adds", roteiro 8a e ouvinte A6; a frase anterior já diz "in the words of the county's plan", e o fato é geografia, P [54] e [56])
-  - Ids: P [54] ("Much of the coast is bounded by sheer cliffs"), P [56] ("Beaches are few").
-  - Ilustração: a falésia no perfil.
-- **f37** "That leaves little flat ground for a town, or for a port."
-  - Ids: pauta §7 (a leitura de "drop precipitously": "Não sobra chão plano para uma cidade, nem para um porto"); P [53], [54], [56].
-  - Ilustração: uma casinha procurando no perfil um ponto plano que não acha.
-- **f38** "The plan lists what holds building back: water, difficult access, unstable soils on steep slopes, and the dangers of fire and flood."
-  - Ids: P [71] ("Natural constraints to development include availability of water, difficult access, unstable soils on steep slopes, and
-    dangers of fire and flood"); §4.2 (a frase-mãe, atribuída). O fogo plantado para f147.
-  - Ilustração: os cinco limites entrando um por vez sobre o relevo (sem tela só de texto), "MONTEREY COUNTY PLAN (1986)".
-- **f39** "Take access."
-  - Ids: P [71] (o 2º limite da lista).
-- **f40** "Highway 1 is the basic route into the area." (r1, L06: a etiqueta passa à frase seguinte, ouvinte A6; P [1291] "the basic access route to the area")
-  - Ids: P [1291] ("Highway 1 along the Big Sur coast is the basic access route to the area"). Atribuído.
-  - Mapa: a Highway 1 acesa como fio branco (OSM).
-- **f41** "In 1986, the plan counted just one other road from inland." (r1, L06: o "it" se ouvia como a Highway 1, ouvinte A6)
-  - Ids: P [1293] ("provides the only other access route to the seventy-mile long Big Sur coast from inland areas"); §5 e Sala (nunca "the
-    only road"). Datado em 1986.
-  - Mapa: a estrada Nacimiento–Fergusson acende cruzando a serra.
-- **f42** "That one was a lightly used county road that climbed over the mountains and crossed a military reservation."
-  - Ids: P [1293] ("a lightly-used County road crossing the Hunter-Liggett Military Reservation and the coastal range"). No passado.
-  - Mapa: a Nacimiento–Fergusson até a reserva (Hunter Liggett, rotulada com "1986"); tela "NACIMIENTO–FERGUSSON ROAD · 1986".
-- **f43** "Then there's water, which sounds like the odd one out."
-  - Ids: P [71] (o 1º limite da lista).
-- **f44** "Nearly fifty separate streams run down these mountains, according to the plan."
-  - Ids: P [58] ("Nearly fifty separate streams flow down the mountains to join the sea"); §4.2 (O1). Atribuído.
-  - Mapa: os riachos acesos sobre o relevo (desenho declarado, §6).
-- **f45** "Yet it calls the water resources relatively small and seasonal, shared by the animals, the plants and the people." (r1, L07: P [188] "The relatively small seasonal water resources")
-  - Ids: P [188] ("The relatively small seasonal water resources that support the present population of animals, plants and humans");
-    §4.2 (nunca "plenty of water"). LEVE: o plano diz "relatively small", e "calls … small" deixa o "relatively" cair.
-  - Ilustração: os riachos em dois estados, acesos no inverno e quase apagados no verão (desenho declarado).
-- **f46** "Winters, it says, bring some of the heaviest rainfall in California, and summers are long and dry."
-  - Ids: P [66] ("Although the winters bring some of the heaviest rainfall in California, the summers are long and dry").
-  - Ilustração: a mesma, com as estações.
-- **f47** "The weather itself, remember, is mild."
-  - Ids: P [65]; paga o "It isn't the weather" do gancho. "Mild", nunca "perfect weather" (§5).
-  - Imagem real ou mapa: a costa em sol de novo, ou o relevo com luz.
-- **f48** "The trouble is finding ground where a house can stand, and a way to reach it."
-  - Ids: P [71] (o acesso e o solo), P [53].
-  - Ilustração: a casinha do perfil e a estrada como prateleira a meia altura.
-- **f49** "That's one reason the census district holds so few people per square mile."
-  - Ids: C3; §4.1. "One reason", nunca "the reason".
-  - Mapa: o distrito acende inteiro (a densidade dele é o assunto da frase).
-- **f50** "The other reasons have more to do with who owns the land, and what happened on it."
-  - Ids: — (ponte do plano, sem fato novo).
-
-### p3 · Public land and moving ground
-
-- **f51** "About half of the land in the county's plan lies inside the Los Padres National Forest and the Ventana Wilderness."
-  - Ids: P [79] ("Approximately half of the planning area's 150,000 acres are within the Los Padres National Forest and the Ventana
-    Wilderness"); §4.2. A régua do plano, não o distrito.
-  - Mapa: a floresta nacional e a área selvagem acesas (a geometria do PAD-US do USGS, a ler com procedência, §11, item 7; sem ela, só os
-    rótulos e a área declarada), o distrito em contorno fraco por cima; tela "≈ HALF FEDERAL LAND · MONTEREY COUNTY PLAN (1986)".
-- **f52** "It's federal land, owned by the U.S. Forest Service." (r1, L08: sem a etiqueta "the plan notes", roteiro 8b e ouvinte A6: que a floresta nacional é terra federal do Forest Service é definição)
-  - Ids: P [2880] ("Forest Service owns 75,000 acres in the Big Sur Coast Planning Unit--roughly one half the total area"). Desde a r1 (L08), sem a etiqueta: é definição, e a metade da área está atribuída ao plano na frase anterior.
-  - Mapa: o mesmo, com "U.S. FOREST SERVICE".
-- **f53** "A wilderness area is land set aside to stay wild, without roads or new buildings."
-  - Ids: nenhuma da pauta. CONFERIDA na r1 pelo verificador (fatos-r1, F061 e F062: a lei, 16 U.S.C. 1131(c) e 1133(c), na cópia do govinfo em midia/big-sur/fontes/web/; a frase fica, e o achado 3 do roteiro ficou de fora da lista-r1). Antes da r1: SEM APOIO: a definição de "wilderness" não está na pauta nem no plano lido (o plano do juiz a marcou como "fora
-    do dossiê: conhecimento geral, o verificador confere"). A forma fraca que o plano deixou: "The plan describes trails and backpacking
-    camps there, not homes." (P [2228], que fala da floresta nacional inteira, não só da área selvagem).
-  - Ilustração: a hachura da área selvagem, sem estrada desenhada dentro.
-- **f54** "People can hike there, but they can't move in."
-  - Ids: P [2228] ("there is a network of maintained trails and backpacking camps"), só para o "hike". CONFERIDA na r1 pelo verificador, com f53 (a lei, 16 U.S.C. 1131(c) e 1133(c): sem habitação humana nem estrutura permanente). Antes da r1: SEM APOIO: "they can't move in" não
-    está em fonte lida (a mesma lacuna de f53).
-  - Ilustração: uma trilha pontilhada entrando na hachura.
-- **f55** "State parks take up more of the land, with names like Andrew Molera and Julia Pfeiffer Burns."
-  - Ids: P [80] ("Nearly 9,000 acres are contained within units of the State Park System"), P [1236] (Julia Pfeiffer Burns), P
-    [1238]–[1239] (Andrew Molera); §4.2 (os 9.000 acres fora da voz). "More of the land" é terra a mais, não a maior parte.
-  - Mapa: os parques rotulados (Andrew Molera, Pfeiffer Big Sur, Julia Pfeiffer Burns), com geometria com procedência.
-- **f56** "Homes have to fit on what's left, and much of what's left is steep."
-  - Ids: P [79]–[80], P [53], P [70].
-  - Ilustração: a hachura pública e, no que sobra, as encostas em sombra.
-- **f57** "And the ground itself can move."
-  - Ids: P [187] ("underlying instability"), P [71] ("unstable soils on steep slopes"), L6.
-- **f58** "In 2017, at a place called Mud Creek, a whole hillside slid down over the highway."
-  - Ids: L6 (USGS, 06/11/2017: o deslizamento de Mud Creek, com a Highway 1 enterrada), L7 (a foto do USGS de 27/05/2017); §4.2 ("a whole
-    hillside"; o tamanho não se diz; §5: nunca "the largest landslide").
-  - Mapa: Mud Creek marcado no ponto real, ao sul do polígono e fora dele. Ilustração sobre o mapa: a encosta descendo sobre o fio da
-    estrada, que some sob ela (só a forma: área e volume não foram lidos).
-- **f59** "Mud Creek lies near the southern end of the coast, outside the census district."
-  - Ids: L1 (Mud Creek no distrito de San Ardo); §4.1 ("O que fica fora do distrito"). Paga o f30.
-  - Mapa: o polígono do distrito aceso e Mud Creek fora dele; tela "OUTSIDE THE CENSUS DISTRICT".
-- **f60** "That July, Shawn Harrison, a researcher with the U.S. Geological Survey, flew a drone over the slide."
-  - Ids: L6 ("USGS Mendenhall researcher Shawn Harrison took this video from an unmanned aerial system (UAS) on July 19, 2017"). O nome
-    com a função, a 1ª vez.
-  - Imagem real: o drone do USGS (L6, domínio público, sem crédito; resolução pelo ffprobe: abaixo de 4K, `pendente_lucas`); tela "MUD
-    CREEK · JULY 19, 2017 · USGS". A foto pequena de 27/05/2017 (L7, 1.273 × 936) só impressa sobre a mesa.
-- **f61** "The agency was tracking how the slide kept changing."
-  - Ids: L6 (o título da página: "Video shot from drones yields details about changing landslide on California's Big Sur coast").
-  - Imagem real: o mesmo drone.
-- **f62** "In his video, the road simply disappears under a new slope of earth and rock."
-  - Ids: L6 (a estrada enterrada no vídeo).
+- **f35** "Picture it."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+- **f36** "You need a piece of flat ground, and there's very little of it."
+  - Ids: R042 (P [70]: "rugged mountainous terrain of the Big Sur coast has had a profound effect on historical use of the area"); R043 (P [54]: "Much of the coast is bounded by sheer cliffs").
+  - Ilustração: o PERFIL DA ENCOSTA começa, com uma casinha procurando um ponto plano. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f37** "The Santa Lucia Mountains rise straight out of the surf."
+  - Ids: R044 (P [53]: "The western slopes of the Santa Lucia Mountains, reaching an elevation of 5,200 feet at Cone Peak, drop precipitously to the sea").
+  - Mapa: "SANTA LUCIA MOUNTAINS" sobre o relevo. "Rise straight out of the surf" é a figura do próprio plano ("drop precipitously to the sea") e a forma da pauta §4.2. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f38** "At Cone Peak, in the southern part of this coast, they reach about 5,200 feet, and their western slopes, in the words of the county's plan, drop precipitously to the sea."
+  - Ids: R045 (P [53]: "reaching an elevation of 5,200 feet at Cone Peak"); R046 (L1 (medição): "Cone Peak lies 0.66 of the way down the coast"); R047 (P [53]: "The western slopes of the Santa Lucia Mountains, reaching an elevation of 5,200 feet at Cone Peak, drop precipitously to the sea").
+  - Mapa: o Cone Peak marcado ao sul do polígono, fora dele; tela "CONE PEAK · 5,200 FT". Ilustração: o PERFIL DA ENCOSTA subindo a 5.200 pés e caindo no mar (a distância horizontal só com a medida do mapista); tela "'DROP PRECIPITOUSLY TO THE SEA' · MONTEREY COUNTY PLAN (1986)".
+  - O dono na voz (é citação). A frase não diz "district" ([cone-peak]): "this coast" é a régua do plano.
+- **f39** "Much of the shoreline is sheer cliff, and beaches are few."
+  - Ids: R048 (P [54]: "Much of the coast is bounded by sheer cliffs"); R049 (P [56]: "Beaches are few; strong currents").
+  - Ilustração: a falésia no perfil. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f40** "The flat ground a town would need, or a port, mostly isn't there."
+  - Ids: R050 (P [70]: "will continue to serve as a limitation on the kinds of activities that can be carried on and the scale of development"); R051 (P [56]: "Beaches are few; strong currents").
+  - Ilustração: a casinha do perfil sem ponto plano. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f41** "Then you need a way in."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Mapa: a Highway 1 acende como fio branco (OSM); crédito `© OpenStreetMap contributors`.
+- **f42** "Mostly, that means Highway 1."
+  - Ids: R052 (P [1291]: "Highway 1 along the Big Sur coast is the basic access route to the area").
+  - Mapa: o fio branco da Highway 1. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986` e `© OpenStreetMap contributors`.
+  - Lista r2, L07 (r2b): era "Highway 1 is the basic route into the area." (ouvinte A6, 1: voz de documento).
+- **f43** "In 1986, the county counted just one other road from inland, a lightly used county road that climbed over the mountains and crossed a military reservation."
+  - Ids: R053 (P (capa): "LOCAL COASTAL PROGRAM 1986 MONTEREY COUNTY, CALIFORNIA"); R054 (P [1293]: "provides the only other access route to the seventy-mile long Big Sur coast from inland areas"); R055 (P [1293]: "a lightly-used County road crossing the Hunter-Liggett Military Reservation and the coastal range").
+  - Mapa: a estrada Nacimiento–Fergusson acende cruzando a serra até a reserva (Hunter Liggett, rotulada com "1986"); tela "NACIMIENTO–FERGUSSON ROAD · 1986". Datado em 1986; nunca "the only road". Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f44** "And then there's water, which you'd think would be the easy part, since nearly fifty streams run down these mountains to the sea."
+  - Ids: R056 (P [58]: "Nearly fifty separate streams flow down the mountains to join the sea").
+  - Mapa: os riachos acesos sobre o relevo (desenho declarado). A fonte saiu da voz na r2 (no r1: "according to the plan"); vai ao crédito da tela. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f45** "It isn't."
+  - Ids: R057; R058 (a linha da tabela junta esta frase a f46; o trecho está lá).
+- **f46** "The supply is relatively small and seasonal, and the animals, the plants and the people all share it."
+  - Ids: R057 (P [188]: "The relatively small seasonal water resources"; a linha da tabela junta esta frase à vizinha); R058 (P [188]: "seasonal water resources that support the present population of animals, plants and humans"; a linha da tabela junta esta frase à vizinha).
+  - Ilustração: os riachos em dois estados, acesos no inverno e quase apagados no verão (desenho declarado). Nunca "plenty of water" (§4.2). A fonte saiu da voz na r2b (L08); vai ao crédito da tela. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+  - Lista r2, L08 (r2b): era "The plan calls those water resources relatively small and seasonal, shared by the animals, the plants and the people." (ouvinte A6, 2; o plano sai da voz e vai ao crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`; o "relatively" fica, VF05 da r1).
+- **f47** "Winters bring some of the heaviest rainfall in California."
+  - Ids: R059 (P [66]: "the winters bring some of the heaviest rainfall in California, the summers are long and dry").
+  - Ilustração: a mesma, com as estações. A fonte saiu da voz na r2 (no r1: "Winters, it says, bring…"); vai ao crédito da tela. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f48** "Summers are long and dry."
+  - Ids: R060 (P [66]: "the winters bring some of the heaviest rainfall in California, the summers are long and dry").
+  - Ilustração: a mesma. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f49** "When the county listed what holds building back on this coast, that was the list: water, difficult access, unstable soils on steep slopes, and the dangers of fire and flood."
+  - Ids: R061 (P [71]: "Natural constraints to development include availability of water, difficult access, unstable soils on steep slopes, and dangers of fire and flood").
+  - Ilustração: os cinco limites entrando um por vez sobre o relevo (sem tela só de texto), "MONTEREY COUNTY PLAN (1986)". O dono na voz como ator ("the county listed"). O fogo plantado para f134. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f50** ~~"Not the weather."~~
+  - Ids: R062 (P [65]: "The climate in Big Sur is mild").
+  - Lista r2, L09 (r2b): saiu, com f51 (ouvinte A4: o eco do "mild" e o "Not the weather" contra a chuva).
+- **f51** ~~"The winters are wet, the summers are dry, and the climate, in the county's own word, is mild."~~
+  - Ids: R063 (P [66]: "the winters bring some of the heaviest rainfall in California, the summers are long and dry"); R064 (P [65]: "The climate in Big Sur is mild").
+  - Imagem real: a costa em sol de novo (o "mild" do gancho).
+  - Lista r2, L09 (r2b): saiu, com f50.
+- **f52** "What's scarce is ground you can build on, and a way to reach it."
+  - Ids: R065 (P [71]: "difficult access, unstable soils on steep slopes").
+  - Ilustração: a casinha do perfil e a estrada como prateleira a meia altura. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f53** "And suppose you did find your patch of flat ground."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+- **f54** "There's a fair chance it's public land."
+  - Ids: R066 (P [1514]: "Approximately half of the Big Sur coastal zone is in public ownership").
+  - Mapa: a terra pública acesa (a geometria do PAD-US, do USGS, a ler com procedência; sem ela, só os rótulos e a área declarada). "A fair chance" cabe na metade pública do plano (P [1514]). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f55** "About half of the land in the county's plan lies inside the Los Padres National Forest and the Ventana Wilderness."
+  - Ids: R067 (P [79]: "Approximately half of the planning area's 150,000 acres are within the Los Padres National Forest").
+  - Mapa: a floresta nacional e a área selvagem acesas, o distrito em contorno fraco por cima; tela "≈ HALF FEDERAL LAND · MONTEREY COUNTY PLAN (1986)". A régua do plano, não o distrito.
+- **f56** "That's federal land, owned by the U.S. Forest Service, and in the wilderness, the plan limits land use to backcountry recreation."
+  - Ids: R068 (P [2880]: "Forest Service owns 75,000 acres in the Big Sur Coast Planning Unit"); R069 (P [1641]: "Land uses permitted in the Ventana Wilderness portion of the National Forest are limited to backcountry recreation").
+  - Mapa: "U.S. FOREST SERVICE". Ilustração: a hachura da área selvagem, sem estrada desenhada dentro. O dono na voz guarda o tempo (o "limits" é do plano de 1986; a A6, 3, do ouvinte ficou fora da lista por isso). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f57** "You can hike there, but you can't move in."
+  - Ids: R070 (Wilderness Act, 16 U.S.C. 1131(c): "where man himself is a visitor who does not remain"); R071 (P [2228]: "there is a network of maintained trails and backpacking camps").
+  - Ilustração: uma trilha pontilhada entrando na hachura. O presente vem da lei (R070), não do plano. Crédito `Source: Wilderness Act, 16 U.S.C. 1131(c)` (se a tela o quiser).
+- **f58** "State parks take up more of the land."
+  - Ids: R072 (P [80]: "Nearly 9,000 acres are contained within units of the State Park System").
+  - Mapa: os parques estaduais acesos e rotulados (Andrew Molera, Pfeiffer Big Sur, Julia Pfeiffer Burns; os nomes saíram da voz na r2 e ficam como rótulo), com geometria com procedência. "More of the land" é terra a mais, não a maior parte. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f59** "Homes have to fit on what's left, and much of what's left is steep."
+  - Ids: R073 (P [1492]; P [71]: "a major developed land use On private land").
+  - Ilustração: a hachura pública e, no que sobra, as encostas em sombra. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f60** "And the ground itself can move."
+  - Ids: R074 (P [187]: "makes the area susceptible to geologic disturbance").
+  - Ilustração: o perfil da encosta estremece. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f61** "In 2017, at a place called Mud Creek, near the southern end of the coast and outside the census district, a whole hillside slid down over the highway."
+  - Ids: R075 (L6: "buried California State Highway 1 under a third-of-a-mile-wide mass of rock and dirt on May 20, 2017"); R076 (L1 (medição): "point Mud Creek 35.8655,-121.4305 -> San Ardo CCD"); R077 (L1 (medição): "Mud Creek lies 0.90 of the way down the coast").
+  - Mapa: Mud Creek marcado no ponto real, ao sul do polígono e fora dele; tela "OUTSIDE THE CENSUS DISTRICT". Ilustração sobre o mapa: a encosta descendo sobre o fio da estrada, que some sob ela (só a forma: área e volume não foram lidos; nunca "the largest landslide"). Crédito `Source: U.S. Geological Survey, 2017`.
+- **f62** "That July, a researcher with the U.S. Geological Survey flew a drone over the slide."
+  - Ids: R078 (L6: "Mendenhall researcher Shawn Harrison took this video from an unmanned aerial system").
+  - Imagem real: o drone do USGS (L6, domínio público; abaixo de 4K, `pendente_lucas`); tela "MUD CREEK · JULY 19, 2017 · USGS". A fonte saiu da voz na r2 (no r1: o nome, "Shawn Harrison, a researcher with the U.S. Geological Survey"; a agência ficou); vai ao crédito da tela. Crédito de mídia `Shawn Harrison / U.S. Geological Survey · public domain`.
+- **f63** "In his video, the road simply disappears under a new slope of earth and rock."
+  - Ids: R079 (L6: "It points out buried and unburied parts of Highway 1").
   - Imagem real: o drone, no trecho em que a estrada some.
-- **f63** "Mud Creek wasn't the end of it."
-  - Ids: L5 (os deslizamentos que vieram depois).
-- **f64** "Caltrans, California's highway department, has names for other slopes that have closed the road since then."
-  - Ids: L5 (Paul's Slide e Regent's Slide, nomes da Caltrans); a glosa da Caltrans, a 1ª vez.
-  - Mapa: Paul's Slide e Regent's Slide como dois marcadores apagados "para depois", só nos post miles que o mapista ler nos boletins da
-    Caltrans (K4: nunca o rótulo de Rocky Creek do `ccd_bigsur.py`; DS5: a nota de 14/01/2026 não dá o post mile).
-- **f65** "Two of them are called Paul's Slide and Regent's Slide." (r1, L09: sem o anúncio "will matter later in this story", roteiro 7b; os dois se pagam em p7 sem aviso)
-  - Ids: L5; §4.2 (os nomes no ato 1, sem datas; as datas em p7).
-  - Mapa: os dois marcadores, com os nomes.
-- **f66** "Steep ground, slipping ground, public ground, and not much water."
-  - Ids: P [53], L6, P [79], P [188] (recapitula f34–f62, sem fato novo).
-- **f67** "Even so, long before the highway, people made a living on this coast."
-  - Ids: P [1480] (o ganha-pão dos primeiros moradores). Ponte do plano.
+- **f64** "Mud Creek wasn't the end of it."
+  - Ids: R080 (L5: "Regent's Slide occurred on February 9, 2024").
+  - Crédito `Source: Caltrans, 2023–2026`.
+- **f65** "Caltrans, California's highway department, has names for other slopes that have closed the road since then."
+  - Ids: R081 (L5: "which closed the highway from January 14, 2023, to June 23, 2024").
+  - Mapa: Paul's Slide e Regent's Slide como dois marcadores apagados "para depois", só nos post miles que o mapista ler nos boletins da Caltrans (K4: nunca o rótulo de Rocky Creek do `ccd_bigsur.py`; DS5). A Caltrans dita na voz, com a glosa (a 1ª vez).
+- **f66** "Two of them are called Paul's Slide and Regent's Slide."
+  - Ids: R082 (L5: "Regent's Slide occurred on February 9, 2024"); R083 (L5: "Slide, six miles to the south, which closed the highway"); R084 (L5: "while crews repaired two massive slides").
+  - Mapa: os dois marcadores, com os nomes; as datas ficam para p6. Crédito `Source: Caltrans, 2023–2026`.
+- **f67** "So that's the ground you'd be building on: steep, slipping, and much of it spoken for."
+  - Ids: R085 (P [71]: "unstable soils on steep slopes"); R086 (P [1514]: "Approximately half of the Big Sur coastal zone is in public ownership").
+  - Sem fato novo (recapitula o fio); "much of it spoken for" cabe na metade pública do plano (P [1514]).
+- **f68** ~~"Which raises a fair question."~~
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Lista r2, L10 (r2b): saiu; f68 e f69 viraram a f69 de agora.
+- **f69** "How did anyone make a living on this coast?"
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
   - Mapa: a costa do plano em tracejado, com o distrito fraco dentro.
+  - Lista r2, L10 (r2b): era "Why did anyone come at all?", com f68 antes ("Which raises a fair question."); as duas viraram esta (ouvinte A7: a pergunta que o ouvinte não tinha).
 
-### p4 · Nearly a thousand, by sea
+### p3 · Nearly a thousand, by sea
 
-- **f68** "They ranched, mostly to feed their own families."
-  - Ids: P [1480] ("Subsistence ranching"); "mostly to feed their own families" glosa "subsistence".
-  - Mapa: a costa do plano; foto de época só com licença conferida (§6, item 5).
-- **f69** "They cut redwoods for lumber, and peeled tanbark, a bark used to make tannic acid."
-  - Ids: P [1480] ("logging of redwoods, harvesting of tan bark"), P [1205] ("used in the manufacture of tannic acid").
-- **f70** "They mined limestone and gold."
-  - Ids: P [1480] ("mining of limestone and gold").
-- **f71** "By the 1880s, the county's plan says, nearly a thousand people lived along this coast, largely on work like this."
-  - Ids: P [1481] ("a population of nearly 1000 people by the 1880's largely supported by these basic-industries"); §4.3; Sala (atribuído e
-    dito da costa). Retoma f8.
-  - Mapa: a costa do plano em tracejado; tela "NEARLY 1,000 PEOPLE · 1880s · MONTEREY COUNTY PLAN (1986)".
-- **f72** "That count is for the whole coast in the plan, not just the census district."
-  - Ids: P [51], P [1481], L1; Sala (dito da costa, nunca do distrito); §5 (nunca "the same as in the 1880s"). Paga o f30.
-  - Mapa: o polígono do distrito em contorno fraco dentro da costa do plano, em traços diferentes; nenhum número do distrito aqui.
-- **f73** "Some of the original homesteaders left their names on the map: the Pfeiffers, Charlie Bixby, Jim Anderson."
-  - Ids: P [1203] ("initially settled by a number of homesteaders whose names are now borne by well-known topographic and natural features
-    … (e.g., the Pfeiffer's, Charlie Bixby, Jim Anderson)"); "original", nunca "first".
-  - Mapa: os nomes pousando nos acidentes (Pfeiffer, Bixby Creek, Anderson Creek).
-- **f74** "The bridge at the start of this video carries Bixby's name."
-  - Ids: §4.3 ("a ponte do gancho tem o nome de um colono"), P [1203], L7 (o arquivo: "Bixby Bridge", "Bixby Creek Bridge"). A CONFERIR: o
-    plano só diz que os nomes estão em acidentes conhecidos; que o "Bixby" da ponte (e do riacho) é o de Charlie Bixby é a leitura da pauta
-    §4.3, que o plano do juiz manda o verificador conferir.
-  - Imagem real: a foto da ponte (L7), com o crédito e a data.
-- **f75** "Big Sur's original post office and its second schoolhouse were built on the ranch of another homesteading family, the Posts."
-  - Ids: P [1218] (Bill Post, "one of the original homesteaders"), P [1221] ("Big Sur's original post office and its second schoolhouse
-    were built on the Post Ranch"). O 1º corte da parte (−23).
-  - Mapa: "POST" pousando no lugar (a Post Grade da Highway 1, P [1220]).
-- **f76** "There was no highway."
-  - Ids: P [1482] ("lack of roads").
-- **f77** "The plan says the mountains, the deep canyons and the lack of roads made travel slow and difficult."
-  - Ids: P [1482] ("The mountainous terrain, numerous deep canyons, and lack of roads made travel difficult and slow"). Atribuído.
-- **f78** "So most of what the coast produced went out by sea."
-  - Ids: P [1483] ("Most local products were shipped out by sea"); §4.3.
-  - Ilustração sobre o mapa: os barquinhos subindo a costa, em traço de engenheiro (não B-roll genérico de veleiro).
-- **f79** "Small trading boats called at landings along the shore."
-  - Ids: P [1483] ("small coastal trading vessels"), P [1204], P [1208]–[1209] (os desembarcadouros).
-  - Ilustração: os barcos encostando nos desembarcadouros (Notley's Landing, Bixby Creek, a foz do Big Sur, Partington, Rockland).
-- **f80** "They loaded lumber, bark and limestone, and they dropped off supplies."
-  - Ids: P [1205] (a casca e a madeira), P [1211] (os tijolos de calcário e os suprimentos em Rockland Landing), P [1483] ("that brought
-    supplies").
-  - Ilustração: os barcos saindo carregados e deixando caixas de suprimento.
-- **f81** "Around one of them, Notley's Landing, a thriving village sprang up."
-  - Ids: P [1206]–[1207] ("Godfrey Notley's Landing, near the mouth of the Palo Colorado Canyon, around which a thriving village sprang up").
-  - Mapa: "NOTLEY'S LANDING" na boca do Palo Colorado Canyon.
-- **f82** "Toward the southern end, gold turned up near Alder Creek."
-  - Ids: P [1213] ("The discovery of gold near the head of Alder Creek led to the Big Sur Gold Rush of the 1880's"); §4.3 (O2, o sul da
-    costa). Manchester (f82–f84) é o 2º corte da parte (−36).
-  - Mapa: Alder Creek no sul, fora do distrito (o mapista confere o ponto).
-- **f83** "A boomtown called Manchester grew on the creek, with stores, saloons, a dance hall and a hotel."
-  - Ids: P [1214]–[1215] ("a boomtown named Manchester mushroomed on Alder Creek"; "four stores, a restaurant, five saloons, a dance hall,
-    and a hotel"; os números fora da voz).
-  - Mapa: "MANCHESTER · 1880s–1895".
-- **f84** "By 1895, the plan says, the boom had begun to fade."
-  - Ids: P [1216] ("By 1895 the boom had begun to fade").
-- **f85** "Over land, there was a road of sorts."
-  - Ids: P [1226].
-  - Mapa: a estrada antiga como pontilhado.
-- **f86** "The plan calls it hazardous, and says it had to be closed part of the year."
-  - Ids: P [1226] ("the hazardous road that had to be closed part of the year"); §4.3.
-  - Mapa: o trecho do sul do pontilhado se apagando parte do ano, "'THE HAZARDOUS ROAD' · CLOSED PART OF THE YEAR" (sem inventar meses).
-- **f87** "In the plan's telling, that road was the one thing holding back tourism on the south coast."
-  - Ids: P [1226] ("The one deterrent to the development of the south coast as a mecca for tourists as well as sportsmen").
-- **f88** "Around the turn of the century, visitors could already reach the Big Sur Valley by stagecoach from Monterey, to camp in the redwoods."
-  - Ids: P [1485]–[1486] ("Around the turn of the century, limited recreational use of the coast began…"; "The Big Sur Valley could be
-    reached by stage from Monterey and camping in the redwood groves grew in popularity"). Os turistas entram (os leitores a frio).
-  - Ilustração sobre o mapa: a diligência como um traço pontilhado curto de Monterey ao vale do Big Sur (desenho declarado).
-- **f89** "Some locals earned extra money guiding hunters and fishermen from the cities."
-  - Ids: P [1487] ("some local residents supplemented their income by guiding sportsmen from the cities"). A inscrição entra depois desta
-    frase.
-- **f90** "A road you could count on in every season was decades away."
-  - Ids: P [1226], P [1232] (a estrada de todo o ano só em 1937). Ponte do plano, sem número: a fala curta da inscrição.
-  - Mapa: a costa do plano pousada, câmera parada (o respiro da inscrição).
+- **f70** ~~"Because people did come."~~
+  - Ids: R087 (P [1480]: "provided a livelihood for early residents").
+  - Mapa: a costa do plano.
+  - Lista r2, L11 (r2b): saiu (ouvinte A7: não responde à pergunta; com a L10, a resposta é f71).
+- **f71** "They ranched, mostly to feed their own families."
+  - Ids: R088 (P [1480]: "Subsistence ranching, logging of redwoods").
+  - Mapa: a costa do plano; foto de época só com licença conferida (§6, item 5). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f72** "They cut redwoods for lumber, and they peeled tanbark, a bark used to make tannic acid."
+  - Ids: R089 (P [1480]: "logging of redwoods, harvesting of tan bark"); R090 (P [1205]: "used in the manufacture of tannic acid").
+  - Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`. (A A13 a do ouvinte, "the bark used to tan leather", ficou fora: pede o verificador.)
+- **f73** "They mined limestone, and some of them mined gold."
+  - Ids: R091 (P [1480]: "mining of limestone and gold provided a livelihood").
+  - Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f74** "By the 1880s, nearly a thousand people were living along this coast on work like that."
+  - Ids: R092 (P [1481]: "there was a population of nearly 1000 people by the 1880's largely supported by these basic-industries").
+  - Mapa: a costa do plano em tracejado; tela "NEARLY 1,000 PEOPLE · 1880s · MONTEREY COUNTY PLAN (1986)". O dono vem na frase seguinte ("That's the plan's count").
+- **f75** "That's the plan's count, and it's a count for the whole coast, not just the census district."
+  - Ids: R093 (P [51], [1481]: "The Big Sur coast of Central California is over seventy miles in length").
+  - Mapa: o polígono do distrito em contorno fraco dentro da costa do plano, em traços diferentes; nenhum número do distrito aqui. Nunca "the same as in the 1880s" (§5; Sala).
+- **f76** "Some of those homesteaders left their names on the map."
+  - Ids: R094 (P [1203]: "whose names are now borne by well-known topographic and natural features in Big Sur (e.g., the Pfeiffer's, Charlie Bixby, Jim Anderson)").
+  - Mapa: os nomes pousando nos acidentes. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f77** "The Pfeiffers did, and so did Charlie Bixby; the bridge at the start of this video carries his name."
+  - Ids: R095 (P [1203]: "whose names are now borne by well-known topographic and natural features in Big Sur (e.g., the Pfeiffer's, Charlie Bixby, Jim Anderson)"); R096 (FHWA (L4); P [1203], [576]: "the famous Bixby Rainbow Bridge at Big Sur"); R097 (P [576]: "Rocky Creek, Bixby Creek, Little Sur River").
+  - Mapa: "PFEIFFER" e "BIXBY CREEK" pousando no lugar. Imagem real: a foto da ponte (L7), com o crédito `Mavic of Steel / Wikimedia Commons · CC BY-SA 4.0`, com a data (24/06/2023, de antes do fogo de 2026, K1 d). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f78** "There was no highway."
+  - Ids: R098 (P [1482]: "numerous deep canyons, and lack of roads made travel difficult and slow").
+  - Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f79** "The mountains, the deep canyons and the lack of roads made travel slow and difficult, so most of what the coast produced went out by sea."
+  - Ids: R099 (P [1482]: "The mountainous terrain, numerous deep canyons, and lack of roads made travel difficult and slow"); R100 (P [1483]: "Most local products were shipped out by sea").
+  - Ilustração sobre o mapa: os barquinhos subindo a costa, em traço de engenheiro (não B-roll genérico de veleiro). A fonte saiu da voz na r2 (no r1: "The plan says the mountains, the deep canyons…"); vai ao crédito da tela. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f80** "Small trading boats called at landings along the shore."
+  - Ids: R101 (P [1483]: "on the small coastal trading vessels that brought supplies"); R102 (P [1204]: "led to the construction of several landings along the Big sur coast").
+  - Ilustração: os barcos encostando nos desembarcadouros (Notley's Landing, Bixby Creek, a foz do Big Sur, Partington, Rockland: rótulos; os nomes saíram da voz na r2). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f81** "They loaded lumber, bark and limestone, and they dropped off supplies."
+  - Ids: R103 (P [1205]: "These landings were used not only for loading the bark"); R104 (P [1211]: "to load limestone bricks and deliver supplies").
+  - Ilustração: os barcos saindo carregados e deixando caixas de suprimento. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f82** "Over land there was a road of sorts, hazardous enough that it had to be closed part of the year."
+  - Ids: R105 (P [1226]: "the hazardous road that had to be closed part of the year").
+  - Mapa: a estrada antiga como pontilhado, o trecho do sul se apagando parte do ano; tela "'THE HAZARDOUS ROAD' · CLOSED PART OF THE YEAR" (sem inventar meses). A fonte saiu da voz na r2 (no r1: "The plan calls it hazardous"); vai ao crédito da tela. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f83** "Even so, around the turn of the century, visitors could already come by stagecoach from Monterey to camp in the redwoods."
+  - Ids: R106 CORRIGIR (P [1485]: "Around the turn of the century, limited recreational use of the coast began to take place"); R107 (P [1486]: "The Big Sur Valley could be reached by stage from Monterey and camping in the redwood groves grew in popularity").
+  - Ilustração sobre o mapa: a diligência como um traço pontilhado curto de Monterey ao vale do Big Sur (desenho declarado). Os turistas entram (os leitores a frio). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+  - Lista r2, L12 (r2b): era "Even so, by the turn of the century, …" (fatos VF-R2-02: o plano diz "Around", P [1485]).
+- **f84** "Some locals earned extra money guiding hunters and fishermen from the cities."
+  - Ids: R108 (P [1487]: "some local residents supplemented their income by guiding sportsmen from the cities").
+  - Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`. A inscrição entra depois desta frase.
+- **f85** "A road you could count on in every season was decades away."
+  - Ids: R109 (P [1232]: "the highway was completed at a cost of approximately $8,000,000").
+  - Mapa: a costa do plano pousada, câmera parada (o respiro da inscrição). Sem número, sem "here" nem "this line". Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
 
-### p5 · A road cut into the cliffs
+### p4 · A road cut into the cliffs
 
-- **f91** "The idea of a scenic highway, open all year, came from Doctor John Roberts, the founder of the city of Seaside."
-  - Ids: P [1227]–[1228] ("The concept of a year-round scenic highway originated with Dr. John Roberts, the founder of the City of
-    Seaside"); "Doctor" por extenso (o título do plano; o ponto de "Dr." partiria a frase no portão).
-  - Ilustração: começa a LINHA DO TEMPO; card sem foto "DR. JOHN ROBERTS · FOUNDER OF SEASIDE", só com o que o plano diz.
-- **f92** "Work on the coast highway began in 1919, according to the Federal Highway Administration."
-  - Ids: L4 ("Construction on Highway One began in 1919"; lido pelo extrator do WebFetch: o verificador relê), K6, Sala (o 1919 sempre com a
-    FHWA). Nada de "eighteen years"; o 1921 das outras fontes é só da busca.
-  - Ilustração: "1919 · FHWA" na linha do tempo. Mapa: a Highway 1 começando a se desenhar ao longo da costa (sem as frentes de obra se
-    encontrando: o encontro de 1934 é só da busca).
-- **f93** "California voters approved more state money for it soon after."
-  - Ids: L4 ("in 1921 voters approved additional state funds"), sem o ano. O 3º corte do plano (−10).
-  - Ilustração: "MORE STATE MONEY" na linha do tempo.
-- **f94** "Along the route, dozens of streams had cut deep canyons to the sea, and the road had to get across each one."
-  - Ids: P [58] (quase cinquenta riachos; "dozens" é a mesma conta em palavras), P [1482] ("numerous deep canyons"). A CONFERIR (leve):
-    "had to get across each one" é leitura do mapa, não está em fonte (o plano do juiz pede o verificador).
-  - Mapa: as travessias dos riachos acendendo como pequenos arcos ao longo do fio da estrada.
-- **f95** "One of those crossings is the bridge at Bixby Creek."
-  - Ids: L7 (a ponte de Bixby Creek), P [576] (Bixby Creek entre os riachos do plano). Sem o ano nem o construtor da ponte (§11, item 4).
-  - Mapa: o anel de volta na ponte.
-- **f96** "Part of the labor came from prisoners."
-  - Ids: L4 ("San Quentin Prison set up three temporary prison camps to provide the labor for the road"); §5 e Sala (nunca "built by
-    prisoners" sem a medida: "Part of" é a medida).
-- **f97** "San Quentin, a California state prison, set up three temporary camps along the route."
-  - Ids: L4 (três acampamentos temporários). A glosa "a California state prison" é conhecimento geral, não contestável (a FHWA diz "San
-    Quentin Prison").
-  - Mapa: os acampamentos como pontos no lugar (ícone, sem rosto inventado).
-- **f98** "One stood by the Little Sur River, one at Kirk Creek, and later one at Anderson Creek."
-  - Ids: L4 ("by Little Sur River, one at Kirk Creek and later one was established at Anderson Creek"). O ano em que os presos chegaram não
-    se diz (§4.3; §11, item 3).
-  - Mapa: LITTLE SUR RIVER, KIRK CREEK e, depois, ANDERSON CREEK ("LATER") acendendo.
-- **f99** "The inmates were paid 35 cents a day, and their sentences were reduced."
-  - Ids: L4 ("Inmates were paid 35 cents per day and their prison sentences reduced"); Sala. A FHWA está dita em f92; a tela leva o crédito.
-  - Tela: "SAN QUENTIN · 3 TEMPORARY CAMPS · 35¢ A DAY · SENTENCES REDUCED · FHWA", sobre os acampamentos.
-- **f100** "Machinery blasted through the cliffs."
-  - Ids: P [1230] ("Machinery blasted through the great cliffs").
-  - Ilustração: o PERFIL DA ENCOSTA de p2, a prateleira da estrada aberta a explosões.
-- **f101** "Many of the original settlers, the county's plan says, were enraged by the damage."
-  - Ids: P [1229] ("Many of the original settlers were enraged by the devastation resulting from the highway construction"). Atribuído.
-- **f102** "It describes scarred headlands, and canyons and waterfalls fouled with debris."
-  - Ids: P [1230]–[1231] ("scarring granite promontories and defiling canyons and waterfalls with debris").
-  - Ilustração: o entulho descendo ao riacho e à cachoeira, no perfil.
-- **f103** "In 1934, while the road was being built, John Pfeiffer sold land to the state for a park."
-  - Ids: P [1235] ("initiated by John Pfeiffer in 1934 when he sold 706 acres to the State for the nucleus of the 822-acre Pfeiffer Big Sur
-    State Park"); "while the road was being built" fica entre 1919 (L4) e 1937 (P [1232]). Os 706 acres só na tela.
-  - Mapa: o parque Pfeiffer Big Sur aceso (geometria com procedência; sem ela, o ponto e o nome); tela "PFEIFFER BIG SUR STATE PARK · 1934 ·
-    706 ACRES". Ilustração: "1934" na linha do tempo.
-- **f104** "The county's plan marks that sale as the start of the coast's long-term protection."
-  - Ids: P [1235] ("The process of ensuring the long-term protection of Big Sur's unique coastline was initiated by John Pfeiffer in 1934").
-- **f105** "The highway was finished in June 1937, for about 8 million dollars, the plan says."
-  - Ids: P [1232] ("On June 27,1937, the highway was completed at a cost of approximately $8,000,000"); §4.3; Sala. Os US$ 10 milhões da
-    FHWA ficam fora (outra régua).
-  - Ilustração: "FINISHED JUNE 27, 1937 · ≈ $8 MILLION · MONTEREY COUNTY PLAN (1986)" na linha do tempo.
-- **f106** "It sums up the change in one line: a way of life had ended, and a new era began." (r1, L10: a linha inteira do plano, sem "for the beautiful country", fatos VF02 e roteiro 1; os dois-pontos marcam a citação, ouvinte A14; f107 entrou nesta frase)
-  - Ids: P [1233].
-  - Documento: a folha recriada do plano com a linha, se o conferente aceitar (§6, item 6; a licença do documento não foi lida).
-- **f107** ~~"A way of life had ended."~~ (r1, L10: juntada a f106, com a linha inteira do plano)
-  - Ids: P [1233] ("A way of life had ended, and a new era began for the beautiful country"); a citação atribuída na frase anterior.
-  - Documento: a linha grifada na folha recriada.
-- **f108** "The new road put the coast within easy reach."
-  - Ids: P [1294], P [1296].
-  - Mapa: a Califórnia começando a recuar (câmera parada no começo, se a inscrição de reserva cair aqui).
-- **f109** "Decades later, the county's plan noted that the Bay Area and Los Angeles were less than a day's drive away."
-  - Ids: P [1294] ("The major population centers of California, the San Francisco Bay Area, the Los Angeles Area, and the large cities of
-    the Central Valley, are less than a day's drive from Big Sur"). As metrópoles do gancho voltam, sem número.
-  - Mapa: as duas regiões do gancho acesas, com setas até a costa; tela "LESS THAN A DAY'S DRIVE · 1986 PLAN".
-- **f110** "Along the road grew campgrounds, lodges, restaurants and places to pull over for the view."
-  - Ids: P [1222] (o comércio de recreação do século XX), P [1497] ("public and private campgrounds, visitor accommodations, restaurants"),
-    P [230] (os "turnouts").
-  - Ilustração sobre o mapa: ícones pousando ao longo do fio da estrada.
-- **f111** "In 1965, the plan notes, this stretch became California's first official scenic highway."
-  - Ids: P [1291] ("Designated in 1965 as the first State scenic Highway in California"). Atribuído. O alerta "first" está decidido.
-  - Ilustração: "FIRST STATE SCENIC HIGHWAY · 1965" no fio da estrada e na linha do tempo.
-- **f112** "By the 1980s, nearly all summer traffic on it was recreational, by the plan's estimate."
-  - Ids: P [1300] ("Recreational traffic is estimated to comprise 95% of all trips during the peak summer months"); o 95 % só na tela.
-  - Tela: "PEAK SUMMER: 95% RECREATIONAL TRIPS · 1986 PLAN".
-- **f113** "More visitors raised a harder question for the county, about how much of this coast should be built on at all."
-  - Ids: — (ponte do plano, sem fato novo; paga-se em p6).
+- **f86** "Work on the coast highway began in 1919, according to the Federal Highway Administration, and it took nearly two decades."
+  - Ids: R110 (L4: "Construction on Highway One began in 1919"); R111 (L4; P [1232] (medição M21): "cost ('became $10 million nineteen years later') = 1.9 decades").
+  - Ilustração: começa a LINHA DO TEMPO, "1919 · FHWA". Mapa: a Highway 1 começando a se desenhar ao longo da costa (sem as frentes de obra se encontrando: o encontro de 1934 é só da busca). A FHWA fica na voz: o 1919 é contestável (K6; Sala). Crédito `Source: Federal Highway Administration` (o ano é o da página lida, L4).
+- **f87** "Think about what that road had to do."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Sem fato (o fio).
+- **f88** "Along this coast, dozens of streams had cut deep canyons on their way to the sea, and the road had to get across every one of them."
+  - Ids: R112 (P [58]: "Nearly fifty separate streams flow down the mountains to join the sea"); R113 (P [1482]: "numerous deep canyons, and lack of roads"); R114 (L4: "From the 33 bridges constructed with Highway One").
+  - Mapa: as travessias dos riachos acendendo como pequenos arcos ao longo do fio da estrada. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986` e `Source: Federal Highway Administration` (o ano é o da página lida, L4).
+- **f89** "One of those crossings is the bridge at Bixby Creek."
+  - Ids: R115 (L4: "the famous Bixby Rainbow Bridge at Big Sur").
+  - Mapa: o anel de volta na ponte. Sem o ano nem o construtor da ponte (§11, item 4). Crédito `Source: Federal Highway Administration` (o ano é o da página lida, L4).
+- **f90** "Part of the labor came from prisoners."
+  - Ids: R116 (L4: "San Quentin Prison set up three temporary prison camps to provide the labor for the road"); R117 (L4: "Locals like John Steinbeck also worked on the road").
+  - "Part of" é a medida (nunca "built by prisoners"; Sala). A FHWA está na voz em f86. Crédito `Source: Federal Highway Administration` (o ano é o da página lida, L4).
+- **f91** "San Quentin, a California state prison, set up three temporary camps along the route."
+  - Ids: R118 (L4: "San Quentin Prison set up three temporary prison camps").
+  - Mapa: os acampamentos como pontos no lugar (ícones, sem rosto inventado); Little Sur River, Kirk Creek e, depois, Anderson Creek saíram da voz na r2 e podem ir como rótulos (L4). Crédito `Source: Federal Highway Administration` (o ano é o da página lida, L4).
+- **f92** "The inmates were paid 35 cents a day, and their sentences were reduced."
+  - Ids: R119 (L4: "Inmates were paid 35 cents per day and their prison sentences reduced").
+  - Tela: "SAN QUENTIN · 3 TEMPORARY CAMPS · 35¢ A DAY · SENTENCES REDUCED · FHWA", sobre os acampamentos. Crédito `Source: Federal Highway Administration` (o ano é o da página lida, L4).
+- **f93** "Machinery blasted through the cliffs, and many of the original settlers, the plan says, were enraged by the damage: scarred headlands, and canyons and waterfalls fouled with debris."
+  - Ids: R120 (P [1230]: "Machinery blasted through the great cliffs"); R121 (P [1229]: "Many of the original settlers were enraged by the devastation resulting from the highway construction"); R122 (P [1230]: "the great cliffs, scarring granite promontories"); R123 (P [1231]: "canyons and waterfalls with debris").
+  - Ilustração: o PERFIL DA ENCOSTA de p2, a prateleira da estrada aberta a explosões, o entulho descendo ao riacho e à cachoeira. O dono na voz ("enraged" é citação). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f94** "In 1934, while the road was under construction, John Pfeiffer sold land to the state for a park."
+  - Ids: R124 (P [1235]: "initiated by John Pfeiffer in 1934 when he sold 706 acres to the State").
+  - Mapa: o parque Pfeiffer Big Sur aceso (geometria com procedência; sem ela, o ponto e o nome); tela "PFEIFFER BIG SUR STATE PARK · 1934 · 706 ACRES". Ilustração: "1934" na linha do tempo. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f95** "The county would later call that sale the start of the coast's long-term protection."
+  - Ids: R125 (P [1235]: "The process of ensuring the long-term protection of Big Sur's unique coastline was initiated by John Pfeiffer in 1934").
+  - O dono na voz como ator ("the county would later call"). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f96** "The highway was finished in June 1937."
+  - Ids: R126 (P [1232] (medição): "On June 27, 1937, the highway was completed").
+  - Ilustração: "FINISHED JUNE 27, 1937" na linha do tempo. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f97** "The county's plan puts the cost at about 8 million dollars, and sums up the change in one line: a way of life had ended, and a new era began."
+  - Ids: R127 (P [1232]: "the highway was completed at a cost of approximately $8,000,000"); R128 (P [1233]-[1234]: "A way of life had ended, and a new era began").
+  - Ilustração: "≈ $8 MILLION · MONTEREY COUNTY PLAN (1986)" na linha do tempo. Documento: a folha recriada do plano com a linha, se o conferente aceitar (a licença do documento não foi lida). O dono na voz (outra régua: os US$ 10 milhões da FHWA ficam fora; e a linha é citação).
+- **f98** "The new road put the coast within easy reach."
+  - Ids: R129 (P [1296]: "The accessibility of Big Sur to these centers has a major impact on the demand to visit Big Sur").
+  - Mapa: a Califórnia começando a recuar (câmera parada no começo, se a inscrição de reserva cair aqui). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f99** "By the time the county wrote its plan, the Bay Area and Los Angeles were less than a day's drive away."
+  - Ids: R130 (P [1294]: "the San Francisco Bay Area, the Los Angeles Area, and the large cities of the Central Valley, are less than a day's drive from Big Sur").
+  - Mapa: as duas regiões do gancho acesas, com setas até a costa; tela "LESS THAN A DAY'S DRIVE · 1986 PLAN". As metrópoles do gancho voltam, sem número.
+- **f100** "Along the road grew campgrounds, lodges, restaurants, and places to pull over for the view."
+  - Ids: R131 (P [1497]: "Recreational uses include public and private campgrounds, visitor accommodations, restaurants"); R132 (P [230]: "major public viewing areas including turnouts, beaches").
+  - Ilustração sobre o mapa: ícones pousando ao longo do fio da estrada. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f101** "In 1965, this stretch was designated California's first official scenic highway, and in the 1980s, the county estimated, nearly all of its summer traffic was recreational."
+  - Ids: R133 (P [1291]: "Designated in 1965 as the first State scenic Highway"); R134 (P [1300]: "Recreational traffic is estimated to comprise 95% of all trips during the peak summer months"); R135 (P (medição M18): "its 'at present' figures are from the 1980s").
+  - Ilustração: "FIRST STATE SCENIC HIGHWAY · 1965" no fio da estrada e na linha do tempo; tela "PEAK SUMMER: 95% RECREATIONAL TRIPS · 1986 PLAN". O alerta "first" está decidido (a letra do plano, em voz passiva). A fonte saiu da voz na r2 (no r1: "In 1965, the plan notes, …"; a estimativa do tráfego ficou com o dono, "the county estimated" desde a r2b); vai ao crédito da tela. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+  - Lista r2, L13 (r2b): era "…and by the 1980s, by the county's estimate, nearly all of its summer traffic was recreational." (ouvinte A10 b: dois "by" seguidos).
+- **f102** "That left the county with a harder question than how to get people in: how much of this coast should be built on."
+  - Ids: R136 (P [1341]: "the capacity of the highway is a major constraint on the long range development of the coast"; a linha da tabela junta esta frase à vizinha).
+  - A ponte para p5; o verificador a apoia no plano, que dá a capacidade da estrada como limite do que se constrói (R136). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+  - Lista r2, L14 (r2b): era "Which left the county with a harder question than how to get people in.", com f103 depois ("How much of this coast should be built on at all?"); as duas viraram esta (ouvinte A7).
+- **f103** ~~"How much of this coast should be built on at all?"~~
+  - Ids: R136 (a linha da tabela junta esta frase a f102; o trecho está lá).
+  - Lista r2, L14 (r2b): juntada a f102.
 
-### p6 · The rule about what you can see
+### p5 · The rule about what you can see
 
-- **f114** "The county's answer took final form in 1986, in the plan this video keeps quoting." (r1, L11: adotado em 2/11/81 e 11/5/85, certificado em abril de 1986, P [3]–[7], fatos VF06; a ponte de entrada de p6 continua a mesma ponte)
-  - Ids: P (o plano de 1986, L3). "This video keeps quoting", sem "we".
-  - Ilustração: "1986" fecha a linha do tempo de p5.
-- **f115** "By then, much of this coast was already public land, the plan says." (r1, L12: as duas "metades" não fechavam ao ouvido, roteiro 6 e ouvinte A11: p3 dá metade da área do plano à floresta, P [79], mais os parques; a de P [1514] é da zona costeira, outro denominador. O "≈ HALF THE COASTAL ZONE PUBLIC · 1986" pode ficar na tela, com o crédito)
-  - Ids: P [1514] ("Approximately half of the Big Sur coastal zone is in public ownership"); §4.3; Sala. O 60 % fica fora (P [1521]: era
-    plano).
-  - Mapa: toda a terra pública acesa, "≈ HALF THE COASTAL ZONE PUBLIC · 1986" (PAD-US, a ler).
-- **f116** "After the Pfeiffer sale, other families gave land for parks, and the plan credits their generosity." (r1, L13: John Pfeiffer vendeu os 706 acres, P [1235]; os outros doaram ou puseram em fideicomisso, P [1236]–[1239]; o plano credita "these pioneering families", P [1240])
-  - Ids: P [1236] (os Lathrop Brown doaram os 1.700 acres de Julia Pfeiffer Burns), P [1237] (Elizabeth Livermore doou o John Little), P
-    [1238]–[1239] (Francis Molera pôs 2.000 acres em fideicomisso para o Andrew Molera), P [1240] ("The generosity of these pioneering
-    families"). O 4º corte do plano (−17). SEM APOIO (leve): o "too" faz dos Pfeiffer doadores, e John Pfeiffer vendeu a terra ao estado
-    (P [1235]; o próprio f103 diz "sold"). O plano credita a generosidade às famílias da lista, mas não diz que Pfeiffer doou.
-  - Mapa: os parques doados acendendo.
-- **f117** "The plan's basic rule was about what you can see."
-  - Ids: P [246] ("the basic critical viewshed policy"). No passado.
-- **f118** "The county made it policy to prohibit all future development, public or private, visible from Highway 1 and from major public viewpoints."
-  - Ids: P [226] ("it is the County's policy to prohibit all future public or private development visible from Highway 1 and major public
-    viewing areas (the critical viewshed)"); §4.3 (o centro do ato 2); §5 (nunca "building is banned"); Sala (nada de "still", "today",
-    "since 1986"). Atribuído ao condado, no passado.
-  - Ilustração sobre o relevo (a animação central do vídeo): de um carro na estrada, as linhas de visada em todas as direções.
-- **f119** "The plan calls everything in sight of those places the critical viewshed."
-  - Ids: P [230] ("Critical viewshed: everything within sight of Highway 1 and major public viewing areas"). O termo definido na 1ª vez.
-  - Mapa: o "critical viewshed" sombreado como uma faixa que sobe as encostas até a primeira crista, desenho declarado ("ILLUSTRATIVE"),
-    nunca o polígono oficial, que não foi lido; tela "'THE CRITICAL VIEWSHED' · MONTEREY COUNTY PLAN (1986)".
-- **f120** "It even names some of those viewpoints."
-  - Ids: P [230] (os lugares nomeados).
-  - Mapa: os mirantes nomeados acendendo como pontos (GARRAPATA BEACH, HURRICANE POINT, PFEIFFER BEACH…).
-- **f121** "One of them is the turnout beside the bridge at Bixby Creek." (r1, L14: sem o andaime "from the start of this video", que fica só na ponte de entrada de p9, roteiro 10)
-  - Ids: P [230] ("Bixby Creek Turnout"); L7. A imagem de abertura é um dos lugares da regra; o fecho volta a ele.
-  - Mapa: o anel em "BIXBY CREEK TURNOUT". Imagem real: a foto da ponte (L7) sob o cone parado.
-- **f122** "The test, in the plan's own words, was normal, unaided vision, in any direction, for any amount of time, at any season."
-  - Ids: P [264] ("Visibility will be considered in terms of normal, unaided vision in any direction for any amount of time at any
-    season"). No passado.
-  - Ilustração: as linhas de visada girando com as estações.
-- **f123** "If a new building would show, it had to be moved, redesigned, or not built there at all." (r1, L15: sem a etiqueta "the plan says", logo depois de "in the plan's own words", roteiro 8c e ouvinte A6)
-  - Ids: P [238] (o sítio alternativo exigido), P [246] ("cannot be resited, redesigned … then the site shall be considered
-    environmentally inappropriate for development"), P [233].
-  - Ilustração: uma casa nova na encosta aberta fica vermelha e some; reaparece atrás de uma dobra do morro.
-- **f124** "New roads and grading, the earthmoving that reshapes a slope, were not allowed to scar that view either."
-  - Ids: P [241] ("New roads, grading or excavations will not be allowed to damage or intrude upon the critical viewshed"), P [243] ("all
-    alterations of natural landforms by earthmoving equipment"). A glosa é do roteirista (`escrita-notas.md` §2).
-  - Ilustração: um corte de estrada na encosta, que se apaga.
-- **f125** "Out of sight of the road, new homes were possible, with conditions."
-  - Ids: P [226] ("to condition all new development in areas not visible from Highway 1"); §5 ("condicionado, não proibido").
-  - Ilustração: a área fora do cone.
-- **f126** "They had to go where the land or the trees would screen them."
-  - Ids: P [276] ("New structures shall be located where existing topography or trees provide natural screening"), na seção 3.2.4, "Land
-    Not in the Critical Viewshed" (P [270]): a regra vale fora da faixa, como a frase diz (o que o plano do juiz pedia conferir).
-  - Ilustração: a casa atrás de um grupo de árvores, fora do cone.
-- **f127** "They couldn't sit on open hillsides, or on ridges against the sky."
-  - Ids: P [276] ("shall not be sited on open hillsides or silhouetted ridges").
-  - Ilustração: a casa na crista contra o céu, riscada.
-- **f128** "The plan also treated the road itself as a limited resource."
-  - Ids: P [1340] ("The limited capacity of Highway 1"), P [1428] ("the allocation of limited highway capacity").
-  - Dado: a estrada como uma faixa de capacidade.
-- **f129** "In 1986, it estimated nearly three million visitors a year."
-  - Ids: P [1298] ("an estimated 2.9 million people visit the Big Sur coast annually"); §4.4; Sala (com o ano; "estimated" é a palavra do
-    plano). Os turistas.
-  - Dado: a barra "≈ 2.9 MILLION A YEAR · 1986".
-- **f130** "Traffic jams on Highway 1 were already a problem, the plan says."
-  - Ids: P [1296] ("the resulting traffic congestion on Highway 1"), P [1341] ("traffic volumes along sections of Highway 1 are at capacity
-    during peak recreational use periods").
-- **f131** "It expected that number to double."
-  - Ids: P [1298] ("demand is predicted to double over the next 20 to 25 years"); os 20 a 25 anos só na tela.
-  - Dado: a seta dupla "EXPECTED TO DOUBLE IN 20–25 YEARS".
-- **f132** "So it reserved most of the highway's capacity for recreation, visitors and a few other priority uses." (r1, L16: os 85 % de P [1428] incluem também veículos militares e a agricultura costeira, as "coastal priority uses" do Coastal Act)
-  - Ids: P [1428] (85 % da capacidade reservada "to serve recreational travel, service trips to public and private recreation and
-    visitor-serving facilities, use by military vehicles, and coastal-dependent agriculture"); o 85 % em palavras ("most"). LEVE: os 85 %
-    incluem também os veículos militares e a agricultura costeira, e a reserva vem do Coastal Act ("To comply to Coastal Act policies…", P
-    [1428]), não "so" do dobro esperado.
-  - Dado: a faixa dividida em 100 casas, 85 em ícones de recreação e serviço ao visitante (os militares e a agricultura declarados na tela).
-- **f133** "All the new homes together could use no more than 15 percent of it."
-  - Ids: P [1429] ("limit future residential development to a level that will utilize not more than 15 percent of highway capacity at
-    buildout"); §4.3; Sala.
-  - Dado: 15 casas em casinhas, "NEW HOMES ≤ 15% · 1986 PLAN".
-- **f134** "The rule didn't empty this coast."
-  - Ids: P [1481], P [1523]–[1524] (a costa já era pouco povoada antes da regra); a tese, "o que ela não diz".
-- **f135** "The coast was thinly settled long before 1986."
-  - Ids: P [1481] (quase mil nos anos 1880), P [1523]–[1524] ("The 1976 mid-decade census recorded approximately 800 housing units").
-- **f136** "What the plan decided was how the coast should look from the road, and who the road was for."
-  - Ids: P [226] (o que se vê da estrada), P [1428] (para quem é a estrada).
-  - r1, P04 (A10, parte a): se o plano, com o critical viewshed, é o certificado em vigor hoje, nenhuma fonte local diz (a cópia do govinfo é
-    o texto de 1986); sem rede, nada entrou, e o veto da Sala a "still", "today", "now" e "since 1986" sobre a regra continua. Fica para a
-    pesquisa, na origem (o condado de Monterey ou a California Coastal Commission), e para o verificador.
-- **f137** "In the 2020s, the trouble was keeping that road open at all."
-  - Ids: L5 (2023–2026), K1 (2026). Ponte do plano.
+- **f104** "The county's answer took final form in 1986, in the plan we've been quoting."
+  - Ids: R137 (P (capa); M18: "its certification acknowledged in April 1986 (found)"); R138 (P (capa): "Board of Supervisors 11/5/85").
+  - Ilustração: "1986" fecha a linha do tempo de p4. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f105** "By then, much of this coast was already public land."
+  - Ids: R139 (P [1514]: "Approximately half of the Big Sur coastal zone is in public ownership").
+  - Mapa: toda a terra pública acesa, "≈ HALF THE COASTAL ZONE PUBLIC · 1986" (PAD-US, a ler). O 60 % fica fora (era plano, P [1521]). A fonte saiu da voz na r2 (no r1: "…already public land, the plan says."); vai ao crédito da tela. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f106** "And the basic rule the county wrote was about what you can see."
+  - Ids: R140 (P [246]: "to the basic critical viewshed policy").
+  - No passado. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f107** "The policy was to prohibit all future development, public or private, visible from Highway 1 and from major public viewpoints."
+  - Ids: R141 (P [226]: "it is the County's policy to prohibit all future public or private development visible from Highway 1 and major public viewing areas").
+  - Ilustração sobre o relevo (a animação central do vídeo): de um carro na estrada, as linhas de visada em todas as direções. No passado; nunca "building is banned" (§5); nada de "still", "today", "now" nem "since 1986" (Sala). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f108** "Everything in sight of those places got a name: the critical viewshed."
+  - Ids: R142 (P [230]: "everything within sight of Highway 1 and major public viewing areas").
+  - Mapa: o "critical viewshed" sombreado como uma faixa que sobe as encostas até a primeira crista, desenho declarado ("ILLUSTRATIVE"), nunca o polígono oficial, que não foi lido; tela "'THE CRITICAL VIEWSHED' · MONTEREY COUNTY PLAN (1986)". A fonte saiu da voz na r2b (L15); vai ao crédito da tela. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+  - Lista r2, L15 (r2b): era "The plan has a name for everything in sight of those places: the critical viewshed." (ouvinte A6, 4; no passado; o plano sai da voz e vai ao crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`).
+- **f109** "It even names some of the viewpoints, and one of them is the turnout beside the bridge at Bixby Creek."
+  - Ids: R143 (P [230]: "the following specific locations Soberanes Point, Garrapata Beach"); R144 (P [230]: "Abalone Cove Vista Point, Bixby Creek Turnout, Hurricane Point Overlook").
+  - Mapa: os mirantes nomeados acendendo como pontos (GARRAPATA BEACH, HURRICANE POINT, PFEIFFER BEACH…) e o anel em "BIXBY CREEK TURNOUT". Imagem real: a foto da ponte (L7) sob o cone parado. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f110** "Stand there, and the test, in the plan's own words, was this: normal, unaided vision, in any direction, for any amount of time, at any season."
+  - Ids: R145 (P [264]: "normal, unaided vision in any direction for any amount of time at any season").
+  - Ilustração: as linhas de visada girando com as estações. O dono na voz (é citação). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`. (A A10 d do ouvinte, a moldura nova da citação, ficou fora: pede o verificador.)
+- **f111** "If a new building would show, it had to be moved, redesigned, or not built there at all."
+  - Ids: R146 (P [238]: "then the applicant will be required to modify his proposal accordingly"); R147 (P [239]: "changes in the design, height, or bulk of proposed structures will be required"); R148 (P [246]: "then the site shall be considered environmentally inappropriate for develop").
+  - Ilustração: uma casa nova na encosta aberta fica vermelha e some; reaparece atrás de uma dobra do morro. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f112** "New roads couldn't scar that view either, and neither could grading, the earthmoving that reshapes a slope."
+  - Ids: R149 (P [241]: "New roads, grading or excavations will not be allowed to damage or intrude upon the critical viewshed"); R150 (P [243]: "shall include all alterations of natural landforms by earthmoving equipment").
+  - Ilustração: um corte de estrada na encosta, que se apaga. A glosa de "grading" é a definição do plano (P [243]). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f113** "Out of sight of the road, you could build, with conditions."
+  - Ids: R151 (P [226]: "areas not visible from Highway 1 or major public viewing areas on the siting and design criteria").
+  - Ilustração: a área fora do cone. Condicionado, não proibido (§5). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f114** "New homes had to go where the land or the trees would screen them, not on open hillsides, and not on ridges against the sky."
+  - Ids: R152 (P [276]: "New structures shall be located where existing topography or trees provide natural screening"); R153 (P [276]: "shall not be sited on open hillsides or silhouetted ridges").
+  - Ilustração: a casa atrás de um grupo de árvores, fora do cone; a casa na crista contra o céu, riscada. P [276] está na seção 3.2.4, "Land Not in the Critical Viewshed" (P [270]): vale fora da faixa, como a frase diz. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f115** "And the county treated the road itself as something that could run out."
+  - Ids: R154 (P [1428]: "the allocation of limited highway capacity to coastal priority uses").
+  - Dado: a estrada como uma faixa de capacidade. O dono como ator ("the county treated"). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f116** "In 1986, it estimated nearly three million visitors a year, and expected that to double over the next 20 to 25 years. Traffic jams on Highway 1 were already a problem."
+  - Ids: R155 (P (capa): "LOCAL COASTAL PROGRAM 1986 MONTEREY COUNTY, CALIFORNIA"); R156 (P [1298]: "an estimated 2.9 million people visit the Big Sur coast annually"); R157 (P [1296]: "the resulting traffic congestion on Highway 1"); R158 (P [1298]: "demand is predicted to double over the next 20 to 25 years").
+  - Dado: a barra "≈ 2.9 MILLION A YEAR · 1986" e a seta dupla "EXPECTED TO DOUBLE IN 20–25 YEARS". O ano na frase ([visitantes]); a estimativa com o dono. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+  - Lista r2, L16 (r2b): era "In 1986, it estimated nearly three million visitors a year, expected that to double over the next 20 to 25 years, and noted that traffic jams on Highway 1 were already a problem." (ouvinte A10 c: a maior frase, em duas).
+- **f117** "So it reserved most of the highway's capacity for recreation, visitors and a few other priority uses."
+  - Ids: R159 (P [1428]: "shall be reserved to serve recreational travel, service trips to public and private recreation and visitor-serving facilities"); R160 (P [1428]: "use by military vehicles, and coastal -dependent agriculture").
+  - Dado: a faixa dividida em 100 casas, 85 em ícones de recreação e serviço ao visitante (os militares e a agricultura costeira declarados na tela: os 85 % de P [1428] os incluem). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f118** "All the new homes on this coast, together, could use no more than 15 percent of it."
+  - Ids: R161 (P [1429]: "limit future residential development to a level that will utilize not more than 15 percent of highway capacity at buildout").
+  - Dado: 15 casinhas, "NEW HOMES ≤ 15% · 1986 PLAN". A frase que o ouvinte repetiria a um amigo. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f119** "The rule didn't empty this coast."
+  - Ids: R162 (P [1523]-[1524]: "800 housing units, of which about 600 were permanent single family dwellings").
+  - A tese não diz que a regra criou o vazio. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+  - Lista r2, L17 (r2b): era "The rule didn't empty this coast by itself." (a observação do verificador: "by itself" sugere que a regra ajudou a esvaziar).
+- **f120** "It was thinly settled long before 1986."
+  - Ids: R163 (P (capa): "LOCAL COASTAL PROGRAM 1986 MONTEREY COUNTY, CALIFORNIA"); R164 (P [1481]: "there was a population of nearly 1000 people by the 1880's").
+  - Os ~800 de 1976 (P [1523]–[1524]) ficam fora da voz: uma terceira régua. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f121** "What the county decided was how the coast should look from the road, and who the road was for."
+  - Ids: R165 (P [226]: "prohibit all future public or private development visible from Highway 1"); R166 (P [1428]: "the allocation of limited highway capacity to coastal priority uses").
+  - Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`. Se o plano com o critical viewshed é o certificado em vigor hoje, nenhuma fonte local diz (P04 da r1): nada de "still", "today", "now" nem "since 1986".
+- **f122** "And then came the years when the trouble was keeping that road open."
+  - Ids: R167 (L5: "which closed the highway from January 14, 2023, to June 23, 2024").
+  - Ponte para p6. Crédito `Source: Caltrans, 2023–2026`.
+  - Lista r2, L18 (r2b): era "…keeping that road open at all." (ouvinte A7: o "at all" repetido).
 
-### p7 · Three years without the road, then fire
+### p6 · Three years without the road, then fire
 
-- **f138** "So what happens to a coast like this when its road breaks?"
-  - Ids: — (a pergunta do ato 3).
-  - Mapa: a Highway 1 sobre o satélite, com Paul's Slide e Regent's Slide nos post miles da Caltrans (K4).
-- **f139** "In January 2023, Paul's Slide closed Highway 1."
-  - Ids: L5 ("Paul's Slide … which closed the highway from January 14, 2023, to June 23, 2024"); §4.4; Sala.
-  - Ilustração: a LINHA DO TEMPO dos fechamentos como barras sobre a estrada, "PAUL'S SLIDE · JAN 14, 2023 –".
-- **f140** "In February 2024, Regent's Slide gave way, six miles to the north."
-  - Ids: L5 (Regent's Slide "occurred on February 9, 2024"; "Paul's Slide, six miles to the south"); Sala. Duas frases com data seguidas,
-    não três.
-  - Mapa: Regent's Slide acende seis milhas ao norte de Paul's (o ponto pelo post mile, K4; DS5); tela "REGENT'S SLIDE · FEB 9, 2024 · 6 MI
-    NORTH".
-- **f141** "Paul's Slide reopened that summer, but Regent's kept the road cut."
-  - Ids: L5 (Paul's até 23/06/2024; Regent's até 14/01/2026).
-  - Ilustração: a barra de Paul's fecha em "JUN 23, 2024"; a de Regent's continua.
-- **f142** "For almost three years, you couldn't drive this coast from end to end."
-  - Ids: L5 ("uninterrupted access along the Big Sur coast between Carmel and Cambria"; "for the first time in almost three years"), sem o
-    "first"; §4.4.
-  - Ilustração: a barra "ALMOST THREE YEARS" unindo as duas.
-- **f143** "Crews drilled thousands of steel bars into the slope at Regent's Slide to hold it in place."
-  - Ids: L5, na releitura da Sala de 02/11 (`midia/big-sur/fontes/leituras-sala-2026-11-02.md` §3: "Over 4,600 steel bars, up to 60 feet
-    long, were drilled and grouted into the slopes"). O número exato só na tela.
-  - Ilustração: o PERFIL DA ENCOSTA de p2, o solo escorregando sobre a prateleira da estrada e as barras de aço entrando, "4,600 STEEL BARS
-    · UP TO 60 FT · CALTRANS".
-- **f144** "Caltrans reopened the road there at noon on January 14, 2026, months ahead of its target date."
-  - Ids: L5 ("starting at noon on Wednesday, January 14"; "months earlier than the estimated reopening date of March 30"); Sala.
-  - Tela: "REOPENED JAN 14, 2026 · NOON".
-- **f145** "The agency estimated the repair at nearly 83 million dollars."
-  - Ids: L5 ("this estimated $82.6 million project"); §4.4; Sala. Arredondado com o hedge e com o dono.
-  - Tela: "$82.6 MILLION (EST.) · CALTRANS".
-- **f146** "Even then, it warned drivers to expect occasional full closures while crews cleared debris."
-  - Ids: L5 ("may encounter occasional full closures while crews remove debris"); §5 (nunca "it will close again").
-- **f146a** "Kirk Gafill owns the Nepenthe restaurant in Big Sur." (r1, P03: a fala de gente que o ouvinte pediu, A5 e A9, e que paga a
-  pergunta-ponte f138; entrou pelo escritor em 02/11/2026, no fim do parágrafo e não logo depois de f142, porque maio de 2026 vem depois da
-  reabertura de janeiro, f144)
-  - Ids: L5, a nota da Caltrans de 15/05/2026 ("Tourism on Big Sur is Surging Since Reopening of Highway 1"), na cópia local lida na origem
-    pela Sala em 02/11/2026, `midia/big-sur/fontes/web/caltrans-d5-news-5-15-2026-2-lida-2026-11-02.htm`: "said Kirk Gafill, owner of
-    Nepenthe restaurant in Big Sur". A CONFERIR (P03): entra condicionada ao veredito do verificador de fatos; se ele reprovar, as duas frases
-    saem e o parágrafo volta à forma de antes (`_trabalho/pedidos-r1-feito.md`). O "in Big Sur" é o da fonte; onde o Nepenthe cai no mapa
-    (dentro ou fora do distrito do censo) é do mapista e do conferente, não da fala.
-  - Imagem real: a casa do Nepenthe sobre a Highway 1, se o conferente achar licença; senão, o mapa com o ponto e o nome.
-- **f146b** "In May 2026, in a Caltrans release, he said his business, his staff and the community were recovering from those years." (r1,
-  P03)
-  - Ids: L5 (15/05/2026): "The robust and sustained increase in visitation is allowing our business, employees, and larger community to
-    recover rapidly from the three-year closure." Paráfrase: "employees" → "staff", "larger community" → "the community", "to recover rapidly
-    from the three-year closure" → "were recovering from those years" (os quase três anos de f142, sem repetir a duração, e sem confundir com
-    as "occasional full closures" de f146). O "45 percent increase in guest volume" da mesma fala fica fora da voz (número de visitantes de
-    hoje sem régua; a Sala só liberou "the visitors came back"). A reserva, na mesma nota: Colin Trohig, gerente-geral do Big Sur River Inn
-    ("three very challenging years"). Nenhum número na frase (a data não conta), e f146, antes dela, também não tem.
-  - Tela: "KIRK GAFILL · OWNER, NEPENTHE · CALTRANS, MAY 15, 2026".
-- **f147** "Fire was on the county's list of dangers, too."
-  - Ids: P [71] ("dangers of fire and flood"), P [69] ("Fire danger is ever present in summer"). Paga o f38.
-- **f148** "In August 2026, a wildfire started in the backcountry above the coast." (r1, L17: o CAL FIRE dá a agência com jurisdição e um ponto, não o lugar de origem; "backcountry" é a palavra do plano, P [1576])
-  - Ids: DS2 (CAL FIRE: "Date Started 08/08/2026 8:35 PM"; "Agency Having Jurisdiction: Los Padres National Forest"; "Location: Southeast
-    of Loma Vista [36.224857,-121.72983]"); Sala. SEM APOIO (parcial): a página dá a agência com jurisdição e um ponto, não diz que o fogo
-    começou dentro da floresta nacional; o ponto contra o limite da floresta não foi lido (o PAD-US, §11, item 7). A forma fraca do
-    roteirista: "a wildfire broke out in the mountains above this coast".
-  - Mapa: o ponto do CAL FIRE (36,2249 N, 121,7298 W) como um marcador, sem perímetro nem círculo de área (nenhuma geometria do fogo foi
-    lida); crédito "Source: CAL FIRE (2026)".
-- **f149** "It became known as the Timber Fire, and it spread through these mountains."
-  - Ids: DS2 ("Timber Fire"; 25.352 acres, 1 condado, Monterey); Depois do sim, "O que muda no roteiro". Sem número na voz.
-  - Tela: "TIMBER FIRE · STARTED AUG 8, 2026 · 25,352 ACRES · CAL FIRE".
-- **f150** "Air tankers from across California flew missions over the ridges."
-  - Ids: DS2 ("Numerous firefighting air tankers from throughout the State are flying fire suppression missions as conditions allow"). O 5º
-    corte do plano (−10).
-  - Imagem real: o fogo é registro, não desenho; o álbum Flickr da página do CAL FIRE fica fora até o conferente ler a licença.
-- **f151** "CAL FIRE, the state's fire agency, listed hundreds of homes, businesses and other buildings as threatened."
-  - Ids: DS2 ("661 Structures Threatened · Residential, Commercial and Other"); Sala (em palavras; nunca "destroyed"). A glosa do CAL FIRE,
-    a 1ª vez.
-  - Tela: "661 STRUCTURES THREATENED · CAL FIRE".
-- **f152** "Firefighters were hurt fighting it."
-  - Ids: DS2 ("3 Confirmed Firefighter Injuries"). O número só na tela, se ela o quiser.
-- **f153** "By mid-October, it was almost fully contained."
-  - Ids: DS2 (97 % contido nas atualizações de 14/10, 16/10 e 18/10/2026; "Last Updated 10/20/2026"). A CONFERIR (volátil): relê-se antes
-    da publicação.
-- **f154** "For weeks, Caltrans kept parts of Highway 1 inside the census district closed."
-  - Ids: K1 (Caltrans, 11/08/2026: fechada da PM 37.5, 2 milhas ao norte de Julia Pfeiffer Burns, a Fernwood, PM 47; 02/09/2026: o
-    fechamento do norte, da PM 56 à PM 45, levantado às 6h de 03/09), L1 (o trecho fica dentro do distrito); Sala ("por semanas").
-  - Mapa: o polígono do distrito aceso, com o trecho da nota de 11/08 (PM 37.5 a 47) em vermelho dentro dele, "CLOSED · AUG 2026 ·
-    CALTRANS"; crédito "Source: Caltrans (2023–2026)".
-- **f155** "Farther south, a second fire, the Plaskett Fire, closed another stretch."
-  - Ids: K1 (Caltrans, 02/09/2026: fechada de Pacific Valley, PM 16, à divisa do condado, PM 0.0, "supporting Plaskett Fire emergency
-    response"); Depois do sim e Sala (o Plaskett só pelo nome, sem número).
-  - Mapa: o fechamento do Plaskett ao sul, fora do distrito.
-- **f156** "For the people who live along this road, the fire came only months after the long closures of the slides." (r1, L18: da reabertura, 14/01/2026, ao fogo, 08/08/2026, são quase sete meses)
-  - Ids: Depois do sim, "O que muda no roteiro" (o tom de gente que acabou de passar pelo fogo); L5, DS2. LEVE: "right after" são uns sete
-    meses entre a reabertura (14/01/2026) e o começo do fogo (08/08/2026).
-- **f157** "By November 2026, the road was open from end to end again, with one-way traffic at a few work zones."
-  - Ids: DS3 (a Caltrans, "as of Sunday, November 1st, 2026 at 08:31 PM": nenhum fechamento total; mão única em Mud Creek, entre Point Sur e
-    o norte de Big Sur, e na ponte de Rocky Creek), DS2 ("CHP - Monterey has lifted the Highway 1 closure. The highway is fully reopened.");
-    Sala. A CONFERIR (volátil): relê-se antes da publicação.
-  - Mapa: tudo branco, com três marcas "ONE-WAY" (Mud Creek, Point Sur–Big Sur, Rocky Creek Bridge); tela "NOV 1, 2026: OPEN · ONE-WAY AT
-    WORK ZONES · CALTRANS".
+- **f123** "So how long can a coast like this go without its road?"
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Mapa: a Highway 1 sobre o satélite, com Paul's Slide e Regent's Slide nos post miles da Caltrans (K4). A pergunta do ato 3 (sem fato).
+- **f124** "In January 2023, Paul's Slide closed Highway 1."
+  - Ids: R168 (L5: "which closed the highway from January 14, 2023, to June 23, 2024"); R169 (L5: "Highway 1 from Carmel to Cambria in Big Sur").
+  - Ilustração: a LINHA DO TEMPO dos fechamentos como barras sobre a estrada, "PAUL'S SLIDE · JAN 14, 2023 –". Crédito `Source: Caltrans, 2023–2026`.
+- **f125** "In February 2024, Regent's Slide gave way, six miles to the north."
+  - Ids: R170 (L5: "Regent's Slide occurred on February 9, 2024, and overlapped with"); R171 (L5: "Slide, six miles to the south, which closed the highway").
+  - Mapa: Regent's Slide acende seis milhas ao norte de Paul's (o ponto pelo post mile, K4; DS5); tela "REGENT'S SLIDE · FEB 9, 2024 · 6 MI NORTH". Duas frases com data seguidas, não três. Crédito `Source: Caltrans, 2023–2026`.
+- **f126** "Paul's Slide reopened that summer."
+  - Ids: R172 (L5: "to June 23, 2024").
+  - Ilustração: a barra de Paul's fecha em "JUN 23, 2024". Crédito `Source: Caltrans, 2023–2026`.
+- **f127** "Regent's kept the road shut."
+  - Ids: R173 (L5: "open the portion of Highway 1 closed by Regent").
+  - Ilustração: a barra de Regent's continua. No passado ([estrada-fechada]). Crédito `Source: Caltrans, 2023–2026`.
+  - Lista r2, L19 (r2b): era "Regent's kept the road cut." (ouvinte A8: "cut" tem outro sentido em "cut into the cliffs").
+- **f128** "For almost three years, you couldn't drive this coast from end to end."
+  - Ids: R174 (L5: "uninterrupted access along the Big Sur coast between Carmel and Cambria for the first time in almost three years").
+  - Ilustração: a barra "ALMOST THREE YEARS" unindo as duas. Sem o "first" da nota. Crédito `Source: Caltrans, 2023–2026`.
+- **f129** "Crews drilled thousands of steel bars into the slope at Regent's Slide to hold it in place."
+  - Ids: R175 (L5: "Over 4,600 steel bars, up to 60 feet long, were drilled and grouted into the slopes").
+  - Ilustração: o PERFIL DA ENCOSTA de p2, o solo escorregando sobre a prateleira da estrada e as barras de aço entrando, "4,600 STEEL BARS · UP TO 60 FT · CALTRANS" (o número exato só na tela). Crédito `Source: Caltrans, 2023–2026`.
+- **f130** "Caltrans reopened the road there at noon on January 14, 2026, months ahead of its target date."
+  - Ids: R176 (L5: "starting at noon on Wednesday, January 14, months earlier than the estimated reopening date of March 30"); R177 (L5 (medição M20): "the Caltrans note is dated January 14, 2026").
+  - Tela: "REOPENED JAN 14, 2026 · NOON". A Caltrans na voz.
+- **f131** "The agency put the repair at nearly 83 million dollars, and even then it warned drivers to expect occasional full closures while crews cleared debris."
+  - Ids: R178 (L5: "this estimated $82.6 million project"); R179 (L5: "may encounter occasional full closures while crews remove debris").
+  - Tela: "$82.6 MILLION (EST.) · CALTRANS". Arredondado com o hedge e com o dono; nunca "it will close again" (§5).
+- **f132** "Kirk Gafill owns the Nepenthe restaurant in Big Sur."
+  - Ids: R180 (Caltrans D5, 15/05/2026 (L5): "said Kirk Gafill, owner of Nepenthe restaurant in Big Sur").
+  - Imagem real: a casa do Nepenthe sobre a Highway 1, se o conferente achar licença; senão, o mapa com o ponto e o nome. Tela "KIRK GAFILL · OWNER, NEPENTHE · CALTRANS, MAY 15, 2026". O "in Big Sur" é o da fonte; onde o Nepenthe cai no mapa (dentro ou fora do distrito) é do mapista e do conferente.
+- **f133** "In May 2026, in a Caltrans release, he said his business, his staff and the community were recovering from those years."
+  - Ids: R181 (Caltrans D5, 15/05/2026 (L5): "is allowing our business, employees, and larger community to recover rapidly from the three-year closure"); R182 (Caltrans D5, 15/05/2026 (L5); M20: "web/caltrans-d5-news-5-15-2026-2-lida-2026-11-02.htm: the Caltrans note is dated May 15, 2026"); R183 (Caltrans D5, 15/05/2026 (L5): "Tourism on Big Sur is Surging Since Reopening of Highway 1").
+  - A paráfrase da fala dele (R181–R183): a nota diz "…allowing our business, employees, and larger community to recover rapidly from the three-year closure". A A1 do ouvinte (a citação palavra por palavra) é PEDIR e ficou com a Sala. O "45 percent" da mesma fala fica fora (número de visitantes de hoje).
+- **f134** "Fire was on the county's list of dangers, too."
+  - Ids: R184 (P [71]: "and dangers of fire and flood").
+  - Paga f49. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f135** "In August 2026, a wildfire started in the backcountry above the coast and spread through these mountains."
+  - Ids: R185 (DS2: "Date Started 08/08/2026 8:35 PM"); R186 (DS2; L1 (medição): "point Timber Fire origin point, CAL FIRE [36.224857,-121.72983] 36.2249,-121.7298 -> Big Sur CCD"); R187 (DS2: "Timber Fire LATEST NEWS UPDATES 97% Contained 25,352 Acres").
+  - Mapa: o ponto do CAL FIRE (36,2249 N, 121,7298 W) como um marcador, sem perímetro nem círculo de área (nenhuma geometria do fogo foi lida). Crédito `Source: CAL FIRE, 2026`.
+- **f136** "It became known as the Timber Fire."
+  - Ids: R188 (DS2: "Timber Fire LATEST NEWS UPDATES 97% Contained 25,352 Acres").
+  - Tela: "TIMBER FIRE · STARTED AUG 8, 2026 · 25,352 ACRES · CAL FIRE". Sem número na voz (Sala). Crédito `Source: CAL FIRE, 2026`.
+- **f137** "CAL FIRE, the state's fire agency, listed hundreds of homes, businesses and other buildings as threatened."
+  - Ids: R189 (DS2: "661 Structures Threatened Residential, Commercial and Other").
+  - Tela: "661 STRUCTURES THREATENED · CAL FIRE". Em palavras; nunca "destroyed" (Sala). O CAL FIRE dito na voz, com a glosa (a 1ª vez).
+- **f138** ~~"Firefighters were hurt fighting it."~~
+  - Ids: R190 (DS2: "3 Confirmed Firefighter Injuries").
+  - O número ("3 CONFIRMED FIREFIGHTER INJURIES · CAL FIRE") só na tela, se ela o quiser.
+  - Lista r2, L20 (r2b): saiu (ouvinte A8: vaga; o fogo vai sem número na voz).
+- **f139** "By mid-October, it was almost fully contained."
+  - Ids: R191 (DS2: "The Timber Fire remains at 25,352 acres with 97% containment").
+  - Volátil: relê-se no CAL FIRE antes da publicação. Crédito `Source: CAL FIRE, 2026`.
+- **f140** "For weeks, Caltrans kept parts of Highway 1 inside the census district closed."
+  - Ids: R192 (K1: "Highway 1 is closed from 2-miles north of Julia Pfeiffer Burns State Park (Post Mile 37.5) to Fernwood (Post Mile 47)"); R193 (K1: "the northern closure of Highway 1 in support of Timber Fire operations will be lifted"); R194 (L1 (medição): "point Fernwood (Highway 1) 36.2622,-121.7889 -> Big Sur CCD").
+  - Mapa: o polígono do distrito aceso, com o trecho da nota de 11/08 (PM 37.5 a 47) em vermelho dentro dele, "CLOSED · AUG 2026 · CALTRANS". Crédito `Source: Caltrans, 2023–2026` e `© OpenStreetMap contributors`.
+- **f141** "Farther south, a second fire, the Plaskett Fire, closed another stretch."
+  - Ids: R195 (K1: "The southern closure supporting Plaskett Fire emergency response along Highway 1 remains in place").
+  - Mapa: o fechamento do Plaskett ao sul (Pacific Valley à divisa do condado), fora do distrito. O Plaskett só pelo nome (Sala). Crédito `Source: Caltrans, 2023–2026`.
+- **f142** "For the people who live along this road, the fire came only months after the long closures of the slides had ended."
+  - Ids: R196 (L5: "starting at noon on Wednesday, January 14"); R197 (DS2: "Date Started 08/08/2026 8:35 PM").
+  - O tom de gente que acabou de passar pelo fogo (Depois do sim). Crédito `Source: Caltrans, 2023–2026` e `Source: CAL FIRE, 2026`.
+- **f143** "By November 2026, the road was open from end to end again, with one-way traffic at a few work zones."
+  - Ids: R198 (DS3: "latest reported as of Sunday, November 1st, 2026 at 10:40 PM"); R199 (DS3: "1-way controlled traffic at Mud Creek (Monterey Co)"); R200 (DS2: "CHP - Monterey has lifted the Highway 1 closure. The highway is fully reopened.").
+  - Volátil: relê-se na Caltrans antes da publicação. Mapa: tudo branco, com três marcas "ONE-WAY" (Mud Creek, Point Sur–Big Sur, Rocky Creek Bridge); tela "NOV 1, 2026: OPEN · ONE-WAY AT WORK ZONES · CALTRANS". Crédito `Source: Caltrans, 2023–2026`.
 
-### p8 · Empty homes and passing visitors
+### p7 · Empty homes, passing visitors, and the view from Bixby Creek
 
-- **f158** "The census counted the homes along this road, too."
-  - Ids: C3 (`HU100`).
-  - Mapa: o polígono do distrito aceso de novo.
-- **f159** "In 2020, the census district had a little under 900 of them."
-  - Ids: C3 (887 casas); §4.4.
-  - Dado: a grade de 887 quadradinhos dentro do polígono, "887 HOMES · 2020 CENSUS".
-- **f160** "Back in 1986, the county's plan had found homes like these in rural clusters, or scattered along Highway 1." (r1, L19: P [1493] "rural residential clusters")
-  - Ids: P [1493] ("either in rural residential clusters in areas where development has historically been concentrated, or scattered
-    along Highway 1"). LEVE: o plano diz "rural residential clusters"; o "small" é do roteiro.
-  - Mapa: pontos de casa em pequenos grupos e espalhados ao longo da estrada (desenho declarado, sem posição real de casa).
-- **f161** "On census day in 2020, almost four in ten of the district's homes stood empty."
-  - Ids: C3 (345 vagas de 887 = 38,9 %); §4.4; Sala.
-  - Dado: 345 quadradinhos se apagando, "345 EMPTY ON CENSUS DAY · 2020 CENSUS".
-- **f162** "Empty, on census day, doesn't have to mean abandoned."
-  - Ids: DS4 (o tipo das vagas; pago em f164).
-- **f163** "The Census Bureau also runs an ongoing survey, year after year."
-  - Ids: DS4 (a ACS de 5 anos, tabela B25004).
-- **f164** "Its results for 2020 to 2024 put nearly all of the district's empty homes in one category: seasonal, recreational or occasional use."
-  - Ids: DS4 (265 ± 94 das 285 ± 95 vagas, 93 %; `acs_vagas.py` reroda sobre a cópia local `acsdt5y2024-b25004.dat` e confere); Sala (as
-    duas réguas, cada uma com o dono; nenhuma margem na voz).
-  - Dado: dos apagados, quase todos ganham um pequeno calendário com uma só página marcada, "SEASONAL, RECREATIONAL OR OCCASIONAL USE · ACS
-    2020–2024 (WIDE MARGINS)".
-- **f165** "In other words, they're homes people keep, but don't live in."
-  - Ids: DS4; Sala ("second homes" e "vacation homes" só como paráfrase atribuída ao Census Bureau: a frase parafraseia sem eles, logo
-    depois do Census Bureau).
-- **f166** "Across California, homes like that make up only about a third of the empty ones."
-  - Ids: DS4 (Califórnia, 357.596 ± 6.059 de 1.096.644 vagas, 33 %; o condado de Monterey, 54 %, só na tela).
-  - Dado: a barra da Califórnia com um terço marcado, ao lado; "CALIFORNIA ≈ 33% · MONTEREY COUNTY ≈ 54%".
-- **f167** ~~"The same 1986 plan described a serious housing shortage for the people who worked on this coast, especially in the visitor business."~~ (cortada na r1, L20: colada às casas de uso ocasional de 2020–2024, a falta de casa de 1986 se ouvia como de hoje e como causada por elas, roteiro 4; nenhuma fonte lida diz isso de hoje)
-  - Ids: P [1547] ("A serious housing shortage exists for employees in Big Sur, particularly in the visitor industry"); §4.4 (O5).
-- **f168** ~~"Some, it said, had camped out, lived in cars, or moved in with friends."~~ (cortada na r1, L20)
-  - Ids: P [1548] ("employees have at times been forced to camp-out, live in cars, or move in with friends"). Sem julgar ninguém.
-- **f169** "The visitors are the other side of the count."
-  - Ids: — (sem fato novo: abre os visitantes, que os leitores a frio pediram).
-- **f170** "After the road reopened in 2026, Caltrans reported that the visitors came back."
-  - Ids: O cético, "O que passou" (Caltrans, 15/05/2026: "Northbound traffic at Ragged Point has grown more than 900% year-over-year",
-    atribuído à Visit California), DS5, Sala ("the visitors came back"; nunca um número de visitantes de hoje).
-  - Tela: "'THE VISITORS CAME BACK' · CALTRANS, MAY 2026"; Ragged Point marcado no sul, fora do distrito, só se a tela der a nota.
-- **f171** "Many come for the view the 1986 plan set out to protect." (r1, L21: o trecho de 1986 fala de parte dos visitantes, P [1297]; no presente e com "They", a frase falava de todos os de 2026)
-  - Ids: P [1297] ("Visitors … who are attracted to Big Sur's scenic beauty"), P [225] (preservar os recursos cênicos).
-- **f172** "Then they drive on."
-  - Ids: P [1302] ("Driving for pleasure constitutes the major proportion of recreational traffic").
-  - Imagem real: carros na Highway 1 e na ponte (banco, pela caça).
-- **f173** "The census doesn't count them, because this isn't where they live."
-  - Ids: C3 (o censo conta moradores; a regra da residência habitual é conhecimento geral, não contestável).
-- **f174** "So how empty this coast looks depends on what you count."
-  - Ids: — (sem fato novo: abre a virada da régua).
-  - Ilustração: o tríptico em traço de engenheiro (pontinhos de gente, quadradinhos de casa, carrinhos na estrada).
-- **f175** "Count the people who live in the census district, and it's as empty as Wyoming."
-  - Ids: C3, C1, C2; Sala. O distrito pelo nome.
-  - Mapa: o polígono do distrito aceso; a RÉGUA de p1 volta (os seis pontinhos e o Wyoming).
-- **f176** "Count the homes, and many of them are kept by people who live somewhere else."
-  - Ids: DS4 (a categoria de uso ocasional, sem número). A CONFERIR: a paráfrase da categoria da ACS e o "many of them" sobre o total de
-    casas (o plano do juiz manda o verificador conferir).
-  - Ilustração: os quadradinhos com o calendário.
-- **f177** "Count the cars on Highway 1, and you find a road the county was already rationing in 1986."
-  - Ids: P [1428] ("the allocation of limited highway capacity"), P [1341].
-  - Ilustração: os carrinhos na faixa de capacidade de p6.
-
-### p9 · The view from Bixby Creek
-
-- **f178** "Back at Bixby Creek, drivers pull into the turnout to look at the bridge from the start of this video."
-  - Ids: P [230] ("Bixby Creek Turnout"); L7.
-  - Imagem real: a foto da ponte (L7, "Mavic of Steel", 24/06/2023, CC BY-SA 4.0), com o crédito e a data (de antes do fogo, K1 d); ou a
-    estrada ao entardecer (banco, pela caça).
-- **f179** "It's one of the viewpoints named in the county's rule." (r1, L22: a regra protege a vista a partir dos mirantes, P [226] e [230], não o mirante; o Bixby Creek Turnout é nomeado nela, P [230])
-  - Ids: P [226], P [230]. LEVE: a regra protege a vista a partir dos mirantes (o que se vê deles), não o mirante em si.
-  - Ilustração: o cone de visão de p6 desenhado sobre a foto por um instante; tela "BIXBY CREEK TURNOUT · NAMED IN THE 1986 PLAN".
-- **f180** "The creek below carries a homesteader's name."
-  - Ids: §4.3, P [1203]. A CONFERIR: como em f74 (que o "Bixby" do riacho é o de Charlie Bixby é a leitura da pauta). O comentário entra
-    sobre esta frase e a seguinte.
-  - Imagem real: a foto da ponte, parada.
-- **f181** "Above it runs a road that prisoners helped cut into the cliffs."
-  - Ids: L4 (os presos na obra da estrada, com a medida já dita em f96–f99), P [1230] (as falésias). A CONFERIR: a FHWA dá os acampamentos
-    em Little Sur River, Kirk Creek e Anderson Creek e os presos na obra da estrada, não no trecho de Bixby Creek; e "above it runs a road"
-    é, ali, a própria ponte, cujo construtor não foi lido (§11, item 4). A frase vale como fala da estrada inteira.
-  - Imagem real: a mesma foto.
-- **f182** "Hardly a house is in sight."
-  - Ids: §6 (a foto de abertura, "a ponte, a estrada e a serra no mar, sem casa à vista"). A CONFERIR: depende da imagem que a regência
-    escolher; o plano lista "Bixby Canyon" entre as áreas residenciais (P [1536], P [1712]). A troca pronta do roteirista, se a imagem
-    mostrar casa: "From this turnout, the slopes look almost untouched."
-- **f183** "Part of that is the mountains, and part of it was a choice."
-  - Ids: P [53], P [70] (a serra), P [226] (a escolha de 1986). A resposta numa cena.
-- **f184** "In its 1986 plan, the county wrote that whatever came next should stay out of this view." (r1, L23: o condado escreveu e aprovou o texto em 1981–1985, P [3]–[7]; o 1986 fica como nome do plano, como a Sala o fixou, roteiro 5; a mesma escala de L11)
-  - Ids: P [226] ("prohibit all future public or private development visible from Highway 1 and major public viewing areas"), P [230]
-    (Bixby Creek Turnout). No passado e só sobre o novo (Sala).
-  - Mapa: a câmera sobe do mirante, a estrada vira o fio branco, o recuo lento começa.
-- ~~**f185** "That highway runs all the way from one metro area to the other."~~ (r1, P01 b: CORTADA em 02/11/2026 pelo escritor, sem rede.
-  A saída (a) do pedido, "Highway 1 runs all the way from one metro area to the other.", só entra se a Sala ler o Streets and Highways Code
-  §301, ou outra fonte com dono, levando a Route 1 do condado de Orange a San Francisco: o site recusou robô e não se contorna. Nas cópias
-  locais nada a sustenta: a Caltrans põe a SR 1 em Orange e em Mendocino (`caltrans-roads-sr1-lida-2026-11-02.htm`), a FHWA diz "from Baja
-  to the top of the Olympic Peninsula" (`fhwa-back0403-2026-11-02.htm`), e o plano a leva da península de Monterey ao Hearst Castle, P [1292].
-  Se a Sala confirmar, a frase volta antes de f186, +9 palavras.)
-  - Ids (antes do corte): nenhuma da pauta. Era o SEM APOIO 5 e o "That highway" órfão do ouvinte (A18).
-  - Mapa: o recuo até a Califórnia inteira passa a f186; o fio da estrada pode correr no mapa sem que a fala o afirme.
-- **f186** "Together, the Los Angeles and San Francisco metro areas hold more than 17 million people." (r1, P01 b: as duas regiões metropolitanas pelo nome,
-  a troca de VF13; antes, "Together, they hold more than 17 million people.")
-  - Ids: L2; K2; Sala. Espelha f2 (a exceção declarada: f186 → f187).
-  - Mapa: o recuo até a Califórnia inteira, as duas regiões demarcadas, "17 MILLION+".
-- **f187** "In between, on census day, the census district around this bridge counted fewer than 1,500 people who called it home."
-  - Ids: C3, L1; Sala ("fewer than 1,500" com "the census district"; nenhuma milhagem na frase). A última frase espelha f3; nada depois dela
-    além da cauda. Medido no portão: nenhuma sequência da pergunta do gancho, nenhuma lista, sem autoplágio.
-  - Mapa: o polígono do distrito aceso no meio, "1,474 · CENSUS DISTRICT · 2020" (crédito Census 2020). O mapa escurece para a cauda de 20 s
-    (identidade §5, a tela final).
+- **f144** "So go back to the house you were trying to build."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Mapa: o polígono do distrito aceso de novo. O fio volta (sem fato).
+- **f145** "Some people did manage it."
+  - Ids: R201 (C3 (medição): "887 housing units, 542 occupied, 345 vacant on census day").
+  - Crédito `Source: U.S. Census Bureau, 2020`.
+- **f146** "The census counted the homes along this coast too, and in 2020 the census district had a little under 900 of them."
+  - Ids: R202 (C3 (medição): "housing units (HU100) 887"); R203 (C3 (medição): "census 2020 population (POP100) 1,474 people; housing units (HU100) 887").
+  - Dado: a grade de 887 quadradinhos dentro do polígono, "887 HOMES · 2020 CENSUS". Crédito `Source: U.S. Census Bureau, 2020`.
+- **f147** "On census day, almost four in ten of those homes stood empty."
+  - Ids: R204 (C3 (medição): "H1 in 2020: 887 housing units, 542 occupied, 345 vacant on census day = 38.9% = 3.89 in 10").
+  - Dado: 345 quadradinhos se apagando, "345 EMPTY ON CENSUS DAY · 2020 CENSUS". Crédito `Source: U.S. Census Bureau, 2020`.
+- **f148** "Empty, on census day, doesn't have to mean abandoned."
+  - Ids: R205 (DS4: "For seasonal, recreational, or occasional use").
+- **f149** "The Census Bureau also runs an ongoing survey, year after year."
+  - Ids: R206 (Census, sobre a ACS: "The American Community Survey (ACS) is an ongoing survey that provides vital information on a yearly basis").
+  - O Census Bureau dito na voz (a 2ª régua, com o dono).
+- **f150** "Its results for 2020 to 2024 put nearly all of the district's empty homes in one category: seasonal, recreational or occasional use."
+  - Ids: R207 (DS4 (medição): "Big Sur CCD, ACS 2020 to 2024: 265 of 285 vacant homes for seasonal, recreational, or occasional use = 93%"); R208 (DS4: "For seasonal, recreational, or occasional use").
+  - Dado: dos apagados, quase todos ganham um pequeno calendário com uma só página marcada, "SEASONAL, RECREATIONAL OR OCCASIONAL USE · ACS 2020–2024 (WIDE MARGINS)". Nenhuma margem na voz (Sala). Crédito `Source: U.S. Census Bureau, American Community Survey 2020–2024`.
+- **f151** "In plain words, they're homes that people keep, but don't live in."
+  - Ids: R209 (DS4; Census, residência habitual: "defined as the place where a person lives and sleeps most of the time").
+  - Sem "second homes" nem "vacation homes" na voz (Sala). Crédito `Source: U.S. Census Bureau, American Community Survey 2020–2024`.
+- **f152** "Across California, homes like that make up only about a third of the empty ones."
+  - Ids: R210 (DS4 (medição): "= 33% = one in 3.07").
+  - Dado: a barra da Califórnia com um terço marcado, ao lado; "CALIFORNIA ≈ 33% · MONTEREY COUNTY ≈ 54%". Crédito `Source: U.S. Census Bureau, American Community Survey 2020–2024`.
+- **f153** "Then there are the visitors, the other side of the count."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Abre os visitantes, que os leitores a frio pediram (sem fato).
+- **f154** "After the road reopened in 2026, Caltrans reported that the visitors came back."
+  - Ids: R211 (O cético, 'O que passou': "tourists are returning in considerable numbers from Carmel to Cambria"); R212 (O cético (medição M20): "the Caltrans note is dated May 15, 2026").
+  - Tela: "'THE VISITORS CAME BACK' · CALTRANS, MAY 2026"; Ragged Point marcado no sul, fora do distrito, só se a tela der a nota. Nunca um número de visitantes de hoje (o 900 % fica fora; Sala).
+- **f155** "Many come for the view the 1986 plan set out to protect."
+  - Ids: R213 (P (capa): "LOCAL COASTAL PROGRAM 1986 MONTEREY COUNTY, CALIFORNIA"); R214 (P [1297]: "who are attracted to Big Sur's scenic beauty"); R215 (P [226]: "prohibit all future public or private development visible from Highway 1").
+  - Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f156** "They stop, they look, and then they drive on."
+  - Ids: R216 (P [1302]: "Driving for pleasure constitutes the major proportion of recreational traffic"); R217 (P [230]: "major public viewing areas including turnouts, beaches").
+  - Imagem real: carros na Highway 1 e na ponte (banco, pela caça). Apoia-se no plano de 1986, não numa fonte de hoje (observação do verificador). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f157** "The census doesn't count them, because this isn't where they live."
+  - Ids: R218 (Census, residência habitual: "defined as the place where a person lives and sleeps most of the time").
+  - Crédito `Source: U.S. Census Bureau` (a regra da residência habitual), se a tela o quiser.
+- **f158** "So how empty this coast is depends on what you count."
+  - Ids: — (sem fato a checar: pergunta, ponte ou fio em segunda pessoa; NADA A CHECAR no laudo de fatos).
+  - Ilustração: o tríptico em traço de engenheiro (pontinhos de gente, quadradinhos de casa, carrinhos na estrada). A virada do vídeo (sem fato novo).
+- **f159** "Count the people who live in the census district, and it's as empty as Wyoming."
+  - Ids: R219 (C1, C2, C3 (medição): "576,872 people over 97,089 square miles of land = 5.94 per square mile; Big Sur CCD 5.86").
+  - Mapa: o polígono do distrito aceso; a RÉGUA de p1 volta (os seis pontinhos e o Wyoming). Crédito `Source: U.S. Census Bureau, 2020`.
+- **f160** "Count the homes, and many of them are kept by people who live somewhere else."
+  - Ids: R220 (DS4, C3 (medição): "about 3 in 10 of the 887"); R221 (Census, residência habitual: "people with a seasonal or second residence").
+  - Ilustração: os quadradinhos com o calendário. Crédito `Source: U.S. Census Bureau, American Community Survey 2020–2024`.
+- **f161** "Count the visitors, and you find a road the county, back in 1986, had mostly set aside for them."
+  - Ids: R222 (P (capa): "LOCAL COASTAL PROGRAM 1986 MONTEREY COUNTY, CALIFORNIA"); R223 (P [1428]: "85 percent of the capacity of Highway 1 under improved road conditions and managed traffic shall be reserved").
+  - Ilustração: os carrinhos na faixa de capacidade de p5. A data na frase (o ouvinte pediu que fique). Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f162** "Back at Bixby Creek, drivers pull into the turnout to look at the bridge from the start of this video."
+  - Ids: R224 (P [230]: "Abalone Cove Vista Point, Bixby Creek Turnout, Hurricane Point Overlook").
+  - Imagem real: a foto da ponte (L7), com o crédito `Mavic of Steel / Wikimedia Commons · CC BY-SA 4.0`, com a data (24/06/2023, de antes do fogo de 2026, K1 d); ou a estrada ao entardecer (banco, pela caça).
+- **f163** "It's one of the viewpoints named in the county's rule."
+  - Ids: R225 (P [230]: "Abalone Cove Vista Point, Bixby Creek Turnout, Hurricane Point Overlook").
+  - Ilustração: o cone de visão de p5 desenhado sobre a foto por um instante; tela "BIXBY CREEK TURNOUT · NAMED IN THE 1986 PLAN". A regra protege a vista a partir do mirante. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f164** "The creek below carries a homesteader's name."
+  - Ids: R226 (P [1203], [576]: "whose names are now borne by well-known topographic and natural features in Big Sur (e.g., the Pfeiffer's, Charlie Bixby, Jim Anderson)").
+  - Imagem real: a foto da ponte, parada. O comentário entra sobre esta frase e a seguinte. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+- **f165** "Above it runs a road that prisoners helped cut into the cliffs."
+  - Ids: R227 (L4: "San Quentin Prison set up three temporary prison camps to provide the labor for the road").
+  - Imagem real: a mesma foto. A FHWA põe os presos na obra da estrada inteira, não no trecho de Bixby Creek; a frase vale como fala da estrada. Crédito `Source: Federal Highway Administration` (o ano é o da página lida, L4).
+- **f166** "Hardly a house is in sight."
+  - Ids: R228 NÃO CONFERIDA (P [1536]: "Garrapata and Palo Colorado Canyon, Bixby Canyon, Pfeiffer Ridge").
+  - A CONFERIR (VF12, PEDIR, fora da lista-r2): depende da imagem que a regência escolher; o plano lista Bixby Canyon entre as áreas residenciais (P [1536]). A troca pronta, se a imagem mostrar casa: "From this turnout, the slopes look almost untouched."
+- **f167** "Part of that is the mountains, and part of it was a choice. In its 1986 plan, the county wrote that whatever came next should stay out of this view."
+  - Ids: R229 (P [70]: "will continue to serve as a limitation on the kinds of activities that can be carried on and the scale of development"); R230 (P [226]: "prohibit all future public or private development visible from Highway 1"); R231 (P (capa): "LOCAL COASTAL PROGRAM 1986 MONTEREY COUNTY, CALIFORNIA"); R232 (P [226]: "prohibit all future public or private development visible from Highway 1 and major public viewing areas").
+  - Mapa: a câmera sobe do mirante, a estrada vira o fio branco, o recuo lento começa. No passado e só sobre o novo (Sala). A única frase que responde ao "why" do título. Crédito `Source: Monterey County, Big Sur Coast Land Use Plan, 1986`.
+  - Lista r2, L21 (r2b): era "Part of that is the mountains, and part of it was a choice: in its 1986 plan, the county wrote that whatever came next should stay out of this view."; partiu em duas (ouvinte A9: a resposta ao título com a respiração dela).
+- **f168** "Together, the Los Angeles and San Francisco metro areas hold more than 17 million people."
+  - Ids: R233 (L2, K2 (medição): "Los Angeles metro area (Los Angeles + Orange) and San Francisco metro area (5 counties)"); R234 (L2, K2 (medição): "together 17,474,482 people in 2025 and 17,958,344 in the 2020 base").
+  - Mapa: o recuo até a Califórnia inteira, as duas regiões demarcadas, "17 MILLION+". Espelha f2. Crédito `Source: U.S. Census Bureau, 2025` (ou a base de 2020, com o ano; K2).
+- **f169** "In between, on census day, the census district around this bridge counted fewer than 1,500 people who called it home."
+  - Ids: R235 (C3 (medição): "census 2020 population (POP100) 1,474 people"); R236 (L1 (medição): "point Bixby Bridge 36.3715,-121.9020 -> Big Sur CCD"); R237 (Census, residência habitual: "defined as the place where a person lives and sleeps most of the time").
+  - Mapa: o polígono do distrito aceso no meio, "1,474 · CENSUS DISTRICT · 2020". O mapa escurece para a cauda de 20 s (identidade §5, a tela final). Espelha f3; nenhuma sequência da pergunta do gancho, nenhuma lista. Crédito `Source: U.S. Census Bureau, 2020`.
 
 ## Para a bancada
 
-Nada abaixo foi consertado no texto. A bancada e o verificador decidem.
+A lista-r2 foi aplicada como r2b (o topo): no texto, ela fechou os dois CORRIGIR abaixo (1 e 2); o resto continua aberto. A Sala e o
+verificador decidem.
 
-### SEM APOIO (5 frases)
+### O que o laudo de fatos deixou aberto (RESSALVA, 9.0; COBERTURA 234 de 237)
 
-1. **f53** "A wilderness area is land set aside to stay wild, without roads or new buildings." — a definição não está na pauta nem no plano
-   lido (o plano do juiz já a marcava como fora do dossiê). A forma fraca do plano: "The plan describes trails and backpacking camps there,
-   not homes." (P [2228], sobre a floresta inteira).
-2. **f54** "People can hike there, but they can't move in." — o "hike" tem P [2228]; "they can't move in" não está em fonte lida.
-3. **f116** "Other families, after the Pfeiffers, had given land for parks too, and the plan credits their generosity." — (leve) o "too" faz
-   dos Pfeiffer doadores; John Pfeiffer vendeu a terra (P [1235], e o próprio f103 diz "sold"). Os outros doaram ou puseram em fideicomisso
-   (P [1236]–[1239]), e o plano credita a generosidade das famílias (P [1240]). A frase é o 4º corte do plano.
-4. **f148** "In August 2026, a wildfire started in the national forest above the coast." — (parcial) o CAL FIRE dá a agência com jurisdição
-   (Los Padres National Forest) e um ponto (DS2), não o lugar de origem por nome; o ponto contra o limite da floresta não foi lido (PAD-US,
-   §11, item 7). A forma fraca do roteirista: "a wildfire broke out in the mountains above this coast".
-5. ~~**f185** "That highway runs all the way from one metro area to the other."~~ — CORTADA na r1 (P01 b, 02/11/2026): verdadeiro por
-   conhecimento geral, mas fora do dossiê (P [1292] só leva a Highway 1 da península de Monterey ao Hearst Castle). f186 passou a nomear as
-   duas regiões. A saída (a) do pedido (a frase de volta, com "Highway 1") espera a leitura do §301 pela Sala, no navegador do app.
+1. **f11** (R015, CORRIGIR; VF-R2-01): "A road that took decades to build" exagera os 18 anos da obra (1919 a 1937; a FHWA conta "nineteen
+   years", M21). Na lista: L03 (a troca do ouvinte A3 tirou o "took decades"), aplicada na r2b.
+2. **f83** (R106, CORRIGIR; VF-R2-02): "by the turn of the century … already" adianta a data; o plano diz "Around the turn of the century" (P
+   [1485]). Na lista: L12, aplicada na r2b ("around the turn of the century").
+3. **f166** (R228, NÃO CONFERIDA; VF12): "Hardly a house is in sight." depende da imagem do mirante; o plano lista Bixby Canyon entre as áreas
+   residenciais (P [1536]). É PEDIR: à regência e ao conferente-de-midia. A troca pronta, se a imagem mostrar casa: "From this turnout, the
+   slopes look almost untouched."
+
+### A lista-r2, aplicada (r2b)
+
+- `_trabalho/lista-r2.json` e `_trabalho/lista-r2.md`: 21 trocas (L01–L21). A 1ª aplicação saiu com exit 2 (a cópia
+  `_trabalho/roteiro-r2.antes.md` já existia); a mesma lista com `"rodada": "r2b"` foi aplicada em 02/11/2026 (exit 0, APLICADO; texto
+  falado `4f827c30b9f8` → `50c2c56aaefc`, 2.260 palavras; o registro em `_trabalho/aplicado-r2b.md`). Este dossiê já está no carimbo novo,
+  com as frases trocadas. Falta o verificador reler as frases trocadas (a tabela casa pela frase; o `portao-fatos` só passa com a tabela no
+  texto novo); até lá, `qc-roteiro/fatos.laudo.md` segue com "Revisão julgada: `4f827c30b9f8`", e o `--derivados` o aponta.
+- Fora da lista, com o porquê em `lista-r2.md`: a A2 do ouvinte (o contrato dos 15 s até o "Why?"); A6 (3) e A6 (5) (o dono guarda o tempo
+  da área selvagem e o 1919 contestável); A10 (a) e (d); A13; A14.
+
+### Os pedidos que ficam com a Sala
+
+- **A1 (o ouvinte):** ninguém fala com a própria boca no vídeo, e a clareza dele fica em 7 por isso. A frase do Kirk Gafill está na cópia
+  local da nota da Caltrans de 15/05/2026 (`midia/big-sur/fontes/web/caltrans-d5-news-5-15-2026-2-lida-2026-11-02.htm`): "The robust and
+  sustained increase in visitation is allowing our business, employees, and larger community to recover rapidly from the three-year
+  closure." Trocar a paráfrase de f133 pela citação é decisão da Sala e passa pelo verificador (a citação traz o "rapidly" e o
+  "three-year"). A reserva, na mesma nota: Colin Trohig, gerente-geral do Big Sur River Inn ("three very challenging years").
+- **VF12:** a imagem do mirante (f166), acima.
 
 ### A CONFERIR (com apoio, mas a leitura, a imagem ou o volátil decidem)
 
-- **f9** "So why didn't more follow?" — a montagem com os quase mil dos anos 1880 pode soar como "não cresceu" (§8; Sala). A troca do
-  roteirista tem a mesma pressuposição.
-- **f74** e **f180** — o nome de Charlie Bixby na ponte e no riacho é a leitura da pauta §4.3; o plano só diz que os nomes dos colonos estão
-  em acidentes conhecidos (P [1203]).
-- **f94** — "the road had to get across each one" é leitura do mapa.
-- **f153** e **f157** — voláteis (o fogo quase todo contido; a estrada aberta em novembro de 2026): relêem-se na Caltrans e no CAL FIRE antes
+- **f139** e **f143**: voláteis (o fogo quase todo contido; a estrada aberta em novembro de 2026): relêem-se no CAL FIRE e na Caltrans antes
   da publicação (DS2, DS3).
-- **f176** — "many of them are kept by people who live somewhere else": a paráfrase da categoria da ACS (DS4) sobre o total de casas.
-- **f181** — "Above it runs a road that prisoners helped cut into the cliffs": a FHWA põe os presos na obra da estrada, não no trecho de Bixby
-  Creek, e ali a estrada é a própria ponte, de construtor não lido (§11, item 4).
-- **f182** — "Hardly a house is in sight." depende da imagem; o plano lista Bixby Canyon como área residencial (P [1536], [1712]). Na r1
-  (P02) ficou como está: não é pedido de texto; a regência e o conferente escolhem a imagem do mirante, e a troca pronta está na entrada de f182.
-- **f146a** e **f146b** (r1, P03) — a fala de Kirk Gafill (Nepenthe; Caltrans, 15/05/2026): entrou pelo escritor sobre a cópia local lida na
-  origem pela Sala, e vale depois do veredito do verificador de fatos. Se ele reprovar, as duas saem (`_trabalho/pedidos-r1-feito.md` guarda
-  o antes).
+- **f165**: "Above it runs a road that prisoners helped cut into the cliffs": a FHWA põe os presos na obra da estrada inteira, não no trecho
+  de Bixby Creek, e ali a estrada é a própria ponte, de construtor não lido (§11, item 4). A frase vale como fala da estrada (R227 confirma o
+  fato da estrada).
+- **f156**: "They stop, they look, and then they drive on." se apoia no plano de 1986 (P [1302], [230]), não numa fonte de hoje (observação
+  do verificador).
+- **f132**: onde o Nepenthe cai no mapa (dentro ou fora do distrito do censo) é do mapista e do conferente; a fala diz "in Big Sur", como a
+  fonte.
 
-### LEVES (a forma diz um pouco diferente da fonte, sem mudar o fato)
+### Para a folha de pronúncia (`voz/trocas.md`; o ouvinte, A12)
 
-- **f34** — "near the southern end of the coast" para o Cone Peak: L1 só o põe no terço sul (o distrito de San Ardo); a posição se mede no mapa.
-- **f45** — "small and seasonal": o plano diz "relatively small seasonal" (P [188]).
-- **f132** — "for recreation and visitors": os 85 % de P [1428] incluem veículos militares e a agricultura costeira, e a reserva vem do Coastal
-  Act, não "so" do dobro esperado.
-- **f156** — "right after": uns sete meses entre a reabertura (L5) e o fogo (DS2).
-- **f160** — "small clusters": o plano diz "rural residential clusters" (P [1493]).
-- **f179** — "the viewpoints the county's rule was written to protect": a regra protege a vista a partir deles (P [226], [230]).
+"U.S." (U S); "2020 to 2024" (twenty twenty to twenty twenty-four); Santa Lucia (Lu-SEE-ah); Pfeiffer (FY-fer); Nepenthe (ne-PEN-thee);
+Gafill (a confirmar); CAL FIRE (Cal Fire); Ventana (ven-TAN-ah); e o "1,500" dito igual no gancho e no fecho ("fifteen hundred", pelo
+contrato dos 15 s). Simulação de leitura, a confirmar numa amostra da ElevenLabs (com o ok de gasto da Sala).
 
 ### O que passou, conferido nesta rodada
 
-- Todos os trechos do plano de 1986 citados acima, relidos na cópia local pelo `plano_trecho.py` (os índices P [n] são os dele). O de f126
-  (as casas atrás da terra e das árvores) está na seção 3.2.4, "Land Not in the Critical Viewshed" (P [270]): vale fora da faixa, como a
-  frase diz.
-- f26: "only Alaska had fewer people for its size", pela conta sobre a base de 2020 (L2) e a terra do Gazetteer 2020 (C2), nas cópias locais:
-  Alasca 1,28/mi², Wyoming 5,94, Montana 7,45.
-- f27: "more than 40 times" vale contra o distrito (43×) e contra o Wyoming (42,7×).
-- f2 e f186: "more than 17 million" vale na safra 2025 (17.474.482) e na base de 2020 (17.958.344) (`censo_metros.py`, rerodado).
-- f164 e f166: as vagas de uso ocasional (93 % no distrito; 33 % na Califórnia; 54 % no condado), pelo `acs_vagas.py`, rerodado.
-- As decisões da Sala: o 1.500 sempre com "the census district" (f3, f187) e sem milhagem na frase; o Wyoming 2020 com 2020 (f25); as
-  metrópoles pelo nome, sem "largest"; os anos 1880 atribuídos ao plano e ditos da costa (f8, f71, f72); o 1919 com a FHWA (f92); 1937 e US$
-  8 milhões com o plano (f105); os presos com a medida (f96–f99); a regra no passado, sem "still", "today", "now" nem "since 1986"; o fogo em
-  palavras, sem "destroyed" nem número na voz, o Plaskett só pelo nome; as casas em duas réguas, cada uma com o dono, sem margem na voz; os
-  visitantes de 1986 com o ano e o "came back" de 2026 sem número; nada de preço, mansões, Esselen, falha, "strictest", "emptiest" nem "the
-  only road".
+- A tabela do verificador cobre as 169 frases (as 18 sem fato estão como NADA A CHECAR no laudo); as três linhas que juntam duas frases
+  (R057 e R058, f45–f46; R136, f102–f103) estão na frase de fato.
+- O portão no texto julgado (`4f827c30b9f8`): PASSA, com 5 alertas decididos (`escrita-notas-r2.md` §2); no texto da r2b (`50c2c56aaefc`),
+  PASSA com 4.
+- As decisões da Sala: o 1.500 sempre com "the census district" (f3, f169) e sem milhagem na frase; o Wyoming 2020 com 2020 (f25); as
+  metrópoles pelo nome, sem "largest" (f2, f168); os anos 1880 atribuídos ao plano e ditos da costa (f8, f74, f75); o 1919 com a FHWA (f86);
+  1937 e US$ 8 milhões com o plano (f96, f97); os presos com a medida (f90–f92); a regra no passado, sem "still", "today", "now" nem "since
+  1986"; o fogo em palavras, sem "destroyed" nem número na voz, o Plaskett só pelo nome (f135–f141); as casas em duas réguas, cada uma com o
+  dono, sem margem na voz (f146–f152); os visitantes de 1986 com o ano (f116) e o "came back" de 2026 sem número (f154); nada de preço,
+  mansões, Esselen, falha, "strictest", "emptiest" nem "the only road".

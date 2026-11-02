@@ -5,7 +5,7 @@
 // Grava roteiros sintéticos em out/_tmp/gate-big-sur/casos/ (fora do git), roda o portão em cada um e confere a saída:
 //   - a base passa (o gancho com a 1ª frase certa, o título pago, o "But", a pergunta e a assinatura; o corpo até o meio da faixa),
 //     sem nenhum alerta;
-//   - a faixa (2.250 a 2.450), a média (15) e a maior frase (30): o piso e o teto exatos passam, uma palavra a menos ou a mais reprova;
+//   - a faixa (2.250 a 2.450), a média (18) e a maior frase (34): o piso e o teto exatos passam, uma palavra a menos ou a mais reprova;
 //   - o título e a primeira frase: um caso que reprova para cada regra, um que alerta para cada alerta, e o que passa ao lado;
 //   - o "não se diz" de Big Sur: um caso que reprova para cada id (e mais de um onde o padrão tem formas), e o que passa ao lado;
 //   - os alertas de Big Sur, cada um com o seu caso, e o que fica ao lado sem alerta; as palavras de ALERTA que ficam e as que saíram;
@@ -129,31 +129,31 @@ secao("A base");
 const base = caso("base", {}, { exit: 0 });
 if (base.laudo) {
   const L = base.laudo;
-  conferir(L.palavras >= 2250 && L.palavras <= 2450, `a base tem ${L.palavras} palavras (faixa 2.250–2.450), ${L.frases} frases, média ${L.media_palavras_por_frase} (teto 15), maior ${L.maior_frase} (teto 30); o gancho tem ${L.gancho.palavras_ate_assinatura} palavras e o "But" na palavra ${L.gancho.but_na_palavra}`);
+  conferir(L.palavras >= 2250 && L.palavras <= 2450, `a base tem ${L.palavras} palavras (faixa 2.250–2.450), ${L.frases} frases, média ${L.media_palavras_por_frase} (teto 18), maior ${L.maior_frase} (teto 34); o gancho tem ${L.gancho.palavras_ate_assinatura} palavras e o "But" na palavra ${L.gancho.but_na_palavra}`);
   conferir(L.alertas.length === 0, `a base não tem nenhum alerta (${JSON.stringify(L.alertas).slice(0, 300)})`);
   conferir(L.autoplagio.length === 0, "a base não tem autoplágio com os cinco roteiros anteriores (Juneau, Los Angeles, Zona, Peru e Atlântico)");
   conferir(Object.values(L.taxas).every((t) => !t.alerta), "a base não dispara nenhuma taxa");
 }
 
 // ---- a faixa, a média e a maior frase -------------------------------------------------------------------------------
-secao("A faixa (2.250 a 2.450), a média (15) e a maior frase (30)");
+secao("A faixa (2.250 a 2.450), a média (18) e a maior frase (34)");
 caso("faixa-piso-2250", { corpo: corpoCom(2250) }, { exit: 0, semProblema: ["palavras:"], nota: "2.250 palavras exatas passam" });
 caso("faixa-2249", { corpo: corpoCom(2249) }, { exit: 1, problema: ["palavras: 2249, abaixo de 2250"], so: true, nota: "2.249 reprova" });
 caso("faixa-teto-2450", { corpo: corpoCom(2450) }, { exit: 0, semProblema: ["palavras:"], nota: "2.450 palavras exatas passam" });
 caso("faixa-2451", { corpo: corpoCom(2451) }, { exit: 1, problema: ["palavras: 2451, acima de 2450"], so: true, nota: "2.451 reprova" });
 caso("faixa-2150-do-molde", { corpo: corpoCom(2150) }, { exit: 1, problema: ["palavras: 2150, abaixo de 2250"], so: true,
   nota: "o teto do molde (2.150) já fica abaixo do piso novo" });
-// a média: o corpo em pares unidos por ponto e vírgula (as mesmas palavras, metade das frases); nenhuma passa de 30
+// a média: o corpo em pares unidos por ponto e vírgula (as mesmas palavras, metade das frases); nenhuma passa de 34
 const CORPO_PARES = [];
 for (let i = 0; i < N; i += 2) CORPO_PARES.push(i + 1 < N ? `${CORPO[i].slice(0, -1)}; ${CORPO[i + 1][0].toLowerCase()}${CORPO[i + 1].slice(1)}` : CORPO[i]);
-caso("media-acima-de-15", { corpo: CORPO_PARES }, { exit: 1, problema: ["média de "], so: true, nota: "as frases do corpo unidas em pares (~20 palavras cada)" });
-// a maior frase: 30 passa, 31 reprova (as palavras do próprio corpo, sem ponto)
+caso("media-acima-de-18", { corpo: CORPO_PARES }, { exit: 1, problema: ["média de "], so: true, nota: "as frases do corpo unidas em pares (~20 palavras cada)" });
+// a maior frase: 34 passa, 35 reprova (as palavras do próprio corpo, sem ponto)
 const PALAVRAS_CORPO = CORPO.slice(30, 40).join(" ").replace(/\./g, "").split(/\s+/);
 const longa = (n) => `${PALAVRAS_CORPO.slice(0, n).join(" ")}.`;
-caso("frase-de-30", { trocas: { [I]: longa(30) } }, { exit: 0, semProblema: ["frase com"], nota: "uma frase de 30 palavras passa" });
-caso("frase-de-31", { trocas: { [I]: longa(31) } }, { exit: 1, problema: ["frase com 31 palavras (teto 30"], so: true, nota: "uma frase de 31 palavras reprova" });
-caso("frase-de-34-do-molde", { trocas: { [I]: longa(34) } }, { exit: 1, problema: ["frase com 34 palavras (teto 30"], so: true,
-  nota: "o teto do molde (34) já reprova" });
+caso("frase-de-34", { trocas: { [I]: longa(34) } }, { exit: 0, semProblema: ["frase com"], nota: "uma frase de 34 palavras passa" });
+caso("frase-de-35", { trocas: { [I]: longa(35) } }, { exit: 1, problema: ["frase com 35 palavras (teto 34"], so: true, nota: "uma frase de 35 palavras reprova" });
+caso("frase-de-31-de-antes", { trocas: { [I]: longa(31) } }, { exit: 0, semProblema: ["frase com"],
+  nota: "o teto de antes (30) já não reprova: 31 passa" });
 
 // ---- o título ---------------------------------------------------------------------------------------------------------
 secao('O título ("Why This Stretch of California Is as Empty as Wyoming") nas 3 primeiras frases');

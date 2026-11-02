@@ -36,8 +36,9 @@
 //     sempre 2020 com 2020): [1500-sem-distrito] e [wyoming-ano]. São alertas; a Sala pode tirá-los.
 //   - A FAIXA de 2.250 a 2.450 palavras faladas (decisão da Sala para o ritmo calmo, do vídeo 5 em diante; sala/do-video-5-em-diante.md:
 //     "quero um ritmo mais calmo", e os vídeos mais longos, de uns 13 a 15 minutos). O molde tinha 1.950 a 2.150.
-//   - A MÉDIA de no máximo 15 palavras por frase e NENHUMA frase acima de 30 (a mesma decisão: frases mais curtas e mais espaço entre os
-//     fatos). O molde tinha 18 (o teto da voz §1, que continua o da marca) e 34.
+//   - A MÉDIA de no máximo 18 palavras por frase e NENHUMA frase acima de 34, os tetos do molde (o 18 é o da voz §1). A Sala tinha posto
+//     15 e 30 para o ritmo calmo; em 02/11/2026 o Lucas achou o roteiro "engessado" ("não comunica bem com o público"), e os tetos
+//     voltaram aos do molde: o ritmo calmo vem do espaço entre as ideias, não de frases cortadas.
 //   - O roteiro do vídeo 4 (roteiros/atlantico-fundo/roteiro-narrador.md) entra no autoplágio.
 //   AS FRASES DAS REGRAS DE BIG SUR são as das taxas (frasesTaxaDe: o ponto do "U.S.", do "Mt." e do decimal não parte a frase), sem
 //   as aspas de abertura, como as regras do vídeo 4 as liam. As regras herdadas (a média, a maior frase, as VETADAS, o laço do ALERTA,
@@ -183,7 +184,7 @@ const WPM = 184;                       // o ritmo medido da voz no v4 (out/los-a
 // palavras/min e 14,1 min a 160; 2.450, 13,3 e 15,3. O molde tinha 1.950 a 2.150.
 const MIN_PALAVRAS = 2250, MAX_PALAVRAS = 2450;
 // a mesma decisão: frases mais curtas, um número por frase (o molde tinha 18, o teto da voz §1, e 34)
-const MEDIA_MAX = 15, FRASE_MAX = 30;
+const MEDIA_MAX = 18, FRASE_MAX = 34;
 const VETADAS = [
   /\bshocking\b/i, /\binsane\b/i, /\bcrazy\b/i, /you won'?t believe/i, /mind-?blowing/i, /world war (3|three|iii)\b/i,
   /\bbreaking\b/i, /just happened/i, /\bthis week\b/i, /\byesterday\b/i, /\brecently\b/i, /\blast (week|month|year)\b/i,
@@ -345,8 +346,8 @@ const media = tamanhos.reduce((a, b) => a + b, 0) / Math.max(1, tamanhos.length)
 const problemas = [], alertas = [];
 if (palavras < MIN_PALAVRAS) problemas.push(`palavras: ${palavras}, abaixo de ${MIN_PALAVRAS} (a faixa do ritmo calmo, do vídeo 5 em diante, de uns 13 a 15 min: a Sala, 02/11/2026)`);
 if (palavras > MAX_PALAVRAS) problemas.push(`palavras: ${palavras}, acima de ${MAX_PALAVRAS} (a faixa do ritmo calmo, do vídeo 5 em diante: a Sala, 02/11/2026)`);
-if (media > MEDIA_MAX) problemas.push(`média de ${media.toFixed(1)} palavras por frase (teto ${MEDIA_MAX}: o ritmo calmo, do vídeo 5 em diante, a Sala, 02/11/2026; a voz §1 diz 18)`);
-frases.forEach((f, i) => { if (tamanhos[i] > FRASE_MAX) problemas.push(`frase com ${tamanhos[i]} palavras (teto ${FRASE_MAX}, o ritmo calmo: a Sala, 02/11/2026): "${f.slice(0, 90)}…"`); });
+if (media > MEDIA_MAX) problemas.push(`média de ${media.toFixed(1)} palavras por frase (teto ${MEDIA_MAX}: a voz §1)`);
+frases.forEach((f, i) => { if (tamanhos[i] > FRASE_MAX) problemas.push(`frase com ${tamanhos[i]} palavras (teto ${FRASE_MAX}, o do molde): "${f.slice(0, 90)}…"`); });
 for (const re of VETADAS) for (const f of frases) if (re.test(f)) problemas.push(`vetada (voz §2) ${re}: "${f.slice(0, 100)}"`);
 for (const re of ALERTA) for (const f of frases) if (re.test(f)) alertas.push(`conferir ${re}: "${f.slice(0, 100)}"`);
 if (/\[[^\]]*\]/.test(texto)) problemas.push("marcador entre colchetes no texto falado (a voz leria)");
