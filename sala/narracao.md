@@ -69,6 +69,10 @@ produz o master. O deste canal nasce assim:
      em diante"), com o gasto registrado e avisado depois. Acima disso, e no Juneau, vale o que segue. **No vídeo 2 (Los
      Angeles), sem teto:** o Lucas, 07/10/2026, 04:2x: "Você pode usar mais que 15 mil." O gasto continua registrado antes e
      depois de cada rodada e avisado no `#status`.
+   - **O preço do v4 subiu** (03/11/2026): 0,13 crédito por caractere em 07/10 (o teste de Los Angeles,
+     `out/los-angeles/_pesquisa/teste-voz-v4.json`) e 0,48 em 03/11 (os 22 pedidos do teste do ritmo de Big Sur, pelo
+     `character-cost` de cada um, em `out/big-sur/_pesquisa/teste-ritmo.json`). A conta de um vídeo sai do preço do dia, lido no
+     `character-cost` do primeiro pedido, e nunca dos 0,13. O saldo da conta demora a mostrar o gasto: o recibo vale pelos cabeçalhos.
    - Gastar crédito pede o ok do Lucas. Gasto em 24/09, conferido no saldo: 2.433 nas amostras e na escolha
      da voz; 15.564 na narração do texto aprovado (o bloco 1 com quebras de linha, o teste sem quebras e os 3
      blocos em "Criativo"); 709 no teste do v2; 1.498 na prova do tom de conversa (teste com a voz anterior e o
