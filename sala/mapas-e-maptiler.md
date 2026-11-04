@@ -83,3 +83,8 @@ A liberação da MapTiler em cada vídeo (o `MapTiler liberado`), a base de sat�
   (Recomendado)"). As cenas de mapa e o relevo 3D onde a cena precisa dele, sem pergunta por cena. O vídeo sai pelo motor sem rosto
   ("O motor sem rosto", abaixo), que renderiza sozinho e não anota o contador por render: a conta da MapTiler se confere pelo painel
   dela, no começo e no fim do vídeo.
+  **No vídeo 5 (`big-sur`, numeração de 27/10), liberado com o relevo 3D** (Lucas, 04/11/2026, 16:0x, no chat da Sala, na conta
+  reserva, à pergunta "Posso usar o MapTiler no vídeo 5 (Big Sur), como no Atlântico? A imagem que vende o lugar é a serra caindo no
+  mar, em relevo 3D, e o relevo 3D gasta tiles da sua conta.": "Sim, com relevo 3D (Recomendado)"). A opção dizia: "As cenas de mapa e
+  o relevo 3D onde a cena precisar, sem perguntar cena por cena. Anoto o contador antes e depois de cada render de mapa." O contador
+  fica em `out/big-sur/_pesquisa/maptiler-gasto.md`. É esta mensagem que a Sala cita no `MapTiler liberado`.
