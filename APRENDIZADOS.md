@@ -1678,3 +1678,19 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   o perfil pelo conteúdo, e não pela data, com o caso novo na prova dela.
 - **Por que serve a qualquer canal:** todo canal que use a linha do tempo com cena de mapa da pré-v1 cai nisso no segundo mapa de cada
   vídeo. A data de um arquivo regravado sem mudança não prova que ele mudou.
+
+### 93. O PASS do `qc-procedencia` não prova a procedência do arquivo que ele isenta pelo nome
+
+- **O problema** (04/11/2026, no vídeo 5, `big-sur`, achado VR-07 do verificador independente do research): o `qc-procedencia` deu
+  "✓ PASS — toda a mídia de acervo tem procedência PROVADA". Mas ele só leu o `_PROCEDENCIA.json` de 4 dos 16 arquivos entregues: as 3
+  fotos da Caltrans e o PNG do HABS. Os outros 12 passaram como "isenta", porque o nome do arquivo tem `commons`, `usgs` ou `dvids` (a
+  heurística `AGENCIA_PUBLICA` do molde). O mesmo portão pegou a foto da marca vetada pelo nome e pela URL: o veto funciona, mas a prova
+  da origem não.
+- **O que resolveu:** o verificador conferiu as 16 procedências à mão. Nos 11 arquivos do Commons, conferiu pela API do Commons a
+  licença, o autor, a data e o sha1 contra o rascunho julgado. O casamento com o veredito do conferente saiu do
+  `casar-midia-vereditos.py`, que lê o `medido.sha256` de cada procedência.
+- **Como evitar:** leia o verde do `qc-procedencia` como "nenhuma fonte proibida", nunca como "procedência provada". A prova da origem é o
+  casamento com o veredito do conferente, mais a leitura da procedência de cada arquivo, que o verificador faz. O script é do molde e não
+  se edita: o conserto de verdade é ele ler o `_PROCEDENCIA.json` também do arquivo que o nome isenta.
+- **Por que serve a qualquer canal:** todo canal que entregue acervo aberto com o nome da agência no arquivo recebe o mesmo verde sem
+  leitura. Um nome de arquivo não prova licença.
