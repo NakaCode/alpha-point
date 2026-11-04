@@ -1,6 +1,7 @@
 # INGEST do canal: a narração vira o relógio de palavras do vídeo (out/<proj>/words.json), sem gasto de crédito.
 #
 #   python out/<proj>/_pesquisa/ingest-local.py <proj> [--aceitar=3,7] [--aceitar-vaos=24.84,138.72]
+#          [--aceitar-fronteiras=149.79] [--aceitar-fronteira-divergente=260.66:elevenlabs] [--aceitar-vao-na-borda=542.61:inicio]
 #          [--aceite-por=...] [--aceite-como=...] [--aceite-evidencia=...]
 #          [--sem-cobertura] [--refazer] [--saida=<pasta>] [--pre-v1=<clone>]
 #   (cwd = raiz do canal)
@@ -37,10 +38,48 @@
 #                   --aceite-por e --aceite-como. A fronteira aceita sai "aceita" no portão, nunca "conferida": a prova dela
 #                   é a conferência de quem aceitou (no vídeo 4, 18/10/2026: a energia do som em quadros de 20 ms e a escuta
 #                   do Lucas), por fora deste script.
-#   --aceite-por=   quem aceitou (vai para o laudo; padrão "não informado"; obrigatório com --aceitar-vaos e --aceitar-fronteiras).
+#   --aceitar-fronteira-divergente=260.66:elevenlabs[,S:lado...]
+#                   aceita, DEPOIS DE CONFERIR NO SOM, a fronteira de uma pausa que ficou INDECIDIDA (portão relogio) porque a
+#                   regra e a ElevenLabs DISCORDAM e o ouvido não desempatou. A pessoa nomeia a pausa pelo INÍCIO, em segundos,
+#                   com 1 ou 2 casas (o número da linha do portão), e o LADO que o som confirmou, depois de dois pontos:
+#                   "regra" (a fronteira que a regra propôs, regra_palavras no laudo) ou "elevenlabs" (a da ElevenLabs,
+#                   elevenlabs_palavras). Outro nome de lado é erro de uso (sai 2). A fronteira aceita é a proposta desse lado,
+#                   nunca uma terceira; e ela ainda passa pela montagem: se cair na mesma fronteira da pausa anterior, ou antes
+#                   dela, fica indecidida ou incoerente, como sempre, e o aceite sai recusado (aceite_recusado). A disciplina é
+#                   a do --aceitar-fronteiras: só aceita a pausa que o laudo ANTERIOR deste áudio (mesmo sha256) mostrava
+#                   indecidida, IDÊNTICA (o mesmo trecho, a mesma pausa, as mesmas duas propostas nas mesmas palavras); a que
+#                   nasce ou muda nesta rodada fica indecidida (aceite_recusado). Não vale onde as duas concordam (ali é o
+#                   --aceitar-fronteiras) nem onde só uma propôs fronteira: o aceite_recusado diz por quê. A mesma pausa nas
+#                   duas opções, ou com dois lados, é erro de uso. O aceite vai para o laudo (aceites_fronteiras, com o lado
+#                   e as duas propostas) e é herdado pela fronteira idêntica do mesmo áudio. Pede --aceite-por e --aceite-como
+#                   (sem eles, sai 2). Sai "aceita" no portão, nunca "desempatada": a prova é a conferência de quem aceitou,
+#                   por fora deste script (no vídeo 5, `big-sur`, 04/11/2026: a energia em quadros de 20 ms e o Whisper em
+#                   recortes curtos, em out/big-sur/_pesquisa/narracao-conferencia.md).
+#   --aceitar-vao-na-borda=542.61:inicio[,S:borda...]
+#                   aceita, DEPOIS DE CONFERIR NO SOM, um vão com voz acima de VAO_TETO_S SEM vale (portão relogio) que o
+#                   script fechou no lugar ERRADO, fechando-o numa das duas pontas dele, nunca noutro ponto. A pessoa nomeia o
+#                   vão pelo INÍCIO, em segundos, com 1 ou 2 casas (o número da linha do portão), e a borda, depois de dois
+#                   pontos: "inicio" (v0: a voz do vão é da 2ª palavra, que começa ali) ou "fim" (v1: é da 1ª, que vai até
+#                   ali). Outra borda é erro de uso (sai 2). A disciplina é a do --aceitar-vaos: só aceita o vão que o laudo
+#                   ANTERIOR deste áudio (mesmo sha256) mostrava PENDENTE, IDÊNTICO, reconhecido pelo fechamento de hoje (o
+#                   mesmo trecho, o mesmo par, o mesmo vão e o mesmo fechamento); o que nasce ou muda fica pendente
+#                   (aceite_borda_recusado). Também recusa a borda que deixaria uma das duas palavras com duração ≤ 0 ou abaixo
+#                   do piso da montagem (DUR_MIN_PALAVRA_S; fechar_vao_na_borda). O vão sai "aceito" no portão, com a borda e
+#                   o fechamento de antes (fechado_antes_em, no vão e no aceite); o aceite vai para aceites_vaos (a chave é a
+#                   do fechamento de antes, mais "borda" e "fechado_antes_em") e é herdado pelo vão idêntico do mesmo áudio.
+#                   Um aceite de --aceitar-vaos não herda um aceite na borda (ele daria por certo o fechamento desmentido). O
+#                   mesmo vão nas duas opções, ou com duas bordas, é erro de uso. Pede --aceite-por e --aceite-como (sem
+#                   eles, sai 2). No vídeo 5 (`big-sur`, 04/11/2026), o "the | road," (542,61–542,93): o recorte curto ouviu
+#                   "the road" duas vezes, o ouvido não escolheu, e o vão fechou no quadro mais quieto, a oclusão do /d/ do
+#                   próprio "road" (542,915); a energia em 20 ms e o Whisper em recortes curtos puseram o "road" no começo do
+#                   vão (out/big-sur/_pesquisa/narracao-conferencia.md).
+#   --aceite-por=   quem aceitou (vai para o laudo; padrão "não informado"; obrigatório com --aceitar-vaos, --aceitar-fronteiras,
+#                   --aceitar-fronteira-divergente e --aceitar-vao-na-borda).
 #   --aceite-como=  como foi conferido: "ouvido pelo Lucas", "Whisper em recorte curto + energia; sem escuta humana"...
-#                   (vai para o laudo; padrão "não informado"; obrigatório com --aceitar-vaos).
-#   --aceite-evidencia=  onde está a conferência (um relato, um laudo de cético); só para --aceitar-vaos, opcional.
+#                   (vai para o laudo; padrão "não informado"; obrigatório com --aceitar-vaos, --aceitar-fronteiras,
+#                   --aceitar-fronteira-divergente e --aceitar-vao-na-borda).
+#   --aceite-evidencia=  onde está a conferência (um relato, um laudo de cético); para --aceitar-vaos, --aceitar-fronteiras,
+#                   --aceitar-fronteira-divergente e --aceitar-vao-na-borda, opcional.
 #   --sem-cobertura aceita, ciente, um áudio cuja cobertura não dá para medir (registrado no laudo). Aqui ela só não dá
 #                   para medir quando falta o narracao.json deste áudio, e então também não há texto aprovado nem
 #                   trechos para montar o relógio: o laudo sai "nao_medido" e o aviso diz isso.
@@ -643,10 +682,28 @@ def julgar_vao_pelo_ouvido(tp, res, j, vao, curto):
     return None, None, prova
 
 # ── o relógio híbrido de um trecho ───────────────────────────────────────────────────────────────────────────────────
-def montar_relogio(palavras, el, ancoras, lo, hi, som, ouvir_vao=None):
+BORDAS_VAO = ("inicio", "fim")                # as bordas que --aceitar-vao-na-borda aceita: as duas pontas do vão, nunca outra
+
+def fechar_vao_na_borda(ini_1, vao, fim_2, borda):
+    """--aceitar-vao-na-borda: onde fecha o vão [v0, v1] entre a palavra que começa em ini_1 e a que termina em fim_2, na
+    borda escolhida ("inicio" → v0: a voz do vão é da 2ª palavra; "fim" → v1: é da 1ª). Só as duas pontas do vão, nunca
+    outro ponto. Recusa a borda que deixaria uma das duas palavras com duração ≤ 0 ou abaixo do piso da montagem
+    (DUR_MIN_PALAVRA_S). Função pura. Devolve (t, None) ou (None, motivo)."""
+    if borda not in BORDAS_VAO:
+        return None, f"a borda \"{borda}\" não existe: um vão só tem as bordas {' e '.join(BORDAS_VAO)}"
+    t = vao[0] if borda == "inicio" else vao[1]
+    d1, d2 = t - ini_1, fim_2 - t
+    if min(d1, d2) < DUR_MIN_PALAVRA_S:
+        return None, (f"a borda {borda} ({t:.3f} s) deixaria a {'1ª' if d1 < d2 else '2ª'} palavra com {min(d1, d2):.3f} s "
+                      f"(duração ≤ 0 ou abaixo do piso de {DUR_MIN_PALAVRA_S} s da montagem): o aceite não fecha o vão aí")
+    return t, None
+
+def montar_relogio(palavras, el, ancoras, lo, hi, som, ouvir_vao=None, borda_do_vao=None):
     """palavras: as do trecho. el: [(s, e)] da ElevenLabs (letras, já com δ, tempo absoluto). ancoras: [(b, p0, p1)] em
     ordem: a palavra b termina em p0 e a b+1 começa em p1. [lo, hi]: o som do trecho. ouvir_vao(j, vao): o ouvido para
-    um vão com voz acima de VAO_TETO_S sem vale (julgar_vao_pelo_ouvido); só é chamado nesse caso. Devolve [[start, end]],
+    um vão com voz acima de VAO_TETO_S sem vale (julgar_vao_pelo_ouvido); só é chamado nesse caso. borda_do_vao(v, vao,
+    ini_1, fim_2): o aceite de --aceitar-vao-na-borda para esse mesmo vão, chamado DEPOIS do fechamento de hoje (o v traz
+    esse fechamento, que identifica o vão); devolve onde fechar, ou None (fica o fechamento de hoje). Devolve [[start, end]],
     as marcas de cada palavra (ancora, deslocada, vao_fechado) e os vãos com voz fechados, medidos ANTES do fechamento."""
     n = len(palavras)
     out = [None] * n
@@ -719,6 +776,11 @@ def montar_relogio(palavras, el, ancoras, lo, hi, som, ouvir_vao=None):
                     v["ouvido"] = {"decidiu": borda is not None, "lado": lado, "mais_quieto_em": r3(t), **prova}
                     if borda is not None:
                         t = borda; v["fechado_em"] = r3(t)
+                # --aceitar-vao-na-borda: quem conferiu no som fecha o vão numa das duas pontas dele (só soma: sem o
+                # aceite, o borda_do_vao devolve None e não toca no v)
+                if borda_do_vao is not None and v["dur_s"] > VAO_TETO_S and not v["vale"]:
+                    t_aceito = borda_do_vao(v, (v0, v1), iv[q][0], iv[q + 1][1])
+                    if t_aceito is not None: t = t_aceito
                 vaos.append(v)
                 iv[q][1] = iv[q + 1][0] = t
                 marcas[k + q]["vao_fechado"] = marcas[k + q + 1]["vao_fechado"] = True
@@ -842,6 +904,14 @@ def chave_fronteira(r):
     return json.dumps([r["trecho"], [round(x, 2) for x in r["pausa"]], r["regra"], r["elevenlabs"], r.get("regra_palavras")],
                       ensure_ascii=False)
 
+LADOS_DIVERGENTE = ("regra", "elevenlabs")     # os lados que --aceitar-fronteira-divergente aceita: um dos dois, nunca outro
+
+def lado_divergente(aceite):
+    """O lado de um aceite de --aceitar-fronteira-divergente ("regra" ou "elevenlabs"), ou None (aceite da proposta comum,
+    --aceitar-fronteiras, ou nenhum aceite)."""
+    lado = (aceite or {}).get("lado")
+    return lado if lado in LADOS_DIVERGENTE else None
+
 def resolver_aceites_vaos(vaos, herdados, aceitar, por, como, evidencia, agora, pendentes_antes=frozenset(), visto_em=None):
     """A disciplina do --aceitar (resolver_aceites), vão a vão. Para cada vão que pede aceite (vao_pede_aceite), marca
     v["situacao"]: "aceito" se é idêntico a um aceite herdado (o laudo anterior do MESMO áudio), ou se o início dele
@@ -849,11 +919,29 @@ def resolver_aceites_vaos(vaos, herdados, aceitar, por, como, evidencia, agora, 
     conferiu no som); "pendente" nos outros, com aceite_recusado quando o início estava na lista. Os vãos que não pedem
     aceite ficam "vale do som" (acima do teto, com vale) ou "abaixo do teto". aceitar: os inícios com 2 casas.
     Devolve (aceites gravados nesta rodada, herdados sem vão, inícios de --aceitar-vaos sem vão nenhum)."""
-    por_chave = {h["chave"]: h for h in herdados if h.get("chave")}
+    # os aceites de --aceitar-vao-na-borda (com "borda") não valem aqui: a montagem os aplica (borda_do_vao), e o vão chega
+    # com aceite_borda; aceitá-los pela chave daria por certo o fechamento de antes, que quem conferiu desmentiu
+    por_chave = {h["chave"]: h for h in herdados if h.get("chave") and not h.get("borda")}
+    na_borda = {h["chave"]: h for h in herdados if h.get("chave") and h.get("borda")}
     usados, aceites = set(), []
     for v in vaos:
         if not vao_pede_aceite(v):
             v["situacao"] = "vale do som" if v["dur_s"] > VAO_TETO_S else "abaixo do teto"; continue
+        ab = v.pop("aceite_borda", None)
+        if ab:
+            # fechado na borda que quem conferiu no som escolheu: a chave é a do fechamento de antes (fechado_antes_em)
+            usados.add(ab["chave"])
+            v["situacao"] = "aceito"
+            v["aceite"] = {k: ab.get(k) for k in ("por", "como", "evidencia", "em", "pendente_no_laudo_de", "borda",
+                                                   "fechado_antes_em")} | ({"herdado": True} if ab.get("herdado") else {})
+            aceites.append({"chave": ab["chave"], "trecho": v["trecho"], "entre": v["entre"], "palavras": v["palavras"],
+                            "vao_s": v["vao_s"], "fechado_em": v["fechado_em"], "fechado_antes_em": ab["fechado_antes_em"],
+                            "borda": ab["borda"],
+                            "como_fechou": f"na borda de {'início' if ab['borda'] == 'inicio' else 'fim'} do vão, pelo aceite de "
+                                           f"quem conferiu no som (--aceitar-vao-na-borda); antes, em {ab['fechado_antes_em']}",
+                            "medido_no_som": {"db_min": v["db_min"], "db_max": v["db_max"], "fracao_som": v["fracao_som"]},
+                            **{k: x for k, x in v["aceite"].items() if k not in ("herdado", "borda", "fechado_antes_em")}})
+            continue
         c = chave_vao(v)
         if c in por_chave:
             h = por_chave[c]; usados.add(c)
@@ -875,7 +963,8 @@ def resolver_aceites_vaos(vaos, herdados, aceitar, por, como, evidencia, agora, 
                         "medido_no_som": {"db_min": v["db_min"], "db_max": v["db_max"], "fracao_som": v["fracao_som"]},
                         **{k: x for k, x in v["aceite"].items() if k != "herdado"}})
     inicios = {inicio_vao(v) for v in vaos}
-    return aceites, [h for c, h in por_chave.items() if c not in usados], sorted(set(aceitar) - inicios)
+    return (aceites, [h for c, h in por_chave.items() if c not in usados] + [h for c, h in na_borda.items() if c not in usados],
+            sorted(set(aceitar) - inicios))
 
 def portao_conteudo(itens):
     """itens: [{trecho, tipo, pede_aceite, situacao, ...}] (situacao posta por resolver_aceites). Reprova se algum item
@@ -928,6 +1017,16 @@ def portao_fora_das_falas(medidos, com_som, ouvido_fora):
             "detalhe": (f"{len(medidos)} segmentos fora das falas medidos ({sum(m['end'] - m['start'] for m in medidos):.2f} s): "
                         f"{n_p} pausas sem nenhum quadro acima de {LIMIAR_SOM_DBFS} dBFS"
                         + (f"; {nomes_dig} em silêncio digital (pico {max(m['pico_lsb'] for m in dig)} LSB)" if dig else ""))}
+
+def rotulo_vao_aceito(v):
+    """Como o portão relogio cita um vão aceito: o início e o par, se foi herdado e, se fechou na borda escolhida
+    (--aceitar-vao-na-borda), qual e onde fechava antes."""
+    ac = v.get("aceite") or {}
+    txt = inicio_vao(v) + " " + v["entre"] + (" (herdado)" if ac.get("herdado") else "")
+    if ac.get("borda"):
+        txt += (f" (fechado na borda de {'início' if ac['borda'] == 'inicio' else 'fim'} do vão, em {v['fechado_em']}; antes, em "
+                f"{ac.get('fechado_antes_em')})")
+    return txt
 
 def portao_relogio(words, trechos_rel, segmentos, esperadas, fronteiras, som=None, vaos=None, concordancia=None):
     """words: as do disco (3 casas). trechos_rel: [{trecho, n (palavras), som: [lo, hi], ancoras: [[p0, p1]]}] na ordem.
@@ -984,6 +1083,10 @@ def portao_relogio(words, trechos_rel, segmentos, esperadas, fronteiras, som=Non
                     + (f" — se o som confirma a proposta comum: --aceitar-fronteiras={f['pausa'][0]:.2f} --aceite-por=\"<quem>\" "
                        f"--aceite-como=\"<como conferiu>\"" if f["situacao"] == "indecidido" and f.get("regra") is not None
                        and f.get("regra") == f.get("elevenlabs") else "")
+                    + (f" — se o som confirma um dos dois lados: --aceitar-fronteira-divergente={f['pausa'][0]:.2f}:regra (ou "
+                       f":elevenlabs) --aceite-por=\"<quem>\" --aceite-como=\"<como conferiu>\""
+                       if f["situacao"] == "indecidido" and f.get("regra") is not None and f.get("elevenlabs") is not None
+                       and f.get("regra") != f.get("elevenlabs") else "")
                     + (f" (aceite recusado: {f['aceite_recusado']})" if f.get("aceite_recusado") else ""))
     vaos_pendentes, vaos_aceitos = [], []
     if vaos is not None:
@@ -1001,7 +1104,8 @@ def portao_relogio(words, trechos_rel, segmentos, esperadas, fronteiras, som=Non
                                                         f"{o['lados']['curto']})" if o.get("lados") else ""))
             prob.append(f"vão com voz de {v['dur_s']:.2f} s entre \"{v['entre']}\" ({v['vao_s'][0]}–{v['vao_s'][1]}), sem vale no som "
                         f"(mais quieto {v['db_min']} dBFS, mais alto {v['db_max']} dBFS), fechado em {v['fechado_em']} "
-                        f"({como_fechou}): PENDENTE de aceite ({inicio_vao(v)})")
+                        f"({como_fechou}): PENDENTE de aceite ({inicio_vao(v)})"
+                        + (f" (aceite na borda recusado: {v['aceite_borda_recusado']})" if v.get("aceite_borda_recusado") else ""))
         acima = [v for v in vaos if v["dur_s"] > VAO_TETO_S]
         n_vale = sum(1 for v in acima if v["vale"])
         medidas.append(f"{len(vaos)} vãos com voz fechados na montagem (maior {max((v['dur_s'] for v in vaos), default=0):.3f} s; "
@@ -1020,10 +1124,17 @@ def portao_relogio(words, trechos_rel, segmentos, esperadas, fronteiras, som=Non
     ok = not prob
     conta = lambda s: sum(1 for f in fronteiras if f["situacao"] == s)
     n_dec = sum(conta(s) for s in decididas)
+    # as aceitas onde a regra e a ElevenLabs discordavam (--aceitar-fronteira-divergente) saem à parte das da proposta comum
+    divergentes = [f for f in fronteiras if f["situacao"] == "aceita" and lado_divergente(f.get("aceite"))]
+    n_aceitas_comum = conta("aceita") - len(divergentes)
+    txt_divergentes = "; ".join(
+        f"{f['pausa'][0]:.2f} \"{f.get('fronteira_palavras')}\", o lado da {lado_divergente(f['aceite'])}, por "
+        f"{f['aceite'].get('por')}; como {f['aceite'].get('como')}" + (" (herdado)" if f["aceite"].get("herdado") else "")
+        for f in divergentes)
     quem_vaos = sorted({f"por {v['aceite'].get('por')}; como {v['aceite'].get('como')}"
                         + (f"; evidência {v['aceite'].get('evidencia')}" if v['aceite'].get('evidencia') else "") for v in vaos_aceitos})
     txt_aceitos = (f" ACEITO, não medido: {len(vaos_aceitos)} vãos com voz acima de {VAO_TETO_S} s sem vale no som, um a um "
-                   f"({', '.join(inicio_vao(v) + ' ' + v['entre'] + (' (herdado)' if v['aceite'].get('herdado') else '') for v in vaos_aceitos)}), "
+                   f"({', '.join(rotulo_vao_aceito(v) for v in vaos_aceitos)}), "
                    f"porque {' / '.join(quem_vaos)}."
                    if vaos_aceitos else "")
     txt_como_aceitar = (f" — confira cada vão no som (a borda em que ele fechou); se estiver certa: --aceitar-vaos="
@@ -1034,8 +1145,10 @@ def portao_relogio(words, trechos_rel, segmentos, esperadas, fronteiras, som=Non
            f"de cada trecho, nenhuma invadindo as {sum(len(t['ancoras']) for t in trechos_rel)} pausas-âncora. Fronteiras: "
            f"{len(fronteiras)} pausas, {n_dec} decididas ({conta('consenso')} por consenso com pontuação; pelo ouvido, "
            f"{conta('conferida')} conferidas, {conta('desempatada')} desempatadas e {conta('corrigida')} corrigidas"
-           + (f"; {conta('aceita')} ACEITAS, não medidas: a proposta comum da regra e da ElevenLabs, por quem conferiu no som"
-              if conta('aceita') else "") + "), "
+           + (f"; {n_aceitas_comum} ACEITAS, não medidas: a proposta comum da regra e da ElevenLabs, por quem conferiu no som"
+              if n_aceitas_comum else "")
+           + (f"; {len(divergentes)} ACEITAS, não medidas, onde a regra e a ElevenLabs discordavam: o lado que quem conferiu no "
+              f"som escolheu ({txt_divergentes})" if divergentes else "") + "), "
            f"{conta('ignorada')} ignoradas (de dentro de uma palavra), 0 sem decisão. Medido: "
            + ("; ".join(medidas) if medidas else "nada (sem o som)") + (("." + txt_aceitos) if txt_aceitos else "")
            if ok else "; ".join(prob[:10]) + (f" … (+{len(prob) - 10})" if len(prob) > 10 else "") + txt_como_aceitar + txt_aceitos)
@@ -1106,10 +1219,10 @@ def main(argv):
     args = [a for a in argv if not a.startswith("--")]
     opcoes = dict(a[2:].split("=", 1) if "=" in a else (a[2:], "1") for a in argv if a.startswith("--"))
     uso = ("uso: python out/<proj>/_pesquisa/ingest-local.py <proj> [--aceitar=3,7] [--aceitar-vaos=24.84,138.72] "
-           "[--aceitar-fronteiras=149.79] [--aceite-por=...] [--aceite-como=...] [--aceite-evidencia=...] "
-           "[--sem-cobertura] [--refazer] [--saida=<pasta>] [--pre-v1=<clone>]   (cwd = raiz do canal)")
+           "[--aceitar-fronteiras=149.79] [--aceitar-fronteira-divergente=260.66:elevenlabs] [--aceitar-vao-na-borda=542.61:inicio] "
+           "[--aceite-por=...] [--aceite-como=...] [--aceite-evidencia=...] [--sem-cobertura] [--refazer] [--saida=<pasta>] [--pre-v1=<clone>]   (cwd = raiz do canal)")
     if len(args) != 1 or set(opcoes) - {"saida", "pre-v1", "refazer", "aceitar", "aceitar-vaos", "aceitar-fronteiras", "sem-cobertura", "aceite-por",
-                                        "aceite-como", "aceite-evidencia"} \
+                                        "aceite-como", "aceite-evidencia", "aceitar-fronteira-divergente", "aceitar-vao-na-borda"} \
             or not re.fullmatch(r"[\w.-]+", args[0]):
         print(uso, file=sys.stderr); return 2
     try:
@@ -1126,6 +1239,44 @@ def main(argv):
         print("--aceitar-fronteiras=S[,S...]: o início de cada pausa em segundos, com 1 ou 2 casas (ex.: 149.79), como a linha do "
               "portão relogio a mostra", file=sys.stderr); return 2
     aceitar_fronteiras = sorted({f"{float(x):.2f}" for x in brutos_fr})
+    # --aceitar-fronteira-divergente=S:lado: a pausa em que a regra e a ElevenLabs discordam, e o lado que o som confirmou
+    brutos_div = [x.strip() for x in opcoes.get("aceitar-fronteira-divergente", "").split(",") if x.strip()]
+    if "aceitar-fronteira-divergente" in opcoes and not brutos_div or \
+            any(not re.fullmatch(r"\d+\.\d{1,2}:(" + "|".join(LADOS_DIVERGENTE) + ")", x) for x in brutos_div):
+        print("--aceitar-fronteira-divergente=S:lado[,S:lado...]: o início de cada pausa em segundos, com 1 ou 2 casas, como a linha "
+              f"do portão relogio a mostra, e o lado que o som confirmou, um destes: {', '.join(LADOS_DIVERGENTE)} (ex.: "
+              "260.66:elevenlabs). O aceite escolhe entre as duas propostas da pausa; não há outro lado", file=sys.stderr); return 2
+    aceitar_divergentes = {}
+    for x in brutos_div:
+        s, lado = x.split(":")
+        s = f"{float(s):.2f}"
+        if aceitar_divergentes.get(s, lado) != lado:
+            print(f"--aceitar-fronteira-divergente: a pausa {s} veio com dois lados ({aceitar_divergentes[s]} e {lado}); é um só, o "
+                  "que o som confirmou", file=sys.stderr); return 2
+        aceitar_divergentes[s] = lado
+    # --aceitar-vao-na-borda=S:borda: o vão pendente que quem conferiu no som fecha numa das duas pontas dele
+    brutos_borda = [x.strip() for x in opcoes.get("aceitar-vao-na-borda", "").split(",") if x.strip()]
+    if "aceitar-vao-na-borda" in opcoes and not brutos_borda or \
+            any(not re.fullmatch(r"\d+\.\d{1,2}:(" + "|".join(BORDAS_VAO) + ")", x) for x in brutos_borda):
+        print("--aceitar-vao-na-borda=S:borda[,S:borda...]: o início de cada vão em segundos, com 1 ou 2 casas, como a linha do "
+              f"portão relogio o mostra, e a borda em que ele fecha, uma destas: {', '.join(BORDAS_VAO)} (ex.: 542.61:inicio). "
+              "Um vão só tem essas duas bordas", file=sys.stderr); return 2
+    aceitar_bordas = {}
+    for x in brutos_borda:
+        s, borda = x.split(":")
+        s = f"{float(s):.2f}"
+        if aceitar_bordas.get(s, borda) != borda:
+            print(f"--aceitar-vao-na-borda: o vão {s} veio com duas bordas ({aceitar_bordas[s]} e {borda}); é uma só, a que o som "
+                  "confirmou", file=sys.stderr); return 2
+        aceitar_bordas[s] = borda
+    if set(aceitar_bordas) & set(aceitar_vaos):
+        print(f"o vão {', '.join(sorted(set(aceitar_bordas) & set(aceitar_vaos)))} veio em --aceitar-vaos (o fechamento de hoje está "
+              "certo) e em --aceitar-vao-na-borda (ele fecha noutra borda): num vão só uma das duas pode valer",
+              file=sys.stderr); return 2
+    if set(aceitar_divergentes) & set(aceitar_fronteiras):
+        print(f"a pausa {', '.join(sorted(set(aceitar_divergentes) & set(aceitar_fronteiras)))} veio em --aceitar-fronteiras (a proposta "
+              "comum, onde a regra e a ElevenLabs concordam) e em --aceitar-fronteira-divergente (onde discordam): numa pausa só "
+              "uma das duas pode valer", file=sys.stderr); return 2
     ACEITE_POR = (opcoes.get("aceite-por") or "").strip() or "não informado"
     ACEITE_COMO = (opcoes.get("aceite-como") or "").strip() or "não informado"
     ACEITE_EVIDENCIA = (opcoes.get("aceite-evidencia") or "").strip() or None
@@ -1135,6 +1286,13 @@ def main(argv):
     if aceitar_fronteiras and "não informado" in (ACEITE_POR, ACEITE_COMO):
         print("--aceitar-fronteiras pede --aceite-por=<quem conferiu> e --aceite-como=<como conferiu a fronteira no som>: o aceite é "
               "a única prova da fronteira que o ouvido não decidiu", file=sys.stderr); return 2
+    if aceitar_divergentes and "não informado" in (ACEITE_POR, ACEITE_COMO):
+        print("--aceitar-fronteira-divergente pede --aceite-por=<quem conferiu> e --aceite-como=<como conferiu a fronteira no som>: o "
+              "aceite é a única prova do lado escolhido, onde a regra e a ElevenLabs discordam e o ouvido não desempatou",
+              file=sys.stderr); return 2
+    if aceitar_bordas and "não informado" in (ACEITE_POR, ACEITE_COMO):
+        print("--aceitar-vao-na-borda pede --aceite-por=<quem conferiu> e --aceite-como=<como conferiu a borda no som>: o aceite é a "
+              "única prova da borda escolhida, onde o fechamento do script ficou errado", file=sys.stderr); return 2
     AGORA = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     REFAZER, SEM_COBERTURA = "refazer" in opcoes, "sem-cobertura" in opcoes
     proj = args[0]
@@ -1475,15 +1633,53 @@ def main(argv):
                             reg["aceite_recusado"] = ("a fronteira nasceu ou mudou nesta rodada: o laudo anterior deste áudio não a "
                                                       "mostrava indecidida, idêntica (o mesmo trecho, a mesma pausa, a mesma proposta), "
                                                       f"então ninguém a conferiu. Confira no som e rode de novo com --aceitar-fronteiras={ini}")
+                        elif ini in aceitar_divergentes:
+                            reg["aceite_recusado"] = ("a regra e a ElevenLabs CONCORDAM nesta pausa (as duas propõem "
+                                                      f"\"{palavras[i_r]} | {palavras[i_r + 1]}\"): não há lado a escolher. Se o som "
+                                                      f"confirma a proposta comum, o aceite é --aceitar-fronteiras={ini}")
+                    elif len(propostas) == 2:
+                        # a regra e a ElevenLabs DISCORDAM, e o ouvido não desempatou: o aceite de quem conferiu no som
+                        # (--aceitar-fronteira-divergente) escolhe UMA das duas propostas, pelo lado; nunca uma terceira
+                        prop = {"regra": i_r, "elevenlabs": i_e}
+                        c = chave_fronteira({**reg, "regra_palavras": f"{palavras[i_r]} | {palavras[i_r + 1]}"})
+                        h = next((h for h in herdados_fronteiras if h.get("chave") == c and lado_divergente(h)), None)
+                        lado = aceitar_divergentes.get(ini)
+                        if h:
+                            b, situacao = prop[lado_divergente(h)], "aceita"
+                            aceite_fr = {k: h.get(k) for k in ("por", "como", "evidencia", "em", "pendente_no_laudo_de", "lado",
+                                                               "proposta_regra", "proposta_elevenlabs")} | {"herdado": True}
+                        elif lado and c in pendentes_fronteiras_antes:
+                            b, situacao = prop[lado], "aceita"
+                            aceite_fr = {"por": ACEITE_POR, "como": ACEITE_COMO, "evidencia": ACEITE_EVIDENCIA, "em": AGORA,
+                                         "pendente_no_laudo_de": visto_em, "lado": lado,
+                                         "proposta_regra": f"{palavras[i_r]} | {palavras[i_r + 1]}",
+                                         "proposta_elevenlabs": f"{palavras[i_e]} | {palavras[i_e + 1]}"}
+                        elif lado:
+                            reg["aceite_recusado"] = ("a fronteira nasceu ou mudou nesta rodada: o laudo anterior deste áudio não a "
+                                                      "mostrava indecidida, idêntica (o mesmo trecho, a mesma pausa, as mesmas duas "
+                                                      "propostas), então ninguém a conferiu. Confira no som e rode de novo com "
+                                                      f"--aceitar-fronteira-divergente={ini}:{lado}")
+                        if ini in aceitar_fronteiras:          # o caminho de antes, igual
+                            reg["aceite_recusado"] = ("a regra e a ElevenLabs não concordam nesta pausa: o aceite só confirma a proposta comum "
+                                                      "das duas, não escolhe fronteira")
                     elif ini in aceitar_fronteiras:
                         reg["aceite_recusado"] = ("a regra e a ElevenLabs não concordam nesta pausa: o aceite só confirma a proposta comum "
                                                   "das duas, não escolhe fronteira")
+                    elif ini in aceitar_divergentes:
+                        quem = "regra" if i_r is not None else "ElevenLabs"
+                        reg["aceite_recusado"] = (f"nesta pausa só a {quem} propôs fronteira: não há duas propostas que discordem, "
+                                                  f"e o lado {aceitar_divergentes[ini]} não existe aqui. O aceite escolhe entre as duas "
+                                                  "propostas; não inventa fronteira")
                 elif b not in propostas: situacao = "corrigida"
                 elif len(set(propostas)) == 1: situacao = "conferida"
                 else: situacao = "desempatada"
+                lado_ac = lado_divergente(aceite_fr)
                 reg.update(fronteira=b, situacao=situacao,
-                           como=como + ("; ACEITA, não medida: a proposta comum da regra e da ElevenLabs, por quem conferiu no "
-                                        "som (--aceitar-fronteiras)" if aceite_fr else ""),
+                           como=como + (("; ACEITA, não medida: a proposta comum da regra e da ElevenLabs, por quem conferiu no "
+                                         "som (--aceitar-fronteiras)") if aceite_fr and not lado_ac else
+                                        (f"; ACEITA, não medida: a proposta da {'regra' if lado_ac == 'regra' else 'ElevenLabs'}, "
+                                         f"onde as duas discordavam, por quem conferiu no som (--aceitar-fronteira-divergente="
+                                         f"{ini}:{lado_ac})") if lado_ac else ""),
                            ouvido={"antes": " ".join(w["w"] for w in antes[-4:]), "depois": " ".join(w["w"] for w in depois[:4]),
                                    "notas": {palavras[k] + " | " + palavras[k + 1]: v for k, v in sorted(nota.items())}})
                 if aceite_fr: reg["aceite"] = aceite_fr
@@ -1509,8 +1705,28 @@ def main(argv):
                 r["situacao"] = "incoerente"; r["como"] += f"; a fronteira vem antes da da pausa anterior ({anc[-1][1]:.2f} s)"
             else:
                 anc.append((b, p0, p1))
+            if r["situacao"] != "aceita" and lado_divergente(r.get("aceite")):
+                # o lado aceito (--aceitar-fronteira-divergente) não passou pela montagem: o aceite não vale, nem é herdado
+                r["aceite_recusado"] = (f"o lado {lado_divergente(r['aceite'])} põe esta pausa em \"{r.get('fronteira_palavras') or ''}\""
+                                        f", que a montagem recusa ({r['situacao']}): o aceite escolhe entre as duas propostas, mas "
+                                        "não passa por cima da ordem das âncoras")
+                r.pop("aceite")
         t["ancoras"] = anc
     for r in fronteiras: r.pop("_p", None)
+    # --aceitar-fronteira-divergente que não achou pausa indecidida nesta rodada não tem efeito: o aviso diz por quê
+    for ini_d, lado_d in sorted(aceitar_divergentes.items()):
+        r_d = next((r for r in fronteiras if f"{r['pausa'][0]:.2f}" == ini_d), None)
+        if r_d is None:
+            avisos.append(f"--aceitar-fronteira-divergente={ini_d}:{lado_d}: nenhuma pausa começa aí (o início vem com 2 casas, da "
+                          "linha do portão relogio); nada foi aceito.")
+        elif r_d.get("aceite_recusado"):
+            avisos.append(f"--aceitar-fronteira-divergente={ini_d}:{lado_d} NÃO aceitou a pausa {r_d['pausa'][0]:.2f}–"
+                          f"{r_d['pausa'][1]:.2f} (trecho {r_d['trecho']}): {r_d['aceite_recusado']}")
+        elif r_d["situacao"] != "aceita" or not lado_divergente(r_d.get("aceite")):
+            avisos.append(f"--aceitar-fronteira-divergente={ini_d}:{lado_d}: a pausa {r_d['pausa'][0]:.2f}–{r_d['pausa'][1]:.2f} "
+                          f"(trecho {r_d['trecho']}) não ficou indecidida nesta rodada com a regra e a ElevenLabs discordando "
+                          f"(situação: {r_d['situacao']}{', pela proposta comum' if r_d['situacao'] == 'aceita' else ''}), então "
+                          "este aceite não tem o que escolher; nada foi aceito por ele.")
     aceites_fronteiras = [{"chave": chave_fronteira(r), "trecho": r["trecho"], "pausa": r["pausa"],
                            "fronteira_palavras": r.get("fronteira_palavras"),
                            **{k: x for k, x in r["aceite"].items() if k != "herdado"}}
@@ -1524,8 +1740,39 @@ def main(argv):
             curto = ouvir(max(0.0, vao[0] - OUVIDO_JANELA_S), vao[1] + OUVIDO_JANELA_S, "vão com voz sem vale")
             return julgar_vao_pelo_ouvido(t["tp"], t["res"], j, vao, curto)
         return ouvir_vao
+    def borda_de_vao(tr):
+        """O aceite de --aceitar-vao-na-borda para os vãos sem vale do trecho tr (montar_relogio, borda_do_vao). O vão se
+        reconhece pela chave com o fechamento de HOJE (o que o laudo anterior mostrava pendente); só então fecha na borda
+        escolhida. Herdado: o aceite idêntico (a mesma chave) do laudo anterior deste áudio. Sem aceite, devolve None e não
+        toca no v."""
+        def escolher(v, vao, ini_1, fim_2):
+            c = chave_vao({"trecho": tr, **v})
+            ini = inicio_vao(v)
+            h = next((h for h in herdados_vaos if h.get("chave") == c and h.get("borda") in BORDAS_VAO), None)
+            pedida = aceitar_bordas.get(ini)
+            if h is None and pedida is None: return None
+            if h is not None and pedida is not None and pedida != h["borda"]:
+                v["aceite_borda_recusado"] = (f"o laudo anterior já aceitou este vão, idêntico, na borda {h['borda']}; a borda "
+                                              f"{pedida} não passa por cima dele (fica a herdada)")
+            if h is None and c not in pendentes_vaos_antes:
+                v["aceite_borda_recusado"] = ("o vão nasceu ou mudou nesta rodada: o laudo anterior deste áudio não o mostrava "
+                                              "pendente, idêntico (o mesmo par, o mesmo vão, o mesmo fechamento), então ninguém o "
+                                              f"conferiu. Confira no som e rode de novo com --aceitar-vao-na-borda={ini}:{pedida}")
+                return None
+            borda = h["borda"] if h is not None else pedida
+            t_b, motivo = fechar_vao_na_borda(ini_1, vao, fim_2, borda)
+            if t_b is None:
+                v["aceite_borda_recusado"] = motivo; return None
+            aceite = ({k: h.get(k) for k in ("por", "como", "evidencia", "em", "pendente_no_laudo_de")} | {"herdado": True}
+                      if h is not None else {"por": ACEITE_POR, "como": ACEITE_COMO, "evidencia": ACEITE_EVIDENCIA, "em": AGORA,
+                                             "pendente_no_laudo_de": visto_em})
+            v["aceite_borda"] = {"chave": c, "borda": borda, "fechado_antes_em": v["fechado_em"], **aceite}
+            v["fechado_antes_em"], v["fechado_em"] = v["fechado_em"], r3(t_b)
+            return t_b
+        return escolher
     for t in T:
-        iv, marcas, vaos = montar_relogio(t["palavras"], t["base"], t["ancoras"], t["lo"], t["hi"], som, ouvido_de_vao(t))
+        iv, marcas, vaos = montar_relogio(t["palavras"], t["base"], t["ancoras"], t["lo"], t["hi"], som, ouvido_de_vao(t),
+                                          borda_de_vao(t["f"]["trecho"]))
         t["iv"], t["marcas"] = iv, marcas
         for v in vaos: vaos_fechados.append({"trecho": t["f"]["trecho"], **v})
         for w, (s, e) in zip(t["palavras"], iv):
@@ -1702,11 +1949,27 @@ def main(argv):
                       f"{h.get('vao_s')} fechado em {h.get('fechado_em')}")
     if vaos_sem_vao:
         avisos.append(f"--aceitar-vaos={','.join(vaos_sem_vao)}: nenhum vão começa aí (o início vem com 2 casas, da linha do portão).")
+    # --aceitar-vao-na-borda: o recusado, o que não achou vão e o que achou um vão que não pede aceite
+    for ini_b, borda_b in sorted(aceitar_bordas.items()):
+        v_b = next((v for v in vaos_fechados if inicio_vao(v) == ini_b), None)
+        if v_b is None:
+            avisos.append(f"--aceitar-vao-na-borda={ini_b}:{borda_b}: nenhum vão começa aí (o início vem com 2 casas, da linha do "
+                          "portão relogio); nada foi aceito.")
+        elif v_b.get("aceite_borda_recusado"):
+            avisos.append(f"--aceitar-vao-na-borda={ini_b}:{borda_b} NÃO aceitou o vão \"{v_b['entre']}\" ({v_b['vao_s'][0]}–"
+                          f"{v_b['vao_s'][1]}, fechado em {v_b['fechado_em']}): {v_b['aceite_borda_recusado']}")
+        elif not (v_b.get("aceite") or {}).get("borda"):
+            avisos.append(f"--aceitar-vao-na-borda={ini_b}:{borda_b}: o vão \"{v_b['entre']}\" ({v_b['vao_s'][0]}–{v_b['vao_s'][1]}) "
+                          f"não pede aceite nesta rodada (situação: {v_b.get('situacao')}), então não há borda a escolher; nada foi "
+                          "aceito.")
     for v in vaos_fechados:
         if not vao_pede_aceite(v): continue
         ac, o = v.get("aceite") or {}, v.get("ouvido") or {}
         avisos.append(f"vão sem vale t{v['trecho']} \"{v['entre']}\" {v['vao_s'][0]}–{v['vao_s'][1]} ({v['dur_s']:.2f} s), fechado em "
-                      f"{v['fechado_em']} ({'borda escolhida pelo ouvido, lado ' + str(o.get('lado')) if o.get('decidiu') else 'quadro mais quieto'}"
+                      + (f"{v['fechado_em']} (na borda de {'início' if ac['borda'] == 'inicio' else 'fim'} do vão, pelo aceite de quem "
+                         f"conferiu no som; antes, em {ac.get('fechado_antes_em')}, " if ac.get("borda") else "")
+                      + f"{'' if ac.get('borda') else str(v['fechado_em']) + ' ('}"
+                      f"{'borda escolhida pelo ouvido, lado ' + str(o.get('lado')) if o.get('decidiu') else 'quadro mais quieto'}"
                       f"; o mais quieto do vão em {o.get('mais_quieto_em', v['fechado_em'])}) — "
                       + (f"aceito{' (herdado do laudo anterior, vão idêntico)' if ac.get('herdado') else ''}: por {ac.get('por')}; "
                          f"como {ac.get('como')}" if v.get("situacao") == "aceito"
