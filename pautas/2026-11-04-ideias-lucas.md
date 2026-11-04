@@ -57,11 +57,38 @@ Os prints foram lidos em 04/11/2026; nada foi conferido no YouTube. Entram na pr
   pergunta), e mostra que a geografia da Califórnia tem procura agora. A conferir no navegador do app: se ele fala de Big Sur ou da Highway 1.
 - **A conferir:** o "OP" (gíria de jogo, "overpowered") e o tom.
 
-## O que os cinco têm em comum
+## 5. "Quase ninguém mora" na costa do Noroeste Pacífico (o sexto print; perto de Big Sur)
 
-- **Um lugar inteiro e conhecido** (país ou estado), com uma afirmação forte ou um sentimento no título: "impossible", "most valuable",
-  "afraid", "ridiculously OP".
-- **A miniatura:** o território inteiro em relevo ou satélite sobre o mar, com 1 a 3 palavras grandes ("THIS IS TERRIFYING",
-  "OVERPOWERED", "BURIED TREASURE?").
-- **Os longos também passam de 1 mi:** 19:53 (2 mi em 2 semanas) e 23:35 (1,4 mi), ao lado de 3:33 (1,5 mi) e 8:53 (1,2 mi). Isso
+- **O vídeo:** "Why "Nobody" Lives on the Pacific Northwest Coast", do RealLifeLore: 645 mil views, há 3 dias, 41:06, com dublagem
+  automática. Na miniatura, a faixa da costa em vermelho sobre o relevo, uma seta curva branca e "ALMOST TOTALLY EMPTY" numa caixa preta,
+  com "TOTALLY EMPTY" em vermelho.
+- **É o concorrente mais próximo de Big Sur.** A conferência de 02/11/2026 (`pautas/2026-11-01-video-5-big-sur.md`, "Depois do sim") o deu
+  como outro lugar (o Noroeste Pacífico, com 482 mil views então). O título não colide com o nosso ("…as Empty as Wyoming"), e o sucesso
+  dele mostra que o formato tem procura agora. Mas:
+  - **antes da miniatura de Big Sur:** a dele é a faixa vermelha na costa com a caixa preta "EMPTY". A nossa ("ONLY 1,474", com o polígono
+    do distrito) precisa se diferenciar dela;
+  - **a conferir no navegador do app:** os capítulos dos 41 min, para saber se ele desce até a costa da Califórnia e fala de Big Sur.
+
+## 6. "O país que não deveria existir" (o sétimo print)
+
+- **O vídeo:** "Argentina: The Country That Shouldn't Exist", do Вопросы и Ответы (canal russo, dublado para o inglês): 386 mil views, há
+  7 dias, 24:17. Na miniatura, a América do Sul com a Argentina em vermelho, uma caveira sobre o país e "ARGENTINA" em letras amarelas grandes.
+- **O ângulo:** o paradoxo de existência ("shouldn't exist"). Um canal de outra língua, dublado, compete no YouTube em inglês.
+- **A conferir:** o que o vídeo diz que torna o país "impossível"; a caveira e o tom (`marca/voz.md`); a saturação de "shouldn't exist".
+
+## 7. "O único lugar onde…" (o oitavo print)
+
+- **O vídeo:** "The Only Place You Can Walk On Earth's Mantle", do Astrum Earth: 1,2 mi de views, há 2 semanas, 29:23, com promoção paga.
+  No quadro do print, o globo com a Austrália e a legenda "Somewhere in the Southern Ocean, roughly halfway between Australia and Antarctica,".
+- **O ângulo:** o lugar único da geologia ("the only place"). O superlativo pede fonte que o sustente.
+- **A conferir:** qual é o lugar (a legenda aponta para uma ilha do Oceano Austral) e se o "only" se sustenta.
+
+## O que os oito têm em comum
+
+- **Um lugar inteiro e conhecido** (país, estado, costa), ou um lugar único, com uma afirmação forte ou um sentimento no título:
+  "impossible", "most valuable", "afraid", "ridiculously OP", "nobody lives", "shouldn't exist", "the only place".
+- **A miniatura:** o território em relevo ou satélite sobre o mar, pintado de vermelho ou contornado de luz, com 1 a 3 palavras grandes
+  ("THIS IS TERRIFYING", "OVERPOWERED", "BURIED TREASURE?", "ALMOST TOTALLY EMPTY").
+- **Os longos também passam de 1 mi:** 19:53 (2 mi em 2 semanas), 23:35 (1,4 mi) e 29:23 (1,2 mi); o do RealLifeLore tem 41:06. Isso
   combina com o pedido de vídeos mais longos (Lucas, 30/10/2026).
+- **Recentes:** sete dos oito têm 3 meses ou menos; quatro, um mês ou menos.
