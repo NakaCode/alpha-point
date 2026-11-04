@@ -25,6 +25,12 @@
 | San Quentin | san KWEN-tin | — | baixo | §18 6:08 |
 | Plaskett (Fire) | PLAS-kit | — | baixo | §29 10:30 |
 
+## A escuta do Lucas (04/11/2026)
+
+O Lucas ouviu a narração inteira, com os minutos acima: "Todos os audios estão corretos". Os 13 nomes passaram sem alias, e a frase do §21
+("in sight of", que o Whisper ouviu "inside of") também. Eles continuam como hipótese na folha do canal: para subir a `marca/pronuncias.md`
+como confirmados, falta a fonte anotada de cada pronúncia.
+
 ## Como se fecha
 
 1. A narração inteira sai sem alias (`narrar.mjs big-sur`, um pedido por parágrafo; Lucas, 03/11/2026: "Amostra 2").
