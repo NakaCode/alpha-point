@@ -1704,7 +1704,9 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   músicas da trilha também.
 - **O que resolveu:** o portão ganhou a chave que o `_instalar-lote` grava, `medido.sha256_do_baixado`. É a que o ofício do conferente
   manda usar no vídeo de banco pago. Saiu também a pasta `trilha/`: a música nunca vai ao conferente, porque a licença proíbe ferramenta de
-  IA. Ele passou a sair 0 no `big-sur`, no `atlantico-fundo` e no `peru-agua`.
+  IA. E saiu a `_fps-original/`, onde o `normalizar-footage.mjs` guarda o original quando converte um vídeo (o do DVIDS de s20 e s53, no
+  mesmo dia): o normalizado casa pelo `medido.sha256` da procedência, e nenhuma cena cita o original. Ele passou a sair 0 no `big-sur`, no
+  `atlantico-fundo` e no `peru-agua`.
 - **Como evitar:** quando um passo transforma o arquivo depois da conferência (reencode, recorte, normalização), o casamento com o veredito
   se faz pelo sha256 do arquivo julgado, que a procedência do transformado tem de guardar. Um portão que casa só pelo sha256 do arquivo
   final acusa todo arquivo transformado, e o alarme falso ensina a ignorar o portão.

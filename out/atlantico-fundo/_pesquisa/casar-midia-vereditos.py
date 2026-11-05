@@ -17,7 +17,9 @@ conf = json.loads((raiz / "out" / proj / "_pesquisa" / "conferencia-midia.json")
 
 # trilha/: a música da Epidemic Sound nunca entra em ferramenta de IA (CLAUDE.md, "A trilha"), e por isso nunca vai ao conferente
 # nem tem veredito (acrescentado em 05/11/2026; no atlantico-fundo eram os 4 SEM VEREDITO que sobravam).
-FORA = {"_caca", "geo", "_vendor", "base", "trilha"}
+# _fps-original/: o original que o scripts/normalizar-footage.mjs guarda ao converter um vídeo (é o rascunho julgado, e o
+# veredito casa com o normalizado pelo medido.sha256 da procedência); nenhuma cena o cita (acrescentado em 05/11/2026).
+FORA = {"_caca", "geo", "_vendor", "base", "trilha", "_fps-original"}
 
 def sha(p):
     h = hashlib.sha256()
