@@ -1,15 +1,19 @@
 # Big Sur (vídeo 5): o que vai aos bancos pagos
 
-Escrito pelo `pesquisa-imagens` em 04/11/2026, da lista `out/big-sur/_pesquisa/lista-de-caca.json` (18 itens). A caça só acontece quando o Lucas a pedir no chat (decisão de 04/11/2026, 'Sim, com lista (Recomendado)'). Banco na ordem Envato → Motion Array → Storyblocks → Shutterstock. Todo item é B-roll genérico de lugar famoso (Big Sur, a Highway 1, a ponte de Bixby, mirantes, casas na encosta), de hoje, 4K horizontal: nenhum evento, pessoa pública ou data. O registro real dos fatos (Mud Creek, a obra de 1919–1937, os deslizamentos, o Timber Fire) foi ao acervo aberto, em `out/big-sur/_pesquisa/pauta-imagens.json`.
+Refeito pelo `pesquisa-imagens` em 05/11/2026 (big-sur-pesquisa-2), da lista `out/big-sur/_pesquisa/lista-de-caca.json` de hoje (sha256 `5b0cf136…bc96`): os 16 itens com lugar na regência, de 18 no arquivo; o s22-a e o s40-a ficam fora (o porquê está no fim). A primeira versão é de 04/11/2026. A caça só acontece quando o Lucas a pedir no chat (decisão de 04/11/2026, 'Sim, com lista (Recomendado)'). Banco na ordem Envato → Motion Array → Storyblocks → Shutterstock. Todo item é B-roll genérico de lugar famoso (Big Sur, a Highway 1, a ponte de Bixby, mirantes, casas na encosta), de hoje, 4K horizontal: nenhum evento, pessoa pública ou data. O registro real dos fatos (Mud Creek, a obra de 1919–1937, os deslizamentos, o Timber Fire) foi ao acervo aberto, em `out/big-sur/_pesquisa/pauta-imagens.json`.
+
+**Nada aqui está aprovado nem baixado.** É a lista para o Lucas ler e responder no chat da Sala. Na caça, cada candidato passa antes pelo `conferente-de-midia`, e só o que ele aprovar vai à lista de aprovação do Lucas, linha por linha (skill `cacar-no-chrome`, §2.5 e §2.6).
 
 A ordem é a prioridade: as três imagens do gancho primeiro (s01, s05, s12), depois a ordem do vídeo.
+
+As linhas de plano (o tempo e a fala) são as da versão de 04/11, lidas no espelho r2 (`6e787c20…`). Esta versão não releu o espelho nem a regência: o tempo de cada plano é o da regência (`e25d0e79…`).
 
 ## s01-a · cena s01
 
 - plano 0–4 s (4 s): o voo de drone sobre a ponte de Bixby, a estrada e a serra no mar, sem casa no quadro; termina na pose que s02 ancora. Fala: "This is Big Sur,…"
 - buscas: `Bixby Bridge aerial`, `Bixby Creek Bridge drone`, `Big Sur bridge aerial`, `Bixby Bridge Highway 1`
 - por que é genérico: é lugar famoso de hoje, sem evento, pessoa nem data; os bancos têm chance real de ter
-- tem de aparecer: voo de drone de HOJE, horizontal, 4K, sobre a ponte de BIXBY CREEK com a Highway 1 e a serra caindo no mar, em movimento lento; SEM CASA no quadro (a mesma regra de 'Hardly a house is in sight'); a descrição do item tem de nomear Bixby Bridge ou Bixby Creek Bridge. É a 1ª imagem do vídeo ('This is Big Sur') e a MESMA tomada volta em s02 (pousa no mapa), na miniatura de s14 P2, em s31 P4 e em s59 P3 ('the bridge at the start of this video'): precisa de pelo menos 4 s úteis e de um fim em que a ponte esteja bem no quadro, para a ancoragem no mapa
+- tem de aparecer: voo de drone de HOJE, horizontal, 4K, sobre a ponte de BIXBY CREEK com a Highway 1 e a serra caindo no mar, em movimento lento; SEM CASA no quadro (a mesma regra de 'Hardly a house is in sight'); a descrição do item tem de nomear Bixby Bridge ou Bixby Creek Bridge. É a 1ª imagem do vídeo ('This is Big Sur') e a MESMA tomada volta só em s02 (o último quadro, 0,8 s, encolhe até o anel no mapa: a ancoragem) e em s31 P4 (a miniatura no anel); s14 P2 fica sem miniatura e s59 P3 é relevo, e ela não volta ali (regência e25d0e79…, pedido 7, RG-09): precisa de pelo menos 4 s úteis e de um fim em que a ponte esteja bem no quadro, para a ancoragem no mapa
 - recusa: editorial; pessoa reconhecível em primeiro plano; pessoa falando para a câmera; marca ou logotipo de terceiro legível; propriedade privada identificável como assunto do quadro; casa no quadro; gerado por IA; lugar diferente do rótulo (outra ponte em arco, Rocky Creek, Big Creek, a Golden Gate não servem: a descrição tem de nomear Bixby); retrato (vertical); abaixo de 3840×2160; marca d'água; texto na imagem; ponte em reforma com andaime; fumaça de incêndio
 - quantos: 1 · bancos: envato → motionarray → storyblocks → shutterstock
 
@@ -58,15 +62,6 @@ A ordem é a prioridade: as três imagens do gancho primeiro (s01, s05, s12), de
 - recusa: editorial; pessoa reconhecível em primeiro plano; pessoa falando para a câmera; marca ou logotipo de terceiro legível; placa de carro legível; propriedade privada identificável como assunto do quadro; gerado por IA; lugar diferente do rótulo; retrato (vertical); abaixo de 3840×2160; marca d'água; texto na imagem
 - quantos: 1 · bancos: envato → motionarray → storyblocks → shutterstock
 
-## s22-a · cena s22
-
-- plano 190.6–192.933 s (2.333 s): as encostas secas e douradas de Big Sur no verão. Fala: "Summers are long and…"
-- buscas: `Big Sur golden hills`, `Big Sur dry hills`, `Big Sur summer drone`, `Santa Lucia dry grass`
-- por que é genérico: é lugar famoso de hoje, sem evento, pessoa nem data; os bancos têm chance real de ter
-- tem de aparecer: aéreo de HOJE, horizontal, 4K, das ENCOSTAS de BIG SUR SECAS E DOURADAS no verão (capim seco, luz de verão), 'Summers are long and dry'; a descrição tem de nomear Big Sur ou as Santa Lucia Mountains; o plano tem 2,3 s
-- recusa: editorial; pessoa reconhecível em primeiro plano; pessoa falando para a câmera; marca ou logotipo de terceiro legível; propriedade privada identificável como assunto do quadro; gerado por IA; lugar diferente do rótulo (colinas douradas de outra parte da Califórnia não servem); retrato (vertical); abaixo de 3840×2160; marca d'água; texto na imagem; fumaça ou fogo; encosta queimada
-- quantos: 1 · bancos: envato → motionarray → storyblocks → shutterstock
-
 ## s35-a · cena s35
 
 - plano 362.733–365.8 s (3.067 s): a ponte de Bixby de lado, o arco e o cânion embaixo. Fala: "One of those crossings…"
@@ -83,15 +78,6 @@ A ordem é a prioridade: as três imagens do gancho primeiro (s01, s05, s12), de
 - por que é genérico: é lugar famoso de hoje, sem evento, pessoa nem data; os bancos têm chance real de ter
 - tem de aparecer: footage de HOJE, horizontal, 4K, das SEQUOIAS (coast redwoods) do PFEIFFER BIG SUR STATE PARK, sem gente em close; a descrição tem de nomear Pfeiffer Big Sur ou, no mínimo, Big Sur (o rótulo, se houver, não pode ser mais específico que a descrição). A RESERVA da inscrição entra no 1º quadro deste plano (5,4 s): de preferência um movimento lento e um canto calmo
 - recusa: editorial; pessoa reconhecível em primeiro plano; pessoa falando para a câmera; marca ou logotipo de terceiro legível; propriedade privada identificável como assunto do quadro; gerado por IA; lugar diferente do rótulo (Muir Woods, Redwood National Park, Big Basin não servem); retrato (vertical); abaixo de 3840×2160; marca d'água; texto na imagem; placa do parque legível como assunto
-- quantos: 1 · bancos: envato → motionarray → storyblocks → shutterstock
-
-## s40-a · cena s40
-
-- plano 425.2–427.5 s (2.3 s): carros parados num mirante da Highway 1, o mar ao fundo. Fala: "and places to pull…"
-- buscas: `Big Sur vista point`, `Big Sur turnout cars`, `Highway 1 pullout ocean`, `Big Sur scenic overlook`
-- por que é genérico: é lugar famoso de hoje, sem evento, pessoa nem data; os bancos têm chance real de ter
-- tem de aparecer: footage de HOJE, horizontal, 4K, de CARROS PARADOS num MIRANTE à beira da Highway 1 em BIG SUR, o mar ao fundo ('and places to pull over for the view'); o plano tem 2,3 s; a descrição tem de nomear Big Sur
-- recusa: editorial; pessoa reconhecível em primeiro plano; pessoa falando para a câmera; marca ou logotipo de terceiro legível; PLACA DE CARRO LEGÍVEL; propriedade privada identificável como assunto do quadro; gerado por IA; lugar diferente do rótulo; retrato (vertical); abaixo de 3840×2160; marca d'água; texto na imagem
 - quantos: 1 · bancos: envato → motionarray → storyblocks → shutterstock
 
 ## s42-a · cena s42
@@ -153,7 +139,7 @@ A ordem é a prioridade: as três imagens do gancho primeiro (s01, s05, s12), de
 ## s59-a · cena s59
 
 - plano 727.4–733 s (5.6 s): carros entrando no mirante de Bixby Creek, a ponte ao fundo. Fala: "Back at Bixby Creek,…"
-- plano 735.333–742.3 s (6.967 s): a imagem de s01 de volta, calma: a ponte, o riacho embaixo (o COMENTÁRIO entra aqui). Fala: "The creek below carries…"
+- plano 735.333–742.3 s (6.967 s): a imagem de s01 de volta, calma: a ponte, o riacho embaixo (o COMENTÁRIO entra aqui). Fala: "The creek below carries…" (assim no espelho r2 de 04/11; pela lista de hoje, no s01-a, a tomada de s01 volta só em s02 e em s31 P4, e não em s59, onde a P3 é relevo)
 - buscas: `Bixby Bridge parking`, `Bixby Bridge cars`, `Bixby Bridge viewpoint cars`, `Bixby Bridge tourists`
 - por que é genérico: é lugar famoso de hoje, sem evento, pessoa nem data; os bancos têm chance real de ter
 - tem de aparecer: footage de HOJE, horizontal, 4K, de CARROS ENTRANDO NO MIRANTE de Bixby Creek, a PONTE AO FUNDO ('drivers pull into the turnout to look at the bridge'); a descrição tem de nomear Bixby; o mirante é o ponto que o pesquisa-geo declarar como o 'Bixby Creek Turnout' (DF-12), e o conferente confere contra ele
@@ -171,4 +157,8 @@ A ordem é a prioridade: as três imagens do gancho primeiro (s01, s05, s12), de
 
 ## Reservas de acervo aberto já no rascunho
 
-Só o B-roll de LUGAR NOMEADO, de hoje, 4K horizontal, que o espelho (r2, sha256 6e787c20…) manda aos bancos pagos, pela decisão do Lucas de 04/11/2026 ('Sim, com lista (Recomendado)', roteiros/big-sur/decisoes-lucas.md). A caça só acontece quando o Lucas a pedir no chat. A ORDEM É A PRIORIDADE: as três imagens reais do gancho primeiro (s01, s05, s12; o espelho as põe no TOPO, DF-07), depois a ordem do vídeo. Nada de evento, pessoa pública ou data: o registro real (o vídeo do USGS de Mud Creek, as fotos de época, a Caltrans, o Timber Fire) foi ao acervo aberto (out/big-sur/_pesquisa/pauta-imagens.json). SEPARAR ANTES (roupa §4): Bixby Creek Bridge, a Highway 1 em Big Sur e a costa de Big Sur são de lugar famoso, com chance real nos bancos; nenhum item aqui é prédio, cidade pequena ou terminal. RESERVAS DE ACERVO ABERTO já no rascunho, para quando o banco não tiver: s01 (a foto do Mavic of Steel, 2023), s05 (Diliff 2013 e Joe Mabel 2025; e o vídeo 4K do Forest Service 'Big Sur Coast', DVIDS 1019795), s12 (Fred Moore 2012), s20 e s18 (o mesmo vídeo 4K do Forest Service), s35 (a foto de drone do Jav72, 2025). A 'recusa' de todo item inclui a da roupa §4 e a do conferente-de-midia §5.1/§5.2. 'quantos' é o que a cena usa: 1.
+Só o B-roll de LUGAR NOMEADO, de hoje, 4K horizontal, que o espelho (r2, sha256 6e787c20…) manda aos bancos pagos, pela decisão do Lucas de 04/11/2026 ('Sim, com lista (Recomendado)', roteiros/big-sur/decisoes-lucas.md). A caça só acontece quando o Lucas a pedir no chat. A ORDEM É A PRIORIDADE: as três imagens reais do gancho primeiro (s01, s05, s12; o espelho as põe no TOPO, DF-07), depois a ordem do vídeo. Nada de evento, pessoa pública ou data: o registro real (o vídeo do USGS de Mud Creek, as fotos de época, a Caltrans, o Timber Fire) foi ao acervo aberto (out/big-sur/_pesquisa/pauta-imagens.json). SEPARAR ANTES (roupa §4): Bixby Creek Bridge, a Highway 1 em Big Sur e a costa de Big Sur são de lugar famoso, com chance real nos bancos; nenhum item aqui é prédio, cidade pequena ou terminal. RESERVAS DE ACERVO ABERTO já no rascunho, para quando o banco não tiver: s01 (a foto do Mavic of Steel, 2023), s05 (Diliff 2013 e Joe Mabel 2025; e o vídeo 4K do Forest Service 'Big Sur Coast', DVIDS 1019795), s12 (Fred Moore 2012), s20 e s18 (o mesmo vídeo 4K do Forest Service), s35 (a foto de drone do Jav72, 2025). A 'recusa' de todo item inclui a da roupa §4 e a do conferente-de-midia §5.1/§5.2. 'quantos' é o que a cena usa: 1. ESTADO (05/11/2026, pedido 7 da regência e25d0e79…, RG-09): item com 'estado' e 'fora_da_lista_do_lucas: true' (hoje s22-a e s40-a, 'sem lugar na regência') não vai à lista de aprovação do Lucas nem se caça; fica no arquivo como registro. Item sem 'estado' segue como antes.
+
+## Fora desta lista
+
+- **s22-a** (cena s22, as encostas secas e douradas no verão) e **s40-a** (cena s40, os carros parados num mirante): sem lugar na regência (pedido 7 da regência `e25d0e79…`, RG-09). Ficam na `lista-de-caca.json` como registro, com `estado: "sem lugar na regência"` e `fora_da_lista_do_lucas: true`, para os ids e a ordem não mudarem; não se caçam, não vão à lista de aprovação e não contam no teto (skill `cacar-no-chrome`, §1).

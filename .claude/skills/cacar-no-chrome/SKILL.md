@@ -230,6 +230,10 @@ chamada.
   trouxer um item assim, cace-o normalmente: quem separa é o pesquisador.
 - Se a lista pedir outra plataforma (Artlist, Pond5, Reuters…), não vá: o canal não tem essa assinatura. Anote e
   siga.
+- **Item sem lugar** (desde o vídeo 5, `big-sur`, 05/11/2026): o pesquisador pode marcar um item com
+  `"estado": "sem lugar na regência"` e `"fora_da_lista_do_lucas": true`, quando a regência não tem cena para ele
+  (o RG-09 do Big Sur, o s22-a e o s40-a). Esse item fica no arquivo, para os ids e a ordem não mudarem, mas não
+  se caça, não entra na lista de aprovação (§2.6) e não conta no teto. Sem os dois campos, o item vale como antes.
 
 ## 2 · Fase A: buscar, avaliar e gravar os candidatos, sem baixar nem aceitar nada
 

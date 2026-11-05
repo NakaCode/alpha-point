@@ -14,6 +14,27 @@ e depois), e as duas frases que o laudo anterior mandou consertar estão consert
 turn of the century" voltou a "around", como o plano diz. Nenhuma das 18 diferenças diz mais que a fonte. Fica só a VF12, aberta pelo
 desenho do pedido. A nota sobe de 9.0 para 9.5: não houve regressão.
 
+## Nota de 05/11/2026: o apoio de quatro linhas (big-sur-texto-2)
+
+O `verificador-de-fatos` trocou só o APOIO de quatro linhas da tabela (o `fonte_id`, o `arquivo_local`, o `trecho` e, na R028, o
+parêntese da `afirmacao`), pelo laudo-delta da pesquisa (`fatos-pesquisa-2026-11-05.laudo.json`), com uma `nota_apoio` datada em cada
+linha. Nenhuma frase da voz, nenhum veredito e nenhuma contagem mudou: a COBERTURA continua 231 de 232, e o VEREDITO, RESSALVA.
+
+- **R028** (p5, "and the mountains behind it"; VP-A-265): o apoio era o ponto M10 do Ventana Double Cone (36.2930, −121.7210), que não é o
+  do GNIS. No ponto do GNIS (255838: 36,2971096, −121,7146594) o cume cai no Carmel Valley CCD, a 13 m da divisa. A serra do distrito
+  continua de pé: 28 cumes do GNIS ficam dentro dele (Pico Blanco, Ventana Cone, South Ventana Cone, Marble Peak, Manuel Peak, Anderson
+  Peak…), recontados em 05/11/2026 pelo `v_cumes.py` da texto-1, o mesmo 28 de `out/big-sur/_dados/costa-e-lugares.json` › `serra`, que
+  passa a ser a cópia da linha. O M10 de `fatos-medidas.txt` não se edita (é a saída de um script): o ponto dele fica corrigido aqui.
+- **R008, R137 e R138** (p2 e p21; VP-B-125): a fonte era "P (capa)", mas o "1986" junto do título no OCR é a cota do acervo
+  (HD 211 .C2 M67 1986; VP-B-009): a capa do condado não tem ano. As datas estão na folha de rosto, a PDF p. 3 (a 3ª página da cópia do
+  govinfo, contada pelas quebras de página, que são 152, como as 152 páginas do PDF): "Adopted by the Monterey County Board of Supervisors
+  11/5/85" e "Certification Acknowledged by the California Coastal commission on April […], 1986". A R008 ganha o trecho da certificação,
+  como o OCR o lê ("the California Coastal commission on April I-Cr, 1986": o "I-Cr" é o dia manuscrito, que não vai a lugar nenhum,
+  VP-B-012); a R137 e a R138 mudam só o `fonte_id`.
+- **O mesmo defeito, em mais 7 linhas que esta nota NÃO troca** (o pedido limitou a troca a quatro): R040, R053, R155, R163, R213, R222 e
+  R231 também dão "P (capa)" com o trecho "LOCAL COASTAL PROGRAM 1986 MONTEREY COUNTY, CALIFORNIA". O 1986 delas é verdadeiro (a
+  certificação), mas o apoio está na cota do acervo. O conserto é o da R008, e vai à Sala (`fatos-tela.laudo.md`, PARA A SALA).
+
 ## O que foi julgado, e como
 
 - **O texto:** o texto falado inteiro de `roteiros/big-sur/roteiro-narrador.md`, sha256 do texto falado
@@ -82,7 +103,8 @@ Cada frase nova foi lida contra o trecho da linha dela. A pergunta, em todas: a 
   1.474 é do distrito (M01).
 - **p5 · "It takes in roughly two-thirds of the Big Sur coast and the mountains behind it, from a few miles south of Carmel, past this bridge,
   and a long way down the shore."** (L05; R026–R029) Confirmada. Os dois terços são da costa, pela latitude (M13: 33,8 de 52,9 mi, 0,64); o
-  ponto norte fica 5,0 mi ao sul de Carmel-by-the-Sea (M11); a ponte de Bixby e o Ventana Double Cone caem no distrito (M10); a terra dele
+  ponto norte fica 5,0 mi ao sul de Carmel-by-the-Sea (M11); a ponte de Bixby cai no distrito (M10), e a serra dele também, por 28 cumes do GNIS (o Ventana Double Cone, não: fica a 13 m da divisa,
+  no Carmel Valley CCD; nota de 05/11/2026, abaixo); a terra dele
   chega à costa até 35,99 N. Observação sem troca: a frase pode ser ouvida como "dois terços da costa e da serra", e a serra não tem medida
   própria; mas a serra do distrito é a que fica atrás do mesmo trecho de costa (a mesma faixa de latitude), e a frase não fala de área.
 - **p7 · sai "With that settled, let's try something."** (L06) Era NADA A CHECAR.
