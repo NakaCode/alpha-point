@@ -3,8 +3,10 @@
 # menos os -prova, casado com um veredito, e nenhum reprovado nem trocar em arquivo que continua lá).
 #   python -X utf8 -B out/atlantico-fundo/_pesquisa/casar-midia-vereditos.py <proj>
 # Casa pelo sha256 do arquivo; no acervo aberto, também pelo sha256 do rascunho julgado que o _PROCEDENCIA.json da pasta grava
-# (medido.sha256 ou medido.medido_no_download.sha256). Sai 0 só se todo arquivo casar com um aprovado da mesma cena (ou de
-# cena declarada no veredito) e nenhum casar com reprovado ou trocar.
+# (medido.sha256 ou medido.medido_no_download.sha256); no banco pago, pelo sha256 do arquivo baixado que o conferente julgou,
+# que o _instalar-lote grava como medido.sha256_do_baixado (o clipe instalado é reencodado, e o sha256 dele não é o julgado;
+# o ofício do conferente, §3: "no vídeo, medido.sha256_do_baixado"; acrescentado na caça 1 do big-sur, 05/11/2026). Sai 0 só se
+# todo arquivo casar com um aprovado da mesma cena (ou de cena declarada no veredito) e nenhum casar com reprovado ou trocar.
 import hashlib, json, sys
 from pathlib import Path
 
@@ -13,7 +15,9 @@ raiz = Path(__file__).resolve().parents[3]
 media = raiz / "out" / proj / "_media"
 conf = json.loads((raiz / "out" / proj / "_pesquisa" / "conferencia-midia.json").read_text(encoding="utf-8"))
 
-FORA = {"_caca", "geo", "_vendor", "base"}
+# trilha/: a música da Epidemic Sound nunca entra em ferramenta de IA (CLAUDE.md, "A trilha"), e por isso nunca vai ao conferente
+# nem tem veredito (acrescentado em 05/11/2026; no atlantico-fundo eram os 4 SEM VEREDITO que sobravam).
+FORA = {"_caca", "geo", "_vendor", "base", "trilha"}
 
 def sha(p):
     h = hashlib.sha256()
@@ -42,7 +46,7 @@ def shas_da_procedencia(pasta, nome):
             continue
         m = it.get("medido") or {}
         for v in (m.get("sha256"), (m.get("medido_no_download") or {}).get("sha256"), it.get("sha256"),
-                  it.get("sha256_rascunho")):
+                  it.get("sha256_rascunho"), m.get("sha256_do_baixado")):
             if isinstance(v, str) and len(v) == 64:
                 out.add(v.lower())
     return out

@@ -1,6 +1,8 @@
-# Conferência de mídia · `big-sur` (vídeo 5) · fluxo `midia` · lotes 1 a 3 · lotes 1 e 2 em 04/11/2026 (19:2x e 19:58), lote 3 em 05/11/2026 (04:50, Brasília)
+# Conferência de mídia · `big-sur` (vídeo 5) · fluxo `midia` · lotes 1 a 4 · lotes 1 e 2 em 04/11/2026 (19:2x e 19:58), lote 3 em 05/11/2026 (04:50), lote 4 em 05/11/2026 (17:41, Brasília)
 
-**O laudo do arquivo inteiro:** 35 aprovados de 52 conferidos (3 reprovados, 14 trocar, 0 pendente_lucas); 1 com algo não conferido; recebidos: 52 vereditos sobre 32 arquivos.
+**O laudo do arquivo inteiro:** 46 aprovados de 63 conferidos (3 reprovados, 14 trocar, 0 pendente_lucas); 1 com algo não conferido; recebidos: 63 vereditos sobre 43 arquivos.
+
+**O lote 4** (05/11/2026, no `art`, a pedido da Sala às 17:18): os 11 arquivos baixados na caça 1, conferidos contra as prévias (skill `cacar-no-chrome` §3, passo 5). São 11 aprovados de 11, todos com `mesmo_item: true`. Nenhum reprovado, trocar ou pendente_lucas. O detalhe está na seção "Lote 4", logo abaixo.
 
 **O lote 3** (05/11/2026, no `screen_text`, tarefa `big-sur-pesquisa-1`): 33 julgamentos sobre a regência `e25d0e79…` (os 32 usos de `_usos_de_midia` e a Hurricane Point para s57 › beats[2]).
 - As 17 janelas dos usos APROVADO valem e deixaram de ser provisórias. A cabana (s30) e o ROAD CLOSED (s50) valem com a permanência na mesa, e s12 vale na caixa nova.
@@ -10,6 +12,115 @@
 - Mudaram os campos de data de s20, s37, s48 e s53, pelo laudo-delta.
 
 Nada foi entregue nem movido. A lista de sha256 de `out/big-sur/_media/` é a mesma antes e depois: 178 arquivos (`out/big-sur/_tmp/conferencia/pesquisa-1/_media-antes.txt` e `_media-depois.txt`, as duas com o sha256 `24a01e3e…78af6`). O JSON foi emendado por script, com o sha256 conferido antes e as cópias em `out/big-sur/_tmp/conferencia/pesquisa-1/`. Foram abertas 15 imagens: recortes nas caixas, ampliações e duas folhas.
+
+## Lote 4 · a caça 1: os 11 arquivos baixados, contra as prévias
+
+O pedido da Sala de controle (05/11/2026, 17:18) é o fluxo `midia` de banco pago (skill `cacar-no-chrome` §3, passo 5; ofício §4.1).
+Cobre os 11 arquivos que o Lucas aprovou: as linhas 1 a 9 da `lista-aprovacao-caca-1.md` e as linhas 10 e 11 da `lista-aprovacao-caca-2.md`.
+A reserva 12 (`s45-a-2`) não foi baixada e não tem veredito. O `s45-a-3` foi julgado para s44, a cena dele; a s60 fica fora deste pedido.
+
+**O laudo do lote 4:** 11 aprovados de 11 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 11.
+Os 11 têm `mesmo_item: true`.
+
+**Como conferi.** Cada arquivo passou pelos mesmos passos:
+- os três quadros de 15, 50 e 85 % pelo `_frames-de-clipe.mjs`, postos lado a lado com as prévias do mesmo ponto (`lado-a-lado.png`);
+- a folha de um quadro por segundo do clipe inteiro;
+- os quatro cantos, o topo e o centro a 100 % (a marca d'água), e recortes a 100 % onde havia algo a ver (casa, carro, gente, placa);
+- `ffprobe` e `sha256sum`.
+
+A fala foi lida na fonte: a regência `e25d0e79…`, o espelho `446ffccc…`, o `words.json` `f6055f41…` e o roteiro `b0b7234a…`.
+Os quadros e as folhas estão em `out/big-sur/_tmp/conferencia/<id-do-candidato>/`, fora do git.
+Não foi de olhos novos quanto ao veredito da caça: li o `conferencia-caca.md` antes de abrir os quadros (e, no s01-a, o veredito inteiro).
+As prévias do Envato caíram nos pontos de 15, 50 e 85 % do arquivo, ao contrário do vídeo 3: o `previas_pontos` dá o tempo de cada uma, e o
+quadro do arquivo no mesmo ponto bate com ela. Não foi preciso procurá-las no clipe inteiro.
+
+| # | id_candidato | cena | banco · item | veredito | mesmo_item | motivo |
+|---|---|---|---|---|---|---|
+| 1 | s01-a | s01 | Envato `2dfb456b…` | aprovado | true | a ponte de Bixby de drone, em luz de fim de tarde, recuando até a praia, sem casa; 4K, 18,0 s, cobre os 4,0 s do beat |
+| 2 | s05-a | s05 | Envato `1f008962…` | aprovado | true | a costa de Big Sur em dia de sol, praia, pedra e serra, em recuo lento, sem casa; 4K, 19,8 s para 4,97 s |
+| 3 | s12-a | s12 | Envato `4c7608ca…` | aprovado | true | a estrada que a origem nomeia Highway 1, na encosta verde de Big Sur, em voo largo e lento, com o centro na encosta; 4K ProRes HQ, 13,2 s para 5,53 s |
+| 4 | s20-a | s20 | Envato `04f8f43b…` | aprovado | true | uma enseada pequena com praia ao pé da encosta íngreme de Big Sur, em aproximação lenta; 4K ProRes, 29,7 s para 3,8 s |
+| 5 | s21-a | s21 | Envato `e1ae4a55…` | aprovado | true | a estrada da costa com guard-rail pendurada na falésia de Big Sur, de cima; 4K, 15,8 s para 4,47 s |
+| 6 | s35-a | s35 | Envato `df4a2136…` | aprovado | true | a ponte de Bixby de lado, o arco inteiro sobre o cânion, em drone que avança; 4096 × 2160, 18,2 s para 3,07 s |
+| 7 | s48-a | s48 | Envato `39739042…` | aprovado | true | a estrada da costa de Big Sur na encosta, com carros pequenos da metade do clipe em diante, a costa e o mar; 4K, 9,9 s para 5,2 s |
+| 8 | s57-a | s57 | Envato `c4f9a13e…` | aprovado | true | a estrada subindo da ponte de Bixby, de cima, com o trânsito e o mirante cheio de carros; 4K, 6,8 s para 3,4 s |
+| 9 | s59-a | s59 | Envato `98ff0ab2…` | aprovado | true | o mirante da cabeceira norte de Bixby cheio de carros, com a ponte, até ~5 s; 4K, 16,1 s para 5,6 s |
+| 10 | s18-a-2 | s18 | Motion Array `914470` | aprovado | true | as encostas íngremes de Big Sur descendo direto ao mar, em voo lento, sem casa em close; 4K, 12,4 s para 5,63 s |
+| 11 | s45-a-3 | s44 | Storyblocks `SBV-353382311` | aprovado | true | a ponte de Bixby inteira, na altura do olho, em panorâmica lenta de tripé, inteira no quadro até ~6 s; 4K, 22,7 s para 4,3 s |
+
+O passo 4 da Sala (nome, medida e ordem) bate com o que medi nos 11. São a mesma resolução, a mesma duração e os mesmos bytes, e o sha256 é
+igual ao do `manifest.jsonl`. Nenhum arquivo tem marca d'água. Nenhum mostra pessoa reconhecível em primeiro plano, marca de terceiro legível
+nem propriedade privada como assunto (`marca/midia.md` §3.1), e nenhum repete arquivo, item ou plano de outra cena.
+
+### Para o Lucas pesar (lote 4)
+
+Nada: nenhum `pendente_lucas`.
+
+### Para reconferir no navegador do app (lote 4)
+
+Nada: nenhum critério ficou `nao_conferido`, e nenhuma página foi aberta.
+
+### Para trocar (lote 4)
+
+Nada.
+
+### Para quem monta e entrega (lote 4; não reprova)
+
+- **s01-a.** Este veredito vale só para s01. A regência faz a tomada voltar em s02 (o último quadro, que encolhe para o anel) e em s31 P4 (a
+  miniatura): "s01's image (the drone's last frame, or the 2023 photo)". Cada volta do clipe pede conferência nova, porque os reusos
+  aprovados no lote 3 são da foto de Mavic of Steel, outro arquivo. Em 4 s, a ponte e o arco ainda estão inteiros no quadro.
+- **s12-a.** Perto do centro, a 6,59 s, há uma mancha de verde vivo junto a um bosque (x ≈ 1.960–2.050, y ≈ 908–945 no 4K). Ela cai na área de
+  repouso da agulha da vinheta (x 1316–2556, y 640–1552). A estrada entra pela esquerda até x ≈ 1.540. É composição, e quem confere é o editor.
+- **s20-a.** A s20 › beats[0] tem agora dois aprovados: este clipe e o vídeo do Forest Service (DVIDS 1019795). O plano é um só, e quem rege e
+  monta escolhe. O rótulo é "Big Sur coast, California", nunca o nome da enseada: a origem só diz "a cove (…) of Big Sur". Pela forma, a
+  enseada parece a de McWay. Se a foto de Iliff (McWay Cove, a 2ª opção de s42) voltar, é o mesmo lugar visto doutro ponto, mas não o mesmo
+  plano.
+- **s35-a.** O arquivo é 4096 × 2160, e o corte para 16:9 é de quem monta. A praia que o `exige` do beat cita não aparece; a divergência já
+  está no `conferencia-caca.md`.
+- **s48-a.** Os carros só se distinguem da metade do clipe em diante. O trecho de 5,2 s que os mostra é o de ~4,6 a 9,8 s.
+- **s57-a.** A 100 %, o detalhe fino é mole (parece imagem ampliada, com nitidez realçada). O clipe tem 25 fps e a cor não declarada; o
+  `_instalar-lote` leva a 30 fps. O mirante cheio de carros aparece aqui, a 689,7 s, 37,7 s antes do "Back at Bixby Creek" do s59-a (727,4 s).
+  São outros clipes e outros ângulos.
+- **s59-a.** O mirante com os carros fica no quadro até ~5 s, e o beat tem 5,6 s. Com o clipe desde o 0, o fim do beat já mostra a ponte sem
+  o mirante. O trecho é de quem monta.
+- **s18-a-2.** No meio da encosta, perto do centro, há um pequeno conjunto de gramados, trilhas e uma estrutura escura (provavelmente uma
+  construção), com uns 5 % da largura do quadro. O empurrão, se houver, não vai a ele. A luz é encoberta, como a caça já anotou. O arquivo
+  traz áudio AAC, e o clipe vai sem o som.
+- **s45-a-3.** O trecho sai do começo do clipe: a ponte fica inteira no quadro até ~6 s. A 19 Mb/s, não há bloco visível a 100 %, e o MP4
+  serve; o MOV não é preciso. O arquivo traz áudio AAC, e o clipe vai sem o som. A volta em s60 está fora deste pedido: sem reuso declarado e
+  sem conferência nova do trecho, ela falha na repetição (a mesma URL em s44 e em s60, 267 s depois).
+- **A URL do Envato.** O registrador grava a URL da página do item sem `?itemType=…&term=…`. É a mesma página e o mesmo ID da caça. O
+  veredito casa pela URL do `_PROCEDENCIA.json`, que é a que o `_instalar-lote` copia, como nos vereditos de banco do vídeo 3.
+
+### Para a Sala (lote 4; não reprova)
+
+- **A Storyblocks chegou sem metadados que se leiam.** O `ffprobe` só mostra o codificador (`Lavf58.45.100`), e a busca de texto no arquivo
+  não acha "storyblocks" nem o ID. O `marca/midia.md` §2.8 dá como prova da Storyblocks "os metadados embutidos no arquivo (…) e o PDF da
+  licença", e esta lista não tem linha L da Storyblocks. A prova do item fica no histórico da conta e no nome com que o arquivo chegou
+  (`…-SBV-353382311-4K.mp4`, o `arquivo_baixado` do manifest). A prova de licença não é critério do conferente (skill §3.2). Fica registrado.
+- **O `marcar` do s01.** O manifest dá o `marcado_em` às 16:08:26 e o arquivo criado às 16:51:07 (Brasília): 43 minutos entre o `marcar` e o
+  arquivo. A skill pede o `marcar` logo antes do clique. A identidade sai dos quadros, que batem nos três pontos. É um registro para o relato
+  da caça.
+
+### Desvios do contrato e divergências (lote 4)
+
+- **O `.md` também foi emendado por script**, como o JSON (`python -X utf8 -B`, de arquivo). Com 31 KB, regravá-lo inteiro pelo `Write`
+  arriscava cortar o que os lotes 1 a 3 escreveram. O contrato §5 só nomeia o JSON para a emenda. O sha256 dos dois foi conferido antes, e as
+  cópias de antes estão em `out/big-sur/_tmp/conferencia/caca1-midia/`.
+- **Um retrato de `_tmp` foi sobrescrito e restaurado.** Gravei o retrato de antes desta conferência pelo comando do contrato §3 em
+  `out/big-sur/_tmp/conferencia/_media-antes.txt`, que é o mesmo nome do retrato da 1ª leva da caça (13:39) citado no `conferencia-caca.md`.
+  Restaurei-o com o `_media-depois.txt` da 1ª leva (14:00), que aquele `.md` dá como igual a ele (`diff` vazio). O conteúdo é o mesmo, e é
+  igual também ao `_media-antes-leva2.txt` (`ba026ca8…`), mas a data do arquivo agora é de hoje, 17:2x. O retrato deste lote está em
+  `_media-antes-caca1-midia.txt` e `_media-depois-caca1-midia.txt`.
+- **Os quadros soltos foram abertos um a um só no s18-a-2 e no s45-a-3.** Nos outros nove, vi os mesmos quadros no lado a lado com as
+  prévias (reduzidos a 800 px de largura) e, a 100 %, nos cantos e nos recortes.
+- Entre a marca e o ofício, nenhuma divergência nesta conferência.
+
+### `_media` (lote 4)
+
+O sha256 dos 223 arquivos de `out/big-sur/_media/` deu as listas iguais antes (17:19) e depois (17:42), com o `diff` vazio
+(`_media-antes-caca1-midia.txt` e `_media-depois-caca1-midia.txt`, sha256 `db9c1b6f…`). As duas são idênticas ao retrato da Sala das 17:17
+(`out/big-sur/_tmp/caca/retrato-media-antes-conf3.txt`). A conferência não escreveu, não moveu e não apagou nada em `_media/`.
 
 ## Lote 3 · as janelas da regência `e25d0e79…`
 

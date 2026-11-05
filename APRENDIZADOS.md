@@ -1694,3 +1694,18 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   se edita: o conserto de verdade é ele ler o `_PROCEDENCIA.json` também do arquivo que o nome isenta.
 - **Por que serve a qualquer canal:** todo canal que entregue acervo aberto com o nome da agência no arquivo recebe o mesmo verde sem
   leitura. Um nome de arquivo não prova licença.
+
+### 94. O clipe de banco instalado é reencodado, e o portão que casa pelo sha256 do arquivo o dava como "sem veredito"
+
+- **O problema** (05/11/2026, no vídeo 5, `big-sur`, na caça 1): o conferente aprovou os 11 arquivos baixados, com `mesmo_item: true`,
+  e o `_instalar-lote` os levou a `_media/footage/<cena>/` reencodados a 30 fps, só com quadros inteiros (a REND-47). O
+  `casar-midia-vereditos.py` deu os 11 como "SEM VEREDITO": ele casava o arquivo pelo sha256 dele, e o veredito guarda o sha256 do
+  arquivo julgado, o baixado. No `atlantico-fundo` (vídeo 4), o mesmo portão já dava os 3 clipes de banco como "SEM VEREDITO", e as 4
+  músicas da trilha também.
+- **O que resolveu:** o portão ganhou a chave que o `_instalar-lote` grava, `medido.sha256_do_baixado`. É a que o ofício do conferente
+  manda usar no vídeo de banco pago. Saiu também a pasta `trilha/`: a música nunca vai ao conferente, porque a licença proíbe ferramenta de
+  IA. Ele passou a sair 0 no `big-sur`, no `atlantico-fundo` e no `peru-agua`.
+- **Como evitar:** quando um passo transforma o arquivo depois da conferência (reencode, recorte, normalização), o casamento com o veredito
+  se faz pelo sha256 do arquivo julgado, que a procedência do transformado tem de guardar. Um portão que casa só pelo sha256 do arquivo
+  final acusa todo arquivo transformado, e o alarme falso ensina a ignorar o portão.
+- **Por que serve a qualquer canal:** todo canal que confere a mídia antes de normalizá-la para a edição tem dois sha256 por arquivo.
