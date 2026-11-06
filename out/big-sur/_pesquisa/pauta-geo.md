@@ -3,8 +3,9 @@
 > Índice legível de `pauta-geo.json` (a fonte é o JSON). Gerado por `out/big-sur/_tmp/pesquisa-geo/geo_pauta_md.py`; o relato está em
 > `out/big-sur/_tmp/pesquisa-geo/relato.md`.
 
-- Espelho: sha256 `6e787c20d4927753…`; 42 ids, 148 pedidos; 42 camadas em `_media/geo/`.
+- Espelho: sha256 `6e787c20d4927753…`; 42 ids, 148 pedidos; 44 camadas em `_media/geo/`.
 - Estado: atendido 39, parcial 1, esquema_declarado 2, bloqueado 0.
+- 06/11/2026 (`big-sur-pesquisa-5`, a s49 b4): entraram `highway-1-divisa-cambria.json` (a Highway 1 do OSM da divisa a Cambria, emendada sem vão no fim da `highway-1-big-sur.json`) e `cambria.json` (GNIS 1652683). Os ids, o atendimento, o estado dos 42 ids e o resto do topo não mudaram. Gerado por `out/big-sur/_tmp/pesquisa-geo/divisa-cambria/scripts/pauta_acrescentar.py`; o relato está em `out/big-sur/_tmp/pesquisa-geo/divisa-cambria/relato.md`.
 
 ## Os 42 ids
 
@@ -63,6 +64,7 @@
 | `big-sur-river.json` | 1 | © OpenStreetMap contributors (já está no crédito da base Map… | OpenStreetMap via Nominatim (04/11/2026, polygon_geojson): ways 224261859, 905096537 (waterway=river, 'Big Sur River') |
 | `bixby-creek-turnout.json` | 1 | © OpenStreetMap contributors (já está no crédito da base Map… | OpenStreetMap via Nominatim (04/11/2026; 'viewpoint' na caixa -121,912/36,362 a -121,890/36,380): node/3123173777 ('Bixby Creek Bridge Viewp… |
 | `california.json` | 1 | nenhum (domínio público) | U.S. Census Bureau — Cartographic Boundary Files 2025, states 1:500,000 (cb_2025_us_state_500k), California (STATEFP 06) |
+| `cambria.json` | 1 | nenhum (domínio público) | USGS GNIS — Domestic Names, Califórnia (GNIS Domestic Names, Califórnia, arquivo de 02/11/2026 (zip baixado em 04/11/2026)): feature_id 1652… |
 | `carmel-by-the-sea.json` | 1 | nenhum (domínio público) | USGS GNIS — Domestic Names, Califórnia (GNIS Domestic Names, Califórnia, arquivo de 02/11/2026 (zip baixado em 04/11/2026)): feature_id 1658… |
 | `ccd-big-sur.json` | 1 | nenhum (domínio público) | U.S. Census Bureau — TIGER/Line Shapefiles 2020, County Subdivisions, California (tl_2020_06_cousub), GEOID 0605390235 (Big Sur CCD), menos … |
 | `ccd-san-ardo.json` | 1 | nenhum (domínio público) | U.S. Census Bureau — TIGER/Line Shapefiles 2020, County Subdivisions, California (tl_2020_06_cousub), GEOID 0605392750 (San Ardo CCD), menos… |
@@ -78,6 +80,7 @@
 | `fechamento-pm37-5-pm47-ago-2026.json` | 1 | o da fonte do dado na cena ('Source: Caltrans, 2023–2026', d… | OpenStreetMap via Overpass API (base OSM de 2026-11-04T21:26:06Z), a Highway 1, cortada pelos post miles da nota da Caltrans de 11/08/2026 (… |
 | `floresta-nacional-los-padres.json` | 1 | nenhum na tela (domínio público); na descrição, a citação 'U… | USGS Gap Analysis Project — PAD-US 4.1, serviço 'PAD-US Manager Name': OBJECTID 4564 (Fee, USFS, 'Los Padres National Forest'), recortado pe… |
 | `highway-1-big-sur.json` | 1 | © OpenStreetMap contributors (já está no crédito da base Map… | OpenStreetMap via Overpass API (04/11/2026, base OSM de 2026-11-04T21:26:06Z) — 110 ways com ref 'CA 1' (Cabrillo Highway) entre Carmel e a … |
+| `highway-1-divisa-cambria.json` | 1 | © OpenStreetMap contributors (já está no crédito da base Map… | OpenStreetMap via Overpass API (06/11/2026, base OSM de 2026-11-06T18:18:43Z) — 42 ways com ref 'CA 1' (Cabrillo Highway) entre a divisa Mon… |
 | `metro-los-angeles.json` | 1 | nenhum (domínio público) | U.S. Census Bureau — Cartographic Boundary Files 2025, counties 1:500,000 (cb_2025_us_county_500k): a união dos condados Los Angeles (06037)… |
 | `metro-san-francisco.json` | 1 | nenhum (domínio público) | U.S. Census Bureau — Cartographic Boundary Files 2025, counties 1:500,000 (cb_2025_us_county_500k): a união dos condados San Francisco (0607… |
 | `mirantes-nomeados-1986.json` | 7 | © OpenStreetMap contributors (já está no crédito da base Map… | Os lugares que o Big Sur Coast Land Use Plan de 1986 nomeia em 3.2.2 (P [230]): USGS GNIS (Soberanes Point 249634, Hurricane Point 255500, P… |

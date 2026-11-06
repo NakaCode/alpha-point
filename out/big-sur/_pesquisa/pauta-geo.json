@@ -1347,6 +1347,64 @@
       "credito_tela": "nenhum na tela (domínio público); na descrição, a citação 'U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2024, Protected Areas Database of the United States (PAD-US) 4.1, https://doi.org/10.5066/P96WBCHS'",
       "sistema": "WGS84, lon/lat em graus decimais (o NAD83 do Census lido como WGS84: < 2 m)",
       "validado_por_visao": true
+    },
+    {
+      "tipo": "geo",
+      "fonte": "OpenStreetMap via Overpass API (06/11/2026, base OSM de 2026-11-06T18:18:43Z) — 42 ways com ref 'CA 1' (Cabrillo Highway) entre a divisa Monterey/San Luis Obispo e Cambria",
+      "arquivo": "_media/geo/highway-1-divisa-cambria.json",
+      "licenca": "ODbL 1.0 — exige atribuição © OpenStreetMap contributors",
+      "url": "https://www.openstreetmap.org/copyright",
+      "exige_credito": true,
+      "features": 1,
+      "bbox": [
+        -121.34555,
+        35.55476,
+        -121.07998,
+        35.79576
+      ],
+      "sha256": "a8eb6935bd36b442fbde938a2734e9187706b37f706dc991aaab2e4ac96c1b1e",
+      "derivado_por": "divisa-cambria/scripts/linha_divisa_cambria.py: linemerge dos ways CA 1 (como o geo_estradas.py de 04/11), cortado no ponto final da highway-1-big-sur.json (o começo é esse ponto exato) e no ponto da estrada mais perto de Cambria (GNIS 1652683), num plano local em metros; sem simplificar",
+      "registrado": "2026-11-06",
+      "needs_ids": [
+        "highway-1-big-sur"
+      ],
+      "cena": [
+        "s49"
+      ],
+      "data_do_dado": "OSM, base de 2026-11-06T18:18:43Z",
+      "fidelidade": "42 ways CA 1 costurados numa linha só (linemerge: 1 parte; os 51 ways da resposta são highway=primary, 'Cabrillo Highway', sem pista dupla), da divisa Monterey/San Luis Obispo a Cambria; 25.37 mi (40.82 km); 807 vértices; sem simplificar. O começo é EXATAMENTE o ponto final da highway-1-big-sur.json ([-121.345545, 35.795764]): emenda de 0 m, e esse ponto fica a 0.05 m da linha do OSM de hoje (o trecho dela ao sul de 35,82 N não mudou: 391 vértices a no máximo 0.07 m); o PM 0.0 MON da Caltrans fica a 1.1 m da linha e 69 m depois do começo, pela estrada (os primeiros 71 m ainda são Monterey no CB 2025). O fim é o ponto da estrada mais perto de Cambria (GNIS 1652683), a 939 m dele. Em terra em todos os 807 vértices contra a costa do CB 2025 500k (de 16 m a 1,8 km da costa, em Cambria; mediana 192 m). NÃO CONFERIDO contra o post mile de San Luis Obispo (fora da rede liberada)",
+      "credito_tela": "© OpenStreetMap contributors (já está no crédito da base MapTiler, '© MapTiler © OpenStreetMap contributors'); openstreetmap.org/copyright na descrição",
+      "sistema": "WGS84, lon/lat em graus decimais (o OSM é WGS84)",
+      "validado_por_visao": true
+    },
+    {
+      "tipo": "geo",
+      "fonte": "USGS GNIS — Domestic Names, Califórnia (GNIS Domestic Names, Califórnia, arquivo de 02/11/2026 (zip baixado em 04/11/2026)): feature_id 1652683 (Cambria, Populated Place)",
+      "arquivo": "_media/geo/cambria.json",
+      "licenca": "Domínio público (USGS, Geographic Names Information System) — sem crédito obrigatório",
+      "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CA_Text.zip",
+      "exige_credito": false,
+      "features": 1,
+      "bbox": [
+        -121.08075,
+        35.56414,
+        -121.08075,
+        35.56414
+      ],
+      "sha256": "d25543cfe9a7b391cf964b0d33b66209d3c23fe9035bad59673ced2e9711e32f",
+      "derivado_por": "divisa-cambria/scripts/ponto_cambria.py: o ponto primário (prim_lat_dec/prim_long_dec) do GNIS, como o geo_pontos.py",
+      "registrado": "2026-11-06",
+      "needs_ids": [
+        "highway-1-big-sur"
+      ],
+      "cena": [
+        "s49"
+      ],
+      "data_do_dado": "USGS GNIS Domestic Names, Califórnia (arquivo de 02/11/2026)",
+      "fidelidade": "o ponto do GNIS (1652683); cai no condado de San Luis Obispo (CB 2025) e na North Coast CCD (TIGER/Line 2020); a 939 m ao norte do fim da highway-1-divisa-cambria, que é o ponto da estrada mais perto dele (a Highway 1 passa ao sul e a oeste das vilas de Cambria)",
+      "credito_tela": "nenhum (domínio público)",
+      "sistema": "WGS84, lon/lat em graus decimais (o NAD83 do Census lido como WGS84: < 2 m)",
+      "validado_por_visao": false
     }
   ],
   "pedidos_needs_geo": 148,
