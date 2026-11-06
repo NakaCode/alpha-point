@@ -105,6 +105,14 @@ recusou e o que ficou sem conferir, e a sessão central confere no navegador do 
   (inclui nome de lugar e o nome do card de pessoa) até **3**; o cargo do card é legenda, sem teto de
   palavras (§4). Tamanho e posição são do
   `editor-de-arte`; a contagem de palavras é sua.
+  - O rótulo de 4 palavras vale inteiro quando é nome próprio (Lucas, 07/10/2026). O nome próprio de 5 palavras ou mais, e o rótulo
+    descritivo de 4, vão ao seu report: a forma curta é decisão do Lucas (identidade.md §4.1, "Nome próprio de 4 palavras").
+- **A regra da quebra** (decisão da Sala no vídeo 4, em 29/10/2026, e de novo no vídeo 5, em 06/11/2026): nenhuma linha de texto
+  começa nem termina com "·", e na quebra o "·" sai.
+  - Vale para a quebra que você escreve (`\n`) e para a que a largura faz na cena. Quando a quebra natural cairia junto de um "·",
+    escreva a quebra no lugar dele.
+  - Ponha a regra no `_regras_de_serie` do `textos-tela.json` de cada vídeo.
+  - No vídeo 4, a s75 reprovou por isso (`out/atlantico-fundo/_tmp/setores/sala-decisoes-qualidade-3.md`, 7 e 8, e `-4.md`, 2 a 4).
 
 ## 4 · O que cada tipo de texto leva
 

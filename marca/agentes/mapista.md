@@ -124,11 +124,15 @@ necessidade.
 
 ## 3 · A base na tela: tratamento e cores (identidade.md §1, §2 e §6; tokens.css)
 
-- **Satélite escurecido**: brilho a 65 %, saturação a 70 %, na pintura da camada (`raster-brightness-max: 0.65`,
-  `raster-saturation: -0.3`), como em `out/prova-mapa/graphics/landsat-juneau.html`. Sem véu, scrim ou vinheta
-  por cima (`--degrade: none`): o ofício tem razão em que escurecimento empilhado dá quadro quase preto.
-- DECISÃO DO LUCAS PENDENTE: os 65 % contra o piso de ~0,90 do ofício (§9). Eles só foram vistos sobre Landsat,
-  nunca sobre MapTiler. Até ele decidir, use 65 %, e diga no report se algum rótulo ou relevo ficou ilegível.
+- **O tratamento C da base de satélite**, do vídeo 2 em diante (Lucas, 09/10/2026, "C, vivo"; identidade.md §6, "Tratamento
+  da base de satélite"): brilho máximo a 92 %, cor natural e contraste +25 % na pintura da camada
+  (`"raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25`). Sem véu, scrim ou vinheta por cima
+  (`--degrade: none`). O que o `qc-visual` confere a mais com ele: o laranja do protagonista e as pílulas sobre a terra mais
+  clara. O mar aberto fica quase preto, e a água de contexto usa o `--agua-base` medido depois do C (identidade §6).
+  - Só o Juneau fica com o tratamento antigo, de 65 % e 70 % (`raster-brightness-max: 0.65`, `raster-saturation: -0.3`), como em
+    `out/prova-mapa/graphics/landsat-juneau.html`. A decisão pendente dos 65 % contra o piso de ~0,90 do ofício (§9) acabou nessa
+    resposta do Lucas. (A Sala corrigiu este item em 06/11/2026: até ali ele ainda dizia 65/70 %, e as peças já usavam o C,
+    `big-sur-arte-1`, M2 e M8.)
 - **Território protagonista**: preenchimento `--territorio-cor` (`--destaque` a 85 %, para o relevo
   transparecer) e contorno `--tinta` de 6 px. O território da contraparte se preenche mais leve, em
   `--territorio-contraparte-cor` (`--contraparte` a 35 %; Lucas, 01/10/2026, identidade §6, "O território da
@@ -282,7 +286,7 @@ necessidade.
   - o link do `marca/tokens.css`;
   - a pílula de rótulo;
   - o crédito em x = 200 (lá ainda a 76 px; desde 07/10/2026 é 56: §5);
-  - o tratamento de 65 % e 70 %;
+  - o tratamento de 65 % e 70 % (só do Juneau; do vídeo 2 em diante, o tratamento C do §3);
   - o contorno escuro da fronteira;
   - o anel.
 - **Não copie a base dele**: o `baseCanal` e o `window.__BASE_CANAL` são o Landsat do teste. A base do vídeo vem
