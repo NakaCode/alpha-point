@@ -398,3 +398,16 @@ listas: 'sim nas duas' baixa os preferidos das duas e as licenças. A reserva 12
     neutra.
 - **Para o Lucas:** o "Limpar" dos filtros salvos do Shutterstock (13:32) continua com ele.
 - A aba fixa do Brave fica aberta para a próxima caça. O `caca.json` foi liberado às 17:55.
+
+## O "Limpar" dos filtros do Shutterstock (05/11/2026, 22:2x)
+
+- **O ok do Lucas,** no chat da Sala, à pergunta do "Salvar" das 13:32: "Pode limpar".
+- **A prova do perfil, refeita antes:** a extensão tinha reconectado desde a última prova (`connectedAt` 1793922274353). O `select_browser` foi
+  no `deviceId` do Brave, e a marca apareceu no histórico do perfil `Default` na 2ª procura (22:25). O `inUse` foi conferido de novo antes do
+  clique.
+- **O que a página mostrou:** numa busca nova de vídeo (`big-sur-coast`, sem parâmetro na URL), o painel dizia "Filtros aplicados" só com
+  "Somente vídeos ilimitados", com 4.706 vídeos. O conjunto salvo às 13:32 (4K, Horizontal, Somente vídeos ilimitados) já não se aplicava, e
+  a página não mostrava "Filtros salvos" em lugar nenhum.
+- **O clique:** "Limpar", no painel. A busca passou a `?disableUnlimitedFilter=true`, com 10.513 vídeos, e o botão voltou a dizer "Filtros".
+- **Depois, numa busca nova:** o "Somente vídeos ilimitados" voltou sozinho (4.706 vídeos). Parece ser o padrão do plano ilimitado da conta,
+  e não o resto do "Salvar". Nada mais se clicou, e a aba foi fechada.
