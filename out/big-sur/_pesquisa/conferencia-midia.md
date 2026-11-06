@@ -1,6 +1,10 @@
-# Conferência de mídia · `big-sur` (vídeo 5) · fluxo `midia` · lotes 1 a 4 · lotes 1 e 2 em 04/11/2026 (19:2x e 19:58), lote 3 em 05/11/2026 (04:50), lote 4 em 05/11/2026 (17:41, Brasília)
+# Conferência de mídia · `big-sur` (vídeo 5) · fluxo `midia` · lotes 1 a 5 · lotes 1 e 2 em 04/11/2026 (19:2x e 19:58), lote 3 em 05/11/2026 (04:50), lote 4 em 05/11/2026 (17:41), lote 5 em 06/11/2026 (14:43, Brasília)
 
-**O laudo do arquivo inteiro:** 46 aprovados de 63 conferidos (3 reprovados, 14 trocar, 0 pendente_lucas); 1 com algo não conferido; recebidos: 63 vereditos sobre 43 arquivos.
+**O laudo do arquivo inteiro:** 47 aprovados de 64 conferidos (3 reprovados, 14 trocar, 0 pendente_lucas); 1 com algo não conferido; recebidos: 64 vereditos sobre 44 arquivos.
+
+**O lote 5** (06/11/2026, no `art`, os consertos; tarefa `big-sur-pesquisa-4`): a foto do terraço do Nepenthe para a s52 P1, que o
+Lucas escolheu na linha do tempo. É 1 aprovado de 1, apoiado numa `excecao_lucas` (a data): entra sem ano na tela, com um aviso de foto
+antiga. O detalhe está na seção "Lote 5", logo abaixo.
 
 **O lote 4** (05/11/2026, no `art`, a pedido da Sala às 17:18): os 11 arquivos baixados na caça 1, conferidos contra as prévias (skill `cacar-no-chrome` §3, passo 5). São 11 aprovados de 11, todos com `mesmo_item: true`. Nenhum reprovado, trocar ou pendente_lucas. O detalhe está na seção "Lote 4", logo abaixo.
 
@@ -12,6 +16,138 @@
 - Mudaram os campos de data de s20, s37, s48 e s53, pelo laudo-delta.
 
 Nada foi entregue nem movido. A lista de sha256 de `out/big-sur/_media/` é a mesma antes e depois: 178 arquivos (`out/big-sur/_tmp/conferencia/pesquisa-1/_media-antes.txt` e `_media-depois.txt`, as duas com o sha256 `24a01e3e…78af6`). O JSON foi emendado por script, com o sha256 conferido antes e as cópias em `out/big-sur/_tmp/conferencia/pesquisa-1/`. Foram abertas 15 imagens: recortes nas caixas, ampliações e duas folhas.
+
+## Lote 5 · a foto do terraço do Nepenthe para a s52 P1
+
+O pedido veio do setor Pesquisa e mídia (tarefa `big-sur-pesquisa-4`, 2ª de três peças: o veredito), a mando da Sala de controle, no `art`.
+É um rascunho do acervo aberto, julgado antes do `entregar`. O Lucas comentou a s52 na linha do tempo ("Não há foto do restaurente para
+inserir?") e, à pergunta da Sala, respondeu "Usar a do terraço (Recomendado)" (`roteiros/big-sur/decisoes-lucas.md`, 06/11/2026, commit
+`ba4e009`). A escolha dele não é este veredito: a foto foi julgada pela marca, e a data passa pela exceção que a resposta dele dá.
+
+**O laudo do lote 5:** 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1.
+
+| id | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `_media/_caca/s52/acervo-livre/s52-nepenthe-terrace-page-date-2008-02-01-klotz-commons.jpg` (`95dcd3a1…`) | s52 P1 | Wikimedia Commons, Jerrye and Roy Klotz MD, CC BY-SA 3.0 | aprovado | o terraço do Nepenthe com os clientes e a costa ao fundo, como a origem nomeia (Commons, CC BY-SA 3.0, 5318 × 3564, em tela cheia a 0,72×); entra sem ano, com um aviso de foto antiga, pela escolha do Lucas de 06/11; o card fica longe das pessoas ou depois da foto |
+
+**A frase**, na fonte: "Kirk Gafill owns the Nepenthe restaurant in Big Sur." ("Kirk" 591,07 a "Sur." 593,77 no `words.json` `f6055f41…`;
+roteiro, l. 75). A janela é a da regência `e25d0e79…`, s52 › beats[0]: 591,067–594,333 s, 3,27 s. O `exige` desse beat ainda descreve o
+mapa com o ponto e o card. Como a foto e o mapa dividem os 3,27 s é da Arte e da Direção.
+
+**Os quatro critérios:**
+- **Contexto, passa.** A foto mostra o restaurante pelo terraço: mesas, cadeiras, uns 20 clientes comendo e o balcão de serviço, com a costa
+  vista do alto. Não mostra o prédio sobre a estrada, e a frase não pede o prédio: pede o restaurante. A origem nomeia o Nepenthe e a costa
+  de Big Sur, e nada no quadro contradiz.
+  - A foto é antiga e a voz está no presente. A origem não dá o ano da foto: o único que dá, `2008-02-01 12:16:04`, é o do arquivo
+    digitalizado. Pela marca, isso faria o contexto falhar ("Foto sem data na origem não entra", identidade §6).
+  - Passa pela `excecao_lucas`: a pergunta ao Lucas dizia "num slide antigo sem ano exato", e a opção que ele escolheu, "com o crédito e
+    um aviso de foto antiga".
+  - Ninguém na foto está identificado, ninguém olha para a câmera, e ela não pode ser lida como retrato de Kirk Gafill.
+- **Licença e fonte, passa.** Commons, CC BY-SA 3.0, own work, nem NC nem ND. A licença foi lida pela API hoje, às 14:14, e eu conferi a
+  resposta gravada contra o manifest, campo a campo, sem reler na rede.
+  - Os clientes são paisagem humana: de costas ou de perfil pequeno e macio, num restaurante, sem assunto sensível. A página não tem o
+    modelo `{{Personality rights}}`.
+  - A marca não tem regra para pessoa comum em foto de acervo: o §2.2 e o §3.1 da `midia.md` são dos bancos.
+  - Nenhuma marca de terceiro se lê.
+- **Técnica, passa.** 5318 × 3564 (`ffprobe`), mjpeg, yuvj420p, 18,95 MP. Enche a tela 4K sem ampliar (0,72×).
+  - Na escala da tela, a maciez é do foco e do filme, não de ampliação: o grão é fino e não há blocos visíveis a 100 %.
+  - Sem retícula e sem marca d'água nos quatro cantos.
+  - O arquivo é leve: 0,57 bit por pixel. Não medi a tabela de quantização, que fica fora das ferramentas do ofício.
+  - A versão de 2013-02-27 (5782 × 3946) é o mesmo scan com a moldura, não uma versão maior.
+- **Repetição, passa.** O sha256 e a URL são únicos no vídeo.
+  - As costas vizinhas são outras imagens: a s50 P3, a Caltrans ao sol, termina 9,4 s antes; a s53 P3, a fumaça do DVIDS, começa 15,4 s
+    depois.
+
+**Para o `redator-de-tela`:**
+- **O crédito**, todo o tempo da foto, na faixa do crédito: `Jerrye and Roy Klotz MD / Wikimedia Commons · CC BY-SA 3.0`. A 60 px (do
+  vídeo 5 em diante), quebra em duas linhas se passar de x 1.720, sem encolher.
+- **O aviso, obrigatório e sem ano.** Ele diz que a foto é antiga e não tem data, e mais nada. O sentido é o de "Older photo, date unknown";
+  a grafia é sua.
+  - Nunca "Photo from 2008": o 2008 é, pela evidência, a data da digitalização.
+  - Nunca "2008 or earlier", nem uma década ("1980s"): as roupas sugerem, mas a origem não diz.
+  - O `data_na_origem` do veredito traz o 2008, copiado da página, e diz ali mesmo que não vai à tela: vale o `aviso_na_tela`.
+- **O rótulo de lugar**, se houver: até "Nepenthe", ou "Nepenthe, Big Sur". Nunca "terrace" nem "Highway 1".
+- **Na descrição do vídeo** (o que a CC BY-SA 3.0 pede):
+  - a página do arquivo, os autores e a licença com o link (`https://creativecommons.org/licenses/by-sa/3.0/`);
+  - a mudança (por exemplo, "cropped; text added");
+  - nada que sugira endosso dos autores.
+
+**Para a Arte:**
+- **O arquivo:** o entregue pela peça 3, com este sha256 (`95dcd3a1…`). Hoje ele está em `_media/_caca/s52/acervo-livre/`, e só depois do
+  `entregar` uma cena o cita.
+- **O recorte:** no original, x 0, y 400, 5318 × 2991. Ele tira o canto arredondado da moldura do slide e o fio claro do alto, e fica a
+  costa em cima e as mesas no terço de baixo. Vai em tela cheia (REGISTRO), a 0,7221×.
+- **A escala:**
+  - o empurrão vai de 1,00 a 1,12 e termina na caixa de 4.748 px, a 0,81×, que é a recomendada;
+  - o teto deste arquivo é 1,00 (3.840 px de largura), abaixo do 1,4 da marca: o slide já é macio, e acima disso o grão vira ampliação;
+  - o empurrão vai rumo ao centro das mesas (tela x ≈ 1.600, y ≈ 1.510), nunca rumo à pessoa de pé junto ao balcão (tela x ≈ 2.600–2.850,
+    y ≈ 1.150–1.610).
+- **Sem tratamento:** sem filtro, sem correção de cor, sem upscale, sem véu nem vinheta. Se a cor for tratada, isso também vai à
+  descrição.
+- **A faixa do crédito** cai sobre as costas das cadeiras brancas: o contraste se mede no portão (`portao-mapa rodape`). O canto de
+  400 × 400 cai em folhagem e no gerânio.
+- **O card "KIRK GAFILL · Owner, Nepenthe"**, sem retrato:
+  - **o preferido:** não dividir o quadro com esta foto. O card entra no P2 (594,333 s), na mesa, ao lado da folha da Caltrans, onde a voz
+    diz "he said". No P1 ficam a foto, o rótulo, o aviso e o crédito;
+  - **se a Direção o quiser no P1:** só no alto da metade esquerda (tela x 200–1.900, y 160–900), longe de toda pessoa (as cabeças começam
+    em y ≈ 1.150). Ele entra em "Kirk" (591,07 s), sem seta, linha ou ponta, e nunca na metade de baixo nem na coluna da direita
+    (x ≥ 2.300), onde estão o guarda-sol, o balcão e a pessoa de pé com a criança;
+  - **nunca** a foto no quadro do retrato do card, ou impressa ao lado dele como se fosse o retrato;
+  - o card antes da foto, dentro do P1, não cabe: com os 2,0 s de bloco desde "Kirk", a foto ficaria 1,26 s, abaixo do piso de 1,5 s.
+
+### Para o Lucas pesar (lote 5)
+
+Nada: nenhum `pendente_lucas`. O aprovado se apoia na resposta dele de 06/11, gravada como `excecao_lucas`. Ela cobre este sha256, a
+falta do ano e a forma do aviso.
+
+### Para reconferir no navegador do app (lote 5)
+
+Nada: nenhum critério ficou `nao_conferido`, e nenhuma página foi aberta.
+
+### Para trocar (lote 5)
+
+Nada. Um aviso do conjunto da cena, para o `regente-de-imagem` e o `montador`: o `exige` de s52 › beats[0] ainda é o mapa com o ponto e
+o card, e a regência e o conceito precisam dizer como a foto e o mapa dividem o beat. Com o card no P2, o `exige` de beats[1] também muda.
+
+### Para a Sala (lote 5; não reprova)
+
+- **A leitura da exceção.** Li a resposta do Lucas como resposta direta à pergunta sobre este arquivo (ofício §6.1). A pergunta dizia que
+  ele não tem ano exato, e a opção propunha o aviso de foto antiga. Se a Sala ler que ela não cobre a regra da data (identidade §6), o
+  veredito vira `pendente_lucas`, com a pergunta: "A foto do terraço não tem o ano na origem, e a marca não deixa entrar foto sem data. Ela
+  entra com um aviso 'foto antiga, sem data', sem ano na tela?".
+- **A procedência diz "sem a moldura do slide".** Sobram o canto arredondado no alto à esquerda (até y ≈ 60) e um fio claro nas linhas 0
+  a 5. O recorte os tira, e é um recado para o `pesquisa-imagens`, não uma falha da entrega.
+- **O `data_na_origem` traz o 2008**, porque é o que a origem escreve. Quem o lê por máquina (o `pacote-cena.py` copia todo campo) recebe
+  também o `aviso_na_tela`, que diz que nenhum ano vai à tela.
+
+### Desvios do contrato e divergências (lote 5)
+
+- **O JSON (447 KB) e o `.md` foram emendados por script**, de arquivo (`python -X utf8 -B`). O script conferiu o sha256 de antes, a volta
+  do formato byte a byte e a contagem do laudo. Os scripts e as cópias de antes estão em `out/big-sur/_tmp/conferencia/s52-terraco/`
+  (`scripts/` e `antes/`). O contrato §5 nomeia só o JSON para a emenda; a Sala pediu os scripts nessa pasta.
+- **O olhar não foi de olhos de todo novos.** Olhei antes de ler o relato e o manifest, mas o pedido da Sala já descrevia o terraço, os
+  clientes e a pessoa de pé junto ao balcão.
+- **O que a CC BY-SA pede** saiu da leitura do código legal da 3.0 IGO feita pelo canal em 27/09/2026 (`marca/acervos/2-outros-governos.md`,
+  item 2, e `4-video.md`). Nessas cláusulas, o texto é o da 3.0. O da 3.0 Unported não foi relido na rede: é leitura da licença, não
+  parecer de advogado.
+- Entre a marca e o ofício, nenhuma divergência. A exceção da data é do Lucas, e está gravada como tal.
+
+### Imagens e rede (lote 5)
+
+Abri 5 imagens, todas cópias em `out/big-sur/_tmp/conferencia/s52-terraco/`; o original de 19 MP não foi aberto como imagem:
+- `v1-inteira-1920.jpg`, a foto inteira, reduzida;
+- `v2-cantos.jpg`, os quatro cantos;
+- `v3-100pct-pessoas-balcao.jpg`, as pessoas e o balcão a 100 %;
+- `v4-tela4k-1para1-centro-direita.jpg`, o recorte na escala da tela 4K, a 1:1;
+- `v5-recorte16x9-com-areas.jpg`, o recorte 16:9 com a área segura, a faixa do crédito, o canto e a zona do card.
+
+As bordas se mediram por números, sem abrir imagem (`signalstats` do ffmpeg). Não fiz nenhum pedido de rede.
+
+### `_media` (lote 5)
+
+O sha256 dos 263 arquivos de `out/big-sur/_media/` deu as listas iguais antes (14:27) e depois (14:45), com o `diff` vazio
+(`out/big-sur/_tmp/conferencia/s52-terraco/_media-antes.txt` e `_media-depois.txt`, as duas `3d6b1b61…`). A de antes é igual ao retrato do
+setor (`out/big-sur/_tmp/setores/p4/media-antes-conferente.sha256`). A conferência não escreveu, não moveu e não apagou nada em `_media/`.
 
 ## Lote 4 · a caça 1: os 11 arquivos baixados, contra as prévias
 
