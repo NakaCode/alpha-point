@@ -18,8 +18,9 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s47 (507,800 → 534,400
 
   A METÁFORA (conceito): a faixa que se reparte. O fio branco real da Highway 1 (OSM, geometria lida) engrossa em "run" e se DESENROLA do
   mapa numa faixa horizontal (cada ponto do fio vai ao lugar proporcional ao seu comprimento ao longo da estrada: Carmel à esquerda, a
-  divisa à direita), o mapa escurece a 35 % e fica como base declarada, em deriva. Sobre a faixa: a barra dos visitantes e a seta que
-  dobra (P2), os carrinhos que param (P3), as 100 células e as 85 reservadas (P4), as 15 casinhas no que sobra (P5).
+  divisa à direita), o mapa escurece a 35 % e fica como base declarada, em deriva. Sobre a faixa: a barra curta dos visitantes e a seta
+  que a dobra, à parte, sem relação de comprimento com a faixa (P2; T7/A12), os carrinhos que param (P3), as 100 células e as 85
+  reservadas (P4), as 15 casinhas no que sobra (P5).
 
   A CÂMERA (window.__cameraAt): P1 abre no distrito de perto, centro [-121.70, 36.246], zoom 11,00 → 11,08 (push-in até 3,0 s); de 3,0 a
     25,1 a base ANDA em deriva de ≤ 1 % (zoom 11,08 → 11,094: escala 1,0098; RG-08) sob a faixa, sem mover faixa nem pílula (screen-space);
@@ -32,10 +33,16 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s47 (507,800 → 534,400
     enquanto o mapa escurece 1 → 0,35 (2,72–3,7); 3,7–4,3: a barra branca de 60 px dissolve na FAIXA (contorno de 6 px --tinta, 3000 × 120,
     fundo --tinta a 10 %).
   b1 (3,7–11,867) "In 1986 … three million (6,045) … double (9,035)": 6,0 ([259]): a pílula "≈ 2.9 MILLION A YEAR · 1986" (cota, 128 px) em
-    (400, 660) e a BARRA dos visitantes acima dela (y 560–620, 1.450 px = metade da faixa, --tinta a 40 % com contorno), crescendo em 0,6 s;
-    6,0 ([264]): "Source: Monterey County, Big Sur Coast Land Use Plan, 1986" (crédito, 60 px); 9,0 ([260]): a SETA DUPLA cresce do fim da
-    barra até o dobro (x 1.850 → 3.300, 0,6 s) e "EXPECTED TO DOUBLE IN 20–25 YEARS" (cota) à direita, em (860–3400, 880). As duas pílulas,
-    a barra e a seta saem 11,567–11,867.
+    (400, 660) e a BARRA dos visitantes acima dela (y 560–620, --tinta a 40 % com contorno), crescendo em 0,6 s; 6,0 ([264]): "Source:
+    Monterey County, Big Sur Coast Land Use Plan, 1986" (crédito, 60 px); 9,0 ([260]): a SETA DUPLA cresce do fim da barra até o DOBRO
+    dela (0,6 s) e "EXPECTED TO DOUBLE IN 20–25 YEARS" (cota) abaixo da [259], alinhada à esquerda em x 400, y 880. As duas pílulas, a
+    barra e a seta saem 11,567–11,867.
+    T7 e A12 (VD-002; sala-decisoes-qualidade-1 e sala-lote-consertos; big-sur-arte-2, 06/11/2026): a barra PERDE A RELAÇÃO DE
+    COMPRIMENTO com a faixa, que nenhuma fonte dá (o verificador: não há número para ela). Era 1.450 px = metade da faixa, e a seta a
+    levava a 2.900 ≈ a faixa inteira (o dobro "enchia a estrada"). Agora é uma barra CURTA à parte, 700 px (x 400 → 1.100), que a seta
+    dobra para 1.400 (x 1.100 → 1.800): 1.400 px contra os 3.000 da faixa, sem razão que se leia (nem 1/2, nem 1/1), e a pílula [260]
+    deixou a direita (x 3.400, sob a seta longa) e desceu para a coluna da esquerda, sob a [259] (y 880; a [259] termina em y 836).
+    O conserto do laudo (qc/s47.laudo.json, "correção pedida (factual)": "uma barra curta à parte que dobra para uma barra do dobro").
   b2 (11,867–15,133) "Traffic jams (12,32) on Highway 1 were already a problem": 28 carrinhos em traço de engenheiro (5 px --tinta, sem
     preenchimento) entram pela esquerda da faixa, enchem-na e PARAM em "jams" (12,317: ease-out, velocidade zero); ficam parados; saem
     14,833–15,133.
@@ -257,9 +264,11 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s47 (507,800 → 534,400
     plano: { entra: 25.1, d: 0.8 },
     teto: { t0: 25.1, d: 0.6 },                              // a passagem alto → teto z10 (+ a água escura): a fusão das duas camadas
     p29: { t0: 6.0, t1: 11.867, l: 400, tp: 660 },           // [259] "three million"
-    barra: { t0: 6.0, d: 0.6, x: 400, y: 560, w: 1450, h: 60 },
-    seta: { t0: 9.0, d: 0.6, x0: 1850, x1: 3300, y: 590 },   // "double"
-    pDup: { t0: 9.0, t1: 11.867, r: 3400, tp: 880 },         // [260]
+    barra: { t0: 6.0, d: 0.6, x: 400, y: 560, w: 700, h: 60 },   // T7/A12 (VD-002, big-sur-arte-2): barra CURTA, à parte, sem relação de
+                                                                  // comprimento com a faixa (era 1.450 = metade da faixa, que nenhuma fonte dá)
+    seta: { t0: 9.0, d: 0.6, x0: 1100, x1: 1800, y: 590 },   // "double": do fim da barra ao DOBRO dela (700 → 1.400 px; era 1.850 → 3.300)
+    pDup: { t0: 9.0, t1: 11.867, l: 400, tp: 880 },          // [260]: alinhada à esquerda com a barra e a [259] (era à direita, em x 3.400,
+                                                              // sob a seta longa: com a seta curta, ficaria solta à direita)
     carros: { t0: 11.867, dEntra: 0.45, sai: 15.133, n: 28, passo: 106, x0: 436, desloc: 600 },   // "jams" 12,32: param em 12,317
     celulas: { t0: 15.133, d: 0.8 },                         // "So": a faixa vira 100 células (as divisórias se revelam em 0,8 s)
     cheias: { t0: 16.275, d: 0.7, n: 85 },                   // "most": as 85 células enchem em 0,7 s
@@ -620,7 +629,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s47 (507,800 → 534,400
       }
     }
     var A = CENA.p29; poe("p29", A.l, A.tp, t, A.t0, A.t1);
-    var D = CENA.pDup; poe("pDup", D.r - Wd("pDup"), D.tp, t, D.t0, D.t1);
+    var D = CENA.pDup; poe("pDup", D.l, D.tp, t, D.t0, D.t1);
   }
 
   // ── b2: os carrinhos entram pela esquerda, enchem a faixa e param em "jams" ──

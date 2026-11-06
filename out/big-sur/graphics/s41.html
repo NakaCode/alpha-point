@@ -16,11 +16,14 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s41, 427,500 → 438,833 s do mas
      carrinhos parados nos mirantes, com os leques, e os três ícones (o mesmo código da s40, no último instante dela); só o crédito
      de mapa. A deriva continua na MESMA velocidade da s40 (−0,0020° lng/s, −0,0008° lat/s, +0,0025 de zoom/s) até o fim: a
      emenda não dá tranco, e o mapa nunca para (2 % de escala na cena; 0,99 % no P2, ≤ 1 %: RG-08).
+     big-sur-arte-2: os carrinhos param NO mirante (o código novo da s40, copiado igual: o carro a 1,1×, o leque a 6 px, Bixby Creek
+     Turnout e Hurricane Point afastados até um vão de 8 px), e a pose casada continua a do último instante da s40.
   b0 (0–5,633) os carrinhos, os leques e os ícones saem em 300 ms; a LINHA DO TEMPO entra em 0,167 com 1880s, 1919, 1937 e 1965
      (o tique de 1934 sem rótulo: VP-A-311); em "first" (3,5) FIRST STATE SCENIC / HIGHWAY · 1965 pousa ao lado do fio, a nordeste,
      com a fonte; em "scenic" (4,315) o fio pulsa uma vez (6 → 12 → 6 px em 0,9 s); a pílula e a linha do tempo saem até 5,6.
-  b1 (5,633–11,333) DADO sobre o mapa escurecido a 40 % (DECLARADO: o véu --fundo a 60 %, em 0,5 s; a base continua em deriva
-     por baixo: a deriva não move a grade nem a pílula); 100 carrinhos em traço de engenheiro numa grade de 10 × 10 à direita
+  b1 (5,633–11,333) DADO sobre o mapa, SEM VÉU (big-sur-arte-2, A3 da Sala: a identidade diz "O MAPA e o REGISTRO em tela cheia
+     continuam sem degradê, véu ou vinheta"; a regra da marca vence o pedido do conceito e da regência): o dado se lê pela própria
+     pílula e pelo halo escuro do traço; a base continua em deriva por baixo (a deriva não move a grade nem a pílula); 100 carrinhos em traço de engenheiro numa grade de 10 × 10 à direita
      (x 2200–3400, y 400–1600) acendem fileira a fileira (5,9–7,1); em "recreational" (10,02) 95 ficam em --tinta e 5 (os últimos
      da última fileira) apagam a 22 % em 0,4 s; PEAK SUMMER: / 95% RECREATIONAL / TRIPS · 1986 PLAN embaixo à esquerda, no mar (a Highway 1 fica a leste dela), em "nearly" (8,167).
      DISPENSA do registro (regência): é uma estimativa do condado, não há registro contado carro a carro.
@@ -46,8 +49,6 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s41, 427,500 → 438,833 s do mas
   #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
     font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
   #map { position: absolute; inset: 0; }
-  /* o véu do mapa sob o DADO (s41 P2): --fundo a 60 %, o mapa a 40 % */
-  #veu { position: absolute; inset: 0; z-index: 20; background: var(--fundo); opacity: 0; visibility: hidden; pointer-events: none; }
   svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; overflow: visible; }
   #rotulos { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
   /* RÓTULO (identidade §3 e §4.1): pílula --rotulo, cantos 12, respiro 24 × 40, Inter 700 a 128 px em --tinta */
@@ -74,9 +75,9 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s41, 427,500 → 438,833 s do mas
   /* o traço de engenheiro (identidade §5): --tinta 6 px, sem preenchimento, com o halo escuro por baixo para ler no satélite */
   .tr-sob { fill: none; stroke: var(--rotulo); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
   .tr { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
-  /* o leque de visada (o CONE DE VISÃO, peça de marca): 4 px em --tinta a 60 % */
-  .leque-sob { fill: none; stroke: var(--rotulo); stroke-width: 10; stroke-linecap: round; opacity: 0.6; }
-  .leque { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; opacity: 0.6; }
+  /* o leque de visada (o CONE DE VISÃO, peça de marca): 6 px em --tinta a 60 % (o traço do canal; era 4: big-sur-arte-2) */
+  .leque-sob { fill: none; stroke: var(--rotulo); stroke-width: 12; stroke-linecap: round; opacity: 0.6; }
+  .leque { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; opacity: 0.6; }
   /* a LINHA DO TEMPO (peça de marca): 6 px em --tinta em y 1700, de x 200 a 3400, com o halo escuro */
   .tl-sob { fill: none; stroke: var(--rotulo); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
   .tl { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
@@ -85,7 +86,6 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s41, 427,500 → 438,833 s do mas
 <body>
 <div id="palco">
   <div id="map"></div>
-  <div id="veu"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
     <g id="tl" opacity="0"></g>
   </svg>
@@ -118,7 +118,6 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s41, 427,500 → 438,833 s do mas
     perfil: "maptiler",
     sai40: [0, 0.3],          // os carrinhos, os leques e os ícones da s40 saem em 300 ms
     pulso: [4.315, 0.9],      // "scenic"
-    veu: [5.633, 0.5, 0.6],   // o mapa a 40 %
     grade: [5.9, 1.2],        // as fileiras acendem
     apagam: [10.02, 0.4],     // "recreational"
     fontes: ["base", "mar", "hwy"]
@@ -323,7 +322,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s41, 427,500 → 438,833 s do mas
   });
   MIR.sort(function (a, b) { return a.km - b.km; });   // de Carmel para o sul
   MIR.forEach(function (m, k) { m.atraso = 0.06 * k; });
-  var CAR = { entra: 12.575, anda: 0.75, encosta: 13.33, encostaDur: 0.3, encostaPx: 72, leque: 13.62, lequeDur: 0.4, lequePx: 120, esc: 0.8 };
+  var CAR = { entra: 12.575, anda: 0.75, encosta: 13.33, encostaDur: 0.3, encostaPx: 72, sobreFioPx: 30, folgaPx: 11, vaoPx: 8, leque: 13.62,
+    lequeDur: 0.4, lequePx: 120, esc: 1.1 };
   var CARRO = [["M",-40,8],["L",-40,-6],["L",-30,-10],["L",-18,-24],["L",14,-24],["L",26,-10],["L",40,-6],["L",40,8],["Z"],
     ["M",-26,-10],["L",26,-10],
     ["M",-30,8],["A",8,8,0,1,0,-14,8],["A",8,8,0,1,0,-30,8],["M",14,8],["A",8,8,0,1,0,30,8],["A",8,8,0,1,0,14,8]];
@@ -336,16 +336,42 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s41, 427,500 → 438,833 s do mas
     });
     return o;
   }
-  // onde está cada carrinho no tempo tc DA s40 (a s41 o chama com o último instante da s40)
+  // onde está cada carrinho no tempo tc DA s40 (a s41 o chama com o último instante da s40). O carro PARA NO MIRANTE (big-sur-arte-2,
+  // o espectador r1, lote 14): anda até o mirante, no máximo encostaPx (antes ele andava sempre 72 px e passava 63 a 72 px do mirante,
+  // sobre o mar). O mirante que fica sobre o fio (d < sobreFioPx: Soberanes, Garrapata, Bixby e Hurricane, a 0,3–9 px da estrada no
+  // zoom 11) faz o carro encostar do lado do MAR, pela normal da estrada na tela, com o halo do carro tocando o fio branco (folgaPx = a
+  // meia-largura do fio, 3, mais o halo do carro, 8): o fio fica inteiro, e o leque segue sobre o mar
   function carroEm(m, tc) {
     var u = eio(seg(tc, CAR.entra + m.atraso, m.praia ? 1.0 : CAR.anda)), p, q;
     if (m.praia) { p = map.project(pontoEm(SYC, SYC_L, SYC_L[SYC_L.length - 1] * u)); return { x: p.x, y: p.y }; }
     p = map.project(pontoEm(HWY_C, HWY_L, m.km - 3.0 * (1 - u)));
-    var w = eo(seg(tc, CAR.encosta + m.atraso, CAR.encostaDur)), alvo = map.project(m.p), dx = alvo.x - p.x, dy = alvo.y - p.y, d = Math.hypot(dx, dy);
-    if (d < 6) { dx = -1; dy = 0; d = 1; }
-    var k = Math.min(CAR.encostaPx, Math.max(d, CAR.encostaPx)) / d;
-    return { x: p.x + dx * k * w, y: p.y + dy * k * w };
+    var w = eo(seg(tc, CAR.encosta + m.atraso, CAR.encostaDur)), alvo = map.project(m.p), dx = alvo.x - p.x, dy = alvo.y - p.y, d = Math.hypot(dx, dy), ox, oy;
+    if (d < CAR.sobreFioPx) {
+      var a = map.project(pontoEm(HWY_C, HWY_L, m.km - 0.4)), b = map.project(pontoEm(HWY_C, HWY_L, m.km + 0.4));
+      var tx = b.x - a.x, ty = b.y - a.y, n = Math.hypot(tx, ty) || 1, nx = -ty / n, ny = tx / n;
+      if (nx > 0) { nx = -nx; ny = -ny; }   // para o lado do mar (oeste)
+      var s = CAR.esc, h = Math.abs(nx) * 40 * s + Math.abs(ny) * 20 * s;   // a meia-caixa do carro (80 × 40 no desenho) na direção da normal
+      var e = h + CAR.folgaPx + (14 + 4 * s) * ny;   // o centro da caixa fica (0, −14 − 4s) do ponto: o halo encosta no fio
+      ox = nx * e; oy = ny * e;
+    } else { var k = Math.min(CAR.encostaPx, d) / d; ox = dx * k; oy = dy * k; }
+    return { x: p.x + ox * w, y: p.y + oy * w };
   }
+  // todos os carrinhos no tempo tc: dois que se tocariam (Bixby Creek Turnout e Hurricane Point, a ~30 px um do outro no zoom 11) se
+  // afastam igualmente na tela, pelo eixo que pede menos, até o vão de vaoPx entre as caixas com o halo (contínuo: só o que falta)
+  function posicoesCarros(tc) {
+    var P = MIR.map(function (m) { return carroEm(m, tc); }), s = CAR.esc, hw = 40 * s + 8, hh = 20 * s + 8;
+    for (var i = 1; i < P.length; i++) {
+      if (MIR[i].praia || MIR[i - 1].praia) continue;
+      var A = P[i - 1], B = P[i], dx = B.x - A.x, dy = B.y - A.y;
+      var fx = 2 * hw + CAR.vaoPx - Math.abs(dx), fy = 2 * hh + CAR.vaoPx - Math.abs(dy);
+      if (fx <= 0 || fy <= 0) continue;
+      if (fy <= fx) { var sy = dy >= 0 ? 1 : -1; A.y -= sy * fy / 2; B.y += sy * fy / 2; }
+      else { var sx = dx >= 0 ? 1 : -1; A.x -= sx * fx / 2; B.x += sx * fx / 2; }
+    }
+    return P;
+  }
+  window.__CAR = CAR;   // conferência (big-sur-arte-2, N5): onde cada carrinho para, no tempo tc da s40
+  window.__carrosEm = function (tc) { var P = posicoesCarros(tc); return MIR.map(function (m, i) { return { nome: m.nome, km: +m.km.toFixed(3), x: +P[i].x.toFixed(1), y: +P[i].y.toFixed(1) }; }); };
   function lequeD(x, y, L) {
     var o = "";
     [-16, 0, 16].forEach(function (a) { var r = (180 + a) * Math.PI / 180; o += "M" + f1(x) + "," + f1(y) + " L" + f1(x + Math.cos(r) * L) + "," + f1(y - Math.sin(r) * L); });
@@ -386,12 +412,12 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s41, 427,500 → 438,833 s do mas
   }
   // desenha carros, leques e ícones: tc é o tempo na s40; vis multiplica a opacidade (a saída de 300 ms na s41)
   function desenharCarrosEIcones(tc, vis) {
-    var dC = "", dL = "", vc = 0, vl = 0;
-    MIR.forEach(function (m) {
+    var dC = "", dL = "", vc = 0, vl = 0, PC = posicoesCarros(tc);
+    MIR.forEach(function (m, i) {
       var a = eo(seg(tc, CAR.entra + m.atraso, 0.2)); if (a <= 0) return; vc = Math.max(vc, a);
-      var c = carroEm(m, tc); dC += carroD(c.x, c.y - 14, CAR.esc);
+      var c = PC[i]; dC += carroD(c.x, c.y - 14, CAR.esc);
       var L = CAR.lequePx * eo(seg(tc, CAR.leque + m.atraso, CAR.lequeDur));
-      if (L > 1) { dL += lequeD(c.x - 30, c.y - 14, L); vl = 1; }
+      if (L > 1) { dL += lequeD(c.x - 37.5 * CAR.esc, c.y - 14, L); vl = 1; }
     });
     var gc = E("carros"), gl = E("leques");
     if (gc) { gc.setAttribute("opacity", (vc * vis).toFixed(3)); E("carSob").setAttribute("d", dC); E("carTr").setAttribute("d", dC); }
@@ -535,8 +561,6 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s41, 427,500 → 438,833 s do mas
     desenharCarrosEIcones(14.7, 1 - seg(t, CENA.sai40[0], CENA.sai40[1]));   // o último instante da s40
     var u = seg(t, CENA.pulso[0], CENA.pulso[1]), p = (u > 0 && u < 1) ? Math.sin(Math.PI * u) : 0;
     pint("hwy", "line-width", 6 + 6 * p); pint("hwy-sob", "line-width", 14 + 10 * p);
-    var veu = E("veu"), vv = CENA.veu[2] * eio(seg(t, CENA.veu[0], CENA.veu[1]));
-    if (veu) { veu.style.opacity = vv.toFixed(3); veu.style.visibility = vv > 0 ? "visible" : "hidden"; }
     var g = E("grade"), rr = E("revelaRet");
     var vg = t >= CENA.grade[0] ? 1 : 0, h = 1320 * seg(t, CENA.grade[0], CENA.grade[1]);
     if (g) g.setAttribute("opacity", String(vg));

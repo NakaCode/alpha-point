@@ -15,6 +15,10 @@
   mapa-base.html da pré-v1) e foi reescrita aqui; o corpo do mapa (a rede com nova tentativa, o fail-closed, o relevo com o centro na
   cota 0 e a textura das linhas refeita por quadro, a água escura) segue a s08 deste vídeo (mapista, lote M1). Nenhum hex.
 
+  CONSERTO big-sur-arte-2 (lote O1, 06/11/2026; sala-lote-consertos.md, s19: "T e E, o #citaDono perde o '·' do começo"): o textos-tela
+  vigente é o d6e57810… ([95] "“DROP PRECIPITOUSLY TO THE SEA”\nMONTEREY COUNTY PLAN (1986)", t0 16,033 como antes; a regra da quebra
+  T1: nenhuma linha começa nem termina com "·"). Só o texto do #citaDono mudou; nenhum outro texto, tempo, desenho ou câmera.
+
   O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json 71405fb4… › s19, [82]–[95], abaixo, cada um no seu tempo); os BEATS
   (regencia.json e25d0e79… › s19 › beats[0..3]); o conceito (s19: "a casinha sem chão … a casinha fica pendurada na pendente"; o arco:
   O PERFIL DA ENCOSTA, o corte visto do sul, o MAR SEMPRE À ESQUERDA, a crista à direita, a Highway 1 como prateleira a um terço da
@@ -45,7 +49,7 @@
     do mar à crista (12,9–13,8) e a COTA abre do nível do mar à crista (13,4–13,9): a linha de cota sobre o mar (x 560), a de chamada
     tracejada da crista até ela, "≈ 5,200 FT" ([94], eixo) junto dela; a casinha, onde parou em P1 (o 3º ponto), PENDURADA na
     encosta sobre a falésia; "Illustrative · vertical scale exaggerated" ([92]) e "Highway 1" ([93]) em 12,9. Em "drop" a FALA
-    CITADA ([95], 16,033): "“DROP PRECIPITOUSLY TO THE SEA”" a 280 px (heroi, --fs-fala: o alvo; o piso é 260) e "· MONTEREY COUNTY PLAN (1986)" logo abaixo, a 128 px
+    CITADA ([95], 16,033): "“DROP PRECIPITOUSLY TO THE SEA”" a 280 px (heroi, --fs-fala: o alvo; o piso é 260) e "MONTEREY COUNTY PLAN (1986)" na linha de baixo, sem o "·" (T1), a 128 px
     (rotulo: a mesma frase do redator, as mesmas palavras e a mesma ordem, em dois corpos: a citação e o dono); a encosta, da crista
     ao mar, ENGROSSA de cima para baixo em "drop precipitously" (16,08–17,25). 18,15–18,4 REPOUSO.
     "Source: Monterey County, Big Sur Coast Land Use Plan, 1986" ([91]) de 11,1 a 18,4.
@@ -95,8 +99,10 @@
   A CÂMERA DO MAPA (window.__cameraAt): primeiro quadro {center [-121.640, 36.205], zoom 11.20, bearing 48, pitch 55}; último
     {center [-121.468, 36.022], zoom 11.96, bearing 56.4, pitch 55}. Zoom de 11,20 a 11,96, pitch 55 o tempo todo, nunca abaixo de
     10,5; o relevo 3D de 4,5 a 12,9. O SATÉLITE NUM NÍVEL SÓ (conserto da Sala, 05/11/2026, 19:5x; pedido-comum, "O mapa"): a fonte
-    base tem maxzoom = Math.min(P.base.maxzoom, BASE_MAXZ = 10), o TETO. A s19 não cabe na exceção (que pede pitch 0 e zoom ≥ 10,5 em
-    todo quadro): o z10 é ampliado até ~3,9× (2^1,96) no fim de P3.
+    base tem maxzoom = Math.min(P.base.maxzoom, BASE_MAXZ = 10), o TETO. Pela regra POR TRECHO DE CÂMERA (a Sala, 05/11/2026, 20:1x):
+    UM trecho, 4,5–12,9, zoom 11,20–11,96, pitch 55, relevo 3D; fica com o teto pela regra 1 (3D cujo chão visível, até o horizonte,
+    pede tile do z10 ou abaixo; a prova da regra 2, o menor z na tela ≥ 11, o horizonte não deixa). Passagem entre níveis: nenhuma
+    (o mapa entra e sai por corte seco). O z10 é ampliado até ~3,9× (2^1,96) no fim de P3.
 
   CRÉDITOS (60 px, pílula --rotulo de altura de uma linha, padding 3 px 20 px, texto --sec, de x 200 até antes de x 1720, de
     bottom 18 para cima, 66 px por linha): "© MapTiler © OpenStreetMap contributors" ([84], data-qc-credito="mapa") inteiro do 1º ao
@@ -249,7 +255,7 @@
   <div class="legenda" id="legP1" data-qc-papel="eixo">Illustrative · vertical scale exaggerated</div>
   <div class="legenda pil" id="legMapa" data-qc-papel="eixo">Vertical exaggeration 1.5×</div>
   <div class="legenda" id="legP4" data-qc-papel="eixo">Illustrative · vertical scale exaggerated</div>
-  <div id="cita"><span id="citaQ" data-qc-papel="heroi">“DROP PRECIPITOUSLY<br>TO THE SEA”</span><span id="citaDono" data-qc-papel="rotulo">· MONTEREY COUNTY PLAN (1986)</span></div>
+  <div id="cita"><span id="citaQ" data-qc-papel="heroi">“DROP PRECIPITOUSLY<br>TO THE SEA”</span><span id="citaDono" data-qc-papel="rotulo">MONTEREY COUNTY PLAN (1986)</span></div>
 
   <div class="cred" id="credMapa" data-qc-papel="credito" data-qc-credito="mapa"></div>
   <div class="cred" id="credFoto" data-qc-papel="credito">Natecation / Wikimedia Commons · CC BY-SA 4.0</div>

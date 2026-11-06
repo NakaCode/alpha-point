@@ -18,7 +18,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s55 COM A s56 FUNDIDA (r
   MODO: 2D (ofício §5: a grade é contagem dentro do polígono, leitura estável; nada argumenta com altura).
   A BASE: MapTiler satellite-v2 (canal.json › mapa.perfil), tratamento C (0,92 / 0 / +0,25), SEM relevo.
   O SATÉLITE NUM NÍVEL SÓ (a Sala, 20:1x, por trecho): UM trecho só, o largo: a cena abre em P-COSTA (zoom 10,3452 < 10,5) e aproxima
-    sem corte até P-DISTRITO e além (zoom 10,3452 → 11,023, pitch 0 do 1º ao último quadro): BASE_MAXZ = 10, o teto, a cena inteira.
+    sem corte até P-DISTRITO e além (zoom 10,3452 → 11,050 desde a arte-2, pitch 0 do 1º ao último quadro): BASE_MAXZ = 10, o teto, a
+    cena inteira.
     Nenhuma passagem (a ida à mesa esconderia uma, mas a grade é a mesma antes e depois dela e não deve trocar de tom).
   O QUE A CENA FAZ (t desta cena; 0 = 646,967 s):
     · b0 (0–2,7): o 1º quadro é EXATAMENTE P-COSTA (center [-121,59, 36,14], zoom 10,3452, 0°, 0°), o último da s53: o fio branco da
@@ -57,6 +58,15 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s55 COM A s56 FUNDIDA (r
       (x 3040–3300, 93,0 %) em --destaque em 38,067, com "CENSUS DISTRICT ≈ 93% (WIDE MARGINS)" [330] acima dela; a da Califórnia
       (x 2600–2860, 32,6 %) em --contraparte em 'California' (38,44), com "CALIFORNIA" [331] acima dela, que vira "CALIFORNIA ≈ 33%" [332]
       em 'about a third' (40,8; o mesmo bloco s55-ca, troca seca); "ACS 2020–2024" [333] sob as duas. O condado fica fora (DF-04).
+  A ARTE-2 (mapista, lote N7, tarefa big-sur-arte-2, 06/11/2026; textos-tela d6e57810, a lista da Sala, o espectador r1 lote 24):
+    · T3: o título das barras [333] é "SHARE OF EMPTY HOMES FOR SEASONAL USE" / "ACS 2020–2024", em TRÊS linhas ("SHARE OF EMPTY HOMES" /
+      "FOR SEASONAL USE" / "ACS 2020–2024", a 84 px, papel eixo), embaixo à esquerda (x 200–~1.277, base em y 1.800), onde a cota [328]
+      ficou até 34,067: numa linha ele mede ~1.844 px e não cabe sob as barras sem passar de x 3.640; em duas, passaria a ~38 px do
+      contorno do distrito; em três, fica a ~490 px dele e a ~80 px do crédito da ACS.
+    · E (b6): em 'empty' (28,423) os 542 quadradinhos OCUPADOS (o fundo e o laranja) baixam a 35 % em 0,5 s e ficam assim até o fim; os 345
+      contornos ficam inteiros, e os calendários de 30,6 caem sobre eles. De 24,233 a 34,067 a deriva sobe ao teto da regência (VC-07: +0,0053
+      nível/s, ~1,48 % em 4 s; antes +0,0028, ~0,8 %), a mesma aproximação ao meio do distrito: ela sobe sob a mesa (23,0–24,0) e volta a
+      +0,0028 sob o véu (34,067–34,567). O último quadro passa a zoom 11,0498 (antes 11,0228). O resto da cena não muda.
   A GRADE DOS 887 (a mesma da s60, M12): a grade quadrada regular no plano local a partir de 1,0 km, só dentro do polígono real (o
     excedente sai em passo regular): espaço de 0,860 km; a semente fixa 887345 (mulberry32, embaralhamento de Fisher–Yates): as 345
     vazias e, delas, as 320 com o calendário são as mesmas da s60, casa por casa. Aqui o quadradinho tem 0,80 do espaço (~21 px).
@@ -123,6 +133,11 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s55 COM A s56 FUNDIDA (r
   #cSeas { font-size: 112px; }   /* acima do piso de 104: a 128 a pílula de três linhas encostaria no distrito */
   #cSeas .l2, #cSeas .l3 { padding-top: 20px; }
   #eixoACS { left: 0; top: 0; z-index: 41; }
+  /* N7 (arte-2, T3): o título das barras [333] em três linhas ("SHARE OF EMPTY HOMES" / "FOR SEASONAL USE" / "ACS 2020–2024"; o "·" escondido
+     no lugar da quebra da fonte), embaixo à esquerda, onde a cota [328] ficou até 34,067: numa linha a 84 px ele mede ~1.844 px e não cabe
+     sob as barras (x 2.600–3.300) sem passar de x 3.640; em duas, a 84 px, passaria a ~38 px do contorno do distrito */
+  #eixoACS .l2, #eixoACS .l3 { display: block; padding-top: 6px; }
+  #eixoACS .sep { display: none; }
   #credCenso, #credACS { white-space: normal; }
   /* A MESA DO VÍDEO 2 EM DIANTE (tokens.css): --fundo · o still · a luz como VÉU · o feltro · a folha; a câmera parada */
   #mesa { position: absolute; inset: 0; z-index: 45; background: var(--fundo); opacity: 0; visibility: hidden; overflow: hidden; }
@@ -184,7 +199,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s55 COM A s56 FUNDIDA (r
     <div class="rotulo" id="rotC1" data-qc-papel="rotulo">CALIFORNIA</div>
     <div class="rotulo" id="rotC2" data-qc-papel="rotulo">CALIFORNIA<span class="l2"> ≈ 33%</span></div>
   </div>
-  <div id="eixoACS" class="legenda" data-qc-papel="eixo">ACS 2020–2024</div>
+  <div id="eixoACS" class="legenda" data-qc-papel="eixo">SHARE OF EMPTY HOMES<span class="l2"> FOR SEASONAL USE</span><span class="sep"> · </span><span class="l3">ACS 2020–2024</span></div>
   <div id="mesa">
     <img id="still" src="../_media/base/mesa-big-sur.png" alt="" data-qc-reuso="a mesa do vídeo: UM still para o vídeo inteiro, em toda cena de mesa (identidade §5; pedido comum da big-sur-arte-1, 'A mesa')">
     <div id="luz"></div>
@@ -219,6 +234,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s55 COM A s56 FUNDIDA (r
     pd: { center: [-121.7000, 36.2460], zoom: 10.9107 },      // P-DISTRITO
     v53: { z: -0.002356, lng: 0.0000946, lat: -0.0003785 },  // a deriva do fim da s53 (PCp → PC em 21,134 s), por segundo
     aproxima: [0.7, 2.0], deriva: 0.0028,
+    derivaB6: 0.0053, b6Sobe: [23.0, 1.0], b6Desce: [34.067, 0.5],   // N7 (arte-2, E): a deriva do b6 no teto da regência
+    ocupBaixa: [28.423, 0.5, 0.35],   // N7 (arte-2, E): em "empty" (28,423) os 542 ocupados baixam a 35 % em 0,5 s e ficam assim até o fim
     sobe: 0.833, fioSai: [1.0, 0.8], baixa: [2.2, 0.5],
     cedo: [2.72, 2.91, 3.10, 3.29, 3.48, 3.67, 4.54, 4.69, 4.84, 4.99, 5.14, 5.29, 5.44, 5.59, 5.74, 5.89, 6.04, 6.19, 6.34, 6.49, 6.64, 6.79, 6.94, 7.09],
     enche: [10.333, 1.3], vazias: [15.13, 0.5], ondas: [30.603, 0.5],
@@ -317,7 +334,11 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s55 COM A s56 FUNDIDA (r
       var z = hermite(s, zA, K.v53.z, K.pd.zoom, K.deriva, K.aproxima[1]);
       return { center: lerpMerc(cA, DC, pesoEscala(z, zA, K.pd.zoom)), zoom: z, bearing: 0, pitch: 0 };
     }
-    return { center: DC, zoom: K.pd.zoom + K.deriva * (t - tB), bearing: 0, pitch: 0 };
+    // N7 (arte-2, E): no b6 (24,233–34,067) a deriva sobe ao teto da regência (VC-07, 1,5 % em 4 s: +0,0053 nível/s, ~1,48 %), a mesma
+    // aproximação contínua ao meio do distrito; ela sobe sob a mesa (23,0–24,0, o mapa coberto) e volta a +0,0028 sob o véu do b7
+    // (34,067–34,567), sem tranco (a integral do smoothstep). O resto da cena fica na deriva de antes
+    var extra = (K.derivaB6 - K.deriva) * (integralSuave(t, K.b6Sobe[0], K.b6Sobe[1]) - integralSuave(t, K.b6Desce[0], K.b6Desce[1]));
+    return { center: DC, zoom: K.pd.zoom + K.deriva * (t - tB) + extra, bearing: 0, pitch: 0 };
   }
   function exageroAt() { return 0; }
 
@@ -677,9 +698,11 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s55 COM A s56 FUNDIDA (r
       var esc = CEDO[j] !== undefined && vOnda < 1 ? 1 + 0.5 * (1 - vCedo) : 1;   // a casa que acende sozinha chega um pouco maior
       var l = lado * esc, x0 = pq.x - l / 2, y0 = pq.y - l / 2;
       var vazia = VAZIA[j] !== undefined ? eo(seg(t, K.vazias[0] + K.vazias[1] * (VAZIA[j] / 345), 0.3)) : 0;
-      CX.globalAlpha = vin;
+      // N7 (arte-2, E): a casa OCUPADA (fora das 345) baixa inteira, o fundo e o laranja, em "empty homes"; os 345 contornos ficam inteiros
+      var kOc = VAZIA[j] === undefined ? 1 - (1 - K.ocupBaixa[2]) * eo(seg(t, K.ocupBaixa[0], K.ocupBaixa[1])) : 1;
+      CX.globalAlpha = vin * kOc;
       CX.fillStyle = COR.rotulo; CX.fillRect(x0 - 2, y0 - 2, l + 4, l + 4);
-      if (vazia < 1) { CX.globalAlpha = vin * (1 - vazia); CX.fillStyle = COR.destaque; CX.fillRect(x0, y0, l, l); }
+      if (vazia < 1) { CX.globalAlpha = vin * (1 - vazia) * kOc; CX.fillStyle = COR.destaque; CX.fillRect(x0, y0, l, l); }
       if (vazia > 0) {
         CX.globalAlpha = vin * vazia; CX.strokeStyle = COR.destaque; CX.lineWidth = 3; CX.strokeRect(x0 + 1.5, y0 + 1.5, l - 3, l - 3);
         if (CAL[j] !== undefined) {
@@ -758,7 +781,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s55 COM A s56 FUNDIDA (r
     var r1 = E("rotC1"); if (r1) fixoEm("rotC1", 2860 - r1.offsetWidth, 1250 - r1.offsetHeight, t, K.rotC1[0], null);
     if (r1 && t >= K.rotC2) mostrar(r1, 0, 0, 0);   // o mesmo bloco s55-ca: troca seca em 'about a third'
     var r2 = E("rotC2"); if (r2) { if (t >= K.rotC2) mostrar(r2, 1, 2860 - r2.offsetWidth, 1250 - r2.offsetHeight); else mostrar(r2, 0, 0, 0); }
-    var ex = E("eixoACS"); if (ex) fixoEm("eixoACS", 2950 - ex.offsetWidth / 2, 1650, t, K.eixo[0], K.eixo[1]);
+    var ex = E("eixoACS"); if (ex) fixoEm("eixoACS", 200, 1800 - ex.offsetHeight, t, K.eixo[0], K.eixo[1]);   // N7 (arte-2, T3): embaixo à esquerda, a base em y 1.800 (antes centrado sob as barras, em x 2.950, y 1.650)
   }
   function aplicarCena(t, cam) {
     // o distrito: 0,40 (a pose casada com a s53) → 85 % com o contorno em 'house' → 16 % sob a grade (o contorno fica)

@@ -12,6 +12,12 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s24 (208,233 → 227,200
   pré-v1 com o que o canal mudou. O que manda: textos-tela.json 71405fb4 (s24, [119]–[125]) no QUE e na grafia; regencia.json e25d0e79
   (cenas[s24], beats 0–2) no TEMPO e no exige; o conceito 143736c0; o espelho 446ffccc; para-passos itens 14 (a área do plano é
   DERIVADA e declarada) e 33 (UMA COR POR TIPO DE TERRA no vídeo inteiro).
+  big-sur-arte-2 (N3, 06/11/2026), pelo espectador r1 (lote 7, os dois achados): de 9,967 ao fim, "VENTANA / WILDERNESS" deixa a
+  pílula do alto à direita (e a guia paralela às listras) e vai DENTRO da área selvagem, preso ao chão no bloco grande de hachura
+  terra adentro ([-121.478, 36.1695]), no tratamento do nome dentro do território (identidade §4.1), a 112 px, sem guia; a guia de
+  LOS PADRES NATIONAL FOREST termina na floresta SEM hachura, ao norte ([-121.781, 36.264], a ≥ 430 px do nome da área selvagem);
+  e a casinha do b2 passa de 0,5× a 1,0× (~188 px com o halo, o tamanho da do perfil da s23), com a queda e o empurrão no dobro.
+  O texto, os tempos, a câmera e o satélite (o teto z10, um trecho só) não mudam.
   MODO 2D, norte para cima (ofício §5): a frase diz DE QUEM é o chão (área e dono); nada argumenta com a vertical.
 
   A COR (para-passos item 33, que vence a regência no b1): a terra FEDERAL numa cor só, --contexto-3 (lavanda) a 25 %, com o contorno
@@ -85,6 +91,13 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s24 (208,233 → 227,200
      costa (o nome próprio de 4 palavras a 128 px mede 2.300 px numa linha e 1.322 em duas). E "VENTANA / WILDERNESS" a 112 px: a
      128 px, no alto à direita, a borda da área selvagem entra na pílula quando a câmera aproxima no b2 (medido na sonda do M5) */
   .rotulo.cota { font-size: 112px; }
+  /* arte-2 (N3): "VENTANA / WILDERNESS" sai do alto à direita e vai para DENTRO da área selvagem, preso ao chão (espectador r1, lote 7):
+     o nome dentro do território de contexto (identidade §4.1, o tratamento da reserva na s21), a 112 px, sem pílula e sem guia. Uma
+     pílula de 843 × 296 não cabe inteira em nenhum trecho da hachura no instante em que entra (9,967 s, z 10,88; sonda24.mjs) */
+  .nome-terr { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; white-space: pre; text-align: center;
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: 112px; line-height: 1.1;
+    letter-spacing: var(--tracking-lugar); color: var(--tinta);
+    -webkit-text-stroke: var(--nome-territorio-contorno); paint-order: stroke fill; text-shadow: var(--nome-territorio-sombra); }
   /* CRÉDITOS (identidade §4.1/§4.2/§6): 60 px, Inter 500, --sec sobre a pílula --rotulo, de x = 200 até antes de x = 1720 */
   .credito { position: absolute; left: var(--credito-x); bottom: 24px; max-width: 1520px; z-index: 50; opacity: 0; visibility: hidden;
     font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
@@ -116,7 +129,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s24 (208,233 → 227,200
     <div class="rotulo cota" id="rotCota" data-qc-papel="rotulo">≈ HALF FEDERAL LAND<span class="l2">MONTEREY COUNTY</span><span class="l2">PLAN (1986)</span></div>
     <div class="rotulo lugar cota" id="rotFlo" data-qc-papel="rotulo">LOS PADRES<span class="l2">NATIONAL</span><span class="l2">FOREST</span></div>
     <div class="rotulo" id="rotUsfs" data-qc-papel="rotulo">U.S. Forest Service</div>
-    <div class="rotulo lugar cota" id="rotWa" data-qc-papel="rotulo">VENTANA<span class="l2">WILDERNESS</span></div>
+    <div class="nome-terr" id="rotWa" data-qc-papel="rotulo">VENTANA
+WILDERNESS</div>
   </div>
   <div id="credPlano" class="credito" data-qc-papel="credito">Source: Monterey County, Big Sur Coast Land Use Plan, 1986</div>
   <div id="credMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa"></div>
@@ -161,7 +175,10 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s24 (208,233 → 227,200
     casa: 15.037                         // "wilderness," (223,270): a casinha desce
   };
   // a casinha (ILUSTRATIVO; out/big-sur/_tmp/arte-1/M5/casa.py): a borda da área selvagem mais perto da Highway 1 entre 36,12 e 36,30 N
-  var CASA = { dentro: [-121.60977, 36.14629], fora: [-121.63273, 36.12419] };
+  // arte-2 (N3; espectador r1, lote 7): a casa a 1,0× (~188 px com o halo, o tamanho da do perfil da s23) e o movimento na mesma
+  // proporção (×2): a queda de 320 px, e o ponto de pouso ~6 km ao norte do de parada (o dobro dos 3,2 km do M5), fundo na hachura e a
+  // ~90 px à esquerda do nome da área selvagem (em 2× na mesma direção do M5 ela cairia em cima do nome); o de parada é o do M5
+  var CASA = { dentro: [-121.63273, 36.17869], fora: [-121.63273, 36.12419], k: 1.0, queda: 320 };
   // ═══════════════════════════════════════════════════════════════════════════════════════════════
 
   window.__renderAt = function () { return Promise.resolve(); };
@@ -425,16 +442,17 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s24 (208,233 → 227,200
   var ROT = [
     { id: "rotPub",  vida: CENA.rotPub,  tela: [230, 1150],  ancora: [-121.6600, 36.1700], lado: "dir" },
     { id: "rotCota", vida: CENA.cota,    tela: [230, 1400],  ancora: null },
-    { id: "rotFlo",  vida: CENA.rotFlo,  tela: [230, 900],   ancora: [-121.5850, 36.1000], lado: "dir" },
+    { id: "rotFlo",  vida: CENA.rotFlo,  tela: [230, 900],   ancora: [-121.7810, 36.2640], lado: "dir" },   // arte-2 (N3): a ponta na floresta SEM hachura, ao norte da área selvagem
     { id: "rotUsfs", vida: CENA.rotUsfs, tela: [230, 1370],  ancora: null },
-    { id: "rotWa",   vida: CENA.rotWa,   tela: [2720, 220],  ancora: [-121.5800, 36.1700], lado: "esq" }
+    { id: "rotWa",   vida: CENA.rotWa,   geo: [-121.4780, 36.1695],  ancora: null }   // arte-2 (N3): o nome DENTRO da área selvagem, preso ao chão, sem guia
   ];
   ROT.forEach(function (r) { if (r.ancora) r.g = guia("guia-" + r.id); });
   function aplicarRotulos(t) {
     ROT.forEach(function (r) {
       var el = E(r.id); if (!el) return;
       var vt = vidaTexto(t, r.vida[0], r.vida[1]), w = el.offsetWidth, h = el.offsetHeight;
-      var l = r.tela[0], tp = r.tela[1] + vt.sobe;
+      var l = r.tela ? r.tela[0] : 0, tp = r.tela ? r.tela[1] + vt.sobe : 0;
+      if (r.geo) { var qg = map.project(r.geo); l = qg.x - w / 2; tp = qg.y - h / 2 + vt.sobe; }
       var v = vt.v * cl(naArea(l, tp, w, h) / 30, 0, 1);
       el.style.opacity = v.toFixed(3); el.style.visibility = v > 0.001 ? "visible" : "hidden";
       el.style.transform = "translate(" + l.toFixed(2) + "px," + tp.toFixed(2) + "px)";
@@ -455,8 +473,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s24 (208,233 → 227,200
     var t0 = CENA.casa, vis = eo(seg(t, t0, 0.2));
     if (t < t0) { g.setAttribute("opacity", "0"); return; }
     var pIn = map.project(CASA.dentro), pOut = map.project(CASA.fora);
-    var x, y, k = 0.5, dt = t - t0;
-    if (dt < 0.45) { var u = dt / 0.45; x = pIn.x; y = pIn.y - 160 * (1 - u * u); }   // cai: a altura some com o quadrado do tempo
+    var x, y, k = CASA.k, dt = t - t0;
+    if (dt < 0.45) { var u = dt / 0.45; x = pIn.x; y = pIn.y - CASA.queda * (1 - u * u); }   // cai: a altura some com o quadrado do tempo
     else {
       var s = dt - 0.45, w = 7, f = 1 - (1 + w * s) * Math.exp(-w * s);
       x = pIn.x + (pOut.x - pIn.x) * f; y = pIn.y + (pOut.y - pIn.y) * f;

@@ -11,6 +11,12 @@
   do canal); o corpo do mapa é o do mapista desta produção (s15, M3: rede com nova tentativa, fail-closed, espera de tiles), reduzido
   às duas camadas da P-COSTA. Nenhum hex: as cores saem do tokens.css.
 
+  CONSERTO big-sur-arte-2 (lote O1, 06/11/2026; sala-lote-consertos.md, s29: "A9, a hachura pública fica recortada pelo polígono, no
+  canto de cima à direita"; sala-decisoes-qualidade-1.md, A9, item 27): as linhas da hachura passam a cobrir o polígono corpoAlto
+  inteiro, e o clipPath dele (que já existia) é o recorte; o canto de cima à direita deixa de ficar vazio. Nada mais mudou: os
+  textos são os mesmos no textos-tela vigente d6e57810… ([143]–[145], mesmas palavras e tempos), e os tempos, o desenho, a física, a
+  câmera e o mapa ficam como a arte-1 os entregou.
+
   O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json 71405fb4… › s29: [143] legenda "Illustrative · vertical scale exaggerated"
   0,300–5,467; [144] eixo "Highway 1" 0,300–5,467; [145] crédito "© MapTiler © OpenStreetMap contributors" 5,467–7,933, nada mais: "a
   pergunta é da voz"); os BEATS (regencia.json e25d0e79… › s29: b0 0–5,467 desenho, "THE SLOPE PROFILE on the table (the light behind
@@ -39,7 +45,8 @@
            (a encosta entre a prateleira e a escarpa, com a casinha) DESLIZA 40 px ao longo da seta e PARA em 3,290 (abaixo, a física),
            0,26 s antes de 'and much of it'. A escarpa fica à mostra no alto, e o pé da massa avança sobre a encosta de baixo.
     4,205  'spoken': A HACHURA PÚBLICA a 45° sobe pela parte alta (o corpo da serra acima da escarpa, até a crista), de baixo para cima,
-           em 0,7 s (termina em 4,905).
+           em 0,7 s (termina em 4,905). Ela preenche o polígono inteiro (corpoAlto: da escarpa à crista e ao fim do perfil, fechado na
+           base), inclusive o canto de cima à direita: o polígono é quem a recorta (conserto big-sur-arte-2, abaixo).
     4,650  a casinha some (0,35 s, opacidade 1 → 0 e 24 px de subida): não há onde pousá-la (o exige: "the small house finds no place").
     5,217–5,467  REPOUSO antes do corte: nada se move além da deriva do RIG (o push-in para em 5,217).
     5,467  'How' (5,470): CORTE SECO para o MAPA em P-COSTA EXATA ([-121.5900, 36.1400], z 10.3452, rumo 0, pitch 0: a pose do setor,
@@ -372,8 +379,11 @@
     set("sSeta", "M" + f1(SETA.A[0]) + "," + f1(SETA.A[1]) + " L" + f1(SETA.B[0]) + "," + f1(SETA.B[1]) + " " + SETA.ponta);
     // o corpo da parte alta (acima da escarpa até a crista e o fim do perfil), fechado na linha de base
     set("corpoAltoPath", d(ALTO) + " L3640," + NIVEL + " L2470," + NIVEL + " Z");
-    // a hachura a 45° num path só (um elemento de desenho)
-    var dh = ""; for (var x = 1100; x < 4200; x += 46) dh += "M" + x + "," + NIVEL + " L" + (x - 1200) + "," + (NIVEL - 1200) + " ";
+    // a hachura a 45° num path só (um elemento de desenho). Quem a recorta é o POLÍGONO corpoAlto (o clipPath), não o alcance das
+    // linhas: elas nascem na base de x 1100 a 4780, e a de 4780 passa acima do ponto mais alto à direita do polígono (x + NIVEL − y
+    // chega a 4660, em (3640, 540)); assim o canto de cima à direita, entre o flanco da crista e a borda x 3640, fica hachurado até a
+    // base (conserto big-sur-arte-2, A9; antes, x < 4200 deixava esse triângulo vazio). O passo (46) e a fase (1100) são os de antes.
+    var dh = ""; for (var x = 1100; x < 4800; x += 46) dh += "M" + x + "," + NIVEL + " L" + (x - 1200) + "," + (NIVEL - 1200) + " ";
     set("hachura", dh);
   })();
   // os comprimentos, para o traçado (stroke-dashoffset)

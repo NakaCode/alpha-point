@@ -6,6 +6,9 @@
 <!--
 CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s33 COM A s34 FUNDIDA (o run s33+s34: 324,967 → 362,733 s do master; 37,766 s;
 quadros 9749–10882). f82–f88. A s34 começa em 345,300 s (20,333 na cena) e não tem clipe próprio.
+  big-sur-arte-2 (lote N4, 06/11/2026): só a lista da Sala, no b1. T: os tempos novos de [172]–[175] (textos-tela d6e57810). A5 e E: a
+    diligência não cruza as pílulas (para antes do vale). A câmera, as poses, os outros textos e o resto dos beats não mudam. Este HTML foi
+    editado direto (o montar.mjs do M7 ficou com a versão da arte-1).
   Mapista, lote M7 (tarefa big-sur-arte-1, 05/11/2026): cena NOVA (out/big-sur/_tmp/arte-1/M7/: montar.mjs junta a cabeça, o núcleo e a
   cena). O que manda: textos-tela.json 71405fb4 (s33 e s34: [168]–[181]); regencia.json e25d0e79 (s33 › beats[0..4], _chamadas[1]);
   conceito 143736c0 (s33, s34, fluxo[27]); espelho 446ffccc; o para-passos item 44 (a sequoia no recorte do tronco, acima de y 2150 do
@@ -36,10 +39,12 @@ quadros 9749–10882). f82–f88. A s34 começa em 345,300 s (20,333 na cena) e 
       20,0. A citação "“THE HAZARDOUS ROAD” · CLOSED PART OF THE YEAR" (textos [170], 2,3–5,467) é fala citada (data-qc-papel="heroi",
       Inter 700 a 260 px, o piso; em 3 linhas: a 260 px a frase só cabe na largura segura assim) numa pílula --rotulo no terço de cima, à
       direita; a fonte do plano (textos [171]) no mesmo tempo.
-    · b1 5,467–11,833: o trecho do sul volta (5,48 'Even so'); Monterey (textos [172]) no ponto da cidade; a diligência em traço de
-      engenheiro percorre o pontilhado de Monterey ao vale em 3 s (7,9–10,9), as rodas rolando sem escorregar (ω = v/R); no vale, a
-      miniatura da sequoia (recorte do tronco: x 434–2120, y 0–2150 do arquivo) com "Big Sur Valley" (textos [173]) e "Photo from 2023"
-      (textos [174]); o crédito "Marty Aligata / Wikimedia Commons · CC BY-SA 4.0" (textos [175]) a 60 px. Tudo sai até 11,5.
+    · b1 5,467–11,833: o trecho do sul volta (5,48 'Even so'); a diligência em traço de engenheiro percorre o pontilhado de Monterey
+      rumo ao vale em 3 s (7,9–10,9), as rodas rolando sem escorregar (ω = v/R), e PARA 330 px (no caminho, na tela) antes do ponto do
+      vale, com o cavalo livre do cartão (arte-2, A5); a miniatura da sequoia (recorte do tronco: x 434–2120, y 0–2150 do arquivo) e o
+      crédito "Marty Aligata / Wikimedia Commons · CC BY-SA 4.0" (textos [175]) a 60 px em 9,133 ('by stagecoach'), "Big Sur Valley"
+      (textos [173]) e "Photo from 2023" (textos [174]) em 9,433; Monterey (textos [172]), com o ponto da cidade, em 10,0 ('from
+      Monterey'). Os tempos são os da texto-3 (T2; instrução [20]). Tudo sai até 11,5.
     · b2 11,833–20,333: o RESPIRO da inscrição (a chamada entra pelo XML de 336,8 a 341,3 s, embaixo à direita, caixa x 2029–3626,
       y 1457–1746): nada novo de 11,5 a 19,0; só o pontilhado, o tracejado do plano (de volta a 45 % em 11,33–11,83), a legenda e o crédito;
       a câmera na órbita mínima. Em 'decades away' (19,07) o pontilhado pisca uma vez e se apaga (até 20,0), e a LINHA DO TEMPO nasce em
@@ -156,7 +161,7 @@ quadros 9749–10882). f82–f88. A s34 começa em 345,300 s (20,333 na cena) e 
   var TERRENO = true;
   var BASE_MAXZ = 10;   // o satélite só do z10, o nível da P-COSTA e das cenas vizinhas (núcleo B, estilo)
   var FONTES = ["mar", "plano", "ccd", "estN", "estS", "hwy", "cr", "cr-g"];
-  var CREDITOS = [{ id: "credPlano", t0: 2.3, t1: 5.467 }, { id: "credFoto", t0: 5.467, t1: 11.5 }, { id: "credFhwa", t0: 22.0, t1: 30.0 }];
+  var CREDITOS = [{ id: "credPlano", t0: 2.3, t1: 5.467 }, { id: "credFoto", t0: 9.133, t1: 11.5 }, { id: "credFhwa", t0: 22.0, t1: 30.0 }];   // [175] em 9,133 (arte-2)
   // ═══ NÚCLEO A (M7; da s08 do lote M1, que segue o molde mapa-base.html da pré-v1) ═══
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
@@ -580,8 +585,8 @@ quadros 9749–10882). f82–f88. A s34 começa em 345,300 s (20,333 na cena) e 
     estrada: { desenha: [0.3, 2.5], fecha: 3.53, reabre: 5.48, pisca: 19.07, some: 20.0 },
     plano: { baixa: [0, 3.0], sai: [5.0, 0.5], volta: [11.33, 0.5], fim: [20.333, 1.0] },
     cita: { t0: 2.3, t1: 5.467 },
-    mon: { t0: 5.467, t1: 11.5 }, mini: { t0: 5.467, t1: 11.5 }, vale: { t0: 5.767, t1: 11.5 },
-    dil: { entra: 7.6, parte: 7.9, chega: 10.9, sai: 11.2 },
+    mon: { t0: 10.0, t1: 11.5 }, mini: { t0: 9.133, t1: 11.5 }, vale: { t0: 9.433, t1: 11.5 },   // arte-2: [172] 10,0; [175] 9,133; [173] e [174] 9,433
+    dil: { entra: 7.6, parte: 7.9, chega: 10.9, sai: 11.2, recuoPx: 330 },   // arte-2 (A5): para recuoPx antes do vale
     tl: { nasce: 19.033, desenha: 0.8, sai: 30.0 }, t1919: 22.0, nearly: 26.1,
     hwy: [20.333, 5.0], trav: { t0: 34.3, passo: 0.09 }
   };
@@ -631,7 +636,10 @@ quadros 9749–10882). f82–f88. A s34 começa em 345,300 s (20,333 na cena) e 
     // a diligência: de Monterey ao vale pelo pontilhado, em 3 s (eio), a roda rolando
     var D = T.dil, vd = eo(seg(t, D.entra, 0.3)) * (1 - eio(seg(t, D.sai, 0.3)));
     if (vd > 0.001) {
-      var Ltot = EST_L[EST_L.length - 1], s = Ltot * eio(seg(t, D.parte, D.chega - D.parte));
+      // arte-2 (A5): o fim da viagem fica recuoPx (medidos no caminho, na escala da chegada) antes do ponto do vale, para o cavalo
+      // parar livre do cartão do vale; a pílula Monterey só entra em 10,0, com a diligência já longe dela
+      var Ltot = EST_L[EST_L.length - 1], Lfim = Ltot - D.recuoPx * kmPorPx(cameraAt(D.chega).zoom, P_VALE[1]);
+      var s = Lfim * eio(seg(t, D.parte, D.chega - D.parte));
       var ll = noPonto(EST, EST_L, s), p = map.project(ll), q = map.project(noPonto(EST, EST_L, Math.min(Ltot, s + 0.6)));
       var ang = cl(Math.atan2(q.y - p.y, q.x - p.x) * 180 / Math.PI, -14, 14);
       // o chão da roda traseira (y +15 no desenho) fica sobre o pontilhado

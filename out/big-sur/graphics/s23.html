@@ -10,6 +10,10 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s23, 192,933 → 208,233 s do mas
   Mapista, lote M4 (tarefa big-sur-arte-1), 05/11/2026: cena NOVA. O que manda: textos-tela.json 71405fb4 (s23, [111]–[118], e
   _instrucoes_para_a_arte[2]: o relevo a 1,0×, sem legenda de exagero) no QUE e na grafia; regencia.json e25d0e79 (cenas[s23]) no
   TEMPO e no exige; conceito 143736c0; para-passos itens 29 (nunca "parada": deriva lenta) e 40 (o perfil do fim é do mapista).
+  big-sur-arte-2 (N3, 06/11/2026), pelo textos-tela d6e57810 (T2) e pelo espectador r1 (lote 7): o eixo "Highway 1" [118] e a guia
+  dele entram em 14,234 ("way"), e não no corte; a pista corre a prateleira inteira (x 1160–1460, o traço de 6 px), na frente, em
+  "way" (14,247), e a casinha (que pousa onde pousava, em "build") fica atrás dela: a faixa da pista, em --fundo sob os traços,
+  encobre o pé da casa entre as duas linhas. Nada mais mudou.
 
   MODO: 3D-drone sobre o relevo real (ofício §5/§5b: a lista nomeia "unstable soils on steep slopes" e a crista; os limites se
   prendem ao lugar em que agem), e o PERFIL desenhado no fim (a peça de marca; ilustrativa, declarada na tela).
@@ -29,7 +33,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s23, 192,933 → 208,233 s do mas
      Highway 1 como prateleira a um terço da altura, x ≈ 1300; traço de engenheiro sobre --fundo, sem satélite): a encosta se traça
      em 0,7 s, a hachura a 45° cobre o que não é chão de construir; em "ground" (12,487) a prateleira acende; a casinha pousa nela
      em "build" (13,127); em "way" (14,247) a pista da estrada aparece na prateleira. "Illustrative · vertical scale exaggerated"
-     (legenda) e "Highway 1" (eixo) de 11,467. ILUSTRATIVO: não é um corte do DEM, é a peça de marca (textos-tela _regras_de_serie[7]).
+     (legenda) de 11,467, e "Highway 1" (eixo [118], com a guia) de 14,234 ("way"). ILUSTRATIVO: não é um corte do DEM, é a peça de marca (textos-tela _regras_de_serie[7]).
   O SATÉLITE POR TRECHO (a regra da Sala, 20:2x; retomada-teto.md): a cena inteira de mapa (0–11,467) é UM trecho LARGO, no teto
      z10 (BASE_MAXZ = 10, o da s32): começa em P-COSTA (z 10,345, pitch 0, = o último quadro da s21, também no teto) e inclina a 48° em
      z 10,70–10,715; o chão visível do 3D pede tile do z10 e abaixo (o fundo, longe), e sem a prova de z ≥ 11 em toda a tela o trecho fica
@@ -114,8 +118,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s23, 192,933 → 208,233 s do mas
       <path id="encosta" class="p-linha" d=""/>
       <path id="base" class="p-cota" d=""/>
       <path id="prateleira" class="p-linha" d="" opacity="0"/>
-      <g id="pista" opacity="0"><path class="p-linha" d=""/><path class="p-cota" d=""/></g>
       <g id="casinha" opacity="0"><path class="p-linha" d="M-70,0 L70,0 L70,-90 L-70,-90 Z M-86,-80 L0,-150 L86,-80 M-18,0 L-18,-48 L18,-48 L18,0"/></g>
+      <g id="pista" opacity="0"><rect id="pistaFrente" x="0" y="0" width="0" height="0" style="fill: var(--fundo)"/><path class="p-linha" d=""/><path class="p-cota" d=""/></g>
       <path id="guiaHwy" class="guia" d="" opacity="0"/>
     </svg>
   </div>
@@ -497,7 +501,10 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s23, 192,933 → 208,233 s do mas
     nivel: 1560, crista: 420,
     pontos: [[760, 1560], [880, 1470], [1010, 1330], [1160, 1180], [1460, 1180], [1560, 1090], [1760, 960], [1980, 860], [2180, 720],
              [2420, 640], [2640, 560], [2900, 470], [3120, 430], [3300, 420], [3460, 470], [3640, 540]],
-    prateleira: [1160, 1460], casa: 1370, pista: [1180, 1300]
+    prateleira: [1160, 1460], casa: 1370, pista: [1160, 1460],
+    // arte-2 (N3): a pista corre a prateleira inteira, na frente da casinha (que pousa onde pousava); em "way" a faixa da pista,
+    // em --fundo por baixo dos traços, encobre o pé da casa entre as duas linhas: a casa fica atrás da estrada, sem traço cruzando
+    casaY: -7, eixoT0: 14.234
   };
   (function () {
     var d = PF.pontos.map(function (p, i) { return (i ? "L" : "M") + p[0] + "," + p[1]; }).join(" ");
@@ -516,7 +523,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s23, 192,933 → 208,233 s do mas
     var pr = E("prateleira"); if (pr) pr.setAttribute("d", "M" + PF.prateleira[0] + "," + PF.pontos[3][1] + " L" + PF.prateleira[1] + "," + PF.pontos[3][1]);
     var ps = E("pista"); if (ps) { var a = ps.querySelectorAll("path"), y = PF.pontos[3][1];
       a[0].setAttribute("d", "M" + PF.pista[0] + "," + (y - 22) + " L" + PF.pista[1] + "," + (y - 22));
-      a[1].setAttribute("d", "M" + (PF.pista[0] + 14) + "," + (y - 11) + " L" + (PF.pista[1] - 14) + "," + (y - 11)); }
+      a[1].setAttribute("d", "M" + (PF.pista[0] + 14) + "," + (y - 11) + " L" + (PF.pista[1] - 14) + "," + (y - 11));
+      var fr = E("pistaFrente"); if (fr) { fr.setAttribute("x", PF.pista[0]); fr.setAttribute("y", y - 19); fr.setAttribute("width", PF.pista[1] - PF.pista[0]); fr.setAttribute("height", 12); } }
     var g = E("guiaHwy"); if (g) g.setAttribute("d", "M" + ((PF.pista[0] + PF.pista[1]) / 2) + "," + (PF.pontos[3][1] + 24) + " L" + ((PF.pista[0] + PF.pista[1]) / 2) + "," + (PF.pontos[3][1] + 150));
   })();
   function aplicarPerfil(t) {
@@ -531,16 +539,16 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s23, 192,933 → 208,233 s do mas
     var cs = E("casinha"); if (cs) {
       var uc = seg(t, 13.127, 0.45), esc = 1 + 0.03 * (1 - eo(seg(t, 13.127 + 0.23, 0.22))) * (uc > 0.5 ? 1 : 0);
       cs.setAttribute("opacity", eo(seg(t, 13.127, 0.2)).toFixed(3));
-      cs.setAttribute("transform", "translate(" + PF.casa + " " + (PF.pontos[3][1] - 7 - 48 * (1 - eo(uc))).toFixed(1) + ") scale(" + esc.toFixed(4) + ")");
+      cs.setAttribute("transform", "translate(" + PF.casa + " " + (PF.pontos[3][1] + PF.casaY - 48 * (1 - eo(uc))).toFixed(1) + ") scale(" + esc.toFixed(4) + ")");
     }
     var ps = E("pista"); if (ps) ps.setAttribute("opacity", eo(seg(t, 14.247, 0.3)).toFixed(3));
-    var gh = E("guiaHwy"); if (gh) gh.setAttribute("opacity", eo(seg(t, CENA.corte, 0.3)).toFixed(3));
+    var gh = E("guiaHwy"); if (gh) gh.setAttribute("opacity", eo(seg(t, PF.eixoT0, 0.3)).toFixed(3));
   }
   function aplicarSoltos(t) {
     var on = t >= CENA.corte;
     [["legIlus", 200, 1700], ["eixoHwy", (PF.pista[0] + PF.pista[1]) / 2, PF.pontos[3][1] + 160]].forEach(function (x, i) {
       var el = E(x[0]); if (!el) return;
-      var v = on ? eo(seg(t, CENA.corte, 0.3)) : 0, w = el.offsetWidth;
+      var v = on ? eo(seg(t, i === 1 ? PF.eixoT0 : CENA.corte, 0.3)) : 0, w = el.offsetWidth;
       var l = i === 0 ? x[1] : x[1] - w / 2;
       el.style.opacity = v.toFixed(3); el.style.visibility = v > 0 ? "visible" : "hidden";
       el.style.transform = "translate(" + l.toFixed(1) + "px," + (x[2] + (1 - v) * 24).toFixed(1) + "px)";

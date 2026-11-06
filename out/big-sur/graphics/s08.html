@@ -16,7 +16,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s08 (32,200 → 37,267 s
   O centro da câmera fica na cota 0 (_elevationFreeze, como a s44 do Juneau) e a textura das linhas se refaz a cada quadro (freeRtt).
 
   O QUE A CENA FAZ ('So' 0,03 · 'why' 0,58 · 'up?' 1,38–1,48 · 'Part' 1,96 · 'answer' 2,43 · 'expect:' 3,385–3,74 · 'mountains,' 4,18–4,81):
-    · 0–1,5: a câmera INCLINA até 55° (cúbica) e o relevo sobe de 0 a 1,5× (0,1–1,5): a Serra de Santa Lucia, vista do mar, cai direto
+    · 0–1,5: a câmera INCLINA até 55° (cúbica) e o relevo sobe de 0 a 1,5× (0,9–1,65, desde a arte-2): a Serra de Santa Lucia, vista do mar, cai direto
       na água; o centro anda pela costa até o Cone Peak (36,051 N, 121,497 W) em 0–3,57 (cúbico), a órbita lenta (1°/s) não para;
     · 0,0 ('So'): a PERGUNTA DO GANCHO "So why didn’t it fill up?" (Barlow Condensed 800, 176 px, --tinta, sem caixa, com a sombra
       suave do nome sobre território, --nome-territorio-sombra, para ler sobre a terra), no alto à direita (a borda direita em x 3540, o
@@ -31,6 +31,10 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s08 (32,200 → 37,267 s
       (serra-santa-lucia) outlined in --tinta at 40 %", e o que a demarca aqui é o relevo real, o nome na crista e o tracejado do plano.
   ELEMENTOS (teto 6): o tracejado, a pergunta, a legenda, o nome da serra = 4 (o distrito até 0,6).
   CRÉDITO a 60 px: "© MapTiler © OpenStreetMap contributors" do 1º ao último quadro (data-qc-credito="mapa").
+  ARTE-2 (big-sur-arte-2, 06/11/2026, mapista N1): só a lista da Sala. A7: a fusão do satélite (o nível alto para o teto z10) vai de
+    0,2 a 0,9 s, com o smoothstep (antes 0,2–0,7, com o eio); o relevo liga em 0,9 s (antes 0,75), quando ela acaba, e o exagero vai de 0
+    a 1,5× em 0,9–1,65 s (antes 0,75–1,65). O contorno do distrito passa a 12 px (o da s07, A11), para o 1º quadro continuar igual ao
+    último da s07. O resto é o da arte-1.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -102,14 +106,16 @@ it fill up?</div>
 
   var DUR = 5.067;   // espelho.json › s08 › dur, literal (roupa §8)
   var TERRENO = true;
-  var TERRENO_DESDE = 0.75;   // o relevo liga aqui (pitch 25°, exagero 0): o 1º quadro é o plano da s07, e a fusão do satélite acaba antes
-  // O SATÉLITE POR TRECHO: de perto 0–0,25 s (z 11,67, pitch 0 → 1°, o 1º quadro igual ao último da s07) no nível alto; a fusão 0,25–0,75 s
-  // no começo da inclinação (pitch 1° → 21°); o 3D 0,75–5,067 s (pitch 21° → 60°, o chão ao longe pede z10 e abaixo) com o teto z10
+  var TERRENO_DESDE = 0.9;   // o relevo liga aqui (pitch 41°, exagero 0): o 1º quadro é o plano da s07, e a fusão do satélite acaba antes (arte-2, A7: era 0,75)
+  // O SATÉLITE POR TRECHO: de perto 0–0,2 s (z 11,67, pitch 0 → 0,5°, o 1º quadro igual ao último da s07) no nível alto; a fusão 0,2–0,9 s
+  // no começo da inclinação, sem relevo (pitch 0,5° → 41°); o 3D 0,9–5,067 s (pitch 41° → 60°, o chão ao longe pede z10 e abaixo) com o teto z10
   var BASE_MAXZ = 10;
-  function NIVEL_ALTO(t) { return 1 - eio(seg(t, 0.2, 0.5)); }
+  // arte-2, A7 (a E2 da qualidade-1): a fusão vai de 0,2 a 0,9 s (antes 0,2–0,7, com o eio, que concentrava a queda do tom em ~0,3 s),
+  // com o smoothstep, que a espalha pela janela inteira; ela termina no quadro em que o relevo liga (TERRENO_DESDE)
+  function NIVEL_ALTO(t) { return 1 - ss(seg(t, 0.2, 0.7)); }
   var FONTES = ["plano", "ccd", "mar", "baseAlto"];
   var CENA = {
-    inclina: [0, 1.5, 55], relevo: [0.75, 0.9, 1.5],
+    inclina: [0, 1.5, 55], relevo: [0.9, 0.75, 1.5],   // o exagero 0 → 1,5× em 0,9–1,65 s (arte-2: era 0,75–1,65; o fim não muda)
     cone: [-121.470, 36.080], lucia: [-121.525, 36.050],
     anda: 3.57, desce: 1.497,
     serra: { ll: [-121.469103, 36.051073], t0: 1.9 },
@@ -218,7 +224,7 @@ it fill up?</div>
       fontes: { mar: { type: "geojson", data: marDaCosta(TRECHO, CA) }, plano: { type: "geojson", data: linhasDoPoligono(PLANO) }, ccd: { type: "geojson", data: CCD } },
       camadas: [
         { id: "mar", type: "fill", source: "mar", paint: { "fill-color": COR.agua, "fill-opacity": 1, "fill-opacity-transition": SEM } },
-        { id: "ccd-linha", type: "line", source: "ccd", layout: { "line-join": "round" }, paint: { "line-color": COR.destaque, "line-width": 5, "line-opacity": 0.3, "line-opacity-transition": SEM } },
+        { id: "ccd-linha", type: "line", source: "ccd", layout: { "line-join": "round" }, paint: { "line-color": COR.destaque, "line-width": 12, "line-opacity": 0.3, "line-opacity-transition": SEM } },
         { id: "plano-sob", type: "line", source: "plano", layout: { "line-join": "round", "line-cap": "round" }, paint: { "line-color": COR.contorno, "line-width": 12, "line-opacity": 0.5, "line-opacity-transition": SEM } },
         { id: "plano", type: "line", source: "plano", layout: { "line-join": "round" }, paint: { "line-color": COR.tinta, "line-width": 6, "line-dasharray": [3, 2], "line-opacity": 1, "line-opacity-transition": SEM } }
       ]

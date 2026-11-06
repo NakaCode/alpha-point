@@ -36,6 +36,12 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s40, 412,800 → 427,500 s do mas
      (0,5 s, o fim da viagem rápida de volta, 4.300 → 150 px/s); DE PERTO 10,73–14,7 s (z 10,99–11,00, plano, sem teto: o nível da s41).
      A ÁGUA ESCURA (--agua-base sobre o mar da costa-do-plano-1986-trecho, TIGER) em P-COSTA (sai no recuo rápido, 2,8–3,3 s) e em E
      (entra 10,15–10,65 s, no fim da viagem rápida): as emendas retas do mosaico no mar, vistas nas folhas do setor; a s41 também a tem.
+     big-sur-arte-2 (A6 da Sala: a névoa e a emenda reta de ~10,0 a 10,55 s): uma 2ª água, MAIOR (a costa do TIGER e, fora dela, a do
+     estado, cb_2025 500k, de 34,6 N a 37,75 N, fechada ao largo em −125,6: a marDaCosta da s36), entra de 9,75 a 10,0 s, no meio da
+     volta rápida (6.800 → 6.100 px/s), quando a borda dela já fica fora da tela, e fica até o fim, sobre o mesmo mar da de antes.
+     OS CARRINHOS (big-sur-arte-2, o espectador r1, lote 14): param NO mirante, e não 72 px além dele; o mirante sobre o fio faz o
+     carro encostar do lado do mar, o halo tocando o fio; Bixby Creek Turnout e Hurricane Point (~30 px um do outro) se afastam na
+     tela até um vão de 8 px; o carro a 1,1× (era 0,8) e o leque a 6 px (era 4). O mesmo código na s41 (a pose casada).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -83,9 +89,9 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s40, 412,800 → 427,500 s do mas
   /* o traço de engenheiro (identidade §5): --tinta 6 px, sem preenchimento, com o halo escuro por baixo para ler no satélite */
   .tr-sob { fill: none; stroke: var(--rotulo); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
   .tr { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
-  /* o leque de visada (o CONE DE VISÃO, peça de marca): 4 px em --tinta a 60 % */
-  .leque-sob { fill: none; stroke: var(--rotulo); stroke-width: 10; stroke-linecap: round; opacity: 0.6; }
-  .leque { fill: none; stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; opacity: 0.6; }
+  /* o leque de visada (o CONE DE VISÃO, peça de marca): 6 px em --tinta a 60 % (o traço do canal; era 4: big-sur-arte-2) */
+  .leque-sob { fill: none; stroke: var(--rotulo); stroke-width: 12; stroke-linecap: round; opacity: 0.6; }
+  .leque { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; opacity: 0.6; }
   /* a LINHA DO TEMPO (peça de marca): 6 px em --tinta em y 1700, de x 200 a 3400, com o halo escuro */
   .tl-sob { fill: none; stroke: var(--rotulo); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
   .tl { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
@@ -123,14 +129,15 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s40, 412,800 → 427,500 s do mas
     ca: [3.2, 4.6],                // a Califórnia: só no recuo; sai antes de SAN FRANCISCO, que pousa sobre a costa dela
     sf: 5.12, la: 5.84, sai: 8.8,  // "Bay", "Los Angeles"; as regiões saem com os nomes
     setas: [6.64, 0.8],            // "less": correm em 0,8 s
-    fontes: ["base", "alta", "mar", "hwy", "ca", "sf", "la"]
+    fontes: ["base", "alta", "mar", "marL", "hwy", "ca", "sf", "la"]
   };
   // O SATÉLITE POR TRECHO (medido a cada 0,1 s, out/big-sur/_tmp/arte-1/M8/trilha.mjs): LARGO 0–10,23 s (P-COSTA z 10,345–10,36, o recuo,
   // P-CAL z 6,56–6,57 e a volta até cruzar 10,5; plano, teto z10); FUSÃO 10,23–10,73 (0,5 s, o fim da viagem rápida de volta, 4.300 → 150
   // px/s); DE PERTO 10,73–14,7 (z 10,99–11,00, plano, sem teto: o mesmo nível da s41, a emenda casa). A água escura em P-COSTA (sai no
   // recuo rápido, 2,8–3,3) e de novo em E (entra 10,15–10,65, no fim da viagem rápida), como a s41: as emendas do mosaico no mar.
   var SAT = { alta: function (t) { return eio(seg(t, 10.23, 0.5)); },
-    mar: function (t) { return Math.max(1 - eio(seg(t, 2.8, 0.5)), eio(seg(t, 10.15, 0.5))); } };   // sai no recuo; volta no fim da viagem de volta (z ≥ 10,1)
+    mar: function (t) { return Math.max(1 - eio(seg(t, 2.8, 0.5)), eio(seg(t, 10.15, 0.5))); },   // sai no recuo; volta no fim da viagem de volta (z ≥ 10,1)
+    marL: function (t) { return eio(seg(t, 9.75, 0.25)); } };   // big-sur-arte-2 (A6): a água maior, de 9,75 a 10,0 s, até o fim
   // a deriva final (s40 E0 → E1 → s41): a mesma velocidade nas duas cenas, para a emenda não dar tranco
   var V = { lng: -0.0020, lat: -0.0008, zoom: 0.0025 };   // por segundo
   var E1 = { lng: -121.7000, lat: 36.2500, zoom: 11.0000, bearing: 0, pitch: 0 }, TD = 14.7 - 10.733;
@@ -291,6 +298,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s40, 412,800 → 427,500 s do mas
     var o = { base: fonteRaster(SAT.semTeto ? P.base.maxzoom : Math.min(P.base.maxzoom, BASE_MAXZ)) };
     if (SAT.alta) o.alta = fonteRaster(P.base.maxzoom);
     if (COSTA_MAR) o.mar = { type: "geojson", data: COSTA_MAR };
+    if (MAR_L) o.marL = { type: "geojson", data: MAR_L };
     for (var k in extra) o[k] = extra[k];
     return o;
   }
@@ -299,11 +307,34 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s40, 412,800 → 427,500 s do mas
     if (SAT.alta) o.push({ id: "alta", type: "raster", source: "alta", layout: { visibility: "none" },
       paint: Object.assign({ "raster-opacity": 0 }, BASE_PINTURA) });
     if (COSTA_MAR) o.push({ id: "mar", type: "fill", source: "mar", paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 0, "fill-antialias": true } });
+    if (MAR_L) o.push({ id: "marL", type: "fill", source: "marL", paint: { "fill-color": tok("--agua-base", "#00050c"), "fill-opacity": 0, "fill-antialias": true } });
     return o.concat(extra);
   }
 
   var CA = geo("california"), SF = geo("metro-san-francisco"), LA = geo("metro-los-angeles");
   if (window.__erroCena) return;
+  // big-sur-arte-2 (A6): a água escura MAIOR da volta rápida (a função marDaCosta da s36, do M12): o mar a oeste da costa do TIGER
+  // (costa-do-plano-1986-trecho) e, fora dele, da costa do estado (cb_2025 500k), de MAR_S a MAR_N, fechado ao largo em MAR_W, um
+  // contorno no mar aberto que não afirma nada. A borda só fica fora da tela a partir de ~9,8 s (out/big-sur/_tmp/arte-2/N5/bordas.mjs).
+  var MAR_N = 37.75, MAR_S = 34.6, MAR_W = -125.6;
+  function marDaCosta(fc, ca) {
+    var c = fc.features[0].geometry.coordinates.slice();   // da divisa (sul) a Carmel (norte)
+    var ini = c[0], fim = c[c.length - 1], aneis = [];
+    ca.features.forEach(function (f) { var g = f.geometry; (g.type === "Polygon" ? [g.coordinates] : g.coordinates).forEach(function (q) { aneis.push(q[0]); }); });
+    aneis.sort(function (a, b) { return b.length - a.length; });
+    var R = aneis[0], n = R.length - 1;
+    var perto = function (q) { var bi = 0, bd = 1e9; for (var i = 0; i < n; i++) { var dx = (R[i][0] - q[0]) * 0.81, dy = R[i][1] - q[1], d = dx * dx + dy * dy; if (d < bd) { bd = d; bi = i; } } return bi; };
+    var andar = function (i0, lim, paraNorte) {
+      var sg = ((R[(i0 + 10) % n][1] > R[(i0 - 10 + n) % n][1]) === paraNorte) ? 1 : -1, out = [], i = i0;
+      for (var k = 0; k < n; k++) { i = (i + sg + n) % n; out.push(R[i]); if (paraNorte ? R[i][1] >= lim : R[i][1] <= lim) break; }
+      return out;
+    };
+    var norte = andar(perto(fim), MAR_N, true), sul = andar(perto(ini), MAR_S, false);
+    var anel = sul.slice().reverse().concat(c, norte), a0 = anel[0], a1 = anel[anel.length - 1];
+    anel = anel.concat([[MAR_W, a1[1]], [MAR_W, a0[1]], a0]);
+    return { type: "FeatureCollection", features: [{ type: "Feature", properties: {}, geometry: { type: "Polygon", coordinates: [anel] } }] };
+  }
+  var MAR_L = (SAT.marL && CST) ? marDaCosta(CST, CA) : null;
   function estilo() {
     var z0 = { duration: 0, delay: 0 };
     return { version: 8, transition: z0,
@@ -343,7 +374,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s40, 412,800 → 427,500 s do mas
   });
   MIR.sort(function (a, b) { return a.km - b.km; });   // de Carmel para o sul
   MIR.forEach(function (m, k) { m.atraso = 0.06 * k; });
-  var CAR = { entra: 12.575, anda: 0.75, encosta: 13.33, encostaDur: 0.3, encostaPx: 72, leque: 13.62, lequeDur: 0.4, lequePx: 120, esc: 0.8 };
+  var CAR = { entra: 12.575, anda: 0.75, encosta: 13.33, encostaDur: 0.3, encostaPx: 72, sobreFioPx: 30, folgaPx: 11, vaoPx: 8, leque: 13.62,
+    lequeDur: 0.4, lequePx: 120, esc: 1.1 };
   var CARRO = [["M",-40,8],["L",-40,-6],["L",-30,-10],["L",-18,-24],["L",14,-24],["L",26,-10],["L",40,-6],["L",40,8],["Z"],
     ["M",-26,-10],["L",26,-10],
     ["M",-30,8],["A",8,8,0,1,0,-14,8],["A",8,8,0,1,0,-30,8],["M",14,8],["A",8,8,0,1,0,30,8],["A",8,8,0,1,0,14,8]];
@@ -356,16 +388,42 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s40, 412,800 → 427,500 s do mas
     });
     return o;
   }
-  // onde está cada carrinho no tempo tc DA s40 (a s41 o chama com o último instante da s40)
+  // onde está cada carrinho no tempo tc DA s40 (a s41 o chama com o último instante da s40). O carro PARA NO MIRANTE (big-sur-arte-2,
+  // o espectador r1, lote 14): anda até o mirante, no máximo encostaPx (antes ele andava sempre 72 px e passava 63 a 72 px do mirante,
+  // sobre o mar). O mirante que fica sobre o fio (d < sobreFioPx: Soberanes, Garrapata, Bixby e Hurricane, a 0,3–9 px da estrada no
+  // zoom 11) faz o carro encostar do lado do MAR, pela normal da estrada na tela, com o halo do carro tocando o fio branco (folgaPx = a
+  // meia-largura do fio, 3, mais o halo do carro, 8): o fio fica inteiro, e o leque segue sobre o mar
   function carroEm(m, tc) {
     var u = eio(seg(tc, CAR.entra + m.atraso, m.praia ? 1.0 : CAR.anda)), p, q;
     if (m.praia) { p = map.project(pontoEm(SYC, SYC_L, SYC_L[SYC_L.length - 1] * u)); return { x: p.x, y: p.y }; }
     p = map.project(pontoEm(HWY_C, HWY_L, m.km - 3.0 * (1 - u)));
-    var w = eo(seg(tc, CAR.encosta + m.atraso, CAR.encostaDur)), alvo = map.project(m.p), dx = alvo.x - p.x, dy = alvo.y - p.y, d = Math.hypot(dx, dy);
-    if (d < 6) { dx = -1; dy = 0; d = 1; }
-    var k = Math.min(CAR.encostaPx, Math.max(d, CAR.encostaPx)) / d;
-    return { x: p.x + dx * k * w, y: p.y + dy * k * w };
+    var w = eo(seg(tc, CAR.encosta + m.atraso, CAR.encostaDur)), alvo = map.project(m.p), dx = alvo.x - p.x, dy = alvo.y - p.y, d = Math.hypot(dx, dy), ox, oy;
+    if (d < CAR.sobreFioPx) {
+      var a = map.project(pontoEm(HWY_C, HWY_L, m.km - 0.4)), b = map.project(pontoEm(HWY_C, HWY_L, m.km + 0.4));
+      var tx = b.x - a.x, ty = b.y - a.y, n = Math.hypot(tx, ty) || 1, nx = -ty / n, ny = tx / n;
+      if (nx > 0) { nx = -nx; ny = -ny; }   // para o lado do mar (oeste)
+      var s = CAR.esc, h = Math.abs(nx) * 40 * s + Math.abs(ny) * 20 * s;   // a meia-caixa do carro (80 × 40 no desenho) na direção da normal
+      var e = h + CAR.folgaPx + (14 + 4 * s) * ny;   // o centro da caixa fica (0, −14 − 4s) do ponto: o halo encosta no fio
+      ox = nx * e; oy = ny * e;
+    } else { var k = Math.min(CAR.encostaPx, d) / d; ox = dx * k; oy = dy * k; }
+    return { x: p.x + ox * w, y: p.y + oy * w };
   }
+  // todos os carrinhos no tempo tc: dois que se tocariam (Bixby Creek Turnout e Hurricane Point, a ~30 px um do outro no zoom 11) se
+  // afastam igualmente na tela, pelo eixo que pede menos, até o vão de vaoPx entre as caixas com o halo (contínuo: só o que falta)
+  function posicoesCarros(tc) {
+    var P = MIR.map(function (m) { return carroEm(m, tc); }), s = CAR.esc, hw = 40 * s + 8, hh = 20 * s + 8;
+    for (var i = 1; i < P.length; i++) {
+      if (MIR[i].praia || MIR[i - 1].praia) continue;
+      var A = P[i - 1], B = P[i], dx = B.x - A.x, dy = B.y - A.y;
+      var fx = 2 * hw + CAR.vaoPx - Math.abs(dx), fy = 2 * hh + CAR.vaoPx - Math.abs(dy);
+      if (fx <= 0 || fy <= 0) continue;
+      if (fy <= fx) { var sy = dy >= 0 ? 1 : -1; A.y -= sy * fy / 2; B.y += sy * fy / 2; }
+      else { var sx = dx >= 0 ? 1 : -1; A.x -= sx * fx / 2; B.x += sx * fx / 2; }
+    }
+    return P;
+  }
+  window.__CAR = CAR;   // conferência (big-sur-arte-2, N5): onde cada carrinho para, no tempo tc da s40
+  window.__carrosEm = function (tc) { var P = posicoesCarros(tc); return MIR.map(function (m, i) { return { nome: m.nome, km: +m.km.toFixed(3), x: +P[i].x.toFixed(1), y: +P[i].y.toFixed(1) }; }); };
   function lequeD(x, y, L) {
     var o = "";
     [-16, 0, 16].forEach(function (a) { var r = (180 + a) * Math.PI / 180; o += "M" + f1(x) + "," + f1(y) + " L" + f1(x + Math.cos(r) * L) + "," + f1(y - Math.sin(r) * L); });
@@ -406,12 +464,12 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s40, 412,800 → 427,500 s do mas
   }
   // desenha carros, leques e ícones: tc é o tempo na s40; vis multiplica a opacidade (a saída de 300 ms na s41)
   function desenharCarrosEIcones(tc, vis) {
-    var dC = "", dL = "", vc = 0, vl = 0;
-    MIR.forEach(function (m) {
+    var dC = "", dL = "", vc = 0, vl = 0, PC = posicoesCarros(tc);
+    MIR.forEach(function (m, i) {
       var a = eo(seg(tc, CAR.entra + m.atraso, 0.2)); if (a <= 0) return; vc = Math.max(vc, a);
-      var c = carroEm(m, tc); dC += carroD(c.x, c.y - 14, CAR.esc);
+      var c = PC[i]; dC += carroD(c.x, c.y - 14, CAR.esc);
       var L = CAR.lequePx * eo(seg(tc, CAR.leque + m.atraso, CAR.lequeDur));
-      if (L > 1) { dL += lequeD(c.x - 30, c.y - 14, L); vl = 1; }
+      if (L > 1) { dL += lequeD(c.x - 37.5 * CAR.esc, c.y - 14, L); vl = 1; }
     });
     var gc = E("carros"), gl = E("leques");
     if (gc) { gc.setAttribute("opacity", (vc * vis).toFixed(3)); E("carSob").setAttribute("d", dC); E("carTr").setAttribute("d", dC); }
@@ -672,6 +730,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s40, 412,800 → 427,500 s do mas
       window.__nivelBase = a >= 1 ? "alto" : a <= 0 ? "teto z10" : "fusão " + a.toFixed(2);
     } else window.__nivelBase = SAT.semTeto ? "alto (sem teto)" : "teto z10";
     if (COSTA_MAR) pint("mar", "fill-opacity", cl(SAT.mar(t), 0, 1));
+    if (MAR_L) pint("marL", "fill-opacity", cl(SAT.marL(t), 0, 1));
   }
   function aplicar(t) {
     if (!mapaCarregado) return;

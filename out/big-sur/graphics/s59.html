@@ -30,10 +30,11 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s59: 727,400 → 742,300
       −3,8°/s), aproximando devagar do mirante para a ponte. Em 'viewpoints' (6,10) o CONE DE VISÃO abre em leque em 0,6 s: as linhas
       de visada MEDIDAS no DEM (terrain-rgb-v2 z13, olho a 1,5 m sobre o mirante, rumos 75–180° de 3 em 3°, cada linha até a última
       encosta visível; os mesmos raios da s60, _tmp/arte-1/M12/dem-raios…json, copiados para _tmp/arte-1/M11/); "Illustrative" [359] de
-      6,1 ao fim. "Bixby Creek Turnout · NAMED IN THE 1986 PLAN" [361] e "Source: Monterey County, Big Sur Coast Land Use Plan, 1986"
-      [362] de 5,6 a 9,767; a pílula parada no mar, logo abaixo e à direita do mirante (x 2000, y 1270), em três linhas ("Bixby Creek
-      Turnout" / "NAMED IN THE" / "1986 PLAN": em duas, ~1.940 px, ela passaria sobre a costa), presa ao anel por uma guia curta (no alto à
-      esquerda a guia cruzaria as linhas do cone).
+      6,1 ao fim. "Bixby Creek Turnout" / "NAMED IN THE 1986 PLAN" [361] e "Source: Monterey County, Big Sur Coast Land Use Plan, 1986"
+      [362] de 6,733 ('named') a 9,767, entrando em 300 ms (ARTE-2, N7, 06/11/2026: antes no corte, 5,6, e em três linhas); a pílula
+      parada no mar, logo abaixo e à direita do mirante (x 2000, y 1270), em DUAS linhas a 120 px (a 128 ela mede 1.727 px e passaria de
+      x 3.640, e à esquerda de x 2.000 está a costa; a 120 vai de x 2.000 a ~3.624, y 1.270–1.582), presa ao anel por uma guia curta (no
+      alto à esquerda a guia cruzaria as linhas do cone). O "Illustrative" [359] fica em 6,1, com o cone que ele qualifica.
     · P3 (7,933–11,233): o mesmo relevo, sem corte: em 'homesteader's' (9,78) o Bixby Creek (o traço de riachos-costa-big-sur com
       rotulo "Bixby Creek", GNIS 269874, que passa sob o ponto da ponte) acende em --agua, de 2,5 km acima da ponte até a foz, em 1 s; o
       rótulo "Bixby Creek" [363] pousa nele em 9,767, do lado do mar. As linhas do cone esmaecem (9,4–9,9) e o leque fica só no
@@ -96,7 +97,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s59: 727,400 → 742,300
   #clipe video { position: absolute; inset: 0; width: 3840px; height: 2160px; object-fit: cover; display: block; }
   #lugar { z-index: 47; }
   #leg { left: 0; top: 0; z-index: 47; }
-  #cota { z-index: 41; }
+  #cota { z-index: 41; font-size: 120px; }   /* N7 (arte-2): em duas linhas, a 128 px a pílula tem 1.727 px e passaria de x 3.640; à esquerda de x 2.000 está a costa (o quadro de 8,0 s). A 120 (piso 104) ela vai de x 2.000 a ~3.624 */
   .guia-sob { stroke: var(--rotulo); stroke-width: 10; stroke-linecap: round; }
   .guia { stroke: var(--tinta); stroke-width: 4; stroke-linecap: round; }
   #credPlano { white-space: normal; }
@@ -110,7 +111,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s59: 727,400 → 742,300
   <div id="map"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg"><line id="guiaSob" class="guia-sob" x1="0" y1="0" x2="0" y2="0" opacity="0"/><line id="guia" class="guia" x1="0" y1="0" x2="0" y2="0" opacity="0"/></svg>
   <div id="rotulos">
-    <div class="rotulo" id="cota" data-qc-papel="rotulo">Bixby Creek Turnout<span class="sep"> · </span><span class="l2">NAMED IN THE</span><span class="l3"> 1986 PLAN</span></div>
+    <div class="rotulo" id="cota" data-qc-papel="rotulo">Bixby Creek Turnout<span class="sep"> · </span><span class="l2">NAMED IN THE 1986 PLAN</span></div>
     <div class="rotulo" id="rotRiacho" data-qc-papel="rotulo">Bixby Creek</div>
   </div>
   <div id="clipe"><video id="vid" src="../_media/footage/s59/bixby-mirante-carros-entrando.mp4" muted playsinline preload="auto"></video></div>
@@ -140,12 +141,13 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s59: 727,400 → 742,300
     anel: { entra: 5.6, sai: 11.2, pulsos: [5.75, 6.95] },
     cone: { abre: [6.10, 0.6], linhasSaem: [9.4, 0.5] },
     leg: [6.1, null],
-    cota: [5.6, 9.767],
+    cota: [6.733, 9.767],   // N7 (arte-2): em "named" (textos-tela [361] d6e57810; antes no corte, 5,6)
     riacho: { acende: [9.78, 1.0], acima_km: 2.5 }, rotRiacho: [9.767, null],
     hw: { acende: [11.24, 1.2], km: 2.5 },
     hach: { entra: [13.54, 0.6], de: 0.15, ate: 2.2 }
   };
-  var CREDITOS = [ { id: "credPlano", t0: 5.6, t1: 9.767, inteiro: true } ];
+  var COTA_X = 2000;   // N7 (arte-2): o x da cota de duas linhas (medido abaixo)
+  var CREDITOS = [ { id: "credPlano", t0: 6.733, t1: 9.767 } ];   // N7 (arte-2): com a cota, em "named", entrando em 300 ms ([362]; antes inteiro no corte, 5,6)
 
   window.__duracao = DUR;
   var E = function (id) { return document.getElementById(id); };
@@ -602,10 +604,10 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s59: 727,400 → 742,300
     // o anel no mirante, com a guia até a cota
     var pa = aplicarAnel("anel", TURN, t, C.anel.entra - 0.3, C.anel.sai, C.anel.pulsos);   // inteiro no corte seco (5,6): sob o clipe antes dele
     var co = E("cota"), gu = E("guia"), gs = E("guiaSob");
-    var vco = (t >= C.cota[0] ? 1 : 0) * (1 - eio(seg(t, C.cota[1] - 0.3, 0.3)));
+    var vtc = vidaTexto(t, C.cota[0], C.cota[1]), vco = vtc.v;   // N7 (arte-2): entra em 300 ms em "named" (antes inteira no corte)
     if (co) {
-      mostrar(co, vco, 2000, 1270);   // no mar, à direita e abaixo do mirante (em cima à esquerda a guia cruzaria o cone)
-      var x0 = 2030, y0 = 1270;
+      mostrar(co, vco, COTA_X, 1270 + vtc.sobe);   // no mar, à direita e abaixo do mirante (em cima à esquerda a guia cruzaria o cone)
+      var x0 = COTA_X + 30, y0 = 1270 + vtc.sobe;
       [gu, gs].forEach(function (el) { if (!el) return; el.setAttribute("x1", x0.toFixed(1)); el.setAttribute("y1", y0.toFixed(1));
         el.setAttribute("x2", pa ? (pa.x + 30).toFixed(1) : x0); el.setAttribute("y2", pa ? (pa.y + 30).toFixed(1) : y0); el.setAttribute("opacity", vco.toFixed(3)); });
     }

@@ -15,11 +15,13 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s49, 548,600 → 569,567 s do mas
 
   MODO: 2D (norte para cima, pitch 0). A frase diz ONDE a estrada se partiu e QUANDO; nada argumenta com a vertical (ofício §5).
   A BASE: MapTiler satellite-v2 (canal.json › mapa.perfil), tratamento C (0,92 / 0 / +0,25, identidade §6). Sem relevo.
-  A GEOMETRIA (pauta-geo): highway-1-big-sur (OSM, de Carmel à divisa, ordenada de norte a sul, 118,3 km); pauls-slide (PM 21.7) e
+  A GEOMETRIA (pauta-geo): highway-1-big-sur (OSM, de Carmel à divisa, ordenada de norte a sul, 118,3 km) e, emendada nela (big-sur-arte-2),
+    highway-1-divisa-cambria (OSM, ODbL, da divisa ao ponto da estrada mais perto de Cambria; o crédito do OSM já está na linha da base:
+    o fio vai de Carmel a Cambria, e a ponta sul fica acesa até o corte de Paul's; sem rótulo de Cambria, que o textos-tela não tem); pauls-slide (PM 21.7) e
     regents-slide (PM 27.8), os post miles da Caltrans; pela geometria, 9,77 km = 6,07 mi de um ao outro pela estrada ("6 MI").
   A CÂMERA, presa ao Regent's Slide (o ponto fica onde a tela pede e o centro sai da conta, a cada quadro):
     0 → 17,0: deriva lenta (push-in) de z 11.75 a 12.05, o Regent's de (1690, 640) a (1690, 620) na tela; o mapa nunca para.
-    17,0 → 18,5: recua 1,5 s (cúbico) a z 9.90, o Regent's em (1960, 1080): a estrada inteira, de Carmel à divisa (b4).
+    17,0 → 18,5: recua 1,5 s (cúbico) a z 9.90, o Regent's em (1960, 1080): a estrada inteira, de Carmel a Cambria (b4).
     18,5 → 20,967: deriva até z 9.86, o Regent's em (1965, 1075).
   b0 (0–3,433) o fio branco (--tinta 6 px sobre 14 de --fronteira-contorno-cor) e os dois marcadores (disco de 44 px, halo --rotulo)
      com o disco a 35 % de --tinta e o halo escuro inteiro (o disco claro a 35 % sumia sobre o fio branco).
@@ -29,12 +31,16 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s49, 548,600 → 569,567 s do mas
   b2 (7,7–12,9) "Regent’s" (9,6): o de Regent's acende e "Regent’s Slide · FEB. 9, 2024" ([276]); "gave" (10,46): o segundo corte;
      "six" (11,1): a COTA ao longo do fio, do marcador de Regent's ao de Paul's, tracejada e afastada 46 px para o lado do mar (a
      mesma geometria da estrada, com line-offset: nada desenhado à mão), e "6 MI" ([277], 11,1–16,9) no mar, ao lado dela.
+     (big-sur-arte-2) A cota corre sobre uma CÓPIA SIMPLIFICADA do trecho (Douglas-Peucker de 175 m, calculada na cena: COTA), e não
+     sobre o trecho cru do OSM, onde o line-offset dobrava nas curvas fechadas, e o afastamento de 46 px para o mar é calculado no JS
+     (cotaDesloc, pelo zoom de cada quadro), sem o line-offset do MapLibre, que abria um bloco branco na junção; e "6 MI" ganha a guia (4 px --tinta sobre 10 de
+     --rotulo) do lado direito até o meio da cota.
   b3 (12,9–16,9) A LINHA DO TEMPO de p6 (a peça de marca: linha de 6 px em --tinta em y 1700, x 200–3400; os marcos 2023 · 2024 ·
      2025 · 2026, [278], eixo 84 px, um de 900 px por ano a partir de x 330: o marco 2025 fica a ~150 px do fio, que cruza a linha ali): a barra de Paul's em --tensao cresce de JAN. 14, 2023 e
      FECHA em JUNE 23, 2024 em "reopened" (13,62), e a pílula de Paul's ganha o fim do fechamento ([275], 13,6); a de Regent's nasce
      em FEB. 9, 2024 e continua.
   b4 (16,9–20,967) "almost three years" (17,14): a de Regent's chega a JAN. 14, 2026 e a chave de ALMOST THREE YEARS une as duas (de
-     JAN. 14, 2023 a JAN. 14, 2026, 1.096 dias); a câmera recua e mostra as duas pontas, Carmel e a divisa, ACESAS até cada corte: a
+     JAN. 14, 2023 a JAN. 14, 2026, 1.096 dias); a câmera recua e mostra as duas pontas, Carmel e Cambria, ACESAS até cada corte: a
      estrada NÃO fica escura inteira (VC-06). "ALMOST THREE YEARS" ([279], 17,1) no mar, com uma guia até o meio do trecho entre os
      cortes. Os cortes ficam os dois até o fim: o lugar de cada fechamento; o QUANDO é da linha do tempo.
   OS RÓTULOS ficam PARADOS na tela (o texto parado enquanto se lê, identidade §4.4), presos ao ponto real por uma guia de 4 px em
@@ -59,6 +65,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s49, 548,600 → 569,567 s do mas
 <script src="../_media/_vendor/camera-mapa.js"></script>
 <script src="../_media/_vendor/perfil-mapa.js"></script>
 <script src="../_media/geo/highway-1-big-sur.js"></script>
+<script src="../_media/geo/highway-1-divisa-cambria.js"></script>
 <script src="../_media/geo/pauls-slide.js"></script>
 <script src="../_media/geo/regents-slide.js"></script>
 <script src="../_media/geo/costa-do-plano-1986-trecho.js"></script>
@@ -175,7 +182,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s49, 548,600 → 569,567 s do mas
   var ROT = {
     rotReg:  { l: 2250, t: 640,  lado: "esq" },
     rotPaul: { l: 2520, t: 1010, lado: "esq" },
-    rot6:    { l: 1250, t: 760 },
+    rot6:    { l: 1250, t: 760, lado: "dir" },   // a guia até o meio da cota (big-sur-arte-2)
     rotTres: { l: 300,  t: 1060, lado: "dir" }
   };
   // ═══════════════════════════════════════════════════════════════════════════════════════════════
@@ -239,10 +246,17 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s49, 548,600 → 569,567 s do mas
     falhar("o crédito de mapa montado ('" + creditoTexto + "') não é o do textos-tela.json [273].");
   if (window.__erroCena) return;
 
-  var HWY = geo("highway-1-big-sur"), PAU = geo("pauls-slide"), REG = geo("regents-slide"), TRECHO = geo("costa-do-plano-1986-trecho"), CA = geo("california");
+  var HWY = geo("highway-1-big-sur"), HWY_SUL = geo("highway-1-divisa-cambria"), PAU = geo("pauls-slide"), REG = geo("regents-slide"), TRECHO = geo("costa-do-plano-1986-trecho"), CA = geo("california");
   if (window.__erroCena) return;
   function km(a, b) { var la = (a[1] + b[1]) / 2 * Math.PI / 180; return Math.hypot((a[0] - b[0]) * 111.32 * Math.cos(la), (a[1] - b[1]) * 110.57); }
   var HC = HWY.features[0].geometry.coordinates;          // de Carmel (norte) à divisa (sul)
+  // (big-sur-arte-2) o fio continua da divisa até Cambria: a highway-1-divisa-cambria começa no último vértice da highway-1-big-sur
+  // (o mesmo ponto, conferido); junta-se sem repetir a emenda. O espectador r1 (lote 19, t 18) e o b4 da regência: "Carmel and Cambria".
+  (function () {
+    var S = HWY_SUL.features[0].geometry.coordinates, u = HC[HC.length - 1], k = (S[0][0] === u[0] && S[0][1] === u[1]) ? 1 : 0;
+    if (!k) { falhar("a highway-1-divisa-cambria não começa no fim da highway-1-big-sur"); return; }
+    HC = HC.concat(S.slice(k));
+  })();
   var HA = [0]; for (var i = 1; i < HC.length; i++) HA.push(HA[i - 1] + km(HC[i - 1], HC[i]));
   var HL = HA[HA.length - 1];
   var LL = { paul: PAU.features[0].geometry.coordinates, reg: REG.features[0].geometry.coordinates };
@@ -262,7 +276,54 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s49, 548,600 → 569,567 s do mas
     return pts;
   }
   LL.meio = pontoEm((K.paul + K.reg) / 2);               // o meio do trecho entre os cortes (a guia de ALMOST THREE YEARS)
-  window.__geoS49 = { kmPaul: K.paul, kmReg: K.reg, kmEntre: Math.abs(K.paul - K.reg), miEntre: Math.abs(K.paul - K.reg) / 1.609344 };
+  // A COTA de "6 MI" sobre uma CÓPIA SIMPLIFICADA do trecho de Regent's a Paul's (big-sur-arte-2; o achado do espectador r1, lote 19):
+  // o line-offset de 46 px (≈ 690–740 m a z 12) dobrava sobre o trecho cru do OSM nas curvas fechadas (o gancho ao sul de Regent's e a
+  // curva antes de Paul's) e deixava blocos brancos e laços. A cópia é a mesma geometria por Douglas-Peucker de 175 m (medido no
+  // _tmp/arte-2/N6/cota_s49.py: 0 dobras e 0 laços de z 11.94 a 12.05; a 150 m sobra 1 dobra a z ≤ 11.98), calculada aqui, nada gravado.
+  var COTA_DP_KM = 0.175;
+  function dpSimpl(ps, tol) {
+    if (ps.length < 3) return ps.slice();
+    var la = 36.0 * Math.PI / 180, kx = 111.32 * Math.cos(la), ky = 110.57;
+    var a = ps[0], b = ps[ps.length - 1], dx = (b[0] - a[0]) * kx, dy = (b[1] - a[1]) * ky, L = Math.hypot(dx, dy) || 1e-9, mi = -1, md = -1;
+    for (var i = 1; i < ps.length - 1; i++) { var d = Math.abs(dy * (ps[i][0] - a[0]) * kx - dx * (ps[i][1] - a[1]) * ky) / L; if (d > md) { md = d; mi = i; } }
+    if (md <= tol) return [a, b];
+    return dpSimpl(ps.slice(0, mi + 1), tol).slice(0, -1).concat(dpSimpl(ps.slice(mi), tol));
+  }
+  var COTA = dpSimpl(trecho(K.reg, K.paul) || [], COTA_DP_KM);
+  var COTA_A = [0]; for (var i = 1; i < COTA.length; i++) COTA_A.push(COTA_A[i - 1] + km(COTA[i - 1], COTA[i]));
+  var COTA_L = COTA_A[COTA_A.length - 1] || 0;
+  function cotaAte(u) {   // o pedaço da cópia de Regent's até a fração u do comprimento (a cota cresce de Regent's para Paul's)
+    var x = cl(u, 0, 1) * COTA_L; if (x < 1e-4 || COTA.length < 2) return null;
+    var pts = [COTA[0]];
+    for (var j = 1; j < COTA.length; j++) {
+      if (COTA_A[j] < x) { pts.push(COTA[j]); continue; }
+      var s = COTA_A[j] - COTA_A[j - 1], f = s > 0 ? (x - COTA_A[j - 1]) / s : 0;
+      pts.push([COTA[j - 1][0] + (COTA[j][0] - COTA[j - 1][0]) * f, COTA[j - 1][1] + (COTA[j][1] - COTA[j - 1][1]) * f]); break;
+    }
+    return pts;
+  }
+  // o deslocamento da cota, calculado aqui (big-sur-arte-2, 2º conserto): 46 px na tela para a direita de quem anda de Regent's a
+  // Paul's (o mar), em metros pelo zoom do quadro; cada vértice sai pela normal média, esticada por 1/cos da meia-curva (máx. 1,13 na cópia)
+  var COTA_PX = 46;
+  function cotaDesloc(pts) {
+    if (!pts || pts.length < 2) return null;
+    var la = 36.0 * Math.PI / 180, kx = 111320 * Math.cos(la), ky = 110574;
+    var dm = COTA_PX * 2 * Math.PI * 6378137 * Math.cos(la) / (512 * Math.pow(2, map.getZoom()));
+    var ns = [];
+    for (var i = 0; i < pts.length - 1; i++) { var dx = (pts[i + 1][0] - pts[i][0]) * kx, dy = (pts[i + 1][1] - pts[i][1]) * ky, L = Math.hypot(dx, dy) || 1e-9; ns.push([dy / L, -dx / L]); }
+    return pts.map(function (p, i) {
+      var a = ns[Math.max(0, i - 1)], b = ns[Math.min(ns.length - 1, i)], nx = a[0] + b[0], ny = a[1] + b[1], L = Math.hypot(nx, ny) || 1e-9;
+      nx /= L; ny /= L; var c = a[0] * nx + a[1] * ny, k = dm / Math.max(c, 0.5);
+      return [p[0] + nx * k / kx, p[1] + ny * k / ky];
+    });
+  }
+  function alvoCota() {   // o meio da cota NA TELA: o meio da cópia, afastado 46 px para a direita de quem anda de Regent's a Paul's (o mar)
+    var x = COTA_L / 2, j = 1; while (j < COTA.length - 1 && COTA_A[j] < x) j++;
+    var a = map.project(COTA[j - 1]), b = map.project(COTA[j]), s = COTA_A[j] - COTA_A[j - 1], f = s > 0 ? (x - COTA_A[j - 1]) / s : 0;
+    var dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy) || 1;
+    return { x: a.x + dx * f + (-dy / L) * COTA_PX, y: a.y + dy * f + (dx / L) * COTA_PX };
+  }
+  window.__geoS49 = { kmPaul: K.paul, kmReg: K.reg, kmEntre: Math.abs(K.paul - K.reg), miEntre: Math.abs(K.paul - K.reg) / 1.609344, cotaVertices: COTA.length, cotaKm: COTA_L };
 
   var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
   var COR = { marBase: tok("--agua-base", "#00050c"), tinta: tok("--tinta", "#F4F1EA"), tensao: tok("--tensao", "#E4572E"),
@@ -330,9 +391,9 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s49, 548,600 → 569,567 s do mas
         // a cota de "6 MI": a própria estrada, entre os dois marcadores, afastada 46 px para o lado do mar (o oeste, à direita de quem
         // desce para o sul), tracejada e fina, sobre um contorno escuro
         { id: "cota-sob", type: "line", source: "cota", layout: lc,
-          paint: { "line-color": COR.sob, "line-width": 10, "line-offset": 46, "line-opacity": 0 } },
+          paint: { "line-color": COR.sob, "line-width": 10, "line-opacity": 0 } },   // sem line-offset: o deslocamento é do JS (cotaDesloc)
         { id: "cota", type: "line", source: "cota", layout: { "line-join": "round", "line-cap": "butt" },
-          paint: { "line-color": COR.tinta, "line-width": 4, "line-offset": 46, "line-dasharray": [3, 2.5], "line-opacity": 0 } }
+          paint: { "line-color": COR.tinta, "line-width": 4, "line-dasharray": [3, 2.5], "line-opacity": 0 } }
       ] };
   }
 
@@ -448,7 +509,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s49, 548,600 → 569,567 s do mas
       svgEl("circle", { "class": "halo", cx: 0, cy: 0, r: 22 }, m);
       svgEl("circle", { id: id + "Disco", cx: 0, cy: 0, r: 22, fill: COR.tinta }, m);
     });
-    ["rotReg", "rotPaul", "rotTres"].forEach(function (id) {
+    ["rotReg", "rotPaul", "rot6", "rotTres"].forEach(function (id) {
       var gr = svgEl("g", { id: "guia-" + id, opacity: "0" }, gu);
       svgEl("path", { "class": "guia-sob", d: "" }, gr); svgEl("path", { "class": "guia", d: "" }, gr);
     });
@@ -521,8 +582,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s49, 548,600 → 569,567 s do mas
     }
     // a cota de "6 MI": cresce de Regent's para Paul's em "six" (0,8 s) e sai com o "6 MI"
     var uC = eio(seg(t, CENA.seis.t0, 0.8)), vC = uC > 0 ? 1 - eio(seg(t, CENA.seis.t1 - 0.3, 0.3)) : 0;
-    var kc = uC.toFixed(3);
-    if (kc !== cotaAntes) { var s3 = map.getSource("cota"); if (s3) s3.setData(fcLinhas([trecho(K.reg, K.reg + (K.paul - K.reg) * uC)])); cotaAntes = kc; }
+    var kc = uC > 0 ? uC.toFixed(3) + "|" + map.getZoom().toFixed(4) : "0";
+    if (kc !== cotaAntes) { var s3 = map.getSource("cota"); if (s3) s3.setData(fcLinhas([uC > 0 ? cotaDesloc(cotaAte(uC)) : null])); cotaAntes = kc; }
     pint("cota", "line-opacity", vC); pint("cota-sob", "line-opacity", vC * 0.9);
   }
 
@@ -589,7 +650,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s49, 548,600 → 569,567 s do mas
     aplicarPaulTexto(t);
     mostrar("rotPaul", t, CENA.paul.acende, null, pp);
     mostrar("rotReg", t, CENA.reg.acende, null, pr);
-    mostrar("rot6", t, CENA.seis.t0, CENA.seis.t1, null);
+    mostrar("rot6", t, CENA.seis.t0, CENA.seis.t1, alvoCota());
     mostrar("rotTres", t, CENA.tres, null, map.project(LL.meio));
     aplicarTempo(t);
     aplicarCreditos(t);

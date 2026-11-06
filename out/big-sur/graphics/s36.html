@@ -15,9 +15,11 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s36 (365,800 → 377,900
   O QUE A CENA FAZ (tempos desta cena: 'Part' 0,02 · 'prisoners.' 1,30 · 'San' 2,27 · 'Quentin,' 2,66 · 'three' 5,255 · 'temporary'
   5,54 · 'camps' 6,10 · 'route.' 6,82 · 'The' 7,65 · 'inmates' 7,78 · 'thirty-five' 8,62 · 'cents' 9,14 · 'reduced.' 11,06–11,49):
     · 0–2,267 (b0): abre EXATAMENTE em P-COSTA (center [-121,59, 36,14], zoom 10,3452, rumo 0, pitch 0; o pedido comum) e aproxima devagar
-      (0,02 nível/s). A Highway 1 (highway-1-big-sur, OSM) já está na tela como o FIO BRANCO "pela metade": tracejada (traço e vão iguais,
-      24 px, --tinta 6 px sobre o contorno escuro de 14 px a 60 %), a convenção de estrada em obra. DECLARADO: a metade é a do traço, não
-      um trecho; a cena não afirma que parte da estrada estava pronta em que ano (ofício §6c). Sem "PRISON LABOR" (textos-tela,
+      (0,02 nível/s). A Highway 1 (highway-1-big-sur, OSM) já está na tela como o FIO BRANCO "pela metade": a linha CHEIA da s33 e da
+      s38 (--tinta 6 px sobre o contorno escuro de 14 px), de Carmel para o sul, até a metade do comprimento, a mesma do 1º quadro da
+      s38 (big-sur-arte-2, A4 da Sala: a estrada em obra ganha o mesmo fio branco das duas; o pontilhado é a estrada velha, que some na
+      s33; até a arte-1, aqui ela era tracejada). DECLARADO: é a obra em curso, ilustrativa, como na s38; a cena não afirma que parte da
+      estrada estava pronta em que ano (ofício §6c). Sem "PRISON LABOR" (textos-tela,
       nao_vai_para_tela[32]: a voz o diz).
     · 2,267–3,767 (b1): a câmera aproxima (cúbica, 1,5 s) até o quadro dos três acampamentos (center [-121,66, 36,13], zoom 10,75); depois
       a aproximação lenta continua até o fim (0,018 nível/s, presa a Anderson Creek): o mapa não para.
@@ -90,7 +92,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s36 (365,800 → 377,900
 </style>
 </head>
 <body>
-<div id="palco" data-qc-sem-heroi="mapa da obra: a estrada tracejada, os três acampamentos (ícones), a cota San Quentin e o 35 CENTS A DAY (rótulos); nenhum herói (identidade §4.2)">
+<div id="palco" data-qc-sem-heroi="mapa da obra: o fio branco pela metade, os três acampamentos (ícones), a cota San Quentin e o 35 CENTS A DAY (rótulos); nenhum herói (identidade §4.2)">
   <div id="map"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg"></svg>
   <div id="rotulos">
@@ -239,14 +241,30 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s36 (365,800 → 377,900
     return out;
   }
   var VAZIO = { type: "FeatureCollection", features: [] };
+  // big-sur-arte-2 (A4): o FIO BRANCO pela metade, como o 1º quadro da s38 (CENA.metade 0,5 dela, de Carmel para o sul), pela mesma conta
+  // de km da s38 (a latitude média de cada trecho), para a ponta do fio cair no mesmo lugar nas duas cenas
+  var HW_METADE = (function () {
+    var c = HWC.slice(); if (c[0][1] < c[c.length - 1][1]) c.reverse();   // de Carmel (norte) para o sul
+    var km = function (a, b) { var la = (a[1] + b[1]) / 2 * Math.PI / 180; return Math.hypot((a[0] - b[0]) * 111.32 * Math.cos(la), (a[1] - b[1]) * 110.57); };
+    var L = [0]; for (var i = 1; i < c.length; i++) L.push(L[i - 1] + km(c[i - 1], c[i]));
+    var alvo = L[L.length - 1] * 0.5, out = [c[0]];
+    for (var j = 1; j < c.length; j++) {
+      if (L[j] <= alvo) { out.push(c[j]); continue; }
+      var u = (alvo - L[j - 1]) / ((L[j] - L[j - 1]) || 1);
+      out.push([c[j - 1][0] + (c[j][0] - c[j - 1][0]) * u, c[j - 1][1] + (c[j][1] - c[j - 1][1]) * u]);
+      break;
+    }
+    window.__fioMetade = out[out.length - 1];   // a ponta sul do fio (conferência)
+    return { type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: out } };
+  })();
   function camadasDaCena() {
     var lc = { "line-join": "round", "line-cap": "round" };
     return {
-      fontes: { mar: { type: "geojson", data: marDaCosta(TRECHO, CA) }, hw: { type: "geojson", data: HW }, obra: { type: "geojson", data: VAZIO } },
+      fontes: { mar: { type: "geojson", data: marDaCosta(TRECHO, CA) }, hw: { type: "geojson", data: HW_METADE }, obra: { type: "geojson", data: VAZIO } },
       camadas: [
         { id: "mar", type: "fill", source: "mar", paint: { "fill-color": COR.agua, "fill-opacity": 1, "fill-opacity-transition": SEM } },
-        { id: "hw-sob", type: "line", source: "hw", layout: lc, paint: { "line-color": COR.contorno, "line-width": 14, "line-opacity": 0.6, "line-opacity-transition": SEM } },
-        { id: "hw", type: "line", source: "hw", layout: { "line-join": "round", "line-cap": "butt" }, paint: { "line-color": COR.tinta, "line-width": 6, "line-dasharray": [4, 4], "line-opacity": 1, "line-opacity-transition": SEM } },
+        { id: "hw-sob", type: "line", source: "hw", layout: lc, paint: { "line-color": COR.contorno, "line-width": 14, "line-opacity": 1, "line-opacity-transition": SEM } },
+        { id: "hw", type: "line", source: "hw", layout: lc, paint: { "line-color": COR.tinta, "line-width": 6, "line-opacity": 1, "line-opacity-transition": SEM } },
         { id: "obra-sob", type: "line", source: "obra", layout: lc, paint: { "line-color": COR.contorno, "line-width": 16, "line-opacity": 1, "line-opacity-transition": SEM } },
         { id: "obra", type: "line", source: "obra", layout: lc, paint: { "line-color": COR.tinta, "line-width": 8, "line-opacity": 1, "line-opacity-transition": SEM } }
       ]

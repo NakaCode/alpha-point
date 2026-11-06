@@ -8,6 +8,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s28 (257,967 → 269,600
   "Mud Creek wasn't the end of it. Caltrans, California's highway department, has names for other slopes that have closed the road
    since then. Two of them are called Paul's Slide and Regent's Slide."
   Mapista, lote M6 (tarefa big-sur-arte-1, 05/11/2026): cena NOVA, sobre o corpo de mapa da s07 (M1) e do molde da pré-v1.
+  big-sur-arte-2 (lote N4, 06/11/2026): o único conserto da lista da Sala, os dois marcadores a 100 % em "other slopes" (5,4), abaixo.
+    Nada mais muda: nem a câmera, nem a deriva, nem os textos (textos-tela d6e57810: [139]–[142] iguais), nem as poses.
   O que manda: textos-tela.json 71405fb4 (s28, [138]–[142]) no QUE e na grafia; regencia.json e25d0e79 (cenas[s28], beats 0–1) no
   TEMPO e no exige; o conceito 143736c0; o espelho 446ffccc; para-passos itens 3, 16, 18 e 40 (P3 SEM miniatura: só os marcadores).
   MODO 2D (norte para cima, pitch 0): a frase diz ONDE ficam as encostas com nome ao longo da estrada; nada argumenta com a vertical.
@@ -28,8 +30,11 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s28 (257,967 → 269,600
   b0 (0–8,033): "Mud Creek" (0–8,0) no mar, abaixo e à esquerda do marcador (a estrada corre de NO a SE: o quadrante SO fica
     livre dela); 2,0 ("Caltrans,"): os dois marcadores esperam nos post miles da Caltrans (pauls-slide PM 21.7, regents-slide
     PM 27.8), em --tinta a 35 %; "Source: Caltrans, 2026" de 2,0 ao fim (a regência pedia CALTRANS na legenda; o textos-tela
-    [142] o fez crédito, VP-A-111, e ele vence). 7,7–8,0: o marcador de Mud Creek e o nome saem.
-  b1 (8,033–11,633): 9,033 ("Paul's"): o marcador de Paul's Slide acende em --tensao (0,3 s) com um pulso e "Paul’s Slide";
+    [142] o fez crédito, VP-A-111, e ele vence). 5,4 ("other slopes"; big-sur-arte-2, espectador r1 lote 9): os dois marcadores
+    passam de 35 % a 100 % em 0,3 s, ainda em --tinta, com UM pulso (o anel de 1,2 s do acender do b1, em --tinta, sem o --tensao):
+    as outras encostas ganham os dois pontos na tela já na fala, e o trecho de 2,2 a 9,0 s deixa de esperar parado. 7,7–8,0: o
+    marcador de Mud Creek e o nome saem.
+  b1 (8,033–11,633): 9,033 ("Paul's"): o marcador de Paul's Slide (já a 100 %) acende em --tensao (0,3 s) com um pulso e "Paul’s Slide";
     10,0 ("and Regent's"): o de Regent's Slide, com "Regent’s Slide". SÓ OS MARCADORES, sem miniatura (para-passos 16 e 18 (1),
     item 40 (2): Paul's Slide não tem foto entregue; a aérea da Caltrans de Regent's vai a s09 e fica em s48).
   O SATÉLITE POR TRECHO (a regra da Sala, 05/11/2026, 20:1x; retomada-teto.md): UM trecho só, DE PERTO. Zoom de 11.5 a 12.5 (o 1º
@@ -41,7 +46,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s28 (257,967 → 269,600
     TIGER (costa-do-plano-1986-trecho), com a costa do estado (california, cb_2025 500k) além dele, em --agua-base opaca, do 1º ao
     último quadro, por baixo da estrada e dos marcadores: a função marDaCosta da s07/s31, sem mudança. O fim da s27 (M5) leva a
     mesma água, na mesma geometria, no mesmo token e na mesma opacidade: a pose casada continua.
-  ELEMENTOS (teto 6): b0 = a estrada, Mud Creek (marcador e nome), 2 marcadores (4); b1 = a estrada, 2 marcadores, 2 nomes (5).
+  ELEMENTOS (teto 6): b0 = a estrada, Mud Creek (marcador e nome), 2 marcadores (4, também depois de 5,4: os marcadores só sobem de
+    opacidade); b1 = a estrada, 2 marcadores, 2 nomes (5).
   CRÉDITOS a 60 px (var(--fs-credito)): "© MapTiler © OpenStreetMap contributors" do 1º ao último quadro (cobre o OSM da Highway 1;
     data-qc-credito="mapa" só nele); "Source: Caltrans, 2026" logo acima. Os pontos (mud-creek, pauls-slide, regents-slide) são fato
     publicado, sem crédito de geometria (pauta-geo).
@@ -108,6 +114,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s28 (257,967 → 269,600
   var CENA = {
     mud: { sai: 8.0, rot: [0.0, 8.0] },                       // textos-tela [139]
     espera: 2.0,                                              // "Caltrans," (2,023): os dois marcadores a 35 %
+    outras: 5.4,                                              // "other slopes" (5,403): os dois a 100 %, em --tinta, com um pulso (arte-2)
     paul: { acende: 9.033, rot: [9.033, 11.633] },            // textos-tela [140], "Paul's"
     reg: { acende: 10.0, rot: [10.0, 11.633] },               // textos-tela [141], "and Regent's"
     estrada: { sul: [0.0, 0.8, 16], norte: [0.0, 2.2], latNorte: 36.24 }
@@ -386,8 +393,9 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s28 (257,967 → 269,600
     return g;
   }
   ["marcaMud", "marcaPaul", "marcaReg"].forEach(criarMarca);
-  // v: a opacidade do marcador; acesa: 0 (--tinta) → 1 (--tensao); pulso: o instante do pulso (1 → 1,8 em 1,2 s) ou null
-  function aplicarMarca(id, ll, v, acesa, pulso, t) {
+  // v: a opacidade do marcador; acesa: 0 (--tinta) → 1 (--tensao); pulso: o instante do pulso (1 → 1,8 em 1,2 s) ou null;
+  // corPulso: a cor do traço do pulso (sem ela, a da classe, --tensao)
+  function aplicarMarca(id, ll, v, acesa, pulso, t, corPulso) {
     var g = E(id); if (!g) return null;
     var p = map.project(ll);
     g.setAttribute("transform", "translate(" + p.x.toFixed(2) + " " + p.y.toFixed(2) + ")");
@@ -398,6 +406,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s28 (257,967 → 269,600
       var u = pulso === null ? -1 : (t - pulso) / 1.2, vivo = u >= 0 && u < 1;
       c.setAttribute("transform", "scale(" + (1 + 0.8 * (vivo ? u : 0)).toFixed(4) + ")");
       c.setAttribute("opacity", vivo ? (1 - u).toFixed(3) : "0");
+      c.style.stroke = corPulso || "";
     }
     return p;
   }
@@ -458,9 +467,13 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s28 (257,967 → 269,600
     var pm = aplicarMarca("marcaMud", LL.mud, vMud, 1, null, t);
     rotuloSO("rotMud", pm, t, M.rot[0], M.rot[1], 35 - 30 * eio(seg(t, SOBE[0], SOBE[1])));
     var vEsp = 0.35 * eo(seg(t, CENA.espera, 0.3));                          // --tinta a 35 %, à espera
+    vEsp += (1 - vEsp) * eo(seg(t, CENA.outras, 0.3));                       // "other slopes": a 100 %, ainda em --tinta
     var aP = eo(seg(t, Pa.acende, 0.3)), aR = eo(seg(t, R.acende, 0.3));
-    var pp = aplicarMarca("marcaPaul", LL.paul, vEsp + (1 - vEsp) * aP, aP, Pa.acende, t);
-    var pr = aplicarMarca("marcaReg", LL.reg, vEsp + (1 - vEsp) * aR, aR, R.acende, t);
+    // o pulso: o de "other slopes" em --tinta; o do acender (o nome) em --tensao, como antes
+    var puP = t >= Pa.acende ? [Pa.acende, COR.tensao] : [CENA.outras, COR.tinta];
+    var puR = t >= R.acende ? [R.acende, COR.tensao] : [CENA.outras, COR.tinta];
+    var pp = aplicarMarca("marcaPaul", LL.paul, vEsp + (1 - vEsp) * aP, aP, puP[0], t, puP[1]);
+    var pr = aplicarMarca("marcaReg", LL.reg, vEsp + (1 - vEsp) * aR, aR, puR[0], t, puR[1]);
     rotuloSO("rotPaul", pp, t, Pa.rot[0], null);
     rotuloSO("rotReg", pr, t, R.rot[0], null);
   }

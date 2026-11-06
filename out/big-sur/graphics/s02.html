@@ -30,7 +30,10 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s02 (4,000 → 7,900 s d
       "Source: U.S. Census Bureau, 2025 estimates" (até o fim, e continua na s03).
   ELEMENTOS no fim (teto 6): o anel, a Califórnia, LA com o nome, SF com o nome (cada território com o nome é um), o 17 MILLION+ = 5.
   CRÉDITOS a 60 px (var(--fs-credito)): "© MapTiler © OpenStreetMap contributors" do 1º ao último quadro (data-qc-credito="mapa" só
-    nele); "Mavic of Steel / Wikimedia Commons · CC BY-SA 4.0" de 0 a 0,8; "Source: U.S. Census Bureau, 2025 estimates" de 1,73 ao fim.
+    nele); "Mavic of Steel / Wikimedia Commons" / "CC BY-SA 4.0" (duas linhas, o "·" sai na quebra: T1) de 0 a 0,8; "Source: U.S.
+    Census Bureau, 2025 estimates" de 1,73 ao fim.
+  ARTE-2 (big-sur-arte-2, 06/11/2026, mapista N1): só a lista da Sala. T1/E: o crédito da foto perde o "·" do começo da 2ª linha. A6: a
+    água escura sai em 1,0–1,25 s (antes 0,75–1,0), cobrindo a emenda do mosaico no mar de 0,87 a 1,05 s. O resto é o da arte-1.
     A geometria é toda de domínio público (Census): nenhum crédito de camada.
   A MÍDIA: _media/foto/s01/s01-bixby-bridge-aerial-2023-06-24-mavic-of-steel-commons.jpg (sha256 12ff1597…), conferencia-midia.json
     470095dc › candidatos[37], cena s02, lote 3: "aprovado" (reuso declarado), casado pelo sha256 do arquivo; aviso_de_ano sim
@@ -101,7 +104,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s02 (4,000 → 7,900 s d
   <div id="foto"><img id="fotoImg" alt=""></div>
   <div id="fotoBorda"></div>
   <div id="aviso" class="legenda aviso" data-qc-papel="eixo">Photo from 2023</div>
-  <div id="credFoto" class="credito" data-qc-papel="credito">Mavic of Steel / Wikimedia Commons<br>· CC BY-SA 4.0</div>
+  <div id="credFoto" class="credito" data-qc-papel="credito">Mavic of Steel / Wikimedia Commons<br>CC BY-SA 4.0</div>
   <div id="credCenso" class="credito" data-qc-papel="credito">Source: U.S. Census Bureau, 2025 estimates</div>
   <div id="credMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa"></div>
   <div id="erroCena" hidden></div>
@@ -529,7 +532,10 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s02 (4,000 → 7,900 s d
     var vm = eo(seg(t, CENA.metros.entra, 0.5));
     opac("metros-fill", "fill-opacity", 0.35 * vm);   // --territorio-contraparte-cor: --contraparte a 35 %
     opac("metros-linha", "line-opacity", vm);
-    opac("mar", "fill-opacity", 1 - eio(seg(t, 0.75, 0.25)));   // a água escura só de perto: sai na subida, antes de a escala do estado mostrar a borda dela
+    // a água escura só de perto: fica inteira até o meio da fusão do satélite (1,0 s) e sai até o fim dela (1,25 s), antes de a escala do
+    // estado mostrar a borda dela (o quadro só passa de 37,3 N em ~1,29 s); arte-2, A6: antes saía em 0,75–1,0 s, e a emenda do mosaico
+    // aparecia no mar, ao norte da ponte, de 0,87 a 1,05 s
+    opac("mar", "fill-opacity", 1 - eio(seg(t, 1.0, 0.25)));
     var vc = eo(seg(t, CENA.ca.entra, 0.5));
     opac("ca-sob", "line-opacity", vc); opac("ca", "line-opacity", vc);
     var pa = aplicarAnel("anel", BIX, t, CENA.anel.entra, null, []);
