@@ -1,137 +1,132 @@
 {
- "cena": "s43",
- "aprovado": false,
- "gatesDuros": [
-  "carga"
- ],
- "lentes": [
-  {
-   "lente": "espaco",
-   "nota": 8,
-   "problemas": [
-    "exceção do Lucas: qc-tamanho, crédito a 60 px (60<72), 24/10/2026, no sha1 38d2a812… (out/big-sur/qc/_excecoes-portao.json). A saída literal do qc-cena na cena: tamanho = só o crédito 'Source: Monterey County, Big Sur Coast Land ' 60<72; carga = RITMO. portao-margens 0, portao-mapa til 0 e rodape 0, conferir 0 (lidos em conferir-arte1.json e no relato da Arte, sem remedir). Sem relevo 3D: a margem é a do portão.",
-    "limitação de portão (RITMO, qc-carga): em triagem da Sala. Lido: '✗ RITMO: 0.94 entradas/s (teto 0.9)'. O portão conta as 4 marcas antigas da linha do tempo (1880s, 1919, 1937, 1965, que entram juntas em 1,933 s como UMA peça de série) como 4 entradas; no textos-tela é um texto só ([234]). Nos quadros a entrada é uma só (a linha pousa de uma vez). Sem esse portão, a cena aprovaria: todas as lentes >= 7.",
-    "sinalização (nota 8): na parte de mapa, a cota '≈ HALF THE COASTAL ZONE PUBLIC · 1986' (3 linhas, 128 px, 6 palavras) e o rótulo 'Public land, 2025' (128 px) ficam empilhados com ~30 px de vão (recorte 4K a 7,0 s) e leem-se como um bloco só; é o desenho do redator (papéis cota e rotulo), por isso não reprova. A cota conta como 1 dos 3 blocos de texto.",
-    "sinalização: os dois créditos de 60 px (o do plano e o do mapa) ficam empilhados no canto inferior esquerdo de 5,8 a 8,2 s, em pílulas separadas, dentro da faixa abaixo de y 1880 e antes de x 1720 (olhado no recorte 4K); sem aviso do portão de margens."
-   ],
-   "correcoes": []
-  },
-  {
-   "lente": "factual",
-   "nota": 7,
-   "problemas": [
-    "todo texto da cena confere com o textos-tela.json (cabeçalho, linha da capa, as 5 marcas, a cota, o rótulo, os créditos); a capa não leva ano (item 5 do para-passos); a marca '1986' entra em 2,383 s, na palavra 'eighty-six' (words.json 447,45 s); a cota entra em 5,8 s, em 'much' (450,89 s).",
-    "sinalização, a mais importante da cena (nota 7): a guia do rótulo 'Public land, 2025' termina num ponto, [-121.62, 36.19], que a Arte declara 'dentro da terra pública' (cabeçalho do HTML, linhas 699-700), mas que NÃO está dentro do preenchimento: teste de ponto em polígono contra out/big-sur/_media/geo/terra-publica-costa-big-sur.json dá fora para (-121.62, 36.19) e dentro para (-121.66, 36.19). No recorte 4K a 7,0 s (q1-L15-c2-geometria-7.0.png) a guia atravessa a faixa cinza-violeta da terra pública, passa a borda tracejada do plano e o círculo branco pousa ~40 px (4K) além dela, na mata escura sem preenchimento. Não inverte o sentido (a guia cruza a faixa certa e o ponto cai em floresta nacional, pelo comentário da Arte), por isso não reprova; mas é a âncora fora do elemento que ela nomeia (lente 2, associação posicional).",
-    "sinalização: o preenchimento é a terra pública de 2025 (PAD-US 4.1) sob uma cota de 1986; os dois anos estão escritos nas duas pílulas, e o item 46 do para-passos decidiu assim. Honesto (a tela preserva a data de cada afirmação), mas a faixa cobre visualmente mais que 'metade' da zona tracejada. Não reprova."
-   ],
-   "correcoes": [
-    "mover a âncora de rotPub, [-121.6200, 36.1900], para um ponto dentro do preenchimento, por exemplo [-121.66, 36.19] (testado dentro), no ROT do s43.html; exige novo render com tiles (editor-de-arte). Não segura o aprovado."
-   ]
-  },
-  {
-   "lente": "wordlock",
-   "nota": 7,
-   "problemas": [
-    "o começo está coberto: a capa pousa em 0,0 s sobre 'The county's answer…' e assenta em 0,73 s (medido: o papel para de se mover em 0,73 s, sem retorno); a linha do tempo entra em 1,933 s, ~50 ms antes de 'nineteen' (1,98 s); a marca '1986' e o tique entram em 2,383 s, em 'eighty-six'. O mapa corta em 5,067 s sobre 'By then,' (450,14 s) e a cota entra em 5,8 s, em 'much'.",
-    "sinalização (nota 7): o rótulo 'Public land, 2025' e o preenchimento da terra pública acendem em 5,8 s, 1,54 s antes de 'public land' (452,41 s, 7,34 s locais; a regência escreve 7,343 s para a camada). A Arte seguiu o t0 do textos-tela (5,8 s, que manda sobre a regência) e declarou o desvio; rótulo e cota entram juntos como uma peça, e 'much of this coast' já nomeia a coisa. Não reprova; manter 5,8 s ou levar o rótulo a ~7,3 s é decisão da Sala e do redator.",
-    "nenhum elemento atrasado por ritmo nesta cena; a saída dos textos em 8,2 s cai depois de 'land.' (~453,3 s)."
-   ],
-   "correcoes": []
-  },
-  {
-   "lente": "abordagem",
-   "nota": 8,
-   "problemas": [
-    "o modo é o certo: DOCUMENTO sobre a mesa (a capa do plano, a data na linha do tempo) e depois MAPA (terra pública sobre a costa); a regência (b0 documento_real, b1 mapa) manda e a execução a segue. A capa é a mesma folha de s06/s39 (volta do documento citado), conforme a Arte.",
-    "sinalização: sem registro real na cena (P1 recriado, P2 satélite); é o previsto pela regência (a licença do plano não foi lida, midia.md §7.1: recria-se com a fonte citada)."
-   ],
-   "correcoes": []
-  },
-  {
-   "lente": "acessibilidade",
-   "nota": 7,
-   "problemas": [
-    "em 2 s o espectador entende o primeiro bloco (um documento do condado, uma linha do tempo que termina em 1986) e o segundo (a costa, uma faixa acesa e 'metade da zona costeira pública').",
-    "sinalização (nota 7): a linha tracejada no mapa não tem nome; só a cota 'COASTAL ZONE' a explica por vizinhança, e 'Public land, 2025' sob '1986' faz o leigo parar numa conta mental (metade em 1986, a faixa de hoje). Lido só o texto, levanta a pergunta 'metade quando?' antes de respondê-la; os dois anos escritos a respondem em seguida. Não reprova."
-   ],
-   "correcoes": [
-    "opcional, do textos-tela e não da cena: nome curto na linha tracejada (por exemplo 'Plan boundary') ou uma guia da cota ao tracejado."
-   ]
-  },
-  {
-   "lente": "poluicao",
-   "nota": 7,
-   "problemas": [
-    "P1: 2 elementos (folha + linha do tempo) mais crédito: respira. P2 de 5,8 a 7,9 s: cota, rótulo, guia com ponto, terra pública acesa, tracejado do plano e fio da Highway 1 = 6 elementos, no teto da marca (identidade §4.2); cena que encosta no teto está no pior extremo: sinalizo. O qc-carga só reprovou o RITMO, não a contagem. Blocos de texto: no máximo 2 (cota e folha), sem passar de 3.",
-    "teste de lastro: as 4 marcas antigas da linha do tempo (1880s, 1919, 1937, 1965) não têm palavra nesta janela; a fala só convoca 'nineteen eighty-six'. Tratadas como orientação mínima sem a qual a linha seria ilegível (exceção a) e como a volta da peça de série (s33, s41), paga com o 1986; por isso sinalização e não reprova. O tique mudo de 1934 é regra de série 6."
-   ],
-   "correcoes": []
-  },
-  {
-   "lente": "motion",
-   "nota": 7,
-   "problemas": [
-    "P1: a capa chega de 0,0 a 0,73 s com assentamento único (bbox do papel a 30 quadros/s: 395 → 382 px de largura, monótono, sem retorno nem bounce); fitas e sombra no mesmo gesto; linha do tempo entra descendo; câmera 1,00 → 1,02 de 2,9 a 4,8 s sobre texto que ninguém lê palavra a palavra (nada é grifado nesta cena); deriva e push param em 4,82 s: diff médio entre quadros em 4,87-5,07 s fica em 0,08-0,15 (ruído). O crédito sai com fade de 4,77 a 5,07 s: é opacidade, não movimento de objeto, e a regra dos 250 ms não o pega; sinalizo.",
-    "P2: corte seco documento → mapa (não é mapa seguido de mapa). O mapa vai de zoom 10,28 a 10,345 em 3,4 s (declarado em __cameraAt; ×1,046, ~35-45 px no 4K em ponto longe do centro; não remedido): movimento contínuo e sem degrau, mas quase imperceptível; é o que a pose casada com a s44 pede (chega com velocidade zero). Entre 6,3 e 7,9 s o que se mexe é só esse zoom, 1,6 s, abaixo dos 2 s da regra. Saída dos elementos de 7,9 a 8,2 s (pico de diff 2,1 em 8,07 s) e, de 8,2 a 8,5 s, só o zoom (diff 0,31 constante). A troca para a s44 é da emenda E1, não julgada aqui."
-   ],
-   "correcoes": [
-    "sinalização, não reprova: se houver rerender, um empurrão um pouco maior no P2 (por exemplo zoom 10,28 → 10,40) cabe desde que a pose de 8,5 s siga igual à abertura da s44; hoje o mapa lê como quase parado, carregado pelo preenchimento e pelas pílulas."
-   ]
-  },
-  {
-   "lente": "fonte",
-   "nota": 8,
-   "problemas": [
-    "exceção do Lucas: qc-tamanho, crédito a 60 px, 24/10/2026 (ver espaco). Os créditos conferem com o textos-tela: 'Source: Monterey County, Big Sur Coast Land Use Plan, 1986' (0-5,067 s e 5,8-8,2 s, duas linhas, data-qc-papel=credito); '© MapTiler © OpenStreetMap contributors' (5,067-8,5 s, visto em 5,15, 5,5, 5,9, 6,6, 7,6, 8,0, 8,3 e 8,466 s). O OSM (fio da Highway 1) está coberto por ele. Mesa Landsat e PAD-US são domínio público: sem crédito, correto. Sem arquivo de registro de _media/, a cena não precisa de veredito do conferente. Crédito-fantasma: nenhum (o crédito do plano aparece junto da cota que usa o dado do plano)."
-   ],
-   "correcoes": []
-  },
-  {
-   "lente": "tema",
-   "nota": 8,
-   "problemas": [
-    "mesa de feltro sob a luz com a folha e as fitas (identidade §5, A MESA); mapa em satélite escurecido com água escura; terra pública no tom --contexto-3 a 25 % (cor de toda terra federal do vídeo), tracejado e fio brancos de formas diferentes (tracejado = plano, contínuo = estrada). Família coerente com s33/s41/s44 conforme os relatos da Arte (não abri as cenas irmãs).",
-    "sinalização (os contornos fracos): o preenchimento a 25 % sobre a mata escura lê-se no recorte 4K, mas nos quadros de 960 px fica apagado, sobretudo ao sul; quem o sustenta é o tracejado. Sem véu nem vinheta no mapa."
-   ],
-   "correcoes": []
-  },
-  {
-   "lente": "cobertura",
-   "nota": 8,
-   "problemas": [
-    "o concreto central da janela é o plano do condado (capa recriada, com título e fonte) e a costa pública (satélite da costa com a terra pública): a coisa nomeada aparece. Sem foto do documento (a licença do plano não foi lida; a recriação com a fonte citada é a saída da marca)."
-   ],
-   "correcoes": []
-  },
-  {
-   "lente": "cadencia",
-   "nota": 8,
-   "problemas": [
-    "duas imagens em 8,5 s (mesa/documento 5,07 s; mapa 3,43 s), com troca de linguagem no corte seco; nada passa do teto de 6 s parado: P1 tem a chegada, a linha em 1,93 s, o 1986 em 2,38 s e o push de 2,9 a 4,8 s; P2 tem a camada em 5,8 s e a saída em 7,9 s. Elementos com >= 2,0 s no ar (cota 2,4 s). Sem footage nem mídia baixada sem uso; regime normal da regência."
-   ],
-   "correcoes": []
-  },
-  {
-   "lente": "autoria",
-   "nota": 8,
-   "problemas": [
-    "a capa é recriada no visual da casa (Courier sobre papel, fitas, sombra), sem brasão, selo, timbre nem logo, com o título e a linha do programa como o plano os escreve e o crédito da fonte na tela: é a saída 'tipografia declarada' da lente e o que midia.md §7.1 manda sem a permissão gravada; não afirma ser uma edição particular. Nenhuma capa de terceiro desenhada para parecer o objeto."
-   ],
-   "correcoes": []
-  },
-  {
-   "lente": "camadas",
-   "nota": 10,
-   "problemas": [],
-   "correcoes": []
-  },
-  {
-   "lente": "circulo",
-   "nota": 8,
-   "problemas": [
-    "a cena avança: o 1986 entra na linha do tempo (dado novo em relação à s33/s41) e o mapa acende a terra pública com a cota (dado novo); a capa e a linha do tempo são callbacks declarados (s06/s39, s33/s41), pagos com informação nova. Julgado pelos relatos da Arte e pelo conceito, sem abrir as cenas irmãs (teto de imagens)."
-   ],
-   "correcoes": []
-  }
- ]
+  "cena": "s43",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "exceção do Lucas: qc-tamanho, crédito a 60 px (60<72), 24/10/2026, no sha1 30b8317d… (out/big-sur/qc/_excecoes-portao.json; a saída literal do qc-cena é só \"[credito] Source: Monterey County, Big Sur Coast Land 60<72\"). Lido, sem remedir: qc-carga passou (ritmo 0,82 entradas/s, pior 1 s = 3, teto 4), portao-margens 0 no sha1 30b8317d (28 itens), portao-mapa til 0 e rodape 0 (8,80:1), conferir 0. Sem relevo 3D: a margem é a do portão. Clipe 3840×2160, 8,5 s, carimbo 30b8317d…/2160p igual ao sha1 do HTML.",
+        "Item da lista FEITO, o crédito do plano [238] sem piscar no corte: visto em 5,00 s (documento, o [235] inteiro) e 5,10 s (mapa, o [238] inteiro acima do crédito de mapa) no recorte 4K lado a lado: mesmo texto, mesmo corpo, as duas linhas a 100 % nos dois quadros. A posição sobe uma linha (~110 px) no corte porque o crédito de mapa passa a ficar embaixo; o salto cai dentro do corte seco documento → mapa, e não pisca. Defeito novo: nenhum.",
+        "Quadros 0,50 / 2,50 / 4,40 / 5,00 / 5,10 / 6,00 / 6,50 / 6,70 / 7,00 / 7,50 / 8,20 / 8,47 s: nenhum texto sobre outro. De 6,6 a 8,2 s a cota (3 linhas) e o rótulo \"Public land, 2025\" ficam empilhados com ~30 px de vão (recorte 4K de 7,5 s) e leem-se como um bloco: é o desenho do redator, sinalização como na qualidade-1. Os dois créditos de 60 px ficam empilhados à esquerda dentro da faixa de crédito, sem aviso do portão de margens."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "A1 FEITO. A âncora de rotPub foi para [-121.66, 36.19]. No recorte 4K de 7,5 s a ponta da guia (o círculo branco) pousa na faixa lavanda da terra pública, junto do tracejado do plano no norte, e não além dele na mata escura como na qualidade-1; a prova por conta que a Arte relatou (ponto em polígono: -121.66 dentro, -121.62 fora) concorda com o que o quadro mostra. Visto em 7,0 e 7,5 s. Defeito novo: nenhum.",
+        "Todo texto confere com o textos-tela (cabeçalho, linha da capa, 5 marcas da linha do tempo, cota, rótulo, créditos); a capa não leva ano.",
+        "sinalização (o sinal da texto-3, \"a s43 antes de 6,6 s\"): de 5,8 a 6,6 s a cota diz \"≈ HALF THE COASTAL ZONE PUBLIC · 1986\" com o tracejado do plano na tela e ainda sem terra pública acesa (visto em 6,00 e 6,50 s); a camada acende em 6,6 s. Nesses ~0,8 s a tela afirma e não prova, mas também não contradiz: o tracejado desenha a zona costeira de que a cota fala e a voz diz \"much of this coast\" em 5,82 s. Não reprova. O preenchimento é de 2025 sob uma cota de 1986; as duas datas estão escritas nas duas pílulas (item 46 do para-passos)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 8,
+      "problemas": [
+        "FEITO: o rótulo \"Public land, 2025\" entra em 6,6 s, em \"was\" (6,628 s), e a camada acende junto (vista a 6,70 s com o rótulo ainda subindo e o preenchimento começando; ausente em 6,50 s), nunca antes. Os tempos de abertura continuam: capa em 0,0 s, linha do tempo em 1,93 s, \"1986\" em 2,38 s (\"eighty-six\"), corte em 5,07 s (\"By\"), cota em 5,8 s (\"much\"). A saída em 8,2 s cai depois de \"land.\" (8,01 s); em 8,20 e 8,47 s só ficam o mapa e a terra pública.",
+        "Nenhum elemento atrasado por ritmo nesta cena: o conserto do RITMO foi tirar a piscada do crédito, não atrasar entrada; a única mudança de t0 é a da lista (6,6 s), que aproxima o rótulo da palavra que o convoca (\"public land\", 7,34 s). Re-checado contra a fala."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 8,
+      "problemas": [
+        "DOCUMENTO sobre a mesa e depois MAPA: certo, pela regência (b0 documento_real, b1 mapa). A capa é recriada no visual da casa. Sem registro real na cena, como a regência prevê (a licença do plano não foi lida)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 7,
+      "problemas": [
+        "Em 2 s se entende o documento do condado e a linha que termina em 1986; depois a costa com uma zona tracejada e a cota. De 6,6 a 8,2 s o rótulo \"Public land, 2025\" com a guia liga a faixa à legenda.",
+        "sinalização: o preenchimento da terra pública (25 %) lê-se nos quadros de 7,0 e 7,5 s como uma faixa lavanda fina junto da costa, mas apagada sobretudo ao sul e nos quadros reduzidos; o tracejado e a guia a sustentam (ponto do pedido, \"contornos fracos\"). \"Public land, 2025\" sob \"1986\" ainda pede uma conta mental (metade quando?), respondida pelos dois anos na tela. Não reprova.",
+        "Resposta ao ponto \"a VIDA de Public land, 2025\": com ~0,3 s de entrada, 1,0 s inteiro a 100 % e ~0,3 s de saída (6,6–8,2 s), as 3 palavras de 128 px se leem (visto em 7,0 e 7,5 s, e o rótulo lido junto da fala \"was already public land\", 6,63–8,0 s). Lê-se; fica justo."
+      ],
+      "correcoes": [
+        "opcional, do textos-tela e não da cena: nome curto na linha tracejada (ex.: \"Plan boundary\") ou guia da cota ao tracejado."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 7,
+      "problemas": [
+        "P1 (0–5,07 s): folha + linha do tempo + crédito, respira. P2 de 6,6 a 8,0 s: cota, rótulo, guia com ponto, terra pública, tracejado e fio da Highway 1 = 6 elementos, no teto da marca (identidade.md §4.2); cena que encosta no teto: sinalizo. Blocos de texto: no máximo 2. O qc-carga passou. Teste de lastro: as marcas 1880s/1919/1937/1965 não têm palavra na janela, mas são a orientação mínima da linha do tempo e a volta da peça de série (s33/s41), paga com o 1986: exceção (a), sinaliza. Nenhuma entidade HTML nem tofu."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 7,
+      "problemas": [
+        "P1: a capa chega e assenta uma vez (0,5 s já assentada, sem retorno), a linha do tempo pousa em 1,93 s e o 1986 em 2,38 s; a câmera só empurra de 2,9 a 4,8 s, e o quadro de 4,40 / 5,00 s é o mesmo (repouso antes do corte, nada se move nos 250 ms finais). Corte seco documento → mapa, não mapa seguido de mapa.",
+        "P2: o mapa anda de zoom 10,28 a 10,3452 (×1,046 em 3,4 s, ease-out até a pose da s44); de 5,1 a 6,0 s o que se vê é o mapa quase parado com o tracejado e o crédito, e de 6,6 a 7,1 s a terra pública acende (6,50 → 6,70 → 7,00 s), o que carrega o quadro; de 7,1 a 7,9 s só o zoom lento; saída dos textos em 7,9–8,2 s. É o que a pose casada com a s44 pede (chega a velocidade zero). Sinalização, igual à qualidade-1: o mapa lê como quase parado fora do acender da camada. A troca s43 → s44 é da emenda E1, não julgada aqui."
+      ],
+      "correcoes": [
+        "sinalização, não reprova: com render novo, um empurrão um pouco maior no P2 (ex.: 10,28 → 10,40) cabe desde que a pose de 8,5 s siga igual à abertura da s44."
+      ]
+    },
+    {
+      "lente": "fonte",
+      "nota": 8,
+      "problemas": [
+        "exceção do Lucas: qc-tamanho, crédito a 60 px (60<72), 24/10/2026, no sha1 30b8317d… (out/big-sur/qc/_excecoes-portao.json; a saída literal do qc-cena é só \"[credito] Source: Monterey County, Big Sur Coast Land 60<72\").",
+        "Os créditos conferem com o textos-tela: \"Source: Monterey County, Big Sur Coast Land Use Plan, 1986\" (0–5,07 s e 5,07–8,2 s, duas linhas, data-qc-papel=credito; visto em 0,50, 2,50, 4,40, 5,00, 5,10, 6,00, 6,50, 7,00, 7,50 s, e ausente em 8,20 s) e \"© MapTiler © OpenStreetMap contributors\" (5,07–8,5 s, visto de 5,10 a 8,47 s), que cobre o OSM do fio da Highway 1. Mesa Landsat e PAD-US são domínio público: sem crédito, correto. Sem arquivo de _media/ na cena: sem veredito a casar nem crédito-fantasma."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 8,
+      "problemas": [
+        "Mesa de feltro sob a luz com a folha e as fitas (visto em 0,50–5,00 s); mapa em satélite escurecido com água escura e sem véu; terra pública em --contexto-3 a 25 %, tracejado (plano) e fio contínuo (estrada), formas diferentes; sem degradê no mapa. Família coerente com a s33/s41/s44 (a pose do último quadro, 8,47 s, tem a mesma terra pública, a mesma água e o mesmo fio que o 1º quadro da s44 pelos relatos; o clipe da s44 é de outro lote)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "O concreto central é o plano do condado (capa recriada, com título e fonte) e a costa pública (satélite com a terra pública): a coisa nomeada aparece. Sem foto do documento (licença não lida; recriação com a fonte citada é a saída da marca)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 7,
+      "problemas": [
+        "Duas imagens em 8,5 s (mesa 5,07 s; mapa 3,43 s), com troca de linguagem no corte; nada passa de 6 s parado. Elementos de texto ≥ 2,0 s no ar: cota (5,8–8,2 s, 2,4 s) sim; \"Public land, 2025\" (6,6–8,2 s) fica 1,6 s nominais (1,4 s descontando as rampas de 300 ms, como o portão mede), abaixo do piso de 2,0 s da marca (identidade.md §4.3) e acima do piso de ofício de ~1,5 s, no limite. É o tempo do textos-tela (\"fica 1,6 s no ar\") e é decisão de texto, não da Arte. Sinalizo em 7 (não reprovo): o rótulo se lê (ver acessibilidade) e está preso à fala; o portão deu só o aviso VIDA, não reprovou. O RITMO agora passa (0,82/s)."
+      ],
+      "correcoes": [
+        "decisão de texto, para a Sala/redator: só se o Lucas quiser os 2,0 s cheios, o rótulo teria de entrar antes de 6,6 s (e a camada com ele) ou o t1 passar de 8,2 s; mas o t1 de 8,5 s deixava o rótulo a 0,5 % no último quadro e o 1º quadro da s44 precisa estar limpo."
+      ]
+    },
+    {
+      "lente": "autoria",
+      "nota": 8,
+      "problemas": [
+        "A capa é recriada no visual da casa (Courier sobre papel, fitas, sombra), sem brasão, selo, timbre nem logo, com o título e a linha do programa e o crédito na tela: é a saída \"tipografia declarada\" e o que midia.md §7.1 manda sem a permissão gravada; não afirma ser uma edição particular (visto em 0,50–5,00 s)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "Avança: o 1986 entra na linha do tempo e o mapa acende a terra pública com a cota (dado novo em relação à s33/s41). A capa e a linha do tempo são callbacks declarados (s06/s39, s33/s41), pagos com informação nova. Sem abrir as cenas irmãs (teto de imagens)."
+      ],
+      "correcoes": []
+    }
+  ]
 }

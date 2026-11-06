@@ -7,24 +7,26 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "exceção do Lucas: qc-tamanho, crédito a 60 px (60<72) em \"Source: U.S. Census Bureau, 2020 Census\" e \"Source: U.S. Census Bureau, American Communi…\", 24/10/2026 (identidade.md §2, regra do crédito a 60 px; `_excecoes-portao.json`, classe credito-60, sha1 7b76e80f igual ao do HTML e ao carimbo do clipe, 2160p). Só o crédito reprovou no qc-tamanho. O crédito mede 60 px por `--fs-credito` (HTML, linha 73), e a marca de mapa (`data-qc-credito=\"mapa\"`) está só no #credMapa.",
-        "portao-margens (lido, não remedido): veredito 0 no sha1 de hoje (429 amostras de 0,1 s, 36 elementos medidos, 0 itens, 0 avisos). O 'marca 52bcaebea2de != 6314f1776ecf' é da Sala. A cena não tem relevo 3D, então a margem é do portão.",
-        "Hierarquia lida nos quadros: 887 HOMES em --destaque (19,8 s) e 345 EMPTY em branco empilham-se à esquerda, sobre o mar, longe do distrito; os rótulos das barras ficam acima das barras; o crédito de 2 linhas da ACS fica abaixo do rótulo SEASONAL a ~80 px (4K). Sem texto sobre texto em nenhum dos 36 quadros das folhas.",
-        "sinal (nota 8, não reprova): a pílula 'CALIFORNIA ≈ 33%' (38,4–42,7 s) cobre uma parte da grade do distrito e, na troca seca de 'CALIFORNIA' para 'CALIFORNIA ≈ 33%' (40,8 s), a primeira linha sobe ~150 px em 4K (a pílula cresce para cima, presa à barra). Lê como pulo pequeno, e a pílula assenta a ~60 px da barra da Califórnia.",
-        "sinal: [328] SEASONAL… está a 112 px (piso do rótulo 104, alvo 128): a Arte declarou o desvio (a 128 a pílula de 3 linhas encostaria no distrito). Aceito: no quadro de 31,8 s ela fica a mais de 200 px do contorno."
+        "exceção do Lucas: qc-tamanho, crédito a 60 px (60<72) em \"Source: U.S. Census Bureau, 2020 Census\" e \"Source: U.S. Census Bureau, American Communi…\", 24/10/2026 (identidade.md §2, regra do crédito a 60 px; `_excecoes-portao.json` `717cf13c…`, classe credito-60, sha1 ad64f1dd igual ao do HTML, ao `_portao.json` e ao carimbo do clipe, 2160p). Só o crédito reprovou no qc-tamanho (`falhas: [tamanho]`); o resto do qc-cena passou.",
+        "portao-margens (lido, não remedido): veredito 0 no sha1 de hoje ad64f1dd (429 amostras de 0,1 s, 38 elementos medidos, 0 itens, 0 avisos). A cena não tem relevo 3D (`relevo: 0`), então a margem é do portão e não se olhou no recorte.",
+        "CONSERTO T (o título das barras [333]): FEITO, visto em 38,5; 40,5; 41,5 e 42,6 s e no recorte 4K de 40,5 s. Três linhas a 84 px (papel eixo, acima do piso de 72), embaixo à esquerda, sobre o mar, sem tocar o distrito, a ~80 px acima do crédito da ACS (recorte 4K). Defeito novo: nenhum; não passa de x 1.277 e não toca barra, rótulo nem contorno.",
+        "sinal (nota 8, não reprova): o título fica a ~1.300 px (4K) da barra da Califórnia, na faixa de altura da linha de base das barras (y ~1.620) e no mesmo lugar onde a cota SEASONAL… ficou até 34,067 s. Lê como legenda da lâmina inteira, não como eixo colado nas barras.",
+        "sinal herdado, fora da lista: a pílula 'CALIFORNIA' → 'CALIFORNIA ≈ 33%' (40,8 s) cresce para cima e a 1ª linha sobe ~160 px em 4K (folha E: y 291 em 40,5 s → y 252 em 41,5 s, em escala de 960). Lê como pulo pequeno.",
+        "sinal herdado: [328] SEASONAL… a 112 px (piso 104, alvo 128), declarado pela Arte; fica a mais de 200 px do contorno (visto em 30,8; 32,5 s)."
       ],
       "correcoes": [
-        "Nada a mudar para aprovar. Se a Arte refizer: (a) a pílula do 'CALIFORNIA' pode nascer com as duas linhas reservadas (a 2ª em opacidade 0) para a troca em 40,8 s não mover a 1ª linha; (b) mover a pílula 60 px para a esquerda da barra da Califórnia, fora da grade."
+        "Nada a mudar para aprovar. Se a Arte refizer: (a) subir o título até a base das barras (y ~1.620) e encostá-lo à esquerda da barra da Califórnia, se couber a >=200 px do contorno do distrito; (b) a pílula do 'CALIFORNIA' pode nascer com as duas linhas reservadas (a 2ª em opacidade 0) para a troca de 40,8 s não mover a 1ª linha."
       ]
     },
     {
       "lente": "factual",
       "nota": 9,
       "problemas": [
-        "Os números casam com o textos-tela [318]–[333] e com a fala: 887 e 345 (38,9 % = 'almost four in ten'), 93,0 % ('nearly all', com '(WIDE MARGINS)', que preserva o hedge) e 32,6 % → 'CALIFORNIA ≈ 33%' ('about a third'). A razão das barras bate: a da Califórnia mede ~0,35 da do distrito (0,326/0,93), medida nos quadros de 40,9 e 42,0 s. Laranja = distrito e teal = Califórnia, cada rótulo sobre a barra certa (associação posicional ok).",
-        "Geometria real: o distrito é o polígono do TIGER/Line (ccd-big-sur) e o fio é a Highway 1 do OSM; no recorte 4K de 2,7 s a borda do distrito e a costa casam sem divergência, com o degrau do sul vindo do dado. A grade é de contagem (1 quadradinho = 1 casa; 887/345/320), declarada pela peça de marca, sem pretender ser a posição de uma casa real.",
-        "Documento certo: a página 1 do Form ACS-1(INFO)(2024), sha256 367dcefd igual ao do veredito `aprovado` (conferencia-midia 470095dc, candidatos[35]). O grifo marca 'The American Community Survey is conducted by the U.S. Census Bureau.', e não 'ongoing' nem 'year after year' (que não estão na página): correto. A marca d'água 'INFORMATION COPY' é da página real.",
-        "Grafia de tela: maiúsculas de rótulo; en-dash em '2020–2024'; sem formato brasileiro. [330], [331] e [332] conferem letra por letra com o textos-tela."
+        "Os números e a grafia conferem com o textos-tela `9fc965e2` ([318]–[333]) e com a fala: 887 e 345 (38,9 % = 'almost four in ten'), 93,0 % com '(WIDE MARGINS)' (preserva o hedge de 'nearly all'), 32,6 % → 'CALIFORNIA ≈ 33%' ('about a third'). Laranja = distrito, teal = Califórnia, cada rótulo sobre a barra certa (associação posicional ok).",
+        "CONSERTO T: o texto do título lido no recorte 4K de 40,5 s é 'SHARE OF EMPTY HOMES' / 'FOR SEASONAL USE' / 'ACS 2020–2024', letra por letra o do [333] (a 1ª linha parte só entre palavras, como a instrução [23] manda; sem '·' na ponta; en-dash em 2020–2024). 'Empty homes' e 'seasonal use' são a palavra da voz e a categoria da cota [328]: o título diz de que é o 93 % e o 33 %, e é fiel ao denominador do B25004 (as vagas).",
+        "Geometria real: distrito = polígono TIGER/Line (ccd-big-sur), fio da Highway 1 do OSM; no quadro de 2,7 s a borda e a costa casam. A grade é contagem (1 quadradinho = 1 casa; 887/345/320), declarada pela peça de marca.",
+        "Documento certo: página 1 do Form ACS-1(INFO)(2024), sha256 367dcefd igual ao do veredito `aprovado` (conferencia-midia `0a87de20`, candidatos[35]); o grifo marca 'The American Community Survey is conducted by the U.S. Census Bureau.' (visto em 21,5 s).",
+        "sinal: o veredito do documento traz a cena 's56' (a metade fundida desta cena, run s55+s56), declarado no cabeçalho do HTML."
       ],
       "correcoes": []
     },
@@ -32,69 +34,72 @@
       "lente": "wordlock",
       "nota": 9,
       "problemas": [
-        "Medido contra o words.json (cena = master − 646,967): 'house' 1,07 e o distrito sobe a --destaque a partir de 0,83 (regência: 647,8 s), 0,24 s antes da palavra. 'nine' 10,33 e a cota 887 e a grade em 10,3 ✓; 'empty' 15,21 e os 345 contornos e a cota em 15,2 ✓; 'seasonal' 30,60 e calendários e rótulo em 30,6 ✓; 'keep' 36,18 e a chave ✓; 'don't' 36,86 e o calendário desenhado ✓; 'California' 38,44 e a barra teal ✓; 'about a third' 40,81 e a troca para ≈ 33% ✓.",
-        "A folha da ACS pousa entre 20,0 e 20,6 s (medido em passos de 0,1 s: y desce 24 px em 1920, sem retorno; x assenta em 973 a partir de 20,6 s) e o grifo cresce de 20,65 a 22,45 s, primeiros pixels visíveis em 20,8 s; o rótulo 'ACS QUESTIONNAIRE' entra em 20,5 s (o assentamento é 20,63, então o rótulo chega ~0,13 s antes dele; o textos-tela marca 20,5 e a voz já disse 'Census Bureau' em 20,18).",
-        "Nenhum texto sobra depois da fala: o último quadro (42,7 s) é o da fala 'ones.' (42,04), e a seguinte da narração começa em 42,73. Sem eco: os textos são dado ou nome oficial de categoria, não a transcrição."
+        "CONSERTO E (os ocupados baixam em 'empty homes'): medido em quadros de 0,1 s, o brilho médio da região da grade fica em 65,3 até 28,3 s e cai a 64,2 (28,4), 55,7 (28,5), 51,3 (28,6), 49,2 (28,7) e 48,6 (28,8 em diante). A queda começa em 28,4 s, na palavra 'empty' (28,42 no words.json) e termina em ~0,4–0,5 s, como o conserto pede. Não entra antes nem depois da deixa.",
+        "Título [333] entra em 38,07 s ('Across California…'), com as barras; calendários em 'seasonal' (30,6 s: folha D, 30,8 s já acesos); chave e calendário desenhado em 'keep'/'don't' (36,18 / 36,86). O resto do tempo é o da qualidade-1 (house 1,07; nine 10,33; empty 15,21; California 38,44; about a third 40,81).",
+        "Nenhum texto sobra depois da fala: o último quadro (42,6 s) é o da fala 'ones.' e os 250 ms finais só têm a deriva (diferença média entre quadros 0,32/255, constante). Nada do ritmo foi atrasado por este conserto: a mudança é só de opacidade dos ocupados, sem elemento novo; o word-lock dos demais ficou como estava."
       ],
       "correcoes": [
-        "Nada a mudar. Opcional: a subida do distrito em 0,83 s poderia esperar 'house' (1,07 s), mas é a regência que a marca em 647,8 s."
+        "Nada a mudar."
       ]
     },
     {
       "lente": "abordagem",
       "nota": 9,
       "problemas": [
-        "Os modelos são os certos para cada frase: MAPA com os quadradinhos (a peça de marca, sobre o polígono real) para a contagem; DOCUMENTO real em mesa para 'an ongoing survey'; DESENHO em traço de engenheiro para a definição 'homes that people keep, but don't live in' (a regência o dispensou de registro: 'não existe registro de uma condição'); DADO em duas barras para a comparação distrito × Califórnia. Documento real e não recriado: sem logo, sem brasão.",
-        "O beat 1 (2,7–7,3 s) devia ser uma casa real na encosta (s55-a, 'NÃO ACHADO' nos 4 bancos): vale o fallback da regência, o mapa com as 24 primeiras casas acendendo (quadros de 3,7 e 6,0 s: ~5 e ~20 quadradinhos). É o desvio declarado e aceito; sinalizo só para a Sala saber que o plano não tem registro real de casa.",
-        "A mesa: still `mesa-big-sur.png` (sha b6db6126, Landsat, domínio público, sem crédito) sob a luz, com o feltro; a folha com fita e sombra: linguagem A (assentamento uma vez, escala máxima medida ~1,018 < 1,03, sem bounce; câmera parada no grifo)."
+        "Os modelos seguem certos para cada frase: MAPA com os quadradinhos sobre o polígono real para a contagem; DOCUMENTO real em mesa para 'an ongoing survey'; DESENHO em traço de engenheiro para 'homes that people keep, but don't live in'; DADO em duas barras para a comparação distrito × Califórnia.",
+        "sinal herdado: o beat 1 (2,7–7,3 s) devia ser uma casa real na encosta (s55-a, NÃO ACHADO nos 4 bancos): vale o fallback da regência, o mapa com as 24 primeiras casas (folha A: ~5 e ~20 quadradinhos em 6,0 s). Desvio declarado e aceito."
       ],
       "correcoes": [
-        "Se uma casa real de Big Sur surgir depois para o beat 1, ela entra como registro (termo: 'Big Sur house on hillside aerial 4K, no people'), como a regência já pede; sem ela, o fallback fica."
+        "Se uma casa real de Big Sur surgir depois para o beat 1, ela entra como registro (termo: 'Big Sur house on hillside aerial 4K, no people'); sem ela, o fallback fica."
       ]
     },
     {
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "Em 2 s se lê: a grade (casas), o contorno (vazias), o calendário (uso ocasional), as barras. A cota é grande e a cor é uma só por significado. O desenho da casa com chave e calendário (36–38 s) resume 'keep, but don't live in' sem texto.",
-        "sinal (ver poluicao): as barras '≈ 93%' e '≈ 33%' dependem da voz e do bloco anterior ('SEASONAL…') para dizer 'dos vazios'; o eixo traz só 'ACS 2020–2024'."
+        "CONSERTO T: lendo só o texto de 38 a 42,7 s, sem a voz, o espectador agora tem a resposta: 'CENSUS DISTRICT ≈ 93% (WIDE MARGINS)', 'CALIFORNIA ≈ 33%' e, no título, 'SHARE OF EMPTY HOMES FOR SEASONAL USE · ACS 2020–2024' = 93 % das casas vazias do distrito são de uso sazonal, contra 33 % na Califórnia. A pergunta '93 % de quê?' da qualidade-1 deixou de levantar dúvida. Visto em 38,5; 40,5 e 42,6 s.",
+        "sinal (nota 8, não reprova): o título está separado das barras (embaixo à esquerda, ~1.300 px do teal), então a ligação 'este título é o eixo destas duas barras' depende de ele ocupar a faixa da linha de base e de a cota SEASONAL… ter ficado ali até 34 s. Para quem lê só as barras, a resposta fica a um olhar à esquerda, não no próprio rótulo.",
+        "Em 2 s se lê: a grade (casas), o contorno (vazias; agora mais nítido, ver motion), o calendário (uso ocasional), as barras. Uma cor por significado."
       ],
       "correcoes": [
-        "Nenhuma obrigatória; ver o conserto sugerido em poluicao (para o redator-de-tela)."
+        "Opcional, não segura o render: se a Arte refizer, colar o título à linha de base das barras (à esquerda da barra teal) em vez de a ~1.300 px."
       ]
     },
     {
       "lente": "poluicao",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "Teste de lastro (cada texto → palavra da fala): 887 HOMES ← 'nine hundred' (10,33); 345 EMPTY ← 'empty' (15,21); ACS QUESTIONNAIRE ← 'runs an ongoing survey' (21,3–22,2); SEASONAL… ← 'seasonal, recreational or occasional use' (30,6–33,1); CENSUS DISTRICT ≈ 93% ← 'nearly all' (27,1), que a barra paga 11 s depois, e CALIFORNIA ← 'California' (38,44). Nenhum órfão: o dado atribuível está na exceção (b) do lastro.",
-        "sinal (nota 7, não reprova): DADO ILEGÍVEL DE PRIMEIRA. Lendo só o texto de 38 a 42,7 s ('CENSUS DISTRICT ≈ 93% (WIDE MARGINS)', 'CALIFORNIA ≈ 33%', 'ACS 2020–2024'), nasce a pergunta '93 % de quê?'. A voz responde ('homes like that … of the empty ones') e as casas e o calendário de 30–38 s ajudam, mas, no mudo, o rótulo não se explica. O texto é do textos-tela (do `redator-de-tela`), não da cena.",
-        "Carga: no máximo 4 elementos ao mesmo tempo (b8: grade, 2 barras com rótulo, eixo; no b3, grade e 2 cotas), teto 6 da marca; 2 blocos de texto de 15 a 20 s, teto 3. Sem entidade HTML nem tofu: '≈' e '–' renderizam. Contornos fracos (30 %/25 % sobre mata escura) não se aplicam: o contorno aqui é de 6 px --tinta e se lê nos quadros de 2,7 e 3,7 s."
+        "Teste de lastro (cada texto → palavra da fala): 887 HOMES ← 'nine hundred' (10,33); 345 EMPTY ← 'empty' (15,21); ACS QUESTIONNAIRE ← 'ongoing survey' (21,3); SEASONAL… ← 'seasonal, recreational or occasional use' (30,6); CENSUS DISTRICT ≈ 93% ← 'nearly all' (27,1, pago pela barra em 38 s); CALIFORNIA ← 'California' (38,44); o título [333] ← 'seasonal… empty ones' e 'Across California' (38,07): nenhum órfão; o título é dado atribuível (exceção b) e eixo da lâmina.",
+        "CONSERTO T e dado ilegível de primeira: o teste de custo zero (ler só o texto do frame) agora responde em vez de perguntar; deixou de ser o sinal da qualidade-1. O título não repete o rótulo das barras (diz a base do percentual) e '(WIDE MARGINS)' continua só na barra.",
+        "Carga em 38–42,7 s: grade (agora a 35 %), 2 barras, 2 rótulos e o título = no teto de 6 se contados soltos, 4 como a Arte conta (a barra com o rótulo conta um); 3 blocos de texto (os dois rótulos e o título), no teto de 3 da marca. Sinalizo que a cena encosta no teto no beat final; não reprova. Sem entidade HTML, tofu ou glifo quebrado ('≈' e '–' renderizam, recorte 4K de 40,5 s)."
       ],
       "correcoes": [
-        "Ao `redator-de-tela` (não à Arte): trocar o eixo 'ACS 2020–2024' por 'SEASONAL SHARE OF EMPTY HOMES · ACS 2020–2024' (ou pôr 'of empty homes' no rótulo da barra), para a referência ficar ancorada no próprio rótulo (ofício, lente 6). Se o Lucas preferir, fica como está: não segura o render."
+        "Nada obrigatório. O título fica em três linhas: em duas ele passaria de x 2.100 e chegaria a ~38 px do contorno do distrito, e numa só mede ~1.844 px."
       ]
     },
     {
       "lente": "motion",
-      "nota": 7,
+      "nota": 8,
       "problemas": [
-        "Easing e coreografia ok: a aproximação 0,7–2,7 s é Hermite sem tranco (quadros de 0,7; 1,5; 2,7 s: o zoom parte da deriva da s53); a ida à mesa sai em 300 ms e a folha pousa uma vez (y monotônico; x oscila ≤6 px em 1920 pela rotação −1,2° → +0,6°), com a sombra e as fitas depois; as ondas de calendário (30,6–32,6 s) e a casa se desenhando (34,08–34,9 s) têm propósito. Nos últimos 250 ms (42,45–42,7 s) nada se move além da deriva (barras e rótulos parados; diferença média de quadro ≤0,7/255).",
-        "sinal (nota 7): MAPA QUASE PARADO. A deriva, medida pelo bbox laranja da grade, é de ~28 px em 4K em 21,5 s (borda direita de x 1285 a 1299 em 1920; topo de y 134 a 117), ~1,3–1,6 px/s em 4K. Entre 24,3 e 30,6 s (6,3 s) e entre 12 e 15 s não entra elemento nenhum: só essa deriva e o crédito. Está na regência (VC-07, 'deriva lenta, nunca parada', ≤1,5 % em 4 s) e a marca ainda não decidiu entre norte para cima e órbita; por isso não reprovo, mas a imagem passa a maior parte desses trechos praticamente parada.",
-        "sinal menor: a troca 'CALIFORNIA' → 'CALIFORNIA ≈ 33%' em 40,8 s é seca (a pílula cresce e a 1ª linha sobe ~150 px em 4K, em 1 quadro)."
+        "CONSERTO E, item (1) FEITO: em 'empty' (28,4 s) os ocupados baixam a ~35 % em 0,4–0,5 s (brilho médio 65,3 → 48,6, curva suave, sem pop; folha C: 28,2 s cheio → 29,2 s baixo; recorte 4K de 29,2 s). Os 345 contornos ficam inteiros e destacados (laranja vazado sobre o fundo escuro dos ocupados), e os calendários de 30,6 s caem sobre eles. Defeito novo: nenhum.",
+        "CONSERTO E, item (2) FEITO: a deriva sobe. Medido por correlação de fase entre quadros de 0,1 s na área só de satélite (px em 4K, borda direita): ~2,2 px/s fora do b6 (3–19 s) e ~4,3 px/s de 25 a 34 s, constante, sem tranco; 34–35 s 3,6 px/s (volta sob o véu, sem salto); 22–24 s zero, mapa coberto pela mesa. É a mesma aproximação contínua, no teto de 1,5 % da regência (VC-07).",
+        "O trecho de 24,5 a 31,0 s em que nada mudava deixou de ser: agora muda em 28,4 (os ocupados), 30,6 (os calendários, 4 ondas até ~32,6) e a deriva dobrou. O que fica sem evento novo é 24,3–28,4 s (4,1 s, antes 6,3 s) com a deriva e o crédito; é a fala sobre o resultado da ACS, sem objeto novo para mostrar.",
+        "A Arte declarou que os ocupados ficam a 35 % até o fim. Não pesa no fim da cena: em 36,5 s (casa desenhada) e em 38,5–42,6 s (barras) a grade baixa deixa de competir com as barras e o título, e o distrito segue lendo pelo contorno branco, pela grade e pelo rótulo laranja. A cor laranja da grade, que no fim da qualidade-1 ainda ligava o mapa à barra, fica mais fraca (sinal de tema, não de motion).",
+        "sinal (nota 8): dois trechos seguem só na deriva, sem evento, fora da lista: 11,9–15,2 s (3,3 s) e 16,0–20,0 s (4 s), a ~2,2 px/s. Estão na regência e no limite do aceito; não reprovo. Sinal herdado: a troca seca 'CALIFORNIA' → '… ≈ 33%' em 40,8 s (~160 px em 4K, um quadro).",
+        "Mesa (20,0–24,0 s): sem mudança (folha B: 21,5 e 23,8 s com a folha assentada, grifo no texto certo); os últimos 250 ms só têm deriva."
       ],
       "correcoes": [
-        "Opcional, à Arte ou à Sala: no trecho de 24,3 a 30,6 s subir a deriva da câmera até o teto da regência (1,5 %/4 s, hoje ~0,8 %) em vez de acelerar; dar à troca do rótulo da Califórnia 150–200 ms de opacidade."
+        "Opcional, à Arte: dar à troca do rótulo da Califórnia (40,8 s) 150–200 ms de opacidade, e levar a deriva de 2,2 para ~4 px/s também nos trechos de 12–20 s, que a regência permite."
       ]
     },
     {
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "Crédito de mapa '© MapTiler © OpenStreetMap contributors' presente em todo quadro com mapa: de 0 a 20,3 s e de 24,2 s ao fim (olhado nas folhas A a F); sai quando a mesa cobre o mapa (20,3–24,2 s), onde só há o still Landsat (domínio público, sem crédito: correto) e a folha federal (domínio público, sem crédito: correto). A marca `data-qc-credito=\"mapa\"` está só no #credMapa e não envolve outro crédito.",
-        "Dado atribuível com fonte: 'Source: U.S. Census Bureau, 2020 Census' de 10,3 a 20,0 s (887 e 345) e 'Source: U.S. Census Bureau, American Community Survey, 2020–2024' de 24,2 s ao fim (entra com 'Its results for 2020 to 2024', 24,26 s). Os dois em 60 px; o da ACS em 2 linhas (aviso do portão, não reprova). O TIGER/Line é domínio público e não leva crédito na tela. Nenhum crédito-fantasma: nenhuma mídia licenciada some deixando o crédito.",
-        "Procedência: o documento tem veredito `aprovado` (conferencia-midia candidatos[35], sha256 367dcefd igual ao arquivo, domínio público 17 U.S.C. §105, 'credito_na_tela: nenhum'); a mesa é da Sala, fora do conferente. exceção do Lucas: qc-tamanho, crédito a 60 px, 24/10/2026, sha1 7b76e80f (ver espaco).",
-        "sinal: o veredito do documento traz a cena 's56' (a metade fundida desta cena, run s55+s56) e não 's55'; vale pelo run fundido, declarado no cabeçalho do HTML."
+        "Crédito de mapa '© MapTiler © OpenStreetMap contributors' presente em todo quadro com mapa (folhas A, B 15,5 e 18,0 s, C, D e E; recorte 4K de 40,5 s); sai com o mapa coberto pela mesa (20,3–24,2 s: folha B, 21,5 e 23,8 s só com o still Landsat e a folha federal, domínio público, sem crédito: correto). `data-qc-credito=\"mapa\"` só no #credMapa.",
+        "Dado atribuível com fonte: 'Source: U.S. Census Bureau, 2020 Census' (10,3–20,0 s: folhas A e B) e 'Source: U.S. Census Bureau, American Community Survey, 2020–2024' de 24,2 s ao fim (folhas C, D, E), os dois a 60 px; o da ACS em 2 linhas (aviso do portão, não reprova). `rodape` v5 no sha1 de hoje: veredito 0, pior contraste 11,17:1 @ 10,5 s (piso 3:1). O `til`, 0 em 23 textos.",
+        "Procedência: o documento tem veredito `aprovado` (candidatos[35], sha256 367dcefd igual ao arquivo, domínio público 17 U.S.C. §105); a mesa é da Sala, fora do conferente; o TIGER/Line é domínio público. Nenhum crédito-fantasma. Exceção do Lucas: qc-tamanho, crédito a 60 px, 24/10/2026, sha1 ad64f1dd (ver espaco).",
+        "O conserto T não mexe em crédito: o título [333] é texto do canal, sem fonte própria, e fica 80 px acima do crédito da ACS (recorte 4K de 40,5 s), sem tocá-lo."
       ],
       "correcoes": []
     },
@@ -102,8 +107,9 @@
       "lente": "tema",
       "nota": 9,
       "problemas": [
-        "Uma cor = um significado: --destaque (laranja) é o distrito, a grade, as cotas do distrito e a barra do distrito; teal (--contraparte) só a Califórnia; branco só a casa, o calendário e o '345 EMPTY'; 3 matizes fora o satélite. A água escura sem emenda de mosaico do 1º ao último quadro (recorte 4K de 2,7 s: mar liso, sem blocos claros). O véu a 40 % do beat de desenho está declarado na regência e no cabeçalho.",
-        "O satélite tem um tom só em toda a cena (trecho largo com o teto z10): sem pulo de tom em 10,5 (1,4 s), visto nos quadros de 1,5; 8,3; 19,8 e 29,5 s. No recorte 4K de 2,7 s o z10 aparece macio, mas sem degraus, no limite do aceito pela regra por trecho. A mesa leva o feltro e a luz, e nada por cima da folha."
+        "Uma cor = um significado: laranja (--destaque) é o distrito, a grade, as cotas e a barra do distrito; teal só a Califórnia; branco só a casa, o calendário e '345 EMPTY'; 3 matizes fora o satélite. A água escura inteira do 1º ao último quadro, sem emenda de mosaico (folhas A, C, D e E).",
+        "O conserto E baixa os ocupados a 35 % e deixa os 345 contornos em laranja cheio: a cor 'laranja = distrito' continua, e agora os vazios, que são o assunto da fala, são o que a cor destaca (recorte 4K de 29,2 s). Sinal (não reprova): no beat de barras (38–42,6 s) a grade fica marrom-oliva e liga menos o mapa ao laranja da barra; o rótulo 'CENSUS DISTRICT ≈ 93%' em laranja carrega o vínculo.",
+        "Tom do satélite igual do 1º ao último quadro (teto z10 a cena inteira): sem pulo de tom nas folhas. No recorte 4K de 29,2 s o z10 ampliado aparece macio, sem degraus nem blocos, no limite do aceito pela regra por trecho."
       ],
       "correcoes": []
     },
@@ -111,7 +117,7 @@
       "lente": "cobertura",
       "nota": 8,
       "problemas": [
-        "Substantivos concretos da fala: house, homes, coast, census district, survey (a folha). O distrito real (polígono), a casa (o quadradinho do censo) e a folha do survey são o registro do que se nomeia. Falta a imagem real de uma casa da costa no beat 1 (s55-a 'NÃO ACHADO' nos 4 bancos): sinalizo, e não reprovo, porque casa é o que qualquer espectador desenharia de olhos fechados (o critério é central E desconhecido do público)."
+        "Substantivos concretos da fala: house, homes, coast, census district, survey. O distrito real (polígono), a casa (o quadradinho do censo) e a folha do survey são o registro do que se nomeia. Falta a imagem real de uma casa da costa no beat 1 (s55-a NÃO ACHADO nos 4 bancos): sinalizo e não reprovo, porque casa é o que qualquer um desenharia de olhos fechados (critério: central E desconhecido do público)."
       ],
       "correcoes": [
         "Se a pesquisa achar uma casa real em encosta de Big Sur, ela entra no beat 1 (termo: 'Big Sur house hillside aerial 4K'), sem mexer no resto."
@@ -121,8 +127,8 @@
       "lente": "cadencia",
       "nota": 8,
       "problemas": [
-        "Sem footage nem foto de registro nesta cena. Planos distintos: mapa (0–20 s), mesa com a folha (20–24,2 s, 4,2 s), mapa de novo (24,2–34 s), desenho sobre o mapa escurecido (34–38 s), barras (38–42,7 s). Cada plano cobre um objeto da fala (casas contadas; a pesquisa; a categoria; a definição; a comparação), sem plano que atravesse dois objetos. Nenhum src de vídeo ou foto repetido em planos sucessivos: o still da mesa e a folha aparecem uma vez.",
-        "sinal: o mapa fica de 24,3 a 30,6 s (6,3 s) sem troca de plano, de ângulo ou de camada (só a deriva); como é o objeto único 'a categoria' e a fala segue nele, não reprovo."
+        "Sem footage nem foto de registro. Planos: mapa (0–20 s), mesa com a folha (20–24,2 s, 4,2 s), mapa (24,2–34 s), desenho sobre o mapa escurecido (34–38 s), barras (38–42,7 s). Cada plano cobre um objeto da fala. Nenhum src de vídeo ou foto repetido em planos sucessivos: o still da mesa e a folha aparecem uma vez.",
+        "sinal: o mapa de 24,2 a 34 s é um plano só, mas agora com camadas novas dentro (os ocupados baixam em 28,4 s; os calendários em 30,6 s); o intervalo sem troca de camada caiu de 6,3 para 4,1 s (24,3–28,4). Fala no mesmo objeto, não reprovo."
       ],
       "correcoes": []
     },
@@ -142,7 +148,8 @@
       "lente": "circulo",
       "nota": 8,
       "problemas": [
-        "A cena avança em relação às irmãs que o relato da Arte descreve: a s53 termina na pose P-COSTA e esta abre no mesmo ponto de vista para fechar no distrito (continuação, não repetição); a grade e a semente são as mesmas da s60 por construção (callback planejado: a s60 as reaproveita). Não comparei os quadros da s60 (fora do meu lote), e a emenda s53→s55 é da E1."
+        "A cena avança em relação às irmãs que o relato da Arte descreve: a s53 termina em P-COSTA e esta abre no mesmo ponto de vista para fechar no distrito (o 1º quadro, folha A 0,5 s, é o de P-COSTA, e casa com o último da s53 pela Arte; a troca s53 → s55 é da emenda E1, não minha). A grade e a semente são as mesmas da s60 por construção (callback planejado).",
+        "Nota para a emenda: a s55 termina no distrito a zoom 11,05 e a s57 abre em outro lugar (Bixby); o corte s55 → s57 é seco e é da E1 (a Arte diz que nenhuma pose depende dele)."
       ],
       "correcoes": []
     }

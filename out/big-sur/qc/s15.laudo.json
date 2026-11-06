@@ -7,11 +7,12 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "exceção do Lucas: qc-tamanho, crédito a 60 px (60<72), 24/10/2026, no sha1 06563024… (out/big-sur/qc/_excecoes-portao.json); a saída literal do qc-cena é só o crédito do Census e o do plano (60<72). portao-margens 0, portao-mapa til 0 e rodape 0, conferir 0 (lidos em conferir-arte1.json, sem remedir). Crédito visto no recorte 4K (t=1,0 e 34,0): legível, 2 linhas no plano, sem palavra cortada.",
-        "sinalização: as cotas e os dois nomes do b7 estão a 112 px (acima do piso de 104, abaixo do alvo de 128), por pedido da Arte (as cotas de 2.166 e 3.547 px não cabem a 128). A cota 'MORE THAN 70 MI · MONTEREY COUNTY PLAN (1986)' (30,1 a 33,5 s) fica a poucos px acima do crédito de 2 linhas; não encosta, e o portão de margem diz 0.",
-        "sinalização: entre 18,4 e 23,9 s a tela tem a régua com 3 quadrados e 3 eixos, 3 cotas e o estado aceso, perto do teto de 6; a cota 'WYOMING 5.9 · CALIFORNIA 253.7…' termina a ~90 px da coluna da régua. É o pior extremo, mas não passa de 6 nem se toca.",
-        "sinalização: em 11,85 s, no 1º quadro do encolhimento da régua, o 2º quadrado passa por cima do eixo 'CENSUS DISTRICT' por ~0,3 s (transição; em 12,2 s está limpo).",
-        "rótulo de lugar com mais de 3 palavras: 'SAN LUIS OBISPO COUNTY' tem 4 e é nome próprio (identidade §4.1, exceção do nome próprio de 4 palavras): passa. 'BIG SUR COAST · 1986 PLAN' (5) é texto do textos-tela (redator), não da Arte: vai ao report como observação, não reprova."
+        "exceção do Lucas: qc-tamanho, crédito a 60 px (60<72), 24/10/2026, no sha1 1a51272d (out/big-sur/qc/_excecoes-portao.json, 'esta reprovação neste sha1'); a saída literal do qc-cena é só o crédito do Census e o do plano (60<72). Lidos sem remedir: portao-margens 0, portao-mapa til 0 e rodape 0, conferir 0 (out/big-sur/_tmp/portoes/20261106-142020/, tabela.txt). Crédito visto no recorte 4K de 0 s: legível, sem palavra cortada; o do plano, em 2 linhas, em 30,2 a 38,1 s.",
+        "ITEM DA LISTA (T) '#rPlano vira 1986 PLAN AREA': FEITO, visto em 36,0, 38,1 s (folha F) e no recorte 4K de 36,5 s. Uma linha, 112 px, parada em x 200, no mar, de 33,467 a 38,8 s, sem encostar na costa nem no crédito. Defeito novo: nenhum.",
+        "ITEM DA LISTA (T4) crédito do Census em 0 e 'bottom: 118px' (a Arte declarou): FEITO e o 118 confere no HTML (s15.html l.125 = s13.html l.89). No quadro 0 a pílula do Census está inteira sobre a do MapTiler, no canto de baixo à esquerda (recorte 4K q2-L4-crop-credito-t0.png). Defeito novo: nenhum; 118 px mantém a faixa de crédito (portao-margens 0).",
+        "sinalização: as cotas e os nomes do b7 estão a 112 px (acima do piso de 104, abaixo do alvo de 128), como na qualidade-1 e por pedido da Arte (cotas longas não cabem a 128). 'MORE THAN 70 MI · MONTEREY COUNTY PLAN (1986)' (30,1 a 33,5 s) fica logo acima do crédito de 2 linhas, sem encostar (folha E).",
+        "sinalização: de 18,4 a 23,9 s há a régua (3 quadrados, 3 eixos), 3 cotas e o estado aceso, perto do teto de 6 (folha C, 20,8 e 23,0 s); nada se toca. Em 11,95 s (folha B), no 1º quadro do encolhimento da régua, o 2º quadrado passa por trás do eixo 'CENSUS DISTRICT' por ~0,3 s; em 12,9 s está limpo. Igual à qualidade-1, nenhum item da lista tocou nisso.",
+        "rótulo de lugar com mais de 3 palavras: 'SAN LUIS OBISPO COUNTY' tem 4 e é nome próprio (identidade §4.1, nome próprio de 4 palavras): passa. 'CENSUS DISTRICT' (2) e '1986 PLAN AREA' (3) passam. 'Carmel' (1). Não há mídia de _media/ na cena, então não há lugar_na_origem a conferir."
       ],
       "correcoes": []
     },
@@ -19,31 +20,29 @@
       "lente": "factual",
       "nota": 8,
       "problemas": [
-        "geometria real: o distrito (ccd-big-sur), o Wyoming, a Califórnia, o Alasca (inset declarado) e o plano de 1986 são polígonos reais de _media/geo/ (nada à mão). O Wyoming aceso em 13,6 s é o retângulo certo; a Califórnia em 19,5 s também. Números e grafia batem com o textos-tela: 1,474, 251.4 SQ MI, ≈ 6, 5.9, 253.7, MORE THAN 40×, MORE THAN 70 MI. Os 1.474 pontos e os ~254 da Califórnia foram contados no código pela Arte (window.__pontosDistrito = 1474); não recontei no quadro.",
-        "sinalização (associação posicional): o rótulo 'WYOMING' entra em 11,8 s, na palavra, mas o estado só chega ao quadro em ~13,3 s (o recuo cúbico dura 2,2 s). Entre 11,8 e 13,3 s a pílula fica no alto da tela sobre o Pacífico e, a 12,9 s, sobre a Califórnia/Nevada, sem fio. Dura ~1,5 s e o 2º quadrado da régua já traz 'WYOMING' ancorado, por isso é sinalização e não reprova.",
-        "sinalização: o plano de 1986 começa na foz do Malpaso Creek, ~8 km ao sul do anel de Carmel (geometria derivada da pauta-geo; declarado pela Arte, item 5). No quadro de 31,0 s a falha entre o anel e o início da faixa se vê, mas não afirma percurso falso."
+        "geometria real: o distrito, o Wyoming, a Califórnia, o Alasca (inset declarado) e a faixa do plano de 1986 são polígonos de _media/geo/. Textos batem com o textos-tela (9fc965e2): 1,474 · CENSUS DISTRICT · 2020, 251.4 SQ MI OF LAND, ≈ 6 PEOPLE / SQ MI · 2020, WYOMING 5.9 · CALIFORNIA 253.7, MORE THAN 40×, MORE THAN 70 MI · MONTEREY COUNTY PLAN (1986), 1986 PLAN AREA, Carmel, SAN LUIS OBISPO COUNTY.",
+        "ITEM DA LISTA (T2) Carmel e SAN LUIS OBISPO COUNTY com os anéis (Arte: 'os anéis entram com o nome'): FEITO. Em 31,0 s só o tracejado, sem nome nem anel; em 31,55 s 'Carmel' em fade, com o anel no mesmo ponto; em 32,1 s o anel e o nome da divisa em fade na ponta sul do tracejado; em 32,6 s os dois cheios, com o anel da divisa pulsando. Nenhum anel aparece sem nome. Defeito novo: nenhum; o anel de Carmel fica um pouco ao norte da ponta do tracejado (a geometria derivada do plano começa na foz do Malpaso, declarada na qualidade-1), sem afirmar percurso.",
+        "sinalização (associação posicional): o rótulo '1986 PLAN AREA' fica no mar, a ~1.600 px em 4K do tracejado que ele nomeia, sem fio (36,0 s). A identificação é por exclusão (o laranja é 'CENSUS DISTRICT', encostado nele) e pelo pulso alternado em 38,01 e 38,17 s; não inverte o sentido, por isso é sinalização. Opcional: aproximar a pílula da faixa tracejada.",
+        "sinalização: 'WYOMING' entra em 11,8 s na palavra, mas o estado só chega ao quadro em ~13,3 s; em 11,95 e 12,9 s a pílula fica no mar/Califórnia sem fio (folha B). Já era assim na qualidade-1; o 2º quadrado da régua já ancora 'WYOMING'. Não foi pedido na lista."
       ],
       "correcoes": [
-        "opcional, se a Sala quiser tirar a sinalização do WYOMING: entrar a pílula com o fio em ~13,3 s (o estado já no quadro) ou começar o recuo mais cedo; a lente wordlock pesa o atraso (a palavra 'Wyoming' é dita em 11,84 s). Não é conserto obrigatório."
+        "opcional: aproximar '1986 PLAN AREA' do tracejado (hoje no mar à esquerda) ou ligar com um fio curto; não é conserto obrigatório."
       ]
     },
     {
       "lente": "wordlock",
-      "nota": 7,
+      "nota": 9,
       "problemas": [
-        "entradas conferidas contra o words.json (tempos da cena): '1,474' em 0,17 (count), '251.4' em 4,47 (two hundred, 4,48), '≈ 6' em 9,8 (six, 9,84), WYOMING em 11,8 (11,84), ALASKA em 15,67 (15,68), a Califórnia em 18,2 a 18,4 (18,44), MORE THAN 40× em 20,7 (forty), MORE THAN 70 MI em 30,07 (seventy, 30,09), os dois nomes do b7 em 33,47 e os pulsos em 38,01 e 38,17 (which is which: 37,85 / 38,01 / 38,17 / 38,33). O fim sai sem rótulo em 38,8 e a perna segue até 39,33.",
-        "sinalização: 'Carmel' entra em 26,6 s e a voz diz 'Carmel' em 31,53 s (4,9 s depois); 'SAN LUIS OBISPO COUNTY' entra em 29,6 e a voz diz 'next county' em 32,41 a 32,65 (2,8 s depois). O tempo vem do textos-tela (t0 26,6 e 29,6), que prende o nome ao traço do tracejado, e a Arte o seguiu à risca. O traço começa em 'county's' (26,66) e o nome orienta onde a faixa nasce, então não é órfão, mas é o ponto mais fraco da cena: o rótulo fica 5 s antes da palavra que o convoca.",
-        "sinalização: a cota 'WYOMING 5.9 · CALIFORNIA 253.7 / SQ MI · 2020' entra em 18,4 s (California, 18,44), antes de 'forty times' (20,7) e de 'crowded' (22,2) da regência; é o t0 do textos-tela. Nenhum elemento ficou depois da fala."
+        "ITEM DA LISTA (T2) tempos novos: FEITO. 'Carmel' entra em 31,5 s (a voz diz 'Carmel' em 31,53) e 'SAN LUIS OBISPO COUNTY' em 31,967 s ('down' 32,0, 'next county' 32,41 a 32,65); vistos nos quadros de 31,0, 31,55, 32,1 e 32,6 s. O atraso de 4,9 s e de 2,8 s da qualidade-1 sumiu. Defeito novo: nenhum. O tracejado se desenha de 26,6 a 29,6 s sem nome (a instrução [21] permite), e a re-checagem da fala é a de cima.",
+        "demais entradas, lidas contra o words.json como na qualidade-1 e vistas nas folhas A a C e F: '1,474' em 0,17 s, '251.4' em 4,47, '≈ 6' em 9,8, WYOMING em 11,8, ALASKA em 15,67, a Califórnia em 18,4, MORE THAN 40× em 20,7, MORE THAN 70 MI em 30,07, os dois nomes do b7 em 33,47 e os pulsos em 38,01 e 38,17. O fim sai sem rótulo em 38,8 s (39,2 s sem texto, só os créditos do mapa)."
       ],
-      "correcoes": [
-        "se a Sala mexer no textos-tela: Carmel para t0 ≈ 31,4 s e SAN LUIS OBISPO COUNTY para t0 ≈ 32,3 s (o tracejado pode desenhar sem rótulo em 26,6 a 29,6 s). Qualquer atraso por ritmo precisa ser re-checado contra a fala. Não é conserto obrigatório: o tempo é o do redator e a Arte seguiu a precedência."
-      ]
+      "correcoes": []
     },
     {
       "lente": "abordagem",
       "nota": 9,
       "problemas": [
-        "MAPA é o modelo certo: a frase é de densidade sobre lugar real, e a régua (o quadrado de uma milha recortado do próprio polígono, com 6 pontos) é a ilustração sobre o mapa que a regência pede. O inset do Alasca é declarado. Sem apresentador, card de capítulo, bandeira nem logo."
+        "MAPA é o modelo certo: a frase é de densidade sobre lugar real, a régua de um quadrado de milha com pontos é a ilustração sobre o mapa que a regência pede, e o inset do Alasca é declarado. Sem apresentador, card de capítulo, bandeira nem logo."
       ],
       "correcoes": []
     },
@@ -51,8 +50,8 @@
       "lente": "acessibilidade",
       "nota": 9,
       "problemas": [
-        "lê em 2 s: o quadrado de uma milha com 6 pontos laranja, o do Wyoming com 6 pontos cinza e o da Califórnia com ~254 pontos azul-petróleo mostram a comparação sem exigir conta; 'MORE THAN 40×' fecha a leitura. No b7, os dois contornos com nome ('CENSUS DISTRICT', 'BIG SUR COAST · 1986 PLAN') e o pulso alternado em 'which is which' dizem qual é qual.",
-        "sinalização: a faixa tracejada do plano é mais estreita que o distrito na parte norte, e a leitura de 'bigger coast' vem do comprimento (mais ao sul), não da área. Não confunde, porque o nome diz COAST."
+        "lê em 2 s: o quadrado de uma milha com 6 pontos laranja contra 6 cinza (Wyoming) contra ~254 azul-petróleo (Califórnia), e 'MORE THAN 40×' fecha a comparação (folha C). No b7, 'CENSUS DISTRICT' (ao lado do contorno laranja) e '1986 PLAN AREA' (a faixa branca tracejada) dizem qual é qual.",
+        "ITEM DA LISTA (E / A11) o contorno do distrito nos b6 e b7 lê tanto quanto o do plano: FEITO, visto em 31,0 a 38,1 s (folhas E e F) e no recorte 4K de 36,5 s. O laranja a 14 px e 100 % fecha o distrito como uma área, com o escuro de 22 px por baixo, e se lê com o mesmo peso do tracejado branco; do lado da costa, onde os dois contornos coincidem, o laranja aparece entre os traços e o branco domina, mas o distrito continua legível como forma fechada. O preenchimento de 20 % que a Arte não pôs NÃO é necessário: a forma fecha sem ele. Defeito novo: nenhum (nem o contorno grosso cobre o rótulo, nem engole a faixa do plano)."
       ],
       "correcoes": []
     },
@@ -60,8 +59,8 @@
       "lente": "poluicao",
       "nota": 8,
       "problemas": [
-        "teste de lastro: cada texto tem a palavra que o convoca na fala da janela (count, two hundred, six, Wyoming, Alaska, California, forty, seventy, which is which); os eixos da régua são orientação mínima (exceção a); 'Carmel' e 'SAN LUIS OBISPO COUNTY' são citados na fala (ver wordlock, antes do tempo). Nenhum texto órfão, entidade HTML ou tofu nos 22 quadros olhados.",
-        "sinalização: 18,4 a 23,9 s é o pior quadro (ver espaco), dentro do teto de 6 (alvo 4 a 5). O anel quase some sobre o distrito laranja em b0 (o anel é sempre --destaque; item 9 da Arte)."
+        "teste de lastro: cada texto tem a palavra que o convoca na fala (count, two hundred, six, Wyoming, Alaska, California, forty, seventy, Carmel, down/next county, which is which); os eixos da régua são orientação mínima. Nenhum texto órfão, entidade HTML nem tofu nas 6 folhas e nos 2 recortes.",
+        "sinalização: 18,4 a 23,9 s é o quadro mais cheio (ver espaco), dentro do teto de 6 (alvo 4 a 5). O anel de Carmel e o da divisa entram com o nome e contam como um elemento cada, e o b6 (31,5 a 33,5 s) fica com a cota do plano, Carmel e o condado: dentro do alvo."
       ],
       "correcoes": []
     },
@@ -69,8 +68,9 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "a câmera anda do 1º ao último quadro: o recuo de 2,2 s até os EUA, a deriva sobre o país, a descida cúbica de 2,8 s (24,6 a 25,6 s: sem tile cinza e sem degrau; a água volta em 24,8 a 25,6 sem salto de tom visível) e a aproximação final. O quadrado de uma milha corta o polígono e cresce até a régua sem salto (8,2 a 9,2 s). Os pulsos de 38,01 e 38,17 estão nos quadros de 38,05 a 38,2 s. Nada congela.",
-        "sinalização: o encolhimento da régua em 11,85 s tem ~0,3 s de sobreposição entre o 2º quadrado e o eixo 'CENSUS DISTRICT'. O brilho do satélite sobe durante a descida (z4 mais escuro e verde, z8 em diante mais claro e laranja): é a troca de nível do mosaico, que a regra do satélite por trecho (Sala) já cobre; sem salto único."
+        "a câmera anda do 1º ao último quadro: o recuo aos EUA, a deriva sobre o país, a descida de 24,2 a 25,5 s (sem tile cinza visível nos quadros de 24,2 e 25,5 s; o mosaico troca de nível sem degrau) e a aproximação final. O contorno mais grosso do distrito entra sem salto. Os pulsos de 38,01 e 38,17 s (a largura soma +8 px, sem mexer na opacidade, pelo cabeçalho) caem na janela de 38,05 a 38,2 s; o quadro de 38,1 s mostra o pulso em curso, sem oscilar. Nada congela.",
+        "ITEM DA LISTA (anéis com o nome, declarado pela Arte): os anéis entram em 31,5 e 31,967 s junto do rótulo, em fade de 300 ms (31,55 e 32,1 s ainda em fade); o anel da divisa pulsa em 32,6 s. Defeito novo: nenhum.",
+        "sinalização: o encolhimento da régua em 11,85 s tem ~0,3 s de sobreposição entre o 2º quadrado e o eixo 'CENSUS DISTRICT' (folha B). O brilho do satélite sobe na descida (z4 verde e escuro, z8 em diante mais claro): é a troca de nível do mosaico, coberta pela regra do satélite por trecho (Sala). O corte seco para a s18 é para registro, não para mapa."
       ],
       "correcoes": []
     },
@@ -78,18 +78,16 @@
       "lente": "fonte",
       "nota": 8,
       "problemas": [
-        "'© MapTiler © OpenStreetMap contributors' está do 1º ao último quadro (data-qc-credito='mapa', 60 px, legível no recorte 4K). 'Source: U.S. Census Bureau, 2020 Census' de 0,17 a 23,97 s (o dado do distrito e das comparações) e 'Source: Monterey County, Big Sur Coast Land Use Plan, 1986' de 30,07 a 38,8 s (a faixa do plano). Nenhum crédito-fantasma, nenhum crédito supérfluo, nenhum arquivo de _media/ na cena.",
-        "emenda s13 → s15 (E1, julgada nos quadros do clipe 4K): o último quadro da s13 (n958) traz a pílula do crédito 'Source: U.S. Census Bureau, 2020 Census' sobre o '© MapTiler…'; na s15 ela falta de n0 a n5 (0 a 0,167 s) e volta em fade a partir de n6, enquanto o polígono do distrito já está na tela desde o 1º quadro. Isso se vê, como um piscar de ~0,2 s da pílula, no canto de baixo à esquerda (recorte 4K q1-E1-crop-credito-s13-s15.png), mas a leitura do quadro não se perde: o crédito de licença do mapa fica o tempo todo e o do Census é de dado público. Sinalização, nota segue 8. Destino: o redator-de-tela põe o t0 do crédito do Census da s15 em 0 no textos-tela (para ele atravessar o corte sem fade), e o mapista renderiza a s15 de novo."
+        "'© MapTiler © OpenStreetMap contributors' está do 1º ao último quadro que olhei (A a F, e 39,2 s), data-qc-credito='mapa', legível no recorte 4K. 'Source: U.S. Census Bureau, 2020 Census' de 0 a 23,967 s (o dado do distrito e das comparações), 'Source: Monterey County, Big Sur Coast Land Use Plan, 1986' de 30,07 a 38,8 s, em 2 linhas. Nenhum crédito-fantasma, nenhum crédito supérfluo, nenhum arquivo de _media/ na cena.",
+        "ITEM DA LISTA (T4) crédito do Census em 0 'para não piscar na s13 → s15': FEITO, do lado da s15. No quadro 0 (folha A, canto de baixo à esquerda, e recorte 4K q2-L4-crop-credito-t0.png) o crédito está inteiro, sem fade, no mesmo lugar que o da s13 (bottom 118 nas duas, conferido nos dois HTML). A passagem entre as duas cenas é da emenda E1 e eu não olhei o último quadro da s13 aqui. Defeito novo: nenhum; o crédito sai em 23,967 s com o fade de 300 ms de sempre."
       ],
-      "correcoes": [
-        "redator-de-tela: t0 = 0 do crédito 'Source: U.S. Census Bureau, 2020 Census' da s15 (hoje 0,167 s), sem fade de entrada, para ele atravessar o corte s13 → s15 junto com o polígono; o mapista renderiza a s15 de novo e o qc-visual reolha só n0 a n8."
-      ]
+      "correcoes": []
     },
     {
       "lente": "tema",
       "nota": 9,
       "problemas": [
-        "uma cor, um significado: laranja (--destaque) é o distrito em toda a cena, azul-petróleo (--contraparte) é a Califórnia, cinza (--neutro) é o Wyoming e o Alasca, branco tracejado é o plano. 3 matizes fora a base; nenhuma bandeira. O satélite e a água escura são os da série. A pose casa com a s13 em tom e em posição (comparado lado a lado)."
+        "uma cor, um significado: laranja (--destaque) é o distrito em toda a cena, azul-petróleo (--contraparte) a Califórnia, cinza (--neutro) o Wyoming e o Alasca, branco tracejado o plano. 3 matizes fora a base; nenhuma bandeira. A pose do quadro 0 (satélite, água escura, anel) é a do fim da s13, como a Arte declara; o tom do satélite com o teto do z10 é o da série."
       ],
       "correcoes": []
     },
@@ -97,7 +95,7 @@
       "lente": "cobertura",
       "nota": 9,
       "problemas": [
-        "os concretos centrais (o distrito, o Wyoming, a Califórnia, o Alasca, a costa do plano, Carmel e o condado vizinho) aparecem como geometria real sobre o satélite; people vira ponto. A cena é de dado: o registro fotográfico está nas cenas irmãs (s13, s18)."
+        "os concretos centrais (o distrito, o Wyoming, a Califórnia, o Alasca, a costa do plano, Carmel e o condado vizinho) aparecem como geometria real sobre o satélite; as pessoas viram ponto. A cena é de dado: o registro fotográfico está nas cenas irmãs (s13, s18)."
       ],
       "correcoes": []
     },
@@ -105,7 +103,7 @@
       "lente": "cadencia",
       "nota": 9,
       "problemas": [
-        "não há footage. A imagem muda por objeto: o distrito (0 a 3,5), a área (3,5 a 6,8), a régua (6,8 a 11,8), o Wyoming (11,8 a 14), o Alasca (14 a 18), a Califórnia (18 a 23,7), o plano (23,7 a 33,5) e os dois contornos (33,5 a 39,3): 8 planos em 39 s, cada beat ≥ 1,5 s (o menor é o recuo de 2,2 s). 'ALASKA' fica 1,5 s no ar, o piso de rótulo do textos-tela (rótulo, cota e nome ≥ 1,5 s)."
+        "não há footage. A imagem muda por objeto: o distrito (0 a 3,5 s), a área (3,5 a 6,8), a régua (6,8 a 11,8), o Wyoming (11,8 a 14), o Alasca (14 a 18), a Califórnia (18 a 23,7), o plano (23,7 a 33,5, agora com Carmel e a divisa em 31,5 e 31,967) e os dois contornos (33,5 a 39,3): 8 planos em 39 s, cada beat ≥ 1,5 s. Os 5 s do plano de 26,6 a 31,5 s têm o tracejado se desenhando e a câmera andando, sem parar."
       ],
       "correcoes": []
     },
@@ -125,7 +123,7 @@
       "lente": "circulo",
       "nota": 9,
       "problemas": [
-        "os 3,5 s de abertura repetem a pose do fim da s13 (comparada lado a lado: mesmo polígono, mesmo anel), mas é continuidade declarada (a pose casada da emenda), e a s15 acrescenta logo o número, a área, a régua e a comparação. A dupla 'CENSUS DISTRICT' / 'BIG SUR COAST · 1986 PLAN' volta na s31 (callback declarado no textos-tela); não olhei a s31, a conferência é do lote dela."
+        "os 3,5 s de abertura repetem a pose do fim da s13 (mesmo polígono, mesmo anel, mesmo crédito no quadro 0), mas é continuidade declarada (pose casada da emenda), e a s15 acrescenta logo o número, a área, a régua e a comparação. A dupla 'CENSUS DISTRICT' / '1986 PLAN AREA' volta na s31 como callback declarado no textos-tela; a conferência é do lote da s31."
       ],
       "correcoes": []
     }
