@@ -820,3 +820,15 @@ cada site, com o robots.txt antes e o User-Agent do canal. As cópias, as contas
 O paradoxo que vende o vídeo, as 14 vezes, é quase todo de régua (o BIG dá à Indonésia mais costa que a da Noruega), e o molde do título é um
 clichê de Short de 2026 sobre a Suécia. Cai a pauta v1, não o tema. A pesquisa é excelente, e o tema se levanta com a régua comum (33.545 ilhas
 com nome contra 17.380) e com as duas paisagens da costa (o NGU). Mas isso é título e gancho novos, e não conserto.
+
+## A decisão do Lucas (06/11/2026, ~18:0x)
+
+Depois do cético, a Sala mostrou no chat as três saídas, com a pergunta "Como seguimos?":
+- "A · Refazer a pauta da Noruega com o ângulo honesto (Recomendado)";
+- "B · Buscar outra pauta";
+- "C · Deixar para depois do vídeo 5".
+
+A resposta foi **"C"**. A pauta fica como está, com o tema de pé e esta versão caída (4,5). Quando o vídeo 5 (`big-sur`) fechar, a Sala
+pergunta de novo entre a v2 com o ângulo honesto e outra pauta. A v2 teria a régua justa (pelas ilhas com nome, quase 2 vezes a Indonésia), a
+geologia como resposta e um título fora do molde dos Shorts, passando pelo teste dos leitores. As páginas do snl.no e da UNESCO não se citam
+(APRENDIZADOS 99).
