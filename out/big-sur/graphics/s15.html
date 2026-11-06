@@ -15,7 +15,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s15 com as filhas s16 e s17 fundi
 
   A BASE: MapTiler satellite-v2 (canal.json › mapa.perfil), no tratamento C (identidade §6: brilho 92 %, saturação 0, contraste +25 %).
   O SATÉLITE POR TRECHO (retomada-teto da Sala, 05/11/2026; conserto da Sala): a cena inteira com o teto z10 (BASE_MAXZ = 10), um trecho só,
-  pitch 0 do começo ao fim. Trilha medida a cada 0,1 s: 0–11,833 z 10,91 → 10,80 (≥ 10,5, "de perto" pela régua, mas fica no teto: a s13
+  pitch 0 do começo ao fim. Trilha medida a cada 0,1 s: 0–11,833 z 10,91 → 10,52 (arte-5; ≥ 10,5, "de perto" pela régua, mas fica no teto: a s13
   termina em P-DISTRITO no teto z10, e a única passagem possível seria no começo do recuo, devagar e à vista); 11,833–39,333 z 4,50 a
   10,35 (largo). Nenhuma passagem de nível na cena.
   A ÁGUA ESCURA (identidade §6, a da série: s07, s31, s32, s33): marDaCosta(costa-do-plano-1986-trecho, california), em --agua-base, por
@@ -24,7 +24,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s15 com as filhas s16 e s17 fundi
 
   A CÂMERA (anda do 1º ao último quadro; nenhuma perna parada):
     · 0 → 11,833 (b0–b2): abre EXATA em P-DISTRITO ([-121.7000, 36.2460], z 10.9107; a pose casada do setor) e recua devagar
-      (linear) até D1 ([-121.7300, 36.2500], z 10.80): a costa se afasta das três cotas sobre o mar, à esquerda.
+      (rampa, arte-5) até D1 ([-121.7150, 36.2460], z 10.52): a costa se afasta das três cotas sobre o mar, à esquerda.
     · 11,833 → 14,033 (b3): o recuo cúbico (2,2 s) de D1 à vista dos EUA US0 ([-88.65, 35.36], z 4.50), o centro pesado pelo
       vão (a costa fica no quadro no começo do recuo).
     · 14,033 → 23,667 (b4–b5): aproximação lenta US0 → US1 (z 4.55), com o ponto (1920, 1474) da tela parado (o sul da
@@ -71,6 +71,15 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s15 com as filhas s16 e s17 fundi
     · E2-2: "1986 PLAN AREA" (#rPlano, 33,467–38,8) sai da margem (era parado em 200, 1440) e fica preso ao mapa, no mar da metade sul,
       com a ponta direita a 80 px do tracejado em 33,467 s e a 116 px em 38,8 s, sem tocar o tracejado nem a costa. Sem fio.
     Texto, tamanho, tempos, pulsos, câmera e as poses de entrada e de saída não mudam.
+  CONSERTO big-sur-arte-5 (06/11/2026, mapista B1; E3-1 da revisão de espectador r3, "a abertura parece congelada"):
+    · a perna 0 → 11,833 s: o D1 passa de [-121.7300, 36.2500] z 10.80 a [-121.7150, 36.2460] z 10.52 (o recuo se vê; o centro
+      0,015° a oeste de P-DISTRITO, sem subir: a costa se afasta das cotas para a direita), e a interpolação linear vira a rampa
+      `rampaDeriva` (ease-in de 0,6 s a partir da velocidade zero, x³ − x⁴/2, e depois velocidade constante). A trilha medida a cada
+      0,1 s: z 10,9107 → 10,52, sempre ≥ 10,5 e no teto z10 (BASE_MAXZ), sem passagem de nível. A medida da câmera (sim_s15.py, a
+      terra que se vê, fora do distrito aceso, das cotas e da régua): p90 de ~4,5 para 19,1–19,6 px 4K por 0,5 s de 0,6 a 11,5 s.
+      Com z 10,55 ficava em ~18,0–18,4, abaixo da meta de ~20 da Sala; por isso 10,52.
+    · A abertura continua EXATA em P-DISTRITO, com velocidade zero (a s13 chega nela em eio); o recuo cúbico de 11,833 a 14,033 parte
+      do D1 novo pela mesma `viagem`. Textos, tempos, o b3 em diante e a pose final (P-COSTA) não mudam.
 
   TAMANHOS: rótulo de lugar a 128 px (alvo). As COTAS (os números da fala sobre o mapa) a 112 px, acima do piso de 104: a mais
   longa ("MORE THAN 70 MI · MONTEREY COUNTY PLAN (1986)", 45 caracteres) e a do distrito (30) têm de caber sobre o mar, entre a
@@ -203,7 +212,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s15 com as filhas s16 e s17 fundi
     perfil: "maptiler",
     pontos: {
       PD:  { lng: -121.7000, lat: 36.2460, zoom: 10.9107 },   // P-DISTRITO (setor, poses.mjs)
-      D1:  { lng: -121.7300, lat: 36.2500, zoom: 10.80 },
+      D1:  { lng: -121.7150, lat: 36.2460, zoom: 10.52 },     // big-sur-arte-5, E3-1 (era [-121.7300, 36.2500], z 10.80)
       US0: { lng: -88.65,    lat: 35.36,   zoom: 4.50 },
       Q0:  { lng: -121.6150, lat: 36.0360, zoom: 9.75 },
       Q1:  { lng: -121.6650, lat: 36.0360, zoom: 9.75 },
@@ -577,9 +586,17 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s15 com as filhas s16 e s17 fundi
     var w = Math.abs(sb - sa) < 1e-12 ? eio(u) : (s - sa) / (sb - sa);
     return { center: [lngDe(lerp(mx(a.lng), mx(b.lng), w)), latDe(lerp(my(a.lat), my(b.lat), w))], zoom: z, bearing: 0, pitch: 0 };
   }
+  // big-sur-arte-5 (E3-1): a deriva de abertura em rampa: ease-in de TA s a partir da velocidade zero (x³ − x⁴/2: a velocidade e a
+  // aceleração nascem em zero e a velocidade chega a 1 em TA, sem tranco) e depois velocidade constante até o recuo (11,833 s)
+  function rampaDeriva(t) {
+    var TA = 0.6, T1 = CENA.t.recuo[0], D = TA / 2 + (T1 - TA);
+    t = cl(t, 0, T1);
+    var q = t <= TA ? TA * (Math.pow(t / TA, 3) - Math.pow(t / TA, 4) / 2) : TA / 2 + (t - TA);
+    return q / D;
+  }
   function cameraAt(t) {
     var T = CENA.t;
-    if (t < T.recuo[0]) return linear(PT.PD, PT.D1, t / T.recuo[0]);
+    if (t < T.recuo[0]) return linear(PT.PD, PT.D1, rampaDeriva(t));
     if (t < T.recuo[1]) return viagem(PT.D1, PT.US0, seg(t, T.recuo[0], T.recuo[1] - T.recuo[0]));
     if (t < T.eua[1]) return linear(PT.US0, PT.US1, seg(t, T.eua[0], T.eua[1] - T.eua[0]));
     if (t < T.descida[1]) return viagem(PT.US1, PT.Q0, seg(t, T.descida[0], T.descida[1] - T.descida[0]));
