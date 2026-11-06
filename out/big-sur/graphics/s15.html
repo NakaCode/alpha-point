@@ -63,8 +63,14 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s15 com as filhas s16 e s17 fundi
       anel na divisa e "SAN LUIS OBISPO COUNTY" em 31,967, antes de "down" (big-sur-arte-2, T2; os dois até 33,467); "MORE THAN 70 MI · MONTEREY COUNTY PLAN (1986)" em 30,067, em baixo.
     · b7 (33,467–39,333): os dois contornos juntos, cada um com o nome (a 112 px, a mesma das cotas: a P-COSTA não tem
       linha de mar com mais de ~1.950 px entre a margem e a costa, e o nome do plano, a 128 px, tem 1.903) ("CENSUS DISTRICT" na terra, à direita do distrito; "1986
-      PLAN AREA" no mar, à esquerda da metade sul; T8 do Lucas, 06/11/2026 "1. A": era "BIG SUR COAST · 1986 PLAN"); em 'which is which' (38,01) os dois pulsam alternados uma vez
+      PLAN AREA" no mar, junto do tracejado na metade sul (arte-3, E2-2); T8 do Lucas, 06/11/2026 "1. A": era "BIG SUR COAST · 1986 PLAN"); em 'which is which' (38,01) os dois pulsam alternados uma vez
       (o distrito, depois o plano, em 38,17); os nomes saem em 38,8; o fim em P-COSTA sem rótulos.
+  CONSERTO big-sur-arte-3 (06/11/2026, mapista M1; textos-tela db04cffb, instrução [29] (a)):
+    · E2-1: o rótulo "WYOMING" [66] (#rWY) vive de 13,3 a 15,5 s (antes 11,8–14,0), com a subida de entrada em 13,3, parado no lugar de
+      antes; o fio #fioWY entra e sai junto da pílula (antes, só em 13,3). O eixo WYOMING [67] fica em 11,8 e o ALASKA [68] em 15,667.
+    · E2-2: "1986 PLAN AREA" (#rPlano, 33,467–38,8) sai da margem (era parado em 200, 1440) e fica preso ao mapa, no mar da metade sul,
+      com a ponta direita a 80 px do tracejado em 33,467 s e a 116 px em 38,8 s, sem tocar o tracejado nem a costa. Sem fio.
+    Texto, tamanho, tempos, pulsos, câmera e as poses de entrada e de saída não mudam.
 
   TAMANHOS: rótulo de lugar a 128 px (alvo). As COTAS (os números da fala sobre o mapa) a 112 px, acima do piso de 104: a mais
   longa ("MORE THAN 70 MI · MONTEREY COUNTY PLAN (1986)", 45 caracteres) e a do distrito (30) têm de caber sobre o mar, entre a
@@ -811,17 +817,19 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s15 com as filhas s16 e s17 fundi
       anel("anelSLO", PT_SLO, vivo(t, 31.967, 33.467), 31.967);
 
       // ── o fio do Wyoming: da pílula (no alto, sobre o Canadá) ao meio do estado ──
-      // a pílula entra na palavra (11,8) já no lugar dela na vista US0, parada na tela (no alto, sobre o Canadá: o estado não
-      // cabe a pílula sem passar sobre a divisa); o fio só entra quando o estado chega ao quadro no recuo
-      var fio = E("fioWY"), vRWY = vivo(t, 11.8, 14.0), wW = W("rWY"), hW = H("rWY"), tW = 180;
+      // a pílula fica parada na tela no lugar dela na vista US0 (no alto, sobre o Canadá: o estado não cabe a pílula sem passar sobre a
+      // divisa). arte-3, E2-1 (textos-tela db04cffb [66], instrução [29] (a)): ela entra em 13,3 s, quando o Wyoming já está inteiro no
+      // quadro (13,2), e sai inteira em 15,5, antes do ALASKA (15,667); a palavra "Wyoming" (11,8) fica com o eixo [67] da régua.
+      // O fio entra JUNTO da pílula e sai com ela (antes: a pílula em 11,8–14,0 e o fio só em 13,3)
+      var fio = E("fioWY"), vRWY = vivo(t, 13.3, 15.5), wW = W("rWY"), hW = H("rWY"), tW = 180;
       var lW = WY_US0[0] - wW / 2, pW = map.project(WYC.c);
-      var vFio = vRWY * eo(seg(t, 13.3, 0.4));
+      var vFio = vRWY;
       if (fio) {
         fio.setAttribute("opacity", vFio.toFixed(3));
         var d = "M" + WY_US0[0].toFixed(1) + " " + (tW + hW + 6).toFixed(1) + "L" + pW.x.toFixed(1) + " " + pW.y.toFixed(1);
         E("fioWYs").setAttribute("d", d); E("fioWYl").setAttribute("d", d);
       }
-      poeRotulo("rWY", vRWY, lW, tW, eo(seg(t, 11.8, 0.3)), false);
+      poeRotulo("rWY", vRWY, lW, tW, eo(seg(t, 13.3, 0.3)), false);
 
       // ── o inset do Alasca ──
       var ins = E("inset"), vIns = vivo(t, 14.033, 17.767);
@@ -847,7 +855,12 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s15 com as filhas s16 e s17 fundi
       // b7: os nomes dos dois contornos, presos ao mapa
       var pcd = map.project([-121.40, 36.175]);
       poeRotulo("rCD", vivo(t, 33.467, 38.8), pcd.x, pcd.y - H("rCD") / 2, eo(seg(t, 33.467, 0.3)), true);
-      poeRotulo("rPlano", vivo(t, 33.467, 38.8), 200, 1440, eo(seg(t, 33.467, 0.3)), false);   // parado na tela, sobre o mar da metade sul (a costa fica a ≥ 230 px da ponta dela de Q1 a P-COSTA)
+      // arte-3, E2-2: o nome do plano sai da margem (antes parado em 200, 1440, a ~1/4 do quadro do tracejado) e fica preso ao mapa, no
+      // mar da metade sul, junto do tracejado: o canto de cima à direita da pílula em [-121.54007, 35.91705]. Com a câmera de Q1 a
+      // P-COSTA, a ponta direita fica a 80 px do tracejado em 33,467 s e a 116 px em 38,8 s (a folga cresce com o zoom), a costa a
+      // 82–119 px e o distrito a ≥ 141 px; a área segura, a ≥ 172 px (out/big-sur/_tmp/arte-3/M1/s15-plano-lugar.mjs, a cada 0,05 s)
+      var pPl = map.project([-121.54007, 35.91705]);
+      poeRotulo("rPlano", vivo(t, 33.467, 38.8), pPl.x - W("rPlano"), pPl.y, eo(seg(t, 33.467, 0.3)), true);
     }
 
     // ── os créditos ──

@@ -59,6 +59,12 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s25 com a s26 fundida (2
      marcador, os dois nomes, a encosta (6).
   CRÉDITOS a 60 px: o da foto de 0 a 2,867; "© MapTiler © OpenStreetMap contributors" ([129]) de 2,867 ao fim (cobre o OSM da Highway 1;
      data-qc-credito="mapa" só nele). A geometria (PAD-US, Census, NOAA CC0, GNIS) não pede crédito na tela.
+  CONSERTO big-sur-arte-3 (M2, 06/11/2026; Q2-A3, a lista da Sala sala-lote-consertos-3.md): a passagem do satélite no fechamento do b4
+     se alarga. PASSA.d vai de 0,6 a 1,0 s (17,733–18,733), e a curva da fusão passa de eio a smoothstep: a inclinação máxima da opacidade
+     cai de 5/s para 1,5/s, e o degrau de 17,9–18,1 s (a luminância média do quadro subia +18,6 em 0,2 s no clipe 74726629) fica em ~+11
+     pela conta. O t0 não muda (a prova do z11+ de 17,733 em diante, sonda-z2 do N3); em 18,62, quando a encosta toca o fio, a fusão está
+     96 % feita, ainda no fechamento rápido. Os três trechos ficam: LARGO 2,867–17,733 (teto z10), PASSAGEM 17,733–18,733 (fusão),
+     DE PERTO 18,733–20,6 (sem teto, zoom ~15,35–15,5). Nada mais mudou: a câmera, as poses, os textos, os tempos e as camadas.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -304,7 +310,9 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s25 com a s26 fundida (2
   }
   function fechaAfasta(t) { if (t <= FECHA.t0) return 0; var f = fechaPrep(), z = cameraAt(t).zoom; return cl((z - f.z0) / (FECHA.z1 - f.z0), 0, 1); }
   // a passagem do satélite no b4: a camada alta entra numa fusão de PASSA.d s a partir de PASSA.t0 (declarada; relato N3)
-  var PASSA = { t0: 17.733, d: 0.6 };   // a sonda-z2 (relato N3): o chão visível da camada alta pede z10 até 17,70 e só z11+ de 17,733 em diante
+  // arte-3 (M2, Q2-A3): d de 0,6 para 1,0 s, e a curva da fusão passa de eio (inclinação máxima 3/d) a smoothstep (1,5/d): o degrau
+  // de 17,9–18,1 s cai de +18,6 de luminância média em 0,2 s (medido no clipe 74726629) para ~+11 (a conta, no relato M2); o t0 fica
+  var PASSA = { t0: 17.733, d: 1.0 };   // a sonda-z2 (relato N3): o chão visível da camada alta pede z10 até 17,70 e só z11+ de 17,733 em diante
   window.__satTrechos = [{ de: 2.867, ate: PASSA.t0, nivel: "teto z10" }, { de: PASSA.t0, ate: PASSA.t0 + PASSA.d, nivel: "fusão teto z10 → alto" }, { de: PASSA.t0 + PASSA.d, ate: DUR, nivel: "alto (sem teto)" }];
   window.__cameraAt = cameraAt;
   var exageroAt = function (t) { return eio(seg(t, CENA.inclina[0], CENA.inclina[1])); };   // 0 no 2D, 1,0× do fim da inclinação em diante
@@ -627,7 +635,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s25 com a s26 fundida (2
     // começo do fechamento rápido, quando o chão visível já só pede z11+ (a prova no relato N3, sonda-z2)
     var vA = seg(t, PASSA.t0, PASSA.d), visAlta = t >= PASSA.t0 - 0.3 ? "visible" : "none";
     if (antes["vis-alta"] !== visAlta) { map.setLayoutProperty("base-alta", "visibility", visAlta); antes["vis-alta"] = visAlta; }
-    pint("base-alta", "raster-opacity", eio(vA));
+    pint("base-alta", "raster-opacity", vA * vA * (3 - 2 * vA));   // arte-3 (Q2-A3): smoothstep, no lugar do eio
     var aH = eo(seg(t, CENA.corre[0] + 0.8, 0.5));
     pint("hwy-sob", "line-opacity", aH); pint("hwy", "line-opacity", aH);
     // a encosta (b4) e o fio que some debaixo dela

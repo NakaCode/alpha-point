@@ -13,14 +13,24 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s31 (289,000 → 307,667
     E: o contorno mais grosso do distrito na cena (menos no fim, que é a emenda com a s32) e o do parque. E: as casas ficam até 13,0 s.
     A câmera, os outros textos, os tempos e as poses não mudam. O "Illustrative" [155] sai em 13,3, junto com as casas (textos-tela
     9fc965e2 [155], t0 0, t1 13,3: a big-sur-texto-5, commit 503b2e2).
+  CONSERTO big-sur-arte-3 (lote M3, 06/11/2026): só a lista da Sala (sala-lote-consertos-3.md, s31). E2-4: a câmera de 10,3 ao fim
+    (a parte 2 do conserto do espectador r1, que a arte-2 não levou): de 10,3 a 15,9 uma aproximação suave e visível rumo ao trecho
+    Pfeiffer–Bixby (o centro anda 0,12° para o oeste e 0,085° para o norte, ~300 px no 4K, e o zoom sobe 0,12, sempre abaixo de 10,5;
+    em velocidade quase constante, acelerando em 0,8 s e freando em 1,4 s até parar em 15,9), e de 15,9 ao fim a volta à P-COSTA exata, com velocidade zero no último quadro (a pose casada com a s32). E2-3: o "1986 PLAN AREA"
+    (#rPlano, 7,2–10,3) passa de l 200 para l 860, no mesmo tp 1440: a ponta direita fica a 153 px a oeste do tracejado da costa
+    na mesma altura (medido na sonda: o tracejado na faixa de altura da pílula fica de x 2.100 para a direita, e ela termina em
+    1.947), nunca sobre a linha. Os textos, os tempos, o satélite (o teto z10), a água escura e o resto não mudam.
   O que manda: textos-tela.json 71405fb4 (s31, [154]–[163]) no QUE e na grafia; regencia.json e25d0e79 (cenas[s31], beats 0–3) no
   TEMPO e no exige; o conceito 143736c0 (P4 em miniatura, sem tela cheia; termina em P-COSTA 2D sem rótulos); o espelho 446ffccc;
   para-passos item 40 (1): a foto de s01 volta só como miniatura de 600 × 340 no anel. MODO 2D (norte para cima, pitch 0): a frase
   compara duas áreas e nomeia lugares; nada argumenta com a vertical.
 
-  A CÂMERA: o centro da P-COSTA ([-121.59, 36.14]) o tempo todo, norte para cima, e o zoom RESPIRA (nunca para): abre em 10.2102
-    (corte seco da mesa), aproxima devagar até 10.427 (~8,1 s) e volta a 10.3452 no último quadro, com velocidade zero:
-    z(t) = 10.3452 + 0.9 · (1 − u)² · (u − 0.15), u = t / 18.667. O ÚLTIMO QUADRO É A P-COSTA EXATA (a pose do setor), com o
+  A CÂMERA: norte para cima, pitch 0. De 0 a 10,3 o centro da P-COSTA ([-121.59, 36.14]) e o zoom RESPIRA: abre em 10.2102
+    (corte seco da mesa), aproxima devagar até 10.427 (~8,1 s) e volta, z(t) = 10.3452 + 0.9 · (1 − u)² · (u − 0.15), u = t / 18.667.
+    Desde a arte-3 (E2-4), somado a isso, um SINO s(t): 0 até 10,3, sobe a 1 em 15,9 ("the bridge"), em velocidade quase constante
+    (acelera em 0,8 s e freia em 1,4 s, rampas em smoothstep), e volta a 0 no último quadro em cosseno, com derivada zero nas três pontas; o centro = P-COSTA + (−0,12°, +0,085°) · s e o zoom = z(t) + 0,12 · s (o máximo
+    10.4825 em 15.3 s). Como z(t) já termina em 10.3452 com velocidade zero e s(18,667) = 0, o último quadro continua a P-COSTA exata,
+    parada. O ÚLTIMO QUADRO É A P-COSTA EXATA (a pose do setor), com o
     tracejado do plano e o distrito em contorno fraco (--destaque a 30 %, 5 px), SEM rótulo, sem anel e sem miniatura: o 1º quadro
     da s32, que abre nele e inclina.
   b0 (0–5,033): o tracejado do plano (costa-do-plano-1986: o polígono DERIVADO e declarado da pauta-geo; --tinta 6 px, traço 3/2,
@@ -34,7 +44,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s31 (289,000 → 307,667
     Sur Coast Land Use Plan, 1986" (1,167–10,3).
   b1 (5,033–10,3): o distrito do censo (ccd-big-sur) entra em --destaque a 50 % dentro do tracejado, no contorno MAIS GROSSO da
     arte-2 (14 px sobre o contorno escuro de 22 px, a forma da s15 no b6–b7; A11); 7,2 ("whole coast"): "1986 PLAN AREA" (textos-tela
-    [157], a forma curta da texto-4) no mar, à esquerda da metade sul (a posição da s15); 8,7 ("census district"): "CENSUS DISTRICT"
+    [157], a forma curta da texto-4) no mar, à esquerda da metade sul, parado na tela em l 880, tp 1440 (arte-3, E2-3: era l 200, a
+    posição da s15, e ficava a ~800 px do tracejado; agora a ponta direita fica a 153 px dele, na mesma altura); 8,7 ("census district"): "CENSUS DISTRICT"
     na terra, à direita do distrito (a posição da s15), e o contorno pulsa uma vez (14 → 22 px, 50 → 100 %, 0,9 s). Os dois nomes a
     112 px, como na s15 (a dupla da série). 10,0–10,3: a pílula, os dois nomes e o crédito do plano saem (a legenda fica até 13,3); o distrito volta
     a 30 %, ainda no contorno grosso. AS CASAS FICAM (arte-2, espectador r1 lote 10): as 20 casas e os pontos dos desembarcadouros
@@ -59,8 +70,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s31 (289,000 → 307,667
   CRÉDITOS a 60 px (var(--fs-credito)): "© MapTiler © OpenStreetMap contributors" do 1º ao último quadro (data-qc-credito="mapa"
     só nele); acima dele, o do plano (1,167–10,3) e o da foto (15,9–18,367). A geometria (Census, NOAA CC0, GNIS, PAD-US) é
     domínio público: nada na tela (o PAD-US vai na descrição, pela pauta-geo).
-  O SATÉLITE POR TRECHO (a regra da Sala, 05/11/2026, 20:1x; retomada-teto.md): UM trecho só, LARGO. Zoom de 10.2102 a 10.427,
-    pitch 0, do 1º ao último quadro (medido a cada 0,1 s pela __cameraAt): sempre abaixo de 10,5, então a cena inteira vai no TETO z10
+  O SATÉLITE POR TRECHO (a regra da Sala, 05/11/2026, 20:1x; retomada-teto.md): UM trecho só, LARGO. Zoom de 10.2102 a 10.4825
+    (a arte-3 somou a aproximação de 10,3–15,9; era até 10.427), pitch 0, do 1º ao último quadro (medido a cada 0,1 s pela __cameraAt): sempre abaixo de 10,5, então a cena inteira vai no TETO z10
     (BASE_MAXZ = 10, o da s32: o maxzoom da fonte base vira min(P.base.maxzoom, 10); a mesma base e a mesma licença). Não há passagem.
     A s32 abre nesta P-COSTA, também no teto. A ÁGUA ESCURA (identidade §6, "A água escura nos mapas do porto"): a nuvem e as emendas
     do mosaico ficavam no mar (as folhas do setor); o mar a oeste da costa do TIGER (costa-do-plano-1986-trecho), com a costa do estado
@@ -161,7 +172,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s31 (289,000 → 307,667
     legenda: { t0: 0.0, t1: 13.3 },                         // textos-tela 9fc965e2 [155] (big-sur-texto-5): sai com as casas
     nearly: { t0: 1.167, t1: 10.3, direita: 3640, topo: 200 },   // [156]
     distrito: { entra: 5.033, pulso: 8.7, volta: 10.3, grosso: 14, sob: 22, afina: 17.967 },   // arte-2 (A11): o contorno grosso; afina no fim
-    plano: { t0: 7.2, t1: 10.3, l: 200, tp: 1440 },          // [157], a posição da s15
+    plano: { t0: 7.2, t1: 10.3, l: 860, tp: 1440 },          // [157]; arte-3 (E2-3): l 860 (era 200), a ponta direita a 153 px do tracejado
     cd: { t0: 8.7, t1: 10.3, ll: [-121.40, 36.175] },        // [158], a posição da s15
     parque: { t0: 13.2, t1: FIM },                           // [160]
     bixby: { t0: 15.0, t1: FIM, pulsos: [15.9, 17.1] },      // [161] e o anel
@@ -222,11 +233,27 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s31 (289,000 → 307,667
   E("credMapa").textContent = credMapaTexto;
   window.__creditoMapa = credMapaTexto;
 
-  // ── a câmera: o centro da P-COSTA, norte para cima; o zoom respira e termina na P-COSTA exata, com velocidade zero ──
+  // ── a câmera: norte para cima; o zoom respira e termina na P-COSTA exata, com velocidade zero ──
   var PCOSTA = { center: [-121.59, 36.14], zoom: 10.3452 };
+  // arte-3 (E2-4): de 10,3 a 15,9 a aproximação do trecho Pfeiffer–Bixby (o centro para o oeste e o norte, o zoom sobe, sempre abaixo
+  // de 10,5) e de 15,9 ao fim a volta à P-COSTA: um sino com derivada zero em 10,3, em 15,9 e no último quadro. A subida anda em
+  // velocidade quase constante (acelera em ta, freia em td, rampas em smoothstep); a volta, em cosseno
+  var APROX = { t0: 10.3, pico: 15.9, ta: 0.8, td: 1.4, dc: [-0.12, 0.085], dz: 0.12 };
+  function rampa(x) { x = cl(x, 0, 1); return x * x * x - x * x * x * x / 2; }   // ∫ smoothstep de 0 a x
+  function sino(t) {
+    var A = APROX;
+    if (t <= A.t0 || t >= DUR) return 0;
+    if (t <= A.pico) {
+      var T = A.pico - A.t0, D = A.ta / 2 + (T - A.ta - A.td) + A.td / 2, x = t - A.t0;
+      var q = x <= A.ta ? A.ta * rampa(x / A.ta) : x <= T - A.td ? A.ta / 2 + (x - A.ta) : D - A.td * rampa((T - x) / A.td);
+      return q / D;
+    }
+    return (1 + Math.cos(Math.PI * (t - A.pico) / (DUR - A.pico))) / 2;
+  }
   function cameraAt(t) {
-    var u = cl(t / DUR, 0, 1);
-    return { center: PCOSTA.center.slice(), zoom: PCOSTA.zoom + 0.9 * (1 - u) * (1 - u) * (u - 0.15), bearing: 0, pitch: 0 };
+    var u = cl(t / DUR, 0, 1), f = sino(t);
+    return { center: [PCOSTA.center[0] + APROX.dc[0] * f, PCOSTA.center[1] + APROX.dc[1] * f],
+      zoom: PCOSTA.zoom + 0.9 * (1 - u) * (1 - u) * (u - 0.15) + APROX.dz * f, bearing: 0, pitch: 0 };
   }
   window.__cameraAt = cameraAt;
 

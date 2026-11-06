@@ -14,6 +14,13 @@
   linha comum (y 1.380). Para ela caber, a grade encolhe por igual (o quadradinho 66 → 60 px, o vão 18 → 16, o calendário na mesma razão) e
   fica com a base no y 1.328 de antes (y 584–1.328). A contagem não muda (A12 e T6, big-sur-texto-3: 55 cheios, 35 em contorno, 32
   calendários); nenhum outro tempo, painel ou peça mudou.
+  CONSERTO big-sur-arte-3, lote O1 (06/11/2026; sala-lote-consertos-3.md §1, s58, E2-9; o achado mantido do espectador r2, lote 23, t 1 s):
+  no b0, os três PAINÉIS se traçam em "what you count" ('what' 2,277 · 'you' 2,537 · 'count.' 2,677–3,117): o de PEOPLE em 2,30, o de HOMES
+  em 2,50 e o de VISITORS em 2,70, em 0,4 s cada (o traço e o fundo de cartão, que acaba junto do traço), e não mais de 0,2 a 1,5 s. Os
+  títulos [347]–[349] seguem entrando em 0,3, 0,6 e 0,9, no lugar deles, sobre a mesa (o textos-tela 9fc965e2… não muda: os 9 textos e
+  os t0 da s58 são os mesmos). A luz vai ao 1º painel em 3,10 ("count."), e não em 3,733; a régua segue em 'people' (3,997). A tela com as
+  três caixas vazias cai de ~2,6 s (1,5–4,1) para ~1,0 s (3,1–4,1). Os beats b1–b3, a grade, a faixa, os textos, a câmera e as poses de
+  entrada e de saída não mudam.
 
   O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json d6e57810… › s58: [347] eixo "PEOPLE" 0,3; [348] eixo "HOMES" 0,6; [349] eixo
   "VISITORS" 0,9 (os títulos dos painéis, até o fim); [350] legenda "As empty as Wyoming" 6,267; [379] legenda "Each square ≈ 10 homes"
@@ -47,9 +54,11 @@
     3,997 · 'census' 4,797 · 'district,' 5,141–5,787 · 'as' 6,277 · 'empty' 6,592 · 'Wyoming.' 6,917–7,447 · 'Count' 7,987 · 'homes,' 8,357 ·
     'many' 9,322 · 'kept' 9,992 · 'else.' 11,317–11,607 · 'Count' 12,147 · 'visitors,' 12,597 · 'road' 13,992 · 'county,' 14,292 · 'nineteen
     eighty-six' 15,237–16,067 · 'mostly' 16,597 · 'set aside' 16,997 · 'them.' 17,717–17,847):
-    0,200–1,500  os três PAINÉIS se traçam (o perímetro, 0,7 s cada, um a cada 0,3 s), com o fundo de cartão a 45 % de --fundo; os títulos
-           PEOPLE (0,3), HOMES (0,6), VISITORS (0,9) acima de cada um. A luz no meio da mesa. Nada novo até 3,733: a deriva e o push-in.
-    3,733  a luz vai ao 1º painel (0,6 s, eb, 120 ms atrás).
+    0,300–1,200  os títulos PEOPLE (0,3), HOMES (0,6), VISITORS (0,9) entram sobre a mesa, no lugar deles (acima de onde os painéis vão
+           ficar). A luz no meio da mesa; a deriva e o push-in.
+    2,300–3,100  'what you count': os três PAINÉIS se traçam sob os títulos (o perímetro, 0,4 s cada, um a cada 0,2 s: 2,30 · 2,50 · 2,70),
+           com o fundo de cartão a 45 % de --fundo acabando junto do traço (big-sur-arte-3, E2-9; eram 0,2–1,5 s).
+    3,100  'count.': a luz vai ao 1º painel (0,6 s, eb, 120 ms atrás; era 3,733).
     3,997  'people': o 1º QUADRADO se traça (0,3 s) e os 6 pontos do distrito CAEM um a um (a cada 0,026 s, de 4,100), quicam e PARAM até
            4,71 (abaixo, a física: a mesma da s04; o repouso de cada um em 0,481 s).
     5,450  o 2º QUADRADO (o do Wyoming) se traça ao lado (0,3 s) e os 6 pontos --neutro caem (de 5,60, a cada 0,04 s) e param até 6,28.
@@ -87,7 +96,7 @@
     · fica fora da prova do pacote: o atrito da frenagem (ESTUDO.md §11, l. 88). Sem pêndulo, rotação ou mão (a mão v003 não entra).
 
   A CÂMERA DA MESA: o push-in do RIG (0,0024/s, base 1,0) que PARA em 18,017, e a deriva (6 / 4,8 px); escala máxima 1,0432. O still a 0,6,
-    56 px de sangria (a câmera não viaja). A coreografia do pico é a LUZ que escolhe o painel que fala (b0 o meio; b1, b2, b3 cada painel) e a
+    56 px de sangria (a câmera não viaja). A coreografia do pico é a LUZ que escolhe o painel que fala (b0 o meio, até 'count.' em 3,10; b1, b2, b3 cada painel) e a
     construção de cada peça na palavra; nenhuma câmera viaja (identidade §4.4, A).
 
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): cada painel é UM CARTÃO (a moldura, o título, a peça e a
@@ -300,8 +309,9 @@
   Object.keys(TEXTOS).forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
 
   var T = {
-    painel: [0.20, 0.50, 0.80], painelDur: 0.70, titulo: [0.300, 0.600, 0.900],
-    luz: [0.0, 3.733, 7.967, 12.133], luzDur: 0.6,
+    // big-sur-arte-3 (E2-9): os painéis se traçam em "what you count" (2,277–3,117), 0,4 s cada; a luz vai ao 1º em "count." (~3,1)
+    painel: [2.30, 2.50, 2.70], painelDur: 0.40, painelFundo: 0.10, painelFundoDur: 0.30, titulo: [0.300, 0.600, 0.900],
+    luz: [0.0, 3.100, 7.967, 12.133], luzDur: 0.6,
     q1: 3.997, q1Dur: 0.30, graoD: 4.100, graoDPasso: 0.026, q2: 5.450, q2Dur: 0.30, graoW: 5.600, graoWPasso: 0.040, leg1: 6.267,
     casas: 8.167, casasLinha: 0.12, casaDur: 0.20, escala: 8.334, cal: 9.322, calOnda: 0.60, calDur: 0.22, leg2: 9.967,
     faixa: 12.200, faixaDur: 0.40, carro0: 12.367, carroPasso: 0.30, celulas: 16.567, celulasDur: 0.50, cota3: 16.567, credCensus: 3.967, credPlano: 16.567,
@@ -492,7 +502,7 @@
       var p = tracarRect(E("pc" + i), t, T.painel[i], T.painelDur, PERIM);
       tracarRect(E("ps" + i), t, T.painel[i], T.painelDur, PERIM);
       var ps = E("ps" + i); if (ps) ps.setAttribute("opacity", t >= T.painel[i] ? "0.8" : "0");
-      var pf = E("pf" + i); if (pf) pf.setAttribute("opacity", eo(seg(t, T.painel[i] + 0.2, 0.5)).toFixed(3));
+      var pf = E("pf" + i); if (pf) pf.setAttribute("opacity", eo(seg(t, T.painel[i] + T.painelFundo, T.painelFundoDur)).toFixed(3));   // o fundo acaba junto do traço (0,4 s)
       txt("t" + (i + 1), t, T.titulo[i], CX[i], PY - 124);
     }
     // b1: a régua

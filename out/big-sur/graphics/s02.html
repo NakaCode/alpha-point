@@ -35,6 +35,10 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s02 (4,000 → 7,900 s d
   ARTE-2 (big-sur-arte-2, 06/11/2026, mapista N1): só a lista da Sala. T1/E: o crédito da foto perde o "·" do começo da 2ª linha. A6: a
     água escura sai em 1,0–1,25 s (antes 0,75–1,0), cobrindo a emenda do mosaico no mar de 0,87 a 1,05 s. O resto é o da arte-1.
     A geometria é toda de domínio público (Census): nenhum crédito de camada.
+  CONSERTO big-sur-arte-3 (06/11/2026, mapista M1), Q2-A4: a névoa do mosaico com as bordas de tile no mar (1,13 a ~1,45 s) some. A água
+    escura fica inteira até 1,45 s e sai em 1,45–1,70 s (antes 1,0–1,25 s); o polígono dela segue a costa do estado (cb_2025) até 38,8 N
+    ao norte (antes 37,3) e 34,5 N ao sul (antes 35,3) e fecha em 126 W (antes 124,2), para a borda dele nunca entrar no quadro. A mesma
+    geometria (TIGER + cb_2025, domínio público), nada desenhado; a câmera, os textos, os tempos e as poses de entrada e de saída não mudam.
   A MÍDIA: _media/foto/s01/s01-bixby-bridge-aerial-2023-06-24-mavic-of-steel-commons.jpg (sha256 12ff1597…), conferencia-midia.json
     470095dc › candidatos[37], cena s02, lote 3: "aprovado" (reuso declarado), casado pelo sha256 do arquivo; aviso_de_ano sim
     ("Photo from 2023"); credito_na_tela "Mavic of Steel / Wikimedia Commons · CC BY-SA 4.0".
@@ -263,7 +267,7 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s02 (4,000 → 7,900 s d
     var c = fc.features[0].geometry.coordinates.slice();   // de San Luis Obispo (sul) a Carmel (norte)
     var ini = c[0], fim = c[c.length - 1], norte = [], sul = [];
     if (ca) {
-      // fora do trecho do TIGER, a costa segue a do estado (cb_2025 500k), de 35,3 N a 37,3 N: sem ela a borda da água escura cortava o
+      // fora do trecho do TIGER, a costa segue a do estado (cb_2025 500k), de 34,5 N a 38,8 N (arte-3; antes 35,3–37,3): sem ela a borda da água escura cortava o
       // mar numa reta em 36,555 N, à vista na s07 (o quadro do alto) e na s02 (a 1,0 s)
       var aneis = [];
       ca.features.forEach(function (f) { var g = f.geometry; (g.type === "Polygon" ? [g.coordinates] : g.coordinates).forEach(function (p) { aneis.push(p[0]); }); });
@@ -275,12 +279,15 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s02 (4,000 → 7,900 s d
         for (var k = 0; k < n; k++) { i = (i + s + n) % n; out.push(R[i]); if (paraNorte ? R[i][1] >= lim : R[i][1] <= lim) break; }
         return out;
       };
-      norte = andar(perto(fim), 37.3, true);
-      sul = andar(perto(ini), 35.3, false);
+      // arte-3, Q2-A4: de 34,5 N a 38,8 N e fechado em 126 W (antes 35,3–37,3 N e 124,2 W), para cobrir o mar do quadro inteiro até o
+      // fim da saída da água escura (1,70 s: o quadro vai de 34,71 a 38,59 N e chega a 125,46 W); o ramo norte para em 38,80 N sem entrar
+      // na baía de San Francisco, e o sul em 34,50 N, em Point Arguello (out/big-sur/_tmp/arte-3/M1/mar-cobre.mjs)
+      norte = andar(perto(fim), 38.8, true);
+      sul = andar(perto(ini), 34.5, false);
     }
     var anel = sul.slice().reverse().concat(c, norte);
     var a0 = anel[0], a1 = anel[anel.length - 1];
-    anel = anel.concat([[-124.2, a1[1]], [-124.2, a0[1]], a0]);
+    anel = anel.concat([[-126, a1[1]], [-126, a0[1]], a0]);
     return { type: "FeatureCollection", features: [{ type: "Feature", properties: {}, geometry: { type: "Polygon", coordinates: [anel] } }] };
   }
   COR.agua = tok("--agua-base", "#00050c");
@@ -532,10 +539,12 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s02 (4,000 → 7,900 s d
     var vm = eo(seg(t, CENA.metros.entra, 0.5));
     opac("metros-fill", "fill-opacity", 0.35 * vm);   // --territorio-contraparte-cor: --contraparte a 35 %
     opac("metros-linha", "line-opacity", vm);
-    // a água escura só de perto: fica inteira até o meio da fusão do satélite (1,0 s) e sai até o fim dela (1,25 s), antes de a escala do
+    // (arte-2: a água escura ficava inteira até o meio da fusão do satélite, 1,0 s, e saía até o fim dela, 1,25 s, antes de a escala do
     // estado mostrar a borda dela (o quadro só passa de 37,3 N em ~1,29 s); arte-2, A6: antes saía em 0,75–1,0 s, e a emenda do mosaico
     // aparecia no mar, ao norte da ponte, de 0,87 a 1,05 s
-    opac("mar", "fill-opacity", 1 - eio(seg(t, 1.0, 0.25)));
+    // arte-3, Q2-A4: a névoa do mosaico com as bordas de tile (1,13 a ~1,45 s) ficava à vista quando a água saía; agora ela fica inteira até
+    // 1,45 s e sai em 1,45–1,70 s, e o polígono (34,5–38,8 N, até 126 W) cobre o quadro até o fim da saída
+    opac("mar", "fill-opacity", 1 - eio(seg(t, 1.45, 0.25)));
     var vc = eo(seg(t, CENA.ca.entra, 0.5));
     opac("ca-sob", "line-opacity", vc); opac("ca", "line-opacity", vc);
     var pa = aplicarAnel("anel", BIX, t, CENA.anel.entra, null, []);

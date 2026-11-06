@@ -1798,3 +1798,16 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   - o pedido a todo agente de pesquisa diz isso por escrito.
 - **Por que serve a qualquer canal:** todo canal com pesquisa feita por agentes do Claude encontra esse veto, que hoje vem pronto no
   robots.txt gerenciado do Cloudflare e em enciclopédias e órgãos públicos.
+
+### 100. O `drawtext` do ffmpeg cai nesta máquina sem o `fontfile=`: o fontconfig não tem configuração
+
+- **O problema** (06/11/2026, a big-sur-arte-3, `out/big-sur/_tmp/setores/big-sur-arte-3.md`): as peças montaram grades de quadros com o
+  `drawtext` do ffmpeg, para marcar o instante de cada quadro, e o ffmpeg caiu (segfault; 139 no Git Bash, -1073741819 no PowerShell). As
+  grades saíram sem o número do instante.
+- **A causa, medida pela Sala** (o ffmpeg 8.1 full build da gyan.dev): sem `fontfile=`, o filtro procura a fonte pelo fontconfig, que não
+  tem arquivo de configuração nesta máquina ("Fontconfig error: Cannot load default config file"), e o processo cai. Com
+  `fontfile=marca/fontes/inter/Inter-VF.ttf`, o mesmo filtro sai 0.
+- **Como evitar:** todo `drawtext` leva o `fontfile=` com uma fonte do canal (`marca/fontes/`). Ou se marca o instante pelo PIL, como o
+  `ferramentas/folhas-espectador.py` faz com a Inter.
+- **Por que serve a outros canais:** o ffmpeg de build estático do Windows vem sem a configuração do fontconfig, e qualquer canal que anote
+  quadros com o `drawtext` cai no mesmo lugar.

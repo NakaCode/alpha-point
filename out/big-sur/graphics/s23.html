@@ -14,6 +14,11 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s23, 192,933 → 208,233 s do mas
   dele entram em 14,234 ("way"), e não no corte; a pista corre a prateleira inteira (x 1160–1460, o traço de 6 px), na frente, em
   "way" (14,247), e a casinha (que pousa onde pousava, em "build") fica atrás dela: a faixa da pista, em --fundo sob os traços,
   encobre o pé da casa entre as duas linhas. Nada mais mudou.
+  CONSERTO big-sur-arte-3 (M2, 06/11/2026; Q2-A1, a lista da Sala sala-lote-consertos-3.md): a casa fica apoiada na linha de cima da
+  pista, sem a faixa de fundo encobrir o pé dela. Ela pousa na prateleira em "build" (13,127), como antes (o pé em y 1173), e em "way"
+  (14,247) sobe 15 px junto com a entrada da pista (a mesma curva eo, 0,3 s), até o pé ficar sobre a linha de cima da pista (y 1158, o
+  traço de 6 px, 1155–1161): a faixa --fundo da pista (1161–1173) e o tracejado (1169) ficam inteiros abaixo do pé, e nenhum traço passa
+  sobre a casa. Nada mais mudou: a pista, o eixo, a guia, os tempos, a câmera e o mapa (0–11,467) são os da arte-2.
 
   MODO: 3D-drone sobre o relevo real (ofício §5/§5b: a lista nomeia "unstable soils on steep slopes" e a crista; os limites se
   prendem ao lugar em que agem), e o PERFIL desenhado no fim (a peça de marca; ilustrativa, declarada na tela).
@@ -504,7 +509,10 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s23, 192,933 → 208,233 s do mas
     prateleira: [1160, 1460], casa: 1370, pista: [1160, 1460],
     // arte-2 (N3): a pista corre a prateleira inteira, na frente da casinha (que pousa onde pousava); em "way" a faixa da pista,
     // em --fundo por baixo dos traços, encobre o pé da casa entre as duas linhas: a casa fica atrás da estrada, sem traço cruzando
-    casaY: -7, eixoT0: 14.234
+    casaY: -7, eixoT0: 14.234,
+    // arte-3 (M2, Q2-A1): em "way" a casa sobe junto com a pista (a mesma curva, 0,3 s) até o pé dela pousar NA linha de cima da pista
+    // (y − 22 = 1158, o traço de 6 px): a faixa --fundo (1161–1173) fica toda abaixo do pé, e nenhum traço da pista passa sobre a casa
+    casaYPista: -22
   };
   (function () {
     var d = PF.pontos.map(function (p, i) { return (i ? "L" : "M") + p[0] + "," + p[1]; }).join(" ");
@@ -539,7 +547,8 @@ CANAL ALPHA POINT — BIG SUR (vídeo 5), CENA s23, 192,933 → 208,233 s do mas
     var cs = E("casinha"); if (cs) {
       var uc = seg(t, 13.127, 0.45), esc = 1 + 0.03 * (1 - eo(seg(t, 13.127 + 0.23, 0.22))) * (uc > 0.5 ? 1 : 0);
       cs.setAttribute("opacity", eo(seg(t, 13.127, 0.2)).toFixed(3));
-      cs.setAttribute("transform", "translate(" + PF.casa + " " + (PF.pontos[3][1] + PF.casaY - 48 * (1 - eo(uc))).toFixed(1) + ") scale(" + esc.toFixed(4) + ")");
+      var cy = PF.casaY + (PF.casaYPista - PF.casaY) * eo(seg(t, 14.247, 0.3));   // arte-3 (Q2-A1): na prateleira até "way", na pista depois
+      cs.setAttribute("transform", "translate(" + PF.casa + " " + (PF.pontos[3][1] + cy - 48 * (1 - eo(uc))).toFixed(1) + ") scale(" + esc.toFixed(4) + ")");
     }
     var ps = E("pista"); if (ps) ps.setAttribute("opacity", eo(seg(t, 14.247, 0.3)).toFixed(3));
     var gh = E("guiaHwy"); if (gh) gh.setAttribute("opacity", eo(seg(t, PF.eixoT0, 0.3)).toFixed(3));
