@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s11 · "And there are the homes that do stand along this coast, and often sit empty."
+  Word-lock (−45.667) · inSec 45.667 · dur 4.533 (136 quadros a 30 fps, _quadros 1370→1506; espelho.json de big-sur, sha256
+  446ffccc…; palavras 130–144 do words.json f6055f41…). cleanDur = dur (faceless). Modo do espelho: desenho (o montador o passou
+  de 'dados' a 'desenho': regencia.json › _animacao_em_opus[1].condicao, cumprida no espelho 446ffccc). Modelo da identidade:
+  DADO sobre --papel (o exige da regência e o conceito: "THE LITTLE SQUARES (brand piece) on --papel"; identidade §5, a tabela
+  dos modelos: o DADO continua em --papel, sem a mesa), como ANIMAÇÃO PARA EXPLICAR ("números e escala": a proporção 345 de 887
+  desenhada). Cena do GANCHO (s01–s12): mapa 3D (s10) → dado, corte seco; dado → registro (s12, a vinheta), corte seco.
+  Tarefa big-sur-arte-1, lote EO1, editor-de-arte em Opus. Nenhum hex: as cores saem do tokens.css.
+
+  O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json 71405fb4… › s11: [47] legenda "2020 CENSUS" 0,900–4,533; [48] credito
+  "Source: U.S. Census Bureau, 2020 Census" 0,900–4,533; nenhum número: os números são da s55); o BEAT (regencia.json e25d0e79… ›
+  s11 › beats[0], 0–4,533: "THE LITTLE SQUARES (brand piece) on --papel: the census district's silhouette (ccd-big-sur outline in
+  --tinta-escura at 60 %) centred; from 'homes' (46.6 s) the district's 887 homes light as 30 px squares in --destaque row by row
+  from the north in 1.6 s; on 'empty' (49.3 s) 345 of them turn to outline only in 0.8 s, scattered by a fixed seed; '2020 CENSUS'
+  as the caption; no number"); o conceito (s11: "Janelas que não acendem"; o arco, OS QUADRADINHOS: "quadrados de 30 px numa grade
+  determinística (linha a linha, do norte, semente fixa) que enche a silhueta do distrito, os 345 vazios só em contorno"); o DADO
+  (needs.dados, C3; VP-A-029): 887 unidades habitacionais, 542 ocupadas, 345 vagas no dia do censo de 2020.
+
+  A SILHUETA: o polígono real de out/big-sur/_media/geo/ccd-big-sur.json (TIGER/Line 2020, GEOID 0605390235, a terra; domínio
+    público, sem crédito de camada), em Web Mercator como nos mapas do vídeo, NORTE PARA CIMA, 1.654,3 px de altura × 1.349,9 de
+    largura, de y 190 a 1844 e de x 1245 a 2595 (centrada em x). O contorno em --eixo-cor (--tinta-escura a 60 %), 6 px; os 20
+    anéis pequenos do MultiPolygon (as pedras da costa) vão junto, com o mesmo traço.
+  A GRADE (out/big-sur/_tmp/arte-1/EO1/grade_s11b.py, que gravou os números abaixo; não se digitam à mão): células de 27 px a
+    partir do canto do retângulo da silhueta, e entra a célula cujo CENTRO cai dentro do polígono real. A altura de 1.654,3 px é a
+    que dá EXATAMENTE 887 células (884 a 1.654,0; 889 a 1.655,0): nenhuma casa tirada nem posta à mão. 61 linhas.
+  ⚠ O DESVIO DECLARADO (vai ao relato): o exige e o arco dizem quadrados de 30 px. 887 quadrados de 30 px SEM folga nenhuma pedem
+    1.840 px de altura com o norte para cima (medido no polígono, grade_s11.py: passo 30 → 1.840 px; 28 → 1.720; 27 → 1.660), e a
+    área segura sob a câmera dá ~1.700 (y ≥ 160 em cima, y < 1880 embaixo, com o push-in). Ficam quadrados de 23 px num passo de
+    27 (4 px de folga, para que cada casa se leia como uma, "como janelas"), com a silhueta real inteira e as 887 dentro dela.
+    Girar o distrito para caber os 30 px trocaria a forma que os mapas do vídeo mostram (s03, s13, s15): não se fez.
+
+  OS BEATS (tempo local = master − 45,667; 'And' 0,003 · 'homes' 0,958 · 'stand' 1,603 · 'coast,' 2,403 · 'often' 3,123 ·
+    'sit' 3,443 · 'empty.' 3,603–3,903):
+    0,000–0,900  a silhueta se TRAÇA do ponto mais ao norte (o anel principal, 0,90 s, eo); as pedras da costa entram em 0,5–0,9.
+    0,900  "2020 CENSUS" (legenda, 84 px, Inter 500, --tinta-escura, canto de baixo à esquerda) e o crédito entram em 300 ms.
+    0,958–2,558  em "homes": as 887 casas ACENDEM em --destaque, linha a linha do norte (a linha j em 0,958 + 1,5 × j / 60, e a
+           varredura dentro da linha de oeste a leste em até 0,1 s), cada uma em 0,10 s: 1,6 s no total, como o exige.
+    3,603–4,283  em "empty.": 345 casas (as 345 primeiras de uma ordem embaralhada com semente fixa, mulberry32(345), pelo RIG)
+           perdem o preenchimento e ficam SÓ NO CONTORNO (3 px, --destaque), cada uma em 0,15 s, espalhadas de 3,603 a 4,133. São
+           0,68 s, não os 0,8 do exige: o fim cai 250 ms antes do corte para a vinheta (s12), e nesses 250 ms nada se move além da
+           deriva (roupa §5). Ficam 542 acesas e 345 vazias.
+    4,283–4,533  REPOUSO: o push-in para; só a deriva do RIG.
+
+  NADA DE FÍSICA DO ILUSTRADOR: nada aqui age (cai, se prende, gira): as casas acendem e apagam como luz, sem corpo. A roupa (§5)
+    pede o método só para a peça construída que age; o traço de engenheiro (só linha, sem preenchimento) também não se aplica ao
+    DADO: aqui o preenchimento É o dado (acesa = ocupada; só o contorno = vazia no dia do censo).
+
+  A CÂMERA: o push-in do RIG (0,0024/s, base 1,0, origem no centro), que PARA em 4,283, e a deriva (6 / 4,8 px); escala máxima
+    1,0103: o topo da silhueta (190) fica em y ≥ 180 e o pé (1844) em y ≤ 1857, dentro da área segura. A legenda e o crédito ficam
+    FORA da câmera (fixos), para não saírem da margem com o push-in. PRODUTO MÁXIMO DAS ESCALAS: 1,0103. Sem foto, sem Ken Burns.
+
+  A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): a silhueta (1), a grade das casas (1) e a
+    legenda (1) = 3. Blocos de texto de leitura: 0. Herói: nenhum (data-qc-sem-heroi: o número é da s55).
+
+  O CONTRATO: window.__duracao = 4.533; __renderAt(t) determinístico e à prova de erro; __prepararCaptura; __fotosProntas =
+    RIG.prontas(). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia inteira de templates-cena/_rig.js.
+    window.__s11casas(t) conta, no instante, as casas acesas, as vazias e as ainda apagadas (para a conferência).
+-->
+<head>
+<meta charset="utf-8">
+<title>s11 — And there are the homes that do stand along this coast, and often sit empty.</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  /* o crédito a 60 px do vídeo 5 (identidade §4.1, "Do vídeo 5 em diante, 60 px"): DEPOIS do <link> do tokens.css */
+  :root { --fs-credito: 60px; }
+</style>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--papel); }
+  /* o DADO: --papel, o texto em --tinta-escura (identidade §2 e §5) */
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--papel);
+    font-family: var(--fonte); color: var(--tinta-escura); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+  #cam { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
+  #desenho { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
+  .contorno { fill: none; stroke: var(--eixo-cor); stroke-width: var(--linha-espessura); stroke-linejoin: round; stroke-linecap: round; }
+  canvas#casas { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; }
+  .txt { position: absolute; white-space: nowrap; opacity: 0; color: var(--tinta-escura); }
+  .legenda { left: var(--credito-x); top: 1744px; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo);
+    line-height: 1.2; letter-spacing: 0; }
+  /* o crédito (identidade §4.1, §4.2, roupa §9): x 200, abaixo de y 1880, até x 1720; fora da câmera; sobre --papel em --tinta-escura */
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; width: calc(var(--credito-x-fim) - var(--credito-x)); height: 80px; }
+  .cred { position: absolute; left: 0; bottom: 0; font-family: var(--fonte); font-weight: var(--peso-texto);
+    font-size: var(--fs-credito); line-height: 1.2; color: var(--tinta-escura); letter-spacing: 0; opacity: 0; white-space: nowrap; }
+</style>
+<!-- a geometria: o slug de out/big-sur/_pesquisa/pauta-geo.json (TIGER/Line 2020, domínio público: nenhum crédito de camada) -->
+<script src="../_media/geo/ccd-big-sur.js"></script>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="OS QUADRADINHOS (a proporção desenhada, identidade §5, 'números e escala'): 887 casas e 345 vazias sem número na tela (os números são da s55); só a legenda (identidade §4.2: um herói por cena, ou nenhum)">
+  <div id="cam">
+    <canvas id="casas" width="3840" height="2160"></canvas>
+    <!-- o contorno POR CIMA da grade: a célula da borda (o centro dentro do polígono) passa até meia célula da linha, e a linha a cobre -->
+    <svg id="desenho" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+      <path id="pedras" class="contorno" d="" opacity="0"/>
+      <path id="silhueta" class="contorno" d=""/>
+    </svg>
+  </div>
+  <div class="txt legenda" id="legenda" data-qc-papel="eixo"></div>
+  <div id="creds"><div class="cred" id="cred1" data-qc-papel="credito"></div></div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo, eb = R.eb;
+  var E = function (id) { return document.getElementById(id); };
+  var f2 = function (v) { return (+v).toFixed(2); };
+
+  var DUR = 4.533;
+  window.__duracao = DUR;
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é do redator-de-tela: textos-tela.json › s11) ═══
+  var TEXTOS = {
+    legenda: "2020 CENSUS",                                  // [47] legenda, 0,900 · lastro: "homes" (o censo é a régua da contagem; VP-A-028)
+    cred1: "Source: U.S. Census Bureau, 2020 Census"         // [48] credito, 0,900 (VP-A-029)
+  };
+  // ═════════════════════════════════════════════════════════════════════════════════════════════
+  Object.keys(TEXTOS).forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+
+  var T = { traca: [0.0, 0.90], pedras: [0.5, 0.4], leg: 0.900, cred: 0.900, acende: 0.958, acendeLinhas: 1.5, acendeVarre: 0.1,
+            acendeCada: 0.10, vazia: 3.603, vaziaEspalha: 0.53, vaziaCada: 0.15, repouso: DUR - 0.25 };
+
+  // ── A GRADE (calculada por out/big-sur/_tmp/arte-1/EO1/grade_s11b.py sobre ccd-big-sur.json; não se edita à mão) ──
+  var GRADE = { passo: 27, k: 1018128.5572890408, X0: 0.16128050277777778, Y0: 0.39102470176575427, OX: 1245.0585402265983, OY: 190.0, n: 887,
+    linhas: [[0,0,4],[1,0,4],[2,1,6],[3,1,6],[4,1,7],[5,2,8],[6,2,9],[7,3,10],[8,2,12],[9,2,12],[10,3,13],[11,4,13],[12,4,15],[13,4,15],[14,4,16,18,18],[15,4,18,20,21],[16,4,21],[17,4,22],[18,5,23],[19,5,23],[20,5,22],[21,5,22],[22,4,22],[23,6,22],[24,6,23],[25,7,26],[26,9,29,32,32],[27,10,33],[28,10,34],[29,11,35],[30,11,37],[31,13,38],[32,13,13,15,39],[33,17,41],[34,19,42,44,45],[35,20,46],[36,22,46],[37,23,46],[38,24,46],[39,25,46],[40,26,46],[41,28,46],[42,28,46],[43,29,46],[44,30,46],[45,30,47],[46,31,48],[47,32,49],[48,33,35],[49,33,35],[50,33,37],[51,34,37],[52,34,37],[53,35,37],[54,36,40],[55,36,41],[56,37,42],[57,37,42],[58,38,42],[59,38,42],[60,41,42]] };
+  var LADO_CASA = 23;   // o quadrado da casa dentro da célula de 27 px (4 px de folga)
+
+  // a projeção da silhueta: Web Mercator (a dos mapas), norte para cima, com a mesma escala e o mesmo canto da grade
+  function mx(lng) { return (lng + 180) / 360; }
+  function my(lat) { var s = Math.sin(lat * Math.PI / 180); return 0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI); }
+  function tela(c) { return [GRADE.OX + (mx(c[0]) - GRADE.X0) * GRADE.k, GRADE.OY + (my(c[1]) - GRADE.Y0) * GRADE.k]; }
+
+  var GEO = (window.__GEO || {})["ccd-big-sur"];
+  var COMPR = 1;
+  (function () {
+    if (!GEO) { window.__erroCena = "a geometria ccd-big-sur não carregou (../_media/geo/ccd-big-sur.js)"; return; }
+    var aneis = [];
+    GEO.features.forEach(function (f) {
+      var g = f.geometry; if (!g) return;
+      (g.type === "Polygon" ? [g.coordinates] : g.coordinates).forEach(function (p) { p.forEach(function (an) { aneis.push(an); }); });
+    });
+    aneis.sort(function (a, b) { return b.length - a.length; });
+    // o anel principal, recomeçado no ponto mais ao norte (de onde a silhueta se traça)
+    var A = aneis[0].slice(0, -1), iN = 0;
+    A.forEach(function (c, i) { if (c[1] > A[iN][1]) iN = i; });
+    A = A.slice(iN).concat(A.slice(0, iN)); A.push(A[0]);
+    var d = A.map(function (c, i) { var p = tela(c); return (i ? "L" : "M") + f2(p[0]) + "," + f2(p[1]); }).join(" ") + " Z";
+    var s = E("silhueta"); if (s) { s.setAttribute("d", d); COMPR = s.getTotalLength ? s.getTotalLength() : 9000; }
+    var dp = aneis.slice(1).map(function (an) { return an.map(function (c, i) { var p = tela(c); return (i ? "L" : "M") + f2(p[0]) + "," + f2(p[1]); }).join(" ") + " Z"; }).join(" ");
+    var pe = E("pedras"); if (pe) pe.setAttribute("d", dp);
+  })();
+
+  // ── AS CASAS: as 887 células, na ordem da grade (linha a linha, do norte; dentro da linha, de oeste a leste) ──
+  var CASAS = [], IMAX = 0;
+  GRADE.linhas.forEach(function (ln) {
+    var j = ln[0];
+    for (var q = 1; q < ln.length; q += 2) for (var i = ln[q]; i <= ln[q + 1]; i++) { CASAS.push({ i: i, j: j }); if (i > IMAX) IMAX = i; }
+  });
+  var JMAX = GRADE.linhas[GRADE.linhas.length - 1][0];
+  CASAS.forEach(function (c) {
+    c.x = GRADE.OX + c.i * GRADE.passo + (GRADE.passo - LADO_CASA) / 2;
+    c.y = GRADE.OY + c.j * GRADE.passo + (GRADE.passo - LADO_CASA) / 2;
+    c.acende = T.acende + T.acendeLinhas * (c.j / JMAX) + T.acendeVarre * (c.i / IMAX);
+    c.vazia = null;
+  });
+  // as 345 vazias: uma ordem embaralhada com semente fixa (Fisher–Yates com o mulberry32 do RIG); as 345 primeiras dela, cada
+  // uma no seu instante, espalhadas de 3,603 a 4,133
+  (function () {
+    var sorte = R.mulberry32(345), ordem = CASAS.map(function (c, k) { return k; });
+    for (var k = ordem.length - 1; k > 0; k--) { var r = Math.floor(sorte() * (k + 1)), x = ordem[k]; ordem[k] = ordem[r]; ordem[r] = x; }
+    for (var n = 0; n < 345; n++) CASAS[ordem[n]].vazia = T.vazia + T.vaziaEspalha * (n / 344);
+  })();
+  if (CASAS.length !== 887 && !window.__erroCena) window.__erroCena = "a grade deu " + CASAS.length + " casas, e o distrito tem 887 (C3).";
+
+  var css = getComputedStyle(document.documentElement);
+  var DESTAQUE = css.getPropertyValue("--destaque").trim();
+  var CV = E("casas"), CX = CV && CV.getContext ? CV.getContext("2d") : null;
+  function desenhaCasas(t) {
+    if (!CX) return;
+    CX.setTransform(1, 0, 0, 1, 0, 0);
+    CX.clearRect(0, 0, 3840, 2160);
+    CX.fillStyle = DESTAQUE; CX.strokeStyle = DESTAQUE; CX.lineWidth = 3;
+    for (var k = 0; k < CASAS.length; k++) {
+      var c = CASAS[k], a = eo(seg(t, c.acende, T.acendeCada));
+      if (a <= 0) continue;
+      var cheio = c.vazia === null ? 1 : 1 - eo(seg(t, c.vazia, T.vaziaCada));
+      // o contorno (a casa que existe) e o preenchimento (a casa ocupada); a vazia fica só no contorno
+      CX.globalAlpha = a;
+      CX.strokeRect(c.x + 1.5, c.y + 1.5, LADO_CASA - 3, LADO_CASA - 3);
+      if (cheio > 0) { CX.globalAlpha = a * cheio; CX.fillRect(c.x, c.y, LADO_CASA, LADO_CASA); }
+    }
+    CX.globalAlpha = 1;
+  }
+
+  function aparece(id, t, tin) {   // entra em 300 ms (opacidade + 24 px de subida, ease-out) e fica PARADO
+    var e = E(id); if (!e) return;
+    var pi = eo(seg(t, tin, 0.3));
+    e.style.opacity = pi.toFixed(3);
+    e.style.transform = "translateY(" + f2(24 * (1 - pi)) + "px)";
+  }
+  function credito(id, t, tin) { var e = E(id); if (e) e.style.opacity = eo(seg(t, tin, 0.3)).toFixed(3); }
+  // a CÂMERA: push-in contínuo (0,0024/s, base 1,0) que PARA 250 ms antes do corte; a deriva do RIG segue
+  function camera(t) {
+    var c = E("cam"), s = 1 + 0.0024 * Math.min(t, T.repouso), dx = 6 * Math.sin(t * 0.23), dy = 4.8 * Math.sin(t * 0.17);
+    if (c) c.style.transform = "scale(" + s.toFixed(5) + ") translate(" + f2(dx) + "px," + f2(dy) + "px)";
+  }
+
+  function cena(t) {
+    camera(t);
+    var s = E("silhueta");
+    if (s) { var u = eo(seg(t, T.traca[0], T.traca[1])); s.style.strokeDasharray = COMPR.toFixed(1); s.style.strokeDashoffset = (COMPR * (1 - u)).toFixed(1); }
+    var pe = E("pedras"); if (pe) pe.setAttribute("opacity", eo(seg(t, T.pedras[0], T.pedras[1])).toFixed(3));
+    desenhaCasas(t);
+    aparece("legenda", t, T.leg);
+    credito("cred1", t, T.cred);
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; }   // nunca lança
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); };
+  window.__fotosProntas = R.prontas();
+  // só conferência: quantas casas acesas (ocupadas), vazias (só contorno) e ainda apagadas no instante
+  window.__s11casas = function (t) {
+    t = clamp(+t || 0, 0, DUR);
+    var acesas = 0, vazias = 0, apagadas = 0;
+    CASAS.forEach(function (c) {
+      if (t < c.acende + T.acendeCada) { apagadas++; return; }
+      if (c.vazia !== null && t >= c.vazia + T.vaziaCada) vazias++; else acesas++;
+    });
+    return { total: CASAS.length, acesas: acesas, vazias: vazias, apagadas_ou_acendendo: apagadas };
+  };
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

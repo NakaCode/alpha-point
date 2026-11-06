@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s28</title>
+<!--
+CANAL ALPHA POINT — BIG SUR (vídeo 5, big-sur), CENA s28 (257,967 → 269,600 s do master; 11,633 s; 349 quadros a 30 fps).
+  "Mud Creek wasn't the end of it. Caltrans, California's highway department, has names for other slopes that have closed the road
+   since then. Two of them are called Paul's Slide and Regent's Slide."
+  Mapista, lote M6 (tarefa big-sur-arte-1, 05/11/2026): cena NOVA, sobre o corpo de mapa da s07 (M1) e do molde da pré-v1.
+  O que manda: textos-tela.json 71405fb4 (s28, [138]–[142]) no QUE e na grafia; regencia.json e25d0e79 (cenas[s28], beats 0–1) no
+  TEMPO e no exige; o conceito 143736c0; o espelho 446ffccc; para-passos itens 3, 16, 18 e 40 (P3 SEM miniatura: só os marcadores).
+  MODO 2D (norte para cima, pitch 0): a frase diz ONDE ficam as encostas com nome ao longo da estrada; nada argumenta com a vertical.
+
+  A POSE DO 1º QUADRO (casada por números com o último quadro da s27, que é de outro lote e termina nela):
+    center [-121.4305, 35.8655] (o ponto de mud-creek.json), zoom 12.5, bearing 0, pitch 0, tileSize 512, palco 3840 × 2160.
+    No quadro: o satélite (tratamento C), o MARCADOR de Mud Creek no centro (disco de 44 px em --tensao, halo --rotulo de 8 px),
+    o crédito de mapa. SEM a linha da Highway 1 (a s27 a apagou: 'disappears'), SEM a encosta desenhada, SEM rótulo.
+
+  A CÂMERA (anda do 1º ao último quadro):
+    · 0 → 2,0 (b0, "Mud Creek wasn't the end of it."): sobe pela estrada para o norte (cúbica, 2 s) até C1 = [-121.512, 35.966],
+      zoom 11.5 (o trecho sul do distrito), o centro pesado pela escala; Mud Creek fica ao sul, embaixo do quadro;
+    · de 1,4 em diante: a deriva lenta para o noroeste, ao longo da estrada (0,0016° de latitude e −0,0012° de longitude por
+      segundo, +0,012 de zoom por segundo), com arranque suave (1,2 s) que se soma ao fim da subida: o mapa nunca para.
+  A ESTRADA (highway-1-big-sur, OSM): o fio branco (--tinta 6 px sobre o contorno escuro de 14 px) se acende de novo a partir de
+    Mud Creek, para o sul (0–0,8 s) e para o norte (0–2,2 s, à frente da câmera): a estrada voltou (reaberta em 2018) e continua
+    para as outras encostas. Só o trecho real da geometria; nada desenhado à mão.
+  b0 (0–8,033): "Mud Creek" (0–8,0) no mar, abaixo e à esquerda do marcador (a estrada corre de NO a SE: o quadrante SO fica
+    livre dela); 2,0 ("Caltrans,"): os dois marcadores esperam nos post miles da Caltrans (pauls-slide PM 21.7, regents-slide
+    PM 27.8), em --tinta a 35 %; "Source: Caltrans, 2026" de 2,0 ao fim (a regência pedia CALTRANS na legenda; o textos-tela
+    [142] o fez crédito, VP-A-111, e ele vence). 7,7–8,0: o marcador de Mud Creek e o nome saem.
+  b1 (8,033–11,633): 9,033 ("Paul's"): o marcador de Paul's Slide acende em --tensao (0,3 s) com um pulso e "Paul’s Slide";
+    10,0 ("and Regent's"): o de Regent's Slide, com "Regent’s Slide". SÓ OS MARCADORES, sem miniatura (para-passos 16 e 18 (1),
+    item 40 (2): Paul's Slide não tem foto entregue; a aérea da Caltrans de Regent's vai a s09 e fica em s48).
+  O SATÉLITE POR TRECHO (a regra da Sala, 05/11/2026, 20:1x; retomada-teto.md): UM trecho só, DE PERTO. Zoom de 11.5 a 12.5 (o 1º
+    quadro 12.5, o mínimo 11.5 em ~2,0 s, o último 11.6156), pitch 0, do 1º ao último quadro (medido a cada 0,1 s pela __cameraAt):
+    sempre ≥ 10,5 e no plano, um nível só (z12 e z13, nunca o z10): SEM teto e SEM água escura, como o último quadro da s27 (M5,
+    a49845ee), que termina nesta pose sem teto. Não há passagem.
+  A ÁGUA ESCURA (conserto da Sala, 05/11/2026, 20:5x; identidade §6, "A água escura nos mapas do porto", que vale onde a emenda aparece
+    no mar, com teto ou sem): no clipe 17e508b0 havia um bloco claro de bordas retas no mar aos 2 e aos 8 s. O mar a oeste da costa do
+    TIGER (costa-do-plano-1986-trecho), com a costa do estado (california, cb_2025 500k) além dele, em --agua-base opaca, do 1º ao
+    último quadro, por baixo da estrada e dos marcadores: a função marDaCosta da s07/s31, sem mudança. O fim da s27 (M5) leva a
+    mesma água, na mesma geometria, no mesmo token e na mesma opacidade: a pose casada continua.
+  ELEMENTOS (teto 6): b0 = a estrada, Mud Creek (marcador e nome), 2 marcadores (4); b1 = a estrada, 2 marcadores, 2 nomes (5).
+  CRÉDITOS a 60 px (var(--fs-credito)): "© MapTiler © OpenStreetMap contributors" do 1º ao último quadro (cobre o OSM da Highway 1;
+    data-qc-credito="mapa" só nele); "Source: Caltrans, 2026" logo acima. Os pontos (mud-creek, pauls-slide, regents-slide) são fato
+    publicado, sem crédito de geometria (pauta-geo).
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>:root { --fs-credito: 60px; }</style>
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<!-- a geometria: os slugs de out/big-sur/_pesquisa/pauta-geo.json -->
+<script src="../_media/geo/highway-1-big-sur.js"></script>
+<script src="../_media/geo/costa-do-plano-1986-trecho.js"></script>
+<script src="../_media/geo/california.js"></script>
+<script src="../_media/geo/mud-creek.js"></script>
+<script src="../_media/geo/pauls-slide.js"></script>
+<script src="../_media/geo/regents-slide.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; overflow: visible; }
+  #rotulos { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+  /* RÓTULO (identidade §3 e §4.1): pílula --rotulo, cantos 12, respiro 24 × 40, Inter 700 a 128 px em --tinta */
+  .rotulo { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1;
+    letter-spacing: 0; color: var(--tinta); font-variant-numeric: var(--numeros); }
+  /* CRÉDITOS (identidade §4.1/§4.2/§6): 60 px (o override acima), Inter 500, --sec sobre a pílula --rotulo, de x = 200 até antes de
+     x = 1720; o de mapa embaixo, o de dado logo acima, dentro da faixa abaixo de y 1880 */
+  .credito { position: absolute; left: var(--credito-x); bottom: 24px; max-width: 1520px; z-index: 50; opacity: 0; visibility: hidden;
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: nowrap; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+  /* o marcador de encosta: disco de 44 px, halo --rotulo de 8 px; a cor vem por JS (--tinta a 35 % → --tensao) */
+  .marca .halo { fill: none; stroke: var(--rotulo); stroke-width: 8; }
+  .marca .pulso { fill: none; stroke: var(--tensao); stroke-width: 8; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="mapa: a estrada e as encostas com nome (marcadores e rótulos de lugar); nenhum herói (identidade §4.2)">
+  <div id="map"></div>
+  <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div id="rotulos">
+    <div class="rotulo" id="rotMud" data-qc-papel="rotulo">Mud Creek</div>
+    <div class="rotulo" id="rotPaul" data-qc-papel="rotulo">Paul’s Slide</div>
+    <div class="rotulo" id="rotReg" data-qc-papel="rotulo">Regent’s Slide</div>
+  </div>
+  <div id="credCaltrans" class="credito" data-qc-papel="credito">Source: Caltrans, 2026</div>
+  <div id="credMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa"></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  var DUR = 11.633;   // espelho.json › s28 › dur, literal (roupa §8)
+  var TERRENO = false;
+  var FONTES = ["mar", "hwy"];
+  var CENA = {
+    mud: { sai: 8.0, rot: [0.0, 8.0] },                       // textos-tela [139]
+    espera: 2.0,                                              // "Caltrans," (2,023): os dois marcadores a 35 %
+    paul: { acende: 9.033, rot: [9.033, 11.633] },            // textos-tela [140], "Paul's"
+    reg: { acende: 10.0, rot: [10.0, 11.633] },               // textos-tela [141], "and Regent's"
+    estrada: { sul: [0.0, 0.8, 16], norte: [0.0, 2.2], latNorte: 36.24 }
+  };
+  var CREDITOS = [ { id: "credCaltrans", t0: 2.0, t1: null } ];   // textos-tela [142]
+
+  window.__duracao = DUR;
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (t) { t = cl(t, 0, 1); return 1 - Math.pow(1 - t, 3); };
+  var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+  function integralSuave(t, t0, d) {   // ∫ smoothstep: a deriva que arranca sem tranco
+    if (t <= t0) return 0;
+    if (t >= t0 + d) return d / 2 + (t - t0 - d);
+    var p = (t - t0) / d; return d * (p * p * p - p * p * p * p / 2);
+  }
+
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== "maptiler") return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa 'maptiler' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster; esta cena desenha sobre satélite.");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo.");
+    return g;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+
+  // ── o crédito de mapa: o texto sai do perfil (o que a licença pede) e tem de ser o do textos-tela.json [138] ──
+  var credMapaTexto = (P.atribuicao && P.atribuicao.exigida && P.atribuicao.tela) || "";
+  if (credMapaTexto !== "© MapTiler © OpenStreetMap contributors") return falhar("o crédito do perfil ('" + credMapaTexto + "') não é o do textos-tela.json.");
+  E("credMapa").textContent = credMapaTexto;
+  window.__creditoMapa = credMapaTexto;
+
+  // ── Web Mercator, tileSize 512, palco 3840 × 2160 ──
+  var W = 3840, H = 2160;
+  function mx(lng) { return (lng + 180) / 360; }
+  function my(lat) { var s = Math.sin(lat * Math.PI / 180); return 0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI); }
+  function lngDe(x) { return x * 360 - 180; }
+  function latDe(y) { return 360 / Math.PI * Math.atan(Math.exp((0.5 - y) * 2 * Math.PI)) - 90; }
+  function ws(z) { return 512 * Math.pow(2, z); }
+  function lerpMerc(a, b, u) { return [lngDe(mx(a[0]) + (mx(b[0]) - mx(a[0])) * u), latDe(my(a[1]) + (my(b[1]) - my(a[1])) * u)]; }
+  // o peso do centro numa viagem com zoom: a posição na tela anda em proporção à escala (o ponto de chegada nunca "dispara")
+  function pesoEscala(z, z0, z1) { var a = 1 / ws(z0), b = 1 / ws(z1); return Math.abs(b - a) < 1e-18 ? 1 : cl((1 / ws(z) - a) / (b - a), 0, 1); }
+
+  var CAM0 = { center: [-121.4305, 35.8655], zoom: 12.5 };   // A POSE CASADA com o fim da s27 (o marcador de Mud Creek no centro)
+  var CAM1 = { center: [-121.512, 35.966], zoom: 11.5 };     // o trecho sul do distrito: Mud Creek ao sul, os dois post miles acima
+  var SOBE = [0.0, 2.0], DER = { t0: 1.4, ramp: 1.2, dlat: 0.0016, dlng: -0.0012, dz: 0.012 };
+  function cameraAt(t) {
+    var u = eio(seg(t, SOBE[0], SOBE[1]));
+    var z = CAM0.zoom + (CAM1.zoom - CAM0.zoom) * u;
+    var c = lerpMerc(CAM0.center, CAM1.center, pesoEscala(z, CAM0.zoom, CAM1.zoom));
+    var d = integralSuave(t, DER.t0, DER.ramp);
+    return { center: [c[0] + DER.dlng * d, c[1] + DER.dlat * d], zoom: z + DER.dz * d, bearing: 0, pitch: 0 };
+  }
+  window.__cameraAt = cameraAt;
+
+  var HWY = geo("highway-1-big-sur"), MUD = geo("mud-creek"), PAUL = geo("pauls-slide"), REG = geo("regents-slide"),
+      TRECHO = geo("costa-do-plano-1986-trecho"), CA = geo("california");
+  if (window.__erroCena) return;
+  var LL = { mud: MUD.features[0].geometry.coordinates, paul: PAUL.features[0].geometry.coordinates, reg: REG.features[0].geometry.coordinates };
+  function km(a, b) { var la = (a[1] + b[1]) / 2 * Math.PI / 180; return Math.hypot((a[0] - b[0]) * 111.32 * Math.cos(la), (a[1] - b[1]) * 110.57); }
+  var HWY_C = HWY.features[0].geometry.coordinates.slice();
+  if (HWY_C[0][1] < HWY_C[HWY_C.length - 1][1]) HWY_C.reverse();           // de Carmel (norte) à divisa (sul)
+  var HWY_L = [0]; for (var i = 1; i < HWY_C.length; i++) HWY_L.push(HWY_L[i - 1] + km(HWY_C[i - 1], HWY_C[i]));
+  var KTOT = HWY_L[HWY_L.length - 1];
+  function kPerto(ll) { var b = Infinity, k = 0; for (var j = 0; j < HWY_C.length; j++) { var d = km(ll, HWY_C[j]); if (d < b) { b = d; k = HWY_L[j]; } } return k; }
+  var K_MUD = kPerto(LL.mud);
+  var K_NORTE = (function () { for (var j = 0; j < HWY_C.length; j++) if (HWY_C[j][1] < CENA.estrada.latNorte) return HWY_L[j]; return 0; })();
+  function pontoEm(k) {
+    k = cl(k, 0, KTOT);
+    var lo = 0, hi = HWY_L.length - 1;
+    while (hi - lo > 1) { var m = (lo + hi) >> 1; if (HWY_L[m] <= k) lo = m; else hi = m; }
+    var u = (k - HWY_L[lo]) / ((HWY_L[hi] - HWY_L[lo]) || 1);
+    return [HWY_C[lo][0] + (HWY_C[hi][0] - HWY_C[lo][0]) * u, HWY_C[lo][1] + (HWY_C[hi][1] - HWY_C[lo][1]) * u];
+  }
+  function trecho(k0, k1) {   // o trecho real da geometria entre dois km (do norte para o sul)
+    if (k1 - k0 < 0.01) return null;
+    var out = [pontoEm(k0)];
+    for (var j = 0; j < HWY_C.length; j++) if (HWY_L[j] > k0 && HWY_L[j] < k1) out.push(HWY_C[j]);
+    out.push(pontoEm(k1));
+    return out;
+  }
+  window.__geoConta = { hwy_km: KTOT, k_mud: K_MUD, k_norte: K_NORTE };
+
+  var COR = { tinta: tok("--tinta", "#F4F1EA"), tensao: tok("--tensao", "#E4572E"),
+    contorno: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)") };
+  function rgb(h) { h = String(h).replace("#", ""); return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)]; }
+  function misturar(a, b, u) { var x = rgb(a), y = rgb(b); return "rgb(" + [0, 1, 2].map(function (q) { return Math.round(x[q] + (y[q] - x[q]) * u); }).join(",") + ")"; }
+  function fcLinha(c) { return { type: "FeatureCollection", features: c ? [{ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates: c } }] : [] }; }
+  // A ÁGUA ESCURA (identidade §6, "A água escura nos mapas do porto"): o mar a oeste da linha da costa do TIGER/Line 2020
+  // (costa-do-plano-1986-trecho), com a costa do estado (cb_2025 500k) além dele, fechado ao largo por um contorno no mar aberto que não
+  // afirma nada; o tom é o --agua-base. É a função marDaCosta da s07 (M1) e da s31, sem mudança. Por baixo de tudo o que a cena desenha.
+  function marDaCosta(fc, ca) {
+    var c = fc.features[0].geometry.coordinates.slice();   // de San Luis Obispo (sul) a Carmel (norte)
+    var ini = c[0], fim = c[c.length - 1], norte = [], sul = [];
+    if (ca) {
+      var aneis = [];
+      ca.features.forEach(function (f) { var g = f.geometry; (g.type === "Polygon" ? [g.coordinates] : g.coordinates).forEach(function (p) { aneis.push(p[0]); }); });
+      aneis.sort(function (a, b) { return b.length - a.length; });
+      var R = aneis[0], n = R.length - 1;
+      var perto = function (p) { var bi = 0, bd = 1e9; for (var i = 0; i < n; i++) { var dx = (R[i][0] - p[0]) * 0.81, dy = R[i][1] - p[1], d = dx * dx + dy * dy; if (d < bd) { bd = d; bi = i; } } return bi; };
+      var andar = function (i0, lim, paraNorte) {
+        var s = ((R[(i0 + 10) % n][1] > R[(i0 - 10 + n) % n][1]) === paraNorte) ? 1 : -1, out = [], i = i0;
+        for (var k = 0; k < n; k++) { i = (i + s + n) % n; out.push(R[i]); if (paraNorte ? R[i][1] >= lim : R[i][1] <= lim) break; }
+        return out;
+      };
+      norte = andar(perto(fim), 37.3, true);
+      sul = andar(perto(ini), 35.3, false);
+    }
+    var anel = sul.slice().reverse().concat(c, norte);
+    var a0 = anel[0], a1 = anel[anel.length - 1];
+    anel = anel.concat([[-124.2, a1[1]], [-124.2, a0[1]], a0]);
+    return { type: "FeatureCollection", features: [{ type: "Feature", properties: {}, geometry: { type: "Polygon", coordinates: [anel] } }] };
+  }
+  COR.agua = tok("--agua-base", "#00050c");
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+  var SEM = { duration: 0, delay: 0 };
+  function estilo() {
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+      mar: { type: "geojson", data: marDaCosta(TRECHO, CA) },
+      hwy: { type: "geojson", data: fcLinha(null) } };
+    var lc = { "line-join": "round", "line-cap": "round" };
+    var camadas = [{ id: "base", type: "raster", source: "base",
+        paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // identidade §6, o tratamento C
+      { id: "mar", type: "fill", source: "mar", paint: { "fill-color": COR.agua, "fill-opacity": 1, "fill-opacity-transition": SEM } },
+      { id: "hwy-sob", type: "line", source: "hwy", layout: lc, paint: { "line-color": COR.contorno, "line-width": 14, "line-opacity": 1 } },
+      { id: "hwy", type: "line", source: "hwy", layout: lc, paint: { "line-color": COR.tinta, "line-width": 6, "line-opacity": 1 } }];
+    return { version: 8, transition: SEM, sources: fontes, layers: camadas };
+  }
+
+  // ── rede com nova tentativa: falha passageira não derruba a cena inteira (o molde, sem mudança) ──
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  function erroCorpo(msg, url, st) { var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e; }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) { var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http"; throw e; }
+        if (params.type === "json") return r.text().then(function (t) { try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); } });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+
+  var c0 = cameraAt(0);
+  var map;
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: c0.bearing, pitch: c0.pitch
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa.");
+  }
+  window.map = map;
+  // A BASE ANDA LISA (s03 do Juneau; Peru s06/s08; Atlântico): toda pintura vai como "em movimento"
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
+
+  // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (o molde) ──
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg))
+      return "mandou tile CORROMPIDO" + n + " (" + String(msg).replace(/^tile corrompido: /, "") + "). Renderize de novo.";
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + ". Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  var mapaCarregado = false;
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ".");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : ""));
+  });
+  map.on("load", function () {
+    mapaCarregado = true;
+    window.__renderAt(0);
+    map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
+  });
+
+  // ── os marcadores (SVG, presos ao mapa por map.project a cada quadro) ──
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function svgEl(tag, at, pai) { var el = document.createElementNS(SVGNS, tag); for (var k in at) el.setAttribute(k, at[k]); if (pai) pai.appendChild(el); return el; }
+  function criarMarca(id) {
+    var g = svgEl("g", { id: id, "class": "marca", opacity: "0" }, E("ov"));
+    svgEl("circle", { id: id + "Pulso", "class": "pulso", cx: 0, cy: 0, r: 22, opacity: 0 }, g);
+    svgEl("circle", { "class": "halo", cx: 0, cy: 0, r: 22 }, g);
+    svgEl("circle", { id: id + "Disco", cx: 0, cy: 0, r: 22, fill: COR.tinta }, g);
+    return g;
+  }
+  ["marcaMud", "marcaPaul", "marcaReg"].forEach(criarMarca);
+  // v: a opacidade do marcador; acesa: 0 (--tinta) → 1 (--tensao); pulso: o instante do pulso (1 → 1,8 em 1,2 s) ou null
+  function aplicarMarca(id, ll, v, acesa, pulso, t) {
+    var g = E(id); if (!g) return null;
+    var p = map.project(ll);
+    g.setAttribute("transform", "translate(" + p.x.toFixed(2) + " " + p.y.toFixed(2) + ")");
+    g.setAttribute("opacity", v.toFixed(3));
+    var d = E(id + "Disco"); if (d) d.setAttribute("fill", misturar(COR.tinta, COR.tensao, acesa));
+    var c = E(id + "Pulso");
+    if (c) {
+      var u = pulso === null ? -1 : (t - pulso) / 1.2, vivo = u >= 0 && u < 1;
+      c.setAttribute("transform", "scale(" + (1 + 0.8 * (vivo ? u : 0)).toFixed(4) + ")");
+      c.setAttribute("opacity", vivo ? (1 - u).toFixed(3) : "0");
+    }
+    return p;
+  }
+
+  // ── a área segura (identidade §4.2): o que a câmera leva para a margem esmaece antes de cruzá-la (nos últimos 30 px) ──
+  function naArea(l, tp, w, h) {
+    var r = l + w, b = tp + h;
+    return Math.min(l - 200, 3640 - r, tp - 160, 1880 - b, Math.max(3440 - r, 1760 - b));
+  }
+  function mostrar(el, v, l, tp) {
+    el.style.opacity = v.toFixed(3);
+    el.style.visibility = v > 0.001 ? "visible" : "hidden";
+    el.style.transform = "translate(" + l.toFixed(2) + "px," + tp.toFixed(2) + "px)";
+  }
+  function vidaTexto(t, t0, t1) {
+    var vin = t0 === null ? 1 : eo(seg(t, t0, 0.3));
+    var vout = t1 === null ? 1 : 1 - eio(seg(t, t1 - 0.3, 0.3));
+    return { v: vin * vout, sobe: (1 - vin) * 24 };
+  }
+  // a pílula no quadrante sudoeste do ponto (sobre o mar: a Highway 1 corre de noroeste a sudeste e deixa esse quadrante livre)
+  // dy: a folga vertical sob o ponto (Mud Creek sobe de 35 a 5 px com a câmera, para não descer até a faixa do crédito)
+  function rotuloSO(id, pt, t, t0, t1, dy) {
+    var el = E(id); if (!el) return;
+    var vt = vidaTexto(t, t0, t1);
+    if (vt.v <= 0 || !pt) { mostrar(el, 0, 0, 0); return; }
+    var w = el.offsetWidth, h = el.offsetHeight, l = pt.x - 70 - w, tp = pt.y + (dy == null ? 35 : dy) + vt.sobe;
+    mostrar(el, vt.v * cl(naArea(l, tp, w, h) / 30, 0, 1), l, tp);
+  }
+
+  // ── os créditos: o de mapa INTEIRO do 1º ao último quadro (identidade §4.2); o da Caltrans logo acima, de 2,0 ao fim ──
+  function aplicarCreditos(t) {
+    var m = E("credMapa"); if (m) { m.style.opacity = "1"; m.style.visibility = "visible"; }
+    var hM = m ? m.offsetHeight : 89;
+    (CREDITOS || []).forEach(function (c) {
+      var el = E(c.id); if (!el) return;
+      var vin = eo(seg(t, c.t0, 0.3));
+      var vout = c.t1 === null ? 1 : 1 - eio(seg(t, c.t1 - 0.3, 0.3));
+      var v = vin * vout;
+      el.style.bottom = (24 + hM + 6) + "px";
+      el.style.opacity = v.toFixed(3); el.style.visibility = v > 0.001 ? "visible" : "hidden";
+    });
+  }
+
+  var estradaAntes = null;
+  function aplicarEstrada(t) {
+    var S = CENA.estrada;
+    var kS = K_MUD + S.sul[2] * eo(seg(t, S.sul[0], S.sul[1]));
+    var kN = K_MUD - (K_MUD - K_NORTE) * eio(seg(t, S.norte[0], S.norte[1]));
+    var chaveK = kN.toFixed(3) + "|" + kS.toFixed(3);
+    if (chaveK === estradaAntes) return;
+    var s = map.getSource("hwy"); if (s) s.setData(fcLinha(trecho(kN, kS)));
+    estradaAntes = chaveK;
+  }
+  function aplicarCena(t) {
+    aplicarEstrada(t);
+    var M = CENA.mud, Pa = CENA.paul, R = CENA.reg;
+    var vMud = 1 - eio(seg(t, M.sai - 0.3, 0.3));                          // inteiro no 1º quadro (a pose casada)
+    var pm = aplicarMarca("marcaMud", LL.mud, vMud, 1, null, t);
+    rotuloSO("rotMud", pm, t, M.rot[0], M.rot[1], 35 - 30 * eio(seg(t, SOBE[0], SOBE[1])));
+    var vEsp = 0.35 * eo(seg(t, CENA.espera, 0.3));                          // --tinta a 35 %, à espera
+    var aP = eo(seg(t, Pa.acende, 0.3)), aR = eo(seg(t, R.acende, 0.3));
+    var pp = aplicarMarca("marcaPaul", LL.paul, vEsp + (1 - vEsp) * aP, aP, Pa.acende, t);
+    var pr = aplicarMarca("marcaReg", LL.reg, vEsp + (1 - vEsp) * aR, aR, R.acende, t);
+    rotuloSO("rotPaul", pp, t, Pa.rot[0], null);
+    rotuloSO("rotReg", pr, t, R.rot[0], null);
+  }
+
+  function aplicar(t) {
+    if (!mapaCarregado) return;
+    map.jumpTo(cameraAt(t));
+    aplicarCena(t);
+    aplicarCreditos(t);
+  }
+
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) { var ts = (sc[id] && sc[id]._tiles) || {}; for (var k in ts) if (ts[k] && ts[k].state === "errored") return id; }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou. O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  // pronto: os tiles do satélite e as fontes da cena carregados, o mapa parado, dois quadros pintados
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!mapaCarregado || !map.areTilesLoaded() || map.isMoving()) return false;
+          for (var i = 0; i < FONTES.length; i++) if (!map.getSource(FONTES[i]) || !map.isSourceLoaded(FONTES[i])) return false;
+          if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+          return true;
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
+      (function tick() {
+        barrarTileComErro();
+        var ok = pronto(), cheio = false;
+        try { cheio = mapaCarregado && map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.triggerRepaint(); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__renderAt(0) || true;
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+</script>
+</body>
+</html>
