@@ -1,0 +1,131 @@
+{
+  "cena": "s38",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 7,
+      "problemas": [
+        "exceção do Lucas: qc-tamanho, crédito a 60 px (60<72), 24/10/2026, no sha1 eb29ec90… (out/big-sur/qc/_excecoes-portao.json); a saída literal do qc-cena é só \"[credito] Source: Monterey County, Big Sur Coast Land 60<72\". Lido em conferir-arte1.json sem remedir: portao-margens 0, portao-mapa til 0 e rodape 0 (pior contraste 10,11:1), conferir 0. Clipe 3840×2160, 14,367 s, carimbo eb29ec90…/2160p igual ao sha1 do HTML.",
+        "Quadros 0,05 / 1,5 / 2,4 / 3,9 / 4,6 / 8,0 / 10,9 / 11,9 / 12,1 / 12,9 s, recortes 4K de 7,0 e 12,4 s: nenhum texto sobre outro; a pílula da venda no alto à direita e o nome do parque no mar à esquerda, sem cobrir o polígono; o fim da pílula da venda e o do \"FINISHED JUNE 27, 1937\" cai em x=3640, no limite da margem (o portao-margens deu 0, não remedi).",
+        "sinalização (ponto do pedido, rótulo com mais de 3 palavras): \"PFEIFFER BIG SUR STATE PARK\" tem 5 palavras (nome próprio de 5: identidade.md §4.1 manda ao report do redator, a forma curta é decisão do Lucas) e a pílula \"1934 · SOLD TO THE STATE / MONTEREY COUNTY PLAN (1986)\" tem ~9 palavras em 2 linhas, no mesmo corpo de rótulo (128 px). As duas são o texto do textos-tela (precedência acima da identidade na tarefa), então a Arte está certa; o conflito com o teto de 3 palavras é da Sala e do redator.",
+        "sinalização: o crédito \"Source: Monterey County, Big Sur Coast Land Use Plan, 1986\" quebra e deixa \"Plan, 1986\" sozinho na 2ª linha (aviso do portao-margens, não reprova)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "Geometria real: o parque é o polígono PAD-US 4.1 (pfeiffer-big-sur-state-park), no Big Sur Valley, encostado na Highway 1 do OSM, que acompanha a costa. O ano 1934 fica preso à pílula do plano (o textos-tela proíbe o \"1934\" solto: VP-A-311), a marca da linha do tempo perde o rótulo quando a pílula sai (11,17 s) e o \"706 ACRES\" não aparece (VP-A-146, VP-A-312). \"FINISHED JUNE 27, 1937\" bate com o textos-tela e a escala da linha do tempo é a da s33 (1934 em x=1747, 1937 em x=1830).",
+        "sinalização: o polígono é o parque de HOJE (PAD-US 4.1), e a pílula diz \"SOLD TO THE STATE\" sem área, então a cena não afirma que a forma é a parcela vendida em 1934. A leitura pode escorregar; o contorno com degraus (limites de seção do PAD-US) é geometria real, não desenho."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 9,
+      "problemas": [
+        "O nome do parque entra em 3,6 s (a voz diz \"Pfeiffer\" em 3,62 s); a pílula, o 1934 e o crédito em 4,07 s (\"sold\" em 4,10 s); tudo sai em 11,17 s, quando a voz volta à estrada (\"The highway\", 11,17 s). Em 11,83 s entram o \"FINISHED JUNE 27, 1937\" e o \"1937\" (\"finished\" em 11,86 s) e o fio fecha em 1,3 s. Nada fica depois da fala (14,37 s).",
+        "Ponto da Arte (o parque acende em 3,6 s e não em \"park\", 5,54 s): fica assim; o contorno acompanha o nome que a voz já disse e a pílula só chega em \"sold\"."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 8,
+      "problemas": [
+        "MAPA 2D está certo: a fala é \"onde fica o parque\" e \"a obra termina em 1937\", e nenhuma frase argumenta com a vertical. A viagem de P-COSTA para o parque (zoom 12,1) foi necessária: em P-COSTA o parque tem ~80 px (ponto da Arte, resposta: fica assim). O beat 1 da regência pedia footage das sequoias (s38-a), que não foi achado nos 4 bancos; o fallback do mapa é o da regência."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 7,
+      "problemas": [
+        "Em dois segundos a cena se lê: nome do parque, \"1934 · SOLD TO THE STATE\" e a linha do tempo com a marca. Mas o parque, que é o centro da cena, aparece como um contorno roxo fino (8 px no 4K) e um preenchimento a 25 % sobre mata escura: no quadro reduzido de 4,6 s ele mal se separa do fundo (ponto do pedido, \"contornos fracos\"); no recorte 4K de 7,0 s ele é legível.",
+        "sinalização: a pílula de ~9 palavras na primeira metade da cena pede mais de 3 s de leitura; ela fica 7 s, então dá tempo."
+      ],
+      "correcoes": [
+        "Sem reprovar: se a Sala quiser o parque mais forte, subir só o contorno do parque para ~12 px ou o preenchimento para 35–40 % em --contexto-1 (regra de contraste de identidade.md §2 e §6), sem mudar a cor."
+      ]
+    },
+    {
+      "lente": "poluicao",
+      "nota": 7,
+      "problemas": [
+        "Teto de 6 elementos (identidade.md §4.2): no beat 0 (4,1–5,8 s) a tela leva o polígono, o nome do parque, a pílula de 2 linhas, o eixo da linha do tempo com 3 marcas e 2 créditos. O qc-carga passou, mas a cena encosta no teto e tem duas legendas longas no mesmo instante: sinalizo em 7.",
+        "Nenhum texto órfão: cada um cai numa palavra da fala. Nenhuma entidade HTML nem tofu."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 7,
+      "problemas": [
+        "As viagens são cúbicas e de 2,0 e 2,2 s (1,6→3,6 s e 11,17→13,4 s), dentro de 1,5–3 s (identidade.md §4.4), e a pílula, o nome e o \"FINISHED\" entram em 300 ms. Diferença média entre quadros a 5 quadros/s (sem imagem): sino de 7 a 14 nas viagens e ~0,8 de deriva entre elas, sem degrau.",
+        "sinalização principal (ponto do pedido, \"mapa parado\"): de 4,1 a 11,17 s (7 s) a única coisa que se mexe é uma deriva de ~1 % de escala (~34 px em 7,6 s, dito pela Arte). Os quadros de 4,6, 8,0 e 10,9 s são o mesmo ponto de vista, com o polígono deslocado ~5 px na folha de 960 px (~20 px no 4K). A regra \"Mapa nunca fica parado\" (identidade.md §5, \"aproximação suave e contínua\") está cumprida à letra, mas o deslocamento não é lido pelo espectador, e de 5,8 a 11,17 s (5,4 s) nada novo entra. É o fallback pedido pela regência (0,5 %, \"calmo para a peça\"), e por isso não reprovo; a decisão de aceitar é da Sala."
+      ],
+      "correcoes": [
+        "Para a Sala decidir: ou aceita a deriva da regência, ou manda o mapista subir a escala do beat 1 de 1,00 para ~1,04 entre 5,8 e 11,17 s, presa ao parque (a roupa do mapista, \"Mapa nunca fica parado\"), sem mudar o resto."
+      ]
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "exceção do Lucas: qc-tamanho, crédito a 60 px (60<72), 24/10/2026, no sha1 eb29ec90… (out/big-sur/qc/_excecoes-portao.json); a saída literal do qc-cena é só \"[credito] Source: Monterey County, Big Sur Coast Land 60<72\". Lido em conferir-arte1.json sem remedir: portao-margens 0, portao-mapa til 0 e rodape 0 (pior contraste 10,11:1), conferir 0. Clipe 3840×2160, 14,367 s, carimbo eb29ec90…/2160p igual ao sha1 do HTML.",
+        "Crédito de mapa inteiro do 1º ao último quadro, com data-qc-credito=\"mapa\" só nele; ele cobre a Highway 1 do OSM. \"Source: Monterey County, Big Sur Coast Land Use Plan, 1986\" entra com a pílula do plano em 4,07 s e volta com o \"FINISHED\" em 11,83 s, que é o dado atribuível (VP-A-145). O PAD-US é domínio público e fica sem crédito na tela (a citação vai na descrição). Nenhuma mídia de _media/ na cena: sem veredito a casar e sem crédito-fantasma."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 7,
+      "problemas": [
+        "O parque é --contexto-1 e a Highway 1 é --tinta, uma cor por significado e a mesma da s25 (item 33 da Arte); a água escura cobre o mar a cena inteira e nenhum quadro mostra emenda ou névoa no mar.",
+        "sinalização (ponto do pedido, pulo de tom do satélite por trecho): nas duas fusões de 0,6 s (2,1–2,7 s e 12,18–12,78 s, olhadas a cada 0,15 s) a terra passa do ocre seco do z10 para o verde mais saturado do z12 e volta. O cruzamento acontece com a câmera a 1.400–2.900 px/s e lê como a imagem ganhando detalhe na viagem, e não como corte; a sequência 2,10 → 2,55 s mostra um instante mais claro e pálido no meio (2,55 s). Não reprova. Fica registrado para a emenda E2 (tom entre as cenas com e sem teto)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 7,
+      "problemas": [
+        "O parque (concreto central, desconhecido do público) só aparece como polígono sobre satélite real: o footage das sequoias do beat 1 (s38-a, \"Pfeiffer Big Sur State Park redwood forest 4K slow\") não foi achado nos 4 bancos, e o fallback é o da regência. O satélite do próprio lugar é registro real; não reprova, mas o espectador sai sem ver como a mata do parque é."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 7,
+      "problemas": [
+        "Contei os objetos da fala: a venda de 1934, o parque, a proteção de longo prazo e o fim da obra em 1937; os planos são P-COSTA (0–1,6 s), o close do parque (2,7–12,18 s) e P-COSTA de volta. O close dura 9,5 s com uma única troca de camada (a pílula sai em 11,17 s), e o trecho de 5,8 a 11,17 s fica 5,4 s sem plano novo, perto do teto de 6 s de imagem parada (identidade.md §4.3). Não é footage nem foto, então o teto não reprova; sinalizo."
+      ],
+      "correcoes": [
+        "Se a caça do s38-a voltar com o clipe do parque, ele ocupa exatamente esse trecho (regência beats[1], 395,13–400,5 s)."
+      ]
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "Avança: acrescenta a venda de 1934 e a conclusão de 1937 sobre a linha do tempo. Repete a pose P-COSTA da s36 e do começo da s33, que é a pose casada da série, e o parque já tinha sido nomeado no mapa da s31; aqui ele ganha o fato (a venda), e não só o nome."
+      ],
+      "correcoes": []
+    }
+  ]
+}

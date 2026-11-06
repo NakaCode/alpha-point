@@ -1,0 +1,127 @@
+{
+  "cena": "s10",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 9,
+      "problemas": [
+        "margem: relevo 3D, olhada no clipe (o portao-margens dá 2 por desenho, e esse 2 não segura o aprovado). Quadros t=0,5, 1,0, 2,2, 3,6 e 3,9 do clipe 4K: a legenda fica em x 200, y ~1712–1849 (acima da faixa do crédito, que começa em y 1880); o crédito, só na faixa de baixo, termina em x ~1390 (limite 1720); a estrada sai pela borda de baixo em x ~1850, à direita do crédito e fora do canto de 400 × 400 (que é só mar); as três casinhas terminam com o topo em y ~170 (limite 160, a casinha mais alta é a da direita), sem tocar o topo no último quadro. Sinalização: no fim, a casinha mais alta fica a ~10 px da margem de 160 — folga curta, medida no quadro reduzido a 1920 (y ~85 → 170 no 4K), sem reprova.",
+        "hierarquia: o cone com o carro é o herói; a legenda é eixo a 84 px (--fs-eixo), sem competir. Cinco elementos (estrada, carro, cone, três casinhas como um grupo, legenda): dentro do teto de 6 (identidade §4.2). Crédito de mapa a 60 px (--fs-credito) com data-qc-credito=\"mapa\" só no próprio elemento: dentro de 56–64.",
+        "portões lidos, não remedidos: qc-cena da s10 com falhas [] e indefinido só o til-glifo (por desenho em cena de mapa, não vai a gatesDuros); portao-mapa til 0 e rodape 0 (v5, sha1 e67b48c2, 20:28; crédito a 12,40:1, 12 amostras, piso 3:1); portao-margens veredito 2 (relevo 3D, por desenho). Não há exceção do crédito a 60 px para a s10 em _excecoes-portao.json: não era preciso, o crédito é de mapa (piso 40 no qc-tamanho). O alerta '_portao marca 52bcaebea2de != 6314f1776ecf' é da Sala e não entra no aprovado."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "a linha da Highway 1 acompanha a estrada que se vê no satélite no comprimento todo nos quadros t=0,5, 2,2, 3,6 e 3,9 (o fio branco cobre a faixa clara da pista, sem abrir no meio); o carro está pousado no fio (t=3,9: centro do carro sobre a estrada). Geometria real (OSM, highway-1-big-sur); o cone é medido no DEM, declarado ILLUSTRATIVE na legenda.",
+        "legenda 'Illustrative · vertical exaggeration 1.5×' é a linha _condicao do textos-tela (71405fb4) para relevo exagerado, no t0 0,267, com 1,5× igual ao EXAG da cena. Nenhum texto da regra na tela (ela entra na s44), como pede o textos-tela.",
+        "sinalização para a Sala (não reprova): a Arte trocou o trecho 'perto da ponte' do conceito/regência por um trecho a ~9 km dela, ao sul de Point Sur, dentro do distrito, porque junto à ponte a estrada corre num corte e a primeira crista fica a 30–500 m. A tela não nomeia o trecho nem afirma que seja a ponte, então nada na tela é falso; a decisão de manter o trecho é da Sala/Direção.",
+        "sinalização: as casinhas são 2D sobre o relevo, sem oclusão pela crista; a leitura 'atrás da crista' depende de elas pousarem do outro lado da linha da crista, e pousam (t=3,9). Sem reprova."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 9,
+      "problemas": [
+        "primeiro segundo coberto: a cena abre já em voo sobre a estrada, o carro entra em 250 ms (a voz diz 'There's a rule' desde 41,71) e o cone nasce em 0,30 s, na palavra 'rule' (0,295). As casinhas entram em 1,45/1,62/1,79 s, em 'building' (1,515) — a primeira ~65 ms antes da palavra, dentro da tolerância da entrada de 300 ms. O deslize atrás da crista começa em 2,90 s, 210 ms depois de 'see' (2,69), e termina em 3,70 s, antes de a fala acabar em 3,41+: a ação segue a frase e a imagem fecha com o fim da fala. Nada sobra nem fica parado depois da fala.",
+        "Não houve atraso de entrada por ritmo nesta cena, então não há elemento a re-checar contra a fala por conta de qc-carga."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "modo certo: MAPA 3D com o relevo real, como a regência pede (tipo mapa_relevo); é a altura do terreno que decide o que se vê da estrada, e o cone sobre a encosta real mostra isso (quadros t=2,2 e 3,6). Não é caso de footage nem de PRANCHA.",
+        "sinalização: o satélite fica macio no 3D de perto (zoom 14,4–15,15, nível alto sem teto, a regra por trecho de câmera já decidida pela Sala), com leve borrão nas encostas no recorte 4K a t=2,2. Não atrapalha a leitura do cone nem a de estrada; sem reprova."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "em ~2 s o leigo entende: um carro na estrada, linhas de visada que sobem a encosta até a crista (t=1,0 a 2,2), e a fala diz 'building anything you could see from the road'. A prova do argumento — casinhas dentro do cone com ✗ e depois atrás da crista — se lê no recorte 4K (t=2,2 e 3,6).",
+        "sinalização: no quadro de vídeo cheio as casinhas são pequenas (~120 px de 3840) e, depois do deslize, ficam a 40 % de --tinta tracejado sobre mata escura (t=3,9 a 1920, ~55 px); o payoff 'atrás da crista' lê pior que o 'dentro do cone'. Não reprova, porque o desenho está na regência (60 % → 40 %) e a fala explica. Se a Direção quiser mais clareza: subir o final de 40 % para ~55 % ou ter o sob-traço escuro das casinhas em 0,55 → 0,7 só no fim. Opcional."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "poluicao",
+      "nota": 9,
+      "problemas": [
+        "cinco elementos (estrada, carro, cone, três casinhas, legenda), sob o teto de 6 (identidade §4.2) e no alvo de 4–5; um só bloco de texto (a legenda), mais o crédito. Nada a cortar sem perder sentido: o cone é um desenho só (16 linhas + leque), e a estrada é o fio.",
+        "lastro: a legenda 'Illustrative · vertical exaggeration 1.5×' não tem palavra da fala que a convoque, mas cai na exceção (a)/(b): é a condição de honestidade do desenho e do exagero, pedida pela regência e pelo textos-tela. Sem texto malformado (sem entidade, tofu ou glifo quebrado; o × e o · saem certos)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 9,
+      "problemas": [
+        "nada congela: a câmera voa o tempo todo (zoom 14,40 → 15,15, inclinação 42° → 54°, rumo 104° → 96°), com desaceleração por u = 0,7·eo + 0,3·linear, sem parar nem saltar (t=0 a 3,9 reconhecíveis como um só voo contínuo). O cone cresce de 0,30 a 1,10 s com eo, e as casinhas deslizam 2,90–3,70 s com eio.",
+        "o deslize termina em 3,70 s e o ✗ sai antes, em 3,20 s: nos últimos ~250 ms só a deriva da câmera anda, que a regra aceita. Corte de entrada (da s09, foto Caltrans) é de mídia para mapa, não é mapa seguido de mapa; o corte de saída para a s11 (fundo liso) também não é mapa → mapa (anotado para a emenda)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "crédito de mapa '© MapTiler © OpenStreetMap contributors' a 60 px, x 200, faixa de baixo, em todos os quadros lidos (t=0 a 3,9), com data-qc-credito=\"mapa\" só no próprio elemento; cobre a Highway 1 (OSM). Contraste 12,40:1 (portao-mapa rodape v5). Sem crédito de domínio público, sem crédito-fantasma (nenhuma mídia na tela), nenhum arquivo de _media/ citado pela cena: conferência de mídia não se aplica.",
+        "OSM na descrição: a linha de _creditos-mapa.md é da Sala; não é achado do laudo."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 8,
+      "problemas": [
+        "uma cor = um significado: --tinta (branco quente) é tudo o que é desenho (estrada, carro, cone, casinhas, ✗); nenhuma --tensao nas casinhas (VC-15) e nenhum degradê, véu ou vinheta por cima do mapa. Satélite no tratamento C (brilho 0,92, saturação 0, contraste +25 %, identidade §6). Os verdes e dourados do relevo são do satélite, e servem ao assunto (encosta aberta contra mata).",
+        "evidencia.paleta não veio na entrada: não afirmo deriva de cor dentro da cena. Família de cor contra as irmãs: a s44 (mesmo tratamento, com o litoral) e a s09/s11 (foto e papel) foram vistas num quadro cada; a s10 casa com a s44; o corte para a s11 em papel é a troca de linguagem do roteiro, anotada para a emenda."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 9,
+      "problemas": [
+        "a coisa nomeada ('road', a Highway 1) está na tela como a estrada real sobre o satélite; 'building' é o ato hipotético, e as casinhas são desenho declarado ILLUSTRATIVE. O desconhecido do público (o que 'ver da estrada' quer dizer) é o que o cone mostra. Nenhum concreto central sem registro."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 9,
+      "problemas": [
+        "cena de 3,97 s, um plano de voo contínuo e com trajetória própria; sem footage. A fala atravessa uma ideia (a regra do que se vê da estrada) e o plano a carrega com os três beats do desenho (cone, casas, deslize); nenhuma troca era exigida. Sem repetição de clipe (nenhuma mídia na cena)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [
+        "a s44 reaproveita o cone e o carro (quadros t=3 e 12 da s44), mas em outra escala e com degrau novo: a s44 mostra o litoral inteiro e o texto da regra, a s10 mostra de perto o que 'ver da estrada' significa na encosta. É callback plantado que paga com informação nova, não repetição. Contra a s09 (a foto) e a s11 (papel) não há repetição de material."
+      ],
+      "correcoes": []
+    }
+  ]
+}
