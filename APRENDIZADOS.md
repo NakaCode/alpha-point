@@ -1678,6 +1678,15 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   o perfil pelo conteúdo, e não pela data, com o caso novo na prova dela.
 - **Por que serve a qualquer canal:** todo canal que use a linha do tempo com cena de mapa da pré-v1 cai nisso no segundo mapa de cada
   vídeo. A data de um arquivo regravado sem mudança não prova que ele mudou.
+- **De novo no vídeo 5** (`big-sur`, 06/11/2026), na revisão de espectador r1 e no `proxies`:
+  - o `quadros` e a linha do tempo deram a s19 e a s29 como "sem clipe 4K em dia". O `perfil-mapa.js` e o `.json` tinham a data das 20:18
+    de 05/11, e os dois clipes eram de 20:12 e 20:17;
+  - a prova: o `perfil-mapa.js` tem o mesmo sha256 (`fd6e0fbf…`) nos sete projetos desde o Juneau, e o `canal.json` não muda desde 07/10.
+    Os carimbos batiam com o HTML;
+  - a Sala tirou os quadros das duas do clipe pelo ffmpeg, com o mesmo comando do verbo, e atualizou a data dos dois clipes;
+  - os dois arquivos do perfil voltaram à data do `camera-mapa.js` (`touch -r`), como aqui.
+
+  O conserto de verdade continua pendente: a linha do tempo comparar o perfil pelo conteúdo.
 
 ### 93. O PASS do `qc-procedencia` não prova a procedência do arquivo que ele isenta pelo nome
 
@@ -1711,3 +1720,63 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   se faz pelo sha256 do arquivo julgado, que a procedência do transformado tem de guardar. Um portão que casa só pelo sha256 do arquivo
   final acusa todo arquivo transformado, e o alarme falso ensina a ignorar o portão.
 - **Por que serve a qualquer canal:** todo canal que confere a mídia antes de normalizá-la para a edição tem dois sha256 por arquivo.
+
+### 95. O satélite da MapTiler troca de imagem entre o z10 e o z11, e o tom do mapa pula no meio da câmera
+
+- **O problema** (05/11/2026, vídeo 5, `big-sur`, na arte-1): na costa de Big Sur, o `satellite-v2` usa uma imagem até o z10 (ocre e
+  mais escura) e outra do z11 em diante (verde e mais clara).
+  - No plano, a câmera que cruza o zoom 10,5 dá um pulo de tom à vista.
+  - No 3D, os níveis se misturam pela distância e abrem emendas retas entre as duas imagens.
+  - Pôr o teto no z10 em tudo resolvia o pulo, mas borrava os planos de perto (zoom 14,5 a 15,8: o z10 ampliado 20 a 50 vezes).
+- **O que resolveu:** a regra por trecho de câmera, com o `BASE_MAXZ` (decisão da Sala, 05/11/2026, `out/big-sur/_tmp/setores/big-sur-arte-1.md`):
+  - o trecho largo, com zoom abaixo de 10,5 em algum ponto, ou o 3D que pede tile no z10 ou abaixo, fica no teto do z10;
+  - o trecho de perto, com zoom de 10,5 ou mais do começo ao fim, fica sem teto. No 3D, só com a prova, pelos tiles pedidos, de que o
+    menor nível na tela é o z11 ou acima;
+  - a passagem entre os dois trechos fica num corte, num instante escondido ou numa fusão de 0,5 s ou mais, nunca numa aproximação lenta
+    à vista;
+  - a emenda que sobra no mar recebe a água escura (identidade §6).
+  - A qualidade-1 conferiu a série no passo de emenda (E2): dentro de cada trecho ela se lê como um satélite só, e nenhuma passagem
+    reprova.
+- **Como evitar:** antes do primeiro render de mapa de um lugar novo, compare o mesmo enquadramento no z10 e no z11. Se a imagem mudar,
+  aplique a regra por trecho desde o plano de cenas, e não só no conserto.
+- **Por que serve a qualquer canal:** o satélite de qualquer provedor é um mosaico por nível. Todo canal com câmera que atravessa níveis
+  cai nisso onde as imagens dos níveis não casam.
+
+### 96. A fonte `canvas` do MapLibre 4.7.1 sob o relevo se pinta duas vezes, e com `animate: true` o mapa nunca fica pronto
+
+- **O problema** (05/11/2026, vídeo 5, a s44, `out/big-sur/_tmp/setores/arte-1/M9.md`): o leque de visão da cena era uma fonte `canvas`
+  presa ao mapa, sobre o relevo 3D.
+  - A camada a 0,18 pintou uns 2,1 vezes o pedido: sob o relevo, o MapLibre a pinta duas vezes (medido na cor de duas caixas, com a
+    camada a 0,18 e a 0,06).
+  - Com `animate: true`, o mapa nunca ficava "idle", e o `__ready` da cena não chegava.
+- **O que resolveu:**
+  - a opacidade pedida passou a ser `1 − √(1 − alvo)` (a caixa medida deu 88, contra os 81 esperados para 18 %);
+  - o pano sobe à GPU só no quadro em que muda (`play` e `pause`), sem `animate: true`.
+- **Como evitar:** quem usa pano `canvas` em cena com relevo mede a cor na tela antes de calibrar e nunca deixa a fonte animada no render
+  quadro a quadro.
+- **Por que serve a qualquer canal:** vale para todo render de MapLibre 4.7.1 com terreno e fonte `canvas`, e o render quadro a quadro
+  espera o mapa ficar "idle".
+
+### 97. A folha das emendas da série pega o que as folhas de cada cena não pegam
+
+- **O problema** (05/11/2026, vídeo 5, na arte-1 e na qualidade-1): as folhas de contato de uma cena mostram a cena inteira, mas nunca o
+  último segundo dela ao lado do primeiro da seguinte. A pose casada que não casa, o crédito que pisca na troca e o tom do satélite que
+  pula entre duas cenas só aparecem na troca.
+- **O que resolveu:**
+  - antes de fechar o passo, a Arte juntou numa folha só o fim e o começo das cenas vizinhas;
+  - a Qualidade fez o mesmo em dois passos à parte: a E1, com as poses casadas e os cortes, e a E2, com a série (o perfil da encosta e o
+    tom do satélite);
+  - a E1 achou o crédito do Census sumindo uns 0,2 s na s13 → s15, que nenhum lote por cena tinha visto.
+- **Como evitar:** toda rodada de arte e de qualidade tem um passo de emenda, com as trocas listadas pelo plano de cenas, e não só os
+  lotes por cena.
+- **Por que serve a qualquer canal:** todo canal que divide o vídeo em cenas feitas e julgadas em separado perde a troca entre elas.
+
+### 98. O `probe-elemento` sai NÃO MEDIDO em cena com vídeo grande: espera a rede ficar parada, e o vídeo nunca para
+
+- **O problema** (05/11/2026, vídeo 5, as cenas com footage do banco, `out/big-sur/_tmp/setores/arte-1/EF1.md`): o `probe-elemento`, a
+  ferramenta de diagnóstico que mede a caixa de um elemento, saiu com exit 2 nas três cenas: "page.goto: Timeout 30000ms exceeded …
+  waiting until "networkidle"". O vídeo grande da cena continua baixando, e a rede nunca fica parada.
+- **O que resolveu:** nada nesta rodada. Ele é ferramenta e não portão, e a medida da pílula se fez no quadro do clipe 4K.
+- **Como evitar:** em cena com vídeo, meça a caixa no quadro do render, ou numa cópia da cena sem o `<video>`. Saída NÃO MEDIDO de
+  ferramenta não é reprovação nem aprovação.
+- **Por que serve a qualquer canal:** todo canal com cena de footage pesado e ferramenta de medida que espera "networkidle" cai nisso.
