@@ -1780,3 +1780,21 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Como evitar:** em cena com vídeo, meça a caixa no quadro do render, ou numa cópia da cena sem o `<video>`. Saída NÃO MEDIDO de
   ferramenta não é reprovação nem aprovação.
 - **Por que serve a qualquer canal:** todo canal com cena de footage pesado e ferramenta de medida que espera "networkidle" cai nisso.
+
+### 99. O robots.txt que veta os agentes da Anthropic vale para os nossos agentes, com qualquer User-Agent
+
+- **O problema** (06/11/2026, a pauta do vídeo 6, `pautas/2026-11-06-video-6-noruega.md`): o pesquisador leu páginas do Store norske
+  leksikon (snl.no) e da UNESCO (whc.unesco.org) com o User-Agent do canal. O robots.txt dos dois veta `anthropic-ai`, `ClaudeBot` e
+  `Claude-Web` em `Disallow: /`, e o do snl.no diz por quê: "We do not permit unlicensed use of our content for training large language
+  models or other artificial intelligence technology". As cópias estão em `pautas/noruega/_trabalho/fontes/*-robots-2026-11-06.txt`. O
+  revisor crítico pegou o caso do snl.no. A UNESCO, que ele deu como legítima, tem as mesmas linhas, e a Sala as achou na conferência.
+  O robots.txt do PSA filipino também tem as mesmas linhas, mas a leitura parou num 403.
+- **O que resolveu:** a pauta não cita mais essas páginas como prova. Elas saem na versão seguinte e se trocam pelo NGU, pelo Kartverket e
+  pelos artigos revisados.
+- **Como evitar:**
+  - antes de ler um site, o agente lê o robots.txt e procura os nomes da Anthropic (`anthropic-ai`, `ClaudeBot`, `Claude-Web`,
+    `Claude-User`, `Claude-SearchBot`). Se um deles estiver vetado, o site não se lê: nem com outro User-Agent (seria "trocar cabeçalho"),
+    nem pelo navegador do app sem uma decisão do Lucas. O item fica NÃO CONFERIDO e vai à Sala;
+  - o pedido a todo agente de pesquisa diz isso por escrito.
+- **Por que serve a qualquer canal:** todo canal com pesquisa feita por agentes do Claude encontra esse veto, que hoje vem pronto no
+  robots.txt gerenciado do Cloudflare e em enciclopédias e órgãos públicos.
