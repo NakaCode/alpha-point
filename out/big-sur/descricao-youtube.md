@@ -43,6 +43,9 @@ lá ("A descrição está MUITO grande, não?", 30/10/2026). O que entra e de on
     dois vídeos de Andrew Avitt no DVIDS, 2026), a NOAA (a foto de 1932 de Floyd Risvold, do U.S. Coast & Geodetic Survey), o Historic
     American Buildings Survey (HABS CA-2734, os fornos de cal) e o U.S. Census Bureau (o questionário da ACS);
   - as 3 fotos da Caltrans vão com o nome do órgão (a origem não pede crédito; `marca/midia.md` §7.5, como na tela);
+  - o still de satélite da mesa (`_media/base/landsat-big-sur*.png` e `mesa-big-sur*.png`, em 16 cenas, Landsat do USGS) vai como
+    "Landsat imagery courtesy of the U.S. Geological Survey", a linha do `credito_descricao` da procedência, como no Peru e no Atlântico
+    (a lista das passagens do Landsat fica na procedência, pelo tamanho);
 - **o footage dos bancos pagos**: 11 clipes, 9 do Envato Elements, 1 do Motion Array e 1 da Storyblocks. Nenhum dos três pede crédito
   (`marca/midia.md` §3.1 a §3.3), e nenhum clipe é do Shutterstock: a linha "used under license from Shutterstock.com" não entra;
 - **a geometria**: só a OpenStreetMap pede atribuição (a Highway 1, as pontes, a estrada Nacimiento-Fergusson, o Nepenthe, o mirante e o rio
@@ -81,7 +84,7 @@ Would you live on this coast? Answer in the comments.
 Sources are shown on screen.
 Photos via Wikimedia Commons (may have been cropped or resized for the video): Mavic of Steel; Natecation; Marty Aligata; Jav72; Joe Mabel (CC BY-SA 4.0); S. Rae (CC BY 2.0).
 Nepenthe photo: "NEPENTHE - BIG SUR COAST OF CALIFORNIA" by Jerrye and Roy Klotz MD, commons.wikimedia.org/wiki/File:NEPENTHE_-_BIG_SUR_COAST_OF_CALIFORNIA.jpg, CC BY-SA 3.0 (creativecommons.org/licenses/by-sa/3.0), cropped; text added.
-Public domain: U.S. Geological Survey; U.S. Forest Service (video by Andrew Avitt, via DVIDS); NOAA (Floyd Risvold, U.S. Coast & Geodetic Survey, 1932); Historic American Buildings Survey (HABS CA-2734); U.S. Census Bureau.
+Public domain: U.S. Geological Survey; Landsat imagery courtesy of the U.S. Geological Survey; U.S. Forest Service (video by Andrew Avitt, via DVIDS); NOAA (Floyd Risvold, U.S. Coast & Geodetic Survey, 1932); Historic American Buildings Survey (HABS CA-2734); U.S. Census Bureau.
 Photos courtesy of Caltrans.
 Maps: © MapTiler (www.maptiler.com/copyright) · © OpenStreetMap contributors, data under the Open Database License (www.openstreetmap.org/copyright)
 Protected areas: USGS Gap Analysis Project, PAD-US 4.1
