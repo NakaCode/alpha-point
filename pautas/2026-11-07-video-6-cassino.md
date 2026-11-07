@@ -1,5 +1,30 @@
 # Vídeo 6 · A Praia do Cassino: por que a "maior praia do mundo" é quase uma linha reta · Pauta v2 · 07/11/2026
 
+**Aprovada pelo Lucas em 07/11/2026, às 18:2x, no chat da Sala:** "Sim, seguir com ela (Recomendado)", à pergunta "A pauta do vídeo 6
+(Praia do Cassino) está pronta, nota 6,0. Título: "Why the World's Longest Beach Is Almost a Straight Line". […] Como seguimos?". A opção
+dizia: "Depois: o teste dos leitores com o título (se o "almost" soa honesto, porque no meio a praia se afasta 11 milhas da reta), as
+leituras que faltam (as razões do senador, o mapa do parque) e, então, o roteiro. A pauta custou cerca de 1 ponto; a semana está em 82 %."
+As outras opções eram "Ajustar o título antes" e "Trocar para a Serra do Mar".
+
+**Depois do sim (07/11/2026, à noite): o teste dos leitores e as leituras da Sala.**
+1. **O teste dos leitores** (`out/_pautas/video-6-2026-11-07/teste-leitores.md`; três leitores a frio, em Sonnet, de Brisbane, Dayton e Pune,
+   com o mapa `mapa-praia-e-reta.png`, a linha do IBGE ao lado da reta, sem nomes):
+   - **o título 1 fica:** 7, 8 e 8 de clique, à frente de "So Straight" (6, 6, 6) e de "How Long…, Really?" (5, 7, 7); nenhum leu como vlog;
+   - **ele é honesto com uma condição, dita pelos três:** o vídeo mostra cedo o mapa com a reta e diz os dois números (136 mi de praia, 132 de
+     reta) e a curva do meio (11 mi). A palavra deles para a forma é "a gentle S-curve";
+   - **a miniatura recomendada passa a ser "WHO DREW THIS?"** (8, 8 e 8), no lugar de "158 MILES?" (6, 5 e 5: o 158 não bate com o mapa). O
+     roteiro paga o "who" na física (quem desenhou foi o mar), e a composição deixa claro que o "this" é a praia, não uma fronteira.
+2. **As razões do senador** (o texto inicial do PDL 112/2026, no Senado; o PDF lido por script, sha256 `066986e6…`, 8 páginas):
+   - o parque, a APA e a zona de amortecimento somam 1.618.488 hectares de área marítima e costeira;
+   - ele diz não ignorar a relevância ambiental do Albardão; o ponto dele é a forma do decreto, a categoria mais restritiva (parque, de
+     proteção integral) para a maior parte da área e o tamanho da restrição;
+   - a consulta pública pode não ter cumprido a finalidade, se a poligonal final mudou depois dela, e a base técnica estaria defasada;
+   - o conflito com a pesca, com projetos de eólica no mar em licenciamento no Ibama e com a Bacia de Pelotas (petróleo e gás).
+   Na voz, as razões dele vão nos termos dele, uma vez, com o dono (`voz.md`).
+3. **O mapa dos limites** não foi achado pronto. O decreto descreve o parque por coordenadas (SIRGAS 2000, UTM 22S), e os mapas do ICMBio
+   são os da proposta da consulta, não os finais (pela busca). Quem desenha o limite na areia é o `mapista`, das coordenadas do decreto lido
+   no Planalto, com o `pesquisa-geo`.
+
 **O que mudou da v1** (o cético e as leituras da Sala, no fim, mandaram no conserto):
 - **O título.** O "Three Official Lengths" caiu: são dois governos e uma trilha, não três órgãos (K5), e a régua não explica a diferença
   (K1). O novo é **"Why the World's Longest Beach Is Almost a Straight Line"**, e a resposta dele é medida e firme: entre as mesmas duas
