@@ -3,8 +3,8 @@
 **O título do vídeo:** *Why This Stretch of California Is as Empty as Wyoming* (53 caracteres), o título aprovado pelo Lucas com a pauta
 (02/11/2026; `roteiros/big-sur/roteiro-narrador.md`, l. 1, e `pautas/2026-11-01-video-5-big-sur.md` §2). A voz o paga nas 3 primeiras
 frases: o pedaço da Califórnia (F1, "This is Big Sur, between Los Angeles and San Francisco"), o normal (F2, as duas metrópoles) e o núcleo
-(F3, "fewer than 1,500 people, as empty as Wyoming"). Os títulos do teste do YouTube (Test & Compare) e a miniatura ficam para a embalagem
-(abaixo, "Pendente").
+(F3, "fewer than 1,500 people, as empty as Wyoming"). O título é um só, e o teste do YouTube (Test & Compare) vai com duas miniaturas
+(abaixo, "As miniaturas do teste").
 
 Escrita no fechamento do vídeo, na forma da do Atlântico (`out/atlantico-fundo/descricao-youtube.md`), já na medida curta que o Lucas pediu
 lá ("A descrição está MUITO grande, não?", 30/10/2026). O que entra e de onde veio:
@@ -57,8 +57,7 @@ lá ("A descrição está MUITO grande, não?", 30/10/2026). O que entra e de on
   em texto.
 
 **Pendente (antes de publicar):**
-- **A miniatura e os títulos do teste:** a embalagem (`marca/embalagem.md`), a decidir com o Lucas. A pauta recomenda a miniatura "ONLY
-  1,474" (§8) e deixa o teste dos leitores para depois do sim (§2).
+- **A miniatura:** decidida (abaixo, "As miniaturas do teste"): a A2 e a B no Test & Compare, com o título único.
 - **Os links:** como no Peru e no Atlântico, vai primeiro a versão SEM LINKS. Quando o YouTube liberar os links, a Sala faz a versão
   completa, com a citação e o endereço de cada fonte e de cada licença (a MapTiler e a OSM pedem os links na descrição; `_creditos-mapa.md`).
   Se o YouTube recusar a SEM LINKS por causa dos endereços em texto, a Sala decide com o Lucas; crédito de licença nunca sai.
@@ -104,6 +103,25 @@ A pergunta, palavra por palavra (`textos-tela.json` › `_pergunta_cta`; `marca/
 ```text
 Would you live on this coast?
 ```
+
+## As miniaturas do teste
+
+O Lucas, no chat da Sala, em 06/11/2026, à pergunta "Quais miniaturas do Big Sur vão para o teste do YouTube (Test & Compare, até 3), com o
+título único…?": **"A nova ONLY e a ROAD (Recomendado)"**. Para subir no Studio, as de 1280×720 (abaixo de 2 MB):
+- **A2, "ONLY 1,474"**: `roteiros/big-sur/miniatura/miniatura-A2-1280.jpg`. O satélite Landsat de outubro de 2025 (USGS, domínio público), o
+  distrito de censo de Big Sur em `--destaque`, projetado do polígono do TIGER/Line 2020 pela janela da base (não desenhado a olho), e as
+  pílulas "SAN FRANCISCO" e "LOS ANGELES" na direção real de cada metrópole, que ficam fora do quadro. A composição segue a 3ª versão que o
+  Lucas gerou numa IA de imagem para comparar (ele a preferiu; o mapa dela era inventado), com o mapa real. Os nomes das cidades vão em caixa
+  alta, como na versão da IA (a receita da `embalagem.md` §3 pede Inter em caixa normal: seguiu-se o modelo que o Lucas escolheu);
+- **B, "ROAD KEEPS FALLING"**: `roteiros/big-sur/miniatura/miniatura-B-1280.jpg`. A foto aérea do USGS de Mud Creek (27/05/2017, domínio
+  público, `aprovado` no `conferencia-midia.json`; o script confere o sha256 antes de usar), com o selo "MUD CREEK · MAY 2017", porque a foto
+  é de outro ano que o de hoje (o aviso do ano, `marca/identidade.md` §6). A voz paga a promessa aos 38 s ("and a road that keeps giving way",
+  `words.json`, palavra 108, 38,39 s) e nas partes 2 e 6 (Mud Creek, Paul's Slide e Regent's Slide; os três anos sem a estrada).
+
+As duas foram feitas por um agente novo, sem rede, em Python (`base-A2.py` e `base-B.py`; a primeira versão, `base-A.py`, fica de registro), e
+conferidas nos 3 tamanhos (1280, 320 e 168: o texto-herói e o distrito leem nos três; os nomes das cidades ficam no limite no 168). Não passaram
+pela banca de quatro lentes nem por leitores a frio (`embalagem.md` §3.1), para poupar a cota da semana: quem mede é o teste do YouTube. Os
+relatos: `roteiros/big-sur/miniatura/A-RELATO.md` e `B-RELATO.md`.
 
 ## As tags
 
