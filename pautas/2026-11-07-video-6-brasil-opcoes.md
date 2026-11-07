@@ -217,3 +217,8 @@ da geomorfologia da barreira (FURG), do PDF da NASA lido (pela Sala, no navegado
 vidIQ e a leitura das fontes, e custa uns 3 pontos (a semana está em 80 %).": **"A Praia do Cassino"**. A opção dizia: "A disputa da maior
 praia do mundo, com o gancho americano (Long Beach, Padre Island, a NASA). Antes, eu confirmo a história do Guinness em mais fontes. Nota
 6,0." A base de fatos vai em pautas/2026-11-07-video-6-cassino-fatos.md.
+
+07/11/2026, 11:3x, no chat da Sala, depois do resumo da base de fatos, à pergunta "Para a busca da concorrência no vidIQ, preciso de um teto
+de créditos. No Big Sur, a pauta gastou uns 40, e para esta sugiro até 25. Posso seguir com 25?": **"Pode seguir com o que for
+necessário"**. A Sala segue com a pauta completa e usa no vidIQ o que a concorrência pedir, começando pelos 25 sugeridos, com o saldo
+anotado antes e depois.
