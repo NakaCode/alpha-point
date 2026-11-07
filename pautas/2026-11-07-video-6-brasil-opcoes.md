@@ -210,3 +210,10 @@ da geomorfologia da barreira (FURG), do PDF da NASA lido (pela Sala, no navegado
 - Zeihan, "No. 44—São Paulo, Brazil";
 - recapio.com (o vídeo do Geoff sobre o Brasil) e thetvdb.com (o Wendover de 2018);
 - os resultados de youtube.com (os títulos dos vídeos de Manaus e do Cassino).
+
+## A escolha do Lucas
+
+07/11/2026 00:04, no chat da Sala, à pergunta "Qual opção do vídeo 6 vira a pauta completa? A pauta completa leva o cético, a busca da concorrência no
+vidIQ e a leitura das fontes, e custa uns 3 pontos (a semana está em 80 %).": **"A Praia do Cassino"**. A opção dizia: "A disputa da maior
+praia do mundo, com o gancho americano (Long Beach, Padre Island, a NASA). Antes, eu confirmo a história do Guinness em mais fontes. Nota
+6,0." A base de fatos vai em pautas/2026-11-07-video-6-cassino-fatos.md.
