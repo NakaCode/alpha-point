@@ -1,253 +1,306 @@
-# Vídeo 6 · A Praia do Cassino: por que a "maior praia do mundo" tem três tamanhos oficiais · Pauta v1 · 07/11/2026
+# Vídeo 6 · A Praia do Cassino: por que a "maior praia do mundo" é quase uma linha reta · Pauta v2 · 07/11/2026
 
-**Para o "sim" do Lucas.** O cético vem depois, por outro agente, e anexa a seção dele no fim. Esta pauta parte da base de fatos
-(`pautas/2026-11-07-video-6-cassino-fatos.md`, com o adendo da Sala sobre o g1) e da seção "3 · A Praia do Cassino" de
-`pautas/2026-11-07-video-6-brasil-opcoes.md`. Os fatos se citam pelo número da base ("fatos 2.4", "fatos A.3"). O que se leu hoje leva
-o rótulo L1 a L8 (§1).
+**O que mudou da v1** (o cético e as leituras da Sala, no fim, mandaram no conserto):
+- **O título.** O "Three Official Lengths" caiu: são dois governos e uma trilha, não três órgãos (K5), e a régua não explica a diferença
+  (K1). O novo é **"Why the World's Longest Beach Is Almost a Straight Line"**, e a resposta dele é medida e firme: entre as mesmas duas
+  paredes de pedra, a praia tem menos de 5 mi a mais que a linha reta, em duas linhas independentes (o IBGE e, medido hoje, o
+  OpenStreetMap). O porquê é a física, com a frase causal dos geólogos da UFRGS lida hoje na origem (§4.5). O "Why" agora tem resposta (K3).
+- **O gancho.** Sai o "In a way, all three are" (K1). As perguntas ficam abertas, e não há anúncio de resposta em lista (K8). São 4
+  números em vez de 6, e 39 s em vez de 47.
+- **As camadas.** A medida e a física viram uma história só: o ato 2 mede, o ato 3 explica por que a medida não muda. O ato 4 encolhe e
+  perde o "laço" inventado (K4). A palavra do título vive do gancho ao fecho, não só por 4 minutos (K3).
+- **O Albardão.** O Parque Nacional e a APA do Albardão (o Decreto 12.868, de 06/03/2026) e o PDL 112/2026, que pede a derrubada, entram no
+  ato 2, cada um nos próprios termos (K2). O meio da faixa passa a ter nome (K6).
+- **A miniatura.** O "ONLY 39 MILES?" sai (K9). As três novas não fazem jogo de nome (§8).
+- **A nota fica em 6,0** (o cético deu 5,0 à v1). Das quatro condições dele para voltar a 6,0, três estão cumpridas e a quarta em parte;
+  as que subiriam a 6,5, não (§12).
+
+**Para o "sim" do Lucas.** O cético da v2, se a Sala quiser um, vem depois e anexa a seção dele no fim. Esta pauta parte da v1 (commit
+`0e8c8b3`), do cético e das leituras da Sala (as duas seções do fim) e da base de fatos (`pautas/2026-11-07-video-6-cassino-fatos.md`,
+citada como "fatos 2.4", "fatos A.3"). O que a Sala leu depois do cético leva o rótulo S1 a S6; o que se leu nesta rodada, L9 a L13 (§1).
 
 **Em uma linha:** a Praia do Cassino, no extremo sul do Brasil, é vendida como a maior praia do mundo, "pelo Guinness".
-- Em 2025, o Guinness disse ao g1 que não monitora esse título.
-- A praia tem três tamanhos oficiais, segundo o g1: 254 km (158 mi) para o Governo do RS, cerca de 223 km (139 mi) para a Prefeitura do
-  Rio Grande e 218 km (135 mi) para o IBGE.
-- Dos 218 km do IBGE, só 62 km (39 mi) ficam no Rio Grande e se chamam Cassino. O resto, 156 km (97 mi), é de Santa Vitória do Palmar.
+- Ela começa e acaba numa parede de pedra: os molhes da barra do Rio Grande e os da foz do Arroio Chuí, na fronteira com o Uruguai.
+- Entre as duas paredes, a linha reta mede 212 km (131,7 mi). A praia tem 218 km (135,5 mi) na linha do IBGE e 219,7 km (136,5 mi) na do
+  OpenStreetMap: menos de 8 km (5 mi) a mais que a reta.
+- Medida com réguas de 10 m a 50 km, ela muda 1,7 %. Por isso o número famoso, os 254 km (158 mi) que o turismo do Estado imprime ao lado
+  de "Guinness Book", não cabe nela.
 
-O vídeo explica por quê. A régua muda o número (o paradoxo da linha de costa), a linha do município corta a areia, e a costa é quase reta
-por 630 km (391 mi), sem baías e quase sem maré: os rios deixam a areia nas lagoas de trás, não no mar. O fecho mostra o que uma praia
-assim guardou: o navio Altair, encalhado desde 1976, e os 21 foguetes que a NASA e a comissão espacial brasileira planejaram lançar dali
-no eclipse de 1966.
+O vídeo explica por que o mar desenhou uma costa tão reta. As ondas apagam as saliências, a maré é pequena, os rios largam a areia nas
+lagoas de trás, e a barreira de areia tem só duas aberturas em 625 km (388 mi). O fim mostra o que essa areia guarda: os sítios de fósseis
+que o Parque Nacional do Albardão, de março de 2026, protege, o navio Altair, desde 1976, e os foguetes que a NASA e o Brasil planejaram
+lançar dali no eclipse de 1966.
 
 **A numeração:** vídeo 6 na numeração de 27/10/2026. O slug proposto é `praia-do-cassino`, que nunca vai à tela.
 
 **Três coisas que o Lucas precisa saber antes do sim:**
-1. **Colisão de título: não há.** Fiz 6 buscas no vidIQ, só de vídeos publicados desde 07/11/2025, e uma busca na web. Nenhum vídeo em
-   inglês tem título igual ou parecido com o escolhido, nem conta a disputa da praia. Os dois mais perto:
-   - "World's longest beach?" (canal Dust, Dirt & Truth, 5,28 mil inscritos), de 06/11/2026, com 12:59 e 681 views. Não tem descrição, e
-     não sei de que praia ele fala: a Sala confere no YouTube (lista do fim).
-   - "The Longest Beach IN THE WORLD??" (Parks with A.P.), de 01/10/2026, com 3:00 e 1.348 views. É sobre Long Beach, em Washington.
-
-   A expressão "world's longest beach" aparece em dezenas de vlogs de viagem. Por isso o título a usa só como âncora, nunca sozinha (§2).
-2. **O título se apoia em três números, e eles ainda estão de segunda mão.** Quem diz cada número veio só do g1 (fatos A.3). Uma das
-   reportagens que a busca trouxe hoje dá os 254 km à Prefeitura, e não ao Governo do RS. A página do IBGE respondeu 403, e parei nela
-   (L2). Antes do roteiro, a Sala lê as três origens no navegador do app (lista do fim, itens 1 e 2):
-   - se as três são de órgão oficial, o título 1 fica;
-   - se só duas são, cai para o título 2, que não depende disso (§2).
-
-   Nenhuma edição do Guinness de 1993 a 1995 se pode pesquisar sem empréstimo. O Internet Archive tem as edições em inglês, mas
-   restritas, e a busca dentro delas respondeu 403 (L3). As edições brasileiras, onde o g1 diz que estava o trecho, não estão lá. Por
-   isso a única forma firme é "Guinness told g1 it doesn't monitor the title".
-3. **O assunto é fino para 14 minutos, e o relevo é plano.** O vídeo só chega lá com as quatro camadas: a fama, a régua, a física e o que
-   a praia guardou (§7).
-   - O mapa carrega o vídeo: a faixa no satélite com as lagoas atrás, a linha do município, a régua que encolhe. Antes da primeira cena
-     de mapa, é preciso o ok da MapTiler para este vídeo (nenhum ok de antes vale). O vídeo não precisa do relevo 3D, então sai mais
-     barato que o Big Sur.
-   - Há fotos abertas e grandes no Commons, como a do navio Altair (6.016 px, CC BY-SA 4.0), mas nenhum drone. O drone da praia em
-     movimento, para os primeiros segundos, só vem pela caça, com o sim do Lucas à lista (§6).
+1. **O título novo tem a resposta medida, e não colide.**
+   - A praia é só 2,8 % (IBGE) a 3,7 % (OSM) mais longa que a linha reta entre as duas paredes. E nenhuma régua, de 10 m a 50 km, leva a
+     linha do OSM além de 220 km: os 254 km do Estado ficam 16 % acima de tudo o que se mediu (§4.3).
+   - O porquê tem frase de geólogo, na origem: "o modelo explica como a ação das ondas pode suprimir as reentrâncias e saliências (projeções)
+     da linha de costa" (Dillenburg, Tomazelli e Clerot, UFRGS, 2003, lido hoje, L10).
+   - **Não é reta de régua:** no meio, perto do Albardão, a praia se afasta 18 km (11 mi) da reta, para o mar. A fala diz isso, e o "Almost"
+     do título é o que a mantém honesta. O teste dos leitores pergunta se o "almost a straight line" parece honesto diante do mapa (§2).
+   - **A colisão:** nenhuma. Fiz 3 buscas no vidIQ hoje (o título exato, "straightest coastline" e "how long is the world's longest beach",
+     vídeos desde 07/11/2025; 15 créditos), e elas se somam às 7 da v1 e do cético. Os vizinhos são Shorts de outro assunto (§9).
+2. **O Parque Nacional do Albardão entra no vídeo, e o assunto tem lado.**
+   - Um decreto federal de 06/03/2026 criou o parque e a APA no litoral de Santa Vitória do Palmar (os limites citam a Lagoa Mangueira e a
+     foz do Arroio Chuí; de que ponto a que ponto da areia, a confirmar).
+   - Um senador do RS (Luis Carlos Heinze, PP) apresentou o PDL 112/2026 para derrubar o decreto. O projeto estava "Em tramitação" e
+     "AGUARDANDO DESIGNAÇÃO DO RELATOR", com a última ação em 12/05/2026 (o Senado, lido pela Sala hoje).
+   - A voz diz o que cada um diz, sem tomar partido. **Faltam duas leituras antes do roteiro**: a justificação do PDL (as razões do senador,
+     nas palavras dele) e o mapa dos limites no ICMBio. O estado do projeto se relê antes da publicação.
+3. **O que segura a nota em 6,0:**
+   - **o tema é curiosidade física,** não o paradoxo de povoamento, que é o mais forte do Geoff;
+   - **a origem dos 254 km segue aberta.** O vídeo diz que nenhuma fonte lida diz quem mediu, e como;
+   - **a procura do tema em vídeo longo não está provada.** Provou-se hoje o formato: um explicador de costa no molde do Geoff, num canal de
+     148 inscritos, fez 22.973 views em 5 dias (§9);
+   - **o visual é a mesma faixa reta.** O vídeo depende da animação sobre o mapa (as réguas, as ondas dobrando sobre a saliência, a sombra
+     do eclipse). Antes da primeira cena de mapa, é preciso o ok da MapTiler para este vídeo, e o drone da abertura só vem pela caça.
 
 ---
 
 ## 1 · De onde vem
 
-- **A escolha** (Lucas, no chat da Sala, 07/11/2026, 00:04): "A Praia do Cassino", à pergunta "Qual opção do vídeo 6 vira a pauta completa?".
-  O vidIQ (11:3x): "Pode seguir com o que for necessário".
-- **A base de fatos** (relida do disco; nada foi refeito): o Guinness e a imprensa (fatos 1.1 a 1.8), as medidas e as rivais (2.1 a 2.9 e a
-  tabela 2.2), a geologia da UFRGS (3.1 a 3.11), a NASA em 1966 (4.1 a 4.9), os outros ganchos (5.1 a 5.6) e o g1 de 20/07/2025, lido pela
-  Sala no navegador do app (A.1 a A.7).
+- **A escolha** (Lucas, no chat da Sala, 07/11/2026, 00:04): "A Praia do Cassino", à pergunta "Qual opção do vídeo 6 vira a pauta
+  completa?". O vidIQ (11:3x): "Pode seguir com o que for necessário".
+- **A v1, o cético e as leituras da Sala:** relidos do disco, no fim deste arquivo. A v1 fica no commit `0e8c8b3`.
 - **A direção do Lucas que pesa aqui:**
   - o título único, com a colisão no topo (01/11);
   - a chance medida em canal pequeno, porque o gargalo é o clique (CTR de 0,9 a 1,6 %);
   - a receita do Geoff (`out/_analises/geography-by-geoff/relatorio.md`, §3 e §6): "Why" + o lugar descrito sem o nome + um paradoxo
-    concreto;
-  - o ângulo do canal (`marca/embalagem.md` §1.1);
-  - o público que fala inglês em qualquer país, só com milhas;
-  - o ritmo de hoje (~179 palavras/min) e um texto mais calmo, de 13 a 14 min;
-  - o roteiro que não pode ser "engessado" (02/11).
-- **O que se leu hoje** (07/11/2026, um pedido por vez, com o User-Agent do canal; nada recusado foi contornado):
+    concreto, e a palavra do título viva até o fim (hipótese 6);
+  - o ângulo do canal (`marca/embalagem.md` §1.1), o público que fala inglês em qualquer país, só com milhas;
+  - o ritmo de hoje (~179 palavras/min), um texto mais calmo, de 13 a 14 min, e um roteiro que não seja "engessado" (02/11).
+- **O que se leu** (graus: S = a Sala depois do cético, relida do disco; L = esta rodada, 07/11/2026, ~13:30–14:30 de Brasília, um pedido por vez, com o
+  User-Agent do canal; nada recusou, nada foi contornado):
 
 | # | Fonte | O que deu | Grau |
 |---|---|---|---|
-| L1 | vidIQ, `vidiq_youtube_search` (6 buscas, vídeos desde 07/11/2025) e `vidiq_get_videos_by_ids` (8 vídeos) | a concorrência e a colisão (§2 e §9). 35 créditos | 07/11, na origem |
-| L2 | IBGE: o robots.txt (só veta pastas técnicas) e o Quadro Geográfico 2024, "Municípios Defrontantes com o Mar", https://www.ibge.gov.br/apps/quadrogeografico/pdf/qg_2024_060_defrontmar.pdf (sha256 `c68298c8…`) | a lista vem dos "trechos de limites constantes no produto Malha Municipal do Brasil, do IBGE, que coincidem a linha costeira". O PDF **não traz a extensão por município**. A página do produto (`…/24072-municipios-defrontantes-com-o-mar.html`) respondeu **403** ao WebFetch, e parei nela | 07/11, na origem; os 62,05 e 155,95 km continuam só pelo g1 |
-| L3 | Internet Archive: o robots.txt (só veta `/control/` e `/report/`), a busca `advancedsearch.php` e os metadados de um item | as edições de 1994 e 1995 em inglês estão lá, todas com `access-restricted-item: true`: a britânica de 1994 (`guinnessbookofre0000unse_r7c1`, Enfield, 330 páginas) e as americanas da Bantam (`guinnessbookofre1994matt`, `guinnessbookofre1995matt`), entre outras. A busca dentro do livro (`fulltext/inside.php`) respondeu **403**, e parei. **Nenhuma edição brasileira de 1993 a 1995**: em português, só a Ediouro de 2005, restrita | 07/11, na origem |
-| L4 | en.wikipedia, "Praia do Cassino" (editada em 24/10/2026), pelo extrator do WebFetch | "estimates of 212 kilometres (132 mi)" a "254 kilometres (158 mi)"; "this claim is hard to make due to the coastline paradox"; dos Molhes "at the entrance of the Rio Grande seaport" à foz do Chuí. O extrator não achou o Guinness na versão de hoje. A enciclopédia em inglês já cita o paradoxo | 07/11, na origem |
-| L5 | Wikimedia Commons, pela API (`generator=search`, "Praia do Cassino", 40 arquivos) | as fotos grandes e abertas (§6) | 07/11, na origem (a página de cada arquivo se relê antes da cena) |
-| L6 | NASA NTRS 19670005315 (S. A. Bowhill, University of Illinois), pela API | fala de "an eclipse experiment in South America" com Nike-Apache, sem contar foguetes | 07/11, na origem |
-| L7 | busca na web (7 consultas: o IBGE, três vezes; os foguetes; a colisão; os sangradouros; o Governo do RS e a Prefeitura) | **não achado:** a publicação do IBGE com os 62,05 km, as páginas oficiais com os 254 e os 223 km, a contagem dos foguetes e os sangradouros. Uma reportagem (resumo da busca) atribui os 254 km à Prefeitura | resumo de busca, não é fato |
-| L8 | vidIQ, os metadados de "World's longest beach?" (`dbPMAhY6QtE`) | sem descrição nem tags; categorias "Hobby" e "Lifestyle". O lugar segue desconhecido | 07/11, na origem |
+| S1 | IBGE, "Municípios Defrontantes com o Mar" 2024, o shapefile (`85f1a851…`), medido pela Sala (`costa_ibge.py`) | o limite com o mar: Rio Grande 62,05 km, Santa Vitória do Palmar 155,95 km, soma **218,00 km**; a reta da barra à foz do Chuí, **212,0 km** | 07/11, na origem |
+| S2 | o mesmo traçado, com o compasso | de 50 m a 50 km, de 218,05 a 215,77 km (1 %); o traçado é generalizado (segmento mediano de 408 m) | conta da Sala |
+| S3 | o portal de turismo do RS (atrativo 4597, sem data) e a Secretaria da Cultura do RS (29/01/2016) | "254 km de areia branca e fina […] também conhecida como a maior praia do mundo (Guinness Book), que inicia nos Molhes da Barra do Cassino e termina nos Molhes do Chuí"; "segundo dados do Guiness Book", "com mais de 254 quilômetros". Sem método nem autor da medida | 07/11, na origem |
+| S4 | a Rede Brasileira de Trilhas, "Trilha Cassino x Barra do Chuí" | "Distância: 223 km", dos Molhes do Cassino aos Molhes da Barra do Chuí. A Prefeitura do Rio Grande não foi lida (o site antigo manda para um portal novo) | 07/11, na origem |
+| S5 | o vídeo "World's longest beach?" (`dbPMAhY6QtE`) | uma transmissão de um neozelandês numa praia da Nova Zelândia: não colide | 07/11, no navegador do app |
+| S6 | o Senado, o PDL 112/2026 | do senador Luis Carlos Heinze (PP/RS): "susta os efeitos do Decreto nº 12.868, de 6 de março de 2026"; "Em tramitação"; a última ação em 12/05/2026, na CMA, "AGUARDANDO DESIGNAÇÃO DO RELATOR" | 07/11, na origem |
+| L9 | vidIQ, `vidiq_youtube_search` (3 buscas, vídeos desde 07/11/2025, 25 resultados cada) | a colisão dos títulos novos e a procura (§2 e §9). 15 créditos: 5.941 antes, 5.926 depois | 07/11, na origem |
+| L10 | Dillenburg, Tomazelli e Clerot (CECO-IG-UFRGS), "Gradientes de energia de onda: o principal fator controlador da evolução costeira no Rio Grande do Sul durante o Holoceno Superior", anais do IX Congresso da ABEQUA e II Congresso de Zonas Costeiras, 2003, 3 páginas, https://www.aprh.pt/ZonasCosteiras2003/pdf/142.pdf (sha256 `9295704f…`; o texto lido pelo PyMuPDF) | a costa de 625 km é "suavemente ondulada", com duas projeções e duas reentrâncias; "apenas duas descontinuidades" na barreira (Rio Grande e Tramandaí); a ação das ondas pode "suprimir" as saliências; a forma é a do mar alto de 5 ka e segue a declividade da plataforma; os rios deixam a carga de fundo nas lagoas; a maré média de 0,5 m; o mar a ~2 m acima do atual em 5 ka; entre o Hermenegildo e o Chuí, lama lagunar e turfa afloram na praia (§4.5) | 07/11, na origem |
+| L11 | OpenStreetMap, pela API do Overpass: `way["natural"="coastline"](-33.80,-53.50,-32.12,-52.00)`, 920.408 bytes, sha256 `a685acae…` (`costa_osm.py`) | 27 vias costuradas numa cadeia só, de 9.005 nós; o trecho entre as pontas do IBGE (a 22 m e a 37 m delas) tem 8.818 nós, segmento mediano de 9 m: **219,73 km (136,5 mi)**; régua de 10 m, 219,41 km; de 1 km, 218,00; de 50 km, 215,75 (1,7 % de 10 m a 50 km) | 07/11, na origem; a conta é do canal. © OpenStreetMap contributors, ODbL |
+| L12 | o traçado do IBGE contra a reta (`desvio_corda.py`, sem pedido novo) | o maior afastamento é de **18,21 km (11,3 mi)**, para o mar, a 123 km da barra, em (-52,67206; -33,16923); perto do Cassino, a linha fica até 4,5 km para o lado de terra. Em janelas de 10 km, o traçado passa da reta, na mediana, 0,07 % (no OSM, 0,79 %) | conta |
+| L13 | uma busca na web (a forma da costa do RS) | o resumo apontou o artigo do L10, que foi lido na origem. O resto do resumo não entra | resumo de busca, não é fato |
 
 As contas estão em `pautas/praia-do-cassino/_trabalho/scripts/` (Apêndice).
 
 ## 2 · O título
 
-**A colisão, primeiro** (a lição do vídeo 4). Nas 6 buscas do vidIQ, só de vídeos publicados desde 07/11/2025, nenhum título em inglês é
-igual ou parecido com os títulos 1 a 5, e nenhum vídeo em inglês conta a disputa da praia. A busca exata do título 1 só trouxe vídeos de
-outros assuntos (L1). Os vizinhos de forma:
-- "World's longest beach?" (Dust, Dirt & Truth, 06/11/2026, 12:59, 681 views): o lugar não foi identificado (Três coisas, item 1);
-- "The Longest Beach IN THE WORLD??" (Parks with A.P., 01/10/2026, 1.348 views): Long Beach, em Washington;
-- o Short "Do you know what is the longest sea beach in the world?" (Truth Bites, 26/03/2026, 1.149 views), cuja descrição diz "Most people
-  would say Brazil, but they're only half right": a ideia da disputa já existe num Short.
+**A colisão, primeiro** (a lição do vídeo 4). Nas 3 buscas de hoje (L9) e nas 7 da v1 e do cético, nenhum título em inglês dos últimos
+12 meses é igual ou parecido com os cinco abaixo. Nenhum vídeo em inglês conta que a "maior praia do mundo" é quase reta, nem que o número
+famoso não cabe nela. Os vizinhos de forma são Shorts de outro assunto:
+- "The Longest Straight Swim on Earth" (TopQuest, 15/07/2026, 291.382 views) e "The Longest Straight Line on Earth Avoids the Pacific
+  Entirely" (Geo Vault, 07/08/2026): a reta que se nada pelo oceano, não costa;
+- "Top 10 Longest Natural Beaches in the World" (Editing Plus, 01/11/2026, 40 s, 159 views): uma lista;
+- os Shorts do paradoxo da costa (o da Índia remedida, 126.053 views; §9).
 
-A busca da web indexa mal o YouTube: o que ela não achou não está provado ausente.
+A busca da web indexa mal o YouTube, e a do vidIQ devolve 25 por busca: o que não apareceu não está provado ausente.
 
 **As regras:**
-- `marca/embalagem.md` §2: o título nomeia o que o espectador conhece e guarda o lugar e a causa; o núcleo se paga nas 3 primeiras frases.
-- §1.1: o tema contraria o que se pensa.
-- O Geoff: "Why" + o lugar descrito sem o nome + um paradoxo concreto. Aqui, "the world's longest beach" descreve o lugar sem o nome, e o
-  paradoxo é a medida.
+- `marca/embalagem.md` §2: o título nomeia o que o espectador conhece e guarda o lugar e a causa; o núcleo se paga nas 3 primeiras frases;
+  e o título não promete o que a fala não paga.
+- §1.1: o tema contraria o que se pensa. Aqui, duas coisas: uma praia de 135 mi não devia ser quase reta, e o paradoxo da costa, que está
+  em alta nos Shorts, diz que costa medida mais de perto fica mais longa. Esta quase não muda.
+- O Geoff: "Why" + o lugar descrito sem o nome ("the world's longest beach", como rótulo) + um paradoxo concreto.
 - **Fora do título:**
   - "Praia do Cassino" e "Brazil" (o nome escondido; e todo vídeo de 2026 com "Cassino" no título é vlog em português);
-  - "The World's Longest Beach" sozinho (o título de dezenas de vlogs);
-  - "Guinness" (é marca; a negativa vem por uma reportagem; e "Guinness" no título lê como vídeo de recordes);
-  - "fake", "myth" e "lie" (`voz.md` §2; o "fake news" é palavra do g1, não do Guinness);
-  - "infinite" e "can't be measured" (o paradoxo não diz isso).
+  - "Guinness" (é marca, e lê como vídeo de recordes); "fake", "myth", "lie" (`voz.md` §2);
+  - "three official lengths" (caiu, K5); "39 miles" (jogo de nome, K9);
+  - "perfectly straight", "no curves", "never bends" (falsos: a praia se afasta 11 mi da reta no meio);
+  - números (o título não briga com a miniatura, que leva um).
 
-| # | Título | Caract. | O que o paga nas 3 primeiras frases | O risco |
-|---|---|---:|---|---|
-| **1 (recomendado, com condição)** | **Why the World's Longest Beach Has Three Official Lengths** | 56 | Gancho A (§8): (1) "sold as the longest beach in the world"; (2) "you get three official answers"; (3) "So which one is right?", aos ~11 s. Os três números vêm nas frases 4 a 6, até os ~17 s | **Depende de três órgãos oficiais** (fatos A.3, só pelo g1). Se a Prefeitura não der os 223 km (L7), são dois, e o título cai. O "World's Longest" é rótulo, não afirmação: o gancho diz "sold as" |
-| 2 (o reserva seguro) | Why Nobody Agrees How Long the World's Longest Beach Is | 55 | as mesmas frases do gancho A, com "the official answers don't match" na frase 2 | menos concreto que o 1 (o Geoff: o concreto vence o vago). Não depende de quantos órgãos há: o intervalo de 212 a 254 km está publicado (fatos 2.1) |
-| 3 | Why the World's Longest Beach Is Only 39 Miles Long | 51 | gancho A, frase 8 (aos ~23 s) | é a provocação mais forte, mas é jogo de nome: a areia tem 135 mi, e só o nome tem 39. O espectador pode se sentir enganado (`embalagem.md` §2, "expressão que engana"). Fica para a miniatura (§8), com o "?" |
-| 4 | Why This Beach Runs 135 Miles Without a Single Bay | 50 | só com um gancho próprio, físico (a costa reta) | é o ângulo físico, firme (fatos 3.1 e 3.5), mas o "without a single bay" pede que a costa não tenha barra entre os Molhes e o Chuí, o que ainda está FRÁGIL (fatos 3.11). E não contraria nada que o espectador pense: é curiosidade, não paradoxo |
-| 5 | Why Nobody Can Agree on the World's Longest Beach | 49 | gancho B (§8): o Guinness, as rivais e os números | é o da comparação de 06/11. Promete a disputa entre países (Long Beach, Padre, Cox's Bazar), que é o ato 1, não o vídeo inteiro. Bom para o teste A/B com a miniatura 3 |
+| # | Título | Caract. | A colisão (L9) | O que o paga nas 3 primeiras frases | O risco |
+|---|---|---:|---|---|---|
+| **1 (recomendado)** | **Why the World's Longest Beach Is Almost a Straight Line** | 55 | a busca exata: nada parecido; só os Shorts da reta no oceano | gancho A (§8): (1) "sold as the world's longest beach"; (2) "Stone walls mark its two ends, about 132 miles apart in a straight line"; (3) "The beach itself is less than five miles longer", aos 12,7 s. A pergunta, aos 15,4 s | **o arco de 11 mi**: um espectador atento pode chamar de curva. O "Almost" e o número da fala ("less than five miles longer") seguram, e o ato 2 mostra o arco. Pode ler como curiosidade de almanaque. O "World's Longest" é rótulo: a voz diz sempre "sold as" |
+| 2 | Why the World's Longest Beach Is So Straight | 44 | idem; "straightest coastline": nada sobre costa reta | gancho B: (1) "it barely bends"; (2) "Why would a coast this long stay this straight?" | mais curto e mais macio, mas menos concreto (o Geoff: o concreto vence o vago). Não tem o risco do "line" |
+| 3 | Why the World's Longest Beach Is So Easy to Measure | 51 | "how long is the world's longest beach": nada | gancho B, frases 3 e 4 (a régua), aos ~22 s | contraria o paradoxo, mas é abstrato, e o "easy" ao lado de números que não batem pode ler como ironia ou desmentido. A resposta é a mesma do 1 |
+| 4 | How Long Is the World's Longest Beach, Really? | 46 | idem | os dois ganchos | o fio do comprimento atravessa o vídeo inteiro (o K3 não o pega), mas não é "Why" (nos 50 do Geoff, os títulos sem "Why" não tiveram estouro), e o "Really?" lê como curiosidade rápida. É o reserva seguro |
+| 5 | Why the Coastline Paradox Barely Works on the World's Longest Beach | 67 | a do cético ("longest beach coastline paradox"): nada junta os dois | gancho B, frases 3 e 4 | passa dos 65 caracteres; "coastline paradox" é jargão, e os explicadores longos do paradoxo não pegaram em 2026 (K7). Só para um teste A/B, se o 1 não render |
 
-**A escolha:** o 1 com o gancho A, se a Sala confirmar os três órgãos na origem (lista do fim, itens 1 e 2). Sem isso, o 2, com o mesmo
-gancho e a frase 2 trocada. **O teste dos leitores** (`embalagem.md` §4, depois do sim): os três leitores a frio respondem, para o 1, o 2 e o
-5, "o que você acha que vai ver?" e "acha que é um vídeo de viagem?". A escolha final é do Lucas.
+**A escolha:** o 1, com o gancho A. O gancho B paga o 1 e também o 3 e o 5. **O teste dos leitores** (`embalagem.md` §4, depois do sim):
+os três leitores a frio respondem, para o 1, o 2 e o 4, "o que você acha que vai ver?" e "acha que é um vídeo de viagem?". E, para o 1,
+diante do mapa com a reta e a praia: "o 'almost a straight line' parece honesto?". A escolha final é do Lucas.
 
 ## 3 · O contrato do vídeo
 
-- **O que ele promete:** por que a praia que se vende como a maior do mundo tem três tamanhos oficiais, e o que faz dela uma praia tão longa.
+- **O que ele promete:** por que a praia vendida como a maior do mundo é quase uma linha reta, e por que o número famoso não cabe nela.
 - **O que ele entrega, e quando** (a 179 palavras/min; as contas no §7):
-  - **até ~11 s:** o lugar, a fama ("sold as the longest beach in the world"), as três respostas oficiais e a pergunta; até ~17 s, os
-    três números, cada um com o dono;
-  - **até ~47 s:**
-    - "in a way, all three are";
-    - só 39 mi se chamam Cassino;
-    - o Guinness disse ao g1 que não monitora o título;
-    - a resposta tem três partes: a linha do município, a régua e a costa reta;
-  - **ato 1 (0:47–3:40), o recorde que ninguém mostra:** de onde veio o "Guinness desde 1994", o que o Guinness disse, o único recorde
-    de praia que o site dele mostra (Virginia Beach), e as rivais, cada uma com o seu adjetivo;
-  - **ato 2 (3:40–7:00), a régua:** quem diz cada número, a praia que troca de nome na divisa, o paradoxo da costa desenhado sobre a
-    costa real, e as duas pontas, que são obra humana;
-  - **ato 3 (7:00–10:28), a física:** uma costa de 391 mi quase reta, sem baías e quase sem maré; os rios que deixam a areia nas lagoas;
-    a areia velha da plataforma, retrabalhada pelas ondas; e a barreira que cresceu para o mar depois que ele baixou, há uns 5 mil anos;
-  - **ato 4 (10:28–12:49), o que a praia guardou:** o Altair, desde 1976, e os foguetes planejados pela NASA e pelo Brasil para o
-    eclipse de 12/11/1966;
-  - **fecho (12:49–13:29):** uma cena na Barra do Chuí, a outra ponta, entre o último molhe e o Uruguai.
-- **O tom:** curioso, de conversa, com um pouco de humor no fato (a placa de Washington que "não tem planos de corrigir"; o vizinho que
-  contestou o recorde). Sem rir de ninguém: Rio Grande e Santa Vitória do Palmar falam nos próprios termos (`voz.md` §1). O vídeo não diz
-  que o Brasil mente. Diz que cada um mede com a sua régua.
-- **O ritmo** (a direção de 02/11): voz de conversa, em segunda pessoa ("type it into a search bar", "stand on the breakwater"), frases
-  de tamanho variado e uma pergunta abrindo cada ato. A fonte vai na tela, e na voz só o que precisa de dono, uma vez por fonte: o
-  Guinness pelo g1, os três órgãos, a NASA pelo release e os geólogos uma vez. São 37 números na fala, um a cada ~65 palavras (§7).
+  - **até ~15 s:** o lugar, a fama, as duas paredes a 132 mi em linha reta, a praia com menos de 5 mi a mais, e a pergunta do título;
+  - **até ~33 s:** o 158 que o turismo do Estado imprime ao lado do Guinness, o que o Guinness disse ao g1, e a segunda pergunta (por que o
+    número não cabe);
+  - **ato 1 (0:39–3:07), a palavra de cada praia:** de onde vêm a fama e o 158, e as rivais, cada uma com o seu adjetivo. Todo adjetivo se
+    apoia num comprimento: "so let's measure it";
+  - **ato 2 (3:07–6:48), duas paredes e uma régua:**
+    - as pontas, que são obra humana;
+    - a divisa que troca o nome da areia, e o Albardão, com o parque de 2026;
+    - os números com dono;
+    - o paradoxo testado: nenhuma régua leva a praia a 158;
+    - a reta e o arco. A pergunta do título vira o centro do vídeo;
+  - **ato 3 (6:48–10:29), por que o mar desenha reto:** a resposta do título (§4.5);
+  - **ato 4 (10:29–12:44), o que a areia guarda:** os fósseis que o decreto protege, o Altair, e a NASA em um parágrafo, só com o que o release
+    diz;
+  - **fecho (12:44–13:24):** uma cena na Barra do Chuí, a outra parede.
+- **A palavra do título viva:** "straight" e a medida estão no gancho, no ato 2, no ato 3, no ato 4 (a mesma reta no mapa, com o que ela
+  guarda; nenhuma causa nova) e no fecho: uns 10 dos 13,4 minutos (o K3 media 4).
+- **O tom:** curioso, de conversa, com um pouco de humor no fato:
+  - a placa de Washington, que "não tem planos de corrigir";
+  - o vizinho que contestou o recorde;
+  - "let's measure it ourselves".
+
+  Sem rir de ninguém: o Estado, Rio Grande, Santa Vitória do Palmar, o governo federal e o senador falam nos próprios termos (`voz.md` §1).
+  O vídeo não diz que alguém mente: diz que nenhuma régua chega ao número, e que nenhuma fonte lida diz quem o mediu.
+- **O ritmo** (a direção de 02/11): voz de conversa, em segunda pessoa ("stand on the breakwater", "let's measure it"), frases de tamanho
+  variado e uma pergunta abrindo cada ato. A fonte vai na tela, e na voz só o que precisa de dono, uma vez por fonte. São 33 números na
+  fala, um a cada ~73 palavras (§7).
 
 ## 4 · Os fatos firmes
 
-Graus: **FIRME** e **FRÁGIL** são os da base (o número entre parênteses); **07/11-L** é o que se leu hoje (§1); **conta** sai dos scripts.
-**"Na fala":** sim; tela; fundo (para o roteiro e o verificador); fora. **"De que trecho" é obrigatória:** "a Praia do Cassino" (os 62 km do
-Rio Grande), "a faixa" (dos Molhes ao Chuí) e "a costa do RS" (630 km) são três coisas diferentes.
+Graus: **FIRME** e **FRÁGIL** são os da base (o número entre parênteses); **S** e **L** são as leituras do §1; **conta** sai dos scripts.
+**"Na fala":** sim; tela; fundo (para o roteiro e o verificador); fora. **"De que trecho" é obrigatória:**
+- "a parte que leva o nome Cassino" são os 62 km do Rio Grande;
+- "a faixa" vai dos Molhes da barra à foz do Chuí;
+- "a costa do RS" são os 625 km.
 
-### 4.1 · A fama: o recorde que ninguém mostra
+### 4.1 · A fama: de onde vêm o recorde e o 158
 
 | O fato | Como se diz | Fonte | Grau | Na fala |
 |---|---|---|---|---|
-| **A imprensa repete o Guinness** | "Guinness desde 1994" em Correio Braziliense, Itatiaia, Gazeta SP e outros, sem edição nem página | fatos 1.1; a Itatiaia de novo em 11/04/2026, num vídeo de 3.915 views (L1) | FIRME como fato sobre a imprensa | sim: "you'll read it in Brazilian papers, again and again" |
-| **E em inglês também** | "recognised by Guinness World Records since 1994 as the world's longest sea beach" | WorldAtlas, 30/05/2026 (fatos 1.7) | FIRME como o que o site diz | sim, numa cena: o espectador digita a pergunta, e a resposta em inglês repete o Guinness. Na tela, a frase com o crédito, sem logo |
-| **O que o Guinness disse** | "em resposta ao g1, a instituição informou que não monitora o título" | g1, 20/07/2025 (fatos A.1) | FIRME (a resposta contada pelo g1; sem a frase literal do Guinness) | **sim:** "In 2025, Guinness World Records told Brazil's g1 news site it doesn't monitor this title." |
-| A origem provável | um livro do jornalista Willy César: o trecho sobre a "praia mais extensa do Brasil" saiu nas edições brasileiras de 1993, 1994 e 1995, e foi tirado depois de uma contestação de Santa Vitória do Palmar | g1 (fatos A.2); o livro não foi lido | FIRME como o que o g1 diz do livro | sim, atribuído duas vezes ("a local journalist's history of Rio Grande, as g1 reports"). **O humor está no fato:** quem contestou foi o vizinho, dono da maior parte da areia (§4.3) |
-| O ano que varia | "supostamente listada em 1993" (pt.wikipedia) contra o "1994" da imprensa | fatos 1.2 | FRÁGIL | fundo |
-| **O único recorde de praia no site do Guinness** | "Largest pleasure beach": Virginia Beach, "45 km (28 miles) of beach front on the Atlantic" | fatos 1.6 | FIRME | sim: "the only beach-size record we could find on Guinness's own site is in Virginia, and it's for the largest *pleasure* beach". O "we could find" é honesto: a ausência não prova (fatos 1.5) |
-| As edições de 1993 a 1995 | as em inglês existem no Internet Archive, só por empréstimo; as brasileiras não estão lá | L3 | 07/11-L | fora (fundo para o verificador) |
+| **A imprensa repete o Guinness** | "Guinness desde 1994" em vários jornais, sem edição nem página | fatos 1.1 | FIRME como fato sobre a imprensa | sim: "you'll read it in Brazilian papers, again and again", **sem "for three decades"** (K10: nenhum jornal dos anos 1990 foi lido) |
+| **E em inglês** | "has been recognised by Guinness World Records since 1994 as the world's longest sea beach" | WorldAtlas, 30/05/2026 (fatos 1.7; relido pelo cético) | FIRME como o que o site diz | sim, na cena da busca, com o crédito e sem logo |
+| **O que o Guinness disse** | "em resposta ao g1, a instituição informou que não monitora o título" | g1, 20/07/2025 (fatos A.1) | FIRME (contado pelo g1) | **sim:** "Guinness World Records told Brazil's g1 news site it doesn't monitor that title" |
+| A origem provável | o livro de Willy César: o trecho sobre a "praia mais extensa do Brasil" saiu nas edições brasileiras de 1993 a 1995, e saiu depois de uma contestação de Santa Vitória do Palmar | g1 (fatos A.2) | FIRME como o que o g1 diz do livro | sim, atribuído ("a local journalist's history of Rio Grande, as g1 reports"). O humor está no fato: quem contestou é o dono da maior parte da areia |
+| **O 158 do Estado** | o turismo do RS: "254 km […] também conhecida como a maior praia do mundo (Guinness Book)"; a Cultura do RS (2016): "segundo dados do Guiness Book", "com mais de 254 quilômetros" | S3 | FIRME como o que as páginas dizem; **quem mediu e como: não dito** | **sim:** "the state's own tourism website says 158 miles, right next to the words 'Guinness Book'". Na tela, a folha recriada com o texto, sem logo |
+| O critério do WorldAtlas | usa "the highest credibly published value" de cada praia | fatos 2.4 | FIRME como o que o site diz | sim: o site que põe o Cassino em 1º escolhe o maior número de cada praia |
+| **O único recorde de praia no site do Guinness** | "Largest pleasure beach": Virginia Beach | fatos 1.6 | FIRME (a página); a ausência dos outros é FRÁGIL (fatos 1.5) | sim, **sem o número** (K10: o "28 miles" fica só para Long Beach) e com "the only one we could find". A tela não diz "ONLY" |
+| O ano que varia | 1993 (pt.wikipedia) contra 1994 (imprensa) | fatos 1.2 | FRÁGIL | fundo |
 
 ### 4.2 · As rivais: cada uma ganha com o seu adjetivo
 
 | Praia | Como se diz | Fonte | Grau | Na fala |
 |---|---|---|---|---|
-| **Long Beach (Washington)** | o arco na entrada diz "World's Longest Beach"; são 28 mi; a cidade diz agora "World's Longest Continuous Peninsula Beach" e "there are no plans to correct the entrance sign" | Roadside America; en.wikipedia (tabela 2.2) | FIRME | **sim:** é o gancho americano. O Cassino, pelo IBGE, dá **4,8 vezes** os 28 mi (conta): "almost five times as long" |
-| **Padre Island (Texas)** | "the longest stretch of undeveloped barrier island in the world" | NPS (tabela 2.2) | FIRME quanto ao critério; FRÁGIL quanto ao número (66 a 70 mi) | sim, nas palavras do NPS e sem número (o "undeveloped" é o adjetivo) |
-| Cox's Bazar (Bangladesh) | 120 km (75 mi), "widely marketed as the longest unbroken natural sandy beach in the world" | WorldAtlas e o *Europa World Year Book* (tabela 2.2) | FRÁGIL (nenhuma fonte de Bangladesh) | sim, como "promoted as", sem número, até uma fonte de Bangladesh (§11). A procura existe: o vlog de Cox's Bazar fez 65 vezes a média do canal (§9) |
-| Eighty Mile Beach (Austrália Ocidental) | o nome diz 80 mi; a ficha Ramsar de 2025 diz "220 km of intertidal mudflats and coast" (137 mi); a en.wikipedia, 230 km (143 mi) | tabela 2.2 (a ficha respondeu 502) | FRÁGIL | **só com a ficha Ramsar lida** (§11): "by some measures, longer than the shortest figure published for Cassino". Até lá, fundo |
-| Ninety Mile Beach (Nova Zelândia) | 88 km (55 mi): o nome exagera | tabela 2.2 | FIRME | O1 (opcional, §7): "names stretch the truth too" |
-| **A lição** | Cassino: "uninterrupted sandy" e "sea beach"; Cox's Bazar: "unbroken natural sandy"; Long Beach: "continuous peninsula"; Padre: "undeveloped barrier island"; Virginia Beach: "pleasure beach" | a base, "O que as medidas mostram" | FIRME (são os critérios que cada fonte usa) | **sim:** é a frase-mãe do ato 1. Cada praia ganha com um adjetivo, e o mapa-múndi acende os cinco |
+| **Long Beach (Washington)** | o arco diz "World's Longest Beach"; 28 mi; a cidade diz agora "World's Longest Continuous Peninsula Beach", e "there are no plans to correct the entrance sign" | Roadside America; en.wikipedia (tabela 2.2) | FIRME | **sim:** o gancho americano do ato 1. Pela linha do IBGE, o Cassino tem 4,8 vezes os 28 mi (conta): "almost five times as long" |
+| **Padre Island (Texas)** | "the longest stretch of undeveloped barrier island in the world" | NPS (tabela 2.2) | FIRME quanto ao critério | sim, nas palavras do NPS, sem número |
+| Cox's Bazar (Bangladesh) | "widely marketed as the longest unbroken natural sandy beach in the world" | tabela 2.2 | FRÁGIL (nenhuma fonte de Bangladesh) | sim, como "marketed as", sem número |
+| Eighty Mile Beach (Austrália Ocidental) | 220 km na ficha Ramsar (resumo; a ficha deu 502), com o lamaçal entremarés | tabela 2.2 | FRÁGIL | **fora** da v2: o vídeo não precisa dela |
+| Ninety Mile Beach (Nova Zelândia) | 88 km (55 mi): o nome exagera | tabela 2.2 | FIRME | O1 (opcional, §7) |
+| **A lição** | Cassino: "uninterrupted sandy"; Cox's Bazar: "unbroken natural sandy"; Long Beach: "continuous peninsula"; Padre: "undeveloped barrier island"; Virginia Beach: "pleasure beach". O ICMBio e a FURG: "a maior extensão de areia sem interrupções em todo o Brasil" | a base; fatos A.6 | FIRME | **sim:** a frase-mãe do ato 1, e a ponte para o ato 2: "every one of those words rests on a length" |
 
-### 4.3 · A régua: os três tamanhos e a divisa na areia
+### 4.3 · A medida: as paredes, a divisa, os números e a régua
 
 | O fato | Como se diz | De que trecho | Fonte | Grau | Na fala |
 |---|---|---|---|---|---|
-| **Os três tamanhos** | o Governo do RS, 254 km (158 mi); a Rede Brasileira de Trilhas e a Prefeitura do Rio Grande, cerca de 223 km (139 mi); o IBGE (publicação de 2024), 218 km (135 mi) | a faixa, dos Molhes à Barra do Chuí | g1 (fatos A.3) | FIRME pelo g1; **as três origens não foram abertas**, e uma reportagem dá os 254 km à Prefeitura (L7) | **sim, no gancho e no ato 2**, cada número com o dono. A Sala lê as três origens antes do roteiro (lista do fim) |
-| **A parte que se chama Cassino** | 62,05 km (38,6 mi) no Rio Grande; 155,95 km (96,9 mi) em Santa Vitória do Palmar (Hermenegildo e Barra do Chuí). O Cassino é 28,5 % da faixa | por município | IBGE pelo g1 (fatos A.3); a soma é conta | FIRME pelo g1 | **sim:** "only about 39 miles"; os 97 mi, no ato 2. O `pesquisa-geo` recalcula na malha municipal de 2024 (§10) |
-| **A praia é uma só** | ela troca de nome no limite dos municípios; a Fepam diz que não há critério técnico ou ambiental formal para a divisão, e que vale o limite municipal | a faixa | g1 (fatos A.5) | FIRME | sim: a linha do município cruzando a areia é a imagem do ato 2 |
-| **O vizinho** | o secretário de Turismo de Santa Vitória do Palmar diz que o Cassino se intitula a maior do mundo "porque ela pega a extensão até a Barra do Chuí, que é de Santa Vitória do Palmar" | — | g1 (fatos A.5) | FIRME | sim, em paráfrase e atribuído, sem nome próprio ("the tourism secretary next door") |
-| **O que Rio Grande diz hoje** | "a maior praia em extensão do mundo começa no Cassino e termina na Barra do Chuí" | — | g1 (fatos A.5) | FIRME | sim: Rio Grande já fala da faixa inteira, não só do Cassino |
-| **O jeito cuidadoso** | o ICMBio e a FURG consideram o trecho "a maior extensão de areia sem interrupções em todo o Brasil" | a faixa | g1 (fatos A.6) | FIRME | sim: "Brazil's federal conservation agency and the local university put it more carefully: the longest uninterrupted stretch of sand in *Brazil*" |
-| **O paradoxo da costa** | o comprimento de uma costa depende da escala da medida; o próprio g1 explica a diferença assim, e a en.wikipedia também | — | fatos A.4; L4 | FIRME (o que as fontes escrevem; o conceito é conhecido) | **sim, desenhado:** a régua de 10 mi, a de 1 mi e a que segue cada curva, sobre a costa real (§6). O nome de quem o descobriu é opcional ("menos nomes") |
-| O critério do WorldAtlas | usa "the highest credibly published value" de cada praia | — | fatos 2.4 | FIRME como o que o site diz | sim: o site que põe o Cassino em 1º escolhe o maior número de cada praia |
-| A linha que se escolhe | medir pelas dunas, pela preamar ou pela baixa-mar muda o número em "10 to 20 per cent" | — | WorldAtlas (fatos 2.4), sem fonte | FRÁGIL | a ideia vai em desenho declarado (as três linhas na areia); o número fica fora |
-| **As duas pontas** | no norte, os Molhes da Barra, "onde a Lagoa dos Patos encontra o mar", a 22 km (14 mi) do centro do Rio Grande; no sul, a foz do Arroio Chuí, também fixada por molhes | as pontas | fatos 2.6 | FIRME no norte; FRÁGIL no sul | sim no norte, sem ano exato ("in the 1910s": as fontes dão de 1911 a 1919, fatos 5.3); no sul, só com a leitura (§11) |
-| O piso da medida | a linha reta de ponta a ponta dá ~212 km (~132 mi), o mínimo que circula | as pontas | fatos 2.8 (coordenadas de memória) | FRÁGIL | **fora até o `pesquisa-geo` medir** (§10). Com a medida, entra: "no measurement can be shorter than this straight line" |
+| **As duas paredes** | no norte, os Molhes da Barra, "onde a Lagoa dos Patos encontra o mar"; no sul, os molhes da foz do Arroio Chuí | as pontas | fatos 2.6; o turismo do RS ("termina nos Molhes do Chuí", S3); a Rede de Trilhas ("Molhes da Barra do Chuí", S4) | FIRME (três fontes para os dois molhes); o ano do norte, FRÁGIL (1911 a 1919, fatos 5.3); o do sul, não lido | sim: "the world's longest beach starts and ends at walls people built". O norte "in the 1910s"; o sul, sem ano |
+| **A linha do IBGE** | 218,00 km (135,5 mi): o limite dos dois municípios com o mar, na Malha Municipal | a faixa | S1 | FIRME | sim: "Brazil's statistics agency maps this shore at about 135 miles". Tela: "IBGE (2024)" |
+| **A divisa e o nome** | Rio Grande, 62,05 km (38,6 mi), a parte que leva o nome Cassino; Santa Vitória do Palmar, 155,95 km (96,9 mi). A Fepam: não há critério técnico, só o limite municipal | por município | S1; fatos A.5 | FIRME | sim, no ato 2 e só lá: "the part inside the city of Rio Grande, the part that carries the Cassino name, is about 39 miles" (K6: o enquadramento é do g1 e da Fepam, e vai atribuído). Os 97 mi vão à tela |
+| **O vizinho, e o que Rio Grande diz hoje** | o secretário de Turismo de Santa Vitória: o Cassino se diz a maior "porque ela pega a extensão até a Barra do Chuí"; Rio Grande: a maior praia "começa no Cassino e termina na Barra do Chuí" | — | fatos A.5 | FIRME | sim, em paráfrase e atribuído, sem nome próprio |
+| **A trilha** | "Distância: 223 km" (138,6 mi), dos Molhes do Cassino aos da Barra do Chuí | as pontas | S4 | FIRME como distância de trilha | sim: "a national trail network puts its route at 139 miles". É o que se anda, não uma linha de costa, e fica 1,5 % acima do OSM (conta) |
+| **A linha reta** | 211,97 km (131,7 mi) entre as pontas | as pontas | S1; L12 | FIRME (conta) | **sim, no gancho:** "about 132 miles apart in a straight line" |
+| **A linha do OSM** | 219,73 km (136,5 mi), com um nó a cada ~9 m | a faixa | L11 | FIRME (conta do canal sobre dado aberto) | tela (a régua que segue cada curva); na voz, "about 136" uma vez, no ato 2 |
+| **A régua** | no OSM, de 50 km a 10 m: de 215,75 a 219,41 km (134,1 a 136,3 mi), **1,7 %**. No IBGE, de 50 km a 50 m: 1 % | a faixa | L11; S2 | FIRME (conta) | **sim, desenhado:** a régua do tamanho de uma cidade (~30 mi) e a do tamanho de um barco (~30 pés), sobre a costa real, com os números contando. "Measure it with a ruler the size of a town, then one the size of a boat" |
+| **O que o paradoxo não explica** | o g1, a en.wikipedia e o WorldAtlas explicam a diferença dos números pelo paradoxo da costa; aqui, a régua não leva a linha além de 220 km, e os 254 ficam 16 % acima | — | fatos A.4; L4; L11 | FIRME (o que as fontes escrevem, contra a nossa medida) | **sim: a virada do ato 2.** "The famous explanation is the coastline paradox. On this coast, it barely works." Sem "wrong" nem "fails" |
+| **O arco** | a praia se afasta até 18,21 km (11,3 mi) da reta, para o mar, a 123 km da barra; perto do Cassino, fica até 4,5 km para o lado de terra | a faixa | L12 | FIRME (conta) | **sim:** "It isn't ruler-straight: near the middle it bows out to sea by about 11 miles. But it barely wiggles." Tela: a reta e a praia juntas |
+| **"Barely wiggles"** | em janelas de 10 km, o traçado passa da reta, na mediana, 0,07 % (IBGE) ou 0,79 % (OSM) | trechos de 10 km | L11; L12 | FIRME (conta) | tela, ao lado do "barely wiggles" |
+| A linha que se escolhe | os "10 to 20 per cent" do WorldAtlas (dunas, preamar, baixa-mar) | — | fatos 2.4 | FRÁGIL; geometricamente implausível aqui (K1) | **fora**, na fala e no desenho |
+| **O meio da faixa** | o Albardão: o farol, as dunas e os concheiros; o Hermenegildo e a Barra do Chuí são balneários pequenos na ponta sul | a faixa | o cético (K6), de memória | **a confirmar** no OSM (os nós do farol e dos balneários) | só com a leitura (§11) |
 
-### 4.4 · A física: por que existe uma praia assim
-
-| O fato | Como se diz | Fonte | Grau | Na fala |
-|---|---|---|---|---|
-| **A costa reta** | "uma extensa costa com orientação uniforme NE-SW e uma pequena sinuosidade ao longo dos 630 km" (391 mi) | Toldo Jr. et al., UFRGS, 2003 (fatos 3.1) | FIRME | sim: "nearly 400 miles, almost straight" (no gancho e no ato 3) |
-| **Sem baías, quase sem maré** | "francamente dominada por ondas e com amplitude de marés inferior a 50 cm (regime de micromarés)", com "praias extensas, com ausência de embaiamentos" | Clerot et al., 2003 (fatos 3.5) | FIRME | sim: "the tide here rises and falls about ten inches" (a média de 0,25 m, fatos 3.4) |
-| **As ondas fazem o trabalho** | o transporte de areia é "primariamente dominado pela ação da onda"; altura média de 1,5 m (4,9 pés) | fatos 3.4 | FIRME | sim, sem o número da onda |
-| **A areia dos rios fica para trás** | "toda carga de tração transportada pelos rios é retida nas lagunas", a Lagoa dos Patos e a Mirim, que somam 13.750 km² (5.309 mi²) | fatos 3.2 | FIRME | **sim: é a virada do ato 3** (o espectador espera que a areia venha dos rios). Na fala, "more than 5,000 square miles"; a comparação com um estado americano ("nearly the size of Connecticut") só com o número do estado lido pelo verificador |
-| **De onde vem a areia** | a plataforma é larga e rasa, de 150 a 200 km (93 a 124 mi); a areia é quartzosa e "policíclica", retrabalhada | fatos 3.3 e 3.9 | FIRME | sim: "old sand, worked over and over by the waves" |
-| **Quatro barreiras** | quatro sistemas laguna-barreira, do mais velho (dentro) ao mais novo (fora); o IV, a praia de hoje, é do Holoceno | fatos 3.6 | FIRME | sim, desenhado em corte (§6) |
-| As idades | "400, 325, 123 e 6 mil anos atrás aproximadamente" | fatos 3.7 | FRÁGIL | fora; na fala, "the outermost is the youngest, just a few thousand years old" |
-| **O mar que baixou** | o pico do mar holocênico foi "há cerca de 5 ka", uns 3 m (9,8 pés) acima de hoje; depois o mar recuou, e a barreira cresceu para fora | Clerot et al. (fatos 3.8) | FIRME | sim: "about five thousand years ago, the sea stood roughly ten feet higher" |
-| A largura da barreira | de 8 a 14 km (5 a 8,7 mi), em cordões | fatos 3.9 | FIRME | tela |
-| **Nem toda é areia fina** | 60 km (37 mi) com "cascalho biodetrítico" (conchas), no Litoral Sul | Calliari e Klein, 1993, por Toldo (fatos 2.7) | FIRME (o ponto exato não está dito) | sim: um detalhe concreto (os vlogs de travessia chamam o trecho de "Conchal", L1). O lugar no mapa, só com a leitura (§11) |
-| A fonte da areia (não é delta) | deriva litorânea e plataforma | fatos 3.10 | FRÁGIL | fundo |
-| **A única saída para o mar** | a barra do Rio Grande; a Mirim e a Mangueira drenam para dentro | fatos 3.11 | FRÁGIL | **fora até a leitura** (§11). É o que segura o "unbroken" |
-| Os sangradouros | as valas que cruzam a praia levando a água das dunas | fatos 2.9; L7 (não achado) | FRÁGIL | fora até a leitura |
-
-### 4.5 · O que a praia guardou
+### 4.4 · O Albardão: o parque de 2026 e o projeto que pede a derrubada
 
 | O fato | Como se diz | Fonte | Grau | Na fala |
 |---|---|---|---|---|
-| **Os foguetes de 1966** | "12 rockets with scientific payloads will be launched from Tartagal, Argentina, and 21 from Cassino, near Rio Grande, Brazil" | NASA Release 66-285 (fatos 4.1) | FIRME | **sim, "planned"**: "NASA's own press release planned twenty-one" |
-| O lugar | "about 15 miles south of Rio Grande, near Cassino", "very near the path of totality"; "The rockets will be fired over the ocean" | fatos 4.2 | FIRME | sim; no mapa, um ponto declarado ("about 15 miles south"), sem coordenada inventada |
-| Os foguetes | "Nike-Apache, Nike-Hydac, Nike-Javelin, and Nike-Tomahawk", de dois estágios, de 25 a 30 pés (7,6 a 9,1 m) | fatos 4.3 | FIRME | tela (os quatro nomes); na fala, "two-stage rockets taller than a two-story house": *a conferir* a comparação no verificador |
-| De quem | o acordo de 18/07/1966 entre a CNAE e a NASA; "conducted by the Brazilian Space Commission in cooperation with U.S. scientists and technicians" | fatos 4.4 | FIRME | sim: "Brazil's space commission ran the launches, with American rockets and scientists" |
-| O que mediriam | a densidade e a temperatura dos elétrons, a densidade dos íons e da atmosfera e os ventos altos; a totalidade "at about 11:10 a.m. local time", "slightly less than two minutes" | fatos 4.6 | FIRME | sim, em palavras simples ("the thin, electrified layer of air high above") |
-| O Gemini 12 | os astronautas do Gemini 12 observariam o mesmo eclipse | fatos 4.7 | FIRME (o release); FRÁGIL (os nomes Lovell e Aldrin) | sim, sem os nomes até a leitura da NASA |
-| **Quantos subiram** | 14 (Seu Dinheiro); 4 Nike-Hydac (DTIC, resumo); 4 Nike-Apache (Mechtly et al., resumo) | fatos 4.8; L6 e L7 (sem contagem) | FRÁGIL | **fora**. "Rockets did fly from here" só com uma leitura primária (§11) |
-| **O Altair** | encalhado "desde junho de 1976", a cerca de 16 km (10 mi) do centro do Cassino; jogado à costa de propósito, numa tempestade, para não afundar; a FURG diz que ele pode desaparecer | g1 (fatos A.7); fatos 5.1 | FIRME pelo g1 (o mês e o ano em duas secundárias) | sim: "it has sat on this sand since 1976". O "de propósito" vai atribuído; o "pode desaparecer", com a FURG |
-| O balneário | o primeiro balneário planejado do Brasil (legenda da arte do g1); a Villa Sequeira, de 1890 | fatos A.7 e 5.4 | FIRME como o que o g1 diz; FRÁGIL quanto ao dia | O2 (opcional) |
-| A praia como estrada | ônibus e carros iam ao Chuí "pela praia" | fatos 5.2 | FRÁGIL | fora até a leitura |
-| Visível do espaço | a praia aparece numa imagem do Sentinel-3 de julho de 2023 | g1 (fatos A.7) | FIRME pelo g1 | O3 (opcional), com a imagem da ESA, se a licença couber (§6) |
+| **O decreto** | o Decreto nº 12.868, de 06/03/2026, cria o **Parque Nacional do Albardão** (~1.004.480 ha) e a **APA do Albardão** (~55.983 ha) | o Planalto, lido pelo cético (https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/decreto/d12868.htm) | FIRME | **sim:** "In March 2026, Brazil's federal government created the Albardão National Park, and a protected area beside it". **Sem hectares na voz** (o cético); a área vai à tela só com o mapa |
+| O que ele diz proteger | a APA: "as dunas, a praia, e a plataforma continental"; o parque: "preservar os sítios paleontológicos associados ao ambiente de praia" | idem | FIRME (as palavras do decreto) | sim, nas palavras do decreto: "the decree names the beach, the dunes and fossil sites tied to the beach" |
+| Onde fica | os limites citam a margem da Lagoa Mangueira e a foz do Arroio Chuí | idem | FIRME quanto ao texto; **de que ponto a que ponto da areia, a confirmar** no mapa do ICMBio | o lugar na voz ("along this coast") só com o mapa lido (§11); até lá, a fala não diz onde, e o mapa não desenha o polígono |
+| **O projeto no Senado** | o PDL 112/2026, do senador Luis Carlos Heinze (PP/RS), "susta os efeitos do Decreto nº 12.868"; "Em tramitação", com a última ação em 12/05/2026, na CMA, "AGUARDANDO DESIGNAÇÃO DO RELATOR" | S6 | FIRME | **sim:** "A senator from Rio Grande do Sul has filed a bill to cancel the decree. As of November 2026, it was still waiting in a Senate committee." **As razões dele só depois da leitura da justificação** (§11), e na voz nas palavras dele |
+| O resto | "o maior parque marinho do Brasil", o "impasse econômico", o prefeito de Santa Vitória e a Justiça, os concheiros entre os motivos | buscas do cético e da Sala | FRÁGIL (resumo de busca) | **fora** |
+
+O tom (`voz.md` §1 e §2): o decreto diz o que protege; o senador diz o que o projeto faz (e, com a leitura, por quê). A voz não diz quem tem
+razão, não usa "finally protected", "threatened" nem "under attack", e não prevê o resultado. O estado do projeto se relê antes da publicação.
+
+### 4.5 · A física: por que a costa é quase reta
+
+| O fato | Como se diz | Fonte | Grau | Na fala |
+|---|---|---|---|---|
+| **A costa** | 625 km (Dillenburg et al.) ou 630 km (Toldo et al.), NE-SW; "suavemente ondulada", com duas projeções e duas reentrâncias; "uma pequena sinuosidade" | L10; fatos 3.1 | FIRME | sim: "about 390 miles, from Torres to the border, gently curving and almost never wiggling" |
+| **Uma barreira de areia** | a costa do RS "apresenta uma das mais extensas barreiras costeiras do mundo" | L10 | FIRME | sim: "one of the longest barriers of sand in the world, the geologists at the state's federal university say" (uma vez, com dono) |
+| **As ondas apagam as saliências** | "o modelo explica como a ação das ondas pode suprimir as reentrâncias e saliências (projeções) da linha de costa" (o modelo de May e Tanner, 1973). Em resumo do artigo: pela refração, as projeções concentram a energia das ondas e se desgastam, e o material vai para as reentrâncias ao lado | L10, p. 3 | FIRME (o que o artigo diz) | **sim: a resposta do título**, desenhada (as cristas dobrando sobre a saliência, a areia indo para a reentrância: a física do ilustrador, `identidade.md` §4.4) |
+| **Ondas fortes, maré pequena** | "francamente dominada por ondas", com maré "inferior a 50 cm"; a maré média é de 0,25 m (Toldo) ou de 0,5 m (Dillenburg); as ondas, de 1,5 m, vêm de SE | fatos 3.4 e 3.5; L10 | FIRME o teto (menos de 50 cm); a média diverge | sim: "a tide of well under two feet". **Nunca "ten inches"** (as médias divergem) |
+| **Só duas aberturas** | "ao longo dos seus 625 km de extensão, a barreira holocênica apresenta apenas duas descontinuidades": em Rio Grande, o canal da Lagoa dos Patos, e em Tramandaí; "a contínua e grande descarga de água doce mantém permanentemente abertos estes dois canais" | L10, pp. 1–2 | **FIRME** (fecha a fatos 3.11 para a barreira) | **sim:** "in about 390 miles, the barrier opens in only two places, and this beach starts at one of them". Segura o "uninterrupted" na voz, com dono. Os sangradouros (fatos 2.9) seguem não lidos |
+| **Os rios deixam a areia nas lagoas** | "toda carga de tração transportada pelos rios é retida nas lagunas" (Toldo); o sistema praial "recebe muito pouca areia do continente", porque a carga de fundo dos rios fica nas lagoas (Dillenburg). A Patos e a Mirim somam 13.750 km² (5.309 mi²) | fatos 3.2; L10 | FIRME (duas fontes) | sim: a virada do ato 3, "more than 5,000 square miles of lagoon catch the rivers' sand first". **O "so nothing builds out into the sea" é inferência**: só com a frase de um geólogo, ou fica fora |
+| **A forma vem do fundo do mar** | "a costa é côncava onde a declividade da plataforma é menor e convexa onde a declividade é maior"; "esta configuração da linha de costa foi gerada no máximo transgressivo de 5 ka". A plataforma é "larga (100 a 200 km), rasa (100 a 140 m) e de baixa declividade" | L10, pp. 1–2; fatos 3.3 | FIRME | sim: o arco do ato 2 ganha a causa ("the gentle bow follows the slope of the seafloor offshore"). "Up to about 120 miles wide" |
+| **O mar que baixou** | o pico do mar holocênico há ~5 ka, a ~3 m (Clerot et al.) ou ~2 m (Dillenburg et al., por Angulo et al., 1999) acima do atual; depois, a barreira cresceu para fora | fatos 3.8; L10 | FIRME o pico em ~5 ka; a altura diverge | sim: "about five thousand years ago, the sea stood several feet higher". **Nunca "ten feet"** |
+| **A planície de cordões** | a barreira do Cassino tem 8 a 14 km, em cordões regressivos (Clerot); "uma das mais largas planícies arenosas de cordões litorâneos regressivos da costa brasileira (2 a 15 km)" (Dillenburg, no setor Estreito–Verga) | fatos 3.9; L10 | FIRME | sim: "ridge after ridge of old beaches, up to nine miles wide" |
+| **Onde o mar avança** | entre o Hermenegildo e o Chuí (10 km), "depósitos de lama lagunar e turfa afloram na zona de pós-praia": a barreira ali é retrogradante (recua para terra) | L10, p. 2 | FIRME | sim, o detalhe concreto do sul: "near the border, old lagoon mud and peat poke out of the beach: the sea has been pushing the shore inland there" |
+| Quatro barreiras | quatro sistemas laguna-barreira, do mais velho (dentro) ao mais novo (fora); o IV, a praia de hoje | fatos 3.6 | FIRME | sim, desenhado em corte. As idades (fatos 3.7), FRÁGEIS, ficam fora |
+| As conchas | 60 km com cascalho biodetrítico (Calliari e Klein, 1993, por Toldo) contra "até 15 km" (Brasil de Fato, pela busca) | fatos 2.7; K6 | FRÁGIL (divergem; o lugar não está dito) | fora até a leitura; sem número, se entrar |
+| A lama na frente do Cassino | a Lagoa dos Patos manda lama ao mar diante da praia (*Continental Shelf Research* 29(3), 2009, pelo resumo) | K10 | FRÁGIL | fora até a leitura. É o contrapeso que proíbe "the rivers send nothing to the sea" (§5) |
+
+### 4.6 · O que a areia guarda
+
+| O fato | Como se diz | Fonte | Grau | Na fala |
+|---|---|---|---|---|
+| **Os fósseis do decreto** | o parque, para "preservar os sítios paleontológicos associados ao ambiente de praia" | o decreto (§4.4) | FIRME (as palavras) | sim, abrindo o ato 4: "the decree says this sand holds fossil sites". O que são e onde, só com a leitura |
+| **O Altair** | encalhado "desde junho de 1976", a cerca de 16 km (10 mi) do centro do Cassino; jogado à costa de propósito, numa tempestade, para não afundar; a FURG diz que ele pode desaparecer | g1 (fatos A.7); fatos 5.1 | FIRME pelo g1 | sim: "it has sat on this sand since 1976"; o "on purpose", atribuído ao g1; o "may disappear", à FURG. O ponto do mapa sai do OSM (K10) |
+| **O plano de 1966** | "12 rockets with scientific payloads will be launched from Tartagal, Argentina, and 21 from Cassino, near Rio Grande, Brazil" | NASA Release 66-285, de 31/10/1966 (fatos 4.1) | FIRME | **sim, "planned"**, e o release como dono |
+| O porquê do lugar | "about 15 miles south of Rio Grande, near Cassino", "very near the path of totality"; "the rockets will be fired over the ocean" | fatos 4.2 | FIRME | **sim, e é a única causa dita** (K4): "NASA's release gives the reason: the beach sat very near the path of the total eclipse". Nada de "a long, straight, empty beach was the perfect place" |
+| De quem | o acordo de 18/07/1966 entre a CNAE e a NASA; "conducted by the Brazilian Space Commission in cooperation with U.S. scientists and technicians" | fatos 4.4 | FIRME | sim |
+| O que mediriam | a densidade e a temperatura dos elétrons e os ventos altos; a totalidade "at about 11:10 a.m. local time", "slightly less than two minutes" | fatos 4.6 | FIRME (o release, de antes; a duração é previsão astronômica) | sim: "the electrified layer of air high above"; "the total eclipse was expected to last less than two minutes" |
+| O Gemini 12 | os astronautas "will observe" o eclipse | fatos 4.7 | FIRME como o que o release previa | sim: "was scheduled to watch", **nunca "watched"** até a leitura do relatório da missão (§11) |
+| **Quantos subiram** | 14 (Seu Dinheiro); 4 Nike-Hydac (DTIC, resumo); 4 Nike-Apache (Mechtly et al., resumo) | fatos 4.8 | FRÁGIL | **fora**. Sem leitura primária, o ato termina no plano, e por isso o ato 4 tem um parágrafo da NASA, não um ato inteiro (K4) |
+| O balneário | o primeiro balneário planejado do Brasil (o g1); a Villa Sequeira, de 1890 | fatos A.7 e 5.4 | FIRME pelo g1; FRÁGIL o dia | O2 (opcional) |
+| Visto do espaço | a praia numa imagem do Sentinel-3, julho de 2023 | g1 (fatos A.7) | FIRME pelo g1 | O3 (opcional), com a licença da ESA lida |
 
 ## 5 · O que NÃO afirmar
 
-- **"Guinness denies it"**, "Guinness says it's fake", "the record is a myth", "fake news". O que se pode dizer: "Guinness told g1 it doesn't
-  monitor this title" (fatos A.1). O "fake news" é palavra do g1.
-- **"It was never in the Guinness book"**. O g1 conta, pelo livro do Willy César, que um trecho sobre a "praia mais extensa *do Brasil*"
-  saiu nas edições brasileiras de 1993 a 1995 (fatos A.2). Nem "never", nem "recognized as the world's longest in 1994".
-- **"The world's longest beach"** como fato. Só como fama, com dono: "sold as", "calls itself", "Rio Grande says".
-- **Um número sem dono**: "the beach is 158 miles", "254 km", "135 miles" soltos. Cada um vai com quem o diz, e nenhum é "the official length".
-- **"Three official lengths"** antes da leitura das origens (Três coisas, item 2). Se só dois forem oficiais, o terceiro é "a national trail
-  network" (fatos A.3).
-- **"Only 39 miles long"** sem "the stretch that's actually called Cassino". A areia continua: muda o nome.
-- **"Santa Vitória stole the title"**, "the neighbors are jealous", "a feud": cada município fala nos próprios termos, sem juízo (`voz.md` §1).
-- **"Infinite coastline"**, "the beach can't be measured", "no one knows its length". O paradoxo diz que o número depende da régua. E há
-  medidas: o IBGE mediu.
-- **"Eighty Mile Beach is longer"** sem "by some measures" e sem a ficha Ramsar lida. **"Cox's Bazar is the longest natural beach"** como
-  fato. **"Padre Island has 70 miles of beach"**: o NPS fala de ilha-barreira sem construção.
-- **"The beach has no river mouths"**, "not a single break", "unbroken for 135 miles", até a leitura dos sangradouros e da barra (fatos 2.9 e
-  3.11). "Uninterrupted" só com dono: a fama ("uninterrupted sandy") ou o ICMBio e a FURG, que falam "do Brasil".
-- **"The sand comes from the rivers"**: é o contrário (fatos 3.2). **"No tides"**: há maré, de uns 10 polegadas.
-- **"A 400,000-year-old beach"**: a praia de hoje é a barreira mais nova, do Holoceno. Os 400 mil anos são da barreira de dentro, e o número é
-  FRÁGIL (fatos 3.7).
-- **"21 rockets were launched"**, "NASA launched rockets from the beach", qualquer número de lançados (fatos 4.8). Sempre "planned", e as
-  operações eram da CNAE, com a NASA (fatos 4.4).
-- **"Jim Lovell and Buzz Aldrin watched"**, até a leitura da NASA (fatos 4.7).
-- **"The storm wrecked the Altair"**. O g1 diz que ele foi jogado à costa de propósito; o Seu Dinheiro, que encalhou num banco de areia
-  (fatos 5.1 e A.7). Na fala, "it has sat here since 1976", e o "on purpose" atribuído.
-- **"The breakwaters were finished in 1915"** (ou 1911, 1919): as fontes divergem (fatos 5.3). "In the 1910s" vale.
-- **"Visible from space"** como coisa única: só "a European satellite photographed it in 2023", com o g1 ou a ESA.
+- **"Perfectly straight"**, "a straight line" sem o "almost", "it never bends", "no curves", "the straightest coast in the world" (nenhuma
+  fonte compara). O que se pode: "less than five miles longer than a straight line", "it bows out about 11 miles near the middle", "it
+  barely wiggles".
+- **"The coastline paradox is wrong"**, "fails", "doesn't apply", "breaks the paradox". O que se pode: "on this coast, a ruler the size of a
+  town and one the size of a boat give almost the same length" (a medida do canal, declarada na tela).
+- **"The state is lying"**, "the 158 is fake", "made up", "Brazil exaggerates". O que se pode: "no ruler we tried gets this line to 158" e
+  "none of the sources we read says who measured it, or how". E "Brazil" não é um só: o IBGE (federal) diz 135; o turismo do Estado, 158.
+- **"Three official lengths"** e **"the city says 139"**: os 223 km são de uma trilha (S4); o número da Prefeitura não foi lido.
+- **"Only 39 miles long"**, na voz ou na miniatura. Os 39 mi são "the part inside the city of Rio Grande, the part that carries the Cassino
+  name", atribuído, e só no ato 2.
+- **"Guinness denies it"**, "Guinness says it's fake", "the record is a myth", "fake news" (palavra do g1). O que se pode: "Guinness told g1
+  it doesn't monitor that title" (fatos A.1).
+- **"It was never in the Guinness book"** (o g1 conta que um trecho sobre a "praia mais extensa *do Brasil*" saiu nas edições brasileiras de
+  1993 a 1995).
+- **"The world's longest beach"** como fato: só como fama, com dono ("sold as", "calls itself", "the state's website says").
+- **Um número sem dono**: "the beach is 158 miles", "135 miles" soltos. A medida do canal vai declarada na tela ("Measure: Alpha Point, on
+  IBGE (2024) and © OpenStreetMap contributors lines").
+- **"For three decades"**, "since the 1990s, newspapers…" (K10): "for years".
+- **"Virginia Beach's 28 miles"** ao lado dos 28 de Long Beach (K10), e "ONLY" na tela para o recorde do Guinness.
+- **"Santa Vitória stole the title"**, "a feud", "jealous neighbors".
+- **"Hermenegildo and Barra do Chuí are the other 97 miles"** (K6): o meio é o Albardão (a confirmar).
+- **O parque:** hectares na voz; "the largest marine park in Brazil"; "finally protected", "threatened", "under attack"; as razões do senador
+  antes da leitura; "the park will be overturned" ou "is safe" (previsão); "Santa Vitória is suing"; "the park covers the whole beach" antes do
+  mapa do ICMBio; e o estado do projeto sem a data ("is still waiting" sem "as of November 2026").
+- **"The tide rises ten inches"** e **"the sea was ten feet higher"**: as fontes divergem (0,25 ou 0,5 m; 2 ou 3 m). Vale "well under two
+  feet" e "several feet higher".
+- **"The rivers send nothing to the sea"** (K10: a lama), **"the sand comes from the rivers"** (é o contrário) e **"so nothing builds out
+  into the sea"** sem a frase de um geólogo.
+- **"Not a single stream crosses the sand"**, "unbroken for 135 miles": o que está firme é a barreira com duas aberturas em 625 km
+  (Dillenburg); os sangradouros não foram lidos.
+- **As linhas na areia** (dunas, preamar, baixa-mar) e os "10 to 20 per cent" do WorldAtlas (K1).
+- **"A 400,000-year-old beach"**: a praia de hoje é a barreira mais nova; as idades são FRÁGEIS.
+- **As conchas com número** ("37 miles of shells") e "the stretch motorcyclists fear" (K6: as fontes divergem, e título de vlog não é fonte).
+- **"21 rockets were launched"**, "NASA launched rockets from the beach", qualquer número de lançados; **"Gemini 12's astronauts watched"**;
+  e **"a long, straight, empty beach was the perfect launch site"** (K4: o release só diz "very near the path of totality").
+- **"The storm wrecked the Altair"** (o g1 diz que ele foi jogado à costa de propósito; o Seu Dinheiro, que encalhou num banco de areia). E o
+  ponto dele no mapa sai do OSM, não dos "16 km" nem dos "20 km" (K10).
+- **"The breakwaters were finished in 1915"**: "in the 1910s".
+- **"Eighty Mile Beach is longer"**, "Cox's Bazar is the longest natural beach", "Padre Island has 70 miles of beach".
+- **"Visible from space"** como coisa única.
 - **A data de hoje**: "this week", "60 years ago this month", "recently" (`voz.md` §2). O eclipse vai com a data absoluta, 12/11/1966.
-- **A população do Cassino**: não foi lida (fatos 5.5).
+- **A população do Cassino** (não foi lida).
+- **O fecho com "135 miles behind you"** (K10): sem número, ou com o dono.
 
 ## 6 · A abertura e a imagem
 
@@ -256,487 +309,422 @@ Rio Grande), "a faixa" (dos Molhes ao Chuí) e "a costa do RS" (630 km) são tr�
 - uma troca a cada 3–6 s até a vinheta, e nenhuma cena acima de ~8 s;
 - três linguagens, e o lugar em duas imagens reais.
 
-**O lugar é a faixa entre os Molhes e o Chuí**, e a primeira imagem é a areia reta, sem fim, no Cassino.
+**O lugar é a faixa entre as duas paredes**, e a primeira imagem é a areia reta, sem fim, no Cassino.
 
-**As imagens** (do Commons, pela API, L5, com a licença dita pela API; a página de cada arquivo e o veredito do `conferente-de-midia` vêm
-antes da cena):
+**As imagens** (do Commons, pela API, L5 da v1, com a licença dita pela API; a página de cada arquivo e o veredito do `conferente-de-midia`
+vêm antes da cena):
 
 | Ordem | Imagem | Licença (pela API) | Pixels | Por que |
 |---|---|---|---|---|
-| **1 (a abertura, com a caça)** | drone 4K da praia reta, no Cassino, de banco pago | só pela caça, com o "sim" do Lucas à lista. É B-roll de paisagem: banco é o caminho da marca (`midia.md` §1) | 4K | é a imagem em movimento de verdade. A caça confere se o item é mesmo o Cassino |
-| **1-B (o plano B, aberto)** | "File:Praia do Cassino - Pescadores.jpg" (Ronaldo Morgado Segundo, 13/11/2017) ou "…Peregrinos.jpg" (5.568 × 3.830), com o empurrão lento | **CC BY-SA 4.0**: crédito na tela (`Ronaldo Morgado Segundo / Wikimedia Commons · CC BY-SA 4.0`) | 6.016 × 4.000 | a areia que não acaba. O conferente confere o lugar e se a foto mostra gente identificável |
-| **2 (a segunda imagem real)** | "File:Navio Altair - Praia do Casino.jpg" (Ronaldo Morgado Segundo, 11/11/2017) | **CC BY-SA 4.0** | 6.016 × 4.000 | o navio na areia. Entra no gancho B e no ato 4 |
-| 2-B | "File:Navio encalhado 2011 (Cassino, Rio Grande, RS).jpg" (Artur Vaz, 19/01/2011) | "Public domain", pela API: **a conferir** na página (obra de particular marcada como domínio público) | 2.560 × 1.920 | o Altair de outro ângulo; com o aviso do ano se for ao lado de um fato de outra data |
-| 3 | "File:Vôo na Praia do Cassino.JPG", "…Temporal na Maior Praia do Mundo.JPG" e outras de Mauren da Silva Rodrigues (2015) | **CC BY-SA 3.0** | 5.184 × 3.888 | a praia de cima (se for de voo, o conferente diz de onde) e a praia com tempestade (ato 3, as ondas) |
-| 4 | "File:Meditação na Maior Praia do Mundo.jpg" (Janaina de Lima, 2013), "nas dunas… entre Cassino, RS e Barra do Chuy, UY" | **CC BY-SA 4.0** | 4.608 × 3.072 | o sul da faixa, longe da cidade (ato 2: a parte que não se chama Cassino) |
-| 5 | "File:Riacho na praia do cassino - panoramio.jpg" (Sandro Gonçalves) | CC BY-SA 3.0 | 1.300 × 975 | pequena: só impressa sobre a mesa. Pode ser um sangradouro, a conferir |
-| 6 | o arco de Long Beach, em Washington ("World's Longest Beach") | **a procurar** no Commons | — | o gancho americano do ato 1 |
-| 7 | fotos dos lançamentos de 1966 (NASA e INPE) | **a procurar**: as da NASA são de domínio público federal; as do INPE, a ler | — | o ato 4. Sem foto do lugar, o release de 1966 como folha recriada (documento da NASA, domínio público) |
-| 8 | a imagem do Sentinel-3 de julho de 2023 (o g1) | ESA/Copernicus: **licença a ler** | — | O3, opcional |
+| **1 (a abertura, com a caça)** | drone 4K da praia reta, no Cassino, de banco pago | só pela caça, com o "sim" do Lucas à lista (B-roll de paisagem, `midia.md` §1) | 4K | a imagem em movimento de verdade. A caça confere se o item é mesmo o Cassino |
+| **1-B (o plano B, aberto)** | "File:Praia do Cassino - Pescadores.jpg" ou "…Peregrinos.jpg" (Ronaldo Morgado Segundo, 2017), com o empurrão lento | **CC BY-SA 4.0** (crédito na tela) | 6.016 × 4.000; 5.568 × 3.830 | a areia que não acaba. O conferente confere o lugar e se há gente identificável |
+| **2 (a segunda imagem real)** | "File:Navio Altair - Praia do Casino.jpg" (Ronaldo Morgado Segundo, 11/11/2017) | **CC BY-SA 4.0** | 6.016 × 4.000 | entra no gancho (sob a frase do Guinness) e no ato 4. A legenda dela diz "a aproximadamente 20Km da cidade do Rio Grande": o rótulo de lugar segue o `lugar_na_origem` |
+| 2-B | "File:Navio encalhado 2011 (Cassino, Rio Grande, RS).jpg" (Artur Vaz, 2011) | "Public domain" pela API: **a conferir** | 2.560 × 1.920 | o Altair de outro ângulo |
+| 3 | "File:Vôo na Praia do Cassino.JPG", "…Temporal na Maior Praia do Mundo.JPG" (Mauren da Silva Rodrigues, 2015) | **CC BY-SA 3.0** | 5.184 × 3.888 | a praia de cima e as ondas de tempestade (ato 3) |
+| 4 | "File:Meditação na Maior Praia do Mundo.jpg" (Janaina de Lima, 2013) | **CC BY-SA 4.0** | 4.608 × 3.072 | as dunas do sul. **O rótulo**: a origem diz "entre Cassino, RS e Barra do Chuy, UY", e a tela não diz mais que isso (K10) |
+| 5 | o Farol do Albardão, o Hermenegildo e a Barra do Chuí | **a procurar** no Commons | — | o meio e o fim da faixa (ato 2 e fecho) |
+| 6 | o arco de Long Beach, em Washington | **a procurar** no Commons | — | o gancho americano do ato 1 |
+| 7 | as fotos e o mapa oficiais do Parque Nacional do Albardão (ICMBio) | **a ler**: a licença e o mapa | — | o ato 2 |
+| 8 | fotos dos lançamentos de 1966 (NASA, INPE) | **a procurar**: as da NASA são de domínio público federal; as do INPE, a ler | — | o ato 4. Sem foto, o release como folha recriada |
+| 9 | o Sentinel-3 de julho de 2023 | ESA/Copernicus: **a ler** | — | O3, opcional |
 
-**Onde entram o mapa e a animação desenhada** (`identidade.md` §5: "Mais mapa", "A região falada, sempre demarcada", "Mais ilustração" e
-"Sobre o mapa, mais vezes"):
+**O mapa e a animação desenhada** (`identidade.md` §5: "Mais mapa", "A região falada, sempre demarcada", "Mais ilustração" e "Sobre o mapa,
+mais vezes"):
 - **O mapa, sempre do mesmo jeito:**
   - o satélite (Landsat do USGS ou a base da MapTiler, com o ok);
-  - a faixa dos Molhes ao Chuí como um fio claro (a linha de costa do OSM, com "© OpenStreetMap contributors" na tela e a URL na descrição);
-  - a Lagoa dos Patos, a Mirim e a Mangueira escuras atrás;
-  - a divisa do Rio Grande com Santa Vitória do Palmar como um tique branco na areia (a malha municipal do IBGE de 2024, com a procedência).
-- **Gancho:**
-  - a areia em movimento (o drone, ou a foto 1-B);
-  - o mapa voa do globo ao sul do Brasil, e a faixa acende;
-  - **três réguas desenhadas** sobre a mesma faixa, cada uma com o seu número contando (158, 139, 135) e o dono embaixo (números e escala);
-  - a divisa cai sobre a areia, e o trecho do Cassino (39 mi) fica aceso, com o resto mais claro (a regra de Los Angeles);
-  - a frase do Guinness ao g1 como folha recriada, com o texto e sem logo (`midia.md` §7.1, imprensa);
-  - a costa do RS inteira acende, quase reta, com "~390 MILES" contando.
+  - a faixa entre as paredes como um fio claro (a linha do OSM, com "© OpenStreetMap contributors" na tela e a URL na descrição);
+  - as lagoas escuras atrás;
+  - a divisa Rio Grande × Santa Vitória do Palmar como um tique branco na areia (o ponto do IBGE, -52,42294; -32,62880).
+- **A linha reta** é a peça que atravessa o vídeo: um traço fino em `--tinta`, de parede a parede, que aparece no gancho, volta no ato 2 (com
+  o arco de 11 mi aceso entre ela e a praia) e no fecho.
+- **Gancho:** a areia em movimento; o mapa voa do globo ao sul do Brasil, e a faixa acende; as duas paredes ganham um tique cada, e a reta
+  se desenha entre elas, com "132 MI" contando; a praia se desenha por cima, e "+ <5 MI" aparece; a folha recriada do turismo do RS, com o
+  "254 km" e o "(Guinness Book)" em destaque; a frase do g1 sobre a foto do Altair; o "158 MI" tenta caber na faixa e sobra.
 - **Ato 1:**
-  - a cena da busca (desenho: uma caixa de busca e a resposta que repete o Guinness, com a frase do WorldAtlas e o crédito);
-  - a linha do tempo 1993 → 1995 → 2025, montada etapa por etapa ("Sequências e linhas do tempo");
-  - **o mapa-múndi com as cinco praias**, cada uma acendendo com o seu adjetivo como rótulo (animação sobre o mapa): Long Beach, Virginia
-    Beach, Padre Island, o Cassino, Cox's Bazar (e Eighty Mile, com a leitura);
-  - o arco de Long Beach (foto, se houver), e "4.8×" como duas barras sobre o mapa (a faixa do Cassino ao lado dos 28 mi).
+  - a cena da busca (desenho: a caixa de busca e a resposta do WorldAtlas, com o crédito);
+  - a linha do tempo 1993 → 1995 → 2025, montada etapa por etapa;
+  - o mapa-múndi com as praias, cada uma acesa com o seu adjetivo como rótulo (Long Beach, Virginia Beach, Padre Island, o Cassino, Cox's
+    Bazar);
+  - o arco de Long Beach (foto, se houver) e as duas barras, os 28 mi dele ao lado da faixa.
 - **Ato 2:**
-  - os três números como três barras (DADO), com os donos;
-  - **o paradoxo, sobre a costa real**: a régua de 10 mi andando pela faixa, depois a de 1 mi, depois a que segue cada curva, e o número
-    crescendo a cada passo (os números são a medida do `pesquisa-geo` na linha do OSM, declarados como medida do canal, §10);
-  - as três linhas na areia (as dunas, a preamar, a baixa-mar), em desenho declarado;
-  - as duas pontas: os Molhes (foto ou satélite) e a Barra do Chuí, com "the beach starts and ends at walls people built".
+  - as duas paredes (foto ou satélite);
+  - a divisa cai sobre a areia; o trecho do Rio Grande acende, com o resto mais claro (a regra de Los Angeles);
+  - o Albardão: o polígono do parque e da APA, do ICMBio, com a procedência (só com o mapa lido);
+  - os números com dono, como barras (DADO);
+  - **a régua, a cena central:** a régua de ~30 mi anda pela faixa, depois a de ~30 pés (num recorte ampliado), e os dois números contam
+    quase iguais. Os números são a medida do canal (L11), declarada;
+  - a reta e a praia juntas, com o arco de 11 mi aceso no meio da faixa (o rótulo "Albardão" só com a leitura do OSM).
 - **Ato 3:**
-  - **o corte desenhado** (a física do ilustrador, `identidade.md` §4.4): a plataforma, a praia, as dunas, as quatro barreiras e as lagoas;
+  - **as ondas dobrando sobre a saliência** (a física do ilustrador, `identidade.md` §4.4): as cristas se curvam sobre a ponta, a energia se
+    junta nela, e a areia corre para a reentrância. É o desenho da resposta;
   - os rios descendo para as lagoas e largando a areia ali (setas animadas sobre o mapa);
-  - as ondas empurrando a areia ao longo da costa;
-  - o mar de 5 mil anos atrás, 10 pés mais alto, recuando, e a barreira crescendo para fora (sequência);
-  - o trecho das conchas marcado no mapa, com a leitura do lugar.
-- **Ato 4:**
-  - o Altair no mapa (a ~10 mi do centro do Cassino) e a foto;
-  - **a faixa da totalidade de 12/11/1966** cruzando o sul do Brasil (a geometria da NASA, a ler, §10), com o ponto declarado "about 15
-    miles south of Rio Grande";
-  - os foguetes subindo sobre o oceano (animação sobre o mapa) e o ícone do Gemini 12 em órbita;
-  - o release como folha recriada.
-- **Fecho:** a Barra do Chuí (foto ou banco), e o mapa recua até mostrar a faixa inteira entre as duas pontas.
+  - a costa inteira do RS com as duas aberturas acesas (Rio Grande e Tramandaí);
+  - o corte: a plataforma rasa, a praia, as dunas, as quatro barreiras e as lagoas;
+  - o mar de 5 mil anos atrás, mais alto, recuando, e os cordões crescendo para fora (sequência);
+  - a lama e a turfa no sul (foto, se houver; senão, o ponto no mapa).
+- **Ato 4:** o polígono do parque com os fósseis (o texto do decreto como folha); o Altair no mapa (o ponto do OSM) e a foto; a faixa da
+  totalidade de 12/11/1966 cruzando o sul do Brasil, com o ponto declarado "about 15 miles south of Rio Grande", e os foguetes previstos como
+  traços sobre o oceano, marcados "PLANNED"; o release como folha.
+- **Fecho:** a Barra do Chuí (foto ou banco), e o mapa recua até a faixa inteira, com a reta acesa de parede a parede.
 
-## 7 · As camadas (13,5 min de fala, ~2.415 palavras, no ritmo de hoje)
+## 7 · As camadas (13,4 min de fala, ~2.400 palavras, no ritmo de hoje)
 
-A conta (`contas_cassino.py`) é a 179 palavras/min, o ritmo que o Lucas escolheu às cegas em 03/11 (o Big Sur teve 2.300 palavras em 767,6
-s). **2.415 palavras dão 13,5 min de fala**, mais os 20 s da cauda. Os quatro opcionais somam ~300 palavras: com eles, 15,2 min. O alvo
-de 13 a 14 min fica entre 2.327 e 2.506 palavras.
+A conta (`contas_v2.py`) é a 179 palavras/min. **2.398 palavras dão 13,4 min de fala**, mais os 20 s da cauda. Os três opcionais somam ~190
+palavras: com eles, 14,5 min. O alvo de 13 a 14 min fica entre 2.327 e 2.506 palavras.
 
-**Cada ato é uma cena e uma pergunta, não uma lista** (a direção de 02/11). O espaço entre os fatos vem de frases de tamanho variado, de
-uma imagem antes do número e de uma pergunta ao espectador, e não de picar as frases.
+**Cada ato é uma cena e uma pergunta, não uma lista** (a direção de 02/11). O espaço entre os fatos vem de frases de tamanho variado, de uma
+imagem antes do número e de uma pergunta ao espectador.
 
-1. **O gancho (0:00–0:47, ~135 palavras, 7 números).** O texto está no §8.
-2. **Ato 1 · O recorde que ninguém mostra (0:47–3:40, ~520 palavras, 7 números).** A pergunta: *so where did the world record come from?*
-   - **A cena:** você digita "longest beach in the world" numa busca. A resposta em inglês diz Cassino, "recognised by Guinness World
-     Records since 1994" (o WorldAtlas, 30/05/2026). Os jornais brasileiros dizem o mesmo, há três décadas.
-   - **A virada:** em 2025, o Guinness disse ao g1 que não monitora o título.
-   - **De onde veio**, pelo livro de um jornalista local, citado pelo g1: um trecho sobre a praia mais extensa *do Brasil*, nas edições
-     brasileiras de 1993 a 1995, tirado depois que o vizinho do sul contestou. (Quem contestou é o dono da maior parte da areia: o ato 2
-     paga isso.)
-   - **O único recorde de praia que o site do Guinness mostra** é outro: Virginia Beach, a maior praia *de lazer*, com 28 milhas de
-     Atlântico.
-   - **As rivais, em cena:**
-     - a placa de Long Beach, em Washington: "World's Longest Beach", para 28 mi, e a cidade que mudou o texto oficial mas não a placa;
-       o Cassino é quase cinco vezes mais longo;
-     - Padre Island, a mais longa ilha-barreira sem construção (o NPS);
-     - Cox's Bazar, vendida como a mais longa praia natural sem interrupção.
-   - **A frase-mãe:** cada uma ganha com o seu adjetivo, e o mapa-múndi acende os cinco.
-   - *(O1, opcional, +70, +1 número: a Ninety Mile Beach da Nova Zelândia tem 55 mi. "Names stretch the truth too.")*
-3. **Ato 2 · A régua (3:40–7:00, ~600 palavras, 8 números).** A pergunta: *so how long is it, really?*
-   - **Os três donos:** o Governo do RS diz 158 mi; a Prefeitura, cerca de 139; o IBGE, 135 (com a leitura da Sala).
-   - **A divisa na areia:** a praia é uma só e troca de nome no limite do município.
-     - O Cassino tem 39 mi; o Hermenegildo e a Barra do Chuí, de Santa Vitória do Palmar, os outros 97.
-     - A Fepam diz que não há critério técnico, só o limite municipal.
-     - O secretário de Turismo do vizinho diz que o Cassino só é o maior porque conta a areia dele.
-   - **O que Rio Grande diz hoje:** a maior praia do mundo "começa no Cassino e termina na Barra do Chuí". O jeito cuidadoso, do ICMBio e
-     da FURG: a maior extensão de areia sem interrupção *do Brasil*.
-   - **A régua** (a cena central do vídeo): a régua de 10 mi, a de 1 mi e a que segue cada curva, sobre a costa real, com os números do
-     `pesquisa-geo`. O próprio g1 explica a diferença assim. E a linha que se escolhe (as dunas, a preamar, a baixa-mar), em desenho.
-   - **O critério de quem põe o Cassino em 1º:** o WorldAtlas usa o maior número publicado de cada praia.
-   - **As pontas:** os Molhes, onde a Lagoa dos Patos encontra o mar, construídos nos anos 1910; e, no sul, a foz do Chuí (com a leitura).
-     "The world's longest beach starts at a wall people built." *(Com a medida do `pesquisa-geo`: o piso, a linha reta de ponta a ponta.)*
-   - *(O2, opcional, +80, +1 número: o primeiro balneário planejado do Brasil, a Villa Sequeira, de 1890, onde o nome "Cassino" nasceu.)*
-4. **Ato 3 · A física (7:00–10:28, ~620 palavras, 8 números).** A pergunta: *so why does a beach this long exist at all?*
-   - **A cena:** você está nos Molhes, olhando para o sul. A costa corre quase reta por uns 390 mi, de Torres ao Chuí: sem baía, sem cabo,
-     e com uma maré que sobe uns 10 polegadas.
-   - **A virada:** os rios não trazem a areia. Eles a deixam nas lagoas de trás, a dos Patos e a Mirim, que somam mais de 5 mil mi²
-     (UFRGS, uma vez na voz).
-   - **De onde vem, então:** de uma plataforma larga e rasa, de 90 a 120 mi. É areia velha, trabalhada e retrabalhada pelas ondas.
-   - **Como a praia cresceu:**
-     - há uns 5 mil anos, o mar estava uns 10 pés mais alto;
-     - quando ele baixou, a areia ficou, e a barreira cresceu para fora, com 5 a 9 mi de largura;
-     - a praia de hoje é a mais nova de quatro barreiras, uma atrás da outra, e as de trás são muito mais velhas.
-   - **O detalhe concreto:** nem toda é areia fina. Há uns 37 mi de conchas, o trecho que os motociclistas temem.
-   - **(Com a leitura de 3.11 e dos sangradouros):** a única saída para o mar é a barra do Rio Grande, e por isso nada corta a faixa.
-   - *(O3, opcional, +70: a imagem do Sentinel-3, a praia vista do espaço, se a licença couber.)*
-5. **Ato 4 · O que a praia guardou (10:28–12:49, ~420 palavras, 6 números).** A pergunta: *and what do you do with this much empty sand?*
-   - **O Altair:** encalhado desde junho de 1976, a uns 10 mi do centro do Cassino, jogado à costa de propósito numa tempestade (o g1).
-     A FURG diz que ele pode sumir.
-   - **12/11/1966:**
-     - a sombra do eclipse cruza o sul do Brasil;
-     - a NASA e a comissão espacial brasileira planejam 21 foguetes de uma praia a uns 15 mi ao sul do Rio Grande, disparados sobre o
-       oceano para medir a camada elétrica do ar lá em cima;
-     - a totalidade dura menos de dois minutos;
-     - os astronautas do Gemini 12 olham o mesmo eclipse de órbita.
-   - **O laço:** uma praia longa, reta e vazia de frente para o mar aberto era o lugar certo para isso.
-   - *(O4, opcional, +80: a praia como estrada até o Chuí, se a leitura confirmar.)*
-6. **O fecho (12:49–13:29, ~120 palavras, 1 número)** (`voz.md`, "Como ele fecha": não repete a pergunta e não responde em lista).
-   **Uma cena:** a Barra do Chuí, a outra ponta. O arroio, o último molhe, o Uruguai do outro lado. Uns 135 mi para trás fica a parede de
-   pedra onde tudo começou. Entre as duas, a areia não para. O que muda é o nome, e a régua de quem mede.
+1. **O gancho (0:00–0:39, ~118 palavras na voz, 4 números).** O texto está no §8.
+2. **Ato 1 · A palavra de cada praia (0:39–3:07, ~440 palavras, 6 números).** A pergunta: *so who decided this is the longest?*
+   - **A cena:** você digita "longest beach in the world" numa busca. A resposta em inglês diz Cassino, "recognised by Guinness World Records
+     since 1994" (o WorldAtlas). Os jornais brasileiros repetem o mesmo, há anos.
+   - **A virada:** o Guinness disse ao g1 que não monitora o título. De onde veio a fama, pelo livro de um jornalista local, citado pelo g1:
+     um trecho sobre a praia mais extensa *do Brasil*, nas edições brasileiras de 1993 a 1995, tirado depois que o vizinho do sul contestou.
+     Quem contestou é o dono da maior parte da areia (o ato 2 paga isso).
+   - **O 158:** duas páginas do próprio Estado imprimem o número e põem o Guinness ao lado. Nenhuma diz quem mediu. E o site que põe o
+     Cassino em 1º no mundo escolhe, para cada praia, o maior número publicado.
+   - **O único recorde de praia que achamos no site do Guinness** é outro: Virginia Beach, a maior praia *de lazer*.
+   - **As rivais, em cena:** a placa de Long Beach, em Washington ("World's Longest Beach", para 28 mi, e a cidade que mudou o texto mas não
+     a placa: o Cassino é quase cinco vezes mais longo); Padre Island, a mais longa ilha-barreira sem construção (o NPS); Cox's Bazar,
+     vendida como a mais longa praia natural sem interrupção.
+   - **A frase-mãe:** cada uma ganha com a sua palavra, e o mapa-múndi acende as cinco. "And every one of those words rests on a length. So
+     let's measure this one."
+   - *(O1, opcional, +60, +1 número: a Ninety Mile Beach da Nova Zelândia tem 55 mi. "Names stretch the truth too.")*
+3. **Ato 2 · Duas paredes e uma régua (3:07–6:48, ~660 palavras, 9 números).** A pergunta: *so how long is it, really?*
+   - **A cena:** você está no molhe, a parede de pedra dos anos 1910 onde a Lagoa dos Patos encontra o mar. A praia começa aqui, numa obra
+     humana, e acaba em outra, nos molhes da foz do Arroio Chuí, na fronteira com o Uruguai.
+   - **A divisa:** a areia é uma só e troca de nome no limite do município. A parte dentro do Rio Grande, a que leva o nome Cassino, tem
+     uns 39 mi (a medida do IBGE, S1; o enquadramento do nome é do g1 e da Fepam: o limite municipal é o único critério). O resto é de
+     Santa Vitória do Palmar, e o secretário de Turismo de lá diz que o Cassino só é o maior porque conta a areia deles. Rio Grande, hoje,
+     diz que a maior praia "começa no Cassino e termina na Barra do Chuí".
+   - **O Albardão:** o meio da faixa (com a leitura do OSM), e o que mudou nele em 2026: o parque nacional e a área protegida do decreto de
+     março, e o projeto de um senador do RS para derrubá-lo, à espera de relator numa comissão do Senado em novembro de 2026. Cada um nos
+     próprios termos (§4.4). (~110 palavras)
+   - **Os números com dono:** o IBGE desenha esta costa em uns 135 mi; a trilha nacional anda 139; o turismo do Estado diz 158.
+   - **A régua:** a explicação famosa (a do g1 e da enciclopédia) é o paradoxo da costa. "Let's test it." A régua do tamanho de uma cidade dá
+     uns 134 mi; a do tamanho de um barco, uns 136. Menos de 2 % de diferença, e nem perto de 158.
+   - **A reta:** de parede a parede, uns 132 mi. Não é reta de régua: perto do meio, ela se afasta uns 11 mi para o mar. Mas quase não
+     tem dente. Os 20 e poucos mi a mais não estão na areia, e nenhuma fonte que lemos diz quem os mediu.
+   - **A volta:** "So the strange thing about this beach isn't the number. It's the coast. Why is it this straight?"
+4. **Ato 3 · Por que o mar desenha reto (6:48–10:29, ~660 palavras, 8 números).** A pergunta: *so what keeps a coast this long this
+   straight?*
+   - **A cena:** do satélite, a costa inteira do RS, uns 390 mi de Torres ao Chuí: uma das barreiras de areia mais longas do mundo (os
+     geólogos da UFRGS, uma vez na voz).
+   - **As ondas:** grandes, de sudeste, numa costa de maré pequena (bem menos de dois pés). Quando uma parte da costa avança, as ondas se
+     dobram sobre ela, juntam a força ali e a desgastam; a areia vai para as partes recuadas. As ondas lixam as saliências (o desenho, §6).
+   - **A virada:** os rios não trazem a areia. Eles a deixam nas lagoas de trás, a dos Patos e a Mirim, que somam mais de 5 mil mi².
+   - **Só duas aberturas** em uns 390 mi: a barra do Rio Grande, onde a praia começa, e Tramandaí, mantidas abertas pela água doce. Entre as
+     paredes, a barreira não se abre nenhuma vez. (É o que segura o "uninterrupted" da fama, agora com dono.)
+   - **De onde vem a areia:** de uma plataforma larga e rasa, de até uns 120 mi; areia velha, trabalhada e retrabalhada.
+   - **Como a praia cresceu:** há uns 5 mil anos, o mar estava alguns pés mais alto; quando ele baixou, a areia ficou em cordões, uma
+     praia velha atrás da outra, até 9 mi de largura perto do Cassino. A praia de hoje é a mais nova de quatro barreiras.
+   - **E o arco:** a forma de hoje é a daquele mar alto, e segue o fundo: a costa recua onde a plataforma é mais suave e avança onde ela é mais
+     inclinada. No sul, perto da fronteira, lama de lagoa e turfa aparecem na praia: ali o mar empurra a costa para dentro.
+   - **O fecho do ato** (paga a segunda pergunta do gancho): "There are no wiggles for the extra miles to hide in. The waves keep ironing
+     them out."
+5. **Ato 4 · O que a areia guarda (10:29–12:44, ~400 palavras, 6 números).** A pergunta: *and what does a line of sand this long and this
+   empty keep?*
+   - **Os fósseis:** o decreto de 2026 diz que protege sítios de fósseis ligados à praia (o que são e onde, só com a leitura).
+   - **O Altair:** desde junho de 1976 nesta areia, a uns 10 mi do centro do Cassino, jogado à costa de propósito numa tempestade (o g1). A
+     FURG diz que ele pode sumir.
+   - **12/11/1966, em um parágrafo:** o release da NASA planeja 21 foguetes de uma praia a uns 15 mi ao sul do Rio Grande, disparados sobre o
+     oceano para medir a camada elétrica do ar lá em cima; a comissão espacial brasileira opera os lançamentos, com cientistas americanos; a
+     totalidade deve durar menos de dois minutos, e os astronautas do Gemini 12 estão escalados para observá-la. O porquê do lugar é o do
+     release: a praia ficava muito perto da faixa do eclipse total. Quantos subiram, o release não diz.
+   - *(O2, opcional, +70, +1 número: o primeiro balneário planejado do Brasil, a Villa Sequeira, de 1890, onde o nome "Cassino" nasceu.)*
+   - *(O3, opcional, +60: a imagem do Sentinel-3, a praia vista do espaço, se a licença couber.)*
+6. **O fecho (12:44–13:24, ~120 palavras, sem número)** (`voz.md`, "Como ele fecha": não repete a pergunta e não responde em lista). **Uma
+   cena:** a Barra do Chuí, a outra parede. O arroio, o último molhe, o Uruguai do outro lado. Atrás de você, a areia corre para o nordeste,
+   quase reta, passando pela lama, pelo farol (com a leitura do OSM), pelo navio, até a primeira parede, onde a lagoa encontra o mar. Entre
+   as duas, as ondas continuam lixando o que sobra.
 
-**Os números, ato por ato** (`contas_cassino.py`; conta cada número dito, inclusive ano):
+**Os números, ato por ato** (`contas_v2.py`; conta cada número dito, inclusive ano):
 
 | Ato | Palavras | Números | Um a cada | Minutos |
 |---|---:|---:|---:|---|
-| gancho | 135 | 7 | 19 | 0:00–0:47 |
-| 1 · o recorde | 520 | 7 | 74 | 0:47–3:40 |
-| 2 · a régua | 600 | 8 | 75 | 3:40–7:01 |
-| 3 · a física | 620 | 8 | 78 | 7:01–10:28 |
-| 4 · o que a praia guardou | 420 | 6 | 70 | 10:28–12:49 |
-| fecho | 120 | 1 | 120 | 12:49–13:29 |
-| **miolo** | **2.415** | **37** | **65** | **13,5 min** (+20 s) |
-| com os 4 opcionais | 2.715 | 40 | 68 | 15,2 min |
+| gancho (A) | 118 | 4 | 30 | 0:00–0:39 |
+| 1 · a palavra de cada praia | 440 | 6 | 73 | 0:39–3:07 |
+| 2 · duas paredes e uma régua | 660 | 9 | 73 | 3:07–6:48 |
+| 3 · por que o mar desenha reto | 660 | 8 | 82 | 6:48–10:29 |
+| 4 · o que a areia guarda | 400 | 6 | 67 | 10:29–12:44 |
+| fecho | 120 | 0 | — | 12:44–13:24 |
+| **miolo** | **2.398** | **33** | **73** | **13,4 min** (+20 s) |
+| com os 3 opcionais | 2.588 | 35 | 74 | 14,5 min |
 
 **O que fica fora da fala** (tela, fundo ou fora):
-- os 62,05 e os 155,95 km exatos (tela);
-- os 212 km, até a medida;
-- os 10 a 20 % do WorldAtlas;
-- as idades das barreiras;
-- a altura da onda;
+- os 218,00, 219,73, 62,05 e 155,95 km exatos, e os 97 mi (tela);
+- os 211,97 km da reta e os 18,21 km do arco exatos (tela);
+- as janelas de 10 km (tela);
+- os 10 a 20 % do WorldAtlas (fora);
+- as idades das barreiras, a altura da onda e as médias da maré (fundo);
 - os 13.750 km² exatos (tela);
+- os hectares do parque (tela, com o mapa);
 - os quatro nomes dos foguetes (tela);
-- a contagem dos lançados;
-- os nomes dos astronautas;
-- o ano exato dos Molhes;
-- os 120 km de Cox's Bazar;
-- os 220 ou 230 km da Eighty Mile Beach, até a ficha.
+- a contagem dos lançados e os nomes dos astronautas (fora);
+- o ano exato dos Molhes (fora);
+- os números de Cox's Bazar, de Padre Island e da Eighty Mile Beach (fora).
 
 ## 8 · O gancho e a miniatura
 
 **A regra da primeira frase** (`marca/voz.md`, "Os números da fala"; `identidade.md` §5): o fato mais surpreendente sobre o lugar que a
-imagem de abertura mostra, concreto, com o nome do lugar e um número ou uma imagem. **A crítica do Lucas ao Mar Negro** pede o normal
-antes da surpresa. O normal aqui é a fama ("the longest beach in the world"); a surpresa são os três tamanhos.
+imagem de abertura mostra, concreto, com o nome do lugar e um número ou uma imagem. **A crítica do Lucas ao Mar Negro** pede o normal antes
+da surpresa. O normal aqui é a fama ("sold as the world's longest beach"); a surpresa é a reta.
 
-**O gancho A (recomendado; paga os títulos 1 e 2).** A imagem de abertura é a areia reta do Cassino (§6).
+**O gancho A (recomendado; paga os títulos 1, 2 e 4).** A imagem de abertura é a areia reta do Cassino (§6).
 
-> This is Praia do Cassino, in southern Brazil, sold as the longest beach in the world. *[a fama: Rio Grande, fatos A.5; o WorldAtlas,
-> fatos 1.7]* Ask how long it is, and you get three official answers. *[fatos A.3]* So which one is right? The state says 158 miles. The
-> city, about 139. Brazil's national statistics agency, 135. *[fatos A.3: 254, ~223 e 218 km; os donos, a ler na origem]* In a way, all
-> three are. *[fatos A.4: o paradoxo da costa]* And the stretch that's actually called Cassino is only about 39 miles long. *[fatos A.3:
-> 62,05 km no Rio Grande]* And the world record everyone repeats? In 2025, Guinness World Records told a Brazilian news site it doesn't
-> monitor this title. *[fatos A.1]* The answer runs through a town line drawn across the sand, a ruler that changes the answer, and a coast
-> that runs almost straight for nearly 400 miles. *[fatos A.5; A.4; 3.1]* You're at Alpha Point, and this is where the story of a beach
-> longer than its own name begins.
+> This is Praia do Cassino, in Brazil, sold as the world's longest beach. *[a fama: Rio Grande, fatos A.5; o WorldAtlas, fatos 1.7]* Stone
+> walls mark its two ends, about 132 miles apart in a straight line. *[as paredes: fatos 2.6, S3, S4; a reta: S1]* The beach itself is less
+> than five miles longer. *[S1 e L11: 3,7 e 4,8 mi]* How does a coast end up that straight? That should also make it easy to measure. Yet
+> the state's own tourism website says 158 miles, right next to the words "Guinness Book." *[S3]* And in 2025, Guinness World Records told
+> a Brazilian news site it doesn't monitor that title. *[fatos A.1]* So why won't the famous number fit on this sand? You're at Alpha Point,
+> and this is where the story of the beach between two walls begins.
 
-- **As contas** (`contas_cassino.py`, na cópia para a voz, com os números por extenso):
-  - **a pergunta ("So which one is right?") fecha na palavra 32: 10,7 s a 179 palavras/min**; os três números terminam aos ~17 s, e o
-    "only about 39 miles", aos ~23 s;
-  - o gancho tem 139 palavras na voz: **46,6 s a 179** (o do Big Sur tinha ~37 s, e os do Geoff, de 32 a 41). O roteiro pode cortar
-    "And the world record everyone repeats?" e juntar as duas frases do Guinness (−6 palavras, −2 s);
-  - a frase média tem 11,1 palavras.
+- **As contas** (`contas_v2.py`, na cópia para a voz, com os números por extenso):
+  - o título se paga na frase 3, aos 12,7 s; **a pergunta do título fecha aos 15,4 s**; a segunda pergunta, aos 33,2 s;
+  - o gancho tem 116 palavras na voz: **38,9 s a 179** (o da v1, 47 s; os do Geoff, de 32 a 41);
+  - 4 números (132, five, 158, 2025) em 9 frases, com média de 12,3 palavras por frase.
 - **O molde de cinco tempos** (`embalagem.md` §1):
-  1. a escala, com a fama (a maior do mundo);
-  2. o "But", em forma de pergunta: três respostas oficiais;
-  3. o contraste: só 39 mi se chamam Cassino, e o Guinness não monitora;
-  4. a segunda virada: a resposta tem três partes, a divisa, a régua e a costa, e o "como" de cada uma é dos atos;
-  5. a assinatura. O `<tema>`, "a beach longer than its own name", não repete o título.
-- **O título 1 se paga** nas frases 1 a 3; o 2, também, com a frase 2 trocada por "the official answers don't match".
+  1. a escala, com a fama e a reta;
+  2. o "But", em forma de pergunta: como uma costa fica tão reta;
+  3. o contraste: devia ser fácil de medir, e o Estado diz 158, com o Guinness ao lado, que o Guinness não monitora;
+  4. a segunda virada: por que o número não cabe. As duas perguntas ficam abertas: nenhuma se responde no gancho, e não há anúncio das
+     respostas (K8);
+  5. a assinatura. O `<tema>`, "the beach between two walls", não repete o título.
 - **A imagem, beat a beat** (a 179):
   - 0–3 s: a areia reta, em movimento (o drone, ou o empurrão sobre a foto 1-B);
   - 3–7 s: o mapa voa até o sul do Brasil, e a faixa acende;
-  - 7–11 s: as três réguas aparecem sobre a faixa, com "?";
-  - 11–16 s: os números contam, um por régua, com o dono embaixo;
-  - 16–20 s: a régua que segue cada curva (o "all three are");
-  - 20–24 s: a divisa cai sobre a areia, e o trecho do Cassino fica aceso, com "39 MILES";
-  - 24–31 s: a frase do Guinness ao g1, como folha recriada, sobre a foto do Altair ou da areia (a segunda imagem real);
-  - 31–38 s: a costa do RS inteira, com "~390 MILES" contando, e a linha da divisa piscando;
-  - 38–46 s: a assinatura e a vinheta.
+  - 7–10 s: os tiques nas duas paredes, e a reta se desenha entre eles, com "132 MI" contando;
+  - 10–15 s: a praia se desenha sobre a reta, com "+ <5 MI", e a pergunta;
+  - 15–19 s: uma régua pousa na faixa ("easy to measure");
+  - 19–24 s: a folha recriada do turismo do RS, com "254 km" e "(Guinness Book)" marcados;
+  - 24–30 s: a frase do g1 sobre a foto do Altair (a segunda imagem real);
+  - 30–33 s: a barra de "158 MI" tenta caber na faixa e sobra;
+  - 33–39 s: a assinatura e a vinheta.
 
   São três linguagens (imagem real, mapa e desenho), duas imagens reais do lugar, e nenhuma cena passa de ~8 s.
 - **Os créditos de tela** (a 60 px, `identidade.md` §4.1):
-  - "Sources: Rio Grande do Sul state government; City of Rio Grande; IBGE (2024), via g1 (2025)", sobre os números, ou cada órgão pela
-    origem, depois da leitura da Sala;
+  - "Measure: Alpha Point, on IBGE (2024) and © OpenStreetMap contributors lines", sobre a reta e a praia;
+  - "Source: Rio Grande do Sul state tourism website", sobre o 158;
   - "Source: g1 (July 20, 2025)", sobre o Guinness;
-  - "© OpenStreetMap contributors", sobre a faixa;
   - "Landsat imagery courtesy of the U.S. Geological Survey", ou o crédito da MapTiler;
   - o crédito do Commons sobre cada foto.
 
-**O gancho B (a alternativa: o Guinness primeiro; paga o título 5).**
+**O gancho B (a alternativa: o paradoxo primeiro; paga os títulos 1, 2, 3 e 5).**
 
-> This is Praia do Cassino, in southern Brazil. Since the 1990s, newspapers here have called it the Guinness record holder for the longest
-> beach on Earth. *[fatos 1.1]* In 2025, Guinness World Records told a Brazilian news site it doesn't monitor that title. *[fatos A.1]* So
-> why can't anyone agree on the world's longest beach? It isn't for lack of rivals. A town in Washington State has a sign that says World's
-> Longest Beach, over 28 miles of sand. *[tabela 2.2]* Texas, Australia and Bangladesh have their own versions, and each one wins with a
-> different word. And this beach can't even agree with itself: the state says 158 miles, the national statistics agency 135. *[fatos A.3]*
-> The answer runs through a town line drawn across the sand, a ruler that changes the answer, and a coast that runs almost straight for
-> nearly 400 miles. You're at Alpha Point, and this is where the story of a beach longer than its own name begins.
+> Praia do Cassino, in southern Brazil, is sold as the world's longest beach, and it barely bends. Why would a coast this long stay this
+> straight? Coastlines usually do the opposite: the closer you measure them, the longer they get. *[o paradoxo: fatos A.4, L4]* Measure this
+> one with a ruler the size of a town, then one the size of a boat, and it hardly changes: about 135 miles. *[L11: 134,1 e 136,3 mi]* That
+> makes one number hard to place. The state's own tourism website says 158, right next to the words "Guinness Book." *[S3]* So where would
+> the sea hide the other 23 miles? You're at Alpha Point, and this is where the story of the beach between two walls begins.
 
-- A pergunta fecha na palavra 53: **17,8 s a 179**, depois dos 15 s da regra. O gancho tem 162 palavras na voz, **54 s**: longo.
-- **O ponto forte:** o gancho americano (a placa de Washington) entra antes dos 25 s.
-- **O ponto fraco:** abre pelo Guinness, que é a parte mais frágil do que se pode afirmar. O "each one wins with a different word" pede a
-  Austrália com a ficha Ramsar (§11). E o espectador ouve "recorde" antes de ouvir "praia", o que lê como vídeo de curiosidade.
+- A pergunta do título fecha aos **8,7 s**; a segunda, aos 33,5 s. O gancho tem 117 palavras na voz, **39,2 s**, com 3 números.
+- **O ponto forte:** o paradoxo da costa, que está em alta nos Shorts, entra antes dos 15 s, e a fala é quase sem número.
+- **O ponto fraco:** o "barely bends" da frase 1 é mais fraco que o "132 miles… less than five miles longer" do A, e a primeira frase não tem
+  número. O "ruler the size of a town" pede o desenho na tela para não ficar abstrato. E o Guinness ao g1 sai do gancho (vai ao ato 1).
 
 **A miniatura** (`embalagem.md` §1.1 e §3):
 - o mapa é o protagonista, com o território em `--destaque` e o contorno claro;
 - 2 a 4 palavras numa caixa escura, com uma palavra colorida, e setas curvas brancas;
-- ela não repete o título e aponta a virada sem dar a resposta;
-- nada que lembre a marca do Guinness: nem logo, nem capa de livro, nem o verde e o preto dele.
+- ela não repete o título, aponta a virada sem dar a resposta, e não faz jogo de nome (K9);
+- nada que lembre a marca do Guinness (nem logo, nem capa, nem o verde e o preto dele), e nada do logo do governo do RS.
 
-As três foram pensadas para quem nunca ouviu falar do canal: um paradoxo que se entende em 2 segundos.
-
-1. **"ONLY 39 MILES?" (recomendada, com o título 1 ou o 2)**
-   - **Mostra:**
-     - o satélite da faixa inteira na diagonal do quadro, dos Molhes ao Chuí, com a Lagoa Mirim e a Mangueira escuras atrás;
-     - a faixa em duas tintas: o trecho do Rio Grande, que se chama Cassino, em `--destaque` cheio com contorno claro, e o de Santa Vitória
-       do Palmar em `--destaque` a ~40 % (a regra de Los Angeles);
-     - um tique branco na divisa, e uma seta curva branca saindo do texto para o trecho curto.
-   - **Texto:** "ONLY 39 MILES?", com "39" em `--destaque`.
-   - **A voz paga** aos ~23 s (gancho A, frase 8). Com o título embaixo ("Three Official Lengths"), lê-se "e ainda um quarto número".
-   - **No 168 × 94:** a faixa é longa e fina e precisa de um halo de uns 10 px de cada lado. O quadro aperta na faixa, não no estado.
-   - **O risco:** o número sai do IBGE pelo g1 (a Sala lê a origem). E o "?" é obrigatório: a areia tem 135 mi.
-2. **"WHO MEASURED?"**
-   - **Mostra:**
-     - o anel da marca no Cassino, ligado por cone a uma lupa;
-     - dentro da lupa, a mesma costa de perto, com uma régua fina que segue cada curva;
-     - fora dela, uma régua grossa e reta sobre a faixa inteira.
-   - **Texto:** "WHO MEASURED?", com "MEASURED" em `--destaque`.
-   - **A voz paga** aos ~11–16 s (os três donos) e no ato 2 (a régua).
-   - **O risco:**
-     - as réguas são desenho declarado, e as duas têm de cair sobre a costa real (a do OSM), com as mesmas pontas;
-     - os três números medem o mesmo trecho: nenhuma régua pode acabar num ponto diferente da outra;
-     - "WHO MEASURED?" sem objeto pode sair vago, como o "ON PURPOSE" de Los Angeles. A lupa é o que dá o objeto.
-3. **"WHICH IS LONGEST?"** (vai com o título 5 e o gancho B)
-   - **Mostra:**
-     - o mapa-múndi em relevo, com as cinco praias que se dizem a maior acesas em `--destaque` (o anel em cada uma: Washington, Texas, o
-       Cassino, a Austrália Ocidental e Bangladesh);
-     - setas curvas brancas convergindo para o Cassino.
-   - **Texto:** "WHICH IS LONGEST?", com "LONGEST" em `--destaque`.
-   - **A voz paga** aos ~25 s (gancho B) e no ato 1.
-   - **O risco:**
-     - repete "longest" do título 5;
-     - cinco pontos num mapa-múndi somem no 168 × 94: o quadro pode cortar o Atlântico com as Américas e deixar as outras duas num
-       recorte;
-     - a Austrália só entra com a ficha Ramsar.
+1. **"158 MILES?" (recomendada, com o título 1)**
+   - **Mostra** (a receita com lupa, `embalagem.md` §3.1):
+     - o satélite da faixa inteira na diagonal do quadro, de parede a parede, com as lagoas escuras atrás e a praia em `--destaque`
+       com contorno claro;
+     - o anel no meio da faixa, ligado por cone a uma lupa;
+     - dentro da lupa, um trecho da praia de perto, liso, com uma régua fina pousada nele.
+   - **Texto:** "158 MILES?", com "158" em `--destaque`.
+   - **A voz paga** aos ~24 s (gancho A, frase 6) e no ato 2 (a régua).
+   - **A leitura** (a lição do K9): "o que é o 158?" tem uma resposta certa, o comprimento que se anuncia para a praia inteira, e é isso que
+     o vídeo testa. O título embaixo ("Almost a Straight Line") e o número não brigam: o título não tem número.
+   - **O risco:** o tom de desmentido. O "?" é obrigatório, e a miniatura não diz "FAKE", "WRONG" nem "NOT". No 168 × 94, a faixa é longa e
+     fina e precisa de um halo de uns 10 px de cada lado.
+2. **"WHO DREW THIS?"**
+   - **Mostra:** o mesmo satélite, a praia em `--destaque`, e um traço fino em `--tinta` ao lado dela, de parede a parede (a reta), com os
+     dois tiques das paredes. Uma seta curva branca sai do texto para a faixa.
+   - **Texto:** "WHO DREW THIS?", com "DREW" em `--destaque`.
+   - **A voz paga** no gancho (as paredes, que são obra humana; a reta) e no ato 3 (quem desenha é o mar).
+   - **O risco:** pode ler como linha feita por gente (uma estrada, uma fronteira) ou como montagem. E o arco de 11 mi aparece entre a reta e
+     a praia: a miniatura tem de mostrar a praia como ela é, e o leitor a frio diz se ainda lê "reta".
+3. **"SAME LENGTH?"** (vai com o gancho B e os títulos 3 e 5)
+   - **Mostra:** a faixa, e duas réguas sobre ela: uma grossa, de poucos traços, por fora, e uma fina, cheia de traços, colada na areia.
+   - **Texto:** "SAME LENGTH?", com "SAME" em `--destaque`.
+   - **A voz paga** aos ~22 s (gancho B) e no ato 2.
+   - **O risco:** é a mais abstrata das três (pede conhecer o paradoxo), e as duas réguas somem no 168 × 94 se forem finas.
 
 As três passam pela conferência do `embalagem.md` §3.1 (1280 × 720, 320 × 180 e 168 × 94; a banca de quatro lentes) e pelo teste dos
-leitores com o título embaixo.
+leitores com o título embaixo, com a pergunta do K9: "o que é o número?".
 
-## 9 · A concorrência
+## 9 · A concorrência e a procura
 
-**No vidIQ, em 07/11/2026** (6 buscas de 5 créditos, vídeos publicados desde 07/11/2025, por relevância e uma por views; e os metadados de 8
-vídeos). Os números são de hoje, e o "outlier" é a medida do vidIQ (views contra a média do canal):
+**No vidIQ, em 07/11/2026** (L9: 3 buscas de 5 créditos, vídeos publicados desde 07/11/2025, por relevância; somam-se às 7 da v1 e do
+cético, cujas tabelas estão no commit `0e8c8b3`, §9). Os números são de hoje; o "outlier" é a medida do vidIQ (views contra a média do canal):
 
 | Título | Canal (inscritos) | Data, duração | Views | Outlier | O que é |
 |---|---|---|---:|---:|---|
-| I Went To The Longest Beach In The World! 🇧🇩 | Jordan Southern (808) | 01/11/2026, 16:41 | **11.139** | **65,1** | vlog de Cox's Bazar: **a procura pelo tema, provada em canal pequeno, nesta semana** |
-| The Longest Undeveloped Beach Drive in the World Is in Texas (PINS) | The Daytripper (154 mil) | 11/08/2026, 10:31 | 37.907 | 9,4 | Padre Island |
-| This is the LONGEST Drivable Beach in the WORLD (and it's Epic!) | Where to Next Overland (43,2 mil) | 01/02/2026, 15:21 | 15.393 | 1,6 | Long Beach (WA); as tags trazem "longest beach in the world" |
-| World's longest beach? | Dust, Dirt & Truth (5,28 mil) | 06/11/2026, 12:59 | 681 | — | **sem descrição**: o lugar não foi identificado (a Sala confere) |
-| The Longest Beach IN THE WORLD?? | Parks with A.P. (353) | 01/10/2026, 3:00 | 1.348 | 5,0 | Long Beach (WA), "the longest beach on a peninsula" |
-| Do you know what is the longest sea beach in the world? | Truth Bites (177) | 26/03/2026, 0:33 | 1.149 | — | Short: "Most people would say Brazil, but they're only half right" |
-| Praia do Cassino: Brazil's 254‑km Endless Beach – History & Secrets | The World's Biggest (35) | 14/05/2026, 4:52 | 60 | 2,6 | em inglês; repete o "world's longest" |
-| I Walked the World's LONGEST Beach Alone – 150 Miles | Brazil Outside the Box (2) | 17/05/2026, 13:05 | 14 | — | em inglês; repete o Guinness como fato |
-| The Coastline Paradox | Rahul Reddy (1,35 mil) | 06/11/2026, 1:51 | **355.056** em ~1 dia | — | Short: a costa da Índia remedida, de 7.516 para 11.098 km |
-| The coastline of any landmass is infinitely long | MrGee Math (193 mil) | 07/07/2026, 1:01 | 817.463 | — | Short |
-| Is this Tiramisu Actually Infinite according to the Coastline Paradox? | vt.physics (1,42 mi) | 29/04/2026, 1:09 | 1.284.340 | 0,7 | Short |
-| The Coastline Paradox: Why You Can't Measure a Country | Gravity Assist (59,5 mil) | 27/12/2025, 2:31 | 79.456 | — | curto |
-| Why No Country Knows Its Actual Coastline Length (The Coastline Paradox) | The Science Paradox (629) | 02/04/2026, 6:10 | 170 | 1,6 | o explicador longo não pegou |
-| India's Coastline Paradox: How India Banned Itself From The Sea… | Think School (6,62 mi) | 01/07/2026, 17:02 | 772.729 | 1,0 | negócio, não praia |
-| 20 Most Dangerous Beaches in the World | Beyond Belief (11,3 mil) | 11/04/2026, 29:23 | 288.474 | **77,5** | lista longa de praias em canal pequeno |
-| CONHEÇA A PRAIA BRASILEIRA RECONHECIDA PELO GUINNESS COMO A MAIOR DO MUNDO | Itatiaia (3,71 mi) | 11/04/2026, 1:55 | 3.915 | — | a imprensa brasileira repete o mito em 2026 (em português) |
-
-Em português, a busca "Praia do Cassino" trouxe só vlogs de viagem, moto e 4x4: a maior, "Por que você NUNCA deve entrar na Praia do
-Cassino com um Motorhome" (Pegadas Itinerantes, 108 mil inscritos, 19/04/2026, 18.180 views), e duas lives de travessia (ROLÊ SEM FIM, julho
-de 2026, 57 mil e 63 mil). É outro público.
+| **Why Almost NOBODY Lives On Florida's Big Bend Coast** | Land & Consequence (**148**) | 02/11/2026, 16:35 | **22.973** | **54,0** | um explicador longo de costa, no molde do Geoff ("this is the weird geographic story of…"), num canal minúsculo: **o formato provado em canal pequeno, nesta semana** |
+| The Longest Straight Swim on Earth | TopQuest (32,5 mil) | 15/07/2026, 1:15 | 291.382 | 4,2 | Short: a reta mais longa no oceano. O motivo "a reta" rende em Shorts |
+| They Dropped Nuclear Waste Down a Hole. Then It Exploded | Fault Line Docs (957) | 06/11/2026, 13:42 | 21.491 | 10,6 | outro tema; explicador longo e sem rosto, num canal pequeno, em 1 dia |
+| Why India's Coastline Grew 3,500 KM Overnight | What If Wired (1,82 mil) | 20/10/2026, 0:30 | 126.053 | — | Short do paradoxo (já no cético) |
+| The Coastline Paradox: Why You Can't Measure a Country | Gravity Assist (59,5 mil) | 27/12/2025, 2:31 | 79.456 | — | curto (já na v1) |
+| Top 10 Longest Natural Beaches in the World | Editing Plus (11,1 mil) | 01/11/2026, 0:40 | 159 | — | Short de lista; cita o Cassino |
 
 - **O campo:**
-  - a procura por "a praia mais longa do mundo" está provada em 2026 em canais pequenos de viagem (Cox's Bazar com 65 vezes a média; Padre
-    e Long Beach entre 15 e 38 mil);
-  - o paradoxo da costa está quente agora, em Shorts (355 mil num dia, em 06/11/2026);
-  - **nenhum explicador em inglês junta os dois**, e nenhum conta que o "recorde" do Cassino não é monitorado pelo Guinness.
-- **O que não se viu em nenhum título lido:**
-  - a praia com mais de um tamanho oficial;
-  - a divisa municipal na areia;
-  - os 39 mi do Cassino;
-  - Virginia Beach como o único recorde de praia do Guinness;
-  - a física da costa reta;
-  - os foguetes de 1966.
-- **O que pesa contra:** os explicadores longos do paradoxo da costa não pegaram (de 170 a 236 views); o que pegou foi o Short. A busca não
-  mostra a miniatura dos concorrentes, e não se mediu retenção. O tema "longest beach" pode ler como vídeo de viagem: é o que a miniatura
-  com o mapa e o título com "Official Lengths" tentam evitar.
+  - a procura por "a praia mais longa do mundo" está provada em vlogs de viagem (o de Cox's Bazar, com 65 vezes a média, na v1), não em
+    explicadores;
+  - **o formato está provado em canal pequeno nesta semana:** um explicador de costa de 16 min, no molde do Geoff, fez 22.973 views em 5
+    dias num canal de 148 inscritos;
+  - o paradoxo da costa e "a reta" rendem em Shorts; os explicadores longos do paradoxo não pegaram (23, 60 e 170 views, no cético);
+  - **nenhum vídeo em inglês** conta que a "maior praia do mundo" é quase reta, nem mede o número famoso contra a costa.
+- **O que a direção do Lucas pede, e não está provado (K7):** um explicador longo, em canal pequeno, em 2026, **sobre este tema**. O que existe
+  é o formato (Land & Consequence) e o motivo (os Shorts). É o que segura a nota (§12).
+- **O que pesa contra:** a busca não mostra a miniatura dos concorrentes, e não se mediu retenção. "World's longest beach" pode ler como vídeo
+  de viagem: é o que a miniatura com o mapa e a régua tenta evitar.
 
 ## 10 · Como o vídeo é feito
 
 **No jeito de hoje** (Lucas, 30/10/2026: "vamos seguir da forma que trabalhamos hoje até que ele chegue"):
-1. **A pauta:** esta, o cético, e o "sim" do Lucas no chat da Sala.
-2. **As leituras do §11** e a lista da Sala, antes do roteiro. As dos três números vêm primeiro, porque decidem o título.
-3. **O roteiro:**
-   - a escrita e o gancho em Fable, com um briefing curto e sem o texto pronto (a direção de 02/11);
-   - os planos e o juiz em Opus;
-   - a cópia para a voz, com os números por extenso;
-   - a checagem pelo `verificador-de-fatos`;
-   - o Lucas lê e aprova.
+1. **A pauta:** esta, o cético (se a Sala quiser um da v2) e o "sim" do Lucas no chat da Sala.
+2. **As leituras do §11**, antes do roteiro. A justificação do PDL e o mapa do ICMBio vêm primeiro, porque decidem a fala do ato 2.
+3. **O roteiro:** a escrita e o gancho em Fable, com um briefing curto e sem o texto pronto (a direção de 02/11); os planos e o juiz em Opus;
+   a cópia para a voz, com os números por extenso; a checagem pelo `verificador-de-fatos`; o Lucas lê e aprova.
 4. **A narração:** ElevenLabs v4 pela API, no ritmo de hoje.
-5. **A linha:**
-   - `regie init`/`open` com o slug `praia-do-cassino`, o relógio, o espelho, a pesquisa e o conferente;
-   - a direção, a regência, os textos e os fatos;
-   - a arte e o QC, e a revisão de espectador;
-   - **a linha do tempo com o "sim" do Lucas antes do render 4K**;
-   - a trilha, o XML e o Premiere.
+5. **A linha:** `regie init`/`open` com o slug `praia-do-cassino`; o relógio, o espelho, a pesquisa e o conferente; a direção, a regência, os
+   textos e os fatos; a arte e o QC; a revisão de espectador; **a linha do tempo com o "sim" do Lucas antes do render 4K**; a trilha, o XML e
+   o Premiere.
 
 **O que o vídeo pede:**
-- **Os mapas** (o vídeo é de mapa; o relevo é plano, e **não precisa do 3D**):
-  - a faixa dos Molhes ao Chuí no satélite;
-  - a costa do RS, de Torres ao Chuí;
-  - as lagoas;
-  - a divisa municipal;
-  - o mapa-múndi das rivais;
-  - a faixa do eclipse de 1966.
-
-  Cada render de mapa gasta tiles da MapTiler. **O ok do Lucas para este vídeo se pede antes da primeira cena de mapa** (nenhum ok de
-  antes vale), e o contador se anota antes e depois de cada render (`CLAUDE.md`, "Os especialistas").
+- **Os mapas** (o vídeo é de mapa; o relevo é plano e **não precisa do 3D**): a faixa entre as paredes, com a reta; a costa do RS, de Torres
+  ao Chuí, com as duas aberturas; as lagoas; a divisa; o polígono do Albardão; o mapa-múndi das rivais; a faixa do eclipse de 1966. Cada
+  render de mapa gasta tiles da MapTiler. **O ok do Lucas para este vídeo se pede antes da primeira cena de mapa** (nenhum ok de antes vale),
+  e o contador se anota antes e depois de cada render (`CLAUDE.md`, "Os especialistas").
 - **A geometria, pelo `pesquisa-geo`** (com a procedência de cada uma):
-  1. **a linha de costa do OSM** (`natural=coastline`), do Molhe Oeste à foz do Arroio Chuí, **medida com três réguas** (por exemplo,
-     16 km, 1,6 km e 160 m de passo). Os três números são a medida do canal, declarada na tela, e servem à cena do paradoxo (ato 2). Inclui
-     a corda reta entre as pontas (o piso, fatos 2.8). Crédito "© OpenStreetMap contributors" e a ODbL na descrição;
-  2. **a malha municipal do IBGE de 2024:** a divisa do Rio Grande com Santa Vitória do Palmar na costa, e o comprimento da costa em cada
-     município. Isso confere os 62,05 e os 155,95 km pelo próprio dado do IBGE, sem depender do g1. É domínio público do governo
-     brasileiro: a licença se lê na origem;
-  3. **a Lagoa dos Patos, a Mirim e a Mangueira** (OSM ou a base hidrográfica da ANA ou do IBGE);
-  4. **a costa do RS, da foz do Mampituba à do Chuí** (os 630 km da UFRGS contra a medida do canal, só para a tela);
-  5. **as rivais:** os pontos de Long Beach (WA), Virginia Beach, Padre Island (o limite do NPS), Cox's Bazar e Eighty Mile Beach;
-  6. **a faixa da totalidade de 12/11/1966** (os dados de eclipse da NASA GSFC: a licença e o formato, a ler);
-  7. **o ponto do lançamento:** só "about 15 miles south of Rio Grande, near Cassino", sem coordenada inventada; um ponto declarado sobre
-     a praia;
-  8. **o Altair** (um nó do OSM, se houver; senão, os "16 km" do g1 como ponto declarado).
-- **As imagens abertas que existem** (§6): no Commons, fotos grandes da praia e do Altair (CC BY-SA 3.0 e 4.0, de 4.000 a 6.016 px), uma do
-  Altair marcada como domínio público, nenhum drone. **A procurar:** o arco de Long Beach, as fotos da NASA de 1966 e a licença da imagem
-  do Sentinel-3.
+  1. **a linha do OSM e a do IBGE**, entre as mesmas pontas: já medidas (L11, S1), e o `pesquisa-geo` as refaz com a procedência para as
+     cenas, com as réguas, a reta e o arco. Crédito "© OpenStreetMap contributors" e a ODbL na descrição. O maior segmento da linha do OSM
+     tem 6,45 km (um trecho reto no dado): ele diz onde fica, e se muda alguma coisa;
+  2. **a malha municipal do IBGE de 2024**: o ponto da divisa na praia. A licença se lê na origem (K10: não é "domínio público" sem a
+     leitura);
+  3. **as lagoas** (OSM, ou a base da ANA ou do IBGE);
+  4. **a costa do RS, de Torres ao Chuí**, com as duas aberturas (Rio Grande e Tramandaí);
+  5. **os limites do Parque Nacional e da APA do Albardão** (o ICMBio; a licença e o formato, a ler);
+  6. **os nós do OSM** do Farol do Albardão, do Hermenegildo, da Barra do Chuí e do Altair;
+  7. **as rivais:** os pontos de Long Beach (WA), Virginia Beach, Padre Island (o limite do NPS) e Cox's Bazar;
+  8. **a faixa da totalidade de 12/11/1966** (os dados de eclipse da NASA GSFC; a licença e o formato, a ler);
+  9. **o ponto do lançamento:** só "about 15 miles south of Rio Grande, near Cassino", um ponto declarado, sem coordenada inventada.
+- **As imagens abertas que existem** (§6): no Commons, fotos grandes da praia e do Altair (CC BY-SA 3.0 e 4.0, de 4.000 a 6.016 px), nenhum
+  drone. **A procurar:** o Farol do Albardão, o arco de Long Beach, as fotos e o mapa do ICMBio, as fotos da NASA de 1966 e a licença do
+  Sentinel-3.
 - **A perguntar ao Lucas antes do roteiro e da arte:**
   - **a MapTiler** (acima);
-  - **a caça nos bancos pagos:** o drone 4K da praia reta, para a abertura (a foto do Commons é o plano B), as ondas, e a Barra do Chuí para
+  - **a caça nos bancos pagos:** o drone 4K da praia reta para a abertura (a foto do Commons é o plano B), as ondas, e a Barra do Chuí para
     o fecho;
-  - **o título**, depois da leitura dos três números (o 1 ou o 2) e do teste dos leitores;
-  - **o gancho B**, se ele preferir o Guinness primeiro;
+  - **o título**, depois do teste dos leitores (o 1, o 2 ou o 4);
+  - **o gancho B**, se ele preferir o paradoxo primeiro;
   - **o slug:** `praia-do-cassino`.
 
 ## 11 · A ler antes do roteiro
 
-Site que recusar não se contorna: fica para o navegador do app, só pela Sala (a lista abaixo).
-1. **Os três números na origem** (decidem o título): a página do Governo do RS com os 254 km, a da Prefeitura do Rio Grande com os ~223 km
-   (e a da Rede Brasileira de Trilhas), e a publicação de 2024 do IBGE com os 218 km (62,05 + 155,95). Para cada um: o número, a data e de
-   onde a onde.
-2. **A medida do `pesquisa-geo`** (§10, itens 1 e 2): as três réguas na linha do OSM, a corda reta e a costa por município na malha do IBGE.
-3. **Os sangradouros e a única saída para o mar** (fatos 2.9 e 3.11), numa fonte da FURG ou da UFRGS (Calliari e colegas; Figueiredo).
-   Isso segura o "uninterrupted" na voz.
-4. **O trecho das conchas** (os 60 km de Calliari e Klein, 1993): onde fica, para o mapa.
-5. **A Eighty Mile Beach** (a ficha Ramsar 480, que deu 502) e **uma fonte de Bangladesh** para Cox's Bazar, se a fala as usar com número.
-6. **Os foguetes que subiram**: o DTIC AD0656342 (403), a GaúchaZH de 11/11/2016, o INPE 50 anos e o NASA SP-4401. Sem eles, só "planned".
-7. **O Gemini 12**: a tripulação, na NASA.
-8. **A Barra do Chuí**: os molhes do sul e a data (a dissertação da UFRGS, fatos 2.6).
-9. **Os Molhes da Barra**: as datas e os comprimentos, na Portos RS (fatos 5.3).
-10. **O Altair**: a Marinha ou o Tribunal Marítimo, e a posição.
-11. **Long Beach (WA)**: a página da cidade com o "Continuous Peninsula Beach", e a foto do arco (Commons).
-12. **As imagens**: a página de cada arquivo do Commons, pelo `conferente-de-midia`; as fotos da NASA de 1966; a licença do Sentinel-3.
-13. **O livro do Willy César**, se houver cópia ou trecho aberto, e a contestação de Santa Vitória do Palmar. Sem ele, vale o g1, atribuído.
+Site que recusar não se contorna: fica para o navegador do app, só pela Sala (a lista abaixo). Cópia do web.archive.org de site que não seja
+página oficial do Estado do Alasca não vale como fonte.
+1. **A justificação do PDL 112/2026** (as razões do senador, nas palavras dele) e **o mapa do ICMBio** (se a APA e o parque cobrem a areia
+   de Santa Vitória do Palmar, e de que ponto a que ponto). Decidem a fala do ato 2.
+2. **O Albardão no OSM:** o farol, os balneários do sul e a posição do Altair (§10, item 6). Decide o nome do meio da faixa (K6).
+3. **Os fósseis do parque:** o que são os "sítios paleontológicos associados ao ambiente de praia", numa fonte do ICMBio, da FURG ou da UFRGS.
+4. **Os sangradouros** (fatos 2.9), numa fonte da FURG ou da UFRGS, se a fala quiser dizer mais que "the barrier opens in only two places".
+5. **A frase de um geólogo sobre os rios e a forma da costa** (se a voz quiser dizer que, sem a areia dos rios, nada cresce para o mar), e a
+   lama na frente do Cassino (*Continental Shelf Research* 29(3), 2009).
+6. **De onde nasceram os 254 km:** o Rank Brasil (2007) e a Superinteressante (2013), que a en.wikipedia cita; e o número da Prefeitura do Rio
+   Grande no portal novo (`riogrande.atende.net`). Sem isso, a voz diz "none of the sources we read says who measured it".
+7. **Os foguetes que subiram:** o DTIC AD0656342 (403 ao script da base), a GaúchaZH de 11/11/2016, o INPE 50 anos e o NASA SP-4401. Sem eles,
+   só "planned".
+8. **O Gemini 12, depois do fato:** o relatório da missão na NASA (se a tripulação observou o eclipse de 12/11/1966).
+9. **Os molhes:** as datas e os comprimentos dos do norte (a Portos RS, fatos 5.3) e a data dos do Chuí (a dissertação da UFRGS, fatos 2.6).
+10. **O Altair:** a Marinha ou o Tribunal Marítimo.
+11. **Long Beach (WA):** a página da cidade com o "Continuous Peninsula Beach", e a foto do arco (Commons).
+12. **As imagens:** a página de cada arquivo do Commons, pelo `conferente-de-midia`; as do ICMBio e da NASA de 1966; a licença do Sentinel-3.
+13. **O livro do Willy César**, se houver cópia ou trecho aberto. Sem ele, vale o g1, atribuído.
 
 ## 12 · A nota: 6,0
 
 **Na régua das pautas** ("na dúvida, derrube"): o Big Sur teve 6,0, e o cético deu 5,5; o vídeo 4 (`atlantico-fundo`) foi aprovado com 5,5 e
-não andou; o Peru chegou a 7,5; o Cassino teve 6,0 na comparação de 06/11.
+não andou; o Peru chegou a 7,5; o Cassino teve 6,0 na comparação de 06/11 e na v1, e o cético da v1 deu 5,0.
 
-**O que sobe desde a comparação:**
-1. **A negativa do Guinness deixou de ter fonte única.** O g1 foi lido pela Sala (fatos A.1). E a origem provável do "recorde" tem dono: as
-   edições brasileiras de 1993 a 1995, pelo livro citado no g1 (fatos A.2).
-2. **Nasceu um ângulo concreto e só nosso:** três tamanhos oficiais, e só 39 mi com o nome. A divisa na areia é uma imagem de mapa que
-   ninguém mostrou.
-3. **O porquê físico está firme** (UFRGS, fatos 3.1 a 3.9), com uma virada que contraria o que se pensa: a areia não vem dos rios.
-4. **Não há colisão** de título em inglês nos últimos 12 meses (L1).
-5. **A procura está provada em canal pequeno:** o vlog de Cox's Bazar, com 808 inscritos, fez 65 vezes a média em seis dias. E o paradoxo
-   da costa está quente em Shorts nesta semana.
-6. **O release da NASA tem texto** (fatos 4.1). É o gancho americano do ato 4, ao lado da placa de Washington no ato 1.
-7. **É barato:** sem relevo 3D, e com fotos grandes e abertas no Commons.
+**O que sobe desde o cético:**
+1. **O título tem resposta medida e firme** (K1 e K3). Duas linhas independentes, entre as mesmas paredes (o IBGE, 218,00 km; o OSM, 219,73
+   km com nó a cada 9 m), passam a reta só 2,8 % e 3,7 %. As réguas de 10 m a 50 km mudam o comprimento 1,7 %.
+2. **O porquê tem a frase do geólogo, na origem** (L10): as ondas suprimem as saliências; a barreira só se abre em dois lugares em 625 km; a
+   forma segue o fundo do mar. A fatos 3.11, que era FRÁGIL, fica FIRME para a barreira.
+3. **O "three official lengths" saiu** (K5), o gancho não responde as próprias perguntas (K8), e a miniatura não faz jogo de nome (K9).
+4. **O Albardão entra com dono e com tom** (K2 e K6), e o ato 4 conta só o que o release diz (K4).
+5. **Não há colisão** de título em inglês nos últimos 12 meses (L9 e as 7 buscas de antes).
+6. **O formato está provado em canal pequeno nesta semana** (Land & Consequence, 148 inscritos, 22.973 views em 5 dias).
+7. **É barato:** sem relevo 3D, com fotos grandes e abertas no Commons e a geometria já medida.
+
+Das quatro condições do cético para voltar a 6,0, três estão cumpridas: a medida com as réguas e a corda (S1, S2, L11 e L12); o parque no
+ato 2, com o decreto e o tom; e o ato 4 sem o laço. A quarta, em parte: a origem dos 254 km foi lida no próprio Estado (S3: o turismo e a
+Cultura, com o Guinness ao lado e sem método), e o "Why" do título passou a ter resposta, mas quem escreveu 254 primeiro segue aberto.
 
 **O que segura em 6,0, e não mais:**
-1. **O título se apoia em três números de segunda mão.** Quem diz cada um vem só do g1, e uma reportagem troca o dono dos 254 km (L7). Se
-   forem dois órgãos, o título cai para o 2, menos concreto.
-2. **O assunto é fino para 14 minutos.** O vídeo só chega lá com as quatro camadas, e duas peças do ato 3 e do ato 4 seguem FRÁGEIS: a única
-   saída para o mar e os foguetes que subiram.
-3. **O visual é plano e repetitivo:** a mesma faixa reta de areia. O vídeo depende da animação sobre o mapa (as réguas, a divisa, o corte da
-   barreira, a sombra do eclipse) para não virar slides.
-4. **O título não é o paradoxo de povoamento**, o mais forte do Geoff (`relatorio.md` §6, hipóteses 1 e 2). É um paradoxo de medida, que
-   pode ler como curiosidade de almanaque. E os explicadores longos do paradoxo da costa não pegaram em 2026; só os Shorts pegaram.
-5. **"World's longest beach" puxa o público de viagem**, que procura vlog e não explicação: a miniatura tem de dizer "mapa".
+1. **O título é curiosidade física,** não o paradoxo de povoamento, o mais forte do Geoff (`relatorio.md` §6, hipóteses 1 e 2). Pode ler como
+   almanaque.
+2. **A praia não é reta de régua.** O arco de 11 mi é visível no mapa, e um espectador atento pode achar o "almost a straight line" forçado.
+   O teste dos leitores decide.
+3. **A segunda pergunta tem meia resposta.** O vídeo prova que os 20 e poucos mi não estão na areia, mas não sabe quem escreveu os 254 km primeiro.
+4. **A procura do tema em vídeo longo não está provada** (K7): só o formato e os Shorts.
+5. **O visual é plano e repetitivo:** a mesma faixa reta. O vídeo depende da animação sobre o mapa para não virar slides.
+6. **O Albardão tem duas leituras pendentes** (a justificação do PDL e o mapa do ICMBio), e o assunto muda: relê-se antes de publicar.
 
 **Para subir a 6,5:**
-- os três números lidos na origem, com os três órgãos (o título 1 firme);
-- a medida do `pesquisa-geo` (a régua e a divisa pelo dado do IBGE);
-- uma leitura que feche o ato 3 ou o ato 4: os sangradouros e a única saída, ou os foguetes que subiram.
+- o teste dos leitores lendo o título 1 como geografia, e o "almost" como honesto;
+- a origem dos 254 km lida (o Rank Brasil ou a Superinteressante), com data e autor;
+- a justificação do PDL e o mapa do ICMBio lidos, e os fósseis do parque com fonte.
 
 **Para cair a 5,5:**
-- se a Sala achar que "World's longest beach?" (06/11/2026) é sobre o Cassino e conta a disputa;
-- ou se os três números se reduzirem a dois e o 62/156 não se confirmar no IBGE.
+- se os leitores lerem o 1 como vídeo de viagem, ou o "almost a straight line" como exagero, e o 2 e o 4 também não pegarem;
+- ou se o mapa do ICMBio mostrar que o parque não toca a faixa, e o Albardão sair da fala.
 
 ## Para a Sala ler no navegador do app
 
 Nada aqui foi contornado. Cada item diz a URL e o que ler.
-1. **O IBGE**: https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/24072-municipios-defrontantes-com-o-mar.html
-   respondeu 403 ao WebFetch.
-   - Ler se o produto de 2024 traz uma planilha com a extensão da linha de costa por município.
-   - Achar a publicação de 2024 que o g1 cita, com 62,05 km para o Rio Grande e 155,95 km para Santa Vitória do Palmar. O g1 não deu o
-     link: o g1 de 20/07/2025, relido, pode ter os links das três fontes.
-   - Se não achar, as páginas do IBGE Cidades do Rio Grande e de Santa Vitória do Palmar.
-2. **O Governo do RS e a Prefeitura do Rio Grande**, nos sites oficiais (rs.gov.br, a parte de turismo; riogrande.rs.gov.br). Ler o número
-   que cada um divulga (254 km? ~223 km?), a data e de onde a onde. Uma reportagem dá os 254 km à Prefeitura, e o g1 ao Estado. Se a
-   página pedir verificação de robô, parar.
-3. **O vídeo "World's longest beach?"**: https://www.youtube.com/watch?v=dbPMAhY6QtE (Dust, Dirt & Truth, 06/11/2026, 12:59). Ler de que
-   praia ele fala e se conta a disputa ou o Guinness. É o vizinho de título mais perto.
-4. **O Internet Archive**, se a busca dentro do livro abrir sem login nem empréstimo (pelo script deu 403):
-   - https://archive.org/details/guinnessbookofre0000unse_r7c1 (a britânica de 1994, Enfield);
-   - https://archive.org/details/guinnessbookofre1994matt (a americana de 1994, Bantam);
-   - https://archive.org/details/guinnessbookofre1995matt (a americana de 1995).
-
-   Buscar "Cassino", "longest beach" e "beach". Se pedir login ou empréstimo, parar. As edições brasileiras não estão lá, e é nelas que,
-   pelo g1, estava o trecho: um "não acho" nas inglesas não prova nada.
-5. **A ficha Ramsar 480** (a Eighty Mile Beach; deu 502): https://rsis.ramsar.org/ris/480. Ler o comprimento e o que ele mede.
-6. **O DTIC AD0656342** (deu 403 ao script da base): https://apps.dtic.mil/sti/pdfs/AD0656342.pdf. Ler quantos foguetes subiram de
-   Cassino, e quando. E a GaúchaZH de 11/11/2016 ("Projeto Eclipse: os 50 anos…"), que a ferramenta não abre.
+1. **O PDL 112/2026 no Senado**: https://www25.senado.leg.br/web/atividade/materias/-/materia/173030. Ler o texto e a justificação (as razões
+   do senador, nas palavras dele) e o estado do dia. E de novo antes da publicação.
+2. **O Parque Nacional e a APA do Albardão no ICMBio** (a página da unidade, com o mapa dos limites e a licença do shapefile). Ler se a areia
+   de Santa Vitória do Palmar está na APA ou no parque, de que ponto a que ponto, e o que são os sítios de fósseis.
+3. **O número da Prefeitura do Rio Grande**, no portal novo (`riogrande.atende.net`): o que ela diz da extensão da praia, com data.
+4. **O Rank Brasil (2007) e a Superinteressante (2013)**, que a en.wikipedia ("List of longest beaches") cita para o intervalo de 212 a 254
+   km: quem diz 254 primeiro, e com que método.
+5. **O DTIC AD0656342** (https://apps.dtic.mil/sti/pdfs/AD0656342.pdf, 403 ao script da base) e **a GaúchaZH de 11/11/2016** ("Projeto
+   Eclipse: os 50 anos…"): quantos foguetes subiram de Cassino, e quando.
+6. **O relatório do Gemini 12** na NASA: se a tripulação observou o eclipse de 12/11/1966.
 
 ## Apêndice · Os scripts, as cópias e os pedidos
 
-- **Novos, em `pautas/praia-do-cassino/_trabalho/scripts/`** (todos rodam com `python -I -X utf8 -B <script> …`):
-  - `contas_cassino.py`: as conversões, os títulos, os ganchos na cópia para a voz (palavras e segundos a 179/min) e as palavras por ato
-    (sem argumento);
-  - `vidiq_resumo.py <resposta.json> [--desc]`: o resumo de uma resposta do vidIQ salva em arquivo;
-  - `baixar.py <url> <nome>`: um download por vez, com o User-Agent do canal, para a pasta de baixados. Para no 401, no 403 e no 429;
-  - `pdf_texto.py <pdf> <regex>`: as linhas de um PDF que casam com o padrão (PyMuPDF);
-  - `ia_lista.py <resposta.json> [regex]`: a lista de uma busca do Internet Archive;
-  - `commons_ler.py <resposta.json>`: a lista do Commons (cópia do script do Big Sur).
+- **Em `pautas/praia-do-cassino/_trabalho/scripts/`** (todos rodam com `python -I -X utf8 -B <script> …`):
+  - da v1 e da Sala: `contas_cassino.py`, `vidiq_resumo.py`, `baixar.py`, `pdf_texto.py`, `ia_lista.py`, `commons_ler.py`, `costa_ibge.py`,
+    `ods_ler.py`, `dbf_ler.py`; e os do cético (`cetico_regua.py`, `cetico_ibge_pdf.py`, `cetico_baixar.py`);
+  - **novos nesta rodada:**
+    - `desvio_corda.py <shp.zip>`: o afastamento do traçado do IBGE em relação à reta, o perfil e as janelas;
+    - `costa_osm.py <osm-coastline.json>`: a costura da linha do OSM, o trecho entre as pontas do IBGE, o compasso e as janelas;
+    - `pdf_tudo.py <pdf>`: o texto inteiro de um PDF, página por página (PyMuPDF);
+    - `contas_v2.py`: as conversões, os títulos, os ganchos na cópia para a voz e as palavras por ato (sem argumento);
+    - `corrigir_corpo_v2.py`: as trocas de redação aplicadas ao rascunho desta v2 (só serviu à escrita).
 - **Os arquivos baixados** ficaram fora do canal, em
   `C:\Users\zangp\AppData\Local\Temp\claude\6c506c6ee49e0179\027c3692-035f-4c98-b412-5015d73fe949\scratchpad\cassino-pauta\baixados\`:
-  - o robots.txt do IBGE (`a34a8ef1…`) e o do Internet Archive (`83e00f46…`);
-  - o PDF do Quadro Geográfico 2024 (495.674 bytes, `c68298c8…`);
-  - as duas buscas do Internet Archive (`5c078583…`, `2fc1b509…`) e os metadados da edição britânica de 1994 (`ad48728c…`);
-  - a resposta do Commons (`c0bf28a0…`).
+  - os da v1 e da Sala (a lista no commit `0e8c8b3`, Apêndice; o shapefile do IBGE, `ibge-defrontantes-2024-shp.zip`);
+  - **novos:** `osm-coastline-cassino.json` (920.408 bytes, sha256 `a685acae16f2…`), da URL do L11; e `aprh142/aprh-142.pdf` (sha256
+    `9295704f134e…`), que o WebFetch salvou de https://www.aprh.pt/ZonasCosteiras2003/pdf/142.pdf e eu copiei para uma pasta própria.
+- **Os pedidos desta rodada** (07/11/2026, um por vez): 1 busca na web; 1 leitura pelo WebFetch (o PDF da APRH, cujo robots.txt o cético
+  conferiu); 1 consulta à API do Overpass; 3 buscas e 2 consultas de saldo no vidIQ. Nada foi recusado nem contornado.
+- **O vidIQ: 15 créditos.** O saldo era de **5.941 antes** e ficou em **5.926 depois** (o renovável vai de 5.940 a 5.925, e 1 crédito avulso).
+  As buscas: o título 1 exato, "straightest coastline in the world beach" e "how long is the world's longest beach really measured". Nada de
+  transcrição nem de ferramenta de geração.
+- **O que não se usou:** o navegador (nenhum), banco pago (nenhum), downloads do Commons (nenhum).
 
-  As URLs estão no §1 e na lista da Sala, para baixar de novo.
-- **Os pedidos desta rodada** (07/11/2026, um por vez):
-  - 2 robots.txt;
-  - 1 PDF do IBGE;
-  - 1 página do IBGE recusada (403, parei);
-  - 2 buscas e 1 leitura de metadados no Internet Archive;
-  - 1 busca dentro do livro recusada (403, parei);
-  - 1 consulta à API do Commons;
-  - 2 leituras pelo WebFetch (a en.wikipedia e a NTRS);
-  - 7 buscas na web.
+## O histórico da v1
 
-  Nada foi contornado.
-- **O vidIQ: 35 créditos.** O saldo era de **5.981 antes** e ficou em **5.946 depois** (o renovável vai de 5.980 a 5.945, e 1 crédito avulso).
-  - Foram 6 buscas de 5 créditos: "longest beach in the world", "Praia do Cassino", "coastline paradox", "world's longest beach Brazil
-    Guinness record", o título 1 exato, e "world's longest beach" por views em vídeos médios.
-  - E 1 consulta de metadados de 8 vídeos, de 5 créditos.
-  - **Passei dos 25 por dois motivos:** fechar a colisão mais perto ("World's longest beach?", de 06/11, sem descrição; os metadados não
-    disseram o lugar, e o item foi à Sala) e medir a procura em vídeos longos por views.
-  - Nada de transcrição nem de ferramenta de geração.
-- **O que não se usou:** o navegador (nenhum), banco pago (nenhum) e downloads do Commons (só a lista pela API).
+A v1 desta pauta está no commit `0e8c8b3`; o cético e as leituras da Sala, abaixo, falam dela, e os § que eles citam são os da v1.
 
 ## O cético (07/11/2026)
 
