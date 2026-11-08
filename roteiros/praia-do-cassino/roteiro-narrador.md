@@ -1,7 +1,8 @@
 # Why the World's Longest Beach Is Almost a Straight Line
 
-> O título aprovado pelo Lucas com a pauta v2 (07/11/2026): o núcleo se paga nas 3 primeiras frases. Narração pura, en-US. **O r3, de
-> 08/11/2026**: o gancho A de `_trabalho/ganchos-r3.md`, escolhido pelo Lucas ("A, a imagem primeiro (Recomendado)"), depois de ele achar o
+> O título aprovado pelo Lucas com a pauta v2 (07/11/2026): o núcleo se paga nas 3 primeiras frases. Narração pura, en-US. **Aprovado pelo Lucas em 08/11/2026, no chat da Sala: "Aprovado"** (à pergunta "Com esse gancho, o roteiro está aprovado, ou quer
+> ajustar mais algo?"), com a troca leve R3-022 do laudo ("the answer came back"; o r3 antes dela em `_trabalho/roteiro-r3.antes.md`).
+> **O r3, de 08/11/2026**: o gancho A de `_trabalho/ganchos-r3.md`, escolhido pelo Lucas ("A, a imagem primeiro (Recomendado)"), depois de ele achar o
 > do r2 "meio confuso e disperso", com a costura do ato 1 (a curva de 11 mi, o Guinness e o 158 passam ao ato 1); o r2 está em
 > `_trabalho/roteiro-r2.antes.md`. **O r2, de 07/11/2026, à noite**: o r1 (guardado em `_trabalho/roteiro-r1.antes.md`) com a lista da Sala (`_trabalho/lista-r1.md`) aplicada: os
 > nove itens do laudo de fatos (`qc-roteiro/fatos.laudo.md`), as cinco mudanças do ouvinte a frio (`qc-roteiro/ouvinte.laudo.md`) com os
@@ -22,7 +23,7 @@ You're at Alpha Point, and this is where the story of the beach that looks drawn
 
 Up close, that line isn't quite a line. Near the middle, the beach bows out to sea by about 11 miles, in a gentle S, and that is as far from the straight line as it ever gets. Start where most people meet the title: a search box. Try it yourself. Type "longest beach in the world," and one of the top results puts Praia do Cassino at number one. It says the beach has been recognised by Guinness World Records since 1994 as the world's longest sea beach. You'll read the same line in Brazilian newspapers, year after year.
 
-Then, in 2025, the Brazilian news site g1 asked Guinness about it, and the answer was short: it doesn't monitor that title. The fame does have a trail, though. g1 follows it back to a local journalist's history of Rio Grande, the port city at the north end of this sand. In that account, a line about Brazil's longest beach appeared in the Brazilian editions of the record book from 1993 to 1995. Brazil's, not the world's. And it was dropped later, after the town to the south objected. That town, as it happens, has most of this beach inside its limits. You'll see how much in a minute. That's as far back as the trail goes in anything we read: three editions of a book, in one country, in the mid-1990s.
+Then, in 2025, the Brazilian news site g1 asked Guinness about it, and the answer came back: it doesn't monitor that title. The fame does have a trail, though. g1 follows it back to a local journalist's history of Rio Grande, the port city at the north end of this sand. In that account, a line about Brazil's longest beach appeared in the Brazilian editions of the record book from 1993 to 1995. Brazil's, not the world's. And it was dropped later, after the town to the south objected. That town, as it happens, has most of this beach inside its limits. You'll see how much in a minute. That's as far back as the trail goes in anything we read: three editions of a book, in one country, in the mid-1990s.
 
 Then there's the number: 158 miles, printed on two pages of the state government's own websites, each with the words "Guinness Book" beside it. The website that put this beach at number one in your search prints the same 158. It does explain its method: for every beach on its list, it takes the highest length anyone has credibly published. It's a ranking of published figures, then, more than of sand. As for Guinness, the only record for a beach itself that we could find on its own website is a different one. Virginia Beach, in the United States, holds it, as the largest pleasure beach.
 

@@ -1,6 +1,6 @@
 # Por que a praia mais longa do mundo é quase uma linha reta (versão em português, para leitura)
 
-Revisão do roteiro: `8c8beff8c0b4`
+Revisão do roteiro: `3348a7b2cc5d`
 
 > Tradução de leitura do r2 do `roteiro-narrador.md`, feita em 07/11/2026 para o Lucas ler e aprovar o texto. Não vai à voz nem à tela: a
 > narração do vídeo é a em inglês (o título dele é "Why the World's Longest Beach Is Almost a Straight Line"). O sha12 acima é o do texto
@@ -29,7 +29,7 @@ Você está no Alpha Point, e é aqui que começa a história da praia que parec
 
 De perto, essa linha não é bem uma linha. Perto do meio, a praia se arqueia mar adentro por cerca de 11 milhas (18 km), num S suave, e esse é o ponto em que ela mais se afasta da linha reta. Comece pelo lugar onde a maioria das pessoas encontra o título: uma caixa de busca. Tente você mesmo. Digite "longest beach in the world" (a praia mais longa do mundo), e um dos primeiros resultados põe a Praia do Cassino em primeiro lugar. Ele diz que a praia é reconhecida pelo Guinness World Records, desde 1994, como a mais longa praia marítima do mundo. Você vai ler a mesma frase em jornais brasileiros, ano após ano.
 
-Então, em 2025, o site de notícias brasileiro g1 perguntou ao Guinness sobre isso e a resposta foi curta: ele não monitora esse título. A fama, porém, tem um rastro. O g1 o segue até uma história de Rio Grande, a cidade portuária no extremo norte desta areia, escrita por um jornalista local. Nesse relato, uma linha sobre a praia mais longa do Brasil apareceu nas edições brasileiras do livro dos recordes de 1993 a 1995. A do Brasil, não a do mundo. E ela foi retirada depois, quando a cidade ao sul reclamou. Essa cidade, por sinal, tem a maior parte desta praia dentro dos seus limites. Você vai ver quanto, daqui a pouco. Até aí vai o rastro em tudo o que lemos: três edições de um livro, num só país, em meados dos anos 1990.
+Então, em 2025, o site de notícias brasileiro g1 perguntou ao Guinness sobre isso e a resposta veio: ele não monitora esse título. A fama, porém, tem um rastro. O g1 o segue até uma história de Rio Grande, a cidade portuária no extremo norte desta areia, escrita por um jornalista local. Nesse relato, uma linha sobre a praia mais longa do Brasil apareceu nas edições brasileiras do livro dos recordes de 1993 a 1995. A do Brasil, não a do mundo. E ela foi retirada depois, quando a cidade ao sul reclamou. Essa cidade, por sinal, tem a maior parte desta praia dentro dos seus limites. Você vai ver quanto, daqui a pouco. Até aí vai o rastro em tudo o que lemos: três edições de um livro, num só país, em meados dos anos 1990.
 
 E tem o número: 158 milhas (254 km), impressas em duas páginas de sites do próprio governo do estado, cada uma com as palavras "Guinness Book" ao lado. O site que pôs esta praia em primeiro lugar na sua busca imprime as mesmas 158. Ele explica o método: para cada praia da lista, pega o maior comprimento que alguém publicou com credibilidade. É um ranking de números publicados, então, mais do que de areia. Quanto ao Guinness, o único recorde sobre uma praia propriamente dita que encontramos no site dele é outro. Quem o detém é Virginia Beach, nos Estados Unidos, como a maior praia de lazer.
 
