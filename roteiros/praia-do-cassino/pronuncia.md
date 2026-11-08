@@ -30,7 +30,7 @@
 
 | Termo | Vezes e onde | Como o narrador diz | IPA | Estado e fonte | Risco na voz | Alias de reserva |
 |---|---|---|---|---|---|---|
-| Praia do Cassino | 2: §1 0:01 (a 1ª frase do gancho); §4 1:06 | PRY-uh doo kuh-SEE-noh | /ˈpraɪə du kəˈsiːnoʊ/; português /ˈpɾaj.ɐ du kaˈsĩ.nu/ | Confirmado (a palavra). Wiktionary, *praia*: "/ˈpɾaj.ɐ/ [ˈpɾaɪ̯.ɐ]"; *cassino*: "/kaˈsĩ.nu/". O *do* (de + o) é /du/, a regra da grafia. O "-noh" final é o do inglês (abaixo, *Cassino*). | **Alto.** "PRAY-uh" ou "PRAH-ee-ah", e "doh". É a 1ª frase do vídeo: erro ali pesa mais. | **Pry-uh** do Cassino |
+| Praia do Cassino | 2: §1 0:01 (a 1ª frase do gancho); §4 1:06 | PRY-uh doo kuh-SEE-noh | /ˈpraɪə du kəˈsiːnoʊ/; português /ˈpɾaj.ɐ du kaˈsĩ.nu/ | Confirmado (a palavra). Wiktionary, *praia*: "/ˈpɾaj.ɐ/ [ˈpɾaɪ̯.ɐ]"; *cassino*: "/kaˈsĩ.nu/". O *do* (de + o) é /du/, a regra da grafia. O "-noh" final é o do inglês (abaixo, *Cassino*). | **Alto.** "PRAY-uh" ou "PRAH-ee-ah", e "doh". É a 1ª frase do vídeo: erro ali pesa mais. | ~~**Pry-uh** do Cassino~~ (recusada: na amostra, o Lucas ouviu esta errada e a grafia normal certa; abaixo) |
 | Chuí ("a small stream called the Chuí", "the Chuí stream", "the breakwater at the Chuí") | 3: §8 3:55; §11 6:11; §21 13:23 (o fecho) | shoo-EE, tônica no fim | /ʃuˈiː/; português [ʃuˈi] | Confirmado (o lugar). Wikipedia, *Chuí*: "[ʃuˈi]"; o nome vem do riacho, "Arroio Chuí or Arroyo Chuy". | **Alto.** O "ch" inglês: "CHOO-ee" ou "chwee"; o acento ignorado ("CHOO-ee", tônica no começo). | **Shoo-EE** |
 | Barra do Chuí | 1: §9 4:47 | BAH-huh doo shoo-EE ("BAR-uh" serve) | /ˈbɑːhə du ʃuˈiː/; português [ˈba.ʁɐ du ʃuˈi] (hipótese) | Hipótese no *Barra* (a regra da grafia: o "rr" é o som de "h"); o *Chuí*, como acima. | **Alto** no Chuí; o "BAR-uh" inglês não é erro. | Barra do **Shoo-EE** |
 | Albardão ("the Albardão National Park") | 1: §18 11:24 | ahl-bar-DOWN, tônica no fim, o "-own" de *down* sem fechar o "n" | /ˌɑːlbɑːrˈdaʊn/; português /awbaʁˈdɐ̃w̃/ (hipótese) | Hipótese (sem entrada em dicionário nem na Wikipedia). O sufixo é Confirmado (a palavra): Wiktionary, *-ão*: "/ˈɐ̃w̃/ [ˈɐ̃ʊ̯̃]", e leva a tônica (a regra da grafia). | **Alto.** O til ignorado: "al-BAR-dow", "al-bar-DAY-oh" ou "al-bar-DAHN". | **Al-bar-DOWN** |
@@ -96,3 +96,14 @@ amostra tem 1.226 caracteres.
 3. Nome que ele ouvir errado ganha alias em `_ferramentas/preparar-voz.mjs` (`ALIASES`, com o motivo; a reserva desta folha é o ponto
    de partida), a cópia se refaz, e na narração só aquele parágrafo se refaz (`narrar.mjs praia-do-cassino --refazer=N`).
 4. O nome confirmado de ouvido, com a fonte anotada, sobe para `marca/pronuncias.md`.
+
+## A escuta da amostra (08/11/2026)
+
+- **A amostra:** `out/praia-do-cassino/_pesquisa/teste-pronuncia.mjs` e o recibo `teste-pronuncia.json` (13 linhas, um pedido por linha, com o
+  corpo de produção; 1.086 créditos pelos cabeçalhos). As 7 linhas da proposta acima, conferidas frase a frase contra a cópia para a voz, iam
+  sem alias; depois de cada uma, uma linha com a grafia de apoio da coluna de reserva. O MP3 (2:33) ficou em `out/praia-do-cassino/_tmp/`,
+  fora do git.
+- **O Lucas, no chat da Sala, à pergunta "Quais nomes soam errados na versão da narração?":** "Ele fala duas vezes Esta é a Praia do
+  Cassino, na segunda vez está errado". A 2ª vez é a grafia de apoio ("Pry-uh do Cassino"), recusada; a 1ª, a grafia normal, fica.
+- **Ele não apontou nenhum outro nome**, na versão da narração nem na de apoio. A narração vai **sem alias**, como manda a política da folha
+  do canal. A escuta da narração inteira, antes do master, confere o resto, nos minutos da `narracao.wav`.
