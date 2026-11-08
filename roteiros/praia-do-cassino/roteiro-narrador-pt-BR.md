@@ -1,6 +1,6 @@
 # Por que a praia mais longa do mundo é quase uma linha reta (versão em português, para leitura)
 
-Revisão do roteiro: `73dbed36b793`
+Revisão do roteiro: `8c8beff8c0b4`
 
 > Tradução de leitura do r2 do `roteiro-narrador.md`, feita em 07/11/2026 para o Lucas ler e aprovar o texto. Não vai à voz nem à tela: a
 > narração do vídeo é a em inglês (o título dele é "Why the World's Longest Beach Is Almost a Straight Line"). O sha12 acima é o do texto
@@ -13,25 +13,25 @@ As 4 primeiras frases do original, em inglês:
 
 This is Praia do Cassino, in Brazil, sold as the world's longest beach. Breakwaters mark its two ends, about 132 miles apart in a straight line. The beach itself is less than five miles longer. But most coasts are a tangle of coves and points.
 
-<!-- gancho · os cinco tempos (três parágrafos; o 1º termina na pergunta da miniatura, o 2º na pergunta do número) -->
+<!-- gancho A (r3) · a imagem primeiro: a linha vista de cima, e quem a desenhou -->
 
 ## Gancho
 
-Esta é a Praia do Cassino, no Brasil, vendida como a praia mais longa do mundo. Dois molhes marcam as suas duas pontas, a cerca de 132 milhas (212 km) uma da outra em linha reta. A praia em si tem menos de cinco milhas (8 km) a mais. Mas a maioria das costas é um emaranhado de enseadas e pontas. Esta parece desenhada com régua. Então, quem a desenhou?
+Esta é a Praia do Cassino, no Brasil, vendida como a praia mais longa do mundo. Vista do alto, ela parece uma linha que alguém traçou. Dois muros marcam as suas pontas, a cerca de 132 milhas (212 km) uma da outra em linha reta, e a areia entre eles tem menos de cinco milhas (8 km) a mais.
 
-Perto do meio, para ser justo, ela se arqueia mar adentro por cerca de 11 milhas (18 km), num S suave. Uma costa tão suave deveria ser fácil de medir. Mesmo assim, o próprio site de turismo do estado diz 158 milhas (254 km), bem ao lado das palavras "Guinness Book". Em 2025, o Guinness World Records disse a um site de notícias brasileiro que não monitora esse título. Então por que o número famoso não cabe nesta areia?
+Mas as costas, em geral, não fazem isso. A maioria serpenteia: entra em baías, contorna pontas, passa por fozes de rio, e quanto mais longa a costa, mais espaço ela tem para serpentear. Esta corre de muro a muro e mal se dobra. Os muros das duas pontas, foram pessoas que construíram. A linha entre eles é a pergunta. Então, quem desenhou esta costa?
 
-Você está no Alpha Point, e é aqui que começa a história da praia entre dois muros.
+Você está no Alpha Point, e é aqui que começa a história da praia que parece desenhada com régua.
 
 <!-- p1 · Whose word is it? -->
 
 ## p1 · De quem é a palavra?
 
-Comece pelo lugar onde a maioria das pessoas encontra o título: uma caixa de busca. Tente você mesmo. Digite "longest beach in the world" (a praia mais longa do mundo), e um dos primeiros resultados põe a Praia do Cassino em primeiro lugar. Ele diz que a praia é reconhecida pelo Guinness World Records, desde 1994, como a mais longa praia marítima do mundo. Você vai ler a mesma frase em jornais brasileiros, ano após ano.
+De perto, essa linha não é bem uma linha. Perto do meio, a praia se arqueia mar adentro por cerca de 11 milhas (18 km), num S suave, e esse é o ponto em que ela mais se afasta da linha reta. Comece pelo lugar onde a maioria das pessoas encontra o título: uma caixa de busca. Tente você mesmo. Digite "longest beach in the world" (a praia mais longa do mundo), e um dos primeiros resultados põe a Praia do Cassino em primeiro lugar. Ele diz que a praia é reconhecida pelo Guinness World Records, desde 1994, como a mais longa praia marítima do mundo. Você vai ler a mesma frase em jornais brasileiros, ano após ano.
 
-Então, em 2025, o site de notícias brasileiro g1 perguntou ao Guinness sobre isso e recebeu a resposta que você ouviu há um minuto. A fama, porém, tem um rastro. O g1 o segue até uma história de Rio Grande, a cidade portuária no extremo norte desta areia, escrita por um jornalista local. Nesse relato, uma linha sobre a praia mais longa do Brasil apareceu nas edições brasileiras do livro dos recordes de 1993 a 1995. A do Brasil, não a do mundo. E ela foi retirada depois, quando a cidade ao sul reclamou. Essa cidade, por sinal, tem a maior parte desta praia dentro dos seus limites. Você vai ver quanto, daqui a pouco. Até aí vai o rastro em tudo o que lemos: três edições de um livro, num só país, em meados dos anos 1990.
+Então, em 2025, o site de notícias brasileiro g1 perguntou ao Guinness sobre isso e a resposta foi curta: ele não monitora esse título. A fama, porém, tem um rastro. O g1 o segue até uma história de Rio Grande, a cidade portuária no extremo norte desta areia, escrita por um jornalista local. Nesse relato, uma linha sobre a praia mais longa do Brasil apareceu nas edições brasileiras do livro dos recordes de 1993 a 1995. A do Brasil, não a do mundo. E ela foi retirada depois, quando a cidade ao sul reclamou. Essa cidade, por sinal, tem a maior parte desta praia dentro dos seus limites. Você vai ver quanto, daqui a pouco. Até aí vai o rastro em tudo o que lemos: três edições de um livro, num só país, em meados dos anos 1990.
 
-As 158 milhas, enquanto isso, estão impressas em duas páginas de sites do próprio governo do estado, cada uma com as palavras "Guinness Book" ao lado do número. O site que pôs esta praia em primeiro lugar na sua busca imprime as mesmas 158. Ele explica o método: para cada praia da lista, pega o maior comprimento que alguém publicou com credibilidade. É um ranking de números publicados, então, mais do que de areia. Quanto ao Guinness, o único recorde sobre uma praia propriamente dita que encontramos no site dele é outro. Quem o detém é Virginia Beach, nos Estados Unidos, como a maior praia de lazer.
+E tem o número: 158 milhas (254 km), impressas em duas páginas de sites do próprio governo do estado, cada uma com as palavras "Guinness Book" ao lado. O site que pôs esta praia em primeiro lugar na sua busca imprime as mesmas 158. Ele explica o método: para cada praia da lista, pega o maior comprimento que alguém publicou com credibilidade. É um ranking de números publicados, então, mais do que de areia. Quanto ao Guinness, o único recorde sobre uma praia propriamente dita que encontramos no site dele é outro. Quem o detém é Virginia Beach, nos Estados Unidos, como a maior praia de lazer.
 
 Outras praias encontraram as suas próprias palavras. Na costa do Pacífico do estado de Washington, um arco na entrada de Long Beach traz uma placa: "World's Longest Beach" (a praia mais longa do mundo). Essa praia tem cerca de 28 milhas (45 km). De muro a muro, a praia do Brasil é quase cinco vezes mais longa. Desde então, a cidade passou a usar um título mais comprido, o de mais longa praia contínua de península do mundo, e o guia de viagem Roadside America diz que não há planos de corrigir a placa. No Texas, o litoral nacional da Ilha Padre (Padre Island National Seashore) é o mais longo trecho de ilha-barreira não urbanizada, segundo o Serviço de Parques dos EUA, e Cox's Bazar, em Bangladesh, é vendida como a mais longa praia de areia natural ininterrupta. Praia marítima, praia de lazer, praia de península, ilha-barreira: cada um desses títulos se apoia num comprimento. Então vamos medir esta.
 
