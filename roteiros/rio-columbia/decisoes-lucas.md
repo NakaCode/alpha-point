@@ -1,0 +1,10 @@
+# As decisões do Lucas no vídeo 7 (`rio-columbia`)
+
+O vídeo 7 era o Lesoto (`lesoto`), que ficou de reserva em 09/11/2026 (`roteiros/lesoto/decisoes-lucas.md`). As falas do Lucas no chat da Sala
+que mudam a pauta, o roteiro e a embalagem deste vídeo:
+
+| Data | A fala | O que fez |
+|---|---|---|
+| 09/11/2026, ~02h | "Eu ainda acho que quero arriscar em um lugar mais conhecido como canadá ou austrália, mas com nossa versão..." | a Sala propôs o rio Columbia (o tratado EUA–Canadá de 1964) e o porto de Darwin |
+| 09/11/2026, ~02h | "Como seria o título/ângulo de cada um?" | três títulos de trabalho para cada um; a Sala preferiu "The River That Gives Canada Power Over the U.S." |
+| 09/11/2026, ~02h | "Vamos com columbia então" | **o vídeo 7 é o rio Columbia**; a base de fatos começa (dois leitores em paralelo) |
