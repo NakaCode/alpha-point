@@ -28,3 +28,8 @@ a instalação: "Pode instalar (Recomendado)".
   - o vídeo 4 (`atlantico-fundo`), em 30/10/2026: 79 arquivos e 10,88 GB de `C:\AtlanticoFundo-Premiere`, enviados pela pasta à parte
     e movidos, no próprio Drive e sem reenviar, para "0004 - AtlânticoFundo". O `rclone check` no lugar final, às 13:38: 0 diferenças,
     79 arquivos batem.
+  - o vídeo 5 (`big-sur`), em 06–07/11/2026: 63 arquivos e 17,18 GB de `C:\BigSur-Premiere`, em "0005 - BigSur". O `rclone check`, às 00:51: 0
+    diferenças, 63 arquivos batem.
+  - o vídeo 3 (`peru-agua`), em 09/11/2026 (o Lucas: "Sim", à pergunta "Mando o do Peru para o Drive?"): 55 arquivos e 17,03 GB de
+    `C:\PeruAgua-Premiere`, em "0003 - PeruAgua". O 403 voltou em dois arquivos, e a 2ª tentativa do próprio rclone passou. O `rclone check`, às
+    16:41: 0 diferenças, 55 arquivos batem.
