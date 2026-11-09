@@ -90,3 +90,60 @@ TariffDesk e America Prime têm quase o mesmo título.
 3. **O título não pode ter** "Canada's water", "61-year", "scrapped", "controls" nem "most powerful": são as palavras do enxame e do Geoff.
 4. **A justiça do título pesa mais aqui que no Lesoto**: o enxame vive de exagero sobre este tratado. Os quatro leitores do Lesoto puniram a
    palavra que soava a golpe ("billed").
+
+## 6. Conferido pela Sala depois da pauta v1 (09/11/2026, ~13h)
+
+**O que faltava na primeira busca:**
+- "Could U.S. tariffs end this water treaty?" (CBC News, `_P10JlmVHTs`): **1,92 mi**, ~1 ano. É o maior da prateleira;
+- um segundo vídeo do Armchair Engineer, "What's changing in the Columbia River Treaty?" (7,3 mil).
+
+**The Hidden Provinces, pela descrição** (4.907 caracteres):
+- A transcrição não se leu. A legenda veio vazia, e o painel de transcrição respondeu "Precondition check failed" ao pedido feito de dentro da
+  página. É a recusa do YouTube à leitura automática: parou ali, e não se tentou outro jeito.
+- **O que ela diz que o vídeo cobre:**
+  - Renata e as cidades alagadas; o Vanport ("Fifteen people were killed and around 18,000 were left with nothing");
+  - "Only about 15 per cent of its basin is Canadian, but that 15 per cent supplies roughly a third of the river's annual flow and far more of
+    the spring peak";
+  - os 15,5 MAF; Duncan e Keenleyside sem turbinas ("They are not power plants. They are tanks.");
+  - os US$ 64,4 mi da cheia; a pré-venda por ~US$ 254 mi; McNaughton e Bennett;
+  - Libby, que "backs 42 miles into British Columbia for no Canadian benefit at all";
+  - os Sinixt (1956 e o *R v Desautel*, 2021); Celilo Falls, em 1957;
+  - "Canadian reservoirs are drawn down through the winter to make space, they absorb the spring surge before Portland ever sees it";
+  - e a disputa de hoje "stated accurately — because almost everything circulating about it right now is wrong":
+    - sem data de fim, sem cancelamento;
+    - o aviso de 10 anos possível desde setembro de 2024;
+    - o "called upon" desde 16/09/2024;
+    - o AIP de 11/07/2024, pausado pelos EUA em março de 2025.
+- **O estilo é o do Alpha Point:** fontes na tela e na narração, e "Where official sources disagree […] both figures are given on air rather
+  than averaged".
+- **O que a descrição NÃO cita:**
+  - o pagamento anual desde o ano fiscal de 2025 (US$ 37,6 mi por 3,6 MAF de Arrow);
+  - o prazo de 2027;
+  - a estimativa de 2012 da US Entity;
+  - a vazão medida antes e depois.
+
+  A descrição é minuciosa: se o vídeo contasse o pagamento novo, é provável que ela o citasse. **Não é prova.** Sem a transcrição, o risco 1 da
+  pauta fica em aberto.
+
+**O Geoff, pela descrição:** só os capítulos e um parágrafo ("dictates the entire West Coast power grid, high-stakes international treaties").
+Nada do pagamento.
+
+**A colisão dos títulos da pauta** (busca exata no YouTube, 09/11/2026):
+- *Why the U.S. Pays Canada to Keep Part of a Lake Empty*: **nenhum vídeo com título parecido**. A busca trouxe:
+  - a briga do nome do lago Ontário ("Lake America"; CNN, 370 mil, ~2 meses);
+  - o enxame com o verbo "pay": "No more FREE WATER—Canada just made Trump PAY for every DROPLET!" (America Prime, 4,8 mil, ~2 semanas);
+  - e "Why Can't America Just Take Water From Canada?" (Whereology, 132, 1 dia).
+- *How Long Could Canada Hold Back the Columbia River?* e *Canada Holds the Water Back. The U.S. Pays for It.*: nenhum vídeo com título parecido.
+  A busca traz a CBC (1,92 mi) e o enxame.
+
+**O pagamento e o prazo** (lidos pela Sala, cópias em `midia/rio-columbia/fontes/sala/` e `fontes/b/`, fora do git):
+- **BC Hydro, "Columbia Operations Update", 23/06/2026** (`engage.gov.bc.ca/app/uploads/sites/6/2026/08/Columbia_Ops_Update_23June2026_slides.pdf`,
+  sha256 `df36339a…`), p. 7: "As of 2024, required to pay Canada annual payments of USD $37.6M (indexed to inflation) for flood risk".
+- **PNWA, prioridades da WRDA 2026, 08/05/2026** (`fontes/b/pnwa-wrda-2026-05-08.pdf`):
+  - "payment started at $37.6 million in fiscal year 2025 and is adjusted to the Consumer Price Index";
+  - a seção 1152 da WRDA 2024 autoriza verbas "for each fiscal year 2025, 2026, and 2027";
+  - "the authority to compensate Canada for the interim pre-planned storage will expire on August 31, 2027";
+  - "negotiations […] are on pause. The technical teams are still exchanging information and working on modeling";
+  - a PNWA pede à WRDA 2026 a extensão até 2030.
+- A Sala não achou se a WRDA 2026 virou lei. A proposta da deputada Salinas (até 2030) é só proposta. O pagamento de 2026 não aparece em
+  documento lido. O "required to pay … annual payments" de junho de 2026 sustenta o presente com a data ("since 2025").
