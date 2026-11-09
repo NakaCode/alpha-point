@@ -138,6 +138,75 @@ for nome, n in ATOS:
 print(f"total: {acum} palavras = {acum/PPM:.1f} min de fala (+ 20 s da cauda)")
 print(f"alvo 14 a 15 min: {14*PPM} a {15*PPM} palavras; 2.500 a 2.700: {2500/PPM:.1f} a {2700/PPM:.1f} min")
 
+print("\n\n######## v2 (depois do cético) ########")
+print("\n=== títulos v2 (caracteres) ===")
+for t in ["Why South Africa Is Billed for Pumping That Never Happens",
+          "Why South Africa's Gravity-Fed Water Has an Electricity Bill",
+          "This Water Runs Downhill. Its Bill Is Priced on Pumping.",
+          "The Dam South Africa Sent Troops To in 1998"]:
+    print(f"{len(t):3d}  {t}")
+
+GANCHO_A2 = (
+    "This is Katse Dam, in Lesotho, a small mountain kingdom that South Africa surrounds on every side. "
+    "Its water drops through about 50 miles of tunnel into South Africa, and no pump pushes it. "
+    "Yet every month, South Africa gets a bill for this water. "
+    "Under a treaty from 1986, the biggest part of that bill, year after year, is priced on electricity for pumping that never happens. "
+    "When it's full, this lake sits about 6,700 feet above the sea. "
+    "From up here, gravity does all the work. "
+    "And the bill isn't small. "
+    "In the 2025 to 2026 budget year, Lesotho expected these payments to bring in almost a fifth of government revenue. "
+    "Its own finance minister called those royalties exceptionally high, and the result temporary. "
+    "So why is South Africa billed for pumping that never happens? "
+    "You're at Alpha Point, and this is where the story of the water that falls into South Africa begins."
+)
+GANCHO_A2_VOZ = (GANCHO_A2.replace("50 miles", "fifty miles").replace("1986", "nineteen eighty-six")
+                 .replace("6,700 feet", "six thousand seven hundred feet")
+                 .replace("2025 to 2026", "twenty twenty-five to twenty twenty-six"))
+GANCHO_B2 = (
+    "Every month, the water in this lake, high in the mountains of Lesotho, comes with a bill for South Africa. "
+    "Lesotho is a small kingdom that South Africa surrounds on every side, and the bill comes from a treaty the two signed in 1986. "
+    "The biggest part of it, every year since 2010, is priced on electricity for pumping. "
+    "Now follow the water. "
+    "It drops into a tunnel, runs about 50 miles under the mountains, and comes out in South Africa. "
+    "Nothing pumps it, anywhere along the way. "
+    "When it's full, this lake sits about 6,700 feet above the sea, so gravity does all the work. "
+    "And the bill isn't small. "
+    "In the 2025 to 2026 budget year, Lesotho expected these payments to bring in almost a fifth of government revenue, a result its own finance minister called temporary. "
+    "So why is South Africa billed for pumping that never happens? "
+    "You're at Alpha Point, and this is where the story of a water bill from the mountains begins."
+)
+GANCHO_B2_VOZ = (GANCHO_B2.replace("50 miles", "fifty miles").replace("1986", "nineteen eighty-six")
+                 .replace("2010", "twenty ten").replace("6,700 feet", "six thousand seven hundred feet")
+                 .replace("2025 to 2026", "twenty twenty-five to twenty twenty-six"))
+print("\n=== os ganchos v2 (179 palavras/min) ===")
+for nome, txt, voz in [("A2", GANCHO_A2, GANCHO_A2_VOZ), ("B2", GANCHO_B2, GANCHO_B2_VOZ)]:
+    fs = frases(voz)
+    n = palavras(voz)
+    print(f"gancho {nome}: {palavras(txt)} palavras no texto, {n} na voz, {len(fs)} frases, média {n/len(fs):.1f}; {seg(n):.1f} s")
+    acum = 0
+    for i, f in enumerate(fs, 1):
+        acum += palavras(f)
+        print(f"  frase {i:2d} fecha aos {seg(acum):5.1f} s: {f[:70]}")
+
+print("\n=== as camadas v2 ===")
+ATOS2 = [("gancho (A2)", palavras(GANCHO_A2_VOZ)), ("1 · o telhado", 400), ("2 · como o telhado virou um país", 280),
+         ("3 · a fatura", 700), ("4 · setembro de 1998", 480), ("5 · o dinheiro e a torneira", 500), ("fecho", 150)]
+acum = 0
+for nome, n in ATOS2:
+    ini = seg(acum)
+    acum += n
+    fim = seg(acum)
+    print(f"{nome:38s} {n:5d}  {int(ini//60)}:{int(ini%60):02d}–{int(fim//60)}:{int(fim%60):02d}")
+print(f"total: {acum} palavras = {acum/PPM:.1f} min de fala (+ 20 s da cauda)")
+
+print("\n=== contas novas da v2 (conta nossa) ===")
+print(f"o excesso de mai a set/2024: {23.108 + 20.775 + 28.606 + 24.976 + 15.321:.3f} Mm³; o 'Converted' de out e nov/2024: {65 + 47.786:.3f}")
+print(f"SACU sobre royalty: 2024/25 {11549.2/2897.7:.2f}x; 2025/26 {9180.2/4778.0:.2f}x")
+print(f"royalty sobre receita: 2024/25 {2897.7/27696.6*100:.1f} %; 2025/26 {4778.0/27147.2*100:.1f} %")
+print(f"SACU sobre receita: 2024/25 {11549.2/27696.6*100:.1f} %; 2025/26 {9180.2/27147.2*100:.1f} %")
+print(f"eletricidade por m³: 2001 M0,1166 -> 2023 M1,3287 = x{1.3287/0.1166:.1f}; 2008 M0,1948 -> 2023 = x{1.3287/0.1948:.1f}")
+print(f"o fixo de jan/2024 sobre dez/2023: x{121.71/31.69:.2f}; a eletricidade por m³, 2023 -> 2024: M1,33 -> M2,69")
+
 if len(sys.argv) > 1:
     import fitz  # PyMuPDF
 
