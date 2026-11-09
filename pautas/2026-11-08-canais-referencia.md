@@ -165,3 +165,31 @@ citar.
   manchete "Johannesburg's water comes from here".
 - **O risco:** baixo. A intervenção de 1998, com mortos, e a falta de água dos basotos entram pelos fatos e pelas fontes, sem lado
   (`marca/voz.md`).
+
+## 8. Mais um canal: Fatally Curious (08/11/2026, ~23:50, a pedido do Lucas)
+
+- **O canal:** 62,7 mil inscritos e 174 vídeos. A mediana dos 30 recentes é ~41 mil. Montanhas extremas e tragédias de escalada, 14 a 18 min.
+- **O que dá certo:**
+  - "The Woman Who Became a Landmark on Everest | The Story of Hannelore Schmatz" (2,0 mi, 3 meses, ~49x a mediana);
+  - "When Inexperienced Climbers Think They Can Climb Everest" (743 mil);
+  - "The Highest Mountains No One Has Ever Climbed — Here's Why" (738 mil);
+  - "The Broad Peak Disaster" (725 mil);
+  - os recentes: "Ranking The World's Most Extreme Vertical Mountains" (413 mil), "All 14 8,000m Mountains Ranked From "Easy" to DEADLY" (409
+    mil), "Why The Karakoram Range is So Terrifying" (397 mil, 2 sem.) e "Why K2 is 10x Deadlier Than Everest" (239 mil).
+  - O Everest puxa: os três maiores são dele.
+- **A miniatura:** foto real (montanha, rosto do alpinista) e texto branco e vermelho grande ("SHE BECAME A LANDMARK", "THE SHERPAS WARNED HER",
+  "NO SUMMITS"). Um círculo ou seta vermelha aponta uma figura minúscula na neve. Nos rankings, uma grade de montanhas; no Karakoram, o relevo
+  3D em vermelho com rótulos.
+- **A réplica geopolítica (o mesmo alvo, o Everest, com ângulo diferente): "Why a Border Runs Across the Top of Mount Everest".**
+  - **A história:** a fronteira China–Nepal passa pelo cume, pelo acordo de 1960–1961. Há a altura que os dois países anunciaram juntos em 2020
+    e a "linha de separação" que a China propôs no cume em 2020. Há também os três nomes: Everest, Sagarmatha e Chomolungma.
+  - **A busca:** a concorrência é mínima. São vídeos de 747 e 872 views (1 ano) e notícias de 2020 (France 24, WION).
+  - **O mesmo alvo puxa:** a demanda do Everest está provada (2,0 mi e 743 mil no Fatally Curious).
+  - **A diferença do Alpha Point:** a linha medida no mapa e a altura das duas medições. Nada checado.
+- **Outras, pela busca:**
+  - Gangkhar Puensum (o Butão proíbe escalar, e a fronteira com a China está em disputa): o enxame chegou há 2 a 3 semanas, e há Curiosity Dude
+    (380 mil);
+  - Siachen, "o campo de batalha mais alto" (171 mil e 116 mil, canais indianos): risco Índia × Paquistão;
+  - o vale de Shaksgam (o enxame, há 17 horas): risco alto;
+  - a estrada do Karakoram: saturada (BBC, 3,8 mi; Itchy Boots, 3,2 mi).
+- A folha das miniaturas: `out/_analises/canais-referencia-2026-11-08/5-fatallycurious.jpg`, fora do git.
