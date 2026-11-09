@@ -152,7 +152,7 @@ citar.
 - **Ato 4, a dependência dos dois lados:**
   - em 1998, tropas sul-africanas entraram no Lesoto numa crise política, e um dos primeiros lugares que tomaram foi a barragem de Katse;
   - os royalties da água;
-  - os bascotos que exportam água e não têm água encanada;
+  - os basotos que exportam água e não têm água encanada;
   - a fase 2 (a barragem de Polihali), que aumenta a dependência.
 - **O que o canal mediria (a diferença contra o enxame):**
   - o perfil de altitude do caminho da água, das barragens ao Vaal, no modelo de terreno, para mostrar que ela desce sozinha;
@@ -163,5 +163,5 @@ citar.
   enxame já usou "The Country That Sells Its Water to the Country Surrounding It" (2 semanas).
 - **A miniatura:** a África do Sul com o Lesoto em azul dentro dela, e uma seta do Lesoto a Joanesburgo. Na escola calma, mapa antigo e a
   manchete "Johannesburg's water comes from here".
-- **O risco:** baixo. A intervenção de 1998, com mortos, e a falta de água dos bascotos entram pelos fatos e pelas fontes, sem lado
+- **O risco:** baixo. A intervenção de 1998, com mortos, e a falta de água dos basotos entram pelos fatos e pelas fontes, sem lado
   (`marca/voz.md`).
