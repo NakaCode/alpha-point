@@ -1,6 +1,6 @@
 # Vídeo 7 (`rio-columbia`): a base de fatos · 09/11/2026
 
-**A decisão.** O Lucas, no chat da Sala, em 09/11/2026, por volta das 02h, escolheu o rio Columbia: "Vamos com columbia então". O Lesoto ficou
+**A decisão.** O Lucas, no chat da Sala, em 09/11/2026, às 11:49, escolheu o rio Columbia: "Vamos com columbia então". O Lesoto ficou
 de reserva (`roteiros/rio-columbia/decisoes-lucas.md`).
 
 **O método.**
@@ -69,10 +69,27 @@ geografia própria: 15 % da área e 38 % da água.
 
 A pauta escolhe o ângulo, com o cético e os leitores.
 
+## Lido pela Sala no navegador do app (09/11/2026, ~12h30)
+
+- **O Departamento de Estado** (`state.gov/bureau-of-western-hemisphere-affairs/columbia-river-treaty`, o endereço para onde
+  `state.gov/columbia-river-treaty` leva) **não tem nada depois de agosto de 2024**:
+  - o comunicado mais novo é de 26/07/2024 ("Details About the Key Elements Agreed Between the United States and Canada…");
+  - a sessão de informação mais nova, de 05/08/2024;
+  - o texto ainda diz "As of January 2023, the two countries have held fifteen rounds of negotiations" e "The year 2024 is a significant date for
+    the Treaty, as the current flood risk management provisions change to a less-defined approach";
+  - não fala da pausa nem de 2027.
+- **O governo da Colúmbia Britânica** (`engage.gov.bc.ca/columbiarivertreaty/`): as notícias mais novas da página são:
+  - 04/12/2025: uma vaga no comitê consultivo da bacia, em Creston;
+  - 26/03/2025: a gravação da sessão de 25/03/2025, em que o ministro Adrian Dix deu "an update on the status of the Treaty modernization
+    process […] in light of new developments from the United States";
+  - 12/12/2024: os acordos provisórios, "through exchanges of diplomatic notes between Canada and the U.S."
+
+  Nada de 2026 nessa página.
+- **A busca de notícias** (WebSearch, 09/11/2026) não achou nada de outubro ou novembro de 2026.
+
 ## O que falta (a Sala no navegador do app, ou fica fora)
 
 - **Bloqueados:**
-  - state.gov, onde estão os comunicados oficiais de 2024 a 2026; é o primeiro a conferir;
   - CBC, The Tyee, National Interest, o Senado dos EUA, o USACE (Libby) e o National Observer;
   - o NPCC e a BPA estavam fora do ar (502 e DNS).
 - **Não achados:**

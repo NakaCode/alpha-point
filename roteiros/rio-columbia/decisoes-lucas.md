@@ -5,6 +5,6 @@ que mudam a pauta, o roteiro e a embalagem deste vídeo:
 
 | Data | A fala | O que fez |
 |---|---|---|
-| 09/11/2026, ~02h | "Eu ainda acho que quero arriscar em um lugar mais conhecido como canadá ou austrália, mas com nossa versão..." | a Sala propôs o rio Columbia (o tratado EUA–Canadá de 1964) e o porto de Darwin |
-| 09/11/2026, ~02h | "Como seria o título/ângulo de cada um?" | três títulos de trabalho para cada um; a Sala preferiu "The River That Gives Canada Power Over the U.S." |
-| 09/11/2026, ~02h | "Vamos com columbia então" | **o vídeo 7 é o rio Columbia**; a base de fatos começa (dois leitores em paralelo) |
+| 09/11/2026, ~11:43 | "Eu ainda acho que quero arriscar em um lugar mais conhecido como canadá ou austrália, mas com nossa versão..." | a Sala propôs o rio Columbia (o tratado EUA–Canadá de 1964) e o porto de Darwin |
+| 09/11/2026, ~11:46 | "Como seria o título/ângulo de cada um?" | três títulos de trabalho para cada um; a Sala preferiu "The River That Gives Canada Power Over the U.S." |
+| 09/11/2026, ~11:49 | "Vamos com columbia então" | **o vídeo 7 é o rio Columbia**; a base de fatos começa (dois leitores em paralelo) |
