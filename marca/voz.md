@@ -108,3 +108,35 @@ responde em lista: pode terminar numa cena, num lugar do mapa ou numa pessoa, co
 - `experts say`, `reports suggest`, `some people believe`, `sources claim`: sem nome, não entra.
 - Rumor, conta anônima, "circula nas redes". Se a única origem é essa, a afirmação sai do roteiro.
 - **Número sem dono**: todo número tem instituição e ano, na voz ou no crédito da tela.
+
+## 3 · A inscrição falada (Lucas, 09/11/2026)
+
+> Do vídeo 6 (`praia-do-cassino`) em diante. A decisão e as perguntas estão em `marca/cta.md` §1; o momento da faixa, em
+> `cta.md` §5 e §6. O Lucas, à pergunta da frase: "Uma por vídeo (Recomendado)".
+
+**Quem escreve:** o roteirista, a cada vídeo, no `roteiro-narrador.md`. A frase é ligada ao trecho em que cai: ela não é
+uma vinheta fixa.
+
+**Onde:**
+- uma vez por vídeo, numa pausa natural entre dois atos, entre 35 % e 60 % do vídeo, nunca no 1º minuto;
+- nunca no gancho nem na conclusão;
+- nunca colada a uma fala citada, a um documento lido, a um número-herói ou à frase-chave do bloco;
+- a faixa da tela entra junto (`cta.md` §5).
+
+No relatório do roteiro, o roteirista diz em que parágrafo ela está.
+
+**Como:**
+- a frase sempre tem **"subscribe to Alpha Point"**, o nome que a faixa mostra;
+- uma frase, ou duas curtas contando a volta ao assunto. São até ~16 palavras, uns 5 s a ~179 por minuto, perto dos 4,5 s
+  da faixa;
+- na voz do narrador: calma, em segunda pessoa, na condicional, e ligada ao que acabou de passar. Logo depois, a fala
+  volta ao assunto;
+- o exemplo da pergunta ao Lucas: "If you're enjoying the map so far, subscribe to Alpha Point. Now, back to the river."
+
+**Nunca:**
+- `smash`, `hit the like button`, `ring the bell`, `don't forget to`, `make sure to`, `please`;
+- pedir like ou comentário na mesma frase (o comentário é só de tela, `cta.md` §1);
+- número sobre a plateia sem fonte, como `most of you aren't subscribed`. Se um dia entrar, é com o número do YouTube Studio,
+  e a decisão é do Lucas;
+- prometer frequência (`every week`) ou vídeo que o canal não marcou;
+- as palavras do §2.

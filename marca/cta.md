@@ -17,7 +17,25 @@
 - **A pergunta:** "O narrador fala a chamada, ou ela fica só na tela?"
   - **A resposta:** "Decidir depois". A opção dizia: "Desenho primeiro as peças da tela, e a voz fica para quando você
     vir como ficam."
-  - Até ele decidir, a chamada é só de tela, e `marca/voz.md` não muda.
+  - Até 09/11/2026, a chamada foi só de tela.
+- **A voz da inscrição, decidida (Lucas, 09/11/2026, no chat da Sala).** O pedido, às ~12:16: "Aliás, quero inserir o pedido
+  de inscrição na narração, acredito que hoje só conte no card em tela". As respostas abaixo, às ~12:21.
+  - **A pergunta:** "A inscrição vai entrar na narração junto com a faixa que já aparece na tela: uma vez, numa pausa entre
+    dois atos, entre 35 % e 60 % do vídeo. Como fica a frase do narrador?"
+    - **A resposta:** "Uma por vídeo (Recomendado)". A opção dizia: "O roteirista escreve a frase em cada vídeo, ligada ao
+      trecho, sempre com "subscribe to Alpha Point". Exemplo no Columbia: "If you're enjoying the map so far, subscribe to
+      Alpha Point. Now, back to the river.""
+    - As outras eram "A mesma em todo vídeo" (uma frase fixa: "If you're enjoying this, subscribe to Alpha Point.") e "Com
+      o motivo" ("If you're finding this useful, subscribing is the simplest way to help a small channel like this one.").
+  - **A pergunta:** "O Cassino (vídeo 6) já está narrado, mas ainda não virou master. A frase entra nele também?"
+    - **A resposta:** "Sim, no Cassino também (Recomendado)". A opção dizia: "Quando o Cassino voltar, eu regravo só o
+      parágrafo do meio com a frase, junto com o conserto do Chuí, se ele for preciso. Custa uns 300 créditos da
+      ElevenLabs. O Big Sur fica como está, porque o pacote já está pronto."
+  - **O que vale desde então:**
+    - **a inscrição é falada e mostrada**, do vídeo 6 (`praia-do-cassino`) em diante. A frase segue `marca/voz.md` §3, e o
+      momento segue o §5 e o §6 daqui;
+    - o Big Sur (vídeo 5) e os anteriores ficam como estão;
+    - **o comentário continua só de tela**: o pedido foi o da inscrição.
 
 ## 2 · O estilo: a faixa mínima (Lucas, 01/10/2026)
 
@@ -51,7 +69,8 @@ movimento.
   - **A resposta:** "Uma de cada (Recomendado)". A opção dizia: "A inscrição uma vez no meio (entre 35 e 60 % do vídeo,
     nunca no 1º minuto) e o comentário perto do fim, saindo antes da tela final. Em vídeo com menos de 5 min, só o
     comentário."
-- O giro da agulha ao entrar estava nas prévias que ele aprovou: fica. A voz continua "Decidir depois" (§1).
+- O giro da agulha ao entrar estava nas prévias que ele aprovou: fica. A voz ficou "Decidir depois" até 09/11/2026, quando a
+  inscrição passou a ser falada (§1).
 
 ## 4 · As peças
 
@@ -127,9 +146,19 @@ trecho em que as três coisas abaixo valem durante toda a permanência dela.
    - uma fala citada, uma folha de documento ou uma legenda longa sendo lidas. O comentário é bloco de leitura: conta
      nos 3 blocos e nos 6 elementos da identidade §4.2. A inscrição conta como 1 elemento;
    - um corte: a peça inteira cabe num beat só, sem atravessar a troca de regime.
-3. **A fala não depende da tela.** A chamada é só de tela (§1). Ela não entra enquanto o narrador aponta para algo na
-   tela ("here", "this line"), nem sobre a frase-chave do bloco. De preferência, num trecho de fala curta ou de pausa,
-   por causa da legenda automática (§8); com fala densa no trecho escolhido, `?lugar=cima`.
+3. **A fala.**
+   - **A inscrição entra com a frase de inscrição** (§1, 09/11/2026; `marca/voz.md` §3).
+     - O roteiro já põe a frase numa pausa entre dois atos, e o momento é o dela.
+     - A peça entra quando a frase anterior termina: o `depois_de` são as últimas palavras dessa frase, e a voz da
+       inscrição começa logo depois.
+     - A frase de inscrição é a única fala por baixo da peça, e o trecho continua cumprindo o 1 e o 2.
+     - Se o 1 ou o 2 não couberem ali, o regente avisa a Sala, e a frase muda de lugar no roteiro antes da narração.
+       Depois da narração, ela não muda: a peça vai para o `lugar` livre.
+   - **O comentário não depende da fala** (ele continua só de tela, §1).
+     - Ele não entra enquanto o narrador aponta para algo na tela ("here", "this line"), nem sobre a frase-chave do
+       bloco.
+     - De preferência, num trecho de fala curta ou de pausa, por causa da legenda automática (§8); com fala densa no
+       trecho escolhido, `?lugar=cima`.
 
 **Onde se grava.** O contrato da regência não tem campo para a chamada. O regente a grava em `regencia.json` ›
 `_chamadas`, um item por chamada:
@@ -291,7 +320,9 @@ recusar: tag, emoji, outra escrita, palavra larga demais, pergunta longa demais 
     do que o XML montar.
 
 ## O que falta
-- A voz (§1), quando o Lucas decidir.
+- A voz do comentário, se o Lucas pedir (a da inscrição foi decidida em 09/11/2026, §1).
+- A primeira inscrição falada: no Cassino, quando ele voltar, e no Columbia (vídeo 7). Ninguém viu ainda a faixa e a voz
+  juntas num vídeo de verdade.
 - Medir a faixa com a legenda automática do YouTube ligada (pede um envio, decisão do Lucas) e abrir o `.mov` no
   Premiere pela primeira vez (no vídeo 2).
 - **As chamadas dentro do XML, do vídeo 3 em diante** (Lucas, 09/10/2026: "Neste eu farei manual, mas nos próximos quero que já

@@ -449,6 +449,10 @@
   - o momento (`cta.md` §5 e §6): a inscrição entre 35 % e 60 % do vídeo e fora do 1º minuto; o comentário terminando
     pelo menos 1 s antes da cauda; nunca as duas no mesmo minuto; cena calma, sem corte e sem número-herói, território
     acendendo, anel, viagem de câmera, fala citada ou folha sendo lidas;
+  - **do vídeo 6 em diante, a inscrição é falada** (Lucas, 09/11/2026; `cta.md` §1 e §5; `voz.md` §3):
+    - a peça entra quando termina a frase que vem antes da frase de inscrição, a que tem "subscribe to Alpha Point";
+    - a voz por baixo dela é essa frase;
+    - a peça fora da frase, ou a frase sem a peça, reprova (`sincronia`);
   - a distância: a caixa da peça (`cta.md` §4, ou a `uniao` de `out/<proj>/cta/<nome>.medidas.json`) contra a de cada
     rótulo da cena, pelo `probe-elemento` (com `REGIE_MOTOR`), no começo, no meio e no fim. Menos de ~80 px, ou a mesma
     faixa de altura de uma pílula no mesmo terço, reprova (`espaco`). Não há portão que meça isso: a conta é sua, e o

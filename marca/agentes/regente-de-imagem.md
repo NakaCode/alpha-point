@@ -45,9 +45,14 @@
   momento das duas chamadas e o grava na regência:
   - a inscrição, uma vez, entre 35 % e 60 % do vídeo e nunca no 1º minuto; o comentário, uma vez, perto do fim,
     terminando pelo menos 1 s antes da cauda. Em vídeo com menos de 5 min, só o comentário (`cta.md` §6);
+  - **do vídeo 6 em diante, a inscrição é falada** (Lucas, 09/11/2026; `cta.md` §1 e §5; `voz.md` §3):
+    - o momento dela é o da frase de inscrição que o roteiro escreveu, a que tem "subscribe to Alpha Point";
+    - a peça entra quando a frase anterior termina: o `depois_de` são as últimas palavras dessa frase;
+    - faça o beat por baixo dela calmo e com o canto livre. Se ainda assim o canto de baixo não couber, `lugar: cima`;
+    - depois da narração, a frase não muda de lugar. Se nem o canto de cima couber, avise a Sala;
   - o trecho tem o canto livre (nada a menos de ~80 px da caixa da peça, nem pílula na mesma faixa de altura no mesmo
-    terço), cena calma, nenhum corte, e fala que não depende da tela (`cta.md` §5). Com o canto de baixo ocupado,
-    `lugar: cima`; com os dois, outro momento;
+    terço), cena calma e nenhum corte. No comentário, a fala também não depende da tela (`cta.md` §5). Com o canto de
+    baixo ocupado, `lugar: cima`; com os dois, outro momento (no comentário);
   - o item vai em `regencia.json` › `_chamadas`: `peca`, `lugar`, `inSec` (o fim da frase, no `words.json`),
     `depois_de`, `dur`, `cena` e `porque` (`cta.md` §5). O comentário conta nos 3 blocos e nos 6 elementos da cena
     por baixo; a inscrição, como 1 elemento;
