@@ -1,6 +1,6 @@
 # Vídeo 7 · O rio Columbia: o espaço vazio que os EUA pagam ao Canadá · Pauta v2 · 09/11/2026
 
-**Pauta v2, 09/11/2026: depois do cético, para os leitores e o Lucas.**
+**Pauta v2, 09/11/2026: depois do cético, para os leitores e o Lucas.** **Aprovada pelo Lucas em 09/11/2026 ("Aprovo (Recomendado)"), com o título 1, a miniatura 1 e a abertura 1 do teste dos leitores (`out/_pautas/video-7-rio-columbia/teste-leitores.md`); os consertos deles vão ao roteiro. O roteiro começa depois da virada da semana (11/11, ~23h).**
 
 **De onde parte:**
 - a v1 (09/11, ~14h; o histórico, no fim);
