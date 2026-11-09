@@ -111,3 +111,11 @@ Três blocos de perguntas de opção (`out/zona-do-canal/_pesquisa/pendencias-lu
   - O título novo é *Why a Strip of Panama Was American Until 1979* (45 caracteres): a Zona era "a band ten miles wide that the United
     States ran across Panama" (l. 12), e não uma cidade; o resto é o título de 12/10/2026, já pago no gancho ("Until October 1, 1979", l. 10).
   - A miniatura continua a de hoje (`miniatura-1280.jpg`, a B3). A troca do título no YouTube Studio é dele.
+
+## A reembalagem pedida em 09/11/2026, adiada (Lucas, no chat da Sala)
+- **O pedido** (~14:3x): "Certo. Por hora eu queria reembalar os vídeos já postados, do peru, panama e los angeles com ângulos do nosso
+  aprendizado".
+- **Os números do Studio** (print do Lucas, 09/11; aba Reach, desde a publicação): 991 impressões (até 08/11), CTR de 1,8 % e 36 views. Em 01/11
+  eram 964, 1,6 % e 28: são 27 impressões novas em 8 dias.
+- **A decisão**, à pergunta "Deixo a reembalagem para sexta, começando pelos títulos, ou prefere fazer agora?": **"vamos deixar"**. Fica para
+  sexta, 13/11, ou depois, com a semana nova.

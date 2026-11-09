@@ -300,3 +300,12 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
   saída). A pílula-herói ficou a 280 px: a 300, a 1ª linha cobria a ponta norte do Peru (2 % da pílula sobre o país; a 280, nada). Lê sem
   esforço a 168×94 (conferido pela Sala na versão ampliada ×4), e o canto da duração continua livre.
 - Os `miniatura-1280.jpg` e `miniatura-2560.jpg` continuam sendo a A2, a que foi publicada. A troca no YouTube Studio é do Lucas.
+
+## A reembalagem pedida em 09/11/2026, adiada (Lucas, no chat da Sala)
+- **O pedido** (~14:3x): "Certo. Por hora eu queria reembalar os vídeos já postados, do peru, panama e los angeles com ângulos do nosso
+  aprendizado".
+- **Os números do Studio** (print do Lucas, 09/11; aba Reach, desde a publicação): 115 impressões, CTR de 0,9 % e 9 views. Em 01/11 eram 70
+  impressões e 5 views: são 45 impressões novas em 8 dias. No ar está a A3. O teste do YouTube (a A3 com três títulos) terminou em 07/11 sem
+  dados, e ficou *Why Peru Lives on the Dry Side of the Andes*.
+- **A decisão**, à pergunta "Deixo a reembalagem para sexta, começando pelos títulos, ou prefere fazer agora?": **"vamos deixar"**. Fica para
+  sexta, 13/11, ou depois, com a semana nova.

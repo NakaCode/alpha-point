@@ -600,3 +600,12 @@ As variantes que o curador mostrou ao lado dos finalistas, e dois consertos do r
 - **A escolha do Lucas** (30/10/2026, 10:1x), à pergunta "Los Angeles: o que vai?": **"Novo, sem o nome na miniatura"**. A opção dizia: "O
   mesmo par, mas eu tiro o "Los Angeles" da miniatura, como fizemos na A do Atlântico." A E é a do agente sem a pílula "Los Angeles"
   (`MOSTRAR_NOME = False`). A troca no YouTube Studio é dele: o título e a miniatura, no lugar dos de hoje.
+
+## A reembalagem pedida em 09/11/2026, adiada (Lucas, no chat da Sala)
+- **O pedido** (~14:3x): "Certo. Por hora eu queria reembalar os vídeos já postados, do peru, panama e los angeles com ângulos do nosso
+  aprendizado".
+- **Os números do Studio** (print do Lucas, 09/11; aba Reach, desde a publicação): 754 impressões, CTR de 1,1 % e 13 views. Em 01/11 eram 742,
+  0,9 % e 10: são 12 impressões novas em 8 dias. No ar está a miniatura E, com os dois títulos no teste do YouTube (*Why Is Los Angeles Shaped
+  Like This?* e o novo), e faltavam 3 dias e 19 horas para o teste acabar ("Not enough information").
+- **A decisão**, à pergunta "Deixo a reembalagem para sexta, começando pelos títulos, ou prefere fazer agora?": **"vamos deixar"**. Fica para
+  sexta, 13/11, ou depois, com a semana nova e o teste encerrado.
