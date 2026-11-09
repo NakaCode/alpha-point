@@ -127,3 +127,41 @@ O **Canadá** (4) fica de reserva, se a medida da rota sair boa.
 
 Para a miniatura, testar a **escola calma** do TheLanguageMap numa delas: mapa antigo, manchete serifada e uma etiqueta. Ela conversa com a
 identidade do canal.
+
+## 7. O esboço do Lesoto (08/11/2026, à pergunta do Lucas "O que falaríamos sobre lesoto?")
+
+Rascunho da Sala, de conhecimento geral. **Nada está checado**: cada fato abaixo vai ao verificador, e os números são os que se costumam
+citar.
+
+- **O gancho:** Joanesburgo é uma das maiores cidades do mundo sem rio, lago ou mar. Ela nasceu do ouro, em 1886, numa crista. Parte da
+  água que ela bebe vem de outro país: um reino pequeno, cercado por todos os lados pela África do Sul e mais alto que qualquer outro país.
+  A pergunta: **por que o gigante depende do país que está dentro dele?**
+- **Ato 1, o lugar:** o Lesoto inteiro fica acima de ~1.000 m, e o ponto mais baixo (~1.400 m) é o mais alto do mundo entre os pontos mais
+  baixos dos países. As montanhas pegam a chuva e a neve (a "África gelada", 2,2 mi de views num vídeo de viagem), e o Orange, o maior rio
+  da África do Sul, nasce ali.
+- **Ato 2, por que ele existe:**
+  - Moshoeshoe e a montanha-fortaleza de Thaba Bosiu;
+  - as guerras com os bôeres, que levaram as terras baixas férteis;
+  - a proteção britânica em 1868, que o deixou fora da União Sul-Africana em 1910, e portanto fora do apartheid;
+  - a independência, em 1966.
+- **Ato 3, a sede de Joanesburgo:**
+  - o ouro numa crista sem rio;
+  - o tratado de 1986, assinado com a África do Sul do apartheid e com o Lesoto sob governo militar;
+  - os túneis que levam a água das barragens de Katse e Mohale, pela gravidade, ao sistema do Vaal;
+  - a usina de 'Muela, que dá luz ao Lesoto.
+- **Ato 4, a dependência dos dois lados:**
+  - em 1998, tropas sul-africanas entraram no Lesoto numa crise política, e um dos primeiros lugares que tomaram foi a barragem de Katse;
+  - os royalties da água;
+  - os bascotos que exportam água e não têm água encanada;
+  - a fase 2 (a barragem de Polihali), que aumenta a dependência.
+- **O que o canal mediria (a diferença contra o enxame):**
+  - o perfil de altitude do caminho da água, das barragens ao Vaal, no modelo de terreno, para mostrar que ela desce sozinha;
+  - o ponto mais baixo de cada país, para provar o "mais alto do mundo";
+  - a distância de Joanesburgo à água mais próxima;
+  - os volumes transferidos, pelos relatórios da LHDA e da TCTA.
+- **O título de trabalho:** *Why Johannesburg Drinks Water From Another Country*, ou *Why South Africa Needs the Country Inside It*. O
+  enxame já usou "The Country That Sells Its Water to the Country Surrounding It" (2 semanas).
+- **A miniatura:** a África do Sul com o Lesoto em azul dentro dela, e uma seta do Lesoto a Joanesburgo. Na escola calma, mapa antigo e a
+  manchete "Johannesburg's water comes from here".
+- **O risco:** baixo. A intervenção de 1998, com mortos, e a falta de água dos bascotos entram pelos fatos e pelas fontes, sem lado
+  (`marca/voz.md`).
