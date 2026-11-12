@@ -1,8 +1,12 @@
 # Why the U.S. Pays Canada to Keep Part of a Lake Empty
 
 > O título aprovado pelo Lucas com a pauta v2 (09/11/2026): o núcleo se paga nas 2 primeiras frases. Narração pura, en-US.
-> **O r2, de 12/11/2026, sobre a lista da Sala (`_trabalho/lista-r1.md`). Nada aqui foi aprovado ainda**: o r2 não passou pelo verificador
-> de fatos, nem pela bancada, nem pelo Lucas. É o r1 (guardado em `_trabalho/roteiro-r1.antes.md`; laudos em `qc-roteiro/fatos-r1.laudo.md`
+> **APROVADO PELOS CONFERENTES, por decisão do Lucas (12/11/2026, ~01:2x, no chat da Sala: "Ou seja, dessa vez vamos ignorar a minha
+> aprovação. Se os céticos aprovarem, pode prosseguir")**: o verificador de fatos deu PASS no texto final (224 de 224, nota 9,0;
+> `qc-roteiro/fatos.laudo.md`), e o cético que leu no lugar do Lucas, APROVA COM TROCAS (8,5, nenhum GRAVE; `qc-roteiro/cetico-r2.laudo.md`).
+> O texto final é o r2 com as trocas C1 a C8 do cético, aplicadas pela Sala (o r2 antes delas em `_trabalho/roteiro-r2.antes.md`); sha12
+> do texto falado `c4788c7ab3be`, 2.696 palavras, portão PASSA. O Lucas ainda pode pedir mudanças quando voltar.
+> **O r2, de 12/11/2026, sobre a lista da Sala (`_trabalho/lista-r1.md`)**. É o r1 (guardado em `_trabalho/roteiro-r1.antes.md`; laudos em `qc-roteiro/fatos-r1.laudo.md`
 > e `qc-roteiro/ouvinte-r1.laudo.md`) com os 8 itens do verificador de fatos e as decisões da Sala sobre o ouvinte a frio aplicados,
 > mudando o mínimo que cada item pede. A base continua a do r1: `_trabalho/briefing.md`, a pauta
 > `pautas/2026-11-09-video-7-rio-columbia.md` e `_trabalho/gate-notas.md`. Nenhum fato novo: só o que está no r1, na pauta e nas fontes
@@ -30,7 +34,7 @@ From there, the river does something odd for a river on its way to Oregon. It he
 
 So where does all that water come from, and when? The Canadian part of the basin, the land that drains into the river, is mountain country, and what lands on it in winter is snow. For months, the snow just sits there. Then, late in the spring, it lets go. About 60 percent of the water that runs off the whole basin in a year comes down in May, June and July. Most of the river's year arrives in one season.
 
-A large part of it arrives by way of Canada. You can read that off two gauges. A gauge is just a station on the bank that records how much water is going past. One of them sits in British Columbia, a short way north of the border. The other is far downstream at The Dalles, a place on the river in Oregon where the United States government measures it. We lined the two records up, year against year, for the 87 years they share. On average, the river at the Canadian gauge is already carrying about 39 percent of the water that will pass The Dalles. That's our own calculation, from the two governments' data. About 15 percent of the land, and about 39 percent of the water.
+A large part of it arrives by way of Canada. You can read that off two gauges. A gauge is just a station on the bank that records how much water is going past. One of them sits in British Columbia, a short way north of the border. The other is far downstream at The Dalles, a place on the river in Oregon where the United States government measures it. We lined the two records up, year against year, for the 87 years they share. On average, the river at the Canadian gauge is already carrying about 39 percent of the water that will pass The Dalles. That's our own calculation, from the two governments' data. About 15 percent of the land, and at the Canadian gauge, about 39 percent of the water.
 
 Numbers like those make you wonder who holds the tap. Hold that thought; we'll measure it. BC Hydro, the power company that runs Canada's side of the treaty, describes the river this way. Most of the power, and most of the need to hold back floods, is in the United States. The big sites for storing water are in Canada. One country has the need. The other has the room.
 
@@ -58,7 +62,7 @@ If you're enjoying the trip downriver, subscribe to Alpha Point. Back to that em
 
 <!-- p3 · The trigger and the tap -->
 
-Maybe you've already decided what the payment is. It's insurance. The United States bought decades of cover, the cover ran out, and so it pays by the year instead. That's close, and it leaves out the strange part. In September 2024, the 60 years the United States had paid for ran out. The promise didn't. Under the treaty, Canada has to help in a big flood whenever the United States asks, and the United States covers what that help costs. That's what it means to have Canada on call.
+Maybe you've already decided what the payment is. It's insurance. The United States bought decades of cover, the cover ran out, and so it pays by the year instead. That's close, but it misses one thing. In September 2024, the 60 years the United States had paid for ran out. The promise didn't. Under the treaty, Canada has to help in a big flood whenever the United States asks, and the United States covers what that help costs. That's what it means to have Canada on call.
 
 And the treaty doesn't say how big a flood that is. No number, no line on a gauge. A flood on this river is measured in cubic feet per second: how much water goes past The Dalles every second. When the treaty came up for review, the two sides worked from different numbers. American planners projected that Canadian storage would come into play once the river's peak landed somewhere between 450,000 and 650,000. The Canadian side assumed it would be called only at 600,000, a flood expected to be rare. That's how the US Congressional Research Service describes those studies. Between 450,000 and 600,000, one side expects the call and the other doesn't. We'll call that the gap.
 
@@ -66,7 +70,7 @@ So we looked at the river itself. From 1879 to 1967, the yearly peak at The Dall
 
 That gap is where the law comes in. In January 2025, Congress authorized the payment. It pays for reserving 3.6 million acre-feet of room a year behind the dam that holds back the Arrow Lakes. An acre-foot is enough water to cover an acre of land one foot deep. The law spells out what that includes, in its own words: "operations that the Government of Canada may not be obligated to provide" under the treaty.
 
-The lake drops every winter anyway, as water moves downstream to make power. What the United States pays for is a guarantee: that much room, every year of the deal, whatever the treaty does or doesn't require.
+The lake drops every winter anyway, as water moves downstream to make power. What the United States pays for is a guarantee: that much room kept empty for the flood, every year of the deal, whatever the treaty does or doesn't require.
 
 The alternative has a price too. The American agencies that run the treaty once estimated that a call on Canada would cost between 4 and 34 million dollars per request. British Columbia's estimate is that relying on those calls would cost the United States 40 to 150 million dollars a year in lost power. Beside the American figure, which is per call, 37.6 million a year looks steep. Beside the Canadian one, which is per year, it looks cheap.
 
@@ -86,9 +90,9 @@ What Canada has in its hands, then, is a calendar. And for every spring of the d
 
 That room came from somewhere. Stand on the shore of the Arrow Lakes in late winter, when the water is low, and it's in front of you. There's a wide strip of bare ground between the lake and the trees. By summer, the water will cover it. Part of that strip is the room, seen from the ground. Before the treaty dams, people lived along these valleys.
 
-The government of British Columbia puts the count at about 2,300 people displaced, and more than a dozen small communities flooded. Some, like Edgewood and Burton, were relocated. Renata no longer exists. Farther north, the river's big bend in British Columbia went under another of the treaty's lakes, and a town went under with it. As for how residents and First Nations were consulted, the province's own words are that it "could be considered inadequate to non-existent by today's standards."
+The government of British Columbia puts the count at about 2,300 people displaced, and more than a dozen small communities flooded. Some, like Edgewood and Burton, were relocated. Renata no longer exists. Farther north, the river's big bend in British Columbia went under another of the treaty's lakes, and a town went under with it. As for how residents and First Nations were consulted, the province itself says that consultation "could be considered inadequate to non-existent by today's standards."
 
-The Arrow Lakes lie in the traditional territory of the Sinixt. In 1956, the government of Canada declared the Arrow Lakes Band extinct. Decades later, the Supreme Court of Canada wrote those words in a ruling. It found that a successor group of the Sinixt, based in Washington State, is an Aboriginal people of Canada.
+The Arrow Lakes lie in the traditional territory of the Sinixt. In 1956, the government of Canada declared the Arrow Lakes Band extinct. Decades later, the Supreme Court of Canada recounted that history in a ruling. It found that a successor group of the Sinixt, based in Washington State, is an Aboriginal people of Canada.
 
 And the river had lost something even before the treaty dams. Grand Coulee Dam, built by the United States far downstream and finished in 1941, stopped the natural migratory runs of fish, salmon among them, on the upper Columbia.
 
@@ -96,15 +100,15 @@ And the river had lost something even before the treaty dams. Grand Coulee Dam, 
 
 So that is the room, and what it cost. What it's worth depends on who is counting.
 
-As the paid years ended, each side gave something up. Canada agreed to a smaller share of the power. The cut was more than a third. The United States agreed to pay by the year for room it used to have paid up.
+As the paid years ended, each side gave something up. Canada agreed to a smaller share of the power. The cut was more than a third. The United States agreed to pay by the year for room it had once paid for up front.
 
 Each side has its own account of what the other gains. The American agencies that run the treaty once estimated that ending it would raise American power revenues, mostly by ending Canada's share. British Columbia disputed those assumptions. Its argument is that the treaty makes the river dependable, and that a dependable river is worth more to the United States than the share it sends north. Two careful sums, and they don't land in the same place.
 
 When you hear that the United States pays, it's fair to ask who that is. The payment for the room is federal: Congress authorized it. Canada's share is power, and part of the bill for that power falls on utilities along the river. Three of them, in Washington State, went to court and stopped paying their part, and in September 2026 they settled with the federal government.
 
-There is a longer plan, in outline. Shortly before the paid years ended, the two governments announced an agreement in principle on a modernized treaty. It has not been finalized. In March 2025, British Columbia's government announced that the United States had paused the talks. Canada's delegation to them includes representatives of three First Nations. As of August 2026, the magazine Canadian Geographic reported that the talks had not resumed.
+There is a longer plan, in outline. Shortly before the paid years ended, the two governments announced an agreement in principle on a modernized treaty. It has not been finalized. Canada's negotiating team includes representatives of three First Nations. In March 2025, British Columbia's government announced that the United States had paused the talks. As of August 2026, the magazine Canadian Geographic reported that the talks had not resumed.
 
-That leaves the clock. The temporary deal can cover up to three flood seasons, and the spring of 2027 is the third. The law that authorizes the payment expires at the end of August 2027, unless Congress extends it. A Senate bill would move that date to 2029. The treaty itself remains in force, on-call promise, missing number and all.
+That leaves the clock. The temporary deal can cover up to three flood seasons, and the spring of 2027 is the third. The law that authorizes the payment expires at the end of August 2027, unless Congress extends it. As of November 2026, a Senate bill would move that date to 2029. The treaty itself remains in force, on-call promise, missing number and all.
 
 <!-- fecho · uma volta do ano do lago (uma cena no tempo, sem imperativo; a chamada de comentário, só de tela, entra sobre o 2º parágrafo) -->
 
