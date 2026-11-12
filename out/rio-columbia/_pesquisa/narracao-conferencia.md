@@ -67,3 +67,56 @@ a conferência. Só o trecho 34 custa uns 160 créditos.
 **Com o "tudo certo" dele** vêm o master (`node out/juneau/_pesquisa/gerar-master.mjs rio-columbia`), o ingest
 (`python out/juneau/_pesquisa/ingest-local.py rio-columbia`) e `regie open rio-columbia "Why the U.S. Pays Canada to Keep Part of a Lake
 Empty"`. A escuta antes do master é obrigatória (`sala/narracao.md`: a repetição da voz só o ouvido humano pega).
+
+## A escuta do Lucas (12/11/2026)
+
+- Às ~07:4x, ele pediu: "Me mande os áudios aqui". A Sala mandou o MP3 inteiro (`_tmp/narracao-rio-columbia.mp3`) e 7 trechos curtos,
+  cortados da `narracao.wav` sem gasto (`_tmp/escuta/`, fora do git), cada um com o parágrafo inteiro de um nome de risco: Sinixt
+  (trecho 34), The Dalles (9, 21, 22 e 28), Renata (33) e Grand Coulee (35).
+- Às ~07:5x, a resposta dele: **"Tudo correto"**. A narração está aprovada de ouvido, sem alias. O "cynicst" do trecho 34 é a grafia
+  do Whisper, e o Lucas ouviu o trecho.
+- Logo depois, ele respondeu às três perguntas da Sala (`roteiros/rio-columbia/decisoes-lucas.md`): o MapTiler com o relevo 3D, a
+  lista de caça e a frase "What the United States is buying is certainty." (trecho 26), que fica.
+- Em seguida: o master, o `ingest` (o `words.json`) e o `regie open`.
+
+## O relógio de palavras (ingest, 12/11/2026)
+
+- **O alinhamento da ElevenLabs.** A 1ª rodada do ingest (`_tmp/ingest-1.log`) parou sem ele. Rodou-se
+  `node out/juneau/_pesquisa/alinhamento-elevenlabs.mjs rio-columbia`, só GET no histórico, sem gasto (`_tmp/alinhamento-1.log`):
+  - os 44 itens casados pelo `request_id`;
+  - o texto do alinhamento igual ao aprovado nos 44;
+  - 2.746 palavras.
+
+  O alinhamento mede 0,08 s a mais que o PCM em cada trecho, e a ponta foi limitada ao fim do segmento.
+- **2ª rodada** (`_tmp/ingest-2.log`, 1.264 s): REPROVADO em dois portões, sem `words.json`. Passaram palavras, duração, fora das
+  falas, idioma e cobertura (1,000 a 1,036).
+  - `conteudo`: 12 itens nos trechos 1, 21, 25, 33 e 34. São o "–" no lugar dos dois-pontos (t1), os números em algarismo (t21, t25
+    e t33) e o "Cynicst" (t34).
+  - `relogio`: 4 vãos com voz sem vale (19,97, 272,26, 373,75 e 669,15), todos fechados na borda de início.
+- **3ª rodada** (`_tmp/ingest-3.log`): `--aceitar=1,21,25,33,34`, por Lucas Rosa (a escuta) e pela Sala (a leitura do laudo).
+  - O Lucas ouviu os trechos 21, 33 e 34 nos clipes 3, 6 e 1, e recebeu também o MP3 inteiro.
+  - t1 e t25 são grafia do Whisper, e o recorte curto ouviu o roteiro.
+- **A medida no som** (`_tmp/relogio/conferir-som.py`, derivado do do Big Sur, com os vãos lidos do laudo; o log está em
+  `_tmp/relogio/conferir-som-1.log`). O método junta a energia em quadros de 20 ms, com a razão entre as bandas, e a varredura de
+  corte com o Whisper local. Ninguém ouviu os vãos: é medida, não escuta.
+  - **19,97 ("mostly | American:"): certo.**
+    - O chiado de 19,73–19,81 é o /s/ de "mostly", e a queda em 19,83 é o /t/. O "-ly" vai até 19,97.
+    - O recorte que termina em 19,97 ouve só "mostly.", e o que termina em 20,02 já ouve "mostly a".
+    - A troca de palavra fica entre 19,97 e 20,02.
+  - **272,26 ("countries' | leaders"): certo.**
+    - A energia cai em 272,18–272,24 (−21 a −27 dBFS), entre o fim de "countries'" e a voz do vão.
+    - O recorte que termina em 272,26 ouve só "countries". O que começa em 272,31 ainda ouve "leaders", e o que começa em 272,36
+      já não.
+  - **373,75 ("It's | insurance."): certo.**
+    - O /s/ de "It's" está em 373,69–373,71, o "in-" começa em 373,73, e o /ʃ/ fica em 373,83–373,91.
+    - O recorte que começa em 373,65 ouve "its insurance", e o que começa em 373,70 ouve só "insurance".
+  - **669,15 ("By | summer,"): certo para o vão, com 0,1 s a mais no "By".**
+    - O "By" está em 668,93–669,03. O /s/ de "summer" começa em 669,05 (a razão de bandas fica em +21 a +29 dB até 669,15), e a voz
+      do vão é o "-ummer".
+    - O vão é todo do "summer", e fechá-lo no começo está certo.
+    - O fim do "By" no relógio (669,15) leva o /s/, uns 0,10 s, dentro da tolerância de 0,25 s do consumidor.
+- **4ª rodada** (`_tmp/ingest-4.log`): `--aceitar-vaos=19.97,272.26,373.75,669.15`, pela Sala, com a medida acima. Os 12 itens de
+  conteúdo foram herdados da 3ª. **APROVADO, 7 de 7 portões.**
+  - O `words.json` tem 2.746 palavras (sha256 `04692a8f…`), e o laudo é o `transcricao.json` (sha256 `755a8def…`).
+  - A última palavra termina em 907,76 s, e a cauda vai até 927,95 s.
+  - O `mapa-limpo --conferir` sai 0.

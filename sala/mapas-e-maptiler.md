@@ -88,3 +88,8 @@ A liberação da MapTiler em cada vídeo (o `MapTiler liberado`), a base de sat�
   mar, em relevo 3D, e o relevo 3D gasta tiles da sua conta.": "Sim, com relevo 3D (Recomendado)"). A opção dizia: "As cenas de mapa e
   o relevo 3D onde a cena precisar, sem perguntar cena por cena. Anoto o contador antes e depois de cada render de mapa." O contador
   fica em `out/big-sur/_pesquisa/maptiler-gasto.md`. É esta mensagem que a Sala cita no `MapTiler liberado`.
+  **No vídeo 7 (`rio-columbia`), liberado com o relevo 3D** (Lucas, 12/11/2026, ~07:5x, no chat da Sala, à pergunta "Posso usar o
+  MapTiler no vídeo 7 (rio Columbia), como no Big Sur? O rio nasce nas montanhas com neve da Colúmbia Britânica. A abertura, o começo do
+  rio e o fecho pedem satélite, e o relevo 3D gasta tiles da sua conta.": "Sim, com relevo 3D (Recomendado)"). A opção dizia: "As cenas
+  de mapa e o relevo 3D onde a cena precisar, sem perguntar cena por cena. Anoto o contador antes e depois de cada render de mapa." O
+  contador fica em `out/rio-columbia/_pesquisa/maptiler-gasto.md`. É esta mensagem que a Sala cita no `MapTiler liberado`.
