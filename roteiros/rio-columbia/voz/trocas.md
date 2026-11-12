@@ -1,7 +1,7 @@
 # Cópia para a voz: as trocas
 
-> Gerado por `_ferramentas/preparar-voz.mjs` a partir de `roteiro-narrador.md` (sha256 do texto falado `c4788c7ab3be`).
-> Cópia para a voz: `texto-para-voz.md` (sem a linha do carimbo), sha256 `1c57e258863b`, 15492 caracteres, 44 parágrafos.
+> Gerado por `_ferramentas/preparar-voz.mjs` a partir de `roteiro-narrador.md` (sha256 do texto falado `955d5210c444`).
+> Cópia para a voz: `texto-para-voz.md` (sem a linha do carimbo), sha256 `81990bb42b69`, 15521 caracteres, 44 parágrafos.
 > Prova: desfazendo cada troca abaixo, volta-se byte a byte ao texto revisado. Não sobrou dígito, `$`, `%` nem colchete.
 > Nenhuma palavra falada mudou; muda só a grafia. Nenhum alias de nome (política de `marca/pronuncias.md`). Fora dos números, 3 troca(s) de grafia de sigla (o "US" com os pontos; o porquê no topo do script).
 

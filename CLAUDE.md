@@ -364,8 +364,9 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
   nunca se corrige;
 - no Git Bash, `TZ=America/Sao_Paulo date` devolve UTC sem avisar (não há base de fusos): a hora de Brasília é o
   `date` sem `TZ`, ou o `Get-Date` do PowerShell (`APRENDIZADOS.md`, item 43);
-- `jq`, `turf`, `mapshaper`, `identify` e `pdftoppm` não existem nesta máquina. O PyMuPDF importa no Python,
-  mas não foi testado para rasterizar PDF;
+- `jq`, `turf`, `mapshaper`, `identify` e `pdftoppm` não existem nesta máquina. O PyMuPDF (1.28.0) importa no Python e
+  rasteriza PDF (`get_pixmap`): o `pesquisa-documentos` testou e conferiu a olho em 12/11/2026, no vídeo 7, em PDF escaneado
+  (a 300 dpi) e vetorial (a 200, 300 e 600 dpi);
 - `quadro.mjs` com satélite, `geo-recorte-bbox --nome` e `geo-osm-rota`: "Peças da pré-v1 em uso", itens 6 e 7;
 - `buscar-midia` lê o `marca/midia.json` do canal (desde 26/09, com as fontes que o Lucas escolheu; `midia.md`
   §7), e tira da lista o que tem menos de 1600 px de largura (conta em `abaixo_do_minimo`). A foto de época pequena é
@@ -393,6 +394,15 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
   - Script de pesquisador que chame a API também leva o User-Agent do canal e faz um pedido por vez.
   - O arquivo vem de `upload.wikimedia.org`, cujo robots.txt só veta `/wikipedia/commons/archive/`.
   - As páginas dinâmicas do site fora da API (`index.php`, a busca do site, o histórico), não;
+- a API OGC do serviço meteorológico do Canadá (`api.weather.gc.ca`, a MSC GeoMet, com as médias diárias e mensais do Water
+  Survey of Canada), um pedido por vez e com o User-Agent do canal, é a porta que a ECCC abre para programas: vale, apesar do
+  `Disallow: /collections/*/items` do robots.txt (decisão do Claude central, 12/11/2026, como a da NARA e a do Commons; o verificador
+  do research do vídeo 7 apontou que o `pesquisa-dados` a usou sem ler o robots.txt, VR-03).
+  - O próprio robots.txt manda ler a política de uso do MSC (eccc-msc.github.io/open-data/usage-policy/readme_en, lida em
+    12/11/2026), que fala a quem usa os serviços por programa: "Add a meaningful HTTP User-Agent header to HTTP requests" e "Use of
+    `wget` or `curl` commands is reserved for ad hoc data retrieval only".
+  - A coleta sistemática, pela política, é pelo AMQPS, que o canal não usa. O HYDAT (`collaboration.cmc.ec.gc.ca/cmc/…`) está
+    vetado no robots.txt daquele host (`Disallow: /cmc`) e não se baixa por script;
 - o upscale não-generativo que o `pesquisa-pessoas` pede (`image.upscale.classic`) não existe no canal nem na
   pré-v1;
 - o `entregar` do `buscar-midia` só entrega linha selada de acervo livre. A foto de jornal e a do governo do Alasca

@@ -120,3 +120,50 @@ Empty"`. A escuta antes do master é obrigatória (`sala/narracao.md`: a repeti�
   - O `words.json` tem 2.746 palavras (sha256 `04692a8f…`), e o laudo é o `transcricao.json` (sha256 `755a8def…`).
   - A última palavra termina em 907,76 s, e a cauda vai até 927,95 s.
   - O `mapa-limpo --conferir` sai 0.
+
+## A regravação dos trechos 8, 25 e 33 (12/11/2026, depois do research)
+
+- **Por quê:** a pesquisa leu as fontes originais, e o verificador de fatos achou três frases que elas não sustentavam: o p8 ("the whole
+  basin": a medida dá ~51 % na bacia toda e ~59–60 % na parte canadense), o p25 ("a year" e "which is per year": o estudo da BC de
+  25/06/2013, p. 11, diz "(in a Called Upon year)") e o p33 ("a town": sob o lago do tratado ficou Boat Encampment, um povoado). Os laudos
+  são `roteiros/rio-columbia/qc-roteiro/divergencias-research-antigo.laudo.md` e `mica-koocanusa-antigo.laudo.md`. O Lucas, no chat da
+  Sala: "Regravar os dois (Recomendado)" (~12:1x) e "Regravar com "settlement" (Recomendado)" (~12:2x). O roteiro passou a `955d5210c444`.
+- **A rodada:** `narrar.mjs rio-columbia`, depois do `--simular`: 3 pedidos (os trechos 8, 25 e 33), 1.453 caracteres, **700 créditos**
+  (197 + 248 + 255, o `characterCost` de cada um no `narracao.json`). Os outros 41 trechos vieram do cache, iguais byte a byte. O vídeo
+  soma **8.117 créditos** da ElevenLabs, dentro dos 15.000 da autonomia. O log está em `_tmp/narrar-2.log`.
+- **O tratamento:** `tratar-narracao.py` de novo (`_tmp/tratar-2.log`): a `narracao.wav` passou a `cfbb7c8e33ae`, com 909,95 s de fala e
+  929,95 s com a cauda (2,0 s a mais que a de manhã). O p8 ficou com a mesma duração (25,68 s); o p25 e o p33 cresceram.
+- **A conferência da máquina** (`conferir-paragrafos.py`, `_tmp/conferir-2.log`): os três trechos com as palavras novas certas ("those
+  mountains", "in any year it calls", "for a single year of calls", "a settlement", "Renata"), cobertura de 100 %, 100 % e 98,8 %. As
+  diferenças são grafia do Whisper: os "dollars" a mais do trecho 25 (ele escreve "$4") e o "thousand" do 33 (ele escreve "2,300").
+- **A escuta do Lucas:** os 3 clipes, cortados sem gasto em `_tmp/escuta-2/` (fora do git), foram a ele às ~12:3x e de novo às ~14:0x
+  (ele perguntou "Onde estão os áudios"). A resposta, às ~14:03: **"Tudo certo"**.
+- **O master novo:** `node out/juneau/_pesquisa/gerar-master.mjs rio-columbia` (`_tmp/master-2.log`): `_media/_master.mp4`, preto
+  3840×2160 a 30 fps com a narração, 929,95 s, o carimbo `cfbb7c8e33ae`.
+
+## O relógio de palavras, de novo (12/11/2026, ~14:1x)
+
+O narrar tirou do lugar o relógio da manhã (`words.json`, `transcricao.json` e `transcript.txt` em `*.obsoleto-20261112T152340Z`), e
+os aceites da manhã não passam de um áudio a outro (o `ingest-local.py` só herda aceite do mesmo sha256). O relógio se refez assim:
+
+- **O alinhamento da ElevenLabs** (`node out/juneau/_pesquisa/alinhamento-elevenlabs.mjs rio-columbia`, só GET; `_tmp/alinhamento-2.log`):
+  44 de 44 itens casados pelo `request_id`, o texto igual ao aprovado nos 44, 2.750 palavras.
+- **5ª rodada** (`_tmp/ingest-5.log`): REPROVADO, com os mesmos pendentes da manhã. Os 12 itens de conteúdo (t1, t21, t25, t33 e t34) e
+  os 4 vãos com voz sem vale. Três vãos caem no mesmo lugar de manhã (19,97, 272,26 e 373,75), porque o p8 manteve a duração; o do
+  trecho 32 andou de 669,15 para 670,91 (+1,76 s, o p25 mais longo).
+- **6ª rodada** (`_tmp/ingest-6.log`): `--aceitar=1,21,25,33,34`, por Lucas Rosa (a escuta) e pela Sala (a leitura do laudo). O t25 e o
+  t33 são os trechos novos, que o Lucas ouviu às ~14:03; o t1, o t21 e o t34 são os mesmos itens, no mesmo áudio, que ele ouviu de manhã.
+  O t1, o t21, o t25 e o t33 são grafia do Whisper; o t34 é a pronúncia de "Sinixt" que ele aprovou.
+- **A medida no som** (`_tmp/relogio/conferir-som.py`, o mesmo de manhã; o log está em `_tmp/relogio/conferir-som-2.log`). Ninguém ouviu
+  os vãos: é medida, não escuta.
+  - **19,97, 272,26 e 373,75:** a medida saiu idêntica, linha a linha, à da manhã (`conferir-som-1.log`): a energia em quadros de 20 ms e
+    as transcrições dos recortes. Os trechos 2, 15 e 20 vieram do cache do narrar, iguais, e caem no mesmo lugar.
+  - **670,91 ("By | summer,", o trecho 32):** é o vão de 669,15 da manhã, 1,76 s depois. Somados os 1,76 s aos tempos da manhã, 66 das 67
+    linhas da medida saem iguais. A diferente é a transcrição do recorte que começa em 670,96: de manhã o Whisper ouviu só "summer.";
+    agora, "summer," e mais quatro palavras grudadas no fim do recorte, com duração zero. A primeira palavra é a mesma, e é ela que decide:
+    a voz do vão é do "summer", e fechá-lo no começo está certo, como de manhã (com os 0,1 s a mais no "By", dentro da tolerância).
+- **7ª rodada** (`_tmp/ingest-7.log`): `--aceitar-vaos=19.97,272.26,373.75,670.91`, pela Sala, com a medida acima. Os 12 itens de
+  conteúdo foram herdados da 6ª. **APROVADO, 7 de 7 portões.**
+  - O `words.json` tem 2.750 palavras (sha256 `be4b6460…`), e o laudo é o `transcricao.json` (sha256 `1de6f515…`).
+  - A última palavra termina em 909,76 s, e a cauda vai até 929,95 s.
+  - O `mapa-limpo --conferir` sai 0 (`_tmp/mapa-limpo-2.txt`).

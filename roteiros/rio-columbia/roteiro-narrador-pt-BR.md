@@ -1,6 +1,6 @@
 # Por que os EUA pagam ao Canadá para manter parte de um lago vazia (versão em português, para leitura)
 
-Revisão do roteiro: `c4788c7ab3be`
+Revisão do roteiro: `955d5210c444`
 
 > Esta é a tradução do texto final (o r2 com as trocas do cético, 12/11/2026).
 > Tradução de leitura do r2 do `roteiro-narrador.md`, feita em 12/11/2026 para o Lucas ler e aprovar o texto. Não vai à voz nem à tela: a
@@ -43,7 +43,7 @@ Ponha o dedo no mapa, onde o rio Columbia começa. Você talvez conheça o lado 
 
 Dali, o rio faz algo esquisito para um rio que está a caminho do Oregon. Ele segue para o noroeste, mais fundo no Canadá. Depois dá uma volta numa longa curva em grampo, a grande curva do rio na Colúmbia Britânica, e só então vira para o sul, em direção à fronteira. Hoje essa curva está debaixo d'água: fica sob um lago, atrás de uma das barragens desta história. Siga com o dedo, e quando o Columbia cruza para os Estados Unidos, ele já percorreu um terço ou mais de toda a viagem até o mar.
 
-Então, de onde vem toda essa água, e quando? A parte canadense da bacia, a terra que escoa para o rio, é região de montanhas, e o que cai nela no inverno é neve. Durante meses, a neve fica ali parada. Então, no fim da primavera, ela se solta. Cerca de 60% da água que escoa de toda a bacia num ano desce em maio, junho e julho. A maior parte do ano do rio chega numa estação só.
+Então, de onde vem toda essa água, e quando? A parte canadense da bacia, a terra que escoa para o rio, é região de montanhas, e o que cai nela no inverno é neve. Durante meses, a neve fica ali parada. Então, no fim da primavera, ela se solta. Cerca de 60% da água que escoa dessas montanhas num ano desce em maio, junho e julho. A maior parte do ano do rio chega numa estação só.
 
 Uma parte grande dela chega pelo Canadá. Dá para ler isso em dois medidores. Um medidor é só uma estação na margem que registra quanta água está passando. Um deles fica na Colúmbia Britânica, um pouco ao norte da fronteira. O outro fica bem rio abaixo, em The Dalles, um ponto do rio no Oregon onde o governo dos Estados Unidos faz a medição. Alinhamos os dois registros, ano contra ano, pelos 87 anos que eles têm em comum. Em média, o rio no medidor canadense já carrega cerca de 39% da água que vai passar por The Dalles. Esse cálculo é nosso, feito a partir dos dados dos dois governos. Cerca de 15% da terra, e, no medidor canadense, cerca de 39% da água.
 
@@ -89,7 +89,7 @@ Então olhamos para o próprio rio. De 1879 a 1967, o pico anual em The Dalles p
 
 O lago baixa todo inverno de qualquer jeito, porque a água desce o rio para gerar energia. O que os Estados Unidos pagam é uma garantia: aquele tanto de espaço mantido vazio para a cheia, todo ano do acordo, seja o que for que o tratado exija ou deixe de exigir.
 
-A alternativa também tem preço. As agências americanas que operam o tratado já estimaram que um chamado ao Canadá custaria entre 4 e 34 milhões de dólares por pedido. A estimativa da Colúmbia Britânica é que depender desses chamados custaria aos Estados Unidos de 40 a 150 milhões de dólares por ano em energia perdida. Ao lado do número americano, que é por chamado, 37,6 milhões por ano parecem salgados. Ao lado do canadense, que é por ano, parecem baratos.
+A alternativa também tem preço. As agências americanas que operam o tratado já estimaram que um chamado ao Canadá custaria entre 4 e 34 milhões de dólares por pedido. A estimativa da Colúmbia Britânica é que depender desses chamados custaria aos Estados Unidos de 40 a 150 milhões de dólares em energia perdida em qualquer ano em que chamassem. Ao lado do número americano, que é por chamado, 37,6 milhões por ano parecem salgados. Ao lado do canadense, de um único ano de chamados, parecem baratos.
 
 Então sim, os Estados Unidos podem chamar o Canadá numa cheia. E nenhum número diz quando. Pelo acordo, eles pagam para que o espaço já esteja lá, com chamado ou sem chamado. O tratado é a promessa. O acordo é o espaço. O que os Estados Unidos estão comprando é certeza.
 
@@ -109,7 +109,7 @@ O que o Canadá tem nas mãos, então, é um calendário. E, a cada primavera do
 
 Esse espaço veio de algum lugar. Fique na margem dos Arrow Lakes no fim do inverno, quando a água está baixa, e ele está na sua frente. Há uma faixa larga de terra nua entre o lago e as árvores. No verão, a água vai cobri-la. Parte dessa faixa é o espaço, visto do chão. Antes das barragens do tratado, havia gente morando ao longo destes vales.
 
-O governo da Colúmbia Britânica calcula cerca de 2.300 pessoas deslocadas e mais de uma dúzia de pequenas comunidades inundadas. Algumas, como Edgewood e Burton, foram transferidas. Renata não existe mais. Mais ao norte, a grande curva do rio na Colúmbia Britânica ficou debaixo de outro dos lagos do tratado, e uma cidade afundou junto. Quanto a como moradores e Primeiras Nações foram consultados, a própria província diz que essa consulta "could be considered inadequate to non-existent by today's standards" [poderia ser considerada inadequada ou inexistente pelos padrões de hoje].
+O governo da Colúmbia Britânica calcula cerca de 2.300 pessoas deslocadas e mais de uma dúzia de pequenas comunidades inundadas. Algumas, como Edgewood e Burton, foram transferidas. Renata não existe mais. Mais ao norte, a grande curva do rio na Colúmbia Britânica ficou debaixo de outro dos lagos do tratado, e um povoado afundou junto. Quanto a como moradores e Primeiras Nações foram consultados, a própria província diz que essa consulta "could be considered inadequate to non-existent by today's standards" [poderia ser considerada inadequada ou inexistente pelos padrões de hoje].
 
 Os Arrow Lakes ficam no território tradicional dos Sinixt. Em 1956, o governo do Canadá declarou extinta a Arrow Lakes Band. Décadas depois, a Suprema Corte do Canadá relatou essa história numa decisão. Ela concluiu que um grupo sucessor dos Sinixt, com sede no estado de Washington, é um povo aborígene do Canadá.
 

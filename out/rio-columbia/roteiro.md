@@ -1,8 +1,8 @@
 ---
 projeto: rio-columbia
 o_que: a cópia para a voz do vídeo 7, o rio Columbia (44 parágrafos), eleven_v4, voz "Alpha Point - Narrator (conversational, calm)" (829pig94w9GefZ9jJQYl), um pedido por parágrafo; é o que o narrar.mjs da pré-v1 lê
-texto: idêntico a roteiros/rio-columbia/voz/texto-para-voz.md sem a linha do carimbo (sha256 1c57e258863b623f)
-revisao_do_roteiro: c4788c7ab3be
+texto: idêntico a roteiros/rio-columbia/voz/texto-para-voz.md sem a linha do carimbo (sha256 81990bb42b69bbb9)
+revisao_do_roteiro: 955d5210c444
 ---
 Every year, before the spring snowmelt, part of the Arrow Lakes Reservoir, on the Columbia River in British Columbia, is emptied on purpose. And starting with the twenty twenty-five flood season, the United States pays Canada for that empty space: thirty-seven point six million dollars a year, adjusted for inflation.
 
@@ -18,7 +18,7 @@ Put your finger on the map where the Columbia River begins. You may know its Ame
 
 From there, the river does something odd for a river on its way to Oregon. It heads northwest, deeper into Canada. Then it swings around in a long hairpin, the river's big bend in British Columbia, and only after that does it turn south toward the border. That bend is underwater these days: it lies beneath a lake, behind one of the dams in this story. Keep your finger moving, and by the time the Columbia crosses into the United States, it has made a third or more of its whole journey to the sea.
 
-So where does all that water come from, and when? The Canadian part of the basin, the land that drains into the river, is mountain country, and what lands on it in winter is snow. For months, the snow just sits there. Then, late in the spring, it lets go. About sixty percent of the water that runs off the whole basin in a year comes down in May, June and July. Most of the river's year arrives in one season.
+So where does all that water come from, and when? The Canadian part of the basin, the land that drains into the river, is mountain country, and what lands on it in winter is snow. For months, the snow just sits there. Then, late in the spring, it lets go. About sixty percent of the water that runs off those mountains in a year comes down in May, June and July. Most of the river's year arrives in one season.
 
 A large part of it arrives by way of Canada. You can read that off two gauges. A gauge is just a station on the bank that records how much water is going past. One of them sits in British Columbia, a short way north of the border. The other is far downstream at The Dalles, a place on the river in Oregon where the United States government measures it. We lined the two records up, year against year, for the eighty-seven years they share. On average, the river at the Canadian gauge is already carrying about thirty-nine percent of the water that will pass The Dalles. That's our own calculation, from the two governments' data. About fifteen percent of the land, and at the Canadian gauge, about thirty-nine percent of the water.
 
@@ -52,7 +52,7 @@ That gap is where the law comes in. In January twenty twenty-five, Congress auth
 
 The lake drops every winter anyway, as water moves downstream to make power. What the United States pays for is a guarantee: that much room kept empty for the flood, every year of the deal, whatever the treaty does or doesn't require.
 
-The alternative has a price too. The American agencies that run the treaty once estimated that a call on Canada would cost between four and thirty-four million dollars per request. British Columbia's estimate is that relying on those calls would cost the United States forty to one hundred fifty million dollars a year in lost power. Beside the American figure, which is per call, thirty-seven point six million a year looks steep. Beside the Canadian one, which is per year, it looks cheap.
+The alternative has a price too. The American agencies that run the treaty once estimated that a call on Canada would cost between four and thirty-four million dollars per request. British Columbia's estimate is that relying on those calls would cost the United States forty to one hundred fifty million dollars in lost power in any year it calls. Beside the American figure, which is per call, thirty-seven point six million a year looks steep. Beside the Canadian one, for a single year of calls, it looks cheap.
 
 So yes, the United States can call on Canada in a flood. And no number says when. Under the deal, it pays so the room is already there, call or no call. The treaty is the promise. The deal is the room. What the United States is buying is certainty.
 
@@ -68,7 +68,7 @@ What Canada has in its hands, then, is a calendar. And for every spring of the d
 
 That room came from somewhere. Stand on the shore of the Arrow Lakes in late winter, when the water is low, and it's in front of you. There's a wide strip of bare ground between the lake and the trees. By summer, the water will cover it. Part of that strip is the room, seen from the ground. Before the treaty dams, people lived along these valleys.
 
-The government of British Columbia puts the count at about two thousand three hundred people displaced, and more than a dozen small communities flooded. Some, like Edgewood and Burton, were relocated. Renata no longer exists. Farther north, the river's big bend in British Columbia went under another of the treaty's lakes, and a town went under with it. As for how residents and First Nations were consulted, the province itself says that consultation "could be considered inadequate to non-existent by today's standards."
+The government of British Columbia puts the count at about two thousand three hundred people displaced, and more than a dozen small communities flooded. Some, like Edgewood and Burton, were relocated. Renata no longer exists. Farther north, the river's big bend in British Columbia went under another of the treaty's lakes, and a settlement went under with it. As for how residents and First Nations were consulted, the province itself says that consultation "could be considered inadequate to non-existent by today's standards."
 
 The Arrow Lakes lie in the traditional territory of the Sinixt. In nineteen fifty-six, the government of Canada declared the Arrow Lakes Band extinct. Decades later, the Supreme Court of Canada recounted that history in a ruling. It found that a successor group of the Sinixt, based in Washington State, is an Aboriginal people of Canada.
 

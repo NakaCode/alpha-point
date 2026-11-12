@@ -1,60 +1,117 @@
-COBERTURA: 224 de 224
+COBERTURA: 228 de 228
 
-# Laudo · verificador de fatos · roteiro final (o r2 com as trocas do cético) · rio-columbia (vídeo 7)
+# Laudo · verificador de fatos · roteiro final depois da revisão do research · rio-columbia (vídeo 7)
 
-Revisão julgada: `c4788c7ab3be` · data-base 12/11/2026 (o texto final e as cópias lidos em 12/11/2026, hora de Brasília, depois do laudo do
-r2, que é do mesmo dia)
+Revisão julgada: `955d5210c444` · data-base 12/11/2026 (o texto e as fontes lidos em 12/11/2026, hora de Brasília, depois dos dois laudos
+de hoje: `divergencias-research-antigo.laudo.md` e `mica-koocanusa-antigo.laudo.md`)
 
-As 224 linhas de `roteiros/rio-columbia/qc-roteiro/fatos-tabela.json` têm veredito, e as 224 são "confirmada" (9 delas linhas L, cada uma
-apoiada em linha confirmada). **Como a lista foi derivada:** o canal não tem extrator de afirmações para este vídeo. A lista é a do r2
-(`fatos-tabela-r2.json`, 222 linhas, PASS, nota 9,0; laudo em `fatos-r2.laudo.md`), feita pela leitura integral, à mão, do r1 e do r2, mais
-a **leitura, à mão, das oito frases que a Sala trocou** depois do cético (`cetico-r2.laudo.md`, "As trocas"), conferidas pelo `diff` entre
-`_trabalho/roteiro-r2.antes.md` e o texto final (só as linhas dos p9, p20, p24, p33, p34, p37, p40 e p41 mudaram):
-- **209 linhas levadas do r2**: a frase não mudou, e o número do parágrafo continua o mesmo (44 parágrafos antes e depois);
-- **13 linhas rejulgadas**: as frases de C1, C2, C4, C5, C6, C7 e C8, julgadas de novo na cópia local da fonte;
-- **2 linhas novas**: o "had once paid for up front" (C6, F232) e o "As of November 2026" (C8, F231), o que as trocas passaram a afirmar;
-- **nenhuma linha saiu.** A C3 ("That's close, but it misses one thing.") não afirma nada que se confira, como a frase de antes: continua em
-  NADA A CHECAR.
+As 228 linhas de `roteiros/rio-columbia/qc-roteiro/fatos-tabela.json` têm veredito, e as 228 são "confirmada" (9 delas linhas L, cada uma
+apoiada em linha confirmada). O laudo de antes, do sha `c4788c7ab3be`, está guardado byte a byte em `fatos-final-c4788c7ab3be-antigo.laudo.md`, e a
+tabela dele em `fatos-tabela-final-c4788c7ab3be.json`.
 
-O texto continua com 189 frases contadas sem partir os decimais (a C7 mudou uma frase de lugar, não criou nem tirou nenhuma); 149 têm linha,
-e as 40 outras estão no fim, uma a uma (NADA A CHECAR). **O texto foi CHECADO POR INTEIRO, e está CHECADO E LIMPO.**
+**Como a lista foi derivada:** o canal não tem extrator de afirmações para este vídeo. A lista é a do laudo final de antes (224 linhas,
+feita pela leitura integral, à mão, do r1, do r2 e das trocas do cético), mais a **leitura, à mão, das quatro frases que a revisão do
+research trocou**. O `diff` entre `_trabalho/roteiro-final.antes-research.md` e `roteiro-narrador.md` mostra só estas mudanças: o bloco de
+citação do cabeçalho (seis linhas com ">", que não são faladas) e uma linha em cada um dos p8, p25 e p33. Os 44 parágrafos continuam
+44, na mesma ordem, e o texto continua com 189 frases.
+- **200 linhas levadas** do laudo de antes: a frase não mudou, e a fonte e o trecho também não;
+- **15 linhas levadas, com a fonte trocada**: as 14 que citavam a cópia CSG West do tratado e a que citava a cópia da International Water
+  Law Project da troca de notas de 16/09/1964. As frases não mudaram; a fonte passou ao texto registrado na ONU (UNTS vol. 542, No. 7894),
+  com o mesmo trecho (o da F054, encurtado; abaixo);
+- **9 linhas rejulgadas**: F020 (p8); F089, F090, F091, F205, F206, F207 e F208 (p25); F124 (p33);
+- **4 linhas novas**: F235 e F236 (p8), F233 e F234 (p33);
+- **nenhuma linha saiu.**
 
-NOTA: 9.0/10. As oito trocas conferem na letra da fonte, e duas deixam o texto mais firme que o r2: a C2 diz onde se mede o 39 % (o medidor
-canadense, como a conta é), e a C8 põe a data no único volátil de lei que ficava sem data na voz. A nota anterior era 9,0 (r2): **igual, sem
-regressão**. Segura o 10 o mesmo que segurava no r2: os voláteis que pedem releitura na véspera da voz (a WRDA 2026 e a pausa das conversas)
-e a pergunta da CBC, confirmada pela leitura da Sala no navegador do app, não por leitura minha.
+As frases com linha continuam 149, e as 40 sem linha estão no fim, uma a uma (NADA A CHECAR). **O texto foi CHECADO POR INTEIRO e está
+CHECADO E LIMPO.**
+
+NOTA: 9.5/10. As quatro trocas conferem na letra da fonte original, e as três frases saem mais firmes que antes: o p25 deixou de dizer
+"per year" onde o estudo da BC diz "in a Called Upon year", o p8 diz os 60 % do lugar onde a medida os reproduz, e o p33 tem fonte que
+afoga o povoado certo no lago certo. A nota anterior era 9,0: **sobe, sem regressão** (a de antes valia sobre um texto com o erro do p25,
+que só a leitura do original achou). Segura o 10 o mesmo de antes (os voláteis da véspera e a CBC, lida pela Sala, não por mim) e um resíduo
+declarado abaixo: o "per request" americano do p25 só tem o resumo do CRS, sem o documento da US Entity.
 
 ## Os itens que pedem troca (a frase de agora → a troca proposta)
 
-**Nenhum.** Nenhuma linha DIVERGE, nenhuma é REFUTADA, nenhuma ficou sem leitura.
+**Nenhum na voz.** Nenhuma linha DIVERGE, nenhuma é REFUTADA, nenhuma ficou sem leitura. As trocas de tela estão em "Para a tela".
 
-## O que mudou em relação ao r2 (as oito trocas do cético, julgadas)
+## O que mudou em relação ao laudo de antes (as quatro frases, julgadas)
 
-| troca | p | a frase de agora | veredito | o que a fonte diz |
-|---|---|---|---|---|
-| C1 | 34 | "Decades later, the Supreme Court of Canada recounted that history in a ruling." | CONFIRMADA (F133, F218) | R. v. Desautel, 2021 SCC 17, §6 (maioria): "after her death in 1956, the government of Canada declared the Arrow Lakes Band extinct"; o voto divergente conta o mesmo no §131. "recounted that history" é mais exato que o "wrote those words" do r2, porque a frase anterior da voz não é citação literal da Corte. 1956 → 2021 = 65 anos ("Decades later"). |
-| C2 | 9 | "About 15 percent of the land, and at the Canadian gauge, about 39 percent of the water." | CONFIRMADA (F192–F194) | 15 %: "only about 15 percent of the 259,500 square miles of the Columbia River Basin is actually located in Canada" (USACE + BPA). 39 %: Birchbank/The Dalles, 87 anos, 71.191 / 181.213 cfs = 39,3 % (`fatos-medidas.txt`). A troca põe o número no lugar em que ele é medido: Birchbank fica 19,8 km ao norte do paralelo 49 (F021). A USACE + BPA dá 38 % para "the Canadian waters". |
-| C3 | 20 | "That's close, but it misses one thing." | NADA A CHECAR | transição; o "one thing" é dito nas frases seguintes (F066, F198–F201, F067–F068, todas confirmadas). |
-| C4 | 24 | "What the United States pays for is a guarantee: that much room kept empty for the flood, every year of the deal, whatever the treaty does or doesn't require." | CONFIRMADA (F086) | Public Law 118-272, sec. 1152: "pre-planned flood storage per operating year at Hugh Keenleyside Dam, including operations that the Government of Canada may not be obligated to provide". "room kept empty for the flood" = "pre-planned flood storage". |
-| C5 | 33 | "As for how residents and First Nations were consulted, the province itself says that consultation "could be considered inadequate to non-existent by today's standards."" | CONFIRMADA (F125) | Governo da BC, About the Columbia River Treaty: "First Nations and public consultation and mitigation at the time could be considered inadequate to non-existent by today's standards". A citação é literal (o apóstrofo curvo do original é tipografia); o dono é a própria província; o sujeito do original inclui a "mitigation", e a frase fala só da consulta, o que não muda o que a citação diz dela. |
-| C6 | 37 | "The United States agreed to pay by the year for room it had once paid for up front." | CONFIRMADA (F139, F190, nova F232) | "by the year": "US$ 37.6 million per year, indexed to inflation" (AIP, BC). "had once paid for up front": o tratado, Art. VI(1), "52,100,000 dollars upon the commencement of operation of the storage" (Arrow), pela cheia do Art. IV(2)(a), que vale "until the expiration of sixty years from the ratification date"; a USACE + BPA: "lump sum payments totaling $64.4 million when each of the three Canadian dams became operational". Um pagamento só, na entrada da barragem, pelo prazo inteiro: "up front". (Arrow entrou em 1968, quatro anos depois do começo dos 60 anos; o p16 já diz "as each dam came into service", e o "up front" não diz mais que isso.) |
-| C7 | 40 | "Canada's negotiating team includes representatives of three First Nations." (agora logo depois de "It has not been finalized.") | CONFIRMADA (F158, F159) | Global Affairs Canada, nota de 28/05/2025: "The Canadian delegation is made up of federal, provincial and First Nation representatives from the Ktunaxa, the Syilx-Okanagan and the Secwépemc Nations"; a nota trata das "modernization negotiations" (a delegação é a equipe de negociação). Na posição nova, o "team" fala do tratado modernizado da frase anterior, e a ordem dos fatos continua certa (AIP em 07/2024, pausa em 03/2025, agosto de 2026). O presente "includes" é o da nota mais nova achada (volátil, como no r2). |
-| C8 | 41 | "As of November 2026, a Senate bill would move that date to 2029." | CONFIRMADA (F164, F229, F230, nova F231) | S. 4949, sec. 1367: a (3) troca "2027" por "2029" (o trecho literal está na F164), e a (c)(3) é o "shall expire on August 31, 2027" da lei. O BILLSTATUS, lido em 12/11/2026: a última ação é "Placed on Senate Legislative Calendar under General Orders. Calendar No. 457." (15/07/2026); as datas de setembro na cópia são de etiquetas de assunto e da atualização do registro, não ações. A busca de 12/11/2026 não achou votação no plenário do Senado (a mais nova, da NACO, de 16/09/2026, diz que a versão do Senado aguarda o voto do plenário). A data na voz resolve o volátil do r2: a frase continua verdadeira mesmo se o Senado votar depois. |
+| p | a frase de agora | veredito | o que a fonte diz |
+|---|---|---|---|
+| 8 | "About 60 percent of the water that runs off those mountains in a year comes down in May, June and July." | CONFIRMADA (F020, F235, F236) | "those mountains" são as da frase anterior: "The Canadian part of the basin … is mountain country". Medido por mim no HYDAT do Water Survey of Canada (`medir-mai-jul.py`, o volume de cada mês pesado pelos dias, só anos com os 12 meses): **Columbia at Donald (08NB005)**, inteira no Canadá, acima do Kinbasket e sem barragem grande acima, **60,1 %** em maio–julho em 79 anos (1944–2025) e 60,5 % até 1967; **Columbia at Birchbank (08NE049)**, o medidor canadense do p9, **58,9 %** em 1938–1967, antes das barragens de armazenamento (a conta do laudo de divergências, refeita). A Birchbank drena também o alto Kootenai de Montana e Idaho, montanha e neve do mesmo jeito; a Donald, não, e dá o mesmo número. As três agências que operam o sistema (BPA, Reclamation e USACE, *Inside Story*, 2001, p. 4) dão "about 60 percent of the natural runoff in the basin" e o mecanismo ("stored during the winter in the snowpack is released in the spring and early summer"). A troca tirou da voz o "whole basin", que a medida não sustentava (The Dalles, 1879–1967: 51,4 %). |
+| 25 | "British Columbia's estimate is that relying on those calls would cost the United States 40 to 150 million dollars in lost power in any year it calls." | CONFIRMADA (F089, F090) | O original, e não o resumo do CRS: BC Ministry of Energy and Mines, *U.S. Benefits from the Columbia River Treaty*, 25/06/2013, p. 11 impressa: "BC Hydro analysis estimated U.S. energy losses due to effective use at these facilities (in a Called Upon year) to be approximately 1,300-3,000 gigawatt hours with an estimated value of $40 to $150 million." "in any year it calls" = "in a Called Upon year". "relying on those calls" = o regime de chamada, em que os EUA têm de fazer o "effective use" das próprias represas antes de chamar, e é desse uso que vem a perda. A p. 10 diz que esses anos devem ser raros: "expected to be used infrequently and only in very large snow pack years". O dono ("British Columbia's estimate") é o estudo da província, com a análise da BC Hydro. |
+| 25 | "Beside the American figure, which is per call, 37.6 million a year looks steep. Beside the Canadian one, for a single year of calls, it looks cheap." | CONFIRMADA (F091, F205–F208) | O americano é por pedido ("between $4 million and $34 million per request", CRS, nota 41); o canadense é de um ano de chamada (BC 2013, p. 11, acima); o pagamento é por ano ("$37,600,000 for fiscal year 2025", Public Law 118-272, sec. 1152). A conta fecha: 37,6 > 34, o teto de um pedido; 37,6 < 40, o piso de **um** ano de chamada (`fatos-medidas-r2.txt`). O "looks" segura o juízo. |
+| 33 | "Farther north, the river's big bend in British Columbia went under another of the treaty's lakes, and a settlement went under with it." | CONFIRMADA (F124, F233, F234) | BC Geographical Names, Boat Encampment (52160): "Community"; "Boat Encampment (Settlement) adopted 4 March 1954 … Name rescinded 11 March 1974, due to flooding of Kinbasket Lake behind Mica Dam"; e "Here, at the top of the "Big Bend" of the Columbia". Encampment Creek (9982): o riacho entrava "into the apex of the great bend [Big Bend] of the Columbia River … opposite Boat Encampment", e "Following flooding of these valleys behind Mica Dam, this creek now flows into Kinbasket Lake". Mica é barragem do tratado: "Canada shall construct dams : (a) on the Columbia River near Mica Creek" (Art. II(2)(a), UNTS 542, p. 4 do PDF). Boat Encampment fica a 52°07'N, ao norte dos lagos do Arrow do resto do parágrafo ("Farther north"). Era povoado de beira de estrada, não cidade: "settlement" é a palavra do próprio registro de 1954. |
 
-As outras frases levam a linha do r2. Conferi, linha a linha, que a frase de cada uma está inteira no parágrafo do mesmo número no texto
-final (o `portao-fatos`, regra [frase], diz o mesmo).
+**A F124, corrigida.** A linha antiga apoiava o p33 no verbete da barragem de Mica ("named for the former town of Mica Creek, drowned under
+the pondage"). Essa fonte não sustentava a frase: a vila de Mica Creek fica na margem leste do lago de Revelstoke (BCGN 22582), coberta em
+1984 por um lago que não é do tratado, 7 km abaixo da barragem (`mica-koocanusa-antigo.laudo.md`). A linha agora se apoia em Boat Encampment
+(BCGN 52160), baixado e lido hoje. A F017 (p7, "That bend is underwater these days…") continua com o verbete de Mica e fica levada: ela só
+afirma a curva sob o lago, e o "Formerly the "Big Bend" area of the Columbia River … drowned under the pondage" diz isso; o verbete do
+Encampment Creek, lido hoje, diz o mesmo por outro caminho.
+
+**As linhas de tratado, na UNTS 542.** O laudo de divergências achou a cópia CSG West errando duas vezes o tratado: "flood control period"
+no Art. IV(3), onde a ONU tem "flood period", e "$254,000,000" na nota de 1964, onde a ONU tem "$254,400,000". Nenhuma linha da tabela citava
+esses dois pedaços (a F011 e a F092 param antes do fim do IV(3); a F056, dos "about 254 million", cita a USACE + BPA), e por isso nenhum
+veredito muda. Mas atributo de documento se confirma no texto de quem o guarda (ofício, §3.1), e as 14 linhas que citavam a CSG West e a que
+citava a cópia da IWLP (F058) passaram ao texto registrado na ONU. Cada trecho foi achado, com a busca do `portao-fatos`, numa cópia em texto
+da UNTS: a de `midia/rio-columbia/fontes/texto/documentos__unts-542-7894-english.pdf.txt`, quando a página está nela; senão, a cópia
+completa do `pesquisa-documentos` (`out/rio-columbia/_tmp/pesquisa-documentos/baixado/unts/texto-completo.txt`). A página do PDF vai na
+fonte de cada linha. A F054 foi encurtada para "Canada is entitled to one half the downstream power benefits", porque o OCR da ONU parte
+"deter mined" na linha seguinte; a frase inteira do Art. V(1) é a mesma nas duas cópias. Os três valores do Art. VI(1) que a F051 soma
+também conferem na UNTS (1,200,000, 52,100,000 e 11,100,000 dólares; p. 7 do PDF). E os "about 254 million" da F056 continuam certos
+contra os 254.400.000 da ONU.
+
+**O resto do p8, levado com uma observação.** A F179 ("For months, the snow just sits there. Then, late in the spring, it lets go.") e a
+F180 ("Most of the river's year arrives in one season.") não mudaram e continuam com o trecho do CRS. A medida as sustenta também: no rio,
+em The Dalles, maio–julho dá 51,4 % em 1879–1967 e 53,2 % em 1879–1900, e abril–julho, 59,8 % e 61,4 % (laudo de divergências, item 1).
+"Most" fica de pé, por pouco em maio–julho e com folga se a estação começa em abril.
+
+**Um resíduo, declarado (não pede troca).** O "per request" americano (F087, F205; p25) vem só do CRS (R43287, nota 41), e a nota 41 não
+cita documento: é a mesma ponte que trocou o "in a Called Upon year" da BC por "per year". Uma busca de hoje não achou o estudo da US
+Entity com os US$ 4–34 milhões. A unidade casa com o tratado, que paga cada chamada à parte (Art. VI(4), UNTS p. 7 do PDF: "For each flood period for which flood control is provided by Canada under Article IV (3)"), e o CRS é o serviço de pesquisa do
+Congresso, mas o número não foi lido no original. A conclusão do p25 sobrevive mesmo sem ele: 37,6 por ano fica abaixo do piso de um único
+ano de chamada da BC.
+
+**A moeda dos 40–150 milhões.** O estudo da BC escreve "$" sem dizer de que país, e a voz diz "dollars", sem "U.S.": é fiel. A comparação
+com os US$ 37,6 milhões supõe a mesma moeda. O câmbio de 2013 não foi conferido hoje; os 37,6 são de 2025, corrigidos pela inflação, e os
+40 são de 2013. Na tela, os 40–150 vão sem "US$".
 
 ## Para a tela (vai ao `redator-de-tela`; não é troca de voz)
 
-- **O corte da parte do Canadá**: a voz diz "more than a third"; na tela, "37 %" com o dono certo, que é o comunicado do Departamento de
-  Estado de 25/11/2024, como o CRS o resume ("Beginning August 1, 2024, the Canadian Entitlement decreased by 37%"): `U.S. STATE
-  DEPARTMENT, NOV. 25, 2024`.
-- As faixas que saíram da voz: **"$110–400 MILLION A YEAR"** da BC Hydro (06/2026) **sem "US$"** (o slide não diz a moeda; laudo do r1,
-  item 3) e com o "typically" da fonte; **"$180–280 MILLION A YEAR"**, US Entity, junho de 2012 (CRS, nota 26), essa em dólar americano.
-- **87 YEARS**, não 88 (laudo do r1); a ressalva dos picos: **"1974–2008: DAILY AVERAGES"**.
+O que vem do laudo de antes, com uma correção (a ressalva dos picos), e o que os dois laudos de hoje pedem, já casado com a voz nova:
+
+- **s16, s17, s60 · os 60 % (p8).** A voz agora fala das montanhas canadenses. Na tela: `≈ 60% IN MAY–JULY · COLUMBIA AT BIRCHBANK, B.C.,
+  1938–1967`, com o crédito `Alpha Point calculation: Water Survey of Canada (station 08NE049). Contains information licensed under the
+  Open Government Licence – Canada.`; ou, sem barragem nenhuma no período, `≈ 60% IN MAY–JULY · COLUMBIA AT DONALD, B.C., 1944–2025`
+  (estação 08NB005, o mesmo crédito). **Nunca** as barras de The Dalles sob o "≈ 60%", nem a série de Birchbank depois das barragens
+  (1937–2025 dá 42,2 %, porque os lagos seguram o degelo).
+- **s42 · o p25.** `PER CALL: $4–34 MILLION · U.S. ENTITY`; `$40–150 MILLION IN LOST POWER · IN A CALLED-UPON YEAR · BC HYDRO ANALYSIS,
+  2013` (sem "US$"); `$37.6M PER YEAR`; crédito `Source: Congressional Research Service, 2024; Government of British Columbia, June 25,
+  2013; U.S. Public Law 118-272`. **Nunca** `PER YEAR` ao lado dos 40–150.
+- **s51 · o p33.** O ponto do povoado é **BOAT ENCAMPMENT**, 52°06'59"N 118°26'04"W (o "approximate population centre" do BCGN; o nome não
+  é oficial desde 1974). Rótulo possível: `BOAT ENCAMPMENT · FLOODED BY KINBASKET LAKE`, sem ano e sem `TOWN`. **Nunca** Mica Creek como
+  coisa afogada pelo Kinbasket.
+- **O tratado na tela sai da UNTS 542**, nunca da CSG West: o fim do Art. IV(3) é "for the duration of the flood period for which the call
+  is made"; o valor de 1964 é `$254,400,000 AS OF OCT. 1, 1964` (pago: `$253,929,534.25`), nunca `$254,000,000`; a voz ("about 254 million
+  dollars") e um `≈ $254 MILLION` ficam. Crédito: `Source: Columbia River Treaty (UN Treaty Series, vol. 542)`.
+- **s53 · a folha da Corte.** A frase inteira do §6 de Desautel, desde "By 1930, only one person remained on the rolls of the Arrow Lakes
+  Band", para o "her" ter antecedente; o corte depois de "extinct" vai com "…". Nunca "one Sinixt" nem "the last Sinixt".
+- **s37 · a ressalva dos picos: `1961–2008: DAILY AVERAGES`**, e não "1974–2008" como o laudo de antes dizia (o código 1 do USGS aparece em
+  48 anos, de 1961 a 2008; laudo de divergências, 4c). "40 of 89 years" fica. E **87 YEARS**, não 88.
+- **s32, s61 · o Arrow.** Os 434,3 m e 439,5 m são **previsão da BC Hydro para 2018**, não medida de 2017. Se pontos forem à tela, os medidos
+  de 2017 na WSC 08NE104 (435,14 m em 31/05, 438,94 m em 30/06, 439,52 m em 27/07), com o crédito da ECCC.
+- **s57 · as PUDs.** Os US$ 29,9 milhões ficam fora da tela, ou vão atribuídos à APPA (25/09/2026): APPA e The Star têm o mesmo texto, e
+  valem por uma fonte.
+- **f117 · o cartão da CBC:** `CBC NEWS · FEB. 17, 2025` (a data do vídeo no YouTube, lida pela Sala).
+- **O corte da parte do Canadá**: a voz diz "more than a third"; na tela, "37 %" com o dono certo, a nota do Departamento de Estado de
+  25/11/2024 ("Beginning on August 1, the Canadian Entitlement decreased by 37%"): `U.S. STATE DEPARTMENT, NOV. 25, 2024`. Os MW e os aMW
+  não vão ao lado do −37 % como conta dele.
+- As faixas que saíram da voz: **"$110–400 MILLION A YEAR"** da BC Hydro (06/2026) **sem "US$"** e com o "typically" da fonte;
+  **"$180–280 MILLION A YEAR"**, US Entity, junho de 2012 (CRS, nota 26), essa em dólar americano.
 - O par do eco (15 % da terra, 39 % da água no medidor): o 39 % com a conta como **do canal** ("ALPHA POINT CALCULATION, WSC + USGS DATA"),
-  e o 15 % com a USACE + BPA.
-- "Lakes Tribe" (das Colville Confederated Tribes), que saiu da voz.
+  e o 15 % com a USACE + BPA. "Lakes Tribe" (das Colville Confederated Tribes), que saiu da voz.
 
 ## Os voláteis que ficaram na fala (data-base 12/11/2026)
 
@@ -72,29 +129,29 @@ gravação.
 
 ## O que ficou sem leitura (NÃO FOI CHECADO na origem), e a URL
 
-- **No texto final**: nenhum pedido à origem. As oito trocas se julgaram nas cópias locais já lidas; uma busca (WebSearch, 12/11/2026) só orientou o volátil do S. 4949 e não entrou como leitura.
-
-O que segue é o do r2, e continua valendo:
-
-
-- **Nenhuma linha ficou sem veredito.** Nesta rodada não pedi nada à origem: o r2 não trouxe fato novo, e as cópias locais (as de
-  `fontes/texto/` e as de `fontes/web/`, lidas hoje pelo r1, um pedido por vez, com o User-Agent do canal) bastaram. As duas buscas de hoje
-  (WebSearch: a WRDA 2026 e a retomada das conversas) só serviram de orientação para os voláteis; o que veio só delas não entrou como
-  leitura.
-- **O vídeo da CBC** (p27): `https://www.youtube.com/` recusou a leitura automática à pauta e `https://www.cbc.ca/` dá 403 (registrados
-  pela pauta e pela Sala; não se tentou de novo). A pergunta se confirma pelo título que a Sala leu no navegador do app em 09/11/2026
-  (`concorrencia.md`). A data do vídeo continua sem leitura, mas não está mais na voz.
-- **congress.gov** (S. 4949 e H.R. 9497): pediu verificação de robô à Sala em 09/11/2026; não se tentou. O estado vem do BILLSTATUS do
-  govinfo.gov.
+- **Nesta revisão**, nenhuma linha ficou sem leitura. Pedidos à origem, um por vez, com o User-Agent do canal: a API do ECCC (a estação
+  08NB005, médias mensais; o bruto está em `out/rio-columbia/_tmp/verificar-divergencias/final/wsc-mensal-08NB005.json`), e o BC
+  Geographical Names (o `robots.txt` de apps.gov.bc.ca devolve 404, sem regra; as páginas 52160 e 9982 vieram com 200, e as cópias em texto
+  estão ao lado). Duas buscas (WebSearch) só orientaram: o câmbio de 2013 e o estudo da US Entity com os US$ 4–34 milhões; nenhuma das
+  duas achou a fonte, e nada delas entrou como leitura.
+- **O que segue é do laudo de antes, e continua valendo**:
+  - **o vídeo da CBC** (p27): o youtube.com recusou a leitura automática à pauta, e o cbc.ca dá 403. A pergunta se confirma pelo título que a
+    Sala leu no navegador do app em 09/11/2026 (`concorrencia.md`), e a data, pela leitura da Sala de hoje (`navegador-sala.md`);
+  - **congress.gov** (S. 4949 e H.R. 9497): pediu verificação de robô à Sala em 09/11/2026, e não se tentou de novo. O estado vem do
+    BILLSTATUS do govinfo.gov;
+  - **state.gov** (o −37 % do p37): recusa leitura automática; a nota de 25/11/2024 foi lida pela Sala no navegador do app.
 
 ## A lista de nomes (o anônimo da voz → quem é)
 
 | Na voz | Quem é | Credencial | Onde |
 |---|---|---|---|
+| "British Columbia's estimate" (p25) | o BC Ministry of Energy and Mines, com a análise da BC Hydro (a Canadian Entity) | *U.S. Benefits from the Columbia River Treaty – Past, Present and Future: A Province of British Columbia Perspective*, 25/06/2013, p. 11 | https://engage.gov.bc.ca/app/uploads/sites/6/2012/07/US-Benefits-from-CRT-June-20-13-2.pdf |
+| "About 60 percent" (p8; sem dono na voz) | a medida do canal no Water Survey of Canada (08NB005 e 08NE049), e, para o número das agências, BPA, Reclamation e USACE | HYDAT (ECCC); *Inside Story*, 2ª ed., abr. 2001, DOE/BP-3372, p. 4 | https://api.weather.gc.ca/collections/hydrometric-monthly-mean · https://www.osti.gov/servlets/purl/1132870 |
+| "a settlement" (p33) | Boat Encampment | BC Geographical Names, 52160 ("Community"; "Settlement" em 1954; nome revogado em 1974) | https://apps.gov.bc.ca/pub/bcgnws/names/52160.html |
 | "The American agencies that run the treaty" (p25, p38); "American planners" (p21) | a US Entity: a Bonneville Power Administration e a Northwestern Division do US Army Corps of Engineers | as duas agências designadas pelo Art. XIV | CRS R43287, nota 2 · https://www.everycrsreport.com/reports/R43287.html |
-| "The Canadian side" (p21, p22) | a Entidade Canadense: a BC Hydro (o CRS também a chama de "the Province of British Columbia") | a entidade designada pelo Canadá | CRS R43287, notas 2 e 39 |
+| "The Canadian side" (p21, p22) | a Entidade Canadense: a BC Hydro | a entidade designada pelo Canadá | CRS R43287, notas 2 e 39 |
 | "British Columbia's energy minister" (p27) | Adrian Dix | Minister of Energy and Climate Solutions and Minister Responsible for the Columbia River Treaty | https://engage.gov.bc.ca/columbiarivertreaty/ · https://cfjctoday.com/2025/03/25/b-c-energy-minister-says-treaty-not-a-bargaining-chip-in-u-s-trade-dispute/ |
-| "CBC News asked" (p27) | o vídeo "Could ending a water treaty help Canada fight U.S. tariffs?" | CBC News (YouTube) | `pautas/rio-columbia/_trabalho/concorrencia.md` (leitura da Sala, 09/11/2026) |
+| "CBC News asked" (p27) | o vídeo "Could ending a water treaty help Canada fight U.S. tariffs?" | CBC News (YouTube), 17/02/2025 | `pautas/rio-columbia/_trabalho/concorrencia.md`; `out/rio-columbia/_pesquisa/navegador-sala.md` (leituras da Sala) |
 | "the US Geological Survey's account" (p12) | S. E. Rantz e H. C. Riggs | autores do USGS Water-Supply Paper 1080 (1949) | https://pubs.usgs.gov/wsp/1080/report.pdf |
 | "the US Congressional Research Service" (p14, p21) | Charles V. Stern | Specialist in Natural Resources Policy, CRS (R43287, 03/12/2024) | https://www.everycrsreport.com/reports/R43287.html |
 | "the Supreme Court of Canada" (p34) | o voto da maioria, de Rowe J. | R. v. Desautel, 2021 SCC 17, 23/04/2021 | https://decisions.scc-csc.ca/scc-csc/scc-csc/en/18836/1/document.do |
@@ -105,35 +162,38 @@ O que segue é o do r2, e continua valendo:
 
 ## Os dois padrões mais vistos
 
-1. **A troca que tirou o número e deixou a ideia.** O r2 resolveu três itens do r1 tirando da voz o que não se sustentava como dito (a faixa
-   da BC Hydro, a data da CBC, o "both chambers") e passando os números para a tela. A ideia de cada frase continua com fonte; o que muda é
-   que o dono e a data passam a depender da tela. O `redator-de-tela` tem de levar o dono junto (o "37 %" do Departamento de Estado, o
-   "$110–400" sem moeda, o "87 YEARS").
-2. **O dono que a frase nova pôs no lugar certo.** "the Canadian side", "by the US Congressional Research Service's account", "a flood
-   expected to be rare" sem dono: as quatro trocas de atribuição do r1 entraram com a letra da fonte. Nenhuma frase nova trouxe dono novo
-   sem leitura.
+1. **O resumo no lugar do original.** O CRS foi a ponte das duas falhas que a revisão do research consertou: tirou o "in a Called Upon year"
+   do estudo da BC (p25) e repetiu os 60 % das agências sem o "natural" e sem o lugar (p8). As linhas novas se apoiam no original (o estudo
+   da BC, p. 10 e 11) e na série medida (WSC). O que ainda só tem o CRS, sem documento por trás, está declarado acima (o "per request").
+2. **A cópia de terceiro no lugar do documento.** A CSG West erra o tratado duas vezes, e o verbete de uma barragem foi lido como se dissesse
+   qual lago afogou qual vila. As linhas de tratado passaram ao texto registrado na ONU, e o p33, ao verbete do próprio lugar (Boat
+   Encampment).
 
 ## Como a tabela foi feita (para quem a reler)
 
-- **O texto final** (`c4788c7ab3be`): a tabela do r2 (`fatos-tabela-r2.json`, 222 linhas), com o campo `final` em cada linha: 209 levadas do r2 (a frase não mudou, o parágrafo é o mesmo: o texto continua com 44 parágrafos, e a C7 só trocou a ordem de duas frases dentro do p40), 13 rejulgadas (as frases das trocas C1, C2, C4, C5, C6, C7 e C8) e 2 novas (F231 e F232). O r2 vem abaixo, como estava.
-
-- **O casamento com o r1**: um script casou as 191 linhas do r1 com o r2 pela regra do `portao-fatos` (a frase inteira no parágrafo, não um
-  pedaço). Uma frase do r1 que só aparece como pedaço ("That strip is the room…" dentro de "Part of that strip is the room…") não passa como
-  levada: foi rejulgada.
-- **As medidas novas** (`fatos-medidas-r2.txt`) são a saída literal de `fatos-medidas-r2.py`, com o comando no cabeçalho: os picos com ">"
-  (A), a conta do "per call / per year" (B), o terço (C), os 3,6 de 7,1 MAF (D), o eco (E), 1956 → 2021 (F) e os dois países (G). O
-  `fatos-medidas.txt` do r1 ficou como estava.
-- **Duas limitações do portão, declaradas** (as mesmas do r1): ele lê "more than a third" como "mais que 3", e a linha F221 cita a conta
-  "37 % contra 1/3 = 33.3 %" (o 3 do denominador); e ele exige no trecho o numeral de "the two countries" (p27), que a linha F213 conta na
-  frase da CP ("Canada and the United States"). Nenhum número novo entrou por esse caminho.
-- **As linhas L** (9): as 7 do r1 e duas novas, "The treaty is the promise. The deal is the room." (F211) e "Then the lakes are full, and the
-  rest of the river keeps coming." (F216), cada uma apoiada em linha confirmada.
+- **O texto de agora** (`955d5210c444`): `out/rio-columbia/_tmp/verificar-divergencias/final/montar-tabela.mjs` parte da tabela do laudo de
+  antes (`fatos-tabela-final-c4788c7ab3be.json`, 224 linhas), tira as frases novas do próprio `roteiro-narrador.md` (pela leitura do
+  `portao-fatos`) e grava o campo `research` em cada linha: "levada do final c4788c7ab3be (a frase não mudou)", "levada (…); a fonte passou
+  de … para o texto registrado na ONU", "rejulgada (…)" ou "nova". Os campos `r2` e `final` ficam como estavam, como história.
+- **As medidas novas** são a saída literal de `out/rio-columbia/_tmp/verificar-divergencias/final/medir-mai-jul.py`, gravada em
+  `medir-mai-jul.txt` ao lado: Birchbank sobre o bruto do p9 (`midia/rio-columbia/fontes/a/wsc-mensal-08NE049.json`, sha256 `b23ebe17…`) e
+  Donald sobre o bruto baixado hoje (`wsc-mensal-08NB005.json`, sha256 `f5850dcc…`). O `fatos-medidas.txt` e o `fatos-medidas-r2.txt`
+  ficaram como estavam; a F090 deixou de citar o primeiro.
+- **As cópias de fonte novas**, fora do git como as de `midia/`: `final/bcgn-52160-boat-encampment.html.txt` e
+  `final/bcgn-9982-encampment-creek.html.txt` (com a URL e o sha256 da página no cabeçalho); o estudo da BC de 2013 em texto,
+  `out/rio-columbia/_tmp/verificar-divergencias/bc2013-nosso.txt` (do PDF de sha256 `7564d2e7…`, laudo de divergências); e a *Inside Story*,
+  `baixado/osti/inside-story-2001.pdf.txt`. Para o portão rodar noutro computador, essas cópias têm de ir junto.
+- **As limitações do portão, declaradas** (as mesmas de antes): ele lê "more than a third" como "mais que 3" (F221), e exige no trecho o
+  numeral de "the two countries" (F213). Nenhum número novo entrou por esse caminho.
+- **As linhas L** (9): as mesmas de antes, cada uma apoiada em linha confirmada.
+- **O laudo de antes**, com a história do r1 e do r2, está em `fatos-final-c4788c7ab3be-antigo.laudo.md`; o do r2, em `fatos-r2.laudo.md`.
 
 ## DECISÃO DO LUCAS PENDENTE que tocou esta checagem
 
-- "What the United States is buying is certainty." (p26): a pauta (§4.3) deixou a frase para o Lucas; como fato, apoia-se na lei e na nota
-  de 22/11/2024 (linha L F094). Se fica, é decisão dele.
-- Onde gravar o laudo de fatos dos próximos vídeos (a roupa, §2): gravado aqui, em `roteiros/rio-columbia/qc-roteiro/`, como no r1.
+- **Nenhuma nova.** As três trocas desta revisão já são decisão dele (`decisoes-lucas.md`, 12/11/2026: "Regravar os dois (Recomendado)" e
+  "Regravar com "settlement" (Recomendado)"). A frase "What the United States is buying is certainty." (p26), pendente no laudo de antes,
+  ficou por decisão dele em 12/11/2026 ("Fica (Recomendado)").
+- Onde gravar o laudo de fatos dos próximos vídeos (a roupa, §2): gravado aqui, em `roteiros/rio-columbia/qc-roteiro/`, como antes.
 
 ## NADA A CHECAR (as 40 frases sem linha, uma a uma)
 
@@ -182,9 +242,10 @@ Perguntas, transições, imagens sem fato, a assinatura e o nome do intervalo. N
 
 ## A tabela (uma linha por item da lista; a mesma de `fatos-tabela.json`)
 
-A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada (a frase mudou, com a troca do cético) ou é nova.
+A última coluna diz se a linha foi levada do laudo de antes (a frase não mudou), levada com a fonte trocada (o mesmo trecho, no texto
+registrado na ONU), rejulgada (a frase mudou na revisão do research) ou é nova.
 
-| id | p | frase (início) | veredito | o que a fonte diz (trecho, ou a nota) | fonte e URL | final |
+| id | p | frase (início) | veredito | o que a fonte diz (trecho, ou a nota) | fonte e URL | research |
 |---|---|---|---|---|---|---|
 | F001 | 1 | Every year, before the spring snowmelt, part of the Arrow Lakes Res… | confirmada | "Since then, the reservoir has been drafting to meet Treaty flood control requirements." | BC Hydro, Columbia River Operations Summary, 2018 (F15) · https://www.bchydro.com/content/dam/BCHydro/customer-portal/documents/corporate/community/columbia-river-operations-summary.pdf | levada |
 | F002 | 1 | Every year, before the spring snowmelt, part of the Arrow Lakes Res… | confirmada | "Currently, Canada provides 8.95 million acre-feet (MAF) of dedicated, pre-planned FRM through all the Canadian CRT projects" | BC, AIP Public Description, 30/08/2024 (L4) · https://engage.gov.bc.ca/app/uploads/sites/6/2024/09/CRT-AIP-Canada-public-description-Final_2024Aug30.pdf | levada |
@@ -197,7 +258,7 @@ A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada
 | F008 | 3 | Talks to update the treaty between them have been paused since Marc… | confirmada | "The U.S. has paused negotiations with Canada on an amended Columbia River Treaty." | BC News, 11/03/2025 · https://news.gov.bc.ca/releases/2025ECS0009-000191 | levada |
 | F009 | 3 | Talks to update the treaty between them have been paused since Marc… | confirmada | "Victoria Tuesday, March 11, 2025" | BC News, 11/03/2025 · https://news.gov.bc.ca/releases/2025ECS0009-000191 | levada |
 | F010 | 3 | Talks to update the treaty between them have been paused since Marc… | confirmada | "At the time of writing, the negotiations are still paused" | Canadian Geographic, 17/08/2026 · https://canadiangeographic.ca/articles/we-want-to-let-the-salmon-know-were-still-here/ | levada |
-| F011 | 4 | And the strange part: that treaty already promises Canada's help in… | confirmada | "Canada shall, when called upon by an entity designated by the United States of America for that purpose, operate within the limits of existing facilities any storage in the Columbia River basin in Canada" | Tratado, Art. IV(3) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
+| F011 | 4 | And the strange part: that treaty already promises Canada's help in… | confirmada | "Canada shall, when called upon by an entity designated by the United States of America for that purpose, operate within the limits of existing facilities any storage in the Columbia River basin in Canada" | Tratado, Art. IV(3), UNTS vol. 542, No. 7894, p. 6 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 6 do PDF) | levada, fonte trocada |
 | F012 | 6 | You may know its American end: this is the largest hydropower-produ… | confirmada | "The Columbia River is the largest hydropower-producing river system in the United States." | CRS R43287, 03/12/2024 (L1) · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F013 | 6 | It's a lake in the mountains of British Columbia, called Columbia L… | confirmada | "The headwaters of the Columbia River is in Columbia Lake in British Columbia, between the Canadian Rockies and the Selkirk Mountains" | USGS, River Basins: The Columbia, 1981 (F7) · https://pubs.usgs.gov/gip/70039373/report.pdf | levada |
 | F014 | 7 | From there, the river does something odd for a river on its way to … | confirmada | "the Columbia River flows into the Pacific Ocean near Astoria, Oregon" | USGS SIR 2007-5186 (F8) · https://pubs.usgs.gov/sir/2007/5186/section3.html | levada |
@@ -207,7 +268,9 @@ A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada
 | F018 | 7 | Keep your finger moving, and by the time the Columbia crosses into … | confirmada | "664/1942 km = 34.2 % e 498/1243 mi = 40.1 %, os dois acima de 1/3 (33.3 %)" | conta do verificador sobre F7 e F8 · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
 | F019 | 8 | The Canadian part of the basin, the land that drains into the river… | confirmada | "The Canadian portion is mountainous with much snow." | BC Hydro, Columbia Operations Update, 23/06/2026, p. 7 (L12) · BC Hydro, Columbia Operations Update, 23/06/2026: cópia da Sala; a URL não está no índice local (a registrar) | levada |
 | F179 | 8 | For months, the snow just sits there. Then, late in the spring, it … | confirmada | "Approximately 60% of this runoff occurs in May, June, and July." | CRS R43287 (L1) · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
-| F020 | 8 | About 60 percent of the water that runs off the whole basin in a ye… | confirmada | "Approximately 60% of this runoff occurs in May, June, and July." | CRS R43287 (L1) · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
+| F020 | 8 | About 60 percent of the water that runs off those mountains in a ye… | confirmada | "08NB005 1944-2025: 79 anos completos; maio-julho = 60.1 percent of the year's volume" | Water Survey of Canada, 08NB005 (HYDAT, médias mensais, API aberta do ECCC); conta do verificador (medir-mai-jul.py) · https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08NB005 · out/rio-columbia/_tmp/verificar-divergencias/final/medir-mai-jul.txt (as contas do canal) | rejulgada |
+| F235 | 8 | About 60 percent of the water that runs off those mountains in a ye… | confirmada | "08NE049 1938-1967: 30 anos completos; maio-julho = 58.9 percent of the year's volume" | Water Survey of Canada, 08NE049 (o mesmo bruto do p9); conta do verificador (medir-mai-jul.py) · https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08NE049 · out/rio-columbia/_tmp/verificar-divergencias/final/medir-mai-jul.txt (as contas do canal) | nova |
+| F236 | 8 | About 60 percent of the water that runs off those mountains in a ye… | confirmada | "The moisture that is stored during the winter in the snowpack is released in the spring and early summer, and about 60 percent of the natural runoff in the basin occurs during May, June, and July." | BPA, Reclamation e USACE, The Columbia River System: Inside Story, 2ª ed., abr. 2001, DOE/BP-3372, p. 4 · https://www.osti.gov/servlets/purl/1132870 (p. 4 impressa) | nova |
 | F180 | 8 | Most of the river's year arrives in one season. | confirmada | "Approximately 60% of this runoff occurs in May, June, and July." | CRS R43287 (L1) · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F181 | 9 | A large part of it arrives by way of Canada. | confirmada | "Yet the Canadian waters account for about 38 percent of the average annual volume" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
 | F182 | 9 | You can read that off two gauges. | confirmada | "séries casadas (a_calc_fracoes.py): WSC 08NE049, do governo do Canadá, e USGS 14105700, do governo dos EUA = 2 séries, de 2 governos" | contagem do verificador · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
@@ -218,9 +281,9 @@ A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada
 | F024 | 9 | On average, the river at the Canadian gauge is already carrying abo… | confirmada | "Birchbank/The Dalles 1938-2024 n=87: 71,191 / 181,213 cfs = 39.3 %" | a_calc_fracoes.py (WSC + USGS) · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
 | F025 | 9 | That's our own calculation, from the two governments' data. | confirmada | "Monthly Mean of Water Level or Discharge for COLUMBIA RIVER AT BIRCHBANK (08NE049)" | WSC 08NE049 · WSC 08NE049, API aberta do ECCC (a série mensal: https://api.weather.gc.ca/collections/hydrometric-monthly-mean/items?STATION_NUMBER=08NE049; fatos-a, F13) | levada |
 | F174 | 9 | That's our own calculation, from the two governments' data. | confirmada | "séries casadas (a_calc_fracoes.py): WSC 08NE049, do governo do Canadá, e USGS 14105700, do governo dos EUA = 2 séries, de 2 governos" | contagem do verificador · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
-| F192 | 9 | About 15 percent of the land, and at the Canadian gauge, about 39 p… | confirmada | "only about 15 percent of the 259,500 square miles of the Columbia River Basin is actually located in Canada" | USACE + BPA, History and 2014/2024 Review (F3, L5) · https://www.osti.gov/servlets/purl/1132837 | rejulgada (C2) |
-| F193 | 9 | About 15 percent of the land, and at the Canadian gauge, about 39 p… | confirmada | "Birchbank/The Dalles 1938-2024 n=87: 71,191 / 181,213 cfs = 39.3 %" | a_calc_fracoes.py (WSC + USGS) · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | rejulgada (C2) |
-| F194 | 9 | About 15 percent of the land, and at the Canadian gauge, about 39 p… | confirmada | "Yet the Canadian waters account for about 38 percent of the average annual volume" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | rejulgada (C2) |
+| F192 | 9 | About 15 percent of the land, and at the Canadian gauge, about 39 p… | confirmada | "only about 15 percent of the 259,500 square miles of the Columbia River Basin is actually located in Canada" | USACE + BPA, History and 2014/2024 Review (F3, L5) · https://www.osti.gov/servlets/purl/1132837 | levada |
+| F193 | 9 | About 15 percent of the land, and at the Canadian gauge, about 39 p… | confirmada | "Birchbank/The Dalles 1938-2024 n=87: 71,191 / 181,213 cfs = 39.3 %" | a_calc_fracoes.py (WSC + USGS) · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
+| F194 | 9 | About 15 percent of the land, and at the Canadian gauge, about 39 p… | confirmada | "Yet the Canadian waters account for about 38 percent of the average annual volume" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
 | F026 | 10 | BC Hydro, the power company that runs Canada's side of the treaty, … | confirmada | "the Canadian Entity (the British Columbia Hydro and Power Authority, or BC Hydro)" | CRS R43287, nota 2 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F027 | 10 | Most of the power, and most of the need to hold back floods, is in … | confirmada | "Most hydropower production and need for flood control is in the USA." | BC Hydro 2026, p. 7 (L12) · BC Hydro, Columbia Operations Update, 23/06/2026: cópia da Sala; a URL não está no índice local (a registrar) | levada |
 | F028 | 10 | The big sites for storing water are in Canada. | confirmada | "The major storage dam sites are in Canada." | BC Hydro 2026, p. 7 (L12) · BC Hydro, Columbia Operations Update, 23/06/2026: cópia da Sala; a URL não está no índice local (a registrar) | levada |
@@ -245,33 +308,33 @@ A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada
 | F044 | 15 | Canada would build three big storage dams. | confirmada | "helped fund the construction of the three Treaty dams in Canada" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
 | F045 | 15 | The United States would build the one it had asked for, Libby. | confirmada | "The Treaty also allowed the United States an option to build Libby Dam on the Kootenai River" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
 | F046 | 15 | Its lake backs 42 miles into Canada, and by the treaty's own count,… | confirmada | "whose reservoir Lake Koocanusa backs 42 miles into Canada" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
-| F047 | 15 | Its lake backs 42 miles into Canada, and by the treaty's own count,… | confirmada | "more than 200,000 kilowatt years per annum of energy benefit downstream in Canada" | Protocolo de 1964, V (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
+| F047 | 15 | Its lake backs 42 miles into Canada, and by the treaty's own count,… | confirmada | "more than 200,000 kilowatt years per annum of energy benefit downstream in Canada" | Protocolo de 1964, V, UNTS vol. 542, No. 7894, p. 27 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 27 do PDF) | levada, fonte trocada |
 | F048 | 16 | For the room behind the Canadian dams, the United States paid 64.4 … | confirmada | "lump sum payments totaling $64.4 million when each of the three Canadian dams became operational" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
-| F049 | 16 | For the room behind the Canadian dams, the United States paid 64.4 … | confirmada | "For the purpose of flood control until the expiration of sixty years from the ratification date" | Tratado, Art. IV(2) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
+| F049 | 16 | For the room behind the Canadian dams, the United States paid 64.4 … | confirmada | "For the purpose of flood control until the expiration of sixty years from the ratification date" | Tratado, Art. IV(2), UNTS vol. 542, No. 7894, p. 5 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 5 do PDF) | levada, fonte trocada |
 | F050 | 16 | The price was half of what those dams were expected to save it in f… | confirmada | "Canada was to be paid 50 percent of the estimated value of U.S." | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
 | F051 | 16 | Most of the money was for one lake: Arrow, the lake at the start of… | confirmada | "Pagamento de 1964 pela cheia: Arrow 52,1 de 64,4 = 80.9 %" | Tratado, Art. VI(1), pelo p_contas.py · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
 | F052 | 16 | So paying Canada for room is as old as the treaty itself. | confirmada | L: the listener concludes that the United States has paid Canada for flood room since the treaty took effect (apoio: F048) | F048 · — | levada |
-| F195 | 16 | The strange part starts when those 60 years run out. | confirmada | "For the purpose of flood control until the expiration of sixty years from the ratification date" | Tratado, Art. IV(2) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
-| F053 | 17 | Water stored in Canada and released on a schedule lets the American… | confirmada | "For power generating purposes the 15,500,000 acre-feet of Canadian storage will be operated in accordance with operating plans designed to achieve optimum power generation downstream" | Tratado, Anexo A (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
-| F054 | 17 | The treaty splits that gain down the middle: half of the extra powe… | confirmada | "Canada is entitled to one half the downstream power benefits determined under Article VII." | Tratado, Art. V(1) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
-| F055 | 17 | The treaty splits that gain down the middle: half of the extra powe… | confirmada | "The United States of America shall deliver to Canada at a point on the Canada-United States of America boundary near Oliver" | Tratado, Art. V(2) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
+| F195 | 16 | The strange part starts when those 60 years run out. | confirmada | "For the purpose of flood control until the expiration of sixty years from the ratification date" | Tratado, Art. IV(2), UNTS vol. 542, No. 7894, p. 5 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 5 do PDF) | levada, fonte trocada |
+| F053 | 17 | Water stored in Canada and released on a schedule lets the American… | confirmada | "For power generating purposes the 15,500,000 acre-feet of Canadian storage will be operated in accordance with operating plans designed to achieve optimum power generation downstream" | Tratado, Anexo A, UNTS vol. 542, No. 7894, p. 20 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 20 do PDF) | levada, fonte trocada |
+| F054 | 17 | The treaty splits that gain down the middle: half of the extra powe… | confirmada | "Canada is entitled to one half the downstream power benefits" | Tratado, Art. V(1), UNTS vol. 542, No. 7894, p. 6 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 6 do PDF) | levada, fonte trocada |
+| F055 | 17 | The treaty splits that gain down the middle: half of the extra powe… | confirmada | "The United States of America shall deliver to Canada at a point on the Canada-United States of America boundary near Oliver" | Tratado, Art. V(2), UNTS vol. 542, No. 7894, p. 6 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 6 do PDF) | levada, fonte trocada |
 | F056 | 17 | British Columbia sold the first 30 years of that share up front, fo… | confirmada | "Canada initially sold its share of this additional power, called the Canadian Entitlement, for $254 million to a consortium of U.S. utilities for a period of 30 years." | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
 | F057 | 17 | British Columbia sold the first 30 years of that share up front, fo… | confirmada | "helped fund the construction of the three Treaty dams in Canada" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
-| F058 | 17 | British Columbia sold the first 30 years of that share up front, fo… | confirmada | "entered into between the British Columbia Hydro and Power Authority and the Columbia Storage Power Exchange" | Troca de notas de 16/09/1964 (F2) · https://internationalwaterlaw.org/documents/regionaldocs/columbia_river_note1.html | levada |
+| F058 | 17 | British Columbia sold the first 30 years of that share up front, fo… | confirmada | "entered into between the British Columbia Hydro and Power Authority and the Columbia Storage Power Exchange" | Troca de notas de 16/09/1964, UNTS vol. 542, No. 7894, p. 36 do PDF (o texto registrado na ONU; antes, a cópia da International Water Law Project (F2)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 36 do PDF) | levada, fonte trocada |
 | F059 | 17 | So American money helped build Canada's dams, and water stored in C… | confirmada | L: the listener concludes that the money went north to build the dams and the stored water raised power in the United States (apoio: F054, F056) | F054, F056 · — | levada |
-| F060 | 18 | For 60 years, that was the bargain: room for money, and stored wate… | confirmada | "For the purpose of flood control until the expiration of sixty years from the ratification date" | Tratado, Art. IV(2) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
+| F060 | 18 | For 60 years, that was the bargain: room for money, and stored wate… | confirmada | "For the purpose of flood control until the expiration of sixty years from the ratification date" | Tratado, Art. IV(2), UNTS vol. 542, No. 7894, p. 5 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 5 do PDF) | levada, fonte trocada |
 | F196 | 18 | Year after year, the snow melted, and the lakes caught part of it. | confirmada | "river ﬂ ows during the spring runoff (snowmelt season)" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
 | F197 | 18 | Year after year, the snow melted, and the lakes caught part of it. | confirmada | "434.3 metres (1,425 feet) by end of May and 439.5 metres (1,442 feet) by the end of June" | BC Hydro, Columbia River Operations Summary, 2018 (F15) · https://www.bchydro.com/content/dam/BCHydro/customer-portal/documents/corporate/community/columbia-river-operations-summary.pdf | levada |
 | F064 | 19 | If you're enjoying the trip downriver, subscribe to Alpha Point. | confirmada | "subscribe to Alpha Point" | marca/cta.md · marca/cta.md | levada |
 | F065 | 20 | The United States bought decades of cover, the cover ran out, and s… | confirmada | "Canada elected to receive lump sum payments totaling $64.4 million when each of the three Canadian dams became operational" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
 | F066 | 20 | In September 2024, the 60 years the United States had paid for ran … | confirmada | "Assured Annual Flood Control expires automatically in 2024 and converts on 16 September 2024 to a Called Upon operation" | BC, Treaty highlights (F5) · https://engage.gov.bc.ca/columbiarivertreaty/ (Treaty highlights; fatos-a, F5) | levada |
-| F198 | 20 | In September 2024, the 60 years the United States had paid for ran … | confirmada | "For the purpose of flood control until the expiration of sixty years from the ratification date" | Tratado, Art. IV(2) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
+| F198 | 20 | In September 2024, the 60 years the United States had paid for ran … | confirmada | "For the purpose of flood control until the expiration of sixty years from the ratification date" | Tratado, Art. IV(2), UNTS vol. 542, No. 7894, p. 5 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 5 do PDF) | levada, fonte trocada |
 | F199 | 20 | In September 2024, the 60 years the United States had paid for ran … | confirmada | "lump sum payments totaling $64.4 million when each of the three Canadian dams became operational" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
 | F185 | 20 | The promise didn't. | confirmada | "converts on 16 September 2024 to a Called Upon operation" | BC, Treaty highlights (F5) · https://engage.gov.bc.ca/columbiarivertreaty/ (Treaty highlights; fatos-a, F5) | levada |
 | F200 | 20 | The promise didn't. | confirmada | "Assured Annual Flood Control expires automatically in 2024 and converts on 16 September 2024 to a Called Upon operation" | BC, Treaty highlights (F5) · https://engage.gov.bc.ca/columbiarivertreaty/ (Treaty highlights; fatos-a, F5) | levada |
 | F201 | 20 | The promise didn't. | confirmada | "recognizes that the scope of the Treaty, which remains in force" | Nota diplomática dos EUA, 22/11/2024 (L3) · https://engage.gov.bc.ca/app/uploads/sites/6/2024/12/20241122_FRM_EON_CAN_US.pdf | levada |
 | F067 | 20 | Under the treaty, Canada has to help in a big flood whenever the Un… | confirmada | "Canada would be responsible for making these changes. In exchange, the United States would pay for operating costs and economic losses in Canada due to the changed operation." | CRS R43287 (L15) · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
-| F068 | 20 | Under the treaty, Canada has to help in a big flood whenever the Un… | confirmada | "only to control potential floods in the United States of America that could not be adequately controlled by all the related storage facilities in the United States of America" | Protocolo de 1964, I(2) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
+| F068 | 20 | Under the treaty, Canada has to help in a big flood whenever the Un… | confirmada | "only to control potential floods in the United States of America that could not be adequately controlled by all the related storage facilities in the United States of America" | Protocolo de 1964, I(2), UNTS vol. 542, No. 7894, p. 26 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 26 do PDF) | levada, fonte trocada |
 | F069 | 21 | And the treaty doesn't say how big a flood that is. | confirmada | "is not currently defined in the Treaty and is likely to be an important point in negotiations" | CRS R43287, nota 39 (L15) · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F186 | 21 | No number, no line on a gauge. | confirmada | "The actual trigger for called-upon flood control operations, as well as the cost for these operations, is not currently defined in the Treaty" | CRS R43287, nota 39 (L15) · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F070 | 21 | A flood on this river is measured in cubic feet per second: how muc… | confirmada | "a range of peak flows at the Dalles (a large dam near the mouth of the Columbia River) from 450,000 cubic feet per second" | CRS R43287, nota 39 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
@@ -294,17 +357,17 @@ A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada
 | F082 | 23 | The law spells out what that includes, in its own words: "operation… | confirmada | "including operations that the Government of Canada may not be obligated to provide under the Columbia River Treaty" | Public Law 118-272, sec. 1152 (L11) · govinfo.gov, Public Law 118-272 (cópia da Sala; a URL exata não está no índice local, a registrar) | levada |
 | F084 | 24 | The lake drops every winter anyway, as water moves downstream to ma… | confirmada | "The limited number of Called Upon years had less impact than the power requirements." | USACE, 31/01/2013, p. 22 (L13) · USACE, Overview of Treaty Review Process, 31/01/2013, cópia da USEA (Sala; a URL não está no índice local, a registrar) | levada |
 | F085 | 24 | The lake drops every winter anyway, as water moves downstream to ma… | confirmada | "reduced fall and winter drafts—also known as drawdowns—in Canadian reservoirs" | CRS R43287 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
-| F086 | 24 | What the United States pays for is a guarantee: that much room kept… | confirmada | "pre-planned flood storage per operating year at Hugh Keenleyside Dam, including operations that the Government of Canada may not be obligated to provide" | Public Law 118-272, sec. 1152 · govinfo.gov, Public Law 118-272 (cópia da Sala; a URL exata não está no índice local, a registrar) | rejulgada (C4) |
+| F086 | 24 | What the United States pays for is a guarantee: that much room kept… | confirmada | "pre-planned flood storage per operating year at Hugh Keenleyside Dam, including operations that the Government of Canada may not be obligated to provide" | Public Law 118-272, sec. 1152 · govinfo.gov, Public Law 118-272 (cópia da Sala; a URL exata não está no índice local, a registrar) | levada |
 | F087 | 25 | The American agencies that run the treaty once estimated that a cal… | confirmada | "the U.S. Entity has previously estimated costs of between $4 million and $34 million per request for called-upon flood control" | CRS R43287, nota 41 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F088 | 25 | The American agencies that run the treaty once estimated that a cal… | confirmada | "US Entity, custo por pedido (CRS R43287, nota 41): de 4 a 34 milhões de dólares, ou seja, 4 e 34" | CRS R43287 (a faixa transcrita) · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
-| F089 | 25 | British Columbia's estimate is that relying on those calls would co… | confirmada | "The Canadian Entity estimates that, for power production alone, called-upon operations would result in $40 million to $150 million per year in lost benefits to the United States" | CRS R43287, nota 40 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
-| F090 | 25 | British Columbia's estimate is that relying on those calls would co… | confirmada | "Canadian Entity, perda por ano (CRS R43287, nota 40): de 40 a 150 milhões de dólares, ou seja, 40 e 150" | CRS R43287 (a faixa transcrita) · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
-| F091 | 25 | Beside the American figure, which is per call, 37.6 million a year … | confirmada | "has previously estimated costs of between $4 million and $34 million per request" | CRS R43287, notas 40 e 41 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
-| F205 | 25 | Beside the American figure, which is per call, 37.6 million a year … | confirmada | "the U.S. Entity has previously estimated costs of between $4 million and $34 million per request for called-upon flood control" | CRS R43287, nota 41 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
-| F206 | 25 | Beside the American figure, which is per call, 37.6 million a year … | confirmada | "called-upon operations would result in $40 million to $150 million per year in lost benefits to the United States" | CRS R43287, nota 40 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
-| F207 | 25 | Beside the American figure, which is per call, 37.6 million a year … | confirmada | "there is authorized to be appropriated $37,600,000 for fiscal year 2025 and $37,600,000, adjusted for inflation" | Public Law 118-272, sec. 1152 (L11) · govinfo.gov, Public Law 118-272 (cópia da Sala; a URL exata não está no índice local, a registrar) | levada |
-| F208 | 25 | Beside the American figure, which is per call, 37.6 million a year … | confirmada | "pagamento por ano: 37.6 million; teto do custo por pedido (US Entity): 34" | fatos-medidas-r2.py · roteiros/rio-columbia/qc-roteiro/fatos-medidas-r2.txt (as contas do canal) | levada |
-| F092 | 26 | So yes, the United States can call on Canada in a flood. | confirmada | "Canada shall, when called upon by an entity designated by the United States of America for that purpose" | Tratado, Art. IV(3) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
+| F089 | 25 | British Columbia's estimate is that relying on those calls would co… | confirmada | "BC Hydro analysis estimated U.S. energy losses due to effective use at these facilities (in a Called Upon year) to be approximately 1,300-3,000 gigawatt hours with an estimated value of $40 to $150 million." | BC Ministry of Energy and Mines, U.S. Benefits from the Columbia River Treaty, 25/06/2013, p. 11 impressa (p. 17 do PDF) · https://engage.gov.bc.ca/app/uploads/sites/6/2012/07/US-Benefits-from-CRT-June-20-13-2.pdf (p. 11 impressa; cópia em texto do PDF sha256 7564d2e7…) | rejulgada |
+| F090 | 25 | British Columbia's estimate is that relying on those calls would co… | confirmada | "Called Upon Flood Control is expected to be used infrequently and only in very large snow pack years" | BC Ministry of Energy and Mines, 25/06/2013, p. 10 impressa (p. 16 do PDF) · https://engage.gov.bc.ca/app/uploads/sites/6/2012/07/US-Benefits-from-CRT-June-20-13-2.pdf (p. 10 impressa) | rejulgada |
+| F091 | 25 | Beside the American figure, which is per call, 37.6 million a year … | confirmada | "has previously estimated costs of between $4 million and $34 million per request" | CRS R43287, notas 40 e 41 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | rejulgada |
+| F205 | 25 | Beside the American figure, which is per call, 37.6 million a year … | confirmada | "the U.S. Entity has previously estimated costs of between $4 million and $34 million per request for called-upon flood control" | CRS R43287, nota 41 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | rejulgada |
+| F206 | 25 | Beside the American figure, which is per call, 37.6 million a year … | confirmada | "U.S. energy losses due to effective use at these facilities (in a Called Upon year)" | BC Ministry of Energy and Mines, 25/06/2013, p. 11 impressa · https://engage.gov.bc.ca/app/uploads/sites/6/2012/07/US-Benefits-from-CRT-June-20-13-2.pdf (p. 11 impressa) | rejulgada |
+| F207 | 25 | Beside the American figure, which is per call, 37.6 million a year … | confirmada | "there is authorized to be appropriated $37,600,000 for fiscal year 2025 and $37,600,000, adjusted for inflation" | Public Law 118-272, sec. 1152 (L11) · govinfo.gov, Public Law 118-272 (cópia da Sala; a URL exata não está no índice local, a registrar) | rejulgada |
+| F208 | 25 | Beside the American figure, which is per call, 37.6 million a year … | confirmada | "pagamento por ano: 37.6 million; teto do custo por pedido (US Entity): 34" | fatos-medidas-r2.py · roteiros/rio-columbia/qc-roteiro/fatos-medidas-r2.txt (as contas do canal) | rejulgada |
+| F092 | 26 | So yes, the United States can call on Canada in a flood. | confirmada | "Canada shall, when called upon by an entity designated by the United States of America for that purpose" | Tratado, Art. IV(3), UNTS vol. 542, No. 7894, p. 6 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 6 do PDF) | levada, fonte trocada |
 | F209 | 26 | And no number says when. | confirmada | "is not currently defined in the Treaty and is likely to be an important point in negotiations" | CRS R43287, nota 39 (L15) · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F093 | 26 | Under the deal, it pays so the room is already there, call or no call. | confirmada | "pre-planned FRM operations under the Interim FRM Period Entity Agreement would be distinct from and in no way" | Nota diplomática dos EUA, 22/11/2024 (L3) · https://engage.gov.bc.ca/app/uploads/sites/6/2024/12/20241122_FRM_EON_CAN_US.pdf | levada |
 | F210 | 26 | Under the deal, it pays so the room is already there, call or no call. | confirmada | "pre-planned flood storage per operating year at Hugh Keenleyside Dam" | Public Law 118-272, sec. 1152 (L11) · govinfo.gov, Public Law 118-272 (cópia da Sala; a URL exata não está no índice local, a registrar) | levada |
@@ -320,11 +383,11 @@ A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada
 | F215 | 27 | In March 2025, British Columbia's energy minister addressed the idea. | confirmada | "This report by The Canadian Press was first published March 25, 2025." | CFJC/Canadian Press, 25/03/2025 · https://cfjctoday.com/2025/03/25/b-c-energy-minister-says-treaty-not-a-bargaining-chip-in-u-s-trade-dispute/ | levada |
 | F098 | 27 | "Canadian action to terminate the treaty would have little effect o… | confirmada | "Canadian action to terminate the treaty would have little effect on the current dispute." | CFJC/Canadian Press, 25/03/2025 · https://cfjctoday.com/2025/03/25/b-c-energy-minister-says-treaty-not-a-bargaining-chip-in-u-s-trade-dispute/ | levada |
 | F099 | 27 | "Canadian action to terminate the treaty would have little effect o… | confirmada | "would have little effect on the current dispute and would obviously involve losses on all sides,” he said" | OPB, 28/03/2025 · https://www.opb.org/article/2025/03/27/canadian-leaders-hope-trade-negotiations-wont-derail-columbia-river-treaty/ | levada |
-| F100 | 27 | For one thing, leaving takes ten years' written notice, and nothing… | confirmada | "if it has delivered at least ten years written notice to the other of its intention to terminate the Treaty" | Tratado, Art. XIX(2) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
+| F100 | 27 | For one thing, leaving takes ten years' written notice, and nothing… | confirmada | "if it has delivered at least ten years written notice to the other of its intention to terminate the Treaty" | Tratado, Art. XIX(2), UNTS vol. 542, No. 7894, p. 17 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 17 do PDF) | levada, fonte trocada |
 | F101 | 27 | For one thing, leaving takes ten years' written notice, and nothing… | confirmada | "To date, neither country has given notice of termination" | CRS R43287 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F102 | 28 | Together, the three treaty lakes in Canada can store as much water … | confirmada | "The Dalles: 41.5 dias = 5.9 semanas (about 6)" | p_contas.py e fatos-medidas-contas.py · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
 | F103 | 28 | Together, the three treaty lakes in Canada can store as much water … | confirmada | "helped fund the construction of the three Treaty dams in Canada" | USACE + BPA (F3) · https://www.osti.gov/servlets/purl/1132837 | levada |
-| F104 | 28 | Together, the three treaty lakes in Canada can store as much water … | confirmada | "Canada shall provide in the Columbia River basin in Canada 15,500,000 acre-feet of storage" | Tratado, Art. II(1) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | levada |
+| F104 | 28 | Together, the three treaty lakes in Canada can store as much water … | confirmada | "Canada shall provide in the Columbia River basin in Canada 15,500,000 acre-feet of storage" | Tratado, Art. II(1), UNTS vol. 542, No. 7894, p. 4 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 4 do PDF) | levada, fonte trocada |
 | F105 | 28 | Measured against the river as it runs through British Columbia, nea… | confirmada | "Birchbank: 110.0 dias = 3.61 meses (closer to 3.5 than to 4)" | p_contas.py e fatos-medidas-contas.py · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
 | F216 | 28 | Then the lakes are full, and the rest of the river keeps coming. | confirmada | L: the listener concludes that the treaty lakes fill in weeks to months, after which the river passes (apoio: F102, F105) | F102, F105 · — | levada |
 | F106 | 28 | So Canada can't turn the Columbia off. | confirmada | L: the listener concludes that the treaty storage holds only weeks to months of the river, not the whole year (apoio: F102) | F102 · — | levada |
@@ -349,13 +412,15 @@ A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada
 | F121 | 33 | The government of British Columbia puts the count at about 2,300 pe… | confirmada | "Approximately 2,300 people were displaced and more than a dozen small communities were inundated" | BC, Review 2012 (F6) · https://engage.gov.bc.ca/app/uploads/sites/6/2012/07/A-Review-of-the-Range-of-Impacts-and-Benefits-of-the-Columbia-River-Treaty6.pdf | levada |
 | F122 | 33 | Some, like Edgewood and Burton, were relocated. | confirmada | "Relocation of the communities of Edgewood, Fauquier and Burton" | BC, Review 2012 (F6) · https://engage.gov.bc.ca/app/uploads/sites/6/2012/07/A-Review-of-the-Range-of-Impacts-and-Benefits-of-the-Columbia-River-Treaty6.pdf | levada |
 | F123 | 33 | Renata no longer exists. | confirmada | "Some communities such as Renata, no longer exist" | BC, Review 2012 (F6) · https://engage.gov.bc.ca/app/uploads/sites/6/2012/07/A-Review-of-the-Range-of-Impacts-and-Benefits-of-the-Columbia-River-Treaty6.pdf | levada |
-| F124 | 33 | Farther north, the river's big bend in British Columbia went under … | confirmada | "Formerly the "Big Bend" area of the Columbia River, and named for the former town of Mica Creek, drowned under the pondage." | BC Geographical Names (F16) · https://apps.gov.bc.ca/pub/bcgnws/names/51532.html | levada |
-| F125 | 33 | As for how residents and First Nations were consulted, the province… | confirmada | "First Nations and public consultation and mitigation at the time could be considered inadequate to non-existent by today’s standards" | BC, About the Columbia River Treaty (F5) · https://engage.gov.bc.ca/columbiarivertreaty/ (a página About, pela API WordPress do site; fatos-a, F5) | rejulgada (C5) |
+| F124 | 33 | Farther north, the river's big bend in British Columbia went under … | confirmada | "Boat Encampment (Settlement) adopted 4 March 1954 on Columbia River Basin manuscript 31. Name rescinded 11 March 1974, due to flooding of Kinbasket Lake behind Mica Dam." | BC Geographical Names, Boat Encampment (52160) · https://apps.gov.bc.ca/pub/bcgnws/names/52160.html | rejulgada |
+| F233 | 33 | Farther north, the river's big bend in British Columbia went under … | confirmada | "Following flooding of these valleys behind Mica Dam, this creek now flows into Kinbasket Lake." | BC Geographical Names, Encampment Creek (9982) · https://apps.gov.bc.ca/pub/bcgnws/names/9982.html | nova |
+| F234 | 33 | Farther north, the river's big bend in British Columbia went under … | confirmada | "Canada shall construct dams : (a) on the Columbia River near Mica Creek, British Columbia" | Tratado, Art. II(2)(a), UNTS vol. 542, No. 7894, p. 4 do PDF · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 4 do PDF) | nova |
+| F125 | 33 | As for how residents and First Nations were consulted, the province… | confirmada | "First Nations and public consultation and mitigation at the time could be considered inadequate to non-existent by today’s standards" | BC, About the Columbia River Treaty (F5) · https://engage.gov.bc.ca/columbiarivertreaty/ (a página About, pela API WordPress do site; fatos-a, F5) | levada |
 | F130 | 34 | The Arrow Lakes lie in the traditional territory of the Sinixt. | confirmada | "only 21 Sinixt still lived on their traditional territory in Canada, in the Arrow Lakes Band reserve" | R. v. Desautel, 2021 SCC 17, §6 (F11) · https://decisions.scc-csc.ca/scc-csc/scc-csc/en/18836/1/document.do | levada |
 | F131 | 34 | The Arrow Lakes lie in the traditional territory of the Sinixt. | confirmada | "The place where he shot the elk was within this territory." | SCC, Case in Brief (F11) · https://scc-csc.ca/judgments-jugements/cb/2021/38734/ | levada |
 | F132 | 34 | In 1956, the government of Canada declared the Arrow Lakes Band ext… | confirmada | "after her death in 1956, the gov- ernment of Canada declared the Arrow Lakes Band extinct" | R. v. Desautel, §6 (F11) · https://decisions.scc-csc.ca/scc-csc/scc-csc/en/18836/1/document.do | levada |
-| F133 | 34 | Decades later, the Supreme Court of Canada recounted that history i… | confirmada | "R. v. DESAUTEL [2021] 1 S.C.R." | R. v. Desautel (F11) · https://decisions.scc-csc.ca/scc-csc/scc-csc/en/18836/1/document.do | rejulgada (C1) |
-| F218 | 34 | Decades later, the Supreme Court of Canada recounted that history i… | confirmada | "after her death in 1956, the gov- ernment of Canada declared the Arrow Lakes Band extinct" | R. v. Desautel, 2021 SCC 17, §6 · https://decisions.scc-csc.ca/scc-csc/scc-csc/en/18836/1/document.do | rejulgada (C1) |
+| F133 | 34 | Decades later, the Supreme Court of Canada recounted that history i… | confirmada | "R. v. DESAUTEL [2021] 1 S.C.R." | R. v. Desautel (F11) · https://decisions.scc-csc.ca/scc-csc/scc-csc/en/18836/1/document.do | levada |
+| F218 | 34 | Decades later, the Supreme Court of Canada recounted that history i… | confirmada | "after her death in 1956, the gov- ernment of Canada declared the Arrow Lakes Band extinct" | R. v. Desautel, 2021 SCC 17, §6 · https://decisions.scc-csc.ca/scc-csc/scc-csc/en/18836/1/document.do | levada |
 | F134 | 34 | It found that a successor group of the Sinixt, based in Washington … | confirmada | "Accordingly, the Lakes Tribe is an Aboriginal people of Canada." | R. v. Desautel (F11) · https://decisions.scc-csc.ca/scc-csc/scc-csc/en/18836/1/document.do | levada |
 | F135 | 34 | It found that a successor group of the Sinixt, based in Washington … | confirmada | "the Lakes Tribe are a modern successor of the Sinixt" | R. v. Desautel (F11) · https://decisions.scc-csc.ca/scc-csc/scc-csc/en/18836/1/document.do | levada |
 | F136 | 34 | It found that a successor group of the Sinixt, based in Washington … | confirmada | "Lakes Tribe of the Colville Confederated Tribes based in the State of Washington" | R. v. Desautel, §4 (F11) · https://decisions.scc-csc.ca/scc-csc/scc-csc/en/18836/1/document.do | levada |
@@ -368,8 +433,8 @@ A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada
 | F137 | 37 | Canada agreed to a smaller share of the power. | confirmada | "Beginning August 1, 2024, the Canadian Entitlement decreased by 37%." | CRS R43287 (o Departamento de Estado, 25/11/2024) · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F220 | 37 | The cut was more than a third. | confirmada | "Beginning August 1, 2024, the Canadian Entitlement decreased by 37%." | CRS R43287 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F221 | 37 | The cut was more than a third. | confirmada | "corte da parte do Canadá: 37 % contra 1/3 = 33.3 %: True (more than a third)" | fatos-medidas-r2.py · roteiros/rio-columbia/qc-roteiro/fatos-medidas-r2.txt (as contas do canal) | levada |
-| F139 | 37 | The United States agreed to pay by the year for room it had once pa… | confirmada | "The United States is expected to compensate Canada for preplanned FRM by providing US$ 37.6 million per year, indexed to inflation" | BC, AIP Public Description (L4) · https://engage.gov.bc.ca/app/uploads/sites/6/2024/09/CRT-AIP-Canada-public-description-Final_2024Aug30.pdf | rejulgada (C6) |
-| F232 | 37 | The United States agreed to pay by the year for room it had once pa… | confirmada | "52,100,000 dollars upon the commencement of operation of the storage referred to in" | Tratado, Art. VI(1) (F1) · https://csgwest.org/wp-content/uploads/2023/10/Columbia-River-Treaty-Protocol-and-Documents.pdf | nova (C6) |
+| F139 | 37 | The United States agreed to pay by the year for room it had once pa… | confirmada | "The United States is expected to compensate Canada for preplanned FRM by providing US$ 37.6 million per year, indexed to inflation" | BC, AIP Public Description (L4) · https://engage.gov.bc.ca/app/uploads/sites/6/2024/09/CRT-AIP-Canada-public-description-Final_2024Aug30.pdf | levada |
+| F232 | 37 | The United States agreed to pay by the year for room it had once pa… | confirmada | "52,100,000 dollars upon the commencement of operation of the storage referred to in" | Tratado, Art. VI(1), UNTS vol. 542, No. 7894, p. 7 do PDF (o texto registrado na ONU; antes, a cópia CSG West (F1)) · https://treaties.un.org/doc/Publication/UNTS/Volume%20542/volume-542-I-7894-English.pdf (p. 7 do PDF) | levada, fonte trocada |
 | F141 | 38 | The American agencies that run the treaty once estimated that endin… | confirmada | "net annual revenues for the United States would increase by about $180 million to $280 million" | CRS R43287, nota 26 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F142 | 38 | The American agencies that run the treaty once estimated that endin… | confirmada | "Columbia River Treaty 2014/2024 Review: Recent Study Results,” June 2012" | CRS R43287, nota 12 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F143 | 38 | The American agencies that run the treaty once estimated that endin… | confirmada | "largely due to the termination of the Canadian Entitlement" | CRS R43287 · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
@@ -392,16 +457,16 @@ A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada
 | F155 | 40 | It has not been finalized. | confirmada | "Until a new Treaty is finalized, operations are subject to current Treaty requirements." | BC Hydro 2026, p. 8 · BC Hydro, Columbia Operations Update, 23/06/2026: cópia da Sala; a URL não está no índice local (a registrar) | levada |
 | F156 | 40 | In March 2025, British Columbia's government announced that the Uni… | confirmada | "The U.S. has paused negotiations with Canada on an amended Columbia River Treaty." | BC News, 11/03/2025 · https://news.gov.bc.ca/releases/2025ECS0009-000191 | levada |
 | F157 | 40 | In March 2025, British Columbia's government announced that the Uni… | confirmada | "Victoria Tuesday, March 11, 2025" | BC News, 11/03/2025 · https://news.gov.bc.ca/releases/2025ECS0009-000191 | levada |
-| F158 | 40 | Canada's negotiating team includes representatives of three First N… | confirmada | "The Canadian delegation is made up of federal, provincial and First Nation representatives from the Ktunaxa, the Syilx-Okanagan and the Secwépemc Nations" | Global Affairs Canada, Question Period Note, 28/05/2025 · https://search.open.canada.ca/qpnotes/record/dfatd-maecd%2C00019-2025 | rejulgada (C7) |
-| F159 | 40 | Canada's negotiating team includes representatives of three First N… | confirmada | "Ktunaxa, Syilx-Okanagan, Secwépemc = 3 nações" | contagem do verificador sobre a nota da GAC · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | rejulgada (C7) |
+| F158 | 40 | Canada's negotiating team includes representatives of three First N… | confirmada | "The Canadian delegation is made up of federal, provincial and First Nation representatives from the Ktunaxa, the Syilx-Okanagan and the Secwépemc Nations" | Global Affairs Canada, Question Period Note, 28/05/2025 · https://search.open.canada.ca/qpnotes/record/dfatd-maecd%2C00019-2025 | levada |
+| F159 | 40 | Canada's negotiating team includes representatives of three First N… | confirmada | "Ktunaxa, Syilx-Okanagan, Secwépemc = 3 nações" | contagem do verificador sobre a nota da GAC · roteiros/rio-columbia/qc-roteiro/fatos-medidas.txt (as contas do canal) | levada |
 | F160 | 40 | As of August 2026, the magazine Canadian Geographic reported that t… | confirmada | "At the time of writing, the negotiations are still paused" | Canadian Geographic, 17/08/2026 · https://canadiangeographic.ca/articles/we-want-to-let-the-salmon-know-were-still-here/ | levada |
 | F161 | 40 | As of August 2026, the magazine Canadian Geographic reported that t… | confirmada | "in the age of Trump Aug 17, 2026" | Canadian Geographic, 17/08/2026 · https://canadiangeographic.ca/articles/we-want-to-let-the-salmon-know-were-still-here/ | levada |
 | F162 | 41 | The temporary deal can cover up to three flood seasons, and the spr… | confirmada | "operations for up to three consecutive operating years for which the U.S. Entity elects for the provision of those operations by compensating the Canadian Entity. The Interim FRM Period is defined to run until the earliest of the first July 31 following the entry into force of the Modernized Treaty, or July 31, 2027." | Nota diplomática dos EUA, 22/11/2024 (L3) · https://engage.gov.bc.ca/app/uploads/sites/6/2024/12/20241122_FRM_EON_CAN_US.pdf | levada |
 | F163 | 41 | The law that authorizes the payment expires at the end of August 20… | confirmada | "shall expire on August 31, 2027" | Public Law 118-272, sec. 1152(c)(3) · govinfo.gov, Public Law 118-272 (cópia da Sala; a URL exata não está no índice local, a registrar) | levada |
-| F164 | 41 | As of November 2026, a Senate bill would move that date to 2029. | confirmada | "in paragraph (3), by striking ``2027'' and inserting ``2029''" | S. 4949 (RS), sec. 1367 · https://www.govinfo.gov/content/pkg/BILLS-119s4949rs/html/BILLS-119s4949rs.htm | rejulgada (C8) |
-| F229 | 41 | As of November 2026, a Senate bill would move that date to 2029. | confirmada | "subsection shall expire on August 31, 2027" | Public Law 118-272, sec. 1152 (L11) · govinfo.gov, Public Law 118-272 (cópia da Sala; a URL exata não está no índice local, a registrar) | rejulgada (C8) |
-| F230 | 41 | As of November 2026, a Senate bill would move that date to 2029. | confirmada | "Placed on Senate Legislative Calendar under General Orders. Calendar No. 457." | govinfo, BILLSTATUS do S. 4949 (lido em 12/11/2026) · https://www.govinfo.gov/bulkdata/BILLSTATUS/119/s/BILLSTATUS-119s4949.xml | rejulgada (C8) |
-| F231 | 41 | As of November 2026, a Senate bill would move that date to 2029. | confirmada | "lida em: 2026-11-12 (verificador de fatos, vídeo 7, User-Agent do canal, um pedido por vez)" | govinfo, BILLSTATUS do S. 4949 (lido em 12/11/2026) · https://www.govinfo.gov/bulkdata/BILLSTATUS/119/s/BILLSTATUS-119s4949.xml | nova (C8) |
+| F164 | 41 | As of November 2026, a Senate bill would move that date to 2029. | confirmada | "in paragraph (3), by striking ``2027'' and inserting ``2029''" | S. 4949 (RS), sec. 1367 · https://www.govinfo.gov/content/pkg/BILLS-119s4949rs/html/BILLS-119s4949rs.htm | levada |
+| F229 | 41 | As of November 2026, a Senate bill would move that date to 2029. | confirmada | "subsection shall expire on August 31, 2027" | Public Law 118-272, sec. 1152 (L11) · govinfo.gov, Public Law 118-272 (cópia da Sala; a URL exata não está no índice local, a registrar) | levada |
+| F230 | 41 | As of November 2026, a Senate bill would move that date to 2029. | confirmada | "Placed on Senate Legislative Calendar under General Orders. Calendar No. 457." | govinfo, BILLSTATUS do S. 4949 (lido em 12/11/2026) · https://www.govinfo.gov/bulkdata/BILLSTATUS/119/s/BILLSTATUS-119s4949.xml | levada |
+| F231 | 41 | As of November 2026, a Senate bill would move that date to 2029. | confirmada | "lida em: 2026-11-12 (verificador de fatos, vídeo 7, User-Agent do canal, um pedido por vez)" | govinfo, BILLSTATUS do S. 4949 (lido em 12/11/2026) · https://www.govinfo.gov/bulkdata/BILLSTATUS/119/s/BILLSTATUS-119s4949.xml | levada |
 | F165 | 41 | The treaty itself remains in force, on-call promise, missing number… | confirmada | "recognizes that the scope of the Treaty, which remains in force" | Nota diplomática dos EUA, 22/11/2024 (L3) · https://engage.gov.bc.ca/app/uploads/sites/6/2024/12/20241122_FRM_EON_CAN_US.pdf | levada |
 | F166 | 42 | By the end of winter, the mountains above the Arrow Lakes are holdi… | confirmada | "Approximately 60% of this runoff occurs in May, June, and July." | CRS R43287 (L1) · https://www.everycrsreport.com/reports/R43287.html (CRS R43287, 03/12/2024; o PDF oficial do congress.gov deu 403 ao leitor B) | levada |
 | F167 | 42 | Down in the valley, the lake is at its lowest point of the year, wi… | confirmada | "the reservoir reached its minimum level of 427.15 metres (1,401.4 feet) on February 4, 2017" | BC Hydro 2018 (F15) · https://www.bchydro.com/content/dam/BCHydro/customer-portal/documents/corporate/community/columbia-river-operations-summary.pdf | levada |
@@ -411,6 +476,6 @@ A coluna "final" diz se a linha foi levada do r2 (a frase não mudou), rejulgada
 | F170 | 44 | For now, the United States pays to have that room waiting. | confirmada | "required to pay Canada annual payments of USD" | BC Hydro 2026, p. 7 · BC Hydro, Columbia Operations Update, 23/06/2026: cópia da Sala; a URL não está no índice local (a registrar) | levada |
 | F171 | 44 | And the spring of 2027 is as far as this deal can reach. | confirmada | "following the entry into force of the Modernized Treaty, or July 31, 2027." | Nota diplomática dos EUA (L3) · https://engage.gov.bc.ca/app/uploads/sites/6/2024/12/20241122_FRM_EON_CAN_US.pdf | levada |
 
-NOTA: 9.0/10
+NOTA: 9.5/10
 
 VEREDITO: PASS

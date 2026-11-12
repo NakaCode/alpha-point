@@ -603,7 +603,8 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
       - `assets/flags/`: as 89 PNG variam de 160 a 2560 px de largura (ffprobe em todas, 26/09). A primeira
         versão desta linha generalizou a `us.png` (320 × 168) para o conjunto, e o verificador derrubou. As do
         Juneau, `us.png` (320 × 168) e `ca.png` (320 × 160), são pequenas para o círculo de 640 px da PRANCHA;
-      - PyMuPDF 1.28.0 importa no Python da máquina; nenhum PDF foi rasterizado com ele.
+      - PyMuPDF 1.28.0 importa no Python da máquina; nenhum PDF foi rasterizado com ele. (Em 12/11/2026, no vídeo 7, o
+        `pesquisa-documentos` rasterizou e conferiu a olho PDF escaneado e vetorial: o `CLAUDE.md` foi atualizado.)
   13. **Para o agent-core (`editor-de-arte`):** uma lição que só estava na roupa do Top10, e que vale em qualquer
       canal: na procedência, a `licenca` decide **se** a peça leva crédito, e o `credito_na_tela` decide **como**
       ele aparece. Confundir os dois ou põe crédito em domínio público (poluindo a tela) ou tira o de CC BY (quebra
@@ -1582,6 +1583,12 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   separado, e só seguir com o "pode" lido. O levantamento de uma fonte registra os hosts todos que ela usa, não só o das páginas.
 - **Por que serve a qualquer canal:** muitos acervos servem as páginas num host e os arquivos noutro (data., files., cdn., api.); a
   regra de não contornar quem recusa robô só funciona se a recusa for lida no host certo e antes do pedido.
+- **De novo no vídeo 7** (12/11/2026, o research do `rio-columbia`): o `pesquisa-dados` leu o robots.txt de todos os hosts menos o de
+  `api.weather.gc.ca` e fez 4 pedidos a `/collections/…/items`, que esse robots.txt veta (`Disallow: /collections/*/items`); o
+  `pesquisa-geo`, no mesmo dia, leu e não usou o host. O verificador independente do research pegou (VR-03). A Sala leu a política de
+  uso que o próprio robots.txt cita, que fala a quem usa a API por programa, e registrou a API como porta para programas, como a da
+  NARA e a do Commons (`CLAUDE.md`, "Tropeços conhecidos do apoio"). O veto continua valendo para quem não lê: o pedido a todo
+  pesquisador manda ler o robots.txt de cada host antes do primeiro pedido, e o relato diz qual se leu.
 
 ### 88. A fala citada marcada como rótulo passa no portão de tamanho com menos da metade do piso
 
@@ -1811,3 +1818,18 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   `ferramentas/folhas-espectador.py` faz com a Inter.
 - **Por que serve a outros canais:** o ffmpeg de build estático do Windows vem sem a configuração do fontconfig, e qualquer canal que anote
   quadros com o `drawtext` cai no mesmo lugar.
+
+### 101. A foto com orientação EXIF sai de pé ou de cabeça para baixo conforme o ffmpeg que a reduz
+
+- **O problema** (12/11/2026, o research do vídeo 7, `rio-columbia`): a foto do Columbia em Trail (s46, 13491 × 7589, 102 MP, do Commons)
+  tem a marca EXIF de orientação 3 (girar 180°): os pixels gravados estão de cabeça para baixo, e o navegador, o Commons e o conferente a
+  mostram de pé. A entrega a reduziu a 5120 × 2880 com a régua do motor (`ffmpeg … scale=5120:-2 -q:v 2`). O ffmpeg 8.1 desta máquina
+  aplicou a rotação aos pixels e gravou o JPEG novo sem a marca: a entregue saiu de pé, como a julgada (as prévias lado a lado em
+  `out/rio-columbia/_tmp/pesquisa-imagens/entrega/trail-orientacao.jpg` e `trail-entregue.jpg`, pelo `previa-orientacao.py` ao lado).
+- **O risco:** um ffmpeg mais antigo, que não lê a orientação do JPEG, reduz os pixels crus e grava sem a marca: a foto chega à cena de
+  cabeça para baixo, sem erro nenhum. A cópia byte a byte leva a marca junto, e aí quem gira a foto é o programa que a mostra.
+- **Como evitar:** antes de entregar, ler a orientação de cada rascunho (`out/rio-columbia/_tmp/pesquisa-imagens/entrega/orient-todos.py`
+  lê, sem gravar, a orientação, o ICC e o modo de cada um); toda foto com orientação diferente de 1 que for reduzida ou convertida se
+  confere numa prévia, a julgada ao lado da entregue, e a procedência diz que a orientação foi aplicada aos pixels.
+- **Por que serve a outros canais:** foto de celular e de câmera chega com a orientação só na marca EXIF, e qualquer canal que reduza
+  imagem grande com o ffmpeg ou com outra ferramenta cai no mesmo lugar, conforme a versão.

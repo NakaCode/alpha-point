@@ -1,6 +1,10 @@
 # Rio Columbia (`rio-columbia`, o vídeo 7): a folha de pronúncia
 
-> Revisão do roteiro: `c4788c7ab3be`
+> Revisão do roteiro: `955d5210c444`
+>
+> **Carimbo levado pela Sala em 12/11/2026, ~13:0x**: as três frases trocadas depois do research ("those mountains", "in any year it
+> calls", "for a single year of calls", "a settlement"; `decisoes-lucas.md`) não trazem nome novo; a folha não muda. A regravação dos
+> trechos 8, 25 e 33 saiu sem alias, como a de antes.
 
 > **Rascunho de 12/11/2026**, feito por um subagente da Sala de controle sobre o texto final (`roteiro-narrador.md`, o r2 com o laudo
 > de fatos fechado; o Lucas delegou a aprovação deste roteiro aos conferentes, `decisoes-lucas.md`; 44 parágrafos, 2.677 palavras pelo
