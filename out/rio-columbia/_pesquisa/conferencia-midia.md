@@ -465,3 +465,140 @@ Nada novo neste lote. Muda o aviso do conjunto da cena de s54:
     guardada.
 
   Nada disso tocou `_media/`. O `WebFetch` leu 1 página, a do arquivo no Commons.
+
+# Conferência de mídia: `rio-columbia` (vídeo 7), fluxo `midia`, lote 5 (13/11/2026, 00:39): o `conducting`, contra a regência
+
+**Laudo do lote 5:** 38 aprovados de 38 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 38
+(5 reusos declarados, 5 janelas novas e 28 janelas provisórias a confirmar).
+
+**Laudo do arquivo (lotes 1 a 5):** 46 aprovados de 58 conferidos (4 reprovados, 8 trocar, 0 pendente_lucas); 1 com algo não
+conferido; recebidos: 58 vereditos em vigor. Os 10 itens novos (reusos e janelas novas) entraram como vereditos novos, cada um para a
+cena e a frase dele. As 28 janelas confirmadas substituem os vereditos provisórios do research, que estão em `substituidos`.
+
+As entradas: a regência `131116f3…` (o `_lote_do_conferente`, 38 itens), o espelho `3de8e7ad…`, o conceito `bf511817…`, o relógio de hoje,
+`words.json` `be4b6460…`, e o roteiro `fd56f296…`. O relógio andou desde o research, que usou o `words.json` de antes da regravação: +1,76 s
+de s45 a s51 e +2,0 s de s53 em diante. Achei a frase de cada veredito no relógio de hoje, e as janelas da regência batem com elas.
+
+**O que eu olhei.** Abri 9 imagens, todas de cópias em `out/rio-columbia/_tmp/conferencia/lote5/`:
+- a caixa de s01, o recorte novo de s43 a 1:1 e um detalhe dele a 1,4×;
+- o recorte de s32 e o pôr do sol de s50;
+- uma folha das cinco miniaturas no tamanho da tela (s01, s14, s22, s27, s54);
+- uma folha de comparação (as duas de s12, as três de s50 e a de s60);
+- a Vanport de s22 a 1:1 e Arrowhead reduzida.
+
+As 28 janelas provisórias foram conferidas pela conta, como o pedido manda. Não li nada na rede. `out/rio-columbia/_media/` não mudou: as
+listas de sha256 de antes e de depois são iguais (220 arquivos).
+
+| Arquivo | Cena e plano | Item | Janela | Veredito | Motivo |
+|---|---|---|---|---|---|
+| `s01-lower-arrow-lake-aerial-winter-low-water-2007-02-02-shawn-roberts-commons.jpg` | s02 P1 (2,5–5,2 s) | reuso declarado | 2,7 s | aprovado | a aérea de 2007 do Lower Arrow encolhendo para o polígono do Arrow sob 'part of the Arrow Lakes Reservoir': a mesma imagem de s01, sem corte (reuso declarado), até 1,36×, com 'Photo from 2007' |
+| `s01-lower-arrow-lake-aerial-winter-low-water-2007-02-02-shawn-roberts-commons.jpg` | s28 P4 (310,9–314,333 s) | reuso declarado | 3,433 s | aprovado | a aérea de 2007 em miniatura no Arrow, sob 'the lake at the start of this story': a volta declarada da imagem da abertura, a 0,3×, com 'Photo from 2007' |
+| `s12-upper-arrow-lake-south-of-nakusp-2004-08-11-kevstan-commons.jpg` | s32 P1 (361,167–369,233 s) | reuso declarado | 8,066 s | aprovado | o Upper Arrow cheio no verão de 2004 sob 'the lakes caught part of it' e a inscrição: impressa a ≈ 0,95×, 'Photo from 2004'; o rótulo não passa de Upper Arrow Lake (sem 'south of Nakusp') |
+| `s01-lower-arrow-lake-aerial-winter-low-water-2007-02-02-shawn-roberts-commons.jpg` | s43 P4 (553,333–556,2 s) | reuso declarado | 2,867 s | aprovado | a frase-tese sobre o Arrow real rebaixado (a aérea de 2007, recorte novo na faixa branca): impressa no teto de 1,4×, 'Photo from 2007'; reuso declarado, 239 s depois de s28 |
+| `s50-upper-arrow-lakeshore-nakusp-mudflat-sunset-2023-04-30-adam-jones-commons.jpg` | s60 P2 (871,5–878,967 s) | reuso declarado | 7,467 s | aprovado | o leito exposto do Upper Arrow ao pôr do sol sob 'with that strip of bare ground showing': tela cheia a 0,74×, Ken Burns lento, 'Photo from 2023'; reuso declarado da alternativa de s50 |
+| `s14-kinbasket-lake-south-of-valemount-2010-08-01-rockygoat-commons.jpg` | s14 P4 (96,833–104,667 s) | janela nova | 7,834 s | aprovado | o Kinbasket de 2010 em miniatura, presa ao ponto da câmera, enquanto o anel desce o rio: 0,14×, 'Photo from 2010' (só sem a caça) |
+| `s22-vanport-flood-house-in-water-june-1948-us-navy-nara-truman-98-1250.jpg` | s22 P2 (204,7–214,433 s) | janela nova | 9,733 s | aprovado | Vanport alagada em junho de 1948, em miniatura presa ao ponto de Vanport enquanto a cheia corre de Trail até ela: ≤ 1,36×, sem aviso (é do ano) |
+| `s27-libby-dam-lake-koocanusa-2025-08-05-usace-seattle-dvids-9239542.jpg` | s27 P3 (281,5–288,633 s) | janela nova | 7,133 s | aprovado | Libby com o lago atrás, em miniatura no ponto da barragem enquanto o Koocanusa enche Canadá adentro: 0,12×, 'Photo from 2025' |
+| `s51-arrowhead-british-columbia-c1910-commons.jpg` | s51 P2 (679,6–680,4 s) | janela nova | 0,8 s | aprovado | Arrowhead, c. 1910, encolhendo 0,8 s até sumir no ponto do nome dela: ≤ 1,37×, 'Photo from about 1910'; só com o veredito do verificador sobre o lugar (item 19) |
+| `s54-grand-coulee-dam-before-forebay-1942-usbr-loc-commons.jpg` | s54 P3 (738,633–743,9 s) | janela nova | 5,267 s | aprovado | o Grand Coulee de 1942 em miniatura no ponto da barragem, onde os traços do salmão param: 0,11×, 'Photo from 1942' (o '1941' fica no mapa) |
+| `s01-lower-arrow-lake-aerial-winter-low-water-2007-02-02-shawn-roberts-commons.jpg` | s01 P1 (0–2,5 s) | janela provisória confirmada | 2,5 s | aprovado | reserva declarada da abertura: o Lower Arrow de avião, em fevereiro de 2007, com a margem exposta e neve (Commons, CC BY-SA 2.0); vai impressa (2272 px), com 'Photo from 2007'; o drone 4K da caça vem antes · lote 5: a janela da regência (2,5 s) confirmada |
+| `s12-over-upper-arrow-lake-looking-north-aerial-2009-08-19-shawn-roberts-commons.jpg` | s12 P1 (53,767–59,433 s) | janela provisória confirmada | 5,666 s | aprovado | o Upper Arrow de avião de linha, em agosto de 2009 (Commons, CC BY-SA 2.0), 4290 px: enche a tela; com 'Photo from 2009'; distinta da de s01 · lote 5: a janela da regência (5,666 s) confirmada |
+| `s13-columbia-lake-2008-08-02-regel-commons.jpg` | s13 P3 (73,767–74,9 s) | janela provisória confirmada | 1,133 s | aprovado | o Columbia Lake com a serra atrás (Commons, 2008, CC BY 3.0): serve à miniatura de P3, com 'Photo from 2008' · lote 5: a janela da regência (1,133 s) confirmada |
+| `s14-kinbasket-lake-south-of-valemount-2010-08-01-rockygoat-commons.jpg` | s14 P3 (90,733–96,833 s) | janela provisória confirmada | 6,1 s | aprovado | o Kinbasket ao sul de Valemount, com a margem de pedras e as montanhas (Commons, 2010, domínio público do autor), 4272 px em tela cheia, com 'Photo from 2010': a reserva que o espelho pede · lote 5: a janela da regência (6,1 s) confirmada |
+| `s18-columbia-river-at-castlegar-2013-10-11-foubister-commons.jpg` | s18 P1 (130,6–135,333 s) | janela provisória confirmada | 4,733 s | aprovado | o Columbia em Castlegar, de cima, no outono de 2013 (Commons, CC BY-SA 2.0); impressa (2121 px), com 'Photo from 2013'; reserva do drone da caça · lote 5: a janela da regência (4,733 s) confirmada |
+| `s18-usgs-streamgage-2014-08-18-usgs-commons.jpg` | s18 P2 (135,333–139,9 s) | janela provisória confirmada | 4,567 s | aprovado | uma estação do USGS na margem de um riacho, com a casinha e a soleira de medida (Commons, USGS 2014): cobre a definição de 'gauge'; sem rótulo de lugar e sem aviso; com o crédito CC BY 2.0 na tela · lote 5: a janela da regência (4,567 s) confirmada |
+| `s18-the-dalles-dam-aerial-downstream-2013-08-08-bpa-commons.jpg` | s18 P4 (145,367–150,033 s) | janela provisória confirmada | 4,666 s | aprovado | a barragem de The Dalles de cima, com a cidade e o Mount Hood (Commons, BPA 2013, CC BY 2.0): serve à miniatura junto do pino, com 'Photo from 2013' · lote 5: a janela da regência (4,666 s) confirmada |
+| `s22-vanport-flood-house-in-water-june-1948-us-navy-nara-truman-98-1250.jpg` | s22 P1 (202,267–204,7 s) | janela provisória confirmada | 2,433 s | aprovado | Vanport alagada, junho de 1948 (NARA, U.S. Navy, sem crédito): a origem só oferece os 800 px (conferido pela Sala no catálogo); foto pequena da lacuna, impressa sobre a mesa até 1,4×, sem aviso do ano · lote 5: a janela da regência (2,433 s) confirmada |
+| `s23-vanport-destroyed-embankment-and-debris-aerial-june-1948-us-navy-nara-truman-98-1252.jpg` | s23 P2 (220,567–225,933 s) | janela provisória confirmada | 5,366 s | aprovado | Vanport destruída de cima, junho de 1948 (NARA, U.S. Navy, sem crédito): serve a P2, nunca a P1; a origem só oferece os 800 px (conferido pela Sala); foto pequena da lacuna, impressa sobre a mesa até 1,4×, com movimento lento · lote 5: a janela da regência (5,366 s) confirmada |
+| `s27-libby-dam-lake-koocanusa-2025-08-05-usace-seattle-dvids-9239542.jpg` | s27 P2 (277,967–281,5 s) | janela provisória confirmada | 3,533 s | aprovado | a barragem de Libby de cima, com o Koocanusa atrás e o rio abaixo (DVIDS, USACE, domínio público, sem crédito); 4K em tela cheia, 'Photo from 2025' · lote 5: a janela da regência (3,533 s) confirmada |
+| `s30-john-day-dam-hydropower-generators-2022-08-03-usace-portland-dvids-7361790.jpg` | s30 P2 (326,933–331,733 s) | janela provisória confirmada | 4,8 s | aprovado | a fila de geradores da casa de força de John Day, de perto (DVIDS, USACE, domínio público, sem crédito); enche a tela, 'Photo from 2022' · lote 5: a janela da regência (4,8 s) confirmada |
+| `s36-the-dalles-lock-and-dam-aerial-spillway-open-2009-01-30-usace-portland-dvids-6382255.jpg` | s36 P2 (409,2–412,567 s) | janela provisória confirmada | 3,367 s | aprovado | The Dalles de cima, com o vertedouro aberto e o rio passando (DVIDS, USACE, domínio público, sem crédito); tela cheia, 'Photo from 2009'; outra que a miniatura de s18 P3 · lote 5: a janela da regência (3,367 s) confirmada |
+| `plaw-118-272-p1.jpg` | s38 P1 (470,633–474,567 s) | janela provisória confirmada | 3,934 s | aprovado | a folha de rosto da Public Law 118-272, 'JAN. 4, 2025' (govinfo, domínio público federal, sem o selo do GPO): a alternativa real à folha recriada de s38 P1 · lote 5: a janela da regência (3,934 s) confirmada |
+| `plaw-118-272-p241-approved.jpg` | s38 P1 (470,633–474,567 s) | janela provisória confirmada | 3,934 s | aprovado | a última página da lei, 'Approved January 4, 2025.' (govinfo, domínio público federal): a data da autorização para s38 P1, junto com a p. 1 · lote 5: a janela da regência (3,934 s) confirmada |
+| `plaw-118-272-p53.jpg` | s40 P1 (485,533–494,133 s) | janela provisória confirmada | 8,6 s | aprovado | a página real da seção 1152 da lei, com a frase que a voz cita (govinfo, domínio público federal): a alternativa à folha recriada de s40 · lote 5: a janela da regência (8,6 s) confirmada |
+| `plaw-118-272-p53-sec1152.jpg` | s40 P1 (485,533–494,133 s) | janela provisória confirmada | 8,6 s | aprovado | o recorte legível da seção 1152, com a frase que a voz cita (govinfo, domínio público federal): para o grifo de s40 junto com a voz · lote 5: a janela da regência (8,6 s) confirmada |
+| `adrian-dix-2020-aeger-eger-commons-recorte.png` | s45 P2 (569,267–579,433 s) | janela provisória confirmada | 10,166 s | aprovado | Adrian Dix, identificado pela origem, rosto inteiro, 950 px sem ampliar no card; Commons CC BY-SA 4.0, com o crédito do autor e sem partido; 'Photo from 2020' · lote 5: a janela da regência (10,166 s) confirmada |
+| `s46-columbia-river-at-trail-2026-04-05-electron2-commons.jpg` | s46 P3 (602,1–608,633 s) | janela provisória confirmada | 6,533 s | aprovado | o Columbia correndo por Trail, em abril de 2026, sem aviso do ano (Commons, CC BY-SA 4.0, com crédito); reserva do footage da caça, com movimento se ficar mais de 6 s · lote 5: a janela da regência (6,533 s) confirmada |
+| `s50-upper-arrow-lakeshore-nakusp-low-water-wide-2023-04-30-adam-jones-commons.jpg` | s50 P1 (659,467–665,533 s) | janela provisória confirmada | 6,066 s | aprovado | a margem do Upper Arrow em Nakusp com o lago baixo e a faixa de cascalho, de longe (Commons, CC BY 2.0, com crédito); tela cheia com o pan lento, 'Photo from 2023' · lote 5: a janela da regência (6,066 s) confirmada |
+| `s50-upper-arrow-lakeshore-nakusp-exposed-beach-close-2023-04-30-adam-jones-commons.jpg` | s50 P2 (665,533–670,7 s) | janela provisória confirmada | 5,167 s | aprovado | a areia exposta da margem do Upper Arrow, de perto, com a água rasa e as árvores à esquerda (Commons, CC BY 2.0, com crédito); tela cheia, 'Photo from 2023' · lote 5: a janela da regência (5,167 s) confirmada |
+| `s51-arrowhead-british-columbia-c1910-commons.jpg` | s51 P1 (676,3–679,6 s) | janela provisória confirmada | 3,3 s | aprovado | a vila de Arrowhead à beira do Upper Arrow, por volta de 1910, abandonada em 1964 pela barragem de Keenleyside (Commons, domínio público, sem crédito); nítida, tela cheia a 1,37× ou impressa, com o aviso do ano · lote 5: a janela da regência (3,3 s) confirmada |
+| `s53-supreme-court-of-canada-facade-2022-07-06-dwong33-commons.jpg` | s53 P3 (718,7–723,2 s) | janela provisória confirmada | 4,5 s | aprovado | a fachada da Suprema Corte do Canadá, de frente, julho de 2022 (Commons, CC0): enche a tela a 1,10×, 'Photo from 2022', sem crédito · lote 5: a janela da regência (4,5 s) confirmada |
+| `s54-grand-coulee-dam-before-forebay-1942-usbr-loc-commons.jpg` | s54 P2 (733–738,633 s) | janela provisória confirmada | 5,633 s | aprovado | o Grand Coulee pronto, com o vertedouro correndo, em 1942 (LoC, FSA/OWI, pelo Commons; domínio público): a busca da de 1941 fechou (NARA e Commons sem ela em tamanho; a LoC recusou também o navegador do app); tela cheia, 'Photo from 1942', sem crédito; o '1941' fica no mapa de P3 · lote 5: a janela da regência (5,633 s) confirmada |
+| `s54-chinook-salmon-at-kettle-falls-fishery-1938-nps-commons.jpg` | s54 P3 (742,7–743,9 s) | janela provisória confirmada | 1,2 s | aprovado | salmões chinook pescados em Kettle Falls em 1938 (NPS, domínio público): o salmão do alto Columbia antes do Grand Coulee, na miniatura de P3, com 'Photo from 1938' · lote 5: a janela da regência (1,2 s) confirmada |
+| `s57-us-capitol-from-library-of-congress-dome-2024-07-25-loc-commons.jpg` | s57 P2 (792,733–796,5 s) | janela provisória confirmada | 3,767 s | aprovado | o Capitólio inteiro visto da cúpula da Library of Congress, julho de 2024 (LoC, CC0): o Congresso da frase, em tela cheia, 'Photo from 2024', sem crédito · lote 5: a janela da regência (3,767 s) confirmada |
+| `s57-rocky-reach-dam-columbia-river-2009-06-13-brodbeck-commons.jpg` | s57 P3 (797,533–802,033 s) | janela provisória confirmada | 4,5 s | aprovado | Rocky Reach (a origem a nomeia; as letras na encosta também), a usina e o vertedouro, 2009: a miniatura de uma barragem das empresas em P3, com crédito e 'Photo from 2009' · lote 5: a janela da regência (4,5 s) confirmada |
+| `s59-us-capitol-east-front-senate-side-2014-06-23-david-commons.jpg` | s59 P2 (846,467–852,767 s) | janela provisória confirmada | 6,3 s | aprovado | o pórtico do lado do Senado e a cúpula do Capitólio, de baixo, 2014: o Congresso da frase, de outro ângulo que s57; tela cheia com movimento, crédito e 'Photo from 2014' · lote 5: a janela da regência (6,3 s) confirmada |
+| `s60-snowy-peaks-above-upper-arrow-nakusp-2023-04-30-adam-jones-commons.jpg` | s60 P1 (863,1–871,5 s) | janela provisória confirmada | 8,4 s | aprovado | as montanhas com neve acima do Upper Arrow, vistas de Nakusp, abril de 2023: alternativa de registro real para P1 (do chão), com crédito, 'Photo from 2023' e movimento lento · lote 5: a janela da regência (8,4 s) confirmada |
+
+## Para a tela (`redator-de-tela`, `editor-de-arte`, `mapista` e `qc-visual`)
+
+- **O rótulo de s32.** A origem diz "south of Nakusp", e o comentário do envio diz "north of Nakusp". O rótulo não passa de "Upper
+  Arrow Lake" (ou ARROW LAKES, B.C., como o conceito escreve). O "south of Nakusp" que a regência põe no `rotulo_lugar` de s32 não vai à
+  tela (`marca/midia.md` §2.7).
+- **As miniaturas da aérea de 2007 (s02 e s28).** A origem é o Lower Arrow Lake. Se a miniatura for presa a um ponto, o ponto fica no
+  Lower Arrow (a câmera estava em 49° 20′ 43″ N, 117° 53′ 22″ W) ou no polígono inteiro do reservatório. Nunca num ponto do Upper Arrow.
+- **A escala de s43 P4 está no teto.** A conta é 2.091 ÷ 1.600 × 1,03 × 1,04 = 1,3999. Qualquer escala a mais passa de 1,4×. A 1,4×, a
+  faixa fica macia, como já fica em s01 a 1,36×.
+- **s51 P2 tem uma condição.** A foto só encolhe para o ponto de Arrowhead com o veredito do verificador-de-fatos sobre o lugar
+  (item 19). Este veredito julga a foto, não o lugar do ponto. Sem aquele veredito, vale o corte seco, e a janela nova não vai à tela.
+- **Dois anos juntos em s54 P3.** O "1941" do mapa e o "Photo from 1942" da miniatura ficam no mesmo ponto da barragem. São datas de
+  coisas diferentes: a barragem pronta e a foto. A leitura das duas lado a lado é do redator e do `qc-visual`.
+- **Duas miniaturas curtas.**
+  - A de s13 P3 fica 1,13 s (73,767–74,9 s). A saída de 300 ms começa na borda e passa por "From" (74,91 s).
+  - A do salmão, em s54 P3, fica 1,2 s (742,7–743,9 s).
+  - O aviso do ano preso a cada uma fica abaixo do piso de 2,0 s do bloco de texto (identidade §4.3). Não é defeito do arquivo, e a
+    leitura é do redator e do `qc-visual`.
+- **Os avisos do ano batem com `data_na_origem` e `aviso_de_ano`.**
+  - 2007 em s02, s28 e s43; 2004 em s32; 2023 em s60 P2.
+  - 2010 em s14 P4, só sem a caça; 2025 em s27 P3; 1942 em s54 P3; "about 1910" em s51 P2.
+  - s22 P2 vai sem aviso, porque a foto é de junho de 1948, o ano do fato.
+- **Os créditos** são os dos vereditos de origem:
+  - "Shawn from Airdrie, Canada / Wikimedia Commons · CC BY-SA 2.0" (s02, s28, s43);
+  - "Kevstan / Wikimedia Commons · CC BY-SA 3.0" (s32);
+  - "Adam Jones / Wikimedia Commons · CC BY 2.0" (s60 P2);
+  - nenhum em s14 P4, s22 P2, s27 P3, s51 P2 e s54 P3, que são domínio público.
+
+## Para o Lucas pesar
+
+Nenhum `pendente_lucas`.
+
+## Para reconferir no navegador do app
+
+Nada. O lote não pediu leitura nova de licença, e nenhuma página foi aberta.
+
+## Para trocar
+
+Nada neste lote. Um aviso do conjunto: 8 aprovados do research a regência não usa nas cenas deles, e eles continuam com a janela
+provisória:
+- a de 2004 em s12 (ela vai a s32, com veredito próprio);
+- as duas alternativas de s14 (Tupungato e Mica);
+- a de Bonneville em s30;
+- a parede do vertedouro em s36;
+- o pôr do sol em s50 (ele vai a s60, com veredito próprio);
+- a do Capitólio oeste em s57;
+- a do anoitecer em s59.
+
+Se algum voltar à cena dele, pede a conta da janela.
+
+## Divergências e notas
+
+- **O item 33 das notas para os passos seguintes** fala na "aérea de 2009 de s12" voltando em s32. A regência, o conceito e o item 48 põem
+  em s32 a de 2004 (Kevstan), e foi essa que eu julguei.
+- **s46.** O arquivo entregue (`1571e945…`, 5120×2880) é a redução do rascunho julgado (`861a0147…`, 13491×7589). O veredito casa pelo
+  sha256 do rascunho, que o `_PROCEDENCIA.json` da pasta grava. Gravei os dois: o do rascunho em `sha256` e o do entregue em `medido.entregue_lote5`.
+- **O Ken Burns de s54 P2.** A regência escreve 1,00 → 1,06, e o conceito, 1,00 → 1,08. As duas versões ficam abaixo de 1,4×.
+- **A grafia de s23.** O "an" de "an hour" começa em 220,47 s, 0,1 s antes de a foto entrar (220,567 s). A frase do lote fica partida em
+  "U.S." (RG2-04). Usei a `frase_julgada`.
+- **Os ids.** Os vereditos do lote 5 têm como `id` o caminho do arquivo entregue em `_media/<tipo>/<cena>/`, que o pedido nomeia. O
+  casamento continua pelo `sha256`. Os 28 confirmados guardam o `id` de antes em `id_anterior`. Os 10 novos guardam o veredito de onde
+  vieram em `veredito_de_origem`.
+- **As cópias de antes.** `conferencia-midia.antes-lote5.json` e `.md` já estavam em `out/rio-columbia/_tmp/conferencia/`, com o mesmo
+  sha256 do começo deste lote (`4faaa938…` e `ab79c746…`). Não as regravei.
+- **As ferramentas.** Fora da lista do contrato, usei:
+  - no `Bash`, `cat`, `grep`, `head`, `tail`, `sed`, `cut`, `awk`, `stat`, `od`, `ls` e `wc`, para ler;
+  - no `Bash`, `cp`, para copiar a foto de s22 para `lote5/` antes de abri-la;
+  - o `python -c`, para dois consertos no meu próprio script;
+  - o `Write`, para os scripts de apoio em `out/rio-columbia/_tmp/conferencia/` (prefixo `lote5_`);
+  - o Python, para emendar o JSON (562 KB) e este `.md`. Os dois scripts conferem o sha256 antes de gravar.
+
+  Nada disso tocou `_media/`. Não usei o `WebFetch`.

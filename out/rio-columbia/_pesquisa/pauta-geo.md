@@ -7,6 +7,9 @@
 - Estado dos ids: atendido 34, parcial 2, bloqueio 2. Dos pedidos: atendidos 185, parciais 3, bloqueados 3.
 - O par de satélite do Arrow (s41 P1, s61 P2): **14/04/2024 (fundo) e 11/07/2024 (pico)**, Landsat 8 e 9, path 044, linhas 025 e 026; o recorte fica com o mapista (abaixo).
 - Portões: `validar-contrato pauta-pesquisa` sai 0; `qc-procedencia rio-columbia` PASS.
+- **Antes do art (12/11/2026, ~23h):** mais 3 camadas (`fronteira-blaine-surrey`, `boat-encampment`, `arrowhead-bc-antiga`; 41 no total) e as 3
+  entradas de satélite da mesa em `_media/base/mesa/`. O que está acima é da rodada do research (espelho r2); a rodada nova está no fim, em
+  "Antes do art", e no bloco `rodada_antes_do_art` do JSON.
 
 ## Os 38 ids
 
@@ -208,3 +211,40 @@ Na tela, '© OpenStreetMap contributors' (já no crédito da base MapTiler); na 
 - **collaboration.cmc.ec.gc.ca (os polígonos de bacia das estações da WSC)**: robots.txt 'Disallow: /cmc'. não se usou; a parte americana acima de Birchbank saiu do WBD. Para a Sala: nada.
 - **api.weather.gc.ca (MSC GeoMet)**: robots.txt 'Disallow: /collections/*/items'. usou-se a cópia local da estação 08NE049 (midia/rio-columbia/fontes/a/). Para a Sala: nada.
 - **overpass-api.de**: robots.txt 'Disallow: /api/' (a regra é para robôs de busca; a API é a porta que o OSM abre a programas, e o pedido da Sala manda usá-la um pedido por vez); 2 respostas 502 'at capacity', com o pedido de repetir com espera. 7 pedidos no total (5 respondidos e 2 com 502, os dois no Kootenay, repetido minutos depois), um por vez, 10 s ou mais entre eles. Para a Sala: nada.
+
+## Antes do art (12/11/2026, ~23h)
+
+> O pedido: `out/rio-columbia/_tmp/pesquisa-geo/pedido-antes-do-art.md` (o item 45 do `para-passos-seguintes.json`; VC-06). A fonte é o bloco
+> `rodada_antes_do_art` do JSON; o relato: `out/rio-columbia/_tmp/pesquisa-geo/relato-antes-do-art.md`. Espelho de agora: `3de8e7ad…` (o de 22:48, depois da r3; no começo desta rodada era o `9ae1ef28…`),
+> 40 ids e 199 pedidos em `needs.geo`, todos com arquivo na pauta (o `mica-creek-antiga` saiu na r3).
+
+### As três camadas novas
+
+| camada | cena | features | fonte | licença e crédito | o lugar, conferido |
+|---|---|---|---|---|---|
+| `fronteira-blaine-surrey` | s26 P2 | 2 (o ponto; o trecho) | Census: TIGER 2025 (a I-5) + cb 2025 1:500.000 (a fronteira, Blaine) | domínio público, sem crédito | o ponto (49.002356 N, −122.756517) fica SOBRE a linha de `fronteira-canada-eua`, a 110 m do fim oeste dela (a costa); é a média das pontas norte das duas pistas da I-5, levada 30 m ao norte até a linha. A 327 m do Peace Arch Park da CGNDB, 1,18 km de Blaine (GNIS, ao sul), 13,2 km de Surrey (CGNDB, ao norte). O trecho: 7,51 km (4,67 mi) da linha dentro do limite de Blaine; **o lado canadense (Surrey) NÃO MEDIDO** (Statistics Canada: 403) |
+| `boat-encampment` | s51 P4 | 1 | NRCan CGNDB `JCPFF` (UNP, previouslyOfficial, 1974-03-11) | OGL – Canada: a linha da licença no crédito | 52.116667 N, −118.43333; a 85 m do BCGN 52160 (52°06'59"N 118°26'04"W); DENTRO do Kinbasket (OSM), 1,98 km da margem; NÃO é Mica Creek (CGNDB `JBOGU`, 15,2 km) |
+| `arrowhead-bc-antiga` | s51 P2 | 1 | NRCan CGNDB `JDBYA` (UNP, official, 1988-11-09) | OGL – Canada: a linha da licença no crédito | 50.711111 N, −117.92083; a 84 m do BCGN 39855 (Locality, 'reinstated', 'N. end of Upper Arrow Lake'); em terra, 2,0 km ao NORTE da água de hoje (OSM e Landsat de 05/09/2024). A frase sobre a vila vai ao verificador-de-fatos (item 19) |
+
+- O BC Geographical Names entra só como conferência (a licença dele é o Copyright da Província, fora da lista aprovada).
+- Crédito na descrição: `Contains information licensed under the Open Government Licence – Canada. https://open.canada.ca/en/open-government-licence-canada` (já está acima).
+- Para o redator e o verificador (s26): F042 não diz "Peace Arch", mas a proclamação do tratado (Lyndon B. Johnson, 16/09/1964; coletânea CSG West, F1,
+  p. 41) termina com "Done at the International Peace Arch, Blaine, Washington", e os slides do Corps de 2013 (p. 10) dizem "Proclamation and Exchange
+  of Diplomatic Notes at Peace Arch - 16 Sept. 1964". A camada não escreve o nome.
+
+### As três entradas da mesa (`_media/base/mesa/`)
+
+Landsat Collection 2 Level-2 (USGS, domínio público, sem crédito na tela), pelo Planetary Computer; 3952 × 2272 px (o quadro 3840 × 2160 mais a
+sangria de 56 px), Web Mercator, norte para cima; a cor é a receita do canal. O `mesa-satelite.py --seco --sangria=56` dá `passa: true` nas três.
+
+| entrada | arquivo | cenas Landsat | janela (miolo) | nuvem na janela (QA_PIXEL) | `--seco` |
+|---|---|---|---|---|---|
+| M-VALE | `landsat-m-vale-sangria56.png` (`10845383…`) | LC08 044/025 de **05/09/2024** (99,8 % do quadro); LC09 045/025 de 04/09/2024 só no canto noroeste | 50.60 N, 117.90 W; 120 × 67,5 km, 31,25 m/px | 0,74 % marcada, mais no terço leste (as Selkirk); 39 % dela no mesmo pixel em 23/08/2025 (gelo e neve fixos, não nuvem); nenhuma nuvem na prévia de 1/4 | ganho 2,11; crédito 10,53:1 (8,1:1 na mesa inteira) |
+| M-FOZ | `landsat-m-foz-sangria56.png` (`825acae4…`) | LC09 046/028 de **09/07/2024** | 45.60 N, 122.70 W; 60 × 33,8 km, 15,6 m/px (reamostrado) | 0,003 % | ganho 1,58; crédito 9,14:1 |
+| M-CAPITOLIO | `landsat-m-capitolio-sangria56.png` (`90fbf073…`) | LC08 015/033 de **10/09/2024** | 38.89 N, 77.01 W; 40 × 22,5 km, 10,4 m/px (reamostrado) | 0,03 % | ganho 1,63; crédito 9,59:1 (8,91:1 na mesa inteira) |
+
+- A cena de 11/07/2024 do par cobre 99,6 % da janela M-VALE, mas tem 5,5 % de nuvem e 10 % de sombra dentro dela: não serviu.
+- O lugar conferido sem olhar: o Arrow (OSM) cai na água turquesa (índice de cor 0,48 contra 0,00 da terra; o polígono deslocado 1 km perde); a linha do
+  Columbia (OSM) cai na água escura (luma 39 contra 92 a 3 km); a água do DC (TIGER AREAWATER) cai na água (luma 58 contra 94; deslocada 500 m a leste
+  ou a oeste, 67 e 70).
+- Créditos para a descrição: os de cada `.png.json` (`credito_descricao`), "Landsat imagery courtesy of the U.S. Geological Survey."
