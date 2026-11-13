@@ -165,7 +165,7 @@ Na tela, '© OpenStreetMap contributors' (já no crédito da base MapTiler); na 
 - s30: barragem-duncan, barragens-columbia-eua, lago-arrow, lago-duncan, lago-kinbasket, oliver-bc-fronteira, rio-columbia
 - s32: lago-arrow
 - s35: barragem-duncan, lago-arrow, lago-duncan, lago-kinbasket, rio-columbia
-- s36: rio-columbia
+- s36: agua-osm-the-dalles (desde 13/11/2026, no art), rio-columbia
 - s38: barragem-keenleyside, castlegar-bc, lago-arrow
 - s41: barragem-keenleyside, barragens-columbia-eua, lago-arrow, rio-columbia
 - s43: lago-arrow
@@ -248,3 +248,32 @@ sangria de 56 px), Web Mercator, norte para cima; a cor é a receita do canal. O
   Columbia (OSM) cai na água escura (luma 39 contra 92 a 3 km); a água do DC (TIGER AREAWATER) cai na água (luma 58 contra 94; deslocada 500 m a leste
   ou a oeste, 67 e 70).
 - Créditos para a descrição: os de cada `.png.json` (`credito_descricao`), "Landsat imagery courtesy of the U.S. Geological Survey."
+
+## No art: a água escura de The Dalles (13/11/2026, ~04h)
+
+> O pedido: a Sala de controle, no `art`, pela regra "A água escura nos mapas do porto" (`marca/identidade.md`; Lucas, 08/10/2026), depois do relato
+> do mapista (`out/rio-columbia/_tmp/arte-1/M5.md`, s36: remendos de borda reta na água do Columbia em The Dalles, que o teto de nível não tira).
+> A fonte é o item `_media/geo/agua-osm-the-dalles.json` e o bloco `rodada_art_agua_the_dalles` do JSON; o relato:
+> `out/rio-columbia/_tmp/pesquisa-geo/relato-agua-the-dalles.md`. (Esta seção foi escrita à mão; o `geo_pauta_md.py` não a gera.)
+
+| camada | cena | features | fonte | licença e crédito | o lugar, conferido |
+|---|---|---|---|---|---|
+| `agua-osm-the-dalles` (`ee53af8a…`, 438 KB) | s36 | 2: `rio` (o Columbia, 26 polígonos, 98 buracos) e `outras_aguas` (216 lagos, lagoas e afluentes perto da câmera) | OSM pela Overpass (relation/104541, Lake Bonneville 19258775, Lake Celilo 5673968, Lake Umatilla 7112634 e 5 eclusas; estruturas tiradas como terra); na janela de Dallesport (margem de Washington, 45,6145–45,6610 N), somado o TIGER/Line 2025 AREAWATER | ODbL: "© OpenStreetMap contributors", que a linha da MapTiler já leva; o TIGER é domínio público, sem crédito. Nada novo na tela | a linha do Columbia do OSM fica 99,92 % dentro da água (fora só na barragem e na ponte de The Dalles); a estação USGS 14105700 em terra, a 15 m da borda; as barragens de The Dalles e John Day (NID) e Bonneville, em terra |
+
+- **Recorte:** a caixa −122.10, 45.36, −120.15, 46.15, a união dos quadros da s36 com zoom ≥ 10,5 (de 2,03 s ao fim), com folga de 4,7 a 7,3 km. O rio
+  cobre inteiro todo quadro com zoom ≥ 10,5; as outras águas, todo quadro com zoom ≥ 12. Abaixo disso o mapista apaga a camada pelo zoom (sugestão: o rio
+  de 0 em z 10,5 a 1 em z 11; as outras águas de 0 em z 11,5 a 1 em z 12).
+- **Estruturas como terra:** a barragem e a ponte de The Dalles, John Day, Hood River, Sam Hill, Bridge of the Gods, as pontes ferroviárias, píeres, quebra-mares
+  e ilhas do OSM (a ponte em linha com a tag `width` ou a regra declarada: 3,65 m por faixa + 2 × 2 m; 6 m por via férrea; 3 m de passarela).
+- **A janela de Dallesport:** ali o OSM traça a margem por uma reta que fica de 10 a 50 m dentro da água (entre 45,624 e 45,642 N); o TIGER segue a margem do
+  satélite. Na janela, a água é OSM ∪ TIGER, só do lado leste da linha do rio; nas pontas as duas margens concordam a 1,5 m e 0,2 m.
+- **Encaixe no satélite** (3 quadros da s36 do mapista, 7,5, 25 e 43,5 s, ~6 m por px de 4K, sem tile): mediana do desvio de −3,5 a −1,5 m, mediana absoluta
+  1,07–1,27 px, p90 3,5–3,9 px, 71–74 % dos perfis a até 2 px. Sobra água crua num lugar só, perto de 45,646 N (~210 m com 2,5 a 5 px; nem o OSM nem o
+  TIGER chegam à margem ali). O tom cobre terra por 3,5–4,5 px (20–27 m) em trechos de 120 a 480 m onde o OSM traça a margem pela beira de fora da praia e
+  do enrocamento: o mesmo caso aceito no vídeo 2.
+- **Prova:** `out/rio-columbia/_tmp/pesquisa-geo/agua-the-dalles/prova-agua-the-dalles.jpg` (o satélite como está e com a camada pintada, a 25 e 43,5 s).
+- **Pedidos:** 2 ao Overpass respondidos (água e estruturas) e 2 com 502 "at capacity" na das estruturas, repetida com recuo; o robots.txt e a página
+  `/copyright` do openstreetmap.org (licença lida hoje); 2 zips do TIGER no www2.census.gov.
+- **Portões:** `validar-contrato pauta-pesquisa` sai 0. `qc-procedencia rio-columbia` sai REPROVADO por 3 arquivos que não são desta camada:
+  `_media/base/mesa/mesa-m-capitolio.png`, `mesa-m-foz.png` e `mesa-m-vale.png` (gravados no art às 02:33–02:34, sem entrada no `_PROCEDENCIA.json` da
+  pasta). O portão não conta `_media/geo/`.

@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s09</title>
+<!--
+CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s09 (36,500 → 41,300 s do master; 4,800 s; quadros 1095–1239). Gancho, f6.
+  "Talks to update the treaty between them have been paused since March twenty twenty-five."
+  Mapista, lote M1 (tarefa rio-columbia-arte-1, 13/11/2026): cena NOVA (out/rio-columbia/_tmp/arte-1/M1/gerar.py + nucleo.js). O que manda:
+  textos-tela.json (s09: [30]–[35]; VOLÁTIL: "TALKS PAUSED / SINCE MARCH 2025" relê-se antes do render de entrega, a Sala); regencia.json
+  (s09 › b0); conceito (s09); a pose P-BACIA do pedido comum (esta é a imagem que volta em s58 P3, com o pulso congelado).
+  Entradas: regencia.json 131116f3, textos-tela.json c656a145, conceito-visual.json bf511817, espelho.json 3de8e7ad, pauta-geo.json c304f037, para-passos 265ac78a.
+
+  MAPA 2D, satellite-v2 no tratamento C, norte para cima. Abre na P-BACIA [-116,9270, 46,8983] z 6,0556 e DERIVA (empurrão lento e linear,
+  sem parar, o centro fixo) até z 6,1056 no último quadro: a fronteira no centro (x 1920) não sai do lugar, e o pulso congelado fica nele.
+  O QUE A CENA FAZ (na cena; 'Talks' 0,02 · 'treaty' 0,92 · 'between' 1,24 · 'paused' 2,20 · 'March' 3,00 · 'twenty-five.' 3,64):
+    · 0,0: a bacia cortada pela fronteira: a parte canadense em --destaque a 40 %, a americana em --contraparte a 35 % (o mesmo estado de cor
+      do fim da s05), e a fronteira a 10 px (o branco a 70 % sobre o contorno escuro), a mesma da s05;
+    · 0,167 (textos-tela [30], [31]): CANADA acima da linha e UNITED STATES abaixo, a oeste da bacia, nos mesmos pontos do chão da s05
+      (x ≈ 500–1133, y 560; x ≈ 250–1350, y 980), 300 ms;
+    · 'between' (1,24): um PULSO DE LUZ (--tinta, com brilho) corre pela fronteira de oeste a leste (0,5 s, cúbico) e volta, freando, até o
+      meio do quadro (x 1920, 116,927 W), onde CONGELA em 'paused' (2,20) e cai a 40 % (300 ms);
+    · 'paused' (2,20): a pílula 'TALKS PAUSED' (textos-tela [32]) entra à direita da bacia, ACIMA da fronteira e longe dela (x 2300–3603,
+      y 370–712 com as duas linhas; a linha em y 783), presa ao chão; a fonte ([34]) fica desde o quadro 0, sem rampa, acima do crédito de mapa (uma linha,
+      1.488 px: a pílula do crédito termina em x 1716, com 4 px de respiro à direita, para caber até x 1720);
+    · 3,667 ([33], 'twenty-five.'): 'SINCE MARCH 2025' completa a MESMA pílula (o _bloco s09-pausa), a 2ª linha abrindo em 300 ms.
+  ELEMENTOS (teto 6): a bacia cortada (as duas partes e a fronteira), o pulso, CANADA, UNITED STATES e a pílula = 5.
+  A GEOMETRIA: bacia-columbia-canada e -eua (USGS WBD ∩ Census, domínio público), fronteira-canada-eua (Census cb 2025, domínio público).
+    CRÉDITO a 60 px do 1º ao último quadro: "© MapTiler © OpenStreetMap contributors" (data-qc-credito="mapa"); a fonte de [34] acima dele,
+    do 1º ao último quadro (o redator, textos-tela 3bba45b1: de 2,2 para 0,0, pelo RITMO do qc-carga; ritmo-art/relato.md §6).
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>:root { --fs-credito: 60px; }</style>
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<script src="../_media/geo/bacia-columbia-canada.js"></script>
+<script src="../_media/geo/bacia-columbia-eua.js"></script>
+<script src="../_media/geo/fronteira-canada-eua.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  canvas#cv { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 20; }
+  svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; }
+  .pil { position: absolute; left: 0; top: 0; z-index: 40; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos); padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.15; letter-spacing: 0;
+    color: var(--tinta); }
+  .pil.lugar { font-weight: var(--peso-caixa-alta); letter-spacing: var(--tracking-lugar); }
+  .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: pre; }
+  #credito { bottom: 24px; }
+  #credito[hidden] { display: none; }
+  .fonte { bottom: 119px; opacity: 0; visibility: hidden; }
+  .linha2 { height: 0; overflow: hidden; opacity: 0; }
+  .fonte.f1 { bottom: 119px; padding-right: 4px; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <div id="map"></div>
+  <canvas id="cv" width="3840" height="2160"></canvas>
+  <div id="nCan" class="pil lugar" data-qc-papel="rotulo">CANADA</div>
+  <div id="nEua" class="pil lugar" data-qc-papel="rotulo">UNITED STATES</div>
+  <div id="pausa" class="pil" data-qc-papel="rotulo"><div>TALKS PAUSED</div><div id="desde" class="linha2"><div>SINCE MARCH 2025</div></div></div>
+  <div id="fonte" class="credito fonte f1" data-qc-papel="credito">Source: Government of British Columbia, March 11, 2025</div>
+  <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // ═══ O NÚCLEO DAS CENAS DE MAPA 2D DO LOTE M1 (rio-columbia-arte-1; out/rio-columbia/_tmp/arte-1/M1/gerar.py) ═══
+  // Determinístico: a cena é função de t (nada de Date, Math.random, @keyframes nem flyTo/easeTo: a câmera é jumpTo(cameraAt(t))).
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (x) { x = cl(x, 0, 1); return 1 - Math.pow(1 - x, 3); };
+  var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+  var my = function (lat) { return Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)); };
+  var latDe = function (y) { return (2 * Math.atan(Math.exp(y)) - Math.PI / 2) * 180 / Math.PI; };
+  // o voo entre duas poses: o zoom pela fração U, o centro pelo ponto fixo do zoom (a curva em que o alvo não escorrega na tela)
+  function voo(a, b, U) {
+    var z = a.z + (b.z - a.z) * U, s;
+    if (Math.abs(b.z - a.z) < 1e-6) s = U;
+    else s = (Math.pow(2, -z) - Math.pow(2, -a.z)) / (Math.pow(2, -b.z) - Math.pow(2, -a.z));
+    var ya = my(a.c[1]), yb = my(b.c[1]);
+    return { center: [a.c[0] + (b.c[0] - a.c[0]) * s, latDe(ya + (yb - ya) * s)], zoom: z, bearing: 0, pitch: 0 };
+  }
+
+  // ═══ TEMPOS (0 = 36,500 s do master): 'Talks' 0,020 · 'update' 0,440 · 'treaty' 0,920 · 'between' 1,240 · 'them' 1,640 ·
+  //   'paused' 2,200 · 'since' 2,760 · 'March' 3,000 · 'twenty' 3,320 · 'twenty-five.' 3,640 (acaba 4,290) ═══
+  var DUR = 4.8;     // espelho.json › s09 › dur, literal (roupa §8)
+  var T0V = 36.500;
+  var POSE = { BACIA: { c: [-116.9270, 46.8983], z: 6.0556 } };
+  function cameraAt(t) { return voo(POSE.BACIA, { c: POSE.BACIA.c, z: 6.1056 }, cl(t / DUR, 0, 1)); }
+  var T = { nomes: 0.167, ida: [1.24, 0.5], volta: [1.74, 0.46], cai: [2.20, 0.3], pausa: 2.20, desde: 3.667 };
+  var NOME = { can: [-128.587, 50.523], eua: [-128.766, 47.616] };
+  var PAUSA = [-112.91, 51.783];   // o canto de cima à esquerda da pílula: (2300, 370) na P-BACIA
+  var LON = { oeste: -122.758, leste: -103.0, meio: -116.927 };
+  var FR;
+  function prepararGeo() {
+    var f = geo("fronteira-canada-eua"); geo("bacia-columbia-canada"); geo("bacia-columbia-eua");
+    if (window.__erroCena) return false;
+    FR = f.features[0].geometry.coordinates.slice().sort(function (a, b) { return a[0] - b[0]; });
+    return true;
+  }
+  function camadasDaCena() {
+    var lc = { "line-join": "round", "line-cap": "round" };
+    return { fontes: { eua: { type: "geojson", data: geo("bacia-columbia-eua") }, can: { type: "geojson", data: geo("bacia-columbia-canada") },
+                       fr: { type: "geojson", data: geo("fronteira-canada-eua"), lineMetrics: true } },
+      camadas: [
+        { id: "eua", type: "fill", source: "eua", paint: { "fill-color": COR.contraparte, "fill-opacity": 0.35 } },
+        { id: "can", type: "fill", source: "can", paint: { "fill-color": COR.destaque, "fill-opacity": 0.40 } },
+        { id: "fr-sob", type: "line", source: "fr", layout: lc, paint: { "line-gradient": gradFim(COR.sob, 1), "line-opacity": COR.sob[3], "line-width": 17 } },
+        { id: "fr", type: "line", source: "fr", layout: lc, paint: { "line-gradient": gradFim(rgbDe(COR.fronteira)), "line-width": 10 } }
+      ] };
+  }
+  function aplicarCamadas() {}
+  // a latitude da fronteira numa longitude (a linha do Census é quase o paralelo 49; interpola entre os vértices)
+  function latEm(lon) {
+    for (var i = 1; i < FR.length; i++) if (FR[i][0] >= lon) { var a = FR[i - 1], b = FR[i], u = (lon - a[0]) / ((b[0] - a[0]) || 1); return a[1] + (b[1] - a[1]) * u; }
+    return FR[FR.length - 1][1];
+  }
+  // O PULSO: a luz no lugar L (longitude) com meia-largura de 1,6° (≈ 150 px), o miolo aceso e as pontas macias, sobre a fronteira:
+  // 26 px de --tinta com 44 px de brilho, mais largo que a linha (10 px), para se ler sobre o branco dela também a 40 %
+  function pulsoEm(t) {
+    if (t < T.ida[0]) return null;
+    var L;
+    if (t < T.volta[0]) L = LON.oeste + (LON.leste - LON.oeste) * eio(seg(t, T.ida[0], T.ida[1]));
+    else L = LON.leste + (LON.meio - LON.leste) * eo(seg(t, T.volta[0], T.volta[1]));
+    var b = eo(seg(t, T.ida[0], 0.12)) * (1 - 0.6 * eo(seg(t, T.cai[0], T.cai[1])));
+    return { L: L, b: b };
+  }
+  window.__pulsoAt = pulsoEm;
+  function desenhar(t) {
+    var p = pulsoEm(t); if (!p || !ctx) return;
+    var MEIA = 1.6, N = 40;
+    ctx.save(); ctx.lineCap = "round"; ctx.shadowColor = COR.tinta; ctx.shadowBlur = 44;
+    for (var i = 0; i < N; i++) {
+      var u0 = -1 + 2 * i / N, u1 = -1 + 2 * (i + 1) / N, um = (u0 + u1) / 2;
+      var a = Math.max(0, 1 - Math.abs(um)); a = a * a * (3 - 2 * a);
+      var l0 = p.L + u0 * MEIA, l1 = p.L + u1 * MEIA;
+      if (l1 < LON.oeste || l0 > LON.leste) continue;
+      l0 = Math.max(l0, LON.oeste); l1 = Math.min(l1, LON.leste);
+      var q0 = map.project([l0, latEm(l0)]), q1 = map.project([l1, latEm(l1)]);
+      ctx.globalAlpha = a * p.b; ctx.strokeStyle = COR.tinta; ctx.lineWidth = 26;
+      ctx.beginPath(); ctx.moveTo(q0.x, q0.y); ctx.lineTo(q1.x, q1.y); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  function aplicarTextos(t) {
+    var qn = eo(seg(t, T.nomes, 0.3)), qp = eo(seg(t, T.pausa, 0.3)), qd = eo(seg(t, T.desde, 0.3));
+    porPilula(E("nCan"), NOME.can, 0.5, 0.5, 0, 0, qn, (1 - qn) * 24);
+    porPilula(E("nEua"), NOME.eua, 0.5, 0.5, 0, 0, qn, (1 - qn) * 24);
+    var d = E("desde"); if (d) { d.style.height = (147.2 * qd).toFixed(2) + "px"; d.style.opacity = qd.toFixed(3); }
+    porPilula(E("pausa"), PAUSA, 0, 0, 0, 0, qp, (1 - qp) * 24);
+    porTexto(E("fonte"), 1, 0);   // [34]: inteira desde o quadro 0, sem rampa, como o crédito de mapa (textos-tela 3bba45b1)
+  }
+
+  window.__duracao = DUR;
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  window.__fotosProntas = true;
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== "maptiler") return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa 'maptiler' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster.");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo.");
+    return g;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+  function rgbDe(css) {
+    css = String(css || "").trim();
+    var m = /^#([0-9a-f]{6})$/i.exec(css);
+    if (m) { var n = parseInt(m[1], 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255, 1]; }
+    m = /rgba?\(([^)]*)\)/.exec(css);
+    if (m) { var v = m[1].split(",").map(Number); return [v[0], v[1], v[2], v.length > 3 ? v[3] : 1]; }
+    return [0, 0, 0, 1];
+  }
+  var rgb = function (v, a) { return "rgba(" + v[0] + "," + v[1] + "," + v[2] + "," + (a == null ? v[3] : a) + ")"; };
+  // A FRONTEIRA SOME NO LESTE: a camada fronteira-canada-eua (Census) vai só até 103 W, que na P-BACIA cai dentro do quadro (x ≈ 3237);
+  // a linha não acaba seca no meio da pradaria: os últimos 14 % dela (≈ 2,8°, de oeste para leste) esmaecem até zero (line-gradient)
+  function gradFim(v, alfa) {
+    var cor = rgb(v, alfa == null ? v[3] : alfa), zero = rgb(v, 0);
+    return ["interpolate", ["linear"], ["line-progress"], 0, cor, 0.86, cor, 1, zero];
+  }
+
+  // ── o crédito de mapa: o do perfil + o de cada camada que exige (o OSM já está no da MapTiler) ──
+  var creditoTexto = (function () {
+    var partes = [];
+    if (P.atribuicao && P.atribuicao.exigida) {
+      if (!P.atribuicao.tela) { falhar("a base '" + P.nome + "' exige crédito na tela e o perfil não traz o texto."); return ""; }
+      partes.push(P.atribuicao.tela);
+    }
+    var geos = window.__GEO || {}, meta = window.__GEO_META || {};
+    var slugs = Object.keys(geos);
+    for (var i = 0; i < slugs.length; i++) {
+      var m = meta[slugs[i]];
+      if (!m) { falhar("a geometria '" + slugs[i] + "' foi carregada sem procedência (fonte/licença)."); return ""; }
+      if (!m.exige_credito) continue;
+      var t = m.credito_tela || (m.fonte && m.licenca ? "Geometria: " + m.fonte + " (" + m.licenca + ")" : "");
+      if (!t) { falhar("a geometria '" + slugs[i] + "' exige crédito e a procedência não diz o texto."); return ""; }
+      var junto = partes.join(" · ");
+      if (/OpenStreetMap/i.test(t) && /OpenStreetMap/i.test(junto)) continue;
+      if (junto.indexOf(t) >= 0) continue;
+      partes.push(t);
+    }
+    var c = E("credito");
+    if (c) { c.textContent = partes.join(" · "); c.hidden = !partes.length; }
+    return partes.join(" · ");
+  })();
+  window.__creditoMapa = creditoTexto;
+  if (!window.__erroCena && creditoTexto !== "© MapTiler © OpenStreetMap contributors")
+    falhar("o crédito de mapa montado ('" + creditoTexto + "') não é o do textos-tela.json.");
+  if (window.__erroCena) return;
+
+  var COR = {
+    tinta: tok("--tinta", "#F4F1EA"), destaque: tok("--destaque", "#F5A524"), contraparte: tok("--contraparte", "#2EC4B6"),
+    agua: rgbDe(tok("--agua", "#AFD8F6")), luz: rgbDe(tok("--agua-luz", "#EAF5FD")),
+    sob: rgbDe(tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)")), fronteira: tok("--fronteira-cor", "rgba(255, 255, 255, 0.70)")
+  };
+  COR.tintaRgb = rgbDe(COR.tinta);
+
+  // ═══ A CORRENTEZA (identidade §2: "a água é azul, e corre"; o modelo é o da s37 do Peru) ═══════════════════════════════════════
+  // Um trecho mais claro da própria linha (--agua-luz sobre --agua) desce no sentido da água e se repete. A luz mora no CHÃO (km ao
+  // longo do rio) e anda no tempo ABSOLUTO do vídeo (T0V + t), com os mesmos km nas três cenas do rio (s05, s06, s07): no corte ela
+  // continua de onde estava. O ritmo é o BASE do Peru (sem nível dito), dado em px na escala de referência z 6,5 a 49 N.
+  var CORRENTEZA = { zoomRef: 6.5, latRef: 49.0, periodoPx: 1100, velPx: 420, luzPx: 450, subida: 0.45, frente: 0.15, passoPx: 12 };
+  function kmPorPx(z, lat) { return 40075.016686 * Math.cos(lat * Math.PI / 180) / (512 * Math.pow(2, z)); }
+  var CR = (function () { var k = kmPorPx(CORRENTEZA.zoomRef, CORRENTEZA.latRef);
+    return { vel: CORRENTEZA.velPx * k, periodo: CORRENTEZA.periodoPx * k, luz: CORRENTEZA.luzPx / CORRENTEZA.periodoPx }; })();
+  function brilho(km, T) {
+    var u = (km - CR.vel * T) / CR.periodo; u = u - Math.floor(u);
+    if (u >= CR.luz) return 0;
+    var x = u / CR.luz, y = Math.min(1, x / CORRENTEZA.subida, (1 - x) / CORRENTEZA.frente);
+    return y * y * (3 - 2 * y);
+  }
+  function corAgua(b) {
+    var a = COR.agua, l = COR.luz;
+    return "rgb(" + Math.round(a[0] + (l[0] - a[0]) * b) + "," + Math.round(a[1] + (l[1] - a[1]) * b) + "," + Math.round(a[2] + (l[2] - a[2]) * b) + ")";
+  }
+  function kmAcumulado(C) {
+    var K = [0];
+    for (var i = 1; i < C.length; i++) {
+      var a = C[i - 1], b = C[i], la = (a[1] + b[1]) / 2 * Math.PI / 180;
+      var dx = (b[0] - a[0]) * 111.32 * Math.cos(la), dy = (b[1] - a[1]) * 110.57;
+      K.push(K[i - 1] + Math.sqrt(dx * dx + dy * dy));
+    }
+    return K;
+  }
+  var map, cv = E("cv"), ctx = cv ? cv.getContext("2d") : null, BUF = null;
+  function fora(a, q) { return (a.x < -200 && q.x < -200) || (a.x > 4040 && q.x > 4040) || (a.y < -200 && q.y < -200) || (a.y > 2360 && q.y > 2360); }
+  // o rio no canvas: a largura de cada trecho por largura(km) (px), a correnteza no tempo absoluto T, tudo com a opacidade op
+  function desenharRio(C, K, largura, op, T) {
+    if (!ctx || op <= 0) return;
+    if (!BUF) { BUF = document.createElement("canvas"); BUF.width = cv.width; BUF.height = cv.height; }
+    var Pp = C.map(function (c) { return map.project(c); });
+    var b = BUF.getContext("2d"); b.clearRect(0, 0, BUF.width, BUF.height);
+    b.strokeStyle = rgb(COR.sob, 1); b.lineCap = "round"; b.lineJoin = "round";
+    for (var i = 1; i < Pp.length; i++) {
+      if (fora(Pp[i - 1], Pp[i])) continue;
+      b.lineWidth = largura((K[i - 1] + K[i]) / 2) + 6;
+      b.beginPath(); b.moveTo(Pp[i - 1].x, Pp[i - 1].y); b.lineTo(Pp[i].x, Pp[i].y); b.stroke();
+    }
+    ctx.globalAlpha = COR.sob[3] * op; ctx.drawImage(BUF, 0, 0);
+    ctx.globalAlpha = op; ctx.lineCap = "round"; ctx.lineJoin = "round";
+    for (var j = 1; j < Pp.length; j++) {
+      var a = Pp[j - 1], q = Pp[j]; if (fora(a, q)) continue;
+      var k0 = K[j - 1], k1 = K[j];
+      ctx.lineWidth = largura((k0 + k1) / 2);
+      var n = Math.max(1, Math.ceil(Math.sqrt((q.x - a.x) * (q.x - a.x) + (q.y - a.y) * (q.y - a.y)) / CORRENTEZA.passoPx));
+      for (var s = 0; s < n; s++) {
+        var u0 = s / n, u1 = (s + 1) / n, km = k0 + (k1 - k0) * (s + 0.5) / n;
+        ctx.strokeStyle = corAgua(brilho(km, T));
+        ctx.beginPath(); ctx.moveTo(a.x + (q.x - a.x) * u0, a.y + (q.y - a.y) * u0); ctx.lineTo(a.x + (q.x - a.x) * u1, a.y + (q.y - a.y) * u1); ctx.stroke();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  // uma linha (anel ou polilinha) no canvas, com o contorno escuro por baixo; f ∈ [0,1] é a fração desenhada a partir de i0 nos
+  // dois sentidos (o traço que nasce de um ponto e fecha do outro lado)
+  function desenharTraco(C, i0, f, larg, cor, op) {
+    if (!ctx || op <= 0 || f <= 0) return;
+    var n = C.length - 1, m = Math.round(f * n / 2);
+    var lado = function (dir) {
+      var pts = [];
+      for (var k = 0; k <= m; k++) { var idx = ((i0 + dir * k) % n + n) % n; pts.push(map.project(C[idx])); }
+      return pts;
+    };
+    [lado(1), lado(-1)].forEach(function (pts) {
+      [[larg + 6, rgb(COR.sob, 1), COR.sob[3] * op], [larg, cor, op]].forEach(function (p) {
+        ctx.globalAlpha = p[2]; ctx.strokeStyle = p[1]; ctx.lineWidth = p[0]; ctx.lineCap = "round"; ctx.lineJoin = "round";
+        ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+        for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+        ctx.stroke();
+      });
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  // ── rede com nova tentativa (o molde da pré-v1, sem mudança) ─────────────────────────────────────────────────────────────
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  function erroCorpo(msg, url, st) { var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e; }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) { var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http"; throw e; }
+        if (params.type === "json") return r.text().then(function (t) { try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); } });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+
+  if (!prepararGeo()) return;
+  if (window.__erroCena) return;
+  window.__cameraAt = cameraAt;
+
+  function estilo() {
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize,
+      maxzoom: Math.min(P.base.maxzoom, typeof BASE_MAXZ === "number" ? BASE_MAXZ : P.base.maxzoom) } };
+    var cam = camadasDaCena(), ids = Object.keys(cam.fontes);
+    for (var i = 0; i < ids.length; i++) fontes[ids[i]] = cam.fontes[ids[i]];
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes,
+      layers: [{ id: "base", type: "raster", source: "base",
+        // o tratamento C da base (identidade §6, Lucas 09/10/2026): brilho máximo 92 %, cor natural, contraste +25 %; sem véu
+        paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }].concat(cam.camadas) };
+  }
+  var FONTES = ["base"].concat(Object.keys(camadasDaCena().fontes));
+
+  var c0 = cameraAt(0);
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: 0, pitch: 0
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa.");
+  }
+  window.map = map;
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
+
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg))
+      return "mandou tile CORROMPIDO" + n + " (" + String(msg).replace(/^tile corrompido: /, "") + "). Renderize de novo.";
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + ". Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  var mapaCarregado = false;
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ".");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : ""));
+  });
+  map.on("load", function () {
+    mapaCarregado = true;
+    map.once("idle", function () {
+      var f = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+      f.then(function () { if (!window.__erroCena) resolverPronto(true); });
+    });
+  });
+
+  // ── a pílula presa ao chão: o ponto [lon, lat] vai ao ponto (ax, ay) da caixa (0..1), mais (dx, dy) px; v é a entrada (0..1) ──
+  function porPilula(el, ll, ax, ay, dx, dy, v, sobe) {
+    if (!el) return;
+    var p = map.project(ll), w = el.offsetWidth, h = el.offsetHeight;
+    var x = p.x - ax * w + (dx || 0), y = p.y - ay * h + (dy || 0) + (sobe == null ? (1 - v) * 24 : sobe);
+    el.style.transform = "translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+    el.style.opacity = cl(v, 0, 1).toFixed(3);
+    el.style.visibility = v > 0.001 ? "visible" : "hidden";
+  }
+  function porTexto(el, v, sobe) {   // o texto fixo na tela (o crédito de dado): opacidade e subida
+    if (!el) return;
+    el.style.opacity = cl(v, 0, 1).toFixed(3); el.style.visibility = v > 0.001 ? "visible" : "hidden";
+    el.style.transform = "translateY(" + ((sobe == null ? (1 - v) * 24 : sobe)).toFixed(2) + "px)";
+  }
+  var opAntes = {};
+  function pinta(id, prop, v) { v = +(+v).toFixed(3); var k = id + "|" + prop; if (opAntes[k] === v) return; map.setPaintProperty(id, prop, v); opAntes[k] = v; }
+
+  function aplicar(t) {
+    if (!mapaCarregado) return;
+    map.jumpTo(cameraAt(t));
+    aplicarCamadas(t);
+    if (ctx) ctx.clearRect(0, 0, cv.width, cv.height);
+    desenhar(t, T0V + t);
+    aplicarTextos(t);
+    var c = E("credito"); if (c) { c.style.opacity = "1"; c.style.visibility = "visible"; }
+  }
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) { var ts = (sc[id] && sc[id]._tiles) || {}; for (var k in ts) if (ts[k] && ts[k].state === "errored") return id; }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou. O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!map.areTilesLoaded() || map.isMoving()) return false;
+          for (var i = 0; i < FONTES.length; i++) if (!map.getSource(FONTES[i]) || !map.isSourceLoaded(FONTES[i])) return false;
+          return true;
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
+      (function tick() {
+        barrarTileComErro();
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.triggerRepaint(); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__renderAt(0) || true;
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+
+</script>
+</body>
+</html>

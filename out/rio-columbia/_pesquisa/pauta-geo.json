@@ -1410,6 +1410,448 @@
       "validado_por_visao": false,
       "sha256_js": "517e575f4c976c5549f616683ac41fe90e413149db10dce54ae4a0bda4f5fc65",
       "rodada": "antes do art (12/11/2026, ~23h; pedido-antes-do-art.md)"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "OpenStreetMap (Overpass API, overpass-api.de), base de 2026-11-13T06:56:48Z (água) e 2026-11-13T07:02:55Z (estruturas): o Columbia = relation/104541 (Columbia River (abaixo de Bonneville)); relation/5673968 (Lake Celilo); relation/7112634 (Lake Umatilla); relation/19258775 (Lake Bonneville), com as eclusas way/791633147 '', way/1395784833 'John Day Lock', relation/19258778 '', relation/19258779 '', relation/19258780 'The Dalles Lock'; na janela de Dallesport (a margem de Washington entre 45.6145 e 45.661 N), somada a água do U.S. Census TIGER/Line 2025 AREAWATER (tl_2025_53039 e tl_2025_41065, 'Columbia Riv' e 'Lk Celilo'), que segue a margem do satélite onde o OSM fica até ~50 m dentro da água; recortado à caixa (-122.1, 45.36, -120.15, 46.15) (lon, lat); estruturas do OSM tiradas como terra",
+      "arquivo": "_media/geo/agua-osm-the-dalles.json",
+      "licenca": "ODbL 1.0 (© OpenStreetMap contributors) — crédito na tela e openstreetmap.org/copyright na descrição; a parte do TIGER (a janela de Dallesport): domínio público (U.S. Census Bureau: obra federal dos EUA, 17 U.S.C. §105) — sem crédito obrigatório",
+      "url": "https://www.openstreetmap.org/relation/19258775",
+      "exige_credito": true,
+      "features": 2,
+      "bbox": [
+        -122.1,
+        45.36,
+        -120.15,
+        45.77881
+      ],
+      "sha256": "ee53af8a93c9e3e6a750686aba879cd34207dfc58534abe57bc1ff1746796e14",
+      "derivado_por": "out/rio-columbia/_tmp/pesquisa-geo/agua-the-dalles/construir.py: união das relações e das eclusas, a janela de Dallesport (OSM ∪ TIGER), estruturas como terra, recorte, Douglas-Peucker com topologia a 1.0 m",
+      "registrado": "2026-11-13",
+      "needs_ids": [],
+      "pedido": "Sala de controle, passo art, 13/11/2026 (~03:56): a água escura de The Dalles na s36 (pico 3), pelo relato do mapista (out/rio-columbia/_tmp/arte-1/M5.md, s36, 'Possíveis limitações', item 1); não vem do needs.geo do espelho",
+      "cena": [
+        "s36"
+      ],
+      "data_do_dado": "OSM, base de 2026-11-13T06:56:48Z (água) e 2026-11-13T07:02:55Z (estruturas); TIGER/Line 2025 AREAWATER (a janela de Dallesport)",
+      "fidelidade": "a água do Columbia de Bonneville a John Day (as 4 relações do OSM: o rio abaixo de Bonneville, Lake Bonneville, Lake Celilo e Lake Umatilla, com as 5 eclusas), com as barragens, as pontes, os píeres e as ilhas do OSM como terra, recortada à caixa da s36 (-122.10, 45.36, -120.15, 46.15); na margem de Washington a oeste do aeroporto de Dallesport (45,6145 a 45,6610 N), somada a água do TIGER, porque ali o OSM traça a margem por uma reta até ~50 m dentro da água. 2ª feature (papel 'outras_aguas'): os lagos, lagoas e afluentes do OSM que tocam a caixa dos quadros com zoom >= 12 (216 elementos). Encaixe medido no satélite dos quadros da s36 (abaixo, 'incerteza')",
+      "credito_tela": "© OpenStreetMap contributors (já está no crédito da base MapTiler, '© MapTiler © OpenStreetMap contributors'); o TIGER é domínio público, sem crédito",
+      "credito_descricao": "Geometria: © OpenStreetMap contributors — dados sob a Open Database License (https://www.openstreetmap.org/copyright)",
+      "sistema": "WGS84, lon/lat em graus decimais (o NAD83 do TIGER lido como WGS84: < 2 m)",
+      "validado_por_visao": true,
+      "sha256_js": "d509cbe7aebbdcedac3b5487325283d7d11481b7d6aa784d449b628ec4fa6f69",
+      "features_papel": {
+        "rio": "o Columbia (MultiPolygon, 26 polígonos, 97 buracos, 187.3 km² no recorte)",
+        "outras_aguas": "lagos, lagoas e afluentes do OSM perto da câmera (MultiPolygon, 228 polígonos, 6.66 km²)"
+      },
+      "bytes": 438400,
+      "vertices": 18345,
+      "arquivo_fonte": "out/rio-columbia/_tmp/pesquisa-geo/baixado/osm/q6-agua-the-dalles.json (sha256 6c3f8515198365c7…) e q7-estruturas-the-dalles.json (sha256 b239269fa541eaa1…), consultas em _tmp/pesquisa-geo/consultas/q6 e q7; baixado/census/tl_2025_53039_areawater.zip (39fd6dd811dfc4f8…) e tl_2025_41065_areawater.zip (1536426b48db94cb…)",
+      "recorte": "caixa -122.10, 45.36, -120.15, 46.15 (lon, lat): a união dos quadros da s36 com zoom >= 10,5 (de t = 2,03 s ao fim, 30 fps, pela cameraAt da cena), com folga de 7,3 km a oeste, 4,7 ao sul, 5,3 a leste e 5,1 ao norte",
+      "uso_por_zoom": "o rio cobre inteiro todo quadro com zoom >= 10,5 (t >= 2,03 s); as outras águas, todo quadro com zoom >= 12 (t >= 2,53 s). Abaixo disso a borda do recorte cairia no quadro: o mapista a apaga pelo zoom (no vídeo 2, s05: fill-opacity 0 em 9,5 a 1 em 10). Sugestão: o rio de 0 em z 10,5 a 1 em z 11 (t 2,03–2,20 s); as outras águas de 0 em z 11,5 a 1 em z 12 (t 2,37–2,53 s)",
+      "estruturas_tiradas": "142 estruturas do OSM caem na água e saem como terra (114257 m² do rio): as barragens de The Dalles (way/27440651, área; 0 m² a tirar, as represas já param nela) e John Day (área e crista, a crista com 30 m pela regra), as pontes de The Dalles, Hood River, Sam Hill, Bridge of the Gods e as ferroviárias (área man_made=bridge quando há; a linha com a largura da tag width ou da regra: 3,65 m por faixa + 2 × 2 m, 6 m por via férrea, 3 m de passarela), píeres e quebra-mares em área, e as ilhas; a lista em out/rio-columbia/_tmp/pesquisa-geo/agua-the-dalles/construir-resumo.json",
+      "janela_dallesport": "TIGER/Line 2025 AREAWATER (Klickitat 53039 e Wasco 41065, FULLNAME 'Columbia Riv' e 'Lk Celilo', domínio público) somado ao OSM só do lado leste da linha do rio, entre 45,6145 e 45,6610 N, onde as duas margens concordam a 1,5 m e 0,2 m (o degrau nas pontas fica < 0,3 px); 60304 m² somados. O OSM ficava de 10 a 50 m dentro da água entre 45,624 e 45,642 N (janela-dallesport-travessias.json)",
+      "simplificacao": "Douglas-Peucker com topologia a 1,0 m (metros locais): 13854 → 10771 vértices no rio; o maior afastamento de um vértice original até a borda simplificada: 1.00 m (rio) e 1.38 m (outras)",
+      "incerteza": "encaixe medido contra o satélite de 3 quadros da s36 (7,5, 25 e 43,5 s; ~5,8–6,1 m por px de 4K), sem tile: perfis a cada ~30 m da margem, classificador água/terra aprendido no próprio quadro (acerto 97–99 %). Mediana do desvio de -3.5 a -1.5 m (sem viés), mediana do desvio absoluto 1.07–1.27 px, p90 3.54–3.91 px, 71–74 % dos perfis a até 2 px. Sobra água crua (> 2 px) num lugar só, perto de 45,646 N (Dallesport, ao norte do aeroporto): ~210 m com 2,5 a 5 px, onde nem o OSM nem o TIGER chegam à margem do satélite. O tom cobre terra em trechos de 120 a 480 m com 3,5 a 4,5 px (20–27 m), onde o OSM traça a margem pela beira de fora da praia e do enrocamento (Lake Celilo junto da barragem, margem do Oregon; a margem de Washington ao sul do aeroporto): o mesmo caso aceito no vídeo 2 ('o tom avança uns 20 m sobre a areia molhada'). Detalhe em out/rio-columbia/_tmp/pesquisa-geo/agua-the-dalles/encaixe/medidas.json e lascas.json",
+      "conferencia_de_referencia": {
+        "linha_do_columbia_osm_dentro": "99.92 % dos 20.15 km na caixa dos quadros de perto (fora: [11.3, 5.0] m, na barragem e na ponte de The Dalles); 99.92 % dos 175.18 km no recorte",
+        "estacao_usgs_14105700": "em terra, a 15.4 m da borda da água",
+        "barragens": "The Dalles (NID OR00002) em terra a 5.4 m da borda; John Day (NID OR00011) a 31.0 m; Bonneville (OSM way/27440201) a 12.5 m: nenhuma fica pintada",
+        "centro_da_agua_de_perto": [
+          -121.14546,
+          45.63638
+        ]
+      },
+      "licenca_lida_em": "2026-11-13 (https://www.openstreetmap.org/copyright, GET com o User-Agent do canal: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors'); o TIGER: domínio público (17 U.S.C. §105), como as outras camadas do Census desta pauta",
+      "na_tela": "nada novo: '© OpenStreetMap contributors' já está na linha '© MapTiler © OpenStreetMap contributors' de todo quadro com mapa; openstreetmap.org/copyright na descrição (já está)"
+    },
+    {
+      "tipo": "geo",
+      "fonte": "OpenStreetMap (Overpass API, overpass-api.de), base de 2026-11-13T08:14:07Z (o Kootenay: relation/8443524, base de 2026-11-12T14:39:03Z, a consulta de 12/11): Kootenay River = relation/8443524, Kicking Horse River = relation/11339484, Spillimacheen River = relation/10693247, Illecillewaet River = relation/16546529, Beaver River = relation/16462026, Incomappleux River = relation/16546616, Wood River = relation/16702611, Blaeberry River = relation/19651804",
+      "arquivo": "_media/geo/afluentes-canada-s15.json",
+      "licenca": "ODbL 1.0 (© OpenStreetMap contributors) — crédito na tela e openstreetmap.org/copyright na descrição",
+      "url": "https://www.openstreetmap.org/relation/11339484",
+      "exige_credito": true,
+      "features": 8,
+      "bbox": [
+        -118.21087,
+        48.36096,
+        -115.16488,
+        52.37027
+      ],
+      "sha256": "accebde5d1eb871e14011af00ebe5fc5ab6e703d58bdd668e9224d8bb10bb345",
+      "derivado_por": "out/rio-columbia/_tmp/pesquisa-geo/afluentes-s15/construir.py: os ways main_stream/papel vazio de cada relação, sem as waterway=flowline (a linha esquemática que o OSM passa por dentro de lago); grafo dos ways nodados, o caminho mais curto da nascente à foz (numa trança, o canal mais curto), vão < 500 m costurado por segmento reto e declarado (só o Spillimacheen, 172 m); orientada da nascente para a foz; parada na margem do Kinbasket ou do Arrow (polígonos do OSM do acervo) quando entra neles; simplificada por Douglas-Peucker a 50 m (metros locais)",
+      "registrado": "2026-11-13",
+      "needs_ids": [],
+      "pedido": "Sala de controle, passo art, 13/11/2026 (~05:10): 6 a 8 afluentes canadenses do Columbia para os fios de 'drains' da s15, pelo relato do mapista (out/rio-columbia/_tmp/arte-1/M4.md, §2, desvio 1, e §6, pergunta 1); não vem do needs.geo do espelho",
+      "cena": [
+        "s15"
+      ],
+      "data_do_dado": "OSM, base de 2026-11-13T08:14:07Z (7 rios) e 2026-11-12T14:39:03Z (o Kootenay, da consulta de 12/11); tags das flowlines e das pontas do Goldstream: base 2026-11-13T08:18:10Z",
+      "fidelidade": "8 LineStrings, uma por afluente, cada uma da nascente à foz, na ordem da drenagem (estação da Water Survey of Canada mais perto da foz): Kootenay, Kicking Horse, Spillimacheen, Illecillewaet, Beaver, Incomappleux, Wood, Blaeberry. A linha principal sai da relação waterway do OSM (main_stream e papel vazio), sem as flowlines; uma trança (Kicking Horse) pelo canal mais curto; um vão de 172 m (Spillimacheen) costurado por segmento reto, declarado. Os que entram no Kinbasket ou no Arrow param na margem do polígono do OSM (Beaver, Incomappleux, Wood); os outros tocam a linha do Columbia que a s15 desenha (0 a 10 m). O Kootenay inteiro, com os 261,5 km do laço por Montana e Idaho (o mesmo traçado do rio-kootenay do acervo, 776,2 km). Simplificada a 50 m (Hausdorff 48–50 m contra a resolução cheia), menos de 0,5 px de 4K na câmera da s15",
+      "credito_tela": "© OpenStreetMap contributors (já está no crédito da base MapTiler, '© MapTiler © OpenStreetMap contributors'): nada novo na tela",
+      "credito_descricao": "Geometria: © OpenStreetMap contributors — dados sob a Open Database License (https://www.openstreetmap.org/copyright)",
+      "sistema": "WGS84, lon/lat em graus decimais (5 casas)",
+      "validado_por_visao": true,
+      "sha256_js": "bfb84c8d19fddc7abfe2c99facc4cd4da96dad2d97e6309875f1b5e7233c1bfb",
+      "bytes": 65393,
+      "vertices": 2772,
+      "arquivo_fonte": "out/rio-columbia/_tmp/pesquisa-geo/afluentes-s15/baixado/osm/a1-afluentes.json (sha256 bb70dd2319b3fbc2…, consulta em afluentes-s15/consultas/a1-afluentes.ql), a2-membros-goldstream.json (sha256 d91ce02678413fc7…, consultas/a2-membros-goldstream.ql), e o Kootenay de out/rio-columbia/_tmp/pesquisa-geo/baixado/osm/q3-kootenay.json (sha256 1ba3110abb63e7dd…)",
+      "propriedades": "cada feature traz name (inglês), name_pt (o mesmo nome em inglês; a chave é da pré-v1), length_km e length_mi (medidos na resolução cheia; a linha entregue mede de 1,5 a 4,4 % menos, pela simplificação), ordem, sentido, osm, nascente, foz, foz_em, foz_ate_o_columbia_da_cena_m, drenagem_km2 e drenagem_estacao; os que param num lago, foz_ate_a_margem_do_lago_m e osm_segue_dentro_do_lago_km; o Spillimacheen, costura; o Kootenay, name_us, eua_km, eua_mi, eua_progresso_km e eua_progresso_line_progress",
+      "drenagem_fonte": "Environment and Climate Change Canada, Water Survey of Canada, coleção hydrometric-stations da MSC GeoMet (api.weather.gc.ca, um pedido, User-Agent do canal; sha256 43b1dfe300eb90b1…), DRAINAGE_AREA_GROSS. Open Government Licence – Canada 2.0. Serviu para escolher e conferir; o drenagem_km2 vai na propriedade, NÃO é texto de tela. Se um dia for à tela, leva o crédito da OGL – Canada (decisão da Sala)",
+      "por_rio": {
+        "Kootenay River": {
+          "ordem": 1,
+          "osm": "relation/8443524",
+          "ways": 84,
+          "length_km": 776.2,
+          "length_mi": 482.3,
+          "km_da_linha_entregue": 764.9,
+          "vertices": "6174 → 1341",
+          "hausdorff_m": 50.0,
+          "nascente": [
+            -116.40759,
+            51.07813
+          ],
+          "nascente_ate_a_borda_da_bacia_km": 27.9,
+          "foz": [
+            -117.6533,
+            49.316
+          ],
+          "foz_em": "no Columbia, em Castlegar",
+          "foz_ate_o_columbia_da_cena_m": 0,
+          "foz_ate_a_margem_do_lago_m": null,
+          "osm_segue_dentro_do_lago_km": null,
+          "drenagem": "50,090 km² brutos na estação WSC 08NJ128 (KOOTENAY RIVER AT BRILLIANT (FOREBAY), Discontinued, [-117.6194, 49.3256])",
+          "estacoes_wsc_ate_a_linha": "08NF001 a 11 m; 08NJ114 a 22 m; 08NJ089 a 30 m; 08NJ113 a 31 m",
+          "tela_s15_px": {
+            "5.683": 2079,
+            "6.323": 2113,
+            "8.5": 2819,
+            "10.933": 3959
+          },
+          "tela_s15_perto_do_columbia": {
+            "5.683": 0.066,
+            "6.323": 0.066,
+            "8.5": 0.034,
+            "10.933": 0.013
+          },
+          "tela_s15_sob_o_rotulo_basin_in_canada": {
+            "6.2": 0.144,
+            "10.9": 0.012
+          },
+          "eua": "261.5 km = 162.5 mi em Montana e Idaho, entre as travessias [[-115.18134, 48.9993], [-116.50413, 48.99995]]; no progresso da linha entregue: [0.4403, 0.7814] (km, como o kmAcumulado da cena) e [0.4463, 0.7818] (line-progress do MapLibre)"
+        },
+        "Kicking Horse River": {
+          "ordem": 2,
+          "osm": "relation/11339484",
+          "ways": 17,
+          "length_km": 85.4,
+          "length_mi": 53,
+          "km_da_linha_entregue": 83.0,
+          "vertices": "1611 → 220",
+          "hausdorff_m": 49.9,
+          "nascente": [
+            -116.35647,
+            51.43846
+          ],
+          "nascente_ate_a_borda_da_bacia_km": 3.2,
+          "foz": [
+            -116.99342,
+            51.3109
+          ],
+          "foz_em": "no Columbia, em Golden",
+          "foz_ate_o_columbia_da_cena_m": 10,
+          "foz_ate_a_margem_do_lago_m": null,
+          "osm_segue_dentro_do_lago_km": null,
+          "drenagem": "1,840 km² brutos na estação WSC 08NA006 (KICKING HORSE RIVER AT GOLDEN, Active, [-116.9721, 51.3012])",
+          "estacoes_wsc_ate_a_linha": "08NA053 a 22 m; 08NA006 a 74 m; 08NA008 a 83 m; 08NA007 a 199 m",
+          "tela_s15_px": {
+            "5.683": 193,
+            "6.323": 195,
+            "8.5": 240,
+            "10.933": 305
+          },
+          "tela_s15_perto_do_columbia": {
+            "5.683": 0.479,
+            "6.323": 0.493,
+            "8.5": 0.436,
+            "10.933": 0.098
+          },
+          "tela_s15_sob_o_rotulo_basin_in_canada": {
+            "6.2": 1.0,
+            "10.9": 1.0
+          },
+          "trança": "1,1 km do outro canal em volta de uma ilha (51,301–51,305 N, −116,582 a −116,587) ficaram fora: o caminho é o canal mais curto",
+          "nascente_nota": "a saída do Wapta Lake, no Kicking Horse Pass; a flowline way/1488407336 (0,6 km por dentro do lago) ficou fora"
+        },
+        "Spillimacheen River": {
+          "ordem": 3,
+          "osm": "relation/10693247",
+          "ways": 38,
+          "length_km": 109.8,
+          "length_mi": 68.2,
+          "km_da_linha_entregue": 105.0,
+          "vertices": "4338 → 358",
+          "hausdorff_m": 50.0,
+          "nascente": [
+            -117.26854,
+            51.2796
+          ],
+          "nascente_ate_a_borda_da_bacia_km": 53.5,
+          "foz": [
+            -116.39677,
+            50.93052
+          ],
+          "foz_em": "no Columbia, em Spillimacheen",
+          "foz_ate_o_columbia_da_cena_m": 6,
+          "foz_ate_a_margem_do_lago_m": null,
+          "osm_segue_dentro_do_lago_km": null,
+          "drenagem": "1,453 km² brutos na estação WSC 08NA011 (SPILLIMACHEEN RIVER NEAR SPILLIMACHEEN, Active, [-116.4068, 50.9044])",
+          "estacoes_wsc_ate_a_linha": "08NA011 a 22 m",
+          "tela_s15_px": {
+            "5.683": 258,
+            "6.323": 262,
+            "8.5": 324,
+            "10.933": 400
+          },
+          "tela_s15_perto_do_columbia": {
+            "5.683": 0.645,
+            "6.323": 0.649,
+            "8.5": 0.593,
+            "10.933": 0.54
+          },
+          "tela_s15_sob_o_rotulo_basin_in_canada": {
+            "6.2": 1.0,
+            "10.9": 0.732
+          },
+          "costura": [
+            {
+              "de": [
+                -117.23973,
+                51.18379
+              ],
+              "a": [
+                -117.23736,
+                51.18337
+              ],
+              "m": 172
+            }
+          ],
+          "nascente_nota": "a cabeceira, pela relação do OSM (main_stream), é o Krumholtz Creek (way/178575878); o trecho final ao Columbia são 2 ways sem nome (way/354394256 e way/770908134, waterway=river) que a relação inclui"
+        },
+        "Illecillewaet River": {
+          "ordem": 4,
+          "osm": "relation/16546529",
+          "ways": 11,
+          "length_km": 75.8,
+          "length_mi": 47.1,
+          "km_da_linha_entregue": 73.6,
+          "vertices": "1458 → 192",
+          "hausdorff_m": 49.1,
+          "nascente": [
+            -117.46515,
+            51.25313
+          ],
+          "nascente_ate_a_borda_da_bacia_km": 65.8,
+          "foz": [
+            -118.21087,
+            50.98194
+          ],
+          "foz_em": "no Columbia, em Revelstoke",
+          "foz_ate_o_columbia_da_cena_m": 0,
+          "foz_ate_a_margem_do_lago_m": null,
+          "osm_segue_dentro_do_lago_km": null,
+          "drenagem": "1,202 km² brutos na estação WSC 08ND003 (ILLECILLEWAET RIVER NEAR REVELSTOKE, Discontinued, [-118.1817, 50.9858])",
+          "estacoes_wsc_ate_a_linha": "08ND005 a 31 m; 08ND003 a 36 m; 08ND013 a 40 m",
+          "tela_s15_px": {
+            "5.683": 186,
+            "6.323": 188,
+            "8.5": 235,
+            "10.933": 307
+          },
+          "tela_s15_perto_do_columbia": {
+            "5.683": 0.0,
+            "6.323": 0.0,
+            "8.5": 0.005,
+            "10.933": 0.04
+          },
+          "tela_s15_sob_o_rotulo_basin_in_canada": {
+            "6.2": 1.0,
+            "10.9": 1.0
+          }
+        },
+        "Beaver River": {
+          "ordem": 5,
+          "osm": "relation/16462026",
+          "ways": 17,
+          "length_km": 70.6,
+          "length_mi": 43.8,
+          "km_da_linha_entregue": 67.9,
+          "vertices": "1985 → 227",
+          "hausdorff_m": 49.6,
+          "nascente": [
+            -117.29978,
+            51.06059
+          ],
+          "nascente_ate_a_borda_da_bacia_km": 76.7,
+          "foz": [
+            -117.4467,
+            51.51926
+          ],
+          "foz_em": "na margem sul do Kinbasket Lake (o polígono do OSM, relation/2198283, na cota cheia)",
+          "foz_ate_o_columbia_da_cena_m": 2359,
+          "foz_ate_a_margem_do_lago_m": 0,
+          "osm_segue_dentro_do_lago_km": 2.4,
+          "drenagem": "1,156 km² brutos na estação WSC 08NB019 (BEAVER RIVER NEAR THE MOUTH, Discontinued, [-117.4653, 51.5091])",
+          "estacoes_wsc_ate_a_linha": "08NB019 a 23 m; 08NB021 a 31 m; 08NB003 a 121 m",
+          "tela_s15_px": {
+            "5.683": 137,
+            "6.323": 138,
+            "8.5": 167,
+            "10.933": 203
+          },
+          "tela_s15_perto_do_columbia": {
+            "5.683": 0.207,
+            "6.323": 0.217,
+            "8.5": 0.182,
+            "10.933": 0.0
+          },
+          "tela_s15_sob_o_rotulo_basin_in_canada": {
+            "6.2": 1.0,
+            "10.9": 1.0
+          },
+          "nota": "os últimos 2,4 km do OSM correm dentro do polígono do Kinbasket (cota cheia) até a linha do Columbia, e ficaram fora"
+        },
+        "Incomappleux River": {
+          "ordem": 6,
+          "osm": "relation/16546616",
+          "ways": 19,
+          "length_km": 71.4,
+          "length_mi": 44.4,
+          "km_da_linha_entregue": 69.5,
+          "vertices": "1807 → 194",
+          "hausdorff_m": 49.8,
+          "nascente": [
+            -117.43772,
+            51.19109
+          ],
+          "nascente_ate_a_borda_da_bacia_km": 67.9,
+          "foz": [
+            -117.71353,
+            50.74724
+          ],
+          "foz_em": "na margem do Upper Arrow Lake, no Northeast Arm, em Beaton (o polígono do OSM, relation/2198542, na cota cheia)",
+          "foz_ate_o_columbia_da_cena_m": 17928,
+          "foz_ate_a_margem_do_lago_m": 0,
+          "osm_segue_dentro_do_lago_km": 18.6,
+          "drenagem": "1,003 km² brutos na estação WSC 08NE001 (INCOMAPPLEUX RIVER NEAR BEATON, Discontinued, [-117.6767, 50.7736])",
+          "estacoes_wsc_ate_a_linha": "08NE001 a 73 m; 08NE012 a 75 m",
+          "tela_s15_px": {
+            "5.683": 150,
+            "6.323": 151,
+            "8.5": 188,
+            "10.933": 247
+          },
+          "tela_s15_perto_do_columbia": {
+            "5.683": 0.0,
+            "6.323": 0.0,
+            "8.5": 0.0,
+            "10.933": 0.0
+          },
+          "tela_s15_sob_o_rotulo_basin_in_canada": {
+            "6.2": 1.0,
+            "10.9": 0.866
+          },
+          "nota": "o way/1228409808 (waterway=river, 18,6 km pelo Northeast Arm até a linha do Columbia) ficou fora: está dentro do Upper Arrow Lake"
+        },
+        "Wood River": {
+          "ordem": 7,
+          "osm": "relation/16702611",
+          "ways": 16,
+          "length_km": 38.5,
+          "length_mi": 23.9,
+          "km_da_linha_entregue": 37.3,
+          "vertices": "874 → 101",
+          "hausdorff_m": 48.6,
+          "nascente": [
+            -117.87044,
+            52.36819
+          ],
+          "nascente_ate_a_borda_da_bacia_km": 5.2,
+          "foz": [
+            -118.18191,
+            52.21739
+          ],
+          "foz_em": "na margem do Kinbasket Lake, no Wood Arm (o polígono do OSM, relation/2198283, na cota cheia)",
+          "foz_ate_o_columbia_da_cena_m": 19956,
+          "foz_ate_a_margem_do_lago_m": 0,
+          "osm_segue_dentro_do_lago_km": 3.9,
+          "drenagem": "966 km² brutos na estação WSC 08NC001 (WOOD RIVER NEAR DONALD, Discontinued, [-118.4044, 52.1522])",
+          "estacoes_wsc_ate_a_linha": "08NC001 a 17017 m",
+          "tela_s15_px": {
+            "5.683": 81,
+            "6.323": 82,
+            "8.5": 98,
+            "10.933": 122
+          },
+          "tela_s15_perto_do_columbia": {
+            "5.683": 0.0,
+            "6.323": 0.0,
+            "8.5": 0.0,
+            "10.933": 0.0
+          },
+          "tela_s15_sob_o_rotulo_basin_in_canada": {
+            "6.2": 0.0,
+            "10.9": 0.0
+          },
+          "nota": "a estação 08NC001 fica a 17 km da linha entregue: é de antes do Kinbasket, na foz antiga (hoje dentro do reservatório); a área de drenagem na margem de hoje é menor e não foi medida. A flowline way/1433411583 (por dentro do Wood Arm) ficou fora"
+        },
+        "Blaeberry River": {
+          "ordem": 8,
+          "osm": "relation/19651804",
+          "ways": 10,
+          "length_km": 64.5,
+          "length_mi": 40.1,
+          "km_da_linha_entregue": 63.4,
+          "vertices": "770 → 139",
+          "hausdorff_m": 48.4,
+          "nascente": [
+            -116.74689,
+            51.79135
+          ],
+          "nascente_ate_a_borda_da_bacia_km": 1.2,
+          "foz": [
+            -117.08579,
+            51.4204
+          ],
+          "foz_em": "no Columbia, ao norte de Golden",
+          "foz_ate_o_columbia_da_cena_m": 0,
+          "foz_ate_a_margem_do_lago_m": null,
+          "osm_segue_dentro_do_lago_km": null,
+          "drenagem": "741 km² brutos na estação WSC 08NB001 (BLAEBERRY RIVER NEAR GOLDEN, Discontinued, [-117.0406, 51.4239])",
+          "estacoes_wsc_ate_a_linha": "08NB012 a 13 m; 08NB001 a 32 m; 08NB015 a 45 m",
+          "tela_s15_px": {
+            "5.683": 131,
+            "6.323": 132,
+            "8.5": 162,
+            "10.933": 211
+          },
+          "tela_s15_perto_do_columbia": {
+            "5.683": 0.107,
+            "6.323": 0.113,
+            "8.5": 0.101,
+            "10.933": 0.059
+          },
+          "tela_s15_sob_o_rotulo_basin_in_canada": {
+            "6.2": 0.657,
+            "10.9": 1.0
+          }
+        }
+      },
+      "conferencia_de_referencia": "independente do OSM: as estações da Water Survey of Canada (coordenadas da ECCC) com o nome de cada rio ficam a 11–200 m da linha na resolução cheia (Kootenay 26 de 32 estações a até 260 m; as outras 6 são braços mortos e lagoas ao lado: Duck, Goat e Six Mile Slough/Lake e Slough Bridge, de 538 m a 2,9 km), e a exceção explicada do Wood (08NC001, na foz antiga, a 17 km); o Kootenay mede 776,2 km, como o rio-kootenay do acervo, da mesma relação. Toda nascente cai dentro da bacia canadense (USGS WBD ∩ Census); nenhum afluente sai dela, fora o laço do Kootenay nos EUA (260,4 km fora do contorno). Detalhe em out/rio-columbia/_tmp/pesquisa-geo/afluentes-s15/validar.json",
+      "licenca_lida_em": "2026-11-13 (https://www.openstreetmap.org/copyright, lida às 04:13 de hoje pela pesquisa da água de The Dalles, cópia em _tmp/pesquisa-geo/baixado/osm/osm-copyright-2026-11-13.html, sha256 b837e24a…: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors')",
+      "na_tela": "nada novo: '© OpenStreetMap contributors' já está na linha '© MapTiler © OpenStreetMap contributors' de todo quadro da s15; openstreetmap.org/copyright na descrição (já está)"
     }
   ],
   "pedidos_needs_geo": 191,
@@ -2513,7 +2955,7 @@
           1926,
           740
         ],
-        "indice_no_pixel": 0.0,
+        "indice_no_pixel": 0,
         "agua_no_pixel": false,
         "m_ate_a_agua_mais_perto": 2002,
         "azimute_da_agua_mais_perto": 203
@@ -2538,10 +2980,10 @@
           },
           "pixels_por_item_%": {
             "quadro_em_repouso": {
-              "LC08_L2SP_015033_20240910_02_T1": 100.0
+              "LC08_L2SP_015033_20240910_02_T1": 100
             },
             "entrada_inteira": {
-              "LC08_L2SP_015033_20240910_02_T1": 100.0
+              "LC08_L2SP_015033_20240910_02_T1": 100
             }
           },
           "janela": {
@@ -2551,7 +2993,7 @@
               -77.01,
               38.89
             ],
-            "largura_no_chao_km_miolo": 40.0,
+            "largura_no_chao_km_miolo": 40,
             "altura_no_chao_km_miolo": 22.5,
             "largura_no_chao_km_total": 41.17,
             "altura_no_chao_km_total": 23.67,
@@ -2589,7 +3031,7 @@
               "luma_p95": 27,
               "faixa_credito_luma_max": 33,
               "contraste_credito_pior": 9.59,
-              "piso": 6.0,
+              "piso": 6,
               "sangria": 56,
               "mesa_inteira_luma_media": 17.7,
               "mesa_inteira_luma_max": 40,
@@ -2616,10 +3058,10 @@
           },
           "pixels_por_item_%": {
             "quadro_em_repouso": {
-              "LC09_L2SP_046028_20240709_02_T1": 100.0
+              "LC09_L2SP_046028_20240709_02_T1": 100
             },
             "entrada_inteira": {
-              "LC09_L2SP_046028_20240709_02_T1": 100.0
+              "LC09_L2SP_046028_20240709_02_T1": 100
             }
           },
           "janela": {
@@ -2629,7 +3071,7 @@
               -122.7,
               45.6
             ],
-            "largura_no_chao_km_miolo": 60.0,
+            "largura_no_chao_km_miolo": 60,
             "altura_no_chao_km_miolo": 33.75,
             "largura_no_chao_km_total": 61.75,
             "altura_no_chao_km_total": 35.5,
@@ -2667,7 +3109,7 @@
               "luma_p95": 25,
               "faixa_credito_luma_max": 37,
               "contraste_credito_pior": 9.14,
-              "piso": 6.0,
+              "piso": 6,
               "sangria": 56,
               "mesa_inteira_luma_media": 17.3,
               "mesa_inteira_luma_max": 37,
@@ -2711,10 +3153,10 @@
               -117.9,
               50.6
             ],
-            "largura_no_chao_km_miolo": 120.0,
+            "largura_no_chao_km_miolo": 120,
             "altura_no_chao_km_miolo": 67.5,
             "largura_no_chao_km_total": 123.5,
-            "altura_no_chao_km_total": 71.0,
+            "altura_no_chao_km_total": 71,
             "metros_no_chao_por_px_no_centro": 31.25,
             "metros_mercator_por_px": 49.233,
             "bbox_lonlat_total": [
@@ -2749,7 +3191,7 @@
               "luma_p95": 31,
               "faixa_credito_luma_max": 22,
               "contraste_credito_pior": 10.53,
-              "piso": 6.0,
+              "piso": 6,
               "sangria": 56,
               "mesa_inteira_luma_media": 17.4,
               "mesa_inteira_luma_max": 48,
@@ -2772,7 +3214,7 @@
             "com_dado_%": 99.641,
             "nuvem_%": 5.475,
             "nuvem_dilatada_%": 9.022,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 10.078,
             "neve_%": 1.36,
             "agua_%": 4.109,
@@ -2781,7 +3223,7 @@
               "com_dado_%": 99.924,
               "nuvem_%": 5.475,
               "nuvem_dilatada_%": 8.99,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 9.974,
               "neve_%": 1.305
             }
@@ -2794,7 +3236,7 @@
             "com_dado_%": 65.933,
             "nuvem_%": 4.404,
             "nuvem_dilatada_%": 7.049,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 8.538,
             "neve_%": 0.857,
             "agua_%": 5.675,
@@ -2803,7 +3245,7 @@
               "com_dado_%": 66.512,
               "nuvem_%": 4.567,
               "nuvem_dilatada_%": 7.22,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 8.805,
               "neve_%": 0.867
             }
@@ -2816,7 +3258,7 @@
             "com_dado_%": 99.415,
             "nuvem_%": 0.741,
             "nuvem_dilatada_%": 1.559,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 1.79,
             "neve_%": 0.352,
             "agua_%": 5.876,
@@ -2825,7 +3267,7 @@
               "com_dado_%": 99.796,
               "nuvem_%": 0.692,
               "nuvem_dilatada_%": 1.491,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 1.713,
               "neve_%": 0.351
             }
@@ -2838,7 +3280,7 @@
             "com_dado_%": 98.917,
             "nuvem_%": 0.831,
             "nuvem_dilatada_%": 1.777,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 2.067,
             "neve_%": 0.353,
             "agua_%": 5.051,
@@ -2847,7 +3289,7 @@
               "com_dado_%": 99.45,
               "nuvem_%": 0.774,
               "nuvem_dilatada_%": 1.719,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 1.976,
               "neve_%": 0.352
             }
@@ -2860,7 +3302,7 @@
             "com_dado_%": 99.109,
             "nuvem_%": 1.756,
             "nuvem_dilatada_%": 2.693,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 3.299,
             "neve_%": 0.283,
             "agua_%": 4.396,
@@ -2869,7 +3311,7 @@
               "com_dado_%": 99.584,
               "nuvem_%": 1.667,
               "nuvem_dilatada_%": 2.625,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 3.209,
               "neve_%": 0.279
             }
@@ -2882,7 +3324,7 @@
             "com_dado_%": 98.884,
             "nuvem_%": 1.922,
             "nuvem_dilatada_%": 3.108,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 4.143,
             "neve_%": 0.418,
             "agua_%": 1.592,
@@ -2891,7 +3333,7 @@
               "com_dado_%": 99.42,
               "nuvem_%": 1.887,
               "nuvem_dilatada_%": 3.053,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 3.961,
               "neve_%": 0.423
             }
@@ -2904,7 +3346,7 @@
             "com_dado_%": 99.466,
             "nuvem_%": 3.249,
             "nuvem_dilatada_%": 5.572,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 6.877,
             "neve_%": 0.401,
             "agua_%": 4.414,
@@ -2913,7 +3355,7 @@
               "com_dado_%": 99.828,
               "nuvem_%": 3.203,
               "nuvem_dilatada_%": 5.481,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 6.744,
               "neve_%": 0.393
             }
@@ -2926,7 +3368,7 @@
             "com_dado_%": 66.851,
             "nuvem_%": 0.3,
             "nuvem_dilatada_%": 0.728,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 0.915,
             "neve_%": 0.222,
             "agua_%": 6.01,
@@ -2935,7 +3377,7 @@
               "com_dado_%": 67.46,
               "nuvem_%": 0.318,
               "nuvem_dilatada_%": 0.774,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 0.964,
               "neve_%": 0.236
             }
@@ -2967,21 +3409,21 @@
               494,
               284
             ],
-            "com_dado_%": 100.0,
+            "com_dado_%": 100,
             "nuvem_%": 0.014,
             "nuvem_dilatada_%": 0.041,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 0.05,
-            "neve_%": 0.0,
+            "neve_%": 0,
             "agua_%": 4.429,
             "limpo_%": 99.944,
             "miolo": {
-              "com_dado_%": 100.0,
+              "com_dado_%": 100,
               "nuvem_%": 0.015,
               "nuvem_dilatada_%": 0.045,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 0.054,
-              "neve_%": 0.0
+              "neve_%": 0
             }
           },
           "foz:LC09_L2SP_046028_20250728_02_T1": {
@@ -2989,21 +3431,21 @@
               494,
               284
             ],
-            "com_dado_%": 100.0,
+            "com_dado_%": 100,
             "nuvem_%": 0.011,
             "nuvem_dilatada_%": 0.038,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 0.036,
-            "neve_%": 0.0,
+            "neve_%": 0,
             "agua_%": 4.339,
             "limpo_%": 99.951,
             "miolo": {
-              "com_dado_%": 100.0,
+              "com_dado_%": 100,
               "nuvem_%": 0.012,
               "nuvem_dilatada_%": 0.042,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 0.039,
-              "neve_%": 0.0
+              "neve_%": 0
             }
           },
           "foz:LC09_L2SP_046028_20240709_02_T1": {
@@ -3011,21 +3453,21 @@
               494,
               284
             ],
-            "com_dado_%": 100.0,
+            "com_dado_%": 100,
             "nuvem_%": 0.003,
             "nuvem_dilatada_%": 0.012,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 0.012,
-            "neve_%": 0.0,
+            "neve_%": 0,
             "agua_%": 4.538,
             "limpo_%": 99.985,
             "miolo": {
-              "com_dado_%": 100.0,
+              "com_dado_%": 100,
               "nuvem_%": 0.003,
               "nuvem_dilatada_%": 0.013,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 0.013,
-              "neve_%": 0.0
+              "neve_%": 0
             }
           },
           "foz:LC08_L2SP_046028_20230816_02_T1": {
@@ -3033,21 +3475,21 @@
               494,
               284
             ],
-            "com_dado_%": 100.0,
+            "com_dado_%": 100,
             "nuvem_%": 0.002,
             "nuvem_dilatada_%": 0.014,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 0.016,
-            "neve_%": 0.0,
+            "neve_%": 0,
             "agua_%": 4.463,
             "limpo_%": 99.984,
             "miolo": {
-              "com_dado_%": 100.0,
+              "com_dado_%": 100,
               "nuvem_%": 0.002,
               "nuvem_dilatada_%": 0.015,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 0.018,
-              "neve_%": 0.0
+              "neve_%": 0
             }
           },
           "capitolio:LC09_L2SP_015033_20240716_02_T1": {
@@ -3055,21 +3497,21 @@
               494,
               284
             ],
-            "com_dado_%": 100.0,
+            "com_dado_%": 100,
             "nuvem_%": 0.111,
             "nuvem_dilatada_%": 0.147,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 0.319,
-            "neve_%": 0.0,
+            "neve_%": 0,
             "agua_%": 2.193,
             "limpo_%": 99.742,
             "miolo": {
-              "com_dado_%": 100.0,
+              "com_dado_%": 100,
               "nuvem_%": 0.076,
               "nuvem_dilatada_%": 0.101,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 0.254,
-              "neve_%": 0.0
+              "neve_%": 0
             }
           },
           "capitolio:LC08_L2SP_015033_20240825_02_T1": {
@@ -3077,21 +3519,21 @@
               494,
               284
             ],
-            "com_dado_%": 100.0,
+            "com_dado_%": 100,
             "nuvem_%": 0.023,
             "nuvem_dilatada_%": 0.127,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 0.118,
-            "neve_%": 0.0,
+            "neve_%": 0,
             "agua_%": 1.946,
             "limpo_%": 99.85,
             "miolo": {
-              "com_dado_%": 100.0,
+              "com_dado_%": 100,
               "nuvem_%": 0.024,
               "nuvem_dilatada_%": 0.124,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 0.117,
-              "neve_%": 0.0
+              "neve_%": 0
             }
           },
           "capitolio:LC08_L2SP_015033_20240910_02_T1": {
@@ -3099,21 +3541,21 @@
               494,
               284
             ],
-            "com_dado_%": 100.0,
+            "com_dado_%": 100,
             "nuvem_%": 0.032,
             "nuvem_dilatada_%": 0.06,
-            "cirro_%": 0.0,
+            "cirro_%": 0,
             "sombra_%": 0.078,
-            "neve_%": 0.0,
+            "neve_%": 0,
             "agua_%": 2.399,
             "limpo_%": 99.908,
             "miolo": {
-              "com_dado_%": 100.0,
+              "com_dado_%": 100,
               "nuvem_%": 0.034,
               "nuvem_dilatada_%": 0.065,
-              "cirro_%": 0.0,
+              "cirro_%": 0,
               "sombra_%": 0.084,
-              "neve_%": 0.0
+              "neve_%": 0
             }
           },
           "capitolio:LC09_L2SP_015033_20230730_02_T1": {
@@ -3121,81 +3563,81 @@
               494,
               284
             ],
-            "com_dado_%": 100.0,
+            "com_dado_%": 100,
             "nuvem_%": 0.104,
             "nuvem_dilatada_%": 0.244,
             "cirro_%": 0.024,
             "sombra_%": 0.177,
-            "neve_%": 0.0,
+            "neve_%": 0,
             "agua_%": 2.304,
             "limpo_%": 99.651,
             "miolo": {
-              "com_dado_%": 100.0,
+              "com_dado_%": 100,
               "nuvem_%": 0.113,
               "nuvem_dilatada_%": 0.262,
               "cirro_%": 0.025,
               "sombra_%": 0.175,
-              "neve_%": 0.0
+              "neve_%": 0
             }
           }
         },
         "aerossol_na_janela": {
           "vale:LC08_L2SP_044025_20240905_02_T1": {
-            "nivel_0_%": 0.0,
+            "nivel_0_%": 0,
             "nivel_1_%": 90.74,
             "nivel_2_%": 6.72,
             "nivel_3_%": 2.53
           },
           "vale:LC08_L2SP_044025_20250823_02_T1": {
-            "nivel_0_%": 0.0,
+            "nivel_0_%": 0,
             "nivel_1_%": 91.62,
             "nivel_2_%": 5.59,
             "nivel_3_%": 2.79
           },
           "vale:LC08_L2SP_044025_20230802_02_T1": {
-            "nivel_0_%": 0.0,
+            "nivel_0_%": 0,
             "nivel_1_%": 74.66,
             "nivel_2_%": 14.56,
             "nivel_3_%": 10.77
           },
           "foz:LC09_L2SP_046028_20240709_02_T1": {
-            "nivel_0_%": 0.0,
+            "nivel_0_%": 0,
             "nivel_1_%": 86.07,
             "nivel_2_%": 11.49,
             "nivel_3_%": 2.44
           },
           "foz:LC08_L2SP_046028_20230816_02_T1": {
-            "nivel_0_%": 0.0,
+            "nivel_0_%": 0,
             "nivel_1_%": 85.46,
             "nivel_2_%": 12.33,
             "nivel_3_%": 2.21
           },
           "foz:LC09_L2SP_046028_20250728_02_T1": {
-            "nivel_0_%": 0.0,
+            "nivel_0_%": 0,
             "nivel_1_%": 89.04,
             "nivel_2_%": 8.87,
             "nivel_3_%": 2.09
           },
           "capitolio:LC09_L2SP_015033_20240716_02_T1": {
-            "nivel_0_%": 0.0,
+            "nivel_0_%": 0,
             "nivel_1_%": 56.25,
             "nivel_2_%": 37.38,
             "nivel_3_%": 6.37
           },
           "capitolio:LC08_L2SP_015033_20240825_02_T1": {
-            "nivel_0_%": 0.0,
+            "nivel_0_%": 0,
             "nivel_1_%": 12.39,
             "nivel_2_%": 62.2,
             "nivel_3_%": 25.41
           },
           "capitolio:LC08_L2SP_015033_20240910_02_T1": {
-            "nivel_0_%": 0.0,
+            "nivel_0_%": 0,
             "nivel_1_%": 86.81,
             "nivel_2_%": 10.86,
             "nivel_3_%": 2.33
           },
           "capitolio:LC09_L2SP_015033_20230730_02_T1": {
-            "nivel_0_%": 0.0,
+            "nivel_0_%": 0,
             "nivel_1_%": 84.49,
             "nivel_2_%": 12.42,
             "nivel_3_%": 3.09
@@ -3206,7 +3648,7 @@
         "primeira": {
           "M-VALE": {
             "agua_luma_mediana": 54.4,
-            "terra_anel_luma_mediana": 59.0,
+            "terra_anel_luma_mediana": 59,
             "agua_px_amostrados": 11023,
             "anel_px_amostrados": 24931,
             "fracao_do_lago_mais_escura_que_o_p10_do_anel_%": 32.6,
@@ -3304,9 +3746,9 @@
             "px_agua": 11028,
             "px_terra": 24911,
             "indice_cor_agua_mediana": 0.482,
-            "indice_cor_terra_mediana": 0.0,
+            "indice_cor_terra_mediana": 0,
             "luma_agua_mediana": 54.4,
-            "luma_terra_mediana": 59.0,
+            "luma_terra_mediana": 59,
             "poligono_leste_1km_indice_cor_luma": [
               0.425,
               55.8
@@ -3367,5 +3809,656 @@
       "s51 P2: o ponto de Arrowhead da CGNDB/BCGN fica em terra, 2,0 km ao norte da água de hoje (OSM e Landsat de 05/09/2024); o BCGN o dá como 'reinstated' em 1988. Nada disso prova nem desmente 'abandonada por causa de Keenleyside': vai ao verificador-de-fatos"
     ],
     "scripts": "out/rio-columbia/_tmp/pesquisa-geo/geo_antes_do_art.py (as camadas), geo_pauta_antes_do_art.py (este bloco), mesa/*.py (as entradas da mesa); o relato: relato-antes-do-art.md"
+  },
+  "rodada_art_agua_the_dalles": {
+    "quando": "13/11/2026, ~03:56–04:40",
+    "pedido": "a Sala de controle (passo art): a camada da regra 'A água escura nos mapas do porto' (marca/identidade.md; Lucas, 08/10/2026) para a s36, depois do relato do mapista (out/rio-columbia/_tmp/arte-1/M5.md: remendos de borda reta na água do Columbia em The Dalles, que o teto de nível 12 e 11 não tira)",
+    "pauta_geo_sha256_antes": "c304f037f828d7d3a6545ca661ac288e690b90277dce90177e19c711c247c6f5",
+    "camada": {
+      "arquivo": "_media/geo/agua-osm-the-dalles.json",
+      "js": "_media/geo/agua-osm-the-dalles.js",
+      "sha256": "ee53af8a93c9e3e6a750686aba879cd34207dfc58534abe57bc1ff1746796e14",
+      "features": 2,
+      "bytes": 438400,
+      "cena": "s36"
+    },
+    "fonte_e_porta": "o precedente do vídeo 2 (agua-osm-la) usou os water polygons do osmdata, que só têm a água fechada pela costa (natural=coastline): o Columbia em The Dalles, rio acima de Bonneville, não está neles. Por isso a água veio do mesmo OSM pela Overpass API (natural=water, waterway=riverbank, landuse=reservoir na caixa), um pedido por vez, com o User-Agent do canal",
+    "pedidos": [
+      "Overpass q6 (água): 03:58:19, HTTP 200, 4.641.593 bytes, base 2026-11-13T06:56:48Z",
+      "Overpass q7 (estruturas): 03:58:30 e 04:00:20, HTTP 502 'at capacity' (o servidor pede para repetir com recuo); 3ª tentativa às 04:05:11, 291 s depois da 2ª, HTTP 200, 1.064.018 bytes, base 2026-11-13T07:02:55Z",
+      "www.openstreetmap.org/robots.txt e /copyright (permitida no robots.txt): HTTP 200",
+      "www2.census.gov TIGER2025/AREAWATER tl_2025_53039 (114.168 bytes) e tl_2025_41065 (178.711 bytes): HTTP 200"
+    ],
+    "recusas": [
+      "overpass-api.de: 2 respostas 502 'at capacity' na q7, com o texto 'This public endpoint is intended for browser-based and human-operated tools. For automated or high-volume use, run a local Overpass API instance' (o mesmo aviso de 12/11, já nos avisos à Sala); repetida depois de 110 s e de novo depois de 291 s, como o servidor pede (recuo dobrado). 2 pedidos respondidos nesta rodada"
+    ],
+    "encaixe": {
+      "camada_entregue": {
+        "7.5": {
+          "n": 824,
+          "mediana_m": -1.5,
+          "mediana_abs_m": 6.5,
+          "p90_abs_m": 21.5,
+          "mediana_abs_px": 1.07,
+          "p90_abs_px": 3.54,
+          "frac_ate_2px": 0.721,
+          "agua_crua_fora_mais_de_2px": 96,
+          "tom_sobre_terra_mais_de_2px": 134,
+          "m_por_px": 6.074,
+          "zoom": 13.1381,
+          "classificador": {
+            "acerto_agua": 0.9911,
+            "acerto_terra": 0.9933,
+            "px_agua": 196329,
+            "px_terra": 311469
+          }
+        },
+        "25.0": {
+          "n": 964,
+          "mediana_m": -3.5,
+          "mediana_abs_m": 7.5,
+          "p90_abs_m": 23.2,
+          "mediana_abs_px": 1.27,
+          "p90_abs_px": 3.91,
+          "frac_ate_2px": 0.706,
+          "agua_crua_fora_mais_de_2px": 72,
+          "tom_sobre_terra_mais_de_2px": 211,
+          "m_por_px": 5.929,
+          "zoom": 13.1731,
+          "classificador": {
+            "acerto_agua": 0.9698,
+            "acerto_terra": 0.9924,
+            "px_agua": 223535,
+            "px_terra": 343068
+          }
+        },
+        "43.5": {
+          "n": 1033,
+          "mediana_m": -1.5,
+          "mediana_abs_m": 6.5,
+          "p90_abs_m": 21.5,
+          "mediana_abs_px": 1.12,
+          "p90_abs_px": 3.72,
+          "frac_ate_2px": 0.741,
+          "agua_crua_fora_mais_de_2px": 102,
+          "tom_sobre_terra_mais_de_2px": 166,
+          "m_por_px": 5.779,
+          "zoom": 13.2101,
+          "classificador": {
+            "acerto_agua": 0.9802,
+            "acerto_terra": 0.9792,
+            "px_agua": 223085,
+            "px_terra": 360348
+          }
+        }
+      },
+      "so_osm_antes_da_janela": {
+        "7.5": {
+          "n": 832,
+          "mediana_m": -0.5,
+          "mediana_abs_m": 7.5,
+          "p90_abs_m": 24.4,
+          "mediana_abs_px": 1.23,
+          "p90_abs_px": 4.02,
+          "frac_ate_2px": 0.69,
+          "agua_crua_fora_mais_de_2px": 121,
+          "tom_sobre_terra_mais_de_2px": 137,
+          "m_por_px": 6.074,
+          "zoom": 13.1381,
+          "classificador": {
+            "acerto_agua": 0.9913,
+            "acerto_terra": 0.9931,
+            "px_agua": 195274,
+            "px_terra": 311442
+          }
+        },
+        "25.0": {
+          "n": 970,
+          "mediana_m": -3.5,
+          "mediana_abs_m": 8.5,
+          "p90_abs_m": 25.5,
+          "mediana_abs_px": 1.43,
+          "p90_abs_px": 4.3,
+          "frac_ate_2px": 0.647,
+          "agua_crua_fora_mais_de_2px": 118,
+          "tom_sobre_terra_mais_de_2px": 224,
+          "m_por_px": 5.929,
+          "zoom": 13.1731,
+          "classificador": {
+            "acerto_agua": 0.9697,
+            "acerto_terra": 0.9929,
+            "px_agua": 222212,
+            "px_terra": 342943
+          }
+        },
+        "43.5": {
+          "n": 1040,
+          "mediana_m": -0.5,
+          "mediana_abs_m": 7.5,
+          "p90_abs_m": 22.6,
+          "mediana_abs_px": 1.3,
+          "p90_abs_px": 3.91,
+          "frac_ate_2px": 0.708,
+          "agua_crua_fora_mais_de_2px": 149,
+          "tom_sobre_terra_mais_de_2px": 155,
+          "m_por_px": 5.779,
+          "zoom": 13.2101,
+          "classificador": {
+            "acerto_agua": 0.9815,
+            "acerto_terra": 0.9783,
+            "px_agua": 221050,
+            "px_terra": 360277
+          }
+        }
+      },
+      "so_tiger_no_trecho_de_perto": {
+        "7.5": {
+          "n": 814,
+          "mediana_m": 2.5,
+          "mediana_abs_m": 7.5,
+          "p90_abs_m": 32.5,
+          "mediana_abs_px": 1.23,
+          "p90_abs_px": 5.35,
+          "frac_ate_2px": 0.627,
+          "agua_crua_fora_mais_de_2px": 211,
+          "tom_sobre_terra_mais_de_2px": 93,
+          "m_por_px": 6.074,
+          "zoom": 13.1381,
+          "classificador": {
+            "acerto_agua": 0.9913,
+            "acerto_terra": 0.9931,
+            "px_agua": 195274,
+            "px_terra": 311442
+          }
+        },
+        "25.0": {
+          "n": 943,
+          "mediana_m": -0.5,
+          "mediana_abs_m": 7.5,
+          "p90_abs_m": 29.5,
+          "mediana_abs_px": 1.27,
+          "p90_abs_px": 4.98,
+          "frac_ate_2px": 0.651,
+          "agua_crua_fora_mais_de_2px": 167,
+          "tom_sobre_terra_mais_de_2px": 162,
+          "m_por_px": 5.929,
+          "zoom": 13.1731,
+          "classificador": {
+            "acerto_agua": 0.9697,
+            "acerto_terra": 0.9929,
+            "px_agua": 222212,
+            "px_terra": 342943
+          }
+        },
+        "43.5": {
+          "n": 992,
+          "mediana_m": 1.5,
+          "mediana_abs_m": 6.5,
+          "p90_abs_m": 26.5,
+          "mediana_abs_px": 1.12,
+          "p90_abs_px": 4.59,
+          "frac_ate_2px": 0.721,
+          "agua_crua_fora_mais_de_2px": 176,
+          "tom_sobre_terra_mais_de_2px": 101,
+          "m_por_px": 5.779,
+          "zoom": 13.2101,
+          "classificador": {
+            "acerto_agua": 0.9815,
+            "acerto_terra": 0.9783,
+            "px_agua": 221050,
+            "px_terra": 360277
+          }
+        }
+      },
+      "lascas_antes": {
+        "7.5": [],
+        "25.0": [
+          {
+            "tipo": "agua_crua",
+            "perfis": 14,
+            "m_aprox": 420,
+            "desvio_mediano_px": 6.6,
+            "desvio_max_px": 7.3,
+            "de": [
+              -121.194094,
+              45.624088
+            ],
+            "ate": [
+              -121.193415,
+              45.627583
+            ],
+            "tela_de": [
+              2345.3,
+              721.5
+            ],
+            "tela_ate": [
+              2354.3,
+              655.9
+            ]
+          },
+          {
+            "tipo": "tom_na_terra",
+            "perfis": 14,
+            "m_aprox": 420,
+            "desvio_mediano_px": 3.7,
+            "desvio_max_px": 7.8,
+            "de": [
+              -121.122736,
+              45.614521
+            ],
+            "ate": [
+              -121.118731,
+              45.616541
+            ],
+            "tela_de": [
+              3282.7,
+              901.2
+            ],
+            "tela_ate": [
+              3335.3,
+              863.3
+            ]
+          },
+          {
+            "tipo": "tom_na_terra",
+            "perfis": 12,
+            "m_aprox": 360,
+            "desvio_mediano_px": 3.7,
+            "desvio_max_px": 4.6,
+            "de": [
+              -121.156333,
+              45.609344
+            ],
+            "ate": [
+              -121.160546,
+              45.609256
+            ],
+            "tela_de": [
+              2841.4,
+              998.4
+            ],
+            "tela_ate": [
+              2786,
+              1000.1
+            ]
+          },
+          {
+            "tipo": "agua_crua",
+            "perfis": 8,
+            "m_aprox": 240,
+            "desvio_mediano_px": 4.5,
+            "desvio_max_px": 5.1,
+            "de": [
+              -121.193016,
+              45.633666
+            ],
+            "ate": [
+              -121.193737,
+              45.635496
+            ],
+            "tela_de": [
+              2359.5,
+              541.6
+            ],
+            "tela_ate": [
+              2350,
+              507.2
+            ]
+          }
+        ],
+        "43.5": [
+          {
+            "tipo": "tom_na_terra",
+            "perfis": 15,
+            "m_aprox": 450,
+            "desvio_mediano_px": 3.5,
+            "desvio_max_px": 5.6,
+            "de": [
+              -121.122841,
+              45.614263
+            ],
+            "ate": [
+              -121.118731,
+              45.616541
+            ],
+            "tela_de": [
+              3394.9,
+              901.5
+            ],
+            "tela_ate": [
+              3450.3,
+              857.7
+            ]
+          },
+          {
+            "tipo": "agua_crua",
+            "perfis": 14,
+            "m_aprox": 420,
+            "desvio_mediano_px": 5.7,
+            "desvio_max_px": 7.9,
+            "de": [
+              -121.192386,
+              45.629063
+            ],
+            "ate": [
+              -121.192501,
+              45.632359
+            ],
+            "tela_de": [
+              2457.7,
+              616.4
+            ],
+            "tela_ate": [
+              2456.1,
+              552.8
+            ]
+          },
+          {
+            "tipo": "agua_crua",
+            "perfis": 12,
+            "m_aprox": 360,
+            "desvio_mediano_px": 6.6,
+            "desvio_max_px": 7.9,
+            "de": [
+              -121.194042,
+              45.624357
+            ],
+            "ate": [
+              -121.193468,
+              45.627314
+            ],
+            "tela_de": [
+              2435.3,
+              707
+            ],
+            "tela_ate": [
+              2443.1,
+              650
+            ]
+          },
+          {
+            "tipo": "tom_na_terra",
+            "perfis": 11,
+            "m_aprox": 330,
+            "desvio_mediano_px": 3.7,
+            "desvio_max_px": 4.8,
+            "de": [
+              -121.156333,
+              45.609344
+            ],
+            "ate": [
+              -121.160169,
+              45.609313
+            ],
+            "tela_de": [
+              2943.6,
+              996.3
+            ],
+            "tela_ate": [
+              2891.9,
+              996.9
+            ]
+          },
+          {
+            "tipo": "agua_crua",
+            "perfis": 8,
+            "m_aprox": 240,
+            "desvio_mediano_px": 4.8,
+            "desvio_max_px": 6.3,
+            "de": [
+              -121.193016,
+              45.633666
+            ],
+            "ate": [
+              -121.193737,
+              45.635496
+            ],
+            "tela_de": [
+              2449.2,
+              527.6
+            ],
+            "tela_ate": [
+              2439.5,
+              492.4
+            ]
+          }
+        ]
+      },
+      "lascas_entregue": {
+        "7.5": [
+          {
+            "tipo": "agua_crua",
+            "perfis": 9,
+            "m_aprox": 270,
+            "desvio_mediano_px": 3.5,
+            "desvio_max_px": 7,
+            "de": [
+              -121.195226,
+              45.644474
+            ],
+            "ate": [
+              -121.194854,
+              45.646377
+            ],
+            "tela_de": [
+              2250.2,
+              356.3
+            ],
+            "tela_ate": [
+              2255,
+              321.4
+            ]
+          },
+          {
+            "tipo": "agua_crua",
+            "perfis": 8,
+            "m_aprox": 240,
+            "desvio_mediano_px": 2.4,
+            "desvio_max_px": 4.4,
+            "de": [
+              -121.114134,
+              45.630856
+            ],
+            "ate": [
+              -121.116161,
+              45.629661
+            ],
+            "tela_de": [
+              3289.9,
+              606
+            ],
+            "tela_ate": [
+              3263.9,
+              627.9
+            ]
+          }
+        ],
+        "25.0": [
+          {
+            "tipo": "tom_na_terra",
+            "perfis": 14,
+            "m_aprox": 420,
+            "desvio_mediano_px": 3.7,
+            "desvio_max_px": 7.8,
+            "de": [
+              -121.122736,
+              45.614521
+            ],
+            "ate": [
+              -121.118731,
+              45.616541
+            ],
+            "tela_de": [
+              3282.7,
+              901.2
+            ],
+            "tela_ate": [
+              3335.3,
+              863.3
+            ]
+          },
+          {
+            "tipo": "tom_na_terra",
+            "perfis": 12,
+            "m_aprox": 360,
+            "desvio_mediano_px": 3.7,
+            "desvio_max_px": 4.6,
+            "de": [
+              -121.156333,
+              45.609344
+            ],
+            "ate": [
+              -121.160546,
+              45.609256
+            ],
+            "tela_de": [
+              2841.4,
+              998.4
+            ],
+            "tela_ate": [
+              2786,
+              1000.1
+            ]
+          },
+          {
+            "tipo": "tom_na_terra",
+            "perfis": 8,
+            "m_aprox": 240,
+            "desvio_mediano_px": 4.5,
+            "desvio_max_px": 5.5,
+            "de": [
+              -121.111009,
+              45.622811
+            ],
+            "ate": [
+              -121.109366,
+              45.624315
+            ],
+            "tela_de": [
+              3436.8,
+              745.5
+            ],
+            "tela_ate": [
+              3458.3,
+              717.3
+            ]
+          }
+        ],
+        "43.5": [
+          {
+            "tipo": "tom_na_terra",
+            "perfis": 16,
+            "m_aprox": 480,
+            "desvio_mediano_px": 3.9,
+            "desvio_max_px": 5.6,
+            "de": [
+              -121.122841,
+              45.614263
+            ],
+            "ate": [
+              -121.118367,
+              45.616629
+            ],
+            "tela_de": [
+              3394.9,
+              901.5
+            ],
+            "tela_ate": [
+              3455.2,
+              855.9
+            ]
+          },
+          {
+            "tipo": "tom_na_terra",
+            "perfis": 11,
+            "m_aprox": 330,
+            "desvio_mediano_px": 4.2,
+            "desvio_max_px": 4.8,
+            "de": [
+              -121.156333,
+              45.609344
+            ],
+            "ate": [
+              -121.160169,
+              45.609313
+            ],
+            "tela_de": [
+              2943.6,
+              996.3
+            ],
+            "tela_ate": [
+              2891.9,
+              996.9
+            ]
+          }
+        ]
+      },
+      "por_que_nao_o_tiger_inteiro": "o TIGER encaixa pior no Lake Celilo (lascas de água crua de 0,8 a 1,2 km com 4,5 a 6 px) e cobre a barragem de The Dalles (as águas dele se encostam nela); serve só na janela de Dallesport",
+      "quadros": "out/rio-columbia/_tmp/arte-1/M5/q/s36-7.5.png, s36-25.png, s36-43.5.png (do mapista, 03:42, com a pré-carga)"
+    },
+    "para_o_mapista": [
+      "carregar ../_media/geo/agua-osm-the-dalles.js (window.__GEO['agua-osm-the-dalles']); a feature com papel 'rio' é a água do Columbia; a com papel 'outras_aguas', os lagos e afluentes",
+      "pintar opaca em --agua-base (#00050c), logo acima do satélite e abaixo de tudo o que a cena desenha (identidade, 'A água escura nos mapas do porto')",
+      "apagar pelo zoom abaixo do que o recorte cobre: o rio de 0 em z 10,5 a 1 em z 11; as outras águas de 0 em z 11,5 a 1 em z 12 (a descida da s36 passa por aí de 2,03 a 2,53 s)",
+      "as outras águas são opcionais: Spearfish Lake e Horsethief Lake caem no mesmo remendo azul do satélite; sem elas, ficam azuis ao lado do rio escuro (prova em _tmp/pesquisa-geo/agua-the-dalles/prova-agua-the-dalles.jpg, embaixo à direita)",
+      "crédito: nada novo (a linha da MapTiler já leva '© OpenStreetMap contributors')"
+    ],
+    "portoes": {
+      "validar_contrato_pauta_pesquisa": "sai 0 (✓ válido)",
+      "qc_procedencia": "REPROVADO, por 3 arquivos que não são desta camada: _media/base/mesa/mesa-m-capitolio.png, mesa-m-foz.png e mesa-m-vale.png (gravados no art, 13/11 02:33–02:34, sem entrada no _PROCEDENCIA.json da pasta, que só traz os 3 landsat-*-sangria56.png); o portão não conta _media/geo/ (a camada não aparece no --json). Quem gravou a mesa tratada declara a procedência dela",
+      "log": "out/rio-columbia/_tmp/pesquisa-geo/agua-the-dalles/qc-procedencia.log e qc-procedencia.json"
+    },
+    "efeito_colateral": "o gravarGeo da pré-v1 refaz out/rio-columbia/_creditos-mapa.md a partir da pauta: ganhou só a linha desta camada em 'De onde veio cada linha'; o bloco da descrição não mudou (diff contra a cópia _tmp/pesquisa-geo/agua-the-dalles/creditos-mapa-82935bcb-antes-agua.md)",
+    "scripts": "out/rio-columbia/_tmp/pesquisa-geo/agua-the-dalles/: cam_s36.py (a câmera), construir.py (a camada), encaixe.py + lascas.py + comparar_trechos.py + janela_dallesport*.py + tiger_comparar.py (a medida), validar.py (as conferências), prova_final.py (a prova), pauta_agua.py (este bloco); o relato: out/rio-columbia/_tmp/pesquisa-geo/relato-agua-the-dalles.md"
+  },
+  "rodada_art_afluentes_s15": {
+    "quando": "13/11/2026, ~05:10–05:35",
+    "pedido": "a Sala de controle (passo art): os fios de afluente das cristas ao rio em 'drains' (5,683 s da s15), que o mapista deixou de fora por falta de geometria",
+    "pauta_geo_sha256_antes": "7e64aa66ed2fcf4ace8852a0c65114108ae4cdeb18d91ef01446bcc54000c696",
+    "camada": {
+      "arquivo": "_media/geo/afluentes-canada-s15.json",
+      "js": "_media/geo/afluentes-canada-s15.js",
+      "sha256": "accebde5d1eb871e14011af00ebe5fc5ab6e703d58bdd668e9224d8bb10bb345",
+      "features": 8,
+      "bytes": 65393,
+      "cena": "s15",
+      "bbox": [
+        -118.21087,
+        48.36096,
+        -115.16488,
+        52.37027
+      ],
+      "centro": [
+        -116.5314,
+        50.2076
+      ]
+    },
+    "criterio": "afluente direto do Columbia com a foz no Canadá (no rio ou no Kinbasket/Arrow), nascente no Canadá, linha inteira no OSM da nascente à foz; entre esses, os de maior drenagem na estação da WSC mais perto da foz; o tamanho na tela da s15 medido pela câmera da cena, copiada fórmula por fórmula (cam_s15.py) e conferida contra os quadros do mapista (previas/calibrar-6.2.jpg e -10.9.jpg)",
+    "ficaram_de_fora": [
+      "Pend d'Oreille (65.640 km², a maior drenagem que chega ao Columbia no Canadá, em Waneta): a nascente e quase todo o curso estão nos EUA; não sai de uma crista da bacia canadense",
+      "Canoe River: a estação de 3.293 km² (08NC002) é de antes do reservatório; o rio de hoje para na cabeça do Canoe Reach (52,78 N, −119,17), a 87,6 km da linha do Columbia, e drena ali ~365 km² (08NC003); fica no alto do quadro (113–157 px). A relação segue 91 km por uma flowline dentro do Kinbasket",
+      "Goldstream River (934 km²): o OSM não tem o alto do rio; a linha com o nome começa a 38,7 km da borda da bacia, e acima dela há um stream sem nome e pedaços do CanVec, com ~9 km sem linha",
+      "Bush River e Whatshan River: picados no OSM (Bush, 10,6 km em 4 pedaços na relação; Whatshan, 14 pedaços)",
+      "Slocan, Duncan e Lardeau: afluentes do Kootenay, não do Columbia",
+      "Okanagan e Kettle: encontram o Columbia nos EUA"
+    ],
+    "pedidos": [
+      "Overpass a1 (os candidatos por nome): 05:13:38 HTTP 502 'at capacity'; repetido às 05:15:36, HTTP 200, 3.855.421 bytes, base 2026-11-13T08:14:07Z",
+      "MSC GeoMet hydrometric-stations (bbox −119,8, 48,99, −113,9, 53,0): 05:13:54, HTTP 200, 2.277.718 bytes",
+      "Overpass a2 (as tags dos membros sem nome e as pontas do Goldstream): 05:18:13 HTTP 504 (servidor ocupado); repetido às 05:19:36, HTTP 200, 167.511 bytes, base 2026-11-13T08:18:10Z"
+    ],
+    "recusas": [
+      "overpass-api.de: um 502 'at capacity' (com o aviso 'This public endpoint is intended for browser-based and human-operated tools. For automated or high-volume use, run a local Overpass API instance', o mesmo de 12/11 e de hoje cedo) e um 504 'Dispatcher_Client::request_read_and_idx::timeout'; cada um repetido uma vez, depois de ~80–120 s, como o servidor pede. Nenhuma recusa de robô"
+    ],
+    "achado_para_a_sala": "na câmera da s15, o rótulo 'BASIN IN CANADA' (textos-tela [61]) cai sobre o miolo da bacia (Golden, Rogers Pass, Glacier, Revelstoke), não acima da ponta norte do contorno como o cabeçalho da cena diz: em 6,2 s, Kicking Horse, Spillimacheen, Illecillewaet, Beaver e Incomappleux ficam 100 % sob a caixa dele, e o Blaeberry 66 %; em 10,9 s, de 73 a 100 % (fora o Kootenay e o Wood). Sem mover ou apagar o rótulo em 'drains', os fios ficam escondidos (previas/entrega-6.2.jpg e entrega-10.9.jpg)",
+    "para_o_mapista": [
+      "carregar ../_media/geo/afluentes-canada-s15.js (window.__GEO['afluentes-canada-s15']); 8 LineStrings, o 1º vértice é a nascente",
+      "na tela, cada fio tem de 80 a 400 px de 4K (o Kootenay, 2.000 a 4.000): são fios curtos; o Spillimacheen corre paralelo ao Columbia (54 a 65 % do traçado na tela a menos de 30 px dele) e o Kicking Horse, em 'drains', 48 %",
+      "o Kootenay sai do contorno da bacia canadense entre eua_progresso (km ou line-progress) e volta: apagar esse trecho é decisão do mapista",
+      "Beaver, Incomappleux e Wood param na margem do lago (2,4, 17,9 e 20,0 km da linha do Columbia): o satélite mostra a água entre a ponta e o rio",
+      "crédito: nada novo"
+    ],
+    "efeito_colateral": "o gravarGeo da pré-v1 refaz out/rio-columbia/_creditos-mapa.md a partir da pauta: ganhou só a linha desta camada em 'De onde veio cada linha'; o resto ficou igual (diff contra _tmp/pesquisa-geo/afluentes-s15/creditos-mapa-84b1be3e-antes-afluentes.md). O índice _pesquisa/pauta-geo.md não foi tocado (fora do que o pedido deixa escrever)",
+    "scripts": "out/rio-columbia/_tmp/pesquisa-geo/afluentes-s15/: inventario.py e examinar.py (o que veio), cam_s15.py (a câmera) e calibrar.py, construir.py (a linha, a escolha e a camada), sobrepor.py (os fios sobre os quadros do mapista), validar.py, prova.py (prova-afluentes-s15.jpg), gravar.mjs, pauta_afluentes.py (este bloco); o relato: afluentes-s15/relato.md"
   }
 }

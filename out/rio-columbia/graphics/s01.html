@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s01</title>
+<!--
+CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s01 (0,000 → 2,500 s do master; 2,5 s; quadros 0–75 a 30 fps). Gancho, f1.
+  "Every year, before the spring snowmelt,"
+  Mapista, lote M8 (tarefa rio-columbia-arte-1, 13/11/2026): cena NOVA, escrita à mão (o par da s02, que abre com a MESMA imagem na MESMA
+  caixa). O que manda: textos-tela.json c656a145 (s01: [0] "Arrow Lakes", [1] "Photo from 2007", [2] o crédito, todos _caminho sem_caca);
+  regencia.json 131116f3 (s01 › b0: footage_real com caca s01-a; a SAÍDA SEM A CAÇA = fallback + fallback_midia); conceito-visual.json
+  bf511817 (s01 › tecnica, "SEM A CAÇA"); espelho.json 3de8e7ad (s01: 0–2,5 s).
+
+  O BEAT DE CAÇA (s01-a) VAI PELA SAÍDA SEM A CAÇA: a aérea de fevereiro de 2007 do Lower Arrow (2.272 × 1.704 px), IMPRESSA sobre a mesa
+  M-VALE (_media/base/mesa/mesa-m-vale.png, a35c1f31…, Landsat USGS, domínio público, sem crédito), a luz atrás dela, JÁ POUSADA no quadro 0
+  (não há tempo para a queda), com o empurrão rumo à faixa branca da margem esquerda. Com a caça, a Sala troca este arquivo pelo drone em tela
+  cheia (e a s02 abre no último quadro dele).
+  A FOTO: o recorte da regência (x 0–2000, y 480–1605 do arquivo: tira a carenagem do avião, no canto de baixo à direita, e o céu), impresso a
+    1,157× (2.314 × 1.301,6 px: x 746–3060, y 490–1791,6), com a moldura de 20 px em --tinta, sem inclinação (até 2° pela identidade §5; 0° para a
+    caixa casar exata com o 1º quadro da s02) e a sombra solta assentada (+12 px, 1,00, 0,80). O empurrão (a câmera, #cam) vai de 1,00 a 1,06
+    em eo, de 0 a 2,30 s (em movimento desde o quadro 0; parado nos 0,2 s antes do corte), com a origem na faixa branca da margem esquerda
+    (o ponto 760, 1350 do arquivo = 1625,32, 1496,59 na tela). Escala final sobre o arquivo: 1,157 × 1,06 = 1,226 (≤ 1,4: identidade §5).
+    DESVIO DECLARADO do conceito e da regência (≈ 1,28×, x 640–3200, y 330–1770): a 1,28× a foto ocupava a altura inteira e não sobrava mesa
+    fora dela para o rótulo e o aviso do ano, que a identidade §5 manda pôr "sobre a mesa, fora da foto"; a 1,157× a linha de texto cabe
+    acima da foto. O produto das escalas continua ≤ 1,4.
+  O ÚLTIMO QUADRO (a caixa que a s02 encolhe): a imagem em x 693,26–3146,10, y 429,60–1809,32 (2.452,84 × 1.379,72; a moldura 21,2 px por
+    fora), "Photo from 2007" com a borda direita em x 3146 e o centro em y 248, o crédito da foto na faixa (duas linhas, x 200).
+  OS TEXTOS (textos-tela; tempos na cena): "Arrow Lakes" (rótulo, 128 px, caixa normal) 0,167–2,5, fixo no alto à esquerda (x 700, y 160),
+    sobre a mesa, fora da foto; "Photo from 2007" (aviso do ano, 84 px, Inter 500, --tinta, na pílula) 0,167–2,5 na mesma linha, à direita;
+    entram 150 ms depois do assentamento (a foto já pousada no quadro 0), em 300 ms (opacidade + 24 px). O crédito "Shawn from Airdrie,
+    Canada / Wikimedia Commons" / "CC BY-SA 2.0" (a quebra do redator) a 60 px (var(--fs-credito)), inteiro do 1º ao último quadro.
+  A MÍDIA: _media/foto/s01/s01-lower-arrow-lake-aerial-winter-low-water-2007-02-02-shawn-roberts-commons.jpg (sha256 63de01f3…),
+    conferencia-midia.json 74ed6065 › candidatos[0], cena s01, plano s01 P1 (0,0–2,5 s), "aprovado" (lote 5), casado pelo sha256 do arquivo
+    (= sha256_julgado); aviso_de_ano sim (data_na_origem 2 February 2007); lugar_na_origem "Lower Arrow Lake": o rótulo "Arrow Lakes" é
+    menos específico (textos-tela). credito_na_tela "Shawn from Airdrie, Canada / Wikimedia Commons · CC BY-SA 2.0".
+  ELEMENTOS: a foto e o rótulo = 2 (o aviso e o crédito não contam: identidade §4.2 e §6). Nenhum herói.
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>:root { --fs-credito: 60px; }</style>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); -webkit-font-smoothing: antialiased; }
+  /* A MESA (identidade §5, "satélite sob a luz"; tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"): o still por baixo da câmera, a luz como VÉU no
+     fundo de #cam, o feltro a 50 % como primeiro filho da câmera. Nada sobre o still. */
+  #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
+    width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem));
+    opacity: var(--mesa-satelite-opacidade); transform-origin: 50% 50%; pointer-events: none; }
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 0 0;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at 1903px 1141px,
+      var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
+  #mesa { position: absolute; left: -160px; top: -160px; width: 4160px; height: 2480px; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); opacity: var(--mesa-satelite-feltro); }
+  /* a sombra solta (identidade §4.4): elemento próprio, desfoque FIXO; assentada: +12 px, 1,00, 0,80 */
+  .sombra-solta { position: absolute; left: 726px; top: 470px; width: 2354px; height: 1341.625px; background: var(--tinta-escura);
+    filter: blur(28px); opacity: 0.8; transform: translateY(12px); }
+  /* A FOTO IMPRESSA (identidade §5): a moldura clara em --tinta (20 px), a imagem dentro */
+  #moldura { position: absolute; left: 726px; top: 470px; width: 2354px; height: 1341.625px; background: var(--tinta); padding: 20px; }
+  #janela { position: relative; width: 2314px; height: 1301.625px; overflow: hidden; }
+  #fotoImg { position: absolute; left: 0; top: 0; width: 2628.704px; height: 1971.528px; transform: translate(0px, -555.36px); }
+  /* RÓTULO (identidade §3, §4.1): pílula --rotulo, cantos 12, respiro 24 × 40, Inter 700 a 128 px, caixa normal (lago) */
+  .rotulo { position: absolute; left: 0; top: 0; white-space: nowrap; background: var(--rotulo); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-family: var(--fonte); font-weight: var(--peso-rotulo);
+    font-size: var(--fs-rotulo); line-height: 1; letter-spacing: 0; color: var(--tinta); opacity: 0; visibility: hidden; }
+  /* AVISO DO ANO (identidade §6): o papel legenda, 84 px, Inter 500, --tinta, na pílula 16 × 28 */
+  .aviso { position: absolute; left: 0; top: 0; white-space: nowrap; background: var(--rotulo); border-radius: var(--cantos);
+    padding: 16px 28px; font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.1;
+    letter-spacing: 0; color: var(--tinta); opacity: 0; visibility: hidden; }
+  /* CRÉDITO (identidade §4.1/§4.2): 60 px, Inter 500, --sec sobre a pílula --rotulo, de x = 200 até antes de x = 1720, na faixa */
+  .credito { position: absolute; left: var(--credito-x); bottom: 24px; max-width: 1520px; z-index: 50;
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: pre; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="a foto aérea do Lower Arrow impressa sobre a mesa M-VALE, com o rótulo de lugar, o aviso do ano e o crédito; nenhum herói (identidade §4.2)">
+  <img id="still" src="../_media/base/mesa/mesa-m-vale.png" alt="" data-qc-reuso="a mesa M-VALE, a mesa-padrão do vídeo 7 (identidade §5, satélite sob a luz; _media/base/mesa/mesa-m-vale.png, Landsat 8 e 9, USGS, domínio público, sem crédito na tela; sha256 a35c1f31…)">
+  <div id="cam">
+    <div id="mesa"></div>
+    <div class="sombra-solta" id="fotoSombra" data-qc-margem="sombra"></div>
+    <div id="moldura"><div id="janela"><img id="fotoImg" src="../_media/foto/s01/s01-lower-arrow-lake-aerial-winter-low-water-2007-02-02-shawn-roberts-commons.jpg" alt=""></div></div>
+  </div>
+  <div id="rotArrow" class="rotulo" data-qc-papel="rotulo">Arrow Lakes</div>
+  <div id="aviso" class="aviso" data-qc-papel="eixo">Photo from 2007</div>
+  <div id="credFoto" class="credito" data-qc-papel="credito">Shawn from Airdrie, Canada / Wikimedia Commons
+CC BY-SA 2.0</div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // Determinístico: a cena é função de t (nada de Date, Math.random, @keyframes): __renderAt(t) põe tudo no lugar.
+  var DUR = 2.5;   // espelho.json › s01 › dur, literal (roupa §8)
+  window.__duracao = DUR;
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (x) { x = cl(x, 0, 1); return 1 - Math.pow(1 - x, 3); };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+  // a foto: o recorte x 0–2000, y 480–1605 do arquivo de 2272 × 1704, a K0 = 1,157, com o canto em (746, 490)
+  var K0 = 1.157, X0 = 746, Y0 = 490;
+  // o empurrão: 1,00 → 1,06 em eo, de 0 a 2,30 s, com a origem na faixa branca (760, 1350 do arquivo = 760, 870 do recorte)
+  var O = [X0 + 760 * K0, Y0 + 870 * K0], EMP = 0.06, T_EMP = 2.30, PARALAXE = 0.6, M = 56;
+  var T_TXT = 0.167;
+  function aplicar(t) {
+    var s = 1 + EMP * eo(t / T_EMP);
+    var cam = E("cam"), st = E("still");
+    if (cam) cam.style.transform = "translate(" + (O[0] * (1 - s)).toFixed(3) + "px," + (O[1] * (1 - s)).toFixed(3) + "px) scale(" + s.toFixed(5) + ")";
+    if (st) {   // o still acompanha a câmera a --mesa-satelite-paralaxe, com a mesma origem
+      var ss = 1 + (s - 1) * PARALAXE;
+      st.style.transformOrigin = (O[0] + M).toFixed(2) + "px " + (O[1] + M).toFixed(2) + "px";
+      st.style.transform = "scale(" + ss.toFixed(5) + ")";
+    }
+    var v = eo(seg(t, T_TXT, 0.3)), sobe = (1 - v) * 24;
+    var r = E("rotArrow");
+    if (r) { r.style.opacity = v.toFixed(3); r.style.visibility = v > 0.001 ? "visible" : "hidden";
+      r.style.transform = "translate(700px," + (160 + sobe).toFixed(2) + "px)"; }
+    var a = E("aviso");
+    if (a) { var w = a.offsetWidth, h = a.offsetHeight;
+      a.style.opacity = v.toFixed(3); a.style.visibility = v > 0.001 ? "visible" : "hidden";
+      a.style.transform = "translate(" + (3146 - w).toFixed(2) + "px," + (248 - h / 2 + sobe).toFixed(2) + "px)"; }
+  }
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); return true; };
+  function pronta(img) { return !img ? Promise.resolve() : (img.decode ? img.decode().catch(function () {}) : Promise.resolve()); }
+  var f = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  window.__fotosProntas = Promise.all([pronta(E("fotoImg")), pronta(E("still")), f]).then(function () { window.__renderAt(0); return true; });
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

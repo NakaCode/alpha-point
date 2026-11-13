@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s16</title>
+<!--
+CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s16 (115,600 → 121,300 s do master; 5,700 s; quadros 3468–3639).
+  "For months, the snow just sits there. Then, late in the spring, it lets go."
+  Mapista, lote M4 (tarefa rio-columbia-arte-1, 13/11/2026): cena NOVA (out/rio-columbia/_tmp/arte-1/M4/s16.html.tpl, pelo gerar.py).
+  O que manda: textos-tela.json c656a145 (s16: [64], só sem a caça); regencia.json 131116f3 (s16 › b0 e b1, os dois de caça: s16-a e
+  s16-b); conceito-visual.json bf511817 (s16: "SEM A CAÇA"); para-passos 265ac78a (itens 46 e 66).
+  A SAÍDA SEM A CAÇA (a caça não foi feita; a regência, fallback de b0 e b1): O PAR LANDSAT, A PEÇA 8 ("O ARROW VISTO DO CÉU"), que NASCE
+    AQUI, no RECORTE LARGO que o M1 gravou (out/rio-columbia/_tmp/arte-1/M1.md, §1):
+      _media/base/arrow-largo/landsat-arrow-fundo-2024-04-14.png (sha256 804dcbd6…; Landsat 8, LC08 044025+044026, 14/04/2024) e
+      _media/base/arrow-largo/landsat-arrow-pico-2024-07-11.png (sha256 0c3a0477…; Landsat 9, 11/07/2024), os dois 4000 × 2250 na mesma
+      bbox -118,6200, 50,1841, -116,8600, 50,8138 (Web Mercator, norte para cima; 31,2 m no chão por pixel, 124,6 km de largura: acima dos
+      ~82 km do "nativo ≥ 2.743 px", item 46). As serras dos dois lados do Upper Arrow inteiro (Nakusp, o braço de Beaton, Arrowhead).
+    · P1 (0–2,600) e P2 (2,600–5,700), sem corte (na saída sem a caça o par atravessa os dois planos): a cena de 14/04/2024, as serras
+      brancas, em tela cheia a 1:1 (cada pixel do PNG é um pixel do palco: nada se amplia), com a DERIVA LENTA de 60 px, linear, do 1º ao
+      último quadro (a janela anda 48 px a leste e 36 px ao norte); em 'lets' (4,510) ela CRUZA (1,0 s, cúbico) para a de 11/07/2024, o
+      branco recuando às cristas e os vales escurecendo; a deriva continua por baixo do cruzamento, a mesma nas duas.
+    · "Satellite views: April 14 and July 11, 2024" ([64]; legenda, 84 px) entra em 0,167 (300 ms), ao pé à esquerda, e fica até o fim.
+    · Sem crédito na tela (USGS, domínio público; nao_vai_para_tela[38]); a descrição leva "Landsat imagery courtesy of the U.S.
+      Geological Survey" (o credito_descricao do .png.json). Não é mapa da MapTiler: nenhum tile, nenhum crédito de mapa.
+  A EMENDA COM A s15 (item 66): a s15 termina inclinada (62°, rumo −15°) com o centro do quadro em 50,50 N 117,74 W, que é o centro deste
+    recorte: a mesma serra no meio do quadro dos dois lados do corte seco (relevo da MapTiler → o par Landsat, troca de base, que o conceito
+    declara; a pose inclinada não casa com a vista de cima, e o corte fica como o conceito o escreve).
+  COM A CAÇA: os clipes dos itens s16-a (P1) e s16-b (P2), corte seco em 'Then,' (118,23 s), sem nenhum texto (textos-tela, _caca.itens[2]).
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>:root { --fs-credito: 60px; }</style>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  .par { position: absolute; left: 0; top: 0; width: 4000px; height: 2250px; display: block; }
+  #pico { opacity: 0; }
+  /* LEGENDA (identidade §4.1): 84 px, Inter 500, --legenda-cor, pílula 16 × 28; ao pé à esquerda, acima da faixa do crédito */
+  .leg { position: absolute; left: var(--credito-x); bottom: 300px; z-index: 41; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos); padding: 16px 28px;
+    font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.1; letter-spacing: 0;
+    color: var(--legenda-cor); }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="registro de satélite: a legenda das datas é o único texto">
+  <img id="fundo" class="par" src="../_media/base/arrow-largo/landsat-arrow-fundo-2024-04-14.png" alt="">
+  <img id="pico" class="par" src="../_media/base/arrow-largo/landsat-arrow-pico-2024-07-11.png" alt="">
+  <div id="legPar" class="leg" data-qc-papel="eixo">Satellite views: April 14 and July 11, 2024</div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (x) { x = cl(x, 0, 1); return 1 - Math.pow(1 - x, 3); };
+  var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+
+  // ═══ TEMPOS (0 = 115,600 s do master; words.json): 'For' 0,030 · 'snow' 0,990 · 'there.' 1,795 · 'Then,' 2,630 · 'spring,' 3,710 ·
+  //   'lets' 4,510 · 'go.' 4,750 (acaba 5,050) ═══
+  var DUR = 5.7;   // espelho.json › s16 › dur, literal (roupa §8)
+
+  // ═══ O PAR LANDSAT (a peça 8, "O ARROW VISTO DO CÉU"; nasce aqui, volta em s41 P1 e s61 P2, no recorte de perto) ══════════════════════
+  // O MODO DO PAR, para as cenas que o copiam:
+  //   · as duas cenas do mesmo recorte (a mesma bbox, o mesmo tamanho em px, Web Mercator, norte para cima) empilhadas, a de cima com a
+  //     opacidade que cruza; a 1:1 (1 px do PNG = 1 px do palco), sem escala: o PNG tem 80 px de folga de cada lado e ~45 em cima e embaixo;
+  //   · a DERIVA é uma só para as duas imagens (o mesmo chão sob o cruzamento), linear no tempo, do 1º ao último quadro: a janela anda de
+  //     `de` a `ate` (o canto de cima à esquerda do palco, em px do PNG);
+  //   · o CRUZAMENTO entra na palavra (`cruza[0]`) e dura `cruza[1]` s, em eio (cúbico de entrada e saída); a ordem é a da cena (aqui
+  //     abril → julho; em s41, julho → abril: troque `de cima`);
+  //   · a legenda das datas ([64] aqui) fica fixa ao pé à esquerda, sem crédito (USGS, domínio público).
+  var PAR = {
+    baixo: "fundo", cima: "pico",                     // 14/04/2024 (Landsat 8) por baixo; 11/07/2024 (Landsat 9) por cima, que cruza
+    png: [4000, 2250],
+    de: [32, 63], ate: [80, 27],                       // a deriva: 60 px (48 a leste, 36 ao norte), dentro da folga do PNG
+    cruza: [4.510, 1.0]                                // 'lets': o cruzamento de 1,0 s
+  };
+  function parAt(t) {
+    var u = seg(t, 0, DUR);
+    return { x: -(PAR.de[0] + (PAR.ate[0] - PAR.de[0]) * u), y: -(PAR.de[1] + (PAR.ate[1] - PAR.de[1]) * u), cima: eio(seg(t, PAR.cruza[0], PAR.cruza[1])) };
+  }
+  var LEG = { entra: 0.167 };
+
+  function aplicar(t) {
+    var p = parAt(t), tr = "translate(" + p.x.toFixed(2) + "px," + p.y.toFixed(2) + "px)";
+    var a = E(PAR.baixo), b = E(PAR.cima);
+    if (a) a.style.transform = tr;
+    if (b) { b.style.transform = tr; b.style.opacity = p.cima.toFixed(4); }
+    var l = E("legPar"), v = eo(seg(t, LEG.entra, 0.3));
+    if (l) { l.style.opacity = v.toFixed(3); l.style.visibility = v > 0.001 ? "visible" : "hidden"; l.style.transform = "translateY(" + ((1 - v) * 24).toFixed(2) + "px)"; }
+  }
+  window.__duracao = DUR;
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); return true; };
+  window.__fotosProntas = Promise.all([E("fundo"), E("pico")].map(function (im) {
+    return new Promise(function (res) {
+      var ok = function () { (im.decode ? im.decode().catch(function () {}) : Promise.resolve()).then(function () { res(true); }); };
+      if (im.complete && im.naturalWidth) return ok();
+      im.addEventListener("load", ok);
+      im.addEventListener("error", function () { window.__erroCena = "a imagem " + im.getAttribute("src") + " não carregou."; var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + window.__erroCena; el.hidden = false; } res(false); });
+    });
+  })).then(function () {
+    var a = E("fundo"), b = E("pico");
+    if (a.naturalWidth !== PAR.png[0] || b.naturalWidth !== PAR.png[0] || a.naturalHeight !== PAR.png[1] || b.naturalHeight !== PAR.png[1]) {
+      window.__erroCena = "o par Landsat não tem " + PAR.png.join(" × ") + " px (os dois recortes têm de ser da mesma bbox).";
+      var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + window.__erroCena; el.hidden = false; }
+    }
+    window.__renderAt(0); return true;
+  });
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

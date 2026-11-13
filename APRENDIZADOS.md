@@ -1833,3 +1833,21 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   confere numa prévia, a julgada ao lado da entregue, e a procedência diz que a orientação foi aplicada aos pixels.
 - **Por que serve a outros canais:** foto de celular e de câmera chega com a orientação só na marca EXIF, e qualquer canal que reduza
   imagem grande com o ffmpeg ou com outra ferramenta cai no mesmo lugar, conforme a versão.
+
+### 102. O filho com `visibility: visible` fura o pai escondido, e os portões não veem
+
+- **O problema** (13/11/2026, a arte do vídeo 7, `rio-columbia`, `out/rio-columbia/_tmp/arte-1/`): duas cenas passaram em todos os portões
+  com texto de um plano já encerrado ainda na tela. Na s19, depois do corte do papel para o mapa (5,1 s), a pílula "87 YEARS" e os nomes
+  do papel continuavam sobre o mapa, e em 18,9 s a pílula cobria a do 15 % (`out/rio-columbia/_tmp/arte-1/M3.md`). Na s58, os três créditos
+  da mesa continuavam sobre as pílulas de crédito do mapa (`out/rio-columbia/_tmp/arte-1/EF7.md`).
+- **A causa:** o plano saía com `visibility: hidden` no pai, mas cada filho tinha a sua própria `visibility: visible`, posta pelo próprio
+  script quando ele entrava. Pelo CSS, o filho com `visible` explícito aparece mesmo com o pai `hidden`, e o navegador o pinta. Só aparece
+  no render em sequência (o filho fica `visible` desde um quadro anterior); o quadro solto, aberto direto no instante, não mostra.
+- **Por que os portões não pegam:** o `check-overlap` (e os outros que perguntam se um elemento está visível) dão por invisível todo
+  elemento que tem um pai `hidden`, e não leem o `visible` explícito do filho. O defeito só apareceu nas folhas do render 4K, que a peça julgou.
+- **Como evitar:** esconder o plano com `display: none` (ou com a opacidade no pai), e não com `visibility: hidden`, quando os filhos
+  controlam a própria visibilidade. Ou o script apaga cada filho no quadro em que o pai sai. E conferir o plano encerrado em quadros do
+  render em sequência (o MP4), não em quadros soltos.
+- **Por que serve a outros canais:** qualquer cena montada com planos que se escondem por `visibility` e filhos animados cai no mesmo
+  lugar, e o portão automático passa. Vale avisar o Lucas, para ver com o Mateus se o `check-overlap` do molde deve olhar o
+  `visibility` computado do próprio elemento.

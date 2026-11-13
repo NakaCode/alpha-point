@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s15</title>
+<!--
+CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s15 (104,667 → 115,600 s do master; 10,933 s; quadros 3140–3468).
+  "So where does all that water come from, and when? The Canadian part of the basin, the land that drains into the river, is mountain
+  country, and what lands on it in winter is snow."
+  Mapista, lote M4 (tarefa rio-columbia-arte-1, 13/11/2026): cena NOVA (out/rio-columbia/_tmp/arte-1/M4/gerar.py + nucleo.js + s15.cena.js).
+  O que manda: textos-tela.json c656a145 (s15: [61]–[63]); regencia.json 131116f3 (s15 › b0, b1: mapa_relevo); conceito-visual.json bf511817
+  (s15); o espelho 3de8e7ad; a P-BACIA do pedido comum; para-passos 265ac78a (itens 65, 66, 74, 86).
+  MAPA → MAPA3D sobre a satellite-v2 da MapTiler no tratamento C, com o RELEVO terrain-rgb-v2 a 1,5× (o relevo obrigatório do vídeo).
+  O 1º QUADRO É O ÚLTIMO DA s13 (+ s14), POR NÚMEROS: a P-BACIA [-116,9270, 46,8983] z 6,0556, rumo 0, pitch 0, PARADA de 0 a 0,3 s; o rio
+    inteiro com a correnteza (o tempo absoluto do vídeo, os mesmos km), o trecho canadense a 24 px e 100 %, o americano a 8 px e 50 %; a
+    fronteira a 5 px; nada mais.
+  BEAT A BEAT (tempos na cena):
+    · P1 (0–3,467): de 0,3 a câmera empurra devagar rumo à bacia canadense; em 'water' (1,203) a parte canadense enche em --destaque a 85 %
+      (500 ms), sozinha: a pergunta do ato.
+    · P2 (3,467–10,933): o relevo liga em 3,5 (de cima) e o exagero sobe a 1,5× até 4,0; em 'Canadian' (3,628) a câmera inclina de 0 a 60°
+      e chega pelo sul (2,5 s, cúbico; centro 50,45 N 117,70 W, z 7,35); o preenchimento cai e fica o CONTORNO (8 px --destaque sobre o
+      contorno escuro), deitado sobre o relevo; "Vertical exaggeration 1.5×" ([62]) em 3,5, ao pé à esquerda, acima do crédito; "BASIN IN
+      CANADA" ([61]) em 'basin,' (4,483), centrada 48 px acima da ponta norte do contorno, do lado de fora (dentro da lasca deitada não
+      há vão sem linha); de 6,128 a câmera segue chegando (z 8,05, pitch 62°) e,
+      em 'mountain' (7,123), gira 15° ao longo das serras, devagar, até o fim. Termina inclinada, sobre o centro do recorte largo do par
+      Landsat da s16 (50,50 N, 117,74 W): o corte seco para a s16 mostra a mesma serra no meio do quadro (item 66).
+  CONSERTO 1 (13/11/2026, a Sala): OS FIOS DE AFLUENTE em 'drains' (5,683): seis linhas reais da camada afluentes-canada-s15 (OSM, a
+    pesquisa-geo, sha256 accebde5…; registrada na pauta-geo), Kicking Horse, Blaeberry, Beaver, Wood, Illecillewaet e Incomappleux, descem
+    da nascente (a crista) até o Columbia ou a margem do lago em 1,2 s (cúbico), 6 px em --agua com o contorno escuro e a correnteza
+    descendo, por baixo do Columbia. Fora: o Kootenay (o laço pelos EUA contradiz "the Canadian part of the basin" e ele vira um segundo
+    rio na tela) e o Spillimacheen (colado ao Columbia, lê como o próprio rio). Os fios contam como um elemento (o máximo passa a 5).
+  DESVIOS DECLARADOS: (1) os fios são seis, não "seis a oito" (acima); (2) a câmera termina mais perto (z 8,05) que o z ≈ 7,2 do conceito, para o relevo de
+    1,5× se ler (a z 7,2 uma serra de 3 km sobe uns 10 px); (3) o rótulo é "BASIN IN CANADA" (textos-tela [61]), não "BASIN".
+  A GEOMETRIA: bacia-columbia-canada (USGS WBD ∩ Census, domínio público; a paleta aprovada, item 74), fronteira-canada-eua (Census),
+    rio-columbia e rio-columbia-trecho-canada (OSM, coberto pelo crédito da base). Nenhuma mídia.
+  CRÉDITO a 60 px: "© MapTiler © OpenStreetMap contributors" do 1º ao último quadro (data-qc-credito="mapa" só nele).
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>:root { --fs-credito: 60px; }</style>
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<script src="../_media/geo/bacia-columbia-canada.js"></script>
+<script src="../_media/geo/fronteira-canada-eua.js"></script>
+<script src="../_media/geo/rio-columbia.js"></script>
+<script src="../_media/geo/rio-columbia-trecho-canada.js"></script>
+<script src="../_media/geo/afluentes-canada-s15.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  canvas#cv { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 20; }
+  /* RÓTULO (identidade §3 e §4.1): pílula --rotulo, cantos 12, respiro 24 × 40, Inter 700 a 128 px em --tinta; região em caixa alta */
+  .pil { position: absolute; left: 0; top: 0; z-index: 40; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos); padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-caixa-alta); font-size: var(--fs-rotulo); line-height: 1.05;
+    letter-spacing: var(--tracking-lugar); color: var(--tinta); }
+  /* LEGENDA (identidade §4.1): 84 px, Inter 500, --legenda-cor, pílula 16 × 28; ao pé à esquerda, acima da faixa do crédito */
+  .leg { position: absolute; left: var(--credito-x); bottom: 300px; z-index: 41; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos); padding: 16px 28px;
+    font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.1; letter-spacing: 0;
+    color: var(--legenda-cor); }
+  .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: pre; }
+  #credito { bottom: 24px; }
+  #credito[hidden] { display: none; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <div id="map"></div>
+  <canvas id="cv" width="3840" height="2160"></canvas>
+  <div id="nBasin" class="pil" data-qc-papel="rotulo">BASIN IN CANADA</div>
+  <div id="legRelevo" class="leg" data-qc-papel="eixo">Vertical exaggeration 1.5×</div>
+  <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // ═══ O NÚCLEO DAS CENAS DE MAPA DO LOTE M4 (rio-columbia-arte-1; out/rio-columbia/_tmp/arte-1/M4/gerar.py) ═══
+  // Parte do núcleo do lote M1 (s05–s09: a correnteza no tempo absoluto do vídeo, os mesmos km, a fronteira que esmaece no leste) e
+  // soma: o rio desenhado por trecho de km (o trecho grosso que cresce), o relevo 3D com o centro na cota 0 (o modelo da s02 do vídeo 5),
+  // o crédito de mapa só nos quadros em que o mapa aparece e as fotos esperadas antes do 1º quadro.
+  // Determinístico: a cena é função de t (nada de Date, Math.random, @keyframes nem flyTo/easeTo: a câmera é jumpTo(cameraAt(t))).
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (x) { x = cl(x, 0, 1); return 1 - Math.pow(1 - x, 3); };
+  var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+  var lerp = function (a, b, u) { return a + (b - a) * u; };
+  var my = function (lat) { return Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)); };
+  var latDe = function (y) { return (2 * Math.atan(Math.exp(y)) - Math.PI / 2) * 180 / Math.PI; };
+  // entra em d s a partir de a e sai em d s terminando em b (a vida de um texto ou camada): 0..1
+  var vida = function (t, a, b, d) { d = d || 0.3; return eo(seg(t, a, d)) * (1 - eo(seg(t, b - d, d))); };
+  // o voo entre duas poses: o zoom pela fração U, o centro pelo ponto fixo do zoom (a curva em que o alvo não escorrega na tela)
+  function voo(a, b, U) {
+    var z = a.z + (b.z - a.z) * U, s;
+    if (Math.abs(b.z - a.z) < 1e-6) s = U;
+    else s = (Math.pow(2, -z) - Math.pow(2, -a.z)) / (Math.pow(2, -b.z) - Math.pow(2, -a.z));
+    var ya = my(a.c[1]), yb = my(b.c[1]);
+    return { center: [a.c[0] + (b.c[0] - a.c[0]) * s, latDe(ya + (yb - ya) * s)], zoom: z,
+      bearing: lerp(a.b || 0, b.b || 0, U), pitch: lerp(a.p || 0, b.p || 0, U) };
+  }
+  // o ponto [lon, lat] que fica em (x, y) da tela numa pose 2D (norte para cima, pitch 0; tiles de 512 px): para prender ao chão um
+  // texto cujo lugar na tela a cena escolhe numa pose
+  function llDe(pose, x, y) {
+    var R = 512 * Math.pow(2, pose.z) / (2 * Math.PI);
+    return [pose.c[0] + (x - 1920) / R * 180 / Math.PI, latDe(my(pose.c[1]) - (y - 1080) / R)];
+  }
+
+  // ═══ TEMPOS (0 = 104,667 s do master; words.json): 'So' 0,003 · 'water' 1,203 · 'when?' 2,563 · 'The' 3,483 · 'Canadian' 3,628 ·
+  //   'basin,' 4,483 · 'drains' 5,683 · 'river,' 6,323 · 'mountain' 7,123 · 'country,' 7,443 · 'winter' 9,283 · 'snow.' 10,008 (acaba 10,363) ═══
+  var DUR = 10.933;  // espelho.json › s15 › dur, literal (roupa §8)
+  var T0V = 104.667; // o início da cena no master (a correnteza anda no tempo do vídeo)
+  // O RELEVO 3D (a tese vertical, 'mountain country'; itens 65 e 86): o terreno terrain-rgb-v2 da MapTiler liga em 3,5 s, ainda de cima
+  // (o 1º quadro é o plano 2D da s14, por números), e o exagero sobe de 0 a 1,5× em 0,5 s, antes de a câmera inclinar (em 3,628): do
+  // primeiro quadro inclinado ao último, o exagero é 1,5×, o que a legenda "Vertical exaggeration 1.5×" diz
+  var TERRENO = true, TERRENO_DESDE = 3.5, EXAGERO = 1.5;
+  function exageroAt(t) { return EXAGERO * eio(seg(t, TERRENO_DESDE, 0.5)); }
+  var T = { agua: 1.203, canadian: 3.628, inclina: 2.5, leg: 3.5, basin: 4.483, drains: 5.683, fios: 1.2, mountain: 7.123 };
+  var POSE = {
+    BACIA: { c: [-116.9270, 46.8983], z: 6.0556 },                  // a pose casada com o fim da s14 (o pedido comum, por números)
+    Q0: { c: [-117.15, 47.55], z: 6.20 },                            // P1: o empurrão lento rumo à bacia canadense
+    Q1: { c: [-117.70, 50.45], z: 7.35, p: 60, b: 0 },              // P2: inclinada, chegando pelo sul (z ≈ 7,2 do conceito)
+    Q2: { c: [-117.74, 50.50], z: 8.05, p: 62, b: -15 }              // o fim: girou 15° ao longo das serras; o centro é o do par Landsat da s16
+  };
+  function cameraAt(t) {
+    var Q = POSE;
+    if (t < 0.3) return voo(Q.BACIA, Q.BACIA, 0);                    // PARADA na pose 0,3 s depois do corte
+    if (t < T.canadian) return voo(Q.BACIA, Q.Q0, eio(seg(t, 0.3, T.canadian - 0.3)));
+    if (t < T.canadian + T.inclina) return voo(Q.Q0, Q.Q1, eio(seg(t, T.canadian, T.inclina)));
+    var c = voo(Q.Q1, Q.Q2, eio(seg(t, T.canadian + T.inclina, DUR - T.canadian - T.inclina)));
+    c.bearing = Q.Q2.b * eio(seg(t, T.mountain, DUR - T.mountain));  // 'mountain': gira 15° ao longo das serras, devagar, até o fim
+    return c;
+  }
+  var RIO, RIO_K, K_FRONT, KM_FIM, LL = {}, FIOS = [];
+  // OS FIOS DE AFLUENTE ('drains'; conserto 1, 13/11/2026): a camada afluentes-canada-s15 (OSM, a pesquisa-geo; sha256 accebde5…), cada linha
+  // da nascente para a foz. Entram SEIS dos oito, os que descem das cristas da bacia canadense e chegam ao Columbia ou à margem do lago:
+  // Kicking Horse, Blaeberry, Beaver, Wood, Illecillewaet e Incomappleux. Ficam fora o Kootenay (o laço de 261 km por Montana e Idaho
+  // contradiz "the Canadian part of the basin", e com 2.000–4.000 px ele vira um segundo rio, não um fio) e o Spillimacheen (corre colado
+  // ao Columbia: 54–65 % a menos de 30 px, e se lê como o próprio rio dobrado)
+  var FIOS_NOMES = ["Kicking Horse River", "Blaeberry River", "Beaver River", "Wood River", "Illecillewaet River", "Incomappleux River"];
+  var FIO_ESCALA = 6;   // a luz da correnteza nos fios: o km do fio vale 6 km da régua do rio, para a luz caber nos 38–86 km de cada um
+  function prepararGeo() {
+    var r = geo("rio-columbia"), tc = geo("rio-columbia-trecho-canada");
+    geo("bacia-columbia-canada"); geo("fronteira-canada-eua");
+    if (window.__erroCena) return false;
+    RIO = r.features[0].geometry.coordinates; RIO_K = kmAcumulado(RIO); KM_FIM = RIO_K[RIO_K.length - 1];
+    var TC = tc.features[0].geometry.coordinates;
+    K_FRONT = RIO_K[maisPerto(RIO, TC[TC.length - 1])];
+    var af = geo("afluentes-canada-s15"); if (window.__erroCena) return false;
+    FIOS_NOMES.forEach(function (n) {
+      var f = af.features.filter(function (x) { return x.properties && x.properties.name === n; })[0];
+      if (!f) { falhar("o afluente '" + n + "' não está na camada afluentes-canada-s15."); return; }
+      var C = f.geometry.coordinates, K = kmAcumulado(C).map(function (k) { return k * FIO_ESCALA; });
+      FIOS.push({ C: C, K: K, fim: K[K.length - 1] });
+    });
+    if (window.__erroCena) return false;
+    // BASIN IN CANADA: centrada logo acima da ponta norte do contorno (o vértice mais ao norte da bacia canadense, 52,88 N), do lado de
+    // fora: com a câmera a 60°, dentro da bacia não há vão sem linha (o rio e o contorno ocupam a lasca deitada), e o nome lê como o
+    // título do contorno que está logo abaixo dele
+    var CB = geo("bacia-columbia-canada").features[0].geometry.coordinates[0], iN = 0;
+    for (var i = 1; i < CB.length; i++) if (CB[i][1] > CB[iN][1]) iN = i;
+    LL.basin = CB[iN];
+    return true;
+  }
+  function camadasDaCena() {
+    var lc = { "line-join": "round", "line-cap": "round" };
+    return { fontes: { can: { type: "geojson", data: geo("bacia-columbia-canada") },
+                       fr: { type: "geojson", data: geo("fronteira-canada-eua"), lineMetrics: true } },
+      camadas: [
+        { id: "can", type: "fill", source: "can", paint: { "fill-color": COR.destaque, "fill-opacity": 0 } },
+        { id: "fr-sob", type: "line", source: "fr", layout: lc, paint: { "line-gradient": gradFim(COR.sob, 1), "line-opacity": COR.sob[3], "line-width": 12 } },
+        { id: "fr", type: "line", source: "fr", layout: lc, paint: { "line-gradient": gradFim(rgbDe(COR.fronteira)), "line-width": 5 } },
+        { id: "can-sob", type: "line", source: "can", layout: lc, paint: { "line-color": rgb(COR.sob, 1), "line-opacity": 0, "line-width": 14 } },
+        { id: "can-lin", type: "line", source: "can", layout: lc, paint: { "line-color": COR.destaque, "line-opacity": 0, "line-width": 8 } }
+      ] };
+  }
+  function aplicarCamadas(t) {
+    // P1, 'water': a parte canadense enche em --destaque a 85 % (500 ms), sozinha; P2, 'Canadian': o preenchimento cai e fica o CONTORNO
+    // (8 px --destaque sobre o contorno escuro), que passa por cima das cristas
+    pinta("can", "fill-opacity", 0.85 * eo(seg(t, T.agua, 0.5)) * (1 - eio(seg(t, T.canadian, 0.7))));
+    var vc = eo(seg(t, T.canadian, 0.7));
+    pinta("can-lin", "line-opacity", vc); pinta("can-sob", "line-opacity", COR.sob[3] * vc);
+  }
+  function desenhar(t, Tv) {
+    // 'drains' (5,683): os seis fios descem da crista ao rio em 1,2 s (cúbico), 6 px em --agua com a correnteza descendo, por baixo do
+    // Columbia (a foz entra debaixo dele)
+    var u = eio(seg(t, T.drains, T.fios));
+    if (u > 0) for (var i = 0; i < FIOS.length; i++) desenharRio(FIOS[i].C, FIOS[i].K, 6, 1, Tv, 0, FIOS[i].fim * u);
+    // o estado da s14 no fim (por números): o trecho canadense a 24 px e 100 %, o americano a 8 px e 50 %, com a correnteza
+    desenharRio(RIO, RIO_K, 24, 1, Tv, 0, K_FRONT);
+    desenharRio(RIO, RIO_K, 8, 0.5, Tv, K_FRONT, KM_FIM);
+  }
+  function aplicarTextos(t) {
+    porTexto(E("legRelevo"), eo(seg(t, T.leg, 0.3)));
+    var el = E("nBasin"); if (!el) return;
+    var p = map.project(LL.basin), w = el.offsetWidth, h = el.offsetHeight, v = eo(seg(t, T.basin, 0.3));
+    var x = p.x - w / 2, y = p.y - h - 48, folga = Math.min(x - 200, 3640 - (x + w), y - 160, 1880 - (y + h));
+    porTela(el, p.x, p.y, 0.5, 1, 0, -48, v * cl(folga / 60, 0, 1), (1 - v) * 24);
+  }
+
+  window.__duracao = DUR;
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  window.__fotosProntas = true;
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+  // as fotos da cena: o render espera todas decodificadas antes do 1º quadro
+  (function () {
+    var imgs = Array.prototype.slice.call(document.querySelectorAll("img"));
+    if (!imgs.length) return;
+    window.__fotosProntas = Promise.all(imgs.map(function (im) {
+      if (im.complete && im.naturalWidth) return im.decode ? im.decode().catch(function () {}) : true;
+      return new Promise(function (res) {
+        im.addEventListener("load", function () { (im.decode ? im.decode().catch(function () {}) : Promise.resolve()).then(res); });
+        im.addEventListener("error", function () { falhar("a foto " + im.getAttribute("src") + " não carregou."); res(); });
+      });
+    })).then(function () { return true; });
+  })();
+
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== "maptiler") return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa 'maptiler' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster.");
+  if (TERRENO && !P.dem) return falhar("o perfil '" + P.nome + "' não tem o relevo (dem): a cena pede o terreno 3D.");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo.");
+    return g;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+  function rgbDe(css) {
+    css = String(css || "").trim();
+    var m = /^#([0-9a-f]{6})$/i.exec(css);
+    if (m) { var n = parseInt(m[1], 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255, 1]; }
+    m = /rgba?\(([^)]*)\)/.exec(css);
+    if (m) { var v = m[1].split(",").map(Number); return [v[0], v[1], v[2], v.length > 3 ? v[3] : 1]; }
+    return [0, 0, 0, 1];
+  }
+  var rgb = function (v, a) { return "rgba(" + v[0] + "," + v[1] + "," + v[2] + "," + (a == null ? v[3] : a) + ")"; };
+  // A FRONTEIRA SOME NO LESTE (o M1): a camada fronteira-canada-eua (Census) vai só até 103 W, que na P-BACIA cai dentro do quadro;
+  // os últimos 14 % dela esmaecem até zero (line-gradient), igual nas cenas do M1
+  function gradFim(v, alfa) {
+    var cor = rgb(v, alfa == null ? v[3] : alfa), zero = rgb(v, 0);
+    return ["interpolate", ["linear"], ["line-progress"], 0, cor, 0.86, cor, 1, zero];
+  }
+
+  // ── o crédito de mapa: o do perfil + o de cada camada que exige (o OSM já está no da MapTiler) ──
+  var creditoTexto = (function () {
+    var partes = [];
+    if (P.atribuicao && P.atribuicao.exigida) {
+      if (!P.atribuicao.tela) { falhar("a base '" + P.nome + "' exige crédito na tela e o perfil não traz o texto."); return ""; }
+      partes.push(P.atribuicao.tela);
+    }
+    var geos = window.__GEO || {}, meta = window.__GEO_META || {};
+    var slugs = Object.keys(geos);
+    for (var i = 0; i < slugs.length; i++) {
+      var m = meta[slugs[i]];
+      if (!m) { falhar("a geometria '" + slugs[i] + "' foi carregada sem procedência (fonte/licença)."); return ""; }
+      if (!m.exige_credito) continue;
+      var t = m.credito_tela || (m.fonte && m.licenca ? "Geometria: " + m.fonte + " (" + m.licenca + ")" : "");
+      if (!t) { falhar("a geometria '" + slugs[i] + "' exige crédito e a procedência não diz o texto."); return ""; }
+      var junto = partes.join(" · ");
+      if (/OpenStreetMap/i.test(t) && /OpenStreetMap/i.test(junto)) continue;
+      if (junto.indexOf(t) >= 0) continue;
+      partes.push(t);
+    }
+    var c = E("credito");
+    if (c) { c.textContent = partes.join(" · "); c.hidden = !partes.length; }
+    return partes.join(" · ");
+  })();
+  window.__creditoMapa = creditoTexto;
+  if (!window.__erroCena && creditoTexto !== "© MapTiler © OpenStreetMap contributors")
+    falhar("o crédito de mapa montado ('" + creditoTexto + "') não é o do textos-tela.json.");
+  if (window.__erroCena) return;
+
+  var COR = {
+    tinta: tok("--tinta", "#F4F1EA"), destaque: tok("--destaque", "#F5A524"), contraparte: tok("--contraparte", "#2EC4B6"),
+    agua: rgbDe(tok("--agua", "#AFD8F6")), luz: rgbDe(tok("--agua-luz", "#EAF5FD")),
+    sob: rgbDe(tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)")), fronteira: tok("--fronteira-cor", "rgba(255, 255, 255, 0.70)")
+  };
+  COR.tintaRgb = rgbDe(COR.tinta); COR.destaqueRgb = rgbDe(COR.destaque); COR.contraparteRgb = rgbDe(COR.contraparte);
+
+  // ═══ A CORRENTEZA (identidade §2: "a água é azul, e corre"; o modelo é o da s37 do Peru, o mesmo do M1) ═════════════════════════
+  // Um trecho mais claro da própria linha (--agua-luz sobre --agua) desce no sentido da água e se repete. A luz mora no CHÃO (km ao
+  // longo do rio, da nascente) e anda no tempo ABSOLUTO do vídeo (T0V + t), com os mesmos km de s05, s06, s07, s13 e s15: no corte
+  // ela continua de onde estava.
+  var CORRENTEZA = { zoomRef: 6.5, latRef: 49.0, periodoPx: 1100, velPx: 420, luzPx: 450, subida: 0.45, frente: 0.15, passoPx: 12 };
+  function kmPorPx(z, lat) { return 40075.016686 * Math.cos(lat * Math.PI / 180) / (512 * Math.pow(2, z)); }
+  var CR = (function () { var k = kmPorPx(CORRENTEZA.zoomRef, CORRENTEZA.latRef);
+    return { vel: CORRENTEZA.velPx * k, periodo: CORRENTEZA.periodoPx * k, luz: CORRENTEZA.luzPx / CORRENTEZA.periodoPx }; })();
+  function brilho(km, T) {
+    var u = (km - CR.vel * T) / CR.periodo; u = u - Math.floor(u);
+    if (u >= CR.luz) return 0;
+    var x = u / CR.luz, y = Math.min(1, x / CORRENTEZA.subida, (1 - x) / CORRENTEZA.frente);
+    return y * y * (3 - 2 * y);
+  }
+  function corAgua(b) {
+    var a = COR.agua, l = COR.luz;
+    return "rgb(" + Math.round(a[0] + (l[0] - a[0]) * b) + "," + Math.round(a[1] + (l[1] - a[1]) * b) + "," + Math.round(a[2] + (l[2] - a[2]) * b) + ")";
+  }
+  function kmAcumulado(C) {
+    var K = [0];
+    for (var i = 1; i < C.length; i++) {
+      var a = C[i - 1], b = C[i], la = (a[1] + b[1]) / 2 * Math.PI / 180;
+      var dx = (b[0] - a[0]) * 111.32 * Math.cos(la), dy = (b[1] - a[1]) * 110.57;
+      K.push(K[i - 1] + Math.sqrt(dx * dx + dy * dy));
+    }
+    return K;
+  }
+  // o ponto [lon, lat] do rio no km dado (interpolado no trecho)
+  function pontoNoKm(C, K, km) {
+    if (km <= 0) return C[0].slice();
+    if (km >= K[K.length - 1]) return C[C.length - 1].slice();
+    var lo = 0, hi = K.length - 1;
+    while (hi - lo > 1) { var md = (lo + hi) >> 1; if (K[md] <= km) lo = md; else hi = md; }
+    var u = (km - K[lo]) / ((K[hi] - K[lo]) || 1);
+    return [lerp(C[lo][0], C[hi][0], u), lerp(C[lo][1], C[hi][1], u)];
+  }
+  function maisPerto(C, ll) {
+    var best = 0, d = 1e18;
+    for (var i = 0; i < C.length; i++) {
+      var dx = (C[i][0] - ll[0]) * Math.cos(ll[1] * Math.PI / 180), dy = C[i][1] - ll[1], q = dx * dx + dy * dy;
+      if (q < d) { d = q; best = i; }
+    }
+    return best;
+  }
+  var map, cv = E("cv"), ctx = cv ? cv.getContext("2d") : null, BUF = null;
+  function fora(a, q) { return (a.x < -200 && q.x < -200) || (a.x > 4040 && q.x > 4040) || (a.y < -200 && q.y < -200) || (a.y > 2360 && q.y > 2360); }
+  // o rio no canvas, só do km kIni ao km kFim: a largura larg (px), a correnteza no tempo absoluto T, a opacidade op; o contorno escuro
+  // por baixo vai num buffer opaco e entra com a opacidade dele de uma vez (sem escurecer nas juntas)
+  function desenharRio(C, K, larg, op, T, kIni, kFim) {
+    if (!ctx || op <= 0.001) return;
+    kIni = kIni == null ? 0 : kIni; kFim = kFim == null ? K[K.length - 1] : kFim;
+    if (kFim <= kIni) return;
+    if (!BUF) { BUF = document.createElement("canvas"); BUF.width = cv.width; BUF.height = cv.height; }
+    var pts = [], kms = [];
+    for (var i = 0; i < C.length; i++) {
+      if (K[i] < kIni) { if (i + 1 < C.length && K[i + 1] > kIni) { pts.push(pontoNoKm(C, K, kIni)); kms.push(kIni); } continue; }
+      if (K[i] > kFim) { pts.push(pontoNoKm(C, K, kFim)); kms.push(kFim); break; }
+      pts.push(C[i]); kms.push(K[i]);
+    }
+    if (pts.length < 2) return;
+    var Pp = pts.map(function (c) { return map.project(c); });
+    var b = BUF.getContext("2d"); b.clearRect(0, 0, BUF.width, BUF.height);
+    b.strokeStyle = rgb(COR.sob, 1); b.lineCap = "round"; b.lineJoin = "round"; b.lineWidth = larg + 6;
+    b.beginPath(); b.moveTo(Pp[0].x, Pp[0].y);
+    for (var j0 = 1; j0 < Pp.length; j0++) b.lineTo(Pp[j0].x, Pp[j0].y);
+    b.stroke();
+    ctx.globalAlpha = COR.sob[3] * op; ctx.drawImage(BUF, 0, 0);
+    ctx.globalAlpha = op; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.lineWidth = larg;
+    for (var j = 1; j < Pp.length; j++) {
+      var a = Pp[j - 1], q = Pp[j]; if (fora(a, q)) continue;
+      var k0 = kms[j - 1], k1 = kms[j];
+      var n = Math.max(1, Math.ceil(Math.sqrt((q.x - a.x) * (q.x - a.x) + (q.y - a.y) * (q.y - a.y)) / CORRENTEZA.passoPx));
+      for (var s = 0; s < n; s++) {
+        var u0 = s / n, u1 = (s + 1) / n, km = k0 + (k1 - k0) * (s + 0.5) / n;
+        ctx.strokeStyle = corAgua(brilho(km, T));
+        ctx.beginPath(); ctx.moveTo(a.x + (q.x - a.x) * u0, a.y + (q.y - a.y) * u0); ctx.lineTo(a.x + (q.x - a.x) * u1, a.y + (q.y - a.y) * u1); ctx.stroke();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  // uma polilinha [lon, lat] no canvas, com o contorno escuro por baixo; f ∈ [0,1] é a fração desenhada a partir do começo; tr é o
+  // tracejado em px ([] = cheio)
+  function desenharPolilinha(L, f, larg, cor, op, tr) {
+    if (!ctx || op <= 0.001 || f <= 0) return;
+    var Pp = L.map(function (c) { return map.project(c); });
+    var tot = 0, comp = [0];
+    for (var i = 1; i < Pp.length; i++) { tot += Math.hypot(Pp[i].x - Pp[i - 1].x, Pp[i].y - Pp[i - 1].y); comp.push(tot); }
+    var alvo = tot * cl(f, 0, 1), pts = [Pp[0]];
+    for (var k = 1; k < Pp.length; k++) {
+      if (comp[k] <= alvo) { pts.push(Pp[k]); continue; }
+      var u = (alvo - comp[k - 1]) / ((comp[k] - comp[k - 1]) || 1);
+      pts.push({ x: lerp(Pp[k - 1].x, Pp[k].x, u), y: lerp(Pp[k - 1].y, Pp[k].y, u) }); break;
+    }
+    [[larg + 6, rgb(COR.sob, 1), COR.sob[3] * op], [larg, cor, op]].forEach(function (p) {
+      ctx.globalAlpha = p[2]; ctx.strokeStyle = p[1]; ctx.lineWidth = p[0]; ctx.lineCap = tr && tr.length ? "butt" : "round"; ctx.lineJoin = "round";
+      ctx.setLineDash(tr || []);
+      ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+      for (var j = 1; j < pts.length; j++) ctx.lineTo(pts[j].x, pts[j].y);
+      ctx.stroke();
+    });
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+  }
+  // um anel (o contorno de um polígono) no canvas, nascendo de i0 e fechando nos dois sentidos (o M1)
+  function desenharTraco(C, i0, f, larg, cor, op) {
+    if (!ctx || op <= 0.001 || f <= 0) return;
+    var n = C.length - 1, m = Math.round(f * n / 2);
+    var lado = function (dir) {
+      var pts = [];
+      for (var k = 0; k <= m; k++) { var idx = ((i0 + dir * k) % n + n) % n; pts.push(map.project(C[idx])); }
+      return pts;
+    };
+    [lado(1), lado(-1)].forEach(function (pts) {
+      [[larg + 6, rgb(COR.sob, 1), COR.sob[3] * op], [larg, cor, op]].forEach(function (p) {
+        ctx.globalAlpha = p[2]; ctx.strokeStyle = p[1]; ctx.lineWidth = p[0]; ctx.lineCap = "round"; ctx.lineJoin = "round";
+        ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+        for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+        ctx.stroke();
+      });
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  // ── rede com nova tentativa (o molde da pré-v1, sem mudança) ─────────────────────────────────────────────────────────────
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  function erroCorpo(msg, url, st) { var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e; }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) { var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http"; throw e; }
+        if (params.type === "json") return r.text().then(function (t) { try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); } });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+
+  if (!prepararGeo()) return;
+  if (window.__erroCena) return;
+  window.__cameraAt = cameraAt;
+
+  function estilo() {
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    if (TERRENO) fontes.dem = { type: "raster-dem", tiles: P.dem.tiles.map(comChave), tileSize: P.dem.tileSize, maxzoom: P.dem.maxzoom, encoding: P.dem.encoding };
+    var cam = camadasDaCena(), ids = Object.keys(cam.fontes);
+    for (var i = 0; i < ids.length; i++) fontes[ids[i]] = cam.fontes[ids[i]];
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes,
+      layers: [{ id: "base", type: "raster", source: "base",
+        // o tratamento C da base (identidade §6, Lucas 09/10/2026): brilho máximo 92 %, cor natural, contraste +25 %; sem véu
+        paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }].concat(cam.camadas) };
+  }
+  var FONTES = ["base"].concat(Object.keys(camadasDaCena().fontes));
+
+  var c0 = cameraAt(0);
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: c0.bearing || 0, pitch: c0.pitch || 0
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa.");
+  }
+  window.map = map;
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
+
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg))
+      return "mandou tile CORROMPIDO" + n + " (" + String(msg).replace(/^tile corrompido: /, "") + "). Renderize de novo.";
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + ". Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  var mapaCarregado = false;
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ".");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : ""));
+  });
+  map.on("load", function () {
+    mapaCarregado = true;
+    window.__renderAt(0);
+    map.once("idle", function () {
+      var f = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+      Promise.all([f, Promise.resolve(window.__fotosProntas)]).then(function () { if (!window.__erroCena) resolverPronto(true); });
+    });
+  });
+
+  // ── a pílula presa ao chão: o ponto [lon, lat] vai ao ponto (ax, ay) da caixa (0..1), mais (dx, dy) px; v é a entrada (0..1) ──
+  function porPilula(el, ll, ax, ay, dx, dy, v, sobe) {
+    if (!el) return null;
+    var p = map.project(ll);
+    return porTela(el, p.x, p.y, ax, ay, dx, dy, v, sobe);
+  }
+  // a caixa num ponto da tela (x, y), pelo canto (ax, ay) dela
+  function porTela(el, x0, y0, ax, ay, dx, dy, v, sobe) {
+    if (!el) return null;
+    var w = el.offsetWidth, h = el.offsetHeight;
+    var x = x0 - ax * w + (dx || 0), y = y0 - ay * h + (dy || 0) + (sobe == null ? (1 - v) * 24 : sobe);
+    el.style.transform = "translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+    el.style.opacity = cl(v, 0, 1).toFixed(3);
+    el.style.visibility = v > 0.001 ? "visible" : "hidden";
+    return { x: x, y: y, w: w, h: h };
+  }
+  function porTexto(el, v, sobe) {   // o texto fixo na tela (o crédito de dado): opacidade e subida
+    if (!el) return;
+    el.style.opacity = cl(v, 0, 1).toFixed(3); el.style.visibility = v > 0.001 ? "visible" : "hidden";
+    el.style.transform = "translateY(" + ((sobe == null ? (1 - v) * 24 : sobe)).toFixed(2) + "px)";
+  }
+  var opAntes = {};
+  function pinta(id, prop, v) { v = +(+v).toFixed(3); var k = id + "|" + prop; if (opAntes[k] === v) return; map.setPaintProperty(id, prop, v); opAntes[k] = v; }
+
+  // ── o anel (identidade §4.4: 56 px, traço 10 em --destaque, o halo escuro; o pulso 1 → 1,8 e 1 → 0 em 1,2 s, duas vezes, e para) ──
+  function porAnel(id, x, y, v, tPulso, t) {
+    var g = E(id); if (!g) return;
+    g.setAttribute("opacity", cl(v, 0, 1).toFixed(3));
+    g.setAttribute("transform", "translate(" + x.toFixed(2) + "," + y.toFixed(2) + ")");
+    for (var k = 0; k < 2; k++) {
+      var pu = E(id + "P" + k); if (!pu) continue;
+      var u = tPulso == null ? -1 : (t - tPulso - 1.2 * k) / 1.2;
+      if (u < 0 || u > 1) { pu.setAttribute("opacity", "0"); continue; }
+      pu.setAttribute("opacity", (1 - u).toFixed(3));
+      pu.setAttribute("transform", "scale(" + (1 + 0.8 * u).toFixed(3) + ")");
+    }
+  }
+
+  var ultimoT = null;
+  function overlay(t) {
+    if (ctx) ctx.clearRect(0, 0, cv.width, cv.height);
+    desenhar(t, T0V + t);
+    aplicarTextos(t);
+    var c = E("credito"), vc = typeof creditoMapaAt === "function" ? creditoMapaAt(t) : 1;
+    if (c) { c.style.opacity = vc ? "1" : "0"; c.style.visibility = vc ? "visible" : "hidden"; }
+  }
+  function aplicar(t) {
+    if (!mapaCarregado) return;
+    // o relevo liga a partir de TERRENO_DESDE: antes dele a cena é o plano 2D (o 1º quadro casa com o último da cena anterior)
+    var querRelevo = TERRENO && t >= TERRENO_DESDE;
+    if (querRelevo && !map.getTerrain()) map.setTerrain({ source: "dem", exaggeration: 0 });
+    if (TERRENO && !querRelevo && map.getTerrain()) map.setTerrain(null);
+    window.__relevoLigado = querRelevo;
+    map.jumpTo(cameraAt(t));
+    if (querRelevo) {
+      // o centro da câmera fica na cota 0 (a s44 do Juneau; a s02 do vídeo 5): a câmera é a mesma em todo render, com ou sem o relevo pronto
+      map._elevationFreeze = true;
+      if (map.terrain && map.transform.elevation !== 0) map.transform.elevation = 0;
+      var ex = exageroAt(t);
+      if (map.terrain && Math.abs(map.terrain.exaggeration - ex) > 1e-4) map.terrain.exaggeration = ex;
+      window.__exagero = ex;
+    }
+    aplicarCamadas(t);
+    ultimoT = t;
+    overlay(t);
+    if (querRelevo && map.terrain) {
+      // a espessura das linhas sobre o relevo (a s44 do Juneau): a textura das linhas se refaz em todo quadro, no zoom dele
+      var tsc = map.terrain.sourceCache;
+      if (!tsc || typeof tsc.freeRtt !== "function") return falhar("o MapLibre desta cena não tem terrain.sourceCache.freeRtt.");
+      tsc.freeRtt(); map.triggerRepaint();
+    }
+  }
+  // com o relevo, o que se prende ao chão (o rio no canvas, as pílulas) depende da altitude que o DEM dá; a cada pintura do mapa o
+  // desenho se refaz no mesmo t, para o quadro capturado (depois de o DEM chegar) ter o rio e as pílulas no chão certo
+  map.on("render", function () { if (TERRENO && window.__relevoLigado && ultimoT != null) { try { overlay(ultimoT); } catch (e) {} } });
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) { var ts = (sc[id] && sc[id]._tiles) || {}; for (var k in ts) if (ts[k] && ts[k].state === "errored") return id; }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou. O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!map.areTilesLoaded() || map.isMoving()) return false;
+          for (var i = 0; i < FONTES.length; i++) if (!map.getSource(FONTES[i]) || !map.isSourceLoaded(FONTES[i])) return false;
+          // com o relevo ligado, espera o DEM também (o contrato do ofício, §3)
+          if (window.__relevoLigado && (!map.getSource("dem") || !map.isSourceLoaded("dem") || !map.getTerrain())) return false;
+          return true;
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
+      (function tick() {
+        barrarTileComErro();
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.triggerRepaint(); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__renderAt(0) || true;
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+
+</script>
+</body>
+</html>

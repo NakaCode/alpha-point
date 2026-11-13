@@ -1,0 +1,1222 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s63 (+ s64) — the lake waits again; spring 2027; the end screen</title>
+<!--
+CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s63 + s64 (a filha), UM ARQUIVO SÓ: 898,700 → 929,967 s do master;
+  Word-lock (−898.700) · inSec 898.700 · dur 31.267 (938 quadros a 30 fps; _quadros 26961→27899; espelho.json 3de8e7ad…, _fusao_diretor
+  runs[6]: s63 + s64). cleanDur = dur (faceless: o relógio é um só, words.json be4b6460…, palavras 2712–2749). A fronteira de dentro do
+  arquivo (o fim de s63, o começo da cauda) fica em t 11,267 (909,967 s) e NÃO é corte.
+  "Next winter, the lake will drop again, and the snow will come back. For now, the United States pays to have that room waiting. And the
+   spring of 2027 is as far as this deal can reach." (e 20 s sem voz: a tela final do YouTube)
+  Editor-de-arte em Opus, lote EO4 da tarefa rio-columbia-arte-1 (13/11/2026); dono do arquivo de técnica MISTA (para-passos, item 56: o
+  mapa entra como placa dentro dele; aqui o desenho é a placa que cobre o mapa em P1). Cena NOVA, montada por
+  out/rio-columbia/_tmp/arte-1/EO4/montar.py a partir de EO4/src/s63.html (o RIG, o bloco da PEÇA 1 da s03 e o dados.json de EO4/prep.py).
+
+  O QUE MANDA: textos-tela.json c656a145… ([423] "Not to scale" 0,167–7,533; [424] "ROOM" 0,167–7,533; [427] o crédito do mapa 7,533–31,267;
+  [425] "SPRING 2027" 8,333–31,267; [426] a fonte 8,333–31,267); regencia.json 131116f3… (s63 › beats 0, 1, 2; _animacao_em_opus[9]);
+  conceito-visual.json bf511817… (s63, s64, o arco: as peças 1, 5 e 9, P-BACIA-ESQ); o para-passos 265ac78a… (item 60; 56, 74, 80, 81, 82);
+  a decisão do Lucas (12/11/2026, ~21:0x: "A · Três primaveras (Recomendado)"); a marca (identidade, tokens.css, roupa do editor).
+
+  OS TRÊS TRECHOS (t local = master − 898,700):
+  P1 · 0,000–7,533 · O CORTE DO LAGO COMO RELÓGIO (a peça 1, o bloco copiado da s03 sem mudar nada), sobre a mesa M-VALE:
+    0,000        abre CHEIO (y 860), a faixa OCUPADA e APAGADA (hachuraAlfa 0), o traço completo (a peça volta: não se risca de novo).
+    0,167        "Not to scale" (legenda, 84 px, x 520, y 1540: regra de série 4) e "ROOM" (rótulo, 128 px, centrado em x 2039, a base em
+                 y 836, logo acima do topo da faixa; regra de série 5; fora da câmera, parado enquanto se lê).
+    1,450–3,450  em 'drop' o nível cai de CHEIO a BAIXO DE INVERNO (y 1220), 2,0 s, cúbico no VOLUME; o rio a jusante corre mais rápido.
+    2,57 →       em 'snow' a NEVE VOLTA: 9 pontos brancos (--tinta): o 1º aparece em 'snow' e pousa em 'back'; pousam na crista, um a um, de 3,40 a 4,52 s (abaixo, a física).
+    5,610–6,110  em 'pays' a FAIXA, vazia de novo, ganha a hachura (corre da encosta à barragem, 500 ms) e a luz (120 ms atrás).
+    6,450 →      a câmera para (o empurrão de 1,00 a 1,03 termina 0,28 s antes de 'waiting.', 6,73): TUDO PARA; só a luz do rio corre.
+  P2 · 7,533–11,267 · CORTE SECO para o MAPA (MapTiler satellite-v2, 2D, tratamento C):
+    7,533        abre com o ANEL já em x 920, y 734 (Hugh Keenleyside, 49.3398 N 117.7720 W), o Arrow em --destaque a 85 % com o contorno,
+                 z 7,6; o rio fino (8 px, --agua) com a luz de corrente; a fronteira (5 px, branco a 70 %).
+    7,800–10,600 a câmera RECUA EM TORNO DO ANEL, que não sai do lugar (z 7,6 → 6,0556, cúbico no zoom), até P-BACIA-ESQ.
+    8,333        em 'twenty' "SPRING 2027" (pílula --rotulo, junto do anel, à direita) e a fonte (a nota dos EUA, F007).
+    9,595        em 'far' ("as far as this deal can reach") a bacia acende: a parte canadense em --destaque a 40 %, a americana em
+                 --contraparte a 35 % (500 ms).
+    10,600 →     chega a P-BACIA-ESQ e NÃO para: passa à aproximação lenta da cauda (a velocidade entra suave, em 1,0 s).
+  s64 · 11,267–31,267 · A TELA FINAL A, "TRÊS PRIMAVERAS" (sem voz; a direita x ≥ 1920 e o canto de 400 × 400 livres em todo quadro):
+    a câmera: aproximação lenta e contínua, ancorada no anel (que fica em x 920, y 734), da escala 1,000 a 1,035 (z 6,0556 → 6,1052);
+    SPRING 2027 e as marcas, presos ao anel, não se mexem; The Dalles e Portland andam com o mapa.
+    o comentário NÃO vem para cá: a regência o pôs em s60 P1 (_chamadas). Os ciclos são os SEM ele: 1,5–19,5 s da cauda, 6,0 s cada.
+    as 3 marcas (28 px, apagadas) entram em 11,767 (500 ms), em coluna à direita do lago.
+    CICLO k (k = 0, 1, 2; c0 = 12,767 / 18,767 / 24,767), NA ORDEM DO MECANISMO (VC-03):
+      (a) c0+0,0–1,6  O LAGO ESVAZIA: o preenchimento recua do norte para a barragem (o contorno e a hachura da faixa ficam à vista)
+                      e a CORRENTE ENGROSSA da barragem rio abaixo até Portland (c0+0,1–1,9): a água sai do lago e desce.
+      (b) c0+1,8–4,0  A NOTA SOBE: uma nota (a peça 5, 44 × 24) sai de The Dalles e sobe 60 px a leste do rio até o anel; na chegada o anel
+                      pulsa UMA vez (1,2 s), a nota entra nele (300 ms) e uma das três marcas acende (de cima para baixo).
+      (c) c0+4,1–5,9  O LAGO ENCHE COM A CORRENTE FINA: um pulso de água desce do norte (Mica → o Arrow → a barragem, 0,9 s) e PARA na
+                      barragem; o lago enche de volta a 85 % a partir da barragem (c0+4,8–5,9) e, abaixo dela, a corrente AFINA para o
+                      fio normal (c0+4,5–5,9): a cheia fica guardada.
+    28,767       a 3ª nota chega: a 3ª marca acende, com um pulso de luz em SPRING 2027; em The Dalles, no ponto de partida das notas, a 4ª
+                 NOTA só em contorno a LÁPIS PONTILHADO (--tinta, vazada, sem --papel; 600 ms de traço) que NÃO sobe, não chega e não acende
+                 marca (VC-08): fica até o último quadro (2,5 s).
+    o BRILHO cai de 100 % a 50 % em 20 s, linear (o véu --rotulo de 0 a 0,568: 0,88 × 0,568 = 0,50), nunca preto; os CRÉDITOS ficam FORA
+    do véu, legíveis até o fim. Nenhum texto novo. ÚLTIMO QUADRO: o Arrow cheio, a corrente fina, o anel parado, as três marcas acesas,
+    SPRING 2027 e a 4ª nota pontilhada em The Dalles.
+
+  A CÂMERA DO MAPA (window.__cameraAt): t ≤ 7,8 {center [-114.14834, 48.51583] (o anel em 920,1 / 733,9), zoom 7.6}; t = 10,6 P-BACIA-ESQ
+    {[-107.2024, 46.8983], 6.0556}; t = 31,267 {center [-107.55983, 46.98276], zoom 6.1052}; rumo 0 e inclinação 0 sempre; tiles de 512 px.
+    P1 tem a câmera própria (CSS, origem no topo da faixa, x 2039, y 860; o still a 0,6, origem +56 px). PRODUTO MÁXIMO DAS ESCALAS: 1,03
+    (não há foto).
+
+  A PEÇA 1 (o corte; o bloco "PEÇA 1 · O CORTE DO LAGO" no script, copiado da s03 8897aeb5…, bloco sha1 a383b34f…): só CORTE.montar e
+    CORTE.estado. A PEÇA 5 (a água desce, o dinheiro sobe; nasce na s28 c503dccf…): a NOTA (44 × 24, --papel, borda 2 px --rotulo, o
+    retângulo interno em --neutro), o desvio de 60 px à direita de quem sobe (aoLongo, notaEm: o mesmo código), o caminho das notas
+    (DJ.notas.tronco + DJ.notas.K da s28: The Dalles → Castlegar → Keenleyside), a CORRENTE (traço 70, vão 230, 110 px/s, fase no relógio
+    do vídeo), a FRENTE (o halo de 24 px a 0,35 e o núcleo de 10 px em --agua-luz; cabeça de 180 px neste zoom: 320 na s28, em P-TROCA) e o
+    ANEL (criarAnel, 56 px, traço 10, o halo escuro). O que muda aqui, por ser a tela final: uma nota por ciclo; a nota ENTRA no anel na
+    chegada; as marcas; o lago em SVG (o recorte do preenchimento por latitude); a corrente grossa.
+  O ANEL fica no ponto da barragem Hugh Keenleyside (o arco, peça 9), e o lago é o polígono do OSM (lago-arrow, simplificado a 0,0004°).
+
+  O ILUSTRADOR, COM A FÍSICA (identidade §4.4; roupa §5; lidos inteiros: ilustracao/habilidades/ilustracao-narrativa/SKILL.md e
+    ilustracao/knowledge/ilustracao/CONSTRUCAO.md; de references/movimento-fisica.md, a tabela e "Objetos e líquidos"; dos estudos, só
+    laboratorio/estudo-liquidos/ESTUDO.md §1–§2 e laboratorio/estudo-dinamica-objetos/ESTUDO.md §3–§4):
+    · o NÍVEL (P1) é o "Nível de reservatório" (estudo-liquidos §1: área/volume; o nível não cai sem saída): a cena move o VOLUME do
+      corte (CORTE.nivelPorVolume, A ∝ d²) e o nível sai da raiz; a SAÍDA é visível (o rio a jusante corre mais rápido enquanto a água
+      sai: fase = 110 px/s + 443 px × eb, o mesmo ritmo de vazão da s03: 374.400 u² em 2,0 s contra 219.600 em 1,2 s);
+    · a NEVE (P1) não é queda livre (estudo-dinamica-objetos §3: "uma folha de papel ou um paraquedas exige outro modelo"): o floco cai
+      na velocidade terminal (arrasto ≈ peso), constante, 360 px/s (valor ilustrativo declarado: o corte é "Not to scale"), com o
+      balanço lateral do floco (±10 px, 1,1 s, que termina em zero no contato); no contato a restituição é ZERO (§4: e = 0, a neve não
+      quica), e o floco ASSENTA: achata 22 % na normal da superfície e alarga 12 % em 140 ms, e fica em repouso exato. O contato é
+      geométrico: o centro em repouso fica a (3 + r) px do traço, na normal da encosta ou do galho (a borda do ponto encosta no traço
+      de 6 px); nenhum ponto atravessa o pinheiro (só pousam na crista livre, x 532–604, e nas encostas de cima dos galhos);
+    · no MAPA, o lago em planta: ao esvaziar, a margem recua do norte (raso) para a barragem (fundo), e ao encher volta da barragem
+      para o norte (o nível sobe e a água se espalha rio acima); o pulso que entra para na barragem (a vazão de saída afina: "o que
+      entra fica"). Esquema declarado: a cena não afirma vazão real.
+    · um executor por transformação: o traço, o nível (volume), a hachura (a frente), a luz, cada floco, a câmera, cada nota, o lago.
+    · fica fora da prova do pacote: nada (sem pêndulo, rotação ou mão; a mão v003 não entra).
+
+  A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): P1: o corte com a água (1), a faixa hachurada (1), a neve
+    (1), ROOM (1), "Not to scale" (1) = 5. P2: a bacia cortada (as duas partes e a fronteira) (1), o rio (1), o Arrow com o anel (1),
+    SPRING 2027 (1) = 4. Cauda: + as 3 marcas (1) + a nota que sobe ou a 4ª nota (1) = 6 no pior instante (o anel e o Arrow contados como
+    um: o anel marca a barragem do lago; contados à parte, 7). Blocos de leitura: até 2. Herói: nenhum. Matizes: --destaque, --contraparte,
+    --agua (a água é cor de TIPO), fora o branco do traço e a base.
+
+  CRÉDITOS a 60 px (o override abaixo do <link>): "© MapTiler © OpenStreetMap contributors" (data-qc-credito="mapa", só nele) de 7,533 ao
+    fim, INTEIRO desde o corte (o OSM do lago, do rio e da barragem fica coberto por ele; CLAUDE.md, item 6); "Source: U.S. diplomatic note
+    to Canada, Nov. 22, 2024" de 8,333 ao fim. Os dois FORA do véu. P1 não tem crédito (a mesa é Landsat/USGS, domínio público). A
+    geometria: Census (fronteira), USGS WBD ∩ Census (as duas partes da bacia), OSM (o Arrow, o rio, a barragem), USGS (The Dalles),
+    Natural Earth/OSM (Portland): domínio público ou coberto pela linha da MapTiler.
+  MÍDIA: só a mesa M-VALE (_media/base/mesa/mesa-m-vale.png, a35c1f31…), base fora do conferente, sem crédito. Nenhuma foto, vídeo ou
+    documento; nenhum beat de caça.
+
+  O CONTRATO: window.__duracao = 31.267; __renderAt(t) determinístico e à prova de erro; __prepararCaptura; __fotosProntas (o RIG + a
+    decodificação do still); __ready/__aguardarMapa do molde do mapa (fail-closed: tile que não chega é erro). Nada de relógio, sorteio,
+    @keyframes, transition ou SMIL. O RIG abaixo é a cópia inteira de templates-cena/_rig.js.
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  /* o crédito a 60 px do vídeo 5 em diante (identidade §4.1): DEPOIS do <link> do tokens.css */
+  :root { --fs-credito: 60px; }
+</style>
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<!-- a geometria (out/rio-columbia/_pesquisa/pauta-geo.json): as duas partes da bacia (USGS WBD ∩ Census, domínio público) e o rio (OSM,
+     coberto pelo crédito da MapTiler). O Arrow, a fronteira cortada em −110°, os caminhos e os pontos vão no JSON "dadosJson" (EO4/prep.py). -->
+<script src="../_media/geo/bacia-columbia-canada.js"></script>
+<script src="../_media/geo/bacia-columbia-eua.js"></script>
+<script src="../_media/geo/rio-columbia.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; overflow: visible; }
+  #rotulos { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+  /* RÓTULO sobre o mapa (identidade §3 e §4.1): pílula --rotulo, cantos 12, respiro 24 × 40, Inter 700 em --tinta */
+  .rotulo { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos);
+    padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1;
+    letter-spacing: 0; color: var(--tinta); font-variant-numeric: var(--numeros); }
+  /* SPRING 2027 a 120 px (alvo 128, piso 104): a 128 a pílula mede 912 px e, presa ao anel (x 1010), terminaria em x 1922, dentro da
+     metade direita que a tela final deixa livre para os botões do YouTube; a 120 ela termina em ~x 1870 (medido com o probe-elemento) */
+  #spring { font-size: calc(var(--fs-rotulo) * 0.9375); }
+  /* O VÉU DA TELA FINAL: o brilho de 100 % a 50 % (--rotulo, 0 → 0,568); por cima do mapa e do desenho, por baixo dos créditos */
+  #veu { position: absolute; inset: 0; z-index: 50; background: var(--rotulo); opacity: 0; pointer-events: none; }
+  /* CRÉDITOS (identidade §4.1/§4.2/§6): 60 px, Inter 500, --sec sobre a pílula --rotulo, de x 200 até antes de x 1720; o de mapa embaixo */
+  .credito { position: absolute; left: var(--credito-x); bottom: 24px; max-width: 1520px; z-index: 70; opacity: 0; visibility: hidden;
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 10px 24px; border-radius: var(--cantos); white-space: nowrap; }
+  .anel circle { fill: none; stroke: var(--destaque); }
+  .anel .halo { stroke: var(--rotulo); }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: var(--tensao); color: var(--tinta);
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+
+  /* ═══ A PLACA DE P1: o corte do lago sobre a mesa (cobre o mapa até o corte seco de 7,533) ═══ */
+  #placa { position: absolute; inset: 0; z-index: 60; overflow: hidden; background: var(--fundo); color: var(--tinta);
+    font-weight: var(--peso-texto); }
+  /* a câmera: origem no topo da FAIXA (x 2039, y 860), sob o ROOM: o rótulo e a faixa ficam casados enquanto ela empurra */
+  #cam { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; transform-origin: 2039px 860px; }
+  /* A MESA DO VÍDEO 2 EM DIANTE (tokens.css): o still M-VALE por baixo da câmera, a 0,6 dela, a mesma origem (+56 px de sangria) */
+  #still { position: absolute; left: calc(-1 * var(--mesa-satelite-margem)); top: calc(-1 * var(--mesa-satelite-margem));
+    width: calc(3840px + 2 * var(--mesa-satelite-margem)); height: calc(2160px + 2 * var(--mesa-satelite-margem)); pointer-events: none;
+    opacity: var(--mesa-satelite-opacidade); transform-origin: 2095px 916px; }
+  #luz { position: absolute; left: -400px; top: -400px; width: 4640px; height: 2960px; pointer-events: none;
+    background: radial-gradient(ellipse var(--mesa-luz-tamanho) at var(--luz-x, 2420px) var(--luz-y, 1520px),
+      var(--mesa-luz-veu-centro) 0%, transparent var(--mesa-luz-meio)); }
+  #mesa { position: absolute; left: -400px; top: -400px; width: 4640px; height: 2960px; pointer-events: none;
+    background-image: var(--mesa-feltro); background-size: var(--mesa-feltro-tamanho); opacity: var(--mesa-satelite-feltro); }
+  #desenho { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
+  /* os textos da placa: soltos sobre a mesa (traço de engenheiro: sem pílula), --tinta, sem sombra; FORA da câmera */
+  .txt { position: absolute; left: 0; top: 0; opacity: 0; color: var(--tinta); white-space: nowrap; }
+  .cota { font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.08; letter-spacing: 0.02em; }
+  .legenda { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0;
+    color: var(--legenda-cor); }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="P1 é o corte do lago (animação para explicar: o desenho é a ideia, só o nome da faixa e a legenda); P2 é o mapa, com SPRING 2027 como cota de dado junto do anel; s64 é o fundo da tela final do YouTube (canal.json › narracao.cauda_tela_final_s), sem texto novo. Nenhum número-herói (identidade §4.2: um herói por cena, ou nenhum)">
+  <div id="map"></div>
+  <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="clipLago"><path id="clipLagoP" clip-rule="evenodd" d=""/></clipPath>
+      <clipPath id="clipAgua"><rect id="clipAguaR" x="0" y="0" width="0" height="0"/></clipPath>
+      <pattern id="hachArrow" patternUnits="userSpaceOnUse" width="24" height="24"><path d="M-24 24 L0 0 M0 24 L24 0 M24 24 L48 0" fill="none" stroke-width="4" stroke-linecap="square" style="stroke:var(--destaque)"/></pattern>
+      <clipPath id="clipNota4"><rect id="clipNota4R" x="-30" y="-20" width="0" height="40"/></clipPath>
+    </defs>
+    <!-- a luz de corrente do rio inteiro (a peça 5) -->
+    <path id="luzCol" fill="none" stroke-width="8" stroke-linejoin="round" opacity="0" style="stroke:var(--agua-luz)"/>
+    <!-- a corrente GROSSA (a água que sai do lago e desce até Portland) -->
+    <path id="grossa" fill="none" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity="0" style="stroke:var(--agua)"/>
+    <path id="grossaLuz" fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="round" opacity="0" style="stroke:var(--agua-luz)"/>
+    <!-- o ARROW: a hachura da faixa por baixo, o preenchimento (recortado por latitude) e o contorno -->
+    <g id="lago" opacity="0">
+      <rect id="lagoHach" x="0" y="0" width="0" height="0" fill="url(#hachArrow)" clip-path="url(#clipLago)"/>
+      <rect id="lagoAgua" x="0" y="0" width="0" height="0" fill-opacity="0.85" clip-path="url(#clipLago)" style="fill:var(--destaque)"/>
+      <!-- o contorno: apagado (40 %) onde o lago esvaziou, aceso onde há água (o mesmo recorte do preenchimento): nesse zoom o Arrow tem
+           de 10 a 48 px de largura, e só o brilho do contorno faz o cheio e o vazio se lerem de longe -->
+      <path id="lagoBorda" fill="none" stroke-width="5" stroke-linejoin="round" d="" opacity="0.4" style="stroke:var(--destaque)"/>
+      <path id="lagoBordaViva" fill="none" stroke-width="5" stroke-linejoin="round" d="" clip-path="url(#clipAgua)" style="stroke:var(--destaque)"/>
+    </g>
+    <!-- o pulso de água que desce do norte e PARA na barragem (a FRENTE da peça 5) -->
+    <g id="frenteN" opacity="0"><path fill="none" stroke-width="24" stroke-linecap="round" opacity="0.35" style="stroke:var(--agua-luz)"/><path fill="none" stroke-width="10" stroke-linecap="round" style="stroke:var(--agua-luz)"/></g>
+    <!-- AS NOTAS (a peça 5: 44 × 24, --papel, borda 2 px --rotulo, o retângulo interno em --neutro) -->
+    <g id="nota0" opacity="0"><g class="corpo"><rect x="-22" y="-12" width="44" height="24" rx="2" stroke-width="2" style="fill:var(--papel);stroke:var(--rotulo)"/>
+      <rect x="-15" y="-6" width="30" height="12" rx="1" fill="none" stroke-width="2" style="stroke:var(--neutro)"/></g></g>
+    <g id="nota1" opacity="0"><g class="corpo"><rect x="-22" y="-12" width="44" height="24" rx="2" stroke-width="2" style="fill:var(--papel);stroke:var(--rotulo)"/>
+      <rect x="-15" y="-6" width="30" height="12" rx="1" fill="none" stroke-width="2" style="stroke:var(--neutro)"/></g></g>
+    <g id="nota2" opacity="0"><g class="corpo"><rect x="-22" y="-12" width="44" height="24" rx="2" stroke-width="2" style="fill:var(--papel);stroke:var(--rotulo)"/>
+      <rect x="-15" y="-6" width="30" height="12" rx="1" fill="none" stroke-width="2" style="stroke:var(--neutro)"/></g></g>
+    <!-- A 4ª NOTA: a mesma forma, só o contorno a lápis pontilhado (--tinta, vazada), com o halo escuro do traço por baixo -->
+    <g id="nota4" opacity="0"><g clip-path="url(#clipNota4)">
+      <rect x="-22" y="-12" width="44" height="24" rx="2" fill="none" stroke-width="9" opacity="0.6" style="stroke:var(--rotulo)"/>
+      <rect x="-22" y="-12" width="44" height="24" rx="2" fill="none" stroke-width="5" stroke-linecap="round" stroke-dasharray="0.1 7.5" style="stroke:var(--tinta)"/>
+      <rect x="-15" y="-6" width="30" height="12" rx="1" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 6" style="stroke:var(--tinta)"/></g></g>
+    <!-- AS TRÊS MARCAS (28 px), em coluna à direita do lago: apagadas = contorno; acesas = --papel -->
+    <g id="marcas" opacity="0">
+      <rect id="marca0" width="28" height="28" rx="4" stroke-width="10" style="fill:none;stroke:var(--rotulo)"/>
+      <rect id="marca1" width="28" height="28" rx="4" stroke-width="10" style="fill:none;stroke:var(--rotulo)"/>
+      <rect id="marca2" width="28" height="28" rx="4" stroke-width="10" style="fill:none;stroke:var(--rotulo)"/>
+      <rect id="marca0a" width="28" height="28" rx="4" stroke-width="4" style="stroke:var(--tinta)"/>
+      <rect id="marca1a" width="28" height="28" rx="4" stroke-width="4" style="stroke:var(--tinta)"/>
+      <rect id="marca2a" width="28" height="28" rx="4" stroke-width="4" style="stroke:var(--tinta)"/>
+    </g>
+    <!-- o pulso de luz em SPRING 2027 na 3ª chegada -->
+    <rect id="pulsoSpring" x="0" y="0" width="0" height="0" rx="14" fill="none" stroke-width="5" opacity="0" style="stroke:var(--tinta)"/>
+  </svg>
+  <div id="rotulos">
+    <div class="rotulo" id="spring" data-qc-papel="rotulo"></div>
+  </div>
+  <div id="veu"></div>
+  <div id="placa">
+    <img id="still" src="../_media/base/mesa/mesa-m-vale.png" alt="" data-qc-reuso="a mesa M-VALE do vídeo: o still-padrão das cenas de mesa (conceito › arco, A MESA; pedido comum da rio-columbia-arte-1, 'A mesa')">
+    <div id="cam">
+      <div id="luz"></div>
+      <div id="mesa"></div>
+      <svg id="desenho" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg"><g id="gCorte"></g><g id="gNeve"></g></svg>
+    </div>
+    <div class="txt cota" id="room" data-qc-papel="rotulo"></div>
+    <div class="txt legenda" id="naoEscala" data-qc-papel="eixo"></div>
+  </div>
+  <div id="credFonte" class="credito" data-qc-papel="credito"></div>
+  <div id="credMapa" class="credito" data-qc-papel="credito" data-qc-credito="mapa"></div>
+  <div id="erroCena" hidden></div>
+</div>
+<!-- os dados derivados da geometria do disco (EO4/prep.py): o rio simplificado e os caminhos da peça 5 (da s28), o Arrow, a fronteira -->
+<script type="application/json" id="dadosJson">{"col":[[-115.833,50.15951],[-115.83577,50.1593],[-115.8369,50.16081],[-115.83981,50.16105],[-115.84394,50.16342],[-115.84444,50.1728],[-115.83983,50.18016],[-115.85288,50.21639],[-115.85984,50.25006],[-115.86754,50.26602],[-115.86918,50.2817],[-115.84933,50.3005],[-115.85724,50.30947],[-115.85629,50.31302],[-115.85949,50.31497],[-115.86,50.32028],[-115.86202,50.32185],[-115.86337,50.3209],[-115.8646,50.32415],[-115.86741,50.32333],[-115.86875,50.32411],[-115.86617,50.32581],[-115.86875,50.32596],[-115.86719,50.32809],[-115.87111,50.32974],[-115.86924,50.33161],[-115.87154,50.33306],[-115.86762,50.33573],[-115.86946,50.33739],[-115.87136,50.33676],[-115.87406,50.33953],[-115.8716,50.34308],[-115.8706,50.34212],[-115.86958,50.34241],[-115.87312,50.34683],[-115.87096,50.34979],[-115.87176,50.35047],[-115.87699,50.35073],[-115.8808,50.35364],[-115.88692,50.35489],[-115.89544,50.36267],[-115.89553,50.36511],[-115.90175,50.36938],[-115.89226,50.37824],[-115.89716,50.38265],[-115.90218,50.38234],[-115.90387,50.38546],[-115.9093,50.38624],[-115.91156,50.38806],[-115.90797,50.39927],[-115.91099,50.39982],[-115.9136,50.40149],[-115.91937,50.40214],[-115.92185,50.40324],[-115.92867,50.4035],[-115.93439,50.40643],[-115.94108,50.4109],[-115.94795,50.41968],[-115.96662,50.43441],[-115.99812,50.45248],[-116.0073,50.4639],[-116.02002,50.51749],[-116.02351,50.52397],[-116.02627,50.52576],[-116.03223,50.52758],[-116.03975,50.53967],[-116.04224,50.54035],[-116.04563,50.5433],[-116.04245,50.55307],[-116.04749,50.56226],[-116.04593,50.56856],[-116.05113,50.5755],[-116.05327,50.57631],[-116.05935,50.57667],[-116.05869,50.5799],[-116.06602,50.58964],[-116.0665,50.59661],[-116.07324,50.59975],[-116.07339,50.60497],[-116.07193,50.60576],[-116.06817,50.60472],[-116.06793,50.60611],[-116.07695,50.61073],[-116.08451,50.61166],[-116.08908,50.61419],[-116.09062,50.61688],[-116.0962,50.61662],[-116.09775,50.6207],[-116.10544,50.62093],[-116.1078,50.62712],[-116.11085,50.6292],[-116.10829,50.63548],[-116.11375,50.63958],[-116.11051,50.64819],[-116.11455,50.64936],[-116.12059,50.6568],[-116.12027,50.66441],[-116.12756,50.67002],[-116.12617,50.67752],[-116.12951,50.67963],[-116.13377,50.68047],[-116.13177,50.68354],[-116.13491,50.6848],[-116.13893,50.69129],[-116.13557,50.69254],[-116.14702,50.70027],[-116.14739,50.70289],[-116.15195,50.7059],[-116.15791,50.7134],[-116.16481,50.71482],[-116.16635,50.7177],[-116.17239,50.7196],[-116.17379,50.72198],[-116.19299,50.72872],[-116.20962,50.74573],[-116.22261,50.75511],[-116.22707,50.76634],[-116.22762,50.77738],[-116.23609,50.78479],[-116.23764,50.79006],[-116.24197,50.79319],[-116.24666,50.79342],[-116.25538,50.79716],[-116.27107,50.80098],[-116.27954,50.80744],[-116.27715,50.82061],[-116.27895,50.82429],[-116.283,50.82765],[-116.28701,50.829],[-116.28881,50.84498],[-116.29613,50.84778],[-116.30066,50.85054],[-116.30571,50.85068],[-116.30857,50.85163],[-116.31459,50.85979],[-116.32544,50.866],[-116.3273,50.86903],[-116.33517,50.871],[-116.33948,50.87496],[-116.33902,50.87782],[-116.34336,50.88025],[-116.34488,50.88292],[-116.34967,50.88208],[-116.35232,50.88446],[-116.35561,50.8849],[-116.35782,50.88669],[-116.36434,50.88902],[-116.3726,50.89677],[-116.36963,50.90882],[-116.37621,50.91275],[-116.37759,50.91709],[-116.38349,50.91837],[-116.38614,50.9196],[-116.38882,50.92776],[-116.39137,50.92916],[-116.40082,50.93165],[-116.40626,50.93674],[-116.41374,50.94042],[-116.41861,50.95044],[-116.42555,50.95523],[-116.43112,50.95767],[-116.43964,50.965],[-116.44411,50.96655],[-116.45679,50.96854],[-116.46365,50.98228],[-116.46261,50.98611],[-116.46574,50.98896],[-116.47338,50.99242],[-116.48364,51.0013],[-116.48824,51.00287],[-116.49978,51.00911],[-116.51258,51.00862],[-116.51564,51.00875],[-116.5183,51.00973],[-116.52136,51.00836],[-116.52954,51.01141],[-116.53442,51.01069],[-116.53851,51.01286],[-116.54196,51.01846],[-116.55346,51.02052],[-116.55628,51.02201],[-116.56097,51.02144],[-116.57155,51.02298],[-116.57458,51.02511],[-116.57944,51.02571],[-116.5822,51.02685],[-116.58683,51.03239],[-116.60475,51.04141],[-116.61421,51.04213],[-116.61961,51.04397],[-116.6238,51.04693],[-116.63264,51.06167],[-116.63643,51.0651],[-116.64125,51.06667],[-116.64274,51.07023],[-116.64782,51.07312],[-116.65795,51.07732],[-116.66199,51.07841],[-116.66539,51.08025],[-116.66894,51.08484],[-116.6751,51.08808],[-116.67959,51.08883],[-116.68417,51.08821],[-116.68917,51.08942],[-116.69104,51.09469],[-116.70317,51.10302],[-116.707,51.10499],[-116.71472,51.10755],[-116.72402,51.1127],[-116.72744,51.11926],[-116.72915,51.12005],[-116.7414,51.12188],[-116.74486,51.12005],[-116.74375,51.11673],[-116.75077,51.11536],[-116.758,51.12024],[-116.76486,51.1232],[-116.76781,51.12936],[-116.76982,51.1305],[-116.77413,51.13142],[-116.77919,51.13347],[-116.78913,51.14135],[-116.79734,51.14103],[-116.80338,51.14624],[-116.82203,51.1506],[-116.82427,51.15174],[-116.82929,51.16023],[-116.82853,51.16893],[-116.83377,51.17091],[-116.84785,51.1734],[-116.8586,51.1767],[-116.86338,51.181],[-116.85956,51.18647],[-116.87288,51.19177],[-116.87965,51.19296],[-116.88549,51.19782],[-116.90189,51.20173],[-116.90075,51.21063],[-116.90194,51.21202],[-116.90645,51.21287],[-116.90705,51.21495],[-116.89782,51.22468],[-116.90168,51.22843],[-116.90523,51.24071],[-116.91158,51.24316],[-116.91288,51.24446],[-116.91391,51.2514],[-116.91682,51.25246],[-116.92096,51.25277],[-116.9234,51.25664],[-116.93143,51.25419],[-116.92804,51.26642],[-116.94385,51.2758],[-116.94725,51.27698],[-116.95548,51.27838],[-116.96101,51.28065],[-116.97159,51.28093],[-116.98073,51.29439],[-116.98875,51.30212],[-116.99716,51.31806],[-117.00216,51.32208],[-116.99852,51.33092],[-116.9999,51.3362],[-117.00839,51.34281],[-117.01222,51.34419],[-117.02092,51.34427],[-117.03105,51.35498],[-117.02651,51.36342],[-117.03365,51.37574],[-117.02831,51.37748],[-117.02717,51.38371],[-117.02873,51.38553],[-117.03839,51.3906],[-117.04782,51.39332],[-117.05134,51.39536],[-117.053,51.4048],[-117.05842,51.41096],[-117.06178,51.41244],[-117.07496,51.41299],[-117.08579,51.4204],[-117.09085,51.42806],[-117.08569,51.43139],[-117.07571,51.43223],[-117.0765,51.43488],[-117.08999,51.44245],[-117.09743,51.44394],[-117.1046,51.45249],[-117.11374,51.45779],[-117.11751,51.45899],[-117.12954,51.45911],[-117.12945,51.4671],[-117.13245,51.46877],[-117.14185,51.47034],[-117.15864,51.48125],[-117.17608,51.4818],[-117.19906,51.49418],[-117.19692,51.50251],[-117.19959,51.5046],[-117.20756,51.50757],[-117.21322,51.50599],[-117.21412,51.50153],[-117.21721,51.5007],[-117.22651,51.50242],[-117.22897,51.5022],[-117.23215,51.49542],[-117.24549,51.49357],[-117.24874,51.49532],[-117.25287,51.49603],[-117.25511,51.49715],[-117.26146,51.50164],[-117.26738,51.50268],[-117.28034,51.51419],[-117.28455,51.51435],[-117.28682,51.51192],[-117.29407,51.51085],[-117.2948,51.50791],[-117.30161,51.50566],[-117.30334,51.50586],[-117.30657,51.50857],[-117.32059,51.50689],[-117.32297,51.50736],[-117.32676,51.51212],[-117.32942,51.51308],[-117.33693,51.51236],[-117.34176,51.51525],[-117.34481,51.51601],[-117.35328,51.51525],[-117.36302,51.51618],[-117.37249,51.51911],[-117.38523,51.52172],[-117.39871,51.52236],[-117.41047,51.52546],[-117.42463,51.53539],[-117.42497,51.54111],[-117.44789,51.56077],[-117.46119,51.57467],[-117.46677,51.58539],[-117.47197,51.58974],[-117.48025,51.61503],[-117.49055,51.62335],[-117.53123,51.66553],[-117.54342,51.6865],[-117.55956,51.6898],[-117.57569,51.69618],[-117.61329,51.71682],[-117.68882,51.7612],[-117.69062,51.76933],[-117.68478,51.77522],[-117.69354,51.78059],[-117.69706,51.78786],[-117.70461,51.79439],[-117.72435,51.80511],[-117.75576,51.8135],[-117.78014,51.82591],[-117.92863,51.8926],[-118.05291,51.95464],[-118.08982,51.98256],[-118.11385,51.99175],[-118.13634,51.99535],[-118.15917,52.00401],[-118.19522,52.01986],[-118.23693,52.03549],[-118.29976,52.06263],[-118.34285,52.08267],[-118.38147,52.09174],[-118.40979,52.09913],[-118.42112,52.11368],[-118.43885,52.12484],[-118.52309,52.10725],[-118.56454,52.08646],[-118.5731,52.07428],[-118.56432,52.07214],[-118.56403,52.06919],[-118.58467,52.0576],[-118.59538,52.04757],[-118.59429,52.0384],[-118.58691,52.03411],[-118.57489,52.00771],[-118.56618,51.99503],[-118.56476,51.97132],[-118.57219,51.93194],[-118.56953,51.90835],[-118.57334,51.88844],[-118.57987,51.88598],[-118.59257,51.87284],[-118.61064,51.86658],[-118.61364,51.85808],[-118.62467,51.84788],[-118.64733,51.83323],[-118.64231,51.82517],[-118.65973,51.80639],[-118.67638,51.76699],[-118.67226,51.75642],[-118.66282,51.74906],[-118.6681,51.73479],[-118.65888,51.72961],[-118.65793,51.71937],[-118.65055,51.70406],[-118.65085,51.6965],[-118.65845,51.69344],[-118.65772,51.68195],[-118.65252,51.66995],[-118.64785,51.66809],[-118.64278,51.66697],[-118.63828,51.66718],[-118.63231,51.6655],[-118.62986,51.66367],[-118.62939,51.65738],[-118.62103,51.64631],[-118.62111,51.63035],[-118.62437,51.62495],[-118.613,51.60427],[-118.60798,51.6016],[-118.60253,51.59355],[-118.57955,51.57925],[-118.57174,51.56915],[-118.56772,51.56827],[-118.56202,51.5659],[-118.55148,51.55538],[-118.54472,51.55051],[-118.53292,51.54506],[-118.52781,51.53892],[-118.51631,51.53064],[-118.51577,51.52239],[-118.50996,51.51206],[-118.49966,51.49857],[-118.48361,51.48416],[-118.47125,51.4677],[-118.46558,51.4493],[-118.46438,51.42191],[-118.45803,51.40938],[-118.41546,51.36642],[-118.3722,51.33941],[-118.30491,51.30937],[-118.25135,51.27481],[-118.22028,51.22603],[-118.20775,51.19021],[-118.20998,51.15071],[-118.18852,51.10837],[-118.17942,51.07927],[-118.19217,51.05007],[-118.19591,51.04706],[-118.20989,51.0456],[-118.2169,51.04118],[-118.2119,51.02712],[-118.22199,51.01756],[-118.23637,51.01114],[-118.23744,51.00622],[-118.22555,51.00803],[-118.21847,51.00598],[-118.21182,51.00079],[-118.20512,50.99793],[-118.21489,50.98515],[-118.2083,50.97697],[-118.2083,50.95451],[-118.19169,50.94837],[-118.18405,50.94285],[-118.18088,50.92809],[-118.1674,50.92149],[-118.15418,50.9065],[-118.15178,50.8961],[-118.13916,50.88733],[-118.11614,50.87628],[-118.11191,50.86092],[-118.10871,50.85778],[-118.09985,50.85023],[-118.08627,50.846],[-118.07172,50.83859],[-118.06106,50.82253],[-118.03908,50.81054],[-118.02432,50.80789],[-118.00956,50.79991],[-118.00943,50.77842],[-117.99836,50.7581],[-117.98956,50.75069],[-117.97344,50.73182],[-117.95949,50.69701],[-117.92381,50.67297],[-117.90287,50.63335],[-117.9166,50.59686],[-117.93343,50.47062],[-117.91991,50.42801],[-117.91077,50.34897],[-117.83678,50.24018],[-117.81155,50.21349],[-117.80931,50.15843],[-117.81223,50.13702],[-117.8173,50.13169],[-117.85086,50.11265],[-117.86519,50.10979],[-117.90909,50.1074],[-117.91557,50.10541],[-117.92911,50.09446],[-117.93139,50.07932],[-117.92237,50.06363],[-117.90327,50.01064],[-117.8988,49.99559],[-117.90031,49.9861],[-117.91562,49.97326],[-117.93717,49.96872],[-117.98566,49.96224],[-118.00379,49.95633],[-118.02166,49.93657],[-118.05983,49.91125],[-118.09369,49.86745],[-118.09994,49.84781],[-118.10122,49.79379],[-118.12558,49.76824],[-118.13093,49.72351],[-118.14274,49.69237],[-118.14396,49.66476],[-118.15727,49.64449],[-118.15663,49.63393],[-118.14536,49.61288],[-118.14824,49.59223],[-118.1385,49.54599],[-118.13083,49.51642],[-118.1212,49.50563],[-118.11009,49.48782],[-118.10785,49.47037],[-118.10204,49.46219],[-118.10168,49.44828],[-118.0808,49.42612],[-118.06152,49.41275],[-118.05079,49.40839],[-118.02918,49.4072],[-118.02397,49.40536],[-118.00935,49.39785],[-117.98524,49.3804],[-117.97201,49.37309],[-117.96649,49.37071],[-117.95464,49.36745],[-117.9407,49.36275],[-117.92648,49.35562],[-117.90666,49.35075],[-117.89855,49.34686],[-117.88226,49.34312],[-117.87691,49.34027],[-117.87022,49.33873],[-117.8478,49.34012],[-117.78798,49.33887],[-117.77817,49.33936],[-117.77056,49.3421],[-117.76836,49.34037],[-117.7474,49.34087],[-117.71782,49.33699],[-117.69003,49.33082],[-117.66952,49.33161],[-117.65213,49.32799],[-117.64757,49.32422],[-117.65662,49.31101],[-117.65536,49.30745],[-117.64773,49.30215],[-117.64422,49.29709],[-117.64085,49.26745],[-117.6544,49.25599],[-117.65114,49.24174],[-117.67557,49.22434],[-117.68358,49.20798],[-117.70117,49.20029],[-117.70989,49.20038],[-117.71238,49.19893],[-117.71643,49.17258],[-117.73716,49.14064],[-117.73607,49.125],[-117.73406,49.12042],[-117.71574,49.11138],[-117.71103,49.10314],[-117.70167,49.09443],[-117.65329,49.09547],[-117.64641,49.091],[-117.6262,49.08441],[-117.61706,49.07861],[-117.6121,49.07235],[-117.61604,49.06043],[-117.61317,49.04741],[-117.61592,49.03572],[-117.6134,49.03254],[-117.6089,49.03146],[-117.60468,49.02723],[-117.60582,49.01669],[-117.63815,48.99572],[-117.64421,48.97303],[-117.67395,48.96337],[-117.69294,48.95383],[-117.71096,48.94951],[-117.72483,48.93698],[-117.72887,48.93704],[-117.73659,48.94011],[-117.73835,48.94028],[-117.75033,48.9354],[-117.75974,48.93523],[-117.76872,48.92567],[-117.79738,48.91629],[-117.80633,48.91067],[-117.8079,48.9012],[-117.82224,48.89506],[-117.84429,48.87825],[-117.86106,48.87321],[-117.87552,48.87109],[-117.88638,48.86007],[-117.9058,48.854],[-117.91896,48.84674],[-117.92325,48.84274],[-117.92353,48.82397],[-117.9262,48.8194],[-117.9499,48.81316],[-117.95432,48.81343],[-117.9598,48.81506],[-117.98132,48.81854],[-118.00571,48.81012],[-118.01282,48.80381],[-118.00815,48.79162],[-118.01265,48.77571],[-118.04275,48.76421],[-118.05566,48.75285],[-118.05765,48.73972],[-118.05277,48.73073],[-118.05046,48.7286],[-118.04621,48.72672],[-118.04371,48.72041],[-118.03024,48.70233],[-118.02297,48.68213],[-118.02703,48.67902],[-118.0487,48.67293],[-118.0686,48.66912],[-118.101,48.66642],[-118.10773,48.66459],[-118.10472,48.64492],[-118.10738,48.64076],[-118.11582,48.63738],[-118.1167,48.63086],[-118.11996,48.63031],[-118.11799,48.62297],[-118.12448,48.6174],[-118.12852,48.60756],[-118.12558,48.58421],[-118.13614,48.57097],[-118.14264,48.54921],[-118.14087,48.52773],[-118.14949,48.52074],[-118.15461,48.52036],[-118.16429,48.52271],[-118.17016,48.52321],[-118.17849,48.51785],[-118.18282,48.48895],[-118.19772,48.47599],[-118.20471,48.47359],[-118.21199,48.46362],[-118.21392,48.45414],[-118.20589,48.44433],[-118.20288,48.43681],[-118.20428,48.41079],[-118.192,48.393],[-118.18052,48.36128],[-118.17739,48.32938],[-118.17983,48.32011],[-118.17869,48.31769],[-118.17103,48.31264],[-118.16714,48.30831],[-118.15992,48.30551],[-118.15635,48.30229],[-118.1548,48.28665],[-118.14332,48.27395],[-118.14048,48.26728],[-118.14076,48.26104],[-118.15275,48.23843],[-118.19308,48.21292],[-118.18604,48.20008],[-118.18685,48.19578],[-118.19153,48.19476],[-118.19603,48.18946],[-118.18933,48.15939],[-118.19147,48.15077],[-118.20512,48.13942],[-118.24642,48.13391],[-118.25535,48.12933],[-118.25476,48.11487],[-118.23881,48.10284],[-118.23223,48.08958],[-118.23601,48.07818],[-118.23481,48.06461],[-118.2402,48.05709],[-118.25093,48.05499],[-118.25612,48.05946],[-118.2642,48.05846],[-118.26798,48.04545],[-118.27635,48.04072],[-118.31296,48.04121],[-118.32604,48.04403],[-118.33267,48.04676],[-118.34209,48.04955],[-118.35895,48.04896],[-118.39841,48.0307],[-118.40129,48.02729],[-118.40097,48.02326],[-118.39227,48.013],[-118.38454,48.00876],[-118.37913,48.00446],[-118.37031,47.98805],[-118.36271,47.98088],[-118.34926,47.97264],[-118.35625,47.93147],[-118.35266,47.92014],[-118.34028,47.90013],[-118.34245,47.89259],[-118.34935,47.88506],[-118.34845,47.87581],[-118.35542,47.86026],[-118.3566,47.84295],[-118.36491,47.83553],[-118.36968,47.83294],[-118.39128,47.83044],[-118.39714,47.83115],[-118.41122,47.83458],[-118.41773,47.83509],[-118.4238,47.83855],[-118.42999,47.83913],[-118.44359,47.84423],[-118.44903,47.84754],[-118.45638,47.85527],[-118.45672,47.87261],[-118.46116,47.87987],[-118.46611,47.88207],[-118.47852,47.8764],[-118.50588,47.87259],[-118.52162,47.87346],[-118.53081,47.87718],[-118.53649,47.88031],[-118.54019,47.88789],[-118.53714,47.90933],[-118.54284,47.91925],[-118.54916,47.92557],[-118.55911,47.93015],[-118.58503,47.92978],[-118.59869,47.92779],[-118.6253,47.9279],[-118.63753,47.9293],[-118.64906,47.93196],[-118.6589,47.93651],[-118.66595,47.93861],[-118.67548,47.94266],[-118.68309,47.94165],[-118.70119,47.93373],[-118.70577,47.92959],[-118.71049,47.91874],[-118.7092,47.91553],[-118.71624,47.90445],[-118.72355,47.90178],[-118.73513,47.90097],[-118.74746,47.90333],[-118.76141,47.91012],[-118.77714,47.91492],[-118.78533,47.91649],[-118.80239,47.91803],[-118.81051,47.91975],[-118.81714,47.92242],[-118.8255,47.92815],[-118.83086,47.93439],[-118.83515,47.95217],[-118.83878,47.95487],[-118.84687,47.95736],[-118.86345,47.95708],[-118.9184,47.94443],[-118.94881,47.9411],[-118.96282,47.94229],[-118.96975,47.94467],[-118.9798,47.95057],[-118.98287,47.9558],[-118.98262,47.96916],[-118.96473,47.98506],[-118.96093,47.99893],[-118.9524,48.00927],[-118.95311,48.0209],[-118.95751,48.02465],[-118.96836,48.03001],[-118.97983,48.03736],[-118.99424,48.04032],[-119.00319,48.04326],[-119.00581,48.04535],[-119.01866,48.06932],[-119.02464,48.10312],[-119.02903,48.11344],[-119.05727,48.13778],[-119.06054,48.13905],[-119.07607,48.13959],[-119.09337,48.13691],[-119.10511,48.13888],[-119.11396,48.14529],[-119.12726,48.15109],[-119.13396,48.15109],[-119.15371,48.14473],[-119.17553,48.12987],[-119.1947,48.12705],[-119.21309,48.1156],[-119.22185,48.11608],[-119.23366,48.11317],[-119.25358,48.1024],[-119.25917,48.10193],[-119.26536,48.10356],[-119.28943,48.11456],[-119.29848,48.11489],[-119.3064,48.11166],[-119.3255,48.09864],[-119.32983,48.08224],[-119.32747,48.07047],[-119.33374,48.05543],[-119.3439,48.04956],[-119.36479,48.05258],[-119.39335,48.04978],[-119.40256,48.05077],[-119.40962,48.05555],[-119.41375,48.0571],[-119.42394,48.06285],[-119.43403,48.07499],[-119.44055,48.07864],[-119.44607,48.07916],[-119.45008,48.0781],[-119.46303,48.08042],[-119.47078,48.07847],[-119.48304,48.07858],[-119.48704,48.07958],[-119.49206,48.08188],[-119.50072,48.08251],[-119.51506,48.07566],[-119.51739,48.06319],[-119.52247,48.0583],[-119.53019,48.05398],[-119.54321,48.05077],[-119.56597,48.03459],[-119.59514,48.02101],[-119.60833,48.00974],[-119.61592,47.9986],[-119.6223,47.99595],[-119.6364,47.99675],[-119.65415,48.00072],[-119.66937,48.0113],[-119.68697,48.02145],[-119.6911,48.02512],[-119.69347,48.03303],[-119.68239,48.04677],[-119.66979,48.07105],[-119.67194,48.07799],[-119.68044,48.08403],[-119.68571,48.08618],[-119.71289,48.08366],[-119.74273,48.09069],[-119.78749,48.08571],[-119.81157,48.08674],[-119.82707,48.07955],[-119.84542,48.07627],[-119.88728,48.05772],[-119.89534,48.05058],[-119.89323,48.0446],[-119.88026,48.0289],[-119.86951,48.01894],[-119.86839,48.01558],[-119.86864,48.00129],[-119.8731,47.99222],[-119.88147,47.98478],[-119.88374,47.97228],[-119.86573,47.95443],[-119.86503,47.94686],[-119.86012,47.94154],[-119.88862,47.91772],[-119.91232,47.90489],[-119.91551,47.89753],[-119.90893,47.87867],[-119.91545,47.86709],[-119.93067,47.85552],[-119.95994,47.84614],[-119.96417,47.82745],[-119.97572,47.81085],[-119.9784,47.80062],[-119.99365,47.78238],[-120.0007,47.77932],[-120.0107,47.78006],[-120.02755,47.77817],[-120.08788,47.763],[-120.09615,47.76417],[-120.09905,47.76685],[-120.10733,47.77079],[-120.11103,47.77156],[-120.11623,47.77445],[-120.12669,47.77648],[-120.13287,47.77629],[-120.18537,47.76145],[-120.20776,47.75018],[-120.21851,47.73763],[-120.22317,47.72225],[-120.20437,47.70083],[-120.19905,47.68228],[-120.20456,47.67158],[-120.21678,47.66368],[-120.22135,47.64997],[-120.22775,47.64704],[-120.23637,47.63309],[-120.23659,47.60616],[-120.23358,47.59845],[-120.24051,47.58265],[-120.25336,47.57239],[-120.25887,47.55893],[-120.27583,47.55122],[-120.29325,47.53739],[-120.30201,47.52204],[-120.31828,47.46109],[-120.30885,47.43336],[-120.2964,47.41314],[-120.29429,47.40248],[-120.28451,47.39277],[-120.27783,47.38938],[-120.25435,47.38216],[-120.23563,47.37872],[-120.22624,47.37915],[-120.21346,47.37722],[-120.20173,47.37672],[-120.179,47.37172],[-120.16919,47.37054],[-120.16487,47.36762],[-120.12996,47.36605],[-120.11676,47.35845],[-120.10193,47.34392],[-120.09691,47.34121],[-120.0909,47.34213],[-120.08513,47.33804],[-120.08301,47.33449],[-120.09016,47.31893],[-120.0868,47.31391],[-120.08606,47.30008],[-120.09643,47.25467],[-120.09124,47.24061],[-120.07694,47.22657],[-120.07335,47.22484],[-120.05772,47.22402],[-120.04524,47.22578],[-120.01717,47.22644],[-120.00939,47.22238],[-120.00351,47.21561],[-120.00582,47.19865],[-120.00336,47.18468],[-120.01077,47.16802],[-120.00923,47.1587],[-120.0009,47.14504],[-120.0019,47.12724],[-120.01135,47.11187],[-120.02716,47.10531],[-120.03958,47.08294],[-120.04248,47.06955],[-120.03608,47.05728],[-120.03152,47.05305],[-120.01358,47.04108],[-120.00749,47.03376],[-120.00524,47.0145],[-119.98289,46.97264],[-119.97665,46.9508],[-119.97182,46.94412],[-119.96886,46.94349],[-119.96813,46.94233],[-119.97212,46.93808],[-119.96745,46.91727],[-119.9754,46.87765],[-119.97156,46.8728],[-119.96637,46.87251],[-119.9638,46.85551],[-119.92675,46.81565],[-119.92778,46.79752],[-119.94083,46.77737],[-119.9688,46.75634],[-119.97337,46.73038],[-119.97285,46.72117],[-119.96905,46.71387],[-119.93455,46.66877],[-119.93202,46.66075],[-119.90856,46.64303],[-119.90104,46.63511],[-119.89447,46.63214],[-119.87951,46.62996],[-119.87031,46.62739],[-119.85576,46.62559],[-119.82851,46.62522],[-119.79425,46.63152],[-119.76387,46.63542],[-119.74963,46.6356],[-119.72173,46.64649],[-119.71272,46.64804],[-119.69223,46.64838],[-119.68162,46.64681],[-119.66201,46.64063],[-119.65383,46.64007],[-119.62262,46.64537],[-119.59718,46.65937],[-119.54275,46.70203],[-119.52104,46.72433],[-119.51462,46.72694],[-119.50388,46.72496],[-119.49995,46.72362],[-119.48429,46.71478],[-119.48085,46.70965],[-119.46193,46.6943],[-119.45413,46.6906],[-119.45144,46.68833],[-119.44919,46.68479],[-119.45764,46.67465],[-119.45619,46.67107],[-119.44865,46.6667],[-119.43972,46.66286],[-119.41765,46.65584],[-119.41277,46.65233],[-119.40716,46.63728],[-119.40792,46.62123],[-119.40027,46.60979],[-119.38196,46.59585],[-119.36728,46.58245],[-119.3521,46.57404],[-119.32957,46.56489],[-119.32381,46.56087],[-119.30307,46.53778],[-119.28308,46.52909],[-119.27081,46.52216],[-119.25511,46.48368],[-119.253,46.47252],[-119.25387,46.46512],[-119.26135,46.46395],[-119.26278,46.45557],[-119.25915,46.43277],[-119.26608,46.40627],[-119.26544,46.3829],[-119.26953,46.37092],[-119.26297,46.35151],[-119.2583,46.3475],[-119.25531,46.34041],[-119.25053,46.31389],[-119.26642,46.28726],[-119.26634,46.27459],[-119.26047,46.26949],[-119.2475,46.26633],[-119.24246,46.26443],[-119.23685,46.26115],[-119.21044,46.23894],[-119.20413,46.23561],[-119.18713,46.23281],[-119.168,46.22741],[-119.13844,46.22635],[-119.13428,46.22459],[-119.09401,46.21509],[-119.08101,46.21126],[-119.04626,46.19733],[-119.03565,46.19255],[-119.02701,46.18741],[-118.98197,46.148],[-118.9771,46.13875],[-118.9648,46.12593],[-118.96188,46.11844],[-118.94678,46.09832],[-118.94229,46.08869],[-118.93944,46.07408],[-118.94231,46.05343],[-118.95179,46.02687],[-118.95991,46.01911],[-118.98728,45.99986],[-119.00343,45.98053],[-119.02179,45.97027],[-119.05638,45.95798],[-119.1029,45.93722],[-119.1332,45.93023],[-119.15329,45.92695],[-119.18539,45.92611],[-119.20581,45.9279],[-119.24238,45.9393],[-119.26162,45.94176],[-119.28435,45.94001],[-119.318,45.93502],[-119.34958,45.92384],[-119.37533,45.92002],[-119.45241,45.91459],[-119.48579,45.90527],[-119.52219,45.90766],[-119.53163,45.91011],[-119.55884,45.92044],[-119.56931,45.92378],[-119.58115,45.92516],[-119.58853,45.92384],[-119.61463,45.90903],[-119.63977,45.88651],[-119.68964,45.86542],[-119.71333,45.85741],[-119.72552,45.84886],[-119.74183,45.84516],[-119.76294,45.84468],[-119.78886,45.84862],[-119.81161,45.84803],[-119.89551,45.8294],[-119.95838,45.82312],[-119.97735,45.81606],[-120.01001,45.80745],[-120.06318,45.78698],[-120.11897,45.77818],[-120.14927,45.76857],[-120.16905,45.76058],[-120.20943,45.72602],[-120.2908,45.71889],[-120.3323,45.70975],[-120.39878,45.69842],[-120.46332,45.69509],[-120.48701,45.69671],[-120.50194,45.70004],[-120.51525,45.70705],[-120.54597,45.73066],[-120.56456,45.73866],[-120.58571,45.74357],[-120.60198,45.74621],[-120.6258,45.74594],[-120.64198,45.7427],[-120.65923,45.73557],[-120.69158,45.72188],[-120.69122,45.71964],[-120.70315,45.71384],[-120.70646,45.71482],[-120.74128,45.70169],[-120.79008,45.68654],[-120.84627,45.67215],[-120.89788,45.64147],[-120.90595,45.63985],[-120.92075,45.64153],[-120.93766,45.65524],[-120.94165,45.65689],[-120.94899,45.65737],[-120.9837,45.64854],[-120.99307,45.65125],[-121.00598,45.65368],[-121.02083,45.65458],[-121.03633,45.65905],[-121.04388,45.65872],[-121.07268,45.65137],[-121.09383,45.64036],[-121.11786,45.62358],[-121.13699,45.6165],[-121.14921,45.60834],[-121.17151,45.60554],[-121.18069,45.60587],[-121.19177,45.61134],[-121.19575,45.61586],[-121.19476,45.6319],[-121.20034,45.65188],[-121.20849,45.6595],[-121.21261,45.66568],[-121.21965,45.67132],[-121.2472,45.67672],[-121.28171,45.68541],[-121.28758,45.68733],[-121.31248,45.69977],[-121.33805,45.70481],[-121.37492,45.7025],[-121.39363,45.69363],[-121.4029,45.69225],[-121.41346,45.69303],[-121.43174,45.69548],[-121.46126,45.70304],[-121.48573,45.71389],[-121.50186,45.72018],[-121.5186,45.72186],[-121.52325,45.72316],[-121.53595,45.72392],[-121.54572,45.72072],[-121.59894,45.71293],[-121.62709,45.70609],[-121.66817,45.70487],[-121.70731,45.69484],[-121.73517,45.69405],[-121.75549,45.69674],[-121.78562,45.70424],[-121.80562,45.70723],[-121.82081,45.70603],[-121.8433,45.70016],[-121.88467,45.68325],[-121.89557,45.67642],[-121.89951,45.67132],[-121.90136,45.6607],[-121.90883,45.65455],[-121.93829,45.63958],[-121.95875,45.638],[-121.96718,45.63061],[-121.99729,45.61889],[-122.00444,45.61676],[-122.01907,45.61554],[-122.0777,45.5963],[-122.1661,45.57666],[-122.19846,45.56109],[-122.2581,45.54886],[-122.2916,45.54565],[-122.31274,45.54541],[-122.32705,45.54895],[-122.33795,45.55617],[-122.35044,45.56997],[-122.3601,45.57307],[-122.38309,45.57428],[-122.4144,45.56575],[-122.43002,45.56599],[-122.44307,45.56828],[-122.45668,45.57118],[-122.47914,45.58037],[-122.51728,45.58696],[-122.53948,45.59156],[-122.55187,45.59618],[-122.56255,45.59892],[-122.6018,45.60396],[-122.63482,45.60636],[-122.65181,45.60948],[-122.68383,45.62134],[-122.71333,45.63624],[-122.739,45.64381],[-122.74571,45.64466],[-122.75339,45.64895],[-122.76339,45.65942],[-122.77266,45.67993],[-122.76099,45.73327],[-122.76251,45.7615],[-122.76378,45.76714],[-122.78183,45.79091],[-122.79333,45.81201],[-122.79247,45.8239],[-122.7845,45.84808],[-122.78546,45.86549],[-122.78729,45.87018],[-122.79607,45.87907],[-122.80978,45.90832],[-122.80559,45.93895],[-122.80718,45.9453],[-122.81628,45.96128],[-122.83984,45.98298],[-122.85725,46.01275],[-122.86229,46.01826],[-122.86975,46.02167],[-122.87323,46.02649],[-122.87938,46.04081],[-122.88209,46.05538],[-122.88924,46.06893],[-122.89698,46.07767],[-122.90563,46.08362],[-122.91597,46.08816],[-122.9589,46.10344],[-122.96593,46.10663],[-122.99876,46.13017],[-123.00796,46.13501],[-123.02635,46.14005],[-123.03337,46.14287],[-123.05309,46.15516],[-123.06311,46.157],[-123.1062,46.17518],[-123.11643,46.18078],[-123.12601,46.18365],[-123.15531,46.18942],[-123.16319,46.18884],[-123.18469,46.18343],[-123.22844,46.16787],[-123.26701,46.14885],[-123.27594,46.14661],[-123.32684,46.144],[-123.34827,46.1449],[-123.38235,46.14963],[-123.38942,46.1518],[-123.39305,46.1536],[-123.42788,46.17888],[-123.43025,46.1978],[-123.42499,46.21475],[-123.43326,46.23922],[-123.45683,46.25733],[-123.46984,46.26432],[-123.48913,46.26653],[-123.50614,46.26456],[-123.55944,46.2541],[-123.59742,46.25696],[-123.62031,46.2561],[-123.65163,46.26057],[-123.6636,46.26008],[-123.70486,46.24104],[-123.72922,46.23686],[-123.77046,46.22551],[-123.86142,46.21564],[-123.89938,46.21745],[-123.91103,46.22048],[-123.935,46.2287],[-123.96628,46.24423],[-123.99905,46.25238],[-124.02302,46.25352],[-124.08614,46.24927]],"norte":[[-118.57293,52.0774],[-118.5731,52.07428],[-118.56432,52.07214],[-118.56403,52.06919],[-118.58467,52.0576],[-118.59538,52.04757],[-118.59639,52.04283],[-118.59429,52.0384],[-118.58691,52.03411],[-118.57489,52.00771],[-118.56618,51.99503],[-118.56476,51.97132],[-118.57219,51.93194],[-118.56953,51.90835],[-118.57334,51.88844],[-118.57987,51.88598],[-118.59257,51.87284],[-118.61064,51.86658],[-118.61364,51.85808],[-118.62467,51.84788],[-118.64733,51.83323],[-118.64231,51.82517],[-118.65973,51.80639],[-118.67638,51.76699],[-118.67226,51.75642],[-118.66282,51.74906],[-118.6681,51.73479],[-118.65888,51.72961],[-118.65793,51.71937],[-118.65055,51.70406],[-118.65085,51.6965],[-118.65845,51.69344],[-118.6545,51.67383],[-118.65252,51.66995],[-118.64785,51.66809],[-118.64278,51.66697],[-118.63828,51.66718],[-118.63231,51.6655],[-118.62986,51.66367],[-118.62939,51.65738],[-118.62103,51.64631],[-118.62111,51.63035],[-118.62437,51.62495],[-118.613,51.60427],[-118.60798,51.6016],[-118.60253,51.59355],[-118.57955,51.57925],[-118.57174,51.56915],[-118.56772,51.56827],[-118.56202,51.5659],[-118.55148,51.55538],[-118.54472,51.55051],[-118.53292,51.54506],[-118.52781,51.53892],[-118.51631,51.53064],[-118.51577,51.52239],[-118.50996,51.51206],[-118.49966,51.49857],[-118.48361,51.48416],[-118.47125,51.4677],[-118.46558,51.4493],[-118.46438,51.42191],[-118.45803,51.40938],[-118.41546,51.36642],[-118.3722,51.33941],[-118.30491,51.30937],[-118.25135,51.27481],[-118.22028,51.22603],[-118.20775,51.19021],[-118.20998,51.15071],[-118.18852,51.10837],[-118.17942,51.07927],[-118.19217,51.05007],[-118.19591,51.04706],[-118.20989,51.0456],[-118.2169,51.04118],[-118.2119,51.02712],[-118.22199,51.01756],[-118.23637,51.01114],[-118.23744,51.00622],[-118.22555,51.00803],[-118.21847,51.00598],[-118.21182,51.00079],[-118.20512,50.99793],[-118.21489,50.98515],[-118.2083,50.97697],[-118.2083,50.95451],[-118.19169,50.94837],[-118.18405,50.94285],[-118.18088,50.92809],[-118.1674,50.92149],[-118.15418,50.9065],[-118.15178,50.8961],[-118.13916,50.88733],[-118.11614,50.87628],[-118.11191,50.86092],[-118.10871,50.85778],[-118.09985,50.85023],[-118.08627,50.846],[-118.07172,50.83859],[-118.06106,50.82253],[-118.03908,50.81054],[-118.02432,50.80789],[-118.00956,50.79991],[-118.00943,50.77842],[-117.99836,50.7581],[-117.98956,50.75069],[-117.97344,50.73182],[-117.95949,50.69701],[-117.92381,50.67297],[-117.90287,50.63335],[-117.9166,50.59686],[-117.93343,50.47062],[-117.91991,50.42801],[-117.91077,50.34897],[-117.83678,50.24018],[-117.81155,50.21349],[-117.80931,50.15843],[-117.81223,50.13702],[-117.8173,50.13169],[-117.85086,50.11265],[-117.86519,50.10979],[-117.90909,50.1074],[-117.91557,50.10541],[-117.92911,50.09446],[-117.93139,50.07932],[-117.92237,50.06363],[-117.90327,50.01064],[-117.8988,49.99559],[-117.90031,49.9861],[-117.91562,49.97326],[-117.93717,49.96872],[-117.98566,49.96224],[-118.00379,49.95633],[-118.02166,49.93657],[-118.05983,49.91125],[-118.09369,49.86745],[-118.09994,49.84781],[-118.10122,49.79379],[-118.12558,49.76824],[-118.13093,49.72351],[-118.14274,49.69237],[-118.14396,49.66476],[-118.15727,49.64449],[-118.15663,49.63393],[-118.14536,49.61288],[-118.14824,49.59223],[-118.13192,49.5193],[-118.11009,49.48782],[-118.10785,49.47037],[-118.10204,49.46219],[-118.10168,49.44828],[-118.0808,49.42612],[-118.06152,49.41275],[-118.05079,49.40839],[-118.02918,49.4072],[-118.02397,49.40536],[-118.00935,49.39785],[-117.98524,49.3804],[-117.96649,49.37071],[-117.95464,49.36745],[-117.9407,49.36275],[-117.92648,49.35562],[-117.90666,49.35075],[-117.89855,49.34686],[-117.88226,49.34312],[-117.87691,49.34027],[-117.87022,49.33873],[-117.8478,49.34012],[-117.78798,49.33887],[-117.77817,49.33936],[-117.77056,49.3421],[-117.76836,49.34037],[-117.771998,49.339807]],"jus":[[-117.771998,49.339807],[-117.7474,49.34087],[-117.71782,49.33699],[-117.69003,49.33082],[-117.66952,49.33161],[-117.65213,49.32799],[-117.64757,49.32422],[-117.65662,49.31101],[-117.65536,49.30745],[-117.64773,49.30215],[-117.64422,49.29709],[-117.64085,49.26745],[-117.6544,49.25599],[-117.65114,49.24174],[-117.67557,49.22434],[-117.68358,49.20798],[-117.70117,49.20029],[-117.70989,49.20038],[-117.71238,49.19893],[-117.71643,49.17258],[-117.73716,49.14064],[-117.73607,49.125],[-117.73406,49.12042],[-117.71574,49.11138],[-117.71103,49.10314],[-117.70167,49.09443],[-117.65329,49.09547],[-117.64641,49.091],[-117.6262,49.08441],[-117.61706,49.07861],[-117.6121,49.07235],[-117.61604,49.06043],[-117.61317,49.04741],[-117.61592,49.03572],[-117.6134,49.03254],[-117.6089,49.03146],[-117.60468,49.02723],[-117.60582,49.01669],[-117.63815,48.99572],[-117.64421,48.97303],[-117.67395,48.96337],[-117.69294,48.95383],[-117.71096,48.94951],[-117.72483,48.93698],[-117.72887,48.93704],[-117.73659,48.94011],[-117.73835,48.94028],[-117.75033,48.9354],[-117.75974,48.93523],[-117.76872,48.92567],[-117.79738,48.91629],[-117.80633,48.91067],[-117.8079,48.9012],[-117.82224,48.89506],[-117.84429,48.87825],[-117.86106,48.87321],[-117.87552,48.87109],[-117.88638,48.86007],[-117.9058,48.854],[-117.91896,48.84674],[-117.92325,48.84274],[-117.92353,48.82397],[-117.9262,48.8194],[-117.9499,48.81316],[-117.95432,48.81343],[-117.9598,48.81506],[-117.98132,48.81854],[-118.00571,48.81012],[-118.01282,48.80381],[-118.00815,48.79162],[-118.01265,48.77571],[-118.04275,48.76421],[-118.05566,48.75285],[-118.05765,48.73972],[-118.05277,48.73073],[-118.05046,48.7286],[-118.04621,48.72672],[-118.04371,48.72041],[-118.03024,48.70233],[-118.02297,48.68213],[-118.02703,48.67902],[-118.0487,48.67293],[-118.0686,48.66912],[-118.101,48.66642],[-118.10773,48.66459],[-118.10472,48.64492],[-118.10738,48.64076],[-118.11582,48.63738],[-118.1167,48.63086],[-118.11996,48.63031],[-118.11799,48.62297],[-118.12448,48.6174],[-118.12852,48.60756],[-118.12558,48.58421],[-118.13614,48.57097],[-118.14264,48.54921],[-118.14087,48.52773],[-118.14949,48.52074],[-118.15461,48.52036],[-118.16429,48.52271],[-118.17016,48.52321],[-118.17849,48.51785],[-118.18282,48.48895],[-118.19772,48.47599],[-118.20471,48.47359],[-118.21199,48.46362],[-118.21392,48.45414],[-118.20589,48.44433],[-118.20288,48.43681],[-118.20428,48.41079],[-118.192,48.393],[-118.18052,48.36128],[-118.17739,48.32938],[-118.17983,48.32011],[-118.17869,48.31769],[-118.17103,48.31264],[-118.16714,48.30831],[-118.15992,48.30551],[-118.15635,48.30229],[-118.1548,48.28665],[-118.14332,48.27395],[-118.14048,48.26728],[-118.14076,48.26104],[-118.15275,48.23843],[-118.19308,48.21292],[-118.18604,48.20008],[-118.18685,48.19578],[-118.19153,48.19476],[-118.19603,48.18946],[-118.18933,48.15939],[-118.19147,48.15077],[-118.20512,48.13942],[-118.24642,48.13391],[-118.25535,48.12933],[-118.25476,48.11487],[-118.23881,48.10284],[-118.23223,48.08958],[-118.23601,48.07818],[-118.23481,48.06461],[-118.2402,48.05709],[-118.25093,48.05499],[-118.25612,48.05946],[-118.2642,48.05846],[-118.26798,48.04545],[-118.27635,48.04072],[-118.31296,48.04121],[-118.32604,48.04403],[-118.33267,48.04676],[-118.34209,48.04955],[-118.35895,48.04896],[-118.39841,48.0307],[-118.40129,48.02729],[-118.40097,48.02326],[-118.39227,48.013],[-118.38454,48.00876],[-118.37913,48.00446],[-118.37031,47.98805],[-118.36271,47.98088],[-118.34926,47.97264],[-118.35625,47.93147],[-118.35266,47.92014],[-118.34028,47.90013],[-118.34245,47.89259],[-118.34935,47.88506],[-118.34845,47.87581],[-118.35542,47.86026],[-118.3566,47.84295],[-118.36491,47.83553],[-118.36968,47.83294],[-118.39128,47.83044],[-118.39714,47.83115],[-118.41122,47.83458],[-118.41773,47.83509],[-118.4238,47.83855],[-118.42999,47.83913],[-118.44359,47.84423],[-118.44903,47.84754],[-118.45638,47.85527],[-118.45672,47.87261],[-118.46116,47.87987],[-118.46611,47.88207],[-118.47852,47.8764],[-118.50588,47.87259],[-118.52162,47.87346],[-118.53081,47.87718],[-118.53649,47.88031],[-118.54019,47.88789],[-118.53714,47.90933],[-118.54284,47.91925],[-118.54916,47.92557],[-118.55911,47.93015],[-118.58503,47.92978],[-118.59869,47.92779],[-118.6253,47.9279],[-118.63753,47.9293],[-118.64906,47.93196],[-118.6589,47.93651],[-118.66595,47.93861],[-118.67548,47.94266],[-118.68309,47.94165],[-118.70119,47.93373],[-118.70577,47.92959],[-118.71049,47.91874],[-118.7092,47.91553],[-118.71624,47.90445],[-118.72355,47.90178],[-118.73513,47.90097],[-118.74746,47.90333],[-118.76141,47.91012],[-118.77714,47.91492],[-118.78533,47.91649],[-118.80239,47.91803],[-118.81051,47.91975],[-118.81714,47.92242],[-118.8255,47.92815],[-118.83086,47.93439],[-118.83515,47.95217],[-118.83878,47.95487],[-118.84687,47.95736],[-118.86345,47.95708],[-118.9184,47.94443],[-118.94881,47.9411],[-118.96282,47.94229],[-118.96975,47.94467],[-118.9798,47.95057],[-118.98287,47.9558],[-118.98262,47.96916],[-118.96473,47.98506],[-118.96093,47.99893],[-118.9524,48.00927],[-118.95311,48.0209],[-118.95751,48.02465],[-118.96836,48.03001],[-118.97983,48.03736],[-118.99424,48.04032],[-119.00319,48.04326],[-119.00581,48.04535],[-119.01866,48.06932],[-119.02464,48.10312],[-119.02903,48.11344],[-119.05727,48.13778],[-119.06054,48.13905],[-119.07607,48.13959],[-119.09337,48.13691],[-119.10511,48.13888],[-119.11396,48.14529],[-119.12726,48.15109],[-119.13396,48.15109],[-119.15371,48.14473],[-119.17553,48.12987],[-119.1947,48.12705],[-119.21309,48.1156],[-119.22185,48.11608],[-119.23366,48.11317],[-119.25358,48.1024],[-119.25917,48.10193],[-119.26536,48.10356],[-119.28943,48.11456],[-119.29848,48.11489],[-119.3064,48.11166],[-119.3255,48.09864],[-119.32983,48.08224],[-119.32747,48.07047],[-119.33374,48.05543],[-119.3439,48.04956],[-119.36479,48.05258],[-119.39335,48.04978],[-119.40256,48.05077],[-119.40962,48.05555],[-119.41375,48.0571],[-119.42394,48.06285],[-119.43403,48.07499],[-119.44055,48.07864],[-119.44607,48.07916],[-119.45008,48.0781],[-119.46303,48.08042],[-119.47078,48.07847],[-119.48304,48.07858],[-119.48704,48.07958],[-119.49206,48.08188],[-119.50072,48.08251],[-119.51506,48.07566],[-119.51739,48.06319],[-119.52247,48.0583],[-119.53019,48.05398],[-119.54321,48.05077],[-119.56597,48.03459],[-119.59514,48.02101],[-119.60833,48.00974],[-119.61592,47.9986],[-119.6223,47.99595],[-119.6364,47.99675],[-119.65415,48.00072],[-119.66937,48.0113],[-119.68697,48.02145],[-119.6911,48.02512],[-119.69347,48.03303],[-119.68239,48.04677],[-119.66979,48.07105],[-119.67194,48.07799],[-119.68044,48.08403],[-119.68571,48.08618],[-119.71289,48.08366],[-119.74273,48.09069],[-119.78749,48.08571],[-119.81157,48.08674],[-119.82707,48.07955],[-119.84542,48.07627],[-119.88728,48.05772],[-119.89534,48.05058],[-119.89323,48.0446],[-119.88026,48.0289],[-119.86951,48.01894],[-119.86839,48.01558],[-119.86864,48.00129],[-119.8731,47.99222],[-119.88147,47.98478],[-119.88374,47.97228],[-119.86573,47.95443],[-119.86503,47.94686],[-119.86012,47.94154],[-119.88862,47.91772],[-119.91232,47.90489],[-119.91551,47.89753],[-119.90893,47.87867],[-119.91545,47.86709],[-119.93067,47.85552],[-119.95994,47.84614],[-119.96417,47.82745],[-119.97572,47.81085],[-119.9784,47.80062],[-119.99365,47.78238],[-120.0007,47.77932],[-120.0107,47.78006],[-120.02755,47.77817],[-120.08788,47.763],[-120.09615,47.76417],[-120.09905,47.76685],[-120.10733,47.77079],[-120.11103,47.77156],[-120.11623,47.77445],[-120.12669,47.77648],[-120.13287,47.77629],[-120.18537,47.76145],[-120.20776,47.75018],[-120.21851,47.73763],[-120.22317,47.72225],[-120.20437,47.70083],[-120.19905,47.68228],[-120.20456,47.67158],[-120.21678,47.66368],[-120.22135,47.64997],[-120.22775,47.64704],[-120.23637,47.63309],[-120.23659,47.60616],[-120.23358,47.59845],[-120.24051,47.58265],[-120.25336,47.57239],[-120.25887,47.55893],[-120.27583,47.55122],[-120.29325,47.53739],[-120.30201,47.52204],[-120.31828,47.46109],[-120.30885,47.43336],[-120.2964,47.41314],[-120.29429,47.40248],[-120.28451,47.39277],[-120.27783,47.38938],[-120.25435,47.38216],[-120.23563,47.37872],[-120.22624,47.37915],[-120.21346,47.37722],[-120.20173,47.37672],[-120.179,47.37172],[-120.16919,47.37054],[-120.16487,47.36762],[-120.12996,47.36605],[-120.11676,47.35845],[-120.10193,47.34392],[-120.09691,47.34121],[-120.0909,47.34213],[-120.08513,47.33804],[-120.08301,47.33449],[-120.09016,47.31893],[-120.0868,47.31391],[-120.08606,47.30008],[-120.09643,47.25467],[-120.09124,47.24061],[-120.07694,47.22657],[-120.07335,47.22484],[-120.05772,47.22402],[-120.04524,47.22578],[-120.01717,47.22644],[-120.00939,47.22238],[-120.00351,47.21561],[-120.00582,47.19865],[-120.00336,47.18468],[-120.01077,47.16802],[-120.00923,47.1587],[-120.0009,47.14504],[-120.0019,47.12724],[-120.01135,47.11187],[-120.02716,47.10531],[-120.03958,47.08294],[-120.04248,47.06955],[-120.03608,47.05728],[-120.03152,47.05305],[-120.01358,47.04108],[-120.00749,47.03376],[-120.00524,47.0145],[-119.98289,46.97264],[-119.97665,46.9508],[-119.97182,46.94412],[-119.96886,46.94349],[-119.96813,46.94233],[-119.97212,46.93808],[-119.96745,46.91727],[-119.9754,46.87765],[-119.97156,46.8728],[-119.96637,46.87251],[-119.9638,46.85551],[-119.92675,46.81565],[-119.92778,46.79752],[-119.94083,46.77737],[-119.9688,46.75634],[-119.97337,46.73038],[-119.97285,46.72117],[-119.96905,46.71387],[-119.93455,46.66877],[-119.93202,46.66075],[-119.90856,46.64303],[-119.90104,46.63511],[-119.89447,46.63214],[-119.87951,46.62996],[-119.87031,46.62739],[-119.85576,46.62559],[-119.82851,46.62522],[-119.79425,46.63152],[-119.76387,46.63542],[-119.74963,46.6356],[-119.72173,46.64649],[-119.71272,46.64804],[-119.69223,46.64838],[-119.68162,46.64681],[-119.66201,46.64063],[-119.65383,46.64007],[-119.62262,46.64537],[-119.59718,46.65937],[-119.54275,46.70203],[-119.52104,46.72433],[-119.51462,46.72694],[-119.50388,46.72496],[-119.49995,46.72362],[-119.48429,46.71478],[-119.48085,46.70965],[-119.46193,46.6943],[-119.45413,46.6906],[-119.45144,46.68833],[-119.44919,46.68479],[-119.45764,46.67465],[-119.45619,46.67107],[-119.44865,46.6667],[-119.43972,46.66286],[-119.41765,46.65584],[-119.41277,46.65233],[-119.40716,46.63728],[-119.40792,46.62123],[-119.40027,46.60979],[-119.38196,46.59585],[-119.36728,46.58245],[-119.3521,46.57404],[-119.32957,46.56489],[-119.32381,46.56087],[-119.30307,46.53778],[-119.28308,46.52909],[-119.27081,46.52216],[-119.25511,46.48368],[-119.253,46.47252],[-119.25387,46.46512],[-119.26135,46.46395],[-119.26278,46.45557],[-119.25915,46.43277],[-119.26608,46.40627],[-119.26544,46.3829],[-119.26953,46.37092],[-119.26297,46.35151],[-119.2583,46.3475],[-119.25531,46.34041],[-119.25053,46.31389],[-119.26642,46.28726],[-119.26634,46.27459],[-119.26047,46.26949],[-119.2475,46.26633],[-119.24246,46.26443],[-119.23685,46.26115],[-119.21044,46.23894],[-119.20413,46.23561],[-119.18713,46.23281],[-119.168,46.22741],[-119.13844,46.22635],[-119.13428,46.22459],[-119.09401,46.21509],[-119.08101,46.21126],[-119.04626,46.19733],[-119.03565,46.19255],[-119.02701,46.18741],[-118.98197,46.148],[-118.9771,46.13875],[-118.9648,46.12593],[-118.96188,46.11844],[-118.94678,46.09832],[-118.93991,46.08011],[-118.93963,46.06734],[-118.95179,46.02687],[-118.98728,45.99986],[-119.00343,45.98053],[-119.02179,45.97027],[-119.05638,45.95798],[-119.1029,45.93722],[-119.1332,45.93023],[-119.15329,45.92695],[-119.18539,45.92611],[-119.20581,45.9279],[-119.24238,45.9393],[-119.26162,45.94176],[-119.28435,45.94001],[-119.318,45.93502],[-119.34958,45.92384],[-119.37533,45.92002],[-119.45241,45.91459],[-119.48579,45.90527],[-119.52219,45.90766],[-119.53163,45.91011],[-119.55884,45.92044],[-119.56931,45.92378],[-119.58115,45.92516],[-119.58853,45.92384],[-119.60081,45.91817],[-119.63977,45.88651],[-119.68964,45.86542],[-119.71333,45.85741],[-119.72552,45.84886],[-119.74183,45.84516],[-119.76294,45.84468],[-119.78886,45.84862],[-119.81161,45.84803],[-119.89551,45.8294],[-119.95838,45.82312],[-119.97735,45.81606],[-120.01001,45.80745],[-120.06318,45.78698],[-120.11897,45.77818],[-120.14927,45.76857],[-120.16905,45.76058],[-120.20943,45.72602],[-120.2908,45.71889],[-120.3323,45.70975],[-120.39878,45.69842],[-120.46332,45.69509],[-120.48701,45.69671],[-120.50194,45.70004],[-120.51525,45.70705],[-120.54597,45.73066],[-120.56456,45.73866],[-120.58571,45.74357],[-120.60198,45.74621],[-120.6258,45.74594],[-120.64198,45.7427],[-120.65923,45.73557],[-120.69158,45.72188],[-120.69122,45.71964],[-120.70315,45.71384],[-120.70646,45.71482],[-120.74128,45.70169],[-120.79008,45.68654],[-120.84627,45.67215],[-120.89788,45.64147],[-120.90595,45.63985],[-120.92075,45.64153],[-120.93766,45.65524],[-120.94165,45.65689],[-120.94899,45.65737],[-120.9837,45.64854],[-120.99307,45.65125],[-121.00598,45.65368],[-121.02083,45.65458],[-121.03633,45.65905],[-121.04388,45.65872],[-121.07268,45.65137],[-121.09383,45.64036],[-121.11786,45.62358],[-121.13699,45.6165],[-121.15244,45.60723],[-121.18069,45.60587],[-121.18807,45.60906],[-121.19177,45.61134],[-121.19668,45.61765],[-121.19476,45.6319],[-121.20034,45.65188],[-121.20849,45.6595],[-121.21261,45.66568],[-121.21965,45.67132],[-121.2472,45.67672],[-121.28171,45.68541],[-121.28758,45.68733],[-121.31248,45.69977],[-121.33805,45.70481],[-121.36513,45.70388],[-121.37492,45.7025],[-121.39363,45.69363],[-121.4029,45.69225],[-121.41346,45.69303],[-121.43174,45.69548],[-121.46126,45.70304],[-121.48573,45.71389],[-121.50186,45.72018],[-121.5186,45.72186],[-121.52325,45.72316],[-121.53595,45.72392],[-121.54572,45.72072],[-121.59894,45.71293],[-121.62709,45.70609],[-121.66817,45.70487],[-121.70731,45.69484],[-121.73517,45.69405],[-121.75549,45.69674],[-121.78562,45.70424],[-121.80562,45.70723],[-121.82081,45.70603],[-121.8433,45.70016],[-121.88467,45.68325],[-121.89951,45.67132],[-121.90389,45.65809],[-121.93829,45.63958],[-121.95875,45.638],[-121.96718,45.63061],[-121.99729,45.61889],[-122.00444,45.61676],[-122.01907,45.61554],[-122.0777,45.5963],[-122.1661,45.57666],[-122.19846,45.56109],[-122.2581,45.54886],[-122.2916,45.54565],[-122.31274,45.54541],[-122.32705,45.54895],[-122.33795,45.55617],[-122.35044,45.56997],[-122.3601,45.57307],[-122.38309,45.57428],[-122.4144,45.56575],[-122.43002,45.56599],[-122.45668,45.57118],[-122.47914,45.58037],[-122.51728,45.58696],[-122.53948,45.59156],[-122.55187,45.59618],[-122.56255,45.59892],[-122.6018,45.60396],[-122.63482,45.60636],[-122.65181,45.60948]],"notas":[[-121.18807,45.60906],[-120.6258,45.74594],[-120.46332,45.69509],[-120.21669,45.72458],[-119.58853,45.92384],[-119.1029,45.93722],[-118.95179,46.02687],[-119.02701,46.18741],[-119.26634,46.27459],[-119.27081,46.52216],[-119.49995,46.72362],[-119.65383,46.64007],[-119.85576,46.62559],[-119.93202,46.66075],[-120.00351,47.21561],[-120.07694,47.22657],[-120.0909,47.34213],[-120.28945,47.39676],[-120.30293,47.51965],[-119.81157,48.08674],[-119.68044,48.08403],[-119.6364,47.99675],[-119.12726,48.15109],[-118.95311,48.0209],[-118.96975,47.94467],[-118.84687,47.95736],[-118.73513,47.90097],[-118.55911,47.93015],[-118.53081,47.87718],[-118.46611,47.88207],[-118.44359,47.84423],[-118.36491,47.83553],[-118.40129,48.02729],[-118.19147,48.15077],[-118.21199,48.46362],[-118.05566,48.75285],[-117.60582,49.01669],[-117.61706,49.07861],[-117.73607,49.125],[-117.6533,49.316],[-117.65213,49.32799],[-117.76836,49.34037]],"lago":[[[-118.1566,49.67907],[-118.15556,49.67986],[-118.15607,49.6806],[-118.15911,49.68201],[-118.15682,49.68272],[-118.15511,49.68233],[-118.15481,49.68357],[-118.15691,49.68603],[-118.15994,49.68734],[-118.16017,49.68982],[-118.15537,49.69656],[-118.15424,49.7003],[-118.15107,49.70542],[-118.15148,49.70929],[-118.14794,49.71387],[-118.14715,49.71903],[-118.14618,49.72021],[-118.14636,49.72735],[-118.14464,49.73017],[-118.14506,49.73103],[-118.14374,49.73121],[-118.1446,49.73233],[-118.14337,49.73641],[-118.14505,49.7478],[-118.14323,49.75124],[-118.13984,49.75489],[-118.1397,49.76701],[-118.14016,49.76902],[-118.14301,49.77059],[-118.1428,49.77124],[-118.14081,49.77165],[-118.14218,49.77376],[-118.13801,49.77374],[-118.13908,49.77619],[-118.13692,49.77892],[-118.13805,49.78032],[-118.13484,49.77923],[-118.13215,49.77935],[-118.12969,49.77966],[-118.12737,49.7809],[-118.12521,49.78298],[-118.12495,49.78569],[-118.12345,49.78612],[-118.1232,49.7879],[-118.12117,49.78864],[-118.11559,49.79359],[-118.11495,49.795],[-118.11267,49.79651],[-118.1125,49.79829],[-118.11144,49.79917],[-118.11274,49.7996],[-118.11326,49.80179],[-118.11157,49.8112],[-118.11326,49.8157],[-118.11191,49.82036],[-118.11298,49.82387],[-118.11211,49.83163],[-118.11399,49.834],[-118.11458,49.83871],[-118.11418,49.84162],[-118.11291,49.84276],[-118.11463,49.84621],[-118.11378,49.84752],[-118.11099,49.84872],[-118.11238,49.85296],[-118.11154,49.855],[-118.11286,49.85827],[-118.11192,49.85945],[-118.10813,49.86062],[-118.11051,49.86082],[-118.11055,49.86252],[-118.10741,49.86459],[-118.10671,49.86812],[-118.10534,49.87002],[-118.10645,49.87251],[-118.10299,49.87029],[-118.10114,49.87145],[-118.09793,49.87205],[-118.09588,49.87767],[-118.09717,49.87996],[-118.09372,49.885],[-118.09076,49.89373],[-118.08802,49.8963],[-118.08475,49.89708],[-118.08401,49.8988],[-118.08154,49.89777],[-118.0797,49.89899],[-118.07653,49.90431],[-118.07388,49.90653],[-118.07296,49.90981],[-118.07157,49.9102],[-118.07132,49.91166],[-118.06756,49.91496],[-118.06446,49.91614],[-118.06331,49.91745],[-118.06117,49.91788],[-118.05569,49.92238],[-118.05149,49.92474],[-118.04442,49.93216],[-118.04385,49.93367],[-118.04205,49.93344],[-118.04101,49.93582],[-118.03113,49.94265],[-118.02911,49.95022],[-118.02727,49.9514],[-118.02598,49.95438],[-118.02238,49.95689],[-118.02158,49.95856],[-118.02056,49.95838],[-118.01938,49.95912],[-118.01872,49.95855],[-118.01502,49.95817],[-118.01221,49.95968],[-118.01105,49.96237],[-118.0089,49.96374],[-118.00254,49.96477],[-117.99095,49.96822],[-117.98392,49.96795],[-117.98001,49.97032],[-117.97497,49.97143],[-117.96971,49.97067],[-117.96755,49.97201],[-117.96335,49.97254],[-117.95884,49.97149],[-117.95322,49.97331],[-117.94688,49.97264],[-117.94551,49.97322],[-117.94502,49.97458],[-117.93561,49.97749],[-117.9216,49.97958],[-117.92036,49.98035],[-117.92088,49.98167],[-117.91762,49.98346],[-117.91441,49.98404],[-117.9095,49.98958],[-117.90663,49.99089],[-117.90718,49.99391],[-117.90816,49.99435],[-117.9092,49.99703],[-117.91046,49.99764],[-117.9103,50.00075],[-117.91259,50.00221],[-117.91182,50.00269],[-117.91259,50.00548],[-117.9151,50.00759],[-117.91464,50.01077],[-117.91568,50.01163],[-117.91516,50.01256],[-117.91712,50.01883],[-117.91642,50.02018],[-117.92016,50.02692],[-117.91864,50.02829],[-117.92136,50.02907],[-117.92119,50.03034],[-117.92386,50.03166],[-117.92511,50.03361],[-117.92458,50.03724],[-117.92787,50.04364],[-117.92723,50.04573],[-117.92853,50.04825],[-117.9285,50.05245],[-117.92962,50.05374],[-117.92919,50.05639],[-117.92812,50.0569],[-117.92832,50.05956],[-117.93016,50.06012],[-117.92976,50.06124],[-117.93117,50.06125],[-117.93164,50.06221],[-117.93055,50.06294],[-117.93197,50.06496],[-117.93279,50.065],[-117.9322,50.0655],[-117.93312,50.06539],[-117.93244,50.06623],[-117.93328,50.06679],[-117.93297,50.0683],[-117.93708,50.07212],[-117.93768,50.07465],[-117.93902,50.0759],[-117.93792,50.07829],[-117.94031,50.07989],[-117.93779,50.07967],[-117.93854,50.08292],[-117.94069,50.0835],[-117.93874,50.08335],[-117.93804,50.08395],[-117.93853,50.089],[-117.93638,50.08853],[-117.93397,50.09189],[-117.93551,50.09259],[-117.93299,50.09305],[-117.93031,50.09714],[-117.93255,50.098],[-117.92971,50.09789],[-117.92623,50.10209],[-117.9295,50.10198],[-117.93088,50.10273],[-117.93283,50.10196],[-117.93555,50.10294],[-117.936,50.10661],[-117.93775,50.10694],[-117.93856,50.10838],[-117.93771,50.1105],[-117.93914,50.11029],[-117.93955,50.11162],[-117.94197,50.11256],[-117.94372,50.11711],[-117.94548,50.11772],[-117.94646,50.11949],[-117.94888,50.12037],[-117.94905,50.12136],[-117.9523,50.12296],[-117.95224,50.12527],[-117.94999,50.12532],[-117.95136,50.12356],[-117.95094,50.12278],[-117.94774,50.12229],[-117.94557,50.12077],[-117.94429,50.12112],[-117.94257,50.11968],[-117.93861,50.11902],[-117.93798,50.11683],[-117.93888,50.11621],[-117.94079,50.11665],[-117.94042,50.11556],[-117.93574,50.11576],[-117.93505,50.11273],[-117.93625,50.11203],[-117.93599,50.11136],[-117.93469,50.11019],[-117.93213,50.11045],[-117.93109,50.10978],[-117.9321,50.10767],[-117.92939,50.10513],[-117.9223,50.10478],[-117.91775,50.10751],[-117.91633,50.10947],[-117.91444,50.11005],[-117.90889,50.11074],[-117.9014,50.11003],[-117.89702,50.11192],[-117.88931,50.11328],[-117.88464,50.11326],[-117.88344,50.11263],[-117.88279,50.11317],[-117.87659,50.11363],[-117.87567,50.11323],[-117.87328,50.11399],[-117.86671,50.1133],[-117.86327,50.11358],[-117.86234,50.11475],[-117.85129,50.11631],[-117.85,50.11853],[-117.84632,50.12129],[-117.84419,50.12619],[-117.83925,50.12687],[-117.83321,50.12931],[-117.83249,50.13194],[-117.8344,50.13267],[-117.8321,50.13199],[-117.82979,50.13402],[-117.83217,50.13632],[-117.83061,50.13523],[-117.82728,50.13575],[-117.82503,50.13684],[-117.82348,50.13977],[-117.81709,50.1417],[-117.81716,50.14305],[-117.81547,50.14339],[-117.81671,50.149],[-117.81994,50.15003],[-117.81973,50.15793],[-117.82161,50.16098],[-117.82438,50.16329],[-117.82433,50.16812],[-117.82729,50.1716],[-117.82726,50.1846],[-117.83044,50.18925],[-117.83229,50.19559],[-117.83201,50.1974],[-117.82867,50.19963],[-117.82963,50.20127],[-117.82742,50.20483],[-117.82779,50.20955],[-117.82586,50.21031],[-117.83164,50.21469],[-117.83471,50.21811],[-117.838,50.21938],[-117.83993,50.223],[-117.84472,50.22439],[-117.84815,50.22782],[-117.85138,50.22963],[-117.85342,50.23479],[-117.85868,50.23842],[-117.86037,50.24105],[-117.86615,50.25518],[-117.86643,50.26036],[-117.87074,50.26451],[-117.87234,50.26923],[-117.87846,50.27396],[-117.88365,50.2799],[-117.88656,50.28051],[-117.8943,50.2887],[-117.89579,50.29191],[-117.89894,50.29355],[-117.90278,50.29887],[-117.90532,50.30037],[-117.91042,50.30715],[-117.91129,50.3129],[-117.92061,50.31696],[-117.93006,50.32465],[-117.93274,50.32914],[-117.93322,50.33172],[-117.92749,50.33851],[-117.92916,50.34355],[-117.93398,50.34759],[-117.93146,50.34899],[-117.92986,50.349],[-117.92893,50.3512],[-117.93406,50.35373],[-117.9386,50.35375],[-117.939,50.35423],[-117.93539,50.36062],[-117.93993,50.36071],[-117.94067,50.36152],[-117.94258,50.36113],[-117.94119,50.36209],[-117.93986,50.36503],[-117.94144,50.36825],[-117.94038,50.37655],[-117.93426,50.37849],[-117.93158,50.38049],[-117.9303,50.38519],[-117.92891,50.38515],[-117.92732,50.38706],[-117.92548,50.38783],[-117.92607,50.39011],[-117.92538,50.39151],[-117.92661,50.39457],[-117.92906,50.39654],[-117.92958,50.40434],[-117.93091,50.40512],[-117.93129,50.40764],[-117.93383,50.40955],[-117.93239,50.41033],[-117.93371,50.41047],[-117.93322,50.41215],[-117.93619,50.41986],[-117.93859,50.42186],[-117.93873,50.42334],[-117.94164,50.42658],[-117.94724,50.42849],[-117.95064,50.43105],[-117.95342,50.43429],[-117.9541,50.4383],[-117.95737,50.43854],[-117.95537,50.43926],[-117.95389,50.44145],[-117.95399,50.4428],[-117.95755,50.44556],[-117.9588,50.45187],[-117.95602,50.45332],[-117.95848,50.45818],[-117.95483,50.46146],[-117.95434,50.46294],[-117.95486,50.46875],[-117.957,50.46987],[-117.95531,50.47746],[-117.95763,50.48444],[-117.95758,50.48856],[-117.95634,50.48976],[-117.95636,50.49192],[-117.95312,50.49546],[-117.95452,50.49662],[-117.9537,50.4983],[-117.95583,50.50342],[-117.95303,50.50717],[-117.9522,50.50967],[-117.95307,50.51199],[-117.94884,50.51931],[-117.94879,50.52244],[-117.94497,50.52647],[-117.94576,50.52756],[-117.9483,50.52855],[-117.94742,50.53082],[-117.94825,50.5319],[-117.94643,50.53425],[-117.94644,50.53582],[-117.94907,50.53994],[-117.9495,50.54585],[-117.94828,50.54676],[-117.94737,50.55009],[-117.94922,50.55196],[-117.94803,50.55385],[-117.95239,50.55822],[-117.95192,50.5607],[-117.95414,50.56517],[-117.95397,50.56562],[-117.94971,50.56601],[-117.9521,50.56754],[-117.95166,50.5683],[-117.95367,50.57114],[-117.95324,50.5743],[-117.95458,50.57566],[-117.95375,50.58026],[-117.95137,50.5817],[-117.95108,50.58337],[-117.94566,50.58848],[-117.94557,50.58968],[-117.94918,50.59509],[-117.94841,50.59855],[-117.94626,50.60114],[-117.94233,50.60292],[-117.94266,50.60625],[-117.93928,50.61144],[-117.94109,50.61324],[-117.9411,50.61626],[-117.94632,50.62351],[-117.94643,50.62548],[-117.94094,50.6276],[-117.93978,50.63185],[-117.9313,50.63349],[-117.92864,50.63477],[-117.92838,50.63378],[-117.92538,50.63351],[-117.92254,50.63088],[-117.92092,50.63171],[-117.92073,50.63425],[-117.92249,50.63488],[-117.92264,50.63596],[-117.92586,50.63599],[-117.92623,50.63677],[-117.92528,50.6366],[-117.9247,50.63841],[-117.92796,50.642],[-117.9327,50.64986],[-117.94017,50.6571],[-117.93996,50.65942],[-117.94272,50.66048],[-117.94283,50.66314],[-117.94582,50.66443],[-117.947,50.6667],[-117.95013,50.66816],[-117.95435,50.67378],[-117.95949,50.67679],[-117.96384,50.68185],[-117.97482,50.68809],[-117.97681,50.69015],[-117.97661,50.69156],[-117.98103,50.69458],[-117.98226,50.69696],[-117.98878,50.70326],[-117.9888,50.70665],[-117.99046,50.70974],[-117.98944,50.71315],[-117.99055,50.71625],[-117.98585,50.71962],[-117.98503,50.72166],[-117.9832,50.72174],[-117.98302,50.72314],[-117.98534,50.72626],[-117.98623,50.7308],[-117.98793,50.73248],[-117.98747,50.73403],[-117.98931,50.73725],[-117.99055,50.74286],[-117.99349,50.74512],[-117.99207,50.74502],[-117.99129,50.74674],[-118.00065,50.75419],[-118.00231,50.75689],[-118.00339,50.75629],[-118.00243,50.75827],[-118.0057,50.76268],[-118.01536,50.76821],[-118.02129,50.77603],[-118.02344,50.78569],[-118.02297,50.78745],[-118.02313,50.78494],[-118.0216,50.7814],[-118.0173,50.78641],[-118.0185,50.79201],[-118.02164,50.79481],[-118.02998,50.79845],[-118.03203,50.80136],[-118.03108,50.80467],[-118.0328,50.8048],[-118.04182,50.81034],[-118.05903,50.81338],[-118.06857,50.82123],[-118.06783,50.82312],[-118.07089,50.82475],[-118.07193,50.8267],[-118.07405,50.82724],[-118.07664,50.82598],[-118.07479,50.82737],[-118.07721,50.82943],[-118.0782,50.83618],[-118.08085,50.83735],[-118.08477,50.83735],[-118.08297,50.83814],[-118.08398,50.83869],[-118.0863,50.83801],[-118.08891,50.83876],[-118.08933,50.83803],[-118.09102,50.83959],[-118.09155,50.83881],[-118.09514,50.83861],[-118.0953,50.83945],[-118.09762,50.84075],[-118.10306,50.84273],[-118.10444,50.84444],[-118.10943,50.84762],[-118.11417,50.84926],[-118.11174,50.85296],[-118.11243,50.85368],[-118.11576,50.85438],[-118.11654,50.85384],[-118.11677,50.85521],[-118.12083,50.85388],[-118.1238,50.85502],[-118.12776,50.86534],[-118.12961,50.86691],[-118.132,50.87133],[-118.13208,50.87327],[-118.13434,50.87556],[-118.1358,50.87889],[-118.13547,50.88118],[-118.14382,50.88814],[-118.15265,50.89279],[-118.15731,50.89625],[-118.15665,50.89663],[-118.15947,50.90066],[-118.15839,50.90393],[-118.16791,50.91181],[-118.16736,50.91574],[-118.16942,50.91917],[-118.17139,50.91994],[-118.17153,50.92161],[-118.18017,50.92512],[-118.18023,50.92429],[-118.18229,50.92466],[-118.18161,50.92544],[-118.18573,50.92945],[-118.1852,50.93205],[-118.18776,50.9327],[-118.18702,50.93332],[-118.18943,50.93496],[-118.18989,50.93955],[-118.19431,50.94165],[-118.19663,50.94437],[-118.19598,50.94561],[-118.19802,50.9481],[-118.1996,50.94875],[-118.20019,50.94821],[-118.2021,50.94851],[-118.20341,50.95167],[-118.20895,50.95422],[-118.21276,50.95918],[-118.21322,50.96081],[-118.21247,50.96036],[-118.21168,50.96161],[-118.21027,50.96925],[-118.20896,50.97012],[-118.21023,50.97487],[-118.21323,50.97805],[-118.21379,50.9815],[-118.20583,50.98027],[-118.20656,50.97709],[-118.20382,50.97297],[-118.204,50.96852],[-118.20252,50.96538],[-118.20035,50.96347],[-118.20091,50.96269],[-118.19907,50.96181],[-118.19903,50.96282],[-118.19607,50.9629],[-118.19542,50.96182],[-118.1922,50.96131],[-118.19093,50.95971],[-118.18981,50.96064],[-118.19251,50.96481],[-118.19255,50.96383],[-118.19441,50.96378],[-118.19664,50.96596],[-118.20047,50.9665],[-118.19781,50.96707],[-118.19967,50.96861],[-118.19564,50.97038],[-118.195,50.96932],[-118.19261,50.96866],[-118.1939,50.96784],[-118.19268,50.96701],[-118.19397,50.96709],[-118.19367,50.96658],[-118.19212,50.96663],[-118.17618,50.95582],[-118.17582,50.94647],[-118.17739,50.94321],[-118.16468,50.9429],[-118.15911,50.94483],[-118.15628,50.94394],[-118.15519,50.94156],[-118.15628,50.94008],[-118.15799,50.93943],[-118.15954,50.93575],[-118.15785,50.93451],[-118.15117,50.93379],[-118.14622,50.9291],[-118.14302,50.92456],[-118.14359,50.92303],[-118.14693,50.92225],[-118.1517,50.92287],[-118.15645,50.92445],[-118.15738,50.92413],[-118.15192,50.91871],[-118.14205,50.91703],[-118.13792,50.9152],[-118.13641,50.91377],[-118.13818,50.91282],[-118.13818,50.91078],[-118.13283,50.90888],[-118.12997,50.90709],[-118.12628,50.90662],[-118.12398,50.90527],[-118.12136,50.89988],[-118.12414,50.89919],[-118.11522,50.89448],[-118.11065,50.89043],[-118.11146,50.88814],[-118.10829,50.88684],[-118.10665,50.88482],[-118.10219,50.8833],[-118.10112,50.88213],[-118.09783,50.8762],[-118.09946,50.87207],[-118.09895,50.86729],[-118.09577,50.86223],[-118.09646,50.86035],[-118.09694,50.86386],[-118.09689,50.86056],[-118.09898,50.85927],[-118.09774,50.85606],[-118.09291,50.85428],[-118.08918,50.8552],[-118.0763,50.85011],[-118.06443,50.84074],[-118.06362,50.83842],[-118.05912,50.83359],[-118.0494,50.82818],[-118.04857,50.82536],[-118.04362,50.82652],[-118.04275,50.82777],[-118.04146,50.8278],[-118.03046,50.82345],[-118.03034,50.8227],[-118.03659,50.82465],[-118.03778,50.82408],[-118.03756,50.82124],[-118.03582,50.81926],[-118.03899,50.81886],[-118.04067,50.81792],[-118.03738,50.818],[-118.03766,50.81679],[-118.03424,50.81883],[-118.03777,50.81592],[-118.04058,50.81577],[-118.03906,50.81408],[-118.03895,50.81256],[-118.0253,50.81034],[-118.02033,50.81305],[-118.02089,50.81434],[-118.01797,50.81127],[-118.01535,50.80981],[-118.01412,50.81002],[-118.00653,50.8043],[-118.00552,50.80292],[-118.00585,50.80091],[-118.0041,50.79926],[-118.00584,50.79512],[-118.00177,50.78942],[-118.00251,50.78652],[-118.00126,50.78153],[-117.9954,50.77524],[-117.99652,50.77384],[-117.99676,50.77118],[-117.99371,50.77004],[-117.99266,50.76717],[-117.99096,50.76735],[-117.99026,50.76809],[-117.98985,50.7677],[-117.992,50.76665],[-117.99199,50.76374],[-117.9903,50.76344],[-117.98918,50.76458],[-117.99062,50.76613],[-117.98947,50.76508],[-117.98748,50.76478],[-117.98819,50.76374],[-117.98709,50.75927],[-117.98599,50.7587],[-117.98492,50.7551],[-117.98065,50.75335],[-117.98185,50.75273],[-117.98077,50.75039],[-117.97699,50.74959],[-117.97466,50.75103],[-117.97009,50.74762],[-117.96837,50.74258],[-117.96394,50.73702],[-117.96283,50.73513],[-117.96322,50.73405],[-117.9595,50.72886],[-117.95843,50.72477],[-117.95649,50.72224],[-117.95533,50.71668],[-117.95295,50.71248],[-117.94937,50.70839],[-117.94357,50.7042],[-117.94062,50.69991],[-117.93666,50.69896],[-117.93254,50.69524],[-117.92313,50.69188],[-117.92128,50.69204],[-117.92042,50.69291],[-117.91668,50.69325],[-117.90838,50.69235],[-117.89765,50.69246],[-117.88532,50.69542],[-117.88074,50.69485],[-117.87184,50.69703],[-117.86249,50.69743],[-117.86081,50.69834],[-117.8588,50.6984],[-117.8542,50.70099],[-117.84991,50.70182],[-117.84598,50.70381],[-117.83422,50.70491],[-117.82861,50.70627],[-117.82468,50.70617],[-117.82524,50.71277],[-117.82333,50.71477],[-117.82296,50.71688],[-117.82178,50.71834],[-117.8193,50.71884],[-117.81752,50.72028],[-117.81679,50.72293],[-117.80896,50.72656],[-117.80401,50.73294],[-117.80415,50.7354],[-117.80272,50.7381],[-117.79683,50.7451],[-117.79505,50.74418],[-117.79299,50.7463],[-117.78813,50.74823],[-117.77906,50.74925],[-117.77541,50.75086],[-117.77301,50.75396],[-117.75642,50.75913],[-117.75124,50.75713],[-117.74843,50.75773],[-117.74708,50.75728],[-117.7453,50.75935],[-117.74307,50.7595],[-117.73863,50.75882],[-117.73473,50.75702],[-117.73153,50.7565],[-117.72265,50.758],[-117.72215,50.75897],[-117.72173,50.75797],[-117.72033,50.75856],[-117.71972,50.75818],[-117.72045,50.75774],[-117.7162,50.75646],[-117.71447,50.7551],[-117.71517,50.75359],[-117.71386,50.7528],[-117.71303,50.74737],[-117.71433,50.74703],[-117.71753,50.74859],[-117.71913,50.74795],[-117.7209,50.74824],[-117.72058,50.74516],[-117.7212,50.74392],[-117.72385,50.74239],[-117.72417,50.7405],[-117.72756,50.74014],[-117.73085,50.73735],[-117.73158,50.73893],[-117.73568,50.73722],[-117.74768,50.73721],[-117.7517,50.73609],[-117.75439,50.73402],[-117.75894,50.73332],[-117.77184,50.7281],[-117.77826,50.72661],[-117.78166,50.72237],[-117.78128,50.71856],[-117.78516,50.71632],[-117.78801,50.71352],[-117.7892,50.70748],[-117.79935,50.69809],[-117.80261,50.6939],[-117.80586,50.69878],[-117.80851,50.69971],[-117.81251,50.69979],[-117.81862,50.69537],[-117.82575,50.693],[-117.83413,50.69155],[-117.84298,50.69105],[-117.84407,50.69022],[-117.84395,50.68819],[-117.84596,50.68648],[-117.84504,50.68518],[-117.8459,50.68409],[-117.84928,50.68473],[-117.84929,50.68375],[-117.86873,50.68025],[-117.87495,50.67848],[-117.87774,50.67695],[-117.87888,50.67534],[-117.88828,50.67388],[-117.89226,50.67252],[-117.89625,50.66631],[-117.89839,50.66032],[-117.89799,50.65721],[-117.89512,50.65381],[-117.88778,50.65195],[-117.87573,50.65199],[-117.87401,50.65286],[-117.87082,50.65723],[-117.86426,50.66263],[-117.86022,50.66757],[-117.85138,50.67232],[-117.8464,50.67125],[-117.84569,50.67279],[-117.84481,50.67237],[-117.84296,50.6735],[-117.84214,50.67336],[-117.84353,50.67297],[-117.84598,50.66908],[-117.84481,50.66239],[-117.84262,50.65848],[-117.84255,50.65537],[-117.84459,50.65383],[-117.84439,50.65299],[-117.84577,50.6531],[-117.84456,50.65084],[-117.85153,50.64577],[-117.85913,50.6374],[-117.8586,50.63622],[-117.86041,50.63683],[-117.86453,50.63318],[-117.86549,50.62963],[-117.86445,50.62963],[-117.86357,50.6283],[-117.8675,50.62657],[-117.86798,50.62199],[-117.86928,50.62208],[-117.87188,50.62042],[-117.87293,50.61765],[-117.87598,50.61549],[-117.87768,50.61516],[-117.87951,50.61178],[-117.8813,50.61059],[-117.88209,50.60744],[-117.88594,50.60562],[-117.88712,50.60615],[-117.88709,50.6051],[-117.88849,50.60653],[-117.89087,50.60409],[-117.89297,50.60359],[-117.89531,50.604],[-117.89708,50.60276],[-117.90116,50.60211],[-117.90433,50.60054],[-117.90878,50.59759],[-117.91225,50.59139],[-117.91142,50.59096],[-117.91038,50.58613],[-117.90869,50.58493],[-117.90872,50.58232],[-117.90755,50.58081],[-117.90874,50.57494],[-117.90597,50.57232],[-117.9054,50.57055],[-117.90397,50.57029],[-117.90355,50.56821],[-117.90014,50.56536],[-117.8993,50.56139],[-117.90164,50.55453],[-117.90317,50.55196],[-117.905,50.55078],[-117.90788,50.54524],[-117.90817,50.54204],[-117.90716,50.54002],[-117.90903,50.53648],[-117.90758,50.53231],[-117.90526,50.53009],[-117.9063,50.5274],[-117.90515,50.52622],[-117.90473,50.52343],[-117.90185,50.51964],[-117.9,50.514],[-117.90205,50.50666],[-117.90584,50.50255],[-117.9072,50.49918],[-117.90753,50.49394],[-117.91137,50.48818],[-117.91091,50.48561],[-117.91274,50.48457],[-117.91128,50.48194],[-117.91283,50.47885],[-117.91198,50.47454],[-117.91373,50.4715],[-117.91308,50.46866],[-117.91572,50.46733],[-117.91503,50.46644],[-117.91562,50.46532],[-117.91402,50.46405],[-117.91513,50.46289],[-117.91104,50.45623],[-117.91081,50.45339],[-117.90911,50.45208],[-117.90975,50.44972],[-117.90722,50.44905],[-117.90589,50.4469],[-117.90374,50.44711],[-117.90257,50.44658],[-117.90024,50.44389],[-117.89651,50.44508],[-117.89298,50.44369],[-117.89264,50.44269],[-117.89028,50.4417],[-117.89059,50.43998],[-117.88915,50.43746],[-117.89474,50.43336],[-117.89934,50.42826],[-117.89908,50.42373],[-117.89771,50.42043],[-117.89986,50.41499],[-117.89976,50.41108],[-117.89323,50.39922],[-117.89367,50.39332],[-117.89216,50.38901],[-117.89285,50.38646],[-117.88948,50.37725],[-117.88979,50.37513],[-117.89225,50.37297],[-117.89329,50.36815],[-117.89238,50.3662],[-117.89415,50.36367],[-117.89411,50.36057],[-117.89264,50.3583],[-117.89375,50.35749],[-117.89337,50.35055],[-117.89441,50.34518],[-117.88957,50.34248],[-117.88798,50.34275],[-117.88728,50.34114],[-117.88291,50.33994],[-117.88387,50.33794],[-117.87893,50.33443],[-117.87313,50.32622],[-117.8708,50.32064],[-117.8682,50.31816],[-117.86789,50.31514],[-117.85929,50.30727],[-117.86001,50.30442],[-117.85927,50.30367],[-117.8556,50.3013],[-117.84985,50.30022],[-117.84583,50.29731],[-117.83029,50.28885],[-117.82996,50.28672],[-117.82732,50.28415],[-117.82758,50.28288],[-117.82537,50.28104],[-117.82676,50.27513],[-117.8233,50.27108],[-117.82357,50.26776],[-117.82171,50.26422],[-117.82273,50.2629],[-117.81923,50.25823],[-117.81847,50.25531],[-117.82395,50.2524],[-117.82475,50.24835],[-117.82227,50.24702],[-117.8208,50.24511],[-117.81933,50.24491],[-117.8177,50.24563],[-117.8156,50.24415],[-117.81466,50.24498],[-117.81489,50.24693],[-117.81395,50.24537],[-117.81557,50.24174],[-117.81128,50.2392],[-117.80635,50.23756],[-117.80114,50.23762],[-117.79632,50.23615],[-117.79415,50.23614],[-117.7928,50.23556],[-117.79121,50.2332],[-117.79256,50.23288],[-117.7919,50.23054],[-117.79359,50.23042],[-117.7947,50.23147],[-117.79377,50.23009],[-117.79133,50.23023],[-117.79185,50.22727],[-117.79046,50.2247],[-117.79209,50.22355],[-117.78695,50.21942],[-117.7847,50.21237],[-117.77956,50.20868],[-117.77792,50.20521],[-117.77869,50.20045],[-117.78153,50.19736],[-117.78492,50.1907],[-117.78642,50.18966],[-117.78817,50.18562],[-117.79043,50.18324],[-117.79068,50.18105],[-117.78815,50.17625],[-117.78784,50.17295],[-117.79064,50.17217],[-117.7916,50.17106],[-117.79065,50.16685],[-117.78854,50.166],[-117.79027,50.16412],[-117.78798,50.15918],[-117.79091,50.15564],[-117.79857,50.15214],[-117.7988,50.1514],[-117.79762,50.15128],[-117.79836,50.15076],[-117.79985,50.15085],[-117.79997,50.14889],[-117.80372,50.14249],[-117.80285,50.13923],[-117.80978,50.1343],[-117.81132,50.13055],[-117.81963,50.12738],[-117.82096,50.12499],[-117.82394,50.12306],[-117.82735,50.12206],[-117.82744,50.12096],[-117.82935,50.11985],[-117.82922,50.11784],[-117.83052,50.11667],[-117.83873,50.11222],[-117.84435,50.11049],[-117.84759,50.10766],[-117.85139,50.10824],[-117.86017,50.10576],[-117.86191,50.10442],[-117.86425,50.10486],[-117.87358,50.10348],[-117.87602,50.10404],[-117.8779,50.10334],[-117.87847,50.10381],[-117.88451,50.10385],[-117.88529,50.10471],[-117.8873,50.10392],[-117.88771,50.10459],[-117.88899,50.10457],[-117.89155,50.10292],[-117.89675,50.10402],[-117.8997,50.10339],[-117.90285,50.10434],[-117.90783,50.10273],[-117.91092,50.10312],[-117.92153,50.09605],[-117.92227,50.09444],[-117.92346,50.09392],[-117.9223,50.09361],[-117.9224,50.09285],[-117.92453,50.09297],[-117.92523,50.09232],[-117.9267,50.08443],[-117.9252,50.0827],[-117.92476,50.08022],[-117.92295,50.07898],[-117.92376,50.07691],[-117.91767,50.07276],[-117.91644,50.06982],[-117.91666,50.06717],[-117.91408,50.06527],[-117.91321,50.0613],[-117.91149,50.05989],[-117.91167,50.05709],[-117.91079,50.05553],[-117.90943,50.05538],[-117.91084,50.05442],[-117.91082,50.05324],[-117.9089,50.05232],[-117.90834,50.0495],[-117.90627,50.04908],[-117.90626,50.04778],[-117.90716,50.04758],[-117.90669,50.04553],[-117.90544,50.04437],[-117.9052,50.04198],[-117.90308,50.03826],[-117.90388,50.03777],[-117.90316,50.03695],[-117.90461,50.03648],[-117.90475,50.03568],[-117.90345,50.03501],[-117.90448,50.03362],[-117.90292,50.02773],[-117.9011,50.02718],[-117.90164,50.02626],[-117.89916,50.02232],[-117.89739,50.02253],[-117.8927,50.01638],[-117.89317,50.01539],[-117.89179,50.01371],[-117.89079,50.00915],[-117.89209,50.00451],[-117.88908,50.00479],[-117.88782,50.00229],[-117.88421,50.0002],[-117.88278,49.99669],[-117.89003,49.99139],[-117.88664,49.98924],[-117.88795,49.98794],[-117.89039,49.98728],[-117.88813,49.98568],[-117.88934,49.98404],[-117.89026,49.98575],[-117.89093,49.98536],[-117.89086,49.98403],[-117.88844,49.98241],[-117.88941,49.98126],[-117.89034,49.98058],[-117.89109,49.98092],[-117.8908,49.98001],[-117.89269,49.97822],[-117.89384,49.97908],[-117.89724,49.97887],[-117.89736,49.97986],[-117.89963,49.9799],[-117.90173,49.97703],[-117.90347,49.97605],[-117.90361,49.96938],[-117.90775,49.96764],[-117.91079,49.96525],[-117.91829,49.9653],[-117.9297,49.9625],[-117.93443,49.962],[-117.93919,49.9625],[-117.94138,49.961],[-117.94589,49.96003],[-117.95468,49.96105],[-117.95522,49.96014],[-117.95705,49.95957],[-117.97363,49.95825],[-117.97862,49.95729],[-117.98184,49.95609],[-117.98289,49.955],[-117.98532,49.95498],[-117.9873,49.95375],[-117.9907,49.95394],[-117.99544,49.95262],[-117.99786,49.95071],[-117.99614,49.94798],[-117.99972,49.94442],[-117.99963,49.94269],[-118.00083,49.94239],[-118.00277,49.93892],[-118.00609,49.93704],[-118.00809,49.93413],[-118.01571,49.92935],[-118.02018,49.92506],[-118.02175,49.92507],[-118.02668,49.92167],[-118.03551,49.91869],[-118.03851,49.91644],[-118.04645,49.91328],[-118.04781,49.91171],[-118.04781,49.90888],[-118.0527,49.9066],[-118.05233,49.90561],[-118.05555,49.90024],[-118.05543,49.89859],[-118.05874,49.89509],[-118.05893,49.89115],[-118.06085,49.88932],[-118.06023,49.88867],[-118.06146,49.88854],[-118.06404,49.88592],[-118.06328,49.88429],[-118.06467,49.88164],[-118.06962,49.87854],[-118.06935,49.87763],[-118.07075,49.87798],[-118.0729,49.87562],[-118.07995,49.87289],[-118.08169,49.87278],[-118.08646,49.86761],[-118.08717,49.86051],[-118.08958,49.85939],[-118.08974,49.85262],[-118.08767,49.84425],[-118.08797,49.83962],[-118.08662,49.83779],[-118.08738,49.83501],[-118.0863,49.83084],[-118.0873,49.82643],[-118.08588,49.82452],[-118.08509,49.81964],[-118.0823,49.81336],[-118.08392,49.80757],[-118.08587,49.80544],[-118.0852,49.80353],[-118.08738,49.80131],[-118.08644,49.8006],[-118.08877,49.79954],[-118.08975,49.79729],[-118.0888,49.79309],[-118.08647,49.79241],[-118.08613,49.79167],[-118.08791,49.79108],[-118.0886,49.78874],[-118.0904,49.78803],[-118.09062,49.78671],[-118.10044,49.78195],[-118.10018,49.78085],[-118.10253,49.77714],[-118.10603,49.77591],[-118.10669,49.77129],[-118.11099,49.76669],[-118.11148,49.75533],[-118.11052,49.75489],[-118.11004,49.75024],[-118.11524,49.74737],[-118.11431,49.74521],[-118.11169,49.74326],[-118.11118,49.74111],[-118.11276,49.73606],[-118.11281,49.73154],[-118.11581,49.72455],[-118.11615,49.71935],[-118.11895,49.71504],[-118.11871,49.70898],[-118.12844,49.69195],[-118.12884,49.68861],[-118.12791,49.68461],[-118.12882,49.67925],[-118.12802,49.67375],[-118.1291,49.66861],[-118.12806,49.66291],[-118.13131,49.66012],[-118.12998,49.65883],[-118.13028,49.65751],[-118.13514,49.65335],[-118.14024,49.64623],[-118.13751,49.63938],[-118.13992,49.63601],[-118.13761,49.63251],[-118.13809,49.6305],[-118.13658,49.63005],[-118.13267,49.62622],[-118.1303,49.61971],[-118.13222,49.61607],[-118.13088,49.61583],[-118.13133,49.61482],[-118.12746,49.61031],[-118.12909,49.60496],[-118.12872,49.60191],[-118.13083,49.59977],[-118.13093,49.59524],[-118.13255,49.5948],[-118.13309,49.59289],[-118.12909,49.59039],[-118.12584,49.58045],[-118.12345,49.57735],[-118.12481,49.56576],[-118.11886,49.56054],[-118.12054,49.55487],[-118.11959,49.55195],[-118.12055,49.55124],[-118.11935,49.54866],[-118.12066,49.54665],[-118.1181,49.54188],[-118.12063,49.5363],[-118.12019,49.53493],[-118.11785,49.53334],[-118.1175,49.52586],[-118.11657,49.5238],[-118.11772,49.52173],[-118.11481,49.51985],[-118.11567,49.51875],[-118.11461,49.51738],[-118.11502,49.51589],[-118.11255,49.51474],[-118.10319,49.50356],[-118.10353,49.49739],[-118.10007,49.49492],[-118.10007,49.49151],[-118.09838,49.49017],[-118.09864,49.48817],[-118.0977,49.48702],[-118.09837,49.48577],[-118.09667,49.48243],[-118.09145,49.47863],[-118.09146,49.47238],[-118.0901,49.47205],[-118.08885,49.47033],[-118.08517,49.46922],[-118.08181,49.46381],[-118.08222,49.4618],[-118.08639,49.45743],[-118.0879,49.45273],[-118.08977,49.45066],[-118.08885,49.44799],[-118.08344,49.44286],[-118.081,49.44171],[-118.07941,49.43878],[-118.07921,49.43547],[-118.07752,49.43533],[-118.07402,49.43263],[-118.07005,49.42732],[-118.06645,49.42642],[-118.06396,49.42397],[-118.05936,49.4208],[-118.05559,49.4196],[-118.05454,49.41819],[-118.05184,49.41885],[-118.04936,49.4186],[-118.04278,49.41515],[-118.03655,49.41462],[-118.03425,49.41568],[-118.03536,49.41618],[-118.03487,49.41655],[-118.03156,49.41609],[-118.0277,49.4167],[-118.02392,49.41531],[-118.01737,49.41457],[-118.01372,49.41275],[-118.01189,49.4096],[-118.01032,49.40908],[-118.01056,49.4084],[-118.00586,49.40785],[-118.00432,49.40608],[-118.00289,49.40579],[-118.00235,49.40388],[-117.99955,49.40382],[-118.00058,49.40194],[-117.99658,49.40227],[-117.99089,49.39827],[-117.98805,49.39712],[-117.97287,49.38284],[-117.96784,49.3796],[-117.96544,49.37905],[-117.96114,49.37663],[-117.96015,49.37552],[-117.95745,49.3755],[-117.95448,49.37404],[-117.94508,49.37262],[-117.93815,49.3679],[-117.93425,49.36613],[-117.93324,49.36335],[-117.92856,49.36367],[-117.92299,49.35872],[-117.91461,49.35871],[-117.90359,49.35673],[-117.89752,49.35313],[-117.89342,49.35183],[-117.89159,49.34953],[-117.87629,49.34506],[-117.87655,49.34265],[-117.87513,49.34135],[-117.8715,49.34133],[-117.86996,49.34274],[-117.86686,49.34313],[-117.8593,49.34216],[-117.8574,49.34389],[-117.854,49.34422],[-117.85132,49.34322],[-117.84401,49.34353],[-117.8419,49.34283],[-117.83644,49.3439],[-117.83355,49.34357],[-117.83334,49.34297],[-117.83137,49.34351],[-117.83051,49.34292],[-117.8285,49.34323],[-117.82174,49.34219],[-117.81447,49.34227],[-117.8117,49.34113],[-117.80929,49.34133],[-117.81381,49.342],[-117.80582,49.34163],[-117.80599,49.34211],[-117.79951,49.34332],[-117.79989,49.34181],[-117.79904,49.34225],[-117.79204,49.34037],[-117.78713,49.34118],[-117.78307,49.34319],[-117.77459,49.34448],[-117.76867,49.34352],[-117.76968,49.3429],[-117.77352,49.34372],[-117.78212,49.34264],[-117.78567,49.3402],[-117.78372,49.34004],[-117.78361,49.3413],[-117.78235,49.34184],[-117.77418,49.34304],[-117.77149,49.33657],[-117.78455,49.33476],[-117.79278,49.33564],[-117.79506,49.33648],[-117.7974,49.33635],[-117.79926,49.3371],[-117.81261,49.33532],[-117.81822,49.33552],[-117.82054,49.33664],[-117.82533,49.33537],[-117.83058,49.33579],[-117.83192,49.33511],[-117.83659,49.33532],[-117.83968,49.33727],[-117.84337,49.33621],[-117.84633,49.33697],[-117.84905,49.33624],[-117.85861,49.33674],[-117.86203,49.33578],[-117.86837,49.33544],[-117.87379,49.33723],[-117.87993,49.3382],[-117.88526,49.34044],[-117.88834,49.34028],[-117.89572,49.34211],[-117.89839,49.34199],[-117.90613,49.34345],[-117.91114,49.34567],[-117.91551,49.34604],[-117.91878,49.34741],[-117.92611,49.34848],[-117.92856,49.35167],[-117.93131,49.3512],[-117.93108,49.35223],[-117.93295,49.35335],[-117.93715,49.35323],[-117.94027,49.35728],[-117.94165,49.35793],[-117.9488,49.35891],[-117.95336,49.3617],[-117.95788,49.36221],[-117.96138,49.36351],[-117.96776,49.36381],[-117.98138,49.3683],[-117.9959,49.37725],[-118.00288,49.379],[-118.00376,49.3812],[-118.00705,49.38228],[-118.01372,49.38864],[-118.01521,49.38914],[-118.01706,49.39229],[-118.02031,49.39258],[-118.03124,49.39793],[-118.03367,49.3988],[-118.03989,49.39902],[-118.043,49.40008],[-118.05353,49.40087],[-118.05438,49.40138],[-118.05801,49.40071],[-118.06037,49.40096],[-118.06585,49.40625],[-118.06944,49.40786],[-118.07256,49.41136],[-118.07485,49.41261],[-118.07753,49.41508],[-118.07805,49.41667],[-118.08976,49.42222],[-118.09385,49.4253],[-118.09387,49.42661],[-118.09608,49.42877],[-118.09997,49.42943],[-118.10189,49.42867],[-118.10109,49.43131],[-118.10238,49.43311],[-118.10231,49.43551],[-118.10576,49.43527],[-118.10492,49.43716],[-118.10945,49.43802],[-118.10885,49.44101],[-118.11335,49.44596],[-118.11829,49.45944],[-118.12543,49.46868],[-118.12232,49.47497],[-118.12192,49.48111],[-118.12043,49.48222],[-118.12113,49.48628],[-118.12536,49.49105],[-118.12979,49.49257],[-118.13022,49.49727],[-118.13331,49.49966],[-118.13635,49.50473],[-118.13726,49.50556],[-118.13841,49.50554],[-118.14426,49.51128],[-118.14872,49.5174],[-118.14901,49.51966],[-118.14751,49.52172],[-118.14713,49.52472],[-118.14519,49.52632],[-118.14646,49.5264],[-118.14704,49.52798],[-118.14996,49.52905],[-118.14995,49.53018],[-118.15164,49.53167],[-118.14927,49.53129],[-118.14859,49.5328],[-118.15288,49.53489],[-118.15392,49.53917],[-118.15727,49.54278],[-118.1583,49.54566],[-118.15668,49.55896],[-118.15962,49.56341],[-118.16103,49.56785],[-118.1606,49.57236],[-118.16214,49.57873],[-118.16047,49.58344],[-118.16246,49.58523],[-118.16167,49.58561],[-118.1635,49.58645],[-118.16418,49.5894],[-118.1637,49.59298],[-118.1624,49.59496],[-118.16299,49.59768],[-118.16252,49.59994],[-118.16158,49.60051],[-118.16197,49.60167],[-118.15939,49.60447],[-118.15786,49.60876],[-118.16512,49.61809],[-118.16517,49.62024],[-118.16759,49.62155],[-118.17166,49.62666],[-118.17533,49.63983],[-118.17491,49.6449],[-118.17205,49.65106],[-118.16481,49.65633],[-118.16069,49.65666],[-118.15976,49.65731],[-118.15854,49.66071],[-118.16097,49.66754],[-118.15987,49.6697],[-118.15974,49.67449],[-118.16068,49.67693],[-118.1566,49.67907]],[[-118.09905,49.86288],[-118.09862,49.8633],[-118.10169,49.86315],[-118.10134,49.86269],[-118.09905,49.86288]],[[-118.10712,49.86328],[-118.10758,49.86393],[-118.10768,49.8628],[-118.10712,49.86328]],[[-118.10297,49.86559],[-118.10218,49.86707],[-118.09976,49.86834],[-118.10475,49.86791],[-118.10516,49.86647],[-118.10297,49.86559]],[[-117.94329,50.11789],[-117.94242,50.11882],[-117.94341,50.11909],[-117.94329,50.11789]],[[-118.02508,50.7988],[-118.02449,50.79986],[-118.02243,50.79732],[-118.01597,50.79381],[-118.01489,50.79679],[-118.01668,50.79832],[-118.02376,50.80247],[-118.02906,50.80431],[-118.03138,50.80429],[-118.03143,50.80256],[-118.02923,50.79876],[-118.02838,50.79857],[-118.02899,50.79982],[-118.02815,50.80108],[-118.02743,50.79992],[-118.02805,50.79838],[-118.02645,50.79767],[-118.0269,50.79859],[-118.02602,50.79783],[-118.02596,50.79963],[-118.02581,50.79802],[-118.02445,50.79726],[-118.02508,50.7988]],[[-118.04684,50.81891],[-118.04512,50.81928],[-118.04739,50.81935],[-118.04684,50.81891]],[[-118.10097,50.86169],[-118.09992,50.86251],[-118.10199,50.86361],[-118.10405,50.86325],[-118.10097,50.86169]],[[-117.93382,50.10576],[-117.93444,50.1065],[-117.93459,50.10547],[-117.93382,50.10576]],[[-117.9368,50.11281],[-117.93557,50.11296],[-117.93717,50.11322],[-117.9368,50.11281]],[[-117.72556,50.7555],[-117.72544,50.75509],[-117.72213,50.75636],[-117.72136,50.75613],[-117.7217,50.75534],[-117.71875,50.75596],[-117.71998,50.75672],[-117.72326,50.75711],[-117.72529,50.75653],[-117.72451,50.75655],[-117.72556,50.7555]],[[-118.18868,50.9695],[-118.18087,50.96366],[-118.18555,50.96833],[-118.18791,50.9696],[-118.18733,50.96993],[-118.18381,50.96891],[-118.18291,50.96701],[-118.1798,50.96513],[-118.17914,50.96493],[-118.17871,50.96629],[-118.17804,50.96547],[-118.17571,50.96614],[-118.17858,50.95974],[-118.18246,50.96313],[-118.19291,50.9692],[-118.18868,50.9695]]],"lagoLat":[49.33476,50.9815],"borda":{"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"LineString","coordinates":[[-122.75802,49.002357],[-122.743988,49.00235],[-122.738466,49.002348],[-122.736201,49.002347],[-122.735338,49.002346],[-122.705412,49.002332],[-122.655761,49.002309],[-122.605578,49.002286],[-122.550709,49.00226],[-122.462813,49.002219],[-122.418741,49.002198],[-122.407821,49.002193],[-122.405989,49.002239],[-122.363162,49.002309],[-122.291144,49.002428],[-122.285637,49.002437],[-122.251175,49.002494],[-122.251063,49.002494],[-122.144938,49.002252],[-122.13694,49.002234],[-122.136637,49.002233],[-122.098357,49.002146],[-122.070431,49.001764],[-121.988624,49.000645],[-121.971535,49.000412],[-121.949474,49.00011],[-121.751252,48.997399],[-121.43387,48.999587],[-121.395543,48.999851],[-121.345295,49.000843],[-121.256933,49.000088],[-121.251244,49.000167],[-121.248949,49.000925],[-121.2299,49.001158],[-121.12624,49.001412],[-121.059966,49.000621],[-120.978955,49.000367],[-120.851561,49.00028],[-120.716604,49.000188],[-120.376216,49.000705],[-120.03551,48.999536],[-120.001199,48.999418],[-119.919262,49.000093],[-119.876195,49.000448],[-119.702016,49.000269],[-119.701703,49.000265],[-119.701218,49.000258],[-119.4577,49.000261],[-119.442095,49.000257],[-119.428678,49.000253],[-119.180728,49.00029],[-119.137274,49.000297],[-119.132102,49.000262],[-118.902776,49.000298],[-118.836614,49.000308],[-118.503734,49.000359],[-118.498763,49.00036],[-118.370421,49.00038],[-118.364682,49.000381],[-118.224605,49.000403],[-118.22257,49.000403],[-118.197375,49.000407],[-118.039921,49.000431],[-118.002046,49.000437],[-118.001106,48.999911],[-117.884398,48.999912],[-117.8761,49.000546],[-117.630906,49.000817],[-117.607323,49.000843],[-117.429968,49.000364],[-117.299791,49.000013],[-117.268192,48.999928],[-117.268247,48.999818],[-117.126075,48.998888],[-117.032351,48.999188],[-116.757185,48.999791],[-116.757234,48.999943],[-116.540341,48.999884],[-116.504205,48.999947],[-116.417503,49.000099],[-116.376039,49.000518],[-116.358439,49.000553],[-116.29047,49.00069],[-116.049418,49.000911],[-116.049086,49.000846],[-116.00103,49.00127],[-115.990685,49.000909],[-115.964438,49.000897],[-115.501016,49.000694],[-115.415186,49.000265],[-115.412311,49.00025],[-115.267284,48.999525],[-115.207912,48.999228],[-115.192258,48.999272],[-115.170672,48.999333],[-115.055844,48.999658],[-114.72705,49.000587],[-114.678217,49.000725],[-114.674398,49.000679],[-114.474891,49.001154],[-114.375977,49.00139],[-114.250971,49.000905],[-114.224912,48.999687],[-114.201107,48.999249],[-114.180211,48.999703],[-114.068179,48.998919],[-114.059188,48.998856],[-113.907487,48.998858],[-113.864127,48.998276],[-113.692982,48.997632],[-113.609142,48.998239],[-113.576118,48.998478],[-113.375925,48.998562],[-113.356874,48.998224],[-113.241051,48.998713],[-113.19474,48.998909],[-113.116356,48.998462],[-113.110155,48.99855],[-113.106891,48.998501],[-113.103212,48.99853],[-113.098147,48.998494],[-113.095436,48.998533],[-113.092055,48.998543],[-113.087863,48.998557],[-113.085576,48.998581],[-113.011041,48.998643],[-113.009895,48.998619],[-112.36503,48.998841],[-112.193409,48.9989],[-112.143769,48.998917],[-112.003866,48.99857],[-112.000878,48.998921],[-111.973882,48.998764],[-111.960759,48.998688],[-111.854088,48.998067],[-111.85409,48.998039],[-111.761679,48.997614],[-111.761613,48.99765],[-111.500812,48.996963],[-111.269864,48.99723],[-111.003916,48.997537],[-110.990028,48.997603],[-110.887459,48.998087],[-110.886706,48.998124],[-110.743064,48.998558],[-110.611148,48.998956],[-110.592465,48.999012],[-110.543319,48.99851],[-110.531615,48.99839],[-110.479356,48.998836],[-110.438151,48.999188],[-110.216135,48.999239],[-110.215516,48.999197],[-110.171595,48.999262],[-110.0,48.99963253762708]]}}]},"bordaFade":0.8746,"P":{"keen":[-117.771998,49.339807],"dalles":[-121.189917,45.608278],"portland":[-122.68194,45.52197]}}</script>
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+/* ═══════════════ PEÇA 1 · O CORTE DO LAGO — INÍCIO DO BLOCO (copie daqui até "FIM DO BLOCO", sem mudar nada) ═══════════════
+   Nasce na s03 do rio-columbia (editor-de-arte, lote EO1 da rio-columbia-arte-1, 13/11/2026). Volta em s11 (o mesmo lote) e em
+   s24, s29, s33, s41, s43, s50, s55, s61 e s63 (outros lotes): quem reusa COPIA este bloco inteiro e só chama CORTE.montar e
+   CORTE.estado com o que a sua cena pede. O desenho é o do conceito (conceito-visual.json bf511817… › arco, peça 1), em px do
+   palco 4K com a câmera em escala 1 (a POSE CANÔNICA: a do último quadro da s03, a do primeiro da s11, a tira da s04).
+
+   A GEOMETRIA (G, abaixo; corte LONGITUDINAL, a montante à esquerda, a jusante à direita):
+     · a caixa x 520–3320, y 560–1640 (o que o desenho ocupa, com a sombra solta do traço);
+     · o TERRENO: a reta do chão do vale do conceito, de (560, 780) a (3000, 1560) (o talvegue; inclinação 0,31967: yChao(x) e
+       xChao(y)); à esquerda, a ENCOSTA: da crista (520, 600), plana no topo, uma curva (cúbica ENC) desce e entra na reta em x 800,
+       já tangente a ela (entre x 560 e 800 a encosta fica acima da reta: é o morro da mata; yTerreno(x) dá o y do traço);
+     · TRÊS PINHEIROS (abetos estreitos, só o contorno) de pé na encosta, acima de y 860 (x 640, 700 e 760; 136, 150 e 140 px; as
+       pontas em y 561, 625 e 695; o tronco cresce onde a encosta
+       é íngreme, para o galho de baixo não entrar na terra);
+     · a BARRAGEM, sempre à direita: a face de montante vertical em x 3000 (de 1560 a 800), o coroamento de x 3000 a 3040 em y 800,
+       a face de jusante até (3160, 1560); o CONDUTO de fundo (aresta escondida, tracejado) atravessa a base;
+     · a jusante, o chão de 3160 a 3320 em y 1560 e o RIO que sai fino (lâmina de 14 px), com a luz de corrente;
+     · TRÊS NÍVEIS (NIVEL): CHEIO y 860 (a água encosta na mata em x 810), RESERVADO y 1040 (encosta no chão em x 1373) e
+       BAIXO (de inverno) y 1220 (em x 1936);
+     · A FAIXA: a banda entre y 860 e y 1040, da encosta (o chão) à barragem: o trapézio (810, 860) (3000, 860) (3000, 1040)
+       (1373, 1040); caixa x 810–3000, y 860–1040 (a tira que a s04 herda); centroide FAIXA_C (2039, 946), que é a origem da
+       câmera e o lugar da luz da mesa nas cenas "a luz atrás da FAIXA". Hachura a 45° ("/", x + y = c), traço de 4 px em
+       --destaque, a cada 48 px no eixo x (34 px entre as linhas).
+   O TRAÇO (identidade §5, "o traço de engenheiro"): --tinta, 6 px, sem preenchimento; aresta escondida tracejada; a sombra solta
+     do próprio traço (--tinta-escura, 16 px, 0,8, +12 px), parada (o desenho está deitado na mesa). Chapado, só a água: --agua a
+     35 % (a cor de TIPO, identidade §2), com a linha da superfície em --agua 6 px e o símbolo de nível (▽) em --agua sobre ela.
+     A hachura da faixa é a única cor de lado (--destaque: o espaço no Canadá, decisão do Lucas para o vídeo).
+   A FÍSICA (ilustrador, estudo-liquidos/ESTUDO.md §1: "Nível de reservatório → área/volume e entradas menos saídas; o nível não
+     cresce sem fonte"): o corte é uma seção 2D de espessura constante, então o VOLUME é a ÁREA do triângulo de água, que cresce
+     com o quadrado da profundidade (A = k·d², a largura da água cresce com a altura). Quem muda o nível muda o volume: a cena
+     interpola o VOLUME (nivelPorVolume) e o nível sai da raiz; a vazão é a derivada. O lago fica parado (identidade §2: "lago e
+     represa ficam parados; o que muda neles é o nível"): nenhuma onda; a luz de corrente só no rio que sai, e mais rápida
+     quando sai mais água (a cena passa a fase do rio, rioFase, que já integra a vazão).
+   USO:
+     var C = CORTE.montar(document.getElementById("gCorte"));      // um <g> vazio dentro do <svg id="desenho"> (dentro do #cam)
+     C.estado({ traco: 1,                    // 0..1: o desenho se traçando da esquerda para a direita (1 = completo)
+                nivel: CORTE.NIVEL.RESERVADO, // y da superfície (>= 1560: sem água)
+                marcaCheio: 1,               // 0..1: o tracejado do nível CHEIO (a marca da cheia, o teto da faixa)
+                hachura: 1,                  // 0..1: a hachura correndo da encosta à barragem (o x da frente)
+                hachuraAlfa: 1,              // 0..1: a opacidade da hachura (a faixa "apagada" = 0)
+                pulso: 0,                    // 0..1: o pulso único da faixa (1,2 s; 0 e 1 = sem pulso)
+                rioFase: 0 });               // px: a fase da luz de corrente do rio (∫ velocidade dt)
+     CORTE.G, CORTE.NIVEL, CORTE.FAIXA_C, CORTE.xChao(y), CORTE.yChao(x), CORTE.faixaPts(), CORTE.nivelPorVolume(y0, y1, p)
+   ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════ */
+var CORTE = (function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  var G = {
+    caixa: { x0: 520, y0: 560, x1: 3320, y1: 1640 },
+    crista: { x: 520, y: 600 },
+    chao: { x0: 560, y0: 780, x1: 3000, y1: 1560 },
+    barragem: { montante: 3000, coroaX1: 3040, jusante: 3160, coroamento: 800, base: 1560 },
+    conduto: { y1: 1500, y2: 1532 },
+    pinheiros: [{ x: 640, h: 136 }, { x: 700, h: 150 }, { x: 760, h: 140 }],
+    jusante: { x0: 3160, x1: 3320, y: 1560, lamina: 14 },
+    hachura: { passo: 48, traco: 4 },
+    simbolo: { x: 2880 }
+  };
+  var NIVEL = { CHEIO: 860, RESERVADO: 1040, BAIXO: 1220 };
+  var K = (G.chao.x1 - G.chao.x0) / (G.chao.y1 - G.chao.y0);       // px de x por px de y no chão (3,1282)
+  function xChao(y) { return G.chao.x0 + (y - G.chao.y0) * K; }
+  function yChao(x) { return G.chao.y0 + (x - G.chao.x0) / K; }
+  function faixaPts() { return [[xChao(NIVEL.CHEIO), NIVEL.CHEIO], [G.barragem.montante, NIVEL.CHEIO], [G.barragem.montante, NIVEL.RESERVADO], [xChao(NIVEL.RESERVADO), NIVEL.RESERVADO]]; }
+  var FAIXA_C = { x: 2039, y: 946 };   // o centroide do trapézio da faixa (medido: retângulo + triângulo, 2038,9 × 945,6)
+  // o nível pelo VOLUME: entre y0 e y1, a fração p do volume a mover (a área cresce com d², d = base − y)
+  function nivelPorVolume(y0, y1, p) {
+    var b = G.barragem.base, d0 = b - y0, d1 = b - y1;
+    return b - Math.sqrt(Math.max(0, d0 * d0 + (d1 * d1 - d0 * d0) * p));
+  }
+  // a cor sempre por token: var(--…) não vale em atributo de apresentação do SVG, então fill e stroke com var() vão ao style
+  function el(tag, at, pai) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in at) { var v = String(at[k]); if ((k === "fill" || k === "stroke") && v.indexOf("var(") >= 0) e.style.setProperty(k, v); else e.setAttribute(k, v); }
+    if (pai) pai.appendChild(e); return e;
+  }
+  function f1(v) { return (+v).toFixed(1); }
+  function pts(a) { return a.map(function (p) { return f1(p[0]) + "," + f1(p[1]); }).join(" "); }
+  // ── os caminhos do traço ──
+  // A ENCOSTA: da crista (520, 600), plana no topo, a curva desce (convexa, depois côncava) e entra na reta do chão em x 800, já
+  // tangente a ela (a 1/K); dali até a barragem o chão é a reta do conceito. Os três níveis encostam na reta (x 810, 1373, 1936).
+  var ENC = (function () {
+    var p3x = 800, p3y = yChao(800), lam = 110;
+    return [[G.crista.x, G.crista.y], [610, 596], [p3x - lam, p3y - lam / K], [p3x, p3y]];
+  })();
+  function bez(s) {
+    var u = 1 - s, a = u * u * u, b = 3 * u * u * s, c = 3 * u * s * s, d = s * s * s;
+    return [a * ENC[0][0] + b * ENC[1][0] + c * ENC[2][0] + d * ENC[3][0], a * ENC[0][1] + b * ENC[1][1] + c * ENC[2][1] + d * ENC[3][1]];
+  }
+  function yTerreno(x) {   // o y do terreno em x (a encosta pela curva, por bissecção no parâmetro; o resto pela reta)
+    if (x >= ENC[3][0]) return yChao(x);
+    if (x <= ENC[0][0]) return ENC[0][1];
+    var lo = 0, hi = 1;
+    for (var i = 0; i < 40; i++) { var m = (lo + hi) / 2; if (bez(m)[0] < x) lo = m; else hi = m; }
+    return bez((lo + hi) / 2)[1];
+  }
+  function dTerreno() {   // um caminho só: o traço é contínuo, da crista à barragem
+    return "M" + ENC[0][0] + " " + ENC[0][1] + " C" + ENC[1][0] + " " + ENC[1][1] + " " + f1(ENC[2][0]) + " " + f1(ENC[2][1]) + " " +
+      ENC[3][0] + " " + f1(ENC[3][1]) + " L" + G.chao.x1 + " " + G.chao.y1;
+  }
+  // O PINHEIRO: a silhueta fechada de um abeto estreito (a mata das encostas da Colúmbia Britânica: a copa em ponta, três andares de
+  // galhos em degrau), só o contorno, e o tronco vertical de pé no chão. A encosta é íngreme (inclinação até 1,34): o tronco fica
+  // alto o bastante para o canto de cima do galho mais baixo passar 12 px acima do chão (oclusão: nenhum galho entra na terra).
+  function dPinheiro(p) {
+    var yb = yTerreno(p.x), h = p.h, x = p.x, w = h * 0.18;
+    var tr = Math.max(h * 0.14, yb - yTerreno(x - w) + 12), y1 = yb - tr, c = h - tr;
+    var q = [[-1, 0], [-0.42, 0.30], [-0.74, 0.30], [-0.28, 0.62], [-0.50, 0.62], [0, 1]];
+    var lado = q.map(function (k) { return f1(x + k[0] * w) + " " + f1(y1 - k[1] * c); });
+    var outro = q.slice(0, 5).reverse().map(function (k) { return f1(x - k[0] * w) + " " + f1(y1 - k[1] * c); });
+    return "M" + f1(x) + " " + f1(yb) + " V" + f1(y1) + " M" + lado.join(" L") + " L" + outro.join(" L") + " Z";
+  }
+  function dBarragem() {
+    var b = G.barragem;
+    return "M" + b.montante + " " + b.base + " V" + b.coroamento + " H" + b.coroaX1 + " L" + b.jusante + " " + b.base;
+  }
+  function dJusante() { var j = G.jusante; return "M" + j.x0 + " " + j.y + " H" + j.x1; }
+  function montar(g) {
+    if (!g) return null;
+    var b = G.barragem, j = G.jusante, fx = faixaPts();
+    var defs = el("defs", {}, g);
+    var cpF = el("clipPath", { id: "corteClipFaixa" }, defs); el("polygon", { points: pts(fx) }, cpF);
+    var cpR = el("clipPath", { id: "corteClipRevela" }, defs);
+    var revela = el("rect", { x: xChao(NIVEL.CHEIO) - 60, y: NIVEL.CHEIO - 40, width: 0, height: NIVEL.RESERVADO - NIVEL.CHEIO + 80 }, cpR);
+    // 1) a sombra solta do traço (parada: o desenho está deitado na mesa)
+    var gS = el("g", { transform: "translate(0,12)", opacity: "0.8" }, g);
+    var SB = { fill: "none", stroke: "var(--tinta-escura)", "stroke-width": 16, "stroke-linejoin": "round", "stroke-linecap": "round", pathLength: 1000 };
+    var sT = el("path", Object.assign({ d: dTerreno() }, SB), gS);
+    var sP = G.pinheiros.map(function (p) { return el("path", Object.assign({ d: dPinheiro(p) }, SB), gS); });
+    var sB = el("path", Object.assign({ d: dBarragem() }, SB), gS);
+    var sJ = el("path", Object.assign({ d: dJusante() }, SB), gS);
+    // 2) a água (chapada a 35 %: a cor de TIPO) e a lâmina do rio a jusante
+    var agua = el("polygon", { points: "", fill: "var(--agua)", "fill-opacity": "0.35", stroke: "none" }, g);
+    var rioL = el("rect", { x: j.x0 + 4, y: j.y - j.lamina, width: j.x1 - j.x0 - 4, height: j.lamina, fill: "var(--agua)", "fill-opacity": "0.35" }, g);
+    // 3) a hachura da FAIXA (clip: o trapézio ∩ a frente que corre da encosta à barragem)
+    var gH0 = el("g", { "clip-path": "url(#corteClipFaixa)" }, g);
+    var gH = el("g", { "clip-path": "url(#corteClipRevela)" }, gH0);
+    var gL = el("g", { stroke: "var(--destaque)", "stroke-width": G.hachura.traco, "stroke-linecap": "butt" }, gH);
+    for (var c = Math.floor((fx[0][0] + NIVEL.CHEIO) / G.hachura.passo) * G.hachura.passo - G.hachura.passo; c <= b.montante + NIVEL.RESERVADO + G.hachura.passo; c += G.hachura.passo) {
+      el("line", { x1: c - (NIVEL.CHEIO - 30), y1: NIVEL.CHEIO - 30, x2: c - (NIVEL.RESERVADO + 30), y2: NIVEL.RESERVADO + 30 }, gL);
+    }
+    // 4) a marca do nível CHEIO (o teto da faixa): tracejado fino em --tinta
+    var marca = el("line", { x1: f1(fx[0][0]), y1: NIVEL.CHEIO, x2: b.montante, y2: NIVEL.CHEIO, stroke: "var(--tinta)", "stroke-width": 4, "stroke-dasharray": "28 18", opacity: 0 }, g);
+    // 5) o pulso da faixa: o contorno do trapézio em --destaque que se abre e some, uma vez
+    var pulso = el("polygon", { points: pts(fx), fill: "none", stroke: "var(--destaque)", "stroke-width": 6, "stroke-linejoin": "round", opacity: 0 }, g);
+    // 6) a superfície da água e o símbolo de nível (▽ com os dois traços de baixo, o de desenho técnico)
+    var sup = el("line", { x1: 0, y1: 0, x2: 0, y2: 0, stroke: "var(--agua)", "stroke-width": 6, "stroke-linecap": "butt", opacity: 0 }, g);
+    var gSim = el("g", { fill: "none", stroke: "var(--agua)", "stroke-width": 4, opacity: 0 }, g);
+    el("polygon", { points: "-24,-40 24,-40 0,-6", "stroke-linejoin": "miter" }, gSim);
+    el("line", { x1: -18, y1: 16, x2: 18, y2: 16 }, gSim);
+    el("line", { x1: -9, y1: 30, x2: 9, y2: 30 }, gSim);
+    // 7) o traço: o terreno, os pinheiros, a barragem, o chão de jusante; o conduto (aresta escondida, tracejado)
+    var TR = { fill: "none", stroke: "var(--tinta)", "stroke-width": 6, "stroke-linejoin": "round", "stroke-linecap": "round", pathLength: 1000 };
+    var tT = el("path", Object.assign({ d: dTerreno() }, TR), g);
+    var tP = G.pinheiros.map(function (p) { return el("path", Object.assign({ d: dPinheiro(p) }, TR), g); });
+    var tB = el("path", Object.assign({ d: dBarragem(), "stroke-linejoin": "miter", "stroke-linecap": "square" }, TR), g);
+    var tJ = el("path", Object.assign({ d: dJusante() }, TR), g);
+    var gC = el("g", { stroke: "var(--tinta)", "stroke-width": 5, "stroke-dasharray": "20 14", opacity: 0 }, g);
+    var xJus = function (y) { return b.coroaX1 + (y - b.coroamento) * (b.jusante - b.coroaX1) / (b.base - b.coroamento); };
+    el("line", { x1: b.montante, y1: G.conduto.y1, x2: f1(xJus(G.conduto.y1)), y2: G.conduto.y1 }, gC);
+    el("line", { x1: b.montante, y1: G.conduto.y2, x2: f1(xJus(G.conduto.y2)), y2: G.conduto.y2 }, gC);
+    // 8) a luz de corrente do rio que sai (identidade §2: um trecho mais claro da própria linha desce no sentido da água)
+    var rioT = el("line", { x1: j.x0 + 4, y1: j.y - j.lamina, x2: j.x1, y2: j.y - j.lamina, stroke: "var(--agua)", "stroke-width": 6 }, g);
+    var rioLuz = el("line", { x1: j.x0 + 4, y1: j.y - j.lamina, x2: j.x1, y2: j.y - j.lamina, stroke: "var(--agua-luz)", "stroke-width": 6,
+      "stroke-dasharray": "40 140", "stroke-linecap": "butt" }, g);
+    var partes = { revela: revela, agua: agua, rioL: rioL, gL: gL, gH0: gH0, marca: marca, pulso: pulso, sup: sup, gSim: gSim, gC: gC, rioT: rioT, rioLuz: rioLuz,
+      traco: [[tT, sT, 0.00, 0.70], [tB, sB, 0.55, 0.85], [tJ, sJ, 0.80, 0.95]].concat(G.pinheiros.map(function (p, i) { return [tP[i], sP[i], 0.06 + 0.06 * i, 0.30 + 0.06 * i]; })) };
+    function tracoParte(par, k) {
+      var p = k <= par[2] ? 0 : k >= par[3] ? 1 : (k - par[2]) / (par[3] - par[2]);
+      p = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;   // a pena acelera e assenta (quadrática de entrada e saída)
+      var off = f1(1000 * (1 - p));
+      par[0].setAttribute("stroke-dasharray", "1000 1000"); par[0].setAttribute("stroke-dashoffset", off);
+      par[1].setAttribute("stroke-dasharray", "1000 1000"); par[1].setAttribute("stroke-dashoffset", off);
+      par[0].setAttribute("opacity", p > 0 ? 1 : 0); par[1].setAttribute("opacity", p > 0 ? 1 : 0);
+    }
+    function estado(s) {
+      s = s || {};
+      var k = s.traco == null ? 1 : s.traco;
+      partes.traco.forEach(function (par) { tracoParte(par, k); });
+      var pc = k <= 0.85 ? 0 : k >= 1 ? 1 : (k - 0.85) / 0.15;   // o conduto e o rio entram no fim do traço
+      partes.gC.setAttribute("opacity", f1(pc));
+      var pr = k <= 0.88 ? 0 : k >= 1 ? 1 : (k - 0.88) / 0.12;
+      partes.rioT.setAttribute("opacity", pr.toFixed(3)); partes.rioL.setAttribute("opacity", pr.toFixed(3)); partes.rioLuz.setAttribute("opacity", pr.toFixed(3));
+      // a água: o triângulo entre o chão, a face da barragem e o nível
+      var y = s.nivel == null ? NIVEL.RESERVADO : s.nivel, bm = b.montante;
+      if (y >= b.base - 0.5) { partes.agua.setAttribute("points", ""); partes.sup.setAttribute("opacity", 0); partes.gSim.setAttribute("opacity", 0); }
+      else {
+        var xe = xChao(y);
+        partes.agua.setAttribute("points", pts([[xe, y], [bm, y], [bm, b.base]]));
+        partes.sup.setAttribute("x1", f1(xe)); partes.sup.setAttribute("x2", bm); partes.sup.setAttribute("y1", f1(y)); partes.sup.setAttribute("y2", f1(y));
+        partes.sup.setAttribute("opacity", 1);
+        var d = b.base - y, ps = d <= 80 ? 0 : d >= 180 ? 1 : (d - 80) / 100;   // o ▽ só quando a lâmina já é larga
+        partes.gSim.setAttribute("opacity", ps.toFixed(3));
+        partes.gSim.setAttribute("transform", "translate(" + G.simbolo.x + "," + f1(y) + ")");
+      }
+      partes.marca.setAttribute("opacity", (0.7 * clamp01(s.marcaCheio || 0)).toFixed(3));
+      // a hachura: a frente corre de x 810 (a encosta) a x 3000 (a barragem)
+      var h = clamp01(s.hachura || 0), x0 = xChao(NIVEL.CHEIO) - 60;
+      partes.revela.setAttribute("width", f1((bm + 60 - x0) * h));
+      var pu = clamp01(s.pulso || 0), puOn = pu > 0 && pu < 1;
+      var largura = G.hachura.traco + (puOn ? 3 * Math.sin(Math.PI * Math.min(1, pu * 2)) : 0);
+      partes.gL.setAttribute("stroke-width", largura.toFixed(2));
+      partes.gH0.setAttribute("opacity", (s.hachuraAlfa == null ? 1 : clamp01(s.hachuraAlfa)).toFixed(3));
+      var e = 1 - Math.pow(1 - pu, 3);
+      partes.pulso.setAttribute("opacity", puOn ? (0.85 * (1 - pu)).toFixed(3) : 0);
+      var ks = (1 + 0.06 * e).toFixed(4);   // o contorno se abre em torno do centroide da faixa
+      partes.pulso.setAttribute("transform", "translate(" + FAIXA_C.x + "," + FAIXA_C.y + ") scale(" + ks + ") translate(" + (-FAIXA_C.x) + "," + (-FAIXA_C.y) + ")");
+      // a luz de corrente: a fase vem da cena (já integra a vazão)
+      partes.rioLuz.setAttribute("stroke-dashoffset", f1(-((s.rioFase || 0) % 180)));
+    }
+    function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+    return { estado: estado, partes: partes };
+  }
+  return { G: G, NIVEL: NIVEL, FAIXA_C: FAIXA_C, xChao: xChao, yChao: yChao, yTerreno: yTerreno, faixaPts: faixaPts, nivelPorVolume: nivelPorVolume, montar: montar };
+})();
+/* ═══════════════ PEÇA 1 · O CORTE DO LAGO — FIM DO BLOCO ═══════════════ */
+</script>
+<script>
+(function () {
+  "use strict";
+  var R = window.RIG;
+  var DUR = 31.267;               // espelho.json › s63 › dur (o run s63 + s64 inteiro), literal
+  var INICIO_NO_VIDEO = 898.7;
+  var T_MAPA = 7.533, T_CAUDA = 11.267;
+  window.__duracao = DUR;
+  var E = function (id) { return document.getElementById(id); };
+  var cl = R.clamp, seg = R.seg, eo = R.eo, eb = R.eb;
+  var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var f1 = function (v) { return (+v).toFixed(1); }, f2 = function (v) { return (+v).toFixed(2); };
+  function integralSuave(t, t0, d) {   // ∫ smoothstep: a velocidade que arranca sem tranco
+    if (t <= t0) return 0;
+    if (t >= t0 + d) return d / 2 + (t - t0 - d);
+    var p = (t - t0) / d; return d * (p * p * p - p * p * p * p / 2);
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+
+  var DJ = JSON.parse(E("dadosJson").textContent);
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é do redator-de-tela: textos-tela.json › s63) ═══════════════════════════════════
+  var TEXTOS = {
+    naoEscala: "Not to scale",                                     // [423] legenda, 0,167–7,533 · regra de série 4
+    room: "ROOM",                                                  // [424] rótulo, 0,167–7,533 · regra de série 5 · lastro: "that room waiting"
+    spring: "SPRING 2027",                                         // [425] cota, 8,333–31,267 · lastro: "the spring of twenty twenty-seven"
+    credFonte: "Source: U.S. diplomatic note to Canada, Nov. 22, 2024"   // [426] crédito, 8,333–31,267 (F007)
+  };                                                               // [427] o crédito do mapa sai do perfil (abaixo) e é conferido contra o textos-tela
+  Object.keys(TEXTOS).forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+
+  // ═══ P1 · A PLACA: O CORTE DO LAGO COMO RELÓGIO ═══════════════════════════════════════════════════════════════════════════════
+  var N = CORTE.NIVEL, FC = CORTE.FAIXA_C, G = CORTE.G;
+  var T1 = {
+    naoEscala: 0.167, room: 0.167,             // os t0 do redator
+    drop: 1.45, dropDur: 2.0,                  // 'drop' (900,15 s): CHEIO → BAIXO DE INVERNO, cúbico no volume
+    hachura: 5.61, hachuraDur: 0.5,            // 'pays' (904,31 s): a faixa ganha a hachura
+    luzAtraso: 0.12,                           // tokens.css --mov-luz-atraso
+    camFim: 6.45                               // o empurrão termina 0,28 s antes de 'waiting.' (6,73): tudo para
+  };
+  var S_P1 = 1.03, PARALAXE = parseFloat(tok("--mesa-satelite-paralaxe", ".6")) || 0.6;
+  var LUZ_CORTE = { x: 2020, y: 1120 }, LUZ_FAIXA = { x: FC.x, y: FC.y };
+  var ROOM_BASE = { x: 2039, y: 836 };         // o centro e a base do ROOM: 24 px acima do topo da faixa (y 860)
+  var CT = CORTE.montar(E("gCorte"));
+  function nivelP1(t) { return CORTE.nivelPorVolume(N.CHEIO, N.BAIXO, eb(seg(t, T1.drop, T1.dropDur))); }
+  function rioFaseP1(t) { return 110 * t + 443 * eb(seg(t, T1.drop, T1.dropDur)); }   // ∫ velocidade: base + a vazão da descida
+
+  // A NEVE: 9 flocos; o repouso de cada um é calculado na geometria da peça (a crista pela curva da encosta; os galhos pelo contorno
+  // do pinheiro, as mesmas contas de dPinheiro), com o centro a (3 + r) px do traço, na normal de cima da superfície.
+  var NEVE = { vt: 360, queda: 300, amp: 10, per: 1.1, achata: 0.22, alarga: 0.12, assenta: 0.14, t0: 3.40, passo: 0.14 };
+  var NS = "http://www.w3.org/2000/svg";
+  function svgEl(tag, at, pai) {
+    var el = document.createElementNS(NS, tag);
+    for (var k in at) { var v = String(at[k]); if ((k === "fill" || k === "stroke") && v.indexOf("var(") >= 0) el.style.setProperty(k, v); else el.setAttribute(k, v); }
+    if (pai) pai.appendChild(el); return el;
+  }
+  var FLOCOS = (function () {
+    var lista = [];
+    function naCurva(x, r) {          // a crista: a curva da encosta (CORTE.yTerreno), a normal pela inclinação local
+      var y = CORTE.yTerreno(x), d = (CORTE.yTerreno(x + 1) - CORTE.yTerreno(x - 1)) / 2, n = Math.sqrt(1 + d * d);
+      return { cx: x, cy: y, nx: d / n, ny: -1 / n, r: r };
+    }
+    function noGalho(p, lado, tier, a, r) {   // um galho do pinheiro p: lado −1 (esq.) ou +1 (dir.); tier 0 (baixo) ou 1 (meio); a = fração desde a ponta
+      var yb = CORTE.yTerreno(p.x), h = p.h, w = h * 0.18;
+      var tr = Math.max(h * 0.14, yb - CORTE.yTerreno(p.x - w) + 12), y1 = yb - tr, c = h - tr;
+      var ponta = tier === 0 ? [1, 0] : [0.74, 0.30], dentro = tier === 0 ? [0.42, 0.30] : [0.28, 0.62];
+      var P0 = [p.x + lado * ponta[0] * w, y1 - ponta[1] * c], P1 = [p.x + lado * dentro[0] * w, y1 - dentro[1] * c];
+      var tx = P1[0] - P0[0], ty = P1[1] - P0[1], L = Math.sqrt(tx * tx + ty * ty), nx = ty / L, ny = -tx / L;
+      if (ny > 0) { nx = -nx; ny = -ny; }
+      return { cx: P0[0] + tx * a, cy: P0[1] + ty * a, nx: nx, ny: ny, r: r };
+    }
+    var Pn = G.pinheiros;
+    // a ordem de pouso (um a um): da crista para os galhos, alternando
+    var seq = [naCurva(556, 7.5), noGalho(Pn[1], -1, 1, 0.35, 6), naCurva(532, 7.5), noGalho(Pn[0], 1, 0, 0.35, 6), naCurva(590, 7.5),
+               noGalho(Pn[2], -1, 0, 0.35, 6), noGalho(Pn[1], 1, 0, 0.35, 6), naCurva(608, 7), noGalho(Pn[2], 1, 1, 0.35, 6)];
+    var g = E("gNeve");
+    seq.forEach(function (f, i) {
+      f.tP = NEVE.t0 + NEVE.passo * i;                    // o instante do contato
+      f.x = f.cx + f.nx * (3 + f.r); f.y = f.cy + f.ny * (3 + f.r);   // o centro em repouso
+      f.ang = Math.atan2(f.nx, -f.ny) * 180 / Math.PI;  // o giro que leva o "para cima" local (0, −1) à normal (nx, ny)
+      f.sombra = g ? svgEl("circle", { r: f.r + 5, cx: 0, cy: 0, fill: "var(--tinta-escura)", opacity: 0 }, g) : null;
+      f.el = g ? svgEl("circle", { r: f.r, cx: 0, cy: 0, fill: "var(--tinta)", opacity: 0 }, g) : null;
+      lista.push(f);
+    });
+    return lista;
+  })();
+  function neve(t) {
+    FLOCOS.forEach(function (f) {
+      if (!f.el) return;
+      var dq = NEVE.queda / NEVE.vt, t0 = f.tP - dq;
+      if (t < t0) { f.el.setAttribute("opacity", "0"); if (f.sombra) f.sombra.setAttribute("opacity", "0"); return; }
+      var x, y, tr;
+      if (t < f.tP) {   // no ar: a velocidade terminal (constante), o balanço que termina em zero no contato
+        var falta = f.tP - t;
+        x = f.x + NEVE.amp * Math.sin(2 * Math.PI * falta / NEVE.per); y = f.y - NEVE.vt * falta;
+        tr = "translate(" + f2(x) + "," + f2(y) + ")";
+      } else {          // pousou: e = 0, o floco assenta (achata na normal, alarga na superfície) e fica em repouso exato
+        var k = eo(seg(t, f.tP, NEVE.assenta)), sy = 1 - NEVE.achata * k, sx = 1 + NEVE.alarga * k;
+        var bx = f.x - f.nx * f.r, by = f.y - f.ny * f.r;   // o ponto da borda que toca o traço (o pivô do achatamento)
+        tr = "translate(" + f2(bx) + "," + f2(by) + ") rotate(" + f2(f.ang) + ") scale(" + sx.toFixed(4) + "," + sy.toFixed(4) + ") translate(0," + f2(-f.r) + ")";
+      }
+      var v = eo(seg(t, t0, 0.2));
+      f.el.setAttribute("transform", tr); f.el.setAttribute("opacity", v.toFixed(3));
+      if (f.sombra) { f.sombra.setAttribute("transform", "translate(0,12) " + tr); f.sombra.setAttribute("opacity", (0.8 * v).toFixed(3)); }
+    });
+  }
+  // o TEXTO da placa: entra em 300 ms (opacidade + 24 px de subida, ease-out) e fica PARADO (fora da câmera)
+  function textoPlaca(id, t, tin, x, y, centro, base) {
+    var e = E(id); if (!e) return;
+    var p = eo(seg(t, tin, 0.3));
+    var l = centro ? x - e.offsetWidth / 2 : x, tp = base ? y - e.offsetHeight : y;
+    e.style.opacity = p.toFixed(3);
+    e.style.transform = "translate(" + f2(l) + "px," + f2(tp + 24 * (1 - p)) + "px)";
+  }
+  function placa(t) {
+    var pl = E("placa"); if (pl) pl.style.visibility = t < T_MAPA ? "visible" : "hidden";
+    if (t >= T_MAPA) return;
+    var s = 1 + (S_P1 - 1) * eb(seg(t, 0, T1.camFim));
+    var c = E("cam"); if (c) c.style.transform = "scale(" + s.toFixed(5) + ")";
+    var st = E("still"); if (st) st.style.transform = "scale(" + (1 + (s - 1) * PARALAXE).toFixed(5) + ")";
+    var p = eo(seg(t - T1.luzAtraso, T1.hachura, T1.hachuraDur));
+    var lz = E("luz");
+    if (lz) { lz.style.setProperty("--luz-x", (LUZ_CORTE.x + (LUZ_FAIXA.x - LUZ_CORTE.x) * p + 400).toFixed(1) + "px");
+              lz.style.setProperty("--luz-y", (LUZ_CORTE.y + (LUZ_FAIXA.y - LUZ_CORTE.y) * p + 400).toFixed(1) + "px"); }
+    if (CT) CT.estado({
+      traco: 1,
+      nivel: nivelP1(t),
+      marcaCheio: 1,
+      hachura: eo(seg(t, T1.hachura, T1.hachuraDur)),
+      hachuraAlfa: t >= T1.hachura ? 1 : 0,
+      pulso: 0,
+      rioFase: rioFaseP1(t)
+    });
+    neve(t);
+    textoPlaca("naoEscala", t, T1.naoEscala, 520, 1540, false, false);
+    textoPlaca("room", t, T1.room, ROOM_BASE.x, ROOM_BASE.y, true, true);
+  }
+
+  // ═══ P2 + A CAUDA · O MAPA (o molde de mapa da pré-v1, como na s28) ═══════════════════════════════════════════════════════════
+  var mapa = (function () {
+    var TERRENO = false;
+    var FONTES = ["col", "borda", "can", "eua"];
+    var P = window.__REGIE_MAPA;
+    if (typeof maplibregl === "undefined") { falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>"); return null; }
+    if (!P) { falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>"); return null; }
+    if (P.nome !== "maptiler") { falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa 'maptiler' (canal.json › mapa.perfil)."); return null; }
+    if (P.tipo !== "raster") { falhar("o perfil '" + P.nome + "' não é raster; esta cena desenha sobre satélite."); return null; }
+    var chave = null;
+    if (P.credencial) {
+      chave = (window.__chaves || {})[P.credencial] || null;
+      if (!chave) { falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+        "Aberta direto no navegador a cena não tem a chave: use o render da Régie."); return null; }
+    }
+    function geo(slug) {
+      var g = (window.__GEO || {})[slug];
+      if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo.");
+      return g;
+    }
+    // o crédito de mapa: o texto sai do perfil (o que a licença pede) e tem de ser o do textos-tela.json ([427])
+    var credMapaTexto = (P.atribuicao && P.atribuicao.exigida && P.atribuicao.tela) || "";
+    if (credMapaTexto !== "© MapTiler © OpenStreetMap contributors") { falhar("o crédito do perfil ('" + credMapaTexto + "') não é o do textos-tela.json."); return null; }
+    E("credMapa").textContent = credMapaTexto;
+    window.__creditoMapa = credMapaTexto;
+
+    // ── Web Mercator, tileSize 512, palco 3840 × 2160 (o molde) ──
+    var W = 3840, H = 2160;
+    function mx(lng) { return (lng + 180) / 360; }
+    function my(lat) { var s = Math.sin(lat * Math.PI / 180); return 0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI); }
+    function lngDe(x) { return x * 360 - 180; }
+    function latDe(y) { return 360 / Math.PI * Math.atan(Math.exp((0.5 - y) * 2 * Math.PI)) - 90; }
+    function ws(z) { return 512 * Math.pow(2, z); }
+    function centroComAncora(ll, sx, sy, z, b) {   // o centro que põe ll na tela em (sx, sy) no zoom z e rumo b (graus)
+      var k = ws(z), r = (b || 0) * Math.PI / 180, dx = sx - W / 2, dy = sy - H / 2;
+      var ux = dx * Math.cos(r) - dy * Math.sin(r), uy = dx * Math.sin(r) + dy * Math.cos(r);
+      return [lngDe(mx(ll[0]) - ux / k), latDe(my(ll[1]) - uy / k)];
+    }
+    function telaPlana(ll, c, z, b) {   // a projeção plana (sem relevo) de ll numa câmera dada
+      var k = ws(z), r = (b || 0) * Math.PI / 180, dx = (mx(ll[0]) - mx(c[0])) * k, dy = (my(ll[1]) - my(c[1])) * k;
+      return [W / 2 + dx * Math.cos(r) + dy * Math.sin(r), H / 2 - dx * Math.sin(r) + dy * Math.cos(r)];
+    }
+
+    // ── A CÂMERA: o anel parado na tela do corte ao último quadro; recua (cúbico no zoom) e se aproxima devagar (linear na escala) ──
+    var P_ESQ = [-107.2024, 46.8983], Z_ESQ = 6.0556, DAM = DJ.P.keen;
+    var ANEL_TELA = telaPlana(DAM, P_ESQ, Z_ESQ, 0);          // (920,1 / 733,9): o anel em P-BACIA-ESQ (o arco do conceito: x 920, y 734)
+    var Z_ABRE = 7.6, T_REC0 = 7.8, T_REC1 = 10.6, S_FIM = 1.035, RAMPA = 1.0;
+    var K_APROX = (S_FIM - 1) / ((DUR - T_REC1) - RAMPA / 2);  // a escala chega a 1,035 exatos no último quadro
+    function zAt(t) {
+      if (t <= T_REC0) return Z_ABRE;
+      if (t <= T_REC1) return Z_ABRE + (Z_ESQ - Z_ABRE) * eio(seg(t, T_REC0, T_REC1 - T_REC0));
+      return Z_ESQ + Math.log(1 + K_APROX * integralSuave(t, T_REC1, RAMPA)) / Math.LN2;
+    }
+    function cameraAt(t) {
+      t = cl(+t || 0, 0, DUR);
+      var z = zAt(t);
+      return { center: centroComAncora(DAM, ANEL_TELA[0], ANEL_TELA[1], z, 0), zoom: z, bearing: 0, pitch: 0 };
+    }
+    window.__cameraAt = cameraAt;
+
+    var VAZIO = { type: "FeatureCollection", features: [] };
+    var RCOL = geo("rio-columbia"), CAN = geo("bacia-columbia-canada"), EUA = geo("bacia-columbia-eua");
+    if (window.__erroCena) return null;
+    function prj(ll, cam) { return telaPlana(ll, cam.center, cam.zoom, 0); }
+    function caminho(pts, cam) {
+      var d = "", i, p;
+      for (i = 0; i < pts.length; i++) { p = prj(pts[i], cam); d += (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); }
+      return d;
+    }
+
+    // ═══ A PEÇA 5 · A ÁGUA DESCE, O DINHEIRO SOBE (o código da s28, com o que a tela final muda) ═══════════════════════════════
+    // A CORRENTE (identidade §2: --agua-luz que desce pela linha da água que corre): traço de 70 px a cada 300, 110 px/s rio abaixo,
+    // a fase no relógio do VÍDEO
+    var CORRENTE = { traco: 70, vao: 230, vel: 110 };
+    function aplicarCorrente(t, cam, v) {
+      var el = E("luzCol"); if (!el) return;
+      var tv = t + INICIO_NO_VIDEO, per = CORRENTE.traco + CORRENTE.vao, off = (-(tv * CORRENTE.vel) % per).toFixed(1);
+      el.setAttribute("opacity", (0.85 * v).toFixed(3));
+      if (v <= 0.001) return;
+      el.setAttribute("d", caminho(DJ.col, cam)); el.setAttribute("stroke-dasharray", CORRENTE.traco + " " + CORRENTE.vao);
+      el.setAttribute("stroke-dashoffset", off);
+    }
+    // A FRENTE: a cabeça de luz que corre um trecho do rio do começo ao fim (u 0 → 1); aqui a cabeça é de 180 px (o zoom de P-BACIA-ESQ)
+    var FRENTE = { cabeca: 180 };
+    function aplicarFrente(id, pts, cam, u, v) {
+      var g = E(id); if (!g) return;
+      g.setAttribute("opacity", v.toFixed(3));
+      if (v <= 0.001) return;
+      var d = caminho(pts, cam), ps = g.querySelectorAll("path");
+      ps.forEach(function (p) { p.setAttribute("d", d); });
+      var L = ps[0].getTotalLength(), hd = FRENTE.cabeca;
+      ps.forEach(function (p) { p.setAttribute("stroke-dasharray", hd + " " + (L + hd + 10)); p.setAttribute("stroke-dashoffset", (hd - u * (L + hd)).toFixed(1)); });
+    }
+    // A NOTA: o desvio de 60 px à direita de quem sobe, que some nas pontas (aoLongo e notaEm da s28, sem mudança na conta)
+    var NOTA = { w: 44, h: 24, desvio: 60, borda: 2 };
+    function aoLongo(tela, s) {
+      var acc = 0, i, L = 0, sg = [];
+      for (i = 1; i < tela.length; i++) { var dx = tela[i][0] - tela[i - 1][0], dy = tela[i][1] - tela[i - 1][1], l = Math.sqrt(dx * dx + dy * dy); sg.push(l); L += l; }
+      s = cl(s, 0, L);
+      for (i = 1; i < tela.length; i++) {
+        var l2 = sg[i - 1];
+        if (acc + l2 >= s || i === tela.length - 1) {
+          var u = l2 > 0 ? (s - acc) / l2 : 0, a = tela[i - 1], b = tela[i];
+          var nx = -(b[1] - a[1]) / (l2 || 1), ny = (b[0] - a[0]) / (l2 || 1);   // a normal à direita de quem anda (y para baixo)
+          var dv = NOTA.desvio * Math.min(1, s / 80) * Math.min(1, (L - s) / 140);
+          return { x: a[0] + (b[0] - a[0]) * u + nx * dv, y: a[1] + (b[1] - a[1]) * u + ny * dv, L: L };
+        }
+        acc += l2;
+      }
+      return { x: tela[0][0], y: tela[0][1], L: L };
+    }
+    function comprimento(tela) { var L = 0; for (var i = 1; i < tela.length; i++) L += Math.hypot(tela[i][0] - tela[i - 1][0], tela[i][1] - tela[i - 1][1]); return L; }
+    function notaEm(sai, chega, t, cam) {
+      var tela = DJ.notas.map(function (ll) { return prj(ll, cam); });
+      var u = cl((t - sai) / (chega - sai), 0, 1), ue = u - Math.sin(2 * Math.PI * u) / (2 * Math.PI);
+      return aoLongo(tela, ue * comprimento(tela));
+    }
+    // um trecho [u0, u1] (fração do comprimento na tela) de um caminho projetado, como "d"
+    function trecho(tela, u0, u1) {
+      var L = comprimento(tela), a = u0 * L, b = u1 * L, acc = 0, d = "", dentro = false;
+      if (b - a < 0.5) return "";
+      for (var i = 1; i < tela.length; i++) {
+        var p = tela[i - 1], q = tela[i], l = Math.hypot(q[0] - p[0], q[1] - p[1]);
+        if (acc + l >= a && !dentro) { var ua = l > 0 ? (a - acc) / l : 0; d = "M" + f1(p[0] + (q[0] - p[0]) * ua) + "," + f1(p[1] + (q[1] - p[1]) * ua); dentro = true; }
+        if (dentro) {
+          if (acc + l >= b) { var ub = l > 0 ? (b - acc) / l : 0; d += "L" + f1(p[0] + (q[0] - p[0]) * ub) + "," + f1(p[1] + (q[1] - p[1]) * ub); return d; }
+          d += "L" + f1(q[0]) + "," + f1(q[1]);
+        }
+        acc += l;
+      }
+      return d;
+    }
+
+    // ═══ A TELA FINAL: os três ciclos (VC-03, na ordem do mecanismo) e a 4ª nota (VC-08) ════════════════════════════════════════
+    var CICLO = [12.767, 18.767, 24.767];   // c0 de cada ciclo (1,5 / 7,5 / 13,5 s da cauda; 6,0 s cada, sem o comentário)
+    var CI = { drena: [0, 1.6], grossa: [0.1, 1.8], sai: 1.8, chega: 4.0, absorve: 0.3, pulso: [4.1, 0.9], enche: [4.8, 1.1], afina: [4.5, 1.4] };
+    var T_NOTA4 = CICLO[2] + CI.chega, NOTA4_TRACO = 0.6;
+    var MARCAS = { x: 1010, y0: 452, passo: 40, lado: 28, entra: T_CAUDA + 0.5 };
+    var PILULA = { x: 1010, base: 762 };    // a pílula SPRING 2027: à direita do anel, a base 22 px acima da fronteira no último quadro
+    function cicloDe(t) { for (var k = CICLO.length - 1; k >= 0; k--) if (t >= CICLO[k]) return k; return -1; }
+    function fracaoLago(t) {                // 1 = cheio (85 %); 0 = só o contorno e a hachura da faixa
+      var k = cicloDe(t); if (k < 0) return 1;
+      var c0 = CICLO[k];
+      if (t < c0 + CI.enche[0]) return 1 - eb(seg(t, c0 + CI.drena[0], CI.drena[1]));
+      return eb(seg(t, c0 + CI.enche[0], CI.enche[1]));
+    }
+    function aplicarLago(cam, f, v) {
+      var g = E("lago"); if (!g) return;
+      g.setAttribute("opacity", v.toFixed(3));
+      if (v <= 0.001) return;
+      var d = "";
+      DJ.lago.forEach(function (anel) { anel.forEach(function (ll, i) { var p = prj(ll, cam); d += (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); }); d += "Z"; });
+      E("clipLagoP").setAttribute("d", d); E("lagoBorda").setAttribute("d", d); E("lagoBordaViva").setAttribute("d", d);
+      var yN = prj([DAM[0], DJ.lagoLat[1]], cam)[1] - 8, yS = prj([DAM[0], DJ.lagoLat[0]], cam)[1] + 8;
+      var xW = prj([-118.30, 50], cam)[0], xE = prj([-117.62, 50], cam)[0];
+      var h = E("lagoHach"), a = E("lagoAgua"), yL = yS - f * (yS - yN);
+      if (h) { h.setAttribute("x", f1(xW)); h.setAttribute("y", f1(yN)); h.setAttribute("width", f1(xE - xW)); h.setAttribute("height", f1(yS - yN)); }
+      if (a) { a.setAttribute("x", f1(xW)); a.setAttribute("y", f1(yL)); a.setAttribute("width", f1(xE - xW)); a.setAttribute("height", f1(Math.max(0, yS - yL))); }
+      var ca = E("clipAguaR");
+      if (ca) { ca.setAttribute("x", f1(xW - 10)); ca.setAttribute("y", f1(yL)); ca.setAttribute("width", f1(xE - xW + 20)); ca.setAttribute("height", f1(Math.max(0, yS + 10 - yL))); }
+    }
+    function aplicarGrossa(t, cam) {        // a corrente grossa: o trecho [u_t, u_h] do rio, da barragem a Portland
+      var k = cicloDe(t), g1 = E("grossa"), g2 = E("grossaLuz"); if (!g1 || !g2) return;
+      var uh = 0, ut = 0;
+      if (k >= 0) { var c0 = CICLO[k]; uh = eio(seg(t, c0 + CI.grossa[0], CI.grossa[1])); ut = eio(seg(t, c0 + CI.afina[0], CI.afina[1])); }
+      var d = uh - ut > 0.002 ? trecho(DJ.jus.map(function (ll) { return prj(ll, cam); }), ut, uh) : "";
+      if (!d) { g1.setAttribute("opacity", "0"); g2.setAttribute("opacity", "0"); return; }
+      g1.setAttribute("d", d); g2.setAttribute("d", d);
+      g1.setAttribute("opacity", "0.95"); g2.setAttribute("opacity", "0.9");
+      g2.setAttribute("stroke-dasharray", "90 150"); g2.setAttribute("stroke-dashoffset", (-(((t + INICIO_NO_VIDEO) * 260) % 240)).toFixed(1));
+    }
+    function aplicarPulsoNorte(t, cam) {
+      var k = cicloDe(t), u = -1;
+      if (k >= 0) { var c0 = CICLO[k]; if (t >= c0 + CI.pulso[0] && t <= c0 + CI.pulso[0] + CI.pulso[1] + 0.05) u = seg(t, c0 + CI.pulso[0], CI.pulso[1]); }
+      aplicarFrente("frenteN", DJ.norte, cam, Math.max(0, u), u >= 0 ? 1 : 0);
+    }
+    function aplicarNotas(t, cam) {
+      CICLO.forEach(function (c0, i) {
+        var g = E("nota" + i); if (!g) return;
+        var sai = c0 + CI.sai, chega = c0 + CI.chega;
+        if (t < sai || t > chega + CI.absorve) { g.setAttribute("opacity", "0"); return; }
+        var p = notaEm(sai, chega, t, cam), a = eo(seg(t, chega, CI.absorve));
+        var v = eo(seg(t, sai, 0.25)) * (1 - a), s = 1 - 0.4 * a;
+        g.setAttribute("transform", "translate(" + f1(p.x) + "," + f1(p.y) + ") scale(" + s.toFixed(3) + ")");
+        g.setAttribute("opacity", v.toFixed(3));
+      });
+    }
+    function aplicarNota4(t, cam) {
+      var g = E("nota4"), r = E("clipNota4R"); if (!g) return;
+      if (t < T_NOTA4) { g.setAttribute("opacity", "0"); return; }
+      // no ponto de partida das notas, em The Dalles, assentada na margem sul (Oregon, onde fica a cidade), 30 px à direita de quem
+      // sobe: na linha do rio, a água atravessava a nota vazada e ela deixava de se ler como nota (o item 60)
+      var p = prj(DJ.notas[0], cam), q = prj(DJ.notas[1], cam), u = eio(seg(t, T_NOTA4, NOTA4_TRACO));   // o lápis corre da esquerda para a direita
+      var dx = q[0] - p[0], dy = q[1] - p[1], dl = Math.sqrt(dx * dx + dy * dy) || 1, ox = -dy / dl * 30, oy = dx / dl * 30;
+      g.setAttribute("transform", "translate(" + f1(p[0] + ox) + "," + f1(p[1] + oy) + ")");
+      g.setAttribute("opacity", "1");
+      if (r) r.setAttribute("width", f1(60 * u));
+    }
+    function aplicarMarcas(t) {
+      var g = E("marcas"); if (!g) return;
+      var v = eo(seg(t, MARCAS.entra, 0.5)); g.setAttribute("opacity", v.toFixed(3));
+      for (var i = 0; i < 3; i++) {
+        var x = MARCAS.x, y = MARCAS.y0 + MARCAS.passo * i, ac = eo(seg(t, CICLO[i] + CI.chega, 0.3));
+        [E("marca" + i), E("marca" + i + "a")].forEach(function (m) { if (m) { m.setAttribute("x", x); m.setAttribute("y", y); } });
+        var m2 = E("marca" + i + "a");
+        if (m2) { m2.style.fill = ac > 0.001 ? "var(--papel)" : "none"; m2.setAttribute("fill-opacity", ac.toFixed(3)); m2.setAttribute("stroke-opacity", (0.6 + 0.4 * ac).toFixed(3)); }
+      }
+    }
+    function aplicarPilula(t) {
+      var el = E("spring"); if (!el) return null;
+      var vin = eo(seg(t, 8.333, 0.3));
+      var w = el.offsetWidth, h = el.offsetHeight, l = PILULA.x, tp = PILULA.base - h + (1 - vin) * 24;
+      el.style.opacity = vin.toFixed(3); el.style.visibility = vin > 0.001 ? "visible" : "hidden";
+      el.style.transform = "translate(" + f2(l) + "px," + f2(tp) + "px)";
+      var pu = E("pulsoSpring");
+      if (pu) {
+        var u = (t - T_NOTA4) / 1.2, vivo = u >= 0 && u < 1, s = 1 + 0.06 * eo(cl(u, 0, 1));
+        pu.setAttribute("x", f1(l - 6)); pu.setAttribute("y", f1(PILULA.base - h - 6)); pu.setAttribute("width", f1(w + 12)); pu.setAttribute("height", f1(h + 12));
+        var cx = l + w / 2, cy = PILULA.base - h / 2;
+        pu.setAttribute("transform", "translate(" + f1(cx) + "," + f1(cy) + ") scale(" + s.toFixed(4) + ") translate(" + f1(-cx) + "," + f1(-cy) + ")");
+        pu.setAttribute("opacity", vivo ? (0.9 * (1 - u)).toFixed(3) : "0");
+      }
+      return { l: l, t: PILULA.base - h, w: w, h: h };
+    }
+
+    // ── o anel (identidade §4.4: 56 px, traço 10 em --destaque, o halo escuro; criarAnel da s28); aqui UM pulso por chegada ──
+    function criarAnel(id) {
+      var g = svgEl("g", { id: id, "class": "anel", opacity: "0" }, E("ov"));
+      var gp = svgEl("g", { id: id + "Pulso", opacity: "0" }, g);
+      svgEl("circle", { "class": "halo", cx: 0, cy: 0, r: 28, "stroke-width": 30 }, gp);
+      svgEl("circle", { cx: 0, cy: 0, r: 28, "stroke-width": 10 }, gp);
+      svgEl("circle", { "class": "halo", cx: 0, cy: 0, r: 28, "stroke-width": 30 }, g);
+      svgEl("circle", { cx: 0, cy: 0, r: 28, "stroke-width": 10 }, g);
+      return g;
+    }
+    function aplicarAnel(t, cam, v) {
+      var g = E("anel"); if (!g) return;
+      var pa = prj(DAM, cam);
+      g.setAttribute("transform", "translate(" + f2(pa[0]) + " " + f2(pa[1]) + ")");
+      g.setAttribute("opacity", v.toFixed(3));
+      var tp = -1; CICLO.forEach(function (c0) { if (t >= c0 + CI.chega) tp = c0 + CI.chega; });
+      var c = E("anelPulso"); if (!c) return;
+      var u = tp < 0 ? -1 : (t - tp) / 1.2, vivo = u >= 0 && u < 1;
+      c.setAttribute("transform", "scale(" + (1 + 0.8 * (vivo ? u : 0)).toFixed(4) + ")");
+      c.setAttribute("opacity", vivo ? (1 - u).toFixed(3) : "0");
+    }
+
+    // ── os créditos: o de mapa INTEIRO em todo quadro com mapa (de 7,533 ao fim) e só nele; a fonte logo acima, no tempo dela ──
+    var CREDITOS = [{ id: "credFonte", t0: 8.333, t1: null }];
+    function aplicarCreditosMapa(t) {
+      var m = E("credMapa"), vm = t >= T_MAPA ? 1 : 0;
+      if (m) { m.style.opacity = String(vm); m.style.visibility = vm ? "visible" : "hidden"; }
+      var hM = m && vm ? m.offsetHeight + 6 : 0;
+      CREDITOS.forEach(function (c) {
+        var el = E(c.id); if (!el) return;
+        var v = eo(seg(t, c.t0, 0.3)) * (c.t1 === null ? 1 : 1 - eio(seg(t, c.t1 - 0.3, 0.3)));
+        el.style.bottom = (24 + hM) + "px";
+        el.style.opacity = v.toFixed(3); el.style.visibility = v > 0.001 ? "visible" : "hidden";
+      });
+    }
+
+    // ── o estilo do mapa: a base no tratamento C; a bacia (as duas partes), o rio, a fronteira ──
+    var COR = { destaque: tok("--destaque", "orange"), contraparte: tok("--contraparte", "teal"), agua: tok("--agua", "lightblue"),
+      contorno: tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)"), fronteira: tok("--fronteira-cor", "rgba(255, 255, 255, 0.70)") };
+    var SEM = { duration: 0, delay: 0 };
+    var lc = { "line-join": "round", "line-cap": "round" };
+    var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+    var transp = "rgba(0,0,0,0)";
+    function gradBorda(c) { return ["interpolate", ["linear"], ["line-progress"], 0, c, DJ.bordaFade, c, 1, transp]; }
+    function estilo() {
+      var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom },
+        eua: { type: "geojson", data: EUA }, can: { type: "geojson", data: CAN }, col: { type: "geojson", data: RCOL },
+        borda: { type: "geojson", data: DJ.borda, lineMetrics: true } };
+      var camadas = [
+        { id: "base", type: "raster", source: "base", paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } },   // identidade §6, o tratamento C
+        { id: "eua", type: "fill", source: "eua", paint: { "fill-color": COR.contraparte, "fill-opacity": 0, "fill-opacity-transition": SEM } },
+        { id: "can", type: "fill", source: "can", paint: { "fill-color": COR.destaque, "fill-opacity": 0, "fill-opacity-transition": SEM } },
+        { id: "col", type: "line", source: "col", layout: lc, paint: { "line-color": COR.agua, "line-width": 8, "line-opacity": 1, "line-opacity-transition": SEM } },
+        { id: "borda-sob", type: "line", source: "borda", layout: lc, paint: { "line-color": COR.contorno, "line-width": 12, "line-opacity": 1, "line-gradient": gradBorda(COR.contorno) } },
+        { id: "borda", type: "line", source: "borda", layout: lc, paint: { "line-color": COR.fronteira, "line-width": 5, "line-opacity": 1, "line-gradient": gradBorda(COR.fronteira) } }
+      ];
+      return { version: 8, transition: SEM, sources: fontes, layers: camadas };
+    }
+
+    // ── rede com nova tentativa (o molde, sem mudança) ──
+    window.__retentativasMapa = 0;
+    window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+    var ESPERAS = [0, 1000, 3000, 6000, 10000];
+    var PRAZO_TENTATIVA = 30000;
+    function defeitoDaImagem(buf) {
+      var b = new Uint8Array(buf), n = b.length, i;
+      if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+      if (b[0] === 0xFF && b[1] === 0xD8) {
+        for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+        return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+      }
+      if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+        for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+        return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+      }
+      if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+        var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+        return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+      }
+      return null;
+    }
+    function erroCorpo(msg, url, st) { var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e; }
+    function buscarComRetentativa(params, abortar) {
+      var url = params.url.replace(/^regie\+/, "");
+      var tentativa = 0;
+      var ehImagem = params.type === "image";
+      function uma() {
+        var ctl = new AbortController(), estourou = false;
+        var cancelar = function () { ctl.abort(); };
+        var externo = abortar && abortar.signal;
+        if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+        var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+        var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+        return fetch(url, { signal: ctl.signal }).then(function (r) {
+          if (!r.ok) { var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http"; throw e; }
+          if (params.type === "json") return r.text().then(function (t) { try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); } });
+          return r.arrayBuffer().then(function (buf) {
+            if (!ehImagem) return buf;
+            var defeito = defeitoDaImagem(buf);
+            if (defeito) throw erroCorpo(defeito, url, r.status);
+            return createImageBitmap(new Blob([buf])).then(null, function (x) {
+              throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+            });
+          });
+        }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+          soltar();
+          if (e && e.name === "AbortError" && !estourou) throw e;
+          if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+          if (!e || typeof e !== "object") e = new Error(String(e));
+          var st = e.status;
+          if (!e.falha) e.falha = st ? "http" : "rede";
+          var passageira = e.falha !== "http" || st === 429 || st >= 500;
+          try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+          if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+          window.__retentativasMapa++;
+          window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+          return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+        });
+      }
+      return uma();
+    }
+    maplibregl.addProtocol("regie+https", buscarComRetentativa);
+    maplibregl.addProtocol("regie+http", buscarComRetentativa);
+    var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+
+    var c0 = cameraAt(0), map;
+    try {
+      map = new maplibregl.Map({
+        container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+        maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+        style: estilo(), center: c0.center, zoom: c0.zoom, bearing: c0.bearing, pitch: c0.pitch
+      });
+    } catch (e) {
+      falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa."); return null;
+    }
+    window.map = map;
+    // A BASE ANDA LISA (o molde): toda pintura vai como "em movimento"
+    (function () {
+      var pt = map.painter, pintar = pt && pt.render;
+      if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+      pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+    })();
+
+    // ── FAIL-CLOSED: tile que não chega é ERRO, não quadro preto (o molde) ──
+    window.__errosMapa = 0;
+    function motivoRede(err, msg) {
+      var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+      if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg))
+        return "mandou tile CORROMPIDO" + n + " (" + String(msg).replace(/^tile corrompido: /, "") + "). Renderize de novo.";
+      if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + ". Renderize de novo.";
+      if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+      if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+      if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+      if (st) return "respondeu HTTP " + st + ".";
+      return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+    }
+    var mapaCarregado = false;
+    map.on("error", function (ev) {
+      window.__errosMapa++;
+      var err = (ev && ev.error) || {};
+      var msg = String(err.message || "");
+      var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+      if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ".");
+      var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+      falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : ""));
+    });
+    map.on("load", function () {
+      PRONTO_EXTRA.then(function () {
+        mapaCarregado = true;
+        window.__renderAt(0);
+        map.once("idle", function () { if (!window.__erroCena) resolverPronto(true); });
+      }, function (e) { falhar(e.message); });
+    });
+
+    var opAntes = {};
+    function opac(id, prop, v) { v = +(+v).toFixed(3); var k = id + "|" + prop; if (opAntes[k] === v) return; map.setPaintProperty(id, prop, v); opAntes[k] = v; }
+    criarAnel("anel");
+
+    function aplicarCena(t, cam) {
+      var vm = t >= T_MAPA ? 1 : 0;
+      var ov = E("ov"), rt = E("rotulos");
+      if (ov) ov.style.visibility = vm ? "visible" : "hidden";
+      if (rt) rt.style.visibility = vm ? "visible" : "hidden";
+      // a bacia acende em 'far' ("as far as this deal can reach"), 500 ms (roupa §5)
+      var vb = eo(seg(t, 9.595, 0.5));
+      opac("can", "fill-opacity", 0.40 * vb); opac("eua", "fill-opacity", 0.35 * vb);
+      aplicarCorrente(t, cam, vm);
+      aplicarGrossa(t, cam);
+      aplicarLago(cam, fracaoLago(t), vm);
+      aplicarPulsoNorte(t, cam);
+      aplicarNotas(t, cam);
+      aplicarNota4(t, cam);
+      aplicarAnel(t, cam, vm);
+      aplicarMarcas(t);
+      aplicarPilula(t);
+      var veu = E("veu"); if (veu) veu.style.opacity = (0.5682 * seg(t, T_CAUDA, DUR - T_CAUDA)).toFixed(4);
+    }
+    function aplicar(t) {
+      aplicarCreditosMapa(t);
+      if (!mapaCarregado) return Promise.resolve();
+      var cam = cameraAt(t);
+      map.jumpTo(cam);
+      aplicarCena(t, cam);
+      return Promise.resolve();
+    }
+
+    function tileComErro() {
+      try {
+        var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+        for (var id in sc) { var ts = (sc[id] && sc[id]._tiles) || {}; for (var k in ts) if (ts[k] && ts[k].state === "errored") return id; }
+      } catch (e) {}
+      return null;
+    }
+    function barrarTileComErro() {
+      var ruim = tileComErro();
+      if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou. O quadro sairia com buraco.");
+      return !!ruim;
+    }
+    var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+    // pronto: os tiles do satélite e as fontes da cena carregados, o mapa parado, dois quadros pintados (o molde)
+    window.__aguardarMapa = function (teto) {
+      teto = teto || 90000;
+      return new Promise(function (res) {
+        var pronto = function () {
+          try {
+            if (!mapaCarregado || !map.areTilesLoaded() || map.isMoving()) return false;
+            for (var i = 0; i < FONTES.length; i++) if (!map.getSource(FONTES[i]) || !map.isSourceLoaded(FONTES[i])) return false;
+            if (!map.getSource("base") || !map.isSourceLoaded("base")) return false;
+            return true;
+          } catch (e) { return false; }
+        };
+        var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
+        (function tick() {
+          barrarTileComErro();
+          var ok = pronto(), cheio = false;
+          try { cheio = mapaCarregado && map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+          if (!cheio) forcadas = 0;
+          if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.triggerRepaint(); }
+          if (forcadas < 2 || !pintou) ok = false;
+          seguidas = ok ? seguidas + 1 : 0;
+          if (window.__erroCena || seguidas >= 2) return res(true);
+          if (performance.now() - t0 > teto) {
+            window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+            falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo.");
+            return res(true);
+          }
+          setTimeout(tick, 30);
+        })();
+      });
+    };
+    // a prova do nível de tile (o molde): o menor nível do satélite que a câmera de t pede
+    window.__zMinNaTela = function (t) {
+      try {
+        if (typeof t === "number") window.__renderAt(t);
+        var ts = map.transform.coveringTiles({ tileSize: P.base.tileSize, minzoom: 0, maxzoom: P.base.maxzoom, roundZoom: true, reparseOverscaled: true, terrain: null });
+        var m = 99; ts.forEach(function (id) { m = Math.min(m, id.canonical.z); }); return { zmin: m, n: ts.length };
+      } catch (e) { return { erro: String(e && e.message) }; }
+    };
+    return { aplicar: aplicar };
+  })();
+
+  // a prontidão: o RIG (as faces da marca e as imagens) e o still decodificado
+  var PRONTO_EXTRA = Promise.all([R.prontas()].concat(Array.prototype.map.call(document.querySelectorAll("img"), function (im) {
+    return new Promise(function (res, rej) {
+      var ok = function () { (im.decode ? im.decode() : Promise.resolve()).then(function () { res(true); }, function () { res(true); }); };
+      if (im.complete && im.naturalWidth) ok(); else { im.onload = ok; im.onerror = function () { rej(new Error("a imagem " + im.getAttribute("src") + " não carregou.")); }; }
+    });
+  }))).then(function () { return true; });
+  window.__fotosProntas = PRONTO_EXTRA.then(null, function (e) { falhar(e.message); return true; });
+
+  window.__renderAt = function (t) {
+    try {
+      t = cl(+t || 0, 0, DUR);
+      placa(t);
+      return (mapa ? mapa.aplicar(t) : Promise.resolve()) || Promise.resolve();
+    } catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); return Promise.resolve(); }
+  };
+  // só conferência (a prova vem dos quadros): o nível do corte, a escala da câmera de P1, a câmera do mapa
+  window.__s63estado = function (t) {
+    t = cl(+t || 0, 0, DUR);
+    return { nivel_y: +nivelP1(t).toFixed(2), escala_p1: +(1 + (S_P1 - 1) * eb(seg(t, 0, T1.camFim))).toFixed(5),
+      camera: window.__cameraAt ? window.__cameraAt(t) : null };
+  };
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__renderAt(0) || true;
+  };
+  placa(0);
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+</script>
+</body>
+</html>
