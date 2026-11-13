@@ -1,0 +1,140 @@
+{
+  "cena": "s36",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 8,
+      "problemas": [
+        "exceção do Lucas: qc-tamanho, crédito a 60 px (\"Source: Congressional Research Service, 2024\" 60<72), 24/10/2026, entre 17h e 19h, no sha1 5be0fe6f (qc/_excecoes-portao.json). Único item da falha `tamanho`; o crédito da MapTiler está com data-qc-credito=\"mapa\" só na própria linha, e o da CRS tem data-qc-papel=\"credito\" e --fs-credito 60 px no HTML.",
+        "portao-margens: veredito 0 no sha1 de hoje (473 pedidos de tile respondidos, 437 amostras, 24 medidos, 0 itens, 0 avisos); o portão-mapa v5 `til` e `rodape` dão 0; o `til-glifo` indefinido do _portao.json não vai a gatesDuros (roupa §3). Não remedi margem no olho.",
+        "sinalização (poluição de espaço, sem reprovar): do quadro 41,93 s ao fim (1,63 s) a tela tem régua, pino com o fio, \"U.S. AGENCIES\", \"BC HYDRO\", a faixa do vão e \"THE GAP\": 6 elementos, o teto de identidade §4.2, e 3 pílulas de texto ao mesmo tempo (limite de 3 blocos). Nada se sobrepõe nos quadros de 33,5, 36,8, 40,2 e 43,3 s: as pílulas ficam acima e abaixo da faixa, e o \"THE GAP\" na ponta do vão.",
+        "sinalização: \"THE GAP\" fica 1,63 s no ar (41,933–43,567 s), abaixo dos 2,0 s de identidade §4.3 e acima do piso de ofício de 1,5 s; não dá para esticar sem entrar antes da palavra \"gap\" (442,25 s) ou invadir a s37. Aceito como está.",
+        "sinalização: a faixa do crédito tem 2 linhas nos quadros de 2,8–8,87 s e de 22,3 s ao fim (CRS + MapTiler/OSM), legíveis, sem palavra sozinha na última linha."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 8,
+      "problemas": [
+        "Conferido contra o textos-tela.json: os textos e a grafia (\"The Dalles, Oregon\", \"NOT CURRENTLY DEFINED IN THE TREATY\", \"CUBIC FEET PER SECOND (CFS)\", \"The Dalles Dam\", \"Photo from 2009\", \"2014/2024 TREATY REVIEW\", \"U.S. AGENCIES: 450,000–650,000 CFS\", \"BC HYDRO: ONLY AT 600,000 CFS\", \"THE GAP\") batem; \"U.S. ENTITY\" não está na tela. Nenhum texto de nao_vai_para_tela. Nenhum filho com visibility: visible dentro de pai escondido (grep no HTML: 0).",
+        "A régua sem números respeita o item 81. Medi as proporções no quadro: 650.000 em y 250, 600.000 em y 262,5 e 450.000 em y 300 (cena em 960 px de largura); a faixa americana (250–300), o traço canadense (≈263) e o vão (263–300) casam com 650, 600 e 450 nessa escala. A geometria do medidor é coerente com os números da legenda.",
+        "Geografia: o pino da estação fica na margem sul do Columbia, na cidade de The Dalles; a barragem aparece 4,3 km rio acima, à direita, como declara o cabeçalho; a água escura (agua-osm-the-dalles) cobre o rio e os lagos pequenos de Dallesport sem cortar a margem. No recorte 4K de 16,6 s, o filete de 3–5 px na margem norte se lê como beira do rio, não como linha falsa.",
+        "sinalização (associação posicional): no plano da foto, a pílula \"The Dalles Dam\" (409,35–412,57 s) fica no lado esquerdo, logo abaixo da ponte laranja do primeiro plano e longe do vertedouro, que está no centro-direita. Quem lê pode associar o rótulo à ponte. O rótulo de lugar da identidade §5 está certo no texto (lugar_na_origem \"The Dalles Lock and Dam\") e a foto é a aprovada, então não reprova: é a posição."
+      ],
+      "correcoes": [
+        "Opcional, em graphics/s36.html (a pílula do plano P2): subir ou levar a pílula \"The Dalles Dam\" para perto do vertedouro (centro-direita da foto), deixando o \"Photo from 2009\" logo abaixo dela; o texto não muda."
+      ]
+    },
+    {
+      "lente": "wordlock",
+      "nota": 8,
+      "problemas": [
+        "Entradas conferidas nos quadros contra a fala: \"NOT CURRENTLY DEFINED…\" em 2,8 s (403,11 s, \"No number,\"); a régua em \"gauge.\" (4,39 s); \"CFS\" em 7,2 s (\"cubic feet per second\"); a foto, \"The Dalles Dam\" e o aviso em 9,03 s (\"how much water goes past The Dalles\"); \"2014/2024 TREATY REVIEW\" em 13,37 s (\"for review,\"); a faixa americana em \"four\" (22,3 s); o traço canadense em \"six\" (28,3 s); o vão em \"Between\" (35,86 s); \"THE GAP\" em \"gap\" (41,93 s). O visual termina com a frase (último quadro 43,53 s, \"the gap. So we\"). O primeiro segundo está coberto: a descida do mapa começa no quadro 0, casada com o fim da s35.",
+        "sinalização: \"The Dalles, Oregon\" entra em 0,167 s, uns 9 s antes de a voz dizer \"The Dalles\" (≈409,6 s). Cabe na exceção (a) do lastro, orientação do destino da câmera na descida, e a pose casa com a s35. Se o redator quiser ancorar na palavra, o rótulo entraria no fim da descida (~3,3 s), mas o plano perderia o lugar nos primeiros segundos.",
+        "Nenhum elemento foi atrasado por ritmo nesta cena (a carga passa nas 57 sem defasagem), então não há re-checagem de wordlock pendente."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "O modo é certo: o objeto da frase é um lugar real (a estação de The Dalles), e o medidor de pé sobre o satélite real é a metáfora do vão. A foto aérea do vertedouro (2009, USACE) cobre \"how much water goes past The Dalles\" no plano certo (registro real). Cinco planos, um por objeto, como a regência prescreve. Sem card de capítulo, sem apresentador, sem bandeira."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "Um espectador de fora lê em 2 s: a régua sem marca (\"no line on a gauge\") com a legenda de que não é definido no tratado; depois as duas pílulas com o lado de cada um e o número, e a faixa laranja entre as marcas, com \"THE GAP\". O leitor só do texto vê respostas, não perguntas (\"U.S. AGENCIES: 450,000–650,000 CFS\", \"BC HYDRO: ONLY AT 600,000 CFS\").",
+        "sinalização: a régua não tem números, então quem não ouve a fala só confere a posição relativa das marcas pelas pílulas; o item 81 da Sala manteve assim. A leitura se sustenta com a narração, que é a condição do vídeo."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "poluicao",
+      "nota": 8,
+      "problemas": [
+        "Teste de lastro feito: cada texto cai numa palavra da fala (\"No number,\"; \"cubic feet per second\"; \"for review,\"; \"four hundred fifty thousand\"; \"six hundred thousand\"; \"the gap\") ou numa exceção. \"The Dalles, Oregon\" (0,167 s) cai na exceção (a), orientação do destino da câmera. \"U.S. AGENCIES\" e \"BC HYDRO\" nomeiam quem a voz chama de \"American planners\" e \"the Canadian side\": é dado atribuível (exceção b), não órfão.",
+        "Nenhuma entidade HTML literal, nenhum tofu, nenhum glifo quebrado nos quadros das folhas. Sem redundância: a pílula \"U.S. AGENCIES\" não repete o que a régua diz.",
+        "sinalização: o pico de elementos é 6 nos últimos 1,6 s (régua, pino com fio, 2 cotas, faixa do vão, \"THE GAP\"), o teto. Em 22,3–41,9 s são 4 a 5. A Sala conferiu que a carga passa; está no pior extremo, sem passar."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 7,
+      "problemas": [
+        "O degrau da fusão de nível do satélite (2,367 s) SE VÊ no quadro parado, mas é leve em movimento. Na folha de 12 quadros (2,0 a 2,8 s), o quadro de 2,333 s é o terreno marrom saturado e o de 2,367 s já é o bege pálido, mais claro e menos saturado (Y 71,5 → 80,7, +9,2, o triplo dos ~3 por quadro vizinhos, medido por mim no clipe 4K com o ffmpeg e que bate com a medida da Sala). Na folha, o tom local oscila ainda em 2,367 (pálido), 2,4 (mais escuro) e 2,433 (pálido), compatível com tiles novos chegando em lotes; a média Y não mostra essa oscilação (80,7 → 83,8 → 86,5). Há também um overshoot pequeno: o brilho chega a 90,5 em 2,567 s e assenta em ~87 (2,733 s) e ~85 em 3,0 s. Tudo ocorre durante o voo de descida (z 10,6 → 12,2), com o quadro inteiro em movimento: lê-se como um estalo de claridade de 1 quadro (33 ms) na troca de imagem, não como corte nem defeito de leitura, e o tom que o antecede (pulo do quadro inteiro entre 1,93 e 2,03 s) foi consertado. Não reprova (um quadro, em voo); vai como observação à arte.",
+        "sinalização: de 13,4 s a 22,3 s (9 s) o quadro tem só a deriva de 4 px/s (medi o pino: x 2332 → 2356 → 2372 → 2388 em 4K, em 13,2, 16,6, 20,0 e 23,4 s) e o zoom de +0,002/s, a régua e a legenda paradas. O cabeçalho diz que \"o mapa nunca para\"; o deslocamento de 1 % da tela em 9 s é quase imperceptível, e o que carrega o quadro é só a entrada da legenda em 13,4 s. Não reprova pela roupa (a decisão sobre norte/órbita está pendente; o plano mantém o medidor legível; há movimento no resto da cena: descida, régua subindo, fio, faixa, traço, vão), mas é o trecho mais parado da cena.",
+        "Cortes: s35 → s36 sem corte (a pose casa, o 1º quadro é o último da s35); a descida do mapa dura 3,0 s (0,3–3,3 s), em Hermite; o corte para a foto (8,87 s) e de volta ao mapa (12,23 s) são secos, mas entre mapa e foto, não entre mapas. A foto tem Ken Burns 1,00 → 1,06 rumo à água. s36 → s37: mapa para DADOS (a régua e a faixa casam: o 1º quadro da s37 tem a régua na mesma posição e a faixa do vão), então não é corte seco entre mapas. Nada se move de forma relevante no último quarto de segundo (a deriva só)."
+      ],
+      "correcoes": [
+        "Opcional (observação ao mapista, em graphics/s36.html, a fusão BASE_MAXZ/BASE sem teto, 2,05–2,60 s): esperar os tiles da base sem teto carregarem antes de começar a fusão (ou alongar a fusão para ~0,8 s) para que o degrau de +9 em 2,367 s não caia num só quadro; igualar o tratamento C das duas bases evita o overshoot de 90,5 → 85.",
+        "Opcional (P3, 13,4–22,3 s): subir a deriva ou o zoom do mapa de perto (ex.: zoom em +0,02/s, ainda pelo sentido do rio), sem mexer na posição do medidor nem das marcas, ou fazer a faixa americana se desenhar mais cedo; sem mover texto nem a régua durante a leitura."
+      ]
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "© MapTiler © OpenStreetMap contributors em todo quadro com mapa (0–8,87 s e 12,23–43,57 s), 60 px, na faixa de crédito, com data-qc-credito=\"mapa\" só na própria linha; ausente no plano da foto (sem mapa na tela), sem crédito-fantasma. O portão-mapa `rodape` dá 0.",
+        "\"Source: Congressional Research Service, 2024\" (2,8–8,87 s e 22,33 s ao fim) está onde o dado atribuível aparece (a legenda do tratado e as faixas da CRS, que a voz cita em 33,5 s: \"U.S. Congressional Research Service describes\"); não é crédito supérfluo, porque é fonte de dado, não de mídia de domínio público. Está com data-qc-papel=\"credito\".",
+        "A foto de The Dalles (USACE/DVIDS, 2009) tem aprovado no conferencia-midia (casado pelo sha256 daa639d9…, cena s36, plano P2); sem crédito na tela (domínio público federal, identidade §7) e com o aviso do ano \"Photo from 2009\" (aviso_de_ano: true, ano do data_na_origem 2009-01-30) durante todo o plano. A Sala confirma o casar-midia-vereditos 0.",
+        "Satélite e água: o OSM/TIGER da água de The Dalles está coberto pela linha da MapTiler/OSM."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 8,
+      "problemas": [
+        "Uma cor, um significado: o vão é o único elemento em --tensao (laranja); as faixas americana e canadense ficam em --tinta/neutras; as pílulas são --rotulo. Sem degradê, véu nem vinheta por cima do mapa (o escurecer de borda não aparece nos quadros). A família de cor combina com as irmãs (s35 e s37: o laranja do vão passa à s37 igual).",
+        "sinalização: o satélite de perto tem brilho médio ~85 a 90 contra ~52 no primeiro plano (a bacia de longe, a 65 % de brilho da identidade §1). A diferença é grande para o mesmo tratamento: o mapa de The Dalles parece mais claro que o do voo. As pílulas escuras seguem legíveis nos dois. A decisão do Lucas sobre os 65 % (DECISÃO DO LUCAS PENDENTE, roupa §5) segue pendente; reporto o número.",
+        "Sem `evidencia.paleta` neste laudo (a ferramenta de medição não faz parte desta tarefa)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 9,
+      "problemas": [
+        "O concreto central (The Dalles, o rio e a barragem) tem registro real no trecho: a foto aérea do vertedouro aberto em tela cheia (P2) e o satélite real de perto em P1, P3–P5. O medidor é uma construção gráfica genérica (\"gauge\"), do tipo que qualquer espectador imagina sem ver foto. A caça não foi feita para esta cena (sem beat de caça na s36)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 8,
+      "problemas": [
+        "A fala atravessa 5 objetos e há 5 planos, cada um na palavra que o convoca (medidor sem linha, o rio passando, a faixa americana, a linha canadense, o vão), sem plano único para dois objetos. Nenhum footage; a única foto fica 3,37 s (teto de 6 s), e as fotos não se repetem entre planos (um src só em P2).",
+        "sinalização: no mapa de P3, de 13,4 s a 22,3 s (~9 s), nada novo entra: o plano segura a mesma imagem sem trajetória própria. Fica no regime \"normal\" da regência, com a construção da faixa logo a seguir; é o trecho mais longo sem troca visual (a regra do gancho de 6 s só vale até a vinheta, e esta cena é do corpo). Ver a correção na lente motion."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 9,
+      "problemas": [
+        "A cena avança sobre a s35 (a rota do Columbia, de que ela herda a pose) com um degrau novo: o medidor e o vão. O medidor volta na s37 como eixo e o vão como faixa: é o callback planejado (peça 2), que paga com informação nova (os picos de 1879–1967); não é repetição."
+      ],
+      "correcoes": []
+    }
+  ]
+}

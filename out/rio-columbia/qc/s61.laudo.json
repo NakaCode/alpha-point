@@ -1,0 +1,115 @@
+{
+  "cena": "s61",
+  "aprovado": true,
+  "gatesDuros": [],
+  "lentes": [
+    {
+      "lente": "espaco",
+      "nota": 9,
+      "problemas": [
+        "Observação: o portao-margens leu 0 no sha1 2543dd0a0a3c e na marca 6314f1776ecf (199 amostras a 0,1 s, 10 objetos medidos, sem avisos); o qc-cena não deu falha (falhas do _portao.json: nenhuma; o til-glifo indefinido do carimbo de mapa tem o portao-mapa til 0 no mesmo sha1, e não vai a gatesDuros: roupa §3); os dois créditos de mapa (data-qc-credito=\"mapa\", 60 px, na própria linha) passam o piso de 40, sem precisar da exceção do crédito a 60 px. Rótulos dentro da regra: \"ROOM\" (1 palavra), \"Portland\" (1), legenda de datas a 84 px (papel eixo, 3 linhas, ao pé à esquerda). A legenda fica a ~80 px do lago na folha (6,4 s), sem tocar. lang=\"en-US\" e data-render=\"4k-native\" presentes; canto de 400 × 400 e faixa abaixo de y 1880 sem texto fora o crédito."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "factual",
+      "nota": 9,
+      "problemas": [
+        "Observação: as datas \"April 14 and July 11, 2024\" casam com os arquivos landsat-arrow-fundo-2024-04-14.png e landsat-arrow-pico-2024-07-11.png; o contorno laranja é o polígono do Arrow (OSM) e acompanha a margem cheia em julho e se abre sobre a lama em abril, que é o que a cena quer provar (o espaço que a água não ocupa). O ponto de Portland fica junto ao Columbia, à direita do rótulo, no trecho certo (a oeste das Cascades, perto da foz). O Arrow, a barragem (o anel no pé do lago) e os pulsos descendo o Columbia até Portland batem com a fala. \"Not to scale\" na legenda do corte, a 84 px. Nenhum texto no nao_vai_para_tela."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "wordlock",
+      "nota": 9,
+      "problemas": [
+        "\"ROOM\" em 0,133 s (palavra \"room\" em 879,10 s), a legenda \"Not to scale\" em 0,167 s, o par Landsat em 2,333 s (\"Then the melt…\"), a legenda das datas em 2,5 s, o recuo de 11,6 a 13,35 s e \"Portland\" em 13,033 s (\"reached Portland\", 891,98 s), o anel em \"dam\" (15,738 s) e os pulsos em \"later,\" (17,813 s). O primeiro segundo tem o corte do lago e a legenda. Nenhum texto de plano encerrado na tela: \"ROOM\"/\"Not to scale\" somem no corte de P1 para P2 e a legenda das datas some em 11,6 s (nas folhas de 3,3, 6,4, 9,5 e 12,6 s e no quadro de 11,5–13,2 s). Verifiquei o item 102 (filho com visibility: visible dentro de pai escondido): os filhos de P1 ficam com visibility do pai (#placa, oculta em t ≥ T_PAR) e a legenda e os créditos têm visibility próprio ligado e desligado pelo mesmo código; nada sobra."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "abordagem",
+      "nota": 9,
+      "problemas": [
+        "Desenho para \"a sala existe e a cheia não\" (P1), registro real do lugar para \"o lago sobe depois do degelo\" (P2: o par Landsat de abril e de julho, domínio público) e mapa para \"chegaria a Portland\" (P3): três linguagens, cada uma no modo certo. A barragem de Keenleyside aparece só como o anel (o Lucas decidiu que não há foto com licença; vide L2 s07)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "acessibilidade",
+      "nota": 8,
+      "problemas": [
+        "Sinalização: em 2 s, P1 se lê (\"ROOM\" sobre a faixa vazia) e P2 mostra um lago que enche (branco → verde, a margem se fechando no contorno laranja). No P2 o lago não tem nome na tela: o contorno laranja (a cor do protagonista) e a fala (\"the lake\") bastam, mas um espectador que não sabe qual lago é só o vê como \"um lago\"; a s60 acabou de mostrar o Arrow, então não reprova. No P3 os pulsos que descem o rio são claros e pequenos: lê-se \"algo desce o rio\" com a voz."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "poluicao",
+      "nota": 9,
+      "problemas": [
+        "Cena enxuta: P1 tem o corte, \"ROOM\" e \"Not to scale\" (3 elementos); P2 o par, o contorno e a legenda (3); P3 o mapa, o Arrow com o anel, \"Portland\" e os pulsos (4–5; o teto é 6, com 1 bloco de leitura, a legenda). Teste de lastro: cada texto tem palavra convocadora (\"room\", \"reached Portland\", as datas do par). Sem texto órfão, entidade HTML nem tofu."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "motion",
+      "nota": 8,
+      "problemas": [
+        "P1 (0–2,33 s) parado por desenho (o corte e o \"ROOM\"), 2,3 s, abaixo do piso. P2 anda o tempo todo: a diferença média entre quadros a cada ~1 s fica entre 10 e 24 (em 255) de 2,6 a 11,4 s, com o cruzamento do par abril → julho (o degelo) e a leve deriva do enquadramento (~1 px por segundo na escala de 960). P3: o recuo de 11,6 a 13,35 s (1,75 s, dentro dos 1,5–3 s da roupa) sem degrau de nível do satélite (o brilho desce liso nos quadros de 11,5, 11,9, 12,3 e 13,2 s: o Landsat → mapa escurece e o rio entra, sem o pulo de 19,9 que a Sala mediu antes do conserto); o lago incha em 13,6–14,6 s, o anel em 15,74 s e três pulsos descem o Columbia de 17,8 s ao fim (olhados em 17,6, 18,2, 18,8 e 19,6 s). Sinalização: de 14 a 17,8 s o mapa só tem a deriva de ~1 px/s (na escala de 960) e o anel (o beat da barragem); fica abaixo do teto de 6 s e a fala é explicativa (\"held behind a dam\"). Nada se move nos 250 ms antes do corte além da deriva e do último pulso."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "fonte",
+      "nota": 9,
+      "problemas": [
+        "P2: \"© OpenStreetMap contributors\" (credOsm, data-qc-credito=\"mapa\", 60 px) por causa do polígono do Arrow; sem crédito de NASA/Landsat (domínio público, supérfluo e correto sem ele). P3: \"© MapTiler © OpenStreetMap contributors\" a 60 px em todo quadro de mapa (nas folhas de 12,6, 16,1 e 19,7 s); Rótulo \"Portland\" sem fonte (geografia comum). Sem logo, bandeira nem mídia de banco; a mesa M-VALE (P1) e o par Landsat são arquivos de _media/base/ (fora do conferente) com procedência do canal."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "tema",
+      "nota": 9,
+      "problemas": [
+        "Uma cor, um significado: --destaque no Arrow, no anel e no contorno; --agua no rio; --contraparte no ponto de Portland (o lado americano, como na s55); o par Landsat é registro, sem cor de dado por cima. A troca de Landsat claro para a base escurecida do mapa é gradual, não um véu. Casa com s55, s63 e a mesa do vídeo."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cobertura",
+      "nota": 8,
+      "problemas": [
+        "O central (o lago, o degelo, a margem) tem registro real (o par Landsat do Arrow); \"Portland\" tem mapa. A barragem em British Columbia (\"behind a dam\") só aparece como o anel no pé do lago, sem registro: o concreto secundário sem imagem, e a cobertura se cumpre pela s07 (satélite da Keenleyside) e pela s15. Sinalização, não reprova."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "cadencia",
+      "nota": 8,
+      "problemas": [
+        "P1 2,3 s; P2 9,3 s sobre um só par de imagens, mas com o cruzamento abril → julho acontecendo o tempo todo (movimento com propósito: o degelo, a fala segue no mesmo objeto, o lago); P3 8,1 s com os beats do lago, da barragem e dos pulsos. Dois objetos distintos por plano no máximo; sem footage nem clipe repetido (os dois PNG de Landsat são duas imagens distintas, uma por data). Sinalização: P2 raspa 9,3 s num mesmo enquadramento (os 6 s do teto valem para imagem parada; aqui a imagem se transforma)."
+      ],
+      "correcoes": []
+    },
+    {
+      "lente": "autoria",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "camadas",
+      "nota": 10,
+      "problemas": [],
+      "correcoes": []
+    },
+    {
+      "lente": "circulo",
+      "nota": 8,
+      "problemas": [
+        "Sinalização (eco de forma, não derruba): P1 repete o corte do lago pela quarta vez (s03, s08, s55, s61) e P3 termina no mesmo quadro de mapa que a s55 (o Arrow com o anel), mas cada volta paga com degrau novo: aqui a faixa continua vazia (\"the room is there and the flood isn't\"), o degelo enche o lago no registro real e Portland recebe o pulso, informação que a s55 não tinha. A s63 fecha o ciclo com o corte cheio. Se a cena sumisse, o espectador perderia o par abril/julho e a chegada a Portland."
+      ],
+      "correcoes": []
+    }
+  ]
+}
