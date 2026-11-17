@@ -94,7 +94,8 @@ grande, não?", 30/10/2026). As ferramentas são as de `out/big-sur/_tmp/descric
   courtesy of Epidemic Sound" e o endereço, 5 faixas), copiados. A música não passou por ferramenta nenhuma: só os créditos em texto.
 
 **Pendente (antes de publicar):**
-- **As miniaturas:** feitas (abaixo, "As miniaturas do teste"); a escolha é do Lucas.
+- **As miniaturas:** feitas (abaixo, "As miniaturas do teste"). **A escolha do Lucas** (17/11/2026, ~20:3x, depois de publicar): "A e B no teste",
+  as duas no Test & Compare, com o título único "Why the U.S. Pays Canada to Keep Part of a Lake Empty" (`decisoes-lucas.md`).
 - **Os voláteis:** relidos em 17/11/2026, todos valendo (a tabela do topo).
 - **Os links:** como no Peru, no Atlântico e no Big Sur, vai primeiro a versão SEM LINKS. Quando o YouTube liberar os links, a Sala faz a versão completa, com a
   citação e o endereço de cada fonte e de cada licença: a MapTiler e a OSM pedem os links na descrição (`_creditos-mapa.md`), a Epidemic pede o do site, as
