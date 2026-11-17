@@ -33,3 +33,6 @@ a instalação: "Pode instalar (Recomendado)".
   - o vídeo 3 (`peru-agua`), em 09/11/2026 (o Lucas: "Sim", à pergunta "Mando o do Peru para o Drive?"): 55 arquivos e 17,03 GB de
     `C:\PeruAgua-Premiere`, em "0003 - PeruAgua". O 403 voltou em dois arquivos, e a 2ª tentativa do próprio rclone passou. O `rclone check`, às
     16:41: 0 diferenças, 55 arquivos batem.
+  - o vídeo 7 (`rio-columbia`), em 17/11/2026: 70 arquivos e 20,89 GB de `C:\RioColumbia-Premiere`, em "0007 - RioColumbia". O 403 voltou em
+    dois arquivos (s09 e s06), e a 2ª tentativa do próprio rclone passou. O `rclone check`, às 15:35: 0 diferenças, 70 arquivos batem. O pacote
+    no C: tirou o espaço da exportação do Lucas, que falhou duas vezes no último quadro (`APRENDIZADOS.md`, item 103).

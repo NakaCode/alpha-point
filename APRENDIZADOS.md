@@ -1858,3 +1858,20 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a outros canais:** qualquer cena montada com planos que se escondem por `visibility` e filhos animados cai no mesmo
   lugar, e o portão automático passa. Vale avisar o Lucas, para ver com o Mateus se o `check-overlap` do molde deve olhar o
   `visibility` computado do próprio elemento.
+
+### 103. A exportação do Premiere precisa de uns 2× o tamanho do vídeo livres no disco, e o pacote no mesmo disco tira esse espaço
+
+- **O que aconteceu** (17/11/2026, vídeo 7, `rio-columbia`): o Lucas exportou no Premiere (26.5.3, H.264, 3840 × 2160, ~79 Mbps) para a Área de
+  Trabalho, no C:. Duas tentativas falharam no último quadro (00:15:29:28) com "Erro ao compilar o filme. Erro de exportação. Erro ao concluir a
+  codificação. [...] Seletor: 9, Código de erro: 39", e deixaram um `.mp4` de 24 bytes. A mensagem não fala em disco.
+- **A causa, medida:** o exportador grava o vídeo e o áudio em dois temporários ao lado do destino (`<nome>.<pid>.<n>.m4v` e `.aac`) e só no
+  fim monta o `.mp4`. Nesse momento, o disco precisa dos temporários e do arquivo final juntos: uns 2× o vídeo (aqui, 9,15 GB). O C: tinha
+  17 GB livres, porque o pacote do Premiere (`ferramentas/pacote-premiere.py`, 19,5 GB) tinha acabado de ser montado no mesmo disco. Na 2ª
+  tentativa, o espaço livre caiu de 17,0 a 10,2 GB em 3,5 min, e ela quebrou no fim, como a 1ª.
+- **O que resolveu:** com 24,3 GB livres (o Lucas tirou do C: a exportação do Big Sur), a 3ª passou: 929,97 s, 3840 × 2160 a 30 fps, AAC a
+  48 kHz, 9,15 GB.
+- **Como evitar:** antes de montar o pacote no disco onde o Lucas exporta, conferir que, depois da cópia, sobram pelo menos 2× a exportação
+  estimada (~80 Mbps × a duração; num vídeo de 15 min, uns 9 GB, então uns 19 GB livres, mais folga). Se não sobrarem, avisar antes, ou montar
+  o pacote depois da exportação. Se a exportação falhar no último quadro com "Erro ao concluir a codificação", olhar o espaço livre primeiro.
+- **Por que serve a outros canais:** qualquer canal que entrega o XML do Premiere e exporta na mesma máquina cai no mesmo lugar, e a mensagem
+  de erro não aponta o disco. Vale avisar o Lucas, para ver com o Mateus se o pacote da Régie deve medir o espaço antes de copiar.
