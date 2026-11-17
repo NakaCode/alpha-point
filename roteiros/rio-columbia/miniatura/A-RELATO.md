@@ -1,83 +1,81 @@
-# Miniatura A do vídeo 7 (`rio-columbia`): "$37.6M A YEAR"
+# Miniatura A do vídeo 7 (`rio-columbia`): "$37.6M A YEAR", no estilo das referências
 
-17/11/2026, para o Test & Compare, com o título "Why the U.S. Pays Canada to Keep Part of a Lake Empty". É a miniatura 1 da pauta
-(`pautas/2026-11-09-video-7-rio-columbia.md` §8), a que o Lucas aprovou em 09/11 e a que ganhou nos quatro leitores (7,0 contra 6,0).
-Foi feita por `base-A.py`, sem rede, numa passada e dois ajustes. A base é a única baixada nesta tarefa, liberada pela Sala.
+17/11/2026, refeita depois que o Lucas achou a anterior "muito fraca" e mandou quatro prints de referência
+(`out/rio-columbia/_tmp/miniatura/referencias/`): da The Geo Lens, o Lake Erie, Miami, a costa de Washington e Michigan; o Ruanda e
+Burundi; do Geography by Geoff, a Louisiana e as San Juan. A versão de antes (satélite, laranja do canal, anel, rio até Portland) está no
+git, no commit `ce3538b`.
+
+Feita por `base-A.py` sobre `mapa.py` (o mesmo mapa da B; o teste do YouTube passa a medir só o texto), sem rede, numa passada e um
+ajuste.
 
 ## A composição
 
-- **A base** é o Blue Marble da NASA com relevo sombreado e batimetria. O quadro vai de 132,3° O a 109,1° O e de 44,5° N a 53,07° N
-  (23,2° de largura, 16:9 em Mercator, 978 m por px do palco).
-- **A parte canadense da bacia** está em `--destaque` a 66 %, com o relevo por baixo, contorno `--tinta` de 9 px e sombra por fora. Ela
-  ocupa 7 % da imagem, e o topo dela fica a 35 px da borda de cima.
-- **A fronteira** é o paralelo 49 em terra, tracejado em `--tinta`. "CANADA" e "U.S." (Barlow Condensed 800, 96 px, só o nome, sem
-  bandeira) ficam dos dois lados dela, a leste da bacia.
-- **O Arrow, vazio:** o contorno do lago, tracejado em `--agua-luz` com halo escuro, sem água dentro. É o "desenhado vazio" da pauta,
-  na escala do mapa.
-- **O anel** (224 px, traço de 38 px, `--destaque`, contorno escuro de 5 px) fica no eixo do lago, no Lower Arrow (49,575° N), com a
-  barragem Keenleyside dentro.
-  - O lugar foi medido. A borda da bacia passa a menos de 136 px (o raio do anel por fora) do lago em toda latitude: a bacia do Fraser
-    chega a uns 30 km a oeste do Upper Arrow.
-  - O script procura, ao longo do eixo do lago, o ponto mais longe da borda. Ali a borda fica a 97 px do centro, mais que o raio de
-    dentro do anel (93 px): ela não entra no miolo e passa sob o traço. Embaixo, o traço encosta na fronteira.
-- **O rio**, em `--agua` (10 px) com halo escuro de 30 px, desce da barragem Keenleyside a Portland: 1.574 px no palco. Portland tem o
-  ponto branco de 34 px e a pílula "PORTLAND" (`--tinta`, letra `--tinta-escura`, como as cidades da A2 do Big Sur).
-- **O texto** fica no alto à esquerda, sobre o Pacífico: "$37.6M" em `--destaque` e "A YEAR" em `--tinta`, Barlow Condensed 800 a 330 px,
-  com brilho escuro atrás. A maiúscula tem 231 px (15 px no 168).
-- **A linha do K9**, "Starting value, indexed to inflation", fica logo abaixo, em Inter 600 a 58 px (28 px na 1280).
-  `MINI_K9=0 python -X utf8 -B roteiros/rio-columbia/miniatura/base-A.py` a tira, se o Lucas preferir sem ela.
-- **A seta curva branca** (634 px) vai do número ao anel.
+- **O mapa:**
+  - O Noroeste do Pacífico, de 46,0° N a 53,15° N e de 128,4° O a 108,8° O (16:9 em Mercator, 855 m por px do palco), do Kinbasket ao
+    norte do Oregon, do Pacífico às Rochosas.
+  - A terra em relevo sombreado amarelo-dourado.
+  - O mar e os lagos em azul, com a textura leve da batimetria.
+  - A parte canadense da bacia do Columbia em vermelho, com o relevo por baixo e contorno branco fino. Ela vai de x 952 a 1871 e de y 58
+    a 861 no palco: 9 % da imagem, um pouco acima do centro.
+  - O Arrow em ciano, com contorno branco fino. O polígono do OSM foi engrossado 5 px, porque o lago tem 2 a 5 px nesta escala.
+  - A fronteira em branco fino.
+  - "CANADA" e "U.S." pequenos (Inter 800, 62 px), a leste da bacia.
+- **A caixa preta**, no alto à esquerda: "$37.6M" e "A YEAR" em vermelho, Inter 900 a 196 px. A maiúscula tem 143 px (9,4 px no 168).
+- **A linha do K9**, dentro da caixa, sob o número: "Starting value, indexed to inflation", em branco, Inter 600 a 44 px (16 px na
+  1280). `MINI_K9=0 python -X utf8 -B roteiros/rio-columbia/miniatura/base-A.py` a tira.
+- **A seta** branca, grossa e curva, com contorno escuro e sombra, vai da caixa até a margem oeste do Arrow (662 px).
 - **O canto da duração** (320 × 320 embaixo à direita) está livre: alfa máximo das peças 0.
+- **As cores** são as das referências, medidas nos prints, não o `--destaque` do canal (a Sala: "o `--destaque` fica para o vídeo"). Elas
+  ficam no topo de `mapa.py` (`VERMELHO`, `AMARELO`, `AZUL`, `CIANO`, `TEXTO_VERMELHO`).
 
 ## A fonte e a licença de cada camada
 
 | Camada | De onde vem | Licença e crédito |
 |---|---|---|
-| a base | `out/rio-columbia/_media/base/bluemarble-bacia-relevo.png` (4800 × 3039, sha256 `a544f577…`): NASA Blue Marble, camada `BlueMarble_ShadedRelief_Bathymetry`, pelo WMS da GIBS (`https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi`), EPSG:3857, de 134° O a 106° O e de 43,5° N a 55° N, baixada em 17/11/2026 num pedido só, com o User-Agent do canal. A URL inteira, a janela e o pedido estão no `.png.json` ao lado | domínio público (NASA). A documentação da GIBS ("Data Use Guidance and Acknowledgements", lida em 17/11/2026) pede o reconhecimento: "We acknowledge the use of imagery provided by services from NASA's Global Imagery Browse Services (GIBS), part of NASA's Earth Science Data and Information System (ESDIS)." O robots.txt da GIBS deu 404 (nenhuma regra). As cópias estão em `out/rio-columbia/_tmp/miniatura/gibs/` |
-| a parte canadense da bacia | `_media/geo/bacia-columbia-canada.json` (USGS Watershed Boundary Dataset, região 17, ∩ o lado canadense da fronteira) | domínio público (USGS) |
-| a fronteira | `_media/geo/fronteira-canada-eua.json` (U.S. Census Bureau, Cartographic Boundary Files 2025) | domínio público (Census) |
-| o rio | `_media/geo/rio-columbia.json` (OSM, relation/2183775), cortado do vértice mais perto da barragem (271 m; o ponto é `barragem-keenleyside.json`, OSM) ao vértice mais perto de Portland (10 km: o rio passa ao norte do ponto da cidade) | ODbL (© OpenStreetMap contributors). O crédito vai na descrição do vídeo, com openstreetmap.org/copyright (decisão da Sala, 17/11/2026) |
-| o lago | `_media/geo/lago-arrow.json` (OSM, relation/2198542 e relation/2198541) | ODbL, com o mesmo crédito na descrição |
-| Portland | `_media/geo/portland-or.json` (Natural Earth 1:10m) | domínio público |
-| as letras | `marca/fontes/` (Barlow Condensed 800 e Inter) | SIL OFL |
-| as cores | `marca/tokens.css` | da marca |
+| o relevo | `out/rio-columbia/_media/base/aster-relevo-cinza-bacia.png` (4800 × 3039, sha256 `064ba535…`): ASTER GDEM, camada `ASTER_GDEM_Greyscale_Shaded_Relief`, pelo WMS da NASA GIBS, EPSG:3857, no recorte da base de antes. Foi baixado em 17/11/2026, num pedido, com o User-Agent do canal; o pedido inteiro está no `.png.json` | aberta. O GetCapabilities diz "Fees: none" e "AccessConstraints: none", e a GIBS diz "NASA promotes full and open sharing of data". Os metadados da camada não têm licença nem atribuição. A GIBS pede o reconhecimento: "We acknowledge the use of imagery provided by services from NASA's Global Imagery Browse Services (GIBS), part of NASA's Earth Science Data and Information System (ESDIS)." O ASTER GDEM é da NASA e do METI do Japão; a política de uso do LP DAAC não foi lida |
+| a textura do mar | `out/rio-columbia/_media/base/bluemarble-bacia-relevo.png` (NASA Blue Marble com batimetria, GIBS; sha256 `a544f577…`) | domínio público (NASA); o mesmo reconhecimento da GIBS |
+| a terra e o mar | Natural Earth 1:10m, admin-1 (os estados e províncias do Canadá e dos EUA), do cache da máquina (`~/.regie/geo/natural-earth/`) | domínio público (Natural Earth) |
+| os lagos | Natural Earth 1:10m, lakes (sem o Upper e o Lower Arrow), e o OSM do disco: `lago-kinbasket`, `lago-koocanusa` e `lago-duncan` | NE: domínio público. OSM: ODbL, com o crédito do OpenStreetMap na descrição do vídeo |
+| o Arrow (ciano) | `_media/geo/lago-arrow.json` (OSM) | ODbL, com o crédito na descrição |
+| a bacia (vermelho) | `_media/geo/bacia-columbia-canada.json` (USGS WBD ∩ o lado canadense) | domínio público (USGS) |
+| a fronteira | `_media/geo/fronteira-canada-eua.json` (U.S. Census, Cartographic Boundary 2025) | domínio público |
+| as letras | `marca/fontes/inter` (Inter) | SIL OFL |
 
-Não entra MapTiler, nada desenhado à mão nem por IA, e o script não faz nenhum pedido de rede.
+Não entra MapTiler, satélite, nada desenhado à mão nem por IA, e os scripts não fazem pedido de rede. Para a descrição do vídeo: o
+reconhecimento da GIBS (acima) e o crédito do OpenStreetMap, que já está lá.
 
-## Onde foge da receita, e por quê
+## Os pedidos à GIBS nesta rodada (um por vez, com o User-Agent do canal)
 
-- **A base é mais clara que no vídeo** (luminância média final de 91), como manda a receita da miniatura (`embalagem.md` §3).
-- **O herói tem 330 px**, como o da B e os do Big Sur.
-- **O anel encosta na fronteira.** Nenhum lugar do lago deixa a borda da bacia fora do traço, e este é o que deixa o miolo limpo.
+1. O GetCapabilities do WMS EPSG:3857, para achar a camada: `ASTER_GDEM_Greyscale_Shaded_Relief` existe.
+2. O GetMetadata da camada, para ler a licença e a atribuição. Não havia nenhuma das duas.
+3. O GetMap do relevo.
 
-## Os ajustes
+A máscara da água não precisou de pedido: veio do Natural Earth do disco. As cópias estão em `out/rio-columbia/_tmp/miniatura/gibs/`.
 
-1. **Na 1ª passada**, o anel ficava no centro da caixa do lago e engolia o recorte da bacia do Fraser: a borda branca entrava no anel,
-   que parecia marcar a borda. E o topo da bacia encostava na borda de cima (7 px). **Ajuste 1:** o quadro foi para 23,2° a partir de
-   44,5° N, o contorno do lago engrossou, e o anel passou a buscar o ponto mais longe da borda. A medida foi pelos vértices, e a
-   fronteira (uma reta com poucos vértices) escapou dela: o anel caiu sobre a fronteira.
-2. **Ajuste 2:** a distância passou a ser por segmento, e o anel foi para o Lower Arrow (97 px de folga).
+## O ajuste
+
+- **Na 1ª passada**, o relevo cinza cru (mediana 139, quase tudo entre 120 e 160) deixou a terra lisa, e o mar saiu claro.
+- **No ajuste**:
+  - o relevo ganhou contraste local e foi esticado entre os percentis 2 e 98 da terra;
+  - o azul do mar escureceu;
+  - o quadro foi para 46,0–53,15° N, com o centro em 118,6° O, e a bacia passou para a direita da caixa;
+  - o K9 subiu de 38 para 44 px.
 
 ## O que vi nos três tamanhos
 
-- **1280:**
-  - "$37.6M A YEAR" e a linha do K9 leem;
-  - a seta leva ao anel, e no anel se vê o lago tracejado e a barragem;
-  - o rio desce até Portland, e "CANADA", "U.S." e "PORTLAND" leem;
-  - o canto está livre.
-- **320:**
-  - o número, "A YEAR", a bacia laranja, o anel, a seta, o rio e "PORTLAND" leem;
-  - "CANADA" e "U.S." leem pequenos;
-  - a linha do K9 vira um traço cinza.
-- **168:**
-  - "$37.6M A YEAR" lê inteiro;
-  - a bacia laranja e o anel (17 px) leem;
-  - o rio, as pílulas e o K9 somem (o K9 podia sumir).
+- **1280:** o número, "A YEAR", o K9, a seta, a bacia vermelha com relevo, o Arrow ciano e "CANADA"/"U.S." leem. O canto está livre.
+- **320:** a caixa, a bacia, a seta e o Arrow leem. O K9 vira um traço, e "CANADA"/"U.S." leem pequenos.
+- **168:** "$37.6M A YEAR" lê, a bacia vermelha lê, e a seta e o Arrow ficam no limite.
 
-## O que ficou fraco
+## A comparação com as referências (`out/rio-columbia/_tmp/miniatura/folha-comparacao.png`, todas a 320)
 
-- **O risco da pauta continua:** dinheiro sozinho pode ler como escândalo. O K9 ajuda a 1280, mas não a 320 nem a 168.
-- **O lago "vazio" só lê na 1280.** Na escala da bacia, o Arrow é um fio, e o tracejado dele não diz "vazio" no feed. O "empty" fica
-  com o título.
-- **O anel e a bacia têm a mesma cor.** O contorno escuro do anel os separa, mas a 168 o anel fica menos forte que na B.
-- **O anel encosta na fronteira**, embaixo (ver acima).
+- **No mesmo estilo:** as cores, a caixa preta com o vermelho, a seta branca com sombra e o relevo.
+- **Abaixo das referências, em três pontos:**
+  - **O assunto é menor.** Nas referências, o território ocupa de um terço a metade da imagem; aqui, a bacia ocupa 9 %. O enquadramento
+    pedido (do Kinbasket até perto de Portland, do Pacífico às Rochosas) deixa a metade de baixo para a terra amarela dos EUA. Se a
+    Sala quiser o assunto maior, a mudança é cortar o sul (por exemplo, `MINI_LAT_S=47.5`), perdendo o Oregon.
+  - **O relevo é mais fraco** que o das San Juan e o da Louisiana, que têm sombra mais funda.
+  - **O destaque ciano é um fio:** o Arrow é um lago estreito, e o Erie é um lago largo.
+- **O risco da pauta continua:** dinheiro sozinho pode ler como escândalo. O K9 só ajuda a 1280.
+
+- **3ª rodada (17/11/2026, acabamento, pedido da Sala):** o quadro fechou na bacia (`MINI_LAT_S` 48.62, `MINI_LAT_N` 52.41, `MINI_LON_C` −119.15; perde-se o Oregon e a ponta norte do Kinbasket), e o vermelho foi de 9 % a 31,3 % da imagem, com a fronteira e "CANADA / U.S." numa faixa embaixo, a oeste da bacia; o relevo ganhou volume (o cinza suavizado, misturado com a sombra larga, contraste local a 26 px e a cor por três pontos: sombra marrom, a cor da referência, luz creme) e a bacia uma sombra escura por fora; o Arrow virou uma mancha ciano (fechado, engrossado 10 px, contorno branco de 5 px), que lê a 320 e a 168; a caixa subiu a Inter 900 a 232 px (sem cobrir o vermelho: 0,46 % de peças sobre a bacia, só a seta), com o K9 legível a 1280; a seta engrossou (26→52 px, cabeça 118 × 158); o canto da duração segue livre (alfa 0). Mesmas bases do disco, mesmos sha256, nenhum pedido de rede.

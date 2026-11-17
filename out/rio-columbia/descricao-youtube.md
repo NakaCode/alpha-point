@@ -126,7 +126,7 @@ Public domain or CC0: U.S. Navy (via the National Archives, Harry S. Truman Libr
 Data: Environment and Climate Change Canada, Water Survey of Canada, and U.S. Geological Survey (river gauges); Natural Resources Canada, Canadian Geographical Names Database (place names). Contains information licensed under the Open Government Licence – Canada.
 Maps: © MapTiler (www.maptiler.com/copyright) · © OpenStreetMap contributors, data under the Open Database License (www.openstreetmap.org/copyright)
 Basin boundary: USGS Watershed Boundary Dataset
-Thumbnail imagery: NASA Blue Marble, provided by NASA's Global Imagery Browse Services (GIBS), part of NASA's Earth Science Data and Information System (ESDIS).
+Thumbnail imagery: NASA Blue Marble and ASTER GDEM shaded relief (ASTER GDEM is a product of METI and NASA), provided by NASA's Global Imagery Browse Services (GIBS), part of NASA's Earth Science Data and Information System (ESDIS); Natural Earth.
 
 Music:
 Blue Saga / Helt stilla / courtesy of Epidemic Sound
@@ -147,16 +147,19 @@ Would you live by a lake that drops every winter?
 
 ## As miniaturas do teste
 
-O teste do YouTube (Test & Compare) vai com o título único e duas miniaturas. As duas são as da pauta §8 (`pautas/2026-11-09-video-7-rio-columbia.md`),
-feitas em 17/11/2026 em `roteiros/rio-columbia/miniatura/` (`miniatura-A-1280.jpg` e `miniatura-B-1280.jpg` para subir; as de 2560 ao lado; o que
-cada uma mostra, as fontes e as licenças em `A-RELATO.md` e `B-RELATO.md`). A base da A é a Blue Marble da NASA, pela GIBS (domínio público; o
-reconhecimento que a GIBS pede está na linha "Thumbnail imagery" dos créditos); a da B, o Landsat do USGS. A A leva, pequena, "Starting value,
-indexed to inflation" (o K9 da pauta; `MINI_K9=0` no `base-A.py` a tira):
-- **A, "$37.6M A YEAR"**: o relevo da Colúmbia Britânica ao Oregon, com a bacia canadense em `--destaque`, o reservatório de Arrow com o anel e a faixa
-  de cima do lago desenhada vazia (tracejada), e o "$37.6M" em `--destaque`. A voz paga a promessa aos 6,0 s (gancho, frase 2). Envelhece com o título: se o
-  acordo interino vencer, troca-se junto (K9 da pauta; a linha "starting value, adjusted for inflation" vai no crédito do vídeo);
-- **B, "EMPTY ON PURPOSE"**: o satélite com o anel em Arrow e o cone até uma lupa com o corte do lago no traço de engenheiro (a linha d'água baixa e a faixa de
-  cima tracejada, vazia), com "ON PURPOSE" em `--destaque` e sem número na faixa. A voz paga a promessa aos 0 s (gancho, frase 1).
+O teste do YouTube (Test & Compare) vai com o título único e duas miniaturas, no mesmo mapa (o teste mede só o texto). A 1ª versão (a A
+"$37.6M A YEAR" e a B "EMPTY ON PURPOSE" da pauta §8, commit `ce3538b`) o Lucas achou "muito fracas"; à pergunta, escolheu "Eu mando uma referência" e
+mandou 4 prints do YouTube (o Geography by Geoff e a The Geo Lens; `decisoes-lucas.md`, 17/11, ~19:0x). As duas foram refeitas nesse estilo, em
+`roteiros/rio-columbia/miniatura/` (`miniatura-A-1280.jpg` e `miniatura-B-1280.jpg` para subir; as de 2560 ao lado; o código comum em `mapa.py`; as
+fontes e as licenças em `A-RELATO.md` e `B-RELATO.md`):
+- **o mapa:** a terra em relevo amarelo, o mar e os lagos em azul, a bacia canadense do Columbia em vermelho (31 % da imagem), o reservatório de Arrow em
+  ciano, a fronteira numa linha branca e "CANADA" / "U.S." pequenos. As cores são as das referências, não o laranja do canal (variáveis no topo do
+  `mapa.py`). As bases: o relevo ASTER GDEM em cinza e a Blue Marble, pela NASA GIBS; a terra e os lagos do Natural Earth; o Arrow e os lagos da bacia do
+  OSM (o crédito na descrição);
+- **A, "$37.6M A YEAR"**: o número numa caixa preta, em vermelho, com a seta branca até o Arrow. Leva, pequena, dentro da caixa, "Starting value,
+  indexed to inflation" (o K9 da pauta; `MINI_K9=0` no `base-A.py` a tira). A voz paga a promessa aos 6,0 s (gancho, frase 2). Envelhece com o título:
+  se o acordo interino vencer, troca-se junto;
+- **B, "WHY?"**: a palavra numa caixa preta, em vermelho, com duas setas brancas abraçando o Arrow (o molde da de Washington, da The Geo Lens).
 
 ## As tags
 
@@ -184,7 +187,7 @@ Pelo perfil do canal (`estudio/marcas/alpha-point/publicacao-youtube.json`, com 
 ## A conferência
 
 Rodada em 17/11/2026 por `out/rio-columbia/_tmp/descricao/medir.py` (só lê; a saída está em `medir.txt`, ao lado):
-- **A versão SEM LINKS: 3.080 caracteres** (3.107 se o YouTube contar a quebra de linha como dois; 2.919 antes da linha "Thumbnail imagery", que a Sala pôs em 17/11 com a base da miniatura A), abaixo dos 5.000 do limite e acima dos
+- **A versão SEM LINKS: 3.167 caracteres** (3.194 se o YouTube contar a quebra de linha como dois; 2.919 antes da linha "Thumbnail imagery", que a Sala pôs em 17/11 com as bases das miniaturas), abaixo dos 5.000 do limite e acima dos
   2.142 que a mesma conta dá para o Big Sur (o molde fala em ~2.086): o resumo tem 859 caracteres (o do Big Sur tinha 513),
   e os créditos ficaram maiores (10 autores Creative Commons e o retrato, contra 8 fotos no Big Sur). Se a Sala quiser a descrição mais
   curta, o corte natural é o resumo: "But this river is mostly American…" e "A much bigger share…" (2 frases, 164 caracteres) podem sair sem quebrar o raciocínio, e as
