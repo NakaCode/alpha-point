@@ -7,21 +7,25 @@
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "exceção do Lucas: qc-tamanho, crédito a 60 px (60<72), 24/10/2026, 'credito-60 (sem triagem, pela regra)' em qc/_excecoes-portao.json, sha1 do HTML igual (db69a1e8…) (o crédito de P2, 'Source: U.S. Public Law 118-272, 2025'). portao-margens 0 (144 amostras, 8 medidos).",
-        "observação: a legenda 'Satellite views: July 11 and April 14, 2024' (84 px) cai sobre a ponta do lago menor, à direita, no P1; não esconde dado e fica fora do canto de 400 × 400."
+        "exceção do Lucas: qc-tamanho, crédito a 60 px (credito-60, sem triagem, pela regra; Lucas, 24/10/2026: \"60 px (Recomendado)\"; identidade §4.1, \"Crédito a 56 px\"), no sha1 3265f981c282 do HTML de hoje, em qc/_excecoes-portao.json (a reprovação é só \"Source: U.S. Public Law 118-272, 2025\", 60<72). Margem: portao-margens veredito 0 (144 amostras, 8 medidos) no sha1 de hoje, sem avisos; não remedido no olho.",
+        "Quadros de 1,0, 3,33, 5,7, 8,53, 11,4, 14,0 e 14,23 s: legenda do par à direita embaixo no P1, desenho com folga no P2, \"KEPT EMPTY · EVERY YEAR OF THE DEAL\" acima da faixa sem tocar o desenho, \"Not to scale\" embaixo à esquerda, créditos na faixa baixa. Sem colisão visível. A hachura nova do P1 não carrega texto."
       ],
       "correcoes": []
     },
     {
       "lente": "factual",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "ESP-7 conferido: a hachura (\"/\" de 4 px em --destaque, uma linha a cada 48 px) está só na faixa entre o contorno do lago cheio (lago-arrow, OSM) e a água de 14/04, e não cobre a água do tronco sul. No recorte 4K de 4,3 s ela aparece no braço norte, na ponta de Beaton e na margem leste, grudada ao contorno. Sem texto novo: a faixa é a mesma linguagem do \"KEPT EMPTY\" do P2."
+      ],
       "correcoes": []
     },
     {
       "lente": "wordlock",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "Conferido contra o words.json: \"every\" a 494,935 s = 0,80 s da cena, e o cruzamento julho → abril começa aí (0,802 s) e dura 0,8 s: os quadros de 0,5 e 0,9 s ainda são julho, o de 1,3 s já é quase abril e o de 1,7 s é abril com o contorno. A hachura entra de 1,6 a 2,1 s, sobre \"winter anyway, as water moves downstream\"; o P2 e o \"KEPT EMPTY\" (8,567 s, \"kept empty\" a 502,69 s) não mudaram."
+      ],
       "correcoes": []
     },
     {
@@ -34,22 +38,23 @@
       "lente": "acessibilidade",
       "nota": 8,
       "problemas": [
-        "observação: 'o lago desce todo inverno' depende da legenda de datas e do contorno laranja em volta da água baixa de abril; entende-se, mas a faixa de chão exposto só se vê a partir de ~1,6 s."
+        "ESP-7 resolvido na tela: julho fica sozinho até \"every\", o lago cheio (contorno) é visto antes de baixar, e a faixa de chão exposto agora se vê hachurada entre o contorno e a água de abril. Sinal (não reprova): na folha de 1080 (3,33 s) a hachura de 4 px é fina e a neve ainda é a mudança que mais salta; no 4K ela se lê bem. O contorno laranja em volta da água baixa e a legenda do par seguem sustentando a leitura."
       ],
       "correcoes": []
     },
     {
       "lente": "poluicao",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "P1 com 5 elementos (par Landsat, contorno, hachura, luz de corrente, legenda) e o crédito; abaixo do teto de 6. A hachura não é texto nem rótulo novo."
+      ],
       "correcoes": []
     },
     {
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "observação: no P2, de 10,08 s ao corte só o nível respira (±24 px, 2,4 s por ciclo) e a faixa fica parada, como o conceito pede; o corte seco P1 → P2 é de satélite para desenho, não de mapa para mapa.",
-        "observação: no P1, o cruzamento julho → abril (1,2 s), a luz de corrente (2,78 s em diante) e a deriva linear dão movimento contínuo."
+        "No P1 a hachura é um pattern na grade do PNG e anda com a deriva: nos quadros de 1,7, 3,33 e 4,3 s ela fica colada à margem sem tremer. O corte seco P1 → P2 em 4,733 s é de satélite para desenho, não de mapa para mapa. No P2, de 10,08 s ao corte só o nível da água respira (±24 px); nos 250 ms finais (14,0 e 14,23 s) o quadro é praticamente o mesmo."
       ],
       "correcoes": []
     },
@@ -57,17 +62,18 @@
       "lente": "fonte",
       "nota": 7,
       "problemas": [
-        "crédito-fantasma curto: '© OpenStreetMap contributors' está na tela desde o 1º quadro (textos-tela [232], t0 0,0), mas o contorno do lago (OSM) só entra em ~1,0–1,6 s; o par Landsat sozinho (quadros de 0,0 a 0,9 s) não usa OSM. O t0 0,0 é do redator; sinalizado, não reprovado (menos de 1 s, e o resto da cena usa o OSM).",
-        "conferido: sem base da MapTiler, o crédito é só o do OSM, com data-qc-credito='mapa' na própria linha; o par Landsat (domínio público) sem crédito está certo; 'Source: U.S. Public Law 118-272, 2025' no P2 é fonte de dado."
+        "Sinal (não reprova, como na qc-1): \"© OpenStreetMap contributors\" está na tela desde o 1º quadro (textos-tela [232], t0 0,0), mas o contorno do lago (OSM) só entra em ~1,0–1,6 s: ~1 s de crédito sem o dado dele na tela. O textos-tela dá o t0 0,0 de propósito. O P2 leva \"Source: U.S. Public Law 118-272, 2025\" (fonte de dado, F086); o par Landsat vai sem crédito (domínio público, identidade §7)."
       ],
       "correcoes": [
-        "fazer o '© OpenStreetMap contributors' entrar junto com o contorno do lago (~0,39–1,2 s), ou manter o crédito desde o 1º quadro (textos-tela [232]); decisão do redator-de-tela e da arte (graphics/s41.html, bloco do crédito do P1)."
+        "Se o redator-de-tela quiser limpar o ~1 s: t0 do crédito do P1 em 1,0 s. Não é pedido desta rodada."
       ]
     },
     {
       "lente": "tema",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "A hachura em --destaque tem o mesmo significado do \"KEPT EMPTY\" do P2 (o volume vazio mantido pelo tratado): uma cor = um significado, família igual à das irmãs."
+      ],
       "correcoes": []
     },
     {
@@ -79,7 +85,9 @@
     {
       "lente": "cadencia",
       "nota": 9,
-      "problemas": [],
+      "problemas": [
+        "P1 4,73 s e P2 9,53 s. O P1 troca de estado a cada ~1 s (julho, abril, contorno, hachura); o P2 tem trajetória própria (a água, a faixa que entra, o texto em 8,567 s). Sem plano parado."
+      ],
       "correcoes": []
     },
     {
@@ -98,7 +106,7 @@
       "lente": "circulo",
       "nota": 8,
       "problemas": [
-        "observação: o P2 é a peça 1 (o corte do lago, s03) sobre a mesa M-VALE, e o P1 retoma o par Landsat do Arrow (bloco PAR da s16) em recorte de perto; comparado contra os cabeçalhos das irmãs, não contra os quadros de s03 e s16 (fora do lote). Traz degrau novo (a faixa hachurada 'KEPT EMPTY' e o inverno de perto): é callback pago, não repetição."
+        "Sinal (eco de forma, sem reprova): o P2 é o corte do lago da s03 sobre a mesa M-VALE, e o P1 retoma o par Landsat do Arrow (bloco PAR da s16) em recorte de perto. Há degrau novo (a faixa de chão exposto hachurada e o cruzamento julho → abril), então não é círculo."
       ],
       "correcoes": []
     }

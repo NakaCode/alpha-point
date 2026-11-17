@@ -1,22 +1,18 @@
 {
   "cena": "s37",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
-      "nota": 5,
+      "nota": 8,
       "problemas": [
-        "exceção do Lucas: qc-tamanho, crédito a 60 px, 24/10/2026 (\"60 px (Recomendado)\"), em qc/_excecoes-portao.json no sha1 de hoje (e48d99bb7d19)",
-        "REPROVA (identidade §4.1: rótulo até 3 palavras, a frase longa é legenda de 84 px; a mesma regra que o L19 aplicou à cota da s03): a pílula '#conta' \"AT LEAST 40 OF 89 YEARS\" está em data-qc-papel=\"rotulo\", var(--fs-rotulo) = 128 px, Inter 700, 6 palavras, de 8,533 a 13,3 s (olhada no quadro 10,97 s). O redator a deu como cota ([212]); a cota é Inter 84 px (identidade §4.4, traço de engenheiro) e a s33 do mesmo vídeo põe as suas a 84. O qc-tamanho não pega (o piso de 104 é só de tamanho; o limite de palavras não é de portão).",
-        "O bloco de 1948 repete a falha: '#b1948a' \"1948 · 1,010,000 CFS (MAY 31)\" a 128 px, rótulo, 5 palavras (≈ 2.000 px de largura em 4K), de 10,567 a 13,3 s; a 2ª linha 'USGS, THE DALLES' a 84 já está no papel certo.",
-        "Sinaliza: a lista de anos de P3 ('2010 · 2011 · 2012 · 2017 · 2018 · 2020', 84 px) quebra deixando o '·' pendurado no fim da 1ª linha (19,1–26,7 s). Em ~13,9 s, na panorâmica de P1→P2, um ponto com haste da ponta direita do gráfico passa sobre 'AVERAGES' da legenda por alguns quadros (é ponto, não texto)."
+        "exceção do Lucas: qc-tamanho, crédito a 60 px, classe credito-60 (sem triagem, pela regra), Lucas 24/10/2026 (\"60 px (Recomendado)\"), gravada em qc/_excecoes-portao.json no sha1 de hoje (f1beddaad9bb); portao-margens veredito 0 (sha1 e marca de hoje, 269 amostras, sem avisos), não remedido no olho.",
+        "COTAS [212] e [213] conferidas na tela (clipe 4K f1beddaa, carimbo 2160p, 802 quadros; folhas de 7,67, 10,97 e 14,3 s e recorte 4K de 11,5 s): \"AT LEAST 40\" a 128 px e \"OF 89 YEARS\" a 84 px; \"1948 · 1,010,000 CFS\" a 128 px (o \"·\" no meio da chave, como o textos-tela diz), \"(MAY 31)\" a 84 px e \"USGS, THE DALLES\" a 84 px em --legenda-cor, tudo na mesma pílula; nenhuma linha começa ou termina com \"·\". As reprovações da qc-1 (frases de 5 e 6 palavras a 128 px, identidade §4.1) estão resolvidas.",
+        "A pílula de 1948 sobe rente à margem de cima (topo em y ~167, margem de 160): o portao-margens a mede 0. O fio de 44 px até o aro de 1948 é curto, mas se lê como ligação (recorte 4K). Nenhuma das duas pílulas toca o aro, os pontos nem a pílula da conta (folha de 10,97 s e recorte). A conta a 84 px na linha de baixo mantém ~78 px de folga para a pílula de 1948.",
+        "ESP-6: a lista [216] está em duas linhas, \"2010 · 2011 · 2012\" / \"2017 · 2018 · 2020\", sem \"·\" na ponta (folhas de 19,1, 22,9 e 26,7 s); a coluna dos anos e \"THE GAP\" fica dentro da margem direita (borda dos anos em ~x 3550 no 4K, contra o limite de 3640)."
       ],
-      "correcoes": [
-        "Em '#conta': trocar para data-qc-papel=\"eixo\" com var(--fs-eixo) 84 px (sem pílula, ou pílula a 84), mantendo o texto do redator; ou pedir ao redator-de-tela uma forma de até 3 palavras. Não encolher os outros rótulos de 128 px. Depois, rodar de novo qc-tamanho, check-overlap, portao-margens e portao-mapa (rodape) (identidade §4.1 e §4.4).",
-        "Em '#b1948a': pôr a linha toda a 84 px (papel eixo), ou dividir sem mudar as palavras: '1,010,000 CFS' (2 palavras) a 128 px e '1948 · MAY 31 · USGS, THE DALLES' a 84 px (o texto é do redator; se a divisão mexer no [213]/[214], ele atualiza).",
-        "Na lista de anos, quebrar depois do '·' (ou largar o último separador da linha)."
-      ]
+      "correcoes": []
     },
     {
       "lente": "factual",
@@ -56,7 +52,7 @@
       "lente": "poluicao",
       "nota": 7,
       "problemas": [
-        "Sinaliza: em 10,6–13,3 s estão juntos o gráfico com medidor e as duas marcas, a pílula do período, a legenda, o bloco de 1948 e a 'conta': 5 elementos pela conta da cena, 7 contando as duas marcas como texto, e 3 blocos de leitura (conta, 1948, legenda), no teto de 3. O gate de carga passa; o que pesa são as duas pílulas escuras a 128 px, e o ajuste de tamanho pedido em 'espaco' alivia o quadro."
+        "Sinaliza: em 10,6–13,3 s ficam juntos o gráfico com medidor e marcas, a pílula do período, a legenda, o bloco de 1948 e a conta (3 blocos de leitura, no teto). O qc-carga passa; as duas pílulas escuras ficaram menores com a cota partida (a de 1948 foi de 2.056 × 295 para 1.442 × 369 px; a da conta de 908 × 330 para 875 × 273) e o quadro respira mais que na qc-1. Fica no pior extremo, sem passar."
       ],
       "correcoes": []
     },

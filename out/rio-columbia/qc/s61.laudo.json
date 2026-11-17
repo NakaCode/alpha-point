@@ -7,7 +7,7 @@
       "lente": "espaco",
       "nota": 9,
       "problemas": [
-        "Observação: o portao-margens leu 0 no sha1 2543dd0a0a3c e na marca 6314f1776ecf (199 amostras a 0,1 s, 10 objetos medidos, sem avisos); o qc-cena não deu falha (falhas do _portao.json: nenhuma; o til-glifo indefinido do carimbo de mapa tem o portao-mapa til 0 no mesmo sha1, e não vai a gatesDuros: roupa §3); os dois créditos de mapa (data-qc-credito=\"mapa\", 60 px, na própria linha) passam o piso de 40, sem precisar da exceção do crédito a 60 px. Rótulos dentro da regra: \"ROOM\" (1 palavra), \"Portland\" (1), legenda de datas a 84 px (papel eixo, 3 linhas, ao pé à esquerda). A legenda fica a ~80 px do lago na folha (6,4 s), sem tocar. lang=\"en-US\" e data-render=\"4k-native\" presentes; canto de 400 × 400 e faixa abaixo de y 1880 sem texto fora o crédito."
+        "Observação: o portao-margens leu 0 no sha1 810fc90f67596212e927aa63cab789d31ec804f6 de hoje e na marca 6314f1776ecf (199 amostras a 0,1 s, sem avisos); o portao-mapa til e rodape deram 0 no mesmo sha1; o qc-cena não tem exceção a citar nesta cena (os dois créditos são de mapa, data-qc-credito=\"mapa\", 60 px, na própria linha, e passam o piso de 40); o til-glifo indefinido do carimbo de mapa tem o portao-mapa til 0 e não vai a gatesDuros (roupa §3). Não remedi a margem no olho. Nas folhas: \"ROOM\" (1 palavra, 128), \"Not to scale\", a legenda de datas a 84 px (3 linhas, ao pé à esquerda, a ~80 px do lago, sem tocar) e \"Portland\" (1 palavra) sem colisão; o canto de 400 × 400 e a faixa abaixo de y 1880 só com o crédito. A troca de 11,6 a 12,1 s (ESP-18) não pôs nada fora do quadro."
       ],
       "correcoes": []
     },
@@ -23,7 +23,7 @@
       "lente": "wordlock",
       "nota": 9,
       "problemas": [
-        "\"ROOM\" em 0,133 s (palavra \"room\" em 879,10 s), a legenda \"Not to scale\" em 0,167 s, o par Landsat em 2,333 s (\"Then the melt…\"), a legenda das datas em 2,5 s, o recuo de 11,6 a 13,35 s e \"Portland\" em 13,033 s (\"reached Portland\", 891,98 s), o anel em \"dam\" (15,738 s) e os pulsos em \"later,\" (17,813 s). O primeiro segundo tem o corte do lago e a legenda. Nenhum texto de plano encerrado na tela: \"ROOM\"/\"Not to scale\" somem no corte de P1 para P2 e a legenda das datas some em 11,6 s (nas folhas de 3,3, 6,4, 9,5 e 12,6 s e no quadro de 11,5–13,2 s). Verifiquei o item 102 (filho com visibility: visible dentro de pai escondido): os filhos de P1 ficam com visibility do pai (#placa, oculta em t ≥ T_PAR) e a legenda e os créditos têm visibility próprio ligado e desligado pelo mesmo código; nada sobra."
+        "Os textos e os tempos não mudaram no conserto: \"ROOM\" em 0,133 s (\"room\"), a legenda \"Not to scale\" em 0,167 s, o par Landsat em 2,333 s, a legenda das datas em 2,5 s, \"Portland\" em 13,033 s (\"reached Portland\"). Nas folhas de hoje o primeiro segundo tem o corte e \"ROOM\" na tela (1,0 s); \"ROOM\" e \"Not to scale\" somem no corte para P2 (folha de 3,3 s); a legenda das datas some no recuo (nenhuma legenda nas folhas de 12,6 s em diante); nenhum texto de plano encerrado fica na tela (item 102). Nada foi atrasado por ritmo nesta rodada."
       ],
       "correcoes": []
     },
@@ -55,7 +55,8 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "P1 (0–2,33 s) parado por desenho (o corte e o \"ROOM\"), 2,3 s, abaixo do piso. P2 anda o tempo todo: a diferença média entre quadros a cada ~1 s fica entre 10 e 24 (em 255) de 2,6 a 11,4 s, com o cruzamento do par abril → julho (o degelo) e a leve deriva do enquadramento (~1 px por segundo na escala de 960). P3: o recuo de 11,6 a 13,35 s (1,75 s, dentro dos 1,5–3 s da roupa) sem degrau de nível do satélite (o brilho desce liso nos quadros de 11,5, 11,9, 12,3 e 13,2 s: o Landsat → mapa escurece e o rio entra, sem o pulo de 19,9 que a Sala mediu antes do conserto); o lago incha em 13,6–14,6 s, o anel em 15,74 s e três pulsos descem o Columbia de 17,8 s ao fim (olhados em 17,6, 18,2, 18,8 e 19,6 s). Sinalização: de 14 a 17,8 s o mapa só tem a deriva de ~1 px/s (na escala de 960) e o anel (o beat da barragem); fica abaixo do teto de 6 s e a fala é explicativa (\"held behind a dam\"). Nada se move nos 250 ms antes do corte além da deriva e do último pulso."
+        "ESP-18 (a troca sem borda reta, 11,6–12,1 s): CONSERTADO. Olhado no clipe de hoje (810fc90f, carimbo 2160p) em nove quadros de 11,6, 11,7, 11,8, 11,9, 12,0, 12,1, 12,2, 12,5 e 13,0 s (folha q9-s61-troca-folha.png). O Landsat de julho se funde com a base escurecida da MapTiler por uma rampa suave: nenhum retângulo claro de borda dura nos quadros de 11,9, 12,0 e 12,1 s (o defeito do espectador); a luma cai de modo gradual e o rio entra sem degrau; a faixa mais escura de ~60 px na lateral esquerda de 11,8 a 12,1 s é a própria rampa da máscara e não tem borda reta. O retalho de 12,5 s é a emenda do mosaico de satélite em terra, a classe que a Sala decidiu não retocar (s22, s26, s53): observação, não reprova.",
+        "P1 (0–2,33 s) parado por desenho (o corte e o \"ROOM\"), 2,3 s, abaixo do piso. P2 anda o tempo todo: o cruzamento do par abril → julho (o degelo; nas folhas de 3,3, 6,4 e 9,5 s o branco cede ao verde) e a leve deriva do enquadramento. P3: o recuo de 11,6 a 13,35 s (1,75 s, dentro dos 1,5–3 s da roupa, desvio declarado preso ao rótulo de Portland em 13,033 s); o lago incha, o anel entra em 15,74 s e três pulsos descem o Columbia de 17,8 s ao fim. Sinalização: de 14 a 17,8 s o mapa só tem a deriva e o anel (abaixo do teto de 6 s, e a fala é explicativa). Nada se move nos 250 ms antes do corte além da deriva e do último pulso."
       ],
       "correcoes": []
     },
@@ -63,7 +64,7 @@
       "lente": "fonte",
       "nota": 9,
       "problemas": [
-        "P2: \"© OpenStreetMap contributors\" (credOsm, data-qc-credito=\"mapa\", 60 px) por causa do polígono do Arrow; sem crédito de NASA/Landsat (domínio público, supérfluo e correto sem ele). P3: \"© MapTiler © OpenStreetMap contributors\" a 60 px em todo quadro de mapa (nas folhas de 12,6, 16,1 e 19,7 s); Rótulo \"Portland\" sem fonte (geografia comum). Sem logo, bandeira nem mídia de banco; a mesa M-VALE (P1) e o par Landsat são arquivos de _media/base/ (fora do conferente) com procedência do canal."
+        "P2: \"© OpenStreetMap contributors\" (data-qc-credito=\"mapa\", 60 px) por causa do polígono do Arrow, nas folhas de 3,3, 6,4 e 9,5 s; sem crédito de NASA/Landsat (domínio público, supérfluo e correto sem ele). P3: \"© MapTiler © OpenStreetMap contributors\" a 60 px em todo quadro de mapa (folhas de 12,6, 16,1 e 19,7 s e nos quadros da troca a partir de 11,6 s; a máscara da troca não cobre nem corta o crédito). \"Portland\" sem fonte (geografia comum). Sem logo, bandeira nem mídia de banco; a mesa M-VALE e o par Landsat são arquivos de _media/base/ com procedência do canal."
       ],
       "correcoes": []
     },
