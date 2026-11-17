@@ -1692,6 +1692,13 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
     Os carimbos batiam com o HTML;
   - a Sala tirou os quadros das duas do clipe pelo ffmpeg, com o mesmo comando do verbo, e atualizou a data dos dois clipes;
   - os dois arquivos do perfil voltaram à data do `camera-mapa.js` (`touch -r`), como aqui.
+- **De novo no vídeo 7** (`rio-columbia`, 13/11/2026), na revisão de espectador r1, e maior: o `quadros` pulou 14 das 28 cenas de mapa. O
+  `preparar-cena` da arte regravou o perfil às 05:01, no meio da leva de renders, e os clipes feitos antes dessa hora ficaram "velhos".
+  - a prova: o `perfil-mapa.js` (`fd6e0fbf3ad4…`) e o `.json` (`f1eec1b79654…`) iguais aos dos outros seis projetos; o `canal.json` sem
+    mudança desde 07/10;
+  - os dois arquivos voltaram à data do `camera-mapa.js` (`touch -r`), e o `quadros --cena=` das 14 e o `proxies` (28 de 28) saíram 0, do
+    clipe, sem render nenhum.
+  - Em vídeo com muitos mapas, a regravação cai no meio da arte e pega metade das cenas: a prova vale antes de todo `quadros` e `proxies`.
 
   O conserto de verdade continua pendente: a linha do tempo comparar o perfil pelo conteúdo.
 
