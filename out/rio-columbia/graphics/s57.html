@@ -56,6 +56,10 @@ CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s57 (788,200 �
     pílula); no cartão, [373] SEPTEMBER 2024: a 84 / STOPPED PAYING a 128 e [375] THEY PAY 25% a 128 / OF CANADA’S SHARE a 84 (as linhas de 84 em Inter 700, --tinta). ESP-16: o
     aviso [369] com a borda direita na da miniatura de Rocky Reach, crescendo para a esquerda sobre a mata (sai de cima do rio e do anel
     de Rock Island).
+  CONSERTOS-2 (lote NB, 17/11/2026; R2-5 da revisão de espectador r2): a viagem para Washington sai antes e dura mais: T.who de
+    [3,18; 1,3] para [2,6; 1,7] (sai em 'fair', 2,6 s; pousa em 4,3 s; ~0,23 s parada em Washington antes do corte seco em 4,533), o
+    mesmo easing cúbico, o mesmo destino (47,1032 N 120,8393 W, z 7,59). O contorno de Washington continua acendendo em 'who' (3,18),
+    no meio da viagem (T.waAcende). O primeiro quadro (a P-BACIA) não muda.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -304,7 +308,7 @@ The Star (Grand Coulee), Sept. 30, 2026</div>
 
   var clamp = cl, f2 = function (v) { return (+v).toFixed(2); };   // o que o bloco da peça 3 (da s08) usa
   var T = {
-    p2: 4.533, p3: 8.3, p4: 13.833, eua: 0.78, who: [3.18, 1.3],
+    p2: 4.533, p3: 8.3, p4: 13.833, eua: 0.78, who: [2.6, 1.7], waAcende: 3.18,   // consertos-2 (R2-5): a viagem sai em 'fair'
     rotCap: [4.7, 8.3], fed: [5.767, 8.3],
     pontos: 8.85, rr: [8.467, 13.833], leg: [12.1, 22.3],
     l1: 16.3, l2: 16.8, l3: 19.433, l4: 20.567, appa: [16.3, 22.3], regua: 16.3,
@@ -358,7 +362,7 @@ The Star (Grand Coulee), Sept. 30, 2026</div>
     if (!creditoMapaAt(t)) return;
     if (t < T.p2) {
       encherAneis(AN.eua, COR.contraparte, 0.35 * eo(seg(t, T.eua, 0.5)));
-      contornarAneis(AN.wa, 6, COR.tinta, eo(seg(t, T.who[0], 0.5)));
+      contornarAneis(AN.wa, 6, COR.tinta, eo(seg(t, T.waAcende, 0.5)));   // em 'who' (3,18), no meio da viagem
     }
     desenharRio(RIO, RIO_K, 8, 1, Tv, 0, RIO_K[RIO_K.length - 1]);
   }

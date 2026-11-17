@@ -16,8 +16,9 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s18 (130,600
 
   A BASE: MapTiler satellite-v2 (canal.json › mapa.perfil), 2D, tratamento C (identidade §6), sem relevo; tiles de 512 px.
   A CÂMERA (t da cena; centro e zoom do MapLibre): 0–9,3 parada sob a mesa e a foto (o mapa não aparece); 9,3–13,133 o mapa de perto
-  (centro −120,178547, 49,527218; z 7,80 → 7,857, Birchbank em x 2700, y 1250, a fronteira em y 1336); 13,133–15,2 a viagem rio abaixo
-  até a P-DOIS-PINOS (z 6,426); 15,2–19,433 a aproximação lenta até a P-DOIS-PINOS exata no último quadro.
+  (centro −120,178547, 49,527218; z 7,80 → 7,856, Birchbank em x 2700, y 1250, a fronteira em y 1336); 13,033–15,2 a viagem rio abaixo
+  até a P-DOIS-PINOS aberta (z 6,37, The Dalles já no ponto de tela da pose); 15,2–19,433 a aproximação que se vê (z 6,37 → 6,446, 5,4 %
+  de escala, linear, 0,0180/s), ancorada no pino de The Dalles, até a P-DOIS-PINOS exata no último quadro (consertos-2, R2-1).
   A P-DOIS-PINOS (do M3: a pose de s18, s19 e s20): centro [−127.637346, 48.139094], zoom 6.446, rumo 0, inclinação 0 (o zoom da P-TROCA:
   de lá até ela é só um deslize); Birchbank em (3150, 885), The Dalles em (2719,5, 1539,2), a fronteira em y 918,5. DESVIO DECLARADO do
   número do conceito (centro 47.8008 N 117.9374 W, z 6,84): a 6,84 os rótulos de dois andares, o copo e as pílulas de s19 não cabiam a
@@ -60,6 +61,13 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s18 (130,600
     CONSERTOS-1 (lote MA, 16/11/2026; o Lucas, 13/11/2026: "Partir, sem mudar palavra (Recomendado)"; identidade §4.1): a COTA
       PARTIDA pelo _chave do textos-tela (459d8224…): a linha igual à chave a 128 px (.ch, var(--fs-rotulo), papel rotulo) e as
       outras linhas da mesma cota a 84 px (.rs, var(--fs-eixo), papel eixo), com o mesmo peso e a mesma tinta, na mesma pílula.
+    CONSERTOS-2 (lote NA, 17/11/2026; o achado R2-1 da revisão de espectador r2, mantido pelo cético): o fim da cena não fica mais parado.
+      Antes: a viagem chegava a z 6,426 em 15,2 e a aproximação ia a 6,446 em 19,433 (1,4 % de escala, hermite que morria em vz 0).
+      Agora: a viagem chega a z 6,37 em 15,2 (o centro já põe The Dalles no ponto de tela da P-DOIS-PINOS, 2719,5 × 1539,2), e de lá a
+      aproximação é linear (0,0180/s, 5,4 % de escala em 4,233 s) com o centro ancorado no pino de The Dalles: o pino, a pílula, a
+      miniatura e o aviso ficam parados na tela, e o mapa cresce em volta deles. O último quadro é a P-DOIS-PINOS exata. A viagem começa
+      0,1 s antes (13,033, com o z no mesmo trilho de P3, e o pino, a pílula e a cota de Birchbank já a 15 % na saída deles) para durar o
+      mesmo e o pico de velocidade não passar o de hoje (1,038 contra 1,044 níveis/s; de 13,133 a 15,2 seria 1,088).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -299,6 +307,7 @@ CC BY 2.0</div>
       var z = hermite(s, a.z, a.vz || 0, b.z, b.vz || 0, T);
       var w = Math.abs(b.z - a.z) > 0.25 ? pesoEscala(z, a.z, b.z) : eio(s);
       var c = (a.c[0] === b.c[0] && a.c[1] === b.c[1]) ? a.c : lerpMerc(a.c, b.c, w);
+      if (b.ancora) c = s >= 1 ? b.c : centroComAncora(b.ancora[0], b.ancora[1], b.ancora[2], z, 0);   // consertos-2: o ponto fica na tela
       return { center: c, zoom: z, bearing: 0, pitch: 0 };
     }
     var u = KF[KF.length - 1], dt = u.fim ? 0 : t - u.t;
@@ -306,18 +315,24 @@ CC BY 2.0</div>
   }
 
   var C2 = [-120.178547, 49.527218], PDP = [-127.637346, 48.139094];
+  // consertos-2 (R2-1): The Dalles (dadosJson › DA) no ponto de tela da P-DOIS-PINOS; a viagem chega mais aberta e a aproximação, ancorada
+  // nele, é linear até a pose exata (a velocidade não morre antes do fim)
+  var DA_LL = [-121.189917, 45.608278], SD = telaPlana(DA_LL, PDP, 6.446, 0);
+  var Z_ABRE = 6.37, T_ABRE = 15.2, V_FIM = (6.446 - Z_ABRE) / (19.433 - T_ABRE);
+  var PDP_ABERTA = centroComAncora(DA_LL, SD[0], SD[1], Z_ABRE, 0);
   var KF = [
     { t: 0.0,    c: C2,  z: 7.8000 },
     { t: 9.3,    c: C2,  z: 7.8000, vz: 0.015 },
-    { t: 13.133, c: C2,  z: 7.8575, vz: 0.015 },
-    { t: 15.2,   c: PDP, z: 6.4260, vz: 0.0047 },
-    { t: 19.433, c: PDP, z: 6.4460, fim: true }
+    { t: 13.033, c: C2,  z: 7.8560, vz: 0.015 },
+    { t: T_ABRE, c: PDP_ABERTA, z: Z_ABRE, vz: V_FIM },
+    { t: 19.433, c: PDP, z: 6.4460, vz: V_FIM, fim: true, ancora: [DA_LL, SD[0], SD[1]] }
   ];
   function cameraAt(t) { return trilha(t, KF); }
 
   if (window.__erroCena) return;
 
   var DJ = JSON.parse(document.getElementById("dadosJson").textContent);
+  if (DJ.DA[0] !== DA_LL[0] || DJ.DA[1] !== DA_LL[1]) return falhar("a âncora da câmera (The Dalles) não é o DA do dadosJson.");
   var VAZIO = { type: "FeatureCollection", features: [] };
   function prj(ll, cam) { return telaPlana(ll, cam.center, cam.zoom, 0); }
   function caminho(pts, cam) {

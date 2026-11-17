@@ -64,6 +64,14 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s38 (470,633
     CONSERTOS-1 (lote MA, 16/11/2026; o Lucas, 13/11/2026: "Partir, sem mudar palavra (Recomendado)"; identidade §4.1): a COTA
       PARTIDA pelo _chave do textos-tela (459d8224…): a linha igual à chave a 128 px (.ch, var(--fs-rotulo), papel rotulo) e as
       outras linhas da mesma cota a 84 px (.rs, var(--fs-eixo), papel eixo), com o mesmo peso e a mesma tinta, na mesma pílula.
+    CONSERTOS-2 (lote NB, 17/11/2026; R2-4 da revisão de espectador r2, a 1ª saída do conserto): o CORTE SECO mesa → mapa sai de
+      3,933 para 3,100 s ('payment' 3,067–3,397). A legenda [220] fica de 1,0 a 3,1 (2,1 s, acima do piso de 2,0; o t0 não muda);
+      o grifo [219] fica aceso até o corte; a RETOMADA da câmera na mesa passa a 1,70–2,85 s (1,00 → 1,02, eb), 250 ms de repouso
+      antes do corte. De 3,1 a 3,933 o mapa mostra o Arrow inteiro (z 8,77, o lago em --destaque a 85 %) com um EMPURRÃO contínuo
+      (z + 0,07/s, ancorado no ponto fixo do voo, perto da barragem), que entra no voo sem tranco: o zoom do voo é
+      z(t) = zEmp(t)·(1 − U) + 12,70·U, U = eio(3,933–5,433), e a velocidade em 3,933 é a do empurrão. O voo de 1,5 s, a pose de
+      chegada, a deriva até a P-KEENLEYSIDE e o número [221] em 5,1 ficam. O crédito de mapa [224] passa a entrar com o mapa, em
+      3,1 (a licença: o crédito em todo quadro com mapa).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -189,10 +197,10 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s38 (470,633
   var DUR = 10.534;   // espelho.json › s38 › dur, literal (roupa §8)
   var INICIO_NO_VIDEO = 470.633;
   var TERRENO = false;
-  function CRED_MAPA_VIS(t) { return t >= 3.933; }
+  function CRED_MAPA_VIS(t) { return t >= 3.1; }   // consertos-2 (R2-4): o mapa entra em 3,1
   var FONTES = ["lago"];
-  var CENA = { corte: 3.933, voo: [3.933, 1.5], cai: [5.0, 0.5], cota: 5.1, anel: 8.187, pulsos: [8.187, 9.387], nome: 8.2,
-    legenda: 1.0, retoma: [1.95, 3.683] };
+  var CENA = { corte: 3.1, voo: [3.933, 1.5], cai: [5.0, 0.5], cota: 5.1, anel: 8.187, pulsos: [8.187, 9.387], nome: 8.2,
+    legenda: 1.0, retoma: [1.70, 2.85] };   // consertos-2 (R2-4): o corte em 'payment' (3,1); a retomada termina 0,25 s antes
   var CREDITOS = [ { id: "credLei", t0: 5.1, t1: null } ];
 
   window.__duracao = DUR;
@@ -269,8 +277,16 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s38 (470,633
 
   var ABRE = {"c": [-117.9634, 50.165224], "z": 8.77}, PK = {"c": [-117.82, 49.3716], "z": 12.7835}, PERTO = {"c": [-117.81, 49.3676], "z": 12.7};
   var ULT = 10.5, T_DERIVA = 5.433, D_RAMPA = 1.0;
+  // consertos-2 (R2-4): de 3,1 (o corte) a 3,933 o empurrão contínuo sobre o Arrow inteiro (z + K_EMP por segundo), que o voo absorve
+  // sem tranco: z = zEmp·(1 − U) + PERTO.z·U (em 3,933, U = 0 e U' = 0: a velocidade é a do empurrão; em 5,433, U = 1: a chegada de antes).
+  // O centro sai do zoom pelo ponto fixo do voo (vooFixo), então o empurrão cresce em volta do mesmo ponto que o voo segura.
+  var T_CORTE = 3.1, K_EMP = 0.07;
+  function zEmp(t) { return ABRE.z + K_EMP * Math.max(0, t - T_CORTE); }
   function cameraAt(t) {
-    if (t < T_DERIVA) return vooFixo(ABRE, PERTO, eio(seg(t, 3.933, 1.5)));
+    if (t < T_DERIVA) {
+      var U = eio(seg(t, CENA.voo[0], CENA.voo[1])), z = zEmp(t) * (1 - U) + PERTO.z * U;
+      return vooFixo(ABRE, PERTO, (z - ABRE.z) / (PERTO.z - ABRE.z));
+    }
     var w = cl(integralSuave(t, T_DERIVA, D_RAMPA) / integralSuave(ULT, T_DERIVA, D_RAMPA), 0, 1);
     return { center: lerpMerc(PERTO.c, PK.c, w), zoom: PERTO.z + (PK.z - PERTO.z) * w, bearing: 0, pitch: 0 };
   }

@@ -853,3 +853,22 @@ Duas regras de gasto:
 - **Os detalhes de cada skill** (as etapas completas, os comandos e as decisões) estão em `etapas.md` §4 e
   `aprendizados.md` §4, com os códigos da coluna "De onde vem". Este catálogo é o índice e a decisão de desenho; o
   texto de cada `SKILL.md` se escreve na onda dela, a partir dali.
+
+---
+
+## A retomada (17/11/2026)
+
+O plano acima nunca começou (só existe a `cacar-no-chrome`). Em 17/11/2026, ~11:1x de Brasília, no chat da Sala, o Lucas perguntou "Não existe
+um modo de melhorarmos a primeira execução reduzindo os erros e a necessidade de correções? Transformar os erros em skills para não se repetirem
+ou algo do tipo". A Sala contou os 23 achados mantidos nas duas revisões de espectador do vídeo 7 (`out/rio-columbia/_tmp/espectador-r1/` e
+`-r2/mantidos.json`): uns 17 mensuráveis por script (9 de movimento: mapa parado mais de 2 s ou câmera brusca, viagem abaixo de 1,5 s; 4 de "·"
+solto na quebra; 4 de tamanho, sobreposição ou começo vazio) e 6 de julgamento. A regra escrita já existia (identidade §4.4 e §5) e não bastou:
+as peças conferem a cena em quadro parado, e movimento não aparece em quadro parado.
+
+A pergunta: "Faço um portão de movimento que o mapista e o editor rodam antes de entregar, e começo as skills com as lições (o plano de 08/10,
+que nunca saiu do papel)?". A resposta: **"Os dois, após a cota (Recomendado)"**. A opção dizia: "Depois que a cota zerar (18/11, 23h) e antes
+da arte do próximo vídeo: o portão de movimento, com os achados do vídeo 7 como prova, e a Onda 0 das skills. Gasta alguns pontos da semana nova."
+
+- **O portão de movimento:** no molde do `ferramentas/portao-margens.mjs` (medir antes de entregar); mede cada cena a cada 0,1 s e reprova o mapa
+  parado e a câmera brusca, mais o "·" na quebra. A prova: os achados mantidos têm de reprovar, e os derrubados, passar.
+- **A Onda 0** (seção 4 deste catálogo), com as lições de julgamento dentro das skills das etapas.
