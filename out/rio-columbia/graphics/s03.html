@@ -10,8 +10,13 @@
   seco na entrada (o voo de s02) e na saída (s04, o DADO, com o elemento casado). Tarefa rio-columbia-arte-1, lote EO1, editor-de-arte em
   Opus (regencia.json › _animacao_em_opus[0]). Nenhum hex: as cores saem do tokens.css.
 
-  O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json c656a145… › s03: [11] legenda "Not to scale" 0,167–5,800; [12] cota "STARTING WITH
-  THE 2025 FLOOD SEASON" 1,000–5,800; nenhum crédito: a fonte, a lei, vem com o valor em s04); o BEAT (regencia.json 131116f3… › s03 ›
+  CONSERTOS-1 (16/11/2026, lote OA, editor-de-arte em Opus; a reprovação da qc-1, lente espaço): só a COTA mudou, partida pela decisão do
+  Lucas de 13/11/2026 ("Partir, sem mudar palavra (Recomendado)"): "STARTING WITH THE" a 84 px (legenda, Inter 500, data-qc-papel="eixo")
+  e, embaixo, a _chave "2025 FLOOD SEASON" a 128 px (rótulo, Inter 700, data-qc-papel="rotulo"), no mesmo lugar (x 520, y 196, fora da
+  câmera), o mesmo t0 (1,000) e as mesmas palavras. Nada mais muda: a s03 é vitrine e origem da peça 1 (o bloco tem o mesmo sha1).
+
+  O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json 459d8224… › s03: [11] legenda "Not to scale" 0,167–5,800; [12] cota "STARTING WITH
+  THE\n2025 FLOOD SEASON", _chave "2025 FLOOD SEASON", 1,000–5,800; nenhum crédito: a fonte, a lei, vem com o valor em s04); o BEAT (regencia.json 131116f3… › s03 ›
   beats[0], 0–5,8: "the lake cross-section is born: the valley cut open, the water line drops, and the top band, the reserved empty space,
   empties and is hatched"); o conceito (bf511817… › s03 e o arco, peça 1: a forma que as dez cenas que voltam copiam); a marca.
 
@@ -24,7 +29,7 @@
                  barragem (0,30–0,60), o chão de jusante e o rio (0,55–0,75), o conduto tracejado (0,60–0,75).
     0,167        "Not to scale" (legenda, 84 px) sob o corte, à esquerda, fora da câmera.
     0,700–1,600  a ÁGUA sobe até CHEIO (y 860), pelo volume (abaixo, a física), encostando na mata em x 810.
-    1,000        "STARTING WITH THE 2025 FLOOD SEASON" (cota de dado, 128 px, duas linhas) no alto à esquerda, fora da câmera, em
+    1,000        "STARTING WITH THE" (84 px) / "2025 FLOOD SEASON" (a chave, 128 px): a cota partida, no alto à esquerda, fora da câmera, em
                  'twenty-five' (o t0 do redator; o conceito dizia 'twenty': vale o textos-tela).
     1,880–3,080  em 'season,' o NÍVEL DESCE até RESERVADO (y 1040), 1,2 s, cúbico no volume; o tracejado do nível CHEIO fica onde a
                  água estava (1,88–2,18): sobra, vazia, a banda de cima. O rio a jusante corre mais depressa enquanto sai a água.
@@ -59,7 +64,7 @@
       de superfície livre; o nível de reservatório é o "método documentado" do estudo, não uma simulação: a cena não afirma vazão real.
 
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): o corte com a água (1), a faixa hachurada (1), a cota (1),
-    "Not to scale" (1) = 4 no pior instante. Blocos de leitura: 1 (a cota em duas linhas). Herói: nenhum (data-qc-sem-heroi: o número é da
+    "Not to scale" (1) = 4 no pior instante. Blocos de leitura: 1 (a cota partida em duas linhas, 84 + 128 px). Herói: nenhum (data-qc-sem-heroi: o número é da
     s04). Matizes: --destaque (a faixa), --agua (a água), fora o branco do traço = 2 + a base.
 
   O CONTRATO: window.__duracao = 5.8; __renderAt(t) determinístico e à prova de erro; __prepararCaptura; __fotosProntas = RIG.prontas()
@@ -93,7 +98,13 @@
   #desenho { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
   /* os textos: soltos sobre a mesa (traço de engenheiro: sem pílula), --tinta; sem sombra nem contorno; FORA da câmera */
   .txt { position: absolute; left: 0; top: 0; opacity: 0; color: var(--tinta); white-space: pre-line; }
-  .cota { font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.08; letter-spacing: 0.02em; }
+  /* A COTA PARTIDA (consertos-1, 16/11/2026; o Lucas, 13/11: "Partir, sem mudar palavra"; textos-tela › _instrucoes_para_a_arte, "AS
+     COTAS PARTIDAS"): a linha igual ao _chave a 128 px (rótulo, Inter 700); a outra a 84 px (legenda, Inter 500); a mesma cota, a mesma
+     ordem do texto, as mesmas palavras */
+  .cota { font-family: var(--fonte); letter-spacing: 0.02em; }
+  .cota .linha { display: block; white-space: nowrap; }
+  .cota .l-resto { font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; }
+  .cota .l-chave { font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.08; }
   .legenda { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0;
     color: var(--legenda-cor); white-space: nowrap; }
 </style>
@@ -106,7 +117,7 @@
     <div id="mesa"></div>
     <svg id="desenho" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg"><g id="gCorte"></g></svg>
   </div>
-  <div class="txt cota" id="cota" data-qc-papel="rotulo"></div>
+  <div class="txt cota" id="cota"><span class="linha l-resto" id="cota1" data-qc-papel="eixo"></span><span class="linha l-chave" id="cota2" data-qc-papel="rotulo"></span></div>
   <div class="txt legenda" id="naoEscala" data-qc-papel="eixo"></div>
 </div>
 
@@ -423,8 +434,15 @@ var CORTE = (function () {
     naoEscala: "Not to scale",                               // [11] legenda, 0,167 · regra de série 4 (o corte em tamanho cheio)
     cota: "STARTING WITH THE\n2025 FLOOD SEASON"             // [12] cota, 1,000 · lastro: "starting with the twenty twenty-five flood season"
   };
+  var COTA_CHAVE = "2025 FLOOD SEASON";                      // [12] _chave: a linha a 128 px (a outra a 84 px)
   // ═════════════════════════════════════════════════════════════════════════════════════════
-  Object.keys(TEXTOS).forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+  (function () {
+    var e = E("naoEscala"); if (e) e.textContent = TEXTOS.naoEscala;
+    var ls = TEXTOS.cota.split("\n"), l1 = E("cota1"), l2 = E("cota2");   // a quebra é a do "\n" do textos-tela: não se requebra
+    if (ls.length !== 2 || ls[1] !== COTA_CHAVE) { window.__errosRender = (window.__errosRender || 0) + 1; return; }
+    if (l1) l1.textContent = ls[0];
+    if (l2) l2.textContent = ls[1];
+  })();
 
   var T = {
     traco: -0.25, tracoDur: 1.00,         // a pena da esquerda para a direita; no 1º quadro ela já correu 25 % (a encosta, os pinheiros e o começo do chão: o corte seco não cai numa mesa vazia)

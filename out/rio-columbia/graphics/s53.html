@@ -64,6 +64,9 @@ CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s53 + s54 (a m
   CRÉDITOS a 60 px (var(--fs-credito)): "© MapTiler © OpenStreetMap contributors" em todo quadro de mapa (0–3,667, 13,5–23,3, 28,933 ao
     fim; data-qc-credito="mapa" só nele), embaixo; as fontes [329] e [345] logo acima, uma por vez. Courier Prime só na folha
     (data-qc-fonte-livre).
+  CONSERTOS-1 (16/11/2026, lote ME): ESP-11, a miniatura do salmão de 1938 de 360 × 228 para 720 × 456 px (o arquivo tem 5.952 px de
+    largura: muito abaixo de 1,4×), presa ao mesmo canto (44 px à direita e 40 px acima do ponto das quedas), crescendo para a direita e
+    para baixo; o aviso [344] logo abaixo dela, no mesmo tamanho.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -119,6 +122,8 @@ CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s53 + s54 (a m
   .bloco .f128 { font-size: var(--fs-rotulo); }
   .bloco .f104 { font-size: var(--piso-rotulo); line-height: 1.15 !important; }
   .bloco .f84 { font-size: var(--fs-eixo); font-weight: var(--peso-texto); color: var(--legenda-cor); }
+  /* a linha de 84 px da cota partida (consertos-1; a Sala, 16/11/2026): Inter 700 em --tinta, como as cotas a 84 px da s33 e da s59 */
+  .bloco .f84b { font-size: var(--fs-eixo); font-weight: var(--peso-rotulo); }
   .bloco .sep { height: 14px; }
   /* AS FOTOS: a caixa recorta, a imagem dentro dela anda; a borda de 6 px em --tinta é a da miniatura (identidade §5, "Nome de lugar com
      a foto") */
@@ -553,10 +558,10 @@ Arrow Lakes Band extinct …</div>
       porFotoCaixa(bg, ig, caixa, img, u, 1);
       LL._miniGc = caixa;
     } else { if (bg) bg.style.visibility = "hidden"; LL._miniGc = null; }
-    // o salmão de 1938 (360 × 228), preso às quedas de Kettle Falls, de 31,6 ao fim (≥ 2,0 s com o aviso: item 79)
+    // o salmão de 1938 (720 × 456 desde os consertos-1, ESP-11; era 360 × 228), preso às quedas de Kettle Falls, de 31,6 ao fim (≥ 2,0 s com o aviso: item 79)
     var ba = E("fotoSa"), ia = E("imSa"), va = eo(seg(t, T.sa[0], 0.3));
     if (t >= T.sa[0]) {
-      var pk = map.project(LL.kf), w = 360, h = 228, sy = (1 - va) * 24;
+      var pk = map.project(LL.kf), w = 720, h = 456, sy = (1 - va) * 24;   // ESP-11 (consertos-1): era 360 × 228
       var cx = { x: pk.x + 44, y: pk.y - 40 + sy, w: w, h: h };   // à direita do ponto, o topo 40 px acima dele (a margem de cima)
       // a foto (5.952 × 3.769) cobre a caixa (o centro da foto no centro da caixa)
       var esc = Math.max(w / 5952, h / 3769), iw = 5952 * esc, ih = 3769 * esc;

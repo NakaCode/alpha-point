@@ -12,6 +12,17 @@
   entrada (a s58, o mapa) e na saída (a s60, o registro).
   Tarefa rio-columbia-arte-1, lote EF7 (13/11/2026), editor-de-arte em Fable. Vídeo 7 (rio-columbia).
 
+  CONSERTOS-1 (tarefa rio-columbia-consertos-1, lote FD, 16/11/2026; textos-tela.json 459d8224…): AS COTAS PARTIDAS (o Lucas, 13/11/2026,
+    "Partir, sem mudar palavra (Recomendado)"; identidade §4.1; a qc-1 reprovou a cena por "UP TO 3 FLOOD SEASONS" a 128 px). A linha
+    igual ao `_chave` do textos-tela vai a 128 px (var(--fs-rotulo), Inter 700, data-qc-papel="rotulo") e as outras linhas da mesma
+    entrada a 84 px (var(--fs-eixo), Inter 700, data-qc-papel="eixo"), no mesmo bloco, na ordem do texto, com a quebra do "\n":
+    · [394] "UP TO 3" (128) / "FLOOD SEASONS" (84): o bloco s59-tres ganhou uma linha e subiu 101 px (o topo de y 756 para y 655); a
+      3ª linha, "ENDS JULY 31, 2027 AT THE LATEST" [395] (84 px, 5,633 s), e a linha de cota não saíram do lugar;
+    · [400] "AUTHORITY EXPIRES" (84) / "AUG. 31, 2027" (128): a pílula sobre a foto, com a borda direita em x 3160 e o topo em y 160,
+      como antes (ela ficou mais estreita e mais baixa: mais longe da estátua e do telhado);
+    · [395] e [403] já estavam a 84 px e não mudaram. Nenhuma palavra e nenhum tempo mudou. Onde este cabeçalho escreve as duas cotas
+      numa linha só ("UP TO 3 FLOOD SEASONS", "AUTHORITY EXPIRES AUG. 31, 2027"), leia a forma partida.
+
   A PEÇA QUE VOLTA: a PEÇA 3, A RÉGUA DO TEMPO. O bloco "A RÉGUA DO TEMPO (peça 3 do conceito)" (REGUA, reguaVista, reguaFatiasD,
     reguaHachura, reguaAcender, reguaPontos) é a cópia byte a byte de out/rio-columbia/graphics/s08.html (sha1 b0f769d5…, lote EF1), até
     antes da "montagem desta cena" dela (o montador do lote confere o sha1 antes de copiar). A VISTA é a da s08: A PONTA EM ×8 (2024 em
@@ -52,15 +63,17 @@
            corte em miniatura, com a faixa a 45 %.
     3,38 · 3,73 · 4,08  ("three flood seasons") A LUZ CONTA AS TRÊS: a faixa de cada janela acende (100 %), uma depois da outra, e as
            três ficam acesas; o véu da mesa anda com a conta, 120 ms atrás.
-    3,400  "UP TO 3 FLOOD SEASONS" (128 px, com a linha de cota que abraça as três), "2025 · 2026 · 2027" (eixo, 84 px) e o crédito.
+    3,400  "UP TO 3" (128 px) / "FLOOD SEASONS" (84 px), com a linha de cota que abraça as três, "2025 · 2026 · 2027" (eixo, 84 px) e
+           o crédito.
     5,620  ("twenty-seven") as duas primeiras faixas caem a 45 %: a luz FICA NA TERCEIRA. Em 5,633, "ENDS JULY 31, 2027 AT THE LATEST"
-           completa o mesmo bloco (a 2ª linha, 84 px).
+           completa o mesmo bloco (a 3ª linha, 84 px).
     7,317–7,567  REPOUSO (250 ms). Corte seco.
    P2 · o registro (7,567–13,867; regência b1, foto_real)
     7,567  O CAPITÓLIO em tela cheia: a frente leste do lado do Senado (2014), o Ken Burns COM DIREÇÃO, 1,00 → 1,08 linear até o corte,
            RUMO À ALA DO SENADO (a origem no frontão; a janela anda 80 px para a direita). 7,600 o crédito da foto; 7,733 "U.S. Capitol"
            e "Photo from 2014" no alto à esquerda (como na s57).
-    11,133 ("twenty-seven,") "AUTHORITY EXPIRES AUG. 31, 2027" (pílula de dado, no céu, no alto à direita) e a fonte da lei.
+    11,133 ("twenty-seven,") "AUTHORITY EXPIRES" (84 px) / "AUG. 31, 2027" (128 px), na pílula de dado, no céu, no alto à direita, e a
+           fonte da lei.
    P3 · a régua (13,867–19,100; regência b2, grafico)
     13,867 corte seco de volta à régua (a vista 500 px à esquerda): as três janelas abertas, a luz na terceira, e a QUARTA CASA, vazia.
     13,967–14,417  A PERSIANA DESCE na quarta casa e a fecha (0,45 s): é o 31 de agosto de 2027 que a foto acabou de dizer.
@@ -182,6 +195,10 @@
     font-variant-numeric: var(--numeros); }
   .f84b { font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0;
     font-variant-numeric: var(--numeros); }
+  /* A COTA PARTIDA (consertos-1; identidade §4.1): a chave a 128 px (.f128) numa linha só dela e o resto a 84 px (.f84b, Inter 700),
+     no mesmo bloco, centradas uma sobre a outra; 8 px entre a chave e o resto */
+  #tres { text-align: center; }
+  #tres1 .f84b { margin-top: 8px; }
   .eixo { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0;
     font-variant-numeric: var(--numeros); color: var(--legenda-cor); white-space: pre; }
   /* P2 · A FOTO em tela cheia (REGISTRO): sem moldura, sem véu, sem vinheta de borda; o Ken Burns é um transform por quadro */
@@ -191,8 +208,10 @@
     color: var(--tinta); opacity: 0; visibility: hidden; font-family: var(--fonte); letter-spacing: 0; }
   .pil.rotulo { padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo);
     line-height: 1; font-variant-numeric: var(--numeros); }
-  /* a pílula do dado sobre a foto: a frase empilha em DUAS linhas (a largura é medida no script: a quebra cai depois de "EXPIRES") */
-  .pil.rotulo.duas { white-space: normal; line-height: 1.1; }
+  /* a pílula do dado sobre a foto: a COTA PARTIDA em DUAS linhas (a quebra é o "\n" do textos-tela): "AUTHORITY EXPIRES" a 84 px
+     (.f84b) e a chave, "AUG. 31, 2027", a 128 px (.f128), na mesma pílula; a largura é a da linha mais larga */
+  .pil.rotulo.duas { white-space: nowrap; line-height: 1.1; }
+  .pil.rotulo.duas .f128 { line-height: 1.1; }
   .pil.aviso { padding: 16px 28px; font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.2; }
   /* P4 · A FOLHA RECRIADA do tratado (a MESMA da s26 P1; identidade §5, "A folha de documento") */
   #folha, #folhaSombra { position: absolute; left: 1920px; top: 960px; width: 2960px; transform-origin: 50% 50%; opacity: 0; }
@@ -231,7 +250,7 @@
 </style>
 </head>
 <body>
-<div id="palco" data-qc-sem-heroi="técnica mista sem herói: a RÉGUA DO TEMPO em traço de engenheiro (rótulos a 128 px, cotas e eixo a 84 px), a foto do Capitólio em tela cheia (rótulo de lugar, aviso do ano e uma pílula de dado) e a folha recriada do tratado (Courier Prime, com a legenda fora dela); nenhum número-herói nem título (identidade §4.2: um herói por cena, ou nenhum)">
+<div id="palco" data-qc-sem-heroi="técnica mista sem herói: a RÉGUA DO TEMPO em traço de engenheiro (a chave de cada cota e o nome do projeto de lei a 128 px, o resto das cotas e o eixo a 84 px), a foto do Capitólio em tela cheia (rótulo de lugar, aviso do ano e uma pílula de dado com a data a 128 px) e a folha recriada do tratado (Courier Prime, com a legenda fora dela); nenhum número-herói nem título (identidade §4.2: um herói por cena, ou nenhum)">
   <img id="still" src="../_media/base/mesa/mesa-m-capitolio.png" alt="" data-qc-reuso="a mesa da lei: o still M-CAPITOLIO (Washington, D.C.), nas cenas de mesa s38, s40 e s59 deste vídeo (identidade §5, satélite sob a luz; pedido comum da rio-columbia-arte-1, 'A mesa'; Landsat 8 e 9, USGS, domínio público, sem crédito na tela; sha256 9205ae7c…)">
   <div id="cam">
     <div id="luz"></div>
@@ -242,7 +261,8 @@
       <g id="reguaLev"><g id="regua"></g></g>
     </svg>
     <!-- P1: o bloco s59-tres (uma peça que cresce) e os anos -->
-    <div class="txt" id="tres"><div class="f128" id="tres1" data-qc-papel="rotulo"></div></div>
+    <div class="txt" id="tres"><div id="tres1"></div></div>   <!-- [394], partida: as linhas (com o papel de cada uma) são postas pelo script -->
+
     <div class="txt f84b" id="tres2" data-qc-papel="eixo"></div>
     <div class="txt eixo" id="anos" data-qc-papel="eixo"></div>
     <!-- P3: o bloco s59-4949 e os anos do fim da autorização -->
@@ -263,7 +283,7 @@
   <div id="fotoBox"><img id="fotoCap" src="../_media/foto/s59/s59-us-capitol-east-front-senate-side-2014-06-23-david-commons.jpg" alt=""></div>
   <div class="pil rotulo" id="rotCap" data-qc-papel="rotulo"></div>
   <div class="pil aviso" id="avisoCap" data-qc-papel="eixo" data-qc-aviso-ano="a foto é de 23 de junho de 2014 (Wikimedia Commons, File:US Capitol Building, East Front-Senate Side.jpg) e a fala é sobre a lei de 2025 e o prazo de 2027: o aviso do ano do veredito do conferente (aviso_de_ano true; identidade §6)"></div>
-  <div class="pil rotulo duas" id="cotaLei" data-qc-papel="rotulo"></div>
+  <div class="pil rotulo duas" id="cotaLei"></div>   <!-- [400], partida: as duas linhas (com o papel de cada uma) são postas pelo script -->
   <!-- P4: a legenda fora da folha (o bloco s59-vigor: uma pílula que cresce) -->
   <div id="vigor" data-qc-papel="eixo"><div id="vigor1"></div><div class="linha2" id="vigor2w"><div id="vigor2"></div></div></div>
   <!-- P4: a ANOTAÇÃO [410], na forma da s43: a chave de traço fino com a haste, fora do papel, e a nota na pílula, em duas linhas -->
@@ -375,13 +395,13 @@
   // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é do redator-de-tela: textos-tela.json › _textos_por_cena s59) ═══
   var TEXTOS = {
     anos:      "2025 · 2026 · 2027",                                        // [393] eixo, 3,400–7,567
-    tres1:     "UP TO 3 FLOOD SEASONS",                                     // [394] cota, 3,400–7,567 (bloco s59-tres) · a forma da voz
+    tres1:     "UP TO 3\nFLOOD SEASONS",                                    // [394] cota, 3,400–7,567 (bloco s59-tres) · a forma da voz · PARTIDA: a chave "UP TO 3"
     tres2:     "ENDS JULY 31, 2027 AT THE LATEST",                          // [395] cota, 5,633–7,567 (bloco s59-tres) · F007
     credNota1: "Source: U.S. diplomatic note to Canada, Nov. 22, 2024",     // [396] credito, 3,400–7,567
     rotCap:    "U.S. Capitol",                                              // [397] rotulo, 7,733–13,867 · o prédio, sem a ala
     avisoCap:  "Photo from 2014",                                           // [398] aviso_ano, 7,733–13,867
     credFoto:  "David / Wikimedia Commons · CC BY 2.0",                     // [399] credito, 7,600–13,867
-    cotaLei:   "AUTHORITY EXPIRES AUG. 31, 2027",                           // [400] cota, 11,133–13,867 · F163
+    cotaLei:   "AUTHORITY EXPIRES\nAUG. 31, 2027",                          // [400] cota, 11,133–13,867 · F163 · PARTIDA: a chave "AUG. 31, 2027"
     credLei:   "Source: U.S. Public Law 118-272, 2025",                     // [401] credito, 11,133–13,867
     lei1:      "SENATE BILL S. 4949",                                       // [402] cota, 16,067–19,100 (bloco s59-4949)
     lei2:      "WOULD MOVE IT TO 2029",                                     // [403] cota, 17,967–19,100 (bloco s59-4949) · VOLÁTIL
@@ -398,7 +418,22 @@
   // ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
   // a anotação quebra em 2 linhas, como na s43 (só a quebra: nenhuma letra muda)
   var QUEBRA = { nota: ["NUMBER SAYS", "NUMBER\nSAYS"] };
-  Object.keys(TEXTOS).forEach(function (k) { var e = E(k); if (e) e.textContent = QUEBRA[k] ? TEXTOS[k].replace(QUEBRA[k][0], QUEBRA[k][1]) : TEXTOS[k]; });
+  // AS COTAS PARTIDAS (consertos-1; o `_chave` do textos-tela, letra a letra): a linha igual à chave vai a 128 px (.f128, rótulo) e as
+  // outras a 84 px (.f84b, Inter 700, eixo), cada uma num nó com o papel declarado, na ordem do texto; a quebra é o "\n" do redator
+  var CHAVES = { tres1: "UP TO 3", cotaLei: "AUG. 31, 2027" };
+  function partir(e, texto, chave) {
+    texto.split("\n").forEach(function (linha) {
+      var d = document.createElement("div"), k = linha === chave;
+      d.className = k ? "f128" : "f84b";
+      d.setAttribute("data-qc-papel", k ? "rotulo" : "eixo");
+      d.textContent = linha; e.appendChild(d);
+    });
+  }
+  Object.keys(TEXTOS).forEach(function (k) {
+    var e = E(k); if (!e) return;
+    if (CHAVES[k]) { partir(e, TEXTOS[k], CHAVES[k]); return; }
+    e.textContent = QUEBRA[k] ? TEXTOS[k].replace(QUEBRA[k][0], QUEBRA[k][1]) : TEXTOS[k];
+  });
 
   // os tempos (locais, −838,900), do words.json, dos textos de tela e do conceito
   var T = {
@@ -596,7 +631,10 @@
 
   // ── a geometria dos textos (no espaço da câmera) ──
   var G = {
-    tresCx: (XA + XB) / 2, tres1Y: 756, tres2Y: 904,          // P1: o bloco, centrado sobre as três fatias (a linha de cota em y 1030)
+    // P1: o bloco, centrado sobre as três fatias (a linha de cota em y 1030). A cota partida (consertos-1): a chave (128 px, 128 de
+    // altura), 8 px, o resto (84 px, 100,8 de altura) = 236,8 px, acabando 12 px acima da 3ª linha (y 904, que não saiu do lugar): o
+    // topo do bloco sobe de y 756 para y 655
+    tresCx: (XA + XB) / 2, tres1Y: 655, tres2Y: 904,
     anosCx: (XA + XB) / 2, anosY: 1316,
     leiCx: (PECAS.xCasa4 + PECAS.xFantasma) / 2 + DX_P3, lei1Y: 724, lei2Y: 872,   // P3: o bloco, centrado sobre a seta (y 1030)
     anos2Y: 1316,
@@ -731,7 +769,7 @@
     if (cam) cam.style.visibility = emP2 ? "hidden" : "visible";
     var fc = E("fotoCap"), kb = kenBurns(t);
     if (fc) { fc.style.transformOrigin = f2(KB.ox) + "px " + f2(KB.oy) + "px"; fc.style.transform = "translate(" + f2(kb.dx) + "px,0px) scale(" + kb.s.toFixed(5) + ")"; }
-    var rc = E("rotCap"), hc = rc ? rc.offsetHeight : 176, cl = E("cotaLei"), wl = cl ? cl.offsetWidth : 2330;
+    var rc = E("rotCap"), hc = rc ? rc.offsetHeight : 176, cl = E("cotaLei"), wl = cl ? cl.offsetWidth : 1000;
     fixo("rotCap", t, T.rotCap, T.p3, 200, 160);
     fixo("avisoCap", t, T.avisoCap, T.p3, 200, 160 + hc + 16);
     fixo("cotaLei", t, T.cotaLei, T.p3, COTA_LEI.direita - wl, COTA_LEI.y);
@@ -807,19 +845,14 @@
   // as medidas que dependem das faces (feitas quando as fontes carregam): os anos sob as casas, a altura da 2ª linha da legenda, a
   // altura da folha (a sombra)
   var ANOS2_X = 0, VIGOR_L2 = 92.4, VIGOR_Y = 1622;
-  // a pílula do dado sobre a foto: DUAS linhas, no céu entre a estátua da cúpula e o telhado da ala do Senado (medido nos quadros: a
-  // estátua acaba em x 1283 na entrada, 11,13 s; o telhado, no fim do plano, está em y 568 na coluna x 3160). A 1ª linha é
-  // "AUTHORITY EXPIRES" (as 17 primeiras letras do texto do redator); a largura da pílula é a dela, e a data cai sozinha na 2ª.
-  var COTA_LEI = { direita: 3160, y: 160, letras1: 17 };
-  function quebrarCota() {
-    var e = E("cotaLei"); if (!e || !e.firstChild) return false;
-    e.style.width = "";
-    var rg = document.createRange(); rg.setStart(e.firstChild, 0); rg.setEnd(e.firstChild, COTA_LEI.letras1);
-    var w = rg.getBoundingClientRect().width, cs = getComputedStyle(e);
-    if (!(w > 0)) return false;
-    e.style.boxSizing = "border-box";
-    e.style.width = f2(Math.ceil(w) + 6 + parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight)) + "px";
-    return true;
+  // a pílula do dado sobre a foto: DUAS linhas, no céu entre a estátua da cúpula e o telhado da ala do Senado (medido nos quadros da
+  // arte-1: a estátua acaba em x 1283 na entrada, 11,13 s; o telhado, no fim do plano, está em y 568 na coluna x 3160). A cota partida
+  // (consertos-1): "AUTHORITY EXPIRES" a 84 px e a chave "AUG. 31, 2027" a 128 px, cada uma no seu nó (partir()); a largura da pílula
+  // é a da linha mais larga, a borda direita fica em x 3160 e o topo em y 160, como antes.
+  var COTA_LEI = { direita: 3160, y: 160 };
+  function quebrarCota() {   // só confere que as duas linhas estão postas e medem (a quebra é a do "\n")
+    var e = E("cotaLei"); if (!e || e.children.length !== 2) return false;
+    return e.offsetWidth > 0;
   }
   function medir() {
     var ok = true;

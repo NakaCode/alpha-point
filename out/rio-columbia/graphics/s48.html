@@ -14,8 +14,10 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s48 (638,900
   A BASE: MapTiler satellite-v2, 2D, tratamento C, sem relevo.
   A CÂMERA (desvio declarado do conceito): a P-TROCA DESLOCADA, no mesmo zoom (6,446): o mapa 700 px à direita e 200 px abaixo da P-TROCA
     (o centro é o ponto que na P-TROCA fica em x 1220, y 880), para a fala citada a 260 px (identidade §4.1: piso 260, alvo 280; roupa §5)
-    caber sobre o Pacífico sem cobrir lago, rio nem fronteira; daí, a aproximação contínua (z + 0,004/s, partida suave), ancorada nos
-    lagos (x 2750, y 900). Corte seco dos dois lados (s47 DADO → s48 → s49 desenho): não há pose casada a manter.
+    caber sobre o Pacífico sem cobrir lago, rio nem fronteira; daí, a aproximação contínua ancorada nos lagos (x 2750, y 900).
+    CONSERTOS-1 (16/11/2026, ESP-10): a aproximação se vê desde o 1º quadro (4,0 % de escala de 0 a 4,2 s, partida suave em 0,5 s) e
+    depois volta ao ritmo lento (z + 0,004/s); em 'timing' (0,31) a fileira do calendário pulsa uma vez (escala 1,10, 0,7 s) e em
+    'Canada's' (1,03) o contorno dos três lagos pulsa em --destaque (5 → 12 px, 1,0 s). A fala citada continua onde estava. Corte seco dos dois lados (s47 DADO → s48 → s49 desenho): não há pose casada a manter.
   O QUE A CENA FAZ:
     · b0 / P1 (0–2,867): os três lagos do tratado em --destaque a 40 % (com o contorno de 5 px), o Columbia fino com a luz de corrente e a
       fronteira; O CALENDÁRIO (a peça 7, a fileira pequena, 12 páginas com as colunas de hoje) pendurado acima dos lagos desde o quadro 0.
@@ -155,7 +157,7 @@ Open Government Licence – Canada.</div>
   var INICIO_NO_VIDEO = 638.9;
   var TERRENO = false;
   var FONTES = ["col", "koo", "borda", "lagoKin", "lagoArr", "lagoDun"];
-  var CENA = { pulso: [4.155, 1.6], segura: 0.35, cita: 6.767, dams: 9.275, fios: [9.475, 0.6], estica: [10.075, 0.45], vira: [10.275, 0.6] };
+  var CENA = { calPulso: [0.31, 0.7], lagosPulso: [1.03, 1.0], pulso: [4.155, 1.6], segura: 0.35, cita: 6.767, dams: 9.275, fios: [9.475, 0.6], estica: [10.075, 0.45], vira: [10.275, 0.6] };
   // CONSERTO 1 (a Sala, 13/11/2026, resposta 3): a linha da OGL – Canada enquanto as colunas do calendário (dado do Water Survey of
   // Canada) estão na tela, ou seja, do 1º ao último quadro; o mesmo texto da s46, palavra por palavra, com a quebra do redator
   var CREDITOS = [ { id: "credOgl", t0: 0, t1: null, inteiro: true } ];
@@ -254,8 +256,12 @@ Open Government Licence – Canada.</div>
   var P_TROCA = [-118.9981, 48.5964], Z_TROCA = 6.446, DX = 700, DY = 200;
   function llNaTela(sx, sy, c, z) { var k = ws(z); return [lngDe(mx(c[0]) + (sx - W / 2) / k), latDe(my(c[1]) + (sy - H / 2) / k)]; }
   var C48 = llNaTela(1920 - DX, 1080 - DY, P_TROCA, Z_TROCA), ANC = llNaTela(2750, 900, C48, Z_TROCA), VZ = 0.004;
+  // CONSERTOS-1 (16/11/2026, ESP-10 da revisão de espectador r1): a aproximação SE VÊ desde o 1º quadro. A velocidade do zoom sobe em
+  // 0,5 s (smoothstep: a partida suave) até VZ1 = 0,015/s, fica nela até 3,4 s e desce em 1,2 s (smoothstep) ao ritmo lento de antes
+  // (VZ = 0,004/s): em 4,2 s o zoom andou +0,0566 = 4,0 % de escala em torno dos lagos (x 2750, y 900); daí, +0,004/s até o fim.
+  var VZ1 = 0.015;
   function cameraAt(t) {
-    var z = Z_TROCA + VZ * integralSuave(t, 0.0, 1.7);
+    var z = Z_TROCA + VZ1 * integralSuave(t, 0.0, 0.5) - (VZ1 - VZ) * integralSuave(t, 3.4, 1.2);
     return { center: centroComAncora(ANC, 2750, 900, z, 0), zoom: z, bearing: 0, pitch: 0 };
   }
 
@@ -836,11 +842,18 @@ Open Government Licence – Canada.</div>
     aplicarBorda(1, corFronteira(), 5, 1);
     opac("col", "line-opacity", 1); opac("koo", "line-opacity", 0);
     aplicarCorrente(t, cam, { luzCol: 1, luzKoo: 0 });
-    ["lagoKin", "lagoArr", "lagoDun"].forEach(function (id) { opac(id, "fill-opacity", 0.40); opac(id + "-l", "line-opacity", 0.40); });
+    // ESP-10: em 'Canada's' (1,03) o contorno dos três lagos do tratado pulsa uma vez em --destaque (5 → 12 px, 40 → 100 %, 1,0 s)
+    var bl = Math.sin(Math.PI * eio(seg(t, C.lagosPulso[0], C.lagosPulso[1])));
+    ["lagoKin", "lagoArr", "lagoDun"].forEach(function (id) { opac(id, "fill-opacity", 0.40); opac(id + "-l", "line-opacity", 0.40 + 0.60 * bl); opac(id + "-l", "line-width", 5 + 7 * bl); });
     aplicarPulso(t, cam);
     aplicarDams(t, cam);
     aplicarFios(t, cam);
     CAL.estado(CALM, { x: CAL_POS.x, y: CAL_POS.y, v: 1, serie: 1, vira: [4, seg(t, C.vira[0], C.vira[1])] });
+    // ESP-10: em 'timing' (0,31) a fileira do calendário pulsa uma vez (escala 1 → 1,10 → 1 em 0,7 s, em torno do meio da fileira); o
+    // bloco da peça 7 não muda: o pulso é só a escala da raiz, por cima da translação que o CAL.estado põe
+    var bc = Math.sin(Math.PI * eio(seg(t, C.calPulso[0], C.calPulso[1])));
+    if (CALM && bc > 0) { var cx = CALM.W / 2, cy = (CALM.c.gancho + CALM.c.pagH) / 2, kc = 1 + 0.10 * bc;
+      CALM.raiz.setAttribute("transform", "translate(" + (CAL_POS.x + cx).toFixed(1) + "," + (CAL_POS.y + cy).toFixed(1) + ") scale(" + kc.toFixed(4) + ") translate(" + (-cx).toFixed(1) + "," + (-cy).toFixed(1) + ")"); }
     fixoEm("cita", 200, 236, t, C.cita, null);
     return Promise.resolve();
   }

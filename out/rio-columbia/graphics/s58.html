@@ -12,6 +12,27 @@
   da s09 (P-BACIA). Cortes secos na entrada (a s57, mapa), no meio (16,000 s: a mesa → o mapa) e na saída (a s59, a mesa M-CAPITOLIO).
   Tarefa rio-columbia-arte-1, lote EF7 (13/11/2026), editor-de-arte em Fable. Vídeo 7 (rio-columbia).
 
+  CONSERTOS-1 (tarefa rio-columbia-consertos-1, lote FD, 16/11/2026; textos-tela.json 459d8224…; a lista da s58 tem agora 16 textos).
+    Onde o resto deste cabeçalho diverge, vale este bloco:
+    · ESP-17 (a revisão de espectador r1: de 0 a 6,2 s o bloco hachurado não tinha nome): A COTA DA PONTA, "SEPT. 16, 2024" [430]
+      (cota, 84 px, Inter 700; a mesma da s34, F066), de 0,167 a 13,867 s, com a fonte "Source: Government of British Columbia, 2017"
+      [431] na faixa, no mesmo tempo. ABAIXO da banda, alinhada à direita na PONTA: a borda direita do texto em x 1505 (a ponta dos 60
+      anos), o topo da linha em y 1376 (as maiúsculas de y 1396 a 1457: 116 px abaixo da banda e 82 px abaixo do pé do marco, que desce
+      até y 1314 em x 1454). Vive no espaço da câmera, presa à régua como as outras cotas da cena (a borda direita fica na ponta em
+      todo quadro); nenhuma palavra da voz lê a data. Entra em 300 ms (opacidade + 24 px) e SAI em 200 ms, acabando em 13,867 s,
+      quando os três nomes entram à direita de x 1505 (o fio de chamada deles está em x 1530). OS CRÉDITOS DA MESA, de baixo para cima
+      na ordem em que entram: o da cota da ponta no 1º nível (0,167–13,867), o do CRS no 2º (6,200), o da BC Hydro no 3º (9,567); em
+      13,867 o do Global Affairs Canada entra no 1º nível, que a cota da ponta acabou de deixar. Nunca mais de 3 linhas (item 82). O
+      do CRS e o da BC Hydro subiram um nível (80 px) em relação à arte-1.
+    · AS COTAS PARTIDAS (o Lucas, 13/11/2026, "Partir, sem mudar palavra (Recomendado)"; identidade §4.1): [389] "NOT RESUMED" (a chave,
+      128 px, Inter 700, data-qc-papel="rotulo") / "AS OF AUG. 17, 2026" (84 px, Inter 700, data-qc-papel="eixo"), na mesma pílula, no
+      mesmo lugar (o canto de cima à esquerda preso ao chão, alinhado com a 1ª pílula). A pílula ficou mais estreita e mais baixa.
+    · A QUEBRA: [381] e [389] vêm do textos-tela com "\n" no lugar do "·" (a regra da quebra: nenhuma linha começa nem termina com
+      "·"); a cena parte no "\n". Os três nomes continuam em três linhas a 128 px: a tela não muda.
+    · A CONTA DOS 6 ELEMENTOS, P1–P2: a ponta dos 60 anos (1), a cota da ponta (1), o trecho a lápis (1), o marco com a cota (1), "NOT
+      FINALIZED" (1) = 5; em 13,867 a cota da ponta sai e os três nomes entram = 5.
+    · O LASTRO da cota da ponta: "Shortly before the paid years ended" (3,680–4,600 s): é a data em que os anos pagos acabaram.
+
   DUAS PEÇAS QUE VOLTAM:
   · A PEÇA 3, A RÉGUA DO TEMPO: o bloco "A RÉGUA DO TEMPO (peça 3 do conceito)" é a cópia byte a byte de out/rio-columbia/graphics/
     s08.html (sha1 b0f769d5…, lote EF1; o montador do lote confere o sha1 antes de copiar). A VISTA é a ponta em ×8 (2024 em x 1505;
@@ -159,9 +180,11 @@
   .fonte { opacity: 0; visibility: hidden; }
   #fonteBC { bottom: 119px; padding-right: 4px; }
   #fonteCG { bottom: 214px; }
-  /* a quebra declarada: cada parte numa linha; o "·" fica no texto e não é desenhado */
+  /* a quebra declarada (o "\n" do textos-tela, consertos-1): cada linha num nó em bloco */
   .l { display: block; }
-  .sep { display: none; }
+  /* A COTA PARTIDA (consertos-1; identidade §4.1): na pílula, a linha da chave fica a 128 px (a letra da .pil) e o resto vai a 84 px
+     (var(--fs-eixo)), no mesmo peso (Inter 700) e com os algarismos da .f84b (as outras cotas a 84 px da cena e da s59) */
+  .pil .l.resto { font-size: var(--fs-eixo); line-height: 1.2; font-variant-numeric: var(--numeros); }
   #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: var(--fundo); color: var(--tinta);
     border-bottom: 12px solid var(--tinta); font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
   #erroCena[hidden] { display: none; }
@@ -194,14 +217,16 @@
   .f84b { font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-eixo); line-height: 1.2; letter-spacing: 0;
     font-variant-numeric: var(--numeros); }
   #nomes { line-height: 1.12; }
-  /* os créditos da mesa (identidade §4.1 e §4.2): x 200, abaixo de y 1880, até x 1720; fora da câmera; 60 px por var(--fs-credito); três níveis */
+  /* os créditos da mesa (identidade §4.1 e §4.2): x 200, abaixo de y 1880, até x 1720; fora da câmera; 60 px por var(--fs-credito); três níveis,
+     de baixo para cima na ordem em que entram (consertos-1: o da cota da ponta no 1º; o do CRS no 2º; o da BC Hydro no 3º; o do GAC no 1º,
+     depois que o da cota da ponta sai) */
   .cred { position: absolute; left: var(--credito-x); font-family: var(--fonte); font-weight: var(--peso-texto); z-index: 90;
     font-size: var(--fs-credito); line-height: 1.2; color: var(--sec); letter-spacing: 0; opacity: 0; visibility: hidden; white-space: nowrap; }
   .cred.n1 { bottom: 14px; } .cred.n2 { bottom: 94px; } .cred.n3 { bottom: 174px; }
 </style>
 </head>
 <body>
-<div id="palco" data-qc-sem-heroi="técnica mista sem herói: a RÉGUA DO TEMPO em traço de engenheiro sobre a mesa (uma cota a 84 px e dois rótulos a 128 px) e o mapa da s09 (dois nomes de país e duas pílulas de dado a 128 px); nenhum número-herói nem título (identidade §4.2: um herói por cena, ou nenhum)">
+<div id="palco" data-qc-sem-heroi="técnica mista sem herói: a RÉGUA DO TEMPO em traço de engenheiro sobre a mesa (duas cotas a 84 px e dois rótulos a 128 px) e o mapa da s09 (dois nomes de país e duas pílulas de dado: a da pausa a 128 px e a da retomada com a chave a 128 px e a data a 84 px); nenhum número-herói nem título (identidade §4.2: um herói por cena, ou nenhum)">
   <!-- P3 · o mapa da s09 (por baixo da mesa até 16,000 s) -->
   <div id="map"></div>
   <canvas id="cv" width="3840" height="2160"></canvas>
@@ -223,13 +248,15 @@
         <defs id="reguaDefs"></defs>
         <g id="regua"></g>
       </svg>
+      <div class="txt f84b" id="ponta" data-qc-papel="eixo"></div>   <!-- [430] a cota da ponta dos 60 anos (ESP-17, consertos-1) -->
       <div class="txt f84b" id="acordo" data-qc-papel="eixo"></div>
       <div class="txt f128" id="naoFinal" data-qc-papel="rotulo"></div>
       <div class="txt f128" id="nomes" data-qc-papel="rotulo"></div>
     </div>
-    <div class="cred n1" id="credCRS" data-qc-papel="credito"></div>
-    <div class="cred n2" id="credHydro" data-qc-papel="credito"></div>
-    <div class="cred n3" id="credGAC" data-qc-papel="credito"></div>
+    <div class="cred n1" id="credBC" data-qc-papel="credito"></div>   <!-- [431] a fonte da cota da ponta (ESP-17, consertos-1) -->
+    <div class="cred n2" id="credCRS" data-qc-papel="credito"></div>
+    <div class="cred n3" id="credHydro" data-qc-papel="credito"></div>
+    <div class="cred n1" id="credGAC" data-qc-papel="credito"></div>
   </div>
   <div id="erroCena" hidden></div>
 </div>
@@ -239,7 +266,7 @@
 var TEXTOS_S58 = {
   acordo:    "AGREEMENT IN PRINCIPLE · JULY 11, 2024",                    // [379] cota, 6,200–16,000 · F154
   naoFinal:  "NOT FINALIZED",                                             // [380] rotulo, 9,567–16,000 · VOLÁTIL
-  nomes:     "KTUNAXA · SYILX-OKANAGAN · SECWÉPEMC",                      // [381] rotulo, 13,867–16,000 · F158 · em três linhas
+  nomes:     "KTUNAXA\nSYILX-OKANAGAN\nSECWÉPEMC",                        // [381] rotulo, 13,867–16,000 · F158 · em três linhas (o "\n" do redator)
   credCRS:   "Source: Congressional Research Service, 2024",              // [382] credito, 6,200–16,000
   credHydro: "Source: BC Hydro, 2026",                                    // [383] credito, 9,567–16,000
   credGAC:   "Source: Global Affairs Canada, May 28, 2025",               // [384] credito, 13,867–16,000
@@ -247,21 +274,31 @@ var TEXTOS_S58 = {
   nEua:      "UNITED STATES",                                             // [386] rotulo, 16,167–28,400
   pausa1:    "TALKS PAUSED",                                              // [387] cota, 20,500–28,400 (bloco s58-pausa)
   pausa2:    "SINCE MARCH 2025",                                          // [388] cota, 20,500–28,400 (bloco s58-pausa) · VOLÁTIL
-  retomada:  "NOT RESUMED · AS OF AUG. 17, 2026",                         // [389] cota, 24,200–28,400 · F010 · VOLÁTIL · em duas linhas
+  retomada:  "NOT RESUMED\nAS OF AUG. 17, 2026",                          // [389] cota, 24,200–28,400 · F010 · VOLÁTIL · PARTIDA: a chave "NOT RESUMED"
   fonteBC:   "Source: Government of British Columbia, March 11, 2025",    // [390] credito, 20,500–28,400
-  fonteCG:   "Source: Canadian Geographic, Aug. 17, 2026"                 // [391] credito, 24,200–28,400
+  fonteCG:   "Source: Canadian Geographic, Aug. 17, 2026",                // [391] credito, 24,200–28,400
   // [392] "© MapTiler © OpenStreetMap contributors" (16,000–28,400): o núcleo de mapa o monta do perfil e confere letra a letra
+  ponta:     "SEPT. 16, 2024",                                            // [430] cota, 0,167–13,867 · F066 · a cota da ponta, a da s34 (ESP-17)
+  credBC:    "Source: Government of British Columbia, 2017"               // [431] credito, 0,167–13,867 · a fonte da cota da ponta (ESP-17)
 };
 // ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
 (function () {
   "use strict";
-  var EM_LINHAS = { nomes: 1, retomada: 1 };   // a quebra declarada no " · ": cada parte numa linha, o "·" não é desenhado
+  // A QUEBRA (consertos-1): o texto do redator vem com "\n" (a regra da quebra: nenhuma linha começa nem termina com "·"); cada linha
+  // vai num nó em bloco. A COTA PARTIDA: onde há chave (o `_chave` do textos-tela, letra a letra), a linha igual a ela fica a 128 px
+  // (data-qc-papel="rotulo") e as outras vão a 84 px (.resto, data-qc-papel="eixo"), na mesma pílula, na ordem do texto.
+  var EM_LINHAS = { nomes: null, retomada: "NOT RESUMED" };
   Object.keys(TEXTOS_S58).forEach(function (k) {
     var e = document.getElementById(k); if (!e) return;
-    if (!EM_LINHAS[k]) { e.textContent = TEXTOS_S58[k]; return; }
-    TEXTOS_S58[k].split(" · ").forEach(function (parte, i) {
-      if (i) { var s = document.createElement("span"); s.className = "sep"; s.textContent = " · "; e.appendChild(s); }
-      var l = document.createElement("span"); l.className = "l"; l.textContent = parte; e.appendChild(l);
+    if (!(k in EM_LINHAS)) { e.textContent = TEXTOS_S58[k]; return; }
+    var chave = EM_LINHAS[k];
+    TEXTOS_S58[k].split("\n").forEach(function (linha) {
+      var l = document.createElement("span"); l.className = "l"; l.textContent = linha;
+      if (chave) {
+        if (linha === chave) l.setAttribute("data-qc-papel", "rotulo");
+        else { l.className = "l resto"; l.setAttribute("data-qc-papel", "eixo"); }
+      }
+      e.appendChild(l);
     });
   });
 })();
@@ -434,7 +471,8 @@ var TEXTOS_S58 = {
     porPilula(E("nEua"), NOME.eua, 0.5, 0.5, 0, 0, qn, (1 - qn) * 24);
     var p1 = E("pausa"), p2 = E("retomada");
     porPilula(p1, PAUSA, 0, 0, 0, 0, qp, (1 - qp) * 24);
-    // a 2ª pílula: o canto de cima à esquerda no mesmo meridiano da 1ª (as duas alinhadas à esquerda; ela é 25 px mais estreita)
+    // a 2ª pílula: o canto de cima à esquerda no mesmo meridiano da 1ª (as duas alinhadas à esquerda). Com a cota partida (consertos-1:
+    // a chave a 128 px e a data a 84 px) ela mede 989 × 296 px (era 1277 × 342); a 1ª, 1302 × 342
     porPilula(p2, RETOMADA, 0, 0, 0, 0, qr, (1 - qr) * 24);
     porTexto(E("fonteBC"), qp, 0);
     porTexto(E("fonteCG"), qr, 0);
@@ -839,6 +877,7 @@ var TEXTOS_S58 = {
 
   // os tempos (locais, −810,500), do words.json, dos textos de tela e do conceito
   var T = {
+    ponta: 0.167, credBC: 0.167, pontaSai: 13.867,         // a cota da ponta e a fonte dela (ESP-17): [430] e [431], 0,167–13,867
     camP1: [0, 5.9],                                       // a câmera para 0,3 s antes de "agreement" (6,2)
     lapis: 1.895, lapisRapido: 0.8, lapisPara: 9.567,      // "outline." → o lápis corre, rasteja e PARA em "not"
     marco: 6.2, acordo: 6.2, credCRS: 6.2,                 // "agreement"
@@ -955,6 +994,10 @@ var TEXTOS_S58 = {
 
   // a geometria dos textos (no espaço da câmera)
   var G = {
+    // a cota da ponta (ESP-17): ABAIXO da banda (y 1280), a borda DIREITA do texto na ponta (x 1505); o topo da linha em y 1376 (as
+    // maiúsculas de 1396 a 1457: 82 px abaixo do pé do marco, y 1314, para o pé não parecer apontar a data: a cota do marco fica 39 px
+    // acima dele; e à esquerda do fio dos nomes, x 1530)
+    pontaX: XP, pontaY: 1376,
     acordoCx: XM, acordoY: 884,                             // a cota do marco: centrada sobre ele, acima da banda
     naoX: XP + LAPIS.rapido + LAPIS.lento + 90, naoY: V.yEixo - 64,   // "NOT FINALIZED": à direita da frente parada, na altura do eixo
     nomesX: 1560, nomesY: 1352,                             // os três nomes: sob o trecho a lápis, à direita do fio
@@ -968,18 +1011,19 @@ var TEXTOS_S58 = {
     return XP + LAPIS.rapido * eo(seg(t, T.lapis, T.lapisRapido)) + LAPIS.lento * freio(seg(t, t1, T.lapisPara - t1), 0.85);
   }
 
-  // o TEXTO no espaço da câmera: entra em 300 ms (opacidade + 24 px de subida, ease-out) e fica PARADO; ancora = 0,5 (centrado em x)
-  // ou 0 (a borda esquerda em x)
-  function texto(id, t, tin, x, y, ancora) {
+  // o TEXTO no espaço da câmera: entra em 300 ms (opacidade + 24 px de subida, ease-out) e fica PARADO; ancora = 0,5 (centrado em x),
+  // 0 (a borda esquerda em x) ou 1 (a borda direita em x). Com tfim (o t1 do redator), SAI em 200 ms (opacidade + 24 px para baixo, como
+  // na s59) e já não está na tela em tfim
+  function texto(id, t, tin, x, y, ancora, tfim) {
     var e = E(id); if (!e) return;
-    var pi = eo(seg(t, tin, 0.3)), v = t < tin ? 0 : pi;
+    var pi = eo(seg(t, tin, 0.3)), po = tfim == null ? 0 : eb(seg(t, tfim - 0.2, 0.2)), v = t < tin ? 0 : pi * (1 - po);
     e.style.opacity = v.toFixed(3);
-    e.style.transform = "translate(" + f2(x) + "px," + f2(y + 24 * (1 - pi)) + "px)" + (ancora ? " translateX(-" + (ancora * 100) + "%)" : "");
+    e.style.transform = "translate(" + f2(x) + "px," + f2(y + 24 * (1 - pi) + 24 * po) + "px)" + (ancora ? " translateX(-" + (ancora * 100) + "%)" : "");
   }
-  // o crédito: só a opacidade (300 ms), no lugar dele; some no corte
-  function credito(id, t, tin) {
+  // o crédito: só a opacidade (300 ms), no lugar dele; some no corte ou, com tfim (o t1 do redator), sai em 200 ms e já não está em tfim
+  function credito(id, t, tin, tfim) {
     var e = E(id); if (!e) return;
-    var v = t >= tin && t < MAPA ? eo(seg(t, tin, 0.3)) : 0;
+    var v = t >= tin && t < MAPA ? eo(seg(t, tin, 0.3)) * (tfim == null ? 1 : 1 - eb(seg(t, tfim - 0.2, 0.2))) : 0;
     e.style.visibility = v > 0.001 ? "visible" : "hidden";
     e.style.opacity = v.toFixed(3);
   }
@@ -1009,8 +1053,11 @@ var TEXTOS_S58 = {
     // estado em TODO quadro, também nos de mapa (de 16,000 s em diante o credito() os apaga). No render contínuo eles ficavam sobre
     // os créditos do mapa (as folhas do render da Sala; o quadro único não mostrava).
     credito("credCRS", t, T.credCRS); credito("credHydro", t, T.credHydro); credito("credGAC", t, T.credGAC);
+    credito("credBC", t, T.credBC, T.pontaSai);   // a fonte da cota da ponta: sai antes de a do GAC entrar no mesmo nível
     if (!naMesa) return;
     camera(t);
+    // a cota da ponta (ESP-17): a borda direita na ponta dos 60 anos, abaixo da banda; sai quando os três nomes entram
+    texto("ponta", t, T.ponta, G.pontaX, G.pontaY, 1, T.pontaSai);
     var al = alvoLuz(t - 0.12), lz = E("luz");
     if (lz) { lz.style.setProperty("--luz-x", f2(al.x + 140) + "px"); lz.style.setProperty("--luz-y", f2(al.y + 140) + "px"); }
     // o lápis: o recorte das duas linhas de pontos vai da ponta até a frente

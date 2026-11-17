@@ -43,6 +43,17 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s36 (400,333
     Big Sur): na descida, o satellite-v2 troca de imagem entre o z10 e o z11 (de 1,93 a 2,03 s, z 10,22 → 10,55: o tom do quadro inteiro
     pulava). A base de teto (BASE_MAXZ = 10, a mesma base e a mesma licença) fica até 2,05 s; a base sem teto entra por cima de 2,05 a
     2,60 s (0,55 s, smoothstep; z 10,6 → 12,2) e segue sozinha até o fim.
+  CONSERTOS-1 (lote MC, 16/11/2026; textos-tela 459d8224…):
+    · COTAS: [203] "U.S. AGENCIES:" a 84 px e "450,000–650,000 CFS" (a _chave) a 128 px; [204] "BC HYDRO: ONLY AT" a 84 px e "600,000 CFS"
+      (a _chave) a 128 px; cada uma na mesma pílula, na ordem do texto, nos lugares e tempos de antes.
+    · ESP-5 (a revisão de espectador r1), só no P3 (12,233–22,307), sem palavra nova: (1) A APROXIMAÇÃO QUE SE VÊ: o zoom ganha até
+      +0,023/s (de +0,002 a +0,025/s), com subida e descida suaves de 0,9 s, ancorado no ponto de tela do pino (o pino e o fio ficam
+      no lugar, o mapa cresce em volta deles); depois a deriva lenta de antes, com o ganho acumulado (+0,211 de zoom). (2) O PULSO: em
+      'Canadian storage' (18,1) uma luz em --destaque desce o Columbia desde a borda da direita (rio acima) pelo eixo do rio do disco
+      (rio-columbia, OSM, o trecho de lon −121,006 até o ponto do eixo a 168 m da estação, mais o ponto da estação; sem simplificar) e
+      chega ao pino em 'come into play' (19,3), que acende e pulsa até 20,1. (3) O NÍVEL: em "river's peak" (20,4) a água sobe na
+      régua do chão até a marca de 450,000 em 'four' (22,307), em --agua a 45 % com a linha de topo em --agua-luz; ali a faixa americana
+      assume, e a água sai em 0,6 s. O que existe de 22,307 em diante fica como estava (só o mapa atrás está 0,211 de zoom mais perto).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -110,6 +121,9 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s36 (400,333
   .sobreFoto { z-index: 55 !important; }
   .credito { white-space: pre; }
   #chamar { font-variant-numeric: normal; }   /* o hífen de CALLED-UPON: os números tabulares da pílula o alargam */
+  /* A COTA PARTIDA (consertos-1; textos-tela › _instrucoes_para_a_arte[14]): a linha da _chave a 128 px (.f128, papel rotulo) e a outra
+     a 84 px (.f84b: --fs-eixo, Inter 700 e --tinta, como as cotas a 84 px da s33 e da s59; papel eixo), na mesma pílula, na ordem do texto */
+  .bloco .f84b { font-size: var(--fs-eixo); font-weight: var(--peso-rotulo); line-height: 1.2; color: var(--tinta); }
 
   #legNao { left: 0; top: 0; }
 
@@ -123,10 +137,13 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s36 (400,333
     <defs><clipPath id="medidorClip"><rect id="medidorClipR" x="0" y="1706" width="3840" height="0"/></clipPath></defs>
     <path id="fioHalo" fill="none" stroke-width="10" stroke-linejoin="round" opacity="0" style="stroke:var(--rotulo)"/>
     <path id="fio" fill="none" stroke-width="4" stroke-linejoin="round" opacity="0" style="stroke:var(--tinta)"/>
-    <g id="pino" opacity="0"><circle r="14" stroke-width="7" style="fill:var(--tinta);stroke:var(--rotulo)"/></g>
+    <g id="pulso36" opacity="0"><path class="halo" fill="none" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" opacity="0.35" style="stroke:var(--destaque)"/><path class="nucleo" fill="none" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--destaque)"/></g>
+    <g id="pino" opacity="0"><circle class="acende" r="30" opacity="0" style="fill:var(--destaque)"/><circle r="14" stroke-width="7" style="fill:var(--tinta);stroke:var(--rotulo)"/></g>
     <g id="medidor" opacity="0">
       <rect id="vao" fill-opacity="0.35" opacity="0" style="fill:var(--tensao)"/>
       <g clip-path="url(#medidorClip)"><g id="medidorCorpo"></g></g>
+      <rect id="nivel" fill-opacity="0.45" opacity="0" style="fill:var(--agua)"/>
+      <line id="nivelTopo" stroke-width="6" opacity="0" style="stroke:var(--agua-luz)"/>
       <rect id="euaFaixa" fill-opacity="0.25" opacity="0" style="fill:var(--tinta)"/>
       <line id="euaPe" stroke-width="6" opacity="0" style="stroke:var(--tinta)"/>
       <line id="euaTopo" stroke-width="6" opacity="0" style="stroke:var(--tinta)"/>
@@ -140,8 +157,8 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s36 (400,333
   </div>
   <div class="legenda" id="legNao" data-qc-papel="eixo">NOT CURRENTLY DEFINED IN THE TREATY</div>
   <div class="bloco" id="revisao" data-qc-papel="rotulo"><div class="parte"><div class="f128">2014/2024 TREATY REVIEW</div></div></div>
-  <div class="bloco" id="pilEua" data-qc-papel="rotulo"><div class="parte"><div class="f128 l2">U.S. AGENCIES:<br>450,000–650,000 CFS</div></div></div>
-  <div class="bloco" id="pilBc" data-qc-papel="rotulo"><div class="parte"><div class="f128 l2">BC HYDRO:<br>ONLY AT 600,000 CFS</div></div></div>
+  <div class="bloco" id="pilEua" data-qc-papel="rotulo"><div class="parte"><div class="f84b" data-qc-papel="eixo">U.S. AGENCIES:</div><div class="f128" data-qc-papel="rotulo">450,000–650,000 CFS</div></div></div>
+  <div class="bloco" id="pilBc" data-qc-papel="rotulo"><div class="parte"><div class="f84b" data-qc-papel="eixo">BC HYDRO: ONLY AT</div><div class="f128" data-qc-papel="rotulo">600,000 CFS</div></div></div>
   <div class="fotoCheia" id="fotoDalles"><img src="../_media/foto/s36/s36-the-dalles-lock-and-dam-aerial-spillway-open-2009-01-30-usace-portland-dvids-6382255.jpg" alt=""></div>
   <div class="rotulo sobreFoto" id="rotDam" data-qc-papel="rotulo">The Dalles Dam</div>
   <div class="legenda aviso sobreFoto" id="avisoDam" data-qc-papel="eixo" style="left:0;top:0">Photo from 2009</div>
@@ -266,9 +283,16 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s36 (400,333
   var P_TROCA = [-118.9981, 48.5964], Z_TROCA = 6.446, C36 = [-121.2199, 45.605], Z36 = 13.1297;
   var T_DESCE = 3.3, VZ36 = 0.002, PAN = 4 / (512 * Math.pow(2, Z36) / 360);   // a deriva: 4 px/s para oeste (o sentido do rio)
   var KF = [ { t: 0.0, c: P_TROCA, z: Z_TROCA }, { t: 0.3, c: P_TROCA, z: Z_TROCA }, { t: T_DESCE, c: C36, z: Z36, vz: VZ36 } ];
+  // ESP-5 (consertos-1): no P3 a aproximação que se vê, rumo ao pino. O ganho de zoom é ∫ vz · (janela suave de 12,233 a 22,307, com
+  // rampas de 0,9 s); a câmera fica ancorada no ponto de tela em que o pino estaria na deriva de antes, e o ganho acumulado (+0,211) segue
+  var APROX = { t0: 12.233, t1: 22.307, vz: 0.023, rampa: 0.9 };
+  function zExtra(t) { var a = APROX; return a.vz * (integralSuave(t, a.t0, a.rampa) - integralSuave(t, a.t1 - a.rampa, a.rampa)); }
   function cameraAt(t) {
     if (t <= T_DESCE) return trilha(t, KF);
-    return { center: [C36[0] - PAN * integralSuave(t, T_DESCE, 1.5), C36[1]], zoom: Z36 + VZ36 * (t - T_DESCE), bearing: 0, pitch: 0 };
+    var c = [C36[0] - PAN * integralSuave(t, T_DESCE, 1.5), C36[1]], z = Z36 + VZ36 * (t - T_DESCE), e = zExtra(t);
+    if (e <= 0 || !PINO_LL) return { center: c, zoom: z, bearing: 0, pitch: 0 };
+    var p = telaPlana(PINO_LL, c, z, 0);
+    return { center: centroComAncora(PINO_LL, p[0], p[1], z + e, 0), zoom: z + e, bearing: 0, pitch: 0 };
   }
 
   var DALLES = geo("estacao-the-dalles"), AGUA = geo("agua-osm-the-dalles");
@@ -924,6 +948,43 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s36 (400,333
     [f, fh].forEach(function (el) { if (!el) return; el.setAttribute("d", d); el.setAttribute("stroke-dasharray", (L * u).toFixed(1) + " " + (L + 10).toFixed(1)); el.setAttribute("opacity", String(vf)); });
     return { x: p[0], y: p[1] };
   }
+  // ═══ ESP-5 (consertos-1, MC): O PULSO E O NÍVEL, no P3 ═══════════════════════════════════════════════════════════════════════════
+  // O PULSO: o eixo do Columbia do disco (rio-columbia, OSM relation/2183775, main_stream), de lon −121,006 (fora do quadro, rio acima)
+  // ao ponto do eixo a 168 m da estação, sem simplificar (MC/prep36.py), e o ponto da estação no fim. Uma luz de 320 px em --destaque
+  // (núcleo de 14 px sobre o halo de 40 px a 35 %) desce de 'Canadian storage' (18,1) e chega ao pino em 'come into play' (19,3),
+  // freando; o pino acende (um disco em --destaque atrás dele) e pulsa até 20,1, e a luz se apaga no pino.
+  var PULSO36 = { t0: 18.1, chega: 19.3, fim: 20.1, cabeca: 320,
+    ll: [[-121.00598, 45.65368], [-121.02083, 45.65458], [-121.03633, 45.65905], [-121.04388, 45.65872], [-121.07268, 45.65137],
+         [-121.09383, 45.64036], [-121.10448, 45.63229], [-121.11786, 45.62358], [-121.12843, 45.62003], [-121.13699, 45.6165],
+         [-121.14582, 45.60991], [-121.14921, 45.60834], [-121.15244, 45.60723], [-121.17151, 45.60554], [-121.18069, 45.60587],
+         [-121.18807, 45.60906]] };
+  function aplicarPulso36(t, cam, mapa) {
+    var g = E("pulso36"); if (!g) return 0;
+    var P = PULSO36, vis = mapa && t >= P.t0 && t < P.fim ? 1 : 0;
+    if (!vis) { g.setAttribute("opacity", "0"); return 0; }
+    var tela = telaDe(P.ll.concat([PINO_LL]), cam), L = comprimento(tela), d = dDe(tela);
+    var u = eo(seg(t, P.t0, P.chega - P.t0)), cab = P.cabeca * (1 - 0.6 * u);   // a cabeça encurta enquanto freia, e some no pino
+    var s = u * L, apaga = 1 - eio(seg(t, P.chega, P.fim - P.chega));
+    g.setAttribute("opacity", apaga.toFixed(3));
+    g.querySelectorAll("path").forEach(function (p) {
+      p.setAttribute("d", d); p.setAttribute("stroke-dasharray", cab.toFixed(1) + " " + (L + cab + 10).toFixed(1));
+      p.setAttribute("stroke-dashoffset", (cab - s).toFixed(1));
+    });
+    return Math.sin(Math.PI * seg(t, P.chega, P.fim - P.chega));   // o acender do pino
+  }
+  // O NÍVEL NA RÉGUA: de "river's peak" (20,4) a 'four' (22,307) a água sobe do chão (y 1700) até a marca de 450,000 (y 1215,4), em
+  // --agua a 45 % com a linha de topo de 6 px em --agua-luz, dentro do corpo do medidor; em 'four' a faixa americana assume e a água sai
+  // em 0,6 s
+  var NIVEL = { t0: 20.4, t1: 22.307, sai: 0.6 };
+  function aplicarNivel(t, mapa) {
+    var M = MEDIDOR, r = E("nivel"), l = E("nivelTopo"); if (!r || !l) return;
+    var u = eio(seg(t, NIVEL.t0, NIVEL.t1 - NIVEL.t0)), v = (mapa && t >= NIVEL.t0) ? (1 - eio(seg(t, NIVEL.t1, NIVEL.sai))) : 0;
+    var y = M.pe - (M.pe - yMedidor(MARCAS.eua[0])) * u;
+    r.setAttribute("x", M.x + M.contorno / 2); r.setAttribute("width", M.w - M.contorno);
+    r.setAttribute("y", y.toFixed(2)); r.setAttribute("height", (M.pe - y).toFixed(2)); r.setAttribute("opacity", v.toFixed(3));
+    l.setAttribute("x1", M.x + M.contorno / 2); l.setAttribute("x2", M.x + M.w - M.contorno / 2);
+    l.setAttribute("y1", y.toFixed(2)); l.setAttribute("y2", y.toFixed(2)); l.setAttribute("opacity", (u > 0 ? v : 0).toFixed(3));
+  }
   function aplicarCena(t, cam) {
     var C = CENA, mapa = CRED_MAPA_VIS(t);
     // o estado da s35 que apaga na descida
@@ -935,6 +996,11 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s36 (400,333
     aplicarAgua(cam);   // o conserto 1: a água escura de perto
     var pp = aplicarPinoFio(t, cam, mapa);
     aplicarMedidor(t, cam, mapa);
+    // ESP-5: o pulso que desce o rio e acende o pino; o nível na régua
+    var acende = aplicarPulso36(t, cam, mapa), pg = E("pino"), ac = pg && pg.querySelector(".acende");
+    if (ac) ac.setAttribute("opacity", (0.85 * acende).toFixed(3));
+    if (pg && acende > 0) pg.setAttribute("transform", "translate(" + pp.x.toFixed(1) + "," + pp.y.toFixed(1) + ") scale(" + (1 + 0.5 * acende).toFixed(3) + ")");
+    aplicarNivel(t, mapa);
     // P1: o rótulo do pino (abaixo e à direita dele), a anotação, a unidade na cabeça do medidor
     rotuloEm("rotDalles", { x: pp.x + 40, y: pp.y + 50 }, "dirBaixo", 0, t, C.pino[0], C.pino[1], 0);
     fixoEm("legNao", 800, 560, t, C.nao[0], C.nao[1]);

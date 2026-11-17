@@ -22,7 +22,7 @@ CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s05 (18,700 �
       conceito dá aos nomes na s09: x ≈ 500–1133, y 560; x ≈ 250–1350, y 980), presos ao chão;
     · 'fifteen' (2,795): a parte canadense enche em --destaque a 40 % (o protagonista com o contexto pintado, 500 ms); a pílula
       '≈ 15% OF THE BASIN IN CANADA' (textos-tela [19]) entra em 2,80 à direita da lasca, acima da fronteira (x 2300–3624, y 300–694),
-      em duas linhas (a 128 px ela não cabe numa: 1.993 px), com a barra de 600 px que enche até 15 % (90 px) em 0,6 s e para cedo;
+      partida pelo _chave (consertos-1): '≈ 15%' a 128 px, 'OF THE BASIN' e 'IN CANADA' a 84 px, com a barra de 600 px que enche até 15 % (90 px) em 0,6 s e para cedo;
       a fonte (textos-tela [20], a quebra dele) entra junto, acima do crédito de mapa;
     · 5,83: os nomes, a pílula e a fonte saem (300 ms): o último quadro é a POSE CASADA sem texto (o conceito: 'A pílula sai em 24,55 s').
   ESTADO NO ÚLTIMO QUADRO (= o 1º da s06): P-BACIA parada; contorno da bacia 6 px --tinta; Canadá --destaque a 40 %; EUA --contraparte a
@@ -33,6 +33,9 @@ CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s05 (18,700 �
   A GEOMETRIA: bacia-columbia, -canada e -eua (USGS WBD ∩ Census, domínio público), fronteira-canada-eua (Census cb 2025, domínio
     público), rio-columbia (OSM, coberto pelo crédito da base). CRÉDITO a 60 px: "© MapTiler © OpenStreetMap contributors" do 1º ao último
     quadro (data-qc-credito="mapa" só nele); a fonte de [20] logo acima, de 2,80 a 6,13.
+    CONSERTOS-1 (lote MA, 16/11/2026; o Lucas, 13/11/2026: "Partir, sem mudar palavra (Recomendado)"; identidade §4.1): a COTA
+      PARTIDA pelo _chave do textos-tela (459d8224…): a linha igual à chave a 128 px (.ch, var(--fs-rotulo), papel rotulo) e as
+      outras linhas da mesma cota a 84 px (.rs, var(--fs-eixo), papel eixo), com o mesmo peso e a mesma tinta, na mesma pílula.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -69,6 +72,10 @@ CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s05 (18,700 �
   #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
     font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
   #erroCena[hidden] { display: none; }
+  /* A COTA PARTIDA (consertos-1; identidade §4.1; o campo _chave do textos-tela): na mesma pílula, a linha da chave a 128 px (.ch:
+     --fs-rotulo, Inter 700) e as outras linhas da mesma cota a 84 px (.rs: --fs-eixo, com o peso e a tinta da cota) */
+  .ch { color: var(--tinta); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1; }
+  .rs { color: var(--tinta); font-weight: var(--peso-rotulo); font-size: var(--fs-eixo); line-height: 1.1; }
 </style>
 </head>
 <body>
@@ -77,7 +84,7 @@ CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s05 (18,700 �
   <canvas id="cv" width="3840" height="2160"></canvas>
   <div id="nCan" class="pil lugar" data-qc-papel="rotulo">CANADA</div>
   <div id="nEua" class="pil lugar" data-qc-papel="rotulo">UNITED STATES</div>
-  <div id="cota" class="pil" data-qc-papel="rotulo"><div>≈ 15% OF THE BASIN</div><div>IN CANADA</div><div class="trilho"><div id="barra" class="enche"></div></div></div>
+  <div id="cota" class="pil"><div class="ch" data-qc-papel="rotulo">≈ 15%</div><div class="rs" data-qc-papel="eixo">OF THE BASIN<br>IN CANADA</div><div class="trilho"><div id="barra" class="enche"></div></div></div>
   <div id="fonte" class="credito fonte" data-qc-papel="credito">Source: U.S. Army Corps of Engineers and
 Bonneville Power Administration, 2009</div>
   <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>

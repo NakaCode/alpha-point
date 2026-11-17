@@ -12,6 +12,21 @@
   s38). Lote EF6 (rio-columbia-arte-1, 13/11/2026), editor-de-arte em Fable. Fonte da montagem: out/rio-columbia/_tmp/arte-1/EF6/src/
   s37.html + montar.py (o RIG entra pelo montador).
 
+  CONSERTOS-1 (16/11/2026, tarefa rio-columbia-consertos-1, lote FA; o HTML de antes: sha1 e48d99bb…; as trocas foram feitas direto
+  neste HTML, por out/rio-columbia/_tmp/consertos-1/FA/edit_s37.py: a fonte do EF6 ficou como estava e não vale mais). Mudou só isto:
+    · COTAS [212] (o Lucas, 13/11/2026: "Partir, sem mudar palavra"; identidade §4.1): na pílula, "AT LEAST 40" (a chave) a 128 px
+      (var(--fs-rotulo), papel rotulo) e "OF 89 YEARS" a 84 px (var(--fs-eixo), papel eixo), com o mesmo peso e a mesma tinta (a
+      cota a 84 px da s33 e da s59). A pílula ficou 57 px mais baixa e desceu (o topo no gráfico de y 560 para y 616), para o pé
+      ficar onde estava, 40 px acima da pílula dos 600,000 CFS.
+    · COTAS [213]: no bloco de 1948, "1948 · 1,010,000 CFS" (a chave) a 128 px, "(MAY 31)" a 84 px e, como antes, "USGS, THE
+      DALLES" [214] a 84 px em --legenda-cor. A pílula ganhou uma linha (de 295 para 369 px de altura) e ficou mais estreita. Para o
+      fio até o ponto de 1948 continuar a existir (o ponto fica em y 607 da tela), a pílula subiu até a margem de cima (o topo no
+      gráfico de y 200 para y 174: y ≈ 167 na tela) e as duas linhas de 84 px passaram a line-height 1 (o dono com 12 px de respiro,
+      antes 14): o fio fica com 44 px (antes 92).
+    · ESP-6 [216]: a lista dos seis anos na quebra do redator, "2010 · 2011 · 2012 / 2017 · 2018 · 2020", sem o "·" na ponta da 1ª
+      linha. A coluna de THE GAP e dos anos termina antes de x 3640 (medida no DOM, de 18,567 s ao fim).
+  Nenhum tempo, nenhuma palavra e nenhum movimento de câmera mudou.
+
   A METÁFORA (conceito bf511817… › s37): a chuva de pontos contra a régua. A régua de medir de s36 fica onde estava e vira o eixo; cada
   ano do rio é uma gota que sobe até a altura do seu pico e fica pendurada ali. No rio antigo as gotas furam a linha canadense, e 40
   delas acendem acima dela; no rio de hoje nenhuma chega lá, e seis ficam presas na faixa do meio.
@@ -32,12 +47,12 @@
   de 600,000 em 1879–1967; nenhum acima desde 2009; seis no vão (2010, 2011, 2012, 2017, 2018, 2020); se a conta não fechar, a cena
   declara erro (window.__erroCena) em vez de desenhar um número errado.
 
-  O QUE MANDA: os TEXTOS (textos-tela.json c656a145… › s37): [209] eixo "450,000 CFS · 600,000 CFS" 0–26,733 (as duas marcas de s36,
+  O QUE MANDA: os TEXTOS (textos-tela.json 459d8224… › s37, com as quebras e as _chave dos consertos-1): [209] eixo "450,000 CFS · 600,000 CFS" 0–26,733 (as duas marcas de s36,
   como linhas do gráfico: cada valor sobre a sua linha); [210] cota "1879–1967" 2,533–13,300; [211] legenda "1961–2008: DAILY
   AVERAGES" 2,533–26,733; [218] crédito "Source: U.S. Geological Survey, 2026; / Congressional Research Service, 2024" 2,533–26,733
-  (a quebra do redator); [212] cota "AT LEAST 40 OF 89 YEARS" 8,533–13,300; [213] + [214] o bloco s37-1948, "1948 · 1,010,000 CFS
-  (MAY 31)" e "USGS, THE DALLES", 10,567–13,300; [215] cota "SINCE 2009" 13,333–26,733; [216] eixo "2010 · 2011 · 2012 · 2017 · 2018 ·
-  2020" 18,567–26,733; [217] rótulo "THE GAP" 19,800–26,733. A regência (131116f3… › s37 › b0–b2) no tempo dos objetos; o conceito
+  (a quebra do redator); [212] cota "AT LEAST 40 / OF 89 YEARS" (_chave "AT LEAST 40") 8,533–13,300; [213] + [214] o bloco
+  s37-1948, "1948 · 1,010,000 CFS / (MAY 31)" (_chave "1948 · 1,010,000 CFS") e "USGS, THE DALLES", 10,567–13,300; [215] cota "SINCE
+  2009" 13,333–26,733; [216] eixo "2010 · 2011 · 2012 / 2017 · 2018 · 2020" 18,567–26,733; [217] rótulo "THE GAP" 19,800–26,733. A regência (131116f3… › s37 › b0–b2) no tempo dos objetos; o conceito
   (s37 e o arco, peça 2) na direção. TODO TEXTO DE TELA está no objeto TEXTOS; nenhum número de eixo, nenhum ano solto.
   DIFERENÇAS DO CONCEITO, por precedência do textos-tela: "THE GAP" só entra em 19,800 (o conceito abria s37 com a banda rotulada); as
     marcas levam só o valor (o conceito pedia "o dono escrito"); a nota é "1961–2008" (item 20).
@@ -91,7 +106,7 @@
     sai dele). Um executor por transformação: ponto() para cada ponto, marcas() para as linhas, camAt() para a câmera, por() para cada
     texto. Sem mão (a v003 não entra). Fora da prova do pacote: nada (sem pêndulo, rotação ou líquido).
 
-  A MARGEM sob a câmera (roupa §4): os textos são de tela; em P1 o bloco de 1948 começa em y ≈ 189 e o da nota termina em y ≈ 1668;
+  A MARGEM sob a câmera (roupa §4): os textos são de tela; em P1 o bloco de 1948 começa em y ≈ 167 (consertos-1; antes 189) e o da nota termina em y ≈ 1668;
     em P2 a nota fica em x ≈ 806, y 1640–1732, e a coluna da direita (THE GAP e os anos) termina antes de x 3640. Créditos fora da
     câmera, em x 200, abaixo de y 1880. Canto inferior direito (400 × 400) vazio. Medido pelo portao-margens (M6), não só pela conta.
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): P1, no pior instante (10,6–13,0): o gráfico com o
@@ -138,10 +153,13 @@
   /* a pílula da cota e do rótulo (§4.1: --rotulo, cantos de 12 px, respiro de 24 × 40 px; Inter 700, 128 px), como em s17 e s21 */
   .pilula { background: var(--rotulo); color: var(--tinta); border-radius: var(--cantos);
     padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1; }
-  /* o bloco de 1948: uma pílula só, duas linhas (o valor, 128 px; o dono, 84 px) */
+  /* A COTA PARTIDA (consertos-1; identidade §4.1; o campo _chave do textos-tela): na mesma pílula, a linha da chave a 128 px (.ch:
+     --fs-rotulo, Inter 700) e as outras linhas da mesma cota a 84 px (.rs: --fs-eixo, com o peso e a tinta da cota) */
+  .ch { color: var(--tinta); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1; }
+  .rs { color: var(--tinta); font-weight: var(--peso-rotulo); font-size: var(--fs-eixo); line-height: 1; }
+  /* o bloco de 1948: uma pílula só, três linhas (a chave, 128 px; o resto da cota, 84 px; o dono, 84 px em --legenda-cor) */
   #b1948 { background: var(--rotulo); border-radius: var(--cantos); padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x); }
-  #b1948 .l1 { color: var(--tinta); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1; }
-  #b1948 .l2 { color: var(--legenda-cor); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.1; padding-top: 14px; }
+  #b1948 .l2 { color: var(--legenda-cor); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1; padding-top: 12px; }
   /* os créditos (identidade §4.1 e §4.2): --fs-credito, x 200, abaixo de y 1880, até x 1720; fora da câmera; sobre o papel, --tinta-escura */
   #creds { position: absolute; left: var(--credito-x); bottom: 14px; width: calc(var(--credito-x-fim) - var(--credito-x)); }
   .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.2;
@@ -175,8 +193,8 @@
   <div class="txt marca" id="tick450" data-qc-papel="eixo"></div>
   <div class="txt pilula" id="periodo" data-qc-papel="rotulo"></div>
   <div class="txt eixo" id="nota" data-qc-papel="eixo"><span class="chave" data-qc-ornamento="a chave da legenda: o ponto vazado"></span><span id="notaTxt"></span></div>
-  <div class="txt pilula" id="conta" data-qc-papel="rotulo"></div>
-  <div class="txt" id="b1948"><div class="l1" id="b1948a" data-qc-papel="rotulo"></div><div class="l2" id="b1948b" data-qc-papel="eixo"></div></div>
+  <div class="txt pilula" id="conta"></div>
+  <div class="txt" id="b1948"><div id="b1948a"></div><div class="l2" id="b1948b" data-qc-papel="eixo"></div></div>
   <div class="txt pilula" id="desde" data-qc-papel="rotulo"></div>
   <div class="txt pilula" id="gap" data-qc-papel="rotulo"></div>
   <div class="txt eixo" id="anos" data-qc-papel="eixo"></div>
@@ -292,15 +310,28 @@
     tick600: "600,000 CFS",                              //       linhas do gráfico; cada valor sobre a sua linha (o "·" é o separador)
     periodo: "1879–1967",                                // [210] cota, 2,533–13,300 (em "eighteen seventy-nine")
     notaTxt: "1961–2008: DAILY AVERAGES",                // [211] legenda, 2,533–26,733 (item 20: 48 anos com o código 1 do USGS)
-    conta: "AT LEAST 40\nOF 89 YEARS",                   // [212] cota, 8,533–13,300 (em "forty of eighty-nine"; F075; a quebra é minha)
-    b1948a: "1948 · 1,010,000 CFS (MAY 31)",             // [213] cota, 10,567–13,300 (bloco s37-1948; pré-conferência P11)
+    conta: "AT LEAST 40\nOF 89 YEARS",                   // [212] cota, 8,533–13,300 (em "forty of eighty-nine"; F075; a quebra é do redator)
+    b1948a: "1948 · 1,010,000 CFS\n(MAY 31)",            // [213] cota, 10,567–13,300 (bloco s37-1948; pré-conferência P11; a quebra é do redator)
     b1948b: "USGS, THE DALLES",                          // [214] cota, 10,567–13,300 (a 2ª linha do bloco: de onde é o pico)
     desde: "SINCE 2009",                                 // [215] cota, 13,333–26,733 (em "Since two thousand nine")
-    anos: "2010 · 2011 · 2012 ·\n2017 · 2018 · 2020",    // [216] eixo, 18,567–26,733 (os seis anos no vão; F077; a quebra é minha)
+    anos: "2010 · 2011 · 2012\n2017 · 2018 · 2020",      // [216] eixo, 18,567–26,733 (os seis anos no vão; F077; a quebra é do redator: sem "·" na ponta)
     gap: "THE GAP",                                      // [217] rótulo, 19,800–26,733 (em "in the gap:"; a mesma faixa de s36)
     cred1: "Source: U.S. Geological Survey, 2026;\nCongressional Research Service, 2024"   // [218] crédito, 2,533–26,733 (a quebra do redator)
   };
-  Object.keys(TEXTOS).forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+  // AS COTAS PARTIDAS (o campo _chave do textos-tela; consertos-1): a linha igual à chave vai a 128 px (.ch, papel rotulo); as outras
+  // linhas da mesma entrada, a 84 px (.rs, papel eixo), na mesma pílula, na ordem do texto
+  var CHAVES = { conta: "AT LEAST 40", b1948a: "1948 · 1,010,000 CFS" };
+  Object.keys(TEXTOS).forEach(function (k) {
+    var e = E(k); if (!e) return;
+    if (!CHAVES[k]) { e.textContent = TEXTOS[k]; return; }
+    TEXTOS[k].split("\n").forEach(function (linha) {
+      var d = document.createElement("div"), chave = linha === CHAVES[k];
+      d.className = chave ? "ch" : "rs";
+      d.setAttribute("data-qc-papel", chave ? "rotulo" : "eixo");
+      d.textContent = linha;
+      e.appendChild(d);
+    });
+  });
 
   // ── os tempos (locais, −443,900), do words.json, dos textos de tela e da regência s37 ──
   var T = {
@@ -473,8 +504,8 @@
     ticksX: 2540, ticksSobe: 14,          // "600,000 CFS" e "450,000 CFS": a pílula com a borda esquerda em x 2540 do gráfico, 14 px acima da linha
     periodo: { cx: (xAno(1879) + xAno(1967)) / 2, y: 1470 },   // "1879–1967": centrado sob o colchete do período
     nota: { x: 2316 - 21, y: 1565 },      // a nota: a chave sob a coluna de 1961
-    conta: { x: 2520, y: 560 },           // "AT LEAST 40 / OF 89 YEARS": à direita da nuvem, acima do traço
-    b1948: { x: 1340, y: 200 },           // o bloco de 1948: no alto, sobre o ponto
+    conta: { x: 2520, y: 616 },           // "AT LEAST 40 / OF 89 YEARS": à direita da nuvem, acima do traço (consertos-1: o pé onde estava; antes y 560)
+    b1948: { x: 1340, y: 174 },           // o bloco de 1948: no alto, sobre o ponto (consertos-1: rente à margem de cima; antes y 200)
     desde: { x: 2240, y: 190 },           // "SINCE 2009": fixo na TELA (a câmera traz os anos até ele)
     gap: { x: 3545, y: (Y60 + Y45) / 2 }  // "THE GAP": na ponta do vão, centrado nele; os anos logo abaixo
   };

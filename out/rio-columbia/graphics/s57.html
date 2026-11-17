@@ -52,6 +52,10 @@ CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s57 (788,200 �
   CRÉDITOS a 60 px (var(--fs-credito)): "© MapTiler © OpenStreetMap contributors" em todo quadro de mapa (0–4,533 e 8,3 ao fim;
     data-qc-credito="mapa" só nele), embaixo; acima dele, uma por vez: o crédito da miniatura [370] (8,467–13,833) e a fonte [376] (16,3 ao
     fim, duas linhas): nunca mais de 3 linhas.
+  CONSERTOS-1 (16/11/2026, lote ME): COTAS partidas pelo _chave do textos-tela: [368] FEDERAL a 128 / PUBLIC LAW 118-272 a 84 (uma
+    pílula); no cartão, [373] SEPTEMBER 2024: a 84 / STOPPED PAYING a 128 e [375] THEY PAY 25% a 128 / OF CANADA’S SHARE a 84 (as linhas de 84 em Inter 700, --tinta). ESP-16: o
+    aviso [369] com a borda direita na da miniatura de Rocky Reach, crescendo para a esquerda sobre a mata (sai de cima do rio e do anel
+    de Rock Island).
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -106,6 +110,8 @@ CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s57 (788,200 �
   .bloco .f128 { font-size: var(--fs-rotulo); }
   .bloco .f104 { font-size: var(--piso-rotulo); line-height: 1.15 !important; }
   .bloco .f84 { font-size: var(--fs-eixo); font-weight: var(--peso-texto); color: var(--legenda-cor); }
+  /* a linha de 84 px da cota partida (consertos-1; a Sala, 16/11/2026): Inter 700 em --tinta, como as cotas a 84 px da s33 e da s59 */
+  .bloco .f84b { font-size: var(--fs-eixo); font-weight: var(--peso-rotulo); }
   .bloco .sep { height: 14px; }
   /* AS FOTOS: a caixa recorta, a imagem dentro dela anda; a borda de 6 px em --tinta é a da miniatura (identidade §5, "Nome de lugar com
      a foto") */
@@ -149,14 +155,14 @@ CANAL ALPHA POINT — RIO COLUMBIA (vídeo 7, rio-columbia), CENA s57 (788,200 �
   <div id="fotoRr" class="foto"><img id="imRr" src="../_media/foto/s57/s57-rocky-reach-dam-columbia-river-2009-06-13-brodbeck-commons.jpg" alt=""></div>
   <div id="rotCap" class="rotulo" data-qc-papel="rotulo">U.S. Capitol</div>
   <div id="avCap" class="legenda aviso" data-qc-papel="eixo">Photo from 2024</div>
-  <div id="rotFed" class="rotulo" data-qc-papel="rotulo">FEDERAL · PUBLIC LAW 118-272</div>
+  <div id="rotFed" class="bloco" data-qc-papel="rotulo"><div class="parte"><div><div class="f128" data-qc-papel="rotulo">FEDERAL</div><div class="f84b" data-qc-papel="eixo">PUBLIC LAW 118-272</div></div></div></div>
   <div id="avRr" class="legenda aviso" data-qc-papel="eixo">Photo from 2009</div>
   <div id="legPud" class="legenda" data-qc-papel="eixo">Chelan, Grant and Douglas public utility districts</div>
   <div id="bLinha" class="bloco" data-qc-papel="rotulo">
     <div class="parte" id="bL1"><div class="f128">JUNE 2024: LAWSUIT</div></div>
-    <div class="parte" id="bL2"><div class="f128">SEPTEMBER 2024: STOPPED PAYING</div></div>
+    <div class="parte" id="bL2"><div><div class="f84b" data-qc-papel="eixo">SEPTEMBER 2024:</div><div class="f128" data-qc-papel="rotulo">STOPPED PAYING</div></div></div>
     <div class="parte" id="bL3"><div class="f128">SEPTEMBER 2026: SETTLEMENT</div></div>
-    <div class="parte" id="bL4"><div class="f128">THEY PAY 25% OF CANADA’S SHARE</div></div>
+    <div class="parte" id="bL4"><div><div class="f128" data-qc-papel="rotulo">THEY PAY 25%</div><div class="f84b" data-qc-papel="eixo">OF CANADA’S SHARE</div></div></div>
   </div>
   <div id="credRr" class="credito acima" data-qc-papel="credito">David Brodbeck / Wikimedia Commons · CC BY 2.0</div>
   <div id="credAppa" class="credito acima" data-qc-papel="credito">Source: American Public Power Association, 2026;
@@ -504,7 +510,8 @@ The Star (Grand Coulee), Sept. 30, 2026</div>
       porPonto("d" + i, p.x, p.y, v * (t >= T.para && t < T.volta ? 1 : k), 1, null, t);
     }
     var mi = LL._mini, vr = vida(t, T.rr[0], T.rr[1]);
-    if (mi) porTela(E("avRr"), mi.x, mi.y + mi.h + 16, 0, 0, 0, 0, vr, 0); else porTela(E("avRr"), 0, 0, 0, 0, 0, 0, 0);
+    var ar = E("avRr");   // ESP-16 (consertos-1): a borda direita do aviso na da miniatura, crescendo para a esquerda sobre a mata
+    if (mi) porTela(ar, mi.x + mi.w - (ar ? ar.offsetWidth : 0), mi.y + mi.h + 16, 0, 0, 0, 0, vr, 0); else porTela(E("avRr"), 0, 0, 0, 0, 0, 0, 0);
     porTexto(E("credRr"), vr, 0);
     porTexto(E("legPud"), eo(seg(t, T.leg[0], 0.3)));                 // fica até o corte (t1 = o fim da cena), como o cartão
     // P4: a régua e o cartão que cresce (o bloco s57-linha), abaixo dela

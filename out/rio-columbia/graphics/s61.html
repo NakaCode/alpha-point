@@ -15,6 +15,12 @@
   para P2 (2,333); de P2 para P3, a TROCA (a imagem de julho passa para a base da MapTiler no mesmo enquadramento, 500 ms). Tarefa
   rio-columbia-arte-1, lote EO3, editor-de-arte em Opus. Nenhum hex: as cores saem do tokens.css.
 
+  CONSERTOS-1 (16/11/2026, tarefa rio-columbia-consertos-1, lote OB, editor-de-arte em Opus; o HTML de antes é o sha1 2543dd0a…). Só o
+  ESP-18: na TROCA (11,600–12,100) o PNG de julho encolhe com o recuo, e a borda dele entrava no quadro como reta (a da esquerda já em
+  11,70 s, a 80 %; a de baixo em 11,90; a da direita em 12,00). Agora o #parBox ganha, de T_MAPA em diante, uma MÁSCARA DE BORDA SUAVE nos
+  quatro lados (a rampa de transparente a opaco em --pena px do PNG, que cresce de 0 a 300 em 0,25 s, eo): em 11,600 nada muda, e em 11,70
+  a borda já é uma rampa de ~235 px. O fade de 500 ms, o recuo de 1,75 s, o rótulo de Portland em 13,033 e a câmera não mudam.
+
   O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json c656a145… › s61, [418]–[422]); os BEATS (regencia.json 131116f3… › s61, b0–b2);
   o conceito (bf511817… › s61 e s62; o arco, peças 1 e 8); o para-passos (265ac78a…: itens 21, 57 e 68); a marca.
 
@@ -118,6 +124,13 @@
   /* O PAR LANDSAT (a peça 8): por cima do mapa, por baixo da placa; a 1:1, origem 0 0 */
   #parLayer { position: absolute; inset: 0; z-index: 55; overflow: hidden; pointer-events: none; }
   #parBox { position: absolute; left: 0; top: 0; width: 4000px; height: 2249px; transform-origin: 0 0; }
+  /* A BORDA SUAVE DA TROCA (consertos-1, ESP-18): de T_MAPA em diante o PNG de julho encolhe com o recuo e a borda dele entra no quadro
+     (a da esquerda já em 11,70 s, a 80 %); a máscara apaga os quatro lados numa rampa de --pena px do PNG (até 300), e o PNG se funde com
+     a base sem retângulo. Só alfa: a cor da máscara não aparece (o token é só o opaco). */
+  #parBox.troca {
+    mask-image: linear-gradient(to right, transparent 0, var(--tinta) var(--pena, 0px), var(--tinta) calc(100% - var(--pena, 0px)), transparent 100%),
+      linear-gradient(to bottom, transparent 0, var(--tinta) var(--pena, 0px), var(--tinta) calc(100% - var(--pena, 0px)), transparent 100%);
+    mask-size: 100% 100%; mask-repeat: no-repeat; mask-composite: intersect; }
   #parBox img, #parBox svg { position: absolute; left: 0; top: 0; width: 4000px; height: 2249px; }
   /* a legenda do par (a da s41): 84 px, Inter 500, --legenda-cor, na pílula --rotulo */
   .leg { position: absolute; left: 0; top: 0; opacity: 0; visibility: hidden; z-index: 58; white-space: nowrap;
@@ -598,6 +611,7 @@ var CORTE = (function () {
   // ═══ P2 · O PAR LANDSAT (a peça 8): abril → julho, a 1:1, a deriva linear; e a TROCA para a base do mapa (P3) ═══════════════════
   var PAR = DJ.par, TR = DJ.troca;
   var T2 = { leg: 2.5, cruza: [2.773, 10.693 - 2.773], contornoSai: [10.693, 0.3], troca: [T_MAPA, 0.5] };
+  var PENA = { px: 300, sobe: 0.25 };   // a borda suave do PNG na troca (ESP-18, consertos-1): 300 px do PNG nos quatro lados
   (function () { ["contornoHalo", "contornoTraco"].forEach(function (id) { var e = E(id); if (e) e.setAttribute("d", PAR.lagoD); }); })();
   function mxL(lng) { return (lng + 180) / 360; }
   function myL(lat) { var s = Math.sin(lat * Math.PI / 180); return 0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI); }
@@ -616,7 +630,14 @@ var CORTE = (function () {
       var c = ultimaCam, k = 512 * Math.pow(2, c.zoom), cmx = mxL(c.center[0]), cmy = myL(c.center[1]);
       tf = "translate(" + f2((PAR_MX - cmx) * k + 1920) + "px," + f2((PAR_MY - cmy) * k + 1080) + "px) scale(" + (TR.du * k).toFixed(6) + ")";
     }
-    if (box) box.style.transform = tf;
+    if (box) {
+      box.style.transform = tf;
+      // ESP-18: a borda suave só de T_MAPA em diante, crescendo de 0 a 300 px do PNG em 0,25 s (eo): em 11,600 nada muda no quadro, e em
+      // 11,70 s, quando a borda da esquerda entra no quadro, ela já é uma rampa de ~235 px, não uma reta
+      var pena = t >= T_MAPA ? PENA.px * eo(seg(t, T_MAPA, PENA.sobe)) : 0;
+      if (pena > 0.01) { box.classList.add("troca"); box.style.setProperty("--pena", pena.toFixed(1) + "px"); }
+      else { box.classList.remove("troca"); box.style.removeProperty("--pena"); }
+    }
     var pico = E("pico"); if (pico) pico.style.opacity = ss(seg(t, T2.cruza[0], T2.cruza[1])).toFixed(4);
     var ct = E("contorno"); if (ct) ct.setAttribute("opacity", (1 - eo(seg(t, T2.contornoSai[0], T2.contornoSai[1]))).toFixed(3));
     lay.style.opacity = (1 - seg(t, T2.troca[0], T2.troca[1])).toFixed(4);

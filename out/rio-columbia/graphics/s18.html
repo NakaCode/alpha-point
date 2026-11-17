@@ -57,6 +57,9 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s18 (130,600
     público). Castlegar e Trail (o "exige" da regência) NÃO têm rótulo: não estão no textos-tela (item 81).
   ELEMENTOS (a conta da marca, teto 6): P1 foto + rótulo = 2; P2 foto + legenda = 2; P3 rios, fronteira, pino, pílula, cota = 5; P4 rios,
     fronteira, pino, pílula, miniatura = 5.
+    CONSERTOS-1 (lote MA, 16/11/2026; o Lucas, 13/11/2026: "Partir, sem mudar palavra (Recomendado)"; identidade §4.1): a COTA
+      PARTIDA pelo _chave do textos-tela (459d8224…): a linha igual à chave a 128 px (.ch, var(--fs-rotulo), papel rotulo) e as
+      outras linhas da mesma cota a 84 px (.rs, var(--fs-eixo), papel eixo), com o mesmo peso e a mesma tinta, na mesma pílula.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -108,6 +111,10 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s18 (130,600
   .bloco .f128 { font-size: var(--fs-rotulo); }
   .bloco .f104 { font-size: var(--piso-rotulo); }
   .bloco .f84 { font-size: var(--fs-eixo); font-weight: var(--peso-texto); color: var(--legenda-cor); }
+  /* A COTA PARTIDA (consertos-1; identidade §4.1; o _chave do textos-tela): a chave a 128 px, o resto da cota a 84 px, com o peso
+     e a tinta da cota (o dono, .f84, continua em --legenda-cor) */
+  .bloco .ch { font-size: var(--fs-rotulo); font-weight: var(--peso-rotulo); color: var(--tinta); }
+  .bloco .rs { font-size: var(--fs-eixo); font-weight: var(--peso-rotulo); color: var(--tinta); }
   .bloco .sep { height: 10px; }
   /* a amostra de cor da pílula de dado (o 15 % na cor da área acesa; o 39 % na cor da água do copo): uma barra de 16 px à esquerda */
   .bloco.amostra { padding-left: calc(var(--rotulo-respiro-x) + 28px); }
@@ -160,7 +167,7 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s18 (130,600
   <div class="bloco" id="blocoB" data-qc-papel="rotulo">
     <div class="parte"><div class="f128">Birchbank</div></div>
     <div class="parte" data-qc-papel="eixo"><div class="sep"></div><div class="f84">WATER SURVEY OF CANADA</div></div>
-    <div class="parte"><div class="sep"></div><div class="f104">≈ 12 MI NORTH OF THE BORDER</div></div>
+    <div class="parte"><div class="sep"></div><div class="ch" data-qc-papel="rotulo">≈ 12 MI</div><div class="rs" data-qc-papel="eixo">NORTH OF THE BORDER</div></div>
   </div>
   <div class="bloco" id="blocoD" data-qc-papel="rotulo">
     <div class="parte"><div class="f128">The Dalles, Oregon</div></div>

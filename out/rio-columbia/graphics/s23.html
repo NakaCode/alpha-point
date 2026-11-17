@@ -55,11 +55,12 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s23 (214,433
     paleta da s22). A câmera se aproxima devagar (zoom +0,012/s em torno do centro, até 7,285): o mapa nunca para.
     · 11,667: "Trail, British Columbia" [118], à direita do ponto, acima da fronteira (o lugar da s22); "Vanport" [119], embaixo e à
       esquerda do ponto (sem a miniatura da s22, que é a foto de lá).
-    · 14,433 ('fifty-one'): a pílula "AT LEAST 51 DEAD / THE WHOLE 1948 FLOOD" [116], FIXA na tela (x 1880, y 840), ao lado do meio do
-      trecho da cheia, a leste do rio e longe do ponto de Vanport: o número é da cheia inteira, NUNCA sobre a foto nem sobre a cidade.
-    · 16,267 ('tens'): a pílula "38,500 MADE HOMELESS / RED CROSS FIGURES" [117], logo abaixo (x 1880, y 1206).
-    As duas cotas quebram no "·" do redator, que sai (a regra das pílulas de dado deste vídeo: s19, s46). Ficam paradas na tela enquanto
-    se leem; os rótulos de lugar andam com os pontos (menos de 6 px/s).
+    · 14,433 ('fifty-one'): a pílula "AT LEAST 51 / DEAD / THE WHOLE 1948 FLOOD" [116], FIXA na tela (x 1880, y 840), ao lado do meio
+      do trecho da cheia, a leste do rio e longe do ponto de Vanport: o número é da cheia inteira, NUNCA sobre a foto nem sobre a cidade.
+    · 16,267 ('tens'): a pílula "38,500 MADE HOMELESS / RED CROSS FIGURES" [117], logo abaixo (x 1880, y 1277: 40 px abaixo da 1ª).
+    COTAS PARTIDAS (consertos-1, abaixo): em cada pílula a linha igual ao _chave do redator vai a 128 px (rótulo, Inter 700) e as
+    outras a 84 px (legenda, Inter 500), nas quebras do "\n" do redator (o "·" da quebra saiu). Ficam paradas na tela enquanto se
+    leem; os rótulos de lugar andam com os pontos (menos de 6 px/s).
   O QUE NÃO ENTROU: o ponto e o rótulo de Portland (a regência lista portland-or; o redator não deu rótulo, e um ponto sem nome a 25 px
     do de Vanport é ruído); a miniatura da foto da s22 (o veredito dela é da s22).
 
@@ -90,6 +91,17 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s23 (214,433
     __fotosProntas = RIG.prontas(); window.map; window.__cameraAt. Nada de relógio, sorteio, @keyframes, transition ou SMIL (a espera dos
     tiles e o laço de prévia são os do molde). Tempo LIMPO (faceless: cleanDur = dur). O RIG abaixo é a cópia inteira de
     templates-cena/_rig.js.
+
+  CONSERTOS-1 (16/11/2026, lote FC da tarefa rio-columbia-consertos-1; o que mudou desde o sha1 0d2deaa8 da arte-1): só o item COTAS
+    (o Lucas, 13/11/2026, ~10:4x: "Partir, sem mudar palavra (Recomendado)"; identidade §4.1: o rótulo tem até 3 palavras), nos textos
+    [116] e [117] do textos-tela.json 459d8224 (o redator gravou as quebras e o _chave; nenhuma palavra e nenhum t0 mudou):
+    · [116] "AT LEAST 51\nDEAD\nTHE WHOLE 1948 FLOOD", _chave "AT LEAST 51": a chave a 128 px (var(--fs-rotulo), Inter 700,
+      data-qc-papel="rotulo") e "DEAD / THE WHOLE 1948 FLOOD" a 84 px (var(--fs-eixo), Inter 500, data-qc-papel="eixo"), na mesma pílula;
+    · [117] "38,500 MADE HOMELESS\nRED CROSS FIGURES", _chave "38,500 MADE HOMELESS": a chave a 128 px e "RED CROSS FIGURES" a 84 px;
+    · os textos saíram do código escrito à mão para a forma do textos-tela de hoje (TEXTOS e CHAVES, letra a letra; a função partir());
+    · a 1ª pílula ficou mais alta (397 px; era 342) e mais estreita, e a 2ª, mais baixa (296 px; era 342): a 1ª continua em x 1880,
+      y 840 (a 56 px da curva do rio, como antes) e a 2ª passou de y 1206 para y 1277, 40 px abaixo da 1ª (o vão era de 24 px).
+    Nada mais mudou: os tempos, a pose do mapa (o 1º e o último quadro), o desenho, a foto e os créditos são os da arte-1.
 -->
 <link rel="stylesheet" href="../../../marca/tokens.css">
 <style>:root { --fs-credito: 60px; }</style>
@@ -112,7 +124,10 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s23 (214,433
     background: var(--rotulo); border-radius: var(--cantos); padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
     font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1; letter-spacing: 0;
     color: var(--tinta); font-variant-numeric: var(--numeros); }
-  .rotulo.duas { white-space: pre; line-height: 1.15; }
+  /* COTA PARTIDA (consertos-1; identidade §4.1): na mesma pílula, a linha igual ao _chave a 128 px (rótulo, Inter 700) e as outras a
+     84 px (legenda, Inter 500), na ordem do texto; cada parte é um <span> em bloco com o seu data-qc-papel */
+  .rotulo.partida .chave { display: block; font-size: var(--fs-rotulo); font-weight: var(--peso-rotulo); line-height: 1.15; }
+  .rotulo.partida .resto { display: block; white-space: pre; font-size: var(--fs-eixo); font-weight: var(--peso-texto); line-height: 1.2; }
 
   /* A MESA DO b0 E DO b1 (0–11,5 s): por cima do mapa, opaca; corte seco em 11,5. --fundo · o still M-FOZ · a luz como VÉU · o feltro a
      50 % (tokens.css, "A MESA DO VÍDEO 2 EM DIANTE"); o still acompanha a câmera a 0,6 */
@@ -166,7 +181,7 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s23 (214,433
 </style>
 </head>
 <body>
-<div id="palco" data-qc-sem-heroi="cena mista (desenho, foto impressa e mapa): a cota do desenho, rótulos de lugar e duas pílulas de dado em tamanho de rótulo; o redator não deu número-herói (a perda, sem espetáculo: identidade §4.2, um herói por cena, ou nenhum)">
+<div id="palco" data-qc-sem-heroi="cena mista (desenho, foto impressa e mapa): a cota do desenho, rótulos de lugar e duas pílulas de dado com a chave em tamanho de rótulo e o resto em legenda; o redator não deu número-herói (a perda, sem espetáculo: identidade §4.2, um herói por cena, ou nenhum)">
   <div id="map"></div>
   <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
     <path id="luzCol" fill="none" stroke-width="8" stroke-linejoin="round" opacity="0" style="stroke:var(--agua-luz)"/>
@@ -177,8 +192,8 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s23 (214,433
   </svg>
   <div class="rotulo" id="rotTrail" data-qc-papel="rotulo"></div>
   <div class="rotulo" id="rotVan" data-qc-papel="rotulo"></div>
-  <div class="rotulo duas" id="pilMortos" data-qc-papel="rotulo"></div>
-  <div class="rotulo duas" id="pilDesab" data-qc-papel="rotulo"></div>
+  <div class="rotulo partida" id="pilMortos" data-qc-papel="rotulo"></div>
+  <div class="rotulo partida" id="pilDesab" data-qc-papel="rotulo"></div>
 
   <div id="mesaCena">
     <img id="still" src="../_media/base/mesa/mesa-m-foz.png" alt="" data-qc-reuso="a mesa M-FOZ (s22 e s23; identidade §5, satélite sob a luz; pedido comum da rio-columbia-arte-1, 'A mesa'; Landsat 8 e 9, USGS, domínio público, sem crédito na tela; sha256 b1805be0…)">
@@ -313,16 +328,37 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s23 (214,433
   var CORTE = 11.5;        // o corte seco da mesa para o mapa ('Across' 11,507)
   window.__duracao = DUR;
 
-  // ═══ OS TEXTOS (textos-tela.json c656a145 › _textos_por_cena[cena=s23], letra a letra; as duas cotas do mapa quebram no "·", que sai) ═══
+  // ═══ OS TEXTOS (textos-tela.json › _textos_por_cena[cena=s23], letra a letra: c656a145 na arte-1; as duas cotas do mapa, [116] e
+  //     [117], na forma partida do 459d8224 dos consertos-1: as quebras são os "\n" do redator, e a CHAVE de cada uma é o _chave dele) ═══
   var TEXTOS = {
     cota: "SUNDAY, MAY 30, 1948",
     rotMesa: "Vanport · JUNE 1948",
     rotTrail: "Trail, British Columbia",
     rotVan: "Vanport",
-    pilMortos: "AT LEAST 51 DEAD\nTHE WHOLE 1948 FLOOD",
+    pilMortos: "AT LEAST 51\nDEAD\nTHE WHOLE 1948 FLOOD",
     pilDesab: "38,500 MADE HOMELESS\nRED CROSS FIGURES",
     credUsgs: "Source: U.S. Geological Survey, 1949"
   };
+  var CHAVES = { pilMortos: "AT LEAST 51", pilDesab: "38,500 MADE HOMELESS" };   // o _chave de [116] e de [117]
+  // COTA PARTIDA (consertos-1, 16/11/2026; identidade §4.1; o Lucas, 13/11/2026: "Partir, sem mudar palavra"): cada linha do "\n" do
+  // redator vira um <span> em bloco, na ordem do texto; a linha igual ao _chave leva .chave (128 px, rótulo, Inter 700) e as outras,
+  // .resto (84 px, legenda, Inter 500; duas vizinhas ficam no mesmo nó). O papel de cada parte vai declarado no data-qc-papel dela.
+  function partir(el, txt, chave) {
+    if (!el) return;
+    var linhas = String(txt).split("\n"), grupos = [], i, g, ehChave;
+    for (i = 0; i < linhas.length; i++) {
+      ehChave = linhas[i] === chave; g = grupos[grupos.length - 1];
+      if (g && !ehChave && !g.k) g.t += "\n" + linhas[i]; else grupos.push({ k: ehChave, t: linhas[i] });
+    }
+    el.textContent = "";
+    for (i = 0; i < grupos.length; i++) {
+      var sp = document.createElement("span");
+      sp.className = grupos[i].k ? "chave" : "resto";
+      sp.setAttribute("data-qc-papel", grupos[i].k ? "rotulo" : "eixo");
+      sp.textContent = grupos[i].t;
+      el.appendChild(sp);
+    }
+  }
 
   // ═══ OS TEMPOS (t da cena) ═══
   var T = {
@@ -615,6 +651,7 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s23 (214,433
   }
 
   for (var kt in TEXTOS) { var et = E(kt); if (et) et.textContent = TEXTOS[kt]; }
+  for (var kc in CHAVES) partir(E(kc), TEXTOS[kc], CHAVES[kc]);
 
   var P = window.__REGIE_MAPA;
   if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
@@ -881,9 +918,10 @@ CANAL ALPHA POINT — O RIO COLUMBIA (vídeo 7, rio-columbia), CENA s23 (214,433
     // Vanport: o rótulo embaixo e à esquerda do ponto (a borda direita 40 px antes dele)
     if (rv) caixa(rv, pV.x - 40 - rv.offsetWidth, pV.y + 36, t, T.rotMapa);
     // as duas pílulas de dado: fixas na tela, a leste do rio, ao lado do meio do trecho da cheia (abaixo da curva de y 668–773, que
-    // chega a x 1905 e fica 56 px acima da 1ª pílula; dali para baixo o rio fica a oeste de x 1757)
+    // chega a x 1905 e fica 56 px acima da 1ª pílula; dali para baixo o rio fica a oeste de x 1757). Consertos-1: com as cotas partidas
+    // a 1ª mede 397 px de altura (era 342) e a 2ª, 296; a 2ª fica 40 px abaixo da 1ª (y 1277; era y 1206, com 24 px de vão)
     caixa(pm, 1880, 840, t, T.mortos);
-    caixa(pd, 1880, 1206, t, T.desab);
+    caixa(pd, 1880, Math.round(840 + (pm ? pm.offsetHeight : 397) + 40), t, T.desab);
   }
   function aplicarCreditos(t) {
     var u = E("credUsgs"), m = E("credMapa"), noMapa = t >= CORTE;
