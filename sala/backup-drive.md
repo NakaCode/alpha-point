@@ -36,3 +36,5 @@ a instalação: "Pode instalar (Recomendado)".
   - o vídeo 7 (`rio-columbia`), em 17/11/2026: 70 arquivos e 20,89 GB de `C:\RioColumbia-Premiere`, em "0007 - RioColumbia". O 403 voltou em
     dois arquivos (s09 e s06), e a 2ª tentativa do próprio rclone passou. O `rclone check`, às 15:35: 0 diferenças, 70 arquivos batem. O pacote
     no C: tirou o espaço da exportação do Lucas, que falhou duas vezes no último quadro (`APRENDIZADOS.md`, item 103).
+    As miniaturas A e B (a 1280 e a 2560 de cada; `roteiros/rio-columbia/miniatura/`) foram em "0007 - RioColumbia/Miniaturas", a pedido do Lucas
+    ("mandar as thumbs para o drive seria bom também"), pelo `rclone copy --checksum` direto (4 arquivos): o `rclone check --one-way`, às 20:00, 0 diferenças.
