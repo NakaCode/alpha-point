@@ -1,0 +1,16 @@
+# Os pedidos (14)
+
+- P01: "Faz a cena s12: a página do tratado sobre a mesa, com o grifo na data."
+- P02: "Põe o rótulo na cena e confere a margem sob a câmera."
+- P03: "Que crédito vai na foto da Smithsonian, e o que vai para a descrição?"
+- P04: "Confere se 85 mortes em dez anos está certo antes de ir à tela."
+- P05: "Cria o card de pessoa do governador, com o cargo embaixo do nome."
+- P06: "Que rótulo vai na pílula do número de mortes na s20?"
+- P07: "Faz o mapa da bacia com a câmera recuando até o Pacífico."
+- P08: "Escreve os textos de tela do vídeo 8."
+- P09: "Põe o crédito da foto do Commons na s53: CC BY, como vai?"
+- P10: "A régua da s58 volta sem nome; escreve a cota da ponta."
+- P11: "Escreve o roteiro do vídeo 8."
+- P12: "Monta a cena do gráfico de mortes por animal, com as barras entrando na voz."
+- P13: "Escreve o rótulo e a legenda da s12."
+- P14: "A s42 voltou da revisão com a troca de luz atrasada. Conserta."
