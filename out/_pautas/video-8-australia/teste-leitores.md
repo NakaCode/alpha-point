@@ -94,3 +94,24 @@ Pela regra dele ("Única coisa que os céticos devem decidir é qual dos título
 - **A abertura** se decide no roteiro, com os consertos acima; a 1 casa com a "1 IN 3 MILLION", e a 2 com a "SPIDER DEATHS: ZERO".
 - **E a conta das cobras** (a Sala, Reptile Database, 18/11): 150 das 229 espécies da Austrália são elapídeas, e nenhuma é víbora; no mundo, elapídeas
   e víboras são cerca de 1 em 5 (19,4 %). O "about 15 percent" da abertura não se sustenta com essa conta (`pautas/2026-11-18-video-8-australia.md`).
+
+## A rodada 2 das miniaturas (18/11/2026, ~15:2x)
+
+O Lucas, às 3 miniaturas da rodada 1: **"Faça novas"**. O desenhista (Opus; `pautas/australia-animais/_trabalho/pedido-miniaturas-r2.md`) fez 3 novas
+(`roteiros/australia-animais/miniatura/r2-*`, `RELATO-r2.md`), e os mesmos 4 leitores, retomados com a memória da rodada 1, as abriram em 1280, 320 e
+168, com o título do Lucas embaixo, e disseram com qual dos 3 títulos do Test & Compare cada uma casa (`leitor-<n>-r2.md`).
+
+| Miniatura nova | Dale | Mia | Arjun | Tunde | Média (com o título do Lucas) | O melhor par (média) |
+|---|---|---|---|---|---|---|
+| r2-n1 "NOT THE KILLER" (o Channel Country, "INLAND TAIPAN") | 6 | 7 | 8 | 7 | **7,0** | **com o 3, "…Deadliest Snake…": 8, 8, 9, 8 = 8,25** |
+| r2-n2 "10 YEARS OF VENOM / < 1 MONTH" (as rodovias) | 6 | 6 | 6 | 7,5 | 6,4 | com o 2, "Why So Few People Die…": 8, 8, 7, 8 = 7,75 |
+| r2-n3 "DEATHS, 2016–2025 / SNAKES 35 / BEES & WASPS 42" | 7 | 7 | 6 | 6 | 6,5 | com o 2: 8, 8, 7, 6,5 = 7,4 |
+
+- **Das 6 (as 3 antigas e as 3 novas), a escolhida:** a r2-n3 com o título 2 (Dale, Mia), a r2-n1 com o título 3 (Arjun) e a r2-n2 (Tunde; a r2-n1, se o
+  título for o 3). As antigas, na rodada 1, tinham de 5,75 a 6,5.
+- **O par mais forte do teste** é o título 3 com a "NOT THE KILLER" (8,25).
+- **Com o título do Lucas embaixo, nenhuma das 6 casa bem** (Mia): as miniaturas respondem "poucas mortes", e o título pergunta "por que tantos". Com ele,
+  a mais clicada foi a "NOT THE KILLER" (7,0).
+- **Os consertos que pediram:** na r2-n3, a linha "DEATHS, 2016–2025" some em 168 px, e 35 + 42 não fecha 85 (Tunde); na r2-n2, a malha de rodovias vira
+  ruído em 168, o "< 1 MONTH" sai colado, e falta a palavra "deaths" (Mia); na r2-n1, nada na imagem diz que é uma cobra, e "taipan" não é palavra de
+  todo lugar (Tunde), e com o título 3 ela repete a virada (Mia).
