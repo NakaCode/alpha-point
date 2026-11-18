@@ -1,5 +1,10 @@
 # Vídeo 8 · O Grand Canyon e a Arizona Strip: a terra do outro lado do cânion · Pauta v2 · 18/11/2026
 
+**RESERVA PRONTA (18/11/2026, ~07:5x).** O Lucas trocou o vídeo 8 por uma pauta do Brasil ("Brasil no lugar"; `roteiros/arizona-strip/decisoes-lucas.md`).
+Esta pauta fica guardada como está: a v2 depois do cético, o teste dos leitores (`out/_pautas/video-8-arizona-strip/teste-leitores.md`: a miniatura
+"UTAH WANTED IT" e a abertura da petição de 1905 com 8,0 nos quatro) e o **título por escolher** (a Sala recomendou "Why Arizona Kept the Land Beyond
+the Grand Canyon"). Ao voltar: reler os voláteis, a onda do isolamento da Strip e a colisão dos títulos, e fazer as leituras de antes do roteiro (§11).
+
 **Pauta v2, 18/11/2026: depois do cético da v1, para o teste dos leitores e o sim do Lucas.** O Lucas escolheu esta pauta em 18/11/2026, ~03:3x
 ("Grand Canyon"), com o título de trabalho *Why Arizona Didn't Stop at the Grand Canyon*. Fora a escolha, nada aqui passou por ele.
 

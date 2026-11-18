@@ -1,5 +1,9 @@
 # Vídeo 8: a busca de pautas com potencial real (17/11/2026)
 
+**A TROCA (18/11/2026, ~07:5x): o vídeo 8 passa a ser uma pauta do Brasil** (o Lucas: ""Por que o Brasil se tornou tão grande?" "Por que o Brasil
+é tão rico em biomas" algo assim, sobre o Brasil", e "Brasil no lugar"). A busca está em `pautas/2026-11-18-video-8-brasil.md`. O Grand Canyon
+fica de **reserva pronta** (a pauta v2, o teste dos leitores; o título por escolher; `roteiros/arizona-strip/decisoes-lucas.md`).
+
 **A ESCOLHA (18/11/2026, ~03:3x): o vídeo 8 é o Grand Canyon e a Arizona Strip** (o Lucas, "Grand Canyon", à pergunta final, com Banff
 recomendado; a tabela abaixo). A pauta completa segue em `pautas/2026-11-18-video-8-arizona-strip.md`; Banff, Hector e a Nova Zelândia ficam de reserva.
 
