@@ -98,6 +98,21 @@ https://newspapers.lib.utah.edu/ark:/87278/s60s13j7/21913049
 - `"arizona strip" annex`, de 1920 a 1970: 26 páginas, sem título de artigo. Li o trecho de 5 (1937, 1949, 1952, 1956, 1964): nenhum fala de
   anexação (pastores presos na neve, a estrada do Glen Canyon, uma carta de leitor). **A última tentativa achada é a de 1919.**
 
+## Antes do cético da v1 (a Sala, 18/11/2026, ~05:3x)
+
+O que o redator pediu à Sala, no navegador do app, sem crédito:
+- **A colisão dos títulos 2 e 3** ("Why Utah Wanted Part of the Grand Canyon and Arizona Said No"; "Why Is Arizona on Both Sides of the Grand
+  Canyon?"), e as buscas `utah wanted grand canyon` e `utah annex arizona strip history`: **nada colide**. As buscas trazem mistério ("6 GRAND
+  CANYON Mysteries…", 1,2 mi, há 1 ano), a enchente de agora, geologia ("The Geologic Oddity in Arizona; The Grand Canyon", GeologyHub, 70 mil,
+  há 4 anos; "Something About Arizona's Grand Canyon No Longer Makes Sense", Origin Decoder, 3.766, há 2 meses), viagem, e histórias do estado em
+  "12 minutos" de canais de 14 a 58 views. Nenhum vídeo conta os pedidos de Utah.
+- **O Futbolencia** ("Why the Grand Canyon Cut Off This Part of Arizona", canal "The Fifty States", 9 views, 19/08/2026, 16:28;
+  https://www.youtube.com/watch?v=Ywnhc4X1TGo): a descrição fala do isolamento, dos "three million acres", dos desvios por estados vizinhos e da
+  Navajo Bridge, e não fala de Utah pedindo a Strip. Ela diz: "This script is an original work of fiction. Production utilizes AI-assisted tools
+  for sound design, voice synthesis, and artwork creation". Não tem capítulos. A legenda automática não se leu: o pedido da faixa voltou vazio, e
+  não se insistiu.
+- **A imagem das páginas dos jornais** (o OCR) e **os voláteis** ficam para antes do roteiro e da narração: não mudam o julgamento do cético.
+
 ## A concorrência no YouTube (a Sala, sem crédito, 18/11/2026, ~04h)
 
 Pelo navegador do app (os dados da página de busca e do `/watch`, um pedido por vez), com `hl=en&gl=US`. Os títulos vêm traduzidos pela conta do
