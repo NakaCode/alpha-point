@@ -53,3 +53,10 @@ A busca avançada do Reptile Database (`reptile-database.reptarium.cz/advanced_s
   Austrália (cerca de dois terços) e um número maior no mundo (cerca de um em cinco, contando as duas famílias de presa na frente). No roteiro, a frase
   com a nossa medida e o dono ("the Reptile Database") pode trocar a do biólogo, ou ficar ao lado dela; o "15 %" do biólogo não se sustenta com esta
   conta e precisa de definição, ou sai.
+
+### O vizinho maior do mês, lido (18/11/2026, ~14:1x, navegador do app)
+
+"Something Is Killing Australia's Deadliest Snakes — Their Venom Can't Stop It" (Wilder Australia, `XAt9b6Muk4A`, publicado em 30/10/2026, 20:49
+de duração, 116.404 views em 18/11). Pela descrição, é documentário de vida selvagem sobre a cobra que caça as venenosas ("its blood carries the
+antidote to its prey's venom") e a espécie invasora que a derruba. **É outro ângulo, e não é notícia do momento**: não toca na pergunta do Lucas nem no
+paradoxo das mortes. Só informa o roteiro (a régua do Lucas: "Desde que não seja atual").
