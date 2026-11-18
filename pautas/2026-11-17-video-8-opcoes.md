@@ -16,6 +16,11 @@ viral ou de uma notícia. As opções, a lição e as que caíram estão no fim 
 | 17/11/2026, ~21:5x | "Mais 500 (Recomendado)" (à pergunta "Os 500 créditos do vidIQ desta busca acabam com os 3 céticos que estão rodando agora (410 gastos até aqui; 4 das 5 pautas caíram por título ou ângulo já feito, e foi o vidIQ que provou). Para a 2ª rodada (os céticos das pautas novas e a checagem dos títulos finais), posso usar mais créditos? O saldo é 5.496 e renova para 6.000 em 02/12."; as outras opções eram "Mais 250" e "Parar nos 500") | **o teto do vidIQ desta busca sobe para 1.000 créditos** |
 | 17/11/2026, ~22:2x | "Quero algum tema de "Como X lugar se tornou tão rico (ou pobre)"  que dê pra explicar com geopolítica/geografia" e, logo depois, "Por que a Noruega é tão rica" | **dois formatos novos na busca**: um cético para a Noruega (o ângulo da fossa norueguesa e da linha mediana do Mar do Norte de 1965, com a medida nos dados abertos do Sodir) e um gerador de "rico ou pobre" pela geografia e pela geopolítica (`out/_pautas/video-8/pedido-rico-pobre.md`) |
 | 17/11/2026, ~22:3x | "Ou Por que X lugar é inabitável" | **um terceiro formato**: um gerador de "inabitável" pelo mecanismo de geografia ou de geopolítica, fora dos abandonados gastos (`out/_pautas/video-8/pedido-inabitavel.md`) |
+| 18/11/2026, ~00:1x | à pergunta "Qual pauta vira o vídeo 8? As duas ficaram de pé no cético, com nota 6,0 cada; a outra fica para o vídeo 9." (as opções eram "Grand Canyon (Recomendado)", "Banff" e "Mais uma rodada"), não escolheu e escreveu: "Talvez uma pauta sobre a Nova Zelândia, sobre os ventos fortes" | **a escolha espera**; um cético testa a Nova Zelândia e os ventos (`nz-ventos`: Wellington e o estreito de Cook, a capital de 1865, a medida no vento médio aberto) |
+| 18/11/2026, ~00:2x | "Poderia ser "Por que este é o lugar com os ventos mais fortes do mundo" sem citar o local no título" | o título sem o nome (a fórmula do Geoff) vai ao cético `nz-ventos`, com o cuidado da verdade ("os ventos mais fortes do mundo" pode não ser a Nova Zelândia) e a medida da busca de "windiest city in the world" |
+| 18/11/2026, ~00:4x | à 2ª pergunta "Qual pauta vira o vídeo 8?" (Grand Canyon, Nova Zelândia e o vento, Banff), não escolheu e escreveu: "Eu preciso arriscar em algo mesmo que já exista... Desde que não seja atual" | **a régua da colisão muda**: vídeo antigo não derruba; derruba o tema do momento (a onda das últimas semanas) e o título igual |
+| 18/11/2026, ~00:4x | "Algo chamativo, não necessariamente que vá ganhar em pesquisa" e "mas em curiosidade" | **a curiosidade vale mais que a busca** na régua das pautas |
+| 18/11/2026, ~00:5x | "Encontre novos" (à 3ª pergunta, com Banff recomendado pela curiosidade, o Grand Canyon e a Nova Zelândia "mesmo assim") | **nenhuma das três**; a 3ª rodada pela régua nova (`out/_pautas/video-8/pedido-estrutural-r3.md` → `estrutural-r3.md`; vidIQ até 120) |
 
 ## Como a busca está sendo feita (a Sala)
 
@@ -96,3 +101,43 @@ viral ou de uma notícia. As opções, a lição e as que caíram estão no fim 
 medida da NOAA: 177 das 300 mortes por tsunami do Havaí), em `inabitavel.md`; as Malvinas e a zona de pesca de 1986 (6,0), em `rico-pobre.md`.
 
 **O gasto:** vidIQ 5.906 → 5.226, **680 créditos** (teto 1.000). A semana do Claude, de 87 % (20:3x) a 93 % (00h).
+
+## Opção 3 (a ideia do Lucas, 18/11): a Nova Zelândia e o vento · 6,0
+
+- **O pedido:** "Talvez uma pauta sobre a Nova Zelândia, sobre os ventos fortes" e "Poderia ser "Por que este é o lugar com os ventos mais fortes do mundo" sem
+  citar o local no título" (Lucas, 18/11/2026, ~00:1x e ~00:2x).
+- **A verdade do título:** "os ventos mais fortes do mundo" é falso (a rajada recorde é a da Barrow Island, 1996, pela OMM; o lugar mais ventoso ao nível do
+  mar é o cabo Denison, na Antártida); "the windiest city on Earth" também cai (Punta Arenas, 27,6 km/h, contra Wellington, 25,1); "the world's windiest
+  capital" vale nas 12 capitais medidas e só vai à tela depois de varrer as ~195.
+- **Título (do cético):** "Why New Zealand Put Its Capital in the Path of the Wind" (55). Alternativas: "Why New Zealand's Capital Is Windier Than Chicago" e,
+  sem o nome, como o Lucas quer, "Why This Country Put Its Capital in a Wind Tunnel" (49).
+- **A medida nossa (feita):** o vento médio de 24 aeroportos (NOAA ISD, 2015–2024): Wellington 25,1 km/h, 1,6 vez Chicago; ~300 horas por ano com vento médio de
+  50 km/h ou mais, contra 8 em Chicago; 71 % das horas fortes vêm só do norte e do sul (o funil do estreito de Cook).
+- **O porquê:** o vento de oeste dos "Roaring Forties" (no paralelo de Wellington, a única terra antes da Patagônia é a Tasmânia) e a brecha do estreito na
+  cordilheira; a capital foi ao estreito pela "maintenance of its unity" contra o "dismemberment of the Colony" (Gazette de 1864), e a lista dos comissários tinha
+  a linha "protection from prevailing winds".
+- **A busca:** "windiest city in the world" abaixo de 750/mês; o nome do país no título abre a busca de "new zealand".
+- **A concorrência (o risco):** 6 peças em 17 dias, nenhuma acima de 1.517 views, nenhuma com o vento, a capital e uma medida juntos ("The Windiest Capital on
+  Earth", City Chronicles, 15/11; o Wahine, 12/11; "Why is Wellington New Zealand's capital, not Auckland?", 12/11 e 17/11); parece cópia do estouro do Urban
+  Atlas (118 mil, 15/10). Se a pauta for, a produção começa logo; cai se antes sair um explicador longo com o vento e a capital juntos.
+- **NÃO CONFERIDOS:** a Ilha Sul separatista, a data de 26/07/1865, os 53 mortos do Wahine (NZHistory e Te Ara deram 403). "The only gap" e "no land for
+  thousands of km" caem.
+- **O laudo:** `out/_pautas/video-8/cetico-nz-ventos.md`. A miniatura: em feitura (`out/_pautas/video-8/miniaturas/nz-ventos-1280.jpg`).
+
+## A 3ª rodada, pela régua nova (18/11/2026, ~02h)
+
+- **O gerador** (`out/_pautas/video-8/estrutural-r3.md`, 38 candidatos; vidIQ 125): top Yukon 6,5 (depende do panhandle do Alasca, em alta), Tug Hill 6,0,
+  Machias Seal 6,0, o Atlântico mais salgado 5,5, os Grand Banks 5,5; Hector, a melhor curiosidade. A Sala adotou: curto minúsculo (menos de 2 mil views) é
+  ruído; a onda do momento é viral (100 mil ou mais) ou notícia nos últimos 2 meses, ou 3 ou mais longos com público em 8 semanas.
+- **Machias Seal** (3,0, DERRUBADO): ~46 peças em 8 semanas, o título quase igual 3 vezes em 10 dias; o gatilho foi o mapa postado por Trump em 07/09.
+- **Tug Hill** (4,5, DERRUBADO; reserva para abril a setembro de 2027): o viral "Why Buffalo Gets 8 Feet of Snow and Chicago Doesn't?" (Mapsody, 206 mil,
+  06/11/2026); a neve de lago vira notícia em dezembro; o decreto de 27/08/2026 que chama o lago Ontário de "Lake America" no uso federal. A medida: Hooker é
+  a 2ª estação dos EUA em neve (só o Mount Washington passa) e a 1ª abaixo de 3.000 pés nos 48 estados.
+- **Hector** (5,5, DE PÉ COM AJUSTE): "Why These Australian Islands Make Their Own Thunderstorms". A medida no Himawari (aberto, sem login): 52 de 78 tardes de
+  novembro com tempestade nas ilhas Tiwi, contra 5 de 82 no mar ao lado e 32 de 79 no continente; os topos frios nascem às 15h (mediana). Contra: em 15
+  anos nenhum vídeo de Hector passou de 16,7 mil; a família "3 PM / every day" tem 12 títulos; é física; sozinho dá 9 a 11 min.
+- **O que estoura em canal pequeno agora** (a lição das 3 rodadas): o título de contraste entre lugares conhecidos — "Why Buffalo Gets 8 Feet of Snow and
+  Chicago Doesn't?" (206 mil, canal de 2,6 mil), "…So Why Is Norway Rich and Britain Broke?" (374 mil, canal de 1,2 mil), "Why Did Spain Rule the
+  Philippines for 300 Years but Leave Almost No Spanish Behind?" (1 mi, canal de 5,1 mil). Das de pé, Banff tem esse molde ("…Buy a House… but Can't Live
+  in It"), e a Nova Zelândia também ("…Windier Than Chicago"), mas é do momento (o Urban Atlas, 118 mil, 15/10).
+- **O vidIQ:** 5.906 → 4.976, **930 créditos** do teto de 1.000.

@@ -121,17 +121,22 @@ class Quadro:
         x = open(colormap, encoding="utf-8").read()
         ent = re.findall(r'<ColorMapEntry rgb="(\d+),(\d+),(\d+)"[^>]*value="\[([-\d.]+),([-\d.]+)\)"', x)
         pal = {int(e[0]) * 65536 + int(e[1]) * 256 + int(e[2]): (float(e[3]) + float(e[4])) / 2 for e in ent}
-        rgb = np.asarray(Image.open(caminho).convert("RGB")).astype(np.int32)
-        chave = rgb[..., 0] * 65536 + rgb[..., 1] * 256 + rgb[..., 2]
+        rgba = np.asarray(Image.open(caminho).convert("RGBA")).astype(np.int32)
+        chave = rgba[..., 0] * 65536 + rgba[..., 1] * 256 + rgba[..., 2]
+        # o mar (e o que o ASTER não cobre) vem sem dado: transparente, ou preto (o fundo do WMS com TRANSPARENT=FALSE; o preto não é cor
+        # do colormap). Vira 0 m
+        sem_dado = (rgba[..., 3] == 0) | (chave == 0)
         u, inv = np.unique(chave, return_inverse=True)
         lut = np.array([pal.get(int(k), np.nan) for k in u], np.float32)
         elev = lut[inv].reshape(chave.shape)
-        fora = float(np.isnan(elev).mean())
+        fora = float((np.isnan(elev) & ~sem_dado).mean())
         if fora > 0.001:
             sys.exit("%.2f %% dos pixels da altitude não casam com o colormap: parei" % (100 * fora))
-        elev = np.nan_to_num(elev, nan=float(np.nanmedian(elev)))
+        elev[sem_dado] = 0.0
+        elev = np.clip(np.nan_to_num(elev, nan=float(np.nanmedian(elev))), 0, None)
         out, info = self._reamostrar(elev[..., None].repeat(3, 2), meta, caminho, sha)
         info["pixels_fora_do_colormap"] = fora
+        info["pixels_sem_dado_mar"] = round(float(sem_dado.mean()), 4)
         info["colormap"] = {"arquivo": os.path.relpath(colormap, RAIZ).replace("\\", "/"), "sha256": sha256(colormap), "entradas": len(pal)}
         return out[..., 0], info
 

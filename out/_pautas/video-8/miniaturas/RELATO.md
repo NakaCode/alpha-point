@@ -1,10 +1,10 @@
-# As miniaturas das finalistas do vídeo 8: o relato (17/11/2026)
+# As miniaturas das finalistas do vídeo 8: o relato (17 e 18/11/2026)
 
 Esboços para a escolha do Lucas, no estilo das referências que ele mandou no vídeo 7 (`out/rio-columbia/_tmp/miniatura/referencias/`).
 O pedido está em `out/_pautas/video-8/pedido-miniaturas.md`. A miniatura final de quem for aprovada se refaz depois, com o roteiro.
 
-Já saíram a `arizona-strip` e o `banff`. A terceira virá por mensagem e será um `<slug>-bases.py` e um `<slug>.py` sobre o código comum,
-mais uma linha em `finalistas.json`.
+Saíram as três: a `arizona-strip`, o `banff` e a `nz-ventos`. Cada uma é um `<slug>-bases.py` (rede) e um `<slug>.py` (sem rede) sobre o
+código comum, mais uma linha em `finalistas.json`.
 
 ## O código comum
 
@@ -197,10 +197,115 @@ no disco, da `arizona-strip`.
 - **O "WORKERS ONLY" simplifica a lei** (K8 do cético).
 - **A caixa toca o limite do parque** no canto de cima à direita dela.
 
+## `nz-ventos`: "Why New Zealand Put Its Capital in the Path of the Wind"
+
+(A forma sem nome, que o Lucas gosta: "Why This Country Put Its Capital in a Wind Tunnel".)
+
+**Arquivos:**
+- a miniatura: `nz-ventos-1280.jpg` e `nz-ventos-2560.jpg`;
+- as prévias: `nz-ventos-320.png`, `nz-ventos-168.png` e `nz-ventos-ver.png`;
+- as medidas: `nz-ventos-pontos.json`;
+- o teste dos dois textos: `nz-ventos-textos.png`, com a variante em `_variantes/nz-ventos-here-*`;
+- os scripts: `nz-ventos-bases.py` (rede) e `nz-ventos.py` (sem rede).
+
+O laudo lido: `out/_pautas/video-8/cetico-nz-ventos.md` (§4, o funil nos dados; §6, a miniatura que ele propõe; F12–F14, o "windiest").
+
+### O que se vê
+
+- **O mapa** vai de 41,95° S a 40,55° S e de 173,05° L a 176,36° L, em Mercator 16:9 (108 m de chão por px do palco). Mostra o sul da
+  Ilha Norte em cima à direita (as serras Tararua e Remutaka, o Wairarapa, o cabo Palliser) e o norte da Ilha Sul embaixo à esquerda (os
+  Marlborough Sounds e as serras de Kaikoura), com o estreito de Cook entre as duas. O mar é azul, com a textura da batimetria da Blue
+  Marble, como no vídeo 7.
+- **Wellington em vermelho** é a área urbana das quatro cidades do OSM (Wellington City, Porirua, Lower Hutt e Upper Hutt; as relações
+  4266321, 4266370, 4266371 e 4266375), só na terra: 1.393 km², **3,2 % da imagem**. O porto (Port Nicholson) fica azul dentro do
+  vermelho. Leva o relevo por baixo, contorno branco de 6 px e sombra escura por fora.
+- **O estreito de Cook em ciano**, com a forma de funil: é o mar entre as duas ilhas onde a soma da distância à Ilha Norte e da distância
+  à Ilha Sul fica abaixo de 46 a 56 km. Assim o ciano segue as duas costas, se estreita no gargalo, na frente de Wellington, e se abre nas
+  duas bocas. O porto e o fundo dos Sounds ficam azuis. Ocupa 9,6 % da imagem. O gargalo medido entre as duas maiores massas de terra do
+  quadro dá **21,8 km** (o cético fala em "~20 km").
+- **Duas setas brancas grossas**, o funil do vento:
+  - a do norte desce do mar da Tasmânia, ao largo da costa de Kapiti, e entra no estreito até a borda oeste do vermelho (Makara e
+    Terawhiti);
+  - a do sul sobe do Pacífico pela boca sul do estreito até a costa sul da cidade;
+  - as duas pontas se encontram no gargalo, uma de cada lado da cidade. É o "71 % das horas de vento forte vêm só do norte e do sul" do
+    cético (§4).
+- **"COOK STRAIT"** vai pequeno, em duas linhas, no mar do estreito entre a Ilha Sul e a seta do sul.
+- **A caixa preta**, em cima à esquerda (sobre os Sounds e o mar), traz "WIND" e "TUNNEL" em vermelho, Inter 900 a 205 px (9,8 px de
+  maiúscula no 168), com o sublinhado.
+
+### Por que "WIND TUNNEL" e não "WHY HERE?"
+
+- **Com o título principal, "WHY HERE?" repete o "Why…"**, como o "WHY?" da `arizona-strip`. "WIND TUNNEL" põe em duas palavras o que as
+  setas desenham (o funil) e o paradoxo (a capital dentro dele), e transforma o "Path of the Wind" do título em imagem.
+- **Não é superlativo**: o cético proíbe "WINDIEST" na miniatura (F12–F14), e "WIND TUNNEL" não afirma ranking nenhum.
+- **Se o título for o sem nome ("…in a Wind Tunnel"), a escolha se inverte**: "WIND TUNNEL" repetiria o título, e "WHY HERE?" (a
+  sugestão do cético no §6) passa a ser a melhor. A variante está pronta, e `MINI_ESCOLHA=here` troca. O "WIND GAP" que o cético dá como
+  B não foi pedido e não foi feito.
+- **"WHY HERE?" lê um pouco maior no 168** (10,8 px de maiúscula, contra 9,8). Os dois leem (`nz-ventos-textos.png`).
+
+### As medidas (`nz-ventos-pontos.json`)
+
+- **O vermelho** ocupa 3,2 % da imagem. Nenhuma peça o cobre.
+- **O canto da duração** (320 × 320) está livre, só mar: alfa máximo das peças 0.
+- **As setas** têm 613 e 495 px no palco.
+- **O JPG de 1280** tem 443 KB.
+- **A menor soma das distâncias** (3,4 km, em 174,39 L e 41,12 S) é a das ilhotas The Brothers, do lado norte, a ~3 km do cabo Koamaru,
+  da ilha Arapawa, do lado sul. Não é a largura do estreito; o gargalo é o de 21,8 km.
+
+### As bases e as licenças
+
+Foram 4 pedidos de rede, um por vez e com o User-Agent do canal, entre 00:21 e 00:22 de 18/11/2026 (03:21Z). O colormap da GIBS já estava
+no disco, da `arizona-strip`.
+
+| Camada | Arquivo e origem | Licença e crédito |
+|---|---|---|
+| o relevo | `nz-ventos-aster-relevo.png` (5000 × 3556, sha256 `12d37353…`), de 171,8 a 177,8 L e de 43,0 a 39,8 S: GIBS, `ASTER_GDEM_Greyscale_Shaded_Relief` | aberta (a mesma da `arizona-strip`); o reconhecimento da GIBS na descrição |
+| a altitude e a terra | `nz-ventos-aster-altitude.png` (mesmo recorte e tamanho, sha256 `40fe0396…`): GIBS, `ASTER_GDEM_Color_Index`, decodificado pelo colormap. 66 % dos pixels da base são mar (sem dado, que o WMS devolve em preto) e viram 0 m; dos outros, 100 % casaram com o colormap. A terra é onde o ASTER tem altitude. | a mesma; ASTER GDEM (NASA/METI) |
+| o mar | `nz-ventos-bluemarble.png` (mesmo recorte e tamanho, sha256 `1915e053…`): GIBS, `BlueMarble_ShadedRelief_Bathymetry`, só a textura (a luminância), como no vídeo 7 | domínio público (NASA); o reconhecimento da GIBS |
+| Wellington (vermelho) | `nz-ventos-osm.json` (0,7 MB, sha256 `f74deb0f…`, base OSM de 2026-11-18T03:21:06Z): as relações de nível 6 das quatro cidades, a da região de Wellington (1638991, nível 4) e o nó da cidade (204648) | ODbL. Na descrição: "© OpenStreetMap contributors" e openstreetmap.org/copyright |
+| os lagos | Natural Earth 10m (`ne_10m_lakes`: Wairarapa, Rotoroa, Rotoiti), do cache da máquina, sem pedido | domínio público |
+| o estreito (só na alternativa `MINI_ESTREITO=1`) | Natural Earth 10m (`ne_10m_geography_marine_polys`, "Cook Strait"), do cache | domínio público |
+
+- **Fora:** nada da MapTiler, nada do Census, e nada desenhado à mão nem por IA. O ciano é medido da própria terra do ASTER.
+- **As setas** são a única forma livre: 4 pontos cada (lon/lat no `pontos.json`).
+- **O `mapa.py` mudou com a `nz-ventos`:** o `ler_altitude` passou a tratar o preto (o fundo do WMS, que não é cor do colormap) como mar,
+  a 0 m, como já tratava o transparente. A `arizona-strip` e o `banff` foram rodados de novo depois disso e saíram iguais, com o mesmo
+  sha256 dos JPGs de 2560 (as escolhidas e as variantes).
+
+### As rodadas
+
+1. **Quadro de 1,9° de altura** (de 42,2 a 40,3 S), com o polígono "Cook Strait" do Natural Earth em ciano:
+   - o polígono fecha o estreito com retas no mar aberto e virou um retângulo de cantos moles, artificial;
+   - o rótulo "COOK STRAIT", numa linha, saía cortado pela seta do sul;
+   - a seta do norte nascia debaixo da caixa;
+   - o vermelho tinha 1,8 % da imagem.
+2. **O ciano passou a ser o funil medido** (a soma das distâncias às duas ilhas), primeiro com a borda macia (de 45 a 75 km, uma névoa) e
+   depois mais firme (de 46 a 56 km).
+3. **A versão entregue**:
+   - o quadro fechou para 1,4° de altura, e o vermelho foi a 3,2 %;
+   - a seta do norte desce do alto do quadro, à direita da caixa;
+   - as caudas das duas setas ficam dentro do quadro;
+   - o rótulo vai em duas linhas, fora das setas.
+
+### O que ficou fraco
+
+- **O vermelho é pequeno: 3,2 % da imagem, longe dos 31 % do vídeo 7.** O assunto é o funil, e ele pede as duas ilhas no quadro. No 168,
+  Wellington é uma mancha vermelha de ~35 px de ponta a ponta, que lê. A região de Wellington inteira (`MINI_VERMELHO=regiao`) leria muito mais forte, mas
+  pinta o Wairarapa, que não é a capital. Ficou como opção, não como entrega.
+- **As setas são esquemáticas.** O vento de oeste vira norte no estreito; a seta do norte mostra o vento que chega, não o caminho do ar. O
+  cético pede setas "vindas do oeste, do mar da Tasmânia"; a Sala pediu do norte e do sul (o 71 % do aeroporto), e foi o que entrou.
+- **O ciano lê como "água especial" mais do que como "vento"**: são as setas que dizem vento. Sem as setas, o funil ciano seria só o
+  estreito.
+- **"COOK STRAIT" não lê no 168** (é rótulo de 1280, como os das outras duas).
+- **Muito azul**: o mar ocupa cerca de metade da imagem, e a miniatura fica mais fria que as outras duas. O amarelo das serras segura o
+  contraste com o vermelho.
+- **A caixa cobre os Marlborough Sounds**, o pedaço mais recortado da costa.
+
 ## A folha
 
-`folha.png` traz a `arizona-strip` e o `banff`. A terceira entra ao rodar `python -X utf8 -B -P out/_pautas/video-8/miniaturas/folha.py`,
-depois de acrescentar o slug e o título a `finalistas.json`.
+`folha.png` traz as três, lado a lado: cada uma a 1280 com o título embaixo (branco sobre escuro, no máximo duas linhas) e o selo de
+duração, e, embaixo, a 320 e a 168 como o YouTube as mostra. As folhas dos textos são `arizona-strip-textos.png`, `banff-textos.png` e
+`nz-ventos-textos.png`. Para refazer: `python -X utf8 -B -P out/_pautas/video-8/miniaturas/folha.py` (e `folha.py <slug>`).
 
 ## Para a Sala (git)
 
@@ -208,9 +313,10 @@ O `.gitignore` deixa de fora os PNGs de `out/`: `folha.png`, as prévias e as ba
 - os JPGs;
 - os scripts e os `.json`;
 - os dois zips do Census (0,46 e 3,2 MB);
-- as respostas da Overpass (8,1 MB da `arizona-strip` e 2,2 MB do `banff`).
+- as respostas da Overpass (8,1 MB da `arizona-strip`, 2,2 MB do `banff` e 0,7 MB da `nz-ventos`).
 
 **O `mapa.py` mudou com o `banff`:** o leitor do OSM passou a costurar também as relações `boundary` (os limites de cidade e de parque) e
-a guardar o id de cada elemento. A `arizona-strip` foi rodada de novo depois disso e saiu igual, com o mesmo sha256 do JPG de 2560.
+a guardar o id de cada elemento. A `arizona-strip` foi rodada de novo depois disso e saiu igual, com o mesmo sha256 do JPG de 2560. A
+mudança da `nz-ventos` (o preto como mar) está na seção dela.
 
-A pasta de rascunho desta tarefa foi apagada.
+A pasta de rascunho desta tarefa (`_tmp`) foi apagada.
