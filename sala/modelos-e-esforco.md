@@ -77,6 +77,14 @@ pontos do limite semanal até 08/10, 17h; o Fable pesa ~4,6× o Opus pelo mesmo 
     turno na memória do vídeo e se limpa (`clear_session` com `"self"`). A passagem diz os ids abertos, o que cada setor espera, o
     próximo passo e as decisões ainda não registradas.
   - A sessão continua a mesma, e os setores seguem conferindo o `from`. Sem a passagem gravada, a Sala não se limpa.
+  - **Sem subagente da Sala rodando** (18/11/2026; `APRENDIZADOS.md`, item 106). O subagente que a Sala lança vive na conversa dela:
+    em 18/11, três pararam sem gravar e sem avisar entre a limpeza (~17:4x) e a retomada (19:54), e a retomada só viu o vazio 2 h
+    depois (não se mediu se foi a limpeza ou o app fechado). Conte que ele não sobrevive. Antes de se limpar, a Sala espera a
+    notificação de cada um; se não puder esperar, a passagem o dá como "a relançar", com o pedido em disco (o pedido só na conversa
+    se perde com ela). Os setores são outras conversas e seguem.
+  - **Na retomada**, todo agente que a passagem dá como rodando se confere antes de se esperar por ele: a saída no disco, o processo
+    (no PowerShell, `Get-CimInstance Win32_Process`, pela linha de comando) e o aviso de `out/_maquina/` que ele marcou. Sem saída e
+    sem processo, ele parou: a Sala libera o aviso dele (`setores/REGIMENTO.md`, "Aviso esquecido") e o relança.
   - Os agentes e os setores rodavam em "alto" (`high`) antes de 24/10. A Sala, o Lucas pôs em "máx".
 - **O ultracode, de 14/10 a 24/10/2026** (Lucas, 14/10/2026, 14:1x: "Manter ligado", às opções de desligá-lo com cético só no que
   importa ou de vez). Ele é a chave do Claude Code que faz a Sala montar equipe de agentes, com conferência, em quase toda

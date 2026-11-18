@@ -1912,3 +1912,23 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a outros canais:** o antes e depois, o destaque na palavra, a peça que volta com o nome, o peso no
   sujeito da frase e a foto grande o bastante valem para qualquer canal sem rosto, de geografia ou de culinária.
 - Skill: `gerar-mapa-animado-maptiler` (L1–L7); `editar-cena-html` (L1); `escrever-textos-de-tela` (L1).
+
+### 106. O subagente da Sala não sobrevive à limpeza da conversa (ou ao app fechado), e o aviso da máquina dele fica preso
+
+- **O que aconteceu** (18/11/2026, vídeo 8): a Sala se limpou às ~17:4x (`sala/modelos-e-esforco.md`, "A Sala recomeça a cada etapa")
+  com três subagentes em segundo plano: o `verificador-de-fatos` e o ouvinte do roteiro r1, e o cético do portão de movimento. A
+  passagem os deu como "RODANDO", com os ids. Às 19:54 (o Lucas: "contiue"), nada deles estava no disco
+  (`roteiros/australia-animais/qc-roteiro/` não existia; nenhum `out/_tmp/portao-movimento/cetico.md`), nenhum processo do portão rodava, e o
+  `out/_maquina/chrome.json` seguia "ocupado" pelo cético desde 17:24. O pedido do cético só existia na conversa.
+- **A causa:** o subagente vive na conversa que o lançou. Não se mediu se foi a limpeza ou o app fechado (as ferramentas MCP da sessão
+  nasceram de novo às 19:53); nos dois casos ele para sem gravar e sem avisar, e o aviso de máquina que ele marcou fica preso.
+- **O que resolveu:** a Sala conferiu o disco e os processos, liberou o aviso (`setores/REGIMENTO.md`, "Aviso esquecido"), gravou o
+  pedido do cético em disco (`out/_skills/pedido-cetico-portao-movimento.md`) e relançou os três às 19:58. O custo: ~2 h de relógio na
+  véspera da virada da cota.
+- **Como evitar:** a Sala só se limpa sem subagente dela rodando, ou com cada um dado como "a relançar" e o pedido em disco; na
+  retomada, todo agente da passagem se confere pela saída, pelo processo e pelo aviso de máquina antes de se esperar por ele
+  (`sala/modelos-e-esforco.md`, "A Sala recomeça a cada etapa").
+- **Por que serve a outros canais:** todo canal cuja conversa central se limpa para poupar contexto, com agentes em segundo plano, perde
+  esses agentes do mesmo jeito, e o aviso de ocupado que eles marcaram trava o próximo que precisar da máquina.
+- Skill: nenhuma ainda. A casa é a `retomar-apos-troca-de-conta` (catálogo §2.5, nº 57, onda 3), quando ela nascer, com o ok do Lucas
+  para a onda dela.
