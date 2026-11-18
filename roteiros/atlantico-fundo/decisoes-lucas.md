@@ -293,3 +293,4 @@ Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
 ## A reembalagem de 18/11/2026 (Lucas, no chat da Sala)
 - **O pedido** (~13:5x): "Dito isso, vamos também preparar a reembalagem dos vídeos considerando também essas novas regras" e "Para os 4", com o
   print do Studio (aqui: *The Deepest Point in the Atlantic Ocean*, 9 views). As regras, o plano e o andamento: `out/_reembalagem/2026-11-18/decisoes-lucas.md`.
+- **A decisão** (~15:0x), depois do teste dos leitores: as 3 variações recomendadas vão ao Test & Compare (`out/_reembalagem/2026-11-18/para-o-studio.md`, com os títulos, as miniaturas e a linha da descrição).

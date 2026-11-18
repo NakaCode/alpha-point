@@ -38,3 +38,4 @@ resultado de cada teste (quem ganhou, ou "Not enough information") só se vê no
 | Data | A fala | O que fez |
 |---|---|---|
 | 18/11/2026, ~13:5x | "Dito isso, vamos também preparar a reembalagem dos vídeos considerando também essas novas regras" e "Para os 4" | a reembalagem do LA, do Panamá, do Peru e do Atlântico, com as regras acima |
+| 18/11/2026, ~15:0x | Às 4 perguntas da Sala, depois do teste dos leitores (`teste-leitores.md`) e das grades das miniaturas no chat: LA, **"Os 3 pares (Recomendado)"**; Panamá, **"Os 3 títulos (Recomendado)"**; Peru, **"Os 3 pares (Recomendado)"**; Atlântico, **"Os 3 pares (Recomendado)"** | as variações de cada Test & Compare, a descrição de cada vídeo e as miniaturas para subir estão em `para-o-studio.md` (a troca no Studio é do Lucas) |
