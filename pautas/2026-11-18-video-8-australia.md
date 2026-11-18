@@ -21,3 +21,7 @@ derruba: só pede que o título e o ângulo sejam nossos (a regra de 18/11: "o n
 1. A base de fatos: dois leitores Sonnet (`pautas/australia-animais/_trabalho/pedido-fatos.md` → `fatos-a.md`, o porquê; `fatos-b.md`, o perigo
    real em números e a medida nossa).
 2. A pauta v1 (um Opus), o cético da v1, as leituras da Sala, a v2, as miniaturas, o teste dos leitores e o sim do Lucas.
+
+## As leituras da Sala (18/11/2026, ~10h)
+
+- **O NCIS** ("Animal-related deaths in Australia", FS24-09, 2001–2021: os cavalos 222 de 713, os cangurus 53): o `ncis.org.au` recusou o leitor B (403), mas abre no navegador do app sem verificação de robô. A `node/296` que o leitor apontou é outra ficha (drogas, FS20-03); a ficha dos animais não apareceu na busca do site nem no Google. **Pendente**: achar a ficha (a lista de publicações do NCIS) antes de o número dos cavalos ir à voz. Até lá, o número é de segunda mão.
