@@ -60,3 +60,17 @@ A busca avançada do Reptile Database (`reptile-database.reptarium.cz/advanced_s
 de duração, 116.404 views em 18/11). Pela descrição, é documentário de vida selvagem sobre a cobra que caça as venenosas ("its blood carries the
 antidote to its prey's venom") e a espécie invasora que a derruba. **É outro ângulo, e não é notícia do momento**: não toca na pergunta do Lucas nem no
 paradoxo das mortes. Só informa o roteiro (a régua do Lucas: "Desde que não seja atual").
+
+### Os consertos dos leitores, já com fonte (18/11/2026, ~14:2x)
+
+- **Os 8 mortos que faltam na conta** (35 + 42 = 77 de 85; Mia, Arjun e Tunde): já estão na base, `pautas/australia-animais/_trabalho/fatos-b.md`
+  (a tabela do ABS, linhas 105 a 111): X25, outros artrópodes (carrapatos, formigas), **6**; X26, animais marinhos (água-viva etc.), **2**. 35 + 42 +
+  6 + 2 = 85. O roteiro diz quem são os outros oito.
+- **A régua de fora** (Dale e Tunde), lida na ficha da OMS "Snakebite envenoming" (`who.int/news-room/fact-sheets/detail/snakebite-envenoming`,
+  datada de 17 September 2026, lida hoje no navegador do app):
+  - "Around 81 410 to 137 880 people die each year because of snake bites", "Most of these occur in Africa, Asia and Latin America";
+  - "as many as 1.2 million Indians died from snakebite envenoming between 2000–2019 (average of 58 000/year)" (a ficha cita a estimativa revista);
+  - "Most deaths and serious consequences of snake bites are entirely preventable by making safe and effective antivenoms more widely available and
+    accessible".
+  - **A medida nossa, a fazer no roteiro:** a Índia, ~58.000 por ano, contra a Austrália, 3,5 por ano (35 em 2016–2025, ABS). Por habitante, a conta
+    pede a população dos dois no mesmo período (a fazer por script, com a fonte da população).
