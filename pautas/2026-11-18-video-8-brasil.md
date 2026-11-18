@@ -30,3 +30,10 @@ real"; "Um adendo no Big sur é que as views vieram de pesquisa"; "Eu preciso ar
 2. **A Sala** confere no navegador do app, sem crédito, a onda de agora dos finalistas.
 3. **Um cético por finalista** (o pedido `out/_pautas/video-8/pedido-cetico.md`, com a régua nova), com vidIQ no teto que o Lucas der.
 4. **As miniaturas** dos que ficarem de pé, no estilo das referências, e a pergunta ao Lucas.
+
+## Os céticos (18/11/2026, ~09h)
+
+- **As duas florestas: DE PÉ COM AJUSTE, 6,0** (`out/_pautas/video-8-brasil/cetico-duas-florestas.md`). O título: "Why the Amazon Doesn't Touch Brazil's Other Rainforest" (54); as variantes "Why Brazil Has Two Rainforests That Don't Touch" e "The 350-Mile Gap Between Brazil's Two Rainforests". O "never" só vale no mapa de biomas do IBGE (2025: o vão de 352,8 mi entre Canarana, MT, e o sul de Goiás); na lei da Mata Atlântica, os encraves do Nordeste ficam a 85–135 mi da Amazônia; as matas de galeria cruzam o Cerrado e as duas florestas já foram uma (a virada do ato 3). Sem onda e sem colisão; "atlantic forest" ≈ 14,8 mil buscas/mês (concorrência 52). O Geoff não mostra o vão. vidIQ: 45 créditos (5 acima do teto dele).
+- **O Acre: DERRUBADO, 3,0** (`cetico-acre-ferrovia.md`). Onda em português (curtos de 622 mil em 27/10 e 431 mil em 02/10; longos com público; cópias em inglês desde 01/10); a ferrovia não foi pagamento (Rio Branco); o Acre é 2,2 % do Brasil. Reserva para fev/2027: "Brazil Paid More for This Jungle Than America Paid for Alaska". vidIQ: 40.
+- **O plano de 1941:** derrubado pela Sala (a onda em português e a notícia).
+- **Rodando:** as duas miniaturas das florestas ("THE GAP" e "350 MILES").
