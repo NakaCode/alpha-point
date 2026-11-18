@@ -81,6 +81,17 @@ https://newspapers.lib.utah.edu/ark:/87278/s60s13j7/21913049
   Hoover Dam), e a estrada de St. George a Kingman pelo Arizona também não. É o gancho do ato 3: o caminho mais rápido de Colorado City a Kingman
   ainda passa por Utah e Nevada.
 
+### O que o leitor A deixou para a Sala (lido depois de ele voltar)
+- **Salt Lake Tribune, 23/01/1910, p. 45, "About the Arizona Strip; Should Belong to Utah"**, de J. F. Gibbs:
+  https://newspapers.lib.utah.edu/ark:/87278/s66d746h/14213145. O título, a data e o autor conferem. O OCR é quase ilegível: dá para ver que o
+  texto descreve o cânion visto da borda norte e conta a ideia de "E. D. [Woolley] of Kanab" de uma trilha da borda norte e de um cabo para
+  cruzar o rio. Nenhum trecho dele vai à voz sem a leitura da imagem. Na mesma semana: "Should Belong to Utah" (Salt Lake Herald-Republican,
+  29/01/1910, p. 6) e "This Strip Should Belong to Utah" (Eastern Utah Advocate, 03/02/1910, p. 3).
+- **Lund e Woolley** (o item 2 do leitor A): a missão deles é de **1897** (o artigo de 13/03/1897, acima), e não a de 1903. A comissão de
+  04/02/1903, que o leitor A leu no Millennial Star, foi de D. H. Morris e Joel H. Johnson. As duas existiram.
+- **Littlefield pedindo para ir a Nevada, em 1938** (o item 6): a busca `littlefield nevada annex` (1936–1940) só achou o sobrenome em
+  escrituras. Fica NÃO CONFERIDO, e fora da pauta.
+
 ### Antes de 1890 e depois de 1920
 - `annex arizona colorado memorial`, de 1860 a 1889: 3 resultados, nenhum sobre a Strip (1872, 1887, 1889). O memorial de 1865 fica com o leitor A
   (o Serial Set).
@@ -106,6 +117,11 @@ de gente e paisagem da Strip); a Wonderhussy Adventures ("Adventures in the Ariz
   Phantom Ranch com 51.300 pés³/s em 22/10; a praia do Bright Angel fechada; "more rain is falling on northern Arizona tonight");
 - do mesmo Simon Uncovered, "I Have NEVER Seen Flooding Like This at the Grand Canyon" (32.844, há 2 dias) e "Nobody Expected the Grand Canyon to
   Change This Fast.." (36.105, há 16 h).
+
+**O leitor B conferiu os números desses vídeos no USGS (`fatos-b.md`):** os "51.300 pés³/s em Phantom Ranch" **não conferem** (o máximo da série
+é 30.100, estimado e provisório); o Little Colorado (18.000) foi o mais alto desde 1993, e o Moenkopi (21.400), o maior do arquivo da estação; a
+"cicatriz virando enxurrada" em outubro não aparece (o Bright Angel Creek chegou a 503). O enxame exagera. Nada desses vídeos vai à pauta sem a
+fonte do leitor B.
 
 Pela régua do Lucas ("Desde que não seja atual"), a enchente é o tema do momento **do lugar**, não do ângulo: nenhum desses vídeos fala da divisa
 nem da Strip. Não derruba a pauta, mas pesa em três coisas:
