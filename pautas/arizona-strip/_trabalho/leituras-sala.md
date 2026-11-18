@@ -98,6 +98,53 @@ https://newspapers.lib.utah.edu/ark:/87278/s60s13j7/21913049
 - `"arizona strip" annex`, de 1920 a 1970: 26 páginas, sem título de artigo. Li o trecho de 5 (1937, 1949, 1952, 1956, 1964): nenhum fala de
   anexação (pastores presos na neve, a estrada do Glen Canyon, uma carta de leitor). **A última tentativa achada é a de 1919.**
 
+## Depois do cético da v1 (a Sala, 18/11/2026, ~06h)
+
+**1919, lido na imagem da página** (o K2 do cético): o PDF do artigo, no visualizador do próprio Utah Digital Newspapers
+(https://newspapers.lib.utah.edu/ark:/87278/s60s13j7/21913049). O texto da imagem, sem as correções do OCR:
+- "Overwhelming opposition to the annexation of the so called "Arizona strip" to Utah was found in Arizona by the commission authorized by the
+  legislature and appointed by Governor Bamberger to investigate the matter."
+- "It is signed by William W. Seegmiller, State Engineer George F. McGonagle and Mr. Ivins. Mr. McGonagle and Mr. Ivins made the trip to Phoenix,
+  but Mr Seegmiller was unable to accompany them on account of an attack of influenza."
+- **"Commissioner Ivins addressed the Arizona senate on the matter of proper administration of the Arizona strip on the Utah side of the canyon,
+  and as a result was assured that a road connecting St George, Utah with Kingman, Ariz., together with a bridge across the Colorado river near the
+  mouth of the Grand wash, would be built."**
+- "Senator Campbell of Coconino county also told the commissioners from Utah that he believed the federal government could be interested in a
+  project to build a bridge across the river at Lee's ferry."
+- "The commission was also assured that Arizona would repair and properly maintain the road from Kanab to Bright Angel point on the Utah side".
+
+**O que isso decide:** quem prometeu fica na voz passiva do próprio jornal ("was assured", depois de falar ao Senado do Arizona). A frase segura:
+Utah's commissioner spoke to the Arizona Senate and came home "assured" that a road from St. George to Kingman, and a bridge near the mouth of the
+Grand Wash, "would be built". O jornal é de Utah e conta o relatório da comissão de Utah: não é a palavra do Arizona. A ponte de Lee's Ferry foi
+uma crença de um senador ("he believed"), não promessa, e a pauta não liga a Navajo Bridge de 1929 a ela.
+
+**Os vídeos da onda** (o K3 do cético), pela descrição no `/watch`: nenhum conta os pedidos de Utah nem 1919.
+- "Why There's No Bridge Across the Grand Canyon" (Mapnitude, 18 views, 27/10/2026, 8:07; `_izH-2KWvp4`): o cânion, Lees Ferry e a Navajo Bridge,
+  as pontes de pedestre de Phantom Ranch, a briga das barragens dos anos 1960, as terras navajo, hualapai e havasupai, "the isolated Arizona Strip"
+  (capítulo "The Land the Canyon Cut Off", 5:06), o incêndio de 2025 e o bondinho Escalade. A descrição abre como o gancho da pauta (10 milhas,
+  mais de 200 de carro).
+- "9 Weirdest Arizona Towns in the Middle of Nowhere" (Splot, 491, 14/11, 22:27; `MRcYZh_eFmc`): a lista; "a community nearly cut off from its own
+  state".
+- "8 Weirdest and Most Isolated Towns in Arizona…" (Forgotten USA, 161, 12/11, 25:26; `6lPkM_mSIx8`): "the closed compounds of Colorado City in
+  the Arizona Strip".
+- "Arizona's isolated Strip, next to Utah #Shorts" (Atlas Flick, 222, 12/11, 42 s; `q90lEJTiupQ`): "many residents rely on those states for
+  services".
+- O quinto (Forgotten USA, 13/11, 56 views) não se abriu: é a mesma lista do mesmo canal.
+
+**As rotas num mapa** (o K5 do cético e o K7 do cético da escolha): o Google Maps no navegador do app, em 18/11/2026, ~06h de Brasília, "Leave now",
+de carro, em inglês. Confirma que o caminho mais rápido sai do Arizona; as milhas da pauta continuam as dos marcos oficiais (HPMS, leitor B), e as do
+Google ficam como conferência.
+
+| De → até | A rota mais rápida | Milhas | Tempo | As outras sugeridas |
+|---|---|---|---|---|
+| Colorado City → Kingman | "via I-15 S and US-93 S" (Utah, Nevada) | 268 | 4 h 15 | via I-15, I-11 e US-93: 274 mi, 4 h 21; via I-15: 290 mi, 4 h 37 |
+| Colorado City → Navajo Bridge → Kingman (só Arizona) | "via AZ-389 E and US-89A S" | 374 | 6 h 05 | — |
+| Moccasin → Kingman | "via I-15 S" (Utah, Nevada) | 290 | 4 h 35 | via I-15 e US-93: 296 mi, 4 h 41; via I-15 e US-95: 311 mi, 4 h 58 |
+| Beaver Dam → Kingman | "via I-15 S and US-93 S" (Nevada) | 199 | 3 h 06 | via I-15, I-11 e US-93: 204 mi, 3 h 10; via I-15: 220 mi, 3 h 34 |
+
+A frase da pauta fica verdadeira com "fastest": de Colorado City, ~268 mi e ~4 h 15 por Utah e Nevada, contra ~374 mi e ~6 h só pelo Arizona (mais
+de 100 milhas e quase 2 horas a mais). O tempo muda com o trânsito e a hora: na voz, "about four hours" contra "about six".
+
 ## Antes do cético da v1 (a Sala, 18/11/2026, ~05:3x)
 
 O que o redator pediu à Sala, no navegador do app, sem crédito:
