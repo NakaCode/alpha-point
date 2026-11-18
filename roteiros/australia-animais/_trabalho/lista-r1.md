@@ -60,6 +60,11 @@ As observações sem troca obrigatória:
   a contagem os põe no código de animal marinho (W56: 32 na década, "sharks among them"; `fatos-b.md` §1.2). Uma frase com o 32 cumpre a
   promessa ("Animals in the sea, sharks among them, killed 32."), ou a promessa sai. O Taronga não entra: os dados dele pedem permissão para
   uso comercial.
+  - **CORRIGIDO PELA SALA DEPOIS DO R2 (o 32 sai):** a pauta v2 aprovada (§4.6, a linha do tubarão, e K9) e o portão (`[tubarao]`, no porquê)
+    põem o tubarão na voz só como "animals in the sea, sharks among them", **sem o 32 do W56**: o código junta o tubarão com todo bicho do mar
+    sem veneno, e quem ouve "32" guarda "tubarões: 32". A lista errou ao oferecer o 32, e o escritor o seguiu e avisou. A Sala tirou o 32 e
+    pagou a promessa com o que o registro faz: "The sharks don't get a number of their own: the records count them with everything else in the
+    sea." (o r2 do escritor está em `_trabalho/roteiro-r2.antes-sala.md`).
 - **B7 (A7): ACEITO.** Uma frase no P55, antes de "And none of it runs by itself.", que soma o que o texto já disse sobre o "tão poucas
   mortes", sem número novo e sem fato novo: a taipan mora onde quase ninguém mora; poucas picadas põem veneno de fato; o soro ajuda, em parte.
   O verificador confere a forma.
@@ -90,7 +95,8 @@ As observações sem troca obrigatória:
 - **O gancho:** os três títulos pagos como estão, a pergunta única no fim do gancho, a assinatura. Só o B8 e o B10 (a) mexem nele.
 - **A inscrição:** no mesmo lugar (entre o ato 3 e o ato 4, um parágrafo só dela), entre ~45 % e ~50 %.
 - **Nenhum fato novo.** Os números novos na voz são só os que a lista pede: o 23 da colisão, no lugar do 20 (A1), os anos do estudo (B3), o
-  2005 da água-viva (B4) e, se entrar, o 32 dos tubarões (B6). O portão em exit 0, sem problemas, no fim.
+  2005 da água-viva (B4). (O 32 dos tubarões, que esta linha também oferecia, contrariava a pauta: ver o B6.) O portão em exit 0, sem
+  problemas, no fim.
 
 ## D · Para a tela (vai ao `redator-de-tela` e ao `regente-de-imagem`)
 
@@ -101,4 +107,5 @@ As observações sem troca obrigatória:
 - **Tudo de "O que vai à tela" do `qc-roteiro/fatos-r1.laudo.md`** (o crédito e a forma de cada número), com a colisão já em **ABOUT 23 MILLION
   YEARS AGO** (Hall 2013) e as elapídeas em **30–25 MILLION YEARS AGO** (Lee et al. 2016, "molecular estimate"). Nunca "1,020" nem "2,133×"
   (precisão falsa; `medida-censo.md` §8); a citação de Arbuckle na tela só literal, com o sujeito da fonte.
-- Os 32 de animal marinho, se o B6 os puser na voz: "ABS, Causes of Death (W56, contact with marine animal), 2016–2025"; o Taronga não entra.
+- O tubarão sem número próprio, na voz e na tela: o 32 do W56, se for à tela com os 154, vai como animal marinho ("MARINE ANIMALS 32", ABS),
+  nunca como "SHARKS"; nada do Taronga nem da AP (a pauta, K9).
