@@ -74,3 +74,12 @@ paradoxo das mortes. Só informa o roteiro (a régua do Lucas: "Desde que não s
     accessible".
   - **A medida nossa, a fazer no roteiro:** a Índia, ~58.000 por ano, contra a Austrália, 3,5 por ano (35 em 2016–2025, ABS). Por habitante, a conta
     pede a população dos dois no mesmo período (a fazer por script, com a fonte da população).
+- **Onde vive a cobra-marrom** (a leitura da v2, K3), no navegador do app, 18/11/2026, ~14:3x. O Australian Museum
+  (`australian.museum/learn/animals/reptiles/eastern-brown-snake/`) respondeu **403 Forbidden** também no navegador do app: a Sala parou ali, sem
+  contornar. A alternativa da v2, o **Queensland Museum** (museu do Estado de Queensland), "Eastern Brown Snake"
+  (`collections.qm.qld.gov.au/topics/136/eastern-brown-snake`):
+  - "Distribution: Found over most of Queensland, New South Wales and Victoria.";
+  - "Habitat: Found in all habitats except rainforest. It has adapted well to farmed, grazed and semi-urban lands.";
+  - "Danger: This species is dangerously venomous and has been responsible for many human deaths."
+  - É a frase que a v2 pedia para o endereço da marrom (onde mora a gente: o leste, a lavoura, o pasto e a beira da cidade). A taipan já tem a dela na
+    base (a ficha do governo da Austrália do Sul, "usually quite shy"). Falta a medida do Censo (quanta gente mora em cada área), a fazer por script.
