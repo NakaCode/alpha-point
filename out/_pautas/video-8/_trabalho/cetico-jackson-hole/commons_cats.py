@@ -1,0 +1,11 @@
+# Conta arquivos em categorias do Wikimedia Commons (API do MediaWiki, um pedido, User-Agent do canal).
+import json, urllib.request, urllib.parse
+UA = {"User-Agent": "AlphaPoint/1.0 (https://www.youtube.com/@AlphaPoint; contato.naka@hotmail.com) pesquisa-de-pauta"}
+cats = ["Category:Jackson Hole", "Category:Grand Teton National Park", "Category:National Elk Refuge",
+        "Category:Snake River Land Company", "Category:Teton Pass", "Category:Jackson, Wyoming", "Category:Jackson Hole National Monument"]
+u = "https://commons.wikimedia.org/w/api.php?" + urllib.parse.urlencode(
+    {"action": "query", "prop": "categoryinfo", "titles": "|".join(cats), "format": "json"})
+with urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=60) as r:
+    d = json.load(r)
+for p in d["query"]["pages"].values():
+    print(p["title"], p.get("categoryinfo", "nao existe"))
