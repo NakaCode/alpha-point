@@ -1,4 +1,4 @@
-# p_contas.py: as contas da pauta v1 do vídeo 8 (`arizona-strip`), sem rede.
+# p_contas.py: as contas da pauta do vídeo 8 (`arizona-strip`), v1 e v2, sem rede.
 #
 # Uso (da raiz do canal):
 #   python -X utf8 -B pautas/arizona-strip/_trabalho/scripts/p_contas.py --pauta=pautas/2026-11-18-video-8-arizona-strip.md
@@ -15,12 +15,14 @@ from datetime import date
 PPM = 179.0  # palavras por minuto da voz de hoje (memória ritmo-duracao)
 
 TITULOS = [
+    # v2 (18/11/2026, depois do cético da v1): os três do teste
     "Why Arizona Didn't Stop at the Grand Canyon",
+    "Why Utah Spent Decades Asking for Part of the Grand Canyon",
+    "Why Arizona Kept the Land Beyond the Grand Canyon",
+    # a alternativa do K6 para o 2, e os que caíram
+    "Why Utah Kept Asking for Part of the Grand Canyon",
     "Why Utah Wanted Part of the Grand Canyon and Arizona Said No",
     "Why Is Arizona on Both Sides of the Grand Canyon?",
-    "Why Utah Spent Decades Asking for Part of the Grand Canyon",
-    "Why Isn't the North Side of the Grand Canyon in Utah?",
-    "Why Arizona Ends on the Wrong Side of the Grand Canyon",
 ]
 
 NUM_PALAVRAS = (
@@ -30,14 +32,14 @@ NUM_PALAVRAS = (
 RE_NUM = re.compile(r"\d[\d,\.]*(?:th|st|nd|rd)?|\b(?:" + "|".join(NUM_PALAVRAS) + r")\b", re.I)
 
 # O orçamento dos atos (palavras), na ordem do vídeo. O gancho entra pela contagem do bloco A.
-ATOS = [
-    ("ato 1 · a muralha", 430),
-    ("ato 2 · as retas de Washington", 480),
-    ("ato 3 · o lado de Utah", 330),
+ATOS = [  # v2: o orçamento depois do cético da v1 (K1, K2, K4, K5, K8, K10)
+    ("ato 1 · a muralha", 450),
+    ("ato 2 · as retas de Washington", 540),
+    ("ato 3 · o lado de Utah", 340),
     ("inscrição falada", 16),
-    ("ato 4 · Utah pede, o Arizona diz não", 620),
-    ("ato 5 · o hoje", 540),
-    ("fecho", 160),
+    ("ato 4 · Utah pede, o Arizona diz não", 660),
+    ("ato 5 · o hoje", 430),
+    ("fecho", 170),
 ]
 
 
@@ -114,6 +116,20 @@ def medidas():
     print(f"  1897 → 1919: {1919 - 1897} anos; 1865 → 1919: {1919 - 1865}; 1850 → 1869 (Powell): {1869 - 1850};"
           f" 1850 → 1857 (Ives): {1857 - 1850}; 1863 (Arizona) → 1866 (Nevada): {1866 - 1863}")
     print(f"  1919 → hoje (2026): {2026 - 1919} anos; 1905 → hoje: {2026 - 1905}")
+    # v2: o Google Maps da Sala (18/11/2026, ~06h) contra os marcos do HPMS
+    g_rapida, g_so_az = 268, 374
+    print(f"  Google, Colorado City → Kingman: {g_rapida} mi ({(g_rapida / tot - 1) * 100:+.1f} % sobre o HPMS)"
+          f" em 4 h 15; só pelo Arizona {g_so_az} mi ({(g_so_az / so_az - 1) * 100:+.1f} %) em 6 h 05:"
+          f" {g_so_az - g_rapida} mi e 1 h 50 a mais")
+    # v2: a gente por rota (o cético, K5, dos números do Censo 2020)
+    rotas = {"por Utah e Nevada": 4715, "só por Nevada": 3129, "sem sair do Arizona": 1704, "fora de lugar nomeado": 407}
+    tot_g = sum(rotas.values())
+    for k, v in rotas.items():
+        print(f"  gente {k:24s} {v:5d} = {v / tot_g * 100:4.1f} %")
+    print(f"  total {tot_g}; o CCD de Mohave, 8.017 = {8017 / 9955 * 100:.1f} %; os lugares de Mohave que saem do Arizona:"
+          f" {(4715 + 3129) / tot_g * 100:.1f} %")
+    print(f"  1858 (Ives, 'valueless') → 1903 (o Arizona, 'of inestimable value'): {1903 - 1858} anos;"
+          f" 1919 → 1929 (a Navajo Bridge): {1929 - 1919}; 1919 → 1938 (o lago Mead em Pearce Ferry): {1938 - 1919}")
 
 
 def main():
