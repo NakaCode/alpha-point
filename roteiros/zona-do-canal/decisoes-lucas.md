@@ -119,3 +119,7 @@ Três blocos de perguntas de opção (`out/zona-do-canal/_pesquisa/pendencias-lu
   eram 964, 1,6 % e 28: são 27 impressões novas em 8 dias.
 - **A decisão**, à pergunta "Deixo a reembalagem para sexta, começando pelos títulos, ou prefere fazer agora?": **"vamos deixar"**. Fica para
   sexta, 13/11, ou depois, com a semana nova.
+
+## A reembalagem de 18/11/2026 (Lucas, no chat da Sala)
+- **O pedido** (~13:5x): "Dito isso, vamos também preparar a reembalagem dos vídeos considerando também essas novas regras" e "Para os 4", com o
+  print do Studio (aqui: *Why a Strip of Panama Was American Until 1979*, 46 views). As regras, o plano e o andamento: `out/_reembalagem/2026-11-18/decisoes-lucas.md`.

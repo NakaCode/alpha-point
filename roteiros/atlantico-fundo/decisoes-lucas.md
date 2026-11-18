@@ -289,3 +289,7 @@ Vai ao conferente como `excecao_lucas`, com o `credito_na_tela` novo.
 - **"programei o vídeo do atlântico para 12:00 PM no horário de nova york"**, depois de receber no chat os títulos, a descrição curta, as tags, o
   comentário fixado e as miniaturas A2 e C. Ao meio-dia de Nova York, ainda no horário de verão (EDT, UTC−4, até 01/11/2026), são 13h de
   Brasília; a data não veio na mensagem. A linha fechou (`regie advance atlantico-fundo done`: finalize → done; `out/atlantico-fundo/linha.md`).
+
+## A reembalagem de 18/11/2026 (Lucas, no chat da Sala)
+- **O pedido** (~13:5x): "Dito isso, vamos também preparar a reembalagem dos vídeos considerando também essas novas regras" e "Para os 4", com o
+  print do Studio (aqui: *The Deepest Point in the Atlantic Ocean*, 9 views). As regras, o plano e o andamento: `out/_reembalagem/2026-11-18/decisoes-lucas.md`.

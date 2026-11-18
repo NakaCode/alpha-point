@@ -309,3 +309,7 @@ As perguntas, com as opções investigadas e conferidas por céticos (out/peru-a
   dados, e ficou *Why Peru Lives on the Dry Side of the Andes*.
 - **A decisão**, à pergunta "Deixo a reembalagem para sexta, começando pelos títulos, ou prefere fazer agora?": **"vamos deixar"**. Fica para
   sexta, 13/11, ou depois, com a semana nova.
+
+## A reembalagem de 18/11/2026 (Lucas, no chat da Sala)
+- **O pedido** (~13:5x): "Dito isso, vamos também preparar a reembalagem dos vídeos considerando também essas novas regras" e "Para os 4", com o
+  print do Studio (aqui: *Why Peru Lives on the Dry Side of the Andes*, 11 views, o teste A/B encerrado). As regras, o plano e o andamento: `out/_reembalagem/2026-11-18/decisoes-lucas.md`.
