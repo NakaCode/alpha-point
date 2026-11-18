@@ -27,3 +27,29 @@ derruba: só pede que o título e o ângulo sejam nossos (a regra de 18/11: "o n
 - **O NCIS** ("Animal-related deaths in Australia", FS24-09, 2001–2021: os cavalos 222 de 713, os cangurus 53): o `ncis.org.au` recusou o leitor B (403), mas abre no navegador do app sem verificação de robô. A `node/296` que o leitor apontou é outra ficha (drogas, FS20-03); a ficha dos animais não apareceu na busca do site nem no Google. **Pendente**: achar a ficha (a lista de publicações do NCIS) antes de o número dos cavalos ir à voz. Até lá, o número é de segunda mão.
 
 - **A colisão dos títulos da v1** (18/11, ~11h, no YouTube, sem crédito): o título 3 é quase igual a "Why Australia's Deadliest Spider Stopped Killing People" (Veil Works, 1.531, há 2 semanas); o 1 encosta em "Why Australia's Deadliest Animals Almost Never Kill Anyone" (BeyondTheBush, 291, há 1 mês); o 2 encosta em "Australia Has 20 of the World's 25 Most Venomous Snakes Here's Why That's Fine" (Deadly Down Under, 3.743, há 4 semanas); a taipan "que nunca matou" tem 2 vídeos de 2 semanas. O ângulo do paradoxo também está no enxame. A concorrência não derruba (o Lucas), mas o título quase igual continua proibido: o cético recebeu isso e propõe títulos que não colidam.
+
+- **A correção do Lucas (~12h) vale sobre o parágrafo acima:** "Eu falei pra desconsiderar concorrentes? Única coisa que os céticos devem decidir é
+  qual dos títulos é mais clicável e me sugerir outros, mas sem desconsiderar os meus." Nenhum título cai por colisão, nem o quase igual; os vizinhos
+  ficam só como informação (`roteiros/australia-animais/decisoes-lucas.md`; a v2, §9).
+
+### A contagem das cobras, pelo Reptile Database (18/11/2026, ~14h, navegador do app)
+
+A busca avançada do Reptile Database (`reptile-database.reptarium.cz/advanced_search`, "Higher taxa" e "Distribution: Australia"), a contagem de
+"Species found" de cada busca, lida em 18/11/2026 às 17:07 UTC (14:07 em Brasília):
+
+| Grupo | Na Austrália | No mundo |
+|---|---:|---:|
+| Serpentes (todas) | 229 | 4.252 |
+| Elapidae (as de presa na frente) | 150 (148 delas hidrofiíneas: as terrestres e as marinhas) | 414 |
+| Viperidae | 0 | 412 |
+| Atractaspididae | — | 68 |
+| Colubridae, Homalopsidae, Pythonidae, Typhlopidae, Acrochordidae | 6, 5, 17, 49, 2 | — |
+
+- **Na Austrália, 150 de 229 (65,5 %) são elapídeas; no mundo, elapídeas e víboras somam 826 de 4.252 (19,4 %)**, e 894 (21,0 %) com as
+  Atractaspididae. "Nenhuma víbora" se confirma pela lista. As famílias da Austrália somam os 229.
+- **O limite:** a busca é por texto na distribuição. Entra toda espécie com "Australia" nela, inclusive as marinhas das águas australianas e as que a
+  Austrália divide com a Nova Guiné.
+- **Contra a fonte da v2:** o biólogo da Live Science dizia "about 145" de "roughly 220" e "~15 %" no mundo. A nossa medida dá a mesma figura na
+  Austrália (cerca de dois terços) e um número maior no mundo (cerca de um em cinco, contando as duas famílias de presa na frente). No roteiro, a frase
+  com a nossa medida e o dono ("the Reptile Database") pode trocar a do biólogo, ou ficar ao lado dela; o "15 %" do biólogo não se sustenta com esta
+  conta e precisa de definição, ou sai.
