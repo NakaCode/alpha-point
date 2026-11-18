@@ -37,3 +37,7 @@ real"; "Um adendo no Big sur é que as views vieram de pesquisa"; "Eu preciso ar
 - **O Acre: DERRUBADO, 3,0** (`cetico-acre-ferrovia.md`). Onda em português (curtos de 622 mil em 27/10 e 431 mil em 02/10; longos com público; cópias em inglês desde 01/10); a ferrovia não foi pagamento (Rio Branco); o Acre é 2,2 % do Brasil. Reserva para fev/2027: "Brazil Paid More for This Jungle Than America Paid for Alaska". vidIQ: 40.
 - **O plano de 1941:** derrubado pela Sala (a onda em português e a notícia).
 - **Rodando:** as duas miniaturas das florestas ("THE GAP" e "350 MILES").
+
+## A decisão (18/11/2026, ~09:1x)
+
+O Lucas, à pergunta "Na busca do Brasil, só "Why the Amazon Doesn't Touch Brazil's Other Rainforest" ficou de pé (6,0); o Acre e o plano de 1941 caíram pela onda. Como seguimos o vídeo 8?": **"Voltar ao Grand Canyon"** (a opção dizia: "A reserva está pronta, com pauta, teste dos leitores e miniatura. Falta só escolher o título, e o roteiro começa."; as outras eram "As duas florestas (Recomendado)" e "Mais uma rodada do Brasil"). **O vídeo 8 volta a ser o Grand Canyon**; **as duas florestas ficam de reserva** (o laudo, a miniatura que estava sendo desenhada, o título "Why the Amazon Doesn't Touch Brazil's Other Rainforest"). vidIQ da busca do Brasil: ~85 dos 300.

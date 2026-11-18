@@ -1,5 +1,8 @@
 # Vídeo 8 · O Grand Canyon e a Arizona Strip: a terra do outro lado do cânion · Pauta v2 · 18/11/2026
 
+**DE VOLTA COMO O VÍDEO 8 (18/11/2026, ~09:1x):** o Lucas, "Voltar ao Grand Canyon", depois da busca do Brasil (as duas florestas ficaram de
+reserva). O bloco abaixo conta a troca de antes; o título continua por escolher.
+
 **RESERVA PRONTA (18/11/2026, ~07:5x).** O Lucas trocou o vídeo 8 por uma pauta do Brasil ("Brasil no lugar"; `roteiros/arizona-strip/decisoes-lucas.md`).
 Esta pauta fica guardada como está: a v2 depois do cético, o teste dos leitores (`out/_pautas/video-8-arizona-strip/teste-leitores.md`: a miniatura
 "UTAH WANTED IT" e a abertura da petição de 1905 com 8,0 nos quatro) e o **título por escolher** (a Sala recomendou "Why Arizona Kept the Land Beyond
