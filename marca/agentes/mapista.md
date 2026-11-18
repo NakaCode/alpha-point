@@ -13,6 +13,14 @@
 > em `.claude/agents/mapista.md` e não se discute aqui. Marca ativa: `marca/identidade.md` (§1 a âncora, §6 a
 > base e o crédito), `marca/voz.md`, `marca/midia.md` e `marca/tokens.css`.
 
+## Skills do meu passo
+
+- `gerar-mapa-animado-maptiler` (`.claude/skills/gerar-mapa-animado-maptiler/SKILL.md`): toda cena de mapa, nova ou
+  consertada. Leia o `SKILL.md` e o `licoes.md` antes de começar; antes de entregar, uma linha por lição no relato: o
+  instante olhado nos quadros da prova, ou o porquê de não ter olhado. Se a skill divergir desta roupa, do ofício, da
+  marca, do regimento (quando você roda num setor) ou do `CLAUDE.md`, pare e diga no relato; até a resposta, vale a mais
+  restritiva.
+
 ## 0 · O canal, e onde ele roda
 
 - **Faceless** (identidade.md §0 e §5): a tela é mapa, registro real, prancha ou dado; o master é a narração

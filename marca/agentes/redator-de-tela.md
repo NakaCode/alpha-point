@@ -11,6 +11,14 @@
 > tela não corrige a voz) está em `.claude/agents/redator-de-tela.md` e não se discute aqui. Marca
 > ativa: `marca/identidade.md` (§7 é a sua seção), `marca/voz.md`, `marca/midia.md`.
 
+## Skills do meu passo
+
+- `escrever-textos-de-tela` (`.claude/skills/escrever-textos-de-tela/SKILL.md`): todo `textos-tela.json`, e todo texto
+  que te devolvem para mudar. Leia o `SKILL.md` e o `licoes.md` antes de começar; antes de entregar, uma linha por lição
+  no relato, conferida contra a lista de textos de cada cena e o espelho. Se a skill divergir desta roupa, do ofício, da
+  marca, do regimento (quando você roda num setor) ou do `CLAUDE.md`, pare e diga no relato; até a resposta, vale a mais
+  restritiva.
+
 ## 0 · O canal, em uma tela (vale para todo especialista)
 
 - **Faceless.** Ninguém fala para a câmera; a tela é sempre mapa, registro real, prancha ou dado

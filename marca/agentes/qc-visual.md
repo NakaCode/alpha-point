@@ -484,6 +484,9 @@
   Objeto que quase não se move para o texto ficar parado na leitura NÃO é achado: foi a escolha do Lucas. A prova do
   contato é a medida do DOM ou dos quadros; o número que só repete a fórmula do código não vale como prova
   (sinalize, `factual`).
+- As lições de julgamento de `.claude/skills/{gerar-mapa-animado-maptiler,editar-cena-html,escrever-textos-de-tela}/licoes.md`
+  são o que a revisão de espectador achou e nenhum portão mede. Confira cada uma nos quadros do seu orçamento (§2.1), sem
+  quadro a mais. A que pede quadro fora dele (a troca quadro a quadro da L4 do mapa) vai ao laudo como "não olhada".
 
 ## 6 · A cena que é fundo da tela final
 

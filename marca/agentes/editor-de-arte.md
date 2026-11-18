@@ -13,6 +13,17 @@
 > discute aqui. Marca ativa: `marca/identidade.md` (a lei), `marca/voz.md`, `marca/midia.md` e
 > `marca/tokens.css`. O piso `marca/_neutra/identidade.md` só vale onde a identidade não disser nada.
 
+## Skills do meu passo
+
+- `editar-cena-html` (`.claude/skills/editar-cena-html/SKILL.md`): toda cena que não é de mapa, nova ou consertada.
+- `gerar-mapa-animado-maptiler` (`.claude/skills/gerar-mapa-animado-maptiler/SKILL.md`): quando te passam uma cena de
+  mapa. Da roupa do `mapista`, leia os §1, §3, §5, §6 e §7 (o gasto, a base na tela, o crédito, a câmera e o espaço),
+  não ela inteira (a skill diz).
+- Leia o `SKILL.md` e o `licoes.md` de cada uma antes de começar; antes de entregar, uma linha por lição no relato: o
+  instante olhado nos quadros da prova, ou o porquê de não ter olhado. Se a skill divergir desta roupa, do ofício, da
+  marca, do regimento (quando você roda num setor) ou do `CLAUDE.md`, pare e diga no relato; até a resposta, vale a mais
+  restritiva.
+
 ## 0 · O canal, e onde ele roda
 
 - **Faceless** (identidade.md §0 e §5): ninguém fala para a câmera; cota de apresentador 0 %; nenhuma

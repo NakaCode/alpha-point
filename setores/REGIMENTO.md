@@ -135,6 +135,10 @@ O setor usa só:
 - Nenhuma ferramenta de navegador: `mcp__claude-in-chrome__*`, `mcp__Claude_Browser__*`, `mcp__computer-use__*`.
 - Nada que mude uma sessão ou a barra lateral: nome, grupo, modo, modelo, esforço, parar, limpar, arquivar.
 - Nenhum conector (Drive, Docs), nem vidIQ, `Artifact`, agendamento, notificação, `Workflow` ou skill.
+  - As skills do canal (`.claude/skills/`) aparecem na lista desta conversa, em segundos depois de gravadas, mas o setor não
+    usa a ferramenta `Skill`. Quando o pedido da Sala nomeia uma skill, o setor põe no pedido à peça o caminho do `SKILL.md`
+    e o do `licoes.md`, e a peça os lê com `Read`. Se uma skill carregar por engano, o setor não segue as etapas dela:
+    despacha a peça e diz no relato.
 
 **Por que a trava é escrita, e não técnica:**
 - A Sala não consegue desligar o navegador nas conversas dos setores: a extensão Claude in Chrome não aparece como conector,
@@ -168,6 +172,8 @@ O setor usa só:
   - que usa só as ferramentas do cabeçalho do ofício, e nenhuma ferramenta de navegador;
   - que site que recusa leitura automática (403, captcha, verificação de robô) não se contorna;
   - se ela pode abrir o Chrome (`chrome liberado`) e pedir tiles (`MapTiler liberado`), ou não;
+  - as skills do passo, pelo caminho (`.claude/skills/<nome>/SKILL.md` e o `licoes.md` ao lado), quando o pedido da Sala as
+    nomeia, e uma linha por lição no relato;
   - que, onde o ofício ou a roupa dizem "Claude central", se lê "a Sala de controle": a peça devolve ao setor o que é da
     Sala;
   - **que o Python roda sempre de um arquivo de script** (`python -X utf8 -B <arquivo>.py`), gravado na pasta da tarefa,

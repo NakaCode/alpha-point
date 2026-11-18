@@ -858,6 +858,10 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** todo canal tem várias instruções de agente que citam as decisões do dono. Vale
   levar ao motor como regra de escrita das roupas, e como um portão simples: frase da marca que contradiz a
   identidade.
+- **Pendência a corrigir** (pela Sala ou pelo Lucas), não só um registro (conferida em 18/11/2026, na Onda 0 das
+  skills): a `marca/voz.md` §1 (linhas 13–14) ainda diz `eleven_v3` e a voz `iAc9oLyb1zcwD4O3ZTBv`, e o `canal.json` ›
+  `narracao` está no `eleven_v4` com a `829pig94w9GefZ9jJQYl`.
+- Skill: `registrar-aprendizado-como-skill` (L2).
 
 ### 47. A conversa de peça abre no modelo padrão do app, não no da peça
 - **Problema:** o diretor de arte roda no `fable` (frontmatter do ofício, decisão do dono), mas a conversa que o
@@ -1875,3 +1879,36 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   o pacote depois da exportação. Se a exportação falhar no último quadro com "Erro ao concluir a codificação", olhar o espaço livre primeiro.
 - **Por que serve a outros canais:** qualquer canal que entrega o XML do Premiere e exporta na mesma máquina cai no mesmo lugar, e a mensagem
   de erro não aponta o disco. Vale avisar o Lucas, para ver com o Mateus se o pacote da Régie deve medir o espaço antes de copiar.
+
+### 104. A skill nova vale na mesma sessão e em toda conversa aberta, a lista de skills já corta descrições, e o `fork` roda no modelo do agente
+
+- **O que aconteceu** (18/11/2026, a Onda 0 das skills): a skill gravada em `.claude/skills/` foi avisada em ~15–30 s a
+  todas as conversas abertas no canal, a principal da Sala e os subagentes inclusive, sem reiniciar; antes do aviso, a
+  chamada dá "Unknown skill". A lista de skills tem ~30 mil caracteres, e 33 a 40 das ~95 skills (todas de plugins de fora
+  do canal) já aparecem só com o nome. A skill com `context: fork` e `agent: qc-visual` rodou como `qc-visual`, no modelo
+  do frontmatter dele. O especialista não vê a lista nem tem a ferramenta `Skill`, mas lê a skill pelo caminho que o
+  pedido dá.
+- **O que isso quer dizer:** gravar em `.claude/skills/` já é "valer". As quatro skills da Onda 0 valeram uns 20 minutos
+  antes do cético, e a skill de etapa chegou às conversas dos setores, que não podem usá-la.
+- **Como evitar:** skill nova, ou descrição ou passo novo, nasce num rascunho fora de `.claude/skills/`
+  (`out/_skills/rascunhos/<nome>/`) e só vai para lá depois do cético; esperar o aviso antes de chamar a skill nova; a skill
+  de prova precisa de uma descrição que não case com pedido nenhum, e de vida curta; manter as descrições do canal curtas, e
+  a lista enxuta.
+- **Por que serve a outros canais:** todo canal da Régie com skills cai no mesmo orçamento e na mesma pressa, e o caminho
+  "a skill pelo caminho, dentro do especialista" serve a todos sem editar o especialista. Vale avisar o Lucas, para ver com
+  o Mateus.
+- Skill: `registrar-aprendizado-como-skill` (L4, L6 e L8).
+
+### 105. Dez dos 23 achados da revisão de espectador do vídeo 7 nenhum portão mede
+
+- **O que aconteceu** (13 a 18/11/2026): as duas rodadas da revisão de espectador do vídeo 7 mantiveram 23 achados. 13 se
+  medem (8 de movimento, 4 do "·" na quebra e o campo em branco da s45), e o portão de movimento os cobre. Os outros 10 são
+  julgamento: o par antes e depois que não mostra o que a voz diz, a troca de destaque no fim da frase, a peça sem nome, a
+  peça que volta sem o rótulo, o peso visual fora do sujeito da frase, a borda da imagem que encolhe, a pílula sobre o
+  marcador e o rio, e o tamanho da cédula e da foto de 1938 (a marca não tem número para foto e símbolo, e o `qc-tamanho` é
+  só de letra).
+- **Como evitar:** cada uma virou lição na skill da etapa em que nasceu; a peça confere cada lição antes de entregar, nos
+  quadros da prova, e escreve uma linha por lição no relato. Uma lição nunca manda a um portão sem ler o cabeçalho dele.
+- **Por que serve a outros canais:** o antes e depois, o destaque na palavra, a peça que volta com o nome, o peso no
+  sujeito da frase e a foto grande o bastante valem para qualquer canal sem rosto, de geografia ou de culinária.
+- Skill: `gerar-mapa-animado-maptiler` (L1–L7); `editar-cena-html` (L1); `escrever-textos-de-tela` (L1).

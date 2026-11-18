@@ -1291,7 +1291,9 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
   - O cabeçalho da skill diz o que mudou do molde.
   - Ao contrário dos especialistas, ela é do canal e se edita aqui. Se mudar, registre o sha256 novo nesta linha.
   - **Se a skill e esta seção divergirem, pare e avise o Lucas.**
-  - Skill nova ou mudada só carrega numa sessão nova do app.
+  - A skill nova ou mudada vale na mesma sessão, uns 15 a 30 s depois de gravada, quando chega o aviso de lista (prova da Onda
+    0, 18/11/2026); antes dele, a chamada sai "Unknown skill". A já usada na conversa fica com o texto de quando foi usada:
+    depois de mudá-la, chame-a numa conversa nova ou peça para relê-la.
 - Só o Claude central opera o navegador da caça (o Brave do Lucas, desde 02/10/2026: abaixo), pela extensão
   Claude in Chrome. As ferramentas
   `mcp__claude-in-chrome__*` se carregam num só `ToolSearch`, e só estas se usam (skill, §0, item 4):

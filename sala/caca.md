@@ -17,7 +17,9 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
 
 **O método** é o da pré-v1, com a skill adaptada ao canal:
 - A skill `.claude/skills/cacar-no-chrome/SKILL.md` é a **cópia adaptada do canal**, com sha256
-  `52e563bb29f003ccccac5e9425940179361a647d4cb1598f1036fc416e77d241` em 22/10/2026, às 14:5x, quando o 4K MOV (ProRes) da Storyblocks passou a
+  `639be90c92aedf14f1025663f554a0c2e7c9b8628b02b15d0f948468ab5bbe7e` em 05/11/2026 (commit `0bfb744`: o item sem lugar na
+  regência e o fora da lista do Lucas; conferido pela Sala em 18/11/2026). Antes,
+  `52e563bb29f003ccccac5e9425940179361a647d4cb1598f1036fc416e77d241`, em 22/10/2026, às 14:5x, quando o 4K MOV (ProRes) da Storyblocks passou a
   entrar numa linha que o Lucas aprove para ele, se o 4K MP4 vier com taxa baixa demais (Lucas, 22/10/2026: "Sim, baixar as 10 preferidas
   (Recomendado)", à opção que dizia "a 11 da Storyblocks no arquivo grande de 3,6 GB"; na skill, o §3, passo 2). Antes,
   `ed2af70320eee34c3b64d1a9dfae12fac3cfc6127c22fa3d9c479d24482e2391` em 07/10/2026, às 14:1x, quando o "Original" do Motion Array passou a entrar numa
@@ -68,7 +70,9 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
   - O cabeçalho da skill diz o que mudou do molde.
   - Ao contrário dos especialistas, ela é do canal e se edita aqui. Se mudar, registre o sha256 novo nesta linha.
   - **Se a skill e esta seção divergirem, pare e avise o Lucas.**
-  - Skill nova ou mudada só carrega numa sessão nova do app.
+  - A skill nova ou mudada vale na mesma sessão, uns 15 a 30 s depois de gravada, quando chega o aviso de lista (prova da Onda
+    0, 18/11/2026); antes dele, a chamada sai "Unknown skill". A já usada na conversa fica com o texto de quando foi usada:
+    depois de mudá-la, chame-a numa conversa nova ou peça para relê-la.
 - Só o Claude central opera o navegador da caça (o Brave do Lucas, desde 02/10/2026: abaixo), pela extensão
   Claude in Chrome. As ferramentas
   `mcp__claude-in-chrome__*` se carregam num só `ToolSearch`, e só estas se usam (skill, §0, item 4):

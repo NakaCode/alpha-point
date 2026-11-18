@@ -230,6 +230,15 @@ Roupa não guarda estado de ferramenta: o que cai nesta máquina ou sai NÃO MED
 `seed/`, `regua/` e parte de `knowledge/` são do Top10: fonte Neue Haas, hex cravado e números em
 pt-BR. Servem de estrutura; cor, fonte e formato vêm de `marca/` (§7 da identidade).
 
+**As skills do canal** (desde 18/11/2026, Onda 0): `.claude/skills/<nome>/SKILL.md`, com o índice em
+`.claude/skills/INDICE.md`. A forma se confere com `node ferramentas/skills-conferir.mjs` (sai 0); a prova é o
+`skills-conferir-provar.mjs`. Skill nova, ou descrição ou passo novo, nasce em `out/_skills/rascunhos/<nome>/` e só vai a
+`.claude/skills/` depois do cético: o que está lá vale em segundos em toda conversa aberta. Uma skill nunca passa por cima
+deste arquivo, do regimento, da marca, da roupa nem do ofício: se divergir, pare e avise; até a resposta, vale a regra mais
+restritiva. O especialista não tem a ferramenta `Skill`: lê a skill pelo caminho que a roupa ou o pedido dá. O setor não
+usa a ferramenta `Skill`: repassa o caminho à peça (`setores/REGIMENTO.md`). Todo erro resolvido vai à
+`registrar-aprendizado-como-skill`, pela Sala; setor e peça escrevem as quatro linhas no relato.
+
 **Os marcadores** vêm da tabela genérica, em `C:/projetos/regie-v1/template/.claude/agents/PLACEHOLDERS.md` (só
 leitura). Onde ela diverge desta lista, vale esta:
 - `<consumer-repository>` e `<workspace>` são a raiz do canal. Todo caminho é relativo, com `/`, e todo comando
