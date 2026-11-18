@@ -83,3 +83,22 @@ paradoxo das mortes. Só informa o roteiro (a régua do Lucas: "Desde que não s
   - "Danger: This species is dangerously venomous and has been responsible for many human deaths."
   - É a frase que a v2 pedia para o endereço da marrom (onde mora a gente: o leste, a lavoura, o pasto e a beira da cidade). A taipan já tem a dela na
     base (a ficha do governo da Austrália do Sul, "usually quite shy"). Falta a medida do Censo (quanta gente mora em cada área), a fazer por script.
+
+### O NCIS, o AIHW e o AVRU, no navegador do app (18/11/2026, ~16:1x)
+
+- **O NCIS** (a ficha do "cavalos matam mais"). A página "Fact sheets" (`www.ncis.org.au/research-publications/fact-sheets`) lista, na "Common interest
+  series", **"Animal-related deaths in Australia"**, com este resumo na própria página: "Australia has a reputation for being home to some of the world's most
+  dangerous animals. Thousands of hospital admissions are attributable to contact with bees, hornets, wasps, spiders, snakes, ticks, ants and marine animals
+  each year in Australia. However, deaths as a result of these interactions remain relatively rare, particularly in comparison to deaths associated with
+  other species." A licença, na mesma página: "Content is provided under a Creative Commons Attribution 4.0 International License (CC BY 4.0), unless
+  otherwise stated. Attribution must be provided to the National Coronial Information System (NCIS)."
+  - **O PDF** ("Fact sheet - FS24-09 - Animal-related deaths in Australia (PDF, 562.18 KB)", em `files.ncis.org.au/2024-11/…`) vem como download: o
+    navegador do app abriu a janela de salvar, e a Sala não seguiu. O site recusa leitura automática (o robots.txt do `www.ncis.org.au` responde 403 ao
+    User-Agent do canal; o do `files.ncis.org.au`, 403 AccessDenied). **O PDF fica NÃO LIDO**: os números do cavalo e do canguru continuam fora da voz. Ler,
+    só com o "sim" do Lucas ao download.
+  - **O resumo da página vale como fonte** (CC BY 4.0, com o crédito ao NCIS): "deaths … remain relatively rare, particularly in comparison to deaths
+    associated with other species" é a frase oficial do paradoxo, sem número.
+- **O AIHW** (`www.aihw.gov.au/reports/injury/injury-in-australia/…`): "Just a moment..." (verificação do Cloudflare, 403) também no navegador do app. A
+  Sala parou ali. As internações das aranhas continuam com Welton ("Over a little more than a decade … about 12,000 times").
+- **O AVRU** (`biomedicalsciences.unimelb.edu.au`): o endereço antigo deu 404, e a busca não achou a página nova. O "nenhuma morte registrada" da taipan
+  continua fora.
