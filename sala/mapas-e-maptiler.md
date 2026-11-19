@@ -93,3 +93,8 @@ A liberação da MapTiler em cada vídeo (o `MapTiler liberado`), a base de sat�
   rio e o fecho pedem satélite, e o relevo 3D gasta tiles da sua conta.": "Sim, com relevo 3D (Recomendado)"). A opção dizia: "As cenas
   de mapa e o relevo 3D onde a cena precisar, sem perguntar cena por cena. Anoto o contador antes e depois de cada render de mapa." O
   contador fica em `out/rio-columbia/_pesquisa/maptiler-gasto.md`. É esta mensagem que a Sala cita no `MapTiler liberado`.
+  **No vídeo 8 (`australia-animais`), liberado com o relevo 3D** (Lucas, 18/11/2026, ~22:3x, no chat da Sala, à pergunta "O vídeo 8 vai
+  ter mapas: a Austrália e o Channel Country (onde vive a taipan-do-interior), a separação da Antártida e a chegada das cobras pela Ásia.
+  Libero a MapTiler (o satélite e o relevo) para este vídeo, como no vídeo 7?": "Sim, com relevo 3D (Recomendado)"). A opção dizia: "Uso
+  o satélite da MapTiler nas cenas de mapa e o relevo 3D onde a cena precisar. Anoto o contador antes e depois de cada render, como no
+  vídeo 7." O contador fica em `out/australia-animais/_pesquisa/maptiler-gasto.md`. É esta mensagem que a Sala cita no `MapTiler liberado`.

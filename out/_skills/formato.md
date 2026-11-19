@@ -502,6 +502,18 @@ não roda sem ser lido e sem decisão do Lucas, e nada que chame API paga ou con
    dentro das regras de hoje (o teto de 15 mil créditos, a lista no chat)?
 2. **A lista:** desligar ou deixar em `name-only` as skills que não são do canal (os plugins Vercel e Supabase, as 9
    Higgsfield pessoais) para sobrar orçamento? Isso muda `settings`, e é dele.
+   **Respondida em 18/11/2026.** À pergunta dos plugins de fora, o Lucas escolheu "Só o nome (Recomendado)" (~21:2x; a opção dizia:
+   "Continuam disponíveis se alguém pedir pelo nome, mas param de disputar com as do canal. Confiro antes como o Claude Code faz
+   isso."). A Sala conferiu (o agente `claude-code-guide`, 18/11): o `skillOverrides` com `"name-only"` não vale para skill de
+   plugin; o único jeito é desligar o plugin inteiro na pasta (`enabledPlugins` com `false` em `.claude/settings.local.json` e
+   `/reload-plugins`), o que leva junto os agentes, os ganchos e as conexões dele. Sabendo disso, o Lucas (~22:2x): "plugins pode
+   deixar". Os plugins ficam ligados, com a descrição. As 9 pessoais (as 7 Higgsfield, `frontend-design` e `webapp-testing`, em
+   `~/.claude/skills/`) não são plugin, e nelas o `"name-only"` vale. À pergunta "As 9 skills pessoais (as 7 do Higgsfield, a
+   frontend-design e a webapp-testing) não são plugin, e nelas o "só o nome" funciona. Aplico nelas?", o Lucas (~22:3x): "Aplicar
+   nelas (Recomendado)" (a opção dizia: "Continuam disponíveis se alguém pedir pelo nome, mas param de disputar com as skills do
+   canal. É uma linha nas configurações desta pasta."). **Aplicado** em `.claude/settings.local.json` (o destino que a página de
+   skills documenta; fora do git, pelo `.gitignore`): `skillOverrides`, as 9 em `"name-only"`. A página não diz se vale sem
+   reabrir a sessão: se a lista de uma conversa nova ainda mostrar a descrição delas, o override não pegou.
 3. **O CLAUDE.md:** enxugar de 1.412 linhas para um núcleo e um índice de skills? Isso mexe em toda sessão e em todo
    especialista.
 4. **A prova do caminho B** (§2.2): uma skill de leitura que roda dentro de um especialista, antes de apostar nele.
