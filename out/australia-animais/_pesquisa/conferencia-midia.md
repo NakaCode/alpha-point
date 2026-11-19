@@ -1,7 +1,8 @@
-# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11, a exceção do CSIRO e o lote 6 (os arquivos da Fase B da caça 1), 19/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40; lote 6 às 15:45)
+# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11, a exceção do CSIRO, o lote 6 (os arquivos da Fase B da caça 1) e o lote 7 (os da Fase B 2), 19/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40; lote 6 às 15:45; lote 7 às 16:33)
 
-**Laudo acumulado: 64 aprovados de 76 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 76.**
+**Laudo acumulado: 67 aprovados de 79 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 79.**
 
+- **Lote 7 (16:33):** 3 aprovados de 3 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 3. São os 3 arquivos de banco pago da Fase B 2 da caça 1 (a lista 2), todos com `mesmo_item: true` (a seção logo abaixo).
 - **Lote 6 (15:45):** 23 aprovados de 23 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 23. São os 23 arquivos de banco pago da Fase B da caça 1, todos com `mesmo_item: true` (a seção logo abaixo).
 - **Exceção do CSIRO (07:40):** 3 aprovados de 3 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 3. As três fotos do CSIRO, pendente_lucas nos lotes 1 a 3, passaram a **aprovado** pela escolha do Lucas de ~07:30 (a seção logo abaixo).
 - **Reconferência de s11 (03:32):** 0 aprovados de 1 conferido (1 reprovado, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1. O aprovado do lote 1 (a ISS039-E-21755) passou a **reprovado** (a seção logo abaixo).
@@ -12,6 +13,106 @@
 Sem regência: todas as janelas são provisórias (as do espelho r2, `_planos`). Nada mudou em `out/australia-animais/_media/` em nenhum dos três lotes: 158 arquivos com o mesmo sha256 antes e depois (`_tmp/conferencia/_media-antes-lote3.txt` e `_media-depois-lote3.txt`; as dos lotes 1 e 2 ao lado). Antes da emenda, o JSON foi copiado para `_tmp/conferencia/conferencia-midia-antes-lote3.json`, com o mesmo sha256 da cópia da Sala (`c5ca3162…`), e os 34 vereditos dos lotes 1 e 2 ficaram iguais.
 
 **A cobertura do research:** os 51 rascunhos de acervo em `_media/_caca/*/acervo-livre/` e as duas páginas de documento sem `-prova` em `_media/documento/` têm veredito. Não há retrato nem logo em `_media/`.
+
+## Lote 7: os 3 arquivos da Fase B 2 da caça 1 (16:33)
+
+Fluxo `midia`, banco pago (skill `cacar-no-chrome`, §3, passo 5). São os arquivos da lista 2, que o Lucas aprovou com "Aprovo"
+(19/11/2026, ~16:20; `roteiros/australia-animais/decisoes-lucas.md`, a última linha). A lista deles:
+`out/australia-animais/_tmp/caca/fase-b2-arquivos.json`. O pedido: `out/australia-animais/_tmp/caca/pedido-conferente-midia-lote7.md`.
+
+**Laudo do lote 7: 3 aprovados de 3 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 3.**
+**`mesmo_item`: `true` nos 3.** Nenhum `false`, nenhum `null`.
+
+Como no lote 6, os quadros de 15, 50 e 85 % de cada arquivo ficaram ao lado da prévia do mesmo ponto, numa folha por candidato, com os
+cantos superior e inferior direitos do quadro de 50 % recortados em 4K. Os três batem nos três pontos: o mesmo sujeito, o mesmo
+enquadramento, o mesmo movimento, a mesma luz e as coisas nos mesmos lugares. Só as prévias têm a marca d'água ou a barra do player.
+Nenhum arquivo tem marca d'água. O `sha256sum` dos três é o do passo 4 e o do `_PROCEDENCIA.json`. O `_frames-de-clipe.mjs` tirou os
+quadros dos três, inclusive dos dois com `color_transfer` "unknown".
+
+Os quadros, as folhas e os recortes estão em `out/australia-animais/_tmp/conferencia/lote7/<id>/`. As medidas estão em
+`_tmp/conferencia/lote7/medido.tsv`.
+
+| Nº | id (candidato) | cena (plano) | banco · item | medida (ffprobe) | `mesmo_item` | veredito | motivo |
+|---|---|---|---|---|---|---|---|
+| 27 | s15-b | s15 P5, 1ª metade (106,767–108,617 s) | Shutterstock 4159628465 | 3840x2160 h264 29,97 fps 19,5 s | true | aprovado | a água-viva sobre o coral, genérica, sem rótulo de lugar; cobre "jellyfish,", só junto com o 28 |
+| 28 | s15-b-2 | s15 P5, 2ª metade (108,617–110,467 s) | Motion Array 2741903 ("4K") | 3840x2160 h264 25 fps 9,0 s | true | aprovado | a anêmona com peixe-palhaço numa rocha de coral; Maldivas na origem, sem rótulo de lugar; cobre "coral and sea anemones.", só junto com o 27 |
+| 29 | s27-a-2 | s27 P3 (262,5–265,867 s) | Storyblocks SBV-349247863 (4K MP4) | 4096x2160 h264 29,97 fps 17,3 s | true | aprovado | a cascavel de muito perto com o guizo, vibrando e depois parado; sem fundo nem lugar; cobre "the family of rattlesnakes" |
+
+### A resolução do 29
+
+O arquivo é **4096x2160**. A lista 2 e o candidato diziam "3840x2160 (a página diz 4K)". A página só dizia "4K" (o rádio "4KMP4 (h264)
+- 257.2 MB"), e o 3840 era a leitura da Sala na Fase A. A prévia da caça mede 995x524, ou seja, 1,90:1. É a proporção do 4096x2160
+(1,896:1), e não a do 3840x2160 (1,78:1): o item já era 4096 na página. O SBV no nome, os 17,25 s, os 29,97 fps e os 257,2 MiB batem com
+a página. Os três pontos batem com as prévias. Não é troca de item nem de formato, e a régua aceita 4096x2160 (skill, §2.3).
+
+### O crédito na tela
+
+- **Shutterstock (o 27):** nenhum crédito na cena. Vai só a linha `Image(s) and/or video used under license from Shutterstock.com` na
+  faixa de crédito da última cena (s74) e na descrição do YouTube. É a opção B de 14:18, que a lista 2 repetiu na linha 27. O artista
+  (Molishka) está gravado no candidato.
+- **Motion Array e Storyblocks (o 28 e o 29):** nenhum crédito na tela (identidade §7).
+
+### Os rótulos de lugar
+
+- **O 27:** a origem não nomeia lugar (`lugar_na_origem: null`). O plano vai sem rótulo.
+- **O 28:** a origem diz "In Tropical Sea In Maldives". Vai sem rótulo, e nunca com "Australia" nem "Great Barrier Reef".
+- **O 29:** a origem dá a área da espécie ("Found In The Southwestern United States And Mexico"), não o lugar da filmagem. Vai sem
+  rótulo.
+
+### Para o Lucas pesar
+
+Nenhum `pendente_lucas`.
+
+### Para reconferir no navegador do app
+
+Nenhum.
+
+### Para trocar
+
+Nenhum.
+
+### Para quem instala (a Sala, no `_instalar-lote`) e para quem monta
+
+- **O 27 e o 28 vão juntos.** Os dois vereditos valem só com a divisão de s15 P5 em duas metades de 1,85 s. O corte cai na pausa entre
+  "jellyfish," (termina em 108,30) e "coral" (começa em 108,48). Sem um deles, os dois voltam a `trocar`.
+- **`color_transfer` "unknown" no 28 e no 29.** O 29 tem também `color_primaries` "unknown". A matriz dos dois é bt709. Esses dois
+  arquivos são h264 de 8 bits, e não ProRes de 10 bits como os do s03 no lote 6. Neles, o swscale não tropeçou:
+  - o `_frames-de-clipe.mjs` tirou os três quadros de cada um;
+  - uma conversão de prova para `h264/yuv420p` saiu sem erro;
+  - a decodificação inteira também saiu sem erro.
+
+  O cuidado, na conversão, é marcar a curva (e, no 29, as primárias) como bt709 (`-color_trc bt709 -color_primaries bt709`, ou
+  `setparams`). Assim o arquivo instalado não fica com a cor sem marca. O 27 grava bt709 nas três marcas.
+- **O 29 em 4096x2160** anda com o s15-a e o s61-a do lote 6. Num quadro de 16:9, à escala da altura, ele perde 128 px de cada lado.
+  A cabeça e o guizo ficam no miolo nos três pontos, longe das bordas cortadas.
+- **Os metadados do 29 (Storyblocks)** ficam intactos no original, em `_media/_caca/` (midia §3.3, cláusula 9.2).
+- **Os três não têm trilha de áudio.**
+- **Taxas:**
+  - o 28 está a 25 fps; o 27 e o 29, a 29,97 fps;
+  - os bitrates são de cerca de 56 Mbit/s (27), 42 Mbit/s (28) e 125 Mbit/s (29);
+  - nada disso reprova: está medido no `criterios.tecnica.medido` de cada veredito.
+
+### Avisos do conjunto da cena (para o `regente-de-imagem` e o `montador`)
+
+- **s15 P5 (3,7 s)** se cobre com dois planos de 1,85 s: a água-viva sob "jellyfish," e a anêmona sob "coral and sea anemones.". Se a
+  regência juntar o plano num beat só, nenhum dos dois cobre a frase inteira sozinho (ofício §3, item 5).
+- **s27 P3 (3,367 s)** tem duas alternativas aprovadas para o mesmo plano: este clipe e a foto do Commons do lote 2 (Crotalus atrox,
+  cabeça e guizo). Vai uma só, e as duas juntas na mesma janela seriam escolha da regência, não repetição. No clipe, o guizo vibra até
+  perto da metade e fica parado e nítido no fim. O trecho que mostra o guizo inteiro é o do fim.
+
+### Divergências e notas (ROUPA)
+
+- **Olhar.** Li o meu veredito da caça (`conferencia-caca.json`) antes de abrir as folhas, e o olhar destes 3 não foi de olhos novos.
+  Os `o_que_viu` descrevem o que os quadros do arquivo mostram.
+- **O PDF de licença do Motion Array** (`licencas/2741903-licenca.pdf`) não foi lido: é da Sala. Nada de conta está nestas saídas.
+- **O `_PROCEDENCIA.json` da Storyblocks** grava o `id_fornecedor` sem o prefixo "SBV-". É o mesmo número da URL e do nome do
+  arquivo, e não falha. O do Motion Array grava o nome encurtado (`…_uhd_2.mp4`) e o nome de chegada, com o ID, no
+  `arquivo_original`.
+- **A emenda.** O `conferencia-midia.json` e este `.md` receberam o lote 7 por `python`, de arquivos de script
+  (`_tmp/conferencia/lote7/emenda_lote7.py` e `emenda_md.py`). Antes de gravar, cada script conferiu o sha256 do arquivo. As cópias de
+  antes estão em `_tmp/conferencia/conferencia-midia-antes-lote7.json` (`48c382eb…`) e `.md` (`2205c149…`).
+- **`_media/`:** nada mudou. Os 340 arquivos têm o mesmo sha256 antes e depois (`_tmp/conferencia/_media-antes-lote7.txt` e
+  `_media-depois-lote7.txt`).
 
 ## Lote 6: os 23 arquivos da Fase B da caça 1 (15:45)
 

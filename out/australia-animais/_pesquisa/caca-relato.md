@@ -396,3 +396,69 @@ lista que faltavam, sem baixar nada e sem escrever no `candidatos-caca.json` enq
   s27-a-2, Storyblocks, no 4K MP4). O item s15-b tem `quantos` 1, e as linhas 27 e 28 foram como preferidas, juntas, com a divisão
   explicada: o conferente aprovou cada uma só com a outra. A linha 27 seria o 14º download do Shutterstock no dia. Mandada ao Lucas no
   chat às 16:16.
+
+### Fase B 2 (a lista 2; 16:20–16:25)
+
+- **A resposta do Lucas** (~16:20, no chat da Sala, à lista 2): **"Aprovo"**. Vale como o "sim": as linhas 27, 28 e 29 e o PDF 28L
+  (`roteiros/australia-animais/decisoes-lucas.md`).
+- **A extensão reconectou sem erro às 16:17:04:** o `connectedAt` do `list_connected_browsers` mudou de `1795100444343` (12:00:44)
+  para `1795115824973` (16:17:04). Prova do perfil refeita das 16:20 às 16:21: `select_browser` no `deviceId` do Brave, a marca
+  em example.com e a marca achada no History do Brave `Default` na 1ª procura (16:21:01). A caça seguiu sem pedir de novo as contas.
+  O `inUse` e o `connectedAt` foram conferidos antes de cada clique que baixa.
+- **O método** foi o da Fase B, um download por vez, com o `marcar` logo antes do clique e o `recolher` logo depois, e o ritmo de 30 s por
+  banco. O Motion Array saiu no 4K da escolha do botão (o balão dizia "file size: 45.1MB", uns 40 Mbit/s, como os 4K h264 dele na
+  Fase B).
+
+| Nº | Cena | Banco · item | marcar → recolher | O que chegou | Passo 4 |
+|---|---|---|---|---|---|
+| 27 | s15 | Shutterstock `4159628465` | 16:21:31 → 16:21:45 | `shutterstock_4159628465.mov`, 3840x2160, h264, 29,97 fps, 19,486 s, 136.989.044 bytes, `97a7c637…` | bateu: o ID no nome, 19,5 s contra 0:19, 137,0 contra 133,8 MB (2,4 %) |
+| 28 | s15 | Motion Array `2741903` | 16:22:59 → 16:23:10 | chegou como `Sea_Anemones_And_Fish_Swimming_Around_The_Rock_In_Tropical_Sea_In_Maldives_uhd_2741903.mp4` (o registrador o gravou encurtado, `…_uhd_2.mp4`), 3840x2160, h264, 25 fps, 9,040 s, 47.287.091 bytes, `101589c4…` | bateu: 9,0 s contra 0:09, 45,1 MiB contra o balão |
+| 28L | s15 | Motion Array `2741903`, licença | o clique às 16:23:4x, uns 30 s depois do `recolher` do 28 | `licencas/2741903-licenca.pdf`, 112.973 bytes, `408294b8…`, `%PDF` no começo, 1 página | cita o ID e o título |
+| 29 | s27 | Storyblocks `SBV-349247863` (4K MP4) | 16:24:32 → 16:24:52 | chegou como `…-SBV-349247863-4K.mp4` (o registrador o gravou encurtado), **4096x2160**, h264, 29,97 fps, 17,251 s, 269.660.073 bytes, `32621dc8…` | bateu com a página: o SBV no nome, "4K", 17,3 s contra 00:17, 29,97 fps, 257,2 MiB contra 257,2 MB. A página não dá a medida em pixels (os "Video Details" dizem duração, taxa e licenças), e o "3840x2160" da linha era a leitura da Sala na Fase A: a nota foi ao conferente |
+
+- **O Shutterstock:** 14 de 100 downloads usados no dia, depois da linha 27.
+- **O conferente no fluxo `midia` (lote 7)**: despachado às 16:27, com o `conferente-australia-animais.json` ocupado desde 16:26 e o
+  retrato do `_media` (340 arquivos) em `_tmp/caca/media-antes-conferente-midia2.tsv`. O pedido está em
+  `_tmp/caca/pedido-conferente-midia-lote7.md`.
+- **O laudo do lote 7** (`conferencia-midia.json` `903b6d81…`, `.md` `5771cbee…`): 3 `aprovado` de 3, todos com `mesmo_item: true` (os
+  quadros de 15, 50 e 85 % ao lado da prévia do mesmo ponto), nenhuma marca d'água. Sobre o 29, o conferente: o 4096x2160 é o do item,
+  porque a prévia da caça já tinha a proporção dele (995x524, 1,90:1), e não a do 3840x2160. O `_media` ficou igual antes e depois (340
+  arquivos, conferido pela Sala às 16:35). Marcador do conferente livre às 16:35.
+- **A instalação 2** (16:36–16:38), pelo `_instalar-lote`, com `REGIE_MOTOR`:
+
+| Nº | Candidato | Arquivo instalado | Medida |
+|---|---|---|---|
+| 27 | s15-b | `_media/footage/s15/recife-agua-viva-coral-anemona.mp4` | 3840x2160, 30 fps só com quadros-chave, 19,5 s, 397,9 MB |
+| 28 | s15-b-2 | `_media/footage/s15/recife-agua-viva-coral-anemona-2.mp4` | 3840x2160, 30 fps só com quadros-chave, 9,0 s, 228,8 MB |
+| 29 | s27-a-2 | `_media/footage/s27/cascavel-guizo.mp4` | 4096x2160, 30 fps só com quadros-chave, 17,3 s, 265,7 MB |
+
+  - O `_PROCEDENCIA.json` de s15 e o de s27 trazem a URL de cada item e o sha256 do arquivo baixado (`97a7c637…`, `101589c4…` e `32621dc8…`).
+  - O 28 não rodou na primeira tentativa: o laço da Sala lia a lista pela entrada padrão, e o `node` do 27 consumiu parte dela. O
+    `_instalar-lote` saiu 2 ("uso:") sem gravar nada. Ele foi rodado de novo, sozinho, com saída 0.
+  - A anêmona e a cascavel ficaram com a curva de cor `unknown` (a cascavel também com as primárias), como vieram; a matriz é bt709. A
+    cor delas se confere no render, junto da do s55 e da placa (item 67 do `para-passos-seguintes.json`). A cascavel, em 4096x2160, perde
+    128 px de cada lado num quadro de 16:9 (item 68).
+
+### Os itens sem clipe, para a regência e o `pesquisa-imagens`
+
+- Sem candidato aprovado, nem na volta: s01-a (o drone das planícies: s01 P1, s11 P1 e s33 P2), s08-a, s12-b, s16-b, s35-a, s41-a,
+  s51-b, s55-a, s58-a, s70-a e o s67-a (o laboratório, reprovado na técnica). Vão às saídas que o conceito e o espelho escreveram: a mídia
+  de acervo já aprovada, o mapa ou o desenho. Para s11, o Landsat de 25/08/2024 que o `pesquisa-geo` entregou às 16:26 (o item 65).
+- As reservas 7 (o s12-d), 12 (o s09-a) e 22 (o s64-a) não entraram: a resposta do Lucas à lista 1 não as nomeou.
+- Nenhuma caça nova está pedida. Outra volta nos bancos só com um pedido do Lucas no chat.
+
+### Os três avisos
+
+- **A assinatura de cada banco tem de estar ativa quando o vídeo for a público** (`marca/midia.md` §2.4): Shutterstock e Motion Array, as
+  contas individuais do Lucas; Storyblocks, a assinatura da Top10.
+- **No Motion Array, o vídeo tem de ficar público antes de a assinatura acabar** (os PDFs de licença 6L, 14L, 19L, 20L e 28L).
+- **No Shutterstock, a opção B que o Lucas escolheu** (14:18): só a linha "Image(s) and/or video used under license from Shutterstock.com",
+  na faixa de crédito da última cena e na descrição do YouTube; nenhum crédito de artista nas cenas. Em que cena fica a linha (s74 ou s75)
+  é o item 61 do `para-passos-seguintes.json`, com o redator e a Sala.
+
+### O fim
+
+- **O Shutterstock no fim do dia da caça:** 14 de 100 downloads usados (`teto`, 16:38).
+- **O total da caça 1:** 26 clipes instalados (23 da lista 1 e 3 da lista 2) e 5 PDFs de licença do Motion Array (6L, 14L, 19L, 20L e 28L).
+- **A aba fixa** (a aba da caça no Brave) ficou aberta, como a skill pede, para a próxima caça.
+- **O marcador da caça** (`out/_maquina/caca.json`) ficou livre às 16:38, depois desta seção.
