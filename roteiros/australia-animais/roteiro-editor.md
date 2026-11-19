@@ -487,7 +487,7 @@ gráfico com a fonte e o ano. "Folha" é o documento recriado, com o dono. "Cart
   - **Nunca** "the deadliest snake in the world" nem valor de LD50 (pauta §5). O alerta do portão, a 1ª frase sem número, está decidido: a imagem são as planícies rachadas e a cobra (`escrita-notas.md` §3).
 - **f2** (p1.2 · 0:07,7–0:10,7) "That ranking comes from a test on lab mice."
   - Ids: F003 (Broad, Sutherland & Coulter, Toxicon 17:661-664 (1979), registro do Europe PMC (PMID 524395): "the lethality in mice of dangerous australian and other snake venom"); F004 (Paz et al., Toxins 2025 (PMC12567702, CC BY); a ref. 26 e Broad 1979: "o. microlepidotus has higher lethality compared to other taipan species and is considered the most venomous snake in the world").
-  - Imagem real (a segunda do lugar, ~3 s): a taipan-do-interior viva, no chão rachado (pauta §6, imagem 2; Commons ou banco pela caça; o conferente julga, e a foto de outro ano leva "Photo from …"). Por cima, a pílula "LAB MICE · 1979". Crédito `Source: Broad, Sutherland & Coulter, Toxicon, 1979` e o da foto.
+  - Imagem real (a segunda do lugar, ~3 s): a taipan-do-interior viva, no chão rachado (pauta §6, imagem 2; Commons ou banco pela caça; o conferente julga, e a foto de outro ano leva "Photo from …"). Sem texto por cima: o registro só leva rótulo de lugar, crédito e aviso do ano (`identidade.md` §5, REGISTRO), e o 1979 só é dito em f81. A pílula "LAB MICE · 1979" vai à folha de 1979 (f81), não sobre a foto (a Sala, 19/11/2026, pelo DF-05 da verificação do espelho). Crédito o da foto.
   - A ressalva do camundongo é dita aqui, sozinha, de propósito (`escrita-notas.md` §1). A tela não a esconde nem a troca por "WORLD'S MOST VENOMOUS".
 - **f3** (p1.3 · 0:10,7–0:15,1) "But the inland taipan isn't even the snake that kills the most Australians."
   - Ids: F005 (Johnston et al., MJA 2017;207:119-125 (ASP-20), resumo no Europe PMC (PMID 28764620): "attributed to brown (17), tiger (four) and unknown (two) snakes").
@@ -579,7 +579,9 @@ gráfico com a fonte e o ano. "Folha" é o documento recriado, com o dono. "Cart
   - Imagem real ou ilustração: uma aranha numa casa ou num jardim, sem picada mostrada. O conferente julga.
 - **f28** (p9.3 · 1:53,6–2:00,3) "Over a little more than a decade, one study found, spider bites put Australians in the hospital about 12,000 times."
   - Ids: F029 (University of Melbourne (Pursuit, 17/01/2017), tabela de Welton et al. (Intern Med J 2017): "2 wasps 12,351 spiders 0 11,994 ticks and ants"); F030 (contas do verificador (fatos-medidas.py): "[F4] Welton et al. 2017, tabela da Pursuit (University of Melbourne): internacoes por aranha 2001-2013 = 11,994 (about 12,000)").
-  - Dado: "≈ 12,000 HOSPITAL ADMISSIONS (SPIDERS)", ao lado do zero de f26. **Sem anos na tela** (o período não fecha: 11 anos no resumo, 2001–2013 na tabela), **nunca "13 YEARS"** nem os ~42.000 do comunicado (laudo do r1; pauta §5). Crédito `Source: Welton et al., Internal Medicine Journal, 2017 (via University of Melbourne)`.
+  - Dado: "≈ 12,000 HOSPITAL ADMISSIONS (SPIDERS)", com a marca de estudo ("ONE STUDY") e ao lado do zero de mortes de Welton (f29),
+    no mesmo crédito. **Nunca no mesmo quadro que o zero do registro de f26** (o ABS, 2016–2025): a tela diria "12 mil internações em
+    2016–2025" (a Sala, 19/11/2026, pelo DF-04 da verificação do espelho; a lista D pede a ressalva de período). **Sem anos na tela** (o período não fecha: 11 anos no resumo, 2001–2013 na tabela), **nunca "13 YEARS"** nem os ~42.000 do comunicado (laudo do r1; pauta §5). Crédito `Source: Welton et al., Internal Medicine Journal, 2017 (via University of Melbourne)`.
   - O alerta `[internacoes-aihw]` está decidido: a voz diz "one study found" e "a little more than a decade"; o AIHW não abriu (Cloudflare), e o número continua o de Welton.
 - **f29** (p9.4 · 2:00,3–2:02,3) "None of those bites killed anyone."
   - Ids: F031 (University of Melbourne (Pursuit, 17/01/2017), tabela de Welton et al. (Intern Med J 2017): "there were no spider bite fatalities").
@@ -654,7 +656,7 @@ gráfico com a fonte e o ano. "Folha" é o documento recriado, com o dono. "Cart
   - A seta das elapídeas chega da Ásia ao norte da Austrália, como esquema declarado. Crédito `Source: Lee et al., Royal Society Open Science, 2016`.
 - **f51** (p17.2 · 3:38,5–3:42,2) "They're called elapids: front-fanged snakes, the family that cobras belong to."
   - Ids: F053 (Live Science, Elana Spivack, 26/11/2023 (Kevin Arbuckle): "the venomous front-fanged elapidae family, which includes cobras, mambas, coral snakes and taipans").
-  - Ilustração ou foto: uma naja como a família conhecida (a voz a usa como exemplo), com o rótulo "ELAPIDS · FRONT-FANGED SNAKES". A imagem real passa pelo conferente. Crédito `Kevin Arbuckle, to Live Science, 2023` (F053: "the venomous front-fanged Elapidae family, which includes cobras, mambas, coral snakes and taipans").
+  - Ilustração ou foto: uma naja como a família conhecida (a voz a usa como exemplo), com o rótulo "ELAPIDS · FRONT-FANGED SNAKES". A imagem real passa pelo conferente. Crédito `Source: Live Science, 2023` (F053: "the venomous front-fanged Elapidae family, which includes cobras, mambas, coral snakes and taipans"). O trecho está no parágrafo do relato de Michael Lee ("according to Michael Lee", "Lee told Live Science via email"), não no de Arbuckle: o crédito a Arbuckle era erro (a Sala, 19/11/2026, pelo DF-03 da verificação do espelho, conferido na cópia local da matéria).
 - **f52** (p17.3 · 3:42,2–3:44,2) "Its earliest branches are mostly Asian."
   - Ids: F054 (Lee, Sanders, King & Palci, R. Soc. Open Sci. 3:150277 (2016) (PMC4736917, CC BY): "basal lineages are predominantly asian").
   - O esquema: os ramos mais antigos da família ficam na Ásia. Crédito `Source: Lee et al., Royal Society Open Science, 2016`.
@@ -663,7 +665,10 @@ gráfico com a fonte e o ano. "Folha" é o documento recriado, com o dono. "Cart
   - Régua do tempo: "30–25 MILLION YEARS AGO · MOLECULAR ESTIMATE", com as setas para os continentes (laudo do r2, "O que vai à tela"). Crédito `Source: Lee et al., Royal Society Open Science, 2016 (molecular estimate)`.
 - **f54** (p18.2 · 3:50,5–3:54,2) "That's an estimate, and it falls before Australia and Asia met."
   - Ids: F057 (Hall, J. Limnol. 72(s2):e1 (2013), texto integral, p. 7, lido pelo verificador em 18/11/2026: "australia began to collide with se sundaland in sulawesi about 23 million years ago").
-  - Régua do tempo: a janela das cobras (30–25) e a colisão, "≈ 23 MILLION YEARS AGO" (Hall 2013, que a voz só dá em f65). Se o 23 aparecer aqui, vai sem ser dito: a folga entre as duas é de uns 2 milhões de anos, e a régua não a aumenta. Crédito `Source: Lee et al., 2016; Hall, 2013`.
+  - Régua do tempo: a janela das cobras (30–25) e a colisão, a colisão marcada na régua **sem o número** ("AUSTRALIA MEETS ASIA"), porque a voz só dá o 23 em f65, e lá ele entra na palavra:
+    nenhum número vai à tela antes da voz (`identidade.md` §5; as únicas exceções são as três do Juneau, do Lucas). A folga entre as duas é
+    de uns 2 milhões de anos, e a régua não a aumenta (a Sala, 19/11/2026, pelo DF-05 da verificação do espelho; até ali este item dizia
+    "Se o 23 aparecer aqui, vai sem ser dito"). Crédito `Source: Lee et al., 2016; Hall, 2013`.
 - **f55** (p18.3 · 3:54,2–3:58,6) "By that estimate, the snakes got to Australia before Australia got to Asia."
   - Ids: F058 (L, apoiada em F056, F057: "the listener concludes that by that estimate the snakes reached Australia before Australia reached Asia").
   - A régua acende a ordem: as cobras antes da colisão. Sem número novo. É a surpresa do ato.
@@ -946,7 +951,7 @@ gráfico com a fonte e o ano. "Folha" é o documento recriado, com o dono. "Cart
   - Mapa: a câmera sai do norte e do interior. Sem número.
 - **f142** (p44.2 · 10:25,2–10:26,5) "It lives around Sydney."
   - Ids: F156 (Live Science, Elana Spivack, 26/11/2023 (Kevin Arbuckle): "sydney funnel-web spiders have killed people with their venom").
-  - Mapa: Sydney de cima (pauta §6, imagem 3; o aéreo com o mato entre as casas, pela caça, ou o satélite). O pino de Sydney. Crédito `Kevin Arbuckle, to Live Science, 2023` (F156: "Sydney funnel-web spiders have killed people with their venom").
+  - Mapa: Sydney de cima (pauta §6, imagem 3; o aéreo com o mato entre as casas, pela caça, ou o satélite). O pino de Sydney. Crédito `Source: Live Science, 2023`, ou nenhum, porque a frase de lugar não o pede (F156: "Sydney funnel-web spiders have killed people with their venom"). É a frase de abertura da matéria, da jornalista, e não de Arbuckle, a quem o crédito a atribuía por erro (a Sala, 19/11/2026, pelo DF-03 da verificação do espelho, conferido na cópia local da matéria).
 - **f143** (p45.1 · 10:26,8–10:28,1) "Funnel-web spiders are old."
   - Ids: F157 (L, apoiada em F158: "the listener concludes that funnel-web spiders are an old lineage").
   - Imagem real: a funnel-web de Sydney, viva (pauta §6, imagem 1-B; o conferente julga).
@@ -977,7 +982,9 @@ gráfico com a fonte e o ano. "Folha" é o documento recriado, com o dono. "Cart
   - Passagem, sem número.
 - **f152** (p47.2 · 11:11,2–11:16,5) "Before 1981, funnel-web spiders killed at least 13 people, by one review of the recorded cases."
   - Ids: F169 (Isbister et al., MJA 2005;182:407-411: "the 77 cases comprised: 13 deaths (all before the introduction of antivenom in 1981)").
-  - Folha recriada (o *MJA*, direitos reservados): "13 deaths (all before the introduction of antivenom in 1981)", grifado (pauta §6). Na tela, "AT LEAST 13 DEATHS BEFORE 1981". As sete crianças ficam fora. Crédito `Source: Isbister et al., Medical Journal of Australia, 2005`.
+  - Folha do canal com o dado, **sem o texto do *MJA***: "AT LEAST 13 DEATHS BEFORE 1981". O laudo do r1 manda que o *MJA* (direitos
+    reservados) não vá à tela como texto, e ele vale sobre a pauta §6, que pedia a folha com "13 deaths (all before the introduction of
+    antivenom in 1981)" grifado (a Sala, 19/11/2026, pelo DF-06 da verificação do espelho; vale também para a carta de Wiener, f157). As sete crianças ficam fora. Crédito `Source: Isbister et al., Medical Journal of Australia, 2005`.
 - **f153** (p47.3 · 11:16,5–11:18,9) "That year, an antivenom came into use."
   - Ids: F170 (Isbister et al., MJA 2005;182:407-411: "funnel-web spider antivenom was first used in 1981").
   - Régua do tempo: "1981 · ANTIVENOM". Mesmo crédito.
