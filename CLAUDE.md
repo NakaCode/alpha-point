@@ -235,7 +235,10 @@ pt-BR. Servem de estrutura; cor, fonte e formato vêm de `marca/` (§7 da identi
 `skills-conferir-provar.mjs`. Skill nova, ou descrição ou passo novo, nasce em `out/_skills/rascunhos/<nome>/` e só vai a
 `.claude/skills/` depois do cético: o que está lá vale em segundos em toda conversa aberta. Uma skill nunca passa por cima
 deste arquivo, do regimento, da marca, da roupa nem do ofício: se divergir, pare e avise; até a resposta, vale a regra mais
-restritiva. O especialista não tem a ferramenta `Skill`: lê a skill pelo caminho que a roupa ou o pedido dá. O setor não
+restritiva. O especialista não tem a ferramenta `Skill`: lê a skill pelo caminho que a roupa ou o pedido dá. As três de etapa
+(`gerar-mapa-animado-maptiler`, `editar-cena-html` e `escrever-textos-de-tela`) estão fora da lista automática
+(`disable-model-invocation: true`; o Lucas, 18/11/2026: "Tirar da lista (Recomendado)", com a pergunta na exceção do
+`skills-conferir.mjs`): valem pelo caminho do pedido, e o Lucas as chama por `/nome`. O setor não
 usa a ferramenta `Skill`: repassa o caminho à peça (`setores/REGIMENTO.md`). Todo erro resolvido vai à
 `registrar-aprendizado-como-skill`, pela Sala; setor e peça escrevem as quatro linhas no relato.
 
@@ -320,6 +323,16 @@ nas cenas de mapa. Custa algumas horas a mais."
   palavra da página escaneada sob a fita: isso fica nos quadros. A cena com relevo 3D sai NÃO MEDIDO por desenho (o relevo
   dele é plano, e a pílula presa a uma montanha muda até 19 px de lugar, medido na s44 do Juneau): a margem dela continua
   no clipe de prova, e esse 2 não segura o `aprovado` do `qc-visual`.
+- **O movimento, medido antes de entregar** (o Lucas, 17/11/2026: "Os dois, após a cota (Recomendado)"; no vídeo 7, 9 achados de
+  movimento e 4 de "·" nas revisões de espectador). `node ferramentas/portao-movimento.mjs out/<proj> [--so=<cenas>]` mede, a cada
+  0,1 s, o mapa parado (mais de 2 s, a câmera abaixo de 12 px/s, nada novo), a viagem curta (abaixo de 1,45 s), a partida logo
+  depois de um corte, o "·" na ponta da linha e o campo em branco, e grava uma linha por cena em
+  `out/<proj>/_tmp/portao-movimento.jsonl`. O recuo acima de 4,75 níveis/s é só aviso (o Lucas, 18/11/2026, à pergunta do teto do recuo: "Só aviso (Recomendado)"; a opção dizia: "Acima de 4,75 níveis/s o portão avisa e o revisor de qualidade olha a cena; nada reprova sozinho."). O `editor-de-arte` e
+  o `mapista` rodam uma cena por vez antes de entregar, até sair 0; o Claude central roda na rodada de portões (o vídeo inteiro,
+  ~15 min, em segundo plano); o `qc-visual` lê a saída e não remede no olho. Não está no `qc-cena` nem no `_portao.json`. Cena de mapa
+  sem tile e sem a pré-carga, como o `portao-margens`, e a de relevo 3D ele mede. O `--aceitos` (um JSON da Sala) só leva o desvio que
+  ela aceitou na arte, com o `sha1` da cena e a decisão; a limitação do portão vai ao Lucas, como a de qualquer portão. A prova: `node
+  ferramentas/portao-movimento-provar.mjs` (o relato e o cético em `out/_tmp/portao-movimento/`).
 - **A cena de mapa nos portões, só com a pré-carga do canal** (03–04/10/2026; `APRENDIZADOS.md`, item 64). Os
   portões do molde abrem a cena sem a chave da MapTiler: a base de mapa da pré-v1 para antes de criar o mapa, e o
   portão mede uma página parada, sem satélite e sem pedir tile nenhum. (Até 04/10 esta linha dizia que o portão

@@ -242,6 +242,28 @@ necessidade.
 - **Mapa seguido de mapa é UMA viagem** (`fundir: true`), nunca um corte. Corte seco só na troca de regime (mapa
   → registro).
 - Cada viagem dura **1,5 a 3 s**, com easing cúbico de entrada e saída.
+- **Meça o movimento antes de entregar, com o `ferramentas/portao-movimento.mjs`** (o Lucas, 17/11/2026: "Os dois, após a cota
+  (Recomendado)"; no vídeo 7, 9 dos 23 achados das revisões de espectador eram de movimento, que quadro parado não mostra).
+  - O comando, da raiz, uma cena por vez: `node ferramentas/portao-movimento.mjs out/<proj>/graphics/<id>.html`. Como o
+    `portao-margens`: não pede tile, não gasta MapTiler, não leva a pré-carga das chaves e pode rodar quantas vezes precisar, antes
+    do render de prova. Uma cena de mapa leva de 1,3 a 4 s por segundo de cena (a curta, a com relevo e a de muitas viagens, mais):
+    uma de 60 s, até ~2,5 min. Mais de uma cena de mapa num comando pode passar de 5 minutos e não roda dentro de você (§0): o lote
+    é do setor ou da Sala.
+  - Ele reprova: o mapa na tela (em pelo menos metade do quadro) **mais de 2 s** com a câmera **abaixo de 12 px/s** no 4K e nada
+    novo (a "aproximação suave e contínua" tem de se ver: +0,02/s de zoom passa, +0,004/s não; a luz de corrente não conta; o traço
+    que se desenha, o território que preenche e o rótulo que entra contam); a **viagem com menos de 1,45 s** (na régua do cúbico da
+    marca; o Hermite, o linear e o seno curtos também); a **viagem que parte menos de 0,25 s depois de o mapa aparecer por
+    corte**; o **"·" na ponta da linha**; o **campo em branco** esperando o texto.
+  - Saiu 1: conserte o que ele lista (o tipo, a medida, o limite, o trecho, o que veio antes e depois) e rode de novo, até sair 0.
+    **O conserto de um mapa parado vale para a pose inteira**, não só para o trecho listado: no vídeo 7, a s19, a s36 e a s48
+    consertaram o trecho achado e ficaram paradas no resto da mesma pose. Saiu 2: diga no relato, com o motivo.
+  - O aviso não reprova (o recuo acima de 4,75 níveis/s; a chegada colada no corte; o mergulho, o deslocamento ou o giro mais
+    rápidos que o vídeo 7 aprovado; a viagem no 1º quarto de segundo, que pede conferir a emenda): diga no relato por que fica.
+  - Cena com canvas 2D (o rio e a correnteza no canvas): o que se desenha nele não conta como movimento. Se ele acusar um trecho
+    parado em que o rio está sendo traçado no canvas, diga no relato, com o trecho.
+  - Reprovação que você acha que a marca não pede vai no relato, com a medida; não se conserta "para passar" (nem com um pulso que
+    se repete só para quebrar o parado: o remédio da marca é a aproximação). Quem decide é a Sala, pela triagem; a limitação do
+    portão vai ao Lucas, como a de qualquer portão.
 - Rótulo entra em 300 ms (opacidade + 24 px de subida, ease-out). Território preenche em 500 ms.
 - 2D ou 3D se decide pelo critério do ofício (§5), não por padrão de canal. O "3D por padrão" do Top10 (ARTE-43)
   não vale aqui.
@@ -315,6 +337,9 @@ necessidade.
 - **A margem** (M6; o Lucas, 14/10/2026: "M6 pode ser aplicada"): `node ferramentas/portao-margens.mjs
   out/<proj>/graphics/<id>.html` em toda cena que você entrega, até sair 0 (§7). Rode ANTES do render de prova: ele não
   pede tile, e o render pede. O relato diz a saída de cada cena.
+- **O movimento:** `node ferramentas/portao-movimento.mjs out/<proj>/graphics/<id>.html` em toda cena que você entrega, até sair 0
+  (§6), antes do render de prova (ele não pede tile). O relato diz a saída de cada cena. Dos portões de mapa do Top10 que não vieram
+  (acima), o mapa parado e a viagem agora são dele; o resto continua no olho.
 
 ## 10 · Rede, geometria e a regra anti-robô
 

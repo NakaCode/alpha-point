@@ -110,3 +110,17 @@ portão mede: são lições (L5 a L7). A peça que volta de outra cena volta com
   a foto. Até a marca ter um número, é julgamento.
 - **Origem:** `out/rio-columbia/_tmp/espectador-r1/mantidos.json` (s53, t 32, ESP-11); vídeo 7, revisão de 13/11/2026,
   conserto de 16/11/2026. Destino a): nenhum portão mede tamanho de foto.
+
+### L8 · O conserto do mapa parado cobriu só o trecho achado, e o resto da mesma pose ficou parado
+- **Sintoma:** o portão de movimento, rodado em 18/11/2026 sobre as 57 cenas do vídeo 7 aprovado, reprova cinco de mapa parado:
+  a s19 (3,0 s, 15,9–18,9), a s28 (3,2 s na abertura e 3,1 s em 17,5–20,6), a s36 (2,5 + 7,2 + 5,6 s, de 25,8 a 41,9), a s46
+  (2,4 + 2,1 + 3,4 s, além do trecho aceito) e a s48 (2,2 s, 7,0–9,2), todas com a câmera abaixo de 12 px/s no 4K.
+- **Causa:** o lote de consertos deu movimento ao trecho que o revisor apontou (a s19 em 9,7–15,1 s; a s36 só no P3, até 22,3 s;
+  a s48 em 0–4,2 s; a s46, a abertura pelo aceito) e deixou a mesma pose parada no resto, no ritmo lento de antes. O cético mediu
+  o fluxo no clipe 4K entregue: 1,9 a 6,3 px/s nesses trechos, contra 31,7 no trecho consertado da s36.
+- **O que resolveu:** nada nas cenas (o vídeo 7 está no ar desde 17/11); o portão de movimento (`ferramentas/portao-movimento.mjs`,
+  v2), que a peça roda antes de entregar, agora pega a pose inteira, e a roupa do `mapista` §6 diz que o conserto vale para ela.
+- **Como evitar:** quando o portão ou a revisão acusa um mapa parado, conserte a pose inteira (a aproximação suave e contínua do
+  começo ao fim da pose, não um pulso no trecho apontado) e rode o portão na cena toda, não só na janela listada.
+- **Origem:** `out/_tmp/portao-movimento/cetico.md` (K10 e a resposta 4); `out/_tmp/portao-movimento/RELATO.md` §5; vídeo 7,
+  18/11/2026. Destino a), com a trava c) já no portão: a lição diz o que o portão não diz, que o remédio é a pose inteira.

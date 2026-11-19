@@ -5,6 +5,7 @@ description: >-
   contradizê-la (o hedge da voz fica no rótulo). Use quando falta o texto de uma cena, ou no passo screen_text. Pôr o texto
   na cena é editar-cena-html; o crédito de mídia, escrever-credito-na-tela.
 argument-hint: "<proj>"
+disable-model-invocation: true
 metadata:
   versao: "2"
   atualizada: "2026-11-18"

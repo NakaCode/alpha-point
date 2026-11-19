@@ -202,6 +202,28 @@
     geometria e o satélite;
   - a reprovação dele que a triagem dá como limitação vai ao Lucas pelo caminho de qualquer portão (abaixo, "A exceção
     do Lucas").
+- **O movimento é do `ferramentas/portao-movimento.mjs`** (o Lucas, 17/11/2026: "Os dois, após a cota (Recomendado)"). Ele mede a
+  cada 0,1 s (a viagem, a 1/30 s) o mapa parado, a viagem curta, a partida logo depois do corte, o "·" na ponta da linha e o campo
+  em branco, e avisa o recuo rápido. O editor e o mapista o rodam antes de entregar, e o Claude central na rodada de portões. Você lê:
+  - a linha da cena em `out/<proj>/_tmp/portao-movimento.jsonl` é a última com o `sha1` do HTML de hoje e a `versao` do portão de
+    hoje; a de outro sha1 ou de outra versão não vale;
+  - `veredito` 0 passa. `veredito` 1 vai a `gatesDuros`, item por item: `portao-movimento: <tipo> <medida> (limite <limite>)
+    <t0>–<t1>s`. `veredito` 2, ou nenhuma linha com o sha1 e a versão de hoje, é NÃO MEDIDO pelo nome (`portao-movimento`), e a
+    cena fica `aprovado: false` até ele rodar. A cena com relevo 3D, ele mede (não sai 2 por isso, ao contrário do
+    `portao-margens`);
+  - o item marcado `aceito` veio do `--aceitos` da Sala, o desvio que ela aceitou na arte, por escrito. Ele só sai de `gatesDuros`
+    se a entrada traz o `sha1` do HTML de hoje e a `decisao` (quem, quando, a linha do pedido ou a mensagem): cite-a na lente
+    `movimento`. Sem isso, vai a `gatesDuros` como os outros. A reprovação que a triagem dá como limitação do portão segue "A
+    exceção do Lucas" (abaixo), como a de qualquer portão: o `--aceitos` não a substitui;
+  - **não remeça no olho o que ele mede**: o mapa parado, a duração da viagem, a partida depois do corte, o "·" e o campo em branco.
+    Se um quadro que você já abriu mostrar, claro, o contrário do que a linha diz, é o portão que está em xeque: laudo, instante e
+    quadro, `aprovado: false` com "portao-movimento contestado"; o Claude central decide;
+  - os `avisos` (o recuo acima de 4,75 níveis/s, a chegada colada no corte, o mergulho, o deslocamento e o giro rápidos, a viagem no
+    1º quarto de segundo) vão à lente `movimento` como sinalização, sem reprovar;
+  - continua com você o que ele não mede: o sentido do que se move (o bloco sem nome, a cédula que não se lê como dinheiro), o
+    sincronismo com a voz, o tamanho de foto e de símbolo, a pílula sobre o anel ou o traço do mapa, o que se desenha no canvas 2D ou
+    se revela por máscara, o mapa que ocupa menos de metade do quadro, o teto de 6 s da foto parada, o pulso que se repete só para
+    quebrar o parado, e o pixel (a borda dura, a emenda do mosaico).
 - **O `aprovado`** segue o ofício: todas as lentes ≥ 7 **e** `gatesDuros` vazio, com os portões rodados. Portão
   que mediu e reprovou vai a `gatesDuros`. Portão que não rodou numa cena (exit 2 com o alvo certo) segue NÃO
   MEDIDO, pelo nome, e a cena fica `aprovado: false` até ele rodar.

@@ -35,7 +35,7 @@
 // mudou o arquivo, a isenção vence, os itens voltam a reprovar e a saída diz para conferir a mudança. --estrito ignora a isenção.
 // Exceções do Lucas: um campo que pede o ok dele (allowed-tools, hooks, a injeção, disable-model-invocation, o fork com agent) só
 // passa com a entrada em EXCECOES, com a data e a mensagem literal dele. A chave é "<código>:<campo>" (C2:hooks, C2:allowed-tools,
-// C7:disable-model-invocation, C7:context) ou "B1". Hoje não há nenhuma.
+// C7:disable-model-invocation, C7:context) ou "B1". Desde 18/11/2026: o C7:disable-model-invocation das três skills de etapa.
 //
 // Uso (cwd na raiz do canal):
 //   node ferramentas/skills-conferir.mjs                  todas as pastas de .claude/skills/ e o INDICE.md
@@ -69,7 +69,11 @@ export const LEGADO = {
   },
 };
 // { "<skill>": { "<código>:<campo>" ou "B1": "<data> · <mensagem literal do Lucas no chat>" } }
-export const EXCECOES = {};
+export const EXCECOES = {
+  "gerar-mapa-animado-maptiler": { "C7:disable-model-invocation": "18/11/2026, ~21:2x · à pergunta \"As três skills de etapa do canal (mapa, cena HTML e textos de tela) aparecem na lista de toda conversa, até nos setores, que não podem usá-las. As peças já as leem pelo caminho do pedido. Tiro essas três da lista automática?\": \"Tirar da lista (Recomendado)\" (a opção dizia: \"Continuam valendo para as peças, que as leem pelo pedido; você ainda pode chamá-las digitando /nome. Sobra espaço na lista para as outras.\")" },
+  "editar-cena-html": { "C7:disable-model-invocation": "18/11/2026, ~21:2x · à pergunta \"As três skills de etapa do canal (mapa, cena HTML e textos de tela) aparecem na lista de toda conversa, até nos setores, que não podem usá-las. As peças já as leem pelo caminho do pedido. Tiro essas três da lista automática?\": \"Tirar da lista (Recomendado)\" (a opção dizia: \"Continuam valendo para as peças, que as leem pelo pedido; você ainda pode chamá-las digitando /nome. Sobra espaço na lista para as outras.\")" },
+  "escrever-textos-de-tela": { "C7:disable-model-invocation": "18/11/2026, ~21:2x · à pergunta \"As três skills de etapa do canal (mapa, cena HTML e textos de tela) aparecem na lista de toda conversa, até nos setores, que não podem usá-las. As peças já as leem pelo caminho do pedido. Tiro essas três da lista automática?\": \"Tirar da lista (Recomendado)\" (a opção dizia: \"Continuam valendo para as peças, que as leem pelo pedido; você ainda pode chamá-las digitando /nome. Sobra espaço na lista para as outras.\")" },
+};
 
 // ─── o YAML do começo do arquivo (o mínimo que as skills do canal usam) ─────────────────────────────────────────────────────────
 class ErroYaml extends Error {}

@@ -5,6 +5,7 @@ description: >-
   que validar nesta máquina. Use para montar uma cena nova: folha ou foto na mesa, card de pessoa, gráfico de dado. A de
   mapa é gerar-mapa-animado-maptiler; para consertar, consertar-cena; a miniatura, titulo-e-miniatura.
 argument-hint: "<proj> --cena=<id>"
+disable-model-invocation: true
 metadata:
   versao: "2"
   atualizada: "2026-11-18"

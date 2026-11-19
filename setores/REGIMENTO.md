@@ -209,9 +209,10 @@ comando." É regra que aperta: vale quando a Sala manda o setor reler este arqui
   de portões, a memória vence, e a pilha inteira dele se grava de novo, ao preço de gravar. Na medida de 29/10, regravar a
   pilha custou 11 % dos agentes, e 38 % desse valor veio de esperas de mais de 5 minutos por um comando (página "Dois caminhos
   para a cota", item 2; `out/_modelos/esforco-2026-10-29/pagina-dois-caminhos.html`).
-- **O que é longo:** o render 4K de prova que passe de 5 minutos (a cena longa, o mapa com satélite), os portões de várias cenas de uma vez (o `qc-cena` ou o
-  `portao-margens` sobre `out/<proj>` inteiro, uma rodada com a pré-carga em lote) e todo comando que a peça espera passar de
-  5 minutos. O portão de uma cena, que termina antes disso, continua com a peça, cena a cena.
+- **O que é longo:** o render 4K de prova que passe de 5 minutos (a cena longa, o mapa com satélite), os portões de várias cenas de uma vez (o `qc-cena`, o
+  `portao-margens` ou o `portao-movimento` sobre `out/<proj>` inteiro, ou o `portao-movimento` em mais de uma cena de mapa; uma rodada
+  com a pré-carga em lote) e todo comando que a peça espera passar de 5 minutos. O portão de uma cena, que termina antes disso,
+  continua com a peça, cena a cena.
 - **A peça que chega a um comando longo não o roda:** grava o que fez, põe no relato o comando exato e o que ele vai medir, e
   termina.
 - **O setor roda o que é longo** antes de despachar a peça (por exemplo, os portões das cenas que ela vai consertar) ou depois
@@ -249,7 +250,7 @@ cada sessão só vê o que é dela. Por isso há um aviso de ocupado em disco, e
 
 **Os avisos:**
 - `chrome.json`: todo script que abre o Chrome, como render 4K ou de prova, `qc-cena`, `portao-mapa`, `portao-margens`,
-  `quadro.mjs`, `shot.mjs` e `probe-elemento`;
+  `portao-movimento`, `quadro.mjs`, `shot.mjs` e `probe-elemento`;
 - `caca.json`: a caça nos bancos pagos, só da Sala;
 - `linha-do-tempo.json`: o Lucas vendo a linha do tempo. A Sala o marca quando o avisa e o libera quando ele responde ou
   passa o dia. O servidor ligado, sozinho, não ocupa;
@@ -292,6 +293,11 @@ não cada peça.
     tile, nem na cena de mapa: não precisa de `MapTiler liberado` e não entra no `maptiler-gasto.md`. Abre o Chrome, então
     marca o `chrome.json`. Exit 2 é NÃO MEDIDO, como o dos portões, menos na cena com relevo 3D, que ele não alcança (o
     relevo dele é plano): nela, a margem se confere no clipe de prova, como antes.
+  - O movimento (o mapa parado, a viagem curta, a partida logo depois do corte, o "·" na ponta da linha e o campo em branco) se
+    mede pelo `ferramentas/portao-movimento.mjs` (o Lucas, 17/11/2026: "Os dois, após a cota (Recomendado)"), em toda cena
+    entregue, até sair 0: `node ferramentas/portao-movimento.mjs out/<proj> --so=<as cenas>`. Como o de margens, roda SEM a
+    pré-carga e não pede tile, e marca o `chrome.json`. A cena de mapa leva de 1,3 a 4 s por segundo de cena: o lote de várias
+    cenas de mapa é longo (a regra dos 5 minutos). A saída de cada cena vai ao "Feito quando" do pedido.
   - Depois de toda rodada, `node ferramentas/chaves-nos-portoes.mjs conferir out/<proj> --desde="<hora do começo>"` tem
     de sair 0.
   - É NÃO MEDIDO, com o nome do portão:

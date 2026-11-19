@@ -248,6 +248,13 @@ Os pisos que reprovam (260/104/72/72) são do ofício.
   escolhidas**: nenhum deslize pela borda, antecipação de câmera, viagem de câmera pela mesa, mergulho nem still com
   sangria. O Juneau fica como está (a demo da A está em
   `out/juneau/_tmp/movimento/`, BRIEF.md §D.A).
+- **Meça o movimento antes de entregar, com o `ferramentas/portao-movimento.mjs`** (o Lucas, 17/11/2026: "Os dois, após a cota
+  (Recomendado)"). O comando, uma cena por vez: `node ferramentas/portao-movimento.mjs out/<proj>/graphics/<id>.html`. Na cena de
+  mesa ele reprova o **"·" na ponta da linha** (a quebra escrita e a que a largura faz: o "·" sai na quebra) e o **campo em
+  branco**: a caixa (cartão, folha, pílula) no ar, assentada e sem texto, foto, vídeo nem desenho por 0,5 s ou mais, que depois
+  ganha texto (o texto entra 150 ms depois do assentamento: §4.4; o cartão com a foto ou as barras e o número na palavra não é
+  campo em branco). Na cena de mapa que você faz, ele mede também o mapa parado e a câmera (`mapista.md` §6). Saiu 1: conserte e
+  rode de novo até sair 0; saiu 2: diga no relato. Reprovação que você acha que a marca não pede vai no relato, com a medida.
 - **O ilustrador, com a física** (Lucas, 07/10/2026: "Sim, com a física (Recomendado)", depois de ver o antes e depois da
   s34 do Juneau; identidade.md §4.4, "O ilustrador"). Do vídeo 2 em diante, em toda cena com uma **peça construída que
   age** (objeto pendurado ou preso, queda, encaixe, abertura, mecanismo, líquido, mão, corpo):
@@ -463,6 +470,8 @@ Shutterstock.com` vai na faixa de crédito desta última cena (identidade.md §7
 - **A margem** (M6; o Lucas, 14/10/2026: "M6 pode ser aplicada"): `node ferramentas/portao-margens.mjs
   out/<proj>/graphics/<id>.html` em toda cena que você entrega, junto com os portões, até sair 0 (§4). O relato diz a saída
   de cada cena: 0, ou o item que ficou e por quê.
+- **O movimento**: `node ferramentas/portao-movimento.mjs out/<proj>/graphics/<id>.html` em toda cena que você entrega, uma por
+  comando, até sair 0 (§5). O relato diz a saída de cada cena.
 - **Item 5**: `node scripts/qc-src-existe.mjs out/<proj>/graphics/<id>.html`.
 - **Item 6**: `node scripts/qc-hex.mjs out/<proj>/graphics/<id>.html`, no lugar do `perl` do ofício.
 - **Item 9** (lastro): `node scripts/mapa-limpo.mjs <proj> --tc <início>-<fim>`, em timecode `hh:mm:ss:ff`.

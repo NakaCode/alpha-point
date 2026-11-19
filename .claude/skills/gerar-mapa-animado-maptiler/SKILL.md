@@ -5,6 +5,7 @@ description: >-
   crédito e a prova sem desperdiçar pedido pago. Use para fazer uma cena de mapa. Para uma lista de consertos,
   consertar-cena, que manda ler esta; a miniatura, titulo-e-miniatura.
 argument-hint: "<proj> --cena=<id>"
+disable-model-invocation: true
 metadata:
   versao: "2"
   atualizada: "2026-11-18"
