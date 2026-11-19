@@ -1246,9 +1246,18 @@ Das 5 propostas da 2ª rodada, escolheu **"A agulha"**.
     de "begins." mais ~0,25 s, de 4 a 8 s; com 4 s, a saída fica curta e o nome fica os 2,0 s da §4.3.
 - **O nome no banner:** ALPHA POINT em Barlow Condensed 800, com a frase "Geography and geopolitics, on the map." em Inter
   500. A frase veio com a proposta; quando o Lucas pediu para escolher, ele respondeu sem preferência.
-- **O fundo do banner** (Lucas, 09/10/2026: "a logo eu gostei da nossa, mas o banner quero mudar um pouco"): curvas de nível
-  finas sobre marinho, mais densas nas pontas, com o miolo livre para a agulha e o nome. Ele gerou o fundo numa IA de imagem e
-  o mandou no chat; a agulha e as letras vão por cima, desenhadas, nunca pela IA. O laranja fica só na agulha. Arquivos e
-  medidas em `marca/logo/agulha/README.md`.
+- **O fundo do banner: o mundo em pontos** (desde 19/11/2026).
+  - **O pedido:** o Lucas, 18/11/2026, ~23:4x: "Eu to achando o banner do canal muito sem graça, sem vida...". Das três
+    primeiras propostas (os lugares dos vídeos em fatias de satélite; Big Sur, como a mesa; o relevo de 09/10 em cor), ele
+    disse: "O banner ainda está sem graça, quero algo mais moderno".
+  - **A escolha:** da rodada moderna, que tinha D (o globo), E (a curva da Terra vista da órbita, a recomendada) e F (o mapa
+    de pontos), a resposta dele, em 19/11/2026, ~00:5x, foi **"F"**.
+  - **O desenho:** o mundo inteiro numa grade de pontos (Natural Earth, domínio público), com o Pacífico atrás do nome. Os
+    lugares dos vídeos publicados ficam acesos. O laranja fica só na agulha. Tudo é desenhado: nenhuma imagem de fora e
+    nenhuma IA.
+  - **Os anteriores ficam guardados:** o de 01/10 (liso) e o de 09/10. No de 09/10 (Lucas: "a logo eu gostei da nossa, mas o
+    banner quero mudar um pouco"), as curvas de nível são o fundo que ele gerou numa IA de imagem, e a agulha e as letras vão
+    por cima, desenhadas.
+  - Os arquivos, as medidas e como refazer estão em `marca/logo/agulha/README.md`.
 - **As propostas** das duas rodadas ficam em `marca/logo/propostas/` e `marca/logo/propostas-2/`, fora do git: as
   checagens têm quadros do vídeo com satélite da MapTiler e footage de banco.
