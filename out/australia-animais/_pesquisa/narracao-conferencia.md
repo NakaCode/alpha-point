@@ -94,3 +94,24 @@ nomes e o risco vêm da folha de pronúncia.
   linha segue (o dossiê `roteiros/australia-animais/roteiro-editor.md`, "Para a Sala, antes da regência", diz o que se decide antes: a
   MapTiler deste vídeo pede o ok do Lucas antes da primeira cena de mapa).
 - O áudio para a escuta: `out/australia-animais/_tmp/narracao-australia-animais.mp3` (MP3 de 128 kbps da narração tratada, 16:22).
+
+## O relógio (o `ingest`, 18/11/2026)
+
+Com a escuta do Lucas ("áudios ok e plugins pode deixar", ~22:2x): o master (`node out/juneau/_pesquisa/gerar-master.mjs australia-animais`:
+3840×2160 a 30 fps, 981,87 s), o alinhamento da ElevenLabs (`alinhamento-elevenlabs.mjs`, só GET: 60 de 60 por request_id, o texto igual ao
+aprovado nos 60) e o `ingest-local.py`, em duas rodadas.
+
+- **A 1ª rodada** (22:31–22:52, `_tmp/ingest-1.log`) saiu 1, com as pendências de sempre:
+  - 10 itens de grafia do Whisper em 7 trechos (9, 24, 26, 29, 34, 37 e 38: algarismos e vírgula de milhar no lugar do número por extenso,
+    "planes", "one", "LD50"), todos no áudio que o Lucas ouviu inteiro;
+  - 4 vãos com voz sem vale (26,86; 157,82; 469,88; 932,29);
+  - 1 fronteira indecidida (t37, 529,93, "fifty-eight | thousand"), com a regra e a ElevenLabs de acordo.
+- **A conferência da Sala no som:**
+  - os vãos, por `out/rio-columbia/_tmp/relogio/conferir-som.py australia-animais` (`_tmp/relogio/conferir-som-1.log`): em cada um, o recorte
+    que começa na borda onde o script fechou ouve a 2ª palavra inteira ("animals", "animals", "address", "almost"), e o da outra borda não;
+  - a fronteira, por `_tmp/relogio/fronteira-t37.py` (`fronteira-t37.log`): um vale de verdade, de −66 a −47 dB, de 529,94 a 530,06 s, e o
+    recorte que começa em 530,08 ouve "thousand snakebite". O que termina em 529,93 escreve "58,000" por expectativa do Whisper; a energia
+    mostra só "…ty-eight" antes da pausa, sem repetição.
+- **A 2ª rodada** (23:05–23:06, `_tmp/ingest-2.log`), com `--aceitar=9,24,26,29,34,37,38`, `--aceitar-vaos=26.86,157.82,469.88,932.29` e
+  `--aceitar-fronteiras=529.93` (quem, como e a evidência gravados no laudo): **APROVADO**. O `words.json` (sha256 `064f54a0b2ee…`) tem 2.743
+  palavras, de 0,07 a 961,64 s; a cauda de 961,87 a 981,87 s está em silêncio digital.
