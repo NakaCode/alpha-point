@@ -1110,6 +1110,10 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   `document.fonts.ready`, e não por conta.
 - **Por que serve a qualquer canal:** toda cena com camadas (mesa sob a câmera, rótulo fixo por cima) e todo ensaio
   sem navegador tem esse risco; a conferência que só confirma o conserto pedido deixa passar o defeito que ele criou.
+- **Correção de 19/11/2026:** o `document.fonts.ready` só espera a fonte que algum elemento já pediu. O texto criado ou
+  mostrado por script se mede depois do `await RIG.prontas()` (na cena) ou do `document.fonts.load` de cada face. Medido
+  só depois do `ready`, o nome do banner do canal saiu uns 150 px fora do centro.
+- Skill: `editar-cena-html` (L2).
 
 ## 01/10/2026 — o primeiro XML do Premiere, e o pacote para outro computador (pré-v1 em `7ab9543`)
 

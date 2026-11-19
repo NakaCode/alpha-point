@@ -20,3 +20,30 @@ também na mesa. A peça que volta de outra cena volta com o rótulo que a ident
   cabeçalho da cena precisa avisar que um estado dura menos que isso, é defeito: mude o tempo.
 - **Origem:** `out/rio-columbia/_tmp/espectador-r1/mantidos.json` (s42, t 25,5, ESP-8); vídeo 7 (`rio-columbia`),
   revisão de 13/11/2026, conserto de 16/11/2026. Destino a): julgamento (qual palavra nomeia o lado), nenhum portão mede.
+
+### L2 · O texto criado por script é medido com a fonte de reserva, e o conjunto sai do lugar
+- **Sintoma:** nas propostas E e F do banner do canal, o nome "Alpha Point" saiu uns 150 px fora do centro do bloco da
+  marca. Na imagem final, a fonte era a certa: a posição é que tinha sido calculada com outra largura.
+- **Causa:**
+  - o nome e a frase eram `<text>` de SVG criados por script e medidos (`getComputedTextLength`, `measureText`) logo depois do
+    `document.fonts.ready`;
+  - essa promessa só espera a fonte que algum elemento já pediu. Nenhum usava ainda a face de peso 800 da "MarcaSec": ela não
+    estava pedida, a promessa resolveu na hora, e a medida saiu com a fonte de reserva;
+  - a face certa carregou depois e desenhou o texto com outra largura.
+
+  A prova é o conserto: com a carga antes da medida, o nome voltou ao centro nas duas.
+- **O que resolveu:** em `marca/logo/propostas-3-banner/_trabalho/comum.js`, a função `marca`, que as propostas D, E e F usam,
+  passou a esperar `Promise.all([document.fonts.load('800 <tamanho>px "MarcaSec"'), document.fonts.load('500 <tamanho>px
+  "Marca"')])` antes de medir.
+- **Como evitar:** antes de medir texto por script, carregue cada face que a medida usa, com o peso e o tamanho.
+  - A medida inclui `measureText`, `getComputedTextLength`, `getBBox` e a caixa de um texto criado ou mostrado depois do
+    carregamento.
+  - Na cena, use `await RIG.prontas()`, que carrega todas as faces "Marca" e "MarcaSec" (roupa §1).
+  - Fora do RIG, use `await document.fonts.load('<peso> <tamanho>px "<família>"')`.
+  - O `document.fonts.ready` sozinho não basta.
+  - Confira no primeiro quadro que o texto medido está no lugar que a conta deu.
+  - Vale também na miniatura e no banner, que ainda não têm skill.
+- **Origem:** o banner do canal, propostas E e F (`marca/logo/propostas-3-banner/`, fora do git), 19/11/2026, ~00:2x.
+  - Corrige o "depois do `document.fonts.ready`" do `APRENDIZADOS.md`, item 59.
+  - Destino a): a peça HTML que mede texto é a desta etapa. Nenhum portão mede a ordem entre a carga da fonte e a medida: o
+    render só confere que as faces carregaram (`window.__fontesFaltando`).
