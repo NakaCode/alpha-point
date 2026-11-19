@@ -1597,6 +1597,20 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   uso que o próprio robots.txt cita, que fala a quem usa a API por programa, e registrou a API como porta para programas, como a da
   NARA e a do Commons (`CLAUDE.md`, "Tropeços conhecidos do apoio"). O veto continua valendo para quem não lê: o pedido a todo
   pesquisador manda ler o robots.txt de cada host antes do primeiro pedido, e o relato diz qual se leu.
+- **De novo no vídeo 8** (18–19/11/2026, `australia-animais`), duas vezes, mesmo com a regra escrita no pedido.
+  - **Na pauta:** o script do leitor A fez um pedido de página ao `australian.museum` depois de o robots.txt dele responder 403. O script
+    não parava na recusa (`pautas/australia-animais/_trabalho/fatos-a.md`, "Sites que recusaram"). O leitor consertou o script.
+  - **No research, 19/11:** o `pesquisa-documentos` mandou um pedido à página do RAVE-II no `annemergmed.com` antes de ler o robots.txt
+    desse host, que veta `ClaudeBot` e `anthropic-ai` (o item 99). A página respondeu 403 do Cloudflare. Não houve outro pedido, e o
+    próprio agente registrou o tropeço (`out/australia-animais/_tmp/pesquisa-documentos/relato.md`).
+  - **No research, 19/11, de novo:** o `baixar.py` do `pesquisa-dados` pediu o PDF do boletim do BITRE (`datahub.roadsafety.gov.au`) depois
+    de o robots.txt desse host não responder. O PDF também não respondeu, e nada veio. O agente consertou o script, que agora para quando o
+    robots.txt falha (`out/australia-animais/_tmp/pesquisa-dados/relato.md`).
+  - **O que falta:** a regra escrita não segura o script que cada pesquisador escreve. A trava seria um leitor de página do canal, usado por
+    todas as pesquisas: ele leria o robots.txt do host antes do primeiro pedido, procuraria os nomes da Anthropic e pararia na recusa. É
+    trabalho da Sala, com prova, ainda não feito.
+- Skill: nenhuma ainda. A casa é a `site-recusou-robo-nao-contornar` (catálogo §2.4, nº 54, onda 2), quando ela nascer, com o ok do Lucas
+  para a onda dela.
 
 ### 88. A fala citada marcada como rótulo passa no portão de tamanho com menos da metade do piso
 
@@ -1725,6 +1739,24 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   se edita: o conserto de verdade é ele ler o `_PROCEDENCIA.json` também do arquivo que o nome isenta.
 - **Por que serve a qualquer canal:** todo canal que entregue acervo aberto com o nome da agência no arquivo recebe o mesmo verde sem
   leitura. Um nome de arquivo não prova licença.
+- **De novo no vídeo 8** (19/11/2026, `australia-animais`, na entrega do `research`; o VR-04 do verificador independente,
+  `out/australia-animais/_tmp/verificar-research/laudo.md`), por outro lado do mesmo portão:
+  - **O sintoma:** com o nome do rascunho, o `qc-procedencia` daria "SEM PROVA" às 33 fotos CC entregues (o teste do `pesquisa-imagens`,
+    `out/australia-animais/_tmp/pesquisa-imagens/entrega/teste-licenca.mjs` e `teste-licenca-saida.txt`).
+  - **A causa:** quando o nome do arquivo entregue é igual ao do rascunho, o portão lê a licença do `manifest.jsonl` da caça
+    (`MANIFESTO.mapa.get(a.nome)`). A pesquisa a gravou por extenso, com comentário entre parênteses ("CC BY-SA 4.0 (Wikimedia Commons;
+    modelo(s)…)"), e o `curtaCC` do `licenca-cc.mjs` do molde não corta o parêntese. Nos vídeos 5 e 7, o defeito ficou escondido pela
+    isenção do `commons` no nome.
+  - **O que o `pesquisa-imagens` fez:** entregou com outro nome (a licença no fim, `-cc-by-sa-4-0`, `-pd`), sem palavra que isente, e gravou
+    a licença curta no `_PROCEDENCIA.json`, com o texto lido na origem ao lado. O portão deu 35 "PROVADA".
+  - **O que o verificador mediu:** o sufixo não prova nem isenta nada (nenhum casa com `AGENCIA_PUBLICA` nem com `ISENTAS_POR_NOME`). Ele só
+    tira o manifesto da vista do portão: o alarme falso some, mas a trava NC/ND do manifesto também. Os 35 "PROVADA" são a licença
+    declarada na procedência, não a origem. A origem dos 36 do Commons ele conferiu pela API, um a um (sha1 e licença), e a de s11 pelo
+    Gateway da NASA.
+  - **Como evitar:** a pesquisa grava a licença na forma curta no campo `licenca` do manifesto (o texto lido vai em outro campo), e o
+    verificador continua conferindo a origem pela API. O conserto de verdade é do molde: o `curtaCC` cortar o parêntese.
+- Skill: nenhuma ainda. A casa é a `pesquisar-imagens-e-b-roll` (catálogo §2), quando ela nascer, com o ok do Lucas para a onda dela. **Aviso
+  ao motor** (o `curtaCC` do `licenca-cc.mjs` e a isenção pelo nome): vai ao Lucas no chat, para ele ver com o Mateus.
 
 ### 94. O clipe de banco instalado é reencodado, e o portão que casa pelo sha256 do arquivo o dava como "sem veredito"
 
@@ -1973,3 +2005,46 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a outros canais:** a lista de consertos entre duas versões de um texto é onde uma decisão já tomada volta sem ninguém
   ver: o revisor a frio não conhece a pauta, e quem monta a lista conhece a base melhor que a decisão.
 - Skill: nenhuma ainda. A casa é a `gerar-roteiro-geografia` (catálogo §2.1, nº 3, onda 2), como a do item 107.
+
+### 109. A referência de geometria pronta pode estar errada sem avisar: os trópicos do Natural Earth e a ordem dos polos do GPlates
+
+- **O que aconteceu** (19/11/2026, vídeo 8, `australia-animais`, passo `research`): o `pesquisa-geo` achou dois erros em fontes que
+  pareciam prontas para a tela, e mais um tropeço na janela do satélite (`out/australia-animais/_tmp/pesquisa-geo/relato.md`, §4, §5 e §9).
+  - **Os trópicos do Natural Earth:** o `ne_10m_geographic_lines` (commit ca96624a) põe o Trópico de Capricórnio em −23,559943° e o de
+    Câncer em 23,499983°. O valor de 2026 é 23,435782° (a obliquidade média, IAU 2006): as linhas do NE erram 13,8 km e 7,1 km
+    (`medidas.json` › `ne` › `tropicos`).
+  - **Os polos do GPlates Web Service:** com `times=0,23,25,30,33.5,45,80,85` (e com `step=0.5`), a lista de `[lon, lat, ângulo]` não vem
+    na ordem pedida, e a resposta não traz o tempo de cada item. Lida na ordem da resposta, a série parecia andar para trás. Medido: os
+    valores casam um a um com o arquivo de rotação do Zenodo, em outra ordem (`conferir_gws.py`, `baixado/gws/conferencia-euler-*.json`).
+  - **A janela do Landsat:** a primeira janela de 121 km do Cooper Creek não cabia inteira em nenhuma cena nem em nenhuma passagem (0 de
+    116; o path 096 cobria 87 %), porque ficava na borda do path.
+- **O que resolveu:** os trópicos calculados pela obliquidade do ano (`geo_ne.py`, `tropicos.json`); as rotações calculadas do próprio
+  `.rot` do Zenodo (`rotacao.py`, quatérnios com slerp, como a GPlates), com o serviço só para conferir, casando cada valor com o tempo que
+  o arquivo dá (diferença ≤ 0,0000017°); e o `mesa/ajustar_janela.py`, que acha o centro que cabe numa passagem só.
+- **Como evitar:** antes de usar uma linha de referência, conferir a latitude dela contra o valor calculado; nunca ler a ordem de uma
+  resposta como a ordem do pedido quando ela não traz a chave (pedir um tempo por vez ou conferir contra o arquivo de origem); e rodar o
+  `mesa/uniao.py` antes de fixar a janela do satélite, movendo-a se der 0.
+- **Por que serve a outros canais:** a camada pronta do Natural Earth e os serviços de reconstrução de placas entram em qualquer canal que
+  desenhe mapas com o motor, e o erro de 7 a 14 km passa no olho em escala de continente.
+- Skill: nenhuma ainda. A casa é a `gerar-geometria-de-mapa` (catálogo §2, nº 15, onda 3), quando ela nascer, com o ok do Lucas para a
+  onda dela.
+
+### 110. A foto da ISS no Gateway da NASA pode ser "Russian imagery": a página e o arquivo dizem, e o domínio público não vale
+
+- **O que aconteceu** (19/11/2026, vídeo 8, `australia-animais`, passo `research`): o `pesquisa-imagens` trouxe para s11 a foto de
+  astronauta ISS039-E-21755 (os canais do Diamantina), e o conferente a aprovou como "domínio público federal" no lote 1. O verificador
+  independente do research achou no próprio arquivo o aviso `РКК "Энергия"` (a RSC Energia, a empresa espacial russa), no EXIF `Copyright`
+  e no XMP `dc:rights`. Na reconferência, o conferente achou o mesmo no IPTC e leu na página da foto, no campo "Additional Information":
+  "Russian imagery" (`out/australia-animais/_tmp/verificar-research/laudo.md`, VR-01; `_pesquisa/conferencia-midia.json`, `substituidos`).
+- **A causa:** a Expedição 39 teve tripulantes da NASA, da JAXA e da Roscosmos, e a foto é das que voltaram na Soyuz. A NASA a distribui,
+  mas o FAQ do Gateway diz "NASA material is not protected by copyright unless noted", e a nota estava na página e no arquivo. Ninguém leu o
+  campo nem os metadados: o texto em CP1251 gravado como Latin-1 aparece como `ÐÊÊ "Ýíåðãèÿ"` num leitor comum.
+- **O que resolveu:** a reconferência (reprovado: não é obra provada do governo federal, `marca/midia.md` §7.3); o `pesquisa-imagens` retirou
+  o arquivo entregue para `_media/_caca/s11/_retirado/`; s11 vai à saída que o conferente prefere, o still Landsat da mesa (`_media/base/`),
+  pela regência. A ISS039-E-21762 também é "Russian imagery".
+- **Como evitar:** em toda foto do Gateway da NASA, a pesquisa e o conferente leem o campo "Additional Information" da página e o copyright
+  do arquivo (EXIF, IPTC e XMP, decodificando o CP1251). "Russian imagery", ou o nome da RSC Energia, tira a foto do domínio público federal.
+  A regra está no ofício do conferente ("Acervo federal") e na roupa do `pesquisa-imagens` (§5).
+- **Por que serve a outros canais:** as fotos da ISS são a imagem de órbita mais usada por canais de geografia, e a NASA as distribui juntas,
+  as da NASA e as russas, no mesmo site e com o mesmo formato de página.
+- Skill: nenhuma ainda. A casa é a `pesquisar-imagens-e-b-roll` (catálogo §2), quando ela nascer, com o ok do Lucas para a onda dela.

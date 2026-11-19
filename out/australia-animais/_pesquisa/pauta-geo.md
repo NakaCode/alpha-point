@@ -1,0 +1,208 @@
+# Pauta geo · vídeo 8 (`australia-animais`) · passo `research` · 19/11/2026
+
+O índice legível de `out/australia-animais/_pesquisa/pauta-geo.json` (sha256 `77acec69d344…`), que é a fonte. Escrito pelo `pesquisa-geo` (`out/australia-animais/_tmp/pesquisa-geo/geo_pauta_md.py`). O relato está em `out/australia-animais/_tmp/pesquisa-geo/relato.md`.
+
+- O espelho: sha256 `833aaa75bf30…` (a r2): **84 pedidos em `needs.geo`, 28 ids**.
+- **20 ids atendidos com geometria real (74 pedidos), 1 parcial (1 pedido) e 7 em esquema declarado (9 pedidos)**. Nenhum bloqueio: o esquema declarado é o que o próprio `_exige` pede, sempre com a linha de referência real que existe.
+- 30 camadas em `out/australia-animais/_media/geo/` (`.json` e `.js`), gravadas pelo `gravarGeo` da pré-v1; o sha256 de cada uma confere com a pauta.
+- Portões: `validar-contrato pauta-pesquisa` sai 0; `qc-procedencia australia-animais` dá PASS.
+
+## Os ids do espelho
+
+| id | estado | pedidos | cenas | camadas |
+|---|---|---:|---|---|
+| `aguas-tropicais-australianas` | esquema declarado | 1 | s51 | `australia-ao-norte-do-tropico`, `tropicos` |
+| `antartida` | atendido | 1 | s23 | `antartida`, `australia-em-movimento-relativa-antartida` |
+| `asia` | atendido | 1 | s25 | `asia` |
+| `australia` | atendido | 19 | s02, s04, s10, s17, s20, s22, s27, s28, s31, s32, s39, s40, s45, s50, s52, s53, s60, s62, s65 | `australia` |
+| `australia-em-movimento` | atendido | 5 | s23, s24, s25, s26, s29 | `australia-em-movimento-relativa-antartida`, `australia-em-movimento`, `mundo-reconstruido`, `polos-euler-australia-antartida` |
+| `australian-reptile-park` | atendido | 3 | s69, s71, s74 | `australian-reptile-park` |
+| `central-coast` | atendido | 3 | s69, s71, s74 | `central-coast` |
+| `channel-country` | atendido | 12 | s01, s02, s04, s27, s33, s34, s39, s40, s42, s43, s60, s68 | `channel-country` |
+| `europa` | atendido | 1 | s62 | `europa` |
+| `faixa-do-crocodilo-de-agua-salgada` | esquema declarado | 1 | s65 | `australia-ao-norte-do-tropico`, `sri-lanka`, `sudeste-asiatico` |
+| `gondwana` | esquema declarado | 1 | s23 | `australia-em-movimento-relativa-antartida`, `australia-em-movimento`, `mundo-reconstruido` |
+| `grande-sydney` | atendido | 3 | s53, s71, s74 | `grande-sydney-sem-central-coast`, `grande-sydney` |
+| `ilhas-entre-australia-e-asia` | parcial | 1 | s29 | `ilhas-entre-australia-e-asia` |
+| `india` | atendido | 1 | s45 | `india` |
+| `mares-tropicais-e-subtropicais` | esquema declarado | 2 | s20, s52 | `tropicos` |
+| `new-south-wales` | atendido | 4 | s42, s43, s56, s69 | `new-south-wales`, `nsw-costa-sydney-newcastle` |
+| `newcastle` | atendido | 3 | s69, s71, s74 | `newcastle` |
+| `norte-tropical` | esquema declarado | 2 | s50, s51 | `australia-ao-norte-do-tropico`, `tropicos` |
+| `northern-territory` | atendido | 1 | s65 | `northern-territory` |
+| `ponto-de-entrega-generico` | esquema declarado | 1 | s74 | `ponto-de-entrega-generico` |
+| `queensland` | atendido | 3 | s42, s43, s56 | `queensland` |
+| `rio-cooper-creek` | atendido | 2 | s02, s33 | `rio-cooper-creek` |
+| `rio-diamantina` | atendido | 2 | s02, s33 | `rio-diamantina` |
+| `sri-lanka` | atendido | 1 | s65 | `sri-lanka` |
+| `sudeste-asiatico` | atendido | 4 | s24, s26, s29, s34 | `mundo-reconstruido`, `sudeste-asiatico` |
+| `sul-de-queensland` | esquema declarado | 1 | s56 | `queensland` |
+| `sydney` | atendido | 3 | s53, s69, s71 | `sydney` |
+| `victoria` | atendido | 2 | s42, s43 | `victoria` |
+
+## As camadas
+
+| camada | papel | features | bbox | KB | crédito na tela |
+|---|---|---:|---|---:|---|
+| `antartida` | atende | 1 | -180, -90, 180, -60.5247 | 130.0 | nenhum (domínio público) |
+| `asia` | atende | 1 | -180, 1.3295, 179.988, 81.2805 | 53.0 | nenhum (domínio público) |
+| `australia-ao-norte-do-tropico` | referência dos esquemas | 1 | 113.647, -23.4358, 150.839, -9.2402 | 49.2 | nenhum (domínio público) |
+| `australia-em-movimento-relativa-antartida` | atende (a vista do rifte) | 8 | 101.861, -67.6594, 167.924, -9.2402 | 425.7 | Plate model: Müller et al., Solid Earth, 2022 (CC BY 4.0) |
+| `australia-em-movimento` | atende (modelo de placas com licença) | 8 | 89.5933, -69.6298, 153.686, -9.2402 | 424.7 | Plate model: Müller et al., Solid Earth, 2022 (CC BY 4.0) |
+| `australia` | atende | 1 | 112.919, -54.7504, 159.107, -9.2402 | 89.1 | nenhum (domínio público) |
+| `australian-reptile-park` | atende | 1 | 151.277, -33.4182, 151.277, -33.4182 | 0.3 | nenhum (domínio público) |
+| `central-coast` | atende | 1 | 150.984, -33.5706, 151.631, -33.0437 | 42.4 | Boundaries: Australian Bureau of Statistics (ASGS 2021, CC BY 4.0) |
+| `channel-country` | atende | 1 | 135.724, -30.6389, 143.839, -21.5362 | 151.3 | IBRA 7.1 (DCCEEW) |
+| `estados-australia` | apoio | 9 | 96.817, -43.6586, 167.995, -9.2199 | 593.9 | Boundaries: Australian Bureau of Statistics (ASGS 2021, CC BY 4.0) |
+| `europa` | atende | 1 | -9.4741, 34.9345, 66.3641, 71.1421 | 42.8 | nenhum (domínio público) |
+| `grande-sydney-sem-central-coast` | opção derivada | 1 | 149.972, -34.3312, 151.343, -32.9961 | 123.3 | Boundaries: Australian Bureau of Statistics (ASGS 2021, CC BY 4.0) |
+| `grande-sydney` | atende | 1 | 149.972, -34.3312, 151.631, -32.9961 | 155.2 | Boundaries: Australian Bureau of Statistics (ASGS 2021, CC BY 4.0) |
+| `ilhas-entre-australia-e-asia` | parcial: as ilhas reais; o conjunto é esquema | 11 | 115.829, -10.9226, 134.888, 4.7744 | 88.9 | nenhum (domínio público) |
+| `india` | atende | 1 | 68.1434, 6.7456, 97.3623, 35.4954 | 44.7 | nenhum (domínio público) |
+| `mundo-reconstruido` | apoio: o mundo naquele tempo | 8 | -179.99, -89.99, 179.99, 83.61 | 1212.4 | Plate model: Müller et al., Solid Earth, 2022 (CC BY 4.0) |
+| `new-south-wales` | atende | 1 | 140.999, -37.5051, 159.102, -28.1569 | 65.7 | Boundaries: Australian Bureau of Statistics (ASGS 2021, CC BY 4.0) |
+| `newcastle` | atende | 1 | 151.77, -32.9295, 151.77, -32.9295 | 0.2 | nenhum (domínio público) |
+| `northern-territory` | atende | 1 | 129, -25.9986, 137.999, -10.97 | 94.9 | Boundaries: Australian Bureau of Statistics (ASGS 2021, CC BY 4.0) |
+| `nsw-costa-sydney-newcastle` | atende (a escala do fecho) | 1 | 150.4, -34.4, 152.4, -32.4 | 229.7 | Boundaries: Australian Bureau of Statistics (ASGS 2021, CC BY 4.0) |
+| `polos-euler-australia-antartida` | apoio da animação | 543 | -147.452, -82.6609, 0, 90 | 174.7 | Plate model: Müller et al., Solid Earth, 2022 (CC BY 4.0) |
+| `ponto-de-entrega-generico` | esquema declarado | 1 | 151.447, -33.3888, 151.447, -33.3888 | 0.5 | nenhum (domínio público) |
+| `queensland` | atende; e é a referência do sul de Queensland (esquema) | 1 | 137.995, -29.1792, 153.552, -9.2199 | 108.9 | Boundaries: Australian Bureau of Statistics (ASGS 2021, CC BY 4.0) |
+| `rio-cooper-creek` | atende | 11 | 137.698, -28.7072, 142.837, -25.2047 | 21.8 | nenhum (domínio público) |
+| `rio-diamantina` | atende | 1 | 138.968, -26.8191, 142.448, -21.5891 | 11.0 | nenhum (domínio público) |
+| `sri-lanka` | atende; e é a referência oeste da faixa do crocodilo | 1 | 79.6558, 5.9237, 81.8903, 9.8259 | 5.9 | nenhum (domínio público) |
+| `sudeste-asiatico` | atende; e é a referência do meio da faixa do crocodilo | 1 | 92.1783, -10.9211, 140.977, 28.5385 | 136.5 | nenhum (domínio público) |
+| `sydney` | atende | 1 | 151.213, -33.8714, 151.213, -33.8714 | 0.2 | nenhum (domínio público) |
+| `tropicos` | referência dos esquemas | 3 | -180, -23.4358, 180, 23.4358 | 14.9 | nenhum (domínio público) |
+| `victoria` | atende | 1 | 140.962, -39.1339, 149.976, -33.9806 | 43.1 | Boundaries: Australian Bureau of Statistics (ASGS 2021, CC BY 4.0) |
+
+### O que cada camada é (a fidelidade)
+
+- **`antartida`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): o continente do NE, simplificado a 0,02°, partes < 50 km² fora; o polígono fecha no polo (as arestas em −90° e no antimeridiano são do NE).
+- **`asia`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): o continente ASIA do NE (geography_regions_polys), simplificado a 0,05°, partes < 500 km² fora: vai até os Urais e NÃO inclui o Arquipélago Malaio (Indonésia, Filipinas, Bornéu), que o NE põe noutro polígono; para as ilhas, use sudeste-asiatico.
+- **`australia-ao-norte-do-tropico`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): a Austrália do NE ao norte do Trópico de Capricórnio calculado (38.4% da Austrália): o trópico define 'tropical', mas não é um limite oficial do 'tropical north'. A cena declara: é o recorte pela linha.
+- **`australia-em-movimento-relativa-antartida`** (MULLER2022 v1.2.4 (Zenodo, publicado em 03/09/2024), lido em 19/11/2026; licença: CC BY 4.0): o mesmo contorno girado só pela rotação Austrália→Antártida (801→802; Whittaker et al. 2007, Cande & Stock 2004), com a Antártida parada onde o satélite a mostra hoje: é a camada de s23 ('pull away from Antarctica'). A costa encosta na Antártida de hoje a 85 e 80 Ma (sobreposição de 467 e 297 km², na ponta da Tasmânia contra a costa de Oates, [163.493, -66.882]: é o encaixe do modelo, não se corrige à mão) e se afasta: 400 km a 45 Ma, 731 km a 33,5 Ma, 1265 km a 23 Ma.
+- **`australia-em-movimento`** (MULLER2022 v1.2.4 (Zenodo, publicado em 03/09/2024), lido em 19/11/2026; licença: CC BY 4.0): o contorno de HOJE da Austrália (NE, o continente e a Tasmânia, 0,02°) girado pelo MULLER2022 (âncora 000, o referencial do manto) em 0, 23, 25, 30, 33,5, 45, 80 e 85 Ma, uma feature por tempo, com o polo de Euler. Conferido: coincide com a costa que o GPlates Web Service reconstrói (interseção ÷ união 0.9945, centros a 0.9 km, em todos os tempos). A Lord Howe (placa 869) e a Macquarie (901) ficam fora. A posição de cada tempo NUNCA vai como medida: outro modelo (MULLER2019) a põe 160 km longe a 23 Ma, 284 km a 45 Ma e 635 km a 85 Ma.
+- **`australia`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): o país do NE, simplificado a 0,01°; o centro fica a 19,3 km do centro de gravidade de Lambert da Geoscience Australia (outra definição de centro). ATENÇÃO ao enquadrar: o polígono traz a Ilha Macquarie (54,6 S) e a Lord Howe (159,1 E); o continente com a Tasmânia vai de 112,9 a 153,6 E e de 43,6 a 9,2 S.
+- **`australian-reptile-park`** (Wikidata Q4273332, lido em 19/11/2026; licença: CC0 1.0): a coordenada P625 do Wikidata (−33,4182; 151,2770; precisão 0,0001°; importada da Wikipédia em inglês), conferida DENTRO do subúrbio de Somersby (ABS SAL 2021; a 1,03 km da divisa) e do LGA do Central Coast (a 4,12 km); a 50.7 km do ponto de Sydney e a 71.1 km do de Newcastle. O endereço do dossiê (F211) é 'Pacific Highway, Somersby, NSW, 2250'; a estrada em si não se conferiu (sem o OSM).
+- **`central-coast`** (ASGS Edition 3, LGA 2021, pelo serviço do ABS em 19/11/2026; licença: CC BY 4.0): o LGA 2021 11650 'Central Coast (NSW)', simplificado a 0,0003°: 1,681 km² (o ABS dá 1.681,0 em Albers); contém o parque (Somersby). É o polígono lido que o _exige pedia ('o LGA do ASGS 2021'): o trecho marcado entre Sydney e Newcastle não foi preciso. Fica 99.988% dentro da Grande Sydney do ABS.
+- **`channel-country`** (IBRA 7.1 (DCCEEW; metadados © 2025), o serviço IBRA7_Regions baixado em 18/11/2026 para a miniatura; licença: CC BY 4.0): o polígono CHC do IBRA 7.1 (2 partes), simplificado a 0,002° (~200 m): 304,094 km² (o campo HECTARES do IBRA dá 304,094); 67.7% dele fica em Queensland, e ele é 11.9% de Queensland e 3.95% da Austrália (os números da medida do Censo: 12 % de Queensland, 3,96 % da Austrália). A biorregião, NUNCA 'INLAND TAIPAN RANGE' nem 'HABITAT'. Camada própria: nunca recortada pelos estados nem os estados por ela (DF-01).
+- **`estados-australia`** (ASGS Edition 3 (julho de 2021), os arquivos do ABS baixados em 18/11/2026 para a miniatura; licença: CC BY 4.0): os 9 STE simplificados JUNTOS (coverage_simplify 0,005°): as divisas vizinhas são a mesma linha; ilhas < 1 km² fora; a área de cada estado muda < 0,01 % (a de 'Other Territories', −3,2 %). NSW tem o furo do ACT (outro território); NSW inclui a Lord Howe; Queensland vai até as ilhas do Estreito de Torres.
+- **`europa`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): o continente EUROPE do NE (geography_regions_polys), simplificado a 0,03°, partes < 200 km² fora; vai até os Urais.
+- **`grande-sydney-sem-central-coast`** (ASGS Edition 3 (julho de 2021), os arquivos do ABS baixados em 18/11/2026 para a miniatura + ASGS Edition 3, LGA 2021, pelo serviço do ABS em 19/11/2026; licença: CC BY 4.0): a GCCSA 1GSYD menos o LGA 11650, 10,687 km²: NÃO é área oficial; serve à cena que põe 'Sydney, the Central Coast and Newcastle' como vizinhos (s71) sem que as duas áreas se sobreponham. Usar só com o Central Coast ao lado, e nunca com o rótulo 'Greater Sydney' sozinho (a Greater Sydney do ABS inclui o Central Coast).
+- **`grande-sydney`** (ASGS Edition 3 (julho de 2021), os arquivos do ABS baixados em 18/11/2026 para a miniatura; licença: CC BY 4.0): a GCCSA 1GSYD, simplificada a 0,0003° (~30 m): 12,369 km² (o ABS dá 12.368,7). Área estatística, NUNCA a área da aranha. ATENÇÃO: ela CONTÉM o Central Coast (99.988% do LGA cai dentro dela) e o parque; para pôr Sydney e o Central Coast lado a lado, use grande-sydney-sem-central-coast.
+- **`ilhas-entre-australia-e-asia`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): a terra das 10 províncias da Indonésia de Sulawesi, das Molucas e das Pequenas Sundas a leste de Bali (NE admin-1) e do Timor-Leste (NE admin-0), cada uma uma feature, simplificada a 0,005°: são as ilhas reais (Dili, Makassar, Ambon, Kupang e Mataram dentro; Bali fora). O CONJUNTO (a Wallacea) é ESQUEMA DECLARADO: o limite dela (as linhas de Wallace e de Lydekker) não foi lido. As Molucas incluem as ilhas Aru (134 E, 6 S), na plataforma de Sahul, que pela linha de Lydekker não são da Wallacea; o nome 'Wallacea' é opcional na tela e não vai à voz.
+- **`india`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): o país do NE (as divisas de fato do NE), simplificado a 0,01°; se a cena se aproximar da Caxemira, a divisa disputada vai tracejada com DISPUTED (roupa §1); na escala do mundo, não aparece.
+- **`mundo-reconstruido`** (GPlates Web Service (MULLER2022), lido em 19/11/2026; licença: CC BY 4.0): as costas do modelo reconstruídas pelo serviço em cada tempo (uma feature por tempo), sem número de placa (o serviço não devolve), simplificadas a 0,15° (partes < 10.000 km² fora): o fundo 'o mundo naquele tempo' se o diretor escurecer o satélite de hoje; a 85 Ma mostra a Austrália e a Antártida ainda juntas, o último pedaço do Gondwana; a 23 Ma, a borda norte da Austrália perto do Sudeste Asiático. São as costas do modelo, não as do NE.
+- **`new-south-wales`** (ASGS Edition 3 (julho de 2021), os arquivos do ABS baixados em 18/11/2026 para a miniatura; licença: CC BY 4.0): o STE da mesma simplificação de estados-australia (0,005°); tem o furo do ACT e inclui a Lord Howe (159,1 E): o continente vai até 153,6 E. Para as cenas de Sydney a Newcastle, a costa fina é nsw-costa-sydney-newcastle.
+- **`newcastle`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): o ponto do NE (151,7702 E, 32,9295 S), em NSW e fora da Grande Sydney.
+- **`northern-territory`** (ASGS Edition 3 (julho de 2021), os arquivos do ABS baixados em 18/11/2026 para a miniatura; licença: CC BY 4.0): o STE da mesma simplificação de estados-australia (0,005°).
+- **`nsw-costa-sydney-newcastle`** (ASGS Edition 3 (julho de 2021), os arquivos do ABS baixados em 18/11/2026 para a miniatura; licença: CC BY 4.0): o STE de NSW recortado à janela 150,4–152,4 E, 34,4–32,4 S e simplificado a 0,0002° (~20 m): a costa de NSW na escala das cenas de Sydney a Newcastle (o contorno de estado, a 0,005°, erra ~0,5 km, uns 10 px nessa escala).
+- **`polos-euler-australia-antartida`** (MULLER2022 v1.2.4 (Zenodo, publicado em 03/09/2024), lido em 19/11/2026; licença: CC BY 4.0): 543 pontos: o polo de Euler (a rotação total) de 801 e 802 na âncora 000 e de 801 em relação a 802, a cada 0,5 Ma de 0 a 90 Ma, com o ângulo; a cena gira o ponto de HOJE em torno do polo pelo ângulo (regra da mão direita) e interpola entre os tempos (slerp). Calculados do arquivo do Zenodo; o serviço dá os mesmos valores (diferença ≤ 0,0000017°), mas FORA DE ORDEM nos tempos com fração.
+- **`ponto-de-entrega-generico`** (calculado em 19/11/2026; licença: Domínio público: ponto calculado pelo canal a partir do Natural Earth): UM ponto GENÉRICO, por regra fixa: o ponto em terra no NSW do ABS, a ≥ 3 km da costa e a ≥ 8 km do parque, mais perto do meio da reta de Sydney a Newcastle (o meio cai no mar, a 0,77 km da costa). Ficou a 4.47 km do meio, 3.25 km da costa, 16.1 km do parque; cai no Central Coast por coincidência. NÃO é um dos 15 pontos de entrega (F224, não lidos): a tela não o nomeia nem o mostra como lugar real.
+- **`queensland`** (ASGS Edition 3 (julho de 2021), os arquivos do ABS baixados em 18/11/2026 para a miniatura; licença: CC BY 4.0): o STE da mesma simplificação de estados-australia (0,005°; área −0,010 %); vai até as ilhas do Estreito de Torres (9,2 S). O Channel Country fica 67.7% DENTRO dele: acender o estado com o CHC dentro, em contorno, sem recorte (DF-01).
+- **`rio-cooper-creek`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): o Cooper Creek do NE 1:10m: 16 segmentos (a rede trançada); a 1ª feature é o TRONCO, o caminho mais curto pela rede da junção do Thomson com o Barcoo ([142.8371, -25.2047]) ao lago Eyre ([137.6978, -28.3937]), 892 km; as outras 10 são braços e canais; tudo da nascente para a foz. 95.4% da rede fica no Channel Country; o tronco passa a 11.91 km do ponto de Windorah (NE). Conferido sobre o Landsat de 07/08/2023: corre pelo meio da faixa trançada.
+- **`rio-diamantina`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): o Diamantina do NE 1:10m (featurecla River (Intermittent)), uma linha de 872 km, orientada da nascente ([141.3951, -21.9765]) para a foz em Goyder Lagoon ([138.968, -26.8191], onde vira o Warburton): é o sentido da correnteza; passa a 0.85 km do ponto de Birdsville (NE); 65.9% dele fica dentro do Channel Country (o alto Diamantina, ao norte, fica fora da biorregião). O traçado está no NE: o OSM não foi preciso.
+- **`sri-lanka`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): o país do NE, simplificado a 0,005°.
+- **`sudeste-asiatico`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): a união dos 11 países que o NE põe na sub-região 'South-Eastern Asia' (a classificação M49 da ONU), simplificada a 0,02°; inclui a Papua indonésia e o Timor-Leste, e NÃO a Papua-Nova Guiné (Melanésia); ficaram fora as feições disputadas do mar do Sul da China (Spratly, Scarborough).
+- **`sydney`** (Natural Earth 1:10m v5.1.x (o commit ca96624a, de 2022); licença: Domínio público): o ponto do NE (o centro, 151,2125 E, 33,8714 S), dentro da Grande Sydney.
+- **`tropicos`** (calculado para 19/11/2026; licença: Domínio público: linhas matemáticas, calculadas pelo canal — sem crédito): os paralelos ±23.435782° (23°26′8.8″, a obliquidade média da eclíptica, IAU 2006) e o equador, um vértice por grau. As linhas do NE (ne_10m_geographic_lines, que o pedido citava) estão fora do lugar: Capricórnio em -23.559943 (13.8 km ao sul) e Câncer em 23.499983 (7.1 km ao norte): não se usaram.
+- **`victoria`** (ASGS Edition 3 (julho de 2021), os arquivos do ABS baixados em 18/11/2026 para a miniatura; licença: CC BY 4.0): o STE da mesma simplificação de estados-australia (0,005°).
+
+## O continente em movimento (s23 a s26, s29)
+
+- **MODELO DE PLACAS COM LICENÇA E PROCEDÊNCIA (não ficou em esquema).** O modelo: MULLER2022 v1.2.4: Müller et al. 2022, Solid Earth 13, 1127–1159 (o referencial do manto otimizado; as rotações relativas de Merdith et al. 2021). Licença: CC BY 4.0: o registro do Zenodo (10.5281/zenodo.13636799) diz 'Creative Commons Attribution 4.0 International'; o README do zip não traz outra licença (lido em 19/11/2026).
+- A citação: Müller, R. D., Flament, N., Cannon, J., Tetley, M. G., Williams, S. E., Cao, X., Bodur, Ö. F., Zahirovic, S., and Merdith, A. (2022): A tectonic-rules-based mantle reference frame since 1 billion years ago – implications for supercontinent cycles and plate–mantle system evolution, Solid Earth, 13, 1127–1159, https://doi.org/10.5194/se-13-1127-2022. Dados: v1.2.4, Zenodo, https://doi.org/10.5281/zenodo.13636799 (CC BY 4.0).
+- O arquivo de rotação: optimisation/1000_0_rotfile_MantleOpt.rot (o que o .gproj do modelo usa por padrão), sha256 `09ddb15a4bcf…`, só este arquivo, o README e o .gproj, por partes do zip de 11,6 MB (HTTP Range), com 11 s entre pedidos (o Crawl-delay 10 do Zenodo).
+- O serviço: GPlates Web Service (gws.gplates.org; EarthByte, Universidade de Sydney); robots.txt: não tem (404), nem o da documentação (gwsdoc.gplates.org); licença: não publicada: o rodapé 'Copyright © 2020-2026 The University of Sydney. All rights reserved.' é o do site da documentação; o que vai à tela é dado do modelo (CC BY 4.0).
+- A conferência: o serviço devolve os polos SEM o tempo e, nos tempos com fração, fora da ordem pedida (o conjunto é igual à grade, a ordem não): por isso as rotações saem do arquivo do Zenodo, calculadas por rotacao.py. O contorno girado coincide com a costa que o serviço reconstrói (interseção ÷ união 0.9945 em todos os tempos).
+- Os tempos: **0** = hoje; **23** = ≈ 23 Ma, a borda encosta no Sudeste Asiático (Hall 2013; F070); **25** = 25 Ma, o fim da janela das elapídeas (Lee et al. 2016; F051); **30** = 30 Ma, o começo dela; **33.5** = 33,5 Ma, a passagem funda da Tasmânia (Scher et al. 2015; F048); **45** = ≈ 45 Ma, a subida para o norte (Hall 2013; F047); **80** = 80 Ma, o fim da janela do rifte (Geoscience Australia; F044); **85** = 85 Ma, o começo dela.
+- Sydney anda 2466 km de 45 Ma até hoje e só 343 km de 85 a 45 Ma: a Austrália quase parada até ~45 Ma e rápida depois, como Hall 2013. É consistência, não número de tela.
+- A incerteza de modelo (Sydney, MULLER2019 contra MULLER2022): 23 Ma: 160 km, 25 Ma: 162 km, 30 Ma: 178 km, 33.5 Ma: 203 km, 45 Ma: 284 km, 80 Ma: 630 km, 85 Ma: 635 km. a posição de cada tempo NUNCA vai à tela como medida; a régua do tempo traz as datas das fontes, não do modelo.
+- Por que não o MULLER2019: a licença tem duas indicações: o registro do Zenodo e o License.txt da v3.0 dizem CC BY 4.0, e o README.txt dentro do mesmo zip diz CC BY-SA 4.0 ('Licensing information updated on 16 January 2020'). Com a contradição, ficou de fora; serviu só à medida da incerteza.
+- Para o diretor e o mapista: o globo de satélite mostra o mundo de HOJE. Duas leituras honestas: (a) a Antártida parada (a camada de âncora 802), com a Austrália saindo dela e subindo, sobre o satélite de hoje; (b) o mundo do modelo (mundo-reconstruido) sobre o satélite escurecido. Desenhar a Austrália da âncora 000 sobre a Antártida de hoje erra até ~5° (a Antártida também andou no modelo). As setas das elapídeas e da Wallacea continuam esquema (a datação não diz o caminho).
+- O crédito: na tela, Plate model: Müller et al., Solid Earth, 2022 (CC BY 4.0) — proposta; a forma curta é do redator, e o crédito dos fatos (Geoscience Australia, Hall 2013, Scher et al. 2015, Lee et al. 2016) é outro; na descrição, "Plate reconstruction: Müller, R. D., et al. (2022), A tectonic-rules-based mantle reference frame since 1 billion years ago, Solid Earth 13, 1127–1159, https://doi.org/10.5194/se-13-1127-2022; model files v1.2.4, https://doi.org/10.5281/zenodo.13636799, licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Changes: present-day Natural Earth coastlines rotated by Alpha Point with the model's rotations."
+
+## O satélite das planícies (s01, s11, s33 P2 e a mesa)
+
+- **`LC09_L2SP_096078_20230807_02_T1`** (Landsat 9 OLI-2, **2023-08-07**), USGS Landsat Collection 2 Level-2 (reflectância de superfície), via Microsoft Planetary Computer, STAC e API de dados, sem conta e sem chave (robots.txt sem veto; os termos são uma página em JavaScript, que não se lê por programa).
+- Nuvem: 0.0 % na cena; 0.001 % na janela e no quadro em repouso (a banda QA_PIXEL do próprio item, numa grade de 494 × 284 (mesa/nuvem.py)).
+- O lugar: os canais trançados do Cooper Creek a sudoeste de Windorah, no Channel Country (Queensland): janela de 121,4 × 69,8 km (o quadro em repouso, 118 × 66,4 km), centro 142,60 E, 25,70 S, Web Mercator, norte para cima; conferido com o Cooper Creek do NE e o ponto de Windorah desenhados por cima (previas/conferir-lugar-cooper.jpg).
+- O arquivo: `_media/base/landsat-m-cooper-sangria56.png` (3952 × 2272 px, 30.73 m/px, sha256 `b4bf3a5c1779…`), com a procedência em _media/base/landsat-m-cooper-sangria56.png.json e _media/base/_PROCEDENCIA.json.
+- Licença: domínio público (USGS EROS: 'federally created data and therefore reside in the public domain', https://www.usgs.gov/centers/eros/data-citation, lida em 19/11/2026). Na tela, nada; na descrição: "Satellite imagery: Landsat Collection 2 Level-2 (LC09_L2SP_096078_20230807_02_T1). Landsat imagery courtesy of the U.S. Geological Survey."
+- O `mesa-satelite.py --seco`: `{"medidas": {"luma_media": 17.7, "luma_max": 30, "luma_p95": 23, "faixa_credito_luma_max": 28, "contraste_credito_pior": 10.02, "piso": 6.0, "sangria": 56, "mesa_inteira_luma_media": 17.9, "mesa_inteira_luma_max": 30, "contraste_credito_pior_mesa_inteira": 9.85, "ganho_exposicao": 1.2152, "luma_alvo": 17.7}, "passa": true} saida 0`.
+- Por que esta: das 6 datas de inverno seco medidas na janela do Cooper (2022–2025, todas com < 0,02 % de nuvem), a de 07/08/2023 mostra a planície de barro cinza com a trama escura dos canais, a mais perto do 'cracked floodplains' da fala; a janela do Diamantina (path 098) tem os canais só num canto, e o resto é campo de dunas (previas/folha-cooper.png e folha-diamantina.png). A alternativa: LC09_L2SP_096078_20240825_02_T1 (25/08/2024, a mesma janela, nuvem 0 %): o baixar.py a refaz com 'cooper-2024'.
+- O papel: a ENTRADA do still da mesa (o editor-de-arte a trata com o mesa-satelite.py, no art) e a candidata da abertura (s01, que volta em s11 e s33 P2: o Landsat dos canais com o empurrão lento). Quem escolhe entre ela e o aéreo ou a foto da NASA do pesquisa-imagens é a regência. Ainda não há conceito-visual: a janela é escolha do pesquisa-geo, e o baixar.py refaz outra.
+
+## Os esquemas declarados
+
+- **`aguas-tropicais-australianas`** (esquema declarado, 1 pedido(s)): ESQUEMA DECLARADO com referência real: o mar ao norte do Trópico de Capricórnio, junto da costa de australia-ao-norte-do-tropico.json; nenhum polígono de mar foi lido (os mares do NE, Timor, Arafura, Carpentária e Coral, são polígonos de rótulo, não limites).
+- **`faixa-do-crocodilo-de-agua-salgada`** (esquema declarado, 1 pedido(s)): ESQUEMA DECLARADO com referências reais: sri-lanka.json (o oeste), sudeste-asiatico.json (o meio) e australia-ao-norte-do-tropico.json (o norte da Austrália), como F201 diz ('from Sri Lanka to southeast Asia and down to northern Australia'). A distribuição da IUCN não serve (dados não comerciais), e a API do ALA recusou com 403 nas leituras da pauta (não se tentou de novo).
+- **`gondwana`** (esquema declarado, 1 pedido(s)): ESQUEMA DECLARADO, como o _exige pede: nenhum contorno do supercontinente se lê. A referência real é o modelo a 85 Ma (australia-em-movimento-relativa-antartida.json e mundo-reconstruido.json): a Austrália e a Antártida ainda juntas, o último pedaço do Gondwana. O Gondwana inteiro (antes de ~180 Ma) o modelo reconstrói, mas a data não tem linha no dossiê: seria pedido novo e checagem nova.
+- **`ilhas-entre-australia-e-asia`** (parcial, 1 pedido(s)): as ilhas reais (NE: 10 províncias da Indonésia e o Timor-Leste); o conjunto, a Wallacea, é ESQUEMA DECLARADO: o limite dela não foi lido.
+- **`mares-tropicais-e-subtropicais`** (esquema declarado, 2 pedido(s)): ESQUEMA DECLARADO, como o _exige pede: a faixa dos mares tropicais tem a linha real (os trópicos calculados, tropicos.json); o 'subtropical' não tem limite lido, e nenhuma área de ocorrência da caixa-medusa foi desenhada.
+- **`norte-tropical`** (esquema declarado, 2 pedido(s)): ESQUEMA DECLARADO com referência real: o Trópico de Capricórnio (tropicos.json) e a Austrália ao norte dele (australia-ao-norte-do-tropico.json, o recorte pela linha); o 'tropical north' não tem limite oficial lido.
+- **`ponto-de-entrega-generico`** (esquema declarado, 1 pedido(s)): ESQUEMA DECLARADO: um ponto genérico por regra fixa (ponto-de-entrega-generico.json); os 15 pontos de entrega (F224) não foram lidos, e o mapa só os põe se o parque publicar a lista.
+- **`sul-de-queensland`** (esquema declarado, 1 pedido(s)): ESQUEMA DECLARADO: não há limite lido do 'southern Queensland'; a referência é queensland.json (e a divisa com new-south-wales.json, que é a mesma linha).
+
+## Avisos para a Sala
+
+- A GRANDE SYDNEY DO ABS CONTÉM O CENTRAL COAST (s69, s71, s74). A GCCSA 1GSYD inclui 99,988 % do LGA do Central Coast e o próprio parque (Somersby). A fala trata 'Sydney, the Central Coast and Newcastle' como vizinhos: se a cena acender a Grande Sydney e o Central Coast lado a lado, use grande-sydney-sem-central-coast (a diferença, declarada como derivada) e nunca a rotule só 'GREATER SYDNEY'; ou ponha o Central Coast DENTRO da Grande Sydney. Para o mapista, o regente e o redator-de-tela.
+- OS TRÓPICOS DO NATURAL EARTH ESTÃO FORA DO LUGAR. O ne_10m_geographic_lines (o que o pedido citava) põe o Trópico de Capricórnio em 23,5599 S (13,8 km ao sul do real) e o de Câncer em 23,5000 N (7,1 km ao norte). Os paralelos entregues (tropicos.json) são os da obliquidade média de 2026, 23,4358° (IAU 2006). Serve a qualquer canal: candidato ao APRENDIZADOS.md.
+- O GPLATES WEB SERVICE DEVOLVE OS POLOS DE EULER SEM O TEMPO, E FORA DE ORDEM nos tempos com fração (rotation/get_euler_pole_and_angle com times=…, ou com step=0.5: o item 2 é o de 2,0 Ma, o 3 o de 1,0 Ma). Com tempos inteiros a ordem saiu certa, mas não há garantia. Os valores conferem com o arquivo do Zenodo (≤ 0,0000017°), e as rotações daqui saem do arquivo, calculadas por rotacao.py. Serve a qualquer canal que use o serviço: candidato ao APRENDIZADOS.md.
+- O CRÉDITO DO MODELO DE PLACAS. O MULLER2022 é CC BY 4.0, que pede crédito 'de modo razoável' e a indicação de mudança. Proposta, no molde do IBRA: na tela, 'Plate model: Müller et al., Solid Earth, 2022 (CC BY 4.0)' enquanto o contorno girado aparece; na descrição, a citação inteira com os dois DOI e 'present-day Natural Earth coastlines rotated by Alpha Point'. Onde ele vai (tela ou só descrição) é decisão da Sala e do redator; o crédito dos FATOS (Geoscience Australia, Hall 2013, Scher et al. 2015, Lee et al. 2016) é outro e continua.
+- O MULLER2019 TEM LICENÇA CONTRADITÓRIA: o registro do Zenodo e o License.txt dizem CC BY 4.0, o README.txt do mesmo zip diz CC BY-SA 4.0. Não se usou como geometria; só para medir a incerteza entre modelos.
+- A POSIÇÃO DO CONTINENTE NÃO É MEDIDA: dois modelos (MULLER2019 e MULLER2022) discordam em 160 km a 23 Ma, 284 km a 45 Ma e 635 km a 85 Ma (Sydney). A tela não dá latitude, distância nem velocidade tirada do modelo; a régua do tempo traz as datas das fontes.
+- s23 ('pull away from Antarctica'): o satélite do globo mostra a Antártida de hoje. A camada australia-em-movimento-relativa-antartida (âncora 802) põe a Austrália em relação à Antártida parada, e é a que encosta nela a 80–85 Ma (sobreposição de 297–467 km² na ponta da Tasmânia, o encaixe do modelo). A de âncora 000 sobre a Antártida de hoje erra até ~5°. Para o diretor-de-arte e o mapista.
+- s29 ('ran into Southeast Asia'): o contorno girado é o da Austrália do NE, SEM a Nova Guiné. A borda que encosta no Sudeste Asiático a ~23 Ma, no modelo, é a margem norte da placa (a Nova Guiné e a plataforma de Sahul): só o mundo-reconstruido.json a mostra. Desenhado sobre o globo de HOJE, o contorno do NE a 23 Ma fica a 1.505 km do Sudeste Asiático de hoje (medir_s29.py): a tela não pode dizer 'aqui encostou' sobre ele. A prévia previas/placas-85-45-23-0.png mostra o modelo a 23 Ma, com a Nova Guiné junto das ilhas.
+- OS ENQUADRAMENTOS TÊM ARMADILHA: australia.json traz a Ilha Macquarie (54,6 S) e a Lord Howe (159,1 E); new-south-wales.json traz a Lord Howe; queensland.json vai às ilhas do Estreito de Torres (9,2 S); NSW tem o furo do ACT. O continente com a Tasmânia: 112,9–153,6 E, 43,6–9,2 S.
+- O CHANNEL COUNTRY E OS ESTADOS (DF-01): entregues em camadas separadas, sem recorte de um pelo outro. O CHC fica 67,7 % em Queensland (o resto no SA, NSW e NT) e é 11,9 % de Queensland e 3,95 % da Austrália (bate com a medida do Censo). Em s42 P3, os três estados acesos com o CHC dentro, em contorno.
+- O PONTO GENÉRICO DE ENTREGA cai no Central Coast por coincidência (a regra o põe em terra, a ≥ 3 km da costa e ≥ 8 km do parque, perto do meio da reta Sydney–Newcastle, que corre sobre a costa). NÃO é um dos 15 pontos (F224, não lidos): a tela não o nomeia.
+- O SATÉLITE DAS PLANÍCIES (s01, s11, s33 P2 e a mesa): a entrada está em _media/base/ (Landsat 9, 07/08/2023, os canais do Cooper); o mesa-satelite.py --seco passa. Ainda não há conceito-visual: a janela é a escolha do pesquisa-geo; se a regência quiser outra (o Diamantina, outra data, outra escala), o mesa/baixar.py a refaz. O pesquisa-imagens procura o aéreo e a foto da NASA; quem escolhe é a regência.
+- O SUDESTE ASIÁTICO segue a ONU (o NE): inclui a Papua indonésia e o Timor-Leste e não inclui a Papua-Nova Guiné. A ÁSIA do NE (o continente) não inclui o Arquipélago Malaio: a seta das elapídeas 'da Ásia' (s25) sai do continente; as ilhas são o sudeste-asiatico.
+- AS ILHAS DA WALLACEA (s29): a terra é real (NE); o conjunto é esquema. As Molucas do NE incluem as ilhas Aru, que ficam na plataforma de Sahul (pela linha de Lydekker, fora da Wallacea). As Aru estão dentro da feature 'Maluku': se a regência quiser acender só a Wallacea, tirá-las pede um recorte novo, que o pesquisa-geo faz.
+
+## Abertos
+
+- **a área de ocorrência da caixa-medusa, do crocodilo e da marrom**: nenhuma fonte com licença aberta foi lida (a IUCN é não comercial; o ALA recusou com 403 nas leituras da pauta, e não se tentou de novo); os esquemas declarados usam só as linhas e os países reais. Quem decide: a regência (como o esquema aparece) e a Sala, se quiser uma fonte nova.
+- **os 15 pontos de entrega do parque (F224)**: a lista não foi lida; o site do parque não é fonte de imagem aprovada e a leitura dele não estava no pedido. Quem decide: a Sala (se quiser a lista: o navegador do app); até lá, o ponto genérico.
+- **o limite do 'southern Queensland', do 'tropical north' e da Wallacea**: não há limite oficial lido; ficam como esquema declarado sobre as referências reais. Quem decide: a regência.
+- **o Gondwana inteiro**: o modelo o reconstrói, mas a data não tem linha no dossiê; o _exige pede esquema. Quem decide: a Sala, se quiser (pedido novo e checagem nova).
+
+## NÃO CONFERIDO
+
+- A licença do GPlates Web Service como serviço: não publicada (o 'All rights reserved' é do site da documentação). O que vai à tela é dado do modelo (CC BY 4.0); se a Sala quiser, a pergunta vai à EarthByte.
+- Os termos do Microsoft Planetary Computer: a página é um aplicativo em JavaScript e não se lê por programa (o Landsat em si é domínio público, USGS EROS). O vídeo 7 usou o mesmo serviço.
+- O endereço do parque na Pacific Highway (F211): a coordenada do Wikidata cai dentro de Somersby (ABS), mas a estrada não se conferiu (sem o OSM, que o vídeo não usa).
+- Os 15 pontos de entrega do parque (F224): não lidos; o ponto entregue é genérico.
+- A área de ocorrência de qualquer bicho (a taipan, a marrom, a caixa-medusa, o crocodilo): nenhuma foi lida nem desenhada; o Channel Country é a biorregião, e os estados são os que o Queensland Museum nomeia.
+
+## Fontes lidas
+
+- Natural Earth 1:10m, o commit ca96624a do nvkelso/natural-earth-vector (domínio público (naturalearthdata.com/about/terms-of-use, lida em 18/11/2026 pela miniatura); lido em 19/11/2026).
+- ABS, ASGS Edition 3 (2021): STE e GCCSA (os zips da miniatura, sha256 conferido), LGA 2021 (11650 Central Coast) e SAL 2021 (Somersby) pelo serviço ASGS2021 do geo.abs.gov.au (CC BY 4.0 (a página dos arquivos do ASGS); lido em 19/11/2026).
+- IBRA 7.1 (DCCEEW), o polígono CHC da miniatura (CC BY 4.0, com a atribuição ao DCCEEW (os metadados da camada); lido em 18/11/2026 (a miniatura)).
+- Wikidata, Q4273332 (Australian Reptile Park), pela API wbgetentities (CC0; lido em 19/11/2026).
+- Zenodo: Müller et al. 2022 v1.2.4 (13636799; o README, o .gproj e os dois .rot por partes do zip), Müller et al. 2019 v3.0 (11601026; o License.txt, o README e o CombinedRotations.rot), Merdith et al. 2021 v1.2.4 (13635864; só a página) (CC BY 4.0 nos três registros; o README do MULLER2019 diz CC BY-SA 4.0; lido em 19/11/2026).
+- GPlates Web Service (gws.gplates.org) e a documentação (gwsdoc.gplates.org): os modelos, as rotações, as costas reconstruídas, a atribuição de placa a pontos (o serviço não publica licença; os dados são os do modelo; lido em 19/11/2026).
+- Microsoft Planetary Computer: o STAC (busca de 2021 a 2025, nuvem < 5 %) e a API de dados (QA_PIXEL e os ladrilhos RGB do Landsat 9) (Landsat: domínio público (USGS EROS, data-citation, lida em 19/11/2026); lido em 19/11/2026).
+
+## Os robots.txt e as recusas
+
+- **zenodo.org**: Disallow: /api (menos /api/records/*/files), /search, /records/*/preview; Crawl-delay: 10. só as páginas /records/<id> e os arquivos /records/<id>/files/<nome>?download=1, um pedido por vez, com 11 s entre eles; nada na /api.
+- **gws.gplates.org e gwsdoc.gplates.org**: não têm (HTTP 404). um pedido por vez, com o User-Agent do canal e ≥ 2 s entre eles.
+- **geo.abs.gov.au**: Disallow: / com Allow: /arcgis/rest/services/*/MapServer/ (e FeatureServer, layers, metadata). só caminhos com /MapServer/ (a camada LGA e as consultas do LGA e do SAL); a lista de serviços (vetada) não se pediu.
+- **www.wikidata.org**: Disallow: /w/ para robôs de varredura (o mesmo do Commons). só a API /w/api.php, a porta que a Wikimedia abre para programas (o pedido a autoriza, como a decisão do Commons), com o User-Agent do canal, 2 pedidos, ≥ 5 s entre eles.
+- **raw.githubusercontent.com**: não tem (404, registrado pela miniatura). 2 arquivos do NE no mesmo commit da miniatura.
+- **planetarycomputer.microsoft.com**: sem Disallow. o STAC e a API de dados, um pedido por vez, ≥ 2 s.
+- **Overpass, Nominatim, MapTiler**: —. NÃO se usaram (o Overpass está vetado neste vídeo; o Nominatim não foi preciso: o Wikidata deu o ponto; a MapTiler não é do pesquisa-geo).
+- **nenhum site recusou neste research (nenhum 403, 429 ou verificação)**: —. nada a abrir no navegador do app.
+
+## Os créditos na descrição (para a Sala juntar)
+
+- Plate reconstruction: Müller, R. D., et al. (2022), A tectonic-rules-based mantle reference frame since 1 billion years ago, Solid Earth 13, 1127–1159, https://doi.org/10.5194/se-13-1127-2022; model files v1.2.4, https://doi.org/10.5281/zenodo.13636799, licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Changes: present-day Natural Earth coastlines rotated by Alpha Point with the model's rotations.
+- Contains Australian Bureau of Statistics data: Australian Statistical Geography Standard (ASGS) Edition 3, 2021 boundaries, © Commonwealth of Australia (ABS), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+- Interim Biogeographic Regionalisation for Australia (IBRA), Version 7.1 © Commonwealth of Australia, Department of Climate Change, Energy, the Environment and Water (DCCEEW), 2025, licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Data provider: Australian Government Department of Climate Change, Energy, the Environment and Water.
+- Plate reconstruction: Müller, R. D., et al. (2022), A tectonic-rules-based mantle reference frame since 1 billion years ago, Solid Earth 13, 1127–1159, https://doi.org/10.5194/se-13-1127-2022; model files v1.2.4, https://doi.org/10.5281/zenodo.13636799, licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Reconstructed coastlines from the GPlates Web Service (EarthByte, The University of Sydney), simplified by Alpha Point.
+- Satellite imagery: Landsat Collection 2 Level-2 (LC09_L2SP_096078_20230807_02_T1). Landsat imagery courtesy of the U.S. Geological Survey.
+
+Os scripts: out/australia-animais/_tmp/pesquisa-geo/ (geo_abs.py, geo_ne.py, geo_placas.py e geo_pontos.py derivam; rotacao.py lê o modelo; conferir.py, conferir_gws.py, conferir_placas.py, conferir_parque.py e comparar_modelos.py conferem; geo-gravar.mjs grava pelo gravarGeo da pré-v1; mesa/ faz o satélite; geo_pauta.py e geo_pauta_md.py escrevem esta pauta).

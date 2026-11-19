@@ -208,6 +208,9 @@ B-roll genérico vem dos bancos pagos; evento real específico, nunca (midia.md 
 - **Retrato de pessoa citada** é do `pesquisa-pessoas` (midia.md §7.2).
 - Obra do governo federal dos EUA (NARA, NASA, USGS, DVIDS, sala de imprensa de órgão federal) é domínio
   público **nos Estados Unidos**, e o registro diz assim. Material "courtesy" de terceiro dentro de acervo federal não é: confira.
+  - Foto da ISS no Gateway da NASA: leia o campo "Additional Information" da página e o copyright do arquivo (EXIF, IPTC e
+    XMP). "Russian imagery", ou o aviso `РКК "Энергия"` (a RSC Energia), não é obra federal: não entra (`APRENDIZADOS.md`,
+    item 110; o vídeo 8, s11).
 - Commons: licença arquivo a arquivo (identidade.md §6). Licença "desconhecida" não entra.
 
 ## 6 · Formato, resolução, taxa

@@ -253,6 +253,10 @@ Leia o que a origem diz, onde ela diz: no `caca`, o `candidatos-caca.json`; no `
 - **Acervo federal** (NARA, NASA, USGS, DVIDS, sala de imprensa federal e, desde 27/09/2026, o de qualquer órgão
   federal): domínio público só a obra do próprio governo federal. Foto "courtesy", de terceiro ou de contratado não
   é (§7.3). A música que vem no vídeo nunca entra: o clipe vai sem o áudio.
+  - **A foto da ISS no Gateway da NASA** (19/11/2026, vídeo 8, s11): leia o campo "Additional Information" da página
+    e o copyright do próprio arquivo (EXIF, IPTC e XMP; o texto russo pode vir em CP1251 gravado como Latin-1). "Russian
+    imagery", ou o aviso `РКК "Энергия"` (a RSC Energia), não é obra do governo federal: a foto não entra
+    (`APRENDIZADOS.md`, item 110).
   - **Exceção: o DOCUMERICA** (`marca/midia.md` §7.3, Lucas, 27/09/2026). A foto da série entra item a item, quando
     o item no catálogo diz `useRestriction` "Unrestricted", com a fonte na tela (ex.: `Dennis Cowals / National
     Archives`) e o aviso do ano. A licença passa pela regra; o resto você julga como sempre.
