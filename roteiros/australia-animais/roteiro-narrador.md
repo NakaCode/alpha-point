@@ -8,7 +8,9 @@
 > `decisoes-lucas.md`). Narração pura, en-US. Nenhum fato novo: os números novos na voz são os que a lista pede (o 23 da colisão, os anos do
 > estudo das picadas e o 2005 da água-viva). **A Sala tirou depois o 32 dos animais do mar** (o B6 da lista contrariava a pauta v2 aprovada, §4.6
 > e K9: o tubarão vai na voz só como "animals in the sea, sharks among them", sem o 32 do W56) e pagou a promessa dos tubarões com o que o registro
-> faz com eles; o r2 do escritor está em `_trabalho/roteiro-r2.antes-sala.md`. Este r2 não passou pelo verificador de fatos, pela bancada nem pelo Lucas.
+> faz com eles; o r2 do escritor está em `_trabalho/roteiro-r2.antes-sala.md`. O verificador de fatos julgou o r2 (`qc-roteiro/fatos.laudo.md`), e a
+> Sala aplicou as duas trocas de uma frase dele: os tubarões contados "with all the other sea animals that have no venom" (os com veneno
+> ficam no X26) e os mamíferos que cruzaram "on their own" (fora o ser humano e o dingo). Falta o Lucas.
 > **Os três títulos do Test & Compare da publicação** (o Lucas, 18/11/2026: "O 3, o 2 e o meu (Recomendado)"), que o gancho paga: o da 1ª
 > linha (o mais clicado no teste dos leitores), "Why So Few People Die From Australia's Deadly Animals" e "Why Does Australia Have So Many
 > Dangerous Animals?".
@@ -62,7 +64,7 @@ Elapids seem to have been the first venomous snakes to reach the continent. And 
 
 That's the family our count was picking up. Worldwide, by the same count, elapids and vipers together make up only about one in five snake species, in roughly equal shares. In Australia, elapids alone are the clear majority, and there isn't a single viper.
 
-Then, about 23 million years ago, Australia's leading edge began running into Southeast Asia, and a chain of islands formed between the two. On a map, those islands look like stepping stones. Very few mammals ever made it across them. The only ones that crossed and took hold were rodents and bats. So Australia ended up with kangaroos and koalas, and with no native cats and no hoofed animals at all.
+Then, about 23 million years ago, Australia's leading edge began running into Southeast Asia, and a chain of islands formed between the two. On a map, those islands look like stepping stones. Very few mammals ever made it across them. The only ones that crossed on their own and took hold were rodents and bats. So Australia ended up with kangaroos and koalas, and with no native cats and no hoofed animals at all.
 
 So that's where the snakes came from: one venomous family that arrived early, on a continent with no vipers.
 
@@ -138,7 +140,7 @@ Then there are the animals with no venom at all. They killed more Australians th
 
 If you've been waiting for the sharks and the crocodiles, this is where they turn up, and they have company. The death records count dogs and other mammals, animals in the sea, sharks among them, and crocodiles. On farms, a separate study found, most fatal incidents with animals involved horses or cattle.
 
-The sharks don't get a number of their own: the records count them with everything else in the sea. The crocodiles killed 13 people in that decade. The saltwater crocodile isn't only Australia's: it lives from Sri Lanka to northern Australia. After decades of commercial hunting, the Northern Territory protected it in 1971, and it came back.
+The sharks don't get a number of their own: the records count them with all the other sea animals that have no venom. The crocodiles killed 13 people in that decade. The saltwater crocodile isn't only Australia's: it lives from Sri Lanka to northern Australia. After decades of commercial hunting, the Northern Territory protected it in 1971, and it came back.
 
 Heat and water kill far more Australians than venom does. Over that same decade, extreme natural heat killed 202 people, and drowning in rivers, lakes and the sea killed more than a thousand. None of that is on the famous list. Neither are the roads we started with.
 

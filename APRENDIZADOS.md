@@ -1932,3 +1932,40 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   esses agentes do mesmo jeito, e o aviso de ocupado que eles marcaram trava o próximo que precisar da máquina.
 - Skill: nenhuma ainda. A casa é a `retomar-apos-troca-de-conta` (catálogo §2.5, nº 57, onda 3), quando ela nascer, com o ok do Lucas
   para a onda dela.
+
+### 107. A frase segura da pauta marcada "a conferir" entra no roteiro sem a leitura que veio depois e a desmente
+
+- **O que aconteceu** (18/11/2026, vídeo 8): os dois MÉDIOS do verificador de fatos no r1 nasceram na pauta, não na escrita. A colisão
+  da Austrália com a Ásia "some 20 million years ago" vinha da pauta (§4.2), lida só do resumo de Hall (2013) e marcada "a conferir pelo
+  verificador"; o texto integral diz "about 23 million years ago". E a ponte "The snake that actually kills Australians lives somewhere else"
+  (pauta §4.3 e K10) foi escrita antes da leitura do habitat: o Reptile Database dá a marrom-oriental também em SA e no NT, e a própria
+  medida do Censo, feita depois, proíbe dizer que ela não vive no interior. O briefing e o escritor usaram as duas como estavam.
+- **A causa:** as leituras que vieram depois da pauta (o habitat, a medida do Censo, o "a conferir") não voltaram às frases seguras dela
+  antes do briefing, e o escritor trata a frase segura como fato pronto.
+- **O que resolveu:** o r2 aplicou as duas trocas do verificador ("about 23 million years ago"; "lives where far more people do"; commit
+  `cc10ab6`), e o laudo do r2 as confere (`roteiros/australia-animais/qc-roteiro/fatos.laudo.md`).
+- **Como evitar:** antes do briefing, a Sala passa pelas leituras posteriores (o registro "As leituras da Sala", os fatos de última hora,
+  as medidas) toda frase segura da pauta marcada "a conferir" ou escrita antes de uma dessas leituras; a que não fechar vai ao briefing como
+  "a conferir", nunca como frase segura.
+- **Por que serve a outros canais:** qualquer linha que vá da pauta ao roteiro com leituras no meio tem frases seguras que envelhecem antes
+  da escrita.
+- Skill: nenhuma ainda. A casa é a `gerar-roteiro-geografia` (catálogo §2.1, nº 3, onda 2), quando ela nascer, com o ok do Lucas para a
+  onda dela.
+
+### 108. A lista da bancada ofereceu ao r2 um número que a pauta aprovada tinha tirado da voz
+
+- **O que aconteceu** (18/11/2026, vídeo 8): o ouvinte a frio cobrou o tubarão prometido e sem número, e a lista da Sala
+  (`roteiros/australia-animais/_trabalho/lista-r1.md`, B6) ofereceu o 32 do código W56 ("Animals in the sea, sharks among them, killed
+  32"). A pauta v2 aprovada (§4.6 e K9) põe o tubarão na voz sem o 32: o código junta o tubarão com todo bicho do mar sem veneno, e quem ouve
+  "32" guarda "tubarões: 32". O porquê da regra `[tubarao]` do portão do roteiro diz isso; o padrão dela procura o número colado ao tubarão
+  e não pegou "sharks included, killed 32". O escritor seguiu a lista e avisou.
+- **A causa:** a Sala decidiu o item do ouvinte pela base de fatos (o 32 existe e é CC BY), sem reler a decisão da pauta e o porquê das
+  regras do portão sobre o mesmo assunto.
+- **O que resolveu:** a Sala tirou o 32 do r2 e pagou a promessa com o que o registro faz ("The sharks don't get a number of their own:
+  the records count them with all the other sea animals that have no venom", na letra do verificador do r2); o B6 da lista foi corrigido
+  (commits `cc10ab6` e o do r2 final).
+- **Como evitar:** antes de pôr um número ou um fato na lista, a Sala procura o assunto na pauta (a coluna "Na fala", o "Não se diz" e as
+  trocas K do cético) e no porquê das regras do portão (`grep` da palavra no `gate.mjs`), não só na base de fatos.
+- **Por que serve a outros canais:** a lista de consertos entre duas versões de um texto é onde uma decisão já tomada volta sem ninguém
+  ver: o revisor a frio não conhece a pauta, e quem monta a lista conhece a base melhor que a decisão.
+- Skill: nenhuma ainda. A casa é a `gerar-roteiro-geografia` (catálogo §2.1, nº 3, onda 2), como a do item 107.
