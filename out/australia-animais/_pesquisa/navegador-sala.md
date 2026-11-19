@@ -75,8 +75,11 @@ baixado, e nenhum formulário foi preenchido.
     contribuição de um animal nos campos codificados; extraídos em agosto de 2024.
   - **Os números:**
     - o total: 713 mortes (34 por ano em média), das quais 70,8 % envolveram mamíferos terrestres (505);
-    - os mamíferos: os cavalos com 222 (31,1 %), os bovinos com 92 (12,9 %), os cães com 82 (11,5 %) e os cangurus com 53, todas em
-      acidente de veículo;
+    - os mamíferos: os cavalos com 222 (31,1 %), os bovinos com 92 (12,9 %), os cães com 82 (11,5 %) e os cangurus com 53, estes todos em
+      acidente de veículo. **Corrigido pela Sala em 19/11/2026, ~19:1x, pelo pré-laudo de tela (`roteiros/australia-animais/qc-roteiro/
+      fatos-tela-pre.laudo.md`, P06):** a primeira versão desta linha dizia "todas em acidente de veículo" para os quatro; só os 53 cangurus
+      são todos de veículo. Dos bovinos, 42 de 92 (45,7 %) foram de veículo; dos cavalos, 59,5 % foram quedas; dos cães, 46,3 % mordidas e
+      42,7 % quedas;
     - os outros: as cobras com 50 (47 com cobra venenosa), as abelhas com 45 (todas por anafilaxia), os tubarões com 39 e os crocodilos com
       25.
   - **O literal sobre as aranhas:** "There were no deaths confirmed to have involved a spider bite".
@@ -91,3 +94,13 @@ baixado, e nenhum formulário foi preenchido.
 - **O Reptile Park:** a página "Media Requests" manda os pedidos de imagem e de filmagem ao e-mail da equipe de marketing, que ela publica. A
   filmagem no parque é paga ("Fees may be waived or reduced if ARP is highlighted or mentioned in the editorial script"). O Lucas manda o e-mail,
   com o texto do mesmo arquivo; o vídeo não apresenta o parque como patrocinador nem parceiro.
+
+### O Queensland Museum, a data da página (19/11/2026, ~19:2x, no screen_text)
+
+- **Por quê:** o laudo de tela do verificador (`roteiros/australia-animais/qc-roteiro/fatos-tela.laudo.md`, VT-212, s42) deixou o crédito
+  `Source: Queensland Museum` NÃO CONFERIDO só no ano: o site recusa robô (403 ao verificador), e a identidade §7 pede o ano da fonte.
+- **A leitura** (`collections.qm.qld.gov.au/topics/136/eastern-brown-snake`, uma página, no navegador do app): o texto é o mesmo de 18/11
+  ("Distribution: Found over most of Queensland, New South Wales and Victoria.", e o resto). A página **não tem data** de publicação nem de
+  revisão: nenhuma no texto, nenhuma meta de data; só o rodapé do site inteiro, "© The State of Queensland (Queensland Museum) 2010 - 2026".
+- **A decisão da Sala:** o crédito fica `Source: Queensland Museum`, sem ano, por exceção declarada (a página não tem data), como os da ficha
+  da Austrália do Sul e do Bee Aware.

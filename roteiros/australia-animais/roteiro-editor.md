@@ -314,7 +314,7 @@ arredondado com o hedge, à voz. Datas e durações ("ten years", "a decade") n�
   calculation; different periods and methods` (f117–f119);
 - **≈ 70 DEATHS (AS OF 2005)** e a temporada **OCT. 1–JUNE 1**, com `Source: Currie & Jacups, Medical Journal of Australia, 2005` (f137–f138);
   **1970**, com `Source: Winkel et al., Toxicon, 2006` (f140);
-- **13 DEATHS BEFORE 1981 · 97%**, com `Source: Isbister et al., MJA, 2005`; **AT LEAST 14 · 1956**, com `Source: Winkel et al., Australian
+- **13 DEATHS BEFORE 1981 · 97%**, com `Source: Isbister et al., MJA, 2005`; **AT LEAST 14 · 1956**, com `Source: Nimorakiotakis & Winkel, Australian
   Family Physician, 2004; Wiener, MJA, 2003` (f152–f158);
 - **1822**, com `Source: Bee Aware (Plant Health Australia)`, só o fato (a página não traz licença) (f168);
 - **154 · 202 · 1,010** e **13 (crocodiles) · 1971**, com o ABS e Fukuda et al. 2011 (f170, f176–f180); **HEAT 202 · DROWNING (NATURAL
@@ -392,7 +392,7 @@ arredondado com o hedge, à voz. Datas e durações ("ten years", "a decade") n�
 - **a datação e a deriva:** Geoscience Australia (f43–f44, f144), Hall 2013 (f45, f54, f65), Scher et al. 2015 (f45), Lee et al. 2016 (f49–f57),
   Jackson et al. 2016 (f59–f60, f79, f100–f101, f110), Byrne et al. 2008 (f72), Rowe et al. 2019 (f66, f77), Skeels et al. 2023 (f67–f68);
 - **a caixa-medusa:** `Source: Currie & Jacups, Medical Journal of Australia, 2005` (f136–f138); o soro de 1970: Winkel et al. 2006 (f140);
-- **as aranhas:** Herzig et al., PNAS 2020 (f144–f149, f195), Isbister et al., MJA 2005 (f149–f155), Wiener, MJA 2003, e Winkel et al., AFP 2004
+- **as aranhas:** Herzig et al., PNAS 2020 (f144–f149, f195), Isbister et al., MJA 2005 (f149–f155), Wiener, MJA 2003, e Nimorakiotakis & Winkel, AFP 2004
   (f157–f158), RAVE-II, Ann Emerg Med 2014 (f159);
 - **as abelhas:** Welton et al., Intern Med J 2017 (f165), Turner et al. 2017 (f167), Bee Aware (f168);
 - **os sem veneno:** Peachey & Lower, J Agromedicine 2023 (f174), Lloyd-Jones et al. 2023 (f177), Fukuda et al. 2011 (f178);
@@ -1001,9 +1001,9 @@ gráfico com a fonte e o ano. "Folha" é o documento recriado, com o dono. "Cart
   - Ids: F174 (Wiener, carta, MJA 2003;179:455-456: "between 1955 and 1957, i dissected the venom glands of 590 redback spiders for the production of antivenom").
   - Folha ou ilustração: as glândulas dissecadas, "590 REDBACK SPIDERS · 1955–1957" (F174: "Between 1955 and 1957, I dissected the venom glands of 590 redback spiders"). O nome de Wiener não vai à voz; na tela, opcional. Crédito `Source: Wiener, Medical Journal of Australia, 2003`.
 - **f158** (p48.3 · 11:37,2–11:43,9) "Redback bites killed at least 14 people before that antivenom arrived, in 1956, and there's been no confirmed death since."
-  - Ids: F175 (Winkel et al., Australian Family Physician 33(3), mar. 2004: "before the introduction of redback spider antivenom in australia, at least 14 deaths had been reported"); F176 (Wiener, carta, MJA 2003;179:455-456: "no fatalities have occurred from redback spider bite since antivenom became available in 1956").
-  - Régua do tempo: "AT LEAST 14 DEATHS BEFORE 1956 · NO CONFIRMED DEATH SINCE". **O "confirmed" fica** (uma morte de 2016 foi atribuída a um redback e nunca confirmada; o ABS dá zero aranha em todos os anos; a observação D do r1). Crédito `Source: Winkel et al., Australian Family Physician, 2004; Wiener, MJA, 2003`. É volátil.
-  - A ressalva de Winkel 2004 se lê até o fim. A morte recente que o artigo cita (depois de uma picada "presumed" de redback, no norte de NSW, sem soro) vem com a frase seguinte: "In this case, however, the cause of death occurred a week after the bite and was not clearly related to the envenomation syndrome" (a Sala, 19/11/2026, pelo laudo das divergências do research, item 1 e achado 3). Se a régua quiser o lastro de hoje, com o crédito do ABS: "SPIDER DEATHS, 2016–2025: 0". **Nada do caso de 2016 na tela**, nem nome nem data. Reconferir o ABS antes de publicar.
+  - Ids: F175 (Nimorakiotakis & Winkel, Australian Family Physician 33(3), mar. 2004 (o autor corrigido pela Sala em 19/11/2026: o artigo é de Nimorakiotakis & Winkel, PMID 15054982, pelo pré-laudo de tela `qc-roteiro/fatos-tela-pre.laudo.md`, C07; o laudo da voz, F175, e o `_dados/s58.json` dizem "Winkel et al.", tirado do nome do arquivo): "before the introduction of redback spider antivenom in australia, at least 14 deaths had been reported"); F176 (Wiener, carta, MJA 2003;179:455-456: "no fatalities have occurred from redback spider bite since antivenom became available in 1956").
+  - Régua do tempo: "AT LEAST 14 DEATHS BEFORE 1956 · NO CONFIRMED DEATH SINCE". **O "confirmed" fica** (uma morte de 2016 foi atribuída a um redback e nunca confirmada; o ABS dá zero aranha em todos os anos; a observação D do r1). Crédito `Source: Nimorakiotakis & Winkel, Australian Family Physician, 2004; Wiener, MJA, 2003`. É volátil.
+  - A ressalva de Nimorakiotakis & Winkel 2004 se lê até o fim. A morte recente que o artigo cita (depois de uma picada "presumed" de redback, no norte de NSW, sem soro) vem com a frase seguinte: "In this case, however, the cause of death occurred a week after the bite and was not clearly related to the envenomation syndrome" (a Sala, 19/11/2026, pelo laudo das divergências do research, item 1 e achado 3). Se a régua quiser o lastro de hoje, com o crédito do ABS: "SPIDER DEATHS, 2016–2025: 0". **Nada do caso de 2016 na tela**, nem nome nem data. Reconferir o ABS antes de publicar.
 - **f159** (p48.4 · 11:43,9–11:49,0) "A later trial, though, found that the antivenom didn't significantly ease pain or other symptoms."
   - Ids: F177 (Isbister et al., Ann Emerg Med 64:620-628 (2014) (RAVE-II), resumo (PMID 24999282): "did not significantly improve pain or systemic effects").
   - Folha: o ensaio de 2014 (pauta §6, ato 5), "DID NOT SIGNIFICANTLY IMPROVE PAIN OR SYSTEMIC EFFECTS". Os 224 pacientes ficam fora. Crédito `Source: Isbister et al., Annals of Emergency Medicine, 2014 (RAVE-II)`.
