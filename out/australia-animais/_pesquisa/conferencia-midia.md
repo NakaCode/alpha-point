@@ -1,7 +1,8 @@
-# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11, a exceção do CSIRO, o lote 6 (os arquivos da Fase B da caça 1) e o lote 7 (os da Fase B 2), 19/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40; lote 6 às 15:45; lote 7 às 16:33)
+# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11, a exceção do CSIRO, o lote 6 (os arquivos da Fase B da caça 1), o lote 7 (os da Fase B 2) e o lote 8 (conducting, as janelas da regência), 19/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40; lote 6 às 15:45; lote 7 às 16:33; lote 8 às 17:57)
 
-**Laudo acumulado: 67 aprovados de 79 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 79.**
+**Laudo acumulado: 70 aprovados de 83 conferidos (1 reprovado, 12 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 83.**
 
+- **Lote 8 (17:57, conducting):** 52 aprovados de 53 conferidos (0 reprovados, 1 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 56 itens do `_lote_do_conferente` da regência (4 reusos, 19 janelas novas, 31 provisórias, 2 declarados já aceitos). A seção logo abaixo.
 - **Lote 7 (16:33):** 3 aprovados de 3 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 3. São os 3 arquivos de banco pago da Fase B 2 da caça 1 (a lista 2), todos com `mesmo_item: true` (a seção logo abaixo).
 - **Lote 6 (15:45):** 23 aprovados de 23 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 23. São os 23 arquivos de banco pago da Fase B da caça 1, todos com `mesmo_item: true` (a seção logo abaixo).
 - **Exceção do CSIRO (07:40):** 3 aprovados de 3 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 3. As três fotos do CSIRO, pendente_lucas nos lotes 1 a 3, passaram a **aprovado** pela escolha do Lucas de ~07:30 (a seção logo abaixo).
@@ -13,6 +14,147 @@
 Sem regência: todas as janelas são provisórias (as do espelho r2, `_planos`). Nada mudou em `out/australia-animais/_media/` em nenhum dos três lotes: 158 arquivos com o mesmo sha256 antes e depois (`_tmp/conferencia/_media-antes-lote3.txt` e `_media-depois-lote3.txt`; as dos lotes 1 e 2 ao lado). Antes da emenda, o JSON foi copiado para `_tmp/conferencia/conferencia-midia-antes-lote3.json`, com o mesmo sha256 da cópia da Sala (`c5ca3162…`), e os 34 vereditos dos lotes 1 e 2 ficaram iguais.
 
 **A cobertura do research:** os 51 rascunhos de acervo em `_media/_caca/*/acervo-livre/` e as duas páginas de documento sem `-prova` em `_media/documento/` têm veredito. Não há retrato nem logo em `_media/`.
+
+## Lote 8: as janelas da regência (conducting, 17:57)
+
+Fluxo `midia`, sobre o que já estava entregue em `_media/`; nada novo chegou. A lista é a `regencia.json` › `_lote_do_conferente`
+(`b4fb6fbf…`, 2ª rodada), explicada no relato do regente (`_tmp/regente/relato-r2.md`, §4 e §10) e no laudo do verificador da
+regência (RG-01, RG-05, RG-08, RG-09). O pedido: `out/australia-animais/_tmp/conferencia/pedido-lote8.md`.
+
+**Laudo do lote 8: 52 aprovados de 53 conferidos (0 reprovados, 1 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 56.**
+Os 56 itens: os 4 reusos viram 4 vereditos novos (o `id` é o caminho entregue, com `reuso_de`); as 19 janelas novas são 18 vereditos
+regravados (a placa de Ellis Beach tem dois usos em s12); as 31 provisórias são 31 vereditos regravados pela conta, sem abrir imagem;
+os 2 declarados já aceitos não pedem veredito. Os 49 vereditos regravados foram, inteiros, para `substituidos` (`substituido_por: lote8`).
+Cada veredito regravado leva `frase_coberta.janela_s` da regência, `janela_provisoria: false`, `janela_no_video` e a janela julgada antes;
+os de janela nova, também `usos_na_regencia` (cada uso, com as palavras da janela, o papel e a caixa do recorte).
+
+Olhei 17 imagens (`_tmp/conferencia/lote8/`): 6 folhas de clipe (o trecho que a regência diz, ou o clipe inteiro quando ela não diz)
+e 11 fotos reduzidas ou folhas de fotos. Medidas: `_tmp/conferencia/lote8_medido.json` (ffprobe e sha256 dos 51 arquivos do lote).
+Nada mudou em `_media/`: 344 arquivos com o mesmo sha256 antes e depois (`_media-antes-lote8.txt` e `_media-depois-lote8.txt`). Antes
+da emenda, as cópias: `_tmp/conferencia/conferencia-midia-antes-lote8.json` (`903b6d81…`) e `.md` (`5771cbee…`).
+
+### Os 4 reusos declarados (veredito novo para a frase nova)
+
+| cena (beat) | arquivo | aprovado para | janela | veredito | motivo |
+|---|---|---|---|---|---|
+| s46 (1) | `foto/s12/s12-P2-red-bellied-black-snake-…-tann-cc-by-2-0.jpg` | s12 P2 | 543,4–551,0 (7,6 s) | aprovado | a cobra real, viva e sem picada, ao lado do frasco: cobre "a snake actually putting venom into a person is rare"; reuso declarado no conceito |
+| s64 (2) | `foto/s42/s42-P4-grazing-cattle-oxley-creek-…-cc-by-sa-4-0.jpg` | s42 P4 | 812,933–819,0 (6,067 s) | **trocar** | só gado, nenhum cavalo: não cobre "horses or cattle" (o beat pede os dois, e a regência não divide a frase); o mesmo juízo da caça sobre o s64-a-2 |
+| s65 (0) | `footage/s12/tubarao-recife-australia.mp4` (s12-d-3) | s12 P4 | 819,0–825,133 (6,133 s), trecho 21,8–28,0 s | aprovado | o tubarão inteiro nadando sobre o recife, sem presa e sem número; na tela aparece uma vez só (a carta 5 de s12 é o s12-d-2, outro tubarão) |
+| s70 (0) | `foto/s56/s56-sydney-funnel-web-…-male-walking-…-cc-by-4-0.jpg` | s56 P1 | 906,833–915,9 (9,067 s) | aprovado | o macho (a origem diz "male") andando fora da toca, sob "adult males" e "the same spiders that wander out"; a decisão do Lucas, "Aceitar 58 % e seguir" |
+
+### As 19 janelas novas (18 vereditos, todos aprovado)
+
+| cena (beat) | arquivo | janela nova (julgada antes) | o que a janela nova acrescenta | veredito |
+|---|---|---|---|---|
+| s12 (0) | `footage/s12/placa-aviso-norte.mp4` | 54,7–61,033 (54,7–60,033) | "People ask it about the"; a tomada de 20 s é uma só, sem corte: qualquer trecho de 6,333 s serve | aprovado |
+| s12 (0, saída escrita) e s12 (1, carta 3) | `foto/s12/s12-P1-marine-stingers-…-ellis-beach-…jpg` | 54,7–61,033 e 62,7–67,4 (54,7–60,033) | a carta 3: o losango da água-viva recortado da placa real, ~1440 × 1470 px no arquivo, sem texto, até 1,4×; o recorte não muda o sentido | aprovado |
+| s12 (1, carta 1) | `foto/s12/s12-P2-red-bellied-black-snake-…jpg` | 61,033–67,4 (60,033–62,6) | a cobra fica até o fim da lista | aprovado |
+| s12 (1, carta 2) | `foto/s12/s12-P2-huntsman-…-close-up-…jpg` | 61,833–67,4 (60,033–62,6) | a huntsman fica até o fim da lista | aprovado |
+| s12 (1, carta 4) | `footage/s12/crocodilo-de-agua-salgada.mp4` | 63,667–67,4 (62,6–64,5) | o recorte no crocodilo (RG-09): o bicho inteiro, com o rabo, ~960 px no arquivo, sem passar de 1,4×; o trecho calmo é 0–9 s, antes da margem de cascalho entrar no alto | aprovado |
+| s15 (1) | `footage/s15/formigas-e-lagarta-macro.mp4` | 100,733–104,033 (parte de 1,77 s) | as formigas de "examples" ao fim da frase; o clipe tem 20,7 s | aprovado |
+| s15 (4) | `footage/s15/recife-agua-viva-coral-anemona-2.mp4` | 108,467–110,467 (108,617–110,467) | 0,15 s antes de "coral" (RG-05); só junto da 1ª metade | aprovado |
+| s16 (1) | `foto/s16/s16-P2-huntsman-…-verandah-…jpg` | 118,033–125,3 (118,033–120,133) | "Over a little more than a decade, one study found, spider bites put Australians in the hospital": a aranha de casa ao lado da folha, sem vítima nem número | aprovado |
+| s37 (1) | `documento/ainsworth-2026-plosntd-p17.jpg` | 390,2–403,333 (390,2–397,567) | fica ao lado das réguas de P3, sob "And a ranking of venoms…": a página é a crítica ao teste e não contradiz a frase delas | aprovado |
+| s37 (1) | `documento/ainsworth-2026-plosntd-p17-box.jpg` | 390,2–403,333 (390,2–397,567) | o mesmo, com a página | aprovado |
+| s41 (0) | `foto/s41/s41-eastern-brown-snake-…jpg` | 458,5–465,467 (458,5–464,633) | "Brown snakes and": ainda o mesmo bicho | aprovado |
+| s51 (0) | `footage/s51/rede-stinger-praia-norte.mp4` | 610,6–616,167 (610,6–613,5) | até "the box jellyfish"; o clipe inteiro tem 5,8 s, sem fade | aprovado |
+| s51 (0, saída escrita) | `foto/s51/s51-P1-stingers-…-four-mile-beach-…jpg` | 610,6–616,167 (610,6–613,5) | o mesmo, na saída escrita | aprovado |
+| s55 (0) | `foto/s55/s55-P1-…-fangs-…jpg` | 658,367–669,6 (658,367–661,6) | a hipótese da toxina (RG-01); a foto é a espécie, sem sexo na origem: nenhum rótulo "male" sobre ela | aprovado |
+| s55 (2) | `foto/s55/s55-P3-long-nosed-bandicoot-…jpg` | 669,6–672,133 (parte de 1,98 s) | fica sob "birds and lizards." até as três levantarem | aprovado |
+| s55 (2) | `foto/s55/s55-P3-bush-stone-curlew-…jpg` | 670,333–672,133 (cabe na parte) | junto do grupo (RG-01) | aprovado |
+| s55 (2) | `foto/s55/s55-P3-eastern-water-skink-…jpg` | 671,133–672,133 (cabe na parte) | junto do grupo (RG-01) | aprovado |
+| s56 (0) | `foto/s56/s56-…-male-walking-…jpg` | 680,9–687,533 (680,9–684,867) | "and most happen between November and March.", sob a tira dos meses | aprovado |
+
+As fotos que passam de 6 s na tela (s16, s37, s41, s46, s55 P1, s56, s70) têm empurrão da câmera ou a mesa mudando em volta: movimento
+com propósito, fora do teto de 6 s do plano parado (identidade §4.3).
+
+### As 31 janelas provisórias confirmadas (pela conta, sem abrir imagem)
+
+Em todas, a frase do beat está dentro da frase julgada, a janela da regência cabe na julgada (±0,12 s), e o clipe é mais longo que a
+janela. `janela_provisoria` passou a `false`, e `janela_s` é a da regência.
+
+| cena | beat | arquivo | janela da regência | janela julgada | clipe |
+|---|---|---|---|---|---|
+| s01 | 0 | `s01-cooper-creek-floodplain-windorah-qld-astronaut-photo-iss…` | 0,000–2,867 (2,867 s) | 0,000–2,867 | foto |
+| s03 | 0 | `taipan-do-interior.mp4` | 7,933–10,800 (2,867 s) | 7,933–10,800 | 22,600 s |
+| s08 | 0 | `s08-sydney-funnel-web-atrax-robustus-male-frontal-close-up-2…` | 36,133–38,200 (2,067 s) | 36,133–38,200 | foto |
+| s09 | 0 | `estrada-australiana-aerea.mp4` | 38,200–40,100 (1,900 s) | 38,200–40,100 | 6,433 s |
+| s12 | 1 | `tubarao-recife-australia-2.mp4` | 64,633–67,400 (2,767 s) | 64,500–67,400 | 10,967 s |
+| s12 | 2 | `mato-australiano-calmo.mp4` | 67,400–72,100 (4,700 s) | 67,400–72,100 | 11,267 s |
+| s15 | 1 | `formigas-e-lagarta-macro-2.mp4` | 102,800–104,033 (1,233 s) | 100,500–104,033 | 31,467 s |
+| s15 | 3 | `recife-agua-viva-coral-anemona.mp4` | 106,767–108,467 (1,700 s) | 106,767–108,617 | 19,500 s |
+| s18 | 0 | `crocodilo-de-agua-salgada.mp4` | 143,867–147,733 (3,866 s) | 143,867–147,733 | 16,867 s |
+| s21 | 0 | `s21-P1-saltwater-crocodile-eye-close-up-in-water-kakadu-nt-2…` | 172,533–178,967 (6,434 s) | 172,533–178,967 | foto |
+| s21 | 1 | `s21-P2-red-bellied-black-snake-pseudechis-porphyriacus-awaba…` | 178,967–182,467 (3,500 s) | 178,967–182,467 | foto |
+| s25 | 1 | `naja-capelo.mp4` | 230,833–236,067 (5,234 s) | 230,833–236,067 | 15,567 s |
+| s27 | 6 | `cascavel-guizo.mp4` | 262,500–265,867 (3,367 s) | 262,500–265,867 | 17,267 s |
+| s30 | 0 | `canguru-e-coala.mp4` | 311,700–314,000 (2,300 s) | 311,700–314,000 | 19,200 s |
+| s30 | 1 | `canguru-e-coala-2.mp4` | 314,000–318,233 (4,233 s) | 314,000–318,233 | 50,767 s |
+| s35 | 1 | `s35-P2-long-haired-rat-rattus-villosissimus-csiro-cc-by-3-0.…` | 362,000–368,433 (6,433 s) | 362,000–368,433 | foto |
+| s36 | 2 | `s36-inland-taipan-oxyuranus-microlepidotus-head-close-up-wil…` | 385,467–387,667 (2,200 s) | 382,400–387,667 | foto |
+| s38 | 0 | `s38-inland-taipan-oxyuranus-microlepidotus-calm-on-ground-au…` | 409,133–414,400 (5,267 s) | 409,133–414,400 | foto |
+| s42 | 2 | `pasto-gado-cavalos.mp4` | 479,500–486,700 (7,200 s) | 479,500–486,700 | 41,300 s |
+| s42 | 3 | `borda-bairro-mato.mp4` | 486,700–490,100 (3,400 s) | 486,700–490,100 | 16,300 s |
+| s44 | 1 | `s44-P4-tiger-snake-notechis-scutatus-in-grass-lake-walyungup…` | 518,467–522,700 (4,233 s) | 518,467–522,700 | foto |
+| s51 | 2 | `riacho-mare-mangue-norte.mp4` | 621,067–624,067 (3,000 s) | 621,067–624,067 | 18,733 s |
+| s53 | 0 | `sydney-casas-e-mato-aerea.mp4` | 644,900–646,967 (2,067 s) | 640,600–646,967 | 48,067 s |
+| s55 | 4 | `cao-e-gato.mp4` | 678,500–680,900 (2,400 s) | 678,500–680,900 | 17,433 s |
+| s57 | 0 | `s57-sydney-funnel-web-atrax-robustus-female-at-burrow-2023-i…` | 692,000–695,000 (3,000 s) | 692,000–695,000 | foto |
+| s58 | 0 | `s58-redback-spider-latrodectus-hasseltii-close-up-csiro-2007…` | 713,167–718,400 (5,233 s) | 713,167–718,400 | foto |
+| s59 | 1 | `s59-redback-spider-latrodectus-hasselti-hiding-behind-wood-2…` | 738,267–742,500 (4,233 s) | 738,267–742,500 | foto |
+| s61 | 1 | `abelhas.mp4` | 757,533–762,167 (4,634 s) | 757,533–762,167 | 24,800 s |
+| s62 | 0 | `abelhas.mp4` | 767,500–775,900 (8,400 s) | 767,500–775,900 | 20,033 s |
+| s64 | 0 | `s64-P1-saltwater-crocodile-crocodylus-porosus-swimming-adela…` | 800,167–806,467 (6,300 s) | 800,167–806,467 | foto |
+| s68 | 2 | `s68-eastern-brown-snake-pseudonaja-textilis-moving-on-bare-g…` | 887,967–891,533 (3,566 s) | 887,967–891,533 | foto |
+
+Ficam com `janela_provisoria: true` os 18 aprovados que a regência não pôs no lote: as 10 saídas escritas cuja mídia cabe na janela
+julgada (só entram se a saída for ativada; RG-14) e os arquivos que nenhum beat usa (relato do regente, §10).
+
+### Os 2 declarados já aceitos (sem veredito novo)
+
+- **s02 (0)**, a foto de s01 como miniatura de 300 px, 2,867–5,2 s: a ancoragem está declarada no conceito (s02 › midia_ancora, "a
+  miniatura ancorada: o conferente aprovou a ancoragem de s02"); 2,333 s de foto, e o veredito de s01 continua aprovado.
+- **s66 (1)**, a estrada de s09, 855,867–858,0 s: o conceito diz "a MESMA estrada de s09"; outro trecho do clipe de 6,433 s (s09 usa
+  1,9 s, s66 usa 2,133 s: 4,033 s somados cabem nele).
+
+### O crédito e os rótulos de lugar
+
+Nada muda nos créditos: cada veredito leva o seu `credito_na_tela` (o Shutterstock pela opção B: só a linha no fim e na descrição).
+Rótulos, nunca mais específicos que o `lugar_na_origem`: a placa de s12, no máximo "far north of Australia"; a carta 3 e as outras
+cartas, sem rótulo; as formigas e a anêmona, sem rótulo (a anêmona nunca "Australia" nem "Great Barrier Reef"); a placa de s51, até
+"Port Douglas, Queensland"; o tubarão de s65, até "Great Barrier Reef, Queensland"; o macho de s70 e as presas de s55, sem rótulo.
+
+### Para o Lucas pesar
+
+Nada.
+
+### Para reconferir no navegador do app
+
+Nada.
+
+### Para trocar
+
+- **s64 beat 2** (`quem_entregou`: `pesquisa-imagens`): o gado de Oxley Creek não tem cavalo. `trocar_por`: `horses and cattle together
+  in a paddock, Australian farm (Commons)`; `serviria_em`: s42 P4, onde o veredito do lote 2 continua aprovado. Pela decisão do Lucas
+  (nenhuma busca nova; o cavalo é FALTA declarada), vale a saída escrita do beat: os montes de P2 ficam no papel com o empurrão.
+
+### Avisos do conjunto da cena (para o `regente-de-imagem`, o `montador` e o `editor-de-arte`)
+
+- **s12:** a placa de Ellis Beach está em dois usos: a carta 3 (na cena) e a saída escrita de P1. Se a saída de P1 for ativada (o clipe
+  da placa do cais não for), a carta 3 repete a mesma foto dois planos depois: as duas não vão juntas (ofício §5.4).
+- **s12, carta 4:** o recorte do crocodilo sai do trecho calmo (0–9 s); nos últimos ~4 s do clipe a cor esfria e uma margem de cascalho
+  entra no alto do quadro.
+- **s55 P1:** a foto das presas não diz o sexo na origem; o desenho ao lado fala dos machos, e nenhum rótulo "male" vai sobre a foto.
+- **s65:** o trecho é o 21,8–28,0 s (o que a regência diz e o que eu olhei); outro trecho do clipe pede olhar de novo (o título do item
+  fala em caça de presa).
+
+### Divergências e notas (ROUPA)
+
+- Nenhuma divergência entre a marca e este ofício neste lote.
+- O id dos 4 reusos é o caminho entregue (`_media/foto/…`, `_media/footage/…`), não o do rascunho: os vereditos de origem ficam com o
+  id do rascunho, e o reuso aponta para eles em `reuso_de`. O do s65 casa pela URL do item, com `mesmo_item: true` e o `sha256` do
+  baixado, como o de s12; vale para a cena da frase dele (s65).
+
 
 ## Lote 7: os 3 arquivos da Fase B 2 da caça 1 (16:33)
 
