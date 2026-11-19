@@ -1,7 +1,8 @@
-# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11 e a exceção do CSIRO, 19/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40)
+# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11, a exceção do CSIRO e o lote 6 (os arquivos da Fase B da caça 1), 19/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40; lote 6 às 15:45)
 
-**Laudo acumulado: 41 aprovados de 53 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 53.**
+**Laudo acumulado: 64 aprovados de 76 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 76.**
 
+- **Lote 6 (15:45):** 23 aprovados de 23 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 23. São os 23 arquivos de banco pago da Fase B da caça 1, todos com `mesmo_item: true` (a seção logo abaixo).
 - **Exceção do CSIRO (07:40):** 3 aprovados de 3 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 3. As três fotos do CSIRO, pendente_lucas nos lotes 1 a 3, passaram a **aprovado** pela escolha do Lucas de ~07:30 (a seção logo abaixo).
 - **Reconferência de s11 (03:32):** 0 aprovados de 1 conferido (1 reprovado, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1. O aprovado do lote 1 (a ISS039-E-21755) passou a **reprovado** (a seção logo abaixo).
 - **Lote 3:** 14 aprovados de 19 conferidos (0 reprovados, 4 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 19. O pendente_lucas (o redback do CSIRO) passou a aprovado na exceção do CSIRO.
@@ -11,6 +12,130 @@
 Sem regência: todas as janelas são provisórias (as do espelho r2, `_planos`). Nada mudou em `out/australia-animais/_media/` em nenhum dos três lotes: 158 arquivos com o mesmo sha256 antes e depois (`_tmp/conferencia/_media-antes-lote3.txt` e `_media-depois-lote3.txt`; as dos lotes 1 e 2 ao lado). Antes da emenda, o JSON foi copiado para `_tmp/conferencia/conferencia-midia-antes-lote3.json`, com o mesmo sha256 da cópia da Sala (`c5ca3162…`), e os 34 vereditos dos lotes 1 e 2 ficaram iguais.
 
 **A cobertura do research:** os 51 rascunhos de acervo em `_media/_caca/*/acervo-livre/` e as duas páginas de documento sem `-prova` em `_media/documento/` têm veredito. Não há retrato nem logo em `_media/`.
+
+## Lote 6: os 23 arquivos da Fase B da caça 1 (15:45)
+
+Fluxo `midia`, banco pago (skill `cacar-no-chrome`, §3, passo 5). Os arquivos estão em `_media/_caca/<cena>/<plataforma>/`, um por
+linha preferida que o Lucas aprovou com "Sim e opção B" (19/11/2026, 14:18; `roteiros/australia-animais/decisoes-lucas.md`). A lista
+deles: `out/australia-animais/_tmp/caca/fase-b-arquivos.json`.
+
+**Laudo do lote 6: 23 aprovados de 23 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 23.**
+**`mesmo_item`: `true` nos 23.** Nenhum `false`, nenhum `null`.
+
+Para cada arquivo, os quadros de 15, 50 e 85 % ficaram ao lado da prévia do mesmo ponto (`-p15`, `-p50`, `-p85`), numa folha por
+candidato. Os 23 batem nos três pontos: o mesmo sujeito, o mesmo enquadramento, o mesmo movimento, a mesma luz e as coisas nos mesmos
+lugares. Só as prévias têm a marca d'água do banco e a barra do player. Nenhum arquivo tem marca d'água, nem nos três quadros nem nos
+cantos superior e inferior direitos do quadro de 50 %, recortados em 4K. O `sha256sum` dos 23 é o do passo 4, e o do `_PROCEDENCIA.json`
+também. O `ffprobe` dá a resolução, a duração e o tamanho da página.
+
+Os quadros, as folhas e os recortes: `out/australia-animais/_tmp/conferencia/lote6/<id>/`. As medidas: `_tmp/conferencia/lote6/medido.tsv`.
+
+| Nº | id (candidato) | cena (plano) | banco · item | medida (ffprobe) | `mesmo_item` | veredito | motivo |
+|---|---|---|---|---|---|---|---|
+| 1 | s03-a | s03 P1 | Shutterstock 1110448913 | 3840x2160 ProRes 25 fps 22,6 s | true | aprovado | a taipan-do-interior viva e calma, sem marca d'água; cativeiro (zoológico de Bangkok), sem rótulo de lugar |
+| 2 | s03-a-2 | s03 P1 | Shutterstock 1110448883 | 3840x2160 ProRes 25 fps 13,0 s | true | aprovado | a taipan inteira e erguida; a garrafa do canto não tem rótulo legível, nem em 4K; sem rótulo de lugar |
+| 3 | s12-c-2 | s18 P1 | Shutterstock 3820903867 | 3840x2160 h264 30 fps 16,9 s | true | aprovado | crocodilo-de-água-salgada grande, parado na margem em Port Douglas |
+| 4 | s12-c | s12 P3 | Storyblocks SBV-352458706 | 3840x2160 h264 30 fps 13,6 s | true | aprovado | crocodilo na água do rio Daintree, de cima |
+| 5 | s12-d-3 | s12 P4 | Shutterstock 4008082473 | 3840x2160 h264 59,94 fps 49,9 s | true | aprovado | tubarão nadando sobre o coral da Grande Barreira; nenhuma presa nos três quadros |
+| 6 | s12-d-2 | s12 P4 | Motion Array 2932804 ("4K") | 3840x2160 h264 25 fps 11,0 s | true | aprovado | tubarão-tigre de perfil em Ningaloo |
+| 8 | s12-a | s12 P1 | Shutterstock 3731463229 | 3840x2160 h264 24 fps 20,0 s | true | aprovado | placa real de aviso de crocodilo num cais do extremo norte ("WARF", da placa) |
+| 9 | s51-a-2 | s51 P1 | Shutterstock 1030589558 | 3840x2160 ProRes 29,97 fps 5,8 s | true | aprovado | placa real de "MARINE STINGERS" com a rede no mar, em Port Douglas |
+| 10 | s51-c | s51 P4 | Shutterstock 3947010705 | 3840x2160 h264 59,94 fps 18,7 s | true | aprovado | mangue de maré com canais, de cima, no rio Daintree |
+| 11 | s09-a-2 | s09 P1 (e s66 P2, reuso declarado) | Shutterstock 3823617333 | 3840x2160 ProRes 23,976 fps 6,4 s | true | aprovado | rodovia do Território do Norte de cima, com um carro só |
+| 13 | s25-a | s25 P2 | Shutterstock 3798724737 | 3840x2160 h264 59,94 fps 15,6 s | true | aprovado | naja de capelo aberto, parada; africana (Kgalagadi), sem rótulo de lugar |
+| 14 | s30-a | s30 P1 | Motion Array 2472164 ("4K") | 3840x2160 h264 25 fps 19,2 s | true | aprovado | cangurus pastando no outback australiano |
+| 15 | s30-a-2 | s30 P2 | Shutterstock 3990354697 | 3840x2160 h264 29,97 fps 50,8 s | true | aprovado | coala de perto comendo eucalipto; sem lugar de filmagem na origem, sem rótulo |
+| 16 | s16-a | s16 P2 | Storyblocks SBV-352748643 | 3840x2160 h264 25 fps 7,7 s | true | aprovado | aranha de teia real no Australia Zoo; o trecho útil é o começo (cerca de 3 s) |
+| 17 | s15-a | s15 P3 (ants) | Shutterstock 4042416865 | 4096x2160 ProRes 29,97 fps 20,7 s | true | aprovado | formigas em macro; o download retomado decodifica inteiro (começo, três pontos e fim) |
+| 18 | s15-a-2 | s15 P3 (caterpillars) | Shutterstock 4129053073 | 3840x2160 h264 29,97 fps 31,5 s | true | aprovado | lagarta peluda em macro |
+| 19 | s61-a | s61 P2 | Motion Array 1266335 (Original) | 4096x2160 ProRes 24 fps 24,8 s | true | aprovado | abelhas-de-mel na colmeia, sem gente, no Original que a linha aprovou |
+| 20 | s61-a-2 | s62 P1 | Motion Array 1208647 ("4K") | 3840x2160 h264 60 fps 20,0 s | true | aprovado | abelha-de-mel de perto numa flor |
+| 21 | s64-a-2 | s42 P4 | Shutterstock 4053202953 | 3840x2160 h264 29,97 fps 41,3 s | true | aprovado | fazenda com gado ao pôr do sol em Nova Gales do Sul, câmera em movimento |
+| 23 | s42-b | s42 P5 | Storyblocks SBV-353670519 | 3840x2160 h264 30 fps 16,3 s | true | aprovado | a borda do bairro com o mato, de cima, na península de Mornington; nenhum letreiro legível em 4K |
+| 24 | s53-a | s53 P1 | Storyblocks SBV-358306679 | 3840x2160 h264 29,97 fps 48,1 s | true | aprovado | subúrbio de Sydney (Sutherland Shire) de cima; nenhum letreiro nem placa legível em 4K |
+| 25 | s12-e | s12 P5 | Storyblocks SBV-358143777 | 3840x2160 h264 30 fps 11,3 s | true | aprovado | trilha vazia no mato de eucaliptos, avanço lento |
+| 26 | s55-b | s55 P5 | Storyblocks SBV-352917168 (4K MOV) | 3840x2160 MJPEG 25 fps 17,4 s | true | aprovado | um cão e um gato calmos num píer, no 4K MOV que a linha aprovou |
+
+### O crédito na tela
+
+- **Shutterstock (13 arquivos):** nenhum crédito nas cenas. Vai só a linha `Image(s) and/or video used under license from Shutterstock.com`
+  na faixa de crédito da última cena (s74) e na descrição do YouTube. É a decisão do Lucas desta caça ("Sim e opção B", 14:18), que o
+  `marca/midia.md` §3.4 deixa a ele. O `credito_na_tela` dos 13 já diz isso. Na caça, ficava o `<artista>/Shutterstock.com` "só se o
+  Lucas responder que sim": ele respondeu B, e o artista não vai.
+- **Motion Array (4) e Storyblocks (6):** nenhum crédito na tela (identidade §7).
+
+### Os rótulos de lugar
+
+Nada mudou desde a caça. O `lugar_na_origem` de cada veredito é o da origem, copiado.
+- A taipan (s03-a e s03-a-2) é de um zoológico de Bangkok. Não leva rótulo de lugar, nem "in the wild".
+- O coala (s30-a-2) vem sem lugar de filmagem. Não leva rótulo, nem "Australia" como lugar da cena.
+- A naja (s25-a) é de Kgalagadi, e as formigas (s15-a), dos Gates Ocidentais. As duas são genéricas e vão sem rótulo.
+- A placa do s12-a leva, no máximo, "far north of Australia".
+- Nos outros, o rótulo, se houver, não passa do que a origem nomeia. Por exemplo: "Port Douglas", "Daintree River", "Ningaloo",
+  "Great Barrier Reef", "Northern Territory", "Australian outback", "Australia Zoo", "New South Wales", "Mornington Peninsula" e
+  "Sutherland Shire, Sydney".
+
+### Para o Lucas pesar
+
+Nenhum `pendente_lucas`. A linha 19 (s61-a, Original ProRes 4096x2160) e a linha 26 (s55-b, 4K MOV) chegaram no formato que o "sim" das
+14:18 aprovou. O "4K" do Motion Array nas linhas 6, 14 e 20 é a cópia h264 do botão "4K" que a linha aprovou, e não é troca de formato.
+
+### Para reconferir no navegador do app
+
+Nenhum.
+
+### Para trocar
+
+Nenhum.
+
+### Para quem instala (a Sala, no `_instalar-lote`) e para quem monta
+
+- **O s03-a e o s03-a-2 (ProRes do Shutterstock) gravam `color_transfer` "unknown".** O swscale deste ffmpeg recusa a conversão sem a
+  curva (`Unsupported input`, erro -129). O `_frames-de-clipe.mjs` saiu com "0 frame(s)" nos dois. Tirei os quadros deles pelo
+  `ffmpeg`, nos mesmos 15, 50 e 85 % e com 640 px de largura, com `-vf "setparams=color_trc=bt709,scale=640:-2"`. Aviso: o
+  `_instalar-lote` pode tropeçar no mesmo ao converter esses dois. Os outros ProRes (s09-a-2, s51-a-2, s15-a e s61-a) gravam bt709 e
+  não tropeçam. Vale um item no `APRENDIZADOS.md`: serviria a qualquer canal que receba ProRes de banco.
+- **O s55-b (4K MOV da Storyblocks)** é MJPEG 4:2:2 de faixa cheia (`yuvj422p`, `color_range` pc, matriz smpte170m). A conversão
+  para `h264/yuv420p` tem de levar em conta a faixa e a matriz BT.601.
+- **O s12-d-2 e o s16-a trazem trilha de áudio (aac).** A montagem não usa o som de clipe de banco.
+- **Taxas e codecs fora de `h264/yuv420p` a 30 fps** (ProRes 10 bits; 24, 25, 29,97, 59,94 e 60 fps; 4096x2160 em s15-a e s61-a) não
+  reprovam. Ficam medidos no `criterios.tecnica.medido` de cada veredito. O s12-a tem cerca de 20,5 Mbit/s, modesto para 4K, mas
+  não reprova.
+
+### Avisos do conjunto da cena (para o `regente-de-imagem` e o `montador`)
+
+- **O veredito vale para a cena da frase julgada** (ofício, §2). Usar o mesmo arquivo noutra cena pede conferência nova:
+  - o s03-a em s36 P3 e s38 P1;
+  - o s12-c-2 em s12 P3;
+  - o s12-d-3 e o s12-d-2 em s65 P1;
+  - o s16-a nas aranhas de s12 P2.
+
+  A exceção é o s09-a-2 em s66 P2. Esse reuso está declarado no `conceito-visual.json` (s09: "a MESMA tomada volta em s66 P2").
+- **s12 P3** tem dois crocodilos aprovados (s12-c, e o s12-c-2, que é de s18) e nenhuma água-viva. A água-viva é do item s51-b, que não
+  teve candidato.
+- **s62 P1 (8,4 s):** no s61-a-2, a câmera é parada, e quem se move é a abelha. Se a regência não ler isso como movimento com propósito,
+  a janela pede outro plano ou movimento de câmera.
+- **s16 P2:** no s16-a, a aranha fica nítida até perto de 3 s e sai do quadro antes de 6,5 s.
+- **s12-d-3 (49,9 s):** o título fala em "caça presas". Nos três quadros, só o tubarão nada. Se a regência escolher outro trecho, ele
+  precisa ser olhado antes da cena.
+- **s55-b:** o trecho calmo vai do começo até cerca de 10 s. Aos 85 %, o gato se levanta e anda.
+
+### Divergências e notas (ROUPA)
+
+- **Olhar.** Li o meu veredito da caça (`conferencia-caca.json`) antes de abrir as folhas. O olhar destes 23 não foi de olhos novos.
+  Os `o_que_viu` descrevem o que os quadros do arquivo mostram.
+- **A folha.** Cada folha põe, a 640 px, a prévia e o quadro do arquivo do mesmo ponto lado a lado, mais os dois cantos do quadro de
+  50 % recortados em 4K. Os quadros e as prévias são os próprios arquivos, sem redução abaixo de 640 px. Os 138 arquivos estão no
+  `arquivos_olhados` de cada veredito.
+- **O PDF de licença do Motion Array** não foi lido: é da Sala (skill, §3.2; contrato, §5.2). Nada de conta está nestas saídas.
+- **O `_PROCEDENCIA.json` da Storyblocks** grava o `id_fornecedor` sem o prefixo "SBV-". É o mesmo número da URL e do nome do arquivo, e
+  não falha.
+- **A emenda.** O `conferencia-midia.json` (335 KB) e este `.md` (59 KB) receberam o lote 6 por `python`, de um arquivo de script
+  (`_tmp/conferencia/lote6/emenda_lote6.py`). Antes de gravar, o script conferiu o sha256 do arquivo. As cópias de antes estão em
+  `_tmp/conferencia/conferencia-midia-antes-lote6.json` e `.md`. O contrato, §5, prevê a emenda para o JSON grande. Aqui ela também
+  serviu ao `.md`, para não regravar inteiro, à mão, o texto dos lotes 1 a 5.
+- **`_media/`:** nada mudou. Os 291 arquivos têm o mesmo sha256 antes e depois (`_tmp/conferencia/_media-antes-lote6.txt` e
+  `_media-depois-lote6.txt`).
 
 ## A exceção do Lucas: as fotos do CSIRO (07:40)
 

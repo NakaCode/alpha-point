@@ -91,6 +91,9 @@ pelo navegador. Por minha conta e risco, já fiz isso em outro projeto e não ti
   `scripts/stock/lib/teto-shutterstock.mjs` guardam o arquivo e a procedência. `scripts/stock/_instalar-lote.mjs`
   leva o vídeo à cena, em 30 fps e só com quadros-chave: é a porta de todo footage de banco (REND-114). Os três
   vieram do molde e não se editam.
+  - O `_instalar-lote` recusa o ProRes com a transferência de cor do quadro em branco (o s03 do vídeo 8, 19/11/2026): o
+    conserto, sem recompressão e sem editar o molde, está na skill, `.claude/skills/cacar-no-chrome/licoes.md`, L1. Leia as
+    lições dela antes do §4.
 - Os comandos da skill foram provados nesta máquina em 26/09/2026, como estão escritos, numa pasta Downloads
   falsa, sem rede e sem navegador.
 - Todos rodam da raiz e levam `REGIE_MOTOR` na mesma chamada, inclusive o `teto`: sem ela, sai

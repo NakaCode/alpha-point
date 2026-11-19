@@ -2048,3 +2048,25 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a outros canais:** as fotos da ISS são a imagem de órbita mais usada por canais de geografia, e a NASA as distribui juntas,
   as da NASA e as russas, no mesmo site e com o mesmo formato de página.
 - Skill: nenhuma ainda. A casa é a `pesquisar-imagens-e-b-roll` (catálogo §2), quando ela nascer, com o ok do Lucas para a onda dela.
+
+### 111. O `_instalar-lote` recusa o ProRes de banco com a transferência de cor do quadro em branco (ffmpeg 8.1)
+
+- **O que aconteceu** (19/11/2026, vídeo 8, `australia-animais`, a caça 1): os dois clipes da taipan do s03 (Shutterstock, ProRes
+  422 10 bits, 3840×2160) passaram pelo passo 4 e pelo conferente (`aprovado`, `mesmo_item: true`), e o `_instalar-lote` saiu 1
+  nos dois: "Unsupported input (Error number -129 occurred): fmt:yuv422p10le csp:bt709 prim:bt709 trc:(null) -> fmt:yuv420p". Os
+  outros 21 clipes da caça (h264, h265, MJPEG e ProRes da Storyblocks e do Motion Array com o campo preenchido) instalaram.
+- **A causa:** o campo de transferência de cor do cabeçalho de cada quadro ProRes veio em branco (`color_transfer=unknown` no
+  `ffprobe`), e o ffmpeg 8.1 desta máquina (`8.1-full_build-www.gyan.dev`) não monta a conversão de cor sem ele. O conferente já
+  tinha avisado o campo desconhecido no laudo. Num teste de 0,5 s, a conversão passou com `setparams=color_trc=bt709`. Um remux só
+  do contêiner (`-c copy -color_trc bt709`) muda o que o `ffprobe` lê, mas não o que o decodificador usa.
+- **O que resolveu:** uma cópia sem recompressão, com o campo preenchido em cada quadro: `ffmpeg -i <baixado> -map 0 -c copy
+  -bsf:v prores_metadata=color_trc=bt709 <cópia>`, em `_media/_caca/s03/shutterstock/_cor-corrigida/`, com o nome do arquivo
+  baixado. O md5 de cada quadro decodificado da cópia é igual ao do original (565 de 565 e 325 de 325). O `_instalar-lote` instalou
+  as cópias com `--nota` (a cópia, o sha256 do arquivo baixado e a prova), e o veredito do conferente continua casando pela URL do
+  item. O molde não se editou.
+- **Como evitar:** antes do `_instalar-lote` de um ProRes, ler `color_transfer` no `ffprobe`; `unknown` pede a cópia acima.
+- **Por que serve a outros canais:** o `_instalar-lote` é do molde e é a porta de todo footage de banco (REND-114); o ProRes do
+  Shutterstock vem assim, e qualquer canal com o ffmpeg 8.1 cai no mesmo erro. No motor, o conserto seria o `_instalar-lote`
+  preencher o campo (o filtro `setparams` na conversão, ou a cópia com o `prores_metadata`) quando o `ffprobe` o der desconhecido.
+  Vale avisar o Lucas, para ver com o Mateus.
+- Skill: cacar-no-chrome (`licoes.md`, L1).
