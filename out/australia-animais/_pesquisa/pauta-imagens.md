@@ -2,9 +2,9 @@
 
 O `pesquisa-imagens`, sobre o espelho `833aaa75bf30…`. A fonte é o `pauta-imagens.json` ao lado; este arquivo só o lê para gente.
 
-[Depois do verificador do research (19/11/2026, ~03:36, Brasília):] s11 P1 (ISS039-E-21755) RETIRADO: o conferente-de-midia o reprovou na reconferência (lote reconferir-s11, 03:32), porque a página do Gateway diz 'Russian imagery' e o arquivo traz o aviso de direitos da RSC Energia no EXIF, no IPTC e no XMP (não é obra provada do governo federal; midia.md §7.3). O arquivo e o _PROCEDENCIA.json saíram de _media/foto/s11/ para _media/_caca/s11/_retirado/ (nada apagado); as duas alternativas de s11 continuam TROCAR; sem busca nova. ENTREGUES AGORA: 36 em 25 pastas de _media/foto/. O que segue abaixo é o registro da entrega, que contava 37 em 26 pastas, com s11. Depois da ENTREGA (19/11/2026, ~02:55, Brasília): os 37 rascunhos que o conferente-de-midia aprovou (out/australia-animais/_pesquisa/conferencia-midia.json, lotes 1 a 3, sha256 34be9e9614fd…) foram entregues à mão, pelo sha256 do rascunho julgado, em out/australia-animais/_media/foto/<cena>/ (26 pastas), cada pasta com o _PROCEDENCIA.json (medido.sha256 = o rascunho julgado; entregue.sha256 = o arquivo da cena). 36 são cópia byte a byte; a placa de Cairns (s12 P1, 7716x5787, 44,65 MP, um MPO de celular) foi reduzida a 5120x3840 pela régua do motor (ffmpeg scale=5120:-2 -q:v 2), sem outro tratamento: o perfil ICC Display P3 ficou, a orientação é a normal e a entregue aparece de pé, como a julgada. O NOME ENTREGUE termina com a licença que o veredito confirmou (cc-by-2-0, cc-by-sa-4-0, pd…), e o ALT fica só na 2ª/reserva do plano, pela ordem do conferente (muda em s12 P1, onde Ellis Beach é a preferida e Cairns a 2ª, e em s12 P2, onde a huntsman completa o plano): o `arquivo` de cada item entregue é o da pasta da cena; o `arquivo_rascunho`, o julgado, que continua em _media/_caca/. Com mais de um aprovado no plano (s12 P1, s36 P3, s51 P1 e s59 P2, alternativas; s12 P2 e s55 P3, complementares), todos foram entregues, e a ordem do conferente vai em preferencia_no_plano (a regência escolhe). Ficaram no rascunho, sem ir a _media/foto/: 11 TROCAR e 3 PENDENTE_LUCAS (as três fotos do CSIRO, s15 P3, s35 P2 e s58, à espera da pergunta ao Lucas). O crédito, a licença curta e o aviso do ano dos entregues são os do veredito; a proposta da pesquisa, quando mudou, ficou em *_proposto_pela_pesquisa. [O que a rodada 1 dizia, ANTES da entrega:] Rodada 1 do pesquisa-imagens no vídeo 8 (australia-animais), passo research, 19/11/2026, sobre o espelho r2 (sha256 833aaa75…). 51 arquivos de acervo aberto no rascunho, em 32 pastas de cena (out/australia-animais/_media/_caca/<cena>/acervo-livre/, cada uma com o manifest.jsonl: fonte, licença lida na origem, sha256, ffprobe). NADA foi entregue em _media/foto/ nem em _media/footage/: tudo é RASCUNHO, à espera do conferente-de-midia. Todos são FOTO: o acervo aberto não tem vídeo em 4K destes bichos nem do Channel Country (o vídeo vem da caça; lista-de-caca.json, 31 itens). Fontes: o Wikimedia Commons (pela API do MediaWiki, licença lida arquivo a arquivo) e a NASA (o Gateway to Astronaut Photography of Earth, eol.jsc.nasa.gov, e a NASA Earth Observatory pelo Commons); consultados sem achado útil: a NASA Image and Video Library, o Smithsonian Open Access, o DVIDS e a NARA (API v2). 7 arquivos baixados e DESCARTADOS na conferência visual da pesquisa (em out/australia-animais/_tmp/pesquisa-imagens/descartados/, fora de _media). Sem gasto de crédito, sem banco pago aberto, sem navegador.
+[Depois da entrega das 3 fotos do CSIRO (19/11/2026, ~07:5x, Brasília):] o Lucas liberou a fonte às ~07:30 ('As fotos do CSIRO (Recomendado)'; roteiros/australia-animais/decisoes-lucas.md), e o conferente-de-midia gravou a excecao_lucas e deu aprovado às 07:40 (lote excecao-csiro). As três foram entregues à mão, byte a byte, pelo sha256 do rascunho julgado: as lagartas em _media/foto/s15/ (acrescentadas ao _PROCEDENCIA.json que existia, sem mexer no item das formigas), o rato em _media/foto/s35/ e o redback em _media/foto/s58/, com o crédito do veredito ('CSIRO / Wikimedia Commons · CC BY 3.0'; no redback, 'David McClenaghan, CSIRO / Wikimedia Commons · CC BY 3.0') e a excecao_lucas em cada procedência. A exceção vale só para estas três fotos, cada uma na cena que o veredito julgou. ENTREGUES AGORA: 39 em 27 pastas de _media/foto/; PENDENTE_LUCAS: 0. Na lista de caça, a reserva de s11 do item s01-a passou a ser o still Landsat da mesa (_media/base/landsat-m-cooper-sangria56.png). [Depois do verificador do research (19/11/2026, ~03:36, Brasília):] s11 P1 (ISS039-E-21755) RETIRADO: o conferente-de-midia o reprovou na reconferência (lote reconferir-s11, 03:32), porque a página do Gateway diz 'Russian imagery' e o arquivo traz o aviso de direitos da RSC Energia no EXIF, no IPTC e no XMP (não é obra provada do governo federal; midia.md §7.3). O arquivo e o _PROCEDENCIA.json saíram de _media/foto/s11/ para _media/_caca/s11/_retirado/ (nada apagado); as duas alternativas de s11 continuam TROCAR; sem busca nova. ENTREGUES AGORA: 36 em 25 pastas de _media/foto/. O que segue abaixo é o registro da entrega, que contava 37 em 26 pastas, com s11. Depois da ENTREGA (19/11/2026, ~02:55, Brasília): os 37 rascunhos que o conferente-de-midia aprovou (out/australia-animais/_pesquisa/conferencia-midia.json, lotes 1 a 3, sha256 34be9e9614fd…) foram entregues à mão, pelo sha256 do rascunho julgado, em out/australia-animais/_media/foto/<cena>/ (26 pastas), cada pasta com o _PROCEDENCIA.json (medido.sha256 = o rascunho julgado; entregue.sha256 = o arquivo da cena). 36 são cópia byte a byte; a placa de Cairns (s12 P1, 7716x5787, 44,65 MP, um MPO de celular) foi reduzida a 5120x3840 pela régua do motor (ffmpeg scale=5120:-2 -q:v 2), sem outro tratamento: o perfil ICC Display P3 ficou, a orientação é a normal e a entregue aparece de pé, como a julgada. O NOME ENTREGUE termina com a licença que o veredito confirmou (cc-by-2-0, cc-by-sa-4-0, pd…), e o ALT fica só na 2ª/reserva do plano, pela ordem do conferente (muda em s12 P1, onde Ellis Beach é a preferida e Cairns a 2ª, e em s12 P2, onde a huntsman completa o plano): o `arquivo` de cada item entregue é o da pasta da cena; o `arquivo_rascunho`, o julgado, que continua em _media/_caca/. Com mais de um aprovado no plano (s12 P1, s36 P3, s51 P1 e s59 P2, alternativas; s12 P2 e s55 P3, complementares), todos foram entregues, e a ordem do conferente vai em preferencia_no_plano (a regência escolhe). Ficaram no rascunho, sem ir a _media/foto/: 11 TROCAR e 3 PENDENTE_LUCAS (as três fotos do CSIRO, s15 P3, s35 P2 e s58, à espera da pergunta ao Lucas). O crédito, a licença curta e o aviso do ano dos entregues são os do veredito; a proposta da pesquisa, quando mudou, ficou em *_proposto_pela_pesquisa. [O que a rodada 1 dizia, ANTES da entrega:] Rodada 1 do pesquisa-imagens no vídeo 8 (australia-animais), passo research, 19/11/2026, sobre o espelho r2 (sha256 833aaa75…). 51 arquivos de acervo aberto no rascunho, em 32 pastas de cena (out/australia-animais/_media/_caca/<cena>/acervo-livre/, cada uma com o manifest.jsonl: fonte, licença lida na origem, sha256, ffprobe). NADA foi entregue em _media/foto/ nem em _media/footage/: tudo é RASCUNHO, à espera do conferente-de-midia. Todos são FOTO: o acervo aberto não tem vídeo em 4K destes bichos nem do Channel Country (o vídeo vem da caça; lista-de-caca.json, 31 itens). Fontes: o Wikimedia Commons (pela API do MediaWiki, licença lida arquivo a arquivo) e a NASA (o Gateway to Astronaut Photography of Earth, eol.jsc.nasa.gov, e a NASA Earth Observatory pelo Commons); consultados sem achado útil: a NASA Image and Video Library, o Smithsonian Open Access, o DVIDS e a NARA (API v2). 7 arquivos baixados e DESCARTADOS na conferência visual da pesquisa (em out/australia-animais/_tmp/pesquisa-imagens/descartados/, fora de _media). Sem gasto de crédito, sem banco pago aberto, sem navegador.
 
-**Entregues: 36** em `_media/foto/<cena>/`, cada pasta com o `_PROCEDENCIA.json`. **No rascunho: 11 TROCAR e 3 PENDENTE_LUCAS**, pelo veredito do `conferente-de-midia` (`_pesquisa/conferencia-midia.json`). **Retirados: 1** (entregues e depois reprovados na reconferência; em `_media/_caca/<cena>/_retirado/`, com o `_PROCEDENCIA.json`, e fora de cena). Nos entregues, o crédito, a licença e o aviso do ano são os do veredito. A grafia final na tela é do `redator-de-tela`, e o rótulo de lugar não passa do `lugar_na_origem` do veredito.
+**Entregues: 39** em `_media/foto/<cena>/`, cada pasta com o `_PROCEDENCIA.json`. **No rascunho: 11 TROCAR e 0 PENDENTE_LUCAS**, pelo veredito do `conferente-de-midia` (`_pesquisa/conferencia-midia.json`). **Retirados: 1** (entregues e depois reprovados na reconferência; em `_media/_caca/<cena>/_retirado/`, com o `_PROCEDENCIA.json`, e fora de cena). Nos entregues, o crédito, a licença e o aviso do ano são os do veredito. A grafia final na tela é do `redator-de-tela`, e o rótulo de lugar não passa do `lugar_na_origem` do veredito.
 
 ## Destaque: a abertura (s01)
 
@@ -19,7 +19,7 @@ O `pesquisa-imagens`, sobre o espelho `833aaa75bf30…`. A fonte é o `pauta-ima
 | s08 | 1 | 1 | — |
 | s11 | 3 | 0 | retirado, trocar, trocar |
 | s12 | 5 | 5 | — |
-| s15 | 2 | 1 | pendente_lucas |
+| s15 | 2 | 2 | — |
 | s16 | 1 | 1 | — |
 | s18 | 2 | 1 | trocar |
 | s21 | 2 | 2 | — |
@@ -27,7 +27,7 @@ O `pesquisa-imagens`, sobre o espelho `833aaa75bf30…`. A fonte é o `pauta-ima
 | s27 | 1 | 1 | — |
 | s30 | 1 | 1 | — |
 | s34 | 2 | 0 | trocar, trocar |
-| s35 | 1 | 0 | pendente_lucas |
+| s35 | 1 | 1 | — |
 | s36 | 2 | 2 | — |
 | s38 | 1 | 1 | — |
 | s41 | 1 | 1 | — |
@@ -38,7 +38,7 @@ O `pesquisa-imagens`, sobre o espelho `833aaa75bf30…`. A fonte é o `pauta-ima
 | s55 | 4 | 4 | — |
 | s56 | 1 | 1 | — |
 | s57 | 1 | 1 | — |
-| s58 | 1 | 0 | pendente_lucas |
+| s58 | 1 | 1 | — |
 | s59 | 2 | 2 | — |
 | s61 | 1 | 1 | — |
 | s62 | 1 | 1 | — |
@@ -47,7 +47,7 @@ O `pesquisa-imagens`, sobre o espelho `833aaa75bf30…`. A fonte é o `pauta-ima
 | s70 | 1 | 0 | trocar |
 | s73 | 1 | 0 | trocar |
 
-Total: 51 arquivos de 32 cenas; 36 entregues em 25 pastas de `_media/foto/`.
+Total: 51 arquivos de 32 cenas; 39 entregues em 27 pastas de `_media/foto/`.
 
 ## Os arquivos
 
@@ -194,21 +194,25 @@ Total: 51 arquivos de 32 cenas; 36 entregues em 25 pastas de `_media/foto/`.
 
 - **`s15-P3-bulldog-ants-myrmecia-nigriscapa-sydney-2013-cc-by-2-0.jpg`** (3000x1867, grande (≥ 2.743 px))
   - **ENTREGUE em 19/11/2026, à mão, pelo sha256 do rascunho julgado (veredito aprovado do conferente-de-midia, lote 1, para s15 P3), em _media/foto/s15/s15-P3-bulldog-ants-myrmecia-nigriscapa-sydney-2013-cc-by-2-0.jpg, sha256 95b81de0ea7c3887416f71f4d20152f118c800cc02eeee9e7d82348f4e3d87fc, com o _PROCEDENCIA.json da pasta; cópia byte a byte do rascunho. O nome mudou (licença no fim); o rascunho continua em _media/_caca/s15/acervo-livre/s15-P3-bulldog-ants-myrmecia-nigriscapa-sydney-2013.jpg.**
-  - s15 P3 (as formigas). único aprovado do plano.
+  - s15 P3 (as formigas). uma de 2 complementares no plano (cada uma cobre uma parte da fala).
   - Fonte: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Communication_in_bulldog_ants_(Myrmecia_nigriscapa)_Sydney,_Australia.jpeg. Licença: CC BY 2.0.
   - Data na origem: 2013-03-22. Lugar na origem: Sydney, Australia (título).
   - Do veredito: o crédito, Sylvain Dubey / Wikimedia Commons · CC BY 2.0; o aviso do ano, nenhum.
   - Para a descrição (do veredito): o autor está na descrição ('Attribution: Sylvain Dubey (University of Lausanne)'); o campo Author da página diz só 'author', e o manifest.jsonl copiou isso no crédito proposto ('author / Wikimedia Commons · CC BY 2.0'): o crédito certo é o deste veredito, e quem entrega o grava assim
+  - Ordem do conferente no plano (complementares): `s15-P3-bulldog-ants-myrmecia-nigriscapa-sydney-2013-cc-by-2-0.jpg`, `s15-P3-processionary-caterpillars-csiro-2002-cc-by-3-0.jpg`. as formigas cobrem 'ants' (102,27–102,67 s) e as lagartas, 'caterpillars' (102,83–103,49 s): cada veredito diz que a outra é 'a outra foto do plano' (frase_coberta.parte).
   - O veredito mudou a proposta da pesquisa: o autor é Sylvain Dubey (University of Lausanne); o papel era "preferida do plano".
   - sha256 `95b81de0ea7c3887416f71f4d20152f118c800cc02eeee9e7d82348f4e3d87fc` (o entregue e o rascunho julgado são iguais)
   - Por que esta (a pesquisa): formigas australianas (bulldog ants, Myrmecia) em Sydney, macro: os exemplos do código
-- **`s15-P3-processionary-caterpillars-csiro-2002.jpg`** (2657x1747, média (1.600–2.742 px))
-  - **PENDENTE_LUCAS, pelo conferente-de-midia (lote 1, s15: "lagartas processionárias reais, que cobrem 'caterpillars', mas a foto é do CSIRO (governo federal australiano), fonte que pede o ok do Lucas (midia.md §7.3), mesmo no Commons com CC BY 3.0"): fica no rascunho (_media/_caca/s15/acervo-livre/s15-P3-processionary-caterpillars-csiro-2002.jpg), não entregue, até o Lucas responder e o conferente regravar o veredito como aprovado, com a excecao_lucas. A pergunta: "A foto do CSIRO (governo federal da Austrália), publicada no Commons com licença CC BY 3.0, pode entrar como as outras do Commons, com o crédito 'CSIRO / Wikimedia Commons · CC BY 3.0'?"**
-  - s15 P3 (a lagarta). preferida do plano.
+- **`s15-P3-processionary-caterpillars-csiro-2002-cc-by-3-0.jpg`** (2657x1747, média (1.600–2.742 px))
+  - **ENTREGUE em 19/11/2026, ~07:5x, à mão, pelo sha256 do rascunho julgado (veredito aprovado do conferente-de-midia, lote excecao-csiro, com a excecao_lucas de ~07:30, 'As fotos do CSIRO (Recomendado)', para s15 P3), em _media/foto/s15/s15-P3-processionary-caterpillars-csiro-2002-cc-by-3-0.jpg, sha256 729de308db2ba53951717e4880541692c5a41d00f52189d229ba535d07a1fe3a, com o _PROCEDENCIA.json da pasta (acrescentado ao que existia, sem mexer no que estava lá); cópia byte a byte do rascunho. O nome mudou (licença no fim); o rascunho continua em _media/_caca/s15/acervo-livre/s15-P3-processionary-caterpillars-csiro-2002.jpg.**
+  - s15 P3 (a lagarta). uma de 2 complementares no plano (cada uma cobre uma parte da fala).
   - Fonte: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_1970_Processionary_Caterpillars.jpg. Licença: CC BY 3.0.
   - Data na origem: 2002-02-08. Lugar na origem: Processionary caterpillars, Thaumetopoeidae Ochrogaster lunifer..
-  - Crédito proposto pela pesquisa: Entomology, CSIRO / Wikimedia Commons · CC BY 3.0.
-  - sha256 do rascunho `729de308db2ba53951717e4880541692c5a41d00f52189d229ba535d07a1fe3a`
+  - Do veredito: o crédito, CSIRO / Wikimedia Commons · CC BY 3.0; o aviso do ano, nenhum.
+  - A exceção do Lucas (2026-11-19T07:30-03:00): "As fotos do CSIRO (Recomendado)"; vale só para este arquivo (sha256 `729de308db2b…`), nesta cena. Inteira em _media/foto/s15/_PROCEDENCIA.json (o item deste arquivo, campo excecao_lucas) e _pesquisa/conferencia-midia.json.
+  - Ordem do conferente no plano (complementares): `s15-P3-bulldog-ants-myrmecia-nigriscapa-sydney-2013-cc-by-2-0.jpg`, `s15-P3-processionary-caterpillars-csiro-2002-cc-by-3-0.jpg`. as formigas cobrem 'ants' (102,27–102,67 s) e as lagartas, 'caterpillars' (102,83–103,49 s): cada veredito diz que a outra é 'a outra foto do plano' (frase_coberta.parte).
+  - O veredito mudou a proposta da pesquisa: o crédito era "Entomology, CSIRO / Wikimedia Commons · CC BY 3.0"; o papel era "preferida do plano".
+  - sha256 `729de308db2ba53951717e4880541692c5a41d00f52189d229ba535d07a1fe3a` (o entregue e o rascunho julgado são iguais)
   - Por que esta (a pesquisa): lagartas processionárias australianas (Ochrogaster lunifer, CSIRO) em fila: o outro exemplo do código
 
 ### s16
@@ -327,13 +331,15 @@ Total: 51 arquivos de 32 cenas; 36 entregues em 25 pastas de `_media/foto/`.
 
 ### s35
 
-- **`s35-P2-long-haired-rat-rattus-villosissimus-csiro.jpg`** (2569x1697, média (1.600–2.742 px))
-  - **PENDENTE_LUCAS, pelo conferente-de-midia (lote 2, s35: "o long-haired rat real, que cobre 'a rat can bite back', mas a foto é do CSIRO (governo federal australiano), como as lagartas de s15: a fonte pede o ok do Lucas (midia.md §7.3)"): fica no rascunho (_media/_caca/s35/acervo-livre/s35-P2-long-haired-rat-rattus-villosissimus-csiro.jpg), não entregue, até o Lucas responder e o conferente regravar o veredito como aprovado, com a excecao_lucas. A pergunta: "As duas fotos do CSIRO (governo federal da Austrália) publicadas no Commons com licença CC BY 3.0, as lagartas de s15 e o rato de s35, podem entrar como as outras do Commons, com o crédito 'CSIRO / Wikimedia Commons · CC BY 3.0'?"**
-  - s35 P2. preferida do plano.
+- **`s35-P2-long-haired-rat-rattus-villosissimus-csiro-cc-by-3-0.jpg`** (2569x1697, média (1.600–2.742 px))
+  - **ENTREGUE em 19/11/2026, ~07:5x, à mão, pelo sha256 do rascunho julgado (veredito aprovado do conferente-de-midia, lote excecao-csiro, com a excecao_lucas de ~07:30, 'As fotos do CSIRO (Recomendado)', para s35 P2), em _media/foto/s35/s35-P2-long-haired-rat-rattus-villosissimus-csiro-cc-by-3-0.jpg, sha256 d8803df727c9e810627842b15677715b893b1ba5d0f38102a1b6a7c965e1ea2f, com o _PROCEDENCIA.json da pasta; cópia byte a byte do rascunho. O nome mudou (licença no fim); o rascunho continua em _media/_caca/s35/acervo-livre/s35-P2-long-haired-rat-rattus-villosissimus-csiro.jpg.**
+  - s35 P2. único aprovado do plano no acervo aberto (o item da caça é o preferido, pelo veredito).
   - Fonte: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_4515_The_longhaired_rat_Rattus_villosissimus.jpg. Licença: CC BY 3.0.
   - Data na origem: 2007-07-25. Lugar na origem: The long-haired rat – Rattus villosissimus. This species, also known as the native plague rat, can reach plague numbers in northern Australia and threaten cropping..
-  - Crédito proposto pela pesquisa: division, CSIRO / Wikimedia Commons · CC BY 3.0.
-  - sha256 do rascunho `d8803df727c9e810627842b15677715b893b1ba5d0f38102a1b6a7c965e1ea2f`
+  - Do veredito: o crédito, CSIRO / Wikimedia Commons · CC BY 3.0; o aviso do ano, nenhum.
+  - A exceção do Lucas (2026-11-19T07:30-03:00): "As fotos do CSIRO (Recomendado)"; vale só para este arquivo (sha256 `d8803df727c9…`), nesta cena. Inteira em _media/foto/s35/_PROCEDENCIA.json (o item deste arquivo, campo excecao_lucas) e _pesquisa/conferencia-midia.json.
+  - O veredito mudou a proposta da pesquisa: o crédito era "division, CSIRO / Wikimedia Commons · CC BY 3.0"; o autor é CSIRO; o papel era "preferida do plano".
+  - sha256 `d8803df727c9e810627842b15677715b893b1ba5d0f38102a1b6a7c965e1ea2f` (o entregue e o rascunho julgado são iguais)
   - Por que esta (a pesquisa): o rato-de-pelo-longo (Rattus villosissimus), o rato do interior que a ficha da taipan nomeia (foto do CSIRO, em preto e branco)
 
 ### s36
@@ -519,13 +525,15 @@ Total: 51 arquivos de 32 cenas; 36 entregues em 25 pastas de `_media/foto/`.
 
 ### s58
 
-- **`s58-redback-spider-latrodectus-hasseltii-close-up-csiro-2007.jpg`** (3008x2000, grande (≥ 2.743 px))
-  - **PENDENTE_LUCAS, pelo conferente-de-midia (lote 3, s58: "o redback real, com a faixa vermelha à vista e nítido, que cobre a frase, mas a foto é do CSIRO (governo federal australiano), como as lagartas de s15 e o rato de s35: a fonte pede o ok do Lucas (midia.md §7.3)"): fica no rascunho (_media/_caca/s58/acervo-livre/s58-redback-spider-latrodectus-hasseltii-close-up-csiro-2007.jpg), não entregue, até o Lucas responder e o conferente regravar o veredito como aprovado, com a excecao_lucas. A pergunta: "As três fotos do CSIRO (governo federal da Austrália) publicadas no Commons com licença CC BY 3.0, as lagartas de s15, o rato de s35 e o redback de s58, podem entrar como as outras do Commons, com o crédito do CSIRO na tela (por exemplo, 'CSIRO / Wikimedia Commons · CC BY 3.0')?"**
-  - s58 P1. preferida do plano.
+- **`s58-redback-spider-latrodectus-hasseltii-close-up-csiro-2007-cc-by-3-0.jpg`** (3008x2000, grande (≥ 2.743 px))
+  - **ENTREGUE em 19/11/2026, ~07:5x, à mão, pelo sha256 do rascunho julgado (veredito aprovado do conferente-de-midia, lote excecao-csiro, com a excecao_lucas de ~07:30, 'As fotos do CSIRO (Recomendado)', para s58 P1), em _media/foto/s58/s58-redback-spider-latrodectus-hasseltii-close-up-csiro-2007-cc-by-3-0.jpg, sha256 4af5133e641470a4fd515482cce528b3a2ba22cf62f48cd5d88a399558dc1b93, com o _PROCEDENCIA.json da pasta; cópia byte a byte do rascunho. O nome mudou (licença no fim); o rascunho continua em _media/_caca/s58/acervo-livre/s58-redback-spider-latrodectus-hasseltii-close-up-csiro-2007.jpg.**
+  - s58 P1. único aprovado do plano no acervo aberto (o item da caça é o preferido, pelo veredito).
   - Fonte: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_3797_A_Redback_Spider.jpg. Licença: CC BY 3.0.
   - Data na origem: 2007-02-09. Lugar na origem: A redback spider, Latrodectus hasseltii, of the family Theridiidae..
-  - Crédito proposto pela pesquisa: David McClenaghan, CSIRO / Wikimedia Commons · CC BY 3.0.
-  - sha256 do rascunho `4af5133e641470a4fd515482cce528b3a2ba22cf62f48cd5d88a399558dc1b93`
+  - Do veredito: o crédito, David McClenaghan, CSIRO / Wikimedia Commons · CC BY 3.0; o aviso do ano, nenhum.
+  - A exceção do Lucas (2026-11-19T07:30-03:00): "As fotos do CSIRO (Recomendado)"; vale só para este arquivo (sha256 `4af5133e6414…`), nesta cena. Inteira em _media/foto/s58/_PROCEDENCIA.json (o item deste arquivo, campo excecao_lucas) e _pesquisa/conferencia-midia.json.
+  - O veredito mudou a proposta da pesquisa: o papel era "preferida do plano".
+  - sha256 `4af5133e641470a4fd515482cce528b3a2ba22cf62f48cd5d88a399558dc1b93` (o entregue e o rascunho julgado são iguais)
   - Por que esta (a pesquisa): o redback fêmea de perto, com a faixa vermelha, numa folha (CSIRO)
 
 ### s59
@@ -671,9 +679,12 @@ Total: 51 arquivos de 32 cenas; 36 entregues em 25 pastas de `_media/foto/`.
 
 - **entrega-2026-11-19** (19/11/2026, ~02:55 (Brasília)): a entrega à mão (_tmp/pesquisa-imagens/entrega/entregar-amao.mjs; log em entrega-log.json): 37 entregues em 26 pastas de _media/foto/, 11 TROCAR e 3 PENDENTE_LUCAS no rascunho; o resto de _media/ (158 arquivos: _caca, documento, geo, base, _master) intacto, sha256 antes e depois
 - **pos-verificador-2026-11-19** (19/11/2026, ~03:36 (Brasília)): o VR-01 do verificador do research: s11 P1 retirado (reprovado na reconferência) de _media/foto/s11/ para _media/_caca/s11/_retirado/, com o _PROCEDENCIA.json (campo `retirado`); 36 entregues em 25 pastas. O VR-03: três campos da lista de caça corrigidos (s70-a tem_de_aparecer; s12-a e s51-a recusa), cópia de antes em _tmp/pesquisa-imagens/entrega/lista-de-caca-antes-vr03.json. Scripts e cópias de antes em _tmp/pesquisa-imagens/pos-verificador/
+- **entrega-csiro-2026-11-19** (19/11/2026, ~07:5x (Brasília)): a entrega das 3 fotos do CSIRO (pedido-entrega-csiro.md; entrega/entregar-csiro.mjs, log em entrega-csiro-log.json): _media/foto/s15/s15-P3-processionary-caterpillars-csiro-2002-cc-by-3-0.jpg (sha256 729de308db2ba53951717e4880541692c5a41d00f52189d229ba535d07a1fe3a); _media/foto/s35/s35-P2-long-haired-rat-rattus-villosissimus-csiro-cc-by-3-0.jpg (sha256 d8803df727c9e810627842b15677715b893b1ba5d0f38102a1b6a7c965e1ea2f); _media/foto/s58/s58-redback-spider-latrodectus-hasseltii-close-up-csiro-2007-cc-by-3-0.jpg (sha256 4af5133e641470a4fd515482cce528b3a2ba22cf62f48cd5d88a399558dc1b93). _media/: 223 arquivos antes, 228 depois, e só mudaram os 3 entregues e os 3 _PROCEDENCIA.json (s15 acrescentado; s35 e s58 novos). O item das formigas passou a uma de 2 complementares no plano s15 P3 (na pauta; a procedência dele ficou como estava). A lista de caça: a reserva de s11 do item s01-a é o still Landsat da mesa (entrega/lista-reserva-s11.mjs; a cópia de antes em entrega/lista-de-caca-antes-reserva-s11.json). 39 entregues em 27 pastas
 
 ## A lista de caça
 
 `out/australia-animais/_pesquisa/lista-de-caca.json`: 31 itens, 61 planos.
 
 O VR-03: 19/11/2026 (03:38): o tem_de_aparecer de s70-a nomeia a espécie (Atrax robustus, a funnel-web de Sydney), e a recusa de s12-a e s51-a diz 'texto na imagem, exceto o da própria placa' (o VR-03 do verificador). Nada mais mudou: ids, buscas e planos iguais. A cópia de antes: _tmp/pesquisa-imagens/entrega/lista-de-caca-antes-vr03.json.
+
+A reserva de s11: 19/11/2026 (~07:5x): no item s01-a, reserva_acervo_aberto.s11 passou dos três rascunhos de s11 (a ISS039-E-21755, reprovada na reconferência, e as duas alternativas, em trocar) ao still Landsat da mesa (out/australia-animais/_media/base/landsat-m-cooper-sangria56.png, domínio público, base de mapa, escolha da regência), com a nota do porquê em reserva_acervo_aberto.s11_nota (o item 47 do para-passos-seguintes.json). Nada mais mudou. A cópia de antes: _tmp/pesquisa-imagens/entrega/lista-de-caca-antes-reserva-s11.json.

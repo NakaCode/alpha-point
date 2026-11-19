@@ -1,15 +1,105 @@
-# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3 e a reconferência de s11, 19/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32)
+# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11 e a exceção do CSIRO, 19/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40)
 
-**Laudo acumulado: 38 aprovados de 53 conferidos (1 reprovado, 11 trocar, 3 pendente_lucas); 0 com algo não conferido; recebidos: 53.**
+**Laudo acumulado: 41 aprovados de 53 conferidos (1 reprovado, 11 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 53.**
 
+- **Exceção do CSIRO (07:40):** 3 aprovados de 3 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 3. As três fotos do CSIRO, pendente_lucas nos lotes 1 a 3, passaram a **aprovado** pela escolha do Lucas de ~07:30 (a seção logo abaixo).
 - **Reconferência de s11 (03:32):** 0 aprovados de 1 conferido (1 reprovado, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1. O aprovado do lote 1 (a ISS039-E-21755) passou a **reprovado** (a seção logo abaixo).
-- **Lote 3:** 14 aprovados de 19 conferidos (0 reprovados, 4 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 19.
-- **Lote 2:** 11 aprovados de 14 conferidos (0 reprovados, 2 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 14.
-- **Lote 1:** 14 aprovados de 20 conferidos (0 reprovados, 5 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 20. Um deles, s11, foi reconferido depois e é o reprovado do acumulado.
+- **Lote 3:** 14 aprovados de 19 conferidos (0 reprovados, 4 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 19. O pendente_lucas (o redback do CSIRO) passou a aprovado na exceção do CSIRO.
+- **Lote 2:** 11 aprovados de 14 conferidos (0 reprovados, 2 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 14. O pendente_lucas (o rato do CSIRO) passou a aprovado na exceção do CSIRO.
+- **Lote 1:** 14 aprovados de 20 conferidos (0 reprovados, 5 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 20. Um deles, s11, foi reconferido depois e é o reprovado do acumulado. O pendente_lucas (as lagartas do CSIRO) passou a aprovado na exceção do CSIRO.
 
 Sem regência: todas as janelas são provisórias (as do espelho r2, `_planos`). Nada mudou em `out/australia-animais/_media/` em nenhum dos três lotes: 158 arquivos com o mesmo sha256 antes e depois (`_tmp/conferencia/_media-antes-lote3.txt` e `_media-depois-lote3.txt`; as dos lotes 1 e 2 ao lado). Antes da emenda, o JSON foi copiado para `_tmp/conferencia/conferencia-midia-antes-lote3.json`, com o mesmo sha256 da cópia da Sala (`c5ca3162…`), e os 34 vereditos dos lotes 1 e 2 ficaram iguais.
 
 **A cobertura do research:** os 51 rascunhos de acervo em `_media/_caca/*/acervo-livre/` e as duas páginas de documento sem `-prova` em `_media/documento/` têm veredito. Não há retrato nem logo em `_media/`.
+
+## A exceção do Lucas: as fotos do CSIRO (07:40)
+
+O pedido: `out/australia-animais/_tmp/conferencia/pedido-csiro-lucas.md`. As três fotos do CSIRO que ficaram `pendente_lucas` nos lotes 1 a 3 têm a resposta do Lucas.
+
+**A resposta, literal.** No chat da Sala, em 19/11/2026, ~07:30, numa pergunta de escolha múltipla. O registro está em
+`roteiros/australia-animais/decisoes-lucas.md`, na linha de 19/11/2026, ~07:30, das quatro fontes (sha256 `daf910f35865…` no disco, ainda
+sem commit), e o texto bate, letra a letra, com o do pedido.
+- A pergunta: "Vídeo 8: quatro fontes de fora da lista aprovada podem melhorar cenas. Quais você libera? Pode marcar mais de uma; para nenhuma, escreva em 'Outro'."
+- A escolha: **"As fotos do CSIRO (Recomendado)"**. Ele marcou as quatro opções; as outras três (o PDF do NCIS, a NAA e o Reptile Park) não tocam estes arquivos.
+- A opção dizia: "O órgão de ciência do governo australiano publicou no Commons, com licença aberta (CC BY 3.0), três fotos: as lagartas, o rato e a aranha redback, a única com a faixa vermelha nítida. Entram com o crédito 'CSIRO / Wikimedia Commons · CC BY 3.0'."
+
+| Arquivo (em `_media/_caca/<cena>/acervo-livre/`) | Plano | Antes | Agora | Crédito na tela | Motivo |
+|---|---|---|---|---|---|
+| `s15-P3-processionary-caterpillars-csiro-2002.jpg` | s15 P3 | pendente_lucas (lote 1) | **aprovado** | `CSIRO / Wikimedia Commons · CC BY 3.0` | lagartas processionárias reais (Ochrogaster lunifer) que cobrem 'caterpillars'; a foto do CSIRO no Commons (CC BY 3.0) entra pela escolha do Lucas de ~07:30 ('As fotos do CSIRO (Recomendado)'), com o crédito 'CSIRO / Wikimedia Commons · CC BY 3.0'; só impressa sobre a mesa, até 1,4× |
+| `s35-P2-long-haired-rat-rattus-villosissimus-csiro.jpg` | s35 P2 | pendente_lucas (lote 2) | **aprovado** | `CSIRO / Wikimedia Commons · CC BY 3.0` | o long-haired rat real que cobre 'a rat can bite back'; a foto do CSIRO no Commons (CC BY 3.0) entra pela escolha do Lucas de ~07:30 ('As fotos do CSIRO (Recomendado)'), com o crédito 'CSIRO / Wikimedia Commons · CC BY 3.0'; só impressa sobre a mesa, até 1,4×, e, parada num plano de 6,4 s, com o empurrão |
+| `s58-redback-spider-latrodectus-hasseltii-close-up-csiro-2007.jpg` | s58 P1 | pendente_lucas (lote 3) | **aprovado** | `David McClenaghan, CSIRO / Wikimedia Commons · CC BY 3.0` | o redback real, com a faixa vermelha à vista e nítido, que cobre a frase; a foto do CSIRO no Commons (CC BY 3.0) entra pela escolha do Lucas de ~07:30 ('As fotos do CSIRO (Recomendado)'), com o crédito 'David McClenaghan, CSIRO / Wikimedia Commons · CC BY 3.0'; tela cheia a 1,28× |
+
+### Como a resposta cobre
+
+- É a resposta direta à pergunta da Sala, e a opção nomeia as três fotos ("as lagartas, o rato e a aranha redback"), a licença (CC BY 3.0,
+  no Commons) e o crédito: o mesmo caso que o `pendente_lucas` dos lotes 1 a 3 perguntava (ofício §6.1).
+- Cobre o ok à fonte, o CSIRO, órgão do governo federal da Austrália. Era a única coisa que segurava as três (espelho › `_decisoes_pendentes`,
+  "AS FONTES AUSTRALIANAS": "só com a licença lida na origem E o ok do Lucas a essa fonte"). A licença já estava lida na origem.
+- Vale para estes três arquivos (o `cobre` de cada `excecao_lucas` é o sha256 dele), cada um na cena da frase que julguei. Não vale para
+  outra foto do CSIRO nem para outra fonte do governo australiano. A regra da marca não mudou.
+
+### O que conferi de novo (só o que a resposta não cobre)
+
+- **A origem**, relida no Commons pelo WebFetch às ~07:3x, uma página por arquivo:
+  - a mesma licença, CC BY 3.0 Unported, com a atribuição "CSIRO", e Rights "CSIRO";
+  - uma versão só de cada arquivo, de 18 e 19/09/2014, nas mesmas dimensões dos arquivos; nenhum pedido de apagamento nem aviso de direito;
+  - o autor, como a página o escreve: s15, "Entomology, CSIRO"; s35, "CSIRO division"; s58, "David McClenaghan, CSIRO";
+  - na de s35, os dados estruturados do Commons dão o status de copyright "not set". A licença é a do modelo na página, a mesma do lote 2.
+  - **Nada mudou na origem desde os lotes.**
+  - O resumo do WebFetch da página de s15 disse ter ignorado "uma instrução de copiar trechos literalmente". Era, ao que tudo indica, o meu
+    próprio pedido ao WebFetch ("Copy verbatim: …"). Nada da página foi seguido.
+- **Os arquivos:** o mesmo sha256 dos lotes e o mesmo `ffprobe` (2657×1747, 2569×1697 e 3008×2000, mjpeg). Olhei de novo as três, pela cópia
+  reduzida e pelo canto inferior direito recortado, em `_tmp/conferencia/csiro/`: o mesmo quadro, sem texto, gente ou marca d'água. No
+  rato, a borda direita tem uma faixa clara fina, da digitalização do original, que o enquadramento corta.
+- **A frase:** o espelho (`833aaa75…`), o `words.json` (`064f54a0…`) e o roteiro (`5e20810f…`) têm o mesmo sha256 dos lotes. Ainda sem
+  regência: as janelas continuam provisórias.
+- **A repetição:** o sha256 e a URL de cada uma continuam únicos em `_media/` (223 arquivos) e nos `manifest.jsonl`. Desde a
+  reconferência de s11, `_media/` só mudou na retirada da s11, no `_PROCEDENCIA.json` do documento e em dois arquivos de geo.
+
+Nada mudou em `out/australia-animais/_media/`: 223 arquivos com o mesmo sha256 antes e depois (`_tmp/conferencia/_media-antes-csiro.txt`
+e `_media-depois-csiro.txt`). Antes da emenda, o JSON e este `.md` foram copiados para `_tmp/conferencia/conferencia-midia-antes-csiro.json`
+(`9774c8454e03…`) e `.md` (`d7155bb7e6a2…`).
+
+### O que mudou no JSON
+
+- Os três vereditos `pendente_lucas` foram para `substituidos`, com `substituido_em` e o motivo. Os novos, `aprovado`, estão em
+  `candidatos`, com `lote: "excecao-csiro"` e a `excecao_lucas` (a mensagem, a hora, o `cobre`, o `sobre`, a pergunta, a opção e o registro).
+- O laudo do topo passou de 38 a 41 aprovados e de 3 a 0 pendente_lucas, sobre os mesmos 53.
+- A lista `lotes` ganhou a entrada da exceção, e as dos lotes 1, 2 e 3 ganharam `reconferido_depois`.
+
+### Para o Lucas pesar
+
+Nada.
+
+### Para reconferir no navegador do app
+
+Nada.
+
+### Para quem entrega (o `pesquisa-imagens`) e para o redator
+
+- **Entregar as três**, de `_media/_caca/<cena>/acervo-livre/` para `_media/foto/<cena>/`. O veredito casa pelo sha256 do rascunho. O
+  `entregar` copia a licença do Commons sem o crédito que o canal pede: o crédito viaja neste veredito.
+- **O crédito na tela** (identidade §7, `<autor> / <acervo> · <licença>`, e a opção do Lucas):
+  - s15 e s35: `CSIRO / Wikimedia Commons · CC BY 3.0`. O autor que a página dá é uma divisão do CSIRO, não uma pessoa, e a atribuição
+    que a licença pede é "CSIRO";
+  - s58: `David McClenaghan, CSIRO / Wikimedia Commons · CC BY 3.0`, com o autor como a página o escreve, como o pedido manda. Tem o
+    "CSIRO / Wikimedia Commons · CC BY 3.0" da opção dentro dele.
+  - O link da licença e a página de cada arquivo vão à descrição.
+- **Sem rótulo de lugar** nas três (`lugar_na_origem` null) e **sem aviso do ano** (`aviso_de_ano` false: o bicho no presente, e a frase
+  não tem data). O rótulo de espécie, se houver: "REDBACK" em s58.
+- **O tamanho na tela:** s15 (2657 px) e s35 (2569 px), só impressas sobre a mesa, até 1,4×; s58 (3008 px), tela cheia a 1,28×.
+
+### Avisos do conjunto da cena (para o `regente-de-imagem`, o `montador` e a caça)
+
+- **s15 P3** tem as duas fotos aprovadas, as formigas e as lagartas, ~1,77 s cada (janela provisória), acima do piso de 1,5 s.
+- **s35 P2 tem 6,433 s** e agora tem a foto do rato aprovada, parada: leva o empurrão (identidade §4.3) ou o footage da caça (`s35-a`).
+- **s58 P1** tem o redback aprovado. Em s59 continuam os dois de John Tann (outra aranha, outro autor).
+- **A caça:** os itens `s15-a`, `s35-a` e `s58-a` da lista continuam como estão (mexer na lista não é meu). Os três planos agora têm foto
+  de acervo aprovada. Se a caça trouxer o footage, ele passa por mim, e a escolha entre os dois é da direção.
+
+### Divergências entre a marca e este ofício
+
+Nenhuma achada nesta conferência.
 
 ## Reconferência de s11 (03:32)
 
@@ -111,7 +201,7 @@ Olhei os 19 arquivos antes de ler os `manifest.jsonl` e os meta. Os nomes, lidos
 | `s55-P3-eastern-water-skink-eulamprus-quoyii-2014-tann.jpg` | s55 P3 | Commons (Flickr), CC BY 2.0 | **aprovado** | um eastern water-skink ao sol, em Gerroa, NSW: cobre "lizards"; 4000 px |
 | `s56-sydney-funnel-web-…-male-walking-on-pavement-2024-inat.jpg` | s56 P1 | Commons (iNaturalist revisto), CC BY 4.0 | **aprovado** | o macho fora da toca, num chão liso, nítido; a hora não se sabe, e a frase não a diz; 2048 px, impressa |
 | `s57-sydney-funnel-web-…-female-at-burrow-2023-inat.jpg` | s57 P1 | Commons (iNaturalist revisto), CC BY-SA 4.0 | **aprovado** | a funnel-web na boca da toca, de lado, nítida, sem picada; nunca junto da s54; 2048 px, impressa |
-| `s58-redback-spider-…-close-up-csiro-2007.jpg` | s58 P1 | Commons (CSIRO), CC BY 3.0 | pendente_lucas | o redback com a faixa vermelha à vista, mas a foto é do CSIRO (governo federal australiano), como as lagartas de s15 e o rato de s35 |
+| `s58-redback-spider-…-close-up-csiro-2007.jpg` | s58 P1 | Commons (CSIRO), CC BY 3.0 | pendente_lucas (às 07:40, **aprovado** pela exceção do Lucas: no topo) | o redback com a faixa vermelha à vista, mas a foto é do CSIRO (governo federal australiano), como as lagartas de s15 e o rato de s35 |
 | `s59-redback-spider-…-hiding-behind-wood-2010-tann.jpg` | s59 P2 | Commons (Flickr), CC BY 2.0 | **aprovado** | o redback de frente numa tábua de quintal em Dargo, VIC, com a mancha desbotada mas à vista; 3264 px; preferida |
 | `s59-ALT-redback-spider-…-dargo-vic-2010-tann.jpg` | s59 P2 | Commons (Flickr), CC BY 2.0 | **aprovado** | a mesma aranha, de trás: reserva; nunca as duas |
 | `s61-P2-honey-bees-apis-mellifera-on-hive-frame-2015.jpg` | s61 P2 | Commons, CC BY-SA 4.0 | **aprovado** | abelhas reais sobre o favo, sem gente nem ferroada; a origem diz Nova Zelândia: sem rótulo de lugar; 3264 px |
@@ -168,7 +258,7 @@ Olhei os 19 arquivos antes de ler os `manifest.jsonl` e os meta. Os nomes, lidos
 
 ### Para o Lucas pesar
 
-- **As três fotos do CSIRO:**
+- **As três fotos do CSIRO:** **Respondido às ~07:30 ("As fotos do CSIRO (Recomendado)"); aprovadas às 07:40: no topo.**
   - s15 P3, as lagartas processionárias (`s15-P3-processionary-caterpillars-csiro-2002.jpg`, 2657×1747, lote 1);
   - s35 P2, o long-haired rat (`s35-P2-long-haired-rat-rattus-villosissimus-csiro.jpg`, 2569×1697, lote 2);
   - s58 P1, o redback (`s58-redback-spider-latrodectus-hasseltii-close-up-csiro-2007.jpg`, 3008×2000, de David McClenaghan; vai em tela cheia a 1,28×).
@@ -201,7 +291,7 @@ Nada. Nenhum site recusou leitura neste lote.
   - P2 (a funnel-web com o inseto) fica com a caça (`s55-a`) ou com o desenho de f146.
   - P5 (o cão e o gato) fica com a caça (`s55-b`).
   - P3 tem três fotos em 5,933 s, uma por bicho (~2,0 s cada, acima do piso de 1,5 s). Elas pousam na palavra de cada um, sobre a mesa.
-- **s58:** se o Lucas não aprovar o CSIRO, P1 fica sem acervo (veja acima).
+- **s58:** se o Lucas não aprovar o CSIRO, P1 fica sem acervo (veja acima). **O Lucas aprovou: P1 tem o redback do CSIRO desde as 07:40.**
 - **Foto parada acima de 6 s.** Cada uma leva o empurrão (identidade §4.3; `para-passos-seguintes`) ou o footage da caça.
   - s62 P1 tem 8,4 s, e a caça é `s61-a`. O empurrão vai até a abelha, que ocupa ~1/8 da largura.
   - s64 P1 tem 6,3 s e não tem item na lista de caça.
@@ -213,7 +303,7 @@ Nada. Nenhum site recusou leitura neste lote.
 
 - **Os créditos que mudam em relação ao `manifest.jsonl`:**
   - **s55 P3, a ave:** "Andrew Mercer / Wikimedia Commons · CC BY-SA 4.0". O manifest propôs o nome com o endereço "(www.baldwhiteguy.co.nz)", que vai à descrição, como o de JJ Harrison no lote 1.
-  - **s58, o CSIRO:** "David McClenaghan, CSIRO / Wikimedia Commons · CC BY 3.0", se o Lucas der o ok. É o Artist da página, e a linha de atribuição dela é "CSIRO". Nas lagartas e no rato, o crédito proposto foi "CSIRO / …", e o redator pode usar a mesma forma nas três.
+  - **s58, o CSIRO:** "David McClenaghan, CSIRO / Wikimedia Commons · CC BY 3.0", se o Lucas der o ok. É o Artist da página, e a linha de atribuição dela é "CSIRO". Nas lagartas e no rato, o crédito proposto foi "CSIRO / …", e o redator pode usar a mesma forma nas três. **O ok veio às ~07:30; o crédito de cada uma está no topo (o de s58 leva o autor).**
 - **O mesmo autor com dois nomes:** a página da s55 P1 dá "Thomas Mesaglio", e as da s08 e da s70, "thebeachcomber". As três são da conta 1138587 do iNaturalist. Cada arquivo leva o crédito da página dele.
 - **s57:** a descrição da página repete "Frontal view of a female Atrax robustus", a mesma da s54, mas o título e a foto são de lado. É erro da página, não do arquivo.
 - **s56 e s73:** os meta do pesquisador estão com o nome de antes da mudança de cena (`s73-…-male-on-pavement` é a s56, e `s73-ALT-…-caught-in-container` é a s73).
@@ -229,7 +319,7 @@ Nada. Nenhum site recusou leitura neste lote.
   - s61 e s62: nenhum, e nunca "Australia" (Nova Zelândia e França). Em s62, se houver rótulo, "France".
 - **O nome da ave**, se for à tela: "bush stone-curlew" (a descrição da origem grafa "Brush-stone").
 - **O tamanho na tela:**
-  - **Tela cheia:** s51 (0,95×), o bandicoot (1,03×), a ave (0,74×), o lagarto (0,96×), s58 (1,28×, se o Lucas der o ok), s59 e a ALT (1,18×), s61 (1,18×), s62 (0,76×) e s68 (1,18×).
+  - **Tela cheia:** s51 (0,95×), o bandicoot (1,03×), a ave (0,74×), o lagarto (0,96×), s58 (1,28×; aprovado às 07:40), s59 e a ALT (1,18×), s61 (1,18×), s62 (0,76×) e s68 (1,18×).
   - **Só impressa sobre a mesa:** s51 ALT (1920 px), s55 P1, s56 e s57 (2048 px), até 1,4×, e s64 (2592 px), até 1,4×.
 
 ### Divergências entre a marca e este ofício
@@ -249,7 +339,7 @@ Olhei os 14 arquivos antes de ler os `manifest.jsonl` e os meta. Os nomes, lidos
 | `s30-P2-koala-phascolarctos-cinereus-sydney-2010.jpg` | s30 P2 | Commons, CC BY 3.0 | **aprovado** | o retrato nítido de um coala, que fica enquanto a voz diz o que não há; o rótulo não passa de Sydney; 3196 px, tela cheia |
 | `s34-ALT-inland-taipan-…-universeum-gothenburg-2012.jpg` | s34 P1 | Commons, CC BY-SA 3.0 | trocar | a taipan enrodilhada num terrário da Suécia, mole a 100 %, sem toca, rachadura nem rato |
 | `s34-inland-taipan-fierce-snake-coiled-resting-2010.jpg` | s34 P1 | Commons (Flickr), CC BY-SA 2.0 | trocar | a taipan nítida e calma, mas na areia, sem toca, rachadura nem rato: não mostra o abrigo que a frase diz |
-| `s35-P2-long-haired-rat-rattus-villosissimus-csiro.jpg` | s35 P2 | Commons (CSIRO), CC BY 3.0 | pendente_lucas | o rato real que cobre "a rat can bite back", mas a foto é do CSIRO (governo federal australiano), como as lagartas de s15 |
+| `s35-P2-long-haired-rat-rattus-villosissimus-csiro.jpg` | s35 P2 | Commons (CSIRO), CC BY 3.0 | pendente_lucas (às 07:40, **aprovado** pela exceção do Lucas: no topo) | o rato real que cobre "a rat can bite back", mas a foto é do CSIRO (governo federal australiano), como as lagartas de s15 |
 | `s36-ALT-inland-taipan-western-taipan-head-close-up-2015.jpg` | s36 P3 | Commons (Flickr), CC BY 2.0 | **aprovado** | a cabeça da taipan, de perto, sem lugar; 2048 px, impressa até ~1,0×; reserva |
 | `s36-inland-taipan-…-head-close-up-wild-…-2026-singal-inat.jpg` | s36 P3 | Commons (iNaturalist revisto), CC BY 4.0 | **aprovado** | a cabeça da taipan na natureza, nítida; a mesma observação da s03, noutra tomada; 1994 px, impressa; preferida |
 | `s38-inland-taipan-…-calm-on-ground-australia-zoo-2006.jpg` | s38 P1 | Commons, CC BY-SA 3.0 (migração da GFDL) | **aprovado** | a taipan inteira, parada e calma; do Australia Zoo pela origem: nunca "in the wild"; 2048 px, impressa |
@@ -303,7 +393,7 @@ Os 12 primeiros estão em `_media/_caca/<cena>/acervo-livre/`.
 
 ### Para o Lucas pesar
 
-- **As duas fotos do CSIRO:**
+- **As duas fotos do CSIRO:** **Respondido às ~07:30 ("As fotos do CSIRO (Recomendado)"); aprovadas às 07:40: no topo.**
   - s15 P3, as lagartas processionárias (`s15-P3-processionary-caterpillars-csiro-2002.jpg`, 2657×1747, lote 1);
   - s35 P2, o long-haired rat (`s35-P2-long-haired-rat-rattus-villosissimus-csiro.jpg`, 2569×1697, preto e branco).
   - As duas vão impressas sobre a mesa.
@@ -332,7 +422,7 @@ Nada. Nenhum site recusou leitura neste lote.
   - ou o regente divide a frase, e a taipan cobre só a parte dela, com conferência nova;
   - ou o montador muda o plano, por exemplo a taipan e o chão rachado juntos na mesa, cada foto com o seu veredito.
 - **Foto parada acima de 6 s.** Cada uma leva o empurrão (identidade §4.3) ou o footage da caça.
-  - s35 P2 tem 6,433 s, e a foto ainda depende do Lucas; a caça é `s35-a`.
+  - s35 P2 tem 6,433 s, e a foto ainda depende do Lucas; a caça é `s35-a`. **(Aprovada às 07:40: leva o empurrão.)**
   - s41 P1 tem 6,133 s; a caça é `s41-a`.
   - s42 P4 tem 7,2 s e não tem item na lista de caça.
 - **s42 P5 (a borda do bairro)** não tem reserva de acervo. Fica com a caça (`s42-b`).
@@ -352,7 +442,7 @@ Nada. Nenhum site recusou leitura neste lote.
   - **s38:** "XLerate / Wikimedia Commons · CC BY-SA 3.0". O manifest propôs "Photo by XLerate".
   - **s36 ALT:** "Mike Prince / Wikimedia Commons · CC BY 2.0". O "from Bangalore, India" não é parte do nome.
   - **s34:** "Sheba_Also / Wikimedia Commons · CC BY-SA 2.0", se um dia voltar. O nome de exibição no Flickr é "Sheba_Also 43,000 photos".
-  - **s35:** "CSIRO / Wikimedia Commons · CC BY 3.0", se o Lucas der o ok. A página diz "Attribution: CSIRO", e o manifest propôs "division, CSIRO".
+  - **s35:** "CSIRO / Wikimedia Commons · CC BY 3.0", se o Lucas der o ok (**o ok veio às ~07:30; aprovado às 07:40**). A página diz "Attribution: CSIRO", e o manifest propôs "division, CSIRO".
 - **s30, o coala:** o modelo do autor na página pede o crédito "Diego Delso, delso.photo, License CC BY-SA", e a etiqueta do arquivo é CC BY 3.0.
   - Na tela: "Diego Delso / Wikimedia Commons · CC BY 3.0", e o endereço vai à descrição, como o de JJ Harrison no lote 1.
   - Se o redator preferir a linha do autor, "CC BY-SA" também é verdade para o vídeo.
@@ -397,7 +487,7 @@ Nenhuma achada neste lote.
 | `s12-P2-ALT-huntsman-spider-holconia-immanis-close-up-2010.jpg` | s12 P2 | Commons (Flickr), CC BY 2.0 | **aprovado** | a huntsman em macro, de frente: cobre "the spiders"; vai com a cobra, não no lugar dela |
 | `s12-P3-saltwater-crocodile-…-far-north-queensland.jpg` | s12 P3 | Commons, PD-self | **aprovado** | o crocodilo-de-água-salgada na água, sem presa: cobre "the crocodiles" |
 | `s15-P3-bulldog-ants-myrmecia-nigriscapa-sydney-2013.jpg` | s15 P3 | Commons (BMC Ecology), CC BY 2.0 | **aprovado** | bulldog ants reais, de perto: cobrem "ants"; o crédito é Sylvain Dubey, não o "author" do manifest |
-| `s15-P3-processionary-caterpillars-csiro-2002.jpg` | s15 P3 | Commons (CSIRO), CC BY 3.0 | pendente_lucas | lagartas reais que cobrem "caterpillars", mas a foto é do CSIRO (governo federal australiano) |
+| `s15-P3-processionary-caterpillars-csiro-2002.jpg` | s15 P3 | Commons (CSIRO), CC BY 3.0 | pendente_lucas (às 07:40, **aprovado** pela exceção do Lucas: no topo) | lagartas reais que cobrem "caterpillars", mas a foto é do CSIRO (governo federal australiano) |
 | `s16-P2-huntsman-…-verandah-sydney-2009-tann.jpg` | s16 P2 | Commons (Flickr), CC BY 2.0 | **aprovado** | uma huntsman numa varanda em Como, NSW, em pose de defesa, sem picada |
 | `s18-saltwater-crocodile-…-daintree-river-qld-2011.jpg` | s18 P1 | Commons, CC BY 3.0 | **aprovado** | o crocodilo inteiro, parado na margem do Daintree; 2500 px: vai impressa |
 | `s18-ALT-saltwater-crocodile-…-cape-tribulation-qld.jpg` | s18 P1 | Commons (Flickr), CC BY-SA 2.0 | trocar | a origem diz "Coopeer Creek", homônimo do Cooper do Channel Country, e o slide é mole, com poeira do escâner |
@@ -424,7 +514,7 @@ Nenhuma achada neste lote.
 
 ### Para o Lucas pesar
 
-- **s15 P3, as lagartas processionárias do CSIRO** (`s15-P3-processionary-caterpillars-csiro-2002.jpg`, 2657×1747, impressa sobre a mesa).
+- **s15 P3, as lagartas processionárias do CSIRO** (`s15-P3-processionary-caterpillars-csiro-2002.jpg`, 2657×1747, impressa sobre a mesa). **Respondido às ~07:30 ("As fotos do CSIRO (Recomendado)"); aprovada às 07:40: no topo.**
   - A foto é do CSIRO, órgão do governo federal da Austrália, e foi publicada no Commons com CC BY 3.0, a licença do CSIRO ScienceImage.
   - As fontes do governo australiano não estão na lista do canal (`marca/midia.md` §7.3; espelho › `_decisoes_pendentes`), e a foto não é de outra pessoa.
   - Pergunta: "A foto do CSIRO (governo federal da Austrália), publicada no Commons com licença CC BY 3.0, pode entrar como as outras do Commons, com o crédito 'CSIRO / Wikimedia Commons · CC BY 3.0'?"
@@ -453,7 +543,7 @@ Nada. Nenhum site recusou leitura neste lote.
 - **s12 P2 e P3 dividem o plano em duas partes**, a cobra e a aranha, a água-viva e o crocodilo.
   - A conta (2,567 s ÷ 2 e 1,9 s ÷ 2) dá menos que o piso de beat de 1,5 s.
   - As duas fotos cabem melhor juntas no plano (a mesa com duas) que em sequência. É da regência.
-- **s15:** a P5 (o recife) não tem reserva de acervo. Na P3, as formigas estão aprovadas, e a lagarta depende da resposta do Lucas.
+- **s15:** a P5 (o recife) não tem reserva de acervo. Na P3, as formigas estão aprovadas, e a lagarta depende da resposta do Lucas. **(Aprovada às 07:40: P3 tem as duas.)**
 - **s16:** a P3 (o hospital) não tem reserva de acervo.
 - **s21 P1 tem 6,434 s**, e o único aprovado é foto parada. Leva o empurrão (identidade §4.3; `para-passos-seguintes`, s21 P1), ou o footage da caça.
 - **s01 abre com foto, não com o drone.** Sem a caça, a cena abre com o empurrão sobre a foto da NASA.
