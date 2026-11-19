@@ -2070,3 +2070,56 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   preencher o campo (o filtro `setparams` na conversão, ou a cópia com o `prores_metadata`) quando o `ffprobe` o der desconhecido.
   Vale avisar o Lucas, para ver com o Mateus.
 - Skill: cacar-no-chrome (`licoes.md`, L1).
+
+### 112. O `casar` só casava por sha256, e o clipe de banco instalado de uma cópia saía "sem veredito"
+
+- **O que aconteceu** (19/11/2026, vídeo 8, `australia-animais`, no `requisitions`): o `casar-midia-vereditos.py` saiu 1, com os dois
+  ProRes de s03 como "SEM VEREDITO". Eles foram instalados da cópia com o campo de cor (item 111), e o conferente os tinha aprovado,
+  com `mesmo_item: true`.
+- **A causa:** o `_instalar-lote` gravou como `medido.sha256_do_baixado` o sha256 da cópia (`992d67b5…`), não o do arquivo julgado
+  (`d08876cc…`). O item 94 ensinou o portão a casar pelo sha256 do baixado, e a cópia quebrou essa corrente. A regra do canal para o
+  banco pago é outra, a URL do item com `mesmo_item: true` (`CLAUDE.md`, "A regra da cena"), e o portão não a tinha.
+- **O que resolveu:** o `casar` passou a casar pela URL do item, só com veredito de `mesmo_item: true` e só quando nenhum sha256 casa.
+  Na primeira versão, a URL entrava sempre, e no `los-angeles` trouxe junto um `reprovado` de outro download do mesmo item: o
+  resultado não mudou, mas uma chave larga assim pode absolver um arquivo reprovado pelo próprio sha256. Por isso ela ficou como
+  último recurso. A prova, `casar-midia-vereditos-provar.py` (ao lado do `casar`), confere quatro casos. A URL com `mesmo_item: true`
+  casa, e sem ele, não. O sha256 reprovado continua RUIM mesmo com a URL aprovada. E o aprovado de outra cena não vale. Nos outros
+  7 vídeos, a saída do `casar` ficou igual, linha a linha.
+- **Como evitar:** quando um passo põe uma cópia entre o arquivo julgado e o `_instalar-lote`, rode o `casar` logo depois da
+  instalação. Num portão que casa por mais de uma chave, a ordem fica escrita, com a do próprio arquivo primeiro, para a chave mais
+  larga não absolver o arquivo errado.
+- **Por que serve a outros canais:** todo canal com banco pago e o `_instalar-lote` do molde guarda a URL do item na procedência, e
+  qualquer transformação antes da instalação (a cópia de cor, um recorte) muda o sha256 que ele grava como o do baixado.
+- Skill: cacar-no-chrome (`licoes.md`, L2).
+
+### 113. O autor do artigo tirado do nome do arquivo
+
+- **O que aconteceu** (vídeo 8, `australia-animais`; achado em 19/11/2026 na pré-conferência de tela, o C07): o artigo da Australian
+  Family Physician de 2004 sobre a redback entrou como "Winkel et al." no dossiê (F175), no `out/australia-animais/_dados/s58.json`,
+  na `pauta-dados.json` e no laudo da voz. O crédito de s58 ia sair `Source: Winkel et al., Australian Family Physician, 2004`.
+- **A causa:** o autor foi lido do nome do arquivo, `20040311winkel.pdf`. O artigo é de Nimorakiotakis & Winkel, como dizem o
+  cabeçalho dele e o índice do Europe PMC (`europepmc.org/article/MED/15054982`). O canal cita outro artigo do mesmo autor, Winkel,
+  Mirtschin & Pearn (Toxicon, 2006), em que "Winkel et al." está certo, e isso escondeu o erro.
+- **O que resolveu:** o crédito de tela saiu `Source: Nimorakiotakis & Winkel, Australian Family Physician, 2004; Wiener, Medical
+  Journal of Australia, 2003` (`textos-tela.json` `32375aed…`). A Sala corrigiu o dossiê (F175, com a nota). O `_dados/s58.json`, a
+  pauta-dados e o laudo da voz ficaram no item 82 do para-passos, para a descrição do finalize, porque nenhum crédito sai deles.
+- **Como evitar:** o autor, o ano e o periódico se leem no cabeçalho do artigo ou no índice dele (PubMed, Europe PMC, o DOI), nunca no
+  nome do arquivo nem na URL. "Et al." só com três autores ou mais; com dois, os dois nomes.
+- **Por que serve a outros canais:** toda pesquisa que baixa o PDF de um artigo herda o nome que o site deu ao arquivo.
+- Skill: nenhuma ainda. A casa é a `pesquisar-dossie-de-pauta` (catálogo §2.1, nº 2, onda 2), quando ela nascer, com o ok do Lucas
+  para a onda dela.
+
+### 114. A ressalva de um item da lista, colada na lista inteira
+
+- **O que aconteceu** (vídeo 8, `australia-animais`; achado em 19/11/2026 na pré-conferência de tela, o P06): a Sala resumiu a ficha do
+  NCIS sobre as mortes ligadas a animais (2001–2021) no `navegador-sala.md` e no item 48 do para-passos como "222 com cavalos, 92 com
+  bovinos, 82 com cães e 53 com cangurus, todas em acidente de veículo".
+- **A causa:** a ficha dá o mecanismo de cada animal à parte, e "todas em acidente de veículo" vale só para os 53 cangurus. Dos
+  bovinos, 42 de 92 foram em veículo; nos cavalos, as quedas são 59,5 %; nos cães, a mordida é 46,3 % e a queda, 42,7 %. O resumo
+  juntou numa frase o que a fonte dizia item a item.
+- **O que resolveu:** a Sala corrigiu o `navegador-sala.md` e o item 48 (CORRIGIDO, com a hora e o P06). Nada disso tinha ido à tela.
+- **Como evitar:** ao resumir uma lista da fonte, a ressalva fica no item a que a fonte a dá. Uma ressalva para a lista inteira só
+  entra com a frase da fonte que diz isso, citada.
+- **Por que serve a outros canais:** o resumo de uma tabela é o passo em que o dado vira frase, em qualquer canal.
+- Skill: nenhuma ainda. A casa é a `pesquisar-documentos-e-dados` (catálogo §2.1, nº 14, onda 3), quando ela nascer, com o ok do
+  Lucas para a onda dela.

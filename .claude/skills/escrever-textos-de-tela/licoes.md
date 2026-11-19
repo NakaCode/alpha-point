@@ -18,3 +18,20 @@ fica com o portão de movimento e com a regra da quebra (roupa §3).
   usa. Confira no espelho que peças voltam, e de que cena; o espectador não as reconhece pela forma.
 - **Origem:** `out/rio-columbia/_tmp/espectador-r1/mantidos.json` (s58, t 0, ESP-17); vídeo 7 (`rio-columbia`), revisão
   de 13/11/2026, conserto de 16/11/2026. Destino a): julgamento (o que identifica a peça), nenhum portão mede.
+
+### L2 · O crédito de fonte copiado do dossiê saiu sem o ano que a fonte tem
+- **Sintoma:** oito créditos de instituição sem o ano na tela, os da Geoscience Australia, da healthdirect e da ANZCOR (o laudo
+  de tela do vídeo 8, "Os dois padrões", 1: "Oito créditos de instituição (Geoscience Australia, healthdirect, ANZCOR) saíram do
+  dossiê sem o ano, onde a fonte o dá"). Os de artigo levavam o ano, todos.
+- **Causa:** o crédito veio do dossiê, que listava a instituição sem o ano, e não se conferiu cada um contra o molde da marca
+  (`marca/identidade.md` §7: `Source: <instituição>, <ano>`). O artigo traz o ano na própria citação; a página de instituição,
+  não: o ano está na página (a data de atualização, a edição da diretriz).
+- **O que resolveu:** o conserto 1 do texto de tela (`out/australia-animais/textos-tela.json` `32375aed…`): o ano lido na fonte
+  (Geoscience Australia, 2011; healthdirect Australia, 2024; ANZCOR 9.4.1 (2021), 9.4.3 (2021), 9.4.8 (2011)), e a regra nas
+  `_regras_de_serie`, com as fontes sem data declaradas como exceção (a ficha da Austrália do Sul, o Bee Aware, o Queensland Museum).
+- **Como evitar:** antes de entregar, liste os `Source:` sem um ano de quatro dígitos e confira cada um na fonte: o ano que ela
+  tem vai à tela, e a fonte sem data vai como exceção declarada nas `_regras_de_serie`. O crédito do dossiê é ponto de partida,
+  não a forma final.
+- **Origem:** `roteiros/australia-animais/qc-roteiro/fatos-tela.laudo.md` (o padrão 1); vídeo 8 (`australia-animais`),
+  19/11/2026. Destino a): só a fonte diz se o ano existe, e nenhum portão do canal o mede. O lado do dossiê teria casa na
+  `pesquisar-dossie-de-pauta` (catálogo §2.1, nº 2), que ainda não existe.
