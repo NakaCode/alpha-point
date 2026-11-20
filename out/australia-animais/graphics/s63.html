@@ -11,7 +11,12 @@
   (s64 abre com a foto do crocodilo na mesma mesa). Tarefa australia-animais-arte-1, lote EF11, editor-de-arte, 19/11/2026. Nenhum hex:
   as cores saem do marca/tokens.css.
 
-  O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json 32375aed… › s63: o crédito do ABS 0–8,833; a cota "VENOMOUS: 85" 4,467–8,833;
+  CONSERTOS-1 (20/11/2026, lote FB; o item ESP-S63, o ESP-5 da revisão de espectador r1): a cota [348] VENOMOUS: 85 entra em 0,867 s
+  (o t0 novo do redator: 150 ms depois de as dez pilhas se montarem), JÁ NO LUGAR onde a barra de cima se forma, e não mais em
+  'venomous' (4,467): as pilhas que voltam de s07 têm nome desde o começo, enquanto a voz diz "the animals with no venom at all".
+  Nada mais mudou de tempo nem de lugar, a não ser as 5 fichas de cima da pilha de 2018 (ver 0,767 e 0,867, abaixo).
+
+  O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json f3065ebb… › s63: o crédito do ABS 0–8,833; a cota "VENOMOUS: 85" 0,867–8,833;
   a cota "NO VENOM: 154 · 2016–2025" 5,833–8,833 (aqui partida: a chave a 128 px e o período a 84 px na linha de baixo; na quebra o
   "·" sai); o crédito do NCIS 8,833–20,7; o cabeçalho e as DUAS frases da folha (o bloco folha-ncis) 9,500–20,7; os três grifos em
   12,967, 16,233 e 17,867; a cota "ANIMAL-RELATED DEATHS, 2001–2021: / HORSES 222 · CATTLE 92 · DOGS 82" 17,867–20,7); os BEATS
@@ -34,10 +39,18 @@
     P1 + P2 · 0,000–8,833 · o DADO sobre papel
     0,000–0,700  as dez pilhas do livro (as 85 mortes por veneno, 2016–2025: a PEÇA 1) se montam (começam 0,10 s antes do corte: o
                  1º quadro já tem fichas); o chão já está lá.
-    1,243–4,095  em 'with' as 85 fichas SE JUNTAM numa barra só (a de cima): saem das pilhas da esquerda para a direita, as de cima
-                 primeiro, uma a cada 28 ms, 0,5 s de voo cada uma; o chão das pilhas sai (1,24–1,74). A barra fica pronta 0,37 s
-                 antes do nome dela (nenhuma peça parada sem nome por mais de 1 s).
-    4,467        [348] em 'venomous' entra VENOMOUS: 85 (300 ms, opacidade + 24 px) em cima da barra.
+    0,767–0,987  a pilha de 2018 (19 fichas, x 1198–1242) sobe até y 500 e ficaria por trás do nome, que entra em 0,867 (x 519–1475,
+                 a tinta de y 607 a 700): por isso as 5 fichas de cima dela (as que ficam acima de y 760) DESCEM pela própria pilha
+                 0,10 s antes de o nome entrar (0,22 s, eo, até a altura das casas da barra): quando o nome começa a aparecer,
+                 nenhuma ficha está atrás dele, e nenhuma o cruza em voo. O alto da pilha passa a y 760, 60 px abaixo da linha de
+                 base do nome.
+    0,867        [348] entra VENOMOUS: 85 (300 ms, opacidade + 24 px) em cima à esquerda, onde a barra vai se formar (x 520, a linha
+                 de base em y 700): 167 ms depois de as pilhas ficarem prontas. COM ele, as 5 fichas que desceram DESLIZAM para a
+                 esquerda, por baixo do nome (0,867–0,979, a de cima primeiro, 0,5 s cada uma), e pousam nas 5 primeiras casas da
+                 barra, debaixo do "V" (até 1,479).
+    1,243–4,095  em 'with' as outras 80 fichas SE JUNTAM na barra, debaixo do nome: saem das pilhas da esquerda para a direita, as
+                 de cima primeiro, cada uma no instante de sempre (uma a cada 28 ms; a pausa de 0,14 s depois da pilha de 2017 é o
+                 lugar das 5 que já foram), 0,5 s de voo cada uma; o chão das pilhas sai (1,24–1,74). A barra fica pronta em 4,095.
     5,833–7,200  [349] em 'one' entra NO VENOM: 154 / 2016–2025, e a SEGUNDA barra cresce embaixo, da esquerda para a direita, ficha a
                  ficha (uma a cada 8 ms), na mesma escala: passa do comprimento da de cima em 6,5 s e chega a 154 em 'fifty-four'.
     0,000–8,583  a câmera do dado empurra devagar (1,000 → 1,014, linear) com a deriva do RIG; 8,583–8,833: repouso antes do corte.
@@ -813,7 +826,7 @@ var FOLHA79 = (function () {
   // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é do redator-de-tela: textos-tela.json › _textos_por_cena s63) ═══
   var TEXTOS = {
     credAbs: "Source: ABS, Causes of Death, Australia, 2025\nCC BY 4.0 · 2023 revised · 2024–2025 preliminary",   // credito, 0–8,833 (a quebra do redator)
-    venK: "VENOMOUS: 85",                                                                   // cota, 4,467–8,833
+    venK: "VENOMOUS: 85",                                                                   // cota, 0,867–8,833 (consertos-1: era 4,467)
     semK: "NO VENOM: 154", semR: "2016–2025",                                               // cota, 5,833–8,833: "NO VENOM: 154 · 2016–2025" (na quebra o "·" sai)
     credNcis: "Source: National Coronial Information System\n(NCIS), 2024 · CC BY 4.0",     // credito, 8,833–20,7 (a quebra do redator)
     cab: "National Coronial Information System (NCIS)\nAnimal-related deaths in Australia", // folha_cabecalho, 9,500–20,7
@@ -882,8 +895,9 @@ var FOLHA79 = (function () {
   // ── os tempos (locais, −779,467), do words.json, dos textos de tela e da regência s63 ──
   var T = {
     sobe: -0.10, sobeDur: 0.80,                       // as dez pilhas se montam (0,10 s antes do corte: o 1º quadro já tem fichas)
-    junta: 1.243, juntaPasso: 0.028, voo: 0.50,       // 'with': as 85 se juntam na barra (a última pousa em 4,095)
-    ven: 4.467,                                       // [348] 'venomous'
+    junta: 1.243, juntaPasso: 0.028, voo: 0.50,       // 'with': as fichas se juntam na barra (a última pousa em 4,095)
+    ven: 0.867,                                       // [348] o nome da barra, 167 ms depois de as pilhas se montarem (consertos-1, ESP-S63: era 4,467, em 'venomous')
+    cedoAntes: 0.10, cedoDesce: 0.22,                 // as 5 fichas de cima da pilha de 2018 descem 0,10 s antes do nome (0,767–0,987) e só depois deslizam
     sem: 5.833, semPasso: 0.008, semCai: 0.14,        // [349] 'one': o rótulo e a barra dos 154 (cheia em 7,20)
     camD: 8.583,                                      // a câmera do dado para 250 ms antes do corte
     corte: 8.82,                                      // P2 → P3: o quadro de 8,800 s ainda é o dado; o de 8,833 s já é a mesa
@@ -908,10 +922,20 @@ var FOLHA79 = (function () {
   // ── P1 + P2: as dez pilhas, a barra das 85 e a barra das 154 ──
   var GV = MONTES.G.veneno, GS = MONTES.G.semVeneno;
   var C = COLUNAS.montar(E("gColunas"), E("colChao"), null, "");
-  // quem vai para que casa da barra: as pilhas da esquerda primeiro, e em cada pilha a ficha de cima primeiro
-  var CASA = [];
-  if (C) C.fichas.map(function (f, k) { return k; }).sort(function (a, b) { var A = C.fichas[a], B = C.fichas[b]; return A.x - B.x || A.y - B.y; })
-    .forEach(function (k, r) { CASA[k] = r; });
+  // quem vai para que casa da barra (CASA) e quando sai da pilha (SAI): as pilhas da esquerda primeiro, e em cada pilha a ficha de
+  // cima primeiro. [consertos-1, ESP-S63] O nome entra em T.ven no lugar da barra, e a pilha de 2018 sobe por trás dele: as fichas
+  // CEDO (o alto delas acima de NOME_LIVRE: as 5 de cima dessa pilha) saem COM o nome e ocupam as primeiras casas, debaixo dele; as
+  // outras saem em 'with', cada uma no instante que tinha (o da ordem antiga), e só as das duas primeiras pilhas mudam de casa (+5).
+  // As CEDO andam em dois tempos (o mesmo executor, BARRAS.por): primeiro DESCEM pela pilha até a altura da casa (de T.ven −
+  // T.cedoAntes, em T.cedoDesce: saem de trás do nome antes de ele aparecer), depois DESLIZAM para a esquerda, por baixo dele
+  var NOME_LIVRE = GV.base + 60;   // y 760: 60 px abaixo da linha de base do nome
+  var CASA = [], SAI = [], CEDO = [];
+  if (C) (function () {
+    var ordem = C.fichas.map(function (f, k) { return k; }).sort(function (a, b) { var A = C.fichas[a], B = C.fichas[b]; return A.x - B.x || A.y - B.y; });
+    var cedo = ordem.filter(function (k) { return C.fichas[k].y < NOME_LIVRE; }), n = 0;
+    cedo.forEach(function (k, i) { CASA[k] = i; SAI[k] = T.ven + T.juntaPasso * i; CEDO[k] = true; });
+    ordem.forEach(function (k, r) { if (cedo.indexOf(k) >= 0) return; CASA[k] = cedo.length + n; SAI[k] = T.junta + T.juntaPasso * r; n++; });
+  })();
   var FS = MONTES.criar(E("gSem"), GS.n);
   var CV = MONTES.cota(E("gTextos"), "ven", MONTES.G.x0, GV.base, TEXTOS.venK, "", 0);
   var CS = MONTES.cota(E("gTextos"), "sem", MONTES.G.x0, GS.base, TEXTOS.semK, TEXTOS.semR, GS.sub);
@@ -1002,8 +1026,9 @@ var FOLHA79 = (function () {
     if (C) {
       C.estado({ sobe: seg(t, T.sobe, T.sobeDur), eixo: 0 });
       C.fichas.forEach(function (f, k) {
-        var r = CASA[k] || 0, p = eo(seg(t, T.junta + T.juntaPasso * r, T.voo)), a = MONTES.centro(GV, r);
-        BARRAS.por(f, lerp(f.x + FICHA.lado / 2, a.x, p), lerp(f.y + FICHA.lado / 2, a.y, p), 0);
+        var r = CASA[k] || 0, p = eo(seg(t, SAI[k] == null ? T.junta : SAI[k], T.voo)), a = MONTES.centro(GV, r);
+        var py = CEDO[k] ? eo(seg(t, T.ven - T.cedoAntes, T.cedoDesce)) : p;   // as CEDO descem primeiro; as outras voam em linha reta
+        BARRAS.por(f, lerp(f.x + FICHA.lado / 2, a.x, p), lerp(f.y + FICHA.lado / 2, a.y, py), 0);
       });
     }
     FS.forEach(function (f, k) {

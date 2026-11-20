@@ -41,8 +41,17 @@ CANAL ALPHA POINT — OS ANIMAIS PERIGOSOS DA AUSTRÁLIA (vídeo 8, australia-an
         CROCODILES / (W58): 13 / 2016–2025 em cima da fileira (a chave a 128 px, empilhada em duas linhas para ficar sobre o lugar dos
         crocodilos e longe do monte MARINE ANIMALS; o período a 84 px na linha de baixo; na quebra o "·" sai); 2,23 s no ar. O
         código não diz a espécie, e a tela também não. Empurrão lento (1,000 → 1,012) com a deriva do RIG; 9,25–9,50: repouso.
-   b2  9,500–15,333  MAPA em P-CROC (centro 115,5° E, 9,07° S, z 4,73: a pose do arco, EXATA no corte: o Sri Lanka em x 609, y 438;
-        Darwin em x 2499, y 1210), em deriva para o leste a 22 px/s. Desde o corte: o contorno da Austrália (--tinta, 4 px). De 'from'
+   b2  9,500–15,333  MAPA. [CONSERTOS-1, 20/11/2026, lote FB; o item ESP-S65, o ESP-6 da revisão de espectador r1] De 9,500 a 12,850
+        ('from') a câmera RECUA: o corte abre 0,20 nível mais perto (z 4,93), e o recuo é um zoom puro em torno do ponto de tela onde
+        fica Darwin (x 2499, y 1210): o norte da Austrália não sai do lugar e a Ásia abre à esquerda e em cima, enquanto a voz diz
+        "isn't only Australia's". Ele já anda no 1º quadro do mapa (sem partida), linear em nível (0,066 nível/s; o canto de cima à
+        esquerda anda a ~125 px/s no 4K, o meio do quadro a ~27); nos últimos 0,60 s freia até zero enquanto a deriva para o leste
+        nasce (0 → 22 px/s), e em 12,850 a pose é EXATAMENTE P-CROC (centro 115,5° E, 9,07° S, z 4,73: a pose do arco; o Sri Lanka em
+        x 609, y 438; Darwin em x 2499, y 1210), já na velocidade da deriva: sem tranco. Daí até 15,40, a deriva de sempre, para o
+        leste a 22 px/s. (Antes: P-CROC exata no corte e só a deriva, de 9,500 a 15,40; o olho via o mapa parado por 3,35 s. O
+        textos-tela de hoje é f3065ebb…, e os 12 textos de s65 são os mesmos.)
+        Desde o corte: o contorno da Austrália (--tinta, 4 px). Em "Australia's" (11,33) ele ACENDE uma vez (engrossa de 4 para 12
+        px em 500 ms, fica 0,30 s e volta aos 4 px em 0,60 s, até 12,73: antes da pincelada), para a fala ter par na tela. De 'from'
         (12,85) a 'Australia.' (14,45): a PINCELADA larga e translúcida em --neutro (110 px, 45 %) corre do Sri Lanka ao norte da
         Austrália. Em 'Sri' (13,085): o Sri Lanka acende o contorno (500 ms) e entra SRI LANKA (13,100; embaixo da ilha, sobre o
         mar, fora da pincelada); 2,23 s no ar. O crédito de Lloyd-Jones et al. entra COM a pincelada (12,85), e não no corte (a
@@ -699,7 +708,9 @@ var MONTES = (function () {
     papel: 6.12, mapa: 9.49,                        // os cortes por dentro do arquivo: o quadro de 6,133 s já é o papel; o de 9,500 s já é o mapa
     avanca: 6.29, avancaPasso: 0.03, voo: 0.55,     // b1: 'crocodiles': as 13 fichas avançam (a última pousa em 7,20)
     cota: 7.267, camD: 9.25,                        // 'thirteen'; a câmera do papel para 250 ms antes do corte
-    pose: 9.50,                                     // b2: P-CROC exata neste instante; daí a deriva
+    pose: 9.50,                                     // b2: o 1º quadro do mapa (consertos-1: daqui o RECUO; P-CROC exata só em T.recuoFim)
+    recuoFim: 12.85, recuoFreio: 0.60,              // 'from': o recuo acaba EXATO em P-CROC; nos últimos 0,60 s ele freia e a deriva nasce
+    ausLuz: 11.33,                                  // "Australia's": o contorno da Austrália acende uma vez (0,5 s + 0,3 s + 0,6 s)
     faixa: [12.85, 1.60], sriLuz: 13.085, sri: 13.10, sriSai: 15.133,   // 'from' → 'Australia.'; 'Sri'; a saída (200 ms, até 15,333)
     viagem: 15.40, viagemDur: 1.90,                 // b3: a viagem chega em 17,30
     nt: 17.50, prot: 19.20, pulso: 20.85            // 'Northern' · 'nineteen' · 'came'
@@ -707,8 +718,9 @@ var MONTES = (function () {
 
   // ═══ A CÂMERA DO MAPA ═══
   var TILE = 512;
-  var P_CROC = { c: [115.5, -9.07], z: 4.73 };       // a pose do arco (conceito › s65), exata em T.pose
+  var P_CROC = { c: [115.5, -9.07], z: 4.73 };       // a pose do arco (conceito › s65), exata em T.recuoFim ('from')
   var DERIVA = 22;                                   // px/s para o leste
+  var RECUO = { dz: 0.20, em: [130.8436, -12.4596] };   // o corte abre 0,20 nível mais perto; o recuo é em torno do chão de Darwin (o norte da Austrália)
   var P_NT = { c: [133.5, -16.47], z: 5.71 };        // a pose do FIM da cena (21,8 s): o Território do Norte de x 1585 a 2255, y 658 a 1842
   var CAM = { A: [1920, 380], zChega: 5.62 };        // a aproximação: +0,02 nível/s em torno do ponto de tela A (entre as duas pílulas)
   function S(z) { return TILE * Math.pow(2, z); }
@@ -725,9 +737,28 @@ var MONTES = (function () {
     var m = mercDe(p.c), k = 2 * Math.PI;
     return llDe([m[0] + (xy[0] - 1920) / S(p.z) * k, m[1] - (xy[1] - 1080) / S(p.z) * k]);
   }
+  // onde um ponto do chão cai na tela, numa pose (o avesso de chaoDe)
+  function telaDe(p, ll) {
+    var m = mercDe(p.c), g = mercDe(ll), k = 2 * Math.PI;
+    return [1920 + (g[0] - m[0]) * S(p.z) / k, 1080 - (g[1] - m[1]) * S(p.z) / k];
+  }
   var FIM_VIAGEM = T.viagem + T.viagemDur;
+  var RECUO_A = telaDe(P_CROC, RECUO.em);            // Darwin em P-CROC: (2499, 1210)
+  // [consertos-1, ESP-S65] o RECUO de b2, de T.pose a T.recuoFim → { z, dx }: z = o nível; dx = o centro da pose, em px de P-CROC para
+  // o leste. O nível desce linear (velocidade v, já no 1º quadro) e freia em reta até zero nos últimos w segundos; no mesmo trecho
+  // dx vai de −DERIVA·w/2 a 0 com a velocidade subindo de 0 a DERIVA: em T.recuoFim a pose é P-CROC e a câmera já anda a 22 px/s
+  function recuo(t) {
+    var D = T.recuoFim - T.pose, w = T.recuoFreio, tau = cl(t, T.pose, T.recuoFim) - T.pose, v = 1 / (D - w / 2), q, dx;
+    if (tau <= D - w) { q = v * tau; dx = -DERIVA * w / 2; }
+    else { var u = (tau - (D - w)) / w; q = v * (D - w) + v * w * (u - u * u / 2); dx = -DERIVA * w / 2 * (1 - u * u); }
+    return { z: P_CROC.z + RECUO.dz * (1 - q), dx: dx };
+  }
   function camCroc(t) {
-    var dt = cl(t, T.pose, T.viagem) - T.pose;
+    if (t < T.recuoFim) {   // o recuo: um zoom puro em torno de RECUO_A, sobre a pose P-CROC deslocada dx
+      var r = recuo(t);
+      return zoomEmTorno({ c: [P_CROC.c[0] + r.dx / S(P_CROC.z) * 360, P_CROC.c[1]], z: P_CROC.z }, RECUO_A, r.z);
+    }
+    var dt = cl(t, T.recuoFim, T.viagem) - T.recuoFim;   // de 'from' em diante: P-CROC exata em T.recuoFim, e a deriva
     return { center: [P_CROC.c[0] + DERIVA * dt / S(P_CROC.z) * 360, P_CROC.c[1]], zoom: P_CROC.z, bearing: 0, pitch: 0 };
   }
   function camNt(t) { return zoomEmTorno(P_NT, CAM.A, lerp(CAM.zChega, P_NT.z, seg(t, FIM_VIAGEM, DUR - FIM_VIAGEM))); }
@@ -783,6 +814,10 @@ var MONTES = (function () {
       ] };
   }
   function aplicarCamadas(t) {
+    // [consertos-1, ESP-S65] em "Australia's" o contorno da Austrália acende uma vez: 4 → 12 px (o contorno escuro, 10 → 18) em
+    // 500 ms (eo), 0,30 s aceso, e volta em 0,60 s (eb): acaba em 12,73, antes de a pincelada começar
+    var qa = eo(seg(t, T.ausLuz, 0.5)) * (1 - eb(seg(t, T.ausLuz + 0.8, 0.6)));
+    pinta("aus-sob", "line-width", 10 + 8 * qa); pinta("aus", "line-width", 4 + 8 * qa);
     var qs = eo(seg(t, T.sriLuz, 0.5)) * (1 - seg(t, T.sriSai, 0.2));
     pinta("lk-sob", "line-opacity", COR.sob[3] * qs); pinta("lk", "line-opacity", qs);
     var qn = eo(seg(t, T.nt, 0.5)), pulso = Math.sin(Math.PI * seg(t, T.pulso, 0.6));

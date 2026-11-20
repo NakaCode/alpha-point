@@ -737,3 +737,64 @@ Ronelle Welton; Currie e Jacups; Isbister e Gray; Turner; Müller) e do laudo da
 | G122 |  | BEES & WASPS | confirmado | roteiros/australia-animais/roteiro-narrador.md (o texto aprovado); ABS X23 ("hornets, was… | a grafia confere com a fonte e com o texto de tela |
 
 VEREDITO: RESSALVA
+
+## Consertos-1 (20/11/2026): os textos da caixa-medusa
+
+COBERTURA: 2 de 2
+
+- **O objeto:** os dois textos novos da s51 em `out/australia-animais/textos-tela.json › _textos_por_cena`, [433] e [434] (os índices do
+  arquivo, base 0; o arquivo agora tem 435 textos), gravados pelo `redator-de-tela` no lote de consertos-1
+  (`out/australia-animais/_tmp/consertos-1/redator/relato.md`). `textos-tela.json` sha256
+  `f3065ebb22ebe0e2e2721ffd9b0a3052df0e4046d4f7f714fa23b0b70ec0dc67`, o mesmo que o relato entrega. Nenhum outro texto foi rejulgado aqui.
+- **O denominador:** o pedido da Sala nomeia os dois; a leitura dos dois textos inteiros, à mão, não acha outra afirmação neles além das
+  que a tabela abre (lugar; autor, veículo e licença). Os ids desta seção são `VT-434` e `VT-435` (a numeração `VT-` do laudo acima é
+  base 1, na ordem do arquivo).
+- **Data-base:** 20/11/2026, 14:51 (o `date` desta máquina). A página do artigo foi lida **ao vivo**, por WebFetch, três vezes nesta
+  passada (nenhuma recusa de robô), e conferida contra a cópia local do pesquisador (`out/australia-animais/_tmp/medusa/paginas/plos-artigo.html`,
+  sha256 `b5db687851d7…`).
+- **Lidos:** `conferencia-midia.json › candidatos[83]` (sha256 do arquivo `894405b12292…`), o `_PROCEDENCIA.json` de
+  `_media/footage/s51/` (`7379fc7f35ef…`), o relato do redator, `marca/midia.md` §2.7 e `marca/identidade.md` §7. O arquivo entregue
+  (`s51-P2-chironex-fleckeri-weipa-plos-one-2020-s2-video-cc-by-4-0.mp4`) tem o sha256 `8c11cd4a2fc7…`, o mesmo do veredito `aprovado`:
+  o crédito casa com o arquivo que vai à cena.
+
+NOTA: 9.5/10. Os dois textos dizem o que a origem diz, sem passar dela; o meio ponto é o limite declarado do rótulo: a legenda do
+trecho b não nomeia lugar, e o "near Weipa" é o lugar de toda a coleta do estudo, o único que o artigo dá.
+
+| id | cena | afirmação (o texto na tela) | veredito | o que a fonte diz | URL |
+|---|---|---|---|---|---|
+| VT-434 ([433]) | s51 P1b, 4,767–6,8 s | `Near Weipa, Queensland` (rótulo de lugar sobre o trecho b do S2 Video) | CONFIRMADA (no nível da origem) | Methods: "Field sampling occurred at two geographical locations near Weipa, Queensland Australia, Westminster (…) and Napranum (…)"; "Both locations were sampled between November 26 and December 1, 2019." Results: "fifteen, 70 meter, transects were conducted over an eight-day period in the Weipa area." O artigo não nomeia nenhum outro lugar de coleta, voo ou filmagem, e agradece à "Weipa community". A legenda do S2 Video: "b—Close up of free swimming C.fleckeri (footage collected at ~1.5m from a 90degree angle with polarisation filter in 0.5m depth)": **sem lugar**; só o c nomeia lugar ("Transect drone footage from Napranum"). O rótulo é igual ao `lugar_na_origem` do veredito, não mais específico (nem Westminster, nem Napranum, nem "Weipa" sem o "near"): cumpre a `midia.md` §2.7. Grafia "Weipa" e "Queensland" conferem com o artigo; a forma "lugar, estado" é a dos outros rótulos da cena (`Port Douglas, Queensland`, [263]) | https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0241410 |
+| VT-435 ([434]) | s51 P1b, 4,6–6,8 s | `Rowley et al. / PLOS ONE · CC BY 4.0` (crédito de mídia) | CONFIRMADA | Autores: "Olivia C. Rowley, Robert L. Courtney, Sally A. Browning, Jamie E. Seymour" (quatro, Rowley primeira: "et al." certo), todos do "Australian Institute of Tropical Health and Medicine, James Cook University, Cairns". Licença: "© 2020 Rowley et al. This is an open access article distributed under the terms of the Creative Commons Attribution License", com o link para `http://creativecommons.org/licenses/by/4.0/` (lido ao vivo e na cópia local: um único link de licença, o `by/4.0`). O S2 Video, em "Supporting information", não tem outra licença nem crédito de terceiro. O veículo: `citation_journal_title` = "PLOS ONE" (a meta da página); a mesma página escreve "PLOS One" no cabeçalho e no `<title>`: as duas formas são da própria editora, nenhuma diverge. A forma `<autor> / <acervo> · <licença>` é a da identidade §7; o ano não faz parte dela | https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0241410 |
+
+Placar desta seção: 2 CONFIRMADA · 0 DIVERGE · 0 NÃO ACHEI · 0 REFUTADA. **CHECADO E LIMPO**, os dois por inteiro.
+
+### Os achados
+
+- **[LEVE, limite declarado, não defeito] VT-434.** O "near Weipa" vem do lugar da coleta do estudo, e não de uma frase que localize o
+  trecho b; o trecho b ainda foi filmado de outro jeito que os transectos dos Methods (a ~1,5 m, a 90°, contra 6–10 m e 70°). Nada no
+  artigo põe a filmagem em outro lugar, e a regra do canal (`midia.md` §2.7) é exatamente esta: o rótulo vai até o `lugar_na_origem` e
+  não passa dele. CONSERTO: nenhum. RAIZ: PONTUAL. Se a Sala quiser o rótulo sem inferência nenhuma, a única troca é tirá-lo (a voz diz
+  "tropical Australian waters", e os outros registros da cena já levam lugar), e isso é escolha de tela, não de fato.
+- **[LEVE, forma, não fato] VT-435.** As opções do Lucas (~13:03 e 13:38) traziam `Rowley et al., PLOS ONE, 2020 · CC BY 4.0`; a tela
+  tem a forma da casa, sem o ano. Os dois são verdadeiros. O veredito [83] e o `decisoes-lucas.md` deixam a grafia final ao redator, e o
+  relato dele declara a troca (§7, item 1). A CC BY 4.0 pede também o link da licença e a indicação de que houve mudança: vão na
+  descrição do YouTube (o veredito e o relato, §7, item 4), que esta seção não confere. CONSERTO: nenhum na tela. RAIZ: PONTUAL.
+
+### A lista de nomes
+
+Nenhum anônimo nos dois textos. Os nomeáveis por trás do "et al.", para a descrição: Olivia C. Rowley, Robert L. Courtney, Sally A.
+Browning e Jamie E. Seymour, Australian Institute of Tropical Health and Medicine, James Cook University, Cairns; DOI
+10.1371/journal.pone.0241410 (o S2 Video, .s003); publicado em October 29, 2020 (https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0241410).
+
+### Os dois padrões
+
+1. Rótulo de lugar sobre mídia cuja legenda não localiza o trecho: o rótulo herda o lugar do estudo inteiro. Aqui está no limite certo;
+   o achado seria passar dele (Napranum, que só o trecho c nomeia).
+2. Crédito literal da pergunta ao Lucas × forma da casa: a troca é de forma e está declarada; nenhuma palavra afirma algo que a origem
+   não diga.
+
+### Voláteis e DECISÃO DO LUCAS PENDENTE
+
+- Voláteis: nenhum (lugar de coleta, autoria e licença de um artigo de 2020 não mudam).
+- Nenhuma DECISÃO DO LUCAS PENDENTE tocou estes dois textos.
+
+VEREDITO: PASS (só [433] e [434], os dois textos desta seção; o veredito do laudo de 19/11, acima, não muda por ela)

@@ -30,15 +30,18 @@ CANAL ALPHA POINT — OS ANIMAIS PERIGOSOS DA AUSTRÁLIA (vídeo 8, australia-an
       6,713). Partindo em 'Go', a pílula ANTARCTICA (t0 8,200, que não muda) ficaria na faixa do crédito enquanto entra (a câmera ainda a
       ~150 px do pouso aos 8,26 s, quando a pílula passa de 50 %; sim22c.py); com a partida em 6,80, ela entra com a câmera já pousada;
     · 8,40 → 28,2: P-SUL em recuo lento e contínuo (−0,0085 nível/s, em torno do ponto de tela K = (1920, 1400), entre o viajante e o
-      gelo): nada para; o fluxo nos cantos ~14 px/s; o topo do viajante desce e a costa do gelo sobe (o viajante nunca passa de y 424);
+      gelo): nada para; o fluxo nos cantos ~14 px/s; CONSERTOS-1: de 'moving' em diante, um recuo a mais (até 0,0045 nível/s, em
+      torno de (1920, 1690), na costa do gelo: o gelo fica parado), que segura o topo do viajante, agora subindo, abaixo da régua; o topo do viajante desce e a costa do gelo sobe (o viajante nunca passa de y 424);
     · 28,2 → 37,563 ('Follow' → 'nothing'): a câmera SEGUE o viajante (passa do recuo para o seguimento em 2,0 s, cúbico): o centro dele
       em y 1110 e a altura dele na tela constante (1020 px, a do fim do recuo), o zoom subindo de ~3,79 a ~3,94 contra o Mercator;
     · 37,563 → 44,933: a câmera se abre para o norte até P-NORTE (126° E, 23,46° S, z 3,56), em 7,37 s, cúbico; o encaixe tracejado de
       hoje entra por cima; a base do viajante desce de y 1620 a y 1840 e não passa disso;
     · 44,933 → 45,400: PARADA em P-NORTE (o estado da fronteira).
   O VIAJANTE (a idade, em milhões de anos, idade(t)): 0 até 6,80; rebobina 0 → 85 na descida (6,80–8,40); 85 encostado no gelo até 'pull'
-    (13,223); 85 → 45 de 'pull' a 'forty-five' (19,873, cúbico); 45 até 'moving' (22,593); 45 → 25 de 'moving' a 44,933 (cúbico: o
-    grosso da subida no seguimento); 25 até o fim. A posição de cada tempo nunca vira medida na tela.
+    (13,223); 85 → 45 de 'pull' a 'forty-five' (19,873, cúbico); 45 até 'moving' (22,593); CONSERTOS-1 (ESP-1 e ESP-2): 45 → 35
+    de 'moving' a 'Follow' (28,2), andando desde 'moving' (a velocidade chega à de cruzeiro em 0,5 s, sem a entrada cúbica lenta), com
+    a câmera ainda em P-SUL e o gelo parado (o centro do viajante sobe ~63 px no 4K e o mar atrás dele abre ~60–75 px; o topo nunca acima
+    de y 428); 35 → 25 de 'Follow' a 44,933 (saída de potência: parte com a mesma velocidade e chega parada); 25 até o fim. A posição de cada tempo nunca vira medida na tela.
   ESTADO DA FRONTEIRA s24 → s25 (o último quadro, = o primeiro da s25): P-NORTE parada (126° E, 23,46° S, z 3,56, rumo 0, pitch 0); o
     viajante em 25 milhões de anos (x 1604–2411, y 1074–1840, com as ilhas do Estreito de Torres; o continente em y 1100–1713); o encaixe
     velado em x 1701–2383, y 831–1490; SOUTHEAST ASIA no ar (a borda esquerda e o topo em x 1780, y 500); a estaca de s04 (conserto 1: o mesmo desenho e a mesma perspectiva; ~52 px de altura em P-NORTE) na costa norte do
@@ -254,12 +257,32 @@ CANAL ALPHA POINT — OS ANIMAIS PERIGOSOS DA AUSTRÁLIA (vídeo 8, australia-an
     if (t < T.pull) return 85;
     if (t < 19.873) return 85 - 40 * eio(seg(t, T.pull, 19.873 - T.pull));
     if (t < T.moving) return 45;
-    return 45 - 20 * eio(seg(t, T.moving, T.chega - T.moving));
+    return idadeSobe(t);
+  }
+  // CONSERTOS-1 (ESP-1 e ESP-2): a subida começa DE VERDADE em 'moving', com a câmera ainda em P-SUL. De 'moving' a 'Follow'
+  // (T.follow), 45 → MOVE.maFollow quase em velocidade constante (a velocidade sobe de 0 ao valor de cruzeiro em MOVE.rampa s, sem a
+  // entrada cúbica lenta); de 'Follow' a T.chega, MOVE.maFollow → 25 por uma saída de potência, 1 − (1 − u)^m0, que parte com a mesma velocidade e
+  // chega parada, sem passar do alvo (o mesmo estado da fronteira: 25 Ma em 44,933). (A Sala, 20/11, depois da 1ª entrega: ~35 Ma em 'Follow'.)
+  var MOVE = { maFollow: 35, rampa: 0.5 };
+  function idadeSobe(t) {
+    var A = T.moving, F = T.follow, r = MOVE.rampa, d1 = 45 - MOVE.maFollow, v = d1 / (F - A - r / 2);
+    if (t < F) { var s = t - A; return 45 - (s < r ? v * s * s / (2 * r) : v * (s - r / 2)); }
+    var D2 = T.chega - F, d2 = MOVE.maFollow - 25, u = seg(t, F, D2), m0 = v * D2 / d2;
+    return MOVE.maFollow - d2 * (1 - Math.pow(1 - u, Math.max(1.0001, m0)));
   }
   // ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
   // ═══ A CÂMERA ═══
-  function recuo(t) { return emTorno(POSE.SUL, RECUO.K, POSE.SUL.z - RECUO.taxa * Math.max(0, t - (T.voo[0] + T.voo[1]))); }
+  function recuo0(t) { return emTorno(POSE.SUL, RECUO.K, POSE.SUL.z - RECUO.taxa * Math.max(0, t - (T.voo[0] + T.voo[1]))); }
+  // CONSERTOS-1 (ESP-2, a Sala: o recuo absorve): de 'moving' em diante, um recuo A MAIS, em torno de um ponto da costa do gelo
+  // (RECUO2.K: o gelo fica parado na tela), que entra em RECUO2.rampa s (a taxa sobe de 0 a RECUO2.taxa) e segue até o seguimento
+  // tomar a câmera. Ele empurra o topo do viajante, que agora sobe de verdade, para baixo da régua (y ≥ 424).
+  var RECUO2 = { taxa: 0.0045, K: [1920, 1690], rampa: 1.0 };
+  function recuo(t) {
+    var c = recuo0(t), s = Math.max(0, t - T.moving), r = RECUO2.rampa;
+    var dz = RECUO2.taxa * (s < r ? s * s / (2 * r) : s - r / 2);
+    return dz > 0 ? emTorno(c, RECUO2.K, c.z - dz) : c;
+  }
   var ALTURA_SEGUE = null;   // a altura do viajante na tela no fim do recuo (px), medida na hora a partir da geometria
   function segue(t) {
     var cx = viajanteEm(idade(t)).caixa, z = Math.log(ALTURA_SEGUE / ((cx[3] - cx[2]) * TILE)) / Math.LN2;

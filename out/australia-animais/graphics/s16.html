@@ -8,6 +8,9 @@
   documento · técnica MISTA (regência b4fb6fbf… › s16, três beats): a FOLHA do ABS de perto sobre a mesa (b0), a FOTO da huntsman
   impressa, que pousa na mesa quando a folha sai (b1), e o DADO dos pontinhos sobre --papel (b2). Corte seco na entrada (s15, o dado), no meio
   (12,333: a mesa → o dado, a troca de regime) e na saída (s17, mapa). Tarefa australia-animais-arte-1, lote EF4, editor-de-arte.
+  CONSERTOS-1 (20/11/2026, lote FA, editor-de-arte), item S16: só o empurrão da câmera da mesa em b1 (ver b1, abaixo). Os textos
+  da s16 não mudaram no textos-tela.json f3065ebb… (o conserto do redator tocou s51, s63 e s67). A fonte desta cena continua em
+  _tmp/arte-1/EF4/s16.fonte.html (montar.py s16); a de antes do conserto, em _tmp/consertos-1/FA/antes/.
 
   O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json 32375aed… › s16: [72] folha_texto, a régua dos anos, 0,000; [73] folha_texto
   "Contact with venomous spiders (X21)", 0,023; [74] folha_texto, os dez zeros, 1,873; [75] crédito do ABS 0–5,067; [76] crédito da
@@ -55,8 +58,13 @@
     5,083–5,633   em 'It', a huntsman da varanda POUSA no centro da mesa, um quadro depois de a folha sair, onde estava a linha dos
                   zeros (desce 240 px, −2° → −1,5°, 0,72 → 1,03 → 1,00: o assentamento); a sombra solta; a fita cola em 5,583;
                   a luz passa para trás da foto 120 ms depois (0,6 s, eb). O crédito da foto [76] entra em 5,083 (300 ms).
-    5,083–12,083  o EMPURRÃO lento da câmera da mesa RUMO À ARANHA (1,000 → 1,040, linear, em torno do bicho), 7,0 s; nos últimos
+    5,083–12,083  o EMPURRÃO lento da câmera da mesa RUMO À ARANHA (1,000 → 1,080, linear, em torno do bicho), 7,0 s; nos últimos
                   250 ms nada se move. Nenhum número, nenhum hospital, nenhuma picada (a regência).
+                  CONSERTOS-1, item S16 (20/11/2026, lote FA): o empurrão era 1,000 → 1,040 (0,57 %/s) e o qc-visual leu a foto
+                  como parada por 7,25 s (identidade §4.3: foto parada sem movimento com propósito, até 6 s). Passou a 1,080
+                  (1,14 %/s), o empurrão da foto impressa da s46 (×1,08 em 6,77 s, aprovada), para o movimento se ver no quadro
+                  de 1080p: medido no DOM, de 5,9 a 12,25 s, a borda esquerda da foto anda 32 px e a direita 21 px no 1080
+                  (antes, 17 e 10), e a de cima e a de baixo, 20 e 21 px (antes, 10 e 10).
    b2 · 12,333–16,666 · o DADO dos pontinhos (corte para --papel)
     12,333–13,833 DOZE MIL pontinhos em --neutro (uma grade de 160 × 75 = 12.000; são internações, não mortes: nenhuma ficha, nada
                   em --tensao) CHOVEM e enchem o quadro em 1,5 s, de baixo para cima (cada um cai de cima do quadro e para na casa
@@ -70,8 +78,8 @@
   A FOTO (item 74 do para-passos: a leitura no tamanho em que pousa): 1.440 × 1.080 px na mesa (o arquivo, 3264 × 2448, a 0,441×), a
     moldura de 24 px em --tinta (1.488 × 1.128), a fita no alto, a sombra solta; o centro em (1920, 1020), −1,5° (a inclinação da
     folha que saiu; o centro da área segura acima da faixa do crédito: x 200–3640, y 160–1880; a Sala, 20/11/2026). A aranha ocupa uns 500 px de largura no quadro. PRODUTO MÁXIMO DAS ESCALAS: 0,441 × 1,03
-    (o assentamento) × 1,040 (a câmera) = 0,47 do arquivo (≤ 1,4). Sem Ken Burns na foto (ela está na mesa: quem anda é a câmera da
-    mesa, rumo à aranha: a origem do empurrão é (2020, 1020), o bicho). Sem rótulo de lugar (textos-tela [76]) e sem aviso do ano
+    (o assentamento) × 1,080 (a câmera) = 0,49 do arquivo (≤ 1,4). Sem Ken Burns na foto (ela está na mesa: quem anda é a câmera da
+    mesa, rumo à aranha: a DIREÇÃO do empurrão é o bicho, a origem em (2020, 1020), que fica parado na tela enquanto o resto abre). Sem rótulo de lugar (textos-tela [76]) e sem aviso do ano
     (aviso_de_ano: false).
 
   A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): b0: a folha (1) e o grifo (1) = 2. b1: a foto (1) = 1
@@ -612,6 +620,7 @@ var FOLHA = (function () {
   // ── a foto impressa: o centro, o tamanho com a moldura e a inclinação assentada; a origem do empurrão é a aranha ──
   var FT = { w: 1488, h: 1128, k: 1, cx: 1920, cy: 1020, rot: -1.5 };   // o centro da área segura acima da faixa do crédito (a Sala, 20/11)
   var ARANHA = { x: FT.cx + 100, y: FT.cy };                             // o bicho fica 100 px à direita do centro da foto: (2020, 1020)
+  var EMPURRAO = 0.080;                                                  // a câmera da mesa em b1: 1,000 → 1,080 (consertos-1, S16; era 0,040)
   var CAM0 = { ox: LUZ0.x, oy: LUZ0.y, s0: 0.985 };
 
   function letras(t, m) {
@@ -627,8 +636,8 @@ var FOLHA = (function () {
       // b0: a câmera chega (0,985 → 1,000) e para 0,3 s antes dos zeros
       cameraMesa(lerp(CAM0.s0, 1, eo(seg(t, 0, T.camFim))), CAM0.ox, CAM0.oy, d.x, d.y, luz);
     } else {
-      // b1: o empurrão lento rumo à aranha (1,000 → 1,040, linear), até 250 ms antes do corte
-      cameraMesa(1 + 0.040 * seg(t, T.foto, T.empurraFim - T.foto), ARANHA.x, ARANHA.y, d.x, d.y, luz);
+      // b1: o empurrão lento rumo à aranha (1,000 → 1,080, linear), até 250 ms antes do corte
+      cameraMesa(1 + EMPURRAO * seg(t, T.foto, T.empurraFim - T.foto), ARANHA.x, ARANHA.y, d.x, d.y, luz);
     }
     // a folha: assentada em b0; LEVANTA em T.folhaSai e sai inteira (com os textos); depois disso não está mais na cena
     objeto(E("fol"), E("folSombra"), FO, t < T.folhaSai ? ASSENTADA : levantar(t, T.folhaSai), P.rot);
