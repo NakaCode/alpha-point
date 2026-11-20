@@ -1,7 +1,8 @@
-# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11, a exceção do CSIRO, o lote 6 (os arquivos da Fase B da caça 1), o lote 7 (os da Fase B 2) e o lote 8 (conducting, as janelas da regência), 19/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40; lote 6 às 15:45; lote 7 às 16:33; lote 8 às 17:57)
+# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11, a exceção do CSIRO, o lote 6 (os arquivos da Fase B da caça 1), o lote 7 (os da Fase B 2), o lote 8 (conducting, as janelas da regência), 19/11/2026, e o vídeo da PLOS ONE para a s51 P2 (qc, lote de consertos), 20/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40; lote 6 às 15:45; lote 7 às 16:33; lote 8 às 17:57; a s51 P2 às 13:28 de 20/11)
 
-**Laudo acumulado: 70 aprovados de 83 conferidos (1 reprovado, 12 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 83.**
+**Laudo acumulado: 70 aprovados de 84 conferidos (1 reprovado, 12 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 84.**
 
+- **O vídeo da PLOS ONE para a s51 P2 (20/11, 13:28, qc):** 0 aprovados de 1 conferido (0 reprovados, 0 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 1. A seção logo abaixo.
 - **Lote 8 (17:57, conducting):** 52 aprovados de 53 conferidos (0 reprovados, 1 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 56 itens do `_lote_do_conferente` da regência (4 reusos, 19 janelas novas, 31 provisórias, 2 declarados já aceitos). A seção logo abaixo.
 - **Lote 7 (16:33):** 3 aprovados de 3 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 3. São os 3 arquivos de banco pago da Fase B 2 da caça 1 (a lista 2), todos com `mesmo_item: true` (a seção logo abaixo).
 - **Lote 6 (15:45):** 23 aprovados de 23 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 23. São os 23 arquivos de banco pago da Fase B da caça 1, todos com `mesmo_item: true` (a seção logo abaixo).
@@ -14,6 +15,97 @@
 Sem regência: todas as janelas são provisórias (as do espelho r2, `_planos`). Nada mudou em `out/australia-animais/_media/` em nenhum dos três lotes: 158 arquivos com o mesmo sha256 antes e depois (`_tmp/conferencia/_media-antes-lote3.txt` e `_media-depois-lote3.txt`; as dos lotes 1 e 2 ao lado). Antes da emenda, o JSON foi copiado para `_tmp/conferencia/conferencia-midia-antes-lote3.json`, com o mesmo sha256 da cópia da Sala (`c5ca3162…`), e os 34 vereditos dos lotes 1 e 2 ficaram iguais.
 
 **A cobertura do research:** os 51 rascunhos de acervo em `_media/_caca/*/acervo-livre/` e as duas páginas de documento sem `-prova` em `_media/documento/` têm veredito. Não há retrato nem logo em `_media/`.
+
+## A s51 P2: o vídeo da PLOS ONE (qc, lote de consertos, 20/11/2026, 13:28)
+
+Fluxo `midia`, um arquivo: o rascunho do acervo aberto entre o `baixar` e o `entregar`, que o `pesquisa-imagens` baixou com a
+liberação do Lucas de ~13:03. O pedido veio da Sala, no chat. A procedência: a linha nova do `manifest.jsonl` de
+`_media/_caca/s51/acervo-livre/`; o relato: `_tmp/medusa/relato.md`, "O download da PLOS".
+
+**Laudo deste despacho: 0 aprovados de 1 conferido (0 reprovados, 0 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 1.**
+
+| id | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `_media/_caca/s51/acervo-livre/s51-P2-chironex-fleckeri-weipa-plos-one-2020-s2-video.mp4` (`8c11cd4a…`) | s51 P2 | PLOS ONE, 2020, o S2 Video (CC BY 4.0) | **pendente_lucas** | a caixa-medusa real (C. fleckeri, a espécie na legenda), perto de Weipa, da PLOS ONE (CC BY 4.0, liberada pelo Lucas às ~13:03); mas o vídeo é 1920×1080, e ela, pequena e pálida: só se reconhece em ~2,5 s recortada em 640×360 em volta dela e ampliada 6× no 4K, com a imagem mole. Vai ao Lucas antes da cena |
+
+Os quatro critérios: **contexto** passa (a espécie certa, viva, nomeada pela origem; só no recorte), **licença e fonte** passa (pela
+`excecao_lucas` de ~13:03 e a CC BY 4.0 lida na origem), **técnica** `pendente_lucas` (1920×1080, registro real abaixo de 4K, e a
+ampliação de 6× que o recorte pede), **repetição** passa.
+
+### O que o espectador vê em 2,5 s (a pergunta do pedido)
+
+O trecho b limpo vai de 23,857 a 30,731 s do arquivo (quadros 715 a 921; o rótulo "b." deixa vestígio até o quadro 714, e o 922 já
+é o trecho c, num corte seco). A medusa fica perto do centro, um pouco acima, e deriva para a direita ~20 px/s do original.
+
+| recorte do original | ampliação no 4K | o que se vê |
+|---|---|---|
+| 1920×1080 (o quadro inteiro) | 2× | some na areia: pálida, ~1/13 da largura, só se acha procurando. Não cobre a fala |
+| 960×540 | 4× | aparece, pequena, e não domina |
+| 800×450 | 4,8× | aparece, apagada; ainda não domina |
+| **640×360** | **6×** | **é o assunto da tela e se lê como medusa (o sino e os tentáculos arrastando), com a voz dizendo "the box jellyfish"; mole, e, de perto num 4K, em blocos de compressão** |
+| 480×270 | 8× | maior, mas vira borrão em blocos |
+
+- **O indicado:** o recorte de 640×360 px do original, parado e centrado na medusa com os tentáculos: x 780–1420, y 235–595 no
+  trecho **27,5–30,0 s**, o que se lê melhor (o sino quadrado de perfil e os tentáculos esticados); ou x 700–1340, y 240–600 em
+  24,0–26,5 s. É a medida que eu olhei e que vai ao Lucas; o recorte e o movimento finais são do `editor-de-arte`.
+- **Sem filtro de contraste**, ela fica pálida como está. A identidade §5 proíbe a "melhoria artificial" na foto impressa; para o
+  vídeo, qualquer tratamento é pergunta ao Lucas.
+- A própria origem confirma a fraqueza: o artigo diz que a espécie é "cryptic in colouration (making silhouettes nearly
+  indistinguishable from background substrate– S2 Video)".
+- Os quadros: `_tmp/conferencia/s51-P2-plos/` (os três pontos do arquivo, seis quadros do trecho b, a folha 1:1 de 480×270, os
+  recortes no tamanho de saída, as duas janelas de 2,5 s em 640×360, o recorte 1:1 do 4K a 6×, o rótulo e o corte pelo número do
+  quadro).
+
+### Para o Lucas pesar
+
+- **s51 P2, o vídeo da universidade** (`8c11cd4a…`): 1920×1080 medido (ffprobe); o footage nasce em 3840×2160 (ofício do pesquisa-imagens, §8), e este é registro real (a C. fleckeri viva, a espécie da legenda da origem), que abaixo de 4K é do Lucas, caso a caso (midia.md §7.3). O que eu vi: no quadro inteiro (2× no 4K), a medusa tem ~1/13 da largura e é pálida sobre areia de tom parecido, e some (o próprio artigo diz que a silhueta da espécie fica 'nearly indistinguishable from background substrate', citando este vídeo); em 960×540 (4×) aparece pequena e não domina; em 800×450 (4,8×), apagada; em 640×360 (6×) vira o assunto da tela e se lê como medusa em 2,5 s, mas mole, e, de perto num 4K, em blocos de compressão; em 480×270 (8×), borrão. Sem filtro de contraste, ela fica pálida.
+  - A pergunta: "O vídeo da universidade tem metade da resolução do 4K, e a caixa-medusa é pequena e pálida: no quadro inteiro ela some na areia. Para ser reconhecida nos ~2,5 s, a cena recorta um terço do quadro em volta dela e amplia 6 vezes; ela vira o assunto da tela, mas a imagem fica mole. Entra assim, recortada e ampliada 6×?"
+  - Se ele disser sim, a `excecao_lucas` nova cobre o `sha256`, o trecho b e o recorte de 640×360 (6×), e o veredito passa a
+    `aprovado` numa conferência nova. Um sim ao quadro inteiro não basta: ali a medusa não cobre a fala (seria `trocar`).
+
+### Para reconferir no navegador do app
+
+Nada. A licença foi lida na página do artigo (o WebFetch, ~13:2x, e a cópia de 13:05 do pesquisador); nenhum site recusou leitura.
+
+### Para trocar
+
+Nada.
+
+### Para quem entrega (o `pesquisa-imagens`) e para o redator
+
+- O `pendente_lucas` fica onde está, no rascunho, fora da cena, até a resposta: nada de `entregar` antes dela.
+- Se entrar: o crédito na tela é "Rowley et al., PLOS ONE, 2020 · CC BY 4.0" (a opção do Lucas); na descrição do YouTube, o título do
+  artigo, os autores, o DOI, o link da licença (http://creativecommons.org/licenses/by/4.0/) e a nota de que o trecho foi recortado e
+  ampliado (a CC BY 4.0 pede a indicação de mudança). O rótulo de lugar, se houver, até "near Weipa, Queensland", nunca Napranum nem
+  Westminster.
+- O arquivo tem 29,97 fps (30000/1001), não 30: anotado para o `entregar` e o render.
+- A `folha-2s.png` do pesquisador tem os tempos adiantados (o quadro marcado "00:00:30.000" já é do trecho c); pelo número do quadro,
+  o corte é em 30,764 s, como o manifest diz. O relato chama a pessoa do trecho a de "pesquisadora"; no quadro não dá para dizer.
+  Fica fora da tela de qualquer jeito.
+
+### Avisos do conjunto da cena (para a peça do lote de consertos e o `regente-de-imagem`)
+
+- A janela do pedido (615,20–617,70 s) entra no beat 2 da regência, o mapa, que começa em 616,167 s, e passa de "seventy"
+  (617,42 s), onde as 70 fichas pousam. A medusa tem de sair antes das fichas, ou o mapa se reajusta. Isso é da peça, dentro da
+  frase.
+- O plano encurta o da placa e da rede (o clipe da Shutterstock 1030589558), hoje em 610,6–616,167 s, para 610,6–615,2 s (4,6 s): o
+  veredito dele, com a janela que a regência der, segue o lote 8.
+- O veredito vale para a s51 P2, na janela provisória; com a regência refeita, a janela se confere de novo.
+
+### Divergências e notas (ROUPA)
+
+- **O formato do crédito:** a opção do Lucas diz "Rowley et al., PLOS ONE, 2020 · CC BY 4.0", e o formato de mídia da identidade §7
+  daria "Rowley et al. / PLOS ONE · CC BY 4.0". Vale o que o Lucas escolheu; a grafia final é do `redator-de-tela`.
+- **Os autores:** a linha de ~13:03 do `decisoes-lucas.md` põe Bianchi entre os autores, e a página do artigo o dá como editor
+  ("Editor: Carlo Nike Bianchi, Universita degli Studi di Genova, ITALY"). O relato já corrigiu isso, e o crédito "Rowley et al." não
+  muda.
+- **A ampliação de footage:** a marca tem teto de ampliação para a foto (1,4×, identidade §5), mas não para o registro real em vídeo
+  abaixo de 4K: ele vai ao Lucas, caso a caso (midia.md §7.3). Por isso a medida (6×) vai na pergunta.
+- **A janela:** o espelho dá ao P2 613,5–616,167 s; a decisão de ~11:41 e o pedido, ~2,5 s a partir de 615,20 s. Julguei a do pedido,
+  provisória.
+- Nada mudou em `out/australia-animais/_media/`: 355 arquivos com o mesmo sha256 antes e depois (`_tmp/conferencia/_media-antes.txt` e
+  `_media-depois.txt`, `08f9e71b…` os dois). Antes da emenda, as cópias: `_tmp/conferencia/conferencia-midia-antes-plos-s51.json`
+  (`72e9260b…`) e `.md` (`9f449aed…`).
 
 ## Lote 8: as janelas da regência (conducting, 17:57)
 
