@@ -1,52 +1,61 @@
 {
   "cena": "s51",
-  "aprovado": false,
+  "aprovado": true,
   "gatesDuros": [],
   "lentes": [
     {
       "lente": "espaco",
       "nota": 8,
       "problemas": [
-        "Excecao do Lucas: qc-tamanho, credito a 60 px, 'credito-60 (sem triagem, pela regra)', 24/10/2026 (\"60 px (Recomendado)\"): os 3 creditos de dado ('Source: Currie & Jacups, MJA, 2005', 'Kevin Arbuckle, to Live Science, 2023', 'Source: Winkel et al., Toxicon, 2006') medem 60 < 72; sha1 73a6396b7129 igual ao da excecao. Nenhum outro item reprova no _portao.json de s51. portao-margens 0 (29 medidos, 301 amostras) e portao-movimento 0 (o recuo de 2,91 s, 19,5-22 s, sem aviso).",
-        "Sinal 1, nao reprova (a arte deixou para o QC): o gelo da Antartida encosta na borda de baixo na pose P-MUNDO (~22,2-25,07 s). No recorte 4K de s51@24,9 s (x 1200-2600, y 1860-2160) ha uma lasca branca de ~15 px de altura cortada pela borda, ao lado do credito; na folha (22,97 s) aparece como tres pontinhos brancos. E cortado pela borda, mas pequeno e escuro em volta: nao atrapalha a leitura.",
-        "Sinal 2, nao reprova: o bloco de 70 fichas (s51@9,0 s, recorte 4K x 1500-2800, y 380-1080) esta sobre o mar de Arafura, mas as 3 colunas da direita das 2 primeiras fileiras (~6 das 70) cobrem a costa sul da Papua (terra). A fala e 'tropical Australian waters'; a mancha nao muda o sentido, mas as fichas encostam em outro pais.",
-        "Sinal 3: 19,3-19,9 s tem tres creditos empilhados (Arbuckle, Currie em saida, mapa), no maximo declarado (3 linhas); sem colisao nos quadros de 19,2 e 19,8 s."
+        "qc-2, sha1 7ed00ec4499c (o do clipe, carimbo 2160p). Exceção do Lucas: qc-tamanho, crédito a 60 px, \"60 px (Recomendado)\", 24/10/2026 (qc/_excecoes-portao.json, classe credito-60, sha1 do HTML igual): os 4 créditos de dado (Rowley et al. / PLOS ONE · CC BY 4.0; Source: Currie & Jacups, MJA, 2005; Kevin Arbuckle, to Live Science, 2023; Source: Winkel et al., Toxicon, 2006) medem 60 < 72 e são a única falha do _portao.json (falhas: [\"tamanho\"]). portao-margens 0 (33 medidos, 301 amostras, sha1 de hoje), portao-movimento 0 (301 amostras), portao-mapa rodape v5 0. Não remedi nada disso a olho.",
+        "O plano novo (P1b, 4,6-6,8 s): o recorte enche o palco inteiro, sem borda nem moldura; a pílula \"Near Weipa, Queensland\" (x 200, y 1640, a mesma casa dos rótulos de registro da cena) e o crédito [434] na faixa de baixo ficam separados (~55 px de folha, ~220 px no 4K) e sem colisão nos quadros de 4,8, 5,4, 6,1 e 6,57 s. Nada do P1 ficou: \"Port Douglas, Queensland\" some no corte (4,6 s).",
+        "Sinal 1, não reprova (herdado da qc-1, a cena de 19,5 s em diante não mudou; a folha de 22,97 s mostra o mesmo): o gelo da Antártida encosta na borda de baixo em P-MUNDO, uma lasca branca de ~15 px ao lado do crédito; pequena e escura em volta.",
+        "Sinal 2, não reprova (herdado): o bloco das 70 fichas (folha de 9,03 s) está sobre o mar de Arafura, mas as 3 colunas da direita das 2 primeiras fileiras (~6 das 70) tocam a costa sul da Papua. A fala é \"tropical Australian waters\"; a mancha não muda o sentido.",
+        "Sinal 3: de 19,3 a 19,9 s há três créditos empilhados (Arbuckle, Currie em saída, mapa), o máximo declarado (3 linhas), sem colisão."
       ],
       "correcoes": [
-        "Gelo: subir o centro da pose P-MUNDO ~0,5 grau ao norte (o conserto que a arte descreveu; o mesmo caso de s20), ou deixar. Fichas: deslocar o ponto de pouso ~1 grau ao sul/oeste (do mar de Arafura para o centro do mar, longe da costa da Papua); o bloco 7 x 10 nao muda."
+        "Opcional, para a próxima passada de arte (não segura o render): gelo, subir o centro da pose P-MUNDO ~0,5 grau ao norte (o caso de s20); fichas, deslocar o ponto de pouso ~1 grau ao sul/oeste (do mar de Arafura para o centro do mar, longe da costa da Papua); o bloco 7 x 10 não muda."
       ]
     },
     {
       "lente": "factual",
-      "nota": 8,
+      "nota": 9,
       "problemas": [
-        "Confere com o textos-tela.json: 'Port Douglas, Queensland' (o veredito diz 'Jellyfish warning sign in Port Douglas, Australia': o rotulo e o mesmo lugar, com o estado), 'Daintree River, Queensland' (igual ao lugar_na_origem), '≈ 70 DEATHS · AS OF 2005' ('around seventy' = '≈', hedge preservado), 'STINGER SEASON' e 'OCT. 1–JUNE 1'. A tira de 12 casas acende 8 casas (outubro a maio, 1 de outubro a 1 de junho, como Currie & Jacups), e a cinta dos tropicos de s51 P5 e a mesma de s20 (esquema declarado, so no mar). Regua dos soros: '1930' apagado e '1970 THE WORLD'S FIRST ANTIVENOM FOR A JELLYFISH' (Winkel et al. 2006).",
-        "Observacao: a tira nao nomeia os meses, e a marca vertical no meio dela (a virada do ano) fica sem rotulo; a Sala aceitou a tira sem nomes (a regencia e o redator). Nenhum texto de nao_vai_para_tela. Sem bandeira, sem logo; a placa 'MARINE STINGERS' do clipe nao tem emblema de orgao."
+        "Todo texto da cena casa letra por letra com o textos-tela.json (sha 206fa3f694ef): \"Port Douglas, Queensland\" (0,2-4,567; o veredito diz \"Port Douglas, Australia\", mesmo lugar, com o estado), \"Near Weipa, Queensland\" [433] (4,767-6,8) e \"Rowley et al. / PLOS ONE · CC BY 4.0\" [434] (4,6-6,8), \"≈ 70 DEATHS · AS OF 2005\" (6,833; \"around seventy\" = \"≈\"), \"Tropic of Capricorn\" (7,833), \"Daintree River, Queensland\", STINGER SEASON, OCT. 1–JUNE 1, os dois trópicos, 1930 e \"1970 THE WORLD'S FIRST ANTIVENOM FOR A JELLYFISH\". Nenhum texto do nao_vai_para_tela.",
+        "O rótulo sobre a caixa-medusa é \"Near Weipa, Queensland\": não nomeia lugar mais específico que o lugar_na_origem do veredito candidatos[83] (\"near Weipa\", nunca Napranum nem Westminster; midia.md §2.7). Asset correto: o veredito diz Chironex fleckeri (a legenda do S2 Video, trecho b). Sem aviso do ano, porque é bicho no presente e não foto/retrato de outro ano (o veredito dispensa).",
+        "Nada de plano encerrado ficou na tela: \"Port Douglas\" some em 4,6 s (folha de 4,8 s só com \"Near Weipa\"), [433] e [434] somem em 6,8 s (o quadro 204, primeiro do mapa, só traz o crédito do mapa); o \"Kgbo / Wikimedia Commons\" do textos-tela é só saída escrita e não está no HTML.",
+        "Observação (herdada): a tira da temporada não nomeia os meses e a marca vertical dela (a virada do ano) fica sem rótulo; aceito pela Sala."
       ],
       "correcoes": []
     },
     {
       "lente": "wordlock",
-      "nota": 8,
+      "nota": 9,
       "problemas": [
-        "Entradas na palavra: as 70 fichas e a cota em 6,83 s ('seventy' = 6,82 s), STINGER SEASON em 16,03 s ('season'), OCT. 1–JUNE 1 em 17,47 s ('October'), os creditos de Arbuckle em 19,3 s, '1970' em 27,73 s depois de a voz dizer o que ele marca..",
-        "Sinal, nao reprova: no plano 2 (5,6-10,47 s) o rotulo 'Tropic of Capricorn' e o veu do mar entram no corte (5,6 s), 2,2 s antes de 'tropical' (7,82 s). E a continuidade da linha de s50 (o esquema de s20), nao uma antecipacao do fato."
+        "Planos novos na palavra: o corte à caixa-medusa cai em 4,6 s, em \"the\" (615,20) de \"the box jellyfish\" (box 615,305; jellyfish 615,66-616,14); o rótulo [433] entra em 4,767 s (a voz em \"box\", 4,705); a imagem sai e o mapa entra em 6,8 s, antes de \"seventy\" (617,42 = 6,82 s), quando entram as 70 fichas e a cota (6,833 s). \"Tropic of Capricorn\", a linha e o véu entram em 7,833 s, em \"tropical\" (7,82 s): o sinal da qc-1 (o rótulo 2,2 s antes de \"tropical\") saiu.",
+        "Mantidos: STINGER SEASON em 16,03 s (\"season\"), OCT. 1–JUNE 1 em 17,47 s (\"October\"), os créditos de Arbuckle em 19,3 s, \"1970\" em 27,73 s. Primeiro segundo coberto (a placa já está na tela em 0,0 s, com o rótulo em 0,2 s).",
+        "Sinal (herdado, não reprova): \"Source: Currie & Jacups, MJA, 2005\" no plano 4 entra em 13,5 s e a tira (STINGER SEASON) só em 16,03 s: 2,5 s de crédito de dado sobre mapa sem o dado (folha de 14,47 s). O do plano 2 já foi para 6,8 s e casa com a cota.",
+        "Nenhum elemento foi atrasado por ritmo nesta rodada; as entradas deslocadas pelo redator (P1b, mapa, cota, Tropic) estão re-checadas contra a fala acima."
       ],
-      "correcoes": []
+      "correcoes": [
+        "Opcional, ao redator (não segura o render): textos-tela.json › s51, \"Source: Currie & Jacups, MJA, 2005\" do plano 4 com t0 = 16,033 (a entrada de STINGER SEASON)."
+      ]
     },
     {
       "lente": "abordagem",
-      "nota": 8,
+      "nota": 9,
       "problemas": [
-        "Cinco planos, modos certos: placa e rede reais (footage), mar do norte (mapa com o veu e as fichas), manguezal do Daintree (footage), temporada no mapa (esquema declarado) e a regua dos soros (desenho, ANIMACAO: marco de data sem registro). O mundo real do 1o plano e a placa do Port Douglas, o mais perto da caixa-medusa (ver cobertura)."
+        "Seis planos, modos certos: placa e rede reais (registro, footage), a caixa-medusa real (registro, footage de pesquisa), mar do norte (mapa com o véu e as fichas), manguezal do Daintree (registro), temporada no mapa (esquema declarado) e a régua dos soros (desenho, marco de data sem registro). O plano novo troca o pictograma da placa pelo animal vivo, que é o que a frase \"the box jellyfish\" pede. Sinal: o recorte de 6× deixa a imagem mole, como o Lucas pesou (13:38, \"Entrar recortada e ampliada (Recomendado)\")."
       ],
       "correcoes": []
     },
     {
       "lente": "acessibilidade",
-      "nota": 8,
+      "nota": 7,
       "problemas": [
-        "Em ~2 s cada plano se explica: a placa com a rede, as 70 fichas laranja com '≈ 70 DEATHS', a tira com 'STINGER SEASON' e as casas acesas, o recuo ao mundo com a faixa entre os tropicos, a regua com 1930 e 1970. Observacao: '1930' aparece sozinho (sem legenda) nesta cena; o leigo o le pela regua de s47 (chamada de volta declarada)."
+        "Cinco dos seis planos se explicam em ~2 s: a placa com a rede, as 70 fichas laranja com \"≈ 70 DEATHS\", a tira com STINGER SEASON, o recuo ao mundo com a faixa entre os tropicos, a régua com 1930 e 1970.",
+        "Sinal, não reprova: o plano da caixa-medusa (2,2 s) é o mais fraco de ler. A medusa é pálida e translúcida em água turva (folha de 4,8, 5,4, 6,1 e 6,57 s): o sino e os tentáculos se leem como medusa, mas quase na cor do fundo, e o rótulo não nomeia o bicho (o redator o deixou assim). Quem entende é quem ouve \"the box jellyfish\" e olha; o Lucas sabia disso ao escolher a opção (13:38), e a condição do conferente (recorte de 640 × 360) já é o recorte mais aberto em que ela domina o quadro.",
+        "Observação (herdada): \"1930\" aparece sozinho, sem legenda; o leigo o lê pela régua de s47."
       ],
       "correcoes": []
     },
@@ -54,8 +63,8 @@
       "lente": "poluicao",
       "nota": 8,
       "problemas": [
-        "Teste de lastro: 'Port Douglas, Queensland' (a placa), '≈ 70 DEATHS' ('seventy'), STINGER SEASON e OCT. 1–JUNE 1 ('season', 'October'), 'Tropic of Cancer/Capricorn' (orientacao dos limites da faixa que 'warm seas' acende; excecao a), 1930/1970 (a fala). Nenhum orfao nomeavel. Pico de 4 a 5 elementos no plano 4 (pilula, tira, cota, creditos); dentro do teto de 6.",
-        "Observacao: a marca vertical da tira (a virada do ano) nao tem texto nem ligacao com a fala; ruido pequeno."
+        "Teste de lastro: \"Port Douglas, Queensland\" e \"Near Weipa, Queensland\" (rótulos de lugar sobre registro, o que a identidade §5 pede para o registro; a mesma casa de \"Daintree River\"), \"≈ 70 DEATHS\" (\"seventy\"), STINGER SEASON e OCT. 1–JUNE 1 (\"season\", \"October\"), os trópicos (orientação dos limites da faixa que \"warm seas\" acende; exceção a), 1930/1970 (a fala). Nenhum órfão nomeável. P1b: a imagem, uma pílula e um crédito. Pico de 4 a 5 no plano 4 (pílula, tira, cota, créditos); dentro do teto de 6.",
+        "Observação: a marca vertical da tira (a virada do ano) não tem texto nem ligação com a fala; ruído pequeno."
       ],
       "correcoes": []
     },
@@ -63,8 +72,9 @@
       "lente": "motion",
       "nota": 8,
       "problemas": [
-        "O clipe da placa anda (a bandeira, a onda; folha: 0, 1,0 e 3,8 s com a espuma em lugares diferentes), o mapa do norte deriva em 6,6, 9,0, 14,5, 17,2 e 19,9 s, e o recuo a P-MUNDO e uma viagem de 2,91 s (19,5-22 s; cubica; portao-movimento 0, sem aviso). O corte de footage para mapa e de mapa para desenho nao e 'corte seco entre dois mapas'. Mesa (25,1-30 s): a regua ja esta na tela no 1o quadro (sem mesa vazia), o '1970' assenta e os quadros de 28,2, 29,0, 29,75 e 29,9 s sao iguais (nada se move nos ultimos 250 ms).",
-        "Observacao: a mesa da regua (25-30 s) deixa a metade direita e a de baixo quase vazias; e a composicao da regua de s47, nao um defeito."
+        "P1b: o recorte está parado (nenhum transform nem Ken Burns; o HTML não tem transform no #vMedusa) e o que anda é o próprio vídeo: a medusa deriva para a direita (a borda direita do sino vai de x ~520 em 4,8 s a ~560 em 5,4 s e ~600 em 6,1 s, no quadro de 960) e a água se mexe. Os cortes são limpos, medidos quadro a quadro: placa até o 137 (4,567 s), medusa de 138 a 203 (4,6-6,767 s), mapa a partir do 204 (6,8 s), sem quadro preto nem repetido. Corte de footage para footage e de footage para mapa não é \"corte seco entre mapas\".",
+        "A placa anda (a bandeira, a onda; folha de 0, 1,0 e 3,8 s), o mapa do norte se aproxima de 6,8 a 10,47 s (z 5,66 → 5,74, ~33 px/s, mais rápido que antes e sem aviso do portao-movimento, que deu 0) e deriva nos beats seguintes; o recuo a P-MUNDO é uma viagem de 2,91 s (19,5-22 s; cúbica). Mesa (25,1-30 s): a régua já está na tela no 1º quadro, o \"1970\" assenta, e os quadros do fim são iguais (nada se move nos últimos 250 ms).",
+        "Observação: a mesa da régua deixa a metade direita e a de baixo quase vazias; é a composição de s47, não um defeito."
       ],
       "correcoes": []
     },
@@ -72,43 +82,42 @@
       "lente": "fonte",
       "nota": 7,
       "problemas": [
-        "Excecao do Lucas citada na lente espaco (os 3 creditos de dado a 60 px). Marca de mapa so na propria linha de mapa (data-qc-credito=\"mapa\"), os outros 3 com data-qc-papel=\"credito\"; portao-mapa rodape 0. Os dois clipes do Shutterstock nao levam credito na cena, so a linha da licenca na s74 (decisao do Lucas, 19/11, 'Sim e opcao B'). O clipe da placa: veredito aprovado da janela inteira (610,6-616,167 s, lote 8, janela_provisoria false).",
-        "Sinal, nao reprova (pedido, item 2): 'Source: Currie & Jacups, MJA, 2005' entra antes do dado que ele credita. No plano 2 ele aparece em 5,6 s e a cota so em 6,83 s (1,2 s); no plano 4 aparece em 13,5 s e a tira (STINGER SEASON) so em 16,03 s: 2,5 s de credito de dado sobre um mapa sem o dado (folha, quadro de 14,47 s). Vem do textos-tela.json (t0 13,5 do credito); e a janela do plano, nao a do objeto."
+        "A caixa-medusa (o S2 Video da PLOS ONE, CC BY 4.0, sha256 8c11cd4a…): o veredito candidatos[83] é \"aprovado\" só na condição_do_aprovado, e o casar-midia-vereditos sai 0 (68 arquivos, o arquivo está com [(\"s51\",\"aprovado\")]). A excecao_lucas_fonte (13:03, \"Usar o vídeo da universidade (Recomendado)\") libera a fonte; a excecao_lucas (13:38, \"Entrar recortada e ampliada (Recomendado)\") libera a resolução e a ampliação.",
+        "O crédito [434] \"Rowley et al. / PLOS ONE · CC BY 4.0\" (autor, fonte e licença, na forma da identidade §7) entra em 4,6 s com a imagem e sai com ela em 6,8 s (o quadro 204 não o traz; a folha de 9,03 s também não): nenhum crédito-fantasma e nenhuma imagem sem o crédito dela. Os dois clipes do Shutterstock não levam crédito na cena (decisão do Lucas, 19/11, \"Sim e opção B\"); a linha única fica na s74 + s75.",
+        "Exceção do Lucas citada na lente espaco (os 4 créditos a 60 px). Marca de mapa só na própria linha de mapa (data-qc-credito=\"mapa\"), os outros com data-qc-papel=\"credito\"; portao-mapa rodape 0.",
+        "Sinal (herdado, não reprova): \"Source: Currie & Jacups\" do plano 4 entra 2,5 s antes do dado (item da lente wordlock). Nota 7 fica por esse sinal e por a descrição do YouTube ainda dever o que a CC BY 4.0 pede além da tela (abaixo)."
       ],
       "correcoes": [
-        "No textos-tela.json, o credito 'Source: Currie & Jacups, MJA, 2005' do plano 4 passar a t0 = 16,03 s (a entrada de STINGER SEASON), e o do plano 2 a t0 = 6,833 s (a cota); fica 'Kevin Arbuckle' como esta. Pedido ao redator, nao ao QC."
+        "Para a Sala, na descrição do YouTube (fora da cena): o título do artigo (Rowley et al., 2020, \"Bay watch: Using unmanned aerial vehicles (UAV's) to survey the box jellyfish Chironex fleckeri\", PLoS ONE 15(10): e0241410), os autores, o DOI, o link da licença (http://creativecommons.org/licenses/by/4.0/) e a nota de que o trecho foi recortado e ampliado (o veredito pede esses itens)."
       ]
     },
     {
       "lente": "tema",
       "nota": 8,
       "problemas": [
-        "Observacao, nao reprova: a base de satelite (MapTiler) mostra, no recorte 4K de s50@0,0 s, retangulos de emenda de mosaico no sudeste (um bloco claro de ~190 x 110 px na Riverina e um escuro ao lado, bordas retas) e faixas claras verticais no Mar de Coral (s51@9,0 s). Sao da base e se leem como textura a 1080p; nao atrapalham a cena.",
-        "Uma cor = um significado: laranja --tensao so nas 70 fichas (mortes), azul --agua so no veu do mar e na tira da temporada, branco nas linhas. Familia de cor igual a de s20/s50."
+        "A medusa e a água turva ficam como vêm do arquivo: sem filtro de contraste, cor ou nitidez (o HTML não tem filter nem blend no vídeo ou na caixa; e o quadro do clipe em 5,1, 5,7 e 6,3 s bate com o recorte do original ampliado, a diferença média absoluta em ~1,4 de 255 na região sem texto: ruído de reescala, não tratamento). A cor da água (bege-acinzentada) não compete com nada: o laranja segue só nas fichas.",
+        "Uma cor = um significado: laranja --tensao só nas 70 fichas (mortes), azul --agua só no véu do mar e na tira da temporada, branco nas linhas; a família de cor é a de s20/s50.",
+        "Observação (herdada): a base de satélite mostra emendas de mosaico retangulares e faixas claras no Mar de Coral; leem-se como textura a 1080p."
       ],
       "correcoes": []
     },
     {
       "lente": "cobertura",
-      "nota": 6,
+      "nota": 8,
       "problemas": [
-        "REPROVA (cobertura, ofício lente 10). O concreto central de s51, a caixa-medusa (box jellyfish; desconhecida do publico), nao tem registro real em parte alguma da cena: o plano 1 mostra so a placa 'MARINE STINGERS' (a medusa e um pictograma) e a rede; os planos 2 a 6 sao mapa, manguezal, mapa e regua. A fala trata dela por 30 s ('the box jellyfish had been blamed for around seventy deaths', 'It starts life as tiny polyps', 'the world's first antivenom for a jellyfish'). O espectador sai sem saber como ela e. Icone/pictograma compoe, nao substitui.",
-        "Desvio declarado, nao aceito por mim: a regencia ja registra 'box jellyfish → s20, s51 P1–P2 (a rede e a placa; FALTA a caixa-medusa viva)' (nenhuma no acervo aberto, nenhuma na caca; a da EurekAlert e 'Only for this story'). A cena nao tem como corrigir isto sozinha: so mídia nova, ou a decisao do Lucas de seguir sem a imagem. Nas irmas, s15 P5 mostra outra agua-viva (rosa, translucida), nao a caixa-medusa, e s20 nao a mostra."
+        "RESOLVIDO o reprova da qc-1: o concreto central, a caixa-medusa (desconhecida do público), agora tem registro real na tela, de 4,6 a 6,8 s (2,2 s), a partir de \"the box jellyfish\". O espectador sai sabendo como ela é: sino quadrado visto de cima e tentáculos finos arrastando.",
+        "A CONDIÇÃO DO CONFERENTE, conferida na tela (candidatos[83], condicao_do_aprovado): (1) RECORTE de 640 × 360 px do original, parado, em x 780-1420 e y 235-595: o HTML põe #vMedusa a 11520 × 6480 (1920 × 6 e 1080 × 6) em left -4680 (780 × 6) e top -1410 (235 × 6), dentro do #medusaBox de 3840 × 2160 com overflow hidden; no clipe, o quadro de 5,1, 5,7 e 6,3 s casa com esse recorte do original (diferença média 1,35-1,42 de 255) e perde com o recorte deslocado em 12 px (2,1 ou mais). (2) TRECHO de 27,5 a 29,667 s do arquivo, dentro do 27,5-30,0 da condição: a cena mostra 27,5 + (t - 4,6) s do original, com o melhor casamento a -0,033 s (um quadro de arredondamento) nos três instantes. (3) ESCALA 6× no 4K, sem upscale além da escala do recorte. (4) SEM FILTRO nem arquivo derivado: nada de filter/transform/blend no HTML, o src é o arquivo original (sha256 8c11cd4a… conferido) e _media/footage/s51/ só tem o original e os dois clipes da placa e do manguezal.",
+        "Sinal, não reprova: a medusa é pálida (a nota do veredito diz o mesmo: \"pálida como está\") e o plano dura só 2,2 s; o Lucas escolheu assim às 13:38. Os outros concretos (rede, placa, manguezal) têm registro; \"polyps\" e o antiveneno não têm imagem real, mas são secundários."
       ],
-      "correcoes": [
-        "Pedir ao pesquisa-imagens a caixa-medusa viva, para ~2,5 s no fim do plano 1 (a partir de 'the box jellyfish', ~4,7 s) ou como corte no plano 3: termos 'box jellyfish Chironex fleckeri swimming underwater 4K', 'Chironex fleckeri bell tentacles close-up footage', 'sea wasp box jellyfish Queensland museum' (Commons, NOAA, Queensland Museum; o Shutterstock so pela caca, com o sim do Lucas). Sem arquivo licenciado: a Sala leva ao Lucas a decisao de seguir sem a imagem (como a limitacao de um portao) e o laudo se reconcilia com 'resolvido' e o motivo; nao ponha desenho no lugar."
-      ]
+      "correcoes": []
     },
     {
       "lente": "cadencia",
-      "nota": 7,
+      "nota": 9,
       "problemas": [
-        "Plano 1: um unico clipe (placa e rede) por 5,57 s, regime normal e teto de 6 s: raspa o teto (a regencia o escolheu no lugar de dois de ~2,8 s). Tem movimento (bandeira e onda), mas o enquadramento nao muda. Havia material baixado do mesmo assunto, aprovado: a foto da placa de Four Mile Beach (226a6a5a…) e a da rede de Ellis Beach (75c5d39e…), hoje so a saida escrita do plano 1.",
-        "Os outros planos: mapa 4,9 s, manguezal 3,0 s (clipe em movimento), mapa 5,5 s (a tira se desenha), mapa/recuo 6,1 s com viagem, regua 4,9 s com um beat novo a cada ~2 s. Sem trecho >6 s sem troca visual."
+        "P1 passou de 5,57 para 4,6 s (placa e rede, com a bandeira e a onda andando) e a caixa-medusa entra em 4,6 s: a cena não raspa mais o teto de 6 s no plano 1, e a medusa troca de imagem na palavra do bicho. Mapa 3,67 s, manguezal 3,0 s (clipe em movimento), mapa 5,5 s (a tira se desenha), mapa/recuo 6,1 s com viagem, régua 4,9 s com um beat novo a cada ~2 s. Nenhum trecho passa de 6 s sem troca visual."
       ],
-      "correcoes": [
-        "Se a Sala quiser aliviar o plano 1: cortar para a foto da rede de Ellis Beach (ja aprovada) em ~4,7 s, em 'the box jellyfish', ou, melhor, a caixa-medusa pedida em cobertura; so mexer com o sim do conferente para a janela nova."
-      ]
+      "correcoes": []
     },
     {
       "lente": "autoria",
@@ -122,7 +131,7 @@
       "lente": "camadas",
       "nota": 8,
       "problemas": [
-        "Oportunidade, nao reprova: no plano 1 so ha uma camada (o clipe com o lugar). Material nomeado que ficou de fora: as duas fotos aprovadas do mesmo assunto (placa de Four Mile Beach, rede de Ellis Beach). Nao e conserto obrigatorio."
+        "Oportunidade, não reprova: o plano 1 agora tem dois registros reais em sequência (a placa e a caixa-medusa), cada um com o lugar e o crédito. Material nomeado que ainda ficou de fora: as duas fotos aprovadas do mesmo assunto (placa de Four Mile Beach, 226a6a5a…, e rede de Ellis Beach, 75c5d39e…), hoje só saída escrita. Não é conserto obrigatório."
       ],
       "correcoes": []
     },
