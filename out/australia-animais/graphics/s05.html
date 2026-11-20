@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s05 · "By our count, about two in three of Australia's snake species belong to the same venomous family it does."
+  Word-lock (−17.133) · inSec 17.133 · dur 6.100 (183 quadros a 30 fps, _quadros 514→697; espelho.json de australia-animais, sha256
+  67a4f04c…; palavras 51–69 do words.json 064f54a0…). cleanDur = dur (faceless: o relógio é um só). Modo do espelho: dados · Modelo da
+  identidade: DADO, em tela cheia sobre --papel (identidade §5). Cena do GANCHO (s01–s11): 6,1 s, uma ideia, sem fusão; corte seco na
+  entrada (s04, o mapa) e na saída (s06, a folha sobre a mesa): troca de regime. Tarefa australia-animais-arte-1, lote EF1, editor-de-arte.
+  Nenhum hex: as cores saem do marca/tokens.css.
+
+  O QUE MANDA EM CADA COISA: os TEXTOS (textos-tela.json 32375aed… › s05: [11] cota "≈ 2 IN 3" 1,267–6,100, o herói, em "two"; [12]
+  legenda "150 OF 229 SNAKE SPECIES · ONE VENOMOUS FAMILY" 2,933–6,100, em "species" (aqui em duas linhas: a quebra é no lugar do "·",
+  que sai, como a nota do redator manda); [13] crédito "Alpha Point count: The Reptile Database, / searched Nov. 18, 2026" 0–6,100); o
+  BEAT (regencia.json b4fb6fbf… › s05 › beats[0], 0–6,1: "the GRID OF 229: 229 snake ticks in ten rows; 150 fill on 'two'; hero ≈ 2 IN 3;
+  line 150 OF 229 SNAKE SPECIES · ONE VENOMOUS FAMILY; one tick lights in --destaque on 'it'"); o conceito (f554a521… › s05: a grade em
+  x 420–3420, y 760–1700; o herói em cima, à esquerda; ELAPIDS não aparece, espera s25).
+
+  A PEÇA 3a (A GRADE DAS 229) NASCE AQUI: o bloco "PEÇA 3a · A GRADE DAS 229" do script (a geometria está no topo dele). Volta em s28.
+
+  OS BEATS (tempo local = master − 17,133; 'By' 0,017 · 'count,' 0,372 · 'about' 0,877 · 'two' 1,237 · 'three' 1,637 · 'Australia's'
+  2,142 · 'species' 2,917 · 'belong' 3,477 · 'same' 4,052 · 'venomous' 4,412 · 'family' 4,837 · 'it' 5,237 · 'does.' 5,322–5,657):
+    −0,06–0,74   em 'By' os 229 CONTORNOS se desenham em onda, do alto à esquerda ao pé à direita (0,8 s; a onda começa 2 quadros
+                 antes do corte, para o 1º quadro já ter traço: papel vazio no quadro 0 seria um quadro em branco).
+    1,237–2,137  em 'two' 150 se ENCHEM, fileira a fileira (a maré: 0,9 s): as seis fileiras de cima e 12 da sétima.
+    1,267        o HERÓI "≈ 2 IN 3" (o t0 do redator): 300 ms, opacidade + 24 px + escala 1,04 → 1,00 (o número que a voz diz).
+    2,933        a LEGENDA em duas linhas, à direita do herói, na mesma linha de base: 300 ms, opacidade + 24 px. Fica 3,17 s.
+    5,237–5,487  em 'it' UM dos 150 (o k 149, o último cheio, no meio da grade: x 1920, y 1378) troca a tinta por --destaque e cresce
+                 1,00 → 1,18: a taipan é uma entre as da família. Daí ao corte (6,1 s) são 0,86 s com ele aceso: é o tempo que a
+                 regência dá ("on 'it'"); vai ao relato como ponto de atenção (lição L1 da skill).
+    5,850–6,100  nada se move além da deriva (o empurrão da câmera para em 5,85).
+
+  A CÂMERA: #cam, origem no centro; escala 1,000 → 1,012 linear de 0 a 5,85 s e a deriva do RIG (6 / 4,8 px), que congela nos últimos
+    250 ms. PRODUTO MÁXIMO DAS ESCALAS: 1,012 (não há foto). O herói e a legenda estão dentro da câmera (andam ≤ 4 px/s na borda); o
+    crédito fica fora dela.
+
+  A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): a grade (1), o herói (1), a legenda (1), o tracinho
+    aceso (1) = 4 no pior instante. Blocos de leitura: 1 (a legenda). Herói: 1 ("≈ 2 IN 3", Barlow Condensed 800, 360 px).
+    Matizes: 1 (--destaque), fora a tinta.
+
+  O CONTRATO: window.__duracao = 6.1; __renderAt(t) determinístico e à prova de erro; __prepararCaptura; __fotosProntas = RIG.prontas()
+    (as faces Marca/MarcaSec). Nada de relógio, sorteio, @keyframes, transition ou SMIL. O RIG abaixo é a cópia inteira de
+    templates-cena/_rig.js.
+-->
+<head>
+<meta charset="utf-8">
+<title>s05 — About two in three of Australia's snake species belong to one venomous family</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  :root { --fs-credito: 60px; }   /* o crédito a 60 px do vídeo 5 em diante (identidade §4.1; pedido comum da australia-animais-arte-1); depois do <link> */
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--papel); }
+  /* DADO sobre --papel (identidade §5): sem still, sem luz, sem feltro; a câmera move o conjunto */
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--papel);
+    font-family: var(--fonte); color: var(--tinta-escura); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+  #cam { position: absolute; inset: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
+  #grade { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
+  /* o herói e a legenda: uma fila só, na mesma linha de base (a última linha da legenda na linha de base do herói) */
+  #titulo { position: absolute; left: 420px; top: 322px; display: flex; align-items: last baseline; gap: 120px; white-space: nowrap; }
+  .heroi { font-family: var(--fonte-sec); font-weight: var(--peso-heroi); font-size: var(--fs-heroi); line-height: 0.9; letter-spacing: 0;
+    color: var(--tinta-escura); opacity: 0; transform-origin: 0 80%; }
+  .legenda { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.16; letter-spacing: 0;
+    color: color-mix(in srgb, var(--tinta-escura) 80%, transparent); white-space: pre-line; opacity: 0; }
+  /* os créditos (identidade §4.1 e §4.2): --fs-credito, x 200, abaixo de y 1880, até x 1720; fora da câmera; sobre o papel, --tinta-escura */
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; width: calc(var(--credito-x-fim) - var(--credito-x)); }
+  .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.2;
+    color: var(--tinta-escura); letter-spacing: 0; white-space: pre-line; opacity: 0; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <div id="cam">
+    <!-- ═══ PEÇA 3a · A GRADE DAS 229: um <g> vazio; os 229 tracinhos são criados pelo script (GRADE.montar) ═══ -->
+    <svg id="grade" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg"><g id="gGrade" data-qc-ornamento="a grade das 229: a MESMA marca repetida 229 vezes, uma por especie; o espectador le a proporcao (150 cheias de 229), nao 229 informacoes"></g></svg>
+    <!-- o herói [11] e a legenda [12], em cima, à esquerda (o conceito) -->
+    <div id="titulo">
+      <div class="heroi" id="heroi" data-qc-papel="heroi"></div>
+      <div class="legenda" id="legenda" data-qc-papel="eixo"></div>
+    </div>
+  </div>
+  <!-- o crédito [13], fixo no palco, na faixa de baixo -->
+  <div id="creds"><div class="cred" id="cred" data-qc-papel="credito"></div></div>
+</div>
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+/* ═══════════════ PEÇA 3a · A GRADE DAS 229 — INÍCIO DO BLOCO (copie daqui até "FIM DO BLOCO", sem mudar nada) ═══════════════
+   Nasce na s05 do australia-animais (editor-de-arte, lote EF1 da australia-animais-arte-1, 19/11/2026). Volta em s28 (o mapista,
+   lote M3): quem reusa COPIA este bloco inteiro e só chama GRADE.montar e o estado() com o que a sua cena pede.
+   O desenho é o do conceito (conceito-visual.json f554a521… › arco, peça 3, e cenas.s05): 229 tracinhos de cobra em dez fileiras
+   de 23 (a última com 22), em traço de engenheiro; 150 cheios (a família das elapídeas: 150 de 229, a contagem do canal no
+   Reptile Database, F007 e F008); um dos 150 em --destaque (a taipan-do-interior, a paleta do Lucas de 19/11/2026).
+
+   A GEOMETRIA (G, abaixo; px do palco 4K, com a câmera em escala 1):
+     · a caixa x 420–3420, y 760–1700 (a do conceito): o canto de cima à esquerda do 1º tracinho em (420, 760), o canto de
+       baixo à direita do último da 1ª fileira em (3420, …) e o pé da 10ª fileira em y 1700;
+     · o TRACINHO: uma cobra de perfil, só o contorno fechado (5 px), 107 × 50 px: a linha do meio é um período de seno
+       (comprimento 84, amplitude 12), a cauda fina à esquerda (raio 3,5), o corpo (raio 10) e a cabeça um pouco mais larga à
+       direita (raio 12). Cheio = o mesmo contorno preenchido na cor da tinta. Não é desenho de espécie: é o sinal de "uma
+       espécie de cobra", todos iguais (identidade §5, o traço de engenheiro: só linha, sem volume pintado);
+     · o passo: 131,5 px de coluna a coluna e 98,9 px de fileira a fileira (o vão entre dois tracinhos: 24 e 49 px);
+     · a ORDEM é a de leitura (k = 0 no alto à esquerda; k = fileira × 23 + coluna): os CHEIOS são os k de 0 a 149 (as seis
+       fileiras de cima inteiras e os 12 primeiros da sétima); os 79 de fora ficam em contorno (os 11 últimos da sétima e as
+       três de baixo); a TAIPAN é o k 149, o último cheio, no meio da grade (o centro dele em x 1920, y 1378);
+     · caixaCheio(): a caixa do bloco cheio (para prender uma pílula nele: a ELAPIDS da s28).
+   AS CORES entram por opção (sempre token): tinta (o contorno e o cheio; padrão var(--tinta-escura), para o --papel; sobre o
+     mapa, var(--tinta)) e destaque (a taipan; padrão var(--destaque)). Nenhum fundo é pintado: a peça vale sobre papel ou mapa.
+   O MOVIMENTO (cada um é um número de 0 a 1 que a CENA dá; a forma da onda mora aqui):
+     · contorno: os 229 contornos se desenham em onda, do canto de cima à esquerda ao de baixo à direita (a pena de cada um
+       leva 44 % do tempo; o atraso cresce com a coluna e a fileira); na s05, 0,8 s a partir de "By";
+     · cheio: os 150 se enchem fileira a fileira, da esquerda para a direita (a maré; cada um leva 28 % do tempo); na s05,
+       0,9 s a partir de "two";
+     · taipan: o k 149 troca a tinta do cheio por --destaque e cresce 1,00 → 1,18 (uma vez, sem voltar); na s05, 0,25 s em "it".
+   O HTML (dentro da câmera, sobre --papel). O data-qc-ornamento vai JUNTO, no <g>: é a declaração de TRAMA do qc-carga (a mesma
+     forma repetida conta como uma; sem ela, o portão conta 229 "elementos de informação" contra o teto de 77). Texto dentro
+     do <g> continuaria contando: a grade não tem texto.
+       <svg id="grade" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+         <g id="gGrade" data-qc-ornamento="a grade das 229: a MESMA marca repetida 229 vezes, uma por especie; o espectador le a proporcao (150 cheias de 229), nao 229 informacoes"></g>
+       </svg>
+   USO:
+     var GR = GRADE.montar(document.getElementById("gGrade"), { tinta: "var(--tinta-escura)", destaque: "var(--destaque)" });
+     GR.estado({ contorno: 1, cheio: 1, taipan: 1 });      // o estado completo (a volta em s28)
+     GRADE.G, GRADE.centro(k) → {x, y}, GRADE.caixaCheio() → {x0, y0, x1, y1}
+     O <g> pode levar transform (encolher, mudar de lugar): a peça inteira anda junto.
+   ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════ */
+var GRADE = (function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  var G = {
+    x0: 420, y0: 760, x1: 3420, y1: 1700,          // a caixa da grade (o conceito)
+    colunas: 23, fileiras: 10, total: 229, cheios: 150, taipan: 149,
+    tick: { L: 84, A: 12, rCauda: 3.5, rCorpo: 10, rCabeca: 12, traco: 5 }
+  };
+  // a meia-largura e a meia-altura do tracinho, com o traço (medidas na forma abaixo: 53,5 e 25)
+  G.tick.mx = G.tick.L / 2 + G.tick.rCorpo + G.tick.traco / 2 - 1;      // 53,5: a cabeça passa 10 px da ponta da linha do meio (a cauda, 3,5)
+  G.tick.my = G.tick.A + G.tick.rCorpo + G.tick.traco / 2 + 0.5;        // 25
+  G.passoX = (G.x1 - G.x0 - 2 * G.tick.mx) / (G.colunas - 1);           // 131,5
+  G.passoY = (G.y1 - G.y0 - 2 * G.tick.my) / (G.fileiras - 1);          // 98,9
+  function centro(k) {
+    var c = k % G.colunas, f = Math.floor(k / G.colunas);
+    return { x: G.x0 + G.tick.mx + c * G.passoX, y: G.y0 + G.tick.my + f * G.passoY, c: c, f: f };
+  }
+  function caixaCheio() {   // as seis fileiras inteiras e os 12 da sétima: a caixa de fora
+    var a = centro(0), b = centro(G.colunas - 1), z = centro(G.cheios - 1);
+    return { x0: a.x - G.tick.mx, y0: a.y - G.tick.my, x1: b.x + G.tick.mx, y1: z.y + G.tick.my };
+  }
+  // o contorno fechado do tracinho, em volta de (0, 0): as duas margens do corpo, a tampa redonda da cabeça e a da cauda
+  var D_TICK = (function () {
+    var T = G.tick, N = 28, esq = [], dir = [], i, u, k;
+    function raio(u) {
+      if (u < 0.4) { var p = u / 0.4; return T.rCauda + (T.rCorpo - T.rCauda) * (p * p * (3 - 2 * p)); }
+      if (u < 0.8) return T.rCorpo;
+      return T.rCorpo + (T.rCabeca - T.rCorpo) * Math.sin(Math.PI * (u - 0.8) / 0.2);
+    }
+    function ponto(u) {
+      var x = (u - 0.5) * T.L, y = T.A * Math.sin(2 * Math.PI * u);
+      var tx = T.L, ty = T.A * 2 * Math.PI * Math.cos(2 * Math.PI * u), m = Math.sqrt(tx * tx + ty * ty);
+      return { x: x, y: y, tx: tx / m, ty: ty / m };
+    }
+    for (i = 0; i <= N; i++) {
+      u = i / N; var p = ponto(u), r = raio(u);
+      esq.push([p.x - p.ty * r, p.y + p.tx * r]);
+      dir.push([p.x + p.ty * r, p.y - p.tx * r]);
+    }
+    var cab = ponto(1), rc = raio(1), cau = ponto(0), ru = raio(0), tampaCab = [], tampaCau = [];
+    for (k = 1; k < 6; k++) {
+      var a = Math.PI * k / 6;
+      tampaCab.push([cab.x + rc * (-cab.ty * Math.cos(a) + cab.tx * Math.sin(a)), cab.y + rc * (cab.tx * Math.cos(a) + cab.ty * Math.sin(a))]);
+      tampaCau.push([cau.x + ru * (cau.ty * Math.cos(a) - cau.tx * Math.sin(a)), cau.y + ru * (-cau.tx * Math.cos(a) - cau.ty * Math.sin(a))]);
+    }
+    var todos = esq.concat(tampaCab, dir.slice().reverse(), tampaCau);
+    return "M" + todos.map(function (q) { return q[0].toFixed(1) + " " + q[1].toFixed(1); }).join(" L") + " Z";
+  })();
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function eo(p) { return 1 - Math.pow(1 - p, 3); }
+  function montar(g, op) {
+    if (!g) return null;
+    op = op || {};
+    var tinta = op.tinta || "var(--tinta-escura)", destaque = op.destaque || "var(--destaque)";
+    var ticks = [], k;
+    for (k = 0; k < G.total; k++) {
+      var c = centro(k), e = document.createElementNS(NS, "path");
+      e.setAttribute("d", D_TICK);
+      e.setAttribute("pathLength", "1");
+      e.setAttribute("transform", "translate(" + c.x.toFixed(2) + "," + c.y.toFixed(2) + ")");
+      e.setAttribute("stroke-width", G.tick.traco);
+      e.setAttribute("stroke-linejoin", "round");
+      e.setAttribute("stroke-dasharray", "1 1");
+      e.style.setProperty("stroke", tinta);
+      e.style.setProperty("fill", tinta);
+      e.setAttribute("fill-opacity", "0");
+      e.setAttribute("opacity", "0");
+      g.appendChild(e);
+      ticks.push({ el: e, c: c, cheio: k < G.cheios });
+    }
+    function estado(s) {
+      s = s || {};
+      var pc = s.contorno == null ? 1 : clamp01(s.contorno), ph = s.cheio == null ? 1 : clamp01(s.cheio), pt = clamp01(s.taipan || 0);
+      for (var k = 0; k < ticks.length; k++) {
+        var t = ticks[k], c = t.c;
+        // a onda do contorno: o atraso cresce com a coluna (até 38 %) e a fileira (até 18 %); a pena leva 44 %
+        var d0 = 0.38 * c.c / (G.colunas - 1) + 0.18 * c.f / (G.fileiras - 1);
+        var p = eo(clamp01((pc - d0) / 0.44));
+        t.el.setAttribute("stroke-dashoffset", (1 - p).toFixed(4));
+        t.el.setAttribute("opacity", p > 0 ? "1" : "0");
+        // a maré do cheio: fileira a fileira (até 57 %), da esquerda para a direita (até 15 %); cada um leva 28 %
+        var q = 0;
+        if (t.cheio) q = eo(clamp01((ph - (0.57 * c.f / 6 + 0.15 * c.c / (G.colunas - 1))) / 0.28));
+        t.el.setAttribute("fill-opacity", q.toFixed(3));
+        if (k === G.taipan) {
+          var e = eo(pt);
+          t.el.style.setProperty("fill", pt > 0 ? "color-mix(in srgb, " + destaque + " " + (e * 100).toFixed(1) + "%, " + tinta + ")" : tinta);
+          t.el.setAttribute("transform", "translate(" + c.x.toFixed(2) + "," + c.y.toFixed(2) + ") scale(" + (1 + 0.18 * e).toFixed(4) + ")");
+        }
+      }
+    }
+    return { estado: estado, ticks: ticks };
+  }
+  return { G: G, centro: centro, caixaCheio: caixaCheio, montar: montar, D_TICK: D_TICK };
+})();
+/* ═══════════════ PEÇA 3a · A GRADE DAS 229 — FIM DO BLOCO ═══════════════ */
+</script>
+<script>
+(function () {
+  "use strict";
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo;
+  var E = function (id) { return document.getElementById(id); };
+
+  var DUR = 6.1;
+  window.__duracao = DUR;
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia é do redator-de-tela: textos-tela.json › _textos_por_cena s05) ═══
+  var TEXTOS = {
+    heroi: "≈ 2 IN 3",                                                        // [11] cota, 1,267–6,100: o herói, em "two" ("about" = "≈")
+    legenda: "150 OF 229 SNAKE SPECIES\nONE VENOMOUS FAMILY",                 // [12] legenda, 2,933–6,100: a quebra no lugar do "·", que sai
+    cred: "Alpha Point count: The Reptile Database,\nsearched Nov. 18, 2026"  // [13] credito, 0–6,100: duas linhas (a quebra do redator)
+  };
+  Object.keys(TEXTOS).forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+
+  // ── os tempos (locais, −17,133), do words.json, dos textos de tela e da regência s05 ──
+  var T = {
+    contorno: -0.06, contornoDur: 0.8,   // "By" (0,017): a onda dos 229 contornos
+    cheio: 1.237, cheioDur: 0.9,         // "two": os 150 se enchem, fileira a fileira
+    heroi: 1.267,                        // [11], o t0 do redator
+    legenda: 2.933,                      // [12], "species"
+    taipan: 5.237, taipanDur: 0.25,      // "it": um dos 150 em --destaque
+    camFim: DUR - 0.25,                  // o empurrão para 250 ms antes do corte
+    cred: 0
+  };
+
+  var GR = GRADE.montar(E("gGrade"), { tinta: "var(--tinta-escura)", destaque: "var(--destaque)" });
+
+  // o texto: entra em 300 ms (opacidade + 24 px de subida, eo); o número que a voz diz, com a escala 1,04 → 1,00 (identidade §4.4)
+  function texto(el, t, t0, numero) {
+    if (!el) return;
+    var p = eo(seg(t, t0, 0.3));
+    el.style.opacity = p.toFixed(3);
+    el.style.transform = "translateY(" + ((1 - p) * 24).toFixed(1) + "px)" + (numero ? " scale(" + (1.04 - 0.04 * p).toFixed(4) + ")" : "");
+  }
+
+  function cena(t) {
+    // a câmera: o empurrão lento (1,000 → 1,012, linear) até 250 ms antes do corte, e a deriva do RIG (±6 / ±4,8 px), que congela junto
+    var cam = E("cam");
+    if (cam) {
+      var td = Math.min(t, T.camFim), s = 1 + 0.012 * (td / T.camFim);
+      var dx = 6 * Math.sin(td * 0.23), dy = 4.8 * Math.sin(td * 0.17);
+      cam.style.transform = "scale(" + s.toFixed(5) + ") translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
+    }
+    if (GR) GR.estado({
+      contorno: seg(t, T.contorno, T.contornoDur),
+      cheio: seg(t, T.cheio, T.cheioDur),
+      taipan: seg(t, T.taipan, T.taipanDur)
+    });
+    texto(E("heroi"), t, T.heroi, true);
+    texto(E("legenda"), t, T.legenda, false);
+    var c = E("cred"); if (c) c.style.opacity = eo(seg(t, T.cred, 0.3)).toFixed(3);
+  }
+
+  window.__renderAt = function (t) {
+    try { cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e); }   // nunca lança
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); };
+  window.__fotosProntas = R.prontas().then(function () { window.__renderAt(0); return true; });
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

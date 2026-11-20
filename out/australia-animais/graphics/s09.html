@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<!--
+  s09 · "Australia's roads killed more people in an average month of 2025 than venom did in that whole decade."
+  Word-lock (−38.200) · inSec 38.200 · dur 6.500 (195 quadros a 30 fps, do quadro 1146 ao 1341; espelho.json de australia-animais,
+  sha256 67a4f04c…, palavras 106–124 do words.json 064f54a0…). cleanDur = dur (faceless: o relógio é um só). Vídeo 8 (australia-animais).
+  Modo do espelho: footage · Modelos da identidade: REGISTRO (P1, o clipe em tela cheia) e DADO sobre --papel (P2), com CORTE SECO entre
+  os dois dentro do arquivo (troca de regime; a imagem inteira muda). Regime da regência (b4fb6fbf… › s09): normal ("a estrada real
+  (1,9 s) e o dado (4,6 s): o objeto muda em 'in', e o gancho pede a troca"); b0 0–1,900 footage_real (caca s09-a, curto: 1,9 s no
+  gancho, item 64); b1 1,900–6,500 grafico ("DISPENSA: a comparação de duas contagens é número"). O GANCHO (identidade §5): duas trocas
+  (38,2 s e 40,1 s), nenhuma imagem acima de 6 s, sem fusão; corte seco nas duas pontas (a mesa de s08 → o registro; o dado → o mapa de
+  s10).
+  Lote EF2 da tarefa australia-animais-arte-1 (19/11/2026), editor-de-arte em Fable. Montada por _tmp/arte-1/EF2/gerar.py (o molde
+  s09.html.tpl + a cópia inteira de templates-cena/_rig.js).
+
+  AQUI NASCE A ESTRADA (o arco: "A ESTRADA (a coluna ROADS)"; volta em s66 P2, lote EF12). São duas coisas, e as duas estão em blocos
+  limpos, com as coordenadas em variáveis:
+    1. O CLIPE DA ESTRADA (o objeto PLANO do script): _media/footage/s09/estrada-australiana-aerea.mp4, a janela 0,400 → 2,300 s do
+       clipe (6,433 s ao todo). A s66 P2 usa OUTRO trecho do mesmo clipe (a regência: "outro trecho que o de s09"): de 2,6 s em diante
+       está livre (sobram 3,83 s para os 2,133 s dela). No clipe inteiro a estrada é uma faixa vertical parada no quadro (o drone
+       acompanha o carro): o asfalto em x ≈ 2200–2610 na borda de baixo, x ≈ 2220–2485 em y 1080 e x ≈ 2215–2350 no topo.
+    2. A COLUNA ROADS (o bloco "A ESTRADA · A COLUNA ROADS" do estilo e do script; o objeto DADO): a coluna de um mês médio de estrada em
+       2025, em --tensao, com o rótulo e a cota. Na saída SEM o clipe (a regência de s66, fallback), é esta coluna que sobe ao lado do
+       bloquinho do veneno: copie o bloco, o <svg id="graf"> e as duas <div> dela, e troque só DADO.base e DADO.pxPorMorte pela escala
+       da cena.
+
+  O que manda em cada coisa: os textos de tela (textos-tela.json 32375aed… › _textos_por_cena s09, t0–t1 locais):
+    [37] credito "Alpha Point calculation: ABS, Causes of Death, / Australia, 2025 (CC BY 4.0) / 2023 revised · 2024–2025 preliminary"
+         1,900–6,500 (3 linhas; a quebra é a do redator; _larguras_px 1230, 734 e 1018);
+    [33] legenda "ROADS · AN AVERAGE MONTH OF 2025" 2,267–6,500 (_bloco col-roads; em "average"; numa linha só: não quebra);
+    [34] cota "≈ 106" 2,600–6,500 (_bloco col-roads; "a voz não o diz: entra depois de 'month'"; 1.276 ÷ 12 = 106,3);
+    [35] legenda "VENOM · 2016–2025" 4,367–6,500 (_bloco col-venom; em "venom"); [36] cota "85" 4,367–6,500 (_bloco col-venom).
+    NÃO VAI À TELA (nao_vai_para_tela[4]): "Northern Territory" sobre a estrada; "≈ 24 DAYS OF 2025 ROADS".
+  A regência (s09 › b0 › exige: "an outback highway in the Northern Territory from a high drone, a single car, the road running to the
+  top of the frame; no text, no crash"; b1 › exige: "two columns on --papel, same scale, both --tensao: ROADS · AN AVERAGE MONTH OF 2025
+  (≈ 106, after 'month') taller than VENOM · 2016–2025 (85)"). O conceito (f554a521… › cenas.s09: "Uma estrada corre reta até o
+  horizonte. Depois, duas colunas de mortes lado a lado, e a da estrada, que mede um mês só, passa a do veneno, que mede dez anos: a
+  escala do medo vira de cabeça para baixo sem ninguém dizer que virou"). No crédito vale o textos-tela (3 linhas), não a linha curta da
+  regência e do conceito (a precedência do pedido comum). TODO TEXTO DE TELA está no objeto TEXTOS.
+
+  A INVENÇÃO DA CENA (a metáfora se move no corte): A ESTRADA VIRA A COLUNA. No clipe, o asfalto é uma faixa vertical que corre de baixo
+    até o topo do quadro, em x ≈ 2210–2550 na altura da base do gráfico. No corte seco de "in", a coluna ROADS nasce NO MESMO LUGAR e
+    com a MESMA LARGURA (x 2210–2550) e sobe do chão por onde a estrada passava: o olho, que estava no carro, não muda de lugar, e a
+    estrada vira a contagem. A coluna do veneno entra depois, à esquerda, mais baixa.
+
+  OS BEATS (tempo local = master − 38,200; palavras do words.json: Australia's 0,020 · roads 0,660 · killed 1,060 · more 1,300 ·
+  people 1,540–1,860 · in 1,900 · an 2,020 · average 2,260 · month 2,580–2,820 · of 2,860 · twenty 2,980 · twenty-five 3,300–3,960 ·
+  than 4,150 · venom 4,355 · did 4,740 · in 4,940 · that 5,060 · whole 5,300 · decade. 5,620–6,040; silêncio até o corte):
+    P1 0,000–1,900  "Australia's roads killed more people": O CLIPE em tela cheia desde o 1º quadro, NADA POR CIMA: a rodovia do
+                    Território do Norte vista de um drone alto, um carro branco só, a estrada correndo até o topo do quadro; a janela
+                    0,400 → 2,267 s do clipe (o último quadro de P1 é t 1,8667), 3840 × 2160 a 30 fps, a 1:1. O movimento é o do
+                    clipe (o drone acompanha o carro; sem Ken Burns sobre vídeo). Sem rótulo de lugar (o textos-tela o tira: o plano
+                    tem 1,9 s e a frase não é sobre o lugar), sem crédito na cena (Shutterstock, opção B do Lucas), sem acidente.
+    P2 1,900  "in": CORTE SECO para o DADO em tela cheia, sobre --papel: a linha de base já está lá, e a COLUNA ROADS sobe do zero
+                    (0,70 s, eo) onde a estrada estava; o crédito [37] acende (300 ms).
+       2,267  "average": o rótulo "ROADS · AN AVERAGE MONTH OF 2025" (legenda, 84 px) entra sob a coluna (300 ms, opacidade + 24 px).
+       2,600  depois de "month": a cota "≈ 106" (rótulo, 128 px) entra sobre a coluna, que acabou de chegar ao topo (300 ms,
+                    opacidade + 24 px, escala 1,04 → 1,00). A voz não diz o número: ele só entra depois da palavra.
+       4,367  "venom": a COLUNA VENOM sobe (0,40 s, eo) à esquerda, na MESMA ESCALA (85 contra 106,3: 80 % da altura), com o rótulo
+                    "VENOM · 2016–2025" e a cota "85" (o bloco entra junto, 300 ms). 2,13 s no ar até o corte (≥ 2,0).
+       6,250–6,500  REPOUSO: o push-in para 250 ms antes do corte; só a deriva continua (identidade §4.4).
+    CÂMERA de P2 (só o gráfico; o papel fica fora dela): a do RIG, do corte em diante: push-in 1,0000 → 1,0104 (0,0024 por segundo,
+    parando em 6,250) e a deriva senoidal de ±6 / ±4,8 px, com a origem no centro do palco. O crédito fica fora da câmera.
+
+  O ILUSTRADOR, COM A FÍSICA (roupa do editor §5): as peças que agem são as duas colunas, e só crescem presas à base (a borda de baixo
+    nunca sai de y 1600: o contato com o eixo), em curva dirigida (eo), sem quique nem volta; um executor por transformação (coluna()).
+    Nenhuma peça pendurada, caindo ou encaixando: não há estudo de fenômeno a aplicar além do contato com a base (ilustracao/knowledge/
+    ilustracao/CONSTRUCAO.md, "contato"). Sem mão (a v003 não entra).
+
+  A MARGEM sob a câmera (roupa §4), no pior quadro (escala 1,0104, origem no centro, deriva ±6 / ±4,8): a cota "≈ 106" em y ~367 (o topo
+    da margem é 160); o rótulo da estrada até x ~3250 (a margem é 3640) e o do veneno desde x ~500 (a margem é 200); os rótulos terminam
+    em y ~1755 (< 1880); a linha de base em x ~380 → ~3320. O crédito FORA da câmera, fixo em x 200, de y ~1930 a ~2146 (3 linhas de
+    60 px), até x ~1430 (< 1720). Canto inferior direito (400 × 400) vazio. Medido pelo portao-margens, não só pela conta.
+  PRODUTO MÁXIMO DAS ESCALAS: o clipe a 1,00 (1:1); no dado, a cota 1,04 na entrada (com a câmera a ~1,002) e depois a câmera até 1,0104.
+    Ken Burns: não há foto.
+  A CONTA DOS 6 ELEMENTOS (identidade §4.2; conta minha nos quadros, não portão): em P1, 0 (o clipe é base de tela cheia). Em P2, no fim:
+    a coluna ROADS (1) + o rótulo dela (1) + a cota dela (1) + a coluna VENOM (1) + o rótulo dela (1) + a cota dela (1) = 6 contando
+    peça a peça (o teto), ou 4 como o conceito conta (cada coluna com o seu rótulo é um elemento; as duas cotas, dois): a linha de base é
+    o eixo do gráfico e o crédito não conta. Blocos de texto de leitura: 0 (rótulos curtos e números). Herói: nenhum
+    (data-qc-sem-heroi): as duas cotas são números de dado no papel rótulo, e nenhuma manda na outra.
+  AS CORES: as duas colunas em --tensao (são mortes: a paleta do vídeo, "--tensao só nas mortes"); o texto sobre --papel em
+    --tinta-escura; o eixo em --eixo-cor. Uma matiz só. As colunas são barras cheias, não pilhas de fichas: o 106,3 é uma média, e a
+    cena não está na lista da FICHA do arco.
+
+  A MÍDIA (out/australia-animais/_pesquisa/conferencia-midia.json 72e9260b… › candidatos[62], id
+  _media/_caca/s09/shutterstock/shutterstock_3823617333.mov, id_candidato s09-a-2, cena s09, lote 8, veredito "aprovado" para a frase
+  "Australia's roads killed more people" (38,22–40,06 s), mesmo_item: sim, casado pela URL do item do _PROCEDENCIA.json da cena,
+  https://www.shutterstock.com/pt/video/clip-3823617333-remote-outback-highway-northern-territory-australia-%E2%80%93, e pelo sha256 do
+  baixado, 215c0859…):
+    ../_media/footage/s09/estrada-australiana-aerea.mp4  3840 × 2160 · 30 fps · 6,433 s (193 quadros) · h264 yuv420p bt709 · sha256
+      5e06fc17… · Shutterstock 3823617333, "Autoestrada remota outback em Território do Norte, Austrália - tiro de viagem aérea" ·
+      licença padrão do plano de downloads ilimitados (a conta individual do Lucas) · lugar_na_origem: "Autoestrada remota outback em
+      Território do Norte, Austrália" · credito_na_tela: nenhum na cena (a linha do Shutterstock vai no fecho, s74 + s75, e na descrição).
+    O <video> é posicionado por t (RIG.seekTo; nunca play() no render): currentTime = 0,4 + 1/60 + t (o meio de cada quadro do clipe:
+    do quadro 12 ao 68), só enquanto t < 1,900; depois do corte
+    ele fica parado e escondido atrás do papel (o qc-video-avanca mede em 1,95 e 5,53 s, dentro de P2: lá o clipe não está na tela).
+    A CADÊNCIA DO ARQUIVO (medida, não é da cena): o original baixado é ProRes a 23,976 fps (154 quadros), e o arquivo instalado, a
+    30 fps, repete 1 quadro em cada 5 (os quadros 2, 7, 12 … 192 repetem o anterior; dentro da janela, os 17, 22 … 67). A cena mostra
+    os quadros 12 → 68 um a um, sem repetir nem pular nenhum além desses (conferido contra a origem: _tmp/arte-1/EF2/conferir-quadros.py).
+    O PAPEL do gráfico é a <div id="papelDado"> (o nome não começa por letras de cor: o perl de hex do ofício volta vazio).
+  O DADO (construído; nenhum arquivo): a estrada de 2025, 1.276 mortes ÷ 12 = 106,3 por mês (ABS, Causes of Death, Australia, 2025,
+    preliminar; F014; textos-tela › rotulos_dado[2]), contra 85 dos venenosos em 2016–2025 (a soma das dez células de s07). O texto e os
+    números da tela são só os do textos-tela.
+
+  A MARCA: ../../../marca/tokens.css (só var(--…); nenhum hex, nenhum nome de fonte). `:root { --fs-credito: 60px; }` num <style> DEPOIS
+  do <link>: o crédito a 60 px (identidade §4.1, "Do vídeo 5 em diante, 60 px"), em --tinta-escura sobre o papel (roupa §9), com
+  data-qc-papel="credito": o qc-tamanho reprova SÓ ele (60 < 72 do ofício), a exceção que a Sala grava. Legenda 84 px Inter 500; cota
+  128 px Inter 700, algarismos tabulares. Sem pílula: papel não é mapa nem registro.
+  A DECLARAÇÃO NO CRÉDITO (data-qc-credito-antecipado, a isenção que o próprio qc-credito-fantasma prevê, com o motivo escrito): o
+  portão pergunta "há crédito na tela e nenhuma mídia real?" e, numa cena com clipe (P1) e gráfico (P2), lê o crédito do DADO como se
+  fosse do clipe ("a mídia sai em 1.80s e o crédito segue legível até 6.60s"). O crédito é a fonte do gráfico e só existe com ele; o
+  clipe não tem crédito na cena. Sem o atributo, a reprovação é essa, literal; quem confere a declaração é o qc-visual.
+
+  O CONTRATO: window.__duracao = 6.5; __renderAt(t) determinístico (devolve a promessa do seek) e à prova de erro; __prepararCaptura;
+  __fotosProntas = RIG.prontas() (as faces da marca); __videoPronto = o vídeo com dados (loadeddata). Nada de relógio, sorteio,
+  @keyframes, transition, SMIL ou autoplay. O RIG abaixo é a cópia inteira de templates-cena/_rig.js (pré-v1, commit 7ab9543).
+-->
+<head>
+<meta charset="utf-8">
+<title>s09 — Australia's roads killed more people in an average month of 2025 than venom did in that whole decade.</title>
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>
+  /* o crédito a 60 px do vídeo 5 em diante (identidade §4.1): o override vem DEPOIS do <link> do tokens.css */
+  :root { --fs-credito: 60px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); color: var(--tinta); font-weight: var(--peso-texto); -webkit-font-smoothing: antialiased; }
+
+  /* ═══ A ESTRADA · O CLIPE (P1): o REGISTRO em tela cheia (identidade §5), o clipe 4K a 1:1, sem moldura, sem véu ═══ */
+  .v { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; object-fit: cover; display: block; }
+
+  /* ═══ O DADO (P2): o papel é o quadro inteiro e fica FORA da câmera; a câmera move só o gráfico ═══ */
+  #papelDado { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; background: var(--papel); color: var(--tinta-escura);
+    visibility: hidden; }
+  #cam { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; transform-origin: 50% 50%; }
+  #graf { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; overflow: visible; }
+  .eixo-base { fill: none; stroke: var(--eixo-cor); stroke-width: var(--linha-espessura); stroke-linecap: round; }   /* o eixo: --tinta-escura a 60 % */
+
+  /* ═══ A ESTRADA · A COLUNA ROADS (o estilo; a geometria está no objeto DADO do script). A coluna VENOM usa as mesmas classes ═══ */
+  .col { fill: var(--tensao); }                                         /* são mortes: --tensao, e só elas */
+  .leg { position: absolute; left: 0; top: 0; white-space: nowrap; opacity: 0;                       /* o rótulo da coluna: legenda, 84 px, Inter 500 */
+    font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-eixo); line-height: 1.15; letter-spacing: 0;
+    color: var(--tinta-escura); }
+  .cota { position: absolute; left: 0; top: 0; white-space: nowrap; opacity: 0; transform-origin: 50% 50%;   /* o número da coluna: rótulo, 128 px, Inter 700 */
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1; letter-spacing: 0;
+    font-variant-numeric: var(--numeros); color: var(--tinta-escura); }
+  /* ═══ fim do estilo da COLUNA ROADS ═══ */
+
+  /* o crédito (identidade §4.1 e §4.2): --fs-credito, x 200, abaixo de y 1880, até x 1720; fora da câmera; sobre o papel, --tinta-escura */
+  #creds { position: absolute; left: var(--credito-x); bottom: 14px; width: calc(var(--credito-x-fim) - var(--credito-x)); }
+  .cred { font-family: var(--fonte); font-weight: var(--peso-texto); font-size: var(--fs-credito); line-height: 1.2;
+    color: var(--tinta-escura); letter-spacing: 0; white-space: pre-line; opacity: 0; }
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="registro real em tela cheia (a rodovia do Território do Norte, Shutterstock 3823617333) e depois o DADO sobre --papel: duas colunas com as cotas '≈ 106' e '85' como números de dado no papel rótulo; a cena não tem herói (ofício do editor-de-arte §6; identidade §4.2)">
+  <!-- ═══ A ESTRADA · O CLIPE (P1, 0–1,900): a rodovia vista de cima, a janela 0,400 → 2,267 s do clipe ═══ -->
+  <video class="v" id="vA" src="../_media/footage/s09/estrada-australiana-aerea.mp4" muted playsinline preload="auto"></video>
+
+  <!-- ═══ O DADO (P2, 1,900–6,500): o papel, e dentro da câmera o gráfico ═══ -->
+  <div id="papelDado">
+    <div id="cam">
+      <svg id="graf" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+        <!-- ═══ A ESTRADA · A COLUNA ROADS (e a do veneno, igual): os dois <rect> crescem presos à base ═══ -->
+        <rect class="col" id="colRoads" x="0" y="0" width="0" height="0"/>
+        <rect class="col" id="colVenom" x="0" y="0" width="0" height="0"/>
+        <path class="eixo-base" id="eixoBase" d=""/>
+      </svg>
+      <div class="leg" id="legRoads" data-qc-papel="eixo"></div>
+      <div class="cota" id="numRoads" data-qc-papel="rotulo"></div>
+      <!-- ═══ fim da COLUNA ROADS ═══ -->
+      <div class="leg" id="legVenom" data-qc-papel="eixo"></div>
+      <div class="cota" id="numVenom" data-qc-papel="rotulo"></div>
+    </div>
+  </div>
+
+  <!-- o crédito [37], fixo no palco, na faixa de baixo (só em P2) -->
+  <div id="creds"><div class="cred" id="cred1" data-qc-papel="credito" data-qc-credito-antecipado="crédito de FONTE DE DADO, não de mídia: é a conta do canal sobre o ABS, e credita o gráfico de P2 (1,900–6,500 s), que é construído. O clipe de P1 (0–1,900 s) não leva crédito na cena (Shutterstock: só a linha do fecho) e sai no corte seco; o crédito entra com o primeiro quadro do gráfico e fica só enquanto ele está na tela"></div></div>
+</div>
+
+<script>
+/* RIG DE CENA DA RÉGIE — o kit que toda cena repete, num objeto só: window.RIG.
+   Portado de top10-estudio/knowledge/dourados/README.md:28-49 (commit 4afda124) e do gancho de
+   prontidão de agent-core/agentes/editor-de-arte/CONTRATO.md:120-129.
+   ONDE MORA: no motor, src/cena/_rig.js; no canal, templates-cena/_rig.js (o create-regie copia).
+   COMO ENTRA NA CENA (out/<proj>/graphics/<id>.html): o editor-de-arte COPIA este arquivo inteiro
+   num <script> antes do script da cena: ela fica autossuficiente, e o carimbo do render (sha1 do
+   HTML) muda quando o rig muda. Marca: <link rel="stylesheet" href="../../../marca/tokens.css">.
+   Do estúdio mudou: (1) tudo em RIG (uma cena com o próprio `const seg` quebraria com "already
+   been declared"); (2) câmera 4K, 6/4,8 px; (3) a prontidão espera as faces "Marca"/"MarcaSec" e
+   o tokens.css; o que faltar vai para window.__fontesFaltando, que o render reprova.
+   Uso: const {clamp,seg,eo,eb,win,camera,seekTo,laco,grao}=RIG; window.__fotosProntas=RIG.prontas();
+   Lei: a cena é função pura de t. Nada aqui lê relógio, sorteia ou anda sozinho. */
+(function () {
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);                       // rampa 0→1 a partir de a, duração d
+  const eo = (p) => 1 - Math.pow(1 - p, 3);                                 // ease-out cúbico
+  const eb = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2); // ease-in-out
+  const win = (t, s, di, e, dout) => Math.min(seg(t, s, di), 1 - seg(t, e, dout)); // entra em s, sai em e
+  const laco = (t, dur) => (dur > 0 ? ((t % dur) + dur) % dur : 0);         // clipe curto em laço, por t
+  // Câmera: push-in contínuo + deriva senoidal. Nada congela.
+  function camera(el, t, o) {
+    if (!el) return; o = o || {};
+    const s = (o.base ?? 1.02) + (o.zoom ?? 0.0024) * t;
+    const x = (o.ax ?? 6) * Math.sin(t * 0.23), y = (o.ay ?? 4.8) * Math.sin(t * 0.17);
+    el.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+  // Vídeo por f(t): posiciona e espera o "seeked". Na galeria (__PREVIEW) não mexe.
+  function seekTo(v, tt) {
+    if (!v || window.__PREVIEW || v.readyState < 1) return Promise.resolve();
+    const d = v.duration; if (d > 0 && isFinite(d)) tt = clamp(tt, 0, Math.max(0, d - 0.001));
+    if (Math.abs(v.currentTime - tt) < 1e-4 && !v.seeking) return Promise.resolve();
+    return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tt; });
+  }
+  // Grão: ruído de semente fixa por quadro (mulberry32). Mesmo t, mesmo grão.
+  function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function grao(cv, t, o) {
+    if (!cv || !cv.getContext) return; o = o || {};
+    const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+    const sorte = mulberry32((o.semente ?? 7) * 100003 + Math.round(t * (o.fps ?? 30)));
+    const img = ctx.createImageData(w, h), d = img.data, a = o.alfa ?? 22;
+    for (let i = 0; i < d.length; i += 4) { const v = (sorte() * 255) | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = a; }
+    ctx.putImageData(img, 0, 0);
+  }
+  // Paleta por vídeo: OBJETO de papéis {acento:"#…"}, montado pelo editor-de-arte. O espelho.paleta é
+  // PROSA e não se aplica; o que não serve vai para window.__avisos, em vez de sumir calado.
+  function aviso(m) { (window.__avisos = window.__avisos || []).push("RIG.paleta: " + m); }
+  function cor(v) { return typeof CSS !== "undefined" && CSS.supports ? CSS.supports("color", v) : /^#[0-9a-f]{3,8}$|^(rgb|hsl)a?\(/i.test(v); }
+  function paleta(p) {
+    if (p == null) return;
+    if (typeof p !== "object" || Array.isArray(p)) return aviso("esperava um objeto {papel:cor}; veio " + (typeof p === "string" ? "texto (a prosa do espelho?)" : typeof p) + " e nada foi aplicado");
+    for (const k in p) {
+      if (!/^[a-z][a-z0-9-]*$/.test(k)) aviso("papel \"" + k + "\" ignorado (nome inválido)");
+      else if (!cor(String(p[k]))) aviso("--" + k + " ignorado: \"" + p[k] + "\" não é cor");
+      else document.documentElement.style.setProperty("--" + k, String(p[k]));
+    }
+  }
+  // Prontidão: <img>, <image> de SVG e TODAS as faces "Marca"/"MarcaSec". Nunca rejeita: o que falhou
+  // vai para window.__fontesFaltando, que o render lê e reprova.
+  function prontas(familia) {
+    familia = familia || "Marca";
+    const falta = (window.__fontesFaltando = []);
+    // complete=true já basta: imagem quebrada também fica "complete", o evento dela já passou, e
+    // esperá-lo segurava a prontidão até o teto do render. Quem reprova imagem quebrada é o gate de mídia.
+    const imgs = [].slice.call(document.images).map((im) => im.complete ? 0
+      : new Promise((r) => { im.addEventListener("load", r); im.addEventListener("error", r); }));
+    // <image> de SVG não tem .complete: uma Image() com o mesmo endereço sai do cache e o decode()
+    // diz quando está pronta — sem teto de relógio (o M11 do estúdio usava um).
+    const svgs = [].slice.call(document.querySelectorAll("svg image")).map((el) => {
+      const h = el.getAttribute("href") || el.getAttribute("xlink:href"); if (!h) return 0;
+      const im = new Image(); im.src = new URL(h, document.baseURI).href; return im.decode().then(() => 0, () => 0);
+    });
+    const faces = [];
+    if (document.fonts) document.fonts.forEach((f) => { const n = f.family.replace(/["']/g, ""); if (n === familia || n === familia + "Sec") faces.push(f); });
+    // tokens.css ausente cai AQUI: no file:// o <link> que falhou ainda tem .sheet, e só a falta de face o denuncia
+    if (!faces.length) falta.push(familia + ": nenhuma @font-face — o marca/tokens.css não carregou ou não foi ligado");
+    const fontes = faces.map((f) => f.load().then(() => 0, () => { falta.push(f.family.replace(/["']/g, "") + " " + f.weight); }));
+    return Promise.all(imgs.concat(svgs, fontes)).then(() => true);
+  }
+  window.RIG = Object.freeze({ clamp, seg, eo, eb, win, laco, camera, seekTo, mulberry32, grao, paleta, prontas });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var R = window.RIG, clamp = R.clamp, seg = R.seg, eo = R.eo;
+  var E = function (id) { return document.getElementById(id); };
+  var DUR = 6.5;                                    // espelho.json › s09 › dur, literal
+  window.__duracao = DUR;
+
+  // ═══ OS TEXTOS DE TELA (um lugar só; a grafia final é do redator-de-tela: textos-tela.json › _textos_por_cena s09) ═══
+  var TEXTOS = {
+    legRoads: "ROADS · AN AVERAGE MONTH OF 2025",   // [33] legenda, 2,267–6,500 (em "average"; _bloco col-roads; numa linha só)
+    numRoads: "≈ 106",                              // [34] cota, 2,600–6,500 (depois de "month": a voz não o diz; 1.276 ÷ 12 = 106,3)
+    legVenom: "VENOM · 2016–2025",                  // [35] legenda, 4,367–6,500 (em "venom"; _bloco col-venom)
+    numVenom: "85",                                 // [36] cota, 4,367–6,500 (o número que a voz já disse em s07)
+    cred1: "Alpha Point calculation: ABS, Causes of Death,\nAustralia, 2025 (CC BY 4.0)\n2023 revised · 2024–2025 preliminary"   // [37] credito, 1,900–6,500: 3 linhas (a quebra do redator)
+  };
+  Object.keys(TEXTOS).forEach(function (k) { var e = E(k); if (e) e.textContent = TEXTOS[k]; });
+
+  // ── os tempos (locais, −38,200), do words.json, dos textos de tela e da regência s09 ──
+  var T = {
+    corte: 1.900,                                   // "in" (40,100 s): o corte seco do clipe para o DADO (o quadro 57)
+    roads: 1.900, roadsDur: 0.70,                   // a coluna ROADS sobe do zero (eo) e chega ao topo em 2,600
+    legRoads: 2.267,                                // [33] "average" (2,260)
+    numRoads: 2.600,                                // [34] depois de "month" (2,580)
+    venom: 4.367, venomDur: 0.40,                   // "venom" (4,355): a coluna, o rótulo [35] e a cota [36], o bloco junto
+    cred: 1.900,                                    // [37]: com o primeiro quadro do dado
+    repouso: 0.25                                   // o push-in para 250 ms antes do corte
+  };
+
+  // ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+  // A ESTRADA · O CLIPE (nasce aqui; a s66 P2 usa OUTRO trecho do mesmo arquivo: de 2,6 s em diante está livre).
+  //   `ini` = o começo da janela no clipe; t0 e t1 = a janela do plano na cena. currentTime = ini + (t − t0), só dentro do plano.
+  //   `ini` aponta o MEIO do quadro 12 do clipe (0,400 s + 1/60): cada t da grade de 30 fps cai no meio de um quadro, nunca na divisa.
+  var PLANO = { id: "vA", ini: 0.4 + 1 / 60, t0: 0.0, t1: T.corte };   // os quadros 12 → 68 do clipe (0,400 → 2,267 s), um por quadro de P1
+  function plano(P, t) {
+    var v = E(P.id); if (!v) return Promise.resolve();
+    var dentro = t < P.t1 - 1e-6;
+    v.style.visibility = dentro ? "visible" : "hidden";
+    var tv = P.ini + clamp(t - P.t0, 0, P.t1 - P.t0);
+    if (window.__PREVIEW) {
+      if (!dentro) { if (!v.paused) v.pause(); return Promise.resolve(); }
+      if (v.readyState >= 1 && Math.abs(v.currentTime - tv) > 0.3) v.currentTime = tv;
+      if (v.paused && v.readyState >= 2) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+      return Promise.resolve();
+    }
+    return dentro ? R.seekTo(v, tv) : Promise.resolve();   // depois do corte o clipe fica parado, escondido atrás do papel
+  }
+  // ═══════════════════════════════════════════ fim do CLIPE DA ESTRADA ══════════════════════════════════════════════════
+
+  // ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+  // A ESTRADA · A COLUNA ROADS (nasce aqui, na s09; na saída sem o clipe, volta em s66 P2: copie este bloco, o <svg id="graf">, as
+  // <div id="legRoads"> e <div id="numRoads"> e o estilo "A COLUNA ROADS"). Tudo o que diz ONDE as colunas ficam está no objeto DADO.
+  //   - a escala é UMA para as duas colunas: DADO.pxPorMorte px de altura por morte (a coluna da estrada, 106,33 mortes, tem 1.040 px);
+  //   - a coluna c: x de c.cx − c.larg/2 a c.cx + c.larg/2; a base em DADO.base; o topo em DADO.base − c.valor × DADO.pxPorMorte;
+  //   - a ROADS fica onde o asfalto do clipe estava (x 2210–2550 na altura da base): no corte, a estrada vira a coluna;
+  //   - o rótulo de cada coluna: centrado em c.cx, o topo da caixa em DADO.base + DADO.legVao (84 px);
+  //   - a cota de cada coluna: centrada em c.cx, o pé da caixa DADO.numVao px acima do topo da coluna (128 px);
+  //   - a linha de base: de DADO.eixo[0] a DADO.eixo[1], logo abaixo das colunas.
+  var DADO = {
+    base: 1600,                                     // o y da base das colunas
+    pxPorMorte: 1040 / (1276 / 12),                 // 9,7806 px por morte: a coluna da estrada com 1.040 px (o topo em y 560)
+    eixo: [400, 3300],                              // as pontas da linha de base
+    legVao: 46,                                     // da base ao topo da caixa do rótulo
+    numVao: 40,                                     // do topo da coluna ao pé da caixa da cota
+    numAlt: 141,                                    // a altura da caixa da cota (128 px × 1,1)
+    roads: { col: "colRoads", leg: "legRoads", num: "numRoads", cx: 2380, larg: 340, valor: 1276 / 12 },   // 1.276 mortes na estrada em 2025 ÷ 12 = 106,33 por mês (F014)
+    venom: { col: "colVenom", leg: "legVenom", num: "numVenom", cx: 960, larg: 340, valor: 85 }            // 85 mortes por animais e plantas venenosos, 2016–2025
+  };
+  function colAlt(c) { return c.valor * DADO.pxPorMorte; }                 // a altura cheia da coluna, em px
+  function colTopo(c) { return DADO.base - colAlt(c); }                    // o y do topo da coluna cheia
+  (function dadoMonta() {
+    var b = E("eixoBase"); if (b) b.setAttribute("d", "M " + DADO.eixo[0] + " " + (DADO.base + 3) + " L " + DADO.eixo[1] + " " + (DADO.base + 3));
+    [DADO.roads, DADO.venom].forEach(function (c) {
+      var r = E(c.col), l = E(c.leg), n = E(c.num);
+      if (r) { r.setAttribute("x", (c.cx - c.larg / 2).toFixed(2)); r.setAttribute("width", c.larg); r.setAttribute("y", DADO.base); r.setAttribute("height", 0); }
+      if (l) { l.style.left = c.cx + "px"; l.style.top = (DADO.base + DADO.legVao) + "px"; }
+      if (n) { n.style.left = c.cx + "px"; n.style.top = (colTopo(c) - DADO.numVao - DADO.numAlt).toFixed(2) + "px"; }
+    });
+  })();
+  // o único executor da coluna: g = quanto cresceu (0 → 1); a borda de baixo fica sempre em DADO.base (o contato com o eixo)
+  function coluna(c, g) {
+    var r = E(c.col); if (!r) return;
+    var h = Math.max(0, colAlt(c) * g);
+    r.setAttribute("y", (DADO.base - h).toFixed(2));
+    r.setAttribute("height", h.toFixed(2));
+  }
+  // ═══════════════════════════════════════════ fim da COLUNA ROADS ══════════════════════════════════════════════════════
+
+  // o texto: entra em 300 ms (opacidade + 24 px de subida, eo), centrado no `left`; o número, com a escala 1,04 → 1,00 (identidade §4.4)
+  function texto(id, t, t0, numero) {
+    var el = E(id); if (!el) return;
+    var p = eo(seg(t, t0, 0.3));
+    el.style.opacity = p.toFixed(3);
+    el.style.transform = "translate(-50%," + ((1 - p) * 24).toFixed(1) + "px)" + (numero ? " scale(" + (1.04 - 0.04 * p).toFixed(4) + ")" : "");
+  }
+  function credito(id, t, t0) { var e = E(id); if (e) e.style.opacity = eo(seg(t, t0, 0.3)).toFixed(3); }
+
+  // a câmera do dado (a do RIG: push-in contínuo + deriva senoidal), contada do corte; o push-in para 250 ms antes do fim
+  function camera(t) {
+    var cam = E("cam"); if (!cam) return;
+    var tc = Math.max(0, t - T.corte), tp = Math.min(tc, DUR - T.corte - T.repouso);
+    var s = 1 + 0.0024 * tp, x = 6 * Math.sin(tc * 0.23), y = 4.8 * Math.sin(tc * 0.17);
+    cam.style.transform = "scale(" + s.toFixed(5) + ") translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+  }
+
+  function cena(t) {
+    var tt = t + 0.0005;                             // a folga de ponto flutuante: o quadro 57 (t = 1,9) já é do dado
+    var noDado = tt >= T.corte;
+    var d = E("papelDado"); if (d) d.style.visibility = noDado ? "visible" : "hidden";
+    camera(tt);
+    coluna(DADO.roads, eo(seg(tt, T.roads, T.roadsDur)));
+    coluna(DADO.venom, eo(seg(tt, T.venom, T.venomDur)));
+    texto("legRoads", tt, T.legRoads, false);
+    texto("numRoads", tt, T.numRoads, true);
+    texto("legVenom", tt, T.venom, false);
+    texto("numVenom", tt, T.venom, true);
+    credito("cred1", tt, T.cred);
+    return plano(PLANO, tt);
+  }
+
+  window.__renderAt = function (t) {
+    try { return cena(clamp(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; return Promise.resolve(); }
+  };
+  window.__prepararCaptura = function () { window.__renderAt(0); };
+  window.__fotosProntas = R.prontas();
+  window.__videoPronto = new Promise(function (r) {
+    var v = E(PLANO.id); if (!v) return r();
+    if (v.readyState >= 2) return r();
+    v.addEventListener("loadeddata", r, { once: true }); v.addEventListener("error", r, { once: true });
+  });
+  window.__renderAt(0);
+})();
+</script>
+</body>
+</html>

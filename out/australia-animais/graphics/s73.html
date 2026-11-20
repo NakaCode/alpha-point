@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s73</title>
+<!--
+CANAL ALPHA POINT — OS ANIMAIS PERIGOSOS DA AUSTRÁLIA (vídeo 8, australia-animais), CENA s73 (946,733 → 955,767 s do master; 9,034 s;
+  quadros 28402–28673). "Somewhere between Sydney and Newcastle, someone finds a funnel-web. They catch it, safely, and carry it to one of
+  the park's drop-off points."
+  Mapista, lote M9 (tarefa australia-animais-arte-1, 19/11/2026): cena NOVA (out/australia-animais/_tmp/arte-1/M9/gerar.py + nucleo.js +
+  cena-s73.js; o núcleo é o do lote M7/M8, sem mudança). O modo do espelho é footage, mas a caça não trouxe a aranha (s08-a NÃO ACHADO):
+  vale a saída construída do conceito, o satélite da costa (regência › s73 b0). O que manda: textos-tela.json 32375aed (s73: [422]–[425]);
+  regencia.json b4fb6fbf (s73 › b0; _chamadas[2], o comentário); conceito-visual.json f554a521 (s73; o ESTADO DA FRONTEIRA s73 → s74);
+  espelho.json 67a4f04c; o para-passos, itens 11 (não se aplica: nenhuma foto), 25 e 81.
+  O PALCO DA COSTA no desenho de graphics/s71.html (lote M8: Sydney sem o anel, o nome à esquerda do ponto; a resposta 1 da Sala ao M8),
+  na pose P-COSTA-ESQ do arco.
+  O RESPIRO SOB A CHAMADA DE COMENTÁRIO: a peça (o XML, não esta cena) fica em cima, de 0,000 a 6,500 (946,733–953,233 s), na caixa
+  x 1525–3626, y 200–852. Sob ela, nada acende, nenhum rótulo novo dentro da faixa de altura dela, nada a menos de 80 px dela: o anel de
+  Newcastle (do 1º quadro, parado, a ~140 px da caixa) e o nome de Sydney (~550 px abaixo dela).
+  MAPA 2D sobre a satellite-v2 da MapTiler no tratamento C, norte para cima, plano. Corte seco vindo de s72 (a mesa).
+  A CÂMERA: o empurrão mínimo da regência, z 8,68 → 8,78 com o centro fixo [152,76, −33,45] (sem viagem; ~19 px/s na borda do quadro), em
+  rampa de pontas suaves; pousa em P-COSTA-ESQ EXATA aos 8,734 e fica PARADA nos 0,3 s antes do corte (a fronteira casada com s74).
+  O QUE A CENA FAZ (na cena):
+    · 0: o anel de Newcastle (o ponto da cidade), parado; o crédito [425];
+    · 1,312 'Sydney': o nome "Sydney" ([423]) à esquerda e logo abaixo do ponto (sem anel, o desenho de s71), até o corte;
+    · 6,650 (150 ms depois de a peça sair, 953,383 s): o nome "Newcastle" ([424]) ACIMA do anel, centrado nele, até o corte. É a SAÍDA
+      DECLARADA da regência: abaixo do ponto (topo a y ≥ 932, borda direita a x ≤ 1445) ele cairia sobre o pino do parque, que entra em
+      s74 com o nome ainda no ar (o bloco newcastle-s73-s74). Nenhum ponto de entrega, nenhum contorno, nenhum frasco.
+  O ESTADO DA FRONTEIRA s73 → s74 (955,767 s), igual nas duas cenas: P-COSTA-ESQ exata (centro 152,76° E, 33,45° S, z 8,78, pitch 0, norte
+    para cima), a câmera parada; o satélite no tratamento C (o do vídeo 2 em diante; o "65 % / 70 %" da técnica do conceito é o do Juneau:
+    a roupa do mapista §3), sem polígono; o anel de Newcastle e os dois nomes (Sydney à esquerda e abaixo do ponto; Newcastle acima do
+    anel); nenhum ponto da gente, pino, contorno ou frasco; na faixa, só "© MapTiler © OpenStreetMap contributors" (aqui a 60 px; em s74,
+    a 56: o textos-tela, [425] e [429]).
+  ELEMENTOS: o anel de Newcastle, o nome de Sydney, o nome de Newcastle = 3. Herói: nenhum.
+  GEOMETRIA: sydney.json e newcastle.json (Natural Earth, domínio público): nada na tela.
+  CRÉDITO a 60 px, na faixa: "© MapTiler © OpenStreetMap contributors" do 1º ao último quadro (data-qc-credito="mapa").
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>:root { --fs-credito: 60px; }</style>
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<script src="../_media/geo/sydney.js"></script>
+<script src="../_media/geo/newcastle.js"></script>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  .pil { position: absolute; left: 0; top: 0; z-index: 40; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos); padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.15; letter-spacing: 0;
+    color: var(--tinta); }
+  /* A COTA PARTIDA (identidade §4.1; o Lucas, 13/11/2026: "Partir, sem mudar palavra (Recomendado)"): na mesma pílula, a chave a
+     128 px (.ch: --fs-rotulo, Inter 700) e o resto da mesma cota a 84 px (.rs: --fs-eixo, com o peso e a tinta da cota) */
+  .ch { color: var(--tinta); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.1; }
+  .rs { color: var(--tinta); font-weight: var(--peso-rotulo); font-size: var(--fs-eixo); line-height: 1.1; margin-top: 8px; }
+  /* A LEGENDA (identidade §4.1: eixo / legenda, 84 px, Inter 500) na pílula do rótulo; a quebra é a do textos-tela */
+  .pil.leg { font-weight: var(--peso-texto); font-size: var(--fs-eixo); white-space: pre; }
+  /* A FAIXA DE 3 CRÉDITOS (a 60 px): 81 px de caixa cada, de baixo para cima a 16, 100 e 184 px; a de cima começa em y 1895 (> 1880) */
+  .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 6px 10px; border-radius: var(--cantos); white-space: pre; }
+  #credito { bottom: 16px; }
+  #credito[hidden] { display: none; }
+  .f2 { bottom: 100px; opacity: 0; visibility: hidden; }
+  .f3 { bottom: 184px; opacity: 0; visibility: hidden; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: var(--tensao); color: var(--tinta);
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+  svg#ov { position: absolute; inset: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; overflow: visible; }
+  /* O ANEL (identidade §4.4): 56 px, traço de 10 px em --destaque sobre o halo --rotulo de 20 px; os dois pulsos */
+  .anel circle { fill: none; stroke: var(--destaque); }
+  .anel .halo { stroke: var(--rotulo); }
+  /* O FIO (o de graphics/s60.html): --tinta, 6 px, sobre o contorno escuro de 14 px */
+  .fio { stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; fill: none; }
+  .fio-sob { stroke: var(--fronteira-contorno-cor); stroke-width: 14; stroke-linecap: round; fill: none; }
+
+</style>
+</head>
+<body>
+<div id="palco" data-qc-sem-heroi="mapa: o respiro sob a chamada de comentário; a costa entre Sydney e Newcastle, os dois nomes; nenhum herói">
+  <div id="map"></div>
+  <svg id="ov" viewBox="0 0 3840 2160" width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+    <g id="anelN" class="anel" opacity="0"><circle class="halo" r="28" stroke-width="20"/><circle r="28" stroke-width="10"/><circle id="anelNP0" r="28" stroke-width="10" opacity="0"/><circle id="anelNP1" r="28" stroke-width="10" opacity="0"/></g>
+  </svg>
+  <div id="sydNome" class="pil" data-qc-papel="rotulo">Sydney</div>
+  <div id="newNome" class="pil" data-qc-papel="rotulo">Newcastle</div>
+  <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // ═══ O NÚCLEO DAS CENAS DE MAPA DO LOTE M7 (australia-animais-arte-1; out/australia-animais/_tmp/arte-1/M7/gerar.py + nucleo.js): a
+  // cópia do núcleo do lote M4 (o de graphics/s17.html e s39.html), com três mudanças: COR ganha --agua, --contraparte e --rotulo; o
+  // __renderAt devolve a promessa da cena (extraRender: o seek do <video> da miniatura de s53); e o pulso do anel (porAnel). ═══
+  // O molde é o núcleo das cenas de mapa 2D do vídeo 7 (out/rio-columbia/graphics/s05.html): a rede com nova tentativa, a espera dos
+  // tiles e o painter "moving" são os mesmos. Determinístico: a cena é função de t (nada de Date, Math.random, @keyframes nem
+  // flyTo/easeTo: a câmera é jumpTo(cameraAt(t))).
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (x) { x = cl(x, 0, 1); return 1 - Math.pow(1 - x, 3); };
+  var ei = function (x) { x = cl(x, 0, 1); return x * x * x; };
+  var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+  var my = function (lat) { return Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)); };
+  var latDe = function (y) { return (2 * Math.atan(Math.exp(y)) - Math.PI / 2) * 180 / Math.PI; };
+  var W = 3840, H = 2160;
+  // o voo entre duas poses: o zoom pela fração U, o centro pelo ponto fixo do zoom (a curva em que o alvo não escorrega na tela)
+  function voo(a, b, U) {
+    var z = a.z + (b.z - a.z) * U, s;
+    if (Math.abs(b.z - a.z) < 1e-6) s = U;
+    else s = (Math.pow(2, -z) - Math.pow(2, -a.z)) / (Math.pow(2, -b.z) - Math.pow(2, -a.z));
+    var ya = my(a.c[1]), yb = my(b.c[1]);
+    return { center: [a.c[0] + (b.c[0] - a.c[0]) * s, latDe(ya + (yb - ya) * s)], zoom: z, bearing: 0, pitch: 0 };
+  }
+  // a pose de zoom z em que o ponto ll [lon, lat] cai no ponto xy da tela (norte para cima, tiles de 512 px, palco 3840 × 2160)
+  function poseCom(ll, xy, z) {
+    var s = 512 * Math.pow(2, z);
+    return { c: [ll[0] - (xy[0] - W / 2) / s * 360, latDe(my(ll[1]) + (xy[1] - H / 2) / s * 2 * Math.PI)], z: z };
+  }
+  // onde o ponto ll cai na tela na pose p (a mesma conta do MapLibre, sem o mapa)
+  function telaDe(ll, p) {
+    var s = 512 * Math.pow(2, p.z);
+    return [(ll[0] - p.c[0]) / 360 * s + W / 2, (my(p.c[1]) - my(ll[1])) / (2 * Math.PI) * s + H / 2];
+  }
+  // a deriva de velocidade constante com as pontas suaves (a fração a em cada ponta): a "aproximação suave e contínua"
+  function rampa(u, a) {
+    u = cl(u, 0, 1);
+    if (u < a) return u * u / (2 * a * (1 - a));
+    if (u > 1 - a) return 1 - (1 - u) * (1 - u) / (2 * a * (1 - a));
+    return (u - a / 2) / (1 - a);
+  }
+
+  // ═══ TEMPOS (0 = 946,733 s do master; words.json): 'Somewhere' 0,447 · 'Sydney' 1,312 · 'Newcastle,' 1,897 · 'funnel-web.' 3,657 ·
+  //   'safely,' 5,437 · 'carry' 6,422 · 'drop-off' 7,582 · 'points.' 8,062 (acaba 8,427). A peça do comentário (do XML, não desta cena):
+  //   0,000–6,500 (946,733–953,233 s), em cima, x 1525–3626, y 200–852 ═══
+  var DUR = 9.034;   // espelho.json › s73 › dur, literal (roupa §8)
+
+  // ═══ O PALCO DA COSTA, À ESQUERDA (P-COSTA-ESQ) — o desenho de graphics/s71.html (lote M8), na pose do arco ═════════════════
+  // A POSE: P-COSTA-ESQ (o arco), centro [152,76, −33,45], z 8,78, norte para cima, plano, tiles de 512 px: Sydney em ~(954, 1400),
+  //   Newcastle em ~(1302, 694), o Australian Reptile Park em ~(994, 1059); a costa na metade esquerda, o mar escuro à direita.
+  // Sydney SEM o anel (o desenho de s71: a resposta 1 da Sala ao M8), o nome à esquerda e logo abaixo do ponto (a borda direita 90 px
+  //   à esquerda do ponto, o topo 20 px abaixo). Newcastle com o ANEL, parado (nenhum pulso: nada acende sob a peça do comentário).
+  // O NOME DE NEWCASTLE: ACIMA do anel, centrado nele (a borda de baixo 50 px acima do centro do anel). A regência dá duas saídas: abaixo
+  //   do ponto (topo a y ≥ 932, borda direita a x ≤ 1445) ou depois da peça. Abaixo do ponto ele cairia em x ~738–1445, y ~932–1127,
+  //   em cima do pino do parque (994, 1059), que entra em s74 enquanto o nome continua (o bloco newcastle-s73-s74): por isso vale a
+  //   SAÍDA DECLARADA, o nome entra 150 ms depois de a peça sair (953,383 s = 6,650 na cena), já no lugar em que fica em s74.
+  var PALCO = {
+    sydney: [151.212548, -33.871373],     // sydney.json (Natural Earth)
+    newcastle: [151.770249, -32.929508],  // newcastle.json (Natural Earth)
+    sydNome: [-90, 20],                   // a borda direita 90 px à esquerda do ponto, o topo 20 px abaixo (s71)
+    newNomeAcima: 50                      // a borda de baixo do nome de Newcastle 50 px acima do centro do anel, centrado nele
+  };
+  var POSE = { ESQ: { c: [152.76, -33.45], z: 8.78 }, INI: { c: [152.76, -33.45], z: 8.68 } };
+  // ═══ fim do PALCO DA COSTA, À ESQUERDA ═══════════════════════════════════════════════════════════════════════════════════════
+
+  // A CÂMERA (corte seco vindo de s72, a mesa; a fronteira casada com s74 em 955,767 s): o empurrão mínimo da regência, z 8,68 → 8,78 com
+  // o centro fixo (sem viagem; ~19 px/s na borda do quadro no miolo), na rampa de pontas suaves; pousa em P-COSTA-ESQ EXATA aos 8,734 e
+  // fica PARADA nos 0,3 s antes do corte (a fronteira casada).
+  var T = { sydney: 1.312, newcastle: 6.650, pousa: DUR - 0.3 };
+  function cameraAt(t) { return voo(POSE.INI, POSE.ESQ, rampa(t / T.pousa, 0.1)); }
+
+  function prepararGeo() { geo("sydney"); geo("newcastle"); return !window.__erroCena; }
+  function camadasDaCena() { return { fontes: {}, camadas: [] }; }
+  function aplicarCamadas() {}
+  function desenhar() {}
+  function porCaixa(el, x, y, v) {
+    if (!el) return;
+    el.style.transform = "translate(" + x.toFixed(2) + "px," + (y + (1 - cl(v, 0, 1)) * 24).toFixed(2) + "px)";
+    el.style.opacity = cl(v, 0, 1).toFixed(3); el.style.visibility = v > 0.001 ? "visible" : "hidden";
+  }
+  function aplicarTextos(t) {
+    var s = map.project(PALCO.sydney), n = map.project(PALCO.newcastle);
+    porAnel("anelN", n.x, n.y, 1, null, t);                                     // o ponto de Newcastle, do 1º quadro, sem pulso
+    var sy = E("sydNome");                                                       // [423] "Sydney", de 'Sydney' ao corte
+    if (sy) porCaixa(sy, s.x + PALCO.sydNome[0] - sy.offsetWidth, s.y + PALCO.sydNome[1], noAr(t, T.sydney, DUR, true));
+    var nn = E("newNome");                                                       // [424] "Newcastle": a saída declarada
+    if (nn) porCaixa(nn, n.x - nn.offsetWidth / 2, n.y - PALCO.newNomeAcima - nn.offsetHeight, noAr(t, T.newcastle, DUR, true));
+  }
+
+
+  window.__duracao = DUR;
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  window.__fotosProntas = true;
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== "maptiler") return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa 'maptiler' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster.");
+  if (P.base.tileSize !== 512) return falhar("o perfil '" + P.nome + "' não usa tiles de 512 px: as poses do arco foram calculadas com 512.");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo.");
+    return g;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+  function rgbDe(css) {
+    css = String(css || "").trim();
+    var m = /^#([0-9a-f]{6})$/i.exec(css);
+    if (m) { var n = parseInt(m[1], 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255, 1]; }
+    m = /rgba?\(([^)]*)\)/.exec(css);
+    if (m) { var v = m[1].split(",").map(Number); return [v[0], v[1], v[2], v.length > 3 ? v[3] : 1]; }
+    return [0, 0, 0, 1];
+  }
+  var rgb = function (v, a) { return "rgba(" + v[0] + "," + v[1] + "," + v[2] + "," + (a == null ? v[3] : a) + ")"; };
+
+  // ── o crédito de mapa: o do perfil (a MapTiler). O crédito de cada camada que exige (o IBRA) é o do textos-tela, na faixa,
+  //    em elemento próprio; aqui só se confere que toda geometria carregada tem procedência ──
+  var creditoTexto = (function () {
+    if (!(P.atribuicao && P.atribuicao.exigida && P.atribuicao.tela)) { falhar("a base '" + P.nome + "' exige crédito na tela e o perfil não traz o texto."); return ""; }
+    var geos = window.__GEO || {}, meta = window.__GEO_META || {}, slugs = Object.keys(geos);
+    for (var i = 0; i < slugs.length; i++) if (!meta[slugs[i]] || !meta[slugs[i]].fonte || !meta[slugs[i]].licenca) {
+      falhar("a geometria '" + slugs[i] + "' foi carregada sem procedência (fonte/licença)."); return "";
+    }
+    var c = E("credito"); if (c) { c.textContent = P.atribuicao.tela; c.hidden = false; }
+    return P.atribuicao.tela;
+  })();
+  window.__creditoMapa = creditoTexto;
+  if (!window.__erroCena && creditoTexto !== "© MapTiler © OpenStreetMap contributors")
+    falhar("o crédito de mapa montado ('" + creditoTexto + "') não é o do textos-tela.json.");
+  if (window.__erroCena) return;
+
+  var COR = {
+    tinta: tok("--tinta", "#F4F1EA"), destaque: tok("--destaque", "#F5A524"),
+    sob: rgbDe(tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)")), fronteira: tok("--fronteira-cor", "rgba(255, 255, 255, 0.70)"),
+    agua: tok("--agua", "#AFD8F6"), contraparte: tok("--contraparte", "#2EC4B6"), rotulo: tok("--rotulo", "rgba(11, 15, 20, 0.88)")
+  };
+  COR.tintaRgb = rgbDe(COR.tinta);
+
+  // ═══ PEÇA 5 · A GENTE COMO PONTOS ══════════════════════════════════════════════════════════════════════════════════════════════
+  // Nasce em s17 (lote M4); volta em s39, s40, s42, s43, s60, s68, s71, s74 e s75. Copie este bloco inteiro, com o GENTE_Q (o
+  // <script id="gente-dados"> da cena) e a camada de genteCamada(); o que muda de cena para cena é só genteAplicar(z, prog, alfa).
+  // O dado: os 60.677 pontos do Censo 2021 do ABS (_dados/gente-pontos-2021.geojson; 60.411 SA1 e 266 mesh blocks no retângulo do
+  // Channel Country, 29 deles dentro dele, as 1.020 pessoas da medida), em --tinta.
+  // O PONTO PESA A GENTE (o arco, peça 5): o diâmetro é D × √(p ÷ 420), em que D é o diâmetro do SA1 médio (420 pessoas) na vista
+  // (8 px nas vistas do continente, 14 em P-CHC, 22 na costa; entre as âncoras, interpolado no log do zoom), com piso de 3 px e teto
+  // de 2 D; abaixo do piso, a opacidade cai na proporção da área ((d ÷ 3)²), até 35 %. Assim a luz (área × opacidade) de cada ponto
+  // é proporcional à gente dele, e nenhum pedaço do país fica marcado como vazio (o miúdo continua aceso a 35 %).
+  // A ONDA (s17: "do litoral para dentro"): cada ponto tem w ∈ [0,1] = √(min(km da costa, 800) ÷ 800), calculado contra a costa do
+  // australia.json (Natural Earth); as ilhas fora do continente (Lord Howe, Norfolk, Christmas, Cocos) têm w = 0. Com prog ≥ 1 +
+  // GENTE.ONDA a onda acabou e todos os pontos estão acesos.
+  var GENTE = {
+    D_ANCORAS: [[4.75, 8], [6.67, 14], [8.84, 22]],   // [zoom, D px]: P-CONTINENTE, P-CHC, P-COSTA (o arco)
+    P_MEDIO: 420,      // as pessoas do SA1 médio
+    PISO: 3,           // px: o menor diâmetro desenhado
+    TETO_D: 2,         // o maior diâmetro = 2 D
+    OP_MIN: 0.35,      // a opacidade do ponto mais miúdo
+    ONDA: 0.12,        // a largura da frente da onda, em w
+    BLUR: 0.15         // a borda macia do ponto (circle-blur)
+  };
+  function genteD(z) {
+    var A = GENTE.D_ANCORAS;
+    if (z <= A[0][0]) return A[0][1];
+    for (var i = 1; i < A.length; i++) if (z <= A[i][0]) {
+      var u = (z - A[i - 1][0]) / (A[i][0] - A[i - 1][0]);
+      return Math.exp(Math.log(A[i - 1][1]) + (Math.log(A[i][1]) - Math.log(A[i - 1][1])) * u);
+    }
+    return A[A.length - 1][1];
+  }
+  function genteGeojson() {
+    var q = window.GENTE_Q, n = window.GENTE_N, f = new Array(n), lon = 96000;
+    if (!q || q.length !== 4 * n) { falhar("os pontos da gente não carregaram (GENTE_Q)."); return null; }
+    for (var i = 0; i < n; i++) {
+      lon += q[4 * i];
+      var p = q[4 * i + 2], pc = Math.abs(p);
+      f[i] = { type: "Feature", geometry: { type: "Point", coordinates: [lon / 1000, -(q[4 * i + 1] / 1000 + 9)] },
+               properties: { s: Math.sqrt(pc / GENTE.P_MEDIO), w: q[4 * i + 3] / 99, chc: p < 0 ? 1 : 0, p: pc } };
+    }
+    return { type: "FeatureCollection", features: f };
+  }
+  function genteCamada(id, fonte) {
+    return { id: id, type: "circle", source: fonte,
+      paint: { "circle-color": COR.tinta, "circle-radius": 1, "circle-opacity": 0, "circle-blur": GENTE.BLUR, "circle-stroke-width": 0 } };
+  }
+  var genteAntes = {};
+  // z: o zoom do quadro (dá o D); prog: a onda (0 = nada aceso, ≥ 1 + ONDA = tudo aceso); alfa: a opacidade da camada inteira
+  function genteAplicar(id, z, prog, alfa) {
+    var D = Math.round(genteD(z) * 20) / 20, pr = Math.round(cl(prog, 0, 1 + GENTE.ONDA) * 200) / 200, a = Math.round(cl(alfa, 0, 1) * 200) / 200;
+    var g = genteAntes[id] || (genteAntes[id] = {});
+    if (g.D !== D) {
+      var d = ["*", D, ["get", "s"]];
+      map.setPaintProperty(id, "circle-radius", ["/", ["min", ["max", d, GENTE.PISO], GENTE.TETO_D * D], 2]);
+      g.D = D; g.k = null;
+    }
+    var k = D + "|" + pr + "|" + a;
+    if (g.k !== k) {
+      var luz = ["max", GENTE.OP_MIN, ["min", 1, ["^", ["/", ["*", D, ["get", "s"]], GENTE.PISO], 2]]];
+      var onda = pr >= 1 + GENTE.ONDA - 1e-9 ? 1 : ["min", 1, ["max", 0, ["/", ["-", pr, ["get", "w"]], GENTE.ONDA]]];
+      map.setPaintProperty(id, "circle-opacity", a <= 0 ? 0 : (onda === 1 ? ["*", a, luz] : ["*", a, luz, onda]));
+      g.k = k;
+    }
+  }
+  // ═══ fim da PEÇA 5 · A GENTE COMO PONTOS ═══════════════════════════════════════════════════════════════════════════════════════
+
+  var map, cv = E("cv"), ctx = cv ? cv.getContext("2d") : null;
+
+  // ── rede com nova tentativa (o molde da pré-v1, sem mudança) ─────────────────────────────────────────────────────────────
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  function erroCorpo(msg, url, st) { var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e; }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) { var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http"; throw e; }
+        if (params.type === "json") return r.text().then(function (t) { try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); } });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+
+  if (!prepararGeo()) return;
+  if (window.__erroCena) return;
+  window.__cameraAt = cameraAt;
+
+  var CAMADAS = camadasDaCena();
+  if (window.__erroCena) return;
+  function estilo() {
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var ids = Object.keys(CAMADAS.fontes);
+    for (var i = 0; i < ids.length; i++) fontes[ids[i]] = CAMADAS.fontes[ids[i]];
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes,
+      layers: [{ id: "base", type: "raster", source: "base",
+        // o tratamento C da base (identidade §6, Lucas 09/10/2026): brilho máximo 92 %, cor natural, contraste +25 %; sem véu
+        paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }].concat(CAMADAS.camadas) };
+  }
+  var FONTES = ["base"].concat(Object.keys(CAMADAS.fontes));
+
+  var c0 = cameraAt(0);
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: 0, pitch: 0
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa.");
+  }
+  window.map = map;
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
+
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg))
+      return "mandou tile CORROMPIDO" + n + " (" + String(msg).replace(/^tile corrompido: /, "") + "). Renderize de novo.";
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + ". Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  var mapaCarregado = false;
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ".");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : ""));
+  });
+  map.on("load", function () {
+    mapaCarregado = true;
+    map.once("idle", function () {
+      var f = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+      f.then(function () { if (!window.__erroCena) resolverPronto(true); });
+    });
+  });
+
+  // ── a pílula presa ao chão: o ponto [lon, lat] vai ao ponto (ax, ay) da caixa (0..1), mais (dx, dy) px; v é a entrada (0..1) ──
+  function porPilula(el, ll, ax, ay, dx, dy, v, sobe) {
+    if (!el) return;
+    var p = map.project(ll), w = el.offsetWidth, h = el.offsetHeight;
+    var x = p.x - ax * w + (dx || 0), y = p.y - ay * h + (dy || 0) + (sobe == null ? (1 - cl(v, 0, 1)) * 24 : sobe);
+    el.style.transform = "translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+    el.style.opacity = cl(v, 0, 1).toFixed(3);
+    el.style.visibility = v > 0.001 ? "visible" : "hidden";
+  }
+  // ── o ANEL (identidade §4.4; a roupa do mapista §3): 56 px, traço de 10 px em --destaque sobre o halo --rotulo de 20 px; o pulso
+  //    de escala 1 → 1,8 e opacidade 1 → 0 em 1,2 s, duas vezes, e para (tPulso = o início do 1º pulso) ──
+  function porAnel(id, x, y, v, tPulso, t) {
+    var g = E(id); if (!g) return;
+    g.setAttribute("opacity", cl(v, 0, 1).toFixed(3));
+    g.setAttribute("transform", "translate(" + x.toFixed(2) + "," + y.toFixed(2) + ")");
+    for (var k = 0; k < 2; k++) {
+      var pu = E(id + "P" + k); if (!pu) continue;
+      var u = tPulso == null ? -1 : (t - tPulso - 1.2 * k) / 1.2;
+      if (u < 0 || u > 1) { pu.setAttribute("opacity", "0"); continue; }
+      pu.setAttribute("opacity", (1 - u).toFixed(3));
+      pu.setAttribute("transform", "scale(" + (1 + 0.8 * u).toFixed(3) + ")");
+    }
+  }
+  function porTexto(el, v, sobe) {   // o texto fixo na tela (o crédito de dado): opacidade e subida
+    if (!el) return;
+    el.style.opacity = cl(v, 0, 1).toFixed(3); el.style.visibility = v > 0.001 ? "visible" : "hidden";
+    el.style.transform = "translateY(" + ((sobe == null ? (1 - cl(v, 0, 1)) * 24 : sobe)).toFixed(2) + "px)";
+  }
+  // a entrada (300 ms, opacidade + 24 px, ease-out) e a saída (300 ms, terminando em t1) de um texto: 0..1
+  function noAr(t, t0, t1, fimDaCena) {
+    var a = eo(seg(t, t0, 0.3));
+    if (fimDaCena) return a;
+    return a * (1 - seg(t, t1 - 0.3, 0.3));
+  }
+  var opAntes = {};
+  function pinta(id, prop, v) { v = +(+v).toFixed(3); var k = id + "|" + prop; if (opAntes[k] === v) return; map.setPaintProperty(id, prop, v); opAntes[k] = v; }
+
+  function aplicar(t) {
+    if (!mapaCarregado) return;
+    var cam = cameraAt(t);
+    map.jumpTo(cam);
+    aplicarCamadas(t, cam.zoom);
+    if (ctx) ctx.clearRect(0, 0, cv.width, cv.height);
+    desenhar(t);
+    aplicarTextos(t);
+    var c = E("credito"); if (c) { c.style.opacity = "1"; c.style.visibility = "visible"; }
+    return typeof extraRender === "function" ? extraRender(t) : undefined;
+  }
+  window.__renderAt = function (t) {
+    try { return aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) { var ts = (sc[id] && sc[id]._tiles) || {}; for (var k in ts) if (ts[k] && ts[k].state === "errored") return id; }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou. O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!map.areTilesLoaded() || map.isMoving()) return false;
+          for (var i = 0; i < FONTES.length; i++) if (!map.getSource(FONTES[i]) || !map.isSourceLoaded(FONTES[i])) return false;
+          return true;
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
+      (function tick() {
+        barrarTileComErro();
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.triggerRepaint(); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__renderAt(0) || true;
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+
+</script>
+</body>
+</html>

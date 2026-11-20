@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s20</title>
+<!--
+CANAL ALPHA POINT — OS ANIMAIS PERIGOSOS DA AUSTRÁLIA (vídeo 8, australia-animais), CENA s20 (167,700 → 172,533 s do master; 4,833 s;
+  quadros 5031–5176). "Box jellyfish, he points out, live in warm seas well beyond Australia."
+  Mapista, lote M2 (tarefa australia-animais-arte-1, 19/11/2026): cena NOVA, a partir do esqueleto das cenas de mapa do vídeo 7
+  (out/rio-columbia/graphics/s06.html: a rede com nova tentativa, o crédito, a pílula presa ao chão). O que manda: textos-tela.json
+  (s20: [91] [92] [93] [94]); regencia.json (s20 › b0); conceito-visual.json (s20); o pedido comum (P-MUNDO).
+  Entradas: regencia.json b4fb6fbf, textos-tela.json 32375aed, conceito-visual.json f554a521, espelho.json 67a4f04c, pauta-geo.json f3b7b8fd.
+
+  MAPA 2D, satellite-v2 no tratamento C, norte para cima, sem relevo. Corte seco na entrada (vem do cartão) e na saída (vai à foto).
+  A CÂMERA: a pose P-MUNDO (centro 120° E, 5° S, z 3,2) é a do MEIO da cena; a câmera faz uma aproximação contínua de z 3,18 a z 3,22
+  em torno do ponto de tela A = (3000, 1100), o Pacífico a leste da Austrália: o oeste do quadro escorre para a esquerda e o foco anda
+  para o leste (a "deriva de oeste para leste" do conceito), sem parar em instante nenhum (o fluxo nos cantos ~18 px/s).
+  O QUE A CENA FAZ (na cena; 'Box' 0,020 · 'jellyfish' 0,360 · 'warm' 2,360 · 'seas' 2,680 · 'Australia.' 3,800):
+    · do quadro 0: o contorno da Austrália em --tinta, fino (4 px sobre um contorno escuro de 10 px), sem preenchimento;
+    · 'warm' (2,367, o t0 de [91] e [92]): as duas linhas REAIS dos trópicos (tropicos.json: ±23,435782°, a obliquidade média IAU 2006)
+      acendem em 500 ms, tracejadas em --tinta (tracejadas para não se lerem como fronteira, a única linha branca da marca), e entre elas a
+      CINTA em --agua a 20 % preenche em 500 ms; as pílulas "Tropic of Cancer" e "Tropic of Capricorn" (o bloco tropicos-s20) entram
+      juntas em 300 ms, cada uma em cima da sua linha (24 px acima dela), com a borda direita no mesmo meridiano (245,5° E, o Pacífico).
+  A CINTA, E O QUE FALTA (vai ao relato, como pergunta à Sala): o conceito e a regência pedem a cinta "só sobre o mar". O disco não tem a
+  terra do mundo em domínio público: a única costa do mundo inteiro em _media/geo/ é mundo-reconstruido-zenodo (0 Ma, CC BY 4.0), que
+  pede na tela o crédito "Plate model: Müller et al., Solid Earth, 2022 (CC BY 4.0)", e o textos-tela de s20 não o tem (nada na tela fora
+  do _textos_por_cena; o ofício recusa omitir atribuição). ESQUEMA DECLARADO, ATÉ A RESPOSTA: a cinta é a faixa inteira entre os dois
+  trópicos (mar e terra), a 20 %; nenhuma área de espécie, nada mais se demarca.
+  OS RÓTULOS A 112 px, e não a 128: a 128, "Tropic of Capricorn" (~1.390 px com o respiro) não cabe entre a costa de Queensland e a
+  margem direita (3.640) em cima da linha; os dois do bloco ficam no mesmo tamanho.
+  A GEOMETRIA: tropicos.json (linhas calculadas, domínio público, sem crédito; o Equador do arquivo não se desenha) e australia.json
+  (Natural Earth, domínio público, sem crédito; sem a Ilha Macquarie e a Lord Howe, que o arquivo traz e que no contorno do continente
+  seriam pontos soltos no mar). CRÉDITOS a 60 px, do 1º ao último quadro: "© MapTiler © OpenStreetMap contributors"
+  (data-qc-credito="mapa") e "Kevin Arbuckle, to Live Science, 2023".
+  ELEMENTOS (teto 6): o contorno da Austrália, as duas linhas, a cinta, as duas pílulas = 6 (no fim).
+  A CINTA DE s20 VOLTA EM s52 (no arquivo de s51, do editor): o bloco "A CINTA DOS TRÓPICOS" abaixo é a peça; copie-o inteiro.
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>:root { --fs-credito: 60px; }</style>
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<script src="../_media/geo/tropicos.js"></script>
+<script src="../_media/geo/australia.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  .pil { position: absolute; left: 0; top: 0; z-index: 40; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos); padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: 112px; line-height: 1.15; letter-spacing: 0;
+    color: var(--tinta); }
+  .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 50;
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 8px 24px; border-radius: var(--cantos); white-space: pre; }
+  #credito { bottom: 20px; }
+  #credito[hidden] { display: none; }
+  #crArbuckle { bottom: 109px; }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <div id="map"></div>
+  <div id="pCancer" class="pil" data-qc-papel="rotulo">Tropic of Cancer</div>
+  <div id="pCapric" class="pil" data-qc-papel="rotulo">Tropic of Capricorn</div>
+  <div id="crArbuckle" class="credito" data-qc-papel="credito">Kevin Arbuckle, to Live Science, 2023</div>
+  <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa" hidden></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // Determinístico: a cena é função de t (nada de Date, Math.random, @keyframes nem flyTo/easeTo: a câmera é jumpTo(cameraAt(t))).
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (x) { x = cl(x, 0, 1); return 1 - Math.pow(1 - x, 3); };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+  var my = function (lat) { return Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)); };
+  var latDe = function (y) { return (2 * Math.atan(Math.exp(y)) - Math.PI / 2) * 180 / Math.PI; };
+
+  // ═══ TEMPOS (0 = 167,700 s do master): 'Box' 0,020 · 'jellyfish' 0,360 · 'he' 1,080 · 'live' 1,970 · 'warm' 2,360 · 'seas' 2,680 ·
+  //   'well' 3,160 · 'beyond' 3,400 · 'Australia.' 3,800 (acaba 4,380) ═══
+  var DUR = 4.833;   // espelho.json › s20 › dur, literal (roupa §8)
+  // ═══ A CÂMERA: P-MUNDO no meio da cena; zoom de 3,18 a 3,22 em torno do ponto de tela A (o chão sob A não se move) ═══
+  var POSE = { c: [120.0, -5.0], z: 3.2 }, CAM = { z0: 3.18, z1: 3.22, A: [3000, 1100] };
+  var TILE = 512;
+  // o chão sob A na pose do meio (em mercator: x em graus, y em my(lat))
+  var A_LON = POSE.c[0] + (CAM.A[0] - 1920) / (TILE * Math.pow(2, POSE.z)) * 360;
+  var A_MY = my(POSE.c[1]) - (CAM.A[1] - 1080) / (TILE * Math.pow(2, POSE.z)) * 2 * Math.PI;
+  function cameraAt(t) {
+    var z = CAM.z0 + (CAM.z1 - CAM.z0) * cl(t / DUR, 0, 1), S = TILE * Math.pow(2, z);
+    var lon = A_LON - (CAM.A[0] - 1920) / S * 360, yy = A_MY + (CAM.A[1] - 1080) / S * 2 * Math.PI;
+    return { center: [lon, latDe(yy)], zoom: z, bearing: 0, pitch: 0 };
+  }
+  var T = { tropicos: 2.367 };
+
+  // ═══ A CINTA DOS TRÓPICOS (a peça que volta em s52; copie o bloco inteiro) ═════════════════════════════════════════════════
+  // As duas linhas REAIS (tropicos.json, Câncer e Capricórnio; o Equador do arquivo fica de fora), tracejadas em --tinta (5 px sobre
+  // o contorno escuro de 11 px, o traço 4 × 3 larguras), e a cinta entre elas, um retângulo de −180° a 180° entre ±LAT_TROPICO, em
+  // --agua a CINTA_OPAC (20 %). As cópias do mundo (renderWorldCopies) a levam além de 180°. As pílulas: em cima da sua linha
+  // (PIL_ACIMA px acima dela), a borda direita no meridiano PIL_LON (245,5° E, o Pacífico a leste), a 112 px. Entrada: linhas e
+  // cinta em 500 ms (o preenchimento da marca), pílulas em 300 ms, tudo no t0 do bloco (T.tropicos).
+  var LAT_TROPICO = 23.435782, CINTA_OPAC = 0.20, LINHA = { larg: 5, sob: 11, traco: [4, 3] }, PIL_LON = 245.5, PIL_ACIMA = 24;
+  function cintaGeo() {
+    var anel = [[-180, -LAT_TROPICO], [180, -LAT_TROPICO], [180, LAT_TROPICO], [-180, LAT_TROPICO], [-180, -LAT_TROPICO]];
+    return { type: "FeatureCollection", features: [{ type: "Feature", properties: { name: "a cinta entre os trópicos (esquema declarado)" },
+      geometry: { type: "Polygon", coordinates: [anel] } }] };
+  }
+  function tropicosGeo() {
+    var g = geo("tropicos");
+    return { type: "FeatureCollection", features: g.features.filter(function (f) { return /^Tropic of/.test(f.properties.name); }) };
+  }
+  // ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  // o continente: o país do NE sem a Ilha Macquarie (54,6 S) e a Lord Howe (159,1 E), que o arquivo traz (pauta-geo; para-passos item 28)
+  function australiaGeo() {
+    var g = geo("australia"), f = g.features[0], gm = f.geometry;
+    var polys = gm.type === "MultiPolygon" ? gm.coordinates : [gm.coordinates];
+    var fica = polys.filter(function (p) { var c = p[0][0]; return c[1] > -50 && c[0] < 155; });
+    return { type: "FeatureCollection", features: [{ type: "Feature", properties: { name: "Australia" },
+      geometry: { type: "MultiPolygon", coordinates: fica } }] };
+  }
+  function camadasDaCena() {
+    var lc = { "line-join": "round", "line-cap": "butt" };
+    return { fontes: { cinta: { type: "geojson", data: cintaGeo() }, trop: { type: "geojson", data: tropicosGeo() },
+                       aus: { type: "geojson", data: australiaGeo() } },
+      camadas: [
+        { id: "cinta", type: "fill", source: "cinta", paint: { "fill-color": COR.agua, "fill-opacity": 0, "fill-antialias": false } },
+        { id: "aus-sob", type: "line", source: "aus", layout: { "line-join": "round" }, paint: { "line-color": COR.sobCss, "line-opacity": COR.sob[3], "line-width": 10 } },
+        { id: "aus", type: "line", source: "aus", layout: { "line-join": "round" }, paint: { "line-color": COR.tinta, "line-width": 4 } },
+        { id: "trop-sob", type: "line", source: "trop", layout: lc, paint: { "line-color": COR.sobCss, "line-opacity": 0, "line-width": LINHA.sob } },
+        { id: "trop", type: "line", source: "trop", layout: lc, paint: { "line-color": COR.tinta, "line-opacity": 0, "line-width": LINHA.larg, "line-dasharray": LINHA.traco } }
+      ] };
+  }
+  function aplicarCamadas(t) {
+    var q = eo(seg(t, T.tropicos, 0.5));
+    pinta("cinta", "fill-opacity", CINTA_OPAC * q);
+    pinta("trop-sob", "line-opacity", COR.sob[3] * q);
+    pinta("trop", "line-opacity", q);
+  }
+  function aplicarTextos(t) {
+    var q = eo(seg(t, T.tropicos, 0.3));
+    porPilula(E("pCancer"), [PIL_LON, LAT_TROPICO], 1, 1, 0, -PIL_ACIMA, q);
+    porPilula(E("pCapric"), [PIL_LON, -LAT_TROPICO], 1, 1, 0, -PIL_ACIMA, q);
+    porTexto(E("crArbuckle"), 1, 0);
+  }
+
+  window.__duracao = DUR;
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  window.__fotosProntas = true;
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== "maptiler") return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa 'maptiler' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster.");
+  if (P.base.tileSize !== TILE) return falhar("o perfil não usa tileSize " + TILE + " (as poses do conceito são em tiles de 512 px).");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo.");
+    return g;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+  function rgbDe(css) {
+    css = String(css || "").trim();
+    var m = /^#([0-9a-f]{6})$/i.exec(css);
+    if (m) { var n = parseInt(m[1], 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255, 1]; }
+    m = /rgba?\(([^)]*)\)/.exec(css);
+    if (m) { var v = m[1].split(",").map(Number); return [v[0], v[1], v[2], v.length > 3 ? v[3] : 1]; }
+    return [0, 0, 0, 1];
+  }
+  var rgb = function (v, a) { return "rgba(" + v[0] + "," + v[1] + "," + v[2] + "," + (a == null ? v[3] : a) + ")"; };
+
+  // ── o crédito de mapa: o do perfil + o de cada camada que exige (aqui, nenhuma: tropicos e australia são domínio público) ──
+  var creditoTexto = (function () {
+    var partes = [];
+    if (P.atribuicao && P.atribuicao.exigida) {
+      if (!P.atribuicao.tela) { falhar("a base '" + P.nome + "' exige crédito na tela e o perfil não traz o texto."); return ""; }
+      partes.push(P.atribuicao.tela);
+    }
+    var geos = window.__GEO || {}, meta = window.__GEO_META || {};
+    var slugs = Object.keys(geos);
+    for (var i = 0; i < slugs.length; i++) {
+      var m = meta[slugs[i]];
+      if (!m) { falhar("a geometria '" + slugs[i] + "' foi carregada sem procedência (fonte/licença)."); return ""; }
+      if (m.exige_credito) { falhar("a geometria '" + slugs[i] + "' exige crédito na tela, e o textos-tela de s20 não o tem."); return ""; }
+    }
+    var c = E("credito");
+    if (c) { c.textContent = partes.join(" · "); c.hidden = !partes.length; }
+    return partes.join(" · ");
+  })();
+  window.__creditoMapa = creditoTexto;
+  if (!window.__erroCena && creditoTexto !== "© MapTiler © OpenStreetMap contributors")
+    falhar("o crédito de mapa montado ('" + creditoTexto + "') não é o do textos-tela.json.");
+  if (window.__erroCena) return;
+
+  var COR = {
+    tinta: tok("--tinta", "#F4F1EA"), agua: tok("--agua", "#AFD8F6"),
+    sob: rgbDe(tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)"))
+  };
+  COR.sobCss = rgb(COR.sob, 1);
+
+  // ── rede com nova tentativa (o molde da pré-v1, sem mudança) ─────────────────────────────────────────────────────────────
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  function erroCorpo(msg, url, st) { var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e; }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) { var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http"; throw e; }
+        if (params.type === "json") return r.text().then(function (t) { try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); } });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+
+  geo("tropicos"); geo("australia");
+  if (window.__erroCena) return;
+  window.__cameraAt = cameraAt;
+
+  var map;
+  function estilo() {
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var cam = camadasDaCena(), ids = Object.keys(cam.fontes);
+    for (var i = 0; i < ids.length; i++) fontes[ids[i]] = cam.fontes[ids[i]];
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes,
+      layers: [{ id: "base", type: "raster", source: "base",
+        // o tratamento C da base (identidade §6, Lucas 09/10/2026): brilho máximo 92 %, cor natural, contraste +25 %; sem véu
+        paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }].concat(cam.camadas) };
+  }
+  var FONTES = ["base"].concat(Object.keys(camadasDaCena().fontes));
+
+  var c0 = cameraAt(0);
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: 0, pitch: 0
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa.");
+  }
+  window.map = map;
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
+
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg))
+      return "mandou tile CORROMPIDO" + n + " (" + String(msg).replace(/^tile corrompido: /, "") + "). Renderize de novo.";
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + ". Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  var mapaCarregado = false;
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ".");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : ""));
+  });
+  map.on("load", function () {
+    mapaCarregado = true;
+    map.once("idle", function () {
+      var f = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+      f.then(function () { if (!window.__erroCena) resolverPronto(true); });
+    });
+  });
+
+  // ── a pílula presa ao chão: o ponto [lon, lat] vai ao ponto (ax, ay) da caixa (0..1), mais (dx, dy) px; v é a entrada (0..1) ──
+  function porPilula(el, ll, ax, ay, dx, dy, v, sobe) {
+    if (!el) return;
+    var p = map.project(ll), w = el.offsetWidth, h = el.offsetHeight;
+    var x = p.x - ax * w + (dx || 0), y = p.y - ay * h + (dy || 0) + (sobe == null ? (1 - v) * 24 : sobe);
+    el.style.transform = "translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+    el.style.opacity = cl(v, 0, 1).toFixed(3);
+    el.style.visibility = v > 0.001 ? "visible" : "hidden";
+  }
+  function porTexto(el, v, sobe) {
+    if (!el) return;
+    el.style.opacity = cl(v, 0, 1).toFixed(3); el.style.visibility = v > 0.001 ? "visible" : "hidden";
+    el.style.transform = "translateY(" + ((sobe == null ? (1 - v) * 24 : sobe)).toFixed(2) + "px)";
+  }
+  var opAntes = {};
+  function pinta(id, prop, v) { v = +(+v).toFixed(3); var k = id + "|" + prop; if (opAntes[k] === v) return; map.setPaintProperty(id, prop, v); opAntes[k] = v; }
+
+  function aplicar(t) {
+    if (!mapaCarregado) return;
+    map.jumpTo(cameraAt(t));
+    aplicarCamadas(t);
+    aplicarTextos(t);
+    var c = E("credito"); if (c) { c.style.opacity = "1"; c.style.visibility = "visible"; }
+  }
+  window.__renderAt = function (t) {
+    try { aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) { var ts = (sc[id] && sc[id]._tiles) || {}; for (var k in ts) if (ts[k] && ts[k].state === "errored") return id; }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou. O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!map.areTilesLoaded() || map.isMoving()) return false;
+          for (var i = 0; i < FONTES.length; i++) if (!map.getSource(FONTES[i]) || !map.isSourceLoaded(FONTES[i])) return false;
+          return true;
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
+      (function tick() {
+        barrarTileComErro();
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.triggerRepaint(); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__renderAt(0) || true;
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+</script>
+</body>
+</html>

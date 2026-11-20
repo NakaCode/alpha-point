@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="en-US" data-render="4k-native">
+<head>
+<meta charset="utf-8">
+<title>s25</title>
+<!--
+CANAL ALPHA POINT — OS ANIMAIS PERIGOSOS DA AUSTRÁLIA (vídeo 8, australia-animais), CENA s25 + s26 + s27 (um arquivo só: 227,867 →
+  276,700 s do master; 48,833 s; quadros 6836–8301 a 30 fps). "A family of venomous snakes arrived from Asia. … The inland taipan is one
+  of them."
+  Mapista, lote M3 (tarefa australia-animais-arte-1, 19/11/2026): cena NOVA. O núcleo de mapa (o estilo, a rede com nova tentativa, a
+  espera dos tiles, o painter "moving"), A PEÇA 4 (o viajante, o encaixe, a régua) e a estaca são cópias de graphics/s22.html (M2, sha1
+  5b4b220c…); AS ESTACAS (GRADE, ESTACA, o desenho e a perspectiva) são cópia de graphics/s04.html (M1, sha1 4598e006…). O que manda:
+  textos-tela.json 32375aed (s25–s27: [110]–[133]); regencia.json b4fb6fbf (s25 › b0–b9); conceito-visual.json f554a521 (s25, s26, s27,
+  o arco); para-passos 316755f5, itens 27, 45, 67, 68. Planejamento: out/australia-animais/_tmp/arte-1/M3/ (plan.py, geo4.py).
+
+  MAPA 2D, satellite-v2 no tratamento C, norte para cima, pitch 0, sem relevo. Dois cortes secos por dentro (os registros reais): a naja
+  (2,967–8,200) e a cascavel (34,633–38,000), em tela cheia, nada por cima (banco pago: nenhum crédito na cena).
+
+  A CÂMERA (cameraAt(t)):
+    · 0 → 0,30: PARADA em P-NORTE (126° E, 23,46° S, z 3,56): o ESTADO DA FRONTEIRA s24 → s25, igual ao último quadro de s22;
+    · 0,30 → 2,967 e 8,20 → 9,00: deriva lateral lenta (o mapa anda 14 px/s para a esquerda; a câmera congela sob a naja);
+    · 9,00 → 12,00: o RECUO ao mundo (3,0 s, cúbico), até P-MUNDO-SUL DESLOCADA: centro 136° E (não 120° E), 11,23° S, z 3,2. DESVIO
+      DECLARADO: a 120° E as Américas ficam fora do quadro (o México a x 3684), e o braço da seta "para as Américas" acabaria fora da
+      tela; a 136° E o México fica a x 3475 e a África do Leste a x 639. A latitude e o zoom são os do arco (o viajante em y 1243–1840);
+    · 12,00 → 17,40: o mundo se abre devagar (−0,02 nível/s em torno de (1900, 1000));
+    · 17,40 → 19,40: a VOLTA a P-NORTE (2,0 s, cúbica);
+    · 19,40 → 30,138: P-NORTE abrindo devagar (−0,015 nível/s em torno de (1900, 1100));
+    · 30,138 → 32,533: a viagem a P-CONTINENTE (133,28° E, 28,47° S, z 4,75), 2,4 s, cúbica, enquanto o viajante encaixa;
+    · 32,533 → 48,833: P-CONTINENTE com empurrão lento (+0,008 nível/s em torno de (2050, 1078)) e deriva de 14 px/s para a esquerda.
+  O VIAJANTE: 25 milhões de anos até 'first' (30,138); 25 → 0 até 31,833 (cúbico); encaixa com o assentamento 1,03 → 1,00 (31,833–32,2);
+    o cheio, o contorno e o véu do encaixe saem de 31,833 a 32,4: fica o satélite de hoje.
+  A SETA DAS ELAPÍDEAS (ESQUEMA DECLARADO, sem caminho medido; peça desta cena): larga, em --tinta sobre o contorno escuro, no canvas;
+    nasce em 'arrived' (1,468) na Ásia continental (a cauda em 101,97° E, 14,51° N, na Tailândia; a cena confere que o ponto está dentro
+    de asia.json, Natural Earth) e desce por pontos de passagem (o Mar da China Meridional, Bornéu, o Mar de Flores, Timor) até a
+    estaca da costa norte do viajante, que pisca (2,30). Em 'spread' (12,423) ganha dois braços (esquema): à África (o Quênia) e às
+    Américas (a costa do México). Em 'snakes' (22,263) a ponta pulsa; em 'crossed' (26,103) o trecho sobre a água entre Timor e o
+    viajante se desfaz em 0,8 s (ficam a cauda e a ponta); sai em 'first'.
+  A RÉGUA (a de s22): TODAY e os trechos 85–80 e ≈ 45 a 50 %; o cursor em 25. Em 'twenty-five' (14,667) a JANELA 30–25 acende na régua,
+    com a etiqueta pendurada abaixo dela (as três linhas "30–25" / "MILLION YEARS AGO" / "MOLECULAR ESTIMATE": a quebra no lugar do "·",
+    que sai); em 'before' (19,067) o risco do encontro em 23, SEM número, com a etiqueta AUSTRALIA / MEETS ASIA à direita. DESVIO
+    DECLARADO: a placa da régua (160 px) só comporta uma fileira, ocupada pelos rótulos de s22; as duas etiquetas novas pendem da régua
+    (x ≥ 2400, à direita da seta e do encaixe), cada uma com o seu fio até a marca. A régua sai em 31,833.
+  AS ESTACAS (peça 3b, a de s04): as 77 da grade de 3° brotam de norte a sul de 32,0 a 33,35; em 'sea.' (46,033) as doze da beira (as
+    mais ao norte das colunas 122,5–140,5° E e as mais a leste das fileiras 14,5–26,5° S) escorregam para o mar, todas a 1,0° além da
+    costa, ao longo do eixo (norte ou leste): esquema, nunca a distribuição das cobras-marinhas. Em 'The' (46,793) o Channel Country
+    acende (--territorio-cor, 0,85, sem os pontos da gente: a decisão da Sala), a estaca dele vira --destaque e as outras caem a 50 %.
+  OS CRÉDITOS a 60 px: "© MapTiler © OpenStreetMap contributors" em todo quadro de mapa (data-qc-credito="mapa"); o do modelo de
+    placas enquanto o viajante está na tela; os de fonte como o textos-tela. Nada sobre a naja nem sobre a cascavel (banco pago).
+  A MÍDIA: _media/footage/s25/naja-capelo.mp4 (Shutterstock 3798724737; conferencia-midia candidatos[63], aprovado, mesmo_item true,
+    casado pela URL do item) e _media/footage/s27/cascavel-guizo.mp4 (Storyblocks SBV-349247863; candidatos[78], aprovado, mesmo_item
+    true, casado pela URL do item). Os dois andam por t (currentTime = início escolhido + t − t0 + 1/60; nunca play() no render).
+  A GEOMETRIA: australia.json (o encaixe e a grade; Natural Earth); australia-em-movimento-relativa-antartida.json e
+    polos-euler-australia-antartida.json (o viajante; MULLER2022, CC BY 4.0, com o crédito); channel-country.json (IBRA 7.1, CC BY 4.0,
+    com o crédito); asia.json (só para conferir a cauda da seta; Natural Earth).
+-->
+<link rel="stylesheet" href="../../../marca/tokens.css">
+<style>:root { --fs-credito: 60px; }</style>
+<link rel="stylesheet" href="../_media/_vendor/maplibre-gl.css">
+<script src="../_media/_vendor/maplibre-gl.js"></script>
+<script src="../_media/_vendor/perfil-mapa.js"></script>
+<script src="../_media/geo/australia.js"></script>
+<script src="../_media/geo/australia-em-movimento-relativa-antartida.js"></script>
+<script src="../_media/geo/polos-euler-australia-antartida.js"></script>
+<script src="../_media/geo/channel-country.js"></script>
+<script src="../_media/geo/asia.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo); }
+  #palco { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--fundo);
+    font-family: var(--fonte); -webkit-font-smoothing: antialiased; }
+  #map { position: absolute; inset: 0; }
+  canvas#cv { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 20; }
+  svg#ov { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; pointer-events: none; z-index: 30; overflow: visible; }
+  .pil { position: absolute; left: 0; top: 0; z-index: 40; opacity: 0; visibility: hidden; white-space: nowrap;
+    background: var(--rotulo); border-radius: var(--cantos); padding: var(--rotulo-respiro-y) var(--rotulo-respiro-x);
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); line-height: 1.15; letter-spacing: 0;
+    color: var(--tinta); transform-origin: 0 0; }
+  .pil.lugar { font-weight: var(--peso-caixa-alta); letter-spacing: var(--tracking-lugar); }
+  /* as etiquetas penduradas na régua: a chave a 128 px, o resto a 84 px (a cota longa partida, sem mudar palavra) */
+  .pil.etq .k { font-size: var(--fs-rotulo); line-height: 1.05; font-variant-numeric: var(--numeros); }
+  .pil.etq .r { font-size: var(--fs-eixo); line-height: 1.12; letter-spacing: var(--tracking-lugar); }
+  /* ═══ PEÇA 4 · A RÉGUA DO TEMPO (cópia de s22) ═══ */
+  #regua { position: absolute; left: 400px; top: 170px; width: 3040px; height: 160px; z-index: 45; opacity: 0; visibility: hidden;
+    background: var(--rotulo); border-radius: var(--cantos); }
+  #regua svg { position: absolute; left: 0; top: 0; width: 3040px; height: 160px; overflow: visible; }
+  .rlab { position: absolute; top: 6px; display: flex; align-items: baseline; gap: 24px; white-space: nowrap; opacity: 0;
+    font-family: var(--fonte); color: var(--tinta); line-height: 1; }
+  .rlab .k { font-weight: var(--peso-rotulo); font-size: var(--fs-rotulo); letter-spacing: 0; font-variant-numeric: var(--numeros); }
+  .rlab .r { font-weight: var(--peso-rotulo); font-size: var(--fs-eixo); letter-spacing: var(--tracking-lugar); }
+  #lHoje { position: absolute; top: 44px; right: 30px; white-space: nowrap; line-height: 1;
+    font-family: var(--fonte); font-weight: var(--peso-rotulo); font-size: var(--fs-eixo); letter-spacing: var(--tracking-lugar); color: var(--tinta); }
+  .credito { position: absolute; left: var(--credito-x); max-width: 1520px; z-index: 70; opacity: 0; visibility: hidden;
+    font-family: var(--fonte); font-weight: 500; font-size: var(--fs-credito); line-height: 1.15; letter-spacing: 0;
+    color: var(--sec); background: var(--rotulo); padding: 8px 24px; border-radius: var(--cantos); white-space: pre; }
+  #credito { bottom: 20px; }
+  /* AS ESTACAS (peça 3b, cópia de s04): o poste, a bandeirola e a sombra no chão; a cor vem da classe */
+  .estaca .poste { fill: var(--tinta); stroke: var(--fronteira-contorno-cor); stroke-width: 3; }
+  .estaca .bandeira { fill: var(--tinta); stroke: var(--fronteira-contorno-cor); stroke-width: 3; }
+  .estaca .chao { fill: var(--fronteira-contorno-cor); }
+  .estaca.taipan .poste, .estaca.taipan .bandeira { fill: var(--destaque); stroke: var(--rotulo); stroke-width: 5; }
+  /* os registros reais, em tela cheia, por cima do mapa (corte seco); os créditos ficam por cima deles, mas nenhum vai ao ar ali */
+  #vids { position: absolute; inset: 0; z-index: 60; pointer-events: none; }
+  .v { position: absolute; left: 0; top: 0; width: 3840px; height: 2160px; object-fit: cover; display: block; visibility: hidden; background: var(--fundo); }
+  #erroCena { position: absolute; left: 0; right: 0; top: 0; padding: 48px 96px; background: #B00020; color: #fff;
+    font-size: 56px; font-weight: 800; line-height: 1.25; white-space: pre-wrap; z-index: 99; }
+  #erroCena[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <div id="map"></div>
+  <canvas id="cv" width="3840" height="2160"></canvas>
+  <svg id="ov" viewBox="0 0 3840 2160">
+    <g id="estacas"></g>
+    <g id="gEstaca" opacity="0">
+      <g class="estaca"><ellipse id="estChao" class="chao"></ellipse><rect id="estPoste" class="poste"></rect><path id="estBand" class="bandeira"></path></g>
+    </g>
+    <g id="gFios" opacity="0">
+      <path id="fioJanSob" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path id="fioJan" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <g id="gFioEnc" opacity="0">
+      <path id="fioEncSob" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path id="fioEnc" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <g id="gFioTai" opacity="0">
+      <line id="fioTaiSob" stroke-linecap="round"></line>
+      <line id="fioTai" stroke-linecap="round"></line>
+    </g>
+  </svg>
+  <div id="pSea" class="pil lugar" data-qc-papel="rotulo">SOUTHEAST ASIA</div>
+  <div id="pElap" class="pil lugar" data-qc-papel="rotulo">ELAPIDS<br>FRONT-FANGED<br>SNAKES</div>
+  <div id="pJan" class="pil etq"><div class="k" data-qc-papel="rotulo">30–25</div><div class="r" data-qc-papel="eixo">MILLION YEARS AGO</div><div class="r" data-qc-papel="eixo">MOLECULAR ESTIMATE</div></div>
+  <div id="pEnc" class="pil lugar" data-qc-papel="rotulo" style="transform-origin: 100% 50%">AUSTRALIA<br>MEETS ASIA</div>
+  <div id="pVip" class="pil lugar" data-qc-papel="rotulo">NO VIPERS</div>
+  <div id="pTai" class="pil lugar" data-qc-papel="rotulo">INLAND TAIPAN</div>
+  <div id="regua">
+    <svg viewBox="0 0 3040 160">
+      <line id="rLinha" x1="0" y1="134" x2="0" y2="134" stroke-width="4" stroke-linecap="round"></line>
+      <line id="rTrecho" x1="0" y1="134" x2="0" y2="134" stroke-width="12" stroke-linecap="butt"></line>
+      <line id="r45" x1="0" y1="122" x2="0" y2="154" stroke-width="8" stroke-linecap="round"></line>
+      <line id="rJanela" x1="0" y1="134" x2="0" y2="134" stroke-width="12" stroke-linecap="butt" opacity="0"></line>
+      <line id="rEnc" x1="0" y1="114" x2="0" y2="154" stroke-width="8" stroke-linecap="round" opacity="0"></line>
+      <line id="rHoje" x1="0" y1="118" x2="0" y2="150" stroke-width="6" stroke-linecap="round"></line>
+      <line id="rCursor" x1="0" y1="124" x2="0" y2="152" stroke-width="12" stroke-linecap="round"></line>
+    </svg>
+    <div id="l8580" class="rlab"><span class="k" data-qc-papel="rotulo">85–80</span><span class="r" data-qc-papel="eixo">MILLION YEARS AGO</span></div>
+    <div id="l45" class="rlab"><span class="k" data-qc-papel="rotulo">≈ 45</span><span class="r" data-qc-papel="eixo">MILLION YEARS AGO</span></div>
+    <div id="lHoje" data-qc-papel="eixo">TODAY</div>
+  </div>
+  <div id="vids">
+    <video id="vNaja" class="v" src="../_media/footage/s25/naja-capelo.mp4" muted playsinline preload="auto"></video>
+    <video id="vCasc" class="v" src="../_media/footage/s27/cascavel-guizo.mp4" muted playsinline preload="auto"></video>
+  </div>
+  <div id="crHall" class="credito" data-qc-papel="credito">Source: Hall, Journal of Limnology, 2013</div>
+  <div id="crLee1" class="credito" data-qc-papel="credito">Source: Lee et al., Royal Society Open Science, 2016</div>
+  <div id="crLJ" class="credito" data-qc-papel="credito">Source: Lee et al., 2016; Jackson et al., Toxins, 2016</div>
+  <div id="crLH" class="credito" data-qc-papel="credito">Source: Lee et al., 2016; Hall, Journal of Limnology, 2013</div>
+  <div id="crJL" class="credito" data-qc-papel="credito">Source: Jackson et al., Toxins, 2016; Lee et al., 2016</div>
+  <div id="crIbra" class="credito" data-qc-papel="credito">IBRA 7.1 (DCCEEW)</div>
+  <div id="crPlaca" class="credito" data-qc-papel="credito">Plate model: Müller et al., Solid Earth, 2022 (CC BY 4.0)</div>
+  <div id="credito" class="credito" data-qc-papel="credito" data-qc-credito="mapa"></div>
+  <div id="erroCena" hidden></div>
+</div>
+<script>
+(function () {
+  "use strict";
+  // Determinístico: a cena é função de t (nada de Date, Math.random, @keyframes nem flyTo/easeTo: a câmera é jumpTo(cameraAt(t))).
+  var E = function (id) { return document.getElementById(id); };
+  var cl = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var eo = function (x) { x = cl(x, 0, 1); return 1 - Math.pow(1 - x, 3); };
+  var ei = function (x) { x = cl(x, 0, 1); return x * x * x; };
+  var eio = function (x) { x = cl(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var seg = function (t, a, d) { return cl((t - a) / d, 0, 1); };
+  var W = 3840, H = 2160, TILE = 512;
+  var MX = function (lon) { return (lon + 180) / 360; };
+  var MY = function (lat) { lat = cl(lat, -85.05, 85.05); var s = Math.sin(lat * Math.PI / 180); return 0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI); };
+  var LON = function (x) { return x * 360 - 180; };
+  var LAT = function (y) { var n = Math.PI * (1 - 2 * y); return Math.atan(0.5 * (Math.exp(n) - Math.exp(-n))) * 180 / Math.PI; };
+  var SZ = function (z) { return TILE * Math.pow(2, z); };
+
+  // ═══ TEMPOS (0 = 227,867 s do master), na cena: 'arrived' 1,468 · 'They're' 2,973 · 'Its' 8,203 · 'spread' 12,423 · 'twenty-five'
+  //   14,648 · 'That's' 17,333 · 'before' 19,048 · 'snakes' 22,263 · 'Asia.' 24,903 · 'crossed' 26,103 · 'first' 30,138 · 'Australia'
+  //   34,653 · 'none' 38,273 · 'sea.' 46,033 · 'The' 46,793 · 'them.' 48,273 ═══
+  var DUR = 48.833;   // espelho.json › s25 › dur (a mãe do run), literal (roupa §8)
+  var T = {
+    parada: 0.30, arrived: 1.468, cresce: 0.88, pisca: 2.30, corte1: [2.9667, 8.2], its: 8.233, elapSai: 13.133,
+    recuo: [9.0, 3.0], mundo: 12.0, spread: 12.423, braco: 1.0, janela: 14.667, volta: [17.4, 2.0], bracoSai: [17.3, 0.6],
+    enc: 19.067, snakes: 22.263, asia: 24.903, crossed: 26.103, desfaz: 0.8, first: 30.138, encaixa: 31.833, viagem: [30.138, 2.395],
+    reguaSai: 31.833, onda: [32.0, 1.0], sobe: 0.35, corte2: [34.6333, 38.0], vip: [38.3, 41.067], sea: 46.033, desliza: 0.7,
+    the: 46.793, tai: 46.8
+  };
+  // os registros reais: o trecho do clipe que entra (escolhido nas folhas do clipe, M3/naja-folha.png e cascavel-folha.png)
+  var VIDS = [
+    { id: "vNaja", t0: T.corte1[0], t1: T.corte1[1], ini: 5.0 },     // a naja parada e alerta, de capelo aberto (do segundo 5,0 ao 10,2)
+    { id: "vCasc", t0: T.corte2[0], t1: T.corte2[1], ini: 10.3 }     // a cascavel: o guizo ainda vibrando e depois nítido (10,3 a 13,67)
+  ];
+  function noCorte(t) { return (t >= T.corte1[0] && t < T.corte1[1]) || (t >= T.corte2[0] && t < T.corte2[1]); }
+
+  // ═══ AS POSES ═══
+  function pose(lon, lat, z) { return { x: MX(lon), y: MY(lat), z: z }; }
+  var POSE = {
+    NORTE: pose(126.0, -23.46, 3.56),        // P-NORTE: o estado da fronteira s24 → s25
+    MUNDO: pose(136.0, -11.23, 3.2),         // P-MUNDO-SUL deslocada a 136° E (desvio declarado no cabeçalho)
+    CONT: pose(133.28, -28.47, 4.75)         // P-CONTINENTE
+  };
+  var DERIVA = 14;   // px/s da deriva lateral
+  function lerpCam(a, b, u) { return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u, z: a.z + (b.z - a.z) * u }; }
+  function voo(a, b, U) {
+    var z = a.z + (b.z - a.z) * U, s;
+    if (Math.abs(b.z - a.z) < 1e-6) s = U; else s = (Math.pow(2, -z) - Math.pow(2, -a.z)) / (Math.pow(2, -b.z) - Math.pow(2, -a.z));
+    return { x: a.x + (b.x - a.x) * s, y: a.y + (b.y - a.y) * s, z: z };
+  }
+  function emTorno(c, K, z) {
+    var gx = c.x + (K[0] - W / 2) / SZ(c.z), gy = c.y + (K[1] - H / 2) / SZ(c.z);
+    return { x: gx - (K[0] - W / 2) / SZ(z), y: gy - (K[1] - H / 2) / SZ(z), z: z };
+  }
+  // a integral de uma rampa suave de entrada (a velocidade sobe de 0 a 1 em r segundos): o deslocamento sem tranco
+  function corrido(t, a, r) { if (t <= a) return 0; var d = t - a; return d < r ? d * d * d / (r * r) - d * d * d * d / (2 * r * r * r) : (d - r) + r / 2; }
+  // o tempo de deriva de P-NORTE no começo (congela sob a naja)
+  function tDeriva(t) { return corrido(Math.min(t, T.corte1[0]), T.parada, 0.5) + (t > T.corte1[1] ? (Math.min(t, T.recuo[0]) - T.corte1[1]) : 0); }
+  function norteDeriva(t) { var c = POSE.NORTE; return { x: c.x + DERIVA * tDeriva(t) / SZ(c.z), y: c.y, z: c.z }; }
+  function mundoAbre(t) { return emTorno(POSE.MUNDO, [1900, 1000], POSE.MUNDO.z - 0.02 * corrido(t, T.mundo, 0.6)); }
+  var T_VOLTA_FIM = T.volta[0] + T.volta[1];
+  function norteAbre(t) { return emTorno(POSE.NORTE, [1900, 1100], POSE.NORTE.z - 0.015 * corrido(t, T_VOLTA_FIM, 0.6)); }
+  var T_CHEGA = T.viagem[0] + T.viagem[1];
+  function contDeriva(t) {
+    var d = corrido(t, T_CHEGA, 0.6), c = emTorno(POSE.CONT, [2050, 1078], POSE.CONT.z + 0.008 * d);
+    return { x: c.x + DERIVA * d / SZ(c.z), y: c.y, z: c.z };
+  }
+  function camMerc(t) {
+    if (t < T.recuo[0]) return norteDeriva(t);
+    if (t < T.mundo) return voo(norteDeriva(T.recuo[0]), POSE.MUNDO, eio(seg(t, T.recuo[0], T.recuo[1])));
+    if (t < T.volta[0]) return mundoAbre(t);
+    if (t < T_VOLTA_FIM) return voo(mundoAbre(T.volta[0]), POSE.NORTE, eio(seg(t, T.volta[0], T.volta[1])));
+    if (t < T.viagem[0]) return norteAbre(t);
+    if (t < T_CHEGA) return voo(norteAbre(T.viagem[0]), POSE.CONT, eio(seg(t, T.viagem[0], T.viagem[1])));
+    return contDeriva(t);
+  }
+  function cameraAt(t) { var c = camMerc(cl(t, 0, DUR)); return { center: [LON(c.x), LAT(c.y)], zoom: c.z, bearing: 0, pitch: 0 }; }
+
+  // ═══ PEÇA 4 · O VIAJANTE (cópia de s22: o contorno de hoje girado pelo modelo de placas, 801 em relação a 802) ═══════════════
+  var VIAJ = { opac: 0.85, linha: 6, linhaSob: 12, levanta: 8, sombraBlur: 28, sombraY: 6, sombraYLevantado: 20, sombraOpac: 0.55 };
+  var POLOS = null, BASE = null;
+  function vec(lon, lat) { var l = lon * Math.PI / 180, p = lat * Math.PI / 180; return [Math.cos(p) * Math.cos(l), Math.cos(p) * Math.sin(l), Math.sin(p)]; }
+  function quat(lon, lat, ang) {
+    if (!ang) return [1, 0, 0, 0];
+    var k = vec(lon, lat), a = ang * Math.PI / 360, s = Math.sin(a);
+    return [Math.cos(a), k[0] * s, k[1] * s, k[2] * s];
+  }
+  function slerp(q1, q2, u) {
+    var d = q1[0] * q2[0] + q1[1] * q2[1] + q1[2] * q2[2] + q1[3] * q2[3], b = q2, r;
+    if (d < 0) { b = [-q2[0], -q2[1], -q2[2], -q2[3]]; d = -d; }
+    if (d > 0.9995) r = [q1[0] + (b[0] - q1[0]) * u, q1[1] + (b[1] - q1[1]) * u, q1[2] + (b[2] - q1[2]) * u, q1[3] + (b[3] - q1[3]) * u];
+    else { var th = Math.acos(d), s = Math.sin(th), f1 = Math.sin((1 - u) * th) / s, f2 = Math.sin(u * th) / s;
+      r = [q1[0] * f1 + b[0] * f2, q1[1] * f1 + b[1] * f2, q1[2] * f1 + b[2] * f2, q1[3] * f1 + b[3] * f2]; }
+    var n = Math.sqrt(r[0] * r[0] + r[1] * r[1] + r[2] * r[2] + r[3] * r[3]);
+    return [r[0] / n, r[1] / n, r[2] / n, r[3] / n];
+  }
+  function quatAt(ma) {
+    var k = cl(ma, 0, 90) * 2, i = Math.floor(k), u = k - i;
+    if (i >= POLOS.length - 1) return POLOS[POLOS.length - 1];
+    return u < 1e-9 ? POLOS[i] : slerp(POLOS[i], POLOS[i + 1], u);
+  }
+  function girar(q, ll) {
+    var v = vec(ll[0], ll[1]), w = q[0], x = q[1], y = q[2], z = q[3];
+    var tx = 2 * (y * v[2] - z * v[1]), ty = 2 * (z * v[0] - x * v[2]), tz = 2 * (x * v[1] - y * v[0]);
+    var r = [v[0] + w * tx + (y * tz - z * ty), v[1] + w * ty + (z * tx - x * tz), v[2] + w * tz + (x * ty - y * tx)];
+    return [Math.atan2(r[1], r[0]) * 180 / Math.PI, Math.asin(cl(r[2], -1, 1)) * 180 / Math.PI];
+  }
+  var cacheIdade = { ma: null, aneis: null };
+  function viajanteEm(ma) {
+    if (cacheIdade.ma === ma) return cacheIdade;
+    var q = quatAt(ma);
+    cacheIdade = { ma: ma, aneis: BASE.map(function (anel) { return anel.map(function (c) { return girar(q, c); }); }) };
+    return cacheIdade;
+  }
+  // a idade do viajante: 25 milhões de anos até 'first'; 25 → 0 até o encaixe (31,833); hoje depois
+  function idade(t) {
+    if (t < T.first) return 25;
+    if (t < T.encaixa) return 25 * (1 - eio(seg(t, T.first, T.encaixa - T.first)));
+    return 0;
+  }
+  // o assentamento: 1,00 → 1,03 nos 0,3 s antes do encaixe, 1,03 → 1,00 nos 0,35 s depois
+  function assenta(t) { return 1 + 0.03 * (t < T.encaixa ? eo(seg(t, T.encaixa - 0.3, 0.3)) : 1 - eo(seg(t, T.encaixa, 0.35))); }
+  var vCheio = function (t) { return 1 - eo(seg(t, T.encaixa, 0.567)); };   // o cheio, o contorno e o véu saem de 31,833 a 32,4
+
+  // ═══ PEÇA 4 · O ENCAIXE (cópia de s22) ═══
+  var ENCAIXE = { veu: 0.75, linha: 4, traco: [3, 2] };
+  function australiaGeo() {
+    var g = geo("australia"), gm = g.features[0].geometry;
+    var polys = gm.type === "MultiPolygon" ? gm.coordinates : [gm.coordinates];
+    var fica = polys.filter(function (p) { var c = p[0][0]; return c[1] > -50 && c[0] < 155; });
+    return { type: "FeatureCollection", features: [{ type: "Feature", properties: { name: "Australia" }, geometry: { type: "MultiPolygon", coordinates: fica } }] };
+  }
+  function camadasDaCena() {
+    var lj = { "line-join": "round" }, lc = { "line-join": "round", "line-cap": "round" };
+    return { fontes: { aus: { type: "geojson", data: australiaGeo() }, chc: { type: "geojson", data: geo("channel-country") } },
+      camadas: [
+        { id: "enc-veu", type: "fill", source: "aus", paint: { "fill-color": COR.fundo, "fill-opacity": 0 } },
+        { id: "enc-sob", type: "line", source: "aus", layout: lj, paint: { "line-color": COR.sobCss, "line-opacity": 0, "line-width": 10 } },
+        { id: "enc", type: "line", source: "aus", layout: lj, paint: { "line-color": COR.tinta, "line-opacity": 0, "line-width": ENCAIXE.linha, "line-dasharray": ENCAIXE.traco } },
+        { id: "chc", type: "fill", source: "chc", paint: { "fill-color": COR.destaque, "fill-opacity": 0 } },
+        { id: "chc-sob", type: "line", source: "chc", layout: lc, paint: { "line-color": COR.sobCss, "line-opacity": 0, "line-width": 12 } },
+        { id: "chc-linha", type: "line", source: "chc", layout: lc, paint: { "line-color": COR.tinta, "line-opacity": 0, "line-width": 6 } }
+      ] };
+  }
+  var CHC_OPAC = 0.85;   // --territorio-cor (a decisão da Sala: 0,85 nas vistas do continente sem os pontos)
+  function aplicarCamadas(t) {
+    var vE = vCheio(t);
+    pinta("enc-veu", "fill-opacity", ENCAIXE.veu * vE); pinta("enc-sob", "line-opacity", COR.sob[3] * vE); pinta("enc", "line-opacity", vE);
+    var vC = eo(seg(t, T.tai, 0.5));
+    pinta("chc", "fill-opacity", CHC_OPAC * vC); pinta("chc-sob", "line-opacity", COR.sob[3] * vC); pinta("chc-linha", "line-opacity", vC);
+  }
+
+  function desenharViajante(t) {
+    if (!ctx) return;
+    var v = vCheio(t);
+    if (v <= 0) return;
+    var vj = viajanteEm(idade(t)), s = assenta(t);
+    var Pp = vj.aneis.map(function (anel) { return anel.map(function (c) { var p = map.project(c); return [p.x, p.y]; }); });
+    if (s !== 1) {   // o assentamento: a escala em torno do centro da caixa na tela
+      var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+      Pp.forEach(function (a) { a.forEach(function (p) { if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; }); });
+      var cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+      Pp = Pp.map(function (a) { return a.map(function (p) { return [cx + (p[0] - cx) * s, cy + (p[1] - cy) * s]; }); });
+    }
+    var caminho = function () {
+      ctx.beginPath();
+      for (var i = 0; i < Pp.length; i++) { var a = Pp[i]; ctx.moveTo(a[0][0], a[0][1]); for (var j = 1; j < a.length; j++) ctx.lineTo(a[j][0], a[j][1]); ctx.closePath(); }
+    };
+    ctx.save();
+    ctx.shadowColor = rgb(COR.fundoRgb, VIAJ.sombraOpac * v);
+    ctx.shadowBlur = VIAJ.sombraBlur; ctx.shadowOffsetX = 0; ctx.shadowOffsetY = VIAJ.sombraY;
+    ctx.fillStyle = rgb(COR.neutroRgb, VIAJ.opac * v);
+    caminho(); ctx.fill("nonzero");
+    ctx.restore();
+    ctx.lineJoin = "round"; ctx.lineCap = "round";
+    ctx.globalAlpha = COR.sob[3] * v; ctx.strokeStyle = rgb(COR.sob, 1); ctx.lineWidth = VIAJ.linhaSob; caminho(); ctx.stroke();
+    ctx.globalAlpha = v; ctx.strokeStyle = COR.tinta; ctx.lineWidth = VIAJ.linha; caminho(); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  // ═══ A SETA DAS ELAPÍDEAS (peça desta cena; ESQUEMA DECLARADO): uma curva suave (Catmull-Rom na tela) pelos pontos de passagem
+  //     [lon, lat], desenhada no canvas, larga, em --tinta sobre o contorno escuro; a ponta é um triângulo. A cauda fica na Ásia
+  //     continental (asia.json); a ponta, na estaca da costa norte do viajante (o vértice 833 girado a 25 milhões de anos). ═══
+  var SETA = { larg: 26, sob: 44, cab: [74, 50] };          // px: o traço, o contorno escuro por baixo, a cabeça (comprimento, meia-largura)
+  var BRACO = { larg: 20, sob: 36, cab: [60, 40] };
+  var CAUDA = [101.9746, 14.5083];                          // a Tailândia (em P-NORTE, x 1517, y 429: a do conceito)
+  var ESTACA_LL = [132.911, -11.3318];                      // o vértice 833 do contorno de hoje (o de s22), girado com o viajante
+  var PASSA = [[109.5, 4.0], [114.0, 0.5], [120.5, -5.5], [125.5, -9.0]];   // o Mar da China Meridional, Bornéu, o Mar de Flores, Timor
+  var TIMOR_I = 4;                                          // o índice de Timor na lista inteira (cauda = 0): o trecho sobre a água começa depois dele
+  var BRACO_AFR = [CAUDA, [100.5, -3.0], [80.0, -8.0], [60.0, -6.0], [39.7, -3.2]];        // à África (o Quênia)
+  var BRACO_AME = [CAUDA, [122.0, 22.0], [160.0, 27.0], [210.0, 27.5], [245.0, 24.0], [254.3, 21.5]];   // às Américas (a costa do México, 105,7° W)
+  function catmull(P, n) {
+    var out = [];
+    for (var i = 0; i < P.length - 1; i++) {
+      var p0 = P[Math.max(0, i - 1)], p1 = P[i], p2 = P[i + 1], p3 = P[Math.min(P.length - 1, i + 2)];
+      for (var k = 0; k < n; k++) {
+        var u = k / n, u2 = u * u, u3 = u2 * u;
+        out.push([0.5 * (2 * p1[0] + (-p0[0] + p2[0]) * u + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * u2 + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * u3),
+                  0.5 * (2 * p1[1] + (-p0[1] + p2[1]) * u + (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * u2 + (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * u3)]);
+      }
+    }
+    out.push(P[P.length - 1]);
+    return out;
+  }
+  function polilinha(geoPts) {
+    var P = geoPts.map(function (c) { var p = map.project(c); return [p.x, p.y]; });
+    var S = catmull(P, 24), L = [0];
+    for (var i = 1; i < S.length; i++) L.push(L[i - 1] + Math.hypot(S[i][0] - S[i - 1][0], S[i][1] - S[i - 1][1]));
+    return { S: S, L: L, tot: L[L.length - 1], noL: P.map(function (_, k) { return L[Math.min(L.length - 1, k * 24)]; }) };
+  }
+  function pontoEm(pl, d) {
+    var L = pl.L, S = pl.S, i = 1;
+    if (d <= 0) return S[0];
+    if (d >= pl.tot) return S[S.length - 1];
+    while (i < L.length - 1 && L[i] < d) i++;
+    var u = (d - L[i - 1]) / Math.max(1e-6, L[i] - L[i - 1]);
+    return [S[i - 1][0] + (S[i][0] - S[i - 1][0]) * u, S[i - 1][1] + (S[i][1] - S[i - 1][1]) * u];
+  }
+  function trecho(pl, a, b) {   // os pontos da curva entre as distâncias a e b
+    var out = [pontoEm(pl, a)];
+    for (var i = 0; i < pl.S.length; i++) if (pl.L[i] > a && pl.L[i] < b) out.push(pl.S[i]);
+    out.push(pontoEm(pl, b));
+    return out;
+  }
+  function tracar(pts, larg, sob, alfa) {
+    if (pts.length < 2 || alfa <= 0) return;
+    ctx.lineJoin = "round"; ctx.lineCap = "round";
+    ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+    ctx.globalAlpha = COR.sob[3] * alfa; ctx.strokeStyle = rgb(COR.sob, 1); ctx.lineWidth = sob; ctx.stroke();
+    ctx.globalAlpha = alfa; ctx.strokeStyle = COR.tinta; ctx.lineWidth = larg; ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  function cabeca(pl, dFim, cab, escala, alfa) {
+    if (alfa <= 0) return;
+    var p = pontoEm(pl, dFim), q = pontoEm(pl, Math.max(0, dFim - 12)), dx = p[0] - q[0], dy = p[1] - q[1], m = Math.hypot(dx, dy) || 1;
+    dx /= m; dy /= m;
+    var c = cab[0] * escala, w = cab[1] * escala, bx = p[0] - dx * c, by = p[1] - dy * c;
+    ctx.beginPath(); ctx.moveTo(p[0] + dx * 6, p[1] + dy * 6); ctx.lineTo(bx - dy * w, by + dx * w); ctx.lineTo(bx + dy * w, by - dx * w); ctx.closePath();
+    ctx.lineJoin = "round";
+    ctx.globalAlpha = COR.sob[3] * alfa; ctx.strokeStyle = rgb(COR.sob, 1); ctx.lineWidth = 12; ctx.stroke();
+    ctx.globalAlpha = alfa; ctx.fillStyle = COR.tinta; ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  function pulso(t, a, d) { var u = seg(t, a, d); return u > 0 && u < 1 ? Math.sin(Math.PI * u) : 0; }
+  function desenharSeta(t) {
+    if (!ctx || t < T.arrived) return;
+    var vS = 1 - eo(seg(t, T.first, 0.45));
+    if (vS <= 0) return;
+    var tipo = girar(quatAt(idade(t)), ESTACA_LL);
+    var pl = polilinha([CAUDA].concat(PASSA, [tipo]));
+    var cresce = eio(seg(t, T.arrived, T.cresce)), dFim = pl.tot * cresce;
+    var cab = SETA.cab[0];
+    var dA = Math.min(pl.noL[TIMOR_I] + 30, pl.tot), dB = Math.max(dA, pl.tot - cab - 70);   // o trecho sobre a água: de Timor até a ponta
+    var vAgua = 1 - eo(seg(t, T.crossed, T.desfaz));
+    var fimLinha = Math.max(0, dFim - cab * 0.6);
+    tracar(trecho(pl, 0, Math.min(fimLinha, dA)), SETA.larg, SETA.sob, vS);
+    if (fimLinha > dA) tracar(trecho(pl, dA, Math.min(fimLinha, dB)), SETA.larg, SETA.sob, vS * vAgua);
+    if (fimLinha > dB) tracar(trecho(pl, dB, fimLinha), SETA.larg, SETA.sob, vS);
+    cabeca(pl, dFim, SETA.cab, 1 + 0.35 * pulso(t, T.snakes, 0.6), vS * eo(seg(t, T.arrived, 0.2)));
+    // os braços (esquema): crescem em 'spread' (1,0 s) e saem na volta a P-NORTE
+    var vB = (1 - eo(seg(t, T.bracoSai[0], T.bracoSai[1])));
+    if (t >= T.spread && vB > 0) {
+      [BRACO_AFR, BRACO_AME].forEach(function (B) {
+        var pb = polilinha(B), fb = pb.tot * eio(seg(t, T.spread, T.braco));
+        tracar(trecho(pb, 0, Math.max(0, fb - BRACO.cab[0] * 0.6)), BRACO.larg, BRACO.sob, vB);
+        cabeca(pb, fb, BRACO.cab, 1, vB * eo(seg(t, T.spread, 0.2)));
+      });
+    }
+  }
+
+  // ═══ A ESTACA DA COSTA NORTE (cópia de s22, conserto 1: a de s04, fincada no vértice 833 girado) ═══
+  var ESTACA = { altura: 150, largura: 13, bandeira: [42, 30], chao: [24, 9], ref: 48 };   // ref: px de 1° de longitude na escala de s04
+  var ESTACA_PISCA = [0, 0.12, 0.27, 0.39, 0.54, 0.66];
+  function at(el, k, v) { if (el) el.setAttribute(k, v); }
+  function desenhoEstaca(ll, r, chao, poste, band) {   // o desenho de s04 (aplicarEstacas): devolve a caixa na tela
+    var p = map.project(ll), pe = map.project([ll[0] - 0.5, ll[1]]), pd = map.project([ll[0] + 0.5, ll[1]]);
+    var s = Math.hypot(pd.x - pe.x, pd.y - pe.y) / ESTACA.ref;
+    var h = ESTACA.altura * s * r, w = ESTACA.largura * s, bw = ESTACA.bandeira[0] * s, bh = ESTACA.bandeira[1] * s;
+    at(chao, "cx", p.x.toFixed(1)); at(chao, "cy", p.y.toFixed(1));
+    at(chao, "rx", (ESTACA.chao[0] * s).toFixed(1)); at(chao, "ry", (ESTACA.chao[1] * s).toFixed(1));
+    at(poste, "x", (p.x - w / 2).toFixed(1)); at(poste, "y", (p.y - h).toFixed(1));
+    at(poste, "width", w.toFixed(1)); at(poste, "height", h.toFixed(1)); at(poste, "rx", (w / 3).toFixed(1));
+    var x0 = p.x + w / 2, y0 = p.y - h;
+    at(band, "d", "M" + x0.toFixed(1) + " " + y0.toFixed(1) + "h" + bw.toFixed(1) + "l" + (-bw * 0.28).toFixed(1) + " " + (bh / 2).toFixed(1) +
+      "l" + (bw * 0.28).toFixed(1) + " " + (bh / 2).toFixed(1) + "h" + (-bw).toFixed(1) + "z");
+    return { l: p.x - w / 2, t: y0, w: w / 2 + bw + w / 2, h: h + ESTACA.chao[1] * s, px: p.x, py: p.y, topo: y0, bw: bw, bh: bh, poste: w };
+  }
+  function aplicarEstacaCosta(t) {
+    var s = t - T.pisca, vS = 1;
+    if (s >= 0 && s < ESTACA_PISCA[5]) { var P_ = ESTACA_PISCA; vS = s < P_[1] ? 1 : s < P_[2] ? 0 : s < P_[3] ? 1 : s < P_[4] ? 0 : 1; }
+    vS *= 1 - eo(seg(t, T.onda[0] + 0.1, 0.3));   // sai quando a grade chega
+    at(E("gEstaca"), "opacity", vS.toFixed(3));
+    if (vS > 0) desenhoEstaca(girar(quatAt(idade(t)), ESTACA_LL), 1, E("estChao"), E("estPoste"), E("estBand"));
+  }
+
+  // ═══ AS ESTACAS (peça 3b, cópia de s04: a mesma GRADE, o mesmo ESTACA, a mesma perspectiva) ═══
+  var GRADE = { lng0: 113.5, lat0: -11.5, passo: 3, lngMax: 154, latMin: -44, taipan: [140.5, -26.5] };
+  // as doze da beira que escorregam para o mar em 'sea.': o nó e o fim, 1,0° além da costa ao longo do eixo (M3/geo4.py)
+  var MAR = [[[122.5, -17.5], [122.5, -15.9]], [[125.5, -14.5], [125.5, -13.48]], [[128.5, -17.5], [128.5, -13.76]], [[131.5, -14.5], [131.5, -11.28]],
+    [[134.5, -14.5], [134.5, -11.06]], [[137.5, -17.5], [137.5, -15.16]], [[140.5, -20.5], [140.5, -16.62]], [[143.5, -14.5], [144.973, -14.5]],
+    [[143.5, -17.5], [147.129, -17.5]], [[146.5, -20.5], [149.808, -20.5]], [[149.5, -23.5], [151.95, -23.5]], [[152.5, -26.5], [154.237, -26.5]]];
+  var NO_VIPERS_LL = [122.0, -24.0];                       // o centro da pílula NO VIPERS, no oeste do continente
+  var TAIPAN_PIL = { borda: [135.6, -26.0], vao: 46 };     // a longitude mais a oeste do Channel Country (IBRA, 135,72° E): a pílula fica à esquerda do polígono inteiro, sem tocar o contorno
+  function naArea(l, tp, w, h) {
+    var r = l + w, b = tp + h;
+    return Math.min(l - 200, 3640 - r, tp - 160, 1880 - b, Math.max(3440 - r, 1760 - b));
+  }
+  var NOS = null;
+  function prepararEstacas() {
+    var AUS = geo("australia");
+    function dentroAnel(x, y, a) {
+      var c = false;
+      for (var i = 0, j = a.length - 1; i < a.length; j = i++) {
+        var xi = a[i][0], yi = a[i][1], xj = a[j][0], yj = a[j][1];
+        if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) c = !c;
+      }
+      return c;
+    }
+    function dentroDe(fc, x, y) {
+      return fc.features.some(function (f) {
+        var g = f.geometry, ps = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+        return ps.some(function (p) { return dentroAnel(x, y, p[0]) && !p.slice(1).some(function (h) { return dentroAnel(x, y, h); }); });
+      });
+    }
+    if (!dentroDe(geo("asia"), CAUDA[0], CAUDA[1])) { falhar("a cauda da seta não está dentro da Ásia continental (asia.json)."); return false; }
+    var out = [];
+    for (var lat = GRADE.lat0; lat >= GRADE.latMin; lat -= GRADE.passo)
+      for (var lng = GRADE.lng0; lng <= GRADE.lngMax; lng += GRADE.passo)
+        if (dentroDe(AUS, lng, lat)) out.push({ ll: [lng, lat], taipan: Math.abs(lng - GRADE.taipan[0]) < 1e-6 && Math.abs(lat - GRADE.taipan[1]) < 1e-6 });
+    if (out.length !== 77 || out.filter(function (n) { return n.taipan; }).length !== 1) { falhar("a grade das estacas não é a de s04 (77 nós, um no Channel Country)."); return false; }
+    out.forEach(function (n) {
+      n.atraso = T.onda[1] * (GRADE.lat0 - n.ll[1]) / (GRADE.lat0 - GRADE.latMin);   // a onda do norte para o sul
+      MAR.forEach(function (m) { if (Math.abs(m[0][0] - n.ll[0]) < 1e-6 && Math.abs(m[0][1] - n.ll[1]) < 1e-6) n.mar = m[1]; });
+    });
+    if (out.filter(function (n) { return n.mar; }).length !== 12) { falhar("as doze estacas da beira não são nós da grade."); return false; }
+    out.sort(function (a, b) { return (a.taipan - b.taipan) || (b.ll[1] - a.ll[1]); });
+    var pai = E("estacas");
+    out.forEach(function (n, i) {
+      var g = svgEl("g", { id: "est" + i, "class": "estaca" + (n.taipan ? " taipan" : ""), opacity: "0" }, pai);
+      n.chao = svgEl("ellipse", { "class": "chao" }, g); n.poste = svgEl("rect", { "class": "poste" }, g); n.band = svgEl("path", { "class": "bandeira" }, g); n.g = g;
+    });
+    NOS = out;
+    return true;
+  }
+  function svgEl(tag, attrs, pai) { var e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (pai) pai.appendChild(e); return e; }
+  var CAIXA_TAIPAN = null;
+  function aplicarEstacas(t) {
+    var vivo = t >= T.onda[0] && !noCorte(t), dim = 1 - 0.5 * eo(seg(t, T.the, 0.3)), vt = eo(seg(t, T.the, 0.3));
+    var desl = eio(seg(t, T.sea, T.desliza));
+    CAIXA_TAIPAN = null;
+    NOS.forEach(function (n) {
+      var r = !vivo ? 0 : eo(seg(t, T.onda[0] + n.atraso, T.sobe));
+      if (r <= 0.001) { n.g.setAttribute("opacity", "0"); return; }
+      var ll = n.ll;
+      if (n.mar) ll = [n.ll[0] + (n.mar[0] - n.ll[0]) * desl, n.ll[1] + (n.mar[1] - n.ll[1]) * desl];
+      var cx = desenhoEstaca(ll, r, n.chao, n.poste, n.band);
+      var vm = cl(naArea(cx.l, cx.t, cx.w, cx.h) / 30, 0, 1);
+      if (n.taipan) {
+        // a estaca do Channel Country: --tinta como as outras até 'The', depois --destaque (a cor da classe .taipan, por cima)
+        var cor = "color-mix(in srgb, var(--destaque) " + (vt * 100).toFixed(1) + "%, var(--tinta))";
+        n.poste.style.fill = cor; n.band.style.fill = cor;
+        n.poste.style.stroke = vt > 0.5 ? "var(--rotulo)" : "var(--fronteira-contorno-cor)"; n.band.style.stroke = n.poste.style.stroke;
+        n.g.setAttribute("opacity", (Math.min(1, r * 3) * vm).toFixed(3));
+        CAIXA_TAIPAN = cx;
+      } else n.g.setAttribute("opacity", (Math.min(1, r * 3) * vm * dim).toFixed(3));
+    });
+  }
+
+  // ═══ PEÇA 4 · A RÉGUA DO TEMPO (cópia de s22), com a janela 30–25 e a marca do encontro (sem número) desta cena ═══
+  var REGUA = { x0: 60, x1: 2980, maMax: 85, linhaOpac: 0.45 };
+  var xR = function (ma) { return REGUA.x1 - (REGUA.x1 - REGUA.x0) * cl(ma, 0, REGUA.maMax) / REGUA.maMax; };
+  var ENC_MA = 23;   // a marca do encontro, SEM número, no lugar de 23 na escala linear (a folga de ~2 milhões de anos não se alarga)
+  var ETQ = { topoEnc: 345, vao: 24, xJan: 2400, direita: 3630 };   // as etiquetas penduradas: AUSTRALIA / MEETS ASIA em cima, à direita; a janela embaixo
+  function prepararRegua() {
+    at(E("rLinha"), "x1", REGUA.x0); at(E("rLinha"), "x2", REGUA.x1);
+    at(E("rTrecho"), "x1", xR(85)); at(E("rTrecho"), "x2", xR(80));
+    at(E("r45"), "x1", xR(45)); at(E("r45"), "x2", xR(45));
+    at(E("rJanela"), "x1", xR(30)); at(E("rJanela"), "x2", xR(25));
+    at(E("rEnc"), "x1", xR(ENC_MA)); at(E("rEnc"), "x2", xR(ENC_MA));
+    at(E("rHoje"), "x1", xR(0)); at(E("rHoje"), "x2", xR(0));
+    ["rLinha", "rTrecho", "r45", "rJanela", "rEnc", "rHoje", "rCursor"].forEach(function (id) { at(E(id), "stroke", COR.tinta); });
+    at(E("rLinha"), "stroke-opacity", REGUA.linhaOpac);
+    var l1 = E("l8580"), l2 = E("l45");
+    if (l1) l1.style.left = xR(85) + "px";
+    if (l2) l2.style.left = xR(45) + "px";
+    [["fioJanSob", COR.sobCss, 12, COR.sob[3]], ["fioJan", COR.tinta, 4, 1], ["fioEncSob", COR.sobCss, 12, COR.sob[3]], ["fioEnc", COR.tinta, 4, 1],
+     ["fioTaiSob", COR.sobCss, 14, COR.sob[3]], ["fioTai", COR.tinta, 6, 1]].forEach(function (a) {
+      at(E(a[0]), "stroke", a[1]); at(E(a[0]), "stroke-width", a[2]); at(E(a[0]), "stroke-opacity", a[3]);
+    });
+  }
+  function noAr(t, t0, t1, entraPorCorte, saiPorCorte) {   // a vida de um texto: entra em 300 ms (ou no corte) e sai em 300 ms (ou no corte)
+    if (t < t0 || t >= t1) return 0;
+    var vin = entraPorCorte ? 1 : eo(seg(t, t0, 0.3)), vout = saiPorCorte ? 1 : 1 - eio(seg(t, t1 - 0.3, 0.3));
+    return Math.min(vin, vout);
+  }
+  function vRegua(t) {
+    if (t < T.corte1[0]) return 1;
+    if (t < T.corte1[1]) return 0;
+    return noAr(t, T.corte1[1], T.reguaSai, true, false);
+  }
+  function aplicarRegua(t) {
+    var v = vRegua(t), rg = E("regua");
+    if (rg) { rg.style.opacity = v.toFixed(3); rg.style.visibility = v > 0.001 ? "visible" : "hidden"; }
+    var l1 = E("l8580"), l2 = E("l45");
+    if (l1) l1.style.opacity = "0.5";
+    if (l2) l2.style.opacity = "0.5";
+    at(E("rTrecho"), "opacity", "0.5"); at(E("r45"), "opacity", "0.5");
+    var vJ = noAr(t, T.janela, T.reguaSai + 1, false, true), pJ = pulso(t, T.snakes, 0.6);
+    at(E("rJanela"), "opacity", vJ.toFixed(3)); at(E("rJanela"), "stroke-width", (12 + 14 * pJ).toFixed(1));
+    var vN = noAr(t, T.enc, T.reguaSai + 1, false, true), pN = pulso(t, T.asia, 0.6);
+    at(E("rEnc"), "opacity", vN.toFixed(3)); at(E("rEnc"), "stroke-width", (8 + 10 * pN).toFixed(1));
+    var xc = xR(idade(t)).toFixed(1); at(E("rCursor"), "x1", xc); at(E("rCursor"), "x2", xc);
+    // as etiquetas penduradas e os fios
+    var pe = E("pEnc"), pj = E("pJan");
+    if (!pe || !pj) return;
+    var ew = pe.offsetWidth, eh = pe.offsetHeight, jw = pj.offsetWidth;
+    var xEnc = ETQ.direita - ew, yJan = ETQ.topoEnc + eh + ETQ.vao;
+    var vje = v * vJ, vne = v * vN;
+    pj.style.opacity = vje.toFixed(3); pj.style.visibility = vje > 0.001 ? "visible" : "hidden";
+    pj.style.transform = "translate(" + ETQ.xJan + "px," + (yJan + (1 - eo(seg(t, T.janela, 0.3))) * 24).toFixed(2) + "px) scale(" + (1 + 0.04 * pJ).toFixed(4) + ")";
+    pe.style.opacity = vne.toFixed(3); pe.style.visibility = vne > 0.001 ? "visible" : "hidden";
+    pe.style.transform = "translate(" + xEnc + "px," + (ETQ.topoEnc + (1 - eo(seg(t, T.enc, 0.3))) * 24).toFixed(2) + "px) scale(" + (1 + 0.04 * pN).toFixed(4) + ")";
+    var xjf = 400 + (xR(30) + xR(25)) / 2, dJ = "M" + xjf.toFixed(1) + " 330V" + yJan.toFixed(1);
+    at(E("fioJanSob"), "d", dJ); at(E("fioJan"), "d", dJ); at(E("gFios"), "opacity", vje.toFixed(3));
+    var xef = 400 + xR(ENC_MA), ym = ETQ.topoEnc + eh / 2, dE = "M" + xef.toFixed(1) + " 330V" + ym.toFixed(1) + "H" + xEnc.toFixed(1);
+    at(E("fioEncSob"), "d", dE); at(E("fioEnc"), "d", dE); at(E("gFioEnc"), "opacity", vne.toFixed(3));
+  }
+
+  // ═══ OS RÓTULOS PRESOS AO CHÃO E OS CRÉDITOS ═══
+  var SEA_LL = [117.6537, 10.3759];   // a borda esquerda e o topo de SOUTHEAST ASIA (o de s22)
+  function porPilula(el, ll, ax, ay, dx, dy, v, sobe) {
+    if (!el) return null;
+    var p = map.project(ll), w = el.offsetWidth, h = el.offsetHeight;
+    var x = p.x - ax * w + (dx || 0), y = p.y - ay * h + (dy || 0) + (sobe == null ? (1 - v) * 24 : sobe);
+    el.style.transform = "translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+    el.style.opacity = cl(v, 0, 1).toFixed(3);
+    el.style.visibility = v > 0.001 ? "visible" : "hidden";
+    return { l: x, t: y, w: w, h: h };
+  }
+  function porEm(el, x, y, v) {
+    if (!el) return;
+    el.style.transform = "translate(" + x.toFixed(2) + "px," + y.toFixed(2) + "px)";
+    el.style.opacity = cl(v, 0, 1).toFixed(3); el.style.visibility = v > 0.001 ? "visible" : "hidden";
+  }
+  function credito(id, v, baixo) {
+    var el = E(id); if (!el) return;
+    el.style.opacity = cl(v, 0, 1).toFixed(3); el.style.visibility = v > 0.001 ? "visible" : "hidden";
+    if (baixo != null) el.style.bottom = baixo + "px";
+  }
+  var SLOT = [20, 109, 198];
+  function aplicarTextos(t) {
+    var mapa = !noCorte(t);
+    // SOUTHEAST ASIA: no ar desde s22; sai no corte para a naja
+    porPilula(E("pSea"), SEA_LL, 0, 0, 0, 0, noAr(t, 0, T.corte1[0], true, true), 0);
+    // ELAPIDS · FRONT-FANGED SNAKES: na cauda da seta, à esquerda dela, com o topo em y 400 (abaixo da régua)
+    var pe = E("pElap");
+    if (pe) {
+      var v = noAr(t, T.its, T.elapSai, false, false), c = map.project(CAUDA), w = pe.offsetWidth, h = pe.offsetHeight;
+      porEm(pe, c.x - 30 - w, Math.max(400, c.y - h - 20) + (1 - eo(seg(t, T.its, 0.3))) * 24, v);
+    }
+    // NO VIPERS: sobre o oeste do continente
+    porPilula(E("pVip"), NO_VIPERS_LL, 0.5, 0.5, 0, 0, noAr(t, T.vip[0], T.vip[1], false, true));
+    // INLAND TAIPAN: à esquerda do Channel Country, na altura da bandeirola da estaca dele, com o fio até ela
+    var pt = E("pTai"), vT = noAr(t, T.tai, DUR + 1, false, true);
+    if (pt && CAIXA_TAIPAN) {
+      var b = map.project(TAIPAN_PIL.borda), ky = CAIXA_TAIPAN.topo + CAIXA_TAIPAN.bh / 2;
+      var tw = pt.offsetWidth, th = pt.offsetHeight, px = b.x - TAIPAN_PIL.vao - tw, py = ky - th / 2 + (1 - eo(seg(t, T.tai, 0.3))) * 24;
+      porEm(pt, px, py, vT);
+      var x1 = px + tw, y1 = ky, x2 = CAIXA_TAIPAN.px - CAIXA_TAIPAN.poste / 2, f = eo(seg(t, T.tai, 0.3));
+      ["fioTaiSob", "fioTai"].forEach(function (id) { var ln = E(id); if (!ln) return; at(ln, "x1", x1.toFixed(1)); at(ln, "y1", y1.toFixed(1)); at(ln, "x2", (x1 + (x2 - x1) * f).toFixed(1)); at(ln, "y2", y1.toFixed(1)); });
+      at(E("gFioTai"), "opacity", vT.toFixed(3));
+    } else { if (pt) porEm(pt, 0, 0, 0); at(E("gFioTai"), "opacity", "0"); }
+    // os créditos (o textos-tela: [120]–[131]); nada sob os registros reais
+    var em = function (a, b) { return t >= a && t < b ? 1 : 0; };
+    credito("credito", mapa ? 1 : 0, SLOT[0]);
+    credito("crPlaca", em(0, T.corte1[0]) + noAr(t, T.corte1[1], T.encaixa, true, false), SLOT[1]);
+    credito("crHall", noAr(t, 0, 1.467, true, false), SLOT[2]);
+    credito("crLee1", noAr(t, 1.5, T.corte1[0], false, true), SLOT[2]);
+    credito("crLJ", noAr(t, T.corte1[1], 19.033, true, false), SLOT[2]);
+    credito("crLH", noAr(t, 19.067, 28.667, false, false), SLOT[2]);
+    if (t < T.corte2[0]) credito("crJL", noAr(t, 28.667, T.corte2[0], false, true), SLOT[2]);
+    else credito("crJL", noAr(t, T.corte2[1], DUR + 1, true, true), SLOT[1]);
+    credito("crIbra", noAr(t, T.tai, DUR + 1, false, true), SLOT[2]);
+  }
+
+  // ═══ OS REGISTROS REAIS: o <video> por t (nunca play() no render). Fora da janela dele, durante a captura, o vídeo sai do DOM (o
+  //     render espera o quadro novo de todo vídeo presente, até 400 ms, e um vídeo parado o faria esperar em todo quadro). ═══
+  function seekVid(t) {
+    var promessas = [], holder = E("vids"), capturando_ = typeof window.__tRender === "number" && !window.__PREVIEW;
+    VIDS.forEach(function (d) {
+      var v = d.el; if (!v) return;
+      var dentro = t >= d.t0 && t < d.t1;
+      if (!dentro) {
+        v.style.visibility = "hidden";
+        if (capturando_ && v.isConnected) v.remove();
+        return;
+      }
+      if (!v.isConnected && holder) holder.appendChild(v);
+      v.style.visibility = "visible";
+      var tv = d.ini + (t - d.t0) + 1 / 60;
+      if (window.__PREVIEW) { if (v.readyState >= 1 && Math.abs(v.currentTime - tv) > 0.3) v.currentTime = tv; return; }
+      if (v.readyState < 1) return;
+      if (Math.abs(v.currentTime - tv) < 1e-4 && !v.seeking) return;
+      promessas.push(new Promise(function (r) { v.addEventListener("seeked", r, { once: true }); v.addEventListener("error", r, { once: true }); v.currentTime = tv; }));
+    });
+    return promessas.length ? Promise.all(promessas) : undefined;
+  }
+  VIDS.forEach(function (d) { d.el = E(d.id); });
+  window.__videoPronto = Promise.all(VIDS.map(function (d) {
+    return new Promise(function (r) {
+      var v = d.el; if (!v) return r();
+      if (v.readyState >= 2) return r();
+      v.addEventListener("loadeddata", r, { once: true }); v.addEventListener("error", r, { once: true });
+    });
+  }));
+
+  window.__duracao = DUR;
+  window.__renderAt = function () {};
+  window.__prepararCaptura = function () {};
+  window.__aguardarMapa = function () { return Promise.resolve(true); };
+  window.__fotosProntas = true;
+  var resolverPronto, rejeitarPronto;
+  window.__ready = new Promise(function (res, rej) { resolverPronto = res; rejeitarPronto = rej; });
+  window.__ready.catch(function () {});
+  function falhar(msg) {
+    if (window.__erroCena) return;
+    window.__erroCena = msg;
+    var el = E("erroCena"); if (el) { el.textContent = "CENA COM ERRO — " + msg; el.hidden = false; }
+    try { console.error("[cena de mapa] " + msg); } catch (e) {}
+    rejeitarPronto(new Error(msg));
+  }
+
+  var P = window.__REGIE_MAPA;
+  if (typeof maplibregl === "undefined") return falhar("não carregou ../_media/_vendor/maplibre-gl.js. Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (!P) return falhar("sem perfil de base (window.__REGIE_MAPA). Rode: node <motor>/src/mapa/preparar-cena.mjs <proj>");
+  if (P.nome !== "maptiler") return falhar("a base carregada é '" + P.nome + "', e o vídeo inteiro usa 'maptiler' (canal.json › mapa.perfil).");
+  if (P.tipo !== "raster") return falhar("o perfil '" + P.nome + "' não é raster.");
+  if (P.base.tileSize !== TILE) return falhar("o perfil não usa tileSize " + TILE + " (as poses do conceito são em tiles de 512 px).");
+  var chave = null;
+  if (P.credencial) {
+    chave = (window.__chaves || {})[P.credencial] || null;
+    if (!chave) return falhar("a base '" + P.nome + "' precisa da chave " + P.credencial + ", que o render da Régie injeta na hora. " +
+      "Aberta direto no navegador a cena não tem a chave: use o render da Régie.");
+  }
+  function geo(slug) {
+    var g = (window.__GEO || {})[slug];
+    if (!g) falhar("a geometria '" + slug + "' não foi carregada: falta <script src=\"../_media/geo/" + slug + ".js\"> ou o arquivo.");
+    return g;
+  }
+  var tok = function (nome, padrao) { return getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || padrao; };
+  function rgbDe(css) {
+    css = String(css || "").trim();
+    var m = /^#([0-9a-f]{6})$/i.exec(css);
+    if (m) { var n = parseInt(m[1], 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255, 1]; }
+    m = /rgba?\(([^)]*)\)/.exec(css);
+    if (m) { var v = m[1].split(",").map(Number); return [v[0], v[1], v[2], v.length > 3 ? v[3] : 1]; }
+    return [0, 0, 0, 1];
+  }
+  var rgb = function (v, a) { return "rgba(" + v[0] + "," + v[1] + "," + v[2] + "," + (a == null ? v[3] : a) + ")"; };
+
+  // ── os créditos: o de mapa do perfil; as camadas que exigem crédito são as duas do modelo de placas (a linha "Plate model: …") e o
+  //    IBRA (a linha "IBRA 7.1 (DCCEEW)", no ar enquanto o Channel Country está aceso); qualquer outra barra a cena ──
+  var COM_CREDITO = { "australia-em-movimento-relativa-antartida": 1, "polos-euler-australia-antartida": 1, "channel-country": 1 };
+  var creditoTexto = (function () {
+    var partes = [];
+    if (P.atribuicao && P.atribuicao.exigida) {
+      if (!P.atribuicao.tela) { falhar("a base '" + P.nome + "' exige crédito na tela e o perfil não traz o texto."); return ""; }
+      partes.push(P.atribuicao.tela);
+    }
+    var geos = window.__GEO || {}, meta = window.__GEO_META || {};
+    var slugs = Object.keys(geos);
+    for (var i = 0; i < slugs.length; i++) {
+      var m = meta[slugs[i]];
+      if (!m) { falhar("a geometria '" + slugs[i] + "' foi carregada sem procedência (fonte/licença)."); return ""; }
+      if (m.exige_credito && !COM_CREDITO[slugs[i]]) { falhar("a geometria '" + slugs[i] + "' exige crédito na tela, e o textos-tela de s25 não o tem."); return ""; }
+    }
+    var c = E("credito");
+    if (c) c.textContent = partes.join(" · ");
+    return partes.join(" · ");
+  })();
+  window.__creditoMapa = creditoTexto;
+  if (!window.__erroCena && creditoTexto !== "© MapTiler © OpenStreetMap contributors")
+    falhar("o crédito de mapa montado ('" + creditoTexto + "') não é o do textos-tela.json.");
+  if (window.__erroCena) return;
+
+  var COR = {
+    tinta: tok("--tinta", "#F4F1EA"), fundo: tok("--fundo", "#0E1726"), destaque: tok("--destaque", "#F5A524"),
+    neutroRgb: rgbDe(tok("--neutro", "#737D8E")), fundoRgb: rgbDe(tok("--fundo", "#0E1726")),
+    sob: rgbDe(tok("--fronteira-contorno-cor", "rgba(11, 15, 20, 0.60)"))
+  };
+  COR.sobCss = rgb(COR.sob, 1);
+
+  function prepararGeo() {
+    var rel = geo("australia-em-movimento-relativa-antartida"), pol = geo("polos-euler-australia-antartida");
+    geo("australia"); geo("channel-country"); geo("asia");
+    if (window.__erroCena) return false;
+    var f0 = rel.features.filter(function (f) { return f.properties.tempo_ma === 0; })[0];
+    if (!f0) { falhar("a camada australia-em-movimento-relativa-antartida não tem a feição de 0 Ma."); return false; }
+    var gm = f0.geometry, polys = gm.type === "MultiPolygon" ? gm.coordinates : [gm.coordinates];
+    BASE = polys.map(function (p) { return p[0]; });
+    var tab = {};
+    pol.features.forEach(function (f) { var p = f.properties; if (p.placa === 801 && String(p.ancora) === "802") tab[Math.round(p.tempo_ma * 2)] = [f.geometry.coordinates[0], f.geometry.coordinates[1], p.angulo_graus]; });
+    POLOS = [];
+    for (var k = 0; k <= 180; k++) { if (!tab[k]) { falhar("faltou o polo de Euler de " + k / 2 + " Ma (801 em relação a 802)."); return false; } POLOS.push(quat(tab[k][0], tab[k][1], tab[k][2])); }
+    return prepararEstacas();
+  }
+
+  // ── rede com nova tentativa (o molde da pré-v1, sem mudança; cópia de s22) ──
+  window.__retentativasMapa = 0;
+  window.__retentativasMapaPorFalha = { corrompido: 0, tempo: 0, rede: 0, http: 0 };
+  var ESPERAS = [0, 1000, 3000, 6000, 10000];
+  var PRAZO_TENTATIVA = 30000;
+  function defeitoDaImagem(buf) {
+    var b = new Uint8Array(buf), n = b.length, i;
+    if (n < 8) return n ? "resposta de " + n + " bytes" : "resposta vazia";
+    if (b[0] === 0xFF && b[1] === 0xD8) {
+      for (i = n - 2; i >= Math.max(2, n - 64); i--) if (b[i] === 0xFF && b[i + 1] === 0xD9) return null;
+      return "JPEG cortado (" + n + " bytes, sem o marcador final FF D9)";
+    }
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+      for (i = n - 8; i >= Math.max(8, n - 64); i--) if (b[i] === 0x49 && b[i + 1] === 0x45 && b[i + 2] === 0x4E && b[i + 3] === 0x44) return null;
+      return "PNG cortado (" + n + " bytes, sem o bloco IEND)";
+    }
+    if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46) {
+      var decl = (b[4] | (b[5] << 8) | (b[6] << 16) | (b[7] << 24)) >>> 0;
+      return decl + 8 <= n ? null : "WebP cortado (" + n + " de " + (decl + 8) + " bytes)";
+    }
+    return null;
+  }
+  function erroCorpo(msg, url, st) { var e = new Error("tile corrompido: " + msg); e.falha = "corrompido"; e.url = url; e.statusCorpo = st; return e; }
+  function buscarComRetentativa(params, abortar) {
+    var url = params.url.replace(/^regie\+/, "");
+    var tentativa = 0;
+    var ehImagem = params.type === "image";
+    function uma() {
+      var ctl = new AbortController(), estourou = false;
+      var cancelar = function () { ctl.abort(); };
+      var externo = abortar && abortar.signal;
+      if (externo) { if (externo.aborted) ctl.abort(); else externo.addEventListener("abort", cancelar); }
+      var relogio = setTimeout(function () { estourou = true; ctl.abort(); }, PRAZO_TENTATIVA);
+      var soltar = function () { clearTimeout(relogio); if (externo) externo.removeEventListener("abort", cancelar); };
+      return fetch(url, { signal: ctl.signal }).then(function (r) {
+        if (!r.ok) { var e = new Error("AJAXError: HTTP " + r.status + " (" + r.status + "): " + url); e.status = r.status; e.url = url; e.falha = "http"; throw e; }
+        if (params.type === "json") return r.text().then(function (t) { try { return JSON.parse(t); } catch (x) { throw erroCorpo("JSON ilegível (" + t.length + " caracteres)", url, r.status); } });
+        return r.arrayBuffer().then(function (buf) {
+          if (!ehImagem) return buf;
+          var defeito = defeitoDaImagem(buf);
+          if (defeito) throw erroCorpo(defeito, url, r.status);
+          return createImageBitmap(new Blob([buf])).then(null, function (x) {
+            throw erroCorpo("a imagem não decodifica (" + buf.byteLength + " bytes: " + ((x && x.message) || "sem descrição") + ")", url, r.status);
+          });
+        });
+      }).then(function (data) { soltar(); return { data: data }; }, function (e) {
+        soltar();
+        if (e && e.name === "AbortError" && !estourou) throw e;
+        if (estourou) { e = new Error("sem resposta em " + PRAZO_TENTATIVA / 1000 + " s"); e.falha = "tempo"; }
+        if (!e || typeof e !== "object") e = new Error(String(e));
+        var st = e.status;
+        if (!e.falha) e.falha = st ? "http" : "rede";
+        var passageira = e.falha !== "http" || st === 429 || st >= 500;
+        try { e.url = url; e.tentativas = tentativa + 1; } catch (x) {}
+        if (!passageira || ++tentativa >= ESPERAS.length) throw e;
+        window.__retentativasMapa++;
+        window.__retentativasMapaPorFalha[e.falha] = (window.__retentativasMapaPorFalha[e.falha] || 0) + 1;
+        return new Promise(function (res) { setTimeout(res, ESPERAS[tentativa]); }).then(uma);
+      });
+    }
+    return uma();
+  }
+  maplibregl.addProtocol("regie+https", buscarComRetentativa);
+  maplibregl.addProtocol("regie+http", buscarComRetentativa);
+  var pelaRegie = function (url) { return /^https?:\/\//.test(url) ? { url: "regie+" + url } : undefined; };
+  var comChave = function (u) { return chave ? u.split("{chave}").join(encodeURIComponent(chave)) : u; };
+
+  if (!prepararGeo()) return;
+  if (window.__erroCena) return;
+  window.__cameraAt = cameraAt;
+  window.__idadeAt = idade;
+
+  var map, cv = E("cv"), ctx = cv ? cv.getContext("2d") : null;
+  function estilo() {
+    var fontes = { base: { type: "raster", tiles: P.base.tiles.map(comChave), tileSize: P.base.tileSize, maxzoom: P.base.maxzoom } };
+    var cam = camadasDaCena(), ids = Object.keys(cam.fontes);
+    for (var i = 0; i < ids.length; i++) fontes[ids[i]] = cam.fontes[ids[i]];
+    return { version: 8, transition: { duration: 0, delay: 0 }, sources: fontes,
+      layers: [{ id: "base", type: "raster", source: "base",
+        // o tratamento C da base (identidade §6, Lucas 09/10/2026): brilho máximo 92 %, cor natural, contraste +25 %; sem véu
+        paint: { "raster-brightness-max": 0.92, "raster-saturation": 0, "raster-contrast": 0.25, "raster-fade-duration": 0 } }].concat(cam.camadas) };
+  }
+  var FONTES = ["base"].concat(Object.keys(camadasDaCena().fontes));
+
+  var c0 = cameraAt(0);
+  try {
+    map = new maplibregl.Map({
+      container: "map", interactive: false, preserveDrawingBuffer: true, fadeDuration: 0,
+      maxTileCacheSize: 4096, attributionControl: false, maxPitch: 85, transformRequest: pelaRegie,
+      style: estilo(), center: c0.center, zoom: c0.zoom, bearing: 0, pitch: 0
+    });
+  } catch (e) {
+    return falhar("o MapLibre não subiu (" + (e && e.message) + "). Sem WebGL no navegador não há mapa.");
+  }
+  window.map = map;
+  (function () {
+    var pt = map.painter, pintar = pt && pt.render;
+    if (typeof pintar !== "function") return falhar("o MapLibre desta cena não tem painter.render: a base andaria em degraus de 1 px.");
+    pt.render = function (estiloMapa, opcoes) { return pintar.call(this, estiloMapa, Object.assign({}, opcoes, { moving: true })); };
+  })();
+
+  window.__errosMapa = 0;
+  function motivoRede(err, msg) {
+    var st = err.status, n = err.tentativas > 1 ? " (" + err.tentativas + " tentativas)" : "";
+    if (err.falha === "corrompido" || /could not be decoded|could not load image|tile corrompido/i.test(msg))
+      return "mandou tile CORROMPIDO" + n + " (" + String(msg).replace(/^tile corrompido: /, "") + "). Renderize de novo.";
+    if (err.falha === "tempo") return "não respondeu em " + PRAZO_TENTATIVA / 1000 + " s" + n + ". Renderize de novo.";
+    if (st === 401 || st === 403) return "recusou o acesso (HTTP " + st + "). Confira a chave " + (P.credencial || "") + " e o plano do dono.";
+    if (st === 429) return "limitou as requisições (HTTP 429)" + n + ". Espere e renderize de novo.";
+    if (st >= 500) return "está com erro no servidor (HTTP " + st + ")" + n + ". Tente de novo mais tarde.";
+    if (st) return "respondeu HTTP " + st + ".";
+    return "não respondeu (sem internet? servidor fora do ar? firewall?)" + n + ".";
+  }
+  var mapaCarregado = false;
+  map.on("error", function (ev) {
+    window.__errosMapa++;
+    var err = (ev && ev.error) || {};
+    var msg = String(err.message || "");
+    var deRede = err.status || err.url || (ev && ev.tile) || /fetch|network|failed to load|load failed|cors/i.test(msg);
+    if (!deRede) return falhar("o MapLibre acusou erro na cena: " + (msg || "sem descrição") + ".");
+    var fonte = ev && ev.sourceId ? " (fonte '" + ev.sourceId + "')" : (mapaCarregado ? "" : " (o estilo do mapa)");
+    falhar("a base '" + P.nome + "'" + fonte + " " + motivoRede(err, msg) + (err.url ? " URL: " + String(err.url).split("?")[0] : ""));
+  });
+  map.on("load", function () {
+    mapaCarregado = true;
+    map.once("idle", function () {
+      var f = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+      f.then(function () { if (!window.__erroCena) resolverPronto(true); });
+    });
+  });
+
+  var opAntes = {};
+  function pinta(id, prop, v) { v = +(+v).toFixed(3); var k = id + "|" + prop; if (opAntes[k] === v) return; map.setPaintProperty(id, prop, v); opAntes[k] = v; }
+
+  prepararRegua();
+
+  function aplicar(t) {
+    var promessa = seekVid(t);
+    if (!mapaCarregado) return promessa;
+    map.jumpTo(cameraAt(t));
+    aplicarCamadas(t);
+    if (ctx) ctx.clearRect(0, 0, cv.width, cv.height);
+    desenharViajante(t);
+    desenharSeta(t);
+    aplicarEstacaCosta(t);
+    aplicarEstacas(t);
+    aplicarRegua(t);
+    aplicarTextos(t);
+    return promessa;
+  }
+  window.__renderAt = function (t) {
+    try { return aplicar(cl(+t || 0, 0, DUR)); }
+    catch (e) { window.__errosRender = (window.__errosRender || 0) + 1; window.__ultimoErroRender = String(e && e.message); }
+  };
+
+  function tileComErro() {
+    try {
+      var sc = map.style.sourceCaches || map.style._sourceCaches || {};
+      for (var id in sc) { var ts = (sc[id] && sc[id]._tiles) || {}; for (var k in ts) if (ts[k] && ts[k].state === "errored") return id; }
+    } catch (e) {}
+    return null;
+  }
+  function barrarTileComErro() {
+    var ruim = tileComErro();
+    if (ruim && !window.__erroCena) falhar("a base '" + P.nome + "' (fonte '" + ruim + "') tem tile que não carregou. O quadro sairia com buraco.");
+    return !!ruim;
+  }
+  var vigia = setInterval(function () { if (window.__erroCena || barrarTileComErro()) clearInterval(vigia); }, 250);
+  window.__aguardarMapa = function (teto) {
+    teto = teto || 90000;
+    return new Promise(function (res) {
+      var pronto = function () {
+        try {
+          if (!map.areTilesLoaded() || map.isMoving()) return false;
+          for (var i = 0; i < FONTES.length; i++) if (!map.getSource(FONTES[i]) || !map.isSourceLoaded(FONTES[i])) return false;
+          return true;
+        } catch (e) { return false; }
+      };
+      var t0 = performance.now(), seguidas = 0, forcadas = 0, pintou = true;
+      (function tick() {
+        barrarTileComErro();
+        var ok = pronto(), cheio = false;
+        try { cheio = map.areTilesLoaded() && !map.isMoving(); } catch (e) {}
+        if (!cheio) forcadas = 0;
+        if (cheio && pintou && (forcadas < 2 || (!ok && forcadas < 6))) { forcadas++; pintou = false; map.once("render", function () { pintou = true; }); map.triggerRepaint(); }
+        if (forcadas < 2 || !pintou) ok = false;
+        seguidas = ok ? seguidas + 1 : 0;
+        if (window.__erroCena || seguidas >= 2) return res(true);
+        if (performance.now() - t0 > teto) {
+          window.__esperasEsgotadas = (window.__esperasEsgotadas || 0) + 1;
+          falhar("os tiles da base '" + P.nome + "' não terminaram de chegar em " + Math.round(teto / 1000) + " s. Renderize de novo.");
+          return res(true);
+        }
+        setTimeout(tick, 30);
+      })();
+    });
+  };
+
+  var capturando = false, rafId = 0;
+  var PREVIEW = window.__PREVIEW === true || location.hash === "#preview";
+  window.__prepararCaptura = function () {
+    capturando = true;
+    if (rafId) cancelAnimationFrame(rafId);
+    return window.__renderAt(0) || true;
+  };
+  window.__ready.then(function () {
+    window.__renderAt(0);
+    if (!PREVIEW || capturando) return;
+    var t0 = performance.now();
+    (function loop() {
+      if (capturando) return;
+      window.__renderAt(((performance.now() - t0) / 1000) % DUR);
+      rafId = requestAnimationFrame(loop);
+    })();
+  }, function () {});
+})();
+</script>
+</body>
+</html>
