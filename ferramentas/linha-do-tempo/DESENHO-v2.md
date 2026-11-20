@@ -184,6 +184,9 @@ caminho da aprovação. Da C vem só o atalho de pular de ponto em ponto.
   antes de mandar consertar. Menos digitação para você." A regra de hoje continua: decisão só no chat.
 - **"Desenhos simples".** A opção dizia: "A barra mostra só blocos coloridos com o número da cena." (A outra era a miniatura
   de verdade, com uma foto de cada cena a cada versão.)
+- **"Aprovo"** (20/11/2026, 14:25, no chat da Sala), a este desenho com a seção 13, depois do resumo e da lista das escolhas da
+  Sala (o vídeo ≥ 960 px na janela dele, a construção à parte e uma troca só, o losango meio cheio depois da resposta, "Quero
+  outro conserto" parando no instante exato, a tecla P e só o tema escuro).
 - **"Continuar na de hoje (Recomendado)"** (13:58). A opção dizia: "Você termina o vídeo 8 na página de hoje, que já tem a
   legenda; o que você viu continua valendo. Eu te mostro aqui no chat a lista dos consertos propostos. A nova eu construo em
   paralelo, e ela entra na revisão dos consertos e nos próximos vídeos."
