@@ -8,7 +8,7 @@ argument-hint: "<proj> --cena=<id>"
 disable-model-invocation: true
 metadata:
   versao: "2"
-  atualizada: "2026-11-18"
+  atualizada: "2026-11-20"
   origem: "canal; catálogo §2.2 (30, com o cético) e etapas.md S32; mínima, criada na Onda 0 para as lições do vídeo 7, com as trocas do cético da Onda 0"
 ---
 

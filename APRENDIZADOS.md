@@ -789,6 +789,7 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a qualquer canal:** todo canal que registra a hora de uma decisão do dono (a regra "a mensagem
   literal e a hora") e roda no Windows pode gravar a hora 3 h fora, sem perceber. A hora local sai do `date` sem
   `TZ` ou do `Get-Date`, nunca de `TZ=<Continente/Cidade>` no Git Bash. Vale avisar o Lucas.
+- A hora escrita de memória, sem comando nenhum (o andamento da arte do vídeo 8), é outro erro, com a mesma saída: o item 117.
 
 ## 28/09/2026 — os avisos do canal no Discord (pré-v1 em `7ab9543`)
 
@@ -1966,7 +1967,7 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   (`sala/modelos-e-esforco.md`, "A Sala recomeça a cada etapa").
 - **Por que serve a outros canais:** todo canal cuja conversa central se limpa para poupar contexto, com agentes em segundo plano, perde
   esses agentes do mesmo jeito, e o aviso de ocupado que eles marcaram trava o próximo que precisar da máquina.
-- Skill: nenhuma ainda. A casa é a `retomar-apos-troca-de-conta` (catálogo §2.5, nº 57, onda 3), quando ela nascer, com o ok do Lucas
+- Skill: nenhuma ainda. A casa é a `retomar-apos-troca-de-conta` (catálogo §2.4, nº 57, onda 3), quando ela nascer, com o ok do Lucas
   para a onda dela.
 
 ### 107. A frase segura da pauta marcada "a conferir" entra no roteiro sem a leitura que veio depois e a desmente
@@ -2123,3 +2124,70 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
 - **Por que serve a outros canais:** o resumo de uma tabela é o passo em que o dado vira frase, em qualquer canal.
 - Skill: nenhuma ainda. A casa é a `pesquisar-documentos-e-dados` (catálogo §2.1, nº 14, onda 3), quando ela nascer, com o ok do
   Lucas para a onda dela.
+
+### 115. A tabela de esperas dos lotes da arte não viu a peça que volta sem o número da cena
+
+- **O que aconteceu** (19/11/2026, vídeo 8, `australia-animais`, passo `art`; `out/australia-animais/_tmp/arte-1/plano-da-sala.md`):
+  a tabela dos 23 lotes punha o EF12 (s66, s67, s68, s70) à espera do EF2, do EF5, do EF1, do EF8 e do M4, e não do EF6. A P3 da s67
+  usa a folha de 1979, que nasce na s36, do EF6. A Sala viu ao lançar o EF12 (o andamento, 22:5x), com o EF6 ainda rodando.
+- **A causa:** as esperas saíram das cenas que o conceito de cada cena cita pelo número e das peças de marca do `arco`, de (1) a (7).
+  A s67 nomeia "a folha de 1979" sem citar a s36, e a folha não está no `arco`. Medido em 20/11/2026: no `conceito-visual.json`, a
+  `cenas` › `s67` só cita a `s19`, e "1979" não aparece no `arco`.
+- **O que resolveu:** o EF12 fez a s67 por último, e a Sala lhe mandou o sha1 da s36 quando o EF6 entregou (`SendMessage`, 23:3x). O
+  bloco A FOLHA DE 1979 é igual, byte a byte, na s36, na s37 e na s67 (o estilo `aa0330bf07fc`, o script `e52399f69c10`; medido em
+  20/11/2026).
+- **Como evitar:** antes de despachar os lotes, a Sala lê o conceito de cada cena (`conceito-visual.json` › `cenas`) procurando as
+  peças pelo nome, não só pelo número da cena. Cada objeto que aparece em mais de uma cena (a folha, o frasco, a régua, o cartão) tem
+  a cena em que nasce, e a cena que o usa espera o lote dela, ou recebe o sha1 dela antes de fazer o plano que o usa. O `arco` não
+  lista todas as peças que voltam.
+- **Por que serve a outros canais:** todo canal que divide a arte em lotes paralelos tem peças que nascem num lote e voltam noutro, e
+  o conceito nem sempre as cita pelo número da cena.
+- Skill: nenhuma ainda. A casa é a `despachar-especialista` (catálogo §2.5, nº 60, onda 1), quando ela nascer, com o ok do Lucas
+  para a onda dela.
+
+### 116. O subagente para com o erro 522 da API, e a Sala o retoma pelo `SendMessage`, com o contexto dele
+
+- **O que aconteceu** (20/11/2026, vídeo 8, `australia-animais`, passo `art`; o andamento do
+  `out/australia-animais/_tmp/arte-1/plano-da-sala.md`): às 00:14, o EF11 e o EF10 pararam com o HTTP 522 da Cloudflare,
+  "connection timed out", no `claude-fable-5-2` (03:14:20 e 03:14:33 UTC), e a resposta dizia "retryable" e "retry_after: 120". Às
+  01:19, o `pesquisa-geo` (as ilhas da Europa para a s62) parou com outro 522. Não era defeito deles. No disco, o EF11 já tinha s63,
+  s64 e s65 e a 1ª rodada de portões de s63 e s64; o EF10 estava no começo; o `pesquisa-geo` já tinha gravado a geometria e a
+  entrada na `pauta-geo.json` (01:16 e 01:17).
+- **A causa:** uma falha passageira do serviço (no 522, a Cloudflare não teve resposta da origem a tempo), que a própria resposta dava
+  como repetível depois de 120 s.
+- **O que resolveu:** a Sala esperou os 120 s e retomou cada um pelo `SendMessage`, com o contexto dele, pedindo que conferisse o
+  disco antes de seguir: o EF11 e o EF10 às 00:16, e o `pesquisa-geo` depois das 01:19. Os três terminaram sem refazer nada. O EF11
+  entregou às 00:2x ("a Sala me retomou às 00:16", `EF11.md`), o EF10 às 01:0x ("nada foi refeito", `EF10.md`), e as ilhas chegaram
+  às 01:2x (`_media/geo/europa-ilhas.json` `918c7a91…`).
+- **Como evitar:** com o erro da API marcado como repetível, a Sala espera o `retry_after` e retoma o mesmo agente pelo `SendMessage`
+  (ele guarda o contexto), pedindo que confira o disco antes de seguir. Não o relança do zero, que refaz o que já está no disco e
+  gasta o contexto de novo, nem conta o erro como defeito ou conserto da peça. Anota a hora do erro e a da retomada (do relógio: item
+  117) e o que já estava no disco.
+- **Por que serve a outros canais:** todo canal que roda especialistas como subagentes longos topa com a falha passageira do serviço,
+  e o agente parado parece trabalho perdido.
+- Skill: nenhuma ainda. A casa é a `despachar-especialista` (catálogo §2.5, nº 60, onda 1), como a do item 115.
+
+### 117. A hora escrita de memória, sem o relógio, sai adiantada, e o andamento perde a ordem
+
+- **O que aconteceu** (19 e 20/11/2026, vídeo 8, `australia-animais`, passo `art`): no andamento do
+  `out/australia-animais/_tmp/arte-1/plano-da-sala.md`, a Sala escreveu a hora de cada entrega e de cada decisão sem ler o relógio. Às
+  22:44 (pelo `Get-Date`), ela viu que as horas de "22:5x, o EF1 terminou" até "00:0x, o semanal" estavam adiantadas de 1 h a 1 h 30,
+  e que as dos renders (do `renders-sala.mjs`) estavam certas. Por isso o andamento traz "21:49, a fila A renderizou s39" depois de
+  "22:1x, o EO1 terminou".
+- **A causa:** a hora estimada, sem comando. Medido em 20/11/2026 pela hora em que cada relato foi gravado pela última vez, o desvio
+  começa antes do trecho da nota e cresce. Cada número é o teto do desvio: o relato se grava antes do aviso à Sala, e a linha do
+  andamento, depois dele.
+  - "22:0x, o EF2 terminou", e o `EF2.md` é das 21:46:35 (de 13 a 23 min);
+  - "22:5x, o EF1 terminou", e o `EF1.md` é das 21:58:29 (de 52 a 61 min);
+  - "23:3x, o M5 julgou as folhas", e o `M5.md` é das 22:24:28 (de 1 h 06 a 1 h 15);
+  - "00:0x, o semanal: 56 %", lido às 22:44 (de 1 h 16 a 1 h 25).
+- **O que resolveu:** a nota "A hora" no andamento e, daí em diante, toda hora do `date` sem `TZ`. As horas antigas ficaram como
+  estavam, com a nota.
+- **Como evitar:** toda hora que se escreve (andamento, relato, decisão, pedido) sai do `date` sem `TZ` (no Git Bash) ou do `Get-Date`
+  (no PowerShell), lido na hora de escrever; a de uma entrega pode sair do arquivo que ela gravou (`ls -l --time-style=+%H:%M:%S`).
+  Sem a leitura, escreva "hora não lida", nunca uma estimativa. E nunca `TZ=<Continente/Cidade>` no Git Bash (item 43).
+- **Por que serve a outros canais:** o agente não tem relógio sem um comando, e a hora de memória parece certa; a hora errada tira a
+  ordem do registro e a prova de quando cada coisa se decidiu.
+- Skill: nenhuma ainda. A casa é a `registrar-decisao-do-dono` (catálogo §2.5, nº 61, onda 2), que grava a hora de Brasília, quando
+  ela nascer, com o ok do Lucas para a onda dela. O item 43, do comando certo no Git Bash, é da `armadilhas-do-windows` (catálogo
+  §2.4, nº 55).

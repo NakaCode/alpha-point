@@ -1,11 +1,13 @@
 # Lições: gerar-mapa-animado-maptiler
 
 Os erros desta etapa, um bloco cada, registrados pela `registrar-aprendizado-como-skill` (catálogo §1.4 e §1.5). Leia antes
-de entregar a cena e quando algo der errado. Estas são de julgamento: nenhum portão as mede. O mapa parado, a câmera
+de entregar a cena e quando algo der errado. Nenhum portão mede estas: as de julgamento, e as de código e de montagem (L9
+e L10). O mapa parado, a câmera
 brusca, a viagem curta, o "·" na quebra e o campo em branco ficam com o portão de movimento; a sobreposição de texto sobre
 texto e o tamanho da letra, com os portões de cena. O tamanho de foto e de símbolo e a pílula sobre uma peça do mapa nenhum
 portão mede: são lições (L5 a L7). A peça que volta de outra cena volta com o rótulo que a identificava: a L2 daqui e a
-`escrever-textos-de-tela`, L1.
+`escrever-textos-de-tela`, L1. As L9 a L11 vieram da arte do vídeo 8 e valem também na mesa; a história inteira de cada uma
+está na `editar-cena-html` (L3, L4 e L6).
 
 ### L1 · O par antes/depois não mostra o que a voz afirma
 - **Sintoma:** "o par Landsat julho → abril não mostra que o lago baixou: julho some depressa, nada diz qual data é a
@@ -124,3 +126,39 @@ portão mede: são lições (L5 a L7). A peça que volta de outra cena volta com
   começo ao fim da pose, não um pulso no trecho apontado) e rode o portão na cena toda, não só na janela listada.
 - **Origem:** `out/_tmp/portao-movimento/cetico.md` (K10 e a resposta 4); `out/_tmp/portao-movimento/RELATO.md` §5; vídeo 7,
   18/11/2026. Destino a), com a trava c) já no portão: a lição diz o que o portão não diz, que o remédio é a pose inteira.
+
+### L9 · A opacidade posta por atributo no SVG perde para a da classe no CSS
+- **Sintoma:** na mesa do vídeo 8, um traço que devia sumir ficava na tela (s47 e s48; a história: `editar-cena-html`, L3).
+  As camadas de SVG sobre o mapa usam o mesmo `setAttribute("opacity", …)` em 12 das 20 cenas do `mapista` do vídeo 8 (s04,
+  s25, s28, s31, s45, s50, s53, s60, s69, s71, s73 e s74); nelas não se viu defeito, e nenhuma foi medida.
+- **Causa:** o atributo de apresentação do SVG perde para qualquer regra do CSS; com `opacity` na classe, o elemento fica com
+  a opacidade dela.
+- **O que resolveu:** `e.style.opacity` no lugar do atributo (a função `op` de `out/australia-animais/graphics/s47.html`).
+- **Como evitar:** a camada de SVG sobre o mapa anima a opacidade pelo `style`, ou a classe não fixa `opacity`; antes de
+  entregar, o `grep` da `editar-cena-html`, L3. A camada do MapLibre não entra aqui: ela muda pelo `setPaintProperty`.
+- **Origem:** `out/australia-animais/_tmp/arte-1/EO1.md`, "As lições do meu erro", 1; vídeo 8, 19/11/2026. Destino a): o
+  `mapista` escreve o mesmo SVG, e nenhum portão mede o elemento que não some.
+
+### L10 · A cena montada de uma fonte se conserta na fonte, e o bloco copiado se confere contra a cena de origem
+- **Sintoma:** a s28 (o M3) copiou a grade das 229 da s05 no sha1 `ee69d445`, que o EF1 ainda consertava (a entregue é
+  `96c25144`), e a Sala deu a igualdade ao `qc-visual` conferir (o andamento do `plano-da-sala.md`, o M3).
+- **Causa:** o `out/australia-animais/_tmp/arte-1/M3/montar28.py` monta a s28 lendo a s05 e a s25 do disco, sem conferir o
+  sha1 delas.
+- **O que resolveu:** nada mudou na cena. Medido em 20/11/2026, o bloco "PEÇA 3a · A GRADE DAS 229" é igual, byte a byte, na
+  s05 entregue e na s28 (o sha1 do trecho, `be0ad2719f5a`).
+- **Como evitar:** a `editar-cena-html`, L4: o conserto vai na fonte e se monta de novo; o bloco de outra cena se copia da
+  versão entregue, com o sha1 dela conferido no script; se a origem mudar, monte de novo e rode os portões de novo.
+- **Origem:** `out/australia-animais/_tmp/arte-1/M3.md` (o sha1 lido da s05 e a pergunta 7) e `M3/montar28.py`; vídeo 8,
+  19/11/2026. Destino a): o `mapista` monta cena a partir de outras, e nenhum portão confere a cópia.
+
+### L11 · O crédito do dado no mapa entra e sai com o dado
+- **Sintoma:** na s65 (cena de mapa do `editor-de-arte`), os créditos de Lloyd-Jones et al. e de Fukuda et al. entravam antes
+  da pincelada e do PROTECTED IN 1971 que eles creditam (a história: `editar-cena-html`, L6).
+- **Causa:** o crédito no t0 do `textos-tela.json` (a janela do plano), sem olhar quando o dado entra na cena.
+- **O que resolveu:** `out/australia-animais/graphics/s65.html` `68e0954a`: Lloyd-Jones entra e sai com a pincelada
+  (12,85–15,333 s); Fukuda entra com PROTECTED IN 1971 (19,20 s).
+- **Como evitar:** o crédito de uma camada de dado ou de geometria que pede crédito entra e sai com ela; o crédito de mapa
+  (`© MapTiler © OpenStreetMap contributors`) segue o mapa inteiro, do primeiro ao último quadro (identidade §4.2). Confira
+  nos quadros a entrada e a saída de cada camada creditada.
+- **Origem:** `out/australia-animais/_tmp/arte-1/EF11.md` (s65) e o andamento do `plano-da-sala.md` (00:2x–00:3x de
+  20/11/2026); vídeo 8. Destino a): nenhum portão casa o crédito com a camada.
