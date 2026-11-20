@@ -1,8 +1,9 @@
-# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11, a exceção do CSIRO, o lote 6 (os arquivos da Fase B da caça 1), o lote 7 (os da Fase B 2), o lote 8 (conducting, as janelas da regência), 19/11/2026, e o vídeo da PLOS ONE para a s51 P2 (qc, lote de consertos), 20/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40; lote 6 às 15:45; lote 7 às 16:33; lote 8 às 17:57; a s51 P2 às 13:28 de 20/11)
+# Conferência de mídia: `australia-animais` (vídeo 8), fluxo `midia`, lotes 1 a 3 de 3, a reconferência de s11, a exceção do CSIRO, o lote 6 (os arquivos da Fase B da caça 1), o lote 7 (os da Fase B 2), o lote 8 (conducting, as janelas da regência), 19/11/2026, e o vídeo da PLOS ONE para a s51 P2 (qc, lote de consertos), 20/11/2026 (lote 1 às 01:55; lote 2 às 02:2x; lote 3 às 02:4x; reconferência de s11 às 03:32; exceção do CSIRO às 07:40; lote 6 às 15:45; lote 7 às 16:33; lote 8 às 17:57; a s51 P2 às 13:28 e a conferência da resposta do Lucas (13:38) às 13:44, de 20/11)
 
-**Laudo acumulado: 70 aprovados de 84 conferidos (1 reprovado, 12 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 84.**
+**Laudo acumulado: 71 aprovados de 84 conferidos (1 reprovado, 12 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 84.**
 
-- **O vídeo da PLOS ONE para a s51 P2 (20/11, 13:28, qc):** 0 aprovados de 1 conferido (0 reprovados, 0 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 1. A seção logo abaixo.
+- **A resposta do Lucas à s51 P2 (20/11, a das 13:38, conferida às 13:44):** 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1. O pendente_lucas da PLOS passou a **aprovado**, com o recorte como condição (a seção logo abaixo).
+- **O vídeo da PLOS ONE para a s51 P2 (20/11, 13:28, qc):** 0 aprovados de 1 conferido (0 reprovados, 0 trocar, 1 pendente_lucas); 0 com algo não conferido; recebidos: 1. O pendente_lucas passou a aprovado com a resposta do Lucas de 13:38.
 - **Lote 8 (17:57, conducting):** 52 aprovados de 53 conferidos (0 reprovados, 1 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 56 itens do `_lote_do_conferente` da regência (4 reusos, 19 janelas novas, 31 provisórias, 2 declarados já aceitos). A seção logo abaixo.
 - **Lote 7 (16:33):** 3 aprovados de 3 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 3. São os 3 arquivos de banco pago da Fase B 2 da caça 1 (a lista 2), todos com `mesmo_item: true` (a seção logo abaixo).
 - **Lote 6 (15:45):** 23 aprovados de 23 conferidos (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 23. São os 23 arquivos de banco pago da Fase B da caça 1, todos com `mesmo_item: true` (a seção logo abaixo).
@@ -16,7 +17,80 @@ Sem regência: todas as janelas são provisórias (as do espelho r2, `_planos`).
 
 **A cobertura do research:** os 51 rascunhos de acervo em `_media/_caca/*/acervo-livre/` e as duas páginas de documento sem `-prova` em `_media/documento/` têm veredito. Não há retrato nem logo em `_media/`.
 
+## A resposta do Lucas: a s51 P2 aprovada, com o recorte como condição (a resposta das 13:38, conferida às 13:44 de 20/11/2026)
+
+O Lucas respondeu ao `pendente_lucas` da técnica, 20/11/2026, às 13:38 (16:38:42 UTC no registro da conversa), no chat da Sala
+(`roteiros/australia-animais/decisoes-lucas.md`, l. 39, commit `a821bb3`; a linha marca "~13:5x", e a hora certa veio da Sala). A pergunta: "Vídeo 8, cena s51: o vídeo da universidade chegou. É a caixa-medusa certa, mas tem metade da resolução do 4K, e ela é pequena e pálida: no quadro inteiro some na areia (te mandei um recorte). Para ser reconhecida nos ~2,5 s, a cena recorta um pedaço em volta dela e amplia 6 vezes; ela vira o assunto da tela, mas a imagem fica mole. Entra assim?" A resposta: **"Entrar recortada e ampliada (Recomendado)"**. A opção dizia: "A cena ganha a caixa-medusa viva por ~2,5 s, com o crédito 'Rowley et al., PLOS ONE, 2020 · CC BY 4.0'. A imagem fica menos nítida que o resto do vídeo."
+
+**Laudo deste despacho: 1 aprovado de 1 conferido (0 reprovados, 0 trocar, 0 pendente_lucas); 0 com algo não conferido; recebidos: 1.**
+
+| id | cena | fonte | veredito | motivo |
+|---|---|---|---|---|
+| `_media/_caca/s51/acervo-livre/s51-P2-chironex-fleckeri-weipa-plos-one-2020-s2-video.mp4` (`8c11cd4a…`) | s51 P2 | PLOS ONE, 2020, o S2 Video (CC BY 4.0) | **aprovado** | a caixa-medusa real (C. fleckeri, a espécie na legenda), perto de Weipa, da PLOS ONE (CC BY 4.0): aprovada só recortada em 640×360 parada nela (x 780–1420, y 235–595), no trecho 27,5–30,0 s do arquivo, ampliada 6× no 4K, pelas duas respostas do Lucas (~13:03, a fonte; 13:38, a resolução e a ampliação) |
+
+### Como a resposta cobre
+
+- É a resposta direta à pergunta da Sala sobre este arquivo, na medida do `pendente_lucas`: "metade da resolução do 4K" é o 1920×1080
+  medido; "recorta um pedaço em volta dela e amplia 6 vezes" é o recorte de 640×360 a 6×; "~2,5 s" é a janela julgada. A pergunta
+  da Sala resume a minha ("um pedaço" em vez de "um terço do quadro"), na mesma ampliação.
+- A linha do registro bate, letra a letra, com o pedido (a pergunta, a escolha e a opção), e está no commit `a821bb3`, sem mudança
+  local.
+- O veredito tem agora duas exceções: a `excecao_lucas_fonte` (~13:03, a PLOS ONE fora da lista da midia §7.3) e a `excecao_lucas`
+  (13:38, o registro real abaixo de 4K, ampliado 6×). Os quatro critérios passam.
+
+### A condição do aprovado (o campo `condicao_do_aprovado`)
+
+- **O recorte:** 640×360 px do original, parado, centrado na medusa com os tentáculos: x 780–1420, y 235–595.
+- **O trecho do arquivo:** 27,5–30,0 s (o `trecho_do_clipe`), dentro do trecho b limpo (23,857–30,731 s). Os seis pontos dessa janela
+  (`_tmp/conferencia/s51-P2-plos/janela-640x360-27.5a30.0.png`) mostram a medusa dentro do recorte.
+- **A ampliação:** 6× no 4K (640×360 → 3840×2160), sem filtro de contraste, cor ou nitidez.
+- **Fora disso, o aprovado não vale.** O quadro inteiro ou um recorte maior seria `trocar` (a medusa some na areia). Um recorte
+  menor, outra ampliação, outro trecho ou um tratamento pedem conferência nova ou pergunta ao Lucas. O 24,0–26,5 s, que eu dava
+  como alternativa, não está na condição.
+- O `editor-de-arte` monta nessas medidas; o `qc-visual` confere na cena pronta que o recorte e o trecho são estes.
+
+### O que conferi de novo (só o que a resposta não cobre)
+
+- O arquivo: o mesmo sha256 (`8c11cd4a…`) e a mesma medida (ffprobe: 1920×1080, h264, yuv420p, 30000/1001, 38,405 s).
+- O espelho, o `words.json`, o roteiro e a regência: os mesmos sha256 das 13:28. O contexto, a licença e a repetição não mudam.
+
+### Para o Lucas pesar
+
+Nada.
+
+### Para reconferir no navegador do app
+
+Nada.
+
+### Para trocar
+
+Nada.
+
+### Para quem entrega (o `pesquisa-imagens`), para o redator e para a peça
+
+- O `pesquisa-imagens` pode entregar o arquivo; o veredito casa pelo sha256 do rascunho (`8c11cd4a…`).
+- O crédito na tela: "Rowley et al., PLOS ONE, 2020 · CC BY 4.0" (a grafia final é do `redator-de-tela`). Na descrição do YouTube:
+  o título do artigo, os autores, o DOI, o link da licença (http://creativecommons.org/licenses/by/4.0/) e a nota "recortado e
+  ampliado". O rótulo de lugar, se houver, até "near Weipa, Queensland".
+- A janela continua a do pedido, provisória: ~2,5 s a partir de "the box jellyfish" (615,20 s). A medusa tem de sair antes das 70
+  fichas do mapa, em "seventy" (617,42 s), ou o mapa se reajusta (a coluna do que muda, no registro). Com a regência refeita, a
+  janela se confere de novo.
+- O arquivo tem 29,97 fps (30000/1001): anotado para o `entregar` e o render.
+
+### Divergências e notas (ROUPA)
+
+- **A hora da resposta:** a linha 39 do `decisoes-lucas.md` (commit `a821bb3`) marca "~13:5x"; a Sala corrigiu para 13:38
+  (16:38:42 UTC no registro da conversa), e é essa que está na `excecao_lucas`. Corrigir o registro é da Sala.
+- As de 13:28 (o formato do crédito, Bianchi como editor, a falta de teto de ampliação para o footage na marca) continuam valendo,
+  na seção logo abaixo.
+- O aviso `out/_maquina/conferente-australia-animais.json` foi marcado ocupado às 13:40 por este despacho e é regravado livre ao fim.
+- Nada mudou em `out/australia-animais/_media/`: os sha256 antes (13:40) e depois estão em `_tmp/conferencia/_media-antes.txt` e
+  `_media-depois.txt`. Antes da emenda, as cópias: `_tmp/conferencia/conferencia-midia-antes-plos-s51-lucas.json` (`ce3aa621…`) e
+  `.md` (`1037df76…`).
+
 ## A s51 P2: o vídeo da PLOS ONE (qc, lote de consertos, 20/11/2026, 13:28)
+
+> Respondido às 13:38: o Lucas aceitou o recorte ampliado, e o veredito passou a **aprovado** (a seção logo acima). O que segue é o veredito de 13:28, como foi dado.
 
 Fluxo `midia`, um arquivo: o rascunho do acervo aberto entre o `baixar` e o `entregar`, que o `pesquisa-imagens` baixou com a
 liberação do Lucas de ~13:03. O pedido veio da Sala, no chat. A procedência: a linha nova do `manifest.jsonl` de

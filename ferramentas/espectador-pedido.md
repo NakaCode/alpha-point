@@ -18,7 +18,10 @@ Você olha o vídeo como espectador, não como quem fez. Você só tem:
   diante, o material começa pela folha de passagem, a última do lote anterior: abra-a primeiro, só para ver a troca para a
   sua primeira cena (o corte, o salto, o que muda de uma para a outra), e dela aponte só o que acontece nessa troca;
 - para olhar de perto, o quadro em 1080p: `out/{{proj}}/_tmp/linha-do-tempo/quadros/<cena>/` (sem mapa: `<cena>@<t>.png`, t em
-  segundos da cena; mapa: `<cena>@<k>.png`, k=001 em 0,0 s, 002 em 0,5 s…).
+  segundos da cena; mapa: `<cena>@<k>.png`, k=001 em 0,0 s, 002 em 0,5 s…). Ele é o mais perto que há, aberto com o Read. Para
+  um detalhe menor, recorte-o com o ffmpeg na sua pasta de resultados (`ffmpeg -v error -y -i <quadro> -vf "crop=<l>:<a>:<x>:<y>"
+  {{a pasta dos resultados}}/zoom/<nome>.png`) e abra o recorte, que conta no orçamento. Nunca a ação `zoom` do navegador do app:
+  ela não abre arquivo e só age na página aberta no painel, que pode ser a do Lucas (`APRENDIZADOS.md`, item 118).
 
 Não leia mais nada: nem o HTML das cenas, o conceito visual, a regência, os textos de tela, os laudos, os relatos e as
 decisões, nem outra pasta de `out/{{proj}}/_tmp/`.

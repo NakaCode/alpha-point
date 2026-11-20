@@ -78,7 +78,8 @@ robô, termos e compra. As quatro respostas:
     recusa quadro mais velho que a cena: rode antes o `quadros` das cenas da rodada.
   - **Um revisor por lote,** em Sonnet, com o rótulo `espectador:L<n>` e o pedido de `ferramentas/espectador-pedido.md` (o da
     r4, com o lote, a passagem e o orçamento). Ele abre a passagem e cada folha do lote uma vez e, para olhar de perto, o quadro
-    1080p, sem nunca passar de 25 imagens no total, contando as reabertas. Grava o achado, entrega e termina. O cético continua
+    1080p (e, para um detalhe menor, um recorte dele com o ffmpeg, nunca o `zoom` do navegador do app: `APRENDIZADOS.md`, item
+    118), sem nunca passar de 25 imagens no total, contando as reabertas. Grava o achado, entrega e termina. O cético continua
     em Opus.
   - **A régua de qualidade** (teste de 14/10/2026, nas folhas da r4 do vídeo 2, sem ver o resultado antigo; o detalhe na ficha
     da M10): os revisores curtos acharam 20 dos 22 achados médios e altos que o cético tinha mantido em 09/10 (um 21º em parte),

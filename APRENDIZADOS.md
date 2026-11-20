@@ -2188,6 +2188,43 @@ O Alpha Point narra em inglês dos EUA. Auditoria somente leitura do motor para 
   Sem a leitura, escreva "hora não lida", nunca uma estimativa. E nunca `TZ=<Continente/Cidade>` no Git Bash (item 43).
 - **Por que serve a outros canais:** o agente não tem relógio sem um comando, e a hora de memória parece certa; a hora errada tira a
   ordem do registro e a prova de quando cada coisa se decidiu.
+- **Voltou em 20/11/2026, com este item já escrito** (vídeo 8, a Sala depois da limpeza de contexto): a hora das respostas do Lucas
+  entrou de cabeça, adiantada, no lugar que é a prova da decisão. O `decisoes-lucas.md` (commit `a821bb3`, das 13:39) gravou "~13:5x"
+  para respostas que chegaram às 13:38:42 (16:38:42 UTC na transcrição `.jsonl` da sessão), e a memória dizia "~14:0x"; o pedido ao
+  conferente levou o "~13:5x" à `excecao_lucas` dele. A Sala viu às 13:41, pelo `date`, e às 13:42 corrigiu o registro, a memória, o
+  plano e o pedido (o conferente gravou 13:38:42). As três linhas de "~13:03" ficaram exatas: aquelas respostas chegaram às 13:02:44.
+  - **Por que a regra não bastou:** este item mora no `APRENDIZADOS.md`, que a Sala não lê ao começar; a memória e o `CLAUDE.md`, que
+    ela lê, não diziam nada da hora. É a L3 da `registrar-aprendizado-como-skill`: a regra escrita existia e não bastou.
+  - **O que muda:** a hora de uma resposta do Lucas sai do `date` lido assim que a resposta chega ou, depois, da transcrição da sessão
+    (o `timestamp` UTC do resultado da pergunta, menos 3 h), e nunca de um "~". A memória da Sala ganhou a linha "A hora só do
+    relógio", que ela lê a cada começo de sessão. A trava que mediria isso (a linha nova do `decisoes-lucas.md` com hora estimada, ou
+    depois da hora do commit) fica proposta, para depois do vídeo 8 (a cota da semana estava em 90 %).
 - Skill: nenhuma ainda. A casa é a `registrar-decisao-do-dono` (catálogo §2.5, nº 61, onda 2), que grava a hora de Brasília, quando
   ela nascer, com o ok do Lucas para a onda dela. O item 43, do comando certo no Git Bash, é da `armadilhas-do-windows` (catálogo
   §2.4, nº 55).
+
+### 118. O cético procurou o zoom no navegador do app, que subagente nunca usa
+
+- **O que aconteceu** (20/11/2026, 12:49:43, vídeo 8, `australia-animais`, a revisão de espectador r1, o cético do lote 24): um
+  subagente `general-purpose` chamou `mcp__Claude_Browser__computer` com `{"action":"zoom"}`, contra a regra do pedido dele ("não use
+  nenhuma ferramenta `mcp__claude-in-chrome__*`, nem do painel de navegador do app (`mcp__Claude_Browser__*`)"). A chamada falhou:
+  "There is no page to screenshot, zoom into or click — this tool only acts on a page in the Browser pane (not on files, the desktop or
+  other apps). No preview is open." Nada abriu nem mudou (a Sala conferiu com o `tabs_context`), e ele contou a chamada no relato.
+- **A causa:** o pedido mandava olhar "de perto" o quadro 1080p e não dizia como; o cético quis ampliar um detalhe e achou a ação
+  `zoom`, que só age numa página aberta no painel. O `general-purpose` herda todas as ferramentas, inclusive as do painel do app e as
+  do Chrome do Lucas (o catálogo, §1.2, diz o mesmo do `context: fork` sem `agent`), e a regra em prosa não bastou. O risco cresce
+  com o painel aberto: das 13:06 em diante, ele tem a linha do tempo do Lucas, e um `left_click` ali grava comentário e visto.
+- **O que resolveu:** nada a desfazer. Os pedidos da revisão de espectador (o molde `ferramentas/espectador-pedido.md` e os dois do
+  vídeo 8, em `out/australia-animais/_tmp/sala/`, de onde sai a r2) passaram a dizer como ver um detalhe: o quadro 1080p é o mais
+  perto que há; para menos, um recorte com o ffmpeg na pasta de resultados, aberto com o Read (conta no orçamento); a ação `zoom`
+  do navegador do app, nunca. A busca nas 66 transcrições de subagente da sessão achou só esta chamada.
+- **Como evitar:** todo pedido a subagente que olha imagem diz como ampliar, junto da proibição. Ao fim de cada rodada de
+  subagentes, a Sala procura chamada de navegador nas transcrições deles (não lista nada quando não há):
+  `grep -l '"type":"tool_use","id":"[^"]*","name":"mcp__\(Claude_Browser\|claude-in-chrome\|computer-use\)__' <subagents>/agent-*.jsonl`,
+  com `<subagents>` = `~/.claude/projects/C--projetos-alpha-point/<id da sessão>/subagents`. A trava técnica é configuração e fica
+  proposta ao Lucas: um hook `PreToolUse` que recusa essas ferramentas quando a chamada vem de subagente (a conferir se a entrada do
+  hook diz que veio de subagente), ou um tipo de agente do canal, sem elas, para os leitores e os céticos.
+- **Por que serve a outros canais:** todo canal que despacha subagente `general-purpose` dá a ele o navegador do app e o Chrome do
+  dono; um canal de culinária teria o mesmo risco. Vale avisar o Lucas, para ele ver com o Mateus.
+- Skill: nenhuma ainda. A casa da lição é a `revisar-espectador` (catálogo §2, nº 50) e, para todo despacho, a
+  `despachar-especialista` (nº 60), quando nascerem, com o ok do Lucas para a onda delas.
