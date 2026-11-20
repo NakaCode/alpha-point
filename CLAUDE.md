@@ -385,7 +385,8 @@ O `stock/_commons-baixar` não trava licença, então confira cada uma.
 - `decupagem/corrigir-nomes.mjs` só corrige `words-final`/`words-limpo`: aqui sai com exit 2, e o `words.json`
   nunca se corrige;
 - no Git Bash, `TZ=America/Sao_Paulo date` devolve UTC sem avisar (não há base de fusos): a hora de Brasília é o
-  `date` sem `TZ`, ou o `Get-Date` do PowerShell (`APRENDIZADOS.md`, item 43);
+  `date` sem `TZ`, ou o `Get-Date` do PowerShell (`APRENDIZADOS.md`, item 43). Toda hora que se escreve (decisão, relato,
+  andamento, pedido) sai dele, lida na hora: de cabeça ela sai adiantada, e sem leitura se escreve "hora não lida" (item 117);
 - `jq`, `turf`, `mapshaper`, `identify` e `pdftoppm` não existem nesta máquina. O PyMuPDF (1.28.0) importa no Python e
   rasteriza PDF (`get_pixmap`): o `pesquisa-documentos` testou e conferiu a olho em 12/11/2026, no vídeo 7, em PDF escaneado
   (a 300 dpi) e vetorial (a 200, 300 e 600 dpi);
