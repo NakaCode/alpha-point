@@ -38,3 +38,6 @@ a instalação: "Pode instalar (Recomendado)".
     no C: tirou o espaço da exportação do Lucas, que falhou duas vezes no último quadro (`APRENDIZADOS.md`, item 103).
     As miniaturas A e B (a 1280 e a 2560 de cada; `roteiros/rio-columbia/miniatura/`) foram em "0007 - RioColumbia/Miniaturas", a pedido do Lucas
     ("mandar as thumbs para o drive seria bom também"), pelo `rclone copy --checksum` direto (4 arquivos): o `rclone check --one-way`, às 20:00, 0 diferenças.
+    A cópia local, `C:RioColumbia-Premiere` (19,45 GB), a Sala apagou em 20/11/2026, às 19:34, com o "Apagar o do vídeo 7 e exportar antes
+    (Recomendado)" do Lucas (o C: estava com 11 GB livres antes do pacote do vídeo 8), depois de um `rclone check --one-way` às 19:17: 0 diferenças,
+    70 arquivos no Drive. O C: foi a 30,6 GB livres.
