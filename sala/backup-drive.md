@@ -41,3 +41,26 @@ a instalação: "Pode instalar (Recomendado)".
     A cópia local, `C:RioColumbia-Premiere` (19,45 GB), a Sala apagou em 20/11/2026, às 19:34, com o "Apagar o do vídeo 7 e exportar antes
     (Recomendado)" do Lucas (o C: estava com 11 GB livres antes do pacote do vídeo 8), depois de um `rclone check --one-way` às 19:17: 0 diferenças,
     70 arquivos no Drive. O C: foi a 30,6 GB livres.
+- **A limpeza de `out/` dos vídeos passados** (20/11/2026). O Lucas perguntou, às 20:41: "Percebi que nesta pasta C:\projetos\alpha-point\out há vários
+  arquivos de vídeos passados, eles servem para que? Estão ocupando bastante espaço". A `out/` tinha uns 290 GB. À pergunta "Apago arquivos dos vídeos antigos
+  para liberar espaço no C:? O vídeo 8 não é tocado, e apagar não tem volta.", às 21:02: **"Apagar os 203 GB (Recomendado)"**, o texto da opção em
+  `roteiros/australia-animais/decisoes-lucas.md`.
+  - **O que saiu às 21:03:** 46.527 arquivos, 137,41 GB, nenhum pulado, de `los-angeles`, `zona-do-canal`, `peru-agua`, `atlantico-fundo`, `big-sur`,
+    `rio-columbia` e `juneau`. Foram os binários de `_tmp/` (os quadros em PNG das revisões, as prévias da linha do tempo, os testes; o texto ficou) e os
+    vídeos de `_media/_caca/` (os downloads originais dos bancos e dos acervos; a cópia instalada em `_media/footage/`, que as cenas usam, ficou).
+    - Um ensaio contou cada classe antes.
+    - No apagar, cada arquivo foi conferido de novo: existe, tem o mesmo tamanho, está fora do git e é de vídeo passado.
+    - O C: foi de 24 a 152 GB livres, com a exportação do vídeo 8 em curso.
+  - **O que fica para depois da exportação do vídeo 8:** o que o XML final cita nos vídeos 3, 4, 5 e 7 (os clipes das cenas, o master, a música e as
+    chamadas: 251 arquivos, 65,98 GB).
+    - Cada um sai só se o MD5 e o tamanho batem com um arquivo do pacote no Drive. A lista do Drive, com o MD5, foi lida às 21:03 por
+      `rclone lsjson -R --hash`: 0003 com 55 arquivos, 0004 com 79, 0005 com 63 e 0007 com 74.
+    - O que não bater fica no PC.
+  - **O que não sai:**
+    - os textos (no git);
+    - os PDFs de licença e os prints das páginas dos itens;
+    - a `_media/footage/`;
+    - os clipes finais do Juneau, que não tem pacote no Drive;
+    - o vídeo 6 (`praia-do-cassino`, parado);
+    - o vídeo 8;
+    - as pastas `prova-*`.
