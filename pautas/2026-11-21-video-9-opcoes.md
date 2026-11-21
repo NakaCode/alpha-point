@@ -168,3 +168,82 @@ curioso com o Maranhã? A maioria nem deve conhecer"
   5. a ponte com a Amazônia: o trecho rasgado fica entre a lama do Amazonas e a areia do Nordeste.
 - **O que fica de pé:** a pauta continua candidata, mas só com um ângulo nosso, e não a cópia do Capital Financeiro. O cético e os leitores a
   frio (falantes de inglês de qualquer país, que nunca ouviram falar do Maranhão) respondem à pergunta do Lucas com o título e a miniatura.
+
+## As três que o Lucas achou interessantes (13:52)
+
+"Achei interessante o Vazio da alemanha, a amazônia e a terra de fogo, qual seriam as propostas de cada um? Com exemplos de título e suas
+traduções, por favor"
+
+Propostas da Sala, antes dos céticos. Os números do vazio da Alemanha vêm da transcrição do vídeo alemão (vidIQ, 5 créditos, 13:5x) e estão
+NÃO CONFERIDOS. Os da Amazônia são da memória da Sala, a conferir. Os da Terra do Fogo foram conferidos pelo cético de 18/11
+(`out/_pautas/video-8/cetico-terra-do-fogo.md`). Nenhum título foi checado contra colisão: isso é do cético.
+
+### O vazio da Alemanha: a cicatriz da Cortina de Ferro
+
+- **O paradoxo:** a Alemanha é dos países mais cheios da Europa (234 pessoas por km² na média), e entre Berlim e Hamburgo há um ponto a
+  ~109 km (68 mi) de qualquer cidade grande (Rostock, Wolfsburg e Potsdam). Em volta dele ficam os três distritos mais vazios do país, lado a
+  lado: a Prignitz, a Altmark (Salzwedel) e o Wendland (Lüchow-Dannenberg), com ~35 pessoas por km², quase 7 vezes abaixo da média.
+- **O porquê, no mapa:**
+  - o chão: morena da era do gelo e solo arenoso e pobre. Explica por que nunca nasceu uma metrópole ali, mas não por que a gente vai embora;
+  - a fronteira: até 1990 o Elba, ali, era a fronteira entre as duas Alemanhas. O Wendland entrava como um saco na Alemanha Oriental. Do lado
+    oriental havia zona proibida, com passe, e famílias removidas em 1961. Foi "o fim do mundo dos dois lados" por mais de 40 anos;
+  - as fábricas: Wittenberge (a Singer de 1903, depois Veritas) fechou em 1992, e a cidade caiu de 33 mil para 17 mil.
+- **A virada:** o vazio é dos dois lados da antiga fronteira, e não só do lado oriental. A fronteira sumiu há 35 anos, e o mapa da gente
+  ainda a desenha.
+- **O fim no mapa:** a linha da antiga fronteira sobre o mapa de densidade. A autoestrada A14, prometida para 2032, e a projeção de 2040.
+- **A nossa medida** (a do vídeo alemão é a distância à cidade grande): a densidade ao longo da antiga fronteira contra a do resto do país,
+  em milhas.
+- **Títulos:**
+  1. "Why Almost Nobody Lives Between Berlin and Hamburg" (Por que quase ninguém vive entre Berlim e Hamburgo): o molde do Geoff, com o
+     lugar sem nome e duas cidades que o mundo conhece;
+  2. "The Iron Curtain Is Gone. Germany's Emptiest Land Isn't." (A Cortina de Ferro acabou. A terra mais vazia da Alemanha, não.);
+  3. "Why Germany's Emptiest Place Is Where the Iron Curtain Was" (Por que o lugar mais vazio da Alemanha fica onde passava a Cortina de
+     Ferro): entrega a resposta e perde curiosidade;
+  4. "Germany Still Has a Border You Can See From Space" (A Alemanha ainda tem uma fronteira que se vê do espaço): só se a luz noturna de
+     satélite mostrar o vazio (a conferir).
+- **O risco:** "a Alemanha Oriental ainda aparece no mapa" é assunto conhecido em inglês (os mapas de renda e de voto). O nosso é mais
+  estreito: o vazio dos dois lados. O vídeo alemão tem 3 semanas (238 mil): é a tendência de fora trazida ao inglês.
+
+### O tamanho da Amazônia: depende de quem desenha a linha
+
+- **O paradoxo:** no mapa-múndi comum (Mercator), a Amazônia, no equador, parece menor que a Groenlândia. Na verdade, só a bacia do rio tem
+  umas 3 vezes a Groenlândia (a conferir: ~7 milhões de km² contra 2,17 milhões).
+- **O porquê, no mapa:**
+  - o mapa: o Mercator incha o que fica longe do equador;
+  - a linha: "Amazônia" são várias. A floresta, a bacia do rio, a Amazônia Legal do Brasil (uma linha de lei, de 1953) e o mapa dos nove
+    países dão tamanhos diferentes, e cada linha foi traçada por um motivo (a água, o dinheiro do governo, a diplomacia);
+  - por que ela é tão grande: os Andes viraram a água do continente para o leste, e a chuva do equador a enche (a conferir).
+- **O fim no mapa:** todas as linhas, uma sobre a outra, em cima do mundo em projeção de área igual. A resposta em milhas quadradas, ao lado
+  de lugares que o espectador conhece (os EUA sem o Alasca, a Europa).
+- **Títulos:**
+  1. "How Big Is the Amazon, Really?" (O quão grande a Amazônia realmente é?), o título do Lucas: dois canais minúsculos usaram há 2 semanas
+     "How Big Is the Amazon Rainforest Really?" (128 e 86 views), e o cético diz se isso pesa;
+  2. "The Amazon Looks Smaller Than Greenland. It's Three Times Bigger." (A Amazônia parece menor que a Groenlândia. Ela é três vezes maior.);
+  3. "Why Most Maps Shrink the Amazon" (Por que a maioria dos mapas encolhe a Amazônia);
+  4. "Why No One Agrees on How Big the Amazon Is" (Por que ninguém concorda sobre o tamanho da Amazônia);
+  5. "Why the Amazon Is So Big" (Por que a Amazônia é tão grande).
+- **O risco:** os curtos de "bigger than you think" estão cheios, e a Amazônia está em alta agora pelo inexplorado. A busca e a curiosidade
+  existem: a pergunta é se um longo leva o clique que os curtos já levam.
+
+### A Terra do Fogo: o caminho da Argentina passa pelo Chile
+
+- **O paradoxo:** Ushuaia é a cidade mais ao sul da Argentina, e para ir de carro do resto do país até lá é preciso sair da Argentina. Do
+  trajeto de Río Gallegos a Ushuaia (366 mi), 139 mi (38 %) ficam no Chile, com uma balsa no estreito de Magalhães. Na ilha, o Chile tem
+  56 % da terra e só ~4 % da gente.
+- **O porquê, no mapa:**
+  - o tratado de 1881, mediado pelos ministros dos EUA: o Chile quis o estreito (a passagem entre os oceanos) e a Argentina ficou com o
+    Atlântico e a Patagônia;
+  - a ilha foi cortada por um meridiano reto, o 68°34′, e a linha no chão não está onde o tratado diz (~2,7 km a oeste);
+  - o Beagle: a quase guerra de 1978 e o tratado de 1984, que ainda obriga o navio argentino a levar piloto chileno nos canais.
+- **O fim no mapa:** a estrada que cruza duas vezes a fronteira, a linha reta e o estreito que o Chile quis.
+- **Títulos:**
+  1. "Why Argentina's Road to Ushuaia Runs Through Chile" (Por que a estrada da Argentina até Ushuaia passa pelo Chile), o do cético;
+  2. "Tierra del Fuego: Chile Has the Land, Argentina Has the People" (Terra do Fogo: o Chile tem a terra, a Argentina tem a gente);
+  3. "Why Argentina Can't Drive to Its Southernmost City Without Chile" (Por que a Argentina não chega de carro à sua cidade mais ao sul sem
+     o Chile).
+  
+  A evitar: "Why Is Argentina Cut in Two?" (um curto de 15/11) e "…Split by a Straight Line" (colidem, pelo cético).
+- **O risco:**
+  - o viral espanhol é de 03/11 (866 mil), e as cópias em inglês começaram em 12 a 17/11, ainda pequenas;
+  - pela régua de hoje, é a tendência de fora trazida ao inglês, mas o enxame está a caminho;
+  - a notícia do estreito (Chile × Argentina, o navio Danstar) pede leitura nova.
