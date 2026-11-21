@@ -41,6 +41,15 @@ a instalação: "Pode instalar (Recomendado)".
     A cópia local, `C:RioColumbia-Premiere` (19,45 GB), a Sala apagou em 20/11/2026, às 19:34, com o "Apagar o do vídeo 7 e exportar antes
     (Recomendado)" do Lucas (o C: estava com 11 GB livres antes do pacote do vídeo 8), depois de um `rclone check --one-way` às 19:17: 0 diferenças,
     70 arquivos no Drive. O C: foi a 30,6 GB livres.
+  - o vídeo 8 (`australia-animais`), em 20/11/2026: 78 arquivos e 15,68 GB de `C:\AustraliaAnimais-Premiere`, em "0008 - AustraliaAnimais", das 22:22 às
+    23:49.
+    - O 403 de cota voltou num arquivo (s43), e a 2ª tentativa do próprio rclone passou.
+    - O `rclone check`, às 23:49: 0 diferenças, 78 arquivos batem. O registro está em
+      `out/_maquina/backup-drive/AustraliaAnimais-Premiere-20261120-222203.log`.
+    - As miniaturas do teste, r3-n1 e r3-n2 (a 1280 e a 2560 de cada; `roteiros/australia-animais/miniatura/`), foram em
+      "0008 - AustraliaAnimais/Miniaturas", como no vídeo 7, pelo `rclone copy --checksum` direto (4 arquivos). O `rclone check --one-way`, às 23:50:
+      0 diferenças.
+    - A cópia local, `C:\AustraliaAnimais-Premiere`, fica no PC até o Lucas decidir. O C: tem folga depois da limpeza abaixo.
 - **A limpeza de `out/` dos vídeos passados** (20/11/2026). O Lucas perguntou, às 20:41: "Percebi que nesta pasta C:\projetos\alpha-point\out há vários
   arquivos de vídeos passados, eles servem para que? Estão ocupando bastante espaço". A `out/` tinha uns 290 GB. À pergunta "Apago arquivos dos vídeos antigos
   para liberar espaço no C:? O vídeo 8 não é tocado, e apagar não tem volta.", às 21:02: **"Apagar os 203 GB (Recomendado)"**, o texto da opção em
