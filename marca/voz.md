@@ -16,6 +16,20 @@ Os dois textos que a fizeram, a descrição da voz e o comando do Remix, ficam e
 da escolha. Se um dia a voz precisar ser refeita, parte-se deles. Ela foi remixada porque a anterior, uma
 "news anchor", soava lida. O narrador **conversa**: conta e apresenta, não lê.
 
+**A conversa, cobrada duas vezes pelo Lucas:**
+- sobre o roteiro do Big Sur, 02/11/2026: "Parece muito "engessado", não comunica bem com o público";
+- depois de publicar o vídeo 8, 20/11/2026, às 22:44: "A narração precisa ser mais "conversacional", achei um tanto engessada em alguns trechos"
+  (`roteiros/australia-animais/decisoes-lucas.md`).
+
+Do vídeo 9 em diante, o que soa lido sai do texto antes da voz:
+- a frase de relatório;
+- a fila de números;
+- a atribuição em série ("according to", "the report says");
+- a sequência de frases do mesmo tamanho.
+
+No lugar, o narrador fala com quem ouve: segunda pessoa, a cena, a pergunta, a surpresa, frases de tamanho variado, e a fonte na tela, com a voz
+dando o dono uma vez só. O roteiro se lê em voz alta antes da narração, e a escuta aponta o trecho engessado.
+
 **Para quem**: quem fala inglês, de 25 a 60 anos, em qualquer país (os EUA, o Reino Unido, o Canadá, a Austrália, a
 Índia…), que não acompanha geopolítica e não precisa acompanhar. Tem tempo e curiosidade, mas não tem o vocabulário. A voz é
 americana, mas o texto não pressupõe que quem ouve é americano: nada de "our country" ou "back home", e a comparação de tamanho
@@ -124,6 +138,15 @@ uma vinheta fixa.
 - a faixa da tela entra junto (`cta.md` §5).
 
 No relatório do roteiro, o roteirista diz em que parágrafo ela está.
+
+**O ajuste do vídeo 8.** O Lucas, em 20/11/2026, às 22:44, depois de publicar: "O pedido de inscrição precisa ser inserido de forma mais natural e no ritmo
+adequado ao vídeo" (`roteiros/australia-animais/decisoes-lucas.md`).
+- **O que não funcionou:** a frase do vídeo 8, "If you've followed the venom this far, subscribe to Alpha Point. The other snake is next.", ficou em 7:33,
+  entre o ato 3 e o ato 4. Seguiu as regras daqui e mesmo assim soou fora do fio.
+- **Do vídeo 9 em diante:**
+  - a frase sai do assunto que está no ar, como parte da conversa, e não como aviso entre dois blocos;
+  - ela vem no mesmo andamento e no mesmo tom do parágrafo ao lado;
+  - a escuta e a revisão de espectador olham esse trecho de propósito.
 
 **Como:**
 - a frase sempre tem **"subscribe to Alpha Point"**, o nome que a faixa mostra;
