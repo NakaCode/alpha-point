@@ -51,11 +51,14 @@ a instalação: "Pode instalar (Recomendado)".
     - Um ensaio contou cada classe antes.
     - No apagar, cada arquivo foi conferido de novo: existe, tem o mesmo tamanho, está fora do git e é de vídeo passado.
     - O C: foi de 24 a 152 GB livres, com a exportação do vídeo 8 em curso.
-  - **O que fica para depois da exportação do vídeo 8:** o que o XML final cita nos vídeos 3, 4, 5 e 7 (os clipes das cenas, o master, a música e as
-    chamadas: 251 arquivos, 65,98 GB).
-    - Cada um sai só se o MD5 e o tamanho batem com um arquivo do pacote no Drive. A lista do Drive, com o MD5, foi lida às 21:03 por
-      `rclone lsjson -R --hash`: 0003 com 55 arquivos, 0004 com 79, 0005 com 63 e 0007 com 74.
-    - O que não bater fica no PC.
+  - **O que saiu às 22:25, depois da exportação do vídeo 8:** o que o XML final cita nos vídeos 3, 4, 5 e 7 (os clipes das cenas, o master, a música e
+    as chamadas): 251 arquivos, 65,98 GB.
+    - Cada um saiu só porque o MD5 e o tamanho batiam com um arquivo do pacote daquele vídeo no Drive. A lista do Drive, com o MD5, foi relida na
+      hora por `rclone lsjson -R --hash`: 0003 com 55 arquivos, 0004 com 79, 0005 com 63 e 0007 com 74.
+    - Bateram os 251, e nenhum ficou.
+    - O C: foi de 138 a 199 GB livres, já com o pacote do vídeo 8 montado.
+    - Desses quatro vídeos, o Drive é agora a única cópia do que o Premiere abre. Para reabrir um deles, baixa-se a pasta do Drive para `C:\<Nome>-Premiere`.
+  - **A soma das duas levas:** 46.778 arquivos, 203,39 GB.
   - **O que não sai:**
     - os textos (no git);
     - os PDFs de licença e os prints das páginas dos itens;
