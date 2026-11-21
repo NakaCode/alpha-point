@@ -13,6 +13,14 @@
 
 A r3-n3 ("SNAKES 35 / BEES & WASPS 42") é a reserva.
 
+**O que foi ao ar** (20/11/2026, publicado às 22:42; https://youtu.be/hXAqRYX57OU). O teste do YouTube saiu com dois títulos, não com os três pares
+de cima. A pergunta: "você subiu os três pares de título e miniatura no teste do YouTube, ou só um?". A resposta do Lucas, às 23:07:
+- os dois títulos: "Why Does Australia Have So Many poisonous Animals?" e "Why Does Australia Have So Many Dangerous Animals?" (o T3);
+- o porquê de o T1 e o T2 ficarem de fora: "achei os outros títulos "longe" de geografia" (`decisoes-lucas.md`; a regra em `marca/embalagem.md` §2).
+
+As miniaturas ele não disse. Na página, a descrição é a SEM LINKS daqui, e os capítulos foram reconhecidos (lido pela Sala às 22:4x). A descrição serve aos
+dois títulos: o gancho pergunta por que um país com tantas cobras venenosas tem tão poucas mortes. A voz diz "venomous", e não "poisonous".
+
 ## Os voláteis: as frases da descrição que dependem deles
 
 **Relidos em 20/11/2026, das 20:38 às 20:43, pelo `verificador-de-fatos`:** os 6 grupos de voláteis da tela continuam valendo (6 `vale`, 0 `mudou`, 0 `não

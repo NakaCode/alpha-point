@@ -130,6 +130,17 @@ para o canal seria de conteúdos com esse ângulo".
     - esconder deixaria o título vago ou enganoso, com uma promessa que lê como outro assunto ou que o vídeo não paga;
     - o nome ou a data são necessários pelas regras acima, como a data absoluta do fato histórico ou o termo que colide na busca.
   - Na dúvida, decide o teste de leitores do título (§4).
+- **O título fala de geografia** (Lucas, 20/11/2026, sobre o vídeo 8).
+  - **O que ele fez:** ao teste do YouTube (Test & Compare) levou só "Why Does Australia Have So Many Dangerous Animals?" (o dele) e "Why Does
+    Australia Have So Many poisonous Animals?".
+  - **O que deixou de fora:** os dois que os céticos tinham posto à frente pelo clique, "Australia's Deadliest Snake Isn't Its Most Venomous One" e "Why
+    So Few People Die From Australia's Deadly Animals".
+  - **A mensagem dele, às 23:07:** "achei os outros títulos "longe" de geografia" (`roteiros/australia-animais/decisoes-lucas.md`).
+  - **A leitura da Sala, que ele pode corrigir:**
+    - o título que ele quer tem o lugar como sujeito e pergunta o porquê sobre o lugar (§1.1);
+    - o título cujo assunto é um bicho, uma espécie ou uma contagem de mortes, com o lugar só de enfeite ("Australia's…"), soa como outro gênero, mesmo
+      bem ranqueado pelo clique;
+    - a banca e o cético da pauta conferem isso antes do ranking.
 
 ## 3 · A miniatura
 
